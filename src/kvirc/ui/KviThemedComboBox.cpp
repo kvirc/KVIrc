@@ -60,9 +60,10 @@ void KviThemedComboBox::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 
-	if(style()->objectName() == "oxygen")
+	if(style()->objectName() == "oxygen" || style()->objectName().startsWith("ia-ora-"))
 	{
-		//workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
+		// workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
+		// ia-ora- are the mandriva default styles
 		setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 		QPalette pal = palette();
 		pal.setBrush(QPalette::Base, bIsTrasparent ? Qt::transparent : KVI_OPTION_COLOR(KviOption_colorLabelBackground));
@@ -71,8 +72,8 @@ void KviThemedComboBox::applyOptions()
 		setPalette(pal);
 	} else {
 		QString szStyle = QString("QComboBox { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
-	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
-	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : 
+			.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+			.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : 
 				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
 		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
 		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())

@@ -200,7 +200,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUserDefinedPortRange 106                       /* dcc */
 #define KviOption_boolCreateQueryOnPrivmsg 107                       /* query */
 #define KviOption_boolCreateQueryOnNotice 108                        /* query */
-#define KviOption_boolCreateMinimizedQuery 109                       /* query */
+#define KviOption_boolCreateIncomingQueriesAsMinimized 109           /* query */
 #define KviOption_boolAutoJoinOnInvite 110                           /* channel */
 #define KviOption_boolShowServersConnectDialogOnStart 111            /* connection::ircservers */
 #define KviOption_boolShowServersConnectDialogAsToplevel 112         /* FIXME: internal ?? */

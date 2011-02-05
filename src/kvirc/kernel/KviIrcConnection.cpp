@@ -649,7 +649,7 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick,CreateQuer
 			bShowIt = true;
 		break;
 		default:
-			bShowIt = !KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery);
+			bShowIt = !KVI_OPTION_BOOL(KviOption_boolCreateIncomingQueriesAsMinimized);
 		break;
 	}
 

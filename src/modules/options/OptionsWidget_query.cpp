@@ -55,7 +55,7 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 			"be shown in the active window or a common channel.</center>","options"));
 
 
-	b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Always open queries as minimized","options"),KviOption_boolCreateMinimizedQuery);
+	b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Open incoming queries as minimized","options"),KviOption_boolCreateIncomingQueriesAsMinimized);
 
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes newly created " \

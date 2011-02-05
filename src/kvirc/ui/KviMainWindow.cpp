@@ -495,7 +495,7 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 				KviMdiChild * lpC = dockWindow(wnd,bGroupSettings,&rect);
 				lpC->setGeometry(rect);
 				wnd->triggerCreationEvents();
-				if(bShow && (isActiveWindow() || m_pWinList->count()==1))
+				if(bShow)
 				{
 					m_pMdi->showAndActivate(lpC);
 					// Handle the special case of this top level widget not being the active one.
@@ -537,7 +537,7 @@ default_docking:
 		int offset = (m_pWinList->count() * 10) % 100;
 		lpC->setGeometry(QRect(offset,offset,500,400));
 		wnd->triggerCreationEvents();
-		if(bShow && (isActiveWindow() || m_pWinList->count()==1))
+		if(bShow)
 		{
 			m_pMdi->showAndActivate(lpC);
 			// Handle the special case of this top level widget not being the active one.
