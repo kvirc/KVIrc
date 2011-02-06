@@ -31,6 +31,7 @@
 #include "KviMircCntrl.h"
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
+#include "UglyBase64.h"
 
 #include <cryptopp/aes.h>
 #include <cryptopp/blowfish.h>
@@ -376,14 +377,14 @@ KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * pcPlain
 			setLastError(staticErrTxt.append(QString(e.what())));
 			return KviCryptEngine::EncryptError;
 		}
+		szOutBuffer = szCipher.c_str();
 	} else {
 		try {
 			CryptoPP::ECB_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key) );
 			CryptoPP::StringSource(static_cast<std::string>(pcPlainText), true,
 					new CryptoPP::StreamTransformationFilter(
-						encryptor, new CryptoPP::Base64Encoder(
-						new CryptoPP::StringSink( szCipher )
-						), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
+						encryptor, new CryptoPP::StringSink( szCipher ),
+						CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
 					)
 				);
 		} catch(CryptoPP::Exception e)
@@ -392,11 +393,12 @@ KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * pcPlain
 			setLastError(staticErrTxt.append(QString(e.what())));
 			return KviCryptEngine::EncryptError;
 		}
+		szOutBuffer = szCipher.c_str();
+		UglyBase64::encode((const unsigned char*) szCipher.c_str(), szCipher.size() , szOutBuffer);
 	}
 	
-	szOutBuffer = "+OK ";
-	szOutBuffer.append(szCipher.c_str());
-	
+	szOutBuffer.prepend("+OK ");
+
 	return KviCryptEngine::Encrypted;
 }
 
@@ -445,15 +447,20 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * pcInBuf
 			return KviCryptEngine::DecryptError;
 		}
 	} else {
+		unsigned char * buf=0;
+		int len;
+		KviCString szTmp = szIn.c_str();
+		UglyBase64::decode(szTmp, &buf, &len);
+		szIn.assign((const char*)buf, (size_t) len);
+		KviMemory::free(buf);
+
 		try {
 			CryptoPP::ECB_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key) );
 			CryptoPP::StringSource(szIn, true,
-					new CryptoPP::Base64Decoder(
 						new CryptoPP::StreamTransformationFilter(
 						decryptor, new CryptoPP::StringSink( szPlain ),
 						CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-					)
-				);
+					);
 		} catch(CryptoPP::Exception e)
 		{
 			QString staticErrTxt = __tr2qs("Crypto++ threw the following exception: ");

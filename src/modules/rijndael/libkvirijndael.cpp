@@ -31,6 +31,7 @@
 #include "KviLocale.h"
 #include "KviMircCntrl.h"
 #include "KviTimeUtils.h"
+#include "UglyBase64.h"
 
 //#warning "Other engines: mircStrip koi2win colorizer lamerizer etc.."
 
@@ -467,39 +468,6 @@
 		*/
 	}
 
-	static unsigned char fake_base64[]="./0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-	unsigned int fake_base64dec(unsigned char c)
-	{
-		static char base64unmap[255];
-		static bool didinit=false;
-
-		if(!didinit)
-		{
-			// initialize base64unmap
-			for (int i=0;i<255;++i)base64unmap[i]=0;
-			for (int i=0;i<64;++i)base64unmap[fake_base64[i]]=i;
-			didinit=true;
-		}
-
-		return base64unmap[c];
-	}
-
-	static void byteswap_buffer(unsigned char * p,int len)
-	{
-		while(len > 0)
-		{
-			unsigned char aux = p[0];
-			p[0] = p[3];
-			p[3] = aux;
-			aux = p[1];
-			p[1] = p[2];
-			p[2] = aux;
-			p += 4;
-			len -= 4;
-		}
-	}
-
 	bool KviMircryptionEngine::doEncryptECB(KviCString &plain,KviCString &encoded)
 	{
 		// make sure it is a multiple of 8 bytes (eventually pad with zeroes)
@@ -520,85 +488,21 @@
 		bf.ResetChain();
 		bf.Encrypt((unsigned char *)plain.ptr(),out,plain.len(),BlowFish::ECB);
 
-		// FIXME: this is probably needed only on LittleEndian machines!
-		byteswap_buffer((unsigned char *)out,plain.len());
-
-		// da uglybase64 encoding
-		unsigned char * outb = out;
-		unsigned char * oute = out + plain.len();
-
-		int ll = (plain.len() * 3) / 2;
-		encoded.setLength(ll);
-
-		unsigned char * p = (unsigned char *)encoded.ptr();
-		while(outb < oute)
-		{
-			quint32 * dd1 = (quint32 *)outb;
-			outb += 4;
-			quint32 * dd2 = (quint32 *)outb;
-			outb += 4;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f];
-
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f];
-		}
-
+		UglyBase64::encode(out, plain.len(), encoded);
 		KviMemory::free(out);
 		return true;
 	}
 
 	bool KviMircryptionEngine::doDecryptECB(KviCString &encoded,KviCString &plain)
 	{
-		// encoded is in this strange base64...
-		// make sure its length is multiple of 12 (eventually pad with zeroes)
-		if(encoded.len() % 12)
-		{
-			int oldL = encoded.len();
-			encoded.setLength(encoded.len() + (12 - (encoded.len() % 12)));
-			char * padB = encoded.ptr() + oldL;
-			char * padE = encoded.ptr() + encoded.len();
-			while(padB < padE)*padB++ = 0;
-		}
+		unsigned char * buf=0;
+		int len;
+		UglyBase64::decode(encoded, &buf, &len);
 
-		// a fake base64 decoding algo, use a different character set
-		// and stuff 6 bytes at a time into a 32 bit long...
-		int ll = (encoded.len() * 2) / 3;
-
-		unsigned char * buf = (unsigned char *)KviMemory::allocate(ll);
-		unsigned char * p = (unsigned char *)encoded.ptr();
-		unsigned char * e = p + encoded.len();
-		int i;
-		unsigned char * bufp = buf;
-		while(p < e)
-		{
-			quint32 * dw1 = (quint32 *)bufp;
-			bufp += 4;
-			quint32 * dw2 = (quint32 *)bufp;
-			bufp += 4;
-			*dw2 = 0;
-			for(i=0;i < 6;i++)*dw2 |= (fake_base64dec(*p++)) << (i * 6);
-			*dw1 = 0;
-			for(i=0;i < 6;i++)*dw1 |= (fake_base64dec(*p++)) << (i * 6);
-		}
-
-		// FIXME: this is probably needed only on LittleEndian machines!
-		byteswap_buffer((unsigned char *)buf,ll);
-
-		plain.setLength(ll);
+		plain.setLength(len);
 		BlowFish bf((unsigned char *)m_szDecryptKey.ptr(),m_szDecryptKey.len());
 		bf.ResetChain();
-		bf.Decrypt(buf,(unsigned char *)plain.ptr(),ll,BlowFish::ECB);
-
-		//byteswap_buffer((unsigned char *)plain.ptr(),ll);
+		bf.Decrypt(buf,(unsigned char *)plain.ptr(),len,BlowFish::ECB);
 
 		KviMemory::free(buf);
 

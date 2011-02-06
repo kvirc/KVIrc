@@ -4,25 +4,27 @@ IF(WANT_NO_EMBEDDED_CODE OR WANT_OPENSSL)
 SUBDIRS(caps)
 
 IF(WANT_NO_EMBEDDED_CODE)
-    ADD_DEFINITIONS("-fexceptions")
+	ADD_DEFINITIONS("-fexceptions")
 
-    SET(kvirijndael_SRCS 
-            libkvirijndael_cryptopp.cpp
-       )
+	SET(kvirijndael_SRCS 
+		libkvirijndael_cryptopp.cpp
+		UglyBase64.cpp
+	)
 
-    SET(kvirijndael_MOC_HDRS
-            libkvirijndael_cryptopp.h
-       )
+	SET(kvirijndael_MOC_HDRS
+		libkvirijndael_cryptopp.h
+	)
 ELSE(WANT_NO_EMBEDDED_CODE)
-    SET(kvirijndael_SRCS
-	    libkvirijndael.cpp
-	    Rijndael.cpp
-	    BlowFish.cpp
-    )
+	SET(kvirijndael_SRCS
+		libkvirijndael.cpp
+		Rijndael.cpp
+		BlowFish.cpp
+		UglyBase64.cpp
+	)
 
-    SET(kvirijndael_MOC_HDRS
-	    libkvirijndael.h
-    )
+	SET(kvirijndael_MOC_HDRS
+		libkvirijndael.h
+	)
 ENDIF(WANT_NO_EMBEDDED_CODE)
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp
