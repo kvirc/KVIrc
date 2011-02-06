@@ -286,7 +286,7 @@ static bool fish_module_init(KviModule * m)
 
 	return true;
 #else 
-	return false
+	return false;
 #endif
 }
 
