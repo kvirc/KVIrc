@@ -50,7 +50,7 @@ bool KviFile::save(kvi_u8_t t)
 bool KviFile::save(kvi_u16_t t)
 {
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = localCpuToLittleEndian16(t);
+	t = KviByteOrder::localCpuToLittleEndian16(t);
 #endif
 	return (write((const char *)(&t),sizeof(kvi_u16_t)) == sizeof(kvi_u16_t));
 }
@@ -58,7 +58,7 @@ bool KviFile::save(kvi_u16_t t)
 bool KviFile::save(kvi_u32_t t)
 {
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = localCpuToLittleEndian32(t);
+	t = KviByteOrder::localCpuToLittleEndian32(t);
 #endif
 	return (write((const char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t));
 }
@@ -66,7 +66,7 @@ bool KviFile::save(kvi_u32_t t)
 bool KviFile::save(kvi_u64_t t)
 {
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = localCpuToLittleEndian64(t);
+	t = KviByteOrder::localCpuToLittleEndian64(t);
 #endif
 	return (write((const char *)(&t),sizeof(kvi_u64_t)) == sizeof(kvi_u64_t));
 }
@@ -109,7 +109,7 @@ bool KviFile::load(kvi_u16_t &t)
 {
 	if(!(read((char *)(&t),sizeof(kvi_u16_t)) == sizeof(kvi_u16_t)))return false;
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = littleEndianToLocalCpu16(t);
+	t = KviByteOrder::littleEndianToLocalCpu16(t);
 #endif
 	return true;
 }
@@ -118,7 +118,7 @@ bool KviFile::load(kvi_u32_t &t)
 {
 	if(!(read((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = littleEndianToLocalCpu32(t);
+	t = KviByteOrder::littleEndianToLocalCpu32(t);
 #endif
 	return true;
 }
@@ -127,7 +127,7 @@ bool KviFile::load(kvi_u64_t &t)
 {
 	if(!(read((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = littleEndianToLocalCpu32(t);
+	t = KviByteOrder::littleEndianToLocalCpu32(t);
 #endif
 	return true;
 }
