@@ -312,6 +312,21 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 	//	throw exception("Incorrect key length");
 	    return;
 
+	/*
+	 * BRAINDEAD DEVELOPER DISCLAIMER:
+	 * Blowfish can accept keys up to 72 bytes, but the common value is 56:
+	 * Using keylenghts of 72 chars offers a small amount of added security, 
+	 * but adds also the possibility of choosing a weak key that resulted in all 
+	 * 18 P sub−keys turning into 0 after being XORed with a 576 bit key 
+	 * (Short version: someone can trick you into using an empty password, and you won't notice)
+	 *  
+	 * Original mircryption uses keys of 56 bytes in ecb mode.
+	 * FiSH uses keys of 72 bytes in both ecb and cbc mode.
+	 * Newer mirccryption uses keys of 80 (!?) bytes only in ecb mode and 56 in cbc mode.
+	 * 
+	 * Since having a longer key doesn't imply more security (but, instead, adds a potential
+	 * security risk), we go the safe way using the standard keylength.
+	 */
 
 	//Check the Key - the key length should be between 1 and 56 bytes
 	if(keysize>56)
