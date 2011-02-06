@@ -103,7 +103,7 @@
 
 		return true;
 	#else
-		c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
+		qDebug("%s",__tr2qs("FiSH has been compiled without ssl support, unable to proceed").toUtf8().data());
 		return false;
 	#endif
 	}
@@ -190,6 +190,9 @@
 			return false;
 		}
 
+		KviCString szFinalKey;
+
+		#ifdef COMPILE_SSL_SUPPORT
 		unsigned char * secret=(unsigned char *) KviMemory::allocate(DH_size(g_fish_dh));
 		int secretLen;
 		BIGNUM *bn = BN_bin2bn((unsigned char *) szHisPubKey.data(), szHisPubKey.size(),NULL);
@@ -203,21 +206,20 @@
 
 		/// SHA256 hash = 32 byte
 		unsigned char * hashedSecret=(unsigned char *) KviMemory::allocate(32);
-		#ifdef COMPILE_SSL_SUPPORT
-			SHA256(secret, secretLen, hashedSecret);
-		#else
-			c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
-			return false;
-		#endif
+		SHA256(secret, secretLen, hashedSecret);
 
 		KviMemory::free(secret);
 
-		KviCString szFinalKey;
 		szFinalKey.bufferToBase64((char *) hashedSecret, 32);
 		//strip the trailing =
 		szFinalKey.stripRight('=');
 		
 		KviMemory::free(hashedSecret);
+
+		#else
+			c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
+			return false;
+		#endif
 
 		(void)g_pModuleManager->loadModulesByCaps("crypt");
 
