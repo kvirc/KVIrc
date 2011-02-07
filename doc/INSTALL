@@ -299,107 +299,101 @@ General notes for the installation of the 4.0 release of KVIrc
 
     Here's a list with explainations:
 
-    -DDEBUG
-        Compiles the executable with debug symbols.
+    -DWANT_DEBUG (default: OFF)
+        When enabled, compiles the executable with debug symbols.
         Useful for reporting bugs.
 
-    -DWITH_DEBUG
-        Alias of -DDEBUG flag.
-
-    -DWITHOUT_STRIP
+    -DWANT_STRIP (default: OFF)
         Available only if debug is disabled, this flag disables objects 
         stripping before installation.
         (Object stripping discards symbols from object files, lowering their 
         size on disk, at the expense of more complicated or rather impossible 
         debugging.)
 
-    -DVERBOSE
+    -DWANT_VERBOSE (default: OFF)
         Generate verbose output when compiling.
         (Note: this will be deactivated when using a job setting higher than 1 
         with gmake. I.e., make -j2 will *not* show any verbose compilation 
         output.)
 
-    -DCMAKE_INSTALL_PREFIX=PATH
+    -DCMAKE_INSTALL_PREFIX=PATH (default: a system-dependant directory)
         This will install all stuff under PATH directory.
 
-    -DLIB_SUFFIX=SUFFIX
+    -DLIB_SUFFIX=SUFFIX (default: empty)
         This will install libkvilib and KVIrc modules to 
         ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
-        directory. It defaults to an empty suffix. Mainly used for 64bit 
-        distros.
-        (Default: -DLIB_SUFFIX="")
+        directory. It defaults to an empty suffix.
+        Mainly used for 64bit distros.
 
-    -DMANDIR=DIRECTORY
+    -DMANDIR=DIRECTORY (default: $CMAKE_INSTALL_PREFIX/share/man)
         This will install man pages to DIRECTORY.
-        (Default: $CMAKE_INSTALL_PREFIX/share/man)
 
-    -DCOEXISTENCE
-        Append version information to KVIrc and libkvilib, so that different
-        KVIrc versions can co-exist on the same system.
+    -DWANT_COEXISTENCE (default: OFF)
+        If enabled, appends version information to KVIrc and libkvilib, so that
+        different KVIrc versions can co-exist on the same system.
 
-    -DUSE_ENV_FLAGS
-        KVIrc install rules won't try to figure out and set CMAKE_C(XX)_FLAGS. 
-        Instead, it will let CMake use the ones taken from environment 
-        variables. 
-        Activating this flag will override -DDEBUG.
-        (Default: Off)
+    -DWANT_ENV_FLAGS (default: OFF)
+        When enabled, KVIrc install rules won't try to figure out and set 
+        CMAKE_C(XX)_FLAGS. Instead, it will let CMake use the ones taken
+        from environment variables.
+        Activating this flag will override the value of -DWANT_DEBUG.
 
-    -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
+    -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT (default: OFF, not cached)
         This will re-initialize the installation path to a good default.
         Following compilations should use the correct path value cached by 
         CMake.
         This flag is useful to solve MacOS X install problems.
 
-    -DCOMPILE_MACOSX_UNIVERSAL_BINARY
-        Compile universal binaries for the MacOS X platform.
+    -DWANT_UNIVERSAL_BINARY (default: OFF)
+        Enabled or disabled the compilation of universal binaries
+        for the MacOS X platform.
 
-    -DUSE_PCH
-        Use pre-compiled headers.
+    -DWANT_PHONON (default: ON)
+        Enales or disables Phonon audio backend support.
 
-    -DWITHOUT_PHONON
-        Disables Phonon audio backend support.
+    -DWANT_OSS (default: ON)
+        Enables or disables OpenSoundSystem audio backend support.
+        If disabled, Audiofile support will be disabled as well.
 
-    -DWITHOUT_OSS
-        Disables OpenSoundSystem audio backend support. This automatically
-        disables Audiofile support as well.
+    -DWANT_AUDIOFILE (default: ON)
+        Enables or disables Audiofile audio backend support.
 
-    -DWITHOUT_AUDIOFILE
-        Disables Audiofile audio backend support.
+    -DWANT_ESD (default: ON)
+        Enabled or disables ESounD audio backend support.
 
-    -DWITHOUT_ESD
-        Disables ESounD audio backend support.
+    -DWANT_QTDBUS (default: ON)
+        Enabled or disables Qt-DBus support.
 
-    -DWITHOUT_QTDBUS
-        Disables Qt-DBus support.
+    -DWANT_QTWEBKIT (default: ON)
+        Enables or disables Qt-WebKit support.
 
-    -DWITHOUT_QTWEBKIT
-        Disables Qt-WebKit support.
+    -DWANT_KDE4 (default: ON)
+        Enables or disables KDE4 support.
 
-    -DWITHOUT_KDE4
-        Disables KDE4 support.
+    -DWANT_SSL (default: ON)
+        Enables or disabled the crypto functions support using OpenSSL.
 
-    -DWITHOUT_SSL
-        Disables the secure socket layer support. The SSL support is
-        automatically enabled if OpenSSL is detected by CMake.
+    -DWANT_CRYPTOPP (default: OFF)
+        Enables or disabled the crypto functions support using Crypto++.
+        This automatically disables OpenSSL support.
 
-    -DWITHOUT_CRYPT
-        Disables the cryptographic engines and the whole cryptography/text
+    -DWANT_CRYPT (default: ON)
+        Enabled or disables the cryptographic engines and the whole cryptography/text
         transformation support. Produces a slightly smaller executable.
         You will lack features, though.
 
-    -DWITHOUT_IPV6
-        The IPv6 support is compiled by default on the platforms that
-        support it. This option does disable it, no matter what CMake
-        found out earlier.
+    -DWANT_IPV6 (default: ON)
+        Enables or disables the IPv6 support.
         Even if you have a plain IPv4-only connection, you might want to
         keep the IPv6 support. This way you will be able to resolve
         IPv6 hostnames.
 
-    -DWITHOUT_TRANSPARENCY
-        This option disables pseudo-transparency support.
+    -DWANT_TRANSPARENCY (default: ON)
+        This option enables or disbales pseudo and real transparency support.
         The pseudo-transparency support makes the KVIrc windows
         look like semi-transparent (this is NOT real transparency, it is
-        just a neat-looking hack).
+        just a neat-looking hack).ransparency uses compositing and needs
+        proper hardware support to work.
         If KDE support is enabled, KVIrc will have an option that
         makes all windows use a faded KDE desktop background image
         as background. Without KDE support you will be able to choose
@@ -409,22 +403,22 @@ General notes for the installation of the 4.0 release of KVIrc
         It is cool-looking but usually eats some memory and makes the
         executable slightly bigger, when enabled. Especially when moving
         objects around, CPU consumption may get high as well.
-        You can thus disable pseudo-transparency here.
+        You can thus disable transparency here.
 
-    -DWITHOUT_PERL
-        Forcibly disables perl support.
+    -DWANT_PERL (default: ON)
+        Enables or disables perl support.
         You will not be able to use Perl scripts inside of KVIrc.
         You still can execute Perl scripts outside of KVIrc, i.e. with
         the exec() command.
         Note that perl support will be checked anyway, and used to generate
         the documentation if present.
 
-    -DWITHOUT_PYTHON
-        Forcibly disables python support.
+    -DWANT_PYTHON (default: ON)
+        Enables or disables python support.
         You will not be able to use Python scripts inside of KVIrc.
 
-    -DWITHOUT_IPC
-        Disables support for inter-process communication.
+    -DWANT_IPC (default: ON)
+        Enables or disables support for inter-process communication.
         You will not be able to send remote commands to running
         KVIrc sessions. This basically means that every time you run
         the KVIrc executable, a new session will be started.
@@ -437,65 +431,65 @@ General notes for the installation of the 4.0 release of KVIrc
         so if you're really, really short in memory, you might use it,
         otherwise, IPC is a nice feature.
 
-    -DWITHOUT_GETTEXT
-        Disables the use of GetText to generate translation files.
+    -DWANT_GETTEXT (default: ON)
+        Enables or disables the use of GetText to generate translation files.
 
-    -DWITHOUT_DOXYGEN
-        Disables docs generation through Doxygen.
+    -DWANT_DOXYGEN (default: ON)
+         Enables or disables developers docs generation through Doxygen.
 
-    -DWITHOUT_GSM
-        Explicitly disable the usage of the GSM library. This will
+    -DWANT_GSM (default: ON)
+        Enables or disables the usage of the GSM library. This will
         disable the DCC VOICE gsm codec but might help when the
         compilation stops complaining of something related to GSM. :)
 
-    -DWITH_IGNORE_SIGALARM
+    -DWANT_IGNORE_SIGALARM (default: OFF)
         Under Solaris, both usleep() and threads implementation are based on
         SIGALARM. KVIrc uses both, and this could lead to some spontaneous
         application quits. This option enables a workaround for this problem.
 
-    -DWITHOUT_DCC_VOICE
-        Explicitly disable the DCC VOICE sound support. This might help
+    -DWANT_DCC_VOICE (default: ON)
+        Enables or disables the DCC VOICE sound support. This might help
         if you have problems in compilation of src/modules/dcc/voice.cpp.
         It will disable the sound support (and thus render DCC VOICE unusable).
 
-    -DWITH_DCC_VIDEO
-        Enables EXPERIMENTAL DCC VIDEO support.
+    -DWANT_DCC_VIDEO (default: OFF)
+        Enables or disables EXPERIMENTAL DCC VIDEO support.
 
-    -DWITH_OGG_THEORA
-        Enables EXPERIMENTAL Ogg/Vorbis+Theora Support
+    -DWANT_OGG_THEORA (default: OFF)
+        Enables or disables EXPERIMENTAL Ogg/Theora Support for dcc video.
 
-    -DWITH_DCC_CANVAS
-        Enables OBSOLETE DCC CANVAS support.
+    -DWANT_DCC_CANVAS (default: OFF)
+        Enables or disables OBSOLETE DCC CANVAS support.
 
-    -DWITH_MEMORY_PROFILE
-        Enables memory allocation profiling.
+    -DWANT_MEMORY_PROFILE (default: OFF)
+        Enables or disables memory allocation profiling.
         Don't set it, unless you are a developer and know what you are doing.
         It will have high impact on executable size and most noteably speed.
         Please do not use this.
 
-    -DWITH_MEMORY_CHECKS
-        Enables malloc() memory checks. This will print a nice message if your
-        system goes out of memory.
+    -DWANT_MEMORY_CHECKS (default: OFF)
+        Enables or disables malloc() memory checks. This will print a nice
+        message if your system goes out of memory.
         It can't save you from buying new RAM, but at least you will know that
         your system went out of memory and it is not a proper KVIrc fault.
         Most systems do actually already notice you when you are out of RAM
         (i.e. Linux and the OOM killer.)
         Most probably you will not need to enable this flag.
 
-    -DMANUAL_REVISION
+    -DMANUAL_REVISION (default: empty)
         Manually set a revision number if subversion is not found on your 
         system.
         This is useful mostly on windows.
         Please do not specify useless information here, as it will make 
-        debugging harder and you do not profit from it.
+        debugging harder and you won't profit from it.
 
-    -DWITH_PIZZA
+    -DWANT_PIZZA (default: OFF)
         Add some pizza for dinner. :)
 
-    -DWITH_BEER
+    -DWANT_BEER (default: OFF)
         Add some beers to chat. :)
 
-    -DWITH_NO_EMBEDDED_CODE
+    -DWANT_NO_EMBEDDED_CODE (default: OFF)
         Use functions from widely tested libraries instead of embedded code or
         reimplementations of code/functions available from such libraries.
         For required dependencies see section two of this document.

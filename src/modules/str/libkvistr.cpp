@@ -38,12 +38,12 @@
 #include <QRegExp>
 #include <QClipboard>
 
-#if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
+#if defined( COMPILE_SSL_SUPPORT )
 	// The current implementation
 	#include <KviSSL.h>
 	#include <openssl/evp.h>
 	#include <openssl/pem.h>
-#elif defined(COMPILE_NO_EMBEDDED_CODE)
+#elif defined(COMPILE_CRYPTOPP_SUPPORT)
 	// The preferred new implementation (until QCryptographicHash supports all
 	// hashes we want).
 	// As Crypto++ is concerned for security they warn about MD5 and friends,
@@ -1371,7 +1371,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("algorithm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 	KVSM_PARAMETERS_END(c)
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_SSL_SUPPORT)
 	if(szType.isEmpty()) szType = "md5";
 
 	EVP_MD_CTX mdctx;
@@ -1405,7 +1405,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	}
 
 	c->returnValue()->setString(szResult);
-#elif defined(COMPILE_NO_EMBEDDED_CODE)
+#elif defined(COMPILE_CRYPTOPP_SUPPORT)
 	// Crypto++ implementation
 	std::string szDigest;
 	std::string szMsg = szString.toLocal8Bit().data();
@@ -2234,7 +2234,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("password",KVS_PT_NONEMPTYCSTRING,KVS_PF_OPTIONAL,szPass)
 	KVSM_PARAMETERS_END(c)
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_SSL_SUPPORT)
 
 	KviSSL::globalSSLInit();
 	EVP_MD_CTX md_ctx;
@@ -2366,7 +2366,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("password",KVS_PT_NONEMPTYCSTRING,KVS_PF_OPTIONAL,szPass)
 	KVSM_PARAMETERS_END(c)
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_SSL_SUPPORT)
 
 	KviSSL::globalSSLInit();
 	szSign = QByteArray::fromBase64(szSignB64);

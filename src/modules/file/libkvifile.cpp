@@ -37,10 +37,10 @@
 #include <QTextCodec>
 #include <QByteArray>
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_SSL_SUPPORT)
 	// The current implementation
 	#include <openssl/evp.h>
-#elif defined(COMPILE_NO_EMBEDDED_CODE)
+#elif defined(COMPILE_CRYPTOPP_SUPPORT)
 	// The preferred new implementation (until QCryptographicHash supports all
 	// hashes we want).
 	// As Crypto++ is concerned for security they warn about MD5 and friends,
@@ -1420,7 +1420,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_SSL_SUPPORT)
 	if(szAlgo.isEmpty()) szAlgo = "md5";
 
 	EVP_MD_CTX mdctx;
@@ -1452,7 +1452,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 #endif
 		szResult.append(cBuffer);
 	}
-#elif defined(COMPILE_NO_EMBEDDED_CODE)
+#elif defined(COMPILE_CRYPTOPP_SUPPORT)
 	// Crypto++ implementation
 	std::string szDigest;
 	std::string szMsg = szFile.toLocal8Bit().data();
