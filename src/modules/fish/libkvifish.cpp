@@ -64,16 +64,28 @@
 		#include <openssl/sha.h>
 
 		DH * g_fish_dh = 0;
+		
+		// ### new sophie-germain 1080bit prime number ###
+		// const char *g_fish_prime1080_bin="++ECLiPSE+is+proud+to+present+latest+FiSH+release+featuring+even+more+security+for+you+++shouts+go+out+to+TMG+for+helping+to+generate+this+cool+sophie+germain+prime+number++++/C32L";
+		const char *g_fish_prime1080_hex="FBE1022E23D213E8ACFA9AE8B9DFADA3EA6B7AC7A7B7E95AB5EB2DF858921FEADE95E6AC7BE7DE6ADBAB8A783E7AF7A7FA6A2B7BEB1E72EAE2B72F9FA2BFB2A2EFBEFAC868BADB3E828FA8BADFADA3E4CC1BE7E8AFE85E9698A783EB68FA07A77AB6AD7BEB618ACF9CA2897EB28A6189EFA07AB99A8A7FA9AE299EFA7BA66DEAFEFBEFBF0B7D8B";
+		// const char *g_fish_prime1080_dec="12745216229761186769575009943944198619149164746831579719941140425076456621824834322853258804883232842877311723249782818608677050956745409379781245497526069657222703636504651898833151008222772087491045206203033063108075098874712912417029101508315117935752962862335062591404043092163187352352197487303798807791605274487594646923";
+		const char *g_fish_generator="2";
 
+	#elif defined( COMPILE_CRYPTOPP_SUPPORT )
+		#include <cryptopp/dh.h>
+		#include <cryptopp/integer.h>
+		#include <cryptopp/osrng.h>
+		#include <cryptopp/sha.h>
+		
+		CryptoPP::DH * g_fish_dh = 0;
+		CryptoPP::SecByteBlock * g_fish_pubKey = 0;
+		CryptoPP::SecByteBlock * g_fish_privKey = 0;
+		
+		const char *g_fish_prime1080_hex="0xFBE1022E23D213E8ACFA9AE8B9DFADA3EA6B7AC7A7B7E95AB5EB2DF858921FEADE95E6AC7BE7DE6ADBAB8A783E7AF7A7FA6A2B7BEB1E72EAE2B72F9FA2BFB2A2EFBEFAC868BADB3E828FA8BADFADA3E4CC1BE7E8AFE85E9698A783EB68FA07A77AB6AD7BEB618ACF9CA2897EB28A6189EFA07AB99A8A7FA9AE299EFA7BA66DEAFEFBEFBF0B7D8B";
+		const char *g_fish_generator="0x2";
 	#endif
 
 	#define FISH_KEYLEN 180
-		
-	// ### new sophie-germain 1080bit prime number ###
-	// const char *g_fish_prime1080_bin="++ECLiPSE+is+proud+to+present+latest+FiSH+release+featuring+even+more+security+for+you+++shouts+go+out+to+TMG+for+helping+to+generate+this+cool+sophie+germain+prime+number++++/C32L";
-	const char *g_fish_prime1080_hex="FBE1022E23D213E8ACFA9AE8B9DFADA3EA6B7AC7A7B7E95AB5EB2DF858921FEADE95E6AC7BE7DE6ADBAB8A783E7AF7A7FA6A2B7BEB1E72EAE2B72F9FA2BFB2A2EFBEFAC868BADB3E828FA8BADFADA3E4CC1BE7E8AFE85E9698A783EB68FA07A77AB6AD7BEB618ACF9CA2897EB28A6189EFA07AB99A8A7FA9AE299EFA7BA66DEAFEFBEFBF0B7D8B";
-	// const char *g_fish_prime1080_dec="12745216229761186769575009943944198619149164746831579719941140425076456621824834322853258804883232842877311723249782818608677050956745409379781245497526069657222703636504651898833151008222772087491045206203033063108075098874712912417029101508315117935752962862335062591404043092163187352352197487303798807791605274487594646923";
-	const char *g_fish_generator="2";
 
 	static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 	{
@@ -102,8 +114,33 @@
 		BN_bn2bin(g_fish_dh->pub_key, *szPubKey);
 
 		return true;
+	#elif defined( COMPILE_CRYPTOPP_SUPPORT )
+		try {
+			if(!g_fish_dh)
+			{
+				CryptoPP::AutoSeededRandomPool rnd;
+				CryptoPP::Integer dhp(g_fish_prime1080_hex);
+				CryptoPP::Integer dhg(g_fish_generator);
+
+				g_fish_dh = new CryptoPP::DH();
+				g_fish_dh->AccessGroupParameters().Initialize(dhp, dhg);
+
+				g_fish_pubKey = new CryptoPP::SecByteBlock(g_fish_dh->PublicKeyLength());
+				g_fish_privKey = new CryptoPP::SecByteBlock(g_fish_dh->PrivateKeyLength());
+				g_fish_dh->GenerateKeyPair(rnd, *g_fish_privKey, *g_fish_pubKey);
+			}
+
+			*iLen = g_fish_pubKey->SizeInBytes();
+			*szPubKey = (unsigned char *) KviMemory::allocate(*iLen);
+			KviMemory::copy(*szPubKey, g_fish_pubKey->BytePtr(), g_fish_pubKey->SizeInBytes());
+		} catch(CryptoPP::Exception e)
+		{
+			qDebug("%s",__tr2qs("Crypto++ threw the following exception: %1").arg(QString(e.what())).toUtf8().data());
+			return false;
+		}
+		return true;
 	#else
-		qDebug("%s",__tr2qs("FiSH has been compiled without ssl support, unable to proceed").toUtf8().data());
+		qDebug("%s",__tr2qs("FiSH has been compiled without ssl or cryptopp support, unable to proceed").toUtf8().data());
 		return false;
 	#endif
 	}
@@ -138,7 +175,13 @@
 		QByteArray szHisPubKey, szTmp;
 		int iMyPubKeyLen, * pMyPubKeyLen = &iMyPubKeyLen;
 		if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
+		{
+			#if !defined(COMPILE_SSL_SUPPORT) &&  !defined(COMPILE_CRYPTOPP_SUPPORT)
+				c->warning(__tr2qs("FiSH has been compiled without ssl and crypto++ support, unable to proceed"));
+				return false;
+			#endif
 			return false;
+		}
 
 		if(szMessage.startsWith("DH1080_INIT ", Qt::CaseSensitive))
 		{
@@ -215,9 +258,30 @@
 		szFinalKey.stripRight('=');
 		
 		KviMemory::free(hashedSecret);
+		#elif defined( COMPILE_CRYPTOPP_SUPPORT )
+		try {
+			CryptoPP::SecByteBlock byteHisPubKey((unsigned char *) szHisPubKey.data(), szHisPubKey.size());
+			CryptoPP::SecByteBlock byteSharedSecret(g_fish_dh->AgreedValueLength());
+			CryptoPP::SecByteBlock byteHashedSecret(g_fish_dh->AgreedValueLength());
+			
+			if(!g_fish_dh->Agree(byteSharedSecret, *g_fish_privKey, byteHisPubKey))
+			{
+				c->warning(__tr2qs("FiSH: error verificating peer public key (size=%1)").arg(szHisPubKey.size()));
+				return false;
+			}
 
+			CryptoPP::SHA256().CalculateDigest(byteHashedSecret, byteSharedSecret, g_fish_dh->AgreedValueLength());
+			szFinalKey.bufferToBase64((char *) byteHashedSecret.BytePtr(), byteHashedSecret.SizeInBytes());
+			//strip the trailing =
+			szFinalKey.stripRight('=');
+
+		} catch(CryptoPP::Exception e)
+		{
+			c->warning(__tr2qs("Crypto++ threw the following exception: %1").arg(QString(e.what())));
+			return false;
+		}
 		#else
-			c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
+			c->warning(__tr2qs("FiSH has been compiled without ssl and crypto++ support, unable to proceed"));
 			return false;
 		#endif
 
@@ -290,7 +354,7 @@ static bool fish_module_init(KviModule * m)
 #endif
 }
 
-static bool fish_module_cleanup(KviModule *m)
+static bool fish_module_cleanup(KviModule *)
 {
 	return true;
 }
