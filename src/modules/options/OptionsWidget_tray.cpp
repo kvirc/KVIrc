@@ -42,6 +42,14 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 
 	m_pEnable = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable tray icon","options"), KviOption_boolShowDockExtension);
 	m_pMinimizeInTray = addBoolSelector(0,1,0,1,__tr2qs_ctx("Minimize in tray","options"),KviOption_boolMinimizeInTray);
+#ifdef COMPILE_KDE_SUPPORT
+	QString szTip = "<center>";
+	szTip += __tr2qs_ctx("Take into account that if you're using KDE, this won't work if " \
+		"you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" " \
+		"advanced settings.","options");
+	szTip += "</center>";
+	mergeTip(m_pMinimizeInTray,szTip);
+#endif
 	m_pCloseInTray = addBoolSelector(0,2,0,2,__tr2qs_ctx("Close in tray","options"),KviOption_boolCloseInTray);
 
 	m_pEnableFlashing = addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable tray icon flashing","options"),KviOption_boolEnableTrayIconFlashing);
