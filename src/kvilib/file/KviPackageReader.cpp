@@ -175,7 +175,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	KviFileUtils::adjustFilePath(szFileName);
 
-	int idx = KviQString::findRev(szFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
+	int idx = szFileName.lastIndexOf(QChar(KVI_PATH_SEPARATOR_CHAR),0,Qt::CaseSensitive);
 	if(idx != -1)
 	{
 		QString szPrefixPath = szFileName.left(idx);

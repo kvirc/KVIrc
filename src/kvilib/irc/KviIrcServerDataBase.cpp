@@ -325,7 +325,7 @@ void parseMircServerRecord(QString szEntry, QString & szNet,
 QString & szDescription, QString & szHost, QString & szPort, bool & bSsl, kvi_u32_t & uPort)
 {
 	bSsl = false;
-	int iIdx = KviQString::find(szEntry,"SERVER:");
+	int iIdx = szEntry.indexOf("SERVER:",0,Qt::CaseSensitive);
 	if(iIdx != -1)
 	{
 		szDescription = szEntry.left(iIdx);
@@ -333,7 +333,7 @@ QString & szDescription, QString & szHost, QString & szPort, bool & bSsl, kvi_u3
 		szDescription = szDescription.section(':',1,1);
 
 		szEntry.remove(0,iIdx + 7);
-		iIdx = KviQString::find(szEntry,"GROUP:");
+		iIdx = szEntry.indexOf("GROUP:",0,Qt::CaseSensitive);
 		if(iIdx != -1)
 		{
 			szHost = szEntry.left(iIdx);

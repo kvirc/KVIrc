@@ -46,13 +46,17 @@
 */
 namespace KviQString
 {
-	enum EscapeKvsFlags
+	/**
+	* \enum EscapeKVSFlags
+	* \brief Holds the flags to escape KVS
+	*/
+	enum EscapeKVSFlags
 	{
-		EscapeSpace = 1,
-		PermitVariables = 2,
-		PermitFunctions = 4,
-		PermitMultiLine = 8,
-		EscapeParenthesis = 16,
+		EscapeSpace       =  1,   /**< escapes spaces */
+		PermitVariables   =  2,   /**< escapes '%' character to permit variables */
+		PermitFunctions   =  4,   /**< escapes '$' character to permit functions */
+		PermitMultiLine   =  8,   /**< escapes '\r' and '\n' characters */
+		EscapeParenthesis = 16,   /**< escapes parenthesis */
 	};
 
 	/**
@@ -414,8 +418,9 @@ namespace KviQString
 	* \param szSrc The source string
 	* \param c The char to search for
 	* \param bIncluded Wheter to include the given char in the returned string
-	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the char isn't found and
-	*        false if we want the function to return an empty string in this case.
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
+	* string if the char isn't found and false if we want the function to return an empty
+	* string in this case.
 	* \return void
 	*/
 	extern KVILIB_API QString leftToFirst(QString & szSrc, const QChar & c, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
@@ -427,8 +432,9 @@ namespace KviQString
 	* \param szSrc The source string
 	* \param szFind The string to search for
 	* \param bIncluded Wheter to include the given string in the returned string
-	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the string isn't found and
-	*        false if we want the function to return an empty string in this case.
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
+	* string if the string isn't found and false if we want the function to return an empty
+	* string in this case.
 	* \return void
 	*/
 	extern KVILIB_API QString leftToFirst(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
@@ -440,8 +446,9 @@ namespace KviQString
 	* \param szSrc The source string
 	* \param c The char to search for
 	* \param bIncluded Wheter to include the given char in the returned string
-	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the char isn't found and
-	*        false if we want the function to return an empty string in this case.
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
+	* string if the char isn't found and false if we want the function to return an empty
+	* string in this case.
 	* \return void
 	*/
 	extern KVILIB_API QString leftToLast(QString & szSrc, const QChar & c, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
@@ -453,8 +460,9 @@ namespace KviQString
 	* \param szSrc The source string
 	* \param szFind The string to search for
 	* \param bIncluded Wheter to include the given string in the returned string
-	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the string isn't found and
-	*        false if we want the function to return an empty string in this case.
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
+	* string if the string isn't found and false if we want the function to return an empty
+	* string in this case.
 	* \return void
 	*/
 	extern KVILIB_API QString leftToLast(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
@@ -499,130 +507,6 @@ namespace KviQString
 	extern KVILIB_API void bufferToHex(QString & szRetBuffer, const unsigned char * pcBuffer, unsigned int uLen);
 
 	/**
-	* \brief Returns the index position of the last occurrence of the character
-	*
-	* The search is made forward starting from index.
-	* \param szSrc The source string
-	* \param c The character to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int find(const QString & szSrc, QChar c, int iIndex = 0, bool bCs = true)
-	{
-		return szSrc.indexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the character
-	*
-	* The search is made forward starting from index.
-	* \param szSrc The source string
-	* \param c The character to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int find(const QString & szSrc, char c, int iIndex = 0, bool bCs = true)
-	{
-		return szSrc.indexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the string
-	*
-	* The search is made forward starting from index.
-	* \param szSrc The source string
-	* \param szStr The string to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int find(const QString & szSrc, const QString & szStr, int iIndex = 0, bool bCs = true)
-	{
-		return szSrc.indexOf(szStr,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the string
-	*
-	* The search is made forward starting from index.
-	* \param szSrc The source string
-	* \param pcStr The string to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int find(const QString & szSrc, const char * pcStr, int iIndex = 0, bool bCs = true)
-	{
-		return szSrc.indexOf(QString(pcStr),iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the character
-	*
-	* The search is made backward.
-	* If index is -1 the search starts at the last character.
-	* \param szSrc The source string
-	* \param c The character to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int findRev(const QString & szSrc, QChar c, int iIndex = -1, bool bCs = true)
-	{
-		return szSrc.lastIndexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the character
-	*
-	* The search is made backward.
-	* If index is -1 the search starts at the last character.
-	* \param szSrc The source string
-	* \param c The character to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int findRev(const QString & szSrc, char c, int iIndex = -1, bool bCs = true)
-	{
-		return szSrc.lastIndexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the given string
-	*
-	* The search is made backward.
-	* If index is -1 the search starts at the last character.
-	* \param szSrc The source string
-	* \param szStr The string to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int findRev(const QString & szSrc, const QString & szStr, int iIndex = -1, bool bCs = true)
-	{
-		return szSrc.lastIndexOf(szStr,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
-	* \brief Returns the index position of the last occurrence of the given string
-	*
-	* The search is made backward.
-	* If index is -1 the search starts at the last character.
-	* \param szSrc The source string
-	* \param pcStr The string to find
-	* \param iIndex The index to start from
-	* \param bCs Case sensitive search
-	* \return int
-	*/
-	inline int findRev(const QString & szSrc, const char * pcStr, int iIndex = -1, bool bCs = true)
-	{
-		return szSrc.lastIndexOf(QString(pcStr),iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
-	}
-
-	/**
 	* \brief Return the string converted to a long
 	* \param szNumber The source number
 	* \param bOk The conversion error handling
@@ -655,7 +539,7 @@ namespace KviQString
 	/**
 	* \brief Escapes any kvs special character from a string
 	* \param szData The string to escape
-	* \param uFlags
+	* \param uFlags The flag which correspond to the characters to escape
 	* \return void
 	*/
 	extern KVILIB_API void escapeKvs(QString * szData, uint uFlags = 0);

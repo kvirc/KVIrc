@@ -31,7 +31,6 @@
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
 #include "KviApplication.h"
-#include "KviQString.h"
 #include "KviTalVBox.h"
 
 #include <QMessageBox>
@@ -73,31 +72,33 @@ int KviMircServersIniImport::doImport(const QString& filename)
 				QString port;
 				kvi_u32_t uPort = 0;
 				// <description>SERVER:<server:port>GROUP:<network>
-				int idx = KviQString::find(entry,"SERVER:");
+				int idx = entry.indexOf("SERVER:",0,Qt::CaseSensitive);
 				if(idx != -1)
 				{
 					description = entry.left(idx);
 					entry.remove(0,idx + 7);
-					idx = KviQString::find(entry,"GROUP:");
+					idx = entry.indexOf("GROUP:",0,Qt::CaseSensitive);
 					if(idx != -1)
 					{
 						port = entry.left(idx);
 						entry.remove(0,idx + 6);
 					}
-					idx = KviQString::find(port,':');
+					idx = port.indexOf(':',0,Qt::CaseSensitive);
 					if(idx != -1)
 					{
 						serv = port.left(idx);
 						port.remove(0,idx + 1);
 						bool bOk;
 						uPort = port.toUInt(&bOk);
-						if(!bOk)uPort = 6667;
+						if(!bOk)
+							uPort = 6667;
 					} else {
 						serv = port;
 						uPort = 6667;
 					}
 				}
-				if(entry.isEmpty())entry = __tr2qs("Standalone Servers");
+				if(entry.isEmpty())
+					entry = __tr2qs("Standalone Servers");
 				if(!serv.isEmpty())
 				{
 					KviIrcServer s;

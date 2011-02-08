@@ -41,7 +41,7 @@
 
   KviCString.cpp
   KviCString.h
-+ KviError.cpp
+++KviError.cpp
 + KviError.h
   KviHeapObject.cpp
   KviHeapObject.h
@@ -70,7 +70,7 @@
   KviCryptEngine.cpp
   KviCryptEngine.h
 + KviCryptEngineDescription.h
-+ KviCryptEngineManager.cpp
+++KviCryptEngineManager.cpp
 + KviCryptEngineManager.h
   KviDataBuffer.cpp
   KviDataBuffer.h
@@ -105,7 +105,7 @@
   KviProxy.h
   KviProxyDataBase.cpp
   KviProxyDataBase.h
-+ KviRegisteredChannel.cpp
+++KviRegisteredChannel.cpp
 + KviRegisteredChannel.h
   KviRegisteredChannelDataBase.cpp
 + KviRegisteredChannelDataBase.h
@@ -113,15 +113,15 @@
 + KviRegisteredUser.h
   KviRegisteredUserDataBase.cpp
   KviRegisteredUserDataBase.h
-+ KviRegisteredUserGroup.cpp
+++KviRegisteredUserGroup.cpp
 + KviRegisteredUserGroup.h
-+ KviRegisteredUserMask.cpp
+++KviRegisteredUserMask.cpp
 + KviRegisteredUserMask.h
-+ KviSharedFile.cpp
+++KviSharedFile.cpp
 + KviSharedFile.h
   KviSharedFilesManager.cpp
   KviSharedFilesManager.h
-  KviStringConversion.cpp
+++KviStringConversion.cpp
   KviStringConversion.h
   KviXlib.h
 
@@ -130,16 +130,16 @@
 # kvilib/ext/avdevice #
 #######################
 
-bayer.cpp
-bayer.h
-sonix_compress.cpp
-sonix_compress.h
-videodevice.cpp
-videodevice.h
-videodevicepool.cpp
-videodevicepool.h
-videoinput.cpp
-videoinput.h
+  bayer.cpp
+  bayer.h
+  sonix_compress.cpp
+  sonix_compress.h
+  videodevice.cpp
+  videodevice.h
+  videodevicepool.cpp
+  videodevicepool.h
+  videoinput.cpp
+  videoinput.h
 
 
 ###############
@@ -1380,6 +1380,8 @@ videoinput.h
   BlowFish.h
   Rijndael.cpp
   Rijndael.h
+  UglyBase64.cpp
+  UglyBase64.h
   libkvirijndael.cpp
   libkvirijndael.h
   libkvirijndael_cryptopp.cpp

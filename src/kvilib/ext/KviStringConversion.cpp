@@ -35,148 +35,148 @@ QString g_szLocalDir;
 
 namespace KviStringConversion
 {
-	void init(const QString& szGlobalDir,const QString& szLocalDir)
+	void init(const QString & szGlobalDir, const QString & szLocalDir)
 	{
-		g_szGlobalDir=szGlobalDir;
-		g_szLocalDir=szLocalDir;
+		g_szGlobalDir = szGlobalDir;
+		g_szLocalDir = szLocalDir;
 	}
 
-	void encodePath(QString& buffer)
+	void encodePath(QString & szBuffer)
 	{
-		if(!buffer.isEmpty())
+		if(!szBuffer.isEmpty())
 		{
 			if(!g_szLocalDir.isEmpty())
 			{
-				if(KviQString::find(buffer,g_szLocalDir)==0)
+				if(szBuffer.indexOf(g_szLocalDir,0,Qt::CaseSensitive) == 0)
 				{
-					buffer.remove(0,g_szLocalDir.length());
-					buffer.prepend("local://");
+					szBuffer.remove(0,g_szLocalDir.length());
+					szBuffer.prepend("local://");
 				}
 			}
 			if(!g_szGlobalDir.isEmpty())
 			{
-				if(KviQString::find(buffer,g_szGlobalDir)==0)
+				if(szBuffer.indexOf(g_szGlobalDir,0,Qt::CaseSensitive) == 0)
 				{
-					buffer.remove(0,g_szGlobalDir.length());
-					buffer.prepend("global://");
+					szBuffer.remove(0,g_szGlobalDir.length());
+					szBuffer.prepend("global://");
 				}
 			}
 		}
 	}
 
-	void decodePath(QString& buffer)
+	void decodePath(QString & szBuffer)
 	{
-		if(!buffer.isEmpty())
+		if(!szBuffer.isEmpty())
 		{
 			if(!g_szLocalDir.isEmpty())
 			{
-				if(KviQString::find(buffer,"local://")==0)
+				if(szBuffer.indexOf("local://",0,Qt::CaseSensitive) == 0)
 				{
-					buffer.remove(0,8);
-					buffer.prepend(g_szLocalDir);
+					szBuffer.remove(0,8);
+					szBuffer.prepend(g_szLocalDir);
 				}
 			}
 			if(!g_szGlobalDir.isEmpty())
 			{
-				if(KviQString::find(buffer,"global://")==0)
+				if(szBuffer.indexOf("global://",0,Qt::CaseSensitive) == 0)
 				{
-					buffer.remove(0,9);
-					buffer.prepend(g_szGlobalDir);
+					szBuffer.remove(0,9);
+					szBuffer.prepend(g_szGlobalDir);
 				}
 			}
 		}
 	}
 
-	void encodePath(QStringList& buffer)
+	void encodePath(QStringList & buffer)
 	{
-		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it )
-		{
+		for(QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it)
 			encodePath(*it);
-		}
 	}
 
-	void decodePath(QStringList& buffer)
+	void decodePath(QStringList & buffer)
 	{
-		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it )
-		{
+		for(QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it)
 			decodePath(*it);
-		}
 	}
 
-	void toString(const bool bValue,QString &buffer)
+	void toString(const bool bValue, QString & szBuffer)
 	{
-		buffer = bValue ? '1' : '0';
+		szBuffer = bValue ? '1' : '0';
 	}
 
-	bool fromString(const QString & szValue,bool &buffer)
+	bool fromString(const QString & szValue, bool & bBuffer)
 	{
-		if(szValue.isEmpty())buffer = false;
-		else buffer = !((KviQString::equalCS(szValue,"0")) || (KviQString::equalCI(szValue,"false")));
+		if(szValue.isEmpty())
+			bBuffer = false;
+		else bBuffer = !((KviQString::equalCS(szValue,"0")) || (KviQString::equalCI(szValue,"false")));
 		return true;
 	}
 
-	void toString(const int iValue,QString &buffer)
+	void toString(const int iValue, QString & szBuffer)
 	{
-		buffer.setNum(iValue);
+		szBuffer.setNum(iValue);
 	}
 
-	bool fromString(const QString &szValue,int &buffer)
+	bool fromString(const QString & szValue, int & iBuffer)
 	{
 		bool bOk;
-		buffer = szValue.toInt(&bOk);
+		iBuffer = szValue.toInt(&bOk);
 		return bOk;
 	}
 
-	void toString(const unsigned int uValue,QString &buffer)
+	void toString(const unsigned int uValue, QString & szBuffer)
 	{
-		buffer.setNum(uValue);
+		szBuffer.setNum(uValue);
 	}
 
-	bool fromString(const QString & szValue,unsigned int &buffer)
+	bool fromString(const QString & szValue,unsigned int & uBuffer)
 	{
 		bool bOk;
-		buffer= szValue.toUInt(&bOk);
+		uBuffer = szValue.toUInt(&bOk);
 		return bOk;
 	}
 
-	void toString(const QRect &rValue,QString &buffer)
+	void toString(const QRect & rValue, QString & szBuffer)
 	{
-		buffer.sprintf("%d,%d,%d,%d",rValue.x(),rValue.y(),rValue.width(),rValue.height());
+		szBuffer.sprintf("%d,%d,%d,%d",rValue.x(),rValue.y(),rValue.width(),rValue.height());
 	}
 
-	bool fromString(const QString & szValue,QRect &buffer)
+	bool fromString(const QString & szValue, QRect & buffer)
 	{
 		QByteArray tmp = szValue.toUtf8();
 		const char * c = tmp.data();
-		if(!c)return false;
+		if(!c)
+			return false;
 		int l,t,w,h;
-		if(sscanf(c,"%d,%d,%d,%d",&l,&t,&w,&h) != 4)return false;
+		if(sscanf(c,"%d,%d,%d,%d",&l,&t,&w,&h) != 4)
+			return false;
 		buffer.setRect(l,t,w,h);
 		return true;
 	}
 
-	void toString(const QString &szValue,QString &buffer)
+	void toString(const QString & szValue, QString & szBuffer)
 	{
-		buffer = szValue;
+		szBuffer = szValue;
 	}
 
-	bool fromString(const QString & szValue,QString &buffer)
+	bool fromString(const QString & szValue, QString & szBuffer)
 	{
-		buffer = szValue;
+		szBuffer = szValue;
 		return true;
 	}
 
-	void toString(const KviPixmap &pValue,QString &buffer)
+	void toString(const KviPixmap & pixmap, QString & szBuffer)
 	{
-		buffer=pValue.path();
-		encodePath(buffer);
+		szBuffer = pixmap.path();
+		encodePath(szBuffer);
 	}
 
-	bool fromString(const QString & szValue,KviPixmap &buffer)
+	bool fromString(const QString & szValue, KviPixmap & buffer)
 	{
 		QString szPath(szValue);
 		decodePath(szPath);
-		if(szPath.isEmpty()) {
+		if(szPath.isEmpty())
+		{
 			buffer.setNull();
 			return true;
 		} else {
@@ -184,52 +184,59 @@ namespace KviStringConversion
 		}
 	}
 
-	void toString(const KviMessageTypeSettings &mValue,QString &buffer)
+	void toString(const KviMessageTypeSettings & mValue, QString & szBuffer)
 	{
-		buffer.sprintf("%d,%u,%u,%d,%d",mValue.m_iPixId,mValue.m_cForeColor,mValue.m_cBackColor,mValue.m_bLogEnabled,mValue.m_iLevel);
+		szBuffer.sprintf("%d,%u,%u,%d,%d",mValue.m_iPixId,mValue.m_cForeColor,mValue.m_cBackColor,mValue.m_bLogEnabled,mValue.m_iLevel);
 	}
 
-	bool fromString(const QString & szValue,KviMessageTypeSettings &buffer)
+	bool fromString(const QString & szValue, KviMessageTypeSettings & buffer)
 	{
 		int iId,iLog,iLevel;
 		unsigned int uFore,uBack;
 		QByteArray tmp = szValue.toUtf8();
 		char * cx = tmp.data();
-		if(!cx)return false;
-		if(sscanf(cx,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)return false;
+		if(!cx)
+			return false;
+		if(sscanf(cx,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)
+			return false;
 		buffer = KviMessageTypeSettings(buffer.m_szType,iId,uFore,uBack,iLog,iLevel);
 		return true;
 	}
 
-	void toString(const QColor &cValue,QString &buffer)
+	void toString(const QColor & value, QString & szBuffer)
 	{
-		buffer = cValue.name();
+		szBuffer = value.name();
 	}
 
-	bool fromString(const QString & szValue,QColor &buffer)
+	bool fromString(const QString & szValue, QColor & buffer)
 	{
 		buffer.setNamedColor(szValue); return true;
 	}
 
-	void toString(const QFont &fValue,QString &buffer)
+	void toString(const QFont & font, QString & szBuffer)
 	{
-		QString family(fValue.family());
-		buffer.sprintf("%s,%d,%d,%d",family.toUtf8().data(),fValue.pointSize(),fValue.styleHint(),fValue.weight());
-		QString options;
-		if(fValue.bold())options.append('b');
-		if(fValue.italic())options.append('i');
-		if(fValue.underline())options.append('u');
-		if(fValue.strikeOut())options.append('s');
-		if(fValue.fixedPitch())options.append('f');
+		QString szFamily(font.family());
+		szBuffer.sprintf("%s,%d,%d,%d",szFamily.toUtf8().data(),font.pointSize(),font.styleHint(),font.weight());
+		QString szOptions;
+		if(font.bold())
+			szOptions.append('b');
+		if(font.italic())
+			szOptions.append('i');
+		if(font.underline())
+			szOptions.append('u');
+		if(font.strikeOut())
+			szOptions.append('s');
+		if(font.fixedPitch())
+			szOptions.append('f');
 
-		if(!options.isEmpty())
+		if(!szOptions.isEmpty())
 		{
-			buffer.append(',');
-			buffer.append(options);
+			szBuffer.append(',');
+			szBuffer.append(szOptions);
 		}
 	}
 
-	bool fromString(const QString & szValue,QFont &buffer)
+	bool fromString(const QString & szValue, QFont & buffer)
 	{
 		KviCString str = szValue;
 		KviCString family,pointSize,styleHint,weight,options;
@@ -237,15 +244,19 @@ namespace KviStringConversion
 		str.getToken(pointSize,',');
 		str.getToken(styleHint,',');
 		str.getToken(weight,',');
-		if(!family.isEmpty())buffer.setFamily(family.ptr());
+		if(!family.isEmpty())
+			buffer.setFamily(family.ptr());
 		int i;
 		bool bOk;
 		i = pointSize.toInt(&bOk);
-		if(bOk && (i > 0))buffer.setPointSize(i);
+		if(bOk && (i > 0))
+			buffer.setPointSize(i);
 		i = styleHint.toInt(&bOk);
-		if(bOk && (i >= 0))buffer.setStyleHint((QFont::StyleHint)i);
+		if(bOk && (i >= 0))
+			buffer.setStyleHint((QFont::StyleHint)i);
 		i = weight.toInt(&bOk);
-		if(bOk && (i >= 0))buffer.setWeight(i);
+		if(bOk && (i >= 0))
+			buffer.setWeight(i);
 
 		buffer.setBold(str.contains("b"));
 		buffer.setItalic(str.contains("i"));
@@ -255,12 +266,12 @@ namespace KviStringConversion
 		return true;
 	}
 
-	void toString(const QStringList &sValue,QString &buffer)
+	void toString(const QStringList & list,QString & szBuffer)
 	{
-		buffer = sValue.join(",");
+		szBuffer = list.join(",");
 	}
 
-	bool fromString(const QString & szValue,QStringList &buffer)
+	bool fromString(const QString & szValue, QStringList & buffer)
 	{
 		buffer = szValue.split(",");
 		return true;
