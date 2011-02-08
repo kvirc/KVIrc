@@ -918,7 +918,7 @@ ENDIF()
 OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries" OFF)
 IF(WANT_NO_EMBEDDED_CODE)
 	MESSAGE(STATUS "WANT_NO_EMBEDDED_CODE activated.")
-	MESSAGE(STATUS "You may want to use -DWITH_CRYPTOPP instead.")
+	MESSAGE(STATUS "You may want to use -DWANT_CRYPTOPP instead.")
 ENDIF()
 
 ############################################################################

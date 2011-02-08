@@ -128,6 +128,7 @@ namespace KviMemory
 	{
 		::free(ptr);
 	}
+#endif //!COMPILE_MEMORY_PROFILE
 
 	/**
 	* \brief Moves len bytes from src_ptr to dst_ptr
@@ -168,8 +169,6 @@ namespace KviMemory
 	{
 		memcpy(dst_ptr,src_ptr,len);
 	}
-
-#endif //!COMPILE_MEMORY_PROFILE
 
 } // namespace KviMemory
 

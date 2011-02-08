@@ -167,8 +167,8 @@ namespace KviMemory
 			fprintf(stderr,"| Size: %d\n",e->size);
 			fprintf(stderr,"| Caller address 1: %p\n",e->return_addr1);
 			fprintf(stderr,"| Caller address 2: %p\n",e->return_addr2);
-			if(e->size > 10)fprintf(stderr,"| Data: %.10s\n",e->pointer);
-			else if(e->size > 5)fprintf(stderr,"| Data: %.5s\n",e->pointer);
+			if(e->size > 10)fprintf(stderr,"| Data: %.10s\n",(char*)e->pointer);
+			else if(e->size > 5)fprintf(stderr,"| Data: %.5s\n",(char*)e->pointer);
 			KviMallocEntry *toFree = e;
 			e = e->next;
 			free(toFree);
