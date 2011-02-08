@@ -293,9 +293,9 @@ General notes for the installation of the 4.0 release of KVIrc
     try to guess a good environment for you. :)
     To use these flags, you have to pass a bool value or a string.
     For example, to install KVIrc in /usr instead of /usr/local and to disable
-    Phonon support, the command looks like be:
+    Phonon support, the command looks like:
 
-    # cmake -DCMAKE_INSTALL_PREFIX=/usr --DWITHOUT_PHONON=1 ..
+    # cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_PHONON=0 ..
 
     Here's a list with explainations:
 
@@ -345,11 +345,11 @@ General notes for the installation of the 4.0 release of KVIrc
         This flag is useful to solve MacOS X install problems.
 
     -DWANT_UNIVERSAL_BINARY (default: OFF)
-        Enabled or disabled the compilation of universal binaries
+        Enables or disables the compilation of universal binaries
         for the MacOS X platform.
 
     -DWANT_PHONON (default: ON)
-        Enales or disables Phonon audio backend support.
+        Enables or disables Phonon audio backend support.
 
     -DWANT_OSS (default: ON)
         Enables or disables OpenSoundSystem audio backend support.
@@ -359,10 +359,10 @@ General notes for the installation of the 4.0 release of KVIrc
         Enables or disables Audiofile audio backend support.
 
     -DWANT_ESD (default: ON)
-        Enabled or disables ESounD audio backend support.
+        Enables or disables ESounD audio backend support.
 
     -DWANT_QTDBUS (default: ON)
-        Enabled or disables Qt-DBus support.
+        Enables or disables Qt-DBus support.
 
     -DWANT_QTWEBKIT (default: ON)
         Enables or disables Qt-WebKit support.
@@ -371,14 +371,14 @@ General notes for the installation of the 4.0 release of KVIrc
         Enables or disables KDE4 support.
 
     -DWANT_SSL (default: ON)
-        Enables or disabled the crypto functions support using OpenSSL.
+        Enables or disables the crypto functions support using OpenSSL.
 
     -DWANT_CRYPTOPP (default: OFF)
-        Enables or disabled the crypto functions support using Crypto++.
+        Enables or disables the crypto functions support using Crypto++.
         This automatically disables OpenSSL support.
 
     -DWANT_CRYPT (default: ON)
-        Enabled or disables the cryptographic engines and the whole cryptography/text
+        Enables or disables the cryptographic engines and the whole cryptography/text
         transformation support. Produces a slightly smaller executable.
         You will lack features, though.
 
@@ -392,7 +392,7 @@ General notes for the installation of the 4.0 release of KVIrc
         This option enables or disbales pseudo and real transparency support.
         The pseudo-transparency support makes the KVIrc windows
         look like semi-transparent (this is NOT real transparency, it is
-        just a neat-looking hack).ransparency uses compositing and needs
+        just a neat-looking hack). Transparency uses compositing and needs
         proper hardware support to work.
         If KDE support is enabled, KVIrc will have an option that
         makes all windows use a faded KDE desktop background image

@@ -745,14 +745,17 @@ Let's see the scheme to understand which is choosen:
 :)
 */
 
+	if(!pWnd)
+		return;
+
+	QString szTitle = __tr2qs("KVIrc Messaging");
+	QString szText = __tr2qs("Message from %1:\n\n").arg(pWnd->target());
+	szText += KviMircCntrl::stripControlBytes(szMsg);
+
 #ifdef COMPILE_KDE_SUPPORT
 	if(KVI_OPTION_BOOL(KviOption_boolUseKDENotifier))
 	{
 		// Scheme 1a: KDE
-		if(!pWnd)
-			return;
-
-
 		static bool bKNotifyConfigFileChecked = false;
 
 		if(!bKNotifyConfigFileChecked)
@@ -785,9 +788,6 @@ Let's see the scheme to understand which is choosen:
 		
 			bKNotifyConfigFileChecked = true;
 		}
-
-		QString szText = __tr2qs("Message from %1:\n\n").arg(pWnd->target());
-		szText += KviMircCntrl::stripControlBytes(szMsg);
 
 		QStringList actions;
 		actions << __tr2qs("View");
@@ -851,7 +851,7 @@ Let's see the scheme to understand which is choosen:
 		pNotify = new KNotification("incomingMessage",this,KNotification::CloseWhenWidgetActivated);
 #endif
 		pNotify->setFlags(KNotification::Persistent);
-		pNotify->setTitle(__tr2qs("KVIrc messaging system"));
+		pNotify->setTitle(szTitle);
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
@@ -869,23 +869,18 @@ Let's see the scheme to understand which is choosen:
 		if(KVI_OPTION_BOOL(KviOption_boolUseDBusNotifier))
 		{
 			// Scheme 1b-2a: DBus
-			if(!pWnd)
-				return;
-
 			QString szIcon = g_pIconManager->getSmallIconName(KviIconManager::KVIrc);
-			QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
-			szText += KviMircCntrl::stripControlBytes(szMsg);
 
 			// org.freedesktop.Notifications.Notify
 			QVariantList args;
-			args << QString("KVIrc");                    // application name
-			args << QVariant(QVariant::UInt);            // notification id
-			args << szIcon;                              // application icon
-			args << __tr2qs("KVIrc messaging system");   // summary text
-			args << szText;                              // detailed text
-			args << QStringList();                       // actions, optional
-			args << QVariantMap();                       // hints, optional
-			args << (int)uMessageLifetime*1000;          // timeout in msecs
+			args << QString("KVIrc");             // application name
+			args << QVariant(QVariant::UInt);     // notification id
+			args << szIcon;                       // application icon
+			args << szTitle;                      // summary text
+			args << szText;                       // detailed text
+			args << QStringList();                // actions, optional
+			args << QVariantMap();                // hints, optional
+			args << (int)uMessageLifetime*1000;   // timeout in msecs
 
 			QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
 			QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
