@@ -68,7 +68,7 @@ class ChannelTreeWidgetItem : public QTreeWidgetItem
 {
 	friend class ListWindow;
 public:
-	ChannelTreeWidgetItem(QTreeWidget * pWidget, ChannelTreeWidgetItemData * pData);
+	ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData);
 	~ChannelTreeWidgetItem();
 private:
 	ChannelTreeWidgetItemData * m_pData;

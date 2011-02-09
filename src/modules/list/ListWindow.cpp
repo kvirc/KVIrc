@@ -68,8 +68,8 @@ ChannelTreeWidgetItemData::~ChannelTreeWidgetItemData()
 }
 
 
-ChannelTreeWidgetItem::ChannelTreeWidgetItem(QTreeWidget * v,ChannelTreeWidgetItemData * pData)
-: QTreeWidgetItem(v), m_pData(pData)
+ChannelTreeWidgetItem::ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData)
+: QTreeWidgetItem(), m_pData(pData)
 {
 	setToolTip(0, m_pData->m_szChan);
 	setToolTip(1, m_pData->m_szUsers);
@@ -113,13 +113,6 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint( const QStyleOptionViewItem &sovIt
 {
 	ChannelTreeWidget* treeWidget = (ChannelTreeWidget*)parent();
 	int iHeight=treeWidget->fontMetrics().lineSpacing();
-
-	// Model-View-Delegate-Crappiness...
-	//
-	// This function is called when items aren't fully constructed. In particular
-	// when the ChannelTreeWidgetItem constructor calls the base class constructor
-	// this function is sometimes called with the newly inserted item which is not
-	// a ChannelTreeWidgetItem yet.
 
 	ChannelTreeWidgetItem * item = dynamic_cast<ChannelTreeWidgetItem*>(treeWidget->itemFromIndex(index));
 
@@ -546,7 +539,14 @@ void ListWindow::flush()
 	m_pTreeWidget->setUpdatesEnabled(false); /* for v_scroolbar */
 	while(ChannelTreeWidgetItemData * d = m_pItemList->first())
 	{
-		(void)new ChannelTreeWidgetItem(m_pTreeWidget,d);
+		// Model-View-Delegate-Crappiness...
+		//
+		// Don't use the constructor that takes QTreeWidget as parent
+		// as it will insert the item and call the delegate's sizeHint()
+		// function when the item is not yet fully constructed.
+
+		m_pTreeWidget->addTopLevelItem(new ChannelTreeWidgetItem(d));
+
 		m_pItemList->removeFirst();
 	}
 	m_pTreeWidget->setUpdatesEnabled(true);
