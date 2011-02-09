@@ -144,6 +144,8 @@ void VideoDevice::setupControls()
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
+
 		case VIDEODEV_DRIVER_V4L:
 			{
 				NumericVideoControl numCtrl;
@@ -168,6 +170,7 @@ void VideoDevice::setupControls()
 				m_numericCtrls.push_back( numCtrl );
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -513,6 +516,7 @@ detectSignalStandards();
 
 #endif
 
+#ifdef COMPILE_V4L1_CODE
 		CLEAR(V4L_capabilities);
 
 		if(m_driver==VIDEODEV_DRIVER_NONE)
@@ -576,6 +580,7 @@ detectSignalStandards();
 
 			}
 		}
+#endif //COMPILE_V4L1_CODE
 #endif
 		m_name=m_model; // Take care about changing the name to be different from the model itself...
 
@@ -705,6 +710,7 @@ int VideoDevice::initDevice()
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			m_videoread=true;
 			m_io_method=IO_METHOD_READ;
@@ -715,6 +721,7 @@ int VideoDevice::initDevice()
 				qDebug() << "    Streaming interface";
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -889,6 +896,7 @@ qDebug() << "VIDIOC_S_FMT worked (" << errno << ").Returned width: " << pixelFor
 				}
 				break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 			case VIDEODEV_DRIVER_V4L:
 				{
 					struct video_window V4L_videowindow;
@@ -915,6 +923,7 @@ qDebug() << "------------- width: " << V4L_videowindow.width << " Height: " << V
 
 				}
 				break;
+#endif //COMPILE_V4L1_CODE
 #endif
 			case VIDEODEV_DRIVER_NONE:
 			default:
@@ -987,6 +996,7 @@ pixel_format VideoDevice::setPixelFormat(pixel_format newformat)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			{
 			struct video_picture V4L_picture;
@@ -1014,6 +1024,7 @@ pixel_format VideoDevice::setPixelFormat(pixel_format newformat)
 
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -1064,6 +1075,7 @@ int VideoDevice::selectInput(int newinput)
 				setupControls();
 				break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 			case VIDEODEV_DRIVER_V4L:
 				struct video_channel V4L_input;
 				V4L_input.channel=newinput;
@@ -1075,6 +1087,7 @@ int VideoDevice::selectInput(int newinput)
 				}
 				setupControls();
 				break;
+#endif //COMPILE_V4L1_CODE
 #endif
 			case VIDEODEV_DRIVER_NONE:
 			default:
@@ -1834,6 +1847,7 @@ int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			struct video_picture V4L_picture;
 			if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
@@ -1863,6 +1877,7 @@ int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
 			}
 			qDebug() << "Reported current value is" << *value << ".";
 			return EXIT_SUCCESS;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -1980,6 +1995,7 @@ int VideoDevice::setControlValue(quint32 ctrl_id, qint32 value)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			struct video_picture V4L_picture;
 			if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
@@ -2024,6 +2040,7 @@ int VideoDevice::setControlValue(quint32 ctrl_id, qint32 value)
 				return EXIT_FAILURE;
 			}
 			return EXIT_SUCCESS;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2087,6 +2104,7 @@ pixel_format VideoDevice::pixelFormatForPalette( int palette )
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			switch(palette)
 			{
@@ -2104,6 +2122,7 @@ pixel_format VideoDevice::pixelFormatForPalette( int palette )
 				case VIDEO_PALETTE_YUV422P	: return PIXELFORMAT_YUV422P;	break;
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2167,6 +2186,7 @@ int VideoDevice::pixelFormatCode(pixel_format pixelformat)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			switch(pixelformat)
 			{
@@ -2211,6 +2231,7 @@ int VideoDevice::pixelFormatCode(pixel_format pixelformat)
 				case PIXELFORMAT_YYUV	: return 0;			break;
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2373,6 +2394,7 @@ QString VideoDevice::pixelFormatName(int pixelformat)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			switch(pixelformat)
 			{
@@ -2389,6 +2411,7 @@ QString VideoDevice::pixelFormatName(int pixelformat)
 				case VIDEO_PALETTE_YUV422P	: returnvalue = pixelFormatName(PIXELFORMAT_YUV422P);	break;
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2425,6 +2448,7 @@ int VideoDevice::detectPixelFormats()
 			}
 //			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 // TODO: THis thing can be used to detec what pixel formats are supported in a API-independent way, but V4L2 has VIDIOC_ENUM_PIXFMT.
 // The correct thing to do is to isolate these calls and do a proper implementation for V4L and another for V4L2 when this thing will be migrated to a plugin architecture.
@@ -2468,6 +2492,7 @@ int VideoDevice::detectPixelFormats()
 			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_WNVA))	{ qDebug() << pixelFormatName(PIXELFORMAT_WNVA); }
 			if(PIXELFORMAT_NONE != setPixelFormat(PIXELFORMAT_YYUV))	{ qDebug() << pixelFormatName(PIXELFORMAT_YYUV); }
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2537,6 +2562,7 @@ __u64 VideoDevice::signalStandardCode(signal_standard standard)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			switch(standard)
 			{
@@ -2591,6 +2617,7 @@ __u64 VideoDevice::signalStandardCode(signal_standard standard)
 				case STANDARD_ALL	: return VIDEO_MODE_AUTO;	break;
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2718,6 +2745,7 @@ QString VideoDevice::signalStandardName(int standard)
 			}
 			break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 		case VIDEODEV_DRIVER_V4L:
 			switch(standard)
 			{
@@ -2731,6 +2759,7 @@ QString VideoDevice::signalStandardName(int standard)
 				case VIDEO_MODE_NTSC_JP	: returnvalue = signalStandardName(STANDARD_NTSC_M_JP);	break;	// Undocumented value found to be compatible with V4L bttv driver
 			}
 			break;
+#endif //COMPILE_V4L1_CODE
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
@@ -2796,8 +2825,10 @@ int VideoDevice::detectSignalStandards()
 
 				break;
 #endif
+#ifdef COMPILE_V4L1_CODE
 			case VIDEODEV_DRIVER_V4L:
 				break;
+#endif //COMPILE_V4L1_CODE
 #endif
 			case VIDEODEV_DRIVER_NONE:
 			default:

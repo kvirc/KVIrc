@@ -56,6 +56,9 @@
 
 #include "kvi_settings.h"
 
+// V4L1 was removed in kernel 2.6.38
+#undef COMPILE_V4L1_CODE
+
 #ifndef COMPILE_DISABLE_AVDEVICE
 
 #include <asm/types.h>
@@ -74,7 +77,7 @@
 
 #include <linux/fs.h>
 #include <linux/kernel.h>
-#include <linux/videodev.h>
+#include <linux/videodev2.h>
 #define VIDEO_MODE_PAL_Nc  3
 #define VIDEO_MODE_PAL_M   4
 #define VIDEO_MODE_PAL_N   5
@@ -105,8 +108,10 @@ typedef enum
 {
 	VIDEODEV_DRIVER_NONE
 #ifndef COMPILE_DISABLE_AVDEVICE
+#ifdef COMPILE_V4L1_CODE
         ,
 	VIDEODEV_DRIVER_V4L
+#endif //COMPILE_V4L1_CODE
 #ifdef V4L2_CAP_VIDEO_CAPTURE
         ,
 	VIDEODEV_DRIVER_V4L2
@@ -386,8 +391,10 @@ protected:
 	struct v4l2_format fmt;
 //	struct v4l2_input m_input;
 #endif
+#ifdef COMPILE_V4L1_CODE
 	struct video_capability V4L_capabilities;
 	struct video_buffer V4L_videobuffer;
+#endif
 #endif	
 	int currentwidth, minwidth, maxwidth, currentheight, minheight, maxheight;
 
