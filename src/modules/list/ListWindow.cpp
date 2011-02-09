@@ -112,8 +112,19 @@ ChannelTreeWidgetItemDelegate::~ChannelTreeWidgetItemDelegate()
 QSize ChannelTreeWidgetItemDelegate::sizeHint( const QStyleOptionViewItem &sovItem, const QModelIndex &index) const
 {
 	ChannelTreeWidget* treeWidget = (ChannelTreeWidget*)parent();
-	ChannelTreeWidgetItem * item = (ChannelTreeWidgetItem*)treeWidget->itemFromIndex(index);
 	int iHeight=treeWidget->fontMetrics().lineSpacing();
+
+	// Model-View-Delegate-Crappiness...
+	//
+	// This function is called when items aren't fully constructed. In particular
+	// when the ChannelTreeWidgetItem constructor calls the base class constructor
+	// this function is sometimes called with the newly inserted item which is not
+	// a ChannelTreeWidgetItem yet.
+
+	ChannelTreeWidgetItem * item = dynamic_cast<ChannelTreeWidgetItem*>(treeWidget->itemFromIndex(index));
+
+	if(!item)
+		return QSize(100,iHeight);
 
 	QFontMetrics fm(sovItem.font);
 	switch(index.column())
