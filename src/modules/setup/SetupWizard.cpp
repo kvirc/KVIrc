@@ -494,7 +494,7 @@ SetupWizard::SetupWizard()
 			"your system." \
 			"<br><br>" \
 			"The default settings are fine for most users so if " \
-			"you're in doubt just click \"<b>Next</b>\" and go to the next screen." \
+			"you're in doubt just click \"<b>Finish</b>\" to continue." \
 		"</p>");
 
 	m_pDesktopIntegration->m_pTextLabel->setText(szText);
@@ -516,45 +516,7 @@ SetupWizard::SetupWizard()
 #endif
 
 	setHelpEnabled(m_pDesktopIntegration,false);
-
-	/*
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Server config
-	m_pServers = new SetupPage(this);
-
-	m_pServers->m_pTextLabel->setText(__tr2qs( \
-			"Now you should specify an IRC server, to be connected to it"));
-
-
-	m_pServersButtonGroup = new KviTalGroupBox(__tr2qs("Choose a server to connect"),m_pServers->m_pVBox);
-
-	m_pServersChooseFromList = new QRadioButton(__tr2qs("Choose from built-in server list"),m_pServersButtonGroup);
-
-	m_pServersSpecifyManually = new QRadioButton(__tr2qs("Specify server manually"),m_pServersButtonGroup);
-	hb = new KviTalHBox(m_pServersButtonGroup);
-
-	m_uServerPort=6667;
-	m_pServerHostSelector = new KviStringSelector(hb,__tr2qs("Server:"),&m_szServerHost,true);
-	m_pServerPortSelector = new KviUIntSelector(hb,__tr2qs("Port:"),&m_uServerPort,1,65536,6667,true,false);
-
-
-	m_pServersOpenIrcUrl = new QRadioButton(__tr2qs("Open irc:// or irc6:// URL"),m_pServersButtonGroup);
-	m_szServerUrl="irc://";
-	m_pServerUrlSelector = new KviStringSelector(m_pServersButtonGroup,__tr2qs("URL:"),&m_szServerUrl,true);
-
-	*/
-/*
-	m_pServersLoadConfig = new QRadioButton(__tr2qs("Use server config"),m_pServersButtonGroup);
-	m_pServersLoadConfig->setEnabled(FALSE);
-	m_pServerConfigSelector = new KviFileSelector(m_pServersButtonGroup,__tr2qs("Config file:"),&m_szServerConfigFile,true);
-	m_pServerConfigSelector->setEnabled(FALSE);
-*/
-	/*
-	m_pServersChooseFromList->toggle();
-	addPage(m_pServers,__tr2qs("Choose a server to connect"));
-	*/
 	setFinishEnabled(m_pDesktopIntegration,true);
-	setHelpEnabled(m_pDesktopIntegration,false);
 
 	// Preconfigured values
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
