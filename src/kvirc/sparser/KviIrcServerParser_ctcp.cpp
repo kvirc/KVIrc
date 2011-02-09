@@ -1611,7 +1611,7 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 		// FIXME: #warning "The avatar should be the one with the requested size!!"
 		textLine = QString(__tr2qs("%1 changes avatar to %2")).arg(nickLink,szRemoteFile);
 		if(_OUTPUT_VERBOSE)
-			KviQString::appendFormatted(textLine," (%1 %2)",&szWhere,&szWhat);
+			KviQString::appendFormatted(textLine," (%Q %Q)",&szWhere,&szWhat);
 
 		bool bIsUrl = KviQString::equalCIN("http://",szRemoteFile,7) && (szRemoteFile.length() > 7);
 		if(!bIsUrl)
