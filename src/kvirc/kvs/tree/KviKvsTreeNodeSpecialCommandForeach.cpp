@@ -98,7 +98,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					KviKvsVariant * pOne = pArg->array()->at(idx);
 					if(pOne)
 					{
-						if(bIncludeEmptyScalars || (!pOne->isEqualToNothing()))
+						if(bIncludeEmptyScalars || (!pOne->isEmpty()))
 						{
 							v->result()->copyFrom(*pOne);
 						} else {
@@ -157,7 +157,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					if(!v)
 						return false;
 					
-					if(bIncludeEmptyScalars || (!pOne->isEqualToNothing()))
+					if(bIncludeEmptyScalars || (!pOne->isEmpty()))
 					{
 						v->result()->copyFrom(*pOne);
 					} else {
