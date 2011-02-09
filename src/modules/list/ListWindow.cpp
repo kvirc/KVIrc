@@ -543,7 +543,7 @@ void ListWindow::processData(KviIrcMessage * pMsg)
 
 void ListWindow::flush()
 {
-	m_pTreeWidget->setUpdatesEnabled(true); /* for v_scroolbar */
+	m_pTreeWidget->setUpdatesEnabled(false); /* for v_scroolbar */
 	while(ChannelTreeWidgetItemData * d = m_pItemList->first())
 	{
 		(void)new ChannelTreeWidgetItem(m_pTreeWidget,d);
