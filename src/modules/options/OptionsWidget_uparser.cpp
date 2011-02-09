@@ -36,6 +36,8 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 {
 	createLayout();
 
+	KviBoolSelector * b;
+
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Disable parser warnings","options"),KviOption_boolAvoidParserWarnings);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable broken event handlers","options"),KviOption_boolDisableBrokenEventHandlers);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Kill broken timers","options"),KviOption_boolKillBrokenTimers);
@@ -48,7 +50,14 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 
 	addSeparator(0,7,0,7);
 
-	addBoolSelector(0,8,0,8,__tr2qs_ctx("Relay errors and warnings to debug window","options"),KviOption_boolScriptErrorsToDebugWindow);
+	b = addBoolSelector(0,8,0,8,__tr2qs_ctx("Relay errors and warnings to debug window","options"),KviOption_boolScriptErrorsToDebugWindow);
+	mergeTip(b,
+		__tr2qs_ctx("<center>This option will show the script errors and warnings " \
+			"also in the special debug window. This makes tracking of scripts that might " \
+			"be running in several windows far easier. The messages in the debug window " \
+			"also contain a deeper call stack which will help you identifying the " \
+			"scripting problems.</center>","options")
+		);
 	addBoolSelector(0,9,0,9,__tr2qs_ctx("Create minimized debug window","options"),KviOption_boolShowMinimizedDebugWindow);
 
 	addRowSpacer(0,10,0,10);

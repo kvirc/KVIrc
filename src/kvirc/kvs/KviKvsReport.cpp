@@ -164,7 +164,9 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 
 void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 {
-	if(!pOutput)return; // ?
+	if(!pOutput)
+		return; // ?
+
 	if(!g_pApp->windowExists(pOutput))
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolScriptErrorsToDebugWindow))

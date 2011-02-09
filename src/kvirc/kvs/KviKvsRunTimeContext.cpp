@@ -145,8 +145,10 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 
 	QString szContext = m_pScript ? m_pScript->name() : "kvirc core code";
 	KviKvsReport rep(bError ? KviKvsReport::RunTimeError : KviKvsReport::RunTimeWarning,szContext,szMsg,szLocation,m_pWindow);
-	if(pCodeListing)rep.setCodeListing(pCodeListing);
-	if(pCallStack)rep.setCallStack(pCallStack);
+	if(pCodeListing)
+		rep.setCodeListing(pCodeListing);
+	if(pCallStack)
+		rep.setCallStack(pCallStack);
 
 	KviKvsReport::report(&rep,m_pWindow);
 }
