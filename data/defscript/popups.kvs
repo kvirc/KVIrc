@@ -660,9 +660,9 @@ defpopup(channel)
 #
 defpopup(channelpopup)
 {
-	item($tr("&Join","defscript") $0,145)
+	item($tr("&Hop","defscript") $0,145)
 	{
-		hop $0
+		hop $0;
 	}
 
 	item($tr("&Part","defscript") $0,40)
