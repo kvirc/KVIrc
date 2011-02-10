@@ -31,7 +31,7 @@
 #include "KviConfigurationFile.h"
 #include "KviApplication.h"
 #include "KviIconManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviLocale.h"
 #include "kvi_confignames.h"
 #include "KviWindow.h"
@@ -638,8 +638,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("AutoReconnectDelay",10,KviOption_sectFlagFrame),
 	UINT_OPTION("MaxDccSendSpeed",0,KviOption_sectFlagFrame),
 	UINT_OPTION("MaxDccRecvSpeed",0,KviOption_sectFlagFrame),
-	UINT_OPTION("TimeStampForeground",KviMircCntrl::DarkGray,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	UINT_OPTION("TimeStampBackground",KviMircCntrl::Transparent,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("TimeStampForeground",KviControlCodes::DarkGray,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("TimeStampBackground",KviControlCodes::Transparent,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("UserExperienceLevel",1,KviOption_sectFlagUser),
 	UINT_OPTION("ClassicWindowListMaximumButtonWidth",100,KviOption_sectFlagGeometry | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("DefaultBanType",7,KviOption_sectFlagIrcSocket),
@@ -709,7 +709,7 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 #define MSGTYPE_OPTION(_name,_text,_icon,_levl) \
 	KviMessageTypeSettingsOption( \
 		KVI_MSGTYPE_OPTIONS_PREFIX _name, \
-		KviMessageTypeSettings(_text,_icon,KviMircCntrl::Black,KviMircCntrl::Transparent,true,_levl), \
+		KviMessageTypeSettings(_text,_icon,KviControlCodes::Black,KviControlCodes::Transparent,true,_levl), \
 		KviOption_sectFlagMsgType | KviOption_groupTheme \
 	)
 
@@ -727,17 +727,17 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 {
 	MSGTYPE_OPTION("Echo",__tr_no_lookup("Normal text"),KviIconManager::None,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION_SPEC("Selection",__tr_no_lookup("Selection"),KviIconManager::None,KviMircCntrl::White,KviMircCntrl::Black,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION_SPEC("Highlight",__tr_no_lookup("Highlighted text"),KviIconManager::Alert,KviMircCntrl::White,KviMircCntrl::Black,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION_SPEC("Url",__tr_no_lookup("URL foreground"),KviIconManager::None,KviMircCntrl::Blue,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION_SPEC("Link",__tr_no_lookup("Link overlay foreground"),KviIconManager::None,KviMircCntrl::Blue,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION_SPEC("ParserError",__tr_no_lookup("Parser error"),KviIconManager::ParserError,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_2),
-	MSGTYPE_OPTION_SPEC("ParserWarning",__tr_no_lookup("Parser warning"),KviIconManager::ParserWarning,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION_SPEC("Selection",__tr_no_lookup("Selection"),KviIconManager::None,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("Highlight",__tr_no_lookup("Highlighted text"),KviIconManager::Alert,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION_SPEC("Url",__tr_no_lookup("URL foreground"),KviIconManager::None,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("Link",__tr_no_lookup("Link overlay foreground"),KviIconManager::None,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("ParserError",__tr_no_lookup("Parser error"),KviIconManager::ParserError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION_SPEC("ParserWarning",__tr_no_lookup("Parser warning"),KviIconManager::ParserWarning,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("HostLookup",__tr_no_lookup("Host lookup result"),KviIconManager::Server,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("SocketMessage",__tr_no_lookup("Socket message"),KviIconManager::SocketMessage,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("SocketWarning",__tr_no_lookup("Socket warning"),KviIconManager::SocketWarning,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION_SPEC("SocketError",__tr_no_lookup("Socket error"),KviIconManager::SocketError,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION_SPEC("SystemError",__tr_no_lookup("System error"),KviIconManager::SystemError,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION_SPEC("SocketError",__tr_no_lookup("Socket error"),KviIconManager::SocketError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION_SPEC("SystemError",__tr_no_lookup("System error"),KviIconManager::SystemError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("Raw",__tr_no_lookup("Raw data to server"),KviIconManager::Raw,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("Connection",__tr_no_lookup("Connection status"),KviIconManager::World,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("SystemWarning",__tr_no_lookup("System warning"),KviIconManager::SystemWarning,KVI_MSGTYPE_LEVEL_3),
@@ -844,8 +844,8 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("GenericStatus",__tr_no_lookup("Generic status"),KviIconManager::GreenSquare,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("GenericVerbose",__tr_no_lookup("Generic verbose message"),KviIconManager::DarkGreenSquare,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("GenericWarning",__tr_no_lookup("Generic warning"),KviIconManager::YellowSquare,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION_SPEC("GenericError",__tr_no_lookup("Generic error"),KviIconManager::RedSquare,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION_SPEC("GenericCritical",__tr_no_lookup("Generic critical error"),KviIconManager::BlackSquare,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION_SPEC("GenericError",__tr_no_lookup("Generic error"),KviIconManager::RedSquare,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION_SPEC("GenericCritical",__tr_no_lookup("Generic critical error"),KviIconManager::BlackSquare,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("ChanAdmin",__tr_no_lookup("Chan admin status set"),KviIconManager::ChanAdmin,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("ChanUnAdmin",__tr_no_lookup("Chan admin status unset"),KviIconManager::ChanUnAdmin,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeChanAdmin",__tr_no_lookup("Own chan admin status set"),KviIconManager::MeChanAdmin,KVI_MSGTYPE_LEVEL_5),
@@ -854,13 +854,13 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("UserDeOp",__tr_no_lookup("User-deop mode change"),KviIconManager::DeUserOp,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("MeUserOp",__tr_no_lookup("Am userop'd"),KviIconManager::MeUserOp,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeDeUserOp",__tr_no_lookup("Am de-userop'd"),KviIconManager::MeDeUserOp,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION_SPEC("Verbose",__tr_no_lookup("Verbose/Debug"),KviIconManager::BinaryText,KviMircCntrl::DarkGray,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("Verbose",__tr_no_lookup("Verbose/Debug"),KviIconManager::BinaryText,KviControlCodes::DarkGray,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("ChanOwner",__tr_no_lookup("Chan owner status set"),KviIconManager::ChanOwner,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("ChanUnOwner",__tr_no_lookup("Chan owner status unset"),KviIconManager::ChanUnOwner,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeChanOwner",__tr_no_lookup("Own chan owner status set"),KviIconManager::MeChanOwner,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeChanUnOwner",__tr_no_lookup("Own chan owner status unset"),KviIconManager::MeChanUnOwner,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION_SPEC("ServerError",__tr_no_lookup("Server error"),KviIconManager::ServerError,KviMircCntrl::Red,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION_SPEC("Help",__tr_no_lookup("Help"),KviIconManager::Help,KviMircCntrl::DarkGreen,KviMircCntrl::Transparent,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("ServerError",__tr_no_lookup("Server error"),KviIconManager::ServerError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION_SPEC("Help",__tr_no_lookup("Help"),KviIconManager::Help,KviControlCodes::DarkGreen,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("TextEncoding",__tr_no_lookup("Text Encoding Server message"),KviIconManager::TextEncoding,KVI_MSGTYPE_LEVEL_1),
 	// TODO: add icon and check what level means
 	// Pragma: the message level is a warning level that is rendered in the WindowList
@@ -1262,7 +1262,7 @@ void KviApplication::listAvailableOptions(KviWindow *wnd)
 	int i;
 
 	#define LIST_OPTIONS(__txt,__num,__table) \
-		wnd->output(KVI_OUT_SYSTEMMESSAGE,"%c%s%c",KviMircCntrl::Bold,__txt,KviMircCntrl::Bold); \
+		wnd->output(KVI_OUT_SYSTEMMESSAGE,"%c%s%c",KviControlCodes::Bold,__txt,KviControlCodes::Bold); \
 		for(i = 0;i < __num;i++)wnd->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__table[i].name);
 
 	LIST_OPTIONS(__tr("Boolean options (1/0)"),KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)

@@ -31,7 +31,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviThemedLabel.h"
 #include "KviIrcContext.h"
 #include "KviIrcConnection.h"
@@ -280,7 +280,7 @@ void LinksWindow::endOfLinks()
 	if(root)
 	{
 		m_szRootServer = root->text(0);
-		output(KVI_OUT_LINKS,__tr2qs("%c%cLinks for %Q"),KviMircCntrl::Bold,KviMircCntrl::Underline,&m_szRootServer);
+		output(KVI_OUT_LINKS,__tr2qs("%c%cLinks for %Q"),KviControlCodes::Bold,KviControlCodes::Underline,&m_szRootServer);
 		outputNoFmt(KVI_OUT_LINKS,"======================");
 		QString tmpo = wildServers ? __tr2qs("Total hosts listed") : __tr2qs("Total hosts in the network");
 		output(KVI_OUT_LINKS,"%Q: %d",&tmpo,totalHosts);

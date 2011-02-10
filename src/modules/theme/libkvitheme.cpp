@@ -33,7 +33,6 @@
 #include "KviError.h"
 #include "kvi_out.h"
 #include "KviIconManager.h"
-#include "KviMircCntrl.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 #include "KviFileUtils.h"

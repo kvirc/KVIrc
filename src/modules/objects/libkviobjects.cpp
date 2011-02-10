@@ -74,7 +74,7 @@
 #include "KviIconManager.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviApplication.h"
 #include "KviModule.h"
 #include "KviLocale.h"
@@ -668,7 +668,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
 				list.at(i),
-				KviMircCntrl::Bold, list.at(i)->objectName().data(), KviMircCntrl::Bold,
+				KviControlCodes::Bold, list.at(i)->objectName().data(), KviControlCodes::Bold,
 				list.at(i)->metaObject()->className(),
 				list.at(i)->isVisible() ? "visible" : "hidden",
 				list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
@@ -706,8 +706,8 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 			if (bFlag)
 			{
 				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
-					spacing, list.at(i), KviMircCntrl::Bold,
-					list.at(i)->objectName().data(), KviMircCntrl::Bold, list.at(i)->metaObject()->className()
+					spacing, list.at(i), KviControlCodes::Bold,
+					list.at(i)->objectName().data(), KviControlCodes::Bold, list.at(i)->metaObject()->className()
 				);
 			}
 			QString szClass=list.at(i)->metaObject()->className();

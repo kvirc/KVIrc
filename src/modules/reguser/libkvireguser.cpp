@@ -31,7 +31,7 @@
 #include "KviRegisteredUserDataBase.h"
 #include "KviIrcUserDataBase.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviWindow.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
@@ -809,7 +809,7 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 		KviPointerList<KviIrcMask> * ml = u->maskList();
 		if(u->matches(mask) || (ml->count() == 0))
 		{
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx(" User: %c%Q","register"),KviMircCntrl::Bold,&(u->name()));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx(" User: %c%Q","register"),KviControlCodes::Bold,&(u->name()));
 
 			if(ml->count() == 0)
 			{

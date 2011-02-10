@@ -22,6 +22,7 @@
 //
 //=============================================================================
 
+#include "kvi_out.h"
 #include "KviKvsScript.h"
 #include "KviKvsParser.h"
 #include "KviKvsReport.h"
@@ -29,10 +30,7 @@
 #include "KviKvsTreeNodeInstruction.h"
 #include "KviKvsVariantList.h"
 #include "KviKvsKernel.h"
-
 #include "KviLocale.h"
-#include "kvi_out.h"
-#include "KviMircCntrl.h"
 #include "KviWindow.h"
 #include "KviApplication.h"
 

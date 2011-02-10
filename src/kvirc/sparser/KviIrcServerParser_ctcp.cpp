@@ -26,7 +26,7 @@
 // FIXME: #warning "CTCP BEEP == WAKEUP == AWAKE"
 // FIXME: #warning "CTCP AVATARREQ or QUERYAVATAR"
 
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviOsInfo.h"
 #include "KviApplication.h"
 #include "KviIrcServerParser.h"
@@ -1037,7 +1037,7 @@ void KviIrcServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 			if(!KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPFlood,pOut,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),msg->szTarget,msg->szTag,szData))
 				pOut->output(KVI_OUT_CTCPREQUESTFLOOD,
 					__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit exceeded)"),
-					&szWhat,&szTag,KviMircCntrl::Reset,&(msg->pSource->nick()),
+					&szWhat,&szTag,KviControlCodes::Reset,&(msg->pSource->nick()),
 					&(msg->pSource->user()),&(msg->pSource->host()),&szRequest);
 		} else {
 			QString szAction = msg->bUnknown ? __tr2qs("ignored (unrecognized)") :
@@ -1046,7 +1046,7 @@ void KviIrcServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 				msg->bUnknown ? KVI_OUT_CTCPREQUESTUNKNOWN :
 					(msg->bIgnored ? KVI_OUT_CTCPREQUESTIGNORED : KVI_OUT_CTCPREQUESTREPLIED),
 				__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"),
-				&szWhat,&szTag,KviMircCntrl::Reset,&(msg->pSource->nick()),
+				&szWhat,&szTag,KviControlCodes::Reset,&(msg->pSource->nick()),
 				&(msg->pSource->user()),&(msg->pSource->host()),&szRequest,&szAction);
 		}
 	}
@@ -1440,7 +1440,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 
 	//see bug ticket #220
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-		szData = KviMircCntrl::stripControlBytes(szData);
+		szData = KviControlCodes::stripControlBytes(szData);
 
 	if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnAction,pOut,
 				msg->pSource->nick(),

@@ -63,7 +63,7 @@
 #include "KviModuleExtension.h"
 #include "KviInternalCommand.h"
 #include "KviFileTransfer.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviIrcUrl.h"
 #include "KviAvatarCache.h"
 #include "KviActionManager.h"
@@ -750,7 +750,7 @@ Let's see the scheme to understand which is choosen:
 
 	QString szTitle = __tr2qs("KVIrc Messaging");
 	QString szText = __tr2qs("Message from %1:\n\n").arg(pWnd->target());
-	szText += KviMircCntrl::stripControlBytes(szMsg);
+	szText += KviControlCodes::stripControlBytes(szMsg);
 
 #ifdef COMPILE_KDE_SUPPORT
 	if(KVI_OPTION_BOOL(KviOption_boolUseKDENotifier))

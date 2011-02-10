@@ -30,7 +30,7 @@
 #include "KviOptions.h"
 #include "KviApplication.h"
 #include "KviLocale.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviConfigurationFile.h"
 #include "KviFileDialog.h"
 #include "KviTalVBox.h"
@@ -365,7 +365,7 @@ OptionsWidget_messageColors::OptionsWidget_messageColors(QWidget * parent)
 	m_pBackListWidgetDelegate = new MessageColorListWidgetItemDelegate(m_pBackListWidget);
 	m_pBackListWidget->setItemDelegate(m_pBackListWidgetDelegate);
 
-	m_pBackItems[16] = new MessageColorListWidgetItem(m_pBackListWidget,KviMircCntrl::Transparent);
+	m_pBackItems[16] = new MessageColorListWidgetItem(m_pBackListWidget,KviControlCodes::Transparent);
 	for(i=0;i<16;i++)
 	{
 		m_pBackItems[i] = new MessageColorListWidgetItem(m_pBackListWidget,i);
@@ -633,7 +633,7 @@ void OptionsWidget_messageColors::load()
 			tmp.sprintf("Back%d",it->optionId());
 			int back = cfg.readIntEntry(tmp,it->msgType()->back());
 			if(back < 0 || back > 15)
-				back = KviMircCntrl::Transparent;
+				back = KviControlCodes::Transparent;
 			it->msgType()->setBack(back);
 
 			tmp.sprintf("Icon%d",it->optionId());

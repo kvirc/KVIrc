@@ -28,7 +28,7 @@
 #include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviWindow.h"
 #include "KviMainWindow.h"
 #include "KviPointerHashTable.h"
@@ -217,7 +217,7 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		for(KviSharedFile * o = l->first();o;o = l->next())
 		{
 			c->window()->output(KVI_OUT_NONE,"%c%d. %s",
-				KviMircCntrl::Bold,idx + 1,it.currentKey().toUtf8().data());
+				KviControlCodes::Bold,idx + 1,it.currentKey().toUtf8().data());
 			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    File: %s (%u bytes)","sharedfileswindow"),
 				o->absFilePath().toUtf8().data(),o->fileSize());
 			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Mask: %s","sharedfileswindow"),

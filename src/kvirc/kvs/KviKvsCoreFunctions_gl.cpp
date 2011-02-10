@@ -34,7 +34,7 @@
 #include "KviChannelWindow.h"
 #include "KviConsoleWindow.h"
 #include "KviIconManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviMainWindow.h"
 #include "KviTimeUtils.h"
 #include "KviKvsEventManager.h"
@@ -753,7 +753,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("background",KVS_PT_UINT,KVS_PF_OPTIONAL,iBack)
 		KVSCF_PARAMETERS_END
 
-		QString szRet = QChar(KviMircCntrl::Color);
+		QString szRet = QChar(KviControlCodes::Color);
 		if(KVSCF_pParams->count() > 0)
 		{
 			KviQString::appendFormatted(szRet,"%u",iFore);

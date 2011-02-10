@@ -34,7 +34,7 @@
 #include "KviError.h"
 #include "kvi_out.h"
 #include "KviIconManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 #include "KviMiscUtils.h"
@@ -143,7 +143,7 @@ static bool addon_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*da);
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%cAddon id %Q, version %Q%c","addon"),KviMircCntrl::Bold,&(a->name()),&(a->version()),KviMircCntrl::Bold);
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%cAddon id %Q, version %Q%c","addon"),KviControlCodes::Bold,&(a->name()),&(a->version()),KviControlCodes::Bold);
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Name: %Q","addon"),&(a->visibleName()));
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Description: %Q","addon"),&(a->description()));
 

@@ -32,7 +32,7 @@
 #include "KviMainWindow.h"
 #include "KviWindow.h"
 #include "KviLocale.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "kvi_out.h"
 #include "KviSplashScreen.h"
 #include "KviPointerHashTable.h"
@@ -152,7 +152,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 
 static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,OptionsWidgetInstanceEntry * e,const char * prefix)
 {
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KviMircCntrl::Bold,e->szClassName,KviMircCntrl::Bold,&(e->szName));
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KviControlCodes::Bold,e->szClassName,KviControlCodes::Bold,&(e->szName));
 	KviCString szPre = prefix;
 	szPre.append("  ");
 	if(e->pChildList)

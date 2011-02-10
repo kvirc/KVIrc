@@ -28,7 +28,7 @@
 #include "KviOptions.h"
 #include "KviInput.h"
 #include "KviTopicWidget.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviIconManager.h"
 
 #include <QPainter>
@@ -164,7 +164,7 @@ void KviTextIconWindow::cellSelected(int row, int column)
 		szItem.append(' ');
 
 		if(m_bAltMode)
-			szItem.prepend(KviMircCntrl::Icon);
+			szItem.prepend(KviControlCodes::Icon);
 
 		if(m_pOwner->inherits("KviInputEditor"))
 			((KviInputEditor *)m_pOwner)->insertText(szItem);

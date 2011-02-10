@@ -33,7 +33,7 @@
 #include "KviLocale.h"
 #include "KviIrcSocket.h"
 #include "KviConfigurationFile.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "kvi_settings.h"
 #include "KviThemedLabel.h"
 #include "KviUserAction.h"
@@ -42,7 +42,7 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcServerParser.h"
 #include "KviIrcUserDataBase.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviWindowToolWidget.h"
 #include "KviKvsEventTriggers.h"
 #include "KviTalHBox.h"
@@ -176,7 +176,7 @@ QString KviQueryWindow::getInfoLabelTipText()
 			szText +=          "<tr><td>";
 
 			if(pEntry->hasRealName())
-				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(pEntry->realName()));
+				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName, szMask, KviControlCodes::stripControlBytes(pEntry->realName()));
 			else
 				szTmp = __tr2qs("%1 is %2").arg(m_szName, szMask);
 
@@ -249,7 +249,7 @@ QString KviQueryWindow::getInfoLabelText()
 					szMask += "*";
 
 				if(pEntry->hasRealName())
-					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(pEntry->realName()));
+					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName, szMask, KviControlCodes::stripControlBytes(pEntry->realName()));
 				else
 					szTmp = __tr2qs("Query with %1!%2").arg(m_szName, szMask);
 
@@ -607,7 +607,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*pcData != KviMircCntrl::CryptEscape)
+			if(*pcData != KviControlCodes::CryptEscape)
 			{
 				KviCString szEncrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(500 - szName.length());
@@ -761,7 +761,7 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 		QString szTmpBuffer;
 		//see bug ticket #220
 		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-			szTmpBuffer = KviMircCntrl::stripControlBytes(szBuffer);
+			szTmpBuffer = KviControlCodes::stripControlBytes(szBuffer);
 		else
 			szTmpBuffer = szBuffer;
 

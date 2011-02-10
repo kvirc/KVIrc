@@ -36,7 +36,7 @@
 #include "KviChannelWindow.h"
 #include "KviTopicWidget.h"
 #include "KviMainWindow.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviQueryWindow.h"
 #include "KviUserListView.h"
 #include "KviAntiSpam.h"
@@ -1451,7 +1451,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage *msg)
 	{
 		chan->output(KVI_OUT_TOPIC,
 			__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""),
-			&szNick,&szUser,&szHost,&szTopic,KviMircCntrl::Reset);
+			&szNick,&szUser,&szHost,&szTopic,KviControlCodes::Reset);
 	}
 }
 

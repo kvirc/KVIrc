@@ -27,7 +27,7 @@
 
 #include "KviWindow.h"
 #include "KviConsoleWindow.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviApplication.h"
 #include "KviOptions.h"
 
@@ -105,7 +105,7 @@ void SlowPasteController::pasteFile(void)
 	{
 		line = data;
 		if(line.isEmpty())
-			line = QChar(KviMircCntrl::Reset);
+			line = QChar(KviControlCodes::Reset);
 
 		line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
 

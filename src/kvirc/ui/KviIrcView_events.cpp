@@ -35,7 +35,7 @@
 #include "KviIrcView_private.h"
 #include "KviIrcView_tools.h"
 #include "KviLocale.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "kvi_out.h"
 #include "KviTopicWidget.h"
@@ -419,20 +419,20 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelect
 {
 	switch(pC->type)
 	{
-		case KviMircCntrl::Bold:
-		case KviMircCntrl::Underline:
-		case KviMircCntrl::Reverse:
-		case KviMircCntrl::Reset:
+		case KviControlCodes::Bold:
+		case KviControlCodes::Underline:
+		case KviControlCodes::Reverse:
+		case KviControlCodes::Reset:
 			szSelectionText.append(QChar(pC->type));
 		break;
-		case KviMircCntrl::Color:
+		case KviControlCodes::Color:
 			szSelectionText.append(QChar(pC->type));
-			if((pC->colors.fore != KviMircCntrl::NoChange) && (pC->colors.fore != KviMircCntrl::Transparent))
+			if((pC->colors.fore != KviControlCodes::NoChange) && (pC->colors.fore != KviControlCodes::Transparent))
 			{
 				if(pC->colors.fore > 9)szSelectionText.append(QChar('1'));
 				szSelectionText.append(QChar((pC->colors.fore%10)+'0'));
 			}
-			if((pC->colors.back != KviMircCntrl::NoChange) && (pC->colors.back != KviMircCntrl::Transparent) )
+			if((pC->colors.back != KviControlCodes::NoChange) && (pC->colors.back != KviControlCodes::Transparent) )
 			{
 				szSelectionText.append(QChar(','));
 				if(pC->colors.back > 9)szSelectionText.append(QChar('1'));
@@ -969,7 +969,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				{
 					QString chanMode;
 					c->getChannelModeString(chanMode);
-					QString topic = KviMircCntrl::stripControlBytes(c->topicWidget()->topic());
+					QString topic = KviControlCodes::stripControlBytes(c->topicWidget()->topic());
 					topic.replace("<","&lt;");
 					topic.replace(">","&gt;");
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());

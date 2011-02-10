@@ -40,7 +40,7 @@
 #include "kvi_socket.h"
 #include "KviIrcConnection.h"
 #include "KviTalVBox.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviMainWindow.h"
 
 #include <QToolTip>
@@ -675,7 +675,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*d != KviMircCntrl::CryptEscape)
+			if(*d != KviControlCodes::CryptEscape)
 			{
 				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
@@ -753,7 +753,7 @@ void DccVideoWindow::ownAction(const QString &text)
 		//see bug ticket #220
 		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
 		{
-			szTmpBuffer = KviMircCntrl::stripControlBytes(text);
+			szTmpBuffer = KviControlCodes::stripControlBytes(text);
 		} else {
 			szTmpBuffer = text;
 		}

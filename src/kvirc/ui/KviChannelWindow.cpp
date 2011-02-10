@@ -38,7 +38,7 @@
 #include "KviMainWindow.h"
 #include "KviConfigurationFile.h"
 #include "KviMaskEditor.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviParameterList.h"
 #include "KviModeEditor.h"
 #include "KviApplication.h"
@@ -50,7 +50,6 @@
 #include "KviIrcConnectionRequestQueue.h"
 #include "KviIrcServerParser.h"
 #include "KviModeWidget.h"
-#include "KviMircCntrl.h"
 #include "KviPointerHashTable.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
@@ -1182,7 +1181,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*pData != KviMircCntrl::CryptEscape)
+			if(*pData != KviControlCodes::CryptEscape)
 			{
 				KviCString szEncrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);
@@ -1329,7 +1328,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 
 	//see bug ticket #220
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-		szTmpBuffer = KviMircCntrl::stripControlBytes(szBuffer);
+		szTmpBuffer = KviControlCodes::stripControlBytes(szBuffer);
 	else
 		szTmpBuffer = szBuffer;
 
@@ -1856,7 +1855,7 @@ void KviChannelWindow::preprocessMessage(QString & szMessage)
 		if(it->contains('\r'))
 			continue;
 
-		QString szTmp = KviMircCntrl::stripControlBytes(*it).trimmed();
+		QString szTmp = KviControlCodes::stripControlBytes(*it).trimmed();
 		if(szTmp.length() < 1)
 			continue;
 

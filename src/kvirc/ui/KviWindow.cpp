@@ -50,7 +50,7 @@
 #include "KviIrcContext.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcConnectionServerInfo.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviWindowToolWidget.h"
 #include "KviKvsScript.h"
 #include "KviTalPopupMenu.h"
@@ -1386,7 +1386,7 @@ void KviWindow::preprocessMessage(QString & szMessage)
 		if(it->contains('\r'))
 			continue;
 		QString szTmp(*it);
-		szTmp = KviMircCntrl::stripControlBytes(szTmp).trimmed();
+		szTmp = KviControlCodes::stripControlBytes(szTmp).trimmed();
 		if(szTmp.length() < 1)
 			continue;
 		if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(szTmp[0]))

@@ -22,16 +22,14 @@
 //
 //=============================================================================
 
-
-
+#include "kvi_sourcesdate.h"
+#include "kvi_socket.h"
+#include "kvi_out.h"
 #include "KviKvsCoreFunctions.h"
-
 #include "KviKvsKernel.h"
 #include "KviKvsArrayCast.h"
 #include "KviKvsObjectController.h"
-
 #include "KviWindow.h"
-#include "kvi_out.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
 #include "KviOptions.h"
@@ -40,9 +38,7 @@
 #include "KviTimeUtils.h"
 #include "KviIrcUserDataBase.h"
 #include "KviModuleManager.h"
-#include "KviMircCntrl.h"
-#include "kvi_sourcesdate.h"
-#include "kvi_socket.h"
+#include "KviControlCodes.h"
 #include "KviBuildInfo.h"
 
 #include <stdlib.h> // rand & srand
@@ -795,7 +791,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Underline)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Underline)));
 		return true;
 	}
 

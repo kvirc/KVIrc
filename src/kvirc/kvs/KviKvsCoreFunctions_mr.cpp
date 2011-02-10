@@ -30,7 +30,7 @@
 #include "KviKvsObjectController.h"
 #include "KviLocale.h"
 #include "KviIrcConnection.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcUserDataBase.h"
@@ -399,7 +399,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Reset)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Reset)));
 		return true;
 	}
 
@@ -535,7 +535,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Reverse)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Reverse)));
 		return true;
 	}
 

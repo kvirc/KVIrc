@@ -31,7 +31,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviThemedLabel.h"
 #include "KviOptions.h"
 #include "KviIrcConnection.h"
@@ -95,7 +95,7 @@ bool ChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
 		case 2:
 		default:
 			//topic
-			return KviMircCntrl::stripControlBytes(m_pData->m_szTopic.toUpper()) < KviMircCntrl::stripControlBytes(((ChannelTreeWidgetItem*)&other)->itemData()->m_szTopic.toUpper());
+			return KviControlCodes::stripControlBytes(m_pData->m_szTopic.toUpper()) < KviControlCodes::stripControlBytes(((ChannelTreeWidgetItem*)&other)->itemData()->m_szTopic.toUpper());
 			break;
 	}
 }
@@ -137,7 +137,7 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint( const QStyleOptionViewItem &sovIt
 		default:
 			//topic
 			if(item->itemData()->m_szStrippedTopic.isEmpty())
-				item->itemData()->m_szStrippedTopic = KviMircCntrl::stripControlBytes(item->itemData()->m_szTopic);
+				item->itemData()->m_szStrippedTopic = KviControlCodes::stripControlBytes(item->itemData()->m_szTopic);
 			return QSize(fm.width(item->itemData()->m_szStrippedTopic), iHeight);
 			break;
 	}

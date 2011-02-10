@@ -31,7 +31,6 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
 #include "KviThemedLabel.h"
 #include "KviInput.h"
 #include "KviFileDialog.h"

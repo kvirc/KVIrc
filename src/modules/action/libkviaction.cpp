@@ -33,7 +33,7 @@
 #include "KviError.h"
 #include "kvi_out.h"
 #include "KviIconManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviKvsUserAction.h"
 #include "KviKvsScript.h"
 
@@ -59,9 +59,9 @@ static bool action_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
-			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cCore action: %Q"),KviMircCntrl::Bold,&(a->name()));
+			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cCore action: %Q"),KviControlCodes::Bold,&(a->name()));
 		else
-			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cUser action: %Q"),KviMircCntrl::Bold,&(a->name()));
+			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cUser action: %Q"),KviControlCodes::Bold,&(a->name()));
 		pOut->output(KVI_OUT_VERBOSE,__tr2qs("Label: %Q"),&(a->visibleName()));
 		pOut->output(KVI_OUT_VERBOSE,__tr2qs("Category: %Q"),&(a->category()->visibleName()));
 		pOut->output(KVI_OUT_VERBOSE,__tr2qs("Description: %Q"),&(a->description()));

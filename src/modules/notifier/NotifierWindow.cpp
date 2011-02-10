@@ -33,7 +33,6 @@
 #include "KviWindow.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
-#include "KviMircCntrl.h"
 #include "KviOptions.h"
 #include "KviUserInput.h"
 #include "KviThemedLineEdit.h"

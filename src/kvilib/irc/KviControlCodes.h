@@ -1,13 +1,14 @@
-#ifndef _KVI_MIRCCNTRL_H_
-#define _KVI_MIRCCNTRL_H_
+#ifndef _KVI_CONTROLCODES_H_
+#define _KVI_CONTROLCODES_H_
 
 //=============================================================================
 //
-//   File : KviMircCntrl.h
+//   File : KviControlCodes.h
 //   Creation date : Thu Jun 29 2000 21:06:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,6 +31,14 @@
 //
 // Better do not touch this :)
 //=============================================================================
+
+/**
+* \file KviControlCodes.h
+* \author Szymon Stefanek
+* \brief This file holds the text control codes
+* 
+* It was originally named KviMircCntrl
+*/
 
 #include "kvi_settings.h"
 #include "KviCString.h"
@@ -104,15 +113,11 @@
 //29 (0001 1101) GS (Group separator)
 
 
-#ifndef _KVI_MIRCCNTRL_CPP_
-	extern KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
-	extern KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
-	extern KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int charIdx,unsigned char *byte_1,unsigned char *byte_2);
-	inline const QChar * getUnicodeColorBytes(const QChar *pData,unsigned char *byte_1,unsigned char *byte_2)
-		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,byte_1,byte_2); }
-#endif
-
-namespace KviMircCntrl
+/**
+* \namespace KviControlCodes
+* \brief Holds all text control code KVIrc uses
+*/
+namespace KviControlCodes
 {
 	/**
 	* \enum Color
@@ -159,10 +164,20 @@ namespace KviMircCntrl
 
 	/**
 	* \brief Removes control bytes from the given string
-	* \param szData The stringe to clean
+	* \param szData The string to clean
 	* \return QString
 	*/
 	KVILIB_API QString stripControlBytes(const QString & szData);
+
+	
+	KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t * pwData, unsigned char * pcByte1, unsigned char * pcByte2);
+
+	KVILIB_API unsigned int getUnicodeColorBytes(const QString & szData, unsigned int iChar, unsigned char * pcByte1, unsigned char * pcByte2);
+#if 0
+	extern KVILIB_API const char * getColorBytes(const char * pcData, unsigned char * pcByte1, unsigned char * pcByte2);
+	inline const QChar * getUnicodeColorBytes(const QChar * pData, unsigned char * pcByte1, unsigned char * pcByte2)
+		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,pcByte1,pcByte2); }
+#endif
 }
 
-#endif //_KVI_MIRCCNTRL_H_
+#endif //_KVI_CONTROLCODES_H_

@@ -34,7 +34,7 @@
 #include "KviConsoleWindow.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviAvatar.h"
 #include "KviIrcUserDataBase.h"
 #include "KviMainWindow.h"
@@ -42,7 +42,6 @@
 #include "KviQString.h"
 #include "KviSSLMaster.h"
 #include "KviOptions.h"
-
 #include "KviKvsAliasManager.h"
 #include "KviKvsScript.h"
 
@@ -369,7 +368,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Bold)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Bold)));
 		return true;
 	}
 

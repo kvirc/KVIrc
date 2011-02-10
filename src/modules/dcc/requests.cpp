@@ -50,7 +50,7 @@
 #include "KviOptions.h"
 #include "kvi_defaults.h"
 #include "KviSharedFilesManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviApplication.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
@@ -705,12 +705,12 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 #endif
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 			__tr2qs_ctx("Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c to send the file (or double-click on the socket)","dcc"),
-			KviMircCntrl::Bold,
+			KviControlCodes::Bold,
 			szSwitches.ptr(),
 			dcc->szParam2.ptr(),dcc->szParam3.ptr(),&(dcc->ctcpMsg->pSource->nick()),
 			szSwitches.ptr(),
 			dcc->szParam2.ptr(),dcc->szParam3.ptr(),&(dcc->ctcpMsg->pSource->nick()),
-			KviMircCntrl::Bold);
+			KviControlCodes::Bold);
 	}
 }
 

@@ -29,7 +29,6 @@
 #include "KviOptions.h"
 #include "KviInput.h"
 #include "KviInputHistory.h"
-#include "KviMircCntrl.h"
 
 #include <QEvent>
 #include <QMouseEvent>

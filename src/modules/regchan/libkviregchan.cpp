@@ -27,7 +27,7 @@
 #include "KviRegisteredChannelDataBase.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviWindow.h"
 #include "kvi_debug.h"
 
@@ -217,7 +217,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 			c->window()->outputNoFmt(
 					KVI_OUT_SYSTEMMESSAGE,
 					__tr2qs_ctx("Channel: %1%2@%3","register")
-						.arg(QChar(KviMircCntrl::Bold))
+						.arg(QChar(KviControlCodes::Bold))
 						.arg(ch->name())
 						.arg(ch->netMask())
 				);

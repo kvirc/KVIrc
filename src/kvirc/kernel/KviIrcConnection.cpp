@@ -66,7 +66,7 @@
 #include "KviLagMeter.h"
 #include "KviKvsEventTriggers.h"
 #include "KviKvsScript.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviUserIdentity.h"
 #include "KviIdentityProfileSet.h"
 #include "KviSASL.h"
@@ -1557,10 +1557,10 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szTags;
 		szTags.sprintf("%c%d,%d%c",
-				KviMircCntrl::Color,
+				KviControlCodes::Color,
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground),
-				KviMircCntrl::Reset);
+				KviControlCodes::Reset);
 		szReal.prepend(szTags.toUtf8());
 	}
 
@@ -1568,9 +1568,9 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szTags;
 		szTags.sprintf("%c%d%c",
-			       KviMircCntrl::Color,
+			       KviControlCodes::Color,
 			       iGenderAvatarTag,
-			       KviMircCntrl::Reset);
+			       KviControlCodes::Reset);
 		szReal.prepend(szTags.toUtf8());
 	}
 

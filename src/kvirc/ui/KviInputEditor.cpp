@@ -37,7 +37,7 @@
 #include "KviKvsKernel.h"
 #include "KviLocale.h"
 #include "KviMdiManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "KviPixmapUtils.h"
 #include "KviQString.h"
@@ -490,25 +490,25 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 {
 	switch(uControlCode)
 	{
-		case KviMircCntrl::Color:
+		case KviControlCodes::Color:
 			return QChar('K');
 			break;
-		case KviMircCntrl::Bold:
+		case KviControlCodes::Bold:
 			return QChar('B');
 			break;
-		case KviMircCntrl::Reset:
+		case KviControlCodes::Reset:
 			return QChar('O');
 			break;
-		case KviMircCntrl::Reverse:
+		case KviControlCodes::Reverse:
 			return QChar('R');
 			break;
-		case KviMircCntrl::Underline:
+		case KviControlCodes::Underline:
 			return QChar('U');
 			break;
-		case KviMircCntrl::CryptEscape:
+		case KviControlCodes::CryptEscape:
 			return QChar('P');
 			break;
-		case KviMircCntrl::Icon:
+		case KviControlCodes::Icon:
 			return QChar('I');
 			break;
 		default:
@@ -525,13 +525,13 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 	QChar c = m_szTextBuffer[iIdx];
 
 	if((c.unicode() > 32) ||
-		((c != QChar(KviMircCntrl::Color)) &&
-		(c != QChar(KviMircCntrl::Bold)) &&
-		(c != QChar(KviMircCntrl::Underline)) &&
-		(c != QChar(KviMircCntrl::Reset)) &&
-		(c != QChar(KviMircCntrl::Reverse)) &&
-		(c != QChar(KviMircCntrl::CryptEscape)) &&
-		(c != QChar(KviMircCntrl::Icon))))
+		((c != QChar(KviControlCodes::Color)) &&
+		(c != QChar(KviControlCodes::Bold)) &&
+		(c != QChar(KviControlCodes::Underline)) &&
+		(c != QChar(KviControlCodes::Reset)) &&
+		(c != QChar(KviControlCodes::Reverse)) &&
+		(c != QChar(KviControlCodes::CryptEscape)) &&
+		(c != QChar(KviControlCodes::Icon))))
 	{
 		m_bControlBlock = false;
 		//Not a control code...run..
@@ -539,13 +539,13 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 		{
 			c = m_szTextBuffer[iIdx];
 			if((c.unicode() > 32) ||
-				((c != QChar(KviMircCntrl::Color)) &&
-				(c != QChar(KviMircCntrl::Bold)) &&
-				(c != QChar(KviMircCntrl::Underline)) &&
-				(c != QChar(KviMircCntrl::Reset)) &&
-				(c != QChar(KviMircCntrl::Reverse)) &&
-				(c != QChar(KviMircCntrl::CryptEscape)) &&
-				(c != QChar(KviMircCntrl::Icon))))
+				((c != QChar(KviControlCodes::Color)) &&
+				(c != QChar(KviControlCodes::Bold)) &&
+				(c != QChar(KviControlCodes::Underline)) &&
+				(c != QChar(KviControlCodes::Reset)) &&
+				(c != QChar(KviControlCodes::Reverse)) &&
+				(c != QChar(KviControlCodes::CryptEscape)) &&
+				(c != QChar(KviControlCodes::Icon))))
 			{
 				m_iBlockLen++;
 				int iXxx = (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
@@ -562,30 +562,30 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 		//Control code
 		switch(c.unicode())
 		{
-			case KviMircCntrl::Bold:
+			case KviControlCodes::Bold:
 				m_bCurBold = ! m_bCurBold;
 				break;
-			case KviMircCntrl::Underline:
+			case KviControlCodes::Underline:
 				m_bCurUnderline = ! m_bCurUnderline;
 				break;
-			case KviMircCntrl::Reset:
+			case KviControlCodes::Reset:
 				m_iCurFore = KVI_INPUT_DEF_FORE;
 				m_iCurBack = KVI_INPUT_DEF_BACK;
 				m_bCurBold = false;
 				m_bCurUnderline = false;
 				break;
-			case KviMircCntrl::Reverse:
+			case KviControlCodes::Reverse:
 			{
 				char cAuxClr = m_iCurFore;
 				m_iCurFore  = m_iCurBack;
 				m_iCurBack  = cAuxClr;
 			}
 			break;
-			case KviMircCntrl::CryptEscape:
-			case KviMircCntrl::Icon:
+			case KviControlCodes::CryptEscape:
+			case KviControlCodes::Icon:
 				// makes a single block
 				break;
-			case KviMircCntrl::Color:
+			case KviControlCodes::Color:
 			{
 				iIdx++;
 				if(iIdx >= ((int)(m_szTextBuffer.length())))
@@ -593,11 +593,11 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 
 				unsigned char uFore;
 				unsigned char uBack;
-				iIdx = getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
-				if(uFore != KviMircCntrl::NoChange)
+				iIdx = KviControlCodes::getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
+				if(uFore != KviControlCodes::NoChange)
 				{
 					m_iCurFore = uFore;
-					if(uBack != KviMircCntrl::NoChange)
+					if(uBack != KviControlCodes::NoChange)
 						m_iCurBack = uBack;
 				} else {
 					// ONLY a CTRL+K
@@ -624,36 +624,36 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 		{
 			switch(uChar)
 			{
-				case KviMircCntrl::Bold:
+				case KviControlCodes::Bold:
 					m_bCurBold = ! m_bCurBold;
 					break;
-				case KviMircCntrl::Underline:
+				case KviControlCodes::Underline:
 					m_bCurUnderline = ! m_bCurUnderline;
 					break;
-				case KviMircCntrl::Reset:
+				case KviControlCodes::Reset:
 					m_iCurFore = KVI_INPUT_DEF_FORE;
 					m_iCurBack = KVI_INPUT_DEF_BACK;
 					m_bCurBold = false;
 					m_bCurUnderline = false;
 					break;
-				case KviMircCntrl::Reverse:
+				case KviControlCodes::Reverse:
 				{
 					char cAuxClr = m_iCurFore;
 					m_iCurFore = m_iCurBack;
 					m_iCurBack = cAuxClr;
 				}
 				break;
-				case KviMircCntrl::Color:
+				case KviControlCodes::Color:
 				{
 					iIdx++;
 					if(iIdx >= ((int)(m_szTextBuffer.length())))return;
 					unsigned char uFore;
 					unsigned char uBack;
-					iIdx = getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
+					iIdx = KviControlCodes::getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
 					iIdx--;
-					if(uFore != KviMircCntrl::NoChange) m_iCurFore = uFore;
+					if(uFore != KviControlCodes::NoChange) m_iCurFore = uFore;
 					else m_iCurFore = KVI_INPUT_DEF_FORE;
-					if(uBack != KviMircCntrl::NoChange) m_iCurBack = uBack;
+					if(uBack != KviControlCodes::NoChange) m_iCurBack = uBack;
 					else m_iCurBack = KVI_INPUT_DEF_BACK;
 				}
 				break;
@@ -853,7 +853,7 @@ void KviInputEditor::iconPopupActivated(int iId)
 		QString szText = m_pIconMenu->text(iId);
 		if(!szText.isEmpty())
 		{
-			szText.prepend(KviMircCntrl::Icon);
+			szText.prepend(KviControlCodes::Icon);
 			szText.append(' ');
 			insertText(szText);
 		}
@@ -964,7 +964,7 @@ void KviInputEditor::insertText(const QString & szTxt)
 			if(iIdx != -1)
 			{
 				szBlock = szText.left(iIdx);
-				//else szBlock = QChar(KviMircCntrl::Reset);
+				//else szBlock = QChar(KviControlCodes::Reset);
 				szText.remove(0,iIdx+1);
 			} else {
 				szBlock = szText;
@@ -2181,34 +2181,34 @@ void KviInputEditor::nextWordSelection()
 
 void KviInputEditor::insertBold()
 {
-	if(!m_bReadOnly) insertChar(KviMircCntrl::Bold);
+	if(!m_bReadOnly) insertChar(KviControlCodes::Bold);
 }
 
 void KviInputEditor::insertReset()
 {
-	if(!m_bReadOnly) insertChar(KviMircCntrl::Reset);
+	if(!m_bReadOnly) insertChar(KviControlCodes::Reset);
 }
 
 void KviInputEditor::insertUnderline()
 {
-	if(!m_bReadOnly) insertChar(KviMircCntrl::Underline);
+	if(!m_bReadOnly) insertChar(KviControlCodes::Underline);
 }
 
 void KviInputEditor::insertReverse()
 {
-	if(!m_bReadOnly) insertChar(KviMircCntrl::Reverse);
+	if(!m_bReadOnly) insertChar(KviControlCodes::Reverse);
 }
 
 void KviInputEditor::insertPlainText()
 {
-	if(!m_bReadOnly) insertChar(KviMircCntrl::CryptEscape); // DO NOT CRYPT THIS STUFF
+	if(!m_bReadOnly) insertChar(KviControlCodes::CryptEscape); // DO NOT CRYPT THIS STUFF
 }
 
 void KviInputEditor::insertIcon()
 {
 	if(!m_bReadOnly)
 	{
-		insertChar(KviMircCntrl::Icon); // THE NEXT WORD IS AN ICON NAME
+		insertChar(KviControlCodes::Icon); // THE NEXT WORD IS AN ICON NAME
 		int iXPos = xPositionFromCharIndex(m_iCursorPosition);
 		if(iXPos > 24)
 			iXPos-=24;
@@ -2226,7 +2226,7 @@ void KviInputEditor::insertColor()
 {
 	if(!m_bReadOnly)
 	{
-		insertChar(KviMircCntrl::Color);
+		insertChar(KviControlCodes::Color);
 		int xPos = xPositionFromCharIndex(m_iCursorPosition);
 		if(xPos > 24)xPos-=24;
 		if(!g_pColorWindow)g_pColorWindow = new KviColorWindow();

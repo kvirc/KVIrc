@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-
-
+#include "kvi_defaults.h"
+#include "kvi_out.h"
 #include "KviIrcUrl.h"
 #include "KviApplication.h"
 #include "KviConsoleWindow.h"
@@ -32,7 +32,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviIrcView.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviInput.h"
 #include "KviError.h"
 #include "KviProxyDataBase.h"
@@ -40,14 +40,12 @@
 #include "KviIrcServer.h"
 #include "KviIrcServerDataBase.h"
 #include "KviDnsResolver.h"
-#include "kvi_defaults.h"
 #include "KviIrcUserDataBase.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
 #include "KviParameterList.h"
 #include "KviRegisteredUserDataBase.h"
 #include "KviUserListView.h"
-#include "kvi_out.h"
 #include "KviConfigurationFile.h"
 #include "KviIrcToolBar.h"
 #include "KviInternalCommand.h"
@@ -287,7 +285,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	if(e->hasRealName())
 	{
 		buffer += "<tr><td><center><b>";
-		buffer += KviMircCntrl::stripControlBytes(e->realName());
+		buffer += KviControlCodes::stripControlBytes(e->realName());
 		buffer += "</b></center></td></tr>";
 	}
 
@@ -576,7 +574,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 {
 	QString szPattern=KVI_OPTION_STRING(KviOption_stringWordSplitters);
 	QString szSource;
-	QString szStripMsg=KviMircCntrl::stripControlBytes(szMsg);
+	QString szStripMsg=KviControlCodes::stripControlBytes(szMsg);
 	QRegExp rgxHlite;
 	Qt::CaseSensitivity cs = KVI_OPTION_BOOL(KviOption_boolCaseSensitiveHighlighting) ? Qt::CaseSensitive : Qt::CaseInsensitive;
 
@@ -692,7 +690,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 	QString szDecodedMessage = msg; // shallow copy
 
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-		szDecodedMessage = KviMircCntrl::stripControlBytes(szDecodedMessage);
+		szDecodedMessage = KviControlCodes::stripControlBytes(szDecodedMessage);
 
 	if(!(iFlags & NoHighlighting))
 	{
@@ -777,8 +775,8 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 				szNick.prepend(KviNickColors::getSmartColor(sum));
 			}
 		}
-		szNick.prepend(KviMircCntrl::Color);
-		szNick.append(KviMircCntrl::Color);
+		szNick.prepend(KviControlCodes::Color);
+		szNick.append(KviControlCodes::Color);
 	}
 /*	if(KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && bIsChan)
 	{
@@ -817,8 +815,8 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 	}*/
 	if(KVI_OPTION_BOOL(KviOption_boolBoldedNicks))
 	{
-		szNick.prepend(KviMircCntrl::Bold);
-		szNick.append(KviMircCntrl::Bold);
+		szNick.prepend(KviControlCodes::Bold);
+		szNick.append(KviControlCodes::Bold);
 	}
 
 	QString szMessage;
@@ -1080,7 +1078,7 @@ void KviConsoleWindow::applyOptions()
 	if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 	{
 		int iBack = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
-		if(iBack == KviMircCntrl::Transparent)
+		if(iBack == KviControlCodes::Transparent)
 		{
 			m_szOwnSmartColor = QString("%1").arg(KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground));
 		} else {

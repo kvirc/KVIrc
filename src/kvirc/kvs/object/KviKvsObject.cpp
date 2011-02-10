@@ -22,21 +22,19 @@
 //
 //=============================================================================
 
+#include "kvi_out.h"
 #include "KviKvsObject.h"
 #include "KviKvsHash.h"
 #include "KviKvsKernel.h"
 #include "KviWindow.h"
 #include "KviApplication.h"
-
 #include "KviModuleManager.h"
 #include "KviConsoleWindow.h"
 #include "KviLocale.h"
 #include "KviError.h"
-#include "kvi_out.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviIconManager.h"
 #include "KviMemory.h"
-
 #include "KviKvsObjectController.h"
 #include "KviKvsObjectFunctionCall.h"
 #include "KviKvsObjectFunctionHandlerImpl.h"
@@ -1153,7 +1151,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				if(bArray)
 					szOut = QString("%1, %2").arg(szName,szType);
 				else {
-					szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4","kvs")).arg(KviMircCntrl::Bold).arg(szName).arg(KviMircCntrl::Bold).arg(szType);
+					szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4","kvs")).arg(KviControlCodes::Bold).arg(szName).arg(KviControlCodes::Bold).arg(szType);
 					szOut.prepend(" ");
 				}
 

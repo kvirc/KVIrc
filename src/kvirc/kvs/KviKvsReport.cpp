@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "KviKvsReport.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
 #include "KviApplication.h"
@@ -124,7 +124,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 	if(us)pBegin++;
 
 	{
-		QString * pListingStr = new QString(QString("%1%2 ").arg(QChar(KviMircCntrl::Bold)).arg(iLine));
+		QString * pListingStr = new QString(QString("%1%2 ").arg(QChar(KviControlCodes::Bold)).arg(iLine));
 		*pListingStr += QString(pLineBegin,pBegin - pLineBegin);
 		pListingStr->replace("\n","");
 		pListing->append(pListingStr);
@@ -185,19 +185,19 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 	{
 		case KviKvsReport::ParserWarning:
 			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KviMircCntrl::Bold,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
 		break;
 		case KviKvsReport::ParserError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Compilation Error: %Q","kvs"),KviMircCntrl::Bold,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Compilation Error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
 		break;
 		case KviKvsReport::RunTimeWarning:
 			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KviMircCntrl::Bold,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
 		break;
 		case KviKvsReport::RunTimeError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Runtime Error: %Q","kvs"),KviMircCntrl::Bold,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Runtime Error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
 		break;
 	}
 

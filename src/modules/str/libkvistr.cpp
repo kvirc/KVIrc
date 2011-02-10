@@ -27,7 +27,7 @@
 
 #include "KviModule.h"
 #include "KviLocale.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviQString.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
@@ -886,7 +886,7 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(KviMircCntrl::stripControlBytes(szString));
+	c->returnValue()->setString(KviControlCodes::stripControlBytes(szString));
 	return true;
 }
 

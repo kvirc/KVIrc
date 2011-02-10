@@ -44,7 +44,6 @@
 #include "KviError.h"
 #include "KviOptions.h"
 #include "kvi_defaults.h"
-#include "KviMircCntrl.h"
 #include "KviApplication.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"

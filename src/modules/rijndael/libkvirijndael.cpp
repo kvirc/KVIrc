@@ -29,7 +29,7 @@
 #include "KviModule.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviTimeUtils.h"
 #include "UglyBase64.h"
 
@@ -208,7 +208,7 @@
 				return KviCryptEngine::EncryptError;
 			}
 		}
-		outBuffer.prepend(KviMircCntrl::CryptEscape);
+		outBuffer.prepend(KviControlCodes::CryptEscape);
 		return KviCryptEngine::Encrypted;
 	}
 
@@ -220,7 +220,7 @@
 			return KviCryptEngine::DecryptError;
 		}
 
-		if(*inBuffer != KviMircCntrl::CryptEscape)
+		if(*inBuffer != KviControlCodes::CryptEscape)
 		{
 			plainText = inBuffer;
 			return KviCryptEngine::DecryptOkWasPlainText;

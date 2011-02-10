@@ -26,7 +26,7 @@
 
 #include "KviTopicWidget.h"
 #include "KviOptions.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviLocale.h"
 #include "kvi_defaults.h"
 #include "kvi_settings.h"
@@ -41,7 +41,6 @@
 #include "KviIrcConnectionServerInfo.h"
 #include "KviIrcConnectionUserInfo.h"
 #include "KviHtmlGenerator.h"
-#include "KviMircCntrl.h"
 #include "KviTalToolTip.h"
 #include "KviTalPopupMenu.h"
 #include "KviThemedLabel.h"
@@ -76,7 +75,7 @@ QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &,const Q
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
 	KviTopicListBoxItem* item = (KviTopicListBoxItem*) listWidget->item(index.row());
 
-	return listWidget->fontMetrics().size(Qt::TextSingleLine, KviMircCntrl::stripControlBytes(item->text()));
+	return listWidget->fontMetrics().size(Qt::TextSingleLine, KviControlCodes::stripControlBytes(item->text()));
 }
 
 void KviTopicListBoxItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
@@ -99,7 +98,7 @@ KviTopicListBoxItem::~KviTopicListBoxItem()
 
 int KviTopicListBoxItem::width ( const KviTalListWidget * lb ) const
 {
-	return lb->fontMetrics().width(KviMircCntrl::stripControlBytes(text()));
+	return lb->fontMetrics().width(KviControlCodes::stripControlBytes(text()));
 }
 
 
@@ -193,12 +192,12 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 		unsigned int start = idx;
 
 		while((idx < (unsigned int)text.length()) &&
-				(c != KviMircCntrl::Color) &&
-				(c != KviMircCntrl::Bold) &&
-				(c != KviMircCntrl::Underline) &&
-				(c != KviMircCntrl::Reverse) &&
-				(c != KviMircCntrl::Reset) &&
-				(c != KviMircCntrl::Icon)
+				(c != KviControlCodes::Color) &&
+				(c != KviControlCodes::Bold) &&
+				(c != KviControlCodes::Underline) &&
+				(c != KviControlCodes::Reverse) &&
+				(c != KviControlCodes::Reset) &&
+				(c != KviControlCodes::Icon)
 			)
 		{
 			idx++;
@@ -250,9 +249,9 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 
 		switch(c)
 		{
-			case KviMircCntrl::Bold: curBold = !curBold; ++idx; break;
-			case KviMircCntrl::Underline: curUnderline = !curUnderline; ++idx; break;
-			case KviMircCntrl::Reverse:
+			case KviControlCodes::Bold: curBold = !curBold; ++idx; break;
+			case KviControlCodes::Underline: curUnderline = !curUnderline; ++idx; break;
+			case KviControlCodes::Reverse:
 				{
 					char auxBack = curBack;
 					curBack = curFore;
@@ -260,23 +259,23 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				}
 				++idx;
 			break;
-			case KviMircCntrl::Reset:
+			case KviControlCodes::Reset:
 				curFore = KVI_LABEL_DEF_FORE;
 				curBack = KVI_LABEL_DEF_BACK;
 				curBold = false;
 				curUnderline = false;
 				++idx;
 			break;
-			case KviMircCntrl::Color:
+			case KviControlCodes::Color:
 			{
 				++idx;
 				unsigned char fore;
 				unsigned char back;
-				idx = getUnicodeColorBytes(text,idx,&fore,&back);
-				if(fore != KviMircCntrl::NoChange)
+				idx = KviControlCodes::getUnicodeColorBytes(text,idx,&fore,&back);
+				if(fore != KviControlCodes::NoChange)
 				{
 					curFore = fore;
-					if(back != KviMircCntrl::NoChange)
+					if(back != KviControlCodes::NoChange)
 						curBack = back;
 				} else {
 					// only a CTRL+K
@@ -285,7 +284,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				}
 			}
 			break;
-			case KviMircCntrl::Icon:
+			case KviControlCodes::Icon:
 			{
 				++idx;
 
@@ -676,22 +675,22 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 {
 	switch(control_code)
 	{
-		case KviMircCntrl::Color:
+		case KviControlCodes::Color:
 			return QChar('K');
 			break;
-		case KviMircCntrl::Bold:
+		case KviControlCodes::Bold:
 			return QChar('B');
 			break;
-		case KviMircCntrl::Reset:
+		case KviControlCodes::Reset:
 			return QChar('O');
 			break;
-		case KviMircCntrl::Reverse:
+		case KviControlCodes::Reverse:
 			return QChar('R');
 			break;
-		case KviMircCntrl::Underline:
+		case KviControlCodes::Underline:
 			return QChar('U');
 			break;
-		case KviMircCntrl::Icon:
+		case KviControlCodes::Icon:
 			return QChar('I');
 			break;
 		default:

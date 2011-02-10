@@ -95,6 +95,7 @@ SET(kvilib_SRCS
 	file/KviPackageWriter.cpp
 	irc/KviAvatar.cpp
 	irc/KviAvatarCache.cpp
+	irc/KviControlCodes.cpp
 	irc/KviIdentityProfile.cpp
 	irc/KviIdentityProfileSet.cpp
 	irc/KviIrcMask.cpp
@@ -104,7 +105,6 @@ SET(kvilib_SRCS
 	irc/KviIrcServerReconnectInfo.cpp
 	irc/KviIrcUserDataBase.cpp
 	irc/KviIrcUserEntry.cpp
-	irc/KviMircCntrl.cpp
 	irc/KviNickServRule.cpp
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp

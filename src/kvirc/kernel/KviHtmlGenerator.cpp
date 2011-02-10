@@ -25,7 +25,7 @@
 #include "KviHtmlGenerator.h"
 
 #include "KviIconManager.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "KviTextIconManager.h"
 
@@ -54,12 +54,12 @@ namespace KviHtmlGenerator
 			unsigned int uStart = uIdx;
 
 			while(
-					(c != KviMircCntrl::Color) &&
-					(c != KviMircCntrl::Bold) &&
-					(c != KviMircCntrl::Underline) &&
-					(c != KviMircCntrl::Reverse) &&
-					(c != KviMircCntrl::Reset) &&
-					(c != KviMircCntrl::Icon) &&
+					(c != KviControlCodes::Color) &&
+					(c != KviControlCodes::Bold) &&
+					(c != KviControlCodes::Underline) &&
+					(c != KviControlCodes::Reverse) &&
+					(c != KviControlCodes::Reset) &&
+					(c != KviControlCodes::Icon) &&
 					((c != ':') || bIgnoreIcons) &&
 					((c != ';') || bIgnoreIcons) &&
 					((c != '=') || bIgnoreIcons)
@@ -148,13 +148,13 @@ namespace KviHtmlGenerator
 
 			switch(c)
 			{
-				case KviMircCntrl::Bold:
+				case KviControlCodes::Bold:
 					bCurBold = !bCurBold; ++uIdx;
 				break;
-				case KviMircCntrl::Underline:
+				case KviControlCodes::Underline:
 					bCurUnderline = !bCurUnderline; ++uIdx;
 				break;
-				case KviMircCntrl::Reverse:
+				case KviControlCodes::Reverse:
 					{
 						char auxBack = uCurBack;
 						uCurBack = uCurFore;
@@ -162,23 +162,23 @@ namespace KviHtmlGenerator
 					}
 					++uIdx;
 				break;
-				case KviMircCntrl::Reset:
+				case KviControlCodes::Reset:
 					uCurFore = KVI_LABEL_DEF_FORE;
 					uCurBack = KVI_LABEL_DEF_BACK;
 					bCurBold = false;
 					bCurUnderline = false;
 					++uIdx;
 				break;
-				case KviMircCntrl::Color:
+				case KviControlCodes::Color:
 				{
 					++uIdx;
 					unsigned char fore;
 					unsigned char back;
-					uIdx = getUnicodeColorBytes(szText,uIdx,&fore,&back);
-					if(fore != KviMircCntrl::NoChange)
+					uIdx = KviControlCodes::getUnicodeColorBytes(szText,uIdx,&fore,&back);
+					if(fore != KviControlCodes::NoChange)
 					{
 						uCurFore = fore;
-						if(back != KviMircCntrl::NoChange)
+						if(back != KviControlCodes::NoChange)
 							uCurBack = back;
 					} else {
 						// only a CTRL+K
@@ -273,7 +273,7 @@ namespace KviHtmlGenerator
 					}
 				}
 				break;
-				case KviMircCntrl::Icon:
+				case KviControlCodes::Icon:
 				{
 					++uIdx;
 					if(bShowIcons)

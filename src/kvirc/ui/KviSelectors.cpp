@@ -28,7 +28,7 @@
 #include "KviSelectors.h"
 #include "KviLocale.h"
 #include "KviOptions.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviFileDialog.h"
 #include "KviKvsScript.h"
 #include "KviTalPopupMenu.h"
@@ -722,7 +722,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	m_pBackPopup = new KviTalPopupMenu(this);
 	connect(m_pBackPopup,SIGNAL(activated(int)),this,SLOT(backSelected(int)));
 	i = m_pBackPopup->insertItem(__tr2qs("Transparent"));
-	m_pBackPopup->setItemParameter(i,KviMircCntrl::Transparent);
+	m_pBackPopup->setItemParameter(i,KviControlCodes::Transparent);
 	for(i=0;i<KVI_MIRCCOLOR_MAX_BACKGROUND;i++)
 	{
 		QPixmap tmp(120,16);
@@ -756,8 +756,8 @@ void KviMircTextColorSelector::setButtonPalette()
 
 	if(m_uBack > KVI_MIRCCOLOR_MAX_BACKGROUND)
 	{
-		if(m_uBack != KviMircCntrl::Transparent)
-			m_uBack = KviMircCntrl::Transparent;
+		if(m_uBack != KviControlCodes::Transparent)
+			m_uBack = KviControlCodes::Transparent;
 		pal = palette();
 	} else {
 		pal = QPalette(KVI_OPTION_MIRCCOLOR(m_uBack));

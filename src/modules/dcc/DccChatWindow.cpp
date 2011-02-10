@@ -52,7 +52,7 @@
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
 #include "KviKvsEventTriggers.h"
-#include "KviMircCntrl.h"
+#include "KviControlCodes.h"
 #include "KviTalVBox.h"
 
 #include <QEvent>
@@ -308,7 +308,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*d != KviMircCntrl::CryptEscape)
+			if(*d != KviControlCodes::CryptEscape)
 			{
 				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
@@ -386,7 +386,7 @@ void DccChatWindow::ownAction(const QString &text)
 		//see bug ticket #220
 		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
 		{
-			szTmpBuffer = KviMircCntrl::stripControlBytes(text);
+			szTmpBuffer = KviControlCodes::stripControlBytes(text);
 		} else {
 			szTmpBuffer = text;
 		}
