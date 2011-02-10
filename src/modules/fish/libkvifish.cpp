@@ -86,6 +86,7 @@
 	#endif
 
 	#define FISH_KEYLEN 180
+	#define SHA256_LEN 32
 
 	static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 	{
@@ -247,13 +248,12 @@
 		BN_zero(bn);
 		BN_free(bn);
 
-		/// SHA256 hash = 32 byte
-		unsigned char * hashedSecret=(unsigned char *) KviMemory::allocate(32);
+		unsigned char * hashedSecret=(unsigned char *) KviMemory::allocate(SHA256_LEN);
 		SHA256(secret, secretLen, hashedSecret);
 
 		KviMemory::free(secret);
 
-		szFinalKey.bufferToBase64((char *) hashedSecret, 32);
+		szFinalKey.bufferToBase64((char *) hashedSecret, SHA256_LEN);
 		//strip the trailing =
 		szFinalKey.stripRight('=');
 		
@@ -271,7 +271,7 @@
 			}
 
 			CryptoPP::SHA256().CalculateDigest(byteHashedSecret, byteSharedSecret, g_fish_dh->AgreedValueLength());
-			szFinalKey.bufferToBase64((char *) byteHashedSecret.BytePtr(), byteHashedSecret.SizeInBytes());
+			szFinalKey.bufferToBase64((char *) byteHashedSecret.BytePtr(), SHA256_LEN);
 			//strip the trailing =
 			szFinalKey.stripRight('=');
 
