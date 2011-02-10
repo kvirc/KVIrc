@@ -28,6 +28,9 @@
 #include "KviApplication.h"
 #include "KviTalPopupMenu.h"
 
+#define _WANT_OPTION_FLAGS_
+#include "KviOptions.h"
+
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
@@ -96,11 +99,13 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 void KviToolBar::setBigIcons()
 {
 	g_pMainWindow->setUsesBigPixmaps(true);
+	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
 }
 
 void KviToolBar::setSmallIcons()
 {
 	g_pMainWindow->setUsesBigPixmaps(false);
+	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

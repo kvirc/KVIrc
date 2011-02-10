@@ -17,6 +17,10 @@ SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # Minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6.4)
 
+if(POLICY CMP0017)
+	cmake_policy(SET CMP0017 NEW)
+endif(POLICY CMP0017)
+
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
