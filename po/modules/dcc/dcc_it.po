@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-01-10 19:20+0100\n"
+"PO-Revision-Date: 2011-02-10 19:04+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -280,7 +280,7 @@ msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:724
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
-msgstr ""
+msgstr "Auto-salvataggio DCC %Q file %Q come \r![!dbl]play $0\r%Q\r"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1560
 msgid "Avg:"
@@ -507,10 +507,9 @@ msgid "Invalid IP address in old format %1"
 msgstr "Vecchio formato dell'indirizzo IP %1 non valido"
 
 #: src/modules/dcc/requests.cpp:640
-#, fuzzy
 msgid "Invalid RECV request: Position %1 is larger than file size"
 msgstr ""
-"Richiesta di RECV non valida: la posizione %1 è più grande della dimensione "
+"Richiesta RECV non valida: la posizione %1 è più grande della dimensione "
 "del file"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2115

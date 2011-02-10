@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-01-11 02:46+0100\n"
+"PO-Revision-Date: 2011-02-10 19:23+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -302,9 +302,8 @@ msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] ha rimosso il Limite del Canale"
 
 #: src/modules/file/libkvifile.cpp:1436 src/modules/str/libkvistr.cpp:1387
-#, fuzzy
 msgid "%Q algorithm is not supported"
-msgstr "Algoritmo %Q non è supportato"
+msgstr "Algoritmo %Q non supportato"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:692 src/kvirc/kernel/KviIrcLink.cpp:400
 msgid "%Q established [%s (%s:%u)]"
@@ -1002,7 +1001,6 @@ msgstr ""
 "della licenza è mostrata nel riquadro sotto.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:492
-#, fuzzy
 msgid ""
 "<p>Here you can choose how much KVIrc will integrate with your system."
 "<br><br>The default settings are fine for most users so if you're in doubt "
@@ -1010,7 +1008,7 @@ msgid ""
 msgstr ""
 "<p>Qui puoi scegliere quanto KVIrc si integrerà col tuo sistema.<br><br>I "
 "settaggi predefiniti vanno bene per molti utenti quindi se sei in dubbio "
-"clicca \"<b>Prossimo</b>\" e vai alla pagina successiva.</p>"
+"clicca \"<b>Fine</b>\" per continuare.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:425
 msgid ""
@@ -1979,9 +1977,8 @@ msgid "Channel Modes"
 msgstr "Modi del Canale"
 
 #: src/kvirc/kernel/KviOptions.cpp:876
-#, fuzzy
 msgid "Channel URL"
-msgstr "Canale"
+msgstr "URL Canale"
 
 #: src/kvirc/kernel/KviOptions.cpp:791
 msgid "Channel creation time reply"
@@ -2072,9 +2069,8 @@ msgstr "Il canale è stato creato il %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1669
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1674
-#, fuzzy
 msgid "Channel web site is %Q"
-msgstr "Il Topic del canale è %Q"
+msgstr "Il sito web del canale è %Q"
 
 #: src/modules/list/ListWindow.cpp:470
 msgid "Channels list download finished"
@@ -2471,9 +2467,8 @@ msgid "Crypto++ threw the following exception: "
 msgstr "Crypto++ ha sollevato la seguente eccezione: "
 
 #: src/modules/fish/libkvifish.cpp:138 src/modules/fish/libkvifish.cpp:280
-#, fuzzy
 msgid "Crypto++ threw the following exception: %1"
-msgstr "Crypto++ ha sollevato la seguente eccezione: "
+msgstr "Crypto++ ha sollevato la seguente eccezione: %1"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:489
 msgid ""
@@ -3043,9 +3038,8 @@ msgid "Failed to execute the init routine"
 msgstr "Fallito nell'esecuzione della 'routine init'"
 
 #: src/modules/fish/libkvifish.cpp:304
-#, fuzzy
 msgid "Failed to initialize the Mircryption engine: %Q"
-msgstr "Impossibile inizializzare il motore di crittazione specificato: %Q"
+msgstr "Impossibile inizializzare il motore Mircryption: %Q"
 
 #: src/modules/window/libkviwindow.cpp:1588
 msgid "Failed to initialize the specified crypt engine: %Q"
@@ -3141,34 +3135,35 @@ msgid "Female"
 msgstr "Femmina"
 
 #: src/modules/fish/libkvifish.cpp:180 src/modules/fish/libkvifish.cpp:284
-#, fuzzy
 msgid ""
 "FiSH has been compiled without ssl and crypto++ support, unable to proceed"
-msgstr "Questo eseguibile è stato compilato senza il supporto alla crittazione"
+msgstr ""
+"FiSH è stato compilato senza il supporto SSL e crypto++, non posso procedere"
 
 #: src/modules/fish/libkvifish.cpp:143
-#, fuzzy
 msgid ""
 "FiSH has been compiled without ssl or cryptopp support, unable to proceed"
-msgstr "Questo eseguibile è stato compilato senza il supporto alla crittazione"
+msgstr ""
+"FiSH è stato compilato senza il supporto SSL o crypto++, non posso procedere"
 
 #: src/modules/fish/libkvifish.cpp:311
-#, fuzzy
 msgid "FiSH: Key for %1 successfully set!"
-msgstr "Scaricamento file da %1 completamente riuscito"
+msgstr "FiSH: chiave per %1 settata!"
 
 #: src/modules/fish/libkvifish.cpp:188
 msgid "FiSH: Received DH1080 public key from %1, sending mine..."
-msgstr ""
+msgstr "FiSH: ricevuta chiave pubblica DH1080 da %1, invio la nostra..."
 
 #: src/modules/fish/libkvifish.cpp:334
-#, fuzzy
 msgid "FiSH: Sent my DH1080 public key to %1, waiting for reply ..."
-msgstr "Inviata richiesta della lista dei canali, attendo la risposta..."
+msgstr ""
+"FiSH: inviata la nostra chiave pubblica DH1080 a %1, attendo la risposta..."
 
 #: src/modules/fish/libkvifish.cpp:244 src/modules/fish/libkvifish.cpp:269
 msgid "FiSH: error verificating peer public key (size=%1)"
 msgstr ""
+"FiSH: errore nella verifica della chiave pubblica del client remoto "
+"(dimensione = %1)"
 
 #: src/kvilib/ext/KviMediaManager.cpp:327
 msgid "Fifo"
@@ -3972,9 +3967,8 @@ msgid "KVIrc KVS Script"
 msgstr "Script KVIrc KVS"
 
 #: src/kvirc/kernel/KviApplication.cpp:751
-#, fuzzy
 msgid "KVIrc Messaging"
-msgstr "Sistema di messaggistica KVIrc"
+msgstr "Messaggistica di KVIrc"
 
 # io leverei la stringa anche dall'originale..
 #: src/kvirc/ui/KviMenuBar.cpp:122
@@ -5521,9 +5515,8 @@ msgid "Query encrypted private message"
 msgstr "Messaggio privato della Query criptato"
 
 #: src/modules/fish/libkvifish.cpp:232
-#, fuzzy
 msgid "Query not found: %Q"
-msgstr "Host non trovato"
+msgstr "Query non trovata: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:808
 msgid "Query notice"
@@ -6585,9 +6578,8 @@ msgid "The DBus call returned an error \"%s\": %s"
 msgstr "La chiamata DBus ha ritornato un errore \"%s\": %s"
 
 #: src/modules/fish/libkvifish.cpp:308
-#, fuzzy
 msgid "The Mircryption crypt engine does not exist"
-msgstr "Il motore di crittazione \"%Q\" non esiste"
+msgstr "Il motore di crittazione Mircryption non esiste"
 
 #: src/kvilib/core/KviError.cpp:117
 msgid "The SOCKSv4 protocol lacks IPv6 support"

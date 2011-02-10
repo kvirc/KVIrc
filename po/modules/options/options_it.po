@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-01-10 19:28+0100\n"
+"PO-Revision-Date: 2011-02-10 19:16+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -923,11 +923,12 @@ msgstr ""
 "file dell'avatar è aggiunta per l'utente che l'ha richiesto.</center>"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
-#, fuzzy
 msgid ""
 "<center>This is the base log directory:<br>all the log files will be saved "
 "inside this directory</center>"
-msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
+msgstr ""
+"<center>Questa è la directory di salvataggio dei log,<br>tutti i file di log "
+"saranno salvati qui</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:663
 msgid ""
@@ -1023,28 +1024,24 @@ msgstr ""
 "corrente dopo il nickname dell'utente (in secondi)</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:183
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this network "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Qui puoi specificare uno \"speciale\" <b>nickname</b> che verrà "
-"utilizzato per connettersi a questo server.<br>Se lasci questo campo vuoto "
-"(nella maggior parte dei casi), verrà usato il nickname di default "
-"(specificato nella sezione \"Identità\").</center>"
+"<center>Questo nick sarà provato se il nick primario per questa rete è già "
+"in uso.<br>Se lasci questo campo vuoto verrà usato il nick predefinito "
+"specificato nelle opzioni dell'identità.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:600
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this server "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Qui puoi specificare uno \"speciale\" <b>nickname</b> che verrà "
-"utilizzato per connettersi a questo server.<br>Se lasci questo campo vuoto "
-"(nella maggior parte dei casi), verrà usato il nickname di default "
-"(specificato nella sezione \"Identità\").</center>"
+"<center>Questo nick sarà provato se il nick primario per questo server è già "
+"in uso.<br>Se lasci questo campo vuoto verrà usato il nick predefinito "
+"specificato nelle opzioni dell'identità.</center>"
 
 #: src/modules/options/OptionsWidget_lag.cpp:47
 msgid ""
@@ -1511,6 +1508,11 @@ msgid ""
 "a deeper call stack which will help you identifying the scripting problems.</"
 "center>"
 msgstr ""
+"<center>Questa opzione mostrerà tutti gli errori ed avvertimenti degli "
+"script nella finestra speciale di debug. Questo faciliterà di molto il "
+"tracciamento degli script che potrebbero girare in diverse finestre. I "
+"messaggi nella finestra di debug conterranno anche lo stack della chiamata "
+"che ti aiuterà ad identificare i problemi nello script.</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:279
 msgid ""
@@ -1544,6 +1546,10 @@ msgid ""
 "or nicknames inside the whole text. This will also highlight parts of words "
 "(eg. if your nickname is Mark then Markus will be highlighted too).</center>"
 msgstr ""
+"<center>Questa opzione farà in modo che KVIrc cercherà le parole evidenziate "
+"o i nick all'interno di tutto il testo. Verranno inoltre evidenziate parti "
+"di parole (es. se il tuo nick è Mark allora verrà evidenziato anche Markus)."
+"</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:82
 msgid ""
@@ -1551,6 +1557,9 @@ msgid ""
 "boundaries (including space) and then will compare all the parts with the "
 "highlighted words.</center>"
 msgstr ""
+"<center>Questa opzione splitterà prima la stringa su confini specificati "
+"(incluso lo spazio) e poi confronterà tutte le parti con le parole "
+"evidenziate.</center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:327
 msgid ""
@@ -1681,6 +1690,8 @@ msgid ""
 "<center>You can specify a subdirectory where log files will be saved:use kvs "
 "code to create dynamic subfolders.</center>"
 msgstr ""
+"<center>Puoi specificare una sottodirectory dove verranno salvati i file di "
+"log: usa il codice KVS per creare sottocartelle dinamicamente.</center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:306
 msgid ""
@@ -2478,9 +2489,8 @@ msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Disegna le emoticons (smileys) come immagini"
 
 #: src/modules/options/OptionsWidget_logging.cpp:50
-#, fuzzy
 msgid "Dynamic subfolder:"
-msgstr "Cartella dei File Scaricati:"
+msgstr "Sottocartella dinamica:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:129
 msgid "Echo channel topic"
@@ -3570,7 +3580,6 @@ msgid "Open all minimized"
 msgstr "Apri tutte minimizzate"
 
 #: src/modules/options/OptionsWidget_query.cpp:58
-#, fuzzy
 msgid "Open incoming queries as minimized"
 msgstr "Apri tutte le query minimizzate"
 
@@ -4302,6 +4311,9 @@ msgid ""
 "\"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" advanced "
 "settings."
 msgstr ""
+"Tieni in considerazione che se stai usando KDE questo non funzionerà se hai "
+"settato \"Mantieni le miniature delle finestre\" come \"Sempre\" nelle "
+"opzioni avanzate di \"Effetti del Desktop\"."
 
 #: src/modules/options/OptionsWidget_sound.cpp:74
 #: src/modules/options/OptionsWidget_sound.cpp:89
@@ -4982,7 +4994,7 @@ msgstr "Parole da evidenziare:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:64
 msgid "Words/Nick matching is case sensitive "
-msgstr ""
+msgstr "La ricerca di parole/nick è case sensitive "
 
 #: src/modules/options/OptionsWidget_theme.h:74
 msgid "Workspace"
