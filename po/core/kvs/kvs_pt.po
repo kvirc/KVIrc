@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2010-09-18 17:29+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
-"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -175,8 +175,8 @@ msgstr "Incapaz de descarregar o módulo: o módulo trancou-se na memória"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1746
 msgid ""
-"Cannot call internal object function $%Q (for object named '%Q' of class "
-"'%Q') from this context"
+"Cannot call internal object function $%Q (for object named '%Q' of class '%"
+"Q') from this context"
 msgstr ""
 "Não é possível chamar a função de objecto interno  $%Q (para o objecto '%Q' "
 "da classe '%Q') deste contexto"
@@ -236,14 +236,14 @@ msgstr ""
 "Detectado um ciclo na árvore de herança da classe base '%Q': "
 "redefinirprimeiro aquele classe"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 msgid "Division by zero"
 msgstr "Divisão por zero"
 
@@ -261,7 +261,7 @@ msgstr "Bloco de instruções vazio para o comando de avaliação"
 msgid "Empty script"
 msgstr "'Script' vazio"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:982
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:994
 msgid "Empty target specified"
 msgstr "Destino vazio indicado"
 
@@ -548,7 +548,7 @@ msgid ""
 "performed"
 msgstr ""
 
-#: src/kvirc/kvs/object/KviKvsObjectClass.cpp:161
+#: src/kvirc/kvs/object/KviKvsObjectClass.cpp:165
 msgid "It's not allowed to return values in the constructor"
 msgstr ""
 
@@ -586,7 +586,7 @@ msgstr "Nome de classe em falta"
 msgid "Missing non-optional parameter \"%1\""
 msgstr "Parâmetro não.opcional \"%1\" em falta"
 
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:204
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:206
 msgid "Missing parameter"
 msgstr "Parâmetro em falta"
 
@@ -655,8 +655,8 @@ msgstr ""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
 msgid ""
-"Module command call failed: the module '%Q' doesn't export a command named "
-"'%Q'"
+"Module command call failed: the module '%Q' doesn't export a command named '%"
+"Q'"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:815
@@ -685,8 +685,8 @@ msgstr ""
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1441
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr ""
-"Nenhuma propriedade Qt chamada '%Q' para o objecto chamado '%Q' da classe "
-"'%Q'"
+"Nenhuma propriedade Qt chamada '%Q' para o objecto chamado '%Q' da classe '%"
+"Q'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:448
 msgid "No button with type %Q named %Q"
@@ -725,10 +725,10 @@ msgstr "Nenhum contexto IRC (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
 msgid "No such event (%Q)"
 msgstr "Nenhum evento (%Q)"
 
@@ -821,13 +821,13 @@ msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 
@@ -1204,7 +1204,7 @@ msgstr "Não existem variáveis de âmbito extendido neste âmbito"
 msgid "There is no option named '%Q'"
 msgstr "Não existe nenhuma opção chamada '%Q'"
 
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:192
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:194
 msgid "This command can be used only in windows bound to an IRC context"
 msgstr ""
 "Este comando pode ser usado apenas nas janelas vinculadas a um contexto IRC"
@@ -1554,7 +1554,7 @@ msgstr "Botão da janela '%Q' não encontrado"
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr "Janela com ID '%s' não encontrada, a devolver string vazia"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1211
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1228
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Janela com id '%Q' não encontrada: nenhuma re-ligação realizada"
 
@@ -1567,50 +1567,49 @@ msgstr ""
 msgid "You don't appear to be on channel %s"
 msgstr "Não parece estar no canal %s"
 
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:198
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:200
 msgid "You're not connected to an IRC server"
 msgstr "Não está conectado a um servidor IRC"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:221
+#: src/kvirc/kvs/KviKvsReport.cpp:223
 #, c-format
 msgid "[KVS]   Destroyed window with pointer %x"
 msgstr "[KVS]   Janela destruída com ponteiro %x"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:203
+#: src/kvirc/kvs/KviKvsReport.cpp:205
 msgid "[KVS]   in script context \"%Q\""
 msgstr "[KVS]   no contexto do 'script' \"%Q\""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:205
+#: src/kvirc/kvs/KviKvsReport.cpp:207
 msgid "[KVS]   in script context \"%Q\", %Q"
 msgstr "[KVS]   no contexto do 'script' \"%Q\", %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:225
+#: src/kvirc/kvs/KviKvsReport.cpp:227
 msgid "[KVS] Call stack:"
 msgstr "[KVS] Chamada da pilha:"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:212
+#: src/kvirc/kvs/KviKvsReport.cpp:214
 msgid "[KVS] Code listing:"
 msgstr "[KVS] Listagem de código:"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:217
+#: src/kvirc/kvs/KviKvsReport.cpp:219
 msgid "[KVS] Window:"
 msgstr "[KVS] Janela:"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:190
+#: src/kvirc/kvs/KviKvsReport.cpp:192
 msgid "[KVS]%c Compilation Error: %Q"
 msgstr "[KVS]%c Erro de Compilação: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:198
+#: src/kvirc/kvs/KviKvsReport.cpp:200
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Erro na Execução: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
+#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Aviso: %Q"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:99
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1161
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1178
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-19 15:59+0200\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2011-02-02 01:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -19,184 +19,152 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:85
-msgid "The file '%Q' is not readable"
-msgstr "Dosya '%Q' okunabilir değil"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:101
-msgid "Invalid timeout, ignoring"
-msgstr "Geçersiz zaman aşımı, göz ardı ediliyor"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:115
-msgid "Invalid visible name: using default"
-msgstr "Geçersiz görünür adı: varsayılan kullanılıyor"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:121
-msgid "Ops..failed to add the sharedfile..."
-msgstr "Ops.. paylaşılan dosya ekleme başarısız oldu..."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:159
-msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr "Paylaşılan dosya görülebilir adı '%Q' ve kullanıcı maskesi '%Q'"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:221
-#, c-format
-msgid "    File: %s (%u bytes)"
-msgstr "    Dosya: %s (%u bytes)"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:223
-#, c-format
-msgid "    Mask: %s"
-msgstr "    Maske: %s"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:232
+#: src/modules/sharedfile/libkvisharedfile.cpp:232
 #, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
 msgstr "    %d saat %d dakika %d saniye içinde sona erecek"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:242
+#: src/modules/sharedfile/libkvisharedfile.cpp:221
+#, c-format
+msgid "    File: %s (%u bytes)"
+msgstr "    Dosya: %s (%u bytes)"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:223
+#, c-format
+msgid "    Mask: %s"
+msgstr "    Maske: %s"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:243
+msgid "&Add..."
+msgstr "&Ekle..."
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:76
+msgid "&Browse..."
+msgstr "&Gözat..."
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:247
+msgid "&Edit"
+msgstr "&Düzenle"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:98
+msgid "&OK"
+msgstr "&Tamam"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
+msgid "Can't open the file"
+msgstr "Dosya açılamıyor"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:102
+msgid "Cancel"
+msgstr "İptal Et"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:60
+msgid "Edit Shared File - KVIrc"
+msgstr "Paylaşılan Dosya Düzenleme - KVIrc"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:87
+msgid "Expire at:"
+msgstr "Sona erme:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:227
+msgid "Expires"
+msgstr "Sona erme"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:69
+msgid "File path:"
+msgstr "Dosya yolu:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
+msgid "Filename"
+msgstr "Dosya Adı"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
+msgid "Invalid expire time"
+msgstr "Geçersiz son erme süresi"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
+msgid "Invalid share name"
+msgstr "Geçersiz paylaşım adı"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:101
+msgid "Invalid timeout, ignoring"
+msgstr "Geçersiz zaman aşımı, göz ardı ediliyor"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:115
+msgid "Invalid visible name: using default"
+msgstr "Geçersiz görünür adı: varsayılan kullanılıyor"
+
+#: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
+msgid "Manage S&hared Files"
+msgstr "&Paylaşılan Dosyaları Düzenle"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:225
+msgid "Mask"
+msgstr "Mask"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:223
+msgid "Name"
+msgstr "Ad"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:200
+msgid "Never"
+msgstr "Asla"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
 msgid "No active file sharedfile"
 msgstr "Aktif paylaşılan dosya yok"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:243
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
+msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
+msgstr "Paylaşılan dosya görülebilir adı '%Q' ve kullanıcı maskesi '%Q'"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:163
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:171
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:180
+msgid "OK"
+msgstr "Tamam"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:121
+msgid "Ops..failed to add the sharedfile..."
+msgstr "Ops.. paylaşılan dosya ekleme başarısız oldu..."
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:245
+msgid "Re&move"
+msgstr "S&il"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:62
+msgid "Share name:"
+msgstr "Paylaşım adı:"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:696
+msgid "Shared Files"
+msgstr "Paylaşılan Dosyalar"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:161
+msgid ""
+"The expire date/time is in the past: please either remove the \"expires"
+"\"check mark or specify a expire date/time in the future"
+msgstr ""
+"Sona erme zamanı bitti: Lütfen \"sona erme\" zamanını kaldırın veya "
+"gelecekte bir tarih seçiniz"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:85
+msgid "The file '%Q' is not readable"
+msgstr "Dosya '%Q' okunabilir değil"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
+msgid "The file doesn't exist or it is not readable, please check the path"
+msgstr "Bu dosya yok veya okunabilir değil, dosya yolunu kontrol edin"
+
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
+msgid "The share name can't be empty, please correct it"
+msgstr "Paylaşım adı boş olamaz, lütfen düzeltiniz"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:243
 #, c-format
 msgid "Total: %d sharedfile"
 msgstr "Toplam: %d paylaşılan dosya"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
-msgid "Manage S&hared Files"
-msgstr "&Paylaşılan Dosyaları Düzenle"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
-msgid "Edit Shared File - KVIrc"
-msgstr "Paylaşılan Dosya Düzenleme - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
-msgid "Share name:"
-msgstr "Paylaşım adı:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:69
-msgid "File path:"
-msgstr "Dosya yolu:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:76
-msgid "&Browse..."
-msgstr "&Gözat..."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:80
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:80
 msgid "User mask:"
 msgstr "Kullanıcı maskesi:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:87
-msgid "Expire at:"
-msgstr "Sona erme:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
-msgid "&OK"
-msgstr "&Tamam"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:102
-msgid "Cancel"
-msgstr "İptal Et"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:160
-msgid "Invalid expire time"
-msgstr "Geçersiz son erme süresi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:161
-msgid "The expire date/time is in the past: please either remove the \"expires\"check mark or specify a expire date/time in the future"
-msgstr "Sona erme zamanı bitti: Lütfen \"sona erme\" zamanını kaldırın veya gelecekte bir tarih seçiniz"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:163
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:171
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:180
-msgid "OK"
-msgstr "Tamam"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:169
-msgid "Invalid share name"
-msgstr "Geçersiz paylaşım adı"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:170
-msgid "The share name can't be empty, please correct it"
-msgstr "Paylaşım adı boş olamaz, lütfen düzeltiniz"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:178
-msgid "Can't open the file"
-msgstr "Dosya açılamıyor"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:179
-msgid "The file doesn't exist or it is not readable, please check the path"
-msgstr "Bu dosya yok veya okunabilir değil, dosya yolunu kontrol edin"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:200
-msgid "Never"
-msgstr "Asla"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
-msgid "Name"
-msgstr "Ad"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:224
-msgid "Filename"
-msgstr "Dosya Adı"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:225
-msgid "Mask"
-msgstr "Mask"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:227
-msgid "Expires"
-msgstr "Sona erme"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:243
-msgid "&Add..."
-msgstr "&Ekle..."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:245
-msgid "Re&move"
-msgstr "S&il"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:247
-msgid "&Edit"
-msgstr "&Düzenle"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:696
-msgid "Shared Files"
-msgstr "Paylaşılan Dosyalar"
-

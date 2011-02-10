@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2010-10-31 14:47+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: Français <en@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/theme/managementdialog.cpp:284
@@ -29,8 +29,7 @@ msgstr "&Retirer le thème"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Acquérir une capture d'écran - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:108
-#: src/modules/theme/libkvitheme.cpp:121
+#: src/modules/theme/libkvitheme.cpp:108 src/modules/theme/libkvitheme.cpp:121
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
 msgid "Apply theme - KVIrc"
@@ -176,8 +175,8 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:381
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Ici, vous devez choisir le nom pour le paquet du thème. Il doit avoir une "
 "extension en *.%1."
@@ -291,8 +290,7 @@ msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr ""
 "Le fichier sélectionné ne semble pas être un paquet de thème KVIrc valide"
 
-#: src/modules/theme/libkvitheme.cpp:126
-#: src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
 #, fuzzy
 msgid "The theme package '%Q' does not exist"
 msgstr "Le paquetage pour le thème '%Q', n'existe pas."

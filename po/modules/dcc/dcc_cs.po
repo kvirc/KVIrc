@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
 
 #: src/modules/dcc/requests.cpp:856
 msgid "\"any\""
@@ -75,8 +75,7 @@ msgstr "&Pie"
 msgid "&Polygons"
 msgstr "&Polygons"
 
-#: src/modules/dcc/canvaswidget.cpp:1479
-#: src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Rectangle"
 
@@ -100,15 +99,12 @@ msgstr "&Shape"
 msgid "&Triangle"
 msgstr "&Triangle"
 
-#: src/modules/dcc/requests.cpp:774
-#: src/modules/dcc/requests.cpp:938
+#: src/modules/dcc/requests.cpp:774 src/modules/dcc/requests.cpp:938
 msgid "(unknown)"
 msgstr "(neznámý)"
 
-#: src/modules/dcc/libkvidcc.cpp:433
-#: src/modules/dcc/libkvidcc.cpp:656
-#: src/modules/dcc/libkvidcc.cpp:1158
-#: src/modules/dcc/libkvidcc.cpp:1225
+#: src/modules/dcc/libkvidcc.cpp:433 src/modules/dcc/libkvidcc.cpp:656
+#: src/modules/dcc/libkvidcc.cpp:1158 src/modules/dcc/libkvidcc.cpp:1225
 msgid "-c requires -i and -p"
 msgstr "-c vyžaduje -i a -p"
 
@@ -180,8 +176,7 @@ msgstr ""
 "Můžete nastavit KVIrc, aby přijímalo avatary automaticky pomocí "
 "nastavení<tt>boolAutoAcceptIncomingAvatars</tt> jako true.<br>"
 
-#: src/modules/dcc/requests.cpp:448
-#: src/modules/dcc/requests.cpp:741
+#: src/modules/dcc/requests.cpp:448 src/modules/dcc/requests.cpp:741
 #: src/modules/dcc/libkvidcc.cpp:633
 msgid "<unknown size>"
 msgstr "<neznámá velikost>"
@@ -287,8 +282,7 @@ msgstr ""
 "Nelze naslouchat na výchozím rozhraní '%s': opravte to v dialogu možností, "
 "zakázáním možnosti (pak možná bude dcc fungovat)"
 
-#: src/modules/dcc/DccBroker.cpp:207
-#: src/modules/dcc/DccBroker.cpp:919
+#: src/modules/dcc/DccBroker.cpp:207 src/modules/dcc/DccBroker.cpp:919
 msgid "Can't open file %Q for reading"
 msgstr "Nelze otevřít soubor %Q pro čtení"
 
@@ -305,8 +299,8 @@ msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %1 on port %2, "
 "or invalid resume size"
 msgstr ""
-"Nemohu pokračovat v DCC SEND: Přenos nebyl zahájen pro soubor %1 na portu "
-"%2, nebo je nesprávná velikost pro pokračování"
+"Nemohu pokračovat v DCC SEND: Přenos nebyl zahájen pro soubor %1 na portu %"
+"2, nebo je nesprávná velikost pro pokračování"
 
 #: src/modules/dcc/DccUtils.cpp:124
 msgid "Can't retrieve a suitable local IPV4 address"
@@ -316,15 +310,13 @@ msgstr "Nelze získat použitelnou lokální IPV4 adresu"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nelze poslat DCC %Q požadavek %Q: IRC spojení bylo přerušeno"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2207
-#: src/modules/dcc/DccDialog.cpp:158
+#: src/modules/dcc/DccFileTransfer.cpp:2207 src/modules/dcc/DccDialog.cpp:158
 msgid "Cancel"
 msgstr "Zrušit"
 
 #: src/modules/dcc/DccVideoWindow.cpp:665
 #: src/modules/dcc/DccVideoWindow.cpp:768
-#: src/modules/dcc/DccChatWindow.cpp:298
-#: src/modules/dcc/DccChatWindow.cpp:402
+#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 msgid "Cannot send data: No active connection"
 msgstr "Nelze poslat data: Žádné aktivní připojení"
 
@@ -332,8 +324,7 @@ msgstr "Nelze poslat data: Žádné aktivní připojení"
 msgid "Choose Files to Save - KVIrc"
 msgstr "Vyberte soubory k uložení - KVIrc"
 
-#: src/modules/dcc/DccBroker.cpp:167
-#: src/modules/dcc/DccBroker.cpp:882
+#: src/modules/dcc/DccBroker.cpp:167 src/modules/dcc/DccBroker.cpp:882
 msgid "Choose Files to Send - KVIrc"
 msgstr "Vyberte soubory k odeslání - KVIrc"
 
@@ -355,10 +346,10 @@ msgstr "Konfigurovat přenosové pásmo pro DCC přenos %1"
 msgid "Connected to %1:%2"
 msgstr "Připojen k %1:%2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:284
 #: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccVideoWindow.cpp:926
 #: src/modules/dcc/DccChatWindow.cpp:566
-#: src/modules/dcc/DccCanvasWindow.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Spojeno s %Q:%Q"
 
@@ -366,15 +357,14 @@ msgstr "Spojeno s %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kontaktuji hosta %1 na portu %2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:108
 #: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:606
 #: src/modules/dcc/DccChatWindow.cpp:185
-#: src/modules/dcc/DccCanvasWindow.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Kontaktuje se hostitel %Q na portu %Q"
 
-#: src/modules/dcc/DccBroker.cpp:296
-#: src/modules/dcc/DccBroker.cpp:629
+#: src/modules/dcc/DccBroker.cpp:296 src/modules/dcc/DccBroker.cpp:629
 msgid "DCC %1 Request - KVIrc"
 msgstr "DCC %1 požadavek - KVIrc"
 
@@ -402,9 +392,9 @@ msgstr "DCC CANVAS požadavek"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS požadavek nebyl odeslán: očekává se manuální připojeni"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:279
 #: src/modules/dcc/DccVoiceWindow.cpp:902
 #: src/modules/dcc/DccVideoWindow.cpp:921
-#: src/modules/dcc/DccCanvasWindow.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC Selhání: %Q"
 
@@ -559,10 +549,10 @@ msgstr "Omezit odchozí šířku pásma na"
 msgid "Listening on interface %1 port %2"
 msgstr "Naslouchám na rozhraní %1 port %2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:84
 #: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:609
 #: src/modules/dcc/DccChatWindow.cpp:187
-#: src/modules/dcc/DccCanvasWindow.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Naslouchám na interfacu %Q port %Q"
 
@@ -570,10 +560,10 @@ msgstr "Naslouchám na interfacu %Q port %Q"
 msgid "Local end is %1:%2"
 msgstr "Lokální konec je %1:%2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:286
 #: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccVideoWindow.cpp:928
 #: src/modules/dcc/DccChatWindow.cpp:568
-#: src/modules/dcc/DccCanvasWindow.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Lokální konec je %Q:%Q"
 
@@ -586,11 +576,10 @@ msgstr "Nízkoúrovňové přenosové spojení navázáno"
 #, fuzzy
 msgid "No file offer named '%1' (with size %2) available for %3 [%4@%5]"
 msgstr ""
-"Žádná nabídka souboru s názvem '%1' (s velikostí %2) není dostupná pro %3 "
-"[%4@%5]"
+"Žádná nabídka souboru s názvem '%1' (s velikostí %2) není dostupná pro %3 [%"
+"4@%5]"
 
-#: src/modules/dcc/requests.cpp:780
-#: src/modules/dcc/requests.cpp:924
+#: src/modules/dcc/requests.cpp:780 src/modules/dcc/requests.cpp:924
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Žádné vhodné rozhraní pro naslouchání, snažím se pokračovat..."
 
@@ -719,8 +708,8 @@ msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
 "to 8000"
 msgstr ""
-"Předchozí požadavek výpadá jako přerušený: Nesprávná vzorkovací frekvence "
-"'%s', nastavuji výchozí na 8000"
+"Předchozí požadavek výpadá jako přerušený: Nesprávná vzorkovací frekvence '%"
+"s', nastavuji výchozí na 8000"
 
 #: src/modules/dcc/requests.cpp:1062
 #, fuzzy
@@ -739,8 +728,7 @@ msgstr ""
 "Předchozí požadavek nemůže být přijat: DCC VOICE nebylo povoleno při "
 "kompilaci "
 
-#: src/modules/dcc/requests.cpp:998
-#: src/modules/dcc/requests.cpp:1072
+#: src/modules/dcc/requests.cpp:998 src/modules/dcc/requests.cpp:1072
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "Předchozí požadavek nemůže být přijat: Kodek není podporován '%s'"
@@ -753,10 +741,8 @@ msgstr ""
 "Následujícímu požadavku navázání chybí velikost souboru, předpokládá se "
 "velikost souboru 0"
 
-#: src/modules/dcc/requests.cpp:456
-#: src/modules/dcc/requests.cpp:466
-#: src/modules/dcc/requests.cpp:612
-#: src/modules/dcc/requests.cpp:749
+#: src/modules/dcc/requests.cpp:456 src/modules/dcc/requests.cpp:466
+#: src/modules/dcc/requests.cpp:612 src/modules/dcc/requests.cpp:749
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -764,8 +750,7 @@ msgstr ""
 "Předchozí požadavek je přerušený: Název souboru obsahuje cestu, odstraňuji "
 "počáteční cestu a snažím se pokračovat"
 
-#: src/modules/dcc/requests.cpp:446
-#: src/modules/dcc/requests.cpp:739
+#: src/modules/dcc/requests.cpp:446 src/modules/dcc/requests.cpp:739
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -807,8 +792,7 @@ msgstr ""
 "Šifrovací program nebyl schopen zašifrovat aktuální zprávu (%Q): %Q, žadná "
 "data nebyla odeslána na vzdálený konec"
 
-#: src/modules/dcc/libkvidcc.cpp:1641
-#: src/modules/dcc/libkvidcc.cpp:2606
+#: src/modules/dcc/libkvidcc.cpp:1641 src/modules/dcc/libkvidcc.cpp:2606
 #: src/modules/dcc/libkvidcc.cpp:2626
 msgid "The current window has no associated DCC session"
 msgstr "Současné okno nemá asociováno DCC sezení"
@@ -1096,24 +1080,15 @@ msgstr "[SSL CHYBA]: %s"
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 
-#: src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/requests.cpp:139
-#: src/modules/dcc/requests.cpp:140
-#: src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:407
-#: src/modules/dcc/libkvidcc.cpp:442
-#: src/modules/dcc/libkvidcc.cpp:641
-#: src/modules/dcc/libkvidcc.cpp:665
-#: src/modules/dcc/libkvidcc.cpp:802
-#: src/modules/dcc/libkvidcc.cpp:804
-#: src/modules/dcc/libkvidcc.cpp:1120
-#: src/modules/dcc/libkvidcc.cpp:1170
-#: src/modules/dcc/libkvidcc.cpp:1198
-#: src/modules/dcc/libkvidcc.cpp:1237
-#: src/modules/dcc/DccMarshal.cpp:494
-#: src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529
-#: src/modules/dcc/DccDescriptor.cpp:65
+#: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
+#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/DccDescriptor.cpp:65
+#: src/modules/dcc/requests.cpp:138 src/modules/dcc/requests.cpp:139
+#: src/modules/dcc/requests.cpp:140 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:407 src/modules/dcc/libkvidcc.cpp:442
+#: src/modules/dcc/libkvidcc.cpp:641 src/modules/dcc/libkvidcc.cpp:665
+#: src/modules/dcc/libkvidcc.cpp:802 src/modules/dcc/libkvidcc.cpp:804
+#: src/modules/dcc/libkvidcc.cpp:1120 src/modules/dcc/libkvidcc.cpp:1170
+#: src/modules/dcc/libkvidcc.cpp:1198 src/modules/dcc/libkvidcc.cpp:1237
 msgid "unknown"
 msgstr "neznámý"
 

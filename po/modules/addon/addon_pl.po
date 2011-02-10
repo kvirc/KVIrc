@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2010-06-22 19:03+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polski <PL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
@@ -30,6 +30,11 @@ msgstr "Błąd pakowania dodatku"
 msgid "Addon Packaging Warning"
 msgstr "Ostrzeżenie pakowania dodatku"
 
+#: src/modules/addon/AddonFunctions.cpp:231
+#, fuzzy
+msgid "Addon Unpack Warning"
+msgstr "Ostrzeżenie pakowania dodatku"
+
 #: src/modules/addon/libkviaddon.cpp:583
 msgid "Addon registration failed"
 msgstr "Rejestracja dodatku nie powiodła się"
@@ -42,7 +47,7 @@ msgstr "Dodatek pomyślnie zarejestrowany"
 msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr "Próba rejestracji dodatku \"%Q\" w wersji %Q"
 
-#: src/modules/addon/AddonFunctions.cpp:115
+#: src/modules/addon/AddonFunctions.cpp:117
 msgid "Author"
 msgstr "Autor"
 
@@ -78,11 +83,11 @@ msgstr "Tworzenie pakietu dodatku - KVIrc"
 msgid "Create an Addon as a Distributable Package"
 msgstr "Tworzy dodatek jako pakiet dystrybucyjny"
 
-#: src/modules/addon/AddonFunctions.cpp:116
+#: src/modules/addon/AddonFunctions.cpp:118
 msgid "Created at"
 msgstr "Utworzony przez"
 
-#: src/modules/addon/AddonFunctions.cpp:117
+#: src/modules/addon/AddonFunctions.cpp:119
 msgid "Created with"
 msgstr "Utworzony w"
 
@@ -94,7 +99,7 @@ msgstr "Usuwa wybrane dodatki"
 msgid "Description: %Q"
 msgstr "Opis: %Q"
 
-#: src/modules/addon/AddonFunctions.cpp:181
+#: src/modules/addon/AddonFunctions.cpp:183
 msgid "Do Not Install"
 msgstr "Nie instaluj"
 
@@ -102,7 +107,7 @@ msgstr "Nie instaluj"
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Czy napewno chcesz odinstalować dodatek \"%1\" ?"
 
-#: src/modules/addon/AddonFunctions.cpp:180
+#: src/modules/addon/AddonFunctions.cpp:182
 msgid "Do you want to proceed with the installation ?"
 msgstr "Czy chcesz kontynuować z instalacją ?"
 
@@ -122,8 +127,11 @@ msgstr "Błąd podczas instalacji pakietu dodatku: %Q"
 msgid "Export Addon - KVIrc"
 msgstr "Eksport dodatku - KVIrc"
 
-#: src/modules/addon/AddonFunctions.cpp:216
-#: src/modules/addon/AddonFunctions.cpp:232
+#: src/modules/addon/AddonFunctions.cpp:231
+msgid "Failed to delete the directory '%1'"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:218
 #, fuzzy
 msgid "Failed to unpack the selected file: %1"
 msgstr "Nie udało się rozpakować wybranego pliku: %1"
@@ -193,7 +201,7 @@ msgstr "Plik ikony"
 msgid "Install Addon - KVIrc"
 msgstr "Instalacja dodatku - KVIrc"
 
-#: src/modules/addon/AddonFunctions.cpp:178
+#: src/modules/addon/AddonFunctions.cpp:180
 msgid "Install Addon Pack - KVIrc"
 msgstr "Instalacja pakietu dodatku - KVIrc"
 
@@ -232,10 +240,6 @@ msgstr "Nie"
 #: src/modules/addon/PackAddonDialog.cpp:421
 msgid "No spaces allowed, like MyAddon"
 msgstr "Spacje są niedozwolone, przykład MójDodatek"
-
-#: src/modules/addon/AddonFunctions.cpp:231
-msgid "One or more files can't be deleted"
-msgstr "Jeden lub więcej plików nie mogą zostać usunięte"
 
 #: src/modules/addon/PackAddonDialog.cpp:408
 msgid "Package &Author:"
@@ -312,8 +316,7 @@ msgstr "Wybierz katalog źródłowy:"
 msgid "Show Help"
 msgstr "Pokazuje pomoc"
 
-#: src/modules/addon/libkviaddon.cpp:692
-#: src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -325,12 +328,9 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Katalog źródłowy"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Dodatek \"%1\" nie istnieje"
 
@@ -372,11 +372,11 @@ msgstr ""
 msgid "The selected directory does not exist."
 msgstr "Wybrany katalog nie istnieje."
 
-#: src/modules/addon/AddonFunctions.cpp:47
+#: src/modules/addon/AddonFunctions.cpp:49
 msgid "The selected file does not seem to be a valid KVIrc addon package"
 msgstr "Wybrany plik nie wygląda na poprawny pakiet dodatku KVIrc"
 
-#: src/modules/addon/AddonFunctions.cpp:68
+#: src/modules/addon/AddonFunctions.cpp:70
 msgid "The selected file does not seem to be a valid KVIrc package: %Q"
 msgstr "Wybrany plik nie wygląda na poprawny pakiet KVIrc: %Q"
 
@@ -421,8 +421,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Całkowicie: %d dodatków zainstalowano"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Dezinstalacja istniejącego dodatku w wersji %Q"
 
@@ -430,7 +429,7 @@ msgstr "Dezinstalacja istniejącego dodatku w wersji %Q"
 msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
 msgstr "Wersja w formie x.y[.z], przykładowo 1.0 lub 2.0.3"
 
-#: src/modules/addon/AddonFunctions.cpp:142
+#: src/modules/addon/AddonFunctions.cpp:144
 msgid "Warning: The addon might be incompatible with this version of KVIrc"
 msgstr "Ostrzeżenie: Dodatek może być niekompatybilny z tą wersją KVIrc"
 
@@ -442,7 +441,7 @@ msgstr "Witaj"
 msgid "Yes"
 msgstr "Tak"
 
-#: src/modules/addon/AddonFunctions.cpp:182
+#: src/modules/addon/AddonFunctions.cpp:184
 msgid "Yes, Proceed"
 msgstr "Tak, kontynuuj"
 
@@ -454,7 +453,7 @@ msgstr ""
 "Będziesz pytany o podanie pewnej informacji jak nazwa pakietu, wersja, opis "
 "i tak dalej."
 
-#: src/modules/addon/AddonFunctions.cpp:179
+#: src/modules/addon/AddonFunctions.cpp:181
 msgid "You're about to install the following addon package"
 msgstr "Zamierzasz zainstalować następujący pakiet dodatku"
 
@@ -470,6 +469,9 @@ msgstr "Twoja nazwa tutaj"
 
 #~ msgid "Go Back to Package Data"
 #~ msgstr "Wróć do danych pakietu"
+
+#~ msgid "One or more files can't be deleted"
+#~ msgstr "Jeden lub więcej plików nie mogą zostać usunięte"
 
 #~ msgid "Show Details"
 #~ msgstr "Pokaż szczegóły"

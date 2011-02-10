@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-19 15:59+0200\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2011-01-26 23:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -19,48 +19,7 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:62
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Torrent istemci arayüzü çalışılıyor \"% S\": skor %d"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:102
-msgid "Choosing torrent client interface \"%Q\""
-msgstr "Torrent istemcisi arayüz seçimi \"%Q\""
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:109
-msgid "Seems that there is no usable torrent client on this machine"
-msgstr "Hiç kullanışlı torrent istemcisi bu makinede görünmüyor."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:118
-msgid "No torrent client interface selected. Try /torrent.detect"
-msgstr "Hiçbir torrent istemcisi arayüzü seçmedik. Deneyiniz; /torrent.detect"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:128
-msgid "The selected torrent client interface failed to execute the requested function"
-msgstr "Seçilen torrent istemci arayüzü istenen fonksiyonu gerçekleştirmede başarısız"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:129
-msgid "Last interface error: "
-msgstr "Son arabirimi hatası:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:711
-msgid "Using client interface \"%Q\"."
-msgstr "Kullanılan istemci arayüzü \"%Q\"."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/libkvitorrent.cpp:719
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Geçersiz istemci arayüzü \"%Q\"!"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -68,14 +27,46 @@ msgstr ""
 "KDE için güzel bir KTorrent istemci arayüzü.\n"
 "İndirmek için http://www.ktorrent.org\n"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:44
-#: Files/Subversion/bin/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:61
-msgid "Torrent Client"
-msgstr "Torrent İstemci"
+#: src/modules/torrent/libkvitorrent.cpp:102
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Torrent istemcisi arayüz seçimi \"%Q\""
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/libkvitorrent.cpp:722
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Geçersiz istemci arayüzü \"%Q\"!"
+
+#: src/modules/torrent/libkvitorrent.cpp:129
+msgid "Last interface error: "
+msgstr "Son arabirimi hatası:"
+
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Hiçbir istemci seçilmemiş!"
 
+#: src/modules/torrent/libkvitorrent.cpp:118
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Hiçbir torrent istemcisi arayüzü seçmedik. Deneyiniz; /torrent.detect"
+
+#: src/modules/torrent/libkvitorrent.cpp:109
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Hiç kullanışlı torrent istemcisi bu makinede görünmüyor."
+
+#: src/modules/torrent/libkvitorrent.cpp:128
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr ""
+"Seçilen torrent istemci arayüzü istenen fonksiyonu gerçekleştirmede başarısız"
+
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
+msgid "Torrent Client"
+msgstr "Torrent İstemci"
+
+#: src/modules/torrent/libkvitorrent.cpp:62
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Torrent istemci arayüzü çalışılıyor \"% S\": skor %d"
+
+#: src/modules/torrent/libkvitorrent.cpp:714
+msgid "Using client interface \"%Q\"."
+msgstr "Kullanılan istemci arayüzü \"%Q\"."

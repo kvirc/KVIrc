@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/theme/managementdialog.cpp:284
@@ -29,8 +29,7 @@ msgstr "Видалити тему"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Зробити скріншот - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:108
-#: src/modules/theme/libkvitheme.cpp:121
+#: src/modules/theme/libkvitheme.cpp:108 src/modules/theme/libkvitheme.cpp:121
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
 msgid "Apply theme - KVIrc"
@@ -172,8 +171,8 @@ msgstr ""
 #: src/modules/theme/PackThemeDialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Тут ви можете вибрати ім'я файлу вашого пакета теми. воно повинне мати "
 "розширення *. %1"
@@ -284,8 +283,7 @@ msgstr "Обраний файл не є пакетом теми KVIrc : %1"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Обрані файли не є пакетами теми KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:126
-#: src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 

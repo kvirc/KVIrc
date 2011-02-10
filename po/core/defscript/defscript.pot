@@ -8,14 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/defscript/default.kvs:34
+msgid "The default script has been successfully installed."
+msgstr ""
+
+#: data/defscript/default.kvs:35
+msgid "To connect to a server, type /server <server name>"
+msgstr ""
+
+#: data/defscript/default.kvs:37
+msgid "Happy ircing :)"
+msgstr ""
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"
@@ -37,16 +48,27 @@ msgstr ""
 msgid "Window operations"
 msgstr ""
 
-#: data/defscript/default.kvs:34
-msgid "The default script has been successfully installed."
+#: data/defscript/events.kvs:68
+#: data/defscript/events.kvs:76
+#: data/defscript/events.kvs:84
+msgid "Logging"
 msgstr ""
 
-#: data/defscript/default.kvs:35
-msgid "To connect to a server, type /server <server name>"
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
 
-#: data/defscript/default.kvs:37
-msgid "Happy ircing :)"
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr ""
+
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
 msgstr ""
 
 #: data/defscript/aliases.kvs:21
@@ -170,29 +192,6 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:503
 msgid "No such user:"
-msgstr ""
-
-#: data/defscript/events.kvs:68
-#: data/defscript/events.kvs:76
-#: data/defscript/events.kvs:84
-msgid "Logging"
-msgstr ""
-
-#: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
-msgstr ""
-
-#: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-
-#: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
 msgstr ""
 
 #: data/defscript/popups.kvs:19
@@ -509,7 +508,8 @@ msgid "Notify Avatar"
 msgstr ""
 
 #: data/defscript/popups.kvs:663
-msgid "&Join"
+#: data/defscript/popups.kvs:722
+msgid "&Hop"
 msgstr ""
 
 #: data/defscript/popups.kvs:668
@@ -529,10 +529,6 @@ msgstr ""
 #: data/defscript/popups.kvs:715
 #: data/defscript/popups.kvs:777
 msgid "&Join Channels..."
-msgstr ""
-
-#: data/defscript/popups.kvs:722
-msgid "&Hop"
 msgstr ""
 
 #: data/defscript/popups.kvs:757

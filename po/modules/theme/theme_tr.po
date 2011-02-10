@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-19 15:59+0200\n"
+"POT-Creation-Date: 2011-02-10 17:15+0000\n"
 "PO-Revision-Date: 2011-01-26 05:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -19,413 +19,397 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:75
-msgid "Error installing theme package: %Q"
-msgstr "Tema paketi kurulurken hata: %Q"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:109
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:123
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:300
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:313
-msgid "Apply theme - KVIrc"
-msgstr "Temayı Uygula - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:110
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:301
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr "Tema \"%Q\" onaylamak (versiyon %Q) istiyor musunuzs?"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:122
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:312
-msgid "Failed to apply the specified theme: %Q"
-msgstr "Belirtilen tema uygulaması başarısız oldu: %Q"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:128
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:171
-msgid "The theme package '%Q' does not exists"
-msgstr "Tema paketi '%Q' mevcut değil"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:235
-msgid "Choose a file to save the screenshot to"
-msgstr "Ekran görüntüsü kaydetmek için bir dosya seçin"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/libkvitheme.cpp:250
-msgid "Error making screenshot"
-msgstr "Ekran görüntüsü yaparken hata oluştu"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:87
-msgid "by"
-msgstr "tarafından"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:114
-msgid "Manage Themes - KVIrc"
-msgstr "Temaları Yönet"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:132
-msgid "Save Current Theme..."
-msgstr "Kullanılan Temayı Kayıt Et"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:143
-msgid "Export Selected Themes to a Distributable Package"
-msgstr "Seçilen temalar için bir Dağıtılabilir paketi dışarı çıkar"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:149
-msgid "Delete Selected Themes"
-msgstr "Seçilen Temaları Sil"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:159
-msgid "Install Theme Package From Disk"
-msgstr "Diskten Tema Paketi yükleyin "
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:165
-msgid "Get More Themes..."
-msgstr "Daha Fazla Tema Al..."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:283
-msgid "&Remove Theme"
-msgstr "&Temayı Sil"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:284
+#: src/modules/theme/managementdialog.cpp:284
 msgid "&Apply Theme"
 msgstr "&Temayı Uygula"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:326
-msgid "Delete Theme - KVIrc"
-msgstr "Temayı Sil - KVIrc"
+#: src/modules/theme/managementdialog.cpp:283
+msgid "&Remove Theme"
+msgstr "&Temayı Sil"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:327
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr "Gerçekten tema \"%Q\" (versiyon %Q) silmek istiyor musunuz? "
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/managementdialog.cpp:340
-msgid "Open Theme - KVIrc"
-msgstr "Temayı Aç - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:64
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:369
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:456
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:543
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:558
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:570
-msgid "Export Theme - KVIrc"
-msgstr "Temayı Dışarı Çıkar - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:101
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:85
-msgid "Welcome"
-msgstr "Hoş Geldiniz"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:104
-msgid "This procedure allows you to export the selected themes to a single package. It is useful when you want to distribute your themes to the public."
-msgstr "Bu işlem seçilen temayı tek bir paket ile dışarı çıkarmanızı sağlar. Bu herkes için tema dağıtmak istediğinizde yararlıdır."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:106
-msgid "You will be asked to provide a package name, a description and, if you want, an icon/screenshot."
-msgstr "Bir paket adı, bir açıklama ve isterseniz birde simge/ekran görüntüsü vermeniz istenecektir."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:108
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:78
-msgid "Hit the \"Next\" button to begin."
-msgstr "Başlamak için \"İleri\" düğmesine tıklayın."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:141
-msgid "Theme Data"
-msgstr "Tema Verileri"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:142
-msgid "This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first."
-msgstr "Bu bilgi listesi paketlemiş olduğunuz tema içindir. Eğer doğru görünüyor ise \"İleri\" tıklayınız, aksi halde \"İptal\" tıklayınız ve temalarınıza göz atınız."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:161
-msgid "Your name here"
-msgstr "Adınız"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:163
-msgid "Put a package description here..."
-msgstr "Buraya bir paket açıklaması yazınız..."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:256
-msgid "Package Information"
-msgstr "Paket Bilgisi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:257
-msgid "Here you need to provide information about you (the packager) and a short description of the package you're creating."
-msgstr "Burada kendiniz (yazar) ve oluşturduğunuz paket hakkında kısa bir bilgi vermeniz gerekir."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:263
-msgid "Package Name:"
-msgstr "Paket Adı:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:272
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:111
-msgid "Version:"
-msgstr "Versiyon:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:281
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:119
-msgid "Description:"
-msgstr "Açıklaması:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:290
-msgid "Package Author:"
-msgstr "Paket Yazar:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:328
-msgid "Icon/Screenshot"
-msgstr "Simge / Ekran görüntüsü"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:329
-msgid "Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage."
-msgstr "Burada tema paketi yükleme penceresinde görünecek resmi seçebilirsiniz. Bir simge, bir logo veya bir ekran görüntüsü olabilir ve 300x225 boyutlarından daha büyük olmamalıdır. Bir resim vermezseniz varsayılan simge kurulum aşamasında kullanılacaktır."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:369
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:198
-msgid "Failed to load the selected image"
-msgstr "Seçilen resim yüklenemedi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:380
-msgid "Package Path"
-msgstr "Paket Yolu"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:381
-msgid "Here you must choose the file name for the theme package. It should have a *%1 extension."
-msgstr "Burada tema paketi için dosya adı seçmelisiniz. Bir *%1 uzantısı olmalıdır."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:392
-msgid "Finally hit the \"Finish\" button to complete the packaging operation."
-msgstr "Nihayet paketleme işlemini tamamlamak için \"Bitir\"  butonuna basın."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:457
-msgid "Failed to load the selected image: please fix it"
-msgstr "Seçilen görüntüyü yüklenemedi: Lütfen düzeltin"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:539
-#: Files/Subversion/bin/kvirc/src/modules/theme/packthemedialog.cpp:554
-msgid "Packaging failed"
-msgstr "Paketleme başarısız"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:64
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:198
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:233
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:270
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:282
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:292
-msgid "Save Current Theme - KVIrc"
-msgstr "Kullanılan Temayı Kayıt Et - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:74
-msgid "This procedure allows you to save the current theme settings to a single directory. It is useful if you want to apply other themes or play with the theme settings and later come back to this theme with a single click. It will also allow you to manually modify the theme settings and later export them to a distributable package."
-msgstr "Bu işlem geçerli tema ayarlarızı tek bir dizine  kaydetmek için size izin veriyor. Bu size diğer temaları uygulamak veya tema ayarları ile oynamak ve daha sonra tek bir tıklama ile bu temaya geri gelmek istiyorsanız yararlıdır. Aynı zamanda elle tema ayarlarını değiştirmesine izin verir ve daha sonra dağıtılabilir paket olarak dışarı çıkarmanıza yardımcı olur."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:76
-msgid "You will be asked to provide a theme name, a description and, if you want, a screenshot."
-msgstr "Bir tema adı, bir açıklama ve isterseniz birde ekran görüntüsü vermeniz istenecektir."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:97
-msgid "Here you need to provide information about you (the author) and a short description of the theme you're creating."
-msgstr "Burada kendiniz (yazar) ve oluşturduğunuz tema hakkında kısa bir bilgi vermeniz gerekir."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:103
-msgid "Theme Name:"
-msgstr "Tema Adı:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:127
-msgid "Theme Author:"
-msgstr "Tema Yapımcısı:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:138
-msgid "Theme Information"
-msgstr "Tema Bilgisi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:150
-msgid "Here you can either choose a screenshot image from disk or make one now. The screenshot will be displayed in the tooltips of the theme management dialog and will be also visible in the package installation dialog if you will export the theme to a distributable package."
-msgstr "Burada diskten bir ekran görüntüsü görüntüsü seçebilir veya şimdi bir tane yapabilirsiniz. Bu ekran görüntüsü tema yönetimi penceresindeki ipuçlarında ve eğer temayı paket olarak dışarı çıkarırsanız paket kurulum penceresinde görünecektir."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:166
-msgid "Make Screenshot Now"
-msgstr "Ekran Görüntüsü Yap"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:173
-msgid "Screenshot"
-msgstr "Ekran Görüntüsü"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:217
+#: src/modules/theme/SaveThemeDialog.cpp:217
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ekran görüntüsü al - KVIrc"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:217
-msgid "Failed to make screenshot"
-msgstr "Ekran görüntüsü yaparken hata oluştu"
+#: src/modules/theme/libkvitheme.cpp:108 src/modules/theme/libkvitheme.cpp:121
+#: src/modules/theme/managementdialog.cpp:300
+#: src/modules/theme/managementdialog.cpp:312
+msgid "Apply theme - KVIrc"
+msgstr "Temayı Uygula - KVIrc"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:233
-msgid "You must choose a theme name!"
-msgstr "Tema ismi seçmelisiniz!"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:270
-msgid "Unable to create theme directory."
-msgstr "Tema dizini oluşturulamıyor."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:281
-msgid "Unable to save theme: %Q"
-msgstr "Tema kayıt edilemedi: %Q"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:292
-msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Seçili ekran görüntüsü görüntüsü yüklenemedi: Lütfen düzeltin"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:299
-msgid "Theme saved successfully to "
-msgstr "Tema kayıt edildi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/savethemedialog.cpp:302
-msgid "Save Theme - KVIrc"
-msgstr "Temayı Kayıt Et - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "Seçilen dosya geçerli bir KVIrc tema paketi olacak gibi görünmüyor"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:68
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr "Seçilen tema paketi %Q KVIrc için geçerli görünmüyor."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:126
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:322
+#: src/modules/theme/ThemeFunctions.cpp:126
+#: src/modules/theme/ThemeFunctions.cpp:310
 msgid "Author"
 msgstr "Yapımcı"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:127
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:323
+#: src/modules/theme/libkvitheme.cpp:233
+msgid "Choose a file to save the screenshot to"
+msgstr "Ekran görüntüsü kaydetmek için bir dosya seçin"
+
+#: src/modules/theme/ThemeFunctions.cpp:127
+#: src/modules/theme/ThemeFunctions.cpp:311
 msgid "Created at"
 msgstr "Yapım Tarigi"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:128
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:324
+#: src/modules/theme/ThemeFunctions.cpp:128
+#: src/modules/theme/ThemeFunctions.cpp:312
 msgid "Created with"
 msgstr "ile Tapıldı"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:208
-msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr "Uyarı: tema KVIrc bu sürümü ile uyumsuz olabilir"
+#: src/modules/theme/managementdialog.cpp:149
+msgid "Delete Selected Themes"
+msgstr "Seçilen Temaları Sil"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:217
-msgid "Go Back to Package Data"
-msgstr "Paket Verilerine Geri Gidin"
+#: src/modules/theme/managementdialog.cpp:325
+msgid "Delete Theme - KVIrc"
+msgstr "Temayı Sil - KVIrc"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:224
-msgid "Warning: Some of the theme contained in this package might be either corrupted or incompatible with this version of KVIrc"
-msgstr "Uyarı: Bu paketin içerdiği tema bozulmuş veya KVIrc bu sürümü ile uyumsuz olabilir."
+#: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:119
+msgid "Description:"
+msgstr "Açıklaması:"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:228
-msgid "Show Details"
-msgstr "Detayları Göster"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:278
-msgid "Install Theme Pack - KVIrc"
-msgstr "Tema Paketi Yükle - KVIrc"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:279
-msgid "You're about to install the following theme package"
-msgstr "Aşağıdaki tema paketini yüklemek üzeresiniz"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:280
-msgid "Do you want to proceed with the installation ?"
-msgstr "Kuruluma devam etmek istiyor musunuz?"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:281
+#: src/modules/theme/ThemeFunctions.cpp:269
 msgid "Do Not Install"
 msgstr "Yükleme Yapma"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:282
-msgid "Yes, Proceed"
-msgstr "Evet, Devam Et"
+#: src/modules/theme/managementdialog.cpp:326
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr "Gerçekten tema \"%Q\" (versiyon %Q) silmek istiyor musunuz? "
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:298
-msgid "Failed to unpack the selected file: %Q"
+#: src/modules/theme/ThemeFunctions.cpp:268
+msgid "Do you want to proceed with the installation ?"
+msgstr "Kuruluma devam etmek istiyor musunuz?"
+
+#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/managementdialog.cpp:301
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr "Tema \"%Q\" onaylamak (versiyon %Q) istiyor musunuzs?"
+
+#: src/modules/theme/libkvitheme.cpp:74
+msgid "Error installing theme package: %Q"
+msgstr "Tema paketi kurulurken hata: %Q"
+
+#: src/modules/theme/libkvitheme.cpp:248
+msgid "Error making screenshot"
+msgstr "Ekran görüntüsü yaparken hata oluştu"
+
+#: src/modules/theme/managementdialog.cpp:143
+msgid "Export Selected Themes to a Distributable Package"
+msgstr "Seçilen temalar için bir Dağıtılabilir paketi dışarı çıkar"
+
+#: src/modules/theme/PackThemeDialog.cpp:64
+#: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/PackThemeDialog.cpp:456
+#: src/modules/theme/PackThemeDialog.cpp:543
+#: src/modules/theme/PackThemeDialog.cpp:558
+#: src/modules/theme/PackThemeDialog.cpp:570
+msgid "Export Theme - KVIrc"
+msgstr "Temayı Dışarı Çıkar - KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:120
+#: src/modules/theme/managementdialog.cpp:311
+#, fuzzy
+msgid "Failed to apply the specified theme: %1"
+msgstr "Belirtilen tema uygulaması başarısız oldu: %Q"
+
+#: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:198
+msgid "Failed to load the selected image"
+msgstr "Seçilen resim yüklenemedi"
+
+#: src/modules/theme/PackThemeDialog.cpp:457
+msgid "Failed to load the selected image: please fix it"
+msgstr "Seçilen görüntüyü yüklenemedi: Lütfen düzeltin"
+
+#: src/modules/theme/SaveThemeDialog.cpp:291
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr "Seçili ekran görüntüsü görüntüsü yüklenemedi: Lütfen düzeltin"
+
+#: src/modules/theme/SaveThemeDialog.cpp:217
+msgid "Failed to make screenshot"
+msgstr "Ekran görüntüsü yaparken hata oluştu"
+
+#: src/modules/theme/ThemeFunctions.cpp:286
+#, fuzzy
+msgid "Failed to unpack the selected file: %1"
 msgstr "Seçili dosya açılamadı: %Q"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:325
-msgid "Theme Engine Version"
-msgstr "Tema Motoru Sürümü"
+#: src/modules/theme/PackThemeDialog.cpp:392
+msgid "Finally hit the \"Finish\" button to complete the packaging operation."
+msgstr "Nihayet paketleme işlemini tamamlamak için \"Bitir\"  butonuna basın."
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/theme/themefunctions.cpp:326
+#: src/modules/theme/managementdialog.cpp:165
+msgid "Get More Themes..."
+msgstr "Daha Fazla Tema Al..."
+
+#: src/modules/theme/ThemeFunctions.cpp:217
+msgid "Go Back to Package Data"
+msgstr "Paket Verilerine Geri Gidin"
+
+#: src/modules/theme/PackThemeDialog.cpp:329
+msgid ""
+"Here you can choose the image that will appear in the installation dialog "
+"for your theme package. It can be an icon, a logo or a screenshot and it "
+"should be not larger than 300x225. If you don't provide an image a simple "
+"default icon will be used at installation stage."
+msgstr ""
+"Burada tema paketi yükleme penceresinde görünecek resmi seçebilirsiniz. Bir "
+"simge, bir logo veya bir ekran görüntüsü olabilir ve 300x225 boyutlarından "
+"daha büyük olmamalıdır. Bir resim vermezseniz varsayılan simge kurulum "
+"aşamasında kullanılacaktır."
+
+#: src/modules/theme/SaveThemeDialog.cpp:150
+msgid ""
+"Here you can either choose a screenshot image from disk or make one now. The "
+"screenshot will be displayed in the tooltips of the theme management dialog "
+"and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
+msgstr ""
+"Burada diskten bir ekran görüntüsü görüntüsü seçebilir veya şimdi bir tane "
+"yapabilirsiniz. Bu ekran görüntüsü tema yönetimi penceresindeki ipuçlarında "
+"ve eğer temayı paket olarak dışarı çıkarırsanız paket kurulum penceresinde "
+"görünecektir."
+
+#: src/modules/theme/PackThemeDialog.cpp:381
+msgid ""
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
+msgstr ""
+"Burada tema paketi için dosya adı seçmelisiniz. Bir *%1 uzantısı olmalıdır."
+
+#: src/modules/theme/SaveThemeDialog.cpp:97
+msgid ""
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
+msgstr ""
+"Burada kendiniz (yazar) ve oluşturduğunuz tema hakkında kısa bir bilgi "
+"vermeniz gerekir."
+
+#: src/modules/theme/PackThemeDialog.cpp:257
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Burada kendiniz (yazar) ve oluşturduğunuz paket hakkında kısa bir bilgi "
+"vermeniz gerekir."
+
+#: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:78
+msgid "Hit the \"Next\" button to begin."
+msgstr "Başlamak için \"İleri\" düğmesine tıklayın."
+
+#: src/modules/theme/PackThemeDialog.cpp:328
+msgid "Icon/Screenshot"
+msgstr "Simge / Ekran görüntüsü"
+
+#: src/modules/theme/ThemeFunctions.cpp:266
+msgid "Install Theme Pack - KVIrc"
+msgstr "Tema Paketi Yükle - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:159
+msgid "Install Theme Package From Disk"
+msgstr "Diskten Tema Paketi yükleyin "
+
+#: src/modules/theme/SaveThemeDialog.cpp:166
+msgid "Make Screenshot Now"
+msgstr "Ekran Görüntüsü Yap"
+
+#: src/modules/theme/managementdialog.cpp:114
+msgid "Manage Themes - KVIrc"
+msgstr "Temaları Yönet"
+
+#: src/modules/theme/managementdialog.cpp:339
+msgid "Open Theme - KVIrc"
+msgstr "Temayı Aç - KVIrc"
+
+#: src/modules/theme/PackThemeDialog.cpp:290
+msgid "Package Author:"
+msgstr "Paket Yazar:"
+
+#: src/modules/theme/PackThemeDialog.cpp:256
+msgid "Package Information"
+msgstr "Paket Bilgisi"
+
+#: src/modules/theme/PackThemeDialog.cpp:263
+msgid "Package Name:"
+msgstr "Paket Adı:"
+
+#: src/modules/theme/PackThemeDialog.cpp:380
+msgid "Package Path"
+msgstr "Paket Yolu"
+
+#: src/modules/theme/PackThemeDialog.cpp:539
+#: src/modules/theme/PackThemeDialog.cpp:554
+msgid "Packaging failed"
+msgstr "Paketleme başarısız"
+
+#: src/modules/theme/PackThemeDialog.cpp:163
+msgid "Put a package description here..."
+msgstr "Buraya bir paket açıklaması yazınız..."
+
+#: src/modules/theme/SaveThemeDialog.cpp:64
+#: src/modules/theme/SaveThemeDialog.cpp:198
+#: src/modules/theme/SaveThemeDialog.cpp:233
+#: src/modules/theme/SaveThemeDialog.cpp:270
+#: src/modules/theme/SaveThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:291
+msgid "Save Current Theme - KVIrc"
+msgstr "Kullanılan Temayı Kayıt Et - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:132
+msgid "Save Current Theme..."
+msgstr "Kullanılan Temayı Kayıt Et"
+
+#: src/modules/theme/SaveThemeDialog.cpp:301
+msgid "Save Theme - KVIrc"
+msgstr "Temayı Kayıt Et - KVIrc"
+
+#: src/modules/theme/SaveThemeDialog.cpp:173
+msgid "Screenshot"
+msgstr "Ekran Görüntüsü"
+
+#: src/modules/theme/ThemeFunctions.cpp:228
+msgid "Show Details"
+msgstr "Detayları Göster"
+
+#: src/modules/theme/ThemeFunctions.cpp:314
 msgid "Subdirectory"
 msgstr "Alt dizin"
 
+#: src/modules/theme/ThemeFunctions.cpp:68
+#, fuzzy
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
+msgstr "Seçilen tema paketi %Q KVIrc için geçerli görünmüyor."
+
+#: src/modules/theme/ThemeFunctions.cpp:47
+msgid "The selected file does not seem to be a valid KVIrc theme package"
+msgstr "Seçilen dosya geçerli bir KVIrc tema paketi olacak gibi görünmüyor"
+
+#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
+#, fuzzy
+msgid "The theme package '%Q' does not exist"
+msgstr "Tema paketi '%Q' mevcut değil"
+
+#: src/modules/theme/SaveThemeDialog.cpp:127
+msgid "Theme Author:"
+msgstr "Tema Yapımcısı:"
+
+#: src/modules/theme/PackThemeDialog.cpp:141
+msgid "Theme Data"
+msgstr "Tema Verileri"
+
+#: src/modules/theme/ThemeFunctions.cpp:313
+msgid "Theme Engine Version"
+msgstr "Tema Motoru Sürümü"
+
+#: src/modules/theme/SaveThemeDialog.cpp:138
+msgid "Theme Information"
+msgstr "Tema Bilgisi"
+
+#: src/modules/theme/SaveThemeDialog.cpp:103
+msgid "Theme Name:"
+msgstr "Tema Adı:"
+
+#: src/modules/theme/SaveThemeDialog.cpp:298
+msgid "Theme saved successfully to "
+msgstr "Tema kayıt edildi"
+
+#: src/modules/theme/PackThemeDialog.cpp:142
+msgid ""
+"This is the information list for the themes you're packaging. If it looks OK "
+"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"themes first."
+msgstr ""
+"Bu bilgi listesi paketlemiş olduğunuz tema içindir. Eğer doğru görünüyor ise "
+"\"İleri\" tıklayınız, aksi halde \"İptal\" tıklayınız ve temalarınıza göz "
+"atınız."
+
+#: src/modules/theme/PackThemeDialog.cpp:104
+msgid ""
+"This procedure allows you to export the selected themes to a single package. "
+"It is useful when you want to distribute your themes to the public."
+msgstr ""
+"Bu işlem seçilen temayı tek bir paket ile dışarı çıkarmanızı sağlar. Bu "
+"herkes için tema dağıtmak istediğinizde yararlıdır."
+
+#: src/modules/theme/SaveThemeDialog.cpp:74
+msgid ""
+"This procedure allows you to save the current theme settings to a single "
+"directory. It is useful if you want to apply other themes or play with the "
+"theme settings and later come back to this theme with a single click. It "
+"will also allow you to manually modify the theme settings and later export "
+"them to a distributable package."
+msgstr ""
+"Bu işlem geçerli tema ayarlarızı tek bir dizine  kaydetmek için size izin "
+"veriyor. Bu size diğer temaları uygulamak veya tema ayarları ile oynamak ve "
+"daha sonra tek bir tıklama ile bu temaya geri gelmek istiyorsanız "
+"yararlıdır. Aynı zamanda elle tema ayarlarını değiştirmesine izin verir ve "
+"daha sonra dağıtılabilir paket olarak dışarı çıkarmanıza yardımcı olur."
+
+#: src/modules/theme/SaveThemeDialog.cpp:270
+msgid "Unable to create theme directory."
+msgstr "Tema dizini oluşturulamıyor."
+
+#: src/modules/theme/SaveThemeDialog.cpp:280
+#, fuzzy
+msgid "Unable to save theme: %1"
+msgstr "Tema kayıt edilemedi: %Q"
+
+#: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:111
+msgid "Version:"
+msgstr "Versiyon:"
+
+#: src/modules/theme/ThemeFunctions.cpp:224
+msgid ""
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
+msgstr ""
+"Uyarı: Bu paketin içerdiği tema bozulmuş veya KVIrc bu sürümü ile uyumsuz "
+"olabilir."
+
+#: src/modules/theme/ThemeFunctions.cpp:208
+msgid "Warning: The theme might be incompatible with this version of KVIrc"
+msgstr "Uyarı: tema KVIrc bu sürümü ile uyumsuz olabilir"
+
+#: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:85
+msgid "Welcome"
+msgstr "Hoş Geldiniz"
+
+#: src/modules/theme/ThemeFunctions.cpp:270
+msgid "Yes, Proceed"
+msgstr "Evet, Devam Et"
+
+#: src/modules/theme/SaveThemeDialog.cpp:233
+msgid "You must choose a theme name!"
+msgstr "Tema ismi seçmelisiniz!"
+
+#: src/modules/theme/PackThemeDialog.cpp:106
+msgid ""
+"You will be asked to provide a package name, a description and, if you want, "
+"an icon/screenshot."
+msgstr ""
+"Bir paket adı, bir açıklama ve isterseniz birde simge/ekran görüntüsü "
+"vermeniz istenecektir."
+
+#: src/modules/theme/SaveThemeDialog.cpp:76
+msgid ""
+"You will be asked to provide a theme name, a description and, if you want, a "
+"screenshot."
+msgstr ""
+"Bir tema adı, bir açıklama ve isterseniz birde ekran görüntüsü vermeniz "
+"istenecektir."
+
+#: src/modules/theme/ThemeFunctions.cpp:267
+msgid "You're about to install the following theme package"
+msgstr "Aşağıdaki tema paketini yüklemek üzeresiniz"
+
+#: src/modules/theme/PackThemeDialog.cpp:161
+msgid "Your name here"
+msgstr "Adınız"
+
+#: src/modules/theme/managementdialog.cpp:87
+msgid "by"
+msgstr "tarafından"
