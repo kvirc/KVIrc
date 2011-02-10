@@ -64,7 +64,7 @@ namespace KviLocale
 	KVILIB_API bool loadCatalogue(const QString& name,const QString& szLocaleDir);
 	KVILIB_API KviMessageCatalogue * getLoadedCatalogue(const QString& name);
 	KVILIB_API bool unloadCatalogue(const QString& name);
-	KVILIB_API void init(QApplication * app,const QString& localeDir);
+	KVILIB_API void init(QApplication * app,const QString& localeDir,const QString& forceLocaleDir);
 	KVILIB_API void done(QApplication * app);
 	KVILIB_API const char * translate(const char * text,const char * context);
 	KVILIB_API const QString & translateToQString(const char * text,const char * context);

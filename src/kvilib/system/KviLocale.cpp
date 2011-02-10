@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "kvi_debug.h"
+#include "kvi_defaults.h"
 #include "KviMemory.h"
 #include "KviByteOrder.h"
 
@@ -927,11 +928,11 @@ namespace KviLocale
 	//     translation map was sucesfully loaded
 	//
 
-	void init(QApplication * app,const QString &localeDir)
+	void init(QApplication * app,const QString &localeDir,const QString& forceLocaleDir)
 	{
 		// first of all try to find out the current locale
 		g_szLang="";
-		QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homePath());
+		QString szLangFile=QString("%1/%2").arg(forceLocaleDir, KVI_FORCE_LOCALE_FILE_NAME);
 
 		if(KviFileUtils::fileExists(szLangFile))
 		{

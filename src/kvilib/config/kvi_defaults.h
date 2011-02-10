@@ -62,6 +62,8 @@
 	#define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
 #endif
 
+#define KVI_FORCE_LOCALE_FILE_NAME ".kvirc_force_locale"
+
 #define KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME "Downloads"
 
 #define KVI_DEFAULT_NICKNAME_TOKEN "%nick%"

@@ -24,6 +24,7 @@
 
 #include "OptionsWidget_textEncoding.h"
 
+#include "kvi_defaults.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviQString.h"
@@ -87,7 +88,8 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection","options"));
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en","options"));
 
-	QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homePath());
+	QString szLangFile;
+	g_pApp->getLocalKvircDirectory(szLangFile,KviApplication::None,KVI_FORCE_LOCALE_FILE_NAME);
 
 	bool bIsDefaultLocale = !KviFileUtils::fileExists(szLangFile);
 	//We Have setted locale, but not restarted kvirc
@@ -149,7 +151,8 @@ void OptionsWidget_textEncoding::commit()
 	}
 
 	idx=m_pForcedLocaleCombo->currentIndex();
-	QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homePath());
+	QString szLangFile;
+	g_pApp->getLocalKvircDirectory(szLangFile,KviApplication::None,KVI_FORCE_LOCALE_FILE_NAME);
 	if(idx==0) {
 		if(KviFileUtils::fileExists(szLangFile))
 			KviFileUtils::removeFile(szLangFile);

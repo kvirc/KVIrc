@@ -694,11 +694,12 @@ void KviApplication::loadDirectories()
 	szLocalePath.append("locale");
 	szLocalePath.append(KVI_PATH_SEPARATOR);
 
-	KviLocale::init(this,szLocalePath);
-
 	//__debug_1arg("Global Kvirc directory is %s",m_szGlobalKvircDir.ptr());
 	// Now look for the local (writable) one
 	m_bFirstTimeRun = !findLocalKvircDirectory();
+
+	KviLocale::init(this,szLocalePath, m_szLocalKvircDir);
+
 
 	if(m_bFirstTimeRun)
 		setupBegin();
