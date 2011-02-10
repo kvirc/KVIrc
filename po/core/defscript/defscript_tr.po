@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2011-01-18 16:00+0200\n"
+"PO-Revision-Date: 2011-02-10 03:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:541
 msgid "&Administrator"
-msgstr ""
+msgstr "&Administrator"
 
 #: data/defscript/popups.kvs:465
 #: data/defscript/popups.kvs:599
@@ -35,7 +35,7 @@ msgstr "&Kontrol"
 
 #: data/defscript/popups.kvs:546
 msgid "&Deadministrator"
-msgstr ""
+msgstr "&Deadministrator"
 
 #: data/defscript/popups.kvs:566
 msgid "&Dehalfop"
@@ -47,7 +47,7 @@ msgstr "&Deop"
 
 #: data/defscript/popups.kvs:536
 msgid "&Deowner"
-msgstr ""
+msgstr "&Deowner"
 
 #: data/defscript/popups.kvs:561
 msgid "&Halfop"
@@ -159,7 +159,7 @@ msgstr "Devamlı Vurgu"
 
 #: data/defscript/popups.kvs:1404
 msgid "Automatically Join Channel"
-msgstr ""
+msgstr "Kanala Otomatik Giriş"
 
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
@@ -255,12 +255,12 @@ msgstr "Panoya Kopyala"
 
 #: data/defscript/popups.kvs:576
 msgid "D&evoice"
-msgstr ""
+msgstr "D&evoice"
 
 #: data/defscript/popups.kvs:516
 #: data/defscript/popups.kvs:1139
 msgid "DNS for"
-msgstr ""
+msgstr "DNS"
 
 #: data/defscript/popups.kvs:986
 msgid "Default"
@@ -313,7 +313,7 @@ msgstr "Yardım "
 #: data/defscript/popups.kvs:51
 #: data/defscript/popups.kvs:56
 msgid "Highlight as"
-msgstr ""
+msgstr "Bu Şekilde Uyar"
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"
@@ -393,9 +393,8 @@ msgstr "Kayıt Defteri Kaydet..."
 #: data/defscript/events.kvs:68
 #: data/defscript/events.kvs:76
 #: data/defscript/events.kvs:84
-#, fuzzy
 msgid "Logging"
-msgstr "Kayıt Defterini Dizine Kaydet"
+msgstr "Kayıt Tutma"
 
 #: data/defscript/popups.kvs:1190
 msgid "Logging to"
@@ -404,7 +403,7 @@ msgstr "Kayıt Defterini Dizine Kaydet"
 #: data/defscript/popups.kvs:521
 #: data/defscript/popups.kvs:1144
 msgid "Mask for"
-msgstr ""
+msgstr "Mask"
 
 #: data/defscript/popups.kvs:1387
 msgid "Maximize"
@@ -450,7 +449,7 @@ msgstr "Notify avatar"
 
 #: data/defscript/popups.kvs:531
 msgid "O&wner"
-msgstr ""
+msgstr "O&wner"
 
 #: data/defscript/popups.kvs:1510
 msgid "Open "
@@ -540,11 +539,11 @@ msgstr "Vurguyu başlat (Yerel)"
 
 #: data/defscript/popups.kvs:1435
 msgid "Stop Auto-Joining Channel on Network '?s'"
-msgstr ""
+msgstr "'?s' Ağında Otomatik Kanal Girişi İptal Et"
 
 #: data/defscript/popups.kvs:1422
 msgid "Stop Auto-Joining Channel on Server '?s'"
-msgstr ""
+msgstr "'?s' Sunucusunda Otomatik Kanal Girişi İptal Et"
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
@@ -647,7 +646,7 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:451
 msgid "Voice"
-msgstr ""
+msgstr "Voice"
 
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
@@ -655,11 +654,11 @@ msgstr "Sesli Chat"
 
 #: data/defscript/popups.kvs:1414
 msgid "When Connecting to Network '?s'"
-msgstr ""
+msgstr "'?s' Ağına Bağlandığım Zaman"
 
 #: data/defscript/popups.kvs:1407
 msgid "When Connecting to Server '?s'"
-msgstr ""
+msgstr "'?s' Sunucusuna Bağlandığım Zaman"
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"
@@ -683,24 +682,16 @@ msgid "You're not connected to a server"
 msgstr "Sunucuya bağlı değilsiniz"
 
 #: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
+msgid "[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr "[Yükleyici] Hata: copyFiles’ın ilk argümanı kaynak dizinde olmalıdır "
 
 #: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-"[Yükleyici] Hata: copyFiles’ın ikinci argümanı bir dosya ismi ya da regexp "
-"dosyası olmalıdır"
+msgid "[Installer] Error: the second argument of copyFiles must be a file name or file regexp"
+msgstr "[Yükleyici] Hata: copyFiles’ın ikinci argümanı bir dosya ismi ya da regexp dosyası olmalıdır"
 
 #: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
-msgstr ""
-"[Yükleyici] Hata: copyFiles’ın üçüncü argümanı bir hedef dizin olmalıdır"
+msgid "[Installer] Error: the third argument of copyFiles must be a destination directory"
+msgstr "[Yükleyici] Hata: copyFiles’ın üçüncü argümanı bir hedef dizin olmalıdır"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
@@ -708,7 +699,7 @@ msgstr "kanal"
 
 #: data/defscript/popups.kvs:336
 msgid "has a default avatar"
-msgstr ""
+msgstr "varsayılan bir avatarı var"
 
 #: data/defscript/popups.kvs:489
 #: data/defscript/popups.kvs:1113
@@ -718,7 +709,7 @@ msgstr "idle zamanlı"
 
 #: data/defscript/popups.kvs:104
 msgid "is being ignored"
-msgstr ""
+msgstr "ignore edildi"
 
 #: data/defscript/popups.kvs:333
 msgid "is in the notify list"
@@ -727,7 +718,7 @@ msgstr "notify listesinde"
 #: data/defscript/popups.kvs:105
 #: data/defscript/popups.kvs:109
 msgid "is not being ignored"
-msgstr ""
+msgstr "ignore edilmedi"
 
 #: data/defscript/popups.kvs:339
 msgid "is not registered"
