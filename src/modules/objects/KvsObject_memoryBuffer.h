@@ -47,6 +47,7 @@ public:
 		return m_pBuffer;
 	};
 	bool loadFromFile(KviKvsObjectFunctionCall *c);
+	bool clear(KviKvsObjectFunctionCall *c);
 	bool saveToFile(KviKvsObjectFunctionCall *c);
 };
 

@@ -54,11 +54,14 @@
 		Load into memorybuffer the <file_name> file.
 		!fn: $saveToFile(<file_name:string>)
 		Save the memorybuffer to <file_name> file.
+		!fn: $clear()
+		Clear the memorybuffer.
 
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_memoryBuffer,"memorybuffer","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,loadFromFile);
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,clear);
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,saveToFile);
 KVSO_END_REGISTERCLASS(KvsObject_memoryBuffer)
 
@@ -74,6 +77,14 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_memoryBuffer)
 	delete m_pBuffer;
 
 KVSO_END_CONSTRUCTOR(KvsObject_memoryBuffer)
+
+
+KVSO_CLASS_FUNCTION(memoryBuffer,clear)
+{
+	CHECK_INTERNAL_POINTER(m_pBuffer)
+	m_pBuffer->clear();
+	return true;
+}
 
 KVSO_CLASS_FUNCTION(memoryBuffer,loadFromFile)
 {
