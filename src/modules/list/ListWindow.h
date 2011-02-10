@@ -62,6 +62,7 @@ protected:
 	QString m_szChan;
 	QString m_szUsers;
 	QString m_szTopic;
+	QString m_szStrippedTopic;
 };
 
 class ChannelTreeWidgetItem : public QTreeWidgetItem

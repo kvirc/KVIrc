@@ -133,7 +133,9 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint( const QStyleOptionViewItem &sovIt
 		case 2:
 		default:
 			//topic
-			return QSize(fm.width(KviMircCntrl::stripControlBytes(item->itemData()->m_szTopic)), iHeight);
+			if(item->itemData()->m_szStrippedTopic.isEmpty())
+				item->itemData()->m_szStrippedTopic = KviMircCntrl::stripControlBytes(item->itemData()->m_szTopic);
+			return QSize(fm.width(item->itemData()->m_szStrippedTopic), iHeight);
 			break;
 	}
 	//make gcc happy
