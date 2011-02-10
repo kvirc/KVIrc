@@ -109,10 +109,13 @@ ChannelTreeWidgetItemDelegate::~ChannelTreeWidgetItemDelegate()
 {
 }
 
+#define BORDER 2
+
 QSize ChannelTreeWidgetItemDelegate::sizeHint( const QStyleOptionViewItem &sovItem, const QModelIndex &index) const
 {
 	ChannelTreeWidget* treeWidget = (ChannelTreeWidget*)parent();
-	int iHeight=treeWidget->fontMetrics().lineSpacing();
+
+	int iHeight=treeWidget->fontMetrics().lineSpacing() + BORDER + BORDER;
 
 	ChannelTreeWidgetItem * item = dynamic_cast<ChannelTreeWidgetItem*>(treeWidget->itemFromIndex(index));
 
@@ -246,11 +249,15 @@ ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
 	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
 	m_pTreeWidget->setSortingEnabled(TRUE);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
+	m_pTreeWidget->setUniformRowHeights(true);
 	
 	m_pTreeWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	m_pTreeWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	m_pTreeWidget->header()->setStretchLastSection(false);
-	m_pTreeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
+	m_pTreeWidget->header()->resizeSection(0,150);
+	m_pTreeWidget->header()->resizeSection(1,80);
+	m_pTreeWidget->header()->resizeSection(2,450);
+	//m_pTreeWidget->header()->setResizeMode(QHeaderView::ResizeToContents); <-- this is too heavy for single-core machines...
 
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
 
@@ -552,6 +559,7 @@ void ListWindow::flush()
 		m_pItemList->removeFirst();
 	}
 	m_pTreeWidget->setUpdatesEnabled(true);
+	m_pTreeWidget->resizeColumnToContents(2);
 	m_pTreeWidget->viewport()->update();
 }
 
