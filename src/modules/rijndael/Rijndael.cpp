@@ -1084,7 +1084,7 @@ int Rijndael::blockEncrypt(const UINT8 *input,int inputLen,UINT8 *outBuffer)
 			}
 		break;
 		case CBC:
-			((UINT32*)block)[0] = ((UINT32*)m_initVector)[0] ^ ((UINT32*)input)[0];
+			((UINT32*)block)[0] = ((UINT32*)m_initVector)[0] ^ ((const UINT32*)input)[0];
 			((UINT32*)block)[1] = ((UINT32*)m_initVector)[1] ^ ((UINT32*)input)[1];
 			((UINT32*)block)[2] = ((UINT32*)m_initVector)[2] ^ ((UINT32*)input)[2];
 			((UINT32*)block)[3] = ((UINT32*)m_initVector)[3] ^ ((UINT32*)input)[3];
