@@ -28,9 +28,9 @@
 #include "KviModule.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
-#include "KviMircCntrl.h"
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
+#include "KviControlCodes.h"
 #include "UglyBase64.h"
 
 #include <cryptopp/aes.h>
@@ -184,7 +184,7 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * pcPlainTex
 	}
 	
 	szOutBuffer = szCipher.c_str();
-	szOutBuffer.prepend(KviMircCntrl::CryptEscape);
+	szOutBuffer.prepend(KviControlCodes::CryptEscape);
 	return KviCryptEngine::Encrypted;
 }
 
@@ -202,7 +202,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * pcInBuffer
 	for(unsigned int u=0;u<sizeof(iv);u++)
 		iv[u] = 0x00;
 
-	if(static_cast<int>(szIn[0]) != KviMircCntrl::CryptEscape)
+	if(static_cast<int>(szIn[0]) != KviControlCodes::CryptEscape)
 	{
 		szPlainText = pcInBuffer;
 		return KviCryptEngine::DecryptOkWasPlainText;
