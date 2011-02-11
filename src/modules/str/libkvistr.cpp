@@ -38,12 +38,14 @@
 #include <QRegExp>
 #include <QClipboard>
 
-#if defined( COMPILE_SSL_SUPPORT )
+#ifdef COMPILE_SSL_SUPPORT
 	// The current implementation
 	#include <KviSSL.h>
 	#include <openssl/evp.h>
 	#include <openssl/pem.h>
-#elif defined(COMPILE_CRYPTOPP_SUPPORT)
+#endif
+
+#ifdef COMPILE_CRYPTOPP_SUPPORT
 	// The preferred new implementation (until QCryptographicHash supports all
 	// hashes we want).
 	// As Crypto++ is concerned for security they warn about MD5 and friends,
@@ -76,7 +78,9 @@
 		);
 		return szDigest;
 	}
-#else
+#endif
+
+#if !defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 	// The fallback we can always use, but with very limited set of
 	// functionality.
 	#include <QCryptographicHash>
@@ -1371,7 +1375,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("algorithm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 	KVSM_PARAMETERS_END(c)
 
-#if defined(COMPILE_SSL_SUPPORT)
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 	if(szType.isEmpty()) szType = "md5";
 
 	EVP_MD_CTX mdctx;

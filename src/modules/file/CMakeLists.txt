@@ -1,9 +1,5 @@
 # CMakeLists for src/modules/file
 
-IF(WANT_NO_EMBEDDED_CODE)
-    ADD_DEFINITIONS("-DCOMPILE_NO_EMBEDDED_CODE -fexceptions")
-ENDIF(WANT_NO_EMBEDDED_CODE)
-
 SET(kvifile_SRCS
 	libkvifile.cpp
 )

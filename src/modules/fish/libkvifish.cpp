@@ -53,7 +53,7 @@
 	// KviApplication.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	
-	#ifdef COMPILE_SSL_SUPPORT
+	#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 
 		#include <KviSSL.h>
 		#include <openssl/blowfish.h>
@@ -90,7 +90,7 @@
 
 	static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 	{
-	#ifdef COMPILE_SSL_SUPPORT
+	#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 		if(!g_fish_dh)
 		{
 			BIGNUM * dhp = BN_new();
@@ -236,7 +236,7 @@
 
 		KviCString szFinalKey;
 
-		#ifdef COMPILE_SSL_SUPPORT
+		#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 		unsigned char * secret=(unsigned char *) KviMemory::allocate(DH_size(g_fish_dh));
 		int secretLen;
 		BIGNUM *bn = BN_bin2bn((unsigned char *) szHisPubKey.data(), szHisPubKey.size(),NULL);
@@ -341,7 +341,7 @@
 static bool fish_module_init(KviModule * m)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	#ifdef COMPILE_SSL_SUPPORT
+	#if defined( COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 		KviSSL::globalSSLInit();
 	#endif
 	m->kvsRegisterAppEventHandler(KviEvent_OnQueryNotice,fish_event_onQueryNotice);

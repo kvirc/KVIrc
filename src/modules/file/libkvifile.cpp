@@ -37,7 +37,7 @@
 #include <QTextCodec>
 #include <QByteArray>
 
-#if defined(COMPILE_SSL_SUPPORT)
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 	// The current implementation
 	#include <openssl/evp.h>
 #elif defined(COMPILE_CRYPTOPP_SUPPORT)
@@ -1420,7 +1420,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-#if defined(COMPILE_SSL_SUPPORT)
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 	if(szAlgo.isEmpty()) szAlgo = "md5";
 
 	EVP_MD_CTX mdctx;

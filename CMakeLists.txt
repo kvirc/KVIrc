@@ -571,8 +571,6 @@ OPTION(WANT_CRYPTOPP "Whether to use Crypto++ library" OFF)
 OPTION(WANT_OPENSSL "Whether to use OpenSSL library" ON)
 
 IF(WANT_CRYPTOPP)
-	SET(WANT_OPENSSL OFF)
-
 	FIND_PACKAGE(PkgConfig)
 
 	# for every os/distribution
@@ -604,8 +602,6 @@ ENDIF()
 ############################################################################
 
 IF(WANT_OPENSSL)
-	SET(WANT_CRYPTOPP OFF)
-
 	FIND_PACKAGE(OpenSSL)
 	IF(OPENSSL_FOUND)
 		IF(WIN32)
@@ -902,27 +898,6 @@ IF(WANT_MEMORY_CHECKS)
 	SET(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "User enabled")
 ELSE()
 	SET(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "No")
-ENDIF()
-
-############################################################################
-# »No embedded code« (but slightly more dependecies)
-# This might need some explanation, so here we go:
-#   I (Kai Wasserbäch) noticed as one of the Debian Maintainers of KVIrc,
-#   that KVIrc uses quite some embedded code and/or own implementations of
-#   code, that is available from widely tested libraries. This is not
-#   recommeded to do, as this most probably leads to security issues
-#   (keeping different versions of code across several projects in sync is
-#   prone to fail). Therefore I start hereby replacing such code copies
-#   with library calls.
-#   But a few people on #kvirc complained that new dependencies would be
-#   unfeasable. That leads to the following paragraph: we only use the
-#   saner way to build KVIrc if -DWITH_NO_EMBEDDED_CODE=YES is passed to
-#   CMake.
-############################################################################
-OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries" OFF)
-IF(WANT_NO_EMBEDDED_CODE)
-	MESSAGE(STATUS "WANT_NO_EMBEDDED_CODE activated.")
-	MESSAGE(STATUS "You may want to use -DWANT_CRYPTOPP instead.")
 ENDIF()
 
 ############################################################################
