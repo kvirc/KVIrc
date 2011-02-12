@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-02-11 11:21+0200\n"
+"PO-Revision-Date: 2011-02-12 12:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:290
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr ""
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] şimdi giriş yaptı \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:372
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
@@ -100,11 +100,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:233
 msgid "### Log session started at %1 ###"
-msgstr ""
+msgstr "### Kayıt tutma başlama zamanı %1 ###"
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:65
 msgid "### Log session terminated at %1 ###"
-msgstr ""
+msgstr "### Kayıt tutma bitiş zamanı %1 ###"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:621
 msgid "%1"
@@ -132,7 +132,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1612
 msgid "%1 changes avatar to %2"
-msgstr ""
+msgstr "%1 avatarını değiştirdi %2"
 
 #: src/kvilib/system/KviTimeUtils.cpp:133
 msgid "%1 d %2 h %3 m %4 s"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1606
 msgid "%1 unsets avatar"
-msgstr ""
+msgstr "%1 avatarını kaldırdı"
 
 #: src/modules/links/LinksWindow.cpp:235
 msgid "%1: Parent link %2"
@@ -242,44 +242,44 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2074
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2097
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal modu kurdu \r!m%c%c\rmode %c%c\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1848
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal limiti \r!m-l\rlimit %Q\r olarak ayarlandı"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1823
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal şifresi kurdu \"\r!m-k\r%Q\r\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2129
 msgid "%Q [%Q@%Q] has set channel mode %s"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal modu kurdu %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1933
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1997
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2043
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2079
 msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal modu kurdu %c%c \r!m%c%c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1874
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1955
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1974
 msgid "%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal modu kurdu %c%c \r!n\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2126
 msgid "%Q [%Q@%Q] has set mode %s %Q"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal modu kurdu %s %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1826
 msgid "%Q [%Q@%Q] has unset the channel key"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal şifresi kaldırıldı"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1851
 msgid "%Q [%Q@%Q] has unset the channel limit"
-msgstr ""
+msgstr "%Q [%Q@%Q] kanal limiti kaldırıldı"
 
 #: src/modules/file/libkvifile.cpp:1436
 #: src/modules/str/libkvistr.cpp:1387
@@ -884,7 +884,7 @@ msgstr "<p>Bu dağıtımın bütün dosyaları GPL (Genel Kamu Lisansı) kapsam�
 
 #: src/modules/setup/SetupWizard.cpp:492
 msgid "<p>Here you can choose how much KVIrc will integrate with your system.<br><br>The default settings are fine for most users so if you're in doubt just click \"<b>Finish</b>\" to continue.</p>"
-msgstr "<p>Burada KVIrc ile sisteminizin ne kadar entegre olacağını seçebilirsiniz.<br><br>Varsayılan ayarlar bir çok kullanıcı için iyidir, eğer şüpheniz varsa sadece \"<b>İleri</b>\" tıklayınız ve kurulumu bitiriniz.</p>"
+msgstr "<p>Burada KVIrc ile sisteminizin ne kadar entegre olacağını seçebilirsiniz.<br><br>Varsayılan ayarlar bir çok kullanıcı için iyidir, eğer şüpheniz varsa sadece \"<b>Bitir</b>\" tıklayınız ve kurulumu bitiriniz.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:425
 msgid "<p>Here you can choose the default appearance of KVIrc.<br><br>The Fancy Theme uses icons, a transparent background and a lot of colors. The Minimalist Theme is designed for low-color displays or for \"console\" extremists; it's more or less white text on a black background.<br><br>If you had a previous version of KVIrc installed, you can choose to not apply any theme in order to preserve your current visual settings.<br><br>If you don't know what to choose, just use the default.</p>"
@@ -1895,12 +1895,12 @@ msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:70
 msgid "Choose Avatar - KVIrc"
-msgstr ""
+msgstr "Avatar Seç - KVIrc"
 
 #: src/kvirc/ui/KviIrcView.cpp:2114
 #: src/kvirc/ui/KviIrcView.cpp:2116
 msgid "Choose Font"
-msgstr ""
+msgstr "Yazı Tipi Seç"
 
 #: src/kvirc/ui/KviIrcView.cpp:2076
 msgid "Choose Temporary Background..."
@@ -1979,24 +1979,24 @@ msgstr "Ekranı Temizle"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:109
 msgid "Clear Recent"
-msgstr ""
+msgstr "Geçmişi Temizle"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:774
 #: src/kvirc/kernel/KviCoreActions.cpp:789
 msgid "Clear Recent Channels List"
-msgstr ""
+msgstr "Geçmiş Kanal Listesini Temizle"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:830
 #: src/kvirc/kernel/KviCoreActions.cpp:845
 msgid "Clear Recent Nicks List"
-msgstr ""
+msgstr "Geçmiş Kullanıcı Listesini Temizle"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1456
 #: src/modules/options/OptionsWidget_servers.cpp:1469
 #: src/kvirc/kernel/KviCoreActions.cpp:877
 #: src/kvirc/kernel/KviCoreActions.cpp:891
 msgid "Clear Recent Servers List"
-msgstr ""
+msgstr "Geçmiş Sunucu Listesini Temizle"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:393
 msgid "Clear custom scripts"
@@ -2028,7 +2028,7 @@ msgstr ""
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:163
 msgid "Color"
-msgstr ""
+msgstr "Renk"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3103
 msgid "Color Effects"
@@ -2267,7 +2267,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviWindow.cpp:412
 msgid "Crypting"
-msgstr ""
+msgstr "Şifreleme"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:181
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:246
@@ -2324,7 +2324,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:781
 msgid "Cu&t"
-msgstr ""
+msgstr "Ke&s"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:126
 msgid "Current IRC URI"
@@ -2434,7 +2434,7 @@ msgstr "Sil"
 
 #: src/modules/links/LinksWindow.cpp:471
 msgid "Description"
-msgstr ""
+msgstr "Açıklama"
 
 #: src/modules/action/libkviaction.cpp:67
 msgid "Description: %Q"
@@ -2474,7 +2474,7 @@ msgstr ""
 
 #: src/kvilib/ext/KviMediaManager.cpp:291
 msgid "Directory"
-msgstr ""
+msgstr "Dizin"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:405
 msgid "Disable join after kick (<secs>)"
@@ -2704,7 +2704,7 @@ msgstr ""
 #: src/kvirc/ui/KviQueryWindow.cpp:883
 #: src/kvirc/ui/KviChannelWindow.cpp:1990
 msgid "End of log"
-msgstr ""
+msgstr "Kayıt Sonu"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1552
 msgid "End of merged output"
@@ -3003,7 +3003,7 @@ msgstr "Filtre"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:174
 msgid "Filter:"
-msgstr ""
+msgstr "Filtrer:"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:146
 msgid "Find"
@@ -3015,7 +3015,7 @@ msgstr "Öncekini &Bul"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:93
 msgid "Find Text"
-msgstr ""
+msgstr "Metin Bulma"
 
 #: src/modules/setup/SetupWizard.cpp:86
 #: src/kvilib/tal/KviTalWizard.cpp:234
@@ -3303,7 +3303,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviActionManager.cpp:62
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #: src/kvirc/kernel/KviActionManager.cpp:67
 msgid "IRC Channel related actions"
@@ -3311,7 +3311,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:309
 msgid "IRC Context"
-msgstr ""
+msgstr "IRC Bağlantısı"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:433
 msgid "IRC Context Display"
@@ -3346,7 +3346,7 @@ msgstr "Simge boyutu"
 
 #: src/kvirc/kernel/KviIconManager.cpp:418
 msgid "Icon Table"
-msgstr ""
+msgstr "Simge Tablosu"
 
 #: src/kvirc/kernel/KviOptions.cpp:816
 msgid "Ident message"
@@ -3649,7 +3649,7 @@ msgstr "Gir"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:755
 msgid "Join Channel"
-msgstr ""
+msgstr "Kanala Giriş"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:61
 msgid "Join Channels"
@@ -3696,7 +3696,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviUserListView.cpp:1594
 msgid "Joined on <b>%1</b>"
-msgstr ""
+msgstr "Giriş zamanı <b>%1</b>"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:159
 msgid "Just idling..."
@@ -4679,7 +4679,7 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:465
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:478
 msgid "Only registered nicks can join"
-msgstr ""
+msgstr "Sadece kayıtlı kullanıcılar katılabilir"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:503
 msgid "Ooops.. you've hit a bug in the servers database... I have found a server but not a network..."
@@ -6036,7 +6036,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:145
 msgid "Split View"
-msgstr ""
+msgstr "Bölünmüş Görünüm"
 
 #: src/kvirc/kernel/KviOptions.cpp:764
 msgid "Split message"
@@ -6083,11 +6083,11 @@ msgstr "Yapıştırmayı Durdur"
 
 #: src/modules/list/ListWindow.cpp:225
 msgid "Stop list download"
-msgstr ""
+msgstr "Liste indirmeyi durdur"
 
 #: src/modules/list/ListWindow.cpp:310
 msgid "Stopping the list download..."
-msgstr ""
+msgstr "Liste indirmeyi durduruluyor..."
 
 #: src/modules/setup/SetupWizard.cpp:231
 msgid "Store configuration in folder"
@@ -7010,19 +7010,19 @@ msgstr ""
 #: src/kvirc/ui/KviChannelWindow.cpp:149
 #: src/kvirc/ui/KviChannelWindow.cpp:237
 msgid "User List"
-msgstr ""
+msgstr "Kullanıcı Listesi"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:911
 msgid "User Mode"
-msgstr ""
+msgstr "Kullanıcı Modu"
 
 #: src/kvirc/ui/KviStatusBar.cpp:579
 msgid "User Modes"
-msgstr ""
+msgstr "Kullanıcı Modları"
 
 #: src/kvirc/kernel/KviOptions.cpp:761
 msgid "User action"
-msgstr ""
+msgstr "Kullanıcı eylemi"
 
 #: src/kvirc/ui/KviInput.cpp:140
 msgid "User friendly commandline mode<br>See also /help commandline"
@@ -7349,20 +7349,24 @@ msgid ""
 "You have just attempted to close a console window with an active connection inside.\n"
 "Are you sure you wish to terminate the connection?"
 msgstr ""
+"Aktif IRC bağlantısı olan bir konsol pencresini kapatmaya çalıştınız.\n"
+"Bağlantıyı sonlandırmak istediğinizden emin misiniz?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:523
 msgid ""
 "You have just attempted to close the last console window.\n"
 "Are you sure you wish to quit KVIrc?"
 msgstr ""
+"Son konsol penceresini kapatmaya çalıştınız.\n"
+"KVIrc'ten çıkış yapmak istediğinize emin misiniz?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:350
 msgid "You have left channel \r!c\r%Q\r"
-msgstr ""
+msgstr "Kanaldan çıktınız \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:352
 msgid "You have left channel \r!c\r%Q\r: %Q"
-msgstr ""
+msgstr "Kanaldan çıktınız \r!c\r%Q\r: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1705
 #, c-format
