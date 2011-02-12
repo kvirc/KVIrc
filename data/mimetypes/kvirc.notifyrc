@@ -1,6 +1,7 @@
 [Global]
 IconName=kvirc
 Comment=The K-Visual IRC Client
+Comment[de]=Der K-Visual-IRC-Client
 Name=kvirc
 
 #[Context/group]
@@ -12,7 +13,9 @@ Name=kvirc
 
 [Event/incomingMessage]
 Name=KVIrc messaging system
+Name[de]=KVIrc-Benachrichtigungssystem
 Comment=Someone sent us a message
+Comment[de]=Es wurde eine Nachricht empfangen
 Contexts=              # Contexts=contact,group,class
 Sound=                 # Sound=KDE-Im-Message-In.ogg
 Action=Popup|Taskbar   # Action=Sound|Popup|Taskbar
