@@ -375,7 +375,8 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWANT_CRYPTOPP (default: OFF)
         Enables or disables the crypto functions support using Crypto++.
-        This automatically disables OpenSSL support.
+        Replaces embedded code copies with library calls, which leads to better
+        maintainability.
 
     -DWANT_CRYPT (default: ON)
         Enables or disables the cryptographic engines and the whole cryptography/text
