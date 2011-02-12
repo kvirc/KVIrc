@@ -32,7 +32,6 @@
 #include "KviQueryWindow.h"
 #include "KviTalPopupMenu.h"
 
-#include <QShortcut>
 
 KviActionCategory::KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
 : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)

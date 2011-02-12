@@ -1458,6 +1458,9 @@ void OptionsWidget_servers::recentServersPopupAboutToShow()
 
 void OptionsWidget_servers::recentServersPopupClicked(int id)
 {
+	if(!g_pActiveWindow)
+		return; // doh
+
 	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)
 		return;

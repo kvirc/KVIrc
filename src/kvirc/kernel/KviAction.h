@@ -35,6 +35,8 @@
 #include "KviIconManager.h"
 
 #include <QObject>
+#include <QPointer>
+#include <QShortcut>
 
 class QShortcut;
 class QPixmap;
@@ -179,7 +181,7 @@ protected:
 	unsigned short int        m_uInternalFlags;
 	unsigned int              m_uFlags;
 	QString                   m_szKeySequence;
-	QShortcut                 * m_pAccel;
+	QPointer<QShortcut>       m_pAccel;
 public:
 	/**
 	* \brief Validates the flags of the action

@@ -434,10 +434,36 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 	else
 		wnd->hide();
 
-	if(wnd == g_pActiveWindow) // ops... :/ ... this happens only at shutdown
+	if(wnd == g_pActiveWindow)
 	{
-		g_pActiveWindow = 0;
-		m_pActiveContext = 0;
+		if(!g_pApp->kviClosingDown())
+		{
+			qDebug("Have no active window: trying to pick one");
+		
+			// this happens when there are only minimized windows in the Mdi area
+			// just pick another window to be the active one
+			bool bGotIt = false;
+			for(KviWindow * pOther = m_pWinList->first();pOther;pOther = m_pWinList->next())
+			{
+				if(wnd != pOther)
+				{
+					childWindowActivated(pOther);
+					bGotIt = true;
+					break;
+				}
+			}
+			
+			if(!bGotIt)
+			{
+				// :/
+				g_pActiveWindow = NULL;
+				m_pActiveContext = NULL;
+			}
+
+		} else {
+			g_pActiveWindow = NULL;
+			m_pActiveContext = NULL;
+		}
 	}
 
 	// and shut it down...
