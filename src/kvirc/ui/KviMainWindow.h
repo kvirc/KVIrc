@@ -140,7 +140,7 @@ public:
 	unsigned int consoleCount();
 	// Creates a new console window. DON'T use the KviConsoleWindow constructor directly.
 	// (The script creation events are triggered from here)
-	KviConsoleWindow * createNewConsole(bool bFirstInFrame = false);
+	KviConsoleWindow * createNewConsole(bool bFirstInFrame = false,bool bShowIt = true);
 	// Returns the first available console.
 	// There is almost always an available console.
 	// Exceptions are the startup and the shutdown (see activeWindow())

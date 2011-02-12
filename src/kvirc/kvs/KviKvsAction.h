@@ -65,7 +65,7 @@ public:
 	/**
 	* \brief Destroys the action object
 	*/
-	~KviKvsAction();
+	virtual ~KviKvsAction();
 public:
 	/**
 	* \brief Returns the code of the script contained in the action

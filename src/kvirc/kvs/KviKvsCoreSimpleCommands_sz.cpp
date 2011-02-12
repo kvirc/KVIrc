@@ -149,6 +149,9 @@ namespace KviKvsCoreSimpleCommands
 			!sw: -n | --new-context
 			Forces the connection to be attempted in a new IRC context (server window) instead of the current one.
 
+			!sw: -m | --minimized
+			If a new console window is created (due to -n or -u) then create it as minimized.
+
 			!sw: -p=<password:string> | --password=<password:string>
 			Uses <password> to login to the server (the password will be stored in the server
 			entry too).
@@ -223,7 +226,8 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETERS_END
 
 		KviConsoleWindow * console = 0;
-		if(KVSCSC_pSwitches->find('n',"new-context"))console = KVSCSC_pWindow->frame()->createNewConsole();
+		if(KVSCSC_pSwitches->find('n',"new-context"))
+			console = KVSCSC_pWindow->frame()->createNewConsole(false,!KVSCSC_pSwitches->find('m',"minimized"));
 		else {
 			if(KVSCSC_pSwitches->find('u',"unused-context"))
 			{
@@ -243,7 +247,7 @@ namespace KviKvsCoreSimpleCommands
 					console = KVSCSC_pWindow->frame()->firstNotConnectedConsole();
 					if(!console)
 					{
-						console = KVSCSC_pWindow->frame()->createNewConsole();
+						console = KVSCSC_pWindow->frame()->createNewConsole(false,!KVSCSC_pSwitches->find('m',"minimized"));
 					}
 				}
 			} else console = KVSCSC_pWindow->console();

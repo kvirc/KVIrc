@@ -34,7 +34,6 @@ KviKvsAction::KviKvsAction(QObject * pParent, const QString & szName, const QStr
 
 KviKvsAction::~KviKvsAction()
 {
-	unregisterAccelerator();
 }
 
 const QString & KviKvsAction::scriptCode()

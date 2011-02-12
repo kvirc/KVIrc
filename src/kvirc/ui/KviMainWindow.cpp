@@ -587,14 +587,14 @@ void KviMainWindow::newConsole()
 	createNewConsole();
 }
 
-KviConsoleWindow * KviMainWindow::createNewConsole(bool bFirstInFrame)
+KviConsoleWindow * KviMainWindow::createNewConsole(bool bFirstInFrame,bool bShowIt)
 {
 	// the first console must be created BEFORE the toolbars visible
 	// at startup otherwise we cannot execute script code
 	// which is necessary for the actions that are going to be added
 	// to the toolbars
 	KviConsoleWindow * c = new KviConsoleWindow(this,bFirstInFrame ? KVI_CONSOLE_FLAG_FIRSTINFRAME : 0);
-	addWindow(c);
+	addWindow(c,bShowIt);
 
 	if(bFirstInFrame)
 	{

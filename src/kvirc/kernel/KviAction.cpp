@@ -63,6 +63,9 @@ KviAction::~KviAction()
 		m_pWidgetList->setAutoDelete(true);
 		delete m_pWidgetList;
 	}
+	
+	if(m_pAccel)
+		unregisterAccelerator();
 }
 
 const QString & KviAction::visibleName()
@@ -82,23 +85,28 @@ bool KviAction::isKviUserActionNeverOverrideThis()
 
 void KviAction::registerAccelerator()
 {
+	if(m_pAccel)
+		delete m_pAccel;
+
 	if(!m_szKeySequence.isEmpty())
 	{
 		m_pAccel = new QShortcut(m_szKeySequence,g_pMainWindow,0,0,Qt::ApplicationShortcut);
 		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
 		connect(m_pAccel,SIGNAL(activatedAmbiguously()),this,SLOT(activate()));
+	} else {
+		m_pAccel = NULL;
 	}
 }
 
 void KviAction::unregisterAccelerator()
 {
-	if(m_pAccel != 0)
-	{
-		if(g_pMainWindow)
-			g_pMainWindow->releaseShortcut(m_pAccel->id());
-		m_pAccel = 0;
-	}
+	if(!m_pAccel)
+		return;
+
+	delete m_pAccel;
+
+	m_pAccel = NULL;
 }
 
 void KviAction::setEnabled(bool bEnabled)
