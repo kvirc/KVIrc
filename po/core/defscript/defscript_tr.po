@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-02-12 12:08+0200\n"
+"PO-Revision-Date: 2011-02-13 17:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -57,12 +57,12 @@ msgstr "&Halfop"
 #: data/defscript/popups.kvs:755
 #: data/defscript/popups.kvs:1303
 msgid "&Highlight"
-msgstr "&Vurgu"
+msgstr "&Uyarıcı"
 
 #: data/defscript/popups.kvs:663
 #: data/defscript/popups.kvs:722
 msgid "&Hop"
-msgstr "&Hop"
+msgstr "&Çık-Gir"
 
 #: data/defscript/popups.kvs:1158
 msgid "&Ignore"
@@ -147,12 +147,12 @@ msgstr "-w: tüm kanal kurucularına uyarı gönder "
 
 #: data/defscript/popups.kvs:395
 msgid "Add to Notify"
-msgstr "Notify listesine ekle "
+msgstr "Bildiri listesine ekle"
 
 #: data/defscript/popups.kvs:29
 #: data/defscript/popups.kvs:62
 msgid "Always Highlight"
-msgstr "Devamlı Vurgu"
+msgstr "Devamlı Uyarı"
 
 #: data/defscript/popups.kvs:1404
 msgid "Automatically Join Channel"
@@ -349,11 +349,11 @@ msgstr "Ig&nore"
 #: data/defscript/popups.kvs:297
 #: data/defscript/popups.kvs:304
 msgid "Ignore as"
-msgstr "Şöyle Ignore Et"
+msgstr "İgnore Et"
 
 #: data/defscript/popups.kvs:120
 msgid "Ignore as..."
-msgstr "Şöyle Ignore Et..."
+msgstr "İgnore Tipleri..."
 
 #: data/defscript/popups.kvs:1211
 #: data/defscript/popups.kvs:1224
@@ -438,11 +438,11 @@ msgstr "Log tutulmuyor"
 #: data/defscript/popups.kvs:1074
 #: data/defscript/popups.kvs:1162
 msgid "Notify Avatar"
-msgstr "Notify Avatar"
+msgstr "Avatarı Bildir"
 
 #: data/defscript/popups.kvs:1307
 msgid "Notify avatar"
-msgstr "Notify avatar"
+msgstr "Avatarı Bildir"
 
 #: data/defscript/popups.kvs:531
 msgid "O&wner"
@@ -475,15 +475,15 @@ msgstr "Hızlı Kayıt"
 #: data/defscript/popups.kvs:372
 #: data/defscript/popups.kvs:377
 msgid "Register as"
-msgstr "Şöyle Kayıt Et"
+msgstr "Kayıt Tipi"
 
 #: data/defscript/popups.kvs:345
 msgid "Register..."
-msgstr "Kaydet..."
+msgstr "Kayıt..."
 
 #: data/defscript/popups.kvs:400
 msgid "Remove from Notify"
-msgstr "Notify listesinden çıkar "
+msgstr "Bildiri listesinden çıkar "
 
 #: data/defscript/popups.kvs:1388
 msgid "Restore"
@@ -532,7 +532,7 @@ msgstr "Sayfa özelliklerini varsayılan olarak ayarla"
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
-msgstr "Vurguyu başlat (Yerel)"
+msgstr "Uyarıcıyı Başlat (Yerel)"
 
 #: data/defscript/popups.kvs:1435
 msgid "Stop Auto-Joining Channel on Network '?s'"
@@ -544,12 +544,12 @@ msgstr "'?s' Sunucusunda Otomatik Kanal Girişi İptal Et"
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
-msgstr "Vurguyu durdur"
+msgstr "Uyarıcıyı Durdur"
 
 #: data/defscript/popups.kvs:19
 #: data/defscript/popups.kvs:83
 msgid "Stop Highlighting (Local)"
-msgstr "Vurguyu durdur (Yerel)"
+msgstr "Uyarıcıyı Durdur (Yerel)"
 
 #: data/defscript/popups.kvs:1199
 msgid "Stop Logging"
@@ -598,15 +598,15 @@ msgstr "Ayrı Pencereye Aç"
 
 #: data/defscript/popups.kvs:1484
 msgid "Unhighlight All Channels"
-msgstr "Tüm Kanallardaki Vurguyu Kapat"
+msgstr "Tüm Kanallardaki Uyarıcıyı Kapat"
 
 #: data/defscript/popups.kvs:1490
 msgid "Unhighlight All Queries"
-msgstr "Tüm Özel Sohbetlerdeki Vurguyu Kapat"
+msgstr "Tüm Özel Sohbetlerdeki Uyarıcıyı Kapat"
 
 #: data/defscript/popups.kvs:1478
 msgid "Unhighlight All Windows"
-msgstr "Tüm Pencerelerdeki Vurguyu Kapat"
+msgstr "Tüm Pencerelerdeki Uyarıcıyı Kapat"
 
 #: data/defscript/popups.kvs:312
 msgid "Unignore"
@@ -710,7 +710,7 @@ msgstr "ignore edildi"
 
 #: data/defscript/popups.kvs:333
 msgid "is in the notify list"
-msgstr "notify listesinde"
+msgstr "bildiri listesinde"
 
 #: data/defscript/popups.kvs:105
 #: data/defscript/popups.kvs:109
@@ -763,7 +763,7 @@ msgid "z (Debug Stats?)"
 msgstr "z (Hata Ayıklama İstatistikleri?)"
 
 #~ msgid "&Join"
-#~ msgstr "&Join"
+#~ msgstr "&Gir"
 
 #~ msgid "Log To Default File,"
 #~ msgstr "Kayıt Defterini Varsayılan Dosyaya Kaydet,"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-02-12 12:30+0200\n"
+"PO-Revision-Date: 2011-02-13 20:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -70,15 +70,15 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] yeni isim olarak \r!n\r%Q\r seçti"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2055
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2058
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
-msgstr ""
+msgstr "\r!n\r%Q\r kullanıcısı %Q kullanıcısnı %Q kanalına davet etti"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:390
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
-msgstr ""
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] şimdi ayrıldı \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:386
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr ""
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] şimdi ayrıldı \r!c\r%Q\r: %Q"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:260
 msgid " (%1 hops)"
@@ -174,7 +174,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviUserListView.cpp:1613
 msgid "%1 is an <b>IrcOp</b>"
-msgstr ""
+msgstr "%1 bir <b>IrcOp</b>"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:192
 msgid "%1 is on IRC"
@@ -182,7 +182,7 @@ msgstr "%1 nicki IRC'ye girdi"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:204
 msgid "%1 is probably away"
-msgstr ""
+msgstr "%1 muhtemelen dışarıda"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:197
 msgid "%1 is using irc server: %2"
@@ -318,11 +318,11 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1458
 msgid "%c\r!n\r%Q\r%c is authenticated as %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c kullanıcısı %Q olarak kimliğini doğrulamış"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1166
 msgid "%c\r!n\r%Q\r%c is away: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c dışarıda: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1252
 msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
@@ -338,7 +338,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1320
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c'ın kanalları: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2239
 msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
@@ -346,27 +346,27 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1367
 msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c'ın boş durma zamanı: %ud %uh %um %us"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1533
 msgid "%c\r!n\r%Q\r%c's info: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c'ın bilgileri: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1256
 msgid "%c\r!n\r%Q\r%c's real name was: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c'ın eski gerçek ismi: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1232
 msgid "%c\r!n\r%Q\r%c's real name: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c'ın gerçek ismi: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1429
 msgid "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c'ın sunucusu: \r!s\r%Q\r - %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1391
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c's bağlanma zamanı: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2019
 #, c-format
@@ -390,7 +390,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2101
 msgid "%c\r!s\r%s\r%c's time is %Q"
-msgstr ""
+msgstr "%c\r!s\r%s\r%c'ın zamanı %Q"
 
 #: src/modules/links/LinksWindow.cpp:283
 msgid "%c%cLinks for %Q"
@@ -452,7 +452,7 @@ msgstr "&Her zaman"
 
 #: src/kvirc/ui/KviModeEditor.cpp:240
 msgid "&Apply"
-msgstr ""
+msgstr "&Uygula"
 
 #: src/kvirc/ui/KviMdiManager.cpp:245
 msgid "&Auto Tile"
@@ -513,7 +513,7 @@ msgstr "&Fancy Tema"
 
 #: src/kvilib/system/KviLocale.cpp:1132
 msgid "&Filter:"
-msgstr ""
+msgstr "&Filtre:"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:137
 msgid "&Find Next"
@@ -545,7 +545,7 @@ msgstr ""
 
 #: src/kvilib/system/KviLocale.cpp:1131
 msgid "&Location:"
-msgstr ""
+msgstr "&Yer:"
 
 #: src/modules/setup/SetupWizard.cpp:475
 msgid "&Minimalist Theme"
@@ -965,7 +965,7 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:543
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: src/kvirc/ui/KviStatusBar.cpp:386
 msgid "Add Applet"
@@ -985,7 +985,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:406
 msgid "Addons"
-msgstr ""
+msgstr "Eklentiler"
 
 #: src/kvilib/core/KviError.cpp:155
 msgid "Address already in use"
@@ -1425,7 +1425,7 @@ msgstr "Büyü&k Küçük Duyarlı"
 #: src/kvirc/ui/KviConsoleWindow.cpp:97
 #: src/kvirc/ui/KviConsoleWindow.cpp:99
 msgid "CONSOLE"
-msgstr ""
+msgstr "KONSOL"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1498
 msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -1943,11 +1943,11 @@ msgstr "Eski Yapılandırma Klasörü Seçin - KVIrc Kurulum"
 #: src/modules/list/ListWindow.cpp:389
 #: src/modules/list/ListWindow.cpp:413
 msgid "Choose filename"
-msgstr ""
+msgstr "Dosya Adı Seç"
 
 #: src/kvirc/ui/KviImageDialog.cpp:107
 msgid "Choose image ..."
-msgstr ""
+msgstr "Resim Seç ..."
 
 #: src/kvirc/ui/KviIrcView.cpp:2125
 msgid "Choose the background image..."
@@ -2052,11 +2052,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviQueryWindow.cpp:419
 msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
+msgstr "Ortak kanallarınız \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:209
 msgid "Common channels with %1: %2"
-msgstr ""
+msgstr "Ortak kanallarınız %1: %2"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:268
 msgid "Common channels: %2"
@@ -3458,7 +3458,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:834
 msgid "Insert Icon"
-msgstr ""
+msgstr "Simge Yerleştir"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:79
 msgid "Insert a nickname or a mask matching *!*@*"
@@ -3633,7 +3633,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1116
 msgid "Irc Tools"
-msgstr ""
+msgstr "Irc Araçları"
 
 #: src/kvirc/kernel/KviOptions.cpp:1273
 msgid "Irc context color options (#RRGGBB)"
@@ -4064,7 +4064,7 @@ msgstr ""
 
 #: src/modules/trayicon/libkvitrayicon.cpp:174
 msgid "Mieeeeeowww!"
-msgstr ""
+msgstr "Miyaaaavvvvv!"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1089
 msgid "Might be flooded with messages"
@@ -4254,12 +4254,12 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:460
 #, c-format
 msgid "Netsplit detected: %s"
-msgstr ""
+msgstr "Netsplit tespit edildi: %s"
 
 #: src/kvirc/ui/KviStatusBar.cpp:555
 #: src/kvilib/system/KviLocale.cpp:1122
 msgid "Network"
-msgstr ""
+msgstr "Ağ"
 
 #: src/kvirc/ui/KviStatusBar.cpp:531
 msgid "Network information"
@@ -4331,7 +4331,7 @@ msgstr "Hayır"
 
 #: src/kvirc/module/KviModuleManager.cpp:190
 msgid "No "
-msgstr ""
+msgstr "Hayır"
 
 #: src/modules/system/libkvisystem.cpp:480
 msgid "No DBus type specified"
@@ -4369,7 +4369,7 @@ msgstr "Kanal Başlığı Yok"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:422
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr ""
+msgstr "Ortak kanal yok \r!n\r%Q\r [%Q@\r!h\r%"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1112
 #: src/kvirc/ui/KviIrcToolBar.cpp:291
@@ -4504,7 +4504,7 @@ msgstr ""
 #: src/kvirc/ui/KviIrcView.cpp:2306
 #: src/kvirc/ui/KviIrcView.cpp:2360
 msgid "Not found"
-msgstr ""
+msgstr "Bulunamadı"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:158
 msgid "Nothing is happening..."
@@ -4521,7 +4521,7 @@ msgstr "%1 Hakkında bilinen bir şey yok (bağlantı koptu)"
 #: src/kvirc/ui/KviConsoleWindow.cpp:141
 #: src/kvirc/ui/KviConsoleWindow.cpp:144
 msgid "Notify List"
-msgstr ""
+msgstr "Bildiri Listesi"
 
 #: src/kvirc/kernel/KviOptions.cpp:792
 msgid "Notify list joins"
@@ -4624,7 +4624,7 @@ msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:419
 msgid "Notifying avatar '%Q' to %Q"
-msgstr ""
+msgstr "Avatarı '%Q' bildir %Q için"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:293
 msgid "O: Local IRC operator (LOCOP)"
@@ -4649,7 +4649,7 @@ msgstr ""
 #: src/kvirc/ui/KviImageDialog.cpp:160
 #: src/kvirc/ui/KviMaskEditor.cpp:85
 msgid "Ok"
-msgstr ""
+msgstr "Tamam"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:326
 msgid "On <b>"
@@ -5533,11 +5533,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:804
 msgid "Select All"
-msgstr ""
+msgstr "Hepsini Seç"
 
 #: src/kvilib/system/KviLocale.cpp:1084
 msgid "Select Font"
-msgstr ""
+msgstr "Yazı Tipi Seç"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:246
 msgid "Select a Filter File"
@@ -5549,7 +5549,7 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:556
 msgid "Select a ban."
-msgstr ""
+msgstr "Bir ban seç."
 
 #: src/modules/url/libkviurl.cpp:267
 msgid "Select an URL."
@@ -5557,7 +5557,7 @@ msgstr ""
 
 #: src/kvilib/system/KviLocale.cpp:1075
 msgid "Select color"
-msgstr ""
+msgstr "Renk seç"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:381
 msgid "Select default script's elements to restore"
@@ -5712,16 +5712,16 @@ msgstr ""
 
 #: src/kvirc/ui/KviMaskEditor.cpp:193
 msgid "Set at"
-msgstr ""
+msgstr "kurma zamanı"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:192
 #: src/kvirc/ui/KviTopicWidget.cpp:372
 msgid "Set by"
-msgstr ""
+msgstr "Kuran kişi"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:378
 msgid "Set on"
-msgstr ""
+msgstr "kurma zamanı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1936
 msgid "Setting away nickname (%Q)"
@@ -5758,7 +5758,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviMenuBar.cpp:303
 msgid "Show &Icon Table"
-msgstr ""
+msgstr "Simge Ta&blosunu Göster"
 
 #: src/kvirc/ui/KviIrcView.cpp:2070
 msgid "Show Find Window"
@@ -5811,7 +5811,7 @@ msgstr ""
 
 #: src/modules/tip/libkvitip.cpp:92
 msgid "Show at startup"
-msgstr ""
+msgstr "Açılışta Göster"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:112
 msgid "Show this window after connecting"
@@ -6071,11 +6071,11 @@ msgstr ""
 #: src/kvirc/ui/KviQueryWindow.cpp:867
 #: src/kvirc/ui/KviChannelWindow.cpp:1974
 msgid "Starting last log"
-msgstr ""
+msgstr "Son tutulan kayıt başlatılıyor"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:946
 msgid "Starting notify list"
-msgstr ""
+msgstr "Bildiri listesi başlatılıyor"
 
 #: src/kvirc/ui/KviInputEditor.cpp:799
 msgid "Stop Paste"
@@ -6615,11 +6615,11 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1095
 msgid "Tip for %Q: %Q"
-msgstr ""
+msgstr "%Q için ipucu: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1092
 msgid "Tip: %Q"
-msgstr ""
+msgstr "İpucu: %Q"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:436
 #: src/kvirc/ui/KviToolBar.cpp:86
@@ -6657,11 +6657,11 @@ msgstr "Kanal başlığı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:616
 msgid "Topic was set by %Q"
-msgstr ""
+msgstr "Kanal başlığını kuran %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:615
 msgid "Topic was set by %Q on %Q"
-msgstr ""
+msgstr "Kanal başlığını kuran %Q tarih %Q"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts in the network"
@@ -7245,18 +7245,18 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:193
 msgid "Window"
-msgstr ""
+msgstr "Pencere"
 
 #: src/modules/log/libkvilog.cpp:103
 #: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:212
 msgid "Window %Q not found"
-msgstr ""
+msgstr "Pencere %Q bulunamadı"
 
 #: src/kvirc/ui/KviWindowListBase.cpp:68
 #: src/kvirc/ui/KviWindowListBase.cpp:184
 msgid "Window List"
-msgstr ""
+msgstr "Pencere Listesi"
 
 #: src/modules/window/libkviwindow.cpp:1277
 #: src/modules/window/libkviwindow.cpp:1322
@@ -7265,7 +7265,7 @@ msgstr ""
 
 #: src/modules/url/libkviurl.cpp:360
 msgid "Window not found."
-msgstr ""
+msgstr "Pencere bulunamadı."
 
 #: src/modules/window/libkviwindow.cpp:971
 msgid "Window type or 'all' expected as first parameter"
@@ -7774,7 +7774,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1044
 msgid "ignored"
-msgstr ""
+msgstr "ignore edildi"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1043
 msgid "ignored (unrecognized)"
@@ -7858,7 +7858,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1600
 msgid "private"
-msgstr ""
+msgstr "özel"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1213
 msgid "profile specific alternative option"
