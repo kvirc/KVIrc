@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-02-13 20:12+0200\n"
+"PO-Revision-Date: 2011-02-17 11:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -1261,7 +1261,7 @@ msgstr "Arka plan"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3107
 msgid "Background color"
-msgstr ""
+msgstr "Arka plan rengi"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3096
 msgid "Backlight Compensation"
@@ -1281,11 +1281,11 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:269
 msgid "Ban Exceptions"
-msgstr ""
+msgstr "Ban Koruması"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:268
 msgid "Ban Masks"
-msgstr ""
+msgstr "Ban Maskeleri"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:795
 msgid "Ban exception listing"
@@ -1329,7 +1329,7 @@ msgstr ""
 
 #: src/kvilib/system/KviLocale.cpp:1080
 msgid "Bl&ue"
-msgstr ""
+msgstr "Ma&vi"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3078
 msgid "Black Level"
@@ -1357,7 +1357,7 @@ msgstr ""
 
 #: src/kvilib/system/KviLocale.cpp:1099
 msgid "Bookmarks"
-msgstr ""
+msgstr "Sık kullanılanlar"
 
 #: src/kvirc/kernel/KviOptions.cpp:1268
 msgid "Boolean options (1/0)"
@@ -1433,27 +1433,27 @@ msgstr ""
 
 #: src/kvirc/ui/KviCtcpPageDialog.cpp:49
 msgid "CTCP Page - KVIrc"
-msgstr ""
+msgstr "CTCP Sayfa - KVIrc"
 
 #: src/kvirc/kernel/KviOptions.cpp:756
 msgid "CTCP reply"
-msgstr ""
+msgstr "CTCP cevabı"
 
 #: src/kvirc/kernel/KviOptions.cpp:759
 msgid "CTCP request flood warning"
-msgstr ""
+msgstr "CTCP talebi saldırı uyarısı"
 
 #: src/kvirc/kernel/KviOptions.cpp:758
 msgid "CTCP request ignored"
-msgstr ""
+msgstr "CTCP talebi göz ardı edildi"
 
 #: src/kvirc/kernel/KviOptions.cpp:757
 msgid "CTCP request replied"
-msgstr ""
+msgstr "CTCP talebi cevaplandı"
 
 #: src/kvirc/kernel/KviOptions.cpp:760
 msgid "CTCP request unknown"
-msgstr ""
+msgstr "CTCP talebi bilinmiyor"
 
 #: src/modules/str/libkvistr.cpp:2270
 #, c-format
@@ -1671,19 +1671,19 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2185
 msgid "Cannot send text to channel %Q"
-msgstr ""
+msgstr "Mesajınız %Q kanalına gönderilemedi"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2167
 msgid "Cannot send text to channel %Q: %Q"
-msgstr ""
+msgstr "Mesajınız %Q kanalına gönderilemedi: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2182
 msgid "Cannot send to channel"
-msgstr ""
+msgstr "Mesajınız kanala gönderilemedi"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2164
 msgid "Cannot send to channel: %Q"
-msgstr ""
+msgstr "Mesajınız %Q kanalına gönderilemedi"
 
 #: src/modules/list/ListWindow.cpp:312
 msgid "Cannot stop list download, no active connection."
@@ -1795,7 +1795,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:772
 msgid "Channel key change"
-msgstr ""
+msgstr "Kanal şifresi değiştirmek"
 
 #: src/kvirc/kernel/KviOptions.cpp:773
 msgid "Channel limit change"
@@ -2122,11 +2122,11 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:600
 msgid "Connect"
-msgstr ""
+msgstr "Bağlan"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:862
 msgid "Connect To"
-msgstr ""
+msgstr "Bir Ağ'a Bağlan"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:526
 msgid "Connect/Disconnect"
@@ -2147,11 +2147,11 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcContext.cpp:693
 msgid "Connection"
-msgstr ""
+msgstr "Bağlantı"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:581
 msgid "Connection Timer"
-msgstr ""
+msgstr "Bağlantı Sayacı"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:600
 #, c-format
@@ -2678,11 +2678,11 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1859
 msgid "End of LINKS"
-msgstr ""
+msgstr "LİNKLER sonu"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1820
 msgid "End of LIST"
-msgstr ""
+msgstr "LİSTE sonu"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:419
 msgid "End of NAMES for \r!c\r%Q\r"
@@ -2752,7 +2752,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:304
 msgid "Execute Script..."
-msgstr ""
+msgstr "Kodlama Çalıştır..."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1629
 msgid "Executing scheduled identity specific \"on connect\" commands"
@@ -2967,19 +2967,19 @@ msgstr ""
 
 #: src/kvirc/kernel/KviApplication.cpp:1245
 msgid "File download failed"
-msgstr ""
+msgstr "Dosya indirme başarısız oldu"
 
 #: src/kvirc/kernel/KviApplication.cpp:1247
 msgid "File download from %1 failed"
-msgstr ""
+msgstr "Dosya indirme %1'den başarısız oldu"
 
 #: src/kvirc/kernel/KviApplication.cpp:1258
 msgid "File download from %1 successfully complete"
-msgstr ""
+msgstr "Dosya indirme %1'den başarıyla tamamlandı"
 
 #: src/kvirc/kernel/KviApplication.cpp:1256
 msgid "File download successfully complete"
-msgstr ""
+msgstr "Dosya indirme başarıyla tamamlandı"
 
 #: src/modules/mircimport/libkvimircimport.cpp:241
 msgid "File downloaded: processing ..."
@@ -2987,15 +2987,15 @@ msgstr ""
 
 #: src/modules/spaste/libkvispaste.cpp:108
 msgid "File not found or empty"
-msgstr ""
+msgstr "Dosya bulunamadı veya boş"
 
 #: src/kvilib/file/KviPackageIOEngine.cpp:159
 msgid "File read error"
-msgstr ""
+msgstr "Dosya okuma hatası"
 
 #: src/kvilib/file/KviPackageIOEngine.cpp:153
 msgid "File write error"
-msgstr ""
+msgstr "Dosya yazma hatası"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:188
 msgid "Filter"
@@ -3197,7 +3197,7 @@ msgstr ""
 
 #: src/modules/trayicon/libkvitrayicon.cpp:161
 msgid "Hey man... do something!"
-msgstr ""
+msgstr "Hey arkadaş... bir şey yap!"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:171
 msgid "Hey... are ya sure that your network is up?"
@@ -3280,7 +3280,7 @@ msgstr ""
 
 #: src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
-msgstr ""
+msgstr "O dosyayı açamam"
 
 #: src/kvirc/kernel/KviOptions.cpp:958
 msgid ""
@@ -3905,11 +3905,11 @@ msgstr ""
 #: src/modules/mircimport/libkvimircimport.cpp:177
 #: src/modules/mircimport/libkvimircimport.cpp:193
 msgid "List Download"
-msgstr ""
+msgstr "Liste İndir"
 
 #: src/modules/list/ListWindow.cpp:327
 msgid "List cannot be requested: Not connected to a server"
-msgstr ""
+msgstr "Liste talep edilemedi: Sunucuya bağlı değilsiniz"
 
 #: src/kvirc/ui/KviWindow.cpp:528
 msgid "List of window types available in this release of KVIrc:"
@@ -3921,7 +3921,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1806
 msgid "List: %Q"
-msgstr ""
+msgstr "Liste: %Q"
 
 #: src/kvirc/module/KviModuleManager.cpp:267
 #, c-format
@@ -4019,7 +4019,7 @@ msgstr "Temaları Yönet..."
 
 #: src/kvirc/ui/KviMaskEditor.cpp:191
 msgid "Mask"
-msgstr ""
+msgstr "Maske"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:75
 msgid "Mask editor - KVirc"
@@ -5947,7 +5947,7 @@ msgstr "Küçük Iconlar"
 
 #: src/kvirc/ui/KviImageDialog.cpp:129
 msgid "Small icons"
-msgstr ""
+msgstr "Küçük simgeler"
 
 #: src/kvirc/ui/KviWindow.cpp:719
 msgid "Smart (Send Local)"
@@ -5959,7 +5959,7 @@ msgstr ""
 
 #: src/kvilib/ext/KviMediaManager.cpp:310
 msgid "Socket"
-msgstr ""
+msgstr "Soket"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:80
 msgid "Socket Spy [IRC Context %1]"
@@ -6159,11 +6159,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:125
 msgid "Text"
-msgstr ""
+msgstr "Yazı"
 
 #: src/kvirc/ui/KviWindow.cpp:422
 msgid "Text Encoding"
-msgstr ""
+msgstr "Yazı Kodlama"
 
 #: src/kvirc/kernel/KviOptions.cpp:864
 msgid "Text Encoding Server message"
@@ -6258,11 +6258,11 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:305
 msgid "The current network is %Q"
-msgstr ""
+msgstr "Şuan ki ağ %Q"
 
 #: src/modules/chan/libkvichan.cpp:45
 msgid "The current window is not a channel"
-msgstr ""
+msgstr "Bu pencere bir kanal değildir"
 
 #: src/modules/window/libkviwindow.cpp:1516
 msgid "The decrypt key wasn't a valid hexadecimal string"
@@ -6504,7 +6504,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviMainWindow.cpp:802
 msgid "There are active connections, are you sure you wish to "
-msgstr ""
+msgstr "Aktif bağlantılar var, eminmisiniz"
 
 #: src/kvilib/core/KviError.cpp:169
 msgid "There is no $this pointer in this scope (unexpected @)"
