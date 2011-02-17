@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-19 15:59+0200\n"
-"PO-Revision-Date: 2011-02-12 19:05+0200\n"
+"PO-Revision-Date: 2011-02-17 02:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -290,12 +290,12 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:53
 msgid "On Channel Kick"
-msgstr ""
+msgstr "Kanaldan Atıldığında"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:55
 msgid "Rejoin channel"
-msgstr ""
+msgstr "Kanala Tekrar Gir"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:57
@@ -306,7 +306,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:59
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:68
 msgid "Keep channel open"
-msgstr ""
+msgstr "Kanalı Açık Tut"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:61
@@ -316,7 +316,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:66
 msgid "On Channel Part"
-msgstr ""
+msgstr "Kanaldan Ayrıldığında"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:70
@@ -351,17 +351,17 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:101
 msgid "Default ban mask:"
-msgstr ""
+msgstr "Varsayılan Ban Maskesi:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:119
 msgid "On Channel Join"
-msgstr ""
+msgstr "Kanala Girildiğinde"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:120
 msgid "Minimum delay between two channel requests:"
-msgstr ""
+msgstr "Talepler arasındaki en az gecikme zamanı:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:122
@@ -371,55 +371,55 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:124
 msgid "Do not send /WHO request"
-msgstr ""
+msgstr "Kanal için /WHO talep etme"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:125
 msgid "Do not request ban list"
-msgstr ""
+msgstr "Ban listesi talep etme"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:126
 msgid "Do not request ban exception list"
-msgstr ""
+msgstr "Ban koruma listesi talep etme"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:127
 msgid "Do not request invite list"
-msgstr ""
+msgstr "Davet listesi talep etme"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:128
 msgid "Do not request quiet ban list"
-msgstr ""
+msgstr "Sessiz ban listesini talep etme"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:129
 msgid "Echo channel topic"
-msgstr ""
+msgstr "Kanal başlığını göster"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:130
 msgid "Show channel sync time"
-msgstr ""
+msgstr "Kanalın yapılandırma zamanını göster"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:132
 msgid "Paste last channel log"
-msgstr ""
+msgstr "Kanalın son günlük kaydını göster"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:135
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_query.cpp:97
 msgid "Paste up to:"
-msgstr ""
+msgstr "Kayıt uzunluğu"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:136
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_ircview.cpp:155
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_query.cpp:98
 msgid " lines"
-msgstr ""
+msgstr "satır"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:137
@@ -431,13 +431,13 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:139
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_query.cpp:101
 msgid "Interval:"
-msgstr ""
+msgstr "Zaman:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:140
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_query.cpp:102
 msgid " days"
-msgstr ""
+msgstr "gün"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:141
@@ -448,7 +448,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:144
 msgid "Keep away list updated by sending WHO requests"
-msgstr ""
+msgstr "Dışarıda olanlar listesini /WHO göndererek güncel tut"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.cpp:146
@@ -464,7 +464,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.cpp:43
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
-msgstr ""
+msgstr "Kanalları açık tutun"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.cpp:44
@@ -475,7 +475,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.cpp:46
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.cpp:54
 msgid "Keep queries open"
-msgstr ""
+msgstr "Özelleri açık tut"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.cpp:47
@@ -1678,7 +1678,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:664
 msgid "Part message:"
-msgstr ""
+msgstr "Ayrılma mesajı:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:667
@@ -1688,7 +1688,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:670
 msgid "Quit message:"
-msgstr ""
+msgstr "Çıkış mesajı:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:672
@@ -1708,34 +1708,34 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:718
 msgid "Name"
-msgstr ""
+msgstr "İsim"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:719
 msgid "Network"
-msgstr ""
+msgstr "Ağ"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:720
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_nickserv.cpp:243
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_servers.cpp:316
 msgid "Nickname"
-msgstr ""
+msgstr "Kullanıcı adı"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:721
 msgid "Alt. Nick"
-msgstr ""
+msgstr "Yedek ad"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:722
 msgid "Username"
-msgstr ""
+msgstr "Kullanıcı isim(ident)"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:723
 msgid "Realname"
-msgstr ""
+msgstr "Gerçek isim"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:727
@@ -1745,17 +1745,17 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:740
 msgid "Add Profile"
-msgstr ""
+msgstr "Profil Ekle"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:743
 msgid "Edit Profile"
-msgstr ""
+msgstr "Profil Düzenle"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:746
 msgid "Delete Profile"
-msgstr ""
+msgstr "Profil Sil"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:842
@@ -1779,12 +1779,12 @@ msgstr "Tamam"
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:890
 msgid "Profile Editor - KVIrc"
-msgstr ""
+msgstr "Profil Düzenleyici  - KVIrc"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:892
 msgid "Profile Name"
-msgstr ""
+msgstr "Profil Adı"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_identity.cpp:893
@@ -1887,21 +1887,21 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notifier.cpp:38
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
-msgstr ""
+msgstr "Yazı Tipi"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_input.cpp:39
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notifier.cpp:39
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_topiclabel.cpp:38
 msgid "Background color"
-msgstr ""
+msgstr "Arka plan rengi"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_input.cpp:40
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notifier.cpp:40
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_topiclabel.cpp:37
 msgid "Foreground color"
-msgstr ""
+msgstr "Ön plan rengi"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_input.cpp:41
@@ -2407,7 +2407,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.cpp:85
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.cpp:244
 msgid "Font:"
-msgstr ""
+msgstr "Yazı Tipi:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_ircview.cpp:52
@@ -2584,42 +2584,42 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:40
 msgid "Automatically Log"
-msgstr ""
+msgstr "Otomatik Günlük Kaydı"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
-msgstr ""
+msgstr "Özel pencereleri"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:42
 msgid "Channel windows"
-msgstr ""
+msgstr "Kanal pencereleri"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
-msgstr ""
+msgstr "DCC Sohbet pencereleri"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
-msgstr ""
+msgstr "Konsol pencereleri"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr ""
+msgstr "Günlüklerin kayıt edileceği dosya:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr ""
+msgstr "Kayıtlarda mesajmesaj türü numaralarını atla"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
-msgstr ""
+msgstr "Kayıtlarda renkleri atla"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:49
@@ -2629,7 +2629,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:50
 msgid " min"
-msgstr ""
+msgstr "dk"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:52
@@ -2639,7 +2639,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_logging.cpp:56
 msgid "Gzip logs"
-msgstr ""
+msgstr "Kayıtları Gzip"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_mediatypes.cpp:77
@@ -2707,12 +2707,12 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_mediatypes.cpp:126
 msgid "Icon"
-msgstr ""
+msgstr "Simge"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_mediatypes.cpp:135
 msgid "&New"
-msgstr ""
+msgstr "&Yeni"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_mediatypes.cpp:139
@@ -3883,7 +3883,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_textencoding.cpp:78
 msgid "Force language:"
-msgstr ""
+msgstr "Seçilen Dil:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_textencoding.cpp:84
@@ -3913,12 +3913,12 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_texticons.cpp:91
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_texticons.cpp:95
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_texticons.cpp:99
@@ -4023,12 +4023,12 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_urlhandlers.cpp:53
 msgid "Single click"
-msgstr ""
+msgstr "Tek tıklama"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_urlhandlers.cpp:54
 msgid "Double click"
-msgstr ""
+msgstr "Çift tıklama"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_urlhandlers.cpp:66
@@ -4073,7 +4073,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:54
 msgid "Nickname Colors"
-msgstr ""
+msgstr "Kullanıcı Renkleri"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:55
@@ -4082,7 +4082,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.cpp:120
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.cpp:246
 msgid "Normal:"
-msgstr ""
+msgstr "Normal:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:56
@@ -4090,47 +4090,47 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.cpp:90
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.cpp:121
 msgid "Selected:"
-msgstr ""
+msgstr "Seçilen:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:57
 msgid "IRC Op:"
-msgstr ""
+msgstr "IRC Op:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:58
 msgid "Channel owner:"
-msgstr ""
+msgstr "Kanal sahibi:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:59
 msgid "Channel admin:"
-msgstr ""
+msgstr "Kanal admini:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:60
 msgid "Op:"
-msgstr ""
+msgstr "Op:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:61
 msgid "Half-op:"
-msgstr ""
+msgstr "Half-op:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:62
 msgid "Voice:"
-msgstr ""
+msgstr "Voice:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:63
 msgid "User-op:"
-msgstr ""
+msgstr "User-op:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:64
 msgid "Away:"
-msgstr ""
+msgstr "Dışarıda:"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.cpp:68
@@ -4353,27 +4353,27 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_avatar.h:32
 msgid "Avatars"
-msgstr ""
+msgstr "Avatarlar"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_away.h:30
 msgid "Away"
-msgstr ""
+msgstr "Dışarıda"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_channel.h:36
 msgid "Channel"
-msgstr ""
+msgstr "Kanal"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.h:59
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.h:76
 msgid "Socket"
-msgstr ""
+msgstr "Soket"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_connection.h:91
@@ -4383,7 +4383,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_ctcp.h:30
 msgid "CTCP"
-msgstr ""
+msgstr "CTCP"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_ctcpfloodprotection.h:30
@@ -4393,7 +4393,7 @@ msgstr "Saldırı Koruması"
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_dcc.h:30
 msgid "DCC"
-msgstr ""
+msgstr "DCC"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_dcc.h:74
@@ -4403,12 +4403,12 @@ msgstr "Dosya Transferi"
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_dcc.h:115
 msgid "Chat"
-msgstr ""
+msgstr "Sohbet"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_dcc.h:128
 msgid "Voice"
-msgstr ""
+msgstr "Voice"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_generalopt.h:30
@@ -4418,12 +4418,12 @@ msgstr "Genel Seçenekler"
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_highlighting.h:30
 msgid "Alert/Highlight"
-msgstr ""
+msgstr "Alarm/Uyarıcı"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_highlighting.h:44
 msgid "Highlight"
-msgstr ""
+msgstr "Uayrıcı"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_highlighting.h:57
@@ -4448,7 +4448,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_ignore.h:34
 msgid "protection"
-msgstr ""
+msgstr "koruma"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_input.h:33
@@ -4476,7 +4476,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.h:100
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.h:115
 msgid "theme"
-msgstr ""
+msgstr "tema"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_interfacelookglobal.h:48
@@ -4585,7 +4585,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_messages.h:39
 msgid "Text"
-msgstr ""
+msgstr "Yazı"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_messages.h:54
@@ -4632,7 +4632,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notifier.h:33
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notifier.h:51
 msgid "Notifier"
-msgstr ""
+msgstr "Bildiri"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notifier.h:52
@@ -4642,7 +4642,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notify.h:30
 msgid "Contacts"
-msgstr ""
+msgstr "Kişiler"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_notify.h:32
@@ -4727,7 +4727,7 @@ msgstr ""
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_tools.h:33
 msgid "Tools"
-msgstr ""
+msgstr "Araçlar"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_topiclabel.h:32
@@ -4788,7 +4788,7 @@ msgstr ""
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.h:67
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_windowlist.h:64
 msgid "Foreground"
-msgstr ""
+msgstr "Ön plan"
 
 #: C:/Program
 #: Files/Subversion/bin/kvirc/src/modules/options/optw_userlist.h:68
