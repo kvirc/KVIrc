@@ -60,6 +60,8 @@
 		The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
 		!fn:<id:integer> $get(<remotefile:string>,<localfile:string>)
 		Downloads the <remotefile> file from the server.
+		!fn:<id:integer> $put(<localfile:string>,<remotefile:string>)
+		Uploads the <localfile> to the server.
 		!fn:<id:integer> $cd(<remotedir:string>)
 		Changes the working directory of the server to <remotedir>.
 		!fn:<id:integer> $list()
@@ -75,7 +77,7 @@
 		This event is triggered in response to a  [classfnc]get[/classfnc]() or  [classfnc]put[/classfnc]() request to indicate the current progress of the download or upload.
 		The default implementation emits the [classfnc]$dataTransferProgress[/classfnc]() signal.
 	@signals:
-		!sg: $commandFinished(<id:integer>,<status:string>,<error:boolean>)
+		!sg: $commandFinished(<id:integer>,<szCommand:string>,<error:boolean>)
 		This signal is emitted by the default implementation of [classfnc]$commandFinishedEvent[/classfnc]()
 		!sg: $listInfo(<dir_entry_name:string>)
 		This signal is emitted by the default implementation of [classfnc]$listInfoEvent[/classfnc]()
@@ -87,9 +89,9 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_ftp,"ftp","object")
 	KVSO_REGISTER_HANDLER(KvsObject_ftp,"connect",functionConnect)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,abort)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,close)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,close)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,login)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,get)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,put)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,cd)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,list)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_ftp,commandFinishedEvent)
@@ -101,7 +103,6 @@ KVSO_END_REGISTERCLASS(KvsObject_ftp)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_ftp,KviKvsObject)
 	m_pFtp = new QFtp();
-        m_bAbort=false;
 	connect(m_pFtp,SIGNAL(commandFinished(int,bool)),this,SLOT(slotCommandFinished(int,bool)));
 	connect(m_pFtp,SIGNAL(commandStarted(int)),this,SLOT(slotCommandStarted(int)));
 	connect(m_pFtp,SIGNAL(dataTransferProgress(qint64,qint64)),this,SLOT(slotDataTransferProgress(qint64,qint64)));
@@ -112,16 +113,6 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_ftp,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KvsObject_ftp)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_ftp)
-	QHashIterator<int,QFile *> t(getDict);
-	while (t.hasNext())
-	{
-		t.next();
-		int key=t.key();
-		QFile *pFile=getDict.value(key);
-		pFile->close();
-		delete pFile;
-	}
-	getDict.clear();
 	delete m_pFtp;
 KVSO_END_DESTRUCTOR(KvsObject_ftp)
 //----------------------
@@ -168,13 +159,25 @@ KVSO_CLASS_FUNCTION(ftp,get)
 	QFile *pFile;
 	pFile=new QFile(szDest);
 	pFile->open(QIODevice::WriteOnly);
-	int id=0;
-	id=m_pFtp->get(szFile,pFile);
-	getDict[id]=pFile;
+	int id=m_pFtp->get(szFile,pFile);
 	c->returnValue()->setInteger(id);
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(ftp,put)
+{
+	CHECK_INTERNAL_POINTER(m_pFtp)
+	QString szRemoteFile,szLocaleFile;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("locale_filename",KVS_PT_STRING,0,szLocaleFile)
+	KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szRemoteFile)
+	KVSO_PARAMETERS_END(c)
+	QFile *pFile;
+	pFile=new QFile(szLocaleFile);
+	pFile->open(QIODevice::ReadOnly);
+	int id=m_pFtp->put(pFile,szRemoteFile);
+	c->returnValue()->setInteger(id);
+	return true;
+}
 KVSO_CLASS_FUNCTION(ftp,cd)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
@@ -202,7 +205,6 @@ KVSO_CLASS_FUNCTION(ftp,list)
 KVSO_CLASS_FUNCTION(ftp,abort)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	m_bAbort=true;
 	m_pFtp->abort();
 	return true;
 }
@@ -210,7 +212,6 @@ KVSO_CLASS_FUNCTION(ftp,abort)
 KVSO_CLASS_FUNCTION(ftp,close)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	m_bAbort=true;
 	m_pFtp->close();
 	return true;
 }
@@ -224,37 +225,25 @@ KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 
 void KvsObject_ftp::slotCommandFinished ( int id, bool error )
 {
-	QString status="";
-	if (m_bAbort)
-	{
-		m_bAbort=false;
-		QHashIterator<int,QFile *> t(getDict);
-		while (t.hasNext())
-		{
-			t.next();
-			int key=t.key();
-			QFile *pFile=getDict.value(key);
-			pFile->close();
-			delete pFile;
-		}
-		getDict.clear();
-		return;
-	}
-	if (m_pFtp->currentCommand()==QFtp::Get)
-	{
-		status="Downloaded";
-		QFile *pFile=getDict.value(id);
-		pFile->close();
-		delete pFile;
-		getDict.remove(id);
-	}
-	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) status="connected";
-	else if (m_pFtp->currentCommand()==QFtp:: Login) status="logged";
-	else if (m_pFtp->currentCommand()==QFtp:: Cd) status="entered";
-	else if (m_pFtp->currentCommand()==QFtp:: List) status="listCompleted";
+	QString szCommand="";
+	if (m_pFtp->currentCommand()==QFtp::Get || m_pFtp->currentCommand()==QFtp::Put)
+	    delete m_pFtp->currentDevice();
+	if (m_pFtp->currentCommand()==QFtp:: Login) szCommand="login";
+	else if (m_pFtp->currentCommand()==QFtp:: Cd) szCommand="cd";
+	else if (m_pFtp->currentCommand()==QFtp:: List) szCommand="list";
+	else if (m_pFtp->currentCommand()==QFtp:: None) szCommand="none";
+	else if (m_pFtp->currentCommand()==QFtp:: SetTransferMode) szCommand="setTransferMode";
+	else if (m_pFtp->currentCommand()==QFtp:: SetProxy) szCommand="setProxy";
+	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) szCommand="connectToHost";
+	else if (m_pFtp->currentCommand()==QFtp:: Put) szCommand="put";
+	else if (m_pFtp->currentCommand()==QFtp:: Get) szCommand="get";
+	else if (m_pFtp->currentCommand()==QFtp:: Remove) szCommand="remove";
+	else if (m_pFtp->currentCommand()==QFtp:: Mkdir) szCommand="mkdir";
+	else if (m_pFtp->currentCommand()==QFtp:: Rmdir) szCommand="rmdir";
+	else if (m_pFtp->currentCommand()==QFtp:: RawCommand) szCommand="rawCommand";
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t) id));
-	lParams.append(new KviKvsVariant(status));
+	lParams.append(new KviKvsVariant(szCommand));
 	lParams.append(new KviKvsVariant(error));
 	callFunction(this,"commandFinishedEvent",0,&lParams);
 }
