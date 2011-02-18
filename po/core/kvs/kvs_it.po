@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-02-10 19:23+0100\n"
+"PO-Revision-Date: 2011-02-12 15:46+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -284,10 +284,14 @@ msgstr ""
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:118
 msgid "Error in inner alias command call '%Q', called from this context"
 msgstr ""
+"Errore nella chiamata del comando '%Q' interno all'alias, chiamato da questo "
+"contesto"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:71
 msgid "Error in inner alias function call '%Q', called from this context"
 msgstr ""
+"Errore nella chiamata della funzione '%Q' interno all'alias, chiamato da "
+"questo contesto"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:563
 msgid "Error retrieving information from the local certificate"
@@ -296,6 +300,7 @@ msgstr "Errore nel recuperare le informazioni dal certificato locale"
 #: src/kvirc/kvs/KviKvsProcessManager.cpp:220
 msgid "Error triggered from process callback handler: killing process"
 msgstr ""
+"Errore generato dal gestore della callback del processo: uccido il processo"
 
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
@@ -1639,4 +1644,5 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"
 msgstr ""
+
 

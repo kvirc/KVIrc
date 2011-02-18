@@ -223,28 +223,43 @@ KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 	return true;
 }
 
-void KvsObject_ftp::slotCommandFinished ( int id, bool error )
+void KvsObject_ftp::slotCommandFinished(int iId, bool bError)
 {
-	QString szCommand="";
-	if (m_pFtp->currentCommand()==QFtp::Get || m_pFtp->currentCommand()==QFtp::Put)
-	    delete m_pFtp->currentDevice();
-	if (m_pFtp->currentCommand()==QFtp:: Login) szCommand="login";
-	else if (m_pFtp->currentCommand()==QFtp:: Cd) szCommand="cd";
-	else if (m_pFtp->currentCommand()==QFtp:: List) szCommand="list";
-	else if (m_pFtp->currentCommand()==QFtp:: None) szCommand="none";
-	else if (m_pFtp->currentCommand()==QFtp:: SetTransferMode) szCommand="setTransferMode";
-	else if (m_pFtp->currentCommand()==QFtp:: SetProxy) szCommand="setProxy";
-	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) szCommand="connectToHost";
-	else if (m_pFtp->currentCommand()==QFtp:: Put) szCommand="put";
-	else if (m_pFtp->currentCommand()==QFtp:: Get) szCommand="get";
-	else if (m_pFtp->currentCommand()==QFtp:: Remove) szCommand="remove";
-	else if (m_pFtp->currentCommand()==QFtp:: Mkdir) szCommand="mkdir";
-	else if (m_pFtp->currentCommand()==QFtp:: Rmdir) szCommand="rmdir";
-	else if (m_pFtp->currentCommand()==QFtp:: RawCommand) szCommand="rawCommand";
+	QString szCommand = "";
+
+	switch(m_pFtp->currentCommand())
+	{
+		case QFtp::None: szCommand = "none"; break;
+		case QFtp::SetTransferMode: szCommand = "setTransferMode"; break;
+		case QFtp::SetProxy: szCommand = "setProxy"; break;
+		case QFtp::ConnectToHost: szCommand = "connectToHost"; break;
+		case QFtp::Login: szCommand = "login"; break;
+		case QFtp::Close: szCommand = "close"; break;
+		case QFtp::List: szCommand = "list"; break;
+		case QFtp::Cd: szCommand = "cd"; break;
+		case QFtp::Get:
+		{
+			delete m_pFtp->currentDevice();
+			szCommand = "get";
+			break;
+		}
+		case QFtp::Put:
+		{
+			delete m_pFtp->currentDevice();
+			szCommand = "put";
+			break;
+		}
+		case QFtp::Remove: szCommand = "remove"; break;
+		case QFtp::Mkdir: szCommand = "mkdir"; break;
+		case QFtp::Rmdir: szCommand = "rmdir"; break;
+		case QFtp::Rename: szCommand = "rename"; break;
+		case QFtp::RawCommand: szCommand = "rawCommand"; break;
+	}
+
 	KviKvsVariantList lParams;
-	lParams.append(new KviKvsVariant((kvs_int_t) id));
+	lParams.append(new KviKvsVariant((kvs_int_t)iId));
 	lParams.append(new KviKvsVariant(szCommand));
-	lParams.append(new KviKvsVariant(error));
+	lParams.append(new KviKvsVariant(bError));
 	callFunction(this,"commandFinishedEvent",0,&lParams);
 }
 
