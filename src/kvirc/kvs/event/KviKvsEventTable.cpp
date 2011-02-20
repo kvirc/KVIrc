@@ -708,11 +708,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			a server by pressing the "disconnect" button, by closing
 			the console or closing KVIrc. It is your last chance
 			to send some meaningful data to the server before the QUIT message
-			is sent. You can't prevent the user from disconnecting: [cmd]halt[/cmd]does nothing here.[br]
+			is sent. You can't prevent the user from disconnecting - [cmd]halt[/cmd] does nothing here.[br]
 			This event is useful to either give a salute to all the users
 			you were talking with or maybe to send some commands to the
 			bouncer you're connected to. Note that you can override the QUIT
-			message sent by KVIrc by sending it by yourself first.[br]
+			message sent by KVIrc by sending it yourself first.[br]
 		@seealso:
 	*/
 	EVENT("OnDisconnectRequest",""),

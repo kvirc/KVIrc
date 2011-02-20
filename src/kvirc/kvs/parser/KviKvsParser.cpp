@@ -715,25 +715,25 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 
 
 		[big]Aliases[/big][br]
-		An alias is an user defined command.  It can be used to rename the builtin kvirc commands or functions,
-		to automatize complex tasks or as structured programming mean.
+		An alias is a user defined command. It can be used to rename the builtin kvirc commands or functions,
+		to automate complex tasks or as a means for structured programming.
 		Aliases can be created or destroyed by using the scriptcenter (graphic interface)
 		or from the commandline (or script) by using the [cmd]alias[/cmd] command.
 		Once created, an alias remains stored permanently in the KVIrc configuration files
 		until it is explicitly deleted.
 		A couple of examples will make the things clear.
-		join is a really commonly used command. It might be a good idea to rename it to
+		join is a really commonly used command - it might be a good idea to rename it to
 		simply "j" .. just to type it faster.
 		Nothing easier in KVirc: just try this commandline:
 		[example]
 			[cmd]alias[/cmd](j){ [cmd]join[/cmd] $0-; };
 		[/example]
 
-		This will create the alias "j". From this moment you can use /j as it was a normal command.
+		This will create the alias "j". From this moment you can use /j as if it was a normal command.
 		[example]
-		j #kvirc
+			j #kvirc
 		[/example]
-		You may have notices the strange $0- function in the alias body: it stands for
+		You may have noticed the strange $0- function in the alias body - it stands for
 		"all parameters passed to the alias". This means that when you call
 		[example]
 			j #kvirc testpassword
@@ -750,7 +750,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		all the parameters starting from the first one.
 		[/p]
 		[p]
-		To remove an alias use again the alias command with an empty body:
+		To remove an alias, use the alias command again with an empty body:
 		[example]
 			[cmd]alias[/cmd](j){}
 		[/example]
@@ -758,24 +758,24 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 		[p]
 		A common task in channel management is the kick & ban action.
-		You first ban an user from the channel and then eventually kick him
+		You first ban a user from the channel and then eventually kick him
 		(obviously assuming that he is actually on the channel).
-		This involves using two commands: ban and then kick.
+		This involves using two commands - ban and then kick.
 		It could be a nice idea to have a single "kb" command to perform this action.
 		Well...easy:
 		[example]
 			[cmd]alias[/cmd](kb){ [cmd]ban[/cmd] $0; [cmd]kick[/cmd] $0-; };
 		[/example]
-		This adds the "kb" alias: it can be called as a normal command:
+		This adds the "kb" alias - it can be called as a normal command:
 		[example]
 			kb spammer You're not welcome here!
 		[/example]
 		This will first execute "ban spammer" and then "kick spammer You're not welcome here".
-		Our kb is a really simple example... it doesn't check for the validity of the parameters:
+		Our kb is a really simple example... it doesn't check for the validity of the parameters - 
 		the server will warn us if the parameters passed to kb were empty.
 		[/p]
 		[p]
-		The alias can be modified at any time by re-using the alias command.
+		The alias can be modified at any time by reusing the alias command.
 		Let's make our "kb" a bit more intelligent and add a check for the parameters.
 		TIP: It is a good idea to write the following examples in a text file and then use /parse <filename> to execute it.
 		[example]
@@ -792,28 +792,28 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				[cmd]kick[/cmd] $0 %reason
 			}
 		[/example]
-		The example above will first check the validity of the <nickname> passed to kb:
+		The example above will first check the validity of the <nickname> passed to kb - 
 		if no nickname was passed, it will warn the user and stop.
-		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason":
+		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason" - 
 		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
-		if the variable is empty, a default kick reason is assigned.
+		and if the variable is empty, a default kick reason is assigned.
 		Finally the "kick <nickname> <reason>" will be executed.
 		Get used to looking at the single command documentation pages, they will give
 		you the hints necessary to fully understand the above piece of code.
 		[/p]
 		[p]
-		Aliases can be used as a mean for structured programming.
-		In large scripts you will SURELY have "common tasks" to perform (like having specially
-		colored output or calculating a value from a set of other values)...
-		Aliases are the way of writing the common tasks: they are equivalent to the "procedures"
+		Aliases can be used as a means for structured programming.
+		In large scripts you will SURELY have "common tasks" to perform (like having 
+		specially-colored output or calculating a value from a set of other values)...
+		Aliases are the way of writing the common tasks - they are equivalent to the "procedures"
 		or "functions" in many high-level programming languages.
-		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above:
-		it might be commonly called from complexier scripts or other aliases in case that a
+		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above - 
+		it might be commonly called from more complex scripts or other aliases in the case that a
 		kick & ban action is needed.
 		[/p]
 		[p]
-		The aliases can be used also as functions.
-		Assume that you need really often to calculate the sum of three numbers: a function-alias is the way.
+		Aliases can be used also as functions.
+		Assume that you often need to calculate the sum of three numbers - a function-alias is the way.
 		[example]
 			[cmd]alias[/cmd](sum3){ [cmd]return[/cmd] $($0 + $1 + $2); };
 		[/example]
@@ -822,7 +822,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		(an alias is a sequence of commands...remember ?) and terminates the execution (by returning
 		the control to the caller).
 		So return $($0 + $1 + $2); will set the return value of the alias to the value
-		computed by $($0 + $1 + $2) that actually is the sum of the first three parameters passed.
+		computed by $($0 + $1 + $2), which is the sum of the first three parameters passed.
 		You will then use it in the following way:
 		[example]
 			...
@@ -830,20 +830,20 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%anothersum = $sum3(12,%somevalue,%anothervalue)
 			...
 		[/example]
-		Ops.. I've used some variables without actually explaining them... hehe.. please forgive me and read on.
-		This example is again really simple, but you might have complexier function-aliases.
+		Oops.. I've used some variables without actually explaining them... hehe.. please forgive me and read on.
+		This example is again really simple, but you might have more complex function-aliases.
 		The function-aliases are also normal aliases.... you can use it as a command:
 		[example]
 			/sum3 1 2 3
 		[/example]
-		Is a perfectly valid call.... it's just that it will have no visible results
-		(just because a command call implies ignoring the return value.
-		In fact there is no difference al all between function-aliases and normal-aliases:
-		the caller makes the difference: by calling an alias as a command the return value
-		just disappears in hyperspace, by calling an alias as a function, the return value
+		The above is a perfectly valid call.... however there will be no visible results
+		(because a command call implies ignoring the return value.
+		In fact there is no difference at all between function-aliases and normal-aliases - 
+		the caller makes the difference. By calling an alias as a command, the return value
+		just disappears into hyperspace, however if you call an alias as a function, the return value
 		is propagated (and in fact "used").
-		(There are some "nice" exceptions to this rule...but you don't need to care about it, for now).
-		If return is not called inside an alias body, the return value will be just a null value.
+		There are some "nice" exceptions to this rule...but you don't need to care about it, for now.
+		If return is not called inside an alias body, the return value will be set to [fnc]$null[/fnc].
 		[/p]
 		[p]
 		Aliases can accept switches just like any other command. The [fnc]$sw[/fnc] is there

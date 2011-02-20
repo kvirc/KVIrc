@@ -1081,9 +1081,9 @@ namespace KviKvsCoreFunctions
 	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
- 		@doc: window
- 		@type:
- 			function
+		@doc: window
+		@type:
+			function
 		@title:
 			$window
 		@short:
@@ -1100,12 +1100,12 @@ namespace KviKvsCoreFunctions
 			of the current window.[br]
 			<context_id> restricts search in only one irc context.
 		@examples:
- 			[example]
- 				[cmd]echo[/cmd] This is the window with id $window
+			[example]
+				[cmd]echo[/cmd] This is the window with id $window
 			[/example]
 		@seealso:
 			[fnc]$channel[/fnc],
- 			[fnc]$query[/fnc],
+			[fnc]$query[/fnc],
 			[fnc]$console[/fnc],
 			[doc:window_naming_conventions]Window naming conventions[/doc]
 	*/
