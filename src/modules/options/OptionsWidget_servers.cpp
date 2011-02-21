@@ -1370,6 +1370,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
+	m_pShowThisDialogAtStartupSelector = NULL;
 
 	// The "Show this dialog at startup" option is shown only when the server options widget is shown as standalone dialog
 	if(parent->inherits("OptionsWidgetContainer"))
@@ -1411,10 +1412,13 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		OptionsWidgetContainer * pContainer = dynamic_cast<OptionsWidgetContainer *>(parent);
 		if(pContainer)
 		{
-			KviBoolSelector * b = addBoolSelector(pContainer,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
-			pContainer->setLeftCornerWidget(b);
+			m_pShowThisDialogAtStartupSelector = addBoolSelector(pContainer,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
+			pContainer->setLeftCornerWidget(m_pShowThisDialogAtStartupSelector);
+			// This selector can be destroyed upon reparenting: make sure it's removed from the selector list
+			// (or we'll get a crash at commit() time...).
+			QObject::connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
 
-			KviTalToolTip::add(b,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
+			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
 		}
 	} else {
 		m_pConnectCurrent = NULL;
@@ -1446,6 +1450,14 @@ OptionsWidget_servers::~OptionsWidget_servers()
 		delete m_pServerDetailsDialog;
 	if(m_pNetworkDetailsDialog)
 		delete m_pNetworkDetailsDialog;
+}
+
+void OptionsWidget_servers::slotShowThisDialogAtStartupSelectorDestroyed()
+{
+	KVI_ASSERT(m_pShowThisDialogAtStartupSelector);
+
+	removeSelector(m_pShowThisDialogAtStartupSelector);
+	m_pShowThisDialogAtStartupSelector = NULL;
 }
 
 void OptionsWidget_servers::recentServersPopupAboutToShow()

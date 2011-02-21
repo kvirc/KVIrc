@@ -190,6 +190,7 @@ protected:
 	IrcServerDetailsWidget       * m_pServerDetailsDialog;
 	IrcNetworkDetailsWidget      * m_pNetworkDetailsDialog;
 	KviMexServerImport           * m_pImportFilter;
+	KviBoolSelector              * m_pShowThisDialogAtStartupSelector;
 
 	QToolButton                  * m_pNewServerButton;
 	QToolButton                  * m_pNewNetworkButton;
@@ -203,6 +204,7 @@ private:
 	IrcServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
 	void selectBestServerByUrl(const QString &szUrl);
 protected slots:
+	void slotShowThisDialogAtStartupSelectorDestroyed();
 	void importerDead();
 	void importServer(const KviIrcServer & s,const QString &network);
 	void importPopupAboutToShow();

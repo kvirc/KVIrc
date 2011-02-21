@@ -146,6 +146,13 @@ void KviOptionsWidget::childEvent(QChildEvent * e)
 	QFrame::childEvent(e);
 }
 
+void KviOptionsWidget::removeSelector(KviSelectorInterface * pInterface)
+{
+	KVI_ASSERT(pInterface);
+	m_pSelectorInterfaceList->removeRef(pInterface);
+}
+
+
 void KviOptionsWidget::childOptionsWidgetDestroyed()
 {
 	// dynamic_cast<KviOptionsWidget> doesn't work here since the signal is emitted from QObject...

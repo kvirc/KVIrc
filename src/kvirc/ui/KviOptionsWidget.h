@@ -145,6 +145,8 @@ public:
 	// this is because nobody listens to the "switchToAdvancedPage" requests....
 	void addAdvancedButton(int x1,int y1,int x2,int y2);
 
+	void removeSelector(KviSelectorInterface * pInterface);
+
 	virtual void commit();
 	virtual void childEvent(QChildEvent * e);
 
