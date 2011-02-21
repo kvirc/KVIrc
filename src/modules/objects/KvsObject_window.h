@@ -28,21 +28,6 @@
 #include "KviWindow.h"
 #include "object_macros.h"
 
-class KvsObject_window : public KvsObject_widget
-{
-public:
-	KVSO_DECLARE_OBJECT(KvsObject_window)
-public:
-	QWidget * widget() { return (QWidget *)object(); };
-
-protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-
-	bool setWindowTitle(KviKvsObjectFunctionCall *c);
-	bool setIcon(KviKvsObjectFunctionCall *c);
-	bool setCentralWidget(KviKvsObjectFunctionCall *c);
-
-};
 
 
 class KviKvsScriptWindowWindow : public KviWindow
@@ -69,5 +54,23 @@ protected slots:
 	void centralWidgetObjectDestroyed();
 	void centralWidgetDestroyed();
 };
+
+
+class KvsObject_window : public KvsObject_widget
+{
+public:
+	KVSO_DECLARE_OBJECT(KvsObject_window)
+public:
+	QWidget * widget() { return (QWidget *)object(); };
+
+protected:
+	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+
+	bool setWindowTitle(KviKvsObjectFunctionCall *c);
+	bool setIcon(KviKvsObjectFunctionCall *c);
+	bool setCentralWidget(KviKvsObjectFunctionCall *c);
+
+};
+
 
 #endif	// !_CLASS_WINDOW_H_

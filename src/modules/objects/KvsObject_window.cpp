@@ -113,12 +113,13 @@ KVSO_END_CONSTRUCTOR(KvsObject_window)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_window)
-
+	if(widget())
+		g_pMainWindow->closeWindow(((KviKvsScriptWindowWindow *)widget()));
 KVSO_END_CONSTRUCTOR(KvsObject_window)
 
 bool KvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 {
-	KviWindow * w = new KviKvsScriptWindowWindow(pContext->window()->frame(),getName());
+	KviKvsScriptWindowWindow * w = new KviKvsScriptWindowWindow(pContext->window()->frame(),getName());
 	setObject(w);
 	pContext->window()->frame()->addWindow(w,false);
 	w->minimize(); // must be minimized before children are added, otherwise the focus handling goes nuts...

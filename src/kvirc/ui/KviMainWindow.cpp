@@ -182,7 +182,10 @@ KviMainWindow::~KviMainWindow()
 	saveToolBarPositions();
 	saveModuleExtensionToolBars();
 
-
+#if 0
+	// Pragma: This shouldn't be needed any more
+	//         The objects module must call closeWindow() internally.
+	//
 	// close all the KviKvsScriptWindowWindow to avoid a race condition
 	// where such a window will be free'd two times:
 	// the first in the frameDestructorCallback (deleted as an object instance)
@@ -190,8 +193,9 @@ KviMainWindow::~KviMainWindow()
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
 		if(wnd->inherits("KviKvsScriptWindowWindow"))
-		closeWindow(wnd);
+			closeWindow(wnd);
 	}
+#endif
 
 	// Call the frame destructor callback AFTER saving the toolbar positions
 	// This is because the destructor callback kills alls the KVS objects
