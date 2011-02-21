@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-10 17:15+0000\n"
-"PO-Revision-Date: 2011-02-17 11:02+0200\n"
+"PO-Revision-Date: 2011-02-21 17:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -22,15 +22,15 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:643
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] kullanıcısı \r!c\r%Q\r kanalından \r!n\r%Q\r [%Q@\r!h\r%Q\r] tarafından atıldı nedeni: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1453
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] başlığı değiştirdi \"%Q%c\""
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] başlığı değiştirdi: \"%Q%c\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:277
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] giriş yaptı \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalına girdi"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:272
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
@@ -38,19 +38,19 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:655
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] kullanıcısı \r!c\r%Q\r kanalından \r!n\r%Q\r [%Q@\r!h\r%Q\r] tarafından şimdi atıldı nedeni: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:290
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] şimdi giriş yaptı \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalına şimdi girdi"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:372
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] ayrıldı \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalından çıktı"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:368
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r: %Q"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] ayrıldı \r!c\r%Q\r: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalından çıktı :%Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:518
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:534
@@ -108,7 +108,7 @@ msgstr "### Kayıt tutma bitiş zamanı %1 ###"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:621
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/kvilib/core/KviQString.cpp:250
 msgid "%1 GiB"
@@ -136,11 +136,11 @@ msgstr "%1 avatarını değiştirdi %2"
 
 #: src/kvilib/system/KviTimeUtils.cpp:133
 msgid "%1 d %2 h %3 m %4 s"
-msgstr ""
+msgstr "%1 gün %2 saat %3 dakika %4 saniye"
 
 #: src/kvilib/system/KviTimeUtils.cpp:135
 msgid "%1 d %2%3 h %4%5 m %6%7 s"
-msgstr ""
+msgstr "%1 gün %2%3 saat %4%5 dakika %6%7 saniye"
 
 #: src/modules/mircimport/libkvimircimport.cpp:115
 msgid ""
@@ -150,11 +150,11 @@ msgstr ""
 
 #: src/kvilib/system/KviTimeUtils.cpp:117
 msgid "%1 h %2 m %3 s"
-msgstr ""
+msgstr "%1 saat %2 dakika %3 saniye"
 
 #: src/kvilib/system/KviTimeUtils.cpp:119
 msgid "%1 h %2%3 m %4%5 s"
-msgstr ""
+msgstr "%1 saat %2%3 dakika %4%5 saniye"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:257
 msgid "%1 has left IRC"
@@ -194,11 +194,11 @@ msgstr ""
 
 #: src/kvilib/system/KviTimeUtils.cpp:124
 msgid "%1 m %2 s"
-msgstr ""
+msgstr "%1 dakika %2 saniye"
 
 #: src/kvilib/system/KviTimeUtils.cpp:126
 msgid "%1 m %2%3 s"
-msgstr ""
+msgstr "%1 dakika %2%3"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:623
 msgid "%1 of %2"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: src/kvilib/system/KviTimeUtils.cpp:128
 msgid "%1 s"
-msgstr ""
+msgstr "%1 saniye"
 
 #: src/modules/mircimport/libkvimircimport.cpp:251
 msgid "%1 servers imported successfully"
@@ -242,7 +242,7 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2074
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2097
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
-msgstr "%Q [%Q@%Q] kanal modu kurdu \r!m%c%c\rmode %c%c\r"
+msgstr "%Q [%Q@%Q] kanal modunu değiştirdi: \r!m%c%c\rmode %c%c\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1848
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
@@ -254,24 +254,24 @@ msgstr "%Q [%Q@%Q] kanal şifresi kurdu \"\r!m-k\r%Q\r\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2129
 msgid "%Q [%Q@%Q] has set channel mode %s"
-msgstr "%Q [%Q@%Q] kanal modu kurdu %s"
+msgstr "%Q [%Q@%Q] kanal modunu değiştirdi: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1933
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1997
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2043
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2079
 msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"
-msgstr "%Q [%Q@%Q] kanal modu kurdu %c%c \r!m%c%c\r%Q\r"
+msgstr "%Q [%Q@%Q] kanal modunu değiştirdi: %c%c \r!m%c%c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1874
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1955
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1974
 msgid "%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"
-msgstr "%Q [%Q@%Q] kanal modu kurdu %c%c \r!n\r%Q\r"
+msgstr "%Q [%Q@%Q] kanal modunu değiştirdi: %c%c \r!n\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2126
 msgid "%Q [%Q@%Q] has set mode %s %Q"
-msgstr "%Q [%Q@%Q] kanal modu kurdu %s %Q"
+msgstr "%Q [%Q@%Q] kanal modunu değiştirdi: %s %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1826
 msgid "%Q [%Q@%Q] has unset the channel key"
@@ -298,19 +298,19 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2150
 msgid "%Q: no such channel"
-msgstr ""
+msgstr "%Q: böyle bir kanal yok"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2139
 msgid "%Q: no such server"
-msgstr ""
+msgstr "%Q: böyle bir sunucu yok"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1582
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c kimlik bilgileri \r!s\r%Q\r tarafından"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1599
 msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c eski bilgileri \r!s\r%Q\r tarafından"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1227
 msgid "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
@@ -411,12 +411,12 @@ msgstr ""
 #: src/modules/ident/libkviident.cpp:109
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: src/modules/ident/libkviident.cpp:104
 #, c-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: src/modules/ident/libkviident.cpp:102
 #, c-format
@@ -5803,7 +5803,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviQueryWindow.cpp:93
 msgid "Show User List"
-msgstr ""
+msgstr "Kullanıcı Listesini Göster"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:290
 msgid "Show Window"
@@ -6015,12 +6015,12 @@ msgstr ""
 
 #: src/modules/snd/libkvisnd.cpp:707
 msgid "Sound file '%Q' not found"
-msgstr ""
+msgstr "Ses dosyası '%Q' bulunamadı"
 
 #: src/modules/snd/libkvisnd.cpp:727
 #, c-format
 msgid "Sound system detected to: %s"
-msgstr ""
+msgstr "Ses sistemi belirlendi: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1219
 msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
@@ -6665,16 +6665,16 @@ msgstr "Kanal başlığını kuran %Q tarih %Q"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts in the network"
-msgstr ""
+msgstr "Ağdaki toplam sunucu sayısı"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts listed"
-msgstr ""
+msgstr "Toplam sunucu listesi"
 
 #: src/modules/links/LinksWindow.cpp:294
 #, c-format
 msgid "Total links: %d"
-msgstr ""
+msgstr "Toplam bağlantılar: %d"
 
 #: src/kvirc/ui/KviSelectors.cpp:724
 msgid "Transparent"
@@ -7438,15 +7438,15 @@ msgstr ""
 #: src/kvirc/ui/KviQueryWindow.cpp:222
 #: src/kvirc/ui/KviQueryWindow.cpp:270
 msgid "[Dead Query]"
-msgstr ""
+msgstr "[Ölü Özel]"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1109
 msgid "[Dead channel]"
-msgstr ""
+msgstr "[Ölü Kanal]"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:433
 msgid "[Dead query]"
-msgstr ""
+msgstr "[Ölü özel]"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1918
 msgid "[Entering away status]: %Q"
@@ -7611,11 +7611,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:896
 msgid "active user"
-msgstr ""
+msgstr "aktif kullanıcı"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:896
 msgid "active users"
-msgstr ""
+msgstr "aktif kullanıcılar"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1304
 msgid "alternative nickname specified in options"
@@ -7624,7 +7624,7 @@ msgstr ""
 #: src/kvirc/ui/KviChannelWindow.cpp:813
 #: src/kvirc/ui/KviChannelWindow.cpp:828
 msgid "and"
-msgstr ""
+msgstr "ve"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:836
 msgid "and other %1 users"
@@ -7633,7 +7633,7 @@ msgstr ""
 #: src/kvirc/ui/KviChannelWindow.cpp:818
 #: src/kvirc/ui/KviChannelWindow.cpp:839
 msgid "are talking"
-msgstr ""
+msgstr "konuşuyorlar"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1612
 msgid "autojoining"
@@ -7677,11 +7677,11 @@ msgstr "kanal"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:988
 msgid "channel administrator"
-msgstr ""
+msgstr "kanal yöneticisi"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:988
 msgid "channel administrators"
-msgstr ""
+msgstr "kanal yöneticileri"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1600
 msgid "channel notification:"
@@ -7689,11 +7689,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:977
 msgid "channel owner"
-msgstr ""
+msgstr "kanal sahibi"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:977
 msgid "channel owners"
-msgstr ""
+msgstr "kanal sahipleri"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1172
 msgid "channels"
@@ -7733,11 +7733,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1010
 msgid "half-operator"
-msgstr ""
+msgstr "yarcımdı operatör"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1010
 msgid "half-operators"
-msgstr ""
+msgstr "yarcımdı operatörler"
 
 #: src/modules/rijndael/libkvirijndael.cpp:628
 #: src/modules/rijndael/libkvirijndael.cpp:638
@@ -7750,15 +7750,15 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:939
 msgid "hot user"
-msgstr ""
+msgstr "geveze kullanıcı"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:939
 msgid "hot users"
-msgstr ""
+msgstr "geveze kullanıcılar"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1096
 msgid "human"
-msgstr ""
+msgstr "insani"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:294
 msgid "i: Invisible"
@@ -7786,15 +7786,15 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:966
 msgid "irc operator"
-msgstr ""
+msgstr "irc operatör"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:966
 msgid "irc operators"
-msgstr ""
+msgstr "irc operatörler"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:807
 msgid "is talking"
-msgstr ""
+msgstr "konuşuyor"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:300
 msgid "k: Recipient for server kill messages"
@@ -7834,15 +7834,15 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:882
 msgid "operator"
-msgstr ""
+msgstr "operatör"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:883
 msgid "operators"
-msgstr ""
+msgstr "operatörler"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:764
 msgid "owner list"
-msgstr ""
+msgstr "sahip listesi"
 
 #: src/kvirc/ui/KviImageDialog.cpp:294
 msgid "pixels"
@@ -7950,27 +7950,27 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1041
 msgid "user total"
-msgstr ""
+msgstr "toplam kullanıcı"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1032
 msgid "user-operator"
-msgstr ""
+msgstr "kullanıcı-operatör"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1032
 msgid "user-operators"
-msgstr ""
+msgstr "kullanıcı-operatörler"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1041
 msgid "users total"
-msgstr ""
+msgstr "toplam kullanıcılar"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1021
 msgid "voiced user"
-msgstr ""
+msgstr "voice kullanıcı"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1021
 msgid "voiced users"
-msgstr ""
+msgstr "voice kullanıcılar"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:295
 msgid "w: Recipient for WALLOPS messages"
@@ -7991,11 +7991,11 @@ msgstr ""
 #: src/kvirc/ui/KviChannelWindow.cpp:818
 #: src/kvirc/ui/KviChannelWindow.cpp:839
 msgid "were talking recently"
-msgstr ""
+msgstr "yakın zamanda konuşuyorlardı"
 
 #: src/kvirc/ui/KviWindowListBase.cpp:71
 msgid "windowlist"
-msgstr ""
+msgstr "pencere listesi"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:302
 msgid "y: Spy :)"
