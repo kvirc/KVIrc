@@ -28,6 +28,7 @@
 #include "KviError.h"
 #include "kvi_debug.h"
 
+#include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
@@ -37,6 +38,7 @@ KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviMainWindow * pParent,const
 : KviWindow(KviWindow::ScriptObject,pParent,szName)
 {
 	m_pCentralWidget = 0;
+	m_pIcon = 0;
 
 }
 
@@ -69,7 +71,11 @@ void KviKvsScriptWindowWindow::centralWidgetDestroyed()
 }
 
 
-
+QPixmap * KviKvsScriptWindowWindow::myIconPtr()
+{
+	if (m_pIcon) return m_pIcon;
+	else return g_pIconManager->getSmallIcon(KviIconManager::DefaultIcon);
+}
 
 /*
 	@doc:	window
@@ -97,6 +103,7 @@ void KviKvsScriptWindowWindow::centralWidgetDestroyed()
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_window,"window","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_window,setWindowTitle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_window,setIcon)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_window,setCentralWidget)
 KVSO_END_REGISTERCLASS(KvsObject_window)
 
@@ -128,6 +135,19 @@ KVSO_CLASS_FUNCTION(window,setWindowTitle)
 	((KviKvsScriptWindowWindow *)widget())->setWindowTitleString(szCaption);
 	return true;
 }
+
+KVSO_CLASS_FUNCTION(window,setIcon)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szIcon;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("icon",KVS_PT_STRING,0,szIcon)
+	KVSO_PARAMETERS_END(c)
+	QPixmap * pix = g_pIconManager->getImage(szIcon);
+	if(pix) ((KviKvsScriptWindowWindow *)widget())->setIcon(pix);
+	return true;
+}
+
 KVSO_CLASS_FUNCTION(window,setCentralWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())

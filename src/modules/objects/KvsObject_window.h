@@ -38,7 +38,8 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-    bool setWindowTitle(KviKvsObjectFunctionCall *c);
+	bool setWindowTitle(KviKvsObjectFunctionCall *c);
+	bool setIcon(KviKvsObjectFunctionCall *c);
 	bool setCentralWidget(KviKvsObjectFunctionCall *c);
 
 };
@@ -53,9 +54,16 @@ public:
 protected:
 	KvsObject_widget * m_pCentralWidgetObject;
 	QWidget * m_pCentralWidget;
+	QPixmap * m_pIcon;
 public:
+	virtual QPixmap * myIconPtr();
+	void setIcon(QPixmap *pPixmap){m_pIcon = pPixmap;};
 	void setCentralWidget(KvsObject_widget *o,QWidget * w);
-	void setWindowTitleString(const QString &s){ setFixedCaption(s); };
+	void setWindowTitleString(const QString &s)
+	{
+		setFixedCaption(s);
+		fillCaptionBuffers();
+	};
 	virtual void resizeEvent(QResizeEvent *e);
 protected slots:
 	void centralWidgetObjectDestroyed();
