@@ -932,7 +932,10 @@ namespace KviKvsCoreFunctions
 
 		KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
 		if(pVar)
+		{
 			KVSCF_pRetBuffer->copyFrom(pVar);
+			delete pVar;
+		}
 		return true;
 	}
 

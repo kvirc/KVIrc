@@ -1350,7 +1350,7 @@ void KviKvsVariant::serialize(QString & szResult)
 
 KviKvsVariant * KviKvsVariant::unserialize(const QString & szBuffer)
 {
-	KviKvsVariant * pResult = 0;
+	KviKvsVariant * pResult = NULL;
 
 	const QChar * pAux = (const QChar *)szBuffer.constData();
 
@@ -1361,7 +1361,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QString & szBuffer)
 		//strange extra characters?
 		if(pResult)
 			delete pResult;
-		pResult = 0;
+		pResult = NULL;
 	}
 
 	return pResult;
@@ -1369,7 +1369,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QString & szBuffer)
 
 KviKvsVariant * KviKvsVariant::unserialize(const QChar ** ppAux)
 {
-	KviKvsVariant * pResult = 0;
+	KviKvsVariant * pResult = NULL;
 
 	while((*ppAux)->isSpace())
 		(*ppAux)++;
@@ -1416,7 +1416,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QChar ** ppAux)
 		break;
 		default:
 			//incorrect value
-			return 0;
+			return NULL;
 	}
 
 	while((*ppAux)->isSpace())
@@ -1446,7 +1446,7 @@ KviKvsVariant * KviKvsVariant::unserializeBool(const QChar ** ppAux, bool bBool)
 
 	if(bOk)
 		return new KviKvsVariant(bBool);
-	return 0;
+	return NULL;
 }
 
 KviKvsVariant * KviKvsVariant::unserializeNull(const QChar ** ppAux)
@@ -1456,7 +1456,7 @@ KviKvsVariant * KviKvsVariant::unserializeNull(const QChar ** ppAux)
 		(*ppAux) += 4;
 		return new KviKvsVariant();
 	}
-	return 0;
+	return NULL;
 }
 
 KviKvsVariant * KviKvsVariant::unserializeNumber(const QChar ** ppAux)
@@ -1470,9 +1470,7 @@ KviKvsVariant * KviKvsVariant::unserializeNumber(const QChar ** ppAux)
 	}
 
 	if(!(*ppAux)->isDigit())
-	{
-		return 0;
-	}
+		return NULL;
 
 	while((*ppAux)->isDigit())
 	{
@@ -1481,9 +1479,7 @@ KviKvsVariant * KviKvsVariant::unserializeNumber(const QChar ** ppAux)
 	}
 
 	if((*ppAux)->unicode() == '.')
-	{
 		return unserializeReal(ppAux,szData);
-	}
 
 	return unserializeInteger(ppAux,szData);
 }
