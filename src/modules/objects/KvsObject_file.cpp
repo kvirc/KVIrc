@@ -412,7 +412,7 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 		int rlen = m_pFile->read(buff, uLen);
 		buff[rlen] = '\0';
 		QString szBlock(buff);
-		delete buff;
+		delete[] buff;
 		c->returnValue()->setString(szBlock);
 	}
 	return true;
