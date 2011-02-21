@@ -602,7 +602,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			KviCommandFormatter::bufferFromBlock(szInstruction);
 		}
 
-                pClass->addFunctionDefinition(new KviKvsTreeNodeSpecialCommandClassFunctionDefinition(pLabelBegin,szLabel,szInstruction,szReminder,uHandlerFlags));
+		pClass->addFunctionDefinition(new KviKvsTreeNodeSpecialCommandClassFunctionDefinition(pLabelBegin,szLabel,szInstruction,szReminder,uHandlerFlags));
 
 		if(!skipSpacesAndNewlines())
 		{

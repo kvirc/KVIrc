@@ -386,7 +386,8 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,0,uLen)
 		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,KVS_PF_OPTIONAL,hObject)
 	KVSO_PARAMETERS_END(c)
-	if (uLen>(kvs_uint_t)m_pFile->size()) uLen=m_pFile->size();
+	if (uLen>(kvs_uint_t)m_pFile->size())
+		uLen=m_pFile->size();
 	if (hObject)
 	{
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
@@ -411,6 +412,7 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 		int rlen = m_pFile->read(buff, uLen);
 		buff[rlen] = '\0';
 		QString szBlock(buff);
+		delete buff;
 		c->returnValue()->setString(szBlock);
 	}
 	return true;

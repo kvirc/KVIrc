@@ -737,7 +737,7 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 		bool ret=false;
 		int aparam;
 		bool brokenhandler=false;
-		KviKvsVariant *retv=new KviKvsVariant(ret);
+		KviKvsVariant oReturnBuffer(ret);
 
 		switch(e->type())
 		{
@@ -745,13 +745,13 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			{
 				QPoint iPoint=widget()->mapFromGlobal(((QContextMenuEvent *)e)->globalPos());
 				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iPoint.x()),new KviKvsVariant((kvs_int_t)iPoint.y()));
-				callFunction(this,"customContextMenuRequestedEvent",retv,&params);
+				callFunction(this,"customContextMenuRequestedEvent",&oReturnBuffer,&params);
 				break;
 			}
 			case QEvent::Shortcut:
 			{
 				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QShortcutEvent *)e)->shortcutId()));
-				callFunction(this,"shortCutEvent",retv,&params);
+				callFunction(this,"shortCutEvent",&oReturnBuffer,&params);
 				break;
 			}
 			case QEvent::ToolTip:
@@ -768,127 +768,124 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			}
 			case QEvent::Paint:
 			{
-
-                                QRect rect=((QPaintEvent *)e)->rect();
-                                KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
-                                KviKvsVariantList params;
-                                KviKvsObject * pObject = pClass->allocateInstance(0,"internalpainter",m_pContext,&params);
-                                QPainter p(widget());
-                                ((KvsObject_painter *)pObject)->setInternalPainter(&p);
-                                p.setClipRect(rect);
-                                kvs_hobject_t hobj=pObject->handle();
-                                KviKvsVariantList params2(new KviKvsVariant(hobj),new KviKvsVariant((kvs_int_t)rect.x()),new KviKvsVariant((kvs_int_t)rect.y()),new KviKvsVariant((kvs_int_t)rect.width()),new KviKvsVariant((kvs_int_t)rect.height()));
-                                callFunction(this,"paintEvent",retv,&params2);
-                                pObject=KviKvsKernel::instance()->objectController()->lookupObject(hobj);
-                                if (pObject) pObject->dieNow();
+				QRect rect=((QPaintEvent *)e)->rect();
+				KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
+				KviKvsVariantList params;
+				KviKvsObject * pObject = pClass->allocateInstance(0,"internalpainter",m_pContext,&params);
+				QPainter p(widget());
+				((KvsObject_painter *)pObject)->setInternalPainter(&p);
+				p.setClipRect(rect);
+				kvs_hobject_t hobj=pObject->handle();
+				KviKvsVariantList params2(new KviKvsVariant(hobj),new KviKvsVariant((kvs_int_t)rect.x()),new KviKvsVariant((kvs_int_t)rect.y()),new KviKvsVariant((kvs_int_t)rect.width()),new KviKvsVariant((kvs_int_t)rect.height()));
+				callFunction(this,"paintEvent",&oReturnBuffer,&params2);
+				pObject=KviKvsKernel::instance()->objectController()->lookupObject(hobj);
+				if (pObject) pObject->dieNow();
 				break;
 			}
 
 		case QEvent::KeyPress:
 			{
-
-
 				QString tmp="";
-					switch(((QKeyEvent *)e)->key())
-					{
-					case Qt::Key_Return:
-						tmp="Return";
-						break;
-					case Qt::Key_Down:
-						tmp="Down";
-						break;
-					case Qt::Key_Up:
-						tmp="Up";
-						break;
-					case Qt::Key_Left:
-						tmp="Left";
-						break;
-					case Qt::Key_Right:
-						tmp="Right";
-						break;
-					case Qt::Key_Shift:
-						tmp="Shift";
-						break;
-					case Qt::Key_Control:
-						tmp="Ctrl";
-						break;
-					case Qt::Key_Alt:
-						tmp="Alt";
-						break;
-					case Qt::Key_CapsLock:
-						tmp="CapsLock";
-						break;
-					case Qt::Key_Backspace:
-						tmp="Backspace";
-						break;
-					case Qt::Key_Delete:
-						tmp="Del";
-						break;
-					case Qt::Key_Enter:
-						tmp="Enter";
-						break;
-					case Qt::Key_Escape:
-						tmp="Esc";
-						break;
-					case Qt::Key_0:
-						tmp="0";
-						case Qt::Key_1:
-						tmp="1";
-						break;
-					case Qt::Key_2:
-						tmp="2";
-						break;
-					case Qt::Key_3:
-						tmp="3";
-						break;
-					case Qt::Key_4:
-						tmp="4";
-						break;
-					case Qt::Key_5:
-						tmp="5";
-						break;
-					case Qt::Key_6:
-						tmp="6";
-						break;
-					case Qt::Key_7:
-						tmp="7";
-						break;
-					case Qt::Key_8:
-						tmp="8";
-						break;
-					case Qt::Key_9:
-						tmp="9";
-						break;
-					case Qt::Key_Plus:
-						tmp="+";
-						break;
-					case Qt::Key_Minus:
-						tmp="-";
-						break;
-					case Qt::Key_Slash:
-						tmp="/";
-						break;
-					case Qt::Key_Asterisk:
-						tmp="*";
-						break;
-					case Qt::Key_Period:
-						tmp=".";
-						break;
-					case Qt::Key_ParenLeft:
-						tmp="(";
-						break;
-					case Qt::Key_ParenRight:
-						tmp=")";
-						break;
-					case Qt::Key_Equal:
-						tmp="=";
-						break;
-					case Qt::Key_AsciiCircum:
-						tmp="^";
-						break;
-					default:
-						if (!((QKeyEvent *)e)->text().isEmpty()) tmp = ((QKeyEvent *)e)->text();
-					}
+				switch(((QKeyEvent *)e)->key())
+				{
+				case Qt::Key_Return:
+					tmp="Return";
+					break;
+				case Qt::Key_Down:
+					tmp="Down";
+					break;
+				case Qt::Key_Up:
+					tmp="Up";
+					break;
+				case Qt::Key_Left:
+					tmp="Left";
+					break;
+				case Qt::Key_Right:
+					tmp="Right";
+					break;
+				case Qt::Key_Shift:
+					tmp="Shift";
+					break;
+				case Qt::Key_Control:
+					tmp="Ctrl";
+					break;
+				case Qt::Key_Alt:
+					tmp="Alt";
+					break;
+				case Qt::Key_CapsLock:
+					tmp="CapsLock";
+					break;
+				case Qt::Key_Backspace:
+					tmp="Backspace";
+					break;
+				case Qt::Key_Delete:
+					tmp="Del";
+					break;
+				case Qt::Key_Enter:
+					tmp="Enter";
+					break;
+				case Qt::Key_Escape:
+					tmp="Esc";
+					break;
+				case Qt::Key_0:
+					tmp="0";
+					case Qt::Key_1:
+					tmp="1";
+					break;
+				case Qt::Key_2:
+					tmp="2";
+					break;
+				case Qt::Key_3:
+					tmp="3";
+					break;
+				case Qt::Key_4:
+					tmp="4";
+					break;
+				case Qt::Key_5:
+					tmp="5";
+					break;
+				case Qt::Key_6:
+					tmp="6";
+					break;
+				case Qt::Key_7:
+					tmp="7";
+					break;
+				case Qt::Key_8:
+					tmp="8";
+					break;
+				case Qt::Key_9:
+					tmp="9";
+					break;
+				case Qt::Key_Plus:
+					tmp="+";
+					break;
+				case Qt::Key_Minus:
+					tmp="-";
+					break;
+				case Qt::Key_Slash:
+					tmp="/";
+					break;
+				case Qt::Key_Asterisk:
+					tmp="*";
+					break;
+				case Qt::Key_Period:
+					tmp=".";
+					break;
+				case Qt::Key_ParenLeft:
+					tmp="(";
+					break;
+				case Qt::Key_ParenRight:
+					tmp=")";
+					break;
+				case Qt::Key_Equal:
+					tmp="=";
+					break;
+				case Qt::Key_AsciiCircum:
+					tmp="^";
+					break;
+				default:
+					if (!((QKeyEvent *)e)->text().isEmpty()) tmp = ((QKeyEvent *)e)->text();
+				}
 
 				KviKvsVariantList params(new KviKvsVariant(tmp));
 				callFunction(this,"keyPressEvent",0,&params);
@@ -957,46 +954,41 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			}
 			break;
 			case QEvent::FocusIn:
-				if(!callFunction(this,"focusInEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"focusInEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::FocusOut:
-				if(!callFunction(this,"focusOutEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"focusOutEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Resize:
-				if(!callFunction(this,"resizeEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"resizeEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Move:
-				if(!callFunction(this,"moveEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"moveEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Close:
-				if(!callFunction(this,"closeEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"closeEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Enter:
-				if(!callFunction(this,"mouseEnterEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"mouseEnterEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Leave:
-				if(!callFunction(this,"mouseLeaveEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"mouseLeaveEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Show:
-				if(!callFunction(this,"showEvent",retv,0))brokenhandler = true;
+				if(!callFunction(this,"showEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Hide:
-				if(!callFunction(this,"hideEvent",retv,0))ret =false;
+				if(!callFunction(this,"hideEvent",&oReturnBuffer,0))ret =false;
 			break;
 			default:
 				return KviKvsObject::eventFilter(o,e);
 			break;
 
 		}
-		if (!brokenhandler)	ret=retv->asBoolean();
-		delete retv;
+		if (!brokenhandler)
+			ret = oReturnBuffer.asBoolean();
+
 		return ret;
-		/*
-		if(ret.length() == 1)
-		{
-			if(KviQString::equalCI("1",ret))return true;
-		}
-		*/
 	}
 
 	return KviKvsObject::eventFilter(o,e);
