@@ -84,9 +84,9 @@ bool KviDefaultScriptManager::isDefscriptUpToDate()
 {
 	QString szConfig, szTmp;
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApplication::DefScript,"default.kvc");
-	KviConfigurationFile * pCfg = new KviConfigurationFile(szConfig,KviConfigurationFile::Read);
+	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
 
-	szTmp = pCfg->readEntry("Date");
+	szTmp = oConfig.readEntry("Date");
 	QDate cfgDate = QDate::fromString(szTmp,"yyyy-MM-dd");
 	QDate userDate = QDate::fromString(m_szDate,"yyyy-MM-dd");
 
@@ -125,9 +125,9 @@ void KviDefaultScriptManager::restoreInternal()
 {
 	QString szConfig, szTmp;
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApplication::DefScript,"default.kvc");
-	KviConfigurationFile * pCfg = new KviConfigurationFile(szConfig,KviConfigurationFile::Read);
+	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
 
-	m_szDate = pCfg->readEntry("Date");
+	m_szDate = oConfig.readEntry("Date");
 
 	// Select elements to restore
 	if((m_pDialog->m_pAction->isEnabled() && m_pDialog->m_pAction->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -136,7 +136,7 @@ void KviDefaultScriptManager::restoreInternal()
 			KviActionManager::instance()->killAllKvsUserActions();
 		// No need to load here since we haven't a default actions script yet
 		//g_pApp->loadDefaultScript("action");
-		m_szAction = pCfg->readEntry("ActionVersion");
+		m_szAction = oConfig.readEntry("ActionVersion");
 	}
 
 	if((m_pDialog->m_pAddon->isEnabled() && m_pDialog->m_pAddon->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -145,7 +145,7 @@ void KviDefaultScriptManager::restoreInternal()
 			KviKvs::clearScriptAddons();
 		// No need to load here since we haven't a default actions script yet
 		//g_pApp->loadDefaultScript("addons");
-		m_szAddon = pCfg->readEntry("AddonVersion");
+		m_szAddon = oConfig.readEntry("AddonVersion");
 	}
 
 	if((m_pDialog->m_pAlias->isEnabled() && m_pDialog->m_pAlias->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -153,14 +153,14 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviKvs::clearAliases();
 		g_pApp->loadDefaultScript("aliases");
-		m_szAlias = pCfg->readEntry("AliasVersion");
+		m_szAlias = oConfig.readEntry("AliasVersion");
 	}
 
 	if((m_pDialog->m_pClass->isEnabled() && m_pDialog->m_pClass->isChecked()) || m_pDialog->m_pAll->isChecked())
 	{
 		// TODO: clear classes
 		g_pApp->loadDefaultScript("classes");
-		m_szClass = pCfg->readEntry("ClassVersion");
+		m_szClass = oConfig.readEntry("ClassVersion");
 	}
 
 	if((m_pDialog->m_pEvent->isEnabled() && m_pDialog->m_pEvent->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -168,7 +168,7 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviKvs::clearAppEvents();
 		g_pApp->loadDefaultScript("events");
-		m_szEvent = pCfg->readEntry("EventVersion");
+		m_szEvent = oConfig.readEntry("EventVersion");
 	}
 
 	if((m_pDialog->m_pPopup->isEnabled() && m_pDialog->m_pPopup->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -176,7 +176,7 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviKvs::clearPopups();
 		g_pApp->loadDefaultScript("popups");
-		m_szPopup = pCfg->readEntry("PopupVersion");
+		m_szPopup = oConfig.readEntry("PopupVersion");
 	}
 
 	if((m_pDialog->m_pRaw->isEnabled() && m_pDialog->m_pRaw->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -185,7 +185,7 @@ void KviDefaultScriptManager::restoreInternal()
 			KviKvs::clearRawEvents();
 		// No need to load here since we haven't a default raw events script yet
 		//g_pApp->loadDefaultScript("raws");
-		m_szRaw = pCfg->readEntry("RawVersion");
+		m_szRaw = oConfig.readEntry("RawVersion");
 	}
 
 	if((m_pDialog->m_pToolbar->isEnabled() && m_pDialog->m_pToolbar->isChecked()) || m_pDialog->m_pAll->isChecked())
@@ -193,7 +193,7 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviCustomToolBarManager::instance()->clear();
 		g_pApp->loadDefaultScript("toolbars");
-		m_szToolbar = pCfg->readEntry("ToolbarVersion");
+		m_szToolbar = oConfig.readEntry("ToolbarVersion");
 	}
 }
 
@@ -211,10 +211,10 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	if(pszError)
 		*pszError = "";
 
-	KviConfigurationFile * pCfg = new KviConfigurationFile(szConfig,KviConfigurationFile::Read);
+	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
 
 	szTmp = "Date";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	QDate cfgDate = QDate::fromString(szTmp2,"yyyy-MM-dd");
 	QDate userDate = QDate::fromString(m_szDate,"yyyy-MM-dd");
 
@@ -226,39 +226,39 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	}
 
 	szTmp = "Version";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szVersion)
 
 	szTmp = "ActionVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szAction)
 
 	szTmp = "AddonVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szAction)
 
 	szTmp = "AliasVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szAlias)
 
 	szTmp = "ClassVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szClass)
 
 	szTmp = "EventVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szEvent)
 
 	szTmp = "PopupVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szPopup)
 
 	szTmp = "RawVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szRaw)
 
 	szTmp = "ToolbarVersion";
-	szTmp2 = pCfg->readEntry(szTmp);
+	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szToolbar)
 
 	return true;
