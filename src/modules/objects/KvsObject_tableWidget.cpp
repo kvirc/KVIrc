@@ -876,16 +876,17 @@ void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem 
 
 QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex & index) const
 {
-	KviKvsVariant *sizeret=new KviKvsVariant();
-	//qDebug("sizehint cell");
+	KviKvsVariant vSizeBuffer;
+
 	KviKvsVariantList parameters(new KviKvsVariant((kvs_int_t) index.row()),new KviKvsVariant((kvs_int_t) index.column()));
-	m_pParentScript->callFunction(m_pParentScript,"sizeHintCellRequestEvent",sizeret,&parameters);
-	if (sizeret->isArray())
+	m_pParentScript->callFunction(m_pParentScript,"sizeHintCellRequestEvent",&vSizeBuffer,&parameters);
+	if(vSizeBuffer.isArray())
 	{
-		if (sizeret->array()->size()==2)
+		if(vSizeBuffer.array()->size()==2)
 		{
 			kvs_int_t w,h;
-			if (sizeret->array()->at(0)->asInteger(w) && sizeret->array()->at(1)->asInteger(h))return QSize(w,h);
+			if(vSizeBuffer.array()->at(0)->asInteger(w) && vSizeBuffer.array()->at(1)->asInteger(h))
+				return QSize(w,h);
 		}
 	}
 	return QItemDelegate::sizeHint(option,index);
