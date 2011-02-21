@@ -486,7 +486,8 @@ defpopup(channel)
 		}
 	}
 
-	item("/WHOIS" %:visible "("$tr("idle time","defscript")")",75,whois_item)
+
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),75,whois_item)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -496,17 +497,17 @@ defpopup(channel)
 
 	popup($tr("&Information","defscript"),49,"information_popup")
 	{
-		item("/WHOIS" %:visible,75,"whois_item")
+		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),75,"whois_item")
 		{
 			whois $0
 		}
 
-		item(/WHOWAS %:visible,92)
+		item($str.printf($tr("/WHOWAS ?s","defscript"),%:visible),92)
 		{
 			whowas $0
 		}
 
-		item(/WHO %:visible,75)
+		item($str.printf($tr("/WHO ?s","defscript"),%:visible),75)
 		{
 			who $0
 		}
@@ -1110,7 +1111,8 @@ defpopup(querytextview)
 		}
 	}
 
-	item(/WHOIS $0 "("$tr("idle time","defscript")")",75) (!%:multiple)
+		
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
 	{
 		whois $0 $0
 	}
@@ -1119,17 +1121,17 @@ defpopup(querytextview)
 
 	popup($tr("&Information","defscript"),49)
 	{
-		item(/WHOIS $0,75)
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
 		{
 			whois $0
 		}
 
-		item(/WHOWAS $0,92)
+		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
 		{
 			whowas $0
 		}
 
-		item(/WHO $0,75)
+		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
 		{
 			who $0
 		}
@@ -1251,7 +1253,7 @@ defpopup(defaulttextview)
 		}
 	}
 
-	item(/WHOIS $0 "("$tr("idle time","defscript")")",75) (!%:multiple)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
 	{
 		whois $0 $0
 	}
@@ -1260,17 +1262,17 @@ defpopup(defaulttextview)
 
 	popup($tr("&Information","defscript"),49)
 	{
-		item(/WHOIS $0,75)
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
 		{
 			whois $0
 		}
 
-		item(/WHOWAS $0,92)
+		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
 		{
 			whowas $0
 		}
 
-		item(/WHO $0,75)
+		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
 		{
 			who $0
 		}
