@@ -124,6 +124,14 @@ const char * const itemflags_tbl[] = {
 		!fn: <integer> $currentRow()
 		Returns the current column.
 		Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc]
+		See also [classfnc]$foreground[/classfnc].
+		!fn: $setForegroundColor(<row:uinteger>,<col:uinteger>,<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red_or_colorname>,[geen:integer],[blue:integer])
+		Sets the foreground of the cell at <row,<col> according to <colorname> <rgb_value>:valid values are:
+		- hex string: must be a string with 6 hexadecimal digits (like the ones used to
+		specify colors in html pages). The first two digits specify
+		the RED component, the third and fourth digit specify the GREEN component
+		and the last two specify the BLUE component.
+		For example "FFFF00" means full red, full green and no blue that gives
 		!fn: $setFlag(<row:uint>,<col:uint>,<flag1:string>, <flag2:string>, ...)
 		Sets the flags for the cell pointed by row and col to the given flags.
 		These determine whether the cell can be selected or modified.
@@ -212,8 +220,10 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_tableWidget,"tablewidget","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setNumber)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setToolTip)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setForeground)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,text)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setCellWidget)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setIcon)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,clear)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tableWidget,setItemFlags);
@@ -281,6 +291,97 @@ KVSO_CLASS_FUNCTION(tableWidget,resizeColumnsToContents)
 	((QTableWidget *)widget())->resizeColumnsToContents();
 	return true;
 }
+
+
+KVSO_CLASS_FUNCTION(tableWidget,setForeground)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	KviKvsVariant * pColArray;
+	kvs_uint_t uCol,uRow;
+	kvs_int_t iColR,iColG,iColB;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+		KVSO_PARAMETER("hex_rgb_array_or_red_colorname",KVS_PT_VARIANT,0,pColArray)
+		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
+		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
+	KVSO_PARAMETERS_END(c)
+	QTableWidgetItem * pItem = ((QTableWidget *)widget())->item(uRow,uCol);
+	if(!pItem)
+	{
+	    pItem = new QTableWidgetItem();
+	    ((QTableWidget *)widget())->setItem(uRow,uCol,pItem);
+	}
+	if(pColArray->isArray())
+	{
+		if(pColArray->array()->size() < 3)
+		{
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
+			return false;
+		}
+		KviKvsVariant * pColR = pColArray->array()->at(0);
+		KviKvsVariant * pColG = pColArray->array()->at(1);
+		KviKvsVariant * pColB = pColArray->array()->at(2);
+
+		if(!(pColR && pColG && pColB))
+		{
+			c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
+			return false;
+		}
+
+		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
+		{
+			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
+			return false;
+		}
+	}
+	else
+	{
+		QColor color;
+		if (c->params()->count()==3)
+		{
+				if(pColArray->isString())
+				{
+					QString szColor;
+					pColArray->asString(szColor);
+					// maybe a color name?
+					color.setNamedColor(szColor);
+					if (!color.isValid())
+					{
+						// itsn't a color name: let try with an hex triplette
+						color.setNamedColor("#"+szColor);
+						if (!color.isValid())
+						{
+							c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+							return true;
+						}
+					}
+				}
+				else {
+					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+					return true;
+				}
+				QBrush brush(color);
+				pItem->setForeground(brush);
+				return true;
+		}
+		if(c->params()->count() < 5)
+		{
+			c->error(__tr2qs_ctx("$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers","objects"));
+			return false;
+		}
+		if(!pColArray->asInteger(iColR))
+		{
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
+			return false;
+		}
+	}
+
+	QBrush brush(QColor(iColR,iColG,iColB));
+	pItem->setForeground(brush);
+	return true;
+}
+
 
 KVSO_CLASS_FUNCTION(tableWidget,setText)
 {

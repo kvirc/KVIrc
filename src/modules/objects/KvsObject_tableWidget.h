@@ -67,6 +67,7 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	bool setText(KviKvsObjectFunctionCall *c);
+	bool setForeground(KviKvsObjectFunctionCall *c);
 	bool setNumber(KviKvsObjectFunctionCall *c);
 	bool setToolTip(KviKvsObjectFunctionCall *c);
 	bool text(KviKvsObjectFunctionCall *c);
