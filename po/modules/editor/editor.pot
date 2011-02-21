@@ -8,83 +8,84 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 17:15+0000\n"
+"POT-Creation-Date: 2011-02-22 00:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/actioneditor/ActionEditor.cpp:102
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:102
 msgid "Name:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:106
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:106
 msgid "Internal unique name for the action"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:108
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:108
 msgid "Label:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:112
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:112
 msgid ""
 "Visible name for this action.<br>This string will be displayed to the user "
 "so it is a good idea to use $tr() here"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:125
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:125
 msgid "Action code"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:127
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:127
 msgid "Code"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:133
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:133
 msgid "Category:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:138
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:138
 msgid "Choose the category that best fits for this action"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:140
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:140
 msgid "Description:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:145
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:145
 msgid ""
 "Visible short description for this action.<br>This string will be displayed "
 "to the user so it is a good idea to use $tr() here"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:147
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:147
 msgid "Small Icon:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:155
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:155
 msgid ""
 "The small icon associated to this action.<br>It will appear at least in the "
 "popup menus when this action is inserted.<br>It has to be 16x16 pixels."
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:161
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:161
 msgid "Big Icon:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:171
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:171
 msgid ""
 "The big icon associated to this action.<br>It will appear at least in the "
 "toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:177
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:177
 msgid "Key Sequence:"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:183
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:183
 msgid ""
 "Optional keyboard sequence that will activate this action.<br>The sequence "
 "has to be expressed as a string of up to four key codes separated by commas "
@@ -93,863 +94,863 @@ msgid ""
 "Ctrl+C\" ..."
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:196
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:196
 msgid "Properties"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:205
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:205
 msgid "Needs IRC Context"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:207
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:207
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window belongs to an irc context"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:216
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:216
 msgid "Needs IRC Connection"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:218
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:218
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window has an active IRC connection"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:227
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:227
 msgid "Enable at Login"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:228
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:228
 msgid ""
 "Check this option if this action should be enabled also during the login "
 "operations (so when the logical IRC connection hasn't been estabilished yet)"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:232
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:232
 msgid "Enable Only in Specified Windows"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:234
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:234
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is of a specified type"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:239
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:239
 msgid "Enable in Console Windows"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:240
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:240
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a console"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:245
-#: src/modules/actioneditor/ActionEditor.cpp:256
-#: src/modules/actioneditor/ActionEditor.cpp:267
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:245
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:256
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:267
 msgid "Only If There Are Selected Users"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:246
-#: src/modules/actioneditor/ActionEditor.cpp:257
-#: src/modules/actioneditor/ActionEditor.cpp:268
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:246
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:257
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:268
 msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:250
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:250
 msgid "Enable in Channel Windows"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:251
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:251
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a channel"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:261
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:261
 msgid "Enable in Query Windows"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:262
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:262
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a query"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:272
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:272
 msgid "Enable in DCC Chat Windows"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:273
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:273
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a dcc chat"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:282
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:282
 msgid "Flags"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:591
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:591
 msgid "Action"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:632
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:632
 msgid "New Action"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:635
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:635
 msgid "Delete Actions"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:638
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:638
 msgid "Export Actions..."
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:699
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:812
-#: src/modules/classeditor/ClassEditorWindow.cpp:1209
-#: src/modules/editor/ScriptEditorImplementation.cpp:921
-#: src/modules/eventeditor/EventEditorWindow.cpp:464
-#: src/modules/eventeditor/EventEditorWindow.cpp:505
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1188
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1238
-#: src/modules/raweditor/RawEditorWindow.cpp:419
-#: src/modules/raweditor/RawEditorWindow.cpp:457
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:397
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:699
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:812
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1209
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:921
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:464
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:505
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1188
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1238
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:419
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:457
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:397
 msgid "Choose a Filename - KVIrc"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:726
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
-#: src/modules/eventeditor/EventEditorWindow.cpp:471
-#: src/modules/eventeditor/EventEditorWindow.cpp:509
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1195
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1242
-#: src/modules/raweditor/RawEditorWindow.cpp:426
-#: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:726
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:823
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:471
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:509
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1195
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1242
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:426
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:461
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
 msgid "Write Failed - KVIrc"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:726
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:726
 msgid "Unable to write to the actions file."
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:726
-#: src/modules/actioneditor/ActionEditor.cpp:873
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:724
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:792
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
-#: src/modules/editor/ScriptEditorImplementation.cpp:542
-#: src/modules/eventeditor/EventEditorWindow.cpp:509
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1195
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1242
-#: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:184
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:726
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:873
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:724
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:792
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:823
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1111
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:542
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:509
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1195
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1242
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:461
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:184
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
 msgid "OK"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:773
-#: src/modules/actioneditor/ActionEditor.cpp:774
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:773
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:774
 msgid "My Action"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:775
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:775
 msgid "Put here a short description of your action"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:866
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:866
 msgid "Action Editor"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:878
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:878
 msgid "Apply"
 msgstr ""
 
-#: src/modules/actioneditor/ActionEditor.cpp:883
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1198
-#: src/modules/editor/ScriptEditorImplementation.cpp:546
-#: src/modules/eventeditor/EventEditorWindow.cpp:533
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1390
-#: src/modules/raweditor/RawEditorWindow.cpp:486
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/actioneditor/ActionEditor.cpp:883
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1198
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:546
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:533
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1390
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:486
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:100
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:343
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:539
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:100
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:343
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:539
 msgid "Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:141
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:517
-#: src/modules/classeditor/ClassEditorWindow.cpp:194
-#: src/modules/classeditor/ClassEditorWindow.cpp:209
-#: src/modules/classeditor/ClassEditorWindow.cpp:216
-#: src/modules/classeditor/ClassEditorWindow.cpp:770
-#: src/modules/eventeditor/EventEditorWindow.cpp:388
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:141
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:517
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:194
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:209
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:216
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:770
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:388
 msgid "No item selected"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:142
-#: src/modules/classeditor/ClassEditorWindow.cpp:197
-#: src/modules/classeditor/ClassEditorWindow.cpp:211
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:142
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:197
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:211
 msgid "Rename"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:146
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:146
 msgid "Edit the alias or namespace name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:325
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:325
 msgid "OverWrite Current Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:326
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:326
 msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:341
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:527
-#: src/modules/classeditor/ClassEditorWindow.cpp:787
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:341
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:527
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:787
 msgid "Namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:430
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:430
 msgid "Rename Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:430
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:430
 msgid "Please enter the new name for the alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:432
-#: src/modules/classeditor/ClassEditorWindow.cpp:677
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:432
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:677
 msgid "Rename Namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:432
-#: src/modules/classeditor/ClassEditorWindow.cpp:677
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:432
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:677
 msgid "Please enter the new name for the namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:444
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:444
 msgid "Alias already exists"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:445
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:457
-#: src/modules/classeditor/ClassEditorWindow.cpp:543
-#: src/modules/classeditor/ClassEditorWindow.cpp:605
-#: src/modules/classeditor/ClassEditorWindow.cpp:694
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:445
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:457
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:543
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:605
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:694
 msgid "This name is already in use. Please choose another one."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:446
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:458
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:994
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1007
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1021
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1032
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1062
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1075
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1089
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1100
-#: src/modules/classeditor/ClassEditorWindow.cpp:544
-#: src/modules/classeditor/ClassEditorWindow.cpp:606
-#: src/modules/classeditor/ClassEditorWindow.cpp:690
-#: src/modules/classeditor/ClassEditorWindow.cpp:695
-#: src/modules/classeditor/ClassEditorWindow.cpp:1489
-#: src/modules/classeditor/ClassEditorWindow.cpp:1502
-#: src/modules/classeditor/ClassEditorWindow.cpp:1516
-#: src/modules/classeditor/ClassEditorWindow.cpp:1527
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:446
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:458
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:994
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1007
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1021
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1032
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1062
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1075
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1089
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1100
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:544
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:606
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:690
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:695
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1489
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1502
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1516
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1527
 msgid "Ok, Let me try again..."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:456
-#: src/modules/classeditor/ClassEditorWindow.cpp:693
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:456
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:693
 msgid "Namespace already exists"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:562
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1126
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:562
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1126
 msgid "Add Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:567
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
-#: src/modules/classeditor/ClassEditorWindow.cpp:885
-#: src/modules/classeditor/ClassEditorWindow.cpp:1577
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:567
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1133
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:885
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1577
 msgid "Add Namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:577
-#: src/modules/classeditor/ClassEditorWindow.cpp:917
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:577
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:917
 msgid "Remove Selected"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:585
-#: src/modules/classeditor/ClassEditorWindow.cpp:925
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:585
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:925
 msgid "Export Selected..."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:591
-#: src/modules/classeditor/ClassEditorWindow.cpp:931
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:591
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:931
 msgid "Export Selected in singles files..."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:598
-#: src/modules/classeditor/ClassEditorWindow.cpp:938
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:598
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:938
 msgid "Export All..."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:606
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:606
 msgid "Find In Aliases..."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:612
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:612
 msgid "Collapse All Namespaces"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:642
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:642
 msgid "Find In Aliases"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:643
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:643
 msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:724
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:792
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:724
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:792
 msgid "Alias Export"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:724
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:724
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1111
 msgid "There is no selection!"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:730
-#: src/modules/classeditor/ClassEditorWindow.cpp:1117
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:730
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1117
 msgid "Choose a Directory - KVIrc"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:750
-#: src/modules/classeditor/ClassEditorWindow.cpp:1136
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:750
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1136
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:751
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:751
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1137
 msgid "Replace file"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:751
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:751
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:934
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1137
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
 msgid "Yes"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:751
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:751
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:934
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1137
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1349
 msgid "Yes to All"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:751
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:751
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:934
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1137
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
 msgid "No"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:792
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:792
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1188
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1242
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:823
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1242
 msgid "Unable to write to the alias file."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:926
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:926
 msgid "Do you really want to remove the alias \"%1\"?"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:928
-#: src/modules/classeditor/ClassEditorWindow.cpp:1340
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:928
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1340
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:930
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:930
 msgid "Please note that all the children items will be deleted too."
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:934
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1349
 msgid "Remove item"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:992
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:992
 msgid "Missing Alias Name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:993
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:993
 msgid "You must specify a valid name for the alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1005
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1019
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1030
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1005
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1019
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1030
 msgid "Bad Alias Name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1006
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1006
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1020
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1020
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1031
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1031
 msgid "Found an empty namespace in alias name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1060
-#: src/modules/classeditor/ClassEditorWindow.cpp:1487
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1060
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1487
 msgid "Missing Namespace Name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1061
-#: src/modules/classeditor/ClassEditorWindow.cpp:1488
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1061
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1488
 msgid "You must specify a valid name for the namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1073
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1087
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1098
-#: src/modules/classeditor/ClassEditorWindow.cpp:1500
-#: src/modules/classeditor/ClassEditorWindow.cpp:1514
-#: src/modules/classeditor/ClassEditorWindow.cpp:1525
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1073
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1087
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1098
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1500
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1514
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1525
 msgid "Bad Namespace Name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1074
-#: src/modules/classeditor/ClassEditorWindow.cpp:1501
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1074
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1501
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1088
-#: src/modules/classeditor/ClassEditorWindow.cpp:1515
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1088
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1515
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1099
-#: src/modules/classeditor/ClassEditorWindow.cpp:1526
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1099
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1526
 msgid "Found an empty namespace in namespace name"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1126
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1126
 msgid "Please enter the name for the new alias"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
-#: src/modules/classeditor/ClassEditorWindow.cpp:1577
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1133
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1577
 msgid "Please enter the name for the new namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1181
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1181
 msgid "Alias Editor"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1188
-#: src/modules/eventeditor/EventEditorWindow.cpp:471
-#: src/modules/eventeditor/EventEditorWindow.cpp:523
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1380
-#: src/modules/raweditor/RawEditorWindow.cpp:426
-#: src/modules/raweditor/RawEditorWindow.cpp:476
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1188
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:471
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:523
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1380
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:426
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:476
 msgid "&OK"
 msgstr ""
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1193
-#: src/modules/eventeditor/EventEditorWindow.cpp:528
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1385
-#: src/modules/raweditor/RawEditorWindow.cpp:481
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/aliaseditor/AliasEditorWindow.cpp:1193
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:528
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1385
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:481
 msgid "&Apply"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:72
-#: src/modules/classeditor/ClassEditorWindow.cpp:802
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:72
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:802
 msgid "Class"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:198
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:198
 msgid "Edit the class or namespace name"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:212
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:212
 msgid "Edit the function member name"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:542
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:542
 msgid "Function already exists"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:604
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:604
 msgid "Class already exists"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:688
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:688
 msgid "Name already exists as Class name"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:689
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:689
 msgid "This name is already in use as Class name. Please choose another one."
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:806
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:806
 msgid "inherits from class "
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:812
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:812
 msgid "Member Function"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:822
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:822
 msgid "Reminder text."
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:894
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:894
 msgid "Add Class"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:903
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:903
 msgid "Add Member Function"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:946
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:946
 msgid "Find In Classes..."
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:952
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:952
 msgid "Collapse All Items"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:996
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:996
 msgid "Find In Classes"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:997
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:997
 msgid ""
 "Please enter the text to be searched for. The matching function will be "
 "highlighted."
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1111
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1188
 msgid "Class Export"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1220
 msgid "Unable to write to the class file."
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1337
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1337
 msgid "Do you really want to remove the class \"%1\"?"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1342
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1342
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1345
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1345
 msgid "Do you really want to remove the function \"%1\"?"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1674
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1674
 msgid "Unable to compile class: "
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1681
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1681
 msgid "These inherited classes will be not compiled too:"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1690
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1690
 msgid "Compilation error - KVIrc"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1823
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1823
 msgid "Class Editor"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1830
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1830
 msgid "&Build"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1835
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1835
 msgid "&Save"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1840
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1840
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
 msgid "Close"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1904
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1904
 msgid "Please enter the name for the class:"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1915
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1915
 msgid "Class names can contain only letters, digits and underscores"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1919
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1919
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1932
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1932
 msgid "Inherits Class:"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1977
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1977
 msgid "&Rename Class"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1979
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1979
 msgid "&Create Class"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1986
-#: src/modules/classeditor/ClassEditorWindow.cpp:2088
-#: src/modules/editor/ScriptEditorImplementation.cpp:1089
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:1986
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2088
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1089
 msgid "&Cancel"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2024
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2024
 msgid "Please enter the name for the member function:"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2033
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2033
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2045
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2045
 msgid "Please enter the optional reminder string for the member function:"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2058
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2058
 msgid "Set as <b>Internal</b> Function: "
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2078
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2078
 msgid "&Add"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2080
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/classeditor/ClassEditorWindow.cpp:2080
 msgid "&Rename"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:255
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:255
 msgid "Context sensitive help"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:256
-#: src/modules/editor/ScriptEditorImplementation.cpp:1094
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:256
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1094
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:269
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:269
 msgid "Find & Replace"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:519
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:519
 msgid "Preferences"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:525
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:525
 msgid "Font:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:527
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:527
 msgid "Colors"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:530
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:530
 msgid "Background:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:531
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:531
 msgid "Normal text:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:532
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:532
 msgid "Brackets:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:533
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:533
 msgid "Comments:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:534
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:534
 msgid "Functions:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:535
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:535
 msgid "Keywords:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:536
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:536
 msgid "Variables:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:537
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:537
 msgid "Punctuation:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:538
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:538
 msgid "Find:"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:797
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:797
 msgid "&Open..."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:798
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:798
 msgid "&Save As..."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:800
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:800
 msgid "&Configure Editor..."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:809
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:809
 msgid "Find"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:933
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:934
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:934
 msgid "Can't open the file %1 for writing."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:991
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:991
 msgid "Row: %1 Col: %2"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1008
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1008
 msgid "Load Script File - KVIrc"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1021
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1021
 msgid "Open Failed - KVIrc"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1022
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1022
 msgid "Can't open the file %1 for reading."
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1063
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1063
 msgid "Word to Find"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1072
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1072
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/ScriptEditorImplementation.cpp:1084
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/editor/ScriptEditorImplementation.cpp:1084
 msgid "&Replace in all editor's items"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:104
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1047
-#: src/modules/raweditor/RawEditorWindow.cpp:100
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:104
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1047
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:100
 msgid "&Export All To..."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:115
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:115
 msgid "Edit the event handler name."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:187
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:187
 msgid "Event"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:217
-#: src/modules/raweditor/RawEditorWindow.cpp:156
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:217
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:156
 msgid "&Enable Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:221
-#: src/modules/raweditor/RawEditorWindow.cpp:160
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:221
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:160
 msgid "&Disable Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:225
-#: src/modules/raweditor/RawEditorWindow.cpp:164
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:225
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:164
 msgid "Re&move Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:229
-#: src/modules/raweditor/RawEditorWindow.cpp:168
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:229
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:168
 msgid "&Export Handler To..."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:234
-#: src/modules/raweditor/RawEditorWindow.cpp:173
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:234
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:173
 msgid "&New Handler"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:247
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1341
-#: src/modules/raweditor/RawEditorWindow.cpp:191
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:247
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1341
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:191
 msgid "unnamed"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:285
-#: src/modules/raweditor/RawEditorWindow.cpp:257
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:285
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:257
 msgid "default"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:409
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:409
 msgid "none"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:412
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:412
 msgid ""
 "\n"
 "\n"
@@ -960,270 +961,270 @@ msgid ""
 "%2"
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:471
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:471
 msgid "Unable to write to the event file."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:509
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:509
 msgid "Unable to write to the events file."
 msgstr ""
 
-#: src/modules/eventeditor/EventEditorWindow.cpp:571
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/eventeditor/EventEditorWindow.cpp:571
 msgid "Event Editor"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:80
-#: src/modules/popupeditor/PopupEditorWindow.cpp:211
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:80
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:211
 msgid "Item"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:83
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:83
 msgid "Submenu"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:86
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:86
 msgid "External Menu"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:90
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "Separator"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:93
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:93
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
 msgid "Label"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:96
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:96
 msgid "### Epilogue ###"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:97
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:97
 msgid "Epilogue"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:100
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:100
 msgid "### Prologue ###"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:101
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:101
 msgid "Prologue"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:197
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:197
 msgid "Popup name"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:201
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:201
 msgid "Test"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:211
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:211
 msgid "Type"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:229
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:229
 msgid "Text:"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:234
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:234
 msgid ""
 "<center><b>Visible text</b><br>May contain identifiers that will be "
 "evaluated at popup call time.<br>For labels, this text can contain also "
 "limited HTML tags.</center>"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:237
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:237
 msgid "Condition:"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:243
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:243
 msgid ""
 "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
 "order to decide if this entry has to be shown.<br>An empty condition "
 "evaluates to true.</center>"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:246
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:246
 msgid "Icon:"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:252
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:252
 msgid ""
 "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
 "path or a relative path.<br>Portable scripts should never use absolute paths."
 "</center>"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:255
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:255
 msgid "External menu:"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:261
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:261
 msgid ""
 "<center><b>External menu name</b><br>This allows to nest externally defined "
 "popup menus. The popup menu with the specified name will be looked up at "
 "menu setup time.</center>"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:264
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:264
 msgid "Item Id:"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:271
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:271
 msgid ""
 "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
 "center>"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:383
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:383
 msgid "New Separator Below"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:385
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:385
 msgid "New Separator Above"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:387
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:387
 msgid "New Separator Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:391
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:391
 msgid "New Label Below"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:393
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:393
 msgid "New Label Above"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:395
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:395
 msgid "New Label Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:399
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:399
 msgid "New Item Below"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:401
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:401
 msgid "New Item Above"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:403
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:403
 msgid "New Item Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:407
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:407
 msgid "New Menu Below"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:409
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:409
 msgid "New Menu Above"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:411
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:411
 msgid "New Menu Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:415
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:415
 msgid "New External Menu Below"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:417
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:417
 msgid "New External Menu Above"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:419
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:419
 msgid "New External Menu Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:426
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:426
 msgid "Cu&t"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:431
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:431
 msgid "&Copy"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:436
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:436
 msgid "&Paste Below"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:441
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Paste Above"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:445
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:445
 msgid "Paste Inside"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:455
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:455
 msgid "New Menu Prologue"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:463
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:463
 msgid "New Menu Epilogue"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1043
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1043
 msgid "Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1049
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1049
 msgid "&Export selected To..."
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1116
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1116
 msgid "OverWrite Current Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1117
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1117
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1148
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1169
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1148
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1169
 msgid "&New Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1154
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1154
 msgid "Re&move Popup"
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1160
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1160
 msgid "&Export Popup To..."
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1195
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1195
 msgid "Unable to write to the popup file."
 msgstr ""
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1428
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/popupeditor/PopupEditorWindow.cpp:1428
 msgid "Popup Editor"
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:88
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:88
 msgid "Raw Event"
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:105
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:105
 msgid "Edit the raw event handler name."
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:181
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:181
 msgid "&Add Raw Event..."
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:221
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:221
 msgid "New Raw Event"
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:221
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:221
 msgid "Enter the numeric code of the message (0-999)"
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:366
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:366
 msgid ""
 "\n"
 "\n"
@@ -1231,123 +1232,123 @@ msgid ""
 "%1"
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:426
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:426
 msgid "Unable to write to the raw event file."
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:461
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:461
 msgid "Unable to write to the raw events file."
 msgstr ""
 
-#: src/modules/raweditor/RawEditorWindow.cpp:524
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/raweditor/RawEditorWindow.cpp:524
 msgid "Raw Editor"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:136
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:136
 msgid "ToolBar Properties"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:153
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:153
 msgid "Icon"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:169
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:169
 msgid "Id"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
 msgid "Advanced..."
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:225
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:225
 msgid "Please choose the icon for the ToolBar"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
 msgid "Invalid ToolBar Label"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
 msgid "The ToolBar Label can't be empty!"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
 msgid "Duplicate ToolBar Id"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
 "prefer to do it manually ?"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
 msgid "Manually"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
 msgid "Automatically"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
 msgid "Hide Advanced"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
 msgid "Customize Toolbars"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
 msgid "New ToolBar"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:307
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:307
 msgid "Delete ToolBar"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
 msgid "Edit ToolBar"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:319
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:319
 msgid "Export ToolBar"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:378
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:378
 msgid "Confirm ToolBar Deletion"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:379
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:379
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:402
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:402
 msgid "ToolBar Export"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:403
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:403
 msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
 msgid "Unable to write to the toolbar file."
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:469
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:469
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:495
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:495
 msgid "Please specify the properties for the new toolbar"
 msgstr ""
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:496
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:496
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
 msgid "My ToolBar"
 msgstr ""
