@@ -981,6 +981,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 		else {
 			// else too bad :/
 			qDebug("No widget able to handle focus for window %s",objectName().toUtf8().data());
+			updateCaption(); // do it anyway
 			return;
 		}
 	} else {
