@@ -578,7 +578,7 @@ KVSO_CLASS_FUNCTION(tableWidget,itemRowColAt)
 	KviKvsArray *pArray;
 	QPoint pPoint=((QTableWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos,iYpos));
 	QTableWidgetItem *pItem=((QTableWidget *)widget())->itemAt(pPoint.x(),pPoint.y());
-	pArray=new KviKvsArray;
+	pArray=new KviKvsArray();
 	if (!pItem) {
 		pArray->set(0,new KviKvsVariant((kvs_int_t)-1));
 		pArray->set(1,new KviKvsVariant((kvs_int_t)-1));
@@ -851,12 +851,13 @@ bool KvsObject_tableWidget::paint(QPainter * p, const QStyleOptionViewItem & opt
 	kvs_int_t cell_width=(kvs_int_t)option.rect.width();
 	KviKvsVariantList parameters(new KviKvsVariant(handle),new KviKvsVariant((kvs_int_t) row),new KviKvsVariant((kvs_int_t) col),new KviKvsVariant(cell_width),new KviKvsVariant(cell_height));
 	bool ret=false;
-	KviKvsVariant *retv=new KviKvsVariant(ret);
-	callFunction(this,"paintCellEvent",retv,&parameters);
+	KviKvsVariant oReturnBuffer(ret);
+	callFunction(this,"paintCellEvent",&oReturnBuffer,&parameters);
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(handle);
-	if (pObject) pObject->dieNow();
+	if (pObject)
+		pObject->dieNow();
 	p->restore();
-	return retv->asBoolean();
+	return oReturnBuffer.asBoolean();
 }
 
 KviCellItemDelegate::KviCellItemDelegate(QAbstractItemView * pWidget,KvsObject_tableWidget * parent)
