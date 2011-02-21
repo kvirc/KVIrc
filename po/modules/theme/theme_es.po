@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-22 00:17+0100\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -23,10 +23,9 @@ msgstr "Elimina&r tema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Tomar captura de pantalla - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:108
-#: src/modules/theme/libkvitheme.cpp:121
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
+#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
@@ -35,7 +34,7 @@ msgstr "Aplicar tema - KVIrc"
 msgid "Author"
 msgstr "Autor"
 
-#: src/modules/theme/libkvitheme.cpp:233
+#: src/modules/theme/libkvitheme.cpp:232
 msgid "Choose a file to save the screenshot to"
 msgstr "Elegir un archivo al que guardar la captura de pantalla"
 
@@ -57,8 +56,8 @@ msgstr "Eliminar los temas seleccionados"
 msgid "Delete Theme - KVIrc"
 msgstr "Eliminar tema - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:119
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Descripción:"
 
@@ -74,16 +73,16 @@ msgstr "¿Realmente quieres eliminar el tema \"%Q\" (versión %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "¿Quieres proceder con la instalación?"
 
-#: src/modules/theme/libkvitheme.cpp:109
 #: src/modules/theme/managementdialog.cpp:301
+#: src/modules/theme/libkvitheme.cpp:108
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "¿Quieres aplicar el tema \"%Q\" (versión %Q)?"
 
-#: src/modules/theme/libkvitheme.cpp:74
+#: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
 msgstr "Error instalando el paquete de tema: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:248
+#: src/modules/theme/libkvitheme.cpp:247
 msgid "Error making screenshot"
 msgstr "Error tomando captura de pantalla"
 
@@ -100,13 +99,13 @@ msgstr "Exportar los temas seleccionados a un paquete distribuible"
 msgid "Export Theme - KVIrc"
 msgstr "Exportar tema - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:120
 #: src/modules/theme/managementdialog.cpp:311
+#: src/modules/theme/libkvitheme.cpp:119
 msgid "Failed to apply the specified theme: %1"
 msgstr "Error al aplicar el tema especificado: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:198
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Error al cargar la imagen seleccionada"
 
@@ -189,8 +188,8 @@ msgstr ""
 "Aquí tienes que dar información sobre ti (el empaquetador) y una corta "
 "descripción del paquete que estás creando."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:78
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Haz clic en el botón \"Next\" para empezar."
 
@@ -280,8 +279,7 @@ msgstr "El archivo seleccionado no parece ser un paquete de KVIrc válido: %1"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "El archivo seleccionado no parece ser un paquete de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:126
-#: src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:125 src/modules/theme/libkvitheme.cpp:168
 msgid "The theme package '%Q' does not exist"
 msgstr "El paquete de tema '%Q' no existe"
 
@@ -348,8 +346,8 @@ msgstr "No se pudo crear el directorio del tema."
 msgid "Unable to save theme: %1"
 msgstr "No se pudo guardar el tema: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:111
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Versión:"
 
@@ -365,8 +363,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Atención: este tema podría ser incompatible con esta versión de KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:85
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Bienvenido"
 

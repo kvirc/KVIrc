@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 17:15+0000\n"
+"POT-Creation-Date: 2011-02-22 00:23+0100\n"
 "PO-Revision-Date: 2011-02-11 00:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
@@ -155,19 +155,29 @@ msgstr "Daha Fazla Addon Al..."
 #: src/modules/addon/PackAddonDialog.cpp:614
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
-"If these and the information showed in the previous page are correct, hit the \"Finish\" button to complete\n"
+"If these and the information showed in the previous page are correct, hit "
+"the \"Finish\" button to complete\n"
 "the packaging operations."
 msgstr ""
 "Seçmiş olduğunuz dizindeki bulduğum dosyalar burada.\n"
-"Bunlar ve bilgiler önceki sayfada verilenler ile uyumlu ise, \"Bitir\" butonu ile paketleme işlemlerini tamamlayınız."
+"Bunlar ve bilgiler önceki sayfada verilenler ile uyumlu ise, \"Bitir\" "
+"butonu ile paketleme işlemlerini tamamlayınız."
 
 #: src/modules/addon/PackAddonDialog.cpp:542
-msgid "Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations."
-msgstr "Öngördüğünüz bilgiler bunlardır. Eğer bu bilgiler doğruysa, \"Bitir\" tuşuna basıp paketleme işlemini tamamlayınız."
+msgid ""
+"Here there are the information you provided. If these information are "
+"correct, hit the \"Finish\" button to complete the packaging operations."
+msgstr ""
+"Öngördüğünüz bilgiler bunlardır. Eğer bu bilgiler doğruysa, \"Bitir\" tuşuna "
+"basıp paketleme işlemini tamamlayınız."
 
 #: src/modules/addon/PackAddonDialog.cpp:403
-msgid "Here you need to provide information about you (the packager) and a short description of the package you're creating."
-msgstr "Burada hakkınızda (paket yapımcısı) bilgiler ile paket hakkında kısa bir açıklama yapmalısınız."
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Burada hakkınızda (paket yapımcısı) bilgiler ile paket hakkında kısa bir "
+"açıklama yapmalısınız."
 
 #: src/modules/addon/PackAddonDialog.cpp:497
 msgid "Here you need to provide the path where to save the addon package"
@@ -305,8 +315,7 @@ msgstr "Kynak dizini seç"
 msgid "Show Help"
 msgstr "Yardımı Göster"
 
-#: src/modules/addon/libkviaddon.cpp:692
-#: src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr "Mevcut giriş atlanıyor '%1'"
 
@@ -318,12 +327,9 @@ msgstr "Geçersiz giriş atlanıyor '%1'"
 msgid "Source Directory"
 msgstr "Kaynak dizin"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Addon \"%1\"  mevcut değil"
 
@@ -388,7 +394,9 @@ msgid "The target path can't contain .."
 msgstr "Hedef yol içeremez .."
 
 #: src/modules/addon/libkviaddon.cpp:550
-msgid "This KVIrc executable is too old to run this addon (minimum version required is %Q)"
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required "
+"is %Q)"
 msgstr "KVIrc sürümünüz bu addon için çok eski (gerekli asgari sürümü %Q)"
 
 #: src/modules/addon/PackAddonDialog.cpp:565
@@ -396,16 +404,19 @@ msgid "This is what I will check for:"
 msgstr "Kontrol edilecek olan:"
 
 #: src/modules/addon/PackAddonDialog.cpp:91
-msgid "This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public."
-msgstr "Bu işlem seçilen addonu tek bir paket  içine çıkarmanızı sağlar. Bu herkes için addon dağıtmak istediğinizde yararlıdır."
+msgid ""
+"This procedure allows you to export the selected addon to a single package. "
+"It is useful when you want to distribute your addon to the public."
+msgstr ""
+"Bu işlem seçilen addonu tek bir paket  içine çıkarmanızı sağlar. Bu herkes "
+"için addon dağıtmak istediğinizde yararlıdır."
 
 #: src/modules/addon/libkviaddon.cpp:154
 #, c-format
 msgid "Total: %d addons installed"
 msgstr "Toplam: %d addon yüklendi"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Mevcut olan addon sürümü siliniyor %Q"
 
@@ -430,7 +441,9 @@ msgid "Yes, Proceed"
 msgstr "Evet, ilerle"
 
 #: src/modules/addon/PackAddonDialog.cpp:97
-msgid "You will be asked to provide some information like the package name, the version, a description and so on."
+msgid ""
+"You will be asked to provide some information like the package name, the "
+"version, a description and so on."
 msgstr "Paket adı, sürüm, açıklama gibi bazı bilgiler vermeniz istenecektir."
 
 #: src/modules/addon/AddonFunctions.cpp:181

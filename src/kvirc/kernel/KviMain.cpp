@@ -355,18 +355,18 @@ int main(int argc, char ** argv)
 	}
 
 #ifdef COMPILE_KDE_SUPPORT
-	KAboutData * pAboutData = new KAboutData(
-		"kvirc", // internal program name
-		"kvirc", // message catalogue name
-		ki18n("KVIrc"), // user-visible program name
-		KVI_VERSION, // program version
-		ki18n("Visual IRC Client"), // description
-		KAboutData::License_GPL, // license
-		ki18n("(c) 1998-2010 The KVIrc Development Team"),
-		ki18n("???"), // *some other text* ????
-		"http://www.kvirc.net", // homepage
-		"https://svn.kvirc.de/kvirc/" // bug address (FIXME: this would be an E-MAIL address...)
-	);
+	KAboutData * pAboutData = new KAboutData( // FIXME: this is never deleted ? Should it be ?
+			"kvirc", // internal program name
+			"kvirc", // message catalogue name
+			ki18n("KVIrc"), // user-visible program name
+			KVI_VERSION, // program version
+			ki18n("Visual IRC Client"), // description
+			KAboutData::License_GPL, // license
+			ki18n("(c) 1998-2010 The KVIrc Development Team"),
+			ki18n("???"), // *some other text* ????
+			"http://www.kvirc.net", // homepage
+			"https://svn.kvirc.de/kvirc/" // bug address (FIXME: this would be an E-MAIL address...)
+		);
 
 	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
 	// (eg: kdebase/workspace/kwin/killer/killer.cpp)

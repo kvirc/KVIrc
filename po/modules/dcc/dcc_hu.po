@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 17:15+0000\n"
+"POT-Creation-Date: 2011-02-22 00:17+0100\n"
 "PO-Revision-Date: 2010-08-20 11:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -103,8 +103,8 @@ msgstr "Háromszög"
 msgid "(unknown)"
 msgstr "(ismeretlen)"
 
-#: src/modules/dcc/libkvidcc.cpp:433 src/modules/dcc/libkvidcc.cpp:656
-#: src/modules/dcc/libkvidcc.cpp:1158 src/modules/dcc/libkvidcc.cpp:1225
+#: src/modules/dcc/libkvidcc.cpp:432 src/modules/dcc/libkvidcc.cpp:655
+#: src/modules/dcc/libkvidcc.cpp:1157 src/modules/dcc/libkvidcc.cpp:1224
 msgid "-c requires -i and -p"
 msgstr "a '-c' igényli '-i' és '-p' -t"
 
@@ -180,8 +180,8 @@ msgstr ""
 "a KVIrcet, hogy elfogadja és elhelyezze a bejövő avatarokat, automatikusan "
 "a /<tt>boolAutoAcceptIncomingAvatars</tt> true -ra állításával.<br>"
 
-#: src/modules/dcc/requests.cpp:448 src/modules/dcc/requests.cpp:741
-#: src/modules/dcc/libkvidcc.cpp:633
+#: src/modules/dcc/libkvidcc.cpp:632 src/modules/dcc/requests.cpp:448
+#: src/modules/dcc/requests.cpp:741
 msgid "<unknown size>"
 msgstr "<ismeretlen méret>"
 
@@ -313,13 +313,13 @@ msgstr "Nincs megfelelő helyi IPv4 cím"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nem lehet DCC %Q kérést küldeni %Q: felé, IRC kapcsolat megszakadt"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2207 src/modules/dcc/DccDialog.cpp:158
+#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2207
 msgid "Cancel"
 msgstr "Mégsem"
 
+#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 #: src/modules/dcc/DccVideoWindow.cpp:665
 #: src/modules/dcc/DccVideoWindow.cpp:768
-#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 msgid "Cannot send data: No active connection"
 msgstr "Nem lehet adatot küldeni: Nincs aktív kapcsolat"
 
@@ -348,10 +348,10 @@ msgstr "Sávszélesség beállítása DCC %1 átvitelhez"
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: src/modules/dcc/DccCanvasWindow.cpp:284
+#: src/modules/dcc/DccChatWindow.cpp:566
 #: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccVideoWindow.cpp:926
-#: src/modules/dcc/DccChatWindow.cpp:566
+#: src/modules/dcc/DccCanvasWindow.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Kapcsolódva %Q:%Q"
 
@@ -359,10 +359,10 @@ msgstr "Kapcsolódva %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: src/modules/dcc/DccCanvasWindow.cpp:108
+#: src/modules/dcc/DccChatWindow.cpp:185
 #: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:606
-#: src/modules/dcc/DccChatWindow.cpp:185
+#: src/modules/dcc/DccCanvasWindow.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Kapcsolódás %Q -ra/re %Q porton keresztül"
 
@@ -395,9 +395,9 @@ msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr ""
 "DCC CANVAS (vászon) kérés nem lett elküldve, manuális csatlakozás szükséges"
 
-#: src/modules/dcc/DccCanvasWindow.cpp:279
 #: src/modules/dcc/DccVoiceWindow.cpp:902
 #: src/modules/dcc/DccVideoWindow.cpp:921
+#: src/modules/dcc/DccCanvasWindow.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC Sikertelen %Q"
 
@@ -409,7 +409,7 @@ msgstr "DCC VIDEÓ (hang) kérés"
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "DCC VIDEO kérés nem lett elküldve, várakozás manuális kapcsolódásra"
 
-#: src/modules/dcc/libkvidcc.cpp:1191
+#: src/modules/dcc/libkvidcc.cpp:1190
 msgid "DCC VIDEO support not enabled at compilation time"
 msgstr "DCC VIDEO nem volt engedélyezve fordításkor"
 
@@ -421,7 +421,7 @@ msgstr "DCC VOICE (hang) kérés"
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr "DCC VOICE kérés nem lett elküldve, várakozás manuális kapcsolódásra"
 
-#: src/modules/dcc/libkvidcc.cpp:1113
+#: src/modules/dcc/libkvidcc.cpp:1112
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "DCC VOICE nem volt engedélyezve fordításkor"
 
@@ -437,9 +437,9 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
+#: src/modules/dcc/DccChatWindow.cpp:417
 #: src/modules/dcc/DccVoiceWindow.cpp:819
 #: src/modules/dcc/DccVideoWindow.cpp:782
-#: src/modules/dcc/DccChatWindow.cpp:417
 msgid "ERROR: %Q"
 msgstr "HIBA: %Q"
 
@@ -514,11 +514,11 @@ msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 "Helytelen RESUME (folytatás)kérés, %1 pozíció nagyobb, mint a fájl mérete"
 
-#: src/modules/dcc/libkvidcc.cpp:1212
+#: src/modules/dcc/libkvidcc.cpp:1211
 msgid "Invalid codec specified"
 msgstr "Megadott kodek helytelen"
 
-#: src/modules/dcc/libkvidcc.cpp:1147
+#: src/modules/dcc/libkvidcc.cpp:1146
 msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Helytelen kodek meghatározása, váltás 'adpcm'-re"
 
@@ -532,7 +532,7 @@ msgstr "Helytelen port szám %1"
 msgid "Invalid resume position argument '%1'"
 msgstr "Helytelen folytatási kifejezés: '%1'"
 
-#: src/modules/dcc/libkvidcc.cpp:1131
+#: src/modules/dcc/libkvidcc.cpp:1130
 msgid "Invalid sample rate specified, defaulting to 8000"
 msgstr "Helytelen meghatározott mintavételi ráta, váltás 8000-re"
 
@@ -552,10 +552,10 @@ msgstr "Feltöltési sávszélesség korlátozása "
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: src/modules/dcc/DccCanvasWindow.cpp:84
+#: src/modules/dcc/DccChatWindow.cpp:187
 #: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:609
-#: src/modules/dcc/DccChatWindow.cpp:187
+#: src/modules/dcc/DccCanvasWindow.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Hallgatózás %Q eszközön, %Q porton"
 
@@ -563,15 +563,15 @@ msgstr "Hallgatózás %Q eszközön, %Q porton"
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/DccCanvasWindow.cpp:286
+#: src/modules/dcc/DccChatWindow.cpp:568
 #: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccVideoWindow.cpp:928
-#: src/modules/dcc/DccChatWindow.cpp:568
+#: src/modules/dcc/DccCanvasWindow.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Local end is %Q:%Q"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1854
 #: src/modules/dcc/DccChatWindow.cpp:247
+#: src/modules/dcc/DccFileTransfer.cpp:1854
 msgid "Low-level transport connection established"
 msgstr "Alacsony szintű adatátviteli kapcsolat létrejött"
 
@@ -584,7 +584,7 @@ msgstr "Nincs felajánlott '%1' fájl (%2 méretben) ami elérhető %3 [%4@%5]"
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Nincs megfelelő eszköz, amin hallgatóznék, további próbálkozások..."
 
-#: src/modules/dcc/libkvidcc.cpp:139
+#: src/modules/dcc/libkvidcc.cpp:138
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Nincs hallgatásra alkalmas eszköz, használd: -i"
 
@@ -694,8 +694,8 @@ msgstr "Seb:"
 msgid "Standard:"
 msgstr "Alapértelmezett:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1855
 #: src/modules/dcc/DccChatWindow.cpp:248
+#: src/modules/dcc/DccFileTransfer.cpp:1855
 msgid "Starting Secure Socket Layer handshake"
 msgstr "SSL kézfogás megkezdése"
 
@@ -781,8 +781,8 @@ msgstr "A kapcsolat célja: <b>%1</b> <b>%2</b> porton keresztül <br>"
 msgid "The connection will be secured using SSL.<br>"
 msgstr "A kapcsolat titkosítva SSL segítségével.<br>"
 
-#: src/modules/dcc/DccVideoWindow.cpp:711
 #: src/modules/dcc/DccChatWindow.cpp:344
+#: src/modules/dcc/DccVideoWindow.cpp:711
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
@@ -790,8 +790,8 @@ msgstr ""
 "A titkosító motor nem képes titkosítani az aktuális üzenetet (%Q): %Q, adat "
 "nem lett elküldve."
 
-#: src/modules/dcc/libkvidcc.cpp:1641 src/modules/dcc/libkvidcc.cpp:2606
-#: src/modules/dcc/libkvidcc.cpp:2626
+#: src/modules/dcc/libkvidcc.cpp:1640 src/modules/dcc/libkvidcc.cpp:2605
+#: src/modules/dcc/libkvidcc.cpp:2625
 msgid "The current window has no associated DCC session"
 msgstr "Az aktuális ablaknak nincs hozzárendelt DCC 'session'-ja"
 
@@ -815,8 +815,8 @@ msgstr ""
 "<br><b>felülírni</b> a már létezőt, vagy<br> <b>automatikusan átnevezni</b> "
 "az új fájlt?"
 
-#: src/modules/dcc/DccVideoWindow.cpp:843
 #: src/modules/dcc/DccChatWindow.cpp:477
+#: src/modules/dcc/DccVideoWindow.cpp:843
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -824,14 +824,14 @@ msgstr ""
 "A következő üzenet valószínűleg titkosított, de a titkosító motor nem tudja "
 "visszafejteni: %Q"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1791
 #: src/modules/dcc/DccChatWindow.cpp:214
+#: src/modules/dcc/DccFileTransfer.cpp:1791
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "A helyi IP cím privát, de nincs IRC szerver, ami meghatározná"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1788
 #: src/modules/dcc/DccChatWindow.cpp:211
+#: src/modules/dcc/DccFileTransfer.cpp:1788
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -851,19 +851,19 @@ msgstr "A helyi IP magáncím, meghatározás az IRC-szerver által: %s"
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "A távoli kliens hallgatózik %s eszközön, %s porton keresztül"
 
-#: src/modules/dcc/libkvidcc.cpp:1646
+#: src/modules/dcc/libkvidcc.cpp:1645
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "A megadott paraméterek nem érvényes DCC azonosítók"
 
-#: src/modules/dcc/libkvidcc.cpp:2617
+#: src/modules/dcc/libkvidcc.cpp:2616
 msgid "The specified window identifier is not valid"
 msgstr "A megadott ablak azonosító nem érvényes"
 
-#: src/modules/dcc/libkvidcc.cpp:1726
+#: src/modules/dcc/libkvidcc.cpp:1725
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Ez a DCC kapcsolat nem DCC átviteli kapcsolat"
 
-#: src/modules/dcc/libkvidcc.cpp:889
+#: src/modules/dcc/libkvidcc.cpp:888
 msgid "This executable has been built without SSL support, -s switch ignored"
 msgstr "Ez a kiadás SSL támogatás nélkül lesz lefordítva, -s kapcsoló mellőzve"
 
@@ -907,19 +907,19 @@ msgstr ""
 "Ez a verzió SSL támogatás nélkül lett fordítva, az SSL kiterjesztés DCC SEND-"
 "re nem elérhető"
 
-#: src/modules/dcc/libkvidcc.cpp:959
+#: src/modules/dcc/libkvidcc.cpp:958
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Ez SSL támogatás nélküli kiadás, '-s' kapcsoló mellőzve"
 
-#: src/modules/dcc/libkvidcc.cpp:2774
+#: src/modules/dcc/libkvidcc.cpp:2773
 msgid "This executable was built without SSL support"
 msgstr "Ez a kiadás SSL támogatás nélkül lett fordítva"
 
-#: src/modules/dcc/libkvidcc.cpp:172
+#: src/modules/dcc/libkvidcc.cpp:171
 msgid "This executable was built without SSL support, -s switch ignored"
 msgstr "Ez a kiadás SSL támogatás nélkül lett lefordítva, -s kapcsoló mellőzve"
 
-#: src/modules/dcc/libkvidcc.cpp:92
+#: src/modules/dcc/libkvidcc.cpp:91
 msgid ""
 "This window has no associated IRC context (an IRC context is required unless "
 "-c or -n are passed)"
@@ -953,36 +953,36 @@ msgstr "Adatátvitel megszakadt: "
 msgid "Transferring data"
 msgstr "Adatátvitel"
 
-#: src/modules/dcc/libkvidcc.cpp:2796
+#: src/modules/dcc/libkvidcc.cpp:2795
 #, fuzzy
 msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr "SSL információk meghatározás sikertelen: A DCC ülés nem használ SSL-t"
 
-#: src/modules/dcc/libkvidcc.cpp:2809
+#: src/modules/dcc/libkvidcc.cpp:2808
 #, fuzzy
 msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr ""
 "SSL információk meghatározás sikertelen: A DCC ülés még nincs inicializálva"
 
-#: src/modules/dcc/libkvidcc.cpp:2826
+#: src/modules/dcc/libkvidcc.cpp:2825
 #, fuzzy
 msgid "Unable to get SSL information: No peer certificate available"
 msgstr ""
 "SSL információk meghatározás sikertelen: Peer bizonyítvány nem elérhető"
 
-#: src/modules/dcc/libkvidcc.cpp:2817
+#: src/modules/dcc/libkvidcc.cpp:2816
 #, fuzzy
 msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr ""
 "SSL információk meghatározás sikertelen: SSL még nincs inicializálva a DCC "
 "ülésen"
 
-#: src/modules/dcc/libkvidcc.cpp:2834
+#: src/modules/dcc/libkvidcc.cpp:2833
 #, fuzzy
 msgid "Unable to get SSL information: query not recognized"
 msgstr "SSL információk meghatározása sikertelen: lekérdezés ismeretlen"
 
-#: src/modules/dcc/libkvidcc.cpp:129
+#: src/modules/dcc/libkvidcc.cpp:128
 msgid "Unable to get address of interface %Q"
 msgstr "%Q eszköz címének meghatározása sikertleen"
 
@@ -1048,7 +1048,7 @@ msgstr ""
 "FIGYELMEZTETÉS: a kért mintavételi-korrekció érvénytelen: (%d): a "
 "legközelebbi egyezés: %d, ezt használom"
 
-#: src/modules/dcc/libkvidcc.cpp:2785
+#: src/modules/dcc/libkvidcc.cpp:2784
 msgid "You specified a bad string for the parameter \"type\""
 msgstr "Hibás típus paramétert adtál meg"
 
@@ -1056,7 +1056,7 @@ msgstr "Hibás típus paramétert adtál meg"
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Te leszel a passzív oldal a kapcsolatban.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:105
+#: src/modules/dcc/libkvidcc.cpp:104
 msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
@@ -1077,15 +1077,15 @@ msgstr "[SSL HIBA]: %s"
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
+#: src/modules/dcc/libkvidcc.cpp:110 src/modules/dcc/libkvidcc.cpp:406
+#: src/modules/dcc/libkvidcc.cpp:441 src/modules/dcc/libkvidcc.cpp:640
+#: src/modules/dcc/libkvidcc.cpp:664 src/modules/dcc/libkvidcc.cpp:801
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:1119
+#: src/modules/dcc/libkvidcc.cpp:1169 src/modules/dcc/libkvidcc.cpp:1197
+#: src/modules/dcc/libkvidcc.cpp:1236 src/modules/dcc/DccDescriptor.cpp:65
 #: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/DccDescriptor.cpp:65
-#: src/modules/dcc/requests.cpp:138 src/modules/dcc/requests.cpp:139
-#: src/modules/dcc/requests.cpp:140 src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:407 src/modules/dcc/libkvidcc.cpp:442
-#: src/modules/dcc/libkvidcc.cpp:641 src/modules/dcc/libkvidcc.cpp:665
-#: src/modules/dcc/libkvidcc.cpp:802 src/modules/dcc/libkvidcc.cpp:804
-#: src/modules/dcc/libkvidcc.cpp:1120 src/modules/dcc/libkvidcc.cpp:1170
-#: src/modules/dcc/libkvidcc.cpp:1198 src/modules/dcc/libkvidcc.cpp:1237
+#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/requests.cpp:139 src/modules/dcc/requests.cpp:140
 msgid "unknown"
 msgstr "ismertelen"
 

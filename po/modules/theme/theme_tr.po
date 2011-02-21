@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 17:15+0000\n"
+"POT-Creation-Date: 2011-02-22 00:23+0100\n"
 "PO-Revision-Date: 2011-02-11 00:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,10 +32,9 @@ msgstr "&Temayı Sil"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ekran görüntüsü al - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:108
-#: src/modules/theme/libkvitheme.cpp:121
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
+#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
 msgid "Apply theme - KVIrc"
 msgstr "Temayı Uygula - KVIrc"
 
@@ -43,7 +43,7 @@ msgstr "Temayı Uygula - KVIrc"
 msgid "Author"
 msgstr "Yapımcı"
 
-#: src/modules/theme/libkvitheme.cpp:233
+#: src/modules/theme/libkvitheme.cpp:232
 msgid "Choose a file to save the screenshot to"
 msgstr "Ekran görüntüsü kaydetmek için bir dosya seçin"
 
@@ -65,8 +65,8 @@ msgstr "Seçilen Temaları Sil"
 msgid "Delete Theme - KVIrc"
 msgstr "Temayı Sil - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:119
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Açıklaması:"
 
@@ -82,16 +82,16 @@ msgstr "Gerçekten tema \"%Q\" (versiyon %Q) silmek istiyor musunuz? "
 msgid "Do you want to proceed with the installation ?"
 msgstr "Kuruluma devam etmek istiyor musunuz?"
 
-#: src/modules/theme/libkvitheme.cpp:109
 #: src/modules/theme/managementdialog.cpp:301
+#: src/modules/theme/libkvitheme.cpp:108
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Tema \"%Q\" onaylamak (versiyon %Q) istiyor musunuzs?"
 
-#: src/modules/theme/libkvitheme.cpp:74
+#: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
 msgstr "Tema paketi kurulurken hata: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:248
+#: src/modules/theme/libkvitheme.cpp:247
 msgid "Error making screenshot"
 msgstr "Ekran görüntüsü yaparken hata oluştu"
 
@@ -108,13 +108,13 @@ msgstr "Seçilen temalar için bir Dağıtılabilir paketi dışarı çıkar"
 msgid "Export Theme - KVIrc"
 msgstr "Temayı Dışarı Çıkar - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:120
 #: src/modules/theme/managementdialog.cpp:311
+#: src/modules/theme/libkvitheme.cpp:119
 msgid "Failed to apply the specified theme: %1"
 msgstr "Belirtilen tema uygulaması başarısız oldu: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:198
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Seçilen resim yüklenemedi"
 
@@ -147,27 +147,54 @@ msgid "Go Back to Package Data"
 msgstr "Paket Verilerine Geri Gidin"
 
 #: src/modules/theme/PackThemeDialog.cpp:329
-msgid "Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage."
-msgstr "Burada tema paketi yükleme penceresinde görünecek resmi seçebilirsiniz. Bir simge, bir logo veya bir ekran görüntüsü olabilir ve 300x225 boyutlarından daha büyük olmamalıdır. Bir resim vermezseniz varsayılan simge kurulum aşamasında kullanılacaktır."
+msgid ""
+"Here you can choose the image that will appear in the installation dialog "
+"for your theme package. It can be an icon, a logo or a screenshot and it "
+"should be not larger than 300x225. If you don't provide an image a simple "
+"default icon will be used at installation stage."
+msgstr ""
+"Burada tema paketi yükleme penceresinde görünecek resmi seçebilirsiniz. Bir "
+"simge, bir logo veya bir ekran görüntüsü olabilir ve 300x225 boyutlarından "
+"daha büyük olmamalıdır. Bir resim vermezseniz varsayılan simge kurulum "
+"aşamasında kullanılacaktır."
 
 #: src/modules/theme/SaveThemeDialog.cpp:150
-msgid "Here you can either choose a screenshot image from disk or make one now. The screenshot will be displayed in the tooltips of the theme management dialog and will be also visible in the package installation dialog if you will export the theme to a distributable package."
-msgstr "Burada diskten bir ekran görüntüsü görüntüsü seçebilir veya şimdi bir tane yapabilirsiniz. Bu ekran görüntüsü tema yönetimi penceresindeki ipuçlarında ve eğer temayı paket olarak dışarı çıkarırsanız paket kurulum penceresinde görünecektir."
+msgid ""
+"Here you can either choose a screenshot image from disk or make one now. The "
+"screenshot will be displayed in the tooltips of the theme management dialog "
+"and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
+msgstr ""
+"Burada diskten bir ekran görüntüsü görüntüsü seçebilir veya şimdi bir tane "
+"yapabilirsiniz. Bu ekran görüntüsü tema yönetimi penceresindeki ipuçlarında "
+"ve eğer temayı paket olarak dışarı çıkarırsanız paket kurulum penceresinde "
+"görünecektir."
 
 #: src/modules/theme/PackThemeDialog.cpp:381
-msgid "Here you must choose the file name for the theme package. It should have a *%1 extension."
-msgstr "Burada tema paketi için dosya adı seçmelisiniz. Bir *%1 uzantısı olmalıdır."
+msgid ""
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
+msgstr ""
+"Burada tema paketi için dosya adı seçmelisiniz. Bir *%1 uzantısı olmalıdır."
 
 #: src/modules/theme/SaveThemeDialog.cpp:97
-msgid "Here you need to provide information about you (the author) and a short description of the theme you're creating."
-msgstr "Burada kendiniz (yazar) ve oluşturduğunuz tema hakkında kısa bir bilgi vermeniz gerekir."
+msgid ""
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
+msgstr ""
+"Burada kendiniz (yazar) ve oluşturduğunuz tema hakkında kısa bir bilgi "
+"vermeniz gerekir."
 
 #: src/modules/theme/PackThemeDialog.cpp:257
-msgid "Here you need to provide information about you (the packager) and a short description of the package you're creating."
-msgstr "Burada kendiniz (yazar) ve oluşturduğunuz paket hakkında kısa bir bilgi vermeniz gerekir."
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Burada kendiniz (yazar) ve oluşturduğunuz paket hakkında kısa bir bilgi "
+"vermeniz gerekir."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:78
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Başlamak için \"İleri\" düğmesine tıklayın."
 
@@ -257,8 +284,7 @@ msgstr "Seçilen tema paketi %1 KVIrc için geçerli görünmüyor."
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Seçilen dosya geçerli bir KVIrc tema paketi olacak gibi görünmüyor"
 
-#: src/modules/theme/libkvitheme.cpp:126
-#: src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:125 src/modules/theme/libkvitheme.cpp:168
 msgid "The theme package '%Q' does not exist"
 msgstr "Tema paketi '%Q' mevcut değil"
 
@@ -287,16 +313,36 @@ msgid "Theme saved successfully to "
 msgstr "Tema kayıt edildi"
 
 #: src/modules/theme/PackThemeDialog.cpp:142
-msgid "This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first."
-msgstr "Bu bilgi listesi paketlemiş olduğunuz tema içindir. Eğer doğru görünüyor ise \"İleri\" tıklayınız, aksi halde \"İptal\" tıklayınız ve temalarınıza göz atınız."
+msgid ""
+"This is the information list for the themes you're packaging. If it looks OK "
+"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"themes first."
+msgstr ""
+"Bu bilgi listesi paketlemiş olduğunuz tema içindir. Eğer doğru görünüyor ise "
+"\"İleri\" tıklayınız, aksi halde \"İptal\" tıklayınız ve temalarınıza göz "
+"atınız."
 
 #: src/modules/theme/PackThemeDialog.cpp:104
-msgid "This procedure allows you to export the selected themes to a single package. It is useful when you want to distribute your themes to the public."
-msgstr "Bu işlem seçilen temayı tek bir paket ile dışarı çıkarmanızı sağlar. Bu herkes için tema dağıtmak istediğinizde yararlıdır."
+msgid ""
+"This procedure allows you to export the selected themes to a single package. "
+"It is useful when you want to distribute your themes to the public."
+msgstr ""
+"Bu işlem seçilen temayı tek bir paket ile dışarı çıkarmanızı sağlar. Bu "
+"herkes için tema dağıtmak istediğinizde yararlıdır."
 
 #: src/modules/theme/SaveThemeDialog.cpp:74
-msgid "This procedure allows you to save the current theme settings to a single directory. It is useful if you want to apply other themes or play with the theme settings and later come back to this theme with a single click. It will also allow you to manually modify the theme settings and later export them to a distributable package."
-msgstr "Bu işlem geçerli tema ayarlarızı tek bir dizine  kaydetmek için size izin veriyor. Bu size diğer temaları uygulamak veya tema ayarları ile oynamak ve daha sonra tek bir tıklama ile bu temaya geri gelmek istiyorsanız yararlıdır. Aynı zamanda elle tema ayarlarını değiştirmesine izin verir ve daha sonra dağıtılabilir paket olarak dışarı çıkarmanıza yardımcı olur."
+msgid ""
+"This procedure allows you to save the current theme settings to a single "
+"directory. It is useful if you want to apply other themes or play with the "
+"theme settings and later come back to this theme with a single click. It "
+"will also allow you to manually modify the theme settings and later export "
+"them to a distributable package."
+msgstr ""
+"Bu işlem geçerli tema ayarlarızı tek bir dizine  kaydetmek için size izin "
+"veriyor. Bu size diğer temaları uygulamak veya tema ayarları ile oynamak ve "
+"daha sonra tek bir tıklama ile bu temaya geri gelmek istiyorsanız "
+"yararlıdır. Aynı zamanda elle tema ayarlarını değiştirmesine izin verir ve "
+"daha sonra dağıtılabilir paket olarak dışarı çıkarmanıza yardımcı olur."
 
 #: src/modules/theme/SaveThemeDialog.cpp:270
 msgid "Unable to create theme directory."
@@ -306,21 +352,25 @@ msgstr "Tema dizini oluşturulamıyor."
 msgid "Unable to save theme: %1"
 msgstr "Tema kayıt edilemedi: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:111
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Versiyon:"
 
 #: src/modules/theme/ThemeFunctions.cpp:224
-msgid "Warning: Some of the theme contained in this package might be either corrupted or incompatible with this version of KVIrc"
-msgstr "Uyarı: Bu paketin içerdiği tema bozulmuş veya KVIrc bu sürümü ile uyumsuz olabilir."
+msgid ""
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
+msgstr ""
+"Uyarı: Bu paketin içerdiği tema bozulmuş veya KVIrc bu sürümü ile uyumsuz "
+"olabilir."
 
 #: src/modules/theme/ThemeFunctions.cpp:208
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Uyarı: tema KVIrc bu sürümü ile uyumsuz olabilir"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:85
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
@@ -333,12 +383,20 @@ msgid "You must choose a theme name!"
 msgstr "Tema ismi seçmelisiniz!"
 
 #: src/modules/theme/PackThemeDialog.cpp:106
-msgid "You will be asked to provide a package name, a description and, if you want, an icon/screenshot."
-msgstr "Bir paket adı, bir açıklama ve isterseniz birde simge/ekran görüntüsü vermeniz istenecektir."
+msgid ""
+"You will be asked to provide a package name, a description and, if you want, "
+"an icon/screenshot."
+msgstr ""
+"Bir paket adı, bir açıklama ve isterseniz birde simge/ekran görüntüsü "
+"vermeniz istenecektir."
 
 #: src/modules/theme/SaveThemeDialog.cpp:76
-msgid "You will be asked to provide a theme name, a description and, if you want, a screenshot."
-msgstr "Bir tema adı, bir açıklama ve isterseniz birde ekran görüntüsü vermeniz istenecektir."
+msgid ""
+"You will be asked to provide a theme name, a description and, if you want, a "
+"screenshot."
+msgstr ""
+"Bir tema adı, bir açıklama ve isterseniz birde ekran görüntüsü vermeniz "
+"istenecektir."
 
 #: src/modules/theme/ThemeFunctions.cpp:267
 msgid "You're about to install the following theme package"
@@ -351,4 +409,3 @@ msgstr "Adınız"
 #: src/modules/theme/managementdialog.cpp:87
 msgid "by"
 msgstr "tarafından"
-

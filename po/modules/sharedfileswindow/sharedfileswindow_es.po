@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 13:15+0100\n"
+"POT-Creation-Date: 2011-02-22 00:17+0100\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,55 +26,55 @@ msgstr "    Archivo: %s (%u bytes)"
 msgid "    Mask: %s"
 msgstr "    Máscara: %s"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:243
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:242
 msgid "&Add..."
 msgstr "&Añadir..."
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:76
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:75
 msgid "&Browse..."
 msgstr "&Navegar..."
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:247
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:246
 msgid "&Edit"
 msgstr "&Editar"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:98
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:97
 msgid "&OK"
 msgstr "&Aceptar"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:177
 msgid "Can't open the file"
 msgstr "No pude abrir el archivo"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:102
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:101
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:60
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:59
 msgid "Edit Shared File - KVIrc"
 msgstr "Editar archivo compartido - KVIrc"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:87
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:86
 msgid "Expire at:"
 msgstr "Expira el:"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:227
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:226
 msgid "Expires"
 msgstr "Expira"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:69
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:68
 msgid "File path:"
 msgstr "Ruta del archivo:"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:223
 msgid "Filename"
 msgstr "Nombre del archivo"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:159
 msgid "Invalid expire time"
 msgstr "Fecha de expiración no válido"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:168
 msgid "Invalid share name"
 msgstr "El nombre de archivo a compartir no es válido"
 
@@ -90,15 +90,15 @@ msgstr "Nombre visible no válido: usando el que hay por defecto"
 msgid "Manage S&hared Files"
 msgstr "Gestionar arc&hivos compartidos"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:225
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
 msgid "Mask"
 msgstr "Máscara"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:223
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:222
 msgid "Name"
 msgstr "Nombre"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:200
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:199
 msgid "Never"
 msgstr "Nunca"
 
@@ -111,9 +111,9 @@ msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
 "No hay archivo compartido con el nombre '%Q' y la máscara de usuario '%Q'"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:163
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:171
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:180
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:162
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
 msgid "OK"
 msgstr "Aceptar"
 
@@ -121,19 +121,19 @@ msgstr "Aceptar"
 msgid "Ops..failed to add the sharedfile..."
 msgstr "Ups... error al añadir el archivo compartido..."
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:245
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:244
 msgid "Re&move"
 msgstr "Eli&minar"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:62
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:61
 msgid "Share name:"
 msgstr "Nombre compartido:"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:696
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:695
 msgid "Shared Files"
 msgstr "Archivos compartidos"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:161
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
@@ -145,11 +145,11 @@ msgstr ""
 msgid "The file '%Q' is not readable"
 msgstr "El archivo '%Q' no es legible"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "El archivo no existe o no se puede leer, por favor, comprueba la ruta"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
 msgid "The share name can't be empty, please correct it"
 msgstr ""
 "El nombre del archivo compartido no puede estar vacío; por favor, corrígelo"
@@ -159,6 +159,6 @@ msgstr ""
 msgid "Total: %d sharedfile"
 msgstr "Total: %d archivos compartidos"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:80
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:79
 msgid "User mask:"
 msgstr "Máscara de usuario:"
