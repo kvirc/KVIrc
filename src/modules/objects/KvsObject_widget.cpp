@@ -73,15 +73,16 @@ KviKvsWidget::~KviKvsWidget()
 QSize KviKvsWidget::sizeHint() const
 {
 	QSize size=QWidget::sizeHint();
-	KviKvsVariant *tipret=new KviKvsVariant();
+	KviKvsVariant oReturnBuffer;
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)size.width()),new KviKvsVariant((kvs_int_t)size.height()));
-	m_pObject->callFunction(m_pObject,"sizeHintRequestEvent",tipret,&params);
-	if (tipret->isArray())
+	m_pObject->callFunction(m_pObject,"sizeHintRequestEvent",&oReturnBuffer,&params);
+	if (oReturnBuffer.isArray())
 	{
-		if (tipret->array()->size()==2)
+		if (oReturnBuffer.array()->size()==2)
 		{
 			kvs_int_t w,h;
-			if (tipret->array()->at(0)->asInteger(w) && tipret->array()->at(1)->asInteger(h))return QSize(w,h);
+			if (oReturnBuffer.array()->at(0)->asInteger(w) && oReturnBuffer.array()->at(1)->asInteger(h))
+				return QSize(w,h);
 		}
 	}
 	return QWidget::sizeHint();
