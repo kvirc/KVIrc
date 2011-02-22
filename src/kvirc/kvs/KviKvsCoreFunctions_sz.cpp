@@ -69,6 +69,30 @@
 namespace KviKvsCoreFunctions
 {
 	/////////////////////////////////////////////////////////////////////////////////////////
+	/*
+	@doc: scriptContextName
+	@type:
+		function
+	@title:
+		$scriptContextName
+	@short:
+		Returns the actual script context's name..
+	@syntax:
+		<string> $scriptContextName()
+	@description:
+		Returns the actual script context's name. Useful only for custom debug.
+	@seealso:
+		[cmd]debug[/cmd]
+*/
+
+	KVSCF(scriptContextName)
+	{
+		Q_UNUSED(__pParams);
+		QString szName=KVSCF_pContext->script()->name();
+		KVSCF_pRetBuffer->setString(szName);
+		return true;
+	}
+
 
 	/*
 		@doc: selected
@@ -119,6 +143,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setInteger(g_uOutgoingTraffic);
 		return true;
 	}
+
 
 	/*
 		@doc: serialize

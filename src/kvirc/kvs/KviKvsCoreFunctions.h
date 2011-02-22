@@ -123,6 +123,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(receivedBytes);
 	KVSCF(rsort);
 	// s_z
+	KVSCF(scriptContextName);
 	KVSCF(selected);
 	KVSCF(sentBytes);
 	KVSCF(serialize);

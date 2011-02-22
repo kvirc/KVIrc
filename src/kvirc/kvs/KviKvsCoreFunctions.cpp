@@ -114,6 +114,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("receivedBytes",receivedBytes)
 		_REGFNC("rsort",rsort)
 		// s_z
+		_REGFNC("scriptContextName",scriptContextName)
 		_REGFNC("selected",selected)
 		_REGFNC("sentBytes",sentBytes)
 		_REGFNC("serialize",serialize)
