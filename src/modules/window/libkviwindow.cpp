@@ -1143,16 +1143,21 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QString szFlags;
 	QString szCaption;
 	kvs_uint_t uCtx;
-	kvs_int_t iIcon;
+	QString szIcon;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 		KVSM_PARAMETER("caption",KVS_PT_STRING,KVS_PF_OPTIONAL,szCaption)
 		KVSM_PARAMETER("irc_context",KVS_PT_UINT,KVS_PF_OPTIONAL,uCtx)
-		KVSM_PARAMETER("icon",KVS_PT_INT,KVS_PF_OPTIONAL,iIcon)
+		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
 	KVSM_PARAMETERS_END(c)
-	iIcon = iIcon % KviIconManager::IconCount;
+	QPixmap *pPix=g_pIconManager->getImage(szIcon);
+	if(!pPix){
 
+	    c->warning(__tr2qs("The specified Icon does not exists: switching to 'none'"));
+	    szIcon.prepend("$icon(");
+	    szIcon.append(")");
+	}
 	int iFlags = 0;
 	if(szFlags.contains('i'))
 		iFlags |= UserWindow::HasInput;
@@ -1170,7 +1175,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	UserWindow * pWnd = new UserWindow(
 		c->window()->frame(),
 		szCaption.toUtf8().data(),
-		iIcon,
+		szIcon,
 		pConsole,
 		iFlags);
 

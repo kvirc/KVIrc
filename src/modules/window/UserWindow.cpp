@@ -31,12 +31,12 @@
 extern KviPointerList<UserWindow> * g_pUserWindowList;
 
 
-UserWindow::UserWindow(KviMainWindow * pFrm, const char * pcName, int iIcon, KviConsoleWindow * pConsole, int iCreationFlags)
+UserWindow::UserWindow(KviMainWindow * pFrm, const char * pcName, QString &szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
 : KviWindow(KviWindow::UserWindow,pFrm,pcName,pConsole)
 {
 	g_pUserWindowList->append(this);
 
-	m_iIcon = iIcon;
+	m_szIcon = szIcon;
 
 	m_szPlainTextCaption = pcName;
 	fillSingleColorCaptionBuffers(m_szPlainTextCaption);
@@ -74,7 +74,9 @@ UserWindow::~UserWindow()
 
 QPixmap * UserWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(m_iIcon);
+	QPixmap *pPix=g_pIconManager->getImage(m_szIcon);
+	if (!pPix) return g_pIconManager->getSmallIcon(0);
+	else return pPix;
 }
 
 void UserWindow::resizeEvent(QResizeEvent *)
