@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:23+0100\n"
-"PO-Revision-Date: 2011-02-22 11:35+0200\n"
+"PO-Revision-Date: 2011-02-24 03:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -306,11 +306,11 @@ msgstr "%Q: böyle bir sunucu yok"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1582
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
-msgstr "%c\r!n\r%Q\r%c kimlik bilgileri \r!s\r%Q\r tarafından"
+msgstr "%c\r!n\r%Q\r%c's kimlik bilgileri \r!s\r%Q\r tarafından sağlandı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1599
 msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
-msgstr "%c\r!n\r%Q\r%c eski bilgileri \r!s\r%Q\r tarafından"
+msgstr "%c\r!n\r%Q\r%c'ın eski bilgileri \r!s\r%Q\r tarafından sağlandı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1227
 msgid "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
@@ -322,7 +322,7 @@ msgstr "%c\r!n\r%Q\r%c kullanıcısı %Q olarak kimliğini doğrulamış"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1166
 msgid "%c\r!n\r%Q\r%c is away: %Q"
-msgstr "%c\r!n\r%Q\r%c dışarıda: %Q"
+msgstr "%c\r!n\r%Q\r%c dışarıda olma nedeni: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1252
 msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
@@ -366,7 +366,7 @@ msgstr "%c\r!n\r%Q\r%c'ın sunucusu: \r!s\r%Q\r - %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1391
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
-msgstr "%c\r!n\r%Q\r%c's bağlanma zamanı: %Q"
+msgstr "%c\r!n\r%Q\r%c'ın bağlanma zamanı: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2019
 #, c-format
@@ -2165,7 +2165,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:92
 msgid "Connection refused"
-msgstr ""
+msgstr "Bağlantı reddedildi"
 
 #: src/kvilib/core/KviError.cpp:157
 msgid "Connection reset by peer"
@@ -2173,7 +2173,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:742
 msgid "Connection status"
-msgstr ""
+msgstr "Bağlantı durumu"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:800
 #, c-format
@@ -3145,7 +3145,7 @@ msgstr "Kanal listesini alın"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:150
 msgid "Get Network Links"
-msgstr ""
+msgstr "Ağ Bağlantıları Al"
 
 #: src/modules/my/libkvimy.cpp:148
 msgid "Global idle timer must be started before using $my.globalIdle function"
@@ -3331,7 +3331,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcLink.cpp:387
 msgid "IRC server"
-msgstr ""
+msgstr "IRC Sunucu"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:320
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:368
