@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:23+0100\n"
-"PO-Revision-Date: 2011-02-24 03:02+0200\n"
+"PO-Revision-Date: 2011-02-24 16:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -38,11 +38,11 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:655
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] kullanıcısı \r!c\r%Q\r kanalından \r!n\r%Q\r [%Q@\r!h\r%Q\r] tarafından şimdi atıldı nedeni: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] kullanıcısı şimdi \r!c\r%Q\r kanalından \r!n\r%Q\r [%Q@\r!h\r%Q\r] tarafından nedeni: %Q ile atıldı"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:290
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalına şimdi girdi"
+msgstr "şimdi \r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalına girdi"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:372
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
@@ -65,20 +65,20 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] sizi \r!c\r%Q\r (%Q) kanalına davet ediyor"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1549
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1569
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] yeni isim olarak \r!n\r%Q\r seçti"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r yeni adını \r!n\r%Q\r yaptı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2055
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2058
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
-msgstr "\r!n\r%Q\r kullanıcısı %Q kullanıcısnı %Q kanalına davet etti"
+msgstr "\r!n\r%Q\r kullanıcısı %Q kullanıcısını %Q kanalına davet etti"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:390
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] şimdi ayrıldı \r!c\r%Q\r"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] şimdi \r!c\r%Q\r kanalından ayrıldı"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:386
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] şimdi ayrıldı \r!c\r%Q\r: %Q"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] şimdi \r!c\r%Q\r: %Q kanalından ayrıldı"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:260
 msgid " (%1 hops)"
@@ -306,7 +306,7 @@ msgstr "%Q: böyle bir sunucu yok"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1582
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
-msgstr "%c\r!n\r%Q\r%c's kimlik bilgileri \r!s\r%Q\r tarafından sağlandı"
+msgstr "%c\r!n\r%Q\r%c'ın kimlik bilgileri \r!s\r%Q\r tarafından sağlandı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1599
 msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
@@ -1858,7 +1858,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:533
 msgid "Channel topic is: %Q"
-msgstr "Kanal Başlığı: %Q"
+msgstr "Kanal başlığı: %Q"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:359
 msgid "Channel topic:"
@@ -1870,7 +1870,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1712
 msgid "Channel was created at %Q"
-msgstr ""
+msgstr "Kanalın oluşturulma tarihi: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1669
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1674
@@ -6657,7 +6657,7 @@ msgstr "Kanal başlığı"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:616
 msgid "Topic was set by %Q"
-msgstr "Kanal başlığını kuran %Q"
+msgstr "Kanal başlığını kuran: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:615
 msgid "Topic was set by %Q on %Q"
@@ -7362,7 +7362,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:350
 msgid "You have left channel \r!c\r%Q\r"
-msgstr "Kanaldan çıktınız \r!c\r%Q\r"
+msgstr "\r!c\r%Q\r Kanalından Çıktınız"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:352
 msgid "You have left channel \r!c\r%Q\r: %Q"
