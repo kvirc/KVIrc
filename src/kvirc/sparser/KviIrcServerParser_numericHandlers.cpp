@@ -1660,15 +1660,17 @@ void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage *msg)
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 	
-	QString szUrl = chan->decodeText(msg->safeTrailing());
+	QString szUrl;
 	
 	if(chan)
 	{
+		szUrl = chan->decodeText(msg->safeTrailing());
 		if(!msg->haltOutput())
 		{
 			chan->output(KVI_OUT_CHANURL,__tr2qs("Channel web site is %Q"),&szUrl);
 		}
 	} else {
+		szUrl = msg->console()->decodeText(msg->safeTrailing());
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(KVI_OUT_CHANURL,__tr2qs("Channel web site is %Q"),&szUrl);
