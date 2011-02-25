@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:23+0100\n"
-"PO-Revision-Date: 2011-02-24 16:58+0200\n"
+"PO-Revision-Date: 2011-02-25 16:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -119,7 +119,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:85
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
+msgstr "<b>Not:</ b> Dil değişimini uygulamak için KVIrc'i yeniden başlatmanız gerekir"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1371
 msgid "<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>"
-msgstr ""
+msgstr "<center>Bu buton son kullanılan sunucuların listesini gösterir. Hızla bir listede bulmanıza olanak sağlar.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:925
 msgid "<center>This check enables the use of the <b>SASL</b> authentication procotol If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>"
@@ -768,7 +768,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1350
 msgid "Active Configuration"
-msgstr ""
+msgstr "Aktif Yapılandırma"
 
 #: src/modules/options/OptionsWidget_theme.cpp:187
 msgid "Active High-Contrast Foreground (Primary)"
@@ -1006,7 +1006,7 @@ msgstr "Dışarıda"
 
 #: src/modules/options/OptionsWidget_away.cpp:45
 msgid "Away Nickname"
-msgstr "Dışarıda olma kullanıcı adınız"
+msgstr "Dışarıda olma durumundaki kullanıcı adınız"
 
 #: src/modules/options/OptionsWidget_userList.cpp:64
 msgid "Away:"
@@ -1145,7 +1145,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_away.cpp:46
 msgid "Change nickname on away"
-msgstr ""
+msgstr "Dışarıda olduğumda kullanıcı adımı değiştir"
 
 #: src/modules/options/OptionsWidget_channel.h:36
 msgid "Channel"
@@ -1556,7 +1556,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:236
 msgid "Enable service for IPv6"
-msgstr ""
+msgstr "Servisi IPv6 için etkinleştir"
 
 #: src/modules/options/OptionsWidget_query.cpp:67
 msgid "Enable target user tracking"
@@ -1584,7 +1584,7 @@ msgstr "Tepsi Simgesini Etkinleştir"
 
 #: src/modules/options/OptionsWidget_tray.cpp:55
 msgid "Enable tray icon flashing"
-msgstr ""
+msgstr "Tepsi simgesinin yanıp sönmesini etkinleştir"
 
 #: src/modules/options/OptionsWidget_userList.cpp:236
 msgid "Enable user tooltips"
@@ -1943,7 +1943,7 @@ msgstr "Resim genişliği:"
 #: src/modules/options/OptionsWidget_servers.cpp:1345
 #: src/modules/options/OptionsWidget_servers.cpp:1763
 msgid "Import List"
-msgstr ""
+msgstr "İçe Liste Aktar"
 
 #: src/modules/options/OptionsWidget_theme.cpp:189
 msgid "Inactive High-Contrast Foreground (Primary)"
@@ -3879,7 +3879,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_textIcons.h:41
 msgid "smileys,emoticons"
-msgstr ""
+msgstr "suratlar,ifadeler"
 
 #: src/modules/options/OptionsWidget_sound.h:86
 msgid "sound,events"

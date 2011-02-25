@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:23+0100\n"
-"PO-Revision-Date: 2011-02-24 17:14+0200\n"
+"PO-Revision-Date: 2011-02-25 15:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -824,7 +824,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:332
 msgid "<b>Double-click</b> to get network information"
-msgstr ""
+msgstr "<b>Ağ bilgisi için</b> Çift Tıklayınız"
 
 #: src/kvirc/kernel/KviApplication.cpp:1012
 msgid "<b>Hi!</b><br><br><b>It seems that you have just upgraded KVirc from a previous version.</b><br><br>The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>You may want to avoid this update if you plan to revert to a previous KVIrc version soon,or if you have created a lot of custom scripts and want to stay safe and avoid any deletion or overwrite.<br>If you want to update the default scripts, i can restore the new default script for you.<br><b>Do you want the default script to be restored?</b><br><br>"
@@ -844,7 +844,7 @@ msgstr "<b>Ooops...</b><br><br><b>Bana KVIrc kurulum eksik olduğunu düşünmey
 
 #: src/kvirc/ui/KviStatusBar.cpp:336
 msgid "<b>Right click</b> to add/remove applets"
-msgstr ""
+msgstr "<b>Uygulama  eklemek için</b> Sağ Tıklayınız"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1014
 msgid "<b>Right-click:</b><br>%Q"
@@ -852,7 +852,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:324
 msgid "<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right click</b> to see the other options"
-msgstr ""
+msgstr "<b>Shift+ Sürükle</b> veya <b>Ctrl+Sürükle</b> yerini değiştirmek için<br><b> Sağ Tık</b> ise diğer seçenekleri görmek için kullanılabilir"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1773
 msgid "<br><b>Key:</b> %1"
@@ -913,7 +913,7 @@ msgstr "E&kle"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:601
 msgid "Abort Connection"
-msgstr ""
+msgstr "Bağlantı Durduruldu"
 
 #: src/modules/setup/SetupWizard.cpp:915
 msgid "Abort Setup - KVIrc Setup"
@@ -921,7 +921,7 @@ msgstr "Kurulum İptal - KVIrc Kurulum"
 
 #: src/kvilib/net/KviHttpRequest.cpp:91
 msgid "Aborted"
-msgstr ""
+msgstr "Durduruldu"
 
 #: src/kvirc/ui/KviMenuBar.cpp:114
 msgid "About &KVIrc"
@@ -969,7 +969,7 @@ msgstr "Ekle"
 
 #: src/kvirc/ui/KviStatusBar.cpp:386
 msgid "Add Applet"
-msgstr ""
+msgstr "Uygulama Ekle"
 
 #: src/kvilib/system/KviLocale.cpp:1101
 msgid "Add Bookmark"
@@ -1216,15 +1216,15 @@ msgstr ""
 #: src/modules/trayicon/libkvitrayicon.cpp:97
 #: src/kvirc/ui/KviStatusBar.cpp:583
 msgid "Away"
-msgstr ""
+msgstr "Dışarıda"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:189
 msgid "Away Indicator"
-msgstr ""
+msgstr "Dışarıda Göstergesi"
 
 #: src/kvirc/kernel/KviOptions.cpp:815
 msgid "Away message"
-msgstr ""
+msgstr "Dışarıda olma mesajı"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:322
 msgid "Away on %1"
@@ -1245,7 +1245,7 @@ msgstr ""
 #: src/kvilib/system/KviLocale.cpp:1096
 #: src/kvilib/tal/KviTalWizard.cpp:207
 msgid "Back"
-msgstr ""
+msgstr "Geri Dönüş"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:318
 msgid "Back on %1"
@@ -1745,7 +1745,7 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:806
 #: src/kvirc/kernel/KviCoreActions.cpp:810
 msgid "Change Nickname"
-msgstr ""
+msgstr "Kullanıcı adı değiştir"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:187
 #: src/kvirc/kernel/KviIrcConnection.cpp:197
@@ -2151,7 +2151,7 @@ msgstr "Bağlantı"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:581
 msgid "Connection Timer"
-msgstr "Bağlantı Sayacı"
+msgstr "Bağlantı Göstergesi"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:600
 #, c-format
@@ -2536,7 +2536,7 @@ msgstr "Etkinleştirmek için çift tıklayın"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:227
 msgid "Double click to enter away mode"
-msgstr ""
+msgstr "Çift Tık ile dışarıda olma moduna geçiniz"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:830
 msgid "Double click to get the lastest version"
@@ -2544,7 +2544,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:223
 msgid "Double click to leave away mode"
-msgstr ""
+msgstr "Çift Tık ile dışarıda olma modundan çıkınız"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:822
 #: src/kvirc/ui/KviStatusBarApplet.cpp:826
@@ -2716,7 +2716,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1053
 msgid "Enter Away Mode"
-msgstr ""
+msgstr "Dışarıda olma modu girin"
 
 #: src/modules/rijndael/libkvirijndael.cpp:166
 msgid "Error 0: Success ?"
@@ -3796,7 +3796,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:351
 msgid "Lag Indicator"
-msgstr ""
+msgstr "Gecikme Göstergesi"
 
 #: src/kvirc/kernel/KviLagMeter.cpp:257
 #, c-format
@@ -5927,7 +5927,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:500
 msgid "Simple Clock"
-msgstr ""
+msgstr "Basit Saat"
 
 #: src/kvilib/core/KviError.cpp:164
 msgid "Slash (/) character expected"
@@ -6504,7 +6504,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviMainWindow.cpp:828
 msgid "There are active connections, are you sure you wish to "
-msgstr "Aktif bağlantılar var, eminmisiniz"
+msgstr "Aktif bağlantılar var, eminmisiniz.. "
 
 #: src/kvilib/core/KviError.cpp:169
 msgid "There is no $this pointer in this scope (unexpected @)"
@@ -6968,7 +6968,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:689
 msgid "Update Indicator"
-msgstr ""
+msgstr "Güncelleme Göstergesi"
 
 #: src/kvirc/kernel/KviApplication.cpp:1011
 msgid "Update default scripts"
