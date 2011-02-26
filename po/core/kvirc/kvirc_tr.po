@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:23+0100\n"
-"PO-Revision-Date: 2011-02-25 15:16+0200\n"
+"PO-Revision-Date: 2011-02-26 16:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -42,7 +42,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] kullanıcısı şimdi \r!c\r%Q\r kanalından 
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:290
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr "şimdi \r!n\r%Q\r [%Q@\r!h\r%Q\r] \r!c\r%Q\r kanalına girdi"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] şimdi \r!c\r%Q\r kanalına girdi"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:372
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
@@ -226,15 +226,15 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1048
 msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
-msgstr ""
+msgstr "%Q %Q%c talebi \r!n\r%Q\r'den [%Q@\r!h\r%Q\r] (%Q), %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1039
 msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit exceeded)"
-msgstr ""
+msgstr "%Q %Q%c talebi \r!n\r%Q\r'den [%Q@\r!h\r%Q\r](%Q), göz ardı edildi (limit aşıldı)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1139
 msgid "%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"
-msgstr ""
+msgstr "%Q PING cevabı \r!n\r%Q\r'den [%Q@\r!h\r%Q\r]: %u saniye %u milisaniye"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1884
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1992
@@ -464,7 +464,7 @@ msgstr ""
 
 #: src/kvilib/system/KviLocale.cpp:1077
 msgid "&Basic colors"
-msgstr ""
+msgstr "&Temel renkler"
 
 #: src/modules/setup/SetupWizard.cpp:239
 #: src/modules/setup/SetupWizard.cpp:253
@@ -929,7 +929,7 @@ msgstr "&KVIrc Hakkında"
 
 #: src/kvilib/core/KviError.cpp:154
 msgid "Access denied"
-msgstr ""
+msgstr "Giriş engellendi"
 
 #: src/kvilib/core/KviError.cpp:142
 msgid "Acknowledge error"
@@ -993,7 +993,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:112
 msgid "Address:"
-msgstr ""
+msgstr "Adres:"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:797
 msgid "Admin/protected nicks listing"
@@ -1120,7 +1120,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:267
 msgid "Anonymous messages"
-msgstr ""
+msgstr "Anonim mesajlar"
 
 #: src/kvilib/core/KviError.cpp:86
 msgid "Another connection in progress"
@@ -1132,7 +1132,7 @@ msgstr "Kullanım Klasörleri"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:162
 msgid "Apply to all IRC Contexts"
-msgstr ""
+msgstr "Tüm IRC Bağlamlarına uygula"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:164
 msgid "Are ya here?"
@@ -1297,7 +1297,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:711
 msgid "Ban listing"
-msgstr ""
+msgstr "Ban listesi"
 
 #: src/kvirc/kernel/KviOptions.cpp:833
 msgid "Ban matching my mask"
@@ -1532,29 +1532,29 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:139
 msgid "Can't open file for appending"
-msgstr ""
+msgstr "Dosya ekleme için açılamıyor"
 
 #: src/kvilib/file/KviPackageReader.cpp:137
 #: src/kvilib/file/KviPackageReader.cpp:397
 #: src/kvilib/core/KviError.cpp:143
 msgid "Can't open file for reading"
-msgstr ""
+msgstr "Dosya okuma için açılamıyor"
 
 #: src/kvilib/file/KviPackageWriter.cpp:381
 #: src/kvilib/core/KviError.cpp:140
 msgid "Can't open file for writing"
-msgstr ""
+msgstr "Dosya yazma için açılamıyor"
 
 #: src/modules/file/libkvifile.cpp:826
 #: src/modules/file/libkvifile.cpp:915
 #: src/modules/file/libkvifile.cpp:1015
 #: src/modules/file/libkvifile.cpp:1412
 msgid "Can't open the file \"%Q\" for reading"
-msgstr ""
+msgstr "Dosya \"%Q\" okuma için açılamıyor"
 
 #: src/modules/file/libkvifile.cpp:1111
 msgid "Can't open the file \"%Q\" for writing"
-msgstr ""
+msgstr "Dosya \"%Q\" yazma için açılamıyor"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:284
 msgid "Can't open the filter file %Q for writing"
@@ -1567,7 +1567,7 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:1419
 msgid "Can't read data from file"
-msgstr ""
+msgstr "Dosyadan veri okunamıyor"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:944
 msgid "Can't resolve local host address, using default 127.0.0.1"
@@ -4311,11 +4311,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:563
 msgid "Nickname"
-msgstr ""
+msgstr "Kullanıcı adı"
 
 #: src/kvirc/kernel/KviOptions.cpp:785
 msgid "Nickname problem"
-msgstr ""
+msgstr "Kullanıcı adı sorunu"
 
 #: src/modules/setup/SetupWizard.cpp:336
 msgid "Nickname:"
@@ -4348,7 +4348,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1074
 msgid "No activity"
-msgstr ""
+msgstr "Etkinlik yok"
 
 #: src/kvirc/kernel/KviApplication.cpp:1019
 #: src/kvirc/kernel/KviApplication.cpp:1092
@@ -4374,7 +4374,7 @@ msgstr "Ortak kanal yok \r!n\r%Q\r [%Q@\r!h\r%"
 #: src/kvirc/ui/KviIrcToolBar.cpp:291
 #: src/kvirc/ui/KviConsoleWindow.cpp:1110
 msgid "No connection"
-msgstr ""
+msgstr "Bağlantı yok"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:324
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:350
@@ -4403,7 +4403,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviInputEditor.cpp:1680
 msgid "No matches"
-msgstr ""
+msgstr "Eşleşme yok"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
 msgid "No multitarget messages"
@@ -4431,7 +4431,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:113
 msgid "No such file"
-msgstr ""
+msgstr "Böyle bir dosya"
 
 #: src/modules/my/libkvimy.cpp:52
 #, c-format
@@ -4460,7 +4460,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviTopicWidget.cpp:388
 msgid "No topic is set"
-msgstr ""
+msgstr "Başlık ayarlanmamış"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:563
 msgid "No topic is set for channel \r!c\r%Q\r"
@@ -4472,11 +4472,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:824
 msgid "No updates found"
-msgstr ""
+msgstr "Bir güncelleme bulunamadı"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:951
 msgid "No users in the notify list"
-msgstr ""
+msgstr "Hiçbir kullanıcı bildiri listesinde yok"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:983
 msgid "No way to login as '\r!n\r%1\r': the server said '%2: %3'"
@@ -4635,7 +4635,7 @@ msgstr ""
 #: src/kvirc/ui/KviCryptController.cpp:127
 #: src/kvirc/kernel/KviCoreActions.cpp:808
 msgid "OK"
-msgstr "Tamam"
+msgstr "TAMAM"
 
 #: src/kvilib/ext/KviMediaManager.cpp:417
 msgid "Octet stream (unknown)"
@@ -4719,11 +4719,11 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:166
 msgid "Operation aborted"
-msgstr ""
+msgstr "İşlem durduruldu"
 
 #: src/kvilib/file/KviPackageIOEngine.cpp:127
 msgid "Operation cancelled"
-msgstr ""
+msgstr "İşlem iptal edildi"
 
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 #: src/modules/iograph/libkviiograph.cpp:277
@@ -4776,7 +4776,7 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:875
 #: src/kvirc/kernel/KviCoreActions.cpp:888
 msgid "Other..."
-msgstr ""
+msgstr "Diğer..."
 
 #: src/kvilib/core/KviError.cpp:91
 msgid "Out of address space"
@@ -5162,7 +5162,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:355
 msgid "Quiet Ban Editor"
-msgstr "Sessiz Ben Düzenleyici"
+msgstr "Sessiz Ban Düzenleyici"
 
 #: src/kvirc/ui/KviUserListView.cpp:1606
 msgid "Quiet for <b>%1h %2m %3s</b>"
@@ -5963,7 +5963,7 @@ msgstr "Soket"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:80
 msgid "Socket Spy [IRC Context %1]"
-msgstr ""
+msgstr "Soket Ajanı [IRC Context %1]"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:103
 msgid "Socket closed"
@@ -6007,11 +6007,11 @@ msgstr ""
 
 #: src/kvirc/ui/KviTreeWindowList.cpp:268
 msgid "Sort"
-msgstr ""
+msgstr "Sırala"
 
 #: src/kvilib/system/KviLocale.cpp:1105
 msgid "Sorting"
-msgstr ""
+msgstr "Sıralıyor"
 
 #: src/modules/snd/libkvisnd.cpp:707
 msgid "Sound file '%Q' not found"
@@ -6575,7 +6575,7 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:364
 #, c-format
 msgid "This server supports: %s"
-msgstr ""
+msgstr "Bu sunucu destekler: %s"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:173
 msgid "This silence is freaking me out!"
@@ -6625,7 +6625,7 @@ msgstr "İpucu: %Q"
 #: src/kvirc/ui/KviToolBar.cpp:89
 #: src/kvirc/kernel/KviDefaultScript.cpp:436
 msgid "Toolbars"
-msgstr ""
+msgstr "Araç çubukları"
 
 #: src/kvirc/kernel/KviActionManager.cpp:68
 msgid "Tools"
@@ -6661,7 +6661,7 @@ msgstr "Kanal başlığını kuran: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:615
 msgid "Topic was set by %Q on %Q"
-msgstr "Kanal başlığını kuran %Q tarih %Q"
+msgstr "Kanal başlığını kuran: %Q Tarih: %Q"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts in the network"
@@ -7472,27 +7472,27 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:214
 msgid "[PROXY ERROR]: %Q"
-msgstr ""
+msgstr "[PROXY HATASI]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:203
 msgid "[PROXY]: %Q"
-msgstr ""
+msgstr "[PROXY]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:226
 msgid "[SOCKET ERROR]: %Q"
-msgstr ""
+msgstr "[SOKET HATASI]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:231
 msgid "[SOCKET WARNING]: %Q"
-msgstr ""
+msgstr "[SOKET UYARISI]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:221
 msgid "[SOCKET]: %Q"
-msgstr ""
+msgstr "[SOKET]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:193
 msgid "[SSL ERROR]: %Q"
-msgstr ""
+msgstr "[SSL HATASU]: %Q"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:69
 #: src/kvirc/kernel/KviSSLMaster.cpp:76
@@ -7504,7 +7504,7 @@ msgstr ""
 #: src/kvirc/kernel/KviSSLMaster.cpp:79
 #, c-format
 msgid "[SSL]:     Country: %c%s"
-msgstr ""
+msgstr "[SSL]:     Ülke: %c%s"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:74
 #: src/kvirc/kernel/KviSSLMaster.cpp:81
@@ -7914,7 +7914,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1044
 msgid "replied"
-msgstr ""
+msgstr "yanıtlandı"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:297
 msgid "s: Recipient for server notices"
