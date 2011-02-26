@@ -197,11 +197,20 @@ void OptionsWidget_textIcons::itemClicked(QTableWidgetItem *i)
 	m_pItem=(TextIconTableItem *)i;
 
 	if(m_pIconButton)
+	{
 		delete m_pIconButton;
+		m_pIconButton = NULL;
+	}
 	if(m_pBrowseButton)
+	{
 		delete m_pBrowseButton;
+		m_pBrowseButton = NULL;
+	}
 	if (m_pBox)
+	{
 		delete m_pBox;
+		m_pBox = NULL;
+	}
 
 	m_pBox=new KviTalHBox(0);
 	m_pBox->setSpacing(0);
@@ -244,17 +253,17 @@ void OptionsWidget_textIcons::delClicked()
 		if(m_pIconButton)
 		{
 			delete m_pIconButton;
-			m_pIconButton=0;
+			m_pIconButton=NULL;
 		}
 		if(m_pBrowseButton)
 		{
 			delete m_pBrowseButton;
-			m_pBrowseButton=0;
+			m_pBrowseButton=NULL;
 		}
 		if (m_pBox)
 		{
 			delete m_pBox;
-			m_pBox=0;
+			m_pBox=NULL;
 		}
 		m_pTable->removeRow(i);
 		if(m_pTable->rowCount() == 0) m_pDel->setEnabled(false);

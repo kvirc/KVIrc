@@ -220,15 +220,19 @@ void KviMenuBar::setupMainPopup()
 	main->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT,main)
+
+	main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"),m_pRecentServersPopup);
+
 	if(m_pFrm->activeContext())
 		if(m_pFrm->activeContext()->state()==KviIrcContext::Connected)
 		{
 			int id = main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),m_pFrm,SLOT(executeInternalCommand(int)));
 			main->setItemParameter(id,KVI_INTERNALCOMMAND_QUIT);
 		}
-	main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"),m_pRecentServersPopup);
 
 	main->insertSeparator();
+
+	// FIXME: Add a "Dock to tray" icon if the tray is not visible (or show tray icon or whatever)
 
 // Qt/Mac creates a Quit item on its own <= this is bad
 #ifndef COMPILE_ON_MAC
