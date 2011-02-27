@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-27 22:18+0100\n"
-"PO-Revision-Date: 2011-01-26 15:04+0100\n"
+"PO-Revision-Date: 2011-02-27 22:42+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:285
@@ -1533,6 +1533,12 @@ msgid ""
 "a deeper call stack which will help you identifying the scripting problems.</"
 "center>"
 msgstr ""
+"<center>Diese Option zeigt Skriptfehler und -warnungen zusätzlich in dem "
+"speziellen Debug-Fenster. Dies macht das Verfolgen von Skripten, die in "
+"unterschiedlichen "
+"Fenstern laufen, leichter. Die Meldungen im Debug-Fenster enthalten ebenso "
+"einen tieferen "
+"›Call Stack‹, welcher helfen kann, Skriptprobleme zu lokalisieren.</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:279
 msgid ""
@@ -3595,9 +3601,8 @@ msgid "Open all minimized"
 msgstr "Alle minimiert öffnen"
 
 #: src/modules/options/OptionsWidget_query.cpp:58
-#, fuzzy
 msgid "Open incoming queries as minimized"
-msgstr "Alle Anfragen (Queries) minimiert öffnen"
+msgstr "Eingehende Queries minimiert öffnen"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:316
 #: src/modules/options/OptionsWidget_dcc.cpp:351
@@ -4328,6 +4333,10 @@ msgid ""
 "\"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" advanced "
 "settings."
 msgstr ""
+"Bitte beachten Sie, falls Sie KDE nutzen, dass dies nicht funktioniert, wenn "
+"Sie »Fenster-Vorschaubilder vorhalten« auf »Immer« im »Erweitert«-Tab der "
+"»Arbeitsflächen-Effekte einrichten«-Einstellungsseite der KDE Systemsteuerung "
+"gestellt haben."
 
 #: src/modules/options/OptionsWidget_sound.cpp:74
 #: src/modules/options/OptionsWidget_sound.cpp:89

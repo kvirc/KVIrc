@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:17+0100\n"
-"PO-Revision-Date: 2011-01-26 14:24+0100\n"
+"PO-Revision-Date: 2011-02-27 22:32+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
@@ -30,9 +30,8 @@ msgid "Addon Packaging Warning"
 msgstr "Warnung bei der Paketierung der Erweiterung"
 
 #: src/modules/addon/AddonFunctions.cpp:231
-#, fuzzy
 msgid "Addon Unpack Warning"
-msgstr "Warnung bei der Paketierung der Erweiterung"
+msgstr "Warnung beim Entpacken"
 
 #: src/modules/addon/libkviaddon.cpp:583
 msgid "Addon registration failed"
@@ -128,7 +127,7 @@ msgstr "Erweiterung exportieren - KVIrc"
 
 #: src/modules/addon/AddonFunctions.cpp:231
 msgid "Failed to delete the directory '%1'"
-msgstr ""
+msgstr "Löschen des Verzeichnisses ›%1‹ fehlgeschlagen"
 
 #: src/modules/addon/AddonFunctions.cpp:218
 msgid "Failed to unpack the selected file: %1"
