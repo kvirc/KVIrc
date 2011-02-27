@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:23+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: 2011-02-11 00:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -32,9 +32,9 @@ msgstr "&Temayı Sil"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ekran görüntüsü al - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
-#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
 msgid "Apply theme - KVIrc"
 msgstr "Temayı Uygula - KVIrc"
 
@@ -65,8 +65,8 @@ msgstr "Seçilen Temaları Sil"
 msgid "Delete Theme - KVIrc"
 msgstr "Temayı Sil - KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:119
 #: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:119
 msgid "Description:"
 msgstr "Açıklaması:"
 
@@ -82,8 +82,8 @@ msgstr "Gerçekten tema \"%Q\" (versiyon %Q) silmek istiyor musunuz? "
 msgid "Do you want to proceed with the installation ?"
 msgstr "Kuruluma devam etmek istiyor musunuz?"
 
-#: src/modules/theme/managementdialog.cpp:301
 #: src/modules/theme/libkvitheme.cpp:108
+#: src/modules/theme/managementdialog.cpp:301
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Tema \"%Q\" onaylamak (versiyon %Q) istiyor musunuzs?"
 
@@ -108,13 +108,13 @@ msgstr "Seçilen temalar için bir Dağıtılabilir paketi dışarı çıkar"
 msgid "Export Theme - KVIrc"
 msgstr "Temayı Dışarı Çıkar - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:311
 #: src/modules/theme/libkvitheme.cpp:119
+#: src/modules/theme/managementdialog.cpp:311
 msgid "Failed to apply the specified theme: %1"
 msgstr "Belirtilen tema uygulaması başarısız oldu: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:198
 #: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Seçilen resim yüklenemedi"
 
@@ -193,8 +193,8 @@ msgstr ""
 "Burada kendiniz (yazar) ve oluşturduğunuz paket hakkında kısa bir bilgi "
 "vermeniz gerekir."
 
-#: src/modules/theme/SaveThemeDialog.cpp:78
 #: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Başlamak için \"İleri\" düğmesine tıklayın."
 
@@ -352,8 +352,8 @@ msgstr "Tema dizini oluşturulamıyor."
 msgid "Unable to save theme: %1"
 msgstr "Tema kayıt edilemedi: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:111
 #: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:111
 msgid "Version:"
 msgstr "Versiyon:"
 
@@ -369,8 +369,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Uyarı: tema KVIrc bu sürümü ile uyumsuz olabilir"
 
-#: src/modules/theme/SaveThemeDialog.cpp:85
 #: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:85
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 

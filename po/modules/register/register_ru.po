@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: 2010-01-30 19:43+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -47,8 +47,8 @@ msgstr " Пользователь: %c%Q"
 msgid "&Add Group..."
 msgstr "&Добавить группу..."
 
-#: src/modules/reguser/dialog.cpp:246
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
+#: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Добавить..."
 
@@ -64,10 +64,10 @@ msgstr "&Редактировать..."
 msgid "&New"
 msgstr "&Новый"
 
-#: src/modules/reguser/dialog.cpp:297
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
+#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&Ok"
 
@@ -240,10 +240,10 @@ msgstr "Невозможно открыть файл %Q на запись."
 msgid "Can't open file %s for reading."
 msgstr "Невозможно открыть файл %s на чтение."
 
-#: src/modules/reguser/dialog.cpp:302
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
+#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -256,8 +256,8 @@ msgstr "Канал: %1%2@%3"
 msgid "Choose a Filename - KVIrc"
 msgstr "Выберите имя файла - KVIrc"
 
-#: src/modules/reguser/dialog.cpp:134
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
+#: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Комментарий:"
 
@@ -456,8 +456,8 @@ msgstr "Свойство"
 msgid "Property Editor"
 msgstr "Редактор свойств"
 
-#: src/modules/reguser/dialog.cpp:256
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
+#: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "&Удалить"
 

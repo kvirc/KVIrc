@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -327,13 +327,13 @@ msgstr ""
 "No he pogut enviar la petició DCC %Q a %Q: la connexió IRC ha estat "
 "finalitzada"
 
-#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2207
+#: src/modules/dcc/DccFileTransfer.cpp:2207 src/modules/dcc/DccDialog.cpp:158
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 #: src/modules/dcc/DccVideoWindow.cpp:665
 #: src/modules/dcc/DccVideoWindow.cpp:768
+#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 msgid "Cannot send data: No active connection"
 msgstr "No puc enviar dades: No hi ha una connexió activa"
 
@@ -365,9 +365,9 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectat a %1:%2"
 
-#: src/modules/dcc/DccChatWindow.cpp:566
 #: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccVideoWindow.cpp:926
+#: src/modules/dcc/DccChatWindow.cpp:566
 #: src/modules/dcc/DccCanvasWindow.cpp:284
 #, fuzzy
 msgid "Connected to %Q:%Q"
@@ -377,9 +377,9 @@ msgstr "Conectat a %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactant amb la màquina %1 en el port %2"
 
-#: src/modules/dcc/DccChatWindow.cpp:185
 #: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:606
+#: src/modules/dcc/DccChatWindow.cpp:185
 #: src/modules/dcc/DccCanvasWindow.cpp:108
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
@@ -460,9 +460,9 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
 
-#: src/modules/dcc/DccChatWindow.cpp:417
 #: src/modules/dcc/DccVoiceWindow.cpp:819
 #: src/modules/dcc/DccVideoWindow.cpp:782
+#: src/modules/dcc/DccChatWindow.cpp:417
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -575,9 +575,9 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr "Escoltant en la interfície %1 port %2"
 
-#: src/modules/dcc/DccChatWindow.cpp:187
 #: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:609
+#: src/modules/dcc/DccChatWindow.cpp:187
 #: src/modules/dcc/DccCanvasWindow.cpp:84
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
@@ -587,16 +587,16 @@ msgstr "Escoltant en la interfície %Q port %Q"
 msgid "Local end is %1:%2"
 msgstr "El extrem local és %1:%2"
 
-#: src/modules/dcc/DccChatWindow.cpp:568
 #: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccVideoWindow.cpp:928
+#: src/modules/dcc/DccChatWindow.cpp:568
 #: src/modules/dcc/DccCanvasWindow.cpp:286
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extrem final és %Q:%Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:247
 #: src/modules/dcc/DccFileTransfer.cpp:1854
+#: src/modules/dcc/DccChatWindow.cpp:247
 msgid "Low-level transport connection established"
 msgstr "Establerta la connexió de transport de baix nivell"
 
@@ -722,8 +722,8 @@ msgstr ""
 msgid "Standard:"
 msgstr ""
 
-#: src/modules/dcc/DccChatWindow.cpp:248
 #: src/modules/dcc/DccFileTransfer.cpp:1855
+#: src/modules/dcc/DccChatWindow.cpp:248
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Iniciant negociació del protocol SSL"
 
@@ -807,8 +807,8 @@ msgstr ""
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La connexió serà assegurada emprant SSL.<br>"
 
-#: src/modules/dcc/DccChatWindow.cpp:344
 #: src/modules/dcc/DccVideoWindow.cpp:711
+#: src/modules/dcc/DccChatWindow.cpp:344
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -841,8 +841,8 @@ msgid ""
 "b> the existing file ?"
 msgstr ""
 
-#: src/modules/dcc/DccChatWindow.cpp:477
 #: src/modules/dcc/DccVideoWindow.cpp:843
+#: src/modules/dcc/DccChatWindow.cpp:477
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -851,16 +851,16 @@ msgstr ""
 "El següent missatge semblar estar xifrat, però el motor de xifrat ha fallat "
 "al descodificar-lo: %Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:214
 #: src/modules/dcc/DccFileTransfer.cpp:1791
+#: src/modules/dcc/DccChatWindow.cpp:214
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'adreça IP local és privada, però no tinc un servidor IRC des d'on "
 "determinar-la"
 
-#: src/modules/dcc/DccChatWindow.cpp:211
 #: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccChatWindow.cpp:211
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -1112,15 +1112,15 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "Mitja: ? bytes/seg"
 
-#: src/modules/dcc/libkvidcc.cpp:110 src/modules/dcc/libkvidcc.cpp:406
-#: src/modules/dcc/libkvidcc.cpp:441 src/modules/dcc/libkvidcc.cpp:640
-#: src/modules/dcc/libkvidcc.cpp:664 src/modules/dcc/libkvidcc.cpp:801
-#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:1119
-#: src/modules/dcc/libkvidcc.cpp:1169 src/modules/dcc/libkvidcc.cpp:1197
-#: src/modules/dcc/libkvidcc.cpp:1236 src/modules/dcc/DccDescriptor.cpp:65
 #: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/requests.cpp:139 src/modules/dcc/requests.cpp:140
+#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/libkvidcc.cpp:110
+#: src/modules/dcc/libkvidcc.cpp:406 src/modules/dcc/libkvidcc.cpp:441
+#: src/modules/dcc/libkvidcc.cpp:640 src/modules/dcc/libkvidcc.cpp:664
+#: src/modules/dcc/libkvidcc.cpp:801 src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:1119 src/modules/dcc/libkvidcc.cpp:1169
+#: src/modules/dcc/libkvidcc.cpp:1197 src/modules/dcc/libkvidcc.cpp:1236
+#: src/modules/dcc/requests.cpp:138 src/modules/dcc/requests.cpp:139
+#: src/modules/dcc/requests.cpp:140 src/modules/dcc/DccDescriptor.cpp:65
 msgid "unknown"
 msgstr "desconegut"
 

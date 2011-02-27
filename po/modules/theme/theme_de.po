@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: 2011-01-26 15:06+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -30,9 +30,9 @@ msgstr "Thema entfe&rnen"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Bildschirmabbild erfassen - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
-#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
 msgid "Apply theme - KVIrc"
 msgstr "Thema anwenden - KVIrc"
 
@@ -63,8 +63,8 @@ msgstr "Ausgewählte Themen löschen"
 msgid "Delete Theme - KVIrc"
 msgstr "Thema löschen - KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:119
 #: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:119
 msgid "Description:"
 msgstr "Beschreibung:"
 
@@ -80,8 +80,8 @@ msgstr "Soll das Thema »%Q« (Version %Q) wirklich gelöscht werden?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Mit der Installation fortfahren?"
 
-#: src/modules/theme/managementdialog.cpp:301
 #: src/modules/theme/libkvitheme.cpp:108
+#: src/modules/theme/managementdialog.cpp:301
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Soll das Thema »%Q« (Version %Q) verwendet werden?"
 
@@ -106,13 +106,13 @@ msgstr "Ausgewählte Themen in ein verteilbares Paket exportieren"
 msgid "Export Theme - KVIrc"
 msgstr "Thema exportieren - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:311
 #: src/modules/theme/libkvitheme.cpp:119
+#: src/modules/theme/managementdialog.cpp:311
 msgid "Failed to apply the specified theme: %1"
 msgstr "Anwenden des angegebenen Themas fehlgeschlagen: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:198
 #: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Laden des ausgewählten Bildes fehlgeschlagen"
 
@@ -195,8 +195,8 @@ msgstr ""
 "Geben Sie hier Informationen über sich (den Packer) und eine kurze "
 "Beschreibung des zu erstellenden Pakets an."
 
-#: src/modules/theme/SaveThemeDialog.cpp:78
 #: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Auf »Weiter« klicken, um zu beginnen."
 
@@ -355,8 +355,8 @@ msgstr "Konnte das Themenverzeichnis nicht erstellen."
 msgid "Unable to save theme: %1"
 msgstr "Konnte das Thema nicht speichern: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:111
 #: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:111
 msgid "Version:"
 msgstr "Version:"
 
@@ -372,8 +372,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Warnung: Das Thema könnte inkompatibel mit dieser KVIrc-Version sein"
 
-#: src/modules/theme/SaveThemeDialog.cpp:85
 #: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:85
 msgid "Welcome"
 msgstr "Willkommen"
 

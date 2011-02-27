@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:23+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,182 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
+msgstr ""
+
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr ""
+
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
+msgstr ""
+
+#: data/defscript/aliases.kvs:21
+msgid "Missing target, no action taken"
+msgstr ""
+
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "Usage"
+msgstr ""
+
+#: data/defscript/aliases.kvs:100
+msgid "channel"
+msgstr ""
+
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "message"
+msgstr ""
+
+#: data/defscript/aliases.kvs:101
+msgid "-m: send a message instead of a notice"
+msgstr ""
+
+#: data/defscript/aliases.kvs:102
+msgid "-w: send notice to all channel owners"
+msgstr ""
+
+#: data/defscript/aliases.kvs:103
+msgid "-a: send notice to all channel admins"
+msgstr ""
+
+#: data/defscript/aliases.kvs:104
+msgid "-o: send notice to all channel ops"
+msgstr ""
+
+#: data/defscript/aliases.kvs:105
+msgid "-h: send notice to all channel halfops"
+msgstr ""
+
+#: data/defscript/aliases.kvs:106
+msgid "-v: send notice to all channel voices"
+msgstr ""
+
+#: data/defscript/aliases.kvs:107
+msgid "-q: quiet mode"
+msgstr ""
+
+#: data/defscript/aliases.kvs:115
+msgid "Parameter message missing"
+msgstr ""
+
+#: data/defscript/aliases.kvs:116
+msgid "Type /gnotice for help"
+msgstr ""
+
+#: data/defscript/aliases.kvs:150
+msgid "Sending wallop to"
+msgstr ""
+
+#: data/defscript/aliases.kvs:185
+#: data/defscript/aliases.kvs:197
+#: data/defscript/aliases.kvs:209
+#: data/defscript/aliases.kvs:224
+#: data/defscript/aliases.kvs:238
+#: data/defscript/aliases.kvs:320
+#: data/defscript/aliases.kvs:362
+#: data/defscript/aliases.kvs:432
+#: data/defscript/aliases.kvs:492
+msgid "Usage:"
+msgstr ""
+
+#: data/defscript/aliases.kvs:239
+msgid "reason"
+msgstr ""
+
+#: data/defscript/aliases.kvs:245
+#: data/defscript/aliases.kvs:438
+msgid "This is not a channel window"
+msgstr ""
+
+#: data/defscript/aliases.kvs:420
+msgid "Unsupported type:"
+msgstr ""
+
+#: data/defscript/aliases.kvs:443
+msgid "Channel Owner"
+msgstr ""
+
+#: data/defscript/aliases.kvs:445
+msgid "Channel Administrator"
+msgstr ""
+
+#: data/defscript/aliases.kvs:447
+msgid "Channel Operator"
+msgstr ""
+
+#: data/defscript/aliases.kvs:449
+msgid "Half Operator"
+msgstr ""
+
+#: data/defscript/aliases.kvs:451
+msgid "Voice"
+msgstr ""
+
+#: data/defscript/aliases.kvs:453
+msgid "User Operator"
+msgstr ""
+
+#: data/defscript/aliases.kvs:455
+msgid "Normal User"
+msgstr ""
+
+#: data/defscript/aliases.kvs:480
+msgid "You must use DNS in an IRC context"
+msgstr ""
+
+#: data/defscript/aliases.kvs:486
+msgid "You must be connected to a server"
+msgstr ""
+
+#: data/defscript/aliases.kvs:503
+msgid "No such user:"
+msgstr ""
+
+#: data/defscript/default.kvs:34
+msgid "The default script has been successfully installed."
+msgstr ""
+
+#: data/defscript/default.kvs:35
+msgid "To connect to a server, type /server <server name>"
+msgstr ""
+
+#: data/defscript/default.kvs:37
+msgid "Happy ircing :)"
+msgstr ""
+
 #: data/defscript/events.kvs:68
 #: data/defscript/events.kvs:76
 #: data/defscript/events.kvs:84
 msgid "Logging"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:15
+msgid "Options"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:22
+msgid "Help"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:30
+msgid "Scripting"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:40
+msgid "Window operations"
 msgstr ""
 
 #: data/defscript/popups.kvs:19
@@ -608,176 +780,4 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1530
 msgid "Traceroute6 to "
-msgstr ""
-
-#: data/defscript/default.kvs:34
-msgid "The default script has been successfully installed."
-msgstr ""
-
-#: data/defscript/default.kvs:35
-msgid "To connect to a server, type /server <server name>"
-msgstr ""
-
-#: data/defscript/default.kvs:37
-msgid "Happy ircing :)"
-msgstr ""
-
-#: data/defscript/aliases.kvs:21
-msgid "Missing target, no action taken"
-msgstr ""
-
-#: data/defscript/aliases.kvs:100
-#: data/defscript/aliases.kvs:145
-msgid "Usage"
-msgstr ""
-
-#: data/defscript/aliases.kvs:100
-msgid "channel"
-msgstr ""
-
-#: data/defscript/aliases.kvs:100
-#: data/defscript/aliases.kvs:145
-msgid "message"
-msgstr ""
-
-#: data/defscript/aliases.kvs:101
-msgid "-m: send a message instead of a notice"
-msgstr ""
-
-#: data/defscript/aliases.kvs:102
-msgid "-w: send notice to all channel owners"
-msgstr ""
-
-#: data/defscript/aliases.kvs:103
-msgid "-a: send notice to all channel admins"
-msgstr ""
-
-#: data/defscript/aliases.kvs:104
-msgid "-o: send notice to all channel ops"
-msgstr ""
-
-#: data/defscript/aliases.kvs:105
-msgid "-h: send notice to all channel halfops"
-msgstr ""
-
-#: data/defscript/aliases.kvs:106
-msgid "-v: send notice to all channel voices"
-msgstr ""
-
-#: data/defscript/aliases.kvs:107
-msgid "-q: quiet mode"
-msgstr ""
-
-#: data/defscript/aliases.kvs:115
-msgid "Parameter message missing"
-msgstr ""
-
-#: data/defscript/aliases.kvs:116
-msgid "Type /gnotice for help"
-msgstr ""
-
-#: data/defscript/aliases.kvs:150
-msgid "Sending wallop to"
-msgstr ""
-
-#: data/defscript/aliases.kvs:185
-#: data/defscript/aliases.kvs:197
-#: data/defscript/aliases.kvs:209
-#: data/defscript/aliases.kvs:224
-#: data/defscript/aliases.kvs:238
-#: data/defscript/aliases.kvs:320
-#: data/defscript/aliases.kvs:362
-#: data/defscript/aliases.kvs:432
-#: data/defscript/aliases.kvs:492
-msgid "Usage:"
-msgstr ""
-
-#: data/defscript/aliases.kvs:239
-msgid "reason"
-msgstr ""
-
-#: data/defscript/aliases.kvs:245
-#: data/defscript/aliases.kvs:438
-msgid "This is not a channel window"
-msgstr ""
-
-#: data/defscript/aliases.kvs:420
-msgid "Unsupported type:"
-msgstr ""
-
-#: data/defscript/aliases.kvs:443
-msgid "Channel Owner"
-msgstr ""
-
-#: data/defscript/aliases.kvs:445
-msgid "Channel Administrator"
-msgstr ""
-
-#: data/defscript/aliases.kvs:447
-msgid "Channel Operator"
-msgstr ""
-
-#: data/defscript/aliases.kvs:449
-msgid "Half Operator"
-msgstr ""
-
-#: data/defscript/aliases.kvs:451
-msgid "Voice"
-msgstr ""
-
-#: data/defscript/aliases.kvs:453
-msgid "User Operator"
-msgstr ""
-
-#: data/defscript/aliases.kvs:455
-msgid "Normal User"
-msgstr ""
-
-#: data/defscript/aliases.kvs:480
-msgid "You must use DNS in an IRC context"
-msgstr ""
-
-#: data/defscript/aliases.kvs:486
-msgid "You must be connected to a server"
-msgstr ""
-
-#: data/defscript/aliases.kvs:503
-msgid "No such user:"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:3
-msgid "IRC Context"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:15
-msgid "Options"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:22
-msgid "Help"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:30
-msgid "Scripting"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:40
-msgid "Window operations"
-msgstr ""
-
-#: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
-msgstr ""
-
-#: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-
-#: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
 msgstr ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: 2010-08-12 23:57+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -45,8 +45,8 @@ msgstr " Benutzer: %c%Q"
 msgid "&Add Group..."
 msgstr "&Gruppe hinzufügen..."
 
-#: src/modules/reguser/dialog.cpp:246
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
+#: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Hinzufügen..."
 
@@ -62,10 +62,10 @@ msgstr "B&earbeiten..."
 msgid "&New"
 msgstr "&Neu"
 
-#: src/modules/reguser/dialog.cpp:297
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
+#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&OK"
 
@@ -243,10 +243,10 @@ msgstr "Kann Datei %Q nicht zum Schreiben öffnen."
 msgid "Can't open file %s for reading."
 msgstr "Kann Datei %s nicht zum Lesen öffnen."
 
-#: src/modules/reguser/dialog.cpp:302
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
+#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -258,8 +258,8 @@ msgstr "Channel: %1%2@%3"
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateinamen auswählen - KVIrc"
 
-#: src/modules/reguser/dialog.cpp:134
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
+#: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Kommentar:"
 
@@ -459,8 +459,8 @@ msgstr "Eigenschaft"
 msgid "Property Editor"
 msgstr "Eigenschafteneditor"
 
-#: src/modules/reguser/dialog.cpp:256
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
+#: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "&Entfernen"
 

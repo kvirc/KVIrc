@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: 2010-12-12 23:58+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -29,8 +29,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:72
 #: src/modules/options/OptionsWidget_dcc.cpp:285
+#: src/modules/options/OptionsWidget_avatar.cpp:72
 msgid " bytes"
 msgstr " байт"
 
@@ -51,10 +51,10 @@ msgstr " минут"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
-#: src/modules/options/OptionsWidget_lag.cpp:45
-#: src/modules/options/OptionsWidget_lag.cpp:56
 #: src/modules/options/OptionsWidget_dcc.cpp:276
 #: src/modules/options/OptionsWidget_connection.cpp:155
+#: src/modules/options/OptionsWidget_lag.cpp:45
+#: src/modules/options/OptionsWidget_lag.cpp:56
 msgid " msec"
 msgstr " мсек"
 
@@ -66,12 +66,12 @@ msgstr " пикселей"
 msgid " requests"
 msgstr " запросов"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:96
-#: src/modules/options/OptionsWidget_dcc.cpp:140
 #: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
+#: src/modules/options/OptionsWidget_dcc.cpp:140
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
+#: src/modules/options/OptionsWidget_avatar.cpp:96
 msgid " sec"
 msgstr " сек"
 
@@ -108,9 +108,9 @@ msgid "&New Server"
 msgstr "&Новый сервер"
 
 #: src/modules/options/dialog.cpp:229
-#: src/modules/options/OptionsWidgetContainer.cpp:100
 #: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsWidget_servers.cpp:381
+#: src/modules/options/OptionsWidgetContainer.cpp:100
 msgid "&OK"
 msgstr "&Ok"
 
@@ -1774,23 +1774,23 @@ msgstr "Добавить"
 msgid "Add Profile"
 msgstr "Добавить профиль"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:264
 #: src/modules/options/OptionsWidget_servers.cpp:347
+#: src/modules/options/OptionsWidget_nickserv.cpp:264
 msgid "Add Rule"
 msgstr "Добавить правило"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1001
-#: src/modules/options/OptionsWidget_identity.h:202
-#: src/modules/options/OptionsWidget_channel.h:64
-#: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_irc.h:57
+#: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
+#: src/modules/options/OptionsWidget_connection.h:46
+#: src/modules/options/OptionsWidget_channel.h:64
 msgid "Advanced"
 msgstr "Дополнительно..."
 
-#: src/modules/options/OptionsWidget_notify.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:230
+#: src/modules/options/OptionsWidget_notify.cpp:60
 msgid "Advanced configuration"
 msgstr "Расширенные настройки"
 
@@ -2005,8 +2005,8 @@ msgstr "Отошёл:"
 msgid "Background"
 msgstr "Фон"
 
-#: src/modules/options/OptionsWidget_userList.cpp:126
 #: src/modules/options/OptionsWidget_windowList.cpp:119
+#: src/modules/options/OptionsWidget_userList.cpp:126
 msgid "Background Colors"
 msgstr "Цвета фона"
 
@@ -2016,8 +2016,8 @@ msgid "Background Image"
 msgstr "Фоновое изображение"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:39
-#: src/modules/options/OptionsWidget_input.cpp:39
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
+#: src/modules/options/OptionsWidget_input.cpp:39
 msgid "Background color"
 msgstr "Цвет фона"
 
@@ -2026,14 +2026,14 @@ msgid "Background color:"
 msgstr "Цвет фона:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:44
-#: src/modules/options/OptionsWidget_input.cpp:46
 #: src/modules/options/OptionsWidget_topicLabel.cpp:39
+#: src/modules/options/OptionsWidget_input.cpp:46
 msgid "Background image"
 msgstr "Фоновое изображение"
 
-#: src/modules/options/OptionsWidget_userList.cpp:131
 #: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
+#: src/modules/options/OptionsWidget_userList.cpp:131
 msgid "Background image:"
 msgstr "Фоновое изображение:"
 
@@ -2057,11 +2057,11 @@ msgstr "Использовать адрес для IPv6 соединений:"
 msgid "Blend color:"
 msgstr "Подмешиваемый цвет:"
 
-#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_input.cpp:63
 #: src/modules/options/OptionsWidget_ircView.cpp:71
+#: src/modules/options/OptionsWidget_userList.cpp:148
+#: src/modules/options/OptionsWidget_input.cpp:63
 msgid "Bottom"
 msgstr "Снизу"
 
@@ -2090,26 +2090,26 @@ msgid "Cache IP address"
 msgstr "Кешировать IP адрес"
 
 #: src/modules/options/dialog.cpp:244
-#: src/modules/options/OptionsWidgetContainer.cpp:108
-#: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
 #: src/modules/options/OptionsWidget_servers.cpp:387
 #: src/modules/options/OptionsWidget_servers.cpp:1011
+#: src/modules/options/OptionsWidgetContainer.cpp:108
+#: src/modules/options/OptionsWidget_nickserv.cpp:128
 msgid "Cancel"
 msgstr "О&тмена"
 
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_input.cpp:59
-#: src/modules/options/OptionsWidget_input.cpp:64
 #: src/modules/options/OptionsWidget_ircView.cpp:67
 #: src/modules/options/OptionsWidget_ircView.cpp:72
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
+#: src/modules/options/OptionsWidget_input.cpp:59
+#: src/modules/options/OptionsWidget_input.cpp:64
 msgid "Center"
 msgstr "По центру"
 
@@ -2233,9 +2233,9 @@ msgid "Commit all changes immediately."
 msgstr "Применить все изменения немедленно."
 
 #: src/modules/options/OptionsWidget_notify.cpp:41
-#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_proxy.cpp:107
 #: src/modules/options/OptionsWidget_connection.cpp:221
+#: src/modules/options/OptionsWidget_lag.cpp:43
 msgid "Configuration"
 msgstr "Конфигурация"
 
@@ -2370,19 +2370,19 @@ msgstr "Удалить"
 msgid "Delete Profile"
 msgstr "Удалить профиль"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:272
 #: src/modules/options/OptionsWidget_servers.cpp:356
+#: src/modules/options/OptionsWidget_nickserv.cpp:272
 msgid "Delete Rule"
 msgstr "Удалить правило"
 
-#: src/modules/options/OptionsWidget_mediaTypes.cpp:79
 #: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_mediaTypes.cpp:79
 msgid "Description"
 msgstr "Описание"
 
-#: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 #: src/modules/options/OptionsWidget_servers.cpp:119
 #: src/modules/options/OptionsWidget_servers.cpp:534
+#: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 msgid "Description:"
 msgstr "Описание:"
 
@@ -2480,8 +2480,8 @@ msgstr "Показывать тему канала"
 msgid "Edit Profile"
 msgstr "Редактировать профиль"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:268
 #: src/modules/options/OptionsWidget_servers.cpp:352
+#: src/modules/options/OptionsWidget_nickserv.cpp:268
 msgid "Edit Rule"
 msgstr "Редактировать правило"
 
@@ -2497,8 +2497,8 @@ msgstr "Использовать игнор для"
 msgid "Enable Network Profiles"
 msgstr "Включить сетевые профили"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:232
 #: src/modules/options/OptionsWidget_servers.cpp:319
+#: src/modules/options/OptionsWidget_nickserv.cpp:232
 msgid "Enable NickServ Identification"
 msgstr "Включить идентификацию NickServ"
 
@@ -2676,16 +2676,16 @@ msgid "Flood Protection"
 msgstr "Защита от флуда"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:38
-#: src/modules/options/OptionsWidget_input.cpp:38
-#: src/modules/options/OptionsWidget_topicLabel.cpp:36
 #: src/modules/options/OptionsWidget_theme.cpp:182
+#: src/modules/options/OptionsWidget_topicLabel.cpp:36
+#: src/modules/options/OptionsWidget_input.cpp:38
 msgid "Font"
 msgstr "Шрифт"
 
-#: src/modules/options/OptionsWidget_userList.cpp:52
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
 #: src/modules/options/OptionsWidget_ircView.cpp:51
+#: src/modules/options/OptionsWidget_userList.cpp:52
 msgid "Font:"
 msgstr "Шрифт:"
 
@@ -2711,8 +2711,8 @@ msgid "Foreground"
 msgstr "Шрифт"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:40
-#: src/modules/options/OptionsWidget_input.cpp:40
 #: src/modules/options/OptionsWidget_topicLabel.cpp:37
+#: src/modules/options/OptionsWidget_input.cpp:40
 msgid "Foreground color"
 msgstr "Цвет переднего плана"
 
@@ -2726,12 +2726,12 @@ msgstr "Пол:"
 
 #: src/modules/options/OptionsWidget_message.cpp:70
 #: src/modules/options/OptionsWidget_servers.cpp:257
-#: src/modules/options/OptionsWidget_identity.h:153
-#: src/modules/options/OptionsWidget_channel.h:52
-#: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_irc.h:43
+#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_identity.h:153
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
+#: src/modules/options/OptionsWidget_channel.h:52
 msgid "General"
 msgstr "Общие"
 
@@ -2852,8 +2852,8 @@ msgstr "Горизонтальное расположение:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_input.cpp:48
 #: src/modules/options/OptionsWidget_ircView.cpp:56
+#: src/modules/options/OptionsWidget_input.cpp:48
 msgid "Horizontal align:"
 msgstr "Горизонтальное расположение:"
 
@@ -2914,9 +2914,9 @@ msgstr "Сервис identd"
 msgid "Ident username:"
 msgstr "Идентификационное имя:"
 
+#: src/modules/options/OptionsWidget_servers.cpp:334
 #: src/modules/options/OptionsWidget_nickserv.cpp:89
 #: src/modules/options/OptionsWidget_nickserv.cpp:247
-#: src/modules/options/OptionsWidget_servers.cpp:334
 msgid "Identify Command"
 msgstr "Команда идентификации"
 
@@ -3050,11 +3050,11 @@ msgstr "Язык и кодировка"
 msgid "Languages:"
 msgstr "Языки:"
 
-#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_input.cpp:57
 #: src/modules/options/OptionsWidget_ircView.cpp:65
+#: src/modules/options/OptionsWidget_userList.cpp:142
+#: src/modules/options/OptionsWidget_input.cpp:57
 msgid "Left"
 msgstr "Слева"
 
@@ -3380,20 +3380,20 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "Правило идентификации NickServ"
 
+#: src/modules/options/OptionsWidget_servers.cpp:332
 #: src/modules/options/OptionsWidget_nickserv.cpp:63
 #: src/modules/options/OptionsWidget_nickserv.cpp:245
-#: src/modules/options/OptionsWidget_servers.cpp:332
 msgid "NickServ Mask"
 msgstr "Маска NickServ"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:246
 #: src/modules/options/OptionsWidget_servers.cpp:333
+#: src/modules/options/OptionsWidget_nickserv.cpp:246
 msgid "NickServ Request Mask"
 msgstr "Запрос маски NickServ"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:243
 #: src/modules/options/OptionsWidget_identity.cpp:719
 #: src/modules/options/OptionsWidget_servers.cpp:331
+#: src/modules/options/OptionsWidget_nickserv.cpp:243
 msgid "Nickname"
 msgstr "Ник"
 
@@ -3432,11 +3432,11 @@ msgstr "Нет такого имени класса на странице опц
 msgid "Normal"
 msgstr "Нормально"
 
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 msgid "Normal:"
 msgstr "Нормальный:"
 
@@ -3465,16 +3465,16 @@ msgstr "Вывести уведомление в извещателе"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Уведомлять о неудачных передачах DCC удалённую сторону"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:133
-#: src/modules/options/OptionsWidget_nickserv.cpp:154
 #: src/modules/options/OptionsWidget_identity.cpp:841
 #: src/modules/options/OptionsWidget_identity.cpp:956
 #: src/modules/options/OptionsWidget_servers.cpp:1005
+#: src/modules/options/OptionsWidget_nickserv.cpp:133
+#: src/modules/options/OptionsWidget_nickserv.cpp:154
 msgid "OK"
 msgstr "Ok"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:163
 #: src/modules/options/OptionsWidget_identity.cpp:99
+#: src/modules/options/OptionsWidget_textEncoding.cpp:163
 msgid "Ok"
 msgstr "Ок"
 
@@ -3959,11 +3959,11 @@ msgstr "Восстановить"
 msgid "Restrict alert"
 msgstr "Ограничить подсветку панели задач"
 
-#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_input.cpp:58
 #: src/modules/options/OptionsWidget_ircView.cpp:66
+#: src/modules/options/OptionsWidget_userList.cpp:143
+#: src/modules/options/OptionsWidget_input.cpp:58
 msgid "Right"
 msgstr "Справа"
 
@@ -4027,10 +4027,10 @@ msgstr "Скриптовый движок"
 msgid "Select message levels to notify"
 msgstr "Выбрать уровни сообщения для извещения"
 
-#: src/modules/options/OptionsWidget_userList.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:128
 #: src/modules/options/OptionsWidget_windowList.cpp:90
 #: src/modules/options/OptionsWidget_windowList.cpp:121
+#: src/modules/options/OptionsWidget_userList.cpp:56
+#: src/modules/options/OptionsWidget_userList.cpp:128
 msgid "Selected:"
 msgstr "Выбранный:"
 
@@ -4391,8 +4391,8 @@ msgstr ""
 "Эта опция позволяет вам выбрать звуковую систему, которая будет использована "
 "в KVirc"
 
-#: src/modules/options/OptionsWidget_nickserv.cpp:235
 #: src/modules/options/OptionsWidget_servers.cpp:323
+#: src/modules/options/OptionsWidget_nickserv.cpp:235
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Эта опция включает автоматическую идентификацию на NickServ"
 
@@ -4569,16 +4569,16 @@ msgstr ""
 "Эта таблица содержит текстовые иконки.<br>KVirc will use them to display the "
 "CTRL+I escape sequences and eventually the emoticons."
 
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_input.cpp:56
-#: src/modules/options/OptionsWidget_input.cpp:61
 #: src/modules/options/OptionsWidget_ircView.cpp:64
 #: src/modules/options/OptionsWidget_ircView.cpp:69
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
+#: src/modules/options/OptionsWidget_input.cpp:56
+#: src/modules/options/OptionsWidget_input.cpp:61
 msgid "Tile"
 msgstr "Заместить"
 
@@ -4610,11 +4610,11 @@ msgstr "Апплеты нижней панели"
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_input.cpp:62
 #: src/modules/options/OptionsWidget_ircView.cpp:70
+#: src/modules/options/OptionsWidget_userList.cpp:147
+#: src/modules/options/OptionsWidget_input.cpp:62
 msgid "Top"
 msgstr "Сверху"
 
@@ -4907,8 +4907,8 @@ msgstr "Вертикальное расположение:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_input.cpp:52
 #: src/modules/options/OptionsWidget_ircView.cpp:60
+#: src/modules/options/OptionsWidget_input.cpp:52
 msgid "Vertical align:"
 msgstr "Вертикальное расположение:"
 
@@ -5123,8 +5123,8 @@ msgstr ""
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_notifier.h:34
 #: src/modules/options/OptionsWidget_input.h:34
+#: src/modules/options/OptionsWidget_notifier.h:34
 msgid "theme,colors,text"
 msgstr ""
 
@@ -5173,7 +5173,7 @@ msgstr "Использовать UTC для отметок времени"
 msgid "tray,TRAYICON"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:226
+#: src/modules/options/OptionsWidget_textIcons.cpp:235
 msgid "unnamed"
 msgstr "без имени"
 

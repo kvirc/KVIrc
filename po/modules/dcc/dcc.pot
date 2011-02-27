@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:23+0100\n"
+"POT-Creation-Date: 2011-02-27 22:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,417 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/dcc/libkvidcc.cpp:91
-msgid ""
-"This window has no associated IRC context (an IRC context is required unless "
-"-c or -n are passed)"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:104
-msgid ""
-"You're not connected to a server (an active connection is required unless -c "
-"or -n are passed)"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:110
-#: src/modules/dcc/libkvidcc.cpp:406
-#: src/modules/dcc/libkvidcc.cpp:441
-#: src/modules/dcc/libkvidcc.cpp:640
-#: src/modules/dcc/libkvidcc.cpp:664
-#: src/modules/dcc/libkvidcc.cpp:801
-#: src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:1119
-#: src/modules/dcc/libkvidcc.cpp:1169
-#: src/modules/dcc/libkvidcc.cpp:1197
-#: src/modules/dcc/libkvidcc.cpp:1236
-#: src/modules/dcc/DccDescriptor.cpp:65
-#: src/modules/dcc/DccMarshal.cpp:494
-#: src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529
-#: src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/requests.cpp:139
-#: src/modules/dcc/requests.cpp:140
-msgid "unknown"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:128
-msgid "Unable to get address of interface %Q"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:138
-msgid "No suitable interfaces to listen on, use -i"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:171
-msgid "This executable was built without SSL support, -s switch ignored"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:432
-#: src/modules/dcc/libkvidcc.cpp:655
-#: src/modules/dcc/libkvidcc.cpp:1157
-#: src/modules/dcc/libkvidcc.cpp:1224
-msgid "-c requires -i and -p"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:632
-#: src/modules/dcc/requests.cpp:448
-#: src/modules/dcc/requests.cpp:741
-msgid "<unknown size>"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:888
-msgid "This executable has been built without SSL support, -s switch ignored"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:958
-msgid "This executable has no SSL support, -s switch ignored"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1112
-msgid "DCC VOICE support not enabled at compilation time"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1130
-msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1146
-msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1190
-msgid "DCC VIDEO support not enabled at compilation time"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1211
-msgid "Invalid codec specified"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1640
-#: src/modules/dcc/libkvidcc.cpp:2605
-#: src/modules/dcc/libkvidcc.cpp:2625
-msgid "The current window has no associated DCC session"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1645
-msgid "The specified parameter is not a valid DCC identifier"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1725
-msgid "This DCC session is not a DCC transfer session"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2616
-msgid "The specified window identifier is not valid"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2773
-msgid "This executable was built without SSL support"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2784
-msgid "You specified a bad string for the parameter \"type\""
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2795
-msgid "Unable to get SSL information: DCC session is not using SSL"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2808
-msgid "Unable to get SSL information: DCC session not initialized yet"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2816
-msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2825
-msgid "Unable to get SSL information: No peer certificate available"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2833
-msgid "Unable to get SSL information: query not recognized"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1478
-msgid "&Line"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1479
-#: src/modules/dcc/canvaswidget.cpp:1487
-msgid "&Rectangle"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1480
-msgid "&Ellipse"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1481
-msgid "&Pie"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1482
-msgid "&Chord"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1484
-msgid "&Rich text (html)"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1486
-msgid "&Triangle"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1488
-msgid "&Pentagon"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1489
-msgid "&Hexagon"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1491
-msgid "&Shape"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1492
-msgid "&Item"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1493
-msgid "&Polygons"
-msgstr ""
-
-#: src/modules/dcc/canvaswidget.cpp:1495
-msgid "&Insert"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:160
-#, c-format
-msgid "Attempting a passive DCC %s connection"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:170
-#, c-format
-msgid "Attempting an active DCC %s connection"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:185
-#: src/modules/dcc/DccVoiceWindow.cpp:756
-#: src/modules/dcc/DccVideoWindow.cpp:606
-#: src/modules/dcc/DccCanvasWindow.cpp:108
-msgid "Contacting host %Q on port %Q"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:187
-#: src/modules/dcc/DccVoiceWindow.cpp:759
-#: src/modules/dcc/DccVideoWindow.cpp:609
-#: src/modules/dcc/DccCanvasWindow.cpp:84
-msgid "Listening on interface %Q port %Q"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:209
-#, c-format
-msgid "The local IP address is private, determining from IRC server: %s"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:1788
-msgid ""
-"The local IP address is private, but unable to determine it from the IRC "
-"server"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:214
-#: src/modules/dcc/DccFileTransfer.cpp:1791
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:236
-msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:239
-msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:247
-#: src/modules/dcc/DccFileTransfer.cpp:1854
-msgid "Low-level transport connection established"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:248
-#: src/modules/dcc/DccFileTransfer.cpp:1855
-msgid "Starting Secure Socket Layer handshake"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:256
-#, c-format
-msgid "[SSL ERROR]: %s"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:298
-#: src/modules/dcc/DccChatWindow.cpp:402
-#: src/modules/dcc/DccVideoWindow.cpp:665
-#: src/modules/dcc/DccVideoWindow.cpp:768
-msgid "Cannot send data: No active connection"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:344
-#: src/modules/dcc/DccVideoWindow.cpp:711
-msgid ""
-"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
-"data was sent to the remote end"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:417
-#: src/modules/dcc/DccVoiceWindow.cpp:819
-#: src/modules/dcc/DccVideoWindow.cpp:782
-msgid "ERROR: %Q"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:477
-#: src/modules/dcc/DccVideoWindow.cpp:843
-msgid ""
-"The following message appears to be encrypted, but the crypto engine failed "
-"to decode it: %Q"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:537
-msgid "DCC %Q failed: %Q"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:566
-#: src/modules/dcc/DccVoiceWindow.cpp:911
-#: src/modules/dcc/DccVideoWindow.cpp:926
-#: src/modules/dcc/DccCanvasWindow.cpp:284
-msgid "Connected to %Q:%Q"
-msgstr ""
-
-#: src/modules/dcc/DccChatWindow.cpp:568
-#: src/modules/dcc/DccVoiceWindow.cpp:913
-#: src/modules/dcc/DccVideoWindow.cpp:928
-#: src/modules/dcc/DccCanvasWindow.cpp:286
-msgid "Local end is %Q:%Q"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:161
-msgid ""
-"WARNING: failed to check the soundcard duplex capabilities: if this is a "
-"half-duplex soundcard, use the DCC VOICE option to force half-duplex "
-"algorithm"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:169
-msgid ""
-"Half duplex soundcard detected, you will not be able to talk and listen at "
-"the same time"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:210
-#, c-format
-msgid ""
-"WARNING: failed to set the requested sample rate (%d): the device used "
-"closest match (%d)"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:268
-msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:654
-msgid "Input buffer"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:656
-msgid "Output buffer"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:739
-msgid "Attempting a passive DCC VOICE connection"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:745
-msgid "Attempting an active DCC VOICE connection"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:776
-msgid ""
-"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
-"connect..."
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:778
-msgid "DCC VOICE request not sent: awaiting manual connections"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:877
-#, c-format
-msgid "Input buffer: %d bytes"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:879
-#, c-format
-msgid "Output buffer: %d bytes"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:902
-#: src/modules/dcc/DccVideoWindow.cpp:921
-#: src/modules/dcc/DccCanvasWindow.cpp:279
-msgid "DCC Failed: %Q"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:931
-#: src/modules/dcc/DccVideoWindow.cpp:942
-#, c-format
-msgid "Actual codec used is '%s'"
-msgstr ""
-
-#: src/modules/dcc/DccVoiceWindow.cpp:1014
-msgid "Volume: %1"
-msgstr ""
-
-#: src/modules/dcc/DccUtils.cpp:124
-msgid "Can't retrieve a suitable local IPV4 address"
-msgstr ""
-
-#: src/modules/dcc/DccUtils.cpp:142
-#, c-format
-msgid ""
-"Can't listen on default interface '%s': fix it in the options dialog, "
-"disabling the option (so the next dcc will work)"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:75
-msgid "&Accept"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:80
-msgid "&Reject"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:145
-msgid "&Rename"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:149
-msgid "Over&write"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:153
-msgid "Re&sume"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:158
-#: src/modules/dcc/DccFileTransfer.cpp:2207
-msgid "Cancel"
-msgstr ""
-
-#: src/modules/dcc/DccDialog.cpp:165
-msgid "File Already Exists - KVIrc"
-msgstr ""
 
 #: src/modules/dcc/DccBroker.cpp:167
 #: src/modules/dcc/DccBroker.cpp:882
@@ -667,12 +256,35 @@ msgstr ""
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr ""
 
+#: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccChatWindow.cpp:211
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr ""
+
+#: src/modules/dcc/DccFileTransfer.cpp:1791
+#: src/modules/dcc/DccChatWindow.cpp:214
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+
 #: src/modules/dcc/DccFileTransfer.cpp:1841
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:1843
 msgid "DCC %1 request not sent, awaiting manual connection"
+msgstr ""
+
+#: src/modules/dcc/DccFileTransfer.cpp:1854
+#: src/modules/dcc/DccChatWindow.cpp:247
+msgid "Low-level transport connection established"
+msgstr ""
+
+#: src/modules/dcc/DccFileTransfer.cpp:1855
+#: src/modules/dcc/DccChatWindow.cpp:248
+msgid "Starting Secure Socket Layer handshake"
 msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:1862
@@ -747,6 +359,142 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+#: src/modules/dcc/DccFileTransfer.cpp:2207
+#: src/modules/dcc/DccDialog.cpp:158
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/dcc/DccMarshal.cpp:494
+#: src/modules/dcc/DccMarshal.cpp:524
+#: src/modules/dcc/DccMarshal.cpp:529
+#: src/modules/dcc/libkvidcc.cpp:110
+#: src/modules/dcc/libkvidcc.cpp:406
+#: src/modules/dcc/libkvidcc.cpp:441
+#: src/modules/dcc/libkvidcc.cpp:640
+#: src/modules/dcc/libkvidcc.cpp:664
+#: src/modules/dcc/libkvidcc.cpp:801
+#: src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:1119
+#: src/modules/dcc/libkvidcc.cpp:1169
+#: src/modules/dcc/libkvidcc.cpp:1197
+#: src/modules/dcc/libkvidcc.cpp:1236
+#: src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/requests.cpp:139
+#: src/modules/dcc/requests.cpp:140
+#: src/modules/dcc/DccDescriptor.cpp:65
+msgid "unknown"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:161
+msgid ""
+"WARNING: failed to check the soundcard duplex capabilities: if this is a "
+"half-duplex soundcard, use the DCC VOICE option to force half-duplex "
+"algorithm"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:169
+msgid ""
+"Half duplex soundcard detected, you will not be able to talk and listen at "
+"the same time"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:210
+#, c-format
+msgid ""
+"WARNING: failed to set the requested sample rate (%d): the device used "
+"closest match (%d)"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:268
+msgid "Ops...failed to test the soundcard capabilities...expect problems..."
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:654
+msgid "Input buffer"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:656
+msgid "Output buffer"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:739
+msgid "Attempting a passive DCC VOICE connection"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:745
+msgid "Attempting an active DCC VOICE connection"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:756
+#: src/modules/dcc/DccVideoWindow.cpp:606
+#: src/modules/dcc/DccChatWindow.cpp:185
+#: src/modules/dcc/DccCanvasWindow.cpp:108
+msgid "Contacting host %Q on port %Q"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:759
+#: src/modules/dcc/DccVideoWindow.cpp:609
+#: src/modules/dcc/DccChatWindow.cpp:187
+#: src/modules/dcc/DccCanvasWindow.cpp:84
+msgid "Listening on interface %Q port %Q"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:776
+msgid ""
+"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"connect..."
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:778
+msgid "DCC VOICE request not sent: awaiting manual connections"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:819
+#: src/modules/dcc/DccVideoWindow.cpp:782
+#: src/modules/dcc/DccChatWindow.cpp:417
+msgid "ERROR: %Q"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:877
+#, c-format
+msgid "Input buffer: %d bytes"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:879
+#, c-format
+msgid "Output buffer: %d bytes"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:902
+#: src/modules/dcc/DccVideoWindow.cpp:921
+#: src/modules/dcc/DccCanvasWindow.cpp:279
+msgid "DCC Failed: %Q"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:911
+#: src/modules/dcc/DccVideoWindow.cpp:926
+#: src/modules/dcc/DccChatWindow.cpp:566
+#: src/modules/dcc/DccCanvasWindow.cpp:284
+msgid "Connected to %Q:%Q"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:913
+#: src/modules/dcc/DccVideoWindow.cpp:928
+#: src/modules/dcc/DccChatWindow.cpp:568
+#: src/modules/dcc/DccCanvasWindow.cpp:286
+msgid "Local end is %Q:%Q"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:931
+#: src/modules/dcc/DccVideoWindow.cpp:942
+#, c-format
+msgid "Actual codec used is '%s'"
+msgstr ""
+
+#: src/modules/dcc/DccVoiceWindow.cpp:1014
+msgid "Volume: %1"
+msgstr ""
+
 #: src/modules/dcc/DccVideoWindow.cpp:465
 msgid "Video device:"
 msgstr ""
@@ -775,6 +523,205 @@ msgstr ""
 
 #: src/modules/dcc/DccVideoWindow.cpp:628
 msgid "DCC VIDEO request not sent: awaiting manual connection"
+msgstr ""
+
+#: src/modules/dcc/DccVideoWindow.cpp:665
+#: src/modules/dcc/DccVideoWindow.cpp:768
+#: src/modules/dcc/DccChatWindow.cpp:298
+#: src/modules/dcc/DccChatWindow.cpp:402
+msgid "Cannot send data: No active connection"
+msgstr ""
+
+#: src/modules/dcc/DccVideoWindow.cpp:711
+#: src/modules/dcc/DccChatWindow.cpp:344
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
+"data was sent to the remote end"
+msgstr ""
+
+#: src/modules/dcc/DccVideoWindow.cpp:843
+#: src/modules/dcc/DccChatWindow.cpp:477
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %Q"
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:160
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:170
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:209
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:236
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:239
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:256
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr ""
+
+#: src/modules/dcc/DccChatWindow.cpp:537
+msgid "DCC %Q failed: %Q"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:91
+msgid ""
+"This window has no associated IRC context (an IRC context is required unless "
+"-c or -n are passed)"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:104
+msgid ""
+"You're not connected to a server (an active connection is required unless -c "
+"or -n are passed)"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:128
+msgid "Unable to get address of interface %Q"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:138
+msgid "No suitable interfaces to listen on, use -i"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:171
+msgid "This executable was built without SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:432
+#: src/modules/dcc/libkvidcc.cpp:655
+#: src/modules/dcc/libkvidcc.cpp:1157
+#: src/modules/dcc/libkvidcc.cpp:1224
+msgid "-c requires -i and -p"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:632
+#: src/modules/dcc/requests.cpp:448
+#: src/modules/dcc/requests.cpp:741
+msgid "<unknown size>"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:888
+msgid "This executable has been built without SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:958
+msgid "This executable has no SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1112
+msgid "DCC VOICE support not enabled at compilation time"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1130
+msgid "Invalid sample rate specified, defaulting to 8000"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1146
+msgid "Invalid codec specified, defaulting to 'adpcm'"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1190
+msgid "DCC VIDEO support not enabled at compilation time"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1211
+msgid "Invalid codec specified"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1640
+#: src/modules/dcc/libkvidcc.cpp:2605
+#: src/modules/dcc/libkvidcc.cpp:2625
+msgid "The current window has no associated DCC session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1645
+msgid "The specified parameter is not a valid DCC identifier"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1725
+msgid "This DCC session is not a DCC transfer session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2616
+msgid "The specified window identifier is not valid"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2773
+msgid "This executable was built without SSL support"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2784
+msgid "You specified a bad string for the parameter \"type\""
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2795
+msgid "Unable to get SSL information: DCC session is not using SSL"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2808
+msgid "Unable to get SSL information: DCC session not initialized yet"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2816
+msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2825
+msgid "Unable to get SSL information: No peer certificate available"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2833
+msgid "Unable to get SSL information: query not recognized"
+msgstr ""
+
+#: src/modules/dcc/DccDialog.cpp:75
+msgid "&Accept"
+msgstr ""
+
+#: src/modules/dcc/DccDialog.cpp:80
+msgid "&Reject"
+msgstr ""
+
+#: src/modules/dcc/DccDialog.cpp:145
+msgid "&Rename"
+msgstr ""
+
+#: src/modules/dcc/DccDialog.cpp:149
+msgid "Over&write"
+msgstr ""
+
+#: src/modules/dcc/DccDialog.cpp:153
+msgid "Re&sume"
+msgstr ""
+
+#: src/modules/dcc/DccDialog.cpp:165
+msgid "File Already Exists - KVIrc"
+msgstr ""
+
+#: src/modules/dcc/DccUtils.cpp:124
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr ""
+
+#: src/modules/dcc/DccUtils.cpp:142
+#, c-format
+msgid ""
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
 msgstr ""
 
 #: src/modules/dcc/requests.cpp:82
@@ -990,4 +937,57 @@ msgstr ""
 
 #: src/modules/dcc/DccCanvasWindow.cpp:105
 msgid "Attempting an active DCC CANVAS connection"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1478
+msgid "&Line"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1479
+#: src/modules/dcc/canvaswidget.cpp:1487
+msgid "&Rectangle"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1480
+msgid "&Ellipse"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1481
+msgid "&Pie"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1482
+msgid "&Chord"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1484
+msgid "&Rich text (html)"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1486
+msgid "&Triangle"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1488
+msgid "&Pentagon"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1489
+msgid "&Hexagon"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1491
+msgid "&Shape"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1492
+msgid "&Item"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1493
+msgid "&Polygons"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1495
+msgid "&Insert"
 msgstr ""
