@@ -693,19 +693,19 @@ defpopup(channelpopup)
 
 defpopup(channels)
 {
-	item(#KVirc,46)
+	item(#KVIrc,46)
 	{
-		j #KVirc
+		j #KVIrc;
 	}
 
 	item(#MDE,46)
 	{
-		j #MDE
+		j #MDE;
 	}
 
 	item(#kde,46)
 	{
-		j #kde
+		j #kde;
 	}
 }
 
@@ -819,7 +819,7 @@ defpopup(consoletextview)
 				stats o
 			}
 
-			item($tr("t (Connection stats ?)","defscript"),23)
+			item($tr("t (Connection stats?)","defscript"),23)
 			{
 				stats t
 			}
