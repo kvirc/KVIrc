@@ -26,10 +26,7 @@
 
 #include "KviOptionsWidget.h"
 #include "KviTextIconManager.h"
-#include "KviTalPopupMenu.h"
-#include "KviTalHBox.h"
 
-#include <QToolButton>
 #include <QTableWidget>
 #include <QTableWidgetItem>
 
@@ -68,16 +65,13 @@ protected:
 	QPushButton  * m_pDel;
 	QPushButton  * m_pRestore;
 	KviTalPopupMenu *m_pPopup;
-	KviTalHBox *m_pBox;
-	QToolButton *m_pIconButton;
-	QToolButton *m_pBrowseButton;
 private:
 	void fillTable();
 public:
 	virtual void commit();
 protected slots:
 	void itemSelectionChanged();
-	void itemClicked(QTableWidgetItem *i);
+	void currentItemChanged(QTableWidgetItem *cur, QTableWidgetItem *prev);
 	void addClicked();
 	void delClicked();
 	void restoreClicked();

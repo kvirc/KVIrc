@@ -29,8 +29,10 @@
 #include "KviLocale.h"
 #include "KviFileDialog.h"
 #include "kvi_fileextensions.h"
+#include "KviTalPopupMenu.h"
 #include "KviTalHBox.h"
 
+#include <QToolButton>
 #include <QLayout>
 #include <QCursor>
 #include <QHeaderView>
@@ -63,9 +65,6 @@ void TextIconTableItem::setId(int id)
 OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	m_pBox=0;
-	m_pIconButton=0;
-	m_pBrowseButton=0;
 	m_pPopup=0;
 	m_iLastEditedRow=-1;
 
@@ -101,19 +100,13 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 	connect(m_pRestore,SIGNAL(clicked()),this,SLOT(restoreClicked()));
 
 	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
-	connect(m_pTable,SIGNAL(itemClicked(QTableWidgetItem *)),this,SLOT(itemClicked(QTableWidgetItem *)));
+	connect(m_pTable,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)));
 	
 	fillTable();
 }
 
 OptionsWidget_textIcons::~OptionsWidget_textIcons()
 {
-	if(m_pIconButton)
-		delete m_pIconButton;
-	if(m_pBrowseButton)
-		delete m_pBrowseButton;
-	if(m_pBox)
-		delete m_pBox;
 }
 
 void OptionsWidget_textIcons::fillTable()
@@ -167,66 +160,76 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 {
 	m_pItem->icon()->setId(eIcon);
 	m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
-	m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+
+	KviTalHBox * pBox=new KviTalHBox(0);
+	pBox->setSpacing(0);
+	pBox->setMargin(0);
+
+	QToolButton * pIconButton=new QToolButton(pBox);
+	pIconButton->setMinimumWidth(150);
+	pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+	connect(pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+
+// FIXME: this does not work currently!
+// 	QToolButton * pBrowseButton=new QToolButton(pBox);
+// 	pBrowseButton->setText("...");
+// 	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+
+	m_pTable->setCellWidget(m_pItem->row(),1,pBox);
 }
 
-void OptionsWidget_textIcons::chooseFromFile()
-{
-	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString(),KVI_FILTER_IMAGE,"options");
-	if(!szFile.isEmpty())
-	{
-		if(g_pIconManager->getPixmap(szFile))
-		{
-			m_pItem->icon()->setFilename(szFile);
-			m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
-			m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
-		}
-	}
-}
+// FIXME: this does not work currently!
+// void OptionsWidget_textIcons::chooseFromFile()
+// {
+// 	QString szFile;
+// 	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString(),KVI_FILTER_IMAGE,"options");
+// 	if(!szFile.isEmpty())
+// 	{
+// 		if(g_pIconManager->getPixmap(szFile))
+// 		{
+// 			m_pItem->icon()->setFilename(szFile);
+// 			m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+//			m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+// 		}
+// 	}
+// }
 void OptionsWidget_textIcons::itemSelectionChanged()
 {
 	int i = m_pTable->currentRow();
 	m_pDel->setEnabled(i >= 0 && i < m_pTable->rowCount());
 }
-void OptionsWidget_textIcons::itemClicked(QTableWidgetItem *i)
+
+void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWidgetItem *prev)
 {
-	if (i->column()!=1) return;
-	if (m_iLastEditedRow==i->row()) return;
-
-	m_pItem=(TextIconTableItem *)i;
-
-	if(m_pIconButton)
+	if(prev)
 	{
-		delete m_pIconButton;
-		m_pIconButton = NULL;
-	}
-	if(m_pBrowseButton)
-	{
-		delete m_pBrowseButton;
-		m_pBrowseButton = NULL;
-	}
-	if (m_pBox)
-	{
-		delete m_pBox;
-		m_pBox = NULL;
+		QWidget * pOldWidget = m_pTable->cellWidget(prev->row(),1);
+		if(pOldWidget)
+			m_pTable->setCellWidget(prev->row(),1,NULL);
 	}
 
-	m_pBox=new KviTalHBox(0);
-	m_pBox->setSpacing(0);
-	m_pBox->setMargin(0);
+	if(!cur) return;
+	if(cur->column()!=1) return;
+	if(m_iLastEditedRow==cur->row() || cur == prev) return;
 
-	m_pIconButton=new QToolButton(m_pBox);
-	m_pIconButton->setMinimumWidth(150);
-	m_pIconButton->setIcon(QIcon(i->icon()));
-	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+	m_pItem=(TextIconTableItem *)cur;
 
-	m_pBrowseButton=new QToolButton(m_pBox);
-	m_pBrowseButton->setText("...");
-	connect(m_pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+	KviTalHBox * pBox=new KviTalHBox(0);
+	pBox->setSpacing(0);
+	pBox->setMargin(0);
 
-	m_pTable->setCellWidget(i->row(),1,m_pBox);
-	m_iLastEditedRow=i->row();
+	QToolButton * pIconButton=new QToolButton(pBox);
+	pIconButton->setMinimumWidth(150);
+	pIconButton->setIcon(QIcon(cur->icon()));
+	connect(pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+
+// FIXME: this does not work currently!
+// 	QToolButton * pBrowseButton=new QToolButton(pBox);
+// 	pBrowseButton->setText("...");
+// 	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+
+	m_pTable->setCellWidget(cur->row(),1,pBox);
+	m_iLastEditedRow=cur->row();
 }
 
 void OptionsWidget_textIcons::addClicked()
@@ -250,21 +253,6 @@ void OptionsWidget_textIcons::delClicked()
 
 	if((i > -1) && (i < m_pTable->rowCount()))
 	{
-		if(m_pIconButton)
-		{
-			delete m_pIconButton;
-			m_pIconButton=NULL;
-		}
-		if(m_pBrowseButton)
-		{
-			delete m_pBrowseButton;
-			m_pBrowseButton=NULL;
-		}
-		if (m_pBox)
-		{
-			delete m_pBox;
-			m_pBox=NULL;
-		}
 		m_pTable->removeRow(i);
 		if(m_pTable->rowCount() == 0) m_pDel->setEnabled(false);
 	}
