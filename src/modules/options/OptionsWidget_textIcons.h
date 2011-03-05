@@ -78,7 +78,7 @@ protected slots:
 
 	void iconSelected(KviIconManager::SmallIcon);
 	void doPopup();
-	void chooseFromFile();
+	//void chooseFromFile();
 };
 
 #endif //!_OPTW_TEXTICONS_H_
