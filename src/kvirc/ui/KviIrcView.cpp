@@ -996,8 +996,6 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	 * Profane description: this is ircview's most important function. It takes a lot of cpu cycles to complete, so we want to be sure
 	 * it's well optimized. First, we want to skip this method everytime it's useless: it we're too short or we're covered by other windows.
 	 */
-	int scrollbarWidth = m_pScrollBar->width();
-	int widgetWidth  = width() - scrollbarWidth;
 
 	if(!isVisible())
 	{
@@ -1005,7 +1003,10 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		return; //can't show stuff here
 	}
 
-	int widgetHeight = height();
+	int scrollbarWidth = m_pScrollBar->width();
+	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int widgetWidth  = width() - scrollbarWidth;
+	int widgetHeight = height() - toolWidgetHeight;
 
 	static QRect r; // static: avoid calling constructor and destructor every time...
 
@@ -2044,11 +2045,8 @@ void KviIrcView::resizeEvent(QResizeEvent *)
 
 	if(m_pToolWidget)
 	{
-		if( ((m_pToolWidget->x() + m_pToolWidget->width()) > (iLeft - 1)) ||
-			((m_pToolWidget->y() + m_pToolWidget->height()) > (height() - 1)))
-		{
-			m_pToolWidget->move(10,10);
-		}
+		int h = m_pToolWidget->sizeHint().height();
+		m_pToolWidget->setGeometry(0, height() - h, width() - iScr, h);
 	}
 }
 
@@ -2148,14 +2146,14 @@ void KviIrcView::toggleToolWidget()
 		m_pToolWidget = 0;
 		delete pTmp;
 		m_pCursorLine = 0;
-		repaint();
-
 	} else {
 		m_pToolWidget = new KviIrcViewToolWidget(this);
-		int w = m_pToolWidget->sizeHint().width();
-		m_pToolWidget->move(width() - (w + 40),10);
+		int h = m_pToolWidget->sizeHint().height();
+		int iScr = m_pScrollBar->sizeHint().width();
+		m_pToolWidget->setGeometry(0, height() - h, width() - iScr, h);
 		m_pToolWidget->show();
 	}
+	repaint();
 }
 
 

@@ -34,8 +34,10 @@
 
 class QLabel;
 class QLineEdit;
+class QComboBox;
 class KviIrcView;
-
+class QPushButton;
+class QMenu;
 
 class KviIrcViewToolTip : public KviTalToolTip
 {
@@ -81,7 +83,7 @@ public:
 
 class KviIrcView;
 
-class KviIrcViewToolWidget : public QFrame
+class KviIrcViewToolWidget : public QWidget
 {
 	friend class KviIrcView;
 	Q_OBJECT
@@ -94,31 +96,30 @@ protected:
 	QPoint        m_pressPoint;
 
 	QCheckBox   * m_pCaseSensitive;
-	QCheckBox   * m_pRegExp;
-	QCheckBox   * m_pExtendedRegExp;
+	QComboBox   * m_pSearchMode;
+	QMenu       * m_pOptionsWidget;
+	QPushButton * m_pOptionsButton;
 
-	QLabel      * m_pFindResult;
+// 	QLabel      * m_pFindResult;
 
 	QTreeWidget * m_pFilterView;
 
 	KviIrcMessageCheckListItem ** m_pFilterItems;
 
 public:
+	enum SearchMode { PlainText, Wildcards, RegExp };
 	void setFindResult(const QString & text);
 	inline bool messageEnabled(int msg_type){ return m_pFilterItems[msg_type]->isOn();};
 	void forceRepaint();
 protected slots:
 	void findPrev();
 	void findNext();
+	void findNextHelper(QString unused);
 	void filterEnableAll();
 	void filterEnableNone();
 	void filterSave();
 	void filterLoad();
-protected:
-	virtual void hideEvent( QHideEvent * );
-	virtual void closeEvent( QCloseEvent * e );
-	virtual void mouseMoveEvent(QMouseEvent *);
-	virtual void mousePressEvent(QMouseEvent *);
+	void toggleOptions();
 };
 
 #endif //!_KVI_IRCVIEWTOOLS_H_

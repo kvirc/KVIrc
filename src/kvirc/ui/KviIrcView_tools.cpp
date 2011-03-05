@@ -33,23 +33,23 @@
 #include "KviMessageBox.h"
 #include "KviFileDialog.h"
 #include "KviApplication.h"
+#include "KviThemedLineEdit.h"
 #include "KviMemory.h"
 #include "kvi_shortcuts.h"
 #include "KviWindow.h"
 
-#include <QTabWidget>
-#include <QLayout>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <QLineEdit>
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
 #include <QShortcut>
 #include <QHeaderView>
 #include <QScrollBar>
+#include <QComboBox>
 #include <QIcon>
-
+#include <QMenu>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -75,92 +75,55 @@ KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
 
 
 KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
-: QFrame(pParent)
+: QWidget(pParent)
 {
 	m_pIrcView = pParent;
-	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 	setAutoFillBackground(true);
-	QPalette p = palette();
-	QColor col = p.color(backgroundRole());
+	setContentsMargins(0,0,0,0);
 
-	p.setColor(backgroundRole(),col);
-	setPalette(p);
+	QHBoxLayout * pLayout = new QHBoxLayout(this);
+	pLayout->setMargin(2);
+	pLayout->setSpacing(2);
 
-	QGridLayout * gl = new QGridLayout(this);
-	gl->setMargin(3);
-	gl->setSpacing(2);
+	QPushButton * pButton = new QPushButton(QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Close)), QString(),this);
+	pButton->setFixedSize(16,16);
+	pButton->setFlat(true);
+	connect(pButton,SIGNAL(clicked()),m_pIrcView,SLOT(toggleToolWidget()));
+	pLayout->addWidget(pButton);
 
-	QLabel * l = new QLabel(__tr2qs("Find Text"),this);
-	l->setMaximumHeight(16);
-	p = l->palette();
-	p.setColor(l->backgroundRole(), QColor("#000000"));
-	p.setColor(l->foregroundRole(), QColor("#EAEAEA"));
-	l->setPalette(p);
-	l->setAutoFillBackground(true);
-	gl->addWidget(l,0,0);
-
-	QPushButton *tb = new QPushButton(this);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Close))));
-	tb->setObjectName("down_arrow");
-	tb->setFixedSize(16,16);
-	tb->setAutoRepeat(false);
-	connect(tb,SIGNAL(clicked()),m_pIrcView,SLOT(toggleToolWidget()));
-	gl->addWidget(tb,0,1);
-
-
-	QTabWidget * tw = new QTabWidget(this);
-
-	// Find tab
-	QWidget * w = new QWidget(tw);
-
-	QGridLayout * g = new QGridLayout(w);
-
-	m_pStringToFind = new QLineEdit(w);
-	g->addWidget(m_pStringToFind,0,0,1,2);
+	m_pStringToFind = new KviThemedLineEdit(this, m_pIrcView->parentKviWindow(), "search_lineedit");
+	pLayout->addWidget(m_pStringToFind);
 	connect(m_pStringToFind,SIGNAL(returnPressed()),this,SLOT(findNext()));
+	connect(m_pStringToFind,SIGNAL(textChanged(QString)),this,SLOT(findNextHelper(QString)));
 
-	m_pRegExp = new QCheckBox(__tr2qs("&Regular expression"),w);
-	g->addWidget(m_pRegExp,1,0,1,2);
+	pButton = new QPushButton(__tr2qs("&Next"),this);
+	pButton->setDefault(true);
+	connect(pButton,SIGNAL(clicked()),this,SLOT(findNext()));
+	pLayout->addWidget(pButton);
 
-	m_pExtendedRegExp = new QCheckBox(__tr2qs("E&xtended regexp."),w);
-	g->addWidget(m_pExtendedRegExp,2,0,1,2);
-	m_pExtendedRegExp->setEnabled(false);
-	connect(m_pRegExp,SIGNAL(toggled(bool)),m_pExtendedRegExp,SLOT(setEnabled(bool)));
+	pButton = new QPushButton(__tr2qs("&Previous"),this);
+	connect(pButton,SIGNAL(clicked()),this,SLOT(findPrev()));
+	pLayout->addWidget(pButton);
 
-	m_pCaseSensitive = new QCheckBox(__tr2qs("C&ase sensitive"),w);
-	g->addWidget(m_pCaseSensitive,3,0,1,2);
+	m_pOptionsButton = new QPushButton(this);
+	m_pOptionsButton->setText(__tr2qs("&Options"));
+	pLayout->addWidget(m_pOptionsButton);
 
-	QPushButton * pb = new QPushButton(__tr2qs("Find &Prev."),w);
-	connect(pb,SIGNAL(clicked()),this,SLOT(findPrev()));
-	g->addWidget(pb,4,0);
+	m_pOptionsWidget = new QMenu(m_pOptionsButton);
+	QGridLayout * pOptionsLayout = new QGridLayout(m_pOptionsWidget);
+	pOptionsLayout->setSpacing(2);
 
-	pb = new QPushButton(__tr2qs("&Find Next"),w);
-	pb->setDefault(true);
-	connect(pb,SIGNAL(clicked()),this,SLOT(findNext()));
-	g->addWidget(pb,4,1,1,1);
-
-	m_pFindResult = new QLabel(w);
-	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	g->addWidget(m_pFindResult,5,0,1,2);
-
-	tw->addTab(w,__tr2qs("Find"));
+	connect(m_pOptionsButton, SIGNAL(clicked()), this, SLOT(toggleOptions()));
 
 	// Filter tab
-	QWidget * w1 = new QWidget(tw);
-	g = new QGridLayout(w1);
 
-
-	m_pFilterView = new QTreeWidget(w1);
+	m_pFilterView = new QTreeWidget(m_pOptionsWidget);
 	m_pFilterView->setMinimumWidth(60);
 	m_pFilterView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	m_pFilterView->setRootIsDecorated(false);
 	m_pFilterView->setColumnCount(1);
-// 	m_pFilterView->setHeaderLabel(__tr2qs("Type"));
-	m_pFilterView->header()->hide();
-
-	g->addWidget(m_pFilterView,0,0,5,1);
-
-
+	m_pFilterView->setHeaderLabel(__tr2qs("Message types"));
+	pOptionsLayout->addWidget(m_pFilterView,0,0,5,2);
 
 	m_pFilterItems = (KviIrcMessageCheckListItem **)KviMemory::allocate(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
 
@@ -169,46 +132,69 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 		m_pFilterItems[i] = new KviIrcMessageCheckListItem(m_pFilterView,this,i);
 	}
 
-	pb = new QPushButton(__tr2qs("Set &All"),w1);
-	connect(pb,SIGNAL(clicked()),this,SLOT(filterEnableAll()));
-	g->addWidget(pb,0,1);
+	pButton = new QPushButton(__tr2qs("Set &All"),m_pOptionsWidget);
+	connect(pButton,SIGNAL(clicked()),this,SLOT(filterEnableAll()));
+	pOptionsLayout->addWidget(pButton,6,0);
 
-	pb = new QPushButton(__tr2qs("Set &None"),w1);
-	connect(pb,SIGNAL(clicked()),this,SLOT(filterEnableNone()));
-	g->addWidget(pb,1,1);
+	pButton = new QPushButton(__tr2qs("Set &None"),m_pOptionsWidget);
+	connect(pButton,SIGNAL(clicked()),this,SLOT(filterEnableNone()));
+	pOptionsLayout->addWidget(pButton,6,1);
 
-	pb = new QPushButton(__tr2qs("&Load From..."),w1);
-	connect(pb,SIGNAL(clicked()),this,SLOT(filterLoad()));
-	g->addWidget(pb,2,1);
+	pButton = new QPushButton(__tr2qs("&Load From..."),m_pOptionsWidget);
+	connect(pButton,SIGNAL(clicked()),this,SLOT(filterLoad()));
+	pOptionsLayout->addWidget(pButton,7,0);
 
-	pb = new QPushButton(__tr2qs("&Save As..."),w1);
-	connect(pb,SIGNAL(clicked()),this,SLOT(filterSave()));
-	g->addWidget(pb,3,1);
+	pButton = new QPushButton(__tr2qs("&Save As..."),m_pOptionsWidget);
+	connect(pButton,SIGNAL(clicked()),this,SLOT(filterSave()));
+	pOptionsLayout->addWidget(pButton,7,1);
 
-	tw->addTab(w1,__tr2qs("Filter"));
+	QLabel * pLabel = new QLabel(__tr2qs("Pattern:"),m_pOptionsWidget);
+	pOptionsLayout->addWidget(pLabel,8,0);
+	m_pSearchMode = new QComboBox(m_pOptionsWidget);
+	m_pSearchMode->insertItem(PlainText, __tr2qs("Plain Text"));
+	m_pSearchMode->insertItem(Wildcards, __tr2qs("Wildcards"));
+	m_pSearchMode->insertItem(RegExp, __tr2qs("RegExp"));
+	pOptionsLayout->addWidget(m_pSearchMode,8,1);
 
-	gl->addWidget(tw,1,0,1,2);
+	pLabel = new QLabel(__tr2qs("Match:"),m_pOptionsWidget);
+	pOptionsLayout->addWidget(pLabel,9,0);
 
-	gl->setSizeConstraint(QGridLayout::SetFixedSize);
+	m_pCaseSensitive = new QCheckBox(__tr2qs("&Case sensitive"),m_pOptionsWidget);
+	pOptionsLayout->addWidget(m_pCaseSensitive,9,1);
+
+// 	m_pFindResult = new QLabel(this);
+// 	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+// 	pOptionsLayout->addWidget(m_pFindResult,0,6);
 
 #ifndef COMPILE_ON_MAC
 	m_pStringToFind->setFocus(); // this makes MacOSX version of Qt go nuts and crash
 #endif //!COMPILE_ON_MAC
 
-	tw->setCurrentIndex(tw->indexOf(w));
-	new QShortcut(QKeySequence(Qt::Key_Escape),this,SLOT(close()),0,Qt::WidgetWithChildrenShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),this,SLOT(close()),0,Qt::WidgetWithChildrenShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Escape),m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
 {
-	if(m_pFilterView)
-		m_pFilterView->deleteLater();
-
 	if(m_pIrcView)
 		if(m_pIrcView->parentKviWindow())
 			if(m_pIrcView->parentKviWindow()->input())
 				m_pIrcView->parentKviWindow()->input()->setFocus();
+}
+
+void KviIrcViewToolWidget::toggleOptions()
+{
+	if(m_pOptionsWidget->isVisible())
+	{
+		m_pOptionsWidget->hide();
+	} else {
+		m_pOptionsWidget->adjustSize();
+		QPoint p=QPoint(
+			m_pOptionsButton->pos().x() + m_pOptionsButton->width() - m_pOptionsWidget->width(),
+			m_pOptionsButton->pos().y() - m_pOptionsWidget->height()
+		);
+		m_pOptionsWidget->popup(mapToGlobal(p));
+	}
 }
 
 void KviIrcViewToolWidget::filterEnableAll()
@@ -225,16 +211,6 @@ void KviIrcViewToolWidget::filterEnableNone()
 	{
 		m_pFilterItems[i]->setOn(false);
 	}
-}
-
-void KviIrcViewToolWidget::hideEvent(QHideEvent *)
-{
-	m_pIrcView->toggleToolWidget();
-}
-
-void KviIrcViewToolWidget::closeEvent(QCloseEvent *)
-{
-	m_pIrcView->toggleToolWidget();
 }
 
 void KviIrcViewToolWidget::filterLoad()
@@ -294,49 +270,27 @@ void KviIrcViewToolWidget::forceRepaint()
 	#endif
 }
 
-void KviIrcViewToolWidget::setFindResult(const QString & szText)
+void KviIrcViewToolWidget::setFindResult(const QString &)
 {
-	m_pFindResult->setText(szText);
+// 	m_pFindResult->setText(szText);
 }
 
 void KviIrcViewToolWidget::findPrev()
 {
-	bool bRegExp = m_pRegExp->isChecked();
-	m_pIrcView->findPrev(m_pStringToFind->text(),m_pCaseSensitive->isChecked(),bRegExp,bRegExp && m_pExtendedRegExp->isChecked());
+	SearchMode eMode = (SearchMode) m_pSearchMode->currentIndex();
+	m_pIrcView->findPrev(m_pStringToFind->text(),m_pCaseSensitive->isChecked(),eMode!=PlainText, eMode==RegExp);
+}
+
+void KviIrcViewToolWidget::findNextHelper(QString)
+{
+	m_pIrcView->m_pCursorLine=m_pIrcView->m_pFirstLine;
+	findNext();
 }
 
 void KviIrcViewToolWidget::findNext()
 {
-	bool bRegExp = m_pRegExp->isChecked();
-	m_pIrcView->findNext(m_pStringToFind->text(),m_pCaseSensitive->isChecked(),bRegExp,bRegExp && m_pExtendedRegExp->isChecked());
-}
-
-
-void KviIrcViewToolWidget::mousePressEvent(QMouseEvent * e)
-{
-	m_pressPoint = e->pos();
-}
-
-void KviIrcViewToolWidget::mouseMoveEvent(QMouseEvent *)
-{
-	QPoint p = m_pIrcView->mapFromGlobal(QCursor::pos());
-	p -= m_pressPoint;
-	if(p.x() < 1)
-		p.setX(1);
-	else {
-		int iWidth = (m_pIrcView->width() - (m_pIrcView->m_pScrollBar->width() + 1));
-		if((p.x() + width()) > iWidth)
-			p.setX(iWidth - width());
-	}
-	
-	if(p.y() < 1)
-		p.setY(1);
-	else {
-		int iHeight = (m_pIrcView->height() - 1);
-		if((p.y() + height()) > iHeight)
-			p.setY(iHeight - height());
-	}
-	move(p);
+	SearchMode eMode = (SearchMode) m_pSearchMode->currentIndex();
+	m_pIrcView->findNext(m_pStringToFind->text(),m_pCaseSensitive->isChecked(),eMode!=PlainText, eMode==RegExp);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
