@@ -541,7 +541,7 @@ void KviKvsEventManager::loadRawEvents(const QString & szFileName)
 				m_rawEventTable[i]->setAutoDelete(true);
 				for(unsigned int uIdx = 0; uIdx < uHandlers; uIdx++)
 				{
-					szTmp = QString("Name%u").arg(uIdx);
+					szTmp = QString("Name%1").arg(uIdx);
 					QString szName = cfg.readEntry(szTmp,"unnamed");
 					szTmp = QString("Buffer%1").arg(uIdx);
 					QString szCode = cfg.readEntry(szTmp,"");
