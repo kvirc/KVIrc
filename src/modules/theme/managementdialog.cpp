@@ -51,6 +51,7 @@
 #include <QRegExp>
 #include <QMessageBox>
 #include <QDir>
+#include <QDesktopWidget>
 #include <QStringList>
 #include <QDateTime>
 #include <QFileDialog>
@@ -207,8 +208,9 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	}
 	resize(g_rectManagementDialogGeometry.width(),
 		g_rectManagementDialogGeometry.height());
-	move(g_rectManagementDialogGeometry.x(),
-		g_rectManagementDialogGeometry.y());
+
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width())/2),rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height())/2));
 }
 
 ThemeManagementDialog::~ThemeManagementDialog()

@@ -74,7 +74,6 @@ public:
 	static void cleanup();
 protected:
 	void fillListView();
-	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void currentChanged(QListWidgetItem * i, QListWidgetItem *);

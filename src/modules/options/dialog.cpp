@@ -29,6 +29,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviIconManager.h"
+#include "KviMainWindow.h"
 #include "KviModule.h"
 #include "KviPointerHashTable.h"
 #include "KviTalVBox.h"
@@ -259,9 +260,8 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup)
 	if(!parent())
 	{
 		if(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y() < 5)
-		{
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).setY(5);
-		}
+
 		//setGeometry(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry));
 		resize(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).width(),
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).height());
@@ -274,15 +274,16 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup)
 
 OptionsDialog::~OptionsDialog()
 {
-	if(!parent())KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry) = QRect(pos().x(),pos().y(),
-			size().width(),size().height());
+	if(!parent())
+		KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry) = QRect(pos().x(),pos().y(),size().width(),size().height());
 	if(g_pOptionsDialogDict)
 		g_pOptionsDialogDict->remove(m_szGroup);
 }
 
 void OptionsDialog::showEvent(QShowEvent *e)
 {
-	QRect r = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	// setup a minimum size and move to the screen the main kvirc window is
+	QRect r = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 
 	int w = r.width();
 	int h = r.height();
@@ -298,7 +299,7 @@ void OptionsDialog::showEvent(QShowEvent *e)
 		if(ww < 770)ww = 770;
 	}
 
-	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
+	setGeometry(r.x() + ((w - ww) / 2),r.y() + ((h - wh) / 2),ww,wh);
 
 	QWidget::showEvent(e);
 }

@@ -28,6 +28,7 @@
 #include "KviLocale.h"
 #include "KviIconManager.h"
 #include "KviApplication.h"
+#include "KviMainWindow.h"
 #include "KviTalToolTip.h"
 
 #include <QLayout>
@@ -136,11 +137,12 @@ void OptionsWidgetContainer::closeEvent(QCloseEvent *e)
 
 void OptionsWidgetContainer::showEvent(QShowEvent *e)
 {
-	if(parent() == 0)
+	if(!parent())
 	{
-		QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-		move((rect.width() - width())/2,(rect.height() - height())/2);
+		QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+		move(rect.x() + ((rect.width() - width())/2),rect.y() + ((rect.height() - height())/2));
 	}
+
 	QWidget::showEvent(e);
 	m_pCancel->setFocus();
 }

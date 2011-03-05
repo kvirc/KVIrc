@@ -364,8 +364,8 @@ void CustomizeToolBarsDialog::currentToolBarChanged()
 
 void CustomizeToolBarsDialog::showEvent(QShowEvent * e)
 {
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	move(rect.x() + ((rect.width() - width())/2),rect.y() + ((rect.height() - height())/2));
 
 	QWidget::showEvent(e);
 }

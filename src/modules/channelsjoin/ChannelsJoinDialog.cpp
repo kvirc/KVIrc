@@ -31,6 +31,7 @@
 #include "KviCString.h"
 #include "KviQString.h"
 #include "KviIconManager.h"
+#include "KviMainWindow.h"
 #include "KviConsoleWindow.h"
 #include "KviRegisteredChannel.h"
 #include "KviRegisteredChannelDataBase.h"
@@ -46,6 +47,7 @@
 #include <QMouseEvent>
 #include <QHeaderView>
 #include <QCheckBox>
+#include <QDesktopWidget>
 
 
 extern ChannelsJoinDialog    * g_pChannelsWindow;
@@ -136,10 +138,14 @@ ChannelsJoinDialog::ChannelsJoinDialog(QWidget * par, const char * name)
 
 	fillListView();
 
-	if(g_rectChannelsJoinGeometry.y() < 5)g_rectChannelsJoinGeometry.setY(5);
+	if(g_rectChannelsJoinGeometry.y() < 5)
+		g_rectChannelsJoinGeometry.setY(5);
 
 	resize(g_rectChannelsJoinGeometry.width(),g_rectChannelsJoinGeometry.height());
-	move(g_rectChannelsJoinGeometry.x(),g_rectChannelsJoinGeometry.y());
+	//move(g_rectChannelsJoinGeometry.x(),g_rectChannelsJoinGeometry.y());
+
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	move(rect.x() + ((rect.width() - g_rectChannelsJoinGeometry.width())/2),rect.y() + ((rect.height() - g_rectChannelsJoinGeometry.height())/2));
 
 	enableJoin();
 }
