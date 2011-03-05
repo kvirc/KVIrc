@@ -251,15 +251,22 @@ void ChannelsJoinDialog::fillListView()
 
 void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
 {
+	e->ignore();
 	QTreeWidgetItem * it = itemAt(e->pos());
 	ChannelsJoinDialog *pDialog = (ChannelsJoinDialog*) parentWidget();
 	if(!it || !pDialog)
+	{
+		QTreeWidget::mousePressEvent(e);
 		return;
+	}
 
 	setCurrentItem(it);
 
 	if(it->type() == ChannelsJoinDialog::HeaderItem)
+	{
+		QTreeWidget::mousePressEvent(e);
 		return;
+	}
 
 	if(e->button() & Qt::RightButton)
 	{
