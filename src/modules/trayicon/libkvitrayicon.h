@@ -28,6 +28,7 @@
 
 #include "kvi_settings.h"
 #include "KviMainWindow.h"
+#include "KviDockExtension.h"
 
 #include <QSystemTrayIcon>
 #include <QLabel>

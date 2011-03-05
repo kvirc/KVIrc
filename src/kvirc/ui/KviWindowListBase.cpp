@@ -45,7 +45,7 @@
 #include "KviCString.h"
 #include "KviWindow.h"
 #include "KviWindowListBase.h"
-
+#include "KviDockExtension.h"
 
 // FIXME: #warning "The tree WindowList min width should be configurable"
 #include <QFontMetrics>

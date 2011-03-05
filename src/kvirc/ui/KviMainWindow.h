@@ -50,28 +50,12 @@ class KviIrcContext;
 class KviIrcConnection;
 class KviStatusBar;
 class KviTalPopupMenu;
+class KviDockExtension;
 
 #ifdef COMPILE_ON_WINDOWS
 	// MSCV has problems with KviPointerList<KviWindow> otherwise
 	#include "KviWindow.h"
 #endif
-
-// base class for the dock extension applets..
-// this should be probably moved out of here
-class KVIRC_API KviDockExtension
-{
-protected:
-	Qt::WindowStates m_uStoredWindowState;
-public:
-	KviDockExtension() : m_uStoredWindowState(0){};
-	virtual ~KviDockExtension(){};
-public:
-	void setPrevWindowState(Qt::WindowStates state) { m_uStoredWindowState = state; };
-	Qt::WindowStates getPrevWindowState() { return m_uStoredWindowState; };
-
-	virtual void refresh(){};
-	virtual void die(){ delete this; };
-};
 
 
 

@@ -99,6 +99,7 @@
 #include "KviTalPopupMenu.h"
 #include "KviAnimatedPixmap.h"
 #include "KviPixmapUtils.h"
+#include "KviDockExtension.h"
 
 #include <QBitmap>
 #include <QPainter>

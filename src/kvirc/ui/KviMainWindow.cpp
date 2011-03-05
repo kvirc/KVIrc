@@ -41,6 +41,7 @@
 #include "KviConfigurationFile.h"
 #include "KviInternalCommand.h"
 #include "KviConsoleWindow.h"
+#include "KviDockExtension.h"
 #include "kvi_debug.h"
 #include "KviIrcToolBar.h"
 #include "kvi_confignames.h"
@@ -87,7 +88,7 @@
 
 // Declared and managed by KviApplication (KviApplication.cpp)
 extern KviConfigurationFile * g_pWinPropertiesConfig;
-KVIRC_API KviMainWindow * g_pMainWindow = 0; // the one and only frame object
+KVIRC_API KviMainWindow * g_pMainWindow = NULL; // the one and only frame object
 
 KviMainWindow::KviMainWindow()
 : KviTalMainWindow(0,"kvirc_frame")
@@ -105,9 +106,9 @@ KviMainWindow::KviMainWindow()
 	m_pModuleExtensionToolBarList = new KviPointerList<KviMexToolBar>;
 	m_pModuleExtensionToolBarList->setAutoDelete(false);
 
-	m_pActiveContext = 0;
+	m_pActiveContext = NULL;
 
-	m_pDockExtension = 0;
+	m_pDockExtension = NULL;
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_frame_splitter");
@@ -133,12 +134,11 @@ KviMainWindow::KviMainWindow()
 		// (assignment of m_pStatusBar happened after load() and
 		// the init function)
 		m_pStatusBar->load();
-
+	} else {
+		m_pStatusBar = NULL;
 	}
-	else
-		m_pStatusBar = 0;
 
-	m_pWindowList = 0;
+	m_pWindowList = NULL;
 
 	createWindowList();
 
@@ -210,18 +210,18 @@ KviMainWindow::~KviMainWindow()
 	while(KviMexToolBar * t = m_pModuleExtensionToolBarList->first())t->die();
 	delete m_pModuleExtensionToolBarList;
 
-	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = m_pDockExtension;
+	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = m_pDockExtension != NULL;
 
 	if(m_pDockExtension)
 	{
 		m_pDockExtension->die();
-		m_pDockExtension = 0;
+		m_pDockExtension = NULL;
 	}
 
 	if(m_pStatusBar)
 	{
 		delete m_pStatusBar;
-		m_pStatusBar = 0;
+		m_pStatusBar = NULL;
 	}
 
 	//close all not console windows

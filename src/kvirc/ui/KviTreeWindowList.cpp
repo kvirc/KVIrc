@@ -33,6 +33,7 @@
 #include "KviWindow.h"
 #include "KviTreeWindowList.h"
 #include "KviPixmapUtils.h"
+#include "KviDockExtension.h"
 
 #include <QHeaderView>
 #include <QMouseEvent>
