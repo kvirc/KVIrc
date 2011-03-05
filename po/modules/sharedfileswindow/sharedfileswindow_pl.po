@@ -5,11 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
+"Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:17+0100\n"
-"PO-Revision-Date: 2010-04-02 22:46+0100\n"
-"Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
+"PO-Revision-Date: 2011-03-03 17:16+0100\n"
+"Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -91,9 +91,8 @@ msgid "Invalid timeout, ignoring"
 msgstr "Niepoprawny limit czasu, ignoruję"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:115
-#, fuzzy
 msgid "Invalid visible name: using default"
-msgstr "Niepoprawna widoczna nazwa: używam domyślnej"
+msgstr "Niepoprawna widoczna nazwa: używanie domyślnej"
 
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
@@ -116,10 +115,8 @@ msgid "No active file sharedfile"
 msgstr "Nie udostępniasz żadnych plików"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
-#, fuzzy
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr ""
-"Brak udostępnianego plik z widoczną nazwą '%Q' i maską użytkownika '%Q'"
+msgstr "Brak udostepnianego pliku z widoczną nazwą '%Q' i maską użytkownika '%Q'"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:162
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
@@ -128,9 +125,8 @@ msgid "OK"
 msgstr "OK"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:121
-#, fuzzy
 msgid "Ops..failed to add the sharedfile..."
-msgstr "Ups..nie udało się dodać udostępnianego pliku..."
+msgstr "Ups...nie udało się dodać udostępnianego pliku..."
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:244
 msgid "Re&move"
@@ -145,12 +141,8 @@ msgid "Shared Files"
 msgstr "Udostępniane pliki"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
-msgid ""
-"The expire date/time is in the past: please either remove the \"expires"
-"\"check mark or specify a expire date/time in the future"
-msgstr ""
-"Data/czas już minął (przeszłość): proszę albo odznacz okienko \"wygasa\" lub "
-"określ datę/czas wygaśnięcia w czas przyszły"
+msgid "The expire date/time is in the past: please either remove the \"expires\"check mark or specify a expire date/time in the future"
+msgstr "Data/czas już minął (przeszłość): proszę albo odznacz przycisk wyboru \"wygasa\" lub określ datę/czas wygaśnięcia w czas przyszły"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
@@ -172,3 +164,4 @@ msgstr "Sumarycznie: %d udostępniany(e/ch) plik(i/ów)"
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:79
 msgid "User mask:"
 msgstr "Maska użytkownika:"
+

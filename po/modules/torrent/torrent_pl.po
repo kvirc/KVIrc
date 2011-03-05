@@ -4,11 +4,11 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
+"Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-27 22:18+0100\n"
-"PO-Revision-Date: 2010-04-09 14:19+0100\n"
-"Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
+"PO-Revision-Date: 2011-03-03 22:26+0100\n"
+"Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
-msgstr "Wybieram interfejs klienta torrent \"%Q\""
+msgstr "Wybieranie interfejsu klienta torrent \"%Q\""
 
 #: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
@@ -46,17 +46,14 @@ msgstr "Nie wybrano klienta!"
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Nie wybrano interfejsu klienta torrent. Spróbuj /torrent.detect"
 
+# użytecznego/przydatnego/nadającego się do użytku ??
 #: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Wygląda na to, że nie ma użytecznego klienta torrent na tej maszynie"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
-msgid ""
-"The selected torrent client interface failed to execute the requested "
-"function"
-msgstr ""
-"Wybranemu interfejsowi klienta torrent nie powiodło się wykonanie żądanej "
-"funkcji"
+msgid "The selected torrent client interface failed to execute the requested function"
+msgstr "Wybranemu interfejsowi klienta torrent nie udało się wykonać żądanej funkcji"
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
 #: src/modules/torrent/StatusBarApplet.cpp:61
@@ -65,8 +62,9 @@ msgstr "Klient torrent"
 
 #: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Próbuję interfejsu klienta torrent \"%Q\": wynik %d"
+msgstr "Próbowanie interfejsu klienta torrent \"%Q\": wynik %d"
 
 #: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
-msgstr "Używam interfejsu klienta \"%Q\"."
+msgstr "Użycie interfejsu klienta \"%Q\"."
+

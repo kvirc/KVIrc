@@ -5,11 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
+"Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-22 00:17+0100\n"
-"PO-Revision-Date: 2009-12-06 23:23+0100\n"
-"Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
+"PO-Revision-Date: 2011-03-03 17:16+0100\n"
+"Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Określona sieć już istnieje"
 
 #: src/modules/proxydb/libkviproxydb.cpp:453
 msgid "The specified IP is not valid"
-msgstr "Określony adres IP jest nie poprawny"
+msgstr "Określony adres IP jest niepoprawny"
 
 #: src/modules/serverdb/libkviserverdb.cpp:233
 #: src/modules/serverdb/libkviserverdb.cpp:274
@@ -42,7 +42,7 @@ msgstr "Określony protokół nie istnieje"
 
 #: src/modules/proxydb/libkviproxydb.cpp:285
 msgid "The specified proxy already exists"
-msgstr "Określone proxy już istnieje"
+msgstr "Określony pośrednik już istnieje"
 
 #: src/modules/proxydb/libkviproxydb.cpp:71
 #: src/modules/proxydb/libkviproxydb.cpp:114
@@ -52,7 +52,7 @@ msgstr "Określone proxy już istnieje"
 #: src/modules/proxydb/libkviproxydb.cpp:569
 #: src/modules/proxydb/libkviproxydb.cpp:613
 msgid "The specified proxy does not exist"
-msgstr "Określone proxy nie istnieje"
+msgstr "Określony pośrednik nie istnieje"
 
 #: src/modules/serverdb/libkviserverdb.cpp:921
 msgid "The specified server already exists"
@@ -93,11 +93,11 @@ msgstr "Musisz dostarczyć protokół jako parametr"
 #: src/modules/proxydb/libkviproxydb.cpp:552
 #: src/modules/proxydb/libkviproxydb.cpp:596
 msgid "You must provide the proxy hostname as parameter"
-msgstr "Musisz dostarczyć nazwę komputera proxy jako parametr"
+msgstr "Musisz dostarczyć nazwę hosta pośrednika jako parametr"
 
 #: src/modules/proxydb/libkviproxydb.cpp:274
 msgid "You must provide the proxy name as parameter"
-msgstr "Musisz dostarczyć nazwę proxy jako parametr"
+msgstr "Musisz dostarczyć nazwę pośrednika jako parametr"
 
 #: src/modules/serverdb/libkviserverdb.cpp:168
 #: src/modules/serverdb/libkviserverdb.cpp:267
@@ -109,3 +109,4 @@ msgstr "Musisz dostarczyć nazwę serwera jako parametr"
 #: src/modules/proxydb/libkviproxydb.cpp:602
 msgid "You must provide the value as parameter"
 msgstr "Musisz dostarczyć wartość jako parametr"
+
