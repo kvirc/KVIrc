@@ -10,13 +10,13 @@
 # Voker57 <voker57@gmail.com>, 2008.
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2009, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
-# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
+# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-27 22:18+0100\n"
-"PO-Revision-Date: 2010-12-19 21:06+0600\n"
+"PO-Revision-Date: 2011-03-05 19:43+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
@@ -172,12 +172,10 @@ msgid "%1 bytes"
 msgstr "%1 байт"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1612
-#, fuzzy
 msgid "%1 changes avatar to %2"
 msgstr "%1 изменил аватар на %2"
 
 #: src/kvilib/system/KviTimeUtils.cpp:133
-#, fuzzy
 msgid "%1 d %2 h %3 m %4 s"
 msgstr "%1 д %2 ч %3 м %4 с"
 
@@ -187,26 +185,22 @@ msgid "%1 d %2%3 h %4%5 m %6%7 s"
 msgstr "%1 д %2%3 ч %4%5 м %6%7 с"
 
 #: src/modules/mircimport/libkvimircimport.cpp:115
-#, fuzzy
 msgid ""
 "%1 doesn't look like a servers.ini file.\n"
 "Import failed."
 msgstr ""
-"%1 не выглядит как файл servers.ini.\n"
+"%1 выглядит не как файл servers.ini.\n"
 "Ошибка импорта."
 
 #: src/kvilib/system/KviTimeUtils.cpp:117
-#, fuzzy
 msgid "%1 h %2 m %3 s"
 msgstr "%1 ч %2 м %3 с"
 
 #: src/kvilib/system/KviTimeUtils.cpp:119
-#, fuzzy
 msgid "%1 h %2%3 m %4%5 s"
 msgstr "%1 ч %2%3 м %4%5 с"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:257
-#, fuzzy
 msgid "%1 has left IRC"
 msgstr "%1 покинул IRC"
 
@@ -244,12 +238,10 @@ msgid "%1 is using irc server: %2 (%3 hops)"
 msgstr "%1 использует сервер %2 (%3 прыжка)"
 
 #: src/kvilib/system/KviTimeUtils.cpp:124
-#, fuzzy
 msgid "%1 m %2 s"
 msgstr "%1 м %2 с"
 
 #: src/kvilib/system/KviTimeUtils.cpp:126
-#, fuzzy
 msgid "%1 m %2%3 s"
 msgstr "%1 м %2%3 с"
 
@@ -260,14 +252,13 @@ msgstr "%1 из %2"
 
 #: src/kvilib/system/KviTimeUtils.cpp:128
 msgid "%1 s"
-msgstr ""
+msgstr "%1 с"
 
 #: src/modules/mircimport/libkvimircimport.cpp:251
 msgid "%1 servers imported successfully"
 msgstr "%1 серверов импортированно успешно"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1606
-#, fuzzy
 msgid "%1 unsets avatar"
 msgstr "%1 отменил аватар"
 
@@ -342,9 +333,8 @@ msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] выключил лимит на канале"
 
 #: src/modules/str/libkvistr.cpp:1391 src/modules/file/libkvifile.cpp:1436
-#, fuzzy
 msgid "%Q algorithm is not supported"
-msgstr "%Q алгоритм не поддерживается"
+msgstr "Алгоритм %Q не поддерживается"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:400 src/kvirc/kernel/KviIrcContext.cpp:692
 msgid "%Q established [%s (%s:%u)]"
@@ -388,14 +378,12 @@ msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr "%c\r!n\r%Q\r%c был %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1499
-#, fuzzy
 msgid "%c\r!n\r%Q\r%c's actual host: %Q"
-msgstr "%c\r!n\r%Q\r%c каналы: %Q"
+msgstr "Настоящий хост %c\r!n\r%Q\r%c: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1495
-#, fuzzy
 msgid "%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"
-msgstr "%c\r!n\r%Q\r%c использует кодировку %Q: %Q"
+msgstr "Настоящий user@host %c\r!n\r%Q\r%c: %Q, настоящий IP: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1320
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
@@ -558,7 +546,7 @@ msgstr "&Определите пользовательские цвета >>"
 
 #: src/modules/setup/SetupWizard.cpp:477
 msgid "&Don't apply any theme"
-msgstr ""
+msgstr "&Не применять никакую тему"
 
 #: src/kvilib/system/KviLocale.cpp:1102
 msgid "&Edit Bookmarks"
@@ -606,7 +594,7 @@ msgstr "&Расположение:"
 
 #: src/modules/setup/SetupWizard.cpp:475
 msgid "&Minimalist Theme"
-msgstr ""
+msgstr "&Минималистская тема"
 
 #: src/modules/setup/SetupWizard.cpp:85
 msgid "&Next >"
@@ -857,7 +845,6 @@ msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
 msgstr "<Ctrl+Return> отправить,   <Alt+Return> скрыть этот редактор"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:977
-#, fuzzy
 msgid ""
 "<b>%1</b> (<u><font color=\"blue\"><nowrap>%2</nowrap></font></u>): "
 "<br><nowrap>+%3 (%4 users)<hr>%5</nowrap>"
@@ -866,7 +853,6 @@ msgstr ""
 "<br><nowrap>+%3 (%4 пользователей)<hr>%5</nowrap>"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:982
-#, fuzzy
 msgid ""
 "<b>%1</b> (<u><font color=\"blue\"><nowrap>%2</nowrap></font></u>)<hr>Double-"
 "click to join %3<br>Right click to view other options"
@@ -1035,16 +1021,15 @@ msgstr ""
 "лицензии показана внизу.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:492
-#, fuzzy
 msgid ""
 "<p>Here you can choose how much KVIrc will integrate with your system."
 "<br><br>The default settings are fine for most users so if you're in doubt "
 "just click \"<b>Finish</b>\" to continue.</p>"
 msgstr ""
-"<p>Здесь вы можете выбрать на сколько сильно KVIrc будет интегрирован в вашу "
+"<p>Здесь вы можете выбрать, насколько сильно KVIrc будет интегрирован в вашу "
 "систему. <br><br>Настройки по умолчанию подходят для большинства "
-"пользователей, поэтому если вы не уверены, то просто нажмите \"<b>Дальше</b>"
-"\" и перейдите к следующему экрану.</p>"
+"пользователей, поэтому, если вы не уверены, то просто нажмите \"<b>Готово</b>"
+"\".</p>"
 
 #: src/modules/setup/SetupWizard.cpp:425
 msgid ""
@@ -1056,6 +1041,15 @@ msgid ""
 "any theme in order to preserve your current visual settings.<br><br>If you "
 "don't know what to choose, just use the default.</p>"
 msgstr ""
+"<p>Здесь вы можете выбрать начальный внешний вид KVIrc.<br><br> "
+"В теме Fancy много иконок, цветов и полупрозрачный фон. "
+"Минималитская тема предназначена для малоцветных дисплеев и любителей "
+"\"консоли\", "
+"это в основном белый текст на чёрном фоне.<br><br> "
+"Если у вас уже был установлен KVIrc, можете выбрать \"Не применять никакую "
+"тему\" "
+"чтобы оставить ваши настройки без изменений.<br><br> "
+"Если не знаете, что выбрать, просто оставьте как есть.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:218
 msgid ""
@@ -1128,9 +1122,8 @@ msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr "Сделать скриншот главного окна"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:401
-#, fuzzy
 msgid "Actions"
-msgstr "Действия IRC"
+msgstr "Действия"
 
 #: src/kvirc/kernel/KviActionManager.cpp:64
 msgid "Actions related to settings"
@@ -1169,9 +1162,8 @@ msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr "На время %d сек файл %Q (%Q) доступен для %Q"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:406
-#, fuzzy
 msgid "Addons"
-msgstr "Добавить"
+msgstr "Дополнения"
 
 #: src/kvilib/core/KviError.cpp:155
 msgid "Address already in use"
@@ -1200,7 +1192,7 @@ msgstr "Псевдонимы"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:388
 msgid "All"
-msgstr ""
+msgstr "Все"
 
 #: src/kvilib/system/KviLocale.cpp:1134
 msgid "All Files"
@@ -1217,7 +1209,7 @@ msgstr "Все настройки в общей папке программ (п�
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:352
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
 msgid "Allow anybody to invite"
-msgstr ""
+msgstr "Разрешить приглашать всем"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:983
 msgid "Allows entering and leaving away state"
@@ -1291,24 +1283,23 @@ msgstr "Мне дан войс"
 #: src/modules/config/libkviconfig.cpp:545
 #: src/modules/config/libkviconfig.cpp:593
 msgid "An error has occured while trying to save the config file with id '%Q'"
-msgstr ""
+msgstr "Произошла ошибка при попытке сохранения файла конфигурации '%Q'"
 
 #: src/modules/str/libkvistr.cpp:2456
 msgid "An error occured during signature verification."
-msgstr ""
+msgstr "Произошла ошибка при проверке подписи."
 
 #: src/modules/str/libkvistr.cpp:2306
 msgid "An error occured while signing the message."
-msgstr ""
+msgstr "Произошла ошибка при подписывании сообщения."
 
 #: src/kvirc/ui/KviMdiManager.cpp:250
 msgid "Anodine's Full Grid"
 msgstr "Anodine's заполнить по сетке"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:267
-#, fuzzy
 msgid "Anonymous messages"
-msgstr "Сообщение отошёл"
+msgstr "Анонимные сообщения"
 
 #: src/kvilib/core/KviError.cpp:86
 msgid "Another connection in progress"
@@ -1507,12 +1498,10 @@ msgid "Bass"
 msgstr "Маска бана"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:361
-#, fuzzy
 msgid "Binding to local address %1"
-msgstr "Прослушиваю локальный адрес %1"
+msgstr "Привязываюсь к локальному адресу %1"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:365
-#, fuzzy
 msgid ""
 "Binding to local address %1 failed: the kernel will choose the correct "
 "interface"
@@ -1628,7 +1617,7 @@ msgstr "С &учётом регистра"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:95 src/kvirc/ui/KviConsoleWindow.cpp:97
 msgid "CONSOLE"
-msgstr ""
+msgstr "КОНСОЛЬ"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1498
 msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -1736,7 +1725,6 @@ msgid "Can't log to file %Q"
 msgstr "Не могу записать лог в файл %Q"
 
 #: src/kvilib/net/KviHttpRequest.cpp:556
-#, fuzzy
 msgid "Can't open file \"%1\" for writing"
 msgstr "Невозможно открыть файл \"%1\" на запись"
 
@@ -1994,7 +1982,6 @@ msgid "Channel IRC op"
 msgstr "Тема канала:"
 
 #: src/modules/list/ListWindow.cpp:350
-#, fuzzy
 msgid "Channel List [IRC Context %1]"
 msgstr "Список каналов [IRC Контекст %1]"
 
@@ -2003,9 +1990,8 @@ msgid "Channel Modes"
 msgstr "Режимы канала"
 
 #: src/kvirc/kernel/KviOptions.cpp:876
-#, fuzzy
 msgid "Channel URL"
-msgstr "Канал"
+msgstr "URL канала"
 
 #: src/kvirc/kernel/KviOptions.cpp:791
 msgid "Channel creation time reply"
@@ -2032,7 +2018,6 @@ msgid "Channel list begin: channel, users, topic"
 msgstr "Начало канального списка: канал, пользователи, тема"
 
 #: src/modules/list/ListWindow.cpp:384
-#, fuzzy
 msgid "Channel list for %1 - %2"
 msgstr "Список каналов для %1 - %2"
 
@@ -2097,9 +2082,8 @@ msgstr "Канал создан %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1670
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1676
-#, fuzzy
 msgid "Channel web site is %Q"
-msgstr "Тема канала: %Q"
+msgstr "Сайт канала: %Q"
 
 #: src/modules/list/ListWindow.cpp:470
 msgid "Channels list download finished"
@@ -2198,9 +2182,8 @@ msgid "Clear Buffer"
 msgstr "Очистить буфер"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:109
-#, fuzzy
 msgid "Clear Recent"
-msgstr "Очистить историю ников"
+msgstr "Очистить историю"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:774
 #: src/kvirc/kernel/KviCoreActions.cpp:789
@@ -2221,7 +2204,7 @@ msgstr "Очистить историю серверов"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:393
 msgid "Clear custom scripts"
-msgstr ""
+msgstr "Удалить ваши собственные скрипты"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:837
 msgid "Click to open this link"
@@ -2352,16 +2335,15 @@ msgstr "Подключиться/Отключиться"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1241
 msgid "Connected since"
-msgstr "Подключен с"
+msgstr "Подключён с"
 
 #: src/modules/list/ListWindow.cpp:322 src/modules/links/LinksWindow.cpp:132
-#, fuzzy
 msgid "Connected to %1 (%2)"
-msgstr "Подключен к %1 (%2)"
+msgstr "Подключён к %1 (%2)"
 
 #: src/kvilib/net/KviHttpRequest.cpp:267
 msgid "Connected to %1:%2: sending request"
-msgstr ""
+msgstr "Подключён к %1:%2: посылаю запрос"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:693
 msgid "Connection"
@@ -2419,7 +2401,6 @@ msgid "Contacting %Q %s (%s) on port %u"
 msgstr "Подключение к %Q %s (%s) через порт %u"
 
 #: src/kvilib/net/KviHttpRequest.cpp:397
-#, fuzzy
 msgid "Contacting host %1 on port %2"
 msgstr "Подключение к хосту %1 на порт %2"
 
@@ -2500,9 +2481,8 @@ msgid "Crypto++ threw the following exception: "
 msgstr "Crypto++ бросил следующее исключение: "
 
 #: src/modules/fish/libkvifish.cpp:139 src/modules/fish/libkvifish.cpp:280
-#, fuzzy
 msgid "Crypto++ threw the following exception: %1"
-msgstr "Crypto++ бросил следующее исключение: "
+msgstr "Crypto++ бросил следующее исключение: %1"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:489
 msgid ""
@@ -2636,7 +2616,7 @@ msgstr "Запрос DCC"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:158
 msgid "DNS query returned no IP address results of the requested type"
-msgstr ""
+msgstr "Запрос DNS не вернул IP адресов указанного типа"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:74
 msgid "DNS resolver busy"
@@ -2666,9 +2646,8 @@ msgid "Default"
 msgstr "По умолчанию"
 
 #: src/modules/setup/SetupWizard.cpp:482
-#, fuzzy
 msgid "Default Theme"
-msgstr "По умолчанию"
+msgstr "Тема по умолчанию"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:402
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:445
@@ -2992,12 +2971,11 @@ msgstr "Ошибка загрузки модуля"
 
 #: src/modules/file/libkvifile.cpp:322
 msgid "Error writing bytes to file %1"
-msgstr ""
+msgstr "Ошибка записи байтов в файл %1"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:421
-#, fuzzy
 msgid "Events"
-msgstr "Редактировать низкоуровневые события..."
+msgstr "События"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
@@ -3045,7 +3023,7 @@ msgstr "Экспортировать список"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3084
 msgid "Exposure"
-msgstr ""
+msgstr "Выдержка"
 
 #: src/kvirc/kernel/KviOptions.cpp:875
 #, fuzzy
@@ -3316,9 +3294,8 @@ msgstr "CTCP запрещены на канале"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:415
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:447
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:476
-#, fuzzy
 msgid "Forbid channel NOTICEs"
-msgstr "CTCP запрещены на канале"
+msgstr "Извещения NOTICE запрещены на канале"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:319
 msgid "Forbid nick change"
@@ -3514,9 +3491,8 @@ msgid "Horizontal Flip"
 msgstr "Растянуть по &горизонтали"
 
 #: src/kvilib/net/KviHttpRequest.cpp:1003
-#, fuzzy
 msgid "Host %1 resolved to %2"
-msgstr "Хост %1 имеет адрес  %2"
+msgstr "Хост %1 имеет адрес %2"
 
 #: src/kvirc/kernel/KviOptions.cpp:736
 msgid "Host lookup result"
