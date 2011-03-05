@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-27 22:18+0100\n"
-"PO-Revision-Date: 2011-03-05 19:43+0600\n"
+"PO-Revision-Date: 2011-03-06 00:55+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -3659,7 +3659,7 @@ msgstr "Проигнорировано сообщение в канал от \r!
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1597
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr ""
+msgstr "Проигнорировано приглашение от \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:776
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -3711,7 +3711,7 @@ msgstr "Вставить иконку"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:79
 msgid "Insert a nickname or a mask matching *!*@*"
-msgstr ""
+msgstr "Вставьте ник, либо маску вида *!*@*"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:545
 msgid "Install Package"
@@ -3748,9 +3748,8 @@ msgid "Internal error: call a head-shrinker"
 msgstr "Внутренняя ошибка: вызов сжимателя заголовка"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:147
-#, fuzzy
 msgid "Internal error: unhandled DNS query type"
-msgstr "Внутренняя ошибка: вызов сжимателя заголовка"
+msgstr "Внутренняя ошибка: необрабатываемый тип запроса DNS"
 
 #: src/modules/system/libkvisystem.cpp:487
 msgid "Invalid DBus interface"
@@ -3899,9 +3898,8 @@ msgid "It's so cold here..."
 msgstr "Как здесь холодно..."
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:263
-#, fuzzy
 msgid "Join"
-msgstr "&Зайти"
+msgstr "Зайти"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:755
 msgid "Join Channel"
@@ -4040,9 +4038,8 @@ msgid "KVIrc is compiled without OpenSSL support."
 msgstr "Эта сборка KVIrc не поддерживает OpenSSL"
 
 #: src/kvirc/kernel/KviOptions.cpp:957
-#, fuzzy
 msgid "KVIrc warning"
-msgstr "Общее предупреждение"
+msgstr "Предупреждение KVIrc"
 
 #: src/kvilib/core/KviError.cpp:93
 msgid "Kernel networking panic"
@@ -4087,7 +4084,6 @@ msgid "Lag meter engine disabled"
 msgstr "Выключено измерение задержки"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:324
-#, fuzzy
 msgid "Lag: %1.%2%3"
 msgstr "Задержка: %1.%2%3"
 
@@ -4116,7 +4112,7 @@ msgstr "Большие иконки"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:343
 msgid "Large ban/exempt/invex lists (staff only)"
-msgstr ""
+msgstr "Большие списки банов/исключений/приглашений (только админы)"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:289
 #, c-format
@@ -4137,7 +4133,7 @@ msgstr "Левый операнд не число"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:403
 msgid "Limit nick changes (<num>:<secs>)"
-msgstr ""
+msgstr "Ограничить смену ников (<num>:<secs>)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:272
 msgid "Limited number of users"
@@ -4232,7 +4228,6 @@ msgid "Login operations completed"
 msgstr "Действия при входе завершены"
 
 #: src/kvilib/net/KviHttpRequest.cpp:988
-#, fuzzy
 msgid "Looking up host %1"
 msgstr "Определяю адрес %1"
 
@@ -4509,21 +4504,21 @@ msgstr "Новый IRC контекст"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:409
 msgid "Need auth to change nick"
-msgstr ""
+msgstr "Для смены ника нужно авторизоваться"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:356
 msgid "Need auth to join channel"
-msgstr ""
+msgstr "Для захода нужно авторизоваться"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:318
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:367
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:408
 msgid "Need auth to speak and change nick"
-msgstr ""
+msgstr "Для разговора и для смены ника нужно авторизоваться"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:387
 msgid "Need op/voice to change nick"
-msgstr ""
+msgstr "Для смены ника нужен голос/оп"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:405
 msgid "Negotiating relay information"
@@ -4610,9 +4605,8 @@ msgid "No "
 msgstr "Нет "
 
 #: src/modules/system/libkvisystem.cpp:480
-#, fuzzy
 msgid "No DBus type specified"
-msgstr "Определена пустая цель"
+msgstr "Не указан тип DBus"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:331 src/kvirc/ui/KviStatusBar.cpp:695
 msgid "No IRC context"
@@ -4662,7 +4656,7 @@ msgstr "Не подключен"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:451
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:481
 msgid "No control codes (colors, bold, ..)"
-msgstr ""
+msgstr "Без спецкодов (цветов, выделений, ...)"
 
 #: src/modules/window/libkviwindow.cpp:1568
 msgid "No encrypt key specified: can't allocate engine"
@@ -4685,9 +4679,8 @@ msgid "No matches"
 msgstr "Не соответствует"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
-#, fuzzy
 msgid "No multitarget messages"
-msgstr "Нет внешних сообщений"
+msgstr "Нет сообщений с > 1 получателем"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:516
 msgid "No proxy hosts available, resuming direct connection"
@@ -4762,7 +4755,7 @@ msgstr "Нет пользователей в списке уведомлений
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:983
 msgid "No way to login as '\r!n\r%1\r': the server said '%2: %3'"
-msgstr ""
+msgstr "Невозможно войти как '\r!n\r%1\r': сервер сказал '%2: %3'"
 
 #: src/kvirc/kernel/KviOptions.cpp:729
 msgid "Normal text"
@@ -4790,12 +4783,10 @@ msgid "Nothing is happening..."
 msgstr "Ничего не происходит..."
 
 #: src/kvirc/ui/KviIrcView_events.cpp:950
-#, fuzzy
 msgid "Nothing known about %1"
 msgstr "Ничего не известно о %1"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:951
-#, fuzzy
 msgid "Nothing known about %1 (no connection)"
 msgstr "Ничего не известно о %1 (нет соединения)"
 
@@ -5177,9 +5168,8 @@ msgid "Own private message"
 msgstr "Приватное сообщение"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:796
-#, fuzzy
 msgid "Owner listing"
-msgstr "Список банов"
+msgstr "Список владельцев"
 
 #: src/modules/theme/PackThemeDialog.cpp:571
 msgid "Package saved successfully"
@@ -5190,17 +5180,16 @@ msgid "Package saved successfully in "
 msgstr "Пакет сохранен успешно в "
 
 #: src/kvilib/file/KviPackageWriter.cpp:167
-#, fuzzy
 msgid "Packaging file %1"
 msgstr "Упаковываю файл %1"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:483
 msgid "Paranoia"
-msgstr ""
+msgstr "Паранойя"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:354
 msgid "Paranoid (disable KNOCK)"
-msgstr ""
+msgstr "Параноик (запрещён KNOCK)"
 
 #: src/kvilib/system/KviLocale.cpp:1095
 msgid "Parent Directory"
@@ -5247,7 +5236,7 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:411
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:485
 msgid "Persistent (staff only)"
-msgstr ""
+msgstr "Постоянный (только администрация)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1274
 msgid "Pixmap options (image path)"
@@ -5275,7 +5264,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviCoreActions.cpp:807
 msgid "Please enter the new nickname"
-msgstr ""
+msgstr "Пожалуйста введите новый ник"
 
 #: src/modules/avatar/libkviavatar.cpp:74
 msgid ""
@@ -5358,18 +5347,16 @@ msgstr ""
 "использовать ключ(и) \"cbc:\".\n"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:426
-#, fuzzy
 msgid "Popups"
-msgstr "Не найдено имя всплывающего меню"
+msgstr "Всплывающие меню"
 
 #: src/kvirc/ui/KviIrcView.cpp:2290 src/kvirc/ui/KviIrcView.cpp:2343
-#, fuzzy
 msgid "Pos %1"
 msgstr "Позиция %1"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3092
 msgid "Power Line Frequency"
-msgstr ""
+msgstr "Частота тока в силовом кабеле"
 
 #: src/kvirc/ui/KviMdiManager.cpp:252
 msgid "Pragma's Horizontal 4-Grid"
@@ -5565,9 +5552,8 @@ msgid "Query with %1!%2 (%3)"
 msgstr "Приват с %1!%2 (%3)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:277
-#, fuzzy
 msgid "Quiet"
-msgstr "&Выход"
+msgstr "Тихо"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:355
 msgid "Quiet Ban Editor"
@@ -5594,9 +5580,8 @@ msgid "Quits KVIrc closing all the current connections"
 msgstr "Выход из KVIrc с закрытием всех текущих соединений"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:431
-#, fuzzy
 msgid "Raw Events"
-msgstr "Редактировать низкоуровневые события..."
+msgstr "Низкоуровневые события"
 
 #: src/kvirc/kernel/KviOptions.cpp:741
 msgid "Raw data to server"
@@ -5711,9 +5696,8 @@ msgstr "Баланс красного"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:317
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:407
-#, fuzzy
 msgid "Redirect on channel full (mode +l)"
-msgstr "Перенаправлено на полный канал"
+msgstr "Если канал полон (режим +l), перенаправлять"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:357
 msgid "Reduced moderation for ops"
@@ -5761,7 +5745,6 @@ msgid "Remote mIRC servers.ini Import Wizard"
 msgstr "Мастер удалённого импорта mIRC servers.ini"
 
 #: src/kvirc/ui/KviStatusBar.cpp:374
-#, fuzzy
 msgid "Remove %1"
 msgstr "Удалить %1"
 
@@ -5801,27 +5784,24 @@ msgid "Reset Temporary Background"
 msgstr "Сбросить временный фон"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:455
-#, fuzzy
 msgid "Restore"
-msgstr "&Восстановить"
+msgstr "Восстановить"
 
 #: src/kvirc/ui/KviMenuBar.cpp:214
 msgid "Restore &Default Script"
 msgstr "Восстановить сценарии по &умолчанию"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:111
-#, fuzzy
 msgid "Restore Default Script - Error"
-msgstr "Восстановление сценариев по умолчанию - KVirc"
+msgstr "Восстановление сценариев по умолчанию - Ошибка"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:370
 msgid "Restore Default Script - KVIrc"
 msgstr "Восстановление сценариев по умолчанию - KVirc"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:117
-#, fuzzy
 msgid "Restore Default Script - Warning"
-msgstr "Восстановление сценариев по умолчанию - KVirc"
+msgstr "Восстановление сценариев по умолчанию - Предупреждение"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1900
 msgid "Restoring pre-away nickname (%Q)"
@@ -5859,11 +5839,11 @@ msgstr "Запустить KVS скрипт"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2388
 msgid "SASL Authentication error: %Q"
-msgstr ""
+msgstr "Ошибка аутентификации SASL: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2369
 msgid "SASL authentication successful"
-msgstr ""
+msgstr "Аутентификация SASL прошла успешно"
 
 #: src/kvirc/kernel/KviOptions.cpp:841
 msgid "SSL message"
@@ -5872,6 +5852,7 @@ msgstr "Сообщение SSL"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2311
 msgid "STARTTLS reply received but SSL support is not complied in: ignoring"
 msgstr ""
+"Получен ответ STARTTLS, но KVIrc скомпилен без поддержки SSL. Игнорируем"
 
 #: src/kvilib/system/KviLocale.cpp:1089
 msgid "Sample"
@@ -5984,7 +5965,7 @@ msgstr "Выбор цвета"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:381
 msgid "Select default script's elements to restore"
-msgstr ""
+msgstr "Выберите элементы сценариев по умолчанию, которые надо восстановить"
 
 #: src/kvirc/kernel/KviOptions.cpp:730
 msgid "Selection"
@@ -6394,7 +6375,6 @@ msgid "Socket"
 msgstr "Сокет"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:80
-#, fuzzy
 msgid "Socket Spy [IRC Context %1]"
 msgstr "Сокет шпион [Контекст IRC %1]"
 
@@ -6427,9 +6407,8 @@ msgid "Socket warning"
 msgstr "Предупреждение сокета"
 
 #: src/kvilib/net/KviHttpRequest.cpp:321
-#, fuzzy
 msgid "Socket write error"
-msgstr "Ошибка сокета"
+msgstr "Ошибка записи в сокет"
 
 #: src/modules/snd/libkvisnd.cpp:725
 msgid "Sorry, I can't find a sound system to use on this machine"
@@ -6599,9 +6578,8 @@ msgid "Text"
 msgstr "Текст"
 
 #: src/kvirc/ui/KviWindow.cpp:422
-#, fuzzy
 msgid "Text Encoding"
-msgstr "&Кодировка текста"
+msgstr "Кодировка текста"
 
 #: src/kvirc/kernel/KviOptions.cpp:864
 msgid "Text Encoding Server message"
@@ -6730,7 +6708,6 @@ msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr "Ключ был кодирован не правильной шестнадцатеричной строкой"
 
 #: src/kvirc/ui/KviFileDialog.cpp:118 src/kvirc/ui/KviFileDialog.cpp:162
-#, fuzzy
 msgid "The file %1 already exists.<br>Do you wish to overwrite it?"
 msgstr "Файл %1 существует.<br>Хотите переписать его?"
 
@@ -7047,13 +7024,12 @@ msgid "This KVIrc executable has no IPV6 support"
 msgstr "KVirc собран без поддержки IPV6"
 
 #: src/kvirc/kernel/KviTheme.cpp:68
-#, fuzzy
 msgid ""
 "This KVIrc executable is too old for this theme (minimum theme engine "
 "version required is %1 while this theme engine has version %2)"
 msgstr ""
 "KVIrc слишком стар для этой темы. (минимальная требуемая версия движка темы "
-"%1 в то время как движок темы имеет версию %2)"
+"%1, в то время как движок этой темы имеет версию %2)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1002
 #, fuzzy
@@ -7236,7 +7212,7 @@ msgstr "Попробуйте подключиться с выключенным 
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:989
 msgid "Trying to use '%1' as nickname"
-msgstr ""
+msgstr "Пытаюсь использовать '%1' в качестве ника"
 
 #: src/modules/url/libkviurl.cpp:193
 msgid "URL"
@@ -7444,7 +7420,6 @@ msgid "Unloaded module '%s'"
 msgstr "Выгрузка модуля '%s'"
 
 #: src/kvilib/file/KviPackageReader.cpp:196
-#, fuzzy
 msgid "Unpacking file %1"
 msgstr "Распаковываю файл %1"
 
@@ -7519,9 +7494,8 @@ msgid "Update Indicator"
 msgstr "Индикатор обновления"
 
 #: src/kvirc/kernel/KviApplication.cpp:1011
-#, fuzzy
 msgid "Update default scripts"
-msgstr "Восстановить сценарии по &умолчанию"
+msgstr "Обновить сценарии по умолчанию"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:817
 msgid "Update failed"
@@ -7599,7 +7573,7 @@ msgstr "Пользователи"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1432
 msgid "Using '%1' as nickname"
-msgstr ""
+msgstr "Использую '%1' в качестве ника"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:678
 msgid "Using HTTP protocol."
