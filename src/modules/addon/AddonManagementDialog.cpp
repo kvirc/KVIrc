@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : managementdialog.cpp
+//   File : AddonManagementDialog.cpp
 //   Creation date : Fri 08 Apr 2005 14:54:56 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "managementdialog.h"
+#include "AddonManagementDialog.h"
 #include "PackAddonDialog.h"
 #include "AddonFunctions.h"
 

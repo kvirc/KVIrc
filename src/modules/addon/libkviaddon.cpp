@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "managementdialog.h"
+#include "AddonManagementDialog.h"
 #include "AddonFunctions.h"
 
 #include "KviModule.h"

@@ -3,14 +3,14 @@
 SET(kvireguser_MOC_HDRS
 	RegisteredUserEntryDialog.h
 	RegistrationWizard.h
-	dialog.h
+	RegisteredUsersDialog.h
 )
 
 SET(kvireguser_SRCS
 	libkvireguser.cpp
 	RegisteredUserEntryDialog.cpp
 	RegistrationWizard.cpp
-	dialog.cpp
+	RegisteredUsersDialog.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

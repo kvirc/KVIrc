@@ -2,7 +2,7 @@
 #define _MANAGEMENTDIALOG_H_
 //=============================================================================
 //
-//   File : managementdialog.h
+//   File : ThemeManagementDialog.h
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution

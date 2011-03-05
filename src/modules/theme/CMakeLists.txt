@@ -1,14 +1,14 @@
 # CMakeLists for src/modules/theme
 
 SET(kvitheme_MOC_HDRS
-	managementdialog.h
+	ThemeManagementDialog.h
 	PackThemeDialog.h
 	SaveThemeDialog.h
 )
 
 SET(kvitheme_SRCS
 	libkvitheme.cpp
-	managementdialog.cpp
+	ThemeManagementDialog.cpp
 	PackThemeDialog.cpp
 	SaveThemeDialog.cpp
 	ThemeFunctions.cpp

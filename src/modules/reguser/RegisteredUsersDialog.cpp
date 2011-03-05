@@ -26,7 +26,7 @@
 
 #include "RegisteredUserEntryDialog.h"
 #include "RegistrationWizard.h"
-#include "dialog.h"
+#include "RegisteredUsersDialog.h"
 
 #include "KviRegisteredUserDataBase.h"
 #include "KviLocale.h"

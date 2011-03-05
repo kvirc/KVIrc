@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : managementdialog.cpp
+//   File : ThemeManagementDialog.cpp
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "managementdialog.h"
+#include "ThemeManagementDialog.h"
 #include "PackThemeDialog.h"
 #include "SaveThemeDialog.h"
 #include "ThemeFunctions.h"

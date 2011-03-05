@@ -1,13 +1,13 @@
 # CMakeLists for src/modules/addon
 
 SET(kviaddon_MOC_HDRS
-	managementdialog.h
+	AddonManagementDialog.h
 	PackAddonDialog.h
 )
 
 SET(kviaddon_SRCS
 	libkviaddon.cpp
-	managementdialog.cpp
+	AddonManagementDialog.cpp
 	PackAddonDialog.cpp
 	AddonFunctions.cpp
 )

@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "managementdialog.h"
+#include "ThemeManagementDialog.h"
 #include "ThemeFunctions.h"
 
 #include "KviMessageBox.h"

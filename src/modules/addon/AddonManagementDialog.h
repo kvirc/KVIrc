@@ -2,7 +2,7 @@
 #define _MANAGEMENTDIALOG_H_
 //=============================================================================
 //
-//   File : managementdialog.h
+//   File : AddonManagementDialog.h
 //   Creation date : Fri 08 Apr 2005 14:54:56 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
