@@ -24,7 +24,7 @@
 
 #include "OptionsWidgetContainer.h"
 #include "OptionsInstanceManager.h"
-#include "dialog.h"
+#include "OptionsDialog.h"
 
 #include "KviModule.h"
 #include "KviOptions.h"

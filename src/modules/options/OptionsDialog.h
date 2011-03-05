@@ -2,7 +2,7 @@
 #define _DIALOG_H_
 //=============================================================================
 //
-//   File : dialog.h
+//   File : OptionsDialog.h
 //   Created on Fri 10 Feb 2006 18:52:18 by Szymon Stefanek
 //   Based on dlg_options.h: Tue Jun 11 2000 02:39:12 by Szymon Stefanek
 //

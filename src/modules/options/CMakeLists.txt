@@ -2,7 +2,7 @@
 
 SET(kvioptions_MOC_HDRS
 	OptionsWidgetContainer.h
-	dialog.h
+	OptionsDialog.h
 	OptionsInstanceManager.h
 	OptionsWidget_antiSpam.h
 	OptionsWidget_avatar.h
@@ -48,7 +48,7 @@ SET(kvioptions_MOC_HDRS
 SET(kvioptions_SRCS
 	libkvioptions.cpp
 	OptionsWidgetContainer.cpp
-	dialog.cpp
+	OptionsDialog.cpp
 	OptionsInstanceManager.cpp
 	OptionsWidget_antiSpam.cpp
 	OptionsWidget_avatar.cpp

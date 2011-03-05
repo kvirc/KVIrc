@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : dialog.cpp
+//   File : OptionsDialog.cpp
 //   Created on Fri 10 Feb 2006 18:52:18 by Szymon Stefanek
 //   Based on dlg_options.cpp: Tue Jun 11 2000 02:39:12 by Szymon Stefanek
 //
@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include "dialog.h"
+#include "OptionsDialog.h"
 
 #include "KviApplication.h"
 #include "KviOptions.h"
