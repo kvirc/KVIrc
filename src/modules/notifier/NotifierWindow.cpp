@@ -611,8 +611,8 @@ void NotifierWindow::paintEvent(QPaintEvent * e)
 {
 	QPainter * pPaint = new QPainter(this);
 
-	if(m_wndRect.width() != m_pWndBorder->width() || m_wndRect.height() != m_pWndBorder->height())
-		m_pWndBorder->resize(m_wndRect.size());
+	if(width() != m_pWndBorder->width() || height() != m_pWndBorder->height())
+		m_pWndBorder->resize(size());
 
 	if(m_bBlinkOn)
 	{
