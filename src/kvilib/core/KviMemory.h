@@ -60,7 +60,7 @@ namespace KviMemory
 	* \param size number of bytes
 	* \return void *
 	*/
-	void * allocate(int size);
+	KVILIB_API void * allocate(int size);
 
 	/**
 	* \brief Changes the size of the memory block pointed to by ptr to size bytes
@@ -69,7 +69,7 @@ namespace KviMemory
 	* \param size number of bytes
 	* \return void *
 	*/
-	void * reallocate(void * ptr,int size);
+	KVILIB_API void * reallocate(void * ptr,int size);
 
 	/**
 	* \brief Frees the memory space pointed to by ptr
@@ -77,7 +77,7 @@ namespace KviMemory
 	* \param ptr pointer to the memory block
 	* \return void
 	*/
-	void free(void * ptr);
+	KVILIB_API void free(void * ptr);
 
 #else //!COMPILE_MEMORY_PROFILE
 
