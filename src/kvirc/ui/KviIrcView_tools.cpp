@@ -117,13 +117,17 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 
 	// Filter tab
 
+	QLabel * pLabel = new QLabel(__tr2qs("Message types"), m_pOptionsWidget);
+	pOptionsLayout->addWidget(pLabel,0,0,1,2);
+	
 	m_pFilterView = new QTreeWidget(m_pOptionsWidget);
-	m_pFilterView->setMinimumWidth(60);
 	m_pFilterView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	m_pFilterView->setRootIsDecorated(false);
+	//FIXME hardcoded size sucks
+	m_pFilterView->setMinimumSize(QSize(200,150));
 	m_pFilterView->setColumnCount(1);
-	m_pFilterView->setHeaderLabel(__tr2qs("Message types"));
-	pOptionsLayout->addWidget(m_pFilterView,0,0,5,2);
+	m_pFilterView->header()->hide();
+	pOptionsLayout->addWidget(m_pFilterView,1,0,4,2);
 
 	m_pFilterItems = (KviIrcMessageCheckListItem **)KviMemory::allocate(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
 
@@ -148,7 +152,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterSave()));
 	pOptionsLayout->addWidget(pButton,7,1);
 
-	QLabel * pLabel = new QLabel(__tr2qs("Pattern:"),m_pOptionsWidget);
+	pLabel = new QLabel(__tr2qs("Pattern:"),m_pOptionsWidget);
 	pOptionsLayout->addWidget(pLabel,8,0);
 	m_pSearchMode = new QComboBox(m_pOptionsWidget);
 	m_pSearchMode->insertItem(PlainText, __tr2qs("Plain Text"));
