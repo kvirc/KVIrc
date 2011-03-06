@@ -469,7 +469,8 @@ public:
 		SexFemale            = 313,
 		SexBot               = 314,
 		SexIrcOp             = 315,
-		IconCount            = 316
+		MemoServ             = 316,
+		IconCount            = 317
 	};
 
 	KviIconManager();

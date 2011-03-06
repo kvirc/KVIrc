@@ -649,7 +649,7 @@ namespace KviIdentdOutputMode {
 #define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
 #define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
 
-#define KVI_NUM_MSGTYPE_OPTIONS 143
+#define KVI_NUM_MSGTYPE_OPTIONS 144
 
 
 

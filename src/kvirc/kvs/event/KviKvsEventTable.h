@@ -294,10 +294,12 @@
 * \def KviEvent_OnChanServNotice A notice from ChanServ has been received
 * \def KviEvent_OnNickServNotice A notice from NickServ has been received
 * \def KviEvent_OnNickServAuth Triggered when IRCd sets a registered user mode.
+* \def KviEvent_OnMemoServNotice A notice from MemoServ has been received
 */
 #define KviEvent_OnChanServNotice 113
 #define KviEvent_OnNickServNotice 114
 #define KviEvent_OnNickServAuth   115
+#define KviEvent_OnMemoServNotice 147
 
 // CTCPs
 /**
@@ -366,6 +368,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 147
+#define KVI_KVS_NUM_APP_EVENTS 148
 
 #endif //_KVI_KVS_EVENTTABLE_H_

@@ -2987,6 +2987,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@seealso:
 			[event:onquerynotice]OnQueryNotice[/event]
 			[event:onnickservnotice]OnNickServNotice[/event]
+			[event:onmemoservnotice]OnMemoServNotice[/event]
 	*/
 	EVENT("OnChanServNotice", \
 		"$0 = ChanServ nick\n" \
@@ -3017,6 +3018,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@seealso:
 			[event:onquerynotice]OnQueryNotice[/event]
 			[event:onchanservnotice]OnChanServNotice[/event]
+			[event:onmemoservnotice]OnMemoServNotice[/event]
 	*/
 	EVENT("OnNickServNotice", \
 		"$0 = NickServ nick\n" \
@@ -3799,6 +3801,36 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	*/
 	EVENT("OnInputBarPaste", \
 		"$0 = window id\n" \
-		"$1 = pasted text")
+		"$1 = pasted text"),
+
+	/*
+		@doc: onmemoservnotice
+		@type:
+			event
+		@title:
+			OnMemoServNotice
+		@short:
+			A notice from MemoServ has been received
+		@parameters:
+			$0 = MemoServ nick
+			$1 = MemoServ username
+			$2 = MemoServ host
+			$3 = message
+		@window:
+		console
+		@description:
+			Triggered when a notice is received and the source user is recognized as
+			the MemoServ service.<br>
+			Calling [cmd]halt[/cmd] stops the message output.
+		@seealso:
+			[event:onquerynotice]OnQueryNotice[/event]
+			[event:onnickservnotice]OnNickServNotice[/event]
+			[event:onchanservnotice]OnChanServNotice[/event]
+	*/
+	EVENT("OnMemoServNotice", \
+		"$0 = MemoServ nick\n" \
+		"$1 = MemoServ username\n" \
+		"$2 = MemoServ host\n" \
+		"$3 = message")
 
 };

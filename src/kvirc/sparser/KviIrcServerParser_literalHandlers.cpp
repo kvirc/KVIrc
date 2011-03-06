@@ -1188,6 +1188,21 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			return;
 		}
 
+		// Chanserv nick identification routine
+		if(KviQString::equalCI(szNick,"MemoServ"))
+		{
+			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnMemoServNotice,console,szNick,szUser,szHost,szMsgText))
+				msg->setHaltOutput();
+			if(!msg->haltOutput())
+			{
+				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
+					console->activeWindow() : (KviWindow *)(console);
+				pOut->output(KVI_OUT_MEMOSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
+			}
+			return;
+		}
+
 		// FIXME: PROCESS MULTIMEDIA FILE REQUESTS
 
 		// A query request
