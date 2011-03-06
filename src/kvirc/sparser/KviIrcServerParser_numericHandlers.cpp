@@ -694,12 +694,12 @@ void KviIrcServerParser::parseNumeric367(KviIrcMessage *msg)
 	{
 		if(msg->connection()->serverInfo()->supportedListModes().contains('q') && chan->sentListRequest('q'))
 		{
-			chan->setMask('q',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
+			chan->setModeInList('q',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
 			return;
 		}
 		if(chan->sentListRequest('b'))
 		{
-			chan->setMask('b',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
+			chan->setModeInList('b',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
 			return;
 		}
 	}
@@ -764,6 +764,7 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,'e',KVI_OUT_BANEXCEPT,__tr2q
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfQList,'q',KVI_OUT_BAN,__tr2qs("owner list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfAList,'a',KVI_OUT_BAN,__tr2qs("protected/admin list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("spam filter list"))
 
 #define PARSE_NUMERIC_LIST(__funcname,__modechar,__ico,__szWhatQString) \
 	void KviIrcServerParser::__funcname(KviIrcMessage *msg) \
@@ -777,7 +778,7 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop 
 		KviChannelWindow * chan = msg->connection()->findChannel(szChan); \
 		if(chan) \
 		{ \
-			chan->setMask(__modechar,banmask,true,bansetby,QString(msg->safeParam(4)).toUInt()); \
+			chan->setModeInList(__modechar,banmask,true,bansetby,QString(msg->safeParam(4)).toUInt()); \
 			if(chan->sentListRequest(__modechar))return; \
 		} \
 		if(!msg->haltOutput()) \
@@ -793,9 +794,11 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop 
 // :prefix 346 target <channel> <banmask> [bansetby] [bansetat]
 PARSE_NUMERIC_LIST(parseNumericInviteList,'I',KVI_OUT_INVITEEXCEPT,__tr2qs("Invite listing"))
 PARSE_NUMERIC_LIST(parseNumericExceptList,'e',KVI_OUT_BANEXCEPT,__tr2qs("Ban exception listing"));
+
 PARSE_NUMERIC_LIST(parseNumericQList,'q',KVI_OUT_BAN,__tr2qs("Owner listing"));
 PARSE_NUMERIC_LIST(parseNumericAList,'a',KVI_OUT_BAN,__tr2qs("Admin/protected nicks listing"));
 PARSE_NUMERIC_LIST(parseNumericReopList,'R',KVI_OUT_BAN,__tr2qs("Reop masks listing"));
+PARSE_NUMERIC_LIST(parseNumericSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("Spam filter listing"));
 
 void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 {

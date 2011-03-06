@@ -633,14 +633,6 @@ QSize KviChannelWindow::sizeHint() const
 
 void KviChannelWindow::setChannelMode(char cMode, bool bAdd)
 {
-	// skip modes that ends up in a list (bans are hardcoded)
-	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
-	if(pServerInfo || cMode == 'b')
-	{
-		if(pServerInfo->supportedListModes().contains(cMode))
-			return;
-	}
-
 	if(bAdd)
 	{
 		if(!(m_szChannelMode.contains(cMode)))
@@ -1359,9 +1351,9 @@ bool KviChannelWindow::nickChange(const QString & szOldNick, const QString & szN
 		channelAction(szNewNick,KVI_USERACTION_NICK,kvi_getUserActionTemperature(KVI_USERACTION_NICK));
 		// update any nick/mask editor; by now we limit to the q and a mode
 		if(m_pModeLists.contains('q'))
-			setMask('q', szOldNick, false, QString(), 0, szNewNick);
+			setModeInList('q', szOldNick, false, QString(), 0, szNewNick);
 		if(m_pModeLists.contains('a'))
-			setMask('a', szOldNick, false, QString(), 0, szNewNick);
+			setModeInList('a', szOldNick, false, QString(), 0, szNewNick);
 	}
 	return bWasHere;
 }
@@ -1374,9 +1366,9 @@ bool KviChannelWindow::part(const QString & szNick)
 		channelAction(szNick,KVI_USERACTION_PART,kvi_getUserActionTemperature(KVI_USERACTION_PART));
 		// update any nick/mask editor; by now we limit to the q and a mode
 		if(m_pModeLists.contains('q'))
-			setMask('q', szNick, false, QString(), 0);
+			setModeInList('q', szNick, false, QString(), 0);
 		if(m_pModeLists.contains('a'))
-			setMask('a', szNick, false, QString(), 0);
+			setModeInList('a', szNick, false, QString(), 0);
 	}
 	return bWasHere;
 }
@@ -1686,7 +1678,7 @@ int KviChannelWindow::myFlags()
 	return m_pUserListView->flags(connection()->currentNickName());
 }
 
-void KviChannelWindow::setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, QString szChangeMask)
+void KviChannelWindow::setModeInList(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, QString szChangeMask)
 {
 	if(!connection())
 		return;

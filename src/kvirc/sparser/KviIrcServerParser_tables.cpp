@@ -1028,8 +1028,8 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 937
 	0,                                               // 938
 	0,                                               // 939
-	0,                                               // 940
-	0,                                               // 941
+	PTM(parseNumericEndOfSpamFilterList),            // 940 RPL_SPAMFILTERLIST
+	PTM(parseNumericSpamFilterList),                 // 941 RPL_ENDOFSPAMFILTERLIST
 	0,                                               // 942
 	0,                                               // 943
 	0,                                               // 944

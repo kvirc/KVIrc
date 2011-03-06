@@ -307,6 +307,7 @@ public:
 	*  - e: ban exception with mask
 	*  - I: invite exception with mask
 	*  - q: channel owner with nick (unreal) or quiet ban (ircd-seven)
+	*  - g: spam filter word (inspircd)
 	* \param cMode The type of the mask
 	* \param szMask The mask set (more generically, the parameter)
 	* \param bAdd Whether to add or remove the mask
@@ -315,7 +316,7 @@ public:
 	* \param szChangeMask If bAdd is false and this string is set, the mask will be updated instead that removed
 	* \return void
 	*/
-	void setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, QString szChangeMask = QString());
+	void setModeInList(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, QString szChangeMask = QString());
 
 	/**
 	* \brief Returns the time of the last received WHO reply

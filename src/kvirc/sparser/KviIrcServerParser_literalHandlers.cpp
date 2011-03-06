@@ -1909,8 +1909,8 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 					// not existing but supported mode (channel mode a with mask)
 
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
-					// we call setMask anyway to fill the "mode q editor"
-					chan->setMask(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
+					// we call setModeInList anyway to fill the "mode q editor"
+					chan->setModeInList(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
 
 					if(aParam.contains('!'))
 					{
@@ -2024,7 +2024,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 #define CHANNEL_MODE(__modefl,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modefl: \
 				aParam = msg->connection()->decodeText(msg->safeParam(curParam++)); \
-				chan->setMask(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t()); \
+				chan->setModeInList(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t()); \
 				auxMask = new KviIrcMask(aParam); \
 				bIsMe = auxMask->matchesFixed( \
 							msg->connection()->userInfo()->nickName(), \
@@ -2054,9 +2054,33 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 
 			default:
 			// check if the mode "eats" a parameter
-			if(msg->connection()->serverInfo()->supportedParameterModes().contains(*aux)
-				|| (msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux) && bSet)
-				|| msg->connection()->serverInfo()->supportedListModes().contains(*aux))
+			if(msg->connection()->serverInfo()->supportedListModes().contains(*aux))
+			{
+				/*
+				 * Examples:
+				 * spam filter with parameter like mode "g" in inspircd
+				 */
+				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
+				chan->setModeInList(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
+
+				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				{
+					if(aParam.isEmpty())
+					{
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
+							&szNickBuffer,&szUser,&szHostBuffer,
+							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
+					} else {
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							&szNickBuffer,&szUser,&szHostBuffer,
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+					}
+				}
+
+			} else if(msg->connection()->serverInfo()->supportedParameterModes().contains(*aux)
+				|| (msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux) && bSet))
 			{
 				/*
 				 * Examples:

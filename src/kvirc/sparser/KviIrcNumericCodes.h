@@ -378,8 +378,10 @@
 #define RPL_SASLFAILED       904 /* :lindbohm.freenode.net 904 * :SASL authentication failed */
 #define RPL_SASLERROR        905 // sasl message too long
 #define RPL_SASLABORT        906 // sasl authentication aborted
-#define RPL_SASLALREADYAUTH  907 // You have already completed SASL authentication
+#define RPL_ENDOFSPAMFILTERLIST  940 // <nick> <channel> :End of channel spamfilter list
+#define RPL_SPAMFILTERLIST  941 // <nick> <channel> <spamfilter>
 
+ 	
 ///* 303 */	RPL_ISON, ":",
 ///* 304 */	RPL_TEXT, (char *)NULL,
 ///* 305 */	RPL_UNAWAY, ":You are no longer marked as being away",
