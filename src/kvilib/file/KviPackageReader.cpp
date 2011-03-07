@@ -171,11 +171,11 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	// no attacks please :)
 	szFileName.replace(QString("..\\"),QString(""));
-	szFileName.replace(QString("..//"),QString(""));
+	szFileName.replace(QString("../"),QString(""));
 
 	KviFileUtils::adjustFilePath(szFileName);
 
-	int idx = szFileName.lastIndexOf(QChar(KVI_PATH_SEPARATOR_CHAR),0,Qt::CaseSensitive);
+	int idx = szFileName.lastIndexOf(QChar(KVI_PATH_SEPARATOR_CHAR));
 	if(idx != -1)
 	{
 		QString szPrefixPath = szFileName.left(idx);
