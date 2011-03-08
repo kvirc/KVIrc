@@ -1780,7 +1780,7 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 
 	m_iLastCursorXPosition += (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 
-	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
+	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN && m_iFirstVisibleChar < m_szTextBuffer.size())
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
 

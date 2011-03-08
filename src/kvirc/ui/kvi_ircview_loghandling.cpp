@@ -74,8 +74,7 @@ void KviIrcView::stopLogging()
 				bytes=m_pLogFile->readAll();
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
-				QString szFname=fi.absolutePath()+QString("/")+fi.completeBaseName();
-				gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(),"ab9");
+				gzFile file=gzopen(QFile::encodeName(fi.absoluteFilePath()).data(),"ab9"); 
 				if(file)
 				{
 					gzwrite(file,bytes.data(),bytes.size());

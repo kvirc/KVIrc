@@ -66,8 +66,8 @@ KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
 }
 
 
-KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(QTreeWidget * v,KviChannelTreeWidgetItemData * pData)
-: QTreeWidgetItem(v), m_pData(pData)
+KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(KviChannelTreeWidgetItemData * pData)
+: QTreeWidgetItem(), m_pData(pData)
 {
 }
 
@@ -515,10 +515,11 @@ void KviListWindow::processData(KviIrcMessage * pMsg)
 
 void KviListWindow::flush()
 {
-	m_pTreeWidget->setUpdatesEnabled(true); /* for v_scroolbar */
+	m_pTreeWidget->setUpdatesEnabled(false); /* for v_scroolbar */
 	while(KviChannelTreeWidgetItemData * d = m_pItemList->first())
 	{
-		(void)new KviChannelTreeWidgetItem(m_pTreeWidget,d);
+		m_pTreeWidget->addTopLevelItem(new KviChannelTreeWidgetItem(d)); 
+
 		m_pItemList->removeFirst();
 	}
 	m_pTreeWidget->setUpdatesEnabled(true);

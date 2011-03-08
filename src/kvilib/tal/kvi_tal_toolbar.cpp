@@ -66,13 +66,13 @@
 
 	bool KviTalToolBar::usesBigPixmaps()
 	{
-		return (iconSize().width() > 40);
+		return (iconSize().width() > 30);
 	}
 
 	void KviTalToolBar::setUsesBigPixmaps(bool bUse)
 	{
 		if(bUse)
-			setIconSize(QSize(48,48));
+			setIconSize(QSize(32,32));
 		else
 			setIconSize(QSize(22,22));
 	}

@@ -175,6 +175,8 @@ bool KviModuleManager::loadModule(const QString &modName)
 	}
 
 	QLibrary* pLibrary = new QLibrary(tmp);
+	pLibrary->setLoadHints(QLibrary::ExportExternalSymbolsHint);
+
 	if(!pLibrary->load())
 	{
 		m_szLastError = pLibrary->errorString();

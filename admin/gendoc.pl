@@ -69,7 +69,7 @@ $g_prefixes{'class'}="class";
 $g_prefixes{'module'}="module";
 $g_prefixes{'widget'}="widget";
 
-$g_version = "4.0.0";
+$g_version = "4.0.4";
 $g_filehandle="";
 $g_shortsIdx{"keyterms"}=0;
 $g_directory = "";

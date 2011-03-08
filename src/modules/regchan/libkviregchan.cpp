@@ -231,7 +231,6 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 					);
 			}
 		}
-		++it;
 	}
 
 	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Total %d channels","register"),tot);

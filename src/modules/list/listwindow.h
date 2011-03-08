@@ -66,7 +66,7 @@ class KviChannelTreeWidgetItem : public QTreeWidgetItem
 {
 	friend class KviListWindow;
 public:
-	KviChannelTreeWidgetItem(QTreeWidget * pWidget, KviChannelTreeWidgetItemData * pData);
+	KviChannelTreeWidgetItem(KviChannelTreeWidgetItemData * pData);
 	~KviChannelTreeWidgetItem();
 private:
 	KviChannelTreeWidgetItemData * m_pData;

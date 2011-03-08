@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '4.0.3'
+!define VERSION '4.0.4'
 !define RELEASE_NAME 'Insomnia'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
@@ -15,9 +15,9 @@ Name "KVIrc"
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
 ; Svn release, eg: KVIrc-4.0.0-rc3-dev-r4300.exe
-OutFile KVIrc-${VERSION}-${RELEASE_VERSION}-dev.exe
-; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
-;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
+;OutFile KVIrc-${VERSION}-${RELEASE_VERSION}-dev.exe
+; Stable version, eg: KVIrc-4.0.4-Insomnia.exe
+OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
 SetCompressor /SOLID lzma
 XPStyle on
