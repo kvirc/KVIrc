@@ -198,7 +198,6 @@ protected:
 	virtual void paintEvent(QPaintEvent *);
 	virtual void resizeEvent(QResizeEvent *);
 	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseRealPressEvent(QMouseEvent * e);
 	virtual void mouseReleaseEvent(QMouseEvent *);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void mouseMoveEvent(QMouseEvent * e);
@@ -211,6 +210,7 @@ protected:
 	void maybeTip(const QPoint & pnt);
 	virtual void leaveEvent(QEvent *);
 private:
+	void triggerMouseRelatedKvsEvents(QMouseEvent * e);
 	void setCursorLine(KviIrcViewLine * l);
 	void ensureLineVisible(KviIrcViewLine * pLineToShow);
 	KviIrcViewLine * getVisibleLineAt(int yPos);

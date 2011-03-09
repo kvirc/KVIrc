@@ -241,63 +241,65 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 
 void KviIrcView::mousePressEvent(QMouseEvent * e)
 {
-	if(m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
+	if(m_pKviWindow->input())
+		m_pKviWindow->input()->setFocus();
 
-	if(e->button() & Qt::LeftButton)
+	if(!(e->button() & Qt::LeftButton))
 	{
-		// We are inside the line marker
-		if(checkMarkerArea(m_lineMarkArea,e->pos()))
-		{
-			scrollToMarker();
-		}
+		triggerMouseRelatedKvsEvents(e);
+		return;
+	}
+	
+	// Left button handler
+
+	// We are inside the line marker
+	if(checkMarkerArea(m_lineMarkArea,e->pos()))
+	{
+		scrollToMarker();
 	}
 
-	if(e->button() & Qt::LeftButton)
+	// This is the beginning of a selection...
+	// We just set the mouse to be "down" and
+	// await mouseMove events...
+
+	m_pSelectionInitLine = getVisibleLineAt(e->pos().y());
+	m_pSelectionEndLine = m_pSelectionInitLine;
+	if(m_pSelectionInitLine)
 	{
-		// This is the beginning of a selection...
-		// We just set the mouse to be "down" and
-		// await mouseMove events...
-
-		m_pSelectionInitLine = getVisibleLineAt(e->pos().y());
-		m_pSelectionEndLine = m_pSelectionInitLine;
-		if(m_pSelectionInitLine)
-		{
-			m_iSelectionInitCharIndex = getVisibleCharIndexAt(m_pSelectionInitLine, e->pos().x(), e->pos().y());
-			m_iSelectionEndCharIndex=m_iSelectionInitCharIndex;
-		}
-
-		if(m_pToolWidget)
-		{
-			m_pCursorLine = m_pSelectionInitLine;
-			repaint();
-		}
-
-		m_mousePressPos   = e->pos();
-		m_mouseCurrentPos = e->pos();
-
-		m_bMouseIsDown = true;
-
-		m_bShiftPressed = (e->modifiers() & Qt::ShiftModifier);
+		m_iSelectionInitCharIndex = getVisibleCharIndexAt(m_pSelectionInitLine, e->pos().x(), e->pos().y());
+		m_iSelectionEndCharIndex=m_iSelectionInitCharIndex;
 	}
 
-	if(e->button() & Qt::LeftButton)
+	if(m_pToolWidget)
 	{
-		if(m_iMouseTimer)
-		{
-			killTimer(m_iMouseTimer);
-			m_iMouseTimer=0;
-			delete m_pLastEvent;
-			m_pLastEvent = 0;
-		} else {
-			m_iMouseTimer = startTimer(QApplication::doubleClickInterval());
-			m_pLastEvent = new QMouseEvent(*e);
-		}
+		m_pCursorLine = m_pSelectionInitLine;
+		repaint();
+	}
+
+	m_mousePressPos   = e->pos();
+	m_mouseCurrentPos = e->pos();
+
+	m_bMouseIsDown = true;
+
+	m_bShiftPressed = (e->modifiers() & Qt::ShiftModifier);
+
+	if(m_iMouseTimer) // clicked at least twice within the doubleClickInterval(): this is a double click then...
+	{
+		killTimer(m_iMouseTimer);
+		m_iMouseTimer=0;
+		delete m_pLastEvent;
+		m_pLastEvent = 0;
 	} else {
-		mouseRealPressEvent(e);
+		// This is used to avoid triggering the single click KVS events
+		// if a double click is issued instead...
+		// We actually trigger the click event after the double click interval
+		// is elapsed without a second click.
+		m_iMouseTimer = startTimer(QApplication::doubleClickInterval());
+		m_pLastEvent = new QMouseEvent(*e);
 	}
 }
 
-void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
+void KviIrcView::triggerMouseRelatedKvsEvents(QMouseEvent *e)
 {
 	QString linkCmd;
 	QString linkText;
@@ -313,7 +315,6 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 
 	pParams->append(linkText);
 	pParams->append(szCmd);
-
 
 	if(!(e->modifiers() & Qt::ControlModifier))//(e->button() & Qt::RightButton) && (
 	{
@@ -750,18 +751,23 @@ void KviIrcView::timerEvent(QTimerEvent *e)
 	if(e->timerId() == m_iSelectTimer)
 	{
 		repaint();
+		return;
 	}
+
 	if(e->timerId() == m_iMouseTimer)
 	{
 		killTimer(m_iMouseTimer);
 		m_iMouseTimer=0;
-		mouseRealPressEvent(m_pLastEvent);
+		triggerMouseRelatedKvsEvents(m_pLastEvent);
 		delete m_pLastEvent;
 		m_pLastEvent=0;
+		return;
 	}
+
 	if(e->timerId() == m_iFlushTimer)
 	{
 		flushLog();
+		return;
 	}
 }
 

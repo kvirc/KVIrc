@@ -1124,6 +1124,10 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 		KviIrcMask talker(szNick,szUser,szHost);
 		KviNickServRule * rule = 0;
+
+		// Figure out early if we have a query window open: if we have it then use it unconditionally
+		KviQueryWindow * query = msg->connection()->findQuery(szNick);
+
 		//check per-network nickserver settings
 		KviNickServRuleSet * r = msg->connection()->target()->network()->nickServRuleSet();
 		if(r)
@@ -1145,6 +1149,9 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				msg->setHaltOutput();
 			if(!msg->haltOutput())
 			{
+				if(query)
+					goto output_to_query_window; // use the query unconditionally
+			
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
@@ -1166,6 +1173,9 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				msg->setHaltOutput();
 			if(!msg->haltOutput())
 			{
+				if(query)
+					goto output_to_query_window; // use the query unconditionally
+
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
@@ -1181,6 +1191,9 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				msg->setHaltOutput();
 			if(!msg->haltOutput())
 			{
+				if(query)
+					goto output_to_query_window; // use the query unconditionally
+
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				pOut->output(KVI_OUT_CHANSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
@@ -1196,6 +1209,9 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				msg->setHaltOutput();
 			if(!msg->haltOutput())
 			{
+				if(query)
+					goto output_to_query_window; // use the query unconditionally
+
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				pOut->output(KVI_OUT_MEMOSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
@@ -1207,7 +1223,6 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 
 		// A query request
 		// do we have a matching window ?
-		KviQueryWindow * query = msg->connection()->findQuery(szNick);
 
 		if(!query)
 		{
@@ -1276,6 +1291,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		// ok, now we either have a query or not
 		if(query)
 		{
+output_to_query_window:
 			// ok, we have the query. Trigger the user action anyway
 			query->userAction(szNick,szUser,szHost,KVI_USERACTION_NOTICE);
 			// decrypt it if needed
