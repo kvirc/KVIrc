@@ -993,7 +993,6 @@ msgstr ""
 "inferior.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:492
-#, fuzzy
 msgid ""
 "<p>Here you can choose how much KVIrc will integrate with your system."
 "<br><br>The default settings are fine for most users so if you're in doubt "
@@ -1001,7 +1000,7 @@ msgid ""
 msgstr ""
 "<p>Aquí puedes elegir qué nivel de integración tendrá KVIrc con tu sistema."
 "<br><br>La configuración por defecto es correcta para la mayoría de usuarios "
-"así que, ante la duda, simplemente haz clic en \"<b>Siguiente</b>\" para "
+"así que, ante la duda, simplemente haz clic en \"<b>Finalizar</b>\" para "
 "pasar a la siguiente pantalla.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:425
@@ -2457,9 +2456,8 @@ msgid "Crypto++ threw the following exception: "
 msgstr "Crypto++ lanzó la siguiente excepción: "
 
 #: src/modules/fish/libkvifish.cpp:139 src/modules/fish/libkvifish.cpp:280
-#, fuzzy
 msgid "Crypto++ threw the following exception: %1"
-msgstr "Crypto++ lanzó la siguiente excepción: "
+msgstr "Crypto++ lanzó la siguiente excepción: %1"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:489
 msgid ""
@@ -3035,9 +3033,8 @@ msgid "Failed to execute the init routine"
 msgstr "Fallo al ejecutar la rutina de inicio"
 
 #: src/modules/fish/libkvifish.cpp:304
-#, fuzzy
 msgid "Failed to initialize the Mircryption engine: %Q"
-msgstr "Fallo al iniciar el motor de cifrado especificado: %Q"
+msgstr "Fallo al iniciar el motor Mircryption: %Q"
 
 #: src/modules/window/libkviwindow.cpp:1593
 msgid "Failed to initialize the specified crypt engine: %Q"
@@ -3133,34 +3130,32 @@ msgid "Female"
 msgstr "Mujer"
 
 #: src/modules/fish/libkvifish.cpp:181 src/modules/fish/libkvifish.cpp:284
-#, fuzzy
 msgid ""
 "FiSH has been compiled without ssl and crypto++ support, unable to proceed"
-msgstr "Este ejecutable se compiló sin soporte de cifrado"
+msgstr ""
+"Este ejecutable se compiló sin soporte ssl o crypto++, no se puede continuar"
 
 #: src/modules/fish/libkvifish.cpp:144
-#, fuzzy
 msgid ""
 "FiSH has been compiled without ssl or cryptopp support, unable to proceed"
-msgstr "Este ejecutable se compiló sin soporte de cifrado"
+msgstr ""
+"FiSH se compiló sin soporte ssl o crypto++, no se puede continuar"
 
 #: src/modules/fish/libkvifish.cpp:311
-#, fuzzy
 msgid "FiSH: Key for %1 successfully set!"
-msgstr "Descargado correctamente el fichero en %1"
+msgstr "FiSH: ¡clave para %1 configurada con éxito!"
 
 #: src/modules/fish/libkvifish.cpp:189
 msgid "FiSH: Received DH1080 public key from %1, sending mine..."
-msgstr ""
+msgstr "FiSH: Recibida clave pública DH1080 de %1, enviando la mía..."
 
 #: src/modules/fish/libkvifish.cpp:334
-#, fuzzy
 msgid "FiSH: Sent my DH1080 public key to %1, waiting for reply ..."
-msgstr "Enviada petición de lista, esperando respuesta..."
+msgstr "FiSH: Enviada mi clave pública DH1080 a %1, esperando respuesta..."
 
 #: src/modules/fish/libkvifish.cpp:245 src/modules/fish/libkvifish.cpp:269
 msgid "FiSH: error verificating peer public key (size=%1)"
-msgstr ""
+msgstr "FiSH: error verificando la clave pública del compañero (tamaño %1)"
 
 #: src/kvilib/ext/KviMediaManager.cpp:327
 msgid "Fifo"
@@ -3966,9 +3961,8 @@ msgid "KVIrc KVS Script"
 msgstr "Script KVS de KVIrc"
 
 #: src/kvirc/kernel/KviApplication.cpp:751
-#, fuzzy
 msgid "KVIrc Messaging"
-msgstr "Sistema de mensajería de KVIrc"
+msgstr "Mensajería de KVIrc"
 
 #: src/kvirc/ui/KviMenuBar.cpp:122
 msgid "KVIrc Russian Home&page"
@@ -5519,9 +5513,8 @@ msgid "Query encrypted private message"
 msgstr "Pedir mensaje privado cifrado"
 
 #: src/modules/fish/libkvifish.cpp:233
-#, fuzzy
 msgid "Query not found: %Q"
-msgstr "máquina no encontrada"
+msgstr "Privado no encontrado: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:808
 msgid "Query notice"
@@ -6582,9 +6575,8 @@ msgid "The DBus call returned an error \"%s\": %s"
 msgstr "La llamada DBus devolvió un error \"%s\": %s"
 
 #: src/modules/fish/libkvifish.cpp:308
-#, fuzzy
 msgid "The Mircryption crypt engine does not exist"
-msgstr "El motor de cifrado \"%Q\" no existe"
+msgstr "El motor de cifrado Mircryption no existe"
 
 #: src/kvilib/core/KviError.cpp:117
 msgid "The SOCKSv4 protocol lacks IPv6 support"
@@ -6880,9 +6872,8 @@ msgstr ""
 "contexto"
 
 #: src/modules/window/libkviwindow.cpp:1157
-#, fuzzy
-msgid "The specified Icon does not exists: switching to 'none'"
-msgstr "El directorio especificado no existe '%Q'"
+msgid "The specified Icon does not exist: switching to 'none'"
+msgstr "El icono especificado no existe: cambiando a 'ninguno'"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:474
 msgid "The specified bind address (%Q) is not valid"

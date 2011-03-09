@@ -1,6 +1,6 @@
 # translation of addon_es.po to spanish
 #
-# egns <grannost@gmail.com>, 2010.
+# egns <grannost@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
@@ -24,9 +24,8 @@ msgid "Addon Packaging Warning"
 msgstr "Problema al empaquetar el addon"
 
 #: src/modules/addon/AddonFunctions.cpp:231
-#, fuzzy
 msgid "Addon Unpack Warning"
-msgstr "Problema al empaquetar el addon"
+msgstr "Problema al desempaquetar el addon"
 
 #: src/modules/addon/libkviaddon.cpp:583
 msgid "Addon registration failed"
@@ -122,7 +121,7 @@ msgstr "Exportar addon - KVIrc"
 
 #: src/modules/addon/AddonFunctions.cpp:231
 msgid "Failed to delete the directory '%1'"
-msgstr ""
+msgstr "Error al eliminar el directorio '%1'"
 
 #: src/modules/addon/AddonFunctions.cpp:218
 msgid "Failed to unpack the selected file: %1"

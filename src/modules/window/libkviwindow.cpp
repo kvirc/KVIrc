@@ -1154,7 +1154,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QPixmap *pPix=g_pIconManager->getImage(szIcon);
 	if(!pPix){
 
-	    c->warning(__tr2qs("The specified Icon does not exists: switching to 'none'"));
+	    c->warning(__tr2qs("The specified Icon does not exist: switching to 'none'"));
 	    szIcon.prepend("$icon(");
 	    szIcon.append(")");
 	}

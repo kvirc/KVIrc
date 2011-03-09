@@ -1503,6 +1503,11 @@ msgid ""
 "a deeper call stack which will help you identifying the scripting problems.</"
 "center>"
 msgstr ""
+"<center>Esta opción mostrará los errores y advertencias de los scripts también "
+"en la ventana especial de depuración. De este modo, el vigilar el funcionamiento "
+"de los scripts que se estén ejecutando en varias ventanas será más fácil. Los "
+"mensajes de la ventana de depuración también contienen una pila de llamadas más "
+"larga, para ayudarte a identificar los problemas de tu script.</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:279
 msgid ""
@@ -1900,11 +1905,11 @@ msgstr "Alternativos..."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:318
 msgid "Always open as minimized"
-msgstr "Siempre abrir como minimizado"
+msgstr "Siempre abrir minimizado"
 
 #: src/modules/options/OptionsWidget_channel.cpp:79
 msgid "Always open channels as minimized"
-msgstr "Siempre abrir los canales como minimizados"
+msgstr "Siempre abrir los canales minimizados"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:194
 msgid "Always open transfer window as minimized"
@@ -3565,9 +3570,8 @@ msgid "Open all minimized"
 msgstr "Abrir todos minimizados"
 
 #: src/modules/options/OptionsWidget_query.cpp:58
-#, fuzzy
 msgid "Open incoming queries as minimized"
-msgstr "Siempre abrir los privados como minimizados"
+msgstr "Abrir los privados entrantes minimizados"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:316
 #: src/modules/options/OptionsWidget_dcc.cpp:351
@@ -3577,7 +3581,7 @@ msgstr "Abrir minimizado cuando se acepte automáticamente"
 #: src/modules/options/OptionsWidget_dcc.cpp:176
 msgid "Open transfer window as minimized when auto-accepted"
 msgstr ""
-"Abrir la ventana de transferencias como minimizada cuando sea auto-aceptada"
+"Abrir la ventana de transferencias minimizada cuando sea auto-aceptada"
 
 #: src/modules/options/OptionsWidget_identity.cpp:400
 msgid "Other:"
@@ -4298,6 +4302,9 @@ msgid ""
 "\"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" advanced "
 "settings."
 msgstr ""
+"Ten en cuenta que si estás usando KDE, esto no funcionará si has configurado "
+"\"Mantener miniaturas de las ventanas\" como \"Siempre\" en las opciones "
+"avanzadas de \"Efectos del escritorio\"."
 
 #: src/modules/options/OptionsWidget_sound.cpp:74
 #: src/modules/options/OptionsWidget_sound.cpp:89
@@ -5199,19 +5206,3 @@ msgstr "lista,usuarios,canal"
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:91
 msgid "within:"
 msgstr "cada:"
-
-#~ msgid ""
-#~ "<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
-#~ "center>"
-#~ msgstr ""
-#~ "<center>Valor mínimo: <b>0 seg<s/b><br>Valor máximo: <b>60 segs</b></"
-#~ "center>"
-
-#~ msgid "Enable STARTTLS protocol"
-#~ msgstr "Activar el protocolo STARTTLS"
-
-#~ msgid "Maximum width:"
-#~ msgstr "Ancho máxima:"
-
-#~ msgid "Use CAP protocol"
-#~ msgstr "Usar el protocolo CAP"
