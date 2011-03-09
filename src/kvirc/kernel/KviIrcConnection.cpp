@@ -1747,6 +1747,11 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	// FIXME: It should be possible to delay the channel join process after identification
 	//        (or maybe just delay by a fixed amount ?)
 	//        (or maybe retry joining after a while ?)
+	//
+	// It's quite hard to figure out when the identification has taken place.
+	// There is no standard for this purpose. We might look at a special NOTICE by NickServ
+	// but the format is not well defined and we would need to make it user configurable.
+	// Not very reliable, actually :/
 	
 	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
 

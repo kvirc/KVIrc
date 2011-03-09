@@ -101,6 +101,9 @@
 //22 (0001 0110) SYN (Synchronous idle)
 //3  (0000 0011) ETX (End of text)
 
+// FIXME: Recent versions of mIrc use 29 as Italic text escape.
+//        This collides with our icon escape and creates a backward compatibility problem if we want to follow mIrc.
+
 //
 // Irc control codes
 //
