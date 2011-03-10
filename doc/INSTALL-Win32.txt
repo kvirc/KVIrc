@@ -76,6 +76,20 @@ Prerequisites
 
     # ppm install dmake
 
+- Zlib compiled for Win32
+
+  [Compression library; needed for many stuffs, mandatory]
+
+  MinGW offers a zlib package: You'll need to download from 
+  http://sourceforge.net/projects/mingw/ the packages:
+
+      libz-1.2.3-1-mingw32-dll-1.tar.gz
+      libz-1.2.3-1-mingw32-dev-1.tar.gz
+
+  Search them on the MinGW project files download page.
+
+  Install the lib somewhere (like c:\zlib) and remember its path.
+
 - OpenSSL compiled for Win32
 
   [Enc/Decrypt library; needed to secure your irc sessions, optional]
@@ -110,20 +124,6 @@ Prerequisites
 
   Whatever way you choose, install OpenSSL somewhere (like C:\OpenSSL)
   and remember the path.
-
-- Zlib compiled for Win32
-
-  [Compression library; needed for many stuffs, optional]
-
-  MinGW offers a zlib package: You'll need to download from 
-  http://sourceforge.net/projects/mingw/ the packages:
-
-      libz-1.2.3-1-mingw32-dll-1.tar.gz
-      libz-1.2.3-1-mingw32-dev-1.tar.gz
-
-  Search them on the MinGW project files download page.
-
-  Install the lib somewhere (like c:\zlib) and remember its path.
 
 - Python for Win32
 
