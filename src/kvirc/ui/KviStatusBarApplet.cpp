@@ -309,8 +309,7 @@ void KviStatusBarLagIndicator::updateDisplay()
 {
 	KviIrcContext * c = statusBar()->frame()->activeContext();
 
-	if(!c) return;
-	if(c->isConnected())
+	if(c && c->isConnected())
 	{
 		KviIrcConnection * ic = c->connection();
 		if(ic->lagMeter())
