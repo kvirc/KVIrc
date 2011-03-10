@@ -70,11 +70,17 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 #endif
 
 	m_pHttpHandler=addStringSelector(gbox,__tr2qs_ctx("<b>http://</b> handler command:","options"),KviOption_stringUrlHttpCommand);
+	m_pHttpHandler->setMinimumLabelWidth(225);
 	m_pHttpsHandler=addStringSelector(gbox,__tr2qs_ctx("<b>https://</b> handler command:","options"),KviOption_stringUrlHttpsCommand);
+	m_pHttpsHandler->setMinimumLabelWidth(225);
 	m_pFtpHandler=addStringSelector(gbox,__tr2qs_ctx("<b>ftp://</b> handler command:","options"),KviOption_stringUrlFtpCommand);
+	m_pFtpHandler->setMinimumLabelWidth(225);
 	m_pMailtoHandler=addStringSelector(gbox,__tr2qs_ctx("<b>mailto:</b> handler command:","options"),KviOption_stringUrlMailtoCommand);
+	m_pMailtoHandler->setMinimumLabelWidth(225);
 	m_pFileHandler=addStringSelector(gbox,__tr2qs_ctx("<b>file://</b> handler command:","options"),KviOption_stringUrlFileCommand);
+	m_pFileHandler->setMinimumLabelWidth(225);
 	m_pOtherHandler=addStringSelector(gbox,__tr2qs_ctx("Unknown protocol handler command:","options"),KviOption_stringUrlUnknownCommand);
+	m_pOtherHandler->setMinimumLabelWidth(225);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pHttpHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));

@@ -354,8 +354,8 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget *p):KviOptionsWidget(p)
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Force half-duplex mode on sound device","options"), KviOption_boolDccVoiceForceHalfDuplex);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Volume slider controls PCM, not Master","options"), KviOption_boolDccVoiceVolumeSliderControlsPCM);
 
-	addStringSelector(0,4,0,4,__tr2qs_ctx("Sound device:","options"), KviOption_stringDccVoiceSoundDevice);
-	addStringSelector(0,5,0,5,__tr2qs_ctx("Mixer device:","options"), KviOption_stringDccVoiceMixerDevice);
+	addStringSelector(0,4,0,4,__tr2qs_ctx("Sound device:","options"), KviOption_stringDccVoiceSoundDevice)->setMinimumLabelWidth(150);
+	addStringSelector(0,5,0,5,__tr2qs_ctx("Mixer device:","options"), KviOption_stringDccVoiceMixerDevice)->setMinimumLabelWidth(150);
 
 	KviUIntSelector * u = addUIntSelector(0,6,0,6,__tr2qs_ctx("Pre-buffer size:","options"), KviOption_uintDccVoicePreBufferSize, 2048, 65536, 32000);
 	u->setSuffix(" bytes");

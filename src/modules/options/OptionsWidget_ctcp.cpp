@@ -45,11 +45,13 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 
 	KviTalGroupBox *gs = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("CTCP Replies","options"));
 	KviStringSelector * s = addStringSelector(gs, __tr2qs_ctx("Append to VERSION reply:","options"),KviOption_stringCtcpVersionPostfix);
+	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
 		__tr2qs_ctx("<center>This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.</center>","options"));
 
 	s = addStringSelector(gs, __tr2qs_ctx("Append to SOURCE reply:","options"),KviOption_stringCtcpSourcePostfix);
+	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
 		__tr2qs_ctx("<center>This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.</center>","options"));
@@ -60,6 +62,7 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 //		__tr2qs_ctx("<center>This is the CTCP USERINFO reply.<br>It can contain some information about yourself.</center>","options"));
 
 	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:","options"),KviOption_stringCtcpPageReply);
+	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
 		__tr2qs_ctx("<center>This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgement for CTCP PAGE messages.</center>","options"));

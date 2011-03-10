@@ -116,23 +116,23 @@ msgstr "<b>Nota:</b> Debes reiniciar KVIrc para aplicar un cambio de idioma."
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:76
 msgid "<b>file://</b> handler command:"
-msgstr "Comando manejador de <b>file://</b>"
+msgstr "Manejador de <b>file://</b>"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:74
 msgid "<b>ftp://</b> handler command:"
-msgstr "Comando manejador de <b>ftp://</b>"
+msgstr "Manejador de <b>ftp://</b>"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:72
 msgid "<b>http://</b> handler command:"
-msgstr "Comando manejador de <b>http://</b>"
+msgstr "Manejador de <b>http://</b>"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:73
 msgid "<b>https://</b> handler command:"
-msgstr "Comando manejador de <b>https://</b>"
+msgstr "Manejador de <b>https://</b>"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:75
 msgid "<b>mailto:</b> handler command:"
-msgstr "Comando manejador de <b>mailto:</b>"
+msgstr "Manejador de <b>mailto:</b>"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:39
 msgid ""
@@ -2843,9 +2843,7 @@ msgstr "Resaltar siempre los mensajes que contengan mi nick"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
 msgid "Highlight only whole words splitting on space and on:"
-msgstr ""
-"Resaltar sólo palabras completas usando el espacio y los siguientes "
-"separadores de palabras:"
+msgstr "Resaltar sólo palabras completas separadas por espacios y:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:340
 msgid "Highlighted message in inactive window"
@@ -3630,7 +3628,7 @@ msgstr "Opacidad de la ventana padre:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:663
 msgid "Part message:"
-msgstr "Mensaje de salida de canal:"
+msgstr "Salida de canal:"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:120
 #: src/modules/options/OptionsWidget_servers.cpp:152
@@ -3875,7 +3873,7 @@ msgstr "Discreto"
 
 #: src/modules/options/OptionsWidget_identity.cpp:669
 msgid "Quit message:"
-msgstr "Mensaje de salida de IRC:"
+msgstr "Salida del IRC:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:139
 msgid "Re&move"
@@ -3985,7 +3983,7 @@ msgstr "Autenticación SASL"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:102
 msgid "SOURCE"
-msgstr "FUENTE"
+msgstr "SOURCE"
 
 #: src/modules/options/OptionsWidget_connection.h:60
 msgid "SSL"
@@ -4692,7 +4690,7 @@ msgstr "No se pudo escribir información del idioma a"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:77
 msgid "Unknown protocol handler command:"
-msgstr "Comando manejador de protocolos desconocidos:"
+msgstr "Manejador de otros protocolos:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1681
 msgid "UnknownNet"
