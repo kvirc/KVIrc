@@ -211,7 +211,7 @@ void KviMenuBar::setupScriptingPopup()
 	ACTION_POPUP_ITEM(KVI_COREACTION_EXECUTEKVS,script)
 
 	script->insertSeparator();
-	script->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TextExclamative)),__tr2qs("Restore &Default Script"),g_pApp,SLOT(restoreDefaultScript()));
+	script->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TextExclamative)),__tr2qs("Restore &Default Script..."),g_pApp,SLOT(restoreDefaultScript()));
 }
 
 void KviMenuBar::setupMainPopup()

@@ -185,6 +185,7 @@ bool TrayIcon::event(QEvent *e)
 		KviWindowListBase * t = m_pFrm->windowListWidget();
 
 		QString line;
+		bool first = true;
 
 		for(KviWindowListItem * b = t->firstItem();b;b = t->nextItem())
 		{
@@ -196,6 +197,9 @@ bool TrayIcon::event(QEvent *e)
 					line = b->kviWindow()->lastMessageText();
 					if(!line.isEmpty())
 					{
+						if(!first)tmp += "<br><br>\n";
+						else first = false;
+
 						line.replace(QChar('&'),"&amp;");
 						line.replace(QChar('<'),"&lt;");
 						line.replace(QChar('>'),"&gt;");
@@ -203,7 +207,6 @@ bool TrayIcon::event(QEvent *e)
 						tmp += b->kviWindow()->plainTextCaption();
 						tmp += "</b><br>";
 						tmp += line;
-						tmp += "<br><br>\n";
 					}
 				}
 			}

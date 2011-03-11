@@ -136,7 +136,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_SOCKETSPY,
 		"socketspy.open",
-		__tr2qs("Show SocketSpy..."),
+		__tr2qs("Show SocketSpy"),
 		__tr2qs("Shows a window that allows monitoring the socket traffic"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_socketspy.png",
