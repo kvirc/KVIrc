@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
+
 #include "KvsObject_button.h"
 #include "KvsObject_checkBox.h"
 #include "KvsObject_comboBox.h"
@@ -61,6 +63,9 @@
 #include "KvsObject_treeWidget.h"
 #include "KvsObject_treeWidgeteItem.h"
 #include "KvsObject_vBox.h"
+#ifdef COMPILE_WEBKIT_SUPPORT
+#include "KvsObject_webView.h"
+#endif
 #include "KvsObject_widget.h"
 #include "KvsObject_window.h"
 #include "KvsObject_wizard.h"
@@ -94,7 +99,9 @@ static bool objects_module_cleanup(KviModule *)
 {
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
-
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	KvsObject_webView::unregisterSelf();
+	#endif
         KvsObject_memoryBuffer::unregisterSelf();
 	KvsObject_process::unregisterSelf();
         KvsObject_trayIcon::unregisterSelf();
@@ -800,7 +807,9 @@ static bool objects_module_init(KviModule * m)
         KvsObject_trayIcon::registerSelf();
 	KvsObject_process::registerSelf();
 	KvsObject_memoryBuffer::registerSelf();
-
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	KvsObject_webView::registerSelf();
+	#endif
 	return true;
 }
 

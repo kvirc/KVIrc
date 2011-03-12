@@ -57,9 +57,6 @@
 #include <QPoint>
 #include <QContextMenuEvent>
 
-#ifdef COMPILE_WEBKIT_SUPPORT
-	#include <QtWebKit/QWebView>
-#endif
 
 KviKvsWidget::KviKvsWidget(KvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -710,9 +707,6 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_widget,"shortCutEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_widget,"customContextMenuRequestedEvent")
 
-#ifdef COMPILE_WEBKIT_SUPPORT
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setWebView)
-#endif
 KVSO_END_REGISTERCLASS(KvsObject_widget)
 
 
@@ -720,7 +714,6 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KvsObject_widget)
 KVSO_BEGIN_DESTRUCTOR(KvsObject_widget)
 emit aboutToDie();
-//	if (webview) delete webview;
 KVSO_END_CONSTRUCTOR(KvsObject_widget)
 
 bool KvsObject_widget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
@@ -2000,23 +1993,6 @@ KVSO_CLASS_FUNCTION(widget,removeFromStatusBar)
 	return true;
 }
 
-
-
-#ifdef COMPILE_WEBKIT_SUPPORT
-KVSO_CLASS_FUNCTION(widget,setWebView)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	QString szUrl;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szUrl)
-	KVSO_PARAMETERS_END(c)
-	m_pWebview = new QWebView(widget());
-	m_pWebview->load(QUrl(szUrl));
-	m_pWebview->show();
-	//if (widget()) g_pMainWindow->statusBar()->removeWidget(widget());
-	return true;
-}
-#endif //COMPILE_WEBKIT_SUPPORT
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_KvsObject_widget.moc"

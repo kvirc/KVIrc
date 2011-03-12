@@ -72,6 +72,8 @@
 		Returns the tab label of the <index>.
 		!fn: <hobject> $widgetAt(<index:integer>)
 		Returns the tab widget of the <index> or 0 if index is out of the tabs count.
+		!fn: <index:integer> $indexOf(<widget:hobject>)
+		Returns the <index> of the <widget> in the tabs.
 		!fn: <string> $currentTabLabel()
 		Returns the label of the current tab.
 		!fn: $removePage(<tab_widget:object>)
@@ -160,6 +162,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_tabWidget,"tabWidget","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tabWidget,count)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tabWidget,removePage)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tabWidget,widgetAt)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tabWidget,indexOf)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tabWidget,setTabPosition)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_tabWidget,setTabsClosable)
 
@@ -178,7 +181,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_tabWidget)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_tabWidget)
 tabsList.clear();;
-KVSO_END_CONSTRUCTOR(KvsObject_tabWidget)
+KVSO_END_DESTRUCTOR(KvsObject_tabWidget)
 
 bool KvsObject_tabWidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
@@ -217,9 +220,28 @@ KVSO_CLASS_FUNCTION(tabWidget,addTab)
 		((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),QIcon(*pix),szLabel);
 	}
 	else((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),szLabel);
+	this->children();
 	tabsList.append(hObject);
 	return true;
 }
+
+KVSO_CLASS_FUNCTION(tabWidget,indexOf)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	KviKvsObject *pObject;
+	QString szLabel,szIcon;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	CHECK_HOBJECT_IS_WIDGET(pObject)
+	int iIdx=((QTabWidget *)widget())->indexOf(((KvsObject_widget*)pObject)->widget());
+	c->returnValue()->setInteger((kvs_int_t)iIdx);
+	return true;
+}
+
+
 KVSO_CLASS_FUNCTION(tabWidget,widgetAt)
 {
 	CHECK_INTERNAL_POINTER(widget())

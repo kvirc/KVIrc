@@ -32,6 +32,7 @@ SET(kviobjects_MOC_HDRS
 	KvsObject_textBrowser.h
 	KvsObject_toolButton.h
 	KvsObject_treeWidget.h
+	KvsObject_webView.h
 	KvsObject_widget.h
 	KvsObject_window.h
 	KvsObject_wizard.h
@@ -80,6 +81,7 @@ SET(kviobjects_SRCS
 	KvsObject_treeWidget.cpp
 	KvsObject_treeWidgeteItem.cpp
 	KvsObject_vBox.cpp
+	KvsObject_webView.cpp
 	KvsObject_widget.cpp
 	KvsObject_window.cpp
 	KvsObject_wizard.cpp

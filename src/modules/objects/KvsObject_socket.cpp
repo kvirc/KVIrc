@@ -297,6 +297,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,write)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,bytesAvailable)
 
+	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,setReadBufferSize)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,setProtocol)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,listen)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,dataAvailableEvent)
@@ -558,6 +559,17 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 	c->returnValue()->setBoolean(true);
 	return true;
 }
+/*
+KVSO_CLASS_FUNCTION(socket,functionsetReadBufferSize)
+{
+	kvs_int_t iBufferSize;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("buffer_size",KVS_PT_INTEGER,0,iBufferSize)
+	KVSO_PARAMETERS_END(c)
+	m_pSocket->setReadBufferSize(iBufferSize);
+	return true;
+}
+*/
 
 KVSO_CLASS_FUNCTION(socket,listen)
 {
@@ -662,7 +674,7 @@ void KvsObject_socket::slotError( QAbstractSocket::SocketError socketError )
 	KviKvsVariantList lParams;
 	QString szError = sockerrors_tbl[socketError];
 	lParams.append(new KviKvsVariant(szError));
-	 callFunction(this,"errorEvent",&lParams);
+	callFunction(this,"errorEvent",&lParams);
 }
 
 void KvsObject_socket::slotHostFound()

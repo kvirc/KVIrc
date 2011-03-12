@@ -239,27 +239,12 @@ KVSO_CLASS_FUNCTION(pixmap,save)
         else if(m_pPixmap) m_pPixmap->save(szFile);
         return true;
 }
-/*
-KVSO_CLASS_FUNCTION(pixmap,save)
-{
-        //CHECK_INTERNAL_POINTER(m_pPixmap)
-        QString szFile;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
-        KVSO_PARAMETERS_END(c)
-        if(!QFile::exists(szFile))
-        {
-            c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
-            return true;
-        }
-        if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
-        m_pAnimatedPixmap= new KviAnimatedPixmap(szFile);
-        connect(m_pAnimatedPixmap,SIGNAL(frameChanged()),this,SLOT(frameChanged()));
-        //bPixmapModified=true;
 
-            return true;
+void KvsObject_pixmap::setInternalPixmap(QPixmap *pPixmap)
+{
+    delete m_pPixmap;
+    m_pPixmap=pPixmap;
 }
-*/
 KVSO_CLASS_FUNCTION(pixmap,loadFromMemoryBuffer)
 {
         KviKvsObject * pObject;

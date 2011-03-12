@@ -218,7 +218,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_popupMenu)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_popupMenu)
 
-KVSO_END_CONSTRUCTOR(KvsObject_popupMenu)
+KVSO_END_DESTRUCTOR(KvsObject_popupMenu)
 
 bool KvsObject_popupMenu::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {

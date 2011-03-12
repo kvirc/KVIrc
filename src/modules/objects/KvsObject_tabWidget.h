@@ -40,6 +40,7 @@ protected:
 	QList<kvs_hobject_t> tabsList;
 
 	bool addTab(KviKvsObjectFunctionCall *c);
+	bool indexOf(KviKvsObjectFunctionCall *c);
 	bool insertTab(KviKvsObjectFunctionCall *c);
 	bool setTabToolTip(KviKvsObjectFunctionCall *c);
 	bool removeTabToolTip(KviKvsObjectFunctionCall *c);

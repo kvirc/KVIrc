@@ -61,6 +61,7 @@ protected:
 	bool write(KviKvsObjectFunctionCall *c);
 	bool bytesAvailable(KviKvsObjectFunctionCall *c);
         bool setProtocol(KviKvsObjectFunctionCall *c);
+	//bool setReadBufferSize(KviKvsObjectFunctionCall *c);
         bool listen(KviKvsObjectFunctionCall *c);
 
 

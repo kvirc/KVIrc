@@ -260,6 +260,7 @@ void KvsObject_ftp::slotCommandFinished(int iId, bool bError)
 	lParams.append(new KviKvsVariant((kvs_int_t)iId));
 	lParams.append(new KviKvsVariant(szCommand));
 	lParams.append(new KviKvsVariant(bError));
+	if(bError) lParams.append(new KviKvsVariant(m_pFtp->errorString()));
 	callFunction(this,"commandFinishedEvent",0,&lParams);
 }
 

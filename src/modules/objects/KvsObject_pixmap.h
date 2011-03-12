@@ -44,7 +44,7 @@ class KvsObject_pixmap : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_pixmap)
 	QPixmap  * getPixmap();
-
+	void setInternalPixmap(QPixmap *p);
             //QPixmap * pixmap(){ return m_pPixmap; }
 protected:
             KviAnimatedPixmap * m_pAnimatedPixmap;
@@ -52,6 +52,7 @@ protected:
 signals:
 	void aboutToDie();
 protected:
+
         bool fill(KviKvsObjectFunctionCall *c);
         bool resize(KviKvsObjectFunctionCall *c);
         bool scale(KviKvsObjectFunctionCall *c);
