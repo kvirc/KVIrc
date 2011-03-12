@@ -27,6 +27,7 @@
 #include "kvi_settings.h"
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include <QtWebKit/QWebView>
+#include <QWebSettings>
 #include <QWebElement>
 #include <QPixmap>
 #include <QSize>
@@ -35,6 +36,26 @@
 #include "KviError.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
+
+
+const char * const webattributes_tbl[] = {
+	"JavaScriptEnabled",
+	"PluginEnabled",
+	"JavascriptCanOpenWindows",
+	"JavascriptCanAccessClipboard",
+	"ZoomTextOnly",
+	"LocalContentCanAccessFileUrls"
+ };
+const QWebSettings::WebAttribute webattributes_cod[] = {
+	QWebSettings::JavascriptEnabled,
+	QWebSettings::PluginsEnabled,
+	QWebSettings::JavascriptCanOpenWindows,
+	QWebSettings::JavascriptCanAccessClipboard,
+	QWebSettings::ZoomTextOnly,
+	QWebSettings::LocalContentCanAccessFileUrls
+};
+
+#define webattributes_num (sizeof(webattributes_tbl) / sizeof(webattributes_tbl[0]))
 
 /*
 	@doc:	webview
@@ -78,6 +99,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,makePreview)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setAttribute)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setWebSetting)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadProgressEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadStartedEvent)
@@ -95,9 +117,6 @@ KVSO_END_CONSTRUCTOR(KvsObject_webView)
 bool KvsObject_webView::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
 {
     SET_OBJECT(QWebView);
-    // fixme: this is for testing purpose only
-    ((QWebView *)widget())->settings()->setAttribute(QWebSettings::PluginsEnabled,true);
-    //
     connect(((QWebView *)widget()),SIGNAL(loadStarted()),this,SLOT(slotLoadStarted()));
     connect(((QWebView *)widget()),SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
     connect(((QWebView *)widget()),SIGNAL(loadProgress(int)),this,SLOT(slotLoadProgress(int)));
@@ -255,6 +274,31 @@ KVSO_CLASS_FUNCTION(webView,setAttribute)
 	KVSO_PARAMETER("value",KVS_PT_STRING,0,szValue)
     KVSO_PARAMETERS_END(c)
     m_currentElement.setAttribute(szName,szValue);
+    return true;
+}
+
+KVSO_CLASS_FUNCTION(webView,setWebSetting)
+{
+    CHECK_INTERNAL_POINTER(widget())
+    QString szName;
+    bool bEnabled;
+    KVSO_PARAMETERS_BEGIN(c)
+    	KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
+	KVSO_PARAMETER("value",KVS_PT_BOOLEAN,0,bEnabled)
+    KVSO_PARAMETERS_END(c)
+    bool found=false;
+    unsigned int j = 0;
+    for(; j < webattributes_num; j++)
+    {
+	    if(KviQString::equalCI(szName,webattributes_tbl[j]))
+	    {
+		    found=true;
+		    break;
+	    }
+    }
+    if (found)
+	   ((QWebView *)widget())->settings()->setAttribute(webattributes_cod[j],bEnabled);
+    else c->warning(__tr2qs_ctx("Unknown web setting '%Q'","objects"),&szName);
     return true;
 }
 KVSO_CLASS_FUNCTION(webView,attribute)

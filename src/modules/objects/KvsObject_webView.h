@@ -70,6 +70,7 @@ protected:
 
 	bool attributeNames(KviKvsObjectFunctionCall *c);
 	bool setAttribute(KviKvsObjectFunctionCall *c);
+	bool setWebSetting(KviKvsObjectFunctionCall *c);
 	bool attribute(KviKvsObjectFunctionCall *c);
 	bool frames(KviKvsObjectFunctionCall *c);
 
