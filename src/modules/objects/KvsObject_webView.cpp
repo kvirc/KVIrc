@@ -161,9 +161,21 @@ KVSO_CLASS_FUNCTION(webView,makePreview)
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setRenderHint(QPainter::TextAntialiasing, true);
     painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    painter.setClipRect(0,0,size.width(),768);
-    painter.scale(0.20,0.34);
+    //painter.setClipRect(0,0,size.width(),size.height());
+    //painter.scale(0.20,0.34);
+    double dWScale = size.width() > 0 ? (212.0 / (double)(size.width())) : 0;
+    double dHScale = dWScale;
+    if((size.height() * dWScale) < 142)
+    {
+      // solution 1 is to fill the missing bacgkround
+      painter.fillRect(0,0,212,142,QColor(255,255,255));
+      // solution 2 is to stretch the contents, but this doesn't work well because
+      // the frame reports a size that doesn't exactly match the document
+      //dHScale = 142.0 / (double)(size.height());
+    }
+    painter.scale(dWScale,dHScale);
     pFrame->documentElement().render(&painter);
+    //pFrame->render(&painter);
     painter.end();
     QPixmap *pPixmap=new QPixmap();
     *pPixmap=pPixmap->fromImage(image);
