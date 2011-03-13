@@ -726,7 +726,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	// no attacks please :)
 	szFileName.replace(QString("..\\"),QString(""));
-	szFileName.replace(QString("..//"),QString(""));
+	szFileName.replace(QString("../"),QString(""));
 
 	KviFileUtils::adjustFilePath(szFileName);
 
@@ -916,7 +916,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 					return writeError();
 			}
 
-			int iToRead = iRemainingData;
+			iToRead = iRemainingData;
 			if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
 		}
 #ifdef COMPILE_ZLIB_SUPPORT
