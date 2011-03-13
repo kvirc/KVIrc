@@ -1487,6 +1487,8 @@ void KviApplication::triggerUpdateGui()
 void KviApplication::updateGui()
 {
 	m_bUpdateGuiPending = false;
+	// enforce our "icon in popups" option
+	setAttribute(Qt::AA_DontShowIconsInMenus, !KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus));
 	g_pMainWindow->applyOptions();
 }
 
