@@ -67,7 +67,7 @@ namespace AddonFunctions
 		if(!r.readHeader(szAddonPackageFileName))
 		{
 			szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","addon")).arg(szErr);
+			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %1","addon")).arg(szErr);
 			return false;
 		}
 
