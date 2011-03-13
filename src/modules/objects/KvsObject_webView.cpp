@@ -84,22 +84,21 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,firstChild)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findAll)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findFirst)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,pushCurrentToStack)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,popCurrentFromStack)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,clearElementStack)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,parentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,nextSibling)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,currentElementTagName)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveToQueryResultsAt)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementStackCount)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,queryResultsCount)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,getDocumentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attributeNames)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,makePreview)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,rememberCurrent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveTo)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setAttribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setWebSetting)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeFromDocument)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadProgressEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadStartedEvent)
@@ -111,7 +110,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_webView)
-lStack.clear();
+qDeleteAll(m_dictCache);
 KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
 bool KvsObject_webView::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
@@ -154,28 +153,24 @@ KVSO_CLASS_FUNCTION(webView,makePreview)
 {
     CHECK_INTERNAL_POINTER(widget())
     QSize size=((QWebView *)widget())->page()->mainFrame()->contentsSize();
-    qDebug("contents size %d - %d",size.width(),size.height());
     QImage image(212,142, QImage::Format_RGB32);
     QWebFrame  *pFrame=((QWebView *)widget())->page()->mainFrame();
     QPainter painter(&image);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setRenderHint(QPainter::TextAntialiasing, true);
     painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    //painter.setClipRect(0,0,size.width(),size.height());
-    //painter.scale(0.20,0.34);
     double dWScale = size.width() > 0 ? (212.0 / (double)(size.width())) : 0;
     double dHScale = dWScale;
     if((size.height() * dWScale) < 142)
     {
-      // solution 1 is to fill the missing bacgkround
-      painter.fillRect(0,0,212,142,QColor(255,255,255));
-      // solution 2 is to stretch the contents, but this doesn't work well because
-      // the frame reports a size that doesn't exactly match the document
-      //dHScale = 142.0 / (double)(size.height());
+	    // solution 1 is to fill the missing bacgkround
+	    painter.fillRect(0,0,212,142,QColor(255,255,255));
+	    // solution 2 is to stretch the contents, but this doesn't work well because
+	    // the frame reports a size that doesn't exactly match the document
+	    //dHScale = 142.0 / (double)(size.height());
     }
     painter.scale(dWScale,dHScale);
     pFrame->documentElement().render(&painter);
-    //pFrame->render(&painter);
     painter.end();
     QPixmap *pPixmap=new QPixmap();
     *pPixmap=pPixmap->fromImage(image);
@@ -196,6 +191,27 @@ KVSO_CLASS_FUNCTION(webView,findAll)
     m_webElementCollection=m_currentElement.findAll(szQuery);
     return true;
 }
+KVSO_CLASS_FUNCTION(webView,rememberCurrent)
+{
+    QString adr=QString::number((long)&m_currentElement,16).toUpper();
+    QWebElement *pElement=new QWebElement(m_currentElement);
+    m_dictCache.insert(adr,pElement);
+    c->returnValue()->setString(adr);
+    return true;
+}
+
+KVSO_CLASS_FUNCTION(webView,moveTo)
+{
+    QString szId;
+    KVSO_PARAMETERS_BEGIN(c)
+    	KVSO_PARAMETER("id",KVS_PT_STRING,0,szId)
+    KVSO_PARAMETERS_END(c)
+    if(m_dictCache.value(szId))
+	m_currentElement=*m_dictCache.value(szId);
+    return true;
+}
+
+
 KVSO_CLASS_FUNCTION(webView,findFirst)
 {
     QString szQuery;
@@ -222,16 +238,10 @@ KVSO_CLASS_FUNCTION(webView,moveToQueryResultsAt)
     m_currentElement=m_webElementCollection.at(iIdx);
     return true;
 }
-KVSO_CLASS_FUNCTION(webView,elementStackCount)
-{
-    CHECK_INTERNAL_POINTER(widget())
-    c->returnValue()->setInteger((kvs_int_t) lStack.count());
-    return true;
-}
-KVSO_CLASS_FUNCTION(webView,clearElementStack)
+KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 {
     Q_UNUSED(c);
-    lStack.clear();
+    m_currentElement.removeFromDocument();
     return true;
 }
 
@@ -241,24 +251,14 @@ KVSO_CLASS_FUNCTION(webView,queryResultsCount)
     c->returnValue()->setInteger((kvs_int_t) m_webElementCollection.count());
     return true;
 }
-KVSO_CLASS_FUNCTION(webView,pushCurrentToStack)
-{
-    Q_UNUSED(c);
-    lStack.append(m_currentElement);
-    return true;
-}
-KVSO_CLASS_FUNCTION(webView,popCurrentFromStack)
-{
-    if(!lStack.isEmpty())
-	m_currentElement = lStack.takeLast();
-    else c->warning(__tr2qs_ctx("Stack is empty","objects"));
-    return true;
-}
+
 KVSO_CLASS_FUNCTION(webView,frames)
 {
     CHECK_INTERNAL_POINTER(widget())
     m_dictFrames.clear();
     QWebFrame *pFrame=((QWebView *)widget())->page()->mainFrame();
+
+//    dd.toAscii().toHex()
     KviKvsArray *pArray=new KviKvsArray();
     kvs_uint_t uIdx=0;
     getFrames(pFrame,pArray,uIdx);
@@ -423,7 +423,6 @@ KVSO_CLASS_FUNCTION(webView,getDocumentElement)
 	}
     }
     m_currentElement=pFrame->documentElement();
-  //  m_documentElement=m_currentElement;
     return true;
 }
 

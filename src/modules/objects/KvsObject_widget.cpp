@@ -896,7 +896,7 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if (!callFunction(this,"mousePressEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler
+				if (!callFunction(this,"mousePressEvent",&oReturnBuffer,&lParams)) brokenhandler = true; // ignore results of a broken event handler
 			}
 			break;
 			case QEvent::MouseButtonRelease:
@@ -910,7 +910,7 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if (!callFunction(this,"mouseReleaseEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler
+				if (!callFunction(this,"mouseReleaseEvent",&oReturnBuffer,&lParams)) brokenhandler = true; // ignore results of a broken event handler
 			}
 			break;
 			case QEvent::MouseButtonDblClick:
@@ -979,13 +979,22 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			break;
 
 		}
-		if (!brokenhandler)
+		if (!brokenhandler){
 			ret = oReturnBuffer.asBoolean();
+			//qDebug ("Propagation %i",ret);
 
 		return ret;
+	     }
+	   }
+	/*if(o->parent())
+	{
+	    qDebug("Propagation to parent");
+	    return KviKvsObject::eventFilter(o->parent(),e);
 	}
-
-	return KviKvsObject::eventFilter(o,e);
+	     else{
+		  qDebug("Propagation to object");*/
+		 return KviKvsObject::eventFilter(o,e);
+	//     }
 }
 
 

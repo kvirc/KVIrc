@@ -41,18 +41,20 @@ public:
 protected:
 	QWebPage * m_pWebPage;
 	QHash<QString,QWebFrame *> m_dictFrames;
+	QHash<QString,QWebElement *> m_dictCache;
+
 	QList<QWebElement> lStack;
 	QWebElementCollection m_webElementCollection;
 	QWebElement m_currentElement;
 	void getFrames(QWebFrame *pFrame,KviKvsArray *n, kvs_uint_t & uIdx);
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool pushCurrentToStack(KviKvsObjectFunctionCall *c);
-	bool popCurrentFromStack(KviKvsObjectFunctionCall *c);
-	bool elementStackCount(KviKvsObjectFunctionCall *c);
-	bool clearElementStack(KviKvsObjectFunctionCall *c);
-
+	bool removeFromDocument(KviKvsObjectFunctionCall *c);
 	bool makePreview(KviKvsObjectFunctionCall *c);
+
+	bool rememberCurrent(KviKvsObjectFunctionCall *c);
+	bool moveTo(KviKvsObjectFunctionCall *c);
+
 
 	bool firstChild(KviKvsObjectFunctionCall *c);
 	bool parentElement(KviKvsObjectFunctionCall *c);
