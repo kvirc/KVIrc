@@ -45,8 +45,8 @@
 		This class implements a really simple xml document parser.
 		You will usually derive your own class from this one and reimplement
 		some of the events that it triggers.
-		You will typically reimplement [classfnc:xmlparser]onElementStart[/classfnc]()
-		and [classfnc:xmlparser]onElementEnd[/classfnc]() that will be called
+		You will typically reimplement [classfnc:xmlparser]$onElementStart[/classfnc]()
+		and [classfnc:xmlparser]$onElementEnd[/classfnc]() that will be called
 		during the execution of [classfnc:xmlparser]$parse[/classfnc]() in an order
 		reflecting the order of elements in the parsed document.
 	@functions:
