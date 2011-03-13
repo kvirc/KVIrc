@@ -38,6 +38,7 @@
 #include "KviIrcConnectionServerInfo.h"
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcConnectionTarget.h"
+#include "KviIrcConnectionStatistics.h"
 
 #define GET_CONSOLE_FROM_STANDARD_PARAMS \
 	kvs_uint_t iContextId; \
@@ -487,6 +488,57 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+/*
+	@doc: context.connectionStartTime
+	@type:
+		function
+	@title:
+		$context.connectionStartTime
+	@short:
+		Returns the connection start time of an IRC context
+	@syntax:
+		<string> $context.connectionStartTime
+		<string> $context.connectionStartTime(<irc_context_id:uint>)
+	@description:
+		Returns the connection start time for the specified IRC context.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing. If the specified IRC context is not currently connected
+		then this function returns nothing.
+	@seealso:
+		[fnc]$context.lastMessageTime[/fnc]
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_connectionStartTime,
+		c->returnValue()->setInteger((kvs_int_t)(pConnection->statistics()->connectionStartTime()));
+	)
+
+/*
+	@doc: context.lastMessageTime
+	@type:
+		function
+	@title:
+		$context.lastMessageTime
+	@short:
+		Returns the last message time of an IRC context
+	@syntax:
+		<string> $context.lastMessageTime
+		<string> $context.lastMessageTime(<irc_context_id:uint>)
+	@description:
+		Returns the last message time for the specified IRC context.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing. If the specified IRC context is not currently connected
+		then this function returns nothing.
+	@seealso:
+		[fnc]$context.connectionStartTime[/fnc]
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_lastMessageTime,
+		c->returnValue()->setInteger((kvs_int_t)(pConnection->statistics()->lastMessageTime()));
+	)
 
 /*
 	@doc: context.clearqueue
@@ -534,6 +586,8 @@ static bool context_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"state",context_kvs_fnc_state);
 	KVSM_REGISTER_FUNCTION(m,"list",context_kvs_fnc_list);
 	KVSM_REGISTER_FUNCTION(m,"serverSoftware",context_kvs_fnc_serverSoftware);
+	KVSM_REGISTER_FUNCTION(m,"connectionStartTime",context_kvs_fnc_connectionStartTime);
+	KVSM_REGISTER_FUNCTION(m,"lastMessageTime",context_kvs_fnc_lastMessageTime);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearQueue",context_kvs_cmd_clearQueue);
 
