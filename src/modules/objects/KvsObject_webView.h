@@ -95,7 +95,6 @@ protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
-	void slotReplyFinished(QNetworkReply*);
 	void slotDownloadRequest(const QNetworkRequest &);
 };
 class KviKvsDownloadHandler :  public QObject
