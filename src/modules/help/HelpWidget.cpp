@@ -43,7 +43,132 @@
 extern HelpIndex        * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
+#ifdef COMPILE_WEBKIT_SUPPORT
+#include <QtWebKit/QWebView>
 
+HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
+: QWidget(par)
+{
+
+	m_pLayout = new QVBoxLayout(this);
+	m_pLayout->setMargin(3);
+	m_pLayout->setSpacing(2);
+	setLayout(m_pLayout);
+	m_pToolBar = new QToolBar(this);
+	m_pLayout->addWidget(m_pToolBar);
+	setObjectName("help_widget");
+	setMinimumWidth(80);
+	if(bIsStandalone)g_pHelpWidgetList->append(this);
+	m_bIsStandalone = bIsStandalone;
+
+	m_pTextBrowser = new QWebView(this);
+	m_pLayout->addWidget(m_pTextBrowser);
+	QLabel *pHighlightLabel = new QLabel();
+	pHighlightLabel->setText(__tr2qs("Highlight: "));
+	m_pToolBar->addWidget(pHighlightLabel);
+
+
+	m_pFindText = new QLineEdit();
+	m_pToolBar->addWidget(m_pFindText);
+	connect(m_pFindText,SIGNAL(textChanged(const QString )),this,SLOT(slotTextChanged(const QString)));
+
+	connect(m_pTextBrowser,SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
+
+	m_pBtnResetFind = new QToolButton();
+	m_pBtnResetFind->setIcon(*g_pIconManager->getImage("41"));
+	m_pToolBar->addWidget(m_pBtnResetFind);
+	connect(m_pBtnResetFind ,SIGNAL(clicked()),this,SLOT(slotResetFind()));
+
+
+	m_pBtnFindPrev = new QToolButton();
+	m_pBtnFindPrev->setIcon(*g_pIconManager->getImage("40"));
+	m_pToolBar->addWidget(m_pBtnFindPrev);
+	connect(m_pBtnFindPrev,SIGNAL(clicked()),this,SLOT(slotFindPrev()));
+
+	m_pBtnFindNext = new QToolButton();
+	m_pBtnFindNext->setIcon(*g_pIconManager->getImage("39"));
+	m_pToolBar->addWidget(m_pBtnFindNext);
+	connect(m_pBtnFindNext,SIGNAL(clicked()),this,SLOT(slotFindNext()));
+
+	m_pTextBrowser->setObjectName("text_browser");
+	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
+
+	QLabel *pBrowsingLabel = new QLabel();
+	pBrowsingLabel->setText(__tr2qs("Browsing: "));
+	m_pToolBar->addWidget(pBrowsingLabel);
+
+	m_pBtnIndex = new QToolButton();
+	m_pBtnIndex->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX));
+
+	connect(m_pBtnIndex,SIGNAL(clicked()),this,SLOT(showIndex()));
+	m_pToolBar->addWidget(m_pBtnIndex);
+
+	m_pToolBar->addAction(m_pTextBrowser->pageAction(QWebPage::Back));
+	m_pToolBar->addAction(m_pTextBrowser->pageAction(QWebPage::Forward));
+
+	m_pBtnZoomIn = new QToolButton();
+	m_pBtnZoomIn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)));
+	m_pToolBar->addWidget(m_pBtnZoomIn);
+
+	connect(m_pBtnZoomIn,SIGNAL(clicked()),this,SLOT(slotZoomIn()));
+
+	m_pBtnZoomOut = new QToolButton();
+	m_pBtnZoomOut->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)));
+	m_pToolBar->addWidget(m_pBtnZoomOut);
+
+	connect(m_pBtnZoomOut,SIGNAL(clicked()),this,SLOT(slotZoomOut()));
+	if(bIsStandalone)
+	{
+		QToolButton * b = new QToolButton();
+		m_pToolBar->addWidget(b);
+		b->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
+		connect(b,SIGNAL(clicked()),this,SLOT(doClose()));
+	}
+
+}
+
+void HelpWidget::slotLoadFinished(bool )
+{
+
+    m_pTextBrowser->findText(m_pFindText->text(),QWebPage::HighlightAllOccurrences);
+}
+void HelpWidget::slotTextChanged(const QString szFind)
+{
+    m_pTextBrowser->findText("",QWebPage::HighlightAllOccurrences);
+    m_pTextBrowser->findText(szFind,QWebPage::HighlightAllOccurrences);
+}
+
+void HelpWidget::slotResetFind()
+{
+    m_pFindText->setText("");
+    m_pTextBrowser->findText("",QWebPage::HighlightAllOccurrences);
+}
+
+void HelpWidget::slotFindPrev()
+{
+	m_pTextBrowser->findText(m_pFindText->text(),QWebPage::FindBackward);
+}
+
+void HelpWidget::slotFindNext()
+{
+	m_pTextBrowser->findText(m_pFindText->text());
+}
+void HelpWidget::slotZoomIn()
+{
+    kvs_real_t dZoom=m_pTextBrowser->zoomFactor();
+    if(dZoom>=2) return;
+    dZoom+= 0.05;
+    m_pTextBrowser->setZoomFactor(dZoom);
+}
+
+void HelpWidget::slotZoomOut()
+{
+    kvs_real_t dZoom=m_pTextBrowser->zoomFactor();
+    if(dZoom<=0.5) return;
+    dZoom-= 0.05;
+    m_pTextBrowser->setZoomFactor(dZoom);
+}
+#else
 HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 : QWidget(par)
 {
@@ -85,7 +210,7 @@ HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 	connect(m_pTextBrowser,SIGNAL(backwardAvailable(bool)),m_pBtnBackward,SLOT(setEnabled(bool)));
 	connect(m_pTextBrowser,SIGNAL(forwardAvailable(bool)),m_pBtnForward,SLOT(setEnabled(bool)));
 }
-
+#endif
 HelpWidget::~HelpWidget()
 {
 	if(m_bIsStandalone)g_pHelpWidgetList->removeRef(this);
@@ -98,8 +223,11 @@ void HelpWidget::showIndex()
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
         dirHelp = QDir(szHelpDir);
-
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	m_pTextBrowser->load(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
+	#else
 	m_pTextBrowser->setSource(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
+	#endif
 }
 
 void HelpWidget::resizeEvent(QResizeEvent *)

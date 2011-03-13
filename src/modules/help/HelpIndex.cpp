@@ -264,6 +264,7 @@ void HelpIndex::parseDocument( const QString &filename, int docNum )
 void HelpIndex::writeDict()
 {
     QFile f( dictFile );
+    qDebug ("Write dict to %s",f.fileName().toUtf8().data());
     if ( !f.open(QFile::WriteOnly ) )
         return;
     QDataStream s( &f );

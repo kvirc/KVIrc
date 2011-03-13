@@ -28,13 +28,20 @@
 #include "KviCString.h"
 #include "KviTalVBox.h"
 #include "KviTalListWidget.h"
+#include "kvi_settings.h"
 
 #include <QTabWidget>
+#ifdef COMPILE_WEBKIT_SUPPORT
+#include <QtWebKit/QWebView>
+#else
+class QTextBrowser;
+#endif
+
 #include <QLineEdit>
 
 class QProgressBar;
 class QPushButton;
-class QTextBrowser;
+
 class HelpWidget;
 
 class HelpWindow : public KviWindow
@@ -69,7 +76,11 @@ protected:
 	virtual void saveProperties(KviConfigurationFile * cfg);
 	virtual void loadProperties(KviConfigurationFile * cfg);
 public:
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	QWebView * textBrowser();
+	#else
 	QTextBrowser * textBrowser();
+	#endif
 public slots:
 	void indexSelected ( QListWidgetItem * );
 	void searchInIndex( const QString &s );

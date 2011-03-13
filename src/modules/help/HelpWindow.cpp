@@ -25,6 +25,7 @@
 #include "HelpWindow.h"
 #include "HelpWidget.h"
 
+#include "kvi_settings.h"
 #include "KviApplication.h"
 #include "KviIconManager.h"
 #include "KviOptions.h"
@@ -46,7 +47,7 @@ extern HelpIndex        * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
-bool g_bIndexingDone = FALSE;
+//bool g_bIndexingDone = FALSE;
 HelpWindow::HelpWindow(KviMainWindow * lpFrm,const char * name)
 : KviWindow(KviWindow::Help,lpFrm,name)
 {
@@ -117,9 +118,9 @@ void HelpWindow::initialSetup()
 {
 	m_pIndexSearch->setFocus();
 
-	if(!g_bIndexingDone)
+/*	if(!g_bIndexingDone)
 	{
-		g_bIndexingDone=TRUE;
+		g_bIndexingDone=true;*/
 		QString szDoclist,szDict;
 
 		g_pApp->getLocalKvircDirectory(szDoclist,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
@@ -134,8 +135,9 @@ void HelpWindow::initialSetup()
 			m_pBtnRefreshIndex->setEnabled(true);
 		} else {
 			g_pDocIndex->makeIndex();
-		}
-	}
+
+		    }
+	//}
 }
 
 void HelpWindow::indexingStart( int iNum )
@@ -258,7 +260,12 @@ void HelpWindow::startSearch()
 	setCursor( Qt::ArrowCursor );
 }
 
+
+#ifdef COMPILE_WEBKIT_SUPPORT
+QWebView * HelpWindow::textBrowser()
+#else
 QTextBrowser * HelpWindow::textBrowser()
+#endif
 {
 	return m_pHelpWidget->textBrowser();
 }
@@ -267,7 +274,11 @@ void HelpWindow::showIndexTopic()
 {
 	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListWidget->selectedItems().count()) return;
 	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	textBrowser()->load(QUrl(g_pDocIndex->documentList()[ i ]));
+	#else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
+	#endif
 }
 
 void HelpWindow::searchInIndex( const QString &s )
@@ -291,14 +302,22 @@ void HelpWindow::indexSelected ( QListWidgetItem *item )
 {
 	if (!item) return;
 	int i=g_pDocIndex->titlesList().indexOf(item->text());
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	textBrowser()->load(QUrl(g_pDocIndex->documentList()[ i ]));
+	#else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
+	#endif
 }
 
 void HelpWindow::searchSelected ( QListWidgetItem *item )
 {
 	if (!item) return;
 	int i=g_pDocIndex->titlesList().indexOf(item->text());
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	textBrowser()->load(QUrl(g_pDocIndex->documentList()[ i ]));
+	#else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
+	#endif
 }
 
 QPixmap * HelpWindow::myIconPtr()

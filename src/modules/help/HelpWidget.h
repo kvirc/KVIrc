@@ -25,10 +25,16 @@
 //=============================================================================
 
 #include "HelpIndex.h"
+#include "kvi_settings.h"
 
+#ifdef COMPILE_WEBKIT_SUPPORT
+#include <QtWebKit/QWebView>
+#include <QToolBar>
+#include <QVBoxLayout>
+#else
 #include "KviTalHBox.h"
-
 #include <QTextBrowser>
+#endif
 #include <QProgressBar>
 
 class QToolButton;
@@ -43,11 +49,25 @@ public:
 	HelpWidget(QWidget *par,KviMainWindow * lpFrm,bool bIsStandalone = false);
 	~HelpWidget();
 private:
+#ifdef COMPILE_WEBKIT_SUPPORT
+	QToolButton  * m_pBtnIndex;
+	QToolButton  * m_pBtnFindPrev;
+	QToolButton  * m_pBtnFindNext;
+	QToolButton  * m_pBtnResetFind;
+	QToolButton * m_pBtnZoomIn;
+	QToolButton * m_pBtnZoomOut;
+
+	QToolBar   * m_pToolBar;
+	QLineEdit * m_pFindText;
+	QVBoxLayout *m_pLayout;
+	QWebView * m_pTextBrowser;
+#else
 	QToolButton  * m_pBtnIndex;
 	QToolButton  * m_pBtnBackward;
 	QToolButton  * m_pBtnForward;
 	KviTalHBox   * m_pToolBar;
 	QTextBrowser * m_pTextBrowser;
+#endif
 	bool           m_bIsStandalone;
 protected:
 	virtual void resizeEvent(QResizeEvent *e);
@@ -55,9 +75,22 @@ protected slots:
 	void doClose();
 	void showIndex();
 	void suicide();
+#ifdef COMPILE_WEBKIT_SUPPORT
+	void slotLoadFinished(bool ok);
+	void slotFindNext();
+	void slotFindPrev();
+	void slotResetFind();
+	void slotZoomIn();
+	void slotZoomOut();
+	void slotTextChanged(const QString);
+#endif
 public:
 	virtual QSize sizeHint() const;
+	#ifdef COMPILE_WEBKIT_SUPPORT
+	QWebView  * textBrowser() { return m_pTextBrowser; }
+	#else
 	QTextBrowser * textBrowser() { return m_pTextBrowser; }
+#endif
 };
 
 

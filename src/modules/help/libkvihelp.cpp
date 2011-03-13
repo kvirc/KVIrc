@@ -181,21 +181,34 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 		if(w)
 		{
+			#ifdef COMPILE_WEBKIT_SUPPORT
+			w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
+			#else
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
+			#endif
 			return true;
 		}
 	}
 	if(c->switches()->find('m',"mdi"))
 	{
 		HelpWindow *w = new HelpWindow(c->window()->frame(),"Help browser");
+		#ifdef COMPILE_WEBKIT_SUPPORT
+		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
+		#else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
+		#endif
 		c->window()->frame()->addWindow(w);
 	} else {
 		HelpWidget *w = new HelpWidget(c->window()->frame()->splitter(),
 			c->window()->frame(),true);
+		#ifdef COMPILE_WEBKIT_SUPPORT
+		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
+		#else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
+		#endif
 		w->show();
 	}
+#include <QtWebKit/QWebView>
 
 	return true;
 }
@@ -219,6 +232,7 @@ static bool help_module_init(KviModule * m)
 	g_pHelpWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",help_kvs_cmd_open);
+
 
 
 	return true;
