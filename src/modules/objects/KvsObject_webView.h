@@ -28,9 +28,13 @@
 #include "kvi_settings.h"
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include "object_macros.h"
+#include <QFile>
+#include <QNetworkAccessManager>
 #include <QtWebKit/QWebView>
 #include <QtWebKit/QWebFrame>
 #include <QWebElement>
+class KviKvsDownloadHandler;
+
 class KvsObject_webView : public KviKvsObject
 {
 	Q_OBJECT
@@ -39,10 +43,12 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); }
 protected:
+	KviKvsRunTimeContext *m_pContext;
 	QWebPage * m_pWebPage;
 	QHash<QString,QWebFrame *> m_dictFrames;
 	QHash<QString,QWebElement *> m_dictCache;
-
+	KviPointerList<QNetworkReply> *m_pReplyList;
+	QNetworkAccessManager *m_pNetworkManager;
 	QList<QWebElement> lStack;
 	QWebElementCollection m_webElementCollection;
 	QWebElement m_currentElement;
@@ -51,6 +57,9 @@ protected:
 
 	bool removeFromDocument(KviKvsObjectFunctionCall *c);
 	bool makePreview(KviKvsObjectFunctionCall *c);
+
+	bool removeClass(KviKvsObjectFunctionCall *c);
+	bool classes(KviKvsObjectFunctionCall *c);
 
 	bool rememberCurrent(KviKvsObjectFunctionCall *c);
 	bool moveTo(KviKvsObjectFunctionCall *c);
@@ -79,12 +88,31 @@ protected:
 	bool loadStartedEvent(KviKvsObjectFunctionCall *c);
 	bool loadFinishedEvent(KviKvsObjectFunctionCall *c);
 	bool loadProgressEvent(KviKvsObjectFunctionCall *c);
-
-
+	bool downloadCompletedEvent(KviKvsObjectFunctionCall *c);
+	bool downloadProgressEvent(KviKvsObjectFunctionCall *c);
+	bool downloadRequestEvent(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
+	void slotReplyFinished(QNetworkReply*);
+	void slotDownloadRequest(const QNetworkRequest &);
+};
+class KviKvsDownloadHandler :  public QObject
+{
+	Q_OBJECT
+public:
+	KviKvsDownloadHandler(KvsObject_webView *par,QFile *pFile,QNetworkReply *pNetReply,int iId);
+
+	virtual ~KviKvsDownloadHandler();
+protected:
+	KvsObject_webView *m_pParentScript;
+	QFile *m_pFile;
+	QNetworkReply *m_pReply;
+	int m_Id;
+protected slots:
+	void slotReadyRead();
+	void slotReplyFinished();
 };
 #endif
 #endif	//!_CLASS_WEBVIEW_H_

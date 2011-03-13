@@ -29,7 +29,11 @@
 #include <QtWebKit/QWebView>
 #include <QWebSettings>
 #include <QWebElement>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+
 #include <QPixmap>
+#include <QFile>
 #include <QSize>
 #include "KvsObject_webView.h"
 #include "KvsObject_pixmap.h"
@@ -37,6 +41,57 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 
+static int g_iDownloadId=1;
+KviKvsDownloadHandler::KviKvsDownloadHandler(KvsObject_webView *parent,QFile *pFile,QNetworkReply *pNetReply,int iId)
+:QObject(parent)
+{
+	m_Id = iId;
+	m_pParentScript=parent;
+	m_pReply=pNetReply;
+	m_pFile=pFile;
+	connect(m_pReply,SIGNAL(finished()),this, SLOT(slotReplyFinished()));
+	connect(m_pReply,SIGNAL(readyRead()),this, SLOT(slotReadyRead()));
+ }
+void KviKvsDownloadHandler::slotReplyFinished()
+{
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)m_Id));
+	m_pParentScript->callFunction(m_pParentScript,"downloadCompletedEvent",&params);
+	m_pFile->close();
+	delete m_pFile;
+	m_pFile=0;
+	m_pReply->deleteLater();
+	m_pReply=0;
+	this->deleteLater();
+}
+KviKvsDownloadHandler::~KviKvsDownloadHandler()
+{
+	if (m_pFile)
+	{
+	    m_pFile->close();
+	    delete m_pFile;
+	    m_pFile = 0;
+	}
+	if (m_pReply)
+	{
+	    delete m_pReply;
+	    m_pReply = 0;
+	}
+    }
+void KviKvsDownloadHandler::slotReadyRead()
+{
+	qDebug("Slot ready read");
+	QVariant vSize=m_pReply->header(QNetworkRequest::ContentLengthHeader);
+	if(!vSize.isNull()){
+	    bool ok;
+	    int isize;
+	    isize=vSize.toInt(&ok);
+	    qDebug("contents %d",isize);
+	}
+	QByteArray bytes=m_pReply->readAll();
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)bytes.count()),new KviKvsVariant((kvs_int_t)m_Id));
+	m_pParentScript->callFunction(m_pParentScript,"downloadProgressEvent",&params);
+	m_pFile->write(bytes);
+}
 
 const char * const webattributes_tbl[] = {
 	"JavaScriptEnabled",
@@ -99,9 +154,16 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setAttribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setWebSetting)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeFromDocument)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeClass)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,classes)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadProgressEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadStartedEvent)
+
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadCompletedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadRequestEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadProgressEvent)
+
 KVSO_END_REGISTERCLASS(KvsObject_webView)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_webView,KviKvsObject)
@@ -113,12 +175,18 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_webView)
 qDeleteAll(m_dictCache);
 KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
-bool KvsObject_webView::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
+bool KvsObject_webView::init(KviKvsRunTimeContext *c ,KviKvsVariantList *)
 {
     SET_OBJECT(QWebView);
+    m_pContext = c;
+    m_pNetworkManager = new QNetworkAccessManager(this);
+   /* m_pReplyList=new KviPointerList<QNetworkReply>;
+    m_pReplyList->setAutoDelete(false);*/
+    QWebPage *pPage = ((QWebView *)widget())->page();
     connect(((QWebView *)widget()),SIGNAL(loadStarted()),this,SLOT(slotLoadStarted()));
     connect(((QWebView *)widget()),SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
     connect(((QWebView *)widget()),SIGNAL(loadProgress(int)),this,SLOT(slotLoadProgress(int)));
+    connect(pPage,SIGNAL(downloadRequested(const QNetworkRequest &)),this,SLOT(slotDownloadRequest(const QNetworkRequest &)));
     return true;
 }
 void KvsObject_webView::getFrames(QWebFrame *pFrame,KviKvsArray *pArray, kvs_uint_t &uIdx)
@@ -241,7 +309,9 @@ KVSO_CLASS_FUNCTION(webView,moveToQueryResultsAt)
 KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 {
     Q_UNUSED(c);
+    QWebElement element=m_currentElement.parent();
     m_currentElement.removeFromDocument();
+    m_currentElement=element;
     return true;
 }
 
@@ -286,6 +356,16 @@ KVSO_CLASS_FUNCTION(webView,setAttribute)
 	KVSO_PARAMETER("value",KVS_PT_STRING,0,szValue)
     KVSO_PARAMETERS_END(c)
     m_currentElement.setAttribute(szName,szValue);
+    return true;
+}
+KVSO_CLASS_FUNCTION(webView,removeClass)
+{
+    CHECK_INTERNAL_POINTER(widget())
+    QString szClassName;
+    KVSO_PARAMETERS_BEGIN(c)
+    	KVSO_PARAMETER("class_name",KVS_PT_NONEMPTYSTRING,0,szClassName)
+    KVSO_PARAMETERS_END(c)
+    m_currentElement.removeClass(szClassName);
     return true;
 }
 
@@ -336,7 +416,19 @@ KVSO_CLASS_FUNCTION(webView,attributeNames)
     c->returnValue()->setString(szAttributeNames);
     return true;
 }
-
+KVSO_CLASS_FUNCTION(webView,classes)
+{
+    CHECK_INTERNAL_POINTER(widget())
+    if(m_currentElement.isNull())
+    {
+	c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+	return true;
+    }
+    QString szClasses;
+    szClasses=m_currentElement.classes().join(",");
+    c->returnValue()->setString(szClasses);
+    return true;
+}
 KVSO_CLASS_FUNCTION(webView,toPlainText)
 {
     CHECK_INTERNAL_POINTER(widget())
@@ -444,8 +536,25 @@ KVSO_CLASS_FUNCTION(webView,loadStartedEvent)
 	emitSignal("loadStarted",c);
 	return true;
 }
+KVSO_CLASS_FUNCTION(webView,downloadCompletedEvent)
+{
+	emitSignal("downloadCompleted",c,c->params());
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(webView,downloadProgressEvent)
+{
+	emitSignal("downloadProgress",c,c->params());
+	return true;
+}
+KVSO_CLASS_FUNCTION(webView,downloadRequestEvent)
+{
+	emitSignal("downloadRequest",c,c->params());
+	return true;
+}
 
 // slots
+
 void KvsObject_webView::slotLoadFinished(bool bOk)
 {
 	if (bOk)
@@ -464,6 +573,30 @@ void KvsObject_webView::slotLoadProgress(int iProgress)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t) iProgress));
 	callFunction(this,"loadProgressEvent" ,&params);
 }
+void KvsObject_webView::slotDownloadRequest(const QNetworkRequest &r)
+{
+	QNetworkReply *pReply=m_pNetworkManager->get(r);
+	QString szFilePath="";
+	KviKvsVariant *filepathret=new KviKvsVariant(szFilePath);
+	KviKvsVariantList params(new KviKvsVariant(r.url().toString()));
+	callFunction(this,"downloadRequestEvent",filepathret,&params);
+	filepathret->asString(szFilePath);
+	if (!szFilePath.isEmpty())
+	{
+	    QFile *pFile=new QFile(szFilePath);
+	    if(!pFile->open(QIODevice::WriteOnly))
+	    {
+		m_pContext->warning(__tr2qs_ctx("Invalid file path '%Q'","objects"),&szFilePath);
+		pReply->abort();
+		pReply->deleteLater();
+		return;
+	    }
+	    KviKvsDownloadHandler *pHandler = new KviKvsDownloadHandler(this,pFile,pReply,g_iDownloadId);
+	    Q_UNUSED(pHandler);
+	    g_iDownloadId++;
+	}
+}
+
 
 #endif
 
