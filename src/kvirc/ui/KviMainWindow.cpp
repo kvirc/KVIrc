@@ -101,7 +101,7 @@ KviMainWindow::KviMainWindow()
 #if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) || defined(COMPILE_KDE_SUPPORT))
 	// Under windows, the icon is builtin; under kde, KApplication sets it for us
 	// We try to avois this as much as possible, since it forces the use of the low-res 16x16 icon
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)));
 #endif
 	m_pWinList  = new KviPointerList<KviWindow>;
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
