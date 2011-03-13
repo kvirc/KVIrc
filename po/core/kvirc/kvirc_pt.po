@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-27 22:18+0100\n"
-"PO-Revision-Date: 2011-03-09 02:03+0000\n"
+"PO-Revision-Date: 2011-03-13 22:45+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
@@ -492,7 +492,7 @@ msgstr "Janelas em &Cascata"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:99
 msgid "&Configure KVIrc..."
-msgstr "&Configurar KVirc..."
+msgstr "&Configurar KVIrc..."
 
 #: src/kvirc/ui/KviInputEditor.cpp:783
 msgid "&Copy"
@@ -892,12 +892,12 @@ msgid ""
 "\"Scripting\" menu.</font>"
 msgstr ""
 "<b>Ooops...</b><br><br><b>Existem algumas razões que me fazem pensar que a "
-"sua instalação KVirc não está completa.</b><br><br>Posso estar enganado, mas "
-"parecem faltar algumas opções que o 'script' predefinido KVirc fornece. Isto "
+"sua instalação KVIrc não está completa.</b><br><br>Posso estar enganado, mas "
+"parecem faltar algumas opções que o 'script' predefinido KVIrc fornece. Isto "
 "pode acontecer se tiver actualizado para uma versão svn instável, ou porque "
 "acidentalmente apagou ou danificou os seus ficheiros de configuração, ou "
 "porque instalou um 'script' incompleto, ou porque encontrou algum erro no "
-"KVirc.<br><br>Pode-se repetir a instalação do 'script' predefinido para "
+"KVIrc.<br><br>Pode-se repetir a instalação do 'script' predefinido para "
 "restaurar as opções em falta.\n"
 "<br><b>Deseja que o 'script' predefinido seja restaurado?</b><br><br><font "
 "size=\"-1\">\n"
@@ -972,8 +972,8 @@ msgid ""
 "p><p>Click \"<b>Next</b>\" to proceed.</p>"
 msgstr ""
 "<p><h2>Bem-vindo :)</h2>Esta é a primeira vez que corre esta versão do "
-"KVirc<br>Este assistente irá guiá-lo através de alguns passos necessários "
-"para completar a configuração.<br><br>Se tiver uma versão do KVirc anterior "
+"KVIrc<br>Este assistente irá guiá-lo através de alguns passos necessários "
+"para completar a configuração.<br><br>Se tiver uma versão do KVIrc anterior "
 "instalada, não se precisa preocupar. Terá oportunidade de preservar a antiga "
 "configuração.</p><p>Clique em \"<b>Seguinte</b>\" para continuar.</p>"
 
@@ -987,8 +987,8 @@ msgid ""
 "</p>"
 msgstr ""
 "<p>Todos os ficheiros desta distribuição estão cobertos pela GPL. Em termos "
-"humanos isto pode ser lido como:<br><ul><li><b>O KVirc é livre</b>,use-o, "
-"divirta-se! <b>:)</b></li><li>Se <b>tem</b> alguma parte do KVirc no seu "
+"humanos isto pode ser lido como:<br><ul><li><b>O KVIrc é livre</b>,use-o, "
+"divirta-se! <b>:)</b></li><li>Se <b>tem</b> alguma parte do KVIrc no seu "
 "projecto,<b>deve</b> lançar esse projecto sob a mesma licença.</li></ul></"
 "p><p>A versão \"legal\" da licença é mostrada na caixa em baixo.</p>"
 
@@ -998,7 +998,7 @@ msgid ""
 "<br><br>The default settings are fine for most users so if you're in doubt "
 "just click \"<b>Finish</b>\" to continue.</p>"
 msgstr ""
-"<p>Aqui pode escolher como o KVirc se irá integrar no seu sistema. "
+"<p>Aqui pode escolher como o KVIrc se irá integrar no seu sistema. "
 "<br><br>As definições predefinidas estão boas para a maioria dos "
 "utilizadores, se estiver em dúvida clique em \"<b>Seguinte</b>\" para "
 "continuar.</p>"
@@ -1031,11 +1031,11 @@ msgid ""
 "existing directory for the settings, and your configuration will be "
 "preserved.</p>"
 msgstr ""
-"<p>Por favor escolha uma pasta para o KVirc guardar as suas definições e "
+"<p>Por favor escolha uma pasta para o KVIrc guardar as suas definições e "
 "outros dados, e outra pasta para os ficheiros transferidos. Certifique-se "
 "que tem permissão de escrita em ambas as pastas.<br><br>As localizações "
 "sugeridas estão correctas na maioria dos casos, mas se não sabe do que se "
-"trata, clique em \"<b>Seguinte</b>\".<br><br>Se teve uma versão KVirc "
+"trata, clique em \"<b>Seguinte</b>\".<br><br>Se teve uma versão KVIrc "
 "anterior instalada, pode escolher o directório existente para as definições, "
 "e a sua configuração será preservada.</p>"
 
@@ -1065,7 +1065,7 @@ msgstr "Abortar Conexão"
 
 #: src/modules/setup/SetupWizard.cpp:915
 msgid "Abort Setup - KVIrc Setup"
-msgstr "Abortar Configuração - Configuração KVirc"
+msgstr "Abortar Configuração - Configuração KVIrc"
 
 #: src/kvilib/net/KviHttpRequest.cpp:91
 msgid "Aborted"
@@ -1089,7 +1089,7 @@ msgstr "Capturar Ecrã"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:360
 msgid "Acquires a Screenshot of the KVIrc main window"
-msgstr "Captura uma imagem da janela principal do KVirc"
+msgstr "Captura uma imagem da janela principal do KVIrc"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:401
 msgid "Actions"
@@ -1182,7 +1182,7 @@ msgstr "Todas as configurações na pasta partilhada do programa (portável)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:352
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
 msgid "Allow anybody to invite"
-msgstr "Permitir qualquer um para convidar"
+msgstr "Permitir convidar a qualquer um"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:983
 msgid "Allows entering and leaving away state"
@@ -1194,7 +1194,7 @@ msgstr "Permite executar um 'script' KVS de um ficheiro"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:327
 msgid "Allows subscribing to the KVIrc mailing list"
-msgstr "Permite subscrever na lista de correio KVirc"
+msgstr "Permite subscrever na lista de correio KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:129
 msgid "Allows you to configure nickname, username, avatar etc..."
@@ -1299,7 +1299,7 @@ msgstr "Arranja as janelas MDI num estilo cascata-maximizada"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:159
 msgid "Attempting %Q to %Q (%Q) on port %u"
-msgstr "A tentar %Q para %Q (%Q) no porto %u"
+msgstr "A tentar %Q para %Q (%Q) na porta %u"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:168
 #, c-format
@@ -1595,7 +1595,7 @@ msgstr "CTCP ACTION de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/KviCtcpPageDialog.cpp:49
 msgid "CTCP Page - KVIrc"
-msgstr "Resposta CTCP - KVirc"
+msgstr "Resposta CTCP - KVIrc"
 
 #: src/kvirc/kernel/KviOptions.cpp:756
 msgid "CTCP reply"
@@ -2091,7 +2091,7 @@ msgstr "Verificar no inicio"
 
 #: src/modules/avatar/libkviavatar.cpp:70
 msgid "Choose Avatar - KVIrc"
-msgstr "Fechar Avatar - KVirc"
+msgstr "Fechar Avatar - KVIrc"
 
 #: src/kvirc/ui/KviIrcView.cpp:2114 src/kvirc/ui/KviIrcView.cpp:2116
 msgid "Choose Font"
@@ -2107,19 +2107,19 @@ msgstr "Escolher Tipo de Letra Temporário..."
 
 #: src/modules/setup/SetupWizard.cpp:735
 msgid "Choose a Configuration Folder - KVIrc Setup"
-msgstr "Escolha uma Pasta de Configuração - Configuração KVirc"
+msgstr "Escolha uma Pasta de Configuração - Configuração KVIrc"
 
 #: src/kvirc/ui/KviSelectors.cpp:485
 msgid "Choose a Directory - KVIrc"
-msgstr "Escolha um Directório - KVirc"
+msgstr "Escolha um Directório - KVIrc"
 
 #: src/modules/setup/SetupWizard.cpp:746
 msgid "Choose a Download Folder - KVIrc Setup"
-msgstr "Escolha uma Pasta de Transferências - Configuração KVirc"
+msgstr "Escolha uma Pasta de Transferências - Configuração KVIrc"
 
 #: src/kvirc/ui/KviSelectors.cpp:462 src/kvirc/ui/KviSelectors.cpp:468
 msgid "Choose a File - KVIrc"
-msgstr "Escolha um Ficheiro - KVirc"
+msgstr "Escolha um Ficheiro - KVIrc"
 
 #: src/modules/mircimport/libkvimircimport.cpp:125
 msgid "Choose a servers.ini file"
@@ -2127,11 +2127,11 @@ msgstr "Escolha um finheiro servers.ini"
 
 #: src/modules/avatar/libkviavatar.cpp:149 src/kvirc/ui/KviSelectors.cpp:352
 msgid "Choose an Image File - KVIrc"
-msgstr "Escolha um Ficheiro de Imagem - KVirc"
+msgstr "Escolha um Ficheiro de Imagem - KVIrc"
 
 #: src/modules/setup/SetupWizard.cpp:708
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
-msgstr "Escolha uma Antiga de Configuração - Configuração KVirc"
+msgstr "Escolha uma Antiga de Configuração - Configuração KVIrc"
 
 #: src/modules/list/ListWindow.cpp:389 src/modules/list/ListWindow.cpp:413
 msgid "Choose filename"
@@ -2281,7 +2281,7 @@ msgstr "Configurar Identidade..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:172
 msgid "Configure KVIrc..."
-msgstr "Configurar KVirc..."
+msgstr "Configurar KVIrc..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:117
 msgid "Configure Registered Users..."
@@ -2306,7 +2306,7 @@ msgstr "Confirmar remoção actual de registos de utilizador"
 #: src/kvirc/ui/KviMainWindow.cpp:836 src/kvirc/ui/KviConsoleWindow.cpp:485
 #: src/kvirc/ui/KviConsoleWindow.cpp:520
 msgid "Confirmation - KVIrc"
-msgstr "Confirmação - KVirc"
+msgstr "Confirmação - KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:600
 msgid "Connect"
@@ -2774,7 +2774,7 @@ msgstr "Duplo clique para editar..."
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
-"Duplo clique para procurar este endereço<br>Clique direito para outras opcões"
+"Duplo clique para procurar este endereço<br>Clique direito para outras opções"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:839
 msgid "Double-click to open this link"
@@ -3175,7 +3175,7 @@ msgstr "Fifo"
 
 #: src/kvirc/ui/KviFileDialog.cpp:120 src/kvirc/ui/KviFileDialog.cpp:164
 msgid "File Exists - KVIrc"
-msgstr "O Ficheiro Existe - KVirc"
+msgstr "O Ficheiro Existe - KVIrc"
 
 #: src/kvilib/core/KviError.cpp:141
 msgid "File I/O error"
@@ -3905,23 +3905,23 @@ msgstr "Canais..."
 
 #: src/kvirc/ui/KviMenuBar.cpp:152
 msgid "Join KVIrc French Channel on EuropNet"
-msgstr "Entrar no Canal KVirc Francês em EuropNet"
+msgstr "Entrar no Canal KVIrc Francês em EuropNet"
 
 #: src/kvirc/ui/KviMenuBar.cpp:149
 msgid "Join KVIrc French Channel on Freenode"
-msgstr "Entrar no Canal KVirc Francês em Freenode"
+msgstr "Entrar no Canal KVIrc Francês em Freenode"
 
 #: src/kvirc/ui/KviMenuBar.cpp:136
 msgid "Join KVIrc International Channel on Freenode"
-msgstr "Entrar no Canal KVirc Internacional em Freenode"
+msgstr "Entrar no Canal KVIrc Internacional em Freenode"
 
 #: src/kvirc/ui/KviMenuBar.cpp:138
 msgid "Join KVIrc International Channel on IRCNet"
-msgstr "Entrar no Canal KVirc Internacional em IRCNet"
+msgstr "Entrar no Canal KVIrc Internacional em IRCNet"
 
 #: src/kvirc/ui/KviMenuBar.cpp:143
 msgid "Join KVIrc Italian Channel on AzzurraNet"
-msgstr "Entrar no Canal KVirc Internacional em AzzurraNet"
+msgstr "Entrar no Canal KVIrc Internacional em AzzurraNet"
 
 #: src/kvirc/kernel/KviOptions.cpp:823
 msgid "Join error message"
@@ -3952,15 +3952,15 @@ msgstr "Apenas a vegetar"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:537
 msgid "KVIrc Addon Package"
-msgstr "Pacote Extra KVirc"
+msgstr "Pacote Extra KVIrc"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:499
 msgid "KVIrc Configuration File"
-msgstr "Ficheiro de Configuração KVirc"
+msgstr "Ficheiro de Configuração KVIrc"
 
 #: src/kvirc/ui/KviMenuBar.cpp:127
 msgid "KVIrc French Home&page"
-msgstr "&Página Web KVirc Francesa"
+msgstr "&Página Web KVIrc Francesa"
 
 #: src/kvirc/ui/KviMenuBar.cpp:118
 msgid "KVIrc Home&page"
@@ -3969,7 +3969,7 @@ msgstr "&Página Web KVIrc"
 #: src/kvirc/kernel/KviApplication_setup.cpp:155
 #: src/kvirc/kernel/KviApplication_setup.cpp:476
 msgid "KVIrc KVS Script"
-msgstr "'Script' KVS do KVirc"
+msgstr "'Script' KVS do KVIrc"
 
 #: src/kvirc/kernel/KviApplication.cpp:751
 msgid "KVIrc Messaging"
@@ -3981,7 +3981,7 @@ msgstr "&Página Web KVIrc Russa"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:348
 msgid "KVIrc Russian WWW"
-msgstr "Página KVirc WWW Russa"
+msgstr "Página KVIrc WWW Russa"
 
 #: src/modules/setup/SetupWizard.cpp:139
 msgid "KVIrc Setup"
@@ -3989,7 +3989,7 @@ msgstr "Configuração KVIrc"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:514
 msgid "KVIrc Theme Package"
-msgstr "Pacote de Tema KVirc"
+msgstr "Pacote de Tema KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:337
 msgid "KVIrc WWW"
@@ -4000,7 +4000,7 @@ msgid ""
 "KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 "Your URL is invalid. Check spelling and try again"
 msgstr ""
-"O KVirc aceita apenas URL's irc://, irc6://, ircs:// ou irc6s://\n"
+"O KVIrc aceita apenas URL's irc://, irc6://, ircs:// ou irc6s://\n"
 "O seu URL é inválido. Verifique a ortografia a tente novamente"
 
 #: src/modules/file/libkvifile.cpp:1517
@@ -4164,7 +4164,7 @@ msgstr "A lista não pode ser pedida: não está conectado a um servidor"
 
 #: src/kvirc/ui/KviWindow.cpp:528
 msgid "List of window types available in this release of KVIrc:"
-msgstr "Lista dos tipos de janela disponíveis nesta versão do KVirc:"
+msgstr "Lista dos tipos de janela disponíveis nesta versão do KVIrc:"
 
 #: src/modules/list/libkvilist.cpp:61
 msgid "List window already open for this IRC context"
@@ -4272,7 +4272,7 @@ msgstr "Máscara"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:75
 msgid "Mask editor - KVirc"
-msgstr "Editor de máscaras - KVirc"
+msgstr "Editor de máscaras - KVIrc"
 
 #: src/modules/links/LinksWindow.cpp:295
 #, c-format
@@ -4390,7 +4390,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:177
 msgid "Missing channel parameter in join message"
-msgstr "Parametro de canal em falta na mensagem de entrada"
+msgstr "Parâmetro de canal em falta na mensagem de entrada"
 
 #: src/kvilib/core/KviError.cpp:54
 msgid "Missing closing brace"
@@ -5908,7 +5908,7 @@ msgstr "Acções relacionadas de 'scripting'"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:800
 msgid "Scroll up to read from the last read line"
-msgstr "Rode para cima para ler da última linha"
+msgstr "Vá para cima para ler a partir da última linha"
 
 #: src/modules/help/HelpWindow.cpp:89 src/kvirc/kernel/KviOptions.cpp:842
 msgid "Search"
@@ -6105,7 +6105,7 @@ msgstr "Estatísticas do servidor"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:313
 msgid "Server/Network/Tech Admin only channel"
-msgstr "Canal apenas para Servidor/Rede/Administração Tecnica"
+msgstr "Canal apenas para Servidor/Rede/Administração Técnica"
 
 #: src/modules/ident/libkviident.cpp:334
 msgid "Service startup (IPv4)"
@@ -6251,7 +6251,7 @@ msgstr "Mostra um menu que permite rápidamente conectar a um servidor"
 #: src/kvirc/kernel/KviCoreActions.cpp:756
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr ""
-"Mostra um menu que permite rápidamente seleccionar um canal para entrar"
+"Mostra um menu que permite rapidamente seleccionar um canal para entrar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:1150
 msgid "Shows a popup menu with some IRC Actions"
@@ -6710,7 +6710,7 @@ msgstr "O ficheiro %1 já existe.<br>Deseja-o substituir?"
 
 #: src/kvilib/file/KviPackageReader.cpp:63
 msgid "The file specified is not a valid KVIrc package"
-msgstr "O ficheiro indicado não é um pacote KVirc válido"
+msgstr "O ficheiro indicado não é um pacote KVIrc válido"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1493
 msgid "The following CTCP ACTION has unrecognized target %Q"
@@ -6776,7 +6776,7 @@ msgid ""
 "newer KVIrc"
 msgstr ""
 "O pacote tem um número de versão inválido, pode ter sido criado por um novo "
-"KVirc"
+"KVIrc"
 
 #: src/modules/system/Plugin.cpp:321
 msgid ""
@@ -7038,7 +7038,7 @@ msgid ""
 "This KVIrc executable is too old for this theme (minimum theme engine "
 "version required is %1 while this theme engine has version %2)"
 msgstr ""
-"Este executável KVirc é demasiado antigo para este tema (a versão mínima de "
+"Este executável KVIrc é demasiado antigo para este tema (a versão mínima de "
 "mecanismo do tema requerida é %1 enquanto este mecanismo do tema tiver a "
 "versão %2)"
 
@@ -7082,7 +7082,7 @@ msgstr ""
 msgid ""
 "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr ""
-"Este módulo foi compilado para uma versão KVirc diferente e não pode ser "
+"Este módulo foi compilado para uma versão KVIrc diferente e não pode ser "
 "carregado"
 
 #: src/kvirc/ui/KviOptionsWidget.cpp:51
@@ -7143,7 +7143,7 @@ msgstr "Arranja as janelas MDI com o actual método lado-a-lado seleccionado"
 
 #: src/modules/ident/libkviident.cpp:511
 msgid "Timed out while waiting for the request : dropping connection"
-msgstr "Tempo esgotado enquanto esperavapelo pedido: a fechar a conexão"
+msgstr "Tempo esgotado enquanto esperava pelo pedido: a fechar a conexão"
 
 #: src/modules/url/libkviurl.cpp:193
 msgid "Timestamp"
@@ -7736,7 +7736,7 @@ msgstr "Mensagem wallops"
 #: src/modules/url/libkviurl.cpp:267 src/modules/url/libkviurl.cpp:360
 #: src/modules/url/libkviurl.cpp:556
 msgid "Warning - KVIrc"
-msgstr "Aviso - KVirc"
+msgstr "Aviso - KVIrc"
 
 #: src/modules/links/LinksWindow.cpp:244
 msgid "Warning: No root link was sent by the server, the stats may be invalid."
@@ -7754,7 +7754,7 @@ msgstr "Podemos aceitar o método auth 0 (sem auth) ou 2 (utilizador/senha)"
 
 #: src/modules/setup/SetupWizard.cpp:172
 msgid "Welcome to KVIrc"
-msgstr "Bem-vindo ao KVirc"
+msgstr "Bem-vindo ao KVIrc"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3094
 msgid "White Balance Temperature"
@@ -7922,7 +7922,7 @@ msgid ""
 "Are you sure you wish to quit KVIrc?"
 msgstr ""
 "Está a tentar fechar a janela da última consola.\n"
-"Tem certeza que deseja fechar o KVirc?"
+"Tem certeza que deseja fechar o KVIrc?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:350
 msgid "You have left channel \r!c\r%Q\r"
