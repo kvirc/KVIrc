@@ -43,13 +43,19 @@
 extern HelpIndex        * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
+
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include <QtWebKit/QWebView>
+
+#if QT_VERSION >= 0x040600
+	#define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
+#else
+	#define HIGHLIGHT_FLAGS 0
+#endif
 
 HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 : QWidget(par)
 {
-
 	m_pLayout = new QVBoxLayout(this);
 	m_pLayout->setMargin(3);
 	m_pLayout->setSpacing(2);
@@ -129,19 +135,19 @@ HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 
 void HelpWidget::slotLoadFinished(bool )
 {
-
-    m_pTextBrowser->findText(m_pFindText->text(),QWebPage::HighlightAllOccurrences);
+	m_pTextBrowser->findText(m_pFindText->text(),HIGHLIGHT_FLAGS);
 }
+
 void HelpWidget::slotTextChanged(const QString szFind)
 {
-    m_pTextBrowser->findText("",QWebPage::HighlightAllOccurrences);
-    m_pTextBrowser->findText(szFind,QWebPage::HighlightAllOccurrences);
+	m_pTextBrowser->findText("",HIGHLIGHT_FLAGS);
+	m_pTextBrowser->findText(szFind,HIGHLIGHT_FLAGS);
 }
 
 void HelpWidget::slotResetFind()
 {
-    m_pFindText->setText("");
-    m_pTextBrowser->findText("",QWebPage::HighlightAllOccurrences);
+	m_pFindText->setText("");
+	m_pTextBrowser->findText("",HIGHLIGHT_FLAGS);
 }
 
 void HelpWidget::slotFindPrev()
@@ -155,20 +161,22 @@ void HelpWidget::slotFindNext()
 }
 void HelpWidget::slotZoomIn()
 {
-    kvs_real_t dZoom=m_pTextBrowser->zoomFactor();
-    if(dZoom>=2) return;
-    dZoom+= 0.05;
-    m_pTextBrowser->setZoomFactor(dZoom);
+	kvs_real_t dZoom=m_pTextBrowser->zoomFactor();
+	if(dZoom>=2) return;
+	dZoom+= 0.05;
+	m_pTextBrowser->setZoomFactor(dZoom);
 }
 
 void HelpWidget::slotZoomOut()
 {
-    kvs_real_t dZoom=m_pTextBrowser->zoomFactor();
-    if(dZoom<=0.5) return;
-    dZoom-= 0.05;
-    m_pTextBrowser->setZoomFactor(dZoom);
+	kvs_real_t dZoom=m_pTextBrowser->zoomFactor();
+	if(dZoom<=0.5) return;
+	dZoom-= 0.05;
+	m_pTextBrowser->setZoomFactor(dZoom);
 }
+
 #else
+
 HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 : QWidget(par)
 {
@@ -210,7 +218,9 @@ HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 	connect(m_pTextBrowser,SIGNAL(backwardAvailable(bool)),m_pBtnBackward,SLOT(setEnabled(bool)));
 	connect(m_pTextBrowser,SIGNAL(forwardAvailable(bool)),m_pBtnForward,SLOT(setEnabled(bool)));
 }
+
 #endif
+
 HelpWidget::~HelpWidget()
 {
 	if(m_bIsStandalone)g_pHelpWidgetList->removeRef(this);
