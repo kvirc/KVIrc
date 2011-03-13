@@ -3556,7 +3556,7 @@ msgstr "Quitado el estado de OPerador de IRC"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:387
 msgid "IRC server"
-msgstr "Servidor IRC"
+msgstr "el servidor IRC"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:320
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:368
@@ -5518,7 +5518,7 @@ msgstr "Privado no encontrado: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:808
 msgid "Query notice"
-msgstr "Noticia privada"
+msgstr "Notice privado"
 
 #: src/kvirc/kernel/KviOptions.cpp:755
 msgid "Query private message"
@@ -5526,7 +5526,7 @@ msgstr "Mensaje de pregunta privada"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:174
 msgid "Query target:"
-msgstr "Destino para privados:"
+msgstr "Destino del privado:"
 
 #: src/kvirc/kernel/KviOptions.cpp:821
 msgid "Query trace message"
@@ -5550,7 +5550,7 @@ msgstr "Editor de quiet bans"
 
 #: src/kvirc/ui/KviUserListView.cpp:1606
 msgid "Quiet for <b>%1h %2m %3s</b>"
-msgstr "Callado desde <b>%1h %2m %3s</b>"
+msgstr "Lleva callado <b>%1h %2m %3s</b>"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:420
 msgid "Quit KVIrc"
@@ -5562,7 +5562,7 @@ msgstr "Mensaje de salida"
 
 #: src/kvirc/kernel/KviOptions.cpp:765
 msgid "Quit on netsplit message"
-msgstr "Salir con el mensaje de netsplit"
+msgstr "Salida con mensaje de netsplit"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:421
 msgid "Quits KVIrc closing all the current connections"
@@ -5620,32 +5620,34 @@ msgstr "Respuesta HTTP recibida: %1"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1357
 msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
 msgstr ""
-"Recibido un RPL_WHOISIDLE erroneo, no puedo calcular el tiempo de espera"
+"Recibido un RPL_WHOISIDLE erroneo, no puedo calcular el tiempo de inactividad"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:212
 msgid "Received a join message for an unknown channel, possible desync"
-msgstr "Recibido un mensaje JOIN de un canal desconocido, posible desync?"
+msgstr ""
+"Recibido un mensaje JOIN de un canal desconocido, ¿posible desincronización?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:561
 msgid "Received a kick message for an unknown channel, possible desync"
 msgstr ""
-"Recibido un mensaje de expulsión de un canal desconocido, posible desync?"
+"Recibido un mensaje de expulsión de un canal desconocido, ¿posible desincronización?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1712
 msgid "Received a mode change for an unknown channel, possible desync"
-msgstr "Recibido un cambio de modo de un canal desconocido, posible desync?"
+msgstr ""
+"Recibido un cambio de modo de un canal desconocido, ¿posible desincronización?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:321
 msgid "Received a part message for an unknown channel, possible desync"
-msgstr "Recibido un mensaje PART de un canal desconocido, posible desync?"
+msgstr "Recibido un mensaje PART de un canal desconocido, ¿posible desincronización?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1420
 msgid "Received a topic message for an unknown channel, possible desync"
-msgstr "Recibido un mensaje de tema de un canal desconocido, posible desync?"
+msgstr "Recibido un mensaje de tema de un canal desconocido, ¿posible desincronización?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1621
 msgid "Received an invite message directed to another nick, possible desync"
-msgstr "Recibido un mensaje INVITE dirigido a otro nick, posible desync"
+msgstr "Recibido un mensaje INVITE dirigido a otro nick, posible desincronización"
 
 #: src/modules/links/LinksWindow.cpp:185
 msgid "Received end of links."
@@ -6053,7 +6055,7 @@ msgstr "Error del servidor"
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:387
 #, c-format
 msgid "Server has %d IP addresses, picking a random one"
-msgstr "El servidor tiene %d direcciones IP, escogiendo una aleatoriamente"
+msgstr "El servidor tiene %d direcciones IP, escogiendo una al azar"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:396
 #, c-format
@@ -6138,7 +6140,7 @@ msgstr "Nitidez"
 
 #: src/kvilib/system/KviLocale.cpp:1112
 msgid "Short View"
-msgstr "Vista Breve"
+msgstr "Vista breve"
 
 #: src/kvirc/ui/KviMainWindow.cpp:952 src/kvirc/ui/KviMainWindow.cpp:970
 msgid "Show %1"
@@ -7008,7 +7010,7 @@ msgstr "El archivo de información del tema visual no es válido"
 
 #: src/kvirc/ui/KviMainWindow.cpp:832
 msgid "There are active connections, are you sure you wish to "
-msgstr "Existen conexiones activas, está seguro que desea "
+msgstr "Hay conexiones activas, ¿estás seguro de que quieres "
 
 #: src/kvilib/core/KviError.cpp:169
 msgid "There is no $this pointer in this scope (unexpected @)"
@@ -7083,7 +7085,7 @@ msgstr "Esta opción también está disponible como"
 
 #: src/modules/system/Plugin.cpp:305
 msgid "This plugin does not export the desired function."
-msgstr "Este plugin no exprota la función deseada."
+msgstr "Este plugin no exporta la función deseada."
 
 #: src/kvirc/ui/KviQueryWindow.cpp:577 src/kvirc/ui/KviQueryWindow.cpp:755
 msgid "This query has no active targets, no message sent"
@@ -7491,7 +7493,7 @@ msgstr "Protocolo %1 no soportado"
 
 #: src/kvilib/core/KviError.cpp:68
 msgid "Unterminated expression (missing ')' ?)"
-msgstr "Expresión inacabada (falta un ')' ?)"
+msgstr "Expresión inacabada (¿falta un ')'?)"
 
 #: src/kvilib/core/KviError.cpp:69
 msgid "Unterminated subexpression (Parenthesis mismatch)"
@@ -7617,11 +7619,11 @@ msgstr "Usando contraseña específica de la conexión (%Q)"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:138
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
-msgstr "Usando protocolo IRC filtrado: El filtro de enlace es \"%Q\""
+msgstr "Usando protocolo IRC filtrado: el filtro de enlace es \"%Q\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1489
 msgid "Using network specific password (%Q)"
-msgstr "Usando contraseña específica de red (%Q)"
+msgstr "Usando contraseña específica de la red (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1452
 msgid "Using network specific real name (%Q)"
@@ -7922,7 +7924,7 @@ msgstr "Has abandonado el canal \r!c\r%Q\r: %Q"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1705
 #, c-format
 msgid "You have set user mode %s"
-msgstr "Tiene puesto el modo de usuario %s"
+msgstr "Te has puesto el modo de usuario %s"
 
 #: src/kvirc/ui/KviInput.cpp:247
 msgid ""
@@ -8434,7 +8436,7 @@ msgstr "lista de protegidos/admins"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:387
 msgid "proxy host"
-msgstr "servidor proxy"
+msgstr "el servidor proxy"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1172
 msgid "queries"
@@ -8454,11 +8456,11 @@ msgid ""
 "bots)"
 msgstr ""
 "r: Usuario con conexión restringida (o receptor para mensajes sobre bots "
-"rechazado)"
+"rechazados)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1364
 msgid "random nickname"
-msgstr "nick aleatorio"
+msgstr "nick al azar"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1200
 msgid "registration mask changed or desync with the watch service"
@@ -8568,10 +8570,3 @@ msgstr "y: Espía :)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:298
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Destinatario de mensajes oper wallop"
-
-#~ msgid ""
-#~ "Message arriving from %1:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Llega un mensaje desde %1:\n"
-#~ "\n"
