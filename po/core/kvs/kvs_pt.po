@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zé <mmodem00@gmail.com>, 2010.
-# Zé <ze@mandriva.org>, 2010.
+# Zé <ze@mandriva.org>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2010-09-18 17:29+0100\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2011-03-14 03:24+0000\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1186
@@ -113,7 +113,6 @@ msgid "Can't delete a null object reference"
 msgstr "Não é possível apagar uma referência de objecto nula"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:896
-#, fuzzy
 msgid "Can't delete an inexistant object"
 msgstr "Não é possível apagar um objecto que não existe"
 
@@ -469,7 +468,7 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 msgid "Hostname: %Q"
-msgstr ""
+msgstr "Nome da máquina: %Q"
 
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
@@ -478,7 +477,7 @@ msgstr "Endereço IP %d: %Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:327
 msgid "Injected incoming data: %1"
-msgstr ""
+msgstr "Dados injectados recebidos: %1"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:83
 msgid "Internal error: pure virtual evaluateReadOnly called"
@@ -550,15 +549,15 @@ msgstr ""
 
 #: src/kvirc/kvs/object/KviKvsObjectClass.cpp:165
 msgid "It's not allowed to return values in the constructor"
-msgstr ""
+msgstr "Não é permitido retornar valores no constructor"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:249
 msgid "Lag meter was not enabled"
-msgstr ""
+msgstr "O medidos de 'lag' não estava activado"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:367
 msgid "Left operand didn't evaluate to a number"
-msgstr ""
+msgstr "O operando esquerdo não avaliou para um número"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:630
 msgid "List of active timers"
@@ -582,9 +581,8 @@ msgid "Missing class name"
 msgstr "Nome de classe em falta"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:146
-#, fuzzy
 msgid "Missing non-optional parameter \"%1\""
-msgstr "Parâmetro não.opcional \"%1\" em falta"
+msgstr "Parâmetro não-.opcional \"%1\" em falta"
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:206
 msgid "Missing parameter"
@@ -690,15 +688,15 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:448
 msgid "No button with type %Q named %Q"
-msgstr ""
+msgstr "Nenhum botão com o tipo %Q chamado %Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:780
 msgid "No catalogue %Q for the current language found"
-msgstr ""
+msgstr "Nenhum catalogo %Q encontrado para a língua actual"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:454
 msgid "No commandline specified for this type of url (%Q)"
-msgstr ""
+msgstr "Nenhuma linha de comando especificada para este tipo de url (%Q)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
@@ -783,7 +781,6 @@ msgid ""
 msgstr ""
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1154
-#, fuzzy
 msgid "Property: %1%2%3, type %4"
 msgstr "Propriedade: %1%2%3, tipo %4"
 
@@ -1028,43 +1025,43 @@ msgstr ""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:402
 msgid "The left side of operator '%=' didn't evaluate to a number"
-msgstr ""
+msgstr "O operador do lado esquerdo '%=' não avaliou para um número"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:259
 msgid "The left side of operator '&=' didn't evaluate to an integer"
-msgstr ""
+msgstr "O operador do lado esquerdo '&=' não avaliou para um inteiro"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:484
 msgid "The left side of operator '*=' didn't evaluate to a number"
-msgstr ""
+msgstr "O operador do lado esquerdo '*=' não avaliou para um número"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:800
 msgid "The left side of operator '+=' didn't evaluate to a number"
-msgstr ""
+msgstr "O operador do lado esquerdo '+=' não avaliou para um número"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:728
 msgid "The left side of operator '-=' didn't evaluate to a number"
-msgstr ""
+msgstr "O operador do lado esquerdo '-=' não avaliou para um número"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:319
 msgid "The left side of operator '/=' didn't evaluate to a number"
-msgstr ""
+msgstr "O operador do lado esquerdo '/=' não avaliou para um número"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:610
 msgid "The left side of operator '<<=' didn't evaluate to an integer"
-msgstr ""
+msgstr "O operador do lado esquerdo '<<=' não avaliou para um inteiro"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:669
 msgid "The left side of operator '>>=' didn't evaluate to an integer"
-msgstr ""
+msgstr "O operador do lado esquerdo '>>=' não avaliou para um inteiro"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:871
 msgid "The left side of operator '^=' didn't evaluate to an integer"
-msgstr ""
+msgstr "O operador do lado esquerdo '^=' não avaliou para um inteiro"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:551
 msgid "The left side of operator '|=' didn't evaluate to an integer"
-msgstr ""
+msgstr "O operador do lado esquerdo '|=' não avaliou para um inteiro"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:91
 msgid ""
@@ -1278,9 +1275,9 @@ msgid "Unable to add the timer: insufficient system resources"
 msgstr "Incapaz de adicionar o temporizador: recursos do sistema insuficientes"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:570
-#, fuzzy
 msgid "Unable to get certificate information: query not recognized"
-msgstr "Incapaz de obter informações do certificado: pesquisa não reconhecida"
+msgstr ""
+"Não é possível obter informações do certificado: pesquisa não reconhecida"
 
 #: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:919
 #: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:940
@@ -1633,7 +1630,6 @@ msgstr "encontrado o tipo %Q onde era esperado o tipo '%s'"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:95
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:116
-#, fuzzy
 msgid "line %1, near character %2"
 msgstr "linha %1, perto do caracter %2"
 

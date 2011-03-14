@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-03-14 00:57+0000\n"
+"PO-Revision-Date: 2011-03-14 03:15+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1328,7 +1328,7 @@ msgstr "A tentar %Q para %Q (%Q) na porta %u"
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:168
 #, c-format
 msgid "Attempting to 'bounce' on proxy %s on port %u (protocol %s)"
-msgstr "A tentar 'bounce' no 'proxy' %s no porto %u (protocolo %s)"
+msgstr "A tentar 'bounce' no 'proxy' %s na porta %u (protocolo %s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:606
 msgid "Attempting to rejoin \r!c\r%Q\r..."
@@ -2429,11 +2429,11 @@ msgstr "Tempo de conexão esgotado"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:386
 msgid "Contacting %Q %s (%s) on port %u"
-msgstr "A contactar %Q %s (%s) no porto %u"
+msgstr "A contactar %Q %s (%s) na porta %u"
 
 #: src/kvilib/net/KviHttpRequest.cpp:397
 msgid "Contacting host %1 on port %2"
-msgstr "A contactar a máquina %1 no porto %2"
+msgstr "A contactar a máquina %1 na porta %2"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:450
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:464
@@ -3878,7 +3878,7 @@ msgstr "Parâmetro inválido"
 
 #: src/kvilib/core/KviError.cpp:133
 msgid "Invalid port number"
-msgstr "Número de porto inválido"
+msgstr "Número de porta inválido"
 
 #: src/kvilib/core/KviError.cpp:97
 msgid "Invalid proxy address"
@@ -5011,7 +5011,7 @@ msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:419
 msgid "Notifying avatar '%Q' to %Q"
-msgstr "Avatar de notificação '%Q' para %Q"
+msgstr "Avatar de notificação '%Q' de %Q"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:293
 msgid "O: Local IRC operator (LOCOP)"
@@ -5030,7 +5030,7 @@ msgstr "Fluxo de bytes (desconhecido)"
 
 #: src/kvilib/system/KviLocale.cpp:1118
 msgid "Often used directories"
-msgstr "Directórios muito usados"
+msgstr "Directórios mais usados"
 
 #: src/kvirc/ui/KviIrcView.cpp:2130
 #: src/kvirc/ui/KviImageDialog.cpp:160
@@ -5083,7 +5083,7 @@ msgid ""
 "Ooops.. you've hit a bug in the servers database... I have found a server "
 "but not a network..."
 msgstr ""
-"Ooops... encontrou um erro na base de dados de servidores...Encontrou um "
+"Ooops... encontrou um erro na base de dados dos servidores...Encontrou um "
 "servidor mas não uma rede..."
 
 #: src/modules/setup/SetupWizard.cpp:199
@@ -5092,7 +5092,7 @@ msgid ""
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
-"Oops... não é possível encontrar o ficheiro de licença.\n"
+"Oops... não é possível encontrar o ficheiro da licença.\n"
 "Deve estar incluído na distribuição...\n"
 "Por favor reporte para <pragma at kvirc dot net>"
 
