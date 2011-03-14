@@ -100,8 +100,9 @@ const char * const webattributes_tbl[] = {
 #endif
 	"JavascriptCanOpenWindows",
 	"JavascriptCanAccessClipboard",
-	"ZoomTextOnly",
+	"ZoomTextOnly"
 #if (QT_VERSION >= 0x040700)
+	,
 	"LocalContentCanAccessFileUrls"
 #endif
  };
@@ -112,8 +113,9 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 #endif
 	QWebSettings::JavascriptCanOpenWindows,
 	QWebSettings::JavascriptCanAccessClipboard,
-	QWebSettings::ZoomTextOnly,
+	QWebSettings::ZoomTextOnly
 #if (QT_VERSION >= 0x040700)
+	,
 	QWebSettings::LocalContentCanAccessFileUrls
 #endif
 };
