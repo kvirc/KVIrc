@@ -37,6 +37,7 @@
 #include "kvi_kvs_script.h"
 
 #include <QDir>
+#include <QMessageBox>
 
 #include <stdlib.h>
 
@@ -246,12 +247,7 @@ namespace KviAddonFunctions
 		}
 
 		if(!KviFileUtils::deleteDir(szUnpackPath))
-		{
-			// FIXME: Just warn the user and assume success?
-			szErr = __tr2qs_ctx("One or more files can't be deleted","addon");
-			KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
-			return false;
-		}
+			QMessageBox::warning(NULL,__tr2qs_ctx("One or more files can't be deleted","addon"),__tr2qs_ctx("Failed to delete the directory '%1'","addon").arg(szUnpackPath));
 
 		return true;
 	}
