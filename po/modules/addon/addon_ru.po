@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2010-06-14 10:47+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
 msgid "%cAddon id %Q, version %Q%c"
@@ -63,15 +63,15 @@ msgstr "Не могу открыть файл на запись."
 msgid "Cannot write to the file descriptor."
 msgstr "Не могу записать в дескриптор файла."
 
-#: src/modules/addon/managementdialog.cpp:170
+#: src/modules/addon/AddonManagementDialog.cpp:170
 msgid "Close"
 msgstr "Закрыть "
 
-#: src/modules/addon/managementdialog.cpp:110
+#: src/modules/addon/AddonManagementDialog.cpp:110
 msgid "Configure Addon..."
 msgstr "Конфигурация дополнения..."
 
-#: src/modules/addon/managementdialog.cpp:258
+#: src/modules/addon/AddonManagementDialog.cpp:259
 msgid "Confirm addon uninstallation"
 msgstr "Подтвердите удаление дополнения"
 
@@ -79,7 +79,7 @@ msgstr "Подтвердите удаление дополнения"
 msgid "Create Addon Package - KVIrc"
 msgstr "Создать пакет дополнения - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:132
+#: src/modules/addon/AddonManagementDialog.cpp:132
 msgid "Create an Addon as a Distributable Package"
 msgstr "Создать дополнение как распространяемый пакет"
 
@@ -91,7 +91,7 @@ msgstr "Дата создания"
 msgid "Created with"
 msgstr "Создано с помощью"
 
-#: src/modules/addon/managementdialog.cpp:122
+#: src/modules/addon/AddonManagementDialog.cpp:122
 msgid "Delete Selected Addons"
 msgstr "Удалить выбранные дополнения"
 
@@ -103,7 +103,7 @@ msgstr "Описание: %Q"
 msgid "Do Not Install"
 msgstr "Не устанавливать"
 
-#: src/modules/addon/managementdialog.cpp:253
+#: src/modules/addon/AddonManagementDialog.cpp:254
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Вы действительно хотите удалить дополнение \"%1\"?"
 
@@ -148,7 +148,7 @@ msgstr "Конечная информация"
 msgid "Finish"
 msgstr "Готово"
 
-#: src/modules/addon/managementdialog.cpp:148
+#: src/modules/addon/AddonManagementDialog.cpp:148
 msgid "Get More Addons..."
 msgstr "Еще дополнения..."
 
@@ -194,8 +194,8 @@ msgstr "Нажмите \"Далее\" для продолжения."
 msgid "Icon File"
 msgstr "Файл иконки"
 
-#: src/modules/addon/managementdialog.cpp:293
-#: src/modules/addon/managementdialog.cpp:307
+#: src/modules/addon/AddonManagementDialog.cpp:294
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Install Addon - KVIrc"
 msgstr "Установить дополнение - KVIrc"
 
@@ -203,7 +203,7 @@ msgstr "Установить дополнение - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "Установить пакет дополнения - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:142
+#: src/modules/addon/AddonManagementDialog.cpp:142
 msgid "Install Addon Package From Disk"
 msgstr "Установить пакет дополнения с локального диска"
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "Internal error: call a head-shrinker"
 msgstr "Внутренняя ошибка: вызов сжимателя заголовка"
 
-#: src/modules/addon/managementdialog.cpp:92
+#: src/modules/addon/AddonManagementDialog.cpp:92
 msgid "Manage Script-Based Addons"
 msgstr "Управление скриптовыми дополнениями"
 
@@ -231,7 +231,7 @@ msgstr "Минимальная версия KVIrc"
 msgid "Name: %Q"
 msgstr "Имя: %Q"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "No"
 msgstr "Нет"
 
@@ -286,7 +286,7 @@ msgstr "Версия пакета"
 msgid "Packaging failed"
 msgstr "Упаковка завершена неудачно"
 
-#: src/modules/addon/managementdialog.cpp:280
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Please select the addon installation file"
 msgstr "Пожалуйста, выберите файл установки дополнения"
 
@@ -310,11 +310,12 @@ msgstr "Выберите файл иконки:"
 msgid "Select the source directory:"
 msgstr "Выберите исходную директорию:"
 
-#: src/modules/addon/managementdialog.cpp:116
+#: src/modules/addon/AddonManagementDialog.cpp:116
 msgid "Show Help"
 msgstr "Показать помощь"
 
-#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692
+#: src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -326,9 +327,12 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Исходная директория"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Дополнение \"%1\" не существует"
 
@@ -375,7 +379,8 @@ msgid "The selected file does not seem to be a valid KVIrc addon package"
 msgstr "Выбранный файл не является пакетом дополнения KVIrc"
 
 #: src/modules/addon/AddonFunctions.cpp:70
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+#, fuzzy
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
 msgstr "Выбранный файл не является пакетом KVIrc: %Q"
 
 #: src/modules/addon/libkviaddon.cpp:544
@@ -420,7 +425,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Всего установлено %d дополнений"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Удаление имеющегося дополнения версии %Q"
 
@@ -437,7 +443,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "Yes"
 msgstr "Да"
 

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:23+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-02-11 00:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
@@ -64,15 +64,15 @@ msgstr "Yazmak için dosya açılamıyor."
 msgid "Cannot write to the file descriptor."
 msgstr "Dosyaya tanıtıcısı yazılamıyor."
 
-#: src/modules/addon/managementdialog.cpp:170
+#: src/modules/addon/AddonManagementDialog.cpp:170
 msgid "Close"
 msgstr "Kapat"
 
-#: src/modules/addon/managementdialog.cpp:110
+#: src/modules/addon/AddonManagementDialog.cpp:110
 msgid "Configure Addon..."
 msgstr "Addon Düzenle..."
 
-#: src/modules/addon/managementdialog.cpp:258
+#: src/modules/addon/AddonManagementDialog.cpp:259
 msgid "Confirm addon uninstallation"
 msgstr "Addon/Eklenti Kaldırma Onay"
 
@@ -80,7 +80,7 @@ msgstr "Addon/Eklenti Kaldırma Onay"
 msgid "Create Addon Package - KVIrc"
 msgstr "Oluştur Eklenti/Addon Paketi - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:132
+#: src/modules/addon/AddonManagementDialog.cpp:132
 msgid "Create an Addon as a Distributable Package"
 msgstr "Bir Addonu Dağıtılabilir Paket Yapınız"
 
@@ -92,7 +92,7 @@ msgstr "De düzenlendi"
 msgid "Created with"
 msgstr "Ile düzenlendi"
 
-#: src/modules/addon/managementdialog.cpp:122
+#: src/modules/addon/AddonManagementDialog.cpp:122
 msgid "Delete Selected Addons"
 msgstr "Seçilen Addonları Sil"
 
@@ -104,7 +104,7 @@ msgstr "Açıklama: %Q"
 msgid "Do Not Install"
 msgstr "Yükleme"
 
-#: src/modules/addon/managementdialog.cpp:253
+#: src/modules/addon/AddonManagementDialog.cpp:254
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Addon \"%1\"'i gerçekten kaldırmak istiyor musunuz ?"
 
@@ -148,7 +148,7 @@ msgstr "Son bilgi"
 msgid "Finish"
 msgstr "Bitir"
 
-#: src/modules/addon/managementdialog.cpp:148
+#: src/modules/addon/AddonManagementDialog.cpp:148
 msgid "Get More Addons..."
 msgstr "Daha Fazla Addon Al..."
 
@@ -195,8 +195,8 @@ msgstr "Başlamak için \"Sonraki\" tıklayınız."
 msgid "Icon File"
 msgstr "Simge dosyası"
 
-#: src/modules/addon/managementdialog.cpp:293
-#: src/modules/addon/managementdialog.cpp:307
+#: src/modules/addon/AddonManagementDialog.cpp:294
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Install Addon - KVIrc"
 msgstr "Yükle Addon - KVIrc"
 
@@ -204,7 +204,7 @@ msgstr "Yükle Addon - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "Addon paket yükleyin - KVırc"
 
-#: src/modules/addon/managementdialog.cpp:142
+#: src/modules/addon/AddonManagementDialog.cpp:142
 msgid "Install Addon Package From Disk"
 msgstr "Diskten Addon Paketi Yükleyin"
 
@@ -216,7 +216,7 @@ msgstr "Dosya %1', '%2' e yükleniyor"
 msgid "Internal error: call a head-shrinker"
 msgstr "İç Hata: head-shrinker çağrılmalı"
 
-#: src/modules/addon/managementdialog.cpp:92
+#: src/modules/addon/AddonManagementDialog.cpp:92
 msgid "Manage Script-Based Addons"
 msgstr "Addonları Yönet"
 
@@ -232,7 +232,7 @@ msgstr "En düşük KVIrc sürümü"
 msgid "Name: %Q"
 msgstr "İsim: %Q"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "No"
 msgstr "Hayır"
 
@@ -287,7 +287,7 @@ msgstr "Paket Sürümü"
 msgid "Packaging failed"
 msgstr "Paketleme işlemi başarısız"
 
-#: src/modules/addon/managementdialog.cpp:280
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Please select the addon installation file"
 msgstr "Addon yükleme dosyasını seçiniz"
 
@@ -311,11 +311,12 @@ msgstr "Simge dosyasını seç:"
 msgid "Select the source directory:"
 msgstr "Kynak dizini seç"
 
-#: src/modules/addon/managementdialog.cpp:116
+#: src/modules/addon/AddonManagementDialog.cpp:116
 msgid "Show Help"
 msgstr "Yardımı Göster"
 
-#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692
+#: src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr "Mevcut giriş atlanıyor '%1'"
 
@@ -327,9 +328,12 @@ msgstr "Geçersiz giriş atlanıyor '%1'"
 msgid "Source Directory"
 msgstr "Kaynak dizin"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Addon \"%1\"  mevcut değil"
 
@@ -374,7 +378,8 @@ msgid "The selected file does not seem to be a valid KVIrc addon package"
 msgstr "Seçilen dosya geçerli görünmüyor"
 
 #: src/modules/addon/AddonFunctions.cpp:70
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+#, fuzzy
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
 msgstr "Seçilen dosya geçerli görünmüyor: %Q"
 
 #: src/modules/addon/libkviaddon.cpp:544
@@ -416,7 +421,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Toplam: %d addon yüklendi"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Mevcut olan addon sürümü siliniyor %Q"
 
@@ -432,7 +438,7 @@ msgstr "Uyarı: Addon KVIrc nin bu versiyonuyla uyuşmuyor olablilir"
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "Yes"
 msgstr "Evet"
 

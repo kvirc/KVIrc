@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-01-26 14:23+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -94,8 +94,8 @@ msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
 msgstr ""
-"Kaputter Slot ›%Q‹ in Zielobjekt ›%Q::%Q‹, während des Sendes des Signals "
-"›%Q‹ von Objekt ›%Q::%Q‹: Trenne die Verbindung"
+"Kaputter Slot ›%Q‹ in Zielobjekt ›%Q::%Q‹, während des Sendes des Signals ›%"
+"Q‹ von Objekt ›%Q::%Q‹: Trenne die Verbindung"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
 msgid "Broken text parameter: assuming empty string"
@@ -176,8 +176,8 @@ msgstr "Kann das Modul nicht entladen: Es hat sich selbst im Speicher gesperrt"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1744
 msgid ""
-"Cannot call internal object function $%Q (for object named '%Q' of class "
-"'%Q') from this context"
+"Cannot call internal object function $%Q (for object named '%Q' of class '%"
+"Q') from this context"
 msgstr ""
 "Kann interne Objektfunktion $%Q (des Objekts ›%Q‹ der Klasse ›%Q‹) nicht aus "
 "diesem Kontext aufrufen"
@@ -235,14 +235,14 @@ msgstr ""
 "Schleife im Vererbungsbaum der Basisklasse ›%Q‹' gefunden: Definieren Sie "
 "diese Klasse zuerst neu"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 msgid "Division by zero"
 msgstr "Division durch Null"
 
@@ -439,8 +439,8 @@ msgid ""
 "Found end of input where character '%c' was expected: see \"/help %s\" for "
 "the command syntax"
 msgstr ""
-"Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help "
-"%s« nach der Befehlssyntax"
+"Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help %"
+"s« nach der Befehlssyntax"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1516
 msgid ""
@@ -671,8 +671,8 @@ msgstr ""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
 msgid ""
-"Module command call failed: the module '%Q' doesn't export a command named "
-"'%Q'"
+"Module command call failed: the module '%Q' doesn't export a command named '%"
+"Q'"
 msgstr ""
 "Modulbefehlsaufruf fehlgeschlagen: Das Modul ›%Q‹ exportiert keinen Befehl "
 "namens ›%Q‹"
@@ -748,10 +748,10 @@ msgstr "Kein solcher IRC-Kontext (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
 msgid "No such event (%Q)"
 msgstr "kein solches Ereignis (%Q)"
 
@@ -853,13 +853,13 @@ msgid ""
 msgstr ""
 "Einzelner ›:‹ im Aliasnamen gefunden: Meinten Sie ...<namespace>::<name>?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr "Einzelnes ›:‹-Zeichen: Meinten Sie ›...<namespace>::<alias_name>‹?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Einzelne ›::‹-Sequenz oder ungültiger Aliasname"
 
@@ -1719,7 +1719,8 @@ msgstr "[KVS]%c Kompilierungsfehler: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Laufzeitfehler: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188
+#: src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 

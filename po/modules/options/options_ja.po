@@ -7,28 +7,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2010-07-28 10:37+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <LL@li.org>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 
-#: src/modules/options/OptionsWidget_dcc.cpp:285
 #: src/modules/options/OptionsWidget_avatar.cpp:72
+#: src/modules/options/OptionsWidget_dcc.cpp:285
 msgid " bytes"
 msgstr " バイト"
 
-#: src/modules/options/OptionsWidget_channel.cpp:140
 #: src/modules/options/OptionsWidget_query.cpp:102
+#: src/modules/options/OptionsWidget_channel.cpp:140
 msgid " days"
 msgstr " 日"
 
+#: src/modules/options/OptionsWidget_query.cpp:98
 #: src/modules/options/OptionsWidget_ircView.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:136
-#: src/modules/options/OptionsWidget_query.cpp:98
 msgid " lines"
 msgstr " 行"
 
@@ -36,9 +36,9 @@ msgstr " 行"
 msgid " min"
 msgstr " 分"
 
+#: src/modules/options/OptionsWidget_dcc.cpp:276
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
-#: src/modules/options/OptionsWidget_dcc.cpp:276
 #: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:56
@@ -53,12 +53,12 @@ msgstr " ピクセル"
 msgid " requests"
 msgstr " リクエスト"
 
-#: src/modules/options/OptionsWidget_channel.cpp:121
-#: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
+#: src/modules/options/OptionsWidget_avatar.cpp:96
 #: src/modules/options/OptionsWidget_dcc.cpp:140
+#: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
-#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_channel.cpp:121
 msgid " sec"
 msgstr " 秒"
 
@@ -70,7 +70,7 @@ msgstr " マイクロ秒"
 msgid "\"Smart\" nickname colors"
 msgstr "「スマートな」ニックネームの色"
 
-#: src/modules/options/dialog.cpp:237
+#: src/modules/options/OptionsDialog.cpp:238
 msgid "&Apply"
 msgstr "適用(&A)"
 
@@ -94,10 +94,10 @@ msgstr "新規プロキシー(&N)"
 msgid "&New Server"
 msgstr "新しいサーバー情報(&N)"
 
-#: src/modules/options/dialog.cpp:229
 #: src/modules/options/OptionsWidget_identity.cpp:234
+#: src/modules/options/OptionsDialog.cpp:230
 #: src/modules/options/OptionsWidget_servers.cpp:381
-#: src/modules/options/OptionsWidgetContainer.cpp:100
+#: src/modules/options/OptionsWidgetContainer.cpp:101
 msgid "&OK"
 msgstr "&OK"
 
@@ -118,11 +118,11 @@ msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 "<b>注釈:</b> 言語の変更を適用するには KVirc を再起動する必要があります。"
 
-#: src/modules/options/OptionsWidget_urlHandlers.cpp:76
+#: src/modules/options/OptionsWidget_urlHandlers.cpp:80
 msgid "<b>file://</b> handler command:"
 msgstr "<b>file://</b> のハンドラー コマンド:"
 
-#: src/modules/options/OptionsWidget_urlHandlers.cpp:74
+#: src/modules/options/OptionsWidget_urlHandlers.cpp:76
 msgid "<b>ftp://</b> handler command:"
 msgstr "<b>ftp://</b> のハンドラー コマンド:"
 
@@ -130,11 +130,11 @@ msgstr "<b>ftp://</b> のハンドラー コマンド:"
 msgid "<b>http://</b> handler command:"
 msgstr "<b>http://</b> のハンドラー コマンド:"
 
-#: src/modules/options/OptionsWidget_urlHandlers.cpp:73
+#: src/modules/options/OptionsWidget_urlHandlers.cpp:74
 msgid "<b>https://</b> handler command:"
 msgstr "<b>https://</b> のハンドラー コマンド:"
 
-#: src/modules/options/OptionsWidget_urlHandlers.cpp:75
+#: src/modules/options/OptionsWidget_urlHandlers.cpp:78
 msgid "<b>mailto:</b> handler command:"
 msgstr "<b>mailto://</b> のハンドラー コマンド:"
 
@@ -321,15 +321,15 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:103
+#: src/modules/options/OptionsWidget_channel.cpp:141
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:137
 #: src/modules/options/OptionsWidget_query.cpp:99
+#: src/modules/options/OptionsWidget_channel.cpp:137
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
@@ -634,7 +634,7 @@ msgid ""
 "enter any word you like here. :D</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:65
+#: src/modules/options/OptionsWidget_ctcp.cpp:68
 msgid ""
 "<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
 "acknowledgement for CTCP PAGE messages.</center>"
@@ -804,8 +804,8 @@ msgid ""
 "data.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_dcc.cpp:331
 #: src/modules/options/OptionsWidget_query.cpp:82
+#: src/modules/options/OptionsWidget_dcc.cpp:331
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1114,13 +1114,13 @@ msgid ""
 "phrases here too.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:55
+#: src/modules/options/OptionsWidget_ctcp.cpp:57
 msgid ""
 "<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
 "you can place the source URL for a script here.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:50
+#: src/modules/options/OptionsWidget_ctcp.cpp:51
 msgid ""
 "<center>This text will be appended to the CTCP VERSION reply.<br>For "
 "example, you can place a script name here.</center>"
@@ -1228,7 +1228,7 @@ msgid ""
 "required.</p>"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:198
+#: src/modules/options/OptionsDialog.cpp:199
 msgid ""
 "<p>This is the search tool for this options dialog.</p><p>You can enter a "
 "search term either in your native language or in english and press the "
@@ -1269,7 +1269,7 @@ msgstr "有効な高コントラストの前景 (第 2 候補)"
 msgid "Active window"
 msgstr "アクティブ ウィンドウ"
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:91
+#: src/modules/options/OptionsWidget_textIcons.cpp:90
 msgid "Add"
 msgstr "追加"
 
@@ -1277,18 +1277,18 @@ msgstr "追加"
 msgid "Add Profile"
 msgstr "プロフィールの追加"
 
-#: src/modules/options/OptionsWidget_servers.cpp:347
 #: src/modules/options/OptionsWidget_nickserv.cpp:264
+#: src/modules/options/OptionsWidget_servers.cpp:347
 msgid "Add Rule"
 msgstr "ルールの追加"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1001
-#: src/modules/options/OptionsWidget_irc.h:57
 #: src/modules/options/OptionsWidget_identity.h:202
+#: src/modules/options/OptionsWidget_channel.h:64
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
 #: src/modules/options/OptionsWidget_connection.h:46
-#: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_irc.h:57
 msgid "Advanced"
 msgstr "高度な設定"
 
@@ -1405,7 +1405,7 @@ msgstr "常に最小化で転送ウィンドウを開く"
 msgid "Anti-spam"
 msgstr "スパム対策"
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:52
+#: src/modules/options/OptionsWidget_ctcp.cpp:53
 msgid "Append to SOURCE reply:"
 msgstr ""
 
@@ -1503,8 +1503,8 @@ msgstr "退席:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:164
 #: src/modules/options/OptionsWidget_theme.cpp:184
-#: src/modules/options/OptionsWidget_userList.h:46
 #: src/modules/options/OptionsWidget_windowList.h:79
+#: src/modules/options/OptionsWidget_userList.h:46
 msgid "Background"
 msgstr "背景"
 
@@ -1519,8 +1519,8 @@ msgid "Background Image"
 msgstr "背景画像"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:39
-#: src/modules/options/OptionsWidget_topicLabel.cpp:38
 #: src/modules/options/OptionsWidget_input.cpp:39
+#: src/modules/options/OptionsWidget_topicLabel.cpp:38
 msgid "Background color"
 msgstr "背景色"
 
@@ -1529,8 +1529,8 @@ msgid "Background color:"
 msgstr "背景色"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:44
-#: src/modules/options/OptionsWidget_topicLabel.cpp:39
 #: src/modules/options/OptionsWidget_input.cpp:46
+#: src/modules/options/OptionsWidget_topicLabel.cpp:39
 msgid "Background image"
 msgstr "背景画像"
 
@@ -1563,8 +1563,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_windowList.cpp:140
 #: src/modules/options/OptionsWidget_ircView.cpp:71
-#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_input.cpp:63
+#: src/modules/options/OptionsWidget_userList.cpp:148
 msgid "Bottom"
 msgstr "下"
 
@@ -1592,14 +1592,14 @@ msgstr ""
 msgid "Cache IP address"
 msgstr "IP アドレスのキャッシュ"
 
-#: src/modules/options/dialog.cpp:244
+#: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_servers.cpp:387
 #: src/modules/options/OptionsWidget_servers.cpp:1011
-#: src/modules/options/OptionsWidgetContainer.cpp:108
-#: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "取り消し"
 
@@ -1609,10 +1609,10 @@ msgstr "取り消し"
 #: src/modules/options/OptionsWidget_windowList.cpp:141
 #: src/modules/options/OptionsWidget_ircView.cpp:67
 #: src/modules/options/OptionsWidget_ircView.cpp:72
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
 msgid "Center"
 msgstr "中央"
 
@@ -1714,13 +1714,13 @@ msgstr ""
 msgid "Close in tray"
 msgstr "閉じるときはトレイに"
 
-#: src/modules/options/dialog.cpp:231
-#: src/modules/options/OptionsWidgetContainer.cpp:101
+#: src/modules/options/OptionsDialog.cpp:232
+#: src/modules/options/OptionsWidgetContainer.cpp:102
 msgid "Close this dialog, accepting all changes."
 msgstr "全変更を許可し、ダイアログを閉じます。"
 
-#: src/modules/options/dialog.cpp:246
-#: src/modules/options/OptionsWidgetContainer.cpp:109
+#: src/modules/options/OptionsDialog.cpp:247
+#: src/modules/options/OptionsWidgetContainer.cpp:110
 msgid "Close this dialog, discarding all changes."
 msgstr "全変更を破棄し、このダイアログを閉じます。"
 
@@ -1732,7 +1732,7 @@ msgstr "色セット"
 msgid "Commandline in user-friendly mode by default"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:239
+#: src/modules/options/OptionsDialog.cpp:240
 msgid "Commit all changes immediately."
 msgstr "すぐにすべての変更をコミットします。"
 
@@ -1865,7 +1865,7 @@ msgstr "標準のテキスト エンコーディング"
 msgid "Delay between attempts:"
 msgstr "試行までの遅延:"
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:95
+#: src/modules/options/OptionsWidget_textIcons.cpp:94
 msgid "Delete"
 msgstr "削除"
 
@@ -1873,19 +1873,19 @@ msgstr "削除"
 msgid "Delete Profile"
 msgstr "プロフィールの削除"
 
-#: src/modules/options/OptionsWidget_servers.cpp:356
 #: src/modules/options/OptionsWidget_nickserv.cpp:272
+#: src/modules/options/OptionsWidget_servers.cpp:356
 msgid "Delete Rule"
 msgstr "ルールの削除"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1271
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
+#: src/modules/options/OptionsWidget_servers.cpp:1271
 msgid "Description"
 msgstr "説明"
 
+#: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 #: src/modules/options/OptionsWidget_servers.cpp:119
 #: src/modules/options/OptionsWidget_servers.cpp:534
-#: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 msgid "Description:"
 msgstr "説明:"
 
@@ -1983,8 +1983,8 @@ msgstr ""
 msgid "Edit Profile"
 msgstr "プロフィールの編集"
 
-#: src/modules/options/OptionsWidget_servers.cpp:352
 #: src/modules/options/OptionsWidget_nickserv.cpp:268
+#: src/modules/options/OptionsWidget_servers.cpp:352
 msgid "Edit Rule"
 msgstr "ルールの編集"
 
@@ -2000,8 +2000,8 @@ msgstr ""
 msgid "Enable Network Profiles"
 msgstr "ネットワーク プロフィールを有効にする"
 
-#: src/modules/options/OptionsWidget_servers.cpp:319
 #: src/modules/options/OptionsWidget_nickserv.cpp:232
+#: src/modules/options/OptionsWidget_servers.cpp:319
 msgid "Enable NickServ Identification"
 msgstr "NickServ 認証を有効にする"
 
@@ -2139,9 +2139,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "ダウンロードの開始に失敗しました"
 
-#: src/modules/options/OptionsWidget_userList.h:103
 #: src/modules/options/OptionsWidget_windowList.h:98
 #: src/modules/options/OptionsWidget_ircView.h:70
+#: src/modules/options/OptionsWidget_userList.h:103
 msgid "Features"
 msgstr ""
 
@@ -2180,8 +2180,8 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_notifier.cpp:38
 #: src/modules/options/OptionsWidget_theme.cpp:182
-#: src/modules/options/OptionsWidget_topicLabel.cpp:36
 #: src/modules/options/OptionsWidget_input.cpp:38
+#: src/modules/options/OptionsWidget_topicLabel.cpp:36
 msgid "Font"
 msgstr "フォント"
 
@@ -2208,14 +2208,14 @@ msgstr ""
 msgid "Force language:"
 msgstr "言語の強制設定:"
 
-#: src/modules/options/OptionsWidget_userList.h:67
 #: src/modules/options/OptionsWidget_windowList.h:64
+#: src/modules/options/OptionsWidget_userList.h:67
 msgid "Foreground"
 msgstr "前景"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:40
-#: src/modules/options/OptionsWidget_topicLabel.cpp:37
 #: src/modules/options/OptionsWidget_input.cpp:40
+#: src/modules/options/OptionsWidget_topicLabel.cpp:37
 msgid "Foreground color"
 msgstr "前景色"
 
@@ -2229,16 +2229,16 @@ msgstr "性別:"
 
 #: src/modules/options/OptionsWidget_message.cpp:70
 #: src/modules/options/OptionsWidget_servers.cpp:257
-#: src/modules/options/OptionsWidget_irc.h:43
-#: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_identity.h:153
+#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
-#: src/modules/options/OptionsWidget_channel.h:52
+#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_irc.h:43
 msgid "General"
 msgstr "一般"
 
-#: src/modules/options/dialog.cpp:114
+#: src/modules/options/OptionsDialog.cpp:115
 msgid "General Preferences"
 msgstr "一般設定"
 
@@ -2362,8 +2362,8 @@ msgstr "何回のクリックでリンクを開きますか?"
 msgid "ID3 tags' encoding"
 msgstr "ID3 タグのエンコーディング"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:116
 #: src/modules/options/OptionsWidget_servers.cpp:668
+#: src/modules/options/OptionsWidget_proxy.cpp:116
 msgid "IP address:"
 msgstr "IP アドレス:"
 
@@ -2407,9 +2407,9 @@ msgstr "Ident サービス"
 msgid "Ident username:"
 msgstr "識別ユーザー名"
 
-#: src/modules/options/OptionsWidget_servers.cpp:334
 #: src/modules/options/OptionsWidget_nickserv.cpp:89
 #: src/modules/options/OptionsWidget_nickserv.cpp:247
+#: src/modules/options/OptionsWidget_servers.cpp:334
 msgid "Identify Command"
 msgstr "識別コマンド"
 
@@ -2467,8 +2467,8 @@ msgstr "入力"
 msgid "Interface"
 msgstr "インターフェース"
 
-#: src/modules/options/OptionsWidget_channel.cpp:139
 #: src/modules/options/OptionsWidget_query.cpp:101
+#: src/modules/options/OptionsWidget_channel.cpp:139
 msgid "Interval:"
 msgstr "間隔:"
 
@@ -2495,7 +2495,7 @@ msgstr "招待メッセージ"
 msgid "Join Channels"
 msgstr "チャンネルに参加する"
 
-#: src/modules/options/dialog.cpp:119
+#: src/modules/options/OptionsDialog.cpp:120
 msgid "KVIrc Preferences"
 msgstr "KVIrc 設定"
 
@@ -2545,8 +2545,8 @@ msgstr "言語:"
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_windowList.cpp:134
 #: src/modules/options/OptionsWidget_ircView.cpp:65
-#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_input.cpp:57
+#: src/modules/options/OptionsWidget_userList.cpp:142
 msgid "Left"
 msgstr "左"
 
@@ -2638,7 +2638,7 @@ msgstr "マジック バイト"
 msgid "Male"
 msgstr "男性"
 
-#: src/modules/options/dialog.cpp:129
+#: src/modules/options/OptionsDialog.cpp:130
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
@@ -2871,20 +2871,20 @@ msgstr ""
 msgid "NickServ Authentication Rule"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:332
 #: src/modules/options/OptionsWidget_nickserv.cpp:63
 #: src/modules/options/OptionsWidget_nickserv.cpp:245
+#: src/modules/options/OptionsWidget_servers.cpp:332
 msgid "NickServ Mask"
 msgstr "NickServ マスク"
 
-#: src/modules/options/OptionsWidget_servers.cpp:333
 #: src/modules/options/OptionsWidget_nickserv.cpp:246
+#: src/modules/options/OptionsWidget_servers.cpp:333
 msgid "NickServ Request Mask"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_nickserv.cpp:243
 #: src/modules/options/OptionsWidget_identity.cpp:719
 #: src/modules/options/OptionsWidget_servers.cpp:331
-#: src/modules/options/OptionsWidget_nickserv.cpp:243
 msgid "Nickname"
 msgstr "ニックネーム"
 
@@ -2956,16 +2956,16 @@ msgstr "通知に完了を通知する"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_nickserv.cpp:133
+#: src/modules/options/OptionsWidget_nickserv.cpp:154
 #: src/modules/options/OptionsWidget_identity.cpp:841
 #: src/modules/options/OptionsWidget_identity.cpp:956
 #: src/modules/options/OptionsWidget_servers.cpp:1005
-#: src/modules/options/OptionsWidget_nickserv.cpp:133
-#: src/modules/options/OptionsWidget_nickserv.cpp:154
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/OptionsWidget_identity.cpp:99
 #: src/modules/options/OptionsWidget_textEncoding.cpp:163
+#: src/modules/options/OptionsWidget_identity.cpp:99
 msgid "Ok"
 msgstr "OK"
 
@@ -3082,7 +3082,7 @@ msgstr ""
 msgid "PAGE"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:62
+#: src/modules/options/OptionsWidget_ctcp.cpp:64
 msgid "PAGE reply:"
 msgstr ""
 
@@ -3106,9 +3106,9 @@ msgstr "親ウィンドウの透過度:"
 msgid "Part message:"
 msgstr "退室時のメッセージ"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:120
 #: src/modules/options/OptionsWidget_servers.cpp:152
 #: src/modules/options/OptionsWidget_servers.cpp:569
+#: src/modules/options/OptionsWidget_proxy.cpp:120
 msgid "Password:"
 msgstr "パスワード:"
 
@@ -3124,8 +3124,8 @@ msgstr ""
 msgid "Paste last query log"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:135
 #: src/modules/options/OptionsWidget_query.cpp:97
+#: src/modules/options/OptionsWidget_channel.cpp:135
 msgid "Paste up to:"
 msgstr ""
 
@@ -3171,8 +3171,8 @@ msgstr "ユーザーがオンラインになったとき、通知をポップア
 msgid "Popup the notifier window on highlighted messages"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_proxy.cpp:114
 #: src/modules/options/OptionsWidget_servers.cpp:654
+#: src/modules/options/OptionsWidget_proxy.cpp:114
 msgid "Port:"
 msgstr "ポート:"
 
@@ -3216,13 +3216,13 @@ msgstr "秘密鍵の場所:"
 msgid "Private key password:"
 msgstr "秘密鍵のパスワード:"
 
-#: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
+#: src/modules/options/OptionsWidget_antiSpam.cpp:40
 msgid "Private messages"
 msgstr "プライベート メッセージ"
 
-#: src/modules/options/OptionsWidget_antiSpam.cpp:42
 #: src/modules/options/OptionsWidget_query.cpp:50
+#: src/modules/options/OptionsWidget_antiSpam.cpp:42
 msgid "Private notices"
 msgstr "プライベート通知"
 
@@ -3430,7 +3430,7 @@ msgstr "CTCP 要求"
 msgid "Request missing avatars"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:99
+#: src/modules/options/OptionsWidget_textIcons.cpp:98
 msgid "Restore"
 msgstr ""
 
@@ -3441,8 +3441,8 @@ msgstr "アラートの制限"
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_windowList.cpp:135
 #: src/modules/options/OptionsWidget_ircView.cpp:66
-#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_input.cpp:58
+#: src/modules/options/OptionsWidget_userList.cpp:143
 msgid "Right"
 msgstr "右"
 
@@ -3614,7 +3614,7 @@ msgstr "チャンネルの同期時間を表示する"
 msgid "Show compact mode changes"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:69
+#: src/modules/options/OptionsWidget_ctcp.cpp:72
 msgid "Show dialog for CTCP page requests"
 msgstr ""
 
@@ -3674,7 +3674,7 @@ msgstr ""
 msgid "Show server pings"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ctcp.cpp:67
+#: src/modules/options/OptionsWidget_ctcp.cpp:70
 msgid "Show the CTCP replies in the active window"
 msgstr ""
 
@@ -3784,7 +3784,7 @@ msgstr "テキスト"
 msgid "Text Encoding:"
 msgstr "テキストのエンコーディング"
 
-#: src/modules/options/OptionsWidget_textIcons.h:39
+#: src/modules/options/OptionsWidget_textIcons.h:36
 msgid "Text icons"
 msgstr "テキスト アイコン"
 
@@ -3829,7 +3829,7 @@ msgid ""
 "storage<br>format or choose a different image."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:117
+#: src/modules/options/OptionsDialog.cpp:118
 msgid "Theme Preferences"
 msgstr "テーマ設定"
 
@@ -3855,8 +3855,8 @@ msgstr ""
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:323
 #: src/modules/options/OptionsWidget_nickserv.cpp:235
+#: src/modules/options/OptionsWidget_servers.cpp:323
 msgid "This check enables the automatic identification with NickServ"
 msgstr ""
 
@@ -3864,7 +3864,7 @@ msgstr ""
 msgid "This check enables the use of network profiles"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:122
+#: src/modules/options/OptionsDialog.cpp:123
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner "
@@ -3974,7 +3974,7 @@ msgid ""
 "mediafiles, URL handler </b> etc... </p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:85
+#: src/modules/options/OptionsWidget_textIcons.cpp:84
 msgid ""
 "This table contains the text icon associations.<br>KVirc will use them to "
 "display the CTRL+I escape sequences and eventually the emoticons."
@@ -3986,10 +3986,10 @@ msgstr ""
 #: src/modules/options/OptionsWidget_windowList.cpp:138
 #: src/modules/options/OptionsWidget_ircView.cpp:64
 #: src/modules/options/OptionsWidget_ircView.cpp:69
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
 msgid "Tile"
 msgstr "題名"
 
@@ -4024,8 +4024,8 @@ msgstr "ツール"
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_windowList.cpp:139
 #: src/modules/options/OptionsWidget_ircView.cpp:70
-#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_input.cpp:62
+#: src/modules/options/OptionsWidget_userList.cpp:147
 msgid "Top"
 msgstr "上"
 
@@ -4079,7 +4079,7 @@ msgstr ""
 msgid "Unable to write language information to"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_urlHandlers.cpp:77
+#: src/modules/options/OptionsWidget_urlHandlers.cpp:82
 msgid "Unknown protocol handler command:"
 msgstr "不明なプロトコルのハンドラー コマンド"
 
@@ -4105,8 +4105,8 @@ msgstr ""
 msgid "Use \"smart\" notify list manager"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_proxy.cpp:130
 #: src/modules/options/OptionsWidget_servers.cpp:719
+#: src/modules/options/OptionsWidget_proxy.cpp:130
 msgid "Use IPv6 protocol"
 msgstr "IPv6 プロトコルを使う"
 
@@ -4293,11 +4293,11 @@ msgstr "ユーザー一覧"
 msgid "Username"
 msgstr "ユーザーの名前"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:118
 #: src/modules/options/OptionsWidget_identity.cpp:317
 #: src/modules/options/OptionsWidget_identity.cpp:932
 #: src/modules/options/OptionsWidget_servers.cpp:141
 #: src/modules/options/OptionsWidget_servers.cpp:557
+#: src/modules/options/OptionsWidget_proxy.cpp:118
 msgid "Username:"
 msgstr "ユーザー名:"
 
@@ -4345,7 +4345,7 @@ msgstr ""
 msgid "Warp cursor at the end of line when browsing history"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:132
+#: src/modules/options/OptionsDialog.cpp:133
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
@@ -4479,7 +4479,7 @@ msgstr ""
 msgid "scripting,kvs,debug"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.h:41
+#: src/modules/options/OptionsWidget_textIcons.h:38
 msgid "smileys,emoticons"
 msgstr ""
 
@@ -4491,13 +4491,13 @@ msgstr ""
 msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.h:34
 #: src/modules/options/OptionsWidget_windowList.h:36
 #: src/modules/options/OptionsWidget_windowList.h:50
 #: src/modules/options/OptionsWidget_windowList.h:66
 #: src/modules/options/OptionsWidget_windowList.h:81
 #: src/modules/options/OptionsWidget_windowList.h:100
 #: src/modules/options/OptionsWidget_windowList.h:115
+#: src/modules/options/OptionsWidget_theme.h:34
 msgid "theme"
 msgstr ""
 
@@ -4510,14 +4510,14 @@ msgstr ""
 msgid "theme,colors,messages,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:41
 #: src/modules/options/OptionsWidget_ircView.h:37
 #: src/modules/options/OptionsWidget_ircView.h:51
+#: src/modules/options/OptionsWidget_message.h:41
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.h:34
 #: src/modules/options/OptionsWidget_notifier.h:34
+#: src/modules/options/OptionsWidget_input.h:34
 msgid "theme,colors,text"
 msgstr ""
 
@@ -4565,7 +4565,7 @@ msgstr ""
 msgid "tray,TRAYICON"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:235
+#: src/modules/options/OptionsWidget_textIcons.cpp:238
 msgid "unnamed"
 msgstr ""
 

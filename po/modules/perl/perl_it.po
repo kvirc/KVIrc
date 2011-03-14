@@ -15,14 +15,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2009-01-27 21:09+0100\n"
 "Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
 "Language-Team: Italian <it@li.org>\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -30,7 +30,8 @@ msgstr ""
 msgid "Internal error: perl interpreter not initialized"
 msgstr "Errore interno: interprete perl non inizializzato"
 
-#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:477
+#: src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Errore nell'esecuzione perl:"
 
@@ -39,7 +40,8 @@ msgid "The perlcore module can't be loaded: perl support not available"
 msgstr ""
 "Impossibile caricare il module perlcode: il supporto perl non è disponibile"
 
-#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460
+#: src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

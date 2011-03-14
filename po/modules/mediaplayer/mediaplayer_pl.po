@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-03-03 17:16+0100\n"
 "Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
@@ -77,11 +77,13 @@ msgstr ""
 msgid ""
 "An interface to the Mozilla Songbird media player.\n"
 "Download it from http://www.getsongbird.com.\n"
-"To use it you have to install also the MPRIS addon available at http://addons.songbirdnest.com/addon/1626.\n"
+"To use it you have to install also the MPRIS addon available at http://"
+"addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
 "Interfejs do odtwarzacza multimedialnego Mozilla Songbird.\n"
 "Pobierz go z http://www.getsongbird.com.\n"
-"Aby tego używać musisz zainstalować również dodatek MPRIS dostępny na  http://addons.songbirdnest.com/addon/1626.\n"
+"Aby tego używać musisz zainstalować również dodatek MPRIS dostępny na  "
+"http://addons.songbirdnest.com/addon/1626.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:506
 msgid ""
@@ -119,11 +121,15 @@ msgstr ""
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll plugin found in the KVIrc distribution directory to the Winamp plugins folder and restart winamp."
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
 msgstr ""
 "Interfejs do popularnego otwarzacza multimedialnego Winamp.\n"
 "Możesz go pobrać z http://www.winamp.com.\n"
-"Aby użyć wszystkich właściwości tego interfejsu musisz przekopiować plugin 'gen_kvirc.dll' z katalogu tej dystrybucji KVIrc do folderu pluginów Winampa i zrestartować Winamp."
+"Aby użyć wszystkich właściwości tego interfejsu musisz przekopiować plugin "
+"'gen_kvirc.dll' z katalogu tej dystrybucji KVIrc do folderu pluginów Winampa "
+"i zrestartować Winamp."
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -160,18 +166,24 @@ msgstr "Ostatni błąd interfejsu:"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:114
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Nie wybrano interfejsu odtwarzacza multimedialnego. Spróbuj /mediaplayer.detect"
+msgstr ""
+"Nie wybrano interfejsu odtwarzacza multimedialnego. Spróbuj /mediaplayer."
+"detect"
 
 # ?? metody wykrycia? egzaminu sprawdzającego?
 # generalnie nie wiem ocb
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:73
-msgid "Not sure about the results, trying a second, more agressive detection pass"
-msgstr "Niepewne rezultaty, próbowanie drugiej, bardziej agresywnej metody wykrycia"
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+"Niepewne rezultaty, próbowanie drugiej, bardziej agresywnej metody wykrycia"
 
 # użytku/użycia?
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:104
 msgid "Seems that there is no usable media player on this machine"
-msgstr "Wygląda na to, że nie ma nadającego się do użytku odtwarzacza multimedialnego na tej maszynie"
+msgstr ""
+"Wygląda na to, że nie ma nadającego się do użytku odtwarzacza "
+"multimedialnego na tej maszynie"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:570
@@ -183,18 +195,24 @@ msgstr "Wygląda na to, że nie ma nadającego się do użytku odtwarzacza multi
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1555
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1598
-msgid "The selected media player interface failed to execute the requested function"
-msgstr "Wybranemu interfejsowi odtwarzacza multimedialnego nie udało się wykonać żądanej funkcji"
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr ""
+"Wybranemu interfejsowi odtwarzacza multimedialnego nie udało się wykonać "
+"żądanej funkcji"
 
 # poprawnie/właściwie
 # ?
 #: src/modules/mediaplayer/MpWinampInterface.cpp:316
 #: src/modules/mediaplayer/MpWinampInterface.cpp:350
-msgid "The winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying"
-msgstr "Plugin winampa nie został zainstalowany poprawnie. Sprawdź /help mediaplayer.nowplaying"
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
+msgstr ""
+"Plugin winampa nie został zainstalowany poprawnie. Sprawdź /help mediaplayer."
+"nowplaying"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:65
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:91
 msgid "Trying media player interface \"%1\": score %2"
 msgstr "Próbowanie interfejsu odtwarzacza multimedialnego \"%1\": wynik %2"
-

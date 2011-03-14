@@ -8,70 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/addon/AddonFunctions.cpp:49
-msgid "The selected file does not seem to be a valid KVIrc addon package"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:70
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:117
-msgid "Author"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:118
-msgid "Created at"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:119
-msgid "Created with"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:144
-msgid "Warning: The addon might be incompatible with this version of KVIrc"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:180
-msgid "Install Addon Pack - KVIrc"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:181
-msgid "You're about to install the following addon package"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:182
-msgid "Do you want to proceed with the installation ?"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:183
-msgid "Do Not Install"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:184
-msgid "Yes, Proceed"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:218
-msgid "Failed to unpack the selected file: %1"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:231
-msgid "Addon Unpack Warning"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:231
-msgid "Failed to delete the directory '%1'"
-msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:53
 msgid "Create Addon Package - KVIrc"
@@ -276,6 +219,119 @@ msgstr ""
 msgid "Finish"
 msgstr ""
 
+#: src/modules/addon/AddonManagementDialog.cpp:92
+msgid "Manage Script-Based Addons"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:110
+msgid "Configure Addon..."
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:116
+msgid "Show Help"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:122
+msgid "Delete Selected Addons"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:132
+msgid "Create an Addon as a Distributable Package"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:142
+msgid "Install Addon Package From Disk"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:148
+msgid "Get More Addons..."
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:170
+msgid "Close"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:254
+msgid "Do you really want to uninstall the addon \"%1\" ?"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:259
+msgid "Confirm addon uninstallation"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:260
+msgid "Yes"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:260
+msgid "No"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:281
+msgid "Please select the addon installation file"
+msgstr ""
+
+#: src/modules/addon/AddonManagementDialog.cpp:294
+#: src/modules/addon/AddonManagementDialog.cpp:308
+msgid "Install Addon - KVIrc"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:49
+msgid "The selected file does not seem to be a valid KVIrc addon package"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:70
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:117
+msgid "Author"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:118
+msgid "Created at"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:119
+msgid "Created with"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:144
+msgid "Warning: The addon might be incompatible with this version of KVIrc"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:180
+msgid "Install Addon Pack - KVIrc"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:181
+msgid "You're about to install the following addon package"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:182
+msgid "Do you want to proceed with the installation ?"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:183
+msgid "Do Not Install"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:184
+msgid "Yes, Proceed"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:218
+msgid "Failed to unpack the selected file: %1"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:231
+msgid "Addon Unpack Warning"
+msgstr ""
+
+#: src/modules/addon/AddonFunctions.cpp:231
+msgid "Failed to delete the directory '%1'"
+msgstr ""
+
 #: src/modules/addon/libkviaddon.cpp:146
 msgid "%cAddon id %Q, version %Q%c"
 msgstr ""
@@ -388,61 +444,4 @@ msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:808
 msgid "Error installing addon package: %Q"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:92
-msgid "Manage Script-Based Addons"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:110
-msgid "Configure Addon..."
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:116
-msgid "Show Help"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:122
-msgid "Delete Selected Addons"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:132
-msgid "Create an Addon as a Distributable Package"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:142
-msgid "Install Addon Package From Disk"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:148
-msgid "Get More Addons..."
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:170
-msgid "Close"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:253
-msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:258
-msgid "Confirm addon uninstallation"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:259
-msgid "Yes"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:259
-msgid "No"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:280
-msgid "Please select the addon installation file"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:293
-#: src/modules/addon/managementdialog.cpp:307
-msgid "Install Addon - KVIrc"
 msgstr ""

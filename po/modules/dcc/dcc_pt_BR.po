@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2004-11-15 19:17+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.3.1\n"
 
 #: src/modules/dcc/requests.cpp:856
@@ -77,7 +77,8 @@ msgstr "&Torta"
 msgid "&Polygons"
 msgstr "&Polígonos"
 
-#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479
+#: src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Retângulo"
 
@@ -101,12 +102,15 @@ msgstr "&Figura"
 msgid "&Triangle"
 msgstr "&Triângulo"
 
-#: src/modules/dcc/requests.cpp:774 src/modules/dcc/requests.cpp:938
+#: src/modules/dcc/requests.cpp:774
+#: src/modules/dcc/requests.cpp:938
 msgid "(unknown)"
 msgstr "(Desconhecido)"
 
-#: src/modules/dcc/libkvidcc.cpp:432 src/modules/dcc/libkvidcc.cpp:655
-#: src/modules/dcc/libkvidcc.cpp:1157 src/modules/dcc/libkvidcc.cpp:1224
+#: src/modules/dcc/libkvidcc.cpp:432
+#: src/modules/dcc/libkvidcc.cpp:655
+#: src/modules/dcc/libkvidcc.cpp:1157
+#: src/modules/dcc/libkvidcc.cpp:1224
 msgid "-c requires -i and -p"
 msgstr "-c requer -i e -p"
 
@@ -187,8 +191,9 @@ msgstr ""
 "configurar/ativar a opção <tt>Aceitar receber avatares automaticamente</tt>."
 "<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:632 src/modules/dcc/requests.cpp:448
+#: src/modules/dcc/requests.cpp:448
 #: src/modules/dcc/requests.cpp:741
+#: src/modules/dcc/libkvidcc.cpp:632
 msgid "<unknown size>"
 msgstr "<tamanho desconhecido>"
 
@@ -296,7 +301,8 @@ msgstr ""
 "Impossivel escutar a interface padrão '%s': corrija isto no diálogo de "
 "opções, desativando a opção (para que o próximo dcc funcione)"
 
-#: src/modules/dcc/DccBroker.cpp:207 src/modules/dcc/DccBroker.cpp:919
+#: src/modules/dcc/DccBroker.cpp:207
+#: src/modules/dcc/DccBroker.cpp:919
 #, fuzzy
 msgid "Can't open file %Q for reading"
 msgstr "Não foi possível abrir o arquivo %Q para leitura"
@@ -329,13 +335,15 @@ msgstr ""
 "Não foi possível enviar o pedido de DCC %Q para %Q: A conexão de IRC foi "
 "terminada"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2207 src/modules/dcc/DccDialog.cpp:158
+#: src/modules/dcc/DccFileTransfer.cpp:2207
+#: src/modules/dcc/DccDialog.cpp:158
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/modules/dcc/DccVideoWindow.cpp:665
 #: src/modules/dcc/DccVideoWindow.cpp:768
-#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
+#: src/modules/dcc/DccChatWindow.cpp:298
+#: src/modules/dcc/DccChatWindow.cpp:402
 msgid "Cannot send data: No active connection"
 msgstr "Não foi possível enviar dados: Não há uma conexão ativa"
 
@@ -344,7 +352,8 @@ msgstr "Não foi possível enviar dados: Não há uma conexão ativa"
 msgid "Choose Files to Save - KVIrc"
 msgstr "Escolha os arquivos para enviar - KVIrc"
 
-#: src/modules/dcc/DccBroker.cpp:167 src/modules/dcc/DccBroker.cpp:882
+#: src/modules/dcc/DccBroker.cpp:167
+#: src/modules/dcc/DccBroker.cpp:882
 msgid "Choose Files to Send - KVIrc"
 msgstr "Escolha os arquivos para enviar - KVIrc"
 
@@ -367,10 +376,10 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectado a %1:%2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:284
 #: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccVideoWindow.cpp:926
 #: src/modules/dcc/DccChatWindow.cpp:566
-#: src/modules/dcc/DccCanvasWindow.cpp:284
 #, fuzzy
 msgid "Connected to %Q:%Q"
 msgstr "Conectado a %Q:%Q"
@@ -379,15 +388,16 @@ msgstr "Conectado a %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactar a máquina %1 na porta %2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:108
 #: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:606
 #: src/modules/dcc/DccChatWindow.cpp:185
-#: src/modules/dcc/DccCanvasWindow.cpp:108
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactando com a máquina %Q na porta %Q"
 
-#: src/modules/dcc/DccBroker.cpp:296 src/modules/dcc/DccBroker.cpp:629
+#: src/modules/dcc/DccBroker.cpp:296
+#: src/modules/dcc/DccBroker.cpp:629
 msgid "DCC %1 Request - KVIrc"
 msgstr "Pedido de DCC %1 - KVIrc"
 
@@ -418,9 +428,9 @@ msgstr "Pedido de DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Pedido DCC CANVAS não enviado; esperando conexões manuais"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:279
 #: src/modules/dcc/DccVoiceWindow.cpp:902
 #: src/modules/dcc/DccVideoWindow.cpp:921
-#: src/modules/dcc/DccCanvasWindow.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC falhou: %Q"
 
@@ -575,10 +585,10 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr "Escutar a interface %1 na porta %2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:84
 #: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:609
 #: src/modules/dcc/DccChatWindow.cpp:187
-#: src/modules/dcc/DccCanvasWindow.cpp:84
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
 msgstr "Escutar a interface %Q na porta %Q"
@@ -587,10 +597,10 @@ msgstr "Escutar a interface %Q na porta %Q"
 msgid "Local end is %1:%2"
 msgstr "A extremidade local é %1:%2"
 
+#: src/modules/dcc/DccCanvasWindow.cpp:286
 #: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccVideoWindow.cpp:928
 #: src/modules/dcc/DccChatWindow.cpp:568
-#: src/modules/dcc/DccCanvasWindow.cpp:286
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "Local de destino é %Q:%Q"
@@ -604,10 +614,11 @@ msgstr "Conexão de transporte de baixo nível estabelecida"
 #, fuzzy
 msgid "No file offer named '%1' (with size %2) available for %3 [%4@%5]"
 msgstr ""
-"Nenhum arquivo compartilhado chamado '%1' (com tamanho %2) disponivel para "
-"%3 [%4@%5]"
+"Nenhum arquivo compartilhado chamado '%1' (com tamanho %2) disponivel para %"
+"3 [%4@%5]"
 
-#: src/modules/dcc/requests.cpp:780 src/modules/dcc/requests.cpp:924
+#: src/modules/dcc/requests.cpp:780
+#: src/modules/dcc/requests.cpp:924
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "Sem interface apropriada para escutar, tentando continuar de qualquer modo..."
@@ -752,7 +763,8 @@ msgid ""
 "compilation time "
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:998 src/modules/dcc/requests.cpp:1072
+#: src/modules/dcc/requests.cpp:998
+#: src/modules/dcc/requests.cpp:1072
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "O seguinte pedido não pode ser aceito: codec não suportado '%s'"
@@ -765,8 +777,10 @@ msgstr ""
 "O pedido acima falta o tamanho do arquivo para continuar o resumo, assumindo "
 "0 como tamanho de arquivo para resumo"
 
-#: src/modules/dcc/requests.cpp:456 src/modules/dcc/requests.cpp:466
-#: src/modules/dcc/requests.cpp:612 src/modules/dcc/requests.cpp:749
+#: src/modules/dcc/requests.cpp:456
+#: src/modules/dcc/requests.cpp:466
+#: src/modules/dcc/requests.cpp:612
+#: src/modules/dcc/requests.cpp:749
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -774,7 +788,8 @@ msgstr ""
 "O seguinte pedido esta quebrado: o nome do arquivo contém um caminho de "
 "componentes, tirando o caminho indicado e tentando continuar"
 
-#: src/modules/dcc/requests.cpp:446 src/modules/dcc/requests.cpp:739
+#: src/modules/dcc/requests.cpp:446
+#: src/modules/dcc/requests.cpp:739
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -812,10 +827,11 @@ msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"O motor de criptografia não é capaz de descriptografar a mensagem atual "
-"(%Q): %Q, os dados não foram enviados ao destino remoto"
+"O motor de criptografia não é capaz de descriptografar a mensagem atual (%"
+"Q): %Q, os dados não foram enviados ao destino remoto"
 
-#: src/modules/dcc/libkvidcc.cpp:1640 src/modules/dcc/libkvidcc.cpp:2605
+#: src/modules/dcc/libkvidcc.cpp:1640
+#: src/modules/dcc/libkvidcc.cpp:2605
 #: src/modules/dcc/libkvidcc.cpp:2625
 msgid "The current window has no associated DCC session"
 msgstr "A janela corrente nao esta associada a uma sessão DCC "
@@ -1022,8 +1038,8 @@ msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
 msgstr ""
-"Usar %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r"
-"%cpara enviar o arquivo (ou clique duas vezes no socket)"
+"Usar %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%"
+"cpara enviar o arquivo (ou clique duas vezes no socket)"
 
 #: src/modules/dcc/DccVideoWindow.cpp:465
 msgid "Video device:"
@@ -1102,15 +1118,24 @@ msgstr "[ERRO de SSL]: %s"
 msgid "bytes/sec"
 msgstr "Media: ? bytes/seg"
 
-#: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/libkvidcc.cpp:110
-#: src/modules/dcc/libkvidcc.cpp:406 src/modules/dcc/libkvidcc.cpp:441
-#: src/modules/dcc/libkvidcc.cpp:640 src/modules/dcc/libkvidcc.cpp:664
-#: src/modules/dcc/libkvidcc.cpp:801 src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:1119 src/modules/dcc/libkvidcc.cpp:1169
-#: src/modules/dcc/libkvidcc.cpp:1197 src/modules/dcc/libkvidcc.cpp:1236
-#: src/modules/dcc/requests.cpp:138 src/modules/dcc/requests.cpp:139
-#: src/modules/dcc/requests.cpp:140 src/modules/dcc/DccDescriptor.cpp:65
+#: src/modules/dcc/DccMarshal.cpp:494
+#: src/modules/dcc/DccMarshal.cpp:524
+#: src/modules/dcc/DccMarshal.cpp:529
+#: src/modules/dcc/DccDescriptor.cpp:65
+#: src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/requests.cpp:139
+#: src/modules/dcc/requests.cpp:140
+#: src/modules/dcc/libkvidcc.cpp:110
+#: src/modules/dcc/libkvidcc.cpp:406
+#: src/modules/dcc/libkvidcc.cpp:441
+#: src/modules/dcc/libkvidcc.cpp:640
+#: src/modules/dcc/libkvidcc.cpp:664
+#: src/modules/dcc/libkvidcc.cpp:801
+#: src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:1119
+#: src/modules/dcc/libkvidcc.cpp:1169
+#: src/modules/dcc/libkvidcc.cpp:1197
+#: src/modules/dcc/libkvidcc.cpp:1236
 msgid "unknown"
 msgstr "desconhecido"
 

@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_defscript_it 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-01-13 19:14+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -412,6 +412,7 @@ msgstr "Logga su..."
 #: data/defscript/events.kvs:68
 #: data/defscript/events.kvs:76
 #: data/defscript/events.kvs:84
+#: data/defscript/popups.kvs:1398
 msgid "Logging"
 msgstr "Log"
 
@@ -774,7 +775,8 @@ msgid "reason"
 msgstr "ragione"
 
 #: data/defscript/popups.kvs:822
-msgid "t (Connection stats ?)"
+#, fuzzy
+msgid "t (Connection stats?)"
 msgstr "t (Statistiche connessione ?)"
 
 #: data/defscript/popups.kvs:827

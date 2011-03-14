@@ -8,21 +8,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2004-11-15 02:21+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.3.1\n"
 
 #: src/modules/perlcore/libkviperlcore.cpp:232
 msgid "Internal error: perl interpreter not initialized"
 msgstr ""
 
-#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:477
+#: src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Erro de execução Perl:"
 
@@ -31,7 +32,8 @@ msgid "The perlcore module can't be loaded: perl support not available"
 msgstr ""
 "O móulo perlcore não pode ser carregado: suporte à perl não está disponivel"
 
-#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460
+#: src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

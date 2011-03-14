@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: defscript_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2010-07-25 01:51+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 
 #: data/defscript/popups.kvs:542
 msgid "&Administrator"
@@ -410,6 +410,7 @@ msgstr ""
 #: data/defscript/events.kvs:68
 #: data/defscript/events.kvs:76
 #: data/defscript/events.kvs:84
+#: data/defscript/popups.kvs:1398
 #, fuzzy
 msgid "Logging"
 msgstr "記録なし"
@@ -769,8 +770,9 @@ msgid "reason"
 msgstr "理由"
 
 #: data/defscript/popups.kvs:822
-msgid "t (Connection stats ?)"
-msgstr ""
+#, fuzzy
+msgid "t (Connection stats?)"
+msgstr "1 (接続)"
 
 #: data/defscript/popups.kvs:827
 msgid "u (Uptime)"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-01-25 23:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
@@ -44,12 +44,12 @@ msgstr "    Uyarı: Bu kullanıcı hiçbir kayıt maskeleri var"
 msgid " User: %c%Q"
 msgstr " Kullanıcı: %c%Q"
 
-#: src/modules/reguser/dialog.cpp:251
+#: src/modules/reguser/RegisteredUsersDialog.cpp:253
 msgid "&Add Group..."
 msgstr "&Grup Ekle..."
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:248
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
-#: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Ekle..."
 
@@ -57,7 +57,7 @@ msgstr "&Ekle..."
 msgid "&Edit"
 msgstr "&Düzenle"
 
-#: src/modules/reguser/dialog.cpp:263
+#: src/modules/reguser/RegisteredUsersDialog.cpp:265
 msgid "&Edit..."
 msgstr "&Düzenle..."
 
@@ -65,10 +65,10 @@ msgstr "&Düzenle..."
 msgid "&New"
 msgstr "&Yeni"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:299
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
-#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&Tamam"
 
@@ -100,7 +100,7 @@ msgstr ""
 "<center>Bu <b>kullanıcı adı</b> belirtilen mask ile eşleşecek. <b>*</b> tüm "
 "kullanıcılar ile eşleşecek.</center>"
 
-#: src/modules/reguser/dialog.cpp:93
+#: src/modules/reguser/RegisteredUsersDialog.cpp:95
 msgid ""
 "<center>This is the list of registered users. KVIrc can automatically "
 "recognize and associate properties to them.<br>Use the buttons on the right "
@@ -197,11 +197,11 @@ msgstr ""
 "\".\n"
 "</p>"
 
-#: src/modules/reguser/dialog.cpp:240
+#: src/modules/reguser/RegisteredUsersDialog.cpp:242
 msgid "Add (Wizard)..."
 msgstr "Ekleme (Sihirbazı).."
 
-#: src/modules/reguser/dialog.cpp:242
+#: src/modules/reguser/RegisteredUsersDialog.cpp:244
 msgid "Add a registered user by means of a user-friendly wizard."
 msgstr "Kullanıcı dostu sihirbaz aracılığıyla kayıtlı bir kullanıcı ekleyin."
 
@@ -209,7 +209,7 @@ msgstr "Kullanıcı dostu sihirbaz aracılığıyla kayıtlı bir kullanıcı ek
 msgid "Add this user to the notify list"
 msgstr "Bildiri listesi için bu kullanıcıyı ekle"
 
-#: src/modules/reguser/dialog.cpp:253
+#: src/modules/reguser/RegisteredUsersDialog.cpp:255
 msgid "Adds a new group"
 msgstr "Yeni bir grup ekler"
 
@@ -221,27 +221,27 @@ msgstr "Tüm özellikleri..."
 msgid "Avatar"
 msgstr "Avatar"
 
-#: src/modules/reguser/dialog.cpp:804
+#: src/modules/reguser/RegisteredUsersDialog.cpp:807
 msgid "Can't export the registered users database: Write error."
 msgstr "Kayıtlı kullanıcı veri tabanı dışarı çıkarılamadı: Yazı hatası"
 
-#: src/modules/reguser/dialog.cpp:917
+#: src/modules/reguser/RegisteredUsersDialog.cpp:920
 msgid "Can't import the registered users database: Read error."
 msgstr "Kayıtlı kullanıcı veritabanını alamadı: Okuma hatası"
 
-#: src/modules/reguser/dialog.cpp:726
+#: src/modules/reguser/RegisteredUsersDialog.cpp:729
 msgid "Can't open file %Q for writing."
 msgstr "Dosya %Q yazma için açılamıyor."
 
-#: src/modules/reguser/dialog.cpp:830
+#: src/modules/reguser/RegisteredUsersDialog.cpp:833
 #, c-format
 msgid "Can't open file %s for reading."
 msgstr "Dosya %s okuma için açılamıyor."
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:304
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
-#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Iptal et"
 
@@ -249,22 +249,25 @@ msgstr "Iptal et"
 msgid "Channel: %1%2@%3"
 msgstr "Kanal: %1%2@%3"
 
-#: src/modules/reguser/dialog.cpp:719 src/modules/reguser/dialog.cpp:823
+#: src/modules/reguser/RegisteredUsersDialog.cpp:722
+#: src/modules/reguser/RegisteredUsersDialog.cpp:826
 msgid "Choose a Filename - KVIrc"
 msgstr "Bir Dosya adı seçin - KVIrc"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:136
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
-#: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Yorum:"
 
-#: src/modules/reguser/dialog.cpp:520 src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524 src/modules/reguser/dialog.cpp:526
-#: src/modules/reguser/dialog.cpp:528
+#: src/modules/reguser/RegisteredUsersDialog.cpp:523
+#: src/modules/reguser/RegisteredUsersDialog.cpp:526
+#: src/modules/reguser/RegisteredUsersDialog.cpp:527
+#: src/modules/reguser/RegisteredUsersDialog.cpp:529
+#: src/modules/reguser/RegisteredUsersDialog.cpp:531
 msgid "Default"
 msgstr "Varsayılan"
 
-#: src/modules/reguser/dialog.cpp:266
+#: src/modules/reguser/RegisteredUsersDialog.cpp:268
 msgid "Edit the first selected entry."
 msgstr "İlk seçileni düzenleyin."
 
@@ -272,11 +275,11 @@ msgstr "İlk seçileni düzenleyin."
 msgid "Enable ignore for this user"
 msgstr "Bu kullanıcı için gözardı etmeyi etkinleştirin"
 
-#: src/modules/reguser/dialog.cpp:277
+#: src/modules/reguser/RegisteredUsersDialog.cpp:279
 msgid "Export To..."
 msgstr "Dışarı Çıkar.."
 
-#: src/modules/reguser/dialog.cpp:280
+#: src/modules/reguser/RegisteredUsersDialog.cpp:282
 msgid ""
 "Export the selected entries to a file.<br>All the data associated with the "
 "selected registered users will be exported.<br>You (or anyone else) can "
@@ -286,11 +289,12 @@ msgstr ""
 "ilgili tüm veriler dışarı çıkarılacaktır.<br>Siz (Ya da başkası) daha sonra "
 "\"Ekle\"  düğmesini kullanarak verileri yükleyebilirsiniz."
 
-#: src/modules/reguser/dialog.cpp:81
+#: src/modules/reguser/RegisteredUsersDialog.cpp:83
 msgid "Flags"
 msgstr "Bayrakları"
 
-#: src/modules/reguser/dialog.cpp:411 src/modules/reguser/dialog.cpp:424
+#: src/modules/reguser/RegisteredUsersDialog.cpp:414
+#: src/modules/reguser/RegisteredUsersDialog.cpp:427
 msgid "Group name:"
 msgstr "Grup adı:"
 
@@ -330,11 +334,11 @@ msgstr "Notice mesajlarını gözardı et"
 msgid "Ignore query messages"
 msgstr "Özel mesajları gözardı et"
 
-#: src/modules/reguser/dialog.cpp:284
+#: src/modules/reguser/RegisteredUsersDialog.cpp:286
 msgid "Import From..."
 msgstr "Aktar..."
 
-#: src/modules/reguser/dialog.cpp:286
+#: src/modules/reguser/RegisteredUsersDialog.cpp:288
 msgid ""
 "Import entries from a file exported earlier by the \"export\" function of "
 "this dialog."
@@ -370,11 +374,11 @@ msgstr "Mask Editorü"
 msgid "Masks:"
 msgstr "Maskları:"
 
-#: src/modules/reguser/dialog.cpp:479
+#: src/modules/reguser/RegisteredUsersDialog.cpp:482
 msgid "Move to group"
 msgstr "Grubuna taşınsın"
 
-#: src/modules/reguser/dialog.cpp:81
+#: src/modules/reguser/RegisteredUsersDialog.cpp:83
 msgid "Name"
 msgstr "Adı"
 
@@ -390,11 +394,11 @@ msgstr "Kullanıcı adı 2:"
 msgid "Nickname:"
 msgstr "Kullanıcı adı:"
 
-#: src/modules/reguser/dialog.cpp:132
+#: src/modules/reguser/RegisteredUsersDialog.cpp:134
 msgid "No comment set"
 msgstr "Yorum yok"
 
-#: src/modules/reguser/dialog.cpp:713
+#: src/modules/reguser/RegisteredUsersDialog.cpp:716
 msgid "No entries selected."
 msgstr "Hiçbir kayıt seçilmedi."
 
@@ -421,11 +425,11 @@ msgstr "Belirtilen hiçbir özellik yok"
 msgid "No such channel/netmask entry in the database"
 msgstr "Veritabanında böyle bir kanal / netmask yok"
 
-#: src/modules/reguser/dialog.cpp:122
+#: src/modules/reguser/RegisteredUsersDialog.cpp:124
 msgid "Notify as:"
 msgstr "Gibi Bildir:"
 
-#: src/modules/reguser/dialog.cpp:120
+#: src/modules/reguser/RegisteredUsersDialog.cpp:122
 msgid "Notify disabled"
 msgstr "Bildiri Kapalı"
 
@@ -437,7 +441,7 @@ msgstr "Bildirilecek kullanıcılar:"
 msgid "Notify when user is online"
 msgstr "Kullanıcı çevrimiçi olduğundan bildir"
 
-#: src/modules/reguser/dialog.cpp:248
+#: src/modules/reguser/RegisteredUsersDialog.cpp:250
 msgid "Open the edit dialog to create a new user entry."
 msgstr "Yeni bir kullanıcı kaydı oluşturmak için açınız."
 
@@ -453,8 +457,8 @@ msgstr "Özellik"
 msgid "Property Editor"
 msgstr "Özellik Editörü"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
-#: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "&Sil"
 
@@ -462,7 +466,7 @@ msgstr "&Sil"
 msgid "Registered User Entry"
 msgstr "Üye Giriş"
 
-#: src/modules/reguser/dialog.cpp:223
+#: src/modules/reguser/RegisteredUsersDialog.cpp:225
 msgid "Registered Users - KVIrc"
 msgstr "Kayıtlı kullanıcılar - KVIrc"
 
@@ -478,15 +482,15 @@ msgstr "Kayıtlı kullanıcı veritabanı dökümü:"
 msgid "Registration Complete"
 msgstr "Kayıt Tamamlandı"
 
-#: src/modules/reguser/dialog.cpp:259
+#: src/modules/reguser/RegisteredUsersDialog.cpp:261
 msgid "Remove the currently selected entries."
 msgstr "Seçili girdileri kaldırın."
 
-#: src/modules/reguser/dialog.cpp:272
+#: src/modules/reguser/RegisteredUsersDialog.cpp:274
 msgid "Select all"
 msgstr "Hepsini Seç"
 
-#: src/modules/reguser/dialog.cpp:274
+#: src/modules/reguser/RegisteredUsersDialog.cpp:276
 msgid "Select all the entries"
 msgstr "Tüm girişleri seçin"
 
@@ -510,12 +514,12 @@ msgstr "Adım 4: Bildiri Listesi"
 msgid "Store an avatar for this user"
 msgstr "Bu kullanıcı için bir avatar tut"
 
-#: src/modules/reguser/dialog.cpp:848
+#: src/modules/reguser/RegisteredUsersDialog.cpp:851
 #, c-format
 msgid "The file %s contains an invalid registered users database version."
 msgstr "Dosya %s geçersiz bir kayıtlı kullanıcı veritabanı sürümünü içeriyor."
 
-#: src/modules/reguser/dialog.cpp:841
+#: src/modules/reguser/RegisteredUsersDialog.cpp:844
 #, c-format
 msgid "The file %s doesn't appear to be a valid registered users database."
 msgstr "Dosya %s deçerli bir kayıtlı kullanıcı veritabanı olarak görünmüyor."

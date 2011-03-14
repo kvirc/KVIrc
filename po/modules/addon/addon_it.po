@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-02-10 19:03+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -64,15 +64,15 @@ msgstr "Impossibile aprire il file in lettura."
 msgid "Cannot write to the file descriptor."
 msgstr "Impossibile scrivere sul file."
 
-#: src/modules/addon/managementdialog.cpp:170
+#: src/modules/addon/AddonManagementDialog.cpp:170
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/modules/addon/managementdialog.cpp:110
+#: src/modules/addon/AddonManagementDialog.cpp:110
 msgid "Configure Addon..."
 msgstr "Configura Addon..."
 
-#: src/modules/addon/managementdialog.cpp:258
+#: src/modules/addon/AddonManagementDialog.cpp:259
 msgid "Confirm addon uninstallation"
 msgstr "Conferma disinstallazione addon"
 
@@ -80,7 +80,7 @@ msgstr "Conferma disinstallazione addon"
 msgid "Create Addon Package - KVIrc"
 msgstr "Crea Pacchetto Addon - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:132
+#: src/modules/addon/AddonManagementDialog.cpp:132
 msgid "Create an Addon as a Distributable Package"
 msgstr "Crea un Addon come Pacchetto Distribuibile"
 
@@ -92,7 +92,7 @@ msgstr "Creato il"
 msgid "Created with"
 msgstr "Creato con"
 
-#: src/modules/addon/managementdialog.cpp:122
+#: src/modules/addon/AddonManagementDialog.cpp:122
 msgid "Delete Selected Addons"
 msgstr "Cancella Addon Selezionati"
 
@@ -104,7 +104,7 @@ msgstr "Descrizione: %Q"
 msgid "Do Not Install"
 msgstr "Non Installare"
 
-#: src/modules/addon/managementdialog.cpp:253
+#: src/modules/addon/AddonManagementDialog.cpp:254
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Vuoi davvero disinstallare l'addon \"%1\"?"
 
@@ -148,7 +148,7 @@ msgstr "Informazioni Finali"
 msgid "Finish"
 msgstr "Fine"
 
-#: src/modules/addon/managementdialog.cpp:148
+#: src/modules/addon/AddonManagementDialog.cpp:148
 msgid "Get More Addons..."
 msgstr "Scarica Altri Addon..."
 
@@ -197,8 +197,8 @@ msgstr "Premi il pulsante \"Successivo\" per iniziare."
 msgid "Icon File"
 msgstr "File Icona"
 
-#: src/modules/addon/managementdialog.cpp:293
-#: src/modules/addon/managementdialog.cpp:307
+#: src/modules/addon/AddonManagementDialog.cpp:294
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Install Addon - KVIrc"
 msgstr "Installa Addon - KVIrc"
 
@@ -206,7 +206,7 @@ msgstr "Installa Addon - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "Installa Pacchetto Addon - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:142
+#: src/modules/addon/AddonManagementDialog.cpp:142
 msgid "Install Addon Package From Disk"
 msgstr "Installa Pacchetto Addon Dal Disco"
 
@@ -218,7 +218,7 @@ msgstr "Installo il file '%1' in '%2'"
 msgid "Internal error: call a head-shrinker"
 msgstr "Errore interno: chiamo uno strizzacervelli"
 
-#: src/modules/addon/managementdialog.cpp:92
+#: src/modules/addon/AddonManagementDialog.cpp:92
 msgid "Manage Script-Based Addons"
 msgstr "Gestione Script Addon"
 
@@ -234,7 +234,7 @@ msgstr "Versione Minima di KVIrc"
 msgid "Name: %Q"
 msgstr "Nome: %Q"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "No"
 msgstr "No"
 
@@ -289,7 +289,7 @@ msgstr "Versione Pacchetto"
 msgid "Packaging failed"
 msgstr "Pacchettizzazione fallita"
 
-#: src/modules/addon/managementdialog.cpp:280
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Please select the addon installation file"
 msgstr "Seleziona il file di installazione dell'addon"
 
@@ -313,11 +313,12 @@ msgstr "Seleziona il file icona:"
 msgid "Select the source directory:"
 msgstr "Seleziona la directory dei sorgenti:"
 
-#: src/modules/addon/managementdialog.cpp:116
+#: src/modules/addon/AddonManagementDialog.cpp:116
 msgid "Show Help"
 msgstr "Mostra Aiuto"
 
-#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692
+#: src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr "Salto l'entry non esistente '%1'"
 
@@ -329,9 +330,12 @@ msgstr "Salto l'entry invalida '%1'"
 msgid "Source Directory"
 msgstr "Directory Sorgenti"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "L'addon \"%1\" non esiste"
 
@@ -377,7 +381,8 @@ msgstr ""
 "Il file selezionato non sembra essere un valido pacchetto addon di KVIrc"
 
 #: src/modules/addon/AddonFunctions.cpp:70
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+#, fuzzy
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
 msgstr "Il file selezionato non sembra essere un valido pacchetto KVIrc: %Q"
 
 #: src/modules/addon/libkviaddon.cpp:544
@@ -421,7 +426,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Totale: %d addon installati"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Disinstallo l'addon esistente con versione %Q"
 
@@ -439,7 +445,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Benvenuto"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "Yes"
 msgstr "Sì"
 

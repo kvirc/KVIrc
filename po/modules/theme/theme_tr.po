@@ -7,24 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 22:18+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-02-11 00:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: src/modules/theme/managementdialog.cpp:284
+#: src/modules/theme/ThemeManagementDialog.cpp:286
 msgid "&Apply Theme"
 msgstr "&Temayı Uygula"
 
-#: src/modules/theme/managementdialog.cpp:283
+#: src/modules/theme/ThemeManagementDialog.cpp:285
 msgid "&Remove Theme"
 msgstr "&Temayı Sil"
 
@@ -32,9 +32,10 @@ msgstr "&Temayı Sil"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ekran görüntüsü al - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:120
-#: src/modules/theme/managementdialog.cpp:300
-#: src/modules/theme/managementdialog.cpp:312
+#: src/modules/theme/ThemeManagementDialog.cpp:302
+#: src/modules/theme/ThemeManagementDialog.cpp:314
+#: src/modules/theme/libkvitheme.cpp:107
+#: src/modules/theme/libkvitheme.cpp:120
 msgid "Apply theme - KVIrc"
 msgstr "Temayı Uygula - KVIrc"
 
@@ -57,11 +58,11 @@ msgstr "Yapım Tarigi"
 msgid "Created with"
 msgstr "ile Tapıldı"
 
-#: src/modules/theme/managementdialog.cpp:149
+#: src/modules/theme/ThemeManagementDialog.cpp:150
 msgid "Delete Selected Themes"
 msgstr "Seçilen Temaları Sil"
 
-#: src/modules/theme/managementdialog.cpp:325
+#: src/modules/theme/ThemeManagementDialog.cpp:327
 msgid "Delete Theme - KVIrc"
 msgstr "Temayı Sil - KVIrc"
 
@@ -74,7 +75,7 @@ msgstr "Açıklaması:"
 msgid "Do Not Install"
 msgstr "Yükleme Yapma"
 
-#: src/modules/theme/managementdialog.cpp:326
+#: src/modules/theme/ThemeManagementDialog.cpp:328
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Gerçekten tema \"%Q\" (versiyon %Q) silmek istiyor musunuz? "
 
@@ -82,8 +83,8 @@ msgstr "Gerçekten tema \"%Q\" (versiyon %Q) silmek istiyor musunuz? "
 msgid "Do you want to proceed with the installation ?"
 msgstr "Kuruluma devam etmek istiyor musunuz?"
 
+#: src/modules/theme/ThemeManagementDialog.cpp:303
 #: src/modules/theme/libkvitheme.cpp:108
-#: src/modules/theme/managementdialog.cpp:301
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Tema \"%Q\" onaylamak (versiyon %Q) istiyor musunuzs?"
 
@@ -95,7 +96,7 @@ msgstr "Tema paketi kurulurken hata: %Q"
 msgid "Error making screenshot"
 msgstr "Ekran görüntüsü yaparken hata oluştu"
 
-#: src/modules/theme/managementdialog.cpp:143
+#: src/modules/theme/ThemeManagementDialog.cpp:144
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Seçilen temalar için bir Dağıtılabilir paketi dışarı çıkar"
 
@@ -108,8 +109,8 @@ msgstr "Seçilen temalar için bir Dağıtılabilir paketi dışarı çıkar"
 msgid "Export Theme - KVIrc"
 msgstr "Temayı Dışarı Çıkar - KVIrc"
 
+#: src/modules/theme/ThemeManagementDialog.cpp:313
 #: src/modules/theme/libkvitheme.cpp:119
-#: src/modules/theme/managementdialog.cpp:311
 msgid "Failed to apply the specified theme: %1"
 msgstr "Belirtilen tema uygulaması başarısız oldu: %1"
 
@@ -138,7 +139,7 @@ msgstr "Seçili dosya açılamadı: %1"
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Nihayet paketleme işlemini tamamlamak için \"Bitir\"  butonuna basın."
 
-#: src/modules/theme/managementdialog.cpp:165
+#: src/modules/theme/ThemeManagementDialog.cpp:166
 msgid "Get More Themes..."
 msgstr "Daha Fazla Tema Al..."
 
@@ -172,8 +173,8 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:381
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Burada tema paketi için dosya adı seçmelisiniz. Bir *%1 uzantısı olmalıdır."
 
@@ -206,7 +207,7 @@ msgstr "Simge / Ekran görüntüsü"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Tema Paketi Yükle - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:159
+#: src/modules/theme/ThemeManagementDialog.cpp:160
 msgid "Install Theme Package From Disk"
 msgstr "Diskten Tema Paketi yükleyin "
 
@@ -214,11 +215,11 @@ msgstr "Diskten Tema Paketi yükleyin "
 msgid "Make Screenshot Now"
 msgstr "Ekran Görüntüsü Yap"
 
-#: src/modules/theme/managementdialog.cpp:114
+#: src/modules/theme/ThemeManagementDialog.cpp:115
 msgid "Manage Themes - KVIrc"
 msgstr "Temaları Yönet"
 
-#: src/modules/theme/managementdialog.cpp:339
+#: src/modules/theme/ThemeManagementDialog.cpp:341
 msgid "Open Theme - KVIrc"
 msgstr "Temayı Aç - KVIrc"
 
@@ -256,7 +257,7 @@ msgstr "Buraya bir paket açıklaması yazınız..."
 msgid "Save Current Theme - KVIrc"
 msgstr "Kullanılan Temayı Kayıt Et - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:132
+#: src/modules/theme/ThemeManagementDialog.cpp:133
 msgid "Save Current Theme..."
 msgstr "Kullanılan Temayı Kayıt Et"
 
@@ -284,7 +285,8 @@ msgstr "Seçilen tema paketi %1 KVIrc için geçerli görünmüyor."
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Seçilen dosya geçerli bir KVIrc tema paketi olacak gibi görünmüyor"
 
-#: src/modules/theme/libkvitheme.cpp:125 src/modules/theme/libkvitheme.cpp:168
+#: src/modules/theme/libkvitheme.cpp:125
+#: src/modules/theme/libkvitheme.cpp:168
 msgid "The theme package '%Q' does not exist"
 msgstr "Tema paketi '%Q' mevcut değil"
 
@@ -406,6 +408,6 @@ msgstr "Aşağıdaki tema paketini yüklemek üzeresiniz"
 msgid "Your name here"
 msgstr "Adınız"
 
-#: src/modules/theme/managementdialog.cpp:87
+#: src/modules/theme/ThemeManagementDialog.cpp:88
 msgid "by"
 msgstr "tarafından"

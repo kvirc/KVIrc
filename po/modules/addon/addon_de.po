@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-22 00:17+0100\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
 "PO-Revision-Date: 2011-02-27 22:32+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
@@ -61,15 +61,15 @@ msgstr "Datei kann nicht zum Schreiben geöffnet werden."
 msgid "Cannot write to the file descriptor."
 msgstr "Es kann nicht in den Dateideskriptor geschrieben werden."
 
-#: src/modules/addon/managementdialog.cpp:170
+#: src/modules/addon/AddonManagementDialog.cpp:170
 msgid "Close"
 msgstr "Schließen"
 
-#: src/modules/addon/managementdialog.cpp:110
+#: src/modules/addon/AddonManagementDialog.cpp:110
 msgid "Configure Addon..."
 msgstr "Erweiterung einrichten..."
 
-#: src/modules/addon/managementdialog.cpp:258
+#: src/modules/addon/AddonManagementDialog.cpp:259
 msgid "Confirm addon uninstallation"
 msgstr "Deinstallation der Erweiterung bestätigen"
 
@@ -77,7 +77,7 @@ msgstr "Deinstallation der Erweiterung bestätigen"
 msgid "Create Addon Package - KVIrc"
 msgstr "Erweiterungspaket erstellen - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:132
+#: src/modules/addon/AddonManagementDialog.cpp:132
 msgid "Create an Addon as a Distributable Package"
 msgstr "Erweiterung als distributierbares Paket erstellen"
 
@@ -89,7 +89,7 @@ msgstr "Erstellt am"
 msgid "Created with"
 msgstr "Erstellt mit"
 
-#: src/modules/addon/managementdialog.cpp:122
+#: src/modules/addon/AddonManagementDialog.cpp:122
 msgid "Delete Selected Addons"
 msgstr "Ausgewählte Erweiterungen entfernen"
 
@@ -101,7 +101,7 @@ msgstr "Beschreibung: %Q"
 msgid "Do Not Install"
 msgstr "Nicht installieren"
 
-#: src/modules/addon/managementdialog.cpp:253
+#: src/modules/addon/AddonManagementDialog.cpp:254
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Soll die Erweiterung »%1« wirklich deinstalliert werden?"
 
@@ -145,7 +145,7 @@ msgstr "Abschließende Informationen"
 msgid "Finish"
 msgstr "Abschließen"
 
-#: src/modules/addon/managementdialog.cpp:148
+#: src/modules/addon/AddonManagementDialog.cpp:148
 msgid "Get More Addons..."
 msgstr "Mehr Erweiterungen..."
 
@@ -196,8 +196,8 @@ msgstr "Auf »Weiter« klicken, um zu beginnen."
 msgid "Icon File"
 msgstr "Icon-Datei"
 
-#: src/modules/addon/managementdialog.cpp:293
-#: src/modules/addon/managementdialog.cpp:307
+#: src/modules/addon/AddonManagementDialog.cpp:294
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Install Addon - KVIrc"
 msgstr "Erweiterung installieren - KVIrc"
 
@@ -205,7 +205,7 @@ msgstr "Erweiterung installieren - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "Erweiterungspaket installieren - KVIrc"
 
-#: src/modules/addon/managementdialog.cpp:142
+#: src/modules/addon/AddonManagementDialog.cpp:142
 msgid "Install Addon Package From Disk"
 msgstr "Erweiterungspaket von Festplatte installieren"
 
@@ -217,7 +217,7 @@ msgstr "Installiere Datei ›%1‹ nach ›%2‹"
 msgid "Internal error: call a head-shrinker"
 msgstr "Interner Fehler: Rufe einen Psychiater"
 
-#: src/modules/addon/managementdialog.cpp:92
+#: src/modules/addon/AddonManagementDialog.cpp:92
 msgid "Manage Script-Based Addons"
 msgstr "Skript-basierte Erweiterungen verwalten"
 
@@ -233,7 +233,7 @@ msgstr "Minimal erforderliche KVIrc-Version"
 msgid "Name: %Q"
 msgstr "Name: %Q"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "No"
 msgstr "Nein"
 
@@ -288,7 +288,7 @@ msgstr "Paketversion"
 msgid "Packaging failed"
 msgstr "Paketierung fehlgeschlagen"
 
-#: src/modules/addon/managementdialog.cpp:280
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Please select the addon installation file"
 msgstr "Bitte die Installationsdatei der Erweiterung auswählen"
 
@@ -312,11 +312,12 @@ msgstr "Icon-Datei auswählen:"
 msgid "Select the source directory:"
 msgstr "Quellverzeichnis auswählen:"
 
-#: src/modules/addon/managementdialog.cpp:116
+#: src/modules/addon/AddonManagementDialog.cpp:116
 msgid "Show Help"
 msgstr "Hilfe anzeigen"
 
-#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692
+#: src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr "Überspringe nicht existierenden Eintrag ›%1‹"
 
@@ -328,9 +329,12 @@ msgstr "Überspringe ungültigen Eintrag ›%1‹"
 msgid "Source Directory"
 msgstr "Quellverzeichnis"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Die Erweiterung »%1« existiert nicht"
 
@@ -377,7 +381,8 @@ msgstr ""
 "Die ausgewählte Datei scheint kein gültiges KVIrc-Erweiterungspaket zu sein"
 
 #: src/modules/addon/AddonFunctions.cpp:70
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+#, fuzzy
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
 msgstr "Die ausgewählte Datei scheint kein gültiges KVIrc-Paket zu sein: %Q"
 
 #: src/modules/addon/libkviaddon.cpp:544
@@ -423,7 +428,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Gesamt: %d Erweiterungen installiert"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Deinstallieren der bestehenden Erweiterung Version %Q"
 
@@ -440,7 +446,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: src/modules/addon/managementdialog.cpp:259
+#: src/modules/addon/AddonManagementDialog.cpp:260
 msgid "Yes"
 msgstr "Ja"
 
