@@ -54,6 +54,7 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define ICON_SIZE 16
+	#include <Windows.h>
 #else
 	#define ICON_SIZE 22
 #endif
@@ -374,6 +375,10 @@ void TrayIcon::toggleParentFrame()
 			qDebug("- window wasn't maximized so calling plain show()");
 			m_pFrm->show();
 		}
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		// raise it
+		SetForegroundWindow((HWND)m_pFrm->winId());
+#endif
 	} else {
 		qDebug("- frame is visible: maximized state=%d, hiding",m_pFrm->isMaximized());
 		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = m_pFrm->isMaximized();
