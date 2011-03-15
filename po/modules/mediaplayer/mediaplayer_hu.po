@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: mediaplayer_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2011-03-14 11:37+0100\n"
-"Last-Translator: Adam Fibinger <vfiber[at]gmaildotcom>\n"
+"PO-Revision-Date: 2011-03-15 16:55+0100\n"
+"Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
 "Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,20 +50,17 @@ msgid ""
 msgstr ""
 "Interfész az AMIP plug-in-hez.\n"
 "Letölthető a  http://amip.tools-for.net címről.\n"
-"Ahhoz, hogy ezt használni tudd telepítened kell az AMIP plugint a "
-"lejátszódba."
+"Ahhoz, hogy ezt használni tudd telepítened kell az AMIP plugint a lejátszódba."
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:523
 msgid ""
 "An interface to the Mozilla Songbird media player.\n"
 "Download it from http://www.getsongbird.com.\n"
-"To use it you have to install also the MPRIS addon available at http://"
-"addons.songbirdnest.com/addon/1626.\n"
+"To use it you have to install also the MPRIS addon available at http://addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
 "Kezelőfelület a Mozilla Songbird lejátszóhoz.\n"
 "Letölthető a http://www.getsongbird.com címről.\n"
-"A használatához az MPRIS addon szükséges, ami letölthető a http://"
-"addons.songbirdnest.com/addon/1626 címről.\n"
+"A használatához az MPRIS addon szükséges, ami letölthető a http://addons.songbirdnest.com/addon/1626 címről.\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:506
 msgid ""
@@ -101,15 +98,11 @@ msgstr ""
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
+"To use all the features of this interface you must copy the gen_kvirc.dll plugin found in the KVIrc distribution directory to the Winamp plugins folder and restart winamp."
 msgstr ""
 "Felület a népszerű Winamp médialejátszóhoz.\n"
 "Letöltheted a http://www.winamp.com címről.\n"
-"Hogy minden lehetséges funkciót ki tudj használni, másold a gen_kvirc.dll "
-"plugint a KVIrc modulok könyvtárából a Winamp pluginok mappájába és indítsd "
-"újra a Winampot."
+"Hogy minden lehetséges funkciót ki tudj használni, másold a gen_kvirc.dll plugint a KVIrc modulok könyvtárából a Winamp pluginok mappájába és indítsd újra a Winampot."
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -149,11 +142,8 @@ msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
 msgstr "Nincs médialjeátszó kiválasztva. Próbáld így: /mediaplayer.detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:73
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"Nem vagyok biztos az eredményben, megpróbálom másodszor, agresszívabb "
-"meghatározással"
+msgid "Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Nem vagyok biztos az eredményben, megpróbálom másodszor, agresszívabb meghatározással"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:104
 msgid "Seems that there is no usable media player on this machine"
@@ -169,18 +159,13 @@ msgstr "Azt hiszem nincs használható médialejátszó ezen a gépen"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
-msgid ""
-"The selected media player interface failed to execute the requested function"
+msgid "The selected media player interface failed to execute the requested function"
 msgstr "A kiválasztott lejátszóeszköz nem tudta lefuttatni a kért függvényt"
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:316
 #: src/modules/mediaplayer/mp_winampinterface.cpp:350
-msgid ""
-"The winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
-msgstr ""
-"A Winamp plugin helytelenül lett telepítve. Lásd: /help mediaplayer."
-"nowplaying "
+msgid "The winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying"
+msgstr "A Winamp plugin helytelenül lett telepítve. Lásd: /help mediaplayer.nowplaying "
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:65
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:91
@@ -189,6 +174,6 @@ msgstr "\"%Q\" médialejátszó eszköz próbája, eredmény: %d"
 
 #~ msgid "An interface to the AmaroK KDE media player."
 #~ msgstr "Eszköz az AmaroK KDE médialjeátszóhoz."
-
 #~ msgid "An interface to the Juk KDE media player."
 #~ msgstr "Eszköz a Juk KDE médialejátszóhoz."
+
