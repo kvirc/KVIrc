@@ -363,6 +363,10 @@ void TrayIcon::toggleParentFrame()
 			qDebug("- window wasn't maximized so calling plain show()");
 			m_pFrm->show();
 		}
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		// raise it
+		SetForegroundWindow((HWND)m_pFrm->winId());
+#endif
 	} else if(!m_pFrm->isVisible())
 	{
 		qDebug("- frame is not visible");
