@@ -771,7 +771,7 @@ defpopup(consoletextview)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	extpopup($tr("Channels","defscript"),channels,46)
+	extpopup($tr("Channels","defscript"),channels,46) ($server)
 
 	separator
 
