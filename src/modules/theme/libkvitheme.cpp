@@ -101,14 +101,15 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	szDir += KVI_PATH_SEPARATOR_CHAR;
 	szDir += szThemePackFile;
 	KviThemeInfo * themeInfo = new KviThemeInfo();
-	if(themeInfo->loadFromDirectory(szDir))
+	if(themeInfo->load(szDir))
 	{
 		themeInfo->setSubdirectory(szThemePackFile);
 		if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
 		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?","theme"),
 		&(themeInfo->name()),&(themeInfo->version())))
 		{
-			QString szPath = themeInfo->absoluteDirectory();
+			QString szPath;
+			themeInfo->getCompleteDirPath(szPath);
 			if(szPath.isEmpty())return true;
 
 			KviThemeInfo out;
@@ -151,7 +152,7 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	szDir += KVI_PATH_SEPARATOR_CHAR;
 	szDir += szThemePackFile;
 	KviThemeInfo * themeInfo = new KviThemeInfo();
-	if(themeInfo->loadFromDirectory(szDir))
+	if(themeInfo->load(szDir))
 	{
 		KviKvsHash *pHash=new KviKvsHash();
 		KviKvsVariant *name=new KviKvsVariant(themeInfo->name());

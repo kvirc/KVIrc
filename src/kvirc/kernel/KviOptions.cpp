@@ -1021,36 +1021,31 @@ namespace KviTheme
 	// that are implemented here for convenience (in saving the options)
 	bool save(KviThemeInfo &options)
 	{
-		QString szD = options.absoluteDirectory();
+		QString szThemeDirPath;
+		options.getCompleteDirPath(szThemeDirPath);
 
-		if(szD.isEmpty())
+		if(szThemeDirPath.isEmpty())
 		{
 			options.setLastError(__tr2qs("Missing absolute directory for the theme information"));
 			return false;
 		}
 
-		if(!KviFileUtils::directoryExists(szD))
+		if(!KviFileUtils::directoryExists(szThemeDirPath))
 		{
-			if(!KviFileUtils::makeDir(szD))
+			if(!KviFileUtils::makeDir(szThemeDirPath))
 			{
 				options.setLastError(__tr2qs("Failed to create the theme directory"));
 				return false;
 			}
 		}
 
-		szD.append(KVI_PATH_SEPARATOR_CHAR);
-		szD.append(KVI_THEMEINFO_FILE_NAME);
 
-		if(!options.save(szD))
+		if(!options.save(szThemeDirPath+KVI_THEMEINFO_FILE_NAME))
 		{
 			return false;
 		}
 
-		szD = options.absoluteDirectory();
-		szD.append(KVI_PATH_SEPARATOR_CHAR);
-		szD.append(KVI_THEMEDATA_FILE_NAME);
-
-		KviConfigurationFile cfg(szD,KviConfigurationFile::Write);
+		KviConfigurationFile cfg(szThemeDirPath+KVI_THEMEDATA_FILE_NAME,KviConfigurationFile::Write);
 
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
 
@@ -1076,8 +1071,7 @@ namespace KviTheme
 			{
 				if(g_pixmapOptionsTable[i].option.pixmap())
 				{
-					QString szPixPath = options.absoluteDirectory();
-					szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+					QString szPixPath = szThemeDirPath;
 					QString szPixName = g_pixmapOptionsTable[i].name;
 					szPixName += ".png";
 					szPixPath += szPixName;
@@ -1110,8 +1104,7 @@ namespace KviTheme
 			KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
 			if(p)
 			{
-				QString szPixPath = options.absoluteDirectory();
-				szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+				QString szPixPath = szThemeDirPath;
 				szPixPath += *it;
 
 				if(!KviFileUtils::copyFile(p->path(),szPixPath))
@@ -1123,11 +1116,8 @@ namespace KviTheme
 		}
 
 
-		szD = options.absoluteDirectory();
-		szD.append(KVI_PATH_SEPARATOR_CHAR);
-		szD.append(KVI_SMALLICONS_SUBDIRECTORY);
 
-		if(!KviFileUtils::makeDir(szD))
+		if(!KviFileUtils::makeDir(szThemeDirPath+KVI_SMALLICONS_SUBDIRECTORY))
 		{
 			options.setLastError(__tr2qs("Failed to create the theme subdirectory"));
 			return false;
@@ -1141,8 +1131,7 @@ namespace KviTheme
 		{
 			QPixmap * pix = g_pIconManager->getSmallIcon(j);
 
-			QString szPixPath = options.absoluteDirectory();
-			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+			QString szPixPath = szThemeDirPath;
 			szPixPath.append(KVI_SMALLICONS_SUBDIRECTORY);
 			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
 			szPixPath.append("kcs_");
@@ -1159,11 +1148,15 @@ namespace KviTheme
 		return true;
 	}
 
-	bool load(const QString &themeDir,KviThemeInfo &buffer)
+	bool load(const QString &szThemeDir,KviThemeInfo &buffer,bool bBuiltin)
 	{
-		if(!buffer.loadFromDirectory(themeDir))
+	    if(!buffer.load(szThemeDir,bBuiltin)){
 			return false; // makes sure that themedata exists too
+		        }
 
+		QString szThemeDirPath;
+		buffer.getCompleteDirPath(szThemeDirPath);
+		qDebug("Ok loading from %s",szThemeDirPath.toUtf8().data());
 		// reset the current theme subdir
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
 
@@ -1172,12 +1165,8 @@ namespace KviTheme
 		g_pApp->getLocalKvircDirectory(szPointerFile,KviApplication::Themes,"current-splash");
 		KviFileUtils::removeFile(szPointerFile);
 
-		QString szD = themeDir;
-		KviQString::ensureLastCharIs(szD,KVI_PATH_SEPARATOR_CHAR);
-		szD.append(KVI_THEMEDATA_FILE_NAME);
-
-		KviConfigurationFile cfg(szD,KviConfigurationFile::Read);
-
+		KviConfigurationFile cfg(szThemeDirPath+KVI_THEMEDATA_FILE_NAME,KviConfigurationFile::Read);
+		QString t=szThemeDirPath+KVI_THEMEDATA_FILE_NAME;
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
 
 		int i;
@@ -1255,7 +1244,7 @@ namespace KviTheme
 
 		// force reloading of images anyway
 		g_pApp->optionResetUpdate(iResetFlags | KviOption_resetReloadImages);
-
+		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = szThemeDir;
 		return true;
 	}
 };

@@ -64,6 +64,7 @@ namespace ThemeFunctions
 
 		if(!r.readHeader(szThemePackageFileName))
 		{
+			qDebug("The selected file does not seem to be a valid KVIrc package");
 			QString szErr = r.lastError();
 			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %1","theme")).arg(szErr);
 			return false;
@@ -72,8 +73,10 @@ namespace ThemeFunctions
 		pInfoFields = r.stringInfoFields();
 
 		pValue = pInfoFields->find("PackageType");
-		if(!pValue)
+		if(!pValue){
+			qDebug("no package type");
 			return notAValidThemePackage(szError);
+		    }
 
 		if(!KviQString::equalCI(*pValue,"ThemePack"))
 			return notAValidThemePackage(szError);
@@ -91,16 +94,22 @@ namespace ThemeFunctions
 		}
 
 		pValue = pInfoFields->find("ThemeCount");
-		if(!pValue)
+		if(!pValue){
+			qDebug("no theme count");
 			return notAValidThemePackage(szError);
+		    }
 
 		bool bOk;
 		int iThemeCount = pValue->toInt(&bOk);
-		if(!bOk)
+		if(!bOk){
+			qDebug("no theme count 2");
 			return notAValidThemePackage(szError);
+		    }
+		if(iThemeCount < 1){
 
-		if(iThemeCount < 1)
+		    qDebug("no theme count 2");
 			return notAValidThemePackage(szError);
+		    }
 
 		// ok.. it should be really valid at this point
 

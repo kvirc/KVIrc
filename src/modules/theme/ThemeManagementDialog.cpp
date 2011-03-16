@@ -21,6 +21,11 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
+#include "kvi_settings.h"
+#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+#include "WebThemeInterfaceDialog.h"
+#endif
+
 
 #include "ThemeManagementDialog.h"
 #include "PackThemeDialog.h"
@@ -67,6 +72,9 @@
 
 extern QRect g_rectManagementDialogGeometry;
 
+#define BUILTIN_THEMES 1
+
+#define USER_DEFINED_THEMES 0
 
 ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf)
 : KviTalListWidgetItem(box)
@@ -111,6 +119,9 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 : QWidget(parent)
 {
 	m_pItemDelegate=0;
+	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+	m_pWebThemeInterfaceDialog = 0;
+	#endif
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Theme)));
@@ -218,6 +229,13 @@ ThemeManagementDialog::~ThemeManagementDialog()
 	if (m_pItemDelegate) delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
 	m_pInstance = 0;
+	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+	if(m_pWebThemeInterfaceDialog)
+	{
+	    delete m_pWebThemeInterfaceDialog;
+	    m_pWebThemeInterfaceDialog = 0;
+	}
+	#endif
 }
 
 void ThemeManagementDialog::closeClicked()
@@ -303,11 +321,11 @@ void ThemeManagementDialog::applyCurrentTheme()
 		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?","theme"),
 		&(it->themeInfo()->name()),&(it->themeInfo()->version())))
 	{
-		QString szPath = it->themeInfo()->absoluteDirectory();
+		QString szPath = it->themeInfo()->dirName();
 		if(szPath.isEmpty())return;
 
 		KviThemeInfo out;
-		if(!KviTheme::load(szPath,out))
+		if(!KviTheme::load(szPath,out,it->themeInfo()->isBuiltin()))
 		{
 			QString szErr = out.lastError();
 			QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
@@ -327,7 +345,9 @@ void ThemeManagementDialog::deleteTheme()
 			if(!KviMessageBox::yesNo(__tr2qs_ctx("Delete Theme - KVIrc","theme"),
 				__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
 					&(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->name()),&(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->version())))goto jump_out;
-			KviFileUtils::deleteDir(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->absoluteDirectory());
+			QString szThemePath;
+			((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->getCompleteDirPath(szThemePath);
+			KviFileUtils::deleteDir(szThemePath);
 	}
 jump_out:
 	fillThemeBox();
@@ -350,9 +370,19 @@ void ThemeManagementDialog::installFromFile()
 
 void ThemeManagementDialog::getMoreThemes()
 {
+	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+	if (m_pWebThemeInterfaceDialog) m_pWebThemeInterfaceDialog->show();
+	else{
+	    m_pWebThemeInterfaceDialog = new WebThemeInterfaceDialog();
+	    m_pWebThemeInterfaceDialog->show();
+	}
+	return;
+	#else
 	if(!g_pMainWindow)return;
 	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
+	#endif
 }
+
 
 void ThemeManagementDialog::saveCurrentTheme()
 {
@@ -362,25 +392,17 @@ void ThemeManagementDialog::saveCurrentTheme()
 	fillThemeBox();
 }
 
-void ThemeManagementDialog::fillThemeBox(const QString &szDir)
+void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 {
-	QDir d(szDir);
+	QStringList slThemes;
+	KviTheme::installedThemes(slThemes,bBuiltin);
 
-	QStringList sl = d.entryList(QDir::Dirs);
-
-	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+	for(int i=0;i<slThemes.count();i++)
 	{
-		if(*it == ".")continue;
-		if(*it == "..")continue;
-
-		QString szTest = szDir;
-		szTest += KVI_PATH_SEPARATOR_CHAR;
-		szTest += *it;
-
 		KviThemeInfo * inf = new KviThemeInfo();
-		if(inf->loadFromDirectory(szTest))
+		if(inf->load(slThemes.at(i),bBuiltin))
 		{
-			inf->setSubdirectory(*it);
+			inf->setSubdirectory(slThemes.at(i));
 			new ThemeListWidgetItem(m_pListWidget,inf);
 		} else {
 			delete inf;
@@ -392,11 +414,8 @@ void ThemeManagementDialog::fillThemeBox()
 {
 	m_pListWidget->clear();
 
-	QString szDir;
-	g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Themes);
-	fillThemeBox(szDir);
-	g_pApp->getLocalKvircDirectory(szDir,KviApplication::Themes);
-	fillThemeBox(szDir);
+	fillThemeBox(BUILTIN_THEMES);
+	fillThemeBox(USER_DEFINED_THEMES);
 
 	enableDisableButtons();
 }

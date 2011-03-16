@@ -80,12 +80,14 @@ protected:
 	bool queryResultsCount(KviKvsObjectFunctionCall *c);
 
 	bool attributeNames(KviKvsObjectFunctionCall *c);
+	bool setLinkDelegationPolicy(KviKvsObjectFunctionCall *c);
 	bool setAttribute(KviKvsObjectFunctionCall *c);
 	bool setWebSetting(KviKvsObjectFunctionCall *c);
 	bool attribute(KviKvsObjectFunctionCall *c);
 	bool frames(KviKvsObjectFunctionCall *c);
 
 	bool loadStartedEvent(KviKvsObjectFunctionCall *c);
+	bool linkClickedEvent(KviKvsObjectFunctionCall *c);
 	bool loadFinishedEvent(KviKvsObjectFunctionCall *c);
 	bool loadProgressEvent(KviKvsObjectFunctionCall *c);
 	bool downloadCompletedEvent(KviKvsObjectFunctionCall *c);
@@ -96,6 +98,8 @@ protected slots:
 	void slotLoadProgress(int);
 	void slotLoadStarted();
 	void slotDownloadRequest(const QNetworkRequest &);
+	void slotLinkClicked(const QUrl &);
+
 };
 class KviKvsDownloadHandler :  public QObject
 {

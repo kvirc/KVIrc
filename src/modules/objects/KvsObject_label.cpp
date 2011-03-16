@@ -6,7 +6,7 @@
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
-//
+//LinkDelegationPolicy
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2

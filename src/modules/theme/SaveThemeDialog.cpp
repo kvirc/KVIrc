@@ -64,6 +64,9 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	setWindowTitle(__tr2qs_ctx("Save Current Theme - KVIrc","theme"));
 	setMinimumSize(400,350);
 
+	KviThemeInfo info;
+	info.load(KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+
 	// welcome page ==================================================================================
 	QWidget * pPage = new QWidget(this);
 	QGridLayout * pLayout = new QGridLayout(pPage);
@@ -104,7 +107,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pThemeNameEdit = new QLineEdit(pPage);
-	//m_pThemeNameEdit->setText(szThemeName);
+	m_pThemeNameEdit->setText(info.name());
 	pLayout->addWidget(m_pThemeNameEdit,1,1);
 
 	pLabel = new QLabel(pPage);
@@ -112,7 +115,11 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLayout->addWidget(pLabel,2,0);
 
 	m_pThemeVersionEdit = new QLineEdit(pPage);
-	//m_pThemeVersionEdit->setText(szThemeVersion);
+	m_pThemeVersionEdit->setText(info.version());
+	QRegExp rx("(.[0-9]{1,2}){3,3}");
+	QValidator *validator = new QRegExpValidator(rx, this);
+m_pThemeVersionEdit->setValidator(validator);
+
 	pLayout->addWidget(m_pThemeVersionEdit,2,1);
 
 	pLabel = new QLabel(pPage);
@@ -120,7 +127,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pThemeDescriptionEdit = new QTextEdit(pPage);
-	//m_pThemeDescriptionEdit->setText(szThemeDescription);
+	m_pThemeDescriptionEdit->setText(info.description());
 	pLayout->addWidget(m_pThemeDescriptionEdit,3,1);
 
 	pLabel = new QLabel(pPage);
@@ -128,7 +135,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLayout->addWidget(pLabel,4,0);
 
 	m_pAuthorNameEdit = new QLineEdit(pPage);
-	//m_pAuthorNameEdit->setText(szThemeAuthor);
+	m_pAuthorNameEdit->setText(info.author());
 	pLayout->addWidget(m_pAuthorNameEdit,4,1);
 
 
@@ -272,7 +279,6 @@ bool SaveThemeDialog::saveTheme()
 		return false;
 	}
 
-	sto.setAbsoluteDirectory(szAbsDir);
 
 	if(!KviTheme::save(sto))
 	{
@@ -296,7 +302,9 @@ bool SaveThemeDialog::saveTheme()
 	}
 
 	QString szMsg = __tr2qs_ctx("Theme saved successfully to ","theme");
-	szMsg += sto.absoluteDirectory();
+	QString szThemePath;
+	sto.getCompleteDirPath(szThemePath);
+	szMsg += szThemePath;
 
 	QMessageBox::information(this,__tr2qs_ctx("Save Theme - KVIrc","theme"),szMsg,QMessageBox::Ok,
 		QMessageBox::NoButton,QMessageBox::NoButton);

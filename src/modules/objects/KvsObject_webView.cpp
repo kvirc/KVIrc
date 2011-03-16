@@ -79,16 +79,16 @@ KviKvsDownloadHandler::~KviKvsDownloadHandler()
     }
 void KviKvsDownloadHandler::slotReadyRead()
 {
-	qDebug("Slot ready read");
 	QVariant vSize=m_pReply->header(QNetworkRequest::ContentLengthHeader);
+	int iSize=0;
 	if(!vSize.isNull()){
 	    bool ok;
-	    int isize;
-	    isize=vSize.toInt(&ok);
-	    qDebug("contents %d",isize);
+	    iSize=vSize.toInt(&ok);
 	}
+
 	QByteArray bytes=m_pReply->readAll();
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)bytes.count()),new KviKvsVariant((kvs_int_t)m_Id));
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)bytes.count()),\
+				 new KviKvsVariant((kvs_int_t)m_Id),new KviKvsVariant((kvs_int_t)iSize));
 	m_pParentScript->callFunction(m_pParentScript,"downloadProgressEvent",&params);
 	m_pFile->write(bytes);
 }
@@ -116,6 +116,7 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 	QWebSettings::ZoomTextOnly
 #if (QT_VERSION >= 0x040700)
 	,
+#if (QT_VERSION >= 0x040700)
 	QWebSettings::LocalContentCanAccessFileUrls
 #endif
 };
@@ -166,10 +167,12 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeFromDocument)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeClass)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,classes)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setLinkDelegationPolicy)
+
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,linkClickedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadProgressEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadStartedEvent)
-
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadCompletedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadRequestEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadProgressEvent)
@@ -196,6 +199,7 @@ bool KvsObject_webView::init(KviKvsRunTimeContext *c ,KviKvsVariantList *)
     connect(((QWebView *)widget()),SIGNAL(loadStarted()),this,SLOT(slotLoadStarted()));
     connect(((QWebView *)widget()),SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
     connect(((QWebView *)widget()),SIGNAL(loadProgress(int)),this,SLOT(slotLoadProgress(int)));
+    connect(pPage,SIGNAL(linkClicked(const QUrl &)),this,SLOT(slotLinkClicked(const QUrl &)));
     connect(pPage,SIGNAL(downloadRequested(const QNetworkRequest &)),this,SLOT(slotDownloadRequest(const QNetworkRequest &)));
     return true;
 }
@@ -215,6 +219,22 @@ void KvsObject_webView::getFrames(QWebFrame *pFrame,KviKvsArray *pArray, kvs_uin
 	    uIdx++;
 	}
     }
+}
+
+KVSO_CLASS_FUNCTION(webView,setLinkDelegationPolicy)
+{
+    CHECK_INTERNAL_POINTER(widget())
+    QString szPolicy;
+    KVSO_PARAMETERS_BEGIN(c)
+    	KVSO_PARAMETER("policy",KVS_PT_STRING,0,szPolicy)
+    KVSO_PARAMETERS_END(c)
+    QWebPage::LinkDelegationPolicy policy = QWebPage::DontDelegateLinks;
+    if(KviQString::equalCI(szPolicy,"DontDelegateLinks")) policy=QWebPage::DontDelegateLinks;
+    else if(KviQString::equalCI(szPolicy,"DelegateExternalLinks")) policy=QWebPage::DelegateExternalLinks;
+    else if(KviQString::equalCI(szPolicy,"DelegateAllLinks")) policy=QWebPage::DelegateAllLinks;
+    else c->warning(__tr2qs_ctx("Unknown delegation policy '%Q'- Switch do default dontDeleGateLinks","objects"),&szPolicy);
+    ((QWebView *)widget())->page()->setLinkDelegationPolicy(policy);
+    return true;
 }
 
 KVSO_CLASS_FUNCTION(webView,load)
@@ -557,6 +577,11 @@ KVSO_CLASS_FUNCTION(webView,downloadProgressEvent)
 	emitSignal("downloadProgress",c,c->params());
 	return true;
 }
+KVSO_CLASS_FUNCTION(webView,linkClickedEvent)
+{
+	emitSignal("linkClicked",c,c->params());
+	return true;
+}
 KVSO_CLASS_FUNCTION(webView,downloadRequestEvent)
 {
 	emitSignal("downloadRequest",c,c->params());
@@ -582,6 +607,12 @@ void KvsObject_webView::slotLoadProgress(int iProgress)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t) iProgress));
 	callFunction(this,"loadProgressEvent" ,&params);
+}
+void KvsObject_webView::slotLinkClicked(const QUrl &url)
+{
+	QString szUrl=url.toString();
+	qDebug("Link clicked %s",szUrl.toUtf8().data());
+
 }
 void KvsObject_webView::slotDownloadRequest(const QNetworkRequest &r)
 {

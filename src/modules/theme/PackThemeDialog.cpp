@@ -533,8 +533,9 @@ bool PackThemeDialog::packTheme()
 			bufferz.close();
 			f.addInfoField(szTmp,pba);
 		}
-
-		if(!f.addDirectory(pInfo->absoluteDirectory(),pInfo->subdirectory()))
+		QString szThemePath;
+		pInfo->getCompleteDirPath(szThemePath);
+		if(!f.addDirectory(szThemePath,pInfo->subdirectory()))
 		{
 			szTmp = __tr2qs_ctx("Packaging failed","theme");
 			szTmp += ": ";

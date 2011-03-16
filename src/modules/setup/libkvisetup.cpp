@@ -86,17 +86,14 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		// #define KVI_DEFAULT_AWAY_MESSAGE "I'm off to see the wizard."
 
 		// Apply the chosen default theme
-		QString szDir;
 		KviThemeInfo out;
 		switch(g_iThemeToApply)
 		{
 			case THEME_APPLY_HIRES:
-				g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Themes,"YellowIRC-1.0.0");
-				KviTheme::load(szDir,out);
+				KviTheme::load("YellowIRC-1.0.0",out,BUILTIN);
 			break;
 			case THEME_APPLY_LORES:
-				g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Themes,"MinimalDark-1.0.0");
-				KviTheme::load(szDir,out);
+				KviTheme::load("MinimalDark-1.0.0",out,BUILTIN);
 			break;
 			// default: no theme
 		}

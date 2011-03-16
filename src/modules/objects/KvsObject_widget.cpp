@@ -478,6 +478,7 @@ const char * const widgettypes_tbl[] = {
 		- . [br]
 		- ^ [br]
 
+
 		[/pre]
 		!fn: $mapFromGlobal(<x>,<y>)
 		Translates the global screen coordinate pos to widget coordinates.
