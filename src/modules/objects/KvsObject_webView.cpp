@@ -116,7 +116,6 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 	QWebSettings::ZoomTextOnly
 #if (QT_VERSION >= 0x040700)
 	,
-#if (QT_VERSION >= 0x040700)
 	QWebSettings::LocalContentCanAccessFileUrls
 #endif
 };
