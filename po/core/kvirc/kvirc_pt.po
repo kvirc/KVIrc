@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-03-16 04:28+0000\n"
+"PO-Revision-Date: 2011-03-16 05:03+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -346,11 +346,11 @@ msgstr "%c\r!n\r%Q\r%c era %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1502
 msgid "%c\r!n\r%Q\r%c's actual host: %Q"
-msgstr "%c\r!n\r%Q\r%c endereço actual: %Q"
+msgstr "%c\r!n\r%Q\r%c máquina actual: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1498
 msgid "%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"
-msgstr "%c\r!n\r%Q\r%c utilizador@endereço actual: %Q, ip actual: %Q"
+msgstr "%c\r!n\r%Q\r%c utilizador@máquina actual: %Q, ip actual: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1323
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
@@ -1782,8 +1782,8 @@ msgstr "Não é possível ler dados do ficheiro"
 #: src/kvirc/kernel/KviIrcConnection.cpp:944
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr ""
-"Não é possível resolver o endereço da máquina local: a usar o predefinido 127."
-"0.0.1"
+"Não é possível resolver o endereço da máquina local: a usar a predefinição "
+"127.0.0.1"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:937
 msgid "Can't resolve local host address, using user supplied one (%Q)"
@@ -2832,7 +2832,8 @@ msgstr "Duplo clique para editar..."
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
-"Duplo clique para procurar este endereço<br>Clique direito para outras opções"
+"Duplo clique para localizar o nome desta máquina<br>Clique direito para "
+"outras opções"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:845
 msgid "Double-click to open this link"
@@ -3175,7 +3176,7 @@ msgstr "Falha ao iniciar a conexão: %Q"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:87
 msgid "Failed to start the host lookup"
-msgstr "Falha ao iniciar a procura da máquina"
+msgstr "Falha ao iniciar a localização da máquina"
 
 #: src/modules/mircimport/libkvimircimport.cpp:226
 msgid "Failed to start the server list transfer :("
@@ -3469,8 +3470,8 @@ msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
 msgstr ""
-"Aqui vai o seu\"bouncer hack danificado\": o servidor mudou o nome do "
-"endereço mas irei ignorar a mudança do endereço IP"
+"Aqui vai o seu\"bouncer hack danificado\": o servidor mudou o nome da "
+"máquina mas irei ignorar a mudança do endereço IP"
 
 #: src/kvirc/ui/KviCryptController.cpp:112
 #: src/kvirc/ui/KviCryptController.cpp:124
@@ -3479,7 +3480,7 @@ msgstr "Hex"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:161
 msgid "Hey man... do something!"
-msgstr "Hei meu... fal amguma coisa!"
+msgstr "Hei meu... diz alguma coisa!"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:171
 msgid "Hey... are ya sure that your network is up?"
@@ -3487,7 +3488,7 @@ msgstr "Hei... tens certeza que a rede está ligada?"
 
 #: src/kvirc/ui/KviIrcView.cpp:2067
 msgid "Hide Find Window"
-msgstr "Ocultar Janela de Procura"
+msgstr "Esconder Janela de Pesquisa"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:453
@@ -3496,11 +3497,11 @@ msgstr "Esconder mensagens de SAÍDA E PARTIDA"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:293
 msgid "Hide Window"
-msgstr "Ocultar Janela"
+msgstr "Esconder Janela"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:106
 msgid "Hide/Show"
-msgstr "Mostrar/Ocultar"
+msgstr "Mostrar/Esconder"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1076
 msgid "High activity"
@@ -3537,27 +3538,27 @@ msgstr "Viragem Horizontalmente"
 
 #: src/kvilib/net/KviHttpRequest.cpp:1003
 msgid "Host %1 resolved to %2"
-msgstr "Endereço %1 resolvido para %2"
+msgstr "Máquina %1 resolvida para %2"
 
 #: src/kvirc/kernel/KviOptions.cpp:737
 msgid "Host lookup result"
-msgstr "Resultado da procura do endereço"
+msgstr "Resultado de localização da máquina"
 
 #: src/kvilib/core/KviError.cpp:84
 msgid "Host not found"
-msgstr "Endereço não encontrado"
+msgstr "Máquina não encontrada"
 
 #: src/kvilib/core/KviError.cpp:158
 msgid "Host unreachable (no route to host)"
-msgstr "Endereço inalcançável (no route to host)"
+msgstr "Máquina inalcançável (sem rota para a máquina)"
 
 #: src/kvirc/ui/KviStatusBar.cpp:571
 msgid "Hostname"
-msgstr "Nome do endereço"
+msgstr "Nome da máquina"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:146
 msgid "Hostname resolution aborted"
-msgstr "Resolução do nome do endereço abortada"
+msgstr "Resolução do nome da máquina abortada"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:160
 #: src/kvilib/ext/avdevice/videodevice.cpp:3071
@@ -3566,7 +3567,7 @@ msgstr "Tonalidade"
 
 #: src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
-msgstr "Não consigo abrir aquele ficheiro"
+msgstr "Não é possível abrir o ficheiro"
 
 #: src/kvirc/kernel/KviOptions.cpp:961
 msgid ""
@@ -3650,7 +3651,7 @@ msgstr "Identd a aceitar conexão"
 
 #: src/modules/ident/libkviident.cpp:451
 msgid "Identd connection closed by remote host"
-msgstr "Conexão do identd fechada por endereço remoto"
+msgstr "Conexão identd fechada por máquina remota"
 
 #: src/modules/ident/libkviident.cpp:472
 msgid "Identd processing request"
@@ -4244,11 +4245,11 @@ msgstr "IP Local"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:950
 msgid "Local host address is %Q"
-msgstr "Endereço local é %Q"
+msgstr "O endereço da máquina local é %Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1100
 msgid "Local hostname as seen by the IRC server resolved to %Q"
-msgstr "Nome de endereço local como visto pelo servidor IRC resolvido para %Q"
+msgstr "Nome da máquina local como visto pelo servidor IRC resolvido para %Q"
 
 #: src/modules/setup/SetupWizard.cpp:403
 msgid "Location:"
@@ -4273,15 +4274,15 @@ msgstr "Operações de autenticação terminadas"
 
 #: src/kvilib/net/KviHttpRequest.cpp:988
 msgid "Looking up host %1"
-msgstr "A localizar endereço %1"
+msgstr "A localizar máquina %1"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:194
 msgid "Looking up host %Q..."
-msgstr "A localizar o endereço %Q..."
+msgstr "A localizar máquina %Q..."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1075
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
-msgstr "A localizar o nome do endereço local como visto pelo servidor IRC (%Q)"
+msgstr "A localizar o nome da máquina local como visto pelo servidor IRC (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:251
 #, c-format
@@ -4291,7 +4292,7 @@ msgstr "A localizar o nome da máquina 'proxy' (%s)..."
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:350
 #, c-format
 msgid "Looking up the server hostname (%s)..."
-msgstr "A localizar o servidor (%s)..."
+msgstr "A localizar o nome da máquina do servidor (%s)..."
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3077
 msgid "Loudness"
@@ -4347,7 +4348,7 @@ msgstr "Hops máximo: %d [%s]"
 #: src/modules/links/LinksWindow.cpp:293
 #, c-format
 msgid "Maximum links per host: %d [%s]"
-msgstr "Máximo de ligações por endereço: %d [%s]"
+msgstr "Máximo de ligações por máquina: %d [%s]"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:651
 #, c-format
@@ -4740,7 +4741,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:72
 msgid "No host to resolve"
-msgstr "Nenhum endereço para resolver"
+msgstr "Nenhuma máquina para resolver"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1680
 msgid "No matches"
@@ -4752,7 +4753,7 @@ msgstr "Sem mensagens com múltiplos destinos"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:516
 msgid "No proxy hosts available, resuming direct connection"
-msgstr "Nenhum máquina proxy disponível, a resumir a conexão directa"
+msgstr "Nenhum máquina proxy disponível, a resumir conexão directa"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:532
 msgid "No public key certificate defined in KVIrc options."
@@ -5713,7 +5714,7 @@ msgstr "A ler pacote..."
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:417
 msgid "Real hostname for %Q is %Q"
-msgstr "O endereço real de %Q é %Q"
+msgstr "O nome da máquina real de %Q é %Q"
 
 #: src/modules/setup/SetupWizard.cpp:350
 msgid "Real name:"
@@ -6184,7 +6185,7 @@ msgstr "O servidor tem os endereços IP %d,use o primeiro"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:407
 msgid "Server hostname resolved to %Q"
-msgstr "Nome de endereço do servidor resolvido para %Q"
+msgstr "Nome da máquina do servidor resolvido para %Q"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1267
 msgid "Server idle for"
@@ -7318,11 +7319,11 @@ msgstr "Tópico foi posto por %Q em %Q"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts in the network"
-msgstr "Total de endereços na rede"
+msgstr "Total de máquinas na rede"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts listed"
-msgstr "total de endereços listado"
+msgstr "Total de máquinas listadas"
 
 #: src/modules/links/LinksWindow.cpp:294
 #, c-format
@@ -7412,7 +7413,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView_events.cpp:867
 msgid "Unable to look it up hostname: Unknown host"
-msgstr "Não se encontrou o nome do endereço: endereço desconhecido"
+msgstr "Não é possível encontrar o nome da máquina: máquina desconhecida"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:240
 msgid "Unable to look up the IRC proxy hostname: Can't start the DNS slave"
@@ -7541,7 +7542,7 @@ msgstr "Função desconhecida"
 
 #: src/kvilib/core/KviError.cpp:80
 msgid "Unknown node (host not found)"
-msgstr "Nó desconhecido (endereço não encontrado)"
+msgstr "Nó desconhecido (máquina não encontrada)"
 
 #: src/kvilib/core/KviError.cpp:71
 msgid "Unknown operator"
@@ -8593,7 +8594,7 @@ msgstr "lista de administradores/protegida"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:387
 msgid "proxy host"
-msgstr "máquina do 'proxy'"
+msgstr "máquina 'proxy'"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1172
 msgid "queries"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-03-13 22:44+0000\n"
+"PO-Revision-Date: 2011-03-16 05:07+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -666,7 +666,7 @@ msgstr ""
 "<center>Esta marca irá activar o <b>endereço IP em caixa</b> para este "
 "servidor: as procuras de DNS podem consumir muito tempo e podem estar a "
 "bloquear em algumas plataformas; esta opção irá fazer com que o KVIrc "
-"procure o nome do endereço do servidor apenas uma vez.<br><br>Avançado: "
+"procure o nome da máquina do servidor apenas uma vez.<br><br>Avançado: "
 "também pode usar esta opção para forçar um certo nome de servidor para "
 "resolver para um endereço IP fixo quando também o dns para esse servidor "
 "estiver temporariamente indisponível ou quiser evitar uma procura demorada.</"
@@ -690,7 +690,7 @@ msgstr ""
 "<center>Este campo permite-lhe indicar um id realmente único para este "
 "servidor. Poderá então usar /server -x &lt;este_id&gt; para efectuar a "
 "conexão. Isto é especialmente útil quando tem várias entradas de servidores "
-"com o mesmo nome de endereço e o porto em diferentes redes (bouncers?)</"
+"com o mesmo nome de máquina e porta em diferentes redes (bouncers?)</"
 "center>"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:116
@@ -866,7 +866,7 @@ msgstr ""
 "<center>Este é o <b>nome de utilizador</b> que irá usar para se conectar ao "
 "servidor. No passado, usava-se como forma de autenticação, mas agora já não "
 "tem qualquer uso específico.<br>Em relação à sua alcunha, é identificada no "
-"IRC pelo seu<b>nome_de_utilizador@máquina</b>.</br>Basicamente, aqui pode "
+"IRC pelo seu<b>utilizador@máquina</b>.</br>Basicamente, aqui pode "
 "indicar uma palavra qualquer. :D</center>"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:68
@@ -1627,11 +1627,11 @@ msgid ""
 msgstr ""
 "<center>Pode activar esta opção se está atrás de um router que envia tudo ou "
 "um intervalo de portas.<br>O KVIrc irá tentar adivinhar o endereço IP a usar "
-"para DCC ao procurar o nome do servidor local como visto pelo servidor IRC "
+"para DCC ao localizar o nome da máquina local como visto pelo servidor IRC "
 "onde está conectado.<br>Este método é uma alternativa exclusiva ao "
 "\"endereço fixo\" indicado.<br>Pode adivinhar automaticamente o endereço "
 "correcto se se verificarem certas condições(por ex: o servidor IRC não "
-"máscara os nomes dos servidores).</center>"
+"máscara os nomes das máquinas).</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:171
 msgid ""
@@ -2876,7 +2876,7 @@ msgstr "Alinhamento horizontal:"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:164
 msgid "Host links"
-msgstr "Ligações de máquinas"
+msgstr "Ligações das máquinas"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:51
 msgid "How many click to open links?"
@@ -4222,7 +4222,7 @@ msgstr "Mostrar marcação horária"
 
 #: src/modules/options/OptionsWidget_message.cpp:93
 msgid "Show user and host"
-msgstr "Mostrar utilizador e endereço"
+msgstr "Mostrar utilizador e máquina"
 
 #: src/modules/options/OptionsWidget_userList.cpp:234
 msgid "Show user channel activity indicator"
@@ -5020,7 +5020,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:97
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
-msgstr "[PREFIXO]alcunha[!utilizador@endereço][SUFIXO] mensagem"
+msgstr "[PREFIXO]alcunha[!utilizador@máquina][SUFIXO] mensagem"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:183
 msgid "[Unknown Media Type]"
