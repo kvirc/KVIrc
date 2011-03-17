@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-03-14 01:07+0000\n"
+"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"PO-Revision-Date: 2011-03-17 05:04+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -316,8 +316,7 @@ msgstr "Seleccione o directório fonte:"
 msgid "Show Help"
 msgstr "Mostrar Ajuda"
 
-#: src/modules/addon/libkviaddon.cpp:692
-#: src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr "A saltar a entrada inexistente '%1'"
 
@@ -329,12 +328,9 @@ msgstr "A saltar a entrada inválida '%1'"
 msgid "Source Directory"
 msgstr "Directório Fonte"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "O extra \"%1\" não existe"
 
@@ -423,8 +419,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Total: %d extras instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "A desinstalar a versão do extra existente %Q"
 
@@ -453,8 +448,8 @@ msgid ""
 "You will be asked to provide some information like the package name, the "
 "version, a description and so on."
 msgstr ""
-"Será-lhe pedido para indicar alguma informação como o nome do pacote, a "
-"versão, a descrição e por ai adiante."
+"Será-lhe pedido que indique alguma informação como o nome do pacote, "
+"a versão, a descrição e por ai fora."
 
 #: src/modules/addon/AddonFunctions.cpp:181
 msgid "You're about to install the following addon package"
@@ -462,7 +457,7 @@ msgstr "Está prestes a instalar o seguinte pacote extra"
 
 #: src/modules/addon/PackAddonDialog.cpp:412
 msgid "Your name here"
-msgstr "O seu nome aqui:"
+msgstr "O seu nome aqui"
 
 #~ msgid "Addon Engine Version"
 #~ msgstr "Versão do Motor do Extra"

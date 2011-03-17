@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-01-16 02:54+0000\n"
+"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"PO-Revision-Date: 2011-03-17 04:59+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "&Adicionar"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:181
 msgid "&Add Raw Event..."
-msgstr "&Adicionar Evento..."
+msgstr "&Adicionar Evento Directo..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1193
 #: src/modules/eventeditor/EventEditorWindow.cpp:528
@@ -104,7 +104,7 @@ msgstr "&Desactivar Manipulador"
 #: src/modules/eventeditor/EventEditorWindow.cpp:217
 #: src/modules/raweditor/RawEditorWindow.cpp:156
 msgid "&Enable Handler"
-msgstr "Activar &Manipulador"
+msgstr "&Activar Manipulador"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:104
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1047
@@ -150,7 +150,7 @@ msgstr "&Abrir..."
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:436
 msgid "&Paste Below"
-msgstr "&Colar em Baixo"
+msgstr "&Colar Abaixo"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2080
 msgid "&Rename"
@@ -183,8 +183,8 @@ msgid ""
 "order to decide if this entry has to be shown.<br>An empty condition "
 "evaluates to true.</center>"
 msgstr ""
-"<center><b>Condição 'boolean'</b><br>Será avaliada na hora de chamada do "
-"'popup' para decidir se esta entrada deve ser mostrada.<br>Uma condição "
+"<center><b>Condição booliana</b><br>Será avaliada ao chamar o menu "
+"(popup), para decidir se esta entrada deve ser mostrada.<br>Uma condição "
 "vazia avalia para verdadeiro.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
@@ -193,9 +193,9 @@ msgid ""
 "popup menus. The popup menu with the specified name will be looked up at "
 "menu setup time.</center>"
 msgstr ""
-"<center><b>Nome do menu externo</b><br>Isto permite juntar externamente "
-"menus 'popup' definidos. O menu 'popup' com o nome indicado será procurado "
-"na hora de configuração do menu.</center>"
+"<center><b>Nome de menu externo</b><br>Isto permite juntar os menus "
+"'popup' definidos externamente. O menu 'popup' com o nome indicado será "
+"procurado quando configurar o menu.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:252
 msgid ""
@@ -204,7 +204,7 @@ msgid ""
 "</center>"
 msgstr ""
 "<center><b>Identificador de ícone</b><br>Pode ser um ID de ícone interno, um "
-"caminho absoluto ou um caminho relativo.<br>Os 'scripts' portáteis nunca "
+"caminho absoluto ou um caminho relativo.<br>Os 'scripts' portáveis nunca "
 "devem usar caminhos absolutos"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:271
@@ -222,8 +222,8 @@ msgid ""
 "limited HTML tags.</center>"
 msgstr ""
 "<center><b>Texto visível</b><br>Pode conter identificadores que serão "
-"avaliados na hora de chamada do 'popup'.<br>Para os rótulos, este texto pode "
-"conter também marcas HTML.</center>"
+"avaliados quando chamar o 'popup'.<br>Para os rótulos, este texto pode "
+"conter também marcas HTML limitadas.</center>"
 
 #: src/modules/actioneditor/ActionEditor.cpp:591
 msgid "Action"
@@ -255,7 +255,7 @@ msgstr "Adicionar Função Membro"
 #: src/modules/classeditor/ClassEditorWindow.cpp:885
 #: src/modules/classeditor/ClassEditorWindow.cpp:1577
 msgid "Add Namespace"
-msgstr "Adicionar Nome de espaço"
+msgstr "Adicionar Nome de Espaço"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
@@ -330,7 +330,7 @@ msgstr "Nome de Alias Inválido"
 #: src/modules/classeditor/ClassEditorWindow.cpp:1514
 #: src/modules/classeditor/ClassEditorWindow.cpp:1525
 msgid "Bad Namespace Name"
-msgstr "Nome do Nomedeespaço inválido"
+msgstr "Nome de Nomedeespaço inválido"
 
 #: src/modules/actioneditor/ActionEditor.cpp:161
 msgid "Big Icon:"
@@ -471,7 +471,7 @@ msgstr "A classe já existe"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1915
 msgid "Class names can contain only letters, digits and underscores"
-msgstr "Os nomes das classes podem conter apenas letras, dígitos e sublinhado"
+msgstr "Os nomes de classes podem conter apenas letras, dígitos e sublinhado"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1840
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
@@ -512,7 +512,7 @@ msgstr "Confirmar Remoção de Barra de Ferramentas"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:255
 msgid "Context sensitive help"
-msgstr "Contexto de ajuda sensitivo"
+msgstr "Ajuda sensível ao contexto"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:426
 msgid "Cu&t"
@@ -673,11 +673,11 @@ msgstr "Procurar e Substituir"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:642
 msgid "Find In Aliases"
-msgstr "Procurar nas Aliases"
+msgstr "Procurar nas Alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:606
 msgid "Find In Aliases..."
-msgstr "Procurar nas Aliases..."
+msgstr "Procurar nas Alias..."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:996
 msgid "Find In Classes"
@@ -801,7 +801,7 @@ msgstr "Nome da Alias em Falta"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1060
 #: src/modules/classeditor/ClassEditorWindow.cpp:1487
 msgid "Missing Namespace Name"
-msgstr "Nome de Nomedeespaço em Falta"
+msgstr "Nome do Nomedeespaço em Falta"
 
 #: src/modules/actioneditor/ActionEditor.cpp:773
 #: src/modules/actioneditor/ActionEditor.cpp:774
@@ -839,7 +839,7 @@ msgid ""
 "namespace separators"
 msgstr ""
 "Os nomes dos nomesdeespaços podem conter apenas letras, dígitos, sublinhado "
-"e separadores '::' de nomesdeespaços"
+"e separadores de nomesdeespaços '::'"
 
 #: src/modules/actioneditor/ActionEditor.cpp:216
 msgid "Needs IRC Connection"
@@ -855,11 +855,11 @@ msgstr "Nova Acção"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:417
 msgid "New External Menu Above"
-msgstr "Novo Menu Externo em Cima"
+msgstr "Novo Menu Externo Acima"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:415
 msgid "New External Menu Below"
-msgstr "Novo Menu Externo em Baixo"
+msgstr "Novo Menu Externo Abaixo"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:419
 msgid "New External Menu Inside"
@@ -867,11 +867,11 @@ msgstr "Novo Menu Externo Dentro"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:401
 msgid "New Item Above"
-msgstr "Novo Item em Baixo"
+msgstr "Novo Item Acima"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:399
 msgid "New Item Below"
-msgstr "Novo Item em Baixo"
+msgstr "Novo Item Abaixo"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:403
 msgid "New Item Inside"
@@ -891,11 +891,11 @@ msgstr "Novo Rótulo Dentro"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:409
 msgid "New Menu Above"
-msgstr "Novo Menu em Cima"
+msgstr "Novo Menu Acima"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:407
 msgid "New Menu Below"
-msgstr "Novo Menu em Baixo"
+msgstr "Novo Menu Abaixo"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:463
 msgid "New Menu Epilogue"
@@ -915,11 +915,11 @@ msgstr "Novo Evento"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:385
 msgid "New Separator Above"
-msgstr "Novo Separador em Cima"
+msgstr "Novo Separador Acima"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:383
 msgid "New Separator Below"
-msgstr "Novo Separador em Baixo"
+msgstr "Novo Separador Abaixo"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:387
 msgid "New Separator Inside"
@@ -999,7 +999,7 @@ msgstr "Apenas Se Existirem Utilizadores Seleccionados"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1021
 msgid "Open Failed - KVIrc"
-msgstr "Falha ao Abrir - KVIrc"
+msgstr "Abertura Falhada - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:183
 msgid ""
@@ -1025,7 +1025,7 @@ msgstr "Substituir Menu Actual"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Paste Above"
-msgstr "Colar em Cima"
+msgstr "Colar Acima"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:445
 msgid "Paste Inside"

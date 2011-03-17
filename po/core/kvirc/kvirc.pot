@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 00:46+0000\n"
+"POT-Creation-Date: 2011-03-17 04:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,7 +157,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/tip/libkvitip.cpp:88
-#: src/modules/theme/ThemeManagementDialog.cpp:194
+#: src/modules/theme/ThemeManagementDialog.cpp:205
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:119
 #: src/kvirc/ui/KviCtcpPageDialog.cpp:59
 #: src/kvirc/ui/KviModeEditor.cpp:240
@@ -271,7 +271,7 @@ msgstr ""
 msgid "Show I/O &Traffic graph"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:571
+#: src/modules/theme/PackThemeDialog.cpp:572
 msgid "Package saved successfully"
 msgstr ""
 
@@ -521,7 +521,7 @@ msgid "Slow-paste ID:%d Window:%Q"
 msgstr ""
 
 #: src/modules/upnp/RootService.cpp:172
-#: src/kvirc/kernel/KviTheme.cpp:86
+#: src/kvirc/kernel/KviTheme.cpp:110
 #: src/kvirc/ui/KviTopicWidget.cpp:158
 #: src/kvilib/net/KviSSL.cpp:757
 #: src/kvilib/net/KviSSL.cpp:787
@@ -1496,133 +1496,133 @@ msgstr ""
 msgid "Help Browser"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:90
+#: src/modules/trayicon/libkvitrayicon.cpp:91
 msgid "<b>KVIrc</b>"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:94
+#: src/modules/trayicon/libkvitrayicon.cpp:95
 msgid "Context"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:97
+#: src/modules/trayicon/libkvitrayicon.cpp:98
 #: src/kvirc/ui/KviStatusBar.cpp:583
 msgid "Away"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:99
+#: src/modules/trayicon/libkvitrayicon.cpp:100
 msgid "&Configure KVIrc..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:102
+#: src/modules/trayicon/libkvitrayicon.cpp:103
 msgid "&About KVIrc"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:106
+#: src/modules/trayicon/libkvitrayicon.cpp:107
 msgid "Hide/Show"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:110
+#: src/modules/trayicon/libkvitrayicon.cpp:111
 msgid "Un&dock"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:113
+#: src/modules/trayicon/libkvitrayicon.cpp:114
 #: src/kvirc/ui/KviMenuBar.cpp:241
 msgid "&Quit"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:158
+#: src/modules/trayicon/libkvitrayicon.cpp:159
 msgid "Nothing is happening..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:159
+#: src/modules/trayicon/libkvitrayicon.cpp:160
 msgid "Just idling..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:160
+#: src/modules/trayicon/libkvitrayicon.cpp:161
 msgid "Dum de dum de dum..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:161
+#: src/modules/trayicon/libkvitrayicon.cpp:162
 msgid "Hey man... do something!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:162
+#: src/modules/trayicon/libkvitrayicon.cpp:163
 msgid "Umpf!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:163
+#: src/modules/trayicon/libkvitrayicon.cpp:164
 msgid "Silence speaking"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:164
+#: src/modules/trayicon/libkvitrayicon.cpp:165
 msgid "Are ya here?"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:165
+#: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "The world has stopped?"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:166
+#: src/modules/trayicon/libkvitrayicon.cpp:167
 msgid "Everything is all right"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:167
+#: src/modules/trayicon/libkvitrayicon.cpp:168
 msgid "idle()"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:168
+#: src/modules/trayicon/libkvitrayicon.cpp:169
 msgid "It's so cold here..."
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:169
+#: src/modules/trayicon/libkvitrayicon.cpp:170
 msgid "Do not disturb... watching TV"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:170
+#: src/modules/trayicon/libkvitrayicon.cpp:171
 msgid "Just vegetating"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:171
+#: src/modules/trayicon/libkvitrayicon.cpp:172
 msgid "Hey... are ya sure that your network is up?"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:172
+#: src/modules/trayicon/libkvitrayicon.cpp:173
 msgid "Seems like the world has stopped spinning"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:173
+#: src/modules/trayicon/libkvitrayicon.cpp:174
 msgid "This silence is freaking me out!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:174
+#: src/modules/trayicon/libkvitrayicon.cpp:175
 msgid "Mieeeeeowww!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:175
+#: src/modules/trayicon/libkvitrayicon.cpp:176
 msgid "idle idle idle idle!"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:293
+#: src/modules/trayicon/libkvitrayicon.cpp:294
 msgid "Hide Window"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:293
+#: src/modules/trayicon/libkvitrayicon.cpp:294
 msgid "Show Window"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:299
+#: src/modules/trayicon/libkvitrayicon.cpp:300
 msgid "Away on all"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:302
+#: src/modules/trayicon/libkvitrayicon.cpp:303
 msgid "Back on all"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:321
+#: src/modules/trayicon/libkvitrayicon.cpp:322
 msgid "Back on %1"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:325
+#: src/modules/trayicon/libkvitrayicon.cpp:326
 msgid "Away on %1"
 msgstr ""
 
@@ -2753,64 +2753,64 @@ msgid ""
 "before continue, or any custom configuration will be lost."
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1028
+#: src/kvirc/kernel/KviOptions.cpp:1029
 msgid "Missing absolute directory for the theme information"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1036
+#: src/kvirc/kernel/KviOptions.cpp:1037
 msgid "Failed to create the theme directory"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1119
-#: src/kvirc/kernel/KviOptions.cpp:1154
+#: src/kvirc/kernel/KviOptions.cpp:1112
+#: src/kvirc/kernel/KviOptions.cpp:1143
 msgid "Failed to save one of the theme images"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1132
+#: src/kvirc/kernel/KviOptions.cpp:1122
 msgid "Failed to create the theme subdirectory"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1271
+#: src/kvirc/kernel/KviOptions.cpp:1260
 msgid "Boolean options (1/0)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1272
+#: src/kvirc/kernel/KviOptions.cpp:1261
 msgid "Rectangle options (x,y,width,height)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1273
+#: src/kvirc/kernel/KviOptions.cpp:1262
 msgid "String options (string value)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1274
+#: src/kvirc/kernel/KviOptions.cpp:1263
 msgid "Color options (#RRGGBB)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1275
+#: src/kvirc/kernel/KviOptions.cpp:1264
 msgid "Mirccolor options (#RRGGBB)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1276
+#: src/kvirc/kernel/KviOptions.cpp:1265
 msgid "Irc context color options (#RRGGBB)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1277
+#: src/kvirc/kernel/KviOptions.cpp:1266
 msgid "Pixmap options (image path)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1278
+#: src/kvirc/kernel/KviOptions.cpp:1267
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1279
+#: src/kvirc/kernel/KviOptions.cpp:1268
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1280
+#: src/kvirc/kernel/KviOptions.cpp:1269
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr ""
 
-#: src/kvirc/kernel/KviOptions.cpp:1281
+#: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr ""
 
@@ -3690,31 +3690,35 @@ msgid ""
 "Trying to continue anyway..."
 msgstr ""
 
-#: src/kvirc/kernel/KviTheme.cpp:57
+#: src/kvirc/kernel/KviTheme.cpp:74
 msgid "The theme information file does not exist"
 msgstr ""
 
-#: src/kvirc/kernel/KviTheme.cpp:68
+#: src/kvirc/kernel/KviTheme.cpp:80
+msgid "The theme data file does not exist"
+msgstr ""
+
+#: src/kvirc/kernel/KviTheme.cpp:92
 msgid ""
 "This KVIrc executable is too old for this theme (minimum theme engine "
 "version required is %1 while this theme engine has version %2)"
 msgstr ""
 
-#: src/kvirc/kernel/KviTheme.cpp:77
+#: src/kvirc/kernel/KviTheme.cpp:101
 msgid "Theme information file is not valid"
 msgstr ""
 
-#: src/kvirc/kernel/KviTheme.cpp:244
+#: src/kvirc/kernel/KviTheme.cpp:232
 msgid "Failed to load the specified screenshot image"
 msgstr ""
 
-#: src/kvirc/kernel/KviTheme.cpp:253
+#: src/kvirc/kernel/KviTheme.cpp:242
 msgid "Invalid option"
 msgstr ""
 
-#: src/kvirc/kernel/KviTheme.cpp:261
-#: src/kvirc/kernel/KviTheme.cpp:275
-#: src/kvirc/kernel/KviTheme.cpp:289
+#: src/kvirc/kernel/KviTheme.cpp:248
+#: src/kvirc/kernel/KviTheme.cpp:259
+#: src/kvirc/kernel/KviTheme.cpp:270
 msgid "Failed to save the screenshot image"
 msgstr ""
 
