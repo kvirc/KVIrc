@@ -179,6 +179,8 @@ protected:
 	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pSrvNetLabel;
 	QLineEdit                    * m_pSrvNetEdit;
+	QLabel                       * m_pFilterLabel;
+	QLineEdit                    * m_pFilterEdit;
 	QPushButton                  * m_pDetailsButton;
 	KviTalPopupMenu              * m_pRecentPopup;
 	KviTalPopupMenu              * m_pContextPopup;
@@ -223,6 +225,7 @@ protected slots:
 	void recentServersPopupClicked(int id);
 	void importPopupActivated(int id);
 	void serverNetworkEditTextEdited(const QString &szNewText);
+	void filterTextEdited(const QString &szNewText);
 public:
 	virtual void commit();
 };

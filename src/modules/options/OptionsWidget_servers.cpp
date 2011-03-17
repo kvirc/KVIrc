@@ -1263,8 +1263,16 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pNetworkDetailsDialog = 0;
 	m_pImportFilter = 0;
 
+	m_pFilterLabel = new QLabel(__tr2qs_ctx("Filter:","options"),this);
+	addWidgetToLayout(m_pFilterLabel,0,0,0,0);
+
+	m_pFilterEdit = new QLineEdit(this);
+	connect(m_pFilterEdit,SIGNAL(textEdited(const QString &)),this,SLOT(filterTextEdited(const QString &)));
+	KviTalToolTip::add(m_pFilterEdit,__tr2qs_ctx("<center>If you are searching for a specific server or network, you can insert its name to filter the servers in the list</center>","options"));
+	addWidgetToLayout(m_pFilterEdit,1,0,1,0);
+
 	m_pTreeWidget = new QTreeWidget(this);
-	addWidgetToLayout(m_pTreeWidget,0,0,0,0);
+	addWidgetToLayout(m_pTreeWidget,0,1,1,1);
 	m_pTreeWidget->setColumnCount(2);
 	QStringList columLabels;
 	columLabels.append(__tr2qs_ctx("Server","options"));
@@ -1295,7 +1303,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	KviTalVBox * vbox = new KviTalVBox(this);
 	vbox->setSpacing(0);
-	addWidgetToLayout(vbox,1,0,1,0);
+	addWidgetToLayout(vbox,3,1,3,1);
 
 	m_pNewNetworkButton = new QToolButton(vbox);
 	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
@@ -1347,7 +1355,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
 
-	KviTalGroupBox *gbox = addGroupBox(0,1,1,1,Qt::Vertical,__tr2qs_ctx("Active Configuration","options"));
+	KviTalGroupBox *gbox = addGroupBox(0,2,3,2,Qt::Vertical,__tr2qs_ctx("Active Configuration","options"));
 	m_pSrvNetLabel = new QLabel(__tr2qs_ctx("Server:","options"),gbox);
 
 	m_pSrvNetEdit = new QLineEdit(gbox);
@@ -1376,7 +1384,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	if(parent->inherits("OptionsWidgetContainer"))
 	{
 		m_pConnectCurrent = new QPushButton(__tr2qs_ctx("Connect &Now","options"),this);
-		addWidgetToLayout(m_pConnectCurrent,0,2,1,2);
+		addWidgetToLayout(m_pConnectCurrent,0,3,3,3);
 		connect(m_pConnectCurrent,SIGNAL(clicked()),this,SLOT(connectCurrentClicked()));
 
 		QPalette pal(QColor(0,0,128));
@@ -1430,8 +1438,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	fillServerList();
 
-	layout()->setRowStretch(0,1);
-	layout()->setColumnStretch(0,1);
+	layout()->setRowStretch(1,1);
+	layout()->setColumnStretch(1,1);
 	setMinimumWidth(600);
 }
 
@@ -1573,20 +1581,35 @@ void OptionsWidget_servers::fillServerList()
 	IrcServerOptionsTreeWidgetItem * net;
 	IrcServerOptionsTreeWidgetItem * srv;
 	IrcServerOptionsTreeWidgetItem * cur = 0;
+	QString szFilter=m_pFilterEdit->text().trimmed();
+	bool bFilter=!szFilter.isEmpty();
+	bool bFilterNet=false; // true on network match, shows all the servers in this net
 
 	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
 
 	if(m_pConnectCurrent)
 		m_pConnectCurrent->setEnabled(false);
 
+	m_pTreeWidget->clear();
+
 	while(KviIrcNetwork * r = it.current())
 	{
+		if(bFilter)
+			bFilterNet=r->name().contains(szFilter, Qt::CaseInsensitive);
+
 		net = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),r);
 		KviPointerList<KviIrcServer> * sl = r->serverList();
 		bool bCurrent = r->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
 		net->setExpanded(bCurrent);
+	
 		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{
+			if(bFilter && ! bFilterNet)
+			{
+				if(!s->hostName().contains(szFilter, Qt::CaseInsensitive))
+					continue;
+			}
+
 			srv = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KviIconManager::Server)),s);
 
 			if((s == r->currentServer()) && bCurrent)
@@ -1594,6 +1617,11 @@ void OptionsWidget_servers::fillServerList()
 				srv->setSelected(true);
 				cur = srv;
 			}
+		}
+		
+		if(bFilter && !net->childCount())
+		{
+			delete net;
 		}
 		++it;
 	}
@@ -1661,6 +1689,10 @@ void OptionsWidget_servers::serverNetworkEditTextEdited(const QString &)
 		m_pTreeWidget->scrollToItem(m_pLastEditedItem,QTreeWidget::EnsureVisible);
 }
 
+void OptionsWidget_servers::filterTextEdited(const QString &)
+{
+	fillServerList();
+}
 
 void OptionsWidget_servers::saveLastItem()
 {
