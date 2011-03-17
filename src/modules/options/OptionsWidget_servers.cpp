@@ -1581,22 +1581,14 @@ void OptionsWidget_servers::fillServerList()
 	IrcServerOptionsTreeWidgetItem * net;
 	IrcServerOptionsTreeWidgetItem * srv;
 	IrcServerOptionsTreeWidgetItem * cur = 0;
-	QString szFilter=m_pFilterEdit->text().trimmed();
-	bool bFilter=!szFilter.isEmpty();
-	bool bFilterNet=false; // true on network match, shows all the servers in this net
 
 	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
 
 	if(m_pConnectCurrent)
 		m_pConnectCurrent->setEnabled(false);
 
-	m_pTreeWidget->clear();
-
 	while(KviIrcNetwork * r = it.current())
 	{
-		if(bFilter)
-			bFilterNet=r->name().contains(szFilter, Qt::CaseInsensitive);
-
 		net = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),r);
 		KviPointerList<KviIrcServer> * sl = r->serverList();
 		bool bCurrent = r->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
@@ -1604,24 +1596,12 @@ void OptionsWidget_servers::fillServerList()
 	
 		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{
-			if(bFilter && ! bFilterNet)
-			{
-				if(!s->hostName().contains(szFilter, Qt::CaseInsensitive))
-					continue;
-			}
-
 			srv = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KviIconManager::Server)),s);
-
 			if((s == r->currentServer()) && bCurrent)
 			{
 				srv->setSelected(true);
 				cur = srv;
 			}
-		}
-		
-		if(bFilter && !net->childCount())
-		{
-			delete net;
 		}
 		++it;
 	}
@@ -1691,7 +1671,45 @@ void OptionsWidget_servers::serverNetworkEditTextEdited(const QString &)
 
 void OptionsWidget_servers::filterTextEdited(const QString &)
 {
-	fillServerList();
+	QString szFilter=m_pFilterEdit->text().trimmed();
+
+	IrcServerOptionsTreeWidgetItem * network;
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+		network = (IrcServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
+		if(network->m_pNetworkData->name().contains(szFilter, Qt::CaseInsensitive) || 
+				network->m_pNetworkData->description().contains(szFilter, Qt::CaseInsensitive))
+		{
+			network->setHidden(false);
+			// if the net matches, we always show all its servers
+			IrcServerOptionsTreeWidgetItem * ch;
+			for (int j=0;j<network->childCount();j++)
+			{
+				ch=(IrcServerOptionsTreeWidgetItem *)network->child(j);
+				ch->setHidden(false);
+			}
+		} else {
+			uint uServers=0;
+			
+			IrcServerOptionsTreeWidgetItem * ch;
+			for (int j=0;j<network->childCount();j++)
+			{
+				bool bHidden=true;
+				ch=(IrcServerOptionsTreeWidgetItem *)network->child(j);
+				if(ch->m_pServerData)
+				{
+					if(ch->m_pServerData->hostName().contains(szFilter, Qt::CaseInsensitive) || 
+						ch->m_pServerData->description().contains(szFilter, Qt::CaseInsensitive))
+							bHidden=false;
+				}
+				if(!bHidden)
+					uServers++;
+				ch->setHidden(bHidden);
+			}
+			//if at list one server matches, we show its network
+			network->setHidden(!uServers);
+		}
+	}
 }
 
 void OptionsWidget_servers::saveLastItem()
@@ -1719,6 +1737,7 @@ void OptionsWidget_servers::saveLastItem()
 void OptionsWidget_servers::commit()
 {
 	saveLastItem();
+
 	g_pServerDataBase->clear();
 
 	IrcServerOptionsTreeWidgetItem * network;
