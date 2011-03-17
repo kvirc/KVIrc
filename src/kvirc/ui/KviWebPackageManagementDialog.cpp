@@ -55,12 +55,8 @@
 #include <QUrl>
 #include <QShowEvent>
 
-KviWebPackageManagementDialog::KviWebPackageManagementDialog(
-		const QString &szPackagePageUrl,
-		QWidget * pParent
-	)
-	: QWidget(pParent),
-	m_szPackagePageUrl(szPackagePageUrl)
+KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
+	: QWidget(pParent)
 {
 	setWindowIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW))));
 
@@ -101,8 +97,6 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(
 
 	// we managing the links
 	m_pWebView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
-	m_pWebView->load(QUrl(m_szPackagePageUrl));
-
 }
 
 KviWebPackageManagementDialog::~KviWebPackageManagementDialog()
@@ -113,7 +107,11 @@ KviWebPackageManagementDialog::~KviWebPackageManagementDialog()
 		delete m_pFtp;
 }
 
-
+void KviWebPackageManagementDialog::setPackagePageUrl(const QString &szUrl)
+{
+	m_szPackagePageUrl = szUrl;
+	m_pWebView->load(QUrl(m_szPackagePageUrl));
+}
 
 void KviWebPackageManagementDialog::slotLoadFinished(bool bOk)
 {

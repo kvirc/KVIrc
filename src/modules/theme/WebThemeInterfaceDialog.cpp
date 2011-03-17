@@ -37,10 +37,7 @@
 
 
 WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
-: KviWebPackageManagementDialog(
-		QString::fromAscii("http://www.kvirc.de/app/themes.php"),
-		par
-	)
+: KviWebPackageManagementDialog(par)
 {
 	setWindowTitle(__tr2qs_ctx("KVIrc Web Theme Interface","theme"));
 
@@ -52,6 +49,10 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 	g_pApp->getGlobalKvircDirectory(m_szGlobalThemesPath,KviApplication::Themes);
 	m_szGlobalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
+	setPackagePageUrl(
+			QString::fromAscii("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
+					.arg(QString::fromUtf8(KviLocale::localeName().ptr()))
+		);
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
 {

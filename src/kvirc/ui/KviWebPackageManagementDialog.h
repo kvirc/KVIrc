@@ -55,10 +55,7 @@ public:
 	///
 	/// Creates an instance of KviWebPackageManagementDialog
 	///
-	KviWebPackageManagementDialog(
-			const QString &szPackagePageUrl,
-			QWidget * pParent = NULL
-		);
+	KviWebPackageManagementDialog(QWidget * pParent = NULL);
 
 	///
 	/// Destroys the instance of KviWebPackageManagementDialog
@@ -78,6 +75,7 @@ private:
 	QString m_szPackagePageUrl;
 	QString m_szLocalTemporaryPath;
 protected:
+	void setPackagePageUrl(const QString &szUrl);
 	virtual void showEvent(QShowEvent *e);
 
 	virtual bool packageIsInstalled(const QString &szName,const QString &szVersion) = 0;
