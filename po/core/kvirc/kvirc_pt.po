@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-03-16 05:03+0000\n"
+"PO-Revision-Date: 2011-03-17 04:21+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -2945,7 +2945,7 @@ msgstr "Noticia do canal encriptada"
 
 #: src/kvirc/kernel/KviOptions.cpp:810
 msgid "Encrypted query notice"
-msgstr "Noticia de privado encriptada"
+msgstr "Noticia de consulta encriptada"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2095
 #, c-format
@@ -3713,7 +3713,7 @@ msgstr "A ignorar convite de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:776
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "A ignorar privados PRIVMSG de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "A ignorar consultas PRIVMSG de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/modules/list/ListWindow.cpp:204
 msgid "Import List"
@@ -5482,7 +5482,7 @@ msgstr "Grelha-9 Vertical do Pragma"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:276
 msgid "Private"
-msgstr "Privado"
+msgstr "Consulta"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:348
 msgid "Probably Away"
@@ -5618,7 +5618,7 @@ msgstr "Pesquisar mensagem privada encriptada"
 
 #: src/modules/fish/libkvifish.cpp:233
 msgid "Query not found: %Q"
-msgstr "Privado não encontrado: %Q"
+msgstr "Consulta não encontrada: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:809
 msgid "Query notice"
@@ -6911,7 +6911,7 @@ msgid ""
 "collision: merging output"
 msgstr ""
 "A recente mudança de alcunha de \r!n\r%Q\r para \r!n\r%Q\r causou uma "
-"colisão de privados: a juntar o resultado"
+"colisão de consultas: a juntar o resultado"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:818
 msgid "The remote server replied with "
@@ -7090,7 +7090,7 @@ msgid ""
 "The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!n"
 "\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr ""
-"O alvo deste privado foi alterado desde \r!n\r%Q\r [%Q@\r!h\r%Q\r] para \r!n"
+"O alvo desta consulta foi alterado desde \r!n\r%Q\r [%Q@\r!h\r%Q\r] para \r!n"
 "\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1564
@@ -7214,7 +7214,7 @@ msgstr "O 'plugin' não exporta a função desejada."
 #: src/kvirc/ui/KviQueryWindow.cpp:755
 msgid "This query has no active targets, no message sent"
 msgstr ""
-"O utilizador deste privado já não está em linha, nenhuma mensagem enviada"
+"O utilizador desta consulta já não está conectado, nenhuma mensagem enviada"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:312
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:347
@@ -8155,15 +8155,15 @@ msgstr "[%s]: [SSL]: A usar o ficheiro da chave privada %s"
 #: src/kvirc/ui/KviQueryWindow.cpp:222
 #: src/kvirc/ui/KviQueryWindow.cpp:270
 msgid "[Dead Query]"
-msgstr "[Privado Inválido]"
+msgstr "[Consulta Desligada]"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1100
 msgid "[Dead channel]"
-msgstr "[Canal morto]"
+msgstr "[Canal desligado]"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:433
 msgid "[Dead query]"
-msgstr "[Privado morto]"
+msgstr "[Consulta desligada]"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1923
 msgid "[Entering away status]: %Q"
@@ -8197,11 +8197,11 @@ msgstr "[PROXY]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:226
 msgid "[SOCKET ERROR]: %Q"
-msgstr "[ERRO SOCKET]: %Q"
+msgstr "[ERRO DO SOCKET]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:231
 msgid "[SOCKET WARNING]: %Q"
-msgstr "[AVISO SOCKET]: %Q"
+msgstr "[AVISO DO SOCKET]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:221
 msgid "[SOCKET]: %Q"
@@ -8249,7 +8249,7 @@ msgstr "[SSL]:     Estado ou província: %c%s"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:75
 msgid "[SSL]:   Issuer:"
-msgstr "[SSL]:   Editor:"
+msgstr "[SSL]:   Emissor:"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:82
 #, c-format
@@ -8311,7 +8311,7 @@ msgstr "[SSL]: Não é possível encontrar a informação da cifra actual"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:102
 msgid "[SSL]: The peer didn't provide a certificate"
-msgstr "[SSL]: O ponto (peer) não forneceu um certificado"
+msgstr "[SSL]: O parceiro (peer) não forneceu um certificado"
 
 #: src/kvirc/sparser/KviIrcServerParser.cpp:136
 #, c-format
@@ -8322,8 +8322,8 @@ msgstr "[Analisador do servidor]: %s"
 msgid ""
 "[Server parser]: Encountered problems while parsing the following message:"
 msgstr ""
-"[Analisador do servidor]: Problemas encontrados enquanto analisava a "
-"seguinte mensagem:"
+"[Analisador do servidor]: Problemas encontrados ao analisar a seguinte "
+"mensagem:"
 
 #: src/kvirc/sparser/KviIrcServerParser.cpp:134
 msgid "[Server parser]: [%s][%s] %Q"
@@ -8339,7 +8339,7 @@ msgstr "utilizadores activos"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1304
 msgid "alternative nickname specified in options"
-msgstr "alcunha alternativa indicada nas opções"
+msgstr "alcunha alternativa especificada nas opções"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:804
 #: src/kvirc/ui/KviChannelWindow.cpp:819
@@ -8368,11 +8368,11 @@ msgstr "ausente"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:762
 msgid "ban exception list"
-msgstr "lista de excepções de banimentos"
+msgstr "lista de excepção de banir"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:736
 msgid "ban list"
-msgstr "lista de banimentos"
+msgstr "lista de banir"
 
 #: src/modules/rijndael/libkvirijndael.cpp:658
 #: src/modules/rijndael/libkvirijndael.cpp:668
@@ -8437,7 +8437,7 @@ msgstr "conexão específica"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:303
 msgid "d: Obscure 'DEBUG' flag"
-msgstr "d: opção 'DEPURAÇÃO' obscura"
+msgstr "d: opção 'DEBUG' obscura"
 
 #: src/kvirc/ui/KviImageDialog.cpp:273
 msgid "directory"
@@ -8449,7 +8449,7 @@ msgstr "duplo click no nome do canal para entrar"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:301
 msgid "f: Recipient for full server notices"
-msgstr "f: Recipiente para noticias cheias de servidores"
+msgstr "f: Recipiente para noticias de canal completas do servidor"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1001
 msgid "half-operator"
@@ -8486,11 +8486,11 @@ msgstr "i: Invisível"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:175
 msgid "idle idle idle idle!"
-msgstr "parado parado parado!"
+msgstr "inactivo inactivo inactivo!"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:167
 msgid "idle()"
-msgstr "parado()"
+msgstr "idle()"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1044
 msgid "ignored"
@@ -8502,7 +8502,7 @@ msgstr "ignorado (não reconhecido)"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:761
 msgid "invite list"
-msgstr "Lista de convites"
+msgstr "lista de convites"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:957
 msgid "irc operator"
@@ -8518,7 +8518,7 @@ msgstr "está a falar"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:300
 msgid "k: Recipient for server kill messages"
-msgstr "k: Recipiente para mensagens kill do servidor"
+msgstr "k: Recipiente para mensagens 'kill' do servidor"
 
 #: src/kvirc/ui/KviInputEditor.cpp:766
 msgid "line break"
@@ -8530,7 +8530,7 @@ msgstr "quebras de linha"
 
 #: src/kvilib/core/KviError.cpp:161
 msgid "listen() call failed"
-msgstr "Falha na chamada de escuta"
+msgstr "falha na chamada da função listen()"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:304
 msgid "n: Recipient for nick changes"
@@ -8570,7 +8570,7 @@ msgstr "pontos"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1190
 msgid "possible watch list desync"
-msgstr "possível dessincronização da lista de observação"
+msgstr "possível dessincronização da lista de vigia"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1293
 msgid "primary nickname specified in options"
@@ -8578,7 +8578,7 @@ msgstr "alcunha primária especificada nas opções"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1600
 msgid "private"
-msgstr "privado"
+msgstr "consulta"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1213
 msgid "profile specific alternative option"
@@ -8598,11 +8598,11 @@ msgstr "máquina 'proxy'"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1172
 msgid "queries"
-msgstr "privados"
+msgstr "consultas"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1171
 msgid "query"
-msgstr "privado"
+msgstr "consulta"
 
 #: src/kvirc/ui/KviMainWindow.cpp:837
 msgid "quit KVIrc?"
@@ -8636,7 +8636,7 @@ msgstr "removido da lista de vigia"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:766
 msgid "reop list"
-msgstr "reop lista"
+msgstr "lista de reop"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1044
 msgid "replied"
@@ -8660,7 +8660,7 @@ msgstr "conexão segura"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1231
 msgid "server specific"
-msgstr "servidor específico"
+msgstr "específico do servidor"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1245
 msgid "server specific alternative option"
@@ -8696,11 +8696,11 @@ msgstr "total de utilizadores"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1012
 msgid "voiced user"
-msgstr "Utilizador com voz"
+msgstr "utilizador com voz"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1012
 msgid "voiced users"
-msgstr "Utilizadores com voz"
+msgstr "utilizadores com voz"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:295
 msgid "w: Recipient for WALLOPS messages"
@@ -8712,11 +8712,11 @@ msgstr "vigiar"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1222
 msgid "watch entry added by user"
-msgstr "entrada de vigia adicionada por utilizador"
+msgstr "vigiar entrada adicionada por utilizador"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1186
 msgid "watch entry listing requested by user"
-msgstr "listagem das entrada de vigia pedida por utilizador"
+msgstr "vigiar listagem de entrada pedida por utilizador"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:809
 #: src/kvirc/ui/KviChannelWindow.cpp:830
@@ -8725,7 +8725,7 @@ msgstr "estiveram a falar recentemente"
 
 #: src/kvirc/ui/KviWindowListBase.cpp:71
 msgid "windowlist"
-msgstr "lista de janelas"
+msgstr "listadejanelas"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:302
 msgid "y: Spy :)"
