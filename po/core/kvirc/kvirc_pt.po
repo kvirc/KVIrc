@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-03-17 04:29+0000\n"
+"PO-Revision-Date: 2011-03-17 18:48+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1309,7 +1309,7 @@ msgstr "Arranja as janelas MDI num estilo cascata-maximizada"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:159
 msgid "Attempting %Q to %Q (%Q) on port %u"
-msgstr "A tentar %Q para %Q (%Q) na porta %u"
+msgstr "A tentar %Q com %Q (%Q) na porta %u"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:168
 #, c-format
@@ -4688,7 +4688,7 @@ msgstr "Sem mensagens com múltiplos destinos"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:516
 msgid "No proxy hosts available, resuming direct connection"
-msgstr "Nenhum máquina proxy disponível, a resumir conexão directa"
+msgstr "Nenhum máquina proxy disponível, a resumir a conexão directa"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:532
 msgid "No public key certificate defined in KVIrc options."
@@ -5543,7 +5543,7 @@ msgstr "Pesquisar Destinos"
 
 #: src/kvirc/kernel/KviOptions.cpp:797
 msgid "Query encrypted private message"
-msgstr "Pesquisar mensagem privada encriptada"
+msgstr "Consultar mensagem privada encriptada"
 
 #: src/modules/fish/libkvifish.cpp:233
 msgid "Query not found: %Q"
@@ -5555,7 +5555,7 @@ msgstr "Pesquisar noticia"
 
 #: src/kvirc/kernel/KviOptions.cpp:756
 msgid "Query private message"
-msgstr "Pesquisar mensagem privada"
+msgstr "Consultar mensagem privada"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:174
 msgid "Query target:"
@@ -6016,7 +6016,8 @@ msgstr "A enviar PING baseado na verificação do 'lag'"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:895
 msgid "Sent QUIT, waiting for the server to close the connection..."
-msgstr "QUIT enviado, a esperar pelo servidor para fechar a conexão..."
+msgstr ""
+"Comando QUIT enviado, a aguardar resposta do servidor para fechar a conexão..."
 
 #: src/kvirc/kernel/KviIrcLink.cpp:414
 msgid "Sent auth method request, waiting for acknowledgement"
@@ -6024,7 +6025,7 @@ msgstr "Pedido de método autenticação enviado, a aguardar resposta"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:420
 msgid "Sent connection request, waiting for \"HTTP 200\" acknowledgement"
-msgstr "Pedido de conexão enviado; a aguardar resposta \"HTTP 200\""
+msgstr "Pedido de conexão enviado; a aguardar reconhecimento de \"HTTP 200\""
 
 #: src/kvirc/kernel/KviIrcLink.cpp:408
 msgid "Sent connection request, waiting for acknowledgement"
@@ -6253,7 +6254,7 @@ msgstr "Mostrar esta janela após conectar"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:554
 msgid "Show total connection time"
-msgstr "Mostrar tempo total de conexão"
+msgstr "Mostrar duração total da conexão"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:118
 msgid "Shows a dialog that allows editing the registered user entries"
@@ -6336,7 +6337,7 @@ msgstr "Mostra uma janela que permite ver as ligações da rede"
 
 #: src/modules/url/libkviurl.cpp:148
 msgid "Shows the URL list window"
-msgstr "Mostrar janela da lista de URL"
+msgstr "Mostra a janela da lista URL"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:316
 msgid "Shows the documentation index"
@@ -6352,7 +6353,7 @@ msgstr "Mostra o diálogo de opções do tema"
 
 #: src/modules/ident/libkviident.cpp:124
 msgid "Shutting down identd service (requested action)"
-msgstr "A desligar serviço identd (Acção pedida)"
+msgstr "A desligar serviço identd (acção pedida)"
 
 #: src/modules/ident/libkviident.cpp:119
 msgid "Shutting down identd service (spontaneous action)"
@@ -6360,7 +6361,7 @@ msgstr "A desligar serviço identd (acção espontânea)"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:164
 msgid "Silence speaking"
-msgstr "A falar silêncio"
+msgstr "A falar em silêncio"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:499
 msgid "Simple Clock"
@@ -6709,16 +6710,16 @@ msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
 msgstr ""
-"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual (%"
-"Q): %Q, nenhuns dados enviados para o servidor"
+"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual "
+"(%Q): %Q, nenhuns dados enviados para o servidor"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:640
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
 msgstr ""
-"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual (%"
-"Q): %s, nenhuns dados enviados para o servidor"
+"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual "
+"(%Q): %s, nenhuns dados enviados para o servidor"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:305
 msgid "The current network is %Q"
@@ -7179,7 +7180,7 @@ msgstr "Arranja as janelas MDI com o actual método lado-a-lado seleccionado"
 
 #: src/modules/ident/libkviident.cpp:511
 msgid "Timed out while waiting for the request : dropping connection"
-msgstr "Tempo esgotado enquanto esperava pelo pedido: a fechar a conexão"
+msgstr "Tempo esgotado enquanto aguardava pelo pedido: a fechar a conexão"
 
 #: src/modules/url/libkviurl.cpp:193
 msgid "Timestamp"
@@ -7954,7 +7955,7 @@ msgid ""
 "inside.\n"
 "Are you sure you wish to terminate the connection?"
 msgstr ""
-"Está a tentar fechar uma janela de consola com uma conexão activa.\n"
+"Acabou de tentar fechar uma janela de consola com uma conexão activa.\n"
 "Tem certeza que deseja terminar a conexão?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:521
@@ -7962,7 +7963,7 @@ msgid ""
 "You have just attempted to close the last console window.\n"
 "Are you sure you wish to quit KVIrc?"
 msgstr ""
-"Está a tentar fechar a janela da última consola.\n"
+"Acabou de tentar fechar a última janela de consola.\n"
 "Tem certeza que deseja fechar o KVIrc?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:350
@@ -7994,7 +7995,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView_events.cpp:937
 msgid "You're not an operator: You may not change channel modes"
-msgstr "Não é operador: não pode alterar os modos do canal"
+msgstr "Não é um operador: não pode alterar os modos do canal"
 
 #: src/modules/links/LinksWindow.cpp:412
 msgid "You're not connected to a server"
@@ -8024,7 +8025,7 @@ msgstr "Ampliar"
 
 #: src/kvirc/ui/KviIrcView.cpp:2073
 msgid "Zoom Out"
-msgstr "Reduzir"
+msgstr "Diminuir"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:140 src/kvirc/kernel/KviSSLMaster.cpp:163
 #, c-format
@@ -8343,7 +8344,7 @@ msgstr "duplo click no nome do canal para entrar"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:301
 msgid "f: Recipient for full server notices"
-msgstr "f: Recipiente para noticias de canal completas do servidor"
+msgstr "f: Recipiente para noticias do servidor completas"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1001
 msgid "half-operator"

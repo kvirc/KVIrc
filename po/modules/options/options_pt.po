@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-03-17 03:53+0000\n"
+"PO-Revision-Date: 2011-03-17 18:43+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1022,8 +1022,8 @@ msgid ""
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Tentará usar-se esta alcunha se a primeira alcunha para esta rede já "
-"estiver em uso.<br>Se deixar o campo em branco, então tentará usar as "
+"<center>Tentará usar-se esta alcunha se a primeira para esta rede já estiver "
+"a ser usada.<br>Se deixar o campo em branco, então tentará usar as "
 "alcunhas especificadas nas opções de identidade.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:600
@@ -1140,9 +1140,9 @@ msgid ""
 "minimized.<br>Enable this if you don't like queries popping up while you're "
 "typing something in a channel. :D</center>"
 msgstr ""
-"<center>Esta opção faz com que as novas janelas privadas criadas sejam "
-"imediatamente minimizadas.<br>Active esta opção se não quer janelas privadas "
-"a aparecerem enquanto escreve algo num canal. :D</center>"
+"<center>Esta opção faz com que as novas janelas de consulta criadas sejam "
+"imediatamente minimizadas.<br>Active esta opção se não quiser quiser que "
+"as janelas de consulta apareçam enquanto escreve algo num canal. :D</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:325
 msgid ""
@@ -1161,8 +1161,9 @@ msgid ""
 "center>"
 msgstr ""
 "<center>Esta opção faz com que o sistema da barra de tarefas KVIrc pisque "
-"quando chega uma nova mensagem privada e a janela do KVIrc não está activa.</"
-"center>"
+"quando "
+"chega uma nova mensagem de consulta e a janela do KVIrc não está activa.<"
+"/center>"
 
 #: src/modules/options/OptionsWidget_lag.cpp:57
 msgid ""
@@ -1183,10 +1184,11 @@ msgid ""
 "(PRIVMSG) is received.<br>If you disable this, private messages will be "
 "shown in the active window or a common channel.</center>"
 msgstr ""
-"<center>Esta opção activa a criação de uma janela privada quando uma "
-"mensagem privada (PRIVMSG) é recebida..<br>Se desactivar esta opção, as "
-"mensagens privadas serão mostradas na janela activa ou numa janela comum.</"
-"center>"
+"<center>Esta opção activa a criação de uma janela de consulta quando recebe "
+"uma "
+"mensagem privada (PRIVMSG)..<br>Se desactivar esta opção, as mensagens "
+"privadas "
+"serão mostradas na janela activa ou numa janela comum.</center>"
 
 #: src/modules/options/OptionsWidget_query.cpp:52
 msgid ""
@@ -1194,9 +1196,11 @@ msgid ""
 "(NOTICE) is received.<br>If you disable this, private notices will be shown "
 "in the active window or a common channel.</center>"
 msgstr ""
-"<center>Esta opção activa a criação de uma janela privada quando uma noticia "
-"privada (NOTICE) é recebida..<br>Se desactivar esta opção, as noticias "
-"privadas serão mostradas na janela activa ou numa janela comum.</center>"
+"<center>Esta opção activa a criação de uma janela de consulta quando recebe "
+"uma "
+"noticia privada (NOTICE)..<br>Se desactivar esta opção, as noticias privadas "
+"serão "
+"mostradas na janela activa ou numa janela comum.</center>"
 
 #: src/modules/options/OptionsWidget_query.cpp:87
 msgid ""
@@ -1204,8 +1208,8 @@ msgid ""
 "known information about query target at the top of the window.<br>Uncheck if "
 "you think,that it wastes your query space/</center>"
 msgstr ""
-"<center>Esta opção permite um rótulo de informação na janela privada. Pode "
-"mostrar informação acerca do endereço do utilizador no topo da janela."
+"<center>Esta opção permite um rótulo de informação na janela de consulta. "
+"Pode mostrar-lhe informação acerca do destino da consulta no topo da janela."
 "<br>Desmarque esta opção se acha que ocupa demasiado espaço na janela</"
 "center>"
 
@@ -1396,7 +1400,8 @@ msgid ""
 "<center>This option will cause KVIrc to reopen query windows after a "
 "successful reconnect attempt.</center>"
 msgstr ""
-"<center>Esta opção irá fazer com que o KVIrc reabra as janelas privadas após "
+"<center>Esta opção irá fazer com que o KVIrc reabra as janelas de consulta "
+"após "
 "uma tentativa de nova conexão bem sucedida.</center>"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:70
@@ -1864,7 +1869,7 @@ msgstr "Alertar para palavras destacadas"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:129
 msgid "Alert for query messages"
-msgstr "Alertar para mensagens privadas"
+msgstr "Alertar para mensagens de consulta"
 
 #: src/modules/options/OptionsWidget_message.cpp:386
 msgid "Alert level:"
@@ -2682,7 +2687,7 @@ msgstr "Piscar barra de tarefas do sistema em nova mensagem dcc"
 
 #: src/modules/options/OptionsWidget_query.cpp:74
 msgid "Flash system taskbar on new query message"
-msgstr "Piscar barra de tarefas em novas mensagens privadas"
+msgstr "Piscar barra de tarefas em novas mensagens de consulta"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:93
 msgid "Flash the system taskbar entry on highlighted messages"
@@ -3693,7 +3698,7 @@ msgstr "Mostrar notificador em nova mensagem dcc de conversa"
 
 #: src/modules/options/OptionsWidget_query.cpp:80
 msgid "Popup notifier on new query message"
-msgstr "Mostrar notificador em nova mensagem privada"
+msgstr "Mostrar notificador em nova mensagem de consulta"
 
 #: src/modules/options/OptionsWidget_notify.cpp:56
 msgid "Popup notifier when users are going online"
@@ -3760,11 +3765,11 @@ msgstr "Noticias privadas"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:41
 msgid "Private/channel messages"
-msgstr "Mensagens Privadas/Canais"
+msgstr "Mensagens privadas/canais"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:42
 msgid "Private/channel notices"
-msgstr "Noticias Privadas/Canais"
+msgstr "Noticias privadas/canais"
 
 #: src/modules/options/OptionsWidget_identity.cpp:336
 msgid "Profile"
@@ -3858,15 +3863,15 @@ msgstr "Indique aqui o nomedeutilizador que deseja usar"
 
 #: src/modules/options/OptionsWidget_query.h:30
 msgid "Query"
-msgstr "Consulta"
+msgstr "Consultar"
 
 #: src/modules/options/OptionsWidget_servers.cpp:896
 msgid "Query extended capabilities on connect"
-msgstr "Pesquisar capacidades extendida ao conectar"
+msgstr "Consultar capacidades extendidas ao conectar"
 
 #: src/modules/options/OptionsWidget_logging.cpp:41
 msgid "Query windows"
-msgstr "Janelas privadas"
+msgstr "Janelas de consulta"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:48
 msgid "Quiet"
@@ -5137,7 +5142,7 @@ msgstr "tema,mdi"
 
 #: src/modules/options/OptionsWidget_message.h:59
 msgid "theme,privmsg,output,format"
-msgstr "tema,mensagem privada,saída,formato"
+msgstr "theme,privmsg,output,format,tema,saída,formato"
 
 #: src/modules/options/OptionsWidget_theme.h:88
 msgid "theme,toolbar"
