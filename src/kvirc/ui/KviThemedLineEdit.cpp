@@ -44,7 +44,6 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const ch
 	setObjectName(name);
 	m_pKviWindow = pWindow;
 	setAutoFillBackground(false);
-	setContentsMargins(2,2,2,2);
 	applyOptions();
 }
 

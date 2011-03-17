@@ -43,7 +43,6 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * n
 	setObjectName(name);
 	m_pKviWindow = pWindow;
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	setContentsMargins(2,2,2,2);
 	setAutoFillBackground(false);
 	applyOptions();
 }

@@ -591,7 +591,7 @@ void KviTopicWidget::resizeEvent(QResizeEvent *)
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
 	} else {
-		m_pLabel->setGeometry(3,3,width()-6,height()-6);
+		m_pLabel->setGeometry(0,0,width(),height());
 	}
 }
 
