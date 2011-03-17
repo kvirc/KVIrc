@@ -1766,9 +1766,14 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			QColor * pClrFore = 0;
 			if(pEntry->m_bSelected)
 			{
-				QColor col = KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground);
-				col.setAlpha(150);
-				p.fillRect(0,iTheY,width(),pEntry->m_iHeight,col);
+				QColor col(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground));
+
+				QStyleOptionViewItemV4 opt4;
+				opt4.rect= QRect(0,iTheY,width(),pEntry->m_iHeight);
+				opt4.state = opt4.state | QStyle::State_Selected;
+				opt4.palette.setColor(QPalette::Highlight, col);
+				style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, &p, this);
+
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
 			} else if(KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick) && m_pListView->m_pKviWindow->connection())
 			{
