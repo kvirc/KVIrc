@@ -65,17 +65,20 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(
 	setWindowIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW))));
 
 	m_pLayout = new QVBoxLayout(this);
-
-	m_pFile = 0;
-	m_bBusy = false;
-	QWidget *pStatus = new QWidget(this);
-	m_pLayout->addWidget(pStatus);
-	QHBoxLayout *hbox= new QHBoxLayout(pStatus);
-	//  m_pLayout = new QVBoxLayout(this);
-	m_pFtp = 0;
 	m_pLayout->setMargin(3);
 	m_pLayout->setSpacing(2);
+
 	setLayout(m_pLayout);
+
+	m_pFtp = NULL;
+	m_pFile = NULL;
+	m_bBusy = false;
+
+	QWidget *pStatus = new QWidget(this);
+	m_pLayout->addWidget(pStatus);
+
+	QHBoxLayout *hbox= new QHBoxLayout(pStatus);
+
 	m_pToolBar= new QToolBar(pStatus);
 	m_pProgressBar = new QProgressBar(pStatus);
 	m_pProgressBar->setMaximumWidth(220);
