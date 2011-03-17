@@ -10,13 +10,13 @@
 # Alexey Uzhva <alexey at kvirc dot ru>, 2007.
 # Igor "BugSlayer" Govorov <govorov.igor at-sign gmail.com>, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
-# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
+# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2010-12-12 23:58+0600\n"
+"PO-Revision-Date: 2011-03-17 22:43+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:72
@@ -639,10 +639,11 @@ msgid ""
 "attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
 "IPv6 stack and you <b>must</b> have an IPv6 connection).</center>"
 msgstr ""
-"<center>Это опция идентификации на IPv6 серверах.<br>Если включено, KVIrc "
-"попытается использовать IPv6 протокол (ваша ОС также <b>должна</b> иметь "
-"поддержку работы с IPv6 стеком и вы <b>должны</b> иметь IPv6 соединение).</"
-"center>"
+"<center>Это опция определяет сервера IPv6.<br>Если включено, KVIrc "
+"попытается использовать для подключения протокол IPv6 (ваша ОС <b>должна</b> "
+"иметь "
+"поддержку работы со стеком IPv6, и вы <b>должны</b> иметь работающий "
+"IPv6-адрес).</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:899
 msgid ""
@@ -4696,7 +4697,7 @@ msgstr "Использовать \"умный\" менеджер списка у
 #: src/modules/options/OptionsWidget_servers.cpp:719
 #: src/modules/options/OptionsWidget_proxy.cpp:130
 msgid "Use IPv6 protocol"
-msgstr "Использовать IPv6 протокол"
+msgstr "Использовать протокол IPv6"
 
 #: src/modules/options/OptionsWidget_sound.cpp:101
 #: src/modules/options/OptionsWidget_sound.cpp:125
