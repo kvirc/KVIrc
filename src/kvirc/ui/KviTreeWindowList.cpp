@@ -41,6 +41,8 @@
 #include <QPainter>
 #include <QTimer>
 #include <QScrollBar>
+#include <QStyleOptionViewItemV4>
+#include <QStyle>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -523,7 +525,10 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	if(treeWidget->currentItem() == item)
 	{
 		//selection colored background
-		p->fillRect(option.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+		QStyleOptionViewItemV4 opt4(option);
+		opt4.state = opt4.state | QStyle::State_Selected;
+		opt4.palette.setColor(QPalette::Highlight, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+		treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 #ifndef COMPILE_ON_MAC
 	} else {
 		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects) && option.state & QStyle::State_MouseOver)
@@ -531,12 +536,16 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			// paint mouse over effect
 			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			col.setAlpha(127);
-			p->fillRect(option.rect, col);
+
+			QStyleOptionViewItemV4 opt4(option);
+			opt4.state = opt4.state | QStyle::State_Selected;
+			opt4.palette.setColor(QPalette::Highlight, col);
+			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 		}
 #endif
 	}
 	//draw window icon, irc context indicator (a colored square), set font properties for text
-	int im = option.rect.left();
+	int im = option.rect.left() + 2;
 	int yPixmap = (option.rect.top() + (option.rect.height() / 2 - 8));
 
 	QRect cRect(im + 3,option.rect.top(),option.rect.width(),option.rect.height());
