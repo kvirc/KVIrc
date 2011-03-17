@@ -22,8 +22,9 @@
 //
 //=============================================================================
 #include "kvi_settings.h"
+
 #if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
-#include "WebThemeInterfaceDialog.h"
+	#include "WebThemeInterfaceDialog.h"
 #endif
 
 
