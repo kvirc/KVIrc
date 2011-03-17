@@ -85,6 +85,7 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 
 	m_pWebView = new QWebView(this);
 	m_pLayout->addWidget(m_pWebView);
+	m_pLayout->setStretchFactor(m_pWebView,10); // must take most space
 	// disable context menu
 	m_pWebView->setContextMenuPolicy(Qt::NoContextMenu);
 	m_pToolBar->addAction(m_pWebView->pageAction(QWebPage::Back));

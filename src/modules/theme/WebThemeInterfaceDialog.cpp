@@ -39,7 +39,7 @@
 WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 : KviWebPackageManagementDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("KVIrc Web Theme Interface","theme"));
+	setWindowTitle(__tr2qs_ctx("KVIrc : Download Themes","theme"));
 
 	// local dir for user defined themes
 	g_pApp->getLocalKvircDirectory(m_szLocalThemesPath,KviApplication::Themes);
@@ -62,7 +62,6 @@ bool WebThemeInterfaceDialog::installPackage(const QString &szPath,QString &szEr
 {
 	return ThemeFunctions::installThemePackage(szPath,szError,this);
 }
-
 
 bool WebThemeInterfaceDialog::packageIsInstalled(const QString &szName,const QString &szVersion)
 {

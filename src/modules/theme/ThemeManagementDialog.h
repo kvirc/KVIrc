@@ -85,7 +85,6 @@ protected:
 	bool hasSelectedItems();
 	virtual void closeEvent(QCloseEvent * e);
 protected slots:
-
 	void saveCurrentTheme();
 	void getMoreThemes();
 	void installFromFile();
@@ -99,6 +98,7 @@ protected slots:
 	void contextMenuRequested(const QPoint & pos);
 	//void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
 	void tipRequest(QListWidgetItem *item,const QPoint &pnt);
+	void webThemeInterfaceDialogDestroyed();
 };
 
 #endif //!_MANAGEMENTDIALOG_H_

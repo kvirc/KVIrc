@@ -119,10 +119,10 @@ ThemeManagementDialog * ThemeManagementDialog::m_pInstance = 0;
 ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 : QWidget(parent)
 {
-	m_pItemDelegate=0;
-	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
-	m_pWebThemeInterfaceDialog = 0;
-	#endif
+	m_pItemDelegate = NULL;
+#ifdef COMPILE_WEBKIT_SUPPORT
+	m_pWebThemeInterfaceDialog = NULL;
+#endif
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Theme)));
@@ -257,8 +257,8 @@ ThemeManagementDialog::~ThemeManagementDialog()
 #ifdef COMPILE_WEBKIT_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
-	    delete m_pWebThemeInterfaceDialog;
-	    m_pWebThemeInterfaceDialog = 0;
+		delete m_pWebThemeInterfaceDialog;
+		m_pWebThemeInterfaceDialog = NULL;
 	}
 #endif //COMPILE_WEBKIT_SUPPORT
 }
@@ -402,6 +402,7 @@ void ThemeManagementDialog::getMoreThemes()
 		m_pWebThemeInterfaceDialog->show();
 	} else {
 		m_pWebThemeInterfaceDialog = new WebThemeInterfaceDialog();
+		QObject::connect(m_pWebThemeInterfaceDialog,SIGNAL(destroyed()),this,SLOT(webThemeInterfaceDialogDestroyed()));
 		m_pWebThemeInterfaceDialog->show();
 	}
 #else
@@ -409,6 +410,12 @@ void ThemeManagementDialog::getMoreThemes()
 		return;
 	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
 #endif
+}
+
+void ThemeManagementDialog::webThemeInterfaceDialogDestroyed()
+{
+	m_pWebThemeInterfaceDialog = NULL;
+	fillThemeBox();
 }
 
 
