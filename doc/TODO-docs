@@ -662,6 +662,7 @@
   KviCustomToolBar.h
   KviDebugWindow.cpp
   KviDebugWindow.h
+  KviDockExtension.h 
   KviDynamicToolTip.cpp
   KviDynamicToolTip.h
   KviFileDialog.cpp
@@ -779,11 +780,11 @@
 
   AddonFunctions.cpp
   AddonFunctions.h
+  AddonManagementDialog.cpp
+  AddonManagementDialog.h
   PackAddonDialog.cpp
   PackAddonDialog.h
   libkviaddon.cpp
-  managementdialog.cpp
-  managementdialog.h
 
 
 #######################
@@ -1180,6 +1181,8 @@
   KvsObject_treeWidgetItem.h
   KvsObject_vBox.cpp
   KvsObject_vBox.h
+  KvsObject_webView.cpp
+  KvsObject_webView.h
   KvsObject_widget.cpp
   KvsObject_widget.h
   KvsObject_window.cpp
@@ -1200,6 +1203,8 @@
 # modules/options #
 ###################
 
+  OptionsDialog.cpp
+  OptionsDialog.h
 ++OptionsInstanceManager.cpp
 + OptionsInstanceManager.h
   OptionsWidgetContainer.cpp
@@ -1282,8 +1287,6 @@
   OptionsWidget_userList.h
   OptionsWidget_windowList.cpp
   OptionsWidget_windowList.h
-  dialog.cpp
-  dialog.h
   libkvioptions.cpp
 
 
@@ -1365,10 +1368,10 @@
 
   RegisteredUserEntryDialog.cpp
   RegisteredUserEntryDialog.h
+  RegisteredUsersDialog.cpp
+  RegisteredUsersDialog.h
   RegistrationWizard.cpp
   RegistrationWizard.h
-  dialog.cpp
-  dialog.h
   libkvireguser.cpp
 
 
@@ -1499,9 +1502,11 @@
   SaveThemeDialog.h
   ThemeFunctions.cpp
   ThemeFunctions.h
+  ThemeManagementDialog.cpp
+  ThemeManagementDialog.h
+  WebThemeInterfaceDialog.cpp
+  WebThemeInterfaceDialog.h
   libkvitheme.cpp
-  managementdialog.cpp
-  managementdialog.h
 
 
 ###############
