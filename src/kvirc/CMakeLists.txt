@@ -64,6 +64,7 @@ SET(kvirc_MOC_HDRS
 	ui/KviWindowToolWidget.h
 	ui/KviTopicWidget.h
 	ui/KviUserListView.h
+	ui/KviWebPackageManagementDialog.h
 	ui/KviWindow.h
 	ui/KviWindowListBase.h
 	ui/KviTreeWindowList.h
@@ -149,6 +150,7 @@ SET(kvirc_SRCS
 	ui/KviThemedLineEdit.cpp
 	ui/KviThemedTreeWidget.cpp
 	ui/KviToolBar.cpp
+	ui/KviWebPackageManagementDialog.cpp
 	ui/KviWindowToolWidget.cpp
 	ui/KviTopicWidget.cpp
 	ui/KviUserListView.cpp

@@ -230,13 +230,13 @@ ThemeManagementDialog::~ThemeManagementDialog()
 	if (m_pItemDelegate) delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
 	m_pInstance = 0;
-	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+#ifdef COMPILE_WEBKIT_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
 	    delete m_pWebThemeInterfaceDialog;
 	    m_pWebThemeInterfaceDialog = 0;
 	}
-	#endif
+#endif //COMPILE_WEBKIT_SUPPORT
 }
 
 void ThemeManagementDialog::closeClicked()
@@ -371,17 +371,19 @@ void ThemeManagementDialog::installFromFile()
 
 void ThemeManagementDialog::getMoreThemes()
 {
-	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
-	if (m_pWebThemeInterfaceDialog) m_pWebThemeInterfaceDialog->show();
-	else{
-	    m_pWebThemeInterfaceDialog = new WebThemeInterfaceDialog();
-	    m_pWebThemeInterfaceDialog->show();
+#ifdef COMPILE_WEBKIT_SUPPORT
+	if(m_pWebThemeInterfaceDialog)
+	{
+		m_pWebThemeInterfaceDialog->show();
+	} else {
+		m_pWebThemeInterfaceDialog = new WebThemeInterfaceDialog();
+		m_pWebThemeInterfaceDialog->show();
 	}
-	return;
-	#else
-	if(!g_pMainWindow)return;
+#else
+	if(!g_pMainWindow)
+		return;
 	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
-	#endif
+#endif
 }
 
 

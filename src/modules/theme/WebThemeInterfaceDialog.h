@@ -26,47 +26,30 @@
 
 
 #include "kvi_settings.h"
-#if defined(COMPILE_WEBKIT_SUPPORT)
-#include <QDialog>
-#include <QtWebKit/QWebView>
-#include <QtWebKit/QWebFrame>
-#include <QWebElement>
-#include <QToolBar>
-#include <QFtp>
-#include <QUrl>
-#include <QFile>
-#include <QVBoxLayout>
-#include <QProgressBar>
-#include <QShowEvent>
+
+#ifdef COMPILE_WEBKIT_SUPPORT
+
+#include "KviWebPackageManagementDialog.h"
 
 
-class WebThemeInterfaceDialog : public QWidget
+class WebThemeInterfaceDialog : public KviWebPackageManagementDialog
 {
 	Q_OBJECT
 public:
 	WebThemeInterfaceDialog(QWidget *par=0);
 	~WebThemeInterfaceDialog();
-private:
-	QToolBar   * m_pToolBar;
-	QString m_szLocalTmpThemeCompletePath;
-	QVBoxLayout *m_pLayout;
-	QWebView * m_pWebView;
-	QFile *m_pFile;
-	QFtp *m_pFtp;
-	bool m_bBusy;
-	QProgressBar *m_pProgressBar;
-protected:
-	virtual void showEvent(QShowEvent *e);
-protected slots:
 
-	void slotLoadFinished(bool ok);
-	void slotLoadProgress(int iProgress);
-	void slotDataTransferProgress(qint64 iDone,qint64 iTotal);
-	void slotCommandFinished(int id,bool error);
-	void slotLinkClicked(const QUrl &url);
+private:
+	QString m_szLocalThemesPath;
+	QString m_szGlobalThemesPath;
+
+protected:
+	virtual bool packageIsInstalled(const QString &szName,const QString &szVersion);
+	virtual bool installPackage(const QString &szPath,QString &szError);
+
 };
 	
-#endif
+#endif //COMPILE_WEBKIT_SUPPORT
 	
 
 #endif //_WEBTHEMEINTERFACEDIALOG_H_
