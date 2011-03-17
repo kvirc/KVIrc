@@ -34,6 +34,7 @@
 #include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviIconManager.h"
+#include "KviMainWindow.h"
 
 #include <QDesktopWidget>
 #include <QToolButton>
@@ -58,6 +59,8 @@
 KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 	: QWidget(pParent)
 {
+	setAttribute(Qt::WA_DeleteOnClose);
+
 	setWindowIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW))));
 
 	m_pLayout = new QVBoxLayout(this);
@@ -266,8 +269,8 @@ void KviWebPackageManagementDialog::slotCommandFinished(int id,bool error)
 void KviWebPackageManagementDialog::showEvent(QShowEvent *)
 {
 	m_pProgressBar->hide();
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
+	move(rect.x() + ((rect.width() - width())/2),rect.y() + ((rect.height() - height())/2));
 }
 
 
