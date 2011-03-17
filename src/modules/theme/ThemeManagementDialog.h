@@ -69,6 +69,7 @@ protected:
 	static ThemeManagementDialog   * m_pInstance;
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
 	KviTalListWidget    * m_pListWidget;
+	QLabel * m_pCurrentInstalledThemeLabel;
 	KviTalPopupMenu     * m_pContextPopup;
 	QToolButton         * m_pDeleteThemeButton;
 	QToolButton         * m_pPackThemeButton;

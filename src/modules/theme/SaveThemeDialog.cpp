@@ -116,9 +116,9 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 
 	m_pThemeVersionEdit = new QLineEdit(pPage);
 	m_pThemeVersionEdit->setText(info.version());
-	QRegExp rx("(.[0-9]{1,2}){3,3}");
+	QRegExp rx("\\d{1,2}\\.\\d{1,2}(\\.\\d{1,2})?");
 	QValidator *validator = new QRegExpValidator(rx, this);
-m_pThemeVersionEdit->setValidator(validator);
+	m_pThemeVersionEdit->setValidator(validator);
 
 	pLayout->addWidget(m_pThemeVersionEdit,2,1);
 

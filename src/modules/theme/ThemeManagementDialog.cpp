@@ -27,7 +27,7 @@
 	#include "WebThemeInterfaceDialog.h"
 #endif
 
-
+#include <QVBoxLayout>
 #include "ThemeManagementDialog.h"
 #include "PackThemeDialog.h"
 #include "SaveThemeDialog.h"
@@ -129,13 +129,13 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 
 	m_pInstance = this;
 
-	QGridLayout * g = new QGridLayout(this);
-
+	//QGridLayout * g = new QGridLayout(this);
+	QVBoxLayout * vBox = new QVBoxLayout(this);
 	KviTalHBox *hb = new KviTalHBox(this);
 	hb->setMargin(1);
 	hb->setSpacing(1);
-	g->addWidget(hb,0,0);
-
+	//g->addWidget(hb,0,0);
+	vBox->addWidget(hb);
 	QToolButton * tb;
 	QFrame * sep;
 
@@ -187,18 +187,41 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
 	m_pListWidget->setItemDelegate(m_pItemDelegate);
 	m_pListWidget->setMinimumHeight(400);
-	m_pListWidget->setMinimumWidth(400);
+	m_pListWidget->setMinimumWidth(420);
 
 	m_pListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListWidget->setSortingEnabled(true);
 	connect(m_pListWidget,SIGNAL(itemDoubleClicked(QListWidgetItem *)),this,SLOT(applyTheme(QListWidgetItem *)));
+
 
 	//FIXME tooltip
 	//connect(m_pListWidget,SIGNAL(tipRequest(QListWidgetItem *,const QPoint &)),this,SLOT(tipRequest(QListWidgetItem *,const QPoint &)));
 	connect(m_pListWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
 		this,SLOT(contextMenuRequested(const QPoint &)));
 	connect(m_pListWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableButtons()));
-	g->addWidget(m_pListWidget,1,0);
+
+	sep = new QFrame(this);
+	sep->setFrameStyle(QFrame::HLine | QFrame::Sunken);
+	sep->setMinimumWidth(300);
+	sep->setMinimumHeight(8);
+	vBox->addWidget(sep);
+
+	//g->addWidget(sep,2,0);
+
+	m_pCurrentInstalledThemeLabel = new QLabel(this);
+	m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ","theme")+KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)+"</b>");
+//	g->addWidget(pLabel,2,0);
+	vBox->addWidget(m_pCurrentInstalledThemeLabel);
+
+	sep = new QFrame(this);
+	sep->setFrameStyle(QFrame::HLine | QFrame::Sunken);
+	sep->setMinimumWidth(300);
+
+//	g->addWidget(sep,3,0);
+	vBox->addWidget(sep);
+
+//	g->addWidget(m_pListWidget,4,0);
+	vBox->addWidget(m_pListWidget);
 
 //	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListWidget);
 //	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
@@ -206,11 +229,12 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	QPushButton * b = new QPushButton(__tr2qs("Close"),this);
 	b->setMaximumSize(b->sizeHint().width(),b->sizeHint().height());
 	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
-	g->addWidget(b,2,0);
+//	g->addWidget(b,5,0);
+	vBox->addWidget(b);
 
-	g->setMargin(1);
-	g->setSpacing(1);
-	g->setAlignment(b,Qt::AlignRight);
+//	g->setMargin(1);
+//	g->setSpacing(1);
+	vBox->setAlignment(b,Qt::AlignRight);
 	fillThemeBox();
 	m_pContextPopup = new KviTalPopupMenu(this);
 
@@ -334,6 +358,7 @@ void ThemeManagementDialog::applyCurrentTheme()
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 		}
+		else m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ","theme")+KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)+"</b>");
 		m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
 	}
 }
@@ -406,7 +431,9 @@ void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 		if(inf->load(slThemes.at(i),bBuiltin))
 		{
 			inf->setSubdirectory(slThemes.at(i));
-			new ThemeListWidgetItem(m_pListWidget,inf);
+			ThemeListWidgetItem *it=new ThemeListWidgetItem(m_pListWidget,inf);
+			QPixmap pixmap=inf->smallScreenshot();
+			    if(!pixmap.isNull()) it->setIcon(pixmap.scaled(32,32));
 		} else {
 			delete inf;
 		}
