@@ -3,22 +3,23 @@
 #
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
 # Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
+# alexzulu <tuxovod@list.ru>, 2011.
+# alexzulu <ua6hdw@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2010-12-13 02:18+0600\n"
-"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
-"org>\n"
+"PO-Revision-Date: 2011-03-18 19:46+0300\n"
+"Last-Translator: alexzulu <ua6hdw@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1186
 #, c-format
@@ -513,12 +514,16 @@ msgid ""
 "Invalid data type for parameter \"%1\": found empty string while a non empty "
 "one was expected"
 msgstr ""
+"Недопустимый тип данных для параметра \"%1\": найдена пустая строка "
+"где ожидается непустая"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:292
 msgid ""
 "Invalid data type for parameter \"%1\": found signed integer \"%2\" where "
 "type 'unsigned integer' was expected"
 msgstr ""
+"Недопустимый тип данных для параметра \"%1\": найдено \"целое\" \"%2\", где "
+"ожидается тип \"целое число без знака\""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:341
 msgid "Invalid duration value: using default"
@@ -1227,6 +1232,7 @@ msgstr "Заданное окно не имеет контейнеров с кн
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:437
 msgid "The system handler for the url failed to execute: system error is %1"
 msgstr ""
+"Системный обработчик для URL не удалось выполнить: системная ошибка %1"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:153
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:204
@@ -1256,7 +1262,7 @@ msgstr "Эта команда может быть использована то�
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:524
 msgid "This executable was built without SSL support"
-msgstr ""
+msgstr "Сборка программы без поддержки SSL"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp:162
 msgid "This is not a channel"

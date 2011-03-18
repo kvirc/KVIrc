@@ -11,22 +11,22 @@
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2009, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
 # Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010, 2011.
+# alexzulu <ua6hdw@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-03-17 22:57+0600\n"
-"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
-"org>\n"
+"PO-Revision-Date: 2011-03-18 20:10+0300\n"
+"Last-Translator: alexzulu <ua6hdw@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
@@ -621,9 +621,8 @@ msgid "&OK"
 msgstr "&Ok"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:109
-#, fuzzy
 msgid "&Options"
-msgstr "Действия"
+msgstr "Опции"
 
 #: src/kvirc/ui/KviMenuBar.cpp:250 src/kvirc/ui/KviMenuBar.cpp:258
 msgid "&Other..."
@@ -638,9 +637,8 @@ msgid "&Preview"
 msgstr "&Предварительный просмотр"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:104
-#, fuzzy
 msgid "&Previous"
-msgstr "&Предварительный просмотр"
+msgstr "&Предыдущий"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:114 src/kvirc/ui/KviMenuBar.cpp:241
 msgid "&Quit"
@@ -1467,9 +1465,8 @@ msgid "Bad key data"
 msgstr "Данные ключа непригодны"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3073
-#, fuzzy
 msgid "Balance"
-msgstr "О&тмена"
+msgstr "Баланс"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:269
 msgid "Ban Exceptions"
@@ -1504,9 +1501,8 @@ msgid "Bandwidth Saver"
 msgstr ""
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3074
-#, fuzzy
 msgid "Bass"
-msgstr "Маска бана"
+msgstr "Бас"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:361
 msgid "Binding to local address %1"
@@ -2245,9 +2241,8 @@ msgid "Color"
 msgstr "Цвет"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3103
-#, fuzzy
 msgid "Color Effects"
-msgstr "Эффекты"
+msgstr "Цветовые эффекты"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3100
 msgid "Color Killer"
@@ -2589,9 +2584,8 @@ msgstr "Текущее окно не является каналом"
 
 #: src/kvirc/ui/KviWindow.cpp:711 src/kvirc/ui/KviWindow.cpp:750
 #: src/kvirc/ui/KviWindow.cpp:798
-#, fuzzy
 msgid "Current: "
-msgstr "Текущий IRC URI"
+msgstr "Текущий: "
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2280
 msgid "Currently enabled capabilities: %Q"
@@ -2891,9 +2885,8 @@ msgid "Enable encryption"
 msgstr "Включить криптование"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:342
-#, fuzzy
 msgid "Enable forwarding"
-msgstr "Включить дешифрацию"
+msgstr "Включить перенаправление"
 
 #: src/kvirc/ui/KviCryptController.cpp:106
 msgid "Encrypt key:"
@@ -3158,30 +3151,28 @@ msgid "Female"
 msgstr "Женский"
 
 #: src/modules/fish/libkvifish.cpp:181 src/modules/fish/libkvifish.cpp:284
-#, fuzzy
 msgid ""
 "FiSH has been compiled without ssl and crypto++ support, unable to proceed"
-msgstr "Эта сборка программы не поддерживает шифрование"
+msgstr ""
+"Эта сборка программы без поддержки SSL и crypto++, продолжение невозможно"
 
 #: src/modules/fish/libkvifish.cpp:144
-#, fuzzy
 msgid ""
 "FiSH has been compiled without ssl or cryptopp support, unable to proceed"
-msgstr "Эта сборка программы не поддерживает шифрование"
+msgstr ""
+"Эта сборка программы не поддерживает SSL или cryptopp, продолжение невозможно"
 
 #: src/modules/fish/libkvifish.cpp:311
-#, fuzzy
 msgid "FiSH: Key for %1 successfully set!"
-msgstr "Скачивание файла от %1 успешно завершено"
+msgstr "FiSH: Ключ для %1 установлен!"
 
 #: src/modules/fish/libkvifish.cpp:189
 msgid "FiSH: Received DH1080 public key from %1, sending mine..."
 msgstr ""
 
 #: src/modules/fish/libkvifish.cpp:334
-#, fuzzy
 msgid "FiSH: Sent my DH1080 public key to %1, waiting for reply ..."
-msgstr "Отослан запрос списка, ожидаю ответ..."
+msgstr "FiSH: Мой DH1080 публичный ключ отослан %1, ждём ответа ..."
 
 #: src/modules/fish/libkvifish.cpp:245 src/modules/fish/libkvifish.cpp:269
 msgid "FiSH: error verificating peer public key (size=%1)"
@@ -4316,9 +4307,8 @@ msgid "Medium activity"
 msgstr "Средняя активность"
 
 #: src/kvirc/kernel/KviOptions.cpp:878
-#, fuzzy
 msgid "MemoServ message"
-msgstr "Сообщение ChanServ"
+msgstr "Сообщение MemoServ"
 
 #: src/kvirc/kernel/KviOptions.cpp:1269
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
@@ -4423,9 +4413,8 @@ msgid "Missing closing brace"
 msgstr "Нет закрывающей скобки"
 
 #: src/modules/file/libkvifile.cpp:294
-#, fuzzy
 msgid "Missing data array"
-msgstr "Параметр отсутствует"
+msgstr "Отсутствует массив данных"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:108
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:325
@@ -4509,9 +4498,8 @@ msgstr "Имена для \r!c\r%Q\r: %Q"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:424
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:435
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:479
-#, fuzzy
 msgid "Need SSL connection to join"
-msgstr "Новый IRC контекст"
+msgstr "Требуется SSL-соединение для входа"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:409
 msgid "Need auth to change nick"
@@ -5259,9 +5247,8 @@ msgid "Pixmap options (image path)"
 msgstr "Опция картинка (путь к изображению)"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:158
-#, fuzzy
 msgid "Plain Text"
-msgstr "Найти текст"
+msgstr "Простой текст"
 
 #: src/kvirc/ui/KviSelectors.cpp:798
 msgid "Play"
@@ -5544,9 +5531,8 @@ msgid "Query encrypted private message"
 msgstr "Закодированное сообщение приватного чата"
 
 #: src/modules/fish/libkvifish.cpp:233
-#, fuzzy
 msgid "Query not found: %Q"
-msgstr "Адрес не найден"
+msgstr "Приват не найден: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:809
 msgid "Query notice"
@@ -5729,9 +5715,8 @@ msgid "Refresh index"
 msgstr "Обновить список"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:160
-#, fuzzy
 msgid "RegExp"
-msgstr "&Повторить"
+msgstr "Регулярное выражение"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:329
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:389
@@ -7639,9 +7624,8 @@ msgid "Using cached server IP address (%s)"
 msgstr "Используется кешированый адрес сервера (%s)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1471
-#, fuzzy
 msgid "Using connection specific password (%Q)"
-msgstr "Используемый специфичный пароль для сети (%Q)"
+msgstr "Используемый специфичный пароль для соединения (%Q)"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:138
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
@@ -7723,9 +7707,8 @@ msgid "Voiced users"
 msgstr "Войсы"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3072
-#, fuzzy
 msgid "Volume"
-msgstr "Мужской"
+msgstr "Громкость"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1672
 msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -8420,9 +8403,8 @@ msgid "network specific alternative option"
 msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1261
-#, fuzzy
 msgid "network specific option"
-msgstr "Информация о сети"
+msgstr "специальные настройки сети"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1601
 msgid "notification"
@@ -8498,9 +8480,8 @@ msgstr ""
 "ботов)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1364
-#, fuzzy
 msgid "random nickname"
-msgstr "Изменить ник"
+msgstr "случайный ник"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1200
 msgid "registration mask changed or desync with the watch service"
