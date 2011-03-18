@@ -1723,7 +1723,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = nickname\n" \
 		"$1 = username\n" \
 		"$2 = hostname\n" \
-		"$3 = part message\n" \
+		"$3 = quit message\n" \
 		"$4 = channels"),
 
 	// IRC modes
