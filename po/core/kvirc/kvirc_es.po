@@ -350,7 +350,7 @@ msgstr "%c\r!n\r%Q\r%c usuario@máquina actual: %Q, ip actual: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1323
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
-msgstr "%c\r!n\r%Q\r%c canales: %Q"
+msgstr "%c\r!n\r%Q\r%c está en los canales: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2244
 msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
@@ -358,11 +358,11 @@ msgstr "%c\r!n\r%Q\r%c página de códigos es %Q: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1370
 msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
-msgstr "%c\r!n\r%Q\r%c tiempo de inactividad: %ud %uh %um %us"
+msgstr "%c\r!n\r%Q\r%c lleva inactivo: %ud %uh %um %us"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1536
 msgid "%c\r!n\r%Q\r%c's info: %Q"
-msgstr "%c\r!n\r%Q\r%c info: %Q"
+msgstr "%c\r!n\r%Q\r%c información: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1259
 msgid "%c\r!n\r%Q\r%c's real name was: %Q"
@@ -374,11 +374,11 @@ msgstr "%c\r!n\r%Q\r%c nombre real: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1432
 msgid "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
-msgstr "%c\r!n\r%Q\r%c servidor: \r!s\r%Q\r - %Q"
+msgstr "%c\r!n\r%Q\r%c conecta al servidor: \r!s\r%Q\r - %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1394
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
-msgstr "%c\r!n\r%Q\r%c tiempo de entrada: %Q"
+msgstr "%c\r!n\r%Q\r%c entró el: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2024
 #, c-format
@@ -886,7 +886,7 @@ msgstr "<b>KVIrc</b>"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1015
 msgid "<b>Middle-click:</b><br>%Q"
-msgstr "<b>Botón central:</b><br>%Q"
+msgstr "<b>Clic central:</b><br>%Q"
 
 #: src/kvirc/kernel/KviApplication.cpp:1078
 msgid ""
@@ -922,18 +922,18 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:336
 msgid "<b>Right click</b> to add/remove applets"
-msgstr "<b>Botón derecho</b> para añadir/quitar applets"
+msgstr "<b>Clic derecho</b> para añadir/quitar applets"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:1020
 msgid "<b>Right-click:</b><br>%Q"
-msgstr "<b>Botón derecho:</b><br>%Q"
+msgstr "<b>Clic derecho:</b><br>%Q"
 
 #: src/kvirc/ui/KviStatusBar.cpp:324
 msgid ""
 "<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right "
 "click</b> to see the other options"
 msgstr ""
-"<b>Mays+Arrastrar</b> o <b>Ctrl+Arrastrar</b> para mover el "
+"<b>Mayús+Arrastrar</b> o <b>Control+Arrastrar</b> para mover el "
 "applet<br><b>Botón derecho</b> para ver otras opciones"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1765
@@ -2747,11 +2747,11 @@ msgstr "¿No sobreescribir directorio? - KVIrc"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:813
 msgid "Double click to check"
-msgstr "Doble clic para marcar"
+msgstr "Doble clic para comprobar"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:297
 msgid "Double click to enable it"
-msgstr "Doble clic para habilitarlo"
+msgstr "Doble clic para activarlo"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:227
 msgid "Double click to enter away mode"
@@ -2778,7 +2778,7 @@ msgstr "Doble clic para editar..."
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
-"Haz doble clic para buscar esta máquina<br>Click derecho para ver otras "
+"Haz doble clic para buscar esta máquina<br>Clic derecho para ver otras "
 "opciones"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:845
@@ -3053,7 +3053,7 @@ msgstr "Fallo al iniciar el motor de cifrado especificado: %Q"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:998
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
-msgstr "Falló la carga del avatar con nombre \"%Q\" y trayectoria local \"%Q\""
+msgstr "Falló la carga del avatar con nombre \"%Q\" y ruta local \"%Q\""
 
 #: src/kvirc/ui/KviIrcView.cpp:2130
 msgid "Failed to load the selected image"
@@ -3297,7 +3297,7 @@ msgstr "Búsqueda de texto completo"
 
 #: src/kvirc/ui/KviImageDialog.cpp:136
 msgid "Full path"
-msgstr "Trayectoria completa"
+msgstr "Ruta completa"
 
 #: src/kvirc/kernel/KviActionManager.cpp:66
 msgid "GUI"
@@ -4173,7 +4173,7 @@ msgstr "Dirección IP local"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:950
 msgid "Local host address is %Q"
-msgstr "La dirección local de la máquina es %Q"
+msgstr "La dirección de la máquina local es %Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1100
 msgid "Local hostname as seen by the IRC server resolved to %Q"
@@ -4734,11 +4734,11 @@ msgstr "No se ha puesto tema para el canal \r!c\r%Q\r"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:159
 msgid "No topic message has been received from the server yet"
-msgstr "El servidor an no ha enviado un mensaje de tema"
+msgstr "El servidor aún no ha enviado un mensaje de tema"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:823
 msgid "No updates found"
-msgstr "No se encontraron actualizaciones nuevas"
+msgstr "No hay actualizaciones"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:951
 msgid "No users in the notify list"
@@ -4777,11 +4777,11 @@ msgstr "No pasa nada..."
 
 #: src/kvirc/ui/KviIrcView_events.cpp:956
 msgid "Nothing known about %1"
-msgstr "No sé nada acerca de %1"
+msgstr "No sé nada de %1"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:957
 msgid "Nothing known about %1 (no connection)"
-msgstr "No sé nada acerca de %1 (no hay conexión)"
+msgstr "No sé nada de %1 (no hay conexión)"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:139 src/kvirc/ui/KviConsoleWindow.cpp:142
 msgid "Notify List"
@@ -4925,7 +4925,7 @@ msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? "
 "(restarting)"
 msgstr ""
-"Lista de notificación: inconsistencia inesperada, base de datos de usuarios "
+"Lista de notificación: inconsistencia inesperada, ¿base de datos de usuarios "
 "registrados modificada? (reiniciando)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1212
@@ -4933,7 +4933,7 @@ msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? (watch: "
 "restarting)"
 msgstr ""
-"Lista de notificación: inconsistencia inesperada, ¿BD de usuarios "
+"Lista de notificación: inconsistencia inesperada, ¿base de datos de usuarios "
 "registrados modificada? (watch: reiniciando)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:741
@@ -5066,19 +5066,19 @@ msgstr "Argh... error interno"
 #: src/kvirc/kernel/KviIrcLink.cpp:97
 msgid "Ops... for some reason the link filter object has been destroyed"
 msgstr ""
-"Ops... por alguna razón el objeto del filtro de enlace ha sido destruido"
+"Argh... por alguna razón el objeto del filtro de enlace ha sido destruido"
 
 #: src/kvirc/ui/KviWindow.cpp:514
 msgid "Ops...I've accidentally lost the crypting engine..."
-msgstr "Ops... he perdido accidentalmente el motor de cifrado..."
+msgstr "Argh... he perdido el motor de cifrado sin querer..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:219
 msgid "Ops...decrypt cipher not initialized"
-msgstr "Ups... motor de descifrado no inicializado"
+msgstr "Argh... motor de descifrado no inicializado"
 
 #: src/modules/rijndael/libkvirijndael.cpp:182
 msgid "Ops...encrypt cipher not initialized"
-msgstr "Ups... motor de cifrado no inicializado"
+msgstr "Argh... motor de cifrado no inicializado"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:740
 #, c-format
@@ -5281,7 +5281,7 @@ msgid ""
 "\"<b>Browse</b>\"button to browse local folders.<br>The full URL for an "
 "image (including <b>http://</b>) can be entered manually."
 msgstr ""
-"Por favor, escoge una imagen avatar. Se puede usar una ruta completa a un "
+"Por favor, escoge una imagen de avatar. Se puede usar una ruta completa a un "
 "archivo local o una imagen en la Web.<br>Si deseas usar un archivo local, "
 "pulsa el botón \"<b>Navegar</b>\" para moverte por los directorios locales."
 "<br>Puede introducirse una URL completa (incluyendo <b>http://</b>) para una "
