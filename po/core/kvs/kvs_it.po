@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-14 00:46+0000\n"
-"PO-Revision-Date: 2011-02-12 15:46+0100\n"
+"PO-Revision-Date: 2011-03-18 17:55+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -448,12 +448,16 @@ msgid ""
 "Found token '%Q' where a 'case','match','regexp','default' or 'break' label "
 "was expected"
 msgstr ""
+"Trovato il segno '%Q' dove mi aspettavo un'etichetta 'case', 'match', "
+"'regexp', 'default' o 'break'"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1877
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
 msgstr ""
+"Trovato il segno '%Q' dove mi aspettavo un'etichetta 'prologue', "
+"'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' o 'epilogue'"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:813
 msgid "Garbage string after the expression in 'do' command: ignored"
@@ -486,17 +490,20 @@ msgstr "Dati iniettati in arrivo: %1"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:83
 msgid "Internal error: pure virtual evaluateReadOnly called"
-msgstr ""
+msgstr "Errore interno: chiamata la funzione virtuale evaluateReadOnly"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:96
 msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
 msgstr ""
+"Errore interno: chiamata la funzione virtuale evaluateReadOnlyInObjectScope"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:89
 #: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:102
 msgid ""
 "Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
+"Errore interno: cerco di valutare come lettura-scrittura una zona di memoria "
+"di sola lettura"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:391
 msgid "Invalid IRC url (%Q)"
@@ -504,11 +511,11 @@ msgstr "Url IRC invalido (%Q)"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1251
 msgid "Invalid color-set specification, using default"
-msgstr ""
+msgstr "Set di colori specificato non valido, uso il predefinito"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:70
 msgid "Invalid command evaluation in object scope"
-msgstr ""
+msgstr "Valutazione del comando non valida nella visibilità dell'oggetto"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
 msgid "Invalid data type for parameter \"%1\""
@@ -537,7 +544,7 @@ msgstr "Valore di durata non valido: uso il predefinito"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:55
 msgid "Invalid expression evaluation in object scope"
-msgstr ""
+msgstr "Valutazione dell'espressione non valida nella visibilità dell'oggetto"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:411
 msgid "Invalid index specified: ignored"
@@ -545,7 +552,7 @@ msgstr "Indice specificato non valido: ignoro"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:331
 msgid "Invalid pitch value: using default"
-msgstr ""
+msgstr "Valore di picco non valido: uso il predefinito"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp:89
 msgid ""
@@ -555,11 +562,11 @@ msgstr ""
 
 #: src/kvirc/kvs/object/KviKvsObjectClass.cpp:165
 msgid "It's not allowed to return values in the constructor"
-msgstr ""
+msgstr "Non è permesso ritornare valori nel costruttore"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:249
 msgid "Lag meter was not enabled"
-msgstr ""
+msgstr "Il misuratore di lag non è abilitato"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:367
 msgid "Left operand didn't evaluate to a number"
@@ -567,7 +574,7 @@ msgstr "L'operando sinistro non viene valutato come un numero"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:630
 msgid "List of active timers"
-msgstr ""
+msgstr "Lista dei timer attivi"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1136
 msgid "Listing Qt properties for object named '%Q' of KVS class %Q"
@@ -698,6 +705,8 @@ msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
 msgstr ""
+"Carattere %q annidato corrispondente al terminatore aspettato, questo "
+"potrebbe confondermi un po': è una buona idea racchiuderlo tra virgolette"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1211
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1439
@@ -706,7 +715,7 @@ msgstr "Nessuna proprietà Qt '%Q' per l'oggetto '%Q' della classe '%Q'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:448
 msgid "No button with type %Q named %Q"
-msgstr ""
+msgstr "Nessun pulsante di tipo %Q chiamato %Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:780
 msgid "No catalogue %Q for the current language found"
@@ -714,7 +723,7 @@ msgstr "Nessun catalogo %Q trovato per la lingua corrente"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:454
 msgid "No commandline specified for this type of url (%Q)"
-msgstr ""
+msgstr "Nessuna linea di comando specificata per questo tipo di url (%Q)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
@@ -813,7 +822,7 @@ msgstr "Proprietà: %1%2%3, tipo %4"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
 msgid "Recursive definition detected for popup '%Q': ignoring"
-msgstr ""
+msgstr "Trovata definizione ricorsiva nel popup '%Q': ignoro"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:374
 msgid "Right operand didn't evaluate to a number"
@@ -833,7 +842,7 @@ msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3161
 msgid "Skipping nested terminator character %q"
-msgstr ""
+msgstr "Salto il carattere terminatore %q annidato"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:992
 msgid ""
@@ -846,24 +855,28 @@ msgstr ""
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
+"Carattere ':' isolato nel nome dell'alias: intendevi dire ...<namespace>::<"
+"nome> ?"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
-msgstr ""
+msgstr "Carattere ':' isolato: intendevi dire '...<namespace>::<nome alias>' ?"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
-msgstr ""
+msgstr "Sequenza '::' isolata o non valida seguendo il nome dell'alias"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3188
 msgid "Stray backslash at the end of the script"
-msgstr ""
+msgstr "Backslash isolata alla fine dello script"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:60
 msgid "Stray dot ('.') character or invalid following module command name"
 msgstr ""
+"Carattere punto ('.') isolato o non valido seguendo il nome del comando di "
+"un modulo"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:46
 msgid ""
@@ -889,26 +902,31 @@ msgstr ""
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:154
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
 msgstr ""
+"Errore di sintassi: chiamata a funzione $$ ($this) non valida nella "
+"visibilità dell'oggetto"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:94
 msgid "Syntax error: malformed (alias?) command identifier"
-msgstr ""
+msgstr "Errore di sintassi: identificatore del comando (alias?) malformato"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:188
 msgid "Syntax error: malformed (alias?) function call identifier"
 msgstr ""
+"Errore di sintassi: identificatore della chiamata a funzione (alias?) "
+"malformato"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:180
 msgid "Syntax error: malformed alias function call identifier"
 msgstr ""
+"Errore di sintassi: identificatore della chiamata a funzione malformato"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:86
 msgid "Syntax error: malformed alias identifier"
-msgstr ""
+msgstr "Errore di sintassi: identificatore dell'alias malformato"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:61
 msgid "Syntax error: malformed module command identifier"
-msgstr ""
+msgstr "Errore di sintassi: identificatore del comando del modulo malformato"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:369
 msgid "The $sw() function can be used only in aliases"
@@ -1645,3 +1663,4 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"
 msgstr ""
+

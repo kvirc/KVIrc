@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-02-10 19:23+0100\n"
+"PO-Revision-Date: 2011-03-18 17:33+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@"
 "\r!h\r%Q\r]: %Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] è stato kickato dal canale \r!c\r%Q\r da \r!n\r%Q"
-"\r [%Q@\r!h\r%Q\r]: %Q"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] è stato kickato dal canale \r!c\r%Q\r da "
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1484
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
@@ -500,9 +500,8 @@ msgid "&Cascade Windows"
 msgstr "Finestre a &cascata"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:166
-#, fuzzy
 msgid "&Case sensitive"
-msgstr "C&ase sensitive"
+msgstr "&Case sensitive"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:100
 msgid "&Configure KVIrc..."
@@ -569,9 +568,8 @@ msgid "&Minimalist Theme"
 msgstr "Tema minimalista"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:99
-#, fuzzy
 msgid "&Next"
-msgstr "Prossimo"
+msgstr "&Prossimo"
 
 #: src/modules/setup/SetupWizard.cpp:85
 msgid "&Next >"
@@ -590,9 +588,8 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:109
-#, fuzzy
 msgid "&Options"
-msgstr "Azioni"
+msgstr "&Opzioni"
 
 #: src/kvirc/ui/KviMenuBar.cpp:250 src/kvirc/ui/KviMenuBar.cpp:258
 msgid "&Other..."
@@ -607,9 +604,8 @@ msgid "&Preview"
 msgstr "Ante&prima"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:104
-#, fuzzy
 msgid "&Previous"
-msgstr "Ante&prima"
+msgstr "&Precedente"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:114 src/kvirc/ui/KviMenuBar.cpp:241
 msgid "&Quit"
@@ -1580,7 +1576,7 @@ msgstr "Broken pipe"
 
 #: src/modules/help/HelpWidget.cpp:103
 msgid "Browsing: "
-msgstr ""
+msgstr "Sfogliare:"
 
 #: src/kvirc/ui/KviImageDialog.cpp:240
 msgid "Builtin $icon(%1) [index %2]"
@@ -3447,9 +3443,8 @@ msgid "High activity"
 msgstr "Molta attività "
 
 #: src/modules/help/HelpWidget.cpp:73
-#, fuzzy
 msgid "Highlight: "
-msgstr "Testo evidenziato"
+msgstr "Testo evidenziato:"
 
 #: src/kvirc/kernel/KviOptions.cpp:732
 msgid "Highlighted text"
@@ -4272,9 +4267,8 @@ msgid "Mask editor - KVirc"
 msgstr "Editor per le maschere - KVIrc"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:163
-#, fuzzy
 msgid "Match:"
-msgstr "watch"
+msgstr "Corrisponde:"
 
 #: src/modules/links/LinksWindow.cpp:295
 #, c-format
@@ -4296,9 +4290,8 @@ msgid "Medium activity"
 msgstr "Attività media"
 
 #: src/kvirc/kernel/KviOptions.cpp:878
-#, fuzzy
 msgid "MemoServ message"
-msgstr "messaggi dal ChanServ"
+msgstr "Messaggi da MemoServ"
 
 #: src/kvirc/kernel/KviOptions.cpp:1269
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
@@ -4315,7 +4308,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:120
 msgid "Message types"
-msgstr ""
+msgstr "Tipi del messaggio"
 
 #: src/kvirc/ui/KviMdiManager.cpp:275
 msgid "Mi&nimize All"
@@ -5229,7 +5222,7 @@ msgstr "Incolla (una riga per volta)"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:155
 msgid "Pattern:"
-msgstr ""
+msgstr "Modello:"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:99
 msgid "Peer X509 certificate"
@@ -5250,9 +5243,8 @@ msgid "Pixmap options (image path)"
 msgstr "Opzioni del Pixmap (percorso dell'immagine)"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:158
-#, fuzzy
 msgid "Plain Text"
-msgstr "Trova Testo"
+msgstr "Testo Semplice"
 
 #: src/kvirc/ui/KviSelectors.cpp:798
 msgid "Play"
@@ -5725,9 +5717,8 @@ msgid "Refresh index"
 msgstr "Aggiorna indice"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:160
-#, fuzzy
 msgid "RegExp"
-msgstr "Reop"
+msgstr "RegExp"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:329
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:389
@@ -5807,9 +5798,8 @@ msgid "Restore"
 msgstr "Ripristina"
 
 #: src/kvirc/ui/KviMenuBar.cpp:214
-#, fuzzy
 msgid "Restore &Default Script..."
-msgstr "Ripristina Script pre&definiti"
+msgstr "Ripristina Script Predefiniti..."
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:111
 msgid "Restore Default Script - Error"
@@ -6216,9 +6206,8 @@ msgid "Show Quick Access Navigation Panel"
 msgstr "Mostra il Pannello di Navigazione accesso rapido"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:139
-#, fuzzy
 msgid "Show SocketSpy"
-msgstr "Mostra Spia Socket..."
+msgstr "Mostra Spia Socket"
 
 #: src/kvirc/ui/KviMenuBar.cpp:171
 msgid "Show StatusBar"
@@ -6454,9 +6443,8 @@ msgid "Sound system detected to: %s"
 msgstr "Rilevato sistema sonoro: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:801
-#, fuzzy
 msgid "Spam filter listing"
-msgstr "Elenco Inviti"
+msgstr "Elenco filtro spam"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1249
 msgid ""
@@ -6908,9 +6896,8 @@ msgstr ""
 "Il contesto IRC specificato non è valido: creo una finestra senza contesto"
 
 #: src/modules/window/libkviwindow.cpp:1157
-#, fuzzy
 msgid "The specified Icon does not exist: switching to 'none'"
-msgstr "La directory specificata '%Q' non esiste"
+msgstr "L'icona specificata non esiste: passo a 'none'"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:474
 msgid "The specified bind address (%Q) is not valid"
@@ -7012,9 +6999,8 @@ msgstr ""
 "\r%Q\r [%Q@\r!h\r%Q\r] ha cambiato il suo nickname in \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviTheme.cpp:80
-#, fuzzy
 msgid "The theme data file does not exist"
-msgstr "Il file di informazioni del tema non esiste"
+msgstr "Il file dei dati del tema non esiste"
 
 #: src/kvirc/kernel/KviTheme.cpp:74
 msgid "The theme information file does not exist"
@@ -7819,7 +7805,7 @@ msgstr "Wildcard server (hub?): %d"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:159
 msgid "Wildcards"
-msgstr ""
+msgstr "Caratteri jolly"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:617
 msgid "Will attempt to reconnect in %1 seconds"
@@ -8550,7 +8536,7 @@ msgstr "opzione alternativa specifica per il server"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:767
 msgid "spam filter list"
-msgstr ""
+msgstr "lista del filtro spam"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1326
 msgid "third alternative nickname specified in options"

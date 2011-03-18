@@ -2,11 +2,12 @@
 # In this file, there are all files which have to be documented. #
 #                                                                #
 # Documenting these files involves two steps:                    #
-# 1. port the files to the Hungarian Notation                    #
-#    http://en.wikipedia.org/wiki/Hungarian_notation             #
-# 2. adding Doxygen documentation using its special comments to  #
-#    complete the milestone "Code cleanups and documentation"    #
-#    https://svn.kvirc.de/kvirc/roadmap                          #
+# 1. port the files to the Hungarian Notation:                   #
+#    see http://en.wikipedia.org/wiki/Hungarian_notation         #
+# 2. add Doxygen documentation using its special comments        #
+#                                                                #
+# These steps will complete the milestone "Code cleanups and     #
+# documentation": see https://svn.kvirc.de/kvirc/roadmap         #
 #                                                                #
 # Legend:                                                        #
 # The first column refers to step 1, the second one to step 2    #
@@ -741,6 +742,8 @@
   KviTreeWindowList.h
   KviUserListView.cpp
   KviUserListView.h
+  KviWebPackageManagementDialog.cpp
+  KviWebPackageManagementDialog.h
 ++KviWindow.cpp
 +-KviWindow.h
   KviWindowListBase.cpp

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-01-10 19:23+0100\n"
+"PO-Revision-Date: 2011-03-18 17:16+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -222,6 +222,7 @@ msgstr "Tipo di dato non supportato"
 #: src/modules/objects/KvsObject_webView.cpp:513
 msgid "Document element is null: you must call getDocumentElement first"
 msgstr ""
+"L'elemento del documento è nullo: devi prima chiamare getDocumentElement"
 
 #: src/modules/objects/KvsObject_sql.cpp:212
 msgid "Duplicate connection name '%Q', old query connection removed"
@@ -320,9 +321,8 @@ msgid "Invalid dock area specified"
 msgstr "Area dock invalida"
 
 #: src/modules/objects/KvsObject_webView.cpp:629
-#, fuzzy
 msgid "Invalid file path '%Q'"
-msgstr "Modo '%Q' invalido"
+msgstr "Percorso del file '%Q' non valido"
 
 #: src/modules/objects/KvsObject_comboBox.cpp:331
 msgid "Invalid insertion Policy '%Q'"
@@ -745,18 +745,18 @@ msgid "Unknown brush style '%Q'"
 msgstr "Stile del pennello '%Q' sconosciuto"
 
 #: src/modules/objects/KvsObject_webView.cpp:234
-#, fuzzy
 msgid "Unknown delegation policy '%Q'- Switch do default dontDeleGateLinks"
-msgstr "Asse '%Q' sconosciuto, passo al predefinito ZAxis"
+msgstr ""
+"Politica della delegazione '%Q' sconosciuta - passo alla predefinita "
+"dontDelegateLinks"
 
 #: src/modules/objects/KvsObject_lineEdit.cpp:407
 msgid "Unknown echo mode '%Q'"
 msgstr "Modo echo '%Q' sconosciuto"
 
 #: src/modules/objects/KvsObject_webView.cpp:542
-#, fuzzy
 msgid "Unknown frame '%Q'"
-msgstr "Modo '%Q' sconosciuto"
+msgstr "Frame '%Q' sconosciuto"
 
 #: src/modules/objects/KvsObject_treeWidgeteItem.cpp:287
 #: src/modules/objects/KvsObject_tableWidget.cpp:795
@@ -805,9 +805,8 @@ msgid "Unknown tickmark '%Q'"
 msgstr "Tickmark '%Q' sconosciuto"
 
 #: src/modules/objects/KvsObject_webView.cpp:422
-#, fuzzy
 msgid "Unknown web setting '%Q'"
-msgstr "Posizione del testo '%Q' sconosciuta"
+msgstr "Opzione web '%Q' sconosciuta"
 
 #: src/modules/objects/KvsObject_widget.cpp:1922
 msgid "Unknown widget attribute '%Q'"
