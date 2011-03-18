@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-03-05 18:49+0600\n"
+"POT-Creation-Date: 2011-03-14 00:46+0000\n"
+"PO-Revision-Date: 2011-03-18 22:05+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/defscript/popups.kvs:542
 msgid "&Administrator"
@@ -180,7 +180,7 @@ msgstr "Всегда подсвечивать"
 
 #: data/defscript/popups.kvs:1406
 msgid "Automatically Join Channel"
-msgstr ""
+msgstr "Автоматически заходить на канал"
 
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
@@ -198,15 +198,15 @@ msgstr "Отмена"
 
 #: data/defscript/aliases.kvs:445
 msgid "Channel Administrator"
-msgstr ""
+msgstr "Администратор канала"
 
 #: data/defscript/aliases.kvs:447
 msgid "Channel Operator"
-msgstr ""
+msgstr "Оператор канала"
 
 #: data/defscript/aliases.kvs:443
 msgid "Channel Owner"
-msgstr ""
+msgstr "Владелец канала"
 
 #: data/defscript/popups.kvs:714
 #: data/defscript/popups.kvs:774
@@ -228,7 +228,7 @@ msgstr "Выберите имя файла журнала"
 
 #: data/defscript/popups.kvs:407
 msgid "Choose..."
-msgstr ""
+msgstr "Выбор..."
 
 #: data/defscript/popups.kvs:763
 #: data/defscript/popups.kvs:866
@@ -248,19 +248,19 @@ msgstr "Закрыть"
 
 #: data/defscript/popups.kvs:1466
 msgid "Close All Dead Channels"
-msgstr ""
+msgstr "Закрыть все мёртвые каналы"
 
 #: data/defscript/popups.kvs:1472
 msgid "Close All Dead Queries"
-msgstr ""
+msgstr "Закрыть все мёртвые приваты"
 
 #: data/defscript/popups.kvs:1460
 msgid "Close All Queries"
-msgstr ""
+msgstr "Закрыть все приваты"
 
 #: data/defscript/popups.kvs:627
 msgid "Configure ban mask..."
-msgstr ""
+msgstr "Настроить маску бана..."
 
 #: data/defscript/popups.kvs:687
 msgid "Copy Channel Address"
@@ -317,7 +317,7 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:449
 msgid "Half Operator"
-msgstr ""
+msgstr "Полуоператор"
 
 #: data/defscript/default.kvs:37
 msgid "Happy ircing :)"
@@ -561,11 +561,11 @@ msgstr "Начать подсветку (локально)"
 
 #: data/defscript/popups.kvs:1437
 msgid "Stop Auto-Joining Channel on Network '?s'"
-msgstr ""
+msgstr "Больше не заходить автоматически на этот канал в сети '?s'"
 
 #: data/defscript/popups.kvs:1424
 msgid "Stop Auto-Joining Channel on Server '?s'"
-msgstr ""
+msgstr "Больше не заходить автоматически на этот канал на сервере'?s'"
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
@@ -676,11 +676,11 @@ msgstr "Голосовой чат"
 
 #: data/defscript/popups.kvs:1416
 msgid "When Connecting to Network '?s'"
-msgstr ""
+msgstr "При подключении к сети '?s'"
 
 #: data/defscript/popups.kvs:1409
 msgid "When Connecting to Server '?s'"
-msgstr ""
+msgstr "При подключении к серверу '?s'"
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"
@@ -730,7 +730,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:104
 msgid "is being ignored"
-msgstr ""
+msgstr "игнорируется"
 
 #: data/defscript/popups.kvs:333
 msgid "is in the notify list"
@@ -739,7 +739,7 @@ msgstr ""
 #: data/defscript/popups.kvs:105
 #: data/defscript/popups.kvs:109
 msgid "is not being ignored"
-msgstr ""
+msgstr "не игнорируется"
 
 #: data/defscript/popups.kvs:339
 msgid "is not registered"
@@ -785,3 +785,5 @@ msgstr ""
 #: data/defscript/popups.kvs:837
 msgid "z (Debug Stats?)"
 msgstr ""
+
+
