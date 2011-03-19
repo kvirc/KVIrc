@@ -1,24 +1,26 @@
 # translation of perl_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Ádám Fibinger <vfiber@interware.hu>, 2006.
 #
+# Ádám Fibinger <vfiber@interware.hu>, 2006.
+# Adam Fibinger <vfiber[at]gmaildotcom>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: perl_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-22 15:48+0200\n"
-"PO-Revision-Date: 2006-05-24 04:54+0200\n"
-"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
-"Language-Team: hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2011-03-15 16:56+0100\n"
+"Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
+"Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/perlcore/libkviperlcore.cpp:234
 msgid "Internal error: perl interpreter not initialized"
-msgstr ""
+msgstr "Belső hiba: a perl értelmező nem lett inicializálva"
 
 #: src/modules/perl/libkviperl.cpp:477
 #: src/modules/perl/libkviperl.cpp:481
@@ -31,12 +33,8 @@ msgstr "A perl mag modul nem tölthető be, perl támogatás nem lesz elérhető
 
 #: src/modules/perl/libkviperl.cpp:460
 #: src/modules/perl/libkviperl.cpp:534
-msgid ""
-"The perlcore module failed to execute the code: something is wrong with the "
-"perl support"
-msgstr ""
-"A perl mag modul nem képes kódot futtatni. Valami nem stimmel a perl "
-"támogatással"
+msgid "The perlcore module failed to execute the code: something is wrong with the perl support"
+msgstr "A perl mag modul nem képes kódot futtatni. Valami nem stimmel a perl támogatással"
 
 #: src/modules/perl/libkviperl.cpp:61
 msgid "This KVIrc executable has been compiled without perl scripting support"
@@ -45,3 +43,4 @@ msgstr "Ez a KVIrc verzió perl támogatás nélkül lett lefordítva"
 #: src/modules/perl/libkviperl.cpp:48
 msgid "To see more details about loading failure try /perlcore.load"
 msgstr "További részletekért a betöltési hibáról próbáld: /perlcore.load"
+

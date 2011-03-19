@@ -1,28 +1,27 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
+# Adam Fibinger <vfiber[at]gmaildotcom>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-22 15:48+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2011-03-15 16:57+0100\n"
+"Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
+"Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.2-beta2\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/serverdb/libkviserverdb.cpp:685
 msgid "The network specified already exists"
-msgstr ""
+msgstr "A megadott hálózatnév már létezik"
 
 #: src/modules/proxydb/libkviproxydb.cpp:453
 msgid "The specified IP is not valid"
-msgstr ""
+msgstr "A megadott IP cím hibás"
 
 #: src/modules/serverdb/libkviserverdb.cpp:169
 #: src/modules/serverdb/libkviserverdb.cpp:203
@@ -30,16 +29,16 @@ msgstr ""
 #: src/modules/serverdb/libkviserverdb.cpp:826
 #: src/modules/serverdb/libkviserverdb.cpp:868
 msgid "The specified network does not exist"
-msgstr ""
+msgstr "A megadott hálózat nem létezik"
 
 #: src/modules/proxydb/libkviproxydb.cpp:311
 #: src/modules/proxydb/libkviproxydb.cpp:577
 msgid "The specified protocol does not exist"
-msgstr ""
+msgstr "A megadott protokoll nem létezik"
 
 #: src/modules/proxydb/libkviproxydb.cpp:284
 msgid "The specified proxy already exists"
-msgstr ""
+msgstr "A megadott proxy már létezik"
 
 #: src/modules/proxydb/libkviproxydb.cpp:70
 #: src/modules/proxydb/libkviproxydb.cpp:113
@@ -49,20 +48,20 @@ msgstr ""
 #: src/modules/proxydb/libkviproxydb.cpp:569
 #: src/modules/proxydb/libkviproxydb.cpp:613
 msgid "The specified proxy does not exist"
-msgstr ""
+msgstr "A megadott proxy nem létezik"
 
 #: src/modules/serverdb/libkviserverdb.cpp:773
 msgid "The specified server already exists"
-msgstr ""
+msgstr "A megadott szerver már létezik"
 
 #: src/modules/serverdb/libkviserverdb.cpp:210
 #: src/modules/serverdb/libkviserverdb.cpp:876
 msgid "The specified server does not exist"
-msgstr ""
+msgstr "A megadott szerver nem létezik"
 
 #: src/modules/proxydb/libkviproxydb.cpp:434
 msgid "You must provide the IP as parameter"
-msgstr ""
+msgstr "Meg kell adnod az IP-címet paraméterként"
 
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
@@ -72,15 +71,15 @@ msgstr ""
 #: src/modules/serverdb/libkviserverdb.cpp:812
 #: src/modules/serverdb/libkviserverdb.cpp:848
 msgid "You must provide the network name as parameter"
-msgstr ""
+msgstr "Meg kell adnod a hálózat nevét paraméterként"
 
 #: src/modules/proxydb/libkviproxydb.cpp:363
 msgid "You must provide the port number as parameter"
-msgstr ""
+msgstr "Meg kell adnod a port számát paraméterként"
 
 #: src/modules/proxydb/libkviproxydb.cpp:558
 msgid "You must provide the protocol as parameter"
-msgstr ""
+msgstr "Meg kell adnod a protokollt paraméterként"
 
 #: src/modules/proxydb/libkviproxydb.cpp:60
 #: src/modules/proxydb/libkviproxydb.cpp:103
@@ -90,21 +89,22 @@ msgstr ""
 #: src/modules/proxydb/libkviproxydb.cpp:552
 #: src/modules/proxydb/libkviproxydb.cpp:596
 msgid "You must provide the proxy hostname as parameter"
-msgstr ""
+msgstr "Meg kell adnod a proxy hosztnevét paraméterként"
 
 #: src/modules/proxydb/libkviproxydb.cpp:273
 msgid "You must provide the proxy name as parameter"
-msgstr ""
+msgstr "Meg kell adnod a proxy nevét paraméterként"
 
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
 #: src/modules/serverdb/libkviserverdb.cpp:754
 #: src/modules/serverdb/libkviserverdb.cpp:854
 msgid "You must provide the server name as parameter"
-msgstr ""
+msgstr "Meg kell adnod a szerver nevét paraméterként"
 
 #: src/modules/proxydb/libkviproxydb.cpp:602
 #: src/modules/serverdb/libkviserverdb.cpp:818
 #: src/modules/serverdb/libkviserverdb.cpp:860
 msgid "You must provide the value as parameter"
-msgstr ""
+msgstr "Meg kell adnod az értéket paraméterként"
+

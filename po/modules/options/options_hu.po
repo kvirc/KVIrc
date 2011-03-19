@@ -3,27 +3,30 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Ádám Fibinger <vfiber@interware.hu>, 2006, 2007, 2008.
 # Ádám Fibinger <vfiber@gmail.com>, 2007.
+# Adam Fibinger <vfiber[at]gmaildotcom>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2008-03-03 08:56+0100\n"
-"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
-"Language-Team: hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2011-03-15 16:56+0100\n"
+"Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
+"Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:285
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:285
 msgid " bytes"
 msgstr " bájt"
 
 #: src/modules/options/optw_query.cpp:102
 #: src/modules/options/optw_channel.cpp:140
 msgid " days"
-msgstr ""
+msgstr "nap"
 
 #: src/modules/options/optw_query.cpp:98
 #: src/modules/options/optw_ircview.cpp:155
@@ -35,7 +38,8 @@ msgstr " sor"
 msgid " min"
 msgstr " perc"
 
-#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -44,9 +48,8 @@ msgid " msec"
 msgstr "miliszek"
 
 #: src/modules/options/optw_ircview.cpp:182
-#, fuzzy
 msgid " pixels"
-msgstr " sor"
+msgstr " képpont"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:87
 msgid " requests"
@@ -114,9 +117,7 @@ msgstr "3D Rács"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Megjegyzés:</b> Újra kell indítanod a KVIrcet, hogy érvényesítsd a nyelvi "
-"beállításokat"
+msgstr "<b>Megjegyzés:</b> Újra kell indítanod a KVIrcet, hogy érvényesítsd a nyelvi beállításokat"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -139,308 +140,138 @@ msgid "<b>mailto:</b> handler command:"
 msgstr "<b>mailto:</b> kezelő parancs:"
 
 #: src/modules/options/optw_ctcp.cpp:40
-msgid ""
-"<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
-"Protocol</b> (CTCP) is used to transmit special control messages over an IRC "
-"connection. These messages can request information from clients or negotiate "
-"file transfers.<br><br></p>"
-msgstr ""
-"<center><b>CTCP beállítások.</b></center><p>A <b>Client-To-Client Protocol</"
-"b> (CTCP) különleges \"vezérlő\" üzeneteket tesz lehetővé IRC kapcsolaton "
-"keresztül. Ezek az üzenetek tartalmazhatnak információ kéréseket a "
-"klienstől, vagy fájl kapcsolatok egyeztetésében segíthetnek.<br><br></p>"
+msgid "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client Protocol</b> (CTCP) is used to transmit special control messages over an IRC connection. These messages can request information from clients or negotiate file transfers.<br><br></p>"
+msgstr "<center><b>CTCP beállítások.</b></center><p>A <b>Client-To-Client Protocol</b> (CTCP) különleges \"vezérlő\" üzeneteket tesz lehetővé IRC kapcsolaton keresztül. Ezek az üzenetek tartalmazhatnak információ kéréseket a klienstől, vagy fájl kapcsolatok egyeztetésében segíthetnek.<br><br></p>"
 
 #: src/modules/options/optw_servers.cpp:1328
 msgid "<center>Click here to edit advanced options for this entry</center>"
-msgstr ""
-"<center>Kattints ide, hogy a haladó beállításokat elérd ehhez az elemhez.</"
-"center>"
+msgstr "<center>Kattints ide, hogy a haladó beállításokat elérd ehhez az elemhez.</center>"
 
 #: src/modules/options/optw_dcc.cpp:77
-msgid ""
-"<center>Enable this option if you are on a multihost machine and want to "
-"force one of the available IP addresses to be used for outgoing DCCs."
-"<br>This is especially useful when you use IPv6 and IPv4 addresses.<br>You "
-"can force KVIrc to always choose the IPv4 interface.</center>"
-msgstr ""
-"<center>Engedélyezd ezt az opciót, ha egy többcímű gépet használsz és "
-"szeretnéd csak az egyik elérhető IP címet használni a kimenő DCC "
-"kapcsolatokhoz.<br>Különösen hasznos akkor, ha IPv4 és IPv6 címeket is "
-"használsz.<br> Be tudod állítani, hogy a KVIrc kifejezetten az IPv4 címeket "
-"használja.</center>"
+msgid "<center>Enable this option if you are on a multihost machine and want to force one of the available IP addresses to be used for outgoing DCCs.<br>This is especially useful when you use IPv6 and IPv4 addresses.<br>You can force KVIrc to always choose the IPv4 interface.</center>"
+msgstr "<center>Engedélyezd ezt az opciót, ha egy többcímű gépet használsz és szeretnéd csak az egyik elérhető IP címet használni a kimenő DCC kapcsolatokhoz.<br>Különösen hasznos akkor, ha IPv4 és IPv6 címeket is használsz.<br> Be tudod állítani, hogy a KVIrc kifejezetten az IPv4 címeket használja.</center>"
 
 #: src/modules/options/optw_dcc.cpp:53
-msgid ""
-"<center>Enable this option if you can't accept incoming connections."
-"<br>KVIrc will try to use different methods to send and receive files."
-"<br>Please note that these methods may NOT work when communicating with a "
-"non-KVIrc client.</center>"
-msgstr ""
-"<center>Engedélyezd, ha nem tudsz bejövő kapcsolódásokat fogadni.<br>KVIrc "
-"megpróbál más módon küldeni és fogadni fájlokat.<br>Megjegyzés: a KVIrc "
-"természetesen csak másik KVIrc klienssel tudja ezeket a problémákat kezelni."
-"</center>"
+msgid "<center>Enable this option if you can't accept incoming connections.<br>KVIrc will try to use different methods to send and receive files.<br>Please note that these methods may NOT work when communicating with a non-KVIrc client.</center>"
+msgstr "<center>Engedélyezd, ha nem tudsz bejövő kapcsolódásokat fogadni.<br>KVIrc megpróbál más módon küldeni és fogadni fájlokat.<br>Megjegyzés: a KVIrc természetesen csak másik KVIrc klienssel tudja ezeket a problémákat kezelni.</center>"
 
 #: src/modules/options/optw_dcc.cpp:91
-msgid ""
-"<center>Enable this option if you want specify a local port range for DCC.</"
-"center>"
-msgstr ""
-"<center>Engedélyezd ezt, ha szeretnél a DCC kapcsolatokhoz megadott portokat "
-"használni.</center>"
+msgid "<center>Enable this option if you want specify a local port range for DCC.</center>"
+msgstr "<center>Engedélyezd ezt, ha szeretnél a DCC kapcsolatokhoz megadott portokat használni.</center>"
 
 #: src/modules/options/optw_dcc.cpp:103
-msgid ""
-"<center>Enable this option if you want to always send a fake IP address in "
-"your DCC requests.<br>This might be useful if you're behind a router with a "
-"static address that does network address translation (NAT) and forwards all "
-"or a range of ports.</center>"
-msgstr ""
-"<center>Engedélyezd ezt az opciót, ha szeretnéd, hogy a KVIrc hamis IP címet "
-"küldjön a DCC kéréseidnél.<br>Ez hasznos lehet, ha router mögött vagy "
-"statikus címmel, amely cím automatikusan továbbít feléd mindent vagy csak "
-"egy port tartományt.</center>"
+msgid "<center>Enable this option if you want to always send a fake IP address in your DCC requests.<br>This might be useful if you're behind a router with a static address that does network address translation (NAT) and forwards all or a range of ports.</center>"
+msgstr "<center>Engedélyezd ezt az opciót, ha szeretnéd, hogy a KVIrc hamis IP címet küldjön a DCC kéréseidnél.<br>Ez hasznos lehet, ha router mögött vagy statikus címmel, amely cím automatikusan továbbít feléd mindent vagy csak egy port tartományt.</center>"
 
 #: src/modules/options/optw_dcc.cpp:269
-msgid ""
-"<center>Enable this option when the dcc file transfers tend to block your "
-"computer by consuming too much CPU time. When this option is enabled the "
-"idle interval below will be forcibly inserted between each sent/received "
-"data packet.</center>"
-msgstr ""
-"<center>Engedélyezd ezt, ha DCC adatátvitelnél a géped észrevehetően "
-"lelassul, túl nagy processzoridőt lefogva. Az opció engedélyezésekor A KVirc "
-"megadott tétlenségi időt határoz meg minden egyes küldött vagy fogadott "
-"adatcsomag után.</center>"
+msgid "<center>Enable this option when the dcc file transfers tend to block your computer by consuming too much CPU time. When this option is enabled the idle interval below will be forcibly inserted between each sent/received data packet.</center>"
+msgstr "<center>Engedélyezd ezt, ha DCC adatátvitelnél a géped észrevehetően lelassul, túl nagy processzoridőt lefogva. Az opció engedélyezésekor A KVirc megadott tétlenségi időt határoz meg minden egyes küldött vagy fogadott adatcsomag után.</center>"
 
 #: src/modules/options/optw_identity.cpp:64
-msgid ""
-"<center>Here you can choose up to three nicknames alternative to the primary "
-"one. KVIrc will use the alternatives if the primary nick is already used by "
-"someone else on a particular IRC network.</center>"
-msgstr ""
-"<center>Itt kiválaszthatsz három alternatív becenevet, az elsődleges után. A "
-"KVIrc ezeket az alternatívákat fogja használni, ha valaki már az elsődleges "
-"neveddel fent van az adott hálózaton.</center>"
+msgid "<center>Here you can choose up to three nicknames alternative to the primary one. KVIrc will use the alternatives if the primary nick is already used by someone else on a particular IRC network.</center>"
+msgstr "<center>Itt kiválaszthatsz három alternatív becenevet, az elsődleges után. A KVIrc ezeket az alternatívákat fogja használni, ha valaki már az elsődleges neveddel fent van az adott hálózaton.</center>"
 
 #: src/modules/options/optw_servers.cpp:254
-msgid ""
-"<center>Here you can set a list of channels to be joined automatically after "
-"a connection to a server in this network has been established. To add a "
-"channel, type its name in the text input below and click \"<b>Add</b>\".</"
-"center>"
-msgstr ""
-"<center>Itt megadhatod azokat a csatornákat, amire a KVIrc fellépjen, miután "
-"létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
-"csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
+msgid "<center>Here you can set a list of channels to be joined automatically after a connection to a server in this network has been established. To add a channel, type its name in the text input below and click \"<b>Add</b>\".</center>"
+msgstr "<center>Itt megadhatod azokat a csatornákat, amire a KVIrc fellépjen, miután létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
 
 #: src/modules/options/optw_servers.cpp:810
-msgid ""
-"<center>Here you can set a list of channels to be joined automatically after "
-"a connection to this server has been established. To add a channel, type its "
-"name in the text input below and click \"<b>Add</b>\".</center>"
-msgstr ""
-"<center>Itt megadhatod azokat a csatornákat, amire a KVIrc fellépjen, miután "
-"létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
-"csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
+msgid "<center>Here you can set a list of channels to be joined automatically after a connection to this server has been established. To add a channel, type its name in the text input below and click \"<b>Add</b>\".</center>"
+msgstr "<center>Itt megadhatod azokat a csatornákat, amire a KVIrc fellépjen, miután létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
 
 #: src/modules/options/optw_servers.cpp:1378
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Kattints ide, hogy elkezdj csatlakozni a kiválasztott szerverhez.</"
-"center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Kattints ide, hogy elkezdj csatlakozni a kiválasztott szerverhez.</center>"
 
 #: src/modules/options/optw_servers.cpp:592
-msgid ""
-"<center>If this is enabled, the global initial <b>user mode</b> (configured "
-"from the identity dialog) will be used. If disabled, you can configure an "
-"initial user mode for this server"
-msgstr ""
-"<center>Ha ez engedélyezve van, a globális <b>felhasználói módok</b> "
-"(azonosítóban beállított) lesznek használva. Ha nincs engedélyezve, "
-"beállíthatsz speciális felhasználó módokat a szerverhez"
+msgid "<center>If this is enabled, the global initial <b>user mode</b> (configured from the identity dialog) will be used. If disabled, you can configure an initial user mode for this server"
+msgstr "<center>Ha ez engedélyezve van, a globális <b>felhasználói módok</b> (azonosítóban beállított) lesznek használva. Ha nincs engedélyezve, beállíthatsz speciális felhasználó módokat a szerverhez"
 
 #: src/modules/options/optw_servers.cpp:157
-#, fuzzy
-msgid ""
-"<center>If this network requires a password, put it in this field, otherwise "
-"leave it empty.</center>"
-msgstr ""
-"<center>Ha erre a szerverre jelszó szükséges, ebben a mezőben megadhatod, "
-"egyébként hagyd üresen.</center>"
+msgid "<center>If this network requires a password, put it in this field, otherwise leave it empty.</center>"
+msgstr "<center>Ha erre a hálózatra jelszó szükséges, ebben a mezőben megadhatod, egyébként hagyd üresen.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:71
-msgid ""
-"<center>If this option is enabled, KVIrc will (attempt to) flash the system "
-"taskbar entry when a highlighted message is printed and KVIrc is not the "
-"active window</center>"
-msgstr ""
-"<center>Ha ez engedélyezve van a KVIrc megpróbálja a tálcán jelezni "
-"villogással, hogy kiemelt üzenetet észlelt, és az nem az aktív ablakban van. "
-"</center>"
+msgid "<center>If this option is enabled, KVIrc will (attempt to) flash the system taskbar entry when a highlighted message is printed and KVIrc is not the active window</center>"
+msgstr "<center>Ha ez engedélyezve van a KVIrc megpróbálja a tálcán jelezni villogással, hogy kiemelt üzenetet észlelt, és az nem az aktív ablakban van. </center>"
 
 #: src/modules/options/optw_highlighting.cpp:92
-#, fuzzy
-msgid ""
-"<center>If this option is enabled, KVIrc will alert in the window list only "
-"if a normal message is received in a channel.<br>Actions like joins, parts "
-"and mode changes will be ignored.<br> This is useful if you are in channels "
-"with a high rate of traffic and only want to be alerted for messages that "
-"are interesting to you.</center>"
-msgstr ""
-"<center>Ha ez engedélyezve van a KVIrc csak normál csatornára érkező "
-"üzeneteknél értesít <br> A csatlakozás, elhagyás és módváltásokat figyelmen "
-"kívül fogja hagyni.<br> Ez leginkább akkor hasznos, ha olyan csatornán vagy "
-"aminek nagy a forgalma, viszont téged kifejezetten csak néhány kiemelt "
-"üzenet érdekel. </center>"
+msgid "<center>If this option is enabled, KVIrc will alert in the window list only if a normal message is received in a channel.<br>Actions like joins, parts and mode changes will be ignored.<br> This is useful if you are in channels with a high rate of traffic and only want to be alerted for messages that are interesting to you.</center>"
+msgstr "<center>Ha ez engedélyezve van a KVIrc csak normál csatornára érkező üzeneteknél értesít <br> A csatlakozás, elhagyás és módváltásokat figyelmen kívül fogja hagyni.<br> Ez leginkább akkor hasznos, ha olyan csatornán vagy aminek nagy a forgalma, viszont téged kifejezetten csak néhányüzenet érdekel. </center>"
 
 #: src/modules/options/optw_highlighting.cpp:103
-#, fuzzy
-msgid ""
-"<center>If this option is enabled, KVIrc will alert in the window list only "
-"if the specified alert level is reached.</center>"
-msgstr ""
-"<center>Ha ez engedélyezve van, a KVIrc csak akkor figyelmeztet a tálcán, ha "
-"a megadott szintet elérte az üzenet.</center>"
+msgid "<center>If this option is enabled, KVIrc will alert in the window list only if the specified alert level is reached.</center>"
+msgstr "<center>Ha ez engedélyezve van, a KVIrc csak akkor figyelmeztet a tálcán, ha a megadott szintet elérte az üzenet.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:69
-msgid ""
-"<center>If this option is enabled, KVIrc will highlight any user message "
-"containing your current nickname</center>"
-msgstr ""
-"<center>Ha ez engedélyezve van, a KVirc ki fog emelni minden felhasználói "
-"üzenetet ami tartalmazza az aktuális nevedet</center>"
+msgid "<center>If this option is enabled, KVIrc will highlight any user message containing your current nickname</center>"
+msgstr "<center>Ha ez engedélyezve van, a KVirc ki fog emelni minden felhasználói üzenetet ami tartalmazza az aktuális nevedet</center>"
 
 #: src/modules/options/optw_highlighting.cpp:73
-msgid ""
-"<center>If this option is enabled, KVIrc will popup a little notifier window "
-"in the low right corner of your desktop when a highlighted message is "
-"printed and KVIrc is not the active window</center>"
-msgstr ""
-"<center>Ha ez engedélyezve van a KVIrc megjelenít egy kis értesítő ablakot a "
-"jobb alsó sarokban, amikor kiemelt szöveget észlel, és a KVIrc ablaka éppen "
-"nem aktív.</center>"
+msgid "<center>If this option is enabled, KVIrc will popup a little notifier window in the low right corner of your desktop when a highlighted message is printed and KVIrc is not the active window</center>"
+msgstr "<center>Ha ez engedélyezve van a KVIrc megjelenít egy kis értesítő ablakot a jobb alsó sarokban, amikor kiemelt szöveget észlel, és a KVIrc ablaka éppen nem aktív.</center>"
 
 #: src/modules/options/optw_servers.cpp:1386
-msgid ""
-"<center>If this option is enabled, the Servers dialog will appear every time "
-"you start KVIrc</center>"
-msgstr ""
-"<center>Engedélyezésnél ez az ablak meg fog jelenni minden indításkor.</"
-"center>"
+msgid "<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>"
+msgstr "<center>Engedélyezésnél ez az ablak meg fog jelenni minden indításkor.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-#, fuzzy
-msgid ""
-"<center>If this option is enabled, the window list will also alert for "
-"messages which are shown in queries.</center>"
-msgstr ""
-"<center>Ha ez az üzenet engedélyezve van, a tálcán figyelmeztet a KVIrc, "
-"hogy új Privát üzeneted érkezett.</center>"
+msgid "<center>If this option is enabled, the window list will also alert for messages which are shown in queries.</center>"
+msgstr "<center>Ha ez a beállítás engedélyezve van, a tálcán figyelmeztet a KVIrc, hogy új Privát üzeneted érkezett.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:95
-#, fuzzy
-msgid ""
-"<center>If this option is enabled, the window list will also alert for "
-"messages which contain a word from the highlighted words list above.</center>"
-msgstr ""
-"<center>Ha ez engedélyezve van, a tálcán csak akkor figyelmeztet ha az "
-"üzenet tartalmazza a kiemelt szavak valamelyikét a fenti listából. </center>"
+msgid "<center>If this option is enabled, the window list will also alert for messages which contain a word from the highlighted words list above.</center>"
+msgstr "<center>Ha ez engedélyezve van, a tálcán csak akkor figyelmeztet ha az üzenet tartalmazza a kiemelt szavak valamelyikét a fenti listából. </center>"
 
 #: src/modules/options/optw_servers.cpp:560
-msgid ""
-"<center>If this server requires a password, put it in this field, otherwise "
-"leave it empty.</center>"
-msgstr ""
-"<center>Ha erre a szerverre jelszó szükséges, ebben a mezőben megadhatod, "
-"egyébként hagyd üresen.</center>"
+msgid "<center>If this server requires a password, put it in this field, otherwise leave it empty.</center>"
+msgstr "<center>Ha erre a szerverre jelszó szükséges, ebben a mezőben megadhatod, egyébként hagyd üresen.</center>"
 
 #: src/modules/options/optw_dcc.cpp:128
-msgid ""
-"<center>If you enable this option, when a DCC request from a remote user "
-"can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is a nice "
-"feature so it is a good idea to leave it on unless for some reason you have "
-"deactivated the antiflood system: in this case turning off this option might "
-"help if you often get attacked by CTCP floods.</center>"
-msgstr ""
-"<center>Engedélyezd, ha szeretnéd, hogy ha a KVIrc küldjön egy értesítőt, ha "
-"nem tudja a kapcsolatot létrehozni. Ez egy hasznos opció, kivéve ha "
-"valamilyen oknál fogva a floodellenörző rendszer nem lenne bekapcsolva, és "
-"gyakran vagy kitéve CTCP flood támadásoknak. </center>"
+msgid "<center>If you enable this option, when a DCC request from a remote user can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is a nice feature so it is a good idea to leave it on unless for some reason you have deactivated the antiflood system: in this case turning off this option might help if you often get attacked by CTCP floods.</center>"
+msgstr "<center>Engedélyezd, ha szeretnéd, hogy ha a KVIrc küldjön egy értesítőt, ha nem tudja a kapcsolatot létrehozni. Ez egy hasznos opció, kivéve ha valamilyen oknál fogva a floodellenörző rendszer nem lenne bekapcsolva, és gyakran vagy kitéve CTCP flood támadásoknak. </center>"
 
 #: src/modules/options/optw_servers.cpp:904
-msgid ""
-"<center>If you want to enable SASL authentication, insert your nickname here."
-"</center>"
-msgstr ""
+msgid "<center>If you want to enable SASL authentication, insert your nickname here.</center>"
+msgstr "<center>Ha SASL azonosítást szeretnél engedélyezni, add meg a neved itt.</center>"
 
 #: src/modules/options/optw_servers.cpp:911
-msgid ""
-"<center>If you want to enable SASL authentication, insert your password here."
-"</center>"
-msgstr ""
+msgid "<center>If you want to enable SASL authentication, insert your password here.</center>"
+msgstr "<center>Ha SASL azonosítást szeretnél engedélyezni, add meg a jelszavad itt.</center>"
 
 #: src/modules/options/optw_channel.cpp:146
-msgid ""
-"<center>KVIrc sends out a channel /WHO message every now and then to keep "
-"the channel away list in sync. Use this option to disable this feature (and "
-"to save your IRC bandwidth.</center>"
-msgstr ""
-"<center>A KVIrc minden csatlakozáskor küld egy /WHO üzenetet, aminek a "
-"válasza tartalmazza a Távol listát, később csak frissíti ezt. Ez a "
-"sávszélesség megtakarítására szolgál. (nagyon nagy csatornáknál lehet "
-"lényeges)</center>"
+msgid "<center>KVIrc sends out a channel /WHO message every now and then to keep the channel away list in sync. Use this option to disable this feature (and to save your IRC bandwidth.</center>"
+msgstr "<center>A KVIrc minden csatlakozáskor küld egy /WHO üzenetet, aminek a válasza tartalmazza a Távol listát, később csak frissíti ezt. Ez a sávszélesség megtakarítására szolgál. (nagyon nagy csatornáknál lehet lényeges)</center>"
 
 #: src/modules/options/optw_query.cpp:103
 #: src/modules/options/optw_channel.cpp:141
-#, fuzzy
-msgid ""
-"<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
-"center>"
-msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
+msgid "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></center>"
+msgstr "<center>Minimum: <b>0 nap</b><br>Maximum: <b>10 nap</b></center>"
 
 #: src/modules/options/optw_query.cpp:99
 #: src/modules/options/optw_channel.cpp:137
-#, fuzzy
-msgid ""
-"<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
-"center>"
-msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
+msgid "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></center>"
+msgstr "<center>Minimum: <b>0 sor</b><br>Maximum: <b>50 sor</b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:88
-msgid ""
-"<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 "
-"requests</b></center>"
-msgstr ""
-"<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
+msgid "<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b></center>"
+msgstr "<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
 
 #: src/modules/options/optw_connection.cpp:87
-msgid ""
-"<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
-"center>"
+msgid "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></center>"
 msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
 
 #: src/modules/options/optw_channel.cpp:122
-#, fuzzy
-msgid ""
-"<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
-"center>"
-msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
+msgid "<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></center>"
+msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>60 mp</b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
-msgid ""
-"<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
-"center>"
+msgid "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></center>"
 msgstr "<center>Minimum: <b>1 mp</b><br>Maximum: <b>3600 mp</b></center>"
 
 #: src/modules/options/optw_connection.cpp:160
-msgid ""
-"<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</"
-"b></center>"
-msgstr ""
-"<center>Minimum: <b>10000 mikroszek</b><br>Maximum: <b>10000000 mikroszek</"
-"b></center>"
+msgid "<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b></center>"
+msgstr "<center>Minimum: <b>10000 mikroszek</b><br>Maximum: <b>10000000 mikroszek</b></center>"
 
 #: src/modules/options/optw_identity.cpp:127
 msgid "<center>Please wait while the avatar is being downloaded</center>"
@@ -451,1168 +282,445 @@ msgid "<center>Put here a brief description of the network.</center>"
 msgstr "<center>Ide tehetsz néhány szót a hálózatról magadnak. </center>"
 
 #: src/modules/options/optw_logging.cpp:52
-msgid ""
-"<center>Save logs with the current interval<br>Set to 0 to disable this "
-"feature</center>"
-msgstr ""
-"<center>Naplófájlok mentése az aktuális sűrűséggel.<br> Állítsd 0-ra a "
-"kikapcsoláshoz.</center>"
+msgid "<center>Save logs with the current interval<br>Set to 0 to disable this feature</center>"
+msgstr "<center>Naplófájlok mentése az aktuális sűrűséggel.<br> Állítsd 0-ra a kikapcsoláshoz.</center>"
 
 #: src/modules/options/optw_dcc.cpp:261
-msgid ""
-"<center>The \"send ahead\" DCC method allows data to be sent faster by "
-"breaking some of the rules of the original DCC SEND protocol specification."
-"<br>Most clients can handle this kind of optimisation so disable it only if "
-"you have problems.</center>"
-msgstr ""
-"<center>Az \"előreküldéses\" DCC eljárás lehetővé teszi az adatok gyorsabb "
-"küldését, néhány szabály felrúgásával a DCC SEND protokollokban.<br>A "
-"legtöbb kliens kezeli ezt, tehát akkor tiltsd le ha problémáid vannak a DCC "
-"kapcsolatokkal.</center>"
+msgid "<center>The \"send ahead\" DCC method allows data to be sent faster by breaking some of the rules of the original DCC SEND protocol specification.<br>Most clients can handle this kind of optimisation so disable it only if you have problems.</center>"
+msgstr "<center>Az \"előreküldéses\" DCC eljárás lehetővé teszi az adatok gyorsabb küldését, néhány szabály felrúgásával a DCC SEND protokollokban.<br>A legtöbb kliens kezeli ezt, tehát akkor tiltsd le ha problémáid vannak a DCC kapcsolatokkal.</center>"
 
 #: src/modules/options/optw_servers.cpp:826
-msgid ""
-"<center>The following commands will be executed after a connection has been "
-"established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
-"slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</"
-"tt>).<br>KVIrc will first send the USER command, then eventually PASS and "
-"NICK and then execute this command sequence.<br>This is particularly useful "
-"for IRC bouncers that require login commands.</center>"
-msgstr ""
-"<center>Ezek a parancsok fognak lefutni, amikor  a KVIrc létrehozta a "
-"kapcsolatot a szerverrel. <br><b>Fontos:</b> a parancsokat csak parancskezdő "
-"perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg "
-"jelszó titkos</tt> helyett!.)<br>A KVIrc elősször a USER parancsot hajtja "
-"végre, majd utána a PASS és a NICK elküldése következik (belépéskor), majd "
-"mindezek után ez a kódblokk fut le.<br> Ez általában olyankor hasznos ha egy "
-"BNC-re való csatlakozáskor szükség van plussz parancsokra.</center>"
+msgid "<center>The following commands will be executed after a connection has been established.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>KVIrc will first send the USER command, then eventually PASS and NICK and then execute this command sequence.<br>This is particularly useful for IRC bouncers that require login commands.</center>"
+msgstr "<center>Ezek a parancsok fognak lefutni, amikor  a KVIrc létrehozta a kapcsolatot a szerverrel. <br><b>Fontos:</b> a parancsokat csak parancskezdő perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg jelszó titkos</tt> helyett!.)<br>A KVIrc elősször a USER parancsot hajtja végre, majd utána a PASS és a NICK elküldése következik (belépéskor), majd mindezek után ez a kódblokk fut le.<br> Ez általában olyankor hasznos ha egy BNC-re való csatlakozáskor szükség van plussz parancsokra.</center>"
 
 #: src/modules/options/optw_servers.cpp:270
-msgid ""
-"<center>The following commands will be executed after a connection to a "
-"server in this network has been established.<br><b>Important:</b> Enter "
-"commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> "
-"instead of <tt>/quote pass secret</tt>).<br>KVIrc will first send the USER "
-"command, then eventually PASS and NICK and then execute this command "
-"sequence.</center>"
-msgstr ""
-"<center>Ezek a parancsok fognak lefutni, amikor  a KVIrc létrehozta a "
-"kapcsolatot a szerverrel. <br><b>Fontos:</b> a parancsokat csak parancskezdő "
-"perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg "
-"jelszó titkos</tt> helyett!.)<br>A KVIrc elősször a USER parancsot hajtja "
-"végre, majd utána a PASS és a NICK elküldése következik (belépéskor), majd "
-"mindezek után ez a kódblokk fut le.</center>"
+msgid "<center>The following commands will be executed after a connection to a server in this network has been established.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>KVIrc will first send the USER command, then eventually PASS and NICK and then execute this command sequence.</center>"
+msgstr "<center>Ezek a parancsok fognak lefutni, amikor  a KVIrc létrehozta a kapcsolatot a szerverrel. <br><b>Fontos:</b> a parancsokat csak parancskezdő perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg jelszó titkos</tt> helyett!.)<br>A KVIrc elősször a USER parancsot hajtja végre, majd utána a PASS és a NICK elküldése következik (belépéskor), majd mindezek után ez a kódblokk fut le.</center>"
 
 #: src/modules/options/optw_servers.cpp:289
-msgid ""
-"<center>The following commands will be executed after a successful login to "
-"a server in this network.<br><b>Important:</b> Enter commands <b>without</b> "
-"a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote "
-"privatelog</tt>).<br>This is useful for automatically opening queries, "
-"setting variables, etc.</center>"
-msgstr ""
-"<center>A következő parancsok akkor futnak le, ha sikeresen feljelentkezett "
-"a hálózatra.<br><b>Fontos:</b> a parancsokat csak parancskezdő perjel "
-"<b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg jelszó "
-"titkos</tt> helyett!)<br> Ezzel például automatikusan megnyithatsz "
-"privátokat, definiálhatsz változókat.</center>"
+msgid "<center>The following commands will be executed after a successful login to a server in this network.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>This is useful for automatically opening queries, setting variables, etc.</center>"
+msgstr "<center>A következő parancsok akkor futnak le, ha sikeresen feljelentkezett a hálózatra.<br><b>Fontos:</b> a parancsokat csak parancskezdő perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg jelszó titkos</tt> helyett!)<br> Ezzel például automatikusan megnyithatsz privátokat, definiálhatsz változókat.</center>"
 
 #: src/modules/options/optw_servers.cpp:845
-msgid ""
-"<center>The following commands will be executed after a successful login to "
-"this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
-"slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>)."
-"<br>This is useful for automatically opening queries, setting variables, etc."
-"</center>"
-msgstr ""
-"<center>A következő parancsok akkor futnak le, ha sikeresen feljelentkezett "
-"a hálózatra.<br><b>Important:<<br><b>Fontos:</b> a parancsokat csak "
-"parancskezdő perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> "
-"a<tt>/msg jelszó titkos</tt> helyett!)<br> Ezzel például automatikusan "
-"megnyithatsz privátokat, definiálhatsz változókat.</center>"
+msgid "<center>The following commands will be executed after a successful login to this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>This is useful for automatically opening queries, setting variables, etc.</center>"
+msgstr "<center>A következő parancsok akkor futnak le, ha sikeresen feljelentkezett a hálózatra.<br><b>Important:<<br><b>Fontos:</b> a parancsokat csak parancskezdő perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg jelszó titkos</tt> helyett!)<br> Ezzel például automatikusan megnyithatsz privátokat, definiálhatsz változókat.</center>"
 
 #: src/modules/options/optw_servers.cpp:201
-#, fuzzy
-msgid ""
-"<center>This box allows you to choose the preferred encoding for the servers "
-"in this network. This encoding will be used as the default for text messages."
-"If you choose \"Use System Encoding\" then the encoding will be set to the "
-"systemwide value that you choose in the \"Encoding\" page of the options "
-"dialog.</center>"
-msgstr ""
-"<center>Ez a beállítás lehetővé teszi, hogy ezeken a szervereken meghatározd "
-"a karakterkódolást. Ha a \"Renszerbeállítások szerint\" opció él, a KVIrc a "
-"\"Kódolás\" résznél megadottat használja.</center>"
+msgid "<center>This box allows you to choose the preferred encoding for the servers in this network. This encoding will be used as the default for text messages.If you choose \"Use System Encoding\" then the encoding will be set to the systemwide value that you choose in the \"Encoding\" page of the options dialog.</center>"
+msgstr "<center> Ezzel a beállítással megadhatod a használni kívánt kódolást a szervereknél ezen a hálózaton. Ezt a kódolást fogod használni alapértelmezettként a szöveges üzenetekhez. Ha a \"Rendszer alapértelmezett\" beállítást adod meg, akkor a rendszer-szintű érték lesz beállítva, ami a \"Kódolás\" oldalon beállítható a beállításokban. </center>"
 
 #: src/modules/options/optw_servers.cpp:189
-#, fuzzy
-msgid ""
-"<center>This box allows you to choose the preferred encoding for the servers "
-"in this network. This encoding will be used for server specific needs, like "
-"referencing nicknames and channel names.If you choose \"Use System Encoding"
-"\" then the encoding will be set to the systemwide value that you choose in "
-"the \"Encoding\" page of the options dialog.</center>"
-msgstr ""
-"<center>Ez a beállítás lehetővé teszi, hogy ezeken a szervereken meghatározd "
-"a karakterkódolást. Ha a \"Renszerbeállítások szerint\" opció él, a KVIrc a "
-"\"Kódolás\" résznél megadottat használja.</center>"
+msgid "<center>This box allows you to choose the preferred encoding for the servers in this network. This encoding will be used for server specific needs, like referencing nicknames and channel names.If you choose \"Use System Encoding\" then the encoding will be set to the systemwide value that you choose in the \"Encoding\" page of the options dialog.</center>"
+msgstr "<center> Ezzel a beállítással megadhatod a használni kívánt kódolást a szervereknél ezen a hálózaton Ezt a kódolást fogom használni a szerver által megadottaknál, pld.: becenevek, és csatorna nevek.Ha a \"Rendszer alapértelmezett\" beállítást adod meg, akkor a rendszer-szintű érték lesz beállítva, ami a \"Kódolás\" oldalon beállítható a beállításokban. </center>"
 
 #: src/modules/options/optw_servers.cpp:741
-#, fuzzy
-msgid ""
-"<center>This box allows you to choose the preferred encoding for this "
-"server. This encoding will be used as the default for text messages.If you "
-"choose \"Use Network Encoding\" then the encoding will be inherited from the "
-"network that this server belongs to.</center>"
-msgstr ""
-"<center>Ez az opció lehetővé teszi, hogy kiválaszd a megadott kódolást erre "
-"a szererre. Ha \"Hálózati kódolás használata\" opciót választod, akkor a "
-"kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver "
-"tartozik.</center>"
+msgid "<center>This box allows you to choose the preferred encoding for this server. This encoding will be used as the default for text messages.If you choose \"Use Network Encoding\" then the encoding will be inherited from the network that this server belongs to.</center>"
+msgstr "<center>Ez az opció lehetővé teszi, hogy kiválaszd a megadott kódolást erre a szererre. Ez a kódolás lesz használva az alapértelmezett üzeneteknél.Ha \"Hálózati kódolás használata\" opciót választod, akkor a kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver tartozik.</center>"
 
 #: src/modules/options/optw_servers.cpp:727
-#, fuzzy
-msgid ""
-"<center>This box allows you to choose the preferred encoding for this "
-"server. This encoding will be used for server specific needs, like "
-"referencing nicknames and channel names.If you choose \"Use Network Encoding"
-"\" then the encoding will be inherited from the network that this server "
-"belongs to.</center>"
-msgstr ""
-"<center>Ez az opció lehetővé teszi, hogy kiválaszd a megadott kódolást erre "
-"a szererre. Ha \"Hálózati kódolás használata\" opciót választod, akkor a "
-"kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver "
-"tartozik.</center>"
+msgid "<center>This box allows you to choose the preferred encoding for this server. This encoding will be used for server specific needs, like referencing nicknames and channel names.If you choose \"Use Network Encoding\" then the encoding will be inherited from the network that this server belongs to.</center>"
+msgstr "<center>Ez az opció lehetővé teszi, hogy kiválaszd a megadott kódolást erre a szererre. Ezt a kódolást fogom használni például beceneveknél és csatornaneveknél szükség szerint.Ha \"Hálózati kódolás használata\" opciót választod, akkor a kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver tartozik.</center>"
 
 #: src/modules/options/optw_servers.cpp:1340
-msgid ""
-"<center>This button shows a list of recently used servers. It allows you to "
-"quickly find them in the list.</center>"
-msgstr ""
-"<center>Ez egy lista a mostanában használt szerverekről. Így könnyedén "
-"megtalálhatod ezeket a listában.</center>"
+msgid "<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>"
+msgstr "<center>Ez egy lista a mostanában használt szerverekről. Így könnyedén megtalálhatod ezeket a listában.</center>"
 
 #: src/modules/options/optw_servers.cpp:896
-msgid ""
-"<center>This check enables the use of the <b>SASL</b> authentication "
-"procotol If you enable the proper global option in the Connection/SSL tab "
-"and fill the Sasl Nickname and Sasl Password fields in this page, the SASL "
-"protocol will be used for this server if available.</center>"
-msgstr ""
+msgid "<center>This check enables the use of the <b>SASL</b> authentication procotol If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>"
+msgstr "<center>Ezzel a dobozzal engedélyezheted a <b>SASL</b> azonosításiprotokollt. Ha a globális beállításoknál a Kapcsolat/SSL fülön engedélyezve van és a Sasl Becenév és Sasl Jelszó mezők ki vannak töltve, a SASL protokollt fogom használni a szerveren, ha a szerver támogatja.</center>"
 
 #: src/modules/options/optw_servers.cpp:881
-msgid ""
-"<center>This check enables the use of the <b>Transport Layer Security</b> "
-"protocol. If you enable the proper global option in the Connection/SSL tab, "
-"the TLS protocol will be used for this server if available.</center>"
-msgstr ""
+msgid "<center>This check enables the use of the <b>Transport Layer Security</b> protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server if available.</center>"
+msgstr "<center>Ezzel a dobozzal engedélyezheted a <b>Transport Layer Security</b> protokollt. Ha a globális beállításoknál a Kapcsolat/SSL fülön engedélyezve van a TLS protokoll, akkor ezt a protokollt fogom használni a szerveren, ha a szerver támogatja.</center>"
 
 #: src/modules/options/optw_servers.cpp:700
-msgid ""
-"<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
-"attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
-"IPv6 stack and you <b>must</b> have an IPv6 connection).</center>"
-msgstr ""
-"<center>Ezzel IPv6 szerverként azonosítod a szervert.<br>Ha engedélyezve "
-"van, a KVIrc IPv6 protokollal próbál kapcsolódni. (ehhez a rendszerednek ezt "
-"támogatnia<b>kell</b>, illetve létező IPv6 kapcsolatnak <b>kell</b> lennie.)"
+msgid "<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>"
+msgstr "<center>Ezzel IPv6 szerverként azonosítod a szervert.<br>Ha engedélyezve van, a KVIrc IPv6 protokollal próbál kapcsolódni. (ehhez a rendszerednek ezt támogatnia<b>kell</b>, illetve létező IPv6 kapcsolatnak <b>kell</b> lennie.)"
 
 #: src/modules/options/optw_servers.cpp:870
-#, fuzzy
-msgid ""
-"<center>This check will cause the connection to use the <b>Extended "
-"Capability</b> support. Obviously, this server must have support for this, "
-"too. Disable this for irc bouncers.</center>"
-msgstr ""
-"<center>Ezzel a kapcsolat <b>Secure Socket Layer</b> titkosítással fog "
-"létrejönni. Nyilván a szervernek is támogatnia kell ezt. :)</center>"
+msgid "<center>This check will cause the connection to use the <b>Extended Capability</b> support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>"
+msgstr "<center>Ezzel az opcióval a <b>Kiterjesztett Képesség</b> ellenőrzési protokollt engedélyezed. Nyilvánvalóan a szervernek ezt támogatnia kell.NE engedélyezd BNC használata esetén! (kapcsolódási hibát okozhat)</center>"
 
 #: src/modules/options/optw_servers.cpp:709
-msgid ""
-"<center>This check will cause the connection to use the <b>Secure Socket "
-"Layer</b> encryption support. Obviously, this server must have support for "
-"this, too. :)</center>"
-msgstr ""
-"<center>Ezzel a kapcsolat <b>Secure Socket Layer</b> titkosítással fog "
-"létrejönni. Nyilván a szervernek is támogatnia kell ezt. :)</center>"
+msgid "<center>This check will cause the connection to use the <b>Secure Socket Layer</b> encryption support. Obviously, this server must have support for this, too. :)</center>"
+msgstr "<center>Ezzel a kapcsolat <b>Secure Socket Layer</b> titkosítással fog létrejönni. Nyilván a szervernek is támogatnia kell ezt. :)</center>"
 
 #: src/modules/options/optw_servers.cpp:670
-msgid ""
-"<center>This check will enable <b>IP address caching</b> for this server:"
-"<br>DNS lookups can be time-consuming and might be blocking on some "
-"platforms; this option will cause KVIrc to look up the server hostname only "
-"once.<br><br> Advanced: you can also use this option to force a certain "
-"server name to resolve to a fixed ip address when either the dns for that "
-"server is temporairly unreachable or you want to avoid the round-robin "
-"lookups.</center>"
-msgstr ""
-"<center>Ez engedélyezi az <b>IP cím tárolás</b>át ennél a szervernél. <br> "
-"DNS felderítés időt vesz igénybe, és lehet, hogy blokkolva van néhány "
-"platformon, így ezt csak egyszer hajtja végre, első csatlakozáskor.<br><br> "
-"Haladó: megadhatod ennél az opciónál, hogy egyes szerver neveknél "
-"visszafejtse az IP címet, amikor a DNS szerver átmenetileg nem elérhető, "
-"vagy ha el akarod kerülni a felesleges körök futását.</center>"
+msgid "<center>This check will enable <b>IP address caching</b> for this server:<br>DNS lookups can be time-consuming and might be blocking on some platforms; this option will cause KVIrc to look up the server hostname only once.<br><br> Advanced: you can also use this option to force a certain server name to resolve to a fixed ip address when either the dns for that server is temporairly unreachable or you want to avoid the round-robin lookups.</center>"
+msgstr "<center>Ez engedélyezi az <b>IP cím tárolás</b>át ennél a szervernél. <br> DNS felderítés időt vesz igénybe, és lehet, hogy blokkolva van néhány platformon, így ezt csak egyszer hajtja végre, első csatlakozáskor.<br><br> Haladó: megadhatod ennél az opciónál, hogy egyes szerver neveknél visszafejtse az IP címet, amikor a DNS szerver átmenetileg nem elérhető, vagy ha el akarod kerülni a felesleges körök futását.</center>"
 
 #: src/modules/options/optw_lag.cpp:42
-msgid ""
-"<center>This enables the lag meter engine, which checks at regular intervals "
-"how much lag (latency) the server has.</center>"
-msgstr ""
-"<center>Ezzel engedélyezheted a lagmérő motort, ami ellenőrzi az általános "
-"időeltolódást, ami a szerver és közötted van.</center>"
+msgid "<center>This enables the lag meter engine, which checks at regular intervals how much lag (latency) the server has.</center>"
+msgstr "<center>Ezzel engedélyezheted a lagmérő motort, ami ellenőrzi az általános időeltolódást, ami a szerver és közötted van.</center>"
 
 #: src/modules/options/optw_servers.cpp:965
-msgid ""
-"<center>This field allows you to specify a really unique id for this server. "
-"You will then be able to use /server -x &lt;this_id&gt; to make the "
-"connection. This is especially useful when you have multiple server entries "
-"with the same hostname and port in different networks (bouncers?)</center>"
-msgstr ""
-"<center>Ezzel a szerverhez hozzárendelhetsz egy különleges azonosítót, ami "
-"alapján képes leszel a /server -x &lt;megadott_id&gt; paranccsal kapcsolódni "
-"hozzá. Ez különösen akkor hasznos, ha több szerver tartozik ugyanahhoz a "
-"hosztnévhez és porthoz. (pl: BNC)</center>"
+msgid "<center>This field allows you to specify a really unique id for this server. You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>"
+msgstr "<center>Ezzel a szerverhez hozzárendelhetsz egy különleges azonosítót, ami alapján képes leszel a /server -x &lt;megadott_id&gt; paranccsal kapcsolódni hozzá. Ez különösen akkor hasznos, ha több szerver tartozik ugyanahhoz a hosztnévhez és porthoz. (pl: BNC)</center>"
 
 #: src/modules/options/optw_mediatypes.cpp:123
-msgid ""
-"<center>This field contains the command to execute to open a local file."
-"<br><tt>$0</tt> is used in place of the filename</center>"
-msgstr ""
-"<center>Ez a mező tartalmazza a parancsot, ami megnyit egy helyi fájlt."
-"<br><tt>$0</tt> a fájlnév helyét határozza meg</center>"
+msgid "<center>This field contains the command to execute to open a local file.<br><tt>$0</tt> is used in place of the filename</center>"
+msgstr "<center>Ez a mező tartalmazza a parancsot, ami megnyit egy helyi fájlt.<br><tt>$0</tt> a fájlnév helyét határozza meg</center>"
 
 #: src/modules/options/optw_mediatypes.cpp:131
-msgid ""
-"<center>This field contains the command to execute when automatically "
-"opening a received file.<br><tt>$0</tt> is used in place of the filename</"
-"center>"
-msgstr ""
-"<center>Ez a mező tartalmazza a parancsot, amivel megnyitod a beérkezett "
-"fájlt.<br><tt>$0</tt> a fájlnév helyét jelöli</center>"
+msgid "<center>This field contains the command to execute when automatically opening a received file.<br><tt>$0</tt> is used in place of the filename</center>"
+msgstr "<center>Ez a mező tartalmazza a parancsot, amivel megnyitod a beérkezett fájlt.<br><tt>$0</tt> a fájlnév helyét jelöli</center>"
 
 #: src/modules/options/optw_servers.cpp:953
-msgid ""
-"<center>This field specifies the name of a module that exports a link filter "
-"for this type of server.<br>For plain IRC connections, you don't need any "
-"link filters; this is used for incompatible protocols.</center>"
-msgstr ""
-"<center>Ez a mező adja meg a modul nevét, amelyik exportálja a link szűrőt "
-"ehhez a típusú szerverhez.<br> Normál IRC kapcsolatokhoz nincs szükség "
-"linkszűrőkre, ez nem kompatibilis protokollokhoz használt opció.</center>"
+msgid "<center>This field specifies the name of a module that exports a link filter for this type of server.<br>For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>"
+msgstr "<center>Ez a mező adja meg a modul nevét, amelyik exportálja a link szűrőt ehhez a típusú szerverhez.<br> Normál IRC kapcsolatokhoz nincs szükség linkszűrőkre, ez nem kompatibilis protokollokhoz használt opció.</center>"
 
 #: src/modules/options/optw_servers.cpp:524
-msgid ""
-"<center>This is a brief description of this server. This field has no "
-"restrictions but many server lists use it to describe the server's physical "
-"location</center>"
-msgstr ""
-"<center>Ez egy tömör meghatározása a szervernek. Ennek a mezőnek nincsenek "
-"kikötései, de több szerver használatánál meghatározhatod a szerver fizikai "
-"elhelyezkedését is.</center>"
+msgid "<center>This is a brief description of this server. This field has no restrictions but many server lists use it to describe the server's physical location</center>"
+msgstr "<center>Ez egy tömör meghatározása a szervernek. Ennek a mezőnek nincsenek kikötései, de több szerver használatánál meghatározhatod a szerver fizikai elhelyezkedését is.</center>"
 
 #: src/modules/options/optw_nickserv.cpp:254
-msgid ""
-"<center>This is a list of NickServ identification rules. KVIrc will use them "
-"to model its automatic interaction with NickServ on all the networks."
-"<br>Please be aware that this feature can cause your NickServ passwords to "
-"be stolen if used improperly. Make sure that you fully understand the "
-"NickServ authentication protocol.<br>In other words, be sure to know what "
-"you're doing.<br>Also note that the password that you provide is stored as "
-"<b>PLAIN TEXT</b>.<br>KVIrc supports also per-network NickServ "
-"authentication rules that can be created in the \"Advanced...\" network "
-"options (accessible from the servers dialog).</center>"
-msgstr ""
-"<center>Ez egy lista, a NickServ azonosítási szabályokhoz. A KVIrc ezeket "
-"használja, hogy automatikusan közreműködni tudjon a NickServvel minden "
-"hálózaton.<br> Ennek a helytelen beállítása okozhatja, hogy valaki ellopja a "
-"NickServ jelszavadat! Légy biztos abban, hogy teljesen megértetted a "
-"NickServ azonosítási protokoll lényegét.<br> Más szavakkal: légy biztos "
-"abban, amit csinálsz.<br> A jelszavakat <b>EGYSZERŰ SZÖVEG</b>-ként kerül "
-"mentésre.<br>A KVIrc támogatja a hálózatonkénti azonosítást, amit "
-"megcsinálhatsz a \"Haladó...\" hálózati beállításoknál. (elérhető a Szerver "
-"párbeszédablakból). </center>"
+msgid "<center>This is a list of NickServ identification rules. KVIrc will use them to model its automatic interaction with NickServ on all the networks.<br>Please be aware that this feature can cause your NickServ passwords to be stolen if used improperly. Make sure that you fully understand the NickServ authentication protocol.<br>In other words, be sure to know what you're doing.<br>Also note that the password that you provide is stored as <b>PLAIN TEXT</b>.<br>KVIrc supports also per-network NickServ authentication rules that can be created in the \"Advanced...\" network options (accessible from the servers dialog).</center>"
+msgstr "<center>Ez egy lista, a NickServ azonosítási szabályokhoz. A KVIrc ezeket használja, hogy automatikusan közreműködni tudjon a NickServvel minden hálózaton.<br> Ennek a helytelen beállítása okozhatja, hogy valaki ellopja a NickServ jelszavadat! Légy biztos abban, hogy teljesen megértetted a NickServ azonosítási protokoll lényegét.<br> Más szavakkal: légy biztos abban, amit csinálsz.<br> A jelszavakat <b>EGYSZERŰ SZÖVEG</b>-ként kerül mentésre.<br>A KVIrc támogatja a hálózatonkénti azonosítást, amit megcsinálhatsz a \"Haladó...\" hálózati beállításoknál. (elérhető a Szerver párbeszédablakból). </center>"
 
 #: src/modules/options/optw_servers.cpp:325
-msgid ""
-"<center>This is a list of NickServ identification rules. KVIrc will use them "
-"to model its automatic interaction with NickServ on this network.<br>Please "
-"be aware that this feature can cause your NickServ passwords to be stolen if "
-"used improperly. Make sure that you fully understand the NickServ "
-"authentication protocol.<br>In other words, be sure to know what you're "
-"doing.<br>Also note that the password that you provide is stored as <b>PLAIN "
-"TEXT</b>.</center>"
-msgstr ""
-"<center>Ez egy lista a NickServ azonosító szabályokról. A KVIrc használni "
-"fogja ezeket, hogy automatikusan kapcsolatba lépjen a NickServvel.<br> "
-"Figyelmeztetés: helytelen használat esetén a jelszavad véletlenül kiadhatod "
-"mások számára. Legyél benne biztos, hogy teljesen megértetted a NickServ "
-"azonosítási protokoll lényegét.<br>Más szavakkal: tudd mit csinálsz.<br> A "
-"jelszavad <b>EGYSZERŰ SZÖVEG</b>-ként kerül tárolásra.</center>"
+msgid "<center>This is a list of NickServ identification rules. KVIrc will use them to model its automatic interaction with NickServ on this network.<br>Please be aware that this feature can cause your NickServ passwords to be stolen if used improperly. Make sure that you fully understand the NickServ authentication protocol.<br>In other words, be sure to know what you're doing.<br>Also note that the password that you provide is stored as <b>PLAIN TEXT</b>.</center>"
+msgstr "<center>Ez egy lista a NickServ azonosító szabályokról. A KVIrc használni fogja ezeket, hogy automatikusan kapcsolatba lépjen a NickServvel.<br> Figyelmeztetés: helytelen használat esetén a jelszavad véletlenül kiadhatod mások számára. Legyél benne biztos, hogy teljesen megértetted a NickServ azonosítási protokoll lényegét.<br>Más szavakkal: tudd mit csinálsz.<br> A jelszavad <b>EGYSZERŰ SZÖVEG</b>-ként kerül tárolásra.</center>"
 
 #: src/modules/options/optw_identity.cpp:727
-msgid ""
-"<center>This is a set of rules to use profiles.KVIrc will use them to handle "
-"the user connection data before the data is sent to the IRC server.<br>This "
-"is useful if a user wants to use different data on different networks "
-"without changing them at every connection attempt."
+msgid "<center>This is a set of rules to use profiles.KVIrc will use them to handle the user connection data before the data is sent to the IRC server.<br>This is useful if a user wants to use different data on different networks without changing them at every connection attempt."
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:643
-msgid ""
-"<center>This is the <b>IP address</b> of this server, it is here for caching "
-"purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
-"time it connects to the server. If you enable the \"cache IP address\" "
-"option below, KVIrc will use it as a \"cached result\" and avoid looking it "
-"up again.</center>"
-msgstr ""
-"<center>Ez az <b>IP cím</b> tartozik ehhez a szerverhez. <br>Ha ezt üresen "
-"hagyod, a KVIrc első kapcsolódáskor automatikusan kitölti. Ha engedélyezed "
-"az \"IP cím tárolása\" opciót, a KVIrc úgy fogja értelmezni mint \"korábban "
-"tárolt eredmény\" és nem ellenőrzi le.</center>"
+msgid "<center>This is the <b>IP address</b> of this server, it is here for caching purposes.<br>If you leave this field empty, KVIrc will fill it in the first time it connects to the server. If you enable the \"cache IP address\" option below, KVIrc will use it as a \"cached result\" and avoid looking it up again.</center>"
+msgstr "<center>Ez az <b>IP cím</b> tartozik ehhez a szerverhez. <br>Ha ezt üresen hagyod, a KVIrc első kapcsolódáskor automatikusan kitölti. Ha engedélyezed az \"IP cím tárolása\" opciót, a KVIrc úgy fogja értelmezni mint \"korábban tárolt eredmény\" és nem ellenőrzi le.</center>"
 
 #: src/modules/options/optw_servers.cpp:774
-#, fuzzy
 msgid ""
-"<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
-"server.\n"
-"If this field is set in \"Default\" KVirc will use global proxy settings, if "
-"it is set in \"Direct connection\" KVirc will connect to this server without "
-"proxy. You can define new proxy server in global options' \"Proxy servers\" "
-"menu.</center>"
+"<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n"
+"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>"
 msgstr ""
 "<center>Ezzel a <b>proxy</b>val fog a KVIrc kapcsolódni a szerverre.\n"
-"Ha ez a mező \"Alapértelmezett\"-re van állítva, a KVIrc a globálist proxy "
-"beállításokat fogja használni. Ha \"Közvetlen kapcsolat\"van megadva, akkor "
-"a KVIrc közvetlenül a szerverhez fog kapcsolódni proxy nélkül.Új proxy "
-"szervereket a \"Proxy szerverek\" résznél adhatsz meg.</center>"
+"Ha ez a mező \"Alapértelmezett\"-re van állítva, a KVIrc a globális proxy beállításokat fogja használni. Ha \"Közvetlen kapcsolat\" van megadva, akkor a KVIrc közvetlenül a szerverhez fog kapcsolódni proxy nélkül.Új proxy szervereket a globális beállítások \"Proxy hosztok\" résznél adhatsz meg.</center>"
 
 #: src/modules/options/optw_servers.cpp:146
 msgid ""
-"<center>This is the <b>username</b> that KVIrc will use to login to servers "
-"on this network.\n"
-"If this field is left empty (most common case), KVIrc will use the default "
-"username specified in the \"Identity\" options tab.</center>"
+"<center>This is the <b>username</b> that KVIrc will use to login to servers on this network.\n"
+"If this field is left empty (most common case), KVIrc will use the default username specified in the \"Identity\" options tab.</center>"
 msgstr ""
-"<center>Ez a <b>felhasználónév</b> amivel a KVIrc csatlakozni fog ezen a "
-"hálózaton.\n"
-"Ez a mező a legtöbb esetben üres, a KVIrc az \"Azonosító\"-ban megadott "
-"adatokat használja. </center>"
+"<center>Ez a <b>felhasználónév</b> amivel a KVIrc csatlakozni fog ezen a hálózaton.\n"
+"Ez a mező a legtöbb esetben üres, a KVIrc az \"Azonosító\"-ban megadott adatokat használja. </center>"
 
 #: src/modules/options/optw_servers.cpp:548
 msgid ""
-"<center>This is the <b>username</b> that KVIrc will use to login to this "
-"server.\n"
-"If this field is left empty (most common case), KVIrc will first look if an "
-"username is specified for the network that this server belongs to, and if "
-"that is empty then KVIrc will use the default username specified in the "
-"\"Identity\" options tab.</center>"
+"<center>This is the <b>username</b> that KVIrc will use to login to this server.\n"
+"If this field is left empty (most common case), KVIrc will first look if an username is specified for the network that this server belongs to, and if that is empty then KVIrc will use the default username specified in the \"Identity\" options tab.</center>"
 msgstr ""
 "<center>Ez a <b>felhasználónév</b> amivel a KVIrc belép a szerverre. \n"
-"Ha ez a mező üres, akkor elősször a KVIrc ellenőrzi, nincs e megadva "
-"felhasználónév azon a hálózaton, amihez ez a szerver tartozik, majd ha az is "
-"üres, a KVIrc az \"Azonosító\" résznél megadott felhasználónevet fogja "
-"használni.</center>"
+"Ha ez a mező üres, akkor elősször a KVIrc ellenőrzi, nincs e megadva felhasználónév azon a hálózaton, amihez ez a szerver tartozik, majd ha az is üres, a KVIrc az \"Azonosító\" résznél megadott felhasználónevet fogja használni.</center>"
 
 #: src/modules/options/optw_identity.cpp:319
-msgid ""
-"<center>This is the <b>username</b> that you will use to connect to the "
-"server.<br>In the past, it was used as a form of authentication, but it "
-"normally has no special use now.<br>In addition to your nickname, you are "
-"identified on IRC by your <b>username@hostname</b>.</br>Basically, you can "
-"enter any word you like here. :D</center>"
-msgstr ""
-"<center>Ez a <b>felhasználónév</b> amit használni fogsz kapcsolódáskor a "
-"szerveren.<br> Régebben ezt használták azonosításra, de már semmilyen "
-"jelentős szerepe nincsen.<br>Emellett a Neveden kívül ezzel azonosítanak IRC-"
-"en :<b>felhasználónév@hosztnév</b>.</br>Alapjában véve ide azt írsz, amit "
-"akarsz. :D</center>"
+msgid "<center>This is the <b>username</b> that you will use to connect to the server.<br>In the past, it was used as a form of authentication, but it normally has no special use now.<br>In addition to your nickname, you are identified on IRC by your <b>username@hostname</b>.</br>Basically, you can enter any word you like here. :D</center>"
+msgstr "<center>Ez a <b>felhasználónév</b> amit használni fogsz kapcsolódáskor a szerveren.<br> Régebben ezt használták azonosításra, de már semmilyen jelentős szerepe nincsen.<br>Emellett a Neveden kívül ezzel azonosítanak IRC-en :<b>felhasználónév@hosztnév</b>.</br>Alapjában véve ide azt írsz, amit akarsz. :D</center>"
 
 #: src/modules/options/optw_ctcp.cpp:66
-msgid ""
-"<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
-"acknowledgement for CTCP PAGE messages.</center>"
-msgstr ""
-"<center>Ez egy CTCP PAGE válasz.<br>Ez tartalmazhat egy rövid értesítőt CTCP "
-"PAGE válaszként.</center>"
+msgid "<center>This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgement for CTCP PAGE messages.</center>"
+msgstr "<center>Ez egy CTCP PAGE válasz.<br>Ez tartalmazhat egy rövid értesítőt CTCP PAGE válaszként.</center>"
 
 #: src/modules/options/optw_dcc.cpp:83
-msgid ""
-"<center>This is the IP address or name of the interface to use by default "
-"for outgoing DCC transfers.<br>On UNIX systems that support it, you can also "
-"specify IPv4 interface names (such as <b>ppp0</b>).<br>If you set it to "
-"<b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface</"
-"center>"
-msgstr ""
-"<center>Ez az IP cím vagy név meghatározza az alapértelmezett címet a kimenő "
-"DCC kapcsolatokhoz.<br>UNIX-alapú rendszereken meghatározhatsz eszközneveket "
-"is, mint például <b>ppp0</b>.<br><b>0.0.0.0</b> beállításnál a, KVIrc "
-"megpróbálja az első elérhető IPv4 eszközt használni.</center>"
+msgid "<center>This is the IP address or name of the interface to use by default for outgoing DCC transfers.<br>On UNIX systems that support it, you can also specify IPv4 interface names (such as <b>ppp0</b>).<br>If you set it to <b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface</center>"
+msgstr "<center>Ez az IP cím vagy név meghatározza az alapértelmezett címet a kimenő DCC kapcsolatokhoz.<br>UNIX-alapú rendszereken meghatározhatsz eszközneveket is, mint például <b>ppp0</b>.<br><b>0.0.0.0</b> beállításnál a, KVIrc megpróbálja az első elérhető IPv4 eszközt használni.</center>"
 
 #: src/modules/options/optw_dcc.cpp:141
-msgid ""
-"<center>This is the amount of time that KVIrc will wait for a response "
-"before assuming that a DCC has failed because the remote client was unable "
-"to connect to our listening socket.</center>"
-msgstr ""
-"<center>Ez az időmennyiség, amíg a KVIrc várakozik a válaszra mielőtt azt "
-"feltételezné, hogy a kapcsolat meghiúsult, mivel a távoli kliens nem tudott "
-"csatlakozni a figyelt socketre.</center>"
+msgid "<center>This is the amount of time that KVIrc will wait for a response before assuming that a DCC has failed because the remote client was unable to connect to our listening socket.</center>"
+msgstr "<center>Ez az időmennyiség, amíg a KVIrc várakozik a válaszra mielőtt azt feltételezné, hogy a kapcsolat meghiúsult, mivel a távoli kliens nem tudott csatlakozni a figyelt socketre.</center>"
 
 #: src/modules/options/optw_avatar.cpp:98
-msgid ""
-"<center>This is the amount of time to make an avatar available for transfer "
-"when requested.<br>When someone sends a CTCP AVATAR request, KVIrc will "
-"reply with a CTCP AVATAR message containing the name and size of your avatar "
-"image.<br>A time-limited file offer is added for the image file to the "
-"requesting user.</center>"
-msgstr ""
-"<center>Az az időtartam, ami alatt az avatar elérhető adatátvitelre, kérés "
-"után. <br>Amikor valaki CTCP AVATAR kérést küld, a KVIrc válaszol egy CTCP "
-"AVATAR üzenettel, ami tartalmazza az avatarod nevét és méretét. "
-"<br>Időkorlátos fájl ajánlat hozzá lesz adva a képfájlhoz, amit a "
-"felhasználó kért.</center>"
+msgid "<center>This is the amount of time to make an avatar available for transfer when requested.<br>When someone sends a CTCP AVATAR request, KVIrc will reply with a CTCP AVATAR message containing the name and size of your avatar image.<br>A time-limited file offer is added for the image file to the requesting user.</center>"
+msgstr "<center>Az az időtartam, ami alatt az avatar elérhető adatátvitelre, kérés után. <br>Amikor valaki CTCP AVATAR kérést küld, a KVIrc válaszol egy CTCP AVATAR üzenettel, ami tartalmazza az avatarod nevét és méretét. <br>Időkorlátos fájl ajánlat hozzá lesz adva a képfájlhoz, amit a felhasználó kért.</center>"
 
 #: src/modules/options/optw_servers.cpp:634
-msgid ""
-"<center>This is the default <b>port</b> that this server will be contacted "
-"on.<br>Usually <b>6667</b> is OK.</center>"
-msgstr ""
-"<center>Ez az alapértelmezett <b>port</b> amin keresztül csatlakozol a "
-"szerverhez.<br>Általában ez <b>6667</b>.</center>"
+msgid "<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>"
+msgstr "<center>Ez az alapértelmezett <b>port</b> amin keresztül csatlakozol a szerverhez.<br>Általában ez <b>6667</b>.</center>"
 
 #: src/modules/options/optw_identity.cpp:667
-msgid ""
-"<center>This is the default part message that will be used when you<br>leave "
-"a channel by closing a channel window.</center>"
-msgstr ""
-"<center>Alapértelmezett lelépő üzenet, amit a KVIrc akkor használ, ha <br> "
-"elhagysz egy csatornát, az ablaka bezárásakor.</center>"
+msgid "<center>This is the default part message that will be used when you<br>leave a channel by closing a channel window.</center>"
+msgstr "<center>Alapértelmezett lelépő üzenet, amit a KVIrc akkor használ, ha <br> elhagysz egy csatornát, az ablaka bezárásakor.</center>"
 
 #: src/modules/options/optw_identity.cpp:672
-msgid ""
-"<center>This is the default quit message that will be used when you<br>quit "
-"your IRC session by closing the console window or disconnecting by pressing "
-"the disconnect button.</center>"
-msgstr ""
-"<center>Ez az alapértelmezetten megjelenő kilépő üzenet, amikor <br>kilépsz "
-"az IRC környezetből, a konzol ablakának bezárásával vagy a Lecsatlakozás "
-"gomb megnyomásával.</center>"
+msgid "<center>This is the default quit message that will be used when you<br>quit your IRC session by closing the console window or disconnecting by pressing the disconnect button.</center>"
+msgstr "<center>Ez az alapértelmezetten megjelenő kilépő üzenet, amikor <br>kilépsz az IRC környezetből, a konzol ablakának bezárásával vagy a Lecsatlakozás gomb megnyomásával.</center>"
 
 #: src/modules/options/optw_dcc.cpp:109
-msgid ""
-"<center>This is the fixed address that will be sent with all DCC requests if "
-"you enable the option above.</center>"
-msgstr ""
-"<center>Ez az a cím, amit a KVIrc elküld minden DCC kérésnél, ha a fenti "
-"opciót engedélyezed.</center>"
+msgid "<center>This is the fixed address that will be sent with all DCC requests if you enable the option above.</center>"
+msgstr "<center>Ez az a cím, amit a KVIrc elküld minden DCC kérésnél, ha a fenti opciót engedélyezed.</center>"
 
 #: src/modules/options/optw_servers.cpp:1260
-msgid ""
-"<center>This is the list of available IRC servers.<br>Right-click on the "
-"list to add or remove servers and perform other actions.<br>Double-click on "
-"a item for advanced options.</center>"
-msgstr ""
-"<center>Lista az elérhető IRC szerverekről.<br>Jobb klikk a listán, hogy új "
-"szervereket adj hozzá, vagy távolíts el, esetleg egyéb műveleteket végezz. "
-"<br>Kattints rá kétszer rá a Haladó beállítások eléréséhez.</center>"
+msgid "<center>This is the list of available IRC servers.<br>Right-click on the list to add or remove servers and perform other actions.<br>Double-click on a item for advanced options.</center>"
+msgstr "<center>Lista az elérhető IRC szerverekről.<br>Jobb klikk a listán, hogy új szervereket adj hozzá, vagy távolíts el, esetleg egyéb műveleteket végezz. <br>Kattints rá kétszer rá a Haladó beállítások eléréséhez.</center>"
 
 #: src/modules/options/optw_proxy.cpp:81
-msgid ""
-"<center>This is the list of available proxy servers.<br>Right-click on the "
-"list to add or remove proxies.</center>"
-msgstr ""
-"<center>Ebben a listában vannak az elérhető proxyk<br> Jobb klikkel tudsz "
-"hozzáadni vagy eltávolítani szervereket.</center>"
+msgid "<center>This is the list of available proxy servers.<br>Right-click on the list to add or remove proxies.</center>"
+msgstr "<center>Ebben a listában vannak az elérhető proxyk<br> Jobb klikkel tudsz hozzáadni vagy eltávolítani szervereket.</center>"
 
 #: src/modules/options/optw_dcc.cpp:135
-msgid ""
-"<center>This is the maximum number of concurrent DCC sessions and it "
-"includes all the DCC types (send,chat,recv...). KVIrc will refuse the "
-"requests when this limit is reached.</center>"
-msgstr ""
-"<center>Ez a maximális száma a lehetséges DCC kapcsolatok számának, "
-"beleértve a beszélgetés, küldést és fogadást. Az ez után beérkező kéréseket "
-"a KVIrc automatikusan visszautasítja.</center>"
+msgid "<center>This is the maximum number of concurrent DCC sessions and it includes all the DCC types (send,chat,recv...). KVIrc will refuse the requests when this limit is reached.</center>"
+msgstr "<center>Ez a maximális száma a lehetséges DCC kapcsolatok számának, beleértve a beszélgetés, küldést és fogadást. Az ez után beérkező kéréseket a KVIrc automatikusan visszautasítja.</center>"
 
 #: src/modules/options/optw_dcc.cpp:254
-msgid ""
-"<center>This is the maximum number of concurrent DCC transfers. KVIrc will "
-"refuse the requests when this limit is reached.</center>"
-msgstr ""
-"<center>Ez a maximális száma a lehetséges DCC adatátviteleknek. A KVIrc "
-"minden ezután beérkező kapcsolódást elutasít.</center>"
+msgid "<center>This is the maximum number of concurrent DCC transfers. KVIrc will refuse the requests when this limit is reached.</center>"
+msgstr "<center>Ez a maximális száma a lehetséges DCC adatátviteleknek. A KVIrc minden ezután beérkező kapcsolódást elutasít.</center>"
 
 #: src/modules/options/optw_avatar.cpp:75
-msgid ""
-"<center>This is the maximum size for avatar images that will be "
-"automatically requested.<br>A reasonable value might be 102400 bytes (100 K)."
-"</center>"
-msgstr ""
-"<center>Ez a maximum mérete az avatarnak, ami automatikusan lekérésre kerül. "
-"<br>Ésszerű ennek az értéknek körülbelül 102400 bájtnak lennie (100 K).</"
-"center>"
+msgid "<center>This is the maximum size for avatar images that will be automatically requested.<br>A reasonable value might be 102400 bytes (100 K).</center>"
+msgstr "<center>Ez a maximum mérete az avatarnak, ami automatikusan lekérésre kerül. <br>Ésszerű ennek az értéknek körülbelül 102400 bájtnak lennie (100 K).</center>"
 
 #: src/modules/options/optw_servers.cpp:1324
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Ez a kiválasztott szerver vagy hálózat neve.</center>"
 
 #: src/modules/options/optw_lag.cpp:64
-msgid ""
-"<center>This makes the IRC context display applet show the current lag after "
-"the user's nickname (in seconds)</center>"
-msgstr ""
-"<center>Ezzel az IRC környezet megjelenítő appletje mutatni fogja az "
-"aktuális lagot a felhasználó neve után (másodpercekben)</center>"
+msgid "<center>This makes the IRC context display applet show the current lag after the user's nickname (in seconds)</center>"
+msgstr "<center>Ezzel az IRC környezet megjelenítő appletje mutatni fogja az aktuális lagot a felhasználó neve után (másodpercekben)</center>"
 
 #: src/modules/options/optw_lag.cpp:47
-msgid ""
-"<center>This option allows you to set the lag meter heartbeat interval."
-"<br>The lower the heartbeat interval the higher will be the accuracy of the "
-"lag check but also higher cpu usage and data traffic to the server."
-"<br>Please note that this is NOT the interval between pings sent to the "
-"server: the pings (if any) will be sent really less often. 5000 is a "
-"reasonable value.</center>"
-msgstr ""
-"<center>Ezzel beállíthatod a lagmérő ellenőrzési időközeit.<br>Alacsony "
-"érték megadása növelheti a pontosságot, de egyúttal magasabb "
-"processzorhasználatot és adatforgalmat eredményez a szerver felé-<br>Vedd "
-"figyelembe, hogy ez NEM a szerver pingelésének időtartama: A pingelés (ha "
-"van) kevésbé gyakori. 5000 megfelelő érték.</center>"
+msgid "<center>This option allows you to set the lag meter heartbeat interval.<br>The lower the heartbeat interval the higher will be the accuracy of the lag check but also higher cpu usage and data traffic to the server.<br>Please note that this is NOT the interval between pings sent to the server: the pings (if any) will be sent really less often. 5000 is a reasonable value.</center>"
+msgstr "<center>Ezzel beállíthatod a lagmérő ellenőrzési időközeit.<br>Alacsony érték megadása növelheti a pontosságot, de egyúttal magasabb processzorhasználatot és adatforgalmat eredményez a szerver felé-<br>Vedd figyelembe, hogy ez NEM a szerver pingelésének időtartama: A pingelés (ha van) kevésbé gyakori. 5000 megfelelő érték.</center>"
 
 #: src/modules/options/optw_dcc.cpp:222
-msgid ""
-"<center>This option causes KVIrc to accept RESUME requests with invalid "
-"filenames.<br>Use it if KVIrc fails to accept RESUME requests from other "
-"clients (e.g. some versions of mIRC).</center>"
-msgstr ""
-"<center>Ezzel az opcióval a KVIrc elfogadja a folytatási kéréseket, "
-"helytelen fájlnévnél.<br>Használd, ha a KVIrc nem tudja fogadni a folytatási "
-"kéréseket más kliensektől (pl.: néhány mIRC verziónál)</center>"
+msgid "<center>This option causes KVIrc to accept RESUME requests with invalid filenames.<br>Use it if KVIrc fails to accept RESUME requests from other clients (e.g. some versions of mIRC).</center>"
+msgstr "<center>Ezzel az opcióval a KVIrc elfogadja a folytatási kéréseket, helytelen fájlnévnél.<br>Használd, ha a KVIrc nem tudja fogadni a folytatási kéréseket más kliensektől (pl.: néhány mIRC verziónál)</center>"
 
 #: src/modules/options/optw_dcc.cpp:228
-msgid ""
-"<center>This option causes KVIrc to accept RESUME requests with mismatched "
-"ports.<br>Use it if some router on the path between you and the receiver "
-"remaps the ports in DCC SEND but not in DCC RESUME requests.<br>Please note "
-"that this option may misbehave in certain usage patterns since KVIrc must "
-"differentiate between transfers only by looking at the filename. Be careful."
-"</center>"
-msgstr ""
+msgid "<center>This option causes KVIrc to accept RESUME requests with mismatched ports.<br>Use it if some router on the path between you and the receiver remaps the ports in DCC SEND but not in DCC RESUME requests.<br>Please note that this option may misbehave in certain usage patterns since KVIrc must differentiate between transfers only by looking at the filename. Be careful.</center>"
+msgstr "<center> Ezen opcióval a KVIrc elfogadja a RESUME kéréseket hibás portokkal is.<br> Akkor használd, ha egy router közötted és a fogadó között újrakonfigurálja a portokat a DCC SEND kérésnél, de nem DCC RESUME esetén.<br> Vedd figyelembe, hogy ez az opció nem minden esetben működőképes, mivel a KVIrcnek különbséget kell tennie az átviteli típusok között a fájlnév ismeretében. Légy óvatos.</center>"
 
 #: src/modules/options/optw_irc.cpp:71
-msgid ""
-"<center>This option causes KVIrc to close the connection immediately after "
-"sending the QUIT message.<br>When this option is disabled, KVIrc will wait "
-"for the server to close the connection.<br>Note that if you use this, your "
-"QUIT message may be not displayed.</center>"
-msgstr ""
-"<center>Ezzel az opcióval a KVirc lezárja a kapcsolatot közvetlenül a "
-"kilépésszignál küldése után.<br>Amikor ez az opció le van tiltva a KVIrc "
-"megvárja amíg a szerver lezárja a kapcsolatot.<br>Amennyiben ezt használod, "
-"a kilépő üzeneted nem biztos, hogy megjelenik.</center>"
+msgid "<center>This option causes KVIrc to close the connection immediately after sending the QUIT message.<br>When this option is disabled, KVIrc will wait for the server to close the connection.<br>Note that if you use this, your QUIT message may be not displayed.</center>"
+msgstr "<center>Ezzel az opcióval a KVirc lezárja a kapcsolatot közvetlenül a kilépésszignál küldése után.<br>Amikor ez az opció le van tiltva a KVIrc megvárja amíg a szerver lezárja a kapcsolatot.<br>Amennyiben ezt használod, a kilépő üzeneted nem biztos, hogy megjelenik.</center>"
 
 #: src/modules/options/optw_dcc.cpp:235
-msgid ""
-"<center>This option causes KVIrc to replace spaces with underscores in "
-"filenames for all the outgoing file transfers. This will fix filename "
-"handling with some buggy clients (e.g. some versions of mIRC)."
-msgstr ""
-"<center>Ezzel az opcióval a KVIrc kicseréli a fájlnevekben szereplő "
-"szóközöket eláhúzásra fájl küldésekor. Ez javítja a fáljnévkezelést néhány "
-"hibás kliensnél. (pl.: néhány mIRC verziónál)."
+msgid "<center>This option causes KVIrc to replace spaces with underscores in filenames for all the outgoing file transfers. This will fix filename handling with some buggy clients (e.g. some versions of mIRC)."
+msgstr "<center>Ezzel az opcióval a KVIrc kicseréli a fájlnevekben szereplő szóközöket eláhúzásra fájl küldésekor. Ez javítja a fáljnévkezelést néhány hibás kliensnél. (pl.: néhány mIRC verziónál)."
 
 #: src/modules/options/optw_dcc.cpp:216
-msgid ""
-"<center>This option causes KVIrc to send a zero-byte acknowledge to kick-"
-"start the DCC transfer with some buggy IRC clients.<br>Use it only if your "
-"DCC transfers stall just after establishing a connection without sending any "
-"data.</center>"
-msgstr ""
-"<center>Ezzel az opcióval a KVIrc egy 'nulla bájt' értesítőt küld, hogy az "
-"adatátvitel-megkezdődhessen néhány hibás kliensnél.<br>Csak akkor használd, "
-"ha a DCC kapcsolat csak áll, miután létrejött, de adatot nem küld.</center>"
+msgid "<center>This option causes KVIrc to send a zero-byte acknowledge to kick-start the DCC transfer with some buggy IRC clients.<br>Use it only if your DCC transfers stall just after establishing a connection without sending any data.</center>"
+msgstr "<center>Ezzel az opcióval a KVIrc egy 'nulla bájt' értesítőt küld, hogy az adatátvitel-megkezdődhessen néhány hibás kliensnél.<br>Csak akkor használd, ha a DCC kapcsolat csak áll, miután létrejött, de adatot nem küld.</center>"
 
-#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:332
-msgid ""
-"<center>This option causes a small notifier window to pop up in the low "
-"right corner of the screen when a new message is received and the KVIrc "
-"window is not active.</center>"
-msgstr ""
-"<center>Ezzel egy kis értesítő ablak bekapcsolását engedélyezed, ami a "
-"képernyő jobb alsó sarokában jelenik meg, amikor új üzenetet kapsz és a "
-"KVIrc ablaka nem aktív.</center>"
+#: src/modules/options/optw_query.cpp:82
+#: src/modules/options/optw_dcc.cpp:332
+msgid "<center>This option causes a small notifier window to pop up in the low right corner of the screen when a new message is received and the KVIrc window is not active.</center>"
+msgstr "<center>Ezzel egy kis értesítő ablak bekapcsolását engedélyezed, ami a képernyő jobb alsó sarokában jelenik meg, amikor új üzenetet kapsz és a KVIrc ablaka nem aktív.</center>"
 
 #: src/modules/options/optw_channel.cpp:81
-msgid ""
-"<center>This option causes newly created channel windows to be immediately "
-"minimized.<br>Enable this if you don't like channels popping up while you're "
-"typing something in a channel. :D</center>"
-msgstr ""
-"<center>Ezzel az opcióval automatikusan minimalizálva lesz az újonnan "
-"megnyitott csatorna ablaka.<br>Engedélyezd, ha már unod, hogy felugrik egy "
-"csatorna ablak amikor éppen valamit írsz másik csatornára :D. </center>"
+msgid "<center>This option causes newly created channel windows to be immediately minimized.<br>Enable this if you don't like channels popping up while you're typing something in a channel. :D</center>"
+msgstr "<center>Ezzel az opcióval automatikusan minimalizálva lesz az újonnan megnyitott csatorna ablaka.<br>Engedélyezd, ha már unod, hogy felugrik egy csatorna ablak amikor éppen valamit írsz másik csatornára :D. </center>"
 
 #: src/modules/options/optw_query.cpp:61
-msgid ""
-"<center>This option causes newly created query windows to be immediately "
-"minimized.<br>Enable this if you don't like queries popping up while you're "
-"typing something in a channel. :D</center>"
-msgstr ""
-"<center>Ezzel az opcióval automatikusan minimalizálva lesz a Privát üzenet "
-"ablaka.<br>Engedélyezd, ha már unod, hogy felugrik egy Privát Ablak amikor "
-"valamit írsz egy csatornára :D. </center>"
+msgid "<center>This option causes newly created query windows to be immediately minimized.<br>Enable this if you don't like queries popping up while you're typing something in a channel. :D</center>"
+msgstr "<center>Ezzel az opcióval automatikusan minimalizálva lesz a Privát üzenet ablaka.<br>Engedélyezd, ha már unod, hogy felugrik egy Privát Ablak amikor valamit írsz egy csatornára :D. </center>"
 
 #: src/modules/options/optw_dcc.cpp:326
-#, fuzzy
-msgid ""
-"<center>This option causes the system taskbar entry for KVIrc to flash when "
-"a new dcc chat message is received and the KVIrc window is not the active.</"
-"center>"
-msgstr ""
-"<center>Ezzel az opcióval a rendszer tálca eleme elkezd villogni, amikor egy "
-"új üzenet érkezik és nem a KVIrc az aktív ablak.</center>"
+msgid "<center>This option causes the system taskbar entry for KVIrc to flash when a new dcc chat message is received and the KVIrc window is not the active.</center>"
+msgstr "<center>Ezzel az opcióval a rendszer tálca eleme elkezd villogni, amikor egy új DCC üzenet érkezik és nem a KVIrc az aktív ablak.</center>"
 
 #: src/modules/options/optw_query.cpp:76
-msgid ""
-"<center>This option causes the system taskbar entry for KVIrc to flash when "
-"a new query message is received and the KVIrc window is not the active.</"
-"center>"
-msgstr ""
-"<center>Ezzel az opcióval a rendszer tálca eleme elkezd villogni, amikor egy "
-"új üzenet érkezik és nem a KVIrc az aktív ablak.</center>"
+msgid "<center>This option causes the system taskbar entry for KVIrc to flash when a new query message is received and the KVIrc window is not the active.</center>"
+msgstr "<center>Ezzel az opcióval a rendszer tálca eleme elkezd villogni, amikor egy új üzenet érkezik és nem a KVIrc az aktív ablak.</center>"
 
 #: src/modules/options/optw_lag.cpp:57
-msgid ""
-"<center>This option controls the threshold for the OnLagAlarmTimeUp and "
-"OnLagAlarmTimeDown events. When the lag goes above the threshold "
-"OnLagAlarmTimeUp will be triggered and when the lag falls back below the "
-"threshold then OnLagAlarmTimeDown will be triggered</center>"
-msgstr ""
-"<center>Ez az opció irányítja az OnLagAlarmTimeUp és OnLagAlarmTimeDown "
-"eseményt. Amikor a lag meghaladja a megadott értéket az OnLagAlarmTimeUp "
-"lesz végrehajtva, amikor visszaáll az érték alá, akkor az "
-"OnLagAlarmTimeDown</center>"
+msgid "<center>This option controls the threshold for the OnLagAlarmTimeUp and OnLagAlarmTimeDown events. When the lag goes above the threshold OnLagAlarmTimeUp will be triggered and when the lag falls back below the threshold then OnLagAlarmTimeDown will be triggered</center>"
+msgstr "<center>Ez az opció irányítja az OnLagAlarmTimeUp és OnLagAlarmTimeDown eseményt. Amikor a lag meghaladja a megadott értéket az OnLagAlarmTimeUp lesz végrehajtva, amikor visszaáll az érték alá, akkor az OnLagAlarmTimeDown</center>"
 
 #: src/modules/options/optw_query.cpp:45
-msgid ""
-"<center>This option enables query window creation when a private message "
-"(PRIVMSG) is received.<br>If you disable this, private messages will be "
-"shown in the active window or a common channel.</center>"
-msgstr ""
-"<center>Az opció engedélyezi, hogy külön ablakot nyison a KVIrc, abeérkező "
-"Privát üzenetnek.<br> Ha letiltod az üzenetek az aktív ablakban vagy egy "
-"közös csatornán jelennek meg.</center>"
+msgid "<center>This option enables query window creation when a private message (PRIVMSG) is received.<br>If you disable this, private messages will be shown in the active window or a common channel.</center>"
+msgstr "<center>Az opció engedélyezi, hogy külön ablakot nyison a KVIrc, abeérkező Privát üzenetnek.<br> Ha letiltod az üzenetek az aktív ablakban vagy egy közös csatornán jelennek meg.</center>"
 
 #: src/modules/options/optw_query.cpp:52
-msgid ""
-"<center>This option enables query window creation when a private notice "
-"(NOTICE) is received.<br>If you disable this, private notices will be shown "
-"in the active window or a common channel.</center>"
-msgstr ""
-"<center>Ezzel az opcióval engedélyezed, hogy automatikusan külön ablak "
-"nyíljanak az értesítések. <br>Ha ezt letiltod, az aktív ablakban lesznek "
-"megjelenítve vagy egy közös csatornán.</center>"
+msgid "<center>This option enables query window creation when a private notice (NOTICE) is received.<br>If you disable this, private notices will be shown in the active window or a common channel.</center>"
+msgstr "<center>Ezzel az opcióval engedélyezed, hogy automatikusan külön ablak nyíljanak az értesítések. <br>Ha ezt letiltod, az aktív ablakban lesznek megjelenítve vagy egy közös csatornán.</center>"
 
 #: src/modules/options/optw_query.cpp:87
-msgid ""
-"<center>This option enables query window information label. It can show you "
-"known information about query target at the top of the window.<br>Uncheck if "
-"you think,that it wastes your query space/</center>"
-msgstr ""
-"<center>Ez az opció engedélyezi a Privát ablak információs sávját. Ez "
-"mutatja számodra az ismert információkat a Privát üzenetek céljáról, az "
-"ablak tetején.<br>Ne engedélyezd, ha úgy gondolod, hogy csak a helyet "
-"foglalja</center>"
+msgid "<center>This option enables query window information label. It can show you known information about query target at the top of the window.<br>Uncheck if you think,that it wastes your query space/</center>"
+msgstr "<center>Ez az opció engedélyezi a Privát ablak információs sávját. Ez mutatja számodra az ismert információkat a Privát üzenetek céljáról, az ablak tetején.<br>Ne engedélyezd, ha úgy gondolod, hogy csak a helyet foglalja</center>"
 
 #: src/modules/options/optw_windowlist.cpp:43
-#, fuzzy
-msgid ""
-"<center>This option enables the usage of the window list activity meter. "
-"Each window entry will have a small indicator of the activity that is going "
-"on in that window. The indicator is a small square that changes colors, dark "
-"colors mean low activity, while bright colors signal high activity. KVIrc "
-"also uses some heuristics to determine whether the activity is somewhat "
-"\"human\" or it is generated by automated entities (such as bots or IRC "
-"servers). \"Human\" activity causes the indicator to be shaded red while "
-"automated activity causes the indicator to be shaded blue.</center>"
-msgstr ""
-"<center>Ez az opció engedélyezi az aktivitásmérő megjelenítését a tálcán. "
-"Minden ablaknak lesz egy kis kijelzője, ami mutatja mi történik éppen abban "
-"az ablakban. A kijelző egy kis négyzet, ami változtatja a színét, ahol a "
-"sötétebb színek az alacsony aktivitást, míg a világosabbak a magasabbat "
-"jelzik. A KVIrc ezen felül megpróbálja meghatározni, hogy az aktivitás "
-"\"Emberi\" avagy a forgalmat automata elemek okozzák. (mint például botok "
-"vagy IRC szerverek). \"Emberi\" aktivitás esetén a kijelző vörös felé "
-"hajlik, míg automatizált elemeknél a kék felé.</center>"
+msgid "<center>This option enables the usage of the window list activity meter. Each window entry will have a small indicator of the activity that is going on in that window. The indicator is a small square that changes colors, dark colors mean low activity, while bright colors signal high activity. KVIrc also uses some heuristics to determine whether the activity is somewhat \"human\" or it is generated by automated entities (such as bots or IRC servers). \"Human\" activity causes the indicator to be shaded red while automated activity causes the indicator to be shaded blue.</center>"
+msgstr "<center>Ez az opció engedélyezi az aktivitásmérő megjelenítését a tálcán. Minden ablaknak lesz egy kis kijelzője, ami mutatja mi történik éppen abban az ablakban. A kijelző egy kis négyzet, ami változtatja a színét, ahol a sötétebb színek az alacsony aktivitást, míg a világosabbak a magasabbat jelzik. A KVIrc ezen felül megpróbálja meghatározni, hogy az aktivitás \"Emberi\" avagy a forgalmat automata elemek okozzák. (mint például botok vagy IRC szerverek). \"Emberi\" aktivitás esetén a kijelző vörös felé hajlik, míg automatizált elemeknél a kék felé.</center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:84
-msgid ""
-"<center>This option makes KVIrc only respond to a limited number of CTCP "
-"requests within a specified time interval, to prevent \"flooding\" CTCP "
-"messages.</center>"
-msgstr ""
-"<center>Ez korlátozza a CTCP kéréseket egy megadott időtartamon belül,ami "
-"így megakadályozza a CTCP floodoló üzeneteket.</center>"
+msgid "<center>This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.</center>"
+msgstr "<center>Ez korlátozza a CTCP kéréseket egy megadott időtartamon belül,ami így megakadályozza a CTCP floodoló üzeneteket.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:82
-msgid ""
-"<center>This option makes all KVIrc windows look like transparent.<br>You "
-"must choose a blending background image to below.</center>"
-msgstr ""
-"<center>Ez az opció a KVIrcet úgy állítja be, hogy átlátszónak hasson. "
-"<br>Ehhez ki kell választani egy képet lentebb.</center>"
+msgid "<center>This option makes all KVIrc windows look like transparent.<br>You must choose a blending background image to below.</center>"
+msgstr "<center>Ez az opció a KVIrcet úgy állítja be, hogy átlátszónak hasson. <br>Ehhez ki kell választani egy képet lentebb.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
-msgid ""
-"<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use compositing "
-"for real transparency\" option.</center>"
-msgstr ""
-"<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell "
-"választanod egy átlátszónak ható hátteret vagy alatta a \"KDE asztal "
-"használata átlátszóságnál\" opciót.</center>"
+msgid "<center>This option makes all KVIrc windows look transparent.<br>You must choose a blending background image to below or check the \"Use compositing for real transparency\" option.</center>"
+msgstr "<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell választanod egy átlátszónak ható hátteret vagy alatta a \"Kompozitálás használata valós átlátszósághoz\" opciót.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:76
-#, fuzzy
-msgid ""
-"<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use desktop "
-"background for transparency\" option.</center>"
-msgstr ""
-"<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell "
-"választanod egy átlátszónak ható hátteret vagy alatta a \"KDE asztal "
-"használata átlátszóságnál\" opciót.</center>"
+msgid "<center>This option makes all KVIrc windows look transparent.<br>You must choose a blending background image to below or check the \"Use desktop background for transparency\" option.</center>"
+msgstr "<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell választanod egy átlátszónak ható hátteret vagy alatta a \"Háttérkép használata átlátszósághoz\" opciót.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:107
-#, fuzzy
-msgid ""
-"<center>This option sets the minimum alert level for the window list.</"
-"center>"
-msgstr "<center>Minimális figyelmeztetési szint beállítása a tálcára</center>"
+msgid "<center>This option sets the minimum alert level for the window list.</center>"
+msgstr "<center>Minimális figyelmeztetési szint beállítása az ablaklistára</center>"
 
 #: src/modules/options/optw_channel.cpp:57
-msgid ""
-"<center>This option will cause KVIrc to attempt to rejoin a channel after "
-"being kicked.</center>"
-msgstr ""
-"<center>Ezzel az opcióval a KVIrc automatikusan újracsatlakozik, ha kirúgtak."
-"</center>"
+msgid "<center>This option will cause KVIrc to attempt to rejoin a channel after being kicked.</center>"
+msgstr "<center>Ezzel az opcióval a KVIrc automatikusan újracsatlakozik, ha kirúgtak.</center>"
 
 #: src/modules/options/optw_avatar.cpp:83
-msgid ""
-"<center>This option will cause KVIrc to auto-accept DCC SEND requests for "
-"incoming avatars.<br>If you're using the \"Request missing avatars\" option "
-"above, enabling this may by useful.<br>Avatars will be saved in the local "
-"KVIrc directory.</center>"
-msgstr ""
-"<center> Ezzel az opcióval a KVIRc automatikusan elfogadja a beérkező "
-"avatarokat.<br>Ha használod a \"Hiányzó avatarok lekérése\" lehetőséget "
-"lentebb, ennek az engedélyezése hasznos lehet<br>Az avatarok a helyi KVIrc "
-"könyvtárba lesznek elmentve.</center>"
+msgid "<center>This option will cause KVIrc to auto-accept DCC SEND requests for incoming avatars.<br>If you're using the \"Request missing avatars\" option above, enabling this may by useful.<br>Avatars will be saved in the local KVIrc directory.</center>"
+msgstr "<center> Ezzel az opcióval a KVIRc automatikusan elfogadja a beérkező avatarokat.<br>Ha használod a \"Hiányzó avatarok lekérése\" lehetőséget lentebb, ennek az engedélyezése hasznos lehet<br>Az avatarok a helyi KVIrc könyvtárba lesznek elmentve.</center>"
 
 #: src/modules/options/optw_servers.cpp:233
-msgid ""
-"<center>This option will cause KVIrc to automatically connect to this "
-"network at startup</center>"
-msgstr ""
-"<center>Ezzel az opcióval a KVIrc csatlakozni fog automatikusan ehhez a "
-"hálózathoz a KVIrc indításakor.</center>"
+msgid "<center>This option will cause KVIrc to automatically connect to this network at startup</center>"
+msgstr "<center>Ezzel az opcióval a KVIrc csatlakozni fog automatikusan ehhez a hálózathoz a KVIrc indításakor.</center>"
 
 #: src/modules/options/optw_channel.cpp:75
-msgid ""
-"<center>This option will cause KVIrc to automatically join a channel when an "
-"INVITE message for that channel is received.<br><b>Warning:</b> This may "
-"help spammers harass you. :)</center>"
-msgstr ""
-"<center>Ez az opció lehetővé teszi az automatikus fellépést csatornára, "
-"amikor egy meghívás (INVITE) érkezik. <br><b>Figyelmeztetés:</b> Ezzel az "
-"opcióval könnyen a spammelők áldozata lehetsz.</center>"
+msgid "<center>This option will cause KVIrc to automatically join a channel when an INVITE message for that channel is received.<br><b>Warning:</b> This may help spammers harass you. :)</center>"
+msgstr "<center>Ez az opció lehetővé teszi az automatikus fellépést csatornára, amikor egy meghívás (INVITE) érkezik. <br><b>Figyelmeztetés:</b> Ezzel az opcióval könnyen a spammelők áldozata lehetsz.</center>"
 
 #: src/modules/options/optw_servers.cpp:686
-msgid ""
-"<center>This option will cause KVIrc to connect to the IRC server when it is "
-"started.</center>"
-msgstr ""
-"<center>A KVIrc indításakor automatikusan kapcsolódik ehhez a szerverhez, ha "
-"engedélyezve van.</center>"
+msgid "<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>"
+msgstr "<center>A KVIrc indításakor automatikusan kapcsolódik ehhez a szerverhez, ha engedélyezve van.</center>"
 
 #: src/modules/options/optw_connection.cpp:52
-msgid ""
-"<center>This option will cause KVIrc to keep channels open after an "
-"unexpected disconnect.</center>"
-msgstr ""
-"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a csatornákat váratlan "
-"Kapcsolatbontáskor.<br> Javasolt, ha sűrűn szakadozik az Internetkapcsolat. "
-"</center>"
+msgid "<center>This option will cause KVIrc to keep channels open after an unexpected disconnect.</center>"
+msgstr "<center>Ez ezzel az opcióval a KVIrc nyitva tartja a csatornákat váratlan Kapcsolatbontáskor.<br> Javasolt, ha sűrűn szakadozik az Internetkapcsolat. </center>"
 
 #: src/modules/options/optw_connection.cpp:44
-msgid ""
-"<center>This option will cause KVIrc to keep channels open after disconnect."
-"</center>"
-msgstr ""
-"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a csatornákat "
-"lecsatlakozáskor.</center>"
+msgid "<center>This option will cause KVIrc to keep channels open after disconnect.</center>"
+msgstr "<center>Ez ezzel az opcióval a KVIrc nyitva tartja a csatornákat lecsatlakozáskor.</center>"
 
 #: src/modules/options/optw_connection.cpp:55
-msgid ""
-"<center>This option will cause KVIrc to keep queries open after an "
-"unexpected disconnect.</center>"
-msgstr ""
-"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a Privátokat váratlan "
-"lecsatlakozáskor.<br>Javasolt, ha sűrűn szakadozik az Internetkapcsolat.</"
-"center>"
+msgid "<center>This option will cause KVIrc to keep queries open after an unexpected disconnect.</center>"
+msgstr "<center>Ez ezzel az opcióval a KVIrc nyitva tartja a Privátokat váratlan lecsatlakozáskor.<br>Javasolt, ha sűrűn szakadozik az Internetkapcsolat.</center>"
 
 #: src/modules/options/optw_connection.cpp:47
-msgid ""
-"<center>This option will cause KVIrc to keep queries open after disconnect.</"
-"center>"
-msgstr ""
-"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a Privátokat "
-"lecsatlakozáskor.</center>"
+msgid "<center>This option will cause KVIrc to keep queries open after disconnect.</center>"
+msgstr "<center>Ez ezzel az opcióval a KVIrc nyitva tartja a Privátokat lecsatlakozáskor.</center>"
 
 #: src/modules/options/optw_channel.cpp:61
-msgid ""
-"<center>This option will cause KVIrc to keep the channel window open after "
-"being kicked.<br>It might be a good idea to also enable the \"Rejoin channel"
-"\" option.</center>"
-msgstr ""
-"<center>Ezzel az opcióval a KVIrc nyitva fogja tartani a csatorna ablakát, "
-"miután kirúgtak.<br>Jó ötlet, ha bekapcsolod a \"Visszalépés csatornára\" "
-"opciót.</center>"
+msgid "<center>This option will cause KVIrc to keep the channel window open after being kicked.<br>It might be a good idea to also enable the \"Rejoin channel\" option.</center>"
+msgstr "<center>Ezzel az opcióval a KVIrc nyitva fogja tartani a csatorna ablakát, miután kirúgtak.<br>Jó ötlet, ha bekapcsolod a \"Visszalépés csatornára\" opciót.</center>"
 
 #: src/modules/options/optw_channel.cpp:70
-msgid ""
-"<center>This option will cause KVIrc to keep the channel window open after "
-"leaving it.</center>"
-msgstr ""
-"<center>Ezzel az opcióval a Csatorna ablaka nyitva marad, miután elhagytad "
-"azt.</center>"
+msgid "<center>This option will cause KVIrc to keep the channel window open after leaving it.</center>"
+msgstr "<center>Ezzel az opcióval a Csatorna ablaka nyitva marad, miután elhagytad azt.</center>"
 
 #: src/modules/options/optw_irc.cpp:51
-msgid ""
-"<center>This option will cause KVIrc to minimize the console window after "
-"successfully logging into a server.</center>"
-msgstr ""
-"<center>Ezzel a KVIrc minimalizálja a konzol ablakot, miután sikeresen "
-"belépett a szerverre.</center>"
+msgid "<center>This option will cause KVIrc to minimize the console window after successfully logging into a server.</center>"
+msgstr "<center>Ezzel a KVIrc minimalizálja a konzol ablakot, miután sikeresen belépett a szerverre.</center>"
 
 #: src/modules/options/optw_connection.cpp:58
-msgid ""
-"<center>This option will cause KVIrc to rejoin channels after a successful "
-"reconnect attempt.</center>"
-msgstr ""
-"<center>Ez engedélyezi a KVIrcnek, hogy visszacsatlakozzon a csatornákra, "
-"sikeres újracsatlakozás után.</center>"
+msgid "<center>This option will cause KVIrc to rejoin channels after a successful reconnect attempt.</center>"
+msgstr "<center>Ez engedélyezi a KVIrcnek, hogy visszacsatlakozzon a csatornákra, sikeres újracsatlakozás után.</center>"
 
 #: src/modules/options/optw_connection.cpp:61
-msgid ""
-"<center>This option will cause KVIrc to reopen query windows after a "
-"successful reconnect attempt.</center>"
-msgstr ""
-"<center>Ez engedélyezi a KVIrcnek, hogy újra megnyissa a Privátokat, sikeres "
-"újracsatlakozás után.</center>"
+msgid "<center>This option will cause KVIrc to reopen query windows after a successful reconnect attempt.</center>"
+msgstr "<center>Ez engedélyezi a KVIrcnek, hogy újra megnyissa a Privátokat, sikeres újracsatlakozás után.</center>"
 
 #: src/modules/options/optw_avatar.cpp:70
-msgid ""
-"<center>This option will cause KVIrc to send a DCC GET request when someone "
-"sets an avatar and there is no cached copy available.</center>"
-msgstr ""
-"<center>Ez a beállítás utasítja a KVIrcet, hogy küldjön DCC GET kérést, "
-"amikor valaki beállít egy avatart, és nincs róla elérhető helyi másolat.</"
-"center>"
+msgid "<center>This option will cause KVIrc to send a DCC GET request when someone sets an avatar and there is no cached copy available.</center>"
+msgstr "<center>Ez a beállítás utasítja a KVIrcet, hogy küldjön DCC GET kérést, amikor valaki beállít egy avatart, és nincs róla elérhető helyi másolat.</center>"
 
 #: src/modules/options/optw_irc.cpp:54
-#, fuzzy
-msgid ""
-"<center>This option will cause KVIrc to show the network name as the console "
-"window list entry instead of the server name. This is nice to keep on unless "
-"your servers are not organized in networks or you often connect to two "
-"servers of the same network.</center>"
-msgstr ""
-"<center> Ezzel az opcióval a KVIrc a hálózat nevét mutatja a konzol "
-"eszköztárán a szerver neve helyett. Ez akkor hasznos, ha a szervereid "
-"hálózatokhoz vannak kapcsolva, és ugyanazon hálózatra nem kapcsolódsz több "
-"szerverrel.</center>"
+msgid "<center>This option will cause KVIrc to show the network name as the console window list entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.</center>"
+msgstr "<center> Ezzel az opcióval a KVIrc a hálózat nevét mutatja a konzol eszköztárán a szerver neve helyett. Ez akkor hasznos, ha a szervereid hálózatokhoz vannak kapcsolva, és ugyanazon hálózatra nem kapcsolódsz több szerverrel.</center>"
 
 #: src/modules/options/optw_connection.cpp:130
-#, fuzzy
-msgid ""
-"<center>This option will cause KVIrc to try to reconnect to the server using "
-"an encrypted connection</center>"
-msgstr ""
-"<center>A KVIrc indításakor automatikusan kapcsolódik ehhez a szerverhez, ha "
-"engedélyezve van.</center>"
+msgid "<center>This option will cause KVIrc to try to reconnect to the server using an encrypted connection</center>"
+msgstr "<center>Ezzel az opcióval a KVIrc a szerverhez egy titkosított kapcsolaton keresztül próbál újracsatlakozni.</center>"
 
 #: src/modules/options/optw_dcc.cpp:190
-msgid ""
-"<center>This option will cause successfully terminated transfers to be "
-"automatically removed from the transfer window.</center>"
-msgstr ""
-"<center> Ezzel az opcióval minden megszakított átvitel automatikusan el lesz "
-"távolítva az átvitel ablakból.</center>"
+msgid "<center>This option will cause successfully terminated transfers to be automatically removed from the transfer window.</center>"
+msgstr "<center> Ezzel az opcióval minden megszakított átvitel automatikusan el lesz távolítva az átvitel ablakból.</center>"
 
 #: src/modules/options/optw_connection.cpp:175
-msgid ""
-"<center>This option will cause the KVIrc networking stack to pick up a "
-"random entry when multiple IP address are retrieved for a server dns lookup. "
-"This is harmless and can fix some problems with caching dns servers that do "
-"not properly rotate the records as the authoritative ones would do. On the "
-"other hand, you might want to disable it if you want to rely on the dns "
-"server to provide the best choice.</center>"
-msgstr ""
+msgid "<center>This option will cause the KVIrc networking stack to pick up a random entry when multiple IP address are retrieved for a server dns lookup. This is harmless and can fix some problems with caching dns servers that do not properly rotate the records as the authoritative ones would do. On the other hand, you might want to disable it if you want to rely on the dns server to provide the best choice.</center>"
+msgstr "<center> Ezzel az opcióval a KVIrc véltelenszerűen választ IP címet ha több áll rendelkezésre a DNS lekérdezés után.Ez ártalmatlan eljárás és néhány problémától megkímélhet, ha a DNS szerverek nem megfelelően forgatják a rekordokat ahogy a normál (authoritatív) szerverek tennék. Másrészről jobb nem engedélyezni ha a dns szerverre hagyatkoznál a legjobb választásért.</center>"
 
 #: src/modules/options/optw_connection.cpp:65
-msgid ""
-"<center>This option will enable auto-reconnecting after an unexpected "
-"disconnect. An unexpected disconnect is the <b>termination</b> of a <b>fully "
-"connected IRC session</b> that was <b>not requested by the user</b> by the "
-"means of the QUIT message.<p><b>Warning:</b> If you use /RAW to send a QUIT "
-"message to the server, this option will not behave correctly, since does not "
-"detect the outgoing QUIT message and will attempt to reconnect after the "
-"server has closed the connection. For this reason, always use the /QUIT "
-"command to close your connections. This option may also behave incorrectly "
-"with bouncers that support detaching, in this case a solution could be to "
-"prepare an alias that sends the bouncer \"detach\" command immediately "
-"before the \"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; "
-"quit; }</tt></p></center>"
-msgstr ""
-"<center>Ez az opció engedélyezi az automatikus újracsatlakozást egy váratlan "
-"kapcsolatbontás után. A váratlan <b>megszakítás, kapcsolatbontás</b> egy "
-"<b>kapcsolódott IRC környezet megszakadása</b>, amelyet <b>nem a felhasználó "
-"kért</b> egy kilépéssel / kapcsolatbontással.<p><b>Figyelem:</b> Ha a /RAW "
-"paranccsal lépsz ki, ez az opció nem fog tudni helyesen viselkedni mivel nem "
-"érzékeli, hogy szándékos kilépéssel van dolga. Ezért érdemesebb a normál /"
-"QUIT parancsot használni a kapcslatok lezárására. Ez az opció BNCknél "
-"szintén okozhat problémákat. érdemesebb előbb lecsatlakozni a bncről, majd "
-"aztán kilépni, vagy egy egyszerű alias segítségével:<br><tt>alias(bncdetach)"
-"{ raw bouncer detach; quit; }</tt></p></center>"
+msgid "<center>This option will enable auto-reconnecting after an unexpected disconnect. An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> that was <b>not requested by the user</b> by the means of the QUIT message.<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, this option will not behave correctly, since does not detect the outgoing QUIT message and will attempt to reconnect after the server has closed the connection. For this reason, always use the /QUIT command to close your connections. This option may also behave incorrectly with bouncers that support detaching, in this case a solution could be to prepare an alias that sends the bouncer \"detach\" command immediately before the \"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>"
+msgstr "<center>Ez az opció engedélyezi az automatikus újracsatlakozást egy váratlan kapcsolatbontás után. A váratlan <b>megszakítás, kapcsolatbontás</b> egy <b>kapcsolódott IRC környezet megszakadása</b>, amelyet <b>nem a felhasználó kért</b> egy kilépéssel / kapcsolatbontással.<p><b>Figyelem:</b> Ha a /RAW paranccsal lépsz ki, ez az opció nem fog tudni helyesen viselkedni mivel nem érzékeli, hogy szándékos kilépéssel van dolga. Ezért érdemesebb a normál /QUIT parancsot használni a kapcslatok lezárására. Ez az opció BNCknél szintén okozhat problémákat. érdemesebb előbb lecsatlakozni a bncről, majd aztán kilépni, vagy egy egyszerű alias segítségével:<br><tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>"
 
 #: src/modules/options/optw_query.cpp:69
-msgid ""
-"<center>This option will enable target user tracking.<br>Some actions of the "
-"target user (e.g. joins and parts) will be displayed in the window.<br></"
-"center>"
-msgstr ""
-"<center>Ezzel az opcióval figyelheted, hogy merre jár a felhasználó.<br> "
-"Néhány akció (fel-,lelépések) meg lesz jelenítve az ablakban.<br></center>"
+msgid "<center>This option will enable target user tracking.<br>Some actions of the target user (e.g. joins and parts) will be displayed in the window.<br></center>"
+msgstr "<center>Ezzel az opcióval figyelheted, hogy merre jár a felhasználó.<br> Néhány akció (fel-,lelépések) meg lesz jelenítve az ablakban.<br></center>"
 
 #: src/modules/options/optw_avatar.cpp:43
-msgid ""
-"<center>This option will force KVIrc to scale avatars shown in the userlist."
-"<br>Avatars will be scaled to fit the constraints set below. Better keep "
-"this option on. :)</center>"
-msgstr ""
-"<center>Ez a beállítás utasítja a KVIrcet, hogy az avatarokat mutassa a "
-"felhasználói listában.<br>Az Avatarok automatikusan a megfelelő méretűre "
-"lesznek állítva. Jobb ha ez a beállítás be van kapcsolva :)</center>"
+msgid "<center>This option will force KVIrc to scale avatars shown in the userlist.<br>Avatars will be scaled to fit the constraints set below. Better keep this option on. :)</center>"
+msgstr "<center>Ez a beállítás utasítja a KVIrcet, hogy az avatarokat mutassa a felhasználói listában.<br>Az Avatarok automatikusan a megfelelő méretűre lesznek állítva. Jobb ha ez a beállítás be van kapcsolva :)</center>"
 
 #: src/modules/options/optw_dcc.cpp:279
-msgid ""
-"<center>This parameter controls the average delay between two packets sent "
-"or received.<br>A smaller interval will cause you to send data faster but "
-"will also add load to your CPU, disk and network interface.<br>Reasonable "
-"values are from 5 to 50 milliseconds.</center>"
-msgstr ""
-"<center>Ez meghatározza az átlagos késleltetést két küldött vagy fogadott "
-"csomag között.<br>Kissebb intervallumnál gyorsabb adatküldés lehetséges, de "
-"egyúttal a processzort, hálózatot és a lemezt is jobban leterheli."
-"<br>Elfogadható értékek: 5 és 50 milliszekundum között.</center>"
+msgid "<center>This parameter controls the average delay between two packets sent or received.<br>A smaller interval will cause you to send data faster but will also add load to your CPU, disk and network interface.<br>Reasonable values are from 5 to 50 milliseconds.</center>"
+msgstr "<center>Ez meghatározza az átlagos késleltetést két küldött vagy fogadott csomag között.<br>Kissebb intervallumnál gyorsabb adatküldés lehetséges, de egyúttal a processzort, hálózatot és a lemezt is jobban leterheli.<br>Elfogadható értékek: 5 és 50 milliszekundum között.</center>"
 
 #: src/modules/options/optw_dcc.cpp:287
-msgid ""
-"<center>This parameter controls the packet size used for DCC SEND.<br>With "
-"bigger packets you will be probably send data faster, but you will also "
-"saturate your bandwidth and in some cases cause more disk activity."
-"<br>Reasonable values are from 512 to 4096 bytes.</center>"
-msgstr ""
-"<center>Meghatározza a küldendő csomagok méretét DCC küldésnél.<br> Nagyobb "
-"csomagoknál lehetséges, hogy gyorsabb az átvitel, de egyúttal jobban "
-"leterheli a sávszélességet, és néhány esetben okozhat magas lemez aktivitást "
-"is.<br>Elfogadható értékek 512-től  4096 bájtig.</center>"
+msgid "<center>This parameter controls the packet size used for DCC SEND.<br>With bigger packets you will be probably send data faster, but you will also saturate your bandwidth and in some cases cause more disk activity.<br>Reasonable values are from 512 to 4096 bytes.</center>"
+msgstr "<center>Meghatározza a küldendő csomagok méretét DCC küldésnél.<br> Nagyobb csomagoknál lehetséges, hogy gyorsabb az átvitel, de egyúttal jobban leterheli a sávszélességet, és néhány esetben okozhat magas lemez aktivitást is.<br>Elfogadható értékek 512-től  4096 bájtig.</center>"
 
 #: src/modules/options/optw_identity.cpp:327
-msgid ""
-"<center>This text will appear when someone does a /WHOIS on you.<br>It is "
-"intended to be your real name, but people tend to put random quotes and "
-"phrases here too.</center>"
-msgstr ""
-"<center>Ez a szöveg fog megjelenni, ha valaki \"lewhoisol\" a /WHOIS "
-"paranccsal. <br> Ez lehet akár a polgári neved, de sokan ide egy nagyon "
-"rövid szösszenetet/szólást írnak.</center>"
+msgid "<center>This text will appear when someone does a /WHOIS on you.<br>It is intended to be your real name, but people tend to put random quotes and phrases here too.</center>"
+msgstr "<center>Ez a szöveg fog megjelenni, ha valaki \"lewhoisol\" a /WHOIS paranccsal. <br> Ez lehet akár a polgári neved, de sokan ide egy nagyon rövid szösszenetet/szólást írnak.</center>"
 
 #: src/modules/options/optw_ctcp.cpp:56
-msgid ""
-"<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
-"you can place the source URL for a script here.</center>"
-msgstr ""
-"<center>Ez a szöveg hozzá lesz rendelve a CTCP SOURCE (forrás) válaszhoz. "
-"<br>Például Szkript URL-t itt elhelyezheted.</center>"
+msgid "<center>This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.</center>"
+msgstr "<center>Ez a szöveg hozzá lesz rendelve a CTCP SOURCE (forrás) válaszhoz. <br>Például Szkript URL-t itt elhelyezheted.</center>"
 
 #: src/modules/options/optw_ctcp.cpp:51
-msgid ""
-"<center>This text will be appended to the CTCP VERSION reply.<br>For "
-"example, you can place a script name here.</center>"
-msgstr ""
-"<center>Ez a szöveg hozzá lesz rendelve a CTCP VERZIÓ válaszhoz. <br>Például "
-"Szkript nevet is elhelyezhetsz itt.</center>"
+msgid "<center>This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.</center>"
+msgstr "<center>Ez a szöveg hozzá lesz rendelve a CTCP VERZIÓ válaszhoz. <br>Például Szkript nevet is elhelyezhetsz itt.</center>"
 
 #: src/modules/options/optw_avatar.cpp:92
-msgid ""
-"<center>Use a user's last known avatar by default (only for users that are "
-"registered).</center>"
-msgstr ""
-"<center>Használd a felhasználó legutolsó ismert avatarját "
-"alapértelmezettként (csak ha a felhasználó regisztrált)</center>"
+msgid "<center>Use a user's last known avatar by default (only for users that are registered).</center>"
+msgstr "<center>Használd a felhasználó legutolsó ismert avatarját alapértelmezettként (csak ha a felhasználó regisztrált)</center>"
 
 #: src/modules/options/optw_connection.cpp:90
-msgid ""
-"<center>When available and enabled of the specific server, KVIrc will try to "
-"authenticate the user using the SASL procotol</center>"
-msgstr ""
+msgid "<center>When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol</center>"
+msgstr "<center> Ha elérhető és engedélyezve van a KVIrc megpróbálja a SASL protokollt használni a felhasználó azonosítására.</center>"
 
 #: src/modules/options/optw_dcc.cpp:121
-msgid ""
-"<center>When you're behind a dialup router and also tunneling through a "
-"psyBNC bouncer, you can use a bug in the bouncer to force KVIrc to bind the "
-"DCC connections to the dialup router's address.<br>It's an ugly hack - use "
-"it only if nothing else works.</center>"
-msgstr ""
-"<center>Amikor egy router mögött vagy, és emellett psyBNC mögül "
-"csatlakozolki tudsz használni egy hibát a bouncerben úgy, hogy a KVIrc "
-"átirányíttatja a DCC kapcsolatokat a router címére.<br>Ez egy elég csúnya "
-"megoldás, csak akkor használd, ha már nincs más kiút.</center>"
+msgid "<center>When you're behind a dialup router and also tunneling through a psyBNC bouncer, you can use a bug in the bouncer to force KVIrc to bind the DCC connections to the dialup router's address.<br>It's an ugly hack - use it only if nothing else works.</center>"
+msgstr "<center>Amikor egy router mögött vagy, és emellett psyBNC mögül csatlakozolki tudsz használni egy hibát a bouncerben úgy, hogy a KVIrc átirányíttatja a DCC kapcsolatokat a router címére.<br>Ez egy elég csúnya megoldás, csak akkor használd, ha már nincs más kiút.</center>"
 
 #: src/modules/options/optw_dcc.cpp:115
-msgid ""
-"<center>You can enable this option if you are behind a router that forwards "
-"all or a range of ports.<br>KVIrc will try to guess the IP address to use "
-"for DCC by looking up the local hostname as seen by the IRC server you're "
-"connected to.<br>This method is an exclusive alternative to the \"fixed "
-"address\" above.<br>It might guess the correct address automatically if "
-"certain conditions are met (e.g. the IRC server does not mask hostnames).</"
-"center>"
-msgstr ""
-"<center>Engedélyezd ezt az opciót, ha egy router mögött vagy, ami mindent "
-"vagy megadott portokat feléd irányít.<br>A KVIrc megpróbálja azt az IRC "
-"szerver által megadott címet használni a DCC kapcsolatokhoz, amelyik "
-"szerverre kapcsolódsz. <br>Ez egy különleges eljárás ami a \"megadott cím\" "
-"opciót helyettesítheti. <br> Ez visszaadja a megfelelő címet, ha a "
-"feltételek adottak (pl.: a szerver nem maszkolja a hosztneveket)</center>"
+msgid "<center>You can enable this option if you are behind a router that forwards all or a range of ports.<br>KVIrc will try to guess the IP address to use for DCC by looking up the local hostname as seen by the IRC server you're connected to.<br>This method is an exclusive alternative to the \"fixed address\" above.<br>It might guess the correct address automatically if certain conditions are met (e.g. the IRC server does not mask hostnames).</center>"
+msgstr "<center>Engedélyezd ezt az opciót, ha egy router mögött vagy, ami mindent vagy megadott portokat feléd irányít.<br>A KVIrc megpróbálja azt az IRC szerver által megadott címet használni a DCC kapcsolatokhoz, amelyik szerverre kapcsolódsz. <br>Ez egy különleges eljárás ami a \"megadott cím\" opciót helyettesítheti. <br> Ez visszaadja a megfelelő címet, ha a feltételek adottak (pl.: a szerver nem maszkolja a hosztneveket)</center>"
 
 #: src/modules/options/optw_servers.cpp:169
-msgid ""
-"<center>You can specify a \"special\" <b>nickname</b> that will be used to "
-"log in to the servers on this network.<br>If this field is left empty (most "
-"common case), the default nickname (specified in the \"Identity\" settings) "
-"will be used.</center>"
-msgstr ""
-"<center>Megadhatsz \"különleges\" <b>Nevet</b> amivel a KVIrc csatlakozni "
-"fog ezen a hálózaton.<br>Ha üresen marad (mint a legtöbb esetben), az "
-"alapértelmezett nevet használja. (Az  \"Azonosító\" beállításai alapján ) </"
-"center>"
+msgid "<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>"
+msgstr "<center>Megadhatsz \"különleges\" <b>Nevet</b> amivel a KVIrc csatlakozni fog ezen a hálózaton.<br>Ha üresen marad (mint a legtöbb esetben), az alapértelmezett nevet használja. (Az  \"Azonosító\" beállításai alapján ) </center>"
 
 #: src/modules/options/optw_servers.cpp:571
-msgid ""
-"<center>You can specify a \"special\" <b>nickname</b> that will be used to "
-"log in to this server.<br>If this field is left empty (most common case), "
-"KVIrc will first look if a nickname is specified for the network that this "
-"server belongs to, and if that is empty then the default nickname (specified "
-"in the \"Identity\" settings) will be used.</center>"
-msgstr ""
-"<center>Itt megadhatsz \"különleges\"<b>Nevet</b> amivel a KVIrc csatlakozni "
-"fog erre a szerverre. Ha ez a mező üres, akkor elősször a KVIrc ellenőrzi, "
-"nincs e megadva Név azon a hálózaton, amihez ez a szerver tartozik, majd ha "
-"az is üres, a KVIrc az \"Azonosító\" résznél megadott Nevet fogja használni."
-"</center>"
+msgid "<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>If this field is left empty (most common case), KVIrc will first look if a nickname is specified for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>"
+msgstr "<center>Itt megadhatsz \"különleges\"<b>Nevet</b> amivel a KVIrc csatlakozni fog erre a szerverre. Ha ez a mező üres, akkor elősször a KVIrc ellenőrzi, nincs e megadva Név azon a hálózaton, amihez ez a szerver tartozik, majd ha az is üres, a KVIrc az \"Azonosító\" résznél megadott Nevet fogja használni.</center>"
 
 #: src/modules/options/optw_servers.cpp:179
-msgid ""
-"<center>You can specify a \"special\" <b>real name</b> that will be used to "
-"login with the servers on this network.<br>If you leave this field empty "
-"(most common case), the default \"real name\" (specified in the \"Identity\" "
-"settings) will be used.</center>"
-msgstr ""
-"<center>Megadhatsz \"különleges\" <b>valós nevet</b> amivel a  KVIrc "
-"csatlakozni fog ezen a hálózaton.<br>Ha üresen marad (mint a legtöbb "
-"esetben), az alapértelmezett valós nevet használja. (Az  \"Azonosító\" "
-"beállításai alapján ) </center>"
+msgid "<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>"
+msgstr "<center>Megadhatsz \"különleges\" <b>valós nevet</b> amivel a  KVIrc csatlakozni fog ezen a hálózaton.<br>Ha üresen marad (mint a legtöbb esetben), az alapértelmezett valós nevet használja. (Az  \"Azonosító\" beállításai alapján ) </center>"
 
 #: src/modules/options/optw_servers.cpp:582
-msgid ""
-"<center>You can specify a \"special\" <b>real name</b> that will be used to "
-"login with this server.<br>If you leave this field empty (most common case), "
-"KVIrc will first look if a real name is specified for the network that this "
-"server belongs to, and if that is empty the default \"real name\" (specified "
-"in the \"Identity\" settings) will be used.</center>"
-msgstr ""
-"<center>Itt megadhatsz \"különleges\"<b>Valós nevet</b> amivel a KVIrc "
-"csatlakozni fog erre a szerverre. Ha ez a mező üres, akkor a KVIrc elősször "
-"ellenőrzi, nincs e megadva Valós név azon a hálózaton, amihez ez a szerver "
-"tartozik, majd ha az is üres, a KVIrc az \"Azonosító\" résznél megadott "
-"Valós nevet fogja használni.</center>"
+msgid "<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>If you leave this field empty (most common case), KVIrc will first look if a real name is specified for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>"
+msgstr "<center>Itt megadhatsz \"különleges\"<b>Valós nevet</b> amivel a KVIrc csatlakozni fog erre a szerverre. Ha ez a mező üres, akkor a KVIrc elősször ellenőrzi, nincs e megadva Valós név azon a hálózaton, amihez ez a szerver tartozik, majd ha az is üres, a KVIrc az \"Azonosító\" résznél megadott Valós nevet fogja használni.</center>"
 
 #: src/modules/options/optw_identity.cpp:306
-msgid ""
-"<center>Your <b>nickname</b> is your primary form of identification on IRC."
-"<br>Since servers cannot accept multiple users sharing the same nickname "
-"(case insensitive), you can provide alternative nicknames to be used in "
-"casethe server refuses to accept the default one.</center>"
-msgstr ""
-"<center>A <b>beceneved</b> az elsődleges, ami alapján felismernek IRC-en."
-"<br>Amióta a szervereken nem engedélyezett egy nick két használata (kis-"
-"nagybetű különbséggel) , megadhatsz alternatív Neveket is, amit a KVIrc "
-"használhat, ha a szerver visszautasítaná az alapértelmezett nevet.</center>"
+msgid "<center>Your <b>nickname</b> is your primary form of identification on IRC.<br>Since servers cannot accept multiple users sharing the same nickname (case insensitive), you can provide alternative nicknames to be used in casethe server refuses to accept the default one.</center>"
+msgstr "<center>A <b>beceneved</b> az elsődleges, ami alapján felismernek IRC-en.<br>Amióta a szervereken nem engedélyezett egy nick két használata (kis-nagybetű különbséggel) , megadhatsz alternatív Neveket is, amit a KVIrc használhat, ha a szerver visszautasítaná az alapértelmezett nevet.</center>"
 
 #: src/modules/options/optw_notify.cpp:97
-msgid ""
-"<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" "
-"settings.</p>"
-msgstr ""
-"<p><b>Figyelem:</b><br>Az értesítési lista a  \"Regisztrált Felhasználók\" "
-"beállításai szerint működik.</p>"
+msgid "<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" settings.</p>"
+msgstr "<p><b>Figyelem:</b><br>Az értesítési lista a  \"Regisztrált Felhasználók\" beállításai szerint működik.</p>"
 
 #: src/modules/options/optw_connection.cpp:252
-msgid ""
-"<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
-"that implements only a limited subset of the Identification Protocol "
-"specifications. If it is possible, install a real ident daemon.</p>"
-msgstr ""
-"<p><b>Figyelmeztetés:</b><br>Ez  <b>nem RFC 1413 kompatibilis</b> azonosító "
-"démon, ami csak korlátozott lehetőséggekkel rendelkezik Azonosítási "
-"Protokollok terén. Amennyiben lehetséges, telepíts egy valós azonosító "
-"démont.</p>"
+msgid "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon that implements only a limited subset of the Identification Protocol specifications. If it is possible, install a real ident daemon.</p>"
+msgstr "<p><b>Figyelmeztetés:</b><br>Ez  <b>nem RFC 1413 kompatibilis</b> azonosító démon, ami csak korlátozott lehetőséggekkel rendelkezik Azonosítási Protokollok terén. Amennyiben lehetséges, telepíts egy valós azonosító démont.</p>"
 
 #: src/modules/options/optw_connection.cpp:257
-msgid ""
-"<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
-"that implements only a limited subset of the Identification Protocol "
-"specifications.<br>On UNIX, you may also need root privileges to bind to the "
-"auth port (113).<br>It is <b>highly recommended</b> that a <b>real</b> "
-"system-wide ident daemon be used instead, or none at all if ident is not "
-"required.</p>"
-msgstr ""
-"<p><b>Figyelmeztetés:</b><br>Ez <b>nem RFC 1413 kompatibilis</b> azonosító "
-"démon, ami csak néhány részét tartalmazza az azonosítási protokollban "
-"előírtaknak.<br> UNIX rendszereken rendelkezned kell root jogosultságokkal, "
-"hogy ezt hozzárendeld a megfelelő porthoz. (113).<br><b>Erősen ajánlott</b> "
-"egy <b>igazi</b> rendszer-oldali azonosító démon használata, vagy semmilyen, "
-"ha nem szükséges.</p>"
+msgid "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon that implements only a limited subset of the Identification Protocol specifications.<br>On UNIX, you may also need root privileges to bind to the auth port (113).<br>It is <b>highly recommended</b> that a <b>real</b> system-wide ident daemon be used instead, or none at all if ident is not required.</p>"
+msgstr "<p><b>Figyelmeztetés:</b><br>Ez <b>nem RFC 1413 kompatibilis</b> azonosító démon, ami csak néhány részét tartalmazza az azonosítási protokollban előírtaknak.<br> UNIX rendszereken rendelkezned kell root jogosultságokkal, hogy ezt hozzárendeld a megfelelő porthoz. (113).<br><b>Erősen ajánlott</b> egy <b>igazi</b> rendszer-oldali azonosító démon használata, vagy semmilyen, ha nem szükséges.</p>"
 
 #: src/modules/options/dialog.cpp:196
-msgid ""
-"<p>This is the search tool for this options dialog.</p><p>You can enter a "
-"search term either in your native language or in english and press the "
-"button on the right. The pages that contain some options related to the "
-"search term will be highlighted and you will be able to quickly find them.</"
-"p><p>Try \"nickname\" for example.</p>"
-msgstr ""
-"<p>Ez egy mini-kereső, hogy könnyen megtaláld a beállításokat.</p> "
-"<p>Megadhatsz szavakat magyarul vagy angolul, és nyomd le a mellette lévő "
-"ikont. Azok az oldalak, amelyek hasonlóságot mutatnak a megadott szavakkal "
-"ki lesznek emelve, hogy könnyedén megtaláld őket.</p><p>Próbáld ki például "
-"az \"avatar\" szóval.</p>"
+msgid "<p>This is the search tool for this options dialog.</p><p>You can enter a search term either in your native language or in english and press the button on the right. The pages that contain some options related to the search term will be highlighted and you will be able to quickly find them.</p><p>Try \"nickname\" for example.</p>"
+msgstr "<p>Ez egy mini-kereső, hogy könnyen megtaláld a beállításokat.</p> <p>Megadhatsz szavakat magyarul vagy angolul, és nyomd le a mellette lévő ikont. Azok az oldalak, amelyek hasonlóságot mutatnak a megadott szavakkal ki lesznek emelve, hogy könnyedén megtaláld őket.</p><p>Próbáld ki például az \"avatar\" szóval.</p>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:105
 msgid "AVATAR"
@@ -1623,13 +731,12 @@ msgid "Abort"
 msgstr "Megszakít"
 
 #: src/modules/options/optw_dcc.cpp:220
-#, fuzzy
 msgid "Accept RESUME requests with broken filename (mIRC file.ext)"
-msgstr "Hibás Folytatás kérés elfogadása (mIRC file.kit)"
+msgstr "Hibás RESUME kérések elfogadása helytelen fájlnévnél (mIRC fájlj.kit)"
 
 #: src/modules/options/optw_dcc.cpp:226
 msgid "Accept RESUME requests with mismatched ports"
-msgstr ""
+msgstr "Hibás RESUME kérések elfogadása helytelen portokkal"
 
 #: src/modules/options/optw_servers.cpp:1320
 msgid "Active Configuration"
@@ -1652,9 +759,8 @@ msgid "Add"
 msgstr "Hozzáadás"
 
 #: src/modules/options/optw_identity.cpp:740
-#, fuzzy
 msgid "Add Profile"
-msgstr "Profil"
+msgstr "Profil hozzáadása"
 
 #: src/modules/options/optw_nickserv.cpp:264
 #: src/modules/options/optw_servers.cpp:332
@@ -1662,8 +768,10 @@ msgid "Add Rule"
 msgstr "Szabály Hozzáadása"
 
 #: src/modules/options/optw_servers.cpp:972
-#: src/modules/options/optw_channel.h:64 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
@@ -1732,26 +840,24 @@ msgid "Allow up to:"
 msgstr "Engedélyezés:"
 
 #: src/modules/options/optw_identity.cpp:721
-#, fuzzy
 msgid "Alt. Nick"
-msgstr "Alt. Név 1:"
+msgstr "Alt. Név:"
 
 #: src/modules/options/optw_identity.cpp:73
 msgid "Alt. Nickname 1:"
-msgstr "Alt. Név 1:"
+msgstr "Alt. Becenév 1:"
 
 #: src/modules/options/optw_identity.cpp:80
 msgid "Alt. Nickname 2:"
-msgstr "Alt. Név 2:"
+msgstr "Alt. Becenév 2:"
 
 #: src/modules/options/optw_identity.cpp:87
 msgid "Alt. Nickname 3:"
-msgstr "Alt Név 3:"
+msgstr "Alt Becenév 3:"
 
 #: src/modules/options/optw_identity.cpp:925
-#, fuzzy
 msgid "Alternative Nickname:"
-msgstr "Alt. Név 1:"
+msgstr "Alternatív Becenév:"
 
 #: src/modules/options/optw_identity.cpp:314
 msgid "Alternatives..."
@@ -1787,13 +893,14 @@ msgstr "Hozzáfűzés a VERZIÓ válaszhoz: "
 
 #: src/modules/options/optw_servers.cpp:894
 msgid "Authenticate via SASL extension"
-msgstr ""
+msgstr "Azonosítás SASL kiterjesztésen keresztül"
 
 #: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
 msgstr "Naplófájlok mentése minden"
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Auto-detect"
 msgstr "Auto-Felismerés"
 
@@ -1805,7 +912,8 @@ msgstr "Automatikus felismerés"
 msgid "Automatically Log"
 msgstr "Automatikus Naplózás"
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:314
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:314
 #: src/modules/options/optw_dcc.cpp:350
 msgid "Automatically accept"
 msgstr "Automatikus fogadás"
@@ -1962,7 +1070,8 @@ msgstr "CTCP Válaszok"
 msgid "Cache IP address"
 msgstr "Ip cím tárolása"
 
-#: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:96
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
 #: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/optw_nickserv.cpp:128
@@ -1976,7 +1085,8 @@ msgstr "Mégsem"
 #: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_windowlist.cpp:136
 #: src/modules/options/optw_windowlist.cpp:141
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
 #: src/modules/options/optw_userlist.cpp:144
@@ -1986,15 +1096,15 @@ msgstr "Közép"
 
 #: src/modules/options/optw_connection.cpp:108
 msgid "Certificate"
-msgstr "Hitelesítés"
+msgstr "Bizonyítvány"
 
 #: src/modules/options/optw_connection.cpp:112
 msgid "Certificate location:"
-msgstr "Hitelesítés helye: "
+msgstr "Bizonyítvány helye: "
 
 #: src/modules/options/optw_connection.cpp:115
 msgid "Certificate password:"
-msgstr "Hitelesítés jelszava: "
+msgstr "Bizonyítvány jelszava: "
 
 #: src/modules/options/optw_ircoutput.cpp:73
 msgid "ChanServ and NickServ notices"
@@ -2062,14 +1172,12 @@ msgid "Choose..."
 msgstr "Kiválaszás..."
 
 #: src/modules/options/optw_windowlist.h:112
-#, fuzzy
 msgid "Classic Window List"
-msgstr "Ablak feliratok"
+msgstr "Klasszikus Ablak Lista"
 
 #: src/modules/options/optw_ircoutput.cpp:62
-#, fuzzy
 msgid "Classic format"
-msgstr "Klasszikus lista"
+msgstr "Klasszikus formátum"
 
 #: src/modules/options/optw_servers.cpp:1699
 msgid "Clear List"
@@ -2079,11 +1187,13 @@ msgstr "Lista Törlése"
 msgid "Close in tray"
 msgstr "Bezárásnál a KVIrcet tegye a tálcára"
 
-#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, accepting all changes."
 msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 
-#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:81
+#: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:81
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
 
@@ -2100,7 +1210,8 @@ msgid "Commit all changes immediately."
 msgstr "Minden változás alkalmazása azonnal."
 
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41
+#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:221
 msgid "Configuration"
 msgstr "Beállítások"
@@ -2158,13 +1269,10 @@ msgstr "Minimalizált Debug ablak létrehozása"
 msgid "Cursor color"
 msgstr "Kurzor színe"
 
-# Nem lehet lefordatani, marha furcsa hiba amikor átírnám a zárójelezett részt kbabel hibának jelenti
-# Cant translate, when i translate a word "means" in the brackets, kbabel  says its an error ~ Fiber
-# its around: %nick% means / valahol a két szó között
 #: src/modules/options/optw_away.cpp:53
-#, fuzzy, c-format
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr "Választott nicknév (%%nick%%) jelenti az aktuális nevet): "
+msgstr "Választott nicknév (%nick jelenti az aktuális nevet): "
 
 #: src/modules/options/optw_dcc.h:30
 msgid "DCC"
@@ -2184,20 +1292,19 @@ msgstr "DCC/TDCC"
 
 #: src/modules/options/optw_ircview.cpp:194
 msgid "DashDotDotLine"
-msgstr ""
+msgstr "VonalPontPont vonal"
 
 #: src/modules/options/optw_ircview.cpp:193
 msgid "DashDotLine"
-msgstr ""
+msgstr "VonalPont vonal"
 
 #: src/modules/options/optw_ircview.cpp:191
 msgid "DashLine"
-msgstr ""
+msgstr "Pont vonal"
 
 #: src/modules/options/optw_ircoutput.cpp:58
-#, fuzzy
 msgid "Datetime format"
-msgstr "Időbélyeg formátum:"
+msgstr "Dátum-idő formátum:"
 
 #: src/modules/options/optw_servers.cpp:778
 msgid "Default"
@@ -2209,7 +1316,7 @@ msgstr "Alapértelmezett Üzenetek"
 
 #: src/modules/options/optw_notifier.cpp:196
 msgid "Default auto hiding time for messages (0 to disable)"
-msgstr ""
+msgstr "Alapértelmezett elrejtési idő üzeneteknél (0 ha ne legyen rejtés)"
 
 #: src/modules/options/optw_away.cpp:41
 msgid "Default away message:"
@@ -2220,9 +1327,8 @@ msgid "Default ban mask:"
 msgstr "Alapértelmezett tiltó maszk:"
 
 #: src/modules/options/optw_textencoding.cpp:45
-#, fuzzy
 msgid "Default server encoding:"
-msgstr "Alapértelmezett karakterkódolás:"
+msgstr "Alapértelmezett szerver kódolás:"
 
 #: src/modules/options/optw_textencoding.cpp:53
 msgid "Default text encoding:"
@@ -2237,9 +1343,8 @@ msgid "Delete"
 msgstr "Törlés"
 
 #: src/modules/options/optw_identity.cpp:746
-#, fuzzy
 msgid "Delete Profile"
-msgstr "Szabály törlése"
+msgstr "Profil Törlése"
 
 #: src/modules/options/optw_nickserv.cpp:272
 #: src/modules/options/optw_servers.cpp:341
@@ -2286,9 +1391,8 @@ msgid "Do not request invite list"
 msgstr "Ne kérje a meghívó listát"
 
 #: src/modules/options/optw_channel.cpp:128
-#, fuzzy
 msgid "Do not request quiet ban list"
-msgstr "Ne küldje a tiltólistát"
+msgstr "Ne kérje a csöndes tiltólistát"
 
 #: src/modules/options/optw_avatar.cpp:48
 msgid "Do not scale avatar if it is less than required size"
@@ -2307,13 +1411,12 @@ msgid "Don't show colors in user messages"
 msgstr "Szinek tiltása üzenetekben"
 
 #: src/modules/options/optw_notifier.cpp:160
-#, fuzzy
 msgid "Don't show notifier when there is an active fullscreen window"
-msgstr "Értesítések mutatása az aktív ablakban"
+msgstr "Ne mutassa az értesítőt, ha fut egy teljes képernyős alkalmazás"
 
 #: src/modules/options/optw_ircview.cpp:190
 msgid "DotLine"
-msgstr ""
+msgstr "Pont vonal"
 
 #: src/modules/options/optw_userlist.cpp:99
 msgid "Dotted Grid"
@@ -2321,7 +1424,7 @@ msgstr "Pontozott Rács"
 
 #: src/modules/options/optw_urlhandlers.cpp:54
 msgid "Double click"
-msgstr ""
+msgstr "Dupla klikk"
 
 #: src/modules/options/optw_identity.cpp:168
 #: src/modules/options/optw_identity.cpp:175
@@ -2345,9 +1448,8 @@ msgid "Echo channel topic"
 msgstr "Csatorna topic kiírása"
 
 #: src/modules/options/optw_identity.cpp:743
-#, fuzzy
 msgid "Edit Profile"
-msgstr "Profil"
+msgstr "Profil Szerkesztése"
 
 #: src/modules/options/optw_nickserv.cpp:268
 #: src/modules/options/optw_servers.cpp:337
@@ -2363,9 +1465,8 @@ msgid "Enable Ignore For"
 msgstr "Mellőzés engedélyezése "
 
 #: src/modules/options/optw_identity.cpp:706
-#, fuzzy
 msgid "Enable Network Profiles"
-msgstr "Hálózati Tulajdonságok"
+msgstr "Hálózati Profilok Engedélyezése"
 
 #: src/modules/options/optw_nickserv.cpp:232
 #: src/modules/options/optw_servers.cpp:304
@@ -2377,19 +1478,16 @@ msgid "Enable URL highlighting"
 msgstr "URL (webcím) kiemelés"
 
 #: src/modules/options/optw_userlist.cpp:238
-#, fuzzy
 msgid "Enable animated avatars"
-msgstr "Lagmérő engedélyezése"
+msgstr "Animált avatarok engedélyezése"
 
 #: src/modules/options/optw_ircview.cpp:160
-#, fuzzy
 msgid "Enable animated smiles"
-msgstr "Lagmérő engedélyezése"
+msgstr "Animált hangulatjelek engedélyezése"
 
 #: src/modules/options/optw_away.cpp:39
-#, fuzzy
 msgid "Enable default away message"
-msgstr "Alapértelmezett Távol üzenet"
+msgstr "Alapértelmezett távol üzenet engedélyezése"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
@@ -2412,14 +1510,12 @@ msgid "Enable level-based message notification (not a message-type based)"
 msgstr "Prioritási szint alapú értesítő engedélyezése (nem üzenet-alapú)"
 
 #: src/modules/options/optw_notifier.cpp:184
-#, fuzzy
 msgid "Enable notifier window fade effect"
-msgstr "Értesítő ablak halványulásának tiltása"
+msgstr "Értesítő ablak halványulás effektjének engedélyezése"
 
 #: src/modules/options/optw_notifier.cpp:176
-#, fuzzy
 msgid "Enable notifier window flashing"
-msgstr "Értesítő ablak villogásának kikapcsolása"
+msgstr "Értesítő ablak villogásának engedélyezése"
 
 #: src/modules/options/optw_connection.cpp:236
 msgid "Enable service for IPv6"
@@ -2430,14 +1526,12 @@ msgid "Enable target user tracking"
 msgstr "Felhasználó követése"
 
 #: src/modules/options/optw_input.cpp:144
-#, fuzzy
 msgid "Enable the input history logging"
-msgstr "Beviteli történet és a memória tiltása"
+msgstr "Beviteli történet naplózásának engedélyezése"
 
 #: src/modules/options/optw_notifier.cpp:144
-#, fuzzy
 msgid "Enable the notifier"
-msgstr "Lagmérő engedélyezése"
+msgstr "Értesítő engedélyezése"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Enable tray icon"
@@ -2465,11 +1559,11 @@ msgstr "Szó kiemelés engedélyezése"
 
 #: src/modules/options/optw_input.cpp:147
 msgid "Expand tabulations in input using this amount of spaces:"
-msgstr ""
+msgstr "Tabulátor cseréje ennyi szóközre bevitelnél:"
 
 #: src/modules/options/optw_servers.cpp:861
 msgid "Extended Capabilities"
-msgstr ""
+msgstr "Kiterjesztett Képességek"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "External CTCP replies"
@@ -2494,12 +1588,8 @@ msgstr "Avatar letöltése sikertelen. <br><b>%Q</b>"
 
 #: src/modules/options/optw_identity.cpp:556
 #: src/modules/options/optw_identity.cpp:595
-msgid ""
-"Failed to load the avatar image.<br>It may be an unaccessible file or an "
-"unsupported image format."
-msgstr ""
-"Avatar betöltése sikertelen. <br>Ez lehet azért, mert a fájl nem elérhető "
-"vagy nem támogatott a formátuma."
+msgid "Failed to load the avatar image.<br>It may be an unaccessible file or an unsupported image format."
+msgstr "Avatar betöltése sikertelen. <br>Ez lehet azért, mert a fájl nem elérhető vagy nem támogatott a formátuma."
 
 #: src/modules/options/optw_identity.cpp:161
 msgid "Failed to start the download"
@@ -2524,9 +1614,8 @@ msgid "File pattern:"
 msgstr "Fájl minta: "
 
 #: src/modules/options/optw_dcc.cpp:324
-#, fuzzy
 msgid "Flash system taskbar on new dcc chat message"
-msgstr "Rendszer tálca villogjon, ha új Privát üzenet érkezik"
+msgstr "Rendszer tálca villogjon, ha új dcc üzenet érkezik"
 
 #: src/modules/options/optw_query.cpp:74
 msgid "Flash system taskbar on new query message"
@@ -2564,7 +1653,7 @@ msgstr "Half-duplex mód kikényszerítése a hangeszközön"
 
 #: src/modules/options/optw_dcc.cpp:267
 msgid "Force idle step"
-msgstr ""
+msgstr "Kényszerített várakozási idő"
 
 #: src/modules/options/optw_irc.cpp:69
 msgid "Force immediate quit"
@@ -2595,8 +1684,10 @@ msgstr "Nem:"
 
 #: src/modules/options/optw_messages.cpp:71
 #: src/modules/options/optw_servers.cpp:242
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_identity.h:153
 #: src/modules/options/optw_interfacelookglobal.h:33
 msgid "General"
@@ -2639,21 +1730,8 @@ msgid "Half-op:"
 msgstr "Fél-op:"
 
 #: src/modules/options/optw_identity.cpp:467
-msgid ""
-"Here you can choose your avatar image. It will be visible<br>by other people "
-"that request it. Choose a nice image of yourself,<br>possibly avoiding "
-"obscenity and offending images. It is a good idea<br>to choose a relatively "
-"small file (say 150 Kb max) because<br>most clients have a limit on the size "
-"of avatars being downloaded.<br>The image also should be smaller than "
-"800x600 pixels since<br>it will have to be viewable in everyone's monitor."
-msgstr ""
-"Itt tudod kiválasztani az avatar képedet. Ez lesz látható azoknak,<br> akik "
-"lekérik ezt. Válasz egy normál képet magadról (vagy akármi másról),<br> hogy "
-"elkerüld az obszcén és sértő támadásokat a kép ellen. Az igazán jó <br> "
-"avatar egy maximum 150 Kb méretű fájl, mivel a legtöbb kliens limitála a "
-"<br> letölthető avatarok méretét.<br>A jó vatar képnek kisebbnek kell "
-"lennie, mint 800x600 képpont, így más is<br> megtekintheti azt alacsonyabb "
-"felbontású monitoron."
+msgid "Here you can choose your avatar image. It will be visible<br>by other people that request it. Choose a nice image of yourself,<br>possibly avoiding obscenity and offending images. It is a good idea<br>to choose a relatively small file (say 150 Kb max) because<br>most clients have a limit on the size of avatars being downloaded.<br>The image also should be smaller than 800x600 pixels since<br>it will have to be viewable in everyone's monitor."
+msgstr "Itt tudod kiválasztani az avatar képedet. Ez lesz látható azoknak,<br> akik lekérik ezt. Válasz egy normál képet magadról (vagy akármi másról),<br> hogy elkerüld az obszcén és sértő támadásokat a kép ellen. Az igazán jó <br> avatar egy maximum 150 Kb méretű fájl, mivel a legtöbb kliens limitála a <br> letölthető avatarok méretét.<br>A jó vatar képnek kisebbnek kell lennie, mint 800x600 képpont, így más is<br> megtekintheti azt alacsonyabb felbontású monitoron."
 
 #: src/modules/options/optw_identity.cpp:345
 msgid "Here you can specify your age."
@@ -2681,7 +1759,7 @@ msgstr "Figyelmeztetés / Kiemelés"
 
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight every occurence of a word inside text"
-msgstr ""
+msgstr "Minden szó előfordulás kiemelése szövegen belül"
 
 #: src/modules/options/optw_highlighting.cpp:68
 msgid "Highlight messages containing my nickname"
@@ -2689,7 +1767,7 @@ msgstr "Üzenetek kiemelése, amik a Nevemet tartalmazzák"
 
 #: src/modules/options/optw_highlighting.cpp:63
 msgid "Highlight only whole words using these word splitters:"
-msgstr ""
+msgstr "Csak egész szavak kiemelése az alábbi elválasztókkal:"
 
 #: src/modules/options/optw_sound.cpp:338
 msgid "Highlighted message in inactive window"
@@ -2712,7 +1790,7 @@ msgstr "Vízszintes elhelyezés:"
 
 #: src/modules/options/optw_urlhandlers.cpp:51
 msgid "How many click to open links?"
-msgstr ""
+msgstr "Hány kattintás nyisson linket?"
 
 #: src/modules/options/optw_sound.cpp:94
 msgid "ID3 tags' encoding"
@@ -2736,13 +1814,12 @@ msgid "IRC"
 msgstr "IRC"
 
 #: src/modules/options/optw_userlist.cpp:57
-#, fuzzy
 msgid "IRC Op:"
-msgstr "IRC"
+msgstr "IRC Operátor:"
 
 #: src/modules/options/optw_ircoutput.cpp:63
 msgid "ISO 8601 format"
-msgstr ""
+msgstr "ISO 8601 formátum"
 
 #: src/modules/options/optw_notify.cpp:86
 msgid "ISON delay (in seconds)"
@@ -2789,9 +1866,8 @@ msgid "Ignore requests if no avatar is set"
 msgstr "Kérés mellőzése, ha nincs avatar beállítva"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:96
-#, fuzzy
 msgid "Ignored Ctcp Requests"
-msgstr "Mellőzött Kérések"
+msgstr "Mellőzött Ctcp Kérések"
 
 #: src/modules/options/optw_avatar.cpp:52
 #: src/modules/options/optw_avatar.cpp:61
@@ -2816,7 +1892,8 @@ msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
 
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Bevitel"
 
@@ -2826,18 +1903,16 @@ msgstr "Eszközök"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:139
-#, fuzzy
 msgid "Interval:"
-msgstr "Eszközök"
+msgstr "Intervallum:"
 
 #: src/modules/options/optw_nickserv.cpp:153
 msgid "Invalid NickServ Rule"
 msgstr "Helytelen NickServ Szabály"
 
 #: src/modules/options/optw_identity.cpp:842
-#, fuzzy
 msgid "Invalid Profile Rule"
-msgstr "Helytelen NickServ Szabály"
+msgstr "Helytelen Profil Szabály"
 
 #: src/modules/options/optw_identity.cpp:658
 #: src/modules/options/optw_servers.cpp:599
@@ -2860,7 +1935,7 @@ msgstr "KVIrc Beállítások"
 
 #: src/modules/options/optw_channel.cpp:144
 msgid "Keep away list updated by sending WHO requests"
-msgstr ""
+msgstr "Távol lista frissítése WHO lekérdezések küldésével"
 
 #: src/modules/options/optw_channel.cpp:59
 #: src/modules/options/optw_channel.cpp:68
@@ -2998,32 +2073,24 @@ msgid "Male"
 msgstr "Férfi"
 
 #: src/modules/options/dialog.cpp:129
-msgid ""
-"Many settings have tooltips that can be shown by holding the cursor over "
-"their label for a few seconds."
-msgstr ""
-"Rengeteg beállításnak van saját segítség opciója, amit pár másodpercig az "
-"egérkurzor felette hagyásával jeleníthetsz meg."
+msgid "Many settings have tooltips that can be shown by holding the cursor over their label for a few seconds."
+msgstr "Rengeteg beállításnak van saját segítség opciója, amit pár másodpercig az egérkurzor felette hagyásával jeleníthetsz meg."
 
 #: src/modules/options/optw_ircview.h:84
-#, fuzzy
 msgid "Marker"
-msgstr "Sor Jelzése"
+msgstr "Jelző"
 
 #: src/modules/options/optw_ircview.cpp:179
-#, fuzzy
 msgid "Marker color:"
-msgstr "Háttér szín: "
+msgstr "Jelző színe: "
 
 #: src/modules/options/optw_ircview.cpp:181
-#, fuzzy
 msgid "Marker size:"
-msgstr "Csomag méret: "
+msgstr "Jelző mérete: "
 
 #: src/modules/options/optw_ircview.cpp:184
-#, fuzzy
 msgid "Marker style:"
-msgstr "Üzenet Stílus"
+msgstr "Jelző stílus"
 
 #: src/modules/options/optw_connection.cpp:77
 msgid "Maximum attempts (0: unlimited):"
@@ -3098,9 +2165,8 @@ msgid "Minimum alert level:"
 msgstr "Minimális figyelmeztetési szint: "
 
 #: src/modules/options/optw_channel.cpp:120
-#, fuzzy
 msgid "Minimum delay between two requests:"
-msgstr "Késleltetés a próbálkozások között: "
+msgstr "Minimális késleltetés két lekérdezés között: "
 
 #: src/modules/options/optw_tray.cpp:55
 msgid "Minimum level for high-priority message"
@@ -3123,51 +2189,44 @@ msgid "Mixer device:"
 msgstr "Keverőeszköz: "
 
 #: src/modules/options/optw_urlhandlers.cpp:49
-#, fuzzy
 msgid "Mouse handler"
-msgstr "URL kezelők"
+msgstr "Egér kezelő"
 
 #: src/modules/options/optw_windowlist.cpp:225
-msgid ""
-"Mouse wheel changes the active window instead of scrolling the scrollbar"
-msgstr ""
+msgid "Mouse wheel changes the active window instead of scrolling the scrollbar"
+msgstr "Az egér görgője az aktív ablakokat váltja a szöveg görgetése helyett"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
 msgstr "Néma"
 
 #: src/modules/options/optw_identity.cpp:893
-#, fuzzy
 msgid "MyNetwork"
-msgstr "Hálózat: "
+msgstr "SajátHálózat"
 
 #: src/modules/options/optw_identity.cpp:894
 msgid "MyNick"
-msgstr ""
+msgstr "SajátNév"
 
 #: src/modules/options/optw_identity.cpp:895
 msgid "MyNick2"
-msgstr ""
+msgstr "SajátNév2"
 
 #: src/modules/options/optw_identity.cpp:897
-#, fuzzy
 msgid "MyRealName"
-msgstr "Valós név:"
+msgstr "SajátValósNév"
 
 #: src/modules/options/optw_identity.cpp:896
-#, fuzzy
 msgid "MyUserName"
-msgstr "Felhasználónév:"
+msgstr "SajátFelhasználóNév"
 
 #: src/modules/options/optw_identity.cpp:718
-#, fuzzy
 msgid "Name"
 msgstr "Név"
 
 #: src/modules/options/optw_identity.cpp:719
-#, fuzzy
 msgid "Network"
-msgstr "Hálózat: "
+msgstr "Hálózat"
 
 #: src/modules/options/optw_servers.cpp:103
 msgid "Network Details"
@@ -3178,9 +2237,8 @@ msgid "Network Interfaces"
 msgstr "Hálózati Eszközök"
 
 #: src/modules/options/optw_identity.cpp:909
-#, fuzzy
 msgid "Network Name:"
-msgstr "Hálózat: "
+msgstr "Hálózat neve:"
 
 #: src/modules/options/optw_dcc.cpp:72
 msgid "Network Properties"
@@ -3300,11 +2358,11 @@ msgstr "Értesítő"
 
 #: src/modules/options/optw_notifier.cpp:203
 msgid "Notifier window opacity while active (mouseover)"
-msgstr ""
+msgstr "Értesítő ablak átlátszósága amikor aktív (egér fölötte van)"
 
 #: src/modules/options/optw_notifier.cpp:210
 msgid "Notifier window opacity while inactive"
-msgstr ""
+msgstr "Értesítő ablak átlátszósága amikor inaktív"
 
 #: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
@@ -3378,20 +2436,12 @@ msgid "On Voice Request"
 msgstr "Hangos beszélgetéskor"
 
 #: src/modules/options/optw_servers.cpp:1738
-msgid ""
-"Oops... something weird happened:<br>Can't find any module capable of "
-"importing servers."
-msgstr ""
-"Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami importálni "
-"tudna szervereket."
+msgid "Oops... something weird happened:<br>Can't find any module capable of importing servers."
+msgstr "Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami importálni tudna szervereket."
 
 #: src/modules/options/optw_servers.cpp:1755
-msgid ""
-"Oops... something weird happened:<br>Can't find the module that was capable "
-"of this import action. :("
-msgstr ""
-"Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami képes lenne "
-"importálni ezeket a dolgokat.... :("
+msgid "Oops... something weird happened:<br>Can't find the module that was capable of this import action. :("
+msgstr "Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami képes lenne importálni ezeket a dolgokat.... :("
 
 #: src/modules/options/optw_userlist.cpp:60
 msgid "Op:"
@@ -3409,7 +2459,8 @@ msgstr "Privát nyitása"
 msgid "Open all minimized"
 msgstr "Minden kicsinyített megnyitása"
 
-#: src/modules/options/optw_dcc.cpp:315 src/modules/options/optw_dcc.cpp:352
+#: src/modules/options/optw_dcc.cpp:315
+#: src/modules/options/optw_dcc.cpp:352
 msgid "Open minimized when auto-accepted"
 msgstr "Megnyitás a háttérben automatikus fogadásnál"
 
@@ -3477,19 +2528,17 @@ msgid "Paste Server"
 msgstr "Szerver Beillesztése"
 
 #: src/modules/options/optw_channel.cpp:132
-#, fuzzy
 msgid "Paste last channel log"
-msgstr "felhasználólista,csatorna"
+msgstr "Utolsó csatorna napló beszúrása"
 
 #: src/modules/options/optw_query.cpp:92
-#, fuzzy
 msgid "Paste last query log"
-msgstr "felhasználólista,csatorna"
+msgstr "Utolsó privát napló beszúrása"
 
 #: src/modules/options/optw_query.cpp:97
 #: src/modules/options/optw_channel.cpp:135
 msgid "Paste up to:"
-msgstr ""
+msgstr "Ennyit illessz be:"
 
 #: src/modules/options/optw_mediatypes.cpp:77
 msgid "Pattern"
@@ -3497,35 +2546,23 @@ msgstr "Minta"
 
 #: src/modules/options/optw_connection.cpp:174
 msgid "Pick Random IP Address for Round-Robin Servers"
-msgstr ""
+msgstr "Véletlenszerű IP-cím választás Round-Robin szervereknél"
 
 #: src/modules/options/optw_userlist.cpp:239
-msgid ""
-"Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
-"normal nicks"
-msgstr ""
+msgid "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the normal nicks"
+msgstr "Nem alfanumerikus karakterekkel kezdődő neveket (pld.: _KIRALY_CSAVO) a rendes nevek mögé rendezd"
 
 #: src/modules/options/optw_userlist.cpp:98
 msgid "Plain Grid"
 msgstr "Egyszerű Rács"
 
 #: src/modules/options/optw_identity.cpp:209
-msgid ""
-"Please select an avatar image. The full path to a local file or an image on "
-"the Web can be used.<br>If you wish to use a local image file, click the "
-"\"<b>Browse</b>\"button to browse local folders.<br>The full URL for an "
-"image (including <b>http://</b>) can be entered manually."
-msgstr ""
-"Kérlek válassz ki egy avatar képet. A kép teljes elérési útja szükséges, "
-"vagy egy weben lévő képet is használhatsz.<br> Ha szeretnél egy helyi képet "
-"használni kattints a \"<b>Tallózás</b>\" gombra, hogy fájlok közül "
-"választhass. <br>A webcímet, ahol a kép található, manuálisan kell megadnod."
-"<br>(beleértve a<b>http://</b> részt is)"
+msgid "Please select an avatar image. The full path to a local file or an image on the Web can be used.<br>If you wish to use a local image file, click the \"<b>Browse</b>\"button to browse local folders.<br>The full URL for an image (including <b>http://</b>) can be entered manually."
+msgstr "Kérlek válassz ki egy avatar képet. A kép teljes elérési útja szükséges, vagy egy weben lévő képet is használhatsz.<br> Ha szeretnél egy helyi képet használni kattints a \"<b>Tallózás</b>\" gombra, hogy fájlok közül választhass. <br>A webcímet, ahol a kép található, manuálisan kell megadnod.<br>(beleértve a<b>http://</b> részt is)"
 
 #: src/modules/options/optw_dcc.cpp:330
-#, fuzzy
 msgid "Popup notifier on new dcc chat message"
-msgstr "Értesítő popup, ha új üzenet érkezik"
+msgstr "Értesítő megjelenítése, ha új dcc üzenet érkezik"
 
 #: src/modules/options/optw_query.cpp:80
 msgid "Popup notifier on new query message"
@@ -3561,18 +2598,16 @@ msgid "Prefix:"
 msgstr "Előtag:"
 
 #: src/modules/options/optw_irc.cpp:77
-#, fuzzy
 msgid "Prepend avatar info to realname"
-msgstr "Nem beszúrása a valós név elé"
+msgstr "Avatar információ beszúrása a valós név elé"
 
 #: src/modules/options/optw_irc.cpp:76
 msgid "Prepend gender info to realname"
 msgstr "Nem beszúrása a valós név elé"
 
 #: src/modules/options/optw_irc.cpp:78
-#, fuzzy
 msgid "Prepend smart nick color info to realname"
-msgstr "Nem beszúrása a valós név elé"
+msgstr "Okos név színezési információ beszúrása a valós név elé"
 
 #: src/modules/options/optw_connection.cpp:119
 msgid "Private Key"
@@ -3609,24 +2644,20 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/modules/options/optw_identity.cpp:890
-#, fuzzy
 msgid "Profile Editor - KVIrc"
-msgstr "Válassz Avatart - KVirc"
+msgstr "Profil Szerkesztő - KVirc"
 
 #: src/modules/options/optw_identity.cpp:892
-#, fuzzy
 msgid "Profile Name"
-msgstr "Profil"
+msgstr "Profil név"
 
 #: src/modules/options/optw_identity.cpp:901
-#, fuzzy
 msgid "Profile Name:"
-msgstr "Profil"
+msgstr "Profil Név:"
 
 #: src/modules/options/optw_identity.h:227
-#, fuzzy
 msgid "Profiles"
-msgstr "Profil"
+msgstr "Profilok"
 
 #: src/modules/options/optw_windowlist.cpp:97
 #: src/modules/options/optw_windowlist.cpp:254
@@ -3643,14 +2674,12 @@ msgid "Protection"
 msgstr "Védelem"
 
 #: src/modules/options/optw_servers.cpp:722
-#, fuzzy
 msgid "Protocol Encoding:"
-msgstr "Kódolás:"
+msgstr "Protokoll Kódolása:"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
-#, fuzzy
 msgid "Protocol handler"
-msgstr "Protokoll:"
+msgstr "Protokoll kezelő"
 
 #: src/modules/options/optw_proxy.cpp:121
 msgid "Protocol:"
@@ -3674,32 +2703,31 @@ msgstr "Proxy: "
 
 #: src/modules/options/optw_identity.cpp:929
 msgid "Put here the alternative nickname you want to use"
-msgstr ""
+msgstr "Írd ide az alternatív beceneveket amiket használni szeretnél"
 
 #: src/modules/options/optw_identity.cpp:913
 msgid "Put here the name of the network"
-msgstr ""
+msgstr "Írd ide a hálózat nevét:"
 
 #: src/modules/options/optw_identity.cpp:905
 msgid "Put here the name of the profile"
-msgstr ""
+msgstr "Írd ide a hálózat profilját"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
 msgstr "Itt adhatod meg a Nevedet, amit regisztráltál a NickServvel"
 
 #: src/modules/options/optw_identity.cpp:921
-#, fuzzy
 msgid "Put here the nickname you want to use"
-msgstr "Itt adhatod meg a Nevedet, amit regisztráltál a NickServvel"
+msgstr "Ide írd a becenevet amit használni szeretnél"
 
 #: src/modules/options/optw_identity.cpp:945
 msgid "Put here the realname you want to use"
-msgstr ""
+msgstr "Írd ide a valós nevet amit használni szeretnél"
 
 #: src/modules/options/optw_identity.cpp:937
 msgid "Put here the username you want to use"
-msgstr ""
+msgstr "Tedd ide a felhasználónevet amit használni szeretnél"
 
 #: src/modules/options/optw_query.h:30
 msgid "Query"
@@ -3707,7 +2735,7 @@ msgstr "Privát"
 
 #: src/modules/options/optw_servers.cpp:867
 msgid "Query extended capabilities on connect"
-msgstr ""
+msgstr "Kiterjesztett Képességek lekérdezése kapcsolódáskor"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3740,12 +2768,10 @@ msgid "Real name:"
 msgstr "Valós név:"
 
 #: src/modules/options/optw_identity.cpp:723
-#, fuzzy
 msgid "Realname"
-msgstr "Valós név:"
+msgstr "Valós név"
 
 #: src/modules/options/optw_identity.cpp:941
-#, fuzzy
 msgid "Realname:"
 msgstr "Valós név:"
 
@@ -3822,9 +2848,8 @@ msgid "Right"
 msgstr "Jobb"
 
 #: src/modules/options/optw_servers.cpp:889
-#, fuzzy
 msgid "SASL Authentication"
-msgstr "NickServ Azonosítás engedélyezése"
+msgstr "SASL azonosítás"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
@@ -3835,14 +2860,12 @@ msgid "SSL"
 msgstr "SSL"
 
 #: src/modules/options/optw_servers.cpp:900
-#, fuzzy
 msgid "Sasl Nickname:"
-msgstr "Név: "
+msgstr "SASL név: "
 
 #: src/modules/options/optw_servers.cpp:907
-#, fuzzy
 msgid "Sasl Password:"
-msgstr "Jelszó: "
+msgstr "SASL jelszó: "
 
 #: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
@@ -3854,7 +2877,7 @@ msgstr "Hely mentése"
 
 #: src/modules/options/optw_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr ""
+msgstr "Naplófájlok mentése mappába:"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 msgid "Save path:"
@@ -3924,9 +2947,8 @@ msgid "Server Details"
 msgstr "Szerver Tulajdonságai"
 
 #: src/modules/options/optw_servers.cpp:184
-#, fuzzy
 msgid "Server Encoding:"
-msgstr "Kódolás:"
+msgstr "Szerver kódolás:"
 
 #: src/modules/options/optw_nickserv.cpp:106
 #: src/modules/options/optw_nickserv.cpp:244
@@ -3965,19 +2987,16 @@ msgid "Set maximum button width"
 msgstr "Gombok maximális szélessége"
 
 #: src/modules/options/optw_windowlist.cpp:50
-#, fuzzy
 msgid "Show IRC context indicator in window list"
-msgstr "IRC környezet kijelző a tálcán"
+msgstr "IRC környezet kijelző megjelenítése az ablaklistában"
 
 #: src/modules/options/optw_windowlist.cpp:42
-#, fuzzy
 msgid "Show activity meter in window list"
-msgstr "Aktivitás mutatása a tálcán"
+msgstr "Aktivitás mutatása az ablak listában"
 
 #: src/modules/options/optw_userlist.cpp:237
-#, fuzzy
 msgid "Show avatars in userlist"
-msgstr "Átméretezés felhasználólistában"
+msgstr "Avatarok mutatása a felhasználó listában"
 
 #: src/modules/options/optw_messages.cpp:95
 msgid "Show channel mode prefix"
@@ -4008,9 +3027,8 @@ msgid "Show header"
 msgstr "Fejléc mutatása"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
-#, fuzzy
 msgid "Show icons in popup menus"
-msgstr "Popup ikonok rejtése"
+msgstr "Ikonok megjelenítése felbukkanó menükben"
 
 #: src/modules/options/optw_ircoutput.cpp:69
 msgid "Show in active window"
@@ -4033,9 +3051,8 @@ msgid "Show message icons"
 msgstr "Üzenet ikonok mutatása"
 
 #: src/modules/options/optw_irc.cpp:53
-#, fuzzy
 msgid "Show network name in console window list entry"
-msgstr "Hálózat nevének mutatása a konzol eszköztárán"
+msgstr "Hálózat nevének mutatása a konzol ablaklista bejegyzésében"
 
 #: src/modules/options/optw_messages.cpp:93
 msgid "Show nicknames in bold"
@@ -4078,9 +3095,8 @@ msgid "Show user channel icons"
 msgstr "Csatorna ikonok használata"
 
 #: src/modules/options/optw_windowlist.cpp:41
-#, fuzzy
 msgid "Show window icons in window list"
-msgstr "Ablak ikonjának mutatása tálcán"
+msgstr "Ablak ikonjának mutatása az ablak listában"
 
 #: src/modules/options/optw_antispam.cpp:45
 msgid "Silent anti-spam (no warnings)"
@@ -4088,7 +3104,7 @@ msgstr "Csöndes spamszűrés (figyelmeztetés nélkül)"
 
 #: src/modules/options/optw_urlhandlers.cpp:53
 msgid "Single click"
-msgstr ""
+msgstr "Egy kattintás"
 
 #: src/modules/options/optw_connection.h:76
 msgid "Socket"
@@ -4096,7 +3112,7 @@ msgstr "Socket"
 
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
-msgstr ""
+msgstr "Folyamatos vonal"
 
 #: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
@@ -4110,7 +3126,8 @@ msgstr "Ablakok rendezése név szerint"
 msgid "Sound"
 msgstr "Hangok"
 
-#: src/modules/options/optw_sound.cpp:63 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:63
+#: src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Hangrendszer"
 
@@ -4128,21 +3145,22 @@ msgstr "Színeket ne logoljon"
 
 #: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr ""
+msgstr "Üzenet típus számának kihagyása naplózáskor"
 
 #: src/modules/options/optw_servers.cpp:876
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
-msgstr ""
+msgstr "Váltás SSL/TLS -re a STARTTLS kiterjesztés használatával"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
-msgstr ""
+msgstr "Rendszer területi formátuma"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:103
 msgid "TIME"
 msgstr "IDŐ"
 
-#: src/modules/options/optw_sound.cpp:74 src/modules/options/optw_sound.cpp:89
+#: src/modules/options/optw_sound.cpp:74
+#: src/modules/options/optw_sound.cpp:89
 msgid "Test"
 msgstr "Teszt"
 
@@ -4152,9 +3170,8 @@ msgstr "Szöveg"
 
 #: src/modules/options/optw_servers.cpp:196
 #: src/modules/options/optw_servers.cpp:736
-#, fuzzy
 msgid "Text Encoding:"
-msgstr "Kódolás:"
+msgstr "Szöveg kódolás:"
 
 #: src/modules/options/optw_texticons.h:39
 msgid "Text icons"
@@ -4171,13 +3188,11 @@ msgstr "Az Azonosító Parancs nem lehet üres!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+msgstr "Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+msgstr "A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -4188,25 +3203,12 @@ msgid "The Nickname field can't contain spaces!"
 msgstr "A Név mező nem tartalmazhat szóközt!"
 
 #: src/modules/options/optw_identity.cpp:610
-msgid ""
-"The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
-"image will not be seen on all the user monitors<br>and will probably be "
-"scaled by the remote clients with poor quality<br>algorithms to improve "
-"performance. You *should* scale it manually<br>to a sane size (like 800x600) "
-"or choose a different image."
-msgstr ""
-"Az általad kiválasztott avatar mérete nagyobb, mint 1024x768 pixel.<br> "
-"Ekkora képet nem minden felhasználó tud megjeleníteni,<br> és valószínűleg a "
-"kliens átméretezi egy nem túl hatékony <br> algoritmussal a teljesítmény "
-"növelése érdekében.<br> Legjobb, ha átméretezed egy kisebb méretre (kb "
-"800x600)<br> vagy válassz egy más képet helyette."
+msgid "The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big image will not be seen on all the user monitors<br>and will probably be scaled by the remote clients with poor quality<br>algorithms to improve performance. You *should* scale it manually<br>to a sane size (like 800x600) or choose a different image."
+msgstr "Az általad kiválasztott avatar mérete nagyobb, mint 1024x768 pixel.<br> Ekkora képet nem minden felhasználó tud megjeleníteni,<br> és valószínűleg a kliens átméretezi egy nem túl hatékony <br> algoritmussal a teljesítmény növelése érdekében.<br> Legjobb, ha átméretezed egy kisebb méretre (kb 800x600)<br> vagy válassz egy más képet helyette."
 
 #: src/modules/options/optw_identity.cpp:626
-msgid ""
-"The avatar you have chosen is bigger than 500 KiB<br>and most clients will "
-"refuse to download it.<br>You *should* either scale it, use a different "
-"storage<br>format or choose a different image."
-msgstr ""
+msgid "The avatar you have chosen is bigger than 500 KiB<br>and most clients will refuse to download it.<br>You *should* either scale it, use a different storage<br>format or choose a different image."
+msgstr "Az általad megadott avatar nagyobb, mint 500 KiB,<br> amit a legtöbb kliens nem fog letölteni.<br> Ajánlott az átméretezése, esetleg más tömörítési <br> eljárás használata vagy másik kép választása."
 
 #: src/modules/options/dialog.cpp:117
 msgid "Theme Preferences"
@@ -4214,7 +3216,7 @@ msgstr "Kinézet beállítások"
 
 #: src/modules/options/optw_identity.cpp:842
 msgid "There is already a profile with that name"
-msgstr ""
+msgstr "Már van profil ilyen névvel"
 
 #: src/modules/options/optw_sound.cpp:96
 msgid "This allows you to select encoding of mp3 tags."
@@ -4225,12 +3227,8 @@ msgid "This allows you to select encoding of winamp messages."
 msgstr "Ezzel kiválaszthatod a Winamp üzeneteinek karakterkódolását."
 
 #: src/modules/options/optw_sound.cpp:79
-msgid ""
-"This allows you to select the preferred media player to be used with the "
-"mediaplayer.* module commands and functions."
-msgstr ""
-"Kiválaszhatod a használt médialejátszódat, így lehetőséged nyílik a "
-"mediaplayer.* modul és függvényei használatára."
+msgid "This allows you to select the preferred media player to be used with the mediaplayer.* module commands and functions."
+msgstr "Kiválaszhatod a használt médialejátszódat, így lehetőséged nyílik a mediaplayer.* modul és függvényei használatára."
 
 #: src/modules/options/optw_sound.cpp:65
 msgid "This allows you to select the sound system to be used with KVIrc."
@@ -4243,153 +3241,72 @@ msgstr "Ezzel engedélyezheted az automatikus NickServ azonosítást"
 
 #: src/modules/options/optw_identity.cpp:707
 msgid "This check enables the use of network profiles"
-msgstr ""
+msgstr "Ezzel engedélyezed a hálózati profilokat"
 
 #: src/modules/options/dialog.cpp:122
-msgid ""
-"This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
-"to navigate through the option pages. The text box in the bottom left corner "
-"is a small search engine. It will highlight the pages that contain options "
-"related to the search term you have entered."
-msgstr ""
-"Ez a párbeszédablak tartalmazza a KVIrc beállításait.<br> Használd a bal "
-"oldali ikonokat a beállításokon belüli navigáláshoz. A bal lenti sarokban "
-"lévő szövegdoboz egy gyorskereső, amivel könnyebben rátalálhatsz egy "
-"funkcióra, ha beírod a nevét."
+msgid "This dialog contains a set of KVIrc settings.<br> Use the icons on the left to navigate through the option pages. The text box in the bottom left corner is a small search engine. It will highlight the pages that contain options related to the search term you have entered."
+msgstr "Ez a párbeszédablak tartalmazza a KVIrc beállításait.<br> Használd a bal oldali ikonokat a beállításokon belüli navigáláshoz. A bal lenti sarokban lévő szövegdoboz egy gyorskereső, amivel könnyebben rátalálhatsz egy funkcióra, ha beírod a nevét."
 
 #: src/modules/options/optw_connection.cpp:135
 msgid "This executable has no SSL support."
 msgstr "Ez a verzió nem rendelkezik SSL támogatással"
 
 #: src/modules/options/optw_identity.cpp:331
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr ""
-"A mező kitöltése opcionális, ez fog megjelenni, ha valaki CTCP USERINFO-t "
-"kér tőled."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr "A mező kitöltése opcionális, ez fog megjelenni, ha valaki CTCP USERINFO-t kér tőled."
 
 #: src/modules/options/optw_notifier.cpp:146
-msgid ""
-"This is an option for the impatient: it allows to forcibly and permanently "
-"disable the notifier window. Please note that if this option is activated "
-"then the notifier will NOT popup even if all the other options around "
-"specify to use it in response to particular events. Also note that this "
-"option will make all the /notifier.* commands fail silently."
-msgstr ""
-"Ez egy lehetőség a türelmetlenek számára, ami lehetővé teszi, hogy teljesen "
-"letiltsák az értesítő ablakot. Vedd figyelembe, hogy ezzel az opcióval "
-"teljesen letiltod az Értesítőt. Ennek a kikapcsolásakor semmilyen formában "
-"nem fog megjelenni, még ha valamely beállítás kérné, akkor sem. Ennek az "
-"aktiválásakor a /notifier parancs és annak részei is mellőzve lesznek."
+msgid "This is an option for the impatient: it allows to forcibly and permanently disable the notifier window. Please note that if this option is activated then the notifier will NOT popup even if all the other options around specify to use it in response to particular events. Also note that this option will make all the /notifier.* commands fail silently."
+msgstr "Ez egy lehetőség a türelmetlenek számára, ami lehetővé teszi, hogy teljesen letiltsák az értesítő ablakot. Vedd figyelembe, hogy ezzel az opcióval teljesen letiltod az Értesítőt. Ennek a kikapcsolásakor semmilyen formában nem fog megjelenni, még ha valamely beállítás kérné, akkor sem. Ennek az aktiválásakor a /notifier parancs és annak részei is mellőzve lesznek."
 
 #: src/modules/options/optw_nickserv.cpp:94
-msgid ""
-"This is the command that will be executed when NickServ requests "
-"authentication for the nickname described in this rule (if the both server "
-"and NickServ mask are matched). This usually will be something like <b>msg "
-"NickServ identify &lt;yourpassword&gt;</b>.<br>You can use <b>msg -q</b> if "
-"you don't want the password echoed on the screen. Please note that there is "
-"no leading slash in this command."
-msgstr ""
-"Ez a parancs lesz lefuttatva, amikor a NickServ kéri az azonosítókódod a "
-"Neved azonosítására. (természetesen ha a NickServ hosztmaszkja és a szerveré "
-"is megegyezik) Ez általában egy ehhez hasonló parancs:<b>msg NickServ "
-"identify &lt;yourpassword&gt;</b>.<br>Használd az <b>msg -q</b> kapcsolót, "
-"ha nem akarod, hogy a jelszavad látszon a képernyőn. Arra figyelj, hogy itt "
-"Ne használj parancskezdő perjelet."
+msgid "This is the command that will be executed when NickServ requests authentication for the nickname described in this rule (if the both server and NickServ mask are matched). This usually will be something like <b>msg NickServ identify &lt;yourpassword&gt;</b>.<br>You can use <b>msg -q</b> if you don't want the password echoed on the screen. Please note that there is no leading slash in this command."
+msgstr "Ez a parancs lesz lefuttatva, amikor a NickServ kéri az azonosítókódod a Neved azonosítására. (természetesen ha a NickServ hosztmaszkja és a szerveré is megegyezik) Ez általában egy ehhez hasonló parancs:<b>msg NickServ identify &lt;yourpassword&gt;</b>.<br>Használd az <b>msg -q</b> kapcsolót, ha nem akarod, hogy a jelszavad látszon a képernyőn. Arra figyelj, hogy itt Ne használj parancskezdő perjelet."
 
 # Another bug: after the % mark msgfmt require the next word's first char, coz it believe its a variable. I've found this bug twice, but here i cant do nothin against this. "100% s-ban" isnt a correct hungarian expression. Till this bug isnt fixed, you cannot translate correctly. - Fiber - first .hu translator
 #: src/modules/options/optw_nickserv.cpp:68
 #, c-format
-msgid ""
-"This is the mask that NickServ must match to be correctly identified as the "
-"NickServ service. This usually will be something like <b>NickServ!"
-"service@services.dalnet</b>.<br>You can use wildcards for this field, but "
-"generally it is a security flaw. If you're 100%% sure that NO user on the "
-"network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may "
-"be safe to use in this field."
-msgstr ""
-"Ez a maszk, aminek a NickServ maszkjával egyeznie kell, hogy azonosítani "
-"lehessen. Ez általában ehhez hasonló:<b>NickServ!service@services.dalnet</"
-"b><br> Használhatsz joker karaktereket ennél a mezőnél, de áltaban ez egy "
-"potencionális biztonsági rés. Ha 100%% s-ban biztos vagy abban, hogy a "
-"hálózaton a \"NickServ\" nevet nem használhatja senki, csak akkor használd a "
-"<b>NickServ!*@*</b> maszkot."
+msgid "This is the mask that NickServ must match to be correctly identified as the NickServ service. This usually will be something like <b>NickServ!service@services.dalnet</b>.<br>You can use wildcards for this field, but generally it is a security flaw. If you're 100%% sure that NO user on the network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may be safe to use in this field."
+msgstr "Ez a maszk, aminek a NickServ maszkjával egyeznie kell, hogy azonosítani lehessen. Ez általában ehhez hasonló:<b>NickServ!service@services.dalnet</b><br> Használhatsz joker karaktereket ennél a mezőnél, de áltaban ez egy potencionális biztonsági rés. Ha 100%% s-ban biztos vagy abban, hogy a hálózaton a \"NickServ\" nevet nem használhatja senki, csak akkor használd a <b>NickServ!*@*</b> maszkot."
 
 #: src/modules/options/optw_nickserv.cpp:111
-msgid ""
-"This is the mask that the current server must match in order for this rule "
-"to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" "
-"here..."
-msgstr ""
-"Ez a maszk aminek egyeznie kell az aktuális szerver maszkjával, hogy az "
-"automatikus azonosítás lefusson. <br>NE Használj simán \"*\"-ot itt..."
+msgid "This is the mask that the current server must match in order for this rule to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" here..."
+msgstr "Ez a maszk aminek egyeznie kell az aktuális szerver maszkjával, hogy az automatikus azonosítás lefusson. <br>NE Használj simán \"*\"-ot itt..."
 
 #: src/modules/options/optw_nickserv.cpp:84
-msgid ""
-"This is the simple regular expression that the identification request "
-"message from NickServ must match in order to be correctly recognized.<br>The "
-"message is usually something like \"To identify yourself please use /ns "
-"IDENTIFY password\" and it is sent when the NickServ wants you to "
-"authenticate yourself. You can use the * and ? wildcards."
-msgstr ""
-"Ez az egyszerű kifejezés, amivel a NickServ kéri az azonosítódat.<br>Az "
-"üzenet általában valami ehhez hasonló: \"To identify yourself please use /"
-"NickServ IDENTIFY password\". Ezt az üzenetet a NickServ küldi, az "
-"azonosítódat kérve.Használhatod a * és ? karaktereket jokerkarakterként."
+msgid "This is the simple regular expression that the identification request message from NickServ must match in order to be correctly recognized.<br>The message is usually something like \"To identify yourself please use /ns IDENTIFY password\" and it is sent when the NickServ wants you to authenticate yourself. You can use the * and ? wildcards."
+msgstr "Ez az egyszerű kifejezés, amivel a NickServ kéri az azonosítódat.<br>Az üzenet általában valami ehhez hasonló: \"To identify yourself please use /NickServ IDENTIFY password\". Ezt az üzenetet a NickServ küldi, az azonosítódat kérve.Használhatod a * és ? karaktereket jokerkarakterként."
 
 #: src/modules/options/optw_notifier.cpp:163
-msgid ""
-"This option stops the notifier from being displayed when there is an active "
-"fullscreen window. This is useful for gaming sessions where you may be "
-"distracted by the notifier or it may even switch your game from fullscreen "
-"to window mode."
-msgstr ""
+msgid "This option stops the notifier from being displayed when there is an active fullscreen window. This is useful for gaming sessions where you may be distracted by the notifier or it may even switch your game from fullscreen to window mode."
+msgstr "Ez az opció megakadályozza, hogy az értesítő megjelenjen, ha van egy aktív teljes képernyős ablak. Ez leginkább játékoknál hasznos, amikor az értesítő megjelenése megzavarna a játékot vagy akár teljes képernyős módból ablakba tenné."
 
 #: src/modules/options/optw_avatar.cpp:107
-msgid ""
-"This option will cause KVIrc to ignore channel CTCP AVATAR requests when you "
-"have no avatar set. This is usually a good practice since it helps in "
-"reducing traffic by not sending a reply that would be empty."
-msgstr ""
-"Csatorna CTCP AVATAR kérések mellőzése, ha nincs beállítva avatarod. Jó "
-"módszer a forgalom csökkentésére, ha nincs beállítva avatar."
+msgid "This option will cause KVIrc to ignore channel CTCP AVATAR requests when you have no avatar set. This is usually a good practice since it helps in reducing traffic by not sending a reply that would be empty."
+msgstr "Csatorna CTCP AVATAR kérések mellőzése, ha nincs beállítva avatarod. Jó módszer a forgalom csökkentésére, ha nincs beállítva avatar."
 
 #: src/modules/options/optw_interfacelookglobal.cpp:43
-msgid ""
-"This option will force a static font for every widget that has no specific "
-"font setting"
-msgstr ""
+msgid "This option will force a static font for every widget that has no specific font setting"
+msgstr "Ez az opció minden widgetre a megadott betűtípusokat kényszeríti, amelyiknek nincs megadva betűtípus-beállítás"
 
 #: src/modules/options/optw_tools.cpp:40
-msgid ""
-"This section contains irc tools<br><p>like<b> away, lag and logging system. "
-"</b> </p>"
-msgstr ""
-"Ez a szekció tartalmazza az irc eszközöket,<br><p>mint <b> Távollét, lag és "
-"naplózási rendszer.</b></p>"
+msgid "This section contains irc tools<br><p>like<b> away, lag and logging system. </b> </p>"
+msgstr "Ez a szekció tartalmazza az irc eszközöket,<br><p>mint <b> Távollét, lag és naplózási rendszer.</b></p>"
 
 #: src/modules/options/optw_generalopt.cpp:39
-msgid ""
-"This section contains the general client options<br><p>like<b> sound, "
-"mediafiles, URL handler </b> etc... </p>"
-msgstr ""
-"Ez a rész tartalmazza az általános kliens beállításokat<br><p>mint<b> "
-"hangok, médiafájlok, URL kezelők</b> stb..</p>"
+msgid "This section contains the general client options<br><p>like<b> sound, mediafiles, URL handler </b> etc... </p>"
+msgstr "Ez a rész tartalmazza az általános kliens beállításokat<br><p>mint<b> hangok, médiafájlok, URL kezelők</b> stb..</p>"
 
 #: src/modules/options/optw_texticons.cpp:91
-msgid ""
-"This table contains the text icon associations.<br>KVirc will use them to "
-"display the CTRL+I escape sequences and eventually the emoticons."
-msgstr ""
-"Ez egy tábla, a szöveges ikonok hozzárendeléséről.<br> A KVIrc ezeket "
-"jeleníti meg a \"CTRL+I azonosító\" után."
+msgid "This table contains the text icon associations.<br>KVirc will use them to display the CTRL+I escape sequences and eventually the emoticons."
+msgstr "Ez egy tábla, a szöveges ikonok hozzárendeléséről.<br> A KVIrc ezeket jeleníti meg a \"CTRL+I azonosító\" után."
 
 #: src/modules/options/optw_notifier.cpp:54
 #: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_windowlist.cpp:133
 #: src/modules/options/optw_windowlist.cpp:138
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
 #: src/modules/options/optw_userlist.cpp:141
@@ -4411,12 +3328,11 @@ msgstr "Időbélyeg formátum:"
 
 #: src/modules/options/optw_notifier.cpp:41
 msgid "Title Font"
-msgstr ""
+msgstr "Címsor betűtípus"
 
 #: src/modules/options/optw_notifier.cpp:42
-#, fuzzy
 msgid "Title Foreground color"
-msgstr "Előtér szín"
+msgstr "Címsor Előtér színe"
 
 #: src/modules/options/optw_interfacelookglobal.h:87
 msgid "ToolBar Applets"
@@ -4457,9 +3373,8 @@ msgid "Tray icon"
 msgstr "Tálca ikon"
 
 #: src/modules/options/optw_windowlist.h:48
-#, fuzzy
 msgid "Tree Window List"
-msgstr "Ablak feliratok"
+msgstr "Fa ablak lista"
 
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
@@ -4557,9 +3472,8 @@ msgid "Use bash-like nick completion"
 msgstr "Bash-szerű Névkiegészítés"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:100
-#, fuzzy
 msgid "Use compositing for real transparency"
-msgstr "KDE asztal használata átlátszóságnál"
+msgstr "Kompozitálás használata valós átlátszósághoz"
 
 #: src/modules/options/optw_highlighting.cpp:102
 msgid "Use custom alert level"
@@ -4570,9 +3484,8 @@ msgid "Use default user mode"
 msgstr "Alapértelmezett felhasználói módok"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:116
-#, fuzzy
 msgid "Use desktop background for transparency"
-msgstr "KDE asztal használata átlátszóságnál"
+msgstr "Asztal hátterének használata átlátszóságnál"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4587,9 +3500,8 @@ msgid "Use flat buttons"
 msgstr "Sima gombok használata"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:83
-#, fuzzy
 msgid "Use flood protection for CTCP requests (recommended)"
-msgstr "Flood védelem használata (ajánlott)"
+msgstr "Flood védelem használata CTCP kérésekhez (ajánlott)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
@@ -4616,23 +3528,20 @@ msgid "Use special color for timestamps"
 msgstr "Különleges szín időbélyegzőnek"
 
 #: src/modules/options/optw_messages.cpp:83
-#, fuzzy
 msgid "Use specified colors for own nick:"
-msgstr "Saját Névhez eltérő szín használata:"
+msgstr "Saját névhez megadott szín használata:"
 
 #: src/modules/options/optw_urlhandlers.cpp:69
 msgid "Use system URL handlers"
 msgstr "Rendszer URL kezelőinek használata"
 
 #: src/modules/options/optw_connection.cpp:89
-#, fuzzy
 msgid "Use the SASL authentication protocol if available"
-msgstr "Használd a WATCH eljárást, ha elérhető"
+msgstr "Használj SASL azonosítást, ha a protokoll elérhető"
 
 #: src/modules/options/optw_connection.cpp:129
-#, fuzzy
 msgid "Use the STARTTLS security protocol if available"
-msgstr "Használd a WATCH eljárást, ha elérhető"
+msgstr "Használd a STARTTLS biztonsági protokollt, ha elérhető"
 
 #: src/modules/options/optw_notify.cpp:75
 msgid "Use the WATCH method if available"
@@ -4643,9 +3552,8 @@ msgid "Use the completion postfix string for the first word only"
 msgstr "Névkiegészítés utáni szöveg csak az első név után"
 
 #: src/modules/options/optw_windowlist.cpp:39
-#, fuzzy
 msgid "Use tree window list"
-msgstr "Online értesítési lista használata"
+msgstr "Fa ablak lista használata"
 
 #: src/modules/options/optw_dcc.cpp:74
 msgid "Use user-defined address or network interface"
@@ -4664,9 +3572,8 @@ msgid "Use workaround for firewall"
 msgstr "KVIrc tűzfal mögül"
 
 #: src/modules/options/optw_input.cpp:152
-#, fuzzy
 msgid "Use zsh-like nick completion"
-msgstr "Bash-szerű Névkiegészítés"
+msgstr "zsh-szerű névkiegészítés használata"
 
 #: src/modules/options/optw_identity.cpp:657
 #: src/modules/options/optw_servers.cpp:588
@@ -4690,9 +3597,8 @@ msgid "Userlist"
 msgstr "Felhasználólista"
 
 #: src/modules/options/optw_identity.cpp:722
-#, fuzzy
 msgid "Username"
-msgstr "Felhasználónév:"
+msgstr "Felhasználónév"
 
 #: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_identity.cpp:317
@@ -4747,15 +3653,8 @@ msgid "Warp cursor at the end of line when browsing history"
 msgstr "Kurzor a sor végén az előzmények böngészésekor"
 
 #: src/modules/options/dialog.cpp:132
-msgid ""
-"When you have finished, click \"<b>OK</b>\" to accept your changes or "
-"\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
-"your changes without closing the window."
-msgstr ""
-"Ha végeztél, kattints az \"<b>OK</b>\" gombra, hogy beállításd a "
-"változtatásokatvagy a \"<b>Mégsem</b>re\", hogy elvesd őket. Az "
-"\"<b>Alkalmaz</b>\" beállítja a változtatásokat anélkül, hogy bezárná az "
-"ablakot."
+msgid "When you have finished, click \"<b>OK</b>\" to accept your changes or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your changes without closing the window."
+msgstr "Ha végeztél, kattints az \"<b>OK</b>\" gombra, hogy beállításd a változtatásokatvagy a \"<b>Mégsem</b>re\", hogy elvesd őket. Az \"<b>Alkalmaz</b>\" beállítja a változtatásokat anélkül, hogy bezárná az ablakot."
 
 #: src/modules/options/optw_ircoutput.cpp:72
 msgid "Whois replies"
@@ -4766,14 +3665,12 @@ msgid "Winamp messages ecoding"
 msgstr "Winamp üzenetek kódolása"
 
 #: src/modules/options/optw_windowlist.h:34
-#, fuzzy
 msgid "Window List"
-msgstr "Ablak feliratok"
+msgstr "Ablak lista"
 
 #: src/modules/options/optw_highlighting.h:57
-#, fuzzy
 msgid "Window List Alert"
-msgstr "Ablak feliratok"
+msgstr "Ablak lista Figyelmeztetés"
 
 #: src/modules/options/optw_antispam.cpp:46
 msgid "Words considered spam:"
@@ -4788,37 +3685,16 @@ msgid "Workspace"
 msgstr "Munkaterület"
 
 #: src/modules/options/optw_identity.cpp:391
-msgid ""
-"You can describe here your approximate physical location. Something like "
-"\"Region, Country\" will be ok. Please note that this information will be "
-"viewable by anyone so putting more data (like the exact address), generally, "
-"<b>is not a good idea</b>."
-msgstr ""
-"Itt meghatározhatod a fizikai tartózkodási helyedet. Valami ilyesmi, hogy "
-"\"Ország, Város\" tökéletesen megfelel. Arra ügyelj, hogy ez az információ "
-"látható lesz bárki számára, ezért több adat (pontos cím) általában <b>nem "
-"túl jó ötlet</b>."
+msgid "You can describe here your approximate physical location. Something like \"Region, Country\" will be ok. Please note that this information will be viewable by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>."
+msgstr "Itt meghatározhatod a fizikai tartózkodási helyedet. Valami ilyesmi, hogy \"Ország, Város\" tökéletesen megfelel. Arra ügyelj, hogy ez az információ látható lesz bárki számára, ezért több adat (pontos cím) általában <b>nem túl jó ötlet</b>."
 
 #: src/modules/options/optw_identity.cpp:402
-msgid ""
-"You can put here some additional personal data. It might be a funny quote or "
-"your homepage url... Please note that this information will be viewable by "
-"anyone so <b>don't put any sensible data</b> (passwords, telephone or credit "
-"card numbers)."
-msgstr ""
-"Ide tehetsz valami plussz személyes adatot. Ez lehet egy vicc, idézet vagy "
-"akár a weblapod címe is. Arra figyelj, hogy ez az információ mindenki "
-"számára elérhető lesz, így ne tegyél ide semmilyen <b>túlságosan "
-"magánjellegű</b> adatot. (pl.: jelszó, telefonszám, bankkártyaszám)"
+msgid "You can put here some additional personal data. It might be a funny quote or your homepage url... Please note that this information will be viewable by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers)."
+msgstr "Ide tehetsz valami plussz személyes adatot. Ez lehet egy vicc, idézet vagy akár a weblapod címe is. Arra figyelj, hogy ez az információ mindenki számára elérhető lesz, így ne tegyél ide semmilyen <b>túlságosan magánjellegű</b> adatot. (pl.: jelszó, telefonszám, bankkártyaszám)"
 
 #: src/modules/options/optw_identity.cpp:397
-msgid ""
-"You can put here the short names of the languages you can speak. An example "
-"might be \"EN,IT\" that would mean that you speak both Italian and English."
-msgstr ""
-"Itt meghatározhatod a rövid neveit az általad beszélt nyelveknek. Például "
-"írhatsz \"HU,GER\"-t is, ami azt jelenti, hogy beszélsz Magyarul és Németül "
-"is egyaránt."
+msgid "You can put here the short names of the languages you can speak. An example might be \"EN,IT\" that would mean that you speak both Italian and English."
+msgstr "Itt meghatározhatod a rövid neveit az általad beszélt nyelveknek. Például írhatsz \"HU,GER\"-t is, ami azt jelenti, hogy beszélsz Magyarul és Németül is egyaránt."
 
 #: src/modules/options/optw_messages.cpp:98
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
@@ -4832,7 +3708,8 @@ msgstr "[Ismeretlen Médiatípus]"
 msgid "authentication,identify"
 msgstr "azonosítás,auth"
 
-#: src/modules/options/optw_dcc.cpp:243 src/modules/options/optw_dcc.cpp:249
+#: src/modules/options/optw_dcc.cpp:243
+#: src/modules/options/optw_dcc.cpp:249
 msgid "bytes/sec"
 msgstr "bájt/mp"
 
@@ -4924,11 +3801,13 @@ msgid "theme,colors,messages,output"
 msgstr "megjelenés,színek,üzenetek,kimenet"
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr "megjelenés,színek,kimenet"
 
-#: src/modules/options/optw_input.h:34 src/modules/options/optw_notifier.h:34
+#: src/modules/options/optw_input.h:34
+#: src/modules/options/optw_notifier.h:34
 msgid "theme,colors,text"
 msgstr "megjelenés,színek,szöveg"
 
@@ -4974,7 +3853,7 @@ msgstr "idő, időbélyeg"
 
 #: src/modules/options/optw_tray.h:34
 msgid "tray,TRAYICON"
-msgstr ""
+msgstr "tálca,TÁLCAIKON"
 
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
@@ -4994,75 +3873,56 @@ msgstr "időn belül:"
 
 #~ msgid "Active Background"
 #~ msgstr "Aktív Háttér"
-
 #~ msgid "Active Text (Primary)"
 #~ msgstr "Aktív Szöveg (Elsődleges)"
-
 #~ msgid "Active Text (Secondary)"
 #~ msgstr "Aktív Szöveg (Másodlagos)"
-
 #~ msgid "Do not update the away list"
 #~ msgstr "Ne frissítse a Távollét listát"
 
 #, fuzzy
 #~ msgid "Enable STARTTLS protocol"
 #~ msgstr "SSL protokol használata"
-
 #~ msgid "Forcibly and completely disable the notifier"
 #~ msgstr "Az értesítő Popup teljes letiltása"
-
 #~ msgid "Hide avatars"
 #~ msgstr "Avatarok rejtése"
-
 #~ msgid "Hide users label"
 #~ msgstr "Felhasználók elrejtése"
-
 #~ msgid "Inactive Background"
 #~ msgstr "Inaktív Háttér"
-
 #~ msgid "Inactive Text (Primary)"
 #~ msgstr "Inaktív Szöveg (Elsődleges)"
-
 #~ msgid "Inactive Text (Secondary)"
 #~ msgstr "Inaktív szöveg (Másodlagos)"
-
 #~ msgid "Keep in sync with KDE background changes"
 #~ msgstr "Szinkronizáljon a KDE-vel háttérváltáskor"
-
 #~ msgid "Message Type"
 #~ msgstr "Üzenet Típus"
-
 #~ msgid "Minimize in tray"
 #~ msgstr "Minimalizálás ikonként"
-
 #~ msgid "Taskbar"
 #~ msgstr "Tálca"
-
 #~ msgid "Taskbar Alert"
 #~ msgstr "Figyelmeztetés a Tálcán"
-
 #~ msgid ""
 #~ "This section contains irc protection tools<br><p>like<b> flood, ignore, "
 #~ "antispam. </b> </p>"
 #~ msgstr ""
 #~ "Ebben a részben találod a védő eszközöket<br><p> mint például<b> flood, "
 #~ "mellőzés, spamszűrés.</b> </p>"
-
 #~ msgid "Tree Taskbar"
 #~ msgstr "Fa lista"
 
 #, fuzzy
 #~ msgid "Use CAP protocol"
 #~ msgstr "IPv6 Protokoll használata"
-
 #~ msgid "Use tree taskbar"
 #~ msgstr "Fa struktúra használata"
-
 #~ msgid "Window Captions"
 #~ msgstr "Ablak feliratok"
-
 #~ msgid "Word splitters:"
 #~ msgstr "Szó elválasztók:"
-
 #~ msgid "tray,dockwidget"
 #~ msgstr "tálca,dockwidget"
+
