@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-03-17 18:48+0000\n"
+"PO-Revision-Date: 2011-03-19 03:44+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1059,11 +1059,11 @@ msgstr ""
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:218
 msgid "A really lame text transformation engine :D"
-msgstr "Um mecanismo de transformação de texto mesmo lento :D"
+msgstr "Um mecanismo de transformação de texto mesmo 'lame' :D"
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:228
 msgid "A really lame text transformation engine: Light Version."
-msgstr "Um mecanismo de transformação de texto mesmo lento: Versão Leve."
+msgstr "Um mecanismo de transformação de texto mesmo 'lame': Versão Leve."
 
 #: src/kvirc/ui/KviSelectors.cpp:502 src/kvirc/ui/KviSelectors.cpp:857
 msgid "A&dd"
@@ -2553,7 +2553,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviCryptController.cpp:78
 msgid "Cryptography/text transformation"
-msgstr "Transformação de encriptação/texto"
+msgstr "Transformação de texto/encriptação"
 
 #: src/kvirc/ui/KviInputEditor.cpp:781
 msgid "Cu&t"
@@ -2561,7 +2561,7 @@ msgstr "Cor&tar"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:124
 msgid "Current IRC URI"
-msgstr "Actual IRC URI"
+msgstr "Actual URI IRC"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:210
 msgid "Current Network"
@@ -2605,7 +2605,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:798
 msgid "DCC chat message"
-msgstr "Mensagem DCC de Conversa"
+msgstr "Mensagem de Conversa DCC"
 
 #: src/kvirc/kernel/KviOptions.cpp:785
 msgid "DCC error"
@@ -2622,11 +2622,11 @@ msgstr "Pedido DCC"
 #: src/kvilib/net/KviDnsResolverNew.cpp:158
 msgid "DNS query returned no IP address results of the requested type"
 msgstr ""
-"A pesquisa de DNS não retornou nenhum resultado de endereço IP do tipo pedido"
+"A consulta DNS não devolveu qualquer resultado de endereço IP do tipo pedido"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:74
 msgid "DNS resolver busy"
-msgstr "Resolução de DNS ocupado"
+msgstr "Resolução de DNS ocupada"
 
 #: src/modules/rijndael/libkvirijndael.cpp:207
 #: src/modules/rijndael/libkvirijndael.cpp:415
@@ -2659,7 +2659,7 @@ msgstr "Tema Predefinido"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:445
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:462
 msgid "Delay users join to first message"
-msgstr "Atrasar entrada de utilizadores para a primeira mensagem"
+msgstr "Atrasar entrada de utilizadores na primeira mensagem"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:277
 #: src/kvilib/system/KviLocale.cpp:1125
@@ -2741,7 +2741,7 @@ msgstr "Divisão por zero"
 
 #: src/kvilib/core/KviError.cpp:82
 msgid "Dns query failed"
-msgstr "Pesquisa DNS falhada"
+msgstr "Consulta DNS falhada"
 
 #: src/kvilib/core/KviError.cpp:76
 msgid "Dns temporaneous fault (try again)"
@@ -3437,7 +3437,7 @@ msgstr "Hei... tens certeza que a rede está ligada?"
 
 #: src/kvirc/ui/KviIrcView.cpp:2067
 msgid "Hide Find Window"
-msgstr "Esconder Janela de Pesquisa"
+msgstr "Esconder Janela de Procura"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:453
@@ -3622,8 +3622,8 @@ msgid ""
 "If you don't want to encrypt a particular text line then just start it with "
 "the CTRL+P prefix"
 msgstr ""
-"Se não quer encriptar uma linha de texto em particular então inicie-acom o "
-"prefixo CTRL+P"
+"Se não deseja encriptar uma linha de texto em particular então inicie-a "
+"com o prefixo CTRL+P"
 
 #: src/kvirc/kernel/KviApplication.cpp:794
 msgid "Ignore"
@@ -3673,11 +3673,11 @@ msgstr "Importar de http://www.mirc.co.uk/servers.ini"
 
 #: src/modules/mircimport/libkvimircimport.cpp:321
 msgid "Import from servers.ini"
-msgstr "Importar de servers.ini"
+msgstr "Importar localmente de servers.ini"
 
 #: src/modules/setup/SetupWizard.cpp:514
 msgid "Import server list from mIRC"
-msgstr "Importar lista de servidor do mIRC"
+msgstr "Importar lista de servidores do mIRC"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1117
 msgid ""
@@ -3693,7 +3693,7 @@ msgstr "Em progresso..."
 
 #: src/modules/iograph/libkviiograph.cpp:140
 msgid "Incoming traffic"
-msgstr "Recebido"
+msgstr "Tráfego recebido"
 
 #: src/modules/links/LinksWindow.cpp:299
 msgid "Incomplete LINKS result, no stats available"
@@ -3747,7 +3747,7 @@ msgstr "Erro interno: chame um psiquiatra"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:147
 msgid "Internal error: unhandled DNS query type"
-msgstr "Erro interno: tipo de pesquisa DNS impossível"
+msgstr "Erro interno: tipo de consulta DNS não suportado"
 
 #: src/modules/system/libkvisystem.cpp:487
 msgid "Invalid DBus interface"
@@ -4376,31 +4376,31 @@ msgstr "Falta o directório absoluto para as informações do tema"
 
 #: src/modules/str/libkvistr.cpp:2063
 msgid "Missing argument for ?X escape sequence, 0 assumed"
-msgstr "Argumento em falta para a sequência de escape ?X, assumir 0"
+msgstr "Argumento em falta para a sequência de escape ?X, assumido 0"
 
 #: src/modules/str/libkvistr.cpp:1965
 msgid "Missing argument for ?d escape sequence, 0 assumed"
-msgstr "Argumento em falta para a sequência de escape ?d, assumir 0"
+msgstr "Argumento em falta para a sequência de escape ?d, assumido 0"
 
 #: src/modules/str/libkvistr.cpp:2001
 msgid "Missing argument for ?u escape sequence, 0 assumed"
-msgstr "Argumento em falta para a sequência de escape ?u, assumir 0"
+msgstr "Argumento em falta para a sequência de escape ?u, assumido 0"
 
 #: src/modules/str/libkvistr.cpp:2032
 msgid "Missing argument for ?x escape sequence, 0 assumed"
-msgstr "Argumento em falta para a sequência de escape ?x, assumir 0"
+msgstr "Argumento em falta para a sequência de escape ?x, assumido 0"
 
 #: src/modules/str/libkvistr.cpp:2128
 msgid "Missing argument for a floating point escape sequence, 0.0 assumed"
 msgstr ""
-"Argumento em falta para a sequência de escape de ponto de flutuação, assumir "
+"Argumento em falta para a sequência de escape do ponto de flutuação, assumido "
 "0.0"
 
 #: src/modules/rijndael/libkvirijndael.cpp:116
 #: src/modules/rijndael/libkvirijndael.cpp:382
 msgid "Missing both encrypt and decrypt key: at least one is needed"
 msgstr ""
-"Em falta ambas as chaves de encriptação e desencriptação: é necessária pelo "
+"Faltam ambas as chaves de encriptação e desencriptação: é necessária pelo "
 "menos uma"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:177
@@ -5025,7 +5025,7 @@ msgid ""
 "Ooops.. you've hit a bug in the servers database... I have found a server "
 "but not a network..."
 msgstr ""
-"Ooops... encontrou um erro na base de dados dos servidores...Encontrou um "
+"Uuups... encontrou um erro na base de dados dos servidores...Encontrou um "
 "servidor mas não uma rede..."
 
 #: src/modules/setup/SetupWizard.cpp:199
@@ -5034,7 +5034,7 @@ msgid ""
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
-"Oops... não é possível encontrar o ficheiro da licença.\n"
+"Ups... não é possível encontrar o ficheiro da licença.\n"
 "Deve estar incluído na distribuição...\n"
 "Por favor reporte para <pragma at kvirc dot net>"
 
@@ -5074,11 +5074,11 @@ msgstr "Operação cancelada"
 #: src/modules/iograph/libkviiograph.cpp:277
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 msgid "Ops.. internal error"
-msgstr "Ops... erro interno"
+msgstr "Ups... erro interno"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:97
 msgid "Ops... for some reason the link filter object has been destroyed"
-msgstr "Ops...por alguma razão o objecto do filtro da ligação foi destruído"
+msgstr "Ups...por alguma razão o objecto do filtro da ligação foi destruído"
 
 #: src/kvirc/ui/KviWindow.cpp:514
 msgid "Ops...I've accidentally lost the crypting engine..."
@@ -5086,11 +5086,11 @@ msgstr "Ups...perdi acidentalmente o mecanismo de encriptação..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:219
 msgid "Ops...decrypt cipher not initialized"
-msgstr "Ops... cifra de desencriptação não inicializada"
+msgstr "Ups... cifra de desencriptação não inicializada"
 
 #: src/modules/rijndael/libkvirijndael.cpp:182
 msgid "Ops...encrypt cipher not initialized"
-msgstr "Ops... cifra de encriptação não inicializada"
+msgstr "Ups... cifra de encriptação não inicializada"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:740
 #, c-format
@@ -5100,7 +5100,7 @@ msgid ""
 "due to the following error: \"%s\"\n"
 "Aborting."
 msgstr ""
-"Ops.. parece que não é possível carregar módulos neste sistema.\n"
+"Ups.. parece que não é possível carregar módulos neste sistema.\n"
 "Pesquisou-se a biblioteca %s mas não não foi possível carregá-la\n"
 "devido ao seguinte erro: \"%s\"\n"
 "A abortar."
@@ -5111,7 +5111,7 @@ msgid ""
 "The setup module does not export the \"setup_begin\" function.\n"
 "Aborting!"
 msgstr ""
-"Ops... parece ter uma distribuição danificada.\n"
+"Ups... parece ter uma distribuição danificada.\n"
 "O módulo de configuração não exporta a função \"setup_begin\".\n"
 "A abortar!"
 
@@ -5121,7 +5121,7 @@ msgid ""
 "The setup module does not export the \"setup_finish\" function.\n"
 "Trying to continue anyway..."
 msgstr ""
-"Ops... parece ter uma distribuição danificada.\n"
+"Ups... parece ter uma distribuição danificada.\n"
 "O módulo de configuração não exporta a função \"setup_finish\"\n"
 "Continuar apesar de tudo..."
 
@@ -5144,7 +5144,7 @@ msgstr "Mensagem de saída do utilizador ICQ"
 
 #: src/modules/iograph/libkviiograph.cpp:138
 msgid "Outgoing traffic"
-msgstr "Enviado"
+msgstr "Tráfego enviado"
 
 #: src/kvirc/kernel/KviOptions.cpp:874
 msgid "Own IRC Op status set"
@@ -5539,7 +5539,7 @@ msgstr "O 'proxy' disse algo acerca: \n"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:101
 msgid "Query Targets"
-msgstr "Pesquisar Destinos"
+msgstr "Destinos de Consulta"
 
 #: src/kvirc/kernel/KviOptions.cpp:797
 msgid "Query encrypted private message"
@@ -5551,7 +5551,7 @@ msgstr "Consulta não encontrada: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:809
 msgid "Query notice"
-msgstr "Pesquisar noticia"
+msgstr "Noticia de consulta"
 
 #: src/kvirc/kernel/KviOptions.cpp:756
 msgid "Query private message"
@@ -5559,19 +5559,19 @@ msgstr "Consultar mensagem privada"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:174
 msgid "Query target:"
-msgstr "Pesquisar destino:"
+msgstr "Destino de consulta:"
 
 #: src/kvirc/kernel/KviOptions.cpp:822
 msgid "Query trace message"
-msgstr "Pesquisar rastreio da mensagem"
+msgstr "Consultar mensagem de rastreio"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:254
 msgid "Query with %1!%2"
-msgstr "Pesquisa com %1!%2"
+msgstr "Consulta a %1!%2"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:252
 msgid "Query with %1!%2 (%3)"
-msgstr "Pesquisa com %1!%2 (%3)"
+msgstr "Consulta a %1!%2 (%3)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:277
 msgid "Quiet"
@@ -5579,7 +5579,7 @@ msgstr "Inactivo"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:355
 msgid "Quiet Ban Editor"
-msgstr "Editor de Banimentos Inactivo"
+msgstr "Editor de Banimentos Silencioso"
 
 #: src/kvirc/ui/KviUserListView.cpp:1606
 msgid "Quiet for <b>%1h %2m %3s</b>"
@@ -5623,24 +5623,24 @@ msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
 msgstr ""
-"Erro de leitura no ficheiro %Q (não foi capaz de o tamanho pedido em 1000 "
+"Erro de leitura no ficheiro %Q (não foi capaz de ler o tamanho pedido em 1000 "
 "tentativas)"
 
 #: src/kvilib/file/KviPackageReader.cpp:412
 msgid "Reading package data"
-msgstr "A ler dados do pacote"
+msgstr "A ler os dados do pacote"
 
 #: src/kvilib/file/KviPackageReader.cpp:406
 msgid "Reading package header"
-msgstr "A ler cabeçalho do pacote"
+msgstr "A ler o cabeçalho do pacote"
 
 #: src/kvilib/file/KviPackageReader.cpp:405
 msgid "Reading package..."
-msgstr "A ler pacote..."
+msgstr "A ler o pacote..."
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:417
 msgid "Real hostname for %Q is %Q"
-msgstr "O nome da máquina real de %Q é %Q"
+msgstr "O nome real da máquina %Q é %Q"
 
 #: src/modules/setup/SetupWizard.cpp:350
 msgid "Real name:"
@@ -5653,56 +5653,55 @@ msgstr "Resposta HTTP recebida: %1"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1360
 msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
 msgstr ""
-"Resposta RPL_WHOISIDLE daificada, não é possível calcular o tempo inactivo"
+"Resposta RPL_WHOISIDLE danificada, não é possível calcular o tempo inactivo"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:212
 msgid "Received a join message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de entrada recebida para um canal desconhecido, possível "
+"Recebida mensagem de entrada para canal desconhecido, possível "
 "dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:561
 msgid "Received a kick message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de expulsão recebida para um canal desconhecido, possível "
+"Recebida mensagem de expulsão para canal desconhecido, possível "
 "dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1743
 msgid "Received a mode change for an unknown channel, possible desync"
 msgstr ""
-"Mudança de modo recebida para um canal desconhecido, possível "
+"Recebida mudança de modo para canal desconhecido, possível "
 "dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:321
 msgid "Received a part message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de saída de canal recebida para um canal desconhecido, possível "
+"Recebida mensagem de partida para canal desconhecido, possível "
 "dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1451
 msgid "Received a topic message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de tópico recebida para um canal desconhecido,possível "
-"dessincronização"
+"Mensagem de tópico para canal desconhecido recebida,possível dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1652
 msgid "Received an invite message directed to another nick, possible desync"
 msgstr ""
-"Recebeu uma mensagem de convite que era dirigida a outra alcunha,possível "
+"Recebida mensagem de convite dirigida a outra alcunha,possível "
 "dessincronização"
 
 #: src/modules/links/LinksWindow.cpp:185
 msgid "Received end of links."
-msgstr "Recebido fim das ligações."
+msgstr "Fim de ligações recebido."
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:101
 msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
-msgstr "Recebido PING de \r!s\r%Q\r (PING %Q), pong respondido"
+msgstr "PING recebido de \r!s\r%Q\r (PING %Q), pong respondido"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:128
 #, c-format
 msgid "Received pong from \r!s\r%s\r (PONG %s)"
-msgstr "Recebido PONG de \r!s\r%s\r (PONG %s)"
+msgstr "PONG recebido de \r!s\r%s\r (PONG %s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2286
 msgid "Received unknown extended capability message: %Q %Q"
@@ -5727,11 +5726,11 @@ msgstr "Balanço do Vermelho"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:317
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:407
 msgid "Redirect on channel full (mode +l)"
-msgstr "Redireccionar no canal cheio (modo +l)"
+msgstr "Redireccionar em canal cheio (modo +l)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:357
 msgid "Reduced moderation for ops"
-msgstr "Moderação reduzida para ops"
+msgstr "Moderação reduzida para operadores"
 
 #: src/modules/help/HelpWindow.cpp:84
 msgid "Refresh index"
