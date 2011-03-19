@@ -159,7 +159,7 @@ void HelpIndex::setupDocumentList()
     QStringList::ConstIterator it = lst.constBegin();
     for ( ; it != lst.constEnd(); ++it )
     {
-        QString filename=QLatin1String("file:") + docPath + QLatin1String("/") + *it ;
+        QString filename=QLatin1String("file:///") + docPath + QLatin1String("/") + *it ;
         docList.append(filename);
         titleList.append(getDocumentTitle(filename));
     }
