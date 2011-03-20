@@ -270,6 +270,7 @@ void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
 
 	if(e->button() & Qt::RightButton)
 	{
+		pDialog->itemSelected();
 		if(!m_pJoinPopup)
 		{
 			m_pJoinPopup = new KviTalPopupMenu(this);
