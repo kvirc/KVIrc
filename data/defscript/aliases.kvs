@@ -412,7 +412,7 @@ alias(dcc)
 		}
 		case(allow):
 		{
-			quote dccallow $1-
+			dccallow $1-
 			break
 		}
 		default:
@@ -454,11 +454,6 @@ alias(usermodename)
 	} else {
 		return $tr("Normal User","defscript")
 	}
-}
-
-alias(dccallow)
-{
-	quote dccallow \+$0
 }
 
 #shortcut for commonly called algorithm
