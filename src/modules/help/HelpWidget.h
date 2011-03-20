@@ -72,9 +72,7 @@ private:
 protected:
 	virtual void resizeEvent(QResizeEvent *e);
 protected slots:
-	void doClose();
 	void showIndex();
-	void suicide();
 #ifdef COMPILE_WEBKIT_SUPPORT
 	void slotLoadFinished(bool ok);
 	void slotFindNext();

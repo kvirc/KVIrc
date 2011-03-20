@@ -128,7 +128,8 @@ HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 		QToolButton * b = new QToolButton();
 		m_pToolBar->addWidget(b);
 		b->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
-		connect(b,SIGNAL(clicked()),this,SLOT(doClose()));
+		setAttribute(Qt::WA_DeleteOnClose);
+		connect(b,SIGNAL(clicked()),this,SLOT(close()));
 	}
 
 }
@@ -209,9 +210,10 @@ HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 
 	if(bIsStandalone)
 	{
+		setAttribute(Qt::WA_DeleteOnClose);
 		QToolButton * b = new QToolButton(m_pToolBar);
 		b->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
-		connect(b,SIGNAL(clicked()),this,SLOT(doClose()));
+		connect(b,SIGNAL(clicked()),this,SLOT(close()));
 	}
 
 	m_pToolBar->setStretchFactor(pSpacer,1);
@@ -246,20 +248,6 @@ void HelpWidget::resizeEvent(QResizeEvent *)
 	if(hght < 40)hght = 40;
 	m_pToolBar->setGeometry(0,0,width(),hght);
 	m_pTextBrowser->setGeometry(0,hght,width(),height() - hght);
-}
-
-void HelpWidget::doClose()
-{
-	// hack needed to workaround "QToolBar::emulateButtonClicked()"
-	// that refers to the "this" pointer after this slot has been
-	// called (from the "too-small-toolbar-for-all-items-popup")
-	QTimer::singleShot(0,this,SLOT(suicide()));
-}
-
-void HelpWidget::suicide()
-{
-	// goodbye cruel wolrd
-	delete this;
 }
 
 QSize HelpWidget::sizeHint() const
