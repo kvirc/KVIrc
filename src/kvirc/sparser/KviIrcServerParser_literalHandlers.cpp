@@ -2136,6 +2136,32 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
 					}
 				}
+			} else if(msg->connection()->serverInfo()->isSupportedModeFlag(*aux))
+			{
+				/*
+				 * A custom mode prefix, like inspircd's  +y => !
+				 * We need to correctly echo it, and be sure it doesn't
+				 * get confused as a channel mode
+				 */
+				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
+				// TODO support custom mode prefixes
+				//chan->setChannelModeWithParam(*aux,aParam);
+
+				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				{
+					if(aParam.isEmpty())
+					{
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
+							&szNickBuffer,&szUser,&szHostBuffer,
+							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
+					} else {
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							&szNickBuffer,&szUser,&szHostBuffer,
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+					}
+				}
 			} else {
 				if(msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux))
 				{
