@@ -246,29 +246,23 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				//shitf+left click: close window
 				wnd->delayedClose();
 			} else {
+				//left click activate/deactivate window
+				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
+					g_pMainWindow->setActiveWindow(wnd);
+				else 
+					wnd->minimize();
+
 				// let our parent handle clicks on branches, etc
 				QStyleOption option;
 				option.initFrom(this);
 				option.rect = visualItemRect(it);
 				if(!style()->subElementRect(QStyle::SE_TreeViewDisclosureItem, &option, this).contains(e->pos()))
-				{
 					QTreeWidget::mousePressEvent(e);
-					return;
-				}
-
-				//left click activate/deactivate window
-				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
-				{
-					g_pMainWindow->setActiveWindow(wnd);
-				} else wnd->minimize();
 			}
-
-		} else if(e->button() & Qt::RightButton)
-		{
+		} else if(e->button() & Qt::RightButton) {
 			//right click: open popup
 			wnd->contextPopup();
-		}else if(e->button() & Qt::MidButton)
-		{
+		} else if(e->button() & Qt::MidButton) {
 			//mid click: close window
 			wnd->delayedClose();
  		}
