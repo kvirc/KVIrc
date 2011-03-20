@@ -521,6 +521,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 		//selection colored background
 		QStyleOptionViewItemV4 opt4(option);
 		opt4.state = opt4.state | QStyle::State_Selected;
+		opt4.showDecorationSelected = true;
 		opt4.palette.setColor(QPalette::Highlight, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 		treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 #ifndef COMPILE_ON_MAC
@@ -533,6 +534,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 			QStyleOptionViewItemV4 opt4(option);
 			opt4.state = opt4.state | QStyle::State_Selected;
+			opt4.showDecorationSelected = true;
 			opt4.palette.setColor(QPalette::Highlight, col);
 			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 		}

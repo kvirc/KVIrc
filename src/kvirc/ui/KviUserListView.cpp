@@ -1771,6 +1771,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				QStyleOptionViewItemV4 opt4;
 				opt4.rect= QRect(0,iTheY,width(),pEntry->m_iHeight);
 				opt4.state = opt4.state | QStyle::State_Selected;
+				opt4.showDecorationSelected = true;
 				opt4.palette.setColor(QPalette::Highlight, col);
 				style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, &p, this);
 
