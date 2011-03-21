@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-21 00:30+0000\n"
-"PO-Revision-Date: 2011-03-19 03:44+0000\n"
+"PO-Revision-Date: 2011-03-21 02:49+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1550,7 +1550,7 @@ msgstr "Opções booleanas (1/0)"
 
 #: src/modules/window/libkviwindow.cpp:1558
 msgid "Both -n and -m switches specified, -n takes precedence"
-msgstr "Ambas opções -n e -m indicadas, -n tem precedência"
+msgstr "Ambas as opções -n e -m especificadas, a opção -n tem precedência"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:157
 #: src/kvilib/ext/avdevice/videodevice.cpp:3068
@@ -3711,7 +3711,7 @@ msgstr "A ignorar convite de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:776
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "A ignorar consultas PRIVMSG de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "A ignorar consulta PRIVMSG de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/modules/list/ListWindow.cpp:204
 msgid "Import List"
@@ -4726,7 +4726,7 @@ msgstr "Sem códigos de controlo (cores, negrito,...)"
 #: src/modules/window/libkviwindow.cpp:1568
 msgid "No encrypt key specified: can't allocate engine"
 msgstr ""
-"Nenhuma chave de encriptação indicada: não é possível alocar o mecanismo"
+"Nenhuma chave de encriptação especificada: não é possível alocar o mecanismo"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:274
 msgid "No external messages"
@@ -5636,11 +5636,11 @@ msgstr "Consultar mensagem de rastreio"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:254
 msgid "Query with %1!%2"
-msgstr "Consulta a %1!%2"
+msgstr "Consulta com %1!%2"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:252
 msgid "Query with %1!%2 (%3)"
-msgstr "Consulta a %1!%2 (%3)"
+msgstr "Consulta com %1!%2 (%3)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:277
 msgid "Quiet"
@@ -6836,8 +6836,8 @@ msgid ""
 "The following CTCP PING reply has a broken time identifier \"%S\", don't "
 "trust the displayed time"
 msgstr ""
-"A seguinte resposta ctcp PING tem um identificador de tempo danificado \"%S"
-"\", não confiar na hora indicada"
+"A seguinte resposta CTCP PING tem um identificador horário danificado "
+"\"%S\", não confiar na hora indicada"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1086
 msgid "The following CTCP PING reply has unrecognized target \"%Q\""
@@ -6909,7 +6909,7 @@ msgid ""
 "collision: merging output"
 msgstr ""
 "A recente mudança de alcunha de \r!n\r%Q\r para \r!n\r%Q\r causou uma "
-"colisão de consultas: a juntar o resultado"
+"colisão de consulta: a juntar o resultado"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:818
 msgid "The remote server replied with "
@@ -6952,8 +6952,8 @@ msgid ""
 "The server reports a hostname differing from what KVIrc set for the local "
 "hostname."
 msgstr ""
-"O servidor relata uma máquina diferente daquela que o KVIrc define para "
-"máquina local."
+"O servidor reporta um nome de máquina diferente do que o KVIrc define para "
+"o nome de máquina local."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:885
 msgid ""
@@ -6966,16 +6966,16 @@ msgid ""
 "The server specification seems to be in the id:<string> form but the "
 "identifier coulnd't be found in the database"
 msgstr ""
-"A especificação do servidor parece estar na forma id: <string> mas não é "
-"possível encontrar o identificador na base de dados"
+"A especificação do servidor parece estar na forma id: <string> mas não"
+"foi possível encontrar o identificador na base de dados"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:166
 msgid ""
 "The server specification seems to be in the net:<string> but the network "
 "couln't be found in the database"
 msgstr ""
-"A especificação do servidor parece estar na rede:<string> mas não é possível "
-"encontrar a rede na base de dados"
+"A especificação do servidor parece estar na forma rede:<string> mas não "
+"foi possível encontrar a rede na base de dados"
 
 #: src/modules/rot13/libkvirot13.cpp:123
 msgid ""
@@ -6984,16 +6984,15 @@ msgid ""
 "in a sealed wrapper that the reader must choose to open - e.g. for posting "
 "things that might offend some readers, or spoilers."
 msgstr ""
-"A cifra de encriptação simples Caesar, que substitui cada letra por 13 "
-"lugares  para a frente ou para trás ao longo do alfabeto; é usada para "
-"incluir o texto num invólucro lacrado que o leitor deve optar por abrir - "
-"por exemplo, ao escrever determinadas coisas que possam ofender alguns "
-"leitores, ou 'spoilers'."
+"A simples cifra de encriptação Caesar, que substitui cada letra com os 13 "
+"lugares à frente ou atrás ao longo do alfabeto; é usada para "
+"delimitar o texto num invólucro lacrado que o leitor deve optar por abrir - "
+"por exemplo, por colocar coisas que possam ofender alguns leitores."
 
 #: src/modules/window/libkviwindow.cpp:1171
 msgid "The specified IRC context is not valid: creating a context free window"
 msgstr ""
-"O contexto de IRC indicado não é válido: a criar um contexto de janela livre"
+"O contexto IRC indicado não é válido: a criar um contexto de janela livre"
 
 #: src/modules/window/libkviwindow.cpp:1157
 msgid "The specified Icon does not exist: switching to 'none'"
@@ -7001,24 +7000,24 @@ msgstr "O ícone especificado não existe: a mudar para 'nenhum'"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:474
 msgid "The specified bind address (%Q) is not valid"
-msgstr "O endereço indicado de ligação (%Q) não é valido"
+msgstr "O endereço de ligação (%Q) especificado não é valido"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:479
 msgid ""
 "The specified bind address (%Q) is not valid (the interface it refers to "
 "might be down)"
 msgstr ""
-"O endereço bind indicado (%Q) não é valido (o interface refere que pode "
-"estar em baixo)"
+"O endereço de ligação (%Q) especificado não é valido (o interface que refere "
+"parece estar em baixo)"
 
 #: src/modules/file/libkvifile.cpp:594
 #: src/modules/file/libkvifile.cpp:731
 msgid "The specified directory does not exist '%Q'"
-msgstr "O directório indicado não existe '%Q'"
+msgstr "O directório especificado não existe '%Q'"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:112
 msgid "The specified network has no server entries"
-msgstr "A janela indicada não tem entradas de servidores"
+msgstr "A janela especificada não tem entradas de servidores"
 
 #: src/modules/system/libkvisystem.cpp:512
 #: src/modules/system/libkvisystem.cpp:533
@@ -7033,19 +7032,19 @@ msgstr "O parâmetro especificado não é um inteiro"
 #: src/modules/toolbar/libkvitoolbar.cpp:505
 #: src/modules/toolbar/libkvitoolbar.cpp:545
 msgid "The specified toolbar doesn't exist"
-msgstr "A barra de ferramentas indicada não existe"
+msgstr "A barra de ferramentas especificada não existe"
 
 #: src/modules/chan/libkvichan.cpp:54
 msgid "The specified window (%Q) is not a channel"
-msgstr "A janela indicada (%Q) não é um canal"
+msgstr "A janela especificada (%Q) não é um canal"
 
 #: src/modules/spaste/libkvispaste.cpp:68
 msgid "The specified window (%Q) is not a channel/query/DCC chat"
-msgstr "A janela indicada (%Q) não é um canal/conversa/DCC"
+msgstr "A janela especificada (%Q) não é um canal/conversa/DCC"
 
 #: src/modules/spaste/libkvispaste.cpp:219
 msgid "The specified window (%Q) is not a channel/query/dcc"
-msgstr "A janela indicada (%Q) não é um canal/conversa/dcc"
+msgstr "A janela especificada (%Q) não é um canal/consulta/dcc"
 
 #: src/modules/action/libkviaction.cpp:392
 msgid "The switch -l requires -c"
@@ -7058,7 +7057,7 @@ msgstr "A opção -s requer -w sem a combinação de opções 'c','x' e 'q'"
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:528
 #, c-format
 msgid "The system-wide IPv4 bind address (%s) is not valid"
-msgstr "O endereço 'bind' IPv4 geral do sistema (%s) não é válido"
+msgstr "O endereço de ligação IPv4 geral do sistema (%s) não é válido"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:535
 #, c-format
@@ -7066,13 +7065,14 @@ msgid ""
 "The system-wide IPv4 bind address (%s) is not valid (the interface it refers "
 "to might be down)"
 msgstr ""
-"O endereço 'bind' IPv4 do sistema (%s) não é válido (o interface refere que "
+"O endereço de ligação IPv4 do sistema (%s) não é válido (o interface refere "
+"que "
 "pode estar em baixo)"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:499
 #, c-format
 msgid "The system-wide IPv6 bind address (%s) is not valid"
-msgstr "O endereço 'bind' IPv6 do sistema (%s) não é válido"
+msgstr "O endereço de ligação IPv6 do sistema (%s) não é válido"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:506
 #, c-format
@@ -7080,7 +7080,7 @@ msgid ""
 "The system-wide IPv6 bind address (%s) is not valid (the interface it refers "
 "to might be down)"
 msgstr ""
-"O endereço 'bind' IPv6 geral do sistema (%s) não é válido (o interface "
+"O endereço de ligação IPv6 geral do sistema (%s) não é válido (o interface "
 "refere que pode estar em baixo)"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:348
@@ -7096,8 +7096,8 @@ msgid ""
 "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] changed his nickname to \r!n\r%Q\r"
 msgstr ""
-"O alvo deste query perdeu-se e foi encontrado quando o \r!n\r%Q\r [%Q@\r!h\r%"
-"Q\r] mudou a sua alcunha para \r!n\r%Q\r"
+"O alvo desta consulta perdeu-se e foi encontrado quando o \r!n\r%Q\r [%Q@\r!h"
+"\r%Q\r] mudou a sua alcunha para \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviTheme.cpp:80
 msgid "The theme data file does not exist"
