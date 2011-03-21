@@ -50,8 +50,8 @@
 #include <QFtp>
 #include <QProgressBar>
 #include <QDir>
-#include <QtWebKit/QWebView>
-#include <QtWebKit/QWebFrame>
+#include <QWebView>
+#include <QWebFrame>
 #include <QWebElement>
 #include <QUrl>
 #include <QShowEvent>
