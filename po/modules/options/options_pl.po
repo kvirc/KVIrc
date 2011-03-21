@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2010-06-23 01:09+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: \n"
@@ -78,7 +78,7 @@ msgstr "&Zastosuj"
 msgid "&Browse..."
 msgstr "&Przeglądaj..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 msgid "&Copy Server"
 msgstr "&Kopiuj serwer"
 
@@ -90,7 +90,7 @@ msgstr "&Nowy"
 msgid "&New Proxy"
 msgstr "&Nowe proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 msgid "&New Server"
 msgstr "&Nowy serwer"
 
@@ -101,7 +101,7 @@ msgstr "&Nowy serwer"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "&Paste Server"
 msgstr "&Wklej serwer"
 
@@ -146,7 +146,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Kliknij tutaj jeżeli chcesz edytować zaawansowane opcje dla tej "
@@ -228,7 +228,7 @@ msgstr ""
 "ustanowienu połączenia z tym serwerem. Aby dodać kanał, wprowadź jego nazwę "
 "w oknie tekstowym poniżej i kliknij \"<b>Dodaj</b>\".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -309,7 +309,7 @@ msgstr ""
 "powiadamiacza w prawym dolnym rogu twojego pulpitu gdy podkreślona wiadomość "
 "jest wydrukowana i KVIrc nie jest aktywnym oknem</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -338,6 +338,12 @@ msgid ""
 msgstr ""
 "<center>Jeżeli ten serwer wymaga hasła, wpisz je w to pole, w innym "
 "przypadku pozostaw puste.</center>"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
 msgid ""
@@ -518,7 +524,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -781,7 +787,7 @@ msgid ""
 "you enable the option above.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -824,7 +830,7 @@ msgstr ""
 "automatycznie żądane.<br>Rozsądną wartością powinno być 102400 bajtów (100 "
 "K).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1392,7 +1398,7 @@ msgstr ""
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "Active Configuration"
 msgstr "Aktywna konfiguracja"
 
@@ -1436,7 +1442,7 @@ msgstr "Zaawansowane"
 msgid "Advanced configuration"
 msgstr "Zaawansowana konfiguracja"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 msgid "Advanced..."
 msgstr "Zaawansowane..."
 
@@ -1845,7 +1851,7 @@ msgstr "Klasyczna lista okien"
 msgid "Classic format"
 msgstr "Klasyczny format"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 msgid "Clear List"
 msgstr "Wyczyść listę"
 
@@ -1886,7 +1892,7 @@ msgstr "Konfiguracja"
 msgid "Confirm quit with active connections"
 msgstr "Potwierdź wyjście z aktywnymi połączeniami"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 msgid "Connect &Now"
 msgstr "Połącz t&eraz"
 
@@ -1923,7 +1929,7 @@ msgstr "Kontakty"
 msgid "Control char color"
 msgstr "Kolor znaku kontrolnego"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "Copy Server"
 msgstr "Kopiuj serwer"
 
@@ -2018,7 +2024,7 @@ msgid "Delete Rule"
 msgstr "Usuń zasadę"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "Opis"
 
@@ -2298,6 +2304,11 @@ msgstr "Transfer pliku"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:97
 msgid "File pattern:"
+msgstr "Wzór pliku:"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+#, fuzzy
+msgid "Filter:"
 msgstr "Wzór pliku:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
@@ -2597,8 +2608,8 @@ msgstr "Wysokość obrazka:"
 msgid "Image width:"
 msgstr "Szerokość obrazka:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 msgid "Import List"
 msgstr "Importuj listę"
 
@@ -2974,7 +2985,7 @@ msgstr "Nazwa sieci:"
 msgid "Network Properties"
 msgstr "Właściwości sieci"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "Sieć:"
 
@@ -2982,9 +2993,9 @@ msgstr "Sieć:"
 msgid "New Media Type"
 msgstr "Nowy typ mediów"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "Nowa sieć"
 
@@ -2996,7 +3007,7 @@ msgstr "Nowe proxy"
 msgid "New Query opened"
 msgstr "Otwarto nową rozmowę"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 msgid "New Server"
 msgstr "Nowy serwer"
 
@@ -3066,7 +3077,7 @@ msgstr "Pseudonim:"
 msgid "Nicknames"
 msgstr "Pseudonimy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "Brak wyboru"
 
@@ -3170,13 +3181,13 @@ msgstr "Gdy niespodziewanie rozłączony"
 msgid "On Voice Request"
 msgstr "Gdy ktoś żąda czatu głosowego"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3268,7 +3279,7 @@ msgstr "Wiadomość Part:"
 msgid "Password:"
 msgstr "Hasło:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 msgid "Paste Server"
 msgstr "Wklej serwer"
 
@@ -3517,7 +3528,7 @@ msgstr "Us&uń"
 msgid "Re&move Proxy"
 msgstr "Us&uń serwer proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Re&move Server"
 msgstr "Us&uń serwer"
 
@@ -3567,11 +3578,11 @@ msgstr "Pamiętaj właściwości okna"
 msgid "Remote open command:"
 msgstr "Zdalne polecenie otwarcia:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 msgid "Remove Network"
 msgstr "Usuń sieć"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 msgid "Remove Network/Server"
 msgstr "Usuń sieć/serwer"
 
@@ -3704,7 +3715,7 @@ msgstr "Wyślij adres/interfejs:"
 msgid "Send unknown commands as /RAW"
 msgstr "Wyślij nieznane polecenia jako /RAW"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "Serwer"
 
@@ -3740,8 +3751,8 @@ msgstr "Server notices (+s)"
 msgid "Server replies"
 msgstr "Odpowiedzi serwera"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "Serwer:"
 
@@ -3847,7 +3858,7 @@ msgstr "Pokaż komunikacje klienta z serwerem: ping, pong"
 msgid "Show the CTCP replies in the active window"
 msgstr "Pokaż odpowiedzi CTCP w aktywnym oknie"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 msgid "Show this dialog at startup"
 msgstr "Pokazuj ten dialog przy starcie"
 
@@ -4271,7 +4282,7 @@ msgstr "Nie możliwy zapis informacji jezykowej do"
 msgid "Unknown protocol handler command:"
 msgstr "Nieznany protokół polecenie obsługi:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr "UnknownNet"
 
@@ -4659,7 +4670,7 @@ msgstr "en"
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr "irc.unknown.net"
 

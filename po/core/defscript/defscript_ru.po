@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 00:46+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2011-03-18 22:05+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/defscript/popups.kvs:542
 msgid "&Administrator"
@@ -446,7 +446,7 @@ msgstr "Нет цели, ничего не делаю"
 msgid "Multiple Users"
 msgstr ""
 
-#: data/defscript/aliases.kvs:503
+#: data/defscript/aliases.kvs:498
 msgid "No such user:"
 msgstr "Нет такого пользователя:"
 
@@ -658,7 +658,7 @@ msgstr "Использование"
 #: data/defscript/aliases.kvs:320
 #: data/defscript/aliases.kvs:362
 #: data/defscript/aliases.kvs:432
-#: data/defscript/aliases.kvs:492
+#: data/defscript/aliases.kvs:487
 msgid "Usage:"
 msgstr "Использование:"
 
@@ -691,11 +691,11 @@ msgstr ""
 msgid "With..."
 msgstr "с причиной..."
 
-#: data/defscript/aliases.kvs:486
+#: data/defscript/aliases.kvs:481
 msgid "You must be connected to a server"
 msgstr ""
 
-#: data/defscript/aliases.kvs:480
+#: data/defscript/aliases.kvs:475
 msgid "You must use DNS in an IRC context"
 msgstr ""
 
@@ -785,5 +785,3 @@ msgstr ""
 #: data/defscript/popups.kvs:837
 msgid "z (Debug Stats?)"
 msgstr ""
-
-

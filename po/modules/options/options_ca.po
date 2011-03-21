@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -80,7 +80,7 @@ msgstr "&Aplicar"
 msgid "&Browse..."
 msgstr "Navegar..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 msgid "&Copy Server"
 msgstr "&Copiar Servidor"
 
@@ -92,7 +92,7 @@ msgstr "&Nou"
 msgid "&New Proxy"
 msgstr "&Nou Proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 msgid "&New Server"
 msgstr "&Nou Servidor"
 
@@ -103,7 +103,7 @@ msgstr "&Nou Servidor"
 msgid "&OK"
 msgstr "&Acceptar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "&Paste Server"
 msgstr "Enganxar Servidor"
 
@@ -153,7 +153,7 @@ msgstr ""
 "missatges poden solicitar informació de clients o negociar transferències "
 "d'arxius.</p>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Premi aquí per a editar les opcions avançades d'aquesta entrada</"
@@ -249,7 +249,7 @@ msgstr ""
 "escrigui el seu nom a la caixa de text inferior i premi \"<b>Afegir</b>\".</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -336,7 +336,7 @@ msgstr ""
 "notificacions al racó inferior dret de l'escriptori quan es visualitzi un "
 "missatge ressaltat i KVIrc sigui la finestra activa</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -370,6 +370,12 @@ msgid ""
 msgstr ""
 "<center>Si aquest servidor necessita una clau, escrigui-la en aquest camp: "
 "en altre cas, deixi-ho buit.</center>"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
 msgid ""
@@ -598,7 +604,7 @@ msgstr ""
 "codificació s'heretarà de la xarxa a la que pertanyi aquest servidor.</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -935,7 +941,7 @@ msgstr ""
 "<center>Aquesta és l'adreça fixa que s'enviarà a totes les peticions DCC si "
 "vostè marca l'opció.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -981,7 +987,7 @@ msgstr ""
 "solicitades automàticament.<br>Un valor raonable podria ser 102400 bytes "
 "(100 K).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1719,7 +1725,7 @@ msgstr "Acceptar RESUME erroni (mIRC arxiu.ext)"
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 #, fuzzy
 msgid "Active Configuration"
 msgstr "Guardar Configuració"
@@ -1767,7 +1773,7 @@ msgstr "Avançat ..."
 msgid "Advanced configuration"
 msgstr "Configuració Avançada"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 msgid "Advanced..."
 msgstr "Avançat ..."
 
@@ -2191,7 +2197,7 @@ msgstr "Llista de Finestres"
 msgid "Classic format"
 msgstr "Barra de feines clàssica"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 msgid "Clear List"
 msgstr "Netejar Llista"
 
@@ -2234,7 +2240,7 @@ msgstr "Configuració"
 msgid "Confirm quit with active connections"
 msgstr "Confirmar sortida amb connexions actives"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 msgid "Connect &Now"
 msgstr "Co&nnectar Ara"
 
@@ -2274,7 +2280,7 @@ msgstr "Connectar"
 msgid "Control char color"
 msgstr "Color dels caràcters de control"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "Copy Server"
 msgstr "Copiar Servidor"
 
@@ -2375,7 +2381,7 @@ msgid "Delete Rule"
 msgstr "Borrar Regla"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "Descripció"
 
@@ -2670,6 +2676,11 @@ msgstr "Transferències d'Arxius"
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:97
 msgid "File pattern:"
 msgstr "Patró d'arxiu:"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+#, fuzzy
+msgid "Filter:"
+msgstr "&Filtre:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
 #, fuzzy
@@ -2968,8 +2979,8 @@ msgstr "Alçada de la imatge:"
 msgid "Image width:"
 msgstr "Amplada de la imatge:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 msgid "Import List"
 msgstr "Importar Llista"
 
@@ -3364,7 +3375,7 @@ msgstr "Xarxa:"
 msgid "Network Properties"
 msgstr "Propietats de Xarxa"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "Xarxa:"
 
@@ -3372,9 +3383,9 @@ msgstr "Xarxa:"
 msgid "New Media Type"
 msgstr "Nou Tipus de Medi"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "Nova Xarxa"
 
@@ -3387,7 +3398,7 @@ msgstr "Nou Proxy"
 msgid "New Query opened"
 msgstr "Mantindre els privats oberts"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 msgid "New Server"
 msgstr "Nou Servidor"
 
@@ -3458,7 +3469,7 @@ msgstr "Nick:"
 msgid "Nicknames"
 msgstr "Nick"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "Sense selecció"
 
@@ -3565,7 +3576,7 @@ msgstr "En desconnexions inesperades"
 msgid "On Voice Request"
 msgstr "En Solicitut de Veu"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3573,7 +3584,7 @@ msgstr ""
 "Ups... una cosa dolenta ha passat:<br>No puc trobar cap mòdul capaç "
 "d'importar servidors."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3670,7 +3681,7 @@ msgstr "Missatge part"
 msgid "Password:"
 msgstr "Clau:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 msgid "Paste Server"
 msgstr "Enganxar Servidor"
 
@@ -3930,7 +3941,7 @@ msgstr "Eli&minar"
 msgid "Re&move Proxy"
 msgstr "Eli&minar Proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Re&move Server"
 msgstr "Eli&minar Servidor"
 
@@ -3983,11 +3994,11 @@ msgstr "Recordar propietats de finestra"
 msgid "Remote open command:"
 msgstr "Comanda d'apertura remota:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 msgid "Remove Network"
 msgstr "Eliminar Xarxa"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 msgid "Remove Network/Server"
 msgstr "Eliminar Xarxa/Servidor"
 
@@ -4129,7 +4140,7 @@ msgstr "Enviar adreça/interfície:"
 msgid "Send unknown commands as /RAW"
 msgstr "Enviar comandes desconegudes com a /RAW"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "Servidor"
 
@@ -4166,8 +4177,8 @@ msgstr "Notícies del servidor (+s)"
 msgid "Server replies"
 msgstr "Respostes del servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "Servidor:"
 
@@ -4280,7 +4291,7 @@ msgstr "Mostrar pings del servidor"
 msgid "Show the CTCP replies in the active window"
 msgstr "Mostrar respostes a CTCP a la finestra activa"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 msgid "Show this dialog at startup"
 msgstr "Mostrar aquest diàleg a l'inici"
 
@@ -4737,7 +4748,7 @@ msgstr "No ha estat possible escriure en l'arxiu d'àlies."
 msgid "Unknown protocol handler command:"
 msgstr "Comanda manipuladora de protocol desconegut:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr "Xarxa Desconeguda"
 
@@ -5124,7 +5135,7 @@ msgstr ""
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr "irc.desconegut.net"
 
@@ -5713,9 +5724,6 @@ msgstr "cada:"
 
 #~ msgid "&Fancy Theme"
 #~ msgstr "Tema &Capritxós"
-
-#~ msgid "&Filter:"
-#~ msgstr "&Filtre:"
 
 #~ msgid "&Find Next"
 #~ msgstr "Buscar Següent"

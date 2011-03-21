@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2011-03-18 19:46+0300\n"
 "Last-Translator: alexzulu <ua6hdw@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1186
 #, c-format
@@ -514,8 +514,8 @@ msgid ""
 "Invalid data type for parameter \"%1\": found empty string while a non empty "
 "one was expected"
 msgstr ""
-"Недопустимый тип данных для параметра \"%1\": найдена пустая строка "
-"где ожидается непустая"
+"Недопустимый тип данных для параметра \"%1\": найдена пустая строка где "
+"ожидается непустая"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:292
 msgid ""
@@ -1231,8 +1231,7 @@ msgstr "Заданное окно не имеет контейнеров с кн
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:437
 msgid "The system handler for the url failed to execute: system error is %1"
-msgstr ""
-"Системный обработчик для URL не удалось выполнить: системная ошибка %1"
+msgstr "Системный обработчик для URL не удалось выполнить: системная ошибка %1"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:153
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:204
@@ -1644,7 +1643,8 @@ msgstr "[KVS]%c Ошибка при компиляции: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ошибка при выполнении: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188
+#: src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Предупреждение: %Q"
 

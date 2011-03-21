@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2010-10-31 13:23+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -85,7 +85,7 @@ msgstr "&Appliquer"
 msgid "&Browse..."
 msgstr "&Parcourir..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 msgid "&Copy Server"
 msgstr "&Copier le serveur"
 
@@ -97,7 +97,7 @@ msgstr "&Nouveau"
 msgid "&New Proxy"
 msgstr "&Nouveau serveur proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 msgid "&New Server"
 msgstr "&Nouveau serveur"
 
@@ -108,7 +108,7 @@ msgstr "&Nouveau serveur"
 msgid "&OK"
 msgstr "&Valider"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "&Paste Server"
 msgstr "C&oller serveur"
 
@@ -159,7 +159,7 @@ msgstr ""
 "peuvent permettre d'obtenir des informations sur les clients ou négocier des "
 "transferts de fichiers.<br><br></p>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
@@ -254,7 +254,7 @@ msgstr ""
 "ajouter un salon, entrez son nom dans le champ ci-dessous et cliquez sur "
 "\"<b>Ajouter</b>\".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -341,7 +341,7 @@ msgstr ""
 "notificatrice dans le coin en bas à droite de votre bureau quand un message "
 "surligné est affiché et que KVIrc n'est pas la fenêtre active</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -375,6 +375,12 @@ msgid ""
 msgstr ""
 "<center>Si ce serveur requiert un mot de pass, entrez-le dans ce champ, "
 "sinon laissez ce dernier vide.</center>"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
 msgid ""
@@ -612,7 +618,7 @@ msgstr ""
 "serveur. Si vous utilisez \"Utiliser l'Encodage du Réseau\", l'encodage va "
 "être défini par celui du réseau dont le serveur dépend.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -971,7 +977,7 @@ msgstr ""
 "<center>Il s'agit de l'adresse fixe qui sera envoyée pour toute requête DCC "
 "si vous avez choisi l'option ci-dessus.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -1018,7 +1024,7 @@ msgstr ""
 "automatiquement recquise.<br>Une valeur raisonnable peut être de 102400 "
 "octets (100 K).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1774,7 +1780,7 @@ msgstr "Accepter les RESUME cassés (fichier.ext mIRC)"
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "Active Configuration"
 msgstr "Connexion active"
 
@@ -1819,7 +1825,7 @@ msgstr "Avancé"
 msgid "Advanced configuration"
 msgstr "Configuration avancée"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 msgid "Advanced..."
 msgstr "Avancé..."
 
@@ -2231,7 +2237,7 @@ msgstr "Titres MDI"
 msgid "Classic format"
 msgstr "Format classique"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 msgid "Clear List"
 msgstr "Effacer la liste"
 
@@ -2272,7 +2278,7 @@ msgstr "Configuration"
 msgid "Confirm quit with active connections"
 msgstr "Confirmer un quit avec connexions actives"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 msgid "Connect &Now"
 msgstr "Se &connecter"
 
@@ -2309,7 +2315,7 @@ msgstr "Contacts"
 msgid "Control char color"
 msgstr "Couleur du caractère Contrôle"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "Copy Server"
 msgstr "Copier serveur"
 
@@ -2405,7 +2411,7 @@ msgid "Delete Rule"
 msgstr "Effacer une règle"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "Description"
 
@@ -2695,6 +2701,11 @@ msgstr "Transfert de Fichier"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:97
 msgid "File pattern:"
+msgstr "Format du fichier :"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+#, fuzzy
+msgid "Filter:"
 msgstr "Format du fichier :"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
@@ -2995,8 +3006,8 @@ msgstr "Hauteur de l'image :"
 msgid "Image width:"
 msgstr "Largeur de l'image :"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 msgid "Import List"
 msgstr "Importer la liste"
 
@@ -3384,7 +3395,7 @@ msgstr "Réseau :"
 msgid "Network Properties"
 msgstr "Propriétés de réseau"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "Réseau :"
 
@@ -3392,9 +3403,9 @@ msgstr "Réseau :"
 msgid "New Media Type"
 msgstr "Nouveau type de média"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "Nouveau réseau"
 
@@ -3406,7 +3417,7 @@ msgstr "Nouveau proxy"
 msgid "New Query opened"
 msgstr "Privés nouvellement ouverts"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 msgid "New Server"
 msgstr "Nouveau serveur"
 
@@ -3476,7 +3487,7 @@ msgstr "Pseudo :"
 msgid "Nicknames"
 msgstr "Pseudos"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "Aucune selection"
 
@@ -3581,7 +3592,7 @@ msgstr "En cas de déconnexion imprevue"
 msgid "On Voice Request"
 msgstr "En cas de requête voice"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3589,7 +3600,7 @@ msgstr ""
 "Oups... un truc étrange vient de se produire :<br>Impossible de trouver un "
 "module capable d'importer des serveurs."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3682,7 +3693,7 @@ msgstr "Message de départ :"
 msgid "Password:"
 msgstr "Mot de passe :"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 msgid "Paste Server"
 msgstr "Coller serveur"
 
@@ -3938,7 +3949,7 @@ msgstr "Suppri&mer"
 msgid "Re&move Proxy"
 msgstr "Su&pprimer alias"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Re&move Server"
 msgstr "Suppri&mer serveur"
 
@@ -3990,11 +4001,11 @@ msgstr "Se rappeler des propriétés des fenêtres"
 msgid "Remote open command:"
 msgstr "Commande d'ouverture à distance :"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 msgid "Remove Network"
 msgstr "Supprimer réseau"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 msgid "Remove Network/Server"
 msgstr "Supprimer réseau/serveur"
 
@@ -4131,7 +4142,7 @@ msgstr "Envoyer l'adresse/interface :"
 msgid "Send unknown commands as /RAW"
 msgstr "Envoyer les commandes inconnues via /RAW"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "Serveur"
 
@@ -4166,8 +4177,8 @@ msgstr "Notices de serveur (+s)"
 msgid "Server replies"
 msgstr "Réponses du serveur"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "Serveur :"
 
@@ -4276,7 +4287,7 @@ msgstr "Montrer les pings du serveur"
 msgid "Show the CTCP replies in the active window"
 msgstr "Montrer les réponses aux CTCP dans la fenêtre active"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 msgid "Show this dialog at startup"
 msgstr "Montrer cette boîte de dialogue au démarrage"
 
@@ -4736,7 +4747,7 @@ msgstr "Impossible d'écrire les infos sur la langue dans"
 msgid "Unknown protocol handler command:"
 msgstr "Commande pour gérer les protocoles inconnus :"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr "RéseauInconnu"
 
@@ -5132,7 +5143,7 @@ msgstr "fr"
 msgid "file,audio,video,programs"
 msgstr "fichiers,audio,vidéo,programmes"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr "irc.inconnu.net"
 

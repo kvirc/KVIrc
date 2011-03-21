@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-14 00:46+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2011-03-06 19:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -82,7 +82,7 @@ msgstr "&Kabul Et"
 msgid "&Browse..."
 msgstr "&Göz At..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 msgid "&Copy Server"
 msgstr "Sunu&cu Kopyala"
 
@@ -94,7 +94,7 @@ msgstr "&Yeni"
 msgid "&New Proxy"
 msgstr "&Yeni Proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 msgid "&New Server"
 msgstr "Ye&ni Sunucu"
 
@@ -105,7 +105,7 @@ msgstr "Ye&ni Sunucu"
 msgid "&OK"
 msgstr "&Tamam"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "&Paste Server"
 msgstr "Sunucu Ya&pıştır"
 
@@ -151,7 +151,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -274,7 +274,7 @@ msgid ""
 "printed and KVIrc is not the active window</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -296,6 +296,12 @@ msgstr ""
 msgid ""
 "<center>If this server requires a password, put it in this field, otherwise "
 "leave it empty.</center>"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
@@ -459,7 +465,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -703,7 +709,7 @@ msgid ""
 "you enable the option above.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -736,7 +742,7 @@ msgid ""
 "</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1260,7 +1266,7 @@ msgstr ""
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "Active Configuration"
 msgstr "Aktif Yapılandırma"
 
@@ -1304,7 +1310,7 @@ msgstr "Gelişmiş"
 msgid "Advanced configuration"
 msgstr "Gelişmiş yapılandırma"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 msgid "Advanced..."
 msgstr "Gelişmiş..."
 
@@ -1710,7 +1716,7 @@ msgstr "Klasik Pencere Listesi"
 msgid "Classic format"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 msgid "Clear List"
 msgstr "Listeyi Temizle"
 
@@ -1751,7 +1757,7 @@ msgstr "Yapılandırma"
 msgid "Confirm quit with active connections"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 msgid "Connect &Now"
 msgstr ""
 
@@ -1788,7 +1794,7 @@ msgstr "Kişiler"
 msgid "Control char color"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "Copy Server"
 msgstr "Sunucu Kopyala"
 
@@ -1883,7 +1889,7 @@ msgid "Delete Rule"
 msgstr "Kural Sil"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "Açıklama"
 
@@ -2157,6 +2163,11 @@ msgstr "Dosya Transferi"
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:97
 msgid "File pattern:"
 msgstr ""
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+#, fuzzy
+msgid "Filter:"
+msgstr "Diğer:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
 msgid "Flash system taskbar on new dcc chat message"
@@ -2442,8 +2453,8 @@ msgstr "Resim yüksekliği:"
 msgid "Image width:"
 msgstr "Resim genişliği:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 msgid "Import List"
 msgstr "İçe Liste Aktar"
 
@@ -2814,7 +2825,7 @@ msgstr "Ağ Adı:"
 msgid "Network Properties"
 msgstr "Ağ Özellikleri"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "Ağ:"
 
@@ -2822,9 +2833,9 @@ msgstr "Ağ:"
 msgid "New Media Type"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "Yeni Ağ"
 
@@ -2836,7 +2847,7 @@ msgstr "Yeni Proxy"
 msgid "New Query opened"
 msgstr "Yeni Özel Açıldı"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 msgid "New Server"
 msgstr "Yeni Sunucu"
 
@@ -2905,7 +2916,7 @@ msgstr "Kullanıcı Adı:"
 msgid "Nicknames"
 msgstr "Kullanıcılar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "Seçim yok"
 
@@ -3009,13 +3020,13 @@ msgstr "Beklenmeyen Bağlantı Kopması Olduğunda"
 msgid "On Voice Request"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3105,7 +3116,7 @@ msgstr "Ayrılma mesajı:"
 msgid "Password:"
 msgstr "Şifre:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 msgid "Paste Server"
 msgstr "Sunucu Yapıştır"
 
@@ -3345,7 +3356,7 @@ msgstr "S&il"
 msgid "Re&move Proxy"
 msgstr "Proxy &Sil"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Re&move Server"
 msgstr "Sun&ucu Sil"
 
@@ -3395,11 +3406,11 @@ msgstr ""
 msgid "Remote open command:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 msgid "Remove Network"
 msgstr "Ağı sil"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 msgid "Remove Network/Server"
 msgstr "Ağ/Sunucu Sil"
 
@@ -3530,7 +3541,7 @@ msgstr ""
 msgid "Send unknown commands as /RAW"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "Sunucu"
 
@@ -3564,8 +3575,8 @@ msgstr ""
 msgid "Server replies"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "Sunucu:"
 
@@ -3670,7 +3681,7 @@ msgstr ""
 msgid "Show the CTCP replies in the active window"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 msgid "Show this dialog at startup"
 msgstr ""
 
@@ -4077,7 +4088,7 @@ msgstr ""
 msgid "Unknown protocol handler command:"
 msgstr "Bilinmeyen protokol işleyici komutu:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr "Bilinmeyen Ağ"
 
@@ -4443,7 +4454,7 @@ msgstr "en"
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr "irc.unknown.net"
 

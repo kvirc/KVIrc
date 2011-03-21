@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2010-07-28 10:37+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr "適用(&A)"
 msgid "&Browse..."
 msgstr "参照(&B)..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 msgid "&Copy Server"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr "新規(&N)"
 msgid "&New Proxy"
 msgstr "新規プロキシー(&N)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 msgid "&New Server"
 msgstr "新しいサーバー情報(&N)"
 
@@ -101,7 +101,7 @@ msgstr "新しいサーバー情報(&N)"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "&Paste Server"
 msgstr "サーバー情報の貼り付け(&P)"
 
@@ -146,7 +146,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 
@@ -210,7 +210,7 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -269,7 +269,7 @@ msgid ""
 "printed and KVIrc is not the active window</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -291,6 +291,12 @@ msgstr ""
 msgid ""
 "<center>If this server requires a password, put it in this field, otherwise "
 "leave it empty.</center>"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
@@ -454,7 +460,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -696,7 +702,7 @@ msgid ""
 "you enable the option above.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -729,7 +735,7 @@ msgid ""
 "</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1253,7 +1259,7 @@ msgstr ""
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "Active Configuration"
 msgstr "選択中の設定"
 
@@ -1297,7 +1303,7 @@ msgstr "高度な設定"
 msgid "Advanced configuration"
 msgstr "高度な設定"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 msgid "Advanced..."
 msgstr "高度な設定..."
 
@@ -1706,7 +1712,7 @@ msgstr "クラッシックなウィンドウ リスト"
 msgid "Classic format"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 msgid "Clear List"
 msgstr ""
 
@@ -1747,7 +1753,7 @@ msgstr "構成"
 msgid "Confirm quit with active connections"
 msgstr "終了時に有効な接続を確認する"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 msgid "Connect &Now"
 msgstr "今すぐ接続する(&N)"
 
@@ -1784,7 +1790,7 @@ msgstr "連絡"
 msgid "Control char color"
 msgstr "制御文字の色"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "Copy Server"
 msgstr "サーバー情報のコピー"
 
@@ -1879,7 +1885,7 @@ msgid "Delete Rule"
 msgstr "ルールの削除"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "説明"
 
@@ -2155,6 +2161,11 @@ msgstr "ファイル転送"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:97
 msgid "File pattern:"
+msgstr "ファイル名のパターン"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+#, fuzzy
+msgid "Filter:"
 msgstr "ファイル名のパターン"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
@@ -2445,8 +2456,8 @@ msgstr "画像の高さ:"
 msgid "Image width:"
 msgstr "画像の幅:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 msgid "Import List"
 msgstr ""
 
@@ -2819,7 +2830,7 @@ msgstr "ネットワークの名前:"
 msgid "Network Properties"
 msgstr "ネットワークのプロパティ"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "ネットワーク:"
 
@@ -2827,9 +2838,9 @@ msgstr "ネットワーク:"
 msgid "New Media Type"
 msgstr "新しいメディアの種類"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "新しいネットワーク情報"
 
@@ -2841,7 +2852,7 @@ msgstr "新しいプロキシー"
 msgid "New Query opened"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 msgid "New Server"
 msgstr "新しいサーバー情報"
 
@@ -2911,7 +2922,7 @@ msgstr "ニックネーム:"
 msgid "Nicknames"
 msgstr "ニックネーム"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "選択なし"
 
@@ -3015,13 +3026,13 @@ msgstr "期待しない切断時"
 msgid "On Voice Request"
 msgstr "ボイスの要求時"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3112,7 +3123,7 @@ msgstr "退室時のメッセージ"
 msgid "Password:"
 msgstr "パスワード:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 msgid "Paste Server"
 msgstr "サーバー情報の貼り付け"
 
@@ -3352,7 +3363,7 @@ msgstr "削除(&M)"
 msgid "Re&move Proxy"
 msgstr "プロキシーの削除(&M)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Re&move Server"
 msgstr "サーバー情報の削除(&M)"
 
@@ -3402,11 +3413,11 @@ msgstr "ウィンドウのプロパティを覚える"
 msgid "Remote open command:"
 msgstr "リモートを開くコマンド:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 msgid "Remove Network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 msgid "Remove Network/Server"
 msgstr "ネットワーク/サーバー情報の削除"
 
@@ -3537,7 +3548,7 @@ msgstr ""
 msgid "Send unknown commands as /RAW"
 msgstr "/RAW として不明なコマンドを送信する"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "サーバー"
 
@@ -3572,8 +3583,8 @@ msgstr "サーバーの通知 (+s)"
 msgid "Server replies"
 msgstr "サーバーの応答"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "サーバー:"
 
@@ -3678,7 +3689,7 @@ msgstr ""
 msgid "Show the CTCP replies in the active window"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 msgid "Show this dialog at startup"
 msgstr "起動時にこのダイアログを表示する"
 
@@ -4083,7 +4094,7 @@ msgstr ""
 msgid "Unknown protocol handler command:"
 msgstr "不明なプロトコルのハンドラー コマンド"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr ""
 
@@ -4451,7 +4462,7 @@ msgstr "英語"
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr ""
 

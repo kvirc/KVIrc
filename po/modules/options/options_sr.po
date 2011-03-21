@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -86,7 +86,7 @@ msgstr "Primeni"
 msgid "&Browse..."
 msgstr "Pregledaj..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 #, fuzzy
 msgid "&Copy Server"
 msgstr "Kopiraj server"
@@ -100,7 +100,7 @@ msgstr "&Novi"
 msgid "&New Proxy"
 msgstr "Iskačući meni"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 #, fuzzy
 msgid "&New Server"
 msgstr "Mreža/Server"
@@ -113,7 +113,7 @@ msgstr "Mreža/Server"
 msgid "&OK"
 msgstr "OK"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 #, fuzzy
 msgid "&Paste Server"
 msgstr "Prenesi server"
@@ -164,7 +164,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 #, fuzzy
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
@@ -247,7 +247,7 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 #, fuzzy
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
@@ -327,7 +327,7 @@ msgstr ""
 "<center>Ako označite ovu opciju , videćete ovaj dijalog svaki put kad "
 "pokrenete KVIrc</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 #, fuzzy
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
@@ -362,6 +362,12 @@ msgid ""
 msgstr ""
 "<center>Ako server zahteva lozinku, stavite je u ovo polje, u protivnom nek "
 "ostane prazno.</center>"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
 msgid ""
@@ -546,7 +552,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 #, fuzzy
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
@@ -864,7 +870,7 @@ msgstr ""
 "Ovo je lažna adresa koja će biti poslata sa svim DCC zahtevima ako uključite "
 "gornju opciju"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 #, fuzzy
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
@@ -907,7 +913,7 @@ msgstr ""
 "automatski zahtevani.(Pogledajte opciju ispod)<br>Rezonska vrednost može "
 "biti 1024000 Bajtova=100 KB</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 #, fuzzy
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
@@ -1592,7 +1598,7 @@ msgstr ""
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 #, fuzzy
 msgid "Active Configuration"
 msgstr "&Sačuvaj podešavanja"
@@ -1642,7 +1648,7 @@ msgstr "Napredno ..."
 msgid "Advanced configuration"
 msgstr "&Sačuvaj podešavanja"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 #, fuzzy
 msgid "Advanced..."
 msgstr "Napredno ..."
@@ -2116,7 +2122,7 @@ msgstr "Lista prozora"
 msgid "Classic format"
 msgstr "Taskbar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 #, fuzzy
 msgid "Clear List"
 msgstr "Isprazni listu"
@@ -2163,7 +2169,7 @@ msgstr "&Sačuvaj podešavanja"
 msgid "Confirm quit with active connections"
 msgstr "Ne mogu da zahtevam listu: nema aktivne konekcije"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 #, fuzzy
 msgid "Connect &Now"
 msgstr "Poveži se"
@@ -2207,7 +2213,7 @@ msgstr "Poveži se"
 msgid "Control char color"
 msgstr "Boja kontrolnog znaka"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 #, fuzzy
 msgid "Copy Server"
 msgstr "Kopiraj server"
@@ -2316,7 +2322,7 @@ msgid "Delete Rule"
 msgstr "Obriši ovo pravilo"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "Opis"
 
@@ -2628,6 +2634,11 @@ msgstr "Obriši mrtve prenose"
 #, fuzzy
 msgid "File pattern:"
 msgstr "Naziv fajla"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+#, fuzzy
+msgid "Filter:"
+msgstr "Filter"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
 msgid "Flash system taskbar on new dcc chat message"
@@ -2945,8 +2956,8 @@ msgstr ""
 msgid "Image width:"
 msgstr "Minimalna širina"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 #, fuzzy
 msgid "Import List"
 msgstr "Uvezi"
@@ -3377,7 +3388,7 @@ msgstr "Mreža"
 msgid "Network Properties"
 msgstr "Podešavanja"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "Mreža"
 
@@ -3386,9 +3397,9 @@ msgstr "Mreža"
 msgid "New Media Type"
 msgstr "Nov tip medija"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "Nova Mreža"
 
@@ -3401,7 +3412,7 @@ msgstr "Proxy"
 msgid "New Query opened"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 #, fuzzy
 msgid "New Server"
 msgstr "Mreža/Server"
@@ -3481,7 +3492,7 @@ msgstr "Nickname (nadimak):"
 msgid "Nicknames"
 msgstr "Nadimak"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "Bez izbora"
 
@@ -3600,13 +3611,13 @@ msgstr "Automatski zakači na neočekivano odkačinjanje"
 msgid "On Voice Request"
 msgstr "voiced korisnici"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3710,7 +3721,7 @@ msgstr "poruka izlaska"
 msgid "Password:"
 msgstr "Lozinka:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 #, fuzzy
 msgid "Paste Server"
 msgstr "Prenesi server"
@@ -3988,7 +3999,7 @@ msgstr "Ukloni"
 msgid "Re&move Proxy"
 msgstr "Ukloni proksi"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 #, fuzzy
 msgid "Re&move Server"
 msgstr "Ukloni server"
@@ -4048,12 +4059,12 @@ msgstr "Prozor nije pronađen"
 msgid "Remote open command:"
 msgstr "Daljinska izvršna komanda"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 #, fuzzy
 msgid "Remove Network"
 msgstr "Ukloni mrežu"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 #, fuzzy
 msgid "Remove Network/Server"
 msgstr "Ukloni mrežu"
@@ -4202,7 +4213,7 @@ msgstr ""
 msgid "Send unknown commands as /RAW"
 msgstr "Posalji nepoznatu komandu kao /RAW"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "Server"
 
@@ -4243,8 +4254,8 @@ msgstr "s (Obaveštenja servera)"
 msgid "Server replies"
 msgstr "serverov ping"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "Server:"
 
@@ -4365,7 +4376,7 @@ msgstr "Prikazi pingove servera"
 msgid "Show the CTCP replies in the active window"
 msgstr "nema spoljnih poruka"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 #, fuzzy
 msgid "Show this dialog at startup"
 msgstr "Pokaži ovaj dijalog za servere uvek kada se pokrene KVIrc"
@@ -4815,7 +4826,7 @@ msgstr ""
 msgid "Unknown protocol handler command:"
 msgstr "Nepoznata komanda"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr "NepoznataMreža"
 
@@ -5228,7 +5239,7 @@ msgstr ""
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr "irc.nepoznat.net"
 
@@ -6053,10 +6064,6 @@ msgstr ""
 
 #~ msgid "&File"
 #~ msgstr "&Fajl"
-
-#, fuzzy
-#~ msgid "&Filter:"
-#~ msgstr "Filter"
 
 #, fuzzy
 #~ msgid "&Find Next"

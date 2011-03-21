@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
@@ -17,21 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:304
+#: src/modules/theme/ThemeManagementDialog.cpp:329
 msgid "&Apply Theme"
 msgstr "&Ota teema käyttöön"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:303
+#: src/modules/theme/ThemeManagementDialog.cpp:328
 msgid "&Remove Theme"
 msgstr "&Poista teema"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:212
+#: src/modules/theme/ThemeManagementDialog.cpp:361
+msgid "<b><u>Current Installed Theme:</u> "
+msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:224
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ota kuvakaappaus - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:320
-#: src/modules/theme/ThemeManagementDialog.cpp:332
-#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:121
+#: src/modules/theme/ThemeManagementDialog.cpp:345
+#: src/modules/theme/ThemeManagementDialog.cpp:357
+#: src/modules/theme/libkvitheme.cpp:107
+#: src/modules/theme/libkvitheme.cpp:121
 msgid "Apply theme - KVIrc"
 msgstr "Ota teema käyttöön - KVIrc"
 
@@ -54,11 +60,11 @@ msgstr "Luotu"
 msgid "Created with"
 msgstr "Luotu käyttäen ohjelmaa"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:161
+#: src/modules/theme/ThemeManagementDialog.cpp:162
 msgid "Delete Selected Themes"
 msgstr "Poista valitut teemat"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:345
+#: src/modules/theme/ThemeManagementDialog.cpp:371
 msgid "Delete Theme - KVIrc"
 msgstr "Poista teema - KVIrc"
 
@@ -71,7 +77,7 @@ msgstr "Kuvaus:"
 msgid "Do Not Install"
 msgstr "Älä asenna"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:346
+#: src/modules/theme/ThemeManagementDialog.cpp:372
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Halutako varmasti poistaa teeman \"%Q\"n (versio %Q)?"
 
@@ -79,14 +85,10 @@ msgstr "Halutako varmasti poistaa teeman \"%Q\"n (versio %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Haluatko jatkaa asennusta ?"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:321
+#: src/modules/theme/ThemeManagementDialog.cpp:346
 #: src/modules/theme/libkvitheme.cpp:108
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Haluatko ottaa teeman \"%Q\"n (versio %Q) käyttöön?"
-
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:204
-msgid "Downloading "
-msgstr ""
 
 #: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
@@ -96,7 +98,7 @@ msgstr "Virhe asentaessa teemapakettia: %Q"
 msgid "Error making screenshot"
 msgstr "Virhe kuvakaappausta tehdessä"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:155
+#: src/modules/theme/ThemeManagementDialog.cpp:156
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Vie valitut teemat jaettavaan pakettiin"
 
@@ -109,7 +111,7 @@ msgstr "Vie valitut teemat jaettavaan pakettiin"
 msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:331
+#: src/modules/theme/ThemeManagementDialog.cpp:356
 #: src/modules/theme/libkvitheme.cpp:120
 #, fuzzy
 msgid "Failed to apply the specified theme: %1"
@@ -141,7 +143,7 @@ msgstr "Ei voitu purkaa valittua tiedostoa: %1"
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Lopulta, paina \"Valmis\" -nappia saadaksesi paketoinnin tehdyksi."
 
-#: src/modules/theme/ThemeManagementDialog.cpp:177
+#: src/modules/theme/ThemeManagementDialog.cpp:178
 msgid "Get More Themes..."
 msgstr "Hae lisää teemoja..."
 
@@ -210,27 +212,23 @@ msgstr "Kuvake/Kuvakaappaus"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Asenna teemapaketti - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:171
+#: src/modules/theme/ThemeManagementDialog.cpp:172
 msgid "Install Theme Package From Disk"
 msgstr "Asenna teemapaketti levyltä"
 
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:51
-msgid "KVIrc Web Theme Interface"
-msgstr ""
-
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:211
-msgid "Loading "
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
+msgid "KVIrc : Download Themes"
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:173
 msgid "Make Screenshot Now"
 msgstr "Tee kuvakaappaus nyt"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:126
+#: src/modules/theme/ThemeManagementDialog.cpp:127
 msgid "Manage Themes - KVIrc"
 msgstr "Järjestä teemat - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:361
+#: src/modules/theme/ThemeManagementDialog.cpp:387
 msgid "Open Theme - KVIrc"
 msgstr "Avaa teema - KVIrc"
 
@@ -268,7 +266,7 @@ msgstr "Laita tähän kuvaus..."
 msgid "Save Current Theme - KVIrc"
 msgstr "Tallenna nykyinen teema - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:144
+#: src/modules/theme/ThemeManagementDialog.cpp:145
 msgid "Save Current Theme..."
 msgstr "Tallenna nykyinen teema..."
 
@@ -297,7 +295,8 @@ msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti: %1"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti"
 
-#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:126
+#: src/modules/theme/libkvitheme.cpp:169
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 
@@ -420,7 +419,7 @@ msgstr "Aiot asentaa seuraavan teemapaketin"
 msgid "Your name here"
 msgstr "Sinun nimi tähän"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:96
+#: src/modules/theme/ThemeManagementDialog.cpp:97
 msgid "by"
 msgstr "tekijänä"
 

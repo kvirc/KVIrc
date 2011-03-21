@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 04:27+0000\n"
-"PO-Revision-Date: 2011-03-19 03:42+0000\n"
+"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"PO-Revision-Date: 2011-03-21 00:51+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr " useg"
 
 #: src/modules/options/OptionsWidget_message.cpp:78
 msgid "\"Smart\" nickname colors"
-msgstr "Cores das alcunhas \"Inteligentes\""
+msgstr "Cores de alcunhas \"Inteligentes\""
 
 #: src/modules/options/OptionsDialog.cpp:238
 msgid "&Apply"
@@ -81,7 +81,7 @@ msgstr "&Aplicar"
 msgid "&Browse..."
 msgstr "&Procurar..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1754
+#: src/modules/options/OptionsWidget_servers.cpp:1805
 msgid "&Copy Server"
 msgstr "&Copiar Servidor"
 
@@ -93,7 +93,7 @@ msgstr "&Novo"
 msgid "&New Proxy"
 msgstr "&Novo 'Proxy'"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1751
+#: src/modules/options/OptionsWidget_servers.cpp:1802
 msgid "&New Server"
 msgstr "&Novo Servidor"
 
@@ -104,7 +104,7 @@ msgstr "&Novo Servidor"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1756
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "&Paste Server"
 msgstr "&Colar Servidor"
 
@@ -123,23 +123,23 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:80
 msgid "<b>file://</b> handler command:"
-msgstr "<b>file://</b> comando:"
+msgstr "<b>file://</b> comando manipulador:"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:76
 msgid "<b>ftp://</b> handler command:"
-msgstr "<b>ftp://</b> comando:"
+msgstr "<b>ftp://</b> comando manipulador:"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:72
 msgid "<b>http://</b> handler command:"
-msgstr "<b>http://</b> comando:"
+msgstr "<b>http://</b> comando manipulador:"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:74
 msgid "<b>https://</b> handler command:"
-msgstr "<b>https://</b> comando:"
+msgstr "<b>https://</b> comando manipulador:"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:78
 msgid "<b>mailto:</b> handler command:"
-msgstr "<b>mailto:</b> comando:"
+msgstr "<b>mailto:</b> comando manipulador:"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:39
 msgid ""
@@ -150,10 +150,10 @@ msgid ""
 msgstr ""
 "<center><b>Configurações CTCP</b></center><p>O <b>Protocolo Cliente-A-"
 "Cliente</b> (CTCP) é usado para transmitir mensagens de controlo especiais "
-"numa conexão IRC. Estas mensagens podem pedir informações  dos clientes ou "
-"negociar transferências de ficheiros.<br><br></p>"
+"através de uma conexão IRC. Estas mensagens podem pedir informações  dos "
+"clientes ou negociar transferências de ficheiros.<br><br></p>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr "<center>Clique aqui para editar as opções avançadas</center>"
 
@@ -176,17 +176,17 @@ msgid ""
 "<br>Please note that these methods may NOT work when communicating with a "
 "non-KVIrc client.</center>"
 msgstr ""
-"<center>Active esta opção se não consegue aceitar conexões enviadas.<br>O "
-"KVIrc irá tentar usar métodos diferentes para enviar e receber ficheiros."
+"<center>Active esta opção se não consegue aceitar conexões recebidas.<br>O "
+"KVIrc irá tentar usar diferentes métodos para enviar e receber ficheiros."
 "<br>Note que estes métodos podem NÃO funcionar quando estiver a comunicar "
-"com utilizadores que usam outros clientes diferentes do KVIrc.</center>"
+"com um cliente não-KVIrc.</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:91
 msgid ""
 "<center>Enable this option if you want specify a local port range for DCC.</"
 "center>"
 msgstr ""
-"<center>Active esta opção se quiser especificar um intervalo de porta local "
+"<center>Active esta opção se deseja especificar um intervalo de porta local "
 "para DCC.</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:103
@@ -196,8 +196,8 @@ msgid ""
 "static address that does network address translation (NAT) and forwards all "
 "or a range of ports.</center>"
 msgstr ""
-"<center>Active esta opção se quiser enviar sempre um endereço IP falso nos "
-"seus pedidos DCC. <br>Isto pode ser útil se estiver atrás de um router com "
+"<center>Active esta opção se deseja enviar sempre um endereço IP falso nos "
+"seus pedidos DCC. <br>Isto pode ser útil se estiver atrás de um roteador com "
 "um endereço estático que faz traduções de endereços de rede (NAT) e adianta "
 "todos ou um intervalo de portas.</center>"
 
@@ -208,9 +208,9 @@ msgid ""
 "idle interval below will be forcibly inserted between each sent/received "
 "data packet.</center>"
 msgstr ""
-"<center>Active esta opção quando a transferência de ficheiros por DCC tende "
-"a bloquear o seu computador ao consumir demasiado tempo de CPU. Quando esta "
-"opção está activada o intervalo de inactividade em baixo será forçosamente "
+"<center>Active esta opção quando a transferência de ficheiros DCC tende "
+"a bloquear o seu computador ao consumir demasiado tempo de CPU. Quando "
+"esta opção está activa o intervalo de inactividade abaixo será forçosamente "
 "inserido entre cada pacote de dados enviado/recebido.</center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:64
@@ -221,7 +221,7 @@ msgid ""
 msgstr ""
 "<center>Aqui pode escolher até três alcunhas alternativas em relação à "
 "principal. O KVIrc usará as alcunhas alternativas se a primeira já estiver a "
-"ser usada por alguém numa rede do IRC.</center>"
+"ser usada por alguém numa determinada rede do IRC.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:269
 msgid ""
@@ -231,8 +231,8 @@ msgid ""
 "center>"
 msgstr ""
 "<center>Aqui pode definir a lista de canais para entrar automaticamente após "
-"a conexão estar estabelecida num servidor da rede. Para adicionar um canal, "
-"indique o seu nome na entrada de texto em baixo e clique em \"<b>Adicionar</"
+"ter estabelecido uma conexão num servidor da rede. Para adicionar um canal, "
+"indique o seu nome na entrada de texto abaixo e clique em \"<b>Adicionar</"
 "b>\".</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:839
@@ -242,11 +242,11 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 "<center>Aqui pode definir a lista de canais para entrar automaticamente após "
-"a conexão estar estabelecida para este servidor. Para adicionar um canal, "
-"indique o seu nome na entrada de texto em baixo e clique em \"<b>Adicionar</"
+"ter estabelecido uma conexão neste servidor. Para adicionar um canal, "
+"indique o seu nome na entrada de texto abaixo e clique em \"<b>Adicionar</"
 "b>\".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1410
+#: src/modules/options/OptionsWidget_servers.cpp:1418
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -258,9 +258,9 @@ msgid ""
 "from the identity dialog) will be used. If disabled, you can configure an "
 "initial user mode for this server"
 msgstr ""
-"<center>Se isto estiver activado, será usado o <b>modo de utilizador</b> "
-"global inicial (configurado no diálogo Identidade). Se desactivado, pode "
-"configurar um modo de utilizador inicial para este servidor.</center>"
+"<center>Se estiver activada, será usado o <b>modo de utilizador</b> "
+"global inicial (configurado no diálogo Identidade). Se estiver desactivada, "
+"pode configurar um modo de utilizador inicial para este servidor.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:159
 msgid ""
@@ -277,8 +277,8 @@ msgid ""
 "active window</center>"
 msgstr ""
 "<center>Se esta opção estiver activada, o KVIrc irá (tentar) piscar na barra "
-"de tarefas do sistema quando uma mensagem destacada é mostrada e o KVIrc não "
-"é a janela activa.</center>"
+"de tarefas do sistema quando uma mensagem destacada é mostrada e o "
+"KVIrc não for a janela activa.</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:124
 msgid ""
@@ -329,7 +329,7 @@ msgstr ""
 "janela de notificação no canto inferior direito do seu ecrã quando uma "
 "mensagem destacada aparecer e o KVIrc não for a janela activa</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1421
+#: src/modules/options/OptionsWidget_servers.cpp:1429
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -361,6 +361,14 @@ msgid ""
 msgstr ""
 "<center>Se este servidor requer uma senha, indique-a neste campo, caso "
 "contrário deixe em branco.</center>"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1271
+msgid ""
+"<center>If you are searching for a specific server or network, you can "
+"insert its name to filter the servers in the list</center>"
+msgstr ""
+"<center>Se está a procura de um servidor ou rede específica, pode "
+"indicar o seu nome para filtrar os servidores na lista</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:128
 msgid ""
@@ -593,7 +601,7 @@ msgstr ""
 "Codificação da Rede\" então a codificação será herdada da rede onde este "
 "servidor pertence.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1371
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -956,7 +964,7 @@ msgstr ""
 "<center>Este é o endereço fixo que será enviado a todos os pedidos DCC se "
 "activar esta opção.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1290
+#: src/modules/options/OptionsWidget_servers.cpp:1298
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -1002,7 +1010,7 @@ msgstr ""
 "automaticamente pedidas.<br>Um valor razoável pode ser de 102400 bytes (100 "
 "K).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1355
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1023,8 +1031,8 @@ msgid ""
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
 "<center>Tentará usar-se esta alcunha se a primeira para esta rede já estiver "
-"a ser usada.<br>Se deixar o campo em branco, então tentará usar as "
-"alcunhas especificadas nas opções de identidade.</center>"
+"a ser usada.<br>Se deixar o campo em branco, então tentará usar as alcunhas "
+"especificadas nas opções de identidade.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:600
 msgid ""
@@ -1141,8 +1149,8 @@ msgid ""
 "typing something in a channel. :D</center>"
 msgstr ""
 "<center>Esta opção faz com que as novas janelas de consulta criadas sejam "
-"imediatamente minimizadas.<br>Active esta opção se não quiser quiser que "
-"as janelas de consulta apareçam enquanto escreve algo num canal. :D</center>"
+"imediatamente minimizadas.<br>Active esta opção se não quiser quiser que as "
+"janelas de consulta apareçam enquanto escreve algo num canal. :D</center>"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:325
 msgid ""
@@ -1161,9 +1169,8 @@ msgid ""
 "center>"
 msgstr ""
 "<center>Esta opção faz com que o sistema da barra de tarefas KVIrc pisque "
-"quando "
-"chega uma nova mensagem de consulta e a janela do KVIrc não está activa.<"
-"/center>"
+"quando chega uma nova mensagem de consulta e a janela do KVIrc não está "
+"activa.</center>"
 
 #: src/modules/options/OptionsWidget_lag.cpp:57
 msgid ""
@@ -1185,10 +1192,8 @@ msgid ""
 "shown in the active window or a common channel.</center>"
 msgstr ""
 "<center>Esta opção activa a criação de uma janela de consulta quando recebe "
-"uma "
-"mensagem privada (PRIVMSG)..<br>Se desactivar esta opção, as mensagens "
-"privadas "
-"serão mostradas na janela activa ou numa janela comum.</center>"
+"uma mensagem privada (PRIVMSG)..<br>Se desactivar esta opção, as mensagens "
+"privadas serão mostradas na janela activa ou numa janela comum.</center>"
 
 #: src/modules/options/OptionsWidget_query.cpp:52
 msgid ""
@@ -1197,10 +1202,8 @@ msgid ""
 "in the active window or a common channel.</center>"
 msgstr ""
 "<center>Esta opção activa a criação de uma janela de consulta quando recebe "
-"uma "
-"noticia privada (NOTICE)..<br>Se desactivar esta opção, as noticias privadas "
-"serão "
-"mostradas na janela activa ou numa janela comum.</center>"
+"uma noticia privada (NOTICE)..<br>Se desactivar esta opção, as noticias "
+"privadas serão mostradas na janela activa ou numa janela comum.</center>"
 
 #: src/modules/options/OptionsWidget_query.cpp:87
 msgid ""
@@ -1401,8 +1404,7 @@ msgid ""
 "successful reconnect attempt.</center>"
 msgstr ""
 "<center>Esta opção irá fazer com que o KVIrc reabra as janelas de consulta "
-"após "
-"uma tentativa de nova conexão bem sucedida.</center>"
+"após uma tentativa de nova conexão bem sucedida.</center>"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:70
 msgid ""
@@ -1725,10 +1727,10 @@ msgid ""
 "that implements only a limited subset of the Identification Protocol "
 "specifications. If it is possible, install a real ident daemon.</p>"
 msgstr ""
-"<p><b>Aviso:</b><br>Isto é um serviço ident <b>não compatível "
-"com RFC 1413</b> que implementa apenas um subconjunto limitado "
-"de especificações do Protocolo de Identificação. Se possível, instale "
-"um serviço de identificação real.</p>"
+"<p><b>Aviso:</b><br>Isto é um serviço ident <b>não compatível com RFC 1413</"
+"b> que implementa apenas um subconjunto limitado de especificações do "
+"Protocolo de Identificação. Se possível, instale um serviço de identificação "
+"real.</p>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:257
 msgid ""
@@ -1739,13 +1741,12 @@ msgid ""
 "system-wide ident daemon be used instead, or none at all if ident is not "
 "required.</p>"
 msgstr ""
-"<p><b>Aviso:</b><br>Isto é um serviço ident <b>não compatível com "
-"RFC 1413</b> que implementa apenas um subconjunto limitado de "
-"especificações do Protocolo de Identificação.<br>Em UNIX, pode também "
-"precisar de privilégios de admin para ligar à porta de autenticação (113)."
-"<br>É <b>altamente recomendado</b> que em substituição use no sistema "
-"um serviço ident <b>real</b>, ou não use nenhum se o identificador não for "
-"pedido.</p>"
+"<p><b>Aviso:</b><br>Isto é um serviço ident <b>não compatível com RFC 1413</"
+"b> que implementa apenas um subconjunto limitado de especificações do "
+"Protocolo de Identificação.<br>Em UNIX, pode também precisar de privilégios "
+"de admin para ligar à porta de autenticação (113).<br>É <b>altamente "
+"recomendado</b> que em substituição use no sistema um serviço ident <b>real</"
+"b>, ou não use nenhum se o identificador não for pedido.</p>"
 
 #: src/modules/options/OptionsDialog.cpp:199
 msgid ""
@@ -1758,8 +1759,8 @@ msgstr ""
 "<p>Esta é a ferramenta de procura para este diálogo de opções.</p><p>Pode "
 "indicar um termo de pesquisa na sua língua nativa ou em inglês e premir o "
 "botão à direita. As páginas que contêm algumas opções relacionadas com os "
-"termos de pesquisa serão destacadas e poderá encontrá-las facilmente.</p>"
-"<p>Por exemplo tente \"alcunha\".</p>"
+"termos de pesquisa serão destacadas e poderá encontrá-las facilmente.</"
+"p><p>Por exemplo tente \"alcunha\".</p>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:105
 msgid "AVATAR"
@@ -1779,7 +1780,7 @@ msgstr ""
 msgid "Accept RESUME requests with mismatched ports"
 msgstr "Aceitar pedidos de RESUMO com portas diferentes"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1350
+#: src/modules/options/OptionsWidget_servers.cpp:1358
 msgid "Active Configuration"
 msgstr "Configuração Activa"
 
@@ -1823,7 +1824,7 @@ msgstr "Avançado"
 msgid "Advanced configuration"
 msgstr "Configuração avançada"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1365
 msgid "Advanced..."
 msgstr "Avançado..."
 
@@ -2229,7 +2230,7 @@ msgstr "Lista Clássica da Janela"
 msgid "Classic format"
 msgstr "Formato clássico"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1761
+#: src/modules/options/OptionsWidget_servers.cpp:1812
 msgid "Clear List"
 msgstr "Limpar Lista"
 
@@ -2270,7 +2271,7 @@ msgstr "Configuração"
 msgid "Confirm quit with active connections"
 msgstr "Confirmar saída com conexões activas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1378
+#: src/modules/options/OptionsWidget_servers.cpp:1386
 msgid "Connect &Now"
 msgstr "Conectar &Agora"
 
@@ -2307,7 +2308,7 @@ msgstr "Contactos"
 msgid "Control char color"
 msgstr "Controlar cor dos caracteres"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1327
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "Copy Server"
 msgstr "Copiar Servidor"
 
@@ -2403,7 +2404,7 @@ msgid "Delete Rule"
 msgstr "Apagar Regra"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1279
 msgid "Description"
 msgstr "Descrição"
 
@@ -2681,6 +2682,10 @@ msgstr "Transferência de Ficheiros"
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:97
 msgid "File pattern:"
 msgstr "Padrão do ficheiro:"
+
+#: src/modules/options/OptionsWidget_servers.cpp:1266
+msgid "Filter:"
+msgstr "Filtro:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
 msgid "Flash system taskbar on new dcc chat message"
@@ -2973,8 +2978,8 @@ msgstr "Altura da imagem:"
 msgid "Image width:"
 msgstr "Largura da imagem:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1345
-#: src/modules/options/OptionsWidget_servers.cpp:1763
+#: src/modules/options/OptionsWidget_servers.cpp:1353
+#: src/modules/options/OptionsWidget_servers.cpp:1814
 msgid "Import List"
 msgstr "Importar Lista"
 
@@ -3347,7 +3352,7 @@ msgstr "Nome da Rede:"
 msgid "Network Properties"
 msgstr "Propriedades da Rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1636
+#: src/modules/options/OptionsWidget_servers.cpp:1644
 msgid "Network:"
 msgstr "Rede:"
 
@@ -3355,9 +3360,9 @@ msgstr "Rede:"
 msgid "New Media Type"
 msgstr "Novo Tipo de Média"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
-#: src/modules/options/OptionsWidget_servers.cpp:1747
-#: src/modules/options/OptionsWidget_servers.cpp:1873
+#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1924
 msgid "New Network"
 msgstr "Nova Rede"
 
@@ -3369,7 +3374,7 @@ msgstr "Novo 'Proxy'"
 msgid "New Query opened"
 msgstr "Nova Consulta aberto"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1310
+#: src/modules/options/OptionsWidget_servers.cpp:1318
 msgid "New Server"
 msgstr "Novo Servidor"
 
@@ -3438,7 +3443,7 @@ msgstr "Alcunha:"
 msgid "Nicknames"
 msgstr "Alcunhas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1647
+#: src/modules/options/OptionsWidget_servers.cpp:1655
 msgid "No selection"
 msgstr "Sem Seleção"
 
@@ -3542,7 +3547,7 @@ msgstr "Ao Desconectar Inesperadamente"
 msgid "On Voice Request"
 msgstr "Ao Pedir Voz"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1800
+#: src/modules/options/OptionsWidget_servers.cpp:1851
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3550,7 +3555,7 @@ msgstr ""
 "Ups... aconteceu algo esquisito:<br>Não consigo encontrar qualquer módulo "
 "capaz de importar servidores."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1817
+#: src/modules/options/OptionsWidget_servers.cpp:1868
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3642,7 +3647,7 @@ msgstr "Mensagem de partida (part):"
 msgid "Password:"
 msgstr "Senha:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1334
+#: src/modules/options/OptionsWidget_servers.cpp:1342
 msgid "Paste Server"
 msgstr "Colar Servidor"
 
@@ -3890,7 +3895,7 @@ msgstr "Re&mover"
 msgid "Re&move Proxy"
 msgstr "Re&mover 'Proxy'"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1752
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Re&move Server"
 msgstr "Re&mover Servidor"
 
@@ -3940,11 +3945,11 @@ msgstr "Lembrar propriedades da janela"
 msgid "Remote open command:"
 msgstr "Comando de abrir remoto:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1748
+#: src/modules/options/OptionsWidget_servers.cpp:1799
 msgid "Remove Network"
 msgstr "Remover Rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1317
+#: src/modules/options/OptionsWidget_servers.cpp:1325
 msgid "Remove Network/Server"
 msgstr "Remover Rede/Servidor"
 
@@ -4075,7 +4080,7 @@ msgstr "Enviar endereço/interface:"
 msgid "Send unknown commands as /RAW"
 msgstr "Enviar comando desconhecido como /RAW"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1278
 msgid "Server"
 msgstr "Servidor"
 
@@ -4109,8 +4114,8 @@ msgstr "Noticias do servidor (+s)"
 msgid "Server replies"
 msgstr "Respostas do servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1351
-#: src/modules/options/OptionsWidget_servers.cpp:1633
+#: src/modules/options/OptionsWidget_servers.cpp:1359
+#: src/modules/options/OptionsWidget_servers.cpp:1641
 msgid "Server:"
 msgstr "Servidor:"
 
@@ -4215,7 +4220,7 @@ msgstr "Mostrar pings do servidor"
 msgid "Show the CTCP replies in the active window"
 msgstr "Mostrar respostas CTCP na janela activa"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1415
+#: src/modules/options/OptionsWidget_servers.cpp:1423
 msgid "Show this dialog at startup"
 msgstr "Mostrar esta janela ao iniciar"
 
@@ -4687,7 +4692,7 @@ msgstr "Não é possível escrever informação da língua para"
 msgid "Unknown protocol handler command:"
 msgstr "Comando para protocolo desconhecido:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1681
+#: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
 msgstr "RedeDesconhecida"
 
@@ -4955,8 +4960,7 @@ msgid ""
 msgstr ""
 "Quando terminar, clique em \"<b>OK</b>\" para aceitar as suas alterações ou "
 "clique em \"<b>Cancelar</b>\" para as rejeitar. Ao clicar em \"<b>Aplicar</b>"
-"\" "
-"aplicará as suas alterações sem fechar a janela."
+"\" aplicará as suas alterações sem fechar a janela."
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:72
 msgid "Whois replies"
@@ -5067,7 +5071,7 @@ msgstr "en"
 msgid "file,audio,video,programs"
 msgstr "ficheiro,áudio,vídeo,programas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1894
+#: src/modules/options/OptionsWidget_servers.cpp:1945
 msgid "irc.unknown.net"
 msgstr "irc.desconhecido.net"
 
