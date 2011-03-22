@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-21 00:30+0000\n"
-"PO-Revision-Date: 2011-03-14 03:24+0000\n"
+"PO-Revision-Date: 2011-03-22 05:36+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -225,7 +225,7 @@ msgstr "Não foi possível encontrar uma classe base chamada '%Q'"
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
-msgstr "Resultado da procura DNS para o privado \"%Q\""
+msgstr "Resultado da procura DNS para a consulta \"%Q\""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:144
 msgid ""
@@ -283,18 +283,22 @@ msgstr ""
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:118
 msgid "Error in inner alias command call '%Q', called from this context"
 msgstr ""
+"Erro na chamada do comando da alias interna '%Q', chamado deste contexto"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:71
 msgid "Error in inner alias function call '%Q', called from this context"
 msgstr ""
+"Erro na chamada da função da alias interna '%Q', chamado deste contexto"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:562
 msgid "Error retrieving information from the local certificate"
-msgstr ""
+msgstr "Erro ao obter informação do certificado local"
 
 #: src/kvirc/kvs/KviKvsProcessManager.cpp:220
 msgid "Error triggered from process callback handler: killing process"
 msgstr ""
+"Erro accionado pelo manipulador de chamada de retorno do processo: a desligar "
+"o processo"
 
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
@@ -443,6 +447,8 @@ msgid ""
 "Found token '%Q' where a 'case','match','regexp','default' or 'break' label "
 "was expected"
 msgstr ""
+"'Token' '%Q' encontrado onde era esperado um rótulo "
+"'case','match','regexp','default' ou 'break'"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1877
 msgid ""
@@ -459,11 +465,12 @@ msgstr "Texto de lixo após à expressão no comando 'do': a ignorar"
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:69
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:115
 msgid "Hash key evaluated to empty string: fix the script"
-msgstr ""
+msgstr "Chave hash avaliada para um texto vazio: corrija o 'script'"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeHashReferenceAssert.cpp:70
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
+"Declaração de referência de hash falhada: a variável avaliou para o tipo '%Q'"
 
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
@@ -508,9 +515,8 @@ msgid "Invalid command evaluation in object scope"
 msgstr "Avaliação de comando inválida no âmbito do objecto"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
-#, fuzzy
 msgid "Invalid data type for parameter \"%1\""
-msgstr "Tipo de dados inválido para o parâmetro \"%1\""
+msgstr "Tipo de dados inválido para o parâmetro \"%1\" "
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:222
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:268
@@ -518,12 +524,17 @@ msgid ""
 "Invalid data type for parameter \"%1\": found empty string while a non empty "
 "one was expected"
 msgstr ""
+"Tipo de dados inválido para o parâmetro \"%1\": texto vazio encontrado onde "
+"era esperado um preenchido"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:292
 msgid ""
 "Invalid data type for parameter \"%1\": found signed integer \"%2\" where "
 "type 'unsigned integer' was expected"
 msgstr ""
+"Tipo de dados inválido para o parâmetro \"%1\": inteiro com sinal encontrado "
+"\"%2\" "
+"onde era esperado um inteiro 'unsigned'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:341
 msgid "Invalid duration value: using default"
@@ -539,13 +550,14 @@ msgstr "Índice especificado inválido: ignorado"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:331
 msgid "Invalid pitch value: using default"
-msgstr ""
+msgstr "Valor de frequência áudio inválido: a usar predefinido"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp:89
 msgid ""
 "Invalid window specified in the standard rebinding switch: no rebinding "
 "performed"
 msgstr ""
+"Janela inválida especificada no reenvio padrão switch: nenhum reenvio feito"
 
 #: src/kvirc/kvs/object/KviKvsObjectClass.cpp:165
 msgid "It's not allowed to return values in the constructor"
@@ -630,7 +642,7 @@ msgstr "Operando do lado direito em falta para o operador de ligação '=~'"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1142
 msgid "Missing timeout delay"
-msgstr ""
+msgstr "Atraso de tempo limite em falta"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1133
 msgid "Missing timer name"
@@ -640,44 +652,59 @@ msgstr "Nome do temporizador em falta"
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
+"Chamada de comando do módulo falhada: não é possível carregar o módulo '%Q': %"
+"Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:843
 msgid "Module command call failed: can't load the module 'snd'"
 msgstr ""
+"Chamada de comando do módulo falhada: não é possível carregar o módulo 'snd'"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:75
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a callback "
 "command named '%Q'"
 msgstr ""
+"Chamada de comando do módulo falhada: o módulo '%Q' não exporta um comando "
+"de chamada de retorno chamado '%Q'"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a command named '%"
 "Q'"
 msgstr ""
+"Chamada de comando do módulo falhada: o módulo '%Q' não exporta um comando "
+"chamado '%Q'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:850
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
 msgstr ""
+"Chamada de comando do módulo falhada: o módulo 'snd' não exporta um comando "
+"chamado 'play'"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:67
 msgid "Module function call failed: can't load the module '%Q': %Q"
 msgstr ""
+"Chamada de função do módulo falhada: não é possível carregar o módulo '%Q': %Q"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:74
 msgid ""
 "Module function call failed: the module '%Q' doesn't export a function named "
 "'%Q'"
 msgstr ""
+"Chamada de função do módulo falhada: o módulo '%Q' não exporta uma função "
+"chamada '%Q'"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3151
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
 msgstr ""
+"O caracter aninhado %q corresponde ao terminador esperado,isto pode ser um "
+"pouco "
+"confuso : é melhor colocá-lo entre aspas"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1211
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1439
@@ -736,12 +763,13 @@ msgstr "Nenhum manipulador de evento (%Q) para o evento %Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:679
 msgid "No target channel specified and the current window is not a channel"
-msgstr ""
+msgstr "Nenhum canal de destino especificado e a janela actual não é um canal"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1025
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
+"Nenhuma máscara/canal de destino especificado e a janela actual não é um canal"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:656
 msgid "None"
@@ -749,20 +777,24 @@ msgstr "Nenhum"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:2739
 msgid "Objects have no extended scope variables"
-msgstr ""
+msgstr "Os objectos não têm nenhuma variável de âmbito extendido"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:218
 msgid "Operand of unary operator didn't evaluate to a number"
-msgstr ""
+msgstr "Operando do operador unário não avaliou para um número"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:556
 msgid "Option setting error: Unknown option or invalid value for option type"
 msgstr ""
+"Erro na definição de opção: opção desconhecida ou valor inválido para o tipo "
+"de opção"
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:93
 msgid ""
 "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
+"Os parâmetros identificadores estão proibidos no escopo do objecto (após o "
+"operador '->')"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:641
 msgid "Persistent"
@@ -779,6 +811,8 @@ msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
 msgstr ""
+"A propriedade '%Q' para o objecto chamado '%Q' da classe '%Q' tem um "
+"tipo de dados não suportado"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1154
 msgid "Property: %1%2%3, type %4"
@@ -786,11 +820,11 @@ msgstr "Propriedade: %1%2%3, tipo %4"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
 msgid "Recursive definition detected for popup '%Q': ignoring"
-msgstr ""
+msgstr "Definição recursiva detectada no menu '%Q': a ignorar"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:374
 msgid "Right operand didn't evaluate to a number"
-msgstr ""
+msgstr "O operando direito não avaliou para um número"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:102
 msgid "Say parse error: Broken command"
