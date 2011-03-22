@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-21 00:30+0000\n"
-"PO-Revision-Date: 2011-03-22 02:35+0000\n"
+"PO-Revision-Date: 2011-03-22 04:36+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -2499,14 +2499,14 @@ msgstr ""
 #: src/kvirc/ui/KviCryptController.cpp:276
 #, c-format
 msgid "Crypt: Can't initialize the engine :%s"
-msgstr "Encriptação: Não é possível inicializar o mecanismo:%s"
+msgstr "Encriptação: Não é possível inicializar o mecanismo: %s"
 
 #: src/kvirc/ui/KviCryptController.cpp:284
 msgid ""
 "Crypt: You have to enable encryption and/or decryption for the engine to work"
 msgstr ""
-"Encriptação: Tem que activar a encriptação e/ou desencriptação para que o "
-"mecanismo funcione"
+"Encriptação: Tem que activar a encriptação e/ou a desencriptação para "
+"que o mecanismo funcione"
 
 #: src/kvirc/ui/KviWindow.cpp:412
 msgid "Crypting"
@@ -2755,11 +2755,11 @@ msgstr "Desactivar entrada após expulsão (<segs>)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:321
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:412
 msgid "Disallow KICK (unless U-Line)"
-msgstr "Não permitir expulsar (a não ser U-Line)"
+msgstr "Não permitir KICK (a não ser U-Line)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:344
 msgid "Disallow kicking opers (staff only)"
-msgstr "Não permitir operadores com expulsão (apenas o pessoal)"
+msgstr "Não permitir expulsar operadores (apenas pela equipa do servidor)"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:482
 msgid "Discard Changes"
@@ -4158,7 +4158,9 @@ msgstr "Ícones Grandes"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:343
 msgid "Large ban/exempt/invex lists (staff only)"
-msgstr "Listas de banir/isenção grandes (apenas o pessoal)"
+msgstr ""
+"Listas grandes de 'banir/excepções/excepções de convites' (apenas pela equipa "
+"do servidor )"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:289
 #, c-format
@@ -5218,11 +5220,11 @@ msgstr "Tráfego enviado"
 
 #: src/kvirc/kernel/KviOptions.cpp:874
 msgid "Own IRC Op status set"
-msgstr "Estado do Op IRC definido pelo próprio"
+msgstr "Estado do próprio Operador IRC definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:875
 msgid "Own IRC Op status unset"
-msgstr "Estado Op de IRC não definido"
+msgstr "Estado do próprio Operador IRC não definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:852
 msgid "Own chan admin status set"
@@ -5286,7 +5288,7 @@ msgstr "Aviso do analisador"
 
 #: src/kvirc/kernel/KviOptions.cpp:751
 msgid "Part message"
-msgstr "Mensagem de saída do canal"
+msgstr "Mensagem de partida do canal"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1861
 #: src/kvirc/kernel/KviIrcSocket.cpp:1881
@@ -5311,17 +5313,17 @@ msgstr "Padrão:"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:99
 msgid "Peer X509 certificate"
-msgstr "Certificado Peer X509"
+msgstr "Certificado X509 do parceiro"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:386
 msgid "Permit foreign users without auth to JOIN"
-msgstr "Permitir utilizadores desconhecidos sem autorização a ENTRAR"
+msgstr "Permitir utilizadores desconhecidos sem autorização para ENTRAR"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:345
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:411
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:485
 msgid "Persistent (staff only)"
-msgstr "Persistente (apenas do pessoal)"
+msgstr "Persistente (apenas pela equipa do servidor)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1266
 msgid "Pixmap options (image path)"
@@ -5517,7 +5519,7 @@ msgstr "Alcunhas de administradores/protegidas"
 
 #: src/kvilib/net/KviHttpRequest.cpp:910
 msgid "Protocol error: invalid chunk size"
-msgstr "Erro de protocolo: tamanho inválido"
+msgstr "Erro de protocolo: tamanho de bloco de dados inválido"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:401
 msgid "Proxy connection"
