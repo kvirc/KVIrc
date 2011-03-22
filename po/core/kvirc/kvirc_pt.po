@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-21 00:30+0000\n"
-"PO-Revision-Date: 2011-03-21 19:10+0000\n"
+"PO-Revision-Date: 2011-03-22 02:35+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -977,8 +977,9 @@ msgid ""
 "operation.</center>"
 msgstr ""
 "<center><b>Bem-vindo!</b><br><br>Este assistente irá guiá-lo no processo de "
-"transferência da lista de servidores IRC. Por favor clique em \"<b>Seguinte</"
-"b>\" para iniciar a operação.</center>"
+"transferir uma lista de servidores IRC. Por favor clique em \"<b>Seguinte</b>"
+"\" para "
+"iniciar a operação.</center>"
 
 #: src/modules/mircimport/libkvimircimport.cpp:160
 msgid ""
@@ -1023,7 +1024,7 @@ msgid ""
 "<br><br>The default settings are fine for most users so if you're in doubt "
 "just click \"<b>Finish</b>\" to continue.</p>"
 msgstr ""
-"<p>Aqui pode escolher como o KVIrc se irá integrar no seu sistema. "
+"<p>Aqui pode escolher como o KVIrc se integrará no seu sistema. "
 "<br><br>As definições predefinidas estão boas para a maioria dos "
 "utilizadores, se estiver em dúvida clique em \"<b>Seguinte</b>\" para "
 "continuar.</p>"
@@ -1505,7 +1506,7 @@ msgid ""
 "Binding to local address %1 failed: the kernel will choose the correct "
 "interface"
 msgstr ""
-"Associação ao endereço local %1 falhada : o kernel irá escolher o interface "
+"Associação ao endereço local %1 falhada : o kernel escolherá o interface "
 "correcto"
 
 #: src/kvirc/kernel/KviOptions.cpp:871
@@ -3166,7 +3167,7 @@ msgstr "Falha ao definir a codificação para %Q: mapeação não disponível."
 #: src/kvirc/kernel/KviIrcLink.cpp:143
 msgid "Failed to set up the link filter \"%Q\", will try with plain IRC"
 msgstr ""
-"Falha ao definir o filtro da ligação \"%Q\", irá tentar com IRC simples"
+"Falha ao definir o filtro de ligação \"%Q\", irá tentar com IRC simples"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:205
 msgid "Failed to start the connection: %Q"
@@ -5345,10 +5346,10 @@ msgid ""
 msgstr ""
 "Por favor escolha uma Alcunha.<br><br>A sua alcunha é o nome que outros "
 "utilizadores IRC o irão conhecer. Não pode conter espaços ou pontuação. "
-"Algumas redes IRC irão encurtar a sua alcunha se tiver mais que 32 "
-"caracteres. <br><br>Em caso de dúvida, indique apenas a primeira alcunha que "
-"lhe vier à cabeça. Irá poder alterá-la posteriormente nas propriedades da "
-"Identidade, ou com o comando /NICK."
+"Algumas redes IRC irão encurtar a sua alcunha se tiver mais que 32 caracteres."
+"<br><br>Em caso de dúvida, indique apenas a primeira alcunha que lhe vier "
+"à cabeça. Poderá alterá-la posteriormente nas propriedades de Identidade, ou "
+"com o comando /NICK."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:807
 msgid "Please enter the new nickname"
@@ -5532,15 +5533,16 @@ msgstr "Resposta 'Proxy': "
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1060
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
-msgstr "Resposta 'proxy': Método 'auth' OK: a usar método 0 (nenhum auth)"
+msgstr "Resposta 'proxy': Método 'auth' OK: a usar o método 0 (sem auth)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1068
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
-msgstr "Resposta 'proxy': Método 'auth' OK: a usar método 2 (utilizador/senha)"
+msgstr ""
+"Resposta 'proxy': Método 'auth' OK: a usar o método 2 (utilizador/senha)"
 
 #: src/kvilib/core/KviError.cpp:120
 msgid "Proxy response: No acceptable auth method: request rejected"
-msgstr "Resposta 'proxy': Método 'auth' não aceitável: pedido rejeitado"
+msgstr "Resposta 'proxy': Nenhum método 'auth' aceitável: pedido rejeitado"
 
 #: src/kvilib/core/KviError.cpp:129
 msgid "Proxy response: TTL expired"
@@ -5572,7 +5574,7 @@ msgstr "Resposta 'proxy: conexão recusada"
 
 #: src/kvilib/core/KviError.cpp:124
 msgid "Proxy response: general SOCKS failure"
-msgstr "Resposta 'proxy': falha SOCKS geral"
+msgstr "Resposta 'proxy': falha do SOCKS geral"
 
 #: src/kvilib/core/KviError.cpp:127
 msgid "Proxy response: host unreachable"
@@ -5613,7 +5615,7 @@ msgstr "Destinos de Consulta"
 
 #: src/kvirc/kernel/KviOptions.cpp:797
 msgid "Query encrypted private message"
-msgstr "Consultar mensagem privada encriptada"
+msgstr "Mensagem privada encriptada de consulta"
 
 #: src/modules/fish/libkvifish.cpp:233
 msgid "Query not found: %Q"
@@ -5625,7 +5627,7 @@ msgstr "Noticia de consulta"
 
 #: src/kvirc/kernel/KviOptions.cpp:756
 msgid "Query private message"
-msgstr "Consultar mensagem privada"
+msgstr "Mensagem privada de consulta"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:174
 msgid "Query target:"
@@ -5633,7 +5635,7 @@ msgstr "Destino de consulta:"
 
 #: src/kvirc/kernel/KviOptions.cpp:822
 msgid "Query trace message"
-msgstr "Consultar mensagem de rastreio"
+msgstr "Mensagem de rastreio da consulta"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:254
 msgid "Query with %1!%2"
