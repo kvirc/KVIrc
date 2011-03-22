@@ -1502,7 +1502,7 @@ defpopup(windowpopup)
 
 defpopup(hostpopup)
 {
-	item(Look Up $0,13)
+	item($tr("Look Up ","defscript")$0,13)
 	{
 		host -a $0
 	}
