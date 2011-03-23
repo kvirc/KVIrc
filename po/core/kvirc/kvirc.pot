@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"POT-Creation-Date: 2011-03-23 04:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -585,7 +585,7 @@ msgid "Join"
 msgstr ""
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:278
-#: src/kvilib/system/KviLocale.cpp:1125
+#: src/kvilib/locale/KviLocale.cpp:825
 msgid "Delete"
 msgstr ""
 
@@ -615,7 +615,7 @@ msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:104
 #: src/modules/url/libkviurl.cpp:454
-#: src/kvilib/system/KviLocale.cpp:1135
+#: src/kvilib/locale/KviLocale.cpp:835
 msgid "&OK"
 msgstr ""
 
@@ -627,7 +627,7 @@ msgstr ""
 #: src/kvirc/ui/KviMaskEditor.cpp:90
 #: src/kvilib/file/KviPackageIOEngine.cpp:135
 #: src/kvilib/tal/KviTalWizard.cpp:181
-#: src/kvilib/system/KviLocale.cpp:1074
+#: src/kvilib/locale/KviLocale.cpp:774
 msgid "Cancel"
 msgstr ""
 
@@ -1950,7 +1950,7 @@ msgid "&Say to Window"
 msgstr ""
 
 #: src/modules/url/libkviurl.cpp:343
-#: src/kvilib/system/KviLocale.cpp:1104
+#: src/kvilib/locale/KviLocale.cpp:804
 msgid "Configure"
 msgstr ""
 
@@ -1971,7 +1971,7 @@ msgid "Save columns width on URL list close"
 msgstr ""
 
 #: src/modules/url/libkviurl.cpp:448
-#: src/kvilib/system/KviLocale.cpp:1136
+#: src/kvilib/locale/KviLocale.cpp:836
 msgid "&Cancel"
 msgstr ""
 
@@ -4273,7 +4273,7 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:808
 #: src/kvirc/ui/KviHtmlDialog.cpp:91
 #: src/kvirc/ui/KviCryptController.cpp:127
-#: src/kvilib/system/KviLocale.cpp:1073
+#: src/kvilib/locale/KviLocale.cpp:773
 msgid "OK"
 msgstr ""
 
@@ -5822,7 +5822,7 @@ msgid "Network information"
 msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:555
-#: src/kvilib/system/KviLocale.cpp:1123
+#: src/kvilib/locale/KviLocale.cpp:823
 msgid "Network"
 msgstr ""
 
@@ -6757,84 +6757,84 @@ msgstr ""
 msgid "%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1493
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1492
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1498
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1497
 msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1542
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1541
 msgid "Unable to add file offer for file %Q (File not readable?)"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1546
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1545
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1600
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1599
 msgid "private"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1600
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1599
 msgid "channel notification:"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1601
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1600
 msgid "notification"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1606
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1605
 msgid "%1 unsets avatar"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1612
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1611
 msgid "%1 changes avatar to %2"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1656
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1655
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (HTTP GET %s)"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1663
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1662
 msgid ""
 ": No valid local copy of avatar available; failed to start an HTTP transfer, "
 "ignoring"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1671
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1670
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (DCC GET %s)"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1683
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1682
 msgid ""
 ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1688
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1687
 msgid ": No valid local copy of avatar available, ignoring"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1696
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1695
 msgid ": No such nickname in the user database, ignoring the change"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1736
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1735
 msgid "Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1778
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1777
 msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1789
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1788
 msgid "Unable to process the above request: Cannot load DCC module (%Q)"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1795
+#: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1794
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr ""
 
@@ -7524,7 +7524,7 @@ msgid "DNS query returned no IP address results of the requested type"
 msgstr ""
 
 #: src/kvilib/tal/KviTalWizard.cpp:207
-#: src/kvilib/system/KviLocale.cpp:1096
+#: src/kvilib/locale/KviLocale.cpp:796
 msgid "Back"
 msgstr ""
 
@@ -8024,6 +8024,218 @@ msgid ""
 "identifier coulnd't be found in the database"
 msgstr ""
 
+#: src/kvilib/locale/KviLocale.cpp:776
+msgid "Select color"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:777
+msgid "&Basic colors"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:778
+msgid "&Custom colors"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:779
+msgid "&Red"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:780
+msgid "&Green"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:781
+msgid "Bl&ue"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:782
+msgid "&Define Custom Colors >>"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:783
+msgid "&Add to Custom Colors"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:785
+msgid "Select Font"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:786
+msgid "&Font"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:787
+msgid "Font st&yle"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:788
+msgid "&Size"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:789
+msgid "Sample"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:790
+msgid "Effects"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:791
+msgid "Stri&keout"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:792
+msgid "&Underline"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:793
+msgid "Scr&ipt"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:795
+msgid "Parent Directory"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:797
+msgid "Forward"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:798
+msgid "Reload"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:799
+msgid "New Directory"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:800
+msgid "Bookmarks"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:801
+msgid "Add Bookmark"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:802
+msgid "&Edit Bookmarks"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:803
+msgid "New Bookmark Folder..."
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:805
+msgid "Sorting"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:806
+msgid "By Name"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:807
+msgid "By Date"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:808
+msgid "By Size"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:809
+msgid "Reverse"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:810
+msgid "Directories First"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:811
+msgid "Case Insensitive"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:812
+msgid "Short View"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:813
+msgid "Detailed View"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:814
+msgid "Show Hidden Files"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:815
+msgid "Show Quick Access Navigation Panel"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:816
+msgid "Show Preview"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:817
+msgid "Separate Directories"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:818
+msgid "Often used directories"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:819
+msgid "Desktop"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:820
+msgid "Home Directory"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:821
+msgid "Floppy"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:822
+msgid "Temporary Files"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:824
+msgid "New Directory..."
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:826
+msgid "Thumbnail Previews"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:827
+msgid "Large Icons"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:828
+msgid "Small Icons"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:829
+msgid "Properties..."
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:830
+msgid "&Automatic Preview"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:831
+msgid "&Preview"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:832
+msgid "&Location:"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:833
+msgid "&Filter:"
+msgstr ""
+
+#: src/kvilib/locale/KviLocale.cpp:834
+msgid "All Files"
+msgstr ""
+
 #: src/kvilib/system/KviTimeUtils.cpp:110
 msgid "- d -- h -- m -- s"
 msgstr ""
@@ -8054,216 +8266,4 @@ msgstr ""
 
 #: src/kvilib/system/KviTimeUtils.cpp:135
 msgid "%1 d %2%3 h %4%5 m %6%7 s"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1076
-msgid "Select color"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1077
-msgid "&Basic colors"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1078
-msgid "&Custom colors"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1079
-msgid "&Red"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1080
-msgid "&Green"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1081
-msgid "Bl&ue"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1082
-msgid "&Define Custom Colors >>"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1083
-msgid "&Add to Custom Colors"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1085
-msgid "Select Font"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1086
-msgid "&Font"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1087
-msgid "Font st&yle"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1088
-msgid "&Size"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1089
-msgid "Sample"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1090
-msgid "Effects"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1091
-msgid "Stri&keout"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1092
-msgid "&Underline"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1093
-msgid "Scr&ipt"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1095
-msgid "Parent Directory"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1097
-msgid "Forward"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1098
-msgid "Reload"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1099
-msgid "New Directory"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1100
-msgid "Bookmarks"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1101
-msgid "Add Bookmark"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1102
-msgid "&Edit Bookmarks"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1103
-msgid "New Bookmark Folder..."
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1105
-msgid "Sorting"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1106
-msgid "By Name"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1107
-msgid "By Date"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1108
-msgid "By Size"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1109
-msgid "Reverse"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1110
-msgid "Directories First"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1111
-msgid "Case Insensitive"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1112
-msgid "Short View"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1113
-msgid "Detailed View"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1114
-msgid "Show Hidden Files"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1115
-msgid "Show Quick Access Navigation Panel"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1116
-msgid "Show Preview"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1117
-msgid "Separate Directories"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1118
-msgid "Often used directories"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1119
-msgid "Desktop"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1120
-msgid "Home Directory"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1121
-msgid "Floppy"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1122
-msgid "Temporary Files"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1124
-msgid "New Directory..."
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1126
-msgid "Thumbnail Previews"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1127
-msgid "Large Icons"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1128
-msgid "Small Icons"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1129
-msgid "Properties..."
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1130
-msgid "&Automatic Preview"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1131
-msgid "&Preview"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1132
-msgid "&Location:"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1133
-msgid "&Filter:"
-msgstr ""
-
-#: src/kvilib/system/KviLocale.cpp:1134
-msgid "All Files"
 msgstr ""

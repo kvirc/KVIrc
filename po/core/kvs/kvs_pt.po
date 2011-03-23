@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"POT-Creation-Date: 2011-03-23 04:05+0000\n"
 "PO-Revision-Date: 2011-03-22 05:36+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
@@ -297,8 +297,8 @@ msgstr "Erro ao obter informação do certificado local"
 #: src/kvirc/kvs/KviKvsProcessManager.cpp:220
 msgid "Error triggered from process callback handler: killing process"
 msgstr ""
-"Erro accionado pelo manipulador de chamada de retorno do processo: a desligar "
-"o processo"
+"Erro accionado pelo manipulador de chamada de retorno do processo: a "
+"desligar o processo"
 
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
@@ -533,8 +533,7 @@ msgid ""
 "type 'unsigned integer' was expected"
 msgstr ""
 "Tipo de dados inválido para o parâmetro \"%1\": inteiro com sinal encontrado "
-"\"%2\" "
-"onde era esperado um inteiro 'unsigned'"
+"\"%2\" onde era esperado um inteiro 'unsigned'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:341
 msgid "Invalid duration value: using default"
@@ -652,8 +651,8 @@ msgstr "Nome do temporizador em falta"
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
-"Chamada de comando do módulo falhada: não é possível carregar o módulo '%Q': %"
-"Q"
+"Chamada de comando do módulo falhada: não é possível carregar o módulo '%Q': "
+"%Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:843
 msgid "Module command call failed: can't load the module 'snd'"
@@ -687,7 +686,8 @@ msgstr ""
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:67
 msgid "Module function call failed: can't load the module '%Q': %Q"
 msgstr ""
-"Chamada de função do módulo falhada: não é possível carregar o módulo '%Q': %Q"
+"Chamada de função do módulo falhada: não é possível carregar o módulo '%Q': %"
+"Q"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:74
 msgid ""
@@ -703,8 +703,7 @@ msgid ""
 "me a bit: it is a good idea to enclose it in quotes"
 msgstr ""
 "O caracter aninhado %q corresponde ao terminador esperado,isto pode ser um "
-"pouco "
-"confuso : é melhor colocá-lo entre aspas"
+"pouco confuso : é melhor colocá-lo entre aspas"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1211
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1439
@@ -769,7 +768,8 @@ msgstr "Nenhum canal de destino especificado e a janela actual não é um canal"
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
-"Nenhuma máscara/canal de destino especificado e a janela actual não é um canal"
+"Nenhuma máscara/canal de destino especificado e a janela actual não é um "
+"canal"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:656
 msgid "None"
@@ -811,8 +811,8 @@ msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
 msgstr ""
-"A propriedade '%Q' para o objecto chamado '%Q' da classe '%Q' tem um "
-"tipo de dados não suportado"
+"A propriedade '%Q' para o objecto chamado '%Q' da classe '%Q' tem um tipo de "
+"dados não suportado"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1154
 msgid "Property: %1%2%3, type %4"
@@ -1635,8 +1635,7 @@ msgstr "[KVS]%c Erro de Compilação: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Erro na Execução: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188
-#: src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Aviso: %Q"
 
