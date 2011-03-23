@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-23 06:46+0000\n"
 "PO-Revision-Date: 2011-01-26 14:23+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -833,7 +833,8 @@ msgid "Senseless empty switch command: fix the script"
 msgstr "Sinnloser leerer switch-Befehl: Reparieren Sie das Skript"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:647
-msgid "SingleShot"
+#, fuzzy
+msgid "Single Shot"
 msgstr "Einfacher Versuch"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3161
@@ -951,7 +952,8 @@ msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr "Der ›foreach‹-Befehl benötigt einen Ausdruck in runden Klammern"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:312
-msgid "The 'global' command needs a variable list"
+#, fuzzy
+msgid "The 'global' command needs a list of variables"
 msgstr "Der ›global‹-Befehl benötigt eine Variablenliste"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:856
@@ -1660,6 +1662,11 @@ msgstr "Nichtterminierte Zeichenkettenkonstante"
 msgid "Window '%Q' not found, using current one"
 msgstr "Fenster ›%Q‹ nicht gefunden, nutze aktuelles"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
+#, fuzzy
+msgid "Window Lifetime"
+msgstr "Fensterlebenszeit"
+
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:450
 msgid "Window button '%Q' not found"
 msgstr "Fenster-Button ›%Q‹ nicht gefunden"
@@ -1672,10 +1679,6 @@ msgstr "Fenster mit ID ›%s‹ nicht gefunden, gebe leere Zeichenkette zurück"
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1263
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Fenster mit ID %Q nicht gefunden: Kein Rebinding ausgeführt"
-
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
-msgid "WindowLifetime"
-msgstr "Fensterlebenszeit"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:794
 #, c-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-23 06:46+0000\n"
 "PO-Revision-Date: 2011-03-18 19:46+0300\n"
 "Last-Translator: alexzulu <ua6hdw@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -819,7 +819,8 @@ msgid "Senseless empty switch command: fix the script"
 msgstr "Бессмысленная пустая команда: исправьте сценарий"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:647
-msgid "SingleShot"
+#, fuzzy
+msgid "Single Shot"
 msgstr "Одноразовый режим"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3161
@@ -944,7 +945,8 @@ msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr "Команде 'foreach' требуется выражение в круглых скобках"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:312
-msgid "The 'global' command needs a variable list"
+#, fuzzy
+msgid "The 'global' command needs a list of variables"
 msgstr "Команде 'global' нужен список переменных"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:856
@@ -1584,6 +1586,11 @@ msgstr "Строка с константой не закрыта"
 msgid "Window '%Q' not found, using current one"
 msgstr "Окно '%Q' не найдено, используется текущее"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
+#, fuzzy
+msgid "Window Lifetime"
+msgstr "Время жизни окна"
+
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:450
 msgid "Window button '%Q' not found"
 msgstr "Кнопка окна '%Q' не найдена"
@@ -1596,10 +1603,6 @@ msgstr "Окно с ID '%s' не найдено, возвращается пус
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1263
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Окно с ID %Q не найдено: не возможно выполнить увязку"
-
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
-msgid "WindowLifetime"
-msgstr "Время жизни окна"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:794
 #, c-format

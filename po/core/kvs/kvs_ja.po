@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-23 06:46+0000\n"
 "PO-Revision-Date: 2010-07-27 01:44+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -736,7 +736,7 @@ msgid "Senseless empty switch command: fix the script"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:647
-msgid "SingleShot"
+msgid "Single Shot"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3161
@@ -842,7 +842,7 @@ msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:312
-msgid "The 'global' command needs a variable list"
+msgid "The 'global' command needs a list of variables"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:856
@@ -1428,6 +1428,10 @@ msgstr ""
 msgid "Window '%Q' not found, using current one"
 msgstr ""
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
+msgid "Window Lifetime"
+msgstr ""
+
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:450
 msgid "Window button '%Q' not found"
 msgstr "ウィンドウのボタン「%Q」が見つかりません。"
@@ -1439,10 +1443,6 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1263
 msgid "Window with id %Q not found: no rebinding performed"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
-msgid "WindowLifetime"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:794
