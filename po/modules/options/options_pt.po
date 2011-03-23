@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-23 04:05+0000\n"
-"PO-Revision-Date: 2011-03-22 02:20+0000\n"
-"Last-Translator: Zé <ze@mandriva.org>\n"
+"PO-Revision-Date: 2011-03-23 21:01+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -815,7 +815,7 @@ msgid ""
 msgstr ""
 "<center>Este é o <b>endereço IP</b> deste servidor, está aqui para "
 "propósitos de caixa. <br>Se deixar este campo vazio, o KVIrc irá preenche-lo "
-"na primeira vez que se conectar ao servidor. Se activar a opção em baixo "
+"na primeira vez que se conectar ao servidor. Se activar a opção abaixo "
 "\"endereço IP em caixa\", o KVIrc irá usá-lo como um \"resultado em caixa\" "
 "e evitar de o procurar novamente.</center>"
 
@@ -917,11 +917,11 @@ msgid ""
 "image.<br>A time-limited file offer is added for the image file to the "
 "requesting user.</center>"
 msgstr ""
-"<center>Este é o limite de tempo para colocar uma avatar disponível para "
+"<center>Este é o limite de tempo para colocar um avatar disponível para "
 "transferir, quando pedido. <br>Quando alguém envia um pedido CTCP AVATAR, o "
-"KVIrc irá responder com uma mensagem CTCP AVATAR que contenha o nome e o "
-"tamanho da sua imagem avatar.<br> É adicionado um tempo limite de envio de "
-"ficheiro para o ficheiro de imagem para o utilizador em questão.</center>"
+"KVIrc responderá com uma mensagem CTCP AVATAR que contenha o nome "
+"e o tamanho da sua imagem avatar.<br> É adicionado um tempo limite de envio "
+"de ficheiro para o ficheiro de imagem para o utilizador em questão.</center>"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
 msgid ""
@@ -2520,7 +2520,7 @@ msgstr "Activar Anti-spam Para"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:40
 msgid "Enable Ignore For"
-msgstr "Activar Ignore Para"
+msgstr "Activar Ignorar Para"
 
 #: src/modules/options/OptionsWidget_identity.cpp:705
 msgid "Enable Network Profiles"
@@ -2659,7 +2659,7 @@ msgid ""
 "Failed to load the avatar image.<br>It may be an unaccessible file or an "
 "unsupported image format."
 msgstr ""
-"Falha ao carregar imagem avatar.<br>Pode ser um ficheiro inacessível ou um "
+"Falha ao carregar a imagem avatar.<br>Pode ser um ficheiro inacessível ou um "
 "formato de imagem não suportado."
 
 #: src/modules/options/OptionsWidget_identity.cpp:161
@@ -2818,12 +2818,12 @@ msgid ""
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
 msgstr ""
 "Aqui pode escolher a sua imagem avatar. Será visível<br>para outras pessoas "
-"que a pedirem, Escolha uma boa imagem de si próprio,<br>geralmente evitando "
-"obscenidades e imagens ofensivas. é uma boa ideia escolher<br>uma "
+"que a pediram. Escolha uma boa imagem de si próprio,<br>geralmente evitando "
+"obscenidades e imagens ofensivas. É aconselhável escolher<br>uma imagem "
 "relativamente pequena (tipo 150 Kb máximo) porque<br>muitos clientes têm "
-"limite no tamanho das avatares a ser transferidas.<br>A imagem deve também "
-"ser mais pequena que 800x600 pontos já que<br>terá que ser vista nos "
-"monitores de toda as pessoas."
+"um limite no tamanho dos avatares a ser transferidos.<br>A imagem deve também "
+"ser mais pequena que 800x600 pontos já que<br>terá que ser visível em todos "
+"os monitores."
 
 #: src/modules/options/OptionsWidget_identity.cpp:345
 msgid "Here you can specify your age."
@@ -2963,7 +2963,7 @@ msgstr "Ignorar versões de módulos (perigoso)"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:105
 msgid "Ignore requests if no avatar is set"
-msgstr "Ignorar pedidos se nenhuma avatar estiver definida"
+msgstr "Ignorar pedidos se nenhum avatar estiver definido"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:96
 msgid "Ignored Ctcp Requests"
@@ -3693,9 +3693,10 @@ msgid ""
 "\"<b>Browse</b>\"button to browse local folders.<br>The full URL for an "
 "image (including <b>http://</b>) can be entered manually."
 msgstr ""
-"Por favor escolha uma imagem Avatar. Pode usar uma localização completa para "
-"um ficheiro local ou uma imagem na Web.<br>Se quiser usar um ficheiro local, "
-"clique no botão \"<b>Procurar</b>\" para procurar ficheiros locais.<br>O URL "
+"Por favor escolha uma imagem Avatar. Pode usar uma localização completa"
+"para um ficheiro local ou uma imagem na Web.<br>Se deseja usar um ficheiro "
+"local, clique no botão \"<b>Procurar</b>\" para procurar ficheiros locais.<br>"
+"O URL "
 "completo de uma imagem (incluindo <b>http://</b>) pode ser indicado "
 "manualmente."
 
@@ -4671,11 +4672,11 @@ msgstr "Correr evento se o 'lag' exceder:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:257
 msgid "Tweaks"
-msgstr "Melhoramentos"
+msgstr "Ajustes"
 
 #: src/modules/options/OptionsWidget_urlHandlers.h:32
 msgid "URL handlers"
-msgstr "Gestores URL"
+msgstr "Manipuladores de URL"
 
 #: src/modules/options/OptionsWidget_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4687,15 +4688,15 @@ msgstr "USERINFO"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:163
 msgid "Unable to write language information to"
-msgstr "Não é possível escrever informação da língua para"
+msgstr "Não é possível escrever a informação da língua para"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:82
 msgid "Unknown protocol handler command:"
-msgstr "Comando para protocolo desconhecido:"
+msgstr "Comando de manipulador de protocolo desconhecido:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1731
 msgid "UnknownNet"
-msgstr "RedeDesconhecida"
+msgstr "Rede Desconhecida"
 
 #: src/modules/options/OptionsWidget_identity.cpp:348
 #: src/modules/options/OptionsWidget_identity.cpp:376
@@ -4704,7 +4705,7 @@ msgstr "Não especificado"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:163
 msgid "Url links"
-msgstr "Ligações de Url"
+msgstr "Ligações Url"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:120
 msgid "Use \"broken bouncer hack\" to detect address"
@@ -4741,7 +4742,7 @@ msgstr "Usar chave SSL privada"
 
 #: src/modules/options/OptionsWidget_servers.cpp:735
 msgid "Use SSL protocol"
-msgstr "Usar Protocolo SSL"
+msgstr "Usar protocolo SSL"
 
 #: src/modules/options/OptionsWidget_servers.cpp:227
 #: src/modules/options/OptionsWidget_servers.cpp:228
@@ -4758,7 +4759,7 @@ msgstr "Usar alcunha gerada automaticamente ([5 letras]AUSENTE)"
 
 #: src/modules/options/OptionsWidget_identity.cpp:475
 msgid "Use avatar"
-msgstr "Usar Avatar"
+msgstr "Usar avatar"
 
 #: src/modules/options/OptionsWidget_input.cpp:151
 msgid "Use bash-like nick completion"
@@ -4778,7 +4779,7 @@ msgstr "Usar modo de utilizador predefinido"
 
 #: src/modules/options/OptionsWidget_theme.cpp:119
 msgid "Use desktop background for transparency"
-msgstr "Usar o ecrã de fundo para transparência"
+msgstr "Usar ecrã de fundo para transparência"
 
 #: src/modules/options/OptionsWidget_userList.cpp:68
 msgid "Use different color for own nick:"
@@ -4862,11 +4863,11 @@ msgstr "Usar endereço definido de utilizador ou um interface de rede"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:89
 msgid "Use user-defined port range"
-msgstr "Usar o intervalo de porta definido pelo utilizador"
+msgstr "Usar intervalo de porta definido pelo utilizador"
 
 #: src/modules/options/OptionsWidget_ignore.cpp:46
 msgid "Use verbose ignore (show messages in console)"
-msgstr "Usar ignore detalhado (mostrar mensagens na consola)"
+msgstr "Usar ignorar detalhado (mostrar mensagens na consola)"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:51
 msgid "Use workaround for firewall"
