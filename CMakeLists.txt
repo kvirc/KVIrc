@@ -421,8 +421,8 @@ ENDIF()
 # Check for Qt4
 ############################################################################
 
-# We require at least Qt 4.5.x
-FIND_PACKAGE(Qt4 4.5.0 REQUIRED)
+# We require at least Qt 4.6.x
+FIND_PACKAGE(Qt4 4.6.0 REQUIRED)
 IF(QT4_FOUND)
 	SET(QT_USE_QTSQL true)
 	SET(QT_USE_QTXML true)

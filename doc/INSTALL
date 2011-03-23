@@ -42,7 +42,7 @@ General notes for the installation of the 4.0 release of KVIrc
 ###############################################################################
 
     In order to compile KVIrc 4.0 you need at least these software:
-    - Qt GUI Toolkit 4.5 - http://www.qtsoftware.com
+    - Qt GUI Toolkit 4.6 - http://www.qtsoftware.com
     - CMake 2.6 - http://www.cmake.org
     - C++ compiler, such as g++ - http://gcc.gnu.org (btw: we'd be glad if any-
         one could find the time to test KVIrc with ICC!)
@@ -79,7 +79,7 @@ General notes for the installation of the 4.0 release of KVIrc
     On my system the output is:
 
     QMake version 2.01a
-    Using Qt version 4.5.3 in /usr/lib64/qt/lib
+    Using Qt version 4.7.2 in /usr/lib64/qt/lib
 
     If you have multiple versions of Qt4 installed in your system and want to 
     use a specific version, exporting QTDIR won't suffice. Since the CMake 
@@ -87,7 +87,7 @@ General notes for the installation of the 4.0 release of KVIrc
     you can set your $PATH variable to have CMake using 
     your preferred qmake version:
 
-    # PATH=/opt/qt4.5/bin/:$PATH cmake ..
+    # PATH=/opt/qt4.7/bin/:$PATH cmake ..
 
     Please note that compiling with KDE4 support enabled will force KVIrc to 
     link against the Qt4 version that KDE4 is using. This may lead to problems 
@@ -95,7 +95,7 @@ General notes for the installation of the 4.0 release of KVIrc
     Note also that in this case you'll need to override the Qt libraries used 
     when running KVIrc:
 
-    # LD_LIBRARY_PATH=/opt/qt4.5/lib/ kvirc4
+    # LD_LIBRARY_PATH=/opt/qt4.7/lib/ kvirc4
 
     #
     # CMake
