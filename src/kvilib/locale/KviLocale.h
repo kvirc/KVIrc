@@ -27,13 +27,16 @@
 
 
 #include "kvi_settings.h"
+
+
 #include "KviCString.h"
+#include "KviMessageCatalogue.h"
 
 class QApplication;
 class QString;
 class QTextCodec;
-class KviMessageCatalogue;
-template<typename Key,typename T> class KviPointerHashTable;
+class KviCString;
+
 
 #ifndef QT_NO_BIG_CODECS
 	#define KVI_NUM_ENCODINGS 109
@@ -72,48 +75,8 @@ namespace KviLocale
 	KVILIB_API void done(QApplication * app);
 	KVILIB_API const char * translate(const char * text,const char * context);
 	KVILIB_API const QString & translateToQString(const char * text,const char * context);
-}
+} // namespace KviLocale
 
-// not exported
-class KviTranslationEntry
-{
-public:
-	KviCString    m_szKey;
-	KviCString    m_szEncodedTranslation;
-	QString * m_pQTranslation;
-public:
-	KviTranslationEntry(char * keyptr,int keylen,char * trptr,int trlen)
-	: m_szKey(keyptr,keylen), m_szEncodedTranslation(trptr,trlen)
-	{
-		m_pQTranslation = 0;
-	}
-
-	KviTranslationEntry(const char * keyandtr)
-	: m_szKey(keyandtr), m_szEncodedTranslation(keyandtr)
-	{
-		m_pQTranslation = 0;
-	}
-
-	~KviTranslationEntry()
-	{
-		if(m_pQTranslation)delete m_pQTranslation;
-	}
-};
-
-
-class KVILIB_API KviMessageCatalogue
-{
-public:
-	KviMessageCatalogue();
-	~KviMessageCatalogue();
-protected:
-	KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
-	QTextCodec                                            * m_pTextCodec;
-public:
-	bool load(const QString& name);
-	const char * translate(const char * text);
-	const QString & translateToQString(const char * text);
-};
 
 #ifndef _KVI_LOCALE_CPP_
 	extern KVILIB_API KviMessageCatalogue * g_pMainCatalogue;
@@ -132,19 +95,6 @@ public:
 #define __tr2qs_ctx(__text__,__context__) KviLocale::translateToQString(__text__,__context__)
 #define __tr2qs_ctx_no_xgettext(__text__,__context__) KviLocale::translateToQString(__text__,__context__)
 #define __tr2qs_no_lookup(__text__) __text__
-
-#include <QTranslator>
-#include <QString>
-
-class KVILIB_API KviTranslator : public QTranslator
-{
-	Q_OBJECT
-	public:
-		KviTranslator(QObject * parent,const char * name);
-		~KviTranslator();
-	public:
-	virtual QString translate(const char * context,const char * message,const char * comment) const;
-};
 
 
 #endif //!_KVI_LOCALE_H_

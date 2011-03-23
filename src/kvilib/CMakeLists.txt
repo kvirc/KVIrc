@@ -6,6 +6,7 @@ INCLUDE_DIRECTORIES(
 	ext
 	file
 	irc
+	locale
 	net
 	system
 	${QT_INCLUDES}
@@ -13,16 +14,17 @@ INCLUDE_DIRECTORIES(
 
 # Please note that the sources have alphabetic order here
 
-SET(kvilib_MOC_HDRS
+SET(
+	kvilib_MOC_HDRS
 	ext/KviAnimatedPixmap.h
 	ext/KviAnimatedPixmapCache.h
 	ext/KviCryptEngine.h
 	ext/KviRegisteredUserDataBase.h
 	ext/KviSharedFilesManager.h
 	irc/KviIrcUserDataBase.h
+	locale/KviTranslator.h
 	net/KviDnsResolver.h
 	net/KviHttpRequest.h
-	system/KviLocale.h
 	system/KviThread.h
 	tal/KviTalApplication.h
 	tal/KviTalFileDialog.h
@@ -109,6 +111,10 @@ SET(kvilib_SRCS
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp
 	irc/KviUserIdentityManager.cpp
+	locale/KviLocale.cpp
+	locale/KviMessageCatalogue.cpp
+	locale/KviTranslationEntry.cpp
+	locale/KviTranslator.cpp
 	net/KviDnsResolver.cpp
 	net/KviHttpRequest.cpp
 	net/KviNetUtils.cpp
@@ -117,7 +123,6 @@ SET(kvilib_SRCS
 	net/KviSSL.cpp
 	net/KviUrl.cpp
 	system/KviEnvironment.cpp
-	system/KviLocale.cpp
 	system/KviThread.cpp
 	system/KviTimeUtils.cpp
 	tal/KviTalApplication.cpp

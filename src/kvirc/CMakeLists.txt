@@ -16,6 +16,7 @@ INCLUDE_DIRECTORIES(
 	../kvilib/ext
 	../kvilib/file
 	../kvilib/irc
+	../kvilib/locale
 	../kvilib/net
 	../kvilib/system
 )
