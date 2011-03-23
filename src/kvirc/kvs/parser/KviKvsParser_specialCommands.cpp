@@ -309,7 +309,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'global' command needs a variable list","kvs"));
+		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'global' command needs a list of variables","kvs"));
 		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
