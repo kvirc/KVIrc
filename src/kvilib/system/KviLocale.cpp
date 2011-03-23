@@ -36,6 +36,7 @@
 #include <QDir>
 #include <QLocale>
 #include <QByteArray>
+#include <QString>
 
 #include "KviQString.h"
 #include "KviEnvironment.h"
@@ -43,13 +44,15 @@
 #include "KviFile.h"
 #include "KviPointerHashTable.h"
 
+// TODO: Convert KviLocale to a full featured singleton class with member variables.
 
-KVILIB_API KviMessageCatalogue           * g_pMainCatalogue       = 0;
+KVILIB_API KviMessageCatalogue  * g_pMainCatalogue = NULL;
 
-static KviCString                              g_szLang;
-static KviTranslator                     * g_pTranslator          = 0;
-static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict       = 0;
-static QTextCodec                        * g_pUtf8TextCodec       = 0;
+static KviCString  g_szLang;
+static KviTranslator * g_pTranslator = NULL;
+static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict = NULL;
+static QTextCodec * g_pUtf8TextCodec = NULL;
+static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path list
 
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -560,7 +563,7 @@ bool KviMessageCatalogue::load(const QString& name)
 		{
 			szHeader.cutLeft(idx + 8);
 			szHeader.cutFromFirst('\n');
-			szHeader.trimmed();
+			szHeader.trim();
 			m_pTextCodec = KviLocale::codecForName(szHeader.ptr());
 			if(!m_pTextCodec)
 			{
@@ -838,26 +841,26 @@ namespace KviLocale
 		return g_szLang;
 	}
 
-	bool loadCatalogue(const QString &name,const QString &szLocaleDir)
+	KviMessageCatalogue * loadCatalogue(const QString &name,const QString &szLocaleDir)
 	{
 		//qDebug("Looking up catalogue %s",name);
-		if(g_pCatalogueDict->find(name.toUtf8().data()))
-			return true; // already loaded
+		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(name.toUtf8().data());
+		if(pCatalogue)
+			return pCatalogue; // already loaded
 
 		QString szBuffer;
 
-		if(findCatalogue(szBuffer,name,szLocaleDir))
+		if(!findCatalogue(szBuffer,name,szLocaleDir))
+			return NULL;
+
+		pCatalogue = new KviMessageCatalogue();
+		if(pCatalogue->load(szBuffer))
 		{
-			KviMessageCatalogue * c = new KviMessageCatalogue();
-			if(c->load(szBuffer))
-			{
-				g_pCatalogueDict->insert(name.toUtf8().data(),c);
-				return true;
-			}
-			delete c;
-			c = 0;
+			g_pCatalogueDict->insert(name.toUtf8().data(),pCatalogue);
+			return pCatalogue;
 		}
-		return false;
+		delete pCatalogue;
+		return NULL;
 	}
 
 	bool unloadCatalogue(const QString &name)
@@ -940,12 +943,19 @@ namespace KviLocale
 			KviFileUtils::readFile(szLangFile,szTmp);
 			g_szLang=szTmp;
 		}
-		if(g_szLang.isEmpty())g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
-		if(g_szLang.isEmpty())g_szLang = KviEnvironment::getVariable("LC_MESSAGES");
-		if(g_szLang.isEmpty())g_szLang = KviEnvironment::getVariable("LANG");
-		if(g_szLang.isEmpty())g_szLang = QLocale::system().name();
-		if(g_szLang.isEmpty())g_szLang = "en";
-		g_szLang.trimmed();
+		if(g_szLang.isEmpty())
+			g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
+		if(g_szLang.isEmpty())
+			g_szLang = KviEnvironment::getVariable("LC_MESSAGES");
+		if(g_szLang.isEmpty())
+			g_szLang = KviEnvironment::getVariable("LANG");
+		if(g_szLang.isEmpty())
+			g_szLang = QLocale::system().name();
+		if(g_szLang.isEmpty())
+			g_szLang = "en";
+		g_szLang.trim();
+
+		g_szDefaultLocalePath = localeDir;
 
 		// the main catalogue is supposed to be kvirc_<language>.mo
 		g_pMainCatalogue = new KviMessageCatalogue();
@@ -1016,34 +1026,40 @@ namespace KviLocale
 
 	const char * translate(const char * text,const char * context)
 	{
-		if(context)
+		if(!context)
+			return g_pMainCatalogue->translate(text);
+
+		KviMessageCatalogue * c = g_pCatalogueDict->find(context);
+		if(!c)
 		{
-			KviMessageCatalogue * c = g_pCatalogueDict->find(context);
+			c = loadCatalogue(QString::fromUtf8(context),g_szDefaultLocalePath);
 			if(!c)
 			{
-				// FIXME: Should really try to load the catalogue here!
+				// Fake it....
 				c = new KviMessageCatalogue();
 				g_pCatalogueDict->insert(context,c);
 			}
-			return c->translate(text);
 		}
-		return g_pMainCatalogue->translate(text);
+		return c->translate(text);
 	}
 
 	const QString & translateToQString(const char * text,const char * context)
 	{
-		if(context)
+		if(!context)
+			return g_pMainCatalogue->translateToQString(text);
+		
+		KviMessageCatalogue * c = g_pCatalogueDict->find(context);
+		if(!c)
 		{
-			KviMessageCatalogue * c = g_pCatalogueDict->find(context);
+			c = loadCatalogue(QString::fromUtf8(context),g_szDefaultLocalePath);
 			if(!c)
 			{
-				// FIXME: Should really try to load the catalogue here!
+				// Fake it....
 				c = new KviMessageCatalogue();
 				g_pCatalogueDict->insert(context,c);
 			}
-			return c->translateToQString(text);
 		}
-		return g_pMainCatalogue->translateToQString(text);
+		return c->translateToQString(text);
 	}
 }
 

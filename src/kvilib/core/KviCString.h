@@ -322,7 +322,7 @@ public:
 	KviCString & stripRightWhiteSpace();
 	// Stips inital and final WHITESPACE characters (see man isspace),<br>
 	// and returns a reference to this string.
-	KviCString & trimmed();
+	KviCString & trim();
 
 	// Strips spaces and tabs only
 	KviCString & stripSpace();

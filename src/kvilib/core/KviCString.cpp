@@ -2912,7 +2912,7 @@ int KviCString::findLastIdx(const char *str,bool caseS) const
 	}
 }
 
-KviCString & KviCString::trimmed()
+KviCString & KviCString::trim()
 {
 	// 0123456789
 	//    abcd   0

@@ -1210,7 +1210,7 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 	KviCString szTmp = pcBuffer;
 	// FIXME: #warning "We could even show the proxy output here...!"
 	szTmp.cutFromFirst('\n');
-	szTmp.trimmed();
+	szTmp.trim();
 
 	if(kvi_strEqualCIN(szTmp.ptr(),"HTTP",4))
 	{

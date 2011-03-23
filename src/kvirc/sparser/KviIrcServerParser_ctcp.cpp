@@ -1255,7 +1255,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage *msg)
 		{
 			KviCString szTag;
 			msg->pData = extractCtcpParameter(msg->pData,szTag,false);
-			szTag.trimmed();
+			szTag.trim();
 			szTag.toUpper();
 			if(szTag.isEmpty())
 			{
@@ -1362,11 +1362,10 @@ void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 	{
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpPage))
 		{
-			KVI_OPTION_STRING(KviOption_stringCtcpPageReply).trimmed();
+			KVI_OPTION_STRING(KviOption_stringCtcpPageReply) = KVI_OPTION_STRING(KviOption_stringCtcpPageReply).trimmed();
 			if(KVI_OPTION_STRING(KviOption_stringCtcpPageReply).isEmpty())
-			{
 				KVI_OPTION_STRING(KviOption_stringCtcpPageReply) = KVI_DEFAULT_CTCP_PAGE_REPLY;
-			}
+
 			replyCtcp(msg,KVI_OPTION_STRING(KviOption_stringCtcpPageReply));
 			if(KVI_OPTION_BOOL(KviOption_boolShowDialogOnCtcpPage))
 			{
@@ -1575,7 +1574,7 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 
 	decoded = extractCtcpParameter(decoded.toUtf8().data(),szRemoteFile,true);
 	decoded = extractCtcpParameter(decoded.toUtf8().data(),szGender,true);
-	szRemoteFile.trimmed();
+	szRemoteFile = szRemoteFile.trimmed();
 
 	bool bPrivate = IS_ME(msg->msg,msg->szTarget);
 

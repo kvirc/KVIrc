@@ -465,7 +465,7 @@ ipv6_failure:
 					// Ok...parse the request
 					KviCString szReq = r->m_szData.left(idx);
 					r->m_szData.cutLeft(idx + 1);
-					szReq.trimmed();
+					szReq.trim();
 
 					if(szReq.hasData())
 					{

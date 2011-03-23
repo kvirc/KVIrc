@@ -43,7 +43,7 @@ namespace KviCommandFormatter
 			} else {
 				// we pretend this line to be empty
 				KviCString szTmp = *(*pszArray);
-				szTmp.trimmed();
+				szTmp.trim();
 				if(szTmp.hasData())
 					return false;
 				*(*pszArray) = ""; // set it to empty also in the main buffer
@@ -143,7 +143,7 @@ namespace KviCommandFormatter
 
 	void bufferFromBlock(KviCString & szBuffer)
 	{
-		szBuffer.trimmed();
+		szBuffer.trim();
 
 		if((*(szBuffer.ptr()) == '{') && szBuffer.lastCharIs('}'))
 		{
@@ -154,7 +154,7 @@ namespace KviCommandFormatter
 
 		unindent(szBuffer);
 
-		szBuffer.trimmed();
+		szBuffer.trim();
 	}
 
 	void bufferFromBlock(QString & szBuffer)
