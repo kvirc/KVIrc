@@ -1,5 +1,5 @@
-#ifndef _KviTranslationEntry_h_
-#define _KviTranslationEntry_h_
+#ifndef _KVITRANSLATIONENTRY_H_
+#define _KVITRANSLATIONENTRY_H_
 //=============================================================================
 //
 //   File : KviTranslationEntry.h
@@ -26,57 +26,55 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
+/**
+* \file KviTranslationEntry.h
+* \author Szymon Stefanek
+* \brief Holds the translation strings
+* 
+* This file was originally part of KviLocale.h
+*/
 
+#include "kvi_settings.h"
 #include "KviHeapObject.h"
 #include "KviCString.h"
 
 #include <QString>
 
-///
-/// \class KviTranslationEntry
-/// \brief The KviTranslationEntry class
-///
-/// This class...
-///
+/**
+* \class KviTranslationEntry
+* \brief The KviTranslationEntry class
+*
+* This class holds the translation
+*/
 class KVILIB_API KviTranslationEntry : public KviHeapObject
 {
 	friend class KviMessageCatalogue;
 private:
-	KviCString m_szKey;
-	KviCString m_szEncodedTranslation;
-	QString * m_pQTranslation;
+	KviCString   m_szKey;
+	KviCString   m_szEncodedTranslation;
+	QString    * m_pTranslation;
 public:
+	/**
+	* \brief Creates an instance of KviTranslationEntry
+	* \param pcKey The string to translate from
+	* \param iKeyLen The length of the string
+	* \param pcTr The translated string
+	* \param iTrLen The length of the translation
+	* \return KviTranslationEntry
+	*/
+	KviTranslationEntry(char * pcKey, int iKeyLen, char * pcTr, int iTrLen);
 
-	///
-	/// Creates an instance of KviTranslationEntry
-	///
-	KviTranslationEntry(char * keyptr,int keylen,char * trptr,int trlen)
-		: m_szKey(keyptr,keylen),
-		m_szEncodedTranslation(trptr,trlen)
-	{
-		m_pQTranslation = NULL;
-	}
+	/**
+	* \brief Creates an instance of KviTranslationEntry
+	* \param pcKeyAndTr The string to translate from
+	* \return KviTranslationEntry
+	*/
+	KviTranslationEntry(const char * pcKeyAndTr);
 
-	KviTranslationEntry(const char * keyandtr)
-		: m_szKey(keyandtr),
-		m_szEncodedTranslation(keyandtr)
-	{
-		m_pQTranslation = NULL;
-	}
+	/**
+	* \brief Destroys the instance of KviTranslationEntry and frees all the relevant resources
+	*/
+	~KviTranslationEntry();
+};
 
-	///
-	/// Destroys the instance of KviTranslationEntry
-	/// and frees all the relevant resources
-	///
-	~KviTranslationEntry()
-	{
-		if(m_pQTranslation)
-			delete m_pQTranslation;
-	}
-
-}; // class KviTranslationEntry
-
-
-
-#endif //!_KviTranslationEntry_h_
+#endif //_KVITRANSLATIONENTRY_H_

@@ -30,20 +30,20 @@
 #define _KVI_LOCALE_CPP_
 #include "KviLocale.h"
 
-#include <QApplication>
-#include <QtGlobal>
-#include <QTextCodec>
-#include <QDir>
-#include <QLocale>
-#include <QByteArray>
-#include <QString>
-
 #include "KviQString.h"
 #include "KviEnvironment.h"
 #include "KviFileUtils.h"
 #include "KviFile.h"
 #include "KviPointerHashTable.h"
 #include "KviTranslator.h"
+
+#include <QtGlobal>
+#include <QApplication>
+#include <QTextCodec>
+#include <QDir>
+#include <QLocale>
+#include <QByteArray>
+
 
 // TODO: Convert KviLocale to a full featured singleton class with member variables.
 
@@ -54,7 +54,6 @@ static KviTranslator * g_pTranslator = NULL;
 static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict = NULL;
 static QTextCodec * g_pUtf8TextCodec = NULL;
 static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path list
-
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
@@ -322,7 +321,7 @@ namespace KviLocale
 		0
 	};
 
-	static EncodingDescription supported_encodings[]=
+	static EncodingDescription supported_encodings[] =
 	{
 		// Unicode
 		{ "UTF-8"                , 0 , 0 , 0, "8-bit Unicode" },
@@ -485,21 +484,20 @@ namespace KviLocale
 		return &(supported_encodings[iIdx]);
 	}
 
-	QTextCodec * codecForName(const char * szName)
+	QTextCodec * codecForName(const char * pcName)
 	{
-		KviCString szTmp = szName;
+		KviCString szTmp = pcName;
+		bool bSendUtf8;
 
-		int idx = szTmp.findFirstIdx('[');
-		if(idx != -1)
+		int iIdx = szTmp.findFirstIdx('[');
+		if(iIdx != -1)
 		{
 			// Might be a composite codec: either UTF-8 [child codec] or child codec [UTF-8]
-			KviSmartTextCodec * c = g_pSmartCodecDict->find(szName);
-			if(c)
-				return c; // got cached copy
+			KviSmartTextCodec * pCodec = g_pSmartCodecDict->find(pcName);
+			if(pCodec)
+				return pCodec; // got cached copy
 
-			bool bSendUtf8;
-			
-			if(kvi_strEqualCIN("UTF-8 [",szName,7))
+			if(kvi_strEqualCIN("UTF-8 [",pcName,7))
 			{
 				// Likely a smart codec that sends UTF-8
 				szTmp.replaceAll("UTF-8 [","");
@@ -514,24 +512,23 @@ namespace KviLocale
 			QTextCodec * pChildCodec = QTextCodec::codecForName(szTmp.ptr());
 			if(pChildCodec)
 			{
-				c = new KviSmartTextCodec(szName,pChildCodec,bSendUtf8);
+				pCodec = new KviSmartTextCodec(pcName,pChildCodec,bSendUtf8);
 	
-				if(c->ok())
+				if(pCodec->ok())
 				{
-					g_pSmartCodecDict->replace(szName,c);
-					return c;
+					g_pSmartCodecDict->replace(pcName,pCodec);
+					return pCodec;
 				}
 
-				delete c;
+				delete pCodec;
 			} else {
 				// The name of the child codec was invalid: can't create such a smart codec.
 				// We probably screwed up the guess above related to the [ char.
 				// This code path is also triggered by the yircfuzzer by specifying completly invalid codec names.
 			}
-
 		}
 
-		return QTextCodec::codecForName(szName);
+		return QTextCodec::codecForName(pcName);
 	}
 
 	const KviCString & localeName()
@@ -539,32 +536,32 @@ namespace KviLocale
 		return g_szLang;
 	}
 
-	KviMessageCatalogue * loadCatalogue(const QString &name,const QString &szLocaleDir)
+	KviMessageCatalogue * loadCatalogue(const QString & szName, const QString & szLocaleDir)
 	{
-		//qDebug("Looking up catalogue %s",name);
-		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(name.toUtf8().data());
+		//qDebug("Looking up catalogue %s",szName.toUtf8().data());
+		QString szBuffer;
+
+		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(szName.toUtf8().data());
 		if(pCatalogue)
 			return pCatalogue; // already loaded
 
-		QString szBuffer;
-
-		if(!findCatalogue(szBuffer,name,szLocaleDir))
+		if(!findCatalogue(szBuffer,szName,szLocaleDir))
 			return NULL;
 
 		pCatalogue = new KviMessageCatalogue();
 		if(pCatalogue->load(szBuffer))
 		{
-			g_pCatalogueDict->insert(name.toUtf8().data(),pCatalogue);
+			g_pCatalogueDict->insert(szName.toUtf8().data(),pCatalogue);
 			return pCatalogue;
 		}
 		delete pCatalogue;
 		return NULL;
 	}
 
-	bool unloadCatalogue(const QString &name)
+	bool unloadCatalogue(const QString & szName)
 	{
-		//qDebug("Unloading catalogue : %s",name);
-		return g_pCatalogueDict->remove(name.toUtf8().data());
+		//qDebug("Unloading catalogue: %s",szName.toUtf8().data());
+		return g_pCatalogueDict->remove(szName.toUtf8().data());
 	}
 
 	bool findCatalogue(QString & szBuffer, const QString & szName,const QString & szLocaleDir)
@@ -619,27 +616,17 @@ namespace KviLocale
 		return false;
 	}
 
-	//
-	// This function attempts to determine the current locale
-	// and then load the corresponding translation file
-	// from the KVIrc locale directory
-	// Returns true if the locale was correctly set
-	// i.e. the locale is C or POSIX (no translation needed)
-	//     or the locale is correctly defined and the
-	//     translation map was sucesfully loaded
-	//
-
-	void init(QApplication * app,const QString &localeDir,const QString& forceLocaleDir)
+	void init(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
 	{
 		// first of all try to find out the current locale
-		g_szLang="";
-		QString szLangFile=QString("%1/%2").arg(forceLocaleDir, KVI_FORCE_LOCALE_FILE_NAME);
+		g_szLang = "";
+		QString szLangFile = QString("%1/%2").arg(szForceLocaleDir, KVI_FORCE_LOCALE_FILE_NAME);
 
 		if(KviFileUtils::fileExists(szLangFile))
 		{
 			QString szTmp;
 			KviFileUtils::readFile(szLangFile,szTmp);
-			g_szLang=szTmp;
+			g_szLang = szTmp;
 		}
 		if(g_szLang.isEmpty())
 			g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
@@ -653,7 +640,7 @@ namespace KviLocale
 			g_szLang = "en";
 		g_szLang.trim();
 
-		g_szDefaultLocalePath = localeDir;
+		g_szDefaultLocalePath = szLocaleDir;
 
 		// the main catalogue is supposed to be kvirc_<language>.mo
 		g_pMainCatalogue = new KviMessageCatalogue();
@@ -670,11 +657,11 @@ namespace KviLocale
 		if(g_szLang.hasData())
 		{
 			QString szBuffer;
-			if(findCatalogue(szBuffer,"kvirc",localeDir))
+			if(findCatalogue(szBuffer,"kvirc",szLocaleDir))
 			{
 				g_pMainCatalogue->load(szBuffer);
-				g_pTranslator = new KviTranslator(app,"kvirc_translator");
-				app->installTranslator(g_pTranslator);
+				g_pTranslator = new KviTranslator(pApp);
+				pApp->installTranslator(g_pTranslator);
 			} else {
 				KviCString szTmp = g_szLang;
 				szTmp.cutFromFirst('.');
@@ -700,7 +687,7 @@ namespace KviLocale
 		//if(!g_pTextCodec)g_pTextCodec = QTextCodec::codecForLocale();
 	}
 
-	void done(QApplication * app)
+	void done(QApplication * pApp)
 	{
 		delete g_pMainCatalogue;
 		delete g_pCatalogueDict;
@@ -710,129 +697,52 @@ namespace KviLocale
 		g_pSmartCodecDict = 0;
 		if(g_pTranslator)
 		{
-			app->removeTranslator(g_pTranslator);
+			pApp->removeTranslator(g_pTranslator);
 			delete g_pTranslator;
 			g_pTranslator = 0;
 		}
 	}
 
-	KviMessageCatalogue * getLoadedCatalogue(const QString& name)
+	KviMessageCatalogue * getLoadedCatalogue(const QString & szName)
 	{
-		return g_pCatalogueDict->find(name.toUtf8().data());
+		return g_pCatalogueDict->find(szName.toUtf8().data());
 	}
 
-
-	const char * translate(const char * text,const char * context)
+	const char * translate(const char * pcText, const char * pcContext)
 	{
-		if(!context)
-			return g_pMainCatalogue->translate(text);
+		if(!pcContext)
+			return g_pMainCatalogue->translate(pcText);
 
-		KviMessageCatalogue * c = g_pCatalogueDict->find(context);
-		if(!c)
+		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
+		if(!pCatalogue)
 		{
-			c = loadCatalogue(QString::fromUtf8(context),g_szDefaultLocalePath);
-			if(!c)
+			pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
+			if(!pCatalogue)
 			{
 				// Fake it....
-				c = new KviMessageCatalogue();
-				g_pCatalogueDict->insert(context,c);
+				pCatalogue = new KviMessageCatalogue();
+				g_pCatalogueDict->insert(pcContext,pCatalogue);
 			}
 		}
-		return c->translate(text);
+		return pCatalogue->translate(pcText);
 	}
 
-	const QString & translateToQString(const char * text,const char * context)
+	const QString & translateToQString(const char * pcText, const char * pcContext)
 	{
-		if(!context)
-			return g_pMainCatalogue->translateToQString(text);
+		if(!pcContext)
+			return g_pMainCatalogue->translateToQString(pcText);
 		
-		KviMessageCatalogue * c = g_pCatalogueDict->find(context);
-		if(!c)
+		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
+		if(!pCatalogue)
 		{
-			c = loadCatalogue(QString::fromUtf8(context),g_szDefaultLocalePath);
-			if(!c)
+			pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
+			if(!pCatalogue)
 			{
 				// Fake it....
-				c = new KviMessageCatalogue();
-				g_pCatalogueDict->insert(context,c);
+				pCatalogue = new KviMessageCatalogue();
+				g_pCatalogueDict->insert(pcContext,pCatalogue);
 			}
 		}
-		return c->translateToQString(text);
+		return pCatalogue->translateToQString(pcText);
 	}
 }
-
-
-#if 0
-
-// a fake table that will force these translations
-// to be included in the *.pot file
-
-static QString fake_translations_table[]=
-{
-	// global
-	__tr2qs("OK"),
-	__tr2qs("Cancel"),
-	// color dialog
-	__tr2qs("Select color"),
-	__tr2qs("&Basic colors"),
-	__tr2qs("&Custom colors"),
-	__tr2qs("&Red"),
-	__tr2qs("&Green"),
-	__tr2qs("Bl&ue"),
-	__tr2qs("&Define Custom Colors >>"),
-	__tr2qs("&Add to Custom Colors"),
-	// font dialog
-	__tr2qs("Select Font"),
-	__tr2qs("&Font"),
-	__tr2qs("Font st&yle"),
-	__tr2qs("&Size"),
-	__tr2qs("Sample"),
-	__tr2qs("Effects"),
-	__tr2qs("Stri&keout"),
-	__tr2qs("&Underline"),
-	__tr2qs("Scr&ipt"),
-	//File selector
-	__tr2qs("Parent Directory"),
-	__tr2qs("Back"),
-	__tr2qs("Forward"),
-	__tr2qs("Reload"),
-	__tr2qs("New Directory"),
-	__tr2qs("Bookmarks"),
-	__tr2qs("Add Bookmark"),
-	__tr2qs("&Edit Bookmarks"),
-	__tr2qs("New Bookmark Folder..."),
-	__tr2qs("Configure"),
-	__tr2qs("Sorting"),
-	__tr2qs("By Name"),
-	__tr2qs("By Date"),
-	__tr2qs("By Size"),
-	__tr2qs("Reverse"),
-	__tr2qs("Directories First"),
-	__tr2qs("Case Insensitive"),
-	__tr2qs("Short View"),
-	__tr2qs("Detailed View"),
-	__tr2qs("Show Hidden Files"),
-	__tr2qs("Show Quick Access Navigation Panel"),
-	__tr2qs("Show Preview"),
-	__tr2qs("Separate Directories"),
-	__tr2qs("Often used directories"),
-	__tr2qs("Desktop"),
-	__tr2qs("Home Directory"),
-	__tr2qs("Floppy"),
-	__tr2qs("Temporary Files"),
-	__tr2qs("Network"),
-	__tr2qs("New Directory..."),
-	__tr2qs("Delete"),
-	__tr2qs("Thumbnail Previews"),
-	__tr2qs("Large Icons"),
-	__tr2qs("Small Icons"),
-	__tr2qs("Properties..."),
-	__tr2qs("&Automatic Preview"),
-	__tr2qs("&Preview"),
-	__tr2qs("&Location:"),
-	__tr2qs("&Filter:"),
-	__tr2qs("All Files"),
-	__tr2qs("&OK"),
-	__tr2qs("&Cancel")
-}
-#endif

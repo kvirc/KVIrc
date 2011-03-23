@@ -62,13 +62,15 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	int i = 0;
 	int iTextMatch = 0, iSrvMatch=0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
-	while(d->szName)
+	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))iTextMatch = i + 1;
-		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding)))iSrvMatch = i + 1;
+		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))
+			iTextMatch = i + 1;
+		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding)))
+			iSrvMatch = i + 1;
 
-		m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->szName);
-		m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->szName);
+		m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->pcName);
+		m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->pcName);
 		i++;
 		d = KviLocale::encodingDescription(i);
 	}

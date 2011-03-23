@@ -27,8 +27,8 @@
 #include "KviTranslator.h"
 #include "KviLocale.h"
 
-KviTranslator::KviTranslator(QObject * par,const char *)
-: QTranslator(par)
+KviTranslator::KviTranslator(QObject * pParent)
+: QTranslator(pParent)
 {
 }
 
@@ -36,10 +36,9 @@ KviTranslator::~KviTranslator()
 {
 }
 
-QString KviTranslator::translate(const char *,const char * message,const char *) const
+QString KviTranslator::translate(const char *, const char * pcMessage, const char *) const
 {
 	// We currently ignore contexts and comments for qt translations
 	// FIXME: Could use the context and lookup in the context catalogue first, then in the main one.
-	return g_pMainCatalogue->translateToQString(message);
+	return g_pMainCatalogue->translateToQString(pcMessage);
 }
-

@@ -69,7 +69,7 @@
 */
 
 // The magic number of the GNU message catalog format.
-#define KVI_LOCALE_MAGIC 0x950412de
+#define KVI_LOCALE_MAGIC         0x950412de
 #define KVI_LOCALE_MAGIC_SWAPPED 0xde120495
 
 // Revision number of the currently used .mo (binary) file format.
@@ -110,7 +110,7 @@ struct GnuMoStringDescriptor
 
 // HELPERS
 
-static int somePrimeNumbers[90]=
+static int somePrimeNumbers[90] =
 {
 	257 , 521 , 769 , 1031, 1087, 1091, 1103, 1117, 1123, 1151, // Incomplete *.mo files
 	1163, 1171, 1181, 1193, 1201, 1213, 1217, 1223, 1229, 1231, // Complete *.mo files
@@ -123,14 +123,15 @@ static int somePrimeNumbers[90]=
 	2903, 3121, 3329, 3331, 3767, 4127, 5051, 6089, 7039, 9973
 };
 
-int kvi_getFirstBiggerPrime(int number)
+int kvi_getFirstBiggerPrime(int iNumber)
 {
-	for(int i=0;i<90;i++){
-		if(somePrimeNumbers[i] >= number)return somePrimeNumbers[i];
+	for(int i = 0; i < 90; i++)
+	{
+		if(somePrimeNumbers[i] >= iNumber)
+			return somePrimeNumbers[i];
 	}
 	return 9973; //error!
 }
-
 
 KviMessageCatalogue::KviMessageCatalogue()
 {
@@ -148,9 +149,9 @@ KviMessageCatalogue::~KviMessageCatalogue()
 		delete m_pMessages;
 }
 
-bool KviMessageCatalogue::load(const QString& name)
+bool KviMessageCatalogue::load(const QString & szName)
 {
-	QString szCatalogueFile(name);
+	QString szCatalogueFile(szName);
 
 	// Try to load the header
 	KviFile f(szCatalogueFile);
@@ -191,83 +192,83 @@ bool KviMessageCatalogue::load(const QString& name)
 		return false;
 	}
 
-	int numberOfStrings = KVI_SWAP_IF_NEEDED(bMustSwap,hdr.nstrings);
+	int iStringsNum = KVI_SWAP_IF_NEEDED(bMustSwap,hdr.nstrings);
 
-	if(numberOfStrings <= 0)
+	if(iStringsNum <= 0)
 	{
 		qDebug("KviLocale: No translated messages found in file %s",szCatalogueFile.toUtf8().data());
 		f.close();
 		return false;
 	}
 
-	if(numberOfStrings >= 9972)
+	if(iStringsNum >= 9972)
 	{
 		qDebug("Number of strings too big...sure that it is a KVIrc catalog file ?");
-		numberOfStrings = 9972;
+		iStringsNum = 9972;
 	}
 
 	// return back
 	f.seek(0);
 
-	unsigned int fSize = f.size();
-	char * buffer = (char *)KviMemory::allocate(fSize);
+	unsigned int uSize = f.size();
+	char * pcBuffer = (char *)KviMemory::allocate(uSize);
 
 	// FIXME: maybe read it in blocks eh ?
-	if(f.read(buffer,fSize) < (int)fSize)
+	if(f.read(pcBuffer,uSize) < (int)uSize)
 	{
 		qDebug("KviLocale: Error while reading the translation file %s",szCatalogueFile.toUtf8().data());
-		KviMemory::free(buffer);
+		KviMemory::free(pcBuffer);
 		f.close();
 		return false;
 	}
 
 	// Check for broken *.mo files
-	if(fSize < (24 + (sizeof(GnuMoStringDescriptor) * numberOfStrings)))
+	if(uSize < (24 + (sizeof(GnuMoStringDescriptor) * iStringsNum)))
 	{
 		qDebug("KviLocale: Broken translation file %s (too small for all descriptors)",szCatalogueFile.toUtf8().data());
-		KviMemory::free(buffer);
+		KviMemory::free(pcBuffer);
 		f.close();
 		return false;
 	}
 
-	GnuMoStringDescriptor * origDescriptor  = (GnuMoStringDescriptor *)(buffer + KVI_SWAP_IF_NEEDED(bMustSwap,hdr.orig_tab_offset));
-	GnuMoStringDescriptor * transDescriptor = (GnuMoStringDescriptor *)(buffer + KVI_SWAP_IF_NEEDED(bMustSwap,hdr.trans_tab_offset));
+	GnuMoStringDescriptor * pOrigDescriptor  = (GnuMoStringDescriptor *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap,hdr.orig_tab_offset));
+	GnuMoStringDescriptor * pTransDescriptor = (GnuMoStringDescriptor *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap,hdr.trans_tab_offset));
 
 	// Check again for broken *.mo files
-	int expectedFileSize = KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[numberOfStrings - 1].offset) +
-			KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[numberOfStrings - 1].length);
+	int iExpectedFileSize = KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[iStringsNum - 1].offset) +
+			KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[iStringsNum - 1].length);
 
-	if(fSize < (unsigned int)expectedFileSize)
+	if(uSize < (unsigned int)iExpectedFileSize)
 	{
 		qDebug("KviLocale: Broken translation file %s (too small for all the message strings)",szCatalogueFile.toUtf8().data());
-		KviMemory::free(buffer);
+		KviMemory::free(pcBuffer);
 		f.close();
 		return false;
 	}
 
 	// Ok...we can run now
 
-	int dictSize = kvi_getFirstBiggerPrime(numberOfStrings);
+	int iDictSize = kvi_getFirstBiggerPrime(iStringsNum);
 	if(m_pMessages)
 		delete m_pMessages;
-	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(dictSize,true,false); // dictSize, case sensitive, don't copy keys
+	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(iDictSize,true,false); // dictSize, case sensitive, don't copy keys
 	m_pMessages->setAutoDelete(true);
 
 	KviCString szHeader;
 
-	for(int i=0;i < numberOfStrings;i++)
+	for(int i = 0; i < iStringsNum; i++)
 	{
 		// FIXME: "Check for NULL inside strings here ?"
-		//qDebug("original seems to be at %u and %u byttes long",KVI_SWAP_IF_NEEDED(bMustSwap,origDescriptor[i].offset),
-		//	KVI_SWAP_IF_NEEDED(bMustSwap,origDescriptor[i].length));
-		//qDebug("translated seems to be at %u and %u byttes long",KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[i].offset),
-		//	KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[i].length));
+		//qDebug("original seems to be at %u and %u byttes long",KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].offset),
+		//	KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].length));
+		//qDebug("translated seems to be at %u and %u byttes long",KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].offset),
+		//	KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].length));
 
 		KviTranslationEntry * e = new KviTranslationEntry(
-			(char *)(buffer + KVI_SWAP_IF_NEEDED(bMustSwap,origDescriptor[i].offset)),
-			KVI_SWAP_IF_NEEDED(bMustSwap,origDescriptor[i].length),
-			(char *)(buffer + KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[i].offset)),
-			KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[i].length));
+			(char *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].offset)),
+			KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].length),
+			(char *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].offset)),
+			KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].length));
 
 		// In some (or all?) *.mo files the first string
 		// is zero bytes long and the translated one contains
@@ -282,7 +283,7 @@ bool KviMessageCatalogue::load(const QString& name)
 		m_pMessages->insert(e->m_szKey.ptr(),e);
 	}
 
-	KviMemory::free(buffer);
+	KviMemory::free(pcBuffer);
 	f.close();
 
 	m_pTextCodec = 0;
@@ -291,10 +292,10 @@ bool KviMessageCatalogue::load(const QString& name)
 	if(szHeader.hasData())
 	{
 		// find "charset=*\n"
-		int idx = szHeader.findFirstIdx("charset=");
-		if(idx != -1)
+		int iIdx = szHeader.findFirstIdx("charset=");
+		if(iIdx != -1)
 		{
-			szHeader.cutLeft(idx + 8);
+			szHeader.cutLeft(iIdx + 8);
 			szHeader.cutFromFirst('\n');
 			szHeader.trim();
 			m_pTextCodec = KviLocale::codecForName(szHeader.ptr());
@@ -317,26 +318,27 @@ bool KviMessageCatalogue::load(const QString& name)
 	return true;
 }
 
-const char * KviMessageCatalogue::translate(const char *text)
+const char * KviMessageCatalogue::translate(const char * pcText)
 {
-	KviTranslationEntry * aux = m_pMessages->find(text);
-	if(aux)return aux->m_szEncodedTranslation.ptr();
-	return text;
+	KviTranslationEntry * pAux = m_pMessages->find(pcText);
+	if(pAux)
+		return pAux->m_szEncodedTranslation.ptr();
+	return pcText;
 }
 
-const QString & KviMessageCatalogue::translateToQString(const char *text)
+const QString & KviMessageCatalogue::translateToQString(const char * pcText)
 {
-	KviTranslationEntry * aux = m_pMessages->find(text);
-	if(aux)
+	KviTranslationEntry * pAux = m_pMessages->find(pcText);
+	if(pAux)
 	{
-		if(aux->m_pQTranslation)return *(aux->m_pQTranslation);
-		aux->m_pQTranslation = new QString(m_pTextCodec->toUnicode(aux->m_szEncodedTranslation.ptr()));
-		return *(aux->m_pQTranslation);
+		if(pAux->m_pTranslation)
+			return *(pAux->m_pTranslation);
+		pAux->m_pTranslation = new QString(m_pTextCodec->toUnicode(pAux->m_szEncodedTranslation.ptr()));
+		return *(pAux->m_pTranslation);
 	}
 	// no translation is available: let's avoid continous string decoding
-	aux = new KviTranslationEntry(text);
-	m_pMessages->insert(aux->m_szKey.ptr(),aux);
-	aux->m_pQTranslation = new QString(m_pTextCodec->toUnicode(aux->m_szEncodedTranslation.ptr()));
-	return *(aux->m_pQTranslation);
+	pAux = new KviTranslationEntry(pcText);
+	m_pMessages->insert(pAux->m_szKey.ptr(),pAux);
+	pAux->m_pTranslation = new QString(m_pTextCodec->toUnicode(pAux->m_szEncodedTranslation.ptr()));
+	return *(pAux->m_pTranslation);
 }
-

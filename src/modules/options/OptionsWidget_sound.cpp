@@ -104,10 +104,11 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	int iMatch = 0;
 
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
-	while(d->szName)
+	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding)))iMatch = i + 1;
-		m_pTagsEncodingCombo->insertItem(m_pTagsEncodingCombo->count(),d->szName);
+		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding)))
+			iMatch = i + 1;
+		m_pTagsEncodingCombo->insertItem(m_pTagsEncodingCombo->count(),d->pcName);
 		i++;
 		d = KviLocale::encodingDescription(i);
 	}

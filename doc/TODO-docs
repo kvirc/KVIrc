@@ -197,6 +197,20 @@
 ++KviUserIdentityManager.h
 
 
+#################
+# kvilib/locale #
+#################
+
+++KviLocale.cpp
++-KviLocale.h
+++KviMessageCatalogue.cpp
+++KviMessageCatalogue.h
+++KviTranslationEntry.cpp
+++KviTranslationEntry.h
+++KviTranslator.cpp
+++KviTranslator.h 
+
+
 ##############
 # kvilib/net #
 ##############
@@ -225,8 +239,6 @@
   KviByteOrder.h
   KviEnvironment.cpp
   KviEnvironment.h
-  KviLocale.cpp
-  KviLocale.h
   KviThread.cpp
   KviThread.h
   KviTimeUtils.cpp

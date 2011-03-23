@@ -742,10 +742,10 @@ void KviWindow::createSystemTextEncodingPopup()
 		// third level menus (encodings)
 		uint i = 0;
 		KviLocale::EncodingDescription * pDesc = KviLocale::encodingDescription(i);
-		while(pDesc->szName)
+		while(pDesc->pcName)
 		{
-			szTmp = QString("%1 (%2)").arg(pDesc->szName,pDesc->szDescription);
-			if(KviQString::equalCI(m_szTextEncoding,pDesc->szName))
+			szTmp = QString("%1 (%2)").arg(pDesc->pcName,pDesc->pcDescription);
+			if(KviQString::equalCI(m_szTextEncoding,pDesc->pcName))
 			{
 				g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + szTmp);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setCheckable(true);
@@ -790,11 +790,11 @@ void KviWindow::createSystemTextEncodingPopup()
 		} else {
 			int i = 0;
 			KviLocale::EncodingDescription * pDesc = KviLocale::encodingDescription(i);
-			while(pDesc->szName)
+			while(pDesc->pcName)
 			{
-				if(KviQString::equalCI(m_szTextEncoding,pDesc->szName))
+				if(KviQString::equalCI(m_szTextEncoding,pDesc->pcName))
 				{
-					szTmp = QString("%1 (%2)").arg(pDesc->szName,pDesc->szDescription);
+					szTmp = QString("%1 (%2)").arg(pDesc->pcName,pDesc->pcDescription);
 					g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + szTmp);
 					g_pMdiWindowSystemTextEncodingCurrentAction->setCheckable(true);
 					g_pMdiWindowSystemTextEncodingCurrentAction->setChecked(true);

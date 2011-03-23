@@ -226,13 +226,15 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	QString tmp;
 	m_pEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
 	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
-	while(d->szName)
+	while(d->pcName)
 	{
-		tmp = QString("%1 (%2)").arg(d->szName,d->szDescription);
+		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
 		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
 		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
-		if(KviQString::equalCI(d->szName,n->encoding()))srvcurrent = i + 1;
-		if(KviQString::equalCI(d->szName,n->textEncoding()))txtcurrent = i + 1;
+		if(KviQString::equalCI(d->pcName,n->encoding()))
+			srvcurrent = i + 1;
+		if(KviQString::equalCI(d->pcName,n->textEncoding()))
+			txtcurrent = i + 1;
 		i = i + 1;
 		d = KviLocale::encodingDescription(i);
 	}
@@ -466,7 +468,7 @@ void IrcNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 			n->setEncoding(QString());
 		} else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
-			n->setEncoding(d->szName);
+			n->setEncoding(d->pcName);
 		}
 	}
 	if(m_pTextEncodingEditor)
@@ -476,7 +478,7 @@ void IrcNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 			n->setTextEncoding(QString());
 		} else {
 			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
-			n->setTextEncoding(dd->szName);
+			n->setTextEncoding(dd->pcName);
 		}
 	}
 	if(m_pChannelListSelector)
@@ -780,13 +782,15 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	QString tmp;
 	m_pEncodingEditor->addItem(__tr2qs_ctx("Use Network Encoding","options"));
 	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use Network Encoding","options"));
-	while(d->szName)
+	while(d->pcName)
 	{
-		tmp = QString("%1 (%2)").arg(d->szName,d->szDescription);
+		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
 		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
 		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
-		if(KviQString::equalCI(d->szName,s->encoding()))srvcurrent = i + 1;
-		if(KviQString::equalCI(d->szName,s->textEncoding()))txtcurrent = i + 1;
+		if(KviQString::equalCI(d->pcName,s->encoding()))
+			srvcurrent = i + 1;
+		if(KviQString::equalCI(d->pcName,s->textEncoding()))
+			txtcurrent = i + 1;
 		i = i + 1;
 		d = KviLocale::encodingDescription(i);
 	}
@@ -1081,7 +1085,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 			s->setEncoding(QString());
 		} else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
-			s->setEncoding(d->szName);
+			s->setEncoding(d->pcName);
 		}
 	}
 	if(m_pTextEncodingEditor)
@@ -1091,7 +1095,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 			s->setTextEncoding(QString());
 		} else {
 			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
-			s->setTextEncoding(dd->szName);
+			s->setTextEncoding(dd->pcName);
 		}
 	}
 	s->setIp("");

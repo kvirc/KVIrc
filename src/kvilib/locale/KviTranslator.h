@@ -1,5 +1,5 @@
-#ifndef _KviTranslator_h_
-#define _KviTranslator_h_
+#ifndef _KVITRANSLATOR_H_
+#define _KVITRANSLATOR_H_
 //=============================================================================
 //
 //   File : KviTranslator.h
@@ -26,39 +26,49 @@
 //
 //=============================================================================
 
+/**
+* \file KviTranslator.h
+* \author Szymon Stefanek
+* \brief KVIrc translator class
+* 
+* This file was originally part of KviLocale.h
+*/
+
 #include "kvi_settings.h"
 
 #include <QTranslator>
 #include <QString>
 
 
-///
-/// \class KviTranslator
-/// \brief The KviTranslator class
-///
-/// This class...
-///
+/**
+* \class KviTranslator
+* \brief The KviTranslator class
+*/
 class KVILIB_API KviTranslator : public QTranslator
 {
 	Q_OBJECT
 public:
 
-	///
-	/// Creates an instance of KviTranslator
-	///
-	KviTranslator(QObject * parent,const char * name);
+	/**
+	* \brief Creates an instance of KviTranslator
+	* \param pParent The parent object
+	* \return KviTranslator
+	*/
+	KviTranslator(QObject * pParent);
 
-	///
-	/// Destroys the instance of KviTranslator
-	/// and frees all the relevant resources
-	///
+	/**
+	* \brief Destroys the instance of KviTranslator and frees all the relevant resources
+	*/
 	virtual ~KviTranslator();
-
 public:
-	virtual QString translate(const char * context,const char * message,const char * comment) const;
+	/**
+	* \brief Decodes the string and returns the current one
+	* \param pcContext Context of Qt translation. Unused by us
+	* \param pcMessage The message to translate
+	* \param pcComment Comment of Qt translation. Unused by us
+	* \return QString
+	*/
+	virtual QString translate(const char * pcContext, const char * pcMessage, const char * pcComment) const;
+};
 
-
-}; // class KviTranslator
-
-
-#endif //!_KviTranslator_h_
+#endif //_KVITRANSLATOR_H_

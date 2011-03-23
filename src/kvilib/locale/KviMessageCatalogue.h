@@ -1,5 +1,5 @@
-#ifndef _KviMessageCatalogue_h_
-#define _KviMessageCatalogue_h_
+#ifndef _KVIMESSAGECATALOGUE_H_
+#define _KVIMESSAGECATALOGUE_H_
 //=============================================================================
 //
 //   File : KviMessageCatalogue.h
@@ -27,7 +27,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
 #include "KviHeapObject.h"
 
 #include <QString>
@@ -35,40 +34,52 @@
 template<typename A,typename B> class KviPointerHashTable;
 
 class KviTranslationEntry;
-
-
 class QTextCodec;
 
-///
-/// \class KviMessageCatalogue
-/// \brief The KviMessageCatalogue class
-///
-/// This class...
-///
+/**
+* \class KviMessageCatalogue
+* \author Szymon Stefanek
+* \brief The KviMessageCatalogue class
+*
+* This file was originally part of KviLocale.h
+*/
 class KVILIB_API KviMessageCatalogue : public KviHeapObject
 {
 public:
-
-	///
-	/// Creates an instance of KviMessageCatalogue
-	///
+	/**
+	* \brief Creates an instance of KviMessageCatalogue
+	* \return KviMessageCatalogue
+	*/
 	KviMessageCatalogue();
 
-	///
-	/// Destroys the instance of KviMessageCatalogue
-	/// and frees all the relevant resources
-	///
+	/**
+	* \brief Destroys the instance of KviMessageCatalogue and frees all the relevant resources
+	*/
 	~KviMessageCatalogue();
-
 protected:
 	KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
-	QTextCodec  * m_pTextCodec;
-
+	QTextCodec * m_pTextCodec;
 public:
-	bool load(const QString& name);
-	const char * translate(const char * text);
-	const QString & translateToQString(const char * text);
-}; // class KviMessageCatalogue
+	/**
+	* \brief 
+	* \param szName 
+	* \return bool
+	*/
+	bool load(const QString & szName);
 
+	/**
+	* \brief Translates the string
+	* \param pcText The text to translate
+	* \return const char *
+	*/
+	const char * translate(const char * pcText);
 
-#endif //!_KviMessageCatalogue_h_
+	/**
+	* \brief Translates the string
+	* \param pcText The text to translate
+	* \return const QString &
+	*/
+	const QString & translateToQString(const char * pcText);
+};
+
+#endif //_KVIMESSAGECATALOGUE_H_
