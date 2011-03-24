@@ -182,6 +182,22 @@ void KviIrcSocket::clearOutputQueue(bool bPrivateMessagesOnly)
 		queue_removeAllMessages();
 }
 
+unsigned int KviIrcSocket::outputQueueSize()
+{
+	KviIrcSocketMsgEntry * pMsg = m_pSendQueueTail;
+	if(!pMsg)
+		return 0;
+
+	unsigned int uCount = 0;
+
+	do {
+		uCount++;
+		pMsg = pMsg->next_ptr;
+	} while(pMsg);
+
+	return uCount;
+}
+
 
 void KviIrcSocket::outputSSLMessage(const QString & szMsg)
 {

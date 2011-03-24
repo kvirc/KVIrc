@@ -41,6 +41,7 @@ public:
 	virtual void processData(char * buffer,int len) = 0;
 	virtual bool sendPacket(KviDataBuffer * pData) = 0;
 	virtual bool clearOutputQueue(bool bPrivateMessagesOnly) = 0;
+	virtual unsigned int outputQueueSize() = 0;
 };
 
 #endif //!_KVI_MEXLINKFILTER_H_

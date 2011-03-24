@@ -617,6 +617,11 @@ public:
 	void clearOutputQueue(bool bPrivateMessagesOnly);
 
 	/**
+	* Returns the current size of the output queue.
+	*/
+	unsigned int outputQueueSize();
+
+	/**
 	* \brief This function is part of the networking stack.
 	*
 	* It's called by KviIrcLink OR KviMexLinkFilter when a message is arriving

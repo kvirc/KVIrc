@@ -571,6 +571,34 @@ static bool context_kvs_cmd_clearQueue(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: context.queueSize
+	@type:
+		function
+	@title:
+		$context.queueSize
+	@short:
+		Returns the size of the current server message queue
+	@syntax:
+		<integer> $context.queueSize
+		<integer> $context.queueSize(<irc_context_id:uint>)
+	@description:
+		Returns the number of messages currently in the server message queue.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns 0.
+	@seealso:
+		[cmd]context.clearqueue[/cmd],
+*/
+
+static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
+{
+	GET_CONNECTION_FROM_STANDARD_PARAMS;
+
+	c->returnValue()->setInteger(pConnection ? pConnection->outputQueueSize() : 0);
+
+	return true;
+}
 
 static bool context_module_init(KviModule * m)
 {
@@ -588,6 +616,7 @@ static bool context_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"serverSoftware",context_kvs_fnc_serverSoftware);
 	KVSM_REGISTER_FUNCTION(m,"connectionStartTime",context_kvs_fnc_connectionStartTime);
 	KVSM_REGISTER_FUNCTION(m,"lastMessageTime",context_kvs_fnc_lastMessageTime);
+	KVSM_REGISTER_FUNCTION(m,"queueSize",context_kvs_fnc_queueSize);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearQueue",context_kvs_cmd_clearQueue);
 

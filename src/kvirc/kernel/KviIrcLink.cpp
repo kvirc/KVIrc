@@ -339,6 +339,15 @@ void KviIrcLink::clearOutputQueue(bool bPrivateMessagesOnly)
 	m_pSocket->clearOutputQueue(bPrivateMessagesOnly);
 }
 
+unsigned int KviIrcLink::outputQueueSize()
+{
+	if(!m_pSocket)
+		return 0;
+	if(m_pLinkFilter)
+		return m_pLinkFilter->outputQueueSize();
+	return m_pSocket->outputQueueSize();
+}
+
 
 bool KviIrcLink::sendPacket(KviDataBuffer * pData)
 {

@@ -161,6 +161,11 @@ KviIrcConnection::~KviIrcConnection()
 	m_pRequestQueue->deleteLater();
 }
 
+unsigned int KviIrcConnection::outputQueueSize()
+{
+	return m_pLink->outputQueueSize();
+}
+
 void KviIrcConnection::clearOutputQueue(bool bPrivateMessagesOnly)
 {
 	m_pLink->clearOutputQueue(bPrivateMessagesOnly);

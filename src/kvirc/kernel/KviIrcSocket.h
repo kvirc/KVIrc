@@ -233,7 +233,12 @@ public:
 	* Clears the output queue
 	*/
 	void clearOutputQueue(bool bPrivateMessagesOnly);
-	
+
+	/**
+	* Returns the current size of the output queue.
+	*/
+	unsigned int outputQueueSize();
+
 protected:
 
 #ifdef COMPILE_SSL_SUPPORT
