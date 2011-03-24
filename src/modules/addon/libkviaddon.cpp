@@ -615,6 +615,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		[li]"locale" for translation *.mo files.[/li]
 		[li]"audio" for sound files.[/li]
 		[li]"config" for configuration files.[/li]
+		[li]"help/<language>" for help files.[/li]
 		[/ul]
 		Other target paths are allowed and subdirectories are supported (eg. "pics/myaddon").
 		[files] is a list of filenames or directory names.
