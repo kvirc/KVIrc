@@ -12,7 +12,10 @@ defpopup(highlight)
 		{
 			%:regName = $reguser.match($mask($0))
 			%:beingHl = $reguser.property(%:regName,highlight)
-			%:beingHlTmp = $tmphighlight.isNickHighLighted($0)
+			if($channel)
+				%:beingHlTmp = $tmphighlight.isNickHighLighted($0)
+			else
+				%:beingHlTmp = $false;
 		}
 	}
 
