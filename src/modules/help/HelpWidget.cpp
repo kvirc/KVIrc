@@ -47,11 +47,7 @@ extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include <QtWebKit/QWebView>
 
-#if QT_VERSION >= 0x040600
-	#define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
-#else
-	#define HIGHLIGHT_FLAGS 0
-#endif
+#define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
 
 HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 : QWidget(par)

@@ -63,7 +63,7 @@
 #include "KvsObject_treeWidget.h"
 #include "KvsObject_treeWidgeteItem.h"
 #include "KvsObject_vBox.h"
-#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+#if defined(COMPILE_WEBKIT_SUPPORT)
 #include "KvsObject_webView.h"
 #endif
 #include "KvsObject_widget.h"
@@ -99,7 +99,7 @@ static bool objects_module_cleanup(KviModule *)
 {
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
-	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+	#if defined(COMPILE_WEBKIT_SUPPORT)
 	KvsObject_webView::unregisterSelf();
 	#endif
         KvsObject_memoryBuffer::unregisterSelf();
@@ -807,7 +807,7 @@ static bool objects_module_init(KviModule * m)
         KvsObject_trayIcon::registerSelf();
 	KvsObject_process::registerSelf();
 	KvsObject_memoryBuffer::registerSelf();
-	#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+	#if defined(COMPILE_WEBKIT_SUPPORT)
 	KvsObject_webView::registerSelf();
 	#endif
 	return true;

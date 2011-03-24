@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+#if defined(COMPILE_WEBKIT_SUPPORT)
 #include "object_macros.h"
 #include <QFile>
 #include <QNetworkAccessManager>
@@ -117,5 +117,5 @@ protected slots:
 	void slotReadyRead();
 	void slotReplyFinished();
 };
-#endif
+#endif	// COMPILE_WEBKIT_SUPPORT
 #endif	//!_CLASS_WEBVIEW_H_

@@ -25,7 +25,7 @@
 //
 
 #include "kvi_settings.h"
-#if defined(COMPILE_WEBKIT_SUPPORT) && (QT_VERSION >= 0x040600)
+#if defined(COMPILE_WEBKIT_SUPPORT)
 #include <QtWebKit/QWebView>
 #include <QWebSettings>
 #include <QWebElement>
@@ -637,6 +637,4 @@ void KvsObject_webView::slotDownloadRequest(const QNetworkRequest &r)
 	}
 }
 
-
-#endif
-
+#endif	// COMPILE_WEBKIT_SUPPORT
