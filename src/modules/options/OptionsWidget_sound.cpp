@@ -130,7 +130,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	d = KviLocale::instance()->encodingDescription(i);
 	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))
+		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))
 			iMatch = i + 1;
 		m_pWinampEncodingCombo->insertItem(m_pWinampEncodingCombo->count(),d->pcName);
 		i++;
