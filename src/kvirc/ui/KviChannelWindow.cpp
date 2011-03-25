@@ -1853,7 +1853,10 @@ void KviChannelWindow::preprocessMessage(QString & szMessage)
 
 		// FIXME: Do we REALLY need this ?
 		if(findEntry(*it))
+		{
 			*it = QString("\r!n\r%1\r").arg(*it);
+			continue;
+		}
 
 		if(pServerInfo->supportedChannelTypes().contains(szTmp[0]))
 		{

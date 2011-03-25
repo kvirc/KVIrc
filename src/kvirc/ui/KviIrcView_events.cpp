@@ -208,6 +208,10 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 			if(!console()->connection())
 				return;
 
+			// If there is a channel after the c flag, join that instead (as the text part may contain control codes)
+			if(szLinkCommandPart.length() > 1)
+				szLinkTextPart = szLinkCommandPart.mid(1);
+
 			if(KviChannelWindow * c = console()->connection()->findChannel(szLinkTextPart))
 			{
 				// already there
