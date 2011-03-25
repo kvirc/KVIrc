@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 00:26+0000\n"
+"POT-Creation-Date: 2011-03-25 00:37+0000\n"
 "PO-Revision-Date: 2011-03-18 17:12+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -52,7 +52,7 @@ msgstr "Registro l'addon \"%Q\" con versione %Q"
 msgid "Author"
 msgstr "Autore"
 
-#: src/modules/addon/PackAddonDialog.cpp:623
+#: src/modules/addon/PackAddonDialog.cpp:629
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -123,8 +123,9 @@ msgstr "Errore durante l'installazione dell'addon: %Q"
 #: src/modules/addon/PackAddonDialog.cpp:337
 #: src/modules/addon/PackAddonDialog.cpp:352
 #: src/modules/addon/PackAddonDialog.cpp:365
-#: src/modules/addon/PackAddonDialog.cpp:387
-#: src/modules/addon/PackAddonDialog.cpp:392
+#: src/modules/addon/PackAddonDialog.cpp:384
+#: src/modules/addon/PackAddonDialog.cpp:393
+#: src/modules/addon/PackAddonDialog.cpp:398
 msgid "Export Addon - KVIrc"
 msgstr "Esporta Addon - KVIrc"
 
@@ -136,15 +137,19 @@ msgstr "Cancellazione della directory '%1' fallita"
 msgid "Failed to unpack the selected file: %1"
 msgstr "Impossibile spacchettare il file selezionato: %1"
 
-#: src/modules/addon/PackAddonDialog.cpp:607
+#: src/modules/addon/PackAddonDialog.cpp:384
+msgid "File %1 already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/modules/addon/PackAddonDialog.cpp:613
 msgid "File Summary"
 msgstr "Sommario File"
 
-#: src/modules/addon/PackAddonDialog.cpp:541
+#: src/modules/addon/PackAddonDialog.cpp:547
 msgid "Final Information"
 msgstr "Informazioni Finali"
 
-#: src/modules/addon/PackAddonDialog.cpp:627
+#: src/modules/addon/PackAddonDialog.cpp:633
 msgid "Finish"
 msgstr "Fine"
 
@@ -152,7 +157,7 @@ msgstr "Fine"
 msgid "Get More Addons..."
 msgstr "Scarica Altri Addon..."
 
-#: src/modules/addon/PackAddonDialog.cpp:614
+#: src/modules/addon/PackAddonDialog.cpp:620
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
 "If these and the information showed in the previous page are correct, hit "
@@ -164,7 +169,7 @@ msgstr ""
 "premi il pulsante \"Fine\" per completare\n"
 "le operazioni di pacchettizzazione."
 
-#: src/modules/addon/PackAddonDialog.cpp:542
+#: src/modules/addon/PackAddonDialog.cpp:548
 msgid ""
 "Here there are the information you provided. If these information are "
 "correct, hit the \"Finish\" button to complete the packaging operations."
@@ -173,7 +178,7 @@ msgstr ""
 "corrette, clicca sul pulsante \"Fine\" per completare le operazioni di "
 "pacchettizzazione."
 
-#: src/modules/addon/PackAddonDialog.cpp:403
+#: src/modules/addon/PackAddonDialog.cpp:409
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
@@ -181,11 +186,11 @@ msgstr ""
 "Qui devi fornire informazioni su di te (il pacchettizzatore) e una breve "
 "descrizione del pacchetto che stai creando."
 
-#: src/modules/addon/PackAddonDialog.cpp:497
+#: src/modules/addon/PackAddonDialog.cpp:503
 msgid "Here you need to provide the path where to save the addon package"
 msgstr "Qui devi fornire il percorso dove salvare il pacchetto addon"
 
-#: src/modules/addon/PackAddonDialog.cpp:470
+#: src/modules/addon/PackAddonDialog.cpp:476
 msgid "Here you need to select the directory where the addon files are."
 msgstr "Qui devi selezionare la directory dove ci sono i file dell'addon."
 
@@ -193,7 +198,7 @@ msgstr "Qui devi selezionare la directory dove ci sono i file dell'addon."
 msgid "Hit the \"Next\" button to begin."
 msgstr "Premi il pulsante \"Successivo\" per iniziare."
 
-#: src/modules/addon/PackAddonDialog.cpp:587
+#: src/modules/addon/PackAddonDialog.cpp:593
 msgid "Icon File"
 msgstr "File Icona"
 
@@ -226,11 +231,11 @@ msgstr ""
 msgid "Manage Script-Based Addons"
 msgstr "Gestione Script Addon"
 
-#: src/modules/addon/PackAddonDialog.cpp:444
+#: src/modules/addon/PackAddonDialog.cpp:450
 msgid "Minimum &KVIrc Version:"
 msgstr "Versione Minima di &KVIrc:"
 
-#: src/modules/addon/PackAddonDialog.cpp:583
+#: src/modules/addon/PackAddonDialog.cpp:589
 msgid "Minimum KVIrc Version"
 msgstr "Versione Minima di KVIrc"
 
@@ -242,54 +247,58 @@ msgstr "Nome: %Q"
 msgid "No"
 msgstr "No"
 
-#: src/modules/addon/PackAddonDialog.cpp:421
+#: src/modules/addon/PackAddonDialog.cpp:427
 msgid "No spaces allowed, like MyAddon"
 msgstr "Niente spazi, come MioAddon"
 
-#: src/modules/addon/PackAddonDialog.cpp:408
+#: src/modules/addon/PackAddonDialog.cpp:414
 msgid "Package &Author:"
 msgstr "&Autore Pacchetto:"
 
-#: src/modules/addon/PackAddonDialog.cpp:435
+#: src/modules/addon/PackAddonDialog.cpp:441
 msgid "Package &Description:"
 msgstr "&Descrizione Pacchetto:"
 
-#: src/modules/addon/PackAddonDialog.cpp:417
+#: src/modules/addon/PackAddonDialog.cpp:423
 msgid "Package &Name:"
 msgstr "&Nome Pacchetto:"
 
-#: src/modules/addon/PackAddonDialog.cpp:426
+#: src/modules/addon/PackAddonDialog.cpp:432
 msgid "Package &Version:"
 msgstr "&Versione Pacchetto:"
 
-#: src/modules/addon/PackAddonDialog.cpp:567
+#: src/modules/addon/PackAddonDialog.cpp:573
 msgid "Package Author"
 msgstr "Autore Pacchetto"
 
-#: src/modules/addon/PackAddonDialog.cpp:579
+#: src/modules/addon/PackAddonDialog.cpp:585
 msgid "Package Description"
 msgstr "Descrizione Pacchetto"
 
-#: src/modules/addon/PackAddonDialog.cpp:469
+#: src/modules/addon/PackAddonDialog.cpp:475
 msgid "Package Files"
 msgstr "File Pacchetto"
 
-#: src/modules/addon/PackAddonDialog.cpp:402
+#: src/modules/addon/PackAddonDialog.cpp:408
 msgid "Package Information"
 msgstr "Informazioni Pacchetto"
 
-#: src/modules/addon/PackAddonDialog.cpp:571
+#: src/modules/addon/PackAddonDialog.cpp:577
 msgid "Package Name"
 msgstr "Nome Pacchetto"
 
-#: src/modules/addon/PackAddonDialog.cpp:575
+#: src/modules/addon/PackAddonDialog.cpp:581
 msgid "Package Version"
 msgstr "Versione Pacchetto"
+
+#: src/modules/addon/PackAddonDialog.cpp:398
+msgid "Package saved successfully in %1"
+msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:334
 #: src/modules/addon/PackAddonDialog.cpp:349
 #: src/modules/addon/PackAddonDialog.cpp:362
-#: src/modules/addon/PackAddonDialog.cpp:384
+#: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Packaging failed"
 msgstr "Pacchettizzazione fallita"
 
@@ -297,23 +306,23 @@ msgstr "Pacchettizzazione fallita"
 msgid "Please select the addon installation file"
 msgstr "Seleziona il file di installazione dell'addon"
 
-#: src/modules/addon/PackAddonDialog.cpp:496
+#: src/modules/addon/PackAddonDialog.cpp:502
 msgid "Save Package"
 msgstr "Salva Pacchetto"
 
-#: src/modules/addon/PackAddonDialog.cpp:595
+#: src/modules/addon/PackAddonDialog.cpp:601
 msgid "Save Path"
 msgstr "Percorso Salvataggio"
 
-#: src/modules/addon/PackAddonDialog.cpp:504
+#: src/modules/addon/PackAddonDialog.cpp:510
 msgid "Select save path:"
 msgstr "Seleziona il percorso di salvataggio:"
 
-#: src/modules/addon/PackAddonDialog.cpp:479
+#: src/modules/addon/PackAddonDialog.cpp:485
 msgid "Select the icon file:"
 msgstr "Seleziona il file icona:"
 
-#: src/modules/addon/PackAddonDialog.cpp:475
+#: src/modules/addon/PackAddonDialog.cpp:481
 msgid "Select the source directory:"
 msgstr "Seleziona la directory dei sorgenti:"
 
@@ -330,7 +339,7 @@ msgstr "Salto l'entry non esistente '%1'"
 msgid "Skipping invalid entry '%1'"
 msgstr "Salto l'entry invalida '%1'"
 
-#: src/modules/addon/PackAddonDialog.cpp:591
+#: src/modules/addon/PackAddonDialog.cpp:597
 msgid "Source Directory"
 msgstr "Directory Sorgenti"
 
@@ -412,7 +421,7 @@ msgstr ""
 "Questo eseguibile di KVIrc è troppo vecchio per usare questo addon (la "
 "versione minima richiesta è %Q)"
 
-#: src/modules/addon/PackAddonDialog.cpp:565
+#: src/modules/addon/PackAddonDialog.cpp:571
 msgid "This is what I will check for:"
 msgstr "Questo è quello che controllerò:"
 
@@ -434,7 +443,7 @@ msgstr "Totale: %d addon installati"
 msgid "Uninstalling existing addon version %Q"
 msgstr "Disinstallo l'addon esistente con versione %Q"
 
-#: src/modules/addon/PackAddonDialog.cpp:430
+#: src/modules/addon/PackAddonDialog.cpp:436
 msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
 msgstr "Versione nella forma x.y[.z], come 1.0 o 2.0.3"
 
@@ -468,7 +477,7 @@ msgstr ""
 msgid "You're about to install the following addon package"
 msgstr "Stai per installare il seguente pacchetto addon"
 
-#: src/modules/addon/PackAddonDialog.cpp:412
+#: src/modules/addon/PackAddonDialog.cpp:418
 msgid "Your name here"
 msgstr "Il tuo nome qui"
 
