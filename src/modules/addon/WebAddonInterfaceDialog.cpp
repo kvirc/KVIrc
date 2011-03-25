@@ -44,7 +44,7 @@ WebAddonInterfaceDialog::WebAddonInterfaceDialog(QWidget * par)
 
 	setPackagePageUrl(
 			QString::fromAscii("http://www.kvirc.de/app/addons.php?version=" KVI_VERSION "&lang=%1")
-					.arg(QString::fromUtf8(KviLocale::localeName().ptr()))
+					.arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr()))
 		);
 }
 WebAddonInterfaceDialog::~WebAddonInterfaceDialog()

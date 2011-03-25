@@ -117,12 +117,12 @@ void KviMenuBar::setupHelpPopup()
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Home&page"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
-	if(kvi_strEqualCIN(KviLocale::localeName(),"ru",2))
+	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"ru",2))
 	{
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Russian Home&page"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
-	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
+	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
 	{
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc French Home&page"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
@@ -137,13 +137,13 @@ void KviMenuBar::setupHelpPopup()
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_FREENODE);
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on IRCNet"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_IRCNET);
-	if(kvi_strEqualCIN(KviLocale::localeName(),"it",2))
+	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"it",2))
 	{
 		// join #kvirc.net on azzurra
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_IT_ON_AZZURRA);
 	}
-	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
+	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
 	{
 		// join #kvirc-fr on freenode
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on Freenode"));

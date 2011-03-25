@@ -173,7 +173,7 @@ void KviIrcConnection::clearOutputQueue(bool bPrivateMessagesOnly)
 
 void KviIrcConnection::setEncoding(const QString & szEncoding)
 {
-	QTextCodec * c = KviLocale::codecForName(szEncoding.toLatin1());
+	QTextCodec * c = KviLocale::instance()->codecForName(szEncoding.toLatin1());
 	if(c == m_pTextCodec)
 		return;
 	if(!c)
@@ -212,7 +212,7 @@ void KviIrcConnection::setupSrvCodec()
 	m_pSrvCodec = 0;
 	if(!m_pTarget->server()->encoding().isEmpty())
 	{
-		m_pSrvCodec = KviLocale::codecForName(m_pTarget->server()->encoding().toLatin1());
+		m_pSrvCodec = KviLocale::instance()->codecForName(m_pTarget->server()->encoding().toLatin1());
 		if(!m_pSrvCodec)
 			qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().toUtf8().data());
 	}
@@ -222,7 +222,7 @@ void KviIrcConnection::setupSrvCodec()
 		// try the network
 		if(!m_pTarget->network()->encoding().isEmpty())
 		{
-			m_pSrvCodec = KviLocale::codecForName(m_pTarget->network()->encoding().toLatin1());
+			m_pSrvCodec = KviLocale::instance()->codecForName(m_pTarget->network()->encoding().toLatin1());
 			if(!m_pSrvCodec)
 				qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().toUtf8().data());
 		}
@@ -241,8 +241,9 @@ void KviIrcConnection::setupTextCodec()
 	m_pTextCodec = 0;
 	if(!m_pTarget->server()->textEncoding().isEmpty())
 	{
-		m_pTextCodec = KviLocale::codecForName(m_pTarget->server()->textEncoding().toLatin1());
-		if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->textEncoding().toUtf8().data());
+		m_pTextCodec = KviLocale::instance()->codecForName(m_pTarget->server()->textEncoding().toLatin1());
+		if(!m_pTextCodec)
+			qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->textEncoding().toUtf8().data());
 	}
 
 	if(!m_pTextCodec)
@@ -250,8 +251,9 @@ void KviIrcConnection::setupTextCodec()
 		// try the network
 		if(!m_pTarget->network()->textEncoding().isEmpty())
 		{
-			m_pTextCodec = KviLocale::codecForName(m_pTarget->network()->textEncoding().toLatin1());
-			if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->textEncoding().toUtf8().data());
+			m_pTextCodec = KviLocale::instance()->codecForName(m_pTarget->network()->textEncoding().toLatin1());
+			if(!m_pTextCodec)
+				qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->textEncoding().toUtf8().data());
 		}
 	}
 

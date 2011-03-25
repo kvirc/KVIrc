@@ -61,7 +61,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	//common between text and server encoding
 	int i = 0;
 	int iTextMatch = 0, iSrvMatch=0;
-	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
+	KviLocale::EncodingDescription * d = KviLocale::instance()->encodingDescription(i);
 	while(d->pcName)
 	{
 		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))
@@ -72,7 +72,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->pcName);
 		m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->pcName);
 		i++;
-		d = KviLocale::encodingDescription(i);
+		d = KviLocale::instance()->encodingDescription(i);
 	}
 
 	m_pTextEncodingCombo->setCurrentIndex(iTextMatch);
@@ -96,11 +96,9 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	bool bIsDefaultLocale = !KviFileUtils::fileExists(szLangFile);
 	//We Have setted locale, but not restarted kvirc
 	if(!g_szPrevSettedLocale.isEmpty())
-	{
-		m_szLanguage=g_szPrevSettedLocale;
-	} else {
-		m_szLanguage=KviLocale::localeName();
-	}
+		m_szLanguage = g_szPrevSettedLocale;
+	else
+		m_szLanguage = KviLocale::instance()->localeName();
 
 	QString szLocaleDir;
 	g_pApp->getGlobalKvircDirectory(szLocaleDir,KviApplication::Locale);
@@ -110,7 +108,8 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	i = 0;
 	int iMatch = 0;
 
-	for ( QStringList::Iterator it = list.begin(); it != list.end(); ++it ) {
+	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+	{
 		QString szTmp=*it;
 		szTmp.replace("kvirc_","");
 		szTmp.replace(".mo","");

@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +30,7 @@
 
 #define _KVI_LOCALE_CPP_
 #include "KviLocale.h"
-
+#include "KviCString.h"
 #include "KviQString.h"
 #include "KviEnvironment.h"
 #include "KviFileUtils.h"
@@ -45,11 +46,8 @@
 #include <QByteArray>
 
 
-// TODO: Convert KviLocale to a full featured singleton class with member variables.
-
 KVILIB_API KviMessageCatalogue  * g_pMainCatalogue = NULL;
 
-static KviCString  g_szLang;
 static KviTranslator * g_pTranslator = NULL;
 static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict = NULL;
 static QTextCodec * g_pUtf8TextCodec = NULL;
@@ -300,449 +298,459 @@ protected:
 
 static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict      = 0;
 
-
-
-
-
-namespace KviLocale
+static const char * encoding_groups[] = 
 {
-	static const char * encoding_groups[] = 
-	{
-		"Unicode",
-		"West European",
-		"East European",
-		"Cyrillic",
-		"Middle Eastern",
+	"Unicode",
+	"West European",
+	"East European",
+	"Cyrillic",
+	"Middle Eastern",
 #ifndef QT_NO_BIG_CODECS
-		"Chinese",
-		"Japanese",
-		"Other asiatic",
+	"Chinese",
+	"Japanese",
+	"Other asiatic",
 #endif
-		0
-	};
+	0
+};
 
-	static EncodingDescription supported_encodings[] =
-	{
-		// Unicode
-		{ "UTF-8"                , 0 , 0 , 0, "8-bit Unicode" },
-		// West European
-		{ "ISO-8859-1"           , 0 , 0 , 1, "Western, Latin-1" },
-		{ "ISO-8859-15"          , 0 , 0 , 1, "Western, Latin-1 + Euro" },
-		{ "IBM-850"              , 0 , 0 , 1, "IBM-850" },
-		{ "CP-1252"              , 0 , 0 , 1, "Western Codepage" },
-		{ "ISO-8859-14"          , 0 , 0 , 1, "Celtic" },
-		{ "ISO-8859-7"           , 0 , 0 , 1, "Greek" },
-		{ "CP-1253"              , 0 , 0 , 1, "Greek Codepage" },
-		{ "ISO-8859-10"          , 0 , 0 , 1, "Nordic" },
-		{ "ISO-8859-3"           , 0 , 0 , 1, "South European" },
-		// East European
-		{ "ISO-8859-4"           , 0 , 0 , 2, "Baltic, Standard" },
-		{ "ISO-8859-13"          , 0 , 0 , 2, "Baltic" },
-		{ "CP-1257"              , 0 , 0 , 2, "Baltic Codepage" },
-		{ "ISO-8859-2"           , 0 , 0 , 2, "Central European" },
-		{ "CP-1250"              , 0 , 0 , 2, "Central European Codepage" },
-		{ "ISO-8859-9"           , 0 , 0 , 2, "Turkish, Latin-5" },
-		{ "CP-1254"              , 0 , 0 , 2, "Turkish Codepage" },
-		// Cyrillic
-		{ "ISO-8859-5"           , 0 , 0 , 3, "Cyrillic, ISO" },
-		{ "CP-1251"              , 0 , 0 , 3, "Cyrillic Codepage" },
-		{ "KOI8-R"               , 0 , 0 , 3, "Cyrillic, KOI" },
-		{ "KOI8-U"               , 0 , 0 , 3, "Cyrillic/Ukrainian" },
-		{ "IBM-866"              , 0 , 0 , 3, "IBM-866" },
-		// Middle Eastern
-		{ "ISO-8859-6"           , 0 , 0 , 4, "Arabic, Standard" },
-		{ "CP-1256"              , 0 , 0 , 4, "Arabic Codepage" },
-		{ "ISO-8859-8"           , 0 , 0 , 4, "Hebrew, visually ordered" },
-		{ "ISO-8859-8-i"         , 0 , 0 , 4, "Hebrew, logically ordered" },
-		{ "CP-1255"              , 0 , 0 , 4, "Hebrew Codepage" },
-		// Other asiatic
-		{ "TIS-620"              , 0 , 0 , 7, "Thai" },
-		{ "CP874"                , 0 , 0 , 7, "Thai Codepage" },
+static KviLocale::EncodingDescription supported_encodings[] =
+{
+	// Unicode
+	{ "UTF-8"                , 0 , 0 , 0, "8-bit Unicode" },
+	// West European
+	{ "ISO-8859-1"           , 0 , 0 , 1, "Western, Latin-1" },
+	{ "ISO-8859-15"          , 0 , 0 , 1, "Western, Latin-1 + Euro" },
+	{ "IBM-850"              , 0 , 0 , 1, "IBM-850" },
+	{ "CP-1252"              , 0 , 0 , 1, "Western Codepage" },
+	{ "ISO-8859-14"          , 0 , 0 , 1, "Celtic" },
+	{ "ISO-8859-7"           , 0 , 0 , 1, "Greek" },
+	{ "CP-1253"              , 0 , 0 , 1, "Greek Codepage" },
+	{ "ISO-8859-10"          , 0 , 0 , 1, "Nordic" },
+	{ "ISO-8859-3"           , 0 , 0 , 1, "South European" },
+	// East European
+	{ "ISO-8859-4"           , 0 , 0 , 2, "Baltic, Standard" },
+	{ "ISO-8859-13"          , 0 , 0 , 2, "Baltic" },
+	{ "CP-1257"              , 0 , 0 , 2, "Baltic Codepage" },
+	{ "ISO-8859-2"           , 0 , 0 , 2, "Central European" },
+	{ "CP-1250"              , 0 , 0 , 2, "Central European Codepage" },
+	{ "ISO-8859-9"           , 0 , 0 , 2, "Turkish, Latin-5" },
+	{ "CP-1254"              , 0 , 0 , 2, "Turkish Codepage" },
+	// Cyrillic
+	{ "ISO-8859-5"           , 0 , 0 , 3, "Cyrillic, ISO" },
+	{ "CP-1251"              , 0 , 0 , 3, "Cyrillic Codepage" },
+	{ "KOI8-R"               , 0 , 0 , 3, "Cyrillic, KOI" },
+	{ "KOI8-U"               , 0 , 0 , 3, "Cyrillic/Ukrainian" },
+	{ "IBM-866"              , 0 , 0 , 3, "IBM-866" },
+	// Middle Eastern
+	{ "ISO-8859-6"           , 0 , 0 , 4, "Arabic, Standard" },
+	{ "CP-1256"              , 0 , 0 , 4, "Arabic Codepage" },
+	{ "ISO-8859-8"           , 0 , 0 , 4, "Hebrew, visually ordered" },
+	{ "ISO-8859-8-i"         , 0 , 0 , 4, "Hebrew, logically ordered" },
+	{ "CP-1255"              , 0 , 0 , 4, "Hebrew Codepage" },
+	// Other asiatic
+	{ "TIS-620"              , 0 , 0 , 7, "Thai" },
+	{ "CP874"                , 0 , 0 , 7, "Thai Codepage" },
 #ifndef QT_NO_BIG_CODECS
-		// Chinese
-		{ "Big5"                 , 0 , 0 , 5, "Chinese Traditional" },
-		{ "Big5-HKSCS"           , 0 , 0 , 5, "Chinese Traditional, Hong Kong" },
-		{ "GB18030"              , 0 , 0 , 5, "Chinese Simplified" },
-		// Japanese
-		{ "JIS7"                 , 0 , 0 , 6, "Japanese (JIS7)" },
-		{ "Shift-JIS"            , 0 , 0 , 6, "Japanese (Shift-JIS)" },
-		{ "EUC-JP"               , 0 , 0 , 6, "Japanese (EUC-JP)" },
-		// Other asiatic
-		{ "EUC-KR"               , 0 , 0 , 7, "Korean" },
-		{ "TSCII"                , 0 , 0 , 7, "Tamil" },
+	// Chinese
+	{ "Big5"                 , 0 , 0 , 5, "Chinese Traditional" },
+	{ "Big5-HKSCS"           , 0 , 0 , 5, "Chinese Traditional, Hong Kong" },
+	{ "GB18030"              , 0 , 0 , 5, "Chinese Simplified" },
+	// Japanese
+	{ "JIS7"                 , 0 , 0 , 6, "Japanese (JIS7)" },
+	{ "Shift-JIS"            , 0 , 0 , 6, "Japanese (Shift-JIS)" },
+	{ "EUC-JP"               , 0 , 0 , 6, "Japanese (EUC-JP)" },
+	// Other asiatic
+	{ "EUC-KR"               , 0 , 0 , 7, "Korean" },
+	{ "TSCII"                , 0 , 0 , 7, "Tamil" },
 #endif
-		
-		// smart codecs that send in the local charset
-		// West European
-		{ "ISO-8859-1 [UTF-8]"   , 1 , 0 , 1, "Western, Latin-1 - Unicode" },
-		{ "ISO-8859-15 [UTF-8]"  , 1 , 0 , 1, "Western, Latin-1 + Euro - Unicode" },
-		{ "IBM-850 [UTF-8]"      , 1 , 0 , 1, "IBM-850 - Unicode" },
-		{ "CP-1252 [UTF-8]"      , 1 , 0 , 1, "Western Codepage - Unicode" },
-		{ "ISO-8859-14 [UTF-8]"  , 1 , 0 , 1, "Celtic - Unicode" },
-		{ "ISO-8859-7 [UTF-8]"   , 1 , 0 , 1, "Greek - Unicode" },
-		{ "CP-1253 [UTF-8]"      , 1 , 0 , 1, "Greek Codepage - Unicode" },
-		{ "ISO-8859-10 [UTF-8]"  , 1 , 0 , 1, "Nordic - Unicode" },
-		{ "ISO-8859-3 [UTF-8]"   , 1 , 0 , 1, "South European - Unicode" },
-		// East European
-		{ "ISO-8859-4 [UTF-8]"   , 1 , 0 , 2, "Baltic, Standard - Unicode" },
-		{ "ISO-8859-13 [UTF-8]"  , 1 , 0 , 2, "Baltic - Unicode" },
-		{ "CP-1257 [UTF-8]"      , 1 , 0 , 2, "Baltic Codepage - Unicode" },
-		{ "ISO-8859-2 [UTF-8]"   , 1 , 0 , 2, "Central European - Unicode" },
-		{ "CP-1250 [UTF-8]"      , 1 , 0 , 2, "Central European Codepage - Unicode" },
-		{ "ISO-8859-9 [UTF-8]"   , 1 , 0 , 2, "Turkish, Latin-5 - Unicode" },
-		{ "CP-1254 [UTF-8]"      , 1 , 0 , 2, "Turkish Codepage - Unicode" },
-		// Cyrillic
-		{ "ISO-8859-5 [UTF-8]"   , 1 , 0 , 3, "Cyrillic, ISO - Unicode" },
-		{ "CP-1251 [UTF-8]"      , 1 , 0 , 3, "Cyrillic Codepage - Unicode" },
-		{ "KOI8-R [UTF-8]"       , 1 , 0 , 3, "Cyrillic, KOI - Unicode" },
-		{ "KOI8-U [UTF-8]"       , 1 , 0 , 3, "Cyrillic/Ukrainian - Unicode" },
-		{ "IBM-866 [UTF-8]"      , 1 , 0 , 3, "IBM-866 - Unicode" },
-		// Middle Eastern
-		{ "ISO-8859-6 [UTF-8]"   , 1 , 0 , 4, "Arabic, Standard - Unicode" },
-		{ "CP-1256 [UTF-8]"      , 1 , 0 , 4, "Arabic Codepage - Unicode" },
-		{ "ISO-8859-8 [UTF-8]"   , 1 , 0 , 4, "Hebrew, visually ordered - Unicode" },
-		{ "ISO-8859-8-i [UTF-8]" , 1 , 0 , 4, "Hebrew, logically ordered - Unicode" },
-		{ "CP-1255 [UTF-8]"      , 1 , 0 , 4, "Hebrew Codepage - Unicode" },
-		// Other asiatic
-		{ "TIS-620 [UTF-8]"      , 1 , 0 , 7, "Thai - Unicode" },
-		{ "CP874 [UTF-8]"        , 1 , 0 , 7, "Thai Codepage - Unicode" },
-#ifndef QT_NO_BIG_CODECS
-		// Chinese
-		{ "Big5 [UTF-8]"         , 1 , 0 , 5, "Chinese Traditional - Unicode" },
-		{ "Big5-HKSCS [UTF-8]"   , 1 , 0 , 5, "Chinese Traditional, Hong Kong - Unicode" },
-		{ "GB18030 [UTF-8]"      , 1 , 0 , 5, "Chinese Simplified - Unicode" },
-		// Japanese
-		{ "JIS7 [UTF-8]"         , 1 , 0 , 6, "Japanese (JIS7) - Unicode" },
-		{ "Shift-JIS [UTF-8]"    , 1 , 0 , 6, "Japanese (Shift-JIS) - Unicode" },
-		{ "EUC-JP [UTF-8]"       , 1 , 0 , 6, "Japanese (EUC-JP) - Unicode" },
-		// Other asiatic
-		{ "EUC-KR [UTF-8]"       , 1 , 0 , 7, "Korean - Unicode" },
-		{ "TSCII [UTF-8]"        , 1 , 0 , 7, "Tamil - Unicode" },
-#endif
-
-		// smart codecs that send in utf8
-		// West European
-		{ "UTF-8 [ISO-8859-1]"   , 1 , 1 , 1, "Unicode - Western, Latin-1" },
-		{ "UTF-8 [ISO-8859-15]"  , 1 , 1 , 1, "Unicode - Western, Latin-1 + Euro" },
-		{ "UTF-8 [IBM-850]"      , 1 , 1 , 1, "Unicode - IBM-850" },
-		{ "UTF-8 [CP-1252]"      , 1 , 1 , 1, "Unicode - Western Codepage" },
-		{ "UTF-8 [ISO-8859-14]"  , 1 , 1 , 1, "Unicode - Celtic" },
-		{ "UTF-8 [ISO-8859-7]"   , 1 , 1 , 1, "Unicode - Greek" },
-		{ "UTF-8 [CP-1253]"      , 1 , 1 , 1, "Unicode - Greek Codepage" },
-		{ "UTF-8 [ISO-8859-10]"  , 1 , 1 , 1, "Unicode - Nordic" },
-		{ "UTF-8 [ISO-8859-3]"   , 1 , 1 , 1, "Unicode - South European" },
-		// East European
-		{ "UTF-8 [ISO-8859-4]"   , 1 , 1 , 2, "Unicode - Baltic, Standard" },
-		{ "UTF-8 [ISO-8859-13]"  , 1 , 1 , 2, "Unicode - Baltic" },
-		{ "UTF-8 [CP-1257]"      , 1 , 1 , 2, "Unicode - Baltic Codepage" },
-		{ "UTF-8 [ISO-8859-2]"   , 1 , 1 , 2, "Unicode - Central European" },
-		{ "UTF-8 [CP-1250]"      , 1 , 1 , 2, "Unicode - Central European Codepage" },
-		{ "UTF-8 [ISO-8859-9]"   , 1 , 1 , 2, "Unicode - Turkish, Latin-5" },
-		{ "UTF-8 [CP-1254]"      , 1 , 1 , 2, "Unicode - Turkish Codepage" },
-		// Cyrillic
-		{ "UTF-8 [ISO-8859-5]"   , 1 , 1 , 3, "Unicode - Cyrillic, ISO" },
-		{ "UTF-8 [CP-1251]"      , 1 , 1 , 3, "Unicode - Cyrillic Codepage" },
-		{ "UTF-8 [KOI8-R]"       , 1 , 1 , 3, "Unicode - Cyrillic, KOI" },
-		{ "UTF-8 [KOI8-U]"       , 1 , 1 , 3, "Unicode - Cyrillic/Ukrainian" },
-		{ "UTF-8 [IBM-866]"      , 1 , 1 , 3, "Unicode - IBM-866" },
-		// Middle Eastern
-		{ "UTF-8 [ISO-8859-6]"   , 1 , 1 , 4, "Unicode - Arabic, Standard" },
-		{ "UTF-8 [CP-1256]"      , 1 , 1 , 4, "Unicode - Arabic Codepage" },
-		{ "UTF-8 [ISO-8859-8]"   , 1 , 1 , 4, "Unicode - Hebrew, visually ordered" },
-		{ "UTF-8 [ISO-8859-8-i]" , 1 , 1 , 4, "Unicode - Hebrew, logically ordered" },
-		{ "UTF-8 [CP-1255]"      , 1 , 1 , 4, "Unicode - Hebrew Codepage" },
-		// Other asiatic
-		{ "UTF-8 [TIS-620]"      , 1 , 1 , 7, "Unicode - Thai" },
-		{ "UTF-8 [CP874]"        , 1 , 1 , 7, "Unicode - Thai Codepage" },
-#ifndef QT_NO_BIG_CODECS
-		// Chinese
-		{ "UTF-8 [Big5]"         , 1 , 1 , 5, "Unicode - Chinese Traditional" },
-		{ "UTF-8 [Big5-HKSCS]"   , 1 , 1 , 5, "Unicode - Chinese Traditional, Hong Kong" },
-		{ "UTF-8 [GB18030]"      , 1 , 1 , 5, "Unicode - Chinese Simplified" },
-		// Japanese
-		{ "UTF-8 [JIS7]"         , 1 , 1 , 6, "Unicode - Japanese (JIS7)" },
-		{ "UTF-8 [Shift-JIS]"    , 1 , 1 , 6, "Unicode - Japanese (Shift-JIS)" },
-		{ "UTF-8 [EUC-JP]"       , 1 , 1 , 6, "Unicode - Japanese (EUC-JP)" },
-		// Other asiatic
-		{ "UTF-8 [EUC-KR]"       , 1 , 1 , 7, "Unicode - Korean" },
-		{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
-#endif
-		{ 0                      , 0 , 0 , 0 , 0 }
-	};
-
-	const char * encodingGroup(int iIdx)
-	{
-		if(iIdx > KVI_NUM_ENCODING_GROUPS)
-			return encoding_groups[KVI_NUM_ENCODING_GROUPS];
-		return encoding_groups[iIdx];
-	}
-
-	EncodingDescription * encodingDescription(int iIdx)
-	{
-		if(iIdx > KVI_NUM_ENCODINGS)
-			return &(supported_encodings[KVI_NUM_ENCODINGS]);
-		return &(supported_encodings[iIdx]);
-	}
-
-	QTextCodec * codecForName(const char * pcName)
-	{
-		KviCString szTmp = pcName;
-		bool bSendUtf8;
-
-		int iIdx = szTmp.findFirstIdx('[');
-		if(iIdx != -1)
-		{
-			// Might be a composite codec: either UTF-8 [child codec] or child codec [UTF-8]
-			KviSmartTextCodec * pCodec = g_pSmartCodecDict->find(pcName);
-			if(pCodec)
-				return pCodec; // got cached copy
-
-			if(kvi_strEqualCIN("UTF-8 [",pcName,7))
-			{
-				// Likely a smart codec that sends UTF-8
-				szTmp.replaceAll("UTF-8 [","");
-				szTmp.replaceAll("]","");
-				bSendUtf8 = true;
-			} else {
-				// Likely a smart codec that sends child encoding ?
-				szTmp.cutFromFirst(' ');
-				bSendUtf8 = false;
-			}
-
-			QTextCodec * pChildCodec = QTextCodec::codecForName(szTmp.ptr());
-			if(pChildCodec)
-			{
-				pCodec = new KviSmartTextCodec(pcName,pChildCodec,bSendUtf8);
 	
-				if(pCodec->ok())
-				{
-					g_pSmartCodecDict->replace(pcName,pCodec);
-					return pCodec;
-				}
+	// smart codecs that send in the local charset
+	// West European
+	{ "ISO-8859-1 [UTF-8]"   , 1 , 0 , 1, "Western, Latin-1 - Unicode" },
+	{ "ISO-8859-15 [UTF-8]"  , 1 , 0 , 1, "Western, Latin-1 + Euro - Unicode" },
+	{ "IBM-850 [UTF-8]"      , 1 , 0 , 1, "IBM-850 - Unicode" },
+	{ "CP-1252 [UTF-8]"      , 1 , 0 , 1, "Western Codepage - Unicode" },
+	{ "ISO-8859-14 [UTF-8]"  , 1 , 0 , 1, "Celtic - Unicode" },
+	{ "ISO-8859-7 [UTF-8]"   , 1 , 0 , 1, "Greek - Unicode" },
+	{ "CP-1253 [UTF-8]"      , 1 , 0 , 1, "Greek Codepage - Unicode" },
+	{ "ISO-8859-10 [UTF-8]"  , 1 , 0 , 1, "Nordic - Unicode" },
+	{ "ISO-8859-3 [UTF-8]"   , 1 , 0 , 1, "South European - Unicode" },
+	// East European
+	{ "ISO-8859-4 [UTF-8]"   , 1 , 0 , 2, "Baltic, Standard - Unicode" },
+	{ "ISO-8859-13 [UTF-8]"  , 1 , 0 , 2, "Baltic - Unicode" },
+	{ "CP-1257 [UTF-8]"      , 1 , 0 , 2, "Baltic Codepage - Unicode" },
+	{ "ISO-8859-2 [UTF-8]"   , 1 , 0 , 2, "Central European - Unicode" },
+	{ "CP-1250 [UTF-8]"      , 1 , 0 , 2, "Central European Codepage - Unicode" },
+	{ "ISO-8859-9 [UTF-8]"   , 1 , 0 , 2, "Turkish, Latin-5 - Unicode" },
+	{ "CP-1254 [UTF-8]"      , 1 , 0 , 2, "Turkish Codepage - Unicode" },
+	// Cyrillic
+	{ "ISO-8859-5 [UTF-8]"   , 1 , 0 , 3, "Cyrillic, ISO - Unicode" },
+	{ "CP-1251 [UTF-8]"      , 1 , 0 , 3, "Cyrillic Codepage - Unicode" },
+	{ "KOI8-R [UTF-8]"       , 1 , 0 , 3, "Cyrillic, KOI - Unicode" },
+	{ "KOI8-U [UTF-8]"       , 1 , 0 , 3, "Cyrillic/Ukrainian - Unicode" },
+	{ "IBM-866 [UTF-8]"      , 1 , 0 , 3, "IBM-866 - Unicode" },
+	// Middle Eastern
+	{ "ISO-8859-6 [UTF-8]"   , 1 , 0 , 4, "Arabic, Standard - Unicode" },
+	{ "CP-1256 [UTF-8]"      , 1 , 0 , 4, "Arabic Codepage - Unicode" },
+	{ "ISO-8859-8 [UTF-8]"   , 1 , 0 , 4, "Hebrew, visually ordered - Unicode" },
+	{ "ISO-8859-8-i [UTF-8]" , 1 , 0 , 4, "Hebrew, logically ordered - Unicode" },
+	{ "CP-1255 [UTF-8]"      , 1 , 0 , 4, "Hebrew Codepage - Unicode" },
+	// Other asiatic
+	{ "TIS-620 [UTF-8]"      , 1 , 0 , 7, "Thai - Unicode" },
+	{ "CP874 [UTF-8]"        , 1 , 0 , 7, "Thai Codepage - Unicode" },
+#ifndef QT_NO_BIG_CODECS
+	// Chinese
+	{ "Big5 [UTF-8]"         , 1 , 0 , 5, "Chinese Traditional - Unicode" },
+	{ "Big5-HKSCS [UTF-8]"   , 1 , 0 , 5, "Chinese Traditional, Hong Kong - Unicode" },
+	{ "GB18030 [UTF-8]"      , 1 , 0 , 5, "Chinese Simplified - Unicode" },
+	// Japanese
+	{ "JIS7 [UTF-8]"         , 1 , 0 , 6, "Japanese (JIS7) - Unicode" },
+	{ "Shift-JIS [UTF-8]"    , 1 , 0 , 6, "Japanese (Shift-JIS) - Unicode" },
+	{ "EUC-JP [UTF-8]"       , 1 , 0 , 6, "Japanese (EUC-JP) - Unicode" },
+	// Other asiatic
+	{ "EUC-KR [UTF-8]"       , 1 , 0 , 7, "Korean - Unicode" },
+	{ "TSCII [UTF-8]"        , 1 , 0 , 7, "Tamil - Unicode" },
+#endif
 
-				delete pCodec;
-			} else {
-				// The name of the child codec was invalid: can't create such a smart codec.
-				// We probably screwed up the guess above related to the [ char.
-				// This code path is also triggered by the yircfuzzer by specifying completly invalid codec names.
-			}
-		}
+	// smart codecs that send in utf8
+	// West European
+	{ "UTF-8 [ISO-8859-1]"   , 1 , 1 , 1, "Unicode - Western, Latin-1" },
+	{ "UTF-8 [ISO-8859-15]"  , 1 , 1 , 1, "Unicode - Western, Latin-1 + Euro" },
+	{ "UTF-8 [IBM-850]"      , 1 , 1 , 1, "Unicode - IBM-850" },
+	{ "UTF-8 [CP-1252]"      , 1 , 1 , 1, "Unicode - Western Codepage" },
+	{ "UTF-8 [ISO-8859-14]"  , 1 , 1 , 1, "Unicode - Celtic" },
+	{ "UTF-8 [ISO-8859-7]"   , 1 , 1 , 1, "Unicode - Greek" },
+	{ "UTF-8 [CP-1253]"      , 1 , 1 , 1, "Unicode - Greek Codepage" },
+	{ "UTF-8 [ISO-8859-10]"  , 1 , 1 , 1, "Unicode - Nordic" },
+	{ "UTF-8 [ISO-8859-3]"   , 1 , 1 , 1, "Unicode - South European" },
+	// East European
+	{ "UTF-8 [ISO-8859-4]"   , 1 , 1 , 2, "Unicode - Baltic, Standard" },
+	{ "UTF-8 [ISO-8859-13]"  , 1 , 1 , 2, "Unicode - Baltic" },
+	{ "UTF-8 [CP-1257]"      , 1 , 1 , 2, "Unicode - Baltic Codepage" },
+	{ "UTF-8 [ISO-8859-2]"   , 1 , 1 , 2, "Unicode - Central European" },
+	{ "UTF-8 [CP-1250]"      , 1 , 1 , 2, "Unicode - Central European Codepage" },
+	{ "UTF-8 [ISO-8859-9]"   , 1 , 1 , 2, "Unicode - Turkish, Latin-5" },
+	{ "UTF-8 [CP-1254]"      , 1 , 1 , 2, "Unicode - Turkish Codepage" },
+	// Cyrillic
+	{ "UTF-8 [ISO-8859-5]"   , 1 , 1 , 3, "Unicode - Cyrillic, ISO" },
+	{ "UTF-8 [CP-1251]"      , 1 , 1 , 3, "Unicode - Cyrillic Codepage" },
+	{ "UTF-8 [KOI8-R]"       , 1 , 1 , 3, "Unicode - Cyrillic, KOI" },
+	{ "UTF-8 [KOI8-U]"       , 1 , 1 , 3, "Unicode - Cyrillic/Ukrainian" },
+	{ "UTF-8 [IBM-866]"      , 1 , 1 , 3, "Unicode - IBM-866" },
+	// Middle Eastern
+	{ "UTF-8 [ISO-8859-6]"   , 1 , 1 , 4, "Unicode - Arabic, Standard" },
+	{ "UTF-8 [CP-1256]"      , 1 , 1 , 4, "Unicode - Arabic Codepage" },
+	{ "UTF-8 [ISO-8859-8]"   , 1 , 1 , 4, "Unicode - Hebrew, visually ordered" },
+	{ "UTF-8 [ISO-8859-8-i]" , 1 , 1 , 4, "Unicode - Hebrew, logically ordered" },
+	{ "UTF-8 [CP-1255]"      , 1 , 1 , 4, "Unicode - Hebrew Codepage" },
+	// Other asiatic
+	{ "UTF-8 [TIS-620]"      , 1 , 1 , 7, "Unicode - Thai" },
+	{ "UTF-8 [CP874]"        , 1 , 1 , 7, "Unicode - Thai Codepage" },
+#ifndef QT_NO_BIG_CODECS
+	// Chinese
+	{ "UTF-8 [Big5]"         , 1 , 1 , 5, "Unicode - Chinese Traditional" },
+	{ "UTF-8 [Big5-HKSCS]"   , 1 , 1 , 5, "Unicode - Chinese Traditional, Hong Kong" },
+	{ "UTF-8 [GB18030]"      , 1 , 1 , 5, "Unicode - Chinese Simplified" },
+	// Japanese
+	{ "UTF-8 [JIS7]"         , 1 , 1 , 6, "Unicode - Japanese (JIS7)" },
+	{ "UTF-8 [Shift-JIS]"    , 1 , 1 , 6, "Unicode - Japanese (Shift-JIS)" },
+	{ "UTF-8 [EUC-JP]"       , 1 , 1 , 6, "Unicode - Japanese (EUC-JP)" },
+	// Other asiatic
+	{ "UTF-8 [EUC-KR]"       , 1 , 1 , 7, "Unicode - Korean" },
+	{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
+#endif
+	{ 0                      , 0 , 0 , 0 , 0 }
+};
 
-		return QTextCodec::codecForName(pcName);
-	}
+KviLocale * KviLocale::m_pSelf = NULL;
+unsigned int KviLocale::m_uCount = 0;
+KviCString KviLocale::g_szLang = "";
 
-	const KviCString & localeName()
+KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
+{
+	m_pApp = pApp;
+
+	// first of all try to find out the current locale
+	QString szLangFile = QString("%1/%2").arg(szForceLocaleDir, KVI_FORCE_LOCALE_FILE_NAME);
+
+	if(KviFileUtils::fileExists(szLangFile))
 	{
-		return g_szLang;
+		QString szTmp;
+		KviFileUtils::readFile(szLangFile,szTmp);
+		g_szLang = szTmp;
 	}
+	if(g_szLang.isEmpty())
+		g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
+	if(g_szLang.isEmpty())
+		g_szLang = KviEnvironment::getVariable("LC_MESSAGES");
+	if(g_szLang.isEmpty())
+		g_szLang = KviEnvironment::getVariable("LANG");
+	if(g_szLang.isEmpty())
+		g_szLang = QLocale::system().name();
+	if(g_szLang.isEmpty())
+		g_szLang = "en";
+	g_szLang.trim();
 
-	KviMessageCatalogue * loadCatalogue(const QString & szName, const QString & szLocaleDir)
+	g_szDefaultLocalePath = szLocaleDir;
+
+	// the main catalogue is supposed to be kvirc_<language>.mo
+	g_pMainCatalogue = new KviMessageCatalogue();
+	// the catalogue dict
+	g_pCatalogueDict = new KviPointerHashTable<const char *,KviMessageCatalogue>;
+	g_pCatalogueDict->setAutoDelete(true);
+
+	// the smart codec dict
+	g_pSmartCodecDict = new KviPointerHashTable<const char *,KviSmartTextCodec>;
+	// the Qt docs explicitly state that we shouldn't delete
+	// the codecs by ourselves...
+	g_pSmartCodecDict->setAutoDelete(false);
+
+	if(g_szLang.hasData())
 	{
-		//qDebug("Looking up catalogue %s",szName.toUtf8().data());
 		QString szBuffer;
-
-		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(szName.toUtf8().data());
-		if(pCatalogue)
-			return pCatalogue; // already loaded
-
-		if(!findCatalogue(szBuffer,szName,szLocaleDir))
-			return NULL;
-
-		pCatalogue = new KviMessageCatalogue();
-		if(pCatalogue->load(szBuffer))
+		if(findCatalogue(szBuffer,"kvirc",szLocaleDir))
 		{
-			g_pCatalogueDict->insert(szName.toUtf8().data(),pCatalogue);
-			return pCatalogue;
+			g_pMainCatalogue->load(szBuffer);
+			g_pTranslator = new KviTranslator(m_pApp);
+			m_pApp->installTranslator(g_pTranslator);
+		} else {
+			KviCString szTmp = g_szLang;
+			szTmp.cutFromFirst('.');
+			szTmp.cutFromFirst('_');
+			szTmp.cutFromFirst('@');
+			szTmp.toLower();
+			if(!(kvi_strEqualCI(szTmp.ptr(),"en") ||
+				kvi_strEqualCI(szTmp.ptr(),"c") ||
+				kvi_strEqualCI(szTmp.ptr(),"us") ||
+				kvi_strEqualCI(szTmp.ptr(),"gb") ||
+				kvi_strEqualCI(szTmp.ptr(),"posix")))
+			{
+				// FIXME: THIS IS NO LONGER VALID!!!
+				qDebug("Can't find the catalogue for locale \"%s\" (%s)",g_szLang.ptr(),szTmp.ptr());
+				qDebug("There is no such translation or the $LANG variable was incorrectly set");
+				qDebug("You can use $KVIRC_LANG to override the catalogue name");
+				qDebug("For example you can set KVIRC_LANG to it_IT to force usage of the it.mo catalogue");
+			}
 		}
-		delete pCatalogue;
+	}
+
+	//g_pTextCodec = QTextCodec::codecForLocale();
+	//if(!g_pTextCodec)
+	//	g_pTextCodec = QTextCodec::codecForLocale();
+}
+
+KviLocale::~KviLocale()
+{
+	delete g_pMainCatalogue;
+	delete g_pCatalogueDict;
+	delete g_pSmartCodecDict;
+	g_pMainCatalogue = 0;
+	g_pCatalogueDict = 0;
+	g_pSmartCodecDict = 0;
+	if(g_pTranslator)
+	{
+		m_pApp->removeTranslator(g_pTranslator);
+		delete g_pTranslator;
+		g_pTranslator = 0;
+	}
+}
+
+void KviLocale::init(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
+{
+	if((!m_pSelf) && (m_pSelf->count() == 0))
+	{
+		m_pSelf = new KviLocale(pApp,szLocaleDir,szForceLocaleDir);
+		m_uCount++;
+	}
+}
+
+void KviLocale::done()
+{
+	m_uCount--;
+	if(m_pSelf->count() == 0)
+		delete m_pSelf;
+}
+
+QTextCodec * KviLocale::codecForName(const char * pcName)
+{
+	KviCString szTmp = pcName;
+	bool bSendUtf8;
+
+	int iIdx = szTmp.findFirstIdx('[');
+	if(iIdx != -1)
+	{
+		// Might be a composite codec: either UTF-8 [child codec] or child codec [UTF-8]
+		KviSmartTextCodec * pCodec = g_pSmartCodecDict->find(pcName);
+		if(pCodec)
+			return pCodec; // got cached copy
+
+		if(kvi_strEqualCIN("UTF-8 [",pcName,7))
+		{
+			// Likely a smart codec that sends UTF-8
+			szTmp.replaceAll("UTF-8 [","");
+			szTmp.replaceAll("]","");
+			bSendUtf8 = true;
+		} else {
+			// Likely a smart codec that sends child encoding ?
+			szTmp.cutFromFirst(' ');
+			bSendUtf8 = false;
+		}
+
+		QTextCodec * pChildCodec = QTextCodec::codecForName(szTmp.ptr());
+		if(pChildCodec)
+		{
+			pCodec = new KviSmartTextCodec(pcName,pChildCodec,bSendUtf8);
+
+			if(pCodec->ok())
+			{
+				g_pSmartCodecDict->replace(pcName,pCodec);
+				return pCodec;
+			}
+
+			delete pCodec;
+		} else {
+			// The name of the child codec was invalid: can't create such a smart codec.
+			// We probably screwed up the guess above related to the [ char.
+			// This code path is also triggered by the yircfuzzer by specifying completly invalid codec names.
+		}
+	}
+
+	return QTextCodec::codecForName(pcName);
+}
+
+bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName,const QString & szLocaleDir)
+{
+	KviCString szLocale = g_szLang;
+
+	QString szLocDir = szLocaleDir;
+	KviQString::ensureLastCharIs(szLocDir,KVI_PATH_SEPARATOR_CHAR);
+
+	szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+
+	if(KviFileUtils::fileExists(szBuffer))
+		return true;
+
+	if(szLocale.findFirstIdx('.') != -1)
+	{
+		// things like en_GB.utf8
+		// kill them
+		szLocale.cutFromFirst('.');
+
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		if(KviFileUtils::fileExists(szBuffer))
+			return true;
+	}
+
+	if(szLocale.findFirstIdx('@') != -1)
+	{
+		// things like @euro ?
+		// kill them
+		szLocale.cutFromFirst('@');
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		if(KviFileUtils::fileExists(szBuffer))
+			return true;
+	}
+
+	if(szLocale.findFirstIdx('_') != -1)
+	{
+		// things like en_GB
+		// kill them
+		szLocale.cutFromFirst('_');
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		if(KviFileUtils::fileExists(szBuffer))
+			return true;
+	}
+
+	// try the lower case version too
+	szLocale.toLower();
+	szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+	if(KviFileUtils::fileExists(szBuffer))
+		return true;
+
+	return false;
+}
+
+KviMessageCatalogue * KviLocale::loadCatalogue(const QString & szName, const QString & szLocaleDir)
+{
+	//qDebug("Looking up catalogue %s",szName.toUtf8().data());
+	QString szBuffer;
+
+	KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(szName.toUtf8().data());
+	if(pCatalogue)
+		return pCatalogue; // already loaded
+
+	if(!findCatalogue(szBuffer,szName,szLocaleDir))
 		return NULL;
-	}
 
-	bool unloadCatalogue(const QString & szName)
+	pCatalogue = new KviMessageCatalogue();
+	if(pCatalogue->load(szBuffer))
 	{
-		//qDebug("Unloading catalogue: %s",szName.toUtf8().data());
-		return g_pCatalogueDict->remove(szName.toUtf8().data());
+		g_pCatalogueDict->insert(szName.toUtf8().data(),pCatalogue);
+		return pCatalogue;
 	}
+	delete pCatalogue;
+	return NULL;
+}
 
-	bool findCatalogue(QString & szBuffer, const QString & szName,const QString & szLocaleDir)
+bool KviLocale::unloadCatalogue(const QString & szName)
+{
+	//qDebug("Unloading catalogue: %s",szName.toUtf8().data());
+	return g_pCatalogueDict->remove(szName.toUtf8().data());
+}
+
+KviMessageCatalogue * KviLocale::getLoadedCatalogue(const QString & szName)
+{
+	return g_pCatalogueDict->find(szName.toUtf8().data());
+}
+
+const char * KviLocale::encodingGroup(int iIdx)
+{
+	if(iIdx > KVI_NUM_ENCODING_GROUPS)
+		return encoding_groups[KVI_NUM_ENCODING_GROUPS];
+	return encoding_groups[iIdx];
+}
+
+KviLocale::EncodingDescription * KviLocale::encodingDescription(int iIdx)
+{
+	if(iIdx > KVI_NUM_ENCODINGS)
+		return &(supported_encodings[KVI_NUM_ENCODINGS]);
+	return &(supported_encodings[iIdx]);
+}
+
+const char * KviLocale::translate(const char * pcText, const char * pcContext)
+{
+	if(!pcContext)
+		return g_pMainCatalogue->translate(pcText);
+
+	KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
+	if(!pCatalogue)
 	{
-		KviCString szLocale = g_szLang;
-
-		QString szLocDir = szLocaleDir;
-		KviQString::ensureLastCharIs(szLocDir,KVI_PATH_SEPARATOR_CHAR);
-
-		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
-
-		if(KviFileUtils::fileExists(szBuffer))
-			return true;
-
-		if(szLocale.findFirstIdx('.') != -1)
-		{
-			// things like en_GB.utf8
-			// kill them
-			szLocale.cutFromFirst('.');
-
-			szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
-			if(KviFileUtils::fileExists(szBuffer))
-				return true;
-		}
-
-		if(szLocale.findFirstIdx('@') != -1)
-		{
-			// things like @euro ?
-			// kill them
-			szLocale.cutFromFirst('@');
-			szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
-			if(KviFileUtils::fileExists(szBuffer))
-				return true;
-		}
-
-		if(szLocale.findFirstIdx('_') != -1)
-		{
-			// things like en_GB
-			// kill them
-			szLocale.cutFromFirst('_');
-			szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
-			if(KviFileUtils::fileExists(szBuffer))
-				return true;
-		}
-
-		// try the lower case version too
-		szLocale.toLower();
-		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
-		if(KviFileUtils::fileExists(szBuffer))
-			return true;
-
-		return false;
-	}
-
-	void init(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
-	{
-		// first of all try to find out the current locale
-		g_szLang = "";
-		QString szLangFile = QString("%1/%2").arg(szForceLocaleDir, KVI_FORCE_LOCALE_FILE_NAME);
-
-		if(KviFileUtils::fileExists(szLangFile))
-		{
-			QString szTmp;
-			KviFileUtils::readFile(szLangFile,szTmp);
-			g_szLang = szTmp;
-		}
-		if(g_szLang.isEmpty())
-			g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
-		if(g_szLang.isEmpty())
-			g_szLang = KviEnvironment::getVariable("LC_MESSAGES");
-		if(g_szLang.isEmpty())
-			g_szLang = KviEnvironment::getVariable("LANG");
-		if(g_szLang.isEmpty())
-			g_szLang = QLocale::system().name();
-		if(g_szLang.isEmpty())
-			g_szLang = "en";
-		g_szLang.trim();
-
-		g_szDefaultLocalePath = szLocaleDir;
-
-		// the main catalogue is supposed to be kvirc_<language>.mo
-		g_pMainCatalogue = new KviMessageCatalogue();
-		// the catalogue dict
-		g_pCatalogueDict = new KviPointerHashTable<const char *,KviMessageCatalogue>;
-		g_pCatalogueDict->setAutoDelete(true);
-
-		// the smart codec dict
-		g_pSmartCodecDict = new KviPointerHashTable<const char *,KviSmartTextCodec>;
-		// the Qt docs explicitly state that we shouldn't delete
-		// the codecs by ourselves...
-		g_pSmartCodecDict->setAutoDelete(false);
-
-		if(g_szLang.hasData())
-		{
-			QString szBuffer;
-			if(findCatalogue(szBuffer,"kvirc",szLocaleDir))
-			{
-				g_pMainCatalogue->load(szBuffer);
-				g_pTranslator = new KviTranslator(pApp);
-				pApp->installTranslator(g_pTranslator);
-			} else {
-				KviCString szTmp = g_szLang;
-				szTmp.cutFromFirst('.');
-				szTmp.cutFromFirst('_');
-				szTmp.cutFromFirst('@');
-				szTmp.toLower();
-				if(!(kvi_strEqualCI(szTmp.ptr(),"en") ||
-					kvi_strEqualCI(szTmp.ptr(),"c") ||
-					kvi_strEqualCI(szTmp.ptr(),"us") ||
-					kvi_strEqualCI(szTmp.ptr(),"gb") ||
-					kvi_strEqualCI(szTmp.ptr(),"posix")))
-				{
-					// FIXME: THIS IS NO LONGER VALID!!!
-					qDebug("Can't find the catalogue for locale \"%s\" (%s)",g_szLang.ptr(),szTmp.ptr());
-					qDebug("There is no such translation or the $LANG variable was incorrectly set");
-					qDebug("You can use $KVIRC_LANG to override the catalogue name");
-					qDebug("For example you can set KVIRC_LANG to it_IT to force usage of the it.mo catalogue");
-				}
-			}
-		}
-
-		//g_pTextCodec = QTextCodec::codecForLocale();
-		//if(!g_pTextCodec)g_pTextCodec = QTextCodec::codecForLocale();
-	}
-
-	void done(QApplication * pApp)
-	{
-		delete g_pMainCatalogue;
-		delete g_pCatalogueDict;
-		delete g_pSmartCodecDict;
-		g_pMainCatalogue = 0;
-		g_pCatalogueDict = 0;
-		g_pSmartCodecDict = 0;
-		if(g_pTranslator)
-		{
-			pApp->removeTranslator(g_pTranslator);
-			delete g_pTranslator;
-			g_pTranslator = 0;
-		}
-	}
-
-	KviMessageCatalogue * getLoadedCatalogue(const QString & szName)
-	{
-		return g_pCatalogueDict->find(szName.toUtf8().data());
-	}
-
-	const char * translate(const char * pcText, const char * pcContext)
-	{
-		if(!pcContext)
-			return g_pMainCatalogue->translate(pcText);
-
-		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
+		pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
 		if(!pCatalogue)
 		{
-			pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
-			if(!pCatalogue)
-			{
-				// Fake it....
-				pCatalogue = new KviMessageCatalogue();
-				g_pCatalogueDict->insert(pcContext,pCatalogue);
-			}
+			// Fake it....
+			pCatalogue = new KviMessageCatalogue();
+			g_pCatalogueDict->insert(pcContext,pCatalogue);
 		}
-		return pCatalogue->translate(pcText);
 	}
+	return pCatalogue->translate(pcText);
+}
 
-	const QString & translateToQString(const char * pcText, const char * pcContext)
+const QString & KviLocale::translateToQString(const char * pcText, const char * pcContext)
+{
+	if(!pcContext)
+		return g_pMainCatalogue->translateToQString(pcText);
+	
+	KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
+	if(!pCatalogue)
 	{
-		if(!pcContext)
-			return g_pMainCatalogue->translateToQString(pcText);
-		
-		KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
+		pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
 		if(!pCatalogue)
 		{
-			pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
-			if(!pCatalogue)
-			{
-				// Fake it....
-				pCatalogue = new KviMessageCatalogue();
-				g_pCatalogueDict->insert(pcContext,pCatalogue);
-			}
+			// Fake it....
+			pCatalogue = new KviMessageCatalogue();
+			g_pCatalogueDict->insert(pcContext,pCatalogue);
 		}
-		return pCatalogue->translateToQString(pcText);
 	}
+	return pCatalogue->translateToQString(pcText);
 }

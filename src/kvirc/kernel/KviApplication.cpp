@@ -303,7 +303,7 @@ void KviApplication::setup()
 	// Make sure that the C strings are translated to utf8
 	// This is a fallback solution anyway: we should use the appropriate
 	// encoding every time.
-	QTextCodec * pUTF8Codec = KviLocale::codecForName("UTF-8");
+	QTextCodec * pUTF8Codec = KviLocale::instance()->codecForName("UTF-8");
 	if(pUTF8Codec)
 		QTextCodec::setCodecForCStrings(pUTF8Codec);
 	else
@@ -693,7 +693,7 @@ KviApplication::~KviApplication()
 	WSACleanup();
 #endif
 
-	KviLocale::done(this);
+	KviLocale::done();
 
 	// goodbye cruel world...
 }
@@ -949,14 +949,14 @@ QTextCodec * KviApplication::defaultTextCodec()
 	QTextCodec * pCodec = 0;
 	if(!KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).isEmpty())
 	{
-		pCodec = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
+		pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
 		if(pCodec)
 			return pCodec;
 	}
 	pCodec = QTextCodec::codecForLocale();
 	if(pCodec)
 		return pCodec;
-	pCodec = KviLocale::codecForName("UTF-8");
+	pCodec = KviLocale::instance()->codecForName("UTF-8");
 	if(!pCodec)
 		qDebug("KviApplication::defaultTextCodec(): cannot find a suitable text codec for locale :/");
 	return pCodec;
@@ -967,14 +967,14 @@ QTextCodec * KviApplication::defaultSrvCodec()
 	QTextCodec * pCodec = 0;
 	if(!KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).isEmpty())
 	{
-		pCodec = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).toLatin1());
+		pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).toLatin1());
 		if(pCodec)
 			return pCodec;
 	}
 	pCodec = QTextCodec::codecForLocale();
 	if(pCodec)
 		return pCodec;
-	pCodec = KviLocale::codecForName("UTF-8");
+	pCodec = KviLocale::instance()->codecForName("UTF-8");
 	if(!pCodec)
 		qDebug("KviApplication::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
 	return pCodec;

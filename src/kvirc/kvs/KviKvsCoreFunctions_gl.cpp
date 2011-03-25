@@ -836,7 +836,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("type",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 		KVSCF_PARAMETERS_END
 
-		QString szLocale(KviLocale::localeName().ptr());
+		QString szLocale(KviLocale::instance()->localeName().ptr());
 		if(szType=="lang") KVSCF_pRetBuffer->setString(szLocale.left(5));
 		else if(szType=="short") KVSCF_pRetBuffer->setString(szLocale.left(2));
 		else KVSCF_pRetBuffer->setString(szLocale);

@@ -291,7 +291,7 @@ bool KviWindow::setTextEncoding(const QString & szTextEncoding)
 {
 	if(!szTextEncoding.isEmpty())
 	{
-		m_pTextCodec = KviLocale::codecForName(szTextEncoding.toLatin1());
+		m_pTextCodec = KviLocale::instance()->codecForName(szTextEncoding.toLatin1());
 		if(m_pTextCodec)
 		{
 			m_szTextEncoding = szTextEncoding;
@@ -725,7 +725,7 @@ void KviWindow::createSystemTextEncodingPopup()
 		QMenu * pPopupSmartUtf8[KVI_NUM_ENCODING_GROUPS];
 
 		uint u = 0;
-		const char * pcEncodingGroup = KviLocale::encodingGroup(u);
+		const char * pcEncodingGroup = KviLocale::instance()->encodingGroup(u);
 
 		while(pcEncodingGroup)
 		{
@@ -736,12 +736,12 @@ void KviWindow::createSystemTextEncodingPopup()
 				pPopupSmartUtf8[u] = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->addMenu(pcEncodingGroup);
 			}
 			
-			pcEncodingGroup = KviLocale::encodingGroup(++u);
+			pcEncodingGroup = KviLocale::instance()->encodingGroup(++u);
 		}
 
 		// third level menus (encodings)
 		uint i = 0;
-		KviLocale::EncodingDescription * pDesc = KviLocale::encodingDescription(i);
+		KviLocale::EncodingDescription * pDesc = KviLocale::instance()->encodingDescription(i);
 		while(pDesc->pcName)
 		{
 			szTmp = QString("%1 (%2)").arg(pDesc->pcName,pDesc->pcDescription);
@@ -763,7 +763,7 @@ void KviWindow::createSystemTextEncodingPopup()
 				g_pMdiWindowSystemTextEncodingActionGroup->addAction(pAction);
 			}
 
-			pDesc = KviLocale::encodingDescription(++i);
+			pDesc = KviLocale::instance()->encodingDescription(++i);
 		}
 	} else {
 		//default action: refresh the name
@@ -789,7 +789,7 @@ void KviWindow::createSystemTextEncodingPopup()
 			g_pMdiWindowSystemTextEncodingDefaultAction->setChecked(true);
 		} else {
 			int i = 0;
-			KviLocale::EncodingDescription * pDesc = KviLocale::encodingDescription(i);
+			KviLocale::EncodingDescription * pDesc = KviLocale::instance()->encodingDescription(i);
 			while(pDesc->pcName)
 			{
 				if(KviQString::equalCI(m_szTextEncoding,pDesc->pcName))
@@ -803,7 +803,7 @@ void KviWindow::createSystemTextEncodingPopup()
 					break;
 				}
 
-				pDesc = KviLocale::encodingDescription(++i);
+				pDesc = KviLocale::instance()->encodingDescription(++i);
 			}
 		}
 	}

@@ -66,13 +66,15 @@ void KviApplication::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,con
 			szData.append("help");
 			{
 				// Localized help
-				QString tmp(KviLocale::localeName().ptr());
+				QString tmp(KviLocale::instance()->localeName().ptr());
 				tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
 				tmp.prepend(szData);
-				if(KviFileUtils::directoryExists(tmp))szData = tmp;
+				if(KviFileUtils::directoryExists(tmp))
+					szData = tmp;
 				else {
 					tmp = szData; KviQString::appendFormatted(tmp,"%sen",KVI_PATH_SEPARATOR);
-					if(KviFileUtils::directoryExists(tmp))szData = tmp;
+					if(KviFileUtils::directoryExists(tmp))
+						szData = tmp;
 				}
 			}
 		break;
@@ -164,7 +166,7 @@ void KviApplication::getLocalKvircDirectory(QString &szData,KvircSubdir dir,cons
 			szData.append("help");
 			{
 				// Localized help
-				QString tmp = KviLocale::localeName().ptr();
+				QString tmp = KviLocale::instance()->localeName().ptr();
 				tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
 				tmp.prepend(szData);
 				if(KviFileUtils::directoryExists(tmp))szData = tmp;

@@ -8,6 +8,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,7 +33,7 @@
 */
 
 #include "kvi_settings.h"
-#include "KviCString.h"
+#include "KviHeapObject.h"
 #include "KviMessageCatalogue.h"
 
 class KviCString;
@@ -50,11 +51,12 @@ class QTextCodec;
 #endif
 
 /**
-* \namespace KviLocale
+* \class KviLocale
 * \brief Holds the localization functions
 */
-namespace KviLocale
+class KVILIB_API KviLocale : public KviHeapObject
 {
+public:
 	/**
 	* \typedef EncodingDescription
 	* \struct _EncodingDescription
@@ -68,14 +70,88 @@ namespace KviLocale
 		uint         uGroup;          /**< group */
 		const char * pcDescription;   /**< description of the encoding */
 	} EncodingDescription;
+protected:
+	/**
+	* \brief Constructs the KviLocale object
+	* \param pApp The main application
+	* \param szLocaleDir The directory containing the localizations
+	* \param szForceLocaleDir The directory forced by the user
+	* \return KviLocale
+	*/
+	KviLocale(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir);
 
-	// you MUST start iterating from 0 and terminate when
-	// you get an entry with a NULL szName
-	KVILIB_API EncodingDescription * encodingDescription(int iIdx);
+	/**
+	* \brief Destroys the object
+	* \return KviLocale
+	*/
+	~KviLocale();
+public:
+	static KviCString g_szLang;
+protected:
+	QApplication * m_pApp;
+private:
+	static KviLocale    * m_pSelf;
+	static unsigned int   m_uCount;
+public:
+	/**
+	* \brief Initializes the class instance
+	* \param pApp The main application
+	* \param szLocaleDir The directory containing the localizations
+	* \param szForceLocaleDir The directory forced by the user
+	* \return void
+	*/
+	static void init(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir);
+
+	/**
+	* \brief Destroys the class instance
+	* \param pApp The main application
+	* \return void
+	*/
+	static void done();
+
+	/**
+	* \brief Returns the instance of the class
+	* \return KviLocale *
+	*/
+	static inline KviLocale * instance(){ return m_pSelf; }
+
+	/**
+	* \brief Returns the number of instances of the class
+	* \return unsigned int
+	*/
+	unsigned int count(){ return m_uCount; }
+
+	/**
+	* \brief Returns the description of the encoding used
+	* \param iIdx The index of the description
+	* \warning You MUST start iterating from 0 and terminate when you get an entry with
+	* a NULL pcName
+	* \return EncodingDescription *
+	*/
+	EncodingDescription * encodingDescription(int iIdx);
+
+	/**
+	* \brief Returns the description of the encoding used
+	* \param iIdx The index of the group
+	* \warning You MUST start iterating from 0 and terminate when you get an entry with
+	* a NULL value
+	* \return const char *
+	*/
 	KVILIB_API const char * encodingGroup(int iIdx);
-	KVILIB_API QTextCodec * codecForName(const char * szName);
-	KVILIB_API const KviCString & localeName();
-	
+
+	/**
+	* \brief Returns the language code of the localization
+	* \return const KviCString &
+	*/
+	const KviCString & localeName(){ return g_szLang; }
+
+	/**
+	* \brief Returns the codec associated to the given translation
+	* \param pcName The name of the translation
+	* \return QTextCodec *
+	*/
+	QTextCodec * codecForName(const char * pcName);
+
 	/**
 	* \brief Finds the catalogue
 	* 
@@ -84,20 +160,51 @@ namespace KviLocale
 	* Returns true if the locale was correctly set; i.e. the locale is C or POSIX
 	* (no translation needed) or the locale is correctly defined and the translation
 	* map was sucesfully loaded
-	* \param szBuffer 
-	* \param szName 
-	* \param szLocaleDir 
+	* \param szBuffer The buffer where to store the translation full path
+	* \param szName The name of the translation file
+	* \param szLocaleDir The directory where the localizations are stored
 	* \return bool
 	*/
-	KVILIB_API bool findCatalogue(QString & szBuffer, const QString & szName, const QString & szLocaleDir);
-	KVILIB_API KviMessageCatalogue * loadCatalogue(const QString & szName, const QString & szLocaleDir);
-	KVILIB_API KviMessageCatalogue * getLoadedCatalogue(const QString & szName);
-	KVILIB_API bool unloadCatalogue(const QString & szName);
-	KVILIB_API void init(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir);
-	KVILIB_API void done(QApplication * pApp);
-	KVILIB_API const char * translate(const char * pcText, const char * pcContext);
-	KVILIB_API const QString & translateToQString(const char * pcText, const char * pcContext);
-}
+	bool findCatalogue(QString & szBuffer, const QString & szName, const QString & szLocaleDir);
+
+	/**
+	* \brief Loads the catalogue
+	* \param szName The name of the catalogue
+	* \param szLocaleDir The directory where to look for the catalogue
+	* \return KviMessageCatalogue *
+	*/
+	KviMessageCatalogue * loadCatalogue(const QString & szName, const QString & szLocaleDir);
+
+	/**
+	* \brief Unloads a catalogue
+	* \param szName The catalogue to unload
+	* \return bool
+	*/
+	bool unloadCatalogue(const QString & szName);
+
+	/**
+	* \brief Returns the loaded catalogue
+	* \param szName The name of the catalogue to get
+	* \return KviMessageCatalogue *
+	*/
+	KviMessageCatalogue * getLoadedCatalogue(const QString & szName);
+
+	/**
+	* \brief Translates the given text from the given context
+	* \param pcText The text to translate
+	* \param pcContext The context where to look for the text
+	* \return const char *
+	*/
+	const char * translate(const char * pcText, const char * pcContext);
+
+	/**
+	* \brief Translates the given text from the given context
+	* \param pcText The text to translate
+	* \param pcContext The context where to look for the text
+	* \return const QString &
+	*/
+	const QString & translateToQString(const char * pcText, const char * pcContext);
+};
 
 
 #ifndef _KVI_LOCALE_CPP_
@@ -107,16 +214,14 @@ namespace KviLocale
 #define __tr(__text__) g_pMainCatalogue->translate(__text__)
 #define __tr_no_lookup(__text__) __text__
 #define __tr_no_xgettext(__text__) g_pMainCatalogue->translate(__text__)
-
 #define __tr2qs(__text__) g_pMainCatalogue->translateToQString(__text__)
+#define __tr2qs_no_lookup(__text__) __text__
 #define __tr2qs_no_xgettext(__text__) g_pMainCatalogue->translateToQString(__text__)
 
-#define __tr_ctx(__text__,__context__) KviLocale::translate(__text__,__context__)
+#define __tr_ctx(__text__,__context__) KviLocale::instance()->translate(__text__,__context__)
 #define __tr_no_lookup_ctx(__text__,__context__) __text__
-#define __tr_no_xgettext_ctx(__text__,__context__) KviLocale::translate(__text__,__context__)
-#define __tr2qs_ctx(__text__,__context__) KviLocale::translateToQString(__text__,__context__)
-#define __tr2qs_ctx_no_xgettext(__text__,__context__) KviLocale::translateToQString(__text__,__context__)
-#define __tr2qs_no_lookup(__text__) __text__
-
+#define __tr_no_xgettext_ctx(__text__,__context__) KviLocale::instance()->translate(__text__,__context__)
+#define __tr2qs_ctx(__text__,__context__) KviLocale::instance()->translateToQString(__text__,__context__)
+#define __tr2qs_ctx_no_xgettext(__text__,__context__) KviLocale::instance()->translateToQString(__text__,__context__)
 
 #endif //_KVI_LOCALE_H_

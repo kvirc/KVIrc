@@ -153,7 +153,7 @@ void TipWindow::nextTip()
 {
 	if(!m_pConfig)
 	{
-		KviCString szLocale = KviLocale::localeName();
+		KviCString szLocale = KviLocale::instance()->localeName();
 		KviCString szFile;
 		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
 		if(!openConfig(szFile.ptr(),true))
@@ -189,7 +189,7 @@ void TipWindow::prevTip()
 {
 	if(!m_pConfig)
 	{
-		KviCString szLocale = KviLocale::localeName();
+		KviCString szLocale = KviLocale::instance()->localeName();
 		KviCString szFile;
 		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
 		if(!openConfig(szFile.ptr(),true))

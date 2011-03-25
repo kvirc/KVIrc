@@ -224,11 +224,11 @@ bool KviModuleManager::loadModule(const QString &modName)
 		// try it as first... (yes, catalogue overriding is impossible this way.. but, anybody cares ?)
 		g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Locale);
 
-		if(!KviLocale::loadCatalogue(info->szModuleContext,szDir))
+		if(!KviLocale::instance()->loadCatalogue(info->szModuleContext,szDir))
 		{
 			// try the local directory then
 			g_pApp->getLocalKvircDirectory(szDir,KviApplication::Locale);
-			KviLocale::loadCatalogue(info->szModuleContext,szDir);
+			KviLocale::instance()->loadCatalogue(info->szModuleContext,szDir);
 		}
 	}
 	
@@ -240,7 +240,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 			//qDebug("ERROR IN LOADING MODULE %s (%s): failed to execute the init routine",modName,szName.ptr());
 			delete module;
 			// kill the message catalogue too then
-			KviLocale::unloadCatalogue(modName);
+			KviLocale::instance()->unloadCatalogue(modName);
 			return false;
 		}
 	}
@@ -291,7 +291,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 	delete module;
 
 	// unload the message catalogues, if any
-	KviLocale::unloadCatalogue(szModName);
+	KviLocale::instance()->unloadCatalogue(szModName);
 
 	if(m_pModuleDict->isEmpty())
 	{

@@ -298,7 +298,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 			szHeader.cutLeft(iIdx + 8);
 			szHeader.cutFromFirst('\n');
 			szHeader.trim();
-			m_pTextCodec = KviLocale::codecForName(szHeader.ptr());
+			m_pTextCodec = KviLocale::instance()->codecForName(szHeader.ptr());
 			if(!m_pTextCodec)
 			{
 				qDebug("Can't find the codec for charset=%s",szHeader.ptr());

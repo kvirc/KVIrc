@@ -681,7 +681,7 @@ namespace KviKvsCoreFunctions
 
 		if(!szCatalogue.isEmpty())
 		{
-			KviMessageCatalogue * pCat = KviLocale::getLoadedCatalogue(szCatalogue);
+			KviMessageCatalogue * pCat = KviLocale::instance()->getLoadedCatalogue(szCatalogue);
 			if(pCat)
 			{
 				translation = pCat->translateToQString(szString.toUtf8().data());
@@ -689,10 +689,10 @@ namespace KviKvsCoreFunctions
 				// attempt to load it automatically
 				QString szDir;
 				g_pApp->getLocalKvircDirectory(szDir,KviApplication::Locale);
-				if(!KviLocale::loadCatalogue(szCatalogue,szDir))
+				if(!KviLocale::instance()->loadCatalogue(szCatalogue,szDir))
 				{
 					g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Locale);
-					KviLocale::loadCatalogue(szCatalogue,szDir);
+					KviLocale::instance()->loadCatalogue(szCatalogue,szDir);
 				}
 				// If the code above fails to load the catalogue
 				// then __tr2qs_ctx_no_xgettext will place

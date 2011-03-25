@@ -762,18 +762,18 @@ namespace KviKvsCoreSimpleCommands
 
 		if(!szDir.isEmpty())
 		{
-			if(KviLocale::loadCatalogue(szCatalogue,szDir))
+			if(KviLocale::instance()->loadCatalogue(szCatalogue,szDir))
 				return true;
 		}
 
 		g_pApp->getLocalKvircDirectory(szDir,KviApplication::Locale);
 
-		if(KviLocale::loadCatalogue(szCatalogue,szDir))
+		if(KviLocale::instance()->loadCatalogue(szCatalogue,szDir))
 			return true;
 
 		g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Locale);
 
-		if(KviLocale::loadCatalogue(szCatalogue,szDir))
+		if(KviLocale::instance()->loadCatalogue(szCatalogue,szDir))
 			return true;
 
 		if(KVSCSC_pSwitches->find('v',"verbose"))
@@ -813,7 +813,7 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("catalogue",KVS_PT_NONEMPTYSTRING,0,szCatalogue)
 		KVSCSC_PARAMETERS_END
 
-		if(!KviLocale::unloadCatalogue(szCatalogue))
+		if(!KviLocale::instance()->unloadCatalogue(szCatalogue))
 		{
 			if(KVSCSC_pSwitches->find('v',"verbose"))
 				KVSCSC_pContext->warning(__tr2qs_ctx("The catalogue %Q was not loaded","kvs"),&szCatalogue);

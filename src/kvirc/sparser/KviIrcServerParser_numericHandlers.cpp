@@ -2208,7 +2208,7 @@ void KviIrcServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 	} else {
 		QString szMe = msg->connection()->decodeText(msg->safeParam(0));
 		if( (szMe==msg->connection()->currentNickName() || szMe == "*" ) //fix for pre-login codepage message
-			&& KviLocale::codecForName(encoding.toUtf8().data()))
+			&& KviLocale::instance()->codecForName(encoding.toUtf8().data()))
 		{
 			msg->console()->output(KVI_OUT_TEXTENCODING,__tr2qs("Your encoding is now %Q"),&encoding);
 			msg->console()->setTextEncoding(encoding);
