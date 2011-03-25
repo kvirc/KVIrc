@@ -42,7 +42,7 @@
 #include <QDirIterator>
 #include <QDateTime>
 #include <QBuffer>
-
+#include <QFile>
 
 PackAddonDialog::PackAddonDialog(QWidget * pParent)
 : QWizard(pParent)
@@ -379,6 +379,12 @@ bool PackAddonDialog::packAddon()
 		m_szSavePath += KVI_FILEEXTENSION_ADDONPACKAGE;
 	}
 
+	if(QFile::exists(m_szSavePath))
+	{
+		if(QMessageBox::question(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?","addon"),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
+			return false;
+	}
+
 	if(!pw.pack(m_szSavePath))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
@@ -389,7 +395,7 @@ bool PackAddonDialog::packAddon()
 	}
 
 
-	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved successfully in ") + m_szSavePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("Package saved successfully in %1","addon").arg(m_szSavePath),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;
 }
@@ -662,3 +668,4 @@ void PackAddonSummaryFilesWidget::showEvent(QShowEvent *)
 
 	m_pFiles->setPlainText(list.join("\n"));
 }
+
