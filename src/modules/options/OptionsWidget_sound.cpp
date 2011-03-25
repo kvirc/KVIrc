@@ -127,13 +127,14 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	i = 0;
 	iMatch = 0;
 
-	d = KviLocale::encodingDescription(i);
-	while(d->szName)
+	d = KviLocale::instance()->encodingDescription(i);
+	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))iMatch = i + 1;
-		m_pWinampEncodingCombo->insertItem(m_pWinampEncodingCombo->count(),d->szName);
+		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))
+			iMatch = i + 1;
+		m_pWinampEncodingCombo->insertItem(m_pWinampEncodingCombo->count(),d->pcName);
 		i++;
-		d = KviLocale::encodingDescription(i);
+		d = KviLocale::instance()->encodingDescription(i);
 	}
 	m_pWinampEncodingCombo->setCurrentIndex(iMatch);
 
