@@ -55,6 +55,10 @@
 #include <QDir>
 #include <QAbstractTextDocumentLayout>
 
+#ifdef COMPILE_WEBKIT_SUPPORT
+	#include "WebAddonInterfaceDialog.h"
+#endif //COMPILE_WEBKIT_SUPPORT
+
 
 AddonManagementDialog * AddonManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
@@ -78,12 +82,18 @@ AddonListViewItem::AddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
 
 	setText(t);
 	QPixmap * p = a->icon();
-	if (p) setIcon(*p);
+	if (p)
+		setIcon(*p);
+
+
+
 }
 
 AddonListViewItem::~AddonListViewItem()
 {
 	delete m_pAddon;
+
+
 }
 
 AddonManagementDialog::AddonManagementDialog(QWidget * p)
@@ -92,6 +102,10 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
 	setObjectName("Addon manager");
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Addons)));
+
+#ifdef COMPILE_WEBKIT_SUPPORT
+	m_pWebInterfaceDialog = NULL;
+#endif //COMPILE_WEBKIT_SUPPORT
 
 	m_pInstance = this;
 	QGridLayout * g = new QGridLayout(this);
@@ -191,6 +205,10 @@ AddonManagementDialog::~AddonManagementDialog()
 {
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
 	m_pInstance = 0;
+#ifdef COMPILE_WEBKIT_SUPPORT
+	if(m_pWebInterfaceDialog)
+		delete m_pWebInterfaceDialog;
+#endif //COMPILE_WEBKIT_SUPPORT
 }
 
 void AddonManagementDialog::fillListView()
@@ -268,8 +286,14 @@ void AddonManagementDialog::uninstallScript()
 
 void AddonManagementDialog::getMoreScripts()
 {
+#ifdef COMPILE_WEBKIT_SUPPORT
+	if(m_pWebInterfaceDialog)
+		return;
+	m_pWebInterfaceDialog = new WebAddonInterfaceDialog();
+#else //!COMPILE_WEBKIT_SUPPORT
 	// If change this introducing not-fixed text, remember to escape this using KviQString::escapeKvs()!
 	KviKvsScript::run("openurl http://www.kvirc.net/?id=addons&version=" KVI_VERSION "." KVI_SOURCES_DATE,g_pActiveWindow);
+#endif //!COMPILE_WEBKIT_SUPPORT
 }
 
 void AddonManagementDialog::installScript()

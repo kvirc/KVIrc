@@ -78,7 +78,7 @@ protected:
 	void setPackagePageUrl(const QString &szUrl);
 	virtual void showEvent(QShowEvent *e);
 
-	virtual bool packageIsInstalled(const QString &szName,const QString &szVersion) = 0;
+	virtual bool packageIsInstalled(const QString &szId,const QString &szVersion) = 0;
 	virtual bool installPackage(const QString &szPath,QString &szError) = 0;
 
 protected slots:

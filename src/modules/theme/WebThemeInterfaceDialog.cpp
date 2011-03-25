@@ -63,11 +63,11 @@ bool WebThemeInterfaceDialog::installPackage(const QString &szPath,QString &szEr
 	return ThemeFunctions::installThemePackage(szPath,szError,this);
 }
 
-bool WebThemeInterfaceDialog::packageIsInstalled(const QString &szName,const QString &szVersion)
+bool WebThemeInterfaceDialog::packageIsInstalled(const QString &szId,const QString &szVersion)
 {
 	return \
-			KviFileUtils::fileExists(m_szGlobalThemesPath+szName+"-"+szVersion) || \
-			KviFileUtils::fileExists(m_szLocalThemesPath+szName+"-"+szVersion);
+			KviFileUtils::fileExists(m_szGlobalThemesPath+szId+"-"+szVersion) || \
+			KviFileUtils::fileExists(m_szLocalThemesPath+szId+"-"+szVersion);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

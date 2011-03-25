@@ -34,6 +34,7 @@
 #include <QListWidget>
 #include <QItemDelegate>
 #include <QToolButton>
+#include <QPointer>
 
 class QPixmap;
 class KviKvsScriptAddon;
@@ -53,6 +54,10 @@ public:
 	KviKvsScriptAddon * addon(){ return m_pAddon; };
 };
 
+#ifdef COMPILE_WEBKIT_SUPPORT
+	class WebAddonInterfaceDialog;
+#endif //COMPILE_WEBKIT_SUPPORT
+
 
 class AddonManagementDialog : public QWidget
 {
@@ -68,6 +73,9 @@ protected:
 	QToolButton                      * m_pHelpButton;
 	QToolButton                      * m_pPackButton;
 	QToolButton                      * m_pUninstallButton;
+#ifdef COMPILE_WEBKIT_SUPPORT
+	WebAddonInterfaceDialog * m_pWebInterfaceDialog;
+#endif //COMPILE_WEBKIT_SUPPORT
 public:
 	static AddonManagementDialog * instance(){ return m_pInstance; };
 	static void display(bool bTopLevel);

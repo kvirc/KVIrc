@@ -1,15 +1,19 @@
 # CMakeLists for src/modules/addon
 
-SET(kviaddon_MOC_HDRS
+SET(
+	kviaddon_MOC_HDRS
 	AddonManagementDialog.h
 	PackAddonDialog.h
+	WebAddonInterfaceDialog.h
 )
 
-SET(kviaddon_SRCS
+SET(
+	kviaddon_SRCS
 	libkviaddon.cpp
 	AddonManagementDialog.cpp
 	PackAddonDialog.cpp
 	AddonFunctions.cpp
+	WebAddonInterfaceDialog.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

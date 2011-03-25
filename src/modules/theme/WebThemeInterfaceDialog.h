@@ -44,7 +44,7 @@ private:
 	QString m_szGlobalThemesPath;
 
 protected:
-	virtual bool packageIsInstalled(const QString &szName,const QString &szVersion);
+	virtual bool packageIsInstalled(const QString &szId,const QString &szVersion);
 	virtual bool installPackage(const QString &szPath,QString &szError);
 
 };
