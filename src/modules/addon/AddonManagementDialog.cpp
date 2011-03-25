@@ -203,12 +203,12 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 
 AddonManagementDialog::~AddonManagementDialog()
 {
-	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
-	m_pInstance = 0;
 #ifdef COMPILE_WEBKIT_SUPPORT
 	if(m_pWebInterfaceDialog)
 		delete m_pWebInterfaceDialog;
 #endif //COMPILE_WEBKIT_SUPPORT
+	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
+	m_pInstance = NULL;
 }
 
 void AddonManagementDialog::fillListView()
