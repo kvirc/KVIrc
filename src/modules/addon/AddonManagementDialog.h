@@ -74,7 +74,7 @@ protected:
 	QToolButton                      * m_pPackButton;
 	QToolButton                      * m_pUninstallButton;
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QPointer<WebAddonInterfaceDialog> * m_pWebInterfaceDialog;
+	QPointer<WebAddonInterfaceDialog> m_pWebInterfaceDialog;
 #endif //COMPILE_WEBKIT_SUPPORT
 public:
 	static AddonManagementDialog * instance(){ return m_pInstance; };
