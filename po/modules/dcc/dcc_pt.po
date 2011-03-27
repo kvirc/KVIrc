@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-23 04:05+0000\n"
-"PO-Revision-Date: 2011-03-17 05:02+0000\n"
+"PO-Revision-Date: 2011-03-27 09:11+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -125,7 +125,7 @@ msgid ""
 "<b>%5</b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> pede uma <br><b>Conexão Directa ao Cliente</b> em modo "
-"<b>CANVAS</b>. <br>O destino da conexão será a máquina <b>%4</b> no porto <b>"
+"<b>CANVAS</b>. <br>O destino da conexão será a máquina <b>%4</b> na porta <b>"
 "%5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:417
@@ -135,7 +135,7 @@ msgid ""
 "b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> pede uma <br><b>Conexão Directa ao Cliente</b> em modo "
-"<b>VIDEO</b>. <br>O destino da conexão será a máquina <b>%4</b> no porto <b>%"
+"<b>VÍDEO</b>. <br>O destino da conexão será a máquina <b>%4</b> na porta <b>%"
 "5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:347
@@ -145,7 +145,7 @@ msgid ""
 "b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> pede uma <br><b>Conexão Directa ao Cliente</b> em modo "
-"<b>VOZ</b>. <br>O destino da conexão será a máquina <b>%4</b> no porto <b>%"
+"<b>VOZ</b>. <br>O destino da conexão será a máquina <b>%4</b> na porta <b>%"
 "5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:588
@@ -153,15 +153,15 @@ msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> quer envia-lhe o ficheiro '<b>%4</b>', de tamanho <b>%5</"
-"b>. <br>O destino da conexão será a máquina <b>%6</b> no porto <b>%7</b><br>"
+"<b>%1 [%2@%3]</b> deseja-lhe enviar o ficheiro '<b>%4</b>', tamanho <b>%5</"
+"b>. <br>O destino da conexão será a máquina <b>%6</b> na porta <b>%7</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:601
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> quer envia-lhe o ficheiro '<b>%4</b>', de tamanho <b>%5</"
+"<b>%1 [%2@%3]</b> deseja-lhe enviar o ficheiro '<b>%4</b>', tamanho <b>%5</"
 "b>. <br>Será o lado passivo da conexão.<br>"
 
 #: src/modules/dcc/DccBroker.cpp:614
@@ -175,11 +175,11 @@ msgid ""
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
 "<center><b>Nota:</b></center>O ficheiro parece ser um avatar que requisitou. "
-"Não deve alterar o nome do ficheiro. Grave-o numa localização onde o KVIrc o "
-"possa encontrar, tais como os directórios 'avatars', 'incoming', ou 'pics', "
+"Não deve alterar o nome do ficheiro. Grave-o numa localização onde o KVIrc "
+"o possa encontrar, tais como os directórios 'avatars', 'incoming', ou 'pics', "
 "na sua pasta pessoal, ou o directório de gravação para os tipos de ficheiros "
 "recebidos. A localização de gravação predefinida irá provavelmente "
-"funcionar. Pode instruir o KVIrc para aceitar automaticamente os 'avatars' "
+"funcionar. Pode instruir o KVIrc para aceitar automaticamente os avatares "
 "recebidos ao definir a opção <tt>boolAutoAcceptIncomingAvatars</tt>para "
 "verdadeiro (true).<br>"
 
@@ -199,7 +199,7 @@ msgstr "Abortado"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2142
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr "A aceitar pedido RESUMIR, a transferência irá começar na posição %1"
+msgstr "A aceitar o pedido de RESUMO, a transferência começará na posição %1"
 
 #: src/modules/dcc/requests.cpp:954
 msgid ""
@@ -360,14 +360,14 @@ msgstr "Ligado a %Q:%Q"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1756
 msgid "Contacting host %1 on port %2"
-msgstr "A contactar a máquina %1 no porto %2"
+msgstr "A contactar a máquina %1 na porta %2"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:108
 #: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:606
 #: src/modules/dcc/DccChatWindow.cpp:185
 msgid "Contacting host %Q on port %Q"
-msgstr "A contactar a máquina %Q no porto %Q"
+msgstr "A contactar a máquina %Q na porta %Q"
 
 #: src/modules/dcc/DccBroker.cpp:296 src/modules/dcc/DccBroker.cpp:629
 msgid "DCC %1 Request - KVIrc"
@@ -548,14 +548,14 @@ msgstr "Limitar a largura de banda de envio para"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1763
 msgid "Listening on interface %1 port %2"
-msgstr "A escutar no interface %1 no porto %2"
+msgstr "A escutar no interface %1 na porta %2"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:84
 #: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:609
 #: src/modules/dcc/DccChatWindow.cpp:187
 msgid "Listening on interface %Q port %Q"
-msgstr "A escutar no interface %Q no porto %Q"
+msgstr "A escutar no interface %Q na porta %Q"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1968
 msgid "Local end is %1:%2"
@@ -617,11 +617,11 @@ msgstr "A processar o pedido de RESUMO com o nome do ficheiro danificado (%1)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2097
 msgid "Processing RESUME request with mismatched port (%1)"
-msgstr "A processar o pedido de RESUMO com o porto incompatível (%1)"
+msgstr "A processar o pedido de RESUMO com uma porta diferente (%1)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2053
 msgid "RESUME accepted, transfer will begin at position %1"
-msgstr "RESUMO aceite, a transferência irá começar na posição %1"
+msgstr "RESUMO aceite, a transferência começará na posição %1"
 
 #: src/modules/dcc/DccDialog.cpp:153
 msgid "Re&sume"
@@ -770,12 +770,12 @@ msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
-"O pedido acima está inválido: parece uma etiqueta de reconhecimento de porto "
-"zero mas ou nunca vi esta etiqueta ou foi enviada à mais de 120 segundos"
+"O pedido acima está danificado: parece o reconhecimento da marca da porta "
+"zero, mas ou nunca vi esta marca ou foi enviada à mais de 120 segundos"
 
 #: src/modules/dcc/DccBroker.cpp:291
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr "O destino da conexão será a máquina <b>%1</b> no porto <b>%2</b><br>"
+msgstr "O destino da conexão será a máquina <b>%1</b> na porta <b>%2</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:281
 msgid "The connection will be secured using SSL.<br>"
@@ -855,7 +855,7 @@ msgstr ""
 #: src/modules/dcc/requests.cpp:700
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
-msgstr "O cliente remoto está a escutar no interface %s no porto %s"
+msgstr "O cliente remoto está a escutar no interface %s na porta %s"
 
 #: src/modules/dcc/libkvidcc.cpp:1645
 msgid "The specified parameter is not a valid DCC identifier"
