@@ -56,9 +56,6 @@
 
 #include "kvi_settings.h"
 
-// V4L1 was removed in kernel 2.6.38
-#undef COMPILE_V4L1_CODE
-
 #ifndef COMPILE_DISABLE_AVDEVICE
 
 #include <asm/types.h>
@@ -77,7 +74,11 @@
 
 #include <linux/fs.h>
 #include <linux/kernel.h>
-#include <linux/videodev2.h>
+#ifdef COMPILE_V4L1_CODE
+	#include <linux/videodev.h>
+#else
+	#include <linux/videodev2.h>
+#endif
 #define VIDEO_MODE_PAL_Nc  3
 #define VIDEO_MODE_PAL_M   4
 #define VIDEO_MODE_PAL_N   5

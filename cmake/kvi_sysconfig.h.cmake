@@ -55,6 +55,7 @@
 #cmakedefine COMPILE_DISABLE_OGG_THEORA 1
 #cmakedefine HAVE_LIBV4L2 1
 #cmakedefine V4L2_CAP_VIDEO_CAPTURE 1
+#cmakedefine COMPILE_V4L1_CODE 1
 
 #cmakedefine COMPILE_DEBUG_MODE 1
 
