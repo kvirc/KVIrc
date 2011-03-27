@@ -113,9 +113,7 @@ public:
 	~DccVideoWindow();
 protected:
 	KviThemedLabel         * m_pLabel;
-	KviTalHBox             * m_pButtonBox;
-	KviTalHBox             * m_pButtonContainer;
-
+	QWidget                * m_pContainerWidget;
 	QLabel                 * m_pInVideoLabel;
 	QLabel                 * m_pOutVideoLabel;
 	QComboBox              * m_pCDevices;
@@ -125,7 +123,7 @@ protected:
 	QTimer                   m_Timer;
 	QLabel                 * m_pVideoLabel[2];
 	QString                * m_pszTarget;
-	DccVideoThread      * m_pSlaveThread;
+	DccVideoThread         * m_pSlaveThread;
 	QByteArray               m_tmpTextDataOut;
 	QString                  m_szLocalNick;
 protected:
@@ -142,6 +140,8 @@ protected:
 	virtual const QString & localNick();
 	virtual void ownMessage(const QString &text, bool bUserFeedback = true);
 	virtual void ownAction(const QString &text);
+	virtual void resizeEvent(QResizeEvent *);
+	virtual QSize sizeHint() const;
 protected slots:
 	void handleMarshalError(KviError::Code eError);
 	void connected();

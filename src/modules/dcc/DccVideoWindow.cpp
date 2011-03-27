@@ -422,21 +422,26 @@ DccVideoWindow::DccVideoWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const cha
 	m_pSlaveThread = 0;
 	m_pszTarget = 0;
 
-	m_pLayout = new QGridLayout(this);
-
 	m_pButtonBox = new KviTalHBox(this);
 
-	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "dcc_chat_label");
+	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "dcc_video_label");
 	m_pLabel->setText(name);
 	m_pButtonBox->setStretchFactor(m_pLabel,1);
 
-	m_pButtonContainer= new KviTalHBox(m_pButtonBox);
-	createTextEncodingButton(m_pButtonContainer);
+	createTextEncodingButton(m_pButtonBox);
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	createCryptControllerButton(m_pButtonContainer);
+	createCryptControllerButton(m_pButtonBox);
 #endif
-	m_pLayout->addWidget(m_pButtonBox, 0, 0, 1, 3);
+
+	// Central splitter
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("dcc_video_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
+	m_pContainerWidget = new QWidget(m_pSplitter);
+	m_pLayout = new QGridLayout(m_pContainerWidget);
+	m_pContainerWidget->setLayout(m_pLayout);
 
 	m_pIrcView  = new KviIrcView(this,pFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
@@ -483,10 +488,7 @@ DccVideoWindow::DccVideoWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const cha
 	m_pLayout->addWidget(m_pCStandards, 6, 2, 1, 1);
 
 	m_pLayout->addWidget(m_pIrcView, 7, 0, 1, 3);
-	m_pLayout->addWidget(m_pInput, 8, 0, 1, 3);
 	m_pLayout->setRowStretch(7,1);
-
-	setLayout(m_pLayout);
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogDccChat))m_pIrcView->startLogging();
 
@@ -564,6 +566,22 @@ DccVideoWindow::~DccVideoWindow()
 		delete m_pszTarget;
 		m_pszTarget = 0;
 	}
+}
+
+void DccVideoWindow::resizeEvent(QResizeEvent *)
+{
+	int iHeight = m_pInput->heightHint();
+	int iHeight2 = m_pButtonBox->sizeHint().height();
+	m_pButtonBox->setGeometry(0,0,width(),iHeight2);
+	m_pSplitter->setGeometry(0,iHeight2,width(),height() - (iHeight + iHeight2));
+	m_pInput->setGeometry(0,height() - iHeight, width(),iHeight);
+}
+
+QSize DccVideoWindow::sizeHint() const
+{
+	QSize ret(m_pSplitter->sizeHint().width(),
+		m_pContainerWidget->sizeHint().height() + m_pButtonBox->sizeHint().height());
+	return ret;
 }
 
 void DccVideoWindow::textViewRightClicked()
