@@ -63,7 +63,6 @@ namespace Kopete {
 namespace AV {
 
 VideoDevice::VideoDevice()
-	: descriptor(-1), m_streambuffers(0), m_current_input(0)
 {
 	descriptor = -1;
 	m_streambuffers  = 0;
@@ -81,7 +80,7 @@ VideoDevice::~VideoDevice()
     \brief Sets up the supported video-controls for the current input
     
     Determines which video-controls are supported for the current input,
-    reads all needed information about them and stores the data to the local members
+    reads all needed informations about them and stores the data to the local members
  */
 void VideoDevice::setupControls()
 {
@@ -1771,6 +1770,7 @@ int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
 		if (m_current_input < m_input.size() )
 		{
 			*value = m_input[m_current_input].img_softcorr_autobrightnesscontrast;
+			qDebug() << "Reported current value is" << *value << ".";
 			return EXIT_SUCCESS;
 		}
 		else
@@ -1781,6 +1781,7 @@ int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
 		if (m_current_input < m_input.size() )
 		{
 			*value = m_input[m_current_input].img_softcorr_autocolor;
+			qDebug() << "Reported current value is" << *value << ".";
 			return EXIT_SUCCESS;
 		}
 		else
@@ -1791,6 +1792,7 @@ int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
 		if (m_current_input < m_input.size() )
 		{
 			*value = m_input[m_current_input].img_softcorr_vflip;
+			qDebug() << "Reported current value is" << *value << ".";
 			return EXIT_SUCCESS;
 		}
 		else
@@ -1801,6 +1803,7 @@ int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
 		if (m_current_input < m_input.size() )
 		{
 			*value = m_input[m_current_input].img_softcorr_hflip;
+			qDebug() << "Reported current value is" << *value << ".";
 			return EXIT_SUCCESS;
 		}
 		else
