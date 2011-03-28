@@ -94,13 +94,13 @@ DccVideoThread::DccVideoThread(KviWindow * wnd,kvi_socket_t fd,KviDccVideoThread
 	m_bRecording = false;
 
 	//local video input
-// 	if(!g_pVideoDevicePool)
-// 	{
+	if(!g_pVideoDevicePool)
+	{
 		g_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
 		if (EXIT_SUCCESS != g_pVideoDevicePool->open()) return;
 		g_pVideoDevicePool->setImageSize(320, 240);
-// 	}
-// 	g_iVideoDevicePoolInstances++;
+	}
+	g_iVideoDevicePoolInstances++;
 #endif
 	startRecording();
 	startPlaying();
@@ -111,9 +111,9 @@ DccVideoThread::~DccVideoThread()
 {
 	stopRecording();
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-// 	g_iVideoDevicePoolInstances--;
-// 	if(g_iVideoDevicePoolInstances==0)
-// 		g_pVideoDevicePool->close();
+	g_iVideoDevicePoolInstances--;
+	if(g_iVideoDevicePoolInstances==0)
+		g_pVideoDevicePool->close();
 
 	delete m_pOpt->pCodec;
 	delete m_pOpt;
@@ -303,7 +303,7 @@ void DccVideoThread::restartRecording(int iDevice, int iInput, int)
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_bRecording=false;
-// 	if(!g_pVideoDevicePool)
+	if(!g_pVideoDevicePool)
 		g_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
 
 	g_pVideoDevicePool->stopCapturing();
@@ -407,7 +407,7 @@ qDebug("DccVideoThread::run()");
 		if(!textStep())goto exit_dcc;
 
 		usleep(FRAME_DURATION*1000);
-		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
+// 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
 	}
 
 
@@ -1046,6 +1046,7 @@ void DccVideoWindow::deviceUnregistered(const QString & )
 
 void DccVideoWindow::videoInputChanged(int )
 {
+//	FIXME this currently leads to a segfault
 // 	if(m_pSlaveThread)
 // 		m_pSlaveThread->restartRecording(m_pCDevices->currentIndex(), m_pCInputs->currentIndex(), m_pCStandards->currentIndex());
 }
