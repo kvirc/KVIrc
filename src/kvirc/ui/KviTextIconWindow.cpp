@@ -55,6 +55,7 @@ KviTextIconWindow::KviTextIconWindow()
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	fill();
+	m_pTable->setFocus(Qt::PopupFocusReason);
 	connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
 	connect(m_pTable,SIGNAL(cellClicked( int, int )),this,SLOT(cellSelected(int, int)));
 }
