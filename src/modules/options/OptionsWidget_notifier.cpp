@@ -263,11 +263,13 @@ OptionsWidget_notifier::~OptionsWidget_notifier()
 #ifdef COMPILE_KDE_SUPPORT
 void OptionsWidget_notifier::toggleNotifierProtocol(bool)
 {
+#ifdef COMPILE_DBUS_SUPPORT
 	if(m_pKdeNotifier->isEnabled())
 		m_pDBusNotifier->setEnabled(!m_pKdeNotifier->isChecked());
 
 	if(m_pDBusNotifier->isEnabled())
 		m_pKdeNotifier->setEnabled(!m_pDBusNotifier->isChecked());
+#endif
 }
 #endif // COMPILE_KDE_SUPPORT
 

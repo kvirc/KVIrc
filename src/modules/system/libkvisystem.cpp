@@ -44,8 +44,11 @@
 	#include <unistd.h>
 #endif
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_DBUS_SUPPORT
 	#include <QtDBus/QtDBus>
+#endif
+
+#ifdef COMPILE_KDE_SUPPORT
 	#include <KToolInvocation>  // invokeTerminal() for system.runcmd
 #else                           // tools we need to work around the absence of
                                 // invokeTerminal()
@@ -416,8 +419,8 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		<variant> $system.dbus(<service:string>,<path:string>,<interface:string>,<method:string>[,<bus_type:string>[,<parameter1:string>[,<parameter2:string>[,...]]]])
 	@description:
 		This function allows performing simple Dbus calls without executing
-		an external process. This feature is available ONLY when KDE support
-		is compiled in the executable: this means that this function is absolutely
+		an external process. This feature is available ONLY under unix: 
+		this means that this function is absolutely
 		non portable (don't use it in scripts that you're going to distribute).
 		<application> is the name of the application being called, <objectid> is the
 		identifier of the object called, <function> is the function to be executed
@@ -465,7 +468,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("parameter_list",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,parms)
 	KVSM_PARAMETERS_END(c)
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_DBUS_SUPPORT
 
 	if(szBusType.isEmpty())
 		szBusType = "session";
@@ -611,7 +614,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 	}
 
 #else
-		c->warning(__tr2qs("DBus calls are available only when KDE support is compiled in"));
+		c->warning(__tr2qs("DBus calls are available only under unix"));
 #endif
 	return true;
 }
