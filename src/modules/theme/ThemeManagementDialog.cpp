@@ -414,7 +414,9 @@ void ThemeManagementDialog::getMoreThemes()
 
 void ThemeManagementDialog::webThemeInterfaceDialogDestroyed()
 {
+#ifdef COMPILE_WEBKIT_SUPPORT
 	m_pWebThemeInterfaceDialog = NULL;
+#endif
 	fillThemeBox();
 }
 

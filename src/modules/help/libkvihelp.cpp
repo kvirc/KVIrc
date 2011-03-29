@@ -208,7 +208,6 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		#endif
 		w->show();
 	}
-#include <QtWebKit/QWebView>
 
 	return true;
 }
