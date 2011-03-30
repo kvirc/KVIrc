@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"POT-Creation-Date: 2011-03-30 18:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 
 #: src/modules/logview/LogViewWindow.cpp:317
@@ -37,6 +37,10 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
+#: src/modules/logview/LogViewWindow.cpp:432
+msgid "Confirm current user logs delete"
+msgstr ""
+
 #: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr ""
@@ -49,6 +53,10 @@ msgstr ""
 msgid "DCC Chat"
 msgstr ""
 
+#: src/modules/logview/LogViewWindow.cpp:433
+msgid "Do you really wish to delete all these channel/query logs?"
+msgstr ""
+
 #: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr ""
@@ -57,7 +65,7 @@ msgstr ""
 msgid "HelpIndex"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:577
+#: src/modules/logview/LogViewWindow.cpp:578
 msgid "Log File"
 msgstr ""
 

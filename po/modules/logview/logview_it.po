@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-30 18:21+0200\n"
 "PO-Revision-Date: 2011-01-10 19:22+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -42,6 +42,10 @@ msgstr "Annulla"
 msgid "Channel"
 msgstr "Canale"
 
+#: src/modules/logview/LogViewWindow.cpp:432
+msgid "Confirm current user logs delete"
+msgstr ""
+
 #: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Console"
@@ -54,6 +58,11 @@ msgstr "Contenuti filtro"
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
+#: src/modules/logview/LogViewWindow.cpp:433
+#, fuzzy
+msgid "Do you really wish to delete all these channel/query logs?"
+msgstr "Rimuovi tutti questi file di log di canali/query"
+
 #: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtro"
@@ -62,7 +71,7 @@ msgstr "Filtro"
 msgid "HelpIndex"
 msgstr "IndiceAiuto"
 
-#: src/modules/logview/LogViewWindow.cpp:577
+#: src/modules/logview/LogViewWindow.cpp:578
 msgid "Log File"
 msgstr "File di Log"
 

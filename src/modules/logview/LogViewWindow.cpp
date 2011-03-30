@@ -429,8 +429,9 @@ void LogViewWindow::deleteCurrent()
 		{
 			if(QMessageBox::question(
 				this,
-				__tr2qs("Confirm current user logs delete"),
-			"Do you really wish to delete all these channel/query logs?", __tr2qs("&Yes"), __tr2qs("&No"),0,1
+				__tr2qs_ctx("Confirm current user logs delete","logview"),
+				__tr2qs_ctx("Do you really wish to delete all these channel/query logs?","logview"),
+				__tr2qs("&Yes"),__tr2qs("&No"),0,1
 			) != 0) return;
 			KviPointerList <LogListViewItem> itemsList;
 			itemsList.setAutoDelete(false);

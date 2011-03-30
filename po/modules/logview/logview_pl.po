@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-30 18:21+0200\n"
 "PO-Revision-Date: 2011-03-03 17:16+0100\n"
 "Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 "Plural-Forms: 3\n"
 "X-Poedit-Language: Polish\n"
@@ -39,6 +39,10 @@ msgstr "Anuluj"
 msgid "Channel"
 msgstr "Kanał"
 
+#: src/modules/logview/LogViewWindow.cpp:432
+msgid "Confirm current user logs delete"
+msgstr ""
+
 #: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Konsola"
@@ -51,6 +55,11 @@ msgstr "Filtr zawartości"
 msgid "DCC Chat"
 msgstr "Czat DCC"
 
+#: src/modules/logview/LogViewWindow.cpp:433
+#, fuzzy
+msgid "Do you really wish to delete all these channel/query logs?"
+msgstr "Usuń wszystkie te pliki dziennika kanału/rozmowy"
+
 #: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtr"
@@ -60,7 +69,7 @@ msgstr "Filtr"
 msgid "HelpIndex"
 msgstr "PomocIndeks"
 
-#: src/modules/logview/LogViewWindow.cpp:577
+#: src/modules/logview/LogViewWindow.cpp:578
 msgid "Log File"
 msgstr "Plik dziennika"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-30 18:21+0200\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,10 @@ msgstr "Cancelar"
 msgid "Channel"
 msgstr "Canal"
 
+#: src/modules/logview/LogViewWindow.cpp:432
+msgid "Confirm current user logs delete"
+msgstr ""
+
 #: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Consola"
@@ -45,6 +49,11 @@ msgstr "Filtro de contenido"
 msgid "DCC Chat"
 msgstr "Chat DCC"
 
+#: src/modules/logview/LogViewWindow.cpp:433
+#, fuzzy
+msgid "Do you really wish to delete all these channel/query logs?"
+msgstr "Eliminar todos esos archivos de log de canal/privado"
+
 #: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtro"
@@ -53,7 +62,7 @@ msgstr "Filtro"
 msgid "HelpIndex"
 msgstr "Índice de la ayuda"
 
-#: src/modules/logview/LogViewWindow.cpp:577
+#: src/modules/logview/LogViewWindow.cpp:578
 msgid "Log File"
 msgstr "Archivo de registro"
 

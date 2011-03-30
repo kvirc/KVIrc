@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_logview \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-03-30 18:21+0200\n"
 "PO-Revision-Date: 2011-03-21 02:58+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -39,6 +39,10 @@ msgstr "Cancelar"
 msgid "Channel"
 msgstr "Canal"
 
+#: src/modules/logview/LogViewWindow.cpp:432
+msgid "Confirm current user logs delete"
+msgstr ""
+
 #: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Consola"
@@ -51,6 +55,11 @@ msgstr "Filtro de conteúdos"
 msgid "DCC Chat"
 msgstr "Conversa DCC"
 
+#: src/modules/logview/LogViewWindow.cpp:433
+#, fuzzy
+msgid "Do you really wish to delete all these channel/query logs?"
+msgstr "Remover todos estes registos de canais/consultas"
+
 #: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtro"
@@ -59,7 +68,7 @@ msgstr "Filtro"
 msgid "HelpIndex"
 msgstr "Índice de Ajuda"
 
-#: src/modules/logview/LogViewWindow.cpp:577
+#: src/modules/logview/LogViewWindow.cpp:578
 msgid "Log File"
 msgstr "Ficheiro de Registo"
 
