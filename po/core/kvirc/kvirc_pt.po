@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-31 06:00+0100\n"
-"PO-Revision-Date: 2011-03-31 06:04+0100\n"
+"PO-Revision-Date: 2011-04-01 06:29+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -4087,11 +4087,11 @@ msgstr "Operações de autenticação terminadas"
 
 #: src/kvilib/net/KviHttpRequest.cpp:988
 msgid "Looking up host %1"
-msgstr "A localizar máquina %1"
+msgstr "A localizar a máquina %1"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:194
 msgid "Looking up host %Q..."
-msgstr "A localizar máquina %Q..."
+msgstr "A localizar a máquina %Q..."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1082
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
@@ -4396,7 +4396,7 @@ msgstr "A negociar informação de retransmissão"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:460
 #, c-format
 msgid "Netsplit detected: %s"
-msgstr "Netsplit detectado :%s"
+msgstr "Separação de redes (netsplit) detectada :%s"
 
 #: src/kvirc/ui/KviStatusBar.cpp:555
 msgid "Network"
@@ -4444,7 +4444,7 @@ msgstr "Alcunha"
 
 #: src/kvirc/kernel/KviOptions.cpp:786
 msgid "Nickname problem"
-msgstr "Problema de alcunha"
+msgstr "Problema da alcunha"
 
 #: src/modules/setup/SetupWizard.cpp:336
 msgid "Nickname:"
@@ -4475,12 +4475,12 @@ msgstr "Nenhum nome/índice de acção indicado"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1066
 msgid "No activity"
-msgstr "Nenhuma actividade"
+msgstr "Sem actividade"
 
 #: src/kvirc/kernel/KviApplication.cpp:1019
 #: src/kvirc/kernel/KviApplication.cpp:1092
 msgid "No and Don't Ask Me Again"
-msgstr "Não e Não Me Pergunte Novamente"
+msgstr "Não e Não Perguntar Novamente"
 
 #: src/modules/str/libkvistr.cpp:2254
 msgid ""
@@ -4500,7 +4500,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:558
 msgid "No channel topic is set"
-msgstr "Nenhum tópico de canal definido"
+msgstr "Nenhum tópico do canal definido"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:422
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -4530,8 +4530,7 @@ msgstr "Nenhuma mensagen externa"
 
 #: src/kvilib/net/KviHttpRequest.cpp:167
 msgid "No filename specified for the \"StoreToFile\" processing type"
-msgstr ""
-"Nenhum nome indicado para o tipo de processamento \"GuardarParaFicheiro\""
+msgstr "Nenhum nome indicado para o tipo de processamento \"StoreToFile\""
 
 #: src/kvilib/core/KviError.cpp:72
 msgid "No host to resolve"
@@ -4539,11 +4538,11 @@ msgstr "Nenhuma máquina para resolver"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1680
 msgid "No matches"
-msgstr "Sem correspondências"
+msgstr "Nenhuma correspondência"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:449
 msgid "No multitarget messages"
-msgstr "Sem mensagens com múltiplos destinos"
+msgstr "Nenhuma mensagens com múltiplos destinos"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:516
 msgid "No proxy hosts available, resuming direct connection"
@@ -4570,7 +4569,7 @@ msgstr "Nenhum servidor importado"
 
 #: src/kvilib/core/KviError.cpp:113
 msgid "No such file"
-msgstr "Nenhuma ficheiro encontrado"
+msgstr "Nenhum ficheiro encontrado"
 
 #: src/modules/my/libkvimy.cpp:52
 #, c-format
@@ -4579,7 +4578,7 @@ msgstr "Nenhum contexto irc (%d)"
 
 #: src/kvilib/core/KviError.cpp:101
 msgid "No such module command"
-msgstr "Nenhuma comando de módulo encontrado"
+msgstr "Nenhum comando de módulo encontrado"
 
 #: src/kvilib/core/KviError.cpp:102
 msgid "No such module function"
@@ -4666,7 +4665,7 @@ msgstr "Entradas da lista de notificação"
 
 #: src/kvirc/kernel/KviOptions.cpp:794
 msgid "Notify list leaves"
-msgstr "Saídas da lista de notificação"
+msgstr "Partidas da lista de notificação"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:699
 msgid ""
@@ -4674,7 +4673,8 @@ msgid ""
 "does not match (registration mask does not match, or nickname is being used "
 "by someone else)"
 msgstr ""
-"Lista de notificação: \r!n\r%Q\r parece estar ligado, mas a máscara [%Q@\r!h"
+"Lista de notificação: \r!n\r%Q\r parece estar conectado, mas a máscara [%"
+"Q@\r!h"
 "\r%Q\r] não corresponde (a máscara de registo não corresponde, ou a alcunha "
 "está a ser usada por outra pessoa)"
 
@@ -4698,7 +4698,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1279
 msgid "Notify list: \r!n\r%Q\r is offline (watch)"
-msgstr "Lista de notificação: \r!n\r%Q\r está desligado (vigiar)"
+msgstr "Lista de notificação: \r!n\r%Q\r está desconectado (vigiar)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1141
 #: src/kvirc/kernel/KviNotifyList.cpp:1154
@@ -4717,23 +4717,23 @@ msgstr "Lista de notificação: a verificar para: %Q"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:776
 msgid "Notify list: Checking userhost for: %Q"
-msgstr "Lista de notificação: a verificar userhost para: %Q"
+msgstr "Lista de notificação: a verificar 'userhost' para: %Q"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:548
 msgid ""
 "Notify list: Hey! You've used ISON behind my back? (I might be confused "
 "now...)"
 msgstr ""
-"Lista de notificação: Ei! Usou o ISON nas minhas costas ? (agora posso estar "
-"confuso...)"
+"Lista de notificação: Ei! Usou o ISON nas minhas costas ? (Posso estar "
+"confuso agora...)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:846
 msgid ""
 "Notify list: Hey! You've used USERHOST behind my back? (I might be confused "
 "now...)"
 msgstr ""
-"Lista de notificação: Hei! Usou o USERHOST nas minhas costas? (agora posso "
-"estar confuso...)"
+"Lista de notificação: Hei! Usou o USERHOST nas minhas costas? (Posso "
+"estar confuso agora...)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:466
 #, c-format
@@ -4742,7 +4742,7 @@ msgid ""
 "reasonable (5 sec)"
 msgstr ""
 "Lista de notificação: o atraso ISON (%d segundos) é demasiado curto, "
-"modificar para algo mais razoável (5 segundos)"
+"a modificar para algo mais razoável (5 segundos)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:377
 msgid "Notify list: No users to check for, quitting"
@@ -4754,7 +4754,7 @@ msgstr "Lista de notificação: lista de notificação vazia, a parar"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1263
 msgid "Notify list: Stopped watching for \r!n\r%Q\r"
-msgstr "Lista de notificação: parou de vigiar para \r!n\r%Q\r"
+msgstr "Lista de notificação: parou de vigiar \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:423
 #, c-format
@@ -4771,7 +4771,7 @@ msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
 msgstr ""
-"Lista de notificação: o intervalo (%d segs) é demasiado curto, modificar "
+"Lista de notificação: o intervalo (%d segs) é demasiado curto, a modificar "
 "para algo mais razoável (5 seg)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:725
@@ -4781,14 +4781,14 @@ msgid ""
 "more reasonable (5 sec)"
 msgstr ""
 "Lista de notificação: o atraso USERHOST(%d segs) é demasiado curto, "
-"modificar para algo mais razoável (5 segs)"
+"a modificar para algo mais razoável (5 segs)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:711
 msgid ""
 "Notify list: Unexpected inconsistency, expected \r!n\r%Q\r in the registered "
 "user DB"
 msgstr ""
-"Lista de notificação: inesperada inconsistência, esperava-se \r!n\r%Q\r na "
+"Lista de notificação: inconsistência inesperada, esperava-se \r!n\r%Q\r na "
 "base de dados de utilizadores registados"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:704
@@ -4797,7 +4797,7 @@ msgid ""
 "(restarting)"
 msgstr ""
 "Lista de notificação: inconsistência inesperada, a base de dados de "
-"utilizadores registados está modificada?(a reiniciar)"
+"utilizadores registados está modificada? (a reiniciar)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1212
 msgid ""
@@ -4805,7 +4805,7 @@ msgid ""
 "restarting)"
 msgstr ""
 "Lista de notificação: inconsistência inesperada, a base de dados de "
-"utilizadores registados está modificada?(vigiar: a reiniciar)"
+"utilizadores registados está modificada? (vigiar: a reiniciar)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:741
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
@@ -4848,13 +4848,11 @@ msgid ""
 "Ignoring this reply and assuming that the basic set of modes is available.\n"
 "If you have strange problems, try changing the server."
 msgstr ""
-"Um ou mais opções de modo padrão estão em falta nos modos disponíveis do "
-"servidor.\n"
-"Isto é causado por um serviço IRC compatível RFC1459 ou uma resposta\n"
-"do servidor danificada.\n"
-"Os umodes do servidor parecem ser '%s' e os modos do canal parecem ser '%"
-"s'.\n"
-"Ignorar esta resposta e assumir que a definição de modos básico está "
+"Um ou mais opções de modo padrão faltam nos modos disponíveis do servidor.\n"
+"Isto é causado por um serviço IRC compatível RFC1459 ou uma resposta do\ "
+"servidor danificada.\n"
+"Os umodes do servidor parecem ser '%s' e os modos do canal parecem ser '%s'.\n"
+"A ignorar esta resposta e a assumir que a definição básica de modos está "
 "disponível.\n"
 "Se ocorrerem alguns problemas estranhos, tente mudar de servidor."
 
@@ -4879,7 +4877,7 @@ msgid ""
 "Ooops.. you've hit a bug in the servers database... I have found a server "
 "but not a network..."
 msgstr ""
-"Uuups... encontrou um erro na base de dados dos servidores...Encontrou um "
+"Ups... encontrou um erro na base de dados dos servidores...Encontrou um "
 "servidor mas não uma rede..."
 
 #: src/modules/setup/SetupWizard.cpp:199
@@ -4932,11 +4930,11 @@ msgstr "Ups... erro interno"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:97
 msgid "Ops... for some reason the link filter object has been destroyed"
-msgstr "Ups...por alguma razão o objecto do filtro da ligação foi destruído"
+msgstr "Ups... por alguma razão o objecto do filtro da ligação foi destruído"
 
 #: src/kvirc/ui/KviWindow.cpp:514
 msgid "Ops...I've accidentally lost the crypting engine..."
-msgstr "Ups...perdi acidentalmente o mecanismo de encriptação..."
+msgstr "Ups... perdi acidentalmente o mecanismo de encriptação..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:219
 msgid "Ops...decrypt cipher not initialized"
