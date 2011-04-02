@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2005-05-26 22:52+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.9.1\n"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:72
@@ -25,14 +25,14 @@ msgstr ""
 msgid " bytes"
 msgstr " bytes"
 
-#: src/modules/options/OptionsWidget_query.cpp:102
 #: src/modules/options/OptionsWidget_channel.cpp:140
+#: src/modules/options/OptionsWidget_query.cpp:102
 msgid " days"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:98
 #: src/modules/options/OptionsWidget_ircView.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:136
+#: src/modules/options/OptionsWidget_query.cpp:98
 msgid " lines"
 msgstr " linhas"
 
@@ -40,12 +40,12 @@ msgstr " linhas"
 msgid " min"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_dcc.cpp:276
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
-#: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:56
+#: src/modules/options/OptionsWidget_dcc.cpp:276
+#: src/modules/options/OptionsWidget_connection.cpp:155
 msgid " msec"
 msgstr " mseg"
 
@@ -60,10 +60,10 @@ msgstr " pedidos"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:96
 #: src/modules/options/OptionsWidget_dcc.cpp:140
+#: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
-#: src/modules/options/OptionsWidget_channel.cpp:121
 msgid " sec"
 msgstr " segundos"
 
@@ -83,7 +83,7 @@ msgstr "&Aplicar"
 msgid "&Browse..."
 msgstr "&Procurar..."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1805
+#: src/modules/options/OptionsWidget_servers.cpp:1809
 msgid "&Copy Server"
 msgstr "&Copiar Servidor"
 
@@ -95,18 +95,18 @@ msgstr "&Novo"
 msgid "&New Proxy"
 msgstr "&Novo Proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1802
+#: src/modules/options/OptionsWidget_servers.cpp:1806
 msgid "&New Server"
 msgstr "&Novo Servidor"
 
-#: src/modules/options/OptionsWidget_identity.cpp:234
-#: src/modules/options/OptionsDialog.cpp:230
-#: src/modules/options/OptionsWidget_servers.cpp:381
 #: src/modules/options/OptionsWidgetContainer.cpp:101
+#: src/modules/options/OptionsDialog.cpp:230
+#: src/modules/options/OptionsWidget_identity.cpp:234
+#: src/modules/options/OptionsWidget_servers.cpp:383
 msgid "&OK"
 msgstr "&Aceitar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1807
+#: src/modules/options/OptionsWidget_servers.cpp:1811
 msgid "&Paste Server"
 msgstr "&Colar Servidor"
 
@@ -118,7 +118,7 @@ msgstr "Botões-3D"
 msgid "3D Grid"
 msgstr "Grade-3D"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:85
+#: src/modules/options/OptionsWidget_textEncoding.cpp:87
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr ""
 "mensagens podem pedir informação de clientes ou negociar transferências de "
 "arquivos.</p>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1367
+#: src/modules/options/OptionsWidget_servers.cpp:1371
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Clique aqui para editar as opções avançadas para esta entrada</"
@@ -228,7 +228,7 @@ msgstr ""
 "preliminar. O KVIrc usará as alternativas se o apelido preliminar estiver em "
 "uso por alguma outra pessoa em uma rede particular de IRC.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:269
+#: src/modules/options/OptionsWidget_servers.cpp:271
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to a server in this network has been established. To add a "
@@ -240,7 +240,7 @@ msgstr ""
 "adicionar um canal, escreva o seu nome na entrada de texto abaixo e clique "
 "\"<b>Adicionar</b>\".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:839
+#: src/modules/options/OptionsWidget_servers.cpp:843
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to this server has been established. To add a channel, type its "
@@ -251,14 +251,14 @@ msgstr ""
 "adicionar um canal, digite seu nome na caixa de texto abaixo e clique em \" "
 "<b>Adicionar</b> \".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1418
+#: src/modules/options/OptionsWidget_servers.cpp:1422
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Aperte este botão para conectar ao servidor atualmente selecionado.</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:621
+#: src/modules/options/OptionsWidget_servers.cpp:623
 msgid ""
 "<center>If this is enabled, the global initial <b>user mode</b> (configured "
 "from the identity dialog) will be used. If disabled, you can configure an "
@@ -339,7 +339,7 @@ msgstr ""
 "de notificação no canto inferior direito do seu Área de Trabalho, quando uma "
 "mensagem destacada for exibida e o KVirc não for a janela ativa</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1429
+#: src/modules/options/OptionsWidget_servers.cpp:1433
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -366,7 +366,7 @@ msgstr ""
 "para mensagens que contenham uma palavra da lista de palavras destacadas.</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:576
+#: src/modules/options/OptionsWidget_servers.cpp:578
 msgid ""
 "<center>If this server requires a password, put it in this field, otherwise "
 "leave it empty.</center>"
@@ -374,7 +374,7 @@ msgstr ""
 "<center>Se este servidor requer uma senha, insira-a neste campo, se não "
 "deixe-o vazio.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_servers.cpp:1275
 msgid ""
 "<center>If you are searching for a specific server or network, you can "
 "insert its name to filter the servers in the list</center>"
@@ -395,7 +395,7 @@ msgstr ""
 "esta opção pode ajudar se você for frequentemente atacado por CTCP floods</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:933
+#: src/modules/options/OptionsWidget_servers.cpp:937
 #, fuzzy
 msgid ""
 "<center>If you want to enable SASL authentication, insert your nickname here."
@@ -404,7 +404,7 @@ msgstr ""
 "<center>Você pode digitar uma lista de apelidos separados por espaços.</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:940
+#: src/modules/options/OptionsWidget_servers.cpp:944
 msgid ""
 "<center>If you want to enable SASL authentication, insert your password here."
 "</center>"
@@ -417,8 +417,8 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:103
 #: src/modules/options/OptionsWidget_channel.cpp:141
+#: src/modules/options/OptionsWidget_query.cpp:103
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -427,8 +427,8 @@ msgstr ""
 "<center>Valor mínimo: <b>0 segundos</b><br>Valor máximo: <b>86400 segundos</"
 "b></center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:99
 #: src/modules/options/OptionsWidget_channel.cpp:137
+#: src/modules/options/OptionsWidget_query.cpp:99
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -495,7 +495,7 @@ msgstr ""
 "<br>Muitos clientes podem tratar este tipo de otimização, então desative-o "
 "apenas se tiver problemas.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:855
+#: src/modules/options/OptionsWidget_servers.cpp:859
 msgid ""
 "<center>The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -512,7 +512,7 @@ msgstr ""
 "é particularmente útil para os bouncers de IRC que requerem comandos no "
 "início de uma sessão.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:285
+#: src/modules/options/OptionsWidget_servers.cpp:287
 msgid ""
 "<center>The following commands will be executed after a connection to a "
 "server in this network has been established.<br><b>Important:</b> Enter "
@@ -529,7 +529,7 @@ msgstr ""
 "<br>Isto é particularmente útil para bouncers IRC que requerem comandos de "
 "entrada.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:304
+#: src/modules/options/OptionsWidget_servers.cpp:306
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "a server in this network.<br><b>Important:</b> Enter commands <b>without</b> "
@@ -543,7 +543,7 @@ msgstr ""
 "privatelog</tt>).<br>Isto é útil para automaticamente abrir queries, definir "
 "variáveis, etc.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:874
+#: src/modules/options/OptionsWidget_servers.cpp:878
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -585,7 +585,7 @@ msgstr ""
 "então a codificação irá ser definida para o valor global do sistema que você "
 "escolheu no diálogo de opções da página de \"Codificação\".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:770
+#: src/modules/options/OptionsWidget_servers.cpp:772
 #, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
@@ -597,7 +597,7 @@ msgstr ""
 "servidor. Se você escolher \"Usar Codificação da Rede\" então a codificação "
 "será herdada da rede que este servidor pertence.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:756
+#: src/modules/options/OptionsWidget_servers.cpp:758
 #, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
@@ -610,7 +610,7 @@ msgstr ""
 "servidor. Se você escolher \"Usar Codificação da Rede\" então a codificação "
 "será herdada da rede que este servidor pertence.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1379
+#: src/modules/options/OptionsWidget_servers.cpp:1383
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -618,7 +618,7 @@ msgstr ""
 "<center>Este botão exibe a lista de servidores usados recentemente. Isto "
 "permite que você encontre-os rapidamente na lista..</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:925
+#: src/modules/options/OptionsWidget_servers.cpp:929
 msgid ""
 "<center>This check enables the use of the <b>SASL</b> authentication "
 "procotol If you enable the proper global option in the Connection/SSL tab "
@@ -626,14 +626,14 @@ msgid ""
 "protocol will be used for this server if available.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:910
+#: src/modules/options/OptionsWidget_servers.cpp:914
 msgid ""
 "<center>This check enables the use of the <b>Transport Layer Security</b> "
 "protocol. If you enable the proper global option in the Connection/SSL tab, "
 "the TLS protocol will be used for this server if available.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:729
+#: src/modules/options/OptionsWidget_servers.cpp:731
 msgid ""
 "<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
 "attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
@@ -643,7 +643,7 @@ msgstr ""
 "o KVIrc tentará usar o protocólo IPv6 (seu S.O. <b>deve</b> ter uma pila "
 "IPv6 funcionando e <b>deve</b> ter uma conexão IPv6).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:899
+#: src/modules/options/OptionsWidget_servers.cpp:903
 #, fuzzy
 msgid ""
 "<center>This check will cause the connection to use the <b>Extended "
@@ -654,7 +654,7 @@ msgstr ""
 "<b>Secure Socket Layer</b> na conexão. Obviamente, este servidor deve ter "
 "suporte também. :)</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:738
+#: src/modules/options/OptionsWidget_servers.cpp:740
 msgid ""
 "<center>This check will cause the connection to use the <b>Secure Socket "
 "Layer</b> encryption support. Obviously, this server must have support for "
@@ -664,7 +664,7 @@ msgstr ""
 "<b>Secure Socket Layer</b> na conexão. Obviamente, este servidor deve ter "
 "suporte também. :)</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:699
+#: src/modules/options/OptionsWidget_servers.cpp:701
 msgid ""
 "<center>This check will enable <b>IP address caching</b> for this server:"
 "<br>DNS lookups can be time-consuming and might be blocking on some "
@@ -690,7 +690,7 @@ msgstr ""
 "<center>Isto habilita o medidor de lag, que verificará em intervalos "
 "regulares quanto de lag (latência) o servidor tem.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:994
+#: src/modules/options/OptionsWidget_servers.cpp:998
 msgid ""
 "<center>This field allows you to specify a really unique id for this server. "
 "You will then be able to use /server -x &lt;this_id&gt; to make the "
@@ -716,7 +716,7 @@ msgstr ""
 "um arquivo recebido.<br><tt>$0</tt> é usado no lugar do nome do arquivo</"
 "center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:982
+#: src/modules/options/OptionsWidget_servers.cpp:986
 msgid ""
 "<center>This field specifies the name of a module that exports a link filter "
 "for this type of server.<br>For plain IRC connections, you don't need any "
@@ -727,7 +727,7 @@ msgstr ""
 "precisa de nenhum filtro de link; isto é usado para protocolos incompat�veis."
 "</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:540
+#: src/modules/options/OptionsWidget_servers.cpp:542
 msgid ""
 "<center>This is a brief description of this server. This field has no "
 "restrictions but many server lists use it to describe the server's physical "
@@ -760,7 +760,7 @@ msgstr ""
 "pode ser criada em opções  \"Advançadas...\" derede (acessível a partir da "
 "janela de servidores).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:340
+#: src/modules/options/OptionsWidget_servers.cpp:342
 msgid ""
 "<center>This is a list of NickServ identification rules. KVIrc will use them "
 "to model its automatic interaction with NickServ on this network.<br>Please "
@@ -794,7 +794,7 @@ msgid ""
 "<b>10 secs</b></center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:672
+#: src/modules/options/OptionsWidget_servers.cpp:674
 msgid ""
 "<center>This is the <b>IP address</b> of this server, it is here for caching "
 "purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
@@ -808,7 +808,7 @@ msgstr ""
 "do endereço IP\" na opção abaixo, o KVIrc irá utilizá-lo como \"resultado de "
 "armazenamento\" e evitará de pesquisá-lo outra vez.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:803
+#: src/modules/options/OptionsWidget_servers.cpp:807
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -830,7 +830,7 @@ msgstr ""
 "Se este campo for deixado vazio, o KVirc irá usar o nome de usuário padrão "
 "especificado nas opções de \"Identidade\".</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:564
+#: src/modules/options/OptionsWidget_servers.cpp:566
 msgid ""
 "<center>This is the <b>username</b> that KVIrc will use to login to this "
 "server.\n"
@@ -914,7 +914,7 @@ msgid ""
 msgstr ""
 "<center>Este é o nome do servidor ou da rede atualmente selecionado.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:663
+#: src/modules/options/OptionsWidget_servers.cpp:665
 msgid ""
 "<center>This is the default <b>port</b> that this server will be contacted "
 "on.<br>Usually <b>6667</b> is OK.</center>"
@@ -948,7 +948,7 @@ msgstr ""
 "<center>Este é o endereço fixo que será enviado a todos os pedidos DCC se "
 "você ativar a opção acima.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1298
+#: src/modules/options/OptionsWidget_servers.cpp:1302
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -995,7 +995,7 @@ msgstr ""
 "automaticamente requisitadas.<br>Um valor razoável pode ser de 102400 bytes "
 "(100 K).</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1363
+#: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1021,7 +1021,7 @@ msgstr ""
 "mais comum), o nick padrão (especificado nas configurações de \"Identidade"
 "\") será usado.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:600
+#: src/modules/options/OptionsWidget_servers.cpp:602
 #, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this server "
@@ -1104,8 +1104,8 @@ msgstr ""
 "problemáticos.<br>Utilize-o apenas se sua transferência DCC parar logo após "
 "estabelecer uma conexão sem enviar quaisquer dados.</center> "
 
-#: src/modules/options/OptionsWidget_query.cpp:82
 #: src/modules/options/OptionsWidget_dcc.cpp:331
+#: src/modules/options/OptionsWidget_query.cpp:82
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1290,7 +1290,7 @@ msgstr ""
 "ativar isto pode ser útil.<br> Os avatars serão gravados na diretório KVIrc "
 "local .</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:248
+#: src/modules/options/OptionsWidget_servers.cpp:250
 #, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to automatically connect to this "
@@ -1309,7 +1309,7 @@ msgstr ""
 "quando uma mensagem de CONVITE para esse canal for recebida.<br><b>Aviso:</"
 "b>Isto pode ajudar alguns spammers a te chatear. :)</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:715
+#: src/modules/options/OptionsWidget_servers.cpp:717
 msgid ""
 "<center>This option will cause KVIrc to connect to the IRC server when it is "
 "started.</center>"
@@ -1613,7 +1613,7 @@ msgstr ""
 "mais comum), o nick padrão (especificado nas configurações de \"Identidade"
 "\") será usado.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:587
+#: src/modules/options/OptionsWidget_servers.cpp:589
 msgid ""
 "<center>You can specify a \"special\" <b>nickname</b> that will be used to "
 "log in to this server.<br>If this field is left empty (most common case), "
@@ -1639,7 +1639,7 @@ msgstr ""
 "mais comum), o \"nome real\" padrão (especificado nas configurações de "
 "\"Identidade\") será usado.</center>"
 
-#: src/modules/options/OptionsWidget_servers.cpp:611
+#: src/modules/options/OptionsWidget_servers.cpp:613
 msgid ""
 "<center>You can specify a \"special\" <b>real name</b> that will be used to "
 "login with this server.<br>If you leave this field empty (most common case), "
@@ -1732,7 +1732,7 @@ msgstr "Aceitar RESUME quebrado (arquivo.ext mIRC)"
 msgid "Accept RESUME requests with mismatched ports"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1358
+#: src/modules/options/OptionsWidget_servers.cpp:1362
 #, fuzzy
 msgid "Active Configuration"
 msgstr "&Salvar Configuração"
@@ -1760,26 +1760,26 @@ msgid "Add Profile"
 msgstr "Prólogo"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:264
-#: src/modules/options/OptionsWidget_servers.cpp:347
+#: src/modules/options/OptionsWidget_servers.cpp:349
 msgid "Add Rule"
 msgstr "Adicionar Regra"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1001
+#: src/modules/options/OptionsWidget_servers.cpp:1005
 #: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_channel.h:64
-#: src/modules/options/OptionsWidget_dcc.h:59
-#: src/modules/options/OptionsWidget_dcc.h:103
 #: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_irc.h:57
+#: src/modules/options/OptionsWidget_dcc.h:59
+#: src/modules/options/OptionsWidget_dcc.h:103
 msgid "Advanced"
 msgstr "Avançado"
 
-#: src/modules/options/OptionsWidget_notifier.cpp:230
 #: src/modules/options/OptionsWidget_notify.cpp:60
+#: src/modules/options/OptionsWidget_notifier.cpp:230
 msgid "Advanced configuration"
 msgstr "Configuração avançada"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1365
+#: src/modules/options/OptionsWidget_servers.cpp:1369
 msgid "Advanced..."
 msgstr "Avançado..."
 
@@ -1860,7 +1860,7 @@ msgid "Alt. Nickname 3:"
 msgstr "Apelido Alt. 3:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:174
-#: src/modules/options/OptionsWidget_servers.cpp:591
+#: src/modules/options/OptionsWidget_servers.cpp:593
 #, fuzzy
 msgid "Alt.Nickname:"
 msgstr "Apelido Alt. 1:"
@@ -1900,7 +1900,7 @@ msgstr "Anexar à resposta SOURCE:"
 msgid "Append to VERSION reply:"
 msgstr "Anexar à resposta VERSION:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:923
+#: src/modules/options/OptionsWidget_servers.cpp:927
 msgid "Authenticate via SASL extension"
 msgstr ""
 
@@ -1913,7 +1913,7 @@ msgstr ""
 msgid "Auto-detect"
 msgstr "Auto-detectar"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:88
+#: src/modules/options/OptionsWidget_textEncoding.cpp:90
 #, fuzzy
 msgid "Automatic detection"
 msgstr "Reconectar automaticamente"
@@ -1994,13 +1994,13 @@ msgstr "Ausente"
 
 #: src/modules/options/OptionsWidget_theme.cpp:164
 #: src/modules/options/OptionsWidget_theme.cpp:184
-#: src/modules/options/OptionsWidget_windowList.h:79
 #: src/modules/options/OptionsWidget_userList.h:46
+#: src/modules/options/OptionsWidget_windowList.h:79
 msgid "Background"
 msgstr "Plano de fundo"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:119
 #: src/modules/options/OptionsWidget_userList.cpp:126
+#: src/modules/options/OptionsWidget_windowList.cpp:119
 msgid "Background Colors"
 msgstr "Cores de fundo"
 
@@ -2025,9 +2025,9 @@ msgstr "Cor de fundo:"
 msgid "Background image"
 msgstr "Imagem de fundo"
 
+#: src/modules/options/OptionsWidget_userList.cpp:131
 #: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
-#: src/modules/options/OptionsWidget_userList.cpp:131
 msgid "Background image:"
 msgstr "Imagem de fundo:"
 
@@ -2052,11 +2052,11 @@ msgstr "Fazer conexões IPv4 usando:"
 msgid "Blend color:"
 msgstr "Cor de Mistura:"
 
+#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:71
 #: src/modules/options/OptionsWidget_input.cpp:63
-#: src/modules/options/OptionsWidget_userList.cpp:148
+#: src/modules/options/OptionsWidget_ircView.cpp:71
 msgid "Bottom"
 msgstr "Abaixo"
 
@@ -2081,31 +2081,31 @@ msgstr "CTCP"
 msgid "CTCP Replies"
 msgstr "Respostas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:696
+#: src/modules/options/OptionsWidget_servers.cpp:698
 msgid "Cache IP address"
 msgstr "Armazenar endereço IP"
 
+#: src/modules/options/OptionsWidgetContainer.cpp:109
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
-#: src/modules/options/OptionsDialog.cpp:245
-#: src/modules/options/OptionsWidget_servers.cpp:387
-#: src/modules/options/OptionsWidget_servers.cpp:1011
-#: src/modules/options/OptionsWidgetContainer.cpp:109
+#: src/modules/options/OptionsWidget_servers.cpp:389
+#: src/modules/options/OptionsWidget_servers.cpp:1015
 msgid "Cancel"
 msgstr "Cancelar"
 
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_ircView.cpp:67
-#: src/modules/options/OptionsWidget_ircView.cpp:72
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
+#: src/modules/options/OptionsWidget_ircView.cpp:67
+#: src/modules/options/OptionsWidget_ircView.cpp:72
 #, fuzzy
 msgid "Center"
 msgstr "Geral"
@@ -2151,8 +2151,8 @@ msgstr "Proprietário do canal:"
 msgid "Channel windows"
 msgstr "Janelas de canal"
 
-#: src/modules/options/OptionsWidget_servers.cpp:267
-#: src/modules/options/OptionsWidget_servers.cpp:838
+#: src/modules/options/OptionsWidget_servers.cpp:269
+#: src/modules/options/OptionsWidget_servers.cpp:842
 msgid "Channels to join automatically upon connect:"
 msgstr "Canais para entrar automaticamente ao conectar:"
 
@@ -2202,7 +2202,7 @@ msgstr "Lista de Janelas"
 msgid "Classic format"
 msgstr "Barra de tarefas clássica"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1812
+#: src/modules/options/OptionsWidget_servers.cpp:1816
 msgid "Clear List"
 msgstr "Limpar Lista"
 
@@ -2211,13 +2211,13 @@ msgstr "Limpar Lista"
 msgid "Close in tray"
 msgstr "Minimizar novos privados"
 
-#: src/modules/options/OptionsDialog.cpp:232
 #: src/modules/options/OptionsWidgetContainer.cpp:102
+#: src/modules/options/OptionsDialog.cpp:232
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diálogo, aceitando todas as alterações."
 
-#: src/modules/options/OptionsDialog.cpp:247
 #: src/modules/options/OptionsWidgetContainer.cpp:110
+#: src/modules/options/OptionsDialog.cpp:247
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diálogo, rejeitando todas as alterações."
 
@@ -2235,9 +2235,9 @@ msgid "Commit all changes immediately."
 msgstr "Aplicar as alterações imediatamente."
 
 #: src/modules/options/OptionsWidget_notify.cpp:41
+#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_proxy.cpp:107
 #: src/modules/options/OptionsWidget_connection.cpp:221
-#: src/modules/options/OptionsWidget_lag.cpp:43
 msgid "Configuration"
 msgstr "Configuração"
 
@@ -2245,7 +2245,7 @@ msgstr "Configuração"
 msgid "Confirm quit with active connections"
 msgstr "Confirmar quit com conexões ativas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1386
+#: src/modules/options/OptionsWidget_servers.cpp:1390
 msgid "Connect &Now"
 msgstr "Co&nectar Agora"
 
@@ -2253,16 +2253,16 @@ msgstr "Co&nectar Agora"
 msgid "Connect timeout:"
 msgstr "Limite de tempo para conectar:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:244
+#: src/modules/options/OptionsWidget_servers.cpp:246
 #, fuzzy
 msgid "Connect to this network at startup"
 msgstr "Conectar ao servidor ao iniciar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:710
+#: src/modules/options/OptionsWidget_servers.cpp:712
 msgid "Connect to this server at startup"
 msgstr "Conectar ao servidor ao iniciar"
 
-#: src/modules/options/OptionsWidget_servers.cpp:828
+#: src/modules/options/OptionsWidget_servers.cpp:832
 #: src/modules/options/OptionsWidget_connection.h:33
 msgid "Connection"
 msgstr "Conexão"
@@ -2285,7 +2285,7 @@ msgstr "Conectar"
 msgid "Control char color"
 msgstr "Cor dos caracteres de controle"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1335
+#: src/modules/options/OptionsWidget_servers.cpp:1339
 msgid "Copy Server"
 msgstr "Copiar Servidor"
 
@@ -2336,7 +2336,7 @@ msgstr ""
 msgid "Datetime format"
 msgstr "Cor da marca de tempo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:807
+#: src/modules/options/OptionsWidget_servers.cpp:811
 msgid "Default"
 msgstr "Padrão"
 
@@ -2381,22 +2381,22 @@ msgid "Delete Profile"
 msgstr "Deletar Regra"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:272
-#: src/modules/options/OptionsWidget_servers.cpp:356
+#: src/modules/options/OptionsWidget_servers.cpp:358
 msgid "Delete Rule"
 msgstr "Deletar Regra"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1279
+#: src/modules/options/OptionsWidget_servers.cpp:1283
 msgid "Description"
 msgstr "Descrição"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 #: src/modules/options/OptionsWidget_servers.cpp:119
-#: src/modules/options/OptionsWidget_servers.cpp:534
+#: src/modules/options/OptionsWidget_servers.cpp:536
 msgid "Description:"
 msgstr "Descrição:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:808
+#: src/modules/options/OptionsWidget_servers.cpp:812
 #, fuzzy
 msgid "Direct connection"
 msgstr "conexão segura"
@@ -2498,7 +2498,7 @@ msgid "Edit Profile"
 msgstr "Prólogo"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:268
-#: src/modules/options/OptionsWidget_servers.cpp:352
+#: src/modules/options/OptionsWidget_servers.cpp:354
 msgid "Edit Rule"
 msgstr "Editar Regra"
 
@@ -2516,7 +2516,7 @@ msgid "Enable Network Profiles"
 msgstr "Propriedades da Rede"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:232
-#: src/modules/options/OptionsWidget_servers.cpp:319
+#: src/modules/options/OptionsWidget_servers.cpp:321
 msgid "Enable NickServ Identification"
 msgstr "Ativar Identificação do NickServ"
 
@@ -2628,7 +2628,7 @@ msgstr "Sequência de Chave:"
 msgid "Expand tabulations in input using this amount of spaces:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:890
+#: src/modules/options/OptionsWidget_servers.cpp:894
 msgid "Extended Capabilities"
 msgstr ""
 
@@ -2667,9 +2667,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Falhou ao iniciar a transferência"
 
+#: src/modules/options/OptionsWidget_userList.h:103
 #: src/modules/options/OptionsWidget_windowList.h:98
 #: src/modules/options/OptionsWidget_ircView.h:70
-#: src/modules/options/OptionsWidget_userList.h:103
 msgid "Features"
 msgstr ""
 
@@ -2685,7 +2685,7 @@ msgstr "Transferência de Arquivo"
 msgid "File pattern:"
 msgstr "Padrão de Arquivo:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1266
+#: src/modules/options/OptionsWidget_servers.cpp:1270
 #, fuzzy
 msgid "Filter:"
 msgstr "&Filtro:"
@@ -2714,16 +2714,16 @@ msgid "Flood Protection"
 msgstr "Proteção de Flood"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:38
-#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_input.cpp:38
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
+#: src/modules/options/OptionsWidget_theme.cpp:182
 msgid "Font"
 msgstr "Fonte"
 
+#: src/modules/options/OptionsWidget_userList.cpp:52
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
 #: src/modules/options/OptionsWidget_ircView.cpp:51
-#: src/modules/options/OptionsWidget_userList.cpp:52
 msgid "Font:"
 msgstr "Fonte:"
 
@@ -2739,12 +2739,12 @@ msgstr "Forçar Inatividade"
 msgid "Force immediate quit"
 msgstr "Forçar quit imediato"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:79
+#: src/modules/options/OptionsWidget_textEncoding.cpp:81
 msgid "Force language:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.h:64
 #: src/modules/options/OptionsWidget_userList.h:67
+#: src/modules/options/OptionsWidget_windowList.h:64
 msgid "Foreground"
 msgstr "Primeiro Plano"
 
@@ -2764,13 +2764,13 @@ msgid "Gender:"
 msgstr "Geral"
 
 #: src/modules/options/OptionsWidget_message.cpp:70
-#: src/modules/options/OptionsWidget_servers.cpp:257
+#: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_identity.h:153
 #: src/modules/options/OptionsWidget_channel.h:52
-#: src/modules/options/OptionsWidget_dcc.h:46
-#: src/modules/options/OptionsWidget_dcc.h:89
 #: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_irc.h:43
+#: src/modules/options/OptionsWidget_dcc.h:46
+#: src/modules/options/OptionsWidget_dcc.h:89
 msgid "General"
 msgstr "Geral"
 
@@ -2863,7 +2863,7 @@ msgstr "Destacar mensagens que contenham o meu apelido"
 msgid "Highlight only whole words splitting on space and on:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:340
+#: src/modules/options/OptionsWidget_sound.cpp:342
 #, fuzzy
 msgid "Highlighted message in inactive window"
 msgstr "Destacar mensagens que contenham o meu apelido"
@@ -2883,8 +2883,8 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:48
+#: src/modules/options/OptionsWidget_ircView.cpp:56
 #, fuzzy
 msgid "Horizontal align:"
 msgstr "Local do certificado:"
@@ -2902,8 +2902,8 @@ msgstr "Clique duas vezes para abrir esta ligação"
 msgid "ID3 tags' encoding"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:668
 #: src/modules/options/OptionsWidget_proxy.cpp:116
+#: src/modules/options/OptionsWidget_servers.cpp:670
 msgid "IP address:"
 msgstr "Endereço IP:"
 
@@ -2936,7 +2936,7 @@ msgstr "Intervalo para ISON (em segundos)"
 msgid "Icon"
 msgstr "Ícone"
 
-#: src/modules/options/OptionsWidget_servers.cpp:987
+#: src/modules/options/OptionsWidget_servers.cpp:991
 #, fuzzy
 msgid "Id:"
 msgstr "Id"
@@ -2951,12 +2951,12 @@ msgstr "Nome de usuário do ident:"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:89
 #: src/modules/options/OptionsWidget_nickserv.cpp:247
-#: src/modules/options/OptionsWidget_servers.cpp:334
+#: src/modules/options/OptionsWidget_servers.cpp:336
 msgid "Identify Command"
 msgstr "Comando de Identificação"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
-#: src/modules/options/OptionsWidget_servers.cpp:645
+#: src/modules/options/OptionsWidget_servers.cpp:647
 #: src/modules/options/OptionsWidget_identity.h:137
 msgid "Identity"
 msgstr "Identidade"
@@ -2988,8 +2988,8 @@ msgstr "Altura da Imagem:"
 msgid "Image width:"
 msgstr "Largura da Imagem:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1353
-#: src/modules/options/OptionsWidget_servers.cpp:1814
+#: src/modules/options/OptionsWidget_servers.cpp:1357
+#: src/modules/options/OptionsWidget_servers.cpp:1818
 msgid "Import List"
 msgstr "Importar Lista"
 
@@ -3010,8 +3010,8 @@ msgstr "Entrada"
 msgid "Interface"
 msgstr "Interface"
 
-#: src/modules/options/OptionsWidget_query.cpp:101
 #: src/modules/options/OptionsWidget_channel.cpp:139
+#: src/modules/options/OptionsWidget_query.cpp:101
 #, fuzzy
 msgid "Interval:"
 msgstr "Intervalo de inatividade:"
@@ -3026,7 +3026,7 @@ msgid "Invalid Profile Rule"
 msgstr "Regra Nickserv Inválida"
 
 #: src/modules/options/OptionsWidget_identity.cpp:657
-#: src/modules/options/OptionsWidget_servers.cpp:628
+#: src/modules/options/OptionsWidget_servers.cpp:630
 msgid "Invisible (+i)"
 msgstr "Invisivel (+i)"
 
@@ -3035,8 +3035,8 @@ msgid "Invite messages"
 msgstr "Mensagens de convite"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
-#: src/modules/options/OptionsWidget_servers.cpp:275
-#: src/modules/options/OptionsWidget_servers.cpp:844
+#: src/modules/options/OptionsWidget_servers.cpp:277
+#: src/modules/options/OptionsWidget_servers.cpp:848
 msgid "Join Channels"
 msgstr "Entrar nos Canais"
 
@@ -3088,11 +3088,11 @@ msgstr ""
 msgid "Languages:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_ircView.cpp:65
 #: src/modules/options/OptionsWidget_input.cpp:57
-#: src/modules/options/OptionsWidget_userList.cpp:142
+#: src/modules/options/OptionsWidget_ircView.cpp:65
 msgid "Left"
 msgstr "Esquerda"
 
@@ -3116,7 +3116,7 @@ msgstr "Limitar a largura de banda de envio para"
 msgid "Limits"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:949
+#: src/modules/options/OptionsWidget_servers.cpp:953
 msgid "Link filter:"
 msgstr "Filtro de link:"
 
@@ -3238,7 +3238,7 @@ msgstr "Tamanho máximo do arquivo pedido:"
 msgid "Maximum width of buttons:"
 msgstr "Largura mínima dos botões:"
 
-#: src/modules/options/OptionsWidget_sound.cpp:343
+#: src/modules/options/OptionsWidget_sound.cpp:345
 #, fuzzy
 msgid "Me have been kicked"
 msgstr "Você foi paginado por"
@@ -3383,7 +3383,7 @@ msgstr "Rede:"
 msgid "Network Properties"
 msgstr "Propriedades da Rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1644
+#: src/modules/options/OptionsWidget_servers.cpp:1648
 msgid "Network:"
 msgstr "Rede:"
 
@@ -3391,9 +3391,9 @@ msgstr "Rede:"
 msgid "New Media Type"
 msgstr "Novo Tipo de Midia"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1312
-#: src/modules/options/OptionsWidget_servers.cpp:1798
-#: src/modules/options/OptionsWidget_servers.cpp:1924
+#: src/modules/options/OptionsWidget_servers.cpp:1316
+#: src/modules/options/OptionsWidget_servers.cpp:1802
+#: src/modules/options/OptionsWidget_servers.cpp:1928
 msgid "New Network"
 msgstr "Nova Rede"
 
@@ -3401,16 +3401,16 @@ msgstr "Nova Rede"
 msgid "New Proxy"
 msgstr "Novo Proxy"
 
-#: src/modules/options/OptionsWidget_sound.cpp:334
+#: src/modules/options/OptionsWidget_sound.cpp:336
 #, fuzzy
 msgid "New Query opened"
 msgstr "Manter conversas abertas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1318
+#: src/modules/options/OptionsWidget_servers.cpp:1322
 msgid "New Server"
 msgstr "Novo Servidor"
 
-#: src/modules/options/OptionsWidget_sound.cpp:337
+#: src/modules/options/OptionsWidget_sound.cpp:339
 msgid "New message in inactive query"
 msgstr ""
 
@@ -3427,7 +3427,7 @@ msgstr "String de sufixo para o complemento de apelido"
 msgid "Nick links"
 msgstr "Complemento de Apelido"
 
-#: src/modules/options/OptionsWidget_servers.cpp:379
+#: src/modules/options/OptionsWidget_servers.cpp:381
 #: src/modules/options/OptionsWidget_nickserv.h:41
 msgid "NickServ"
 msgstr "NickServ"
@@ -3438,18 +3438,18 @@ msgstr "Rugras de Autenticação do NickServ"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:63
 #: src/modules/options/OptionsWidget_nickserv.cpp:245
-#: src/modules/options/OptionsWidget_servers.cpp:332
+#: src/modules/options/OptionsWidget_servers.cpp:334
 msgid "NickServ Mask"
 msgstr "Máscara do NickServ"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:246
-#: src/modules/options/OptionsWidget_servers.cpp:333
+#: src/modules/options/OptionsWidget_servers.cpp:335
 msgid "NickServ Request Mask"
 msgstr "Pedido da Máscara do NickServ"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:243
 #: src/modules/options/OptionsWidget_identity.cpp:719
-#: src/modules/options/OptionsWidget_servers.cpp:331
+#: src/modules/options/OptionsWidget_servers.cpp:333
 msgid "Nickname"
 msgstr "Apelido"
 
@@ -3468,7 +3468,7 @@ msgstr "Apelidos alternativos"
 #: src/modules/options/OptionsWidget_identity.cpp:304
 #: src/modules/options/OptionsWidget_identity.cpp:916
 #: src/modules/options/OptionsWidget_servers.cpp:161
-#: src/modules/options/OptionsWidget_servers.cpp:578
+#: src/modules/options/OptionsWidget_servers.cpp:580
 msgid "Nickname:"
 msgstr "Apelido:"
 
@@ -3477,7 +3477,7 @@ msgstr "Apelido:"
 msgid "Nicknames"
 msgstr "Apelido"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1655
+#: src/modules/options/OptionsWidget_servers.cpp:1659
 msgid "No selection"
 msgstr "Sem Seleção"
 
@@ -3489,11 +3489,11 @@ msgstr ""
 msgid "Normal"
 msgstr "Normal"
 
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 msgid "Normal:"
 msgstr "Normal:"
 
@@ -3526,11 +3526,11 @@ msgstr "Notificar ao outro extremo as negociações de DCC que falharem"
 #: src/modules/options/OptionsWidget_nickserv.cpp:154
 #: src/modules/options/OptionsWidget_identity.cpp:841
 #: src/modules/options/OptionsWidget_identity.cpp:956
-#: src/modules/options/OptionsWidget_servers.cpp:1005
+#: src/modules/options/OptionsWidget_servers.cpp:1009
 msgid "OK"
 msgstr "Aceitar"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:163
+#: src/modules/options/OptionsWidget_textEncoding.cpp:164
 #: src/modules/options/OptionsWidget_identity.cpp:99
 msgid "Ok"
 msgstr "Aceitar"
@@ -3551,8 +3551,8 @@ msgstr "Ao Sair do Canal"
 msgid "On Chat Request"
 msgstr "Em Pedido de Chat"
 
-#: src/modules/options/OptionsWidget_servers.cpp:290
-#: src/modules/options/OptionsWidget_servers.cpp:860
+#: src/modules/options/OptionsWidget_servers.cpp:292
+#: src/modules/options/OptionsWidget_servers.cpp:864
 msgid "On Connect"
 msgstr "Em Conexão"
 
@@ -3570,8 +3570,8 @@ msgstr "Diretório de Download:"
 msgid "On Incoming File"
 msgstr "Ao Receber Arquivo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:308
-#: src/modules/options/OptionsWidget_servers.cpp:878
+#: src/modules/options/OptionsWidget_servers.cpp:310
+#: src/modules/options/OptionsWidget_servers.cpp:882
 msgid "On Login"
 msgstr "Em Login"
 
@@ -3583,7 +3583,7 @@ msgstr "Ao Desconectar Inesperadamente "
 msgid "On Voice Request"
 msgstr "Em Pedido de Voice"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1851
+#: src/modules/options/OptionsWidget_servers.cpp:1855
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3591,7 +3591,7 @@ msgstr ""
 "Oopa... algo estranho aconteceu:<br>Não foi possível encontrar um módulo "
 "responsável pela importação dos servidores."
 
-#: src/modules/options/OptionsWidget_servers.cpp:1868
+#: src/modules/options/OptionsWidget_servers.cpp:1872
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3682,13 +3682,13 @@ msgstr "Opacidade da janela principal:"
 msgid "Part message:"
 msgstr "Messagem de partida"
 
-#: src/modules/options/OptionsWidget_servers.cpp:152
-#: src/modules/options/OptionsWidget_servers.cpp:569
 #: src/modules/options/OptionsWidget_proxy.cpp:120
+#: src/modules/options/OptionsWidget_servers.cpp:152
+#: src/modules/options/OptionsWidget_servers.cpp:571
 msgid "Password:"
 msgstr "Senha:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1342
+#: src/modules/options/OptionsWidget_servers.cpp:1346
 msgid "Paste Server"
 msgstr "Colar Servidor"
 
@@ -3702,8 +3702,8 @@ msgstr "Canal"
 msgid "Paste last query log"
 msgstr "Canal"
 
-#: src/modules/options/OptionsWidget_query.cpp:97
 #: src/modules/options/OptionsWidget_channel.cpp:135
+#: src/modules/options/OptionsWidget_query.cpp:97
 #, fuzzy
 msgid "Paste up to:"
 msgstr "Colar acima"
@@ -3756,8 +3756,8 @@ msgstr "Notificador por popup quando usuários ficarm online"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Exibir a janela de notificação nas mensagens destacadas"
 
-#: src/modules/options/OptionsWidget_servers.cpp:654
 #: src/modules/options/OptionsWidget_proxy.cpp:114
+#: src/modules/options/OptionsWidget_servers.cpp:656
 msgid "Port:"
 msgstr "Porta:"
 
@@ -3801,13 +3801,13 @@ msgstr "Local da chave privada:"
 msgid "Private key password:"
 msgstr "Senha da chave privada:"
 
-#: src/modules/options/OptionsWidget_query.cpp:43
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
+#: src/modules/options/OptionsWidget_query.cpp:43
 msgid "Private messages"
 msgstr "Mensagens privadas"
 
-#: src/modules/options/OptionsWidget_query.cpp:50
 #: src/modules/options/OptionsWidget_antiSpam.cpp:42
+#: src/modules/options/OptionsWidget_query.cpp:50
 msgid "Private notices"
 msgstr "Noticias privadas"
 
@@ -3850,7 +3850,7 @@ msgid "Progress bar color:"
 msgstr "Cor da barra de progresso:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:135
-#: src/modules/options/OptionsWidget_servers.cpp:551
+#: src/modules/options/OptionsWidget_servers.cpp:553
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -3859,7 +3859,7 @@ msgstr "Propriedades"
 msgid "Protection"
 msgstr "Proteção de Flood"
 
-#: src/modules/options/OptionsWidget_servers.cpp:751
+#: src/modules/options/OptionsWidget_servers.cpp:753
 #, fuzzy
 msgid "Protocol Encoding:"
 msgstr "&Codificação do Texto"
@@ -3881,7 +3881,7 @@ msgstr "Proxy"
 msgid "Proxy Hosts"
 msgstr "Servidores Proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:799
+#: src/modules/options/OptionsWidget_servers.cpp:803
 #, fuzzy
 msgid "Proxy server:"
 msgstr "Copiar Servidor"
@@ -3924,7 +3924,7 @@ msgstr ""
 msgid "Query"
 msgstr "Privado"
 
-#: src/modules/options/OptionsWidget_servers.cpp:896
+#: src/modules/options/OptionsWidget_servers.cpp:900
 msgid "Query extended capabilities on connect"
 msgstr ""
 
@@ -3949,13 +3949,13 @@ msgstr "Re&mover"
 msgid "Re&move Proxy"
 msgstr "&Novo Proxy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1803
+#: src/modules/options/OptionsWidget_servers.cpp:1807
 msgid "Re&move Server"
 msgstr "Re&mover Servidor"
 
 #: src/modules/options/OptionsWidget_identity.cpp:324
 #: src/modules/options/OptionsWidget_servers.cpp:187
-#: src/modules/options/OptionsWidget_servers.cpp:604
+#: src/modules/options/OptionsWidget_servers.cpp:606
 msgid "Real name:"
 msgstr "Nome Real:"
 
@@ -4002,11 +4002,11 @@ msgstr "Lembrar propriedades da janela"
 msgid "Remote open command:"
 msgstr "Comando de abertura remota:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1799
+#: src/modules/options/OptionsWidget_servers.cpp:1803
 msgid "Remove Network"
 msgstr "Remove Rede"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1325
+#: src/modules/options/OptionsWidget_servers.cpp:1329
 msgid "Remove Network/Server"
 msgstr "Remover Rede/Servidor"
 
@@ -4040,15 +4040,15 @@ msgstr "&Restaurar"
 msgid "Restrict alert"
 msgstr "Alerta restrito"
 
+#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_input.cpp:58
-#: src/modules/options/OptionsWidget_userList.cpp:143
+#: src/modules/options/OptionsWidget_ircView.cpp:66
 msgid "Right"
 msgstr "Direita"
 
-#: src/modules/options/OptionsWidget_servers.cpp:918
+#: src/modules/options/OptionsWidget_servers.cpp:922
 #, fuzzy
 msgid "SASL Authentication"
 msgstr "Ativar Identificação do NickServ"
@@ -4061,12 +4061,12 @@ msgstr "SOURCE"
 msgid "SSL"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:929
+#: src/modules/options/OptionsWidget_servers.cpp:933
 #, fuzzy
 msgid "Sasl Nickname:"
 msgstr "Apelido:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:936
+#: src/modules/options/OptionsWidget_servers.cpp:940
 #, fuzzy
 msgid "Sasl Password:"
 msgstr "Senha:"
@@ -4117,10 +4117,10 @@ msgstr "Scripting"
 msgid "Select message levels to notify"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:90
-#: src/modules/options/OptionsWidget_windowList.cpp:121
 #: src/modules/options/OptionsWidget_userList.cpp:56
 #: src/modules/options/OptionsWidget_userList.cpp:128
+#: src/modules/options/OptionsWidget_windowList.cpp:90
+#: src/modules/options/OptionsWidget_windowList.cpp:121
 msgid "Selected:"
 msgstr "Selecionado:"
 
@@ -4148,11 +4148,11 @@ msgstr "Enviar endereço/interface:"
 msgid "Send unknown commands as /RAW"
 msgstr "Enviar comando desconhecido como /RAW"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1278
+#: src/modules/options/OptionsWidget_servers.cpp:1282
 msgid "Server"
 msgstr "Servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:525
+#: src/modules/options/OptionsWidget_servers.cpp:527
 msgid "Server Details"
 msgstr "Detalhes do Servidor"
 
@@ -4176,7 +4176,7 @@ msgid "Server notices"
 msgstr "Noticias do servidor"
 
 #: src/modules/options/OptionsWidget_identity.cpp:658
-#: src/modules/options/OptionsWidget_servers.cpp:632
+#: src/modules/options/OptionsWidget_servers.cpp:634
 msgid "Server notices (+s)"
 msgstr "Notícias do Servidor (+s)"
 
@@ -4184,8 +4184,8 @@ msgstr "Notícias do Servidor (+s)"
 msgid "Server replies"
 msgstr "Respostas do servidor"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1359
-#: src/modules/options/OptionsWidget_servers.cpp:1641
+#: src/modules/options/OptionsWidget_servers.cpp:1363
+#: src/modules/options/OptionsWidget_servers.cpp:1645
 msgid "Server:"
 msgstr "Servidor:"
 
@@ -4298,7 +4298,7 @@ msgstr "Exibir pings do Servidor"
 msgid "Show the CTCP replies in the active window"
 msgstr "Exibe as respostas CTCP na janela ativa"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1423
+#: src/modules/options/OptionsWidget_servers.cpp:1427
 msgid "Show this dialog at startup"
 msgstr "Exibir esta janela ao iniciar"
 
@@ -4376,7 +4376,7 @@ msgstr "Tirar cores"
 msgid "Strip message type numbers in logs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:905
+#: src/modules/options/OptionsWidget_servers.cpp:909
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
 msgstr ""
 
@@ -4406,7 +4406,7 @@ msgid "Text"
 msgstr "Texto"
 
 #: src/modules/options/OptionsWidget_servers.cpp:211
-#: src/modules/options/OptionsWidget_servers.cpp:765
+#: src/modules/options/OptionsWidget_servers.cpp:767
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "&Codificação do Texto"
@@ -4473,7 +4473,7 @@ msgid "This allows you to select encoding of mp3 tags."
 msgstr ""
 "Isto permite a você selecionar o sistema de som para ser usado com o KVIrc."
 
-#: src/modules/options/OptionsWidget_sound.cpp:119
+#: src/modules/options/OptionsWidget_sound.cpp:120
 #, fuzzy
 msgid "This allows you to select encoding of winamp messages."
 msgstr ""
@@ -4493,7 +4493,7 @@ msgstr ""
 "Isto permite a você selecionar o sistema de som para ser usado com o KVIrc."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:235
-#: src/modules/options/OptionsWidget_servers.cpp:323
+#: src/modules/options/OptionsWidget_servers.cpp:325
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Esta caixa ativa a identificação automática do Nickserv"
 
@@ -4563,9 +4563,9 @@ msgstr ""
 "Esta é a máscara que deve concordar com NickServ para ser corretamente "
 "identificado como o servicio NickServ. Habitualmente será algo como "
 "<b>NickServ!service@services.dalnet</b>.<br>Você pode usar comodines para "
-"este campo, mas isto é considerado um falha de segurança. Se estiver 100% "
-"seguro que NENHUM usuario na rede pode utilizar o apelido \"NickServ\", pode "
-"ser seguro utilizar a máscara <b>NickServ!*@*</b> neste campo."
+"este campo, mas isto é considerado um falha de segurança. Se estiver "
+"100% seguro que NENHUM usuario na rede pode utilizar o apelido \"NickServ\", "
+"pode ser seguro utilizar a máscara <b>NickServ!*@*</b> neste campo."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:111
 msgid ""
@@ -4650,16 +4650,16 @@ msgstr ""
 "utilizará para visualizar às sequências de escape CTRL+I e eventualmente os "
 "ícones emotivos."
 
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_ircView.cpp:64
-#: src/modules/options/OptionsWidget_ircView.cpp:69
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
+#: src/modules/options/OptionsWidget_ircView.cpp:64
+#: src/modules/options/OptionsWidget_ircView.cpp:69
 msgid "Tile"
 msgstr ""
 
@@ -4694,11 +4694,11 @@ msgstr "Applet da Barra de Ferramentas"
 msgid "Tools"
 msgstr "Ferramentas"
 
+#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_ircView.cpp:70
 #: src/modules/options/OptionsWidget_input.cpp:62
-#: src/modules/options/OptionsWidget_userList.cpp:147
+#: src/modules/options/OptionsWidget_ircView.cpp:70
 msgid "Top"
 msgstr "Topo"
 
@@ -4751,7 +4751,7 @@ msgstr "Intervalo para USERHOST(em segundos)"
 msgid "USERINFO"
 msgstr "USERINFO"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:163
+#: src/modules/options/OptionsWidget_textEncoding.cpp:164
 #, fuzzy
 msgid "Unable to write language information to"
 msgstr "Não foi possível escrever no arquivo de ações."
@@ -4760,7 +4760,7 @@ msgstr "Não foi possível escrever no arquivo de ações."
 msgid "Unknown protocol handler command:"
 msgstr "Manipulador de protocolo desconhecido:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1731
+#: src/modules/options/OptionsWidget_servers.cpp:1735
 msgid "UnknownNet"
 msgstr "RedeDesconhecida"
 
@@ -4783,20 +4783,20 @@ msgstr "Usar \"broken bouncer hack\" para detectar endereços"
 msgid "Use \"smart\" notify list manager"
 msgstr "Usar gerenciador da lista de notificação \"esperto\""
 
-#: src/modules/options/OptionsWidget_servers.cpp:719
 #: src/modules/options/OptionsWidget_proxy.cpp:130
+#: src/modules/options/OptionsWidget_servers.cpp:721
 msgid "Use IPv6 protocol"
 msgstr "Usar protocolo IPv6"
 
 #: src/modules/options/OptionsWidget_sound.cpp:101
-#: src/modules/options/OptionsWidget_sound.cpp:125
+#: src/modules/options/OptionsWidget_sound.cpp:126
 #: src/modules/options/OptionsWidget_textEncoding.cpp:51
 #: src/modules/options/OptionsWidget_textEncoding.cpp:59
 msgid "Use Language Encoding"
 msgstr "Usar Codificação de Língua"
 
-#: src/modules/options/OptionsWidget_servers.cpp:781
-#: src/modules/options/OptionsWidget_servers.cpp:782
+#: src/modules/options/OptionsWidget_servers.cpp:783
+#: src/modules/options/OptionsWidget_servers.cpp:784
 msgid "Use Network Encoding"
 msgstr "Usar Codificação da Rede"
 
@@ -4808,7 +4808,7 @@ msgstr "Usar certificado SSL (somente formato PEM)"
 msgid "Use SSL private key"
 msgstr "Usar chave SSL privada"
 
-#: src/modules/options/OptionsWidget_servers.cpp:735
+#: src/modules/options/OptionsWidget_servers.cpp:737
 msgid "Use SSL protocol"
 msgstr "Usar protocolo SSL"
 
@@ -4842,7 +4842,7 @@ msgstr "Usar o  ambiente KDE para transparência"
 msgid "Use custom alert level"
 msgstr "Usar nível de alerta personalizado"
 
-#: src/modules/options/OptionsWidget_servers.cpp:620
+#: src/modules/options/OptionsWidget_servers.cpp:622
 msgid "Use default user mode"
 msgstr "Usar modo de usuário padrão"
 
@@ -4956,7 +4956,7 @@ msgid "Use zsh-like nick completion"
 msgstr "Usar complemento de apelido no estilo bash"
 
 #: src/modules/options/OptionsWidget_identity.cpp:656
-#: src/modules/options/OptionsWidget_servers.cpp:617
+#: src/modules/options/OptionsWidget_servers.cpp:619
 msgid "User Mode"
 msgstr "Modo de Usuário"
 
@@ -4981,11 +4981,11 @@ msgstr "Lista de Usuários"
 msgid "Username"
 msgstr "Nome de usuário:"
 
+#: src/modules/options/OptionsWidget_proxy.cpp:118
 #: src/modules/options/OptionsWidget_identity.cpp:317
 #: src/modules/options/OptionsWidget_identity.cpp:932
 #: src/modules/options/OptionsWidget_servers.cpp:141
-#: src/modules/options/OptionsWidget_servers.cpp:557
-#: src/modules/options/OptionsWidget_proxy.cpp:118
+#: src/modules/options/OptionsWidget_servers.cpp:559
 msgid "Username:"
 msgstr "Nome de usuário:"
 
@@ -5008,8 +5008,8 @@ msgstr "Local do certificado:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_input.cpp:52
+#: src/modules/options/OptionsWidget_ircView.cpp:60
 #, fuzzy
 msgid "Vertical align:"
 msgstr "Local do certificado:"
@@ -5027,7 +5027,7 @@ msgid "Volume slider controls PCM, not Master"
 msgstr "Controle de Volume PCM, não Master"
 
 #: src/modules/options/OptionsWidget_identity.cpp:659
-#: src/modules/options/OptionsWidget_servers.cpp:636
+#: src/modules/options/OptionsWidget_servers.cpp:638
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 
@@ -5046,7 +5046,7 @@ msgstr ""
 msgid "Whois replies"
 msgstr "Respostas whois"
 
-#: src/modules/options/OptionsWidget_sound.cpp:117
+#: src/modules/options/OptionsWidget_sound.cpp:118
 msgid "Winamp messages ecoding"
 msgstr ""
 
@@ -5136,7 +5136,7 @@ msgstr ""
 msgid "debug"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:89
+#: src/modules/options/OptionsWidget_textEncoding.cpp:91
 msgid "en"
 msgstr ""
 
@@ -5144,7 +5144,7 @@ msgstr ""
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1945
+#: src/modules/options/OptionsWidget_servers.cpp:1949
 msgid "irc.unknown.net"
 msgstr "irc.desconhecido.net"
 
@@ -5187,13 +5187,13 @@ msgstr ""
 msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_theme.h:34
 #: src/modules/options/OptionsWidget_windowList.h:36
 #: src/modules/options/OptionsWidget_windowList.h:50
 #: src/modules/options/OptionsWidget_windowList.h:66
 #: src/modules/options/OptionsWidget_windowList.h:81
 #: src/modules/options/OptionsWidget_windowList.h:100
 #: src/modules/options/OptionsWidget_windowList.h:115
-#: src/modules/options/OptionsWidget_theme.h:34
 #, fuzzy
 msgid "theme"
 msgstr "Tema"
@@ -5208,9 +5208,9 @@ msgstr "Plano de fundo"
 msgid "theme,colors,messages,output"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_message.h:41
 #: src/modules/options/OptionsWidget_ircView.h:37
 #: src/modules/options/OptionsWidget_ircView.h:51
-#: src/modules/options/OptionsWidget_message.h:41
 msgid "theme,colors,output"
 msgstr ""
 
@@ -5326,11 +5326,11 @@ msgstr "dentro de:"
 #~ "alterado]]"
 
 #~ msgid ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%"
-#~ "Q\r [%Q@\r!h\r%Q\r]: %Q"
+#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r"
+#~ "%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #~ msgstr ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de ser kickado de \r!c\r%Q\r por \r!n\r%"
-#~ "Q\r [%Q@\r!h\r%Q\r]: %Q"
+#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de ser kickado de \r!c\r%Q\r por \r!n\r"
+#~ "%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #~ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
 #~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de entrar em \r!c\r%Q\r"
@@ -6050,9 +6050,9 @@ msgstr "dentro de:"
 #~ "configuration files, because you have installed an incomplete script or "
 #~ "because you have hit a bug in KVIrc.<br><br>I can repeat the installation "
 #~ "of the default script in order to restore the missing features.<br><b>Do "
-#~ "you want the default script to be restored ?</b><br><br><font size=\"-1"
-#~ "\">Hint: If you're a scripter and have intentionally removed some of the "
-#~ "scripting features then you may safely click on \"No and Don't Ask Me "
+#~ "you want the default script to be restored ?</b><br><br><font size="
+#~ "\"-1\">Hint: If you're a scripter and have intentionally removed some of "
+#~ "the scripting features then you may safely click on \"No and Don't Ask Me "
 #~ "Again\", otherwise it might be a good idea to click \"Yes\". If you still "
 #~ "want to choose \"No\" you can always restore the default script by "
 #~ "choosing the appropriate entry from the \"Scripting\" menu.</font>"
@@ -8494,8 +8494,8 @@ msgstr "dentro de:"
 #~ "Caracter '%q' (unicode %x) encontrado onde era esperado uma instrução"
 
 #~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
-#~ "s\" for the command syntax"
+#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help "
+#~ "%s\" for the command syntax"
 #~ msgstr ""
 #~ "Caracter '%q' (unicode 0x%x) encontrado onde '%c' era esperado: ver \"/"
 #~ "help %s\" para a sintax de comando"
@@ -9713,8 +9713,8 @@ msgstr "dentro de:"
 
 #~ msgid "Module command call failed: can't load the module '%Q'"
 #~ msgstr ""
-#~ "Chamada de comando do módulo falhou: não foi possível carregar o módulo '%"
-#~ "Q'"
+#~ "Chamada de comando do módulo falhou: não foi possível carregar o módulo "
+#~ "'%Q'"
 
 #~ msgid ""
 #~ "Module command call failed: the module '%Q' doesn't export a callback "
@@ -10254,8 +10254,8 @@ msgstr "dentro de:"
 #~ "\r] does not match (registration mask does not match, or nickname is "
 #~ "being used by someone else)"
 #~ msgstr ""
-#~ "Lista de Notificação: \r!n\r%Q\r parece estar conectado, mas a máscara (%"
-#~ "Q@\r!h\r%Q\r) não coincide (a máscara de registo não combina, ou o nick "
+#~ "Lista de Notificação: \r!n\r%Q\r parece estar conectado, mas a máscara "
+#~ "(%Q@\r!h\r%Q\r) não coincide (a máscara de registo não combina, ou o nick "
 #~ "está sendo utilizado por outra pessoa)"
 
 #~ msgid ""
@@ -10263,8 +10263,8 @@ msgstr "dentro de:"
 #~ "\r] does not match (watch: registration mask does not match, or nickname "
 #~ "is being used by someone else)"
 #~ msgstr ""
-#~ "Lista de Notificação: \r!n\r%Q\r parece estar conectado, mas a máscara (%"
-#~ "Q@\r!h\r%Q\r) não coincide (a máscara de registo não combina, ou o nick "
+#~ "Lista de Notificação: \r!n\r%Q\r parece estar conectado, mas a máscara "
+#~ "(%Q@\r!h\r%Q\r) não coincide (a máscara de registo não combina, ou o nick "
 #~ "está sendo utilizado por outra pessoa)"
 
 #~ msgid ""
@@ -10434,8 +10434,8 @@ msgstr "dentro de:"
 #~ "disponiveis.\n"
 #~ "Isto é causado por um daemon RFC1459 não compatível ou uma resposta de "
 #~ "servidor quebrada.\n"
-#~ "Os umodes do servidor parecem ser '%s' e os modos de canal parecem ser '%"
-#~ "s'.\n"
+#~ "Os umodes do servidor parecem ser '%s' e os modos de canal parecem ser "
+#~ "'%s'.\n"
 #~ "Ignorando esta resposta e assumindo que o ajuste de modos básico est�� "
 #~ "disponível.\n"
 #~ "Se você tiver problemas estranhos, tente mudar de servidor."
@@ -11525,8 +11525,8 @@ msgstr "dentro de:"
 #~ msgstr "Slash (/) caráter esperado"
 
 #~ msgid ""
-#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::%"
-#~ "Q'"
+#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::"
+#~ "%Q'"
 #~ msgstr ""
 #~ "Slot do objeto de destino destruido ao emitir o sinal '%Q' do objeto '%Q::"
 #~ "%Q'"
@@ -12010,8 +12010,8 @@ msgstr "dentro de:"
 #~ "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 #~ "data sent to the server"
 #~ msgstr ""
-#~ "O motor de criptografia foi incapaz de criptografar a mensagem atual (%"
-#~ "Q): %s, nenhum dado enviado para o servidor"
+#~ "O motor de criptografia foi incapaz de criptografar a mensagem atual "
+#~ "(%Q): %s, nenhum dado enviado para o servidor"
 
 #~ msgid "The current network is %Q"
 #~ msgstr "A rede atual é %Q"
@@ -13435,13 +13435,13 @@ msgstr "dentro de:"
 #~ msgstr "AVISO: Não foi possível carregar a biblioteca de imagem %s"
 
 #~ msgid ""
-#~ "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-#~ "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
+#~ "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+#~ "%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
 #~ "name%c: %Q"
 #~ msgstr ""
-#~ "Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, %"
-#~ "cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, %"
-#~ "cNome Real %c: %Q"
+#~ "Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, "
+#~ "%cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, "
+#~ "%cNome Real %c: %Q"
 
 #~ msgid "Wallops message"
 #~ msgstr "Mensagem wallops"

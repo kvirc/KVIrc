@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:329
@@ -67,8 +67,8 @@ msgstr "Kiválasztott Kinézet(ek) Törlése"
 msgid "Delete Theme - KVIrc"
 msgstr "Kinézet Törlése - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Leírás:"
 
@@ -115,8 +115,8 @@ msgstr "Kinézet Exportálása - KVIrc"
 msgid "Failed to apply the specified theme: %1"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Kiválasztott kép betöltése sikertelen"
 
@@ -177,8 +177,8 @@ msgstr ""
 #: src/modules/theme/PackThemeDialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Itt ki kell választanod a fájlnevet a kinézet csomagodhoz. A kiterjesztésnek "
 "%1 -nek kell lennie."
@@ -199,8 +199,8 @@ msgstr ""
 "Itt meg kell adnod néhány információt magadról (csomagkészítő) és egy rövid "
 "leírást a csomagról, amit készítesz."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
@@ -365,8 +365,8 @@ msgstr "Kinézet könyvtár létrehozása sikertelen."
 msgid "Unable to save theme: %1"
 msgstr "%1 kinézet mentése sikertelen."
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Verzió:"
 
@@ -384,8 +384,8 @@ msgstr ""
 "Figyelmeztetés: A kinézet nem biztos, hogy kompatibilis a KVIrc ezen "
 "verziójával"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Üdvözlet"
 

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-25 00:37+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2011-02-11 00:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
@@ -328,8 +328,7 @@ msgstr "Kynak dizini seç"
 msgid "Show Help"
 msgstr "Yardımı Göster"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr "Mevcut giriş atlanıyor '%1'"
 
@@ -341,12 +340,9 @@ msgstr "Geçersiz giriş atlanıyor '%1'"
 msgid "Source Directory"
 msgstr "Kaynak dizin"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "Addon \"%1\"  mevcut değil"
 
@@ -434,8 +430,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Toplam: %d addon yüklendi"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Mevcut olan addon sürümü siliniyor %Q"
 

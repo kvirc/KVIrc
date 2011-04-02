@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:329
@@ -67,8 +67,8 @@ msgstr "Видалити обрані теми"
 msgid "Delete Theme - KVIrc"
 msgstr "Видалити тему - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Опис:"
 
@@ -116,8 +116,8 @@ msgstr "Експорт теми - KVIrc"
 msgid "Failed to apply the specified theme: %1"
 msgstr "Не можу застосувати обрану тему: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Не можу завантажити обране зображення"
 
@@ -176,8 +176,8 @@ msgstr ""
 #: src/modules/theme/PackThemeDialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Тут ви можете вибрати ім'я файлу вашого пакета теми. воно повинне мати "
 "розширення *. %1"
@@ -196,8 +196,8 @@ msgid ""
 "description of the package you're creating."
 msgstr "Тут ви повинні вказати інформацію про себе й короткий опис пакета."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Натисніть \"Далі\" для продовження."
 
@@ -361,8 +361,8 @@ msgstr "Не можу створити папку теми"
 msgid "Unable to save theme: %1"
 msgstr "Не можу зберегти тему: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Версія:"
 
@@ -378,8 +378,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Попередження: тема може бути не сумісна з вашою версією KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Ласкаво просимо"
 

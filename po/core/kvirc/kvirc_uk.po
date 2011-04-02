@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2009-08-07 10:40+0300\n"
 "Last-Translator: CrabMan\n"
 "Language-Team: Ukrainian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:643
 msgid ""
@@ -90,8 +90,8 @@ msgstr "\r!nс\r%Q\r [%Q@\r!h\r%Q\r] тільки що покинув \r!c\r%Q\r
 msgid " (%1 hops)"
 msgstr " (%1 стрибків)"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:444 src/kvirc/ui/KviConsoleWindow.cpp:1140
-#: src/kvirc/ui/KviChannelWindow.cpp:1135
+#: src/kvirc/ui/KviChannelWindow.cpp:1135 src/kvirc/ui/KviQueryWindow.cpp:444
+#: src/kvirc/ui/KviConsoleWindow.cpp:1140
 msgid " on "
 msgstr " на "
 
@@ -312,11 +312,11 @@ msgstr "%Q [%Q@%Q] виключив ключ каналу"
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] виключив ліміт на каналі"
 
-#: src/modules/file/libkvifile.cpp:1436 src/modules/str/libkvistr.cpp:1391
+#: src/modules/str/libkvistr.cpp:1391 src/modules/file/libkvifile.cpp:1436
 msgid "%Q algorithm is not supported"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcContext.cpp:692 src/kvirc/kernel/KviIrcLink.cpp:400
+#: src/kvirc/kernel/KviIrcContext.cpp:692 src/kvirc/kernel/KviIrcLink.cpp:409
 msgid "%Q established [%s (%s:%u)]"
 msgstr "%Q встановлено [%s (%s:%u)]"
 
@@ -473,10 +473,6 @@ msgstr "&Додати"
 msgid "&Add Ban"
 msgstr "&Додати бан"
 
-#: src/kvilib/locale/KviLocale.cpp:783
-msgid "&Add to Custom Colors"
-msgstr "&Додати до користувальницьких квітів"
-
 #: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:489
 #: src/kvirc/ui/KviConsoleWindow.cpp:522
 msgid "&Always"
@@ -490,21 +486,13 @@ msgstr "&Застосувати"
 msgid "&Auto Tile"
 msgstr "&Автоматично"
 
-#: src/kvilib/locale/KviLocale.cpp:830
-msgid "&Automatic Preview"
-msgstr "&Автоматичний предпросмотр"
-
-#: src/kvilib/locale/KviLocale.cpp:777
-msgid "&Basic colors"
-msgstr "&Базові кольори"
-
-#: src/modules/avatar/libkviavatar.cpp:94
 #: src/modules/setup/SetupWizard.cpp:239 src/modules/setup/SetupWizard.cpp:253
-#: src/modules/setup/SetupWizard.cpp:281 src/kvirc/ui/KviSelectors.cpp:413
+#: src/modules/setup/SetupWizard.cpp:281
+#: src/modules/avatar/libkviavatar.cpp:94 src/kvirc/ui/KviSelectors.cpp:413
 msgid "&Browse..."
 msgstr "&Вибрати..."
 
-#: src/modules/url/libkviurl.cpp:448 src/kvilib/locale/KviLocale.cpp:836
+#: src/modules/url/libkviurl.cpp:448
 msgid "&Cancel"
 msgstr "С&касування"
 
@@ -525,37 +513,13 @@ msgstr "&Налаштувати KVirc..."
 msgid "&Copy"
 msgstr "&Копіювати"
 
-#: src/kvilib/locale/KviLocale.cpp:778
-msgid "&Custom colors"
-msgstr "&Користувальницькі кольори"
-
-#: src/kvilib/locale/KviLocale.cpp:782
-msgid "&Define Custom Colors >>"
-msgstr "&Визначите користувальницькі кольори >>"
-
 #: src/modules/setup/SetupWizard.cpp:477
 msgid "&Don't apply any theme"
 msgstr ""
 
-#: src/kvilib/locale/KviLocale.cpp:802
-msgid "&Edit Bookmarks"
-msgstr "&Редагувати закладки"
-
 #: src/modules/setup/SetupWizard.cpp:456
 msgid "&Fancy Theme"
 msgstr ""
-
-#: src/kvilib/locale/KviLocale.cpp:833
-msgid "&Filter:"
-msgstr "&Фільтр:"
-
-#: src/kvilib/locale/KviLocale.cpp:786
-msgid "&Font"
-msgstr "&Шрифт"
-
-#: src/kvilib/locale/KviLocale.cpp:780
-msgid "&Green"
-msgstr "&Зелений"
 
 #: src/kvirc/ui/KviMenuBar.cpp:85
 msgid "&Help"
@@ -573,10 +537,6 @@ msgstr "&Увійти"
 msgid "&Load From..."
 msgstr "&Завантажити з..."
 
-#: src/kvilib/locale/KviLocale.cpp:832
-msgid "&Location:"
-msgstr "&Розташування:"
-
 #: src/modules/setup/SetupWizard.cpp:475
 msgid "&Minimalist Theme"
 msgstr ""
@@ -590,15 +550,13 @@ msgstr "Далі"
 msgid "&Next >"
 msgstr "&Далі >"
 
-#: src/modules/setup/SetupWizard.cpp:722
-#: src/modules/logview/LogViewWindow.cpp:433
-#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:490
-#: src/kvirc/ui/KviConsoleWindow.cpp:524
+#: src/modules/logview/LogViewWindow.cpp:434
+#: src/modules/setup/SetupWizard.cpp:722 src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviConsoleWindow.cpp:490 src/kvirc/ui/KviConsoleWindow.cpp:524
 msgid "&No"
 msgstr "&Ні"
 
 #: src/modules/avatar/libkviavatar.cpp:104 src/modules/url/libkviurl.cpp:454
-#: src/kvilib/locale/KviLocale.cpp:835
 msgid "&OK"
 msgstr "&Ok"
 
@@ -615,10 +573,6 @@ msgstr "&Іншої..."
 msgid "&Paste"
 msgstr "&Вставити"
 
-#: src/kvilib/locale/KviLocale.cpp:831
-msgid "&Preview"
-msgstr "&Попередній перегляд"
-
 #: src/kvirc/ui/KviIrcView_tools.cpp:104
 #, fuzzy
 msgid "&Previous"
@@ -627,10 +581,6 @@ msgstr "&Попередній перегляд"
 #: src/modules/trayicon/libkvitrayicon.cpp:114 src/kvirc/ui/KviMenuBar.cpp:241
 msgid "&Quit"
 msgstr "&Вихід"
-
-#: src/kvilib/locale/KviLocale.cpp:779
-msgid "&Red"
-msgstr "&Червоний"
 
 #: src/kvirc/ui/KviInputEditor.cpp:779
 msgid "&Redo"
@@ -664,10 +614,6 @@ msgstr "Вікно &розмови"
 msgid "&Settings"
 msgstr "&Параметри"
 
-#: src/kvilib/locale/KviLocale.cpp:788
-msgid "&Size"
-msgstr "&Розмір"
-
 #: src/kvirc/ui/KviMdiManager.cpp:242
 msgid "&Tile Windows"
 msgstr "&Забрукувати вікна"
@@ -680,10 +626,6 @@ msgstr "&Порада дня"
 msgid "&Tools"
 msgstr "&Інструменти"
 
-#: src/kvilib/locale/KviLocale.cpp:792
-msgid "&Underline"
-msgstr "&Підкреслення"
-
 #: src/kvirc/ui/KviInputEditor.cpp:777
 msgid "&Undo"
 msgstr "&Скасувати"
@@ -692,10 +634,9 @@ msgstr "&Скасувати"
 msgid "&Window"
 msgstr "&Вікна"
 
-#: src/modules/setup/SetupWizard.cpp:722
-#: src/modules/logview/LogViewWindow.cpp:433
-#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:488
-#: src/kvirc/ui/KviConsoleWindow.cpp:523
+#: src/modules/logview/LogViewWindow.cpp:434
+#: src/modules/setup/SetupWizard.cpp:722 src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviConsoleWindow.cpp:488 src/kvirc/ui/KviConsoleWindow.cpp:523
 msgid "&Yes"
 msgstr "&Так"
 
@@ -736,10 +677,10 @@ msgid "(None)"
 msgstr "(Нічого)"
 
 #: src/modules/links/LinksWindow.cpp:298
-#: src/kvirc/ui/KviChannelWindow.cpp:1718
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:678
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:691
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:777
+#: src/kvirc/ui/KviChannelWindow.cpp:1718
 msgid "(Unknown)"
 msgstr "(Невідомий)"
 
@@ -842,13 +783,13 @@ msgstr "< &Назад"
 msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
 msgstr "<Ctrl+Return> відправити,   <Alt+Return> сховати цей редактор"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:983
+#: src/kvirc/ui/KviIrcView_events.cpp:987
 msgid ""
 "<b>%1</b> (<u><font color=\"blue\"><nowrap>%2</nowrap></font></u>): "
 "<br><nowrap>+%3 (%4 users)<hr>%5</nowrap>"
 msgstr ""
 
-#: src/kvirc/ui/KviIrcView_events.cpp:988
+#: src/kvirc/ui/KviIrcView_events.cpp:992
 #, fuzzy
 msgid ""
 "<b>%1</b> (<u><font color=\"blue\"><nowrap>%2</nowrap></font></u>)<hr>Double-"
@@ -865,7 +806,7 @@ msgstr "<b>Не можу знайти якої-небудь ради... :(</b>"
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Режим каналу:</b>"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1010
+#: src/kvirc/ui/KviIrcView_events.cpp:1014
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Подвійний клич:</b><br>%Q"
 
@@ -890,7 +831,7 @@ msgstr ""
 msgid "<b>KVIrc</b>"
 msgstr "<b>KVIrc</b>"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1015
+#: src/kvirc/ui/KviIrcView_events.cpp:1019
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Клич на середній кнопці:</b><br>%Q"
 
@@ -930,7 +871,7 @@ msgstr ""
 msgid "<b>Right click</b> to add/remove applets"
 msgstr "<b>Права кнопка</b> - додати/видалити аплети"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:1020
+#: src/kvirc/ui/KviIrcView_events.cpp:1024
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Клич на правій кнопці:</b><br>%Q"
 
@@ -1132,10 +1073,6 @@ msgstr "Додати"
 msgid "Add Applet"
 msgstr "Додати апплет"
 
-#: src/kvilib/locale/KviLocale.cpp:801
-msgid "Add Bookmark"
-msgstr "Додати закладку"
-
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1545
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
 msgstr "Додано %d сек файлу до файлу %Q (%Q) для отримувача %Q"
@@ -1161,8 +1098,8 @@ msgstr "Адреса:"
 msgid "Admin/protected nicks listing"
 msgstr ""
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:444
 #: src/kvirc/ui/KviOptionsWidget.cpp:742
+#: src/kvirc/kernel/KviDefaultScript.cpp:444
 msgid "Advanced..."
 msgstr "Додатково..."
 
@@ -1178,10 +1115,6 @@ msgstr "Аліас"
 #: src/kvirc/kernel/KviDefaultScript.cpp:388
 msgid "All"
 msgstr ""
-
-#: src/kvilib/locale/KviLocale.cpp:834
-msgid "All Files"
-msgstr "Всі файли"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:229
 #, fuzzy
@@ -1331,33 +1264,33 @@ msgstr "Операторам або аудиторам: /NAMES і /WHO пока�
 msgid "Authenticated as %Q"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1810
+#: src/kvirc/kernel/KviIrcConnection.cpp:1817
 msgid "Auto-joining network specific channels"
 msgstr "Автовхід на специфічні для мережі канали"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1842
+#: src/kvirc/kernel/KviIrcConnection.cpp:1849
 msgid "Auto-joining server specific channels"
 msgstr "Автовхід на специфічні для сервера канали"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:185
+#: src/kvilib/ext/avdevice/videodevice.cpp:184
 msgid "Automatic Brightness/Contrast Correction"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:188
+#: src/kvilib/ext/avdevice/videodevice.cpp:187
 msgid "Automatic Color Correction"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3085
+#: src/kvilib/ext/avdevice/videodevice.cpp:3088
 #, fuzzy
 msgid "Automatic Gain"
 msgstr "Автоматично"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3093
+#: src/kvilib/ext/avdevice/videodevice.cpp:3096
 #, fuzzy
 msgid "Automatic Hue"
 msgstr "&Автоматичний предпросмотр"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3079
+#: src/kvilib/ext/avdevice/videodevice.cpp:3082
 #, fuzzy
 msgid "Automatic White Balance"
 msgstr "Автоматично"
@@ -1413,7 +1346,7 @@ msgstr "Відійшов з"
 msgid "Away/Back"
 msgstr "Відійшов/Повернувся"
 
-#: src/kvilib/tal/KviTalWizard.cpp:207 src/kvilib/locale/KviLocale.cpp:796
+#: src/kvilib/tal/KviTalWizard.cpp:207
 msgid "Back"
 msgstr "Назад"
 
@@ -1429,12 +1362,12 @@ msgstr "Повернутися скрізь"
 msgid "Background"
 msgstr "Тло"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3107
+#: src/kvilib/ext/avdevice/videodevice.cpp:3110
 #, fuzzy
 msgid "Background color"
 msgstr "Тло"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3096
+#: src/kvilib/ext/avdevice/videodevice.cpp:3099
 msgid "Backlight Compensation"
 msgstr ""
 
@@ -1446,7 +1379,7 @@ msgstr "Невірний дескриптор файлу"
 msgid "Bad key data"
 msgstr "Дані ключа непридатні"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3073
+#: src/kvilib/ext/avdevice/videodevice.cpp:3076
 #, fuzzy
 msgid "Balance"
 msgstr "С&касування"
@@ -1485,17 +1418,17 @@ msgstr "Зняте виключення з відповідає моїй мас�
 msgid "Bandwidth Saver"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3074
+#: src/kvilib/ext/avdevice/videodevice.cpp:3077
 #, fuzzy
 msgid "Bass"
 msgstr "Маска бана"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:361
+#: src/kvirc/kernel/KviIrcSocket.cpp:377
 #, fuzzy
 msgid "Binding to local address %1"
 msgstr "Прослуховую локальну адресу %1"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:365
+#: src/kvirc/kernel/KviIrcSocket.cpp:381
 #, fuzzy
 msgid ""
 "Binding to local address %1 failed: the kernel will choose the correct "
@@ -1509,11 +1442,7 @@ msgstr ""
 msgid "BitTorrent message"
 msgstr "Повідомлення ідентифікації"
 
-#: src/kvilib/locale/KviLocale.cpp:781
-msgid "Bl&ue"
-msgstr "&Синій"
-
-#: src/kvilib/ext/avdevice/videodevice.cpp:3078
+#: src/kvilib/ext/avdevice/videodevice.cpp:3081
 #, fuzzy
 msgid "Black Level"
 msgstr "Блоковий пристрій"
@@ -1536,13 +1465,9 @@ msgstr "Повідомлення сокета"
 msgid "Block messages with too many CAPS"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3082
+#: src/kvilib/ext/avdevice/videodevice.cpp:3085
 msgid "Blue Balance"
 msgstr ""
-
-#: src/kvilib/locale/KviLocale.cpp:800
-msgid "Bookmarks"
-msgstr "Закладки"
 
 #: src/kvirc/kernel/KviOptions.cpp:1260
 msgid "Boolean options (1/0)"
@@ -1553,8 +1478,8 @@ msgstr "Булева опція (1/0)"
 msgid "Both -n and -m switches specified, -n takes precedence"
 msgstr "Визначені прапори -m і -n, прапор -n має пріоритет"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:157
-#: src/kvilib/ext/avdevice/videodevice.cpp:3068
+#: src/kvilib/ext/avdevice/videodevice.cpp:156
+#: src/kvilib/ext/avdevice/videodevice.cpp:3071
 msgid "Brightness"
 msgstr ""
 
@@ -1588,7 +1513,7 @@ msgstr ""
 msgid "Broken pipe"
 msgstr "Потік зруйнований"
 
-#: src/modules/help/HelpWidget.cpp:103
+#: src/modules/help/HelpWidget.cpp:99
 msgid "Browsing: "
 msgstr ""
 
@@ -1599,18 +1524,6 @@ msgstr ""
 #: src/kvirc/ui/KviImageDialog.cpp:120
 msgid "Builtin images"
 msgstr "Убудовані картинки"
-
-#: src/kvilib/locale/KviLocale.cpp:807
-msgid "By Date"
-msgstr "По даті"
-
-#: src/kvilib/locale/KviLocale.cpp:806
-msgid "By Name"
-msgstr "По імені"
-
-#: src/kvilib/locale/KviLocale.cpp:808
-msgid "By Size"
-msgstr "По розмірі"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:95 src/kvirc/ui/KviConsoleWindow.cpp:97
 msgid "CONSOLE"
@@ -1765,15 +1678,15 @@ msgstr "Не можу відкрити файл фільтра %s на чита�
 msgid "Can't read data from file"
 msgstr "Не можу відправити файл нульового розміру"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:944
+#: src/kvirc/kernel/KviIrcConnection.cpp:951
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr "Не можу визначити локальну адресу, використаю 127.0.0.1"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:937
+#: src/kvirc/kernel/KviIrcConnection.cpp:944
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr ""
-"Не можу визначити локальну адресу, використаю тільки наданий користувачем (%"
-"Q)"
+"Не можу визначити локальну адресу, використаю тільки наданий користувачем "
+"(%Q)"
 
 #: src/kvilib/core/KviError.cpp:137
 msgid "Can't resolve the localhost name"
@@ -1807,7 +1720,7 @@ msgstr ""
 msgid "Can't setup a listening socket : bind failed"
 msgstr "Не можу запустити прослуховування сокета: Помилка зв'язку"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1068
+#: src/kvirc/kernel/KviIrcConnection.cpp:1075
 msgid "Can't start the DNS slave thread"
 msgstr "Не можу запустити вторинну нитку DNS"
 
@@ -1851,13 +1764,12 @@ msgstr "Не можу запустити прослуховування соке
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Не можу запустити прослуховування сокета: Помилка зв'язку"
 
-#: src/modules/avatar/libkviavatar.cpp:109
 #: src/modules/setup/SetupWizard.cpp:87
-#: src/kvirc/kernel/KviDefaultScript.cpp:449
-#: src/kvirc/kernel/KviCoreActions.cpp:809 src/kvirc/ui/KviImageDialog.cpp:156
-#: src/kvirc/ui/KviMaskEditor.cpp:90
+#: src/modules/avatar/libkviavatar.cpp:109 src/kvilib/tal/KviTalWizard.cpp:181
 #: src/kvilib/file/KviPackageIOEngine.cpp:135
-#: src/kvilib/tal/KviTalWizard.cpp:181 src/kvilib/locale/KviLocale.cpp:774
+#: src/kvirc/ui/KviImageDialog.cpp:156 src/kvirc/ui/KviMaskEditor.cpp:90
+#: src/kvirc/kernel/KviCoreActions.cpp:809
+#: src/kvirc/kernel/KviDefaultScript.cpp:449
 msgid "Cancel"
 msgstr "С&касування"
 
@@ -1920,10 +1832,6 @@ msgstr "&Максимізувати каскадом"
 msgid "Cascade windows"
 msgstr "Вікна каскадом"
 
-#: src/kvilib/locale/KviLocale.cpp:811
-msgid "Case Insensitive"
-msgstr "Не враховувати регістр"
-
 #: src/kvilib/core/KviError.cpp:153
 #, fuzzy
 msgid "Case, match, regexp, default or break keyword expected"
@@ -1964,8 +1872,8 @@ msgstr "Повідомлення ChanServ"
 msgid "Change Nickname"
 msgstr "Змінити Нік"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:187
-#: src/kvirc/kernel/KviIrcConnection.cpp:197
+#: src/kvirc/kernel/KviIrcConnection.cpp:192
+#: src/kvirc/kernel/KviIrcConnection.cpp:202
 msgid "Changed text encoding to %Q"
 msgstr "кодування тексту змінене на %Q"
 
@@ -2178,7 +2086,7 @@ msgstr "Виберіть фонове зображення..."
 msgid "Choose the file to share"
 msgstr "Виберіть файл для надання у вільний доступ"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3099
+#: src/kvilib/ext/avdevice/videodevice.cpp:3102
 msgid "Chroma AGC"
 msgstr ""
 
@@ -2217,8 +2125,8 @@ msgstr "Недавні канали"
 msgid "Clear Recent Nicks List"
 msgstr "Недавні канали"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1476
-#: src/modules/options/OptionsWidget_servers.cpp:1492
+#: src/modules/options/OptionsWidget_servers.cpp:1480
+#: src/modules/options/OptionsWidget_servers.cpp:1496
 #: src/kvirc/kernel/KviCoreActions.cpp:877
 #: src/kvirc/kernel/KviCoreActions.cpp:891
 msgid "Clear Recent Servers List"
@@ -2228,7 +2136,7 @@ msgstr "Очистити список поточних серверів"
 msgid "Clear custom scripts"
 msgstr ""
 
-#: src/kvirc/ui/KviIrcView_events.cpp:843
+#: src/kvirc/ui/KviIrcView_events.cpp:847
 #, fuzzy
 msgid "Click to open this link"
 msgstr "Подвійний клич для відкриття посилання"
@@ -2237,10 +2145,10 @@ msgstr "Подвійний клич для відкриття посилання
 msgid "Clipboard"
 msgstr "Буфер обміну"
 
-#: src/modules/tip/libkvitip.cpp:88
 #: src/modules/theme/ThemeManagementDialog.cpp:229
+#: src/modules/tip/libkvitip.cpp:88
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:119
-#: src/kvirc/ui/KviCtcpPageDialog.cpp:59 src/kvirc/ui/KviModeEditor.cpp:240
+#: src/kvirc/ui/KviModeEditor.cpp:240 src/kvirc/ui/KviCtcpPageDialog.cpp:59
 msgid "Close"
 msgstr "Закрити"
 
@@ -2253,17 +2161,17 @@ msgstr "Близькі сервера (1 <= стрибків <= 3): %d (~%d. %d 
 msgid "Close this window"
 msgstr "Закрити це вікно"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:163
+#: src/kvilib/ext/avdevice/videodevice.cpp:162
 #, fuzzy
 msgid "Color"
 msgstr "Кольори"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3103
+#: src/kvilib/ext/avdevice/videodevice.cpp:3106
 #, fuzzy
 msgid "Color Effects"
 msgstr "Ефекти"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3100
+#: src/kvilib/ext/avdevice/videodevice.cpp:3103
 msgid "Color Killer"
 msgstr ""
 
@@ -2311,7 +2219,7 @@ msgstr "Упс.. внутрішня помилка"
 msgid "Configuration files (*.kvc)"
 msgstr "Файл конфігурації (*.kvc)"
 
-#: src/modules/url/libkviurl.cpp:343 src/kvilib/locale/KviLocale.cpp:804
+#: src/modules/url/libkviurl.cpp:343
 msgid "Configure"
 msgstr "Конфігурація"
 
@@ -2339,10 +2247,6 @@ msgstr "Конфігурація теми..."
 msgid "Confirm Multiline Message"
 msgstr "Підтвердити многострокове повідомлення"
 
-#: src/modules/logview/LogViewWindow.cpp:432
-msgid "Confirm current user logs delete"
-msgstr ""
-
 #: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:485
 #: src/kvirc/ui/KviConsoleWindow.cpp:520
 msgid "Confirmation - KVIrc"
@@ -2364,7 +2268,7 @@ msgstr "Підключитися/Відключитися"
 msgid "Connected since"
 msgstr "Підключений з"
 
-#: src/modules/list/ListWindow.cpp:322 src/modules/links/LinksWindow.cpp:132
+#: src/modules/links/LinksWindow.cpp:132 src/modules/list/ListWindow.cpp:322
 #, fuzzy
 msgid "Connected to %1 (%2)"
 msgstr "Підключений до %1 (%2)"
@@ -2386,7 +2290,7 @@ msgstr "Таймер з'єднання"
 msgid "Connection attempt failed [%s]"
 msgstr "Помилка при спробі з'єднання [%s]"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1113 src/kvirc/ui/KviStatusBar.cpp:682
+#: src/kvirc/ui/KviStatusBar.cpp:682 src/kvirc/ui/KviConsoleWindow.cpp:1113
 msgid "Connection in progress..."
 msgstr "З'єднуємося..."
 
@@ -2415,16 +2319,16 @@ msgstr "Підключення до HTTP-проксі завершилася н�
 msgid "Connection timed out"
 msgstr "Закінчився час з'єднання"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:732
+#: src/kvirc/kernel/KviIrcConnection.cpp:739
 msgid "Connection to server established"
 msgstr "З'єднання із сервером установлене"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:714
-#: src/kvirc/kernel/KviIrcConnection.cpp:723
+#: src/kvirc/kernel/KviIrcConnection.cpp:721
+#: src/kvirc/kernel/KviIrcConnection.cpp:730
 msgid "Connection to server lost"
 msgstr "З'єднання із сервером загублене"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:386
+#: src/kvirc/kernel/KviIrcLink.cpp:395
 msgid "Contacting %Q %s (%s) on port %u"
 msgstr "Підключення до %Q %s (%s) через порт %u"
 
@@ -2442,8 +2346,8 @@ msgstr ""
 msgid "Context"
 msgstr "Контекст"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:166
-#: src/kvilib/ext/avdevice/videodevice.cpp:3069
+#: src/kvilib/ext/avdevice/videodevice.cpp:165
+#: src/kvilib/ext/avdevice/videodevice.cpp:3072
 #, fuzzy
 msgid "Contrast"
 msgstr "Контекст"
@@ -2587,8 +2491,8 @@ msgstr "Поточний IRC URI"
 msgid "Current Network"
 msgstr ""
 
+#: src/kvirc/kernel/KviIrcSocket.cpp:1302
 #: src/kvirc/kernel/KviSSLMaster.cpp:106
-#: src/kvirc/kernel/KviIrcSocket.cpp:1286
 msgid "Current transmission cipher"
 msgstr "Поточний шифр передачі"
 
@@ -2619,9 +2523,9 @@ msgstr "Користувальницькі панелі інструментів
 msgid "Customize..."
 msgstr "Налаштувати..."
 
-#: src/modules/system/libkvisystem.cpp:595
+#: src/modules/system/libkvisystem.cpp:617
 #, fuzzy
-msgid "DBus calls are available only when KDE support is compiled in"
+msgid "DBus calls are available only under unix"
 msgstr "Звертання до DCOP доступні тільки при зборці додатка з підтримкою КДЕ"
 
 #: src/kvirc/kernel/KviOptions.cpp:798
@@ -2665,9 +2569,9 @@ msgstr "Отладочні повідомлення"
 msgid "Decrypt key:"
 msgstr "Ключ для розшифровки:"
 
+#: src/kvilib/irc/KviUserIdentityManager.cpp:81
 #: src/kvilib/ext/KviRegisteredUserDataBase.cpp:510
 #: src/kvilib/ext/KviRegisteredUserDataBase.cpp:511
-#: src/kvilib/irc/KviUserIdentityManager.cpp:81
 msgid "Default"
 msgstr "За замовчуванням"
 
@@ -2683,7 +2587,6 @@ msgid "Delay users join to first message"
 msgstr ""
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:278
-#: src/kvilib/locale/KviLocale.cpp:825
 msgid "Delete"
 msgstr "Видалити"
 
@@ -2694,10 +2597,6 @@ msgstr "Опис"
 #: src/modules/action/libkviaction.cpp:67
 msgid "Description: %Q"
 msgstr "Опис: %Q"
-
-#: src/kvilib/locale/KviLocale.cpp:819
-msgid "Desktop"
-msgstr "Робітник стіл"
 
 #: src/modules/setup/SetupWizard.cpp:502
 msgid "Desktop Integration"
@@ -2711,10 +2610,6 @@ msgstr "Файл призначення існує: файл не перейме
 msgid "Destination file exists: no copy made"
 msgstr "Файл призначення існує: копію не зроблена"
 
-#: src/kvilib/locale/KviLocale.cpp:813
-msgid "Detailed View"
-msgstr "Детальне подання"
-
 #: src/modules/tip/libkvitip.cpp:97
 msgid "Did you know..."
 msgstr " чиЗнаєте ви..."
@@ -2723,10 +2618,6 @@ msgstr " чиЗнаєте ви..."
 #, fuzzy
 msgid "Direct links: %d (~%d.%d %)"
 msgstr "Прямі з'єднання: %d (~%d. %d %)"
-
-#: src/kvilib/locale/KviLocale.cpp:810
-msgid "Directories First"
-msgstr "Каталоги на початку"
 
 #: src/kvilib/ext/KviMediaManager.cpp:291
 msgid "Directory"
@@ -2750,7 +2641,7 @@ msgstr ""
 msgid "Discard Changes"
 msgstr "Скасувати зміни"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:602 src/kvirc/ui/KviMenuBar.cpp:229
+#: src/kvirc/ui/KviMenuBar.cpp:229 src/kvirc/kernel/KviCoreActions.cpp:602
 msgid "Disconnect"
 msgstr "Відключитися"
 
@@ -2771,7 +2662,7 @@ msgstr "Помилка запиту DNS"
 msgid "Dns temporaneous fault (try again)"
 msgstr "Випадкова помилка DNS (намагаюся знову)"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3080
+#: src/kvilib/ext/avdevice/videodevice.cpp:3083
 msgid "Do White Balance"
 msgstr ""
 
@@ -2815,17 +2706,17 @@ msgstr "Подвійний клич для установки<br>"
 msgid "Double-click to edit..."
 msgstr "Подвійний клік для редагування..."
 
-#: src/kvirc/ui/KviIrcView_events.cpp:869
+#: src/kvirc/ui/KviIrcView_events.cpp:873
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Подвійний клич для визначення IP цього<br>Клич на правій кнопці - інші опції"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:845
+#: src/kvirc/ui/KviIrcView_events.cpp:849
 msgid "Double-click to open this link"
 msgstr "Подвійний клич для відкриття посилання"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:898
+#: src/kvirc/ui/KviIrcView_events.cpp:902
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr "Подвійний клич для читання MOTD<br>Клич правою клавішею - інші опції"
 
@@ -2833,7 +2724,7 @@ msgstr "Подвійний клич для читання MOTD<br>Клич пр�
 msgid "Double-click to set..."
 msgstr "Подвійний клік для встановлення..."
 
-#: src/kvirc/ui/KviIrcView_events.cpp:913
+#: src/kvirc/ui/KviIrcView_events.cpp:917
 msgid "Double-click to set<br>"
 msgstr "Подвійний клич для установки<br>"
 
@@ -2883,10 +2774,6 @@ msgstr "Редагувати спливаючі меню..."
 #: src/kvirc/kernel/KviCoreActions.cpp:282
 msgid "Edit Raw Events..."
 msgstr "Редагувати низькорівневі події..."
-
-#: src/kvilib/locale/KviLocale.cpp:790
-msgid "Effects"
-msgstr "Ефекти"
 
 #: src/modules/file/libkvifile.cpp:126
 msgid "Either the source doesn't exist or the destination can not be created"
@@ -2965,7 +2852,7 @@ msgstr "Закінчення каналу %Q для \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Кінець WHO списку для %Q"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:883 src/kvirc/ui/KviChannelWindow.cpp:1981
+#: src/kvirc/ui/KviChannelWindow.cpp:1984 src/kvirc/ui/KviQueryWindow.cpp:883
 #, fuzzy
 msgid "End of log"
 msgstr "Кінець LIST"
@@ -3020,29 +2907,29 @@ msgstr "Всі добре"
 msgid "Execute Script..."
 msgstr "Виконати сценарій..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1629
+#: src/kvirc/kernel/KviIrcConnection.cpp:1636
 #, fuzzy
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr "Виконання запланованої \"при з'єднанні\" з мережею команди"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1724
+#: src/kvirc/kernel/KviIrcConnection.cpp:1731
 #, fuzzy
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr "Запуск команди \"при вході\" у мережу"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1613
+#: src/kvirc/kernel/KviIrcConnection.cpp:1620
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr "Виконання запланованої \"при з'єднанні\" з мережею команди"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1708
+#: src/kvirc/kernel/KviIrcConnection.cpp:1715
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr "Запуск команди \"при вході\" у мережу"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1621
+#: src/kvirc/kernel/KviIrcConnection.cpp:1628
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr "Виконання запланованої \"при з'єднанні\" із сервером команди"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1716
+#: src/kvirc/kernel/KviIrcConnection.cpp:1723
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "Запуск команди \"при вході\" на сервер"
 
@@ -3058,7 +2945,7 @@ msgstr "Розтягти по &вертикалі"
 msgid "Export List"
 msgstr "Експортувати список"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3084
+#: src/kvilib/ext/avdevice/videodevice.cpp:3087
 #, fuzzy
 msgid "Exposure"
 msgstr "Епілог"
@@ -3154,7 +3041,7 @@ msgstr "Помилка завантаження обраної картинки"
 msgid "Failed to save the screenshot image"
 msgstr "Помилка завантаження обраної картинки"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:176
+#: src/kvirc/kernel/KviIrcConnection.cpp:181
 msgid "Failed to set the encoding to %Q: mapping not available."
 msgstr "Неможливо встановити кодування %Q: дані про це кодування не доступні"
 
@@ -3293,17 +3180,9 @@ msgstr ""
 msgid "Flooded with messages"
 msgstr "Флуд у повідомленнях"
 
-#: src/kvilib/locale/KviLocale.cpp:821
-msgid "Floppy"
-msgstr "Дисковід"
-
 #: src/kvirc/kernel/KviOptions.cpp:1268
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr "Опція шрифт (family,pointsize,style,charset,weight,flags (biusf))"
-
-#: src/kvilib/locale/KviLocale.cpp:787
-msgid "Font st&yle"
-msgstr "&Стиль шрифту"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:316
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:406
@@ -3339,10 +3218,6 @@ msgstr "Передній план"
 msgid "Format"
 msgstr "Уперед"
 
-#: src/kvilib/locale/KviLocale.cpp:797
-msgid "Forward"
-msgstr "Уперед"
-
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:351
 msgid "Forward to another channel on uninvited"
 msgstr ""
@@ -3359,11 +3234,11 @@ msgstr "Повний шлях"
 msgid "GUI"
 msgstr "Інтерфейс"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3086
+#: src/kvilib/ext/avdevice/videodevice.cpp:3089
 msgid "Gain"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3083
+#: src/kvilib/ext/avdevice/videodevice.cpp:3086
 msgid "Gamma"
 msgstr ""
 
@@ -3435,7 +3310,7 @@ msgstr "Зміна режиму стат-оператор"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Заголовок занадто довгий, перевищує 4096 байт"
 
-#: src/kvirc/kernel/KviOptions.cpp:864 src/kvilib/tal/KviTalWizard.cpp:193
+#: src/kvilib/tal/KviTalWizard.cpp:193 src/kvirc/kernel/KviOptions.cpp:864
 msgid "Help"
 msgstr "&Довідка"
 
@@ -3452,7 +3327,7 @@ msgstr "Індекс довідки"
 msgid "HelpIndex"
 msgstr "Індекс довідки"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1028
+#: src/kvirc/kernel/KviIrcConnection.cpp:1035
 msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
@@ -3494,7 +3369,7 @@ msgstr "Сховати/Показати"
 msgid "High activity"
 msgstr "Висока активність"
 
-#: src/modules/help/HelpWidget.cpp:73
+#: src/modules/help/HelpWidget.cpp:69
 #, fuzzy
 msgid "Highlight: "
 msgstr "Подсвічувати як"
@@ -3507,20 +3382,16 @@ msgstr "Підсвічування тексту"
 msgid "History"
 msgstr "Історія"
 
-#: src/kvilib/locale/KviLocale.cpp:820
-msgid "Home Directory"
-msgstr "Домашній каталог"
-
 #: src/modules/links/LinksWindow.cpp:471
 msgid "Hops"
 msgstr "Стрибок"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3089
+#: src/kvilib/ext/avdevice/videodevice.cpp:3092
 msgid "Horizontal Center"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:199
-#: src/kvilib/ext/avdevice/videodevice.cpp:3087
+#: src/kvilib/ext/avdevice/videodevice.cpp:198
+#: src/kvilib/ext/avdevice/videodevice.cpp:3090
 #, fuzzy
 msgid "Horizontal Flip"
 msgstr "Розтягти по &горизонталі"
@@ -3550,8 +3421,8 @@ msgstr ""
 msgid "Hostname resolution aborted"
 msgstr "Визначення адреси перерване"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:160
-#: src/kvilib/ext/avdevice/videodevice.cpp:3071
+#: src/kvilib/ext/avdevice/videodevice.cpp:159
+#: src/kvilib/ext/avdevice/videodevice.cpp:3074
 #, fuzzy
 msgid "Hue"
 msgstr "Шістнадцятерічний"
@@ -3610,7 +3481,7 @@ msgstr "Включення статусу адміністратора кана�
 msgid "IRC Op status unset"
 msgstr "Вимикання статусу адміністратора каналу"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:387
+#: src/kvirc/kernel/KviIrcLink.cpp:396
 msgid "IRC server"
 msgstr "IRC серверу"
 
@@ -3721,7 +3592,7 @@ msgstr "Імпорт із servers.ini"
 msgid "Import server list from mIRC"
 msgstr "Імпортувати список серверів з mIRC"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1117
+#: src/kvirc/kernel/KviIrcConnection.cpp:1124
 msgid ""
 "Impossible to send STARTTLS command to the IRC server. Your connection will "
 "NOT be encrypted"
@@ -3791,12 +3662,12 @@ msgstr "Внутрішня помилка"
 msgid "Internal error: unhandled DNS query type"
 msgstr "Внутрішня помилка: Це не база даних користувачів?"
 
-#: src/modules/system/libkvisystem.cpp:487
+#: src/modules/system/libkvisystem.cpp:502
 #, fuzzy
 msgid "Invalid DBus interface"
 msgstr "Не є зображенням"
 
-#: src/modules/system/libkvisystem.cpp:499
+#: src/modules/system/libkvisystem.cpp:521
 #, fuzzy
 msgid "Invalid DBus parameter syntax"
 msgstr "Недійсний синтаксис аргументу DCOP"
@@ -4124,14 +3995,14 @@ msgstr "Виключений вимір затримки"
 msgid "Lag: %1.%2%3"
 msgstr "Затримка: %1.%2%3"
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:284 src/kvirc/ui/KviIrcToolBar.cpp:324
-#: src/kvirc/ui/KviIrcToolBar.cpp:396
+#: src/kvirc/ui/KviIrcToolBar.cpp:324 src/kvirc/ui/KviIrcToolBar.cpp:396
+#: src/kvirc/ui/KviStatusBarApplet.cpp:284
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr "Затримка: %d.%d%d"
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:337 src/kvirc/ui/KviIrcToolBar.cpp:326
-#: src/kvirc/ui/KviIrcToolBar.cpp:398
+#: src/kvirc/ui/KviIrcToolBar.cpp:326 src/kvirc/ui/KviIrcToolBar.cpp:398
+#: src/kvirc/ui/KviStatusBarApplet.cpp:337
 msgid "Lag: ?.??"
 msgstr "Затримка: ?.??"
 
@@ -4142,10 +4013,6 @@ msgstr "Мови:"
 #: src/kvirc/ui/KviToolBar.cpp:94
 msgid "Large (32x32)"
 msgstr "Більші (32x32)"
-
-#: src/kvilib/locale/KviLocale.cpp:827
-msgid "Large Icons"
-msgstr "Більші іконки"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:343
 msgid "Large ban/exempt/invex lists (staff only)"
@@ -4237,11 +4104,11 @@ msgstr "Завантаження модуля '%s' (%s)"
 msgid "Local IP"
 msgstr "Локальна IP-адреса"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:950
+#: src/kvirc/kernel/KviIrcConnection.cpp:957
 msgid "Local host address is %Q"
 msgstr "Локальна адреса %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1100
+#: src/kvirc/kernel/KviIrcConnection.cpp:1107
 msgid "Local hostname as seen by the IRC server resolved to %Q"
 msgstr "IRC сервер бачить нас як %Q"
 
@@ -4249,15 +4116,15 @@ msgstr "IRC сервер бачить нас як %Q"
 msgid "Location:"
 msgstr "Країна:"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1515
+#: src/kvirc/kernel/KviIrcConnection.cpp:1522
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Увійшов як %Q!%Q :%Q"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1116 src/kvirc/ui/KviStatusBar.cpp:688
+#: src/kvirc/ui/KviStatusBar.cpp:688 src/kvirc/ui/KviConsoleWindow.cpp:1116
 msgid "Login in progress..."
 msgstr "Вхід у мережу..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1699
+#: src/kvirc/kernel/KviIrcConnection.cpp:1706
 msgid "Login operations complete, happy ircing!"
 msgstr "Підключення пройшло успішно, ласкаво просимо в IRC!"
 
@@ -4274,7 +4141,7 @@ msgstr "Визначення IP для адреси %1"
 msgid "Looking up host %Q..."
 msgstr "Визначаю адресу %Q..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1075
+#: src/kvirc/kernel/KviIrcConnection.cpp:1082
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
 msgstr "Визначення локальної адреси через IRC сервер (%Q)"
 
@@ -4288,7 +4155,7 @@ msgstr "Пошук проксі (%s)..."
 msgid "Looking up the server hostname (%s)..."
 msgstr "Пошук сервера (%s)..."
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3077
+#: src/kvilib/ext/avdevice/videodevice.cpp:3080
 msgid "Loudness"
 msgstr ""
 
@@ -4296,7 +4163,7 @@ msgstr ""
 msgid "Low activity"
 msgstr "Низька активність"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:393
+#: src/kvirc/kernel/KviIrcLink.cpp:402
 #, c-format
 msgid "Low-level transport connection established [%s (%s:%u)]"
 msgstr "Установлена низькорівневий зв'язок [%s (%s:%u)]"
@@ -4532,7 +4399,7 @@ msgstr "Множинні операції не підтримуються для
 msgid "Multiple user mode change"
 msgstr "Зміна режиму декількох користувачів"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3076
+#: src/kvilib/ext/avdevice/videodevice.cpp:3079
 msgid "Mute"
 msgstr ""
 
@@ -4571,7 +4438,7 @@ msgstr ""
 msgid "Need op/voice to change nick"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcLink.cpp:405
+#: src/kvirc/kernel/KviIrcLink.cpp:414
 msgid "Negotiating relay information"
 msgstr "Домовлятися про обмін інформацією"
 
@@ -4580,7 +4447,7 @@ msgstr "Домовлятися про обмін інформацією"
 msgid "Netsplit detected: %s"
 msgstr "Виявлений обрив мережі: %s"
 
-#: src/kvirc/ui/KviStatusBar.cpp:555 src/kvilib/locale/KviLocale.cpp:823
+#: src/kvirc/ui/KviStatusBar.cpp:555
 msgid "Network"
 msgstr "Мережа"
 
@@ -4596,18 +4463,6 @@ msgstr "Мережа не доступна"
 #: src/kvirc/ui/KviMenuBar.cpp:224
 msgid "New &Connection To"
 msgstr "Нове &підключення до"
-
-#: src/kvilib/locale/KviLocale.cpp:803
-msgid "New Bookmark Folder..."
-msgstr "Новий каталог закладок..."
-
-#: src/kvilib/locale/KviLocale.cpp:799
-msgid "New Directory"
-msgstr "Новий каталог"
-
-#: src/kvilib/locale/KviLocale.cpp:824
-msgid "New Directory..."
-msgstr "Новий каталог..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:408
 msgid "New IRC Context"
@@ -4646,10 +4501,10 @@ msgstr "Проблема з ніком"
 msgid "Nickname:"
 msgstr "Нік:"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:255
-#: src/kvirc/ui/KviStatusBar.cpp:553
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
+#: src/kvirc/ui/KviStatusBar.cpp:553 src/kvirc/ui/KviInput.cpp:255
+#: src/kvirc/kernel/KviApplication.cpp:1019
+#: src/kvirc/kernel/KviApplication.cpp:1092
 msgid "No"
 msgstr "Ні"
 
@@ -4657,12 +4512,12 @@ msgstr "Ні"
 msgid "No "
 msgstr "Ні "
 
-#: src/modules/system/libkvisystem.cpp:480
+#: src/modules/system/libkvisystem.cpp:484
 #, fuzzy
 msgid "No DBus type specified"
 msgstr "Маска не визначена"
 
-#: src/kvirc/ui/KviStatusBar.cpp:695 src/kvirc/ui/KviIrcToolBar.cpp:331
+#: src/kvirc/ui/KviIrcToolBar.cpp:331 src/kvirc/ui/KviStatusBar.cpp:695
 msgid "No IRC context"
 msgstr "Немає контексту IRC"
 
@@ -4699,7 +4554,7 @@ msgstr "Тема каналу не встановлена"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Немає загальних каналів для \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1110 src/kvirc/ui/KviIrcToolBar.cpp:291
+#: src/kvirc/ui/KviIrcToolBar.cpp:291 src/kvirc/ui/KviConsoleWindow.cpp:1110
 msgid "No connection"
 msgstr "Не підключений"
 
@@ -4822,9 +4677,9 @@ msgstr "Нормальний текст"
 msgid "Not away"
 msgstr "режим Відійшов не включений"
 
+#: src/kvirc/ui/KviIrcToolBar.cpp:360 src/kvirc/ui/KviStatusBar.cpp:691
 #: src/kvirc/ui/KviStatusBarApplet.cpp:233
-#: src/kvirc/ui/KviStatusBarApplet.cpp:303 src/kvirc/ui/KviStatusBar.cpp:691
-#: src/kvirc/ui/KviIrcToolBar.cpp:360
+#: src/kvirc/ui/KviStatusBarApplet.cpp:303
 msgid "Not connected"
 msgstr "Відключений"
 
@@ -4840,12 +4695,12 @@ msgstr "Не знайдений"
 msgid "Nothing is happening..."
 msgstr "Нічого не відбувається..."
 
-#: src/kvirc/ui/KviIrcView_events.cpp:956
+#: src/kvirc/ui/KviIrcView_events.cpp:960
 #, fuzzy
 msgid "Nothing known about %1"
 msgstr "Нічого не відомо про %1"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:957
+#: src/kvirc/ui/KviIrcView_events.cpp:961
 #, fuzzy
 msgid "Nothing known about %1 (no connection)"
 msgstr "Нічого не відомо про %1 (немає з'єднання)"
@@ -5012,18 +4867,14 @@ msgstr "Повідомлення про аватаре '%Q' для %Q"
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Локальний оператор IRC (LOCOP)"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:808 src/kvirc/ui/KviHtmlDialog.cpp:91
-#: src/kvirc/ui/KviCryptController.cpp:127 src/kvilib/locale/KviLocale.cpp:773
+#: src/kvirc/ui/KviHtmlDialog.cpp:91 src/kvirc/ui/KviCryptController.cpp:127
+#: src/kvirc/kernel/KviCoreActions.cpp:808
 msgid "OK"
 msgstr "Ok"
 
 #: src/kvilib/ext/KviMediaManager.cpp:417
 msgid "Octet stream (unknown)"
 msgstr "Octet потік (невідомий)"
-
-#: src/kvilib/locale/KviLocale.cpp:818
-msgid "Often used directories"
-msgstr "Часто використовувані каталоги"
 
 #: src/kvirc/ui/KviIrcView.cpp:2130 src/kvirc/ui/KviImageDialog.cpp:160
 #: src/kvirc/ui/KviMaskEditor.cpp:85
@@ -5118,8 +4969,8 @@ msgstr "Операція перервана"
 msgid "Operation cancelled"
 msgstr "Операція скасована"
 
-#: src/modules/iograph/libkviiograph.cpp:277
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: src/modules/iograph/libkviiograph.cpp:277
 msgid "Ops.. internal error"
 msgstr "Упс.. внутрішня помилка"
 
@@ -5237,11 +5088,6 @@ msgstr "Список банів"
 msgid "Package saved successfully"
 msgstr "Пакет успішно збережений"
 
-#: src/modules/addon/PackAddonDialog.cpp:392
-#, fuzzy
-msgid "Package saved successfully in "
-msgstr "Пакет успішно збережено в"
-
 #: src/kvilib/file/KviPackageWriter.cpp:167
 #, fuzzy
 msgid "Packaging file %1"
@@ -5255,10 +5101,6 @@ msgstr ""
 msgid "Paranoid (disable KNOCK)"
 msgstr ""
 
-#: src/kvilib/locale/KviLocale.cpp:795
-msgid "Parent Directory"
-msgstr "Батьківський каталог"
-
 #: src/kvirc/kernel/KviOptions.cpp:735
 msgid "Parser error"
 msgstr "Помилка синтаксичного аналізатора"
@@ -5271,8 +5113,8 @@ msgstr "Попередження синтаксичного аналізатор
 msgid "Part message"
 msgstr "Повідомлення про покидання"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1861
-#: src/kvirc/kernel/KviIrcSocket.cpp:1881
+#: src/kvirc/kernel/KviIrcSocket.cpp:1877
+#: src/kvirc/kernel/KviIrcSocket.cpp:1897
 msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Не повний запис сокета: пакет розбитий на більше дрібні шматки."
 
@@ -5427,7 +5269,7 @@ msgstr "Спливаюче меню"
 msgid "Pos %1"
 msgstr "Позиція %1"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3092
+#: src/kvilib/ext/avdevice/videodevice.cpp:3095
 msgid "Power Line Frequency"
 msgstr ""
 
@@ -5480,10 +5322,6 @@ msgstr "Обробка списку: %Q"
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/kvilib/locale/KviLocale.cpp:829
-msgid "Properties..."
-msgstr "Властивості..."
-
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:323
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:416
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:480
@@ -5494,7 +5332,7 @@ msgstr ""
 msgid "Protocol error: invalid chunk size"
 msgstr "Помилка протоколу: помилковий розмір блоку даних"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:401
+#: src/kvirc/kernel/KviIrcLink.cpp:410
 msgid "Proxy connection"
 msgstr "Підключення до проксі"
 
@@ -5503,17 +5341,17 @@ msgstr "Підключення до проксі"
 msgid "Proxy hostname resolved to %Q"
 msgstr "Знайдений проксі %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1222
+#: src/kvirc/kernel/KviIrcSocket.cpp:1238
 msgid "Proxy response: "
 msgstr "Проксі відповіло: "
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1060
+#: src/kvirc/kernel/KviIrcSocket.cpp:1076
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
 msgstr ""
 "Проксі відповіло: Аутентификация пройшла успішно,використався метод 0 (без "
 "аутентифікації)"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1068
+#: src/kvirc/kernel/KviIrcSocket.cpp:1084
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
 msgstr ""
 "Проксі відповіло: Аутентифікація пройшла успішно, використався метод 2 "
@@ -5531,7 +5369,7 @@ msgstr "Відповідь проксі: TTL минув"
 msgid "Proxy response: address type not supported"
 msgstr "Відповідь проксі: тип адреси не підтримується"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1025
+#: src/kvirc/kernel/KviIrcSocket.cpp:1041
 msgid "Proxy response: auth OK: access granted"
 msgstr "Проксі відповіло: Аутентификация пройшла успішно, доступ відкритий"
 
@@ -5579,12 +5417,12 @@ msgstr "Відповідь проксі: мережа не доступна"
 msgid "Proxy response: request failed"
 msgstr "Відповідь проксі: помилка запиту"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1125
-#: src/kvirc/kernel/KviIrcSocket.cpp:1182
+#: src/kvirc/kernel/KviIrcSocket.cpp:1141
+#: src/kvirc/kernel/KviIrcSocket.cpp:1198
 msgid "Proxy response: target data OK: request granted"
 msgstr "Проксі відповіли: Дані отримані, запит задоволено"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1232
+#: src/kvirc/kernel/KviIrcSocket.cpp:1248
 msgid "Proxy said something about: \n"
 msgstr "Проксі сказало щось у роді: \n"
 
@@ -5666,8 +5504,8 @@ msgstr "Заготівлі подій"
 msgid "Raw data to server"
 msgstr "Вихідні дані сервера"
 
-#: src/kvirc/ui/KviMaskEditor.cpp:200 src/kvirc/ui/KviSelectors.cpp:504
-#: src/kvirc/ui/KviSelectors.cpp:859
+#: src/kvirc/ui/KviSelectors.cpp:504 src/kvirc/ui/KviSelectors.cpp:859
+#: src/kvirc/ui/KviMaskEditor.cpp:200
 msgid "Re&move"
 msgstr "&Видалити"
 
@@ -5771,7 +5609,7 @@ msgstr "Спроба перепідключення перервана"
 msgid "Rectangle options (x,y,width,height)"
 msgstr "Опція прямокутник (x,y,ширина,висота)"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3081
+#: src/kvilib/ext/avdevice/videodevice.cpp:3084
 #, fuzzy
 msgid "Red Balance"
 msgstr "Заміна"
@@ -5814,10 +5652,6 @@ msgstr "Зареєстрований як"
 #, c-format
 msgid "Registered lag check with reliability %u (%s)"
 msgstr "Визначена гарантована затримка %u (%s)"
-
-#: src/kvilib/locale/KviLocale.cpp:798
-msgid "Reload"
-msgstr "Обновити"
 
 #: src/kvirc/kernel/KviApplication.cpp:1141
 #, c-format
@@ -5864,7 +5698,7 @@ msgstr "Запросити з'єднання"
 msgid "Request List"
 msgstr "Отримати список"
 
-#: src/modules/list/ListWindow.cpp:459 src/modules/links/LinksWindow.cpp:419
+#: src/modules/links/LinksWindow.cpp:419 src/modules/list/ListWindow.cpp:459
 msgid "Reset"
 msgstr "Скидання"
 
@@ -5905,10 +5739,6 @@ msgstr "Відновлення ніка (%Q)"
 msgid "Resuming direct server connection"
 msgstr "Пряме підключення до сервера"
 
-#: src/kvilib/locale/KviLocale.cpp:809
-msgid "Reverse"
-msgstr "Інвертувати"
-
 #: src/kvirc/ui/KviTreeWindowList.cpp:276
 msgid "Reverse Sort"
 msgstr "Зворотне сортування"
@@ -5921,7 +5751,7 @@ msgstr "Правий операнд не є словниковим посила�
 msgid "Right operand is not a number"
 msgstr "Правий оператор не число"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3106
+#: src/kvilib/ext/avdevice/videodevice.cpp:3109
 msgid "Rotate"
 msgstr ""
 
@@ -5946,15 +5776,11 @@ msgstr "Повідомлення SSL"
 msgid "STARTTLS reply received but SSL support is not complied in: ignoring"
 msgstr ""
 
-#: src/kvilib/locale/KviLocale.cpp:789
-msgid "Sample"
-msgstr "Зразок"
-
 #: src/kvirc/ui/KviSelectors.cpp:691
 msgid "Sample Text"
 msgstr "Зразок тексту"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3070
+#: src/kvilib/ext/avdevice/videodevice.cpp:3073
 #, fuzzy
 msgid "Saturation"
 msgstr "Роздільник"
@@ -5970,10 +5796,6 @@ msgstr "Зберегти ширину стовпчиків у списку URL"
 #: src/kvilib/core/KviError.cpp:168
 msgid "Scope object already defined (unexpected @)"
 msgstr "Об'єкт уже визначений (несподіваний @)"
-
-#: src/kvilib/locale/KviLocale.cpp:793
-msgid "Scr&ipt"
-msgstr "&Сценарій"
 
 #: src/kvirc/ui/KviMenuBar.cpp:66
 msgid "Scri&pting"
@@ -5995,7 +5817,7 @@ msgstr "Сценарії"
 msgid "Scripting related actions"
 msgstr "Дії, зв'язані зі сценаріями"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:806
+#: src/kvirc/ui/KviIrcView_events.cpp:810
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
@@ -6019,7 +5841,7 @@ msgstr "Помилка SSL"
 msgid "Secure connection"
 msgstr "Безпечне підключення"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:401
+#: src/kvirc/kernel/KviIrcLink.cpp:410
 msgid "Secure proxy connection"
 msgstr "Підключення до безпечного проксі"
 
@@ -6030,10 +5852,6 @@ msgstr "Здається земля припиняє вертітися.."
 #: src/kvirc/ui/KviInputEditor.cpp:804
 msgid "Select All"
 msgstr "Вибрати всі"
-
-#: src/kvilib/locale/KviLocale.cpp:785
-msgid "Select Font"
-msgstr "Вибір шрифту"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:226
 msgid "Select a Filter File"
@@ -6050,10 +5868,6 @@ msgstr "Виберіть бан."
 #: src/modules/url/libkviurl.cpp:267
 msgid "Select an URL."
 msgstr "Вибрати URL."
-
-#: src/kvilib/locale/KviLocale.cpp:776
-msgid "Select color"
-msgstr "Вибір кольорів"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:381
 msgid "Select default script's elements to restore"
@@ -6079,15 +5893,15 @@ msgstr "Відсилаю пінг для визначення затримки"
 msgid "Sent QUIT, waiting for the server to close the connection..."
 msgstr "Відправлений QUIT, чекаю коли сервер закриє з'єднання.."
 
-#: src/kvirc/kernel/KviIrcLink.cpp:414
+#: src/kvirc/kernel/KviIrcLink.cpp:423
 msgid "Sent auth method request, waiting for acknowledgement"
 msgstr "Відісланий запит методу аутентифікації, очікую підтвердження"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:420
+#: src/kvirc/kernel/KviIrcLink.cpp:429
 msgid "Sent connection request, waiting for \"HTTP 200\" acknowledgement"
 msgstr "Відісланий запит зв'язку, очікую підтвердження \"HTTP 200\""
 
-#: src/kvirc/kernel/KviIrcLink.cpp:408
+#: src/kvirc/kernel/KviIrcLink.cpp:417
 msgid "Sent connection request, waiting for acknowledgement"
 msgstr "Відісланий запит з'єднання, очікую підтвердження"
 
@@ -6103,20 +5917,16 @@ msgstr "Відісланий запит списку, очікую відпов�
 msgid "Sent part request, waiting for reply..."
 msgstr "Запит PART відісланий, очікую відповідь..."
 
-#: src/kvirc/kernel/KviIrcLink.cpp:411
+#: src/kvirc/kernel/KviIrcLink.cpp:420
 msgid "Sent target host data, waiting for acknowledgement"
 msgstr "Дані відправлені цільовому хосту, очікую підтвердження"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:417
+#: src/kvirc/kernel/KviIrcLink.cpp:426
 msgid "Sent username and password, waiting for acknowledgement"
 msgstr "Відіслані ім'я користувача й пароль, очікую відповіді"
 
-#: src/kvilib/locale/KviLocale.cpp:817
-msgid "Separate Directories"
-msgstr "Відокремити каталоги"
-
-#: src/kvirc/kernel/KviCoreActions.cpp:496
 #: src/kvirc/ui/KviStatusBarApplet.cpp:606
+#: src/kvirc/kernel/KviCoreActions.cpp:496
 msgid "Separator"
 msgstr "Роздільник"
 
@@ -6142,11 +5952,11 @@ msgstr "Повідомлення дня сервера"
 msgid "Server Notices (+s)"
 msgstr "Повідомлення сервера (+s)"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1272
+#: src/kvirc/kernel/KviIrcSocket.cpp:1288
 msgid "Server X509 certificate"
 msgstr "Сертифікат сервера X509"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:894
+#: src/kvirc/ui/KviIrcView_events.cpp:898
 msgid "Server appears to be a network hub<br>"
 msgstr "Сервер є мережним хабом<br>"
 
@@ -6227,7 +6037,7 @@ msgstr "Дата встановлення"
 msgid "Setting away nickname (%Q)"
 msgstr "Установка ніка в режимі Відійшов (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1735
+#: src/kvirc/kernel/KviIrcConnection.cpp:1742
 msgid "Setting configured user mode"
 msgstr "Налаштування конфігурації користувальницького режиму"
 
@@ -6243,13 +6053,9 @@ msgstr "Папка настроювань:"
 msgid "Setup aborted"
 msgstr "Установка перервана"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3095
+#: src/kvilib/ext/avdevice/videodevice.cpp:3098
 msgid "Sharpness"
 msgstr ""
-
-#: src/kvilib/locale/KviLocale.cpp:812
-msgid "Short View"
-msgstr "Коротке подання"
 
 #: src/kvirc/ui/KviMainWindow.cpp:956 src/kvirc/ui/KviMainWindow.cpp:974
 msgid "Show %1"
@@ -6262,10 +6068,6 @@ msgstr "Показати таблицю &іконок"
 #: src/kvirc/ui/KviIrcView.cpp:2069
 msgid "Show Find Window"
 msgstr "Показати вікно пошуку"
-
-#: src/kvilib/locale/KviLocale.cpp:814
-msgid "Show Hidden Files"
-msgstr "Показувати сховані файли"
 
 #: src/kvirc/ui/KviInput.cpp:113 src/kvirc/ui/KviInput.cpp:401
 msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
@@ -6280,14 +6082,6 @@ msgid "Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"
 msgstr ""
 "Показати спливаючого меню з іконками<br>&lt;Ctrl+I&gt;<br>Дивися також /help "
 "texticons"
-
-#: src/kvilib/locale/KviLocale.cpp:816
-msgid "Show Preview"
-msgstr "Попередній перегляд"
-
-#: src/kvilib/locale/KviLocale.cpp:815
-msgid "Show Quick Access Navigation Panel"
-msgstr "Показати панель швидкого доступу"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:139
 #, fuzzy
@@ -6453,10 +6247,6 @@ msgstr "Повільна вставка ID:%d Вікно:%Q"
 msgid "Small (22x22)"
 msgstr "Маленькі (22x22)"
 
-#: src/kvilib/locale/KviLocale.cpp:828
-msgid "Small Icons"
-msgstr "Маленькі іконки"
-
 #: src/kvirc/ui/KviImageDialog.cpp:129
 msgid "Small icons"
 msgstr "Маленькі іконки"
@@ -6524,10 +6314,6 @@ msgstr "Вибачите, немає доступних криптовальни
 msgid "Sort"
 msgstr "Сортування"
 
-#: src/kvilib/locale/KviLocale.cpp:805
-msgid "Sorting"
-msgstr "Сортування"
-
 #: src/modules/snd/libkvisnd.cpp:707
 msgid "Sound file '%Q' not found"
 msgstr "Звуковий файл '%Q'не знайдений"
@@ -6578,7 +6364,7 @@ msgstr "Одиночні сервера"
 msgid "Standard"
 msgstr "Стандартні"
 
-#: src/kvirc/kernel/KviIrcLink.cpp:397
+#: src/kvirc/kernel/KviIrcLink.cpp:406
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск з'єднання SSL"
 
@@ -6597,7 +6383,7 @@ msgstr "Стартую Identd сервіс (Ip4)"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Стартую Identd сервіс (Ip4)"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:867 src/kvirc/ui/KviChannelWindow.cpp:1965
+#: src/kvirc/ui/KviChannelWindow.cpp:1968 src/kvirc/ui/KviQueryWindow.cpp:867
 #, fuzzy
 msgid "Starting last log"
 msgstr "Запуск списку повідомлень"
@@ -6630,10 +6416,6 @@ msgstr "Розмір потоку перевищив очікувану довж
 msgid "Stream exceeding maximum length"
 msgstr "Розмір потоку перевищив максимальну довжину"
 
-#: src/kvilib/locale/KviLocale.cpp:791
-msgid "Stri&keout"
-msgstr "&Розрядка"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Опція списку рядків (розділені комами рядка)"
@@ -6647,7 +6429,7 @@ msgstr "Строкова опція (значення string)"
 msgid "Strip colors"
 msgstr "Вирізати кольори"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:326 src/kvirc/ui/KviMenuBar.cpp:131
+#: src/kvirc/ui/KviMenuBar.cpp:131 src/kvirc/kernel/KviCoreActions.cpp:326
 msgid "Subscribe to the Mailing List"
 msgstr "Підписатися на список розсилання"
 
@@ -6671,10 +6453,6 @@ msgstr "Системне повідомлення"
 msgid "System warning"
 msgstr "Системне попередження"
 
-#: src/kvilib/locale/KviLocale.cpp:822
-msgid "Temporary Files"
-msgstr "Тимчасові файли"
-
 #: src/modules/term/TermWindow.cpp:72
 msgid "Terminal"
 msgstr "Консоль"
@@ -6696,7 +6474,7 @@ msgstr "&Кодування тексту"
 msgid "Text Encoding Server message"
 msgstr "Повідомлення сервера про кодування"
 
-#: src/modules/system/libkvisystem.cpp:548
+#: src/modules/system/libkvisystem.cpp:570
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
 msgstr ""
@@ -6859,8 +6637,8 @@ msgstr ""
 "З'явилося наступне шифроване повідомлення, але кріптовальна машина не може "
 "його декодувати: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1043
-#: src/kvirc/kernel/KviIrcConnection.cpp:1053
+#: src/kvirc/kernel/KviIrcConnection.cpp:1050
+#: src/kvirc/kernel/KviIrcConnection.cpp:1060
 msgid "The local IP address as seen by the IRC server is %Q"
 msgstr "Локальний IP адреса видимий IRC сервером %Q"
 
@@ -6920,11 +6698,11 @@ msgstr ""
 "Планова ідентифікація NickServ не пройшла, будь ласка, відкоригуйте "
 "налаштування"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1276
+#: src/kvirc/kernel/KviIrcSocket.cpp:1292
 msgid "The server didn't provide a certificate"
 msgstr "Сервер не має сертифіката"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1133
+#: src/kvirc/kernel/KviIrcConnection.cpp:1140
 msgid ""
 "The server does not support STARTTLS command. Your connection will NOT be "
 "encrypted"
@@ -6936,19 +6714,19 @@ msgid ""
 "nickname manually"
 msgstr "Сервер відхиляє вхід по всім нікам, ви повинні послати Нік вручну"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1688
+#: src/kvirc/kernel/KviIrcConnection.cpp:1695
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "Сервер відхилив запропонований вами Нік (%s) і назвав вас %s"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1001
+#: src/kvirc/kernel/KviIrcConnection.cpp:1008
 #, fuzzy
 msgid ""
 "The server reports a hostname differing from what KVIrc set for the local "
 "hostname."
 msgstr "Сервер здається хоче змінити хостмаску"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:885
+#: src/kvirc/kernel/KviIrcConnection.cpp:892
 msgid ""
 "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
@@ -7007,8 +6785,8 @@ msgstr "Заданий каталог не існує '%Q'"
 msgid "The specified network has no server entries"
 msgstr "Задана мережа не має серверів"
 
-#: src/modules/system/libkvisystem.cpp:512
-#: src/modules/system/libkvisystem.cpp:533
+#: src/modules/system/libkvisystem.cpp:534
+#: src/modules/system/libkvisystem.cpp:555
 msgid "The specified parameter is not an integer"
 msgstr "Заданий аргумент не є цілим числом"
 
@@ -7097,6 +6875,7 @@ msgstr ""
 msgid "The toolbar does not contain the specified item"
 msgstr "Панель інструментів не містить заданого пункту"
 
+#: src/modules/userlist/libkviuserlist.cpp:45
 #: src/modules/window/libkviwindow.cpp:78
 #: src/modules/window/libkviwindow.cpp:730
 #: src/modules/window/libkviwindow.cpp:1224
@@ -7104,7 +6883,6 @@ msgstr "Панель інструментів не містить заданог
 #: src/modules/window/libkviwindow.cpp:1321
 #: src/modules/window/libkviwindow.cpp:1394
 #: src/modules/window/libkviwindow.cpp:1552
-#: src/modules/userlist/libkviuserlist.cpp:45
 #, c-format
 msgid "The window with id '%s' does not exist"
 msgstr "Вікно з ID '%s' не існує"
@@ -7142,7 +6920,7 @@ msgid ""
 "version required is %1 while this theme engine has version %2)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1002
+#: src/kvirc/kernel/KviIrcConnection.cpp:1009
 #, fuzzy
 msgid ""
 "This can happen if you use a broken bouncer, the IRC server masks your IP/"
@@ -7220,10 +6998,6 @@ msgstr "Це вікно не пов'язане з IRC контекстом"
 msgid "This window has no logging capabilities"
 msgstr "Це вікно не має можливості журналювання"
 
-#: src/kvilib/locale/KviLocale.cpp:826
-msgid "Thumbnail Previews"
-msgstr "Попередній перегляд ескізів"
-
 #: src/kvirc/ui/KviMdiManager.cpp:268
 msgid "Tile Met&hod"
 msgstr "Спосіб розташування"
@@ -7255,8 +7029,8 @@ msgstr "Тема каналу \r!c\r%Q\r - %Q"
 msgid "Tip: %Q"
 msgstr "Список: %Q"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:436 src/kvirc/ui/KviToolBar.cpp:89
-#: src/kvirc/ui/KviMenuBar.cpp:169
+#: src/kvirc/ui/KviMenuBar.cpp:169 src/kvirc/ui/KviToolBar.cpp:89
+#: src/kvirc/kernel/KviDefaultScript.cpp:436
 msgid "Toolbars"
 msgstr "Панелі інструментів"
 
@@ -7313,7 +7087,7 @@ msgstr "Усього з'єднань: %d"
 msgid "Transparent"
 msgstr "Прозорість"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3075
+#: src/kvilib/ext/avdevice/videodevice.cpp:3078
 #, fuzzy
 msgid "Treble"
 msgstr "відповідь"
@@ -7377,7 +7151,7 @@ msgstr "Не можу визначити використовуваний шиф
 msgid "Unable to determine output encoding (Hex or Base64)."
 msgstr "Не можу визначити використовуваний шифр"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1290
+#: src/kvirc/kernel/KviIrcSocket.cpp:1306
 msgid "Unable to determine the current cipher"
 msgstr "Не можу визначити використовуваний шифр"
 
@@ -7387,11 +7161,11 @@ msgstr "Не можу визначити використовуваний шиф
 msgid "Unable to find a window with the specified window id"
 msgstr ""
 
-#: src/kvirc/ui/KviIrcView_events.cpp:866
+#: src/kvirc/ui/KviIrcView_events.cpp:870
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr "Не можу знайти хост: Хост замаскований"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:867
+#: src/kvirc/ui/KviIrcView_events.cpp:871
 msgid "Unable to look it up hostname: Unknown host"
 msgstr "Не можу знайти хост: Невідомий хост"
 
@@ -7417,12 +7191,12 @@ msgstr ""
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr "Не можу обробити запит, що надійшов: модуль DCC ушкоджений"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1069
-#: src/kvirc/kernel/KviIrcConnection.cpp:1096
+#: src/kvirc/kernel/KviIrcConnection.cpp:1076
+#: src/kvirc/kernel/KviIrcConnection.cpp:1103
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 msgstr "Не можу визначити, який IP відповідає мені по даним IRC сервера: %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1093
+#: src/kvirc/kernel/KviIrcConnection.cpp:1100
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
 "previously resolved %Q"
@@ -7478,9 +7252,9 @@ msgstr "Несподіваний символ"
 msgid "Unhandled server reply"
 msgstr "Відповідь сервера"
 
-#: src/modules/upnp/RootService.cpp:172 src/kvirc/kernel/KviTheme.cpp:110
-#: src/kvirc/ui/KviTopicWidget.cpp:158 src/kvilib/net/KviSSL.cpp:757
+#: src/modules/upnp/RootService.cpp:172 src/kvilib/net/KviSSL.cpp:757
 #: src/kvilib/net/KviSSL.cpp:787 src/kvilib/net/KviSSL.cpp:810
+#: src/kvirc/ui/KviTopicWidget.cpp:158 src/kvirc/kernel/KviTheme.cpp:110
 msgid "Unknown"
 msgstr "Невідомий"
 
@@ -7516,7 +7290,7 @@ msgstr "Хост не знайдений"
 msgid "Unknown operator"
 msgstr "Невідомий оператор"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:895
+#: src/kvirc/ui/KviIrcView_events.cpp:899
 msgid "Unknown server<br>"
 msgstr "Невідомий сервер<br>"
 
@@ -7558,12 +7332,12 @@ msgstr "Опція беззнакове ціле (unsigned integer constant)"
 msgid "Unspecified"
 msgstr "Не зазначено"
 
-#: src/modules/system/libkvisystem.cpp:589
+#: src/modules/system/libkvisystem.cpp:611
 #, fuzzy, c-format
 msgid "Unsupported DBus call return type %s"
 msgstr "Непідтримуваний тип аргументу DCOP %s"
 
-#: src/modules/system/libkvisystem.cpp:538
+#: src/modules/system/libkvisystem.cpp:560
 #, fuzzy, c-format
 msgid "Unsupported DBus parameter type %s"
 msgstr "Непідтримуваний тип аргументу DCOP %s"
@@ -7584,7 +7358,7 @@ msgstr "Непідтримуваний формат картинки"
 msgid "Unsupported key length"
 msgstr "Непідтримувана довжина ключа"
 
-#: src/modules/file/libkvifile.cpp:1500 src/modules/str/libkvistr.cpp:1457
+#: src/modules/str/libkvistr.cpp:1457 src/modules/file/libkvifile.cpp:1500
 #, fuzzy
 msgid "Unsupported message digest."
 msgstr "Непідтримуваний формат картинки"
@@ -7624,7 +7398,7 @@ msgstr "Замінити файл"
 msgid "Update missing"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1947
+#: src/kvirc/kernel/KviIrcConnection.cpp:1954
 msgid "Updating away state for channel %Q"
 msgstr "Обновляю away списки для каналу %Q"
 
@@ -7691,20 +7465,20 @@ msgstr "Зміна режиму користувач-оператор"
 msgid "Users"
 msgstr "Користувачі"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1432
+#: src/kvirc/kernel/KviIrcConnection.cpp:1439
 msgid "Using '%1' as nickname"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:678
+#: src/kvirc/kernel/KviIrcSocket.cpp:694
 msgid "Using HTTP protocol."
 msgstr "Використається протокол HTTP."
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:727
+#: src/kvirc/kernel/KviIrcSocket.cpp:743
 #, fuzzy
 msgid "Using SOCKSv4 protocol."
 msgstr "Використається протокол SOCKSV4."
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:807
+#: src/kvirc/kernel/KviIrcSocket.cpp:823
 #, fuzzy
 msgid "Using SOCKSv5 protocol."
 msgstr "Використається протокол SOCKSV5."
@@ -7723,7 +7497,7 @@ msgstr "Використається кеширований IP адреса пр
 msgid "Using cached server IP address (%s)"
 msgstr "Використається кеширована адреса сервера (%s)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1471
+#: src/kvirc/kernel/KviIrcConnection.cpp:1478
 #, fuzzy
 msgid "Using connection specific password (%Q)"
 msgstr "Використовуване специфічне ім'я для мережі (%Q)"
@@ -7732,16 +7506,16 @@ msgstr "Використовуване специфічне ім'я для ме�
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
 msgstr "Використання фільтра IRC-протоколу: \"%Q\""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1489
+#: src/kvirc/kernel/KviIrcConnection.cpp:1496
 #, fuzzy
 msgid "Using network specific password (%Q)"
 msgstr "Використовуване специфічне ім'я для мережі (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1452
+#: src/kvirc/kernel/KviIrcConnection.cpp:1459
 msgid "Using network specific real name (%Q)"
 msgstr "Використовуване специфічне реальне ім'я для мережі (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1403
+#: src/kvirc/kernel/KviIrcConnection.cpp:1410
 msgid "Using network specific username (%Q)"
 msgstr "Використовуване специфічне ім'я для мережі (%Q)"
 
@@ -7749,16 +7523,16 @@ msgstr "Використовуване специфічне ім'я для ме�
 msgid "Using server <b>%1</b>"
 msgstr "Використається сервер <b>%1</b>"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1480
+#: src/kvirc/kernel/KviIrcConnection.cpp:1487
 #, fuzzy
 msgid "Using server specific password (%Q)"
 msgstr "Використовуване специфічне ім'я для сервера (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1446
+#: src/kvirc/kernel/KviIrcConnection.cpp:1453
 msgid "Using server specific real name (%Q)"
 msgstr "Використовуване специфічне реальне ім'я для сервера (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1397
+#: src/kvirc/kernel/KviIrcConnection.cpp:1404
 msgid "Using server specific username (%Q)"
 msgstr "Використовуване специфічне ім'я для сервера (%Q)"
 
@@ -7778,12 +7552,12 @@ msgstr "Очікується змінна або ідентифікатор"
 msgid "Verbose/Debug"
 msgstr "Багатослівний/Налагодження"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3090
+#: src/kvilib/ext/avdevice/videodevice.cpp:3093
 msgid "Vertical Center"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:193
-#: src/kvilib/ext/avdevice/videodevice.cpp:3088
+#: src/kvilib/ext/avdevice/videodevice.cpp:192
+#: src/kvilib/ext/avdevice/videodevice.cpp:3091
 msgid "Vertical Flip"
 msgstr ""
 
@@ -7807,7 +7581,7 @@ msgstr "Показати список URL"
 msgid "Voiced users"
 msgstr "Войси"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3072
+#: src/kvilib/ext/avdevice/videodevice.cpp:3075
 #, fuzzy
 msgid "Volume"
 msgstr "Значення"
@@ -7819,13 +7593,13 @@ msgstr "WALLOPS від \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:897
 #, fuzzy
 msgid ""
-"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
-"%c: %Q"
+"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+"%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
+"name%c: %Q"
 msgstr ""
-"Відповідь WHO від %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %c Канал %c: \r!c\r%Q\r, %"
-"c Сервер %c: \r!s\r%Q\r, %c Стрибків %c: %d, %c Прапори %c: %Q, %c Відійшов %"
-"c: %Q,  %c Реальне ім'я %c: %Q"
+"Відповідь WHO від %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %c Канал %c: \r!c\r%Q\r, "
+"%c Сервер %c: \r!s\r%Q\r, %c Стрибків %c: %d, %c Прапори %c: %Q, %c Відійшов "
+"%c: %Q,  %c Реальне ім'я %c: %Q"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:929
 msgid "Wallops (+w)"
@@ -7847,11 +7621,11 @@ msgstr ""
 "Попередження: Не кореневий зв'язок був посланий сервером, статистика може "
 "бути не дійсної."
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:823
+#: src/kvirc/kernel/KviIrcSocket.cpp:839
 msgid "We can accept auth method 0 (no auth)"
 msgstr "Неприйнятний метод аутентифікації 0 (без аутентифікації)"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:831
+#: src/kvirc/kernel/KviIrcSocket.cpp:847
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
 msgstr ""
 "Неприйнятний метод аутентифікації 0 (без аутентифікації) або 2 (логин/пароль)"
@@ -7860,11 +7634,11 @@ msgstr ""
 msgid "Welcome to KVIrc"
 msgstr "Ласкаво просимо в KVIrc"
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:3094
+#: src/kvilib/ext/avdevice/videodevice.cpp:3097
 msgid "White Balance Temperature"
 msgstr ""
 
-#: src/kvilib/ext/avdevice/videodevice.cpp:169
+#: src/kvilib/ext/avdevice/videodevice.cpp:168
 msgid "Whiteness"
 msgstr ""
 
@@ -7953,10 +7727,10 @@ msgstr "Записую дані"
 msgid "Writing package header"
 msgstr "Записую заголовок пакета"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:254
-#: src/kvirc/ui/KviStatusBar.cpp:551
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
+#: src/kvirc/ui/KviStatusBar.cpp:551 src/kvirc/ui/KviInput.cpp:254
+#: src/kvirc/kernel/KviApplication.cpp:1019
+#: src/kvirc/kernel/KviApplication.cpp:1092
 msgid "Yes"
 msgstr "Так"
 
@@ -7999,8 +7773,8 @@ msgstr "Вас кікнули \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgid "You have been paged by"
 msgstr "Ви отримали повідомлення від"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1641
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1545
+#: src/kvirc/kernel/KviIrcConnection.cpp:1648
 msgid "You have changed your nickname to %Q"
 msgstr "Ви змінили свій Нік на %Q"
 
@@ -8055,7 +7829,7 @@ msgstr ""
 "передачу великого повідомлення,<br>не відредагованого після вставки з буфера "
 "обміну<br><br>Ви хочете відіслати повідомлення?"
 
-#: src/kvirc/ui/KviIrcView_events.cpp:937
+#: src/kvirc/ui/KviIrcView_events.cpp:941
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Ви не оператор: Ви не можете змінювати режими каналу"
 
@@ -8139,8 +7913,8 @@ msgstr "[Включення статусу Відійшов]: %Q"
 msgid "[IDENT]: %s"
 msgstr "[СОКЕТ]: %s"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:776
-#: src/kvirc/kernel/KviIrcConnection.cpp:805
+#: src/kvirc/kernel/KviIrcConnection.cpp:783
+#: src/kvirc/kernel/KviIrcConnection.cpp:812
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr "[ПОПЕРЕДЖЕННЯ З'ЄДНАННЯ]: Повідомлення сокета обрізане до 512 байт."
 
@@ -8152,27 +7926,27 @@ msgstr "[Вихід зі статусу Відійшов після %u д %u г�
 msgid "[Leaving away status]: %Q"
 msgstr "[Вихід зі статусу Відійшов]: %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:214
+#: src/kvirc/kernel/KviIrcSocket.cpp:230
 msgid "[PROXY ERROR]: %Q"
 msgstr "[ПОМИЛКА ПРОКСІ]: %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:203
+#: src/kvirc/kernel/KviIrcSocket.cpp:219
 msgid "[PROXY]: %Q"
 msgstr "[ПРОКСІ]: %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:226
+#: src/kvirc/kernel/KviIrcSocket.cpp:242
 msgid "[SOCKET ERROR]: %Q"
 msgstr "[ПОМИЛКА СОКЕТА]: %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:231
+#: src/kvirc/kernel/KviIrcSocket.cpp:247
 msgid "[SOCKET WARNING]: %Q"
 msgstr "[ПОПЕРЕДЖЕННЯ СОКЕТА]: %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:221
+#: src/kvirc/kernel/KviIrcSocket.cpp:237
 msgid "[SOCKET]: %Q"
 msgstr "[СОКЕТ]: %Q"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:193
+#: src/kvirc/kernel/KviIrcSocket.cpp:209
 msgid "[SSL ERROR]: %Q"
 msgstr "[ПОМИЛКА SSL]: %Q"
 
@@ -8254,7 +8028,7 @@ msgstr "[SSL]:  Версія: %c%d"
 msgid "[SSL]:  Version: %c%s"
 msgstr "[SSL]: Версія: %c%s"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:188
+#: src/kvirc/kernel/KviIrcSocket.cpp:204
 msgid "[SSL]: %Q"
 msgstr "[SSL]: %Q"
 
@@ -8295,7 +8069,7 @@ msgstr "активний користувач"
 msgid "active users"
 msgstr "активні користувачі"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1304
+#: src/kvirc/kernel/KviIrcConnection.cpp:1311
 msgid "alternative nickname specified in options"
 msgstr ""
 
@@ -8315,9 +8089,9 @@ msgstr "говорять"
 msgid "autojoining"
 msgstr "автоматичний вхід"
 
+#: src/kvirc/ui/KviIrcToolBar.cpp:374 src/kvirc/ui/KviIrcToolBar.cpp:382
 #: src/kvirc/ui/KviConsoleWindow.cpp:1128
-#: src/kvirc/ui/KviConsoleWindow.cpp:1135 src/kvirc/ui/KviIrcToolBar.cpp:374
-#: src/kvirc/ui/KviIrcToolBar.cpp:382
+#: src/kvirc/ui/KviConsoleWindow.cpp:1135
 msgid "away"
 msgstr "відійшов"
 
@@ -8329,12 +8103,12 @@ msgstr "список виключень із банів"
 msgid "ban list"
 msgstr "бан-ліст"
 
-#: src/modules/rijndael/libkvirijndael.cpp:658
-#: src/modules/rijndael/libkvirijndael.cpp:668
-#: src/modules/rijndael/libkvirijndael.cpp:678
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:540
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:550
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:560
+#: src/modules/rijndael/libkvirijndael.cpp:658
+#: src/modules/rijndael/libkvirijndael.cpp:668
+#: src/modules/rijndael/libkvirijndael.cpp:678
 msgid "base64"
 msgstr "base64"
 
@@ -8386,7 +8160,7 @@ msgstr ""
 msgid "connection"
 msgstr "підключення"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1424
+#: src/kvirc/kernel/KviIrcConnection.cpp:1431
 #, fuzzy
 msgid "connection specific"
 msgstr "підключення"
@@ -8415,12 +8189,12 @@ msgstr "стат-оператор"
 msgid "half-operators"
 msgstr "стат-оператори"
 
-#: src/modules/rijndael/libkvirijndael.cpp:628
-#: src/modules/rijndael/libkvirijndael.cpp:638
-#: src/modules/rijndael/libkvirijndael.cpp:648
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:510
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:520
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:530
+#: src/modules/rijndael/libkvirijndael.cpp:628
+#: src/modules/rijndael/libkvirijndael.cpp:638
+#: src/modules/rijndael/libkvirijndael.cpp:648
 msgid "hexadecimal"
 msgstr "шестнадцатеричний"
 
@@ -8494,11 +8268,11 @@ msgstr "Помилка звертання до listen()"
 msgid "n: Recipient for nick changes"
 msgstr "n: Отримувач відомостей про зміни ніка"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1275
+#: src/kvirc/kernel/KviIrcConnection.cpp:1282
 msgid "network specific alternative option"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1261
+#: src/kvirc/kernel/KviIrcConnection.cpp:1268
 #, fuzzy
 msgid "network specific option"
 msgstr "Інформація сервера"
@@ -8532,7 +8306,7 @@ msgstr "пікселей"
 msgid "possible watch list desync"
 msgstr "можлива розсинхрузування списку спостереження"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1293
+#: src/kvirc/kernel/KviIrcConnection.cpp:1300
 msgid "primary nickname specified in options"
 msgstr ""
 
@@ -8540,11 +8314,11 @@ msgstr ""
 msgid "private"
 msgstr "приват"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1213
+#: src/kvirc/kernel/KviIrcConnection.cpp:1220
 msgid "profile specific alternative option"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1190
+#: src/kvirc/kernel/KviIrcConnection.cpp:1197
 msgid "profile specific option"
 msgstr ""
 
@@ -8552,7 +8326,7 @@ msgstr ""
 msgid "protected/admin list"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcLink.cpp:387
+#: src/kvirc/kernel/KviIrcLink.cpp:396
 msgid "proxy host"
 msgstr "адреса проксі"
 
@@ -8576,7 +8350,7 @@ msgstr ""
 "r: Користувач обмежений у з'єднанні (або отримувач повідомлень відкидає "
 "ботів)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1364
+#: src/kvirc/kernel/KviIrcConnection.cpp:1371
 #, fuzzy
 msgid "random nickname"
 msgstr "Змінити Нік"
@@ -8611,7 +8385,7 @@ msgstr "s: Отримувач повідомлень сервера"
 msgid "said something recently"
 msgstr "недавно говорив"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1315
+#: src/kvirc/kernel/KviIrcConnection.cpp:1322
 msgid "second alternative nickname specified in options"
 msgstr ""
 
@@ -8619,12 +8393,12 @@ msgstr ""
 msgid "secure connection"
 msgstr "безпечне підключення"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1231
+#: src/kvirc/kernel/KviIrcConnection.cpp:1238
 #, fuzzy
 msgid "server specific"
 msgstr "Статистика сервера"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1245
+#: src/kvirc/kernel/KviIrcConnection.cpp:1252
 msgid "server specific alternative option"
 msgstr ""
 
@@ -8632,7 +8406,7 @@ msgstr ""
 msgid "spam filter list"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1326
+#: src/kvirc/kernel/KviIrcConnection.cpp:1333
 msgid "third alternative nickname specified in options"
 msgstr ""
 
@@ -8799,14 +8573,23 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "&Add Raw Event..."
 #~ msgstr "&Додати заготівлю події..."
 
+#~ msgid "&Add to Custom Colors"
+#~ msgstr "&Додати до користувальницьких квітів"
+
 #~ msgid "&Add..."
 #~ msgstr "&Додати..."
 
 #~ msgid "&Administrator"
 #~ msgstr "Адміністратор"
 
+#~ msgid "&Automatic Preview"
+#~ msgstr "&Автоматичний предпросмотр"
+
 #~ msgid "&Ban"
 #~ msgstr "&Бан"
+
+#~ msgid "&Basic colors"
+#~ msgstr "&Базові кольори"
 
 #~ msgid "&Clear"
 #~ msgstr "&Очистити"
@@ -8817,8 +8600,14 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "&Control"
 #~ msgstr "Керування"
 
+#~ msgid "&Custom colors"
+#~ msgstr "&Користувальницькі кольори"
+
 #~ msgid "&Deadministrator"
 #~ msgstr "Зняти прапор адміністратора"
+
+#~ msgid "&Define Custom Colors >>"
+#~ msgstr "&Визначите користувальницькі кольори >>"
 
 #~ msgid "&Dehalfop"
 #~ msgstr "Зняти прапор стат-оператора"
@@ -8837,6 +8626,9 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "&Edit"
 #~ msgstr "&Редагувати"
+
+#~ msgid "&Edit Bookmarks"
+#~ msgstr "&Редагувати закладки"
 
 #~ msgid "&Edit..."
 #~ msgstr "&Редагувати..."
@@ -8859,11 +8651,20 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "&Export selected To..."
 #~ msgstr "&Експортувати виділене в..."
 
+#~ msgid "&Filter:"
+#~ msgstr "&Фільтр:"
+
 #~ msgid "&Find Next"
 #~ msgstr "Знайти &наступний"
 
 #~ msgid "&Findnext"
 #~ msgstr "Знайти &наступний"
+
+#~ msgid "&Font"
+#~ msgstr "&Шрифт"
+
+#~ msgid "&Green"
+#~ msgstr "&Зелений"
 
 #~ msgid "&Halfop"
 #~ msgstr "Стат-оператор"
@@ -8895,6 +8696,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "&Load"
 #~ msgstr "&Завантажити"
 
+#~ msgid "&Location:"
+#~ msgstr "&Розташування:"
+
 #~ msgid "&Module"
 #~ msgstr "&Модуль"
 
@@ -8916,8 +8720,14 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "&Paste Below"
 #~ msgstr "&Вставити знизу"
 
+#~ msgid "&Preview"
+#~ msgstr "&Попередній перегляд"
+
 #~ msgid "&Query"
 #~ msgstr "Приват"
+
+#~ msgid "&Red"
+#~ msgstr "&Червоний"
 
 #~ msgid "&Registration"
 #~ msgstr "Реєстрація"
@@ -8939,6 +8749,12 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "&Save Configuration"
 #~ msgstr "&Зберегти налаштування"
+
+#~ msgid "&Size"
+#~ msgstr "&Розмір"
+
+#~ msgid "&Underline"
+#~ msgstr "&Підкреслення"
 
 #~ msgid "&Undock"
 #~ msgstr "&Відокремити"
@@ -9185,6 +9001,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Add Alias"
 #~ msgstr "Додати аліас"
 
+#~ msgid "Add Bookmark"
+#~ msgstr "Додати закладку"
+
 #~ msgid "Add Namespace"
 #~ msgstr "Додати простір імен"
 
@@ -9216,6 +9035,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgstr ""
 #~ "Ім'я аліаса може містити тільки цифри, букви, нижні підкреслення й '::' "
 #~ "як роздільник просторів імен"
+
+#~ msgid "All Files"
+#~ msgstr "Всі файли"
 
 #~ msgid "All Properties..."
 #~ msgstr "Всі властивості..."
@@ -9287,6 +9109,12 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Bind failure"
 #~ msgstr "Помилка зв'язування"
 
+#~ msgid "Bl&ue"
+#~ msgstr "&Синій"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Закладки"
+
 #~ msgid "Bottom"
 #~ msgstr "Знизу"
 
@@ -9311,6 +9139,15 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Broken text parameter: assuming empty string"
 #~ msgstr "Битий аргумент тексту: очевидно порожній рядок"
+
+#~ msgid "By Date"
+#~ msgstr "По даті"
+
+#~ msgid "By Name"
+#~ msgstr "По імені"
+
+#~ msgid "By Size"
+#~ msgstr "По розмірі"
 
 #~ msgid "Call to undefined command '%Q'"
 #~ msgstr "Викликувана команда '%Q' не визначена"
@@ -9400,6 +9237,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
 #~ "Не можу знайти об'єкт функції $%Q::%Q для об'єкта з ім'ям \"%Q\" класу %Q"
+
+#~ msgid "Case Insensitive"
+#~ msgstr "Не враховувати регістр"
 
 #~ msgid "Category:"
 #~ msgstr "Категорія:"
@@ -9611,6 +9451,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Description:"
 #~ msgstr "Опис:"
 
+#~ msgid "Desktop"
+#~ msgstr "Робітник стіл"
+
 #, fuzzy
 #~ msgid "Destination  parameter is not an object"
 #~ msgstr "Параметр Widget не є об'єктом"
@@ -9625,6 +9468,12 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Detached"
 #~ msgstr "Відділено"
+
+#~ msgid "Detailed View"
+#~ msgstr "Детальне подання"
+
+#~ msgid "Directories First"
+#~ msgstr "Каталоги на початку"
 
 #~ msgid "Do you really want to delete toolbar \"%1\" ?"
 #~ msgstr "Ви дійсно хочете видалити панель інструментів \"%1\" ?"
@@ -9670,6 +9519,9 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Edit the raw event handler name."
 #~ msgstr "Редагування імені оброблювача події."
+
+#~ msgid "Effects"
+#~ msgstr "Ефекти"
 
 #~ msgid "Empty filename string"
 #~ msgstr "Порожнє ім'я файлу"
@@ -9839,8 +9691,17 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Flat"
 #~ msgstr "Плоский"
 
+#~ msgid "Floppy"
+#~ msgstr "Дисковід"
+
 #~ msgid "Flush Log File"
 #~ msgstr "Записати дані в логфайл негайно"
+
+#~ msgid "Font st&yle"
+#~ msgstr "&Стиль шрифту"
+
+#~ msgid "Forward"
+#~ msgstr "Уперед"
 
 #~ msgid ""
 #~ "Found 'break' label where a 'case','match','regexp' or 'default' label "
@@ -9904,8 +9765,8 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgstr "Знайдений символ '%q' (унікод %x) там де очікувалася інструкція"
 
 #~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
-#~ "s\" for the command syntax"
+#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help "
+#~ "%s\" for the command syntax"
 #~ msgstr ""
 #~ "Знайдений символ '%q' (унікод 0x%x) де очікувався '%c': дивися \"/help %s"
 #~ "\" для допомоги по синтаксисі команди"
@@ -9978,6 +9839,9 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Hide Advanced"
 #~ msgstr "Сховати додаткові настроювання"
+
+#~ msgid "Home Directory"
+#~ msgstr "Домашній каталог"
 
 #~ msgid "Hostname %d: %Q"
 #~ msgstr "Адреса %d: %Q"
@@ -10213,6 +10077,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Lag meter was not enabled"
 #~ msgstr "Вимір затримки не включене"
 
+#~ msgid "Large Icons"
+#~ msgstr "Більші іконки"
+
 #~ msgid "Left"
 #~ msgstr "Ліворуч"
 
@@ -10349,8 +10216,8 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Module function call failed: can't load the module '%Q': %Q"
 #~ msgstr ""
-#~ "Помилка звертання до функціонального модуля: не можу завантажити модуль '%"
-#~ "Q': %Q"
+#~ "Помилка звертання до функціонального модуля: не можу завантажити модуль "
+#~ "'%Q': %Q"
 
 #~ msgid "Module function call failed: can't load the module 'str'"
 #~ msgstr ""
@@ -10418,6 +10285,15 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "New Action"
 #~ msgstr "Нова дія"
+
+#~ msgid "New Bookmark Folder..."
+#~ msgstr "Новий каталог закладок..."
+
+#~ msgid "New Directory"
+#~ msgstr "Новий каталог"
+
+#~ msgid "New Directory..."
+#~ msgstr "Новий каталог..."
 
 #~ msgid "New External Menu Above"
 #~ msgstr "Нове зовнішнє меню вгорі"
@@ -10630,6 +10506,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Objects have no extended scope variables"
 #~ msgstr "Об'єкт не має розширених значень"
 
+#~ msgid "Often used directories"
+#~ msgstr "Часто використовувані каталоги"
+
 #~ msgid "Ok, Let me try again..."
 #~ msgstr "Добре, давайте спробую ще раз..."
 
@@ -10716,6 +10595,10 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Other:"
 #~ msgstr "Інше:"
 
+#, fuzzy
+#~ msgid "Package saved successfully in "
+#~ msgstr "Пакет успішно збережено в"
+
 #~ msgid ""
 #~ "Parameter identifiers are forbidden in object scope (after the '->' "
 #~ "operator)"
@@ -10725,6 +10608,9 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Params:"
 #~ msgstr "Параметри:"
+
+#~ msgid "Parent Directory"
+#~ msgstr "Батьківський каталог"
 
 #~ msgid "Parent must be a widget object"
 #~ msgstr "Батько повинен бути widget-об'єктом"
@@ -10821,6 +10707,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Properties for Qt class %s"
 #~ msgstr "Властивості QT-класу %s"
 
+#~ msgid "Properties..."
+#~ msgstr "Властивості..."
+
 #~ msgid "Property"
 #~ msgstr "Властивості"
 
@@ -10883,6 +10772,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Registration Complete"
 #~ msgstr "Реєстрація завершена"
 
+#~ msgid "Reload"
+#~ msgstr "Обновити"
+
 #~ msgid "Remove Selected"
 #~ msgstr "&Видалити обране"
 
@@ -10918,6 +10810,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Restore from backup archive"
 #~ msgstr "Відновити з резервної копії"
 
+#~ msgid "Reverse"
+#~ msgstr "Інвертувати"
+
 #~ msgid "Reverse Chat with"
 #~ msgstr "Зворотний чат з"
 
@@ -10930,8 +10825,14 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Right operand didn't evaluate to a number"
 #~ msgstr "Правий операнд не визначений як число"
 
+#~ msgid "Sample"
+#~ msgstr "Зразок"
+
 #~ msgid "Say parse error: Broken command"
 #~ msgstr "Помилка граматичного розбору: Бита команда"
+
+#~ msgid "Scr&ipt"
+#~ msgstr "&Сценарій"
 
 #~ msgid "Script registration failed"
 #~ msgstr "Не вдалося зареєструвати скрипт"
@@ -10951,6 +10852,12 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Secure send to"
 #~ msgstr "Зворотна передача для"
 
+#~ msgid "Select Font"
+#~ msgstr "Вибір шрифту"
+
+#~ msgid "Select color"
+#~ msgstr "Вибір кольорів"
+
 #~ msgid "Send to"
 #~ msgstr "Відіслати"
 
@@ -10963,6 +10870,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Senseless empty switch command: fix the script"
 #~ msgstr "Безглузда порожня команда: виправте сценарій"
 
+#~ msgid "Separate Directories"
+#~ msgstr "Відокремити каталоги"
+
 #, fuzzy
 #~ msgid "Server %Q has a nickname: %Q"
 #~ msgstr "Сервер %Q має Нік: %Q"
@@ -10974,24 +10884,39 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Set as Default"
 #~ msgstr "Установити по мовчанню"
 
+#~ msgid "Short View"
+#~ msgstr "Коротке подання"
+
 #~ msgid "Show &Dock Icon"
 #~ msgstr "Показати &іконку в треї"
 
 #~ msgid "Show Help"
 #~ msgstr "Показати допомога"
 
+#~ msgid "Show Hidden Files"
+#~ msgstr "Показувати сховані файли"
+
+#~ msgid "Show Preview"
+#~ msgstr "Попередній перегляд"
+
+#~ msgid "Show Quick Access Navigation Panel"
+#~ msgstr "Показати панель швидкого доступу"
+
 #~ msgid "Skipping nested terminator character %q"
 #~ msgstr "Пропуск вкладеного символу закінчення %q"
 
 #~ msgid ""
-#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::%"
-#~ "Q'"
+#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::"
+#~ "%Q'"
 #~ msgstr ""
-#~ "Слот цільового об'єкта зруйнувався при випущенні сигналу '%Q' з об'єкта '%"
-#~ "Q:: %Q'"
+#~ "Слот цільового об'єкта зруйнувався при випущенні сигналу '%Q' з об'єкта "
+#~ "'%Q:: %Q'"
 
 #~ msgid "Small Icon:"
 #~ msgstr "Маленька іконка:"
+
+#~ msgid "Small Icons"
+#~ msgstr "Маленькі іконки"
 
 #~ msgid "Smart"
 #~ msgstr "Швидко"
@@ -11000,6 +10925,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ "Something really weird is happening: the server is refusing all the login "
 #~ "nicknames..."
 #~ msgstr "Відбувається що те дивне: сервер відхиляє вхід з усіма ніками..."
+
+#~ msgid "Sorting"
+#~ msgstr "Сортування"
 
 #, fuzzy
 #~ msgid "Source is not an object"
@@ -11061,6 +10989,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgstr ""
 #~ "Зайва крапка ('.'), символ або недійсне наступне ім'я команди модуля"
 
+#~ msgid "Stri&keout"
+#~ msgstr "&Розрядка"
+
 #~ msgid "Submenu"
 #~ msgstr "Підміню"
 
@@ -11112,6 +11043,9 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Taskbar"
 #~ msgstr "Панель завдань(панель списку вікон)"
+
+#~ msgid "Temporary Files"
+#~ msgstr "Тимчасові файли"
 
 #~ msgid "Test"
 #~ msgstr "Тест"
@@ -11520,6 +11454,9 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "This window is not associated to an IRC context"
 #~ msgstr "Це вікно не асоційоване з контекстом IRC"
+
+#~ msgid "Thumbnail Previews"
+#~ msgstr "Попередній перегляд ескізів"
 
 #~ msgid "Timer '%Q' has a broken callback handler: killing the timer"
 #~ msgstr "Таймер '%Q' має бите повернення з оброблювача: таймер убитий"

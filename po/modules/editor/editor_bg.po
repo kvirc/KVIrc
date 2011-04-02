@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
@@ -89,6 +89,10 @@ msgstr ""
 #: src/modules/eventeditor/EventEditorWindow.cpp:217
 #: src/modules/raweditor/RawEditorWindow.cpp:156
 msgid "&Enable Handler"
+msgstr ""
+
+#: src/modules/codetester/CodeTesterWindow.cpp:57
+msgid "&Execute"
 msgstr ""
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:104
@@ -961,6 +965,10 @@ msgstr ""
 msgid "OverWrite Current Popup"
 msgstr ""
 
+#: src/modules/codetester/CodeTesterWindow.cpp:61
+msgid "Params:"
+msgstr ""
+
 #: src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Paste Above"
 msgstr ""
@@ -1125,6 +1133,10 @@ msgstr ""
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
+msgstr ""
+
+#: src/modules/codetester/CodeTesterWindow.cpp:109
+msgid "Script Tester"
 msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90

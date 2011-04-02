@@ -8,130 +8,128 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/theme/PackThemeDialog.cpp:64
-#: src/modules/theme/PackThemeDialog.cpp:369
-#: src/modules/theme/PackThemeDialog.cpp:456
-#: src/modules/theme/PackThemeDialog.cpp:544
-#: src/modules/theme/PackThemeDialog.cpp:559
-#: src/modules/theme/PackThemeDialog.cpp:571
-msgid "Export Theme - KVIrc"
+#: src/modules/theme/SaveThemeDialog.cpp:64
+#: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/SaveThemeDialog.cpp:240
+#: src/modules/theme/SaveThemeDialog.cpp:277
+#: src/modules/theme/SaveThemeDialog.cpp:287
+#: src/modules/theme/SaveThemeDialog.cpp:297
+msgid "Save Current Theme - KVIrc"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:101
-#: src/modules/theme/SaveThemeDialog.cpp:88
-msgid "Welcome"
-msgstr ""
-
-#: src/modules/theme/PackThemeDialog.cpp:104
+#: src/modules/theme/SaveThemeDialog.cpp:77
 msgid ""
-"This procedure allows you to export the selected themes to a single package. "
-"It is useful when you want to distribute your themes to the public."
+"This procedure allows you to save the current theme settings to a single "
+"directory. It is useful if you want to apply other themes or play with the "
+"theme settings and later come back to this theme with a single click. It "
+"will also allow you to manually modify the theme settings and later export "
+"them to a distributable package."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:106
+#: src/modules/theme/SaveThemeDialog.cpp:79
 msgid ""
-"You will be asked to provide a package name, a description and, if you want, "
-"an icon/screenshot."
+"You will be asked to provide a theme name, a description and, if you want, a "
+"screenshot."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:141
-msgid "Theme Data"
+#: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
+msgid "Welcome"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:142
+#: src/modules/theme/SaveThemeDialog.cpp:100
 msgid ""
-"This is the information list for the themes you're packaging. If it looks OK "
-"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
-"themes first."
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:161
-msgid "Your name here"
+#: src/modules/theme/SaveThemeDialog.cpp:106
+msgid "Theme Name:"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:163
-msgid "Put a package description here..."
-msgstr ""
-
-#: src/modules/theme/PackThemeDialog.cpp:256
-msgid "Package Information"
-msgstr ""
-
-#: src/modules/theme/PackThemeDialog.cpp:257
-msgid ""
-"Here you need to provide information about you (the packager) and a short "
-"description of the package you're creating."
-msgstr ""
-
-#: src/modules/theme/PackThemeDialog.cpp:263
-msgid "Package Name:"
-msgstr ""
-
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:290
-msgid "Package Author:"
+#: src/modules/theme/SaveThemeDialog.cpp:134
+msgid "Theme Author:"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:328
-msgid "Icon/Screenshot"
+#: src/modules/theme/SaveThemeDialog.cpp:145
+msgid "Theme Information"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:329
+#: src/modules/theme/SaveThemeDialog.cpp:157
 msgid ""
-"Here you can choose the image that will appear in the installation dialog "
-"for your theme package. It can be an icon, a logo or a screenshot and it "
-"should be not larger than 300x225. If you don't provide an image a simple "
-"default icon will be used at installation stage."
+"Here you can either choose a screenshot image from disk or make one now. The "
+"screenshot will be displayed in the tooltips of the theme management dialog "
+"and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:173
+msgid "Make Screenshot Now"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:180
+msgid "Screenshot"
+msgstr ""
+
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:380
-msgid "Package Path"
+#: src/modules/theme/SaveThemeDialog.cpp:224
+msgid "Acquire Screenshot - KVIrc"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:381
-msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+#: src/modules/theme/SaveThemeDialog.cpp:224
+msgid "Failed to make screenshot"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:392
-msgid "Finally hit the \"Finish\" button to complete the packaging operation."
+#: src/modules/theme/SaveThemeDialog.cpp:240
+msgid "You must choose a theme name!"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:457
-msgid "Failed to load the selected image: please fix it"
+#: src/modules/theme/SaveThemeDialog.cpp:277
+msgid "Unable to create theme directory."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:540
-#: src/modules/theme/PackThemeDialog.cpp:555
-msgid "Packaging failed"
+#: src/modules/theme/SaveThemeDialog.cpp:286
+msgid "Unable to save theme: %1"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:297
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:304
+msgid "Theme saved successfully to "
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:309
+msgid "Save Theme - KVIrc"
 msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:97
@@ -202,6 +200,27 @@ msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:387
 msgid "Open Theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
+msgid "KVIrc : Download Themes"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:73
+msgid "Error installing theme package: %Q"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:126
+#: src/modules/theme/libkvitheme.cpp:169
+msgid "The theme package '%Q' does not exist"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:233
+msgid "Choose a file to save the screenshot to"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:248
+msgid "Error making screenshot"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:47
@@ -277,113 +296,95 @@ msgstr ""
 msgid "Subdirectory"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:73
-msgid "Error installing theme package: %Q"
+#: src/modules/theme/PackThemeDialog.cpp:64
+#: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/PackThemeDialog.cpp:456
+#: src/modules/theme/PackThemeDialog.cpp:544
+#: src/modules/theme/PackThemeDialog.cpp:559
+#: src/modules/theme/PackThemeDialog.cpp:571
+msgid "Export Theme - KVIrc"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:126
-#: src/modules/theme/libkvitheme.cpp:169
-msgid "The theme package '%Q' does not exist"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:233
-msgid "Choose a file to save the screenshot to"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:248
-msgid "Error making screenshot"
-msgstr ""
-
-#: src/modules/theme/SaveThemeDialog.cpp:64
-#: src/modules/theme/SaveThemeDialog.cpp:205
-#: src/modules/theme/SaveThemeDialog.cpp:240
-#: src/modules/theme/SaveThemeDialog.cpp:277
-#: src/modules/theme/SaveThemeDialog.cpp:287
-#: src/modules/theme/SaveThemeDialog.cpp:297
-msgid "Save Current Theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/SaveThemeDialog.cpp:77
+#: src/modules/theme/PackThemeDialog.cpp:104
 msgid ""
-"This procedure allows you to save the current theme settings to a single "
-"directory. It is useful if you want to apply other themes or play with the "
-"theme settings and later come back to this theme with a single click. It "
-"will also allow you to manually modify the theme settings and later export "
-"them to a distributable package."
+"This procedure allows you to export the selected themes to a single package. "
+"It is useful when you want to distribute your themes to the public."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:79
+#: src/modules/theme/PackThemeDialog.cpp:106
 msgid ""
-"You will be asked to provide a theme name, a description and, if you want, a "
-"screenshot."
+"You will be asked to provide a package name, a description and, if you want, "
+"an icon/screenshot."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:100
+#: src/modules/theme/PackThemeDialog.cpp:141
+msgid "Theme Data"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:142
 msgid ""
-"Here you need to provide information about you (the author) and a short "
-"description of the theme you're creating."
+"This is the information list for the themes you're packaging. If it looks OK "
+"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"themes first."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:106
-msgid "Theme Name:"
+#: src/modules/theme/PackThemeDialog.cpp:161
+msgid "Your name here"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:134
-msgid "Theme Author:"
+#: src/modules/theme/PackThemeDialog.cpp:163
+msgid "Put a package description here..."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:145
-msgid "Theme Information"
+#: src/modules/theme/PackThemeDialog.cpp:256
+msgid "Package Information"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:157
+#: src/modules/theme/PackThemeDialog.cpp:257
 msgid ""
-"Here you can either choose a screenshot image from disk or make one now. The "
-"screenshot will be displayed in the tooltips of the theme management dialog "
-"and will be also visible in the package installation dialog if you will "
-"export the theme to a distributable package."
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:173
-msgid "Make Screenshot Now"
+#: src/modules/theme/PackThemeDialog.cpp:263
+msgid "Package Name:"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:180
-msgid "Screenshot"
+#: src/modules/theme/PackThemeDialog.cpp:290
+msgid "Package Author:"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Acquire Screenshot - KVIrc"
+#: src/modules/theme/PackThemeDialog.cpp:328
+msgid "Icon/Screenshot"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Failed to make screenshot"
+#: src/modules/theme/PackThemeDialog.cpp:329
+msgid ""
+"Here you can choose the image that will appear in the installation dialog "
+"for your theme package. It can be an icon, a logo or a screenshot and it "
+"should be not larger than 300x225. If you don't provide an image a simple "
+"default icon will be used at installation stage."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:240
-msgid "You must choose a theme name!"
+#: src/modules/theme/PackThemeDialog.cpp:380
+msgid "Package Path"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:277
-msgid "Unable to create theme directory."
+#: src/modules/theme/PackThemeDialog.cpp:381
+msgid ""
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:286
-msgid "Unable to save theme: %1"
+#: src/modules/theme/PackThemeDialog.cpp:392
+msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:297
-msgid "Failed to load the selected screenshot image: please fix it"
+#: src/modules/theme/PackThemeDialog.cpp:457
+msgid "Failed to load the selected image: please fix it"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:304
-msgid "Theme saved successfully to "
-msgstr ""
-
-#: src/modules/theme/SaveThemeDialog.cpp:309
-msgid "Save Theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-msgid "KVIrc : Download Themes"
+#: src/modules/theme/PackThemeDialog.cpp:540
+#: src/modules/theme/PackThemeDialog.cpp:555
+msgid "Packaging failed"
 msgstr ""

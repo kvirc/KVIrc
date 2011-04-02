@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2011-01-26 14:29+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -103,6 +103,10 @@ msgstr "Handler &deaktivieren"
 #: src/modules/raweditor/RawEditorWindow.cpp:156
 msgid "&Enable Handler"
 msgstr "Handler aktivi&eren"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:57
+msgid "&Execute"
+msgstr ""
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:104
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1047
@@ -1021,6 +1025,10 @@ msgstr "Überschreibe aktuelles Alias"
 msgid "OverWrite Current Popup"
 msgstr "Aktuelles Popup überschreiben"
 
+#: src/modules/codetester/CodeTesterWindow.cpp:61
+msgid "Params:"
+msgstr ""
+
 #: src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Paste Above"
 msgstr "Oberhalb einfügen"
@@ -1193,6 +1201,10 @@ msgstr "Zeile: %1 Spalte: %2"
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
 msgstr "Speichern fehlgeschlagen - KVIrc"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:109
+msgid "Script Tester"
+msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "Separator"

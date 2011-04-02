@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 04:05+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2011-03-18 17:17+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -70,8 +70,8 @@ msgstr "Cancella Temi Selezionati"
 msgid "Delete Theme - KVIrc"
 msgstr "Cancella Tema - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Descrizione:"
 
@@ -118,8 +118,8 @@ msgstr "Esporta Tema - KVIrc"
 msgid "Failed to apply the specified theme: %1"
 msgstr "Applicazione del tema specificato fallita: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Impossibile caricare l'immagine selezionata"
 
@@ -178,8 +178,8 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:381
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Qui devi scegliere il nome del file per il tema. Dovrebbe avere "
 "un'estensione *.%1."
@@ -200,8 +200,8 @@ msgstr ""
 "Qui devi inserire informazioni su di te (il pacchettizzatore) e una piccola "
 "descrizione del pacchetto che stai creando."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Premi il bottone \"Avanti\" per iniziare."
 
@@ -364,8 +364,8 @@ msgstr "Impossibile creare la directory del tema."
 msgid "Unable to save theme: %1"
 msgstr "Impossibile salvare il tema: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Versione:"
 
@@ -383,8 +383,8 @@ msgstr ""
 "Attenzione: il tema potrebbe essere incompatibile con questa versione di "
 "KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Benvenuto"
 

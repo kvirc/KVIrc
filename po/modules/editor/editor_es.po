@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"POT-Creation-Date: 2011-04-02 03:05+0200\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -96,6 +96,10 @@ msgstr "&Desactivar el manejador"
 #: src/modules/raweditor/RawEditorWindow.cpp:156
 msgid "&Enable Handler"
 msgstr "&Activar manejador"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:57
+msgid "&Execute"
+msgstr ""
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:104
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1047
@@ -1019,6 +1023,10 @@ msgstr "Sobreescribir el alias actual"
 msgid "OverWrite Current Popup"
 msgstr "Sobreescribir el alias actual"
 
+#: src/modules/codetester/CodeTesterWindow.cpp:61
+msgid "Params:"
+msgstr ""
+
 #: src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Paste Above"
 msgstr "Pegar arriba"
@@ -1194,6 +1202,10 @@ msgstr "Fila: %1 Col: %2"
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
 msgstr "Falló la Grabación - KVIrc"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:109
+msgid "Script Tester"
+msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "Separator"
