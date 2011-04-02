@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-04-02 06:01+0100\n"
 "PO-Revision-Date: 2010-08-13 21:25+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
 "Language-Team: Hungarian\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -48,8 +48,8 @@ msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q"
 "\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] éppen kirúgta \r!c\r%Q\r csatornáról \r!n\r%Q\r "
-"[%Q@\r!h\r%Q\r]. Indok: %Q"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] éppen kirúgta \r!c\r%Q\r csatornáról \r!n\r%Q\r [%"
+"Q@\r!h\r%Q\r]. Indok: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:290
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
@@ -97,8 +97,8 @@ msgstr ""
 msgid " (%1 hops)"
 msgstr " (%1 ugrás)"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1135 src/kvirc/ui/KviQueryWindow.cpp:444
-#: src/kvirc/ui/KviConsoleWindow.cpp:1140
+#: src/kvirc/ui/KviQueryWindow.cpp:444 src/kvirc/ui/KviConsoleWindow.cpp:1140
+#: src/kvirc/ui/KviChannelWindow.cpp:1135
 msgid " on "
 msgstr " - "
 
@@ -316,7 +316,7 @@ msgstr "%Q [%Q@%Q] eltávolította a csatorna kulcsát"
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] eltávolította a csatorna limitjét"
 
-#: src/modules/str/libkvistr.cpp:1391 src/modules/file/libkvifile.cpp:1436
+#: src/modules/file/libkvifile.cpp:1436 src/modules/str/libkvistr.cpp:1391
 #, fuzzy
 msgid "%Q algorithm is not supported"
 msgstr "A %Q algoritmus nem támogatott"
@@ -489,9 +489,9 @@ msgstr "Elfogad"
 msgid "&Auto Tile"
 msgstr "&Automatikus egymás mellé"
 
+#: src/modules/avatar/libkviavatar.cpp:94
 #: src/modules/setup/SetupWizard.cpp:239 src/modules/setup/SetupWizard.cpp:253
-#: src/modules/setup/SetupWizard.cpp:281
-#: src/modules/avatar/libkviavatar.cpp:94 src/kvirc/ui/KviSelectors.cpp:413
+#: src/modules/setup/SetupWizard.cpp:281 src/kvirc/ui/KviSelectors.cpp:413
 msgid "&Browse..."
 msgstr "&Böngészés"
 
@@ -553,9 +553,10 @@ msgstr "Következő"
 msgid "&Next >"
 msgstr "Következő >"
 
+#: src/modules/setup/SetupWizard.cpp:722
 #: src/modules/logview/LogViewWindow.cpp:434
-#: src/modules/setup/SetupWizard.cpp:722 src/kvirc/ui/KviMainWindow.cpp:840
-#: src/kvirc/ui/KviConsoleWindow.cpp:490 src/kvirc/ui/KviConsoleWindow.cpp:524
+#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:490
+#: src/kvirc/ui/KviConsoleWindow.cpp:524
 msgid "&No"
 msgstr "&Nem"
 
@@ -637,9 +638,10 @@ msgstr "Visszavonás"
 msgid "&Window"
 msgstr "Ablak"
 
+#: src/modules/setup/SetupWizard.cpp:722
 #: src/modules/logview/LogViewWindow.cpp:434
-#: src/modules/setup/SetupWizard.cpp:722 src/kvirc/ui/KviMainWindow.cpp:840
-#: src/kvirc/ui/KviConsoleWindow.cpp:488 src/kvirc/ui/KviConsoleWindow.cpp:523
+#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:488
+#: src/kvirc/ui/KviConsoleWindow.cpp:523
 msgid "&Yes"
 msgstr "Igen"
 
@@ -680,10 +682,10 @@ msgid "(None)"
 msgstr "(Nincs)"
 
 #: src/modules/links/LinksWindow.cpp:298
+#: src/kvirc/ui/KviChannelWindow.cpp:1718
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:678
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:691
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:777
-#: src/kvirc/ui/KviChannelWindow.cpp:1718
 msgid "(Unknown)"
 msgstr "(Ismeretlen)"
 
@@ -755,15 +757,15 @@ msgstr ": Nincs elérhető helyi másolat az avatarról, mellőzés"
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (DCC GET %s)"
 msgstr ""
-": Nincs érvényes helyi másolata az avatarnak, érvényes letöltése: (DCC GET "
-"%s)"
+": Nincs érvényes helyi másolata az avatarnak, érvényes letöltése: (DCC GET %"
+"s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1655
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (HTTP GET %s)"
 msgstr ""
-": Nincs érvényes helyi másolata az avatarnak, érvényes letöltése: (HTTP GET "
-"%s)"
+": Nincs érvényes helyi másolata az avatarnak, érvényes letöltése: (HTTP GET %"
+"s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1662
 msgid ""
@@ -1118,8 +1120,8 @@ msgstr "Cím:"
 msgid "Admin/protected nicks listing"
 msgstr ""
 
-#: src/kvirc/ui/KviOptionsWidget.cpp:742
 #: src/kvirc/kernel/KviDefaultScript.cpp:444
+#: src/kvirc/ui/KviOptionsWidget.cpp:742
 msgid "Advanced..."
 msgstr "Haladó..."
 
@@ -1764,12 +1766,13 @@ msgstr "Identd szolgáltatás indítása sikertelen IPv6-on: listen() hiba"
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Identd szolgáltatás indítása sikertelen IPv6-on: socket() hiba"
 
+#: src/modules/avatar/libkviavatar.cpp:109
 #: src/modules/setup/SetupWizard.cpp:87
-#: src/modules/avatar/libkviavatar.cpp:109 src/kvilib/tal/KviTalWizard.cpp:181
-#: src/kvilib/file/KviPackageIOEngine.cpp:135
-#: src/kvirc/ui/KviImageDialog.cpp:156 src/kvirc/ui/KviMaskEditor.cpp:90
-#: src/kvirc/kernel/KviCoreActions.cpp:809
 #: src/kvirc/kernel/KviDefaultScript.cpp:449
+#: src/kvirc/kernel/KviCoreActions.cpp:809 src/kvirc/ui/KviImageDialog.cpp:156
+#: src/kvirc/ui/KviMaskEditor.cpp:90
+#: src/kvilib/file/KviPackageIOEngine.cpp:135
+#: src/kvilib/tal/KviTalWizard.cpp:181
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -2134,10 +2137,10 @@ msgstr "Kattints a link megnyitásához"
 msgid "Clipboard"
 msgstr "Vágólap"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:229
 #: src/modules/tip/libkvitip.cpp:88
+#: src/modules/theme/ThemeManagementDialog.cpp:229
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:119
-#: src/kvirc/ui/KviModeEditor.cpp:240 src/kvirc/ui/KviCtcpPageDialog.cpp:59
+#: src/kvirc/ui/KviCtcpPageDialog.cpp:59 src/kvirc/ui/KviModeEditor.cpp:240
 msgid "Close"
 msgstr "Bezárás"
 
@@ -2253,7 +2256,7 @@ msgstr "Kapcsolódás / Megszakítás"
 msgid "Connected since"
 msgstr "Kapcsolódva "
 
-#: src/modules/links/LinksWindow.cpp:132 src/modules/list/ListWindow.cpp:322
+#: src/modules/list/ListWindow.cpp:322 src/modules/links/LinksWindow.cpp:132
 #, fuzzy
 msgid "Connected to %1 (%2)"
 msgstr "Kapcsolódva %1 (%2)"
@@ -2275,7 +2278,7 @@ msgstr "Kapcsolat Ideje"
 msgid "Connection attempt failed [%s]"
 msgstr "Kapcsolódási kísérlet sikertelen [%s]"
 
-#: src/kvirc/ui/KviStatusBar.cpp:682 src/kvirc/ui/KviConsoleWindow.cpp:1113
+#: src/kvirc/ui/KviConsoleWindow.cpp:1113 src/kvirc/ui/KviStatusBar.cpp:682
 msgid "Connection in progress..."
 msgstr "Kapcsolódás folyamatban..."
 
@@ -2453,8 +2456,8 @@ msgstr "Aktuális IRC URI"
 msgid "Current Network"
 msgstr "Aktuális Hálózat"
 
-#: src/kvirc/kernel/KviIrcSocket.cpp:1302
 #: src/kvirc/kernel/KviSSLMaster.cpp:106
+#: src/kvirc/kernel/KviIrcSocket.cpp:1302
 msgid "Current transmission cipher"
 msgstr ""
 
@@ -2532,9 +2535,9 @@ msgstr "Debug Üzenetek"
 msgid "Decrypt key:"
 msgstr "Dekódoló kulcs:"
 
-#: src/kvilib/irc/KviUserIdentityManager.cpp:81
 #: src/kvilib/ext/KviRegisteredUserDataBase.cpp:510
 #: src/kvilib/ext/KviRegisteredUserDataBase.cpp:511
+#: src/kvilib/irc/KviUserIdentityManager.cpp:81
 msgid "Default"
 msgstr "Alapértelmezett"
 
@@ -2601,7 +2604,7 @@ msgstr ""
 msgid "Discard Changes"
 msgstr "Változtatások Eldobása"
 
-#: src/kvirc/ui/KviMenuBar.cpp:229 src/kvirc/kernel/KviCoreActions.cpp:602
+#: src/kvirc/kernel/KviCoreActions.cpp:602 src/kvirc/ui/KviMenuBar.cpp:229
 msgid "Disconnect"
 msgstr "Kapcsolat bontása"
 
@@ -2807,7 +2810,7 @@ msgstr ""
 msgid "End of help about %Q"
 msgstr ""
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1984 src/kvirc/ui/KviQueryWindow.cpp:883
+#: src/kvirc/ui/KviQueryWindow.cpp:883 src/kvirc/ui/KviChannelWindow.cpp:1984
 msgid "End of log"
 msgstr "Naplófájl vége"
 
@@ -3254,7 +3257,7 @@ msgstr "Féloperátor módváltás"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Fejléc túl nagy: 4096 bájtot meghaladja"
 
-#: src/kvilib/tal/KviTalWizard.cpp:193 src/kvirc/kernel/KviOptions.cpp:864
+#: src/kvirc/kernel/KviOptions.cpp:864 src/kvilib/tal/KviTalWizard.cpp:193
 msgid "Help"
 msgstr "Segítség"
 
@@ -3293,8 +3296,9 @@ msgid "Hey... are ya sure that your network is up?"
 msgstr "Hellllóó... biztos, hogy még van neted?"
 
 #: src/kvirc/ui/KviIrcView.cpp:2067
-msgid "Hide Find Window"
-msgstr "Keresés Ablak Elrejtése"
+#, fuzzy
+msgid "Hide Filter"
+msgstr "Szűrő"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:453
@@ -3936,14 +3940,14 @@ msgstr "Lag mérő motor kikapcsolva"
 msgid "Lag: %1.%2%3"
 msgstr "Lag: %1.%2%3"
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:324 src/kvirc/ui/KviIrcToolBar.cpp:396
-#: src/kvirc/ui/KviStatusBarApplet.cpp:284
+#: src/kvirc/ui/KviStatusBarApplet.cpp:284 src/kvirc/ui/KviIrcToolBar.cpp:324
+#: src/kvirc/ui/KviIrcToolBar.cpp:396
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr "Lag: %d.%d%d"
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:326 src/kvirc/ui/KviIrcToolBar.cpp:398
-#: src/kvirc/ui/KviStatusBarApplet.cpp:337
+#: src/kvirc/ui/KviStatusBarApplet.cpp:337 src/kvirc/ui/KviIrcToolBar.cpp:326
+#: src/kvirc/ui/KviIrcToolBar.cpp:398
 msgid "Lag: ?.??"
 msgstr "Lag: ?.??"
 
@@ -4059,7 +4063,7 @@ msgstr "Helység:"
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Naplózás mint %Q!%Q :%Q"
 
-#: src/kvirc/ui/KviStatusBar.cpp:688 src/kvirc/ui/KviConsoleWindow.cpp:1116
+#: src/kvirc/ui/KviConsoleWindow.cpp:1116 src/kvirc/ui/KviStatusBar.cpp:688
 msgid "Login in progress..."
 msgstr "Belépés folyamatban..."
 
@@ -4436,10 +4440,10 @@ msgstr "Becenév probléma"
 msgid "Nickname:"
 msgstr "Becenév:"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
-#: src/kvirc/ui/KviStatusBar.cpp:553 src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:255
+#: src/kvirc/ui/KviStatusBar.cpp:553
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
 msgid "No"
 msgstr "Nem"
 
@@ -4451,7 +4455,7 @@ msgstr "Nem"
 msgid "No DBus type specified"
 msgstr ""
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:331 src/kvirc/ui/KviStatusBar.cpp:695
+#: src/kvirc/ui/KviStatusBar.cpp:695 src/kvirc/ui/KviIrcToolBar.cpp:331
 msgid "No IRC context"
 msgstr "Nincs IRC környezet"
 
@@ -4488,7 +4492,7 @@ msgstr "Csatorna topik nincs beállítva"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Nincsenek közös csatornáitok  \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:291 src/kvirc/ui/KviConsoleWindow.cpp:1110
+#: src/kvirc/ui/KviConsoleWindow.cpp:1110 src/kvirc/ui/KviIrcToolBar.cpp:291
 msgid "No connection"
 msgstr "Nincs kapcsolat"
 
@@ -4610,9 +4614,9 @@ msgstr "Normál szöveg"
 msgid "Not away"
 msgstr "Elérhető"
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:360 src/kvirc/ui/KviStatusBar.cpp:691
 #: src/kvirc/ui/KviStatusBarApplet.cpp:233
-#: src/kvirc/ui/KviStatusBarApplet.cpp:303
+#: src/kvirc/ui/KviStatusBarApplet.cpp:303 src/kvirc/ui/KviStatusBar.cpp:691
+#: src/kvirc/ui/KviIrcToolBar.cpp:360
 msgid "Not connected"
 msgstr "Nincs kapcsolódva"
 
@@ -4800,8 +4804,8 @@ msgstr "%Q értesítése a %Q avatarról"
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Helyi IRC operátor (LOCOP)"
 
-#: src/kvirc/ui/KviHtmlDialog.cpp:91 src/kvirc/ui/KviCryptController.cpp:127
-#: src/kvirc/kernel/KviCoreActions.cpp:808
+#: src/kvirc/kernel/KviCoreActions.cpp:808 src/kvirc/ui/KviHtmlDialog.cpp:91
+#: src/kvirc/ui/KviCryptController.cpp:127
 msgid "OK"
 msgstr "OK"
 
@@ -4902,8 +4906,8 @@ msgstr "Művelet megszakítva"
 msgid "Operation cancelled"
 msgstr "Művelet törölve"
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 #: src/modules/iograph/libkviiograph.cpp:277
+#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 msgid "Ops.. internal error"
 msgstr "Hoppá... belső hiba"
 
@@ -5406,8 +5410,8 @@ msgstr "Nyers Események szerkesztése..."
 msgid "Raw data to server"
 msgstr "Nyers adat a szervernek"
 
-#: src/kvirc/ui/KviSelectors.cpp:504 src/kvirc/ui/KviSelectors.cpp:859
-#: src/kvirc/ui/KviMaskEditor.cpp:200
+#: src/kvirc/ui/KviMaskEditor.cpp:200 src/kvirc/ui/KviSelectors.cpp:504
+#: src/kvirc/ui/KviSelectors.cpp:859
 msgid "Re&move"
 msgstr "Eltávolít"
 
@@ -5598,7 +5602,7 @@ msgstr "Kapcsolatok Lekérdezése"
 msgid "Request List"
 msgstr "Lista Lekérdezése"
 
-#: src/modules/links/LinksWindow.cpp:419 src/modules/list/ListWindow.cpp:459
+#: src/modules/list/ListWindow.cpp:459 src/modules/links/LinksWindow.cpp:419
 msgid "Reset"
 msgstr "Visszaállít"
 
@@ -5826,8 +5830,8 @@ msgstr ""
 msgid "Sent username and password, waiting for acknowledgement"
 msgstr "Felhasználónév és jelszó elküldve, várakozás a nyugtázásra"
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:606
 #: src/kvirc/kernel/KviCoreActions.cpp:496
+#: src/kvirc/ui/KviStatusBarApplet.cpp:606
 msgid "Separator"
 msgstr "Elválasztó"
 
@@ -5963,8 +5967,9 @@ msgid "Show &Icon Table"
 msgstr "Ikon Tábla megjelenítése"
 
 #: src/kvirc/ui/KviIrcView.cpp:2069
-msgid "Show Find Window"
-msgstr "Keresés Ablak megjelenítése"
+#, fuzzy
+msgid "Show Filter"
+msgstr "Szűrő"
 
 #: src/kvirc/ui/KviInput.cpp:113 src/kvirc/ui/KviInput.cpp:401
 msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
@@ -6239,8 +6244,8 @@ msgstr ""
 msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
-"Spam privát üzenet innen: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam szó "
-"\"%s\")"
+"Spam privát üzenet innen: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam szó \"%"
+"s\")"
 
 #: src/kvirc/kernel/KviOptions.cpp:803
 msgid "Spam report"
@@ -6280,7 +6285,7 @@ msgstr "Identd szolgáltatás indítása (IPv4/v6 IPv6 névtérben)"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Identd szolgáltatás indítása (IPv4/v6 különböző névterekben)"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:1968 src/kvirc/ui/KviQueryWindow.cpp:867
+#: src/kvirc/ui/KviQueryWindow.cpp:867 src/kvirc/ui/KviChannelWindow.cpp:1968
 msgid "Starting last log"
 msgstr "Utolsó napló indítása"
 
@@ -6325,7 +6330,7 @@ msgstr "Karakterlánc opciók (karakterlánc érték)"
 msgid "Strip colors"
 msgstr "Színek szűrése"
 
-#: src/kvirc/ui/KviMenuBar.cpp:131 src/kvirc/kernel/KviCoreActions.cpp:326
+#: src/kvirc/kernel/KviCoreActions.cpp:326 src/kvirc/ui/KviMenuBar.cpp:131
 msgid "Subscribe to the Mailing List"
 msgstr "Feliratkozás a levelezőlistára"
 
@@ -6778,7 +6783,6 @@ msgstr "A kinézet információs fájlja nem létezik"
 msgid "The toolbar does not contain the specified item"
 msgstr "Az eszköztár nem tartalmazza a megadott elemet"
 
-#: src/modules/userlist/libkviuserlist.cpp:45
 #: src/modules/window/libkviwindow.cpp:78
 #: src/modules/window/libkviwindow.cpp:730
 #: src/modules/window/libkviwindow.cpp:1224
@@ -6786,6 +6790,7 @@ msgstr "Az eszköztár nem tartalmazza a megadott elemet"
 #: src/modules/window/libkviwindow.cpp:1321
 #: src/modules/window/libkviwindow.cpp:1394
 #: src/modules/window/libkviwindow.cpp:1552
+#: src/modules/userlist/libkviuserlist.cpp:45
 #, c-format
 msgid "The window with id '%s' does not exist"
 msgstr "'%s' azonosítójú ablak nem létezik"
@@ -6932,8 +6937,8 @@ msgstr ""
 msgid "Tip: %Q"
 msgstr ""
 
-#: src/kvirc/ui/KviMenuBar.cpp:169 src/kvirc/ui/KviToolBar.cpp:89
-#: src/kvirc/kernel/KviDefaultScript.cpp:436
+#: src/kvirc/kernel/KviDefaultScript.cpp:436 src/kvirc/ui/KviToolBar.cpp:89
+#: src/kvirc/ui/KviMenuBar.cpp:169
 msgid "Toolbars"
 msgstr "Eszköztárak"
 
@@ -7154,9 +7159,9 @@ msgstr "Váratlan token"
 msgid "Unhandled server reply"
 msgstr "Kezeletlen szerver válasz"
 
-#: src/modules/upnp/RootService.cpp:172 src/kvilib/net/KviSSL.cpp:757
+#: src/modules/upnp/RootService.cpp:172 src/kvirc/kernel/KviTheme.cpp:110
+#: src/kvirc/ui/KviTopicWidget.cpp:158 src/kvilib/net/KviSSL.cpp:757
 #: src/kvilib/net/KviSSL.cpp:787 src/kvilib/net/KviSSL.cpp:810
-#: src/kvirc/ui/KviTopicWidget.cpp:158 src/kvirc/kernel/KviTheme.cpp:110
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -7260,7 +7265,7 @@ msgstr "Nem támogatott kép formátum"
 msgid "Unsupported key length"
 msgstr "Nem támogatott kulcs hossz"
 
-#: src/modules/str/libkvistr.cpp:1457 src/modules/file/libkvifile.cpp:1500
+#: src/modules/file/libkvifile.cpp:1500 src/modules/str/libkvistr.cpp:1457
 msgid "Unsupported message digest."
 msgstr ""
 
@@ -7485,13 +7490,13 @@ msgstr "WALLOPS \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:897
 msgid ""
-"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
-"%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
-"name%c: %Q"
+"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
+"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
+"%c: %Q"
 msgstr ""
-"WHO bejegyzés %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCsatorna%c: \r!c\r%Q\r, "
-"%cSzerver%c: \r!s\r%Q\r, %cTávolság%c: %d, %cMódok%c: %Q, %cTávol%c: %Q, "
-"%cValós név%c: %Q"
+"WHO bejegyzés %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCsatorna%c: \r!c\r%Q\r, %"
+"cSzerver%c: \r!s\r%Q\r, %cTávolság%c: %d, %cMódok%c: %Q, %cTávol%c: %Q, %"
+"cValós név%c: %Q"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:929
 msgid "Wallops (+w)"
@@ -7620,10 +7625,10 @@ msgstr "Csomag adatok írása"
 msgid "Writing package header"
 msgstr "Csomag fejléc írása"
 
-#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
-#: src/kvirc/ui/KviStatusBar.cpp:551 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:254
+#: src/kvirc/ui/KviStatusBar.cpp:551
+#: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
 msgid "Yes"
 msgstr "Igen"
 
@@ -7669,8 +7674,8 @@ msgstr "Kirúgtak a  \r!c\r%Q\r csatornáról: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgid "You have been paged by"
 msgstr ""
 
-#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1545
 #: src/kvirc/kernel/KviIrcConnection.cpp:1648
+#: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1545
 msgid "You have changed your nickname to %Q"
 msgstr "Beceneved megváltoztattad: %Q"
 
@@ -7984,9 +7989,9 @@ msgstr "beszélget"
 msgid "autojoining"
 msgstr "automatikus kapcsolódás"
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:374 src/kvirc/ui/KviIrcToolBar.cpp:382
 #: src/kvirc/ui/KviConsoleWindow.cpp:1128
-#: src/kvirc/ui/KviConsoleWindow.cpp:1135
+#: src/kvirc/ui/KviConsoleWindow.cpp:1135 src/kvirc/ui/KviIrcToolBar.cpp:374
+#: src/kvirc/ui/KviIrcToolBar.cpp:382
 msgid "away"
 msgstr "távol"
 
@@ -7998,12 +8003,12 @@ msgstr "tiltó kivétel lista"
 msgid "ban list"
 msgstr "tiltólista"
 
-#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:540
-#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:550
-#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:560
 #: src/modules/rijndael/libkvirijndael.cpp:658
 #: src/modules/rijndael/libkvirijndael.cpp:668
 #: src/modules/rijndael/libkvirijndael.cpp:678
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:540
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:550
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:560
 msgid "base64"
 msgstr "base64"
 
@@ -8084,12 +8089,12 @@ msgstr "fél-operátor"
 msgid "half-operators"
 msgstr "fél-operátorok"
 
-#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:510
-#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:520
-#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:530
 #: src/modules/rijndael/libkvirijndael.cpp:628
 #: src/modules/rijndael/libkvirijndael.cpp:638
 #: src/modules/rijndael/libkvirijndael.cpp:648
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:510
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:520
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:530
 msgid "hexadecimal"
 msgstr "hexadecimális"
 
@@ -8685,9 +8690,6 @@ msgstr "z: Oper wallop üzenetek címzettje"
 #~ msgid "Failed to initialize the SSL context"
 #~ msgstr "SSL környezet inicializálása sikertelen"
 
-#~ msgid "Filter"
-#~ msgstr "Szűrő"
-
 #~ msgid "Find"
 #~ msgstr "Keres"
 
@@ -8710,6 +8712,9 @@ msgstr "z: Oper wallop üzenetek címzettje"
 #, fuzzy
 #~ msgid "Hide Advanced"
 #~ msgstr "Haladó..."
+
+#~ msgid "Hide Find Window"
+#~ msgstr "Keresés Ablak Elrejtése"
 
 #~ msgid "Home Directory"
 #~ msgstr "Felhasználói Mappa"
@@ -8968,6 +8973,9 @@ msgstr "z: Oper wallop üzenetek címzettje"
 
 #~ msgid "Short View"
 #~ msgstr "Rövid Nézet"
+
+#~ msgid "Show Find Window"
+#~ msgstr "Keresés Ablak megjelenítése"
 
 #~ msgid "Show Hidden Files"
 #~ msgstr "Rejtett fájlok megjelenítése"
