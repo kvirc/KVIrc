@@ -65,7 +65,7 @@ KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par,KviIrcV
 	setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable|Qt::ItemIsUserCheckable);
 	setCheckState(0,Qt::Checked);
 	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_OPTION_MSGTYPE(id).pixId())));
-	setText(0,KVI_OPTION_MSGTYPE(id).type());
+	setText(0,__tr2qs_no_xgettext(KVI_OPTION_MSGTYPE(id).type()));
 	m_pToolWidget = w;
 }
 
