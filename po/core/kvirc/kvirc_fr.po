@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 06:01+0100\n"
+"POT-Creation-Date: 2011-04-04 05:00+0100\n"
 "PO-Revision-Date: 2010-11-21 16:05+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -6444,10 +6444,6 @@ msgstr "Sauvergarder la configuration dans un répertoire"
 msgid "Stream exceeded expected length"
 msgstr "Le flot a atteint sa longueur attendue"
 
-#: src/kvilib/net/KviHttpRequest.cpp:738
-msgid "Stream exceeding maximum length"
-msgstr "Le flot a atteint sa longueur maximale"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr ""
@@ -6551,6 +6547,11 @@ msgstr "L'action \"%Q\" n'existe pas"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Le paramètre de l'action n'a pas été évalué à un entier"
+
+#: src/kvilib/net/KviHttpRequest.cpp:738
+#, fuzzy
+msgid "The amount of received data exceeds the maximum length"
+msgstr "Le flot a atteint sa longueur maximale"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."

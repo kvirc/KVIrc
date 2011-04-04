@@ -819,7 +819,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			if(((m_uTotalSize > 0) && (m_uReceivedSize > m_uTotalSize)) || ((m_uMaxContentLength > 0) && (m_uReceivedSize > m_uMaxContentLength)))
 			{
 				resetInternalStatus();
-				m_szLastError=__tr2qs("Stream exceeded expected length");
+				m_szLastError=__tr2qs("The amount of received data exceeds expected length");
 				emit terminated(false);
 			}
 
@@ -961,7 +961,7 @@ check_stream_length:
 	if(((m_uTotalSize > 0) && (m_uReceivedSize > m_uTotalSize)) || ((m_uMaxContentLength > 0) && (m_uReceivedSize > m_uMaxContentLength)))
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("Stream exceeded expected length");
+		m_szLastError=__tr2qs("The amount of received data exceeds expected length");
 		emit terminated(false);
 	}
 	return;

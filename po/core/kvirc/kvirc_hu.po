@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 06:01+0100\n"
+"POT-Creation-Date: 2011-04-04 05:00+0100\n"
 "PO-Revision-Date: 2010-08-13 21:25+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
 "Language-Team: Hungarian\n"
@@ -6313,10 +6313,6 @@ msgstr "Beállítások tárolása ide:"
 msgid "Stream exceeded expected length"
 msgstr "Adatfolyam átlépte a várt méretet"
 
-#: src/kvilib/net/KviHttpRequest.cpp:738
-msgid "Stream exceeding maximum length"
-msgstr "Adatfolyam meghaladta a maximális méretet"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Karakterlánc lista opciók (vesszővel elválasztott karakterlánc-lista)"
@@ -6416,6 +6412,11 @@ msgstr "'%Q' akció nem létezik"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Az akció paramétere nem értelmezhető indexként"
+
+#: src/kvilib/net/KviHttpRequest.cpp:738
+#, fuzzy
+msgid "The amount of received data exceeds the maximum length"
+msgstr "Adatfolyam meghaladta a maximális méretet"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."

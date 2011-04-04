@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 06:01+0100\n"
+"POT-Creation-Date: 2011-04-04 05:00+0100\n"
 "PO-Revision-Date: 2011-02-28 15:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -6066,10 +6066,6 @@ msgstr "Ayarları bir klasörde saklayın"
 msgid "Stream exceeded expected length"
 msgstr ""
 
-#: src/kvilib/net/KviHttpRequest.cpp:738
-msgid "Stream exceeding maximum length"
-msgstr ""
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr ""
@@ -6166,6 +6162,10 @@ msgstr ""
 
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
+msgstr ""
+
+#: src/kvilib/net/KviHttpRequest.cpp:738
+msgid "The amount of received data exceeds the maximum length"
 msgstr ""
 
 #: src/modules/help/HelpWindow.cpp:228

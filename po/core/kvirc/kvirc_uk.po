@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 06:01+0100\n"
+"POT-Creation-Date: 2011-04-04 05:00+0100\n"
 "PO-Revision-Date: 2009-08-07 10:40+0300\n"
 "Last-Translator: CrabMan\n"
 "Language-Team: Ukrainian\n"
@@ -6417,10 +6417,6 @@ msgstr "Зберігати конфігурацію в каталозі"
 msgid "Stream exceeded expected length"
 msgstr "Розмір потоку перевищив очікувану довжину"
 
-#: src/kvilib/net/KviHttpRequest.cpp:738
-msgid "Stream exceeding maximum length"
-msgstr "Розмір потоку перевищив максимальну довжину"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Опція списку рядків (розділені комами рядка)"
@@ -6521,6 +6517,11 @@ msgstr "Дія \"%Q\" не існує"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Параметр дії не є індексом"
+
+#: src/kvilib/net/KviHttpRequest.cpp:738
+#, fuzzy
+msgid "The amount of received data exceeds the maximum length"
+msgstr "Розмір потоку перевищив максимальну довжину"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."
