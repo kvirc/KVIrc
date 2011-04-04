@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-04 05:45+0100\n"
-"PO-Revision-Date: 2011-04-04 05:50+0100\n"
+"PO-Revision-Date: 2011-04-04 06:32+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1127,7 +1127,7 @@ msgstr "Todas as configurações na pasta partilhada do programa (portável)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:352
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
 msgid "Allow anybody to invite"
-msgstr "Permitir convidar a qualquer um"
+msgstr "Permite a qualquer um convidar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:983
 msgid "Allows entering and leaving away state"
@@ -3185,7 +3185,7 @@ msgstr "Formato"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:351
 msgid "Forward to another channel on uninvited"
-msgstr "Encaminhar para outro canal ao ser 'desconvidado'"
+msgstr "Enviar para outro canal ao ser desconvidado"
 
 #: src/modules/help/HelpWindow.cpp:218 src/modules/help/HelpWindow.cpp:227
 msgid "Full Text Search"
@@ -3281,7 +3281,7 @@ msgstr "Ajuda"
 
 #: src/modules/help/HelpWindow.cpp:335
 msgid "Help Browser"
-msgstr "Painel de Ajuda"
+msgstr "Ajuda Incorporada"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:315
 msgid "Help Index"
@@ -3289,7 +3289,7 @@ msgstr "Índice de Ajuda"
 
 #: src/modules/help/HelpWindow.cpp:72
 msgid "HelpIndex"
-msgstr "Índice de Registos"
+msgstr "Índice de Ajuda"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1035
 msgid ""
@@ -3319,7 +3319,7 @@ msgstr "Esconder Filtro"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:453
 msgid "Hide QUIT and PART messages"
-msgstr "Esconder mensagens de SAÍDA E PARTIDA"
+msgstr "Esconder mensagens de SAÍDA e PARTIDA"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:294
 msgid "Hide Window"
@@ -3405,7 +3405,7 @@ msgstr ""
 
 #: src/modules/iograph/libkviiograph.cpp:73
 msgid "I/O Traffic Graph"
-msgstr "Gráfico do tráfego E/S"
+msgstr "Gráfico do Tráfego E/S"
 
 #: src/kvirc/kernel/KviOptions.cpp:804
 msgid "ICQ message"
@@ -3421,7 +3421,7 @@ msgstr "IRC"
 
 #: src/kvirc/kernel/KviActionManager.cpp:67
 msgid "IRC Channel related actions"
-msgstr "Acções relacionadas ao Canal IRC"
+msgstr "Acções relacionadas com o Canal IRC"
 
 #: src/kvirc/ui/KviIrcToolBar.cpp:309
 msgid "IRC Context"
@@ -3429,19 +3429,19 @@ msgstr "Contexto IRC"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:433
 msgid "IRC Context Display"
-msgstr "Contexto IRC"
+msgstr "Janela de Contexto IRC"
 
 #: src/kvirc/kernel/KviActionManager.cpp:62
 msgid "IRC Context related actions"
-msgstr "Acções relacionadas ao Contexto IRC"
+msgstr "Acções relacionadas do Contexto IRC"
 
 #: src/kvirc/kernel/KviOptions.cpp:872
 msgid "IRC Op status set"
-msgstr "Estado Op do IRC definido"
+msgstr "Estado do Op IRC definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:873
 msgid "IRC Op status unset"
-msgstr "Estado Op do IRC não definido"
+msgstr "Estado do Op IRC não definido"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:396
 msgid "IRC server"
@@ -3452,7 +3452,7 @@ msgstr "Servidor IRC"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:410
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:477
 msgid "IRC-Op only channel"
-msgstr "Canal apenas para IRC-Op"
+msgstr "Canal apenas para Op-IRC"
 
 #: src/kvirc/ui/KviToolBar.cpp:91
 msgid "Icon Size"
@@ -3464,7 +3464,7 @@ msgstr "Tabela de Ícones"
 
 #: src/kvirc/kernel/KviOptions.cpp:817
 msgid "Ident message"
-msgstr "Mensagem Ident"
+msgstr "Mensagem de identificação"
 
 #: src/modules/ident/libkviident.cpp:403 src/modules/ident/libkviident.cpp:423
 msgid "Identd accepting connection"
@@ -3476,15 +3476,15 @@ msgstr "Conexão identd fechada por máquina remota"
 
 #: src/modules/ident/libkviident.cpp:472
 msgid "Identd processing request"
-msgstr "A processar pedido de identificação"
+msgstr "Identd a processar o pedido"
 
 #: src/modules/ident/libkviident.cpp:446
 msgid "Identd socket error : dropping connection"
-msgstr "Erro de identificação do 'socket': a desligar conexão"
+msgstr "Erro do 'socket' identd: a desligar conexão"
 
 #: src/modules/setup/SetupWizard.cpp:414
 msgid "Identity"
-msgstr "Identificar"
+msgstr "Identidade"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:371
 msgid "If this server is an IPv6 one, try /server -i %Q"
@@ -3495,7 +3495,7 @@ msgid ""
 "If you don't want to encrypt a particular text line then just start it with "
 "the CTRL+P prefix"
 msgstr ""
-"Se não deseja encriptar uma linha de texto em particular então inicie-a com "
+"Se não deseja encriptar uma linha de texto em particular, então inicie-a com "
 "o prefixo CTRL+P"
 
 #: src/kvirc/kernel/KviApplication.cpp:794
@@ -3526,7 +3526,7 @@ msgstr "A ignorar Notícia de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1001
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "A ignorar PRIVMSG no canal de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "A ignorar PRIVMSG do canal de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1628
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -3534,7 +3534,7 @@ msgstr "A ignorar convite de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:776
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "A ignorar consulta PRIVMSG de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "A ignorar PRIVMSG da consulta de \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/modules/list/ListWindow.cpp:204
 msgid "Import List"
