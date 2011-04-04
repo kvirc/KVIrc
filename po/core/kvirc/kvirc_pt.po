@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:00+0100\n"
-"PO-Revision-Date: 2011-04-04 05:26+0100\n"
+"POT-Creation-Date: 2011-04-04 05:45+0100\n"
+"PO-Revision-Date: 2011-04-04 05:50+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -6330,10 +6330,6 @@ msgstr "A parar transferência da lista..."
 msgid "Store configuration in folder"
 msgstr "Guardar configuração  na pasta"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
-msgid "Stream exceeded expected length"
-msgstr "A quantidade de dados recebidos excedeu o comprimento previsto"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Opções da lista de 'strings' ('strings' separadas por vírgulas)"
@@ -6433,6 +6429,10 @@ msgstr "A acção \"%Q\" não existe"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "O parâmetro da acção não avaliou para um índice"
+
+#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+msgid "The amount of received data exceeds expected length"
+msgstr "A quantidade de dados recebidos excede o comprimento esperado"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 msgid "The amount of received data exceeds the maximum length"
@@ -9788,6 +9788,9 @@ msgstr "z: Recipiente para mensagens 'wallop' do operador"
 #~ msgstr ""
 #~ "Caracter ponto ('.') inesperado ou nome de comando do módulo seguinte "
 #~ "inválido"
+
+#~ msgid "Stream exceeded expected length"
+#~ msgstr "A quantidade de dados recebidos excedeu o comprimento previsto"
 
 #~ msgid "Stri&keout"
 #~ msgstr "&Rasurado"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:00+0100\n"
+"POT-Creation-Date: 2011-04-04 05:45+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -6489,10 +6489,6 @@ msgstr "Descarrega la Llista"
 msgid "Store configuration in folder"
 msgstr "<b>Guardar la configuraci�al directori:</b>"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
-msgid "Stream exceeded expected length"
-msgstr "L'Stream excedeix la longitud esperada"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Opcions de llista de car�ters (llista de cadenes separades per comes)"
@@ -6598,6 +6594,11 @@ msgstr "L'acci�\"%Q\" no existeix"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "El par�etre d'acci�no s'avalua com un �dex"
+
+#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+#, fuzzy
+msgid "The amount of received data exceeds expected length"
+msgstr "L'Stream excedeix la longitud m�ima"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 #, fuzzy
@@ -14105,6 +14106,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr ""
 #~ "Car�ter punt ('.') sobrant o segueix un nom de comanda del m�ul no v�ida"
+
+#~ msgid "Stream exceeded expected length"
+#~ msgstr "L'Stream excedeix la longitud esperada"
 
 #~ msgid "Stri&keout"
 #~ msgstr "Taxada"

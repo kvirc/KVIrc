@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:00+0100\n"
+"POT-Creation-Date: 2011-04-04 05:45+0100\n"
 "PO-Revision-Date: 2009-08-07 10:40+0300\n"
 "Last-Translator: CrabMan\n"
 "Language-Team: Ukrainian\n"
@@ -6413,10 +6413,6 @@ msgstr "Завершуємо завантаження списку.."
 msgid "Store configuration in folder"
 msgstr "Зберігати конфігурацію в каталозі"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
-msgid "Stream exceeded expected length"
-msgstr "Розмір потоку перевищив очікувану довжину"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Опція списку рядків (розділені комами рядка)"
@@ -6517,6 +6513,11 @@ msgstr "Дія \"%Q\" не існує"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Параметр дії не є індексом"
+
+#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+#, fuzzy
+msgid "The amount of received data exceeds expected length"
+msgstr "Розмір потоку перевищив максимальну довжину"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 #, fuzzy
@@ -10997,6 +10998,9 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr ""
 #~ "Зайва крапка ('.'), символ або недійсне наступне ім'я команди модуля"
+
+#~ msgid "Stream exceeded expected length"
+#~ msgstr "Розмір потоку перевищив очікувану довжину"
 
 #~ msgid "Stri&keout"
 #~ msgstr "&Розрядка"

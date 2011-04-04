@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:00+0100\n"
+"POT-Creation-Date: 2011-04-04 05:45+0100\n"
 "PO-Revision-Date: 2007-12-17 11:31+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -6392,10 +6392,6 @@ msgstr "Zastavuje se stahování seznamu..."
 msgid "Store configuration in folder"
 msgstr "Uložit konfiguraci v adresáři"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
-msgid "Stream exceeded expected length"
-msgstr "Proud překročil očekávanou délku"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Možnosti seznamu řetězce (čárkami oddělený seznam řetězců)"
@@ -6497,6 +6493,11 @@ msgstr "Akce \"%Q\" neexistuje"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Parametr akce nejde přepočítat na index"
+
+#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+#, fuzzy
+msgid "The amount of received data exceeds expected length"
+msgstr "Proud překračuje maximální délku"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 #, fuzzy
@@ -14187,6 +14188,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr "Zbloudilý znak tečka ('.') nebo neplatný název následujícího modulu"
+
+#~ msgid "Stream exceeded expected length"
+#~ msgstr "Proud překročil očekávanou délku"
 
 #~ msgid "Stri&keout"
 #~ msgstr "Př&eškrtnutý"

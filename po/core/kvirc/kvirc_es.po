@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:00+0100\n"
+"POT-Creation-Date: 2011-04-04 05:45+0100\n"
 "PO-Revision-Date: 2011-01-20 11:47+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -6332,10 +6332,6 @@ msgstr "Detener la descarga de la lista..."
 msgid "Store configuration in folder"
 msgstr "Guardar configuración en el directorio"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
-msgid "Stream exceeded expected length"
-msgstr "El flujo excede la longitud esperada"
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Opciones de lista de caracteres (lista de cadenas separadas por comas)"
@@ -6435,6 +6431,11 @@ msgstr "La acción \"%Q\" no existe"
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
 msgstr "El parámetro de acción no se evalúa como un índice"
+
+#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+#, fuzzy
+msgid "The amount of received data exceeds expected length"
+msgstr "El flujo excede la longitud máxima"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 #, fuzzy
@@ -8584,6 +8585,9 @@ msgstr "z: Destinatario de mensajes oper wallop"
 
 #~ msgid "Sorting"
 #~ msgstr "Ordenación"
+
+#~ msgid "Stream exceeded expected length"
+#~ msgstr "El flujo excede la longitud esperada"
 
 #~ msgid "Stri&keout"
 #~ msgstr "Tachada"

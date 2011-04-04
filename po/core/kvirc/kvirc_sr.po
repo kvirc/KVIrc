@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:00+0100\n"
+"POT-Creation-Date: 2011-04-04 05:45+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -6698,10 +6698,6 @@ msgstr ""
 msgid "Store configuration in folder"
 msgstr "&Sa�vaj podeavanja"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
-msgid "Stream exceeded expected length"
-msgstr ""
-
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
 msgstr "Opcije liste znakova (zarezom razdvojena lista znakova)"
@@ -6812,6 +6808,10 @@ msgstr "Izvorni objekat '%Q' je ne postoje�"
 #, fuzzy
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Levi operator nije broj"
+
+#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+msgid "The amount of received data exceeds expected length"
+msgstr ""
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 msgid "The amount of received data exceeds the maximum length"
