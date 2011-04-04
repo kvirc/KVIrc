@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 05:45+0100\n"
+"POT-Creation-Date: 2011-04-04 21:07+0200\n"
 "PO-Revision-Date: 2011-02-27 22:31+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -99,8 +99,9 @@ msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] hat gerade \r!c\r%Q\r verlassen: %Q"
 msgid " (%1 hops)"
 msgstr " (%1 Sprünge entfernt)"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:444 src/kvirc/ui/KviConsoleWindow.cpp:1140
+#: src/kvirc/ui/KviConsoleWindow.cpp:1140
 #: src/kvirc/ui/KviChannelWindow.cpp:1135
+#: src/kvirc/ui/KviQueryWindow.cpp:444
 msgid " on "
 msgstr " auf "
 
@@ -306,11 +307,13 @@ msgstr "%Q [%Q@%Q] hat den Channel-Schlüssel aufgehoben"
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] hat die Channel-Begrenzung aufgehoben"
 
-#: src/modules/file/libkvifile.cpp:1436 src/modules/str/libkvistr.cpp:1391
+#: src/modules/str/libkvistr.cpp:1391
+#: src/modules/file/libkvifile.cpp:1436
 msgid "%Q algorithm is not supported"
 msgstr "%Q-Algorithmus wird nicht unterstützt"
 
-#: src/kvirc/kernel/KviIrcContext.cpp:692 src/kvirc/kernel/KviIrcLink.cpp:409
+#: src/kvirc/kernel/KviIrcContext.cpp:692
+#: src/kvirc/kernel/KviIrcLink.cpp:409
 msgid "%Q established [%s (%s:%u)]"
 msgstr "%Q hergestellt [%s (%s:%u)]"
 
@@ -463,7 +466,8 @@ msgstr "&Hinzufügen"
 msgid "&Add Ban"
 msgstr "B&an hinzufügen"
 
-#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:489
+#: src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviConsoleWindow.cpp:489
 #: src/kvirc/ui/KviConsoleWindow.cpp:522
 msgid "&Always"
 msgstr "&Immer"
@@ -476,9 +480,11 @@ msgstr "An&wenden"
 msgid "&Auto Tile"
 msgstr "&Automatisch teilen"
 
+#: src/kvirc/ui/KviSelectors.cpp:413
+#: src/modules/setup/SetupWizard.cpp:239
+#: src/modules/setup/SetupWizard.cpp:253
+#: src/modules/setup/SetupWizard.cpp:281
 #: src/modules/avatar/libkviavatar.cpp:94
-#: src/modules/setup/SetupWizard.cpp:239 src/modules/setup/SetupWizard.cpp:253
-#: src/modules/setup/SetupWizard.cpp:281 src/kvirc/ui/KviSelectors.cpp:413
 msgid "&Browse..."
 msgstr "&Auswählen..."
 
@@ -540,14 +546,16 @@ msgstr "&Nächster"
 msgid "&Next >"
 msgstr "&Nächster >"
 
-#: src/modules/setup/SetupWizard.cpp:722
-#: src/modules/logview/LogViewWindow.cpp:434
-#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:490
+#: src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviConsoleWindow.cpp:490
 #: src/kvirc/ui/KviConsoleWindow.cpp:524
+#: src/modules/setup/SetupWizard.cpp:722
+#: src/modules/logview/LogViewWindow.cpp:521
 msgid "&No"
 msgstr "&Nein"
 
-#: src/modules/avatar/libkviavatar.cpp:104 src/modules/url/libkviurl.cpp:454
+#: src/modules/url/libkviurl.cpp:454
+#: src/modules/avatar/libkviavatar.cpp:104
 msgid "&OK"
 msgstr "&OK"
 
@@ -556,7 +564,8 @@ msgstr "&OK"
 msgid "&Options"
 msgstr "Aktionen"
 
-#: src/kvirc/ui/KviMenuBar.cpp:250 src/kvirc/ui/KviMenuBar.cpp:258
+#: src/kvirc/ui/KviMenuBar.cpp:250
+#: src/kvirc/ui/KviMenuBar.cpp:258
 msgid "&Other..."
 msgstr "&Andere ..."
 
@@ -569,7 +578,8 @@ msgstr "&Einfügen"
 msgid "&Previous"
 msgstr "&Vorschau"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:114 src/kvirc/ui/KviMenuBar.cpp:241
+#: src/kvirc/ui/KviMenuBar.cpp:241
+#: src/modules/trayicon/libkvitrayicon.cpp:114
 msgid "&Quit"
 msgstr "&Beenden"
 
@@ -625,10 +635,11 @@ msgstr "Rückgängig ma&chen"
 msgid "&Window"
 msgstr "&Fenster"
 
-#: src/modules/setup/SetupWizard.cpp:722
-#: src/modules/logview/LogViewWindow.cpp:434
-#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:488
+#: src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviConsoleWindow.cpp:488
 #: src/kvirc/ui/KviConsoleWindow.cpp:523
+#: src/modules/setup/SetupWizard.cpp:722
+#: src/modules/logview/LogViewWindow.cpp:521
 msgid "&Yes"
 msgstr "&Ja"
 
@@ -668,11 +679,11 @@ msgstr "(Passt auf"
 msgid "(None)"
 msgstr "(Keine)"
 
-#: src/modules/links/LinksWindow.cpp:298
 #: src/kvirc/ui/KviChannelWindow.cpp:1718
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:678
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:691
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:777
+#: src/modules/links/LinksWindow.cpp:298
 msgid "(Unknown)"
 msgstr "(Unbekannt)"
 
@@ -799,7 +810,8 @@ msgstr ""
 "<b>%1</b> (<u><font color=\"blue\"><nowrap>%2</nowrap></font></u>)"
 "<hr>Doppelklicken, um %3 zu betreten<br>Rechtsklicken für weitere Optionen"
 
-#: src/modules/tip/libkvitip.cpp:179 src/modules/tip/libkvitip.cpp:216
+#: src/modules/tip/libkvitip.cpp:179
+#: src/modules/tip/libkvitip.cpp:216
 msgid "<b>Can't find any tip... :(</b>"
 msgstr "<b>Kann keinen Tip finden... :(</b>"
 
@@ -871,10 +883,10 @@ msgstr ""
 "<br><b>Soll das Standard-Skript wiederhergestellt werden?</b><br><br><font "
 "size=\"-1\">Tipp: Wenn Sie ein Skriptschreiber sind und einige "
 "Skriptfähigkeiten absichtlich gelöscht haben, können Sie getrost auf »Nein, "
-"und nicht wieder fragen« klicken, ansonsten ist es eine gute Idee auf »Ja« zu "
-"klicken. Wenn Sie trotzdem »Nein« wählen sollten, kann das Standard-Skript "
-"jederzeit mit dem zugehörigem Eintrag im »Skript«-Menü wiederhergestellt "
-"werden.</font>"
+"und nicht wieder fragen« klicken, ansonsten ist es eine gute Idee auf »Ja« "
+"zu klicken. Wenn Sie trotzdem »Nein« wählen sollten, kann das Standard-"
+"Skript jederzeit mit dem zugehörigem Eintrag im »Skript«-Menü "
+"wiederhergestellt werden.</font>"
 
 #: src/kvirc/ui/KviStatusBar.cpp:336
 msgid "<b>Right click</b> to add/remove applets"
@@ -1026,7 +1038,8 @@ msgstr "Eine wirklich schwache Texttransformationsfunktion :D"
 msgid "A really lame text transformation engine: Light Version."
 msgstr "Eine wirklich schwache Texttransformationsfunktion: Light-Version"
 
-#: src/kvirc/ui/KviSelectors.cpp:502 src/kvirc/ui/KviSelectors.cpp:857
+#: src/kvirc/ui/KviSelectors.cpp:502
+#: src/kvirc/ui/KviSelectors.cpp:857
 msgid "A&dd"
 msgstr "&Hinzufügen"
 
@@ -1118,8 +1131,8 @@ msgstr "Adresse:"
 msgid "Admin/protected nicks listing"
 msgstr "Admin/geschützte Nicks Liste"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:444
 #: src/kvirc/ui/KviOptionsWidget.cpp:742
+#: src/kvirc/kernel/KviDefaultScript.cpp:444
 msgid "Advanced..."
 msgstr "Erweitert ..."
 
@@ -1226,8 +1239,8 @@ msgstr "Wurde voice'd"
 #: src/modules/config/libkviconfig.cpp:593
 msgid "An error has occured while trying to save the config file with id '%Q'"
 msgstr ""
-"Ein Fehler trat auf, während des Versuchs, die Konfigurationsdatei mit Id ›%"
-"Q‹ zu speichern"
+"Ein Fehler trat auf, während des Versuchs, die Konfigurationsdatei mit Id "
+"›%Q‹ zu speichern"
 
 #: src/modules/str/libkvistr.cpp:2456
 msgid "An error occured during signature verification."
@@ -1337,8 +1350,8 @@ msgstr "Der Avatardownload für %Q!%Q@%Q und URL %Q ist fehlgeschlagen: %Q."
 msgid "Average hops: ~%d.%d"
 msgstr "Durchschnittliche Hops: ~%d.%d"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:98
 #: src/kvirc/ui/KviStatusBar.cpp:583
+#: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "Abwesend"
 
@@ -1533,7 +1546,8 @@ msgstr "Eingebautes $icon(%1) [Index %2]"
 msgid "Builtin images"
 msgstr "Eingebaute Bilder"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:95 src/kvirc/ui/KviConsoleWindow.cpp:97
+#: src/kvirc/ui/KviConsoleWindow.cpp:95
+#: src/kvirc/ui/KviConsoleWindow.cpp:97
 msgid "CONSOLE"
 msgstr "KONSOLE"
 
@@ -1646,10 +1660,6 @@ msgstr "Kann eine eingebaute Klasse nicht zwangsweise beenden"
 msgid "Can't load certificate from public key file %s"
 msgstr "Kann Zertifikat nicht aus der öffentlichen Schlüsseldatei %s laden"
 
-#: src/modules/log/libkvilog.cpp:121
-msgid "Can't log to file %Q"
-msgstr "Kann nicht in Datei %Q loggen"
-
 #: src/kvilib/net/KviHttpRequest.cpp:556
 msgid "Can't open file \"%1\" for writing"
 msgstr "Kann die Datei »%1« nicht zum Schreiben öffnen"
@@ -1662,17 +1672,21 @@ msgstr "Kann die Datei %1 nicht zum Schreiben öffnen"
 msgid "Can't open file for appending"
 msgstr "Kann die Datei nicht zum Datenanhängen öffnen"
 
+#: src/kvilib/core/KviError.cpp:143
 #: src/kvilib/file/KviPackageReader.cpp:137
-#: src/kvilib/file/KviPackageReader.cpp:397 src/kvilib/core/KviError.cpp:143
+#: src/kvilib/file/KviPackageReader.cpp:397
 msgid "Can't open file for reading"
 msgstr "Kann die Datei nicht zum Lesen öffnen"
 
-#: src/kvilib/file/KviPackageWriter.cpp:381 src/kvilib/core/KviError.cpp:140
+#: src/kvilib/core/KviError.cpp:140
+#: src/kvilib/file/KviPackageWriter.cpp:381
 msgid "Can't open file for writing"
 msgstr "Kann die Datei nicht zum Schreiben öffnen"
 
-#: src/modules/file/libkvifile.cpp:826 src/modules/file/libkvifile.cpp:915
-#: src/modules/file/libkvifile.cpp:1015 src/modules/file/libkvifile.cpp:1412
+#: src/modules/file/libkvifile.cpp:826
+#: src/modules/file/libkvifile.cpp:915
+#: src/modules/file/libkvifile.cpp:1015
+#: src/modules/file/libkvifile.cpp:1412
 msgid "Can't open the file \"%Q\" for reading"
 msgstr "Kann die Datei »%Q« nicht zum Lesen öffnen"
 
@@ -1701,8 +1715,8 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnection.cpp:944
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr ""
-"Kann die lokale Hostadresse nicht auflösen, nutze vom Benutzer vorgegebene (%"
-"Q)"
+"Kann die lokale Hostadresse nicht auflösen, nutze vom Benutzer vorgegebene "
+"(%Q)"
 
 #: src/kvilib/core/KviError.cpp:137
 msgid "Can't resolve the localhost name"
@@ -1775,17 +1789,19 @@ msgstr "Kann hörenden Socket nicht erstelln: listen() fehlgeschlagen"
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Kann ident-Service auf IPv6 nicht starten: socket() fehlgeschlagen"
 
-#: src/modules/avatar/libkviavatar.cpp:109
-#: src/modules/setup/SetupWizard.cpp:87
-#: src/kvirc/kernel/KviDefaultScript.cpp:449
-#: src/kvirc/kernel/KviCoreActions.cpp:809 src/kvirc/ui/KviImageDialog.cpp:156
+#: src/kvirc/ui/KviImageDialog.cpp:156
 #: src/kvirc/ui/KviMaskEditor.cpp:90
-#: src/kvilib/file/KviPackageIOEngine.cpp:135
+#: src/kvirc/kernel/KviCoreActions.cpp:809
+#: src/kvirc/kernel/KviDefaultScript.cpp:449
+#: src/modules/setup/SetupWizard.cpp:87
+#: src/modules/avatar/libkviavatar.cpp:109
 #: src/kvilib/tal/KviTalWizard.cpp:181
+#: src/kvilib/file/KviPackageIOEngine.cpp:135
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/modules/setup/SetupWizard.cpp:947 src/modules/setup/SetupWizard.cpp:978
+#: src/modules/setup/SetupWizard.cpp:947
+#: src/modules/setup/SetupWizard.cpp:978
 #, c-format
 msgid ""
 "Cannot create directory %s.\n"
@@ -1883,10 +1899,10 @@ msgstr "Nick ändern"
 msgid "Changed text encoding to %Q"
 msgstr "Die Textkodierung wurde auf %Q geändert"
 
+#: src/kvirc/kernel/KviActionManager.cpp:67
+#: src/modules/list/ListWindow.cpp:244
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:71
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:78
-#: src/modules/list/ListWindow.cpp:244
-#: src/kvirc/kernel/KviActionManager.cpp:67
 msgid "Channel"
 msgstr "Channel"
 
@@ -2028,7 +2044,8 @@ msgstr "Beim Starten prüfen"
 msgid "Choose Avatar - KVIrc"
 msgstr "Avater auswählen - KVIrc"
 
-#: src/kvirc/ui/KviIrcView.cpp:2113 src/kvirc/ui/KviIrcView.cpp:2115
+#: src/kvirc/ui/KviIrcView.cpp:2113
+#: src/kvirc/ui/KviIrcView.cpp:2115
 msgid "Choose Font"
 msgstr "Schriftart auswählen"
 
@@ -2052,7 +2069,8 @@ msgstr "Verzeichnis auswählen - KVIrc"
 msgid "Choose a Download Folder - KVIrc Setup"
 msgstr "Downloadverzeichnis auswählen - KVIrc Setup"
 
-#: src/kvirc/ui/KviSelectors.cpp:462 src/kvirc/ui/KviSelectors.cpp:468
+#: src/kvirc/ui/KviSelectors.cpp:462
+#: src/kvirc/ui/KviSelectors.cpp:468
 msgid "Choose a File - KVIrc"
 msgstr "Datei auswählen - KVIrc"
 
@@ -2060,7 +2078,8 @@ msgstr "Datei auswählen - KVIrc"
 msgid "Choose a servers.ini file"
 msgstr "servers.ini-Datei auswählen"
 
-#: src/modules/avatar/libkviavatar.cpp:149 src/kvirc/ui/KviSelectors.cpp:352
+#: src/kvirc/ui/KviSelectors.cpp:352
+#: src/modules/avatar/libkviavatar.cpp:149
 msgid "Choose an Image File - KVIrc"
 msgstr "Bilddatei auswählen - KVIrc"
 
@@ -2068,7 +2087,8 @@ msgstr "Bilddatei auswählen - KVIrc"
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Verzeichnis der alten Konfiguration auswählen – KVIrc Setup"
 
-#: src/modules/list/ListWindow.cpp:389 src/modules/list/ListWindow.cpp:413
+#: src/modules/list/ListWindow.cpp:389
+#: src/modules/list/ListWindow.cpp:413
 msgid "Choose filename"
 msgstr "Datei auswählen"
 
@@ -2118,10 +2138,10 @@ msgstr "Letzte-Kanäle-Liste leeren"
 msgid "Clear Recent Nicks List"
 msgstr "Letzte-Nicknames-Liste leeren"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1480
-#: src/modules/options/OptionsWidget_servers.cpp:1496
 #: src/kvirc/kernel/KviCoreActions.cpp:877
 #: src/kvirc/kernel/KviCoreActions.cpp:891
+#: src/modules/options/OptionsWidget_servers.cpp:1480
+#: src/modules/options/OptionsWidget_servers.cpp:1496
 msgid "Clear Recent Servers List"
 msgstr "Letzte-Server-Liste leeren"
 
@@ -2137,10 +2157,11 @@ msgstr "Klicken zum Öffnen der Verknüpfung"
 msgid "Clipboard"
 msgstr "Zwischenablage"
 
+#: src/kvirc/ui/KviCtcpPageDialog.cpp:59
+#: src/kvirc/ui/KviModeEditor.cpp:240
 #: src/modules/tip/libkvitip.cpp:88
-#: src/modules/theme/ThemeManagementDialog.cpp:229
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:119
-#: src/kvirc/ui/KviCtcpPageDialog.cpp:59 src/kvirc/ui/KviModeEditor.cpp:240
+#: src/modules/theme/ThemeManagementDialog.cpp:229
 msgid "Close"
 msgstr "Schließen"
 
@@ -2188,18 +2209,18 @@ msgstr "Gemeinsame Channels mit %1: %2"
 msgid "Common channels: %2"
 msgstr "Gemeinsame Channels: %2"
 
-#: src/kvilib/file/KviPackageWriter.cpp:237
 #: src/kvilib/file/KviPackageReader.cpp:241
+#: src/kvilib/file/KviPackageWriter.cpp:237
 msgid "Compression library error"
 msgstr "Es ist ein Komprimierungsbibliothekenfehler aufgetreten"
 
-#: src/kvilib/file/KviPackageWriter.cpp:226
 #: src/kvilib/file/KviPackageReader.cpp:230
+#: src/kvilib/file/KviPackageWriter.cpp:226
 msgid "Compression library initialization error"
 msgstr "Die Initialisierung der Komprimierungsbibliothek ist fehlgeschlagen"
 
-#: src/kvilib/file/KviPackageWriter.cpp:305
 #: src/kvilib/file/KviPackageReader.cpp:316
+#: src/kvilib/file/KviPackageWriter.cpp:305
 msgid "Compression library internal error"
 msgstr "Es ist ein interner Fehler in der Komprimierungsbibliothek aufgetreten"
 
@@ -2235,7 +2256,8 @@ msgstr "Thema konfigurieren..."
 msgid "Confirm Multiline Message"
 msgstr "Mehrzeilige Nachricht bestätigen"
 
-#: src/kvirc/ui/KviMainWindow.cpp:840 src/kvirc/ui/KviConsoleWindow.cpp:485
+#: src/kvirc/ui/KviMainWindow.cpp:840
+#: src/kvirc/ui/KviConsoleWindow.cpp:485
 #: src/kvirc/ui/KviConsoleWindow.cpp:520
 msgid "Confirmation - KVIrc"
 msgstr "Bestätigung - KVIrc"
@@ -2256,7 +2278,8 @@ msgstr "Verbinden/Trennen"
 msgid "Connected since"
 msgstr "Verbunden seit"
 
-#: src/modules/list/ListWindow.cpp:322 src/modules/links/LinksWindow.cpp:132
+#: src/modules/list/ListWindow.cpp:322
+#: src/modules/links/LinksWindow.cpp:132
 msgid "Connected to %1 (%2)"
 msgstr "Verbunden zu %1 (%2)"
 
@@ -2277,7 +2300,8 @@ msgstr "Verbindungszeitmesser"
 msgid "Connection attempt failed [%s]"
 msgstr "Verbindungsversuch fehlgeschlagen [%s]"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1113 src/kvirc/ui/KviStatusBar.cpp:682
+#: src/kvirc/ui/KviStatusBar.cpp:682
+#: src/kvirc/ui/KviConsoleWindow.cpp:1113
 msgid "Connection in progress..."
 msgstr "Verbindungsaufbau läuft ..."
 
@@ -2302,7 +2326,8 @@ msgstr "Verbindung wurde beendet [%s (%s:%u)]"
 msgid "Connection thru HTTP proxy failed"
 msgstr "Die Verbindung über den HTTP-Proxy ist fehlgeschlagen"
 
-#: src/kvilib/net/KviHttpRequest.cpp:390 src/kvilib/core/KviError.cpp:94
+#: src/kvilib/net/KviHttpRequest.cpp:390
+#: src/kvilib/core/KviError.cpp:94
 msgid "Connection timed out"
 msgstr "Die Verbindung wurde aufgrund einer Zeitüberschreitung geschlossen."
 
@@ -2400,7 +2425,8 @@ msgstr "Verschlüsselung"
 msgid "Crypto++ threw the following exception: "
 msgstr "Crypto++ warf die folgende Ausnahme: "
 
-#: src/modules/fish/libkvifish.cpp:139 src/modules/fish/libkvifish.cpp:280
+#: src/modules/fish/libkvifish.cpp:139
+#: src/modules/fish/libkvifish.cpp:280
 msgid "Crypto++ threw the following exception: %1"
 msgstr "Crypto++ warf die folgende Ausnahme: %1"
 
@@ -2496,7 +2522,8 @@ msgstr "Aktuelle Übertragungsverschlüsselung"
 msgid "Current window is not a channel"
 msgstr "Aktuelles Fenster ist kein Channel"
 
-#: src/kvirc/ui/KviWindow.cpp:711 src/kvirc/ui/KviWindow.cpp:750
+#: src/kvirc/ui/KviWindow.cpp:711
+#: src/kvirc/ui/KviWindow.cpp:750
 #: src/kvirc/ui/KviWindow.cpp:798
 msgid "Current: "
 msgstr "Aktuell: "
@@ -2629,7 +2656,8 @@ msgstr "Opers können nicht gekickt werden (kann nur vom Staff gesetzt werden)"
 msgid "Discard Changes"
 msgstr "Änderungen verwerfen"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:602 src/kvirc/ui/KviMenuBar.cpp:229
+#: src/kvirc/ui/KviMenuBar.cpp:229
+#: src/kvirc/kernel/KviCoreActions.cpp:602
 msgid "Disconnect"
 msgstr "Trennen"
 
@@ -2836,7 +2864,8 @@ msgstr "Ende der Kanal %Q für \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Ende der Hilfseinträge über %Q"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:883 src/kvirc/ui/KviChannelWindow.cpp:1984
+#: src/kvirc/ui/KviChannelWindow.cpp:1984
+#: src/kvirc/ui/KviQueryWindow.cpp:883
 msgid "End of log"
 msgstr "Ende des Logs"
 
@@ -2980,8 +3009,8 @@ msgstr "Laden des ausgewählten Bildschirmfotos fehlgeschlagen"
 msgid "Failed to make the directory %Q"
 msgstr "Erstellen des Verzeichnisses %Q fehlgeschlagen"
 
-#: src/kvilib/file/KviPackageWriter.cpp:175
 #: src/kvilib/file/KviPackageReader.cpp:192
+#: src/kvilib/file/KviPackageWriter.cpp:175
 msgid "Failed to open a source file for reading"
 msgstr "Öffnen einer Quelldatei zum Lesen fehlgeschlagen"
 
@@ -3007,11 +3036,13 @@ msgstr ""
 "Umbenennen der existierenden Datei fehlgeschlagen, bitte die Datei manuell "
 "umbenennen und erneut versuchen"
 
-#: src/kvirc/kernel/KviOptions.cpp:1112 src/kvirc/kernel/KviOptions.cpp:1143
+#: src/kvirc/kernel/KviOptions.cpp:1112
+#: src/kvirc/kernel/KviOptions.cpp:1143
 msgid "Failed to save one of the theme images"
 msgstr "Speichern eines der Themenbilder fehlgeschlagen"
 
-#: src/kvirc/kernel/KviTheme.cpp:248 src/kvirc/kernel/KviTheme.cpp:259
+#: src/kvirc/kernel/KviTheme.cpp:248
+#: src/kvirc/kernel/KviTheme.cpp:259
 #: src/kvirc/kernel/KviTheme.cpp:270
 msgid "Failed to save the screenshot image"
 msgstr "Speichern des Bildschirmfotos fehlgeschlagen"
@@ -3050,11 +3081,13 @@ msgstr ""
 msgid "Feature not available"
 msgstr "Diese Funktion ist nicht verfügbar"
 
-#: src/modules/setup/SetupWizard.cpp:391 src/kvirc/ui/KviConsoleWindow.cpp:297
+#: src/kvirc/ui/KviConsoleWindow.cpp:297
+#: src/modules/setup/SetupWizard.cpp:391
 msgid "Female"
 msgstr "weiblich"
 
-#: src/modules/fish/libkvifish.cpp:181 src/modules/fish/libkvifish.cpp:284
+#: src/modules/fish/libkvifish.cpp:181
+#: src/modules/fish/libkvifish.cpp:284
 msgid ""
 "FiSH has been compiled without ssl and crypto++ support, unable to proceed"
 msgstr ""
@@ -3082,7 +3115,8 @@ msgstr ""
 "FiSH: Meinen öffentlichen DH1080-Schlüssel an %1 gesendet, warte auf "
 "Antwort ..."
 
-#: src/modules/fish/libkvifish.cpp:245 src/modules/fish/libkvifish.cpp:269
+#: src/modules/fish/libkvifish.cpp:245
+#: src/modules/fish/libkvifish.cpp:269
 msgid "FiSH: error verificating peer public key (size=%1)"
 msgstr ""
 "FiSH: Fehler beim Überprüfen des öffentlichen Schlüssels der Gegenseite "
@@ -3092,7 +3126,8 @@ msgstr ""
 msgid "Fifo"
 msgstr "FIFO"
 
-#: src/kvirc/ui/KviFileDialog.cpp:120 src/kvirc/ui/KviFileDialog.cpp:164
+#: src/kvirc/ui/KviFileDialog.cpp:120
+#: src/kvirc/ui/KviFileDialog.cpp:164
 msgid "File Exists - KVIrc"
 msgstr "Datei existiert bereits - KVIrc"
 
@@ -3104,11 +3139,11 @@ msgstr "Es ist ein Datei-Eingabe-/Ausgabe-Fehler aufgetreten"
 #, c-format
 msgid "File I/O error while trying to use the private key file %s"
 msgstr ""
-"Datei-E/A-Fehler während des Versuchs, die private Schlüsseldatei zu nutzen %"
-"s"
+"Datei-E/A-Fehler während des Versuchs, die private Schlüsseldatei zu nutzen "
+"%s"
 
-#: src/modules/str/libkvistr.cpp:2397
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:540
+#: src/modules/str/libkvistr.cpp:2397
 #, c-format
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
@@ -3151,7 +3186,8 @@ msgstr "Dateischreibfehler"
 msgid "Filter:"
 msgstr "Filter:"
 
-#: src/modules/setup/SetupWizard.cpp:86 src/kvilib/tal/KviTalWizard.cpp:234
+#: src/modules/setup/SetupWizard.cpp:86
+#: src/kvilib/tal/KviTalWizard.cpp:234
 msgid "Finish"
 msgstr "Abschließen"
 
@@ -3204,7 +3240,8 @@ msgstr "Format"
 msgid "Forward to another channel on uninvited"
 msgstr "Zu einem anderen Channel weiterleiten, wenn nicht eingeladen"
 
-#: src/modules/help/HelpWindow.cpp:218 src/modules/help/HelpWindow.cpp:227
+#: src/modules/help/HelpWindow.cpp:218
+#: src/modules/help/HelpWindow.cpp:227
 msgid "Full Text Search"
 msgstr "Volltextsuche"
 
@@ -3224,7 +3261,8 @@ msgstr "Verstärkung (Gain)"
 msgid "Gamma"
 msgstr "Gamma"
 
-#: src/modules/setup/SetupWizard.cpp:385 src/kvirc/ui/KviConsoleWindow.cpp:295
+#: src/kvirc/ui/KviConsoleWindow.cpp:295
+#: src/modules/setup/SetupWizard.cpp:385
 msgid "Gender:"
 msgstr "Geschlecht:"
 
@@ -3292,7 +3330,8 @@ msgstr "Halb-Op-Modusänderung"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Header zu lang: Er überschritt 4096 Byte"
 
-#: src/kvirc/kernel/KviOptions.cpp:864 src/kvilib/tal/KviTalWizard.cpp:193
+#: src/kvirc/kernel/KviOptions.cpp:864
+#: src/kvilib/tal/KviTalWizard.cpp:193
 msgid "Help"
 msgstr "Hilfe"
 
@@ -3486,7 +3525,8 @@ msgstr "Symboltabelle"
 msgid "Ident message"
 msgstr "Ident-Nachricht"
 
-#: src/modules/ident/libkviident.cpp:403 src/modules/ident/libkviident.cpp:423
+#: src/modules/ident/libkviident.cpp:403
+#: src/modules/ident/libkviident.cpp:423
 msgid "Identd accepting connection"
 msgstr "Identd akzeptiert die Verbindung"
 
@@ -3592,7 +3632,8 @@ msgstr "eingehender Verkehr"
 msgid "Incomplete LINKS result, no stats available"
 msgstr "Inkompletes LINKS-Resultat, keine stats verfügbar"
 
-#: src/kvirc/ui/KviInput.cpp:118 src/kvirc/ui/KviInput.cpp:407
+#: src/kvirc/ui/KviInput.cpp:118
+#: src/kvirc/ui/KviInput.cpp:407
 msgid "Input History Disabled"
 msgstr "Eingabeverlauf deaktiviert"
 
@@ -3625,7 +3666,8 @@ msgstr ""
 msgid "Integer parameter expected"
 msgstr "Es wurde ein Ganzzahl-Parameter erwartet"
 
-#: src/kvilib/file/KviPackageWriter.cpp:469 src/kvilib/core/KviError.cpp:52
+#: src/kvilib/core/KviError.cpp:52
+#: src/kvilib/file/KviPackageWriter.cpp:469
 msgid "Internal error"
 msgstr "Interner Fehler"
 
@@ -3916,7 +3958,8 @@ msgstr ""
 "KVIrc wurde ohne OpenSSL- oder Crypto++-Unterstützung kompiliert. $str."
 "digest-Funktion unterstützt nur MD4, MD5 und SHA1."
 
-#: src/modules/str/libkvistr.cpp:2311 src/modules/str/libkvistr.cpp:2461
+#: src/modules/str/libkvistr.cpp:2311
+#: src/modules/str/libkvistr.cpp:2461
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "KVIrc wurde ohne SSL-Unterstützung kompiliert."
 
@@ -3970,13 +4013,15 @@ msgstr "Latenz-Meter deaktiviert"
 msgid "Lag: %1.%2%3"
 msgstr "Latenz: %1.%2%3"
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:284 src/kvirc/ui/KviIrcToolBar.cpp:324
+#: src/kvirc/ui/KviStatusBarApplet.cpp:284
+#: src/kvirc/ui/KviIrcToolBar.cpp:324
 #: src/kvirc/ui/KviIrcToolBar.cpp:396
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr "Latenz: %d.%d%d"
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:337 src/kvirc/ui/KviIrcToolBar.cpp:326
+#: src/kvirc/ui/KviStatusBarApplet.cpp:337
+#: src/kvirc/ui/KviIrcToolBar.cpp:326
 #: src/kvirc/ui/KviIrcToolBar.cpp:398
 msgid "Lag: ?.??"
 msgstr "Latenz: ?.??"
@@ -4094,7 +4139,8 @@ msgstr "Ort:"
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Logge ein als %Q!%Q :%Q"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1116 src/kvirc/ui/KviStatusBar.cpp:688
+#: src/kvirc/ui/KviStatusBar.cpp:688
+#: src/kvirc/ui/KviConsoleWindow.cpp:1116
 msgid "Login in progress..."
 msgstr "Einloggvorgang läuft ..."
 
@@ -4147,7 +4193,8 @@ msgstr "Transportverbindung auf niedriger Ebene hergestellt [%s (%s:%u)]"
 msgid "Make KVIrc default IRC client"
 msgstr "KVIrc als Standard-IRC-Programm einstellen"
 
-#: src/modules/setup/SetupWizard.cpp:392 src/kvirc/ui/KviConsoleWindow.cpp:297
+#: src/kvirc/ui/KviConsoleWindow.cpp:297
+#: src/modules/setup/SetupWizard.cpp:392
 msgid "Male"
 msgstr "männlich"
 
@@ -4325,12 +4372,8 @@ msgstr "Fehlender Aufklappmenü-Name"
 msgid "Missing variable name"
 msgstr "Fehlender Variablennamen"
 
-#: src/modules/log/libkvilog.cpp:108 src/modules/log/libkvilog.cpp:166
-#: src/modules/log/libkvilog.cpp:217
-msgid "Missing window id after the 'w' switch"
-msgstr "Fehlende Fenster-Id nach dem ›w‹-Schalter"
-
-#: src/kvirc/ui/KviMaskEditor.cpp:140 src/kvirc/ui/KviChannelWindow.cpp:163
+#: src/kvirc/ui/KviMaskEditor.cpp:140
+#: src/kvirc/ui/KviChannelWindow.cpp:163
 #: src/kvirc/ui/KviChannelWindow.cpp:182
 msgid "Mode \"%1\" Masks"
 msgstr "Mode \"%1\" Masks"
@@ -4471,10 +4514,11 @@ msgstr "Nickname Problem"
 msgid "Nickname:"
 msgstr "Nickname:"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/ui/KviStatusBar.cpp:553
+#: src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
+#: src/kvirc/kernel/KviApplication.cpp:1019
+#: src/kvirc/kernel/KviApplication.cpp:1092
 msgid "No"
 msgstr "Nein"
 
@@ -4486,7 +4530,8 @@ msgstr "Nein "
 msgid "No DBus type specified"
 msgstr "Kein DBus-Typ angegeben"
 
-#: src/kvirc/ui/KviStatusBar.cpp:695 src/kvirc/ui/KviIrcToolBar.cpp:331
+#: src/kvirc/ui/KviStatusBar.cpp:695
+#: src/kvirc/ui/KviIrcToolBar.cpp:331
 msgid "No IRC context"
 msgstr "Kein IRC-Kontext"
 
@@ -4527,7 +4572,8 @@ msgstr "Es ist kein Channel-Thema gesetzt"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Keine gemeinsamen Channels mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1110 src/kvirc/ui/KviIrcToolBar.cpp:291
+#: src/kvirc/ui/KviIrcToolBar.cpp:291
+#: src/kvirc/ui/KviConsoleWindow.cpp:1110
 msgid "No connection"
 msgstr "Keine Verbindung"
 
@@ -4654,7 +4700,8 @@ msgid "Not away"
 msgstr "Nicht abwesend"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:233
-#: src/kvirc/ui/KviStatusBarApplet.cpp:303 src/kvirc/ui/KviStatusBar.cpp:691
+#: src/kvirc/ui/KviStatusBarApplet.cpp:303
+#: src/kvirc/ui/KviStatusBar.cpp:691
 #: src/kvirc/ui/KviIrcToolBar.cpp:360
 msgid "Not connected"
 msgstr "Nicht verbunden"
@@ -4663,7 +4710,8 @@ msgstr "Nicht verbunden"
 msgid "Not enough parameters"
 msgstr "Es wurden nicht genügend Parameter angegeben"
 
-#: src/kvirc/ui/KviIrcView.cpp:2305 src/kvirc/ui/KviIrcView.cpp:2359
+#: src/kvirc/ui/KviIrcView.cpp:2305
+#: src/kvirc/ui/KviIrcView.cpp:2359
 msgid "Not found"
 msgstr "Nicht gefunden"
 
@@ -4679,7 +4727,8 @@ msgstr "Es ist nichts bekannt über %1"
 msgid "Nothing known about %1 (no connection)"
 msgstr "Es ist nichts bekannt über %1 (keine bestehende Verbindung)"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:139 src/kvirc/ui/KviConsoleWindow.cpp:142
+#: src/kvirc/ui/KviConsoleWindow.cpp:139
+#: src/kvirc/ui/KviConsoleWindow.cpp:142
 msgid "Notify List"
 msgstr "Benachrichtigungsliste"
 
@@ -4697,9 +4746,9 @@ msgid ""
 "does not match (registration mask does not match, or nickname is being used "
 "by someone else)"
 msgstr ""
-"Benachrichtigungsliste: \r!n\r%Q\r scheint online zu sein, aber die Maske [%"
-"Q@\r!h\r%Q\r] stimmt nicht überein (jemand anderes benutzt den Nick oder die "
-"Registrierungsmaske stimmt nicht überein)"
+"Benachrichtigungsliste: \r!n\r%Q\r scheint online zu sein, aber die Maske "
+"[%Q@\r!h\r%Q\r] stimmt nicht überein (jemand anderes benutzt den Nick oder "
+"die Registrierungsmaske stimmt nicht überein)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1205
 msgid ""
@@ -4707,8 +4756,8 @@ msgid ""
 "does not match (watch: registration mask does not match, or nickname is "
 "being used by someone else)"
 msgstr ""
-"Benachrichtigungsliste: \r!n\r%Q\r scheint online, aber die Maske [%Q@\r!h\r%"
-"Q\r] passt nicht (Beobachtung: Jemand anderes benutzt den Nick oder die "
+"Benachrichtigungsliste: \r!n\r%Q\r scheint online, aber die Maske [%Q@\r!h\r"
+"%Q\r] passt nicht (Beobachtung: Jemand anderes benutzt den Nick oder die "
 "Registrierungsmaske passt nicht)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:875
@@ -4733,8 +4782,8 @@ msgstr "Benachrichtigungsliste: Beobachtungslisteneinträge für %Q hinzugefügt
 #, c-format
 msgid "Notify list: Broken USERHOST reply from the server? (%s)"
 msgstr ""
-"Benachrichtigungsliste: Fehlerhafte USERHOST-Antwort vom Server empfangen? (%"
-"s)"
+"Benachrichtigungsliste: Fehlerhafte USERHOST-Antwort vom Server empfangen? "
+"(%s)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:504
 #: src/kvirc/kernel/KviNotifyList.cpp:973
@@ -4850,8 +4899,9 @@ msgstr "Melde Avatar ›%Q‹ an %Q"
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: lokaler IRC-Operator (LOCOP)"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:808 src/kvirc/ui/KviHtmlDialog.cpp:91
 #: src/kvirc/ui/KviCryptController.cpp:127
+#: src/kvirc/ui/KviHtmlDialog.cpp:91
+#: src/kvirc/kernel/KviCoreActions.cpp:808
 msgid "OK"
 msgstr "OK"
 
@@ -4859,7 +4909,8 @@ msgstr "OK"
 msgid "Octet stream (unknown)"
 msgstr "Acht-Bit-Datenstrom (unbekannt)"
 
-#: src/kvirc/ui/KviIrcView.cpp:2130 src/kvirc/ui/KviImageDialog.cpp:160
+#: src/kvirc/ui/KviImageDialog.cpp:160
+#: src/kvirc/ui/KviIrcView.cpp:2130
 #: src/kvirc/ui/KviMaskEditor.cpp:85
 msgid "Ok"
 msgstr "OK"
@@ -4953,8 +5004,8 @@ msgstr "Die Operation wurden abgebrochen"
 msgid "Operation cancelled"
 msgstr "Die Operation wurde abgebrochen"
 
-#: src/modules/iograph/libkviiograph.cpp:277
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: src/modules/iograph/libkviiograph.cpp:277
 msgid "Ops.. internal error"
 msgstr "Ups... Interner Fehler"
 
@@ -5251,7 +5302,8 @@ msgstr ""
 msgid "Popups"
 msgstr "Aufklappmenüs"
 
-#: src/kvirc/ui/KviIrcView.cpp:2289 src/kvirc/ui/KviIrcView.cpp:2342
+#: src/kvirc/ui/KviIrcView.cpp:2289
+#: src/kvirc/ui/KviIrcView.cpp:2342
 msgid "Pos %1"
 msgstr "Pos. %1"
 
@@ -5487,16 +5539,19 @@ msgstr "RAW-Events"
 msgid "Raw data to server"
 msgstr "RAW-Daten an den Server"
 
-#: src/kvirc/ui/KviMaskEditor.cpp:200 src/kvirc/ui/KviSelectors.cpp:504
+#: src/kvirc/ui/KviSelectors.cpp:504
 #: src/kvirc/ui/KviSelectors.cpp:859
+#: src/kvirc/ui/KviMaskEditor.cpp:200
 msgid "Re&move"
 msgstr "&Löschen"
 
-#: src/modules/file/libkvifile.cpp:851 src/modules/file/libkvifile.cpp:941
+#: src/modules/file/libkvifile.cpp:851
+#: src/modules/file/libkvifile.cpp:941
 msgid "Read error for file %Q"
 msgstr "Lesefehler bei Datei %Q"
 
-#: src/modules/file/libkvifile.cpp:842 src/modules/file/libkvifile.cpp:932
+#: src/modules/file/libkvifile.cpp:842
+#: src/modules/file/libkvifile.cpp:932
 msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
@@ -5682,7 +5737,8 @@ msgstr "Links abfragen"
 msgid "Request List"
 msgstr "Liste abfragen"
 
-#: src/modules/list/ListWindow.cpp:459 src/modules/links/LinksWindow.cpp:419
+#: src/modules/list/ListWindow.cpp:459
+#: src/modules/links/LinksWindow.cpp:419
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -5806,7 +5862,8 @@ msgstr "Aktionen bezüglich der Skripte"
 msgid "Scroll up to read from the last read line"
 msgstr "Hochscrollen, um nach der zuletzt gelesenen Zeile weiter zu lesen"
 
-#: src/modules/help/HelpWindow.cpp:90 src/kvirc/kernel/KviOptions.cpp:843
+#: src/kvirc/kernel/KviOptions.cpp:843
+#: src/modules/help/HelpWindow.cpp:90
 msgid "Search"
 msgstr "Suchen"
 
@@ -5915,8 +5972,8 @@ msgstr "Zielhostdaten wurden gesendet, es wird auf Bestätigung gewartet"
 msgid "Sent username and password, waiting for acknowledgement"
 msgstr "Benutzername und Passwort wurden gesendet, warte auf Bestätigung..."
 
-#: src/kvirc/kernel/KviCoreActions.cpp:496
 #: src/kvirc/ui/KviStatusBarApplet.cpp:606
+#: src/kvirc/kernel/KviCoreActions.cpp:496
 msgid "Separator"
 msgstr "Trenner"
 
@@ -6012,7 +6069,8 @@ msgstr "&Nichts setzen"
 msgid "Set at"
 msgstr "Gesetzt um"
 
-#: src/kvirc/ui/KviMaskEditor.cpp:192 src/kvirc/ui/KviTopicWidget.cpp:371
+#: src/kvirc/ui/KviTopicWidget.cpp:371
+#: src/kvirc/ui/KviMaskEditor.cpp:192
 msgid "Set by"
 msgstr "Gesetzt von"
 
@@ -6044,7 +6102,8 @@ msgstr "Einrichtung abgebrochen"
 msgid "Sharpness"
 msgstr "Schärfe"
 
-#: src/kvirc/ui/KviMainWindow.cpp:956 src/kvirc/ui/KviMainWindow.cpp:974
+#: src/kvirc/ui/KviMainWindow.cpp:956
+#: src/kvirc/ui/KviMainWindow.cpp:974
 msgid "Show %1"
 msgstr "%1 anzeigen"
 
@@ -6057,7 +6116,8 @@ msgstr "&Piktogrammtabelle anzeigen"
 msgid "Show Filter"
 msgstr "Filter"
 
-#: src/kvirc/ui/KviInput.cpp:113 src/kvirc/ui/KviInput.cpp:401
+#: src/kvirc/ui/KviInput.cpp:113
+#: src/kvirc/ui/KviInput.cpp:401
 msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
 msgstr "Verlauf anzeigen<br>&lt;Strg+Bild hoch&gt;"
 
@@ -6357,7 +6417,8 @@ msgstr "Starte identd-Service (IPv4/v6 im IPv6-Namensraum)"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Starte identd-Service (IPv4/v6 in separaten Namensräumen)"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:867 src/kvirc/ui/KviChannelWindow.cpp:1968
+#: src/kvirc/ui/KviChannelWindow.cpp:1968
+#: src/kvirc/ui/KviQueryWindow.cpp:867
 msgid "Starting last log"
 msgstr "Letztes Log starten"
 
@@ -6396,11 +6457,13 @@ msgstr "Zeichenkettenoptionen (Zeichenkettenwert)"
 msgid "Strip colors"
 msgstr "Farben entfernen"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:326 src/kvirc/ui/KviMenuBar.cpp:131
+#: src/kvirc/ui/KviMenuBar.cpp:131
+#: src/kvirc/kernel/KviCoreActions.cpp:326
 msgid "Subscribe to the Mailing List"
 msgstr "Mailing-Liste abbonnieren"
 
-#: src/kvilib/net/KviHttpRequest.cpp:253 src/kvilib/core/KviError.cpp:50
+#: src/kvilib/net/KviHttpRequest.cpp:253
+#: src/kvilib/core/KviError.cpp:50
 msgid "Success"
 msgstr "Erfolg"
 
@@ -6484,7 +6547,8 @@ msgstr "Die Aktion »%Q« existiert nicht"
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Der Aktionsparameter konnte nicht zu einem Index ausgewertet werden"
 
-#: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
+#: src/kvilib/net/KviHttpRequest.cpp:822
+#: src/kvilib/net/KviHttpRequest.cpp:964
 #, fuzzy
 msgid "The amount of received data exceeds expected length"
 msgstr "Der Datenstrom überschreitet die maximale Länge"
@@ -6548,16 +6612,16 @@ msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
 msgstr ""
-"Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht (%"
-"Q) zu verschlüsseln: %Q, keine Daten an den Server gesendet"
+"Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht "
+"(%Q) zu verschlüsseln: %Q, keine Daten an den Server gesendet"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:640
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
 msgstr ""
-"Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht (%"
-"Q): %s zu verschlüsseln: es wurden keine Daten an Server gesendet"
+"Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht "
+"(%Q): %s zu verschlüsseln: es wurden keine Daten an Server gesendet"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:305
 msgid "The current network is %Q"
@@ -6577,7 +6641,8 @@ msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 "Der Verschlüsselungsschlüssel war keine gültige hexadezimale Zeichenkette"
 
-#: src/kvirc/ui/KviFileDialog.cpp:118 src/kvirc/ui/KviFileDialog.cpp:162
+#: src/kvirc/ui/KviFileDialog.cpp:118
+#: src/kvirc/ui/KviFileDialog.cpp:162
 msgid "The file %1 already exists.<br>Do you wish to overwrite it?"
 msgstr "Die Datei %1 existiert bereits.<br>Soll sie überschrieben werden?"
 
@@ -6595,8 +6660,8 @@ msgid ""
 "The following CTCP PING reply has a broken time identifier \"%S\", don't "
 "trust the displayed time"
 msgstr ""
-"Die nachfolgende CTCP PING-Antwort hat einen fehlerhaften Zeitbezeichner »%"
-"S«: man sollte der angezeigten Zeit nicht vertrauen"
+"Die nachfolgende CTCP PING-Antwort hat einen fehlerhaften Zeitbezeichner "
+"»%S«: man sollte der angezeigten Zeit nicht vertrauen"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1086
 msgid "The following CTCP PING reply has unrecognized target \"%Q\""
@@ -6777,7 +6842,8 @@ msgstr ""
 "Die angegebene Bindungsadresse (%Q) ist ungültig (die Netzwerkschnittstelle "
 "scheint nicht aktiv zu sein)"
 
-#: src/modules/file/libkvifile.cpp:594 src/modules/file/libkvifile.cpp:731
+#: src/modules/file/libkvifile.cpp:594
+#: src/modules/file/libkvifile.cpp:731
 msgid "The specified directory does not exist '%Q'"
 msgstr "Das angegebene Verzeichnis existiert nicht ›%Q‹"
 
@@ -6862,8 +6928,8 @@ msgid ""
 "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] changed his nickname to \r!n\r%Q\r"
 msgstr ""
-"Das Ziel dieses Query wurde verloren, aber wiedergefunden, als \r!n\r%Q\r [%"
-"Q@\r!h\r%Q\r] seinen Nick zu \r!n\r%Q\r änderte"
+"Das Ziel dieses Query wurde verloren, aber wiedergefunden, als \r!n\r%Q\r "
+"[%Q@\r!h\r%Q\r] seinen Nick zu \r!n\r%Q\r änderte"
 
 #: src/kvirc/kernel/KviTheme.cpp:80
 #, fuzzy
@@ -6981,7 +7047,8 @@ msgstr "Diese Option is auch verfügbar als"
 msgid "This plugin does not export the desired function."
 msgstr "Dieses Plugin exportiert nicht die gewünschte Funktion."
 
-#: src/kvirc/ui/KviQueryWindow.cpp:577 src/kvirc/ui/KviQueryWindow.cpp:755
+#: src/kvirc/ui/KviQueryWindow.cpp:577
+#: src/kvirc/ui/KviQueryWindow.cpp:755
 msgid "This query has no active targets, no message sent"
 msgstr ""
 "Dieses Query hat keine erreichbaren Ziele; es wurde keine Nachricht gesendet"
@@ -7009,10 +7076,6 @@ msgstr "Diese Stille macht mich verrückt!"
 #: src/modules/my/libkvimy.cpp:47
 msgid "This window has no associated irc context"
 msgstr "Dieses Fenster hat keinen zugeordneten Kontext"
-
-#: src/modules/log/libkvilog.cpp:123
-msgid "This window has no logging capabilities"
-msgstr "Diese Fenster hat keine Logging-Fähigkeiten"
 
 #: src/kvirc/ui/KviMdiManager.cpp:268
 msgid "Tile Met&hod"
@@ -7043,8 +7106,9 @@ msgstr "Tipp für %Q: %Q"
 msgid "Tip: %Q"
 msgstr "Tipp: %Q"
 
-#: src/kvirc/kernel/KviDefaultScript.cpp:436 src/kvirc/ui/KviToolBar.cpp:89
+#: src/kvirc/ui/KviToolBar.cpp:89
 #: src/kvirc/ui/KviMenuBar.cpp:169
+#: src/kvirc/kernel/KviDefaultScript.cpp:436
 msgid "Toolbars"
 msgstr "Werkzeugleisten"
 
@@ -7273,9 +7337,12 @@ msgstr "Der Token wurde nicht erwartet"
 msgid "Unhandled server reply"
 msgstr "Nicht behandelte Serverantwort"
 
-#: src/modules/upnp/RootService.cpp:172 src/kvirc/kernel/KviTheme.cpp:110
-#: src/kvirc/ui/KviTopicWidget.cpp:158 src/kvilib/net/KviSSL.cpp:757
-#: src/kvilib/net/KviSSL.cpp:787 src/kvilib/net/KviSSL.cpp:810
+#: src/kvirc/ui/KviTopicWidget.cpp:158
+#: src/kvirc/kernel/KviTheme.cpp:110
+#: src/modules/upnp/RootService.cpp:172
+#: src/kvilib/net/KviSSL.cpp:757
+#: src/kvilib/net/KviSSL.cpp:787
+#: src/kvilib/net/KviSSL.cpp:810
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -7295,7 +7362,8 @@ msgstr "Unbekanntes Kommando"
 msgid "Unknown engine error"
 msgstr "Unbekannter Routinenfehler"
 
-#: src/modules/rijndael/libkvirijndael.cpp:174 src/kvilib/core/KviError.cpp:51
+#: src/modules/rijndael/libkvirijndael.cpp:174
+#: src/kvilib/core/KviError.cpp:51
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
@@ -7350,7 +7418,8 @@ msgstr ""
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr "Ganzzahl-Operationen (vorzeichenlose Integerkonstante)"
 
-#: src/modules/setup/SetupWizard.cpp:363 src/modules/setup/SetupWizard.cpp:390
+#: src/modules/setup/SetupWizard.cpp:363
+#: src/modules/setup/SetupWizard.cpp:390
 msgid "Unspecified"
 msgstr "Unspezifiziert"
 
@@ -7380,7 +7449,8 @@ msgstr "Nicht unterstütztes Bildformat"
 msgid "Unsupported key length"
 msgstr "Nicht unterstützte Schlüssellänge"
 
-#: src/modules/file/libkvifile.cpp:1500 src/modules/str/libkvistr.cpp:1457
+#: src/modules/str/libkvistr.cpp:1457
+#: src/modules/file/libkvifile.cpp:1500
 msgid "Unsupported message digest."
 msgstr "Nicht unterstützter Message Digest."
 
@@ -7420,7 +7490,8 @@ msgstr "Update fehlt"
 msgid "Updating away state for channel %Q"
 msgstr "Die Abwesenheitsinformationen für den Channel %Q werden aktualisiert"
 
-#: src/kvirc/ui/KviWindow.cpp:693 src/kvirc/ui/KviWindow.cpp:771
+#: src/kvirc/ui/KviWindow.cpp:693
+#: src/kvirc/ui/KviWindow.cpp:771
 msgid "Use Default Encoding"
 msgstr "Standardkodierung benutzen"
 
@@ -7440,7 +7511,8 @@ msgstr "Nutze Einstellungsverzeichnis von vorheriger Installation"
 msgid "Use the crypt engine"
 msgstr "Verschlüsselungsroutine benutzen"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:148 src/kvirc/ui/KviChannelWindow.cpp:236
+#: src/kvirc/ui/KviChannelWindow.cpp:148
+#: src/kvirc/ui/KviChannelWindow.cpp:236
 msgid "User List"
 msgstr "Benutzerliste"
 
@@ -7603,13 +7675,13 @@ msgstr "WALLOPS von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:897
 msgid ""
-"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
-"%c: %Q"
+"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+"%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
+"name%c: %Q"
 msgstr ""
-"WHO-Eintrag für %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAbwesend%c: %Q, %"
-"cWirklicher Name%c: %Q"
+"WHO-Eintrag für %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+"%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAbwesend%c: %Q, "
+"%cWirklicher Name%c: %Q"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:929
 msgid "Wallops (+w)"
@@ -7619,9 +7691,10 @@ msgstr "Rundsendenachrichten (+w)"
 msgid "Wallops message"
 msgstr "Rundsendenachricht"
 
-#: src/modules/mircimport/libkvimircimport.cpp:116
-#: src/modules/url/libkviurl.cpp:267 src/modules/url/libkviurl.cpp:360
+#: src/modules/url/libkviurl.cpp:267
+#: src/modules/url/libkviurl.cpp:360
 #: src/modules/url/libkviurl.cpp:556
+#: src/modules/mircimport/libkvimircimport.cpp:116
 msgid "Warning - KVIrc"
 msgstr "Warnung – KVIrc"
 
@@ -7695,11 +7768,6 @@ msgstr "Erneuter Verbindungsversuch in %1 Sekunden"
 msgid "Window"
 msgstr "Fenster"
 
-#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:161
-#: src/modules/log/libkvilog.cpp:212
-msgid "Window %Q not found"
-msgstr "Fenster %Q nicht gefunden"
-
 #: src/kvirc/ui/KviWindowListBase.cpp:68
 #: src/kvirc/ui/KviWindowListBase.cpp:184
 msgid "Window List"
@@ -7722,10 +7790,6 @@ msgstr "Fenstertyp oder ›all‹ als ersten Parameter erwartet"
 msgid "Window with ID '%Q' not found"
 msgstr "Fenster mit ID ›%Q‹ nicht gefunden"
 
-#: src/modules/log/libkvilog.cpp:271
-msgid "Window with id '%Q' not found, returning empty string"
-msgstr "Fenster mit ID ›%Q‹ nicht gefunden, gebe leere Zeichenkette zurück"
-
 #: src/kvilib/file/KviPackageWriter.cpp:414
 msgid "Writing informational fields"
 msgstr "Informative Felder werden geschrieben"
@@ -7738,10 +7802,11 @@ msgstr "Der Paketinhalt wird geschrieben"
 msgid "Writing package header"
 msgstr "Die Paket-Kopfinformationen werden geschrieben"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/ui/KviStatusBar.cpp:551
+#: src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
+#: src/kvirc/kernel/KviApplication.cpp:1019
+#: src/kvirc/kernel/KviApplication.cpp:1092
 msgid "Yes"
 msgstr "Ja"
 
@@ -7789,8 +7854,8 @@ msgstr ""
 msgid "You have been paged by"
 msgstr "Sie wurden gerufen von"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1648
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1545
+#: src/kvirc/kernel/KviIrcConnection.cpp:1648
 msgid "You have changed your nickname to %Q"
 msgstr "Sie haben Ihren Nick zu %Q geändert"
 
@@ -7881,7 +7946,8 @@ msgstr "Hineinzoomen"
 msgid "Zoom Out"
 msgstr "Herauszoomen"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:140 src/kvirc/kernel/KviSSLMaster.cpp:163
+#: src/kvirc/kernel/KviSSLMaster.cpp:140
+#: src/kvirc/kernel/KviSSLMaster.cpp:163
 #, c-format
 msgid "[%s]: [SSL ERROR]: %s"
 msgstr "[%s]: [SSL-FEHLER]: %s"
@@ -7912,7 +7978,8 @@ msgstr "[%s]: [SSL] Zertifikatsdatei %s wird benutzt"
 msgid "[%s]: [SSL]: Using private key file %s"
 msgstr "[%s]: [SSL]: Private Schlüsseldatei %s wird benutzt"
 
-#: src/kvirc/ui/KviQueryWindow.cpp:222 src/kvirc/ui/KviQueryWindow.cpp:270
+#: src/kvirc/ui/KviQueryWindow.cpp:222
+#: src/kvirc/ui/KviQueryWindow.cpp:270
 msgid "[Dead Query]"
 msgstr "[Totes Query]"
 
@@ -7970,32 +8037,38 @@ msgstr "[SOCKET]: %Q"
 msgid "[SSL ERROR]: %Q"
 msgstr "[SSL-FEHLER]: %Q"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:69 src/kvirc/kernel/KviSSLMaster.cpp:76
+#: src/kvirc/kernel/KviSSLMaster.cpp:69
+#: src/kvirc/kernel/KviSSLMaster.cpp:76
 #, c-format
 msgid "[SSL]:     Common name: %c%s"
 msgstr "[SSL]:     Geläufiger Name: %c%s"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:72 src/kvirc/kernel/KviSSLMaster.cpp:79
+#: src/kvirc/kernel/KviSSLMaster.cpp:72
+#: src/kvirc/kernel/KviSSLMaster.cpp:79
 #, c-format
 msgid "[SSL]:     Country: %c%s"
 msgstr "[SSL]:     Land: %c%s"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:74 src/kvirc/kernel/KviSSLMaster.cpp:81
+#: src/kvirc/kernel/KviSSLMaster.cpp:74
+#: src/kvirc/kernel/KviSSLMaster.cpp:81
 #, c-format
 msgid "[SSL]:     Locality: %c%s"
 msgstr "[SSL]:     Örtlichkeit: %c%s"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:70 src/kvirc/kernel/KviSSLMaster.cpp:77
+#: src/kvirc/kernel/KviSSLMaster.cpp:70
+#: src/kvirc/kernel/KviSSLMaster.cpp:77
 #, c-format
 msgid "[SSL]:     Organization: %c%s"
 msgstr "[SSL]:     Organisation: %c%s"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:71 src/kvirc/kernel/KviSSLMaster.cpp:78
+#: src/kvirc/kernel/KviSSLMaster.cpp:71
+#: src/kvirc/kernel/KviSSLMaster.cpp:78
 #, c-format
 msgid "[SSL]:     Organizational unit: %c%s"
 msgstr "[SSL]:     Organisationsabteilung: %c%s"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:73 src/kvirc/kernel/KviSSLMaster.cpp:80
+#: src/kvirc/kernel/KviSSLMaster.cpp:73
+#: src/kvirc/kernel/KviSSLMaster.cpp:80
 #, c-format
 msgid "[SSL]:     State or province: %c%s"
 msgstr "[SSL]:     Staat oder Bundesland: %c%s"
@@ -8052,7 +8125,8 @@ msgstr "[SSL]:  Version: %c%s"
 msgid "[SSL]: %Q"
 msgstr "[SSL]: %Q"
 
-#: src/kvirc/kernel/KviSSLMaster.cpp:56 src/kvirc/kernel/KviSSLMaster.cpp:65
+#: src/kvirc/kernel/KviSSLMaster.cpp:56
+#: src/kvirc/kernel/KviSSLMaster.cpp:65
 #, c-format
 msgid "[SSL]: %c%s"
 msgstr "[SSL]: %c%s"
@@ -8094,7 +8168,8 @@ msgstr "Aktive Benutzer"
 msgid "alternative nickname specified in options"
 msgstr "In den Optionen angegebener alternativer Nickname"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:804 src/kvirc/ui/KviChannelWindow.cpp:819
+#: src/kvirc/ui/KviChannelWindow.cpp:804
+#: src/kvirc/ui/KviChannelWindow.cpp:819
 msgid "and"
 msgstr "und"
 
@@ -8102,7 +8177,8 @@ msgstr "und"
 msgid "and other %1 users"
 msgstr "und %1 andere Benutzer"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:809 src/kvirc/ui/KviChannelWindow.cpp:830
+#: src/kvirc/ui/KviChannelWindow.cpp:809
+#: src/kvirc/ui/KviChannelWindow.cpp:830
 msgid "are talking"
 msgstr "reden gerade"
 
@@ -8110,9 +8186,10 @@ msgstr "reden gerade"
 msgid "autojoining"
 msgstr "betrete ihn automatisch"
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1128
-#: src/kvirc/ui/KviConsoleWindow.cpp:1135 src/kvirc/ui/KviIrcToolBar.cpp:374
+#: src/kvirc/ui/KviIrcToolBar.cpp:374
 #: src/kvirc/ui/KviIrcToolBar.cpp:382
+#: src/kvirc/ui/KviConsoleWindow.cpp:1128
+#: src/kvirc/ui/KviConsoleWindow.cpp:1135
 msgid "away"
 msgstr "abwesend"
 
@@ -8469,7 +8546,8 @@ msgstr "Beobachtungslisteneintrag vom Benutzer hinzugefügt"
 msgid "watch entry listing requested by user"
 msgstr "Beobachtungslisteneinträge angefordert vom Benutzer"
 
-#: src/kvirc/ui/KviChannelWindow.cpp:809 src/kvirc/ui/KviChannelWindow.cpp:830
+#: src/kvirc/ui/KviChannelWindow.cpp:809
+#: src/kvirc/ui/KviChannelWindow.cpp:830
 msgid "were talking recently"
 msgstr "sagten vor kurzem etwas"
 
@@ -8629,6 +8707,9 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 
 #~ msgid "By Size"
 #~ msgstr "Nach Größe"
+
+#~ msgid "Can't log to file %Q"
+#~ msgstr "Kann nicht in Datei %Q loggen"
 
 #~ msgid "Case Insensitive"
 #~ msgstr "Groß-/Kleinschreibung nicht beachten"
@@ -8798,6 +8879,9 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 
 #~ msgid "Mi&nimize"
 #~ msgstr "M&inimieren"
+
+#~ msgid "Missing window id after the 'w' switch"
+#~ msgstr "Fehlende Fenster-Id nach dem ›w‹-Schalter"
 
 #~ msgid "Name: %Q"
 #~ msgstr "Name: %Q"
@@ -8976,6 +9060,9 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "Diese KVIrc-Version ist zu alt, um dieses Addon ausführen zu können "
 #~ "(minmiale Version ist %Q)"
 
+#~ msgid "This window has no logging capabilities"
+#~ msgstr "Diese Fenster hat keine Logging-Fähigkeiten"
+
 #~ msgid "Thumbnail Previews"
 #~ msgstr "Miniaturbildvorschau"
 
@@ -9019,6 +9106,12 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 
 #~ msgid "Using server specific nickname (%Q)"
 #~ msgstr "Benutze serverspezifischen Nick (%Q)"
+
+#~ msgid "Window %Q not found"
+#~ msgstr "Fenster %Q nicht gefunden"
+
+#~ msgid "Window with id '%Q' not found, returning empty string"
+#~ msgstr "Fenster mit ID ›%Q‹ nicht gefunden, gebe leere Zeichenkette zurück"
 
 #~ msgid ""
 #~ "You are about to restore the default script.<br>This will erase any "

@@ -39,13 +39,13 @@
 	#include <zlib.h>
 #endif
 
-LogListViewItem::LogListViewItem(QTreeWidgetItem * par, LogFile::KviLogTypes type, LogFile * fileData)
+LogListViewItem::LogListViewItem(QTreeWidgetItem * par, LogFile::Type type, LogFile * fileData)
 : QTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
 }
 
-LogListViewItem::LogListViewItem(QTreeWidget * par, LogFile::KviLogTypes type, LogFile * fileData)
+LogListViewItem::LogListViewItem(QTreeWidget * par, LogFile::Type type, LogFile * fileData)
 : QTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
@@ -57,7 +57,7 @@ LogListViewItemFolder::LogListViewItemFolder(QTreeWidgetItem * par, const QStrin
 	setText(0,label);
 }
 
-LogListViewItemType::LogListViewItemType(QTreeWidget * par, LogFile::KviLogTypes type)
+LogListViewItemType::LogListViewItemType(QTreeWidget * par, LogFile::Type type)
 : LogListViewItem(par,type,0)
 {
 	QIcon icon;
@@ -67,23 +67,23 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * par, LogFile::KviLogTypes
 	{
 		case LogFile::Channel:
 			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Channel));
-			text = __tr2qs_ctx("Channel","logview");
+			text = __tr2qs_ctx("Channel","log");
 			break;
 		case LogFile::Query:
 			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Query));
-			text = __tr2qs_ctx("Query","logview");
+			text = __tr2qs_ctx("Query","log");
 			break;
 		case LogFile::DccChat:
 			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::DccMsg));
-			text = __tr2qs_ctx("DCC Chat","logview");
+			text = __tr2qs_ctx("DCC Chat","log");
 			break;
 		case LogFile::Console:
 			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Console));
-			text = __tr2qs_ctx("Console","logview");
+			text = __tr2qs_ctx("Console","log");
 			break;
 		default:
 			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Help));
-			text = __tr2qs_ctx("Other","logview");
+			text = __tr2qs_ctx("Other","log");
 			break;
 	}
 
@@ -91,7 +91,7 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * par, LogFile::KviLogTypes
 	setText(0, text);
 }
 
-LogListViewLog::LogListViewLog(QTreeWidgetItem * par, LogFile::KviLogTypes type, LogFile * fileData)
+LogListViewLog::LogListViewLog(QTreeWidgetItem * par, LogFile::Type type, LogFile * fileData)
 : LogListViewItem(par,type,fileData)
 {
 	setText(0, m_pFileData->date().toString("yyyy-MM-dd"));

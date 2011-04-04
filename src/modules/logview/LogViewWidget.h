@@ -36,11 +36,11 @@ class KviScriptEditor;
 class LogListViewItem : public QTreeWidgetItem
 {
 public:
-	LogListViewItem(QTreeWidgetItem * par, LogFile::KviLogTypes type, LogFile * fileData);
-	LogListViewItem(QTreeWidget * par, LogFile::KviLogTypes type, LogFile * fileData);
+	LogListViewItem(QTreeWidgetItem * par, LogFile::Type type, LogFile * fileData);
+	LogListViewItem(QTreeWidget * par, LogFile::Type type, LogFile * fileData);
 	~LogListViewItem() {};
 public:
-	LogFile::KviLogTypes m_type;
+	LogFile::Type m_type;
 	LogFile*             m_pFileData;
 	virtual QString fileName() const { return QString(); };
 };
@@ -56,7 +56,7 @@ public:
 class LogListViewItemType : public LogListViewItem
 {
 public:
-	LogListViewItemType(QTreeWidget * par, LogFile::KviLogTypes type);
+	LogListViewItemType(QTreeWidget * par, LogFile::Type type);
 	~LogListViewItemType() {};
 };
 
@@ -64,7 +64,7 @@ public:
 class LogListViewLog : public LogListViewItem
 {
 public:
-	LogListViewLog(QTreeWidgetItem * par, LogFile::KviLogTypes type, LogFile * fileData);
+	LogListViewLog(QTreeWidgetItem * par, LogFile::Type type, LogFile * fileData);
 	~LogListViewLog() {};
 	virtual QString fileName() const { return m_pFileData->fileName(); };
 protected:

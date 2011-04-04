@@ -82,8 +82,6 @@
 		[fnc]$log.file[/fnc],
 		[doc:window_naming_conventions]window naming conventions documentation[/doc]
 */
-
-
 static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 {
 	QString szFile;
@@ -100,12 +98,12 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 			pWnd = g_pApp->findWindow(szWindow);
 			if(!pWnd)
 			{
-				c->warning(__tr2qs("Window %Q not found"),&szWindow);
+				c->warning(__tr2qs_ctx("Window '%Q' not found","log"),&szWindow);
 				return true;
 			}
 
 		} else {
-			c->warning(__tr2qs("Missing window id after the 'w' switch"));
+			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -118,9 +116,9 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 			pWnd->getDefaultLogFileName(szFile);
 		}
 		if(!pWnd->view()->startLogging(szFile,c->hasSwitch('p',"log-buffer")))
-			c->warning(__tr2qs("Can't log to file %Q"),&szFile);
+			c->warning(__tr2qs_ctx("Can't log to file '%Q'","log"),&szFile);
 	} else {
-		c->warning(__tr2qs("This window has no logging capabilities"));
+		c->warning(__tr2qs_ctx("This window has no logging capabilities","log"));
 		return true;
 	}
 	return true;
@@ -146,7 +144,6 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 		[cmd]log.start[/cmd],
 		[doc:window_naming_conventions]window naming conventions documentation[/doc]
 */
-
 static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 {
 	KviWindow * pWnd = c->window();
@@ -158,12 +155,12 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 			pWnd = g_pApp->findWindow(szWindow);
 			if(!pWnd)
 			{
-				c->warning(__tr2qs("Window %Q not found"),&szWindow);
+				c->warning(__tr2qs_ctx("Window '%Q' not found","log"),&szWindow);
 				return true;
 			}
 
 		} else {
-			c->warning(__tr2qs("Missing window id after the 'w' switch"));
+			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -197,7 +194,6 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		[cmd]log.stop[/cmd],
 		[doc:window_naming_conventions]window naming conventions documentation[/doc]
 */
-
 static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 {
 	KviWindow * pWnd = c->window();
@@ -209,12 +205,12 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 			pWnd = g_pApp->findWindow(szWindow);
 			if(!pWnd)
 			{
-				c->warning(__tr2qs("Window %Q not found"),&szWindow);
+				c->warning(__tr2qs_ctx("Window '%Q' not found","log"),&szWindow);
 				return true;
 			}
 
 		} else {
-			c->warning(__tr2qs("Missing window id after the 'w' switch"));
+			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -252,7 +248,6 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		[cmd]log.stop[/cmd],
 		[doc:window_naming_conventions]window naming conventions documentation[/doc]
 */
-
 static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 {
 	QString szWindow;
@@ -268,7 +263,7 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 		wnd = g_pApp->findWindow(szWindow);
 		if(!wnd)
 		{
-			c->warning(__tr2qs("Window with id '%Q' not found, returning empty string"),&szWindow);
+			c->warning(__tr2qs_ctx("Window with id '%Q' not found, returning empty string","log"),&szWindow);
 			return true;
 		}
 	}

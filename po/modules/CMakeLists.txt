@@ -10,7 +10,7 @@ SUBDIRS(
 	dcc
 	editor
 	filetransferwindow
-	logview
+	log
 	mediaplayer
 	notifier
 	objects
