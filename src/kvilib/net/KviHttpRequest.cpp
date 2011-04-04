@@ -735,7 +735,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	if((m_uMaxContentLength > 0) && (m_uTotalSize > ((unsigned int)m_uMaxContentLength)))
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("Stream exceeding maximum length");
+		m_szLastError=__tr2qs("The amount of received data exceeds the maximum length");
 		emit terminated(false);
 		return false;
 	}
