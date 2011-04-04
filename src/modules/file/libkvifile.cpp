@@ -977,17 +977,17 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 	@description:
 		Reads lines from the specified file and returns them as an array of strings.
 		The lines are assumed to be separated by linefeed characters (which are NOT returned).
-		Eventual terminating carriage return characters at the end of the line are stripped.
+		Eventual terminating carriage return and line feed characters at the end of the line are stripped.
 		If <startline> is specified, then all the lines with indexes lower that <startline> are
-		discarded. If <count> is specified then a maximum of <count> lines is returned.
-		If <count> is not specified then all the lines until the end are read.
+		discarded. If <count> is specified then at most this number of lines are returned,
+		otherwise the entire file is returned.
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]
 		Flags are actually limited to the single letter 'l'. By default the file
-		is decoded from the ut8 characters set. If 'l' is present the the file
-		is decoded by using the local 8 bit character set instead.
-		WARNING: Always check the size of the file you're going to read: it is not
+		is decoded from the utf-8 character set, however if 'l' is present then the file
+		is decoded by the local 8 bit character set instead.
+		WARNING: Always check the size of the file you're going to read - it is not
 		a good idea attempting to read a 700 MiB binary file with this function since
-		it will probably sit down your system and exhaust your virtual memory.
+		it will probably hang your system and exhaust your virtual memory.
 	@examples:
 		[example]
 			echo $file.readLines(/proc/cpuinfo)
