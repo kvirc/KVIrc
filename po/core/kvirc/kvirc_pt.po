@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-02 06:01+0100\n"
-"PO-Revision-Date: 2011-04-02 06:02+0100\n"
+"PO-Revision-Date: 2011-04-04 04:56+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -3801,18 +3801,18 @@ msgstr "Entrar no Canal KVIrc Internacional em AzzurraNet"
 
 #: src/kvirc/kernel/KviOptions.cpp:824
 msgid "Join error message"
-msgstr "Mensagem de erro de entrada"
+msgstr "Mensagem de erro de entrada no canal"
 
 #: src/kvirc/kernel/KviOptions.cpp:750
 msgid "Join message"
-msgstr "Mensagem de entrada de canal"
+msgstr "Mensagem de entrada no canal"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:327
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:353
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:382
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:420
 msgid "Join throttling (<num>:<secs>)"
-msgstr "Entrar na optimização (<num>:<segs>)"
+msgstr "Limitar entrada no canal (<num>:<segs>)"
 
 #: src/kvirc/ui/KviUserListView.cpp:1594
 msgid "Joined on <b>%1</b>"
@@ -3876,7 +3876,7 @@ msgid ""
 "KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 "Your URL is invalid. Check spelling and try again"
 msgstr ""
-"O KVIrc aceita apenas URL's irc://, irc6://, ircs:// ou irc6s://\n"
+"O KVIrc aceita apenas os URL  irc://, irc6://, ircs:// ou irc6s://\n"
 "O seu URL é inválido. Verifique a ortografia a tente novamente"
 
 #: src/modules/file/libkvifile.cpp:1517
@@ -3892,12 +3892,12 @@ msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports "
 "only MD4, MD5 and SHA1."
 msgstr ""
-"O KVIrc está compilado sen suporte Crypto++ ou OpenSSL. $str.digest suporta "
+"O KVIrc está compilado sem suporte Crypto++ ou OpenSSL. $str.digest suporta "
 "apenas MD4, MD5 e SHA1."
 
 #: src/modules/str/libkvistr.cpp:2311 src/modules/str/libkvistr.cpp:2461
 msgid "KVIrc is compiled without OpenSSL support."
-msgstr "O KVIrc está compilado sem o suporte SSL."
+msgstr "O KVIrc está compilado sem suporte SSL."
 
 #: src/kvirc/kernel/KviOptions.cpp:960
 msgid "KVIrc warning"
@@ -3905,7 +3905,7 @@ msgstr "Aviso KVIrc"
 
 #: src/kvilib/core/KviError.cpp:93
 msgid "Kernel networking panic"
-msgstr "Rede kernel em pânico"
+msgstr "Pânico do kernel da rede"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:271
 msgid "Key"
@@ -3917,11 +3917,11 @@ msgstr "Acção de expulsar"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:418
 msgid "Kick/[*]ban on message flood ([*]<num>:<secs>)"
-msgstr "Expulsar/[*]banir na inundação de mensagens ([*]<num>:<segs>)"
+msgstr "Expulsar/[*]banir ao ser inundado com mensagens ([*]<num>:<segs>)"
 
 #: src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
-msgstr "Etiqueta: %Q"
+msgstr "Rótulo: %Q"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:350
 msgid "Lag Indicator"
@@ -4005,7 +4005,7 @@ msgstr "Ligação"
 
 #: src/kvirc/kernel/KviOptions.cpp:734
 msgid "Link overlay foreground"
-msgstr "Primeiro plano da ligação 'overlay'"
+msgstr "Primeiro plano da ligação ao passar o rato"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1849
 msgid "Link: %Q"
@@ -4984,7 +4984,7 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:875
 #: src/kvirc/kernel/KviCoreActions.cpp:888
 msgid "Other..."
-msgstr "Outro..."
+msgstr "Outra..."
 
 #: src/kvilib/core/KviError.cpp:91
 msgid "Out of address space"
@@ -5008,19 +5008,19 @@ msgstr "Estado do próprio Operador IRC não definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:852
 msgid "Own chan admin status set"
-msgstr "Estado de administração do próprio canal definido"
+msgstr "Estado do próprio administrador canal definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:853
 msgid "Own chan admin status unset"
-msgstr "Estado de administração do próprio canal não definido"
+msgstr "Estado do próprio administrador canal não definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:861
 msgid "Own chan owner status set"
-msgstr "Estado do dono do próprio canal definido"
+msgstr "Estado do próprio dono do canal definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:862
 msgid "Own chan owner status unset"
-msgstr "Estado do dono do próprio canal não definido"
+msgstr "Estado do próprio dono do canal não definido"
 
 #: src/kvirc/kernel/KviOptions.cpp:795
 msgid "Own encrypted private message"
@@ -5060,7 +5060,7 @@ msgstr "Aviso do analisador"
 
 #: src/kvirc/kernel/KviOptions.cpp:751
 msgid "Part message"
-msgstr "Mensagem de partida do canal"
+msgstr "Mensagem de partida (canal)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1877
 #: src/kvirc/kernel/KviIrcSocket.cpp:1897
@@ -5118,12 +5118,15 @@ msgid ""
 "be able to change it later in the Identity properties, or with the /NICK "
 "command."
 msgstr ""
-"Por favor escolha uma Alcunha.<br><br>A sua alcunha é o nome que outros "
-"utilizadores IRC o irão conhecer. Não pode conter espaços ou pontuação. "
-"Algumas redes IRC irão encurtar a sua alcunha se tiver mais que 32 "
-"caracteres.<br><br>Em caso de dúvida, indique apenas a primeira alcunha que "
-"lhe vier à cabeça. Poderá alterá-la posteriormente nas propriedades de "
-"Identidade, ou com o comando /NICK."
+"Por favor escolha uma Alcunha.<br><br>A sua alcunha é o nome com que os "
+"outros utilizadores IRC te irão conhecer . Não pode conter espaços ou "
+"pontuação. "
+"Algumas redes IRC irão encurtar a sua alcunha se tiver mais que 32 caracteres."
+"\n"
+"<br><br>Em caso de dúvida, indique apenas a primeira alcunha que lhe vier à "
+"cabeça. "
+"Poderá alterá-la posteriormente nas propriedades de Identidade, ou com o "
+"comando /NICK."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:807
 msgid "Please enter the new nickname"
@@ -6291,20 +6294,19 @@ msgstr "Padrão"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:406
 msgid "Starting Secure Socket Layer handshake"
-msgstr "Iniciar Negociação da Disposição Segura do 'Socket' (SSL)"
+msgstr "A iniciar negociação da Disposição Segura do 'Socket' (SSL)"
 
 #: src/modules/ident/libkviident.cpp:330
 msgid "Starting identd service (IPv4)"
-msgstr "A iniciar o serviço de identificação (IPv4)"
+msgstr "A iniciar serviço de identificação (IPv4)"
 
 #: src/modules/ident/libkviident.cpp:325
 msgid "Starting identd service (IPv4/v6 in IPv6 namespace)"
-msgstr "A iniciar o serviço de identificação (IPv4/v6 no nome de espaço IPv6)"
+msgstr "A iniciar serviço de identificação (IPv4/v6 no nome de espaço IPv6)"
 
 #: src/modules/ident/libkviident.cpp:322
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
-msgstr ""
-"A iniciar o serviço de identificação (IPv4/v6 em nomes de espaços separados)"
+msgstr "A iniciar serviço de identd (IPv4/v6 em nomesdeespaços separados)"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:867 src/kvirc/ui/KviChannelWindow.cpp:1968
 msgid "Starting last log"
@@ -6320,11 +6322,11 @@ msgstr "Parar Colagem"
 
 #: src/modules/list/ListWindow.cpp:225
 msgid "Stop list download"
-msgstr "Parar transferência de lista"
+msgstr "Parar transferência da lista"
 
 #: src/modules/list/ListWindow.cpp:310
 msgid "Stopping the list download..."
-msgstr "A parar a lista de transferências..."
+msgstr "A parar transferência da lista..."
 
 #: src/modules/setup/SetupWizard.cpp:231
 msgid "Store configuration in folder"
@@ -6332,15 +6334,15 @@ msgstr "Guardar configuração  na pasta"
 
 #: src/kvilib/net/KviHttpRequest.cpp:822 src/kvilib/net/KviHttpRequest.cpp:964
 msgid "Stream exceeded expected length"
-msgstr "A stream excedeu o comprimento previsto"
+msgstr "A quantidade de dados recebidos excedeu o comprimento previsto"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
 msgid "Stream exceeding maximum length"
-msgstr "Stream a exceder o comprimento máximo"
+msgstr "A quantidade de dados recebidos excedeu o comprimento máximo"
 
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "String list options (comma separated list of strings)"
-msgstr "Opções da lista 'string' (lista de 'strings' separadas por vírgulas)"
+msgstr "Opções da lista de 'strings' ('strings' separadas por vírgulas)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1262
 msgid "String options (string value)"
@@ -6417,13 +6419,13 @@ msgstr "A acção \"%1\" não existe"
 
 #: src/modules/action/libkviaction.cpp:255
 msgid "The action \"%1\" is a core action and cannot be destroyed"
-msgstr "A acção\"%1\" é uma acção de núcleo e não pode ser destruída"
+msgstr "A acção\"%1\" é uma acção do núcleo e não pode ser destruída"
 
 #: src/modules/action/libkviaction.cpp:420
 msgid ""
 "The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr ""
-"A acção \"%1\" já está definida como uma acção de núcleo e não pode ser "
+"A acção \"%1\" já está definida como uma acção do núcleo e não pode ser "
 "substituída"
 
 #: src/modules/action/libkviaction.cpp:112
@@ -6436,7 +6438,7 @@ msgstr "A acção \"%Q\" não existe"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
-msgstr "O parâmetro acção não avaliou para um índice"
+msgstr "O parâmetro da acção não avaliou para um índice"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."
@@ -6448,7 +6450,7 @@ msgid ""
 "will be lost"
 msgstr ""
 "O ficheiro de configuração '%Q' foi mudado mas está aberto como apenas-"
-"leitura: as alterações serão perdidas"
+"leitura: as alterações não serão gravadas"
 
 #: src/modules/config/libkviconfig.cpp:219
 #: src/modules/config/libkviconfig.cpp:255
@@ -6644,7 +6646,7 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnection.cpp:1695
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
-msgstr "O servidor recusou a alcunha indicada (%s) e mudou para %s"
+msgstr "O servidor recusou a alcunha sugerida (%s) e mudou para %s"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1008
 msgid ""
