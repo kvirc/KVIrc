@@ -9,7 +9,6 @@ FILE(GLOB mofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.mo")
 SET(POTFILE log.pot)
 SET(XGETTEXT_SOURCESDIR)
 LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/log)
-LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/logview)
 
 # Install target
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/translation.rules.txt)
