@@ -48,7 +48,6 @@
 #include <QHeaderView>
 #include <QLayout>
 #include <QPushButton>
-#include <QTextCodec>
 #include <QDateTimeEdit>
 #include <QLineEdit>
 #include <QLabel>
@@ -84,15 +83,25 @@ LogFile::LogFile(const QString & szName)
 	QString szTypeToken = szTmpName.section('_',0,0);
 	// Ignore non-logs files, this includes '.' and '..'
 	if(KviQString::equalCI(szTypeToken,"channel"))
-		m_type = Channel;
-	else if(KviQString::equalCI(szTypeToken,"console"))
-		m_type = Console;
-	else if(KviQString::equalCI(szTypeToken,"dccchat"))
-		m_type = DccChat;
-	else if(KviQString::equalCI(szTypeToken,"query"))
-		m_type = Query;
-	else
-		m_type = Other;
+	{
+		m_szType = "channel";
+		m_eType = Channel;
+	} else if(KviQString::equalCI(szTypeToken,"console"))
+	{
+		m_szType = "console";
+		m_eType = Console;
+	} else if(KviQString::equalCI(szTypeToken,"query"))
+	{
+		m_szType = "query";
+		m_eType = Query;
+	} else if(KviQString::equalCI(szTypeToken,"dccchat"))
+	{
+		m_szType = "dccchat";
+		m_eType = DccChat;
+	} else {
+		m_szType = "";
+		m_eType = Other;
+	}
 
 	KviCString szUndecoded = szTmpName.section('.',0,0);
 	szUndecoded.cutToFirst('_');
@@ -107,7 +116,7 @@ LogFile::LogFile(const QString & szName)
 	int iDay = szDate.section('.',2,2).toInt();
 	m_date.setYMD(iYear,iMonth,iDay);
 
-	//qDebug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
+	//qDebug("type=%i, name=%s, net=%s, date=%i %i %i",m_eType,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
 }
 
 void LogFile::getText(QString & szText)
@@ -281,6 +290,9 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow
 
 	m_pExportLogPopup = new KviTalPopupMenu(this,"exportlog");
 	m_pExportLogPopup->insertItem(__tr2qs_ctx("plain text file","log"));
+	m_pExportLogPopup->insertItem(__tr2qs_ctx("HTML archive","log"));
+	//m_pExportLogPopup->insertItem(__tr2qs_ctx("XML file","log"));
+	//m_pExportLogPopup->insertItem(__tr2qs_ctx("database file","log"));
 	connect(m_pExportLogPopup,SIGNAL(activated(int)),this,SLOT(exportLog(int)));
 
 	m_pTimer = new QTimer(this);
@@ -424,13 +436,13 @@ void LogViewWindow::filterNext()
 
 	if(m_pLastCategory)
 	{
-		if(m_pLastCategory->m_type != pFile->type())
+		if(m_pLastCategory->m_eType != pFile->type())
 		{
 			m_pLastCategory = 0;
 			for(int i=0; i < m_pListView->topLevelItemCount(); ++i)
 			{
 				LogListViewItemType * pTmp = (LogListViewItemType *)m_pListView->topLevelItem(i);
-				if(pTmp->m_type == pFile->type())
+				if(pTmp->m_eType == pFile->type())
 				{
 					m_pLastCategory = pTmp;
 					break;
@@ -654,8 +666,14 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 	if(!pLog)
 		return;
 
-	QString szBuffer, szLine, szTmp;
 	QRegExp rx;
+	QString szBuffer, szLine, szTmp;
+	QString szDate = pLog->date().toString("yyyy.MM.dd");
+
+	// The fresh new log
+	QString szLog = QDir::homePath();
+	KviQString::ensureLastCharIs(szLog,QChar(KVI_PATH_SEPARATOR_CHAR));
+	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
 
 	// Open file for reading
 	QFile file(pLog->fileName());
@@ -663,17 +681,19 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 		return;
 
 	// Set up a 16bit Unicode string
-	QTextStream stream(&file);
-	stream.setCodec("UTF-8");
+	QTextStream input(&file);
+	input.setCodec("UTF-8");
 
 	switch(iId)
 	{
 		case LogFile::PlainText:
 		{
+			szLog += ".txt";
+
 			// Scan the file
-			while(!stream.atEnd())
+			while(!input.atEnd())
 			{
-				szTmp = stream.readLine();
+				szTmp = input.readLine();
 				szLine = KviControlCodes::stripControlBytes(szTmp);
 
 				// Remove icons' code
@@ -704,16 +724,85 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				szBuffer += "\n";
 			}
 
-			QFile log("/home/hellvis69/test.txt");
-			if(!log.open(QIODevice::WriteOnly | QIODevice::Text))
-				return;
+			goto write_log;
+		}
+		case LogFile::HTML:
+		{
+			szLog += ".html";
+			szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
 
-			log.write(szBuffer.toUtf8());
-			log.close();
+			QString szTitle;
+			switch(pLog->type())
+			{
+				case LogFile::Channel:
+					szTitle = __tr2qs_ctx("Channel %1 on %2","log").arg(pLog->name(),pLog->network());
+				break;
+				case LogFile::Console:
+					szTitle = __tr2qs_ctx("Console on %1","log").arg(pLog->network());
+				break;
+				case LogFile::Query:
+					szTitle = __tr2qs_ctx("Query with %1 on %2","log").arg(pLog->name(),pLog->network());
+				break;
+				case LogFile::DccChat:
+					szTitle = __tr2qs_ctx("DCC Chat with %1","log").arg(pLog->name());
+				break;
+				case LogFile::Other:
+					szTitle = __tr2qs_ctx("Something on %1","log").arg(pLog->network());
+				break;
+			}
 
-			break;
+			// Prepare HTML document
+			szBuffer += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
+			szBuffer += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
+			szBuffer += "<head>\n";
+			szBuffer += "\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=utf-8\" />\n";
+			szBuffer += "\t<meta name=\"author\" content=\"" + szTmp + "\" />\n";
+			szBuffer += "\t<title>" + szTitle + "</title>\n";
+			szBuffer += "</head>\n<body>\n";
+			szBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
+
+			// Scan the file
+			while(!input.atEnd())
+			{
+				szTmp = input.readLine();
+
+				// FIXME: remove this
+				szLine = KviControlCodes::stripControlBytes(szTmp);
+
+				//szBuffer += "<p>";
+
+				szBuffer += szLine;
+				szBuffer += "\n";
+			}
+
+			// Close the document
+			szBuffer += "</body>\n</html>\n";
+
+			qDebug("%s",szBuffer.toUtf8().data());
+
+			goto write_log;
 		}
 	}
+
+write_log:
+	if(QFile::exists(szLog))
+	{
+		if(QMessageBox::question(this,__tr2qs_ctx("Export Log - KVIrc","log"),__tr2qs_ctx("File '%1' already exists. Do you want to overwrite it?","log").arg(szLog),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
+			return;
+	}
+
+	QFile log(szLog);
+	if(!log.open(QIODevice::WriteOnly | QIODevice::Text))
+		return;
+
+	// Ensure we're writing in UTF-8
+	QTextStream output(&log);
+	output.setCodec("UTF-8");
+	output << szBuffer;
+
+	// Close file descriptors
+	file.close();
+	log.close();
 }
 
 

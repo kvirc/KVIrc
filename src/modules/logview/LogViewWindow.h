@@ -88,7 +88,8 @@ public:
 	*/
 	LogFile(const QString & szName);
 private:
-	Type    m_type;
+	Type    m_eType;
+	QString m_szType;
 	QString m_szFilename;
 	bool    m_bCompressed;
 	QString m_szName;
@@ -99,7 +100,13 @@ public:
 	* \brief Returns the type of the log
 	* \return Type
 	*/
-	Type type() const { return m_type; };
+	Type type() const { return m_eType; };
+
+	/**
+	* \brief Returns the type of the log
+	* \return const QString &
+	*/
+	const QString & typeString() const { return m_szType; };
 
 	/**
 	* \brief Returns the filename of the log

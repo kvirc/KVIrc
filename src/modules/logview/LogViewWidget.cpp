@@ -40,13 +40,13 @@
 #endif
 
 LogListViewItem::LogListViewItem(QTreeWidgetItem * par, LogFile::Type type, LogFile * fileData)
-: QTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
+: QTreeWidgetItem(par), m_eType(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
 }
 
 LogListViewItem::LogListViewItem(QTreeWidget * par, LogFile::Type type, LogFile * fileData)
-: QTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
+: QTreeWidgetItem(par), m_eType(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
 }
@@ -63,7 +63,7 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * par, LogFile::Type type)
 	QIcon icon;
 	QString text;
 
-	switch(m_type)
+	switch(m_eType)
 	{
 		case LogFile::Channel:
 			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Channel));

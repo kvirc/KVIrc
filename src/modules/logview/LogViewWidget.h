@@ -38,7 +38,7 @@ public:
 	LogListViewItem(QTreeWidget * par, LogFile::Type type, LogFile * fileData);
 	~LogListViewItem() {};
 public:
-	LogFile::Type   m_type;
+	LogFile::Type   m_eType;
 	LogFile       * m_pFileData;
 public:
 	LogFile * log(){ return m_pFileData; };
