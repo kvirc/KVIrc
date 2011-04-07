@@ -381,7 +381,7 @@ bool PackAddonDialog::packAddon()
 
 	if(QFile::exists(m_szSavePath))
 	{
-		if(QMessageBox::question(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?","addon"),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
+		if(QMessageBox::question(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?","addon").arg(m_szSavePath),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
 			return false;
 	}
 
