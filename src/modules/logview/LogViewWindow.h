@@ -48,20 +48,37 @@ class QDateEdit;
 /**
 * \class LogFile
 * \brief The LogFile class which handle any log file
+* 
+* Log is in the format:
+* $type_$nick.$network_$YYYY.$MM.$DD.log
+* Examples:
+* query_noldor.azzurra_2009.05.20.log
+* channel_#slackware.azzurra_2009.11.03.log
 */
 class LogFile
 {
 public:
 	/**
 	* \enum Type
-	* \brief Holds the type of the log
+	* \brief Holds the type of the log file
 	*/
 	enum Type {
-		Channel,   /**< the log file of a channel */
-		Console,   /**< the log file of a console */
-		Query,     /**< the log file of a query */
-		DccChat,   /**< the log file of a dcc chat */
-		Other      /**< any other log file */
+		Channel = 0,   /**< the log file of a channel */
+		Console = 1,   /**< the log file of a console */
+		Query   = 2,   /**< the log file of a query */
+		DccChat = 3,   /**< the log file of a dcc chat */
+		Other   = 4,   /**< any other log file */
+	};
+
+	/**
+	* \enum ExportType
+	* \brief Holds the type of the exported log file
+	*/
+	enum ExportType {
+		PlainText,   /**< export log in plain text file */
+		HTML,        /**< export log in a HTML archive */ 
+		//XML,         /**< export log in a XML file */
+		//DB           /**< export log in a database file */
 	};
 
 	/**
@@ -120,19 +137,19 @@ class LogViewListView : public QTreeWidget
 {
 	Q_OBJECT
 public:
-	LogViewListView(QWidget*);
+	LogViewListView(QWidget *);
 	~LogViewListView(){};
 protected:
-	void mousePressEvent (QMouseEvent *e);
+	void mousePressEvent(QMouseEvent * pEvent);
 signals:
-	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
 
 class LogViewWindow : public KviWindow, public KviModuleExtension
 {
 	Q_OBJECT
 public:
-	LogViewWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm);
+	LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow * pMain);
 	~LogViewWindow();
 protected:
 	KviPointerList<LogFile> m_logList;
@@ -170,24 +187,34 @@ protected:
 	QString                 m_szLastGroup;
 	bool                    m_bAborted;
 	QTimer                * m_pTimer;
+	KviTalPopupMenu       * m_pExportLogPopup;
 protected:
-	void recurseDirectory(const QString& sDir);
-
+	void recurseDirectory(const QString & szDir);
 	void setupItemList();
+
+	/**
+	* \brief Exports the log and creates the file in the selected format
+	* \param pLog The log file associated to the item selected in the popup
+	* \param iId The id of the item in the popup
+	* \return void
+	*/
+	void createLog(LogFile * pLog, int iId);
+
 	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void keyPressEvent(QKeyEvent *e);
+	virtual void resizeEvent(QResizeEvent * pEvent);
+	virtual void keyPressEvent(QKeyEvent * pEvent);
 	virtual void fillCaptionBuffers();
 	virtual void die();
 	virtual QSize sizeHint() const;
 protected slots:
-	void rightButtonClicked ( QTreeWidgetItem *, const QPoint &);
-	void itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *);
+	void rightButtonClicked(QTreeWidgetItem *, const QPoint &);
+	void itemSelected(QTreeWidgetItem * pItem, QTreeWidgetItem *);
 	void deleteCurrent();
 	void applyFilter();
 	void abortFilter();
 	void cacheFileList();
 	void filterNext();
+	void exportLog(int iId);
 };
 
 #endif //_LOGVIEWWINDOW_H_

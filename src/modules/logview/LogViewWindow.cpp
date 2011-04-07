@@ -6,6 +6,7 @@
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -36,6 +37,7 @@
 #include "KviApplication.h"
 #include "KviFileUtils.h"
 #include "KviTalPopupMenu.h"
+#include "KviControlCodes.h"
 
 #include <QList>
 #include <QPixmap>
@@ -56,6 +58,7 @@
 #include <QMessageBox>
 #include <QSplitter>
 #include <QProgressBar>
+#include <QTextStream>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -67,14 +70,6 @@ extern LogViewWindow * g_pLogViewWindow;
 
 LogFile::LogFile(const QString & szName)
 {
-	/*
-	Log is in the format
-	$type_$nick.$network_$YYYY.$MM.$DD.log
-	Examples:
-	query_noldor.azzurra_2009.05.20.log
-	channel_#slackware.azzurra_2009.11.03.log
-	*/
-
 	m_szFilename = szName;
 
 	QFileInfo fi(m_szFilename);
@@ -158,6 +153,30 @@ void LogFile::getText(QString & szText)
 }
 
 
+LogViewListView::LogViewListView(QWidget * pParent)
+: QTreeWidget(pParent)
+{
+	header()->setSortIndicatorShown(true);
+	setColumnCount(1);
+	setHeaderLabel(__tr2qs_ctx("Log File","log"));
+	setSelectionMode(QAbstractItemView::SingleSelection);
+	setSortingEnabled(true);
+	setRootIsDecorated(true);
+	setAnimated(true);
+}
+
+void LogViewListView::mousePressEvent(QMouseEvent * pEvent)
+{
+	if(pEvent->button() == Qt::RightButton)
+	{
+		QTreeWidgetItem * pItem = itemAt(pEvent->pos());
+		if(pItem)
+			emit rightButtonPressed(pItem,QCursor::pos());
+	}
+	QTreeWidget::mousePressEvent(pEvent);
+}
+
+
 LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow * pMain)
 : KviWindow(KviWindow::LogView,pMain,"log"),KviModuleExtension(pDesc)
 {
@@ -235,7 +254,7 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow
 	pLayout->addWidget(m_pFromDateEdit,8,1);
 	connect(m_pEnableFromFilter,SIGNAL(toggled(bool)),m_pFromDateEdit,SLOT(setEnabled(bool)));
 
-	m_pEnableToFilter = new QCheckBox(__tr2qs_ctx("Only newier than","log"),m_pSearchTab);
+	m_pEnableToFilter = new QCheckBox(__tr2qs_ctx("Only newer than","log"),m_pSearchTab);
 	m_pToDateEdit = new QDateEdit(m_pSearchTab);
 	m_pToDateEdit->setDate(QDate::currentDate());
 	m_pToDateEdit->setEnabled(false);
@@ -259,6 +278,10 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow
 	li.append(110);
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);
+
+	m_pExportLogPopup = new KviTalPopupMenu(this,"exportlog");
+	m_pExportLogPopup->insertItem(__tr2qs_ctx("plain text file","log"));
+	connect(m_pExportLogPopup,SIGNAL(activated(int)),this,SLOT(exportLog(int)));
 
 	m_pTimer = new QTimer(this);
 	m_pTimer->setSingleShot(true);
@@ -287,11 +310,6 @@ void LogViewWindow::keyPressEvent(QKeyEvent * pEvent)
 	KviWindow::keyPressEvent(pEvent);
 }
 
-void LogViewWindow::applyFilter()
-{
-	setupItemList();
-}
-
 QPixmap * LogViewWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KviIconManager::Log);
@@ -318,6 +336,25 @@ QSize LogViewWindow::sizeHint() const
 	return ret;
 }
 
+void LogViewWindow::recurseDirectory(const QString & szDir)
+{
+	QDir dir(szDir);
+	QFileInfoList list = dir.entryInfoList();
+	for(int i=0; i < list.count(); i++)
+	{
+		QFileInfo info = list[i];
+		if(info.isDir())
+		{
+			// recursive
+			if(info.fileName()!=".." && info.fileName()!=".")
+				recurseDirectory(info.filePath());
+		} else if(info.suffix() == "gz" || info.suffix() == "log")
+		{
+			m_logList.append(new LogFile(info.filePath()));
+		}
+	}
+}
+
 void LogViewWindow::setupItemList()
 {
 	if(m_logList.isEmpty())
@@ -326,15 +363,20 @@ void LogViewWindow::setupItemList()
 	m_pFilterButton->setEnabled(false);
 	m_pListView->clear();
 
-	m_bAborted=false;
+	m_bAborted = false;
 	m_pBottomLayout->setVisible(true);
 	m_pProgressBar->setRange(0,m_logList.count());
 	m_pProgressBar->setValue(0);
 
-	m_pLastCategory=0;
-	m_pLastGroupItem=0;
+	m_pLastCategory = 0;
+	m_pLastGroupItem = 0;
 	m_logList.first();
 	m_pTimer->start(); //singleshot
+}
+
+void LogViewWindow::applyFilter()
+{
+	setupItemList();
 }
 
 void LogViewWindow::abortFilter()
@@ -349,23 +391,23 @@ void LogViewWindow::filterNext()
 	if(!pFile)
 		goto filter_last;
 
-	if(pFile->type()==LogFile::Channel && !m_pShowChannelsCheck->isChecked())
+	if(pFile->type() == LogFile::Channel && !m_pShowChannelsCheck->isChecked())
 		goto filter_next;
-	if(pFile->type()==LogFile::Console && !m_pShowConsolesCheck->isChecked())
+	if(pFile->type() == LogFile::Console && !m_pShowConsolesCheck->isChecked())
 		goto filter_next;
-	if(pFile->type()==LogFile::DccChat && !m_pShowDccChatCheck->isChecked())
+	if(pFile->type() == LogFile::DccChat && !m_pShowDccChatCheck->isChecked())
 		goto filter_next;
-	if(pFile->type()==LogFile::Other && !m_pShowOtherCheck->isChecked())
+	if(pFile->type() == LogFile::Other && !m_pShowOtherCheck->isChecked())
 		goto filter_next;
-	if(pFile->type()==LogFile::Query && !m_pShowQueryesCheck->isChecked())
+	if(pFile->type() == LogFile::Query && !m_pShowQueryesCheck->isChecked())
 		goto filter_next;
 
 	if(m_pEnableFromFilter->isChecked())
-		if(pFile->date()>m_pFromDateEdit->date())
+		if(pFile->date() > m_pFromDateEdit->date())
 			goto filter_next;
 
 	if(m_pEnableToFilter->isChecked())
-		if(pFile->date()<m_pToDateEdit->date())
+		if(pFile->date() < m_pToDateEdit->date())
 			goto filter_next;
 
 	if(!m_pFileNameMask->text().isEmpty())
@@ -382,15 +424,15 @@ void LogViewWindow::filterNext()
 
 	if(m_pLastCategory)
 	{
-		if(m_pLastCategory->m_type!=pFile->type())
+		if(m_pLastCategory->m_type != pFile->type())
 		{
-			m_pLastCategory=0;
+			m_pLastCategory = 0;
 			for(int i=0; i < m_pListView->topLevelItemCount(); ++i)
 			{
-				LogListViewItemType * pTmp = (LogListViewItemType*) m_pListView->topLevelItem(i);
+				LogListViewItemType * pTmp = (LogListViewItemType *)m_pListView->topLevelItem(i);
 				if(pTmp->m_type == pFile->type())
 				{
-					m_pLastCategory=pTmp;
+					m_pLastCategory = pTmp;
 					break;
 				}
 			}
@@ -409,7 +451,7 @@ void LogViewWindow::filterNext()
 		m_pLastGroupItem = 0;
 		for(int i=0; i < m_pLastCategory->childCount(); ++i)
 		{
-			LogListViewItemFolder * pTmp = (LogListViewItemFolder*) m_pLastCategory->child(i);
+			LogListViewItemFolder * pTmp = (LogListViewItemFolder *) m_pLastCategory->child(i);
 			if(pTmp->text(0) == m_szLastGroup)
 			{
 				m_pLastGroupItem = pTmp;
@@ -429,11 +471,11 @@ filter_next:
 filter_last:
 	if(pFile && !m_bAborted)
 	{
-		m_pProgressBar->setValue(m_pProgressBar->value()+1);
+		m_pProgressBar->setValue(m_pProgressBar->value() + 1);
 		m_pTimer->start(); //singleshot
 	} else {
 		m_pBottomLayout->setVisible(false);
-		m_pListView->sortItems(0, Qt::AscendingOrder);
+		m_pListView->sortItems(0,Qt::AscendingOrder);
 		m_pProgressBar->setValue(0);
 		m_pFilterButton->setEnabled(true);
 	}
@@ -446,25 +488,6 @@ void LogViewWindow::cacheFileList()
 	recurseDirectory(szLogPath);
 
 	setupItemList();
-}
-
-void LogViewWindow::recurseDirectory(const QString & szDir)
-{
-	QDir dir(szDir);
-	QFileInfoList list = dir.entryInfoList();
-	for(int iList=0; iList < list.count(); iList++)
-	{
-		QFileInfo info = list[iList];
-		if(info.isDir())
-		{
-			// recursive
-			if(info.fileName()!=".." && info.fileName()!=".")
-				recurseDirectory(info.filePath());
-		} else if(info.suffix() == "gz" || info.suffix() == "log")
-		{
-			m_logList.append(new LogFile(info.filePath()));
-		}
-	}
 }
 
 void LogViewWindow::itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *)
@@ -492,17 +515,21 @@ void LogViewWindow::itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *)
 	m_pIrcView->repaint();
 }
 
-void LogViewWindow::rightButtonClicked( QTreeWidgetItem * it, const QPoint &)
+void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 {
-	if(!it)
+	if(!pItem)
 		return;
-	m_pListView->setCurrentItem(it);
+	m_pListView->setCurrentItem(pItem);
 
 	KviTalPopupMenu * pPopup = new KviTalPopupMenu(this);
-	if(((LogListViewItem *)it)->childCount())
-		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all these channel/query log files","log"),this,SLOT(deleteCurrent()));
-	else
-		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove file","log"),this,SLOT(deleteCurrent()));
+	if(((LogListViewItem *)pItem)->childCount())
+	{
+		//pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
+		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all log files","log"),this,SLOT(deleteCurrent()));
+	} else {
+		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export log file to","log"),m_pExportLogPopup);
+		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
+	}
 
 	pPopup->exec(QCursor::pos());
 }
@@ -510,51 +537,20 @@ void LogViewWindow::rightButtonClicked( QTreeWidgetItem * it, const QPoint &)
 void LogViewWindow::deleteCurrent()
 {
 	LogListViewItem * pItem = (LogListViewItem *)(m_pListView->currentItem());
-	if(pItem)
+	if(!pItem)
+		return;
+
+	if(!pItem->childCount())
 	{
-		if(pItem->childCount())
+		if(!pItem->fileName().isNull())
 		{
 			if(QMessageBox::question(
 				this,
-				__tr2qs_ctx("Confirm current user logs delete","log"),
-				__tr2qs_ctx("Do you really wish to delete all these channel/query logs?","log"),
+				__tr2qs_ctx("Confirm current user log delete","log"),
+				__tr2qs_ctx("Do you really wish to delete this log?","log"),
 				__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)
 				return;
-			KviPointerList <LogListViewItem> itemsList;
-			itemsList.setAutoDelete(false);
-			for(int i=0; i < pItem->childCount(); i++)
-			{
-				if(!pItem->child(i)->childCount())
-				{
-					itemsList.append((LogListViewItem*)pItem->child(i));
-					continue;
-				}
-				LogListViewItem * pChild = (LogListViewItem*)pItem->child(i);
-				for(int j=0; j < pChild->childCount(); j++)
-				{
-					if(!(LogListViewItem*)pChild->child(j))
-					{
-						qDebug("Null pointer in logviewitem");
-						continue;
-					}
-					itemsList.append((LogListViewItem*)pChild->child(j));
-				}
-			}
-			for(unsigned int u=0; u < itemsList.count(); u++)
-			{
-				LogListViewItem * pCurItem = itemsList.at(u);
-				if(!pCurItem->fileName().isNull())
-				{
-					QString szFname;
-					g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pCurItem->fileName());
-					KviFileUtils::removeFile(szFname);
-				}
-			}
-			delete pItem;
-			return;
-		}
-		if(!pItem->fileName().isNull())
-		{
+
 			QString szFname;
 			g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pItem->fileName());
 			KviFileUtils::removeFile(szFname);
@@ -563,32 +559,163 @@ void LogViewWindow::deleteCurrent()
 			if(!pItem->parent()->childCount())
 				delete pItem->parent();
 		}
+		return;
 	}
-}
 
-
-LogViewListView::LogViewListView(QWidget * pParent)
-: QTreeWidget(pParent)
-{
-	header()->setSortIndicatorShown(true);
-	setColumnCount(1);
-	setHeaderLabel(__tr2qs_ctx("Log File","log"));
-	setSelectionMode(QAbstractItemView::SingleSelection);
-	setSortingEnabled(true);
-	setRootIsDecorated(true);
-	setAnimated(true);
-}
-
-void LogViewListView::mousePressEvent(QMouseEvent * pEvent)
-{
-	if(pEvent->button() == Qt::RightButton)
+	if(QMessageBox::question(
+		this,
+		__tr2qs_ctx("Confirm current user logs delete","log"),
+		__tr2qs_ctx("Do you really wish to delete all these logs?","log"),
+		__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)
+		return;
+	KviPointerList<LogListViewItem> itemsList;
+	itemsList.setAutoDelete(false);
+	for(int i=0; i < pItem->childCount(); i++)
 	{
-		QTreeWidgetItem * pItem = itemAt(pEvent->pos());
-		if(pItem)
-			emit rightButtonPressed(pItem,QCursor::pos());
+		if(!pItem->child(i)->childCount())
+		{
+			itemsList.append((LogListViewItem *)pItem->child(i));
+			continue;
+		}
+		LogListViewItem * pChild = (LogListViewItem *)pItem->child(i);
+		for(int j=0; j < pChild->childCount(); j++)
+		{
+			if(!(LogListViewItem *)pChild->child(j))
+			{
+				qDebug("Null pointer in logviewitem");
+				continue;
+			}
+			itemsList.append((LogListViewItem *)pChild->child(j));
+		}
 	}
-	QTreeWidget::mousePressEvent(pEvent);
+	for(unsigned int u=0; u < itemsList.count(); u++)
+	{
+		LogListViewItem * pCurItem = itemsList.at(u);
+		if(!pCurItem->fileName().isNull())
+		{
+			QString szFname;
+			g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pCurItem->fileName());
+			KviFileUtils::removeFile(szFname);
+		}
+	}
+	delete pItem;
 }
+
+void LogViewWindow::exportLog(int iId)
+{
+	LogListViewItem * pItem = (LogListViewItem *)(m_pListView->currentItem());
+	if(!pItem)
+		return;
+
+	if(!pItem->childCount())
+	{
+		// Export the log
+		createLog(pItem->log(),iId);
+		return;
+	}
+
+	// We selected a node in the log list, scan the children
+	KviPointerList<LogListViewItem> logList;
+	logList.setAutoDelete(false);
+	for(int i = 0; i < pItem->childCount(); i++)
+	{
+		if(!pItem->child(i)->childCount())
+		{
+			// The child is a log file, append it to the list
+			logList.append((LogListViewItem *)pItem->child(i));
+			continue;
+		}
+
+		// The child is a node, scan it
+		LogListViewItem * pChild = (LogListViewItem *)pItem->child(i);
+		for(int j=0; j < pChild->childCount(); j++)
+		{
+			if(!(LogListViewItem *)pChild->child(j))
+			{
+				qDebug("Null pointer in logviewitem");
+				continue;
+			}
+
+			// Add the child to the list
+			logList.append((LogListViewItem *)pChild->child(j));
+		}
+	}
+
+	// Scan the list
+	for(unsigned int u = 0; u < logList.count(); u++)
+	{
+		LogListViewItem * pCurItem = logList.at(u);
+		createLog(pCurItem->log(),iId);
+	}
+}
+
+void LogViewWindow::createLog(LogFile * pLog, int iId)
+{
+	if(!pLog)
+		return;
+
+	QString szBuffer, szLine, szTmp;
+	QRegExp rx;
+
+	// Open file for reading
+	QFile file(pLog->fileName());
+	if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+		return;
+
+	// Set up a 16bit Unicode string
+	QTextStream stream(&file);
+	stream.setCodec("UTF-8");
+
+	switch(iId)
+	{
+		case LogFile::PlainText:
+		{
+			// Scan the file
+			while(!stream.atEnd())
+			{
+				szTmp = stream.readLine();
+				szLine = KviControlCodes::stripControlBytes(szTmp);
+
+				// Remove icons' code
+				rx.setPattern("^\\d{1,3}\\s");
+				szLine.replace(rx,"");
+
+				// Remove link from a user speaking
+				// e.g.: <!ncHelLViS69>  -->  <HelLViS69> 
+				rx.setPattern("\\s<!nc");
+				szLine.replace(rx," <");
+
+				// Remove link from a nick in a mask
+				// e.g.: !nFoo [~bar@!hfoo.bar]  -->  Foo [~bar@!hfoo.bar]
+				rx.setPattern("\\s!n");
+				szLine.replace(rx," ");
+
+				// Remove link from a host in a mask
+				// e.g.: Foo [~bar@!hfoo.bar]  -->  Foo [~bar@foo.bar]
+				rx.setPattern("@!h");
+				szLine.replace(rx,"@");
+
+				// Remove link from a channel
+				// e.g.: !c#reloaded  -->  #reloaded
+				rx.setPattern("!c#");
+				szLine.replace(rx,"#");
+
+				szBuffer += szLine;
+				szBuffer += "\n";
+			}
+
+			QFile log("/home/hellvis69/test.txt");
+			if(!log.open(QIODevice::WriteOnly | QIODevice::Text))
+				return;
+
+			log.write(szBuffer.toUtf8());
+			log.close();
+
+			break;
+		}
+	}
+}
+
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "LogViewWindow.moc"

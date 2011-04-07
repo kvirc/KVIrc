@@ -28,10 +28,8 @@
 #include "LogViewWindow.h"
 
 #include "KviWindow.h"
-#include "KviScriptEditor.h"
-#include <QTreeWidget>
 
-class KviScriptEditor;
+#include <QTreeWidget>
 
 class LogListViewItem : public QTreeWidgetItem
 {
@@ -40,8 +38,10 @@ public:
 	LogListViewItem(QTreeWidget * par, LogFile::Type type, LogFile * fileData);
 	~LogListViewItem() {};
 public:
-	LogFile::Type m_type;
-	LogFile*             m_pFileData;
+	LogFile::Type   m_type;
+	LogFile       * m_pFileData;
+public:
+	LogFile * log(){ return m_pFileData; };
 	virtual QString fileName() const { return QString(); };
 };
 
@@ -59,7 +59,6 @@ public:
 	LogListViewItemType(QTreeWidget * par, LogFile::Type type);
 	~LogListViewItemType() {};
 };
-
 
 class LogListViewLog : public LogListViewItem
 {
