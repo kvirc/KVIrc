@@ -8,6 +8,7 @@ SET(kvimediaplayer_SRCS
 	MpXmmsInterface.cpp
 	MpAmipInterface.cpp
 	MpMprisInterface.cpp
+	MpSpotifyInterface.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

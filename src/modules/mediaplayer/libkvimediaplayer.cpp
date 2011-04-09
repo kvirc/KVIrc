@@ -29,6 +29,7 @@
 #include "MpMprisInterface.h"
 #include "MpWinampInterface.h"
 #include "MpXmmsInterface.h"
+#include "MpSpotifyInterface.h"
 
 #include "KviModule.h"
 #include "KviOptions.h"
@@ -1626,6 +1627,7 @@ static bool mediaplayer_module_init( KviModule * m )
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAmipInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviSpotifyInterface));
 #endif
 	g_pMPInterface = 0;
 
