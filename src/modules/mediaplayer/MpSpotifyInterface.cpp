@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : MpSpotifyInterface.cpp
-//   Creation date : Sat 09 Apr 2011 10:38:12 by David López
+//   Creation date : Sat 09 Apr 2011 10:38:12 by David LÃ³pez
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2011 David López <grannost at gmail dot com>
+//   Copyright (C) 2011 David LÃ³pez <grannost at gmail dot com>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
