@@ -83,7 +83,7 @@ LogFile::LogFile(const QString & szName)
 	}
 	QString szTypeToken = szTmpName.section('_',0,0);
 	// Ignore non-logs files, this includes '.' and '..'
-	if(KviQString::equalCI(szTypeToken,"channel"))
+	if(KviQString::equalCI(szTypeToken,"channel") || KviQString::equalCI(szTypeToken,"deadchannel"))
 	{
 		m_szType = "channel";
 		m_eType = Channel;
