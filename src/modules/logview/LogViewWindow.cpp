@@ -27,6 +27,7 @@
 #include "LogViewWindow.h"
 #include "LogViewWidget.h"
 
+#include "KviHtmlGenerator.h"
 #include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviModule.h"
@@ -671,9 +672,11 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 	QString szDate = pLog->date().toString("yyyy.MM.dd");
 
 	// The fresh new log
-	QString szLog = QDir::homePath();
-	KviQString::ensureLastCharIs(szLog,QChar(KVI_PATH_SEPARATOR_CHAR));
-	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
+	QString szLogPath = QDir::homePath();
+	KviQString::ensureLastCharIs(szLogPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+	szLogPath += "temp";
+	szLogPath += KVI_PATH_SEPARATOR_CHAR;
+	QString szLog = szLogPath+QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
 
 	// Open file for reading
 	QFile file(pLog->fileName());
@@ -724,7 +727,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				szBuffer += "\n";
 			}
 
-			goto write_log;
+			break;
 		}
 		case LogFile::HTML:
 		{
@@ -765,26 +768,73 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 			while(!input.atEnd())
 			{
 				szTmp = input.readLine();
-
-				// FIXME: remove this
-				szLine = KviControlCodes::stripControlBytes(szTmp);
-
-				//szBuffer += "<p>";
-
-				szBuffer += szLine;
+				// locate msgtype
+				QString szNum = szTmp.section(' ',0,0);
+				bool bOk;
+				int iMsgType = szNum.toInt(&bOk);
+				// only human text at present...
+				if(iMsgType!=24 && iMsgType!=26  && iMsgType!=25) continue;
+				// remove msgtype tag
+				szTmp = szTmp.remove(0,szNum.length()+1);
+				szTmp = KviHtmlGenerator::convertToHtml(szTmp);
+				// insert msgtype icon at start of the current text line
+				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
+				QString szIcon=g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
+				szTmp.prepend("<img src=\""+szIcon+"\">");
+				szBuffer += szTmp+"<br>";
 				szBuffer += "\n";
 			}
-
+			// regexp to search all embedded icons
+			QRegExp expression("<img src=\"smallicons:([^\"]+)");
+			int iIndex = szBuffer.indexOf(expression);
+			QStringList szImagesList;
+			// search for icons
+			while (iIndex >= 0)
+			{
+				int length = expression.matchedLength();
+				QString szCap = expression.cap(1);
+				// if the icon isn't in the images list then add
+				if(szImagesList.indexOf(szCap)==-1)
+					szImagesList.append(szCap);
+				iIndex = szBuffer.indexOf(expression, iIndex + length);
+			}
+			// get current theme path
+			QString szCurrentThemePath;
+			g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+			// current coresmall path
+			szCurrentThemePath += "coresmall";
+			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+			// check if coresmall exists in current theme
+			if(!KviFileUtils::directoryExists(szCurrentThemePath))
+			{
+				// get global coresmall path
+				g_pApp->getGlobalKvircDirectory(szCurrentThemePath,KviApplication::Pics,"coresmall");
+				KviQString::ensureLastCharIs(szCurrentThemePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+			}
+			// copy all icons to the log destination folder
+			for(int i=0;i<szImagesList.count();i++)
+			{
+				QString szSourceFile=szCurrentThemePath+szImagesList.at(i);
+				QString szDestFile=szLogPath+szImagesList.at(i);
+				qDebug ("copy from %s to %s",szSourceFile.toUtf8().data(),szDestFile.toUtf8().data());
+				KviFileUtils::copyFile(szSourceFile,szDestFile);
+			}
+			// remove internal tags
+			szBuffer = szBuffer.replace("smallicons:","");
+			szBuffer = szBuffer.replace("<qt>","");
+			szBuffer = szBuffer.replace("</qt>","");
+			szBuffer = szBuffer.replace("!nc","");
+			szBuffer = szBuffer.replace("!n","");
 			// Close the document
 			szBuffer += "</body>\n</html>\n";
 
-			qDebug("%s",szBuffer.toUtf8().data());
+//			qDebug("%s",szBuffer.toUtf8().data());
 
-			goto write_log;
+			break;
 		}
 	}
 
-write_log:
 	if(QFile::exists(szLog))
 	{
 		if(QMessageBox::question(this,__tr2qs_ctx("Export Log - KVIrc","log"),__tr2qs_ctx("File '%1' already exists. Do you want to overwrite it?","log").arg(szLog),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
