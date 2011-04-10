@@ -199,6 +199,7 @@ protected:
 	void recurseDirectory(const QString & szDir);
 	void setupItemList();
 
+
 	/**
 	* \brief Exports the log and creates the file in the selected format
 	* \param pLog The log file associated to the item selected in the popup

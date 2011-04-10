@@ -700,11 +700,12 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				szLine = KviControlCodes::stripControlBytes(szTmp);
 
 				// Remove icons' code
+				QRegExp rx;
 				rx.setPattern("^\\d{1,3}\\s");
 				szLine.replace(rx,"");
 
 				// Remove link from a user speaking
-				// e.g.: <!ncHelLViS69>  -->  <HelLViS69> 
+				// e.g.: <!ncHelLViS69>  -->  <HelLViS69>
 				rx.setPattern("\\s<!nc");
 				szLine.replace(rx," <");
 
@@ -776,7 +777,9 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				if(iMsgType!=24 && iMsgType!=26  && iMsgType!=25) continue;
 				// remove msgtype tag
 				szTmp = szTmp.remove(0,szNum.length()+1);
+
 				szTmp = KviHtmlGenerator::convertToHtml(szTmp);
+
 				// insert msgtype icon at start of the current text line
 				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
 				QString szIcon=g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
@@ -817,15 +820,13 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 			{
 				QString szSourceFile=szCurrentThemePath+szImagesList.at(i);
 				QString szDestFile=szLogPath+szImagesList.at(i);
-				qDebug ("copy from %s to %s",szSourceFile.toUtf8().data(),szDestFile.toUtf8().data());
 				KviFileUtils::copyFile(szSourceFile,szDestFile);
 			}
 			// remove internal tags
-			szBuffer = szBuffer.replace("smallicons:","");
-			szBuffer = szBuffer.replace("<qt>","");
-			szBuffer = szBuffer.replace("</qt>","");
-			szBuffer = szBuffer.replace("!nc","");
-			szBuffer = szBuffer.replace("!n","");
+			szBuffer.replace(QRegExp("<qt>|</qt>|smallicons:"),"");
+			szBuffer.replace(">!nc",">");
+			szBuffer.replace("@!nc","@");
+			szBuffer.replace("%!nc","%");
 			// Close the document
 			szBuffer += "</body>\n</html>\n";
 
@@ -854,7 +855,6 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 	file.close();
 	log.close();
 }
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "LogViewWindow.moc"
