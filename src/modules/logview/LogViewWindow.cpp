@@ -672,11 +672,11 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 	QString szDate = pLog->date().toString("yyyy.MM.dd");
 
 	// The fresh new log
-	QString szLogPath = QDir::homePath();
-	KviQString::ensureLastCharIs(szLogPath,QChar(KVI_PATH_SEPARATOR_CHAR));
-	szLogPath += "temp";
-	szLogPath += KVI_PATH_SEPARATOR_CHAR;
-	QString szLog = szLogPath+QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
+	QString szLog = QDir::homePath();
+	KviQString::ensureLastCharIs(szLog,QChar(KVI_PATH_SEPARATOR_CHAR));
+	szLog += "temp";
+	szLog += KVI_PATH_SEPARATOR_CHAR;
+	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
 
 	// Open file for reading
 	QFile file(pLog->fileName());
@@ -700,7 +700,6 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				szLine = KviControlCodes::stripControlBytes(szTmp);
 
 				// Remove icons' code
-				QRegExp rx;
 				rx.setPattern("^\\d{1,3}\\s");
 				szLine.replace(rx,"");
 
@@ -720,7 +719,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				szLine.replace(rx,"@");
 
 				// Remove link from a channel
-				// e.g.: !c#reloaded  -->  #reloaded
+				// e.g.: !c#KVIrc  -->  #KVIrc
 				rx.setPattern("!c#");
 				szLine.replace(rx,"#");
 
@@ -734,6 +733,8 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 		{
 			szLog += ".html";
 			szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
+			QString szNick = "";
+			static bool bFirstLine = true;
 
 			QString szTitle;
 			switch(pLog->type())
@@ -769,12 +770,19 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 			while(!input.atEnd())
 			{
 				szTmp = input.readLine();
+
+				// Find who has talked
+				QString szTmpNick = szTmp.section(" ",2,2);
+
 				// locate msgtype
 				QString szNum = szTmp.section(' ',0,0);
 				bool bOk;
 				int iMsgType = szNum.toInt(&bOk);
-				// only human text at present...
-				if(iMsgType!=24 && iMsgType!=26  && iMsgType!=25) continue;
+
+				// only human text for now...
+				if(iMsgType != 24 && iMsgType != 25  && iMsgType != 26)
+					continue;
+
 				// remove msgtype tag
 				szTmp = szTmp.remove(0,szNum.length()+1);
 
@@ -782,32 +790,63 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 
 				// insert msgtype icon at start of the current text line
 				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
-				QString szIcon=g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
-				szTmp.prepend("<img src=\""+szIcon+"\">");
-				szBuffer += szTmp+"<br>";
-				szBuffer += "\n";
+				QString szIcon = g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
+				szTmp.prepend("<img src=\"" + szIcon + "\">");
+
+				/*
+				 * Check if the nick who has talked is the same of the above line.
+				 * If so, we have to put the line as it is, otherwise we have to
+				 * open a new paragraph
+				 */
+				if(szTmpNick != szNick)
+				{
+					/*
+					 * People is not the same, close the paragraph opened
+					 * before and open a new one
+					 */
+					if(!bFirstLine)
+						szBuffer += "</p>\n";
+					szTmp.prepend("<p>");
+
+					szNick = szTmpNick;
+					bFirstLine = false;
+				} else {
+					// Break the line
+					szTmp += "<br />\n";
+				}
+
+				szBuffer += szTmp;
 			}
+
+			// Close the last paragraph
+			szBuffer += "</p>\n";
+
 			// regexp to search all embedded icons
-			QRegExp expression("<img src=\"smallicons:([^\"]+)");
-			int iIndex = szBuffer.indexOf(expression);
+			rx.setPattern("<img src=\"smallicons:([^\"]+)");
+			int iIndex = szBuffer.indexOf(rx);
 			QStringList szImagesList;
+
 			// search for icons
 			while (iIndex >= 0)
 			{
-				int length = expression.matchedLength();
-				QString szCap = expression.cap(1);
+				int iLength = rx.matchedLength();
+				QString szCap = rx.cap(1);
+
 				// if the icon isn't in the images list then add
-				if(szImagesList.indexOf(szCap)==-1)
+				if(szImagesList.indexOf(szCap) == -1)
 					szImagesList.append(szCap);
-				iIndex = szBuffer.indexOf(expression, iIndex + length);
+				iIndex = szBuffer.indexOf(rx, iIndex + iLength);
 			}
+
 			// get current theme path
 			QString szCurrentThemePath;
 			g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+
 			// current coresmall path
 			szCurrentThemePath += "coresmall";
 			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+
 			// check if coresmall exists in current theme
 			if(!KviFileUtils::directoryExists(szCurrentThemePath))
 			{
@@ -815,22 +854,24 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				g_pApp->getGlobalKvircDirectory(szCurrentThemePath,KviApplication::Pics,"coresmall");
 				KviQString::ensureLastCharIs(szCurrentThemePath,QChar(KVI_PATH_SEPARATOR_CHAR));
 			}
+
 			// copy all icons to the log destination folder
-			for(int i=0;i<szImagesList.count();i++)
+			for(int i=0; i < szImagesList.count(); i++)
 			{
-				QString szSourceFile=szCurrentThemePath+szImagesList.at(i);
-				QString szDestFile=szLogPath+szImagesList.at(i);
+				QString szSourceFile = szCurrentThemePath + szImagesList.at(i);
+				QString szDestFile = szLog + szImagesList.at(i);
 				KviFileUtils::copyFile(szSourceFile,szDestFile);
 			}
+
 			// remove internal tags
-			szBuffer.replace(QRegExp("<qt>|</qt>|smallicons:"),"");
+			rx.setPattern("<qt>|</qt>|smallicons:");
+			szBuffer.replace(rx,"");
 			szBuffer.replace(">!nc",">");
 			szBuffer.replace("@!nc","@");
 			szBuffer.replace("%!nc","%");
+
 			// Close the document
 			szBuffer += "</body>\n</html>\n";
-
-//			qDebug("%s",szBuffer.toUtf8().data());
 
 			break;
 		}

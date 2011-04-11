@@ -43,7 +43,7 @@ namespace KviHtmlGenerator
 	* \param szText const reference to a message text
 	* \return QString
 	*/
-	extern KVIRC_API QString convertToHtml(const QString &szText);
+	extern KVIRC_API QString convertToHtml(const QString & szText);
 };
 
 #endif //_KVI_HTMLGENERATOR_H_

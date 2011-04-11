@@ -507,6 +507,14 @@ namespace KviQString
 	extern KVILIB_API void bufferToHex(QString & szRetBuffer, const unsigned char * pcBuffer, unsigned int uLen);
 
 	/**
+	* \brief Escapes any kvs special character from a string
+	* \param szData The string to escape
+	* \param uFlags The flag which correspond to the characters to escape
+	* \return void
+	*/
+	extern KVILIB_API void escapeKvs(QString * szData, uint uFlags = 0);
+
+	/**
 	* \brief Return the string converted to a long
 	* \param szNumber The source number
 	* \param bOk The conversion error handling
@@ -535,14 +543,6 @@ namespace KviQString
 		return szNumber.toULongLong(bOk);
 #endif
 	}
-
-	/**
-	* \brief Escapes any kvs special character from a string
-	* \param szData The string to escape
-	* \param uFlags The flag which correspond to the characters to escape
-	* \return void
-	*/
-	extern KVILIB_API void escapeKvs(QString * szData, uint uFlags = 0);
 }
 
 #endif //_KVI_QSTRING_H_
