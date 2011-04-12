@@ -83,6 +83,7 @@
 #include <QTextDocument>
 #include <QRegExp>
 #include <QDebug>
+#include <QTextDocument> // for Qt::escape_command
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
@@ -259,11 +260,11 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 			"<tr><td bgcolor=\"#303030\">" \
 			"<center><font color=\"#FFFFFF\"><b>";
 
-	buffer += nick;
+	buffer += Qt::escape(nick);
 	buffer += "!";
-	buffer += e->user().isEmpty() ? QString("*") : e->user();
+	buffer += Qt::escape(e->user().isEmpty() ? QString("*") : e->user());
 	buffer += "@";
-	buffer += e->host().isEmpty() ? QString("*") : e->host();
+	buffer += Qt::escape(e->host().isEmpty() ? QString("*") : e->host());
 
 	buffer += "</b></font></center></td></tr>";
 	if(u)
@@ -272,7 +273,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		if(!szComment.isEmpty())
 		{
 			buffer += "<tr bgcolor=\"#F0F0F0\"><td><center><font size=\"-1\">(";
-			buffer += szComment;
+			buffer += Qt::escape(szComment);
 			buffer += ")</font></center></td></tr>";
 		}
 	}
@@ -285,7 +286,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	if(e->hasRealName())
 	{
 		buffer += "<tr><td><center><b>";
-		buffer += KviControlCodes::stripControlBytes(e->realName());
+		buffer += Qt::escape(KviControlCodes::stripControlBytes(e->realName()));
 		buffer += "</b></center></td></tr>";
 	}
 
@@ -305,13 +306,13 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		buffer += "<tr bgcolor=\"#F0F0F0\"><td><font color=\"#000000\">";
 		buffer += __tr2qs("Registered as");
 		buffer += " <b>";
-		buffer += u->user()->name();
+		buffer += Qt::escape(u->user()->name());
 		buffer += "</b>; Group ";
-		buffer += u->user()->group();
+		buffer += Qt::escape(u->user()->group());
 		buffer += "</font></td></tr><tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\" color=\"#000000\">";
 		buffer += __tr2qs("(Matched by");
 		buffer += " ";
-		buffer += mask;
+		buffer += Qt::escape(mask);
 		buffer += ")</font></td></tr>";
 	}
 
@@ -322,7 +323,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		{
 			buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
 			buffer += __tr2qs("On <b>");
-			buffer += chans;
+			buffer += Qt::escape(chans);
 			buffer += "</b></font></td></tr>";
 		}
 	}
@@ -330,7 +331,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	if(e->hasServer())
 	{
 		buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
-		buffer += __tr2qs("Using server <b>%1</b>").arg(e->server());
+		buffer += __tr2qs("Using server <b>%1</b>").arg(Qt::escape(e->server()));
 
 		if(e->hasHops())
 		{

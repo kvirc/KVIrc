@@ -63,6 +63,7 @@
 #include <QPixmap>
 #include <QList>
 #include <QByteArray>
+#include <QTextDocument> // for Qt::escape_command
 
 KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szNick)
 : KviWindow(KviWindow::Query,lpFrm,szNick,lpConsole)
@@ -131,98 +132,24 @@ void KviQueryWindow::updateLabelText()
 	if(szText != m_pLabel->text())
 	{
 		m_pLabel->setText(szText);
-		KviTalToolTip::add(m_pLabel,getInfoLabelTipText());
+		QString szBuffer;
+		getWindowListTipText(szBuffer);
+		KviTalToolTip::add(m_pLabel,szBuffer);
 	}
 }
 
-QString KviQueryWindow::getInfoLabelTipText()
+void KviQueryWindow::getWindowListTipText(QString & szBuffer)
 {
 	QString szText;
 	if(!connection())
-		return szText;
+		szBuffer = __tr2qs("[Dead Query]");
 
 	KviIrcUserEntry * pEntry = connection()->userDataBase()->find(m_szName);
 	if(pEntry)
 	{
-		QString szTmp;
-		QString szMask;
-
-		if(pEntry->hasUser())
-			szMask += pEntry->user();
-		else
-			szMask += "*";
-
-		szMask += "@";
-
-		if(pEntry->hasHost())
-			szMask += pEntry->host();
-		else
-			szMask += "*";
-
-		szTmp += "\n";
-
-		QString szChans;
-		connection()->getCommonChannels(m_szName,szChans,0);
-		if(connection())
-		{
-
-			szText = "<html>" \
-				"<body>" \
-				"<table width=\"100%\">";
-
-			szText +=          START_TABLE_BOLD_ROW;
-			szText += __tr2qs("Query target:");
-			szText +=              END_TABLE_BOLD_ROW;
-			szText +=          "<tr><td>";
-
-			if(pEntry->hasRealName())
-				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName, szMask, KviControlCodes::stripControlBytes(pEntry->realName()));
-			else
-				szTmp = __tr2qs("%1 is %2").arg(m_szName, szMask);
-
-			szTmp.replace('&',"&amp;");
-			szTmp.replace('<',"&lt;");
-			szTmp.replace('>',"&gt;");
-
-			szText += szTmp;
-
-			szText += "</td></tr>";
-
-			if(pEntry->hasServer())
-			{
-				szText += "<tr><td>";
-				if(pEntry->hasHops())
-					szText += __tr2qs("%1 is using irc server: %2 (%3 hops)").arg(m_szName, pEntry->server()).arg(pEntry->hops());
-				else
-					szText += __tr2qs("%1 is using irc server: %2").arg(m_szName, pEntry->server());
-				szText += "</td></tr>";
-			}
-
-			if(pEntry->isAway())
-			{
-				szText += "<tr><td>";
-				szText += __tr2qs("%1 is probably away").arg(m_szName);
-				szText += "</td></tr>";
-			}
-
-			szText += "<tr><td>";
-			szTmp = __tr2qs("Common channels with %1: %2").arg(m_szName, szChans);
-
-			szTmp.replace('&',"&amp;");
-			szTmp.replace('<',"&lt;");
-			szTmp.replace('>',"&gt;");
-
-			szText += szTmp;
-			szText +="</td></tr>";
-
-			szText += "</table>" \
-				"</body>" \
-			"<html>";
-		} else {
-			szText = __tr2qs("[Dead Query]");
-		}
-	}
-	return szText;
+		QString buffer;
+		console()->getUserTipText(m_szName,pEntry,szBuffer);
+	} else szBuffer = QString(__tr2qs("Nothing known about %1")).arg(m_szName);
 }
 
 QString KviQueryWindow::getInfoLabelText()

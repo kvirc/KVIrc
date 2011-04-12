@@ -75,7 +75,7 @@
 #include <QPalette>
 #include <QMessageBox>
 #include <QCloseEvent>
-
+#include <QTextDocument> // for Qt::escape_command
 
 // FIXME: #warning "+a Anonymous channel mode!"
 // FIXME: #warning "OnChannelFlood event...."
@@ -792,34 +792,34 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 	if(list.count() == 1)
 	{
 		szBuffer += "<b>";
-		szBuffer += list.first();
+		szBuffer += Qt::escape(list.first());
 		szBuffer += "</b>";
 		szBuffer += " ";
 		szBuffer += bPast ? __tr2qs("said something recently") : __tr2qs("is talking");
 	} else if(list.count() == 2)
 	{
 		szBuffer += "<b>";
-		szBuffer += list.first();
+		szBuffer += Qt::escape(list.first());
 		szBuffer += "</b> ";
 		szBuffer += __tr2qs("and");
 		szBuffer += " <b>";
 		list.erase(list.begin());
-		szBuffer += list.first();
+		szBuffer += Qt::escape(list.first());
 		szBuffer += "</b> ";
 		szBuffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
 	} else {
 		szBuffer += "<b>";
-		szBuffer += list.first();
+		szBuffer += Qt::escape(list.first());
 		szBuffer += "</b>, <b>";
 		list.erase(list.begin());
-		szBuffer += list.first();
+		szBuffer += Qt::escape(list.first());
 		if(list.count() == 2)
 		{
 			szBuffer += "</b> ";
 			szBuffer += __tr2qs("and");
 			szBuffer += " <b>";
 			list.erase(list.begin());
-			szBuffer += list.first();
+			szBuffer += Qt::escape(list.first());
 			szBuffer += "</b>";
 		} else {
 			// (list.count() - 1) is > 1
@@ -865,7 +865,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	m_pUserListView->userStats(&s);
 
 
-	szBuffer += m_szPlainTextCaption;
+	szBuffer += Qt::escape(m_szPlainTextCaption);
 	szBuffer += szEndOfFontBoldRow;
 
 	szBuffer += szRowStart;

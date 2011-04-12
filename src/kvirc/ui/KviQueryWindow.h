@@ -267,10 +267,10 @@ protected:
 	QString getInfoLabelText();
 
 	/**
-	* \brief Gets the info of the tooltip text
+	* \brief Gets the window list and info label tooltip text
 	* \return QString
 	*/
-	QString getInfoLabelTipText();
+	virtual void getWindowListTipText(QString & szBuffer);
 
 	/**
 	* \brief Returns the icon associated to the query
