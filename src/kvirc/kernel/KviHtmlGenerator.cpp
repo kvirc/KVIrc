@@ -29,13 +29,14 @@
 #include "KviOptions.h"
 #include "KviTextIconManager.h"
 
+#include <QTextDocument> // for Qt::escape
+
 #define KVI_LABEL_DEF_BACK 100
 #define KVI_LABEL_DEF_FORE 101
 
 namespace KviHtmlGenerator
 {
-
-	QString convertToHtml(const QString & szText)
+	QString convertToHtml(const QString & szText, bool bEscape)
 	{
 		QString szResult   = "<qt>";
 		bool bCurBold      = false;
@@ -48,28 +49,29 @@ namespace KviHtmlGenerator
 
 		unsigned int uIdx = 0;
 
-		while(uIdx < (unsigned int)szText.length())
+		QString szTxt = bEscape ? Qt::escape(szText) : szText;
+
+		while(uIdx < (unsigned int)szTxt.length())
 		{
-			unsigned short c = szText[(int)uIdx].unicode();
+			unsigned short c = szTxt[(int)uIdx].unicode();
 			unsigned int uStart = uIdx;
 
 			while(
-					(c != KviControlCodes::Color) &&
-					(c != KviControlCodes::Bold) &&
-					(c != KviControlCodes::Underline) &&
-					(c != KviControlCodes::Reverse) &&
-					(c != KviControlCodes::Reset) &&
-					(c != KviControlCodes::Icon) &&
-					((c != ':') || bIgnoreIcons) &&
-					((c != ';') || bIgnoreIcons) &&
-					((c != '=') || bIgnoreIcons)
-				)
+				(c != KviControlCodes::Color) &&
+				(c != KviControlCodes::Bold) &&
+				(c != KviControlCodes::Underline) &&
+				(c != KviControlCodes::Reverse) &&
+				(c != KviControlCodes::Reset) &&
+				(c != KviControlCodes::Icon) &&
+				((c != ':') || bIgnoreIcons) &&
+				((c != ';') || bIgnoreIcons) &&
+				((c != '=') || bIgnoreIcons))
 			{
 				bIgnoreIcons = false;
 				if(c == '&')
 				{
 					//look for an html entity
-					QString szEntity = szText.mid((int)uIdx,6);
+					QString szEntity = szTxt.mid((int)uIdx,6);
 					if(szEntity == "&quot;")
 					{
 						uIdx += 5;
@@ -81,16 +83,16 @@ namespace KviHtmlGenerator
 						} else {
 							szEntity.truncate(4);
 							if(szEntity == "&lt;" || szEntity == "&gt;")
-								uIdx+=3;
+								uIdx += 3;
 						}
 					}
 				}
 
 				uIdx++;
-				if(uIdx >= (unsigned int)szText.length())
+				if(uIdx >= (unsigned int)szTxt.length())
 					break;
 				
-				c = szText[(int)uIdx].unicode();
+				c = szTxt[(int)uIdx].unicode();
 			}
 
 			bIgnoreIcons = false;
@@ -144,7 +146,7 @@ namespace KviHtmlGenerator
 				if(bOpened)
 					szResult.append(";\">");
 
-				szResult.append(szText.mid(uStart,iLen));
+				szResult.append(szTxt.mid(uStart,iLen));
 
 				if(bOpened)
 					szResult.append("</span>");
@@ -186,7 +188,7 @@ namespace KviHtmlGenerator
 					++uIdx;
 					unsigned char ucFore;
 					unsigned char ucBack;
-					uIdx = KviControlCodes::getUnicodeColorBytes(szText,uIdx,&ucFore,&ucBack);
+					uIdx = KviControlCodes::getUnicodeColorBytes(szTxt,uIdx,&ucFore,&ucBack);
 					if(ucFore != KviControlCodes::NoChange)
 					{
 						uCurFore = ucFore;
@@ -212,20 +214,20 @@ namespace KviHtmlGenerator
 						unsigned short uIsEmoticon = 0;
 						unsigned int uIcoStart = uIdx;
 
-						if(uIdx < (unsigned int)szText.length())
+						if(uIdx < (unsigned int)szTxt.length())
 						{
 							//look up for a nose
-							if(szText[(int)uIdx] == '-')
+							if(szTxt[(int)uIdx] == '-')
 							{
 								szLookup.append('-');
 								uIdx++;
 							}
 						}
 
-						if(uIdx < (unsigned int)szText.length())
+						if(uIdx < (unsigned int)szTxt.length())
 						{
 							//look up for a mouth
-							unsigned short uMouth = szText[(int)uIdx].unicode();
+							unsigned short uMouth = szTxt[(int)uIdx].unicode();
 							switch(uMouth)
 							{
 								case ')':
@@ -246,15 +248,15 @@ namespace KviHtmlGenerator
 							}
 						}
 
-						if(uIdx < (unsigned int)szText.length())
+						if(uIdx < (unsigned int)szTxt.length())
 						{
 							//look up for a space
-							if(szText[(int)uIdx]== ' ')
+							if(szTxt[(int)uIdx]== ' ')
 							{
 								uIsEmoticon++;
 							}
 						} else {
-							//got a smile at the end of the szText
+							//got a smile at the end of the szTxt
 							uIsEmoticon++;
 						}
 
@@ -292,10 +294,10 @@ namespace KviHtmlGenerator
 					if(bShowIcons)
 					{
 						unsigned int uIcoStart = uIdx;
-						while((uIdx < (unsigned int)szText.length()) && (szText[(int)uIdx].unicode() > 32))
+						while((uIdx < (unsigned int)szTxt.length()) && (szTxt[(int)uIdx].unicode() > 32))
 							uIdx++;
 
-						QString szLookup = szText.mid(uIcoStart,uIdx - uIcoStart);
+						QString szLookup = szTxt.mid(uIcoStart,uIdx - uIcoStart);
 
 						KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
 						if(pIcon)

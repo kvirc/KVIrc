@@ -668,14 +668,14 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 		return;
 
 	QRegExp rx;
-	QString szBuffer, szLine, szTmp;
+	QString szLog, szLogDir, szBuffer, szLine, szTmp;
 	QString szDate = pLog->date().toString("yyyy.MM.dd");
 
 	// The fresh new log
-	QString szLog = QDir::homePath();
-	KviQString::ensureLastCharIs(szLog,QChar(KVI_PATH_SEPARATOR_CHAR));
-	szLog += "temp";
-	szLog += KVI_PATH_SEPARATOR_CHAR;
+	g_pApp->getLocalKvircDirectory(szLogDir,KviApplication::Tmp);
+	KviFileUtils::adjustFilePath(szLogDir);
+	szLogDir += KVI_PATH_SEPARATOR_CHAR;
+	szLog += szLogDir;
 	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
 
 	// Open file for reading
@@ -734,7 +734,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 			szLog += ".html";
 			szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
 			QString szNick = "";
-			static bool bFirstLine = true;
+			bool bFirstLine = true;
 
 			QString szTitle;
 			switch(pLog->type())
@@ -773,6 +773,8 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 
 				// Find who has talked
 				QString szTmpNick = szTmp.section(" ",2,2);
+				if((szTmpNick.left(1) != "<") && (szTmpNick.right(1) != ">"))
+					szTmpNick = "";
 
 				// locate msgtype
 				QString szNum = szTmp.section(' ',0,0);
@@ -786,12 +788,12 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 				// remove msgtype tag
 				szTmp = szTmp.remove(0,szNum.length()+1);
 
-				szTmp = KviHtmlGenerator::convertToHtml(szTmp);
+				szTmp = KviHtmlGenerator::convertToHtml(szTmp,true);
 
 				// insert msgtype icon at start of the current text line
 				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
 				QString szIcon = g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
-				szTmp.prepend("<img src=\"" + szIcon + "\">");
+				szTmp.prepend("<img src=\"" + szIcon + "\" alt=\"\" /> ");
 
 				/*
 				 * Check if the nick who has talked is the same of the above line.
@@ -809,13 +811,13 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 					szTmp.prepend("<p>");
 
 					szNick = szTmpNick;
-					bFirstLine = false;
 				} else {
 					// Break the line
-					szTmp += "<br />\n";
+					szTmp.prepend("<br />\n");
 				}
 
 				szBuffer += szTmp;
+				bFirstLine = false;
 			}
 
 			// Close the last paragraph
@@ -859,7 +861,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 			for(int i=0; i < szImagesList.count(); i++)
 			{
 				QString szSourceFile = szCurrentThemePath + szImagesList.at(i);
-				QString szDestFile = szLog + szImagesList.at(i);
+				QString szDestFile = szLogDir + szImagesList.at(i);
 				KviFileUtils::copyFile(szSourceFile,szDestFile);
 			}
 

@@ -40,10 +40,11 @@ namespace KviHtmlGenerator
 {
 	/**
 	* \brief Converts a raw irc message to its html equivalent text
-	* \param szText const reference to a message text
+	* \param szText Const reference to a message text
+	* \param bEscape Whether to escape chars to HTML entities
 	* \return QString
 	*/
-	extern KVIRC_API QString convertToHtml(const QString & szText);
+	extern KVIRC_API QString convertToHtml(const QString & szText, bool bEscape = false);
 };
 
 #endif //_KVI_HTMLGENERATOR_H_
