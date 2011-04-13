@@ -40,7 +40,6 @@
 class QToolButton;
 class QLineEdit;
 class KviMainWindow;
-//class QProcess;
 
 class HelpWidget : public QWidget
 {
@@ -50,17 +49,10 @@ public:
 	~HelpWidget();
 private:
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QToolButton  * m_pBtnIndex;
-	QToolButton  * m_pBtnFindPrev;
-	QToolButton  * m_pBtnFindNext;
-	QToolButton  * m_pBtnResetFind;
-	QToolButton * m_pBtnZoomIn;
-	QToolButton * m_pBtnZoomOut;
-
-	QToolBar   * m_pToolBar;
-	QLineEdit * m_pFindText;
-	QVBoxLayout *m_pLayout;
-	QWebView * m_pTextBrowser;
+	QToolBar     * m_pToolBar;
+	QLineEdit    * m_pFindText;
+	QVBoxLayout  * m_pLayout;
+	QWebView     * m_pTextBrowser;
 #else
 	QToolButton  * m_pBtnIndex;
 	QToolButton  * m_pBtnBackward;
