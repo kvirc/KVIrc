@@ -488,9 +488,8 @@ msgid "&Cascade Windows"
 msgstr "&Ventanas en cascada"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:166
-#, fuzzy
 msgid "&Case sensitive"
-msgstr "No distingue m&ays/mins"
+msgstr "No distinguir m&ays/mins"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:100
 msgid "&Configure KVIrc..."
@@ -529,9 +528,8 @@ msgid "&Minimalist Theme"
 msgstr "Tema &minimalista"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:99
-#, fuzzy
 msgid "&Next"
-msgstr "Siguiente"
+msgstr "Siguie&nte"
 
 #: src/modules/setup/SetupWizard.cpp:85
 msgid "&Next >"
@@ -551,9 +549,8 @@ msgid "&OK"
 msgstr "&Aceptar"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:109
-#, fuzzy
 msgid "&Options"
-msgstr "Acciones"
+msgstr "&Opciones"
 
 #: src/kvirc/ui/KviMenuBar.cpp:250
 #: src/kvirc/ui/KviMenuBar.cpp:258
@@ -565,9 +562,8 @@ msgid "&Paste"
 msgstr "&Pegar"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:104
-#, fuzzy
 msgid "&Previous"
-msgstr "&Previsualizar"
+msgstr "An&terior"
 
 #: src/kvirc/ui/KviMenuBar.cpp:241
 #: src/modules/trayicon/libkvitrayicon.cpp:114
@@ -1516,7 +1512,7 @@ msgstr "Tubería rota"
 
 #: src/modules/help/HelpWidget.cpp:99
 msgid "Browsing: "
-msgstr ""
+msgstr "Navegación: "
 
 #: src/kvirc/ui/KviImageDialog.cpp:240
 msgid "Builtin $icon(%1) [index %2]"
@@ -2520,11 +2516,9 @@ msgid "Customize..."
 msgstr "Personalizar..."
 
 #: src/modules/system/libkvisystem.cpp:617
-#, fuzzy
 msgid "DBus calls are available only under unix"
 msgstr ""
-"Las llamadas a DBus sólo están disponibles si se compiló KVIrc con soporte "
-"para KDE"
+"Las llamadas a DBus sólo están disponibles bajo UNIX"
 
 #: src/kvirc/kernel/KviOptions.cpp:798
 msgid "DCC chat message"
@@ -3337,9 +3331,8 @@ msgid "Hey... are ya sure that your network is up?"
 msgstr "Eh... ¿estás seguro de que te funciona la conexión?"
 
 #: src/kvirc/ui/KviIrcView.cpp:2067
-#, fuzzy
 msgid "Hide Filter"
-msgstr "Filtro"
+msgstr "Ocultar filtro"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:390
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:453
@@ -3359,9 +3352,8 @@ msgid "High activity"
 msgstr "Alta actividad"
 
 #: src/modules/help/HelpWidget.cpp:69
-#, fuzzy
 msgid "Highlight: "
-msgstr "Texto resaltado"
+msgstr "Resaltar: "
 
 #: src/kvirc/kernel/KviOptions.cpp:732
 msgid "Highlighted text"
@@ -4185,9 +4177,8 @@ msgid "Mask editor - KVirc"
 msgstr "Editor de máscaras - KVIrc"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:163
-#, fuzzy
 msgid "Match:"
-msgstr "vigilancia"
+msgstr "Concordar:"
 
 #: src/modules/links/LinksWindow.cpp:295
 #, c-format
@@ -4209,9 +4200,8 @@ msgid "Medium activity"
 msgstr "Actividad media"
 
 #: src/kvirc/kernel/KviOptions.cpp:878
-#, fuzzy
 msgid "MemoServ message"
-msgstr "Mensaje ChanServ"
+msgstr "Mensaje MemoServ"
 
 #: src/kvirc/kernel/KviOptions.cpp:1269
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
@@ -4227,7 +4217,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:120
 msgid "Message types"
-msgstr ""
+msgstr "Tipos de mensaje"
 
 #: src/kvirc/ui/KviMdiManager.cpp:275
 msgid "Mi&nimize All"
@@ -5125,7 +5115,7 @@ msgstr "Pegar (lentamente)"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:155
 msgid "Pattern:"
-msgstr ""
+msgstr "Patrón:"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:99
 msgid "Peer X509 certificate"
@@ -5146,9 +5136,8 @@ msgid "Pixmap options (image path)"
 msgstr "Opciones del gráfico (ruta de la imagen)"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:158
-#, fuzzy
 msgid "Plain Text"
-msgstr "Buscar texto"
+msgstr "Texto plano"
 
 #: src/kvirc/ui/KviSelectors.cpp:798
 msgid "Play"
@@ -5625,9 +5614,8 @@ msgid "Refresh index"
 msgstr "Actualizar índice"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:160
-#, fuzzy
 msgid "RegExp"
-msgstr "Reop"
+msgstr "Expresión regular"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:329
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:389
@@ -5704,9 +5692,8 @@ msgid "Restore"
 msgstr "Restaurar"
 
 #: src/kvirc/ui/KviMenuBar.cpp:214
-#, fuzzy
 msgid "Restore &Default Script..."
-msgstr "Restaurar script por &defecto"
+msgstr "Restaurar script por &defecto..."
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:111
 msgid "Restore Default Script - Error"
@@ -6057,9 +6044,8 @@ msgid "Show &Icon Table"
 msgstr "Mostrar tabla de &iconos"
 
 #: src/kvirc/ui/KviIrcView.cpp:2069
-#, fuzzy
 msgid "Show Filter"
-msgstr "Filtro"
+msgstr "Mostrar filtro"
 
 #: src/kvirc/ui/KviInput.cpp:113
 #: src/kvirc/ui/KviInput.cpp:401
@@ -6077,9 +6063,8 @@ msgstr ""
 "texticons"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:139
-#, fuzzy
 msgid "Show SocketSpy"
-msgstr "Mostrar espía de sockets..."
+msgstr "Mostrar espía de sockets"
 
 #: src/kvirc/ui/KviMenuBar.cpp:171
 msgid "Show StatusBar"
@@ -6312,9 +6297,8 @@ msgid "Sound system detected to: %s"
 msgstr "Sistema de sonido detectado :%s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:801
-#, fuzzy
 msgid "Spam filter listing"
-msgstr "Lista de invitados"
+msgstr "Lista de filtro de spam"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1249
 msgid ""
@@ -6497,14 +6481,12 @@ msgstr "El parámetro de acción no se evalúa como un índice"
 
 #: src/kvilib/net/KviHttpRequest.cpp:822
 #: src/kvilib/net/KviHttpRequest.cpp:964
-#, fuzzy
 msgid "The amount of received data exceeds expected length"
-msgstr "El flujo excede la longitud máxima"
+msgstr "La cantidad de datos recibida excede la longitud esperada"
 
 #: src/kvilib/net/KviHttpRequest.cpp:738
-#, fuzzy
 msgid "The amount of received data exceeds the maximum length"
-msgstr "El flujo excede la longitud máxima"
+msgstr "La cantidad de datos recibida excede la longitud máxima"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."
@@ -6875,13 +6857,12 @@ msgstr ""
 "[%Q@\r!h\r%Q\r] cambió su nick a \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviTheme.cpp:80
-#, fuzzy
 msgid "The theme data file does not exist"
-msgstr "No existe el fichero de información del tema visual"
+msgstr "No existe el fichero de datos del tema"
 
 #: src/kvirc/kernel/KviTheme.cpp:74
 msgid "The theme information file does not exist"
-msgstr "No existe el fichero de información del tema visual"
+msgstr "No existe el fichero de información del tema"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:444
 #: src/modules/toolbar/libkvitoolbar.cpp:453
@@ -7686,7 +7667,7 @@ msgstr "Servidores comodín (¿hubs?): %d"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:159
 msgid "Wildcards"
-msgstr ""
+msgstr "Comodines"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:617
 msgid "Will attempt to reconnect in %1 seconds"
@@ -8420,7 +8401,7 @@ msgstr "opción alternativa específica del servidor"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:767
 msgid "spam filter list"
-msgstr ""
+msgstr "lista de filtro de spam"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1333
 msgid "third alternative nickname specified in options"
