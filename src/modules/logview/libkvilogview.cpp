@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : libkvilogview.cpp
-//   Creation date : Sun Feb 10 2000 23:25:10 CEST by Juanjo �varez
+//   Creation date : Sun Feb 10 2000 23:25:10 CEST by Juanjo Alvarez
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
@@ -95,7 +95,8 @@ static KviModuleExtension * logview_extension_alloc(KviModuleExtensionAllocStruc
 
 		g_pLogViewWindow = new LogViewWindow(s->pDescriptor,g_pMainWindow);
 		g_pMainWindow->addWindow(g_pLogViewWindow,!bCreateMinimized);
-		if(bCreateMinimized)g_pLogViewWindow->minimize();
+		if(bCreateMinimized)
+			g_pLogViewWindow->minimize();
 		return g_pLogViewWindow;
 	}
 
@@ -146,14 +147,32 @@ static bool logview_module_can_unload(KviModule *)
 	return (!g_pLogViewWindow);
 }
 
+static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pParam)
+{
+	if(!kvi_strEqualCI("logview::export",pcOperation))
+		return false;
+
+	/*
+	if(!g_pLogViewWindow)
+		g_pLogViewWindow = new LogViewWindow();
+	*/
+	KviLogFileData * pLog = (KviLogFileData *)pParam;
+	if(!pLog)
+		return false;
+
+	qDebug("name: %s - type: %s",pLog->szName.toUtf8().data(),pLog->szType.toUtf8().data());
+	return true;
+}
+
 KVIRC_MODULE(
 	"KVIrc Log Viewer Widget",
 	"4.0.0",
-	"Juanjo Alvarez <juanjux@yahoo.es>",
+	"Copyright (C) 2000 Juanjo Alvarez <juanjux@yahoo.es>\n" \
+	"	2011 Elvio Basello (hellvis69 at gmail dot com)",
 	"A structured log file viewer",
 	logview_module_init,
 	logview_module_can_unload,
-	0,
+	logview_module_ctrl,
 	logview_module_cleanup,
 	"logview"
 )

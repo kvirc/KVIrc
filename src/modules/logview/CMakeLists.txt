@@ -8,6 +8,7 @@ SET(kvilogview_MOC_HDRS
 
 SET(kvilogview_SRCS
 	libkvilogview.cpp
+	LogFile.cpp
 	LogViewWidget.cpp
 	LogViewWindow.cpp
 )

@@ -41,127 +41,24 @@
 #include "KviControlCodes.h"
 
 #include <QList>
-#include <QPixmap>
-#include <QToolButton>
 #include <QFileInfo>
 #include <QDir>
 #include <QCursor>
 #include <QHeaderView>
-#include <QLayout>
 #include <QPushButton>
-#include <QDateTimeEdit>
+#include <QDateEdit>
 #include <QLineEdit>
 #include <QLabel>
-#include <QShortcut>
 #include <QMouseEvent>
-#include <QByteArray>
 #include <QMessageBox>
-#include <QSplitter>
 #include <QProgressBar>
 #include <QTextStream>
-
-#ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
-#endif
+#include <QTabWidget>
+#include <QCheckBox>
 
 #include <limits.h> //for INT_MAX
 
 extern LogViewWindow * g_pLogViewWindow;
-
-LogFile::LogFile(const QString & szName)
-{
-	m_szFilename = szName;
-
-	QFileInfo fi(m_szFilename);
-	QString szTmpName = fi.fileName();
-
-	m_bCompressed = (fi.suffix() == "gz");
-	if(m_bCompressed)
-	{
-		//removes trailing dot and extension
-		szTmpName.chop(3);
-	}
-	QString szTypeToken = szTmpName.section('_',0,0);
-	// Ignore non-logs files, this includes '.' and '..'
-	if(KviQString::equalCI(szTypeToken,"channel") || KviQString::equalCI(szTypeToken,"deadchannel"))
-	{
-		m_szType = "channel";
-		m_eType = Channel;
-	} else if(KviQString::equalCI(szTypeToken,"console"))
-	{
-		m_szType = "console";
-		m_eType = Console;
-	} else if(KviQString::equalCI(szTypeToken,"query"))
-	{
-		m_szType = "query";
-		m_eType = Query;
-	} else if(KviQString::equalCI(szTypeToken,"dccchat"))
-	{
-		m_szType = "dccchat";
-		m_eType = DccChat;
-	} else {
-		m_szType = "";
-		m_eType = Other;
-	}
-
-	KviCString szUndecoded = szTmpName.section('.',0,0);
-	szUndecoded.cutToFirst('_');
-	m_szName = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
-
-	szUndecoded = szTmpName.section('.',1).section('_',0,-2);
-	m_szNetwork = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
-
-	QString szDate = szTmpName.section('_',-1).section('.',0,-2);
-	int iYear = szDate.section('.',0,0).toInt();
-	int iMonth = szDate.section('.',1,1).toInt();
-	int iDay = szDate.section('.',2,2).toInt();
-	m_date.setYMD(iYear,iMonth,iDay);
-
-	//qDebug("type=%i, name=%s, net=%s, date=%i %i %i",m_eType,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
-}
-
-void LogFile::getText(QString & szText)
-{
-	QString szLogName = fileName();
-	QFile logFile;
-#ifdef COMPILE_ZLIB_SUPPORT
-	if(m_bCompressed)
-	{
-		gzFile file = gzopen(szLogName.toLocal8Bit().data(),"rb");
-		if(file)
-		{
-			char cBuff[1025];
-			int iLen;
-			QByteArray data;
-			//QCString data;
-			iLen = gzread(file,cBuff,1024);
-			while(iLen > 0)
-			{
-				cBuff[iLen] = 0;
-				data.append(cBuff);
-				iLen = gzread(file,cBuff,1024);
-			}
-			gzclose(file);
-			szText = QString::fromUtf8(data);
-		} else {
-			qDebug("Cannot open compressed file %s",szLogName.toLocal8Bit().data());
-		}
-	} else {
-#endif
-		logFile.setFileName(szLogName);
-
-		if(!logFile.open(QIODevice::ReadOnly))
-			return;
-
-		QByteArray bytes;
-		bytes = logFile.readAll();
-		szText = QString::fromUtf8(bytes.data(),bytes.size());
-		logFile.close();
-#ifdef COMPILE_ZLIB_SUPPORT
-	}
-#endif
-}
-
 
 LogViewListView::LogViewListView(QWidget * pParent)
 : QTreeWidget(pParent)
