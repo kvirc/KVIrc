@@ -2,6 +2,48 @@ This is KVIrc's changelog. It tipically lists new added features and changes tha
 KVIrc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
 https://svn.kvirc.de/kvirc/timeline
 
+April 2011
+   [HelLViS69]
+   - Added the ability to export logs to different formats (plain text, HTML, ...)
+   - Added $log.export()
+   [egns]
+   - Added mediaplayer interface for Spotify
+
+*** Released KVIrc 4.0.4 (r5648) - 2011-03-19 ***
+
+March 2011
+   [CtrlAltCa]
+   - Reworked Ircview tools
+   - Added $context.connectionStartTime and $context.lastMessageTime
+   - Use the OS style for treewindowlist and userlist selection
+   [Noldor]
+   - Added webview KVS class
+   [Pragma]
+   - Added a first theme and addon application interface
+   [egns]
+   - Bumped Qt requirements to 4.6
+
+February 2011
+   [Pragma]
+   - Fixed some memory leaks :)
+   [Noldor]
+   - KVS improvements
+
+January 2011
+   [Pragma]
+   - Added a new DNS resolver that doesn't rely on OS native implementation
+   - Added alternative network-specific and server-specific nicknames
+   [HelLViS69]
+   - Reworked icon stuff killing moving defines to enums
+   - Improved KDE notifier
+   - Killed some KviQString helpers
+   [Noldor]
+   - Ported KVS socket class to Qt API
+   [CtrlAltCa]
+   - Added mediaplayer support for Clementine
+   - Implemented smart logging path
+   - Added FiSH module
+
 December 2010
    [Pragma]
    - Reorganized the whole code in subdirs, renamed files, removed very old code, ...
