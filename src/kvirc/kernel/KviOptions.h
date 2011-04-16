@@ -110,7 +110,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseExtendedPrivmsgView 16                      /* ircengine::outputcontrol::privmsg */
 #define KviOption_boolShowUserAndHostInPrivmsgView 17                /* ircengine::outputcontrol::privmsg */
 #define KviOption_boolUseWordHighlighting 18                         /* ircengine::outputcontrol::highlighting */
-#define KviOption_boolUseBigIcons 19                                 /* internal */
+//#define KviOption_boolUseBigIcons 19                               /* UNUSED internal */
 #define KviOption_boolCleanupUnusedModules 20                        /* uparser ? */
 #define KviOption_boolIgnoreCtcpPing 21                              /* ctcp */
 #define KviOption_boolIgnoreCtcpVersion 22                           /* ctcp */
@@ -608,7 +608,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintNotifierPixmapAlign 76
 #define KviOption_uintOutputDatetimeFormat 77                    /* irc::verbosity */
 #define KviOption_uintOnJoinRequestsDelay 78
-#define KVI_NUM_UINT_OPTIONS 79
+#define KviOption_uintToolBarIconSize 79
+
+#define KVI_NUM_UINT_OPTIONS 80
 
 namespace KviIdentdOutputMode {
 	enum Mode {

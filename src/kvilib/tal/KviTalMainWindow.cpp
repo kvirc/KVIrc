@@ -47,19 +47,6 @@ KviTalMainWindow::~KviTalMainWindow()
 {
 }
 
-bool KviTalMainWindow::usesBigPixmaps()
-{
-	return (iconSize().width() > 30);
-}
-
-void KviTalMainWindow::setUsesBigPixmaps(bool bUse)
-{
-	if(bUse)
-		setIconSize(QSize(32,32));
-	else
-		setIconSize(QSize(22,22));
-}
-
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "KviTalMainWindow.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES

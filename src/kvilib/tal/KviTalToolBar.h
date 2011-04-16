@@ -95,18 +95,7 @@ public:
 	*/
 	void setBoxLayout(QBoxLayout * pLayout);
 #endif // COMPILE_KDE_SUPPORT
-	/**
-	* \brief Returns true if the toolbar uses big pixmaps
-	* \return bool
-	*/
-	bool usesBigPixmaps();
 
-	/**
-	* \brief Sets the use of big pixmaps
-	* \param bUse Whether to use big pixmaps
-	* \return void
-	*/
-	void setUsesBigPixmaps(bool bUse);
 };
 
 #endif //_KVI_TAL_TOOLBAR_H_

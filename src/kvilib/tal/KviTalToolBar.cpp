@@ -64,18 +64,6 @@
 	}
 #endif // COMPILE_KDE_SUPPORT
 
-	bool KviTalToolBar::usesBigPixmaps()
-	{
-		return (iconSize().width() > 30);
-	}
-
-	void KviTalToolBar::setUsesBigPixmaps(bool bUse)
-	{
-		if(bUse)
-			setIconSize(QSize(32,32));
-		else
-			setIconSize(QSize(22,22));
-	}
 
 KviTalToolBar::~KviTalToolBar()
 {

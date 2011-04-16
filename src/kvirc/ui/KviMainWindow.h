@@ -145,13 +145,9 @@ public:
 	// Helper to fill the toolbars popup
 	// it is used by KviToolBar and KviMenuBar
 	void fillToolBarsPopup(KviTalPopupMenu * p);
-	/**
-	* \brief Sets the use of big pixmaps in toolbar
-	* \param bUse Whether to use big pixmaps in toolbars
-	* \return void
-	*/
-	void setUsesBigPixmaps(bool bUse);
-
+	// Set the size of the icons used by the whole app
+	// Allowed sizes are 16, 22, 32 and 48
+	void setIconSize(unsigned int uSize);
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);

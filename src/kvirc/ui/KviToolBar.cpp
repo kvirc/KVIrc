@@ -44,6 +44,8 @@ static KviTalPopupMenu * g_pToolBarPositionsPopup = 0;
 KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
 : KviTalToolBar(szLabel,g_pMainWindow,type,bNewLine,pcName)
 {
+	unsigned int uIconSize = KVI_OPTION_UINT(KviOption_uintToolBarIconSize);
+	setIconSize(QSize(uIconSize,uIconSize));
 }
 
 KviToolBar::~KviToolBar()
@@ -90,21 +92,35 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 	g_pToolBarContextPopup->insertItem(__tr2qs("Icon Size"),g_pToolBarIconSizesPopup);
 
-	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Small (22x22)"),this,SLOT(setSmallIcons()));
-	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Large (32x32)"),this,SLOT(setBigIcons()));
+	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Small (16x16)"),this,SLOT(setIconSize16()));
+	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Medium (22x22)"),this,SLOT(setIconSize22()));
+	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Large (32x32)"),this,SLOT(setIconSize32()));
+	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Huge (48x48)"),this,SLOT(setIconSize48()));
 
 	g_pToolBarContextPopup->popup(QCursor::pos());
 }
 
-void KviToolBar::setBigIcons()
+void KviToolBar::setIconSize16()
 {
-	g_pMainWindow->setUsesBigPixmaps(true);
+	g_pMainWindow->setIconSize(16);
 	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
 }
 
-void KviToolBar::setSmallIcons()
+void KviToolBar::setIconSize22()
 {
-	g_pMainWindow->setUsesBigPixmaps(false);
+	g_pMainWindow->setIconSize(22);
+	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
+}
+
+void KviToolBar::setIconSize32()
+{
+	g_pMainWindow->setIconSize(32);
+	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
+}
+
+void KviToolBar::setIconSize48()
+{
+	g_pMainWindow->setIconSize(48);
 	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
 }
 

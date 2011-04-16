@@ -120,7 +120,7 @@ KviMainWindow::KviMainWindow()
 
 	setCentralWidget(m_pSplitter);
 
-	setUsesBigPixmaps(KVI_OPTION_BOOL(KviOption_boolUseBigIcons));
+	setIconSize(KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
 
 	m_pMdi      = new KviMdiManager(m_pSplitter,this,"mdi_manager");
 
@@ -177,7 +177,6 @@ KviMainWindow::~KviMainWindow()
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(),pos().y(),
 			size().width(),size().height());
 
-	KVI_OPTION_BOOL(KviOption_boolUseBigIcons) = usesBigPixmaps();
 	KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode) = m_pMdi->isInSDIMode();
 	KVI_OPTION_BOOL(KviOption_boolStatusBarVisible) = m_pStatusBar ? true : false;
 
@@ -1177,16 +1176,23 @@ void KviMainWindow::switchToNextWindowInContext(void)
 	m_pWindowList->switchWindow(true,true);
 }
 
-void KviMainWindow::setUsesBigPixmaps(bool bUse)
+void KviMainWindow::setIconSize(unsigned int uSize)
 {
-	KviTalMainWindow::setUsesBigPixmaps(bUse);
+	if((uSize != 16) && (uSize != 22) && (uSize != 32) && (uSize != 48))
+		uSize = 32;
+
+	KVI_OPTION_UINT(KviOption_uintToolBarIconSize) = uSize;
+
+	QSize sSize(uSize,uSize);
+
+	KviTalMainWindow::setIconSize(sSize);
 
 	KviPointerListIterator<KviMexToolBar> it(*(m_pModuleExtensionToolBarList));
 	if(it.current())
 	{
 		while(KviMexToolBar * t = it.current())
 		{
-			t->setUsesBigPixmaps(bUse);
+			t->setIconSize(sSize);
 			t->update();
 			++it;
 		}
@@ -1199,13 +1205,14 @@ void KviMainWindow::setUsesBigPixmaps(bool bUse)
 		{
 			if(d->toolBar())
 			{
-				d->toolBar()->setUsesBigPixmaps(bUse);
+				d->toolBar()->setIconSize(sSize);
 				d->toolBar()->update();
 			}
 			++it2;
 		}
 	}
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "KviMainWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

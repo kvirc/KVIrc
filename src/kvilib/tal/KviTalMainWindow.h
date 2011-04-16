@@ -67,19 +67,7 @@ public:
 	* \return KviTalMainWindow
 	*/
 	~KviTalMainWindow();
-public:
-	/**
-	* \brief Returns true if the mainwindow uses big pixmaps
-	* \return bool
-	*/
-	bool usesBigPixmaps();
 
-	/**
-	* \brief Sets the use of big pixmaps
-	* \param bUse Whether to use big pixmaps
-	* \return void
-	*/
-	void setUsesBigPixmaps(bool bUse);
 };
 
 #endif // _KVI_TAL_MAINWINDOW_H_

@@ -35,8 +35,10 @@ public:
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
 public slots:
-	void setBigIcons();
-	void setSmallIcons();
+	void setIconSize16();
+	void setIconSize22();
+	void setIconSize32();
+	void setIconSize48();
 };
 
 #endif //_KVI_TOOLBAR_H_
