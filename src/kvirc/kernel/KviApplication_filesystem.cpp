@@ -435,7 +435,6 @@ bool KviApplication::findImage(QString &szRetPath,const QString &filename)
 		QString szTmp = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir);
 		szTmp.append(KVI_PATH_SEPARATOR_CHAR);
 		szTmp.append(filename);
-
 		getLocalKvircDirectory(szRetPath,KviApplication::Themes,szTmp);
 		if(KviFileUtils::fileExists(szRetPath))return true;
 

@@ -38,7 +38,7 @@ namespace KviHtmlGenerator
 {
 	QString convertToHtml(const QString & szText, bool bEscape)
 	{
-		QString szResult   = "<qt>";
+		QString szResult="<qt>";
 		bool bCurBold      = false;
 		bool bCurUnderline = false;
 		bool bIgnoreIcons  = false;
@@ -320,7 +320,7 @@ namespace KviHtmlGenerator
 			}
 		}
 		szResult.append("</qt>");
-
+		//qDebug("Results %s",szResult.toUtf8().data());
 		return szResult;
 	}
 }

@@ -28,6 +28,7 @@
 #include "KviTextIconManager.h"
 
 #include <QTableWidget>
+#include <QToolButton>
 #include <QTableWidgetItem>
 
 class TextIconTableItem;
@@ -46,7 +47,8 @@ public:
 protected:
 	KviTextIcon * m_pIcon;
 public:
-	KviTextIcon * icon() { return m_pIcon; };
+	KviTextIcon * icon() {
+	    return m_pIcon; };
 	void setId(int id);
 
 };
@@ -60,10 +62,11 @@ public:
 protected:
 	QTableWidget * m_pTable;
 	int m_iLastEditedRow;
-	TextIconTableItem *m_pItem;
+	TextIconTableItem *m_pCurrentItem;
 	QPushButton  * m_pAdd;
 	QPushButton  * m_pDel;
 	QPushButton  * m_pRestore;
+	QToolButton * m_pCurrentIconButton;
 	KviTalPopupMenu *m_pPopup;
 private:
 	void fillTable();
@@ -78,7 +81,7 @@ protected slots:
 
 	void iconSelected(KviIconManager::SmallIcon);
 	void doPopup();
-	//void chooseFromFile();
+	void chooseFromFile();
 };
 
 #endif //!_OPTW_TEXTICONS_H_

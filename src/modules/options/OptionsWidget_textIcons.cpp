@@ -25,12 +25,16 @@
 #include "OptionsWidget_textIcons.h"
 
 #include "KviIconManager.h"
+
+#include "KviApplication.h"
+#include "KviOptions.h"
 #include "KviTextIconManager.h"
 #include "KviLocale.h"
 #include "KviFileDialog.h"
 #include "kvi_fileextensions.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalHBox.h"
+#include "KviFileUtils.h"
 
 #include <QToolButton>
 #include <QLayout>
@@ -67,7 +71,7 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 {
 	m_pPopup=0;
 	m_iLastEditedRow=-1;
-
+	m_pCurrentIconButton = 0;
 	setObjectName("texticons_options_widget");
 	createLayout();
 
@@ -158,41 +162,52 @@ void OptionsWidget_textIcons::doPopup()
 
 void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 {
-	m_pItem->icon()->setId(eIcon);
-	m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+	m_pCurrentItem->icon()->setId(eIcon);
+	m_pCurrentItem->setIcon(QIcon(*m_pCurrentItem->icon()->pixmap()));
 
 	KviTalHBox * pBox=new KviTalHBox(0);
 	pBox->setSpacing(0);
 	pBox->setMargin(0);
 
-	QToolButton * pIconButton=new QToolButton(pBox);
-	pIconButton->setMinimumWidth(150);
-	pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
-	connect(pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+	m_pCurrentIconButton=new QToolButton(pBox);
+	m_pCurrentIconButton->setMinimumWidth(150);
+	m_pCurrentIconButton->setIcon(QIcon(*m_pCurrentItem->icon()->pixmap()));
+	connect(m_pCurrentIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
 
-// FIXME: this does not work currently!
-// 	QToolButton * pBrowseButton=new QToolButton(pBox);
-// 	pBrowseButton->setText("...");
-// 	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+	QToolButton * pBrowseButton=new QToolButton(pBox);
+	pBrowseButton->setText("...");
+	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
 
-	m_pTable->setCellWidget(m_pItem->row(),1,pBox);
+	m_pTable->setCellWidget(m_pCurrentItem->row(),1,pBox);
 }
 
-// FIXME: this does not work currently!
-// void OptionsWidget_textIcons::chooseFromFile()
-// {
-// 	QString szFile;
-// 	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString(),KVI_FILTER_IMAGE,"options");
-// 	if(!szFile.isEmpty())
-// 	{
-// 		if(g_pIconManager->getPixmap(szFile))
-// 		{
-// 			m_pItem->icon()->setFilename(szFile);
-// 			m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
-//			m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
-// 		}
-// 	}
-// }
+ void OptionsWidget_textIcons::chooseFromFile()
+ {
+	QString szFile;
+	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString(),KVI_FILTER_IMAGE,"options");
+	if(!szFile.isEmpty())
+	{
+		if(g_pIconManager->getPixmap(szFile))
+		{
+
+		        QFileInfo info(szFile);
+
+			QString szFileName = info.fileName();
+			qDebug("pathfilename %s - filename %s",szFile.toUtf8().data(),szFileName.toUtf8().data());
+
+			QString szCurrentThemePath;
+			g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+			szCurrentThemePath+= KVI_PATH_SEPARATOR_CHAR;
+			qDebug("copy source %s - dest %s",szFile.toUtf8().data(),szCurrentThemePath.toUtf8().data());
+			KviFileUtils::copyFile(szFile,szCurrentThemePath+szFileName);
+			m_pCurrentItem->icon()->setFilename(szFileName);
+			qDebug("set Icon");
+			QPixmap *p=m_pCurrentItem->icon()->pixmap();
+			m_pCurrentItem->setIcon(QIcon(*p));
+			if(m_pCurrentIconButton) m_pCurrentIconButton->setIcon(QIcon(*p));
+		}
+	}
+ }
 void OptionsWidget_textIcons::itemSelectionChanged()
 {
 	int i = m_pTable->currentRow();
@@ -212,7 +227,7 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWi
 	if(cur->column()!=1) return;
 	if(m_iLastEditedRow==cur->row() || cur == prev) return;
 
-	m_pItem=(TextIconTableItem *)cur;
+	m_pCurrentItem=(TextIconTableItem *)cur;
 
 	KviTalHBox * pBox=new KviTalHBox(0);
 	pBox->setSpacing(0);
@@ -224,9 +239,9 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWi
 	connect(pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
 
 // FIXME: this does not work currently!
-// 	QToolButton * pBrowseButton=new QToolButton(pBox);
-// 	pBrowseButton->setText("...");
-// 	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+	QToolButton * pBrowseButton=new QToolButton(pBox);
+	pBrowseButton->setText("...");
+	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
 
 	m_pTable->setCellWidget(cur->row(),1,pBox);
 	m_iLastEditedRow=cur->row();
@@ -276,6 +291,7 @@ void OptionsWidget_textIcons::commit()
 			}
 		}
 	}
+	g_pTextIconManager->save();
 
 	for(int i=0; i<n; i++)
 		for (int j=0; j<m_pTable->columnCount(); j++)

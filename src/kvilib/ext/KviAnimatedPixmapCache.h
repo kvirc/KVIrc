@@ -114,7 +114,7 @@ protected:
 
 protected:
 
-	Data* internalLoad(const QString &szFile);
+	Data* internalLoad(const QString &szFile,int iWidth=0,int iHeight=0);
 	Data* internalResize(Data* data,const QSize &size);
 	void internalFree(Data* data);
 
@@ -134,9 +134,9 @@ public:
 		m_pInstance->internalScheduleFrameChange(delay,receiver);
 	}
 
-	static Data* load(const QString &szFileName)
+	static Data* load(const QString &szFileName,int iWidth=0,int iHeight=0)
 	{
-		return m_pInstance->internalLoad(szFileName);
+		return m_pInstance->internalLoad(szFileName,iWidth,iHeight);
 	}
 
 	static Data* resize(Data* data,const QSize &size)

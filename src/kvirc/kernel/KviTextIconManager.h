@@ -130,6 +130,8 @@ public:
 	*/
 	QPixmap * pixmap();
 
+	void setPixmap(QPixmap *pIcon);
+
 	/**
 	* \brief Returns the animated pixmap associated to the icon
 	* \return KviAnimatedPixmap *

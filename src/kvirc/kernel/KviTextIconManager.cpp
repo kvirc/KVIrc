@@ -25,6 +25,7 @@
 #define _KVI_TEXTICONMANAGER_CPP_
 
 #include "KviTextIconManager.h"
+#include "KviFileUtils.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
 #include "KviConfigurationFile.h"
@@ -68,15 +69,16 @@ KviTextIcon::KviTextIcon(QString szFile)
 
 	if(g_pApp->findImage(szRetPath, szFile))
 	{
-		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath);
-#if 0 // this doesn't work anyway
+		qDebug("resize");
+		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
+//#if 0 // this doesn't work anyway
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 		{
 			m_pAnimatedPixmap->start();
 		} else {
 			m_pAnimatedPixmap->stop();
 		}
-#endif
+//#endif
 	} else {
 		m_pAnimatedPixmap = NULL;
 	}
@@ -115,14 +117,34 @@ void KviTextIcon::setId(int iIcon)
 void KviTextIcon::setFilename(QString szFileName)
 {
 	m_eIcon = KviIconManager::None;
+	QString szRetPath;
+	if(m_pAnimatedPixmap) delete m_pAnimatedPixmap;
+	if(g_pApp->findImage(szRetPath, szFileName))
+	{
+		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
+//#if 0 // this doesn't work anyway
+		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
+		{
+			m_pAnimatedPixmap->start();
+		} else {
+			m_pAnimatedPixmap->stop();
+		}
+//#endif
+	} else {
+		m_pAnimatedPixmap = NULL;
+	}
 	m_szFileName = szFileName;
 }
 
+
+
 QPixmap * KviTextIcon::pixmap()
 {
-	if(m_eIcon >= 0)
-		return g_pIconManager->getSmallIcon(m_eIcon);
-
+    if(m_eIcon > 0)
+	return g_pIconManager->getSmallIcon(m_eIcon);
+	else {
+	    return m_pAnimatedPixmap->pixmap();
+	}
 	// This is actually wrong (at least for the current implementation).
 	// Users of this class expect the pointer to be permanent while
 	// g_pIconManager returns temporary pointers.
@@ -173,19 +195,32 @@ void KviTextIconManager::load()
 {
 	QString szTmp;
 	int iUpd = 0;
-	if(g_pApp->getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_TEXTICONS))
+	QString szPath;
+	bool bCheckUserDefinedTheme=false;
+	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
-		iUpd = load(szTmp,false);
+	    g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+	    szPath += KVI_PATH_SEPARATOR_CHAR;
+	    szPath += KVI_CONFIGFILE_TEXTICONS;;
+	    if (QFile::exists(szPath))  bCheckUserDefinedTheme=true;
+	    else  bCheckUserDefinedTheme=false;
+
 	}
+	if( bCheckUserDefinedTheme)  load(szPath,false);
+	else
+	{
+		if(g_pApp->getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_TEXTICONS))
+		{
+			iUpd = load(szTmp,false);
+		}
 
-	if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE)
-		return;
+		if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE) return;
 
-	// do a merge of the texticons if we have a new config version
-	g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
-
-	if(QFile::exists(szTmp))
-		load(szTmp,true);
+		// do a merge of the texticons if we have a new config version
+		g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
+		if(QFile::exists(szTmp))
+			load(szTmp,true);
+	}
 }
 
 void KviTextIconManager::applyOptions()
@@ -210,9 +245,21 @@ void KviTextIconManager::applyOptions()
 
 void KviTextIconManager::save()
 {
-	QString szTmp;
-	g_pApp->getLocalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
-	save(szTmp);
+	QString szPath;
+	bool bCheckUserDefinedTheme=false;
+	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
+	{
+	    g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+	    szPath += KVI_PATH_SEPARATOR_CHAR;
+	    szPath += KVI_CONFIGFILE_TEXTICONS;
+	    bCheckUserDefinedTheme=true;
+	}
+	if( bCheckUserDefinedTheme)  save(szPath);
+	else{
+	    QString szTmp;
+	    g_pApp->getLocalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
+	    save(szTmp);
+	}
 }
 
 int KviTextIconManager::load(const QString & szFileName, bool bMerge)
@@ -246,7 +293,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 			QString szTmp;
 			QPixmap * pix = 0;
 			//qDebug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
-			if(iId != -1)
+			if(iId > 0)
 			{
 				pix = g_pIconManager->getSmallIcon(iId);
 			} else {
@@ -273,7 +320,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 						}
 					}
 				} else {
-					if(iId != -1)
+					if(iId > 0)
 					{
 						m_pTextIconDict->replace(*s,new KviTextIcon(g_pIconManager->iconName(iId)));
 					} else {
@@ -301,7 +348,7 @@ void KviTextIconManager::save(const QString & szFileName)
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*m_pTextIconDict);
 	while(KviTextIcon * pIcon = it.current())
 	{
-		if(pIcon->id() != -1)
+		if(pIcon->id() > 0)
 			cfg.writeEntry(it.currentKey(),pIcon->id());
 		else
 			cfg.writeEntry(it.currentKey(),pIcon->filename());

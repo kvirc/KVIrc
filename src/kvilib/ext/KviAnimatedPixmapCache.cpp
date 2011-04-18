@@ -65,10 +65,9 @@ void KviAnimatedPixmapCache::done()
 	m_pInstance = NULL;
 }
 
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(const QString &szFile)
+KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(const QString &szFile,int iWidth,int iHeight)
 {
 	m_cacheMutex.lock();
-
 	Data* newData = 0;
 
 	QMultiHash<QString, Data*>::iterator i = m_hCache.find(szFile);
@@ -92,7 +91,8 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(const QString
 			reader.read(&buffer);
 			if(!buffer.isNull())
 			{
-				framePixmap = new QPixmap(QPixmap::fromImage(buffer));
+				if (iHeight && iWidth) framePixmap = new QPixmap(QPixmap::fromImage(buffer).scaled(iWidth,iHeight,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+				else framePixmap = new QPixmap(QPixmap::fromImage(buffer));
 				newData->append(FrameInfo(framePixmap,delay));
 			}
 		}

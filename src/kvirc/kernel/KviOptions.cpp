@@ -1151,7 +1151,9 @@ namespace KviTheme
 
 	bool load(const QString &szThemeDir,KviThemeInfo &buffer,bool bBuiltin)
 	{
+	    qDebug("Loading and apple theme");
 	    if(!buffer.load(szThemeDir,bBuiltin)){
+	        qDebug("data do not exists in theme dir %s",szThemeDir.toUtf8().data());
 			return false; // makes sure that themedata exists too
 		        }
 

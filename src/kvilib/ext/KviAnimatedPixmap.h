@@ -78,7 +78,7 @@ public:
 	/*
 	* Creates KviAnimatedPixmap, and loads data from "fileName".
 	*/
-	KviAnimatedPixmap(QString fileName);
+	KviAnimatedPixmap(QString fileName,int iWidth=0,int iHeight=0);
 
 	virtual ~KviAnimatedPixmap();
 
