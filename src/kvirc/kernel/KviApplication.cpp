@@ -86,7 +86,6 @@
 #include "KviTalPopupMenu.h"
 #include "KviQueryWindow.h"
 
-#include <QGraphicsDropShadowEffect>
 
 #ifndef COMPILE_NO_IPC
 	#include "KviIpcSentinel.h"
