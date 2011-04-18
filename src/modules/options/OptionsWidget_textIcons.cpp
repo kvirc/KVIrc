@@ -86,8 +86,8 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \
-			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
-			"emoticons.","options"));
+		"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
+		"emoticons.","options"));
 
 	layout()->addWidget(m_pTable,0,0,1,3);
 
@@ -181,16 +181,15 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 	m_pTable->setCellWidget(m_pCurrentItem->row(),1,pBox);
 }
 
- void OptionsWidget_textIcons::chooseFromFile()
- {
+void OptionsWidget_textIcons::chooseFromFile()
+{
 	QString szFile;
 	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString(),KVI_FILTER_IMAGE,"options");
 	if(!szFile.isEmpty())
 	{
 		if(g_pIconManager->getPixmap(szFile))
 		{
-
-		        QFileInfo info(szFile);
+			QFileInfo info(szFile);
 
 			QString szFileName = info.fileName();
 			qDebug("pathfilename %s - filename %s",szFile.toUtf8().data(),szFileName.toUtf8().data());
@@ -204,7 +203,8 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 			qDebug("set Icon");
 			QPixmap *p=m_pCurrentItem->icon()->pixmap();
 			m_pCurrentItem->setIcon(QIcon(*p));
-			if(m_pCurrentIconButton) m_pCurrentIconButton->setIcon(QIcon(*p));
+			if(m_pCurrentIconButton)
+				m_pCurrentIconButton->setIcon(QIcon(*p));
 		}
 	}
  }
@@ -223,9 +223,12 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWi
 			m_pTable->setCellWidget(prev->row(),1,NULL);
 	}
 
-	if(!cur) return;
-	if(cur->column()!=1) return;
-	if(m_iLastEditedRow==cur->row() || cur == prev) return;
+	if(!cur)
+		return;
+	if(cur->column() != 1)
+		return;
+	if(m_iLastEditedRow==cur->row() || cur == prev)
+		return;
 
 	m_pCurrentItem=(TextIconTableItem *)cur;
 
@@ -238,7 +241,7 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWi
 	pIconButton->setIcon(QIcon(cur->icon()));
 	connect(pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
 
-// FIXME: this does not work currently!
+	// FIXME: this does not work currently!
 	QToolButton * pBrowseButton=new QToolButton(pBox);
 	pBrowseButton->setText("...");
 	connect(pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
@@ -275,7 +278,6 @@ void OptionsWidget_textIcons::delClicked()
 
 void OptionsWidget_textIcons::commit()
 {
-
 	KviOptionsWidget::commit();
 	g_pTextIconManager->clear();
 	int n = m_pTable->rowCount();
@@ -294,9 +296,13 @@ void OptionsWidget_textIcons::commit()
 	g_pTextIconManager->save();
 
 	for(int i=0; i<n; i++)
+	{
 		for (int j=0; j<m_pTable->columnCount(); j++)
-			if (m_pTable->item(i,j)) m_pTable->takeItem(i,j);
-
+		{
+			if(m_pTable->item(i,j))
+				m_pTable->takeItem(i,j);
+		}
+	}
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

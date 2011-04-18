@@ -1116,8 +1116,6 @@ namespace KviTheme
 			}
 		}
 
-
-
 		if(!KviFileUtils::makeDir(szThemeDirPath+KVI_SMALLICONS_SUBDIRECTORY))
 		{
 			options.setLastError(__tr2qs("Failed to create the theme subdirectory"));
@@ -1151,11 +1149,12 @@ namespace KviTheme
 
 	bool load(const QString &szThemeDir,KviThemeInfo &buffer,bool bBuiltin)
 	{
-	    qDebug("Loading and apple theme");
-	    if(!buffer.load(szThemeDir,bBuiltin)){
-	        qDebug("data do not exists in theme dir %s",szThemeDir.toUtf8().data());
+		qDebug("Loading and apply theme");
+		if(!buffer.load(szThemeDir,bBuiltin))
+		{
+			qDebug("data does not exist in theme dir %s",szThemeDir.toUtf8().data());
 			return false; // makes sure that themedata exists too
-		        }
+		}
 
 		QString szThemeDirPath;
 		buffer.getCompleteDirPath(szThemeDirPath);

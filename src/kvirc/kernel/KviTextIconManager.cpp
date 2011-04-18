@@ -37,22 +37,22 @@
 #include <QPixmap>
 #include <QFile>
 
-static KviTextIconAssocEntry default_associations[]=
+static KviTextIconAssocEntry default_associations[] =
 {
-	{ ":)"    , KviIconManager::Smile       },
-	{ ":*"    , KviIconManager::Kiss        },
-	{ ":D"    , KviIconManager::BigGrin     },
-	{ ":("    , KviIconManager::Ugly        },
-	{ ":/"    , KviIconManager::Angry       },
-	{ ":O"    , KviIconManager::Surprised2  },
-	{ ":P"    , KviIconManager::Tongue      },
-	{ ";)"    , KviIconManager::Eye         },
-	{ ":°)"   , KviIconManager::TearSmile   },
-	{ ":°"    , KviIconManager::Cry         },
-	{ ":S"    , KviIconManager::Afraid      },
-	{ ":|"    , KviIconManager::Demoralized },
-	{ ":P°"   , KviIconManager::Slurp       },
-	{ 0       , 0                         }
+	{ ":)"  , KviIconManager::Smile       },
+	{ ":*"  , KviIconManager::Kiss        },
+	{ ":D"  , KviIconManager::BigGrin     },
+	{ ":("  , KviIconManager::Ugly        },
+	{ ":/"  , KviIconManager::Angry       },
+	{ ":O"  , KviIconManager::Surprised2  },
+	{ ":P"  , KviIconManager::Tongue      },
+	{ ";)"  , KviIconManager::Eye         },
+	{ ":°)" , KviIconManager::TearSmile   },
+	{ ":°"  , KviIconManager::Cry         },
+	{ ":S"  , KviIconManager::Afraid      },
+	{ ":|"  , KviIconManager::Demoralized },
+	{ ":P°" , KviIconManager::Slurp       },
+	{ 0     , 0                           }
 };
 
 KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
@@ -73,11 +73,9 @@ KviTextIcon::KviTextIcon(QString szFile)
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
 //#if 0 // this doesn't work anyway
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
-		{
 			m_pAnimatedPixmap->start();
-		} else {
+		else
 			m_pAnimatedPixmap->stop();
-		}
 //#endif
 	} else {
 		m_pAnimatedPixmap = NULL;
@@ -89,11 +87,9 @@ KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
 	m_eIcon = pIcon->id();
 	m_szFileName = pIcon->m_szFileName;
 	if(pIcon->m_pAnimatedPixmap)
-	{
 		m_pAnimatedPixmap = new KviAnimatedPixmap(*(pIcon->m_pAnimatedPixmap));
-	} else {
+	else
 		m_pAnimatedPixmap = NULL;
-	}
 }
 
 KviTextIcon::~KviTextIcon()
@@ -118,17 +114,16 @@ void KviTextIcon::setFilename(QString szFileName)
 {
 	m_eIcon = KviIconManager::None;
 	QString szRetPath;
-	if(m_pAnimatedPixmap) delete m_pAnimatedPixmap;
+	if(m_pAnimatedPixmap)
+		delete m_pAnimatedPixmap;
 	if(g_pApp->findImage(szRetPath, szFileName))
 	{
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
 //#if 0 // this doesn't work anyway
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
-		{
 			m_pAnimatedPixmap->start();
-		} else {
+		else
 			m_pAnimatedPixmap->stop();
-		}
 //#endif
 	} else {
 		m_pAnimatedPixmap = NULL;
@@ -136,15 +131,13 @@ void KviTextIcon::setFilename(QString szFileName)
 	m_szFileName = szFileName;
 }
 
-
-
 QPixmap * KviTextIcon::pixmap()
 {
-    if(m_eIcon > 0)
-	return g_pIconManager->getSmallIcon(m_eIcon);
-	else {
-	    return m_pAnimatedPixmap->pixmap();
-	}
+	if(m_eIcon > 0)
+		return g_pIconManager->getSmallIcon(m_eIcon);
+	else
+		return m_pAnimatedPixmap->pixmap();
+
 	// This is actually wrong (at least for the current implementation).
 	// Users of this class expect the pointer to be permanent while
 	// g_pIconManager returns temporary pointers.
@@ -199,22 +192,24 @@ void KviTextIconManager::load()
 	bool bCheckUserDefinedTheme=false;
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
-	    g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-	    szPath += KVI_PATH_SEPARATOR_CHAR;
-	    szPath += KVI_CONFIGFILE_TEXTICONS;;
-	    if (QFile::exists(szPath))  bCheckUserDefinedTheme=true;
-	    else  bCheckUserDefinedTheme=false;
-
+		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+		szPath += KVI_PATH_SEPARATOR_CHAR;
+		szPath += KVI_CONFIGFILE_TEXTICONS;;
+		if(QFile::exists(szPath))
+			bCheckUserDefinedTheme=true;
+		else
+			bCheckUserDefinedTheme=false;
 	}
-	if( bCheckUserDefinedTheme)  load(szPath,false);
+
+	if(bCheckUserDefinedTheme)
+		load(szPath,false);
 	else
 	{
 		if(g_pApp->getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_TEXTICONS))
-		{
 			iUpd = load(szTmp,false);
-		}
 
-		if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE) return;
+		if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE)
+			return;
 
 		// do a merge of the texticons if we have a new config version
 		g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
@@ -234,11 +229,9 @@ void KviTextIconManager::applyOptions()
 		if(pIcon->animatedPixmap())
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
-			{
 				pIcon->animatedPixmap()->start();
-			} else {
+			else
 				pIcon->animatedPixmap()->stop();
-			}
 		}
 	}
 }
@@ -249,22 +242,24 @@ void KviTextIconManager::save()
 	bool bCheckUserDefinedTheme=false;
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
-	    g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-	    szPath += KVI_PATH_SEPARATOR_CHAR;
-	    szPath += KVI_CONFIGFILE_TEXTICONS;
-	    bCheckUserDefinedTheme=true;
+		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+		szPath += KVI_PATH_SEPARATOR_CHAR;
+		szPath += KVI_CONFIGFILE_TEXTICONS;
+		bCheckUserDefinedTheme=true;
 	}
-	if( bCheckUserDefinedTheme)  save(szPath);
-	else{
-	    QString szTmp;
-	    g_pApp->getLocalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
-	    save(szTmp);
+	if(bCheckUserDefinedTheme)
+		save(szPath);
+	else {
+		QString szTmp;
+		g_pApp->getLocalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
+		save(szTmp);
 	}
 }
 
 int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 {
-	if(!bMerge) m_pTextIconDict->clear();
+	if(!bMerge)
+		m_pTextIconDict->clear();
 
 	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 
