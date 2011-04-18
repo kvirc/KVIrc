@@ -465,6 +465,7 @@ void KviIrcServerDataBase::load(const QString & szFilename)
 			pNewNet->m_szTextEncoding = cfg.readEntry("TextEncoding");
 			pNewNet->m_szDescription = cfg.readEntry("Description");
 			pNewNet->m_szNickName = cfg.readEntry("NickName");
+			pNewNet->m_szAlternativeNickName = cfg.readEntry("AlternativeNickName");
 			pNewNet->m_szRealName = cfg.readEntry("RealName");
 			pNewNet->m_szUserName = cfg.readEntry("UserName");
 			pNewNet->m_szPass = cfg.readEntry("Pass");
@@ -542,6 +543,8 @@ void KviIrcServerDataBase::save(const QString & szFilename)
 			cfg.writeEntry("Description",pNetwork->m_szDescription);
 		if(!pNetwork->m_szNickName.isEmpty())
 			cfg.writeEntry("NickName",pNetwork->m_szNickName);
+		if(!pNetwork->m_szAlternativeNickName.isEmpty())
+			cfg.writeEntry("AlternativeNickName",pNetwork->m_szAlternativeNickName);
 		if(!pNetwork->m_szRealName.isEmpty())
 			cfg.writeEntry("RealName",pNetwork->m_szRealName);
 		if(!pNetwork->m_szUserName.isEmpty())
