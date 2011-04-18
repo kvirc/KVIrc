@@ -58,7 +58,7 @@ static KviTextIconAssocEntry default_associations[] =
 KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
 
 KviTextIcon::KviTextIcon(KviIconManager::SmallIcon eIcon)
-: m_eIcon(eIcon),m_pAnimatedPixmap(0)
+: m_eIcon(eIcon),m_pAnimatedPixmap(NULL)
 {
 }
 
@@ -71,12 +71,10 @@ KviTextIcon::KviTextIcon(QString szFile)
 	{
 		qDebug("resize");
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
-//#if 0 // this doesn't work anyway
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 			m_pAnimatedPixmap->start();
 		else
 			m_pAnimatedPixmap->stop();
-//#endif
 	} else {
 		m_pAnimatedPixmap = NULL;
 	}
@@ -119,12 +117,10 @@ void KviTextIcon::setFilename(QString szFileName)
 	if(g_pApp->findImage(szRetPath, szFileName))
 	{
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
-//#if 0 // this doesn't work anyway
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 			m_pAnimatedPixmap->start();
 		else
 			m_pAnimatedPixmap->stop();
-//#endif
 	} else {
 		m_pAnimatedPixmap = NULL;
 	}
@@ -135,7 +131,7 @@ QPixmap * KviTextIcon::pixmap()
 {
 	if(m_eIcon > 0)
 		return g_pIconManager->getSmallIcon(m_eIcon);
-	else
+	if(m_pAnimatedPixmap)
 		return m_pAnimatedPixmap->pixmap();
 
 	// This is actually wrong (at least for the current implementation).
