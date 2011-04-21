@@ -309,7 +309,10 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 
 	KviModule * m = g_pModuleManager->getModule("logview");
 	if(!m)
+	{
+		c->error(__tr2qs_ctx("Failed to load logview module, aborting","log"));
 		return false;
+	}
 
 	LogFileData log;
 	log.szName = szFile;
@@ -317,7 +320,7 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 
 	if(!m->ctrl("logview::export",(void *)&log))
 	{
-		c->error(__tr2qs_ctx("Failed to export the log %1","log").arg(szFile));
+		c->error(__tr2qs_ctx("Failed to export the log '%1'","log").arg(szFile));
 		return false;
 	}
 

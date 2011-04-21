@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 20:47+0200\n"
+"POT-Creation-Date: 2011-04-21 23:53+0200\n"
 "PO-Revision-Date: 2007-03-14 01:19+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -17,145 +17,208 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/logview/LogViewWindow.cpp:407
+#: src/modules/logview/LogViewWindow.cpp:356
 #, fuzzy
 msgid "%1 on %2"
 msgstr "%1 na %2"
 
-#: src/modules/logview/LogViewWindow.cpp:247
+#: src/modules/logview/LogViewWindow.cpp:172
 msgid "Apply filter"
 msgstr "Prihvati filter"
 
-#: src/modules/logview/libkvilogview.cpp:127
+#: src/modules/logview/libkvilogview.cpp:129
 #, fuzzy
 msgid "Browse Log Files"
 msgstr "Pregledaj &Log Datoteke"
 
-#: src/modules/log/libkvilog.cpp:119
-msgid "Can't log to file '%Q'"
+#: src/modules/log/libkvilog.cpp:118
+msgid "Can't log to file '%1'"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:177
+#: src/modules/logview/LogViewWindow.cpp:103
 #, fuzzy
 msgid "Cancel"
 msgstr "Sobe"
 
-#: src/modules/logview/LogViewWidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:69
 msgid "Channel"
 msgstr "Sobe"
 
-#: src/modules/logview/LogViewWindow.cpp:522
-msgid "Confirm current user logs delete"
+#: src/modules/logview/LogViewWindow.cpp:640
+#, fuzzy
+msgid "Channel %1 on %2"
+msgstr "%1 na %2"
+
+#: src/modules/logview/LogViewWindow.cpp:459
+msgid "Confirm current user log deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:82
+#: src/modules/logview/LogViewWindow.cpp:477
+msgid "Confirm current user logs deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
 msgstr "Konzole"
 
-#: src/modules/logview/LogViewWindow.cpp:216
+#: src/modules/logview/LogViewWindow.cpp:643
+#, fuzzy
+msgid "Console on %1"
+msgstr "Konzole"
+
+#: src/modules/logview/LogViewWindow.cpp:141
 msgid "Contents filter"
 msgstr "Filter sadržaja"
 
-#: src/modules/logview/LogViewWidget.cpp:78
+#: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC Razgovori"
 
-#: src/modules/logview/LogViewWindow.cpp:523
-msgid "Do you really wish to delete all these channel/query logs?"
+#: src/modules/logview/LogViewWindow.cpp:649
+#, fuzzy
+msgid "DCC Chat with %1"
+msgstr "DCC Razgovori"
+
+#: src/modules/logview/LogViewWindow.cpp:478
+msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:191
+#: src/modules/logview/LogViewWindow.cpp:460
+msgid "Do you really wish to delete this log?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:781
+msgid "Export Log - KVIrc"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:440
+msgid "Export log file to"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:323
+msgid "Failed to export the log '%1'"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:313
+msgid "Failed to load logview module, aborting"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:781
+msgid "File '%1' already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:116
 msgid "Filter"
 msgstr "Filter"
 
-#: src/modules/logview/LogViewWindow.cpp:182
+#: src/modules/logview/LogViewWindow.cpp:191
+msgid "HTML archive"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:108
 #, fuzzy
-msgid "HelpIndex"
+msgid "Index"
 msgstr "Indeks"
 
-#: src/modules/logview/LogViewWindow.cpp:578
+#: src/modules/logview/LogViewWindow.cpp:68
 msgid "Log File"
 msgstr "Log Datoteka"
 
-#: src/modules/logview/LogViewWindow.cpp:310
+#: src/modules/logview/LogViewWindow.cpp:235
 msgid "Log Viewer"
 msgstr "Log Preglednik"
 
-#: src/modules/logview/LogViewWindow.cpp:225
+#: src/modules/logview/LogViewWindow.cpp:150
 msgid "Log contents mask:"
 msgstr "Maska log sadržaja:"
 
-#: src/modules/logview/LogViewWindow.cpp:219
+#: src/modules/logview/LogViewWindow.cpp:144
 msgid "Log name mask:"
 msgstr "Maska log imena:"
 
-#: src/modules/log/libkvilog.cpp:106
-#: src/modules/log/libkvilog.cpp:163
-#: src/modules/log/libkvilog.cpp:213
+#: src/modules/log/libkvilog.cpp:107
+#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:239
-msgid "Only newier than"
+#: src/modules/logview/LogViewWindow.cpp:164
+#, fuzzy
+msgid "Only newer than"
 msgstr "Samo novije od"
 
-#: src/modules/logview/LogViewWindow.cpp:231
+#: src/modules/logview/LogViewWindow.cpp:156
 msgid "Only older than"
 msgstr "Samo starije od"
 
-#: src/modules/logview/libkvilogview.cpp:72
+#: src/modules/logview/libkvilogview.cpp:73
 msgid "Ops.. internal error"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:86
+#: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Ostalo"
 
-#: src/modules/logview/LogViewWidget.cpp:74
+#: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Razgovori"
 
-#: src/modules/logview/LogViewWindow.cpp:507
-msgid "Remove all these channel/query log files"
+#: src/modules/logview/LogViewWindow.cpp:646
+msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:508
-msgid "Remove file"
+#: src/modules/logview/LogViewWindow.cpp:438
+#, fuzzy
+msgid "Remove all log files"
 msgstr "Ukloni datoteku"
 
-#: src/modules/logview/LogViewWindow.cpp:207
+#: src/modules/logview/LogViewWindow.cpp:441
+#, fuzzy
+msgid "Remove log file"
+msgstr "Ukloni datoteku"
+
+#: src/modules/logview/LogViewWindow.cpp:132
 msgid "Show DCC chat logs"
 msgstr "Prikaži logove DCC razgovora"
 
-#: src/modules/logview/LogViewWindow.cpp:195
+#: src/modules/logview/LogViewWindow.cpp:120
 msgid "Show channel logs"
 msgstr "Prikaži logove soba"
 
-#: src/modules/logview/LogViewWindow.cpp:203
+#: src/modules/logview/LogViewWindow.cpp:128
 msgid "Show console logs"
 msgstr "Prikaži logove konzola"
 
-#: src/modules/logview/LogViewWindow.cpp:211
+#: src/modules/logview/LogViewWindow.cpp:136
 msgid "Show other logs"
 msgstr "Prikaži ostale logove"
 
-#: src/modules/logview/LogViewWindow.cpp:199
+#: src/modules/logview/LogViewWindow.cpp:124
 msgid "Show query logs"
 msgstr "Prikaži logove razgovora"
 
-#: src/modules/log/libkvilog.cpp:121
+#: src/modules/logview/LogViewWindow.cpp:652
+msgid "Something on %1"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:120
 msgid "This window has no logging capabilities"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:101
-#: src/modules/log/libkvilog.cpp:158
-#: src/modules/log/libkvilog.cpp:208
-msgid "Window '%Q' not found"
+#: src/modules/log/libkvilog.cpp:103
+#: src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:207
+msgid "Window '%1' not found"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:266
-msgid "Window with id '%Q' not found, returning empty string"
+#: src/modules/log/libkvilog.cpp:265
+msgid "Window with id '%1' not found, returning empty string"
 msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:190
+#, fuzzy
+msgid "plain text file"
+msgstr "Filter sadržaja"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Prekini filtriranje"

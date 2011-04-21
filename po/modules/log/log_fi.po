@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 20:47+0200\n"
+"POT-Creation-Date: 2011-04-21 23:53+0200\n"
 "PO-Revision-Date: 2007-11-21 19:08+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,145 +17,208 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/logview/LogViewWindow.cpp:407
+#: src/modules/logview/LogViewWindow.cpp:356
 #, fuzzy
 msgid "%1 on %2"
 msgstr "%1 kohteessa %2"
 
-#: src/modules/logview/LogViewWindow.cpp:247
+#: src/modules/logview/LogViewWindow.cpp:172
 msgid "Apply filter"
 msgstr "Ota suodatin käyttöön"
 
-#: src/modules/logview/libkvilogview.cpp:127
+#: src/modules/logview/libkvilogview.cpp:129
 #, fuzzy
 msgid "Browse Log Files"
 msgstr "Selaa &lokitiedostoja"
 
-#: src/modules/log/libkvilog.cpp:119
-msgid "Can't log to file '%Q'"
+#: src/modules/log/libkvilog.cpp:118
+msgid "Can't log to file '%1'"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:177
+#: src/modules/logview/LogViewWindow.cpp:103
 #, fuzzy
 msgid "Cancel"
 msgstr "Kanava"
 
-#: src/modules/logview/LogViewWidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:69
 msgid "Channel"
 msgstr "Kanava"
 
-#: src/modules/logview/LogViewWindow.cpp:522
-msgid "Confirm current user logs delete"
+#: src/modules/logview/LogViewWindow.cpp:640
+#, fuzzy
+msgid "Channel %1 on %2"
+msgstr "%1 kohteessa %2"
+
+#: src/modules/logview/LogViewWindow.cpp:459
+msgid "Confirm current user log deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:82
+#: src/modules/logview/LogViewWindow.cpp:477
+msgid "Confirm current user logs deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
 msgstr "Konsoli"
 
-#: src/modules/logview/LogViewWindow.cpp:216
+#: src/modules/logview/LogViewWindow.cpp:643
+#, fuzzy
+msgid "Console on %1"
+msgstr "Konsoli"
+
+#: src/modules/logview/LogViewWindow.cpp:141
 msgid "Contents filter"
 msgstr "Sisältösuodatin"
 
-#: src/modules/logview/LogViewWidget.cpp:78
+#: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC -keskustelu"
 
-#: src/modules/logview/LogViewWindow.cpp:523
-msgid "Do you really wish to delete all these channel/query logs?"
+#: src/modules/logview/LogViewWindow.cpp:649
+#, fuzzy
+msgid "DCC Chat with %1"
+msgstr "DCC -keskustelu"
+
+#: src/modules/logview/LogViewWindow.cpp:478
+msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:191
+#: src/modules/logview/LogViewWindow.cpp:460
+msgid "Do you really wish to delete this log?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:781
+msgid "Export Log - KVIrc"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:440
+msgid "Export log file to"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:323
+msgid "Failed to export the log '%1'"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:313
+msgid "Failed to load logview module, aborting"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:781
+msgid "File '%1' already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:116
 msgid "Filter"
 msgstr "Suodatin"
 
-#: src/modules/logview/LogViewWindow.cpp:182
+#: src/modules/logview/LogViewWindow.cpp:191
+msgid "HTML archive"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:108
 #, fuzzy
-msgid "HelpIndex"
+msgid "Index"
 msgstr "Indeksi"
 
-#: src/modules/logview/LogViewWindow.cpp:578
+#: src/modules/logview/LogViewWindow.cpp:68
 msgid "Log File"
 msgstr "Lokitiedosto"
 
-#: src/modules/logview/LogViewWindow.cpp:310
+#: src/modules/logview/LogViewWindow.cpp:235
 msgid "Log Viewer"
 msgstr "Lokikatselin"
 
-#: src/modules/logview/LogViewWindow.cpp:225
+#: src/modules/logview/LogViewWindow.cpp:150
 msgid "Log contents mask:"
 msgstr "Lokin sisältömaski:"
 
-#: src/modules/logview/LogViewWindow.cpp:219
+#: src/modules/logview/LogViewWindow.cpp:144
 msgid "Log name mask:"
 msgstr "Lokinimimaski:"
 
-#: src/modules/log/libkvilog.cpp:106
-#: src/modules/log/libkvilog.cpp:163
-#: src/modules/log/libkvilog.cpp:213
+#: src/modules/log/libkvilog.cpp:107
+#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:239
-msgid "Only newier than"
+#: src/modules/logview/LogViewWindow.cpp:164
+#, fuzzy
+msgid "Only newer than"
 msgstr "Vain uudemmat kuin"
 
-#: src/modules/logview/LogViewWindow.cpp:231
+#: src/modules/logview/LogViewWindow.cpp:156
 msgid "Only older than"
 msgstr "Vain vanhemmat kuin"
 
-#: src/modules/logview/libkvilogview.cpp:72
+#: src/modules/logview/libkvilogview.cpp:73
 msgid "Ops.. internal error"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:86
+#: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Muut"
 
-#: src/modules/logview/LogViewWidget.cpp:74
+#: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Kysely"
 
-#: src/modules/logview/LogViewWindow.cpp:507
-msgid "Remove all these channel/query log files"
+#: src/modules/logview/LogViewWindow.cpp:646
+msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:508
-msgid "Remove file"
+#: src/modules/logview/LogViewWindow.cpp:438
+#, fuzzy
+msgid "Remove all log files"
 msgstr "Poista tiedosto"
 
-#: src/modules/logview/LogViewWindow.cpp:207
+#: src/modules/logview/LogViewWindow.cpp:441
+#, fuzzy
+msgid "Remove log file"
+msgstr "Poista tiedosto"
+
+#: src/modules/logview/LogViewWindow.cpp:132
 msgid "Show DCC chat logs"
 msgstr "Näytä DCC -keskustelulokit"
 
-#: src/modules/logview/LogViewWindow.cpp:195
+#: src/modules/logview/LogViewWindow.cpp:120
 msgid "Show channel logs"
 msgstr "Näytä kanavalokit"
 
-#: src/modules/logview/LogViewWindow.cpp:203
+#: src/modules/logview/LogViewWindow.cpp:128
 msgid "Show console logs"
 msgstr "Näytä konsolilokit"
 
-#: src/modules/logview/LogViewWindow.cpp:211
+#: src/modules/logview/LogViewWindow.cpp:136
 msgid "Show other logs"
 msgstr "Näytä muut lokit"
 
-#: src/modules/logview/LogViewWindow.cpp:199
+#: src/modules/logview/LogViewWindow.cpp:124
 msgid "Show query logs"
 msgstr "Näytä yksityisviestilokit"
 
-#: src/modules/log/libkvilog.cpp:121
+#: src/modules/logview/LogViewWindow.cpp:652
+msgid "Something on %1"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:120
 msgid "This window has no logging capabilities"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:101
-#: src/modules/log/libkvilog.cpp:158
-#: src/modules/log/libkvilog.cpp:208
-msgid "Window '%Q' not found"
+#: src/modules/log/libkvilog.cpp:103
+#: src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:207
+msgid "Window '%1' not found"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:266
-msgid "Window with id '%Q' not found, returning empty string"
+#: src/modules/log/libkvilog.cpp:265
+msgid "Window with id '%1' not found, returning empty string"
 msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:190
+#, fuzzy
+msgid "plain text file"
+msgstr "Sisältösuodatin"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Keskeytä suodatus"

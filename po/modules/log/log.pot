@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-04-21 23:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,110 +17,194 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/logview/LogViewWidget.cpp:70
-msgid "Channel"
+#: src/modules/log/libkvilog.cpp:103
+#: src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:207
+msgid "Window '%1' not found"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:74
-msgid "Query"
+#: src/modules/log/libkvilog.cpp:107
+#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:211
+msgid "Missing window id after the 'w' switch"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:78
-msgid "DCC Chat"
+#: src/modules/log/libkvilog.cpp:118
+msgid "Can't log to file '%1'"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:82
-msgid "Console"
+#: src/modules/log/libkvilog.cpp:120
+msgid "This window has no logging capabilities"
 msgstr ""
 
-#: src/modules/logview/LogViewWidget.cpp:86
-msgid "Other"
+#: src/modules/log/libkvilog.cpp:265
+msgid "Window with id '%1' not found, returning empty string"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:84
-msgid "Cancel"
+#: src/modules/log/libkvilog.cpp:313
+msgid "Failed to load logview module, aborting"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:89
-msgid "HelpIndex"
+#: src/modules/log/libkvilog.cpp:323
+msgid "Failed to export the log '%1'"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:98
-msgid "Filter"
+#: src/modules/logview/libkvilogview.cpp:73
+msgid "Ops.. internal error"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:102
-msgid "Show channel logs"
+#: src/modules/logview/libkvilogview.cpp:129
+msgid "Browse Log Files"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:106
-msgid "Show query logs"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:110
-msgid "Show console logs"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:114
-msgid "Show DCC chat logs"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:118
-msgid "Show other logs"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:123
-msgid "Contents filter"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:126
-msgid "Log name mask:"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:132
-msgid "Log contents mask:"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:138
-msgid "Only older than"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:146
-msgid "Only newier than"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:154
-msgid "Apply filter"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:220
-msgid "Log Viewer"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:317
-msgid "%1 on %2"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:417
-msgid "Remove all these channel/query log files"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:418
-msgid "Remove file"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:432
-msgid "Confirm current user logs delete"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:433
-msgid "Do you really wish to delete all these channel/query logs?"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:578
+#: src/modules/logview/LogViewWindow.cpp:68
 msgid "Log File"
 msgstr ""
 
-#: src/modules/logview/libkvilogview.cpp:135
-msgid "Browse &Log Files"
+#: src/modules/logview/LogViewWindow.cpp:103
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:108
+msgid "Index"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:116
+msgid "Filter"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:120
+msgid "Show channel logs"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:124
+msgid "Show query logs"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:128
+msgid "Show console logs"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:132
+msgid "Show DCC chat logs"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:136
+msgid "Show other logs"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:141
+msgid "Contents filter"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:144
+msgid "Log name mask:"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:150
+msgid "Log contents mask:"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:156
+msgid "Only older than"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:164
+msgid "Only newer than"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:172
+msgid "Apply filter"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:190
+msgid "plain text file"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:191
+msgid "HTML archive"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:235
+msgid "Log Viewer"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:356
+msgid "%1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:438
+msgid "Remove all log files"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:440
+msgid "Export log file to"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:441
+msgid "Remove log file"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:459
+msgid "Confirm current user log deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:460
+msgid "Do you really wish to delete this log?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:477
+msgid "Confirm current user logs deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:478
+msgid "Do you really wish to delete all these logs?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:640
+msgid "Channel %1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:643
+msgid "Console on %1"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:646
+msgid "Query with %1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:649
+msgid "DCC Chat with %1"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:652
+msgid "Something on %1"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:781
+msgid "Export Log - KVIrc"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:781
+msgid "File '%1' already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:69
+msgid "Channel"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Query"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:77
+msgid "DCC Chat"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "Console"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:85
+msgid "Other"
 msgstr ""
