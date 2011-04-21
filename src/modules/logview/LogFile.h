@@ -41,7 +41,7 @@ class QString;
 * \struct _LogFileData
 * \brief A struct that contains the data of a log
 */
-typedef struct LogFileData
+typedef struct _LogFileData
 {
 	QString szName;   /**< the name of the log */
 	QString szType;   /**< the type of the log */
