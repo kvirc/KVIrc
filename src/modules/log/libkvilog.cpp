@@ -317,10 +317,11 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 
 	if(!m->ctrl("logview::export",(void *)&log))
 	{
-		// lamentarsi
+		c->error(__tr2qs_ctx("Failed to export the log %1","log").arg(szFile));
+		return false;
 	}
 
-	// log.szFileName contiene il nome del file
+	c->returnValue()->setString(log.szFile);
 
 	return true;
 }

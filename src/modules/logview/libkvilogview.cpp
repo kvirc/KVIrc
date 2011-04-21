@@ -153,11 +153,6 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(!kvi_strEqualCI("logview::export",pcOperation))
 		return false;
 
-	/*
-	if(!g_pLogViewWindow)
-		g_pLogViewWindow = new LogViewWindow();
-	*/
-
 	LogFileData * pData = (LogFileData *)pParam;
 	if(!pData)
 		return false;
@@ -168,7 +163,6 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 		iId = LogFile::HTML;
 
 	g_pLogViewWindow->createLog(pLog,iId,&(pData->szFile));
-	qDebug("FILE: %s",szFile.toUtf8().data());
 
 	return true;
 }
