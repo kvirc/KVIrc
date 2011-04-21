@@ -45,6 +45,7 @@ typedef struct _LogFileData
 {
 	QString szName;   /**< the name of the log */
 	QString szType;   /**< the type of the log */
+	QString szFileName;
 } LogFileData;
 
 /**

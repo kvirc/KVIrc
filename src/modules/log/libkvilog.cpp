@@ -315,7 +315,12 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 	log.szName = szFile;
 	log.szType = szType;
 
-	m->ctrl("logview::export",(void *)&log);
+	if(!m->ctrl("logview::export",(void *)&log))
+	{
+		// lamentarsi
+	}
+
+	// log.szFileName contiene il nome del file
 
 	return true;
 }

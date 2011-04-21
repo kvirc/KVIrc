@@ -231,7 +231,6 @@ KviApplication::KviApplication(int &argc,char ** argv)
 		setStyle(new QCleanlooksStyle());
 		setPalette(style()->standardPalette());
 	}
-
 }
 
 void KviApplication::setup()

@@ -167,8 +167,7 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(pData->szType == "html")
 		iId = LogFile::HTML;
 
-	QString szFile;
-	g_pLogViewWindow->createLog(pLog,iId,&szFile);
+	g_pLogViewWindow->createLog(pLog,iId,&(pData->szFile));
 	qDebug("FILE: %s",szFile.toUtf8().data());
 
 	return true;
