@@ -101,10 +101,9 @@ protected:
 	/**
 	* \brief Ensures the sources directory is complete
 	* \param pszError The buffer containing errors
-	* \param pszWarning The buffer containing warnings
 	* \return bool
 	*/
-	bool checkDirTree(QString * pszError, QString * pszWarning);
+	bool checkDirTree(QString * pszError);
 
 	/**
 	* \brief Creates the installer file

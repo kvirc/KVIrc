@@ -133,10 +133,10 @@ void PackAddonDialog::accept()
 	QWizard::accept();
 }
 
-bool PackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
+bool PackAddonDialog::checkDirTree(QString * pszError)
 {
-	if(pszError) *pszError = "";
-	if(pszWarning) *pszWarning = "";
+	if(pszError)
+		*pszError = "";
 
 	QDir addon(m_szDirPath);
 	if(!addon.exists())
@@ -272,23 +272,15 @@ bool PackAddonDialog::packAddon()
 	m_szSavePath = field("packageSavePath").toString();
 
 	// Check the addon tree
-	QString szError, szWarning;
+	QString szError;
 	
-	if(!checkDirTree(&szError,&szWarning))
+	if(!checkDirTree(&szError))
 	{
 		QMessageBox::critical(this,
 			__tr2qs_ctx("Addon Packaging Error","addon"),
 			szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 		);
 		return false;
-	}
-	
-	if(szWarning != "")
-	{
-		QMessageBox::warning(this,
-			__tr2qs_ctx("Addon Packaging Warning","addon"),
-			szWarning,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
-		);
 	}
 	
 	// Raise the files summary dialog
