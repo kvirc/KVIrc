@@ -91,17 +91,6 @@ typedef struct _KviNotifierMessageParam
 	unsigned int   uMessageLifetime;   /**< The timeout of the notifier; 0 means no hide */
 } KviNotifierMessageParam;
 
-/**
-* \typedef KviLogFileData
-* \struct _KviLogFileData
-* \brief A struct that contains the data of a log
-*/
-typedef struct _KviLogFileData
-{
-	QString szName;   /**< the name of the log */
-	QString szType;   /**< the type of the log */
-} KviLogFileData;
-
 typedef struct _KviDBusNotifierMessageQueue
 {
 	QStringList lMessages;

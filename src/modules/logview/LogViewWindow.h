@@ -101,18 +101,18 @@ protected:
 	bool                    m_bAborted;
 	QTimer                * m_pTimer;
 	KviTalPopupMenu       * m_pExportLogPopup;
-protected:
-	void recurseDirectory(const QString & szDir);
-	void setupItemList();
-
-
+public:
 	/**
 	* \brief Exports the log and creates the file in the selected format
 	* \param pLog The log file associated to the item selected in the popup
 	* \param iId The id of the item in the popup
+	* \param pszFile The buffer where to store the exported log name
 	* \return void
 	*/
-	void createLog(LogFile * pLog, int iId);
+	void createLog(LogFile * pLog, int iId, QString * pszFile = 0);
+protected:
+	void recurseDirectory(const QString & szDir);
+	void setupItemList();
 
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent * pEvent);

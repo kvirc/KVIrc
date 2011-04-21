@@ -27,7 +27,7 @@
 /**
 * \file LogFile.h
 * \author Elvio Basello
-* \brief 
+* \brief Describes a log file
 *
 * This file was originally part of LogViewWindow.h
 */
@@ -35,6 +35,17 @@
 #include <QDate>
 
 class QString;
+
+/**
+* \typedef LogFileData
+* \struct _LogFileData
+* \brief A struct that contains the data of a log
+*/
+typedef struct LogFileData
+{
+	QString szName;   /**< the name of the log */
+	QString szType;   /**< the type of the log */
+} LogFileData;
 
 /**
 * \class LogFile

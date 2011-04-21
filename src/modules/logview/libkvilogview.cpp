@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -156,11 +157,20 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(!g_pLogViewWindow)
 		g_pLogViewWindow = new LogViewWindow();
 	*/
-	KviLogFileData * pLog = (KviLogFileData *)pParam;
-	if(!pLog)
+
+	LogFileData * pData = (LogFileData *)pParam;
+	if(!pData)
 		return false;
 
-	qDebug("name: %s - type: %s",pLog->szName.toUtf8().data(),pLog->szType.toUtf8().data());
+	LogFile * pLog = new LogFile(pData->szName);
+	int iId = LogFile::PlainText;
+	if(pData->szType == "html")
+		iId = LogFile::HTML;
+
+	QString szFile;
+	g_pLogViewWindow->createLog(pLog,iId,&szFile);
+	qDebug("FILE: %s",szFile.toUtf8().data());
+
 	return true;
 }
 

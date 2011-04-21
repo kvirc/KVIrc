@@ -105,7 +105,7 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow
 	m_pBottomLayout->setVisible(false);
 
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->addTab(m_pIndexTab,__tr2qs_ctx("HelpIndex","log"));
+	m_pTabWidget->addTab(m_pIndexTab,__tr2qs_ctx("Index","log"));
 
 	m_pListView = new LogViewListView(m_pIndexTab);
 
@@ -256,9 +256,9 @@ void LogViewWindow::recurseDirectory(const QString & szDir)
 		if(info.isDir())
 		{
 			// recursive
-			if(info.fileName()!=".." && info.fileName()!=".")
+			if((info.fileName() != "..") && (info.fileName() != "."))
 				recurseDirectory(info.filePath());
-		} else if(info.suffix() == "gz" || info.suffix() == "log")
+		} else if((info.suffix() == "gz") || (info.suffix() == "log"))
 		{
 			m_logList.append(new LogFile(info.filePath()));
 		}
@@ -353,7 +353,7 @@ void LogViewWindow::filterNext()
 		m_pLastCategory = new LogListViewItemType(m_pListView,pFile->type());
 	}
 
-	szCurGroup = QString(__tr2qs_ctx("%1 on %2","log")).arg(pFile->name(),pFile->network());
+	szCurGroup = __tr2qs_ctx("%1 on %2","log").arg(pFile->name(),pFile->network());
 
 	if(m_szLastGroup != szCurGroup)
 	{
@@ -361,7 +361,7 @@ void LogViewWindow::filterNext()
 		m_pLastGroupItem = 0;
 		for(int i=0; i < m_pLastCategory->childCount(); ++i)
 		{
-			LogListViewItemFolder * pTmp = (LogListViewItemFolder *) m_pLastCategory->child(i);
+			LogListViewItemFolder * pTmp = (LogListViewItemFolder *)m_pLastCategory->child(i);
 			if(pTmp->text(0) == m_szLastGroup)
 			{
 				m_pLastGroupItem = pTmp;
@@ -456,9 +456,9 @@ void LogViewWindow::deleteCurrent()
 		{
 			if(QMessageBox::question(
 				this,
-				__tr2qs_ctx("Confirm current user log delete","log"),
+				__tr2qs_ctx("Confirm current user log deletion","log"),
 				__tr2qs_ctx("Do you really wish to delete this log?","log"),
-				__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)
+				__tr2qs("Yes"),__tr2qs("No"),0,1) != 0)
 				return;
 
 			QString szFname;
@@ -474,9 +474,9 @@ void LogViewWindow::deleteCurrent()
 
 	if(QMessageBox::question(
 		this,
-		__tr2qs_ctx("Confirm current user logs delete","log"),
+		__tr2qs_ctx("Confirm current user logs deletion","log"),
 		__tr2qs_ctx("Do you really wish to delete all these logs?","log"),
-		__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)
+		__tr2qs("Yes"),__tr2qs("No"),0,1) != 0)
 		return;
 	KviPointerList<LogListViewItem> itemsList;
 	itemsList.setAutoDelete(false);
@@ -559,7 +559,7 @@ void LogViewWindow::exportLog(int iId)
 	}
 }
 
-void LogViewWindow::createLog(LogFile * pLog, int iId)
+void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 {
 	if(!pLog)
 		return;
@@ -785,6 +785,13 @@ void LogViewWindow::createLog(LogFile * pLog, int iId)
 	QFile log(szLog);
 	if(!log.open(QIODevice::WriteOnly | QIODevice::Text))
 		return;
+
+	if(pszFile)
+	{
+		*pszFile = "";
+		QFileInfo info(log);
+		*pszFile = info.filePath();
+	}
 
 	// Ensure we're writing in UTF-8
 	QTextStream output(&log);
