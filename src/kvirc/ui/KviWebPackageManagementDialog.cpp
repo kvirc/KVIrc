@@ -140,7 +140,6 @@ void KviWebPackageManagementDialog::slotLoadFinished(bool bOk)
 	// search for all item_entry div
 	QWebElementCollection elementscollection=pFrame->documentElement().findAll("div.item_entry");
 
-
 	// if this is null something is wrong
 	if(elementscollection.count())
 	{  

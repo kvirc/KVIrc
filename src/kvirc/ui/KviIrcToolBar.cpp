@@ -421,7 +421,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 
 		p->setClipping(false);
 
-		QColor base = palette().background().color();
+		QColor base = palette().window().color();
 		QColor cntx = KVI_OPTION_ICCOLOR(c->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
 		base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 			(base.blue() + cntx.blue()) >> 1);

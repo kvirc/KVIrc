@@ -723,7 +723,7 @@ void KviConfigurationFile::writeEntry(const QString & szKey,const QColor &clr)
 {
 	m_bDirty = true;
 	KviConfigurationFileGroup * p_group = getCurrentGroup();
-	KviCString szData(KviCString::Format,"%d,%d,%d",clr.red(),clr.green(),clr.blue());
+	KviCString szData(KviCString::Format,"%d,%d,%d,%d",clr.red(),clr.green(),clr.blue(),clr.alpha());
 	p_group->replace(szKey,new QString(szData.ptr()));
 }
 
@@ -740,21 +740,27 @@ QColor KviConfigurationFile::readColorEntry(const QString & szKey,const QColor &
 		KviCString str(*pointer_that_IS_initialized);
 		str.stripLeftWhiteSpace();
 
-		KviCString red,green,blue;
+		KviCString red,green,blue,alpha;
 
 		str.getToken(red,',');
 		str.getToken(green,',');
 		str.getToken(blue,',');
+		str.getToken(alpha,',');
+		if(alpha.isEmpty()) alpha = "255";
 
-		if((red.isUnsignedNum())&&(green.isUnsignedNum())&&(blue.isUnsignedNum())){
+		if((red.isUnsignedNum())&&(green.isUnsignedNum())&&(blue.isUnsignedNum()) &&(alpha.isUnsignedNum())){
 			bool bOk;
 			int r = red.toInt(&bOk) % 256;
 			int g = green.toInt(&bOk) % 256;
 			int b = blue.toInt(&bOk) % 256;
+			int a = alpha.toInt(&bOk) % 256;
 			if(r < 0)r = -r;
 			if(g < 0)g = -g;
 			if(b < 0)b = -b;
+			if(a < 0)a = -a;
+
 			color.setRgb(r,g,b);
+			color.setAlpha(a);
 		}
 	}
 	return color;

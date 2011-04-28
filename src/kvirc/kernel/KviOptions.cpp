@@ -467,67 +467,67 @@ KviColorOption g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS]=
 	MIRC_COLOR_OPTION("15",170,170,170)
 };
 
-#define COLOR_OPTION(_name,_red,_green,_blue,_flags) \
+	#define COLOR_OPTION(_name,_red,_green,_blue,_alpha,_flags) \
 	KviColorOption(KVI_COLOR_OPTIONS_PREFIX _name, \
-		QColor(_red,_green,_blue), \
+		QColor(_red,_green,_blue,_alpha), \
 		_flags | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetUpdatePseudoTransparency)
 
 KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 {
-	COLOR_OPTION("MdiBackground",0,0,0,KviOption_sectFlagMdi),
-	COLOR_OPTION("WindowListNormalText",0,0,0,KviOption_sectFlagWindowList),
-	COLOR_OPTION("WindowListMinimizedText",60,60,60,KviOption_sectFlagWindowList),
-	COLOR_OPTION("WindowListHighlight1Text",0,16,144,KviOption_sectFlagWindowList),
-	COLOR_OPTION("WindowListHighlight2Text",32,0,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("WindowListProgressBar",180,180,180,KviOption_sectFlagWindowList),
-	COLOR_OPTION("UserListViewAwayForeground",143,143,143,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewOwnForeground",255,255,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("NotifierBackground",255,255,255,KviOption_sectFlagNotifier),
-	COLOR_OPTION("NotifierForeground",0,0,0,KviOption_sectFlagNotifier),
-	COLOR_OPTION("NotifierTitleForeground",255,255,255,KviOption_sectFlagNotifier),
-	COLOR_OPTION("IrcViewBackground",255,255,255,KviOption_sectFlagIrcView),
-	COLOR_OPTION("InputBackgroundColor",255,255,255,KviOption_sectFlagInput),
-	COLOR_OPTION("InputSelectionBackground",0,0,0,KviOption_sectFlagInput),
-	COLOR_OPTION("InputSelectionForeground",255,255,255,KviOption_sectFlagInput),
-	COLOR_OPTION("InputCursor",0,0,0,KviOption_sectFlagInput),
-	COLOR_OPTION("InputControl",200,100,0,KviOption_sectFlagInput),
-	COLOR_OPTION("InputForeground",0,0,0,KviOption_sectFlagInput),
-	COLOR_OPTION("UserListViewBackground",255,255,255,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewOpForeground",200,0,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewVoiceForeground",0,0,200,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewNormalForeground",0,0,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewSelectionBackground",0,0,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewSelectionForeground",255,255,255,KviOption_sectFlagUserListView),
-	COLOR_OPTION("LabelBackground",255,255,255,KviOption_sectFlagLabel),
-	COLOR_OPTION("LabelForeground",0,0,0,KviOption_sectFlagLabel),
-	COLOR_OPTION("GlobalTransparencyFade",255,255,255,KviOption_sectFlagGui),
-	COLOR_OPTION("IrcToolBarAppletBackground",255,255,255,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("IrcToolBarAppletForegroundLowContrast",180,180,180,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("IrcToolBarAppletForegroundMidContrast",110,110,110,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastInactive1",40,40,40,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastInactive2",40,40,40,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastActive1",0,0,0,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastActive2",0,60,0,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("TreeWindowListBackground",255,255,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListActiveBackground",200,200,200,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListForeground",0,0,0,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListActiveForeground",0,0,0,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListHighlight1Foreground",0,16,144,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListHighlight2Foreground",32,0,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListProgress",150,150,150,KviOption_sectFlagWindowList),
-	COLOR_OPTION("UserListViewHalfOpForeground",119,0,178,KviOption_sectFlagUserListView),
-	COLOR_OPTION("WindowListHighlight3Text",128,20,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("WindowListHighlight4Text",220,0,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("WindowListHighlight5Text",255,0,0,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListHighlight3Foreground",128,0,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListHighlight4Foreground",220,0,255,KviOption_sectFlagWindowList),
-	COLOR_OPTION("TreeWindowListHighlight5Foreground",255,0,0,KviOption_sectFlagWindowList),
-	COLOR_OPTION("UserListViewChanAdminForeground",83,54,5,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewUserOpForeground",0,127,178,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewGrid",110,110,110,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewChanOwnerForeground",81,87,111,KviOption_sectFlagUserListView),
-	COLOR_OPTION("IrcViewMarkLine",40,40,40,KviOption_sectFlagIrcView)
+	COLOR_OPTION("MdiBackground",0,0,0,255,KviOption_sectFlagMdi),
+	COLOR_OPTION("WindowListNormalText",0,0,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListMinimizedText",60,60,60,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight1Text",0,16,144,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight2Text",32,0,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListProgressBar",180,180,180,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("UserListViewAwayForeground",143,143,143,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewOwnForeground",255,255,0,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("NotifierBackground",255,255,255,255,KviOption_sectFlagNotifier),
+	COLOR_OPTION("NotifierForeground",0,0,0,255,KviOption_sectFlagNotifier),
+	COLOR_OPTION("NotifierTitleForeground",255,255,255,255,KviOption_sectFlagNotifier),
+	COLOR_OPTION("IrcViewBackground",255,255,255,255,KviOption_sectFlagIrcView),
+	COLOR_OPTION("InputBackgroundColor",255,255,255,255,KviOption_sectFlagInput),
+	COLOR_OPTION("InputSelectionBackground",0,0,0,255,KviOption_sectFlagInput),
+	COLOR_OPTION("InputSelectionForeground",255,255,255,255,KviOption_sectFlagInput),
+	COLOR_OPTION("InputCursor",0,0,0,255,KviOption_sectFlagInput),
+	COLOR_OPTION("InputControl",200,100,0,255,KviOption_sectFlagInput),
+	COLOR_OPTION("InputForeground",0,0,0,255,KviOption_sectFlagInput),
+	COLOR_OPTION("UserListViewBackground",255,255,255,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewOpForeground",200,0,0,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewVoiceForeground",0,0,200,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewNormalForeground",0,0,0,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewSelectionBackground",0,0,0,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewSelectionForeground",255,255,255,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("LabelBackground",255,255,255,255,KviOption_sectFlagLabel),
+	COLOR_OPTION("LabelForeground",0,0,0,255,KviOption_sectFlagLabel),
+	COLOR_OPTION("GlobalTransparencyFade",255,255,255,255,KviOption_sectFlagGui),
+	COLOR_OPTION("IrcToolBarAppletBackground",255,255,255,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("IrcToolBarAppletForegroundLowContrast",180,180,180,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("IrcToolBarAppletForegroundMidContrast",110,110,110,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastInactive1",40,40,40,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastInactive2",40,40,40,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastActive1",0,0,0,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastActive2",0,60,0,255,KviOption_sectFlagIrcToolBar),
+	COLOR_OPTION("TreeWindowListBackground",255,255,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListActiveBackground",200,200,200,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListForeground",0,0,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListActiveForeground",0,0,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight1Foreground",0,16,144,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight2Foreground",32,0,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListProgress",150,150,150,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("UserListViewHalfOpForeground",119,0,178,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("WindowListHighlight3Text",128,20,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight4Text",220,0,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight5Text",255,0,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight3Foreground",128,0,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight4Foreground",220,0,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight5Foreground",255,0,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("UserListViewChanAdminForeground",83,54,5,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewUserOpForeground",0,127,178,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewGrid",110,110,110,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewChanOwnerForeground",81,87,111,255,KviOption_sectFlagUserListView),
+	COLOR_OPTION("IrcViewMarkLine",40,40,40,255,KviOption_sectFlagIrcView)
 };
 
 
@@ -985,6 +985,7 @@ void KviApplication::saveOptions()
 				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
 		}
 	WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable)
+
 	WRITE_OPTIONS(KVI_NUM_PIXMAP_OPTIONS,g_pixmapOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)

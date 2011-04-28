@@ -604,7 +604,7 @@ KviColorSelector::KviColorSelector(QWidget * par,const QString & txt,QColor * pO
 
 void KviColorSelector::setButtonPalette(QColor * pOption)
 {
-	QPalette pal(*pOption,palette().background().color());
+	QPalette pal(*pOption,palette().window().color());
 	m_memColor = *pOption;
 	m_pButton->setPalette(pal);
 
@@ -620,7 +620,7 @@ void KviColorSelector::forceColor(QColor clr)
 
 void KviColorSelector::changeClicked()
 {
-	QColor tmp = QColorDialog::getColor(m_memColor);
+	QColor tmp = QColorDialog::getColor(m_memColor,0,__tr2qs("Choose Color"),QColorDialog::ShowAlphaChannel);
 	if(tmp.isValid())setButtonPalette(&tmp);
 }
 
