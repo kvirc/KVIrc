@@ -37,6 +37,7 @@
 #include "KviStatusBar.h"
 #include "KvsObject_painter.h"
 
+
 #include <QKeyEvent>
 #include <QDesktopWidget>
 #include <QWidget>
@@ -683,7 +684,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,colorPalette)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setStyleSheet)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setKeyShortcut)
-
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,grab)
 	// statusbar
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,insertIntoStatusBar)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,removeFromStatusBar)
@@ -720,7 +721,15 @@ KVSO_END_CONSTRUCTOR(KvsObject_widget)
 bool KvsObject_widget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
-        m_pContext=c;
+	//qDebug("abc");
+	/*QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget());
+	effect->setColor(QColor(0, 0, 0, 255));
+	effect->setBlurRadius(20);
+	widget()->setGraphicsEffect(effect);
+	if (!widget()->graphicsEffect()) qDebug("non settato");
+	else qDebug("settato");
+	*/
+	m_pContext=c;
 	widget()->setObjectName(getName());
 	return true;
 }
@@ -1990,8 +1999,7 @@ KVSO_CLASS_FUNCTION(widget,setKeyShortcut)
 KVSO_CLASS_FUNCTION(widget,insertIntoStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
-             qDebug("instertinto");
-        if (g_pMainWindow->mainStatusBar())
+	if (g_pMainWindow->mainStatusBar())
                 g_pMainWindow->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
 	return true;
 }
@@ -2000,6 +2008,39 @@ KVSO_CLASS_FUNCTION(widget,removeFromStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	g_pMainWindow->statusBar()->removeWidget(widget());
+	return true;
+}
+KVSO_CLASS_FUNCTION(widget,grab)
+{
+	qDebug("Grab");
+	CHECK_INTERNAL_POINTER(widget())
+	KviKvsObject *ob;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+	        KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
+	qDebug("Get widget");
+	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if (!ob)
+	{
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
+		return true;
+	}
+	qDebug("check widgetype");
+	if(!ob->object()->isWidgetType())
+	{
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
+		return true;
+	}
+
+	QPixmap *pPixmap=new QPixmap();
+	qDebug("grabbing");
+	*pPixmap=QPixmap::grabWidget(((QWidget *)(ob->object())));
+	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("pixmap");
+	KviKvsVariantList params;
+	KviKvsObject * pObject = pClass->allocateInstance(0,"internalpixmap",c->context(),&params);
+	((KvsObject_pixmap *)pObject)->setInternalPixmap(pPixmap);
+	c->returnValue()->setHObject(pObject->handle());
 	return true;
 }
 

@@ -86,6 +86,7 @@ public:
 	bool translate(KviKvsObjectFunctionCall *c);
 	bool setPenStyle(KviKvsObjectFunctionCall *c);
 	bool setBrushStyle(KviKvsObjectFunctionCall *c);
+	bool setCompositionMode(KviKvsObjectFunctionCall *c);
 
 // QT4
 	bool setOpacity(KviKvsObjectFunctionCall *c);
@@ -113,7 +114,7 @@ public:
 	bool resetPath(KviKvsObjectFunctionCall *c);
 
 	bool beginPdf(KviKvsObjectFunctionCall *c);
-
+bool drawPixmapWithEffect(KviKvsObjectFunctionCall *c);
 	bool painterDeviceWidth(KviKvsObjectFunctionCall *c);
 	bool painterDeviceHeight(KviKvsObjectFunctionCall *c);
 

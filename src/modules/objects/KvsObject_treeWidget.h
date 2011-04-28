@@ -43,6 +43,8 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
+
+	bool setBackgroundImage(KviKvsObjectFunctionCall *c);
 	bool addColumn(KviKvsObjectFunctionCall *c);
 	bool setColumnText(KviKvsObjectFunctionCall *c);
 	bool takeItem(KviKvsObjectFunctionCall *c);

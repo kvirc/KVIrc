@@ -30,7 +30,7 @@
 #include "KviApplication.h"
 
 #include <QDialog>
-
+#include <QGraphicsDropShadowEffect>
 
 /*
 	@doc: dialog
@@ -72,6 +72,11 @@ bool KvsObject_dialog::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	QWidget * w = g_pApp->activeModalWidget();
 	if(!w)w = g_pMainWindow;
 	QDialog * d = new QDialog(parentScriptWidget() ? parentScriptWidget() : w);
+	QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget());
+	effect->setColor(QColor(0, 0, 0, 255));
+	effect->setBlurRadius(20);
+	d->setGraphicsEffect(effect);
+
 	d->setObjectName(getName());
 	//d->setModal(true);
 	setObject(d);

@@ -43,12 +43,45 @@ class KvsObject_pixmap : public KviKvsObject
 //	Q_PROPERTY(QPixmap pixmap READ getPixmap)
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_pixmap)
-	QPixmap  * getPixmap();
-	void setInternalPixmap(QPixmap *p);
-            //QPixmap * pixmap(){ return m_pPixmap; }
+	enum Type { Pixmap, AnimatedPixmap, Image };
+	Type m_currentType;
+	void setInternalPixmap(QPixmap *pPixmap);
+	void setInternalImage(QImage *pImage);
+
+	QImage * getImage()
+	{
+	    if(!m_pImage) m_pImage = new QImage();
+	    if(m_currentType==Pixmap)
+	    {
+	        if(m_pPixmap){
+		        *m_pImage = m_pPixmap->toImage();
+		        delete m_pPixmap;
+		        m_pPixmap = 0;
+	        }
+	    }
+	    m_currentType = Image;
+	    return m_pImage;
+	}
+
+	QPixmap * getPixmap()
+	{
+	    if(!m_pPixmap) m_pPixmap = new QPixmap();
+	    if(m_currentType==Image)
+	    {
+	        if(m_pImage){
+		        *m_pPixmap = m_pPixmap->fromImage(*m_pImage);
+		        delete m_pImage;
+		        m_pImage = 0;
+	        }
+	    }
+	    m_currentType = Pixmap;
+	    return m_pPixmap;
+	}
+
 protected:
             KviAnimatedPixmap * m_pAnimatedPixmap;
             QPixmap * m_pPixmap;
+	QImage * m_pImage;
 signals:
 	void aboutToDie();
 protected:
@@ -65,8 +98,11 @@ protected:
         bool height(KviKvsObjectFunctionCall *c);
         bool width(KviKvsObjectFunctionCall *c);
         bool grabWidget(KviKvsObjectFunctionCall *c);
-//	bool setOpacity(KviKvsObjectFunctionCall *c);
         bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
+        bool rotate(KviKvsObjectFunctionCall *c);
+        bool toGrayScale(KviKvsObjectFunctionCall *c);
+        bool mirrored(KviKvsObjectFunctionCall *c);
+        bool setPixel(KviKvsObjectFunctionCall *c);
 
         bool frameChangedEvent(KviKvsObjectFunctionCall *c);
 

@@ -192,6 +192,7 @@ bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 			return false;
 		}
 	}
+
 	return true;
 }
 

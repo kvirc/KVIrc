@@ -11,6 +11,7 @@ SET(kviobjects_MOC_HDRS
 	KvsObject_button.h
 	KvsObject_checkBox.h
 	KvsObject_comboBox.h
+	KvsObject_colorDialog.h
 	KvsObject_dateTimeEdit.h
 	KvsObject_dockWindow.h
 	KvsObject_ftp.h
@@ -46,6 +47,7 @@ SET(kviobjects_SRCS
 	KvsObject_comboBox.cpp
 	KvsObject_dateTimeEdit.cpp
 	KvsObject_dialog.cpp
+	KvsObject_colorDialog.cpp
 	KvsObject_dockWindow.cpp
 	KvsObject_file.cpp
 	KvsObject_ftp.cpp

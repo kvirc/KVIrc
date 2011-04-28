@@ -30,8 +30,8 @@
 #include "object_macros.h"
 #include <QFile>
 #include <QNetworkAccessManager>
-#include <QtWebKit/QWebView>
-#include <QtWebKit/QWebFrame>
+#include <QWebView>
+#include <QWebFrame>
 #include <QWebElement>
 
 class KvsObject_webView : public KviKvsObject

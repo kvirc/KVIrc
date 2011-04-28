@@ -32,7 +32,7 @@
 #include "KviLocale.h"
 
 #if defined(COMPILE_WEBKIT_SUPPORT)
-#include <QtWebKit/QWebView>
+#include <QWebView>
 #include <QWebSettings>
 #include <QWebElement>
 #include <QNetworkRequest>
@@ -260,9 +260,9 @@ KVSO_CLASS_FUNCTION(webView,makePreview)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QSize size=((QWebView *)widget())->page()->mainFrame()->contentsSize();
-	QImage image(212,142, QImage::Format_RGB32);
+	QImage *pImage=new QImage(212,142, QImage::Format_RGB32);
 	QWebFrame  *pFrame=((QWebView *)widget())->page()->mainFrame();
-	QPainter painter(&image);
+	QPainter painter(pImage);
 	painter.setRenderHint(QPainter::Antialiasing, true);
 	painter.setRenderHint(QPainter::TextAntialiasing, true);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
@@ -279,12 +279,10 @@ KVSO_CLASS_FUNCTION(webView,makePreview)
 	painter.scale(dWScale,dHScale);
 	pFrame->documentElement().render(&painter);
 	painter.end();
-	QPixmap *pPixmap=new QPixmap();
-	*pPixmap=pPixmap->fromImage(image);
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("pixmap");
 	KviKvsVariantList params;
 	KviKvsObject * pObject = pClass->allocateInstance(0,"internalpixmap",c->context(),&params);
-	((KvsObject_pixmap *)pObject)->setInternalPixmap(pPixmap);
+	((KvsObject_pixmap *)pObject)->setInternalImage(pImage);
 	c->returnValue()->setHObject(pObject->handle());
 	return true;
 }

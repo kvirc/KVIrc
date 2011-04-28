@@ -30,6 +30,8 @@
 #include "KviTalToolTip.h"
 #include "object_macros.h"
 
+#include <QGraphicsEffect>
+
 #ifdef COMPILE_WEBKIT_SUPPORT
 	#include <QtWebKit/QWebView>
 #endif
@@ -51,6 +53,7 @@ protected:
 #endif
 	virtual bool eventFilter(QObject *o,QEvent *e);
         KviKvsRunTimeContext *m_pContext;
+	QGraphicsDropShadowEffect *pGraphicsEffect;
 	// ok, it is clear that we're messing with the naming conventions for the
 	// object classes :D
 	// let's try to use this one:
@@ -120,6 +123,8 @@ protected:
 	bool windowTitle(KviKvsObjectFunctionCall *c);
 	bool x(KviKvsObjectFunctionCall *);
 	bool y(KviKvsObjectFunctionCall *);
+
+	bool grab(KviKvsObjectFunctionCall *);
 #ifdef COMPILE_WEBKIT_SUPPORT
 	bool setWebView(KviKvsObjectFunctionCall *c);
 #endif

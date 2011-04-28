@@ -28,6 +28,8 @@
 #include "KvsObject_checkBox.h"
 #include "KvsObject_comboBox.h"
 #include "KvsObject_dialog.h"
+#include "KvsObject_colorDialog.h"
+
 #include "KvsObject_dockWindow.h"
 #include "KvsObject_file.h"
 #include "KvsObject_ftp.h"
@@ -102,9 +104,9 @@ static bool objects_module_cleanup(KviModule *)
 	#if defined(COMPILE_WEBKIT_SUPPORT)
 	KvsObject_webView::unregisterSelf();
 	#endif
-        KvsObject_memoryBuffer::unregisterSelf();
+	KvsObject_memoryBuffer::unregisterSelf();
 	KvsObject_process::unregisterSelf();
-        KvsObject_trayIcon::unregisterSelf();
+	KvsObject_trayIcon::unregisterSelf();
 	KvsObject_ftp::unregisterSelf();
 	KvsObject_http::unregisterSelf();
 	KvsObject_socket::unregisterSelf();
@@ -138,18 +140,18 @@ static bool objects_module_cleanup(KviModule *)
 	KvsObject_vBox::unregisterSelf();
 	KvsObject_label::unregisterSelf();
 	KvsObject_groupBox::unregisterSelf();
+	KvsObject_colorDialog::unregisterSelf();
 	KvsObject_dialog::unregisterSelf();
 	KvsObject_checkBox::unregisterSelf();
 	KvsObject_textBrowser::unregisterSelf();
 	KvsObject_textedit::unregisterSelf();
 	KvsObject_button::unregisterSelf();
-        KvsObject_dateTimeEdit::unregisterSelf();
-        KvsObject_tableWidget::unregisterSelf();
-        KvsObject_widget::unregisterSelf();
+	KvsObject_dateTimeEdit::unregisterSelf();
+	KvsObject_tableWidget::unregisterSelf();
+	KvsObject_widget::unregisterSelf();
 	KvsObject_list::unregisterSelf();
-        KvsObject_sql::unregisterSelf();
+	KvsObject_sql::unregisterSelf();
 	KvsObject_buttonGroup::unregisterSelf();
-
 	return true;
 }
 
@@ -760,7 +762,6 @@ static bool objects_module_init(KviModule * m)
 	// Derived classes must be registered after the base ones.
 
 	KvsObject_buttonGroup::registerSelf();
-
 	KvsObject_sql::registerSelf();
 	KvsObject_list::registerSelf();
 	KvsObject_widget::registerSelf();
@@ -771,6 +772,7 @@ static bool objects_module_init(KviModule * m)
 	KvsObject_textBrowser::registerSelf();
 	KvsObject_checkBox::registerSelf();
 	KvsObject_dialog::registerSelf();
+	KvsObject_colorDialog::registerSelf();
 	KvsObject_groupBox::registerSelf();
 	KvsObject_label::registerSelf();
 	KvsObject_vBox::registerSelf();
@@ -804,7 +806,7 @@ static bool objects_module_init(KviModule * m)
 	KvsObject_socket::registerSelf();
 	KvsObject_http::registerSelf();
 	KvsObject_ftp::registerSelf();
-        KvsObject_trayIcon::registerSelf();
+	KvsObject_trayIcon::registerSelf();
 	KvsObject_process::registerSelf();
 	KvsObject_memoryBuffer::registerSelf();
 	#if defined(COMPILE_WEBKIT_SUPPORT)
