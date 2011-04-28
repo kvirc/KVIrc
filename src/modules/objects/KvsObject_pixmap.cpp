@@ -86,41 +86,40 @@
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_pixmap,"pixmap","object")
 
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,fill)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,resize)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,scale)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,load)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,loadAnimation)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,save)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,startAnimation)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,stopAnimation)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,loadFromMemoryBuffer)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,height)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,width)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,rotate)
-
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,mirrored)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,setPixel)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,toGrayScale)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,grabWidget)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,frameChangedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,fill)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,resize)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,scale)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,load)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,loadAnimation)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,save)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,startAnimation)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,stopAnimation)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,loadFromMemoryBuffer)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,height)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,width)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,rotate)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,mirrored)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,setPixel)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,toGrayScale)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,grabWidget)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,frameChangedEvent)
 
 KVSO_END_REGISTERCLASS(KvsObject_pixmap)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_pixmap,KviKvsObject)
-        m_pAnimatedPixmap = 0;
-        m_currentType = Image;
-        m_pPixmap = 0;
-        m_pImage = 0;
+	m_pAnimatedPixmap = 0;
+	m_currentType = Image;
+	m_pPixmap = 0;
+	m_pImage = 0;
 KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_pixmap)
-        emit aboutToDie();
-        if (m_pPixmap)delete m_pPixmap;
-        if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
-        if (m_pImage) delete m_pImage;
+	emit aboutToDie();
+	if (m_pPixmap)delete m_pPixmap;
+	if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
+	if (m_pImage) delete m_pImage;
 KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 
 
@@ -194,102 +193,101 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 
 KVSO_CLASS_FUNCTION(pixmap,resize)
 {
-        kvs_int_t iWidth,iHeight;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
-            KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
-        KVSO_PARAMETERS_END(c)
-        if(m_currentType==Image)
-        {
-	if(m_pImage)
-	    delete m_pImage;
-	m_pImage = 0;
-        }
-        else if(m_currentType==AnimatedPixmap)
-        {
-	if (m_pAnimatedPixmap)
-		delete m_pAnimatedPixmap;
-	m_pAnimatedPixmap=0;
-        }
-        else if(m_pPixmap)
-        {
-	delete m_pPixmap;
-        }
-        m_currentType = Image;
-        m_pImage=new QImage(iWidth,iHeight,QImage::Format_ARGB32_Premultiplied);
-        m_pImage->fill(Qt::transparent);
-        return true;
+	kvs_int_t iWidth,iHeight;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
+		KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
+	KVSO_PARAMETERS_END(c)
+	if(m_currentType==Image)
+	{
+		if(m_pImage)
+		delete m_pImage;
+		m_pImage = 0;
+	}
+	else if(m_currentType==AnimatedPixmap)
+	{
+		if (m_pAnimatedPixmap)
+			delete m_pAnimatedPixmap;
+		m_pAnimatedPixmap=0;
+	}
+	else if(m_pPixmap)
+	{
+		delete m_pPixmap;
+	}
+	m_currentType = Image;
+	m_pImage=new QImage(iWidth,iHeight,QImage::Format_ARGB32_Premultiplied);
+	m_pImage->fill(Qt::transparent);
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,setPixel)
 {
-    kvs_int_t iCol1,iCol2,iCol3,iOpacity,iX,iY;
-    QString szColorMode,szColor;
-    KviKvsVariant *var1,*var2,*var3;
-    KVSO_PARAMETERS_BEGIN(c)
-	    KVSO_PARAMETER("x",KVS_PT_INTEGER,0,iX)
-	    KVSO_PARAMETER("y",KVS_PT_INTEGER,0,iY)
-	    KVSO_PARAMETER("Color_1_Or_Colorname",KVS_PT_VARIANT,0,var1)
-	    KVSO_PARAMETER("Color_2",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var2)
-	    KVSO_PARAMETER("Colo3_3",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var3)
-	    KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
-	    KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
-    KVSO_PARAMETERS_END(c)
-    QColor col;
-    if (!var1->asInteger(iCol1))
-    {
-	    var1->asString(szColor);
-	    if (c->paramCount()<4) iOpacity=255;
-	    else
-	    {
-		    if (!var2->asInteger(iOpacity))
-		    {
-			    c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
-			    return true;
-		    }
-	    }
-	    col.setNamedColor(szColor);
-	    col.setAlpha(iOpacity);
-    }
-    else
-    {
-	    if(c->paramCount()<5)
-	    {
-		    c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
-		    return true;
-	    }
-	    if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
-	    {
-		    c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
-			    return true;
-	    }
-	    if (c->paramCount()<7) iOpacity=255;
-	    if(KviQString::equalCI(szColorMode, "HSV"))
-	    col.setHsv(iCol1,iCol2,iCol3,iOpacity);
-	    else
-	    col.setRgb(iCol1,iCol2,iCol3,iOpacity);
-    }
-
-
-        if(m_currentType==AnimatedPixmap)
-        {
-	c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
-	return true;
+	kvs_int_t iCol1,iCol2,iCol3,iOpacity,iX,iY;
+	QString szColorMode,szColor;
+	KviKvsVariant *var1,*var2,*var3;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("x",KVS_PT_INTEGER,0,iX)
+		KVSO_PARAMETER("y",KVS_PT_INTEGER,0,iY)
+		KVSO_PARAMETER("Color_1_Or_Colorname",KVS_PT_VARIANT,0,var1)
+		KVSO_PARAMETER("Color_2",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var2)
+		KVSO_PARAMETER("Colo3_3",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var3)
+		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
+		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
+	KVSO_PARAMETERS_END(c)
+	QColor col;
+	if (!var1->asInteger(iCol1))
+	{
+		var1->asString(szColor);
+		if (c->paramCount()<4) iOpacity=255;
+		else
+		{
+			if (!var2->asInteger(iOpacity))
+			{
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
+				return true;
+			}
+		}
+		col.setNamedColor(szColor);
+		col.setAlpha(iOpacity);
+	}
+	else
+	{
+		if(c->paramCount()<5)
+		{
+			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			return true;
+		}
+		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
+		{
+			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			return true;
+		}
+		if (c->paramCount()<7) iOpacity=255;
+		if(KviQString::equalCI(szColorMode, "HSV"))
+		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+		else
+		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+	}
+	if(m_currentType==AnimatedPixmap)
+	{
+		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
+		return true;
         }
         else if((m_currentType==Image && !m_pImage) || (m_currentType==Pixmap && !m_pPixmap))
         {
-	c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	return false;
-        }
-        else if(m_currentType==Pixmap)
+		c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		return false;
+	}
+	else if(m_currentType==Pixmap)
         {
-	if(m_pImage) delete m_pImage;
-	*m_pImage = m_pPixmap->toImage();
-	delete m_pPixmap;
-        }
-        m_currentType = Image;
-        m_pImage->setPixel(iX,iY,col.rgba());
-        return true;
+		if(m_pImage) 
+			    delete m_pImage;
+		*m_pImage = m_pPixmap->toImage();
+		delete m_pPixmap;
+	}
+	m_currentType = Image;
+	m_pImage->setPixel(iX,iY,col.rgba());
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,rotate)
@@ -297,8 +295,8 @@ KVSO_CLASS_FUNCTION(pixmap,rotate)
         kvs_real_t dAngle;
         QString szAxis;
         KVSO_PARAMETERS_BEGIN(c)
-	        KVSO_PARAMETER("angle",KVS_PT_DOUBLE,0,dAngle)
-	        KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
+		KVSO_PARAMETER("angle",KVS_PT_DOUBLE,0,dAngle)
+		KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
         KVSO_PARAMETERS_END(c)
         Qt::Axis axis = Qt::ZAxis;
         if(!szAxis.isEmpty())
