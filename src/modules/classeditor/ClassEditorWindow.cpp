@@ -1179,6 +1179,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 	for(ClassEditorTreeWidgetItem * pItem = list.first(); pItem; pItem = list.next())
 	{
 		pTempItem = pItem;
+		if(skiplist.findRef(pItem)!=-1) continue;
 		ClassEditorTreeWidgetItem *pParentClass = m_pClasses->find(pItem->inheritsClass());
 		KviPointerList<ClassEditorTreeWidgetItem> linkedClasses;
 		linkedClasses.setAutoDelete(false);
@@ -1190,17 +1191,14 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 			linkedClasses.append(pParentClass);
 			pParentClass = m_pClasses->find(pParentClass->inheritsClass());
 		}
-		if(linkedClasses.count())
+		for(int i = linkedClasses.count()-1; i >= 0; i--)
 		{
-			for(int i = linkedClasses.count()-1; i >= 0; i--)
-			{
-				iCount++;
-				QString szTmp;
-				exportClassBuffer(szTmp,linkedClasses.at(i));
-				skiplist.append(linkedClasses.at(i));
-				szOut += szTmp;
-				szOut += "\n";
-			}
+			iCount++;
+			QString szTmp;
+			exportClassBuffer(szTmp,linkedClasses.at(i));
+			skiplist.append(linkedClasses.at(i));
+			szOut += szTmp;
+			szOut += "\n";
 		}
 	}
 	
