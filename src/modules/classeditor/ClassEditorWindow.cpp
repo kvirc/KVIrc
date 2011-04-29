@@ -1075,10 +1075,12 @@ void ClassEditorWidget::exportClassBuffer(QString & szBuffer, ClassEditorTreeWid
 				szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += pFunction->name();
-			szBuffer += "(" + pFunction->reminder() + ")";
-			szBuffer += "\n\t{\n";
-			szBuffer += pFunction->buffer();
-			szBuffer += "\n\t}\n";
+			szBuffer += "(" + pFunction->reminder() + ")\n";
+			QString szCode=pFunction->buffer();
+			KviCommandFormatter::blockFromBuffer(szCode);
+			KviCommandFormatter::indent(szCode);
+
+			szBuffer += szCode;
 		}
 	}
 	szBuffer += "}\n";
@@ -1169,17 +1171,37 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 	{
 		exportSelectionInSinglesFiles(&list);
 		return;
-        }
+	}
 	
 	ClassEditorTreeWidgetItem * pTempItem = 0;
+	KviPointerList<ClassEditorTreeWidgetItem> skiplist;
+	skiplist.setAutoDelete(false);
 	for(ClassEditorTreeWidgetItem * pItem = list.first(); pItem; pItem = list.next())
 	{
 		pTempItem = pItem;
-		iCount++;
-		QString szTmp;
-		exportClassBuffer(szTmp,pItem);
-		szOut += szTmp;
-		szOut += "\n";
+		ClassEditorTreeWidgetItem *pParentClass = m_pClasses->find(pItem->inheritsClass());
+		KviPointerList<ClassEditorTreeWidgetItem> linkedClasses;
+		linkedClasses.setAutoDelete(false);
+		linkedClasses.append(pItem);
+		while(pParentClass)
+		{
+			if(skiplist.findRef(pParentClass)!=-1)
+				break;
+			linkedClasses.append(pParentClass);
+			pParentClass = m_pClasses->find(pParentClass->inheritsClass());
+		}
+		if(linkedClasses.count())
+		{
+			for(int i = linkedClasses.count()-1; i >= 0; i--)
+			{
+				iCount++;
+				QString szTmp;
+				exportClassBuffer(szTmp,linkedClasses.at(i));
+				skiplist.append(linkedClasses.at(i));
+				szOut += szTmp;
+				szOut += "\n";
+			}
+		}
 	}
 	
 	if(szOut.isEmpty())
