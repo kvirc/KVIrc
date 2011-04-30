@@ -1407,22 +1407,20 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	if (szPath.isEmpty()) szPath=".";
 	const char *path = szPath.toUtf8().data();
-	int fKB = 1024;
-	long int fTotal;
-	long int fFree;
+	long long int fTotal;
+	long long int fFree;
 	// this for win
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	    ULARGE_INTEGER free,total;
 	    GetDiskFreeSpaceExA( (LPCTSTR)path , NULL , &total , &free );
-
-	    fFree = static_cast<double>( static_cast<__int64>(free.QuadPart) ) / fKB;
-	    fTotal = static_cast<double>( static_cast<__int64>(total.QuadPart) ) / fKB;
+	    fFree = free.QuadPart;
+	    fTotal =total.QuadPart;
 	#else
 	    // this one for linux and macos
 	    struct statvfs stFileSystem;
 	    statvfs(path,&stFileSystem);
-	    fFree = stFileSystem.f_bavail * ( stFileSystem.f_bsize );
-	    fTotal = stFileSystem.f_blocks *  ( stFileSystem.f_bsize);
+	    fFree = stFileSystem.f_bavail*stFileSystem.f_bsize;
+	    fTotal = stFileSystem.f_blocks*stFileSystem.f_bsize;
 	#endif
 	KviKvsHash * pHash = new KviKvsHash();
 	pHash->set("freespace",new KviKvsVariant((kvs_int_t) fFree));
