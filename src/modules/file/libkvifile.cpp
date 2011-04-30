@@ -37,6 +37,13 @@
 #include <QTextCodec>
 #include <QByteArray>
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#include <windows.h>
+#else
+#include <sys/statvfs.h>
+#endif
+
+
 #if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
 	// The current implementation
 	#include <openssl/evp.h>
@@ -1379,6 +1386,55 @@ static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)
 }
 
 /*
+	@doc:	file.diskspace
+	@type:
+		function
+	@title:
+		$file.diskspace
+	@short:
+		Return the available diskspace.
+	@syntax:
+		<hash> $file.diskspace([dirpath:string])
+	@description:
+		Returns as hash, with 'freespace' and 'totalspace' as key, the free diskspace in bytes.[br]
+		Without optional dirpath parameter will be returned the current device's disk space (i.e. the disk on which KVIrc has been started).[br]
+*/
+static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
+{
+	QString szPath;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("dir_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szPath)
+	KVSM_PARAMETERS_END(c)
+	if (szPath.isEmpty()) szPath=".";
+	const char *path = szPath.toUtf8().data();
+	int fKB = 1024;
+	int fTotal;
+	int fFree;
+	// this for win
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	    ULARGE_INTEGER free,total;
+	    GetDiskFreeSpaceExA( ((LPCTSTR)path , NULL , &total , &free );
+
+	    fFree = static_cast<double>( static_cast<__int64>(free.QuadPart) ) / fKB;
+	    fTotal = static_cast<double>( static_cast<__int64>(total.QuadPart) ) / fKB;
+	#else
+	    // this one for linux and macos
+	    struct statvfs stFileSystem;
+	    statvfs(path,&stFileSystem);
+	    fFree = stFileSystem.f_bavail * ( stFileSystem.f_bsize / fKB );
+	    fTotal = stFileSystem.f_blocks *  ( stFileSystem.f_bsize / fKB );
+	#endif
+	KviKvsHash * pHash = new KviKvsHash();
+	pHash->set("freespace",new KviKvsVariant((kvs_int_t) fFree));
+	pHash->set("totalspace",new KviKvsVariant((kvs_int_t) fTotal));
+	c->returnValue()->setHash(pHash);
+	return true;
+}
+
+
+
+
+/*
 	@doc: file.digest
 	@type:
 		function
@@ -1538,6 +1594,8 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"write",file_kvs_cmd_write);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"writeBytes",file_kvs_cmd_writeBytes);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"writeLines",file_kvs_cmd_writeLines);
+
+	KVSM_REGISTER_FUNCTION(m,"diskspace",file_kvs_fnc_diskSpace);
 
 	KVSM_REGISTER_FUNCTION(m,"allsizes",file_kvs_fnc_allSizes);
 	KVSM_REGISTER_FUNCTION(m,"cwd",file_kvs_fnc_cwd);
