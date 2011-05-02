@@ -32,6 +32,7 @@
 #include "KviQueryWindow.h"
 #include "KviTalPopupMenu.h"
 
+#include <QAction>
 
 KviActionCategory::KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
 : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
@@ -44,23 +45,23 @@ KviActionCategory::~KviActionCategory()
 
 
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
-: QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_szSmallIconId(szSmallIconId),m_pWidgetList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
+: QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_szSmallIconId(szSmallIconId),m_pActionList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
 {
 }
 
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const KviIconManager::SmallIcon eIcon, unsigned int uFlags, const QString & szKeySequence)
-: QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_eIcon(eIcon),m_pWidgetList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
+: QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_eIcon(eIcon),m_pActionList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
 {
 }
 
 KviAction::~KviAction()
 {
-	if(m_pWidgetList)
+	if(m_pActionList)
 	{
-		for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
-			disconnect(pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
-		m_pWidgetList->setAutoDelete(true);
-		delete m_pWidgetList;
+		for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
+			disconnect(pAction,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
+		m_pActionList->setAutoDelete(true);
+		delete m_pActionList;
 	}
 	
 	if(m_pAccel)
@@ -115,20 +116,20 @@ void KviAction::setEnabled(bool bEnabled)
 	else
 		m_uInternalFlags &= ~KviAction::Enabled;
 
-	if(m_pWidgetList)
+	if(m_pActionList)
 	{
 		if(bEnabled)
 		{
-			for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
+			for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
 			{
-				if(!pWidget->isEnabled())
-					pWidget->setEnabled(true);
+				if(!pAction->isEnabled())
+					pAction->setEnabled(true);
 			}
 		} else {
-			for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
+			for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
 			{
-				if(pWidget->isEnabled())
-					pWidget->setEnabled(false);
+				if(pAction->isEnabled())
+					pAction->setEnabled(false);
 			}
 		}
 	}
@@ -211,13 +212,12 @@ void KviAction::setup()
 
 void KviAction::reloadImages()
 {
-	if(!m_pWidgetList)
+	if(!m_pActionList)
 		return;
 	QPixmap * pPix = bigIcon();
-	for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
+	for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
 	{
-		if(pWidget->inherits("QToolButton"))
-			((QToolButton *)pWidget)->setIcon(pPix ? *pPix : QPixmap());
+		pAction->setIcon(pPix ? *pPix : QPixmap());
 	}
 }
 
@@ -467,44 +467,44 @@ bool KviAction::addToPopupMenu(KviTalPopupMenu * pMenu)
 	return true;
 }
 
-void KviAction::widgetDestroyed()
+void KviAction::actionDestroyed()
 {
-	if(!m_pWidgetList)
+	if(!m_pActionList)
 		return;
-	QWidget * pWidget = (QWidget *)sender();
-	m_pWidgetList->removeRef(pWidget);
+	QAction * pAction = (QAction *)sender();
+	m_pActionList->removeRef(pAction);
 }
 
-void KviAction::registerWidget(QWidget * pWidget)
+void KviAction::registerAction(QAction * pAction)
 {
-	connect(pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
-	if(!m_pWidgetList)
+	connect(pAction,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
+	if(!m_pActionList)
 	{
-		m_pWidgetList = new KviPointerList<QWidget>;
-		m_pWidgetList->setAutoDelete(false);
+		m_pActionList = new KviPointerList<QAction>;
+		m_pActionList->setAutoDelete(false);
 	}
-	m_pWidgetList->append(pWidget);
+	m_pActionList->append(pAction);
 }
 
-QWidget * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)
+QAction * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)
 {
 	if(!setupDone())
 		setup();
+	
 	QPixmap * pPix = bigIcon();
-	QToolButton * pTool = new QToolButton(pParentToolBar);
+	
+	QAction * pAction = new QAction(pPix ? *pPix : QPixmap(), visibleName(), pParentToolBar);
+	// important: when customizing the toolbar, we'll get the action name from QAction::objectName();
+	pAction->setObjectName(m_szName);
+	pParentToolBar->addAction(pAction);
 
-	pTool->setIcon(pPix ? *pPix : QPixmap());
-	pTool->setText(visibleName());
-	pTool->setToolTip(visibleName());
-	pTool->setObjectName(m_szName.toUtf8().data());
-	connect(pTool,SIGNAL(clicked()),this,SLOT(activate()));
+	connect(pAction,SIGNAL(triggered()),this,SLOT(activate()));
 
-	QAction * pAction = pParentToolBar->addWidget(pTool);
 	pAction->setVisible(true);
 	if(!isEnabled())
-		pTool->setEnabled(false);
-	registerWidget(pTool);
-	return pTool;
+		pAction->setEnabled(false);
+	registerAction(pAction);
+	return pAction;
 }
 
 void KviAction::activate()

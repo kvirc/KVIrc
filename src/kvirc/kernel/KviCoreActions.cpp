@@ -455,30 +455,48 @@ bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *)
 	return true;
 }
 
-QWidget * KviIrcContextDisplayAction::addToCustomToolBar(KviCustomToolBar *t)
+QAction * KviIrcContextDisplayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone()) setup();
-	KviIrcContextDisplay * w = new KviIrcContextDisplay(t,"kvirc.irccontextdisplay");
-	t->addWidget(w);
-	registerWidget(w);
-	return w;
+	KviIrcContextDisplay * w = new KviIrcContextDisplay(t,KVI_COREACTION_IRCCONTEXTDISPLAY);
+	QAction * pAction = t->addWidget(w);
+	// important: when customizing the toolbar, we'll get the action name from QAction::objectName();
+	pAction->setObjectName(KVI_COREACTION_IRCCONTEXTDISPLAY);
+	registerAction(pAction);
+	return pAction;
 }
 
 void KviIrcContextDisplayAction::activeContextChanged()
 {
-	if(m_pWidgetList)
+	if(m_pActionList)
 	{
-		for(QWidget * w = m_pWidgetList->first();w;w = m_pWidgetList->next())
-			w->update();
+		for(QAction * a = m_pActionList->first();a;a = m_pActionList->next())
+		{
+			QToolBar *t = (QToolBar*) a->parentWidget();
+			if(t)
+			{
+				KviIrcContextDisplay * w = (KviIrcContextDisplay *) t->widgetForAction(a);
+				if(w)
+					w->update();
+			}
+		}
 	}
 }
 
 void KviIrcContextDisplayAction::activeContextStateChanged()
 {
-	if(m_pWidgetList)
+	if(m_pActionList)
 	{
-		for(QWidget * w = m_pWidgetList->first();w;w = m_pWidgetList->next())
-			w->update();
+		for(QAction * a = m_pActionList->first();a;a = m_pActionList->next())
+		{
+			QToolBar *t = (QToolBar*) a->parentWidget();
+			if(t)
+			{
+				KviIrcContextDisplay * w = (KviIrcContextDisplay *) t->widgetForAction(a);
+				if(w)
+					w->update();
+			}
+		}
 	}
 }
 
@@ -510,13 +528,15 @@ bool KviSeparatorAction::addToPopupMenu(KviTalPopupMenu * p)
 	return true;
 }
 
-QWidget * KviSeparatorAction::addToCustomToolBar(KviCustomToolBar * t)
+QAction * KviSeparatorAction::addToCustomToolBar(KviCustomToolBar * t)
 {
 	if(!setupDone()) setup();
-	QWidget * w = new KviCustomToolBarSeparator(t,"kvirc.separator");
-	registerWidget(w);
-	t->addWidget(w);
-	return w;
+	QWidget * w = new KviCustomToolBarSeparator(t,KVI_COREACTION_SEPARATOR);
+	QAction * pAction = t->addWidget(w);
+	// important: when customizing the toolbar, we'll get the action name from QAction::objectName();
+	pAction->setObjectName(KVI_COREACTION_SEPARATOR);
+	registerAction(pAction);
+	return pAction;
 }
 
 
@@ -547,7 +567,7 @@ void KviConnectAction::activeContextChanged()
 void KviConnectAction::activeContextStateChanged()
 {
 
-	KviPointerList<QWidget> * bl = widgetList();
+	KviPointerList<QAction> * bl = actionList();
 	if(!bl)return;
 
 	QPixmap * p;
@@ -580,14 +600,14 @@ void KviConnectAction::activeContextStateChanged()
 
 	if(p)
 	{
-		for(QToolButton * b = (QToolButton *)bl->first();b;b =(QToolButton *)bl->next())
+		for(QAction * b = bl->first();b;b =bl->next())
 		{
 			if(!b->isEnabled())b->setEnabled(true);
 			b->setIcon(QIcon(*p));
 			b->setText(txt);
 		}
 	} else {
-		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
+		for(QAction * b = bl->first();b;b = bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
 		}
@@ -653,19 +673,17 @@ bool KviConnectAction::addToPopupMenu(KviTalPopupMenu *p)
 	return true;
 }
 
-QWidget * KviConnectAction::addToCustomToolBar(KviCustomToolBar *t)
+QAction * KviConnectAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
-	QToolButton * b = new QToolButton(t);
-	b->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)));
-	b->setText(m_szConnectString);
-	b->setStatusTip(m_szConnectString);
-	b->setObjectName(name());
-	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
-	registerWidget(b);
-	t->addWidget(b);
+	QAction * pAction = new QAction(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)), m_szConnectString, t);
+	pAction->setStatusTip(m_szConnectString);
+	pAction->setObjectName(KVI_COREACTION_CONNECT);
+	t->addAction(pAction);
+	connect(pAction, SIGNAL(triggered()), this, SLOT(activate()));
+	registerAction(pAction);
 	activeContextStateChanged();
-	return b;
+	return pAction;
 }
 
 
@@ -727,24 +745,20 @@ bool KviSubmenuAction::addToPopupMenu(KviTalPopupMenu *p)
 	return true;
 }
 
-QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
+QAction * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone()) setup();
-	QToolButton * b = new QToolButton(t);
 	QPixmap * p = bigIcon();
-	b->setIcon(p ? *p : QPixmap());
-	b->setText(visibleName());
-	b->setStatusTip(visibleName());
-	b->setObjectName(name());
-	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
 
-	b->setMenu(m_pPopup);
-
-	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
-	t->addWidget(b);
-	registerWidget(b);
-	if(!isEnabled()) b->setEnabled(false);
-	return b;
+	QAction * pAction = new QAction(p ? *p : QPixmap(), visibleName(), t);
+	pAction->setStatusTip(visibleName());
+	pAction->setObjectName(name());
+	t->addAction(pAction);
+	connect(pAction, SIGNAL(triggered()), this, SLOT(activate()));
+	pAction->setMenu(m_pPopup);
+	registerAction(pAction);
+	if(!isEnabled()) pAction->setEnabled(false);
+	return pAction;
 }
 
 
@@ -1002,7 +1016,7 @@ void KviGoAwayAction::activeContextChanged()
 
 void KviGoAwayAction::activeContextStateChanged()
 {
-	KviPointerList<QWidget> * bl = widgetList();
+	KviPointerList<QAction> * bl = actionList();
 	if(!bl)return;
 
 	QPixmap * p;
@@ -1029,7 +1043,7 @@ void KviGoAwayAction::activeContextStateChanged()
 
 	if(p)
 	{
-		for(QToolButton * b = (QToolButton *)bl->first();b;b =(QToolButton *)bl->next())
+		for(QAction * b = bl->first();b;b =bl->next())
 		{
 			if(!b->isEnabled())b->setEnabled(true);
 			b->setIcon(QIcon(*p));
@@ -1038,7 +1052,7 @@ void KviGoAwayAction::activeContextStateChanged()
 		m_uInternalFlags |= KviAction::Enabled;
 		setEnabled(true);
 	} else {
-		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
+		for(QAction * b = bl->first();b;b = bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
 		}
@@ -1090,21 +1104,19 @@ bool KviGoAwayAction::addToPopupMenu(KviTalPopupMenu *p)
 	return true;
 }
 
-QWidget * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
+QAction * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
 
-	QToolButton * b = new QToolButton(t);
-	b->setIcon(*(g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png")));
-	b->setText(m_szAwayString);
-	b->setStatusTip(m_szAwayString);
-	b->setObjectName(name());
-	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
+	QAction * pAction = new QAction(*(g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png")), m_szAwayString, t);
+	pAction->setStatusTip(m_szAwayString);
+	pAction->setObjectName(KVI_COREACTION_AWAYBACK);
+	t->addAction(pAction);
+	connect(pAction, SIGNAL(triggered()), this, SLOT(activate()));
 
-	registerWidget(b);
-	t->addWidget(b);
+	registerAction(pAction);
 	activeContextStateChanged();
-	return b;
+	return pAction;
 }
 
 

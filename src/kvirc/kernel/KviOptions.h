@@ -609,8 +609,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintOutputDatetimeFormat 77                    /* irc::verbosity */
 #define KviOption_uintOnJoinRequestsDelay 78
 #define KviOption_uintToolBarIconSize 79
+#define KviOption_uintToolBarButtonStyle 80
 
-#define KVI_NUM_UINT_OPTIONS 80
+#define KVI_NUM_UINT_OPTIONS 81
 
 namespace KviIdentdOutputMode {
 	enum Mode {

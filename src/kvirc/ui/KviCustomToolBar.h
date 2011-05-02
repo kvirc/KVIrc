@@ -39,27 +39,23 @@ class KVIRC_API KviCustomToolBar : public KviToolBar
 	friend class KviCustomToolBarDescriptor;
 	Q_OBJECT
 protected:
-	KviCustomToolBar(KviCustomToolBarDescriptor * d, const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, bool bNewLine = false, const char * pcName = 0);
+	KviCustomToolBar(KviCustomToolBarDescriptor * d, const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, const char * pcName = "unnamed_customtoolbar");
 public:
 	~KviCustomToolBar();
 protected:
 	KviCustomToolBarDescriptor       * m_pDescriptor;
-	QWidget                          * m_pMovedChild;
-	QAction                          * m_pMovedAction;
-	QWidget                          * m_pDraggedChild;
+	QAction                          * m_pMovedChild;
+	QAction                          * m_pDraggedChild;
 	KviPointerHashTable<void *,bool> * m_pFilteredChildren;
 public:
 	KviCustomToolBarDescriptor * descriptor(){ return m_pDescriptor; };
 protected:
-	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dragMoveEvent(QDragMoveEvent * e);
 	virtual void dragLeaveEvent(QDragLeaveEvent * e);
 	virtual void dropEvent(QDropEvent * e);
 	virtual void childEvent(QChildEvent * e);
 	virtual bool eventFilter(QObject * o, QEvent * e);
-	int dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * piExcludeIdx);
-	QWidget * widgetAt(int iIndex);
 	QAction * actionForWidget(QWidget * pWidget);
 	void drag(QWidget * pChild, const QPoint & pnt);
 	void filterChild(QObject * o);

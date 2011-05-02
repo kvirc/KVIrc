@@ -40,7 +40,7 @@ protected:
 	QString m_szDisconnectString;
 public:
 	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
+	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected:
 	virtual void setup();
 	virtual void reloadImages();
@@ -56,7 +56,7 @@ public:
 	KviSeparatorAction(QObject * pParent);
 public:
 	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
+	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 };
 
 class KviTalPopupMenu;
@@ -83,7 +83,7 @@ protected:
 	virtual void setup();
 public:
 	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
+	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected slots:
 	virtual void popupAboutToShow();
 	virtual void popupActivated(int iId);
@@ -159,7 +159,7 @@ public:
 	KviIrcContextDisplayAction(QObject * pParent);
 public:
 	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
+	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 	virtual void activeContextStateChanged();
 	virtual void activeContextChanged();
 	virtual void setEnabled(bool);
@@ -177,7 +177,7 @@ protected:
 	QString m_szBackString;
 public:
 	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
+	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected:
 	virtual void setup();
 	virtual void reloadImages();

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #define _KVI_OPTIONS_CPP_
 
 #include "KviOptions.h"
@@ -43,19 +41,10 @@
 #include "KviInternalCommand.h"
 #include "KviTheme.h"
 #include "KviFileUtils.h"
-//#include "kvi_textencoding.h"
 
 #include <QMessageBox>
-#include <QRegExp>
-#include <QTextCodec>
 #include <QDir>
 #include <QStringList>
-
-//xml parser
-//#include <qdom.h>
-//!xml parser
-
-#include <zlib.h>
 
 // KviApplication.cpp
 extern KVIRC_API int g_iIdentDaemonRunningUsers;
@@ -671,7 +660,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("NotifierPixmapAlign",0,KviOption_sectFlagNotifier | KviOption_groupTheme),
 	UINT_OPTION("OutputDatetimeFormat",0,KviOption_sectFlagIrcView),
 	UINT_OPTION("OnJoinRequestsDelay",1,KviOption_sectFlagConnection), // FIXME: Wouldn't this be nicer in msecs defaulting to 100-200 ?
-	UINT_OPTION("ToolBarIconSize",32,KviOption_groupTheme | KviOption_resetReloadImages)
+	UINT_OPTION("ToolBarIconSize",22,KviOption_groupTheme | KviOption_resetReloadImages),
+	UINT_OPTION("ToolBarButtonStyle",0,KviOption_groupTheme ) // 0 = Qt::ToolButtonIconOnly
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

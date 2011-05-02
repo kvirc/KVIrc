@@ -27,101 +27,135 @@
 #include "KviLocale.h"
 #include "KviApplication.h"
 #include "KviTalPopupMenu.h"
-
-#define _WANT_OPTION_FLAGS_
 #include "KviOptions.h"
 
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
 
-static KviTalPopupMenu * g_pToolBarContextPopup   = 0;
-static KviTalPopupMenu * g_pToolBarWindowsPopup   = 0;
-static KviTalPopupMenu * g_pToolBarIconSizesPopup = 0;
-static KviTalPopupMenu * g_pToolBarPositionsPopup = 0;
+static KviTalPopupMenu * g_pToolBarContextPopup     = 0;
+static KviTalPopupMenu * g_pToolBarWindowsPopup     = 0;
+static KviTalPopupMenu * g_pToolBarIconSizesPopup   = 0;
+static KviTalPopupMenu * g_pToolBarButtonStylePopup = 0;
+static uint              uToolBarInstances          = 0;
 
-
-KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
-: KviTalToolBar(szLabel,g_pMainWindow,type,bNewLine,pcName)
+KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
+: QToolBar(szLabel,g_pMainWindow)
 {
+	uToolBarInstances++;
+
 	unsigned int uIconSize = KVI_OPTION_UINT(KviOption_uintToolBarIconSize);
 	setIconSize(QSize(uIconSize,uIconSize));
+	setToolButtonStyle((Qt::ToolButtonStyle) KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle));
+
+	setObjectName(pcName);
+	g_pMainWindow->addToolBar(type,this);
 }
 
 KviToolBar::~KviToolBar()
 {
-	if(g_pToolBarContextPopup)
-		delete g_pToolBarContextPopup;
-	if(g_pToolBarIconSizesPopup)
-		delete g_pToolBarIconSizesPopup;
-	if(g_pToolBarPositionsPopup)
-		delete g_pToolBarPositionsPopup;
-	if(g_pToolBarWindowsPopup)
-		delete g_pToolBarWindowsPopup;
+	uToolBarInstances--;
 
-	g_pToolBarContextPopup   = 0;
-	g_pToolBarIconSizesPopup = 0;
-	g_pToolBarPositionsPopup = 0;
-	g_pToolBarWindowsPopup   = 0;
+	// the last instance cleans up the cached popups
+	if(!uToolBarInstances)
+	{
+		if(g_pToolBarButtonStylePopup)
+			delete g_pToolBarButtonStylePopup;
+		if(g_pToolBarIconSizesPopup)
+			delete g_pToolBarIconSizesPopup;
+		if(g_pToolBarWindowsPopup)
+			delete g_pToolBarWindowsPopup;
+		if(g_pToolBarContextPopup)
+			delete g_pToolBarContextPopup;
+
+		g_pToolBarButtonStylePopup = 0;
+		g_pToolBarIconSizesPopup   = 0;
+		g_pToolBarWindowsPopup     = 0;
+		g_pToolBarContextPopup     = 0;
+	}
 }
+
+#define VALID_ICONSIZES_NUM 4
+static KviToolBar::IconSizes valid_iconsizes[VALID_ICONSIZES_NUM] =
+{
+	{ 16, "Small (16x16)"  },
+	{ 22, "Medium (22x22)" },
+	{ 32, "Large (32x32)"  },
+	{ 48, "Huge (48x48)"   }
+};
+
+#define VALID_BUTTONSTYLES_NUM 5
+static KviToolBar::ButtonStyles valid_buttonstyles[VALID_BUTTONSTYLES_NUM] =
+{
+	{ Qt::ToolButtonIconOnly       , "Icon Only"  },
+	{ Qt::ToolButtonTextOnly       , "Text Only" },
+	{ Qt::ToolButtonTextBesideIcon , "Text Beside Icon"  },
+	{ Qt::ToolButtonTextUnderIcon  , "Text Under Icon"   },
+	{ Qt::ToolButtonFollowStyle    , "Use System Style" }
+};
 
 void KviToolBar::mousePressEvent(QMouseEvent * e)
 {
 	if(!(e->button() & Qt::RightButton))
 	{
-		KviTalToolBar::mousePressEvent(e);
+		QToolBar::mousePressEvent(e);
 		return;
 	}
 
 	if(!g_pToolBarContextPopup)
+	{
 		g_pToolBarContextPopup = new KviTalPopupMenu();
-	if(!g_pToolBarIconSizesPopup)
 		g_pToolBarIconSizesPopup = new KviTalPopupMenu();
-	if(!g_pToolBarPositionsPopup)
-		g_pToolBarPositionsPopup = new KviTalPopupMenu();
-	if(!g_pToolBarWindowsPopup)
 		g_pToolBarWindowsPopup = new KviTalPopupMenu();
+		g_pToolBarButtonStylePopup = new KviTalPopupMenu();
 
-	g_pToolBarContextPopup->clear();
-	g_pToolBarIconSizesPopup->clear();
-	g_pToolBarPositionsPopup->clear();
-	g_pToolBarWindowsPopup->clear();
+		g_pToolBarContextPopup->insertItem(__tr2qs("Toolbars"),g_pToolBarWindowsPopup);
+		g_pToolBarContextPopup->insertItem(__tr2qs("Icon Size"),g_pToolBarIconSizesPopup);
+		g_pToolBarContextPopup->insertItem(__tr2qs("Button Style"),g_pToolBarButtonStylePopup);
 
-	g_pMainWindow->fillToolBarsPopup(g_pToolBarWindowsPopup);
-	g_pToolBarContextPopup->insertItem(__tr2qs("Toolbars"),g_pToolBarWindowsPopup);
+		// fill toolbars menu
+		g_pMainWindow->fillToolBarsPopup(g_pToolBarWindowsPopup);
 
-	g_pToolBarContextPopup->insertItem(__tr2qs("Icon Size"),g_pToolBarIconSizesPopup);
+		// fill icon size menu
+		QActionGroup * pIconSizeGroup = new QActionGroup(g_pToolBarIconSizesPopup);
 
-	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Small (16x16)"),this,SLOT(setIconSize16()));
-	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Medium (22x22)"),this,SLOT(setIconSize22()));
-	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Large (32x32)"),this,SLOT(setIconSize32()));
-	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Huge (48x48)"),this,SLOT(setIconSize48()));
+		QAction * pTmp = 0;
+		IconSizes iconSize;
+		for(uint i = 0; i < VALID_ICONSIZES_NUM; i++)
+		{
+			iconSize = valid_iconsizes[i];
+
+			pTmp = pIconSizeGroup->addAction(g_pToolBarIconSizesPopup->addAction(__tr2qs(iconSize.pcName)));
+			pTmp->setData((uint)iconSize.uSize);
+			pTmp->setCheckable(true);
+			if(iconSize.uSize == KVI_OPTION_UINT(KviOption_uintToolBarIconSize))
+				pTmp->setChecked(true);
+		}
+
+		connect(pIconSizeGroup,SIGNAL(triggered(QAction*)),g_pMainWindow,SLOT(iconSizePopupSelected(QAction*)));
+
+		// fill button style menu
+		QActionGroup * pButtonStyleGroup = new QActionGroup(g_pToolBarButtonStylePopup);
+
+		pTmp = 0;
+		ButtonStyles buttonStyle;
+		for(uint i = 0; i < VALID_BUTTONSTYLES_NUM; i++)
+		{
+			buttonStyle = valid_buttonstyles[i];
+
+			pTmp = pButtonStyleGroup->addAction(g_pToolBarButtonStylePopup->addAction(__tr2qs(buttonStyle.pcName)));
+			pTmp->setData((uint)buttonStyle.uStyle);
+			pTmp->setCheckable(true);
+			if(buttonStyle.uStyle == KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle))
+				pTmp->setChecked(true);
+		}
+
+		connect(pButtonStyleGroup,SIGNAL(triggered(QAction*)),g_pMainWindow,SLOT(buttonStylePopupSelected(QAction*)));
+		
+
+	}
 
 	g_pToolBarContextPopup->popup(QCursor::pos());
-}
-
-void KviToolBar::setIconSize16()
-{
-	g_pMainWindow->setIconSize(16);
-	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
-}
-
-void KviToolBar::setIconSize22()
-{
-	g_pMainWindow->setIconSize(22);
-	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
-}
-
-void KviToolBar::setIconSize32()
-{
-	g_pMainWindow->setIconSize(32);
-	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
-}
-
-void KviToolBar::setIconSize48()
-{
-	g_pMainWindow->setIconSize(48);
-	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

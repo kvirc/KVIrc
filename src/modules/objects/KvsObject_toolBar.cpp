@@ -26,11 +26,12 @@
 #include "KvsObject_toolBar.h"
 #include "KviError.h"
 #include "kvi_debug.h"
-#include "KviTalToolBar.h"
 #include "KviTalMainWindow.h"
 #include "KviLocale.h"
 #include "KviIconManager.h"
 #include "KvsObject_mainWindow.h"
+
+#include <QToolBar>
 
 /*
 	@doc:	toolbar
@@ -85,7 +86,7 @@ bool KvsObject_toolBar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 	}
 	if(parentObject()->inheritsClass("mainwindow"))
 	{
-		setObject(new KviTalToolBar(getName(), ((KviTalMainWindow *)parentScriptWidget())), true);
+		setObject(new QToolBar(getName(), ((KviTalMainWindow *)parentScriptWidget())), true);
 	}
 	else
 	{
@@ -98,7 +99,7 @@ bool KvsObject_toolBar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 KVSO_CLASS_FUNCTION(toolBar,addSeparator)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((KviTalToolBar *)widget())->addSeparator();
+	((QToolBar *)widget())->addSeparator();
 	return true;
 }
 KVSO_CLASS_FUNCTION(toolBar,setLabel)
@@ -108,19 +109,19 @@ KVSO_CLASS_FUNCTION(toolBar,setLabel)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 	KVSO_PARAMETERS_END(c)
-	((KviTalToolBar *)widget())->setWindowTitle(szLabel);
+	((QToolBar *)widget())->setWindowTitle(szLabel);
 	return true;
 }
 KVSO_CLASS_FUNCTION(toolBar,label)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((KviTalToolBar *)widget())->windowTitle());
+	c->returnValue()->setString(((QToolBar *)widget())->windowTitle());
 	return true;
 }
 KVSO_CLASS_FUNCTION(toolBar,clear)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((KviTalToolBar *)object())->clear();
+	((QToolBar *)object())->clear();
 	return true;
 }
 

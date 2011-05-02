@@ -147,8 +147,7 @@ KviCustomToolBar * KviCustomToolBarDescriptor::createToolBar()
 {
 	if(!m_pToolBar)
 	{
-		QByteArray dd = id().toUtf8();
-		m_pToolBar = new KviCustomToolBar(this,label(),Qt::TopToolBarArea,false,dd.data());
+		m_pToolBar = new KviCustomToolBar(this,label(),Qt::TopToolBarArea,id().toUtf8().data());
 		fillToolBar();
 	}
 	return m_pToolBar;
@@ -196,8 +195,12 @@ bool KviCustomToolBarDescriptor::load(KviConfigurationFile * cfg)
 	{
 		tmp.setNum(i);
 		QString * p = new QString(cfg->readEntry(tmp));
-		if(p->isEmpty())delete p;
-		else m_pActions->append(p);
+		if(p->isEmpty())
+		{
+			delete p;
+		} else {
+			m_pActions->append(p);
+		}
 	}
 	return true;
 }

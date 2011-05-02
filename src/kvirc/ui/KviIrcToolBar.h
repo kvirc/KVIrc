@@ -55,8 +55,6 @@ private:
 	bool m_bResizeMode;
 	bool m_bSizeLoaded;
 	QSize m_sizeHint;
-private:
-	void resizeMemBuffer();
 protected:
 	void setupSizeHint();
 
@@ -69,7 +67,6 @@ protected:
 
 	virtual void paintEvent(QPaintEvent *e);
 	virtual void drawContents(QPainter * p);
-	virtual void resizeEvent(QResizeEvent *e);
 };
 
 

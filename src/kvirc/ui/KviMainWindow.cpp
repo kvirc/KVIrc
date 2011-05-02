@@ -29,7 +29,6 @@
 #include "KviApplication.h"
 #include "kvi_settings.h"
 #include "KviMainWindow.h"
-#include "KviOptions.h"
 #include "KviMenuBar.h"
 #include "KviMdiManager.h"
 #include "KviMdiChild.h"
@@ -62,6 +61,9 @@
 #include "KviTalPopupMenu.h"
 #include "KviTextIconManager.h"
 #include "kvi_shortcuts.h"
+
+#define _WANT_OPTION_FLAGS_
+#include "KviOptions.h"
 
 #include <QSplitter>
 #include <QVariant>
@@ -121,6 +123,7 @@ KviMainWindow::KviMainWindow()
 	setCentralWidget(m_pSplitter);
 
 	setIconSize(KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
+	setButtonStyle(KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle));
 
 	m_pMdi      = new KviMdiManager(m_pSplitter,this,"mdi_manager");
 
@@ -1030,7 +1033,32 @@ void KviMainWindow::toolbarsPopupSelected(int id)
 	}
 }
 
+void KviMainWindow::iconSizePopupSelected(QAction *pAction)
+{
+	if(!pAction)
+		return;
+	
+	bool bOk=false;
+	uint uSize=pAction->data().toUInt(&bOk);
+	if(!bOk)
+		return;
+	
+	setIconSize(uSize);
+	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
+}
 
+void KviMainWindow::buttonStylePopupSelected(QAction *pAction)
+{
+	if(!pAction)
+		return;
+	
+	bool bOk=false;
+	uint uStyle=pAction->data().toUInt(&bOk);
+	if(!bOk)
+		return;
+	
+	setButtonStyle(uStyle);
+}
 
 bool KviMainWindow::focusNextPrevChild(bool next)
 {
@@ -1179,7 +1207,7 @@ void KviMainWindow::switchToNextWindowInContext(void)
 void KviMainWindow::setIconSize(unsigned int uSize)
 {
 	if((uSize != 16) && (uSize != 22) && (uSize != 32) && (uSize != 48))
-		uSize = 32;
+		uSize = 22;
 
 	KVI_OPTION_UINT(KviOption_uintToolBarIconSize) = uSize;
 
@@ -1213,6 +1241,36 @@ void KviMainWindow::setIconSize(unsigned int uSize)
 	}
 }
 
+void KviMainWindow::setButtonStyle(unsigned int uStyle)
+{
+
+	KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle) = uStyle;
+
+	KviPointerListIterator<KviMexToolBar> it(*(m_pModuleExtensionToolBarList));
+	if(it.current())
+	{
+		while(KviMexToolBar * t = it.current())
+		{
+			t->setToolButtonStyle((Qt::ToolButtonStyle) uStyle);
+			t->update();
+			++it;
+		}
+	}
+
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
+	if(it2.current())
+	{
+		while(KviCustomToolBarDescriptor * d = it2.current())
+		{
+			if(d->toolBar())
+			{
+				d->toolBar()->setToolButtonStyle((Qt::ToolButtonStyle) uStyle);
+				d->toolBar()->update();
+			}
+			++it2;
+		}
+	}
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "KviMainWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

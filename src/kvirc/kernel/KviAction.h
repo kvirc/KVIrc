@@ -177,7 +177,7 @@ protected:
 	QString                   m_szBigIconId;
 	QString                   m_szSmallIconId;
 	QString                   m_eIcon;
-	KviPointerList<QWidget> * m_pWidgetList;
+	KviPointerList<QAction> * m_pActionList;
 	unsigned short int        m_uInternalFlags;
 	unsigned int              m_uFlags;
 	QString                   m_szKeySequence;
@@ -280,9 +280,9 @@ public:
 	/**
 	* \brief Adds the action to the given toolbar
 	* \param pParentToolBar The toolbar where to add the action
-	* \return QWidget *
+	* \return QAction *
 	*/
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pParentToolBar);
+	virtual QAction * addToCustomToolBar(KviCustomToolBar * pParentToolBar);
 
 	/**
 	* \brief Destroys itself. Maybe the best function in the whole APIs :)
@@ -304,10 +304,10 @@ protected:
 	virtual void setup();
 
 	/**
-	* \brief Returns the list of widgets associated to the action
-	* \return KviPointerList<QWidget> *
+	* \brief Returns the list of actions associated to the action
+	* \return KviPointerList<QAction> *
 	*/
-	KviPointerList<QWidget> * widgetList(){ return m_pWidgetList; };
+	KviPointerList<QAction> * actionList(){ return m_pActionList; };
 
 	/**
 	* \brief Registers the action shortcut in the application
@@ -322,11 +322,11 @@ protected:
 	void unregisterAccelerator();
 
 	/**
-	* \brief Adds the widget to the list
-	* \param pWidget The widget to add
+	* \brief Adds the action to the list
+	* \param pAction The action to add
 	* \return void
 	*/
-	void registerWidget(QWidget * pWidget);
+	void registerAction(QAction * pAction);
 public slots:
 	/**
 	* \brief Activates the action
@@ -338,12 +338,12 @@ public slots:
 	virtual void activate();
 protected slots:
 	/**
-	* \brief Removes the widget from the list
+	* \brief Removes the action from the list
 	* 
-	* Called when the widget is being destroyed
+	* Called when the action is being destroyed
 	* \return void
 	*/
-	virtual void widgetDestroyed();
+	virtual void actionDestroyed();
 
 	/**
 	* \brief Reloads the images

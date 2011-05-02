@@ -24,21 +24,40 @@
 //
 //=============================================================================
 
-#include "KviTalToolBar.h"
+#include "kvi_settings.h"
 
-class KVIRC_API KviToolBar : public KviTalToolBar
+#include <QToolBar>
+
+class KVIRC_API KviToolBar : public QToolBar
 {
 	Q_OBJECT
 public:
-	KviToolBar(const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, bool bNewLine = false, const char * pcName = 0);
+	KviToolBar(const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, const char * pcName = "unnamed_toolbar");
 	~KviToolBar();
+
+	/**
+	* \typedef IconSizes
+	* \struct _IconSizes
+	* \brief Enumerates the valid icon sizes
+	*/
+	typedef struct _IconSizes
+	{
+		uint         uSize;           /**< icon size */
+		const char * pcName;          /**< menu entry label */
+	} IconSizes;
+
+	/**
+	* \typedef ButtonStyles
+	* \struct _ButtonStyles
+	* \brief Enumerates the valid button styles
+	*/
+	typedef struct _ButtonStyles
+	{
+		uint         uStyle;          /**< button style */
+		const char * pcName;          /**< menu entry label */
+	} ButtonStyles;
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
-public slots:
-	void setIconSize16();
-	void setIconSize22();
-	void setIconSize32();
-	void setIconSize48();
 };
 
 #endif //_KVI_TOOLBAR_H_
