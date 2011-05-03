@@ -45,7 +45,7 @@ class KviTalPopupMenu;
 // Can be a child of any AppletContainer
 //
 
-class KVIRC_API KviToolBarGraphicalApplet : public QToolButton
+class KVIRC_API KviToolBarGraphicalApplet : public QWidget
 {
 	Q_OBJECT
 public:
@@ -53,14 +53,9 @@ public:
 	~KviToolBarGraphicalApplet();
 private:
 	bool m_bResizeMode;
-	bool m_bSizeLoaded;
-	QSize m_sizeHint;
-protected:
-	void setupSizeHint();
-
-	virtual unsigned int loadAppletWidth();
-	virtual void saveAppletWidth(unsigned int uWidth);
+public:
 	virtual QSize sizeHint() const;
+protected:
 	virtual void mouseMoveEvent(QMouseEvent *e);
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void mouseReleaseEvent(QMouseEvent *e);
