@@ -412,5 +412,7 @@ void KviCustomToolBarSeparator::paintEvent(QPaintEvent *)
 	QPainter p(this);
 	QStyleOption opt;
 	opt.initFrom(this);
+	if(m_pToolBar->orientation() == Qt::Horizontal)
+		opt.state |= QStyle::State_Horizontal;
 	style()->drawPrimitive(QStyle::PE_IndicatorToolBarSeparator,&opt,&p,this);
 }
