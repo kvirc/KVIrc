@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-04 21:07+0200\n"
-"PO-Revision-Date: 2011-04-04 06:43+0100\n"
+"PO-Revision-Date: 2011-05-02 20:36+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
@@ -1257,7 +1257,7 @@ msgstr "Arranja as janelas MDI num estilo cascata-maximizada"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:159
 msgid "Attempting %Q to %Q (%Q) on port %u"
-msgstr "A tentar %Q com %Q (%Q) na porta %u"
+msgstr "A tentar uma %Q em %Q (%Q) na porta %u"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:168
 #, c-format
@@ -4164,7 +4164,7 @@ msgstr "Baixa actividade"
 #: src/kvirc/kernel/KviIrcLink.cpp:402
 #, c-format
 msgid "Low-level transport connection established [%s (%s:%u)]"
-msgstr "Conexão de transporte nível-baixo estabelecida [%s (%s:%u)]"
+msgstr "Conexão de transporte de baixo-nível estabelecida [%s (%s:%u)]"
 
 #: src/modules/setup/SetupWizard.cpp:505
 msgid "Make KVIrc default IRC client"
@@ -4246,11 +4246,11 @@ msgstr "Mi&nimizar Tudo"
 
 #: src/modules/links/LinksWindow.cpp:290
 msgid "Mid-range links (4 <= hops <= 6): %d (~%d.%d %)"
-msgstr "Ligações de alcance médio (4 <= hops <= 6): %d (~%d.%d %)"
+msgstr "Ligações de alcance-médio (4 <= hops <= 6): %d (~%d.%d %)"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:175
 msgid "Mieeeeeowww!"
-msgstr "Mieeeeeowww!"
+msgstr "Miaaaauuuuuu!"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1080
 msgid "Might be flooded with messages"
@@ -4258,19 +4258,19 @@ msgstr "Pode ser inundado com mensagens"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1076
 msgid "Might be high activity"
-msgstr "Pode ser alta actividade"
+msgstr "Pode ser actividade alta"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1072
 msgid "Might be low activity"
-msgstr "Pode ser baixa actividade"
+msgstr "Pode ser actividade baixa"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1074
 msgid "Might be medium activity"
-msgstr "Pode ser média actividade"
+msgstr "Pode ser actividade média"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1078
 msgid "Might be very high activity"
-msgstr "Pode ser muito alta actividade"
+msgstr "Pode ser actividade muito alta"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1068
 msgid "Minimal activity"
@@ -4290,7 +4290,7 @@ msgstr "Opções de cor Mirc (#RRGGBB)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1029
 msgid "Missing absolute directory for the theme information"
-msgstr "Falta o directório absoluto para as informações do tema"
+msgstr "Directório absoluto em falta para a informação do tema"
 
 #: src/modules/str/libkvistr.cpp:2063
 msgid "Missing argument for ?X escape sequence, 0 assumed"
@@ -4318,7 +4318,7 @@ msgstr ""
 #: src/modules/rijndael/libkvirijndael.cpp:382
 msgid "Missing both encrypt and decrypt key: at least one is needed"
 msgstr ""
-"Faltam ambas as chaves de encriptação e desencriptação: é necessária pelo "
+"Chaves de encriptação e desencriptação em falta: é necessária pelo "
 "menos uma"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:177
@@ -4327,7 +4327,7 @@ msgstr "Parâmetro de canal em falta na mensagem de entrada"
 
 #: src/kvilib/core/KviError.cpp:54
 msgid "Missing closing brace"
-msgstr "Falta chaveta de fecho"
+msgstr "Chaveta de fecho em falta"
 
 #: src/modules/file/libkvifile.cpp:294
 msgid "Missing data array"
@@ -4337,19 +4337,19 @@ msgstr "Matriz de dados em falta"
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:325
 msgid "Missing encryption and decryption key: at least one is needed"
 msgstr ""
-"Chave de encriptação e desencriptação em falta: é necessário pelo menos um"
+"Chaves de encriptação e desencriptação em falta: é necessário pelo menos um"
 
 #: src/kvilib/core/KviError.cpp:105
 msgid "Missing object class name"
-msgstr "Falta nome da classe do objecto"
+msgstr "Nome da classe do objecto em falta"
 
 #: src/kvilib/core/KviError.cpp:145
 msgid "Missing popup name"
-msgstr "Falta o nome do menu"
+msgstr "Nome do menu em falta"
 
 #: src/kvilib/core/KviError.cpp:61
 msgid "Missing variable name"
-msgstr "Falta nome da variável"
+msgstr "Nome da variável em falta"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:140
 #: src/kvirc/ui/KviChannelWindow.cpp:163
@@ -6504,7 +6504,7 @@ msgstr "A quantidade de dados recebidos excede o comprimento máximo"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."
-msgstr "Faltam as aspas de fecho."
+msgstr "Faltam as aspas de fecho da citação."
 
 #: src/modules/config/libkviconfig.cpp:539
 msgid ""
@@ -7384,7 +7384,7 @@ msgstr "Protocolo não suportado %1"
 
 #: src/kvilib/core/KviError.cpp:68
 msgid "Unterminated expression (missing ')' ?)"
-msgstr "Expressão não terminada (Falta ')' ?)"
+msgstr "Expressão não terminada (falta ')' ?)"
 
 #: src/kvilib/core/KviError.cpp:69
 msgid "Unterminated subexpression (Parenthesis mismatch)"
