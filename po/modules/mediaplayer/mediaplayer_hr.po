@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-03 06:30+0100\n"
 "PO-Revision-Date: 2008-01-17 02:20+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:470
@@ -89,6 +89,13 @@ msgid ""
 "addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
 
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+msgid ""
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
+msgstr ""
+
 #: src/modules/mediaplayer/MpMprisInterface.cpp:506
 #, fuzzy
 msgid ""
@@ -115,18 +122,10 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:320
+#: src/modules/mediaplayer/MpWinampInterface.cpp:194
 #, fuzzy
 msgid ""
-"An interface to the popular audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Sučelje za popularni UNIX audacious media player.\n"
-"Preuzmite ga sa http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
-msgid ""
-"An interface to the popupar Winamp media player.\n"
+"An interface to the popular Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
 "To use all the features of this interface you must copy the gen_kvirc.dll "
 "plugin found in the KVIrc distribution directory to the Winamp plugins "
@@ -137,6 +136,15 @@ msgstr ""
 "Za korištenje ovog sučelja morate kopirati gen_kvirc.dll plugin, koji se "
 "nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
 "restartati Winamp."
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:320
+#, fuzzy
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Sučelje za popularni UNIX audacious media player.\n"
+"Preuzmite ga sa http://audacious-media-player.org\n"
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -152,13 +160,43 @@ msgstr "Ne mogu pronaći znak %1 u %2"
 msgid "Can't load the player library (%1)"
 msgstr "Ne mogu učitati bazu playera (%1)"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
 msgstr "Odabirem media player \"%Q\""
 
 #: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
 msgstr "Funkcija nije implementirana"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
+msgid "Last interface error: "
+msgstr "Posljednja greška sucelja:"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:74
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:105
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Čini se da nema korisnih media playera na ovom računalu"
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+msgid "Spotify is not running"
+msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:571
@@ -170,32 +208,6 @@ msgstr "Funkcija nije implementirana"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1556
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1599
-msgid "Last interface error: "
-msgstr "Posljednja greška sucelja:"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
-msgid "Seems that there is no usable media player on this machine"
-msgstr "Čini se da nema korisnih media playera na ovom računalu"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1555
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1598
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
@@ -209,8 +221,8 @@ msgstr ""
 "Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
 "nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
 #, fuzzy
 msgid "Trying media player interface \"%1\": score %2"
 msgstr "Pokušavam media player \"%1\": score %2"

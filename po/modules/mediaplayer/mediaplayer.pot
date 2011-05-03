@@ -8,14 +8,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-03 06:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+msgid "Spotify is not running"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+msgid ""
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+msgid "Can't load the player library (%1)"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+msgid "Can't find symbol %1 in %2"
+msgstr ""
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:320
 msgid ""
@@ -75,40 +105,30 @@ msgid ""
 "Download it from http://www.clementine-player.org/\n"
 msgstr ""
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/MpInterface.cpp:43
+msgid "Function not implemented"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%1\": score %2"
 msgstr ""
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:74
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
 msgstr ""
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:105
 msgid "Seems that there is no usable media player on this machine"
 msgstr ""
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1555
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1598
-msgid ""
-"The selected media player interface failed to execute the requested function"
 msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
@@ -121,31 +141,21 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1556
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1599
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
 msgid "Last interface error: "
-msgstr ""
-
-#: src/modules/mediaplayer/MpInterface.cpp:43
-msgid "Function not implemented"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
-msgid "Can't load the player library (%1)"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
-msgid "Can't find symbol %1 in %2"
 msgstr ""
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:184
@@ -154,7 +164,7 @@ msgstr ""
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:194
 msgid ""
-"An interface to the popupar Winamp media player.\n"
+"An interface to the popular Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
 "To use all the features of this interface you must copy the gen_kvirc.dll "
 "plugin found in the KVIrc distribution directory to the Winamp plugins "

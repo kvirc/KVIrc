@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-21 00:30+0000\n"
+"POT-Creation-Date: 2011-05-03 06:30+0100\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +86,13 @@ msgstr ""
 "Para usarlo, también tienes que instalar el addon MPRIS disponible en http://"
 "addons.songbirdnest.com/addon/1626.\n"
 
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+msgid ""
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
+msgstr ""
+
 #: src/modules/mediaplayer/MpMprisInterface.cpp:506
 msgid ""
 "An interface to the Xmms2 media player.\n"
@@ -110,17 +117,10 @@ msgstr ""
 "Una interfaz para xmms.\n"
 "Descárgalo de http://legacy.xmms2.org\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:320
-msgid ""
-"An interface to the popular audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Una interfaz para audacious.\n"
-"Descárgalo de http://audacious-media-player.org\n"
-
 #: src/modules/mediaplayer/MpWinampInterface.cpp:194
+#, fuzzy
 msgid ""
-"An interface to the popupar Winamp media player.\n"
+"An interface to the popular Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
 "To use all the features of this interface you must copy the gen_kvirc.dll "
 "plugin found in the KVIrc distribution directory to the Winamp plugins "
@@ -131,6 +131,14 @@ msgstr ""
 "Para usar todas las herramientas de esta interfaz debes copiar el archivo "
 "gen_kvirc.dll que hay en el directorio de distribución de KVIrc a la carpeta "
 "de plugins de Winamp y reiniciar Winamp."
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:320
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Una interfaz para audacious.\n"
+"Descárgalo de http://audacious-media-player.org\n"
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -144,13 +152,44 @@ msgstr "No pude encontrar el símbolo %1 en %2"
 msgid "Can't load the player library (%1)"
 msgstr "No pude cargar la librería del reproductor (%1)"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
 msgstr "Eligiendo la interfaz de reproductor multimedia \"%Q\""
 
 #: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
 msgstr "Función no implementada"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
+msgid "Last interface error: "
+msgstr "Último error de la interfaz:"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "No hay ningún reproductor seleccionado. Prueba /mediaplayer.detect"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:74
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+"No estoy seguro de los resultados, intentando una segunda pasada más agresiva"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:105
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Parece que no hay ningún reproductor de medios usable en esta máquina"
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+msgid "Spotify is not running"
+msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:571
@@ -162,33 +201,6 @@ msgstr "Función no implementada"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1556
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1599
-msgid "Last interface error: "
-msgstr "Último error de la interfaz:"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "No hay ningún reproductor seleccionado. Prueba /mediaplayer.detect"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"No estoy seguro de los resultados, intentando una segunda pasada más agresiva"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
-msgid "Seems that there is no usable media player on this machine"
-msgstr "Parece que no hay ningún reproductor de medios usable en esta máquina"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1555
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1598
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr ""
@@ -204,7 +216,7 @@ msgstr ""
 "El plugin de winamp no ha sido instalado apropiadamente. Mira /help "
 "mediaplayer. nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%1\": score %2"
 msgstr "Probando la interfaz \"%1\": puntuación %2"

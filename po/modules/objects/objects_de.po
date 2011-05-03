@@ -7,48 +7,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-03 06:30+0100\n"
 "PO-Revision-Date: 2011-01-26 14:37+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/objects/KvsObject_painter.cpp:649
+#: src/modules/objects/KvsObject_painter.cpp:705
 msgid " requires either an array as first parameter or 3 integers"
 msgstr " benötigt entweder ein Array als ersten Parameter oder 3 Integer"
 
-#: src/modules/objects/KvsObject_painter.cpp:571
+#: src/modules/objects/KvsObject_painter.cpp:627
 msgid " requires either an array as first parameter or four integers"
 msgstr "benötigt entweder ein Array als ersten Parameter oder vier Integer"
 
-#: src/modules/objects/KvsObject_painter.cpp:605
+#: src/modules/objects/KvsObject_painter.cpp:661
 msgid " requires either an array as first parameter or two integers"
 msgstr "benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
-#: src/modules/objects/KvsObject_painter.cpp:1016
+#: src/modules/objects/KvsObject_painter.cpp:1072
 msgid "$fontMetricsHeight: the painter is not active!"
 msgstr "$fontMetricsHeight: Der Painter ist nicht aktiv!"
 
-#: src/modules/objects/KvsObject_painter.cpp:1006
+#: src/modules/objects/KvsObject_painter.cpp:1062
 msgid "$fontMetricsWidth: the painter is not active!"
 msgstr "$fontMetricsWidth: Der Painter ist nicht aktiv!"
 
-#: src/modules/objects/KvsObject_widget.cpp:1618
+#: src/modules/objects/KvsObject_widget.cpp:1627
 msgid "$move() requires either an array as first parameter or two integers"
 msgstr ""
 "$move() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1675
+#: src/modules/objects/KvsObject_widget.cpp:1684
 msgid "$resize() requires either an array as first parameter or two integers"
 msgstr ""
 "$resize() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1375
+#: src/modules/objects/KvsObject_widget.cpp:1384
 msgid ""
 "$setBackgroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -62,7 +62,7 @@ msgstr ""
 "$setColor benötigt entweder ein Array als ersten Parameter oder drei Integer"
 
 #: src/modules/objects/KvsObject_tableWidget.cpp:370
-#: src/modules/objects/KvsObject_widget.cpp:1293
+#: src/modules/objects/KvsObject_widget.cpp:1302
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -70,7 +70,7 @@ msgstr ""
 "$setForegroundColor benötigt entweder ein Array als ersten Parameter, eine "
 "Hex-Zeichenkette oder Farbnamen, oder drei Integer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1171
+#: src/modules/objects/KvsObject_widget.cpp:1180
 msgid ""
 "$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
@@ -85,6 +85,14 @@ msgstr "›%Q‹ ist kein gültiger Dateipfad"
 msgid "A string of 6 hex digits is required"
 msgstr "Eine Zeichenkette mit 6 Hex-Ziffern ist erforderlich"
 
+#: src/modules/objects/KvsObject_pixmap.cpp:273
+#: src/modules/objects/KvsObject_pixmap.cpp:322
+#: src/modules/objects/KvsObject_pixmap.cpp:360
+#: src/modules/objects/KvsObject_pixmap.cpp:389
+#, fuzzy
+msgid "AnimatedPixmap not supported"
+msgstr "Datentyp nicht unterstützt"
+
 #: src/modules/objects/KvsObject_file.cpp:336
 msgid "Argument too long, using only first char"
 msgstr "Argument zu lang, nutze nur das erste Zeichen"
@@ -98,10 +106,10 @@ msgid "Block parameter must be a string or a memorybuffer object"
 msgstr ""
 "Blockparameter muss eine Zeichenkette oder ein memorybuffer-Objekt sein"
 
+#: src/modules/objects/KvsObject_socket.cpp:415
+#: src/modules/objects/KvsObject_pixmap.cpp:573
 #: src/modules/objects/KvsObject_file.cpp:401
 #: src/modules/objects/KvsObject_file.cpp:536
-#: src/modules/objects/KvsObject_socket.cpp:415
-#: src/modules/objects/KvsObject_pixmap.cpp:264
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Pufferparameter ist kein memorybuffer-Objekt"
 
@@ -109,11 +117,11 @@ msgstr "Pufferparameter ist kein memorybuffer-Objekt"
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Puffer-Parameter ist kein memorybuffer- oder file-Objekt"
 
-#: src/modules/objects/KvsObject_file.cpp:396
-#: src/modules/objects/KvsObject_file.cpp:517
 #: src/modules/objects/KvsObject_socket.cpp:393
 #: src/modules/objects/KvsObject_socket.cpp:454
-#: src/modules/objects/KvsObject_pixmap.cpp:259
+#: src/modules/objects/KvsObject_pixmap.cpp:568
+#: src/modules/objects/KvsObject_file.cpp:396
+#: src/modules/objects/KvsObject_file.cpp:517
 msgid "Buffer parameter is not an object"
 msgstr "Pufferparameter ist kein Objekt"
 
@@ -126,11 +134,11 @@ msgstr "Button-Gruppe unterstützt nur Checkbox- und Radiobox-Objekte"
 msgid "Can't add a non-popupmenu object"
 msgstr "Kann ein Nicht-Popup-Menü-Objekt nicht hinzufügen"
 
-#: src/modules/objects/KvsObject_wizard.cpp:146
-#: src/modules/objects/KvsObject_wizard.cpp:168
 #: src/modules/objects/KvsObject_window.cpp:164
 #: src/modules/objects/KvsObject_window.cpp:169
-#: src/modules/objects/KvsObject_widget.cpp:1798
+#: src/modules/objects/KvsObject_wizard.cpp:146
+#: src/modules/objects/KvsObject_wizard.cpp:168
+#: src/modules/objects/KvsObject_widget.cpp:1807
 msgid "Can't add a non-widget object"
 msgstr "Kann Nicht-Widget-Objekt nicht hinzufügen"
 
@@ -167,17 +175,21 @@ msgstr ""
 msgid "Cannot open file '%Q' for writing"
 msgstr "Kann Datei ›%Q‹ nicht zum Schreiben öffnen"
 
-#: src/modules/objects/libkviobjects.cpp:198
+#: src/modules/objects/libkviobjects.cpp:200
 msgid "Class '%Q' is not defined"
 msgstr "Klasse ›%Q‹ ist nicht definiert"
 
-#: src/modules/objects/KvsObject_painter.cpp:1567
+#: src/modules/objects/KvsObject_painter.cpp:1712
 msgid "Color name or triplette RGB/HSV values required"
 msgstr "Farbname oder RGB/HSV-Tripel-Wert benötigt"
 
+#: src/modules/objects/KvsObject_colorDialog.cpp:139
+#: src/modules/objects/KvsObject_pixmap.cpp:158
+#: src/modules/objects/KvsObject_pixmap.cpp:257
+#: src/modules/objects/KvsObject_painter.cpp:929
+#: src/modules/objects/KvsObject_painter.cpp:982
+#: src/modules/objects/KvsObject_painter.cpp:1800
 #: src/modules/objects/KvsObject_listWidget.cpp:403
-#: src/modules/objects/KvsObject_painter.cpp:873
-#: src/modules/objects/KvsObject_painter.cpp:926
 msgid "Color name or triplette rgb/hsv value required"
 msgstr "Farbname oder RGB/HSV-Tripel-Wert benötigt"
 
@@ -213,13 +225,13 @@ msgstr "Datenparameter ist kein Objekt"
 msgid "Datatype not supported"
 msgstr "Datentyp nicht unterstützt"
 
-#: src/modules/objects/KvsObject_webView.cpp:386
-#: src/modules/objects/KvsObject_webView.cpp:458
-#: src/modules/objects/KvsObject_webView.cpp:471
-#: src/modules/objects/KvsObject_webView.cpp:485
-#: src/modules/objects/KvsObject_webView.cpp:497
-#: src/modules/objects/KvsObject_webView.cpp:515
-#: src/modules/objects/KvsObject_webView.cpp:534
+#: src/modules/objects/KvsObject_webView.cpp:384
+#: src/modules/objects/KvsObject_webView.cpp:456
+#: src/modules/objects/KvsObject_webView.cpp:469
+#: src/modules/objects/KvsObject_webView.cpp:483
+#: src/modules/objects/KvsObject_webView.cpp:495
+#: src/modules/objects/KvsObject_webView.cpp:513
+#: src/modules/objects/KvsObject_webView.cpp:532
 msgid "Document element is null: you must call getDocumentElement first"
 msgstr ""
 
@@ -240,9 +252,9 @@ msgstr "Fehler in KVS-Klassenimplementation: Verarbeitung abgebrochen"
 msgid "Error near line %1, column %2"
 msgstr "Fehler bei Zeile %1, Spalte %2"
 
-#: src/modules/objects/KvsObject_listWidget.cpp:355
-#: src/modules/objects/KvsObject_treeWidgeteItem.cpp:422
+#: src/modules/objects/KvsObject_treeWidgeteItem.cpp:423
 #: src/modules/objects/KvsObject_tableWidget.cpp:503
+#: src/modules/objects/KvsObject_listWidget.cpp:355
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
 "not a valid icon number."
@@ -258,10 +270,10 @@ msgstr "Konnte eines der »Wrap-Path-Widgets« (›%Q::%Q‹) nicht finden"
 msgid "Failed to find the widget to wrap"
 msgstr "Konnte das Widget für »wrap« nicht finden"
 
-#: src/modules/objects/KvsObject_file.cpp:40
-#: src/modules/objects/KvsObject_file.cpp:508
 #: src/modules/objects/KvsObject_socket.cpp:408
 #: src/modules/objects/KvsObject_socket.cpp:467
+#: src/modules/objects/KvsObject_file.cpp:40
+#: src/modules/objects/KvsObject_file.cpp:508
 msgid "File is not open!"
 msgstr "Datei ist nicht geöffnet!"
 
@@ -269,9 +281,9 @@ msgstr "Datei ist nicht geöffnet!"
 msgid "Host '%Q' is not a valid url"
 msgstr "Host ›%Q‹ ist keine gültige URL"
 
+#: src/modules/objects/KvsObject_pixmap.cpp:459
+#: src/modules/objects/KvsObject_pixmap.cpp:498
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:723
-#: src/modules/objects/KvsObject_pixmap.cpp:188
-#: src/modules/objects/KvsObject_pixmap.cpp:224
 #: src/modules/objects/KvsObject_textBrowser.cpp:103
 msgid "I can't find the specified file '%Q'."
 msgstr "Kann die angegebene Datei ›%Q‹ nicht finden."
@@ -288,27 +300,27 @@ msgstr "Icon ›%Q‹ existiert nicht"
 msgid "Image parameter missing"
 msgstr "Bild-Parameter fehlen"
 
-#: src/modules/objects/libkviobjects.cpp:568
+#: src/modules/objects/libkviobjects.cpp:570
 msgid "Inexistant class object for objects.name"
 msgstr "Nichtexistierendes Klassenobjekt für objects.name"
 
-#: src/modules/objects/libkviobjects.cpp:277
+#: src/modules/objects/libkviobjects.cpp:279
 msgid "Inexistant source object for objects.connect"
 msgstr "Nichtexistierendes Quellobjekt für objects.connect"
 
-#: src/modules/objects/libkviobjects.cpp:616
+#: src/modules/objects/libkviobjects.cpp:618
 msgid "Inexistant source object for objects.disconnect"
 msgstr "Nichtexistiendes Quellobjekt für objects.disconnect"
 
-#: src/modules/objects/libkviobjects.cpp:272
+#: src/modules/objects/libkviobjects.cpp:274
 msgid "Inexistant target object for objects.connect"
 msgstr "Nichtexistierendes Zielobjekt für object.connect"
 
-#: src/modules/objects/libkviobjects.cpp:611
+#: src/modules/objects/libkviobjects.cpp:613
 msgid "Inexistant target object for objects.disconnect"
 msgstr "Nichtexistierendes Zielobjekt für objects.disconnect"
 
-#: src/modules/objects/libkviobjects.cpp:282
+#: src/modules/objects/libkviobjects.cpp:284
 msgid "Inexistant target slot '%Q' for objects.connect"
 msgstr "Nichtexistierender Ziel-Slot ›%Q‹ für objects.connect"
 
@@ -320,7 +332,7 @@ msgstr "Interner Fehler: Kein gültiger Zeiger für dieses Objekt"
 msgid "Invalid dock area specified"
 msgstr "Ungültiger Dock-Bereich angegeben"
 
-#: src/modules/objects/KvsObject_webView.cpp:653
+#: src/modules/objects/KvsObject_webView.cpp:651
 #, fuzzy
 msgid "Invalid file path '%Q'"
 msgstr "Ungültiger Modus ›%Q‹"
@@ -333,7 +345,7 @@ msgstr "Ungültige Einfüge-Policy ›%Q‹"
 msgid "Invalid message Icon: switch to default NoIcon '%Q'"
 msgstr "Ungültiges Nachrichten-Icon: Wechsel zum Standard NoIcon ›%Q‹"
 
-#: src/modules/objects/KvsObject_painter.cpp:1178
+#: src/modules/objects/KvsObject_painter.cpp:1235
 msgid "Invalid mode '%Q'"
 msgstr "Ungültiger Modus ›%Q‹"
 
@@ -345,7 +357,7 @@ msgstr ""
 "Ungültiges Objekt-Handle als Parameter übergeben (existiert das Objekt "
 "weiterhin?)"
 
-#: src/modules/objects/KvsObject_widget.cpp:1707
+#: src/modules/objects/KvsObject_widget.cpp:1716
 msgid "Invalid parameters"
 msgstr "Ungültige Parameter"
 
@@ -382,11 +394,11 @@ msgstr "Länge der Hex-Zeichenkette ist kein Vielfaches von 2"
 msgid "Missing Qt plugin for database %Q"
 msgstr "Qt-Plugin für Datenbank %Q fehlt"
 
-#: src/modules/objects/KvsObject_painter.cpp:1045
+#: src/modules/objects/KvsObject_painter.cpp:1101
 msgid "Missing filename"
 msgstr "Fehlender Dateiname"
 
-#: src/modules/objects/KvsObject_widget.cpp:1793
+#: src/modules/objects/KvsObject_widget.cpp:1802
 msgid "No Layout associated to the widget "
 msgstr "Diesem Widget ist kein Layout zugeordnet "
 
@@ -409,17 +421,17 @@ msgstr "Keine solche Zeile ›%d‹"
 msgid "No such open mode '%Q'"
 msgstr "Kein solcher Öffnen-Modus ›%Q‹"
 
-#: src/modules/objects/KvsObject_painter.cpp:1071
-#: src/modules/objects/KvsObject_painter.cpp:1096
+#: src/modules/objects/KvsObject_painter.cpp:1127
+#: src/modules/objects/KvsObject_painter.cpp:1152
 msgid "No valid paint device"
 msgstr "Kein gültiges Paint-Device"
 
 #: src/modules/objects/KvsObject_tableWidget.cpp:355
 #: src/modules/objects/KvsObject_tableWidget.cpp:361
-#: src/modules/objects/KvsObject_widget.cpp:1277
-#: src/modules/objects/KvsObject_widget.cpp:1283
-#: src/modules/objects/KvsObject_widget.cpp:1359
-#: src/modules/objects/KvsObject_widget.cpp:1365
+#: src/modules/objects/KvsObject_widget.cpp:1286
+#: src/modules/objects/KvsObject_widget.cpp:1292
+#: src/modules/objects/KvsObject_widget.cpp:1368
+#: src/modules/objects/KvsObject_widget.cpp:1374
 msgid "Not a valid color !"
 msgstr "Keine gültige Farbe!"
 
@@ -427,16 +439,16 @@ msgstr "Keine gültige Farbe!"
 msgid "Not an hex digit"
 msgstr "Keine Hex-Ziffer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1897
+#: src/modules/objects/KvsObject_widget.cpp:1906
 msgid "Null mask"
 msgstr "Null-Maske"
 
+#: src/modules/objects/KvsObject_painter.cpp:906
 #: src/modules/objects/KvsObject_button.cpp:141
-#: src/modules/objects/KvsObject_painter.cpp:850
 msgid "Object Pixmap required!"
 msgstr "Objekt Pixmap erforderlich!"
 
-#: src/modules/objects/libkviobjects.cpp:424
+#: src/modules/objects/libkviobjects.cpp:426
 msgid "Object does not exists"
 msgstr "Objekt existiert nicht"
 
@@ -444,21 +456,21 @@ msgstr "Objekt existiert nicht"
 msgid "Object in invalid state"
 msgstr "Objekt in ungültigem Status"
 
-#: src/modules/objects/KvsObject_painter.cpp:599
-#: src/modules/objects/KvsObject_painter.cpp:634
+#: src/modules/objects/KvsObject_painter.cpp:655
+#: src/modules/objects/KvsObject_painter.cpp:690
 msgid "One of the array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Array-Parameter konnte nicht zu einem Integer ausgewertet werden"
 
-#: src/modules/objects/KvsObject_painter.cpp:594
-#: src/modules/objects/KvsObject_painter.cpp:629
+#: src/modules/objects/KvsObject_painter.cpp:650
+#: src/modules/objects/KvsObject_painter.cpp:685
 msgid "One of the array parameters is empty"
 msgstr "Einer der Array-Parameter ist leer"
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:600
 #: src/modules/objects/KvsObject_tableWidget.cpp:334
-#: src/modules/objects/KvsObject_widget.cpp:1256
-#: src/modules/objects/KvsObject_widget.cpp:1338
+#: src/modules/objects/KvsObject_widget.cpp:1265
+#: src/modules/objects/KvsObject_widget.cpp:1347
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Farb-Array-Parameter konnte nicht zu einem Integer ausgewertet "
@@ -466,47 +478,51 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:595
 #: src/modules/objects/KvsObject_tableWidget.cpp:328
-#: src/modules/objects/KvsObject_widget.cpp:1250
-#: src/modules/objects/KvsObject_widget.cpp:1332
+#: src/modules/objects/KvsObject_widget.cpp:1259
+#: src/modules/objects/KvsObject_widget.cpp:1341
 msgid "One of the colors array parameters is empty"
 msgstr "Einer der Farb-Array-Parameter ist leer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1161
-#: src/modules/objects/KvsObject_painter.cpp:565
+#: src/modules/objects/KvsObject_painter.cpp:621
+#: src/modules/objects/KvsObject_widget.cpp:1170
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Geometrie-Array-Parameter konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/modules/objects/KvsObject_widget.cpp:1156
-#: src/modules/objects/KvsObject_painter.cpp:560
+#: src/modules/objects/KvsObject_painter.cpp:616
+#: src/modules/objects/KvsObject_widget.cpp:1165
 msgid "One of the geometry array parameters is empty"
 msgstr "Einer der Geometrie-Array-Parameter ist leer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1611
+#: src/modules/objects/KvsObject_widget.cpp:1620
 msgid "One of the move array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Move-Array-Parameter konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/modules/objects/KvsObject_widget.cpp:1606
+#: src/modules/objects/KvsObject_widget.cpp:1615
 msgid "One of the move array parameters is empty"
 msgstr "Einer der Move-Array-Parameter ist leer"
 
-#: src/modules/objects/KvsObject_widget.cpp:1668
+#: src/modules/objects/KvsObject_widget.cpp:1677
 msgid "One of the resize array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Resize-Array-Parameter konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/modules/objects/KvsObject_widget.cpp:1663
+#: src/modules/objects/KvsObject_widget.cpp:1672
 msgid "One of the resize array parameters is empty"
 msgstr "Einer der Resize-Array-Parameter ist leer"
 
+#: src/modules/objects/KvsObject_colorDialog.cpp:144
+#: src/modules/objects/KvsObject_pixmap.cpp:163
+#: src/modules/objects/KvsObject_pixmap.cpp:262
+#: src/modules/objects/KvsObject_painter.cpp:934
+#: src/modules/objects/KvsObject_painter.cpp:987
+#: src/modules/objects/KvsObject_painter.cpp:1717
+#: src/modules/objects/KvsObject_painter.cpp:1805
 #: src/modules/objects/KvsObject_listWidget.cpp:408
-#: src/modules/objects/KvsObject_painter.cpp:878
-#: src/modules/objects/KvsObject_painter.cpp:931
-#: src/modules/objects/KvsObject_painter.cpp:1572
 msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Tripel-Parameter konnte nicht zu einem Integer ausgewertet werden"
@@ -523,32 +539,34 @@ msgstr ""
 "Nur Werte im Bereich 0-255 sind erlaubt: Integer %d ist außerhalb dieses "
 "Bereichs"
 
-#: src/modules/objects/KvsObject_widget.cpp:1822
+#: src/modules/objects/KvsObject_widget.cpp:1831
 msgid "Parent must be a widget object"
 msgstr "Das übergeordnete Element muss ein Widget-Objekt sein"
 
-#: src/modules/objects/KvsObject_listWidget.cpp:345
-#: src/modules/objects/KvsObject_treeWidgeteItem.cpp:412
+#: src/modules/objects/KvsObject_treeWidgeteItem.cpp:413
 #: src/modules/objects/KvsObject_tableWidget.cpp:493
+#: src/modules/objects/KvsObject_listWidget.cpp:345
 msgid "Pixmap object or image Id required"
 msgstr "Pixmap-Objekt oder Bild-Id benötigt"
 
-#: src/modules/objects/KvsObject_widget.cpp:1892
-#: src/modules/objects/KvsObject_painter.cpp:1212
+#: src/modules/objects/KvsObject_painter.cpp:1276
+#: src/modules/objects/KvsObject_painter.cpp:1309
+#: src/modules/objects/KvsObject_widget.cpp:1901
 msgid "Pixmap object required"
 msgstr "Pixmap-Objekt benötigt"
 
-#: src/modules/objects/KvsObject_painter.cpp:1083
+#: src/modules/objects/KvsObject_painter.cpp:1139
 msgid "Pixmap or Widget parameter is not an object"
 msgstr "Pixmap- oder Widget-Parameter ist kein Objekt"
 
-#: src/modules/objects/KvsObject_widget.cpp:1887
-#: src/modules/objects/KvsObject_painter.cpp:1207
+#: src/modules/objects/KvsObject_painter.cpp:1271
+#: src/modules/objects/KvsObject_painter.cpp:1304
+#: src/modules/objects/KvsObject_widget.cpp:1896
 msgid "Pixmap parameter is not an object"
 msgstr "Pixmap-Parameter ist kein Objekt"
 
+#: src/modules/objects/KvsObject_painter.cpp:901
 #: src/modules/objects/KvsObject_button.cpp:135
-#: src/modules/objects/KvsObject_painter.cpp:845
 msgid "Pixmap parameter is not an object!"
 msgstr "Pixmap-Parameter ist kein Objekt!"
 
@@ -589,30 +607,30 @@ msgstr "Lesefehler aufgetreten!"
 msgid "The added widget is not a child of this dock window"
 msgstr "Das hinzugefügte Widget ist kein Kind dieses Dock-Fensters"
 
-#: src/modules/objects/KvsObject_widget.cpp:1599
-#: src/modules/objects/KvsObject_widget.cpp:1656
-#: src/modules/objects/KvsObject_painter.cpp:587
+#: src/modules/objects/KvsObject_painter.cpp:643
+#: src/modules/objects/KvsObject_widget.cpp:1608
+#: src/modules/objects/KvsObject_widget.cpp:1665
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr ""
 "Das als Parameter übergebene Array muss mindestens 2 Elemente beinhalten"
 
+#: src/modules/objects/KvsObject_painter.cpp:677
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:586
 #: src/modules/objects/KvsObject_tableWidget.cpp:319
-#: src/modules/objects/KvsObject_widget.cpp:1241
-#: src/modules/objects/KvsObject_widget.cpp:1323
-#: src/modules/objects/KvsObject_painter.cpp:621
+#: src/modules/objects/KvsObject_widget.cpp:1250
+#: src/modules/objects/KvsObject_widget.cpp:1332
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr ""
 "Das als Parameter übergebene Array muss mindestens 3 Elemente beinhalten"
 
-#: src/modules/objects/KvsObject_widget.cpp:1143
-#: src/modules/objects/KvsObject_painter.cpp:551
+#: src/modules/objects/KvsObject_painter.cpp:607
+#: src/modules/objects/KvsObject_widget.cpp:1152
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr ""
 "Das als Paramter übergebene Array muss mindestens 4 Elemente beinhalten"
 
-#: src/modules/objects/libkviobjects.cpp:367
-#: src/modules/objects/libkviobjects.cpp:466
+#: src/modules/objects/libkviobjects.cpp:369
+#: src/modules/objects/libkviobjects.cpp:468
 msgid "The class '%Q' does not exist"
 msgstr "Die Klasse ›%Q‹ existiert nicht"
 
@@ -620,16 +638,16 @@ msgstr "Die Klasse ›%Q‹ existiert nicht"
 msgid "The file '%Q' does not exist"
 msgstr "Die Datei ›%Q‹ existiert nicht"
 
+#: src/modules/objects/KvsObject_painter.cpp:633
+#: src/modules/objects/KvsObject_painter.cpp:667
+#: src/modules/objects/KvsObject_painter.cpp:711
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:636
 #: src/modules/objects/KvsObject_tableWidget.cpp:375
-#: src/modules/objects/KvsObject_widget.cpp:1176
-#: src/modules/objects/KvsObject_widget.cpp:1298
-#: src/modules/objects/KvsObject_widget.cpp:1380
-#: src/modules/objects/KvsObject_widget.cpp:1623
-#: src/modules/objects/KvsObject_widget.cpp:1680
-#: src/modules/objects/KvsObject_painter.cpp:577
-#: src/modules/objects/KvsObject_painter.cpp:611
-#: src/modules/objects/KvsObject_painter.cpp:655
+#: src/modules/objects/KvsObject_widget.cpp:1185
+#: src/modules/objects/KvsObject_widget.cpp:1307
+#: src/modules/objects/KvsObject_widget.cpp:1389
+#: src/modules/objects/KvsObject_widget.cpp:1632
+#: src/modules/objects/KvsObject_widget.cpp:1689
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr ""
 "Der erste Parameter konnte nicht zu einem Array oder einem Integer "
@@ -655,14 +673,18 @@ msgstr "Das listviewitem kann nicht elternlos sein"
 msgid "The memoryBuffer object is empty: nothing will be saved"
 msgstr "Das memoryBuffer-Objekt ist leer: Es wird nichts gespeichert"
 
+#: src/modules/objects/KvsObject_colorDialog.cpp:128
+#: src/modules/objects/KvsObject_pixmap.cpp:147
+#: src/modules/objects/KvsObject_pixmap.cpp:246
+#: src/modules/objects/KvsObject_painter.cpp:917
+#: src/modules/objects/KvsObject_painter.cpp:970
+#: src/modules/objects/KvsObject_painter.cpp:1699
+#: src/modules/objects/KvsObject_painter.cpp:1789
 #: src/modules/objects/KvsObject_listWidget.cpp:392
-#: src/modules/objects/KvsObject_painter.cpp:861
-#: src/modules/objects/KvsObject_painter.cpp:914
-#: src/modules/objects/KvsObject_painter.cpp:1554
 msgid "The opacity parameter didn't evaluate to integer"
 msgstr "Der Deckkraftwert konnte nicht zu einem Integer ausgewertet werden"
 
-#: src/modules/objects/KvsObject_painter.cpp:642
+#: src/modules/objects/KvsObject_painter.cpp:698
 msgid "The opacity value didn't evaluate to an integer"
 msgstr "Der Deckkraft-Wert konnte nicht zu einem Integer ausgewertet werden"
 
@@ -678,21 +700,36 @@ msgstr ""
 "Das übergeordnete Element eines listviewitem-Objekts muss entweder ein "
 "anderes listviewitem- oder ein listview-Objekt sein"
 
-#: src/modules/objects/KvsObject_toolBar.cpp:92
+#: src/modules/objects/KvsObject_toolBar.cpp:93
 msgid "The parent-widget isn't a MainWindow."
 msgstr "Das Eltern-Widget ist kein Hauptfenster."
 
-#: src/modules/objects/KvsObject_widget.cpp:1856
+#: src/modules/objects/KvsObject_widget.cpp:1865
 msgid "The pixmap is not valid"
 msgstr "Die Pixmap ist ungültig"
 
-#: src/modules/objects/KvsObject_toolBar.cpp:83
+#: src/modules/objects/KvsObject_pixmap.cpp:278
+#: src/modules/objects/KvsObject_pixmap.cpp:316
+#: src/modules/objects/KvsObject_pixmap.cpp:327
+#: src/modules/objects/KvsObject_pixmap.cpp:354
+#: src/modules/objects/KvsObject_pixmap.cpp:365
+#: src/modules/objects/KvsObject_pixmap.cpp:383
+#: src/modules/objects/KvsObject_pixmap.cpp:394
+#: src/modules/objects/KvsObject_pixmap.cpp:436
+#: src/modules/objects/KvsObject_pixmap.cpp:445
+#: src/modules/objects/KvsObject_pixmap.cpp:526
+#: src/modules/objects/KvsObject_pixmap.cpp:535
+#, fuzzy
+msgid "The pixmap is null"
+msgstr "Die Pixmap ist ungültig"
+
+#: src/modules/objects/KvsObject_toolBar.cpp:84
 msgid "The toolbar cannot be a parent-widget!"
 msgstr "Die Werkzeugleiste kann kein Eltern-Widget sein!"
 
-#: src/modules/objects/KvsObject_vBox.cpp:183
 #: src/modules/objects/KvsObject_hBox.cpp:146
 #: src/modules/objects/KvsObject_hBox.cpp:178
+#: src/modules/objects/KvsObject_vBox.cpp:183
 msgid "The widget must be a child of this hbox"
 msgstr "Das Widget muss ein Kind dieser hbox sein"
 
@@ -720,7 +757,7 @@ msgstr ""
 msgid "Type value %Q not supported"
 msgstr "Typ-Wert %Q nicht unterstützt"
 
-#: src/modules/objects/KvsObject_painter.cpp:712
+#: src/modules/objects/KvsObject_painter.cpp:768
 msgid "Unknown '%Q' background mode"
 msgstr "Unbekannter ›%Q‹ Hintergrundmodus"
 
@@ -729,39 +766,45 @@ msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
 "Unbekannte ›%Q‹ Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
 
-#: src/modules/objects/KvsObject_widget.cpp:1955
+#: src/modules/objects/KvsObject_widget.cpp:1964
 msgid "Unknown Color Group '%Q'"
 msgstr "Unbekannte Farbgruppe ›%Q‹"
 
-#: src/modules/objects/KvsObject_widget.cpp:1946
+#: src/modules/objects/KvsObject_widget.cpp:1955
 msgid "Unknown Color Role '%Q'"
 msgstr "Unbekannte Farbrolle ›%Q‹"
 
-#: src/modules/objects/KvsObject_label.cpp:273
+#: src/modules/objects/KvsObject_hBox.cpp:197
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:758
 #: src/modules/objects/KvsObject_groupBox.cpp:299
-#: src/modules/objects/KvsObject_hBox.cpp:197
+#: src/modules/objects/KvsObject_label.cpp:273
 msgid "Unknown alignment '%Q'"
 msgstr "Unbekannte Justierung ›%Q‹"
 
-#: src/modules/objects/KvsObject_vBox.cpp:203
 #: src/modules/objects/KvsObject_layout.cpp:309
+#: src/modules/objects/KvsObject_vBox.cpp:203
 msgid "Unknown alignment: '%Q'"
 msgstr "Unbekannte Justierung: ›%Q‹"
 
-#: src/modules/objects/KvsObject_pixmap.cpp:173
+#: src/modules/objects/KvsObject_pixmap.cpp:429
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr ""
 "Unbekanntes Bildseitenverhältnis %Q: nutze Verhältnis "
 "'BehalteBildseitenverhältnis'"
 
-#: src/modules/objects/KvsObject_painter.cpp:1235
+#: src/modules/objects/KvsObject_pixmap.cpp:307
+#: src/modules/objects/KvsObject_painter.cpp:1380
 msgid "Unknown axis '%Q' switching to default ZAxis"
 msgstr "Unbekannte Achse ›%Q‹, wechsle zum Standard Z-Achse"
 
-#: src/modules/objects/KvsObject_painter.cpp:1501
+#: src/modules/objects/KvsObject_painter.cpp:1646
 msgid "Unknown brush style '%Q'"
 msgstr "Unbekannter Pinsel-Stil ›%Q‹"
+
+#: src/modules/objects/KvsObject_painter.cpp:1916
+#, fuzzy
+msgid "Unknown composition mode '%Q'"
+msgstr "Unbekannte Position ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:243
 #, fuzzy
@@ -772,14 +815,14 @@ msgstr "Unbekannte Achse ›%Q‹, wechsle zum Standard Z-Achse"
 msgid "Unknown echo mode '%Q'"
 msgstr "Unbekannter Echo-Modus ›%Q‹"
 
-#: src/modules/objects/KvsObject_webView.cpp:562
+#: src/modules/objects/KvsObject_webView.cpp:560
 #, fuzzy
 msgid "Unknown frame '%Q'"
 msgstr "Unbekannter Modus ›%Q‹"
 
-#: src/modules/objects/KvsObject_listWidget.cpp:260
-#: src/modules/objects/KvsObject_treeWidgeteItem.cpp:287
+#: src/modules/objects/KvsObject_treeWidgeteItem.cpp:288
 #: src/modules/objects/KvsObject_tableWidget.cpp:795
+#: src/modules/objects/KvsObject_listWidget.cpp:260
 msgid "Unknown item flag '%Q'"
 msgstr "Unbekanntes Elementen-Flag ›%Q‹"
 
@@ -792,7 +835,7 @@ msgstr "Unbekannter Modus ›%Q‹"
 msgid "Unknown orientation '%Q'"
 msgstr "Unbekannte Ausrichtung ›%Q‹"
 
-#: src/modules/objects/KvsObject_painter.cpp:1475
+#: src/modules/objects/KvsObject_painter.cpp:1620
 msgid "Unknown pen style '%Q'"
 msgstr "Unbekannter Stift-Stil ›%Q‹"
 
@@ -804,12 +847,17 @@ msgstr "Unbekannte Position ›%Q‹"
 msgid "Unknown segment style '%Q'"
 msgstr "Unbekannter Segmentstil ›%Q‹"
 
-#: src/modules/objects/KvsObject_listWidget.cpp:318
+#: src/modules/objects/KvsObject_painter.cpp:740
 #: src/modules/objects/KvsObject_label.cpp:327
-#: src/modules/objects/KvsObject_widget.cpp:1763
-#: src/modules/objects/KvsObject_painter.cpp:684
+#: src/modules/objects/KvsObject_listWidget.cpp:318
+#: src/modules/objects/KvsObject_widget.cpp:1772
 msgid "Unknown style '%Q'"
 msgstr "Unbekannter Stil ›%Q‹"
+
+#: src/modules/objects/KvsObject_colorDialog.cpp:187
+#, fuzzy
+msgid "Unknown szOptions '%Q'"
+msgstr "Unbekannte Position ›%Q‹"
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:708
 msgid "Unknown text format '%Q'"
@@ -823,16 +871,16 @@ msgstr "Unbekannte Textposition ›%Q‹"
 msgid "Unknown tickmark '%Q'"
 msgstr "Unbekanntes Häkchen ›%Q‹"
 
-#: src/modules/objects/KvsObject_webView.cpp:438
+#: src/modules/objects/KvsObject_webView.cpp:436
 #, fuzzy
 msgid "Unknown web setting '%Q'"
 msgstr "Unbekannte Textposition ›%Q‹"
 
-#: src/modules/objects/KvsObject_widget.cpp:1922
+#: src/modules/objects/KvsObject_widget.cpp:1931
 msgid "Unknown widget attribute '%Q'"
 msgstr "Unbekanntes Widget-Attribut ›%Q‹"
 
-#: src/modules/objects/KvsObject_widget.cpp:1733
+#: src/modules/objects/KvsObject_widget.cpp:1742
 msgid "Unknown widget flag '%Q'"
 msgstr "Unbekanntes Widget-Flag ›%Q‹"
 
@@ -876,26 +924,28 @@ msgstr "Warnung bei Zeile %1, Spalte %2"
 #: src/modules/objects/KvsObject_wizard.cpp:249
 #: src/modules/objects/KvsObject_wizard.cpp:269
 #: src/modules/objects/KvsObject_mainWindow.cpp:95
+#: src/modules/objects/KvsObject_widget.cpp:2032
 #: src/modules/objects/object_macros.h:120
 msgid "Widget object required"
 msgstr "Widget-Objekt erfoderlich"
 
-#: src/modules/objects/KvsObject_painter.cpp:1090
+#: src/modules/objects/KvsObject_painter.cpp:1146
 msgid "Widget or Pixmap required "
 msgstr "Widget oder Pixmap benötigt "
 
 #: src/modules/objects/KvsObject_trayIcon.cpp:198
-#: src/modules/objects/KvsObject_toolButton.cpp:269
-#: src/modules/objects/KvsObject_widget.cpp:1787
 #: src/modules/objects/KvsObject_mainWindow.cpp:90
+#: src/modules/objects/KvsObject_widget.cpp:1796
+#: src/modules/objects/KvsObject_toolButton.cpp:269
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr "Widget-Parameter ist kein gültiges Objekt"
 
 #: src/modules/objects/KvsObject_trayIcon.cpp:193
-#: src/modules/objects/KvsObject_toolButton.cpp:264
-#: src/modules/objects/KvsObject_widget.cpp:1782
 #: src/modules/objects/KvsObject_mainWindow.cpp:85
+#: src/modules/objects/KvsObject_widget.cpp:1791
+#: src/modules/objects/KvsObject_widget.cpp:2026
+#: src/modules/objects/KvsObject_toolButton.cpp:264
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
 msgstr "Widget-Parameter ist kein Objekt"
