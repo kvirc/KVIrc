@@ -42,11 +42,6 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 
-/* NOTICE: this class contains some bad hacks:
- * - the qt way to delete/remove a widget is not fully cross-os compatible, so we had to introduce different ways to do it
- *   (this is mostly a qt problem, since they don't consider removing items on the fly an option)
- * - we mix up handling widgets and their corrispective actions (when qt will support drag&drop editing, we'll be able to clean this)
- */
 
 KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
 : KviToolBar(szLabel,type,pcName)
@@ -167,20 +162,9 @@ void KviCustomToolBar::syncDescriptor()
 	// store the item order in the descriptor
 	// There was boxLayouts
 	m_pDescriptor->actions()->clear();
-	foreach(QAction *w, actions())
+	foreach(QAction *pAction, actions())
 	{
-#ifdef COMPILE_ON_MAC
-		// on mac, we are not able to delete unused widgets from the toolbar while dragging;
-		// instead, we only hide them. now it's time to clean them'up. (ticket #803)
-		if(w->isVisible())
-		{
-			m_pDescriptor->actions()->append(new QString(w->objectName()));
-		} else {
-			w->deleteLater();
-		}
-#else
-		m_pDescriptor->actions()->append(new QString(w->objectName()));
-#endif
+		m_pDescriptor->actions()->append(new QString(pAction->objectName()));
 	}
 }
 
@@ -241,47 +225,16 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 	if(pActionToMove == m_pDraggedChild)
 		return; // hmmm
 
-	QAction * pMyOwnAction = m_pDraggedChild;
-	if(!pMyOwnAction)
-		return;
-
-// 	bool bWasEnabled = m_pDraggedChild->isEnabled();
-	removeAction(pMyOwnAction);
-	if(pActionToMove)
-	{
-// 		qDebug("AND GOT ACTION FOR THAT WIDGET\n");
-		insertAction(pActionToMove,m_pDraggedChild);
-	} else {
-		addAction(m_pDraggedChild);
-	}
-// 	m_pDraggedChild->setVisible(true);
-// 	m_pDraggedChild->setEnabled(bWasEnabled);
-
-	QEvent ev(QEvent::LayoutRequest);
-	QApplication::sendEvent(this,&ev);
+	removeAction(m_pDraggedChild);
+	insertAction(pActionToMove,m_pDraggedChild);
 }
 
 void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 {
-	if(m_pDraggedChild)
-	{
-		if(m_pFilteredChildren)
-			m_pFilteredChildren->remove(m_pDraggedChild); // just to be sure
-		m_pDraggedChild->setVisible(false);
-
-	/*
-	 * This is quite broken at least in qt4.6:
-	 * Windows: we have to delete the item, or it will stay on the toolbar creating duplicates (ticket #915)
-	 * Osx: we can't delete the item (now or later), or we will create a crash (ticket #803)
-	 * Linux: we can't delete the item now, but deleteLater() works;
-	 */
-#if defined(COMPILE_ON_MINGW) || defined (COMPILE_ON_WINDOWS)
-		delete m_pDraggedChild;
-#elif !defined(COMPILE_ON_MAC)
-		m_pDraggedChild->deleteLater();
-#endif
-		m_pDraggedChild = 0;
-	}
+	if(!m_pDraggedChild)
+		return;
+	
+	removeAction(m_pDraggedChild);
 }
 
 void KviCustomToolBar::dropEvent(QDropEvent * e)
@@ -362,21 +315,32 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 						}
 					}
 
-					m_pMovedChild->setVisible(false);
+					// search for the action after the moved one: we'll need it
+					// to reinsert m_pMovedChild in the right position if necessary
+					QAction * pAfterAction = 0;
+					bool found=false;
+					foreach(QAction * pTmp, actions())
+					{
+						if(found)
+						{
+							pAfterAction=pTmp;
+							break;
+						}
+						
+						if(pTmp==m_pMovedChild)
+							found=true;
+					}
+
+					removeAction(m_pMovedChild);
 
 					QEvent ev(QEvent::LayoutRequest);
 					QApplication::sendEvent(this,&ev);
-					if(pDrag->exec(Qt::MoveAction) == Qt::MoveAction)
+					if(pDrag->exec(Qt::MoveAction) != Qt::MoveAction)
 					{
-						removeAction(m_pMovedChild);
-					} else {
 						// the user has probably failed to remove the action from the toolbar
 						// flash the trashcan in the customize toolbars dialog
 						KviActionManager::instance()->emitRemoveActionsHintRequest();
-						m_pMovedChild->setVisible(true);
-
-						QEvent ev(QEvent::LayoutRequest);
-						QApplication::sendEvent(this,&ev);
+						insertAction(pAfterAction, m_pMovedChild);
 					}
 					m_pMovedChild=0;
 					return true;
