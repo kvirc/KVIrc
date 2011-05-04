@@ -140,7 +140,7 @@ public:
 	* a NULL value
 	* \return const char *
 	*/
-	KVILIB_API const char * encodingGroup(int iIdx);
+	const char * encodingGroup(int iIdx);
 
 	/**
 	* \brief Returns the language code of the localization
