@@ -42,13 +42,12 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 
+static QAction * g_pDraggedAction = 0;
 
 KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
 : KviToolBar(szLabel,type,pcName)
 {
 	m_pDescriptor = pDesc;
-	m_pMovedChild = 0;
-	m_pDraggedChild = 0;
 	m_pFilteredChildren = 0;
 	setAcceptDrops(true);
 	// if the user removes all the items from this toolbar, keep a minimum size to permit dropping new item
@@ -193,59 +192,66 @@ done:
 
 void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 {
+	e->ignore();
+
 	if(!KviActionManager::customizingToolBars())
 		return;
 
 	KviActionManager::instance()->setCurrentToolBar(this);
-	QString szText;
 
 	if(e->mimeData()->hasText())
 	{
-		szText=e->mimeData()->text();
-		if(!szText.isEmpty())
+		if(e->mimeData()->text().isEmpty())
+			return;
+		if(g_pDraggedAction && !g_pDraggedAction->objectName().compare(e->mimeData()->text()))
 		{
-			KviAction * pAction = KviActionManager::instance()->getAction(szText);
+			// moving a qaction from a toolbar to another
+			e->acceptProposedAction();
+		} else {
+			// moving a kviaction from the toolbar editor to a toolbar
+			KviAction * pAction = KviActionManager::instance()->getAction(e->mimeData()->text());
 			if(pAction)
 			{
-				m_pDraggedChild = pAction->addToCustomToolBar(this);
+				g_pDraggedAction = pAction->addToCustomToolBar(this);
 				e->acceptProposedAction();
-				QEvent ev(QEvent::LayoutRequest);
-				QApplication::sendEvent(this,&ev);
-			} else e->ignore();
-		} else e->ignore();
-	} else e->ignore();
+			}
+		}
+	}
 }
 
 void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 {
-	if(!m_pDraggedChild)
+	if(!g_pDraggedAction)
 		return;
 
 	QAction * pActionToMove = actionAt(e->pos());
-	if(pActionToMove == m_pDraggedChild)
+	if(pActionToMove == g_pDraggedAction)
 		return; // hmmm
 
-	removeAction(m_pDraggedChild);
-	insertAction(pActionToMove,m_pDraggedChild);
+	if(actions().contains(g_pDraggedAction))
+		removeAction(g_pDraggedAction);
+	insertAction(pActionToMove,g_pDraggedAction);
 }
 
 void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 {
-	if(!m_pDraggedChild)
+	if(!g_pDraggedAction)
 		return;
-	
-	removeAction(m_pDraggedChild);
+
+	if(actions().contains(g_pDraggedAction))
+		removeAction(g_pDraggedAction);
 }
 
 void KviCustomToolBar::dropEvent(QDropEvent * e)
 {
-	if(!m_pDraggedChild)
+	if(!g_pDraggedAction || !e->mimeData()->hasText())
 		return;
-	m_pDraggedChild = 0;
 
-	if(e->mimeData()->hasText())
+	if(!g_pDraggedAction->objectName().compare(e->mimeData()->text()))
+	{
+		g_pDraggedAction = 0;
 		e->acceptProposedAction();
-	// nuthin :)
+	}
 }
 
 QAction * KviCustomToolBar::actionForWidget(QWidget * pWidget)
@@ -257,21 +263,9 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 {
 	if(!KviActionManager::customizingToolBars())
 		return KviToolBar::eventFilter(o,e); // anything here is done when customizing only
-	if(e->type() == QEvent::Enter)
-	{
-		if(m_pMovedChild)
-			return true; // kill it while moving other children
-	}
-
-	if(e->type() == QEvent::Leave)
-	{
-		if(m_pMovedChild)
-			return true; // kill it while moving other children
-	}
 
 	if(e->type() == QEvent::MouseButtonPress)
 	{
-		//qDebug("mouse button pressed");
 		KviActionManager::instance()->setCurrentToolBar(this);
 		QMouseEvent * pEvent = (QMouseEvent *)e;
 		if(pEvent->button() & Qt::LeftButton)
@@ -284,8 +278,8 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 					)
 				{
 					QWidget * pMovedWidget = (QWidget *)o;
-					m_pMovedChild = actionForWidget(pMovedWidget);
-					if(!m_pMovedChild)
+					g_pDraggedAction = actionForWidget(pMovedWidget);
+					if(!g_pDraggedAction)
 						return KviToolBar::eventFilter(o,e);
 					// allow resizing of children
 
@@ -294,7 +288,7 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 					{
 						if(pEvent->pos().x() > (pMovedWidget->width() - 4))
 						{
-							pMovedWidget = 0;
+							g_pDraggedAction = 0;
 							return KviToolBar::eventFilter(o,e); // let the applet handle the event it
 						}
 					}
@@ -302,9 +296,9 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 					// drag out!
 					QDrag * pDrag = new QDrag(this);
 					QMimeData * pMime = new QMimeData();
-					pMime->setText(m_pMovedChild->objectName());
+					pMime->setText(g_pDraggedAction->objectName());
 					pDrag->setMimeData(pMime);
-					KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->objectName());
+					KviAction * act = KviActionManager::instance()->getAction(g_pDraggedAction->objectName());
 					if(act)
 					{
 						QPixmap * pixie = act->bigIcon();
@@ -327,11 +321,11 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 							break;
 						}
 						
-						if(pTmp==m_pMovedChild)
+						if(pTmp==g_pDraggedAction)
 							found=true;
 					}
 
-					removeAction(m_pMovedChild);
+					removeAction(g_pDraggedAction);
 
 					QEvent ev(QEvent::LayoutRequest);
 					QApplication::sendEvent(this,&ev);
@@ -340,9 +334,9 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 						// the user has probably failed to remove the action from the toolbar
 						// flash the trashcan in the customize toolbars dialog
 						KviActionManager::instance()->emitRemoveActionsHintRequest();
-						insertAction(pAfterAction, m_pMovedChild);
+						insertAction(pAfterAction, g_pDraggedAction);
 					}
-					m_pMovedChild=0;
+					g_pDraggedAction=0;
 					return true;
 				}
 			}

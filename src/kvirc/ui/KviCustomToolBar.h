@@ -44,8 +44,6 @@ public:
 	~KviCustomToolBar();
 protected:
 	KviCustomToolBarDescriptor       * m_pDescriptor;
-	QAction                          * m_pMovedChild;
-	QAction                          * m_pDraggedChild;
 	KviPointerHashTable<void *,bool> * m_pFilteredChildren;
 public:
 	KviCustomToolBarDescriptor * descriptor(){ return m_pDescriptor; };
