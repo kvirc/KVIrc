@@ -325,16 +325,15 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 		{
 			if(o->isWidgetType())
 			{
-				if(!(
-					o->inherits("KviTalPopupMenu") ||
-					o->inherits("QToolBarHandle") ||
-					o->inherits("QDockWindowHandle") ||
-					o->inherits("QDockWindowResizeHandle") ||
-					o->inherits("QToolBarExtensionWidget")
-					))
+				if(
+					o->inherits("KviToolBarGraphicalApplet") ||
+					o->inherits("QToolButton")
+					)
 				{
 					QWidget * pMovedWidget = (QWidget *)o;
 					m_pMovedChild = actionForWidget(pMovedWidget);
+					if(!m_pMovedChild)
+						return KviToolBar::eventFilter(o,e);
 					// allow resizing of children
 
 					if(o->inherits("KviToolBarGraphicalApplet") &&
