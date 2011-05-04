@@ -756,6 +756,11 @@ QAction * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 	t->addAction(pAction);
 	connect(pAction, SIGNAL(triggered()), this, SLOT(activate()));
 	pAction->setMenu(m_pPopup);
+
+	QToolButton * pButton = (QToolButton *) t->widgetForAction(pAction);
+	if(pButton)
+		pButton->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
+
 	registerAction(pAction);
 	if(!isEnabled()) pAction->setEnabled(false);
 	return pAction;
