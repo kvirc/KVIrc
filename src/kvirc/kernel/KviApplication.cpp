@@ -365,6 +365,9 @@ void KviApplication::setup()
 	updatePseudoTransparency();
 #endif
 
+	// enforce our "icon in popups" option - this is done also in each updateGui() call
+	setAttribute(Qt::AA_DontShowIconsInMenus, !KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus));
+
 	KVI_SPLASH_SET_PROGRESS(48)
 
 	// Load the win properties config
