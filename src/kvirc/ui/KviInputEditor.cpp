@@ -129,6 +129,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	setCursor(Qt::IBeamCursor);
 
 	setContentsMargins(KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN);
+	setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
 	//set the font and font metrics
 	applyOptions();
 
@@ -169,11 +171,12 @@ void KviInputEditor::applyOptions()
 
 	//then, let font metrics be updated in lazy fashion
 	if(g_pLastFontMetrics)
+	{
 		delete g_pLastFontMetrics;
-	g_pLastFontMetrics = 0;
+		g_pLastFontMetrics = 0;
+	}
 
-	//not that lazy, since we force an update :)
-	update();
+	getLastFontMetrics(font());
 }
 
 void KviInputEditor::dragEnterEvent(QDragEnterEvent * e)
@@ -217,28 +220,6 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 int  KviInputEditor::heightHint() const
 {
 	return g_iCachedHeight;
-}
-
-QSize KviInputEditor::sizeHint() const
-{
-	ensurePolished();
-	QFontMetrics *fm = KviInputEditor::getLastFontMetrics(font());
-	int h = qMax(fm->height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
-	int w = fm->width(QLatin1Char('x')) * 17 + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
-
-	QStyleOptionFrameV2 option;
-	option.initFrom(this);
-	option.rect = rect();
-	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
-	option.midLineWidth = 0;
-
-	option.state |= QStyle::State_Sunken;
-	if(isReadOnly())
-		option.state |= QStyle::State_ReadOnly;
-	option.features = QStyleOptionFrameV2::None;
-
-	return (style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).
-		expandedTo(QApplication::globalStrut()), this));
 }
 
 void KviInputEditor::paintEvent(QPaintEvent *)

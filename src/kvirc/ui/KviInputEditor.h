@@ -263,12 +263,6 @@ public:
 	int heightHint() const;
 
 	/**
-	* \brief Returns the size of the editor
-	* \return QSize
-	*/
-	virtual QSize sizeHint() const;
-
-	/**
 	* \brief Sets the text in the input line
 	* \param szText The text to set
 	* \return void
