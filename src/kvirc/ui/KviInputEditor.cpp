@@ -77,6 +77,7 @@ extern KviColorWindow          * g_pColorWindow;
 int            KviInputEditor::g_iInputInstances = 0;
 int            KviInputEditor::g_iInputFontCharWidth[256];
 QFontMetrics * KviInputEditor::g_pLastFontMetrics = 0;
+int            KviInputEditor::g_iCachedHeight = 0;
 
 #define KVI_INPUT_MAX_UNDO_SIZE 256
 
@@ -215,7 +216,7 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 
 int  KviInputEditor::heightHint() const
 {
-	return sizeHint().height();
+	return g_iCachedHeight;
 }
 
 QSize KviInputEditor::sizeHint() const
