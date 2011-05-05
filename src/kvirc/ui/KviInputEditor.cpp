@@ -131,8 +131,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	setContentsMargins(KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN);
 	setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
-	//set the font and font metrics
-	applyOptions();
+	//set the font and font metrics; only the first inputeditor refresh the cached font metrics
+	applyOptions(KviInputEditor::g_iInputInstances == 1);
 
 	installShortcuts();
 }
@@ -162,21 +162,24 @@ KviInputEditor::~KviInputEditor()
 	killDragTimer();
 }
 
-void KviInputEditor::applyOptions()
+void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 {
 	//set the font
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
 	newFont.setKerning(false);
 	setFont(newFont);
 
-	//then, let font metrics be updated in lazy fashion
-	if(g_pLastFontMetrics)
+	if(bRefreshCachedMetrics)
 	{
-		delete g_pLastFontMetrics;
-		g_pLastFontMetrics = 0;
-	}
+		//then, let font metrics be updated in lazy fashion
+		if(g_pLastFontMetrics)
+		{
+			delete g_pLastFontMetrics;
+			g_pLastFontMetrics = 0;
+		}
 
-	getLastFontMetrics(font());
+		getLastFontMetrics(font());
+	}
 }
 
 void KviInputEditor::dragEnterEvent(QDragEnterEvent * e)

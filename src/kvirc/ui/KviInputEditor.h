@@ -293,7 +293,7 @@ public:
 	* \brief Applies the options and update
 	* \return void
 	*/
-	void applyOptions();
+	void applyOptions(bool bRefreshCachedMetrics=true);
 
 	/**
 	* \brief Sets the maximum buffer size
