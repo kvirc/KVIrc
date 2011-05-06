@@ -1387,11 +1387,28 @@ void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 		delete g_pShadedParentGlobalDesktopBackground;
 	if(g_pShadedChildGlobalDesktopBackground)
 		delete g_pShadedChildGlobalDesktopBackground;
-	g_pShadedParentGlobalDesktopBackground = new QPixmap();
-	g_pShadedChildGlobalDesktopBackground = new QPixmap();
-	QImage img = pix->toImage();
+	g_pShadedParentGlobalDesktopBackground = new QPixmap(pix->width(),pix->height());
+	g_pShadedChildGlobalDesktopBackground = new QPixmap(pix->width(),pix->height());
+	QPainter p;
+	p.begin(g_pShadedParentGlobalDesktopBackground);;
+	p.setCompositionMode(QPainter::CompositionMode_SourceAtop);
+	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor)>100)
+		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) = 100;
+	p.setOpacity((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100));
+	p.fillRect(0,0,pix->width(),pix->height(),QBrush(KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
+	p.end();
+
+	p.begin(g_pShadedChildGlobalDesktopBackground);
+	p.drawPixmap(0,0,*pix);
+	p.setCompositionMode(QPainter::CompositionMode_SourceAtop);
+	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor)>100)
+		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) = 100;
+	p.setOpacity((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+	p.fillRect(0,0,pix->width(),pix->height(),QBrush(KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
+	p.end();
+
 	// play with the fade factors
-	KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) %= 100;
+	/*
 	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) > 0)
 	{
 		*g_pShadedParentGlobalDesktopBackground = QPixmap::fromImage(
@@ -1406,7 +1423,7 @@ void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 			kimageeffect_fade(img,
 				(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100),
 				KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
-	}
+	}*/
 	if(g_pMainWindow)
 		g_pMainWindow->updatePseudoTransparency();
 }
