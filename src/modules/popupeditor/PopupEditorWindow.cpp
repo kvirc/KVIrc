@@ -258,7 +258,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pExtNameEditor = new QLineEdit(this);
 	m_pExtNameEditor->setToolTip(
-		__tr2qs_ctx("<center><b>External menu name</b><br>This allows to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>","editor"));
+		__tr2qs_ctx("<center><b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>","editor"));
 	g->addWidget(m_pExtNameEditor,5,1,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Item Id:","editor"),this);

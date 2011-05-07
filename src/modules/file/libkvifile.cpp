@@ -697,7 +697,7 @@ static bool file_kvs_fnc_ps(KviKvsModuleFunctionCall * c)
 		f: list files[br]
 		l: list symbolic links[br]
 		r: list readable files[br]
-		w: list writeable files[br]
+		w: list writable files[br]
 		x: list executable files[br]
 		h: list hidden files[br]
 		s: list system files[br]
@@ -1157,7 +1157,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		<string> $file.localdir([relative_path:string])
 	@description:
 		Returns the path to the KVIrc local data directory.[br]
-		The KVIrc local data directory is always writeable and contains
+		The KVIrc local data directory is always writable and contains
 		the various subdirectories that KVIrc uses internally: audio, avatars,
 		config, help, incoming, log, modules, msgcolors and pics.[br]
 		If <relative_path> is passed, then it is appended to the directory path to
@@ -1298,7 +1298,7 @@ static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 		$file.globaldir
 	@description:
 		Returns the path to the KVIrc global data directory.[br]
-		The KVIrc local data directory is always readable (but usually not writeable) and contains
+		The KVIrc local data directory is always readable (but usually not writable) and contains
 		the various subdirectories that KVIrc uses internally: audio, avatars,
 		config, help, incoming, log, modules, msgcolors and pics.[br]
 		If <relative_path> is passed, then it is appended to the directory path to

@@ -239,20 +239,20 @@
 // |  |  +--ArrayOrHashElement(OK) isReadOnly() depends on the source data (never instantiated)
 // |  |  |  |                      canEvaluateToObjectReference() = true
 // |  |  |  |
-// |  |  |  +--ArrayElement(OK) the source Data must evaluate to an array or be writeable in order to convert it
+// |  |  |  +--ArrayElement(OK) the source Data must evaluate to an array or be writable in order to convert it
 // |  |  |  |                   and an index that must evaluate to an integer (evaluate ok, result inherited ok)
 // |  |  |  |
-// |  |  |  +--HashElement(OK)  the source Data must evaluate to a hash or be writeable in order to convert it
+// |  |  |  +--HashElement(OK)  the source Data must evaluate to a hash or be writable in order to convert it
 // |  |  |                      and an index that must evaluate to a non-empty hash key (evaluate ok, result inherited ok)
 // |  |  |
-// |  |  +--HashCount(OK)    the source Data must evaluate to a hash or be writeable in order to convert it
+// |  |  +--HashCount(OK)    the source Data must evaluate to a hash or be writable in order to convert it
 // |  |  |
-// |  |  +--ArrayCount(OK)   the source Data must evaluate to an array or be writeable in order to convert it
+// |  |  +--ArrayCount(OK)   the source Data must evaluate to an array or be writable in order to convert it
 // |  |  |
-// |  |  +--HashReferenceAssert(OK)   the source Data must evaluate to a hash or be writeable in order to convert it (otherwise asserts)
+// |  |  +--HashReferenceAssert(OK)   the source Data must evaluate to a hash or be writable in order to convert it (otherwise asserts)
 // |  |  |                            isReadOnly() depends on the parameter data
 // |  |  |
-// |  |  +--ArrayReferenceAssert(OK)  the source Data must evaluate to an array or be writeable in order to convert it (otherwise asserts)
+// |  |  +--ArrayReferenceAssert(OK)  the source Data must evaluate to an array or be writable in order to convert it (otherwise asserts)
 // |  |                               isReadOnly() depends on the parameter data
 // |  |
 // |  +--Expression(OK) (never instantiated)

@@ -1221,7 +1221,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 
 	if((KVSP_curCharUnicode != '%') && (KVSP_curCharUnicode != '$') && (KVSP_curCharUnicode != '@'))
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writeable iteration variable as first parameter","kvs"));
+		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter","kvs"));
 		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where '%' or '$' was expected: see /help foreach for the command syntax","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
@@ -1231,7 +1231,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 
 	if(d->isFunctionCall() || d->isReadOnly())
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writeable iteration variable as first parameter","kvs"));
+		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter","kvs"));
 		if(d->isFunctionCall())
 			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected function call as 'foreach' iteration variable","kvs"));
 		else

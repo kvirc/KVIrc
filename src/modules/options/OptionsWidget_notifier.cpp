@@ -143,7 +143,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	KviBoolSelector * b = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
 	QString szTip = "<center>";
-	szTip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
+	szTip += __tr2qs_ctx("This is an option for the impatient: it allows one to forcibly and permanently disable " \
 		"the notifier window. Please note that if this option is not activated then " \
 		"the notifier will NOT popup even if all the other options around specify " \
 		"to use it in response to particular events. Also note that this option " \
