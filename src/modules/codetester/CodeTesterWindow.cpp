@@ -61,6 +61,7 @@ CodeTesterWidget::CodeTesterWidget(QWidget * par)
 	m_pModeLabel = new QLabel(__tr2qs_ctx("Params:","editor"),this);
 	g->addWidget(m_pModeLabel,1,1);
 	m_pParams = new QLineEdit(this);
+	m_pParams->setToolTip(__tr2qs_ctx("Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, ..","editor"));
 	g->addWidget(m_pParams,1,2);
 }
 
@@ -73,12 +74,12 @@ CodeTesterWidget::~CodeTesterWidget()
 
 void CodeTesterWidget::execute()
 {
-	QString parms = m_pParams->text();
 	QString buffer;
 	m_pEditor->getText(buffer);
-	KviConsoleWindow * con = g_pApp->activeConsole();
-	//KviParameterList * l = new KviParameterList(parms.ptr());
-	KviKvsScript::run(buffer,con,new KviKvsVariantList(new QString(parms)));
+	KviConsoleWindow * pConsole = g_pApp->activeConsole();
+	QStringList * pSLParams = new QStringList(m_pParams->text().split(';'));
+	KviKvsScript::run(buffer, pConsole, new KviKvsVariantList(pSLParams));
+	delete pSLParams;
 }
 
 CodeTesterWindow::CodeTesterWindow(KviMainWindow * lpFrm)

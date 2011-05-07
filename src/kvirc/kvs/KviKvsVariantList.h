@@ -188,6 +188,13 @@ public:
 	KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3, QString * pS4, QString * pS5, QString * pS6, QString * pS7);
 
 	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pSL Pointer to a QStringList
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QStringList * pSL);
+
+	/**
 	* \brief Destroys the KviKvsVariantList object
 	*/
 	~KviKvsVariantList();

@@ -24,6 +24,8 @@
 
 #include "KviKvsVariantList.h"
 
+#include <QStringList>
+
 KviKvsVariantList::KviKvsVariantList()
 {
 	m_pList = new KviPointerList<KviKvsVariant>();
@@ -168,6 +170,17 @@ KviKvsVariantList::KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3
 	m_pList->append(new KviKvsVariant(pS5));
 	m_pList->append(new KviKvsVariant(pS6));
 	m_pList->append(new KviKvsVariant(pS7));
+}
+
+KviKvsVariantList::KviKvsVariantList(QStringList * pSL)
+{
+	m_pList = new KviPointerList<KviKvsVariant>();
+	m_pList->setAutoDelete(true);
+	if(!pSL)
+		return;
+	
+	foreach(QString pS, *pSL)
+		m_pList->append(new KviKvsVariant(new QString(pS)));
 }
 
 KviKvsVariantList::~KviKvsVariantList()
