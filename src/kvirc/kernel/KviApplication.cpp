@@ -1391,6 +1391,7 @@ void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 	g_pShadedChildGlobalDesktopBackground = new QPixmap(pix->width(),pix->height());
 	QPainter p;
 	p.begin(g_pShadedParentGlobalDesktopBackground);;
+
 	p.setCompositionMode(QPainter::CompositionMode_SourceAtop);
 	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor)>100)
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) = 100;
