@@ -197,7 +197,7 @@ bool KviKvsObjectClass::save(const QString & szFileName)
 			szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += it.currentKey();
-                        szBuffer += "("+h->reminder()+")\n";
+			szBuffer += "("+h->reminder()+")\n";
 			QString szCode = h->scriptHandlerCode();
 			KviCommandFormatter::blockFromBuffer(szCode);
 			KviCommandFormatter::indent(szCode);

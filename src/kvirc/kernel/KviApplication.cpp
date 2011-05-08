@@ -1323,7 +1323,7 @@ void KviApplication::triggerUpdatePseudoTransparency()
 //              (C) 2000       Josef Weidendorfer <weidendo@in.tum.de>
 //
 
-QImage & kimageeffect_fade(QImage &img,float val,const QColor &color)
+/*QImage & kimageeffect_fade(QImage &img,float val,const QColor &color)
 {
 	if(img.width() == 0 || img.height() == 0)return img;
 
@@ -1378,7 +1378,7 @@ QImage & kimageeffect_fade(QImage &img,float val,const QColor &color)
 		}
 	}
 	return img;
-}
+}*/
 
 void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 {
@@ -1391,7 +1391,7 @@ void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 	g_pShadedChildGlobalDesktopBackground = new QPixmap(pix->width(),pix->height());
 	QPainter p;
 	p.begin(g_pShadedParentGlobalDesktopBackground);;
-
+	p.drawPixmap(0,0,*pix);
 	p.setCompositionMode(QPainter::CompositionMode_SourceAtop);
 	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor)>100)
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) = 100;
