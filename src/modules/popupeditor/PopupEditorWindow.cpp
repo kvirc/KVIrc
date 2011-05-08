@@ -1227,7 +1227,8 @@ void PopupEditorWidget::exportPopups(bool bSelectedOnly)
 			out += "\n";
 		}
 	}
-	if (!count && bSelectedOnly==false) return;
+	if (!count && !bSelectedOnly)
+		return;
 
 	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;

@@ -52,11 +52,11 @@
 #include <QTcpServer>
 
 const char * const sockstate_tbl[] = {
-        "Unconnected",
-        "HostLookUp",
-        "Connecting",
-        "Connected",
-        "Bound",
+	"Unconnected",
+	"HostLookUp",
+	"Connecting",
+	"Connected",
+	"Bound",
 	"Listening",
 	"Closing"
 };
@@ -324,9 +324,11 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_socket,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KvsObject_socket)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_socket)
-	if (m_pSocket)delete m_pSocket;
+	if (m_pSocket)
+		delete m_pSocket;
 	m_pSocket = 0;
-	if (m_pServer) delete m_pServer;
+	if (m_pServer)
+		delete m_pServer;
 	m_pServer = 0;
 KVSO_END_DESTRUCTOR(KvsObject_socket)
 //----------------------
@@ -334,7 +336,6 @@ KVSO_END_DESTRUCTOR(KvsObject_socket)
 
 KVSO_CLASS_FUNCTION(socket,status)
 {
-
 	c->returnValue()->setString(getStateString(m_pSocket->state()));
 	return true;
 }
@@ -363,17 +364,18 @@ KVSO_CLASS_FUNCTION(socket,localPort)
 	c->returnValue()->setInteger(m_pSocket->localPort());
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(socket,bytesAvailable)
 {
 	c->returnValue()->setInteger(m_pSocket->bytesAvailable());
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(socket,localIp)
 {
 	c->returnValue()->setString(m_pSocket->localAddress().toString());
 	return true;
 }
-
 
 KVSO_CLASS_FUNCTION(socket,read)
 {
@@ -399,9 +401,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 			int oldsize=pBuffer->size();
 			pBuffer->resize(oldsize+iLen);
 			m_pSocket->read(pBuffer->data()+oldsize,iLen);
-		} 
-		else if(pObject->inheritsClass("file"))
-		{
+		} else if(pObject->inheritsClass("file")) {
 			KviFile *pFile=((KvsObject_file *)pObject)->file();
 			if (!pFile->isOpen())
 			{
@@ -409,9 +409,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 				return true;
 			}
                         pFile->write(m_pSocket->read(iLen));
-		} 
-		else
-		{
+		} else {
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 			return true;
 		}
@@ -432,8 +430,6 @@ KVSO_CLASS_FUNCTION(socket,read)
 	}
 	return true;
 }
-
-
 
 KVSO_CLASS_FUNCTION(socket,write)
 {
@@ -458,9 +454,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		{
 			QByteArray *p=((KvsObject_memoryBuffer *)pObject)->pBuffer();
 			m_pSocket->write(*p);
-		} 
-		else if(pObject->inheritsClass("file"))
-		{
+		} else if(pObject->inheritsClass("file")) {
 			KviFile * pFile = ((KvsObject_file *)pObject)->file();
 			if(!pFile->isOpen())
 			{
@@ -559,6 +553,7 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 	c->returnValue()->setBoolean(true);
 	return true;
 }
+
 /*
 KVSO_CLASS_FUNCTION(socket,functionsetReadBufferSize)
 {
@@ -657,6 +652,7 @@ void KvsObject_socket::slotReadyRead()
 	lParams.append(new KviKvsVariant((kvs_int_t)m_pSocket->bytesAvailable()));
 	callFunction(this,"dataAvailableEvent",&lParams);
 }
+
 void KvsObject_socket::slotConnected()
 {
 	KviKvsVariantList *lParams=0;
@@ -704,7 +700,8 @@ void KvsObject_socket::slotNewConnection()
 	bool ret=false;
 	KviKvsVariant *retv=new KviKvsVariant(ret);
 	callFunction(this,"incomingConnectionEvent",retv,&params);
-	if (retv){
+	if (retv)
+	{
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hobj);
 		if (pObject) pObject->dieNow();
 	}
@@ -753,7 +750,3 @@ KVSO_CLASS_FUNCTION(socket,stateChangedEvent)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_KvsObject_socket.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
-
-
-

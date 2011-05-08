@@ -593,32 +593,32 @@ const char * const widgettypes_tbl[] = {
 // if possible, leave the things go after just a c->warning()
 //
 
-	// widget() will be never 0 in THIS class
-	// but in derived classes WILL be
-	// ... now that I think about it, it
-	// may happen that widget() will be zero here too:
-	// If the Qt "physical" widget gets destroyed
-	// by some external factor (for example when children
-	// of a wrapper widget destroyed by KVIrc).
-	//
-	// as a convention:
-	//   if widget() can be 0 in a class
-	//   the user must have a function to check it
-	//   (sth as object::$hasObject() could do the trick)
-	//   obviously this will happen only in well defined cases
-	//   as in a qtwrapper not yet wrapped or failed to wrap (so
-	//   qtwrapper::$wrap() returned '0' for example)
-	//   or after the widget has been destroyed...
-	//   if widget() is 0, the functions perform no actions
-	//   return no errors and results that have to be assumed
-	//   as invalid (this allows the minimum overhead: if widget()
+// widget() will be never 0 in THIS class
+// but in derived classes WILL be
+// ... now that I think about it, it
+// may happen that widget() will be zero here too:
+// If the Qt "physical" widget gets destroyed
+// by some external factor (for example when children
+// of a wrapper widget destroyed by KVIrc).
+//
+// as a convention:
+//   if widget() can be 0 in a class
+//   the user must have a function to check it
+//   (sth as object::$hasObject() could do the trick)
+//   obviously this will happen only in well defined cases
+//   as in a qtwrapper not yet wrapped or failed to wrap (so
+//   qtwrapper::$wrap() returned '0' for example)
+//   or after the widget has been destroyed...
+//   if widget() is 0, the functions perform no actions
+//   return no errors and results that have to be assumed
+//   as invalid (this allows the minimum overhead: if widget()
 
 //=============================================================================================================
 
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setParent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setParent)
 	// apparence
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,show)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,hide)
@@ -684,7 +684,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,colorPalette)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setStyleSheet)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setKeyShortcut)
-KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,grab)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,grab)
 	// statusbar
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,insertIntoStatusBar)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,removeFromStatusBar)
@@ -714,21 +714,14 @@ KVSO_END_REGISTERCLASS(KvsObject_widget)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KvsObject_widget)
+
 KVSO_BEGIN_DESTRUCTOR(KvsObject_widget)
-emit aboutToDie();
+	emit aboutToDie();
 KVSO_END_CONSTRUCTOR(KvsObject_widget)
 
 bool KvsObject_widget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
-	//qDebug("abc");
-	/*QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget());
-	effect->setColor(QColor(0, 0, 0, 255));
-	effect->setBlurRadius(20);
-	widget()->setGraphicsEffect(effect);
-	if (!widget()->graphicsEffect()) qDebug("non settato");
-	else qDebug("settato");
-	*/
 	m_pContext=c;
 	widget()->setObjectName(getName());
 	return true;
@@ -996,14 +989,15 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 		return ret;
 	     }
 	   }
-	/*if(o->parent())
+	/*
+	if(o->parent())
 	{
-	    qDebug("Propagation to parent");
-	    return KviKvsObject::eventFilter(o->parent(),e);
-	}
-	     else{
-		  qDebug("Propagation to object");*/
-		 return KviKvsObject::eventFilter(o,e);
+		qDebug("Propagation to parent");
+		return KviKvsObject::eventFilter(o->parent(),e);
+	} else {
+		qDebug("Propagation to object");
+	*/
+		return KviKvsObject::eventFilter(o,e);
 	//     }
 }
 
@@ -1026,9 +1020,10 @@ KVSO_CLASS_FUNCTION(widget,update)
 		KVSO_PARAMETER("w",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
 		KVSO_PARAMETER("h",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
 	KVSO_PARAMETERS_END(c)
-	if (iW || iH) widget()->update(QRect(iX,iY,iW,iH));
+	if (iW || iH)
+		widget()->update(QRect(iX,iY,iW,iH));
 	else
-	widget()->update();
+		widget()->update();
 	return true;
 }
 

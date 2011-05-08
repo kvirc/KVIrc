@@ -622,12 +622,6 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
-
-
-// ASSASSINS! YOU MUST INDENT IT WELL :D
-
-
 static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 {
 /*
@@ -662,8 +656,9 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	KVSO_PARAMETERS_BEGIN(cmd)
 		KVSO_PARAMETER("print on current window",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(cmd)
-	if (bFlag) cmd->window()->output(80, "Objects dump:");
-		QWidgetList list = g_pApp->topLevelWidgets();
+	if (bFlag)
+		cmd->window()->output(80, "Objects dump:");
+	QWidgetList list = g_pApp->topLevelWidgets();
 
 	KviCString spacing = ">";
 	QString  szTemp;

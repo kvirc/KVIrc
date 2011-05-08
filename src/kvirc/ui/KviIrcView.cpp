@@ -1217,7 +1217,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 					case KviControlCodes::Reverse:
 						//this should be "reversed colors"
 						char aux       = curBack;
-						if(bacWasTransp == true)
+						if(bacWasTransp)
 						{
 							curBack = KviControlCodes::Transparent;
 						} else {
@@ -2643,12 +2643,12 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							for(k = iLastEscapeBlock;; k++)
 							{
 								if(l->pBlocks[k].pChunk)
+								{
 									if(l->pBlocks[k].pChunk->type != KviControlCodes::UnEscape)
 										iRightBorder+=l->pBlocks[k].block_width;
 									else
 										break;
-								else
-								{
+								} else {
 									uLineWraps++;
 									bHadWordWraps=1;
 								}

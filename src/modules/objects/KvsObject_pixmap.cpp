@@ -35,7 +35,7 @@
 #include <QFile>
 
 /*
-	@doc:	pixmap
+	@doc: pixmap
 	@keyterms:
 	    pixmap object class
 	@title:
@@ -54,32 +54,32 @@
 		Fills the pixmap with color and opacity.[br]
 		!fn: $resize(<width:integer>,<height:integer>)
 		Resizes the pixmap to w width and h height. Set wh or hg to 0, to have a null pixmap.
-                        !fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>])
-                        Scales the pixmap or the animation by sx horizontally and sy vertically.
+			!fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>])
+			Scales the pixmap or the animation by sx horizontally and sy vertically.
 		Aspect_ratio values:
 		- IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.
 		- KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.
 		- KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.
-                        Default value is KeepAspectRatio.
-                        !fn: $load(<file_name:string>)
-                        Load a pixmap from the file <file_name>.
-                        !fn: $save(<file_name:string>)
-                        Save the pixmap or the current animation frame to the file <file_name>.
-                        !fn: $loadAnimation(<file_name:string>)
-                        Load an animation from the file <file_name> and start it.
-                        !fn: $startAnimation()
-                        Start the animation.
-                        !fn: $stopAnimation()
-                        Stop the animation.
+			Default value is KeepAspectRatio.
+			!fn: $load(<file_name:string>)
+			Load a pixmap from the file <file_name>.
+			!fn: $save(<file_name:string>)
+			Save the pixmap or the current animation frame to the file <file_name>.
+			!fn: $loadAnimation(<file_name:string>)
+			Load an animation from the file <file_name> and start it.
+			!fn: $startAnimation()
+			Start the animation.
+			!fn: $stopAnimation()
+			Stop the animation.
 		!fn: <integer> $height()
-                        Return the height of the pixmap or of the animation.
+			Return the height of the pixmap or of the animation.
 		!fn: <integer> $width()
-                        Return the width of the pixmap or of the animation.
-                        !fn: $frameChangedEvent()
-                        This event is triggered by KVIrc when the current animation frame changes.
-              @signals:
-                        !sg: $frameChanged()
-                        This signal is emitted by the default implementation of [classfnc]$frameChangedEvent[/classfnc]().[br]
+			Return the width of the pixmap or of the animation.
+			!fn: $frameChangedEvent()
+			This event is triggered by KVIrc when the current animation frame changes.
+		@signals:
+			!sg: $frameChanged()
+			This signal is emitted by the default implementation of [classfnc]$frameChangedEvent[/classfnc]().[br]
 
 */
 
@@ -117,9 +117,12 @@ KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_pixmap)
 	emit aboutToDie();
-	if (m_pPixmap)delete m_pPixmap;
-	if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
-	if (m_pImage) delete m_pImage;
+	if (m_pPixmap)
+		delete m_pPixmap;
+	if (m_pAnimatedPixmap)
+		delete m_pAnimatedPixmap;
+	if (m_pImage)
+		delete m_pImage;
 KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 
 
@@ -135,13 +138,14 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
 		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
 	KVSO_PARAMETERS_END(c)
+
 	QColor col;
 	if (!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
-		if (c->paramCount()<2) iOpacity=255;
-		else
-		{
+		if (c->paramCount()<2) 
+			iOpacity=255;
+		else {
 			if (!var2->asInteger(iOpacity))
 			{
 				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
@@ -150,9 +154,7 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 		}
 		col.setNamedColor(szColor);
 		col.setAlpha(iOpacity);
-	}
-	else
-	{
+	} else {
 		if(c->paramCount()<3)
 		{
 			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
@@ -161,32 +163,35 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
 			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
-				return true;
+			return true;
 		}
-		if (c->paramCount()<5) iOpacity=255;
+		if (c->paramCount()<5)
+			iOpacity=255;
+
 		if(KviQString::equalCI(szColorMode, "HSV"))
-		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+			col.setHsv(iCol1,iCol2,iCol3,iOpacity);
 		else
-		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+			col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 	}
 	if(m_currentType==Image)
 	{
-	    if(m_pImage)
-	    {
-	        if(!m_pPixmap) m_pPixmap = new QPixmap();
-	        *m_pPixmap = QPixmap::fromImage(*m_pImage);
-	        delete m_pImage;
-	        m_pImage = 0;
-	    }
-	    else m_pPixmap = 0;
-	}
-	else if(m_currentType==AnimatedPixmap)
-	{
+		if(m_pImage)
+		{
+			if(!m_pPixmap)
+				m_pPixmap = new QPixmap();
+			*m_pPixmap = QPixmap::fromImage(*m_pImage);
+			delete m_pImage;
+			m_pImage = 0;
+		} else {
+			m_pPixmap = 0;
+		}
+	} else if(m_currentType==AnimatedPixmap) {
 	      delete m_pAnimatedPixmap;
 	      m_pAnimatedPixmap=0;
 	}
 	m_currentType = Pixmap;
-	if(!m_pPixmap) m_pPixmap=new QPixmap();
+	if(!m_pPixmap)
+		m_pPixmap=new QPixmap();
 	m_pPixmap->fill(col);
 	return true;
 }
@@ -198,20 +203,22 @@ KVSO_CLASS_FUNCTION(pixmap,resize)
 		KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
 		KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
 	KVSO_PARAMETERS_END(c)
+
 	if(m_currentType==Image)
 	{
 		if(m_pImage)
-		delete m_pImage;
-		m_pImage = 0;
+		{
+			delete m_pImage;
+			m_pImage = 0;
+		}
 	}
-	else if(m_currentType==AnimatedPixmap)
-	{
-		if (m_pAnimatedPixmap)
+	else if(m_currentType==AnimatedPixmap) {
+		if(m_pAnimatedPixmap)
+		{
 			delete m_pAnimatedPixmap;
-		m_pAnimatedPixmap=0;
-	}
-	else if(m_pPixmap)
-	{
+			m_pAnimatedPixmap=0;
+		}
+	} else if(m_pPixmap) {
 		delete m_pPixmap;
 	}
 	m_currentType = Image;
@@ -234,13 +241,15 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
 		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
 	KVSO_PARAMETERS_END(c)
+
 	QColor col;
 	if (!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
-		if (c->paramCount()<4) iOpacity=255;
-		else
+		if (c->paramCount()<4)
 		{
+			iOpacity=255;
+		} else {
 			if (!var2->asInteger(iOpacity))
 			{
 				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
@@ -249,9 +258,7 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 		}
 		col.setNamedColor(szColor);
 		col.setAlpha(iOpacity);
-	}
-	else
-	{
+	} else {
 		if(c->paramCount()<5)
 		{
 			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
@@ -262,26 +269,25 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 			return true;
 		}
-		if (c->paramCount()<7) iOpacity=255;
+		if (c->paramCount()<7)
+			iOpacity=255;
+
 		if(KviQString::equalCI(szColorMode, "HSV"))
-		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+			col.setHsv(iCol1,iCol2,iCol3,iOpacity);
 		else
-		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+			col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 	}
+
 	if(m_currentType==AnimatedPixmap)
 	{
 		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
 		return true;
-        }
-        else if((m_currentType==Image && !m_pImage) || (m_currentType==Pixmap && !m_pPixmap))
-        {
+	} else if((m_currentType==Image && !m_pImage) || (m_currentType==Pixmap && !m_pPixmap)) {
 		c->error(__tr2qs_ctx("The pixmap is null","objects"));
 		return false;
-	}
-	else if(m_currentType==Pixmap)
-        {
-		if(m_pImage) 
-			    delete m_pImage;
+	} else if(m_currentType==Pixmap) {
+		if(m_pImage)
+			delete m_pImage;
 		*m_pImage = m_pPixmap->toImage();
 		delete m_pPixmap;
 	}
@@ -292,365 +298,403 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 
 KVSO_CLASS_FUNCTION(pixmap,rotate)
 {
-        kvs_real_t dAngle;
-        QString szAxis;
-        KVSO_PARAMETERS_BEGIN(c)
+	kvs_real_t dAngle;
+	QString szAxis;
+	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("angle",KVS_PT_DOUBLE,0,dAngle)
 		KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
-        KVSO_PARAMETERS_END(c)
-        Qt::Axis axis = Qt::ZAxis;
-        if(!szAxis.isEmpty())
-        {
-	        if (KviQString::equalCI(szAxis,"XAxis"))axis=Qt::XAxis;
-	        else if (KviQString::equalCI(szAxis,"YAxis")) axis=Qt::YAxis;
-	        else if (KviQString::equalCI(szAxis,"ZAxis")) axis=Qt::ZAxis;
-	        else c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
-        }
-        if(m_currentType==Pixmap)
-        {
-	if(m_pPixmap){
-	        if(!m_pImage) m_pImage = new QImage();
-	        *m_pImage = m_pPixmap->toImage();
+	KVSO_PARAMETERS_END(c)
+
+	Qt::Axis axis = Qt::ZAxis;
+	if(!szAxis.isEmpty())
+	{
+		if (KviQString::equalCI(szAxis,"XAxis"))
+			axis=Qt::XAxis;
+		else if (KviQString::equalCI(szAxis,"YAxis")) 
+			axis=Qt::YAxis;
+		else if (KviQString::equalCI(szAxis,"ZAxis")) 
+			axis=Qt::ZAxis;
+		else 
+			c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
 	}
-	else{
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
+
+	if(m_currentType==Pixmap)
+	{
+		if(m_pPixmap)
+		{
+			if(!m_pImage)
+				m_pImage = new QImage();
+			*m_pImage = m_pPixmap->toImage();
+		} else {
+			c->error(__tr2qs_ctx("The pixmap is null","objects"));
+			return false;
+		}
+	} else if(m_currentType==AnimatedPixmap) {
+		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
+		return true;
 	}
-        }
-        else if(m_currentType==AnimatedPixmap)
-        {
-	        c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
-	        return true;
-        }
-        if(!m_pImage)
-        {
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
-        }
-        m_currentType = Image;
-        QTransform transform;
-        transform.rotate(dAngle,axis);
-        *m_pImage=m_pImage->transformed(transform);
-        return true;
+
+	if(!m_pImage)
+	{
+		c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		return false;
+	}
+	m_currentType = Image;
+	QTransform transform;
+	transform.rotate(dAngle,axis);
+	*m_pImage=m_pImage->transformed(transform);
+	return true;
 }
 
 
 KVSO_CLASS_FUNCTION(pixmap,mirrored)
 {
-        kvs_real_t dAngle;
-        bool bHorizontal,bVertical;
-        KVSO_PARAMETERS_BEGIN(c)
-	        KVSO_PARAMETER("bHorizontal",KVS_PT_BOOLEAN,0,bHorizontal)
-	        KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
+	kvs_real_t dAngle;
+	bool bHorizontal,bVertical;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("bHorizontal",KVS_PT_BOOLEAN,0,bHorizontal)
+		KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
+	KVSO_PARAMETERS_END(c)
 
-        KVSO_PARAMETERS_END(c)
-        if(m_currentType==Pixmap)
-        {
-	if(m_pPixmap){
-	        if(!m_pImage) m_pImage = new QImage();
-	        *m_pImage = m_pPixmap->toImage();
+	if(m_currentType==Pixmap)
+	{
+		if(m_pPixmap)
+		{
+			if(!m_pImage) m_pImage = new QImage();
+			*m_pImage = m_pPixmap->toImage();
+		} else {
+			c->error(__tr2qs_ctx("The pixmap is null","objects"));
+			return false;
+		}
+	} else if(m_currentType==AnimatedPixmap) {
+		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
+		return true;
 	}
-	else{
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
+
+	if(!m_pImage)
+	{
+		c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		return false;
 	}
-        }
-        else if(m_currentType==AnimatedPixmap)
-        {
-	        c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
-	        return true;
-        }
-        if(!m_pImage)
-        {
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
-        }
-        m_currentType = Image;
-        *m_pImage=m_pImage->mirrored(bHorizontal,bVertical);
-        return true;
+	m_currentType = Image;
+	*m_pImage=m_pImage->mirrored(bHorizontal,bVertical);
+	return true;
 }
 
 
 KVSO_CLASS_FUNCTION(pixmap,toGrayScale)
 {
-        if(m_currentType==Pixmap)
-        {
-	if(m_pPixmap){
-	        if(!m_pImage) m_pImage = new QImage();
-	        *m_pImage = m_pPixmap->toImage();
+	if(m_currentType==Pixmap)
+	{
+		if(m_pPixmap)
+		{
+			if(!m_pImage) m_pImage = new QImage();
+			*m_pImage = m_pPixmap->toImage();
+		} else {
+			c->error(__tr2qs_ctx("The pixmap is null","objects"));
+			return false;
+		}
+	} else if(m_currentType==AnimatedPixmap) {
+		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
+		return true;
 	}
-	else{
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
+
+	if(!m_pImage)
+	{
+		c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		return false;
 	}
-        }
-        else if(m_currentType==AnimatedPixmap)
-        {
-	        c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
-	        return true;
-        }
-        if(!m_pImage)
-        {
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
-        }
-        m_currentType = Image;
-        QRgb col;
-        int w=m_pImage->width();
-        int h=m_pImage->height();
-        int res;
-        for(int y=0; y<h; y++)
-        {
-	        QRgb *data = (QRgb *) m_pImage->scanLine(y);
-	        for (int x=0; x<w; x++)
-	        {
-		        col = *data;
-		        res = (qRed(col)+qGreen(col)+qBlue(col))/3;
-		        *data++ = qRgba(res, res, res,qAlpha(col));
-	        }
-        }
-        return true;
+	m_currentType = Image;
+	QRgb col;
+	int w=m_pImage->width();
+	int h=m_pImage->height();
+	int res;
+	for(int y=0; y<h; y++)
+	{
+		QRgb *data = (QRgb *) m_pImage->scanLine(y);
+		for (int x=0; x<w; x++)
+		{
+			col = *data;
+			res = (qRed(col)+qGreen(col)+qBlue(col))/3;
+			*data++ = qRgba(res, res, res,qAlpha(col));
+		}
+	}
+	return true;
 }
+
 KVSO_CLASS_FUNCTION(pixmap,scale)
 {
-        kvs_int_t iWidth,iHeight;
-        QString szAspectRatio;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
-            KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
-            KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
-        KVSO_PARAMETERS_END(c)
-        Qt::AspectRatioMode ratio=Qt::KeepAspectRatio;
-        if(!szAspectRatio.isEmpty())
-        {
-            if(KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio")) ratio=Qt::IgnoreAspectRatio;
-            else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio")) ratio=Qt::KeepAspectRatio;
-            else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding")) ratio=Qt::KeepAspectRatioByExpanding;
-            else  c->warning(__tr2qs_ctx("Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio","objects"),&szAspectRatio);
-        }
-        if(m_currentType==Pixmap)
-        {
-	        if(m_pPixmap)
-		*m_pPixmap=m_pPixmap->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
-	        else{
-		    c->error(__tr2qs_ctx("The pixmap is null","objects"));
-		    return false;
-	        }
-        }
-        else if (m_currentType==AnimatedPixmap)
-	        m_pAnimatedPixmap->resize(QSize(iWidth,iHeight),ratio);
-        else if(m_pImage)
-		    *m_pImage=m_pImage->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
-        else{
-		    c->error(__tr2qs_ctx("The pixmap is null","objects"));
-		    return false;
-        }
-        return true;
-}
-KVSO_CLASS_FUNCTION(pixmap,loadAnimation)
+	kvs_int_t iWidth,iHeight;
+	QString szAspectRatio;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
+		KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
+		KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
+	KVSO_PARAMETERS_END(c)
 
+	Qt::AspectRatioMode ratio=Qt::KeepAspectRatio;
+	if(!szAspectRatio.isEmpty())
+	{
+		if(KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio"))
+			ratio=Qt::IgnoreAspectRatio;
+		else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio"))
+			ratio=Qt::KeepAspectRatio;
+		else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding"))
+			ratio=Qt::KeepAspectRatioByExpanding;
+		else  
+			c->warning(__tr2qs_ctx("Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio","objects"),&szAspectRatio);
+	}
+	if(m_currentType==Pixmap)
+	{
+		if(m_pPixmap)
+		{
+			*m_pPixmap=m_pPixmap->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
+		} else {
+			c->error(__tr2qs_ctx("The pixmap is null","objects"));
+			return false;
+		}
+	} else if (m_currentType==AnimatedPixmap) {
+		m_pAnimatedPixmap->resize(QSize(iWidth,iHeight),ratio);
+	} else if(m_pImage) {
+		*m_pImage=m_pImage->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
+	} else {
+		c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		return false;
+	}
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(pixmap,loadAnimation)
 {
-        QString szFile;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
-        KVSO_PARAMETERS_END(c)
-        if(!QFile::exists(szFile))
-        {
+	QString szFile;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+	KVSO_PARAMETERS_END(c)
+
+	if(!QFile::exists(szFile))
+	{
 		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
 		return true;
-        }
-        if (m_pAnimatedPixmap){
+	}
+	if (m_pAnimatedPixmap) {
 		delete m_pAnimatedPixmap;
 		m_pAnimatedPixmap = 0;
-        }
-        if (m_pPixmap)
-        {
+	}
+	if (m_pPixmap)
+	{
 		delete m_pPixmap;
 		m_pPixmap=0;
-        }
-        m_pAnimatedPixmap= new KviAnimatedPixmap(szFile);
-        connect(m_pAnimatedPixmap,SIGNAL(frameChanged()),this,SLOT(frameChanged()));
-        return true;
+	}
+	m_pAnimatedPixmap= new KviAnimatedPixmap(szFile);
+	connect(m_pAnimatedPixmap,SIGNAL(frameChanged()),this,SLOT(frameChanged()));
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,startAnimation)
 {
 	Q_UNUSED(c);
-        if (m_pAnimatedPixmap)    m_pAnimatedPixmap->start();
-        return true;
+	if (m_pAnimatedPixmap)
+		m_pAnimatedPixmap->start();
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,stopAnimation)
 {
 	Q_UNUSED(c);
-        if (m_pAnimatedPixmap)    m_pAnimatedPixmap->stop();
-        return true;
+	if (m_pAnimatedPixmap)
+		m_pAnimatedPixmap->stop();
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,load)
 {
-        QString szFile;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
-        KVSO_PARAMETERS_END(c)
-        if(!QFile::exists(szFile))
-        {
+	QString szFile;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+	KVSO_PARAMETERS_END(c)
+
+	if(!QFile::exists(szFile))
+	{
 		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
 		return true;
-        }
-        if(!m_pImage) m_pImage=new QImage();
+	}
+	if(!m_pImage)
+		m_pImage=new QImage();
 
-        m_pImage->load(szFile);
-        return true;
-        if (m_currentType==Image && m_pImage)
+	m_pImage->load(szFile);
+	return true;
+/*
+ *	FIXME UNUSED CODE
+	if (m_currentType==Image && m_pImage)
 		delete m_pImage;
-        else if (m_currentType==AnimatedPixmap && m_pAnimatedPixmap)
+	else if (m_currentType==AnimatedPixmap && m_pAnimatedPixmap)
 		delete m_pAnimatedPixmap;
-        if(!m_pPixmap) m_pPixmap=new QPixmap();
-        m_currentType=Pixmap;
-        m_pPixmap->load(szFile);
-        qDebug("alpha %i",m_pPixmap->hasAlpha());
-        return true;
+	if(!m_pPixmap) m_pPixmap=new QPixmap();
+	m_currentType=Pixmap;
+	m_pPixmap->load(szFile);
+	qDebug("alpha %i",m_pPixmap->hasAlpha());
+	return true;
+*/
 }
+
 KVSO_CLASS_FUNCTION(pixmap,save)
 {
-        QString szFile;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
-        KVSO_PARAMETERS_END(c)
-        if(m_currentType==Pixmap)
-        {
-	if(m_pPixmap)
-	        m_pPixmap->save(szFile);
-	else{
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
+	QString szFile;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+	KVSO_PARAMETERS_END(c)
+
+	if(m_currentType==Pixmap)
+	{
+		if(m_pPixmap)
+		{
+			m_pPixmap->save(szFile);
+		} else {
+			c->error(__tr2qs_ctx("The pixmap is null","objects"));
+			return false;
+		}
+	} else if(m_currentType==Image) {
+		if(m_pImage)
+		{
+			m_pImage->save(szFile);
+		} else {
+			c->error(__tr2qs_ctx("The pixmap is null","objects"));
+			return false;
+		}
+	} else {
+		m_pAnimatedPixmap->pixmap()->save(szFile);
 	}
-        }
-        else if(m_currentType==Image)
-        {
-	if(m_pImage)
-	        m_pImage->save(szFile);
-	else{
-	        c->error(__tr2qs_ctx("The pixmap is null","objects"));
-	        return false;
-	}
-        }
-        else m_pAnimatedPixmap->pixmap()->save(szFile);
-        return true;
+	return true;
 }
 
 void KvsObject_pixmap::setInternalPixmap(QPixmap *pPixmap)
 {
-        if(m_currentType==Image && m_pImage) delete m_pImage;
-        else if(m_currentType==Pixmap && m_pPixmap) delete m_pPixmap;
-        m_currentType=Pixmap;
-        m_pPixmap=pPixmap;
+	if(m_currentType==Image && m_pImage)
+		delete m_pImage;
+	else if(m_currentType==Pixmap && m_pPixmap)
+		delete m_pPixmap;
+	m_currentType=Pixmap;
+	m_pPixmap=pPixmap;
 }
 void KvsObject_pixmap::setInternalImage(QImage *pImage)
 {
-        if(m_currentType==Image && m_pImage) delete m_pImage;
-        else if(m_currentType==Pixmap && m_pPixmap) delete m_pPixmap;
-        m_currentType=Image;
-        m_pImage=pImage;
+	if(m_currentType==Image && m_pImage)
+		delete m_pImage;
+	else if(m_currentType==Pixmap && m_pPixmap)
+		delete m_pPixmap;
+	m_currentType=Image;
+	m_pImage=pImage;
 }
 KVSO_CLASS_FUNCTION(pixmap,loadFromMemoryBuffer)
 {
-        KviKvsObject * pObject;
-        kvs_hobject_t hObject;
-        KVSO_PARAMETERS_BEGIN(c)
-            KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,0,hObject)
-        KVSO_PARAMETERS_END(c)
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
 
-        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-        if (!pObject)
-        {
-            c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
-            return true;
-        }
-        if (!pObject->inheritsClass("memorybuffer"))
-        {
-            c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
-            return true;
-        }
-        if (m_pAnimatedPixmap){
-            delete m_pAnimatedPixmap;
-            m_pAnimatedPixmap=0;
-        }
-        if (!m_pPixmap) m_pPixmap=new QPixmap();
-        m_pPixmap->loadFromData(((KvsObject_memoryBuffer *)pObject)->dataBuffer());
-        return true;
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if (!pObject)
+	{
+		c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
+		return true;
+	}
+	if (!pObject->inheritsClass("memorybuffer"))
+	{
+		c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
+		return true;
+	}
+	if (m_pAnimatedPixmap)
+	{
+		delete m_pAnimatedPixmap;
+		m_pAnimatedPixmap=0;
+	}
+	if (!m_pPixmap)
+		m_pPixmap=new QPixmap();
+	m_pPixmap->loadFromData(((KvsObject_memoryBuffer *)pObject)->dataBuffer());
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,grabWidget)
 {
-        CHECK_INTERNAL_POINTER(m_pPixmap)
-        KviKvsObject * pObject;
-        kvs_hobject_t hObject;
-        KVSO_PARAMETERS_BEGIN(c)
-               KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-        KVSO_PARAMETERS_END(c)
-        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-        CHECK_HOBJECT_IS_WIDGET(pObject)
-        if (m_pAnimatedPixmap){
-            delete m_pAnimatedPixmap;
-            m_pAnimatedPixmap=0;
-        }
-        if (!m_pPixmap) m_pPixmap=new QPixmap();
-        *m_pPixmap=QPixmap::grabWidget(((KvsObject_widget *)pObject)->widget());
-  /*          QString szFileName;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFileName)
-            KVSO_PARAMETERS_END(c)
-            QPrinter printer;//(QPrinter::HighResolution);
-            printer.setOutputFormat(QPrinter::PdfFormat);
-            printer.setPaperSize(QPrinter::A4);
-            printer.setOutputFileName(szFileName);
+	CHECK_INTERNAL_POINTER(m_pPixmap)
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+	       KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
 
-            QPixmap pixmap=QPixmap::grabWidget(((QTableWidget *)widget()));
-            QPainter painter(&printer);
-            painter.drawPixmap(QPoint(0,0), pixmap, pixmap.rect());
-             */
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	CHECK_HOBJECT_IS_WIDGET(pObject)
+	if (m_pAnimatedPixmap)
+	{
+		delete m_pAnimatedPixmap;
+		m_pAnimatedPixmap=0;
+	}
+	if (!m_pPixmap)
+		m_pPixmap=new QPixmap();
+	*m_pPixmap=QPixmap::grabWidget(((KvsObject_widget *)pObject)->widget());
+	return true;
 
-        return true;
+/*	FIXME UNUSED CODE
+	QString szFileName;
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFileName)
+	KVSO_PARAMETERS_END(c)
+	QPrinter printer;//(QPrinter::HighResolution);
+	printer.setOutputFormat(QPrinter::PdfFormat);
+	printer.setPaperSize(QPrinter::A4);
+	printer.setOutputFileName(szFileName);
+
+	QPixmap pixmap=QPixmap::grabWidget(((QTableWidget *)widget()));
+	QPainter painter(&printer);
+	painter.drawPixmap(QPoint(0,0), pixmap, pixmap.rect());
+*/
 }
+
 KVSO_CLASS_FUNCTION(pixmap,height)
 {
-         if (m_currentType==Image && m_pImage) c->returnValue()->setInteger(m_pImage->height());
-         else if(m_currentType==Pixmap && m_pPixmap) c->returnValue()->setInteger(m_pPixmap->height());
-         else c->returnValue()->setInteger(0);
-        //else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
-        //else c->returnValue()->setInteger(m_pPixmap->height());
-        return true;
+	if (m_currentType==Image && m_pImage)
+		 c->returnValue()->setInteger(m_pImage->height());
+	else if(m_currentType==Pixmap && m_pPixmap)
+		c->returnValue()->setInteger(m_pPixmap->height());
+	else
+		c->returnValue()->setInteger(0);
+	//else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
+	//else c->returnValue()->setInteger(m_pPixmap->height());
+	return true;
 }
+
 KVSO_CLASS_FUNCTION(pixmap,width)
 {
-
-    if (m_currentType==Image && m_pImage) c->returnValue()->setInteger(m_pImage->width());
-    else if(m_currentType==Pixmap && m_pPixmap) c->returnValue()->setInteger(m_pPixmap->width());
-    else c->returnValue()->setInteger(0);
-   //else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
-   //else c->returnValue()->setInteger(m_pPixmap->height());
-         return true;
+	if (m_currentType==Image && m_pImage)
+		c->returnValue()->setInteger(m_pImage->width());
+	else if(m_currentType==Pixmap && m_pPixmap)
+		c->returnValue()->setInteger(m_pPixmap->width());
+	else
+		c->returnValue()->setInteger(0);
+	//else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
+	//else c->returnValue()->setInteger(m_pPixmap->height());
+	 return true;
 }
 
 /*QPixmap * KvsObject_pixmap::getPixmap()
 {
-        if (!m_pAnimatedPixmap && !m_pPixmap) return new QPixmap();
-        else if(m_pAnimatedPixmap) return m_pAnimatedPixmap->pixmap();
-        else return m_pPixmap;
+	if (!m_pAnimatedPixmap && !m_pPixmap) return new QPixmap();
+	else if(m_pAnimatedPixmap) return m_pAnimatedPixmap->pixmap();
+	else return m_pPixmap;
 }*/
 KVSO_CLASS_FUNCTION(pixmap,frameChangedEvent)
 {
-        emitSignal("frameChanged",c);
-        return true;
+	emitSignal("frameChanged",c);
+	return true;
 }
 
 // slots
 void KvsObject_pixmap::frameChanged()
 {
-        KviKvsVariantList *params=0;
-        callFunction(this,"frameChangedEvent",params);
+	KviKvsVariantList *params=0;
+	callFunction(this,"frameChangedEvent",params);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

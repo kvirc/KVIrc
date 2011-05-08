@@ -46,7 +46,7 @@ protected:
 
 	bool insertItem(KviKvsObjectFunctionCall *c);
 	bool setTitle(KviKvsObjectFunctionCall *c);
-        bool addMenu(KviKvsObjectFunctionCall *c);
+	bool addMenu(KviKvsObjectFunctionCall *c);
 	bool exec(KviKvsObjectFunctionCall *c);
 	bool removeItem(KviKvsObjectFunctionCall *c);
 	bool removeItemAt(KviKvsObjectFunctionCall *c);
@@ -57,7 +57,7 @@ protected:
 protected slots:
 	void slottriggered(QAction *);
 	void slothighlighted(int);
-        void aboutToDie(QObject *);
+	void aboutToDie(QObject *);
 };
 
 #endif	// !_CLASS_POPUPMENU_H_

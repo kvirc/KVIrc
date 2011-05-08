@@ -36,51 +36,51 @@ class KvsObject_socket : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_socket)
 protected:
-            QAbstractSocket *m_pSocket;
-            QTcpServer *m_pServer;
-            KviKvsRunTimeContext *m_pContext;
+	QAbstractSocket *m_pSocket;
+	QTcpServer *m_pServer;
+	KviKvsRunTimeContext *m_pContext;
 protected:
-        virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 	const char * getStateString(QAbstractSocket::SocketState);
 
-        void setInternalSocket(QAbstractSocket *pSocket)
-        {
-            delete m_pSocket;
-            m_pSocket=pSocket;
-        }
+	void setInternalSocket(QAbstractSocket *pSocket)
+	{
+	delete m_pSocket;
+	m_pSocket=pSocket;
+	}
 
 	bool status(KviKvsObjectFunctionCall *c);
-        bool remotePort(KviKvsObjectFunctionCall *c);
+	bool remotePort(KviKvsObjectFunctionCall *c);
 	bool remoteIp(KviKvsObjectFunctionCall *c);
 	bool localPort(KviKvsObjectFunctionCall *c);
 	bool localIp(KviKvsObjectFunctionCall *c);
-        bool functionConnect(KviKvsObjectFunctionCall *c);
+	bool functionConnect(KviKvsObjectFunctionCall *c);
 
 	bool close(KviKvsObjectFunctionCall *c);
 	bool read(KviKvsObjectFunctionCall *c);
 	bool write(KviKvsObjectFunctionCall *c);
 	bool bytesAvailable(KviKvsObjectFunctionCall *c);
-        bool setProtocol(KviKvsObjectFunctionCall *c);
+	bool setProtocol(KviKvsObjectFunctionCall *c);
 	//bool setReadBufferSize(KviKvsObjectFunctionCall *c);
         bool listen(KviKvsObjectFunctionCall *c);
 
 
-        bool dataAvailableEvent(KviKvsObjectFunctionCall *c);
-        bool incomingConnectionEvent(KviKvsObjectFunctionCall *c);
-        bool connectedEvent(KviKvsObjectFunctionCall *c);
-        bool disconnectedEvent(KviKvsObjectFunctionCall *c);
-        bool errorEvent(KviKvsObjectFunctionCall *c);
-        bool hostFoundEvent(KviKvsObjectFunctionCall *c);
-        bool stateChangedEvent(KviKvsObjectFunctionCall *c);
+	bool dataAvailableEvent(KviKvsObjectFunctionCall *c);
+	bool incomingConnectionEvent(KviKvsObjectFunctionCall *c);
+	bool connectedEvent(KviKvsObjectFunctionCall *c);
+	bool disconnectedEvent(KviKvsObjectFunctionCall *c);
+	bool errorEvent(KviKvsObjectFunctionCall *c);
+	bool hostFoundEvent(KviKvsObjectFunctionCall *c);
+	bool stateChangedEvent(KviKvsObjectFunctionCall *c);
 
-        void makeConnections();
+	void makeConnections();
 protected slots:
-        void slotReadyRead();
+	void slotReadyRead();
 	void slotNewConnection();
-        void slotConnected();
-        void slotDisconnected();
-        void slotError( QAbstractSocket::SocketError socketError );
-        void slotHostFound();
+	void slotConnected();
+	void slotDisconnected();
+	void slotError( QAbstractSocket::SocketError socketError );
+	void slotHostFound();
 	void slotStateChanged( QAbstractSocket::SocketState socketState );
 };
 #endif //_CLASS_SOCKET_H_

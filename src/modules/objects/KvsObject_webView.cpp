@@ -131,7 +131,7 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 	@keyterms:
 		An embedded webview widget,
 	@title:
-
+		webview
 	@type:
 		class
 	@short:
@@ -140,10 +140,142 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-
+		Provides an embedded web browser using webkit.
 	@functions:
-		!fn: $load()
+		!fn: $load(<url:string>)
+		Sets the current url for the webView and starts loading it
 
+		!fn: array $frames()
+		Returns an array containing the names of the document frames.
+
+		!fn: $firstChild()
+		Sets the first child of the current element as the new current element.
+		Returns true if the current element has been changed.
+
+		!fn: $findAll(<query:string>)
+		Searches for all the elements named <query> and stores them in a collection
+
+		!fn: $findFirst(<query:string>)
+		Searches for the first element named <query>; returns true if an element have been found, false if not.
+
+		!fn: $parentElement()
+		Sets the parent of the current element as the new current element.
+		Returns true if the current element has been changed.
+		
+		!fn: $nextSibling()
+		Sets the element just after the current one as the new current element.
+		Returns true if the current element has been changed.
+
+		!fn: $currentElementTagName()
+		Returns the tag name of the current element
+
+		!fn: $moveToQueryResultsAt(<index:int>)
+		Changes the current element to the <index>th element of the collection
+
+		!fn: int $queryResultsCount()
+		Returns the number of elements in the collection
+
+		!fn: $getDocumentElement([frame_name:string])
+		Sets the document element of the frame [frame_name] as the current element.
+		If no value has been specified for [frame_name] or [frame_name] is empty, the main frame of the page will be used.
+
+		!fn: string $attributeNames()
+		Returns a comma-separated list of the attribute names set on the current element
+
+		!fn: string $attribute(<name:string>)
+		Returns the value of the attribute <name> for the current element.
+
+		!fn: pixmap $makePreview()
+		Returns a 212x142 thumbnail of the current webView contants.
+		The returned object is an instance of the pixmap class.
+
+		!fn: string $rememberCurrent()
+		Returns the id of the current web element and stores it in a cache
+
+		!fn: $moveTo(<id:string>)
+		Changes the current element to <id>
+
+		!fn: string $toPlainText()
+		Returns the string representation of the current element
+
+		!fn: $setAttribute(<name:string>,<value:string>)
+		Sets the attribute <name> with value <value> to the current element
+
+		!fn: $setWebSetting(<name:string>,<value:bool>)
+		Enables or disables the <name> setting depending on <value>.
+		Valid settings name: JavascriptEnabled, PluginsEnabled, JavascriptCanOpenWindows, JavascriptCanAccessClipboard, ZoomTextOnly, LocalContentCanAccessFileUrls.
+
+		!fn: $removeFromDocument()
+		Removes the current element from the document. The parent element is set as the new current element.
+
+		!fn: $removeClass(<class_name:string>)
+		Removes a class from the current element
+
+		!fn: string $classes()
+		Returns a comma-separated list of classes set on the current element
+
+		!fn: $setLinkDelegationPolicy(<policy:string>)
+		Sets the link delegation policy: what happens when the users click on a link. Valid values:
+		[br] DontDelegateLinks: No links are delegated. Instead, webView tries to handle them all.
+		[br] DelegateExternalLinks: When activating links that point to documents not stored on the local filesystem or an equivalent then $linkClickedEvent() is executed.
+		[br] DelegateAllLinks: Whenever a link is activated the $linkClickedEvent() is executed.	
+		
+		!fn: $linkClickedEvent()
+		This function can be called when the user clicks on a link, depending no the current link delegation policy.
+		The argument of the function is the url that has been clicked.[br]
+		The default implementation emits the [classfnc:webview]$linkClicked[/classfnc]() signal.
+
+		!fn: $loadStartedEvent()
+		This function is called when the load of the page has started.
+		The default implementation emits the [classfnc:webview]$loadStarted[/classfnc]() signal.
+
+		!fn: $loadProgressEvent()
+		This function can be called during the page load progress.
+		The argument of the function is an int value that represent the loading progress status, ranging from 0 to 100.[br]
+		The default implementation emits the [classfnc:webview]$loadProgress[/classfnc]() signal.
+
+		!fn: $loadFinishedEvent()
+		This function is called when the load of the page has finished.
+		The argument of the function is a bool value that is true if the page has been loaded successfully, false otherwise.[br]
+		The default implementation emits the [classfnc:webview]$loadFinished[/classfnc]() signal.
+
+		!fn: $downloadRequestEvent()
+		This function is called when the user tries to download a file.
+		The argument of the function is the url of the file.[br]
+		You should return a valid path in the filesystem where to save the file.[br]
+		The default implementation emits the [classfnc:webview]$downloadRequest[/classfnc]() signal.
+
+		!fn: $downloadProgressEvent()
+		This function can be called during the download of a file.
+		Three integer arguments are passed to this function: the number of downloaded bytes, the download id, the size of the remove file (if known).
+		The default implementation emits the [classfnc:webview]$downloadProgress[/classfnc]() signal.
+
+		!fn: $downloadCompletedEvent()
+		This function can be called when a file download finishes.
+		The argument of the function is the an integer value containing the download id.
+		The default implementation emits the [classfnc:webview]$downloadCompleted[/classfnc]() signal.
+
+	@signals:
+		!sg: linkClicked()
+		This signal is emitted by the default implementation of [classfnc:webview]linkClickedEvent[/classfnc]().
+
+		!sg: loadStarted()
+		This signal is emitted by the default implementation of [classfnc:webview]loadStartedEvent[/classfnc]().
+
+		!sg: loadProgress()
+		This signal is emitted by the default implementation of [classfnc:webview]loadProgressEvent[/classfnc]().
+
+		!sg: loadFinished()
+		This signal is emitted by the default implementation of [classfnc:webview]loadFinishedEvent[/classfnc]().
+
+		!sg: downloadRequest()
+		This signal is emitted by the default implementation of [classfnc:webview]downloadRequestEvent[/classfnc]().
+
+		!sg: downloadProgress()
+		This signal is emitted by the default implementation of [classfnc:webview]downloadProgressEvent[/classfnc]().
+
+		!sg: downloadCompleted()
+		This signal is emitted by the default implementation of [classfnc:webview]downloadCompletedEvent[/classfnc]().
 */
 
 
@@ -240,7 +372,7 @@ KVSO_CLASS_FUNCTION(webView,setLinkDelegationPolicy)
 	else if(KviQString::equalCI(szPolicy,"DelegateAllLinks"))
 		policy=QWebPage::DelegateAllLinks;
 	else
-		c->warning(__tr2qs_ctx("Unknown delegation policy '%Q'- Switch do default dontDeleGateLinks","objects"),&szPolicy);
+		c->warning(__tr2qs_ctx("Unknown delegation policy '%Q'- Switch do default dontDelegateLinks","objects"),&szPolicy);
 	((QWebView *)widget())->page()->setLinkDelegationPolicy(policy);
 	return true;
 }
@@ -250,7 +382,7 @@ KVSO_CLASS_FUNCTION(webView,load)
 	CHECK_INTERNAL_POINTER(widget())
 	QString szUrl;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szUrl)
+		KVSO_PARAMETER("url",KVS_PT_STRING,0,szUrl)
 	KVSO_PARAMETERS_END(c)
 	((QWebView *)widget())->load(QUrl(szUrl));
 	return true;

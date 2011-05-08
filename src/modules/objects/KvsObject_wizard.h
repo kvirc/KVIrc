@@ -44,7 +44,7 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-    bool addPage(KviKvsObjectFunctionCall *c);
+	bool addPage(KviKvsObjectFunctionCall *c);
 	bool insertPage(KviKvsObjectFunctionCall *c);
 	bool removePage(KviKvsObjectFunctionCall *c);
 	bool setTitle(KviKvsObjectFunctionCall *c);
@@ -62,8 +62,8 @@ protected:
 	bool backClickedEvent(KviKvsObjectFunctionCall *c);
 
 };
-class KviKvsMdmWizard :  public KviTalWizard
 
+class KviKvsMdmWizard :  public KviTalWizard
 {
 	Q_OBJECT
 public:

@@ -114,7 +114,6 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 
 	QTabWidget * tw = new QTabWidget(this);
 	g->addWidget(tw,2,0,1,2);
-//	g->addMultiCellWidget(tw,2,2,0,1);
 
 	// code tab
 	QWidget * tab = new QWidget(tw);
@@ -134,14 +133,12 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 	gl->addWidget(l,0,0);
 	m_pCategoryCombo = new QComboBox(tab);
 	gl->addWidget(m_pCategoryCombo,0,1,1,3);
-	//gl->addMultiCellWidget(m_pCategoryCombo,0,0,1,3);
 	m_pCategoryCombo->setToolTip(__tr2qs_ctx("Choose the category that best fits for this action","editor"));
 
 	l = new QLabel(__tr2qs_ctx("Description:","editor"),tab);
 	gl->addWidget(l,1,0);
 	m_pDescriptionEdit = new QLineEdit(tab);
 	gl->addWidget(m_pDescriptionEdit,1,1,1,3);
-//	gl->addMultiCellWidget(m_pDescriptionEdit,1,1,1,3);
 	m_pDescriptionEdit->setToolTip(__tr2qs_ctx("Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here","editor"));
 
 	l = new QLabel(__tr2qs_ctx("Small Icon:","editor"),tab);
@@ -167,7 +164,6 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 	m_pBigIconButton->setIconSize(QSize(32,32));
 	connect(m_pBigIconButton,SIGNAL(clicked()),this,SLOT(chooseBigIcon()));
 	gl->addWidget(m_pBigIconButton,3,2,2,2);
-//	gl->addMultiCellWidget(m_pBigIconButton,3,4,2,3);
 	s = __tr2qs_ctx("The big icon associated to this action.<br>" \
 		"It will appear at least in the toolbar buttons when this action is inserted.<br>" \
 		"It has to be 32x32 pixels.","editor");
@@ -176,10 +172,8 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 
 	l = new QLabel(__tr2qs_ctx("Key Sequence:","editor"),tab);
 	gl->addWidget(l,4,0,2,1);
-//	gl->addMultiCellWidget(l,4,5,0,0);
 	m_pKeySequenceEdit = new QLineEdit(tab);
 	gl->addWidget(m_pKeySequenceEdit,4,1,2,1);
-//	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
 	m_pKeySequenceEdit->setToolTip(__tr2qs_ctx("Optional keyboard sequence that will activate this action.<br>" \
 		"The sequence has to be expressed as a string of up to four key codes separated by commas " \
 		"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
@@ -187,15 +181,11 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 
 	l = new QLabel(tab);
 	gl->addWidget(l,6,0,1,4);
-//	gl->addMultiCellWidget(l,6,6,0,3);
 
 	gl->setColumnStretch(1,1);
 	gl->setRowStretch(6,1);
 
-
 	tw->addTab(tab,__tr2qs_ctx("Properties","editor"));
-
-
 
 	// flags tab
 	tab = new QWidget(tw);

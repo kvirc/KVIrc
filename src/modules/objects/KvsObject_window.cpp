@@ -39,7 +39,6 @@ KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviMainWindow * pParent,const
 {
 	m_pCentralWidget = 0;
 	m_pIcon = 0;
-
 }
 
 KviKvsScriptWindowWindow::~KviKvsScriptWindowWindow()

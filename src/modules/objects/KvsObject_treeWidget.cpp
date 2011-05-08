@@ -138,7 +138,7 @@
                 In its arument the currrent item.[br]
                 The default implementation emits the [classfnc]$spacePressed[/classfnc]() signal.
 
-                !fn: $onItemEvent(<item:object)
+                !fn: $onItemEvent(<item:object>)
                 This event is called by framwork when the user moves the mouse cursor onto item.
                 The default implementation emits the [classfnc]$onItem[/classfnc]() signal.
 

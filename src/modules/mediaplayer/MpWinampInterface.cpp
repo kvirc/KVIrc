@@ -311,7 +311,7 @@ QString KviWinampInterface::mrl()
 	{
 		 int ret2 = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_CHECK);
 
-		if(ret2 =! KVIRC_WM_USER_CHECK_REPLY)
+		if(ret2 != KVIRC_WM_USER_CHECK_REPLY)
 		{
 			setLastError(__tr2qs_ctx("The winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer"));
 			return ret;
@@ -345,7 +345,7 @@ QString KviWinampInterface::nowPlaying()
 	if(hWinamp)
 	{
 		int retpippo = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_CHECK);
-		if(retpippo =! KVIRC_WM_USER_CHECK_REPLY)
+		if(retpippo != KVIRC_WM_USER_CHECK_REPLY)
 		{
 			setLastError(__tr2qs_ctx("The winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer") );
 			return ret;

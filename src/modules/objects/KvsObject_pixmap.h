@@ -50,64 +50,67 @@ public:
 
 	QImage * getImage()
 	{
-	    if(!m_pImage) m_pImage = new QImage();
-	    if(m_currentType==Pixmap)
-	    {
-	        if(m_pPixmap){
-		        *m_pImage = m_pPixmap->toImage();
-		        delete m_pPixmap;
-		        m_pPixmap = 0;
-	        }
-	    }
-	    m_currentType = Image;
-	    return m_pImage;
+		if(!m_pImage)
+			m_pImage = new QImage();
+		if(m_currentType==Pixmap)
+		{
+			if(m_pPixmap)
+			{
+				*m_pImage = m_pPixmap->toImage();
+				delete m_pPixmap;
+				m_pPixmap = 0;
+			}
+		}
+		m_currentType = Image;
+		return m_pImage;
 	}
 
 	QPixmap * getPixmap()
 	{
-	    if(!m_pPixmap) m_pPixmap = new QPixmap();
-	    if(m_currentType==Image)
-	    {
-	        if(m_pImage){
-		        *m_pPixmap = m_pPixmap->fromImage(*m_pImage);
-		        delete m_pImage;
-		        m_pImage = 0;
-	        }
-	    }
-	    m_currentType = Pixmap;
-	    return m_pPixmap;
+		if(!m_pPixmap)
+			m_pPixmap = new QPixmap();
+		if(m_currentType==Image)
+		{
+			if(m_pImage)
+			{
+				*m_pPixmap = m_pPixmap->fromImage(*m_pImage);
+				delete m_pImage;
+				m_pImage = 0;
+			}
+		}
+		m_currentType = Pixmap;
+		return m_pPixmap;
 	}
 
 protected:
-            KviAnimatedPixmap * m_pAnimatedPixmap;
-            QPixmap * m_pPixmap;
+	KviAnimatedPixmap * m_pAnimatedPixmap;
+	QPixmap * m_pPixmap;
 	QImage * m_pImage;
 signals:
 	void aboutToDie();
 protected:
+	bool fill(KviKvsObjectFunctionCall *c);
+	bool resize(KviKvsObjectFunctionCall *c);
+	bool scale(KviKvsObjectFunctionCall *c);
+	//bool rotate(KviKvsObjectFunctionCall *c);
+	bool save(KviKvsObjectFunctionCall *c);
+	bool startAnimation(KviKvsObjectFunctionCall *c);
+	bool stopAnimation(KviKvsObjectFunctionCall *c);
+	bool loadAnimation(KviKvsObjectFunctionCall *c);
+	bool load(KviKvsObjectFunctionCall *c);
+	bool height(KviKvsObjectFunctionCall *c);
+	bool width(KviKvsObjectFunctionCall *c);
+	bool grabWidget(KviKvsObjectFunctionCall *c);
+	bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
+	bool rotate(KviKvsObjectFunctionCall *c);
+	bool toGrayScale(KviKvsObjectFunctionCall *c);
+	bool mirrored(KviKvsObjectFunctionCall *c);
+	bool setPixel(KviKvsObjectFunctionCall *c);
 
-        bool fill(KviKvsObjectFunctionCall *c);
-        bool resize(KviKvsObjectFunctionCall *c);
-        bool scale(KviKvsObjectFunctionCall *c);
-        //bool rotate(KviKvsObjectFunctionCall *c);
-        bool save(KviKvsObjectFunctionCall *c);
-        bool startAnimation(KviKvsObjectFunctionCall *c);
-        bool stopAnimation(KviKvsObjectFunctionCall *c);
-        bool loadAnimation(KviKvsObjectFunctionCall *c);
-        bool load(KviKvsObjectFunctionCall *c);
-        bool height(KviKvsObjectFunctionCall *c);
-        bool width(KviKvsObjectFunctionCall *c);
-        bool grabWidget(KviKvsObjectFunctionCall *c);
-        bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
-        bool rotate(KviKvsObjectFunctionCall *c);
-        bool toGrayScale(KviKvsObjectFunctionCall *c);
-        bool mirrored(KviKvsObjectFunctionCall *c);
-        bool setPixel(KviKvsObjectFunctionCall *c);
-
-        bool frameChangedEvent(KviKvsObjectFunctionCall *c);
+	bool frameChangedEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:
-        void frameChanged();
-  };
+	void frameChanged();
+};
 
 #endif	// !_CLASS_PIXMAP_H_

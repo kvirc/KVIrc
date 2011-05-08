@@ -779,7 +779,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 			g_pInputPopup->setItemEnabled(iId,false);
 		else
 			g_pInputPopup->setItemEnabled(iId,!m_bReadOnly);
-		if(m_bSpSlowFlag ==true)
+		if(m_bSpSlowFlag)
 		{
 			iId = g_pInputPopup->insertItem(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
 		}
