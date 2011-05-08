@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: addon_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2010-07-24 23:55+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
 msgid "%cAddon id %Q, version %Q%c"
@@ -23,10 +23,6 @@ msgstr ""
 #: src/modules/addon/PackAddonDialog.cpp:280
 msgid "Addon Packaging Error"
 msgstr "アドオンのパッケージ作成中のエラー"
-
-#: src/modules/addon/PackAddonDialog.cpp:289
-msgid "Addon Packaging Warning"
-msgstr "アドオンのパッケージ作成中の警告"
 
 #: src/modules/addon/AddonFunctions.cpp:231
 #, fuzzy
@@ -49,7 +45,7 @@ msgstr ""
 msgid "Author"
 msgstr "作成者"
 
-#: src/modules/addon/PackAddonDialog.cpp:629
+#: src/modules/addon/PackAddonDialog.cpp:621
 msgid "Cancel"
 msgstr "取り消し"
 
@@ -117,12 +113,12 @@ msgstr ""
 msgid "Error installing addon package: %Q"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:337
-#: src/modules/addon/PackAddonDialog.cpp:352
-#: src/modules/addon/PackAddonDialog.cpp:365
-#: src/modules/addon/PackAddonDialog.cpp:384
-#: src/modules/addon/PackAddonDialog.cpp:393
-#: src/modules/addon/PackAddonDialog.cpp:398
+#: src/modules/addon/PackAddonDialog.cpp:329
+#: src/modules/addon/PackAddonDialog.cpp:344
+#: src/modules/addon/PackAddonDialog.cpp:357
+#: src/modules/addon/PackAddonDialog.cpp:376
+#: src/modules/addon/PackAddonDialog.cpp:385
+#: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Export Addon - KVIrc"
 msgstr "アドオンをエクスポートする - KVIrc"
 
@@ -134,19 +130,19 @@ msgstr ""
 msgid "Failed to unpack the selected file: %1"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:384
+#: src/modules/addon/PackAddonDialog.cpp:376
 msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:613
+#: src/modules/addon/PackAddonDialog.cpp:605
 msgid "File Summary"
 msgstr "ファイルの要約"
 
-#: src/modules/addon/PackAddonDialog.cpp:547
+#: src/modules/addon/PackAddonDialog.cpp:539
 msgid "Final Information"
 msgstr "最終情報"
 
-#: src/modules/addon/PackAddonDialog.cpp:633
+#: src/modules/addon/PackAddonDialog.cpp:625
 msgid "Finish"
 msgstr "完了"
 
@@ -154,7 +150,7 @@ msgstr "完了"
 msgid "Get More Addons..."
 msgstr "さらにアドオンを取得する..."
 
-#: src/modules/addon/PackAddonDialog.cpp:620
+#: src/modules/addon/PackAddonDialog.cpp:612
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
 "If these and the information showed in the previous page are correct, hit "
@@ -162,23 +158,23 @@ msgid ""
 "the packaging operations."
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:548
+#: src/modules/addon/PackAddonDialog.cpp:540
 msgid ""
 "Here there are the information you provided. If these information are "
 "correct, hit the \"Finish\" button to complete the packaging operations."
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:409
+#: src/modules/addon/PackAddonDialog.cpp:401
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:503
+#: src/modules/addon/PackAddonDialog.cpp:495
 msgid "Here you need to provide the path where to save the addon package"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:476
+#: src/modules/addon/PackAddonDialog.cpp:468
 msgid "Here you need to select the directory where the addon files are."
 msgstr ""
 
@@ -186,7 +182,7 @@ msgstr ""
 msgid "Hit the \"Next\" button to begin."
 msgstr "「次へ」のボタンを押すと開始します。"
 
-#: src/modules/addon/PackAddonDialog.cpp:593
+#: src/modules/addon/PackAddonDialog.cpp:585
 msgid "Icon File"
 msgstr "アイコン用ファイル"
 
@@ -219,11 +215,11 @@ msgstr ""
 msgid "Manage Script-Based Addons"
 msgstr "スクリプト ベースのアドオンを管理する"
 
-#: src/modules/addon/PackAddonDialog.cpp:450
+#: src/modules/addon/PackAddonDialog.cpp:442
 msgid "Minimum &KVIrc Version:"
 msgstr "最低限の KVIrc のバージョン(&K):"
 
-#: src/modules/addon/PackAddonDialog.cpp:589
+#: src/modules/addon/PackAddonDialog.cpp:581
 msgid "Minimum KVIrc Version"
 msgstr "最低限の KVIrc のバージョン"
 
@@ -235,58 +231,58 @@ msgstr "名前: %Q"
 msgid "No"
 msgstr "いいえ"
 
-#: src/modules/addon/PackAddonDialog.cpp:427
+#: src/modules/addon/PackAddonDialog.cpp:419
 msgid "No spaces allowed, like MyAddon"
 msgstr "空白は許可されていません。たとえば MyAddon"
 
-#: src/modules/addon/PackAddonDialog.cpp:414
+#: src/modules/addon/PackAddonDialog.cpp:406
 msgid "Package &Author:"
 msgstr "パッケージの作成者(&A):"
 
-#: src/modules/addon/PackAddonDialog.cpp:441
+#: src/modules/addon/PackAddonDialog.cpp:433
 msgid "Package &Description:"
 msgstr "パッケージの詳細(&D):"
 
-#: src/modules/addon/PackAddonDialog.cpp:423
+#: src/modules/addon/PackAddonDialog.cpp:415
 msgid "Package &Name:"
 msgstr "パッケージの名前(&N)"
 
-#: src/modules/addon/PackAddonDialog.cpp:432
+#: src/modules/addon/PackAddonDialog.cpp:424
 msgid "Package &Version:"
 msgstr "パッケージのバージョン(&V):"
 
-#: src/modules/addon/PackAddonDialog.cpp:573
+#: src/modules/addon/PackAddonDialog.cpp:565
 msgid "Package Author"
 msgstr "パッケージの作成者"
 
-#: src/modules/addon/PackAddonDialog.cpp:585
+#: src/modules/addon/PackAddonDialog.cpp:577
 msgid "Package Description"
 msgstr "パッケージの説明"
 
-#: src/modules/addon/PackAddonDialog.cpp:475
+#: src/modules/addon/PackAddonDialog.cpp:467
 msgid "Package Files"
 msgstr "パッケージのファイル"
 
-#: src/modules/addon/PackAddonDialog.cpp:408
+#: src/modules/addon/PackAddonDialog.cpp:400
 msgid "Package Information"
 msgstr "パッケージ情報"
 
-#: src/modules/addon/PackAddonDialog.cpp:577
+#: src/modules/addon/PackAddonDialog.cpp:569
 msgid "Package Name"
 msgstr "パッケージの名前"
 
-#: src/modules/addon/PackAddonDialog.cpp:581
+#: src/modules/addon/PackAddonDialog.cpp:573
 msgid "Package Version"
 msgstr "パッケージのバージョン"
 
-#: src/modules/addon/PackAddonDialog.cpp:398
+#: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Package saved successfully in %1"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:334
-#: src/modules/addon/PackAddonDialog.cpp:349
-#: src/modules/addon/PackAddonDialog.cpp:362
-#: src/modules/addon/PackAddonDialog.cpp:390
+#: src/modules/addon/PackAddonDialog.cpp:326
+#: src/modules/addon/PackAddonDialog.cpp:341
+#: src/modules/addon/PackAddonDialog.cpp:354
+#: src/modules/addon/PackAddonDialog.cpp:382
 msgid "Packaging failed"
 msgstr "パッケージ作成の失敗"
 
@@ -294,23 +290,23 @@ msgstr "パッケージ作成の失敗"
 msgid "Please select the addon installation file"
 msgstr "インストールするアドオンのファイルを選択してください"
 
-#: src/modules/addon/PackAddonDialog.cpp:502
+#: src/modules/addon/PackAddonDialog.cpp:494
 msgid "Save Package"
 msgstr "パッケージの保存"
 
-#: src/modules/addon/PackAddonDialog.cpp:601
+#: src/modules/addon/PackAddonDialog.cpp:593
 msgid "Save Path"
 msgstr "保存パス"
 
-#: src/modules/addon/PackAddonDialog.cpp:510
+#: src/modules/addon/PackAddonDialog.cpp:502
 msgid "Select save path:"
 msgstr "保存パスの選択:"
 
-#: src/modules/addon/PackAddonDialog.cpp:485
+#: src/modules/addon/PackAddonDialog.cpp:477
 msgid "Select the icon file:"
 msgstr "アイコン用ファイルの選択"
 
-#: src/modules/addon/PackAddonDialog.cpp:481
+#: src/modules/addon/PackAddonDialog.cpp:473
 msgid "Select the source directory:"
 msgstr "ソース用ディレクトリーの選択"
 
@@ -326,7 +322,7 @@ msgstr ""
 msgid "Skipping invalid entry '%1'"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:597
+#: src/modules/addon/PackAddonDialog.cpp:589
 msgid "Source Directory"
 msgstr "ソース用ディレクトリー"
 
@@ -366,7 +362,7 @@ msgstr "アドオン「%1」が存在しません。"
 msgid "The initialization script (install.kvs) does not exist."
 msgstr "初期化スクリプト(init.kvs) が存在しません。"
 
-#: src/modules/addon/PackAddonDialog.cpp:336
+#: src/modules/addon/PackAddonDialog.cpp:328
 msgid "The package file list is empty"
 msgstr ""
 
@@ -404,7 +400,7 @@ msgid ""
 "is %Q)"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:571
+#: src/modules/addon/PackAddonDialog.cpp:563
 msgid "This is what I will check for:"
 msgstr ""
 
@@ -423,7 +419,7 @@ msgstr "合計: %d 個のアドオンをインストールしました"
 msgid "Uninstalling existing addon version %Q"
 msgstr "存在するアドオンのバージョン %Q を削除しています "
 
-#: src/modules/addon/PackAddonDialog.cpp:436
+#: src/modules/addon/PackAddonDialog.cpp:428
 msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
 msgstr ""
 
@@ -453,12 +449,15 @@ msgstr ""
 msgid "You're about to install the following addon package"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:418
+#: src/modules/addon/PackAddonDialog.cpp:410
 msgid "Your name here"
 msgstr "ここに名前"
 
 #~ msgid "Addon Engine Version"
 #~ msgstr "アドオン エンジンのバージョン"
+
+#~ msgid "Addon Packaging Warning"
+#~ msgstr "アドオンのパッケージ作成中の警告"
 
 #~ msgid "Description must be short"
 #~ msgstr "説明は短くあるべきです"

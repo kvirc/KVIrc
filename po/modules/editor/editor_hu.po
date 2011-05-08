@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 06:01+0100\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2010-08-20 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -58,7 +58,7 @@ msgstr "### Epilógus ###"
 msgid "### Prologue ###"
 msgstr "### Prológus ###"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2078
+#: src/modules/classeditor/ClassEditorWindow.cpp:2098
 msgid "&Add"
 msgstr "Hozzá&ad"
 
@@ -73,12 +73,12 @@ msgstr "Nyers Esemény hozzá&adása..."
 msgid "&Apply"
 msgstr "&Alkalmaz"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1830
+#: src/modules/classeditor/ClassEditorWindow.cpp:1850
 msgid "&Build"
 msgstr ""
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1986
-#: src/modules/classeditor/ClassEditorWindow.cpp:2088
+#: src/modules/classeditor/ClassEditorWindow.cpp:2006
+#: src/modules/classeditor/ClassEditorWindow.cpp:2108
 #: src/modules/editor/ScriptEditorImplementation.cpp:1089
 msgid "&Cancel"
 msgstr "Mégsem"
@@ -91,7 +91,7 @@ msgstr "Szerkesztő beállításai..."
 msgid "&Copy"
 msgstr "Másol"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1979
+#: src/modules/classeditor/ClassEditorWindow.cpp:1999
 msgid "&Create Class"
 msgstr "Osztály létrehozása"
 
@@ -155,11 +155,11 @@ msgstr "Megnyitás"
 msgid "&Paste Below"
 msgstr "Beillesztés Alá"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2080
+#: src/modules/classeditor/ClassEditorWindow.cpp:2100
 msgid "&Rename"
 msgstr "Átnevezés"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1977
+#: src/modules/classeditor/ClassEditorWindow.cpp:1997
 msgid "&Rename Class"
 msgstr "Osztály Átnevezése"
 
@@ -173,7 +173,7 @@ msgstr "Cser&él"
 msgid "&Replace in all editor's items"
 msgstr "Minden Aliasban Cse&rél"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1835
+#: src/modules/classeditor/ClassEditorWindow.cpp:1855
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -192,10 +192,11 @@ msgstr ""
 "Igaz értékű lesz.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
+#, fuzzy
 msgid ""
-"<center><b>External menu name</b><br>This allows to nest externally defined "
-"popup menus. The popup menu with the specified name will be looked up at "
-"menu setup time.</center>"
+"<center><b>External menu name</b><br>This allows one to nest externally "
+"defined popup menus. The popup menu with the specified name will be looked "
+"up at menu setup time.</center>"
 msgstr ""
 "<center><b>Külső menü név</b><br>Ez lehetővé teszi kívülről definiált popup "
 "menük beágyazását. A menü a megadott névvel megjelenéskor lesz kikeresve.</"
@@ -257,7 +258,7 @@ msgstr "Tag Függvény Hozzáadása"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:567
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
 #: src/modules/classeditor/ClassEditorWindow.cpp:885
-#: src/modules/classeditor/ClassEditorWindow.cpp:1577
+#: src/modules/classeditor/ClassEditorWindow.cpp:1597
 msgid "Add Namespace"
 msgstr "Névtér Hozzáadása"
 
@@ -331,9 +332,9 @@ msgstr "Hibás Alias Név"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1073
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1087
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1098
-#: src/modules/classeditor/ClassEditorWindow.cpp:1500
-#: src/modules/classeditor/ClassEditorWindow.cpp:1514
-#: src/modules/classeditor/ClassEditorWindow.cpp:1525
+#: src/modules/classeditor/ClassEditorWindow.cpp:1520
+#: src/modules/classeditor/ClassEditorWindow.cpp:1534
+#: src/modules/classeditor/ClassEditorWindow.cpp:1545
 msgid "Bad Namespace Name"
 msgstr "Hibás Névtér Név"
 
@@ -435,13 +436,13 @@ msgstr ""
 "aktív ablak a megadott típusú"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:730
-#: src/modules/classeditor/ClassEditorWindow.cpp:1117
+#: src/modules/classeditor/ClassEditorWindow.cpp:1119
 msgid "Choose a Directory - KVIrc"
 msgstr "Válassz Mappát - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:699
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:812
-#: src/modules/classeditor/ClassEditorWindow.cpp:1209
+#: src/modules/classeditor/ClassEditorWindow.cpp:1229
 #: src/modules/editor/ScriptEditorImplementation.cpp:921
 #: src/modules/eventeditor/EventEditorWindow.cpp:464
 #: src/modules/eventeditor/EventEditorWindow.cpp:505
@@ -462,12 +463,12 @@ msgstr "Válassz kategóriát, ami a legjobban illik az akcióhoz"
 msgid "Class"
 msgstr "Osztály"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1823
+#: src/modules/classeditor/ClassEditorWindow.cpp:1843
 msgid "Class Editor"
 msgstr "Osztály Szerkesztő"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: src/modules/classeditor/ClassEditorWindow.cpp:1113
+#: src/modules/classeditor/ClassEditorWindow.cpp:1208
 msgid "Class Export"
 msgstr "Osztály Exportálása"
 
@@ -475,11 +476,11 @@ msgstr "Osztály Exportálása"
 msgid "Class already exists"
 msgstr "Osztály már létezik"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1915
+#: src/modules/classeditor/ClassEditorWindow.cpp:1935
 msgid "Class names can contain only letters, digits and underscores"
 msgstr "Osztálynév csak betűt, számot és aláhúzást tartalmazhat"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1840
+#: src/modules/classeditor/ClassEditorWindow.cpp:1860
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
 msgid "Close"
 msgstr "Bezár"
@@ -504,7 +505,7 @@ msgstr "Színek"
 msgid "Comments:"
 msgstr "Kommentek: "
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1690
+#: src/modules/classeditor/ClassEditorWindow.cpp:1710
 msgid "Compilation error - KVIrc"
 msgstr "Fordítási hiba - KVIrc"
 
@@ -549,18 +550,18 @@ msgstr "Tényleg törölni akarod ezt az eszköztárat: '%1'?"
 msgid "Do you really want to remove the alias \"%1\"?"
 msgstr "Tényleg szeretnéd az alábbi aliast eltávolítani: \"%1\" ?"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1337
+#: src/modules/classeditor/ClassEditorWindow.cpp:1357
 #, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
 msgstr "Tényleg szeretnéd az alábbi osztályt eltávolítani: \"%1\" ?"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1345
+#: src/modules/classeditor/ClassEditorWindow.cpp:1365
 #, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
 msgstr "Tényleg szeretnéd az alábbi függvényt eltávolítani: \"%1\" ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
-#: src/modules/classeditor/ClassEditorWindow.cpp:1340
+#: src/modules/classeditor/ClassEditorWindow.cpp:1360
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr ""
 
@@ -714,7 +715,7 @@ msgid "Found an empty namespace in alias name"
 msgstr "Üres névteret találtam az alias nevében"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1099
-#: src/modules/classeditor/ClassEditorWindow.cpp:1526
+#: src/modules/classeditor/ClassEditorWindow.cpp:1546
 msgid "Found an empty namespace in namespace name"
 msgstr "Üres névteret találtam a névtér nevében"
 
@@ -722,13 +723,19 @@ msgstr "Üres névteret találtam a névtér nevében"
 msgid "Function already exists"
 msgstr "Függvény már létezik"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2033
+#: src/modules/classeditor/ClassEditorWindow.cpp:2053
 msgid "Function names can contain only letters, digits and underscores"
 msgstr "Függvény neve csak betűt, számot és aláhúzást tartalmazhat"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:534
 msgid "Functions:"
 msgstr "Függvények: "
+
+#: src/modules/codetester/CodeTesterWindow.cpp:64
+msgid ""
+"Here you can specify a semicolon-separated list of parameters that will be "
+"available in the code as $0, $1, $2, .."
+msgstr ""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
 msgid "Hide Advanced"
@@ -746,7 +753,7 @@ msgstr "Ikon:"
 msgid "Id"
 msgstr "Azonosító"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1919
+#: src/modules/classeditor/ClassEditorWindow.cpp:1939
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
@@ -754,7 +761,7 @@ msgstr ""
 "Átnevezéskor az osztály neve csak betűket, számokat, aláhúzást és '::' "
 "névtér elválasztókat tartalmazhat"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1932
+#: src/modules/classeditor/ClassEditorWindow.cpp:1952
 msgid "Inherits Class:"
 msgstr "Öröklött Osztály:"
 
@@ -809,7 +816,7 @@ msgid "Missing Alias Name"
 msgstr "Hiányzó Alias Név"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1060
-#: src/modules/classeditor/ClassEditorWindow.cpp:1487
+#: src/modules/classeditor/ClassEditorWindow.cpp:1507
 msgid "Missing Namespace Name"
 msgstr "Hiányzó Névtér Név"
 
@@ -843,7 +850,7 @@ msgid "Namespace already exists"
 msgstr "Névtér már létezik"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1074
-#: src/modules/classeditor/ClassEditorWindow.cpp:1501
+#: src/modules/classeditor/ClassEditorWindow.cpp:1521
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
@@ -941,8 +948,8 @@ msgstr "Új Eszköztár"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
 msgid "No"
 msgstr "Nem"
@@ -966,9 +973,9 @@ msgstr "Normál szöveg:"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:724
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:792
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: src/modules/classeditor/ClassEditorWindow.cpp:1113
+#: src/modules/classeditor/ClassEditorWindow.cpp:1208
+#: src/modules/classeditor/ClassEditorWindow.cpp:1240
 #: src/modules/editor/ScriptEditorImplementation.cpp:542
 #: src/modules/eventeditor/EventEditorWindow.cpp:509
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1195
@@ -994,10 +1001,10 @@ msgstr "OK"
 #: src/modules/classeditor/ClassEditorWindow.cpp:606
 #: src/modules/classeditor/ClassEditorWindow.cpp:690
 #: src/modules/classeditor/ClassEditorWindow.cpp:695
-#: src/modules/classeditor/ClassEditorWindow.cpp:1489
-#: src/modules/classeditor/ClassEditorWindow.cpp:1502
-#: src/modules/classeditor/ClassEditorWindow.cpp:1516
-#: src/modules/classeditor/ClassEditorWindow.cpp:1527
+#: src/modules/classeditor/ClassEditorWindow.cpp:1509
+#: src/modules/classeditor/ClassEditorWindow.cpp:1522
+#: src/modules/classeditor/ClassEditorWindow.cpp:1536
+#: src/modules/classeditor/ClassEditorWindow.cpp:1547
 msgid "Ok, Let me try again..."
 msgstr "Megpróbálom újra..."
 
@@ -1049,11 +1056,11 @@ msgstr "Beilleszt Bent"
 msgid "Please choose the icon for the ToolBar"
 msgstr "Kérlek adj meg egy ikont az Eszköztárnak"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1904
+#: src/modules/classeditor/ClassEditorWindow.cpp:1924
 msgid "Please enter the name for the class:"
 msgstr "Kérlek adj meg egy nevet az osztálynak:"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2024
+#: src/modules/classeditor/ClassEditorWindow.cpp:2044
 msgid "Please enter the name for the member function:"
 msgstr "Kérlek adj meg egy nevet a tagfüggvénynek:"
 
@@ -1062,7 +1069,7 @@ msgid "Please enter the name for the new alias"
 msgstr "Kérlek adj meg egy nevet az új aliasnak"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
-#: src/modules/classeditor/ClassEditorWindow.cpp:1577
+#: src/modules/classeditor/ClassEditorWindow.cpp:1597
 msgid "Please enter the name for the new namespace"
 msgstr "Kérlek adj meg egy nevet az új névtérnek"
 
@@ -1075,7 +1082,7 @@ msgstr "Kérlek adj meg egy nevet az aliasnak"
 msgid "Please enter the new name for the namespace"
 msgstr "Kérlek adj meg egy nevet a névtérnek"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2045
+#: src/modules/classeditor/ClassEditorWindow.cpp:2065
 msgid "Please enter the optional reminder string for the member function:"
 msgstr "Kérlek adj meg egy emlékeztetőt a tagfüggvényről:"
 
@@ -1091,7 +1098,7 @@ msgid ""
 "highlighted."
 msgstr "Add meg a keresendő szöveget. Az egyező függvények ki lesznek emelve."
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1342
+#: src/modules/classeditor/ClassEditorWindow.cpp:1362
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
 msgstr ""
@@ -1169,7 +1176,7 @@ msgid "Remove Selected"
 msgstr "Kijelölt Eltávolítása"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 msgid "Remove item"
 msgstr "Elem eltávolítása"
 
@@ -1189,7 +1196,7 @@ msgid "Rename Namespace"
 msgstr "Névtér Átnevezése"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
 msgid "Replace file"
 msgstr "Fájl cseréje"
 
@@ -1206,7 +1213,7 @@ msgstr "Sor: %1 Oszlop: %2"
 msgid "Save Failed - KVIrc"
 msgstr "Mentés Sikertelen - KVIrc"
 
-#: src/modules/codetester/CodeTesterWindow.cpp:109
+#: src/modules/codetester/CodeTesterWindow.cpp:110
 msgid "Script Tester"
 msgstr ""
 
@@ -1214,7 +1221,7 @@ msgstr ""
 msgid "Separator"
 msgstr "Elválasztó"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2058
+#: src/modules/classeditor/ClassEditorWindow.cpp:2078
 msgid "Set as <b>Internal</b> Function: "
 msgstr "Beállítás <b>Belső</b> Függvényként: "
 
@@ -1228,7 +1235,7 @@ msgid ""
 msgstr "':' karakter az alias nevében: úgy érted... <névtér>::<név> ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1088
-#: src/modules/classeditor/ClassEditorWindow.cpp:1515
+#: src/modules/classeditor/ClassEditorWindow.cpp:1535
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr "':' karakter a névtér nevében: úgy érted... <névtér>::<név> ?"
@@ -1258,12 +1265,12 @@ msgstr ""
 "ezt az akciót beszúrod.<br>32x32 pixel méretűnek kell lennie."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:792
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: src/modules/classeditor/ClassEditorWindow.cpp:1208
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr "Az exportálandó fájl üres lenne: gyáván nem fogom létrehozni"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:750
-#: src/modules/classeditor/ClassEditorWindow.cpp:1136
+#: src/modules/classeditor/ClassEditorWindow.cpp:1138
 #, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "A \"%1\" fájl már létezik. Szeretnéd cserélni?"
@@ -1287,11 +1294,11 @@ msgstr ""
 "eszköztárral) vagy inkább megadod manuálisan?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:724
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
+#: src/modules/classeditor/ClassEditorWindow.cpp:1113
 msgid "There is no selection!"
 msgstr "Nincs semmi kijelölve!"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1681
+#: src/modules/classeditor/ClassEditorWindow.cpp:1701
 #, fuzzy
 msgid "These inherited classes will be not compiled too:"
 msgstr "Ezek az Öröklött osztályok nem lesznek lefordítva:"
@@ -1331,7 +1338,7 @@ msgstr "Eszköztár Tulajdonságok"
 msgid "Type"
 msgstr "Típus"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1674
+#: src/modules/classeditor/ClassEditorWindow.cpp:1694
 msgid "Unable to compile class: "
 msgstr "Osztály fordítása sikertelen: "
 
@@ -1344,7 +1351,7 @@ msgstr "Az akciók fájl írása sikertelen."
 msgid "Unable to write to the alias file."
 msgstr "Az alias fájl írása sikertelen."
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: src/modules/classeditor/ClassEditorWindow.cpp:1240
 msgid "Unable to write to the class file."
 msgstr "Az osztály fájl írása sikertelen."
 
@@ -1398,7 +1405,7 @@ msgstr "Keresendő Szó"
 
 #: src/modules/actioneditor/ActionEditor.cpp:726
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: src/modules/classeditor/ClassEditorWindow.cpp:1240
 #: src/modules/eventeditor/EventEditorWindow.cpp:471
 #: src/modules/eventeditor/EventEditorWindow.cpp:509
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1195
@@ -1411,16 +1418,16 @@ msgstr "Írás Sikertelen - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
 msgid "Yes"
 msgstr "Igen"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 msgid "Yes to All"
 msgstr "Igen mindet"
 
@@ -1429,7 +1436,7 @@ msgid "You must specify a valid name for the alias"
 msgstr "Meg kell adnod egy érvényes nevet az aliasnak"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1061
-#: src/modules/classeditor/ClassEditorWindow.cpp:1488
+#: src/modules/classeditor/ClassEditorWindow.cpp:1508
 msgid "You must specify a valid name for the namespace"
 msgstr "Meg kell adnod egy érvényes nevet a névtérnek"
 

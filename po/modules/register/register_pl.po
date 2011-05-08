@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2011-03-03 17:16+0100\n"
 "Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
@@ -46,8 +46,8 @@ msgstr " Użytkownik: %c%Q"
 msgid "&Add Group..."
 msgstr "&Dodaj grupę..."
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 #: src/modules/reguser/RegisteredUsersDialog.cpp:248
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 msgid "&Add..."
 msgstr "&Dodaj..."
 
@@ -63,10 +63,10 @@ msgstr "&Edytuj..."
 msgid "&New"
 msgstr "&Nowy"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:299
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
-#: src/modules/reguser/RegisteredUsersDialog.cpp:299
 msgid "&OK"
 msgstr "&OK"
 
@@ -245,10 +245,10 @@ msgstr "Nie można otworzyć pliku %Q w celu zapisu."
 msgid "Can't open file %s for reading."
 msgstr "Nie można otworzyć pliku %s w celu odczytu."
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:304
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
-#: src/modules/reguser/RegisteredUsersDialog.cpp:304
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -261,8 +261,8 @@ msgstr "Kanał: %1%2@%3"
 msgid "Choose a Filename - KVIrc"
 msgstr "Wybierz nazwę pliku - KVIrc"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 #: src/modules/reguser/RegisteredUsersDialog.cpp:136
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 msgid "Comment:"
 msgstr "Komentarz:"
 
@@ -465,8 +465,8 @@ msgstr "Właściwość"
 msgid "Property Editor"
 msgstr "Edytor właściwości"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 #: src/modules/reguser/RegisteredUsersDialog.cpp:258
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 msgid "Re&move"
 msgstr "Us&uń"
 

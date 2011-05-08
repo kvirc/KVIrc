@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc 4.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-03 06:30+0100\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2010-07-29 00:26+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -393,7 +393,7 @@ msgstr ""
 msgid "%cUser action: %Q"
 msgstr ""
 
-#: src/kvirc/ui/KviInputEditor.cpp:1676
+#: src/kvirc/ui/KviInputEditor.cpp:1661
 msgid "%d matches: %Q"
 msgstr "%d 件一致: %Q"
 
@@ -464,7 +464,7 @@ msgstr ""
 msgid "&Configure KVIrc..."
 msgstr "KVIrc の設定(&C)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:783
+#: src/kvirc/ui/KviInputEditor.cpp:768
 msgid "&Copy"
 msgstr "コピー(&C)"
 
@@ -523,7 +523,7 @@ msgstr "IRC 操作"
 msgid "&Other..."
 msgstr "その他(&O)..."
 
-#: src/kvirc/ui/KviInputEditor.cpp:785
+#: src/kvirc/ui/KviInputEditor.cpp:770
 msgid "&Paste"
 msgstr "貼り付け(&P)"
 
@@ -536,7 +536,7 @@ msgstr "プレビュー(&P)"
 msgid "&Quit"
 msgstr "終了(&Q)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:779
+#: src/kvirc/ui/KviInputEditor.cpp:764
 msgid "&Redo"
 msgstr "やり直し(&R)"
 
@@ -580,7 +580,7 @@ msgstr "今日のティップス(&T)"
 msgid "&Tools"
 msgstr "ツール(&T)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:777
+#: src/kvirc/ui/KviInputEditor.cpp:762
 msgid "&Undo"
 msgstr "取り消し(&U)"
 
@@ -762,7 +762,7 @@ msgstr "<b>ダブルクリック:</b><br>%Q"
 msgid "<b>Double-click</b> to get network information"
 msgstr "<b>ダブルクリック</b> でネットワーク情報の取得"
 
-#: src/kvirc/kernel/KviApplication.cpp:1012
+#: src/kvirc/kernel/KviApplication.cpp:1015
 msgid ""
 "<b>Hi!</b><br><br><b>It seems that you have just upgraded KVirc from a "
 "previous version.</b><br><br>The KVIrc default scripts needs to be updated "
@@ -782,7 +782,7 @@ msgstr "<b>KVIrc</b>"
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>中央クリック:</b><br>%Q"
 
-#: src/kvirc/kernel/KviApplication.cpp:1078
+#: src/kvirc/kernel/KviApplication.cpp:1081
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -1029,7 +1029,7 @@ msgstr ""
 msgid "Allow anybody to invite"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:997
+#: src/kvirc/kernel/KviCoreActions.cpp:1002
 msgid "Allows entering and leaving away state"
 msgstr ""
 
@@ -1202,7 +1202,7 @@ msgstr "利用できるユーザーのモード:"
 msgid "Avatar change"
 msgstr "アバターの変更"
 
-#: src/kvirc/kernel/KviApplication.cpp:1277
+#: src/kvirc/kernel/KviApplication.cpp:1280
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
@@ -1236,7 +1236,7 @@ msgstr ""
 msgid "Away since"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:996
+#: src/kvirc/kernel/KviCoreActions.cpp:1001
 msgid "Away/Back"
 msgstr ""
 
@@ -1631,7 +1631,7 @@ msgstr ""
 #: src/modules/avatar/libkviavatar.cpp:109
 #: src/modules/setup/SetupWizard.cpp:87
 #: src/kvirc/kernel/KviDefaultScript.cpp:449
-#: src/kvirc/kernel/KviCoreActions.cpp:823 src/kvirc/ui/KviImageDialog.cpp:156
+#: src/kvirc/kernel/KviCoreActions.cpp:828 src/kvirc/ui/KviImageDialog.cpp:156
 #: src/kvirc/ui/KviMaskEditor.cpp:90
 #: src/kvilib/file/KviPackageIOEngine.cpp:135
 #: src/kvilib/tal/KviTalWizard.cpp:181
@@ -1723,8 +1723,8 @@ msgstr "チャンネル所有者が状態の設定解除"
 msgid "ChanServ message"
 msgstr "ChanServ のメッセージ"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:820
-#: src/kvirc/kernel/KviCoreActions.cpp:824
+#: src/kvirc/kernel/KviCoreActions.cpp:825
+#: src/kvirc/kernel/KviCoreActions.cpp:829
 msgid "Change Nickname"
 msgstr "ニックネームの変更"
 
@@ -1958,7 +1958,7 @@ msgstr ""
 msgid "Classes"
 msgstr "閉じる"
 
-#: src/kvirc/ui/KviInputEditor.cpp:801
+#: src/kvirc/ui/KviInputEditor.cpp:786
 msgid "Clear"
 msgstr "消去"
 
@@ -1970,20 +1970,20 @@ msgstr "バッファの消去"
 msgid "Clear Recent"
 msgstr "最近の情報の消去"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:788
-#: src/kvirc/kernel/KviCoreActions.cpp:803
+#: src/kvirc/kernel/KviCoreActions.cpp:793
+#: src/kvirc/kernel/KviCoreActions.cpp:808
 msgid "Clear Recent Channels List"
 msgstr "最近のチャンネル リストの消去"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:844
-#: src/kvirc/kernel/KviCoreActions.cpp:859
+#: src/kvirc/kernel/KviCoreActions.cpp:849
+#: src/kvirc/kernel/KviCoreActions.cpp:864
 msgid "Clear Recent Nicks List"
 msgstr "最近のニック リストの消去"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1480
 #: src/modules/options/OptionsWidget_servers.cpp:1496
-#: src/kvirc/kernel/KviCoreActions.cpp:891
-#: src/kvirc/kernel/KviCoreActions.cpp:905
+#: src/kvirc/kernel/KviCoreActions.cpp:896
+#: src/kvirc/kernel/KviCoreActions.cpp:910
 msgid "Clear Recent Servers List"
 msgstr "最近のサーバー リストの消去"
 
@@ -1995,7 +1995,7 @@ msgstr ""
 msgid "Click to open this link"
 msgstr "このリンクを開くにはクリックします。"
 
-#: src/kvirc/ui/KviInputEditor.cpp:756
+#: src/kvirc/ui/KviInputEditor.cpp:741
 msgid "Clipboard"
 msgstr "クリップボード"
 
@@ -2103,7 +2103,7 @@ msgstr "確認 - KVIrc"
 msgid "Connect"
 msgstr "接続"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:876
+#: src/kvirc/kernel/KviCoreActions.cpp:881
 msgid "Connect To"
 msgstr "接続"
 
@@ -2300,7 +2300,7 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr ""
 
-#: src/kvirc/ui/KviInputEditor.cpp:781
+#: src/kvirc/ui/KviInputEditor.cpp:766
 msgid "Cu&t"
 msgstr "切り取り&T)"
 
@@ -2674,7 +2674,7 @@ msgstr ""
 msgid "Engine not initialized"
 msgstr "エンジンを初期化できませんでした"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:1067
+#: src/kvirc/kernel/KviCoreActions.cpp:1072
 msgid "Enter Away Mode"
 msgstr "退席モードの入力"
 
@@ -2928,19 +2928,19 @@ msgstr ""
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1245
+#: src/kvirc/kernel/KviApplication.cpp:1248
 msgid "File download failed"
 msgstr "ファイルのダウンロードに失敗しました。"
 
-#: src/kvirc/kernel/KviApplication.cpp:1247
+#: src/kvirc/kernel/KviApplication.cpp:1250
 msgid "File download from %1 failed"
 msgstr "%1 からのファイルのダウンロードに失敗しました。"
 
-#: src/kvirc/kernel/KviApplication.cpp:1258
+#: src/kvirc/kernel/KviApplication.cpp:1261
 msgid "File download from %1 successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1256
+#: src/kvirc/kernel/KviApplication.cpp:1259
 msgid "File download successfully complete"
 msgstr "ファイルのダウンロードに成功しました。"
 
@@ -3259,7 +3259,7 @@ msgstr "IRC"
 msgid "IRC Channel related actions"
 msgstr ""
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:258
+#: src/kvirc/ui/KviIrcToolBar.cpp:241
 msgid "IRC Context"
 msgstr "IRC コンテキスト"
 
@@ -3332,7 +3332,7 @@ msgid ""
 "the CTRL+P prefix"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:794
+#: src/kvirc/kernel/KviApplication.cpp:797
 msgid "Ignore"
 msgstr ""
 
@@ -3392,7 +3392,7 @@ msgid ""
 "NOT be encrypted"
 msgstr ""
 
-#: src/kvirc/ui/KviIrcToolBar.cpp:343
+#: src/kvirc/ui/KviIrcToolBar.cpp:326
 msgid "In progress..."
 msgstr ""
 
@@ -3408,7 +3408,7 @@ msgstr ""
 msgid "Input History Disabled"
 msgstr "入力履歴を無効にしました"
 
-#: src/kvirc/ui/KviInputEditor.cpp:834
+#: src/kvirc/ui/KviInputEditor.cpp:819
 msgid "Insert Icon"
 msgstr "アイコンの挿入"
 
@@ -3424,7 +3424,7 @@ msgstr "パッケージのインストール"
 msgid "Install Theme Package"
 msgstr "テーマ パッケージのインストール"
 
-#: src/kvirc/kernel/KviApplication.cpp:1077
+#: src/kvirc/kernel/KviApplication.cpp:1080
 msgid "Installation problems?"
 msgstr ""
 
@@ -3551,7 +3551,7 @@ msgstr ""
 msgid "Invalid timeout specified, using default"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:947
+#: src/kvirc/kernel/KviCoreActions.cpp:952
 msgid "Invisible (+i)"
 msgstr "招待 (+i)"
 
@@ -3580,11 +3580,11 @@ msgstr "招待のみ"
 msgid "Invite unexception matching my mask"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:1161
+#: src/kvirc/kernel/KviCoreActions.cpp:1166
 msgid "Irc Actions"
 msgstr "IRC 操作"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:1128
+#: src/kvirc/kernel/KviCoreActions.cpp:1133
 msgid "Irc Tools"
 msgstr "IRC ツール"
 
@@ -3601,7 +3601,7 @@ msgstr ""
 msgid "Join"
 msgstr "参加(&J)"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:769
+#: src/kvirc/kernel/KviCoreActions.cpp:774
 msgid "Join Channel"
 msgstr "チャンネルの参加"
 
@@ -3681,7 +3681,7 @@ msgstr "KVIrc ホームページ"
 msgid "KVIrc KVS Script"
 msgstr "KVIrc KVS スクリプト"
 
-#: src/kvirc/kernel/KviApplication.cpp:751
+#: src/kvirc/kernel/KviApplication.cpp:754
 #, fuzzy
 msgid "KVIrc Messaging"
 msgstr "パーサーの警告"
@@ -3780,14 +3780,14 @@ msgstr ""
 msgid "Lag: %1.%2%3"
 msgstr ""
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:284 src/kvirc/ui/KviIrcToolBar.cpp:273
-#: src/kvirc/ui/KviIrcToolBar.cpp:337
+#: src/kvirc/ui/KviStatusBarApplet.cpp:284 src/kvirc/ui/KviIrcToolBar.cpp:256
+#: src/kvirc/ui/KviIrcToolBar.cpp:320
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr ""
 
-#: src/kvirc/ui/KviStatusBarApplet.cpp:337 src/kvirc/ui/KviIrcToolBar.cpp:275
-#: src/kvirc/ui/KviIrcToolBar.cpp:339
+#: src/kvirc/ui/KviStatusBarApplet.cpp:337 src/kvirc/ui/KviIrcToolBar.cpp:258
+#: src/kvirc/ui/KviIrcToolBar.cpp:322
 msgid "Lag: ?.??"
 msgstr ""
 
@@ -3804,7 +3804,7 @@ msgstr ""
 msgid "Last checked %d mins %d secs ago"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:1068
+#: src/kvirc/kernel/KviCoreActions.cpp:1073
 msgid "Leave Away Mode"
 msgstr ""
 
@@ -4007,7 +4007,7 @@ msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr ""
 "メッセージの色オプション (image_id,foreground,background,logFlag (0/1))"
 
-#: src/kvirc/kernel/KviApplication.cpp:752
+#: src/kvirc/kernel/KviApplication.cpp:755
 msgid ""
 "Message from %1:\n"
 "\n"
@@ -4267,8 +4267,8 @@ msgstr "ニックネーム:"
 
 #: src/modules/logview/LogViewWindow.cpp:461
 #: src/modules/logview/LogViewWindow.cpp:479
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:255
+#: src/kvirc/kernel/KviApplication.cpp:1022
+#: src/kvirc/kernel/KviApplication.cpp:1095 src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/ui/KviStatusBar.cpp:553
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
 msgid "No"
@@ -4282,7 +4282,7 @@ msgstr ""
 msgid "No DBus type specified"
 msgstr ""
 
-#: src/kvirc/ui/KviStatusBar.cpp:695 src/kvirc/ui/KviIrcToolBar.cpp:280
+#: src/kvirc/ui/KviStatusBar.cpp:695 src/kvirc/ui/KviIrcToolBar.cpp:263
 msgid "No IRC context"
 msgstr "IRC コンテキストがありません"
 
@@ -4294,8 +4294,8 @@ msgstr ""
 msgid "No activity"
 msgstr "活動していない"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1022
+#: src/kvirc/kernel/KviApplication.cpp:1095
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -4319,7 +4319,7 @@ msgstr "チャンネルのトピックが設定されていません。"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr ""
 
-#: src/kvirc/ui/KviConsoleWindow.cpp:1111 src/kvirc/ui/KviIrcToolBar.cpp:240
+#: src/kvirc/ui/KviConsoleWindow.cpp:1111 src/kvirc/ui/KviIrcToolBar.cpp:223
 msgid "No connection"
 msgstr "未接続です"
 
@@ -4348,7 +4348,7 @@ msgstr ""
 msgid "No host to resolve"
 msgstr "ホスト名が解決できません。"
 
-#: src/kvirc/ui/KviInputEditor.cpp:1680
+#: src/kvirc/ui/KviInputEditor.cpp:1665
 msgid "No matches"
 msgstr "一致なし"
 
@@ -4441,7 +4441,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:233
 #: src/kvirc/ui/KviStatusBarApplet.cpp:303 src/kvirc/ui/KviStatusBar.cpp:691
-#: src/kvirc/ui/KviIrcToolBar.cpp:301
+#: src/kvirc/ui/KviIrcToolBar.cpp:284
 msgid "Not connected"
 msgstr "未接続"
 
@@ -4602,7 +4602,7 @@ msgstr ""
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: ローカルの IRC オーペレーター (LOCOP)"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:822 src/kvirc/ui/KviHtmlDialog.cpp:91
+#: src/kvirc/kernel/KviCoreActions.cpp:827 src/kvirc/ui/KviHtmlDialog.cpp:91
 #: src/kvirc/ui/KviCryptController.cpp:127
 msgid "OK"
 msgstr "OK"
@@ -4737,12 +4737,12 @@ msgid ""
 "Trying to continue anyway..."
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:786
-#: src/kvirc/kernel/KviCoreActions.cpp:800
-#: src/kvirc/kernel/KviCoreActions.cpp:841
-#: src/kvirc/kernel/KviCoreActions.cpp:856
-#: src/kvirc/kernel/KviCoreActions.cpp:889
-#: src/kvirc/kernel/KviCoreActions.cpp:902
+#: src/kvirc/kernel/KviCoreActions.cpp:791
+#: src/kvirc/kernel/KviCoreActions.cpp:805
+#: src/kvirc/kernel/KviCoreActions.cpp:846
+#: src/kvirc/kernel/KviCoreActions.cpp:861
+#: src/kvirc/kernel/KviCoreActions.cpp:894
+#: src/kvirc/kernel/KviCoreActions.cpp:907
 msgid "Other..."
 msgstr "その他..."
 
@@ -4831,11 +4831,11 @@ msgstr ""
 msgid "Password"
 msgstr "パスワード"
 
-#: src/kvirc/ui/KviInputEditor.cpp:792
+#: src/kvirc/ui/KviInputEditor.cpp:777
 msgid "Paste &File"
 msgstr "ファイルの貼り付け(&F)"
 
-#: src/kvirc/ui/KviInputEditor.cpp:787
+#: src/kvirc/ui/KviInputEditor.cpp:772
 msgid "Paste (Slowly)"
 msgstr "貼り付け(ゆっくり)"
 
@@ -4880,7 +4880,7 @@ msgid ""
 "command."
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:821
+#: src/kvirc/kernel/KviCoreActions.cpp:826
 msgid "Please enter the new nickname"
 msgstr ""
 
@@ -5305,7 +5305,7 @@ msgstr ""
 msgid "Registered lag check with reliability %u (%s)"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1141
+#: src/kvirc/kernel/KviApplication.cpp:1144
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "リモートのコマンドを受信しました (%s ...)"
@@ -5498,7 +5498,7 @@ msgstr "セキュア プロキシー接続"
 msgid "Seems like the world has stopped spinning"
 msgstr ""
 
-#: src/kvirc/ui/KviInputEditor.cpp:804
+#: src/kvirc/ui/KviInputEditor.cpp:789
 msgid "Select All"
 msgstr "全選択"
 
@@ -5595,7 +5595,7 @@ msgstr "サーバーのエラー: %Q"
 msgid "Server Message of the Day"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:945
+#: src/kvirc/kernel/KviCoreActions.cpp:950
 msgid "Server Notices (+s)"
 msgstr "サーバーの通知 (+s)"
 
@@ -5774,27 +5774,27 @@ msgstr ""
 msgid "Shows a dialog that allows you join channels"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:825
+#: src/kvirc/kernel/KviCoreActions.cpp:830
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:926
+#: src/kvirc/kernel/KviCoreActions.cpp:931
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:877
+#: src/kvirc/kernel/KviCoreActions.cpp:882
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:770
+#: src/kvirc/kernel/KviCoreActions.cpp:775
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:1162
+#: src/kvirc/kernel/KviCoreActions.cpp:1167
 msgid "Shows a popup menu with some IRC Actions"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:1129
+#: src/kvirc/kernel/KviCoreActions.cpp:1134
 msgid "Shows a popup menu with some IRC Tools"
 msgstr ""
 
@@ -6017,7 +6017,7 @@ msgstr ""
 msgid "Starting notify list"
 msgstr "通知リストを開始しています"
 
-#: src/kvirc/ui/KviInputEditor.cpp:799
+#: src/kvirc/ui/KviInputEditor.cpp:784
 msgid "Stop Paste"
 msgstr "貼り付けの停止"
 
@@ -6953,7 +6953,7 @@ msgstr "名称未設定"
 msgid "Update Indicator"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1011
+#: src/kvirc/kernel/KviApplication.cpp:1014
 #, fuzzy
 msgid "Update default scripts"
 msgstr "初期スクリプトの復元(&D)"
@@ -6994,7 +6994,7 @@ msgstr "暗号化エンジンを使う"
 msgid "User List"
 msgstr "ユーザー リスト"
 
-#: src/kvirc/kernel/KviCoreActions.cpp:925
+#: src/kvirc/kernel/KviCoreActions.cpp:930
 msgid "User Mode"
 msgstr "ユーザー モード"
 
@@ -7132,7 +7132,7 @@ msgstr "非情に活発"
 msgid "Very low activity"
 msgstr "まったりとした活動"
 
-#: src/kvirc/kernel/KviApplication.cpp:793
+#: src/kvirc/kernel/KviApplication.cpp:796
 msgid "View"
 msgstr ""
 
@@ -7159,7 +7159,7 @@ msgid ""
 "%c: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/KviCoreActions.cpp:943
+#: src/kvirc/kernel/KviCoreActions.cpp:948
 msgid "Wallops (+w)"
 msgstr ""
 
@@ -7275,8 +7275,8 @@ msgstr "パッケージのヘッダーを書き込んでいます。"
 
 #: src/modules/logview/LogViewWindow.cpp:461
 #: src/modules/logview/LogViewWindow.cpp:479
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092 src/kvirc/ui/KviInput.cpp:254
+#: src/kvirc/kernel/KviApplication.cpp:1022
+#: src/kvirc/kernel/KviApplication.cpp:1095 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/ui/KviStatusBar.cpp:551
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
 msgid "Yes"
@@ -7629,8 +7629,8 @@ msgid "autojoining"
 msgstr "自動的に参加しています…"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1129
-#: src/kvirc/ui/KviConsoleWindow.cpp:1136 src/kvirc/ui/KviIrcToolBar.cpp:315
-#: src/kvirc/ui/KviIrcToolBar.cpp:323
+#: src/kvirc/ui/KviConsoleWindow.cpp:1136 src/kvirc/ui/KviIrcToolBar.cpp:298
+#: src/kvirc/ui/KviIrcToolBar.cpp:306
 msgid "away"
 msgstr "退席"
 
@@ -7789,11 +7789,11 @@ msgstr "が話しています"
 msgid "k: Recipient for server kill messages"
 msgstr ""
 
-#: src/kvirc/ui/KviInputEditor.cpp:766
+#: src/kvirc/ui/KviInputEditor.cpp:751
 msgid "line break"
 msgstr ""
 
-#: src/kvirc/ui/KviInputEditor.cpp:766
+#: src/kvirc/ui/KviInputEditor.cpp:751
 msgid "line breaks"
 msgstr ""
 

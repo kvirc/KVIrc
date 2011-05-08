@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2011-03-03 21:08+0100\n"
 "Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
@@ -148,8 +148,8 @@ msgid ""
 "b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> prosi o<br><b>Bezpośrednie Połączenie 2 Klientów</b> w "
-"trybie <b>VIDEO</b>.<br>Celem połączenia będzie host <b>%4</b> na porcie <b>"
-"%5</b><br>"
+"trybie <b>VIDEO</b>.<br>Celem połączenia będzie host <b>%4</b> na porcie <b>%"
+"5</b><br>"
 
 # wnioskuje/prosi/żąda?
 #: src/modules/dcc/DccBroker.cpp:347
@@ -159,8 +159,8 @@ msgid ""
 "b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> prosi o<br><b>Bezpośrednie Połączenie 2 Klientów</b> w "
-"trybie <b>VOICE</b>.<br>Celem połączenia będzie host <b>%4</b> na porcie <b>"
-"%5</b><br>"
+"trybie <b>VOICE</b>.<br>Celem połączenia będzie host <b>%4</b> na porcie <b>%"
+"5</b><br>"
 
 #: src/modules/dcc/DccBroker.cpp:588
 msgid ""
@@ -189,8 +189,8 @@ msgid ""
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:632 src/modules/dcc/requests.cpp:448
-#: src/modules/dcc/requests.cpp:741
+#: src/modules/dcc/requests.cpp:448 src/modules/dcc/requests.cpp:741
+#: src/modules/dcc/libkvidcc.cpp:632
 msgid "<unknown size>"
 msgstr "<nieznany rozmiar>"
 
@@ -277,8 +277,8 @@ msgstr "Automatyczna akceptacja żądania DCC %Q od %Q!%Q@%Q dla pliku %Q"
 #, fuzzy
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr ""
-"Automatycznie zapisuję plik z połączenia DCC %Q plik %Q jako \r![!dbl]play "
-"$0\r%Q\r"
+"Automatycznie zapisuję plik z połączenia DCC %Q plik %Q jako \r![!dbl]play $0"
+"\r%Q\r"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1560
 msgid "Avg:"
@@ -325,13 +325,13 @@ msgstr ""
 "Nie można wysłać żądania DCC %Q do %Q: Połączenie z serwerem IRC zostało "
 "zakończone"
 
-#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2207
+#: src/modules/dcc/DccFileTransfer.cpp:2207 src/modules/dcc/DccDialog.cpp:158
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 #: src/modules/dcc/DccVideoWindow.cpp:690
 #: src/modules/dcc/DccVideoWindow.cpp:793
+#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 msgid "Cannot send data: No active connection"
 msgstr "Nie mogę wysłać danych: Brak aktywnego połączenia"
 
@@ -362,10 +362,10 @@ msgstr "Konfiguruj przepustowość dla transferu DCC %1"
 msgid "Connected to %1:%2"
 msgstr "Połączony z %1:%2"
 
-#: src/modules/dcc/DccChatWindow.cpp:566
+#: src/modules/dcc/DccCanvasWindow.cpp:284
 #: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccVideoWindow.cpp:951
-#: src/modules/dcc/DccCanvasWindow.cpp:284
+#: src/modules/dcc/DccChatWindow.cpp:566
 msgid "Connected to %Q:%Q"
 msgstr "Połączony z %Q:%Q"
 
@@ -374,10 +374,10 @@ msgstr "Połączony z %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kontaktuję się z hostem %1 na porcie %2"
 
-#: src/modules/dcc/DccChatWindow.cpp:185
+#: src/modules/dcc/DccCanvasWindow.cpp:108
 #: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:631
-#: src/modules/dcc/DccCanvasWindow.cpp:108
+#: src/modules/dcc/DccChatWindow.cpp:185
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Kontaktuję się z hostem %Q na porcie %Q"
@@ -411,9 +411,9 @@ msgstr "Żądanie DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr ""
 
+#: src/modules/dcc/DccCanvasWindow.cpp:279
 #: src/modules/dcc/DccVoiceWindow.cpp:902
 #: src/modules/dcc/DccVideoWindow.cpp:946
-#: src/modules/dcc/DccCanvasWindow.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "Nieudane DCC: %Q"
 
@@ -454,9 +454,9 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Transfer danych został zakończony 30 sekund temu, zamykanie połączenia"
 
-#: src/modules/dcc/DccChatWindow.cpp:417
 #: src/modules/dcc/DccVoiceWindow.cpp:819
 #: src/modules/dcc/DccVideoWindow.cpp:807
+#: src/modules/dcc/DccChatWindow.cpp:417
 msgid "ERROR: %Q"
 msgstr "BŁĄD: %Q"
 
@@ -566,10 +566,10 @@ msgstr "Ogranicz pasmo wysyłania do"
 msgid "Listening on interface %1 port %2"
 msgstr "Nasłuchiwanie na interfejsie %1 port %2"
 
-#: src/modules/dcc/DccChatWindow.cpp:187
+#: src/modules/dcc/DccCanvasWindow.cpp:84
 #: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:634
-#: src/modules/dcc/DccCanvasWindow.cpp:84
+#: src/modules/dcc/DccChatWindow.cpp:187
 msgid "Listening on interface %Q port %Q"
 msgstr "Nasłuchiwanie na interfejsie %Q port %Q"
 
@@ -577,15 +577,15 @@ msgstr "Nasłuchiwanie na interfejsie %Q port %Q"
 msgid "Local end is %1:%2"
 msgstr "Lokalną końcówką jest %1:%2"
 
-#: src/modules/dcc/DccChatWindow.cpp:568
+#: src/modules/dcc/DccCanvasWindow.cpp:286
 #: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccVideoWindow.cpp:953
-#: src/modules/dcc/DccCanvasWindow.cpp:286
+#: src/modules/dcc/DccChatWindow.cpp:568
 msgid "Local end is %Q:%Q"
 msgstr "Lokalną końcówką jest %Q:%Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:247
 #: src/modules/dcc/DccFileTransfer.cpp:1854
+#: src/modules/dcc/DccChatWindow.cpp:247
 #, fuzzy
 msgid "Low-level transport connection established"
 msgstr "Przesył na niskim-poziomie ustanowiony"
@@ -718,8 +718,8 @@ msgid "Standard:"
 msgstr ""
 
 # dz afrev
-#: src/modules/dcc/DccChatWindow.cpp:248
 #: src/modules/dcc/DccFileTransfer.cpp:1855
+#: src/modules/dcc/DccChatWindow.cpp:248
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Rozpoczynanie uzgodnienia Secure Socket Layer"
 
@@ -799,8 +799,8 @@ msgstr "Celem połączenia będzie host <b>%1</b> na porcie <b>%2</b><br>"
 msgid "The connection will be secured using SSL.<br>"
 msgstr "Połączenie będzie zabezpieczone używając SSL.<br>"
 
-#: src/modules/dcc/DccChatWindow.cpp:344
 #: src/modules/dcc/DccVideoWindow.cpp:736
+#: src/modules/dcc/DccChatWindow.cpp:344
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -835,8 +835,8 @@ msgstr ""
 "sobie<br><b>automatycznie Zmienić nazwę</b> nowego pliku, "
 "lub<br><b>Nadpisać</b> istniejący plik ?"
 
-#: src/modules/dcc/DccChatWindow.cpp:477
 #: src/modules/dcc/DccVideoWindow.cpp:868
+#: src/modules/dcc/DccChatWindow.cpp:477
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -845,8 +845,8 @@ msgstr ""
 "Następująca wiadomość wygląda na zaszyfrowaną, ale silnikowi szyfrującemu "
 "nie udało się jej zdeszyfrować: %Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:214
 #: src/modules/dcc/DccFileTransfer.cpp:1791
+#: src/modules/dcc/DccChatWindow.cpp:214
 #, fuzzy
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
@@ -854,8 +854,8 @@ msgstr ""
 "Lokalny adres IP jest prywatny, ale nie ma serwera IRC który by to mógł "
 "ustalić"
 
-#: src/modules/dcc/DccChatWindow.cpp:211
 #: src/modules/dcc/DccFileTransfer.cpp:1788
+#: src/modules/dcc/DccChatWindow.cpp:211
 #, fuzzy
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
@@ -1079,15 +1079,15 @@ msgstr "[BŁĄD SSL]: %s"
 msgid "bytes/sec"
 msgstr "bajtów/sek"
 
-#: src/modules/dcc/libkvidcc.cpp:110 src/modules/dcc/libkvidcc.cpp:406
-#: src/modules/dcc/libkvidcc.cpp:441 src/modules/dcc/libkvidcc.cpp:640
-#: src/modules/dcc/libkvidcc.cpp:664 src/modules/dcc/libkvidcc.cpp:801
-#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:1119
-#: src/modules/dcc/libkvidcc.cpp:1169 src/modules/dcc/libkvidcc.cpp:1197
-#: src/modules/dcc/libkvidcc.cpp:1236 src/modules/dcc/DccDescriptor.cpp:65
 #: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/requests.cpp:139 src/modules/dcc/requests.cpp:140
+#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/DccDescriptor.cpp:65
+#: src/modules/dcc/requests.cpp:138 src/modules/dcc/requests.cpp:139
+#: src/modules/dcc/requests.cpp:140 src/modules/dcc/libkvidcc.cpp:110
+#: src/modules/dcc/libkvidcc.cpp:406 src/modules/dcc/libkvidcc.cpp:441
+#: src/modules/dcc/libkvidcc.cpp:640 src/modules/dcc/libkvidcc.cpp:664
+#: src/modules/dcc/libkvidcc.cpp:801 src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:1119 src/modules/dcc/libkvidcc.cpp:1169
+#: src/modules/dcc/libkvidcc.cpp:1197 src/modules/dcc/libkvidcc.cpp:1236
 msgid "unknown"
 msgstr "nieznany"
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "### Epílogo ###"
 msgid "### Prologue ###"
 msgstr "### Prólogo ###"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2078
+#: src/modules/classeditor/ClassEditorWindow.cpp:2098
 msgid "&Add"
 msgstr "&Añadir"
 
@@ -65,12 +65,12 @@ msgstr "&Añadir evento en bruto..."
 msgid "&Apply"
 msgstr "&Aplicar"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1830
+#: src/modules/classeditor/ClassEditorWindow.cpp:1850
 msgid "&Build"
 msgstr "&Compilar"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1986
-#: src/modules/classeditor/ClassEditorWindow.cpp:2088
+#: src/modules/classeditor/ClassEditorWindow.cpp:2006
+#: src/modules/classeditor/ClassEditorWindow.cpp:2108
 #: src/modules/editor/ScriptEditorImplementation.cpp:1089
 msgid "&Cancel"
 msgstr "&Cancelar"
@@ -83,7 +83,7 @@ msgstr "&Configurar editor..."
 msgid "&Copy"
 msgstr "&Copiar"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1979
+#: src/modules/classeditor/ClassEditorWindow.cpp:1999
 msgid "&Create Class"
 msgstr "&Crear clase"
 
@@ -147,11 +147,11 @@ msgstr "&Abrir..."
 msgid "&Paste Below"
 msgstr "&Pegar debajo"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2080
+#: src/modules/classeditor/ClassEditorWindow.cpp:2100
 msgid "&Rename"
 msgstr "&Renombrar"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1977
+#: src/modules/classeditor/ClassEditorWindow.cpp:1997
 msgid "&Rename Class"
 msgstr "&Renombrar clase"
 
@@ -164,7 +164,7 @@ msgstr "&Reemplazar"
 msgid "&Replace in all editor's items"
 msgstr "&Reemplazar en todos los alias"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1835
+#: src/modules/classeditor/ClassEditorWindow.cpp:1855
 msgid "&Save"
 msgstr "&Guardar..."
 
@@ -183,10 +183,11 @@ msgstr ""
 "condición vacía será considerada verdadera.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
+#, fuzzy
 msgid ""
-"<center><b>External menu name</b><br>This allows to nest externally defined "
-"popup menus. The popup menu with the specified name will be looked up at "
-"menu setup time.</center>"
+"<center><b>External menu name</b><br>This allows one to nest externally "
+"defined popup menus. The popup menu with the specified name will be looked "
+"up at menu setup time.</center>"
 msgstr ""
 "<center><b>Nombre externo del menú</b><br>Esto te permitirá mostrar menús "
 "definidos externamente. El menú con el nombre especificado será buscado en "
@@ -248,7 +249,7 @@ msgstr "Añadir función miembro"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:567
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
 #: src/modules/classeditor/ClassEditorWindow.cpp:885
-#: src/modules/classeditor/ClassEditorWindow.cpp:1577
+#: src/modules/classeditor/ClassEditorWindow.cpp:1597
 msgid "Add Namespace"
 msgstr "Añadir espacio de nombres"
 
@@ -321,9 +322,9 @@ msgstr "Nombre incorrecto para el alias"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1073
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1087
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1098
-#: src/modules/classeditor/ClassEditorWindow.cpp:1500
-#: src/modules/classeditor/ClassEditorWindow.cpp:1514
-#: src/modules/classeditor/ClassEditorWindow.cpp:1525
+#: src/modules/classeditor/ClassEditorWindow.cpp:1520
+#: src/modules/classeditor/ClassEditorWindow.cpp:1534
+#: src/modules/classeditor/ClassEditorWindow.cpp:1545
 msgid "Bad Namespace Name"
 msgstr "Nombre incorrecto para el espacio de nombres"
 
@@ -424,13 +425,13 @@ msgstr ""
 "actual sea de un tipo especificado"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:730
-#: src/modules/classeditor/ClassEditorWindow.cpp:1117
+#: src/modules/classeditor/ClassEditorWindow.cpp:1119
 msgid "Choose a Directory - KVIrc"
 msgstr "Elige un directorio - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:699
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:812
-#: src/modules/classeditor/ClassEditorWindow.cpp:1209
+#: src/modules/classeditor/ClassEditorWindow.cpp:1229
 #: src/modules/editor/ScriptEditorImplementation.cpp:921
 #: src/modules/eventeditor/EventEditorWindow.cpp:464
 #: src/modules/eventeditor/EventEditorWindow.cpp:505
@@ -451,12 +452,12 @@ msgstr "Elige la categoría que mejor defina esta acción"
 msgid "Class"
 msgstr "Clase"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1823
+#: src/modules/classeditor/ClassEditorWindow.cpp:1843
 msgid "Class Editor"
 msgstr "Editor de clases"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: src/modules/classeditor/ClassEditorWindow.cpp:1113
+#: src/modules/classeditor/ClassEditorWindow.cpp:1208
 msgid "Class Export"
 msgstr "Exportar clase"
 
@@ -464,12 +465,12 @@ msgstr "Exportar clase"
 msgid "Class already exists"
 msgstr "La clase ya existe"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1915
+#: src/modules/classeditor/ClassEditorWindow.cpp:1935
 msgid "Class names can contain only letters, digits and underscores"
 msgstr ""
 "El nombre de la clase sólo puede contener letras, dígitos y barras bajas"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1840
+#: src/modules/classeditor/ClassEditorWindow.cpp:1860
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
 msgid "Close"
 msgstr "Cerrar"
@@ -494,7 +495,7 @@ msgstr "Colores"
 msgid "Comments:"
 msgstr "Comentarios:"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1690
+#: src/modules/classeditor/ClassEditorWindow.cpp:1710
 msgid "Compilation error - KVIrc"
 msgstr "Error de compilación - KVIrc"
 
@@ -538,16 +539,16 @@ msgstr "¿Realmente quieres eliminar la barra de herramientas \"%1\"?"
 msgid "Do you really want to remove the alias \"%1\"?"
 msgstr "¿Realmente quieres eliminar el alias \"%1\"?"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1337
+#: src/modules/classeditor/ClassEditorWindow.cpp:1357
 msgid "Do you really want to remove the class \"%1\"?"
 msgstr "¿Realmente quieres eliminar la clase \"%1\"?"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1345
+#: src/modules/classeditor/ClassEditorWindow.cpp:1365
 msgid "Do you really want to remove the function \"%1\"?"
 msgstr "¿Realmente quieres eliminar la función \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
-#: src/modules/classeditor/ClassEditorWindow.cpp:1340
+#: src/modules/classeditor/ClassEditorWindow.cpp:1360
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr "¿Realmente quieres eliminar el espacio de nombres \"%1\"?"
 
@@ -701,7 +702,7 @@ msgid "Found an empty namespace in alias name"
 msgstr "Se encontró un nombre de espacios vacío en el nombre del alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1099
-#: src/modules/classeditor/ClassEditorWindow.cpp:1526
+#: src/modules/classeditor/ClassEditorWindow.cpp:1546
 msgid "Found an empty namespace in namespace name"
 msgstr ""
 "Se encontró un espacio de nombres vacío en el nombre del espacio de nombres"
@@ -710,7 +711,7 @@ msgstr ""
 msgid "Function already exists"
 msgstr "La función ya existe"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2033
+#: src/modules/classeditor/ClassEditorWindow.cpp:2053
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 "Los nombres de las funciones sólo pueden contener letras, dígitos y barras "
@@ -719,6 +720,12 @@ msgstr ""
 #: src/modules/editor/ScriptEditorImplementation.cpp:534
 msgid "Functions:"
 msgstr "Funciones:"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:64
+msgid ""
+"Here you can specify a semicolon-separated list of parameters that will be "
+"available in the code as $0, $1, $2, .."
+msgstr ""
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
 msgid "Hide Advanced"
@@ -736,7 +743,7 @@ msgstr "Icono:"
 msgid "Id"
 msgstr "ID"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1919
+#: src/modules/classeditor/ClassEditorWindow.cpp:1939
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
@@ -744,7 +751,7 @@ msgstr ""
 "Los nombres de las clases sólo pueden contener letras, dígitos, barras bajas "
 "y separadores de espacio de nombres '::'"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1932
+#: src/modules/classeditor/ClassEditorWindow.cpp:1952
 msgid "Inherits Class:"
 msgstr "Hereda la clase:"
 
@@ -799,7 +806,7 @@ msgid "Missing Alias Name"
 msgstr "Falta el nombre del alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1060
-#: src/modules/classeditor/ClassEditorWindow.cpp:1487
+#: src/modules/classeditor/ClassEditorWindow.cpp:1507
 msgid "Missing Namespace Name"
 msgstr "Falta el nombre del espacio de nombres"
 
@@ -833,7 +840,7 @@ msgid "Namespace already exists"
 msgstr "El espacio de nombres ya existe"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1074
-#: src/modules/classeditor/ClassEditorWindow.cpp:1501
+#: src/modules/classeditor/ClassEditorWindow.cpp:1521
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
@@ -931,8 +938,8 @@ msgstr "Nueva barra de herramientas"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
 msgid "No"
 msgstr "No"
@@ -956,9 +963,9 @@ msgstr "Texto normal:"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:724
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:792
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: src/modules/classeditor/ClassEditorWindow.cpp:1113
+#: src/modules/classeditor/ClassEditorWindow.cpp:1208
+#: src/modules/classeditor/ClassEditorWindow.cpp:1240
 #: src/modules/editor/ScriptEditorImplementation.cpp:542
 #: src/modules/eventeditor/EventEditorWindow.cpp:509
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1195
@@ -984,10 +991,10 @@ msgstr "Aceptar"
 #: src/modules/classeditor/ClassEditorWindow.cpp:606
 #: src/modules/classeditor/ClassEditorWindow.cpp:690
 #: src/modules/classeditor/ClassEditorWindow.cpp:695
-#: src/modules/classeditor/ClassEditorWindow.cpp:1489
-#: src/modules/classeditor/ClassEditorWindow.cpp:1502
-#: src/modules/classeditor/ClassEditorWindow.cpp:1516
-#: src/modules/classeditor/ClassEditorWindow.cpp:1527
+#: src/modules/classeditor/ClassEditorWindow.cpp:1509
+#: src/modules/classeditor/ClassEditorWindow.cpp:1522
+#: src/modules/classeditor/ClassEditorWindow.cpp:1536
+#: src/modules/classeditor/ClassEditorWindow.cpp:1547
 msgid "Ok, Let me try again..."
 msgstr "Vale, déjame volver a intentarlo..."
 
@@ -1039,11 +1046,11 @@ msgstr "Pegar dentro"
 msgid "Please choose the icon for the ToolBar"
 msgstr "Por favor elige el icono para la barra de herramientas"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1904
+#: src/modules/classeditor/ClassEditorWindow.cpp:1924
 msgid "Please enter the name for the class:"
 msgstr "Por favor introduce el nombre para la clase:"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2024
+#: src/modules/classeditor/ClassEditorWindow.cpp:2044
 msgid "Please enter the name for the member function:"
 msgstr "Por favor introduce el nombre para la nueva función:"
 
@@ -1052,7 +1059,7 @@ msgid "Please enter the name for the new alias"
 msgstr "Por favor introduce el nombre para el nuevo alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1133
-#: src/modules/classeditor/ClassEditorWindow.cpp:1577
+#: src/modules/classeditor/ClassEditorWindow.cpp:1597
 msgid "Please enter the name for the new namespace"
 msgstr "Por favor introduce el nombre para el nuevo espacio de nombres"
 
@@ -1065,7 +1072,7 @@ msgstr "Por favor introduce el nuevo nombre para el alias"
 msgid "Please enter the new name for the namespace"
 msgstr "Por favor introduce el nuevo nombre para el espacio de nombres"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2045
+#: src/modules/classeditor/ClassEditorWindow.cpp:2065
 msgid "Please enter the optional reminder string for the member function:"
 msgstr ""
 "Por favor introduce la cadena opcional de recordatorio para la nueva función:"
@@ -1086,7 +1093,7 @@ msgstr ""
 "Por favor introduce el texto a ser buscado. Las funciones coincidentes serán "
 "marcadas."
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1342
+#: src/modules/classeditor/ClassEditorWindow.cpp:1362
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
 msgstr ""
@@ -1167,7 +1174,7 @@ msgid "Remove Selected"
 msgstr "Eliminar seleccionado"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 msgid "Remove item"
 msgstr "Eliminar objeto"
 
@@ -1187,7 +1194,7 @@ msgid "Rename Namespace"
 msgstr "Renombrar espacio de nombres"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
 msgid "Replace file"
 msgstr "Reemplazar archivo"
 
@@ -1203,7 +1210,7 @@ msgstr "Fila: %1 Col: %2"
 msgid "Save Failed - KVIrc"
 msgstr "Falló la Grabación - KVIrc"
 
-#: src/modules/codetester/CodeTesterWindow.cpp:109
+#: src/modules/codetester/CodeTesterWindow.cpp:110
 msgid "Script Tester"
 msgstr ""
 
@@ -1211,7 +1218,7 @@ msgstr ""
 msgid "Separator"
 msgstr "Separador"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:2058
+#: src/modules/classeditor/ClassEditorWindow.cpp:2078
 msgid "Set as <b>Internal</b> Function: "
 msgstr "Configurar como función <b>interna</b>: "
 
@@ -1227,7 +1234,7 @@ msgstr ""
 "nombres>::<nombre>?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1088
-#: src/modules/classeditor/ClassEditorWindow.cpp:1515
+#: src/modules/classeditor/ClassEditorWindow.cpp:1535
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
@@ -1260,13 +1267,13 @@ msgstr ""
 "píxels."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:792
-#: src/modules/classeditor/ClassEditorWindow.cpp:1188
+#: src/modules/classeditor/ClassEditorWindow.cpp:1208
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr ""
 "El archivo exportado estaría vacío: negándome cobardemente a escribirlo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:750
-#: src/modules/classeditor/ClassEditorWindow.cpp:1136
+#: src/modules/classeditor/ClassEditorWindow.cpp:1138
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "El archivo \"%1\" ya existe. ¿Quieres reemplazarlo?"
 
@@ -1290,11 +1297,11 @@ msgstr ""
 "de herramientas) o prefieres hacerlo manualmente?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:724
-#: src/modules/classeditor/ClassEditorWindow.cpp:1111
+#: src/modules/classeditor/ClassEditorWindow.cpp:1113
 msgid "There is no selection!"
 msgstr "¡No hay nada seleccionado!"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1681
+#: src/modules/classeditor/ClassEditorWindow.cpp:1701
 msgid "These inherited classes will be not compiled too:"
 msgstr "Estas clases heredadas no serán compiladas tampoco:"
 
@@ -1333,7 +1340,7 @@ msgstr "Propiedades de la barra de herramientas"
 msgid "Type"
 msgstr "Tipo"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1674
+#: src/modules/classeditor/ClassEditorWindow.cpp:1694
 msgid "Unable to compile class: "
 msgstr "No se pudo compilar la clase: "
 
@@ -1346,7 +1353,7 @@ msgstr "No se pudo escribir al archivo de acciones."
 msgid "Unable to write to the alias file."
 msgstr "No se pudo escribir al archivo de alias."
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: src/modules/classeditor/ClassEditorWindow.cpp:1240
 msgid "Unable to write to the class file."
 msgstr "No se pudo escribir al archivo de clases."
 
@@ -1400,7 +1407,7 @@ msgstr "Palabra a encontrar"
 
 #: src/modules/actioneditor/ActionEditor.cpp:726
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/classeditor/ClassEditorWindow.cpp:1220
+#: src/modules/classeditor/ClassEditorWindow.cpp:1240
 #: src/modules/eventeditor/EventEditorWindow.cpp:471
 #: src/modules/eventeditor/EventEditorWindow.cpp:509
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1195
@@ -1413,16 +1420,16 @@ msgstr "Falló la escritura - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
 msgid "Yes"
 msgstr "Sí"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:751
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:934
-#: src/modules/classeditor/ClassEditorWindow.cpp:1137
-#: src/modules/classeditor/ClassEditorWindow.cpp:1349
+#: src/modules/classeditor/ClassEditorWindow.cpp:1139
+#: src/modules/classeditor/ClassEditorWindow.cpp:1369
 msgid "Yes to All"
 msgstr "Sí a todo"
 
@@ -1431,7 +1438,7 @@ msgid "You must specify a valid name for the alias"
 msgstr "Debes especificar un nombre válido para el alias"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1061
-#: src/modules/classeditor/ClassEditorWindow.cpp:1488
+#: src/modules/classeditor/ClassEditorWindow.cpp:1508
 msgid "You must specify a valid name for the namespace"
 msgstr "Debes especificar un nombre válido para el espacio de nombres"
 

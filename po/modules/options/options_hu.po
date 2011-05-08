@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:72
@@ -22,14 +22,14 @@ msgstr ""
 msgid " bytes"
 msgstr " bájt"
 
-#: src/modules/options/OptionsWidget_channel.cpp:140
 #: src/modules/options/OptionsWidget_query.cpp:102
+#: src/modules/options/OptionsWidget_channel.cpp:140
 msgid " days"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_query.cpp:98
 #: src/modules/options/OptionsWidget_ircView.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:136
-#: src/modules/options/OptionsWidget_query.cpp:98
 msgid " lines"
 msgstr " sor"
 
@@ -37,12 +37,12 @@ msgstr " sor"
 msgid " min"
 msgstr " perc"
 
+#: src/modules/options/OptionsWidget_dcc.cpp:276
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
+#: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:56
-#: src/modules/options/OptionsWidget_dcc.cpp:276
-#: src/modules/options/OptionsWidget_connection.cpp:155
 msgid " msec"
 msgstr "miliszek"
 
@@ -57,10 +57,10 @@ msgstr "kérés"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:96
 #: src/modules/options/OptionsWidget_dcc.cpp:140
-#: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
+#: src/modules/options/OptionsWidget_channel.cpp:121
 msgid " sec"
 msgstr " mp"
 
@@ -96,10 +96,10 @@ msgstr "Új Proxy"
 msgid "&New Server"
 msgstr "Új szerver"
 
-#: src/modules/options/OptionsWidgetContainer.cpp:101
-#: src/modules/options/OptionsDialog.cpp:230
 #: src/modules/options/OptionsWidget_identity.cpp:234
+#: src/modules/options/OptionsDialog.cpp:230
 #: src/modules/options/OptionsWidget_servers.cpp:383
+#: src/modules/options/OptionsWidgetContainer.cpp:101
 msgid "&OK"
 msgstr "&Ok"
 
@@ -410,16 +410,16 @@ msgstr ""
 "sávszélesség megtakarítására szolgál. (nagyon nagy csatornáknál lehet "
 "lényeges)</center>"
 
-#: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:103
+#: src/modules/options/OptionsWidget_channel.cpp:141
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
 
-#: src/modules/options/OptionsWidget_channel.cpp:137
 #: src/modules/options/OptionsWidget_query.cpp:99
+#: src/modules/options/OptionsWidget_channel.cpp:137
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -1083,8 +1083,8 @@ msgstr ""
 "adatátvitel-megkezdődhessen néhány hibás kliensnél.<br>Csak akkor használd, "
 "ha a DCC kapcsolat csak áll, miután létrejött, de adatot nem küld.</center>"
 
-#: src/modules/options/OptionsWidget_dcc.cpp:331
 #: src/modules/options/OptionsWidget_query.cpp:82
+#: src/modules/options/OptionsWidget_dcc.cpp:331
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1727,7 +1727,7 @@ msgstr "Aktív Magas Kontrasztú Előtér (Másodlagos)"
 msgid "Active window"
 msgstr "Aktív ablakban"
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:90
+#: src/modules/options/OptionsWidget_textIcons.cpp:94
 msgid "Add"
 msgstr "Hozzáadás"
 
@@ -1744,15 +1744,15 @@ msgstr "Szabály Hozzáadása"
 #: src/modules/options/OptionsWidget_servers.cpp:1005
 #: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_channel.h:64
-#: src/modules/options/OptionsWidget_connection.h:46
-#: src/modules/options/OptionsWidget_irc.h:57
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
+#: src/modules/options/OptionsWidget_connection.h:46
+#: src/modules/options/OptionsWidget_irc.h:57
 msgid "Advanced"
 msgstr "Haladó"
 
-#: src/modules/options/OptionsWidget_notify.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:230
+#: src/modules/options/OptionsWidget_notify.cpp:60
 msgid "Advanced configuration"
 msgstr "Haladó Beállítások"
 
@@ -1964,13 +1964,13 @@ msgstr "Távol:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:164
 #: src/modules/options/OptionsWidget_theme.cpp:184
-#: src/modules/options/OptionsWidget_userList.h:46
 #: src/modules/options/OptionsWidget_windowList.h:79
+#: src/modules/options/OptionsWidget_userList.h:46
 msgid "Background"
 msgstr "Háttér"
 
-#: src/modules/options/OptionsWidget_userList.cpp:126
 #: src/modules/options/OptionsWidget_windowList.cpp:119
+#: src/modules/options/OptionsWidget_userList.cpp:126
 msgid "Background Colors"
 msgstr "Háttér Színek"
 
@@ -1995,9 +1995,9 @@ msgstr "Háttér szín: "
 msgid "Background image"
 msgstr "Háttér kép"
 
-#: src/modules/options/OptionsWidget_userList.cpp:131
 #: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
+#: src/modules/options/OptionsWidget_userList.cpp:131
 msgid "Background image:"
 msgstr "Háttér kép: "
 
@@ -2021,11 +2021,11 @@ msgstr "IPv6 kapcsolat hozzárendelése: "
 msgid "Blend color:"
 msgstr "Keverés színe: "
 
-#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_input.cpp:63
 #: src/modules/options/OptionsWidget_ircView.cpp:71
+#: src/modules/options/OptionsWidget_input.cpp:63
+#: src/modules/options/OptionsWidget_userList.cpp:148
 msgid "Bottom"
 msgstr "Lent"
 
@@ -2053,27 +2053,27 @@ msgstr "CTCP Válaszok"
 msgid "Cache IP address"
 msgstr "Ip cím tárolása"
 
-#: src/modules/options/OptionsWidgetContainer.cpp:109
-#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_servers.cpp:389
 #: src/modules/options/OptionsWidget_servers.cpp:1015
+#: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_input.cpp:59
-#: src/modules/options/OptionsWidget_input.cpp:64
 #: src/modules/options/OptionsWidget_ircView.cpp:67
 #: src/modules/options/OptionsWidget_ircView.cpp:72
+#: src/modules/options/OptionsWidget_input.cpp:59
+#: src/modules/options/OptionsWidget_input.cpp:64
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
 msgid "Center"
 msgstr "Közép"
 
@@ -2177,13 +2177,13 @@ msgstr "Lista Törlése"
 msgid "Close in tray"
 msgstr "Bezárásnál a KVIrcet tegye a tálcára"
 
-#: src/modules/options/OptionsWidgetContainer.cpp:102
 #: src/modules/options/OptionsDialog.cpp:232
+#: src/modules/options/OptionsWidgetContainer.cpp:102
 msgid "Close this dialog, accepting all changes."
 msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 
-#: src/modules/options/OptionsWidgetContainer.cpp:110
 #: src/modules/options/OptionsDialog.cpp:247
+#: src/modules/options/OptionsWidgetContainer.cpp:110
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
 
@@ -2200,9 +2200,9 @@ msgid "Commit all changes immediately."
 msgstr "Minden változás alkalmazása azonnal."
 
 #: src/modules/options/OptionsWidget_notify.cpp:41
-#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_proxy.cpp:107
 #: src/modules/options/OptionsWidget_connection.cpp:221
+#: src/modules/options/OptionsWidget_lag.cpp:43
 msgid "Configuration"
 msgstr "Beállítások"
 
@@ -2333,7 +2333,7 @@ msgstr "Alapértelmezett karakterkódolás:"
 msgid "Delay between attempts:"
 msgstr "Késleltetés a próbálkozások között: "
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:94
+#: src/modules/options/OptionsWidget_textIcons.cpp:98
 msgid "Delete"
 msgstr "Törlés"
 
@@ -2622,9 +2622,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Letöltés megkezdése sikertelen"
 
-#: src/modules/options/OptionsWidget_userList.h:103
 #: src/modules/options/OptionsWidget_windowList.h:98
 #: src/modules/options/OptionsWidget_ircView.h:70
+#: src/modules/options/OptionsWidget_userList.h:103
 msgid "Features"
 msgstr "Lehetőségek"
 
@@ -2667,16 +2667,16 @@ msgid "Flood Protection"
 msgstr "Flood Védelem"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:38
+#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_input.cpp:38
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
-#: src/modules/options/OptionsWidget_theme.cpp:182
 msgid "Font"
 msgstr "Betűtípus"
 
-#: src/modules/options/OptionsWidget_userList.cpp:52
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
 #: src/modules/options/OptionsWidget_ircView.cpp:51
+#: src/modules/options/OptionsWidget_userList.cpp:52
 msgid "Font:"
 msgstr "Betűtípus: "
 
@@ -2696,8 +2696,8 @@ msgstr "Azonnali kilépés"
 msgid "Force language:"
 msgstr "Megadott nyelv:"
 
-#: src/modules/options/OptionsWidget_userList.h:67
 #: src/modules/options/OptionsWidget_windowList.h:64
+#: src/modules/options/OptionsWidget_userList.h:67
 msgid "Foreground"
 msgstr "Előtér"
 
@@ -2719,10 +2719,10 @@ msgstr "Nem:"
 #: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_identity.h:153
 #: src/modules/options/OptionsWidget_channel.h:52
-#: src/modules/options/OptionsWidget_theme.h:33
-#: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
+#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_irc.h:43
 msgid "General"
 msgstr "Általános"
 
@@ -2839,8 +2839,8 @@ msgstr "Vízszintes elhelyezés:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_input.cpp:48
 #: src/modules/options/OptionsWidget_ircView.cpp:56
+#: src/modules/options/OptionsWidget_input.cpp:48
 msgid "Horizontal align:"
 msgstr "Vízszintes elhelyezés:"
 
@@ -2857,8 +2857,8 @@ msgstr ""
 msgid "ID3 tags' encoding"
 msgstr "ID3 tagok kódolása"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:116
 #: src/modules/options/OptionsWidget_servers.cpp:670
+#: src/modules/options/OptionsWidget_proxy.cpp:116
 msgid "IP address:"
 msgstr "IP cím: "
 
@@ -2964,8 +2964,8 @@ msgstr "Bevitel"
 msgid "Interface"
 msgstr "Eszközök"
 
-#: src/modules/options/OptionsWidget_channel.cpp:139
 #: src/modules/options/OptionsWidget_query.cpp:101
+#: src/modules/options/OptionsWidget_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
 msgstr "Eszközök"
@@ -3041,11 +3041,11 @@ msgstr "Nyelv"
 msgid "Languages:"
 msgstr "Beszélt nyelvek:"
 
-#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_input.cpp:57
 #: src/modules/options/OptionsWidget_ircView.cpp:65
+#: src/modules/options/OptionsWidget_input.cpp:57
+#: src/modules/options/OptionsWidget_userList.cpp:142
 msgid "Left"
 msgstr "Bal"
 
@@ -3435,11 +3435,11 @@ msgstr "Nincs ilyen opció lap osztály név%Q"
 msgid "Normal"
 msgstr "Normál"
 
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 msgid "Normal:"
 msgstr "Normál: "
 
@@ -3622,9 +3622,9 @@ msgstr "Szülő ablak átlátszósága"
 msgid "Part message:"
 msgstr "Lelépő üzenet (csat):"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:120
 #: src/modules/options/OptionsWidget_servers.cpp:152
 #: src/modules/options/OptionsWidget_servers.cpp:571
+#: src/modules/options/OptionsWidget_proxy.cpp:120
 msgid "Password:"
 msgstr "Jelszó: "
 
@@ -3642,8 +3642,8 @@ msgstr "felhasználólista,csatorna"
 msgid "Paste last query log"
 msgstr "felhasználólista,csatorna"
 
-#: src/modules/options/OptionsWidget_channel.cpp:135
 #: src/modules/options/OptionsWidget_query.cpp:97
+#: src/modules/options/OptionsWidget_channel.cpp:135
 msgid "Paste up to:"
 msgstr ""
 
@@ -3695,8 +3695,8 @@ msgstr "Értesítő Popup, ha egy felhasználó elérhető"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Értesítő előugrása kiemelt üzeneteknél"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:114
 #: src/modules/options/OptionsWidget_servers.cpp:656
+#: src/modules/options/OptionsWidget_proxy.cpp:114
 msgid "Port:"
 msgstr "Port:"
 
@@ -3742,13 +3742,13 @@ msgstr "Privát kulcs helye: "
 msgid "Private key password:"
 msgstr "Privát kulcs jelszava: "
 
-#: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
+#: src/modules/options/OptionsWidget_antiSpam.cpp:40
 msgid "Private messages"
 msgstr "Privát üzenetekre"
 
-#: src/modules/options/OptionsWidget_antiSpam.cpp:42
 #: src/modules/options/OptionsWidget_query.cpp:50
+#: src/modules/options/OptionsWidget_antiSpam.cpp:42
 msgid "Private notices"
 msgstr "Privát értesítőkre"
 
@@ -3965,7 +3965,7 @@ msgstr "CTCP kérés"
 msgid "Request missing avatars"
 msgstr "Hiányzó avatarok lekérése"
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:98
+#: src/modules/options/OptionsWidget_textIcons.cpp:102
 msgid "Restore"
 msgstr ""
 
@@ -3973,11 +3973,11 @@ msgstr ""
 msgid "Restrict alert"
 msgstr "Szigorú figyelmeztettés"
 
-#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_input.cpp:58
 #: src/modules/options/OptionsWidget_ircView.cpp:66
+#: src/modules/options/OptionsWidget_input.cpp:58
+#: src/modules/options/OptionsWidget_userList.cpp:143
 msgid "Right"
 msgstr "Jobb"
 
@@ -4044,10 +4044,10 @@ msgstr "Szkript Motor"
 msgid "Select message levels to notify"
 msgstr "Üzenet szint kiválasztása értesítéshez"
 
-#: src/modules/options/OptionsWidget_userList.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:128
 #: src/modules/options/OptionsWidget_windowList.cpp:90
 #: src/modules/options/OptionsWidget_windowList.cpp:121
+#: src/modules/options/OptionsWidget_userList.cpp:56
+#: src/modules/options/OptionsWidget_userList.cpp:128
 msgid "Selected:"
 msgstr "Kiválasztott: "
 
@@ -4330,7 +4330,7 @@ msgstr "Szöveg"
 msgid "Text Encoding:"
 msgstr "Kódolás:"
 
-#: src/modules/options/OptionsWidget_textIcons.h:36
+#: src/modules/options/OptionsWidget_textIcons.h:37
 msgid "Text icons"
 msgstr "Szöveges ikonok"
 
@@ -4445,9 +4445,9 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.cpp:146
 #, fuzzy
 msgid ""
-"This is an option for the impatient: it allows to forcibly and permanently "
-"disable the notifier window. Please note that if this option is not "
-"activated then the notifier will NOT popup even if all the other options "
+"This is an option for the impatient: it allows one to forcibly and "
+"permanently disable the notifier window. Please note that if this option is "
+"not activated then the notifier will NOT popup even if all the other options "
 "around specify to use it in response to particular events. Also note that "
 "this option will make all the /notifier.* commands fail silently."
 msgstr ""
@@ -4566,7 +4566,7 @@ msgstr ""
 "Ez a rész tartalmazza az általános kliens beállításokat<br><p>mint<b> "
 "hangok, médiafájlok, URL kezelők</b> stb..</p>"
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:84
+#: src/modules/options/OptionsWidget_textIcons.cpp:88
 msgid ""
 "This table contains the text icon associations.<br>KVirc will use them to "
 "display the CTRL+I escape sequences and eventually the emoticons."
@@ -4574,16 +4574,16 @@ msgstr ""
 "Ez egy tábla, a szöveges ikonok hozzárendeléséről.<br> A KVIrc ezeket "
 "jeleníti meg a \"CTRL+I azonosító\" után."
 
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_input.cpp:56
-#: src/modules/options/OptionsWidget_input.cpp:61
 #: src/modules/options/OptionsWidget_ircView.cpp:64
 #: src/modules/options/OptionsWidget_ircView.cpp:69
+#: src/modules/options/OptionsWidget_input.cpp:56
+#: src/modules/options/OptionsWidget_input.cpp:61
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
 msgid "Tile"
 msgstr "Rendezés"
 
@@ -4616,11 +4616,11 @@ msgstr "Eszköztár Appletek"
 msgid "Tools"
 msgstr "Eszközök"
 
-#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_input.cpp:62
 #: src/modules/options/OptionsWidget_ircView.cpp:70
+#: src/modules/options/OptionsWidget_input.cpp:62
+#: src/modules/options/OptionsWidget_userList.cpp:147
 msgid "Top"
 msgstr "Fent"
 
@@ -4701,8 +4701,8 @@ msgstr "\"hibás BNC hack\" használata a cím felderítésére"
 msgid "Use \"smart\" notify list manager"
 msgstr "\"Okos\" értesítési lista kezelő"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:130
 #: src/modules/options/OptionsWidget_servers.cpp:721
+#: src/modules/options/OptionsWidget_proxy.cpp:130
 msgid "Use IPv6 protocol"
 msgstr "IPv6 Protokoll használata"
 
@@ -4898,11 +4898,11 @@ msgstr "Felhasználólista"
 msgid "Username"
 msgstr "Felhasználónév:"
 
-#: src/modules/options/OptionsWidget_proxy.cpp:118
 #: src/modules/options/OptionsWidget_identity.cpp:317
 #: src/modules/options/OptionsWidget_identity.cpp:932
 #: src/modules/options/OptionsWidget_servers.cpp:141
 #: src/modules/options/OptionsWidget_servers.cpp:559
+#: src/modules/options/OptionsWidget_proxy.cpp:118
 msgid "Username:"
 msgstr "Felhasználónév:"
 
@@ -4924,8 +4924,8 @@ msgstr "Függőleges elhelyezés:"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_input.cpp:52
 #: src/modules/options/OptionsWidget_ircView.cpp:60
+#: src/modules/options/OptionsWidget_input.cpp:52
 msgid "Vertical align:"
 msgstr "Függőleges elhelyezés:"
 
@@ -5101,7 +5101,7 @@ msgstr "mentés,kimenet"
 msgid "scripting,kvs,debug"
 msgstr "szkript,kvs,hibakeresés"
 
-#: src/modules/options/OptionsWidget_textIcons.h:38
+#: src/modules/options/OptionsWidget_textIcons.h:39
 msgid "smileys,emoticons"
 msgstr "mosoly,hangulatjelek"
 
@@ -5113,13 +5113,13 @@ msgstr "hangok,események"
 msgid "sound,xmms,audio,play,amarok"
 msgstr "hang,xmms,audio,lejátszás,amarok"
 
-#: src/modules/options/OptionsWidget_theme.h:34
 #: src/modules/options/OptionsWidget_windowList.h:36
 #: src/modules/options/OptionsWidget_windowList.h:50
 #: src/modules/options/OptionsWidget_windowList.h:66
 #: src/modules/options/OptionsWidget_windowList.h:81
 #: src/modules/options/OptionsWidget_windowList.h:100
 #: src/modules/options/OptionsWidget_windowList.h:115
+#: src/modules/options/OptionsWidget_theme.h:34
 msgid "theme"
 msgstr "megjelenés"
 
@@ -5132,9 +5132,9 @@ msgstr "megjelenés,háttér"
 msgid "theme,colors,messages,output"
 msgstr "megjelenés,színek,üzenetek,kimenet"
 
-#: src/modules/options/OptionsWidget_message.h:41
 #: src/modules/options/OptionsWidget_ircView.h:37
 #: src/modules/options/OptionsWidget_ircView.h:51
+#: src/modules/options/OptionsWidget_message.h:41
 msgid "theme,colors,output"
 msgstr "megjelenés,színek,kimenet"
 
@@ -5187,7 +5187,7 @@ msgstr "idő, időbélyeg"
 msgid "tray,TRAYICON"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:238
+#: src/modules/options/OptionsWidget_textIcons.cpp:256
 msgid "unnamed"
 msgstr "névtelen"
 

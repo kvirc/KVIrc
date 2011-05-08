@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2011-01-25 23:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
@@ -48,8 +48,8 @@ msgstr " Kullanıcı: %c%Q"
 msgid "&Add Group..."
 msgstr "&Grup Ekle..."
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 #: src/modules/reguser/RegisteredUsersDialog.cpp:248
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 msgid "&Add..."
 msgstr "&Ekle..."
 
@@ -65,10 +65,10 @@ msgstr "&Düzenle..."
 msgid "&New"
 msgstr "&Yeni"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:299
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
-#: src/modules/reguser/RegisteredUsersDialog.cpp:299
 msgid "&OK"
 msgstr "&Tamam"
 
@@ -238,10 +238,10 @@ msgstr "Dosya %Q yazma için açılamıyor."
 msgid "Can't open file %s for reading."
 msgstr "Dosya %s okuma için açılamıyor."
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:304
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
-#: src/modules/reguser/RegisteredUsersDialog.cpp:304
 msgid "Cancel"
 msgstr "Iptal et"
 
@@ -254,8 +254,8 @@ msgstr "Kanal: %1%2@%3"
 msgid "Choose a Filename - KVIrc"
 msgstr "Bir Dosya adı seçin - KVIrc"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 #: src/modules/reguser/RegisteredUsersDialog.cpp:136
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 msgid "Comment:"
 msgstr "Yorum:"
 
@@ -457,8 +457,8 @@ msgstr "Özellik"
 msgid "Property Editor"
 msgstr "Özellik Editörü"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 #: src/modules/reguser/RegisteredUsersDialog.cpp:258
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 msgid "Re&move"
 msgstr "&Sil"
 

@@ -9,17 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2011-03-18 19:46+0300\n"
 "Last-Translator: alexzulu <ua6hdw@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1186
 #, c-format
@@ -177,8 +177,8 @@ msgstr "Невозможно выгрузить модуль: модуль за�
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1744
 msgid ""
-"Cannot call internal object function $%Q (for object named '%Q' of class "
-"'%Q') from this context"
+"Cannot call internal object function $%Q (for object named '%Q' of class '%"
+"Q') from this context"
 msgstr ""
 "Не могу найти объект функции $%Q (для объекта с именем '%Q' класса '%Q') из "
 "этого контекста"
@@ -223,8 +223,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Не найдено имя базового класса '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:156
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Результат поиска адреса для запроса \"%Q\""
 
@@ -296,8 +296,8 @@ msgstr "Ошибка при получении информации из лок�
 msgid "Error triggered from process callback handler: killing process"
 msgstr "Ошибка запуска процесса из обработчика: процесс убит"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 msgid "Error: %Q"
 msgstr "Ошибка: %Q"
 
@@ -461,13 +461,13 @@ msgstr "Хеш ключ является пустой строкой: испра
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr "Ошибочная ссылка на хеш: переменная определена как типа '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 msgid "Hostname: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 msgid "IP address %d: %Q"
 msgstr "IP адрес %d: %Q"
 
@@ -657,8 +657,8 @@ msgstr ""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
 msgid ""
-"Module command call failed: the module '%Q' doesn't export a command named "
-"'%Q'"
+"Module command call failed: the module '%Q' doesn't export a command named '%"
+"Q'"
 msgstr ""
 "Ошибка команды вызова модуля: модуль '%Q' не может предоставить команду с "
 "именем '%Q'"
@@ -726,8 +726,8 @@ msgstr "Нет обработчика '%Q' для заготовки событ�
 msgid "No menu bar item with text '%Q'"
 msgstr "Нет пункта меню с текстом '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Нет такого контекста IRC (%u)"
@@ -934,8 +934,9 @@ msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1224
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1234
+#, fuzzy
 msgid ""
-"The 'foreach' command expects a writeable iteration variable as first "
+"The 'foreach' command expects a writable iteration variable as first "
 "parameter"
 msgstr ""
 "Команда 'foreach' ожидает для записи переменную итерации как первый аргумент"
@@ -1277,8 +1278,8 @@ msgstr ""
 "Похоже на оператор разыменования указателя но объект '->', но на самом деле "
 "это не так. Возможно вы забыли после него '$'?"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 msgid "This window has no associated IRC context"
 msgstr "Это окно не связано с IRC контекстом"
 
@@ -1286,9 +1287,9 @@ msgstr "Это окно не связано с IRC контекстом"
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "Это окно не связано с контекстом IRC и не является DCC чатом"
 
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "Это окно не ассоциировано с контекстом IRC"
 

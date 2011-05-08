@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2010-08-20 11:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -24,10 +24,6 @@ msgstr "%cAddon Azonosító %Q, verzió: %Q%c"
 #: src/modules/addon/PackAddonDialog.cpp:280
 msgid "Addon Packaging Error"
 msgstr "Addon Csomagolási Hiba"
-
-#: src/modules/addon/PackAddonDialog.cpp:289
-msgid "Addon Packaging Warning"
-msgstr "Addon Csomagolási Figyelmeztető"
 
 #: src/modules/addon/AddonFunctions.cpp:231
 #, fuzzy
@@ -50,7 +46,7 @@ msgstr "\"%Q\" addon regisztrációja %Q verzióval"
 msgid "Author"
 msgstr "Készítő"
 
-#: src/modules/addon/PackAddonDialog.cpp:629
+#: src/modules/addon/PackAddonDialog.cpp:621
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -118,12 +114,12 @@ msgstr "Üres fájl lista"
 msgid "Error installing addon package: %Q"
 msgstr "Hiba az addon csomag telepítése közben: %Q"
 
-#: src/modules/addon/PackAddonDialog.cpp:337
-#: src/modules/addon/PackAddonDialog.cpp:352
-#: src/modules/addon/PackAddonDialog.cpp:365
-#: src/modules/addon/PackAddonDialog.cpp:384
-#: src/modules/addon/PackAddonDialog.cpp:393
-#: src/modules/addon/PackAddonDialog.cpp:398
+#: src/modules/addon/PackAddonDialog.cpp:329
+#: src/modules/addon/PackAddonDialog.cpp:344
+#: src/modules/addon/PackAddonDialog.cpp:357
+#: src/modules/addon/PackAddonDialog.cpp:376
+#: src/modules/addon/PackAddonDialog.cpp:385
+#: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Export Addon - KVIrc"
 msgstr "Addon Exportálása - KVIrc"
 
@@ -136,19 +132,19 @@ msgstr ""
 msgid "Failed to unpack the selected file: %1"
 msgstr "%1 kicsomagolása sikertelen"
 
-#: src/modules/addon/PackAddonDialog.cpp:384
+#: src/modules/addon/PackAddonDialog.cpp:376
 msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:613
+#: src/modules/addon/PackAddonDialog.cpp:605
 msgid "File Summary"
 msgstr "Fájl Összegzés"
 
-#: src/modules/addon/PackAddonDialog.cpp:547
+#: src/modules/addon/PackAddonDialog.cpp:539
 msgid "Final Information"
 msgstr "Utolsó Információk:"
 
-#: src/modules/addon/PackAddonDialog.cpp:633
+#: src/modules/addon/PackAddonDialog.cpp:625
 msgid "Finish"
 msgstr "Befejezés"
 
@@ -156,7 +152,7 @@ msgstr "Befejezés"
 msgid "Get More Addons..."
 msgstr "További Addonok Beszerzése.."
 
-#: src/modules/addon/PackAddonDialog.cpp:620
+#: src/modules/addon/PackAddonDialog.cpp:612
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
 "If these and the information showed in the previous page are correct, hit "
@@ -168,7 +164,7 @@ msgstr ""
 "\"Befejezés\" gombra a csomagolás.\n"
 "véglegesítéséhez."
 
-#: src/modules/addon/PackAddonDialog.cpp:548
+#: src/modules/addon/PackAddonDialog.cpp:540
 msgid ""
 "Here there are the information you provided. If these information are "
 "correct, hit the \"Finish\" button to complete the packaging operations."
@@ -176,7 +172,7 @@ msgstr ""
 "Itt vannak az általad megadott információk. Ha ezek helyesek, kattints a "
 "\"Befejezés\" gombra, hogy a csomag elkészüljön."
 
-#: src/modules/addon/PackAddonDialog.cpp:409
+#: src/modules/addon/PackAddonDialog.cpp:401
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
@@ -184,11 +180,11 @@ msgstr ""
 "Itt meg kell adnod némi információt magadról (a csomag készítője) és egy "
 "rövid leírást a csomagról amit csinálsz."
 
-#: src/modules/addon/PackAddonDialog.cpp:503
+#: src/modules/addon/PackAddonDialog.cpp:495
 msgid "Here you need to provide the path where to save the addon package"
 msgstr "Itt meg kell adnod egy útvonalat ahova a csomagot menteni szeretnéd"
 
-#: src/modules/addon/PackAddonDialog.cpp:476
+#: src/modules/addon/PackAddonDialog.cpp:468
 msgid "Here you need to select the directory where the addon files are."
 msgstr "Itt meg kell adnod a mappát ahol az addon fájljai találhatóak."
 
@@ -196,7 +192,7 @@ msgstr "Itt meg kell adnod a mappát ahol az addon fájljai találhatóak."
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
-#: src/modules/addon/PackAddonDialog.cpp:593
+#: src/modules/addon/PackAddonDialog.cpp:585
 msgid "Icon File"
 msgstr "Ikon Fájl"
 
@@ -229,11 +225,11 @@ msgstr ""
 msgid "Manage Script-Based Addons"
 msgstr "Szkript Alapú Addonok Kezelése"
 
-#: src/modules/addon/PackAddonDialog.cpp:450
+#: src/modules/addon/PackAddonDialog.cpp:442
 msgid "Minimum &KVIrc Version:"
 msgstr "Minimális KVIrc Verzió:"
 
-#: src/modules/addon/PackAddonDialog.cpp:589
+#: src/modules/addon/PackAddonDialog.cpp:581
 msgid "Minimum KVIrc Version"
 msgstr "Minimum KVIrc Verzió"
 
@@ -245,58 +241,58 @@ msgstr "Név: %Q"
 msgid "No"
 msgstr "Nem"
 
-#: src/modules/addon/PackAddonDialog.cpp:427
+#: src/modules/addon/PackAddonDialog.cpp:419
 msgid "No spaces allowed, like MyAddon"
 msgstr "Szóköz nem engedélyezett, mint AzÉnAddonom"
 
-#: src/modules/addon/PackAddonDialog.cpp:414
+#: src/modules/addon/PackAddonDialog.cpp:406
 msgid "Package &Author:"
 msgstr "Csomag Készítője:"
 
-#: src/modules/addon/PackAddonDialog.cpp:441
+#: src/modules/addon/PackAddonDialog.cpp:433
 msgid "Package &Description:"
 msgstr "Csomag Leírása:"
 
-#: src/modules/addon/PackAddonDialog.cpp:423
+#: src/modules/addon/PackAddonDialog.cpp:415
 msgid "Package &Name:"
 msgstr "Csomag &Neve:"
 
-#: src/modules/addon/PackAddonDialog.cpp:432
+#: src/modules/addon/PackAddonDialog.cpp:424
 msgid "Package &Version:"
 msgstr "Csomag &Verzió:"
 
-#: src/modules/addon/PackAddonDialog.cpp:573
+#: src/modules/addon/PackAddonDialog.cpp:565
 msgid "Package Author"
 msgstr "Csomag Készítő"
 
-#: src/modules/addon/PackAddonDialog.cpp:585
+#: src/modules/addon/PackAddonDialog.cpp:577
 msgid "Package Description"
 msgstr "Csomag Leírás"
 
-#: src/modules/addon/PackAddonDialog.cpp:475
+#: src/modules/addon/PackAddonDialog.cpp:467
 msgid "Package Files"
 msgstr "Csomag Fájlok"
 
-#: src/modules/addon/PackAddonDialog.cpp:408
+#: src/modules/addon/PackAddonDialog.cpp:400
 msgid "Package Information"
 msgstr "Csomag Információi"
 
-#: src/modules/addon/PackAddonDialog.cpp:577
+#: src/modules/addon/PackAddonDialog.cpp:569
 msgid "Package Name"
 msgstr "Csomag Név"
 
-#: src/modules/addon/PackAddonDialog.cpp:581
+#: src/modules/addon/PackAddonDialog.cpp:573
 msgid "Package Version"
 msgstr "Csomag Verzió"
 
-#: src/modules/addon/PackAddonDialog.cpp:398
+#: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Package saved successfully in %1"
 msgstr ""
 
-#: src/modules/addon/PackAddonDialog.cpp:334
-#: src/modules/addon/PackAddonDialog.cpp:349
-#: src/modules/addon/PackAddonDialog.cpp:362
-#: src/modules/addon/PackAddonDialog.cpp:390
+#: src/modules/addon/PackAddonDialog.cpp:326
+#: src/modules/addon/PackAddonDialog.cpp:341
+#: src/modules/addon/PackAddonDialog.cpp:354
+#: src/modules/addon/PackAddonDialog.cpp:382
 msgid "Packaging failed"
 msgstr "Csomagolás sikertelen"
 
@@ -304,23 +300,23 @@ msgstr "Csomagolás sikertelen"
 msgid "Please select the addon installation file"
 msgstr "Kérlek válaszd ki az addon telepítőfájlt"
 
-#: src/modules/addon/PackAddonDialog.cpp:502
+#: src/modules/addon/PackAddonDialog.cpp:494
 msgid "Save Package"
 msgstr "Csomag Mentése"
 
-#: src/modules/addon/PackAddonDialog.cpp:601
+#: src/modules/addon/PackAddonDialog.cpp:593
 msgid "Save Path"
 msgstr "Mentési Útvonal"
 
-#: src/modules/addon/PackAddonDialog.cpp:510
+#: src/modules/addon/PackAddonDialog.cpp:502
 msgid "Select save path:"
 msgstr "Mentés útvonala:"
 
-#: src/modules/addon/PackAddonDialog.cpp:485
+#: src/modules/addon/PackAddonDialog.cpp:477
 msgid "Select the icon file:"
 msgstr "Ikon fájl kiválasztása:"
 
-#: src/modules/addon/PackAddonDialog.cpp:481
+#: src/modules/addon/PackAddonDialog.cpp:473
 msgid "Select the source directory:"
 msgstr "Forrás mappa kiválasztása:"
 
@@ -337,7 +333,7 @@ msgstr "'%1' nem létező elem kihagyása"
 msgid "Skipping invalid entry '%1'"
 msgstr "Helytelen elem kihagyása: '%1'"
 
-#: src/modules/addon/PackAddonDialog.cpp:597
+#: src/modules/addon/PackAddonDialog.cpp:589
 msgid "Source Directory"
 msgstr "Forrás Mappa"
 
@@ -375,7 +371,7 @@ msgstr "'%1' fájl nem létezik"
 msgid "The initialization script (install.kvs) does not exist."
 msgstr "Az inicializáló szkript (install.kvs) nem létezik."
 
-#: src/modules/addon/PackAddonDialog.cpp:336
+#: src/modules/addon/PackAddonDialog.cpp:328
 msgid "The package file list is empty"
 msgstr "A csomagfájl lista üres"
 
@@ -417,7 +413,7 @@ msgstr ""
 "Ez a KVIrc túl régi ennek az addonnak a futtatásához (szükséges minimum "
 "verzió: \"%Q\")"
 
-#: src/modules/addon/PackAddonDialog.cpp:571
+#: src/modules/addon/PackAddonDialog.cpp:563
 msgid "This is what I will check for:"
 msgstr "Ezeket fogom leellenőrízni:"
 
@@ -438,7 +434,7 @@ msgstr "Összesen: %d addon telepítve"
 msgid "Uninstalling existing addon version %Q"
 msgstr "%Q verziójú addon eltávolítása"
 
-#: src/modules/addon/PackAddonDialog.cpp:436
+#: src/modules/addon/PackAddonDialog.cpp:428
 msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
 msgstr "A verzió ilyen formában x.y[.z], például 1.0 vagy 2.0.3"
 
@@ -472,9 +468,12 @@ msgstr ""
 msgid "You're about to install the following addon package"
 msgstr "A következő addon csomagot fogod teleíteni"
 
-#: src/modules/addon/PackAddonDialog.cpp:418
+#: src/modules/addon/PackAddonDialog.cpp:410
 msgid "Your name here"
 msgstr "A neved ide írd"
+
+#~ msgid "Addon Packaging Warning"
+#~ msgstr "Addon Csomagolási Figyelmeztető"
 
 #~ msgid "One or more files can't be deleted"
 #~ msgstr "Egy vagy több fájl nem törölhető"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-02 03:05+0200\n"
+"POT-Creation-Date: 2011-05-08 07:32+0100\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:329
@@ -36,7 +36,7 @@ msgstr "Képernyőkép Készítése - KVIrc"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:345
 #: src/modules/theme/ThemeManagementDialog.cpp:357
-#: src/modules/theme/libkvitheme.cpp:107 src/modules/theme/libkvitheme.cpp:121
+#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
 msgid "Apply theme - KVIrc"
 msgstr "Kinézet Alkalmazása - KVIrc"
 
@@ -45,7 +45,7 @@ msgstr "Kinézet Alkalmazása - KVIrc"
 msgid "Author"
 msgstr "Készítő"
 
-#: src/modules/theme/libkvitheme.cpp:233
+#: src/modules/theme/libkvitheme.cpp:221
 msgid "Choose a file to save the screenshot to"
 msgstr "Add meg a fájlt, ahova a képernyőképet mentsem"
 
@@ -67,8 +67,8 @@ msgstr "Kiválasztott Kinézet(ek) Törlése"
 msgid "Delete Theme - KVIrc"
 msgstr "Kinézet Törlése - KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:126
 #: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:126
 msgid "Description:"
 msgstr "Leírás:"
 
@@ -85,7 +85,7 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Szeretnéd folytatni a telepítéssel?"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:346
-#: src/modules/theme/libkvitheme.cpp:108
+#: src/modules/theme/libkvitheme.cpp:104
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Szeretnéd alkalmazni a \"%Q\" Kinézetet (%Q verzió)"
 
@@ -93,7 +93,7 @@ msgstr "Szeretnéd alkalmazni a \"%Q\" Kinézetet (%Q verzió)"
 msgid "Error installing theme package: %Q"
 msgstr "Hiba a kinézet-csomag telepítésekor: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:248
+#: src/modules/theme/libkvitheme.cpp:236
 msgid "Error making screenshot"
 msgstr "Képernyőkép készítése sikertelen"
 
@@ -111,12 +111,12 @@ msgid "Export Theme - KVIrc"
 msgstr "Kinézet Exportálása - KVIrc"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:356
-#: src/modules/theme/libkvitheme.cpp:120
+#: src/modules/theme/libkvitheme.cpp:111
 msgid "Failed to apply the specified theme: %1"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:205
 #: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:205
 msgid "Failed to load the selected image"
 msgstr "Kiválasztott kép betöltése sikertelen"
 
@@ -177,8 +177,8 @@ msgstr ""
 #: src/modules/theme/PackThemeDialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Itt ki kell választanod a fájlnevet a kinézet csomagodhoz. A kiterjesztésnek "
 "%1 -nek kell lennie."
@@ -199,8 +199,8 @@ msgstr ""
 "Itt meg kell adnod néhány információt magadról (csomagkészítő) és egy rövid "
 "leírást a csomagról, amit készítesz."
 
-#: src/modules/theme/SaveThemeDialog.cpp:81
 #: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:81
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
@@ -295,7 +295,7 @@ msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csom
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csomag"
 
-#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 
@@ -365,8 +365,8 @@ msgstr "Kinézet könyvtár létrehozása sikertelen."
 msgid "Unable to save theme: %1"
 msgstr "%1 kinézet mentése sikertelen."
 
-#: src/modules/theme/SaveThemeDialog.cpp:114
 #: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:114
 msgid "Version:"
 msgstr "Verzió:"
 
@@ -384,8 +384,8 @@ msgstr ""
 "Figyelmeztetés: A kinézet nem biztos, hogy kompatibilis a KVIrc ezen "
 "verziójával"
 
-#: src/modules/theme/SaveThemeDialog.cpp:88
 #: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:88
 msgid "Welcome"
 msgstr "Üdvözlet"
 
