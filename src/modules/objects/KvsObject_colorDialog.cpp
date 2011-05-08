@@ -39,9 +39,9 @@ const char * const option_tbl[] = {
 };
 
 const int option_cod[] = {
-    QColorDialog::ShowAlphaChannel,
-    QColorDialog::NoButtons,
-    QColorDialog::DontUseNativeDialog
+	QColorDialog::ShowAlphaChannel,
+	QColorDialog::NoButtons,
+	QColorDialog::DontUseNativeDialog
 };
 
 #define option_num	(sizeof(option_tbl) / sizeof(option_tbl[0]))
@@ -144,16 +144,17 @@ KVSO_CLASS_FUNCTION(colorDialog,setCurrentColor)
 			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
-		if (c->paramCount()<4) iOpacity=255;
+		if (c->paramCount()<4)
+			iOpacity=255;
 		else
 		{
-		    if (c->paramCount()>4)
-		    {
-			if(KviQString::equalCI(szColorMode, "HSV"))
-			col.setHsv(iCol1,iCol2,iCol3,iOpacity);
-			else
-			col.setRgb(iCol1,iCol2,iCol3,iOpacity);
-		    }
+			if (c->paramCount()>4)
+			{
+				if(KviQString::equalCI(szColorMode, "HSV"))
+					col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+				else
+					col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+			}
 		}
 		col.setAlpha(iOpacity);
 	}

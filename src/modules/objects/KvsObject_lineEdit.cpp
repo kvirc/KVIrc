@@ -134,10 +134,10 @@ static const int mode_cod[] =  {
 		Sets the validation input mask to inputMask.[br]
 		Example:[br]
 		[br]
-                %ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
-                %ledit_example->$setInputMask( "000.000.000.000;_" );[br]
-                %ledit_example->Ip Number Mask.[br]
-                %ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );[br]
+		%ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
+		%ledit_example->$setInputMask( "000.000.000.000;_" );[br]
+		%ledit_example->Ip Number Mask.[br]
+		%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );[br]
 		[br]
 		The mask format understands these mask characters:[br]
 		Character		Meaning[br]
@@ -166,18 +166,18 @@ static const int mode_cod[] =  {
 		Called when the lineedit lost focus.
 		!fn: $textChangedEvent(<new text:string>)
 		This event is called when the text changed, In $0 there is the new text.
-                !fn: $setCompleter(<completion_mode:string>,<items:stringlist>)
-                Provides completions based on an stringlist.
-                Valid completion_mode are:
-                PopupCompletion: Current completions are displayed in a popup below the lineedit.
-                UnfilteredPopupCompletion: All possible completions are displayed in a popup window with the most likely suggestion selected.
-                InlineCompletion: Completions appear as selected text.
-                !fn: $disableCompleter()
-                Disable temporally the completer.
-                !fn: $enableCompleter()
-                Enable the completer.
-                !fn: $removeCompleter()
-                Remove the completer.
+		!fn: $setCompleter(<completion_mode:string>,<items:stringlist>)
+		Provides completions based on an stringlist.
+		Valid completion_mode are:
+		PopupCompletion: Current completions are displayed in a popup below the lineedit.
+		UnfilteredPopupCompletion: All possible completions are displayed in a popup window with the most likely suggestion selected.
+		InlineCompletion: Completions appear as selected text.
+		!fn: $disableCompleter()
+		Disable temporally the completer.
+		!fn: $enableCompleter()
+		Enable the completer.
+		!fn: $removeCompleter()
+		Remove the completer.
 	@signals:
 		!sg: $returnPressed()
 		This signal is emitted by the default implementation of [classfnc]$returnPressedEvent[/classfnc]().
@@ -195,11 +195,11 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_lineEdit,"lineedit","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,text)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,setText)
 
-        // completer
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,setCompleter)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,enableCompleter)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,disableCompleter)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,unsetCompleter)
+	// completer
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,setCompleter)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,enableCompleter)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,disableCompleter)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,unsetCompleter)
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,maxLength)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit,setMaxLength)
@@ -228,15 +228,15 @@ KVSO_END_REGISTERCLASS(KvsObject_lineEdit)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_lineEdit,KvsObject_widget)
-m_pCompleter=0;
+	m_pCompleter=0;
 KVSO_END_CONSTRUCTOR(KvsObject_lineEdit)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_lineEdit)
-if (m_pCompleter)
-{
-       delete m_pCompleter;
-       m_pCompleter=0;
-}
+	if (m_pCompleter)
+	{
+		delete m_pCompleter;
+		m_pCompleter=0;
+	}
 KVSO_END_CONSTRUCTOR(KvsObject_lineEdit)
 
 
@@ -286,8 +286,8 @@ KVSO_CLASS_FUNCTION(lineEdit,maxLength)
 
 KVSO_CLASS_FUNCTION(lineEdit,setMaxLength)
 {
-        CHECK_INTERNAL_POINTER(widget())
-        kvs_uint_t iMaxlen;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iMaxlen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("maxlen",KVS_PT_UNSIGNEDINTEGER,0,iMaxlen)
 	KVSO_PARAMETERS_END(c)
@@ -451,49 +451,47 @@ KVSO_CLASS_FUNCTION(lineEdit,setInputMask)
 
 KVSO_CLASS_FUNCTION(lineEdit,setCompleter)
 {
-        CHECK_INTERNAL_POINTER(widget())
-        QStringList szCompletionList;
-        QString szMode;
-        KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
-                KVSO_PARAMETER("completion_list",KVS_PT_STRINGLIST,0,szCompletionList)
-        KVSO_PARAMETERS_END(c)
-        if(m_pCompleter)
-        {
-            delete m_pCompleter;
-
-        }
-         m_pCompleter=new QCompleter(szCompletionList);
-        QCompleter::CompletionMode mode=QCompleter::PopupCompletion;
-        if(KviQString::equalCI(szMode,"InlineCompletion")) mode=QCompleter::InlineCompletion;
-        else if(KviQString::equalCI(szMode,"UnfilteredPopupCompletion")) mode=QCompleter::UnfilteredPopupCompletion;
-        else if(!KviQString::equalCI(szMode,"PopupCompletion"))
-                   c->warning(__tr2qs_ctx("Unkonwn '%Q' completition mode, switching to default popupCompletition","objects"),&szMode);
-        m_pCompleter->setCompletionMode(mode);
-        ((QLineEdit *)widget())->setCompleter(m_pCompleter);
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	QStringList szCompletionList;
+	QString szMode;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
+		KVSO_PARAMETER("completion_list",KVS_PT_STRINGLIST,0,szCompletionList)
+	KVSO_PARAMETERS_END(c)
+	if(m_pCompleter)
+		delete m_pCompleter;
+	m_pCompleter=new QCompleter(szCompletionList);
+	QCompleter::CompletionMode mode=QCompleter::PopupCompletion;
+	if(KviQString::equalCI(szMode,"InlineCompletion")) mode=QCompleter::InlineCompletion;
+	else if(KviQString::equalCI(szMode,"UnfilteredPopupCompletion")) mode=QCompleter::UnfilteredPopupCompletion;
+	else if(!KviQString::equalCI(szMode,"PopupCompletion"))
+		c->warning(__tr2qs_ctx("Unkonwn '%Q' completition mode, switching to default popupCompletition","objects"),&szMode);
+	m_pCompleter->setCompletionMode(mode);
+	((QLineEdit *)widget())->setCompleter(m_pCompleter);
+	return true;
 }
 KVSO_CLASS_FUNCTION(lineEdit,enableCompleter)
 {
-        CHECK_INTERNAL_POINTER(widget())
-        if (m_pCompleter) ((QLineEdit *)widget())->setCompleter(m_pCompleter);
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	if (m_pCompleter) ((QLineEdit *)widget())->setCompleter(m_pCompleter);
+	return true;
 }
 KVSO_CLASS_FUNCTION(lineEdit,disableCompleter)
 {
-        CHECK_INTERNAL_POINTER(widget())
-        ((QLineEdit *)widget())->setCompleter(0);
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	((QLineEdit *)widget())->setCompleter(0);
+	return true;
 }
 KVSO_CLASS_FUNCTION(lineEdit,unsetCompleter)
 {
-        CHECK_INTERNAL_POINTER(widget())
-        if (m_pCompleter){
-            ((QLineEdit *)widget())->setCompleter(0);
-            delete m_pCompleter;
-            m_pCompleter=0;
-        }
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	if (m_pCompleter)
+	{
+		((QLineEdit *)widget())->setCompleter(0);
+		delete m_pCompleter;
+		m_pCompleter=0;
+	}
+	return true;
 }
 
 

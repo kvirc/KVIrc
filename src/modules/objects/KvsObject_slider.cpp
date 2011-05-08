@@ -33,7 +33,7 @@
 
 
 /*
-@doc:	slider
+	@doc: slider
 	@keyterms:
 		slider object class
 	@title:
@@ -157,7 +157,7 @@ KVSO_CLASS_FUNCTION(slider,setValue)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("value",KVS_PT_INT,0,iValue)
 	KVSO_PARAMETERS_END(c)
-    ((QSlider *)widget())->setValue(iValue);
+	((QSlider *)widget())->setValue(iValue);
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider,setMinValue)
@@ -177,7 +177,7 @@ KVSO_CLASS_FUNCTION(slider,setMaxValue)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("max_value",KVS_PT_INT,0,iMaxvalue)
 	KVSO_PARAMETERS_END(c)
-    ((QSlider *)widget())->setMaximum(iMaxvalue);
+	((QSlider *)widget())->setMaximum(iMaxvalue);
 	return true;
 }
 
@@ -198,7 +198,7 @@ KVSO_CLASS_FUNCTION(slider,setPageStep)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("page_step",KVS_PT_INT,0,iPagestep)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSlider *)widget())->setPageStep(iPagestep);
+	if (widget()) ((QSlider *)widget())->setPageStep(iPagestep);
 	return true;
 }
 
@@ -208,7 +208,7 @@ KVSO_CLASS_FUNCTION(slider,setTickInterval)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tick_interval",KVS_PT_INT,0,iInterval)
 	KVSO_PARAMETERS_END(c)
-    ((QSlider *)widget())->setTickInterval(iInterval);
+	((QSlider *)widget())->setTickInterval(iInterval);
 	return true;
 }
 

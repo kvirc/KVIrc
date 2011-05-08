@@ -139,9 +139,8 @@ KVSO_CLASS_FUNCTION(toolButton,setImage)
 		KVSO_PARAMETER("icon_id",KVS_PT_STRING,0,icon)
 	KVSO_PARAMETERS_END(c)
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix){
-			((QToolButton *)widget())->setIcon(QIcon(*pix));
-	}
+	if(pix)
+		((QToolButton *)widget())->setIcon(QIcon(*pix));
 	else
 		((QToolButton *)widget())->setIcon(QIcon());
 	return true;
@@ -310,10 +309,11 @@ KVSO_CLASS_FUNCTION(toolButton,setTextPosition)
 		KVSO_PARAMETER("position",KVS_PT_STRING,0,szPos)
 	KVSO_PARAMETERS_END(c)
 	if(KviQString::equalCI(szPos,"BesideIcon"))
-			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+		((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	else if(KviQString::equalCI(szPos,"BelowIcon"))
-			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	else c->warning(__tr2qs_ctx("Unknown text position '%Q'","objects"),&szPos);
+		((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+	else
+		c->warning(__tr2qs_ctx("Unknown text position '%Q'","objects"),&szPos);
 	return true;
 }
 

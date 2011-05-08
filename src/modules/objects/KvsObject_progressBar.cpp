@@ -98,7 +98,7 @@ KVSO_CLASS_FUNCTION(progressBar,setProgress)
 		KVSO_PARAMETER("step_value",KVS_PT_UNSIGNEDINTEGER,0,iValue)
 	KVSO_PARAMETERS_END(c)
 	((QProgressBar *)widget())->setValue(iValue);
-    return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(progressBar,setTotalSteps)
@@ -109,7 +109,7 @@ KVSO_CLASS_FUNCTION(progressBar,setTotalSteps)
 		KVSO_PARAMETER("total_steps",KVS_PT_UNSIGNEDINTEGER,0,iMax)
 	KVSO_PARAMETERS_END(c)
 	((QProgressBar *)widget())->setMaximum(iMax);
-    return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(progressBar,reset)

@@ -167,8 +167,8 @@ KVSO_END_CONSTRUCTOR(KvsObject_list)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_list)
-delete m_pDataList;
-m_pDataList = 0;
+	delete m_pDataList;
+	m_pDataList = 0;
 KVSO_END_CONSTRUCTOR(KvsObject_list)
 
 KVSO_CLASS_FUNCTION(list,current)
@@ -215,7 +215,7 @@ KVSO_CLASS_FUNCTION(list,moveNext)
 
 KVSO_CLASS_FUNCTION(list,moveFirst)
 {
-        CHECK_INTERNAL_POINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->first() != 0);
 	return true;
 }
@@ -309,7 +309,7 @@ KVSO_CLASS_FUNCTION(list,append)
 
 KVSO_CLASS_FUNCTION(list,clear)
 {
-        CHECK_INTERNAL_POINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	m_pDataList->clear();
 	return true;
 }

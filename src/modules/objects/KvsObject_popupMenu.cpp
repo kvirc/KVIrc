@@ -57,9 +57,9 @@
 	@functions:
 		!fn: $insertItem(<text:string>,[icon_id:string])
 		Inserts menu items into a popup menu with optional icon and return the popup identifier.
-                !fn: $addMenu(<popupmenu:hobject,[idx:uinteger])
-                Add a popupmenu.
-                With the optional parameter idx the popup will be inserted.
+		!fn: $addMenu(<popupmenu:hobject,[idx:uinteger])
+		Add a popupmenu.
+		With the optional parameter idx the popup will be inserted.
 		!fn: $setTitle(<text:string>)
 		Sets the popupmenu title to text.
 		!fn: $exec([<widget:objects>,<x:uinteger>,<y:integer>])

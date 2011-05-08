@@ -56,19 +56,19 @@ const char * const itemflags_tbl[] = {
 #define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
 
 /*
-        @doc:listbox
-        @title:
-                listbox class
-        @type:
-                class
-        @short:
-                A widget displaying a list of items.
-        @inherits:
-                [class]object[/class]
-                [class]widget[/class]
+	@doc:listbox
+	@title:
+		listbox class
+	@type:
+		class
+	@short:
+		A widget displaying a list of items.
+	@inherits:
+		[class]object[/class]
+		[class]widget[/class]
 	@description:
-                The listbox class is a widget displaying a list of string items.[br]
-                The listbox can operate in four selection modes: single, multi, extended
+		The listbox class is a widget displaying a list of string items.[br]
+		The listbox can operate in four selection modes: single, multi, extended
 		and none. In the "single" mode only one item can be selected at a time
 		and that item is also the current one. In the "multi" mode multiple
 		items can be selected and unselected and the current item may or may not
@@ -92,14 +92,14 @@ const char * const itemflags_tbl[] = {
 		!fn: $setFlag(<idx:integer>,<flag1:string>, <flag2:string>, ...)
 		Sets the flags for the item at index idz to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.
 		Supported flags are:
-		- noitemflag : no flag sets;
-		- selectable : item is selecatble;
-		- editable : item is editable;
-		- dragEnabled : item can dragged;
-		- dropEnabled : item can used as drop target;
-		- userCheckable : item is checkable;
-		- enabled :item is enabled;
-		- tristate : item is checkable with three separate states.
+		[br]- noitemflag : no flag sets;
+		[br]- selectable : item is selecatble;
+		[br]- editable : item is editable;
+		[br]- dragEnabled : item can dragged;
+		[br]- dropEnabled : item can used as drop target;
+		[br]- userCheckable : item is checkable;
+		[br]- enabled :item is enabled;
+		[br]- tristate : item is checkable with three separate states.
 		!fn: $setChecked(<checkstate:bool>)
 		Sets the eventual item check box 'checked state' to <bool>.
 		!fn: <bool> $isChecked()
@@ -122,7 +122,7 @@ const char * const itemflags_tbl[] = {
 		!fn: $textAt(<index:integer>)
 		Returns item at given index.
 		!fn: $setCurrentItem(<index:integer>)
-                Sets the current listbox item.
+		Sets the current listbox item.
 		!fn: $clear()
 		Removes all the items
 		!fn: $setFont(<idx:integer>,<family:string>,<size:integer>[,<style1:string>, <style2:string>, ...])
@@ -234,8 +234,8 @@ KVSO_CLASS_FUNCTION(listWidget,setFlags)
 	QStringList itemflags;
 	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-	    KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
-	    KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
+		KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
 	KVSO_PARAMETERS_END(c)
 	int flag,sum=0;
 	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);

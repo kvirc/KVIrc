@@ -108,13 +108,13 @@ KVSO_CLASS_FUNCTION(checkBox,setChecked)
 
 KVSO_CLASS_FUNCTION(checkBox,setText)
 {
-        CHECK_INTERNAL_POINTER(widget())
-        QString szText;
-        KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("<text>",KVS_PT_STRING,0,szText)
-        KVSO_PARAMETERS_END(c)
-        ((QCheckBox *)widget())->setText(szText);
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	QString szText;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("<text>",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETERS_END(c)
+	((QCheckBox *)widget())->setText(szText);
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(checkBox,toggleEvent)

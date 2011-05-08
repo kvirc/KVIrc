@@ -157,7 +157,7 @@ KVSO_CLASS_FUNCTION(spinBox,setMinValue)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("min_value",KVS_PT_INT,0,iMinvalue)
 	KVSO_PARAMETERS_END(c)
-    ((QSpinBox *)widget())->setMinimum(iMinvalue);
+	((QSpinBox *)widget())->setMinimum(iMinvalue);
 	return true;
 }
 KVSO_CLASS_FUNCTION(spinBox,setMaxValue)
@@ -167,7 +167,7 @@ KVSO_CLASS_FUNCTION(spinBox,setMaxValue)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("max_value",KVS_PT_INT,0,iMaxvalue)
 	KVSO_PARAMETERS_END(c)
-    ((QSpinBox *)widget())->setMaximum(iMaxvalue);
+	((QSpinBox *)widget())->setMaximum(iMaxvalue);
 	return true;
 }
 
@@ -178,7 +178,7 @@ KVSO_CLASS_FUNCTION(spinBox,setLineStep)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("line_step",KVS_PT_INT,0,iLinestep)
 	KVSO_PARAMETERS_END(c)
-    ((QSpinBox *)widget())->setSingleStep(iLinestep);
+	((QSpinBox *)widget())->setSingleStep(iLinestep);
 	return true;
 }
 

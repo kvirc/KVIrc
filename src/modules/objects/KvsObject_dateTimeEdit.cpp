@@ -31,58 +31,58 @@
 #include "KvsObject_dateTimeEdit.h"
 #include "KvsObject_pixmap.h"
 
- #include <QDateTimeEdit>
+#include <QDateTimeEdit>
 
 /*
-        @doc:datetimeedit
+	@doc:datetimeedit
 	@title:
-                datetimeedit class
+		datetimeedit class
 	@type:
 		class
 	@short:
-                Datetimeedit widget.
+		Datetimeedit widget.
 	@inherits:
 		[class]object[/class]
-                [class]widget[/class]
+		[class]widget[/class]
 	@description:
-                This widget provides a datetimeedit.
+		This widget provides a datetimeedit.
 	@functions:
-                !fn: $setDate(<text:string>,<format:string>)
-                Sets the date of the widget using the format <format>. Possible values for format are:
-                d the day as number without a leading zero (1 to 31)
-                dd the day as number with a leading zero (01 to 31)
-                ddd the abbreviated localized day name (e.g. 'Mon' to 'Sun'). Uses QDate::shortDayName().
-                dddd the long localized day name (e.g. 'Monday' to 'Qt::Sunday'). Uses QDate::longDayName().
-                M the month as number without a leading zero (1-12)
-                MM the month as number with a leading zero (01-12)
-                MMM the abbreviated localized month name (e.g. 'Jan' to 'Dec'). Uses QDate::shortMonthName().
-                MMMM the long localized month name (e.g. 'January' to 'December'). Uses QDate::longMonthName().
-                yy the year as two digit number (00-99)
-                yyyy the year as four digit number
-                !fn: <string> $date(<format:string>)
-                Returns the widget date according to format.
-                !fn: $setTime(<text:string>,<format:string>)
-                Sets the date of the widget using the format <format>. Possibile values for format are:
-                h the hour without a leading zero
-                hh the hour with a leading zero
-                m the minute without a leading zero
-                mm the minute with a leading zero
-                s the second without a leading zero
-                ss the second with a leading zero
-                z the milliseconds without leading zeroes
-                zzz the milliseconds with leading zeroes
-                AP(or ap) use AM/PM display. AP will be replaced by either "AM" or "PM".
-                !fn: $time(<format:string>)
-                Returns the widget time according to format.
+		!fn: $setDate(<text:string>,<format:string>)
+		Sets the date of the widget using the format <format>. Possible values for format are:
+		[br]d the day as number without a leading zero (1 to 31)
+		[br]dd the day as number with a leading zero (01 to 31)
+		[br]ddd the abbreviated localized day name (e.g. 'Mon' to 'Sun'). Uses QDate::shortDayName().
+		[br]dddd the long localized day name (e.g. 'Monday' to 'Qt::Sunday'). Uses QDate::longDayName().
+		[br]M the month as number without a leading zero (1-12)
+		[br]MM the month as number with a leading zero (01-12)
+		[br]MMM the abbreviated localized month name (e.g. 'Jan' to 'Dec'). Uses QDate::shortMonthName().
+		[br]MMMM the long localized month name (e.g. 'January' to 'December'). Uses QDate::longMonthName().
+		[br]yy the year as two digit number (00-99)
+		[br]yyyy the year as four digit number
+		!fn: <string> $date(<format:string>)
+		Returns the widget date according to format.
+		!fn: $setTime(<text:string>,<format:string>)
+		Sets the date of the widget using the format <format>. Possibile values for format are:
+		[br]h the hour without a leading zero
+		[br]hh the hour with a leading zero
+		[br]m the minute without a leading zero
+		[br]mm the minute with a leading zero
+		[br]s the second without a leading zero
+		[br]ss the second with a leading zero
+		[br]z the milliseconds without leading zeroes
+		[br]zzz the milliseconds with leading zeroes
+		[br]AP(or ap) use AM/PM display. AP will be replaced by either "AM" or "PM".
+		!fn: $time(<format:string>)
+		Returns the widget time according to format.
 */
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_dateTimeEdit,"datetimeedit","widget")
 
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,date)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setDate)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setTime)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,time)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,date)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setDate)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setTime)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,time)
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,timeChangedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,dateTimeChangedEvent)
@@ -101,8 +101,8 @@ KVSO_END_DESTRUCTOR(KvsObject_dateTimeEdit)
 
 bool KvsObject_dateTimeEdit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
-        QDateTimeEdit *obj=new QDateTimeEdit(QDate::currentDate(),parentScriptWidget());
-        obj->setObjectName(getName());
+	QDateTimeEdit *obj=new QDateTimeEdit(QDate::currentDate(),parentScriptWidget());
+	obj->setObjectName(getName());
 	connect(obj,SIGNAL(dateChanged(const QDate &)),this,SLOT(slotDateChanged(const QDate &)));
 	connect(obj,SIGNAL(dateTimeChanged(const QDateTime & )),this,SLOT(slotDateTimeChanged(const QDateTime &)));
 	connect(obj,SIGNAL(timeChanged(const QTime &)),this,SLOT(slotTimeChanged(const QTime &)));
@@ -114,56 +114,56 @@ bool KvsObject_dateTimeEdit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(dateTimeEdit,date)
 {
 
-        CHECK_INTERNAL_POINTER(widget())
-        QString szFormat;
-        KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
-        KVSO_PARAMETERS_END(c)
+	CHECK_INTERNAL_POINTER(widget())
+	QString szFormat;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+	KVSO_PARAMETERS_END(c)
 
-        c->returnValue()->setString(((QDateTimeEdit *)widget())->date().toString(szFormat));
+	c->returnValue()->setString(((QDateTimeEdit *)widget())->date().toString(szFormat));
 
-        return true;
+	return true;
 }
 KVSO_CLASS_FUNCTION(dateTimeEdit,setDate)
 {
 
-        CHECK_INTERNAL_POINTER(widget())
-        QString szFormat,szDate;
-        KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
-                KVSO_PARAMETER("date",KVS_PT_STRING,0,szDate)
-        KVSO_PARAMETERS_END(c)
-        QDate date;
-        date=date.fromString(szDate,szFormat);
-        ((QDateTimeEdit *)widget())->setDate(date);
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	QString szFormat,szDate;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+		KVSO_PARAMETER("date",KVS_PT_STRING,0,szDate)
+	KVSO_PARAMETERS_END(c)
+	QDate date;
+	date=date.fromString(szDate,szFormat);
+	((QDateTimeEdit *)widget())->setDate(date);
+	return true;
 }
 KVSO_CLASS_FUNCTION(dateTimeEdit,time)
 {
 
-        CHECK_INTERNAL_POINTER(widget())
-        QString szFormat;
-        KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
-        KVSO_PARAMETERS_END(c)
+	CHECK_INTERNAL_POINTER(widget())
+	QString szFormat;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+	KVSO_PARAMETERS_END(c)
 
-        c->returnValue()->setString(((QDateTimeEdit *)widget())->time().toString(szFormat));
+	c->returnValue()->setString(((QDateTimeEdit *)widget())->time().toString(szFormat));
 
-        return true;
+	return true;
 }
 KVSO_CLASS_FUNCTION(dateTimeEdit,setTime)
 {
 
-        CHECK_INTERNAL_POINTER(widget())
-        QString szFormat,szTime;
-        KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
-                KVSO_PARAMETER("date",KVS_PT_STRING,0,szTime)
-        KVSO_PARAMETERS_END(c)
-        QTime time;
-        time=time.fromString(szTime,szFormat);
-        ((QDateTimeEdit *)widget())->setTime(time);
-        return true;
+	CHECK_INTERNAL_POINTER(widget())
+	QString szFormat,szTime;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+		KVSO_PARAMETER("date",KVS_PT_STRING,0,szTime)
+	KVSO_PARAMETERS_END(c)
+	QTime time;
+	time=time.fromString(szTime,szFormat);
+	((QDateTimeEdit *)widget())->setTime(time);
+	return true;
 }
 
 // slots

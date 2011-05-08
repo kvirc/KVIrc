@@ -45,8 +45,8 @@ protected:
 
 	void setInternalSocket(QAbstractSocket *pSocket)
 	{
-	delete m_pSocket;
-	m_pSocket=pSocket;
+		delete m_pSocket;
+		m_pSocket=pSocket;
 	}
 
 	bool status(KviKvsObjectFunctionCall *c);

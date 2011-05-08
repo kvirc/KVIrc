@@ -46,10 +46,10 @@
 		The Process class  is used to start external programs and to communicate with them.[br]
 		!WARNING AT LAST YOU HAVE TO CLOSE THE PROCESS!
 	@functions:
-                !fn: $addArgument(<process-name:string>)
+		!fn: $addArgument(<process-name:string>)
 		With this command you give the process name (or more arguments) for comunication.
 		Es: see the next example.
-                !fn: $startProcess()
+		!fn: $startProcess()
 		Tries to run the process.[br]
 		Es: [br]
 		%process=$new(process);[br]
@@ -65,16 +65,16 @@
 		{[br]
 			slotReadStdout()[br]
 			{[br]
-	 			%stdo = %Process->$readStdout()[br]
+				%stdo = %Process->$readStdout()[br]
 				#%Aoutput->$append(%stdo);// coming soon in the new texteditor class[br]
-		 		%Aoutput->$settext(%stdo);[br]
-	 		}[br]
+				%Aoutput->$settext(%stdo);[br]
+			}[br]
 			slotReadStderr()[br]
 			{[br]
-	 			%stderr= %Process->$readStderr()[br]
-		 		#%Aoutput->$append(%stderr);// coming soon in the new texteditor class[br]
+				%stderr= %Process->$readStderr()[br]
+				#%Aoutput->$append(%stderr);// coming soon in the new texteditor class[br]
 				%Aoutput->$settext(%stderr);[br]
-	 		}[br]
+			}[br]
 		}[br]
 
 		%tt=$new(test)[br]
@@ -97,16 +97,16 @@
 		%layoutA->$addwidget(%bterminate,5,0)[br]
 
 		%Process=$new(process)[br]
-                %Process->$addArgument("cmd.exe")[br]
-                %Process->$startProcess();[br]
+		%Process->$addArgument("cmd.exe")[br]
+		%Process->$startProcess();[br]
 
 		connect %Process readyReadStdout %tt slotReadStdout[br]
 		connect %Process readyReadStderr %tt slotReadStderr[br]
 		privateimpl(%Ainput,returnPressedEvent)[br]
 		{
-		%command=%Ainput->$text() "\r\n"[br]
-		%Process->$writeToStdin(%command);[br]
-		%Ainput->$setText("");[br]
+			%command=%Ainput->$text() "\r\n"[br]
+			%Process->$writeToStdin(%command);[br]
+			%Ainput->$setText("");[br]
 		}[br]
 
 		privateimpl(%bclosekill,mousepressevent)[br]
@@ -173,7 +173,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_process,"process","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,isRunning);
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,normalExit);
 
-  // Events
+	// Events
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,readyReadStdoutEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,readyReadStderrEvent);
 
@@ -203,7 +203,7 @@ KVSO_CLASS_FUNCTION(process,addArgument)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("argument",KVS_PT_NONEMPTYSTRING,0,szArgument)
 	KVSO_PARAMETERS_END(c)
-        m_szArgs.append(szArgument);
+	m_szArgs.append(szArgument);
 	return true;
 }
 
@@ -213,8 +213,8 @@ KVSO_CLASS_FUNCTION(process,startProcess)
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	QString szcmd;
 
-        szcmd = m_szArgs.takeFirst();
-        m_pProcess->start(szcmd, m_szArgs);
+	szcmd = m_szArgs.takeFirst();
+	m_pProcess->start(szcmd, m_szArgs);
 
 	if(m_pProcess->state()==QProcess::NotRunning)
 	{

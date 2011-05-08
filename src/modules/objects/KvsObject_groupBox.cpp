@@ -260,7 +260,7 @@ KVSO_CLASS_FUNCTION(groupBox,setInsideSpacing)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    ((KviTalGroupBox *)widget())->setInsideSpacing(uSpacing);
+	((KviTalGroupBox *)widget())->setInsideSpacing(uSpacing);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox,insideSpacing)

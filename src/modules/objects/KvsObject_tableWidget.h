@@ -43,7 +43,6 @@ public:
 	KviCellItemDelegate(QAbstractItemView * pWidget = 0,KvsObject_tableWidget *pParent=0);
 	~KviCellItemDelegate();
 protected:
-//        QAbstractItemView * m_pParent;
 	KvsObject_tableWidget *m_pParentScript;
 public:
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;

@@ -41,14 +41,14 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-        QCompleter * m_pCompleter;
+	QCompleter * m_pCompleter;
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-        bool setCompleter(KviKvsObjectFunctionCall *c);
-        bool enableCompleter(KviKvsObjectFunctionCall *c);
-        bool disableCompleter(KviKvsObjectFunctionCall *c);
-        bool unsetCompleter(KviKvsObjectFunctionCall *c);
+	bool setCompleter(KviKvsObjectFunctionCall *c);
+	bool enableCompleter(KviKvsObjectFunctionCall *c);
+	bool disableCompleter(KviKvsObjectFunctionCall *c);
+	bool unsetCompleter(KviKvsObjectFunctionCall *c);
 
 	bool text(KviKvsObjectFunctionCall *c);
 	bool setText(KviKvsObjectFunctionCall *c);

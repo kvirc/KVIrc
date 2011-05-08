@@ -67,8 +67,8 @@ KVSO_END_CONSTRUCTOR(KvsObject_buttonGroup)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_buttonGroup)
-btnDict.clear();
-delete m_pButtonGroup;
+	btnDict.clear();
+	delete m_pButtonGroup;
 KVSO_END_CONSTRUCTOR(KvsObject_buttonGroup)
 
 

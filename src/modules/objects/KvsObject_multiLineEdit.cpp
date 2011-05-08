@@ -259,8 +259,10 @@ bool KvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("line",KVS_PT_INT,0,iBlock)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
-	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0) c->warning(__tr2qs_ctx("No such line '%d'","objects"),&iBlock);
+	if(!widget())
+		return true;
+	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0)
+		c->warning(__tr2qs_ctx("No such line '%d'","objects"),&iBlock);
 	else
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlockByNumber(iBlock).text());
 
@@ -268,7 +270,8 @@ bool KvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall * c)
 }
 bool KvsObject_textedit::functionNumLines(KviKvsObjectFunctionCall * c)
 {
-	if(widget()) c->returnValue()->setInteger(((QTextEdit *)widget())->document()->blockCount());
+	if(widget())
+		c->returnValue()->setInteger(((QTextEdit *)widget())->document()->blockCount());
 	return true;
 }
 bool KvsObject_textedit::functionCursorPosition(KviKvsObjectFunctionCall * c)
@@ -314,7 +317,8 @@ bool KvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setLineWrapMode(QTextEdit::FixedPixelWidth);
 	else if(KviQString::equalCI(szWrap,"FixedColumnWidth"))
 		((QTextEdit *)widget())->setLineWrapMode(QTextEdit::FixedColumnWidth);
-        else c->warning(__tr2qs_ctx("Unknown word wrap '%Q'","objects"),&szWrap);
+        else
+		c->warning(__tr2qs_ctx("Unknown word wrap '%Q'","objects"),&szWrap);
 	return true;
 }
 
@@ -603,29 +607,29 @@ bool KvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 
 	} else {
 		if (c->params()->count()==1)
+		{
+			bool bOk,bOk1,bOk2;
+			QString value;
+			pColArray->asString(value);
+			if (value.length()!=6)
 			{
-				bool bOk,bOk1,bOk2;
-				QString value;
-				pColArray->asString(value);
-				if (value.length()!=6)
-				{
-                                                c->warning(__tr2qs_ctx("A string of 6 hex digits is required","objects"));
-						return true;
-				}
-				QString buffer(value.mid(0,2));
-				iColR=buffer.toInt(&bOk,16);
-				buffer=value.mid(2,2);
-				iColG=buffer.toInt(&bOk1,16);
-				buffer=value.mid(4,2);
-				iColB=buffer.toInt(&bOk2,16);
-				if (!bOk || !bOk1 || !bOk2)
-				{
-                                        c->warning(__tr2qs_ctx("Not an hex digit","objects"));
+				c->warning(__tr2qs_ctx("A string of 6 hex digits is required","objects"));
 				return true;
-				}
+			}
+			QString buffer(value.mid(0,2));
+			iColR=buffer.toInt(&bOk,16);
+			buffer=value.mid(2,2);
+			iColG=buffer.toInt(&bOk1,16);
+			buffer=value.mid(4,2);
+			iColB=buffer.toInt(&bOk2,16);
+			if (!bOk || !bOk1 || !bOk2)
+			{
+				c->warning(__tr2qs_ctx("Not an hex digit","objects"));
+				return true;
+			}
 			if (widget()) ((QTextEdit *)widget())->setTextColor(QColor(iColR,iColG,iColB));
 			return true;
-			}
+		}
 		if(c->params()->count() < 3)
 		{
                         c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers","objects"));
@@ -705,7 +709,8 @@ bool KvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setAcceptRichText(false);
 	else if(KviQString::equalCI(szFormat,"RichText"))
 		((QTextEdit *)widget())->setAcceptRichText(true);
-        else c->warning(__tr2qs_ctx("Unknown text format '%Q'","objects"),&szFormat);
+        else
+		c->warning(__tr2qs_ctx("Unknown text format '%Q'","objects"),&szFormat);
 	return true;
 }
 
@@ -721,14 +726,14 @@ bool KvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 	if ( !QFile::exists(szFile))
 	{
                 c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
-        return true;
+		return true;
 	}
 
 	QFile file( szFile );
 	if ( !file.open( QIODevice::ReadOnly ) )
 	{
-                c->warning(__tr2qs_ctx("I cannot read the file '%Q'.","objects"),&szFile);
-        return true;
+		c->warning(__tr2qs_ctx("I cannot read the file '%Q'.","objects"),&szFile);
+		return true;
 	}
 
 	QTextStream ts( &file );
@@ -755,7 +760,8 @@ bool KvsObject_textedit::functionsetAlignment(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setAlignment(Qt::AlignCenter);
 	else if(KviQString::equalCI(szAlignment,"Justify"))
 		((QTextEdit *)widget())->setAlignment(Qt::AlignJustify);
-        else c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&szAlignment);
+        else
+		c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&szAlignment);
 	return true;
 }
 

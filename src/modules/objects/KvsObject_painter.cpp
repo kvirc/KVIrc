@@ -33,29 +33,29 @@
 #include "KviError.h"
 #include "KviIconManager.h"
 #include "KviMemory.h"
- #include <QPrintDialog>
+#include <QPrintDialog>
 #include <QTextDocument>
 #include <QIcon>
 
 #define PAINTER_ROTATE(__angle,__axis)\
-         QTransform transform;\
-     transform.rotate(__angle,__axis);\
-     m_pPainter->setTransform(transform,true);
+	QTransform transform;\
+	transform.rotate(__angle,__axis);\
+	m_pPainter->setTransform(transform,true);
 
 #define PAINTER_TRANSLATE(__x,__y)\
-         QTransform transform;\
-     transform.translate(__x,__y);\
-      m_pPainter->setTransform(transform,true);
+	QTransform transform;\
+	transform.translate(__x,__y);\
+	m_pPainter->setTransform(transform,true);
 
 #define PAINTER_SHEAR(__sH,__sV)\
-         QTransform transform;\
-    transform.shear(__sH,__sV);\
-     m_pPainter->setTransform(transform,true);
+	QTransform transform;\
+	transform.shear(__sH,__sV);\
+	m_pPainter->setTransform(transform,true);
 
 #define PAINTER_SCALE(__sX,__sY)\
-         QTransform transform;\
-     transform.scale(__sX,__sY);\
-     m_pPainter->setTransform(transform,true);
+	QTransform transform;\
+	transform.scale(__sX,__sY);\
+	m_pPainter->setTransform(transform,true);
 
 
 const Qt::PenStyle penstyles_cod[] = {
@@ -77,56 +77,56 @@ const char * const penstyles_tbl[] = {
 };
 
 const QPainter::CompositionMode composition_cod[] = {
-        QPainter::CompositionMode_SourceOver,
-        QPainter::CompositionMode_DestinationOver,
-        QPainter::CompositionMode_Clear,
-        QPainter::CompositionMode_Source,
-        QPainter::CompositionMode_Destination,
-        QPainter::CompositionMode_SourceIn,
-        QPainter::CompositionMode_DestinationIn,
-        QPainter::CompositionMode_SourceOut,
-        QPainter::CompositionMode_DestinationOut,
-        QPainter::CompositionMode_SourceAtop,
-        QPainter::CompositionMode_DestinationAtop,
-        QPainter::CompositionMode_Xor,
-        QPainter::CompositionMode_Plus,
-        QPainter::CompositionMode_Multiply,
-        QPainter::CompositionMode_Screen,
-        QPainter::CompositionMode_Overlay,
-        QPainter::CompositionMode_Darken,
-        QPainter::CompositionMode_Lighten,
-        QPainter::CompositionMode_ColorDodge,
-        QPainter::CompositionMode_ColorBurn,
-        QPainter::CompositionMode_HardLight,
-        QPainter::CompositionMode_SoftLight,
-        QPainter::CompositionMode_Difference,
-        QPainter::CompositionMode_Exclusion,
+	QPainter::CompositionMode_SourceOver,
+	QPainter::CompositionMode_DestinationOver,
+	QPainter::CompositionMode_Clear,
+	QPainter::CompositionMode_Source,
+	QPainter::CompositionMode_Destination,
+	QPainter::CompositionMode_SourceIn,
+	QPainter::CompositionMode_DestinationIn,
+	QPainter::CompositionMode_SourceOut,
+	QPainter::CompositionMode_DestinationOut,
+	QPainter::CompositionMode_SourceAtop,
+	QPainter::CompositionMode_DestinationAtop,
+	QPainter::CompositionMode_Xor,
+	QPainter::CompositionMode_Plus,
+	QPainter::CompositionMode_Multiply,
+	QPainter::CompositionMode_Screen,
+	QPainter::CompositionMode_Overlay,
+	QPainter::CompositionMode_Darken,
+	QPainter::CompositionMode_Lighten,
+	QPainter::CompositionMode_ColorDodge,
+	QPainter::CompositionMode_ColorBurn,
+	QPainter::CompositionMode_HardLight,
+	QPainter::CompositionMode_SoftLight,
+	QPainter::CompositionMode_Difference,
+	QPainter::CompositionMode_Exclusion,
 };
 const char * const composition_tbl[] = {
-        "SourceOver",
-        "DestinationOver",
-        "Clear",
-        "Source",
-        "Destination",
-        "SourceIn",
-        "DestinationIn",
-        "SourceOut",
-        "DestinationOut",
-        "SourceAtop",
-        "DestinationAtop",
-        "Xor",
-        "Plus",
-        "Multiply",
-        "Screen",
-        "Overlay",
-        "Darken",
-        "Lighten",
-        "ColorDodge",
-        "ColorBurn",
-        "HardLight",
-        "SoftLight",
-        "Difference",
-        "Exclusion"
+	"SourceOver",
+	"DestinationOver",
+	"Clear",
+	"Source",
+	"Destination",
+	"SourceIn",
+	"DestinationIn",
+	"SourceOut",
+	"DestinationOut",
+	"SourceAtop",
+	"DestinationAtop",
+	"Xor",
+	"Plus",
+	"Multiply",
+	"Screen",
+	"Overlay",
+	"Darken",
+	"Lighten",
+	"ColorDodge",
+	"ColorBurn",
+	"HardLight",
+	"SoftLight",
+	"Difference",
+	"Exclusion"
 };
 
 #define penstyles_num	(sizeof(penstyles_tbl) / sizeof(penstyles_tbl[0]))
@@ -234,7 +234,7 @@ const char * const brushstyles_tbl[] = {
 		%aa->$show()[br]
 		!fn: $drawRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws a rectangle with upper left corner at (x, y) and with width w and height h.
-                !fn: $drawRoundRect(<start_angle:integer>,<angle_length:integer>,<width:unsigned integer>,<height:unsigned integer>,<xr:integer>,<y:integer>)
+		!fn: $drawRoundRect(<start_angle:integer>,<angle_length:integer>,<width:unsigned integer>,<height:unsigned integer>,<xr:integer>,<y:integer>)
 		Draws a rectangle with rounded corners at (x, y), with width w and height h.[rb]
 		The xCor and yCor arguments specify how rounded the corners should be (range is 0->99).
 		!fn: $drawPie(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)
@@ -281,10 +281,10 @@ const char * const brushstyles_tbl[] = {
 		Returns the font metrics width for the painter's current font.
 		!fn: <integer>$fontMetricsHeight()
 		Returns the font metrics height for the painter's current font.
-                !fn: $rotate(<angle:real>,[<axis:string>])
-                Rotates the coordinate system a degrees counterclockwise by the given angle about the optional parameter <axis>.
-                Valid values for axis are: ZAxis, XAxis, YAxis.
-                Optional parameter <axis>
+		!fn: $rotate(<angle:real>,[<axis:string>])
+		Rotates the coordinate system a degrees counterclockwise by the given angle about the optional parameter <axis>.
+		Valid values for axis are: ZAxis, XAxis, YAxis.
+		Optional parameter <axis>
 		!fn: $translate(<dx:real>,<dy:real>)
 		Translates the coordinate system by <dx>, <dy>.
 		!fn: $shear(<dh:real>,<dv:real>)
@@ -295,16 +295,16 @@ const char * const brushstyles_tbl[] = {
 		Sets the background mode of the painter to <bgMode>: valid values are:[br]
 		- Transparent	(that is the default value);[br]
 		- Opaque.[br]
-                !fn: $setOpacity(<opacity_factor:real>)
+		!fn: $setOpacity(<opacity_factor:real>)
 		Sets the painter opacity that affects all painter operations (drawpixmap, drawtext...). Valid values range are from 0 (total transparency) to 1 (total opacity)[br]
 		You must invoke the [classfnc]$begin[/classfnc] before using it.
-                !fn: $setTextAntialiasing(<boolean>)
+		!fn: $setTextAntialiasing(<boolean>)
 		Enable/disable antialias in text if possible.
 		You must call the [classfnc]$begin[/classfnc] before using it.
-                !fn: $setAntialiasing(<boolean>)
+		!fn: $setAntialiasing(<boolean>)
 		Enable/disable antialias in edges of primitives if possible.
 		You must call the [classfnc]$begin[/classfnc] before using it.
-                !fn: $setSmoothPixmapTransform(<boolean>)
+		!fn: $setSmoothPixmapTransform(<boolean>)
 		Enable/disable smooth bilinear pixmap transformation algorithm (such as bilinear).
 		You must call the [classfnc]$begin[/classfnc] before using it.
 		Example:[br]
@@ -378,7 +378,7 @@ const char * const brushstyles_tbl[] = {
 				if ($$->%scrollright >= 550) return[br]
 				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)[br]
 				%P->$translate(400,350)[br]
-				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)        [br]
+				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)	[br]
 				$$->%scrollright += 3;[br]
 				%P->$reset()[br]
 			}[br]
@@ -496,7 +496,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawRect)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawLine)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawRoundRect)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPoint)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPoint)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawArc)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawEllipse)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPie)
@@ -511,7 +511,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,htmlTextSize)
 
 
-        // Transform Operation
+	// Transform Operation
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,rotate)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,shear)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,scale)
@@ -588,14 +588,14 @@ KVSO_END_CONSTRUCTOR(KvsObject_painter)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_painter)
 
-if (m_pPainterPath) delete m_pPainterPath;
-	m_pPainterPath=0;
-if (m_pGradient) delete m_pGradient;
-	m_pGradient=0;
-if (m_pPainter && !bDonotdeleteinternalqpainter) delete m_pPainter;
-	m_pPainter = 0;
-if (m_pPrinter) delete m_pPrinter;
-	m_pPrinter = 0;
+	if (m_pPainterPath) delete m_pPainterPath;
+		m_pPainterPath=0;
+	if (m_pGradient) delete m_pGradient;
+		m_pGradient=0;
+	if (m_pPainter && !bDonotdeleteinternalqpainter) delete m_pPainter;
+		m_pPainter = 0;
+	if (m_pPrinter) delete m_pPrinter;
+		m_pPrinter = 0;
 
 KVSO_END_CONSTRUCTOR(KvsObject_painter)
 
@@ -1078,83 +1078,75 @@ KVSO_CLASS_FUNCTION(painter,begin)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
-        KviKvsVariant *v;
-        QString szFileName;
-        KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("paint_device",KVS_PT_VARIANT,0,v)
-                        KVSO_PARAMETER("file_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
+	KviKvsVariant *v;
+	QString szFileName;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("paint_device",KVS_PT_VARIANT,0,v)
+		KVSO_PARAMETER("file_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
 	KVSO_PARAMETERS_END(c)
-        QPaintDevice * pd;
-        if(v->isString())
-        {
-             QString szDev;
-             v->asString(szDev);
-             if(KviQString::equalCI(szDev,"printer") || KviQString::equalCI(szDev,"pdf"))
-             {
-                 if (m_pPrinter) delete m_pPrinter;
-                 m_pPrinter=new QPrinter();
-                 if ( KviQString::equalCI(szDev,"pdf"))
-                 {
-                 //        m_pPrinter=new QPrinter();
-                     if(szFileName.isEmpty())
-                     {
-                         c->warning(__tr2qs_ctx("Missing filename","objects"));
-                         return true;
-                     }
-                     m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
-                     m_pPrinter->setOutputFileName(szFileName);
-                 }
-                 else
-                 {
-                     QPrintDialog printDialog(m_pPrinter, 0);
-                     if (printDialog.exec() == QDialog::Accepted)
-                     {
-                       qDebug("papersize %d",m_pPrinter->paperSize());
-                       m_pPainter->begin(m_pPrinter);
-                       return true;
-                     }
-                     else
-                     {
-                       m_pPrinter=0;
-                       return true;
-                     }
-                   }
-                   //if (i==3) m_pPrinter->setPaperSize(QPrinter::A3);
-                   //if (i==4) m_pPrinter->setPaperSize(QPrinter::A4);
-                }
-                else
-                {
-                    c->warning(__tr2qs_ctx("No valid paint device","objects"));
-                    return true;
-                }
-                m_pPainter->begin(m_pPrinter);
-                return true;
-        }
-        else if (v->isHObject())
-        {
-                v->asHObject(hObject);
-                pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-                if (!pObject)
-                {
-                    c->warning(__tr2qs_ctx("Pixmap or Widget parameter is not an object","objects"));
-                    return true;
-                }
-	    if(pObject->inheritsClass("pixmap"))pd=((KvsObject_pixmap *)pObject)->getImage();
-                else if (pObject->inheritsClass("widget")) pd=((KvsObject_widget *)pObject)->widget();
-                else
-                {
-                    c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
-                    return true;
-                }
-       }
-       else
-       {
-                c->warning(__tr2qs_ctx("No valid paint device","objects"));
-                return true;
-       }
-       attachDevice(pObject,pd);
-            //if (pObject->inheritsClass("pixmap")) ((KvsObject_pixmap *)pObject)->pixmapChanged();
-       return true;
+	QPaintDevice * pd;
+	if(v->isString())
+	{
+		QString szDev;
+		v->asString(szDev);
+		if(KviQString::equalCI(szDev,"printer") || KviQString::equalCI(szDev,"pdf"))
+		{
+			if (m_pPrinter) delete m_pPrinter;
+			m_pPrinter=new QPrinter();
+			if ( KviQString::equalCI(szDev,"pdf"))
+			{
+				//m_pPrinter=new QPrinter();
+				if(szFileName.isEmpty())
+				{
+					c->warning(__tr2qs_ctx("Missing filename","objects"));
+					return true;
+				}
+				m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
+				m_pPrinter->setOutputFileName(szFileName);
+			} else {
+				QPrintDialog printDialog(m_pPrinter, 0);
+				if (printDialog.exec() == QDialog::Accepted)
+				{
+					qDebug("papersize %d",m_pPrinter->paperSize());
+					m_pPainter->begin(m_pPrinter);
+					return true;
+				} else {
+					m_pPrinter=0;
+					return true;
+				}
+			}
+			//if (i==3) m_pPrinter->setPaperSize(QPrinter::A3);
+			//if (i==4) m_pPrinter->setPaperSize(QPrinter::A4);
+		} else {
+		    c->warning(__tr2qs_ctx("No valid paint device","objects"));
+		    return true;
+		}
+		m_pPainter->begin(m_pPrinter);
+		return true;
+	} else if (v->isHObject()) {
+		v->asHObject(hObject);
+		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if (!pObject)
+		{
+			c->warning(__tr2qs_ctx("Pixmap or Widget parameter is not an object","objects"));
+			return true;
+		}
+		if(pObject->inheritsClass("pixmap"))
+			pd=((KvsObject_pixmap *)pObject)->getImage();
+		else if (pObject->inheritsClass("widget"))
+			pd=((KvsObject_widget *)pObject)->widget();
+		else
+		{
+			c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
+			return true;
+		}
+	} else {
+		c->warning(__tr2qs_ctx("No valid paint device","objects"));
+		return true;
+	}
+	attachDevice(pObject,pd);
+	//if (pObject->inheritsClass("pixmap")) ((KvsObject_pixmap *)pObject)->pixmapChanged();
+	return true;
 }
 
 void KvsObject_painter::attachDevice(KviKvsObject * o,QPaintDevice * p)
@@ -1164,7 +1156,7 @@ void KvsObject_painter::attachDevice(KviKvsObject * o,QPaintDevice * p)
 	// KvsObject_pixmap and KvsObject_widget object have this signal
 	// it is emitted BEFORE the real QPaintDevice is deleted, so we can eventually
 	// call m_pPainter->end() in time
-        qDebug("Begin painter");
+	qDebug("Begin painter");
 	QObject::connect(m_pDeviceObject,SIGNAL(aboutToDie()),this,SLOT(detachDevice()));
 	m_pPainter->begin(p);
 }
@@ -1217,7 +1209,7 @@ KVSO_CLASS_FUNCTION(painter,drawText)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szText,szMode;
-	kvs_int_t iX,iY,iN=-1,iW,iH;
+	kvs_int_t iX,iY,iW,iH; //,iN=-1;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
@@ -1228,12 +1220,14 @@ KVSO_CLASS_FUNCTION(painter,drawText)
 	KVSO_PARAMETERS_END(c)
 	if (!szMode.isEmpty() && !KviQString::equalCI(szMode,"Auto"))
 	{
-		if(KviQString::equalCI(szMode,"RTL"))m_pPainter->setLayoutDirection(Qt::RightToLeft);
-		else if(KviQString::equalCI(szMode,"LTR"))m_pPainter->setLayoutDirection(Qt::LeftToRight);
+		if(KviQString::equalCI(szMode,"RTL"))
+			m_pPainter->setLayoutDirection(Qt::RightToLeft);
+		else if(KviQString::equalCI(szMode,"LTR"))
+			m_pPainter->setLayoutDirection(Qt::LeftToRight);
 		else
 		{
-				c->warning(__tr2qs_ctx("Invalid mode '%Q'","objects"),&szMode);
-				return true;
+			c->warning(__tr2qs_ctx("Invalid mode '%Q'","objects"),&szMode);
+			return true;
 		}
 	}
 	//if(!iN) iN = szText.length();
@@ -1285,7 +1279,7 @@ KVSO_CLASS_FUNCTION(painter,drawPixmapWithEffect)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szEffect;
-	kvs_real_t iX,iY,factor;
+	kvs_real_t iX,iY; //,factor;
 	kvs_int_t r,g,b;
 	KviKvsObject *obj;
 	kvs_hobject_t hObject;
@@ -1319,45 +1313,45 @@ KVSO_CLASS_FUNCTION(painter,drawPixmapWithEffect)
 
 	if(KviQString::equalCI(szEffect,"add"))
 	{
-	    int sumR, sumG, sumB;
-	    for(int y=0; y<h; y++)
-	    {
-		    dataSource = (QRgb *) pImage->scanLine(y);
-		    dataDest = (QRgb *) pDest.scanLine(y);
-		    for (int x=0; x<w; x++)
-		    {
-		        col = *dataSource;
-		        sumR=qRed(col)+r;
-		        sumG=qGreen(col)+g;
-		        sumB=qBlue(col)+b;
-		        *dataDest++ = qRgba(sumR<255 ?sumR : 255,
-			    sumG<255 ?sumG : 255,
-			    sumB<255 ?sumB : 255,
-			    qAlpha(col));
-		        dataSource++;
-		    }
-	    }
+		int sumR, sumG, sumB;
+		for(int y=0; y<h; y++)
+		{
+			dataSource = (QRgb *) pImage->scanLine(y);
+			dataDest = (QRgb *) pDest.scanLine(y);
+			for (int x=0; x<w; x++)
+			{
+				col = *dataSource;
+				sumR=qRed(col)+r;
+				sumG=qGreen(col)+g;
+				sumB=qBlue(col)+b;
+				*dataDest++ = qRgba(sumR<255 ?sumR : 255,
+				sumG<255 ?sumG : 255,
+				sumB<255 ?sumB : 255,
+				qAlpha(col));
+				dataSource++;
+			}
+		}
 	}
 	else if(KviQString::equalCI(szEffect,"sub"))
 	{
-	    int subR, subG, subB;
-	    for(int y=0; y<h; y++)
-	    {
-		    dataSource = (QRgb *) pImage->scanLine(y);
-		    dataDest = (QRgb *) pDest.scanLine(y);
-		    for (int x=0; x<w; x++)
-		    {
-		        col = *dataSource;
-		        subR=qRed(col)-r;
-		        subG=qGreen(col)-g;
-		        subB=qBlue(col)-b;
-		        *dataDest++ = qRgba(subR>0 ? subR : 0,
-			    subG>0 ? subG : 0,
-			    subB>0 ? subB : 0,
-			    qAlpha(col));
-		        dataSource++;
-		    }
-	    }
+		int subR, subG, subB;
+		for(int y=0; y<h; y++)
+		{
+			dataSource = (QRgb *) pImage->scanLine(y);
+			dataDest = (QRgb *) pDest.scanLine(y);
+			for (int x=0; x<w; x++)
+			{
+				col = *dataSource;
+				subR=qRed(col)-r;
+				subG=qGreen(col)-g;
+				subB=qBlue(col)-b;
+				*dataDest++ = qRgba(subR>0 ? subR : 0,
+				subG>0 ? subG : 0,
+				subB>0 ? subB : 0,
+				qAlpha(col));
+				dataSource++;
+			}
+		}
 	}
 	m_pPainter->drawImage(QPointF(iX,iY),pDest);
 	return true;
@@ -1365,21 +1359,21 @@ KVSO_CLASS_FUNCTION(painter,drawPixmapWithEffect)
 KVSO_CLASS_FUNCTION(painter,rotate)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-        kvs_real_t dAngle;
-        QString szAxis;
+	kvs_real_t dAngle;
+	QString szAxis;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("angle",KVS_PT_DOUBLE,0,dAngle)
-                KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
+		KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
 	KVSO_PARAMETERS_END(c)
-        Qt::Axis axis = Qt::ZAxis;
-        if(!szAxis.isEmpty())
-        {
-            if (KviQString::equalCI(szAxis,"XAxis"))axis=Qt::XAxis;
-            else if (KviQString::equalCI(szAxis,"YAxis")) axis=Qt::YAxis;
-            else if (KviQString::equalCI(szAxis,"ZAxis")) axis=Qt::ZAxis;
-            else c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
-        }
-        PAINTER_ROTATE(dAngle,axis)
+	Qt::Axis axis = Qt::ZAxis;
+	if(!szAxis.isEmpty())
+	{
+		if (KviQString::equalCI(szAxis,"XAxis"))axis=Qt::XAxis;
+		else if (KviQString::equalCI(szAxis,"YAxis")) axis=Qt::YAxis;
+		else if (KviQString::equalCI(szAxis,"ZAxis")) axis=Qt::ZAxis;
+		else c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
+	}
+	PAINTER_ROTATE(dAngle,axis)
 	return true;
 }
 
@@ -1392,7 +1386,7 @@ KVSO_CLASS_FUNCTION(painter,translate)
 		KVSO_PARAMETER("trasl_y",KVS_PT_DOUBLE,0,dYtrasl)
 	KVSO_PARAMETERS_END(c)
 	PAINTER_TRANSLATE(dXtrasl,dYtrasl)
-        return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,shear)
@@ -1404,7 +1398,7 @@ KVSO_CLASS_FUNCTION(painter,shear)
 		KVSO_PARAMETER("shear_v",KVS_PT_DOUBLE,0,dShearv)
 	KVSO_PARAMETERS_END(c)
 	PAINTER_SHEAR(dShearh,dShearv);
-        return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,scale)
@@ -1416,13 +1410,13 @@ KVSO_CLASS_FUNCTION(painter,scale)
 		KVSO_PARAMETER("scale_y",KVS_PT_DOUBLE,0,dScaley)
 	KVSO_PARAMETERS_END(c)
 	PAINTER_SCALE(dScalex,dScaley);
-        return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,reset)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-        m_pPainter->resetTransform();
+	m_pPainter->resetTransform();
 	return true;
 }
 
@@ -1436,16 +1430,16 @@ KVSO_CLASS_FUNCTION(painter,drawHtmlText)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-                KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
-                KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
+		KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
+		KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
 
 	KVSO_PARAMETERS_END(c)
-        QTextDocument doc;
+	QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(m_pPainter->font());
 	m_pPainter->save();
 	m_pPainter->translate(iX,iY);
-        doc.setPageSize(QSize(iW,iH));
+	doc.setPageSize(QSize(iW,iH));
 	doc.drawContents(m_pPainter);
 	m_pPainter->restore();
 	return true;
@@ -1585,14 +1579,14 @@ KVSO_CLASS_FUNCTION(painter,save)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	m_pPainter->save();
-    return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,restore)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	m_pPainter->restore();
-    return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,setPenStyle)
@@ -1613,7 +1607,8 @@ KVSO_CLASS_FUNCTION(painter,setPenStyle)
 		}
 	}
 	QPen pen=m_pPainter->pen();
-	if (found){
+	if (found)
+	{
 		pen.setStyle(penstyles_cod[j]);
 		m_pPainter->setPen(pen);
 	}
@@ -1639,7 +1634,8 @@ KVSO_CLASS_FUNCTION(painter,setBrushStyle)
 		}
 	}
 	QBrush brush=m_pPainter->brush();
-	if (found){
+	if (found)
+	{
 		brush.setStyle(brushstyles_cod[j]);
 		m_pPainter->setBrush(brush);
 	}
@@ -1690,7 +1686,7 @@ KVSO_CLASS_FUNCTION(painter,setGradientColor)
 	KVSO_PARAMETERS_END(c)
 	if (!var1->asInteger(iCol1))
 	{
-			var1->asString(szColor);
+		var1->asString(szColor);
 		if (c->paramCount()<3) iOpacity=255;
 		else
 		{
@@ -1704,9 +1700,7 @@ KVSO_CLASS_FUNCTION(painter,setGradientColor)
 		QColor col(szColor);
 		col.setAlpha(iOpacity);
 		m_pGradient->setColorAt(dAt,col);
-	}
-	else
-	{
+	} else {
 		if(c->paramCount()<4)
 		{
 			c->error(__tr2qs_ctx("Color name or triplette RGB/HSV values required","objects"));
@@ -1717,13 +1711,15 @@ KVSO_CLASS_FUNCTION(painter,setGradientColor)
 			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
-		if (c->paramCount()<5) iOpacity=255;
+		if (c->paramCount()<5)
+			iOpacity=255;
 		QColor col;
 		if(KviQString::equalCI(szColorMode, "HSV"))
-		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+			col.setHsv(iCol1,iCol2,iCol3,iOpacity);
 		else
-		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
-		if (!m_pGradient) m_pGradient=new(QLinearGradient);
+			col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+		if (!m_pGradient)
+			m_pGradient=new(QLinearGradient);
 		m_pGradient->setColorAt(dAt,col);
 
 	}
@@ -1792,9 +1788,7 @@ KVSO_CLASS_FUNCTION(painter,fillRect)
 		}
 		col.setNamedColor(szColor);
 		col.setAlpha(iOpacity);
-	}
-	else
-	{
+	} else {
 		if(c->paramCount()<7)
 		{
 			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
@@ -1805,12 +1799,13 @@ KVSO_CLASS_FUNCTION(painter,fillRect)
 			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
-		if (c->paramCount()<5) iOpacity=255;
+		if (c->paramCount()<5)
+			iOpacity=255;
 		QColor col;
 		if(KviQString::equalCI(szColorMode, "HSV"))
-		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+			col.setHsv(iCol1,iCol2,iCol3,iOpacity);
 		else
-		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+			col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 	}
 	m_pPainter->fillRect(iX,iY,iW,iH,col);
 	return true;
@@ -1910,7 +1905,8 @@ KVSO_CLASS_FUNCTION(painter,setCompositionMode)
 			break;
 		}
 	}
-	if (found){
+	if (found)
+	{
 		m_pPainter->setCompositionMode(composition_cod[j]);
 	}
 	else c->warning(__tr2qs_ctx("Unknown composition mode '%Q'","objects"),&szComposition);
@@ -1919,7 +1915,8 @@ KVSO_CLASS_FUNCTION(painter,setCompositionMode)
 KVSO_CLASS_FUNCTION(painter,resetPath)
 {
 	Q_UNUSED(c);
-	if (m_pPainterPath){
+	if (m_pPainterPath)
+	{
 		delete m_pPainterPath;
 		m_pPainterPath=0;
 	}
@@ -1927,9 +1924,9 @@ KVSO_CLASS_FUNCTION(painter,resetPath)
 }
 void KvsObject_painter::setInternalPainter(QPainter *p)
 {
-    delete m_pPainter;
-    m_pPainter=p;
-    bDonotdeleteinternalqpainter=true;
+	delete m_pPainter;
+	m_pPainter=p;
+	bDonotdeleteinternalqpainter=true;
 }
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_KvsObject_painter.moc"

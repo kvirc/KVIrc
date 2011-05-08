@@ -249,8 +249,10 @@ KVSO_CLASS_FUNCTION(tabWidget,widgetAt)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (iIndex>=tabsList.count()||iIndex<0) c->returnValue()->setHObject((kvs_hobject_t)0);
-	else c->returnValue()->setHObject(tabsList.at(iIndex));
+	if (iIndex>=tabsList.count()||iIndex<0)
+		c->returnValue()->setHObject((kvs_hobject_t)0);
+	else
+		c->returnValue()->setHObject(tabsList.at(iIndex));
 	return true;
 }
 
@@ -270,10 +272,10 @@ KVSO_CLASS_FUNCTION(tabWidget,insertTab)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix){
-			((QTabWidget *)widget())->insertTab(uIndex,(QWidget *)(pObject->object()),QIcon(*pix),szLabel);
-	}
-	else ((QTabWidget *)widget())->insertTab(uIndex,((QWidget *)(pObject->object())),szLabel);
+	if(pix)
+		((QTabWidget *)widget())->insertTab(uIndex,(QWidget *)(pObject->object()),QIcon(*pix),szLabel);
+	else
+		((QTabWidget *)widget())->insertTab(uIndex,((QWidget *)(pObject->object())),szLabel);
 	tabsList.insert(uIndex,hObject);
 	return true;
 }
@@ -286,7 +288,7 @@ KVSO_CLASS_FUNCTION(tabWidget,setCurrentPage)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	((QTabWidget *)widget())->setCurrentIndex(iIndex);
-    return true;
+	return true;
 }
 KVSO_CLASS_FUNCTION(tabWidget,setTabToolTip)
 {
@@ -443,13 +445,13 @@ KVSO_CLASS_FUNCTION(tabWidget,setTabPosition)
 		((QTabWidget *)widget())->setTabPosition(QTabWidget::North);
 	else if(KviQString::equalCI(szPos,"Bottom"))
 		((QTabWidget *)widget())->setTabPosition(QTabWidget::South);
-	else c->warning( __tr2qs_ctx("Unknown position '%Q'","objects"),&szPos);
+	else
+		c->warning( __tr2qs_ctx("Unknown position '%Q'","objects"),&szPos);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(tabWidget,currentChangedEvent)
 {
-
 	emitSignal("currentChanged",c,c->params());
 	return true;
 }
@@ -462,7 +464,6 @@ void KvsObject_tabWidget::slotCurrentChanged(int value)
 
 KVSO_CLASS_FUNCTION(tabWidget,tabCloseRequestEvent)
 {
-
 	emitSignal("tabCloseRequested",c,c->params());
 	return true;
 }

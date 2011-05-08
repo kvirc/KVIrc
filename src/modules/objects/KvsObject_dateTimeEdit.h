@@ -37,16 +37,16 @@ class KvsObject_dateTimeEdit : public KvsObject_widget
 {
 	Q_OBJECT
 public:
-        KVSO_DECLARE_OBJECT(KvsObject_dateTimeEdit)
+	KVSO_DECLARE_OBJECT(KvsObject_dateTimeEdit)
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-        bool date(KviKvsObjectFunctionCall *c);
-        bool setDate(KviKvsObjectFunctionCall *c);
-        bool time(KviKvsObjectFunctionCall *c);
-        bool setTime(KviKvsObjectFunctionCall *c);
+	bool date(KviKvsObjectFunctionCall *c);
+	bool setDate(KviKvsObjectFunctionCall *c);
+	bool time(KviKvsObjectFunctionCall *c);
+	bool setTime(KviKvsObjectFunctionCall *c);
 
 	bool timeChangedEvent(KviKvsObjectFunctionCall *c);
 	bool dateTimeChangedEvent(KviKvsObjectFunctionCall *c);

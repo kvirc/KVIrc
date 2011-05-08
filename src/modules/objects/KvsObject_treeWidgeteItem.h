@@ -44,8 +44,8 @@ protected:
 	bool setText(KviKvsObjectFunctionCall *c);
 	bool insertItem(KviKvsObjectFunctionCall *c);
 	bool setPixmap(KviKvsObjectFunctionCall *c);
-        bool setItemEditable(KviKvsObjectFunctionCall *c);
-        bool isItemEditable(KviKvsObjectFunctionCall *c);
+	bool setItemEditable(KviKvsObjectFunctionCall *c);
+	bool isItemEditable(KviKvsObjectFunctionCall *c);
 	bool setEnabled(KviKvsObjectFunctionCall *c);
 	bool isEnabled(KviKvsObjectFunctionCall *c);
 	bool setOpen(KviKvsObjectFunctionCall *c);

@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include <qmenubar.h>
+#include <QMenuBar>
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 

@@ -58,15 +58,15 @@
 		!fn: $setImage(<image_id_or_pixmap_object>)
 		Sets the icon for this button.
 		See the [doc:image_id]image identifier[/doc] documentation for the explaination	of the <image_id> parameter.
-                !fn: $clickEvent()
-                Called by KVIrc when the mouse button is clicked.
-                The default implementation emits the [classfnc]$clicked[/classfnc]()signal.
-        @signals:
+		!fn: $clickEvent()
+		Called by KVIrc when the mouse button is clicked.
+		The default implementation emits the [classfnc]$clicked[/classfnc]()signal.
+	@signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
-        @properties:
-                !pr: $scaledContents()
-                This property holds whether the label will scale its contents to fill all available space.
+	@properties:
+		!pr: $scaledContents()
+		This property holds whether the label will scale its contents to fill all available space.
 */
 
 
@@ -91,7 +91,7 @@ KVSO_END_DESTRUCTOR(KvsObject_button)
 bool KvsObject_button::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QPushButton);
-        connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
+	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }
 

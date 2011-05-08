@@ -37,7 +37,7 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	bool addWidget(KviKvsObjectFunctionCall *c);
-        bool setAllowedDockAreas(KviKvsObjectFunctionCall * c);
+	bool setAllowedDockAreas(KviKvsObjectFunctionCall * c);
 	bool dock(KviKvsObjectFunctionCall * c);
 };
 

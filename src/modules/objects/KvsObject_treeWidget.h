@@ -71,8 +71,8 @@ protected:
 	bool setAcceptDrops(KviKvsObjectFunctionCall *c);
 	bool setHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setColumnCount(KviKvsObjectFunctionCall *c);
-        bool topLevelItem(KviKvsObjectFunctionCall *c);
-        bool topLevelItemCount(KviKvsObjectFunctionCall *c);
+	bool topLevelItem(KviKvsObjectFunctionCall *c);
+	bool topLevelItemCount(KviKvsObjectFunctionCall *c);
 	bool itemAt(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotClicked(QTreeWidgetItem *,int);

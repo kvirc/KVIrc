@@ -49,12 +49,12 @@ const char * const align_tbl[] = {
 const int align_cod[] = {
 		Qt::AlignLeft,
 		Qt::AlignRight,
-	    Qt::AlignHCenter,
-	    Qt::AlignVCenter,
-	    Qt::AlignCenter,
-	 	Qt::AlignTop,
-	    Qt::AlignBottom,
-	    Qt::AlignJustify,
+		Qt::AlignHCenter,
+		Qt::AlignVCenter,
+		Qt::AlignCenter,
+		Qt::AlignTop,
+		Qt::AlignBottom,
+		Qt::AlignJustify,
 	};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))

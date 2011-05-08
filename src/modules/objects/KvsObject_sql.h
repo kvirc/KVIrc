@@ -35,43 +35,43 @@
 class KvsObject_sql : public KviKvsObject
 {
 public:
-        KVSO_DECLARE_OBJECT(KvsObject_sql)
+	KVSO_DECLARE_OBJECT(KvsObject_sql)
 protected:
-        QSqlQuery *m_pCurrentSQlQuery;
-        QHash<QString,QSqlQuery *> queryConnectionsDict;
+	QSqlQuery *m_pCurrentSQlQuery;
+	QHash<QString,QSqlQuery *> queryConnectionsDict;
 
-    public:
-        QHash<QString,QSqlQuery *> & getQueryConnectionsDict(){return queryConnectionsDict;};
-        void closeQueryConnection(QSqlQuery *);
-        QSqlQuery & getQuery()
-        {
-            //if (currentSQlQuery) return *currentSQlQuery;
-            return *m_pCurrentSQlQuery;
-        };
-        bool setConnection(KviKvsObjectFunctionCall *c);
-        bool connectionNames(KviKvsObjectFunctionCall *c);
-        bool features(KviKvsObjectFunctionCall *c);
-        bool queryLastInsertId(KviKvsObjectFunctionCall *c);
+public:
+	QHash<QString,QSqlQuery *> & getQueryConnectionsDict() { return queryConnectionsDict; };
+	void closeQueryConnection(QSqlQuery *);
+	QSqlQuery & getQuery()
+	{
+		//if (currentSQlQuery) return *currentSQlQuery;
+		return *m_pCurrentSQlQuery;
+	};
+	bool setConnection(KviKvsObjectFunctionCall *c);
+	bool connectionNames(KviKvsObjectFunctionCall *c);
+	bool features(KviKvsObjectFunctionCall *c);
+	bool queryLastInsertId(KviKvsObjectFunctionCall *c);
 
-        bool tablesList(KviKvsObjectFunctionCall *c);
-        bool beginTransaction(KviKvsObjectFunctionCall *c);
-        bool commit(KviKvsObjectFunctionCall *c);
+	bool tablesList(KviKvsObjectFunctionCall *c);
+	bool beginTransaction(KviKvsObjectFunctionCall *c);
+	bool commit(KviKvsObjectFunctionCall *c);
 
-        bool queryResultsSize(KviKvsObjectFunctionCall *c);
-        bool queryNext(KviKvsObjectFunctionCall *c);
-        bool queryPrevious(KviKvsObjectFunctionCall *c);
-        bool queryFirst(KviKvsObjectFunctionCall *c);
-        bool queryLast(KviKvsObjectFunctionCall *c);
-        bool queryExec(KviKvsObjectFunctionCall *c);
-        bool queryRecord(KviKvsObjectFunctionCall *c);
-        bool queryPrepare(KviKvsObjectFunctionCall *c);
-        bool queryBindValue(KviKvsObjectFunctionCall *c);
-        bool setCurrentQuery(KviKvsObjectFunctionCall *c);
-        bool currentQuery(KviKvsObjectFunctionCall *c);
-        bool queryFinish(KviKvsObjectFunctionCall *c);
-        bool queryInit(KviKvsObjectFunctionCall *c);
-        bool closeConnection(KviKvsObjectFunctionCall *c);
-        bool lastError(KviKvsObjectFunctionCall *c);
+	bool queryResultsSize(KviKvsObjectFunctionCall *c);
+	bool queryNext(KviKvsObjectFunctionCall *c);
+	bool queryPrevious(KviKvsObjectFunctionCall *c);
+	bool queryFirst(KviKvsObjectFunctionCall *c);
+	bool queryLast(KviKvsObjectFunctionCall *c);
+	bool queryExec(KviKvsObjectFunctionCall *c);
+	bool queryRecord(KviKvsObjectFunctionCall *c);
+	bool queryPrepare(KviKvsObjectFunctionCall *c);
+	bool queryBindValue(KviKvsObjectFunctionCall *c);
+	bool setCurrentQuery(KviKvsObjectFunctionCall *c);
+	bool currentQuery(KviKvsObjectFunctionCall *c);
+	bool queryFinish(KviKvsObjectFunctionCall *c);
+	bool queryInit(KviKvsObjectFunctionCall *c);
+	bool closeConnection(KviKvsObjectFunctionCall *c);
+	bool lastError(KviKvsObjectFunctionCall *c);
 
 };
 

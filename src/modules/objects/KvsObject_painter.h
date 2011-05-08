@@ -41,8 +41,8 @@ public:
 	KVSO_DECLARE_OBJECT(KvsObject_painter)
 protected:
 	QPrinter * m_pPrinter;
-        bool bDonotdeleteinternalqpainter;
-        QPainter * m_pPainter;
+	bool bDonotdeleteinternalqpainter;
+	QPainter * m_pPainter;
 	QMatrix  m_pMatrix;
 	QLinearGradient *m_pGradient;
 	QPainterPath *m_pPainterPath;
@@ -114,7 +114,7 @@ public:
 	bool resetPath(KviKvsObjectFunctionCall *c);
 
 	bool beginPdf(KviKvsObjectFunctionCall *c);
-bool drawPixmapWithEffect(KviKvsObjectFunctionCall *c);
+	bool drawPixmapWithEffect(KviKvsObjectFunctionCall *c);
 	bool painterDeviceWidth(KviKvsObjectFunctionCall *c);
 	bool painterDeviceHeight(KviKvsObjectFunctionCall *c);
 

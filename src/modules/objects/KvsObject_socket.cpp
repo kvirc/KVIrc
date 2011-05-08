@@ -210,7 +210,7 @@ const char * const sockerrors_tbl[] = {
 		Returns the port of the local end of this socket.[br]
 		The return value is meaningful only if the socket is in connected, listening or connecting state.
 
-@examples:
+	@examples:
 		[example]
 		// Server socket: listen 8080 port and answer to requests (multi-threaded)
 		class("webserver","socket")
@@ -408,7 +408,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 				c->warning(__tr2qs_ctx("File is not open!","objects"));
 				return true;
 			}
-                        pFile->write(m_pSocket->read(iLen));
+			pFile->write(m_pSocket->read(iLen));
 		} else {
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 			return true;
@@ -482,7 +482,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 				{
 					if(iValue < 256 && iValue >= 0)
 					{
-                                                m_pSocket->putChar(iValue);
+						m_pSocket->putChar(iValue);
 						continue;
 					} else {
 						c->warning(__tr2qs_ctx("Only values in the range of 0-255 are allowed: integer %d is out of range","objects"),iValue);

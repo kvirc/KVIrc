@@ -90,7 +90,7 @@ const QIODevice::OpenMode mod_cod[] = {
 		Attempts to open the file in specified mode or modes "sum".
 		Valid modes are:[br]
 		[pre]
-		Raw          - raw, non-buffered access[br]
+		Raw	  - raw, non-buffered access[br]
 		ReadOnly     - opens the file read-only[br]
 		WriteOnly    - opens the file write-only[br]
 		ReadWrite    - opens the file in read-write mode[br]
@@ -235,24 +235,23 @@ KVSO_CLASS_FUNCTION(file,open)
 	{
 		for ( int idx=0;idx<modes.count();idx++)
 		{
-                        int found=false;
-                        for(unsigned int j = 0; j < mod_num; j++)
+			int found=false;
+			for(unsigned int j = 0; j < mod_num; j++)
 			{
-
-                                if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
+				if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
 				{
-                                        mod=mod_cod[j];
-                                        found=true;
+					mod=mod_cod[j];
+					found=true;
 					break;
 				}
 			}
-                        if(found)
+			if(found)
 				sum = sum | mod;
 			else
 				c->warning(__tr2qs_ctx("No such open mode '%Q'","objects"),&modes.at(idx));
 		}
 	}
-        c->returnValue()->setBoolean(m_pFile->open(sum));
+	c->returnValue()->setBoolean(m_pFile->open(sum));
 	return true;
 }
 
@@ -560,9 +559,9 @@ KVSO_CLASS_FUNCTION(file,readLine)
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString buffer;
-        //bool ok=KviFileUtils::readLine(m_pFile,buffer);
-        buffer=m_pFile->readLine();
-        c->returnValue()->setString(buffer);
+	//bool ok=KviFileUtils::readLine(m_pFile,buffer);
+	buffer=m_pFile->readLine();
+	c->returnValue()->setString(buffer);
 	return true;
 }
 

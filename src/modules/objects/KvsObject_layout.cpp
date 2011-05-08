@@ -226,7 +226,7 @@ KVSO_CLASS_FUNCTION(layout,setSpacing)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    ((QGridLayout *)object())->setSpacing(uSpacing);
+	((QGridLayout *)object())->setSpacing(uSpacing);
 	return true;
 }
 
