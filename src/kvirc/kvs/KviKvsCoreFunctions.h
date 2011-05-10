@@ -76,6 +76,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(flatten);
 	KVSCF(fmtlink);
 	// g_l
+	KVSCF(gender);
 	KVSCF(globals);
 	KVSCF(hash);
 	KVSCF(inputText);
@@ -86,6 +87,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(iconName);
 	KVSCF(integer);
 	KVSCF(isAnyConsoleConnected);
+	KVSCF(isBot);
 	KVSCF(isEmpty);
 	KVSCF(isEventEnabled);
 	KVSCF(isNumeric);

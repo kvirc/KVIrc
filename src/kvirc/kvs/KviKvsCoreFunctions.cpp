@@ -70,6 +70,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("flatten",flatten)
 		_REGFNC("fmtlink",fmtlink)
 		// g_l
+		_REGFNC("gender",gender);
 		_REGFNC("globals",globals);
 		_REGFNC("hash",hash);
 //		_REGFNC("inputText",inputText);
@@ -81,6 +82,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("iconName",iconName);
 		_REGFNC("int",integer)
 		_REGFNC("integer",integer)
+		_REGFNC("isBot",isBot)
 		_REGFNC("isEmpty",isEmpty)
 		_REGFNC("isEventEnabled",isEventEnabled)
 		_REGFNC("isMainWindowActive",isMainWindowActive)
