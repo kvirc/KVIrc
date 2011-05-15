@@ -718,7 +718,7 @@ KVSCF(gender)
 		@syntax:
 			<boolean> $isNumeric(<data:variant>)
 		@short:
-			Finds whether a variable contains a rappresentation of a number
+			Finds whether a variable contains a representation of a number
 		@description:
 			Returns 1 if the <data> is an integer or a real number, 0 otherwise.
 	*/

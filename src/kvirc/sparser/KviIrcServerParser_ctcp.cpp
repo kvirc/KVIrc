@@ -156,7 +156,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[b]'\C'[/b] (where C is a [b]CTCP valid ascii non digit character[/b]) that corresponds
 		literally to the character C discarding any other semantic that might be associated
 		with it (This will become clear later).
-		I've chosen the octal rappresentation just to follow a bit the old specification:
+		I've chosen the octal representation just to follow a bit the old specification:
 		the authors seemed to like it. This point could be discussed in
 		some mailing list or sth. The '\C' sequence is useful to include the backslash
 		character (escape sequence '\\').[br]
@@ -175,7 +175,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		Another one that naturally comes into my mind is to use the previously defined
 		quoting to define a "non-breaking space" character, because a space after a backslash
 		could lose its original semantic. Better yet, use the backslash followed by
-		the octal rappresentation of the space character ('\040').
+		the octal representation of the space character ('\040').
 		Anyway, to maintain compatibility with other popular IRC clients (such as mIRC),
 		let's include the '"' quotes in our standard: literal (unescaped) '"' quotes
 		define a single token string. To include a literal '"' character, escape it.

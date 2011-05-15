@@ -304,12 +304,12 @@
 			function isLocalhost()
 		}
 		[/example]
-		The above class is a rappresentation of a host address.
+		The above class is a representation of a host address.
 		You create an [b]instance of this class[/b] and set the hostname field, for example,
 		to www.kernel.org.
 		The object is now able to give you information about the hostname in a transparent way:
 		You can call the ipnumber() function, and the object will return you the
-		digits and dots rappresentation of www.kernel.org.
+		digits and dots representation of www.kernel.org.
 		The isLocalhost() function will return true if the hostname refers to the local machine
 		The object internal job is hidden from the user, but probably it will be a huge job.
 		To obtain the IP number from the hostname, the object will probably have to perform a DNS call (usually a complex task).

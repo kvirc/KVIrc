@@ -1853,17 +1853,17 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		[tr][td][b]?d[/b][/td][td]The next parameter is evaluated as a signed integer and substituted in place of ?d[/td][/tr]
 		[tr][td][b]?i[/b][/td][td]Same as ?d[/td][/tr]
 		[tr][td][b]?u[/b][/td][td]The next parameter is evaluated as an unsigned signed integer and substituted in place of ?d[/td][/tr]
-		[tr][td][b]?x[/b][/td][td]The next parameter is evaluated as an unsigned integer and its hexadecimal rappresentation
+		[tr][td][b]?x[/b][/td][td]The next parameter is evaluated as an unsigned integer and its hexadecimal representation
 			is substituted in place of ?x[/td][/tr]
 		[tr][td][b]?h[/b][/td][td]Same as ?x[/td][/tr]
 		[tr][td][b]?X[/b][/td][td]Same as ?x but toUppercase hexadecimal digits are used[/td][/tr]
 		[tr][td][b]?H[/b][/td][td]Same as ?X[/td][/tr]
 		[tr][td][b]??[/b][/td][td]A literal question mark[/td][/tr]
 		[tr][td][b]?[.N]f[/b][/td][td]The next parameter is evaluated as a real floating point value
-			and its rappresentation substituted in place of ?f. The optional [.N] modifier,
+			and its representation substituted in place of ?f. The optional [.N] modifier,
 			where N is an unsigned integer, rappresents the desired precision.[/td][/tr]
 		[tr][td][b]?[.N]e[/b][/td][td]The next parameter is evaluated as a real floating point value
-			and its scientific rappresentation substituted in place of ?e. The optional [.N] modifier,
+			and its scientific representation substituted in place of ?e. The optional [.N] modifier,
 			where N is an unsigned integer, rappresents the desired precision.[/td][/tr]
 		[tr][td][b]?[.N]E[/b][/td][td]Same as ?e but an toUppercase E is used as the exponent prefix[/td][/tr]
 		[/table]

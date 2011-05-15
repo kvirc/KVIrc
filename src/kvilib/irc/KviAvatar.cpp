@@ -40,15 +40,15 @@
 		The AVATAR term dictionary definitions include:[br]
 		- Hindu mythology incarnation of a God[br]
 		- Embodiment of a concept or philosophy[br]
-		- In [b]cyberspace communities[/b], the rappresentation of an
+		- In [b]cyberspace communities[/b], the representation of an
 		user in a shared virtual reality.[br]
 		The AVATAR protocol attempts to improve the IRC communication
-		by adding a method for associating a graphical rappresentation
+		by adding a method for associating a graphical representation
 		to an IRC user.[br]
 		Since this may involve binary data transfers between users,
 		the protocol is intended to be client based.
 		[big]The terms[/big]
-		The user that wants to offer a digital rappresentation of himself
+		The user that wants to offer a digital representation of himself
 		will be called "source user". The ones that will receive the notification
 		will be called "target users".
 		Every irc user can be either a source user or target user.

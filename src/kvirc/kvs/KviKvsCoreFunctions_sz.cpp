@@ -287,8 +287,8 @@ namespace KviKvsCoreFunctions
 			Forces <data> to be a string data type with the following semantics:
 			[ul]
 				[li]If <data> is a string then <data> itself is returned.[/li]
-				[li]If <data> is an integer then its decimal rappresentation is returned.[/li]
-				[li]If <data> is a real then its decimal floating-point rappresentation is returned.[/li]
+				[li]If <data> is an integer then its decimal representation is returned.[/li]
+				[li]If <data> is a real then its decimal floating-point representation is returned.[/li]
 				[li]If <data> is a boolean then the string "1" is returned for a true value and the string "0" for a false value.[/li]
 				[li]If <data> is nothing (unset) then an empty string is returned[/li]
 				[li]If <data> is an array then a string with all the items converted to strings and separated by commas is returned[/li]

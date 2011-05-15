@@ -172,7 +172,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$asciiToBase64(<ascii_string>)
 		@description:
-			Encodes an ASCII string to its base64 encoded rappresentation
+			Encodes an ASCII string to its base64 encoded representation
 			Please note that since KVS is UNICODE based, this function
 			will first encode the string in UTF8 and then base64-encode.
 			This means that it is substantially only 7bit safe (ASCII codes below 128).
@@ -214,7 +214,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<string> $asciiToHex(<ascii_string:string>)
 		@description:
-			Encodes an ASCII string to its hex encoded rappresentation.
+			Encodes an ASCII string to its hex encoded representation.
 			Please note that since KVS is UNICODE based, this function
 			will first encode the string in UTF8 and then hex-encode.
 			This means that it is substantially only 7bit safe (ASCII codes below 128).

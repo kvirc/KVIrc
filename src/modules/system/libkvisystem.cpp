@@ -431,9 +431,9 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		"session" for sessionBus. If it's leaved blank, it will use sessionBus.
 		The parameters MUST be in the form "type=value"
 		where "type" is the C++ type of the parameter and value
-		is the string rappresentation of the parameter data. Currently
+		is the string representation of the parameter data. Currently
 		KVIrc supports only QString,QByteArray,bool,int and uint data types.[br]
-		The returned value is the string rappresentation of the returned
+		The returned value is the string representation of the returned
 		data if the return type is known, otherwise it is the name of the data type returned.
 		[br]
 		If the service name is prefixed with "?" then the call is performed in "remote test"

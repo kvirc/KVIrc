@@ -187,7 +187,7 @@ const char * const widgettypes_tbl[] = {
 	@inherits:
 		[class]object[/class]
 	@description:
-		This object class is the rappresentation of a widget.
+		This object class is the representation of a widget.
 		All the other widget-type classes inherit from this one.
 	@functions:
 		!fn: $show()

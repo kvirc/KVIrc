@@ -2272,7 +2272,7 @@ KviCString & KviCString::setNum(long num)
 
 	// somebody can explain me why 	-(-2147483648) = -2147483648 ? (2^31)
 	// it is like signed char x = 128 ---> 10000000 that is signed -0 (!?)
-	// mmmmh...or it is assumed to be -128 (a number rappresentation exception)
+	// mmmmh...or it is assumed to be -128 (a number representation exception)
 	// at least on my machine it happens...
 
 	// found the solution by myself today...

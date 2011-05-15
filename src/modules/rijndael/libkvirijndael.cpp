@@ -55,7 +55,7 @@
 		actually out of the possibilities of a common "hacker".[br]
 		My implementation allows the usage of 128, 192 and 256 bit keys
 		on 128 bit data blocks. The encrypted binary data buffer is then converted
-		into an ascii-string by using the base64 conversion or hex-digit-string rappresentation.
+		into an ascii-string by using the base64 conversion or hex-digit-string representation.
 		The six engines are the six possible combinations of the key lengths and ascii-string
 		conversions.
 */
