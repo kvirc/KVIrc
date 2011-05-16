@@ -18,6 +18,12 @@ SET(kvi_module_name kvimediaplayer)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
 IF(WIN32)
+	#dirty workaround for the QString::fromWCharArray() use in the spotify interface.
+	#TODO: put it in the CMakeLists.txt in / and see if it breaks something.
+	IF (MSVC)
+		SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t-")
+	ENDIF()
+
 	ADD_LIBRARY(gen_kvirc MODULE winamp.cpp)
 	SET_TARGET_PROPERTIES(gen_kvirc PROPERTIES PREFIX "" LINK_FLAGS -static-libgcc COMPILE_FLAGS -static-libgcc)
 	INSTALL(TARGETS gen_kvirc LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/modules)

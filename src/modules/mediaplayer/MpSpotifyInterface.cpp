@@ -81,6 +81,8 @@ QString KviSpotifyInterface::get_window_title() {
 		return szReturn.replace(QString("Spotify - "), QString(""));
 	} else
 		szReturn = QString("");
+	
+	return szReturn;
 }
 
 MpInterface::PlayerStatus KviSpotifyInterface::status() {
