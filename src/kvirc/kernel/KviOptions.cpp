@@ -684,6 +684,18 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("TreeWindowList","Arial",9,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
 	FONT_OPTION("Notifier","Arial",9,KviOption_sectFlagNotifier | KviOption_resetUpdateGui),
 	FONT_OPTION("NotifierTitle","Arial",9,KviOption_sectFlagNotifier | KviOption_resetUpdateGui)
+#elif defined(COMPILE_ON_MAC)
+	//workaround qt4 font kerning issue under macosx using a monospaced font
+	FONT_OPTION("IrcView","Menlo",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
+	FONT_OPTION("Input","Menlo",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
+	FONT_OPTION("UserListView","Menlo",10,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
+	FONT_OPTION("Label","Menlo",10,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
+	FONT_OPTION("Application","Menlo",10,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
+	FONT_OPTION("IrcToolBarApplet","Menlo",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
+	FONT_OPTION("WindowList","Menlo",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("TreeWindowList","Menlo",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("Notifier","Menlo",9,KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier),
+	FONT_OPTION("NotifierTitle","Menlo",9,KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier)
 #else
 	FONT_OPTION("IrcView","Monospace",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
 	FONT_OPTION("Input","Sans Serif",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
