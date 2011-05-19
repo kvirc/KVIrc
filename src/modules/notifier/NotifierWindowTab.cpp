@@ -69,6 +69,7 @@ NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
 		m_pParent->addTab(this, m_szLabel);
 	}
 
+	setFocusPolicy(Qt::NoFocus);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 

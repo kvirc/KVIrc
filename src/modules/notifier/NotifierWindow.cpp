@@ -693,7 +693,10 @@ void NotifierWindow::mousePressEvent(QMouseEvent * e)
 	stopAutoHideTimer();
 
 	activateWindow();
-	setFocus();
+	if(m_pLineEdit->isVisible())
+		m_pLineEdit->setFocus();
+	else
+		setFocus();
 
 	m_pntClick = e->pos();
 
