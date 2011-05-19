@@ -117,12 +117,6 @@ void KviUserListEntry::detachAvatarData()
 	if(!m_pAvatarPixmap)
 		return;
 
-	m_pAvatarPixmap->stop();
-	//FIXME these checks did not work since these are m_pAvatarPixmap's SIGNALs
-// 	if (receivers(SIGNAL(frameChanged())) > 0)
-	QObject::disconnect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
-// 	if (receivers(SIGNAL(destroyed())) > 0)
-	QObject::disconnect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
 	m_pAvatarPixmap = NULL;
 }
 
@@ -138,24 +132,21 @@ void KviUserListEntry::updateAvatarData()
 	if(!pAv)
 		return;
 
-	if(pAv)
+	if(
+		KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
+		(
+			(!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) ||
+			((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+			((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+		)
+	)
 	{
-		if(
-				KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
-				(
-					(!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) ||
-					((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-					((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
-				)
-			)
-		{
-			m_pAvatarPixmap = pAv->forSize(
-					KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
-					KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
-				);
-		} else {
-			m_pAvatarPixmap = pAv->animatedPixmap();
-		}
+		m_pAvatarPixmap = pAv->forSize(
+				KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
+				KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
+			);
+	} else {
+		m_pAvatarPixmap = pAv->animatedPixmap();
 	}
 
 	if(!m_pAvatarPixmap)
