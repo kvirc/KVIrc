@@ -348,7 +348,8 @@ static bool log_module_cleanup(KviModule *)
 KVIRC_MODULE(
 	"Log",                                                  // module name
 	"4.0.0",                                                // module version
-	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)\n" \
+	"	2011 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
 	"User interface to the logging system for KVIrc",
 	log_module_init,
 	0,

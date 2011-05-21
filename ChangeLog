@@ -2,12 +2,24 @@ This is KVIrc's changelog. It tipically lists new added features and changes tha
 KVIrc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
 https://svn.kvirc.de/kvirc/timeline
 
-April 2011
+Update: 20110621
+
+May 2011
    [HelLViS69]
    - Added the ability to export logs to different formats (plain text, HTML, ...)
-   - Added $log.export()
+   - Added $log.export() function
    [egns]
    - Added mediaplayer interface for Spotify
+   [Pragma]
+   - Added 16x16 and 48x48 icon sizes
+   [Noldor]
+   - Added alpha component in color options
+   - Added $file.diskspace(), $isBot() and $gender() functions
+   - Added Qt SVG support
+   - Ported the pseudo transparency to Qt way
+   [CtrlAltCa]
+   - Reworked toolbars (including drag'n'drop) and ported actions to Qt way
+   - Improved the input editor
 
 *** Released KVIrc 4.0.4 (r5648) - 2011-03-19 ***
 
