@@ -48,6 +48,7 @@ bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 	//szUrl.replaceAll("$","\\$");
 	//szUrl.replaceAll(";","\\;");
 	bool bIPv6 = false;
+	bool bIPv6ip = false;
 	bool bSSL = false;
 	KviCString szServer;
 	kvi_u32_t uPort = 0;
@@ -84,12 +85,23 @@ bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 
 	if(szServerAndPort.isEmpty())return false;
 
-	idx = szServerAndPort.findFirstIdx(':');
+	if(!bIPv6)
+		idx = szServerAndPort.findLastIdx(':');
+	else
+	{
+		bIPv6ip = (szServerAndPort.contains('[') && szServerAndPort.contains("]:") && bIPv6);
+		idx = bIPv6ip ? szServerAndPort.findLastIdx("]:") : szServerAndPort.findLastIdx(':'); /* ]: is a bat */
+	}
 
 	if(idx != -1)
 	{
-		szServer = szServerAndPort.left(idx);
-		szServerAndPort.cutLeft(idx + 1);
+		szServer = bIPv6ip ? szServerAndPort.left(idx).cutLeft(1) : szServerAndPort.left(idx);
+		
+		if(bIPv6ip)
+			szServerAndPort.cutLeft(idx + 2);
+		else
+			szServerAndPort.cutLeft(idx + 1);
+
 		bool bOk;
 		uPort = szServerAndPort.toUInt(&bOk);
 		if(!bOk)uPort = 6667;
@@ -153,6 +165,8 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	result.iPort = 6667;
 	result.iError=0;
 
+	bool bIPv6ip = false;
+
 	int iProtoLen = url.indexOf("://");
 	if(iProtoLen!=-1) {
 		if(KviQString::equalCIN(url,"irc",3)) {
@@ -178,10 +192,12 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	}
 	//Ok, we understand a protocol.. Now we shuld find a server name:)
 	int iTmp;
-	iTmp = url.indexOf(':');
+	bIPv6ip = (url.contains('[') && url.contains("]:") && result.bIPv6);
+	
+	iTmp = bIPv6ip ? url.indexOf("]:") : url.indexOf(':');
 	if(iTmp!=-1) {
-		result.szHost = url.left(iTmp);
-		url = url.right(url.length()-iTmp-1);
+		result.szHost = bIPv6ip ? url.left(iTmp).remove('[') : url.left(iTmp);
+		url = bIPv6ip ? url.right(url.length()-iTmp-2) : url.right(url.length()-iTmp-1);
 		// Accepted, now the time for the port:)
 		bool bOk;
 		if( (iTmp = url.indexOf('/')) != -1) { // any channels pending?
@@ -222,7 +238,9 @@ void KviIrcUrl::join(QString &uri, KviIrcServer* server)
 		if(server->isIPv6()) uri.append("6");
 
 		uri.append("://");
+		if(server->isIPv6() && server->hostName().contains(':')) uri.append("[");
 		uri.append(server->hostName());
+		if(server->isIPv6() && server->hostName().contains(':')) uri.append("]");
 		if(server->port()!=6667) uri.append(QString(":%1").arg(server->port()));
 		uri.append("/");
 	}
