@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-05-19 04:26+0100\n"
+"PO-Revision-Date: 2011-05-23 06:01+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -605,7 +605,7 @@ msgstr "(DNS Interno) Opções inválidas"
 
 #: src/kvilib/core/KviError.cpp:85
 msgid "(DNS Internal) IPC failure (slave data corrupted)"
-msgstr "(Dns Interno) Falha IPC (dados 'slave' corrompidos)"
+msgstr "(DNS Interno) Falha IPC (dados 'slave' corrompidos)"
 
 #: src/kvilib/core/KviError.cpp:78
 msgid "(DNS Internal) Out of memory"
@@ -2955,7 +2955,7 @@ msgstr "Não é possível abrir o ficheiro fonte para leitura"
 
 #: src/kvilib/core/KviError.cpp:89
 msgid "Failed to put the socket in non blocking mode"
-msgstr "Falha ao colocar o 'socket' em modo não bloquear"
+msgstr "Falha ao colocar o 'socket' em modo não bloqueante"
 
 #: src/modules/file/libkvifile.cpp:482
 msgid "Failed to remove the directory %Q"
@@ -2967,7 +2967,7 @@ msgstr "Falha ao remover o ficheiro %Q"
 
 #: src/modules/file/libkvifile.cpp:371
 msgid "Failed to rename %Q to %Q"
-msgstr "Falha ao renomear de %Q para %Q"
+msgstr "Falha ao renomear %Q para %Q"
 
 #: src/kvilib/net/KviHttpRequest.cpp:538
 msgid "Failed to rename the existing file, please rename manually and retry"
@@ -2990,8 +2990,7 @@ msgstr "Falha ao definir a codificação para %Q: mapeação não disponível."
 
 #: src/kvirc/kernel/KviIrcLink.cpp:143
 msgid "Failed to set up the link filter \"%Q\", will try with plain IRC"
-msgstr ""
-"Falha ao definir o filtro de ligação \"%Q\", irá tentar com IRC simples"
+msgstr "Falha ao definir o filtro de ligação \"%Q\", tentará com IRC simples"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:205
 msgid "Failed to start the connection: %Q"
@@ -4952,7 +4951,7 @@ msgid ""
 msgstr ""
 "Ups... parece ter uma distribuição danificada.\n"
 "O módulo de configuração não exporta a função \"setup_finish\"\n"
-"Continuar apesar de tudo..."
+"A tentar continuar apesar de tudo..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:791
 #: src/kvirc/kernel/KviCoreActions.cpp:805
@@ -5042,7 +5041,7 @@ msgstr "Mensagem de partida (canal)"
 #: src/kvirc/kernel/KviIrcSocket.cpp:1877
 #: src/kvirc/kernel/KviIrcSocket.cpp:1897
 msgid "Partial socket write: packet broken into smaller pieces."
-msgstr "Escrita parcial no 'socket': pacote dividido em partes mais pequenas."
+msgstr "Escrita parcial no 'socket': pacote partido em pequenas partes."
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:88
 msgid "Password"
@@ -5997,7 +5996,7 @@ msgstr "Mostrar Ícones<br>&lt;Ctrl+I&gt;<br>Ver também /help texticons"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:139
 msgid "Show SocketSpy"
-msgstr "Mostrar 'Socket' Espião"
+msgstr "Mostrar Janela de Escuta"
 
 #: src/kvirc/ui/KviMenuBar.cpp:171
 msgid "Show StatusBar"
@@ -6168,7 +6167,7 @@ msgstr "'Socket'"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:80
 msgid "Socket Spy [IRC Context %1]"
-msgstr "'Socket' Espião [Contexto IRC %1]"
+msgstr "Janela de Escuta [Contexto IRC %1]"
 
 #: src/modules/socketspy/SocketSpyWindow.cpp:103
 msgid "Socket closed"
@@ -6226,7 +6225,7 @@ msgstr "Sistema de som detectado para: %s"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:801
 msgid "Spam filter listing"
-msgstr "Listagem de Filtro 'Spam'"
+msgstr "Listagem do filtro 'spam'"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1249
 msgid ""
@@ -6239,7 +6238,7 @@ msgstr ""
 msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
-"Lixo ('spam') privmsg de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra 'spam' "
+"Privmsg de lixo ('spam') de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra 'spam' "
 "correspondente  \"%s\")"
 
 #: src/kvirc/kernel/KviOptions.cpp:794
@@ -6270,15 +6269,15 @@ msgstr "A iniciar negociação da Disposição Segura do 'Socket' (SSL)"
 
 #: src/modules/ident/libkviident.cpp:330
 msgid "Starting identd service (IPv4)"
-msgstr "A iniciar serviço de identificação (IPv4)"
+msgstr "A iniciar serviço identd (IPv4)"
 
 #: src/modules/ident/libkviident.cpp:325
 msgid "Starting identd service (IPv4/v6 in IPv6 namespace)"
-msgstr "A iniciar serviço de identificação (IPv4/v6 no nome de espaço IPv6)"
+msgstr "A iniciar serviço identd (IPv4/v6 no nome de espaço IPv6)"
 
 #: src/modules/ident/libkviident.cpp:322
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
-msgstr "A iniciar serviço de identd (IPv4/v6 em nomesdeespaços separados)"
+msgstr "A iniciar serviço identd (IPv4/v6 em nomesdeespaços separados)"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:794 src/kvirc/ui/KviChannelWindow.cpp:1968
 msgid "Starting last log"
@@ -6315,7 +6314,7 @@ msgstr "Opções de 'string' (valor da 'string')"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:348
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:414
 msgid "Strip colors"
-msgstr "Tirar cores"
+msgstr "Remover cores"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:326 src/kvirc/ui/KviMenuBar.cpp:131
 msgid "Subscribe to the Mailing List"
@@ -7783,7 +7782,7 @@ msgstr "[%s]: [ERRO SSL]: %s"
 msgid ""
 "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
 msgstr ""
-"[%s]: [ERRO SSL]: Erro I/O do ficheiro I/O ao tentar usar o ficheiro de "
+"[%s]: [ERRO SSL]: Erro de E/S do ficheiro ao tentar usar o ficheiro do "
 "certificado %s"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:156
@@ -7791,13 +7790,13 @@ msgstr ""
 msgid ""
 "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr ""
-"[%s]: [ERRO SSL]: Erro I/O do ficheiro enquanto se tentava usar o ficheiro "
-"da chave privada %s"
+"[%s]: [ERRO SSL]: Erro de E/S do ficheiro ao tentar usar o ficheiro da chave "
+"privada %s"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:130
 #, c-format
 msgid "[%s]: [SSL]: Using certificate file %s"
-msgstr "[%s]: [SSL]: A usar ficheiro de certificado %s"
+msgstr "[%s]: [SSL]: A usar ficheiro do certificado %s"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:153
 #, c-format
@@ -7818,7 +7817,7 @@ msgstr "[Consulta desligada]"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1923
 msgid "[Entering away status]: %Q"
-msgstr "[Entrar em estado ausente]: %Q"
+msgstr "[A entrar em estado ausente]: %Q"
 
 #: src/modules/ident/libkviident.cpp:112
 #, c-format
@@ -7832,11 +7831,11 @@ msgstr "[AVISO DE LIGAÇÃO]: Mensagem do 'socket' truncada para 512 bytes."
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1892
 msgid "[Leaving away status after %ud %uh %um %us]: %Q"
-msgstr "[Sair do estado ausente após %ud %uh %um %us]: %Q"
+msgstr "[A sair do estado ausente após %ud %uh %um %us]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1896
 msgid "[Leaving away status]: %Q"
-msgstr "[Sair do estado ausente]: %Q"
+msgstr "[A sair do estado ausente]: %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:230
 msgid "[PROXY ERROR]: %Q"
