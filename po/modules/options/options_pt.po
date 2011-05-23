@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-05-08 07:38+0100\n"
+"PO-Revision-Date: 2011-05-24 00:06+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -277,8 +277,9 @@ msgid ""
 "active window</center>"
 msgstr ""
 "<center>Se esta opção estiver activada, o KVIrc irá (tentar) piscar na barra "
-"de tarefas do sistema quando uma mensagem destacada é mostrada e o KVIrc não "
-"for a janela activa.</center>"
+"de "
+"tarefas do sistema quando uma mensagem em destaque é mostrada e o KVIrc "
+"não for a janela activa.</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:124
 msgid ""
@@ -326,7 +327,7 @@ msgid ""
 msgstr ""
 "<center>Se esta opção estiver activada, o KVIrc mostrará uma pequena janela "
 "de notificação no canto inferior direito do seu ecrã quando uma mensagem "
-"destacada aparecer e o KVIrc não for a janela activa</center>"
+"em destaque aparecer e o KVIrc não for a janela activa</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1433
 msgid ""
@@ -350,7 +351,7 @@ msgid ""
 "messages which contain a word from the highlighted words list above.</center>"
 msgstr ""
 "<center>Se esta opção estiver activada, a lista da janela alertará também "
-"acerca das mensagens que contêm uma palavra da lista de palavras destacadas "
+"acerca das mensagens que contêm uma palavra da lista de palavras em destaque "
 "em cima.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:578
@@ -1551,7 +1552,7 @@ msgid ""
 "(eg. if your nickname is Mark then Markus will be highlighted too).</center>"
 msgstr ""
 "<center>Esta selecção fará com que o KVIrc procure pelas palavras ou "
-"alcunhas destacadas dentro do texto. Isto também destacará partes das "
+"alcunhas em destaque dentro do texto. Isto também destacará partes das "
 "palavras (ex: se a sua alcunha for Maria, então Mariana também será "
 "destacada).</center>"
 
@@ -1563,7 +1564,7 @@ msgid ""
 msgstr ""
 "<center>Esta selecção irá primeiro separar a palavra pelas divisões "
 "especificadas (incluindo espaços) e depois comparará todas as partes com as "
-"palavras destacadas"
+"palavras em destaque.</center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:327
 msgid ""
@@ -1867,7 +1868,7 @@ msgstr "Restrições de Alerta"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:126
 msgid "Alert for highlighted words"
-msgstr "Alerta para palavras destacadas"
+msgstr "Alerta para palavras em destaque"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:129
 msgid "Alert for query messages"
@@ -2697,7 +2698,7 @@ msgstr "Piscar barra de tarefas em novas mensagens de consulta"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:93
 msgid "Flash the system taskbar entry on highlighted messages"
-msgstr "Piscar barra de tarefas do sistema nas mensagens destacadas"
+msgstr "Piscar barra de tarefas do sistema nas mensagens em destaque"
 
 #: src/modules/options/OptionsWidget_notify.cpp:51
 msgid "Flash window when users are going online"
@@ -2862,7 +2863,7 @@ msgstr "Destacar apenas palavras inteiras separando em espaço:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:342
 msgid "Highlighted message in inactive window"
-msgstr "Mensagem destacada na janela inactiva"
+msgstr "Mensagem em destaque na janela inactiva"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:67
 msgid "Highlighting Method"
@@ -3700,7 +3701,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:329
 msgid "Popup notifier on new dcc chat message"
-msgstr "Mostrar notificador em nova mensagem dcc de conversa"
+msgstr "Mostrar notificador em nova mensagem de dcc"
 
 #: src/modules/options/OptionsWidget_query.cpp:80
 msgid "Popup notifier on new query message"
@@ -3708,11 +3709,11 @@ msgstr "Mostrar notificador em nova mensagem de consulta"
 
 #: src/modules/options/OptionsWidget_notify.cpp:56
 msgid "Popup notifier when users are going online"
-msgstr "Mostrar notificador quando os utilizadores estão ligados"
+msgstr "Mostrar notificador quando os utilizadores se ligam"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:95
 msgid "Popup the notifier window on highlighted messages"
-msgstr "Mostrar janela de notificação nas mensagens destacadas"
+msgstr "Mostrar janela de notificação nas mensagens em destaque"
 
 #: src/modules/options/OptionsWidget_servers.cpp:656
 #: src/modules/options/OptionsWidget_proxy.cpp:114
@@ -3737,15 +3738,15 @@ msgstr "Prefixo:"
 
 #: src/modules/options/OptionsWidget_irc.cpp:77
 msgid "Prepend avatar info to realname"
-msgstr "Preceder a informação do avatar no nome real"
+msgstr "Preceder informação do avatar para o nome real"
 
 #: src/modules/options/OptionsWidget_irc.cpp:76
 msgid "Prepend gender info to realname"
-msgstr "Preceder a informação do género no nome real"
+msgstr "Preceder informação de gênero para o nome real"
 
 #: src/modules/options/OptionsWidget_irc.cpp:78
 msgid "Prepend smart nick color info to realname"
-msgstr "Preceder a informação de cor da alcunha inteligente no nome real"
+msgstr "Preceder informação de cor da alcunha inteligente para o nome real"
 
 #: src/modules/options/OptionsWidget_connection.cpp:119
 msgid "Private Key"
@@ -3813,7 +3814,7 @@ msgstr "Protecção"
 
 #: src/modules/options/OptionsWidget_servers.cpp:753
 msgid "Protocol Encoding:"
-msgstr "Codificação do Protocolo:"
+msgstr "Codificação de Protocolo:"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:66
 msgid "Protocol handler"
@@ -3829,7 +3830,7 @@ msgstr "'Proxy'"
 
 #: src/modules/options/OptionsWidget_proxy.h:54
 msgid "Proxy Hosts"
-msgstr "Máquinas 'Proxy'"
+msgstr "Servidores 'Proxy'"
 
 #: src/modules/options/OptionsWidget_servers.cpp:803
 msgid "Proxy server:"
@@ -3971,7 +3972,7 @@ msgstr "Pedir CTCP"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:66
 msgid "Request missing avatars"
-msgstr "Requisitar avatars em falta"
+msgstr "Pedir avatars em falta"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:102
 msgid "Restore"
@@ -4019,7 +4020,7 @@ msgstr "Gravar Localização"
 
 #: src/modules/options/OptionsWidget_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr "Gravar registos na pasta:"
+msgstr "Gravar registos para a pasta:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:107
 msgid "Save path:"
@@ -4043,7 +4044,7 @@ msgstr "Redimensionar ao carregar (e nas dicas de utilizador)"
 
 #: src/modules/options/OptionsWidget_uparser.h:30
 msgid "Scripting Engine"
-msgstr "Opções do Script"
+msgstr "Opções do 'Script'"
 
 #: src/modules/options/OptionsWidget_tray.cpp:58
 msgid "Select message levels to notify"
@@ -4158,7 +4159,7 @@ msgstr "Mostrar mudanças de modo compactas"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:72
 msgid "Show dialog for CTCP page requests"
-msgstr "Mostrar diálogo para pedidos CTCP page"
+msgstr "Mostrar diálogo para pedidos de página CTCP"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:80
 msgid "Show extended server information"
@@ -4166,7 +4167,7 @@ msgstr "Mostrar informações extendidas do servidor"
 
 #: src/modules/options/OptionsWidget_userList.cpp:232
 msgid "Show gender icons"
-msgstr "Mostrar género dos ícones"
+msgstr "Mostrar ícones de género"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:52
 msgid "Show header"
@@ -4182,7 +4183,7 @@ msgstr "Mostrar na janela activa"
 
 #: src/modules/options/OptionsWidget_query.cpp:85
 msgid "Show information about query target at the top of the query"
-msgstr "Mostrar informação acerca do endereço do utilizador no topo da janela"
+msgstr "Mostrar informação sobre a consulta no topo da janela"
 
 #: src/modules/options/OptionsWidget_userList.cpp:235
 msgid "Show label with userlist stats"

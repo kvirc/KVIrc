@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-05-23 06:01+0100\n"
+"PO-Revision-Date: 2011-05-24 00:12+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -3653,7 +3653,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:160
 msgid "Invalid array index: positive integer expected"
-msgstr "Índice do array inválido: positivo inteiro esperado"
+msgstr "Índice do 'array' inválido: positivo inteiro esperado"
 
 #: src/kvilib/ext/KviCryptEngine.cpp:160
 msgid "Invalid crypt engine"
@@ -4263,7 +4263,7 @@ msgstr "Chaveta de fecho em falta"
 
 #: src/modules/file/libkvifile.cpp:301
 msgid "Missing data array"
-msgstr "Matriz de dados em falta"
+msgstr "'Array' de dados em falta"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:108
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:325
@@ -7080,7 +7080,7 @@ msgstr "Não é possível encontrar o nome da máquina: máquina desconhecida"
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:240
 msgid "Unable to look up the IRC proxy hostname: Can't start the DNS slave"
 msgstr ""
-"Não é possível encontrar a máquina 'proxy' IRC: não é possível iniciar o DNS "
+"Não é possível encontrar a máquina 'proxy' IRC: não consegue iniciar o DNS "
 "'slave'"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:345
@@ -7134,11 +7134,11 @@ msgstr "Caracter inesperado"
 
 #: src/kvilib/core/KviError.cpp:149
 msgid "Unexpected characters in array index"
-msgstr "Caracteres inesperados no índice do array"
+msgstr "Caracteres inesperados no índice do 'array'"
 
 #: src/kvilib/core/KviError.cpp:151
 msgid "Unexpected end in array index"
-msgstr "Fim inesperado no índice do array"
+msgstr "Fim inesperado no índice do 'array'"
 
 #: src/kvilib/core/KviError.cpp:150
 msgid "Unexpected end in expression"
