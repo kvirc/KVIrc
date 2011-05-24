@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-05-24 00:12+0100\n"
+"PO-Revision-Date: 2011-05-24 14:48+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -210,7 +210,7 @@ msgstr "%1: Ligação parental %2"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:995
 msgid "%Q %Q reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "%Q %Q resposta de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Resposta %Q %Q de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1048
 msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
@@ -1887,7 +1887,7 @@ msgstr "URL do Canal"
 
 #: src/kvirc/kernel/KviOptions.cpp:783
 msgid "Channel creation time reply"
-msgstr "Resposta de tempo na criação de canal"
+msgstr "Resposta do tempo demorado na criação do canal"
 
 #: src/kvirc/kernel/KviOptions.cpp:787
 msgid "Channel encrypted private message"
@@ -1919,11 +1919,11 @@ msgstr "Mensagem lista do canal"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:119
 msgid "Channel mode"
-msgstr "Modos do Canal"
+msgstr "Modo do Canal"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:647
 msgid "Channel mode for \r!c\r%Q\r is %s"
-msgstr "Modo de canal para \r!c\r%Q\r é %s"
+msgstr "O modo do canal para \r!c\r%Q\r é %s"
 
 #: src/kvirc/ui/KviSelectors.cpp:841
 msgid "Channel name"
@@ -1958,7 +1958,7 @@ msgstr "Canal sincronizado em %d.%d segundos"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:533
 msgid "Channel topic is: %Q"
-msgstr "O tópico do canal é: %Q"
+msgstr "Tópico do canal: %Q"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:359
 msgid "Channel topic:"
@@ -1966,11 +1966,11 @@ msgstr "Tópico do canal:"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:366
 msgid "Channel visible in LIST"
-msgstr "Canal visível na LISTA"
+msgstr "Canal visível em LIST"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1717
 msgid "Channel was created at %Q"
-msgstr "Canal criado em %Q"
+msgstr "Canal criado em: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1673
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1679
@@ -1991,7 +1991,7 @@ msgstr "Verificar revisões SVN"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:654
 msgid "Check on startup"
-msgstr "Verificar no inicio"
+msgstr "Verificar ao iniciar"
 
 #: src/modules/avatar/libkviavatar.cpp:70
 msgid "Choose Avatar - KVIrc"
@@ -2059,7 +2059,7 @@ msgstr "Escolha um ficheiro para partilhar"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3102
 msgid "Chroma AGC"
-msgstr "Cromagem AGC"
+msgstr "Cor AGC"
 
 #: src/kvilib/net/KviHttpRequest.cpp:930
 msgid "Chunk header too long: exceeded 4096 bytes"
@@ -2136,7 +2136,7 @@ msgstr "Efeitos de Cor"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3103
 msgid "Color Killer"
-msgstr "Colori Matador"
+msgstr "Cor do Matador"
 
 #: src/kvirc/kernel/KviOptions.cpp:1256
 msgid "Color options (#RRGGBB)"
@@ -2148,7 +2148,7 @@ msgstr "Sintaxe de comando %Q: %Q"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:475
 msgid "Commit Changes"
-msgstr "Aplicar Alterações"
+msgstr "Cometer Alterações"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:346
 msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
