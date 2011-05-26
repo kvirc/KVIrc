@@ -324,11 +324,11 @@ msgstr "%c\r!n\r%Q\r%c era %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1502
 msgid "%c\r!n\r%Q\r%c's actual host: %Q"
-msgstr "%c\r!n\r%Q\r%c nombre de máquina actual: %Q"
+msgstr "%c\r!n\r%Q\r%c nombre de equipo actual: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1498
 msgid "%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"
-msgstr "%c\r!n\r%Q\r%c usuario@máquina actual: %Q, ip actual: %Q"
+msgstr "%c\r!n\r%Q\r%c usuario@equipo actual: %Q, ip actual: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1323
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
@@ -1659,7 +1659,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:137
 msgid "Can't resolve the localhost name"
-msgstr "No puedo resolver el nombre de máquina local"
+msgstr "No puedo resolver el nombre de equipo local"
 
 #: src/modules/term/TermWidget.cpp:98
 msgid "Can't retrieve the terminal emulation factory"
@@ -2242,7 +2242,7 @@ msgstr "Conexión rechazada"
 
 #: src/kvilib/core/KviError.cpp:157
 msgid "Connection reset by peer"
-msgstr "Conexión cerrada por la otra máquina"
+msgstr "Conexión cerrada por el otro equipo"
 
 #: src/kvirc/kernel/KviOptions.cpp:734
 msgid "Connection status"
@@ -2646,7 +2646,7 @@ msgstr "Doble clic para editar..."
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
-"Haz doble clic para buscar esta máquina<br>Clic derecho para ver otras "
+"Haz doble clic para buscar este equipo<br>Clic derecho para ver otras "
 "opciones"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:850
@@ -2719,7 +2719,7 @@ msgstr "El origen no existe o el destino no puede ser creado"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:123
 msgid "Emoticon"
-msgstr "Emoticon"
+msgstr "Icono"
 
 #: src/modules/ident/libkviident.cpp:487
 msgid "Empty request (EOT ?)"
@@ -3263,7 +3263,7 @@ msgid ""
 "but I'll ignore the IP address change"
 msgstr ""
 "Ahí va tu \"truco del repetidor estropeado\": el servidor ha cambiado el "
-"nombre de máquina pero ignoraré el cambio de dirección IP"
+"nombre del equipo pero ignoraré el cambio de dirección IP"
 
 #: src/kvirc/ui/KviCryptController.cpp:112
 #: src/kvirc/ui/KviCryptController.cpp:124
@@ -3326,27 +3326,27 @@ msgstr "Invertir horizontalmente"
 
 #: src/kvilib/net/KviHttpRequest.cpp:1003
 msgid "Host %1 resolved to %2"
-msgstr "Nombre de máquina %1 resuelto a %2"
+msgstr "Nombre de equipo %1 resuelto a %2"
 
 #: src/kvirc/kernel/KviOptions.cpp:728
 msgid "Host lookup result"
-msgstr "Resultado de la búsqueda de la máquina"
+msgstr "Resultado de la búsqueda del equipo"
 
 #: src/kvilib/core/KviError.cpp:84
 msgid "Host not found"
-msgstr "máquina no encontrada"
+msgstr "Equipo no encontrado"
 
 #: src/kvilib/core/KviError.cpp:158
 msgid "Host unreachable (no route to host)"
-msgstr "Maquina inalcanzable (no hay ruta hacia la máquina)"
+msgstr "Equipo inalcanzable (no hay ruta hacia el equipo)"
 
 #: src/kvirc/ui/KviStatusBar.cpp:571
 msgid "Hostname"
-msgstr "Nombre de máquina"
+msgstr "Nombre de equipo"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:146
 msgid "Hostname resolution aborted"
-msgstr "Cancelada la resolución del nombre de máquina"
+msgstr "Cancelada la resolución del nombre de equipo"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:159
 #: src/kvilib/ext/avdevice/videodevice.cpp:3074
@@ -3611,7 +3611,7 @@ msgstr "Id '%Q' de contexto de IRC no válido"
 
 #: src/kvilib/net/KviHttpRequest.cpp:186
 msgid "Invalid URL: Missing hostname"
-msgstr "URL Inválida: falta el nombre de la máquina"
+msgstr "URL Inválida: falta el nombre del equipo"
 
 #: src/modules/str/libkvistr.cpp:2059
 msgid "Invalid argument for ?X escape sequence, 0 assumed"
@@ -4022,11 +4022,11 @@ msgstr "Dirección IP local"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:957
 msgid "Local host address is %Q"
-msgstr "La dirección de la máquina local es %Q"
+msgstr "La dirección del equipo local es %Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1107
 msgid "Local hostname as seen by the IRC server resolved to %Q"
-msgstr "Nombre de máquina local visto desde el servidor IRC resuelto a %Q"
+msgstr "Nombre del equipo local visto desde el servidor IRC resuelto a %Q"
 
 #: src/modules/setup/SetupWizard.cpp:403
 msgid "Location:"
@@ -4059,12 +4059,12 @@ msgstr "Resolviendo %Q..."
 #: src/kvirc/kernel/KviIrcConnection.cpp:1082
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
 msgstr ""
-"Resolviendo el nombre de máquina local tal y como lo ve el servidor IRC (%Q)"
+"Resolviendo el nombre del equipo local tal y como lo ve el servidor IRC (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:251
 #, c-format
 msgid "Looking up the proxy hostname (%s)..."
-msgstr "Resolviendo el nombre de máquina del proxy (%s)..."
+msgstr "Resolviendo el nombre del equipo del proxy (%s)..."
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:350
 #, c-format
@@ -4124,7 +4124,7 @@ msgstr "Máximo salto: %d [%s]"
 #: src/modules/links/LinksWindow.cpp:293
 #, c-format
 msgid "Maximum links per host: %d [%s]"
-msgstr "Enlaces mínimos por máquina: %d [%s]"
+msgstr "Enlaces mínimos por equipo: %d [%s]"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:651
 #, c-format
@@ -4493,7 +4493,7 @@ msgstr ""
 
 #: src/kvilib/core/KviError.cpp:72
 msgid "No host to resolve"
-msgstr "No hay máquina que resolver"
+msgstr "No hay equipo a resolver"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1665
 msgid "No matches"
@@ -4678,7 +4678,7 @@ msgstr "Lista de notificación: comprobando: %Q"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:776
 msgid "Notify list: Checking userhost for: %Q"
-msgstr "Lista de notificación: Comprobando usuario-máquina para: %Q"
+msgstr "Lista de notificación: Comprobando usuario-equipo para: %Q"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:548
 msgid ""
@@ -4771,8 +4771,8 @@ msgstr ""
 #: src/kvirc/kernel/KviNotifyList.cpp:741
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
 msgstr ""
-"Lista de notificación: Inconsistencia inesperada, la lista de usuarios-"
-"máquinas esa vacía!"
+"Lista de notificación: Inconsistencia inesperada, ¡la lista de usuarios-"
+"equipos está vacía!"
 
 #: src/modules/avatar/libkviavatar.cpp:419
 msgid "Notifying avatar '%Q' to %Q"
@@ -5258,7 +5258,7 @@ msgstr "Conexión proxy"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:274
 msgid "Proxy hostname resolved to %Q"
-msgstr "Nombre de máquina del proxy resuelto a %Q"
+msgstr "Nombre de equipo del proxy resuelto a %Q"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1238
 msgid "Proxy response: "
@@ -5310,7 +5310,7 @@ msgstr "Respuesta del proxy: fallo general de SOCKS"
 
 #: src/kvilib/core/KviError.cpp:127
 msgid "Proxy response: host unreachable"
-msgstr "Respuesta del proxy: máquina inalcanzable"
+msgstr "Respuesta del proxy: equipo inalcanzable"
 
 #: src/kvilib/core/KviError.cpp:122
 msgid "Proxy response: ident failed"
@@ -5440,7 +5440,7 @@ msgstr "Leyendo paquete..."
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:417
 msgid "Real hostname for %Q is %Q"
-msgstr "El nombre de máquina real de %Q es %Q"
+msgstr "El nombre de equipo real de %Q es %Q"
 
 #: src/modules/setup/SetupWizard.cpp:350
 msgid "Real name:"
@@ -5819,7 +5819,7 @@ msgstr "Enviada solicitud de partida, esperando respuesta..."
 
 #: src/kvirc/kernel/KviIrcLink.cpp:420
 msgid "Sent target host data, waiting for acknowledgement"
-msgstr "Enviados los datos de la máquina de destino, esperando confirmación"
+msgstr "Enviados los datos del equipo de destino, esperando confirmación"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:426
 msgid "Sent username and password, waiting for acknowledgement"
@@ -6195,7 +6195,7 @@ msgstr "Error en socket"
 #: src/modules/snd/libkvisnd.cpp:725
 msgid "Sorry, I can't find a sound system to use on this machine"
 msgstr ""
-"Lo siento, no puedo encontrar un sistema de sonido que usar en esta máquina"
+"Lo siento, no puedo encontrar un sistema de sonido que usar en este equipo"
 
 #: src/kvirc/ui/KviCryptController.cpp:245
 msgid "Sorry, no crypt engines available"
@@ -6203,7 +6203,7 @@ msgstr "Lo siento, no hay motores de cifrado disponibles"
 
 #: src/kvirc/ui/KviTreeWindowList.cpp:275
 msgid "Sort"
-msgstr "Ordenación"
+msgstr "Ordenar"
 
 #: src/modules/snd/libkvisnd.cpp:707
 msgid "Sound file '%Q' not found"
@@ -6978,11 +6978,11 @@ msgstr "El tema fue puesto por %Q el %Q"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts in the network"
-msgstr "Total de máquinas en la red"
+msgstr "Total de equipos en la red"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts listed"
-msgstr "Total máquinas listadas"
+msgstr "Total de equipos listados"
 
 #: src/modules/links/LinksWindow.cpp:294
 #, c-format
@@ -7067,23 +7067,22 @@ msgstr "Incapaz de encontrar una ventana con el ID de ventana indicado"
 #: src/kvirc/ui/KviIrcView_events.cpp:871
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr ""
-"Incapaz de extraer el nombre de máquina: parece que el nombre de la máquina "
-"está enmascarado"
+"No pude encontrar el nombre del equipo: parece que está enmascarado"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:872
 msgid "Unable to look it up hostname: Unknown host"
-msgstr "Incapaz de extraer el nombre de máquina: máquina desconocida"
+msgstr "No pude encontrar el nombre del equipo: equipo desconocido"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:240
 msgid "Unable to look up the IRC proxy hostname: Can't start the DNS slave"
 msgstr ""
-"Incapaz de buscar el nombre de máquina del proxy irc: no pude iniciar el DNS "
+"No pude encontrar el nombre del equipo del proxy irc: no pude iniciar el DNS "
 "esclavo"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:345
 msgid "Unable to look up the server hostname: Can't start the DNS slave"
 msgstr ""
-"Incapaz de encontrar el nombre de máquina del servidor: no pude iniciar el "
+"No pude encontrar el nombre del equipo del servidor: no pude iniciar el "
 "DNS esclavo"
 
 #: src/modules/snd/libkvisnd.cpp:714
@@ -7104,7 +7103,7 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnection.cpp:1103
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 msgstr ""
-"No es posible resolver el nombre de la máquina local tal y como lo ve el "
+"No es posible resolver el nombre del equipo local tal y como lo ve el "
 "servidor de IRC: %Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1100
@@ -7112,7 +7111,7 @@ msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
 "previously resolved %Q"
 msgstr ""
-"No es posible resolver el nombre de la máquina local tal y como lo ve el "
+"No es posible resolver el nombre del equipo local tal y como lo ve el "
 "servidor de IRC: %Q, usando el resuelto anteriormente: %Q"
 
 #: src/kvilib/net/KviHttpRequest.cpp:983
@@ -7195,7 +7194,7 @@ msgstr "Función desconocida"
 
 #: src/kvilib/core/KviError.cpp:80
 msgid "Unknown node (host not found)"
-msgstr "Nodo desconocido (máquina no encontrada)"
+msgstr "Nodo desconocido (equipo no encontrado)"
 
 #: src/kvilib/core/KviError.cpp:71
 msgid "Unknown operator"
@@ -7436,7 +7435,7 @@ msgstr "Usando el nombre de usuario específico del servidor (%Q)"
 
 #: src/kvilib/core/KviError.cpp:74
 msgid "Valid name but the host has no IP address"
-msgstr "Nombre válido pero la máquina no tiene dirección IP"
+msgstr "Nombre válido pero el equipo no tiene dirección IP"
 
 #: src/kvilib/core/KviError.cpp:159
 msgid "Variable expected"

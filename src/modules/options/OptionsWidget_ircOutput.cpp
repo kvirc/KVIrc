@@ -40,7 +40,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	setObjectName("ircoutput_options_widget");
 	createLayout();
 
-	QLabel * pLabel = new QLabel(__tr2qs_ctx("Output verbosity","options"),this);
+	QLabel * pLabel = new QLabel(__tr2qs_ctx("Output verbosity:","options"),this);
 	addWidgetToLayout(pLabel,0,0,0,0);
 
 	m_pVerbosityCombo = new QComboBox(this);

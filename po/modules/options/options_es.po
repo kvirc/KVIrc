@@ -73,7 +73,7 @@ msgstr "&Aplicar"
 
 #: src/modules/options/OptionsWidget_identity.cpp:227
 msgid "&Browse..."
-msgstr "Navegar..."
+msgstr "&Buscar..."
 
 #: src/modules/options/OptionsWidget_servers.cpp:1809
 msgid "&Copy Server"
@@ -1469,7 +1469,7 @@ msgid ""
 msgstr ""
 "<center>Esta opción habilitará la reconexión automática tras una desconexión "
 "inesperada. Una desconexión inesperada es la <b>terminación</b> de una "
-"<b>sesión completa de IRC</b> que <b>no fué solicitada por el usuario</b> "
+"<b>sesión completa de IRC</b> que <b>no fue solicitada por el usuario</b> "
 "mediante el mensaje QUIT.<p><b>Atención:</b> Si usas /RAW para enviar un "
 "mensaje QUIT al servidor esta opción no funcionará correctamente, porque no "
 "detectará el QUIT saliente e intentará reconectarse después que el servidor "
@@ -1900,7 +1900,7 @@ msgstr "Nick alt. 3"
 #: src/modules/options/OptionsWidget_servers.cpp:174
 #: src/modules/options/OptionsWidget_servers.cpp:593
 msgid "Alt.Nickname:"
-msgstr "Nick alt.:"
+msgstr "Nick alternativo:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:924
 msgid "Alternative Nickname:"
@@ -1967,11 +1967,11 @@ msgstr "Aceptar automáticamente avatares entrantes"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:188
 msgid "Automatically clear transfer"
-msgstr "Limpiar transferencias automáticamente"
+msgstr "Limpiar transferencias finalizadas automáticamente"
 
 #: src/modules/options/OptionsWidget_channel.cpp:73
 msgid "Automatically join channel on invite"
-msgstr "Si nos invitan, entrar automáticamente al canal"
+msgstr "Entrar automáticamente a los canales a los que nos inviten"
 
 #: src/modules/options/OptionsWidget_connection.cpp:64
 msgid "Automatically reconnect"
@@ -2111,7 +2111,7 @@ msgstr "Respuestas CTCP"
 
 #: src/modules/options/OptionsWidget_servers.cpp:698
 msgid "Cache IP address"
-msgstr "Cachear dirección IP"
+msgstr "Guardar la dirección IP en caché"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_identity.cpp:96
@@ -2180,11 +2180,11 @@ msgstr "Ventanas de canal"
 #: src/modules/options/OptionsWidget_servers.cpp:269
 #: src/modules/options/OptionsWidget_servers.cpp:842
 msgid "Channels to join automatically upon connect:"
-msgstr "Canales a unirse automáticamente después de conectar:"
+msgstr "Canales a los que entrar automáticamente después de conectar:"
 
 #: src/modules/options/OptionsWidget_dcc.h:116
 msgid "Chat"
-msgstr "Charla"
+msgstr "Chat"
 
 #: src/modules/options/OptionsWidget_notify.cpp:65
 msgid "Check USERHOST for online users"
@@ -2250,7 +2250,7 @@ msgstr "Set de colores"
 
 #: src/modules/options/OptionsWidget_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
-msgstr "Línea de comandos en el modo user-friendly por defecto"
+msgstr "Línea de comandos en modo amigable por defecto"
 
 #: src/modules/options/OptionsDialog.cpp:240
 msgid "Commit all changes immediately."
@@ -2443,7 +2443,7 @@ msgstr "No pedir lista de silenciados"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:48
 msgid "Do not scale avatar if it is less than required size"
-msgstr "No escalar avatares si son más pequeños que el tamaño requerido"
+msgstr "No escalar avatares si son más pequeños que:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:124
 msgid "Do not send /WHO request"
@@ -2969,7 +2969,7 @@ msgstr "Peticiones CTCP ignoradas"
 #: src/modules/options/OptionsWidget_avatar.cpp:52
 #: src/modules/options/OptionsWidget_avatar.cpp:61
 msgid "Image height:"
-msgstr "Altura de la imagen:"
+msgstr "Alto de la imagen:"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:50
 #: src/modules/options/OptionsWidget_avatar.cpp:59
@@ -3037,7 +3037,7 @@ msgstr "Mantener la lista de ausentes actualizada enviando peticiones WHO"
 #: src/modules/options/OptionsWidget_channel.cpp:59
 #: src/modules/options/OptionsWidget_channel.cpp:68
 msgid "Keep channel open"
-msgstr "Mantener el canal abierto"
+msgstr "Mantener la ventana del canal abierta"
 
 #: src/modules/options/OptionsWidget_connection.cpp:43
 #: src/modules/options/OptionsWidget_connection.cpp:51
@@ -3103,7 +3103,7 @@ msgstr "Límites"
 
 #: src/modules/options/OptionsWidget_servers.cpp:953
 msgid "Link filter:"
-msgstr "Filtro de enlaces:"
+msgstr "Filtro de enlace:"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:158
 msgid "Link tooltip hide delay:"
@@ -3247,7 +3247,7 @@ msgstr "Primer plano de contraste medio"
 
 #: src/modules/options/OptionsWidget_irc.cpp:49
 msgid "Minimize console after successful login"
-msgstr "Minimizar la consola después entrar correctamente"
+msgstr "Minimizar la consola al entrar correctamente"
 
 #: src/modules/options/OptionsWidget_tray.cpp:44
 msgid "Minimize in tray"
@@ -3255,7 +3255,7 @@ msgstr "Minimizar en la bandeja"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:44
 msgid "Minimize on startup"
-msgstr "Minimizar al arrancar"
+msgstr "Minimizar al iniciar"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:247
 msgid "Minimized:"
@@ -3590,7 +3590,7 @@ msgstr "Abrir minimizado cuando se acepte automáticamente"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:176
 msgid "Open transfer window as minimized when auto-accepted"
-msgstr "Abrir la ventana de transferencias minimizada cuando sea auto-aceptada"
+msgstr "Abrir la ventana de transferencias minimizada cuando el archivo haya sido auto-aceptado"
 
 #: src/modules/options/OptionsWidget_identity.cpp:400
 msgid "Other:"
@@ -3598,7 +3598,7 @@ msgstr "Otro:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:154
 msgid "Outgoing data queue flush timeout:"
-msgstr "Tiempo de expiración para volcar la cola de datos salientes"
+msgstr "Tiempo de expiración para volcar la cola de datos salientes:"
 
 #: src/modules/options/OptionsWidget_ircView.h:36
 msgid "Output"
@@ -3699,7 +3699,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.cpp:329
 msgid "Popup notifier on new dcc chat message"
-msgstr "Mostrar notificador con los nuevos mensajes en chats dcc"
+msgstr "Mostrar notificador con los nuevos mensajes en chats DCC"
 
 #: src/modules/options/OptionsWidget_query.cpp:80
 msgid "Popup notifier on new query message"
@@ -3828,7 +3828,7 @@ msgstr "Proxy"
 
 #: src/modules/options/OptionsWidget_proxy.h:54
 msgid "Proxy Hosts"
-msgstr "Proxys"
+msgstr "Proxies"
 
 #: src/modules/options/OptionsWidget_servers.cpp:803
 msgid "Proxy server:"
@@ -3926,7 +3926,7 @@ msgstr "Reentrar al canal"
 
 #: src/modules/options/OptionsWidget_connection.cpp:57
 msgid "Rejoin channels after reconnect"
-msgstr "Volver a entrar a los canales tras reconectar"
+msgstr "Volver a entrar a los canales en los que estabas"
 
 #: src/modules/options/OptionsWidget_uparser.cpp:53
 msgid "Relay errors and warnings to debug window"
@@ -3958,7 +3958,7 @@ msgstr "Eliminar proxy"
 
 #: src/modules/options/OptionsWidget_connection.cpp:60
 msgid "Reopen queries after reconnect"
-msgstr "Reabrir los privados tras reconectar"
+msgstr "Volver a abrir los privados abiertos"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:233
 msgid "Replace spaces with underscores in outgoing filenames"
@@ -3966,7 +3966,7 @@ msgstr "Reemplazar espacios con barras bajas en nombres de archivos salientes"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:65
 msgid "Request CTCP"
-msgstr "Solicitar CTCP"
+msgstr "CTCPs de solicitud"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:66
 msgid "Request missing avatars"
@@ -4034,7 +4034,7 @@ msgstr "Escalar imágenes de avatares durante la carga de la imagen"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:41
 msgid "Scaling in userlist"
-msgstr "Escalar en la lista de usuarios"
+msgstr "Tamaño de los avatares en la lista de usuarios"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
@@ -4073,7 +4073,7 @@ msgstr "Enviar una dirección fija en las peticiones"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:106
 msgid "Send address/interface:"
-msgstr "Enviar dirección/interfaz:"
+msgstr "Usar dirección/interfaz:"
 
 #: src/modules/options/OptionsWidget_uparser.cpp:44
 msgid "Send unknown commands as /RAW"
@@ -4581,7 +4581,7 @@ msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
 "</b> </p>"
 msgstr ""
-"Esta sección contiene las herramientas irc<br><p>como<b> ausente, retraso y "
+"Esta sección contiene las herramientas irc<br><p>como<b> ausente, lag y "
 "sistema de registro. </b> </p>"
 
 #: src/modules/options/OptionsWidget_general.cpp:38

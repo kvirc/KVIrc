@@ -193,7 +193,11 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 	setObjectName("ident_options_widget");
 	createLayout();
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service","options"),KviOption_boolUseIdentService);
+#else
 	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
+#endif
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),this,SLOT(enableIpv4InIpv6(bool)));
 
 	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Output verbosity","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
