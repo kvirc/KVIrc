@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-01-10 19:21+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"PO-Revision-Date: 2011-05-29 18:10+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -71,7 +71,7 @@ msgstr "&Aggiungi Evento Raw"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1193
 #: src/modules/eventeditor/EventEditorWindow.cpp:528
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1385
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1386
 #: src/modules/raweditor/RawEditorWindow.cpp:481
 msgid "&Apply"
 msgstr "&Applica"
@@ -110,7 +110,7 @@ msgstr "Abilita Gestore"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:57
 msgid "&Execute"
-msgstr ""
+msgstr "Esegui"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:104
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1047
@@ -144,7 +144,7 @@ msgstr "&Nuovo Popup"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1188
 #: src/modules/eventeditor/EventEditorWindow.cpp:471
 #: src/modules/eventeditor/EventEditorWindow.cpp:523
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1380
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1381
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:476
 msgid "&OK"
@@ -194,7 +194,6 @@ msgstr ""
 "valutata come vera.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
-#, fuzzy
 msgid ""
 "<center><b>External menu name</b><br>This allows one to nest externally "
 "defined popup menus. The popup menu with the specified name will be looked "
@@ -232,15 +231,15 @@ msgstr ""
 "valutati alla chiamata del popup.<br>Per le etichette, questo testo può "
 "contenere anche un set limitato di tag HTML.</center>"
 
-#: src/modules/actioneditor/ActionEditor.cpp:591
+#: src/modules/actioneditor/ActionEditor.cpp:581
 msgid "Action"
 msgstr "Azione"
 
-#: src/modules/actioneditor/ActionEditor.cpp:866
+#: src/modules/actioneditor/ActionEditor.cpp:856
 msgid "Action Editor"
 msgstr "Editor Azione"
 
-#: src/modules/actioneditor/ActionEditor.cpp:125
+#: src/modules/actioneditor/ActionEditor.cpp:124
 msgid "Action code"
 msgstr "Codice Azione"
 
@@ -312,7 +311,7 @@ msgstr ""
 "Uno script esterno ha cambiato il popup che stavi modificando. Vuoi "
 "accettare i cambiamenti esterni?"
 
-#: src/modules/actioneditor/ActionEditor.cpp:878
+#: src/modules/actioneditor/ActionEditor.cpp:868
 msgid "Apply"
 msgstr "Applica"
 
@@ -339,7 +338,7 @@ msgstr "Nome Alias Non Valido"
 msgid "Bad Namespace Name"
 msgstr "Nome Namespace Non Valido"
 
-#: src/modules/actioneditor/ActionEditor.cpp:161
+#: src/modules/actioneditor/ActionEditor.cpp:158
 msgid "Big Icon:"
 msgstr "Icona Grande:"
 
@@ -355,22 +354,22 @@ msgstr "Impossibile aprire il file %1 in lettura."
 msgid "Can't open the file %1 for writing."
 msgstr "Impossible aprire il file %1 in scrittura."
 
-#: src/modules/actioneditor/ActionEditor.cpp:883
+#: src/modules/actioneditor/ActionEditor.cpp:873
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1198
 #: src/modules/editor/ScriptEditorImplementation.cpp:546
 #: src/modules/eventeditor/EventEditorWindow.cpp:533
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1390
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1391
 #: src/modules/raweditor/RawEditorWindow.cpp:486
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/modules/actioneditor/ActionEditor.cpp:133
+#: src/modules/actioneditor/ActionEditor.cpp:132
 msgid "Category:"
 msgstr "Categoria:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:228
+#: src/modules/actioneditor/ActionEditor.cpp:218
 msgid ""
 "Check this option if this action should be enabled also during the login "
 "operations (so when the logical IRC connection hasn't been estabilished yet)"
@@ -379,7 +378,7 @@ msgstr ""
 "durante le operazioni di login (quando la connessione IRC non è ancora "
 "stabilita)"
 
-#: src/modules/actioneditor/ActionEditor.cpp:207
+#: src/modules/actioneditor/ActionEditor.cpp:197
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window belongs to an irc context"
@@ -387,7 +386,7 @@ msgstr ""
 "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
 "la finestra attiva appartiene a un contesto IRC"
 
-#: src/modules/actioneditor/ActionEditor.cpp:218
+#: src/modules/actioneditor/ActionEditor.cpp:208
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window has an active IRC connection"
@@ -395,7 +394,7 @@ msgstr ""
 "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
 "la finestra attiva ha una connessione IRC attiva"
 
-#: src/modules/actioneditor/ActionEditor.cpp:251
+#: src/modules/actioneditor/ActionEditor.cpp:241
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a channel"
@@ -403,7 +402,7 @@ msgstr ""
 "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
 "la finestra attiva è un canale"
 
-#: src/modules/actioneditor/ActionEditor.cpp:240
+#: src/modules/actioneditor/ActionEditor.cpp:230
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a console"
@@ -411,7 +410,7 @@ msgstr ""
 "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
 "la finestra attiva è una console"
 
-#: src/modules/actioneditor/ActionEditor.cpp:273
+#: src/modules/actioneditor/ActionEditor.cpp:263
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a dcc chat"
@@ -419,7 +418,7 @@ msgstr ""
 "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
 "la finestra attiva è una DCC chat"
 
-#: src/modules/actioneditor/ActionEditor.cpp:262
+#: src/modules/actioneditor/ActionEditor.cpp:252
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a query"
@@ -427,7 +426,7 @@ msgstr ""
 "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
 "la finestra attiva è una query"
 
-#: src/modules/actioneditor/ActionEditor.cpp:234
+#: src/modules/actioneditor/ActionEditor.cpp:224
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is of a specified type"
@@ -440,21 +439,21 @@ msgstr ""
 msgid "Choose a Directory - KVIrc"
 msgstr "Scegli una Directory - KVIrc"
 
-#: src/modules/actioneditor/ActionEditor.cpp:699
+#: src/modules/actioneditor/ActionEditor.cpp:689
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:812
 #: src/modules/classeditor/ClassEditorWindow.cpp:1229
 #: src/modules/editor/ScriptEditorImplementation.cpp:921
 #: src/modules/eventeditor/EventEditorWindow.cpp:464
 #: src/modules/eventeditor/EventEditorWindow.cpp:505
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1188
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1238
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1239
 #: src/modules/raweditor/RawEditorWindow.cpp:419
 #: src/modules/raweditor/RawEditorWindow.cpp:457
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:397
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un Nome - KVIrc"
 
-#: src/modules/actioneditor/ActionEditor.cpp:138
+#: src/modules/actioneditor/ActionEditor.cpp:136
 msgid "Choose the category that best fits for this action"
 msgstr "Scegli la categoria che meglio descrive questa azione"
 
@@ -486,7 +485,7 @@ msgstr ""
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/modules/actioneditor/ActionEditor.cpp:127
+#: src/modules/actioneditor/ActionEditor.cpp:126
 msgid "Code"
 msgstr "Codice"
 
@@ -530,7 +529,7 @@ msgstr "Taglia"
 msgid "Customize Toolbars"
 msgstr "Personalizza le ToolBar"
 
-#: src/modules/actioneditor/ActionEditor.cpp:635
+#: src/modules/actioneditor/ActionEditor.cpp:625
 msgid "Delete Actions"
 msgstr "Cancella le Azioni"
 
@@ -538,7 +537,7 @@ msgstr "Cancella le Azioni"
 msgid "Delete ToolBar"
 msgstr "Cancella la ToolBar"
 
-#: src/modules/actioneditor/ActionEditor.cpp:140
+#: src/modules/actioneditor/ActionEditor.cpp:138
 msgid "Description:"
 msgstr "Descrizione:"
 
@@ -599,27 +598,27 @@ msgstr "Modifica il nome della funzione membro"
 msgid "Edit the raw event handler name."
 msgstr "Modifica il nome del gestore dell'evento raw."
 
-#: src/modules/actioneditor/ActionEditor.cpp:232
+#: src/modules/actioneditor/ActionEditor.cpp:222
 msgid "Enable Only in Specified Windows"
 msgstr "Abilita Solo Nelle Finestre Specificate"
 
-#: src/modules/actioneditor/ActionEditor.cpp:227
+#: src/modules/actioneditor/ActionEditor.cpp:217
 msgid "Enable at Login"
 msgstr "Abilita al Login"
 
-#: src/modules/actioneditor/ActionEditor.cpp:250
+#: src/modules/actioneditor/ActionEditor.cpp:240
 msgid "Enable in Channel Windows"
 msgstr "Abilita nelle Finestre dei Canali"
 
-#: src/modules/actioneditor/ActionEditor.cpp:239
+#: src/modules/actioneditor/ActionEditor.cpp:229
 msgid "Enable in Console Windows"
 msgstr "Abilita nelle Finestre delle Console"
 
-#: src/modules/actioneditor/ActionEditor.cpp:272
+#: src/modules/actioneditor/ActionEditor.cpp:262
 msgid "Enable in DCC Chat Windows"
 msgstr "Abilita nelle Finestre DCC Chat"
 
-#: src/modules/actioneditor/ActionEditor.cpp:261
+#: src/modules/actioneditor/ActionEditor.cpp:251
 msgid "Enable in Query Windows"
 msgstr "Abilita nelle Finestre Query"
 
@@ -639,7 +638,7 @@ msgstr "Evento"
 msgid "Event Editor"
 msgstr "Editor Eventi"
 
-#: src/modules/actioneditor/ActionEditor.cpp:638
+#: src/modules/actioneditor/ActionEditor.cpp:628
 msgid "Export Actions..."
 msgstr "Esporta Azioni..."
 
@@ -698,7 +697,7 @@ msgstr "Cerca nelle Classi..."
 msgid "Find:"
 msgstr "Cerca:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:282
+#: src/modules/actioneditor/ActionEditor.cpp:272
 msgid "Flags"
 msgstr "Parametri"
 
@@ -733,6 +732,8 @@ msgid ""
 "Here you can specify a semicolon-separated list of parameters that will be "
 "available in the code as $0, $1, $2, .."
 msgstr ""
+"Qui puoi specificare una lista di parametri separati da punto e virgola che "
+"saranno disponibili nel codice come $0, $1, $2, ..."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
 msgid "Hide Advanced"
@@ -779,7 +780,7 @@ msgstr "Elemento"
 msgid "Item Id:"
 msgstr "ID Elemento:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:177
+#: src/modules/actioneditor/ActionEditor.cpp:173
 msgid "Key Sequence:"
 msgstr "Combinazione di Tasti:"
 
@@ -817,8 +818,8 @@ msgstr "Nome Alias Mancante"
 msgid "Missing Namespace Name"
 msgstr "Nome Namespace Mancante"
 
-#: src/modules/actioneditor/ActionEditor.cpp:773
-#: src/modules/actioneditor/ActionEditor.cpp:774
+#: src/modules/actioneditor/ActionEditor.cpp:763
+#: src/modules/actioneditor/ActionEditor.cpp:764
 msgid "My Action"
 msgstr "Mia Azione"
 
@@ -855,15 +856,15 @@ msgstr ""
 "I nomi dei namespace possono contenere solo lettere, numeri, trattini bassi "
 "e separatori di namespace '::'"
 
-#: src/modules/actioneditor/ActionEditor.cpp:216
+#: src/modules/actioneditor/ActionEditor.cpp:206
 msgid "Needs IRC Connection"
 msgstr "Serve una Connessione IRC"
 
-#: src/modules/actioneditor/ActionEditor.cpp:205
+#: src/modules/actioneditor/ActionEditor.cpp:195
 msgid "Needs IRC Context"
 msgstr "Serve un Contesto IRC"
 
-#: src/modules/actioneditor/ActionEditor.cpp:632
+#: src/modules/actioneditor/ActionEditor.cpp:622
 msgid "New Action"
 msgstr "Nuova Azione"
 
@@ -965,8 +966,8 @@ msgstr "Nessun elemento selezionato"
 msgid "Normal text:"
 msgstr "Testo normale:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:726
-#: src/modules/actioneditor/ActionEditor.cpp:873
+#: src/modules/actioneditor/ActionEditor.cpp:716
+#: src/modules/actioneditor/ActionEditor.cpp:863
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:724
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:792
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
@@ -976,7 +977,7 @@ msgstr "Testo normale:"
 #: src/modules/editor/ScriptEditorImplementation.cpp:542
 #: src/modules/eventeditor/EventEditorWindow.cpp:509
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1195
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1242
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1243
 #: src/modules/raweditor/RawEditorWindow.cpp:461
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:184
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
@@ -1005,9 +1006,9 @@ msgstr "OK"
 msgid "Ok, Let me try again..."
 msgstr "Ok, fammi provare ancora..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:245
-#: src/modules/actioneditor/ActionEditor.cpp:256
-#: src/modules/actioneditor/ActionEditor.cpp:267
+#: src/modules/actioneditor/ActionEditor.cpp:235
+#: src/modules/actioneditor/ActionEditor.cpp:246
+#: src/modules/actioneditor/ActionEditor.cpp:257
 msgid "Only If There Are Selected Users"
 msgstr "Solo Se Ci Sono Utenti Selezionati"
 
@@ -1015,7 +1016,7 @@ msgstr "Solo Se Ci Sono Utenti Selezionati"
 msgid "Open Failed - KVIrc"
 msgstr "Apertura Fallita - KVIrc"
 
-#: src/modules/actioneditor/ActionEditor.cpp:183
+#: src/modules/actioneditor/ActionEditor.cpp:177
 msgid ""
 "Optional keyboard sequence that will activate this action.<br>The sequence "
 "has to be expressed as a string of up to four key codes separated by commas "
@@ -1039,7 +1040,7 @@ msgstr "Sovrascivi Popup Corrente"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:61
 msgid "Params:"
-msgstr ""
+msgstr "Parametri:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:441
 msgid "Paste Above"
@@ -1121,7 +1122,7 @@ msgstr "Specifica le proprietà per la ToolBar \"%1\""
 msgid "Popup"
 msgstr "Popup"
 
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1428
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1429
 msgid "Popup Editor"
 msgstr "Editor Popup"
 
@@ -1137,7 +1138,7 @@ msgstr "Preferenze"
 msgid "Prologue"
 msgstr "Prologo"
 
-#: src/modules/actioneditor/ActionEditor.cpp:196
+#: src/modules/actioneditor/ActionEditor.cpp:188
 msgid "Properties"
 msgstr "Proprietà"
 
@@ -1145,7 +1146,7 @@ msgstr "Proprietà"
 msgid "Punctuation:"
 msgstr "Punteggiatura:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:775
+#: src/modules/actioneditor/ActionEditor.cpp:765
 msgid "Put here a short description of your action"
 msgstr "Inserisci una breve descrizione della tua azione"
 
@@ -1214,7 +1215,7 @@ msgstr "Impossibile Salvare - KVIrc"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:110
 msgid "Script Tester"
-msgstr ""
+msgstr "Tester di Script"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "Separator"
@@ -1224,7 +1225,7 @@ msgstr "Separatore"
 msgid "Set as <b>Internal</b> Function: "
 msgstr "Imposta come funzione <b>Interna</b>:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:147
+#: src/modules/actioneditor/ActionEditor.cpp:144
 msgid "Small Icon:"
 msgstr "Icona Piccola:"
 
@@ -1259,7 +1260,7 @@ msgstr "Testo:"
 msgid "The ToolBar Label can't be empty!"
 msgstr "L'etichetta della ToolBar non può essere vuota!"
 
-#: src/modules/actioneditor/ActionEditor.cpp:171
+#: src/modules/actioneditor/ActionEditor.cpp:167
 msgid ""
 "The big icon associated to this action.<br>It will appear at least in the "
 "toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
@@ -1277,7 +1278,7 @@ msgstr "Il file esportato sarà vuoto: mi rifiuto di scriverlo"
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "Il file \"%1\" esiste. Vuoi sovrascriverlo?"
 
-#: src/modules/actioneditor/ActionEditor.cpp:155
+#: src/modules/actioneditor/ActionEditor.cpp:152
 msgid ""
 "The small icon associated to this action.<br>It will appear at least in the "
 "popup menus when this action is inserted.<br>It has to be 16x16 pixels."
@@ -1316,9 +1317,9 @@ msgstr "Questo nome è già in uso in una Classe. Scegline un altro."
 msgid "This name is already in use. Please choose another one."
 msgstr "Questo nome è già in uso. Scegline un altro."
 
-#: src/modules/actioneditor/ActionEditor.cpp:246
-#: src/modules/actioneditor/ActionEditor.cpp:257
-#: src/modules/actioneditor/ActionEditor.cpp:268
+#: src/modules/actioneditor/ActionEditor.cpp:236
+#: src/modules/actioneditor/ActionEditor.cpp:247
+#: src/modules/actioneditor/ActionEditor.cpp:258
 msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
@@ -1342,12 +1343,12 @@ msgstr "Tipo"
 msgid "Unable to compile class: "
 msgstr "Impossibile compilare la classe:"
 
-#: src/modules/actioneditor/ActionEditor.cpp:726
+#: src/modules/actioneditor/ActionEditor.cpp:716
 msgid "Unable to write to the actions file."
 msgstr "Impossibile scrivere sul file delle azioni."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1242
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1243
 msgid "Unable to write to the alias file."
 msgstr "Impossibile scrivere sul file dell'alias."
 
@@ -1391,7 +1392,7 @@ msgstr ""
 "Nome visibile per questa azione.<br>Questa stringa verrà mostrata all'utente "
 "quindi è una buona idea usare $tr() qui"
 
-#: src/modules/actioneditor/ActionEditor.cpp:145
+#: src/modules/actioneditor/ActionEditor.cpp:142
 msgid ""
 "Visible short description for this action.<br>This string will be displayed "
 "to the user so it is a good idea to use $tr() here"
@@ -1403,13 +1404,13 @@ msgstr ""
 msgid "Word to Find"
 msgstr "Parola da Trovare"
 
-#: src/modules/actioneditor/ActionEditor.cpp:726
+#: src/modules/actioneditor/ActionEditor.cpp:716
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:823
 #: src/modules/classeditor/ClassEditorWindow.cpp:1240
 #: src/modules/eventeditor/EventEditorWindow.cpp:471
 #: src/modules/eventeditor/EventEditorWindow.cpp:509
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1195
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1242
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1243
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:461
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
@@ -1454,7 +1455,7 @@ msgid "none"
 msgstr "niente"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:247
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1341
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1342
 #: src/modules/raweditor/RawEditorWindow.cpp:191
 msgid "unnamed"
 msgstr "senza nome"

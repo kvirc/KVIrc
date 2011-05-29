@@ -4,32 +4,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "First-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "X-Generator: KBabel 1.2\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-Country: ANDORRA\n"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:72
 #: src/modules/options/OptionsWidget_dcc.cpp:285
+#: src/modules/options/OptionsWidget_avatar.cpp:72
 msgid " bytes"
 msgstr " bytes"
 
-#: src/modules/options/OptionsWidget_query.cpp:102
 #: src/modules/options/OptionsWidget_channel.cpp:140
+#: src/modules/options/OptionsWidget_query.cpp:102
 msgid " days"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:98
 #: src/modules/options/OptionsWidget_ircView.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:136
+#: src/modules/options/OptionsWidget_query.cpp:98
 msgid " lines"
 msgstr " línies"
 
@@ -37,12 +37,12 @@ msgstr " línies"
 msgid " min"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_dcc.cpp:276
+#: src/modules/options/OptionsWidget_lag.cpp:45
+#: src/modules/options/OptionsWidget_lag.cpp:56
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
 #: src/modules/options/OptionsWidget_connection.cpp:155
-#: src/modules/options/OptionsWidget_lag.cpp:45
-#: src/modules/options/OptionsWidget_lag.cpp:56
+#: src/modules/options/OptionsWidget_dcc.cpp:276
 msgid " msec"
 msgstr " mseg"
 
@@ -55,12 +55,12 @@ msgstr "píxels"
 msgid " requests"
 msgstr " peticions"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:96
-#: src/modules/options/OptionsWidget_dcc.cpp:140
-#: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
+#: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
-#: src/modules/options/OptionsWidget_channel.cpp:121
+#: src/modules/options/OptionsWidget_dcc.cpp:140
+#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
 msgid " sec"
 msgstr " seg "
 
@@ -96,8 +96,8 @@ msgstr "&Nou Proxy"
 msgid "&New Server"
 msgstr "&Nou Servidor"
 
-#: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsDialog.cpp:230
+#: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsWidget_servers.cpp:383
 #: src/modules/options/OptionsWidgetContainer.cpp:101
 msgid "&OK"
@@ -412,8 +412,8 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:103
 #: src/modules/options/OptionsWidget_channel.cpp:141
+#: src/modules/options/OptionsWidget_query.cpp:103
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -421,8 +421,8 @@ msgid ""
 msgstr ""
 "<center>Valor mínim: <b>0 seg</b><br>Valor màxim: <b>86400 seg</b></center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:99
 #: src/modules/options/OptionsWidget_channel.cpp:137
+#: src/modules/options/OptionsWidget_query.cpp:99
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -1673,7 +1673,7 @@ msgstr ""
 "<p><b>Nota:</b><br>La llista de notificacions es gestiona emprant les "
 "opcions dels \"Usuaris Registrats\".</p>"
 
-#: src/modules/options/OptionsWidget_connection.cpp:252
+#: src/modules/options/OptionsWidget_connection.cpp:256
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1683,7 +1683,7 @@ msgstr ""
 "d'ident que només implementa un limitat subconjunt de les especificacions el "
 "protocol d'identificació. És possible instal·lar un servidor ident real.</p>"
 
-#: src/modules/options/OptionsWidget_connection.cpp:257
+#: src/modules/options/OptionsWidget_connection.cpp:261
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1738,7 +1738,7 @@ msgstr "Primer Pla Actiu d'Alt Contrast (Primari)"
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Primer Pla Actiu d'Alt Contrast (Secundari)"
 
-#: src/modules/options/OptionsWidget_connection.cpp:204
+#: src/modules/options/OptionsWidget_connection.cpp:208
 #, fuzzy
 msgid "Active window"
 msgstr "Mosaic de finestres"
@@ -1758,18 +1758,18 @@ msgid "Add Rule"
 msgstr "Afegir Regla"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1005
-#: src/modules/options/OptionsWidget_identity.h:202
-#: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
-#: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_irc.h:57
+#: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_identity.h:202
 #, fuzzy
 msgid "Advanced"
 msgstr "Avançat ..."
 
-#: src/modules/options/OptionsWidget_notifier.cpp:230
 #: src/modules/options/OptionsWidget_notify.cpp:60
+#: src/modules/options/OptionsWidget_notifier.cpp:230
 msgid "Advanced configuration"
 msgstr "Configuració Avançada"
 
@@ -1994,8 +1994,8 @@ msgstr "Absent"
 msgid "Background"
 msgstr "Fons"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:119
 #: src/modules/options/OptionsWidget_userList.cpp:126
+#: src/modules/options/OptionsWidget_windowList.cpp:119
 msgid "Background Colors"
 msgstr "Colors de Fons"
 
@@ -2020,9 +2020,9 @@ msgstr "Color de fons:"
 msgid "Background image"
 msgstr "Imatge de fons"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_userList.cpp:131
+#: src/modules/options/OptionsWidget_windowList.cpp:123
 msgid "Background image:"
 msgstr "Imatge de fons:"
 
@@ -2047,11 +2047,11 @@ msgstr "Unir connexions IPv6 a:"
 msgid "Blend color:"
 msgstr "Color de la barreja:"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:71
+#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:71
 #: src/modules/options/OptionsWidget_input.cpp:63
-#: src/modules/options/OptionsWidget_userList.cpp:148
 msgid "Bottom"
 msgstr "Sota"
 
@@ -2081,26 +2081,26 @@ msgid "Cache IP address"
 msgstr "Cachejar adreça IP"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
-#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_servers.cpp:389
 #: src/modules/options/OptionsWidget_servers.cpp:1015
 #: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "Cancel·lar"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:67
+#: src/modules/options/OptionsWidget_ircView.cpp:72
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_ircView.cpp:67
-#: src/modules/options/OptionsWidget_ircView.cpp:72
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #, fuzzy
 msgid "Center"
 msgstr "General"
@@ -2230,9 +2230,9 @@ msgid "Commit all changes immediately."
 msgstr "Gravar tots els canvis immediatament."
 
 #: src/modules/options/OptionsWidget_notify.cpp:41
-#: src/modules/options/OptionsWidget_proxy.cpp:107
-#: src/modules/options/OptionsWidget_connection.cpp:221
 #: src/modules/options/OptionsWidget_lag.cpp:43
+#: src/modules/options/OptionsWidget_connection.cpp:225
+#: src/modules/options/OptionsWidget_proxy.cpp:107
 msgid "Configuration"
 msgstr "Configuració"
 
@@ -2262,7 +2262,7 @@ msgstr "Connectar a aquest servidor a l'inici"
 msgid "Connection"
 msgstr "Connexió"
 
-#: src/modules/options/OptionsWidget_connection.cpp:205
+#: src/modules/options/OptionsWidget_connection.cpp:209
 #, fuzzy
 msgid "Console"
 msgstr "Tancar"
@@ -2434,7 +2434,7 @@ msgstr ""
 msgid "Do not send /WHO request"
 msgstr "No enviar petició /WHO"
 
-#: src/modules/options/OptionsWidget_connection.cpp:206
+#: src/modules/options/OptionsWidget_connection.cpp:210
 #, fuzzy
 msgid "Do not show any identd messages"
 msgstr "No mostrar colors als missatges d'usuari"
@@ -2534,11 +2534,16 @@ msgstr "Activar mesurador de retràs"
 msgid "Enable default away message"
 msgstr "Missatge d'absència per defecte:"
 
-#: src/modules/options/OptionsWidget_connection.cpp:196
+#: src/modules/options/OptionsWidget_connection.cpp:197
+#, fuzzy
+msgid "Enable ident service"
+msgstr "Servei d'Ident"
+
+#: src/modules/options/OptionsWidget_connection.cpp:199
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Activar servei ident (mala pràctica en UNIX!)"
 
-#: src/modules/options/OptionsWidget_connection.cpp:223
+#: src/modules/options/OptionsWidget_connection.cpp:227
 msgid "Enable ident service only while connecting to server"
 msgstr ""
 
@@ -2559,7 +2564,7 @@ msgstr ""
 msgid "Enable notifier window flashing"
 msgstr "Activar ressaltat de paraules"
 
-#: src/modules/options/OptionsWidget_connection.cpp:236
+#: src/modules/options/OptionsWidget_connection.cpp:240
 msgid "Enable service for IPv6"
 msgstr "Activar servei IPv6"
 
@@ -2660,8 +2665,8 @@ msgid "Failed to start the download"
 msgstr "Errada al iniciar la descàrrega"
 
 #: src/modules/options/OptionsWidget_windowList.h:98
-#: src/modules/options/OptionsWidget_ircView.h:70
 #: src/modules/options/OptionsWidget_userList.h:103
+#: src/modules/options/OptionsWidget_ircView.h:70
 msgid "Features"
 msgstr ""
 
@@ -2704,16 +2709,16 @@ msgid "Flood Protection"
 msgstr "Protecció de Saturació"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:38
-#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_input.cpp:38
+#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 msgid "Font"
 msgstr "Fonts"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:85
-#: src/modules/options/OptionsWidget_windowList.cpp:244
 #: src/modules/options/OptionsWidget_ircView.cpp:51
 #: src/modules/options/OptionsWidget_userList.cpp:52
+#: src/modules/options/OptionsWidget_windowList.cpp:85
+#: src/modules/options/OptionsWidget_windowList.cpp:244
 msgid "Font:"
 msgstr "Fonts:"
 
@@ -2756,12 +2761,12 @@ msgstr "General"
 
 #: src/modules/options/OptionsWidget_message.cpp:70
 #: src/modules/options/OptionsWidget_servers.cpp:259
-#: src/modules/options/OptionsWidget_identity.h:153
-#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
-#: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_irc.h:43
+#: src/modules/options/OptionsWidget_channel.h:52
+#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_identity.h:153
 msgid "General"
 msgstr "General"
 
@@ -2872,9 +2877,9 @@ msgstr "Idea: Mou el cursor del ratolí sobre els camps per a obtenir ajuda"
 msgid "Horizontal Alignment:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:48
 #, fuzzy
 msgid "Horizontal align:"
@@ -2898,11 +2903,11 @@ msgstr ""
 msgid "IP address:"
 msgstr "Adreça IP:"
 
-#: src/modules/options/OptionsWidget_connection.cpp:245
+#: src/modules/options/OptionsWidget_connection.cpp:249
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr "La pila del sistema tracta IPv4 com a part de l'espai de noms IPv6"
 
-#: src/modules/options/OptionsWidget_connection.cpp:235
+#: src/modules/options/OptionsWidget_connection.cpp:239
 msgid "IPv6 Settings"
 msgstr "Opcions IPv6"
 
@@ -2936,7 +2941,7 @@ msgstr "Id"
 msgid "Ident Service"
 msgstr "Servei d'Ident"
 
-#: src/modules/options/OptionsWidget_connection.cpp:226
+#: src/modules/options/OptionsWidget_connection.cpp:230
 msgid "Ident username:"
 msgstr "Nom  d'Usuari d'Ident:"
 
@@ -2946,8 +2951,8 @@ msgstr "Nom  d'Usuari d'Ident:"
 msgid "Identify Command"
 msgstr "Comanda d'Identificació"
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
 #: src/modules/options/OptionsWidget_servers.cpp:647
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
 #: src/modules/options/OptionsWidget_identity.h:137
 msgid "Identity"
 msgstr "Identitat"
@@ -3001,8 +3006,8 @@ msgstr "Entrada"
 msgid "Interface"
 msgstr "Interfície"
 
-#: src/modules/options/OptionsWidget_query.cpp:101
 #: src/modules/options/OptionsWidget_channel.cpp:139
+#: src/modules/options/OptionsWidget_query.cpp:101
 #, fuzzy
 msgid "Interval:"
 msgstr "Interval d'espera:"
@@ -3025,9 +3030,9 @@ msgstr "Invisible (+i)"
 msgid "Invite messages"
 msgstr "Missatges d'invitació"
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
 #: src/modules/options/OptionsWidget_servers.cpp:277
 #: src/modules/options/OptionsWidget_servers.cpp:848
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
 msgid "Join Channels"
 msgstr "Unir-se a Canals"
 
@@ -3079,11 +3084,11 @@ msgstr ""
 msgid "Languages:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:65
+#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_ircView.cpp:65
 #: src/modules/options/OptionsWidget_input.cpp:57
-#: src/modules/options/OptionsWidget_userList.cpp:142
 msgid "Left"
 msgstr "Esquerra"
 
@@ -3481,11 +3486,11 @@ msgstr ""
 msgid "Normal"
 msgstr "Normal"
 
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 msgid "Normal:"
 msgstr "Normal:"
 
@@ -3636,14 +3641,18 @@ msgstr "Temps d'expiració per a volcar la cua de dades sortints"
 msgid "Output"
 msgstr "Sortida"
 
-#: src/modules/options/OptionsWidget_connection.cpp:202
+#: src/modules/options/OptionsWidget_connection.cpp:206
 #, fuzzy
 msgid "Output identd messages to:"
 msgstr "Missatge de sortida"
 
-#: src/modules/options/OptionsWidget_ircOutput.cpp:43
-#: src/modules/options/OptionsWidget_connection.cpp:199
+#: src/modules/options/OptionsWidget_connection.cpp:203
 msgid "Output verbosity"
+msgstr "Detall de la sortida"
+
+#: src/modules/options/OptionsWidget_ircOutput.cpp:43
+#, fuzzy
+msgid "Output verbosity:"
 msgstr "Detall de la sortida"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:104
@@ -3695,8 +3704,8 @@ msgstr "canal"
 msgid "Paste last query log"
 msgstr "canal"
 
-#: src/modules/options/OptionsWidget_query.cpp:97
 #: src/modules/options/OptionsWidget_channel.cpp:135
+#: src/modules/options/OptionsWidget_query.cpp:97
 #, fuzzy
 msgid "Paste up to:"
 msgstr "Enganxar Sobre"
@@ -3793,13 +3802,13 @@ msgstr "Localització de la clau privada:"
 msgid "Private key password:"
 msgstr "Clau de la clau privada:"
 
-#: src/modules/options/OptionsWidget_query.cpp:43
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
+#: src/modules/options/OptionsWidget_query.cpp:43
 msgid "Private messages"
 msgstr "Missatges privats"
 
-#: src/modules/options/OptionsWidget_query.cpp:50
 #: src/modules/options/OptionsWidget_antiSpam.cpp:42
+#: src/modules/options/OptionsWidget_query.cpp:50
 msgid "Private notices"
 msgstr "Noticies privades"
 
@@ -4032,11 +4041,11 @@ msgstr "&Restaurar"
 msgid "Restrict alert"
 msgstr "Restringir alertes"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:66
+#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_input.cpp:58
-#: src/modules/options/OptionsWidget_userList.cpp:143
 msgid "Right"
 msgstr "Dreta"
 
@@ -4109,10 +4118,10 @@ msgstr "Scripting"
 msgid "Select message levels to notify"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:90
-#: src/modules/options/OptionsWidget_windowList.cpp:121
 #: src/modules/options/OptionsWidget_userList.cpp:56
 #: src/modules/options/OptionsWidget_userList.cpp:128
+#: src/modules/options/OptionsWidget_windowList.cpp:90
+#: src/modules/options/OptionsWidget_windowList.cpp:121
 msgid "Selected:"
 msgstr "Seleccionat:"
 
@@ -4187,7 +4196,7 @@ msgstr "Servidor:"
 msgid "Servers"
 msgstr "Servidors"
 
-#: src/modules/options/OptionsWidget_connection.cpp:230
+#: src/modules/options/OptionsWidget_connection.cpp:234
 msgid "Service port:"
 msgstr "Port de servei:"
 
@@ -4637,16 +4646,16 @@ msgstr ""
 "per a visualitzar les seqüències d'escapada CTRL+I i eventualment els "
 "emoticons."
 
+#: src/modules/options/OptionsWidget_ircView.cpp:64
+#: src/modules/options/OptionsWidget_ircView.cpp:69
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_ircView.cpp:64
-#: src/modules/options/OptionsWidget_ircView.cpp:69
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 msgid "Tile"
 msgstr ""
 
@@ -4682,11 +4691,11 @@ msgstr "Applets de Barra d'eines"
 msgid "Tools"
 msgstr "Eines"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:70
+#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_ircView.cpp:70
 #: src/modules/options/OptionsWidget_input.cpp:62
-#: src/modules/options/OptionsWidget_userList.cpp:147
 msgid "Top"
 msgstr "Amunt"
 
@@ -4776,10 +4785,10 @@ msgstr "Emprar gestor \"intel·ligent\" de llista de notificacions"
 msgid "Use IPv6 protocol"
 msgstr "Emprar protocol IPv6"
 
-#: src/modules/options/OptionsWidget_sound.cpp:101
-#: src/modules/options/OptionsWidget_sound.cpp:126
 #: src/modules/options/OptionsWidget_textEncoding.cpp:51
 #: src/modules/options/OptionsWidget_textEncoding.cpp:59
+#: src/modules/options/OptionsWidget_sound.cpp:101
+#: src/modules/options/OptionsWidget_sound.cpp:126
 msgid "Use Language Encoding"
 msgstr "Emprar pàgina de codis del llenguatge"
 
@@ -4996,9 +5005,9 @@ msgstr ""
 msgid "Vertical Alignment:"
 msgstr "Localitzar el certificat:"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_input.cpp:52
 #, fuzzy
 msgid "Vertical align:"
@@ -5205,8 +5214,8 @@ msgstr ""
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_notifier.h:34
 #: src/modules/options/OptionsWidget_input.h:34
+#: src/modules/options/OptionsWidget_notifier.h:34
 msgid "theme,colors,text"
 msgstr ""
 
@@ -5317,11 +5326,11 @@ msgstr "cada:"
 #~ "implícit +%c]"
 
 #~ msgid ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%"
-#~ "Q\r [%Q@\r!h\r%Q\r]: %Q"
+#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r"
+#~ "%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #~ msgstr ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acaba de ser expulsat de \r!c\r%Q\r per \r!n\r%"
-#~ "Q\r [%Q@\r!h\r%Q\r]: %Q"
+#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acaba de ser expulsat de \r!c\r%Q\r per \r!n\r"
+#~ "%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #~ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
 #~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] s'acaba d'unir a \r!c\r%Q\r"
@@ -6932,8 +6941,8 @@ msgstr "cada:"
 #~ "Broken slot '%s' in target object '%s' while emitting signal '%s' from "
 #~ "object '%s': disconnecting"
 #~ msgstr ""
-#~ "Slot '%s' erroni en l'objecte de destí '%s' mentres s'emetia la senyal '%"
-#~ "s' des de l'objecte '%s': desconectant"
+#~ "Slot '%s' erroni en l'objecte de destí '%s' mentres s'emetia la senyal "
+#~ "'%s' des de l'objecte '%s': desconectant"
 
 #~ msgid "Broken text parameter: assuming empty string"
 #~ msgstr "Paràmetre de text erroni: assumint la cadena buida"
@@ -8417,8 +8426,8 @@ msgstr "cada:"
 #~ "S'ha trobat el caràcter '%q' (unicode %x) on s'esperava una instrucció"
 
 #~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
-#~ "s\" for the command syntax"
+#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help "
+#~ "%s\" for the command syntax"
 #~ msgstr ""
 #~ "Trobat el caràcter '%q' (unicode 0x%x) on s'esperava '%c': mira \"/help %s"
 #~ "\" per a la sintaxis de les comandes"
@@ -10113,8 +10122,8 @@ msgstr "cada:"
 
 #~ msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
 #~ msgstr ""
-#~ "No hi ha forma d'autentificar-se com a '\r!n\r%Q\r' (%d: %Q), intentant '%"
-#~ "Q'..."
+#~ "No hi ha forma d'autentificar-se com a '\r!n\r%Q\r' (%d: %Q), intentant "
+#~ "'%Q'..."
 
 #~ msgid "Non-negative integer index expected as first parameter"
 #~ msgstr "S'esperava un índex no negatiu com a primer paràmetre"
@@ -10663,8 +10672,8 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%S %S)"
 #~ msgstr ""
-#~ "Processant petició DCC %Q solicitada des de \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%"
-#~ "S %S)"
+#~ "Processant petició DCC %Q solicitada des de \r!n\r%Q\r [%Q@\r!h\r%Q\r] "
+#~ "(%S %S)"
 
 #~ msgid "Processing link: %s"
 #~ msgstr "Processant enllaç: %s"
@@ -11876,8 +11885,8 @@ msgstr "cada:"
 #~ "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 #~ "data sent to the server"
 #~ msgstr ""
-#~ "El motor de xifrat no ha estat capaç de xifrar el següent missatge (%Q): %"
-#~ "s, no s'han enviat dades al servidor"
+#~ "El motor de xifrat no ha estat capaç de xifrar el següent missatge (%Q): "
+#~ "%s, no s'han enviat dades al servidor"
 
 #~ msgid "The current network is %Q"
 #~ msgstr "La xarxa actual és %Q"
@@ -12294,8 +12303,8 @@ msgstr "cada:"
 #~ "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@"
 #~ "\r!h\r%Q\r] changed his nickname to \r!n\r%Q\r"
 #~ msgstr ""
-#~ "El destí d'aquest privat s'ha perdut i ha estat trobat quan \r!n\r%Q\r [%"
-#~ "Q@\r!h\r%Q\r] ha canviat el seu nick a \r!n\r%Q\r"
+#~ "El destí d'aquest privat s'ha perdut i ha estat trobat quan \r!n\r%Q\r "
+#~ "[%Q@\r!h\r%Q\r] ha canviat el seu nick a \r!n\r%Q\r"
 
 #~ msgid "The target variable didn't evaluate to an integer or real value"
 #~ msgstr "La variable destí no avalua a un enter o un valor real"
@@ -13200,13 +13209,13 @@ msgstr "cada:"
 #~ msgstr "ADVERTÈNCIA : No s'ha pogut carregar la biblioteca d'imatges %s"
 
 #~ msgid ""
-#~ "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-#~ "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
+#~ "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+#~ "%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
 #~ "name%c: %Q"
 #~ msgstr ""
-#~ "Entrada WHO per a %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, %"
-#~ "cServidor%c: \r!s\r%Q\r, %cSalts%c: %d, %cFlags%c: %Q, %cAusents%c: %Q, %"
-#~ "cNom real%c: %Q"
+#~ "Entrada WHO per a %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, "
+#~ "%cServidor%c: \r!s\r%Q\r, %cSalts%c: %d, %cFlags%c: %Q, %cAusents%c: %Q, "
+#~ "%cNom real%c: %Q"
 
 #~ msgid "Wallops message"
 #~ msgstr "Missatge a wallops"
@@ -13371,8 +13380,8 @@ msgstr "cada:"
 #~ "You have just attempted to close a console window<br>with an active "
 #~ "connection inside.<br>Are you sure you wish to terminate the connection?"
 #~ msgstr ""
-#~ "Ha intentat tancar una finestra de consola<br>amb una connexió activa."
-#~ "<br>¿Està segur que dessitja finalitzar la connexió?"
+#~ "Ha intentat tancar una finestra de consola<br>amb una connexió activa.<br>"
+#~ "¿Està segur que dessitja finalitzar la connexió?"
 
 #~ msgid ""
 #~ "You have just attempted to close the last console window.<br>Are you sure "

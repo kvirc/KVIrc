@@ -614,7 +614,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 	}
 
 #else
-		c->warning(__tr2qs("DBus calls are available only under unix"));
+		c->warning(__tr2qs("DBus calls are available only under UNIX"));
 #endif
 	return true;
 }

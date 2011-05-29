@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_logview \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: 2011-05-03 07:16+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -130,7 +130,8 @@ msgstr "Máscara de conteúdos do registo:"
 msgid "Log name mask:"
 msgstr "Máscara de nome do registo:"
 
-#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107
+#: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr "Falta o id da janela depois da opção 'w'"
@@ -195,7 +196,8 @@ msgstr "Alguma coisa em %1"
 msgid "This window has no logging capabilities"
 msgstr "Esta janela não tem capacidade de registar"
 
-#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:103
+#: src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
 msgstr "Janela '%1' não encontrada"

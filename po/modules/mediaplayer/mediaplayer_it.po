@@ -14,14 +14,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-02-10 19:05+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"PO-Revision-Date: 2011-05-29 18:13+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -105,6 +105,9 @@ msgid ""
 "It is only available for certain countries in Europe.\n"
 "You can download it from http://www.spotify.com.\n"
 msgstr ""
+"Un'interfaccia al servizio di streaming musicale Spotify.\n"
+"E' disponibile solo per alcuni stati in Europa.\n"
+"Puoi scaricarlo da http://www.spotify.com.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:506
 msgid ""
@@ -131,7 +134,6 @@ msgstr ""
 "Scaricalo da http://legacy.xmms2.org\n"
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:194
-#, fuzzy
 msgid ""
 "An interface to the popular Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -143,7 +145,7 @@ msgstr ""
 "Puoi scaricarlo da http://www.winamp.com.\n"
 "Per usare tutte le caratteristiche di questa interfaccia devi copiare il "
 "plugin gen_kvirc.dll che puoi trovare nella distrubuzione KVIrc nella "
-"directory dei plugin di Winamp e riavviare Winamp"
+"directory dei plugin di Winamp e riavviare Winamp."
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:320
 msgid ""
@@ -204,7 +206,7 @@ msgstr "Sembra non esserci un media player utilizzabile su questa macchina"
 
 #: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
 msgid "Spotify is not running"
-msgstr ""
+msgstr "Spotify non è in esecuzione"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:571

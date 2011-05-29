@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:329
 msgid "&Apply Theme"
@@ -34,9 +34,10 @@ msgstr ""
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ota kuvakaappaus - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:103
+#: src/modules/theme/libkvitheme.cpp:112
 #: src/modules/theme/ThemeManagementDialog.cpp:345
 #: src/modules/theme/ThemeManagementDialog.cpp:357
-#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
 msgid "Apply theme - KVIrc"
 msgstr "Ota teema käyttöön - KVIrc"
 
@@ -67,8 +68,8 @@ msgstr "Poista valitut teemat"
 msgid "Delete Theme - KVIrc"
 msgstr "Poista teema - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Kuvaus:"
 
@@ -84,8 +85,8 @@ msgstr "Halutako varmasti poistaa teeman \"%Q\"n (versio %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Haluatko jatkaa asennusta ?"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:346
 #: src/modules/theme/libkvitheme.cpp:104
+#: src/modules/theme/ThemeManagementDialog.cpp:346
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Haluatko ottaa teeman \"%Q\"n (versio %Q) käyttöön?"
 
@@ -110,14 +111,14 @@ msgstr "Vie valitut teemat jaettavaan pakettiin"
 msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:356
 #: src/modules/theme/libkvitheme.cpp:111
+#: src/modules/theme/ThemeManagementDialog.cpp:356
 #, fuzzy
 msgid "Failed to apply the specified theme: %1"
 msgstr "Ei voitu ottaa teemaa käyttöön: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Ei voitu ladata valittua kuvaa"
 
@@ -176,8 +177,8 @@ msgstr ""
 #: src/modules/theme/PackThemeDialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Täällä sinun täytyy valita tiedostonimi teemapaketille. Sen pitäisi käyttää "
 "*.%1 -päätettä"
@@ -198,8 +199,8 @@ msgstr ""
 "Tänne sinun on annettava tietoja sinusta (paketoija) ja lyhyt kuvaus "
 "paketista jonka luot"
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Paina \"Seuraava\" -nappia aloittaaksesi."
 
@@ -294,7 +295,8 @@ msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti: %1"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti"
 
-#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118
+#: src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 
@@ -363,8 +365,8 @@ msgstr "Ei voitu luoda teemakansiota."
 msgid "Unable to save theme: %1"
 msgstr "Ei voitu tallentaa teemaa: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Versio:"
 
@@ -381,8 +383,8 @@ msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 "Varoitus: Tämä teema saattaa olla ei-yhteensopiva tämän KVIrc -version kanssa"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Tervetuloa"
 

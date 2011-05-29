@@ -8,24 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
-msgid "Spotify is not running"
-msgstr ""
-
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
-msgid ""
-"An interface to the Spotify music streaming service.\n"
-"It is only available for certain countries in Europe.\n"
-"You can download it from http://www.spotify.com.\n"
-msgstr ""
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:38
 msgid ""
@@ -45,6 +35,48 @@ msgstr ""
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:143
 msgid "Can't find symbol %1 in %2"
+msgstr ""
+
+#: src/modules/mediaplayer/MpAmipInterface.cpp:108
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+msgid "Spotify is not running"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+msgid ""
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpInterface.cpp:43
+msgid "Function not implemented"
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:184
+msgid "Can't find a running winamp window"
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:194
+msgid ""
+"An interface to the popular Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:316
+#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
 msgstr ""
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:320
@@ -105,10 +137,6 @@ msgid ""
 "Download it from http://www.clementine-player.org/\n"
 msgstr ""
 
-#: src/modules/mediaplayer/MpInterface.cpp:43
-msgid "Function not implemented"
-msgstr ""
-
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:66
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%1\": score %2"
@@ -156,31 +184,4 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
 msgid "Last interface error: "
-msgstr ""
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:184
-msgid "Can't find a running winamp window"
-msgstr ""
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
-msgid ""
-"An interface to the popular Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:316
-#: src/modules/mediaplayer/MpWinampInterface.cpp:350
-msgid ""
-"The winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
-msgstr ""
-
-#: src/modules/mediaplayer/MpAmipInterface.cpp:108
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net\n"
-"To use this interface you must install AMIP plug-in for your player."
 msgstr ""

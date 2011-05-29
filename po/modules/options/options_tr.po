@@ -7,32 +7,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: 2011-03-06 19:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Turkish\n"
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:72
 #: src/modules/options/OptionsWidget_dcc.cpp:285
+#: src/modules/options/OptionsWidget_avatar.cpp:72
 msgid " bytes"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:102
 #: src/modules/options/OptionsWidget_channel.cpp:140
+#: src/modules/options/OptionsWidget_query.cpp:102
 msgid " days"
 msgstr " gün"
 
-#: src/modules/options/OptionsWidget_query.cpp:98
 #: src/modules/options/OptionsWidget_ircView.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:136
+#: src/modules/options/OptionsWidget_query.cpp:98
 msgid " lines"
 msgstr " satır"
 
@@ -40,12 +40,12 @@ msgstr " satır"
 msgid " min"
 msgstr " dk"
 
-#: src/modules/options/OptionsWidget_dcc.cpp:276
+#: src/modules/options/OptionsWidget_lag.cpp:45
+#: src/modules/options/OptionsWidget_lag.cpp:56
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
 #: src/modules/options/OptionsWidget_connection.cpp:155
-#: src/modules/options/OptionsWidget_lag.cpp:45
-#: src/modules/options/OptionsWidget_lag.cpp:56
+#: src/modules/options/OptionsWidget_dcc.cpp:276
 msgid " msec"
 msgstr ""
 
@@ -57,12 +57,12 @@ msgstr ""
 msgid " requests"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_avatar.cpp:96
-#: src/modules/options/OptionsWidget_dcc.cpp:140
-#: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
+#: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
-#: src/modules/options/OptionsWidget_channel.cpp:121
+#: src/modules/options/OptionsWidget_dcc.cpp:140
+#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
 msgid " sec"
 msgstr " saniye"
 
@@ -98,8 +98,8 @@ msgstr "&Yeni Proxy"
 msgid "&New Server"
 msgstr "Ye&ni Sunucu"
 
-#: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsDialog.cpp:230
+#: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsWidget_servers.cpp:383
 #: src/modules/options/OptionsWidgetContainer.cpp:101
 msgid "&OK"
@@ -332,15 +332,15 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:103
 #: src/modules/options/OptionsWidget_channel.cpp:141
+#: src/modules/options/OptionsWidget_query.cpp:103
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:99
 #: src/modules/options/OptionsWidget_channel.cpp:137
+#: src/modules/options/OptionsWidget_query.cpp:99
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
@@ -1224,14 +1224,14 @@ msgid ""
 "settings.</p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:252
+#: src/modules/options/OptionsWidget_connection.cpp:256
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
 "specifications. If it is possible, install a real ident daemon.</p>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:257
+#: src/modules/options/OptionsWidget_connection.cpp:261
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1278,7 +1278,7 @@ msgstr ""
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:204
+#: src/modules/options/OptionsWidget_connection.cpp:208
 msgid "Active window"
 msgstr "Aktif pencere"
 
@@ -1296,17 +1296,17 @@ msgid "Add Rule"
 msgstr "Kural Ekle"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1005
-#: src/modules/options/OptionsWidget_identity.h:202
-#: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
-#: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_irc.h:57
+#: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_identity.h:202
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: src/modules/options/OptionsWidget_notifier.cpp:230
 #: src/modules/options/OptionsWidget_notify.cpp:60
+#: src/modules/options/OptionsWidget_notifier.cpp:230
 msgid "Advanced configuration"
 msgstr "Gelişmiş yapılandırma"
 
@@ -1519,8 +1519,8 @@ msgstr "Dışarıda:"
 msgid "Background"
 msgstr "Arka plan"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:119
 #: src/modules/options/OptionsWidget_userList.cpp:126
+#: src/modules/options/OptionsWidget_windowList.cpp:119
 msgid "Background Colors"
 msgstr "Arka plan renkleri"
 
@@ -1545,9 +1545,9 @@ msgstr "Arka plan rengi:"
 msgid "Background image"
 msgstr "Arka plan resmi"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_userList.cpp:131
+#: src/modules/options/OptionsWidget_windowList.cpp:123
 msgid "Background image:"
 msgstr "Arka plan resmi:"
 
@@ -1571,11 +1571,11 @@ msgstr ""
 msgid "Blend color:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:71
+#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:71
 #: src/modules/options/OptionsWidget_input.cpp:63
-#: src/modules/options/OptionsWidget_userList.cpp:148
 msgid "Bottom"
 msgstr "Alt"
 
@@ -1604,26 +1604,26 @@ msgid "Cache IP address"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
-#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_servers.cpp:389
 #: src/modules/options/OptionsWidget_servers.cpp:1015
 #: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "İptal Et"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:67
+#: src/modules/options/OptionsWidget_ircView.cpp:72
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_ircView.cpp:67
-#: src/modules/options/OptionsWidget_ircView.cpp:72
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 msgid "Center"
 msgstr "Orta"
 
@@ -1747,9 +1747,9 @@ msgid "Commit all changes immediately."
 msgstr ""
 
 #: src/modules/options/OptionsWidget_notify.cpp:41
-#: src/modules/options/OptionsWidget_proxy.cpp:107
-#: src/modules/options/OptionsWidget_connection.cpp:221
 #: src/modules/options/OptionsWidget_lag.cpp:43
+#: src/modules/options/OptionsWidget_connection.cpp:225
+#: src/modules/options/OptionsWidget_proxy.cpp:107
 msgid "Configuration"
 msgstr "Yapılandırma"
 
@@ -1778,7 +1778,7 @@ msgstr "Başlangıçta bu sunucuya bağlan"
 msgid "Connection"
 msgstr "Bağlantı"
 
-#: src/modules/options/OptionsWidget_connection.cpp:205
+#: src/modules/options/OptionsWidget_connection.cpp:209
 msgid "Console"
 msgstr "Konsol"
 
@@ -1939,7 +1939,7 @@ msgstr ""
 msgid "Do not send /WHO request"
 msgstr "Kanal için /WHO talep etme"
 
-#: src/modules/options/OptionsWidget_connection.cpp:206
+#: src/modules/options/OptionsWidget_connection.cpp:210
 msgid "Do not show any identd messages"
 msgstr "Herhangi bir identd mesajı gösterme"
 
@@ -2030,11 +2030,16 @@ msgstr "Hareketli gülümsemeleri etkinleştirin"
 msgid "Enable default away message"
 msgstr "Varsayılan dışarıda olma mesajını etkinleştir"
 
-#: src/modules/options/OptionsWidget_connection.cpp:196
+#: src/modules/options/OptionsWidget_connection.cpp:197
+#, fuzzy
+msgid "Enable ident service"
+msgstr "Servisi IPv6 için etkinleştir"
+
+#: src/modules/options/OptionsWidget_connection.cpp:199
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:223
+#: src/modules/options/OptionsWidget_connection.cpp:227
 msgid "Enable ident service only while connecting to server"
 msgstr "Sadece sunucuya bağlanırken ident hizmetini etkinleştir"
 
@@ -2054,7 +2059,7 @@ msgstr ""
 msgid "Enable notifier window flashing"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:236
+#: src/modules/options/OptionsWidget_connection.cpp:240
 msgid "Enable service for IPv6"
 msgstr "Servisi IPv6 için etkinleştir"
 
@@ -2147,8 +2152,8 @@ msgid "Failed to start the download"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.h:98
-#: src/modules/options/OptionsWidget_ircView.h:70
 #: src/modules/options/OptionsWidget_userList.h:103
+#: src/modules/options/OptionsWidget_ircView.h:70
 msgid "Features"
 msgstr "Özellikler"
 
@@ -2190,16 +2195,16 @@ msgid "Flood Protection"
 msgstr "Saldırı Koruması"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:38
-#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_input.cpp:38
+#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 msgid "Font"
 msgstr "Yazı Tipi"
 
-#: src/modules/options/OptionsWidget_windowList.cpp:85
-#: src/modules/options/OptionsWidget_windowList.cpp:244
 #: src/modules/options/OptionsWidget_ircView.cpp:51
 #: src/modules/options/OptionsWidget_userList.cpp:52
+#: src/modules/options/OptionsWidget_windowList.cpp:85
+#: src/modules/options/OptionsWidget_windowList.cpp:244
 msgid "Font:"
 msgstr "Yazı Tipi:"
 
@@ -2240,12 +2245,12 @@ msgstr "Cinsiyet:"
 
 #: src/modules/options/OptionsWidget_message.cpp:70
 #: src/modules/options/OptionsWidget_servers.cpp:259
-#: src/modules/options/OptionsWidget_identity.h:153
-#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
-#: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_irc.h:43
+#: src/modules/options/OptionsWidget_channel.h:52
+#: src/modules/options/OptionsWidget_theme.h:33
+#: src/modules/options/OptionsWidget_identity.h:153
 msgid "General"
 msgstr "Genel"
 
@@ -2351,9 +2356,9 @@ msgstr ""
 msgid "Horizontal Alignment:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:48
 msgid "Horizontal align:"
 msgstr ""
@@ -2375,11 +2380,11 @@ msgstr ""
 msgid "IP address:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:245
+#: src/modules/options/OptionsWidget_connection.cpp:249
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:235
+#: src/modules/options/OptionsWidget_connection.cpp:239
 msgid "IPv6 Settings"
 msgstr "IPv6 Ayarları"
 
@@ -2411,7 +2416,7 @@ msgstr "Kimlik:"
 msgid "Ident Service"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_connection.cpp:226
+#: src/modules/options/OptionsWidget_connection.cpp:230
 msgid "Ident username:"
 msgstr "Kullanıcı identi:"
 
@@ -2421,8 +2426,8 @@ msgstr "Kullanıcı identi:"
 msgid "Identify Command"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
 #: src/modules/options/OptionsWidget_servers.cpp:647
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
 #: src/modules/options/OptionsWidget_identity.h:137
 msgid "Identity"
 msgstr "Kimlik"
@@ -2475,8 +2480,8 @@ msgstr ""
 msgid "Interface"
 msgstr "Arayüz"
 
-#: src/modules/options/OptionsWidget_query.cpp:101
 #: src/modules/options/OptionsWidget_channel.cpp:139
+#: src/modules/options/OptionsWidget_query.cpp:101
 msgid "Interval:"
 msgstr "Zaman:"
 
@@ -2497,9 +2502,9 @@ msgstr ""
 msgid "Invite messages"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
 #: src/modules/options/OptionsWidget_servers.cpp:277
 #: src/modules/options/OptionsWidget_servers.cpp:848
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
 msgid "Join Channels"
 msgstr "Kanallara Giriş"
 
@@ -2550,11 +2555,11 @@ msgstr "Dil"
 msgid "Languages:"
 msgstr "Diller:"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:65
+#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_ircView.cpp:65
 #: src/modules/options/OptionsWidget_input.cpp:57
-#: src/modules/options/OptionsWidget_userList.cpp:142
 msgid "Left"
 msgstr "Sol"
 
@@ -2928,11 +2933,11 @@ msgstr ""
 msgid "Normal"
 msgstr "Normal"
 
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 msgid "Normal:"
 msgstr "Normal:"
 
@@ -3073,13 +3078,16 @@ msgstr ""
 msgid "Output"
 msgstr "Çıktı"
 
-#: src/modules/options/OptionsWidget_connection.cpp:202
+#: src/modules/options/OptionsWidget_connection.cpp:206
 msgid "Output identd messages to:"
 msgstr "Identd mesajlarını göster:"
 
-#: src/modules/options/OptionsWidget_ircOutput.cpp:43
-#: src/modules/options/OptionsWidget_connection.cpp:199
+#: src/modules/options/OptionsWidget_connection.cpp:203
 msgid "Output verbosity"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_ircOutput.cpp:43
+msgid "Output verbosity:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:104
@@ -3128,8 +3136,8 @@ msgstr "Kanalın son günlük kaydını göster"
 msgid "Paste last query log"
 msgstr "Son özel konuşma kaydını göster"
 
-#: src/modules/options/OptionsWidget_query.cpp:97
 #: src/modules/options/OptionsWidget_channel.cpp:135
+#: src/modules/options/OptionsWidget_query.cpp:97
 msgid "Paste up to:"
 msgstr "Kayıt uzunluğu:"
 
@@ -3220,13 +3228,13 @@ msgstr ""
 msgid "Private key password:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:43
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
+#: src/modules/options/OptionsWidget_query.cpp:43
 msgid "Private messages"
 msgstr "Özel mesajlar için"
 
-#: src/modules/options/OptionsWidget_query.cpp:50
 #: src/modules/options/OptionsWidget_antiSpam.cpp:42
+#: src/modules/options/OptionsWidget_query.cpp:50
 msgid "Private notices"
 msgstr "Özel uyarılar için"
 
@@ -3442,11 +3450,11 @@ msgstr ""
 msgid "Restrict alert"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:66
+#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_input.cpp:58
-#: src/modules/options/OptionsWidget_userList.cpp:143
 msgid "Right"
 msgstr "Sağ"
 
@@ -3510,10 +3518,10 @@ msgstr ""
 msgid "Select message levels to notify"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:90
-#: src/modules/options/OptionsWidget_windowList.cpp:121
 #: src/modules/options/OptionsWidget_userList.cpp:56
 #: src/modules/options/OptionsWidget_userList.cpp:128
+#: src/modules/options/OptionsWidget_windowList.cpp:90
+#: src/modules/options/OptionsWidget_windowList.cpp:121
 msgid "Selected:"
 msgstr "Seçilen:"
 
@@ -3585,7 +3593,7 @@ msgstr "Sunucu:"
 msgid "Servers"
 msgstr "Sunucular"
 
-#: src/modules/options/OptionsWidget_connection.cpp:230
+#: src/modules/options/OptionsWidget_connection.cpp:234
 msgid "Service port:"
 msgstr "Servis portu:"
 
@@ -3985,16 +3993,16 @@ msgid ""
 "display the CTRL+I escape sequences and eventually the emoticons."
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:64
+#: src/modules/options/OptionsWidget_ircView.cpp:69
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_ircView.cpp:64
-#: src/modules/options/OptionsWidget_ircView.cpp:69
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 msgid "Tile"
 msgstr ""
 
@@ -4026,11 +4034,11 @@ msgstr ""
 msgid "Tools"
 msgstr "Araçlar"
 
+#: src/modules/options/OptionsWidget_ircView.cpp:70
+#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_ircView.cpp:70
 #: src/modules/options/OptionsWidget_input.cpp:62
-#: src/modules/options/OptionsWidget_userList.cpp:147
 msgid "Top"
 msgstr "Üst"
 
@@ -4114,10 +4122,10 @@ msgstr ""
 msgid "Use IPv6 protocol"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:101
-#: src/modules/options/OptionsWidget_sound.cpp:126
 #: src/modules/options/OptionsWidget_textEncoding.cpp:51
 #: src/modules/options/OptionsWidget_textEncoding.cpp:59
+#: src/modules/options/OptionsWidget_sound.cpp:101
+#: src/modules/options/OptionsWidget_sound.cpp:126
 msgid "Use Language Encoding"
 msgstr ""
 
@@ -4320,9 +4328,9 @@ msgstr ""
 msgid "Vertical Alignment:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_input.cpp:52
 msgid "Vertical align:"
 msgstr ""
@@ -4519,8 +4527,8 @@ msgstr ""
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_notifier.h:34
 #: src/modules/options/OptionsWidget_input.h:34
+#: src/modules/options/OptionsWidget_notifier.h:34
 msgid "theme,colors,text"
 msgstr ""
 

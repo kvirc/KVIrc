@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: 2011-04-21 23:55+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -134,7 +134,8 @@ msgstr "Maschera contenuti log:"
 msgid "Log name mask:"
 msgstr "Maschera nome log:"
 
-#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107
+#: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr "Manca l'id della finestra dopo lo switch 'w'"
@@ -199,7 +200,8 @@ msgstr "Qualcosa su %1"
 msgid "This window has no logging capabilities"
 msgstr "Questa finestra non può essere loggata"
 
-#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:103
+#: src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
 msgstr "Finestra '%1' non trovata"

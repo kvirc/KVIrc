@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -28,9 +28,10 @@ msgstr ""
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Tomar captura de pantalla - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:103
+#: src/modules/theme/libkvitheme.cpp:112
 #: src/modules/theme/ThemeManagementDialog.cpp:345
 #: src/modules/theme/ThemeManagementDialog.cpp:357
-#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
@@ -61,8 +62,8 @@ msgstr "Eliminar los temas seleccionados"
 msgid "Delete Theme - KVIrc"
 msgstr "Eliminar tema - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Descripción:"
 
@@ -78,8 +79,8 @@ msgstr "¿Realmente quieres eliminar el tema \"%Q\" (versión %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "¿Quieres proceder con la instalación?"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:346
 #: src/modules/theme/libkvitheme.cpp:104
+#: src/modules/theme/ThemeManagementDialog.cpp:346
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "¿Quieres aplicar el tema \"%Q\" (versión %Q)?"
 
@@ -104,13 +105,13 @@ msgstr "Exportar los temas seleccionados a un paquete distribuible"
 msgid "Export Theme - KVIrc"
 msgstr "Exportar tema - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:356
 #: src/modules/theme/libkvitheme.cpp:111
+#: src/modules/theme/ThemeManagementDialog.cpp:356
 msgid "Failed to apply the specified theme: %1"
 msgstr "Error al aplicar el tema especificado: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Error al cargar la imagen seleccionada"
 
@@ -171,8 +172,8 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:381
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Aquí debes elegir el nombre de archivo para el paquete de tema. Debe tener "
 "la extensión *%1."
@@ -193,8 +194,8 @@ msgstr ""
 "Aquí tienes que dar información sobre ti (el empaquetador) y una corta "
 "descripción del paquete que estás creando."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Haz clic en el botón \"Siguiente\" para empezar."
 
@@ -288,7 +289,8 @@ msgstr "El archivo seleccionado no parece ser un paquete de KVIrc válido: %1"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "El archivo seleccionado no parece ser un paquete de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118
+#: src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr "El paquete de tema '%Q' no existe"
 
@@ -355,8 +357,8 @@ msgstr "No se pudo crear el directorio del tema."
 msgid "Unable to save theme: %1"
 msgstr "No se pudo guardar el tema: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Versión:"
 
@@ -372,8 +374,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Atención: este tema podría ser incompatible con esta versión de KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Bienvenido"
 

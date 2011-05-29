@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 07:32+0100\n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
 "PO-Revision-Date: 2011-01-26 14:23+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -94,8 +94,8 @@ msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
 msgstr ""
-"Kaputter Slot ›%Q‹ in Zielobjekt ›%Q::%Q‹, während des Sendes des Signals ›%"
-"Q‹ von Objekt ›%Q::%Q‹: Trenne die Verbindung"
+"Kaputter Slot ›%Q‹ in Zielobjekt ›%Q::%Q‹, während des Sendes des Signals "
+"›%Q‹ von Objekt ›%Q::%Q‹: Trenne die Verbindung"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
 msgid "Broken text parameter: assuming empty string"
@@ -176,8 +176,8 @@ msgstr "Kann das Modul nicht entladen: Es hat sich selbst im Speicher gesperrt"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1744
 msgid ""
-"Cannot call internal object function $%Q (for object named '%Q' of class '%"
-"Q') from this context"
+"Cannot call internal object function $%Q (for object named '%Q' of class "
+"'%Q') from this context"
 msgstr ""
 "Kann interne Objektfunktion $%Q (des Objekts ›%Q‹ der Klasse ›%Q‹) nicht aus "
 "diesem Kontext aufrufen"
@@ -222,8 +222,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Kann Basisklasse ›%Q‹ nicht finden"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "DNS-Ergebnis für Anfrage »%Q«"
 
@@ -235,14 +235,14 @@ msgstr ""
 "Schleife im Vererbungsbaum der Basisklasse ›%Q‹' gefunden: Definieren Sie "
 "diese Klasse zuerst neu"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 msgid "Division by zero"
 msgstr "Division durch Null"
 
@@ -299,8 +299,8 @@ msgid "Error triggered from process callback handler: killing process"
 msgstr ""
 "Der Callback-Handler-Prozess löste einen Fehler aus: Beende den Prozess"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 msgid "Error: %Q"
 msgstr "Fehler: %Q"
 
@@ -439,8 +439,8 @@ msgid ""
 "Found end of input where character '%c' was expected: see \"/help %s\" for "
 "the command syntax"
 msgstr ""
-"Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help %"
-"s« nach der Befehlssyntax"
+"Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help "
+"%s« nach der Befehlssyntax"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1516
 msgid ""
@@ -475,13 +475,13 @@ msgstr ""
 "Hash-Referenzzusicherung fehlgeschlagen: Die Variable wurde zu Typ ›%Q‹ "
 "ausgewertet"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 msgid "Hostname: %Q"
 msgstr "Hostname: %Q"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 msgid "IP address %d: %Q"
 msgstr "IP-Adresse %d: %Q"
 
@@ -567,7 +567,7 @@ msgstr ""
 msgid "It's not allowed to return values in the constructor"
 msgstr "Es ist nicht erlaubt, Werte aus dem Konstruktor zurückzugeben"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:249
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:313
 msgid "Lag meter was not enabled"
 msgstr "Lag-Meter wurde nicht aktiviert"
 
@@ -652,8 +652,8 @@ msgstr "Timeout-Verzögerung fehlt"
 msgid "Missing timer name"
 msgstr "Timer-Name fehlt"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul ›%Q‹ nicht laden: %Q"
 
@@ -671,8 +671,8 @@ msgstr ""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
 msgid ""
-"Module command call failed: the module '%Q' doesn't export a command named '%"
-"Q'"
+"Module command call failed: the module '%Q' doesn't export a command named "
+"'%Q'"
 msgstr ""
 "Modulbefehlsaufruf fehlgeschlagen: Das Modul ›%Q‹ exportiert keinen Befehl "
 "namens ›%Q‹"
@@ -740,22 +740,22 @@ msgstr "Kein Handler ›%Q‹ für Raw-Numeric-Ereignis ›%d‹"
 msgid "No menu bar item with text '%Q'"
 msgstr "Kein Menüleisteneintrag mit Text ›%Q‹"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Kein solcher IRC-Kontext (%u)"
 
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:689
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:697
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
 msgid "No such event (%Q)"
 msgstr "kein solches Ereignis (%Q)"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:583
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:705
 msgid "No such event handler (%Q) for event %Q"
 msgstr "kein solcher Ereignis-Handler (%Q) für Ereignis %Q"
 
@@ -1343,8 +1343,8 @@ msgstr ""
 "Dies sieht sehr nach einem Objekt-Handle-Dereferenzierungsoperator ›->‹ aus, "
 "aber es ist keiner. Haben Sie vielleicht ein ›$‹ direkt danach vergessen?"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
 msgid "This window has no associated IRC context"
 msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
 
@@ -1353,9 +1353,9 @@ msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 "Dieses Fenster ist keinem IRC-Kontext zugeordnet und ist auch kein DCC-Chat"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "Dieses Fenster ist keinem IRC-Kontext zugeordnet"
 
@@ -1723,7 +1723,8 @@ msgstr "[KVS]%c Kompilierungsfehler: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Laufzeitfehler: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188
+#: src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 
@@ -1749,8 +1750,8 @@ msgstr "Zeichenkettenwert »%Q« gefunden, wo Typ ›%s‹ erwartet wurde"
 msgid "found type %Q where type '%s' was expected"
 msgstr "Typ %Q gefunden, wo Typ ›%s‹ erwartet wurde"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:95
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:116
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:95
 msgid "line %1, near character %2"
 msgstr "Zeile %1, bei Zeichen %2"
 
