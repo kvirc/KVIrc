@@ -1,13 +1,14 @@
 # translation of kvirc_pt.po to Português
 #
 # Zé <ze@mandriva.org>, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011.
+# Zé <mmodem00@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-08 07:32+0100\n"
-"PO-Revision-Date: 2011-05-24 14:48+0100\n"
-"Last-Translator: Zé <ze@mandriva.org>\n"
+"PO-Revision-Date: 2011-05-29 04:07+0100\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4960,7 +4961,7 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:894
 #: src/kvirc/kernel/KviCoreActions.cpp:907
 msgid "Other..."
-msgstr "Outro..."
+msgstr "Outra Alcunha..."
 
 #: src/kvilib/core/KviError.cpp:91
 msgid "Out of address space"
@@ -5887,12 +5888,12 @@ msgstr "Erro do servidor"
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:387
 #, c-format
 msgid "Server has %d IP addresses, picking a random one"
-msgstr "O servidor tem os endereçoes IP %d, escolha um qualquer"
+msgstr "O servidor tem %d endereços IP, escolha um"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:396
 #, c-format
 msgid "Server has %d IP addresses, using the first one"
-msgstr "O servidor tem os endereços IP %d,use o primeiro"
+msgstr "O servidor tem %d endereços IP, a usar o primeiro"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:407
 msgid "Server hostname resolved to %Q"
