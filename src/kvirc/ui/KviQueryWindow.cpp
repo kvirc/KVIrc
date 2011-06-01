@@ -142,7 +142,7 @@ void KviQueryWindow::getWindowListTipText(QString & szBuffer)
 {
 	QString szText;
 	if(!connection())
-		szBuffer = __tr2qs("[Dead Query]");
+		szBuffer = __tr2qs("[Dead query]");
 
 	KviIrcUserEntry * pEntry = connection()->userDataBase()->find(m_szName);
 	if(pEntry)
@@ -194,7 +194,7 @@ QString KviQueryWindow::getInfoLabelText()
 				connection()->getCommonChannels(m_szName,szChans,0);
 				szTmp += __tr2qs("Common channels: %2").arg(szChans);
 			} else {
-				szTmp = __tr2qs("[Dead Query]");
+				szTmp = __tr2qs("[Dead query]");
 			}
 		}
 	}

@@ -2014,7 +2014,7 @@ msgstr "Elegir fuente"
 
 #: src/kvirc/ui/KviIrcView.cpp:2075
 msgid "Choose Temporary Background..."
-msgstr "Escoge un fondo temporal..."
+msgstr "Escoger un fondo temporal..."
 
 #: src/kvirc/ui/KviIrcView.cpp:2074
 msgid "Choose Temporary Font..."
@@ -2031,7 +2031,7 @@ msgstr "Selecciona un directorio - KVIrc"
 #: src/modules/setup/SetupWizard.cpp:746
 msgid "Choose a Download Folder - KVIrc Setup"
 msgstr ""
-"Escoge un directorio para los archivos descargados - Asistente de KVIrc"
+"Escoge un directorio de descargas - Asistente de KVIrc"
 
 #: src/kvirc/ui/KviSelectors.cpp:462
 #: src/kvirc/ui/KviSelectors.cpp:468
@@ -2111,7 +2111,7 @@ msgstr "Limpiar lista de servidores recientes"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:393
 msgid "Clear custom scripts"
-msgstr "Borrar scripts por defecto"
+msgstr "Borrar scripts personales"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:848
 msgid "Click to open this link"
@@ -7726,8 +7726,8 @@ msgid ""
 msgstr ""
 "Vas a restaurar el script por defecto.\n"
 "Cualquier cambio que hayas hecho a los scripts será\n"
-"borrado si lo restauras todo o si \"Borrar datos\n"
-"personales\" está seleccionado.\n"
+"borrado si lo restauras todo o si seleccionas \"Borrar"
+"scripts personales\".\n"
 "\n"
 "¿Quieres continuar?\n"
 
@@ -7754,7 +7754,7 @@ msgstr "Has sido expulsado de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/KviCtcpPageDialog.cpp:105
 msgid "You have been paged by"
-msgstr "Has sido paginado por"
+msgstr "Te ha enviado un mensaje"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1545
 #: src/kvirc/kernel/KviIrcConnection.cpp:1648
@@ -7767,7 +7767,7 @@ msgid ""
 "this procedure.<br><br>Do you really wish to abort?"
 msgstr ""
 "Has elegido abortar la instalación.<br>KVIrc no puede funcionar hasta que no "
-"completes este procedimiento.<br><br>¿De verdad quieres abortar?"
+"completes este procedimiento.<br><br>¿De verdad quieres cancelar?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:487
 msgid ""
@@ -7776,7 +7776,7 @@ msgid ""
 "Are you sure you wish to terminate the connection?"
 msgstr ""
 "Has intentado cerrar una ventana de consola con una conexión activa.\n"
-"¿Estás seguro que quieres finalizar la conexión?"
+"¿Estás seguro de que quieres finalizar la conexión?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:522
 msgid ""
@@ -7784,7 +7784,7 @@ msgid ""
 "Are you sure you wish to quit KVIrc?"
 msgstr ""
 "Has intentado cerrar la última ventana de consola.\n"
-"¿Estás seguro que quieres salir de KVIrc?"
+"¿Estás seguro de que quieres salir de KVIrc?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:350
 msgid "You have left channel \r!c\r%Q\r"
@@ -7819,7 +7819,7 @@ msgstr "No eres operador: No puedes cambiar los modos del canal"
 
 #: src/modules/links/LinksWindow.cpp:412
 msgid "You're not connected to a server"
-msgstr "No está conectado a un servidor"
+msgstr "No estás conectado a un servidor"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:224
 msgid ""
@@ -7892,7 +7892,7 @@ msgstr "[%s]: [SSL]: Usando archivo de clave privada %s"
 #: src/kvirc/ui/KviQueryWindow.cpp:145
 #: src/kvirc/ui/KviQueryWindow.cpp:197
 msgid "[Dead Query]"
-msgstr "[Privado Muerto]"
+msgstr "[Privado muerto]"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1100
 msgid "[Dead channel]"
@@ -7900,7 +7900,7 @@ msgstr "[Canal muerto]"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:360
 msgid "[Dead query]"
-msgstr "[Privado Muerto]"
+msgstr "[Privado muerto]"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1923
 msgid "[Entering away status]: %Q"
@@ -8059,8 +8059,7 @@ msgstr "[Parser de servidor]: %s"
 msgid ""
 "[Server parser]: Encountered problems while parsing the following message:"
 msgstr ""
-"[Parser de servidor]: Se encontraron problemas mientras se analizaba el "
-"siguiente mensaje:"
+"[Parser de servidor]: Hubo problemas al analizar el siguiente mensaje:"
 
 #: src/kvirc/sparser/KviIrcServerParser.cpp:134
 msgid "[Server parser]: [%s][%s] %Q"
@@ -8105,11 +8104,11 @@ msgstr "ausente"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:762
 msgid "ban exception list"
-msgstr "lista de excepciones a prohibiciones"
+msgstr "lista de excepciones a bans"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:736
 msgid "ban list"
-msgstr "lista de prohibidos"
+msgstr "lista de baneados"
 
 #: src/modules/rijndael/libkvirijndael.cpp:658
 #: src/modules/rijndael/libkvirijndael.cpp:668
