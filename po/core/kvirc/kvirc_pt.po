@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 18:06+0200\n"
-"PO-Revision-Date: 2011-05-29 04:07+0100\n"
+"PO-Revision-Date: 2011-06-01 21:39+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
@@ -2517,9 +2517,8 @@ msgid "Customize..."
 msgstr "Personalizar..."
 
 #: src/modules/system/libkvisystem.cpp:617
-#, fuzzy
 msgid "DBus calls are available only under UNIX"
-msgstr "As chamadas DBus estão disponíveis apenas em unix"
+msgstr "As chamadas DBus estão disponíveis apenas em UNIX"
 
 #: src/kvirc/kernel/KviOptions.cpp:801
 msgid "DCC chat message"
@@ -7151,15 +7150,13 @@ msgid "Unable to find a window with the specified window id"
 msgstr "Não é possível encontrar a janela com o id de janela especificado"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:871
-#, fuzzy
 msgid "Unable to look up hostname: Hostname appears to be masked"
 msgstr ""
-"Não é possível encontrar o nome da máquina: a máquina parece estar mascarada"
+"Não é possível localizar o nome da máquina: a máquina parece estar mascarada"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:872
-#, fuzzy
 msgid "Unable to look up hostname: Unknown host"
-msgstr "Não é possível encontrar o nome da máquina: máquina desconhecida"
+msgstr "Não é possível localizar o nome da máquina: máquina desconhecida"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:240
 msgid "Unable to look up the IRC proxy hostname: Can't start the DNS slave"

@@ -4,13 +4,14 @@
 #
 # Ze <mmodem00@netvisao.pt>, 2003, 2004, 2005, 2006.
 # Zé <ze@mandriva.org>, 2005, 2006, 2007, 2008, 2010, 2011.
+# Zé <mmodem00@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2011-05-24 15:00+0100\n"
-"Last-Translator: Zé <ze@mandriva.org>\n"
+"PO-Revision-Date: 2011-06-01 21:42+0100\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -2547,9 +2548,8 @@ msgid "Enable default away message"
 msgstr "Activar mensagem de ausência predefinida:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:197
-#, fuzzy
 msgid "Enable ident service"
-msgstr "Serviço de Identificação"
+msgstr "Activar serviço ident"
 
 #: src/modules/options/OptionsWidget_connection.cpp:199
 msgid "Enable ident service (bad practice on UNIX!)"
@@ -3618,9 +3618,8 @@ msgid "Output verbosity"
 msgstr "Saída detalhada"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:43
-#, fuzzy
 msgid "Output verbosity:"
-msgstr "Saída detalhada"
+msgstr "Verbosidade de saída:"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:104
 msgid "PAGE"
