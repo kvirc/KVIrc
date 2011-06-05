@@ -118,11 +118,18 @@ static QString queryWinInfo(QueryInfo info)
 
 		// Test for the specific product.
 
+		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 1 )
+		{
+			if( osvi.wProductType == VER_NT_WORKSTATION )
+				szVersion+= "Windows 7 ";
+			else szVersion+="Windows Server 2008 R2 ";
+		}
+
 		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 0 )
 		{
 			if( osvi.wProductType == VER_NT_WORKSTATION )
 				szVersion+= "Windows Vista ";
-			else szVersion+="Windows Server \"Longhorn\" ";
+			else szVersion+="Windows Server 2008 ";
 		}
 
 		if ( osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 2 )

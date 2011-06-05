@@ -418,9 +418,10 @@ KviWindow * KviConsoleWindow::activeWindow()
 	return this;
 }
 
-void KviConsoleWindow::ircUriChanged(const QString & text){
-	if(KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this) & KviIrcUrl::InvalidProtocol ||
-		KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this) & KviIrcUrl::InvalidUrl)
+void KviConsoleWindow::ircUriChanged(const QString & text)
+{
+	int iStatus = KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this);
+	if(iStatus & KviIrcUrl::InvalidProtocol || iStatus & KviIrcUrl::InvalidUrl)
 	{
 		KviMessageBox::warning(__tr2qs("KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 				"Your URL is invalid. Check spelling and try again"));
