@@ -1,26 +1,28 @@
 # translation of filetransferwindow_ru.po to russian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
 # Valerius <valeragir@mail.ru>, 2004.
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # root <wizard@opendoor.ru>, 2006.
-# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
-#
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: filetransferwindow_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2010-01-24 11:05+0400\n"
-"Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
-"Language-Team:  <ru@li.org>\n"
+"PO-Revision-Date: 2011-06-06 02:00+0700\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
+"alexeysokolov co cc>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:515
 msgid "&Clear Terminated"
@@ -64,7 +66,6 @@ msgid "Delete failed"
 msgstr "Ошибка удаления"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:613
-#, fuzzy
 msgid "Do you really want to delete the file %1?"
 msgstr "Вы действительно хотите удалить файл %1 ?"
 
@@ -127,3 +128,4 @@ msgstr "Тип"
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:782
 msgid "Yes"
 msgstr "Да"
+

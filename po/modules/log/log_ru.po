@@ -6,25 +6,25 @@
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
 # Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: logview_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2010-12-13 01:48+0600\n"
-"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
-"org>\n"
+"PO-Revision-Date: 2011-06-06 02:04+0700\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
+"alexeysokolov co cc>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/logview/LogViewWindow.cpp:356
-#, fuzzy
 msgid "%1 on %2"
 msgstr "%1 в %2"
 
@@ -33,13 +33,12 @@ msgid "Apply filter"
 msgstr "Применить фильтр"
 
 #: src/modules/logview/libkvilogview.cpp:129
-#, fuzzy
 msgid "Browse Log Files"
-msgstr "Просмотр файлов &журналов"
+msgstr "Просмотр файлов журналов"
 
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
-msgstr ""
+msgstr "Не могу журналировать в файл \"%1\""
 
 #: src/modules/logview/LogViewWindow.cpp:103
 msgid "Cancel"
@@ -50,9 +49,8 @@ msgid "Channel"
 msgstr "Канал"
 
 #: src/modules/logview/LogViewWindow.cpp:640
-#, fuzzy
 msgid "Channel %1 on %2"
-msgstr "%1 в %2"
+msgstr "Канал %1 в %2"
 
 #: src/modules/logview/LogViewWindow.cpp:459
 msgid "Confirm current user log deletion"
@@ -67,9 +65,8 @@ msgid "Console"
 msgstr "Консоль"
 
 #: src/modules/logview/LogViewWindow.cpp:643
-#, fuzzy
 msgid "Console on %1"
-msgstr "Консоль"
+msgstr "Консоль для %1"
 
 #: src/modules/logview/LogViewWindow.cpp:141
 msgid "Contents filter"
@@ -80,19 +77,16 @@ msgid "DCC Chat"
 msgstr "DCC Чат"
 
 #: src/modules/logview/LogViewWindow.cpp:649
-#, fuzzy
 msgid "DCC Chat with %1"
-msgstr "DCC Чат"
+msgstr "DCC Чат с %1"
 
 #: src/modules/logview/LogViewWindow.cpp:478
-#, fuzzy
 msgid "Do you really wish to delete all these logs?"
-msgstr "Удалить все эти журналы каналов/приватов."
+msgstr "Вы действительно хотите удалить все эти журналы?"
 
 #: src/modules/logview/LogViewWindow.cpp:460
-#, fuzzy
 msgid "Do you really wish to delete this log?"
-msgstr "Удалить все эти журналы каналов/приватов."
+msgstr "Вы действительно хотите удалить этот журнал?"
 
 #: src/modules/logview/LogViewWindow.cpp:781
 msgid "Export Log - KVIrc"
@@ -123,7 +117,6 @@ msgid "HTML archive"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:108
-#, fuzzy
 msgid "Index"
 msgstr "Список"
 
@@ -150,7 +143,6 @@ msgid "Missing window id after the 'w' switch"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:164
-#, fuzzy
 msgid "Only newer than"
 msgstr "Новее чем"
 
@@ -175,14 +167,12 @@ msgid "Query with %1 on %2"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:438
-#, fuzzy
 msgid "Remove all log files"
-msgstr "Удалить этот файл журнала"
+msgstr "Удалить все файлы журналов"
 
 #: src/modules/logview/LogViewWindow.cpp:441
-#, fuzzy
 msgid "Remove log file"
-msgstr "Удалить этот файл журнала"
+msgstr "Удалить файл журнала"
 
 #: src/modules/logview/LogViewWindow.cpp:132
 msgid "Show DCC chat logs"
@@ -216,16 +206,15 @@ msgstr ""
 #: src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
-msgstr ""
+msgstr "Окно \"%1\" не найдено"
 
 #: src/modules/log/libkvilog.cpp:265
 msgid "Window with id '%1' not found, returning empty string"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:190
-#, fuzzy
 msgid "plain text file"
-msgstr "Фильтр содержимого"
+msgstr "файл с обычным текстом"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Остановить фильтрацию"

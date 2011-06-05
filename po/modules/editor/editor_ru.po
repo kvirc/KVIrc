@@ -6,24 +6,25 @@
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2010-06-14 10:48+0400\n"
-"Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
+"PO-Revision-Date: 2011-06-06 01:59+0700\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
+"alexeysokolov co cc>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -42,7 +43,6 @@ msgstr ""
 "%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -195,7 +195,6 @@ msgstr ""
 "меню во время вызова.<br>Пустое условие принимается за истину.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
-#, fuzzy
 msgid ""
 "<center><b>External menu name</b><br>This allows one to nest externally "
 "defined popup menus. The popup menu with the specified name will be looked "
@@ -302,17 +301,16 @@ msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Внешний скрипт изменил алиас который вы сейчас реактируете. Вы хотите "
-"принять эти изменения?"
+"Внешний скрипт изменил алиас, который вы сейчас редактируете. Вы хотите "
+"принять внешние изменения?"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1117
-#, fuzzy
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Внешний скрипт изменил алиас который вы сейчас реактируете. Вы хотите "
-"принять эти изменения?"
+"Внешний скрипт изменил меню, которое вы сейчас редактируете. Вы хотите "
+"принять внешние изменения?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:868
 msgid "Apply"
@@ -350,12 +348,10 @@ msgid "Brackets:"
 msgstr "Скобки:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
-#, fuzzy
 msgid "Can't open the file %1 for reading."
 msgstr "Невозможно открыть файл %1 на чтение."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
-#, fuzzy
 msgid "Can't open the file %1 for writing."
 msgstr "Невозможно открыть файл %1 на запись."
 
@@ -549,23 +545,19 @@ msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Вы действительно хотите удалить панель инструментов \"%1\" ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
-#, fuzzy
 msgid "Do you really want to remove the alias \"%1\"?"
 msgstr "Вы действительно хотите удалить алиас \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1357
-#, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
 msgstr "Вы действительно хотите удалить класс \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1365
-#, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
 msgstr "Вы действительно хотите удалить функцию \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
 #: src/modules/classeditor/ClassEditorWindow.cpp:1360
-#, fuzzy
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr "Вы действительно хотите удалить пространство имён \"%1\"?"
 
@@ -811,9 +803,8 @@ msgid "Manually"
 msgstr "Вручную"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:812
-#, fuzzy
 msgid "Member Function"
-msgstr "Функции-члены:"
+msgstr "Функция-член"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:992
 msgid "Missing Alias Name"
@@ -1038,12 +1029,11 @@ msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:325
 msgid "OverWrite Current Alias"
-msgstr "Переписать текущий алиас"
+msgstr "Перезаписать текущий алиас"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1116
-#, fuzzy
 msgid "OverWrite Current Popup"
-msgstr "Переписать текущий алиас"
+msgstr "Перезаписать текущее меню"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:61
 msgid "Params:"
@@ -1088,9 +1078,8 @@ msgid "Please enter the new name for the namespace"
 msgstr "Пожалуйста, введите новое имя пространства имён"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2065
-#, fuzzy
 msgid "Please enter the optional reminder string for the member function:"
-msgstr "Пожалуйста, введите имя функции-члена:"
+msgstr "Пожалуйста, введите необязательную напоминалку для функции-члена:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:643
 msgid ""
@@ -1214,9 +1203,8 @@ msgid "Replace with"
 msgstr "Заменить на"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
-#, fuzzy
 msgid "Row: %1 Col: %2"
-msgstr "Строк: %1 Столбцов:%2"
+msgstr "Строка: %1 Столбец: %2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
@@ -1284,9 +1272,8 @@ msgstr "Экспортируемый файл будет пустым: отме�
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:750
 #: src/modules/classeditor/ClassEditorWindow.cpp:1138
-#, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr "Файл \"%1\" существует. Хотите переписать его?"
+msgstr "Файл \"%1\" существует. Хотите перезаписать его?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:152
 msgid ""

@@ -5,21 +5,23 @@
 # Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
 # alexzulu <tuxovod@list.ru>, 2011.
 # alexzulu <ua6hdw@gmail.com>, 2011.
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2011-03-18 19:46+0300\n"
-"Last-Translator: alexzulu <ua6hdw@gmail.com>\n"
+"PO-Revision-Date: 2011-06-06 01:38+0700\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
+"alexeysokolov co cc>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1186
 #, c-format
@@ -115,7 +117,6 @@ msgid "Can't delete a null object reference"
 msgstr "Невозможно удалить ссылку на нулевой объект"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:896
-#, fuzzy
 msgid "Can't delete an inexistant object"
 msgstr "Невозможно удалить несуществующий объект"
 
@@ -464,7 +465,7 @@ msgstr "Ошибочная ссылка на хеш: переменная опр
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 msgid "Hostname: %Q"
-msgstr ""
+msgstr "Имя хоста: %Q"
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
@@ -504,7 +505,6 @@ msgid "Invalid command evaluation in object scope"
 msgstr "Недействительна оценка команды в области объекта"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
-#, fuzzy
 msgid "Invalid data type for parameter \"%1\""
 msgstr "Недействительный тип даты для параметра \"%1\""
 
@@ -582,7 +582,6 @@ msgid "Missing class name"
 msgstr "Отсутствует класс объекта"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:146
-#, fuzzy
 msgid "Missing non-optional parameter \"%1\""
 msgstr "Отсутствует обязательный параметр \"%1\""
 
@@ -796,7 +795,6 @@ msgstr ""
 "Свойство '%Q' для объекта '%Q' класса '%Q' имеет не поддерживаемый тип даты"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1154
-#, fuzzy
 msgid "Property: %1%2%3, type %4"
 msgstr "Свойство: %1%2%3, тип %4"
 
@@ -934,7 +932,6 @@ msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1224
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1234
-#, fuzzy
 msgid ""
 "The 'foreach' command expects a writable iteration variable as first "
 "parameter"
@@ -946,7 +943,6 @@ msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr "Команде 'foreach' требуется выражение в круглых скобках"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:312
-#, fuzzy
 msgid "The 'global' command needs a list of variables"
 msgstr "Команде 'global' нужен список переменных"
 
@@ -1588,7 +1584,6 @@ msgid "Window '%Q' not found, using current one"
 msgstr "Окно '%Q' не найдено, используется текущее"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
-#, fuzzy
 msgid "Window Lifetime"
 msgstr "Время жизни окна"
 
@@ -1676,7 +1671,6 @@ msgstr "найден тип %Q там где ожидается тип '%s'"
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:116
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:95
-#, fuzzy
 msgid "line %1, near character %2"
 msgstr "Строка %1, около символа %2"
 

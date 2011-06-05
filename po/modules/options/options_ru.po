@@ -11,22 +11,23 @@
 # Igor "BugSlayer" Govorov <govorov.igor at-sign gmail.com>, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
 # Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010, 2011.
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2011-03-17 22:43+0600\n"
-"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
-"org>\n"
+"PO-Revision-Date: 2011-06-06 01:51+0700\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
+"alexeysokolov co cc>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:285
@@ -321,13 +322,12 @@ msgstr ""
 "пользователей, содержащее ваш текущий ник</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will match your nick and/or the "
 "words you specified in a case sensitive manner</center>"
 msgstr ""
-"<center>Если включена эта опция, KVIrc будет подсвечивать панель задач "
-"только если достигнут заданный уровень подсветки.</center>"
+"<center>Если включена эта опция, KVIrc будет сравнивать "
+"ник и/или указанные вами слова регистрозависимо.</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:96
 msgid ""
@@ -930,11 +930,12 @@ msgstr ""
 "времени доступности добавляется к запросу файла.</center>"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
-#, fuzzy
 msgid ""
 "<center>This is the base log directory:<br>all the log files will be saved "
 "inside this directory</center>"
-msgstr "<center>Это имя текущего выбранного сервера или сети</center>"
+msgstr ""
+"<center>Это базвая директория для журналов:<br>все журналы будут сохраняться "
+"внутри неё</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:665
 msgid ""
@@ -1029,28 +1030,28 @@ msgstr ""
 "ника пользователя (в секундах)</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:183
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this network "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
 "<center>Вы можете определить \"специальный\" <b>ник</b> который будет "
-"использоваться для идентификации на серверах этой сети.<br>Если это поле "
-"оставлено пустым (наиболее общий случай), используется значение по умолчанию "
+"использоваться для идентификации на серверах этой сети в случае, если главный "
+"ник уже занят кем-то другим.<br>Если это поле "
+"оставлено пустым, используется значение по умолчанию "
 "(определённое в секции \"Идентификация\").</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:602
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this server "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
 "<center>Вы можете определить \"специальный\" <b>ник</b> который будет "
-"использоваться для идентификации на серверах этой сети.<br>Если это поле "
-"оставлено пустым (наиболее общий случай), используется значение по умолчанию "
-"(определённое в секции \"Идентификация\").</center>"
+"использоваться для идентификации на этом сервере в случае, если главный ник "
+"уже занят кем-то другим.<br>Если это поле "
+"оставлено пустым, используется значение по умолчанию "
+"(указанное в свойствах сети или в секции \"Идентификация\").</center>"
 
 #: src/modules/options/OptionsWidget_lag.cpp:47
 msgid ""
@@ -1834,9 +1835,8 @@ msgid "Alert Level 5:"
 msgstr "Уровень подсветки 5:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:91
-#, fuzzy
 msgid "Alert Options"
-msgstr "Ограничение подсветки"
+msgstr "Параметры подсветки"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:122
 msgid "Alert Restrictions"
@@ -1880,9 +1880,8 @@ msgstr "Альтернативный ник 3:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:174
 #: src/modules/options/OptionsWidget_servers.cpp:593
-#, fuzzy
 msgid "Alt.Nickname:"
-msgstr "Альтернативный ник 1:"
+msgstr "Альтернативный ник:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:924
 msgid "Alternative Nickname:"
@@ -2525,9 +2524,8 @@ msgid "Enable default away message"
 msgstr "Сообщение в режиме Отошёл по умолчанию"
 
 #: src/modules/options/OptionsWidget_connection.cpp:197
-#, fuzzy
 msgid "Enable ident service"
-msgstr "Сервис identd"
+msgstr "Включить сервис identd"
 
 #: src/modules/options/OptionsWidget_connection.cpp:199
 msgid "Enable ident service (bad practice on UNIX!)"
@@ -2631,7 +2629,6 @@ msgid "Failed to Load Avatar - KVIrc"
 msgstr "Невозможно загрузить аватар - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:562
-#, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
 msgstr "Невозможно загрузить аватар.<br><b>%1</b>"
 
@@ -2667,9 +2664,8 @@ msgid "File pattern:"
 msgstr "Файл образца:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1270
-#, fuzzy
 msgid "Filter:"
-msgstr "Файл образца:"
+msgstr "Фильтр:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:323
 msgid "Flash system taskbar on new dcc chat message"
@@ -2842,19 +2838,18 @@ msgid "Highlight messages containing my nickname"
 msgstr "Подсвечивать сообщения содержащие мой ник"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
-#, fuzzy
 msgid "Highlight only whole words splitting on space and on:"
 msgstr ""
-"Подсвечивать только слова целиком, используя следующие разделители слов:"
+"Подсвечивать только слова целиком, используя следующие разделители слов "
+"(+пробел):"
 
 #: src/modules/options/OptionsWidget_sound.cpp:342
 msgid "Highlighted message in inactive window"
 msgstr "Подсвечиваемое сообщение"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:67
-#, fuzzy
 msgid "Highlighting Method"
-msgstr "Подсветка"
+msgstr "Метод подсветки"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:121
 msgid "Hint: Move the mouse cursor over the fields to get help"
@@ -3243,9 +3238,8 @@ msgid "Minimize console after successful login"
 msgstr "Минимизировать консоль после удачного входа"
 
 #: src/modules/options/OptionsWidget_tray.cpp:44
-#, fuzzy
 msgid "Minimize in tray"
-msgstr "Сворачиваться в трей при старте программы"
+msgstr "Сворачиваться в трей"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:44
 msgid "Minimize on startup"
@@ -3573,9 +3567,8 @@ msgid "Open all minimized"
 msgstr "Открыть всё минимизированным"
 
 #: src/modules/options/OptionsWidget_query.cpp:58
-#, fuzzy
 msgid "Open incoming queries as minimized"
-msgstr "Всегда открывать приваты свернутыми"
+msgstr "Открывать входящие приваты свернутыми"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:316
 #: src/modules/options/OptionsWidget_dcc.cpp:351
@@ -3607,9 +3600,8 @@ msgid "Output verbosity"
 msgstr "Многословность вывода"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:43
-#, fuzzy
 msgid "Output verbosity:"
-msgstr "Многословность вывода"
+msgstr "Многословность вывода:"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:104
 msgid "PAGE"
@@ -4444,7 +4436,6 @@ msgstr ""
 "помощью CTCP USERINFO"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:146
-#, fuzzy
 msgid ""
 "This is an option for the impatient: it allows one to forcibly and "
 "permanently disable the notifier window. Please note that if this option is "
@@ -4456,7 +4447,7 @@ msgstr ""
 "окно извещателя. Пожалуйста имейте ввиду, что если эта опция активирована, "
 "извещатель НИКОГДА не будет появляться даже если у вас включены все "
 "остальные опции вокруг. Также имейте ввиду, что эта опция молча запретит все "
-"команды /notifier.*."
+"команды /notifier.*"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:94
 msgid ""
@@ -4526,26 +4517,25 @@ msgstr ""
 "переключить игру в оконный режим."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:177
-#, fuzzy
 msgid ""
 "This option uses the DBus-based notifier instead of KVIrc one.<br>This is "
 "cool if you want to better integrate KVIrc inside your desktop environment. "
 "Note that this notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
 "Эта опция заменяет встроенный извещатель KVIrc на извещатель, основанный на "
-"DBus (типа KDE KNotify).<br> Это хорошо, если вы хотите сильнее "
-"интегрировать KVIrc с KDE. Однако, он не такой гибкий как встроенный, и не "
+"DBus.<br> Это хорошо, если вы хотите сильнее "
+"интегрировать KVIrc с окружением рабочего стола. Однако, он не такой гибкий "
+"как встроенный, и не "
 "имеет табов."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:160
-#, fuzzy
 msgid ""
 "This option uses the KDE notification system instead of KVIrc one.<br>This "
 "is cool if you want to better integrate KVIrc inside KDE. Note that KDE's "
 "notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
-"Эта опция заменяет встроенный извещатель KVIrc на извещатель, основанный на "
-"DBus (типа KDE KNotify).<br> Это хорошо, если вы хотите сильнее "
+"Эта опция заменяет встроенный извещатель KVIrc на извещатель KDE.<br> Это "
+"хорошо, если вы хотите сильнее "
 "интегрировать KVIrc с KDE. Однако, он не такой гибкий как встроенный, и не "
 "имеет табов."
 
@@ -4833,9 +4823,8 @@ msgid "Use the DBus-based notifiers"
 msgstr "Использовать извещатель, основанный на DBus"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:159
-#, fuzzy
 msgid "Use the KDE notifier"
-msgstr "Использовать извещатель, основанный на DBus"
+msgstr "Использовать извещатель KDE"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Use the SASL authentication protocol if available"
@@ -5052,14 +5041,13 @@ msgid "chat"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.h:168
-#, fuzzy
 msgid "connection"
-msgstr "Соединение"
+msgstr "соединение"
 
 #: src/modules/options/OptionsWidget_proxy.h:56
 #, fuzzy
 msgid "connection,servers"
-msgstr "Соединение"
+msgstr "соединение"
 
 #: src/modules/options/OptionsWidget_protection.h:35
 msgid "ctcp,flood"

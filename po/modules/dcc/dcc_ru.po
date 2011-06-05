@@ -5,21 +5,23 @@
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2010-06-14 10:42+0400\n"
-"Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
+"PO-Revision-Date: 2011-06-06 01:55+0700\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
+"alexeysokolov co cc>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/dcc/requests.cpp:856
@@ -296,7 +298,6 @@ msgid "Can't open file %Q for reading"
 msgstr "Невозможно открыть файл %Q на чтение"
 
 #: src/modules/dcc/requests.cpp:542
-#, fuzzy
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %1 on port %2"
 msgstr ""
@@ -304,13 +305,12 @@ msgstr ""
 "%2 "
 
 #: src/modules/dcc/requests.cpp:578
-#, fuzzy
 msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %1 on port %2, "
 "or invalid resume size"
 msgstr ""
 "Не могу выполнить DCC SEND: Передача не инициирована для файла %1 через порт "
-"%2 или неверный итоговый размер"
+"%2 или неверный размер продолжения"
 
 #: src/modules/dcc/DccUtils.cpp:124
 msgid "Can't retrieve a suitable local IPV4 address"
@@ -342,7 +342,6 @@ msgid "Choose Files to Send - KVIrc"
 msgstr "Выберите файл для передачи - KVIrc"
 
 #: src/modules/dcc/requests.cpp:101
-#, fuzzy
 msgid "Concurrent transfer limit reached (%1 of %2 transfers running)"
 msgstr ""
 "Количество параллельных передач достигло лимита (%1 из %2 передач запущено)"
@@ -500,17 +499,14 @@ msgid "Internal error in RESUME request"
 msgstr "Внутренняя ошибка в запросе RESUME"
 
 #: src/modules/dcc/requests.cpp:195
-#, fuzzy
 msgid "Invalid IP address %1"
 msgstr "Недействительный IP адрес %1"
 
 #: src/modules/dcc/requests.cpp:175
-#, fuzzy
 msgid "Invalid IP address in old format %1"
 msgstr "Недействительный IP адрес в старом формате %1"
 
 #: src/modules/dcc/requests.cpp:640
-#, fuzzy
 msgid "Invalid RECV request: Position %1 is larger than file size"
 msgstr "Недействительный RECV запрос: Позиция %1 больше размера файла"
 
@@ -533,14 +529,12 @@ msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Недействительный кодек, принимается по умолчанию 'adpcm'"
 
 #: src/modules/dcc/requests.cpp:159
-#, fuzzy
 msgid "Invalid port number %1"
 msgstr "Недействительный номер порта %1"
 
 #: src/modules/dcc/requests.cpp:567
-#, fuzzy
 msgid "Invalid resume position argument '%1'"
-msgstr "Недействительный аргумент итоговой позиции '%1'"
+msgstr "Недействительный аргумент позиции продолжения '%1'"
 
 #: src/modules/dcc/libkvidcc.cpp:1130
 msgid "Invalid sample rate specified, defaulting to 8000"
@@ -586,9 +580,9 @@ msgid "Low-level transport connection established"
 msgstr "Установлено соединение по низкоуровневому транспорту"
 
 #: src/modules/dcc/requests.cpp:856
-#, fuzzy
 msgid "No file offer named '%1' (with size %2) available for %3 [%4@%5]"
-msgstr "Нет файла с именем '%1' (размером %2) доступного для %3 [%4@%5]"
+msgstr ""
+"Нет предложения файла с именем '%1' (размером %2) доступного для %3 [%4@%5]"
 
 #: src/modules/dcc/requests.cpp:780
 #: src/modules/dcc/requests.cpp:924
@@ -689,7 +683,6 @@ msgid "Setting up the connection"
 msgstr "Установка соединения"
 
 #: src/modules/dcc/requests.cpp:116
-#, fuzzy
 msgid "Slot limit reached (%1 slots of %2)"
 msgstr "Достигнут лимит слотов (%1 слотов из %2)"
 
@@ -707,7 +700,6 @@ msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск соединения через SSL"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1006
-#, fuzzy
 msgid "TRANSFER %1"
 msgstr "ПЕРЕДАЧА %1"
 
@@ -929,9 +921,8 @@ msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Эта сборка не поддерживает SSL, ключ -s проигнорирован"
 
 #: src/modules/dcc/libkvidcc.cpp:2773
-#, fuzzy
 msgid "This executable was built without SSL support"
-msgstr "Эта сборка программы не имеет поддержки SSL, ключ -s проигнорирован"
+msgstr "Эта сборка программы не имеет поддержки SSL"
 
 #: src/modules/dcc/libkvidcc.cpp:171
 msgid "This executable was built without SSL support, -s switch ignored"
@@ -1000,9 +991,8 @@ msgid "Unable to process the above request: %Q, %Q"
 msgstr "Не могу обработать указанный запрос: %Q, %Q"
 
 #: src/modules/dcc/requests.cpp:1228
-#, fuzzy
 msgid "Unknown DCC type '%1'"
-msgstr "Неизвестный DCC тип '%1'"
+msgstr "Неизвестный тип DCC '%1'"
 
 #: src/modules/dcc/requests.cpp:707
 msgid ""
