@@ -124,6 +124,7 @@ KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
 
 	KviTalToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URI"));
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
+	connect(m_pAddressEdit,SIGNAL(returnPressed(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
@@ -418,11 +419,13 @@ KviWindow * KviConsoleWindow::activeWindow()
 }
 
 void KviConsoleWindow::ircUriChanged(const QString & text){
-	if(KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this) & KviIrcUrl::InvalidProtocol)
+	if(KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this) & KviIrcUrl::InvalidProtocol ||
+		KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this) & KviIrcUrl::InvalidUrl)
 	{
 		KviMessageBox::warning(__tr2qs("KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 				"Your URL is invalid. Check spelling and try again"));
 	}
+	m_pInput->setFocus();
 }
 
 void KviConsoleWindow::updateUri()

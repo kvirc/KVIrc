@@ -41,9 +41,12 @@ private:
 	KviWindow * m_pKviWindow;
 protected:
 	virtual void paintEvent ( QPaintEvent * event );
+	virtual void keyPressEvent ( QKeyEvent * e );
 public:
 	int dummyRead() const { return 0; };
 	void applyOptions();
+signals:
+	void returnPressed(QString);
 };
 
 #endif //_KVI_THEMEDCOMBOBOX_H_

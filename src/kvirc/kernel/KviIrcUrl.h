@@ -55,7 +55,8 @@ namespace KviIrcUrl
 	enum KviIrcUrlParserError {
 		InvalidProtocol = 1,
 		InvalidPort = 2,
-		NeedNewContext = 4
+		NeedNewContext = 4,
+		InvalidUrl = 8
 	};
 
 	enum KviIrcUrlContextSpec {

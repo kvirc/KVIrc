@@ -40,75 +40,14 @@
 #define _KVI_IRCURL_CPP_
 #include "KviIrcUrl.h"
 
-
 bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 {
 	// irc[6]://<server>[:<port>][/<channel>[?<pass>]]
-	KviCString szUrl = url;
-	//szUrl.replaceAll("$","\\$");
-	//szUrl.replaceAll(";","\\;");
-	bool bIPv6 = false;
-	bool bIPv6ip = false;
-	bool bSSL = false;
-	KviCString szServer;
-	kvi_u32_t uPort = 0;
-	bool bGotPort = false;
-	if(kvi_strEqualCIN(szUrl.ptr(),"irc://",6))
-	{
-		szUrl.cutLeft(6);
-	} else if(kvi_strEqualCIN(szUrl.ptr(),"irc6://",7))
-	{
-		bIPv6 = true;
-		szUrl.cutLeft(7);
-	} else if(kvi_strEqualCIN(szUrl.ptr(),"ircs://",7))
-	{
-		bSSL = true;
-		szUrl.cutLeft(7);
-	} else if(kvi_strEqualCIN(szUrl.ptr(),"ircs6://",8))
-	{
-		bIPv6 = true;
-		bSSL = true;
-		szUrl.cutLeft(8);
-	} else return false;
 
-	KviCString szServerAndPort;
+	KviIrcUrlParts urlParts;
+	KviIrcUrl::split(url, urlParts);
 
-	int idx = szUrl.findFirstIdx('/');
-	if(idx != -1)
-	{
-		szServerAndPort = szUrl.left(idx);
-		szUrl.cutLeft(idx + 1);
-	} else {
-		szServerAndPort = szUrl;
-		szUrl = "";
-	}
-
-	if(szServerAndPort.isEmpty())return false;
-
-	if(!bIPv6)
-		idx = szServerAndPort.findLastIdx(':');
-	else
-	{
-		bIPv6ip = (szServerAndPort.contains('[') && szServerAndPort.contains("]:") && bIPv6);
-		idx = bIPv6ip ? szServerAndPort.findLastIdx("]:") : szServerAndPort.findLastIdx(':'); /* ]: is a bat */
-	}
-
-	if(idx != -1)
-	{
-		szServer = bIPv6ip ? szServerAndPort.left(idx).cutLeft(1) : szServerAndPort.left(idx);
-		
-		if(bIPv6ip)
-			szServerAndPort.cutLeft(idx + 2);
-		else
-			szServerAndPort.cutLeft(idx + 1);
-
-		bool bOk;
-		uPort = szServerAndPort.toUInt(&bOk);
-		if(!bOk)uPort = 6667;
-		bGotPort = true;
-	} else {
-		szServer = szServerAndPort;
-	}
+	if (urlParts.iError & InvalidUrl)return false;
 
 	cmdBuffer = "server ";
 	switch(contextSpec)
@@ -120,35 +59,33 @@ bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 			cmdBuffer.append("-n ");
 			break;
 	}
-	if(bIPv6)cmdBuffer.append(" -i ");
-	if(bSSL)cmdBuffer.append(" -s ");
+	if(urlParts.bIPv6)cmdBuffer.append(" -i ");
+	if(urlParts.bSsl)cmdBuffer.append(" -s ");
 
-	if(szUrl.hasData())
+	QString channels, passwords;
+	QStringList splitted;
+
+	if (urlParts.chanList.size())
 	{
-		KviCString szChannel;
-		KviCString szPass;
-
-		idx = szUrl.findFirstIdx('?');
-		if(idx != -1)
+		for (int i = 0; i < urlParts.chanList.size(); ++i)
 		{
-			szChannel = szUrl.left(idx);
-			szUrl.cutLeft(idx + 1);
-			szPass = szUrl;
-		} else {
-			szChannel = szUrl;
-			szPass = "";
+			splitted = urlParts.chanList[i].split("?");
+			if (i)channels.append(",");
+			if (!(splitted[0].startsWith("#") || splitted[0].startsWith("!") || splitted[0].startsWith("&")))channels.append("#");
+			channels.append(splitted[0]);
+
+			if (splitted.size() > 1)
+			{
+				if (i)passwords.append(",");
+				passwords.append(splitted[1]);
+			}
 		}
-
-		if(!(szChannel.firstCharIs('#') || szChannel.firstCharIs('!') || szChannel.firstCharIs('&')))
-				szChannel.prepend('#');
-
-		if(szPass.isEmpty())cmdBuffer.append(KviCString::Format," -c=\"join %s\" ",szChannel.ptr());
-		else cmdBuffer.append(KviCString::Format," -c=\"join %s %s\" ",szChannel.ptr(),szPass.ptr());
-
 	}
 
-	cmdBuffer.append(szServer);
-	if(bGotPort)cmdBuffer.append(KviCString::Format," %d",uPort);
+	cmdBuffer.append(KviCString::Format," -c=\"join %s %s\" ",channels.data(),passwords.data());
+
+	cmdBuffer.append(urlParts.szHost);
+	cmdBuffer.append(KviCString::Format," %d",urlParts.iPort);
 
 	cmdBuffer.append(';');
 
@@ -160,72 +97,39 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	// irc[s][6]://<server>[:<port>][/<channel>[?<pass>]][[,<channel>[?<pass>]]
 
 	//defaults
-	result.bSsl=false;
-	result.bIPv6=false;
+	result.bSsl = false;
+	result.bIPv6 = false;
 	result.iPort = 6667;
-	result.iError=0;
+	result.iError = 0;
 
-	bool bIPv6ip = false;
+	QRegExp rx("^(irc(s)?(6)?://)?\\[?([\\w\\d\\.-]*|[\\d:a-f]*)\\]?(:(\\d*))?(/(.*))?$");
 
-	int iProtoLen = url.indexOf("://");
-	if(iProtoLen!=-1) {
-		if(KviQString::equalCIN(url,"irc",3)) {
-			// OK, seems to be a valid proto;
-			url = url.right(url.length()-3);
-			if(KviQString::equalCIN(url,"s",1)) {
-				result.bSsl=true;
-				url = url.right(url.length()-1);
-			}
-			if(KviQString::equalCIN(url,"6",1)) {
-				result.bIPv6=true;
-				url = url.right(url.length()-1);
-			}
-			if(!KviQString::equalCIN(url,"://",3)) {
-				//irc(???):// proto??
-				result.iError |= InvalidProtocol;
-			}
-			iProtoLen = url.indexOf("://");
-			url = url.right(url.length()-iProtoLen-3);
-		} else {
-			result.iError |= InvalidProtocol;
-		}
-	}
-	//Ok, we understand a protocol.. Now we shuld find a server name:)
-	int iTmp;
-	bIPv6ip = (url.contains('[') && url.contains("]:") && result.bIPv6);
-	
-	iTmp = bIPv6ip ? url.indexOf("]:") : url.indexOf(':');
-	if(iTmp!=-1) {
-		result.szHost = bIPv6ip ? url.left(iTmp).remove('[') : url.left(iTmp);
-		url = bIPv6ip ? url.right(url.length()-iTmp-2) : url.right(url.length()-iTmp-1);
-		// Accepted, now the time for the port:)
-		bool bOk;
-		if( (iTmp = url.indexOf('/')) != -1) { // any channels pending?
-			result.iPort = url.left(iTmp).toUInt(&bOk);
-			if(!bOk) {
-				result.iPort = 6667;
-				result.iError |= InvalidPort;
-			}
-			url = url.right(url.length()-iTmp-1);
-		} else {
-			result.iPort = url.toUInt(&bOk);
-			if(!bOk) {
-				result.iPort = 6667;
-				result.iError |= InvalidPort;
-			}
-			url = "";
-		}
-	} else if( (iTmp = url.indexOf('/')) != -1) { // have channels??
-		result.szHost = url.left(iTmp);
-		url = url.right(url.length()-iTmp-1);
-	} else {
-		result.szHost = url;
-		url = "";
+	if (rx.indexIn(url) < 0)
+	{
+		result.iError |= InvalidUrl;
+		return; // doesn't match? then it's not even an url...
 	}
 
-	//and, finally, channels:D
-	result.chanList = url.isEmpty()?QStringList():url.split(',',QString::SkipEmptyParts);
+	if (!rx.cap(1).isEmpty())
+	{
+		result.bSsl = rx.cap(2) == "s";
+		result.bIPv6 = rx.cap(3) == "6";
+	}
 
+	result.bIPv6 = result.bIPv6 || rx.cap(3).contains(":");
+
+	if (rx.cap(6).toUInt() > 65535 || rx.cap(6).toUInt() < 1)
+	{
+		result.iError |= InvalidPort;
+		if (result.bSsl)result.iPort = 6697;
+	} else
+		result.iPort = rx.cap(6).toUInt();
+
+	result.szHost = rx.cap(4);
+
+	if (result.szHost.isEmpty())result.iError |= InvalidUrl;
+
+	result.chanList = rx.cap(8).isEmpty() ? QStringList() : rx.cap(8).split(',',QString::SkipEmptyParts);
 }
 
 void KviIrcUrl::join(QString &uri, KviIrcServer* server)
@@ -316,7 +220,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsoleWindow* pConsol
 		}
 	}
 
-	if(!(parts.iError & KviIrcUrl::InvalidProtocol)) {
+	if(!(parts.iError & KviIrcUrl::InvalidProtocol || parts.iError & KviIrcUrl::InvalidUrl)) {
 		g_pApp->addRecentUrl(text);
 
 		QString szJoinCommand;
