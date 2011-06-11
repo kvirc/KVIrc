@@ -333,11 +333,11 @@ QT4_WRAP_CPP(kvirc_MOC_SRCS ${kvirc_MOC_HDRS})
 
 IF(MINGW)
 	# resource compilation for mingw
-	ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
-		COMMAND windres.exe -I${CMAKE_SOURCE_DIR}/data/resources_win32/ -i${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc -o${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
-		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/data/resources_win32
-	)
-	LIST(APPEND kvirc_SRCS ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o)
+	set(CMAKE_RC_COMPILER_INIT windres)
+	ENABLE_LANGUAGE(RC)
+	SET(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> -O coff <DEFINES> -i <SOURCE> -o <OBJECT>")
+
+	LIST(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc)
 ENDIF()
 
 IF(MSVC)
