@@ -86,7 +86,7 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window information " \
 			"label. It can show you known information about query target at the top of the window.<br>" \
-			"Uncheck if you think,that it wastes your query space/" \
+			"Uncheck if you think,that it wastes your query space" \
 			"</center>","options"));
 
 	b = addBoolSelector(0,6,1,6,__tr2qs_ctx("Paste last query log","options"),KviOption_boolPasteLastLogOnQueryJoin);
