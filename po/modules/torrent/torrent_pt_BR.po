@@ -1,67 +1,70 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
+# Translation of KVIrc torrent messages to Portuguese
+# Copyright (C) 2010 the KVIrc's copyright holder
+# This file is distributed under the same license as the kvirc package.
+#
+# Zé <ze@mandriva.org>, 2007-2008.
+# Zé <mmodem00@gmail.com>, 2010.
+# Rafael_C_V <rafaelvizioni@ig.com.br> - PT-BR - 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: kvirc_torrent\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2010-06-19 20:07+0200\n"
+"PO-Revision-Date: 2011-06-15 11:08-0300\n"
+"Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.2-beta2\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/torrent/KTorrentDbusInterface.cpp:40
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
+"Um interface para o excelente cliente KTorrent do KDE.\n"
+"Transfira-o de http://www.ktorrent.org\n"
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
-msgstr ""
+msgstr "A escolher o interface do cliente torrent \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:722
+#: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
-msgstr ""
+msgstr "Interface de cliente inválido \"%Q\"!"
 
 #: src/modules/torrent/libkvitorrent.cpp:129
 msgid "Last interface error: "
-msgstr ""
+msgstr "Erro do último interface: "
 
-#: src/modules/torrent/StatusBarApplet.cpp:92
+#: src/modules/torrent/tc_statusbarapplet.cpp:92
 msgid "No client selected!"
-msgstr ""
+msgstr "Nenhum cliente seleccionado!"
 
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
-msgstr ""
+msgstr "Nenhum interface de cliente torrent seleccionado. Tente /torrent.detect"
 
 #: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
-msgstr ""
+msgstr "Parece que não existe um cliente torrent utilizável nesta máquina"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
-msgid ""
-"The selected torrent client interface failed to execute the requested "
-"function"
-msgstr ""
+msgid "The selected torrent client interface failed to execute the requested function"
+msgstr "O interface do cliente torrent seleccionado falhou ao executar a função pedida"
 
-#: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
+#: src/modules/torrent/tc_statusbarapplet.cpp:44
+#: src/modules/torrent/tc_statusbarapplet.cpp:61
 msgid "Torrent Client"
-msgstr ""
+msgstr "Cliente Torrent"
 
 #: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr ""
+msgstr "Tentando o interface do cliente torrent \"%Q\": pontuação %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:714
+#: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
-msgstr ""
+msgstr "Usando o interface do cliente \"%Q\"."
+

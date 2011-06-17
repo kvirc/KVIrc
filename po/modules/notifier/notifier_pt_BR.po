@@ -1,78 +1,77 @@
-# translation of notifier_pt_BR.po to 
-# translation of notifier.pot to Brazilian-Protugues
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Adilson GonAalves Soares Junior <cabide@brfree.com.br>, 2004.
+# Translation of KVIrc notifier messages to Portuguese
+# Copyright (C) 2010 the KVIrc's copyright holder
+# This file is distributed under the same license as the KVIrc package.
 #
+# Zé <ze@mandriva.org>, 2004-2007.
+# Zé <mmodem00@gmail.com>, 2010.
+# Rafael_C_V <rafaelvizioni@ig.com.br> - PT-BR - 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: notifier_pt_BR\n"
+"Project-Id-Version: kvirc_notifier\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2004-11-15 02:19+0000\n"
-"Last-Translator: \n"
-"Language-Team:  <pt@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2010-06-12 16:26+0200\n"
+"PO-Revision-Date: 2011-06-14 19:21-0300\n"
+"Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:975
+#: src/modules/notifier/notifierwindow.cpp:931
 msgid "1 Hour"
 msgstr "1 Hora"
 
-#: src/modules/notifier/NotifierWindow.cpp:971
+#: src/modules/notifier/notifierwindow.cpp:927
 msgid "1 Minute"
 msgstr "1 Minuto"
 
-#: src/modules/notifier/NotifierWindow.cpp:973
+#: src/modules/notifier/notifierwindow.cpp:929
 msgid "15 Minutes"
 msgstr "15 Minutos"
 
-#: src/modules/notifier/NotifierWindow.cpp:974
+#: src/modules/notifier/notifierwindow.cpp:930
 msgid "30 Minutes"
 msgstr "30 Minutos"
 
-#: src/modules/notifier/NotifierWindow.cpp:972
+#: src/modules/notifier/notifierwindow.cpp:928
 msgid "5 Minutes"
 msgstr "5 Minutos"
 
-#: src/modules/notifier/NotifierWindow.cpp:980
+#: src/modules/notifier/notifierwindow.cpp:936
 msgid "Disable"
 msgstr "Desativar"
 
-#: src/modules/notifier/NotifierWindow.cpp:968
+#: src/modules/notifier/notifierwindow.cpp:924
 msgid "Hide"
-msgstr "Ocultar"
+msgstr "Esconder"
 
-#: src/modules/notifier/NotifierWindow.cpp:978
+#: src/modules/notifier/notifierwindow.cpp:934
 msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Permanentemente (Até que a Explícitação esteja Ativa)"
+msgstr "Permanentemente (Até Ser Ativado Explicitamente)"
 
-#: src/modules/notifier/NotifierWindow.cpp:967
+#: src/modules/notifier/notifierwindow.cpp:923
 msgid "Show/Hide input line"
-msgstr ""
+msgstr "Mostrar/Esconder linha de entrada"
 
-#: src/modules/notifier/libkvinotifier.cpp:153
+#: src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "A opção -t espera um intervalo de tempo em segundos"
 
-#: src/modules/notifier/libkvinotifier.cpp:150
+#: src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
-msgstr "O intervalo de tempo especificado não é válido, assumindo 0"
+msgstr "O intervalo de tempo indicado não é válido, a assumir 0"
 
-#: src/modules/notifier/libkvinotifier.cpp:136
+#: src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
-msgstr "A janela especificada não existe"
+msgstr "A janela indicada não existe"
 
-#: src/modules/notifier/NotifierWindow.cpp:977
+#: src/modules/notifier/notifierwindow.cpp:933
 msgid "Until KVIrc is Restarted"
-msgstr "Até que o KVirc seja Reiniciado"
+msgstr "Até o KVIrc ser Reiniciado"
 
-#: src/modules/notifier/NotifierWindow.cpp:1055
+#: src/modules/notifier/notifierwindow.cpp:1008
 msgid "Write text or commands to window"
 msgstr "Escrever texto ou comandos para a janela"
 
-#~ msgid "The command parser raised an error"
-#~ msgstr "O analisador de comando levantou um erro"

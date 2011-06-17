@@ -1,0 +1,46 @@
+# Translation of KVIrc python messages to Portuguese
+# Copyright (C) 2010 the KVIrc's copyright holder
+# This file is distributed under the same license as the KVIrc package.
+#
+# Zé <mmodem00@gmail.com>, 2010.
+# Rafael_C_V <rafaelvizioni@ig.com.br> - PT-BR - 2011
+msgid ""
+msgstr ""
+"Project-Id-Version: kvirc_python\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"PO-Revision-Date: 2011-06-14 15:34-0300\n"
+"Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:112
+msgid "Internal error: python interpreter not initialized"
+msgstr "Erro interno: interpretador python não inicializado"
+
+#: src/modules/python/libkvipython.cpp:117
+#: src/modules/python/libkvipython.cpp:121
+msgid "Python execution error:"
+msgstr "Erro de execução python:"
+
+#: src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr "O módulo pythoncore não pode ser carregado: suporte python não disponível"
+
+#: src/modules/python/libkvipython.cpp:100
+#: src/modules/python/libkvipython.cpp:153
+msgid "The pythoncore module failed to execute the code: something is wrong with the python support"
+msgstr "O módulo pythoncore falhou ao executar o código: algo está errado com o suporte python"
+
+#: src/modules/python/libkvipython.cpp:60
+msgid "This KVIrc executable has been compiled without python scripting support"
+msgstr "Este executável KVIrc foi compilado sem suporte de 'scripts' python"
+
+#: src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr "Para ver mais detalhes acerca da falha do carregamento, tente /pythoncore.load"
+
