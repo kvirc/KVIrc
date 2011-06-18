@@ -209,7 +209,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 			if(*(m->mask()) == *mask)
 			{
 				delete mask;
-                mask = 0;
+				mask = 0;
 				return m->user();
 			}
 		}
@@ -226,7 +226,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 				if(*(m->mask()) == *mask)
 				{
 					delete mask;
-                    mask = 0;
+					mask = 0;
 					return m->user();
 				}
 			}
@@ -240,7 +240,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 			{
 				qDebug(" Ops...got an incoherent regusers action...recovered ?");
 				delete l;
-                l = 0;
+				l = 0;
 			} else {
 				append_mask_to_list(l,u,mask);
 				m_pMaskDict->insert(mask->nick(),l);

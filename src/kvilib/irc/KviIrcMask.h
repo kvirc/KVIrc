@@ -289,6 +289,14 @@ public:
 	bool matchedBy(const KviIrcMask & mask) const { return mask.matchesFixed(*this); };
 
 	/**
+	* \brief Matches 2 strings
+	* \param szExp First string; can contains wildcards; special escape applies
+	* \param szStr Second string, fixed
+	* \return bool
+	*/
+	bool matchWildString(const QString & szExp, const QString & szStr) const;
+
+	/**
 	* \brief Returns the number of non-wildcards characters in the mask
 	* \return int
 	*/

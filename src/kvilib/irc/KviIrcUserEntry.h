@@ -99,7 +99,7 @@ protected:
 	bool        m_bBot;
 	bool        m_bAvatarRequested;
 
-	bool        m_bNotFoundRegUserLoockup;
+	bool        m_bNotFoundRegUserLoockup; //wtf?
 	QString     m_szRegisteredUserName;
 	QString     m_szLastRegisteredMatchNick;
 

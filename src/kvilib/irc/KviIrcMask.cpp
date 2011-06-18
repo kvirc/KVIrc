@@ -25,6 +25,7 @@
 #include "kvi_debug.h"
 #include "KviIrcMask.h"
 
+#include <QRegExp>
 /*
 	@doc: irc_masks
 	@title:
@@ -324,11 +325,11 @@ bool KviIrcMask::matches(const KviIrcMask & mask) const
 
 bool KviIrcMask::matchesFixed(const KviIrcMask & mask) const
 {
-	if(KviQString::matchString(m_szNick,mask.m_szNick,false,true))
+	if(matchWildString(m_szNick,mask.m_szNick))
 	{
-		if(KviQString::matchString(m_szUser,mask.m_szUser,false,true))
+		if(matchWildString(m_szUser,mask.m_szUser))
 		{
-			if(KviQString::matchString(m_szHost,mask.m_szHost,false,true))
+			if(matchWildString(m_szHost,mask.m_szHost))
 				return true;
 		}
 	}
@@ -337,15 +338,40 @@ bool KviIrcMask::matchesFixed(const KviIrcMask & mask) const
 
 bool KviIrcMask::matchesFixed(const QString & szNick, const QString & szUser, const QString & szHost) const
 {
-	if(!KviQString::matchString(m_szNick,szNick,false,true))
+	if(!matchWildString(m_szNick,szNick))
 		return false;
-	if(!KviQString::matchString(m_szUser,szUser,false,true))
+	if(!matchWildString(m_szUser,szUser))
 		return false;
-	if(!KviQString::matchString(m_szHost,szHost,false,true))
+	if(!matchWildString(m_szHost,szHost))
 		return false;
 	return true;
 }
 
+bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) const
+{
+	QString szWildcard;
+	QChar * pPtr = (QChar*)szExp.constData();
+
+	if(!pPtr)
+		return 0;
+		
+	while(pPtr->unicode())
+	{
+		if((pPtr->unicode() == '[') || (pPtr->unicode() == ']'))
+		{
+			szWildcard.append("[");
+			szWildcard.append(*pPtr);
+			szWildcard.append("]");
+		} else {
+			szWildcard.append(*pPtr);
+		}
+		pPtr++;
+	}
+	QRegExp re(szWildcard, Qt::CaseInsensitive, QRegExp::Wildcard);
+
+	return re.exactMatch(szStr);
+}
+	
 int KviIrcMask::getIpDomainMaskLen() const
 {
 	int iLen = m_szHost.length();
