@@ -558,7 +558,21 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 
 	QString szDate;
 	QDate date(QDate::currentDate());
-	szDate = date.toString("yyyy.MM.dd");
+
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat)) 
+	{
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+		case 0:
+		default:
+			szDate = date.toString("yyyy.MM.dd");
+			break;
+	}
+	szDate.replace(KVI_PATH_SEPARATOR_CHAR, '-');
 
 	QString szBase;
 	getBaseLogFileName(szBase);
