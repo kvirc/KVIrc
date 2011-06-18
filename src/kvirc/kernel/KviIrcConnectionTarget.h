@@ -78,16 +78,6 @@ public:
 		return (!m_szBindAddress.isEmpty());
 	}
 
-#if 0
-	const QString & networkName();
-
-	// this allows to force the network name: it should be used only by KviConsoleWindow
-	// but it's KviIrcServerParser (KviIrcServerParser_numericHandlers.cpp) that first
-	// gets the new network name... thus we make it public
-	// to remove one level of indirection.
-	void setNetworkName(const QString &szNetName);
-#endif
-
 protected:
 	// this is for KviIrcConnectionTargetResolver only
 	void clearProxy();

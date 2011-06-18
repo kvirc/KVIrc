@@ -51,19 +51,6 @@ KviIrcConnectionTarget::~KviIrcConnectionTarget()
 		delete m_pProxy;
 }
 
-#if 0
-const QString & KviIrcConnectionTarget::networkName()
-{
-	return m_pNetwork->name();
-}
-
-void KviIrcConnectionTarget::setNetworkName(const QString &szNetName)
-{
-	m_pNetwork->setName(szNetName);
-}
-#endif
-
-
 void KviIrcConnectionTarget::clearProxy()
 {
 	if(!m_pProxy)return;

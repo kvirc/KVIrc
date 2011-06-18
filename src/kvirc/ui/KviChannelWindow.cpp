@@ -26,6 +26,7 @@
 #include "kvi_out.h"
 #include "KviChannelWindow.h"
 #include "KviConsoleWindow.h"
+#include "KviIrcNetwork.h"
 #include "KviIconManager.h"
 #include "KviIrcView.h"
 #include "KviInput.h"
@@ -337,13 +338,16 @@ void KviChannelWindow::getConfigGroupName(QString & szBuffer)
 {
 	szBuffer = windowName();
 
-//TODO it would be nice to save per-network channel settings, so that the settings of two channels
-//with the same name but of different networks gets different config entries.
-// 	if(connection())
-// 	{
-// 		szBuffer.append("@");
-// 		szBuffer.append(connection()->currentNetworkName());
-// 	}
+	// save per-network channel settings, so that the settings of two channels
+	// with the same name but of different networks gets different config entries.
+	if(connection() && connection()->target() && 
+		connection()->target() && 
+		connection()->target()->network())
+	{
+		szBuffer.append("@");
+		// don't use the actual network name, because it could change during the connection
+		szBuffer.append(connection()->target()->network()->name());
+	}
 }
 
 void KviChannelWindow::saveProperties(KviConfigurationFile * pCfg)
@@ -353,12 +357,15 @@ void KviChannelWindow::saveProperties(KviConfigurationFile * pCfg)
 	QList<int> sizes;
 	sizes << m_pIrcView->width() << m_pUserListView->width();
 	pCfg->writeEntry("Splitter",sizes);
+	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
+	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
+		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
+		m_pIrcView->width(), sizes.at(0), m_pUserListView->width(), sizes.at(1), iTimeStamp);
 	pCfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
 	pCfg->writeEntry("PrivateBackground",m_privateBackground);
 	pCfg->writeEntry("DoubleView",m_pMessageView ? true : false);
 
-	if(m_pUserListView)
-		pCfg->writeEntry("UserListHidden",m_pUserListView->isHidden());
+	pCfg->writeEntry("UserListHidden",m_pUserListView->isHidden());
 	pCfg->writeEntry("ToolButtonsHidden",buttonContainer()->isHidden());
 }
 
@@ -400,6 +407,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	{
 		bool bHidden = pCfg->readBoolEntry("UserListHidden",0);
 		m_pUserListView->setHidden(bHidden);
+		m_pListViewButton->setChecked(!bHidden);
 		resizeEvent(0);
 	}
 

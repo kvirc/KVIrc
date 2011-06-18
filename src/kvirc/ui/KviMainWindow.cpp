@@ -500,6 +500,11 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 	if(g_pWinPropertiesConfig->hasGroup(group))
 	{
 		g_pWinPropertiesConfig->setGroup(group);
+	} else if(wnd->type() == KviWindow::Channel && 
+		g_pWinPropertiesConfig->hasGroup(group = wnd->windowName())
+	) {
+		// try to load pre-4.2 channel settings
+		g_pWinPropertiesConfig->setGroup(group);
 	} else {
 		bGroupSettings = true;
 		if(g_pWinPropertiesConfig->hasGroup(wnd->typeString()))
