@@ -1,16 +1,13 @@
 1. PROJECT RELATED QUESTIONS
 
-1.1 What is KVIrc ? What the "KVIrc" name stands for ?
-1.2 Why KVIrc is not totally integrated in KDE ?
+1.1 What is KVIrc ? What does the "KVIrc" name stand for ?
+1.2 Why is KVIrc not fully integrated in KDE ?
 
 
 2. COMPILATION
 
 2.1 I can't compile kvirc from svn, what's wrong?
 2.2 Internal Compiler Errors ?
-2.3 On Mandrake 10.0 (or other) KVIrc fails to start
-    saying that it can't find libkvisetup.so.
-2.4 I got 'amarokInterface.cpp:29:31: amarokInterface.moc: No such file or directory'. Whats going wrong?
 
 
 3. INSTALLATION
@@ -22,8 +19,8 @@
 
 4. IRC
 
-4.1 How do i join a channel ?
-4.2 How do i autojoin channels ?
+4.1 How do I join a channel ?
+4.2 How do I autojoin channels ?
 4.3 How do I enable automatic NickServ identification ?
 4.4 I can't see my national characters, what's wrong ?
 4.5 I can't connect to an IPV6 server, what's wrong ?
@@ -54,7 +51,7 @@
 5.11 I'm in a LAN and KVIrc uses a wrong IP address in dcc transfers
 
 
-6. APPAREANCE
+6. APPEARANCE
 
 6.1 On Windows KVIrc seems to slow-down sometimes, what's wrong ?
 6.2 I don't see the channel popup menus anymore, what's wrong ?
@@ -81,17 +78,17 @@
 --------------------------------------------------------------------------------
 
 
-1.1 What is KVIrc ?
+1.1 What is KVIrc ? What does the "KVIrc" name stand for ?
 
    KVIrc is a cross-platform Internet Relay Chat client.
    The name stands for K Visual Internet Relay Chat client.
    The K prefix comes from the old times, when KVIrc was bound to the
    KDE project and depended on the KDE libraries to run. Actually this
    is not true anymore since KVIrc depends only on the Qt library from
-   TrollTech and runs also on platforms where KDE can't run.
+   Nokia and runs also on platforms where KDE can't run.
 
 
-1.2 Why KVIrc is not totally integrated in KDE ?
+1.2 Why is KVIrc not totally integrated in KDE ?
 
    First of all read the answer for question 1.1.
    We could provide a more complete integration by the means of conditional
@@ -140,20 +137,6 @@
    3) A deeper hardware problem: if upgrading the compiler and changing memory banks doesn't help then
       it *might* be a deeper hardware problem: bus errors, faulty IDE (or SCSI) controller or even buggy CPU...
       Well....
-
-
-2.3 On Mandrake 10.0 (or other) KVIrc fails to start
-    saying that it can't find libkvisetup.so.
-
-    Mandrake 10.0 default libtool package is broken. Either upgrade
-    the libtool package or try to run ./autogen.sh --bundled-libtool
-    and then recompile (./configure, make, make install).
-    This *might* apply to other systems too.
-
-
-2.4 I got 'amarokInterface.cpp:29:31: amarokInterface.moc: No such file or directory'. Whats going wrong?
-
-    You have to install qt3 devel tools which include uic and moc. If installed, be sure that uic and moc are in PATH.
 
 -------------------------------------------------------------------------------
 3. INSTALLATION
@@ -279,7 +262,7 @@
   First of all make sure that your IPV6 stack is setup correctly.
   Can you ping6 other IPV6 other machines ?
 
-        # ping6 www.6bone.net
+        # ping6 ipv6.google.com
 
   Is the IPV6 support enabled in your kvirc executable ?
   To find it out, try
@@ -299,20 +282,35 @@
 4.6 /me doesn't support the '$' character, what's wrong ?
 
   This is NOT a bug : this is a feature : kvirc supports (and substitutes!) variables in all the commands.
-  You can escape your $ sign by using the backslash character: /me has gained \$100 will work correctly
+  You can escape your $ sign by using the backslash character:
+
+        /me has gained \$100
+
+  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  arrow next to the input field and then click the KVS icon.
 
 
 4.7 /me doesn't support the '"' (double quote) character, what's wrong ?
 
   This is NOT a bug : this is a feature : a string enclosed in double quotes will have its whitespace preserved
   while the other strings will have the whitespace simplified. This is valid for ANY command.
-  You can escape your " sign by using the backslash character: /me feels a bit \"foo\" will work correctly
+  You can escape your " sign by using the backslash character:
+
+        /me feels a bit \"foo\"
+
+  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  arrow next to the input field and then click the KVS icon.
 
 
 4.8 /me can't contain the ';' character, what's wrong ?
 
   This is NOT a bug : this is a feature : kvirc supports multiple commands on a single line and uses ';' as a command
-  separator. You can escape your ';' sign by using the backslash character: /me is hungry \;) will work correctly.
+  separator. You can escape your ';' sign by using the backslash character:
+
+        /me is hungry \;)
+
+  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  arrow next to the input field and then click the KVS icon.
 
 
 4.9 I try to do a /whois on nick blah\ but i get the reply for blah (without the slash)
@@ -321,6 +319,9 @@
   In scripting commands the backslash is a special character with several "escape"
   meanings. To include a literal backslash inside a parameter you MUST double it,
   thus the correct command to issue is /whois blah\\
+
+  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  arrow next to the input field and then click the KVS icon.
 
 
 4.10 What is AVATAR protocol? Is there any documentation about it ?
@@ -461,10 +462,7 @@
   Since it is not too much "user friendly", you can alias it in
   the following way:
 
-    alias(runandsay)
-    {
-        exec($0-){ say $1; }
-    }
+    /alias(runandsay){ exec($0-) { say $1; } }
 
   Then you would simply run
 
@@ -563,7 +561,7 @@
   to listen instead.
 
 -------------------------------------------------------------------------------
-6. APPAREANCE
+6. APPEARANCE
 -------------------------------------------------------------------------------
 
 6.1 On Windows KVIrc seems to slow-down sometimes, what's wrong ?
