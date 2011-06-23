@@ -511,7 +511,7 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 		given as his second parameter, and will return the index where the nth ocurrence
 		given as the third parameter is found or -1 if it's not located. It starts
 		counting at 0. If occurence is not specified then the first occurence
-		is searched. WARNING: The occurente number starts from 1! (Yes, that's a bug, but
+		is searched. WARNING: The occurence number starts from 1! (Yes, that's a bug, but
 		for backward compatibility it must remain as it is :( ).[br]
 		FIXME: The semantics of this function are totally broken :(
 */
