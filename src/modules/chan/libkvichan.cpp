@@ -1816,17 +1816,23 @@ static bool chan_kvs_fnc_userlastactiontime(KviKvsModuleFunctionCall * c)
 */
 static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 {
-	QString szNick, szContext, szChans;
+	QString szNick, szChans;
+	kvs_uint_t iContextId;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
-		KVSM_PARAMETER("context id",KVS_PT_STRING,KVS_PF_OPTIONAL,szContext)
+		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,iContextId) \
 	KVSM_PARAMETERS_END(c)
-	
-	KviChannelWindow * pChannel = chan_kvs_find_channel(c,szContext);
-	if(pChannel)
+
+	KviConsoleWindow * pConsole = NULL;
+	if(c->parameterCount() > 1)
+		pConsole = g_pApp->findConsole(iContextId);
+	else
+		pConsole = c->window()->console();
+
+	if(pConsole && pConsole->connection())
 	{
-		pChannel->connection()->getCommonChannels(szNick,szChans,false);
+		pConsole->connection()->getCommonChannels(szNick,szChans,false);
 		c->returnValue()->setString(szChans);
 	}
 	
