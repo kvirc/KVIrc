@@ -1132,7 +1132,7 @@ KVSCF(gender)
 		QString szText, szFlags;
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL,szText)
-			KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+			KVSCF_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 		KVSCF_PARAMETERS_END
 
 		bool bCaseSensitive = szFlags.indexOf('s',0,Qt::CaseInsensitive) != -1;

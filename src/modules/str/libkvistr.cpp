@@ -984,24 +984,31 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the left part of a string until a given substring
 	@syntax:
-		<string> $str.lefttofirst(<string:string>,<substring:string>)
+		<string> $str.lefttofirst(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the left part of the string given as the first parameter
 		from the start until the string given as the second parameter is found. It don't
-		include the substring of the second parameter in the returned value. If the second
-		parameter is not found, the entire string is returned.
-		The match is case insensitive.
+		include the substring of the second parameter in the returned value.
+		If the second parameter is not found, an empty string is returned.
+		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
+	@examples:
+		[example]
+			%test = "Hello! My nickname is Pragma, my name is Szymon"
+			echo $str.lefttofirst(%test, my);	//  "Hello! "
+			echo $str.lefttofirst(%test, my, true);	//  "Hello! My nickname is Pragma, "
+		[/example]
 */
 static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
-	int where;
+	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
-	where = szString.indexOf(szNewstr,Qt::CaseInsensitive);
-	if(where != -1) c->returnValue()->setString(szString.left(where));
+	int idx = bCase ? szString.indexOf(szNewstr,0) : szString.indexOf(szNewstr,0,Qt::CaseInsensitive);
+	if(idx != -1) c->returnValue()->setString(szString.left(idx));
 	else c->returnValue()->setString(szString);
 	return true;
 }
@@ -1015,23 +1022,31 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the left part of a string until the last ocurrence of a given substring
 	@syntax:
-		<string> $str.lefttolast(<string:string>,<substring:string>)
+		<string> $str.lefttolast(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the left part of the string given as the first parameter
 		from the start until the last ocurrence of the string given as the second parameter
 		is found. It don't include the substring of the second parameter in the returned value.
-		If the second parameter is not found, the entire string is returned.
-		The match is case insensitive
+		If the second parameter is not found, an empty string is returned.
+		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
+	@examples:
+		[example]
+			%test = "Hello! My nickname is Pragma, my name is Szymon"
+			echo $str.lefttolast(%test, My);		//  "Hello! My nickname is Pragma, "
+			echo $str.lefttolast(%test, My, true);	//  "Hello! "
+		[/example]
 */
 static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
+	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
-	int where = szString.lastIndexOf(szNewstr,-1,Qt::CaseInsensitive);
-	if(where != -1) c->returnValue()->setString(szString.left(where));
+	int idx = bCase ? szString.lastIndexOf(szNewstr,-1) : szString.lastIndexOf(szNewstr,-1,Qt::CaseInsensitive);
+	if(idx != -1) c->returnValue()->setString(szString.left(idx));
 	else c->returnValue()->setString(szString);
 	return true;
 }
@@ -1045,22 +1060,30 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the right part of a string from the first ocurrence of a given substring
 	@syntax:
-		<string> $str.rightfromfirst(<string:string>,<substring:string>)
+		<string> $str.rightfromfirst(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the right part of the string given as the first parameter
 		from the position where the first ocurrence of the string given as the second parameter
 		is found. It don't include the substring of the second parameter in the returned value.
-		If the second parameter is not found, an empty string is returned..
-		The match is case insensitive
+		If the second parameter is not found, an empty string is returned.
+		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
+	@examples:
+		[example]
+			%test = "Hello! My nickname is Pragma, my name is Szymon"
+			echo $str.rightfromfirst(%test, my);		//  " nickname is Pragma, my name is Szymon"
+			echo $str.rightfromfirst(%test, my, true);	//  " name is Szymon"
+		[/example]
 */
 static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
+	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
-	int idx = szString.indexOf(szNewstr,Qt::CaseInsensitive);
+	int idx = bCase ? szString.indexOf(szNewstr,0) : szString.indexOf(szNewstr,0,Qt::CaseInsensitive);
 	if(idx != -1) c->returnValue()->setString(szString.right(szString.length()-(idx+szNewstr.length())));
 	else c->returnValue()->setString("");
 	return true;
@@ -1075,22 +1098,30 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the right part of a string from the last ocurrence of a given substring
 	@syntax:
-		<string> $str.rightfromlast(<string:string>,<substring:string>)
+		<string> $str.rightfromlast(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the right part of the string given as the first parameter
 		from the position where the last ocurrence of the string given as the second parameter
 		is found. It don't include the substring of the second parameter in the returned value.
-		If the second parameter is not found, an empty string is returned..
-		The match is case insensitive.
+		If the second parameter is not found, an empty string is returned.
+		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
+		@examples:
+		[example]
+			%test = "Hello! My nickname is Pragma, my name is Szymon"
+			echo $str.rightfromlast(%test, My);		//  " name is Szymon"
+			echo $str.rightfromlast(%test, My, true);	//  " nickname is Pragma, my name is Szymon"
+		[/example]
 */
 static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
+	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
-	int idx = szString.lastIndexOf(szNewstr,-1,Qt::CaseInsensitive);
+	int idx = bCase ? szString.lastIndexOf(szNewstr,-1) : szString.lastIndexOf(szNewstr,-1,Qt::CaseInsensitive);
 	if(idx != -1) c->returnValue()->setString(szString.right(szString.length()-(idx+szNewstr.length())));
 	else c->returnValue()->setString("");
 	return true;
