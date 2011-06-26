@@ -277,7 +277,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
 		"$3 = message\n" \
-		"$4 = highlight word"),
+		"$4 = highlight word\n" \
+		"$5 = message type\n" \
+		"$6 = is action"),
 
 	/*
 		@doc: onwindowactivated
