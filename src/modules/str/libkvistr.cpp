@@ -987,7 +987,7 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 		<string> $str.lefttofirst(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the left part of the string given as the first parameter
-		from the start until the string given as the second parameter is found. It don't
+		from the start until the string given as the second parameter is found. It doesn't
 		include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
@@ -1026,7 +1026,7 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 	@description:
 		This function returns the left part of the string given as the first parameter
 		from the start until the last ocurrence of the string given as the second parameter
-		is found. It don't include the substring of the second parameter in the returned value.
+		is found. It doesn't include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 	@examples:
@@ -1064,7 +1064,7 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 	@description:
 		This function returns the right part of the string given as the first parameter
 		from the position where the first ocurrence of the string given as the second parameter
-		is found. It don't include the substring of the second parameter in the returned value.
+		is found. It doesn't include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 	@examples:
@@ -1102,7 +1102,7 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 	@description:
 		This function returns the right part of the string given as the first parameter
 		from the position where the last ocurrence of the string given as the second parameter
-		is found. It don't include the substring of the second parameter in the returned value.
+		is found. It doesn't include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 		@examples:
