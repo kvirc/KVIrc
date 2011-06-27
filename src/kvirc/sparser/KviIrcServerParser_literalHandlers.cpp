@@ -1534,6 +1534,9 @@ void KviIrcServerParser::parseLiteralNick(KviIrcMessage *msg)
 	{
 		if(console->connection())
 		{
+			if(!msg->haltOutput())
+				console->output(KVI_OUT_NICK,__tr2qs("You have changed your nickname to %Q"),&szNewNick);
+			
 			// just update all the captions : we have changed OUR nick
 			for(
 					KviQueryWindow * q = console->connection()->queryList()->first();

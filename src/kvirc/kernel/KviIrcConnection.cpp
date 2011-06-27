@@ -1645,7 +1645,6 @@ void KviIrcConnection::nickChange(const QString & szNewNick)
 	// FIXME: should the new nickname be decoded in some way ?
 	m_pConsole->notifyListView()->nickChange(m_pUserInfo->nickName(),szNewNick);
 	m_pUserInfo->setNickName(szNewNick);
-	m_pConsole->output(KVI_OUT_NICK,__tr2qs("You have changed your nickname to %Q"),&szNewNick);
 	m_pConsole->updateCaption();
 	m_pConsole->frame()->childConnectionNickNameChange(this);
 	emit nickNameChanged();
