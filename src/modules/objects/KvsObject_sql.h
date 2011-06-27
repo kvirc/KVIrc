@@ -38,16 +38,9 @@ public:
 	KVSO_DECLARE_OBJECT(KvsObject_sql)
 protected:
 	QSqlQuery *m_pCurrentSQlQuery;
-	QHash<QString,QSqlQuery *> queryConnectionsDict;
+	QString mSzConnectionName;
 
 public:
-	QHash<QString,QSqlQuery *> & getQueryConnectionsDict() { return queryConnectionsDict; };
-	void closeQueryConnection(QSqlQuery *);
-	QSqlQuery & getQuery()
-	{
-		//if (currentSQlQuery) return *currentSQlQuery;
-		return *m_pCurrentSQlQuery;
-	};
 	bool setConnection(KviKvsObjectFunctionCall *c);
 	bool connectionNames(KviKvsObjectFunctionCall *c);
 	bool features(KviKvsObjectFunctionCall *c);
@@ -66,10 +59,7 @@ public:
 	bool queryRecord(KviKvsObjectFunctionCall *c);
 	bool queryPrepare(KviKvsObjectFunctionCall *c);
 	bool queryBindValue(KviKvsObjectFunctionCall *c);
-	bool setCurrentQuery(KviKvsObjectFunctionCall *c);
-	bool currentQuery(KviKvsObjectFunctionCall *c);
 	bool queryFinish(KviKvsObjectFunctionCall *c);
-	bool queryInit(KviKvsObjectFunctionCall *c);
 	bool closeConnection(KviKvsObjectFunctionCall *c);
 	bool lastError(KviKvsObjectFunctionCall *c);
 
