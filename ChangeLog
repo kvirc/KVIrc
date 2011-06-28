@@ -2,7 +2,17 @@ This is KVIrc's changelog. It tipically lists new added features and changes tha
 KVIrc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
 https://svn.kvirc.de/kvirc/timeline
 
-Update: 20110621
+Update: 20110606
+
+June 2011
+   [egns]
+   - Reworked IRC URI handling using regexp and added the possibility to paste a URI in the
+     address bar or type a host directly without the protocol (eg: irc://)
+   [CtrlAltCa]
+   - Discriminate channels across different networks in settings
+   - Added case sensivity flag to $str.* functions
+   [Noldor]
+   - Improved SQL object class
 
 May 2011
    [HelLViS69]
