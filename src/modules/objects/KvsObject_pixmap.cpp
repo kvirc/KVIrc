@@ -100,9 +100,10 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_pixmap,"pixmap","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,rotate)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,mirrored)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,setPixel)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,toGrayScale)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,pixel)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,grabWidget)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap,frameChangedEvent)
+
 
 KVSO_END_REGISTERCLASS(KvsObject_pixmap)
 
@@ -296,6 +297,57 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 	return true;
 }
 
+KVSO_CLASS_FUNCTION(pixmap,pixel)
+{
+	kvs_int_t iX,iY;
+	QString szFlags;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("x",KVS_PT_INTEGER,0,iX)
+		KVSO_PARAMETER("y",KVS_PT_INTEGER,0,iY)
+		KVSO_PARAMETER("b",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+	KVSO_PARAMETERS_END(c)
+
+	if(m_currentType==AnimatedPixmap)
+	{
+		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
+		return true;
+	} else if((m_currentType==Image && !m_pImage) || (m_currentType==Pixmap && !m_pPixmap)) {
+		c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		return false;
+	} else if(m_currentType==Pixmap) {
+		qDebug("mpimage %i",m_pImage);
+		qDebug("pixmap %i %i",m_pPixmap->width(),m_pPixmap->height());
+		if(m_pImage)
+			delete m_pImage;
+		else m_pImage = new QImage();
+		*m_pImage = m_pPixmap->toImage();
+		delete m_pPixmap;
+		m_pPixmap = 0;
+	}
+	m_currentType = Image;
+	QRgb rgb= m_pImage->pixel(iX,iY);
+	QColor col(rgb);
+	if(szFlags.isEmpty()){
+		c->returnValue()->setString(col.name());
+		return true;
+	}
+	KviKvsVariant *pRed = new KviKvsVariant((kvs_int_t)col.red());
+	KviKvsVariant *pGreen = new KviKvsVariant((kvs_int_t)col.green());
+	KviKvsVariant *pBlue = new KviKvsVariant((kvs_int_t)col.blue());
+	if (szFlags.indexOf('a',0,Qt::CaseInsensitive) != -1){
+		KviKvsArray *pArray = new KviKvsArray();
+		pArray->set(0,pRed);
+		pArray->set(1,pGreen);
+		pArray->set(2,pBlue);
+		c->returnValue()->setArray(pArray);
+	} else if (szFlags.indexOf('h',0,Qt::CaseInsensitive) != -1){
+		KviKvsHash *pHash = new KviKvsHash();
+		pHash->set("red",pRed);
+		pHash->set("green",pGreen);
+		pHash->set("blue",pBlue);
+	}
+	return true;
+}
 KVSO_CLASS_FUNCTION(pixmap,rotate)
 {
 	kvs_real_t dAngle;
@@ -349,13 +401,12 @@ KVSO_CLASS_FUNCTION(pixmap,rotate)
 
 KVSO_CLASS_FUNCTION(pixmap,mirrored)
 {
-	kvs_real_t dAngle;
-	bool bHorizontal,bVertical;
+        bool bHorizontal,bVertical;
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bHorizontal",KVS_PT_BOOLEAN,0,bHorizontal)
-		KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
+	        KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
 	KVSO_PARAMETERS_END(c)
-
 	if(m_currentType==Pixmap)
 	{
 		if(m_pPixmap)
@@ -382,86 +433,45 @@ KVSO_CLASS_FUNCTION(pixmap,mirrored)
 }
 
 
-KVSO_CLASS_FUNCTION(pixmap,toGrayScale)
-{
-	if(m_currentType==Pixmap)
-	{
-		if(m_pPixmap)
-		{
-			if(!m_pImage) m_pImage = new QImage();
-			*m_pImage = m_pPixmap->toImage();
-		} else {
-			c->error(__tr2qs_ctx("The pixmap is null","objects"));
-			return false;
-		}
-	} else if(m_currentType==AnimatedPixmap) {
-		c->warning(__tr2qs_ctx("AnimatedPixmap not supported","objects"));
-		return true;
-	}
-
-	if(!m_pImage)
-	{
-		c->error(__tr2qs_ctx("The pixmap is null","objects"));
-		return false;
-	}
-	m_currentType = Image;
-	QRgb col;
-	int w=m_pImage->width();
-	int h=m_pImage->height();
-	int res;
-	for(int y=0; y<h; y++)
-	{
-		QRgb *data = (QRgb *) m_pImage->scanLine(y);
-		for (int x=0; x<w; x++)
-		{
-			col = *data;
-			res = (qRed(col)+qGreen(col)+qBlue(col))/3;
-			*data++ = qRgba(res, res, res,qAlpha(col));
-		}
-	}
-	return true;
-}
 
 KVSO_CLASS_FUNCTION(pixmap,scale)
 {
-	kvs_int_t iWidth,iHeight;
-	QString szAspectRatio;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
-		KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
-		KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
-	KVSO_PARAMETERS_END(c)
-
-	Qt::AspectRatioMode ratio=Qt::KeepAspectRatio;
-	if(!szAspectRatio.isEmpty())
-	{
-		if(KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio"))
-			ratio=Qt::IgnoreAspectRatio;
-		else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio"))
-			ratio=Qt::KeepAspectRatio;
-		else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding"))
-			ratio=Qt::KeepAspectRatioByExpanding;
-		else  
-			c->warning(__tr2qs_ctx("Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio","objects"),&szAspectRatio);
-	}
-	if(m_currentType==Pixmap)
-	{
-		if(m_pPixmap)
+        kvs_int_t iWidth,iHeight;
+        QString szAspectRatio;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
+            KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
+            KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
+        KVSO_PARAMETERS_END(c)
+        Qt::AspectRatioMode ratio=Qt::KeepAspectRatio;
+        if(!szAspectRatio.isEmpty())
+        {
+            if(KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio")) ratio=Qt::IgnoreAspectRatio;
+            else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio")) ratio=Qt::KeepAspectRatio;
+            else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding")) ratio=Qt::KeepAspectRatioByExpanding;
+            else  c->warning(__tr2qs_ctx("Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio","objects"),&szAspectRatio);
+        }
+        if(m_currentType==Pixmap)
+        {
+	        if(m_pPixmap)
+		*m_pPixmap=m_pPixmap->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
+	        else{
+		    c->error(__tr2qs_ctx("The pixmap is null","objects"));
+		    return false;
+	        }
+        }
+        else if (m_currentType==AnimatedPixmap)
+	        m_pAnimatedPixmap->resize(QSize(iWidth,iHeight),ratio);
+        else if(m_currentType==Image)
+        {
+		if(!m_pImage)
 		{
-			*m_pPixmap=m_pPixmap->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
-		} else {
 			c->error(__tr2qs_ctx("The pixmap is null","objects"));
 			return false;
 		}
-	} else if (m_currentType==AnimatedPixmap) {
-		m_pAnimatedPixmap->resize(QSize(iWidth,iHeight),ratio);
-	} else if(m_pImage) {
 		*m_pImage=m_pImage->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
-	} else {
-		c->error(__tr2qs_ctx("The pixmap is null","objects"));
-		return false;
-	}
-	return true;
+        }
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(pixmap,loadAnimation)
@@ -520,7 +530,7 @@ KVSO_CLASS_FUNCTION(pixmap,load)
 	}
 	if(!m_pImage)
 		m_pImage=new QImage();
-
+	m_currentType = Image;
 	m_pImage->load(szFile);
 	return true;
 /*

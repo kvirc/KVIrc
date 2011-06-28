@@ -75,6 +75,36 @@ const char * const penstyles_tbl[] = {
 	"dashDotLine",
 	"dashDotDotLine"
 };
+const int align_cod[] = {
+	Qt::AlignLeft,
+	Qt::AlignRight,
+	Qt::AlignHCenter,
+	Qt::AlignTop,
+	Qt::AlignBottom,
+	Qt::AlignVCenter,
+	Qt::AlignCenter,
+	Qt::TextSingleLine,
+	Qt::TextExpandTabs,
+	Qt::TextShowMnemonic,
+	Qt::TextWordWrap,
+	Qt::TextIncludeTrailingSpaces
+};
+const char * const align_tbl[] = {
+	"Left",
+	"Right",
+	"HCenter",
+	"Top",
+	"Bottom",
+	"VCenter",
+	"Center",
+	"TextSingleLine",
+	"TextExpandTabs",
+	"TextShowMnemonic",
+	"TextWordWrap",
+	"TextIncludeTrailingSpaces"
+};
+#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+
 
 const QPainter::CompositionMode composition_cod[] = {
 	QPainter::CompositionMode_SourceOver,
@@ -506,6 +536,8 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_painter,"painter","object")
 	// Text & Pixmap & Icons
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPixmap)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPixmapMirrored)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPixmapWithColorEffect)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawIcon)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawHtmlText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,htmlTextSize)
@@ -542,6 +574,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,setPenWidth)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,setPenStyle)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,setPen)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,pen)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,colorNames)
 
 
@@ -569,7 +602,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_painter,"painter","object")
 
 	// extra
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,beginPdf)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_painter,drawPixmapWithEffect);
+
 
 
 KVSO_END_REGISTERCLASS(KvsObject_painter)
@@ -945,7 +978,35 @@ KVSO_CLASS_FUNCTION(painter,setBrush)
 	}
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(painter,pen)
+{
+	CHECK_INTERNAL_POINTER(m_pPainter)
+	QString szFlags;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+	KVSO_PARAMETERS_END(c)
+	if(szFlags.isEmpty()){
+		c->returnValue()->setString(m_pPainter->pen().color().name());
+		return true;
+	}
+	QColor col=m_pPainter->pen().color();
+	KviKvsVariant *pRed = new KviKvsVariant((kvs_int_t)col.red());
+	KviKvsVariant *pGreen = new KviKvsVariant((kvs_int_t)col.green());
+	KviKvsVariant *pBlue = new KviKvsVariant((kvs_int_t)col.blue());
+	if (szFlags.indexOf('a',0,Qt::CaseInsensitive) != -1){
+		KviKvsArray *pArray = new KviKvsArray();
+		pArray->set(0,pRed);
+		pArray->set(1,pGreen);
+		pArray->set(2,pBlue);
+		c->returnValue()->setArray(pArray);
+	} else if (szFlags.indexOf('h',0,Qt::CaseInsensitive) != -1){
+		KviKvsHash *pHash = new KviKvsHash();
+		pHash->set("red",pRed);
+		pHash->set("green",pGreen);
+		pHash->set("blue",pBlue);
+	}
+	return true;
+}
 KVSO_CLASS_FUNCTION(painter,setPen)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
@@ -1156,7 +1217,6 @@ void KvsObject_painter::attachDevice(KviKvsObject * o,QPaintDevice * p)
 	// KvsObject_pixmap and KvsObject_widget object have this signal
 	// it is emitted BEFORE the real QPaintDevice is deleted, so we can eventually
 	// call m_pPainter->end() in time
-	qDebug("Begin painter");
 	QObject::connect(m_pDeviceObject,SIGNAL(aboutToDie()),this,SLOT(detachDevice()));
 	m_pPainter->begin(p);
 }
@@ -1208,7 +1268,8 @@ KVSO_CLASS_FUNCTION(painter,beginPdf)
 KVSO_CLASS_FUNCTION(painter,drawText)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-	QString szText,szMode;
+	QString szText;
+	QStringList szAlignList;
 	kvs_int_t iX,iY,iW,iH; //,iN=-1;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
@@ -1216,36 +1277,44 @@ KVSO_CLASS_FUNCTION(painter,drawText)
 		KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
 		KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-
+		KVSO_PARAMETER("align",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szAlignList)
 	KVSO_PARAMETERS_END(c)
-	if (!szMode.isEmpty() && !KviQString::equalCI(szMode,"Auto"))
+	int align,sum=0;
+	if(szAlignList.count())
 	{
-		if(KviQString::equalCI(szMode,"RTL"))
-			m_pPainter->setLayoutDirection(Qt::RightToLeft);
-		else if(KviQString::equalCI(szMode,"LTR"))
-			m_pPainter->setLayoutDirection(Qt::LeftToRight);
-		else
+		for ( QStringList::Iterator it = szAlignList.begin(); it != szAlignList.end(); ++it )
 		{
-			c->warning(__tr2qs_ctx("Invalid mode '%Q'","objects"),&szMode);
-			return true;
+			align = 0;
+			for(unsigned int j = 0; j < align_num; j++)
+			{
+				if(KviQString::equalCI((*it), align_tbl[j]))
+				{
+					align=align_cod[j];
+					break;
+				}
+			}
+			if(align)
+				sum = sum | align;
+			else
+				c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&(*it));
 		}
 	}
-	//if(!iN) iN = szText.length();
 	QRect rect;
 	rect.setX(iX);
 	rect.setY(iY);
 	rect.setWidth(iW);
 	rect.setHeight(iH);
-
-	m_pPainter->drawText(rect,szText);
+	if(szAlignList.count()){
+		m_pPainter->drawText(rect,sum,szText);
+	}
+	else m_pPainter->drawText(rect,szText);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,drawPixmap)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-	kvs_real_t iX,iY;
-	kvs_int_t iStartx,iStarty,iEndx,iEndy;
+	kvs_real_t iX,iY,iWidth,iHeight,iStartx,iStarty;
 	bool bTiled;
 	KviKvsObject *obj;
 	kvs_hobject_t hObject;
@@ -1253,10 +1322,10 @@ KVSO_CLASS_FUNCTION(painter,drawPixmap)
 		KVSO_PARAMETER("x",KVS_PT_REAL,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_REAL,0,iY)
 		KVSO_PARAMETER("pixmap",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("start_x",KVS_PT_INT,0,iStartx)
-		KVSO_PARAMETER("start_y",KVS_PT_INT,0,iStarty)
-		KVSO_PARAMETER("end_x",KVS_PT_INT,0,iEndx)
-		KVSO_PARAMETER("end_y",KVS_PT_INT,0,iEndy)
+		KVSO_PARAMETER("start_x",KVS_PT_REAL,0,iStartx)
+		KVSO_PARAMETER("start_y",KVS_PT_REAL,0,iStarty)
+		KVSO_PARAMETER("end_x",KVS_PT_REAL,0,iWidth)
+		KVSO_PARAMETER("end_y",KVS_PT_REAL,0,iHeight)
 		KVSO_PARAMETER("b_Tiled",KVS_PT_BOOLEAN,KVS_PF_OPTIONAL,bTiled)
 	KVSO_PARAMETERS_END(c)
 	obj=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
@@ -1270,27 +1339,45 @@ KVSO_CLASS_FUNCTION(painter,drawPixmap)
 		c->warning(__tr2qs_ctx("Pixmap object required","objects"));
 		return true;
 	}
-	QImage *pImage=((KvsObject_pixmap *)obj)->getImage();
-	qDebug("image ");
-	m_pPainter->drawImage(QPointF(iX,iY),*pImage,QRect(iStartx,iStarty,iEndx,iEndy));
+	if(bTiled){
+		QPixmap *pPixmap=((KvsObject_pixmap *)obj)->getPixmap();
+		//QPoint point(iX,iY);
+
+		//QRectF rectf(QPointF(iStartx,iStarty),QSizeF(iWidth,iHeight));
+		//m_pPainter->drawTiledPixmap(rectf,*pPixmap,pointf);
+		//m_pPainter->drawTiledPixmap((int)iX,(int)iY,(int)iWidth,(int)iHeight,*pPixmap,(int)iStartx,(int)iStarty);
+		qDebug("drawing at x %i -  y %i - w %i - h %i - startpx %i - startpy %i casted",(int)iX,(int)iY,(int)iWidth,(int)iHeight,(int)iStartx,(int)iStarty);
+		m_pPainter->drawTiledPixmap(iX,iY,iWidth,iHeight,*pPixmap,iStartx,iStarty);
+	}
+	else{
+		QImage *pImage=((KvsObject_pixmap *)obj)->getImage();
+		QPoint pointf(iX,iY);
+		QRectF rectf(QPointF(iStartx,iStarty),QSizeF(iWidth,iHeight));
+		m_pPainter->drawImage(pointf,*pImage,rectf);
+	}
 	return true;
 }
-KVSO_CLASS_FUNCTION(painter,drawPixmapWithEffect)
+
+KVSO_CLASS_FUNCTION(painter,drawPixmapWithColorEffect)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szEffect;
-	kvs_real_t iX,iY; //,factor;
-	kvs_int_t r,g,b;
+	kvs_real_t rX,rY;
+	kvs_int_t r,g,b,iX,iY,iW,iH;
 	KviKvsObject *obj;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("string_effect",KVS_PT_STRING,0,szEffect)
-		KVSO_PARAMETER("x",KVS_PT_REAL,0,iX)
-		KVSO_PARAMETER("y",KVS_PT_REAL,0,iY)
+		KVSO_PARAMETER("x",KVS_PT_REAL,0,rX)
+		KVSO_PARAMETER("y",KVS_PT_REAL,0,rY)
 		KVSO_PARAMETER("pixmap",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("red",KVS_PT_INTEGER,0,r)
-		KVSO_PARAMETER("green",KVS_PT_INTEGER,0,g)
-		KVSO_PARAMETER("blue",KVS_PT_INTEGER,0,b)
+		KVSO_PARAMETER("red",KVS_PT_INT,KVS_PF_OPTIONAL,r)
+		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,g)
+		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,b)
+		KVSO_PARAMETER("start_x",KVS_PT_INT,KVS_PF_OPTIONAL,iX)
+		KVSO_PARAMETER("start_y",KVS_PT_INT,KVS_PF_OPTIONAL,iY)
+		KVSO_PARAMETER("width",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
+		KVSO_PARAMETER("height",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
 	KVSO_PARAMETERS_END(c)
 	obj=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!obj)
@@ -1304,56 +1391,129 @@ KVSO_CLASS_FUNCTION(painter,drawPixmapWithEffect)
 		return true;
 	}
 	QImage *pImage=((KvsObject_pixmap *)obj)->getImage();
-	QImage pDest(pImage->width(),pImage->height(),QImage::Format_ARGB32);
+	//QImage pDest(pImage->width(),pImage->height(),QImage::Format_ARGB32);
 	QRgb col ;
 	QRgb *dataSource;
 	QRgb *dataDest;
 	int w=pImage->width();
 	int h=pImage->height();
+	if(!iW) iW=w;
+	if(!iH) iH=h;
+	QImage pDest(iW,iH,QImage::Format_ARGB32);
 
-	if(KviQString::equalCI(szEffect,"add"))
+	int iXend=iX+iW;
+	int iYend=iY+iH;
+
+	if(KviQString::equalCI(szEffect,"addrgb"))
 	{
-		int sumR, sumG, sumB;
-		for(int y=0; y<h; y++)
+	    int sumR, sumG, sumB,idx=0;
+	    for(int y=iY; y<iYend; y++)
+	    {
+		    dataSource = (QRgb *) pImage->scanLine(y)+iX;
+		    dataDest = (QRgb *) pDest.scanLine(idx);
+		    idx++;
+		    for (int x=iX; x<iXend; x++)
+		    {
+		        col = *dataSource;
+		        sumR=qRed(col)+r;
+		        sumG=qGreen(col)+g;
+		        sumB=qBlue(col)+b;
+		        *dataDest++ = qRgba(sumR<255 ?sumR : 255,
+			    sumG<255 ?sumG : 255,
+			    sumB<255 ?sumB : 255,
+			    qAlpha(col));
+		        dataSource++;
+		    }
+	    }
+	}
+	else if(KviQString::equalCI(szEffect,"subrgb"))
+	{
+	    int subR, subG, subB,idx=0;
+	    for(int y=iY; y<iYend; y++)
+	    {
+		    dataSource = (QRgb *) pImage->scanLine(y)+iX;
+		    dataDest = (QRgb *) pDest.scanLine(idx);
+		    idx++;
+		    for (int x=iX; x<iXend; x++)
+		    {
+		        col = *dataSource;
+		        subR=qRed(col)-r;
+		        subG=qGreen(col)-g;
+		        subB=qBlue(col)-b;
+		        *dataDest++ = qRgba(subR>0 ? subR : 0,
+			    subG>0 ? subG : 0,
+			    subB>0 ? subB : 0,
+			    qAlpha(col));
+		        dataSource++;
+		    }
+	    }
+	}
+	else if(KviQString::equalCI(szEffect,"grayscale"))
+	{
+		QRgb col;
+		int res,idx=0;
+		for(int y=iY; y<iYend; y++)
 		{
-			dataSource = (QRgb *) pImage->scanLine(y);
-			dataDest = (QRgb *) pDest.scanLine(y);
-			for (int x=0; x<w; x++)
+			dataSource = (QRgb *) pImage->scanLine(y)+iX;
+			dataDest = (QRgb *) pDest.scanLine(idx);
+			for (int x=iX; x<iXend; x++)
 			{
 				col = *dataSource;
-				sumR=qRed(col)+r;
-				sumG=qGreen(col)+g;
-				sumB=qBlue(col)+b;
-				*dataDest++ = qRgba(sumR<255 ?sumR : 255,
-				sumG<255 ?sumG : 255,
-				sumB<255 ?sumB : 255,
-				qAlpha(col));
+				res = (qRed(col)+qGreen(col)+qBlue(col))/3;
+				*dataDest++ = qRgba(res, res, res,qAlpha(col));
 				dataSource++;
 			}
+			idx++;
 		}
 	}
-	else if(KviQString::equalCI(szEffect,"sub"))
+	m_pPainter->drawImage(QPointF(rX,rY),pDest);
+	return true;
+}
+KVSO_CLASS_FUNCTION(painter,drawPixmapMirrored)
+{
+	CHECK_INTERNAL_POINTER(m_pPainter)
+	bool bHorizontal,bVertical;
+	kvs_int_t iX,iY,iW,iH;
+	KviKvsObject *obj;
+	kvs_hobject_t hObject;
+	kvs_real_t rX,rY;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("x",KVS_PT_REAL,0,rX)
+		KVSO_PARAMETER("y",KVS_PT_REAL,0,rY)
+		KVSO_PARAMETER("pixmap",KVS_PT_HOBJECT,0,hObject)
+		KVSO_PARAMETER("bHorizontal",KVS_PT_BOOLEAN,0,bHorizontal)
+		KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
+		KVSO_PARAMETER("start_x",KVS_PT_INT,KVS_PF_OPTIONAL,iX)
+		KVSO_PARAMETER("start_y",KVS_PT_INT,KVS_PF_OPTIONAL,iY)
+		KVSO_PARAMETER("width",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
+		KVSO_PARAMETER("height",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
+	KVSO_PARAMETERS_END(c)
+	obj=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if (!obj)
 	{
-		int subR, subG, subB;
-		for(int y=0; y<h; y++)
-		{
-			dataSource = (QRgb *) pImage->scanLine(y);
-			dataDest = (QRgb *) pDest.scanLine(y);
-			for (int x=0; x<w; x++)
-			{
-				col = *dataSource;
-				subR=qRed(col)-r;
-				subG=qGreen(col)-g;
-				subB=qBlue(col)-b;
-				*dataDest++ = qRgba(subR>0 ? subR : 0,
-				subG>0 ? subG : 0,
-				subB>0 ? subB : 0,
-				qAlpha(col));
-				dataSource++;
-			}
-		}
+		c->warning(__tr2qs_ctx("Pixmap parameter is not an object","objects"));
+		return true;
 	}
-	m_pPainter->drawImage(QPointF(iX,iY),pDest);
+	if (!obj->inheritsClass("pixmap"))
+	{
+		c->warning(__tr2qs_ctx("Pixmap object required","objects"));
+		return true;
+	}
+	QImage *pImage=((KvsObject_pixmap *)obj)->getImage();
+	QPoint sourceXY(0,0);
+	if(c->parameterCount()>=5)
+	{
+	    sourceXY.setX(iX);
+	    sourceXY.setY(iY);
+	}
+	QSize sourceWH(pImage->width(),pImage->height());
+	if(c->parameterCount()>=5)
+	{
+	    sourceWH.setWidth(iW);
+	    sourceWH.setHeight(iH);
+	}
+	QImage mirrored = pImage->mirrored(bHorizontal,bVertical);
+	m_pPainter->drawImage(rX,rY,mirrored, sourceXY.x(), sourceXY.y(),sourceWH.width(),sourceWH.height());
 	return true;
 }
 KVSO_CLASS_FUNCTION(painter,rotate)
@@ -1807,7 +1967,7 @@ KVSO_CLASS_FUNCTION(painter,fillRect)
 		else
 			col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 	}
-	m_pPainter->fillRect(iX,iY,iW,iH,col);
+	m_pPainter->fillRect(iX,iY,iW,iH,QBrush(col));
 	return true;
 }
 

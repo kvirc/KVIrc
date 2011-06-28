@@ -132,7 +132,7 @@ const char * const itemflags_tbl[] = {
 		the RED component, the third and fourth digit specify the GREEN component
 		and the last two specify the BLUE component.
 		For example "FFFF00" means full red, full green and no blue that gives
-		!fn: $setFlag(<row:uint>,<col:uint>,<flag1:string>, <flag2:string>, ...)
+		!fn: $setItemFlags(<row:uint>,<col:uint>,<flag1:string>, <flag2:string>, ...)
 		Sets the flags for the cell pointed by row and col to the given flags.
 		These determine whether the cell can be selected or modified.
 		Supported flags are:

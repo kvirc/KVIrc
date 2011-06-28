@@ -37,6 +37,7 @@ public:
 	KVSO_DECLARE_OBJECT(KvsObject_memoryBuffer)
 protected:
 	QByteArray * m_pBuffer;
+	int mIdx;
 public:
 	QByteArray dataBuffer()
 	{
@@ -48,6 +49,8 @@ public:
 	};
 	bool loadFromFile(KviKvsObjectFunctionCall *c);
 	bool clear(KviKvsObjectFunctionCall *c);
+	bool size(KviKvsObjectFunctionCall *c);
+	bool readByteAt(KviKvsObjectFunctionCall *c);
 	bool saveToFile(KviKvsObjectFunctionCall *c);
 };
 

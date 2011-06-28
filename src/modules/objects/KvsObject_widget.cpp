@@ -644,6 +644,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
 	// fonts
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,fontDescent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,fontAscent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,fontMetricsLineSpacing)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,fontMetricsWidth)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,fontMetricsHeight)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setFont)
@@ -957,8 +958,14 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 				if(!callFunction(this,"focusOutEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
 			case QEvent::Resize:
-				if(!callFunction(this,"resizeEvent",&oReturnBuffer,0))brokenhandler = true;
-			break;
+			{
+				KviKvsVariantList lParams;
+				lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().width()));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().height()));
+				qDebug("new size %i - %i",((QResizeEvent *)e)->size().width(),((QResizeEvent *)e)->size().height());
+				if(!callFunction(this,"resizeEvent",&oReturnBuffer,&lParams))brokenhandler = true;
+				break;
+			}
 			case QEvent::Move:
 				if(!callFunction(this,"moveEvent",&oReturnBuffer,0))brokenhandler = true;
 			break;
@@ -1089,7 +1096,13 @@ KVSO_CLASS_FUNCTION(widget,fontMetricsHeight)
 	c->returnValue()->setInteger(fm);
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(widget,fontMetricsLineSpacing)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	int fm = widget()->fontMetrics().lineSpacing();
+	c->returnValue()->setInteger(fm);
+	return true;
+}
 KVSO_CLASS_FUNCTION(widget,screenResolution)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -1746,9 +1759,9 @@ KVSO_CLASS_FUNCTION(widget,setFont)
 	QString szFamily;
 	QStringList szListStyle;
 	kvs_int_t iSize;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
+	KVSO_PARAMETERS_BEGIN(c)	
 		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
+		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
 		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szListStyle)
 	KVSO_PARAMETERS_END(c)
 	QFont font=widget()->font();

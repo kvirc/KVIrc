@@ -72,6 +72,7 @@ protected:
 	bool fontDescent(KviKvsObjectFunctionCall * c);
 	bool fontMetricsHeight(KviKvsObjectFunctionCall * c);
 	bool fontMetricsWidth(KviKvsObjectFunctionCall * c);
+	bool fontMetricsLineSpacing(KviKvsObjectFunctionCall * c);
 	bool foregroundColor(KviKvsObjectFunctionCall *c);
 	bool geometry(KviKvsObjectFunctionCall *c);
 	bool globalCursorX(KviKvsObjectFunctionCall *c);

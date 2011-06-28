@@ -100,15 +100,14 @@ protected:
 	bool load(KviKvsObjectFunctionCall *c);
 	bool height(KviKvsObjectFunctionCall *c);
 	bool width(KviKvsObjectFunctionCall *c);
+	bool mirrored(KviKvsObjectFunctionCall *c);
 	bool grabWidget(KviKvsObjectFunctionCall *c);
 	bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
 	bool rotate(KviKvsObjectFunctionCall *c);
 	bool toGrayScale(KviKvsObjectFunctionCall *c);
-	bool mirrored(KviKvsObjectFunctionCall *c);
 	bool setPixel(KviKvsObjectFunctionCall *c);
-
+	bool pixel(KviKvsObjectFunctionCall *c);
 	bool frameChangedEvent(KviKvsObjectFunctionCall *c);
-
 protected slots:
 	void frameChanged();
 };

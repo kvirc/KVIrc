@@ -164,7 +164,8 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
 		}
 	}
 	else szDbDriver="QSQLITE";
-	QSqlDatabase db=QSqlDatabase::addDatabase(szDbDriver,szConnectionName);
+	QSqlDatabase db;
+	db=QSqlDatabase::addDatabase(szDbDriver,szConnectionName);
 	mSzConnectionName = szConnectionName;
 	db.setDatabaseName(szDbName);
 	db.setHostName(szHostName);
@@ -176,6 +177,7 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
 	    if(m_pCurrentSQlQuery) delete m_pCurrentSQlQuery;
 	    m_pCurrentSQlQuery = new QSqlQuery(db);
 	}
+	else m_pCurrentSQlQuery = 0;
 	c->returnValue()->setBoolean(bOk);
 	return true;
 }

@@ -57,6 +57,7 @@ public:
 	bool fontMetricsHeight(KviKvsObjectFunctionCall *c);
 	bool setBrush(KviKvsObjectFunctionCall *c);
 	bool setPen(KviKvsObjectFunctionCall *c);
+	bool pen(KviKvsObjectFunctionCall *c);
 	bool setBackGroundMode(KviKvsObjectFunctionCall *c);
 
 	bool drawRect(KviKvsObjectFunctionCall *c);
@@ -114,7 +115,8 @@ public:
 	bool resetPath(KviKvsObjectFunctionCall *c);
 
 	bool beginPdf(KviKvsObjectFunctionCall *c);
-	bool drawPixmapWithEffect(KviKvsObjectFunctionCall *c);
+	bool drawPixmapWithColorEffect(KviKvsObjectFunctionCall *c);
+	bool drawPixmapMirrored(KviKvsObjectFunctionCall *c);
 	bool painterDeviceWidth(KviKvsObjectFunctionCall *c);
 	bool painterDeviceHeight(KviKvsObjectFunctionCall *c);
 
