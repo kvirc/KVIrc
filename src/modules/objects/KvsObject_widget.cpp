@@ -962,7 +962,6 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 				KviKvsVariantList lParams;
 				lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().width()));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().height()));
-				qDebug("new size %i - %i",((QResizeEvent *)e)->size().width(),((QResizeEvent *)e)->size().height());
 				if(!callFunction(this,"resizeEvent",&oReturnBuffer,&lParams))brokenhandler = true;
 				break;
 			}
