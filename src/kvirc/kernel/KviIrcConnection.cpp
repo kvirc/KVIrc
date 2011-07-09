@@ -1737,9 +1737,12 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	if(szModeStr.isEmpty())
 		szModeStr = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 
-	if(_OUTPUT_VERBOSE)
-		m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Setting configured user mode"));
-	sendFmtData("MODE %s +%s",encodeText(m_pUserInfo->nickName()).data(),encodeText(szModeStr).data());
+	if(!szModeStr.isEmpty()) // may be still empty if there are no default modes, if so, don't send the MODE command at all
+	{
+		if(_OUTPUT_VERBOSE)
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Setting configured user mode"));
+		sendFmtData("MODE %s +%s",encodeText(m_pUserInfo->nickName()).data(),encodeText(szModeStr).data());
+	}
 
 	delayedStartNotifyList();
 	restartLagMeter();
