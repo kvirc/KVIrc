@@ -1367,7 +1367,11 @@ void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 				KVI_OPTION_STRING(KviOption_stringCtcpPageReply) = KVI_DEFAULT_CTCP_PAGE_REPLY;
 
 			replyCtcp(msg,KVI_OPTION_STRING(KviOption_stringCtcpPageReply));
-			if(KVI_OPTION_BOOL(KviOption_boolShowDialogOnCtcpPage))
+
+			bool bIsChannel = !IS_ME(msg->msg,msg->szTarget);
+
+			if((KVI_OPTION_BOOL(KviOption_boolShowDialogOnCtcpPage) && !bIsChannel) ||
+				(KVI_OPTION_BOOL(KviOption_boolShowDialogOnChannelCtcpPage) && bIsChannel))
 			{
 				if(!g_pCtcpPageDialog)g_pCtcpPageDialog = new KviCtcpPageDialog();
 				KviCString szData8;

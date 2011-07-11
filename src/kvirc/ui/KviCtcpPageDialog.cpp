@@ -34,7 +34,6 @@
 #include <QLabel>
 #include <QPixmap>
 #include <QDesktopWidget>
-#include <QSpacerItem>
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QTabWidget>
@@ -51,14 +50,13 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	QGridLayout * g = new QGridLayout(this);
 	m_pTabBar = new QTabWidget(this);
 	m_pTabBar->setTabShape(QTabWidget::Triangular);
-	g->addWidget(m_pTabBar,1,0);
+	g->addWidget(m_pTabBar,0,0);
 
 	g->setRowStretch(0,1);
-	g->addItem(new QSpacerItem(0, 15), 2, 0);
 
 	m_pCloseButton = new QPushButton(__tr2qs("Close"),this);
 	connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(die()));
-	g->addWidget(m_pCloseButton,3,0);
+	g->addWidget(m_pCloseButton,1,0);
 
 	setMinimumSize(300,200);
 	setMaximumSize(780,580);
@@ -84,8 +82,6 @@ void KviCtcpPageDialog::die()
 void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,const QString &szHost,const QString &szMsg)
 {
 	QLabel * l = new QLabel(this);
-	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-	//l->setMaximumWidth(600);
 	QString szDate;
 	QDateTime date = QDateTime::currentDateTime();
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
@@ -123,7 +119,7 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 
 void KviCtcpPageDialog::closeEvent(QCloseEvent *)
 {
-	delete this;
+	deleteLater();
 }
 
 void KviCtcpPageDialog::popup()

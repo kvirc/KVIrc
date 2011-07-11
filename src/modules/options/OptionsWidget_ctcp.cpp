@@ -70,6 +70,7 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 	addBoolSelector(gs,__tr2qs_ctx("Show the CTCP replies in the active window","options"),KviOption_boolCtcpRepliesToActiveWindow);
 
 	addBoolSelector(gs,__tr2qs_ctx("Show dialog for CTCP page requests","options"),KviOption_boolShowDialogOnCtcpPage);
+	addBoolSelector(gs,__tr2qs_ctx("Show dialog for Channel CTCP page requests","options"),KviOption_boolShowDialogOnChannelCtcpPage);
 
 	addRowSpacer(0,3,0,3);
 
