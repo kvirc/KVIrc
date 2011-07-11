@@ -435,7 +435,7 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 	if(((LogListViewItem *)pItem)->childCount())
 	{
 		//pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
-		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all log files","log"),this,SLOT(deleteCurrent()));
+		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all log files within this folder","log"),this,SLOT(deleteCurrent()));
 	} else {
 		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export log file to","log"),m_pExportLogPopup);
 		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
@@ -461,9 +461,7 @@ void LogViewWindow::deleteCurrent()
 				__tr2qs("Yes"),__tr2qs("No"),0,1) != 0)
 				return;
 
-			QString szFname;
-			g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pItem->fileName());
-			KviFileUtils::removeFile(szFname);
+			KviFileUtils::removeFile(pItem->fileName());
 			delete pItem;
 			m_pIrcView->clearBuffer();
 			if(!pItem->parent()->childCount())
@@ -502,11 +500,7 @@ void LogViewWindow::deleteCurrent()
 	{
 		LogListViewItem * pCurItem = itemsList.at(u);
 		if(!pCurItem->fileName().isNull())
-		{
-			QString szFname;
-			g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pCurItem->fileName());
-			KviFileUtils::removeFile(szFname);
-		}
+			KviFileUtils::removeFile(pCurItem->fileName());
 	}
 	delete pItem;
 }
