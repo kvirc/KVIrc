@@ -1151,9 +1151,19 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			{
 				if(query)
 					goto output_to_query_window; // use the query unconditionally
-			
-				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
-					console->activeWindow() : (KviWindow *)(console);
+
+
+				KviWindow * pOut = (KviWindow *)(console);
+
+				if(KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow))
+				{
+					KviWindow* aWin = console->activeWindow();
+					if(aWin && (aWin->type() == KviWindow::Channel
+						|| aWin->type() == KviWindow::Console
+						|| aWin->type() == KviWindow::Query)
+					)
+						pOut = aWin;
+				}
 				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
 			}
 			// exec the rule
@@ -1176,8 +1186,18 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				if(query)
 					goto output_to_query_window; // use the query unconditionally
 
-				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
-					console->activeWindow() : (KviWindow *)(console);
+
+				KviWindow * pOut = (KviWindow *)(console);
+
+				if(KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow))
+				{
+					KviWindow* aWin = console->activeWindow();
+					if(aWin && (aWin->type() == KviWindow::Channel
+						|| aWin->type() == KviWindow::Console
+						|| aWin->type() == KviWindow::Query)
+					)
+						pOut = aWin;
+				}
 				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
 			}
 			return;
@@ -1194,8 +1214,18 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				if(query)
 					goto output_to_query_window; // use the query unconditionally
 
-				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
-					console->activeWindow() : (KviWindow *)(console);
+
+				KviWindow * pOut = (KviWindow *)(console);
+
+				if(KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow))
+				{
+					KviWindow* aWin = console->activeWindow();
+					if(aWin && (aWin->type() == KviWindow::Channel
+						|| aWin->type() == KviWindow::Console
+						|| aWin->type() == KviWindow::Query)
+					)
+						pOut = aWin;
+				}
 				pOut->output(KVI_OUT_CHANSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
 			}
 			return;
@@ -1212,8 +1242,18 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				if(query)
 					goto output_to_query_window; // use the query unconditionally
 
-				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
-					console->activeWindow() : (KviWindow *)(console);
+				KviWindow * pOut = (KviWindow *)(console);
+
+				if(KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow))
+				{
+					KviWindow* aWin = console->activeWindow();
+					if(aWin && (aWin->type() == KviWindow::Channel
+						|| aWin->type() == KviWindow::Console
+						|| aWin->type() == KviWindow::Query)
+					)
+						pOut = aWin;
+				}
+
 				pOut->output(KVI_OUT_MEMOSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
 			}
 			return;
@@ -1396,8 +1436,18 @@ output_to_query_window:
 			//UNKNOWN NOTICE TYPE
 			if(!msg->haltOutput())
 			{
-				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
-					console->activeWindow() : (KviWindow *)(console);
+				KviWindow * pOut = (KviWindow *)(console);
+
+				if(KVI_OPTION_BOOL(KviOption_boolExternalMessagesToActiveWindow))
+				{
+					KviWindow* aWin = console->activeWindow();
+					if(aWin && (aWin->type() == KviWindow::Channel
+						|| aWin->type() == KviWindow::Console
+						|| aWin->type() == KviWindow::Query)
+					)
+						pOut = aWin;
+				}
+
 				QString szBroad;
 				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 				szBroad = QString("[>> %1] %2").arg(szOriginalTarget,szMsgText);
