@@ -164,6 +164,13 @@ public:
 	bool usingSSL(){ return false; };
 #endif
 
+#ifdef COMPILE_SSL_SUPPORT
+	/**
+	* \brief Returns the current SSL object for this socket
+	* \return bool
+	*/
+	KviSSL * getSSL(){ return m_pSSL; };
+#endif
 	/**
 	* \brief Returns the number of bytes read
 	* \return unsigned int

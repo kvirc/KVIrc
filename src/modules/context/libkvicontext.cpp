@@ -39,6 +39,13 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcConnectionStatistics.h"
+#include "KviIrcLink.h"
+#include "KviIrcSocket.h"
+#include "KviIrcSocket.h"
+
+#ifdef COMPILE_SSL_SUPPORT
+	#include "KviSSLMaster.h"
+#endif
 
 #define GET_CONSOLE_FROM_STANDARD_PARAMS \
 	kvs_uint_t iContextId; \
@@ -600,6 +607,166 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+/*
+	@doc: context.getSSLCertInfo
+	@type:
+		function
+	@title:
+		$context.getSSLCertInfo
+	@short:
+		Returns the requested information about certificates used in an ssl-enabled irc session
+	@syntax:
+		$context.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<context_id:integer>[,<param1:string>]]])
+	@description:
+		Returns the requested information about certificates used in an ssl-enabled irc session.[br]
+		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
+		to query the information from; if omitted, it defaults to "remote".[br]
+		If <context_id> is omitted then the IRC Context associated with the current window is assumed.[br]
+		If <context_id> is not a valid IRC Context identifier (or it is omitted and the current window
+		has no associated IRC Context) then this function prints a warning and returns an empty string.[br]
+		If the IRC Context is not using ssl then this function returns an empty string.[br]
+		Some queries can accept an optional parameter <param1>[br]
+		Available query strings are:[br]
+		[ul]
+		[li]signatureType[/li]
+		[li]signatureContents[/li]
+		[li]subjectCountry[/li]
+		[li]subjectStateOrProvince[/li]
+		[li]subjectLocality[/li]
+		[li]subjectOrganization[/li]
+		[li]subjectOrganizationalUnit[/li]
+		[li]subjectCommonName[/li]
+		[li]issuerCountry[/li]
+		[li]issuerStateOrProvince[/li]
+		[li]issuerLocality[/li]
+		[li]issuerOrganization[/li]
+		[li]issuerOrganizationalUnit[/li]
+		[li]issuerCommonName[/li]
+		[li]publicKeyBits[/li]
+		[li]publicKeyType[/li]
+		[li]serialNumber[/li]
+		[li]pemBase64[/li]
+		[li]version[/li]
+		[li]fingerprintIsValid[/li]
+		[li]fingerprintDigestId[/li]
+		[li]fingerprintDigestStr[/li]
+		[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
+		[/ul]
+		@examples:
+			[example]
+				# get a sha256 fingerprint of remote peer's certificate
+				$context.getSSLCertInfo(fingerprintContents,remote,$context,sha256)
+			[/example]
+		@seealso:
+			[fnc]$certificate[/fnc]
+			[fnc]$str.evpSign[/fnc]
+			[fnc]$str.evpVerify[/fnc]
+*/
+
+static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
+{
+	kvs_uint_t uContextId;
+	QString szQuery;
+	QString szType;
+	QString szParam1;
+	bool bRemote=true;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+		KVSM_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
+		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
+		KVSM_PARAMETER("param1",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam1)
+	KVSM_PARAMETERS_END(c)
+
+#ifndef COMPILE_SSL_SUPPORT
+	c->warning(__tr2qs("This executable was built without SSL support"));
+	return true;
+#else
+
+	KviConsoleWindow * pConsole = NULL;
+	if(c->parameterCount() > 2)
+		pConsole = g_pApp->findConsole(uContextId);
+	else
+		pConsole = c->window()->console();
+
+	if(!pConsole)
+	{
+		if(c->parameterCount() > 2)
+			c->warning(__tr2qs("Unable to find the specified context"));
+		else
+			c->warning(__tr2qs("Unable to find the current context"));
+		c->returnValue()->setString("");
+		return true;
+	}
+
+	if(szType.compare("local")==0)
+	{
+		bRemote=false;
+	} else {
+		// already defaults to true, we only catch the error condition
+		if(szType.compare("remote")!=0)
+		{
+			c->warning(__tr2qs("You specified a bad string for the parameter \"type\""));
+			c->returnValue()->setString("");
+			return true;
+		}
+	}
+	//context is never null, connection can be null
+	if(!pConsole->context()->connection())
+	{
+		if(c->parameterCount() > 2)
+			c->warning(__tr2qs("The specified context is disconnected"));
+		else
+			c->warning(__tr2qs("The current context is disconnected"));
+		c->returnValue()->setString("");
+		return true;
+	}
+	// link is never null, socket can be null
+	KviIrcSocket * pSocket = pConsole->context()->connection()->link()->socket();
+	if(!pSocket)
+	{
+		if(c->parameterCount() > 2)
+			c->warning(__tr2qs("The specified context's socket is disconnected"));
+		else
+			c->warning(__tr2qs("The current context's socket is disconnected"));
+		c->returnValue()->setString("");
+		return true;
+	}
+	
+	if(!pSocket->usingSSL())
+	{
+		c->warning(__tr2qs("Unable to get SSL information: the IRC Connection is not using SSL"));
+		c->returnValue()->setString("");
+		return true;
+	}
+
+	KviSSL * pSSL = pSocket->getSSL();
+	if(!pSSL)
+	{
+		c->warning(__tr2qs("Unable to get SSL information: SSL non initialized yet in IRC Connection"));
+		c->returnValue()->setString("");
+		return true;
+	}
+
+	KviSSLCertificate * pCert = bRemote ? pSSL->getPeerCertificate() : pSSL->getLocalCertificate();
+
+	if(!pCert)
+	{
+		c->warning(__tr2qs("Unable to get SSL information: No peer certificate available"));
+		c->returnValue()->setString("");
+		return true;
+	}
+
+	if(KviSSLMaster::getSSLCertInfo(pCert, szQuery, szParam1, c->returnValue()))
+		return true;
+
+	c->warning(__tr2qs("Unable to get SSL information: query not recognized"));
+	c->returnValue()->setString("");
+
+	return true;
+#endif
+}
+
 static bool context_module_init(KviModule * m)
 {
 	KVSM_REGISTER_FUNCTION(m,"serverHostName",context_kvs_fnc_serverHostName);
@@ -617,6 +784,7 @@ static bool context_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"connectionStartTime",context_kvs_fnc_connectionStartTime);
 	KVSM_REGISTER_FUNCTION(m,"lastMessageTime",context_kvs_fnc_lastMessageTime);
 	KVSM_REGISTER_FUNCTION(m,"queueSize",context_kvs_fnc_queueSize);
+	KVSM_REGISTER_FUNCTION(m,"getSSLCertInfo",context_kvs_fnc_getSSLCertInfo);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearQueue",context_kvs_cmd_clearQueue);
 
