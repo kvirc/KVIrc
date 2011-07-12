@@ -1178,10 +1178,11 @@ namespace KviKvsCoreFunctions
 	{
 		QString szData;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szData)
+			KVSCF_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL,szData)
 		KVSCF_PARAMETERS_END
 
-		KviQString::escapeKvs(&szData);
+		if(!szData.isEmpty())
+			KviQString::escapeKvs(&szData);
 
 		KVSCF_pRetBuffer->setString(szData);
 		return true;
