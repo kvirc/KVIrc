@@ -325,8 +325,7 @@ msgstr "Wybierz katalog źródłowy:"
 msgid "Show Help"
 msgstr "Pokazuje pomoc"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -338,12 +337,9 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Katalog źródłowy"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "Dodatek \"%1\" nie istnieje"
 
@@ -392,7 +388,7 @@ msgstr "Wybrany plik nie wygląda na poprawny pakiet dodatku KVIrc"
 #: src/modules/addon/AddonFunctions.cpp:70
 #, fuzzy
 msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "Wybrany plik nie wygląda na poprawny pakiet KVIrc: %Q"
+msgstr "Wybrany plik nie wygląda na poprawny pakiet KVIrc: %1"
 
 #: src/modules/addon/libkviaddon.cpp:544
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
@@ -435,8 +431,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Całkowicie: %d dodatków zainstalowano"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Dezinstalacja istniejącego dodatku w wersji %Q"
 

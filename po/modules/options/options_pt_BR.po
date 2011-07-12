@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-07-28 18:58+0200\n"
-"PO-Revision-Date: 2011-06-16 01:13-0300\n"
+"PO-Revision-Date: 2011-06-29 13:01-0300\n"
 "Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -2321,12 +2321,12 @@ msgstr "Regra de Autenticação Nickserv"
 #: src/modules/options/optw_nickserv.cpp:245
 #: src/modules/options/optw_servers.cpp:317
 msgid "NickServ Mask"
-msgstr "Máscaro NickServ"
+msgstr "Máscara NickServ"
 
 #: src/modules/options/optw_nickserv.cpp:246
 #: src/modules/options/optw_servers.cpp:318
 msgid "NickServ Request Mask"
-msgstr "Pedido de Máscaro NickServ"
+msgstr "Pedido de Máscara do NickServ"
 
 #: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
@@ -2392,7 +2392,7 @@ msgstr "Opacidade da janela de notificação enquanto Ativa"
 
 #: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
-msgstr "Notificar finalização na console"
+msgstr "Notificar finalização no console"
 
 #: src/modules/options/optw_dcc.cpp:187
 msgid "Notify completion in notifier"
@@ -3094,7 +3094,7 @@ msgstr "Mostrar notificações na janela Ativa"
 
 #: src/modules/options/optw_ircoutput.cpp:82
 msgid "Show own parts in the console"
-msgstr "Mostrar as suas próprias saídas na console"
+msgstr "Mostrar as suas próprias saídas no console"
 
 #: src/modules/options/optw_ircoutput.cpp:81
 msgid "Show server pings"
@@ -3222,7 +3222,7 @@ msgstr "A Mensagem de Expressão Regular não pode estar vazia!<br>Tem que pelo 
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr "A mascaro Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+msgstr "A máscara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3598,7 +3598,7 @@ msgstr "Usar o alcance do porto definido pelo Usuário"
 
 #: src/modules/options/optw_ignore.cpp:46
 msgid "Use verbose ignore (show messages in console)"
-msgstr "Usar ignore detalhado (mostrar mensagens na console)"
+msgstr "Usar ignore detalhado (mostrar mensagens no console)"
 
 #: src/modules/options/optw_dcc.cpp:51
 msgid "Use workaround for firewall"

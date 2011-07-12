@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc_objects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2011-06-14 19:19-0300\n"
+"PO-Revision-Date: 2011-06-29 13:01-0300\n"
 "Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:647
 msgid " requires either an array as first parameter or 3 integers"
-msgstr " requer ou uma matriz como primeiro parâmetro ou três números inteiros"
+msgstr " requer uma matriz como primeiro parâmetro ou três números inteiros"
 
 #: src/modules/objects/class_painter.cpp:569
 msgid " requires either an array as first parameter or four integers"
@@ -29,7 +29,7 @@ msgstr " requer uma matriz como primeiro parâmetro ou quatro números inteiros"
 
 #: src/modules/objects/class_painter.cpp:603
 msgid " requires either an array as first parameter or two integers"
-msgstr " requer ou uma matriz como primeiro parâmetro ou dois números inteiros"
+msgstr " requer uma matriz como primeiro parâmetro ou dois números inteiros"
 
 #: src/modules/objects/class_painter.cpp:1014
 msgid "$fontMetricsHeight: the painter is not active!"
@@ -41,27 +41,27 @@ msgstr "$fontMetricsWidth: o painter não está ativo!"
 
 #: src/modules/objects/class_widget.cpp:1602
 msgid "$move() requires either an array as first parameter or two integers"
-msgstr "$move() requer ou uma matriz como primeiro parâmetro ou dois números inteiros"
+msgstr "$move() requer uma matriz como primeiro parâmetro ou dois números inteiros"
 
 #: src/modules/objects/class_widget.cpp:1659
 msgid "$resize() requires either an array as first parameter or two integers"
-msgstr "$resize() requer ou uma matriz como primeiro parâmetro ou dois números inteiros"
+msgstr "$resize() requer uma matriz como primeiro parâmetro ou dois números inteiros"
 
 #: src/modules/objects/class_widget.cpp:1359
 msgid "$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers"
-msgstr "$setBackgroundColor requer ou uma matriz como primeiro parâmetro, uma 'string' hexadecimal ou nome de cor, ou três números inteiros"
+msgstr "$setBackgroundColor requer uma matriz como primeiro parâmetro, uma 'string' hexadecimal ou nome de cor, ou três números inteiros"
 
 #: src/modules/objects/class_multilineedit.cpp:631
 msgid "$setColor requires either an array as first parameter or three integers"
-msgstr "$setColor requer ou uma matriz como primeiro parâmetro ou três números inteiros"
+msgstr "$setColor requer uma matriz como primeiro parâmetro ou três números inteiros"
 
 #: src/modules/objects/class_widget.cpp:1277
 msgid "$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers"
-msgstr "$setForegroundColor requer ou uma matriz como primeiro parâmetro, uma 'string' hexadecimal ou nome de cor, ou três números inteiros"
+msgstr "$setForegroundColor requer uma matriz como primeiro parâmetro, uma 'string' hexadecimal ou nome de cor, ou três números inteiros"
 
 #: src/modules/objects/class_widget.cpp:1155
 msgid "$setGeometry() requires either an array as first parameter or four integers"
-msgstr "$setGeometry() requer ou uma matriz como primeiro parâmetro ou quatro números inteiros"
+msgstr "$setGeometry() requer uma matriz como primeiro parâmetro ou quatro números inteiros"
 
 #: src/modules/objects/class_http.cpp:296
 msgid "'%Q' is not a valid file path"
@@ -126,7 +126,7 @@ msgstr "Não pode adicionar um objecto 'popup' não-menu"
 #: src/modules/objects/class_window.cpp:148
 #: src/modules/objects/class_widget.cpp:1782
 msgid "Can't add a non-widget object"
-msgstr "Não pode adicionar um objecto não-'widget'"
+msgstr "Não pode adicionar um objecto não 'widget'"
 
 #: src/modules/objects/class_dockwindow.cpp:96
 msgid "Can't add a null object"
@@ -149,11 +149,11 @@ msgstr "Não pode inserir um objecto não-widget"
 
 #: src/modules/objects/class_listwidget.cpp:553
 msgid "Can't insert the listwidget itself!"
-msgstr "Não pode inserir a lista de widgets nela própria!"
+msgstr "Não pode inserir a lista de elementos (listwidget) nela própria!"
 
 #: src/modules/objects/class_dockwindow.cpp:115
 msgid "Can't set a non-widget object to be the main widget of a dock window"
-msgstr "Não é possível definir um objecto não-'widget' para ser a 'widget' principal duma janela de acoplamento"
+msgstr "Não é possível definir um objecto não 'widget' para ser a 'widget' principal duma janela de acoplamento"
 
 #: src/modules/objects/class_socket.cpp:979
 msgid "Can't start the DNS thread"
