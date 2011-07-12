@@ -836,6 +836,12 @@ private slots:
 	void sendPlain();
 
 	/**
+	* \brief Sends the message assuming it's kvs code
+	* \return void
+	*/
+	void sendKvs();
+
+	/**
 	* \brief Moves the cursor at the beginning
 	* \return void
 	*/

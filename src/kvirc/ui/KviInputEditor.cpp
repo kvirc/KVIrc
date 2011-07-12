@@ -1334,14 +1334,14 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE),this,SLOT(scrollToLastReadLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_KVS),this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_KVS_2),this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME),this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_END),this,SLOT(endInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME_SELECT),this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_END_SELECT),this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_2),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_3),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_4),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BACKSPACE),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BACKSPACE_2),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DELETE),this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
@@ -2340,6 +2340,39 @@ void KviInputEditor::sendPlain()
 		m_iFirstVisibleChar = 0;
 		repaintWithCursorOn();
 		KviUserInput::parseNonCommand(szBuffer,m_pKviWindow);
+		if (!szBuffer.isEmpty())
+		{
+			KviInputHistory::instance()->add(new QString(szBuffer));
+			m_pHistory->insert(0,new QString(szBuffer));
+		}
+
+		KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
+		if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
+
+		m_iCurHistoryIdx = -1;
+	}
+}
+
+void KviInputEditor::sendKvs()
+{
+	if(m_pInputParent->inherits("KviInput"))
+	{
+		//ensure the color window is hidden (bug #835)
+		if(g_pColorWindow)
+			if(g_pColorWindow->isVisible())
+				g_pColorWindow->hide();
+
+		QString szBuffer(m_szTextBuffer), szTmp(m_szTextBuffer);
+		m_szTextBuffer="";
+		selectOneChar(-1);
+		m_iCursorPosition = 0;
+		m_iFirstVisibleChar = 0;
+		repaintWithCursorOn();
+
+		if(szTmp.startsWith(QChar('/')))
+			szTmp.remove(0, 1);
+		KviUserInput::parseCommand(szTmp,m_pKviWindow,QString(),false);
+
 		if (!szBuffer.isEmpty())
 		{
 			KviInputHistory::instance()->add(new QString(szBuffer));

@@ -190,6 +190,8 @@
 #define KVI_SHORTCUTS_INPUT_MULTILINE_2 Qt::AltModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_INPUT_SEND_PLAIN Qt::ControlModifier + Qt::Key_Return
 #define KVI_SHORTCUTS_INPUT_SEND_PLAIN_2 Qt::ControlModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_SEND_KVS Qt::ShiftModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_INPUT_SEND_KVS_2 Qt::ShiftModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_INPUT_HOME Qt::Key_Home
 #define KVI_SHORTCUTS_INPUT_END Qt::Key_End
 #define KVI_SHORTCUTS_INPUT_HOME_SELECT Qt::ShiftModifier + Qt::Key_Home
@@ -197,9 +199,7 @@
 #define KVI_SHORTCUTS_INPUT_HISTORY_PREV Qt::Key_Up
 #define KVI_SHORTCUTS_INPUT_HISTORY_NEXT Qt::Key_Down
 #define KVI_SHORTCUTS_INPUT_RETURN Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_RETURN_2 Qt::ShiftModifier + Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_RETURN_3 Qt::Key_Enter
-#define KVI_SHORTCUTS_INPUT_RETURN_4 Qt::ShiftModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_RETURN_2 Qt::Key_Enter
 #define KVI_SHORTCUTS_INPUT_BACKSPACE Qt::Key_Backspace
 #define KVI_SHORTCUTS_INPUT_BACKSPACE_2 Qt::ShiftModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_INPUT_DELETE Qt::Key_Delete
@@ -310,6 +310,7 @@
 		[b]Shift+RightArrow:[/b] Move the selection to the right[br]
 		[b]Alt+Enter:[/b] Show/hide the multiline editor[br]
 		[b]Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
+		[b]Shift+Enter:[/b] Send message as a kvs command[br]
 		[b]Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 		[example]
 		[b]Alt+32:[/b] Inserts ASCII/Unicode character 32: ' ' (a space)
