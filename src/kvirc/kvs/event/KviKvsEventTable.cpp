@@ -231,6 +231,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			F2 to F12, F1 to F12 with SHIFT key pressed, 0 to 9 with CTRL key pressed.[br]
 			This means that you can set up 33 "quick" aliases...that's really more than
 			an user can remember.[br]
+			Note: this event won't be called for keys already bound to actions.
 			If you need more keys, mail me, I'll see what I can do :)[br]
 	*/
 	EVENT("OnAccelKeyPressed", \

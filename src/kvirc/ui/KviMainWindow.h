@@ -51,6 +51,7 @@ class KviIrcConnection;
 class KviStatusBar;
 class KviTalPopupMenu;
 class KviDockExtension;
+class QShortcut;
 
 #ifdef COMPILE_ON_WINDOWS
 	// MSCV has problems with KviPointerList<KviWindow> otherwise
@@ -82,13 +83,14 @@ protected:
 	KviMenuBar                            * m_pMenuBar;                      // the main menu bar
 	KviMdiManager                         * m_pMdi;                          // the mdi manager widget (child of the splitter)
 	KviPointerList<KviMexToolBar>         * m_pModuleExtensionToolBarList;   // the module extension toolbars
-	KviWindowListBase                        * m_pWindowList;                      // the WindowList
+	KviWindowListBase                     * m_pWindowList;                   // the WindowList
 	KviStatusBar                          * m_pStatusBar;
 	// the mdi workspace child windows
 	KviPointerList<KviWindow>             * m_pWinList;                      // the main list of windows
 	KviIrcContext                         * m_pActiveContext;                // the context of the m_pActiveWindow
 	// other
 	KviDockExtension                      * m_pDockExtension;                // the frame's dock extension: this should be prolly moved ?
+	KviPointerList<QShortcut>             * m_pAccellerators;                // global application accellerators
 public:
 	// the mdi manager: handles mdi children
 	KviMdiManager * mdiManager(){ return m_pMdi; };
@@ -150,6 +152,8 @@ public:
 	// Allowed sizes are 16, 22, 32 and 48
 	void setIconSize(unsigned int uSize);
 	void setButtonStyle(unsigned int uStyle);
+	// allows scripts and actions to override builtin accellerators, avoiding ambiguous events
+	void freeAccelleratorKeySequence(QString & key);
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
