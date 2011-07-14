@@ -352,7 +352,7 @@ void KviMainWindow::freeAccelleratorKeySequence(QString & key)
 	{
 		if(pS->key() == kS)
 		{
-			delete pS;
+			m_pAccellerators->removeRef(pS);
 			return;
 		}
 	}
