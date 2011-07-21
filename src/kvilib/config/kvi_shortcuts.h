@@ -83,13 +83,13 @@
 * \def KVI_SHORTCUTS_INPUT_REDO Redo last action
 * \def KVI_SHORTCUTS_INPUT_RESET Insert Reset control character
 * \def KVI_SHORTCUTS_INPUT_RETURN Return key
-* \def KVI_SHORTCUTS_INPUT_RETURN_2 Shift + Return key
-* \def KVI_SHORTCUTS_INPUT_RETURN_3 Enter key
-* \def KVI_SHORTCUTS_INPUT_RETURN_4 Shift + Enter key
+* \def KVI_SHORTCUTS_INPUT_RETURN_2 Enter key
 * \def KVI_SHORTCUTS_INPUT_REVERSE Insert the 'reverse' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_SELECT_ALL Select all
 * \def KVI_SHORTCUTS_INPUT_SEND_PLAIN Send message as plain text, ignoring / commands
 * \def KVI_SHORTCUTS_INPUT_SEND_PLAIN_2 Send message as plain text, ignoring / commands
+* \def KVI_SHORTCUTS_INPUT_SEND_KVS Send message as kvs
+* \def KVI_SHORTCUTS_INPUT_SEND_KVS_2 Send message as kvs
 * \def KVI_SHORTCUTS_INPUT_UNDERLINE Insert the 'underline' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_UNDO Undo last action
 * \def KVI_SHORTCUTS_INPUT_DUMMY Dummy combo

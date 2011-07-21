@@ -50,6 +50,7 @@ public:
 private:
 #ifdef COMPILE_WEBKIT_SUPPORT
 	QToolBar     * m_pToolBar;
+	QToolBar     * m_pToolBarHighlight;
 	QLineEdit    * m_pFindText;
 	QVBoxLayout  * m_pLayout;
 	QWebView     * m_pTextBrowser;
@@ -73,6 +74,8 @@ protected slots:
 	void slotZoomIn();
 	void slotZoomOut();
 	void slotTextChanged(const QString);
+	void slotCopy();
+	void slotShowHideFind();
 #endif
 public:
 	virtual QSize sizeHint() const;

@@ -46,42 +46,56 @@ extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include <QtWebKit/QWebView>
+#include <QShortcut>
 
 #define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
 
 HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 : QWidget(par)
 {
-	m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(3);
-	m_pLayout->setSpacing(2);
-	setLayout(m_pLayout);
-	m_pToolBar = new QToolBar(this);
-	m_pLayout->addWidget(m_pToolBar);
 	setObjectName("help_widget");
 	setMinimumWidth(80);
 	if(bIsStandalone)g_pHelpWidgetList->append(this);
 	m_bIsStandalone = bIsStandalone;
 
+	new QShortcut(QKeySequence::Copy,this,SLOT(slotCopy()),0,Qt::WidgetWithChildrenShortcut);
+	new QShortcut(QKeySequence::Find,this,SLOT(slotShowHideFind()),0, bIsStandalone ? Qt::WidgetWithChildrenShortcut : Qt::WindowShortcut);
+
+	// layout
+	m_pLayout = new QVBoxLayout(this);
+	m_pLayout->setMargin(0);
+	m_pLayout->setSpacing(0);
+	setLayout(m_pLayout);
+
+	// upper toolbar
+	m_pToolBar = new QToolBar(this);
+	m_pLayout->addWidget(m_pToolBar);
+
+	// webview
 	m_pTextBrowser = new QWebView(this);
-	m_pLayout->addWidget(m_pTextBrowser);
-	QLabel *pHighlightLabel = new QLabel();
-	pHighlightLabel->setText(__tr2qs("Highlight: "));
-	m_pToolBar->addWidget(pHighlightLabel);
-
-	m_pFindText = new QLineEdit();
-	m_pToolBar->addWidget(m_pFindText);
-	connect(m_pFindText,SIGNAL(textChanged(const QString )),this,SLOT(slotTextChanged(const QString)));
-
-	connect(m_pTextBrowser,SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
-
-	m_pToolBar->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Unrecognized), __tr2qs("Reset"), this, SLOT(slotResetFind()));
-	m_pToolBar->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Part), __tr2qs("Find previous"), this, SLOT(slotFindPrev()));
-	m_pToolBar->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Join), __tr2qs("Find next"), this, SLOT(slotFindNext()));
-
 	m_pTextBrowser->setObjectName("text_browser");
 	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
+	m_pLayout->addWidget(m_pTextBrowser);
+	connect(m_pTextBrowser,SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
+	
+	// lower toolbar
+	m_pToolBarHighlight = new QToolBar(this);
+	m_pLayout->addWidget(m_pToolBarHighlight);
+	m_pToolBarHighlight->hide();
+	
+	QLabel *pHighlightLabel = new QLabel();
+	pHighlightLabel->setText(__tr2qs("Highlight: "));
+	m_pToolBarHighlight->addWidget(pHighlightLabel);
 
+	m_pFindText = new QLineEdit();
+	m_pToolBarHighlight->addWidget(m_pFindText);
+	connect(m_pFindText,SIGNAL(textChanged(const QString )),this,SLOT(slotTextChanged(const QString)));
+
+	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Unrecognized), __tr2qs("Reset"), this, SLOT(slotResetFind()));
+	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Part), __tr2qs("Find previous"), this, SLOT(slotFindPrev()));
+	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Join), __tr2qs("Find next"), this, SLOT(slotFindNext()));
+
+	// upper toolbar contents (depends on webview)
 	QLabel *pBrowsingLabel = new QLabel();
 	pBrowsingLabel->setText(__tr2qs("Browsing: "));
 	m_pToolBar->addWidget(pBrowsingLabel);
@@ -100,6 +114,22 @@ HelpWidget::HelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 		m_pToolBar->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE), __tr2qs("Close"), this, SLOT(close()));
 	}
 
+}
+
+void HelpWidget::slotCopy()
+{
+	m_pTextBrowser->triggerPageAction(QWebPage::Copy);
+}
+
+void HelpWidget::slotShowHideFind()
+{
+	if(m_pToolBarHighlight->isVisible())
+	{
+		m_pToolBarHighlight->hide();
+	} else {
+		m_pToolBarHighlight->show();
+		m_pFindText->setFocus();
+	}
 }
 
 void HelpWidget::slotLoadFinished(bool )
