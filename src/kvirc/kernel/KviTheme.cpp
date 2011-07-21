@@ -45,6 +45,7 @@
 KviThemeInfo::KviThemeInfo()
 : KviHeapObject()
 {
+	m_bBuiltin = false;
 }
 
 KviThemeInfo::~KviThemeInfo()
@@ -56,33 +57,28 @@ KviThemeInfo::~KviThemeInfo()
 bool KviThemeInfo::load(const QString &szThemeFileName,bool bBuiltin)
 {
 	m_bBuiltin = bBuiltin;
-	m_szThemeFileName = szThemeFileName;
+	m_szSubdirectory = szThemeFileName;
+	
 	QString szThemePath;
 	getCompleteDirPath(szThemePath);
 
-	QString szThemeInfoFileName;
-	//szThemeInfoFileName.append(KVI_PATH_SEPARATOR_CHAR);
-	szThemeInfoFileName.append(KVI_THEMEINFO_FILE_NAME);
+	QString szThemeInfoFileName = szThemePath + KVI_THEMEINFO_FILE_NAME;
+	QString szThemeDataFileName = szThemePath + KVI_THEMEDATA_FILE_NAME;
 
-	QString szThemeDataFileName;
-	//szThemeDataFileName.append(KVI_PATH_SEPARATOR_CHAR);
-	szThemeDataFileName.append(KVI_THEMEDATA_FILE_NAME);
-
-	QString t1=szThemePath+szThemeInfoFileName;
-	if(!KviFileUtils::fileExists(szThemePath+szThemeInfoFileName))
+	if(!KviFileUtils::fileExists(szThemeInfoFileName))
 	{
 		m_szLastError = __tr2qs("The theme information file does not exist");
 		return false;
 	}
 
-	if(!KviFileUtils::fileExists(szThemePath+szThemeDataFileName))
+	if(!KviFileUtils::fileExists(szThemeDataFileName))
 	{
 		m_szLastError = __tr2qs("The theme data file does not exist");
 		return false;
 	}
 
 
-	KviConfigurationFile cfg(szThemePath+szThemeInfoFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szThemeInfoFileName,KviConfigurationFile::Read);
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
@@ -273,19 +269,19 @@ namespace KviTheme
 
 		return true;
 	}
+
 	void installedThemes(QStringList &slThemes,bool bBuiltin)
 	{
-	    QString szThemePath;
-	    if(bBuiltin) g_pApp->getGlobalKvircDirectory(szThemePath,KviApplication::Themes);
-	    else g_pApp->getLocalKvircDirectory(szThemePath,KviApplication::Themes);
-	    QDir d(szThemePath);
-	    QStringList sl = d.entryList(QDir::Dirs);
-	     for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
-	    {
-		    QString a=*it;
-		    if(*it == ".")continue;
-		    if(*it == "..")continue;
-		    slThemes.append(*it);
-	    }
+		QString szThemePath;
+		if(bBuiltin)
+			g_pApp->getGlobalKvircDirectory(szThemePath,KviApplication::Themes);
+		else
+			g_pApp->getLocalKvircDirectory(szThemePath,KviApplication::Themes);
+		QDir d(szThemePath);
+		QStringList sl = d.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+		{
+			slThemes.append(*it);
+		}
 	}
 };

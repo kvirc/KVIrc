@@ -78,7 +78,6 @@ protected:
 	QPixmap m_pixScreenshotSmall;   //< the small screenshot pixmap
 
 	bool m_bBuiltin; //< bool is a builtin theme
-	QString m_szThemeFileName;
 public:
 	///
 	/// load data from a specified theme config file
@@ -99,8 +98,8 @@ public:
 	void setSubdirectory(const QString &szSubdirectory){ m_szSubdirectory = szSubdirectory; }
 	void getCompleteDirPath(QString &szBuffer)
 	{
-	    if(m_bBuiltin) g_pApp->getGlobalKvircDirectory(szBuffer,KviApplication::Themes,m_szThemeFileName);
-	    else g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Themes,m_szThemeFileName);
+	    if(m_bBuiltin) g_pApp->getGlobalKvircDirectory(szBuffer,KviApplication::Themes,m_szSubdirectory);
+	    else g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Themes,m_szSubdirectory);
 	    KviQString::ensureLastCharIs(szBuffer,QChar(KVI_PATH_SEPARATOR_CHAR));
 	}
 	const QString & dirName(){ return m_szDirName; }

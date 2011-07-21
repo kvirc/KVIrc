@@ -301,10 +301,7 @@ bool SaveThemeDialog::saveTheme()
 		}
 	}
 
-	QString szMsg = __tr2qs_ctx("Theme saved successfully to ","theme");
-	QString szThemePath;
-	sto.getCompleteDirPath(szThemePath);
-	szMsg += szThemePath;
+	QString szMsg = __tr2qs_ctx("Theme saved successfully to %1","theme").arg(szAbsDir);
 
 	QMessageBox::information(this,__tr2qs_ctx("Save Theme - KVIrc","theme"),szMsg,QMessageBox::Ok,
 		QMessageBox::NoButton,QMessageBox::NoButton);
