@@ -2503,7 +2503,8 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 	 */
 
 	KviIrcViewLine * l = m_pCurLine;
-	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER;
+	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	// our current line begins after the mouse position... go on
 	while(iTop > yPos)
