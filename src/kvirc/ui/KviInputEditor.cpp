@@ -1334,8 +1334,8 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE),this,SLOT(scrollToLastReadLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_KVS),this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_KVS_2),this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
+// 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_KVS),this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
+// 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_KVS_2),this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME),this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_END),this,SLOT(endInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME_SELECT),this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
