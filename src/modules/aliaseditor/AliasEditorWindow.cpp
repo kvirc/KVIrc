@@ -1164,6 +1164,9 @@ void AliasEditorWidget::commit()
 	KviKvsAliasManager::instance()->clear();
 	for(unsigned int i=0;i<m_pAliases->count();i++)
 	{
+		//don't save empty aliases or namespace names
+		if(m_pAliases->at(i)->buffer().isEmpty())
+			continue;
 		QString szName = buildFullItemName(m_pAliases->at(i));
 		KviKvsScript * a = new KviKvsScript(szName,m_pAliases->at(i)->buffer());
 		KviKvsAliasManager::instance()->add(szName,a);
