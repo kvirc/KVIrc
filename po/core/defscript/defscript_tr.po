@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2011-02-26 17:10+0200\n"
+"PO-Revision-Date: 2011-07-23 00:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -708,24 +708,16 @@ msgid "You're not connected to a server"
 msgstr "Sunucuya bağlı değilsiniz"
 
 #: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
+msgid "[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr "[Yükleyici] Hata: copyFiles’ın ilk argümanı kaynak dizinde olmalıdır"
 
 #: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-"[Yükleyici] Hata: copyFiles’ın ikinci argümanı bir dosya ismi ya da regexp "
-"dosyası olmalıdır"
+msgid "[Installer] Error: the second argument of copyFiles must be a file name or file regexp"
+msgstr "[Yükleyici] Hata: copyFiles’ın ikinci argümanı bir dosya ismi ya da regexp dosyası olmalıdır"
 
 #: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
-msgstr ""
-"[Yükleyici] Hata: copyFiles’ın üçüncü argümanı bir hedef dizin olmalıdır"
+msgid "[Installer] Error: the third argument of copyFiles must be a destination directory"
+msgstr "[Yükleyici] Hata: copyFiles’ın üçüncü argümanı bir hedef dizin olmalıdır"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
@@ -778,7 +770,6 @@ msgid "reason"
 msgstr "sebep"
 
 #: data/defscript/popups.kvs:825
-#, fuzzy
 msgid "t (Connection stats?)"
 msgstr "t (Bağlantı istatistikleri ?)"
 
