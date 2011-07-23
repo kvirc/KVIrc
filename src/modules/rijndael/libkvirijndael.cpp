@@ -213,12 +213,12 @@
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
-		char * buf = (char *)KviMemory::allocate(len + 16);
+		char * buf = (char *)KviMemory::allocate(len + 16); // needed for the eventual padding
 		unsigned char * iv = 0;
 		if(m_bEncryptCBC)
 		{
-			iv = (unsigned char *)KviMemory::allocate(8);
-			InitVectorEngine::fillRandomIV(iv, 8);
+			iv = (unsigned char *)KviMemory::allocate(MAX_IV_SIZE);
+			InitVectorEngine::fillRandomIV(iv, MAX_IV_SIZE);
 		}
 
 		int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText,len,(unsigned char *)buf, iv);
@@ -232,11 +232,11 @@
 		if(m_bEncryptCBC)
 		{
 			// prepend the iv to the cyphered text
-			KviMemory::reallocate(buf, retVal + 8);
-			KviMemory::move(buf + 8, buf, retVal);
-			KviMemory::move(buf, iv, 8);
+			buf = (char*) KviMemory::reallocate(buf, retVal + MAX_IV_SIZE);
+			KviMemory::move(buf + MAX_IV_SIZE, buf, retVal);
+			KviMemory::move(buf, iv, MAX_IV_SIZE);
 			KviMemory::free(iv);
-			retVal+=8;
+			retVal+=MAX_IV_SIZE;
 		}
 
 		if(!binaryToAscii(buf,retVal,outBuffer))
@@ -290,11 +290,11 @@
 		if(m_bEncryptCBC)
 		{
 			// extract the IV from the cyphered string
-			len-=8;
-			iv = (unsigned char *)KviMemory::allocate(8);
-			KviMemory::move(iv, binary, 8);
-			KviMemory::move(binary, binary + 8, len);
-			KviMemory::reallocate(binary, len);
+			len-=MAX_IV_SIZE;
+			iv = (unsigned char *)KviMemory::allocate(MAX_IV_SIZE);
+			KviMemory::move(iv, binary, MAX_IV_SIZE);
+			KviMemory::move(binary, binary + MAX_IV_SIZE, len);
+			binary = (char*) KviMemory::reallocate(binary, len);
 		}
 
 		int retVal = m_pDecryptCipher->padDecrypt((const unsigned char *)binary,len,(unsigned char *)buf, iv);
