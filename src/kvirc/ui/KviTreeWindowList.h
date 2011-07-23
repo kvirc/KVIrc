@@ -64,6 +64,7 @@ class KVIRC_API KviTreeWindowListTreeWidget : public QTreeWidget
 public:
 	KviTreeWindowListTreeWidget(QWidget * par);
 	~KviTreeWindowListTreeWidget();
+	bool isReverseSort() { return bReverseSort; };
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void mouseMoveEvent(QMouseEvent * e);
@@ -72,6 +73,7 @@ protected:
 	virtual void paintEvent(QPaintEvent * event);
 private:
 	KviWindowListItem * lastItem();
+	bool bReverseSort;
 public slots:
 	void sort();
 	void reverseSort();

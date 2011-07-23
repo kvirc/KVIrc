@@ -71,7 +71,7 @@ KviTreeWindowListItem::~KviTreeWindowListItem()
 void KviTreeWindowListItem::applyOptions()
 {
 	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
+	treeWidget()->sortItems(0, ((KviTreeWindowListTreeWidget *)treeWidget())->isReverseSort() ? Qt::DescendingOrder : Qt::AscendingOrder);
 }
 
 void KviTreeWindowListItem::captionChanged()
@@ -102,7 +102,7 @@ void KviTreeWindowListItem::captionChanged()
 		szText.prepend('(').append(')');
 
 	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
+	treeWidget()->sortItems(0, ((KviTreeWindowListTreeWidget *)treeWidget())->isReverseSort() ? Qt::DescendingOrder : Qt::AscendingOrder);
 
 	setData(0, Qt::DisplayRole, szText);
 }
@@ -182,6 +182,7 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 : QTreeWidget(par)
 {
 	setObjectName("tree_windowlist");
+	bReverseSort = false;
 	setRootIsDecorated(true);
 	setSelectionMode(QAbstractItemView::NoSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -293,11 +294,13 @@ void KviTreeWindowListTreeWidget::mouseDoubleClickEvent(QMouseEvent * e)
 
 void KviTreeWindowListTreeWidget::sort()
 {
+	bReverseSort = false;
 	sortItems(0,Qt::AscendingOrder);
 }
 
 void KviTreeWindowListTreeWidget::reverseSort()
 {
+	bReverseSort = true;
 	sortItems(0,Qt::DescendingOrder);
 }
 
