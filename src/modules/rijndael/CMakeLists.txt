@@ -18,6 +18,7 @@ IF(WANT_CRYPTOPP OR WANT_OPENSSL)
 			Rijndael.cpp
 			BlowFish.cpp
 			UglyBase64.cpp
+			InitVectorEngine.cpp
 		)
 
 		SET(kvirijndael_MOC_HDRS

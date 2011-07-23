@@ -130,24 +130,25 @@ public:
 	// Encrypts inputLen / 128 blocks of input and puts it in outBuffer
 	// outBuffer must be at least inputLen / 8 bytes long.
 	// Returns the encrypted buffer length in BITS or an error code < 0 in case of error
-	int blockEncrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer);
+	int blockEncrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer, UINT8 * initVector = 0);
 	// Input len is in BYTES!
 	// outBuffer must be at least inputLen + 16 bytes long
 	// Returns the encrypted buffer length in BYTES or an error code < 0 in case of error
-	int padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer);
+	int padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer, UINT8 * initVector = 0);
 	// Input len is in BITS!
 	// outBuffer must be at least inputLen / 8 bytes long
 	// Returns the decrypted buffer length in BITS and an error code < 0 in case of error
-	int blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer);
+	int blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer, UINT8 * initVector = 0);
 	// Input len is in BYTES!
 	// outBuffer must be at least inputLen bytes long
 	// Returns the decrypted buffer length in BYTES and an error code < 0 in case of error
-	int padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer);
+	int padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer, UINT8 * initVector = 0);
 protected:
 	void keySched(UINT8 key[_MAX_KEY_COLUMNS][4]);
 	void keyEncToDec();
 	void encrypt(const UINT8 a[16], UINT8 b[16]);
 	void decrypt(const UINT8 a[16], UINT8 b[16]);
+	void updateInitVector(UINT8 * initVector = 0);
 };
 
 #endif // COMPILE_CRYPT_SUPPORT

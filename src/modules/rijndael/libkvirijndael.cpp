@@ -30,9 +30,9 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KviControlCodes.h"
-#include "KviTimeUtils.h"
 #include "UglyBase64.h"
-
+#include "InitVectorEngine.h"
+	
 //#warning "Other engines: mircStrip koi2win colorizer lamerizer etc.."
 
 /*
@@ -118,34 +118,64 @@
 			}
 		}
 
+		KviCString szTmpEncryptKey = KviCString(encKey,encKeyLen);
+		KviCString szTmpDecryptKey = KviCString(decKey,decKeyLen);
+		if(kvi_strEqualCIN("cbc:",szTmpEncryptKey.ptr(),4) && (szTmpEncryptKey.len() > 4))
+		{
+			m_bEncryptCBC = true;
+			szTmpEncryptKey.cutLeft(4);
+		} else {
+			m_bEncryptCBC = false;
+		}
+		if(kvi_strEqualCIN("cbc:",szTmpDecryptKey.ptr(),4) && (szTmpDecryptKey.len() > 4))
+		{
+			m_bDecryptCBC = true;
+			szTmpDecryptKey.cutLeft(4);
+		} else {
+			m_bDecryptCBC = false;
+		}
+
 		int defLen = getKeyLen();
 
-		char * encryptKey = (char *)KviMemory::allocate(defLen);
-		char * decryptKey = (char *)KviMemory::allocate(defLen);
-
-		if(encKeyLen > defLen)encKeyLen = defLen;
-		KviMemory::move(encryptKey,encKey,encKeyLen);
-		if(encKeyLen < defLen)KviMemory::set(encryptKey + encKeyLen,'0',defLen - encKeyLen);
-
-		if(decKeyLen > defLen)decKeyLen = defLen;
-		KviMemory::move(decryptKey,decKey,decKeyLen);
-		if(decKeyLen < defLen)KviMemory::set(decryptKey + decKeyLen,'0',defLen - decKeyLen);
+		szTmpEncryptKey.padRight(defLen);
+		szTmpDecryptKey.padRight(defLen);
 
 		m_pEncryptCipher = new Rijndael();
-		int retVal = m_pEncryptCipher->init(Rijndael::CBC,Rijndael::Encrypt,(unsigned char *)encryptKey,getKeyLenId());
-		KviMemory::free(encryptKey);
+
+		/* FIXME Historically KVirc's Rijndael engine worked always in CBC mode,
+		 * but before KVIrc 4.2 no IV was used on the first block
+		 * This degraded the cypher to a pseudo-ECB mode, making the sequential
+		 * block XOR useless. Once KVIrc < 4.2 is deprecated, we can stop supporting
+		 * that broken implementation and just let it go ECB, patching the cypher's
+		 * init method call first parameter lieke this:
+		 * 
+		 * m_bEncryptCBC ? Rijndael::CBC : Rijndael::ECB,
+		 */
+
+		int retVal = m_pEncryptCipher->init(
+			Rijndael::CBC,
+			Rijndael::Encrypt,
+			(unsigned char *)szTmpEncryptKey.ptr(),
+			getKeyLenId());
 		if(retVal != RIJNDAEL_SUCCESS)
 		{
-			KviMemory::free(decryptKey);
 			delete m_pEncryptCipher;
 			m_pEncryptCipher = 0;
 			setLastErrorFromRijndaelErrorCode(retVal);
 			return false;
 		}
 
+		/* FIXME read up two dozen lines
+		 * 
+		 * m_bDecryptCBC ? Rijndael::CBC : Rijndael::ECB,
+		 */
+
 		m_pDecryptCipher = new Rijndael();
-		retVal = m_pDecryptCipher->init(Rijndael::CBC,Rijndael::Decrypt,(unsigned char *)decryptKey,getKeyLenId());
-		KviMemory::free(decryptKey);
+		retVal = m_pDecryptCipher->init(
+			Rijndael::CBC,
+			Rijndael::Decrypt,
+			(unsigned char *)szTmpDecryptKey.ptr(),
+			getKeyLenId());
 		if(retVal != RIJNDAEL_SUCCESS)
 		{
 			delete m_pEncryptCipher;
@@ -184,13 +214,29 @@
 		}
 		int len = (int)kvi_strLen(plainText);
 		char * buf = (char *)KviMemory::allocate(len + 16);
+		unsigned char * iv = 0;
+		if(m_bEncryptCBC)
+		{
+			iv = (unsigned char *)KviMemory::allocate(8);
+			InitVectorEngine::fillRandomIV(iv, 8);
+		}
 
-		int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText,len,(unsigned char *)buf);
+		int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText,len,(unsigned char *)buf, iv);
 		if(retVal < 0)
 		{
 			KviMemory::free(buf);
 			setLastErrorFromRijndaelErrorCode(retVal);
 			return KviCryptEngine::EncryptError;
+		}
+
+		if(m_bEncryptCBC)
+		{
+			// prepend the iv to the cyphered text
+			KviMemory::reallocate(buf, retVal + 8);
+			KviMemory::move(buf + 8, buf, retVal);
+			KviMemory::move(buf, iv, 8);
+			KviMemory::free(iv);
+			retVal+=8;
 		}
 
 		if(!binaryToAscii(buf,retVal,outBuffer))
@@ -240,9 +286,20 @@
 		if(!asciiToBinary(inBuffer,&len,&binary))return KviCryptEngine::DecryptError;
 
 		char * buf = (char *)KviMemory::allocate(len + 1);
+		unsigned char * iv = 0;
+		if(m_bEncryptCBC)
+		{
+			// extract the IV from the cyphered string
+			len-=8;
+			iv = (unsigned char *)KviMemory::allocate(8);
+			KviMemory::move(iv, binary, 8);
+			KviMemory::move(binary, binary + 8, len);
+			KviMemory::reallocate(binary, len);
+		}
 
-		int retVal = m_pDecryptCipher->padDecrypt((const unsigned char *)binary,len,(unsigned char *)buf);
+		int retVal = m_pDecryptCipher->padDecrypt((const unsigned char *)binary,len,(unsigned char *)buf, iv);
 		KviMemory::free(binary);
+		KviMemory::free(iv);
 
 		if(retVal < 0)
 		{
@@ -386,13 +443,19 @@
 		m_szEncryptKey = KviCString(encKey,encKeyLen);
 		m_szDecryptKey = KviCString(decKey,decKeyLen);
 		if(kvi_strEqualCIN("cbc:",m_szEncryptKey.ptr(),4) && (m_szEncryptKey.len() > 4))
+		{
+			m_bEncryptCBC = true;
 			m_szEncryptKey.cutLeft(4);
-		else
+		} else {
 			m_bEncryptCBC = false;
+		}
 		if(kvi_strEqualCIN("cbc:",m_szDecryptKey.ptr(),4) && (m_szDecryptKey.len() > 4))
+		{
+			m_bDecryptCBC = true;
 			m_szDecryptKey.cutLeft(4);
-		else
+		} else {
 			m_bDecryptCBC = false;
+		}
 		return true;
 	}
 
@@ -474,7 +537,7 @@
 		if(plain.len() % 8)
 		{
 			int oldL = plain.len();
-			plain.setLength(plain.len() + (8 - (plain.len() % 8)));
+			plain.setLen(plain.len() + (8 - (plain.len() % 8)));
 			char * padB = plain.ptr() + oldL;
 			char * padE = plain.ptr() + plain.len();
 			while(padB < padE)*padB++ = 0;
@@ -499,7 +562,7 @@
 		int len;
 		UglyBase64::decode(encoded, &buf, &len);
 
-		plain.setLength(len);
+		plain.setLen(len);
 		BlowFish bf((unsigned char *)m_szDecryptKey.ptr(),m_szDecryptKey.len());
 		bf.ResetChain();
 		bf.Decrypt(buf,(unsigned char *)plain.ptr(),len,BlowFish::ECB);
@@ -515,7 +578,7 @@
 		if(plain.len() % 8)
 		{
 			int oldL = plain.len();
-			plain.setLength(plain.len() + (8 - (plain.len() % 8)));
+			plain.setLen(plain.len() + (8 - (plain.len() % 8)));
 			char * padB = plain.ptr() + oldL;
 			char * padE = plain.ptr() + plain.len();
 			while(padB < padE)*padB++ = 0;
@@ -524,18 +587,7 @@
 		int ll = plain.len() + 8;
 		unsigned char * in = (unsigned char *)KviMemory::allocate(ll);
 
-		// choose an IV
-		static bool bDidInit = false;
-
-		int t = (int)kvi_unixTime();
-
-		if(!bDidInit)
-		{
-			srand(t);
-			bDidInit = true;
-		}
-
-		for(int i=0;i<8;i++)in[i] = (unsigned char)(rand() % 256);
+		InitVectorEngine::fillRandomIV(in, 8);
 
 		KviMemory::copy(in+8,plain.ptr(),plain.len());
 
@@ -577,7 +629,7 @@
 			return false;
 		}
 
-		plain.setLength(len);
+		plain.setLen(len);
 		BlowFish bf((unsigned char *)m_szDecryptKey.ptr(),m_szDecryptKey.len());
 		bf.ResetChain();
 		bf.Decrypt((unsigned char *)tmpBuf,(unsigned char *)plain.ptr(),len,BlowFish::CBC);

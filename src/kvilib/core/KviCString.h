@@ -182,9 +182,6 @@ public:
 	// this is better than string = "", it does not call strlen
 	void clear();
 
-	// forces the length of this string to be iLen (iLen does NOT include the trailing null : it is automatically added)
-	void setLength(int iLen);
-
 	// Returns true if there is something "readable" inside the string
 	bool hasNonWhiteSpaceData() const;
 
@@ -217,11 +214,11 @@ public:
 
 	// Null terminator is NOT included in len
 	KviCString & setLen(int len);
+
 	// str must not be 0, but len can be anything (it is checked)
 	KviCString & setStr(const char *str,int len = -1);
 	// Like the special constructor that gets the same args.
 	void extractFromString(const char *begin,const char *end);
-
 
 	// Safe sprintf. This one will never write past the end of the string
 	// It can handle only %s %d %u and %c format flags.
@@ -331,6 +328,8 @@ public:
 	KviCString & stripLeft(char c);
 	KviCString & stripRight(char c);
 
+	// either "truncate to" or "add padding up" to iLen characters.
+	KviCString & padRight(int iLen, const char c='\0');
 	//=============================================================================
 	// Tokenize
 	//=============================================================================

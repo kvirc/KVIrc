@@ -71,7 +71,7 @@ namespace UglyBase64
 		const unsigned char * oute = out + len;
 
 		int ll = (len * 3) / 2;
-		szText.setLength(ll);
+		szText.setLen(ll);
 
 		unsigned char * p = (unsigned char *)szText.ptr();
 		while(outb < oute)
@@ -102,7 +102,7 @@ namespace UglyBase64
 		if(szText.len() % 12)
 		{
 			int oldL = szText.len();
-			szText.setLength(szText.len() + (12 - (szText.len() % 12)));
+			szText.setLen(szText.len() + (12 - (szText.len() % 12)));
 			char * padB = szText.ptr() + oldL;
 			char * padE = szText.ptr() + szText.len();
 			while(padB < padE)*padB++ = 0;

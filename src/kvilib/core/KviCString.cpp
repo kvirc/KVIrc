@@ -1188,14 +1188,6 @@ KviCString::~KviCString()
 	KviMemory::free(m_ptr);
 }
 
-void KviCString::setLength(int iLen)
-{
-	KVI_ASSERT(iLen >= 0);
-	m_len = iLen;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	*(m_ptr + m_len) = '\0';
-}
-
 KviCString & KviCString::operator=(const KviCString &str)
 {
 	KVI_ASSERT(str.m_ptr);
@@ -2601,12 +2593,23 @@ KviCString & KviCString::cutFromLast(const char *c,bool bIncluded)
 	return (*this);
 }
 
-KviCString & KviCString::setLen(int len)
+KviCString & KviCString::setLen(int iLen)
 {
-	KVI_ASSERT(len >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,len+1);
-	*(m_ptr+len)='\0';
-	m_len = len;
+	KVI_ASSERT(iLen >= 0);
+	m_len = iLen;
+	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
+	*(m_ptr + m_len) = '\0';
+	return (*this);
+}
+
+KviCString & KviCString::padRight(int iLen, const char c)
+{
+	KVI_ASSERT(iLen >= 0);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr,iLen+1);
+	*(m_ptr + iLen) = '\0';
+	if(iLen > m_len)
+		KviMemory::set(m_ptr+m_len,c,iLen-m_len);
+	m_len = iLen;
 	return (*this);
 }
 

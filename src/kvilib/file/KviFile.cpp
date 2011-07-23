@@ -157,7 +157,7 @@ bool KviFile::load(KviCString & szData)
 {
 	kvi_u32_t iLen;
 	if(!load(iLen))return false;
-	szData.setLength(iLen);
+	szData.setLen(iLen);
 	return (read((char *)(szData.ptr()),iLen) == iLen);
 }
 

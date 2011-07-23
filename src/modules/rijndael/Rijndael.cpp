@@ -994,20 +994,8 @@ Rijndael::~Rijndael()
 	// nothing here
 }
 
-int Rijndael::init(Mode mode,Direction dir,const UINT8 * key,KeyLength keyLen,UINT8 * initVector)
+void Rijndael::updateInitVector(UINT8 * initVector)
 {
-	// Not initialized yet
-	m_state = Invalid;
-
-	// Check the mode
-	if((mode != CBC) && (mode != ECB) && (mode != CFB1))return RIJNDAEL_UNSUPPORTED_MODE;
-	m_mode = mode;
-
-	// And the direction
-	if((dir != Encrypt) && (dir != Decrypt))return RIJNDAEL_UNSUPPORTED_DIRECTION;
-	m_direction = dir;
-
-	// Allow to set an init vector
 	if(initVector)
 	{
 		// specified init vector
@@ -1022,6 +1010,23 @@ int Rijndael::init(Mode mode,Direction dir,const UINT8 * key,KeyLength keyLen,UI
 			m_initVector[i] = 0;
 		}
 	}
+}
+
+int Rijndael::init(Mode mode,Direction dir,const UINT8 * key,KeyLength keyLen,UINT8 * initVector)
+{
+	// Not initialized yet
+	m_state = Invalid;
+
+	// Check the mode
+	if((mode != CBC) && (mode != ECB) && (mode != CFB1))return RIJNDAEL_UNSUPPORTED_MODE;
+	m_mode = mode;
+
+	// And the direction
+	if((dir != Encrypt) && (dir != Decrypt))return RIJNDAEL_UNSUPPORTED_DIRECTION;
+	m_direction = dir;
+
+	// Call this function even if no init vector has been specified
+	updateInitVector(initVector);
 
 	UINT32 uKeyLenInBytes;
 
@@ -1062,10 +1067,14 @@ int Rijndael::init(Mode mode,Direction dir,const UINT8 * key,KeyLength keyLen,UI
 	return RIJNDAEL_SUCCESS;
 }
 
-int Rijndael::blockEncrypt(const UINT8 *input,int inputLen,UINT8 *outBuffer)
+int Rijndael::blockEncrypt(const UINT8 *input,int inputLen,UINT8 *outBuffer, UINT8 * initVector)
 {
 	int i, k, numBlocks;
 	UINT8 block[16], iv[4][4];
+
+	// update the init vector only if a new one has been specified
+	if(initVector)
+		updateInitVector(initVector);
 
 	if(m_state != Valid)return RIJNDAEL_NOT_INITIALIZED;
 	if(m_direction != Encrypt)return RIJNDAEL_BAD_DIRECTION;
@@ -1147,10 +1156,14 @@ int Rijndael::blockEncrypt(const UINT8 *input,int inputLen,UINT8 *outBuffer)
 	return 128 * numBlocks;
 }
 
-int Rijndael::padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
+int Rijndael::padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer, UINT8 * initVector)
 {
 	int i, numBlocks, padLen;
 	UINT8 block[16], *iv;
+
+	// update the init vector only if a new one has been specified
+	if(initVector)
+		updateInitVector(initVector);
 
 	if(m_state != Valid)return RIJNDAEL_NOT_INITIALIZED;
 	if(m_direction != Encrypt)return RIJNDAEL_NOT_INITIALIZED;
@@ -1205,10 +1218,14 @@ int Rijndael::padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
 	return 16*(numBlocks + 1);
 }
 
-int Rijndael::blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer)
+int Rijndael::blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer, UINT8 * initVector)
 {
 	int i, k, numBlocks;
 	UINT8 block[16], iv[4][4];
+
+	// update the init vector only if a new one has been specified
+	if(initVector)
+		updateInitVector(initVector);
 
 	if(m_state != Valid)return RIJNDAEL_NOT_INITIALIZED;
 	if((m_mode != CFB1) && (m_direction == Encrypt))return RIJNDAEL_BAD_DIRECTION;
@@ -1302,11 +1319,15 @@ int Rijndael::blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer)
 	return 128*numBlocks;
 }
 
-int Rijndael::padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
+int Rijndael::padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer, UINT8 * initVector)
 {
 	int i, numBlocks, padLen;
 	UINT8 block[16];
 	UINT32 iv[4];
+
+	// update the init vector only if a new one has been specified
+	if(initVector)
+		updateInitVector(initVector);
 
 	if(m_state != Valid)return RIJNDAEL_NOT_INITIALIZED;
 	if(m_direction != Decrypt)return RIJNDAEL_BAD_DIRECTION;

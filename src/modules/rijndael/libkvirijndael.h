@@ -42,6 +42,8 @@
 	private:
 		Rijndael * m_pEncryptCipher;
 		Rijndael * m_pDecryptCipher;
+		bool m_bEncryptCBC;
+		bool m_bDecryptCBC;
 	public:
 		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
 		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
