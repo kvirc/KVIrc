@@ -296,12 +296,17 @@
 
 		if(m_pEnableEncrypt->isChecked())
 		{
-			bool bCbc=false;
+			bool bEcb=false, bOld=false;
 			szEncryptKey = m_pEncryptKeyEdit->text();
-			if(kvi_strEqualCIN("cbc:",szEncryptKey.ptr(),4) && (szEncryptKey.len() > 4))
+			if(kvi_strEqualCIN("ecb:",szEncryptKey.ptr(),4) && (szEncryptKey.len() > 4))
 			{
 				szEncryptKey.cutLeft(4);
-				bCbc=true;
+				bEcb=true;
+			} else if(kvi_strEqualCIN("old:",szEncryptKey.ptr(),4) && (szEncryptKey.len() > 4)) {
+				szEncryptKey.cutLeft(4);
+				bOld=true;
+			} else if(kvi_strEqualCIN("cbc:",szEncryptKey.ptr(),4)) {
+				szEncryptKey.cutLeft(4);
 			}
 
 			if(m_pEncryptHexKeyCheck->isChecked())
@@ -315,18 +320,25 @@
 			} else {
 				szEncKey = szEncryptKey;
 			}
-			if(bCbc)
-				szEncKey.prepend("cbc:");
+			if(bEcb)
+				szEncKey.prepend("ecb:");
+			else if(bOld)
+				szEncKey.prepend("old:");
 		}
 
 		if(m_pEnableDecrypt->isChecked())
 		{
-			bool bCbc=false;
+			bool bEcb=false, bOld=false;
 			szDecryptKey = m_pDecryptKeyEdit->text();
-			if(kvi_strEqualCIN("cbc:",szDecryptKey.ptr(),4) && (szDecryptKey.len() > 4))
+			if(kvi_strEqualCIN("ecb:",szDecryptKey.ptr(),4) && (szDecryptKey.len() > 4))
 			{
 				szDecryptKey.cutLeft(4);
-				bCbc=true;
+				bEcb=true;
+			} else if(kvi_strEqualCIN("old:",szDecryptKey.ptr(),4) && (szDecryptKey.len() > 4)) {
+				szDecryptKey.cutLeft(4);
+				bOld=true;
+			} else if(kvi_strEqualCIN("cbc:",szDecryptKey.ptr(),4)) {
+				szDecryptKey.cutLeft(4);
 			}
 
 			if(m_pDecryptHexKeyCheck->isChecked())
@@ -340,8 +352,10 @@
 			} else {
 				szDecKey = szDecryptKey;
 			}
-			if(bCbc)
-				szDecKey.prepend("cbc:");
+			if(bEcb)
+				szDecKey.prepend("ecb:");
+			else if(bOld)
+				szDecKey.prepend("old:");
 		}
 		
 		bool bRet = pEngine->init(szEncKey.ptr(),szEncKey.len(),szDecKey.ptr(),szDecKey.len());

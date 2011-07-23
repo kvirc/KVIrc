@@ -40,10 +40,15 @@
 		KviRijndaelEngine();
 		virtual ~KviRijndaelEngine();
 	private:
+		enum OperationalMode {
+			OldCBC   =  1,	/** Legacy (pre-4.2) mode: CBC with empty IV **/
+			CBC      =  2,	/** CBC mode **/
+			ECB      =  3	/** ECB mode **/
+		};
 		Rijndael * m_pEncryptCipher;
 		Rijndael * m_pDecryptCipher;
-		bool m_bEncryptCBC;
-		bool m_bDecryptCBC;
+		OperationalMode m_bEncryptMode;
+		OperationalMode m_bDecryptMode;
 	public:
 		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
 		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);

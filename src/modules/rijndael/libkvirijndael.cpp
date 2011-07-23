@@ -120,19 +120,30 @@
 
 		KviCString szTmpEncryptKey = KviCString(encKey,encKeyLen);
 		KviCString szTmpDecryptKey = KviCString(decKey,decKeyLen);
-		if(kvi_strEqualCIN("cbc:",szTmpEncryptKey.ptr(),4) && (szTmpEncryptKey.len() > 4))
+		
+		m_bEncryptMode = CBC; // default mode
+		m_bDecryptMode = CBC; // default mode
+
+		if(kvi_strEqualCIN("ecb:",szTmpEncryptKey.ptr(),4) && (szTmpEncryptKey.len() > 4))
 		{
-			m_bEncryptCBC = true;
 			szTmpEncryptKey.cutLeft(4);
-		} else {
-			m_bEncryptCBC = false;
+			m_bEncryptMode = ECB;
+		} else if(kvi_strEqualCIN("old:",szTmpEncryptKey.ptr(),4) && (szTmpEncryptKey.len() > 4)) {
+			szTmpEncryptKey.cutLeft(4);
+			m_bEncryptMode = OldCBC;
+		} else if(kvi_strEqualCIN("cbc:",szTmpEncryptKey.ptr(),4) && (szTmpEncryptKey.len() > 4)) {
+			szTmpEncryptKey.cutLeft(4);
 		}
-		if(kvi_strEqualCIN("cbc:",szTmpDecryptKey.ptr(),4) && (szTmpDecryptKey.len() > 4))
+
+		if(kvi_strEqualCIN("ecb:",szTmpDecryptKey.ptr(),4) && (szTmpDecryptKey.len() > 4))
 		{
-			m_bDecryptCBC = true;
 			szTmpDecryptKey.cutLeft(4);
-		} else {
-			m_bDecryptCBC = false;
+			m_bDecryptMode = ECB;
+		} else if(kvi_strEqualCIN("old:",szTmpDecryptKey.ptr(),4) && (szTmpDecryptKey.len() > 4)) {
+			szTmpDecryptKey.cutLeft(4);
+			m_bDecryptMode = OldCBC;
+		} else if(kvi_strEqualCIN("cbc:",szTmpDecryptKey.ptr(),4) && (szTmpDecryptKey.len() > 4)) {
+			szTmpDecryptKey.cutLeft(4);
 		}
 
 		int defLen = getKeyLen();
@@ -142,18 +153,8 @@
 
 		m_pEncryptCipher = new Rijndael();
 
-		/* FIXME Historically KVirc's Rijndael engine worked always in CBC mode,
-		 * but before KVIrc 4.2 no IV was used on the first block
-		 * This degraded the cypher to a pseudo-ECB mode, making the sequential
-		 * block XOR useless. Once KVIrc < 4.2 is deprecated, we can stop supporting
-		 * that broken implementation and just let it go ECB, patching the cypher's
-		 * init method call first parameter lieke this:
-		 * 
-		 * m_bEncryptCBC ? Rijndael::CBC : Rijndael::ECB,
-		 */
-
 		int retVal = m_pEncryptCipher->init(
-			Rijndael::CBC,
+			(m_bEncryptMode == ECB) ? Rijndael::ECB : Rijndael::CBC,
 			Rijndael::Encrypt,
 			(unsigned char *)szTmpEncryptKey.ptr(),
 			getKeyLenId());
@@ -165,14 +166,9 @@
 			return false;
 		}
 
-		/* FIXME read up two dozen lines
-		 * 
-		 * m_bDecryptCBC ? Rijndael::CBC : Rijndael::ECB,
-		 */
-
 		m_pDecryptCipher = new Rijndael();
 		retVal = m_pDecryptCipher->init(
-			Rijndael::CBC,
+			(m_bEncryptMode == ECB) ? Rijndael::ECB : Rijndael::CBC,
 			Rijndael::Decrypt,
 			(unsigned char *)szTmpDecryptKey.ptr(),
 			getKeyLenId());
@@ -215,7 +211,7 @@
 		int len = (int)kvi_strLen(plainText);
 		char * buf = (char *)KviMemory::allocate(len + 16); // needed for the eventual padding
 		unsigned char * iv = 0;
-		if(m_bEncryptCBC)
+		if(m_bEncryptMode == CBC)
 		{
 			iv = (unsigned char *)KviMemory::allocate(MAX_IV_SIZE);
 			InitVectorEngine::fillRandomIV(iv, MAX_IV_SIZE);
@@ -229,7 +225,7 @@
 			return KviCryptEngine::EncryptError;
 		}
 
-		if(m_bEncryptCBC)
+		if(m_bEncryptMode == CBC)
 		{
 			// prepend the iv to the cyphered text
 			buf = (char*) KviMemory::reallocate(buf, retVal + MAX_IV_SIZE);
@@ -287,7 +283,7 @@
 
 		char * buf = (char *)KviMemory::allocate(len + 1);
 		unsigned char * iv = 0;
-		if(m_bEncryptCBC)
+		if(m_bEncryptMode == CBC)
 		{
 			// extract the IV from the cyphered string
 			len-=MAX_IV_SIZE;
@@ -442,20 +438,30 @@
 		}
 		m_szEncryptKey = KviCString(encKey,encKeyLen);
 		m_szDecryptKey = KviCString(decKey,decKeyLen);
-		if(kvi_strEqualCIN("cbc:",m_szEncryptKey.ptr(),4) && (m_szEncryptKey.len() > 4))
+		
+		m_bEncryptCBC = true;
+		m_bDecryptCBC = true;
+
+		if((kvi_strEqualCIN("ecb:",m_szEncryptKey.ptr(),4) ||
+			kvi_strEqualCIN("old:",m_szEncryptKey.ptr(),4))
+			&& (m_szEncryptKey.len() > 4))
 		{
-			m_bEncryptCBC = true;
-			m_szEncryptKey.cutLeft(4);
-		} else {
 			m_bEncryptCBC = false;
+			m_szEncryptKey.cutLeft(4);
+		} else if(kvi_strEqualCIN("cbc:",m_szEncryptKey.ptr(),4) && (m_szEncryptKey.len() > 4)) {
+			m_szEncryptKey.cutLeft(4);
 		}
-		if(kvi_strEqualCIN("cbc:",m_szDecryptKey.ptr(),4) && (m_szDecryptKey.len() > 4))
+
+		if((kvi_strEqualCIN("ecb:",m_szDecryptKey.ptr(),4) ||
+			kvi_strEqualCIN("old:",m_szDecryptKey.ptr(),4))
+			&& (m_szDecryptKey.len() > 4))
 		{
-			m_bDecryptCBC = true;
-			m_szDecryptKey.cutLeft(4);
-		} else {
 			m_bDecryptCBC = false;
+			m_szDecryptKey.cutLeft(4);
+		} else if(kvi_strEqualCIN("cbc:",m_szDecryptKey.ptr(),4) && (m_szDecryptKey.len() > 4)) {
+			m_szDecryptKey.cutLeft(4);
 		}
+
 		return true;
 	}
 
@@ -660,17 +666,14 @@ static bool rijndael_module_init(KviModule * m)
 	g_pEngineList = new KviPointerList<KviCryptEngine>;
 	g_pEngineList->setAutoDelete(false);
 
-	QString szFormat = __tr2qs("Cryptographic engine based on the\n" \
-		"Advanced Encryption Standard (AES)\n" \
-		"algorithm called Rijndael.\n" \
-		"The text is first encrypted with rijndael\n" \
-		"and then converted to %1 notation.\n" \
-		"The keys used are %2 bit long and will be padded\n" \
-		"with zeros if you provide shorter ones.\n" \
-		"If only one key is provided, this engine\n" \
-		"will use it for both encrypting and decrypting.\n" \
-		"See the rijndael module documentation\n" \
-		"for more info on the algorithm used.\n");
+	QString szFormat = __tr2qs("Cryptographic engine based on the Advanced Encryption Standard (AES) algorithm called Rijndael. " \
+		"<br/>The text is first encrypted with rijndael and then converted to %1 notation. " \
+		"The keys used are %2 bit long and will be padded with zeros if you provide shorter ones. " \
+		"If only one key is provided, this engine will use it for both encrypting and decrypting. " \
+		"See the rijndael module documentation for more info on the algorithm used. " \
+		"<br/>This engine works in CBC mode by default: other modes are considered INSECURE and should be avoided. " \
+		"The old pseudo-CBC mode used in KVIrc &lt; 4.2 is still available prefixing your key(s) with \"old:\"; " \
+		"if you want to use ECB mode you must prefix your key(s) with \"ecb:\".");
 
 	// FIXME: Maybe convert this repeated code to a function eh ?
 
@@ -738,24 +741,17 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->m_szName = "Mircryption";
 	d->m_szAuthor = "Szymon Stefanek";
-	d->m_szDescription = __tr2qs("Popular cryptographic engine based on the\n" \
-		"old Blowfish encryption algorithm.\n" \
-		"The text is first encrypted with Blowfish \n" \
-		"and then converted to base64 notation.\n" \
-		"The keys used have variable length and\n" \
-		"are specified as character strings.\n" \
-		"You can specify keys long up to 56 bytes (448 bits).\n" \
-		"If only one key is provided, this engine\n" \
-		"will use it for both encrypting and decrypting.\n" \
-		"This engine works in ECB mode by default:\n" \
-		"if you want to use CBC mode you must prefix\n" \
-		"your key(s) with \"cbc:\".\n");
+	d->m_szDescription = __tr2qs("Popular cryptographic engine based on the Blowfish encryption algorithm. " \
+		"<br/>The text is first encrypted with Blowfish and then converted to base64 notation. " \
+		"The keys used have variable length and are specified as character strings." \
+		"You can specify keys long up to 56 bytes (448 bits). " \
+		"If only one key is provided, this engine will use it for both encrypting and decrypting. " \
+		"<br/>This engine works in CBC mode by default: if you want to use the old and INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\".");
 	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
 		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocMircryptionEngine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
-
 
 	return true;
 #else
@@ -792,7 +788,8 @@ static bool rijndael_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"Rijndael crypt engine",
 	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net>",
+	"Szymon Stefanek <pragma at kvirc dot net>\n" \
+	"Fabio Bas <ctrlaltca at gmail dot com>",
 	"Exports the rijndael crypt engine",
 	rijndael_module_init,
 	rijndael_module_can_unload,
