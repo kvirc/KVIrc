@@ -76,7 +76,7 @@
 		This function is called when a menu item and return the the item id.[br]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
 		!fn: $highligthtedEvent(<popup_id:uinteger>)
-		This function is called when a menu item is highlighted and return the item id.[br]
+		This function is called when a menu item is highlighted (hovered) and return the item id.[br]
 		The default implementation emits the [classfnc]$highlighted[/classfnc]() signal.
 	@signals:
 		!sg: $activated()
@@ -225,7 +225,7 @@ bool KvsObject_popupMenu::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	SET_OBJECT(QMenu)
 	connect(widget(),SIGNAL(triggered(QAction *)),this,SLOT(slottriggered(QAction *)));
 	connect(widget(),SIGNAL(destroyed(QObject *)),this,SLOT(aboutToDie(QObject *)));
-	connect(widget(),SIGNAL(highlighted(int)),this,SLOT(slothighlighted(int)));
+	connect(widget(),SIGNAL(hovered(QAction *)),this,SLOT(slothovered(QAction *)));
 	return true;
 }
 
@@ -362,9 +362,15 @@ KVSO_CLASS_FUNCTION(popupMenu,insertSeparator)
 	return true;
 }
 
-void KvsObject_popupMenu::slothighlighted(int i)
+void KvsObject_popupMenu::slothovered(QAction *a)
 {
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i));
+	QHashIterator<int, QAction *> i(actionsDict);
+	while (i.hasNext())
+	{
+		i.next();
+		if (i.value()== a) break;
+	}
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
 	callFunction(this,"highlightedEvent",&params);
 }
 void KvsObject_popupMenu::aboutToDie(QObject *pObject)

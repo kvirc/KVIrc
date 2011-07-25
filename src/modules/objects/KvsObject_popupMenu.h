@@ -56,7 +56,7 @@ protected:
 
 protected slots:
 	void slottriggered(QAction *);
-	void slothighlighted(int);
+	void slothovered(QAction *);
 	void aboutToDie(QObject *);
 };
 
