@@ -1264,7 +1264,7 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 		buffer += html_eofbold;
 		//buffer += html_spaceparclosed;
 
-		buffer += "</td></tr><tr><td bgcolor=\"#F0F0F0\">";
+		buffer += "</td></tr><tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
 
 		tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->lastMessageTime())),
 			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
@@ -1273,7 +1273,8 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += tspan;
-		buffer += "</b></td></tr>";
+		buffer += html_eofbold;
+		buffer += "</font></td></tr>";
 	}
 
 	buffer += "</table>";
