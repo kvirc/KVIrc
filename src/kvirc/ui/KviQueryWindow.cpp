@@ -142,7 +142,10 @@ void KviQueryWindow::getWindowListTipText(QString & szBuffer)
 {
 	QString szText;
 	if(!connection())
+	{
 		szBuffer = __tr2qs("[Dead query]");
+		return;
+	}
 
 	KviIrcUserEntry * pEntry = connection()->userDataBase()->find(m_szName);
 	if(pEntry)
