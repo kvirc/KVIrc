@@ -224,14 +224,14 @@ void KviWebPackageManagementDialog::slotDataTransferProgress(qint64 iDone,qint64
 {
 	m_pProgressBar->setMaximum(iTotal);
 	m_pProgressBar->setValue(iDone);
-	m_pProgressBar->setFormat(__tr2qs_ctx("Downloading ","theme")+"%p");
+	m_pProgressBar->setFormat(__tr2qs_ctx("Downloading: %p%","theme"));
 }
 
 void KviWebPackageManagementDialog::slotLoadProgress(int iProgress)
 {
 	m_pProgressBar->setMaximum(100);
 	m_pProgressBar->setValue(iProgress);
-	m_pProgressBar->setFormat(__tr2qs_ctx("Loading ","theme")+"%p");
+	m_pProgressBar->setFormat(__tr2qs_ctx("Loading: %p%","theme"));
 }
 
 void KviWebPackageManagementDialog::slotCommandFinished(int id,bool error)
