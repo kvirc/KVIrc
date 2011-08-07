@@ -45,16 +45,16 @@
 		This class implements a really simple xml document parser.
 		You will usually derive your own class from this one and reimplement
 		some of the events that it triggers.
-		You will typically reimplement [classfnc:xmlparser]$onElementStart[/classfnc]()
-		and [classfnc:xmlparser]$onElementEnd[/classfnc]() that will be called
-		during the execution of [classfnc:xmlparser]$parse[/classfnc]() in an order
+		You will typically reimplement [classfnc:xmlreader]$onElementStart[/classfnc]()
+		and [classfnc:xmlreader]$onElementEnd[/classfnc]() that will be called
+		during the execution of [classfnc:xmlreader]$parse[/classfnc]() in an order
 		reflecting the order of elements in the parsed document.
 	@functions:
 		!fn: <boolean> $parse(<xml_data:string_or_memorybuffer_object>)
 		Call this function to parse a string that contains an XML document.
 		A typical call for this method will look like:
 		[example]
-			%x = [fnc]$new[/fnc](xmlparser)
+			%x = [fnc]$new[/fnc](xmlreader)
 			%x->$parse([fnc]$file.read[/fnc]("/home/somefile.xml"))
 		[/example]
 		During the call the <xml_data> string will be parsed and the
