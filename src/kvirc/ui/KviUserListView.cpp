@@ -360,7 +360,7 @@ void KviUserListView::applyOptions()
 	}
 	updateScrollBarRange();
 	m_pUsersLabel->setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
-	setMinimumWidth(100);
+	setMinimumWidth(22);
 	resizeEvent(0); // this will call update() too
 	repaint();
 }

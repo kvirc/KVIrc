@@ -260,10 +260,10 @@ void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
 	def.append((iWidth * 25) / 100);
 	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
-	m_pIrcView->resize(sizes.at(0), m_pIrcView->height());
-	m_pUserListView->resize(sizes.at(1), m_pUserListView->height());
-	m_pSplitter->setStretchFactor(0,0);
-	m_pSplitter->setStretchFactor(0,1);
+
+	//this is an hack to simulate qt3's ResizeMode = Stretch
+	for(int iWidget=0; iWidget<m_pSplitter->count(); iWidget++)
+		m_pSplitter->setStretchFactor(iWidget,1);
 
 	showListView(pCfg->readBoolEntry("UserListViewVisible",false));
 }

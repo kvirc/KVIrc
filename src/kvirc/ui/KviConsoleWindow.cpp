@@ -396,10 +396,10 @@ void KviConsoleWindow::loadProperties(KviConfigurationFile *cfg)
 	def.append((iWidth * 25) / 100);
 	QList<int> sizes=cfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
-	m_pIrcView->resize(sizes.at(0), m_pIrcView->height());
-	m_pNotifyListView->resize(sizes.at(1), m_pNotifyListView->height());
-	m_pSplitter->setStretchFactor(0,0);
-	m_pSplitter->setStretchFactor(0,1);
+
+	//this is an hack to simulate qt3's ResizeMode = Stretch
+	for(int iWidget=0; iWidget<m_pSplitter->count(); iWidget++)
+		m_pSplitter->setStretchFactor(iWidget,1);
 
 	KviWindow::loadProperties(cfg);
 	showNotifyList(cfg->readBoolEntry("NotifyListViewVisible",false));

@@ -377,15 +377,20 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	def.append((iWidth * 15) / 100);
 	def.append((iWidth * 10) / 100);
 	m_pTopSplitter->setSizes(pCfg->readIntListEntry("TopSplitter",def));
+	
+	//this is an hack to simulate qt3's ResizeMode = Stretch
+	for(int iWidget=0; iWidget<m_pTopSplitter->count(); iWidget++)
+		m_pTopSplitter->setStretchFactor(iWidget,1);
+
 	def.clear();
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
 	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
-	m_pIrcView->resize(sizes.at(0), m_pIrcView->height());
-	m_pUserListView->resize(sizes.at(1), m_pUserListView->height());
-	m_pSplitter->setStretchFactor(0,0);
-	m_pSplitter->setStretchFactor(0,1);
+	
+	//this is an hack to simulate qt3's ResizeMode = Stretch
+	for(int iWidget=0; iWidget<m_pSplitter->count(); iWidget++)
+		m_pSplitter->setStretchFactor(iWidget,1);
 
 	def.clear();
 
@@ -436,6 +441,11 @@ void KviChannelWindow::showDoubleView(bool bShow)
 
 		m_pMessageView = new KviIrcView(m_pVertSplitter,m_pFrm,this);
 		m_pVertSplitter->setSizes(m_VertSplitterSizesList);
+
+		//this is an hack to simulate qt3's ResizeMode = Stretch
+		for(int iWidget=0; iWidget<m_pVertSplitter->count(); iWidget++)
+			m_pVertSplitter->setStretchFactor(iWidget,1);
+
 		//setFocusHandler(m_pInput,m_pMessageView); //socket it!
 		if(!(m_pDoubleViewButton->isChecked()))
 			m_pDoubleViewButton->setChecked(true);
