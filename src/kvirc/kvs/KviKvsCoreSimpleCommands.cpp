@@ -169,28 +169,63 @@ namespace KviKvsCoreSimpleCommands
 		QByteArray szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());
 		QByteArray szMessage;
 
-		int i = 0;
+		int iMaxModeChangesPerLine = 3; // a good default
+		KviIrcConnectionServerInfo * pServerInfo = KVSCSC_pConnection->serverInfo();
+		if(pServerInfo)
+		{
+			iMaxModeChangesPerLine = pServerInfo->maxModeChanges();
+			if(iMaxModeChangesPerLine < 1)
+				iMaxModeChangesPerLine = 1;
+		}
+
+		int iCurModeChangesPerLine = iMaxModeChangesPerLine;
+		
+		// Calculate the max number of available characters in a MODE command
+		// 512 (max) - 2 (cr, lf) - 4 (MODE) - 3 (spaces) - 1 (plus/minus)
+		// since we already know the channel name, take it in account, too
+
+		const int iMaxCharsPerLine = 502 - szTarget.size();
+		int iCurCharsPerLine = iMaxCharsPerLine;
+		
 		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 		{
 			QByteArray szTxt = KVSCSC_pConnection->encodeText(*it);
 			if(!szTxt.isEmpty())
 			{
 				szFlags += flag;
-				if(szMessage.length() > 0)szMessage += " ";
+				iCurCharsPerLine--;
+
+				if(szMessage.length() > 0)
+				{
+					szMessage += " ";
+					iCurCharsPerLine--;
+				}
+				
 				szMessage += szTxt;
-				i++;
-				if(i >= KVSCSC_pConnection->serverInfo()->maxModeChanges())
+				iCurCharsPerLine-=szTxt.size();
+
+				iCurModeChangesPerLine--;
+				if(iCurModeChangesPerLine < 0 || iCurCharsPerLine < 0)
 				{
 					if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s",szTarget.data(),plusminus,szFlags.data(),szMessage.data()))
 						return KVSCSC_pContext->warningNoIrcConnection();
-					i = 0;
+					
+					// move back the iterator by one position
+					// WARNING: this could lead to an infinite loop if a single specified mode
+					// change is longer than iMaxCharsPerLine
+					it--;
+
+					// reset cycle variables
+					iCurCharsPerLine = iMaxCharsPerLine;
+					iCurModeChangesPerLine = iMaxModeChangesPerLine;
 					szFlags = "";
 					szMessage = "";
+
 				}
 			}
 		}
 
-		if(i > 0)
+		if(iCurModeChangesPerLine != iMaxModeChangesPerLine)
 		{
 			if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s",szTarget.data(),plusminus,szFlags.data(),szMessage.data()))
 				return KVSCSC_pContext->warningNoIrcConnection();

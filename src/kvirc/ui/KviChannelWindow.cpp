@@ -584,48 +584,65 @@ void KviChannelWindow::toggleListModeEditor()
 
 void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMaskEntry> * pList)
 {
-	QString szMasks, szFlags;
-	int uCount = 0;
-	int iModesPerLine = 3; // a good default
+	if(!connection())
+		return;
+
+	QString szMasks;
+	QByteArray szFlags;
+	QByteArray szTarget = connection()->encodeText(m_szName);
+
+	int iMaxModeChangesPerLine = 3; // a good default
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
 	if(pServerInfo)
 	{
-		iModesPerLine = pServerInfo->maxModeChanges();
-		if(iModesPerLine < 1)
-			iModesPerLine = 1;
+		iMaxModeChangesPerLine = pServerInfo->maxModeChanges();
+		if(iMaxModeChangesPerLine < 1)
+			iMaxModeChangesPerLine = 1;
 	}
+
+	int iCurModeChangesPerLine = iMaxModeChangesPerLine;
+	
+	// Calculate the max number of available characters in a MODE command
+	// 512 (max) - 2 (cr, lf) - 4 (MODE) - 3 (spaces) - 1 (plus/minus)
+	// since we already know the channel name, take it in account, too
+
+	const int iMaxCharsPerLine = 502 - szTarget.size();
+	int iCurCharsPerLine = iMaxCharsPerLine;
 
 	for(KviMaskEntry * pEntry = pList->first(); pEntry; pEntry = pList->next())
 	{
+		szFlags += pEditor->flag();
+		iCurCharsPerLine--;
+
 		if(!szMasks.isEmpty())
-			szMasks.append(' ');
-
-		szMasks.append(pEntry->szMask);
-		szFlags.append(pEditor->flag());
-		uCount++;
-
-		if(uCount == iModesPerLine)
 		{
-			if(connection())
-			{
-				QByteArray szName = connection()->encodeText(m_szName);
-				connection()->sendFmtData("MODE %s -%s %s",szName.data(),szFlags.toUtf8().data(),connection()->encodeText(szMasks).data());
-			}
+			szMasks += " ";
+			iCurCharsPerLine--;
+		}
+			
+		szMasks += pEntry->szMask;
+		iCurCharsPerLine-=pEntry->szMask.size();
 
+		iCurModeChangesPerLine--;
+		if(iCurModeChangesPerLine < 0 || iCurCharsPerLine < 0)
+		{
+			connection()->sendFmtData("MODE %s -%s %s",szTarget.data(),szFlags.data(),connection()->encodeText(szMasks).data());
+				
+			// move back the iterator by one position
+			// WARNING: this could lead to an infinite loop if a single specified mode
+			// change is longer than iMaxCharsPerLine
+			pEntry = pList->prev();
+
+			// reset cycle variables
+			iCurCharsPerLine = iMaxCharsPerLine;
+			iCurModeChangesPerLine = iMaxModeChangesPerLine;
 			szFlags = "";
 			szMasks = "";
-			uCount = 0;
 		}
 	}
 
-	if(!szMasks.isEmpty())
-	{
-		if(connection())
-		{
-			QByteArray szName = connection()->encodeText(m_szName);
-			connection()->sendFmtData("MODE %s -%s %s",szName.data(),szFlags.toUtf8().data(),connection()->encodeText(szMasks).data());
-		}
-	}
+	if(iCurModeChangesPerLine != iMaxModeChangesPerLine)
+		connection()->sendFmtData("MODE %s -%s %s",szTarget.data(),szFlags.data(),connection()->encodeText(szMasks).data());
 }
 
 QPixmap * KviChannelWindow::myIconPtr()
