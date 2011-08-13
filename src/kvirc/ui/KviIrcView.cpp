@@ -1697,7 +1697,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
 		}
 
-		if(curBlockLen == 0)
+		if(curBlockLen < 3)
 		{
 			// ran up to the beginning of the block....
 			if(ptr->pChunks[curAttrBlock].type == KviControlCodes::Icon)
