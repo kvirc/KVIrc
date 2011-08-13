@@ -2015,7 +2015,16 @@ void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
 	if(m_iFontLineWidth < 1)
 		m_iFontLineWidth = 1;
 
-	m_iWrapMargin = m_pFm->width("wwww");
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
+	{
+		QString szTimestamp;
+		QDateTime datetime=KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? QDateTime::currentDateTime().toUTC(): QDateTime::currentDateTime();
+		szTimestamp=datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
+		szTimestamp.append(' ');
+		m_iWrapMargin = m_pFm->width(szTimestamp);
+	} else {
+		m_iWrapMargin = m_pFm->width("wwww");
+	}
 
 	m_iMinimumPaintWidth = (((int)(m_pFm->width('w'))) << 1) + m_iWrapMargin;
 

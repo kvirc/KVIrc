@@ -160,17 +160,19 @@ void KviConsoleWindow::recentUrlsChanged()
 		QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).begin();
 		it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end();
 		++it
-			) {
+	) {
 		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KviIconManager::Url)),*it);
 	}
-//	m_pAddressEdit->setCurrentText(cur);
+
 	int i = m_pAddressEdit->findText(cur);
-    if (i != -1)m_pAddressEdit->setCurrentIndex(i);
-	else
+	if (i != -1)
 	{
-		if (m_pAddressEdit->isEditable())m_pAddressEdit->setEditText(cur);
+		m_pAddressEdit->setCurrentIndex(i);
+	} else {
+		if (m_pAddressEdit->isEditable())
+			m_pAddressEdit->setEditText(cur);
 		else
-	    m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), cur);
+			m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), cur);
 	}
 }
 
@@ -451,14 +453,16 @@ void KviConsoleWindow::updateUri()
 			}
 		}
 	}
-//	m_pAddressEdit->setCurrentText(uri);
+
 	int i = m_pAddressEdit->findText(uri);
-    if (i != -1)m_pAddressEdit->setCurrentIndex(i);
-	else
+	if (i != -1)
 	{
-		if (m_pAddressEdit->isEditable())m_pAddressEdit->setEditText(uri);
+		m_pAddressEdit->setCurrentIndex(i);
+	} else {
+		if (m_pAddressEdit->isEditable())
+			m_pAddressEdit->setEditText(uri);
 		else
-	    m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), uri);
+			m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), uri);
 	}
 }
 
