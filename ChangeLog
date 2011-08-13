@@ -2,12 +2,25 @@ This is KVIrc's changelog. It tipically lists new added features and changes tha
 KVIrc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
 https://svn.kvirc.de/kvirc/timeline
 
-Update: 20110606
+Update: 20110813
+
+August 2011
+   [CtrlAltCa]
+   - Win32 only: fixed some visual artifacts removing WS_EX_LAYERED attribute from
+     KviMainWindow when global transparency is not used
+
+July 2011
+   [CtrlAltCa]
+   - SSL certificate fingerprint verification
+   - Added "force KVS mode" shortcut modifier
+   - Improved KviCString
+   - Splitted Initalization Vector engine to its own file and added real CBC mode to
+     Rijndael engine (wip)
 
 June 2011
    [egns]
-   - Reworked IRC URI handling using regexp and added the possibility to paste a URI in the
-     address bar or type a host directly without the protocol (eg: irc://)
+   - Reworked IRC URI handling using regexp and added the possibility to paste a URI
+     in the address bar or type a host directly without the protocol (eg: irc://)
    [CtrlAltCa]
    - Discriminate channels across different networks in settings
    - Added case sensivity flag to $str.* functions
@@ -56,7 +69,7 @@ January 2011
    - Added a new DNS resolver that doesn't rely on OS native implementation
    - Added alternative network-specific and server-specific nicknames
    [HelLViS69]
-   - Reworked icon stuff killing moving defines to enums
+   - Reworked icon stuff moving defines to enums
    - Improved KDE notifier
    - Killed some KviQString helpers
    [Noldor]
