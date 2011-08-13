@@ -26,6 +26,7 @@
 
 #include "KviQString.h"
 #include "KviCString.h"
+#include "KviOptions.h"
 
 #include <QFileInfo>
 
@@ -77,10 +78,34 @@ LogFile::LogFile(const QString & szName)
 	m_szNetwork = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 
 	QString szDate = szTmpName.section('_',-1).section('.',0,-2);
-	int iYear = szDate.section('.',0,0).toInt();
-	int iMonth = szDate.section('.',1,1).toInt();
-	int iDay = szDate.section('.',2,2).toInt();
-	m_date.setYMD(iYear,iMonth,iDay);
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat)) 
+	{
+		case 1:
+			m_date = QDate::fromString(szDate, Qt::ISODate);
+			break;
+		case 2:
+			m_date = QDate::fromString(szDate, Qt::SystemLocaleDate);
+			break;
+		case 0:
+		default:
+			m_date = QDate::fromString(szDate, "yyyy.MM.dd");
+			break;
+	}
+	if(!m_date.isValid())
+	{
+		// probably the log has been created when the OutputDatetimeFormat option
+		// was set to a different value. Try to guess its format
+		m_date = QDate::fromString(szDate, "yyyy.MM.dd");
+		if(!m_date.isValid())
+		{
+			m_date = QDate::fromString(szDate, Qt::ISODate);
+			if(!m_date.isValid())
+			{
+				m_date = QDate::fromString(szDate, Qt::SystemLocaleDate);
+				// if the date is still not valid, we give up
+			}
+		}
+	}
 }
 
 void LogFile::getText(QString & szText)
