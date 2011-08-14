@@ -91,7 +91,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("DisableBrokenEventHandlers",true,KviOption_sectFlagUserParser),
 	BOOL_OPTION("IgnoreCtcpClientinfo",false,KviOption_sectFlagCtcp),
 	BOOL_OPTION("IgnoreCtcpUserinfo",false,KviOption_sectFlagCtcp),
-	BOOL_OPTION("IgnoreCtcpFinger",false,KviOption_sectFlagCtcp),
+	BOOL_OPTION("IgnoreCtcpFinger",true,KviOption_sectFlagCtcp),
 	BOOL_OPTION("IgnoreCtcpSource",false,KviOption_sectFlagCtcp),
 	BOOL_OPTION("IgnoreCtcpTime",false,KviOption_sectFlagCtcp),
 	BOOL_OPTION("RequestMissingAvatars",true,KviOption_sectFlagAvatar),
