@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 18:06+0200\n"
-"PO-Revision-Date: 2011-07-23 00:37+0200\n"
+"PO-Revision-Date: 2011-08-15 23:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -228,7 +228,7 @@ msgstr "%Q [%Q@%Q] kanal modunu değiştirdi: \r!m%c%c\rmode %c%c\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1879
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
-msgstr "%Q [%Q@%Q] kanal limitini \r!m-l\r %Q\r olarak ayarlandı"
+msgstr "%Q [%Q@%Q] kanal \r!m-l\rlimitini %Q\r olarak değiştirdi"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1854
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
@@ -550,7 +550,7 @@ msgstr "&Sil"
 
 #: src/modules/url/libkviurl.cpp:526
 msgid "&Remove Selected"
-msgstr ""
+msgstr "&Seçili Olanı Sil"
 
 #: src/kvirc/ui/KviMdiManager.cpp:276
 msgid "&Restore all"
@@ -2872,7 +2872,7 @@ msgstr "Dosya yazma hatası"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:174
 msgid "Filter:"
-msgstr "Filtrer:"
+msgstr "Filtre:"
 
 #: src/modules/help/HelpWidget.cpp:80
 msgid "Find next"
@@ -4688,7 +4688,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviOptions.cpp:754
 msgid "Part message"
-msgstr ""
+msgstr "Ayrılma mesajı"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1877
 #: src/kvirc/kernel/KviIrcSocket.cpp:1897
@@ -5414,7 +5414,7 @@ msgstr ""
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1655
 msgid "Sent part request, waiting for reply..."
-msgstr ""
+msgstr "Ayrılma isteği gönderildi, cevap için bekleniyor..."
 
 #: src/kvirc/kernel/KviIrcLink.cpp:420
 msgid "Sent target host data, waiting for acknowledgement"
