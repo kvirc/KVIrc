@@ -138,8 +138,8 @@ bool MpMprisInterface::quit()
 	if (this->status() != MpInterface::Playing) \
 		return __return_if_fail; \
 	MPRIS_CALL_METHOD("GetMetadata", __return_if_fail) \
-	foreach (QVariant v, reply.arguments()) { \
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v); \
+	foreach (QVariant w, reply.arguments()) { \
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(w); \
 		QVariant v = qdbus_cast<QVariantMap>(arg); \
 		if (v.userType() == QVariant::Map) { \
         		const QVariantMap map = v.toMap(); \
@@ -189,8 +189,8 @@ QString MpMprisInterface::nowPlaying()
 
 	QString artist;
 	QString title;
-	foreach (QVariant v, reply.arguments()) {
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+	foreach (QVariant w, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
@@ -213,8 +213,8 @@ QString MpMprisInterface::mrl()
 {
 	MPRIS_CALL_METHOD("GetMetadata", "")
 
-	foreach (QVariant v, reply.arguments()) {
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+	foreach (QVariant w, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
@@ -291,8 +291,8 @@ int MpMprisInterface::length()
 {
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
-	foreach (QVariant v, reply.arguments()) {
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+	foreach (QVariant w, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
@@ -352,8 +352,8 @@ QString MpAudaciousInterface::mrl()
 {
 	MPRIS_CALL_METHOD("GetMetadata", "")
 
-	foreach (QVariant v, reply.arguments()) {
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+	foreach (QVariant w, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
@@ -403,8 +403,8 @@ int MpAudaciousInterface::length()
 	/* compability with older versions */
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
-	foreach (QVariant v, reply.arguments()) {
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+	foreach (QVariant w, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
