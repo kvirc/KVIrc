@@ -1,0 +1,135 @@
+Notes for Spanish translators - wodim - August 18 2011
+===============================================================================
+
+This is a list of notes for myself and for the possible future Spanish
+  translators and therefore it's written in Spanish. Sorry.
+
+-------------------------------------------------------------------------------
+
+  Normas generales
+  ----------------
+
+- Aunque por lo general es preferible usar un tono cercano, se debe usar «usted»
+  en lugar de «tú» ya que ésta es la única manera de poder tener una traducción
+  neutral para los países «voseantes» (Argentina, ...).
+- La mayoría de las frases de los títulos de ventana, botones, etc está en el
+  estilo de mayúsculas llamado «título», muy usado en inglés:
+    Theme Settings
+    New Connection to
+    Tip of the Day
+  Puede parecer tentador, pero esto *jamás* debe traducirse como tal al español.
+  Ha de pasarse todo a minúsculas. La traducción correcta sería:
+    Opciones del tema
+    Nueva conexión a
+    Consejo del día
+- Evitar el pretérito simple compuesto, su uso da problemas de
+  internacionalización y alargará la traducción inútilmente:
+    (MAL)       La conexión ha fallado
+    (BIEN)      La conexión falló
+- Evitar usar el gerundio:
+    (ORIGINAL)  Error connecting to the server
+    (MAL)       Error conectando al servidor
+    (BIEN)      Error al conectar al servidor
+- Muchos mensajes de error de KVIrc están escritos en primera persona, éstos han
+  de ser pasados a la tercera persona a la hora de traducir:
+    (ORIGINAL)  I couldn't connect
+    (MAL)       No pude conectar
+    (BIEN)      No se puede conectar
+    (BIEN)      Error al conectar
+- Por lo general los anglicismos y palabras técnicas no han de ser traducidas.
+- Las palabras «zombie» jamás han de usarse:
+    (MAL)       Checar, salvar, accesar, resetear
+    (BIEN)      Comprobar, guardar, acceder, reiniciar
+- Ciertos términos son ofensivos en algunos países y han de ser evitados:
+    (MAL)       Abortar, coger, correr
+    (BIEN)      Cancelar, elegir, ejecutar
+- «Por favor» se omite.
+- Es muy importante mantener las mayúsculas en los acrónimos o sustantivos
+  propios:
+    (MAL)       Dbus, Kvirc, Ssl
+    (BIEN)      DBus, KVIrc, SSL
+- Los nombres de los días de la semana, de los meses y de los idiomas no van en
+  mayúscula en español, en inglés sí. Hay que vigilar esto a la hora de
+  traducir:
+    (ORIGINAL)  Today, August 13, I'm learning English.
+    (MAL)       Hoy, 13 de Agosto, estoy aprendiendo Inglés.
+    (BIEN)      Hoy, 13 de agosto, estoy aprendiendo inglés.
+- Normalmente la traducción se ha de adherir lo máximo posible al original en
+  inglés, pero si una frase suena «rara», debe ser formulada con otras palabras.
+- Al detectar un error gramatical u ortográfico en el texto original en inglés,
+  es muy conveniente dar aviso de ello para que éste pueda ser arreglado.
+
+  Nomenclatura
+  ------------
+
+- Ban: ban. No se traduce, la única traducción posible es «prohibición» y suena
+  muy mal, aparte no parece tener sentido en el contexto.
+- Lag: lag. Tampoco se traduce, «retraso» tiene connotaciones negativas en
+  castellano.
+- Gender: sexo, nunca «género».
+- Click: clic, jamás «click».
+- OK: Aceptar, nunca «OK».
+- Nickname: nick, nunca «nombre» ni nada similar. No se debe usar «alias» para
+  evitar confusiones con el sistema de scripting.
+- Machine, host: equipo. Nunca «máquina» o «PC»; jamás «ordenador».
+- Notice: notice. No se traduce. Jamás «noticia».
+- Query: privado, en caso de verbo:
+    (ORIGINAL)  Query %s
+    (ESPAÑOL)   Abrir privado a %s
+- Join: entrar. Nunca «unirse»:
+    (ORIGINAL)  Join Channels...
+    (ESPAÑOL)   Entrar en canales...
+    (ESPAÑOL)   Entrar a canales...
+  También:
+    (ORIGINAL)  %s has joined %s
+    (BIEN)      %s entró a %s
+    (MAL)       %s se ha unido a %s
+  En este último ejemplo incluso se ha evitado el uso inútil de un verbo
+  pronominal.
+- Part, left: salir. Nunca «abandonar»:
+    (ORIGINAL)  %s has left %s: %s
+    (ESPAÑOL)   %s salió de %s: %s
+  También:
+    (ORIGINAL)  Part message
+    (ESPAÑOL)   Mensaje de salida de canal
+- Quit: salir del IRC. Debe quedar claro que se sale del IRC en sí, es decir,
+  que se desconecta totalmente del servidor, para evitar confusiones con las
+  salidas de canal, que no suponen desconexión (dicho nick ya no es visible
+  para el usuario en el canal pero sigue estando conectado, posiblemente en
+  otros canales):
+    (ORIGINAL)  %s has quit: %s
+    (BIEN)      %s salió del IRC: %s
+    (MAL)       %s salió: %s
+  También:
+    (ORIGINAL)  Quit message
+    (ESPAÑOL)   Mensaje de salida del IRC
+- Wallop: no se traduce. Es un acrónimo; significa «Warning ALL OPerators».
+- Ircop: no se traduce. Es un acrónimo; significa «IRC OPerator».
+- Kick: expulsar, expulsión, etc. Nunca «kickear», jamás «patear»; «expulsar»
+  es perfectamente inteligible y no colisiona con otros conceptos.
+- Quiet: silencio, silenciado, etc.
+- Away: ausente, ausencia, etc. El concepto es «estado ausente», por ejemplo,
+  «abandonado el estado ausente», «entrando en estado ausente», «ponerse
+  ausente», o incluso «ausentarse».
+- Back: volver, regresar.
+- User-Friendly Command Line: modo amigable de la línea de comandos. Forma
+  corta: «modo amigable».
+- Op: dar op. Jamás «opear».
+- Deop: quitar op. Jamás «deopear» o «desopear».
+- Voice: voz, (verbo) dar voz. Jamás «voicear», y ni muchisímo menos «vocear».
+- Devoice: ditto.
+- Choose: elegir. Evitar «escoger».
+- Aliases: alias. Jamás «aliases», ésta es una palabra de plural invariable.
+- Ignore: ignorar, usuario ignorado:
+    (ORIGINAL)  Ignore %s
+    (ESPAÑOL)   Ignorar a %s
+  También:
+    (ORIGINAL)  Ignore List
+    (ESPAÑOL)   Lista de ignorados
+- Verbose: detallado, detalle. Jamás «verboso», aun existiendo esa palabra es un
+  tecnicismo y como tal debe ser evitada:
+    (ORIGINAL)  Verbose output
+    (ESPAÑOL)   Salida detallada
+  También:
+    (ORIGINAL)  Verbosity level
+    (ESPAÑOL)   Nivel de detalle
