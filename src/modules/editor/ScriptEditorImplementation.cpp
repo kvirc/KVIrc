@@ -791,6 +791,8 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 
 	b->setObjectName("ToolButtonEditor");
 	b->setMinimumWidth(24);
+	b->setText(__tr2qs_ctx("Options", "editor"));
+	b->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	g->addWidget(b,1,0);
 
 	KviTalPopupMenu * pop = new KviTalPopupMenu(b);
@@ -807,9 +809,10 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 
 	QLabel * pLab = new QLabel(this);
 	pLab->setText(__tr2qs_ctx("Find","editor"));
+	pLab->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 	g->addWidget(pLab,1,1);
 
-	m_pRowColLabel = new QLabel("0",this);
+	m_pRowColLabel = new QLabel(QString(__tr2qs_ctx("Row: %1 Col: %2","editor")).arg(0).arg(0),this);
 	m_pRowColLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	m_pRowColLabel->setMinimumWidth(80);
 	g->addWidget(m_pRowColLabel,1,3);
