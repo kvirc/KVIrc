@@ -386,7 +386,7 @@ namespace KviKvsCoreSimpleCommands
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlFileCommand);
 		} else if(KviQString::equalCIN(szUrl,"irc",3))
 		{
-			if(KviIrcUrl::run(szUrl,KviIrcUrl::FirstFreeContext,KVSCSC_pContext->console()) & KviIrcUrl::InvalidProtocol)
+			if(KviIrcUrl::run(szUrl,KviIrcUrl::TryEveryContext | KviIrcUrl::DoNotPartChans,KVSCSC_pContext->console()) & KviIrcUrl::InvalidProtocol)
 			{
 				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid IRC url (%Q)","kvs"),&szUrl);
 			}

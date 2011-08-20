@@ -64,6 +64,7 @@ namespace KviIrcUrl
 		NewContext = 2,
 		CurrentContext = 4,
 		TryCurrentContext = 8,
+		TryEveryContext = 32,
 
 		DoNotPartChans = 16
 	};

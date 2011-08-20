@@ -40,6 +40,9 @@
 #define _KVI_IRCURL_CPP_
 #include "KviIrcUrl.h"
 
+// KviApplication.cpp
+extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
+
 bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 {
 	// irc[6]://<server>[:<port>][/<channel>[?<pass>]]
@@ -189,22 +192,95 @@ void KviIrcUrl::makeJoinCmd(const QStringList& chans, QString& szJoinCommand)
 		}
 }
 
-int KviIrcUrl::run(const QString& text,int contextSpec,KviConsoleWindow* pConsole)
+int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pConsole)
 {
-	KviIrcUrlParts parts;
-	KviIrcUrl::split(text,parts);
+	// first, sanity chek the url
 	QString cmdBuffer;
+	QString szJoinCommand;
+	KviIrcUrlParts parts;
+	bool bAlreadyConnected = false;
 
-	if( (contextSpec & CurrentContext) && !pConsole) {
-		contextSpec = FirstFreeContext;
+	KviIrcUrl::split(text,parts);
+	if(parts.iError & KviIrcUrl::InvalidProtocol || parts.iError & KviIrcUrl::InvalidUrl)
+	{
+		// invalid proto
+		return parts.iError;
 	}
 
-	if( (contextSpec & TryCurrentContext) && !pConsole) {
-		contextSpec = FirstFreeContext;
-	}
+	g_pApp->addRecentUrl(text);
+	makeJoinCmd(parts.chanList,szJoinCommand);
 
-	if(contextSpec & FirstFreeContext) {
-		if(pConsole) {
+	// then, get a context
+	if( (contextSpec & CurrentContext) && !pConsole)
+		contextSpec = FirstFreeContext;
+
+	if(contextSpec & TryCurrentContext)
+	{
+		if(pConsole)
+		{
+			KviConsoleWindow * pTmpConsole = pConsole;
+			pConsole = 0;
+
+			if(pTmpConsole->connection())
+			{
+				KviIrcServer* server = pTmpConsole->connection()->target()->server();
+				if(
+					( server->hostName() == parts.szHost ) &&
+					( server->port() == parts.iPort ) &&
+					( server->useSSL() == parts.bSsl ) &&
+					( server->isIPv6() == parts.bIPv6) )
+				{
+					pConsole = pTmpConsole;
+					bAlreadyConnected = true;
+				}
+			}
+
+			if(!pConsole)
+				contextSpec = FirstFreeContext;
+		} else {
+			contextSpec = FirstFreeContext;
+		}
+	}
+	
+	if(contextSpec & TryEveryContext)
+	{
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+		KviConsoleWindow * pTmpConsole = 0;
+		pConsole = 0;
+
+		while(KviWindow * wnd = it.current())
+		{
+			if(wnd->type() == KviWindow::Console)
+			{
+				pTmpConsole = (KviConsoleWindow *) wnd;
+				
+				if(pTmpConsole->connection())
+				{
+					KviIrcServer* server = pTmpConsole->connection()->target()->server();
+					if(
+						( server->hostName() == parts.szHost ) &&
+						( server->port() == parts.iPort ) &&
+						( server->useSSL() == parts.bSsl ) &&
+						( server->isIPv6() == parts.bIPv6) )
+					{
+						pConsole = pTmpConsole;
+						bAlreadyConnected = true;
+						break;
+					}
+				}
+			}
+				
+			++it;
+		}
+		
+		if(!pConsole)
+			contextSpec = FirstFreeContext;
+	}
+	
+	if(contextSpec & FirstFreeContext)
+	{
+		if(pConsole)
+		{
 			if(pConsole->connectionInProgress())
 			{
 				pConsole = g_pMainWindow->firstNotConnectedConsole();
@@ -220,68 +296,54 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsoleWindow* pConsol
 		}
 	}
 
-	if(!(parts.iError & KviIrcUrl::InvalidProtocol || parts.iError & KviIrcUrl::InvalidUrl)) {
-		g_pApp->addRecentUrl(text);
-
-		QString szJoinCommand;
-		makeJoinCmd(parts.chanList,szJoinCommand);
+	if(bAlreadyConnected)
+	{
+		// we already have a connected context to the right server on pConsole
+		// just check if thr user want us to join or part any channel
+		QString tmp;
+		QString toPart;
+		for(KviChannelWindow * c = pConsole->connection()->channelList()->first();c;c = pConsole->connection()->channelList()->next())
+		{
+			tmp=c->target();
+			if(c->hasChannelMode('k'))
+			{
+				tmp.append("?");
+				tmp.append(c->channelModeParam('k'));
+			}
+			if(!parts.chanList.removeAll(tmp))
+			{
+				toPart.append(c->target());
+				toPart.append(",");
+			}
+		}
+		if(!(contextSpec & DoNotPartChans))
+		{
+			makeJoinCmd(parts.chanList,szJoinCommand);
+			if(!toPart.isEmpty())
+			{
+				toPart.prepend("part ");
+				KviKvsScript::run(toPart,pConsole);
+			}
+		}
+		if(!szJoinCommand.isEmpty())
+		{
+			pConsole->connection()->sendData(pConsole->connection()->encodeText(szJoinCommand).data());
+		}
+		return parts.iError;
+	} else {
+		// we need to create a new connection on the context of pConsole
 		QString szCommand("server ");
 		if(parts.bSsl) szCommand.append("-s ");
 		if(parts.bIPv6) szCommand.append("-i ");
-		if(!szJoinCommand.isEmpty()){
+		if(!szJoinCommand.isEmpty())
+		{
 			szCommand.append("-c=\"");
 			szCommand.append(szJoinCommand);
 			szCommand.append("\" ");
 		}
 		szCommand.append(QString("%1 %2 ").arg(parts.szHost).arg(parts.iPort));
 
-		if(pConsole->connection()) {
-			KviIrcServer* server = pConsole->connection()->target()->server();
-			if(
-				( server->hostName() != parts.szHost ) ||
-				( server->port() != parts.iPort ) ||
-				( server->useSSL() != parts.bSsl ) ||
-				( server->isIPv6() != parts.bIPv6) )
-			{ // New server, try to reconnect
-				KviKvsScript::run(szCommand,(contextSpec & TryCurrentContext) ? g_pMainWindow->createNewConsole() : pConsole);
-				return parts.iError;
-			} else {
-				// the same server, but probably new chanlist
-				QString tmp;
-				QString toPart;
-				for(KviChannelWindow * c = pConsole->connection()->channelList()->first();c;c = pConsole->connection()->channelList()->next())
-				{
-					tmp=c->target();
-					if(c->hasChannelMode('k'))
-					{
-						tmp.append("?");
-						tmp.append(c->channelModeParam('k'));
-					}
-					if(!parts.chanList.removeAll(tmp))
-					{
-						toPart.append(c->target());
-						toPart.append(",");
-					}
-				}
-				if(!(contextSpec & DoNotPartChans))
-				{
-					makeJoinCmd(parts.chanList,szJoinCommand);
-					if(!toPart.isEmpty())
-					{
-						toPart.prepend("part ");
-						KviKvsScript::run(toPart,pConsole);
-					}
-				}
-				if(!szJoinCommand.isEmpty())
-				{
-					pConsole->connection()->sendData(pConsole->connection()->encodeText(szJoinCommand).data());
-				}
-				return parts.iError;
-			}
-		}
-		// New server
-		KviKvsScript::run(szCommand,pConsole);
+		KviKvsScript::run(szCommand,(contextSpec & TryCurrentContext) ? g_pMainWindow->createNewConsole() : pConsole);
+		return parts.iError;
 	}
-	//!invalid proto
-	return parts.iError;
 }
