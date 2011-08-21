@@ -1521,7 +1521,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage *msg)
 			szTmp = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szTmp = date.toString(Qt::SystemLocaleDate);
+			szTmp = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
 	chan->topicWidget()->setTopicSetAt(szTmp);

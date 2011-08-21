@@ -565,7 +565,7 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleDate);
+			szDate = date.toString(Qt::SystemLocaleShortDate);
 			break;
 		case 0:
 		default:

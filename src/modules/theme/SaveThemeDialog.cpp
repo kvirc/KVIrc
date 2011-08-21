@@ -256,7 +256,7 @@ bool SaveThemeDialog::saveTheme()
 			szTmp = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szTmp = date.toString(Qt::SystemLocaleDate);
+			szTmp = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
 	

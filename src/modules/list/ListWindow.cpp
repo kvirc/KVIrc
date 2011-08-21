@@ -378,7 +378,7 @@ void ListWindow::exportList()
 				szDate = date.toString(Qt::ISODate);
 				break;
 			case 2:
-				szDate = date.toString(Qt::SystemLocaleDate);
+				szDate = date.toString(Qt::SystemLocaleShortDate);
 				break;
 		}
 		szFile = QString(__tr2qs("Channel list for %1 - %2")).arg(connection()->currentNetworkName(),szDate);

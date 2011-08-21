@@ -58,7 +58,7 @@ void KviIrcView::stopLogging()
 				szDate = date.toString(Qt::ISODate);
 				break;
 			case 2:
-				szDate = date.toString(Qt::SystemLocaleDate);
+				szDate = date.toString(Qt::SystemLocaleShortDate);
 				break;
 		}
 		
@@ -226,7 +226,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleDate);
+			szDate = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
 	
@@ -273,7 +273,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 				szDate = date.toString(Qt::ISODate);
 			break;
 			case 2:
-				szDate = date.toString(Qt::SystemLocaleDate);
+				szDate = date.toString(Qt::SystemLocaleShortDate);
 			break;
 		}
 

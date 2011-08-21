@@ -93,7 +93,7 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
-			szDate = date.toString(Qt::SystemLocaleDate);
+			szDate = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
 
