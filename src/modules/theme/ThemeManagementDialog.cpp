@@ -70,6 +70,7 @@
 #include <QSplitter>
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
+#include <QShortcut>
 
 extern QRect g_rectManagementDialogGeometry;
 
@@ -247,6 +248,8 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width())/2),rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height())/2));
+
+	new QShortcut(Qt::Key_Escape, this, SLOT(closeClicked()));
 }
 
 ThemeManagementDialog::~ThemeManagementDialog()

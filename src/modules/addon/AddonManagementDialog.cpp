@@ -54,6 +54,7 @@
 #include <QFrame>
 #include <QDir>
 #include <QAbstractTextDocumentLayout>
+#include <QShortcut>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 	#include "WebAddonInterfaceDialog.h"
@@ -199,6 +200,8 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width())/2),rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height())/2));
+
+	new QShortcut(Qt::Key_Escape, this, SLOT(closeClicked()));
 }
 
 AddonManagementDialog::~AddonManagementDialog()

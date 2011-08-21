@@ -346,6 +346,8 @@ CustomizeToolBarsDialog::CustomizeToolBarsDialog(QWidget * p)
 		g_rectToolBarEditorDialogGeometry.height());
 	move(g_rectToolBarEditorDialogGeometry.x(),
 		g_rectToolBarEditorDialogGeometry.y());
+
+	new QShortcut(Qt::Key_Escape, this, SLOT(closeClicked()));
 }
 
 CustomizeToolBarsDialog::~CustomizeToolBarsDialog()

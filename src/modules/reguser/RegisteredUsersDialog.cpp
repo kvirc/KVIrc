@@ -64,6 +64,7 @@
 #include <QAbstractItemView>
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
+#include <QShortcut>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -312,6 +313,8 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 
 	connect(m_pListView,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
 	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *, QPoint)),this,SLOT(rightButtonPressed(QTreeWidgetItem *, QPoint)));
+
+	new QShortcut(Qt::Key_Escape, this, SLOT(cancelClicked()));
 
 	fillList();
 

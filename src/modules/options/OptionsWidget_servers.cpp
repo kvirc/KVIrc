@@ -65,6 +65,7 @@
 #include <QInputDialog>
 #include <QHeaderView>
 #include <QIcon>
+#include <QShortcut>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) || defined(COMPILE_ON_MAC)
 	#include <QStyleFactory>
@@ -1432,6 +1433,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
 		}
+
+		new QShortcut(Qt::Key_Escape, parent, SLOT(close()));
 	} else {
 		m_pConnectCurrent = NULL;
 	}
