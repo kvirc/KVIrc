@@ -25,7 +25,7 @@
 
 
 #include "KviCoreActions.h"
-#include "kvi_shortcuts.h"
+#include "KviShortcut.h"
 #include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "KviIrcContext.h"
@@ -73,7 +73,7 @@ void register_core_actions(KviActionManager * m)
 		QString(__icon), \
 		QString("%1").arg(__smallicon), \
 		__flags, \
-		__accel); \
+		QKeySequence(__accel).toString()); \
 	m->registerAction(a)
 
 #define SLOT_ACTION(__name,__object,__slot,__visible,__description,__category,__icon,__smallicon,__flags,__accel) \
@@ -85,7 +85,7 @@ void register_core_actions(KviActionManager * m)
 		QString(__icon), \
 		QString("%1").arg(__smallicon), \
 		__flags, \
-		__accel); \
+		QKeySequence(__accel).toString()); \
 	QObject::connect(a,SIGNAL(activated()),__object,__slot); \
 	m->registerAction(a)
 

@@ -40,7 +40,7 @@
 #include "KviScriptEditor.h"
 #include "KviHistoryWindow.h"
 #include "KviUserInput.h"
-#include "kvi_shortcuts.h"
+#include "KviShortcut.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalHBox.h"
 #include "KviTalToolTip.h"
@@ -58,7 +58,6 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QHBoxLayout>
-#include <QShortcut>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -214,8 +213,8 @@ void KviInput::inputEditorEnterPressed()
 
 void KviInput::installShortcuts()
 {
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE),this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE_2),this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE,this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE_2,this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
 }
 
 void KviInput::keyPressEvent(QKeyEvent * e)

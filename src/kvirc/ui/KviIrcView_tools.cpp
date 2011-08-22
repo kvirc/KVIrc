@@ -35,7 +35,7 @@
 #include "KviApplication.h"
 #include "KviThemedLineEdit.h"
 #include "KviMemory.h"
-#include "kvi_shortcuts.h"
+#include "KviShortcut.h"
 #include "KviWindow.h"
 
 #include <QHBoxLayout>
@@ -44,7 +44,6 @@
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
-#include <QShortcut>
 #include <QHeaderView>
 #include <QScrollBar>
 #include <QComboBox>
@@ -174,8 +173,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	m_pStringToFind->setFocus(); // this makes MacOSX version of Qt go nuts and crash
 #endif //!COMPILE_ON_MAC
 
-	new QShortcut(QKeySequence(Qt::Key_Escape),m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(Qt::Key_Escape,m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH,m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()

@@ -62,6 +62,7 @@ SET(kvilib_SRCS
 	core/KviMemory.cpp
 	core/KviQString.cpp
 	core/KviCString.cpp
+	core/KviShortcut.cpp
 	ext/KviCommandFormatter.cpp
 	ext/KviConfigurationFile.cpp
 	ext/KviCryptEngine.cpp

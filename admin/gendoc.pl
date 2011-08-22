@@ -676,7 +676,7 @@ sub process_body_line
 	$_[0] =~ s/\[classfnc\]\$([a-zA-Z0-9_]*)\[\/classfnc\]/\<a href=\"#\1">\$\1\<\/a\>/g;
 	$_[0] =~ s/\[classsignal:([a-zA-Z0-9_]*)\]([a-zA-Z0-9_]*)\[\/classsignal\]/\<a href=\"class_\L\1$g_fileextension#\2">\2\<\/a\>/g;
 	$_[0] =~ s/\[classsignal\]([a-zA-Z0-9_]*)\[\/classsignal\]/\<a href=\"#\L\1">\1\<\/a\>/g;
-	$_[0] =~ s/\[anchorlink:([a-zA-Z0-9_]*)\]/\<a href=\"#\1"\>/g;
+	$_[0] =~ s/\[anchorlink:([^\]]*)\]/\<a href=\"\1"\>/g;
 	$_[0] =~ s/\[\/anchorlink\]/\<\/a\>/g;
 	$_[0] =~ s/\[anchor:([a-zA-Z0-9_]*)\]/\<a name=\"\1"\>/g;
 	$_[0] =~ s/\[\/anchor\]/\<\/a\>/g;
