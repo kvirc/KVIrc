@@ -1571,7 +1571,9 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 				{
 					case 0:
-						szTmp = date.toString();
+						// this is the equivalent to an empty date.toString() call, but it's needed
+						// to ensure qt4 will use the default() locale and not the system() one
+						szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
 						break;
 					case 1:
 						szTmp = date.toString(Qt::ISODate);

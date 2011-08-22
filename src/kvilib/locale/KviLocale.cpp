@@ -511,6 +511,11 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 
 	if(g_szLang.hasData())
 	{
+		// ensure Qt will use the right locale when formatting dates, numbers, ..
+		// Note: Qt will use the system() locale anyway, we need to construct an empty QLocale()
+		// to get it use our specified locale. 
+		QLocale::setDefault(QLocale(QString::fromLatin1(g_szLang.ptr(), g_szLang.len())));
+
 		QString szBuffer;
 		if(findCatalogue(szBuffer,"kvirc",szLocaleDir))
 		{

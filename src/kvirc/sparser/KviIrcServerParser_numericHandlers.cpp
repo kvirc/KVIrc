@@ -61,6 +61,7 @@
 #include <QTextCodec>
 #include <QRegExp>
 #include <QByteArray>
+#include <QLocale>
 
 // #define IS_CHANNEL_TYPE_FLAG(_str) ((*(_str) == '#') || (*(_str) == '&') || (*(_str) == '!'))
 #define IS_CHANNEL_TYPE_FLAG(_qchar) (msg->connection()->serverInfo()->supportedChannelTypes().indexOf(_qchar) != -1)
@@ -585,7 +586,9 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:
-			szDate = date.toString();
+			// this is the equivalent to an empty date.toString() call, but it's needed
+			// to ensure qt4 will use the default() locale and not the system() one
+			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
 			break;
 		case 1:
 			szDate = date.toString(Qt::ISODate);
@@ -666,7 +669,9 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
 			case 0:
-				szBuffer = date.toString();
+				// this is the equivalent to an empty date.toString() call, but it's needed
+				// to ensure qt4 will use the default() locale and not the system() one
+				szBuffer = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
 				break;
 			case 1:
 				szBuffer = date.toString(Qt::ISODate);
@@ -1380,7 +1385,9 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 			{
 				case 0:
-					szTmp = date.toString();
+					// this is the equivalent to an empty date.toString() call, but it's needed
+					// to ensure qt4 will use the default() locale and not the system() one
+					szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
 					break;
 				case 1:
 					szTmp = date.toString(Qt::ISODate);
@@ -1700,7 +1707,9 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:
-			szDate = date.toString();
+			// this is the equivalent to an empty date.toString() call, but it's needed
+			// to ensure qt4 will use the default() locale and not the system() one
+			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
 			break;
 		case 1:
 			szDate = date.toString(Qt::ISODate);
