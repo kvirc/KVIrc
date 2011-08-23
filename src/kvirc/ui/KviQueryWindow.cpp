@@ -194,8 +194,10 @@ QString KviQueryWindow::getInfoLabelText()
 
 				szTmp += "\n";
 
-				connection()->getCommonChannels(m_szName,szChans,0);
-				szTmp += __tr2qs("Common channels: %2").arg(szChans);
+				if(connection()->getCommonChannels(m_szName,szChans,0))
+					szTmp += __tr2qs("Common channels: %2").arg(szChans);
+				else
+					szTmp += __tr2qs("No common channels");
 			} else {
 				szTmp = __tr2qs("[Dead query]");
 			}
