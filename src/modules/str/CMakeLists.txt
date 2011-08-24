@@ -1,11 +1,5 @@
 # CMakeLists for src/modules/str
 
-IF(UNIX)
-  IF(APPLE)
-    LIST(APPEND LIBS -lssl -lcrypto)
-  ENDIF()
-ENDIF()
-
 SET(kvistr_SRCS
 	libkvistr.cpp
 )

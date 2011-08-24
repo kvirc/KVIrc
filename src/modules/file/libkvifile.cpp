@@ -44,43 +44,8 @@
 #endif
 
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
-	// The current implementation
+#if defined(COMPILE_SSL_SUPPORT)
 	#include <openssl/evp.h>
-#elif defined(COMPILE_CRYPTOPP_SUPPORT)
-	// The preferred new implementation (until QCryptographicHash supports all
-	// hashes we want).
-	// As Crypto++ is concerned for security they warn about MD5 and friends,
-	// but we can ignore that and therefore silence the warnings.
-	#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
-	// Hashes (should cover most cases)
-	#include <cryptopp/md2.h>
-	#include <cryptopp/md4.h>
-	#include <cryptopp/md5.h>
-	#include <cryptopp/sha.h>
-	#include <cryptopp/ripemd.h>
-	#include <cryptopp/crc.h>
-	// Encoding
-	#include <cryptopp/hex.h>
-	// additional
-	#include <cryptopp/files.h>
-	#include <string>
-	// template function
-	template <typename T>
-	std::string CryptoPpFileHash(std::string szFileName){
-		T hash;
-		std::string szDigest;
-		CryptoPP::FileSource(szFileName.c_str(),
-			true,
-			new CryptoPP::HashFilter(
-				hash,
-				new CryptoPP::HexEncoder(
-					new CryptoPP::StringSink(szDigest)
-				)
-			)
-		);
-		return szDigest;
-	}
 #else
 	// The fallback we can always use, but with very limited set of
 	// functionality.
@@ -1446,8 +1411,7 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 		Calculates a digest for the file identified by the given string using the algorithm
 		passed as 2nd argument.
 		Currently supported: md5 (default), md4, md2, sha1, mdc2, ripemd160 and dss1.
-		Requires OpenSSL support or (better) Crypto++, but offers a
-		minimal set of hashes in any case.
+		Requires OpenSSL support, but offers a minimal set of hashes in any case.
 */
 static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 {
@@ -1474,7 +1438,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_CRYPTOPP_SUPPORT)
+#if defined(COMPILE_SSL_SUPPORT)
 	if(szAlgo.isEmpty()) szAlgo = "md5";
 
 	EVP_MD_CTX mdctx;
@@ -1506,56 +1470,6 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 #endif
 		szResult.append(cBuffer);
 	}
-#elif defined(COMPILE_CRYPTOPP_SUPPORT)
-	// Crypto++ implementation
-	std::string szDigest;
-	std::string szMsg = szFile.toLocal8Bit().data();
-
-	if(szAlgo.toLower() == "sha1" || szAlgo.toLower() == "sha")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::SHA1>(szMsg);
-	} else if(szAlgo.toLower() == "sha224")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::SHA224>(szMsg);
-	} else if(szAlgo.toLower() == "sha256")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::SHA256>(szMsg);
-	} else if(szAlgo.toLower() == "sha384")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::SHA384>(szMsg);
-	} else if(szAlgo.toLower() == "sha512")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::SHA512>(szMsg);
-	} else if(szAlgo.toLower() == "ripemd128")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD128>(szMsg);
-	} else if(szAlgo.toLower() == "ripemd160")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD160>(szMsg);
-	} else if(szAlgo.toLower() == "ripemd256")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD256>(szMsg);
-	} else if(szAlgo.toLower() == "ripemd320")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD320>(szMsg);
-	} else if(szAlgo.toLower() == "crc32")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::CRC32>(szMsg);
-	} else if(szAlgo.toLower() == "md2")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::Weak::MD2>(szMsg);
-	} else if(szAlgo.toLower() == "md4")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::Weak::MD4>(szMsg);
-	} else if(szAlgo.toLower() == "md5")
-	{
-		szDigest = CryptoPpFileHash<CryptoPP::Weak::MD5>(szMsg);
-	} else {
-		c->warning(__tr2qs("Unsupported message digest."));
-		return true;
-	}
-
-	szResult.append(szDigest.c_str());
 #else // fall back to QCryptographicHash
 	QCryptographicHash::Algorithm qAlgo;
 	if(szAlgo.toLower() == "sha1")

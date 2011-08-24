@@ -27,7 +27,6 @@
 
 #cmakedefine COMPILE_CRYPT_SUPPORT 1
 #cmakedefine COMPILE_SSL_SUPPORT 1
-#cmakedefine COMPILE_CRYPTOPP_SUPPORT 1
 #cmakedefine COMPILE_X11_SUPPORT 1
 #cmakedefine COMPILE_XSS_SUPPORT 1
 #cmakedefine COMPILE_IPV6_SUPPORT 1

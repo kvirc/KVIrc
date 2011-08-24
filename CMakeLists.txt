@@ -579,40 +579,6 @@ ELSE()
 ENDIF()
 
 ############################################################################
-# Crypto++ support: an alternative to openssl
-############################################################################
-
-OPTION(WANT_CRYPTOPP "Whether to use Crypto++ library" OFF)
-OPTION(WANT_OPENSSL "Whether to use OpenSSL library" ON)
-
-IF(WANT_CRYPTOPP)
-	FIND_PACKAGE(PkgConfig)
-
-	# for every os/distribution
-	pkg_check_modules(CRYPTOPP cryptopp>=5.6.0)
-
-	# for Debian and derivates
-	pkg_check_modules(CRYPTOPP libcrypto++>=5.6.0)
-	IF(CRYPTOPP_FOUND)
-		LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
-		INCLUDE_DIRECTORIES(${CRYPTOPP_INCLUDE_DIR})
-		SET(COMPILE_CRYPTOPP_SUPPORT 1)
-		SET(CMAKE_STATUS_CRYPTOPP_SUPPORT "Yes")
-	ELSE()
-		LIST(APPEND LIBS "-lcryptopp")
-		MESSAGE("     WARNING: YOU ENABLED WITH_CRYPTOPP BUT YOUR SYSTEM DOESN'T PROVIDE")
-		MESSAGE("              A .pc FILE FOR Crypto++.")
-		MESSAGE("              THIS BUILD MIGHT FAIL, MAKE SURE Crypto++ IS INSTALLED AND IT CAN")
-		MESSAGE("              BE LINKED AGAINST IT WITH -lcryptopp.")
-		SET(COMPILE_CRYPTOPP_SUPPORT 1)
-		SET(CMAKE_STATUS_CRYPTOPP_SUPPORT "Yes (library not found)")
-	ENDIF()
-	ADD_DEFINITIONS("-fexceptions")
-ELSE()
-	SET(CMAKE_STATUS_CRYPTOPP_SUPPORT "No")
-ENDIF()
-
-############################################################################
 # OpenSSL support (Secure Sockets, Certificates, Digests etc...)
 ############################################################################
 
@@ -1280,7 +1246,6 @@ MESSAGE(STATUS "   Audio Backends              : ${CMAKE_STATUS_AUDIO_BACKENDS}"
 MESSAGE(STATUS "Cryptography:")
 MESSAGE(STATUS "   Crypt Support And Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
 MESSAGE(STATUS "   OpenSSL Support             : ${CMAKE_STATUS_SSL_SUPPORT}")
-MESSAGE(STATUS "   Crypto++ Support            : ${CMAKE_STATUS_CRYPTOPP_SUPPORT}")
 MESSAGE(STATUS "Scripting:")
 MESSAGE(STATUS "   Perl Support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 MESSAGE(STATUS "   Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
