@@ -1211,6 +1211,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 					case KviControlCodes::Reset:
 						curBold            = false;
 						curUnderline       = false;
+						bacWasTransp       = false;
 						curFore            = defaultFore;
 						curBack            = defaultBack;
 						break;
