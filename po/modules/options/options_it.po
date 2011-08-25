@@ -127,7 +127,7 @@ msgstr "Griglia 3D"
 #: src/modules/options/OptionsWidget_textEncoding.cpp:87
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+"<b>Nota:</b> La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:80
 msgid "<b>file://</b> handler command:"
@@ -1496,7 +1496,7 @@ msgid ""
 msgstr ""
 "<center>Questa opzione fa sì che tu possa tenere traccia degli spostamenti "
 "dell'utente.<br>Alcune azioni dell' utente (per esempio entrare o uscire da "
-"un canale) verranno mostrate nella fienstra.<br>"
+"un canale) verranno mostrate nella finestra.<br>"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:43
 msgid ""
@@ -1719,7 +1719,7 @@ msgid ""
 "<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" "
 "settings.</p>"
 msgstr ""
-"<p><b>Nota:</b><br>La notify list è gestita usando le impostazioni degli "
+"<p><b>Nota:</b><br>La lista notifiche è gestita usando le impostazioni degli "
 "\"Utenti Registrati\"</p>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:256
@@ -1943,7 +1943,7 @@ msgstr "Autentica via estensione SASL"
 
 #: src/modules/options/OptionsWidget_logging.cpp:56
 msgid "Auto flush logs every"
-msgstr "Svuota i log automaticamente ogni"
+msgstr "Salva i log automaticamente ogni"
 
 #: src/modules/options/OptionsWidget_sound.cpp:71
 #: src/modules/options/OptionsWidget_sound.cpp:86
@@ -1974,7 +1974,7 @@ msgstr "Pulisci i trasferimenti automaticamente"
 
 #: src/modules/options/OptionsWidget_channel.cpp:73
 msgid "Automatically join channel on invite"
-msgstr "Entra automaticamente in un canale quando ti invitano"
+msgstr "Entra automaticamente in un canale quando invitato"
 
 #: src/modules/options/OptionsWidget_connection.cpp:64
 msgid "Automatically reconnect"
@@ -2019,7 +2019,7 @@ msgstr "Away"
 
 #: src/modules/options/OptionsWidget_away.cpp:45
 msgid "Away Nickname"
-msgstr "Nickname Away"
+msgstr "Nickname su Away"
 
 #: src/modules/options/OptionsWidget_userList.cpp:64
 msgid "Away:"
@@ -2146,7 +2146,7 @@ msgstr "Certificato"
 
 #: src/modules/options/OptionsWidget_connection.cpp:112
 msgid "Certificate location:"
-msgstr "Locazione del certificato:"
+msgstr "File del certificato:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:115
 msgid "Certificate password:"
@@ -2158,7 +2158,7 @@ msgstr "Avvisi ChanServ e NickServ"
 
 #: src/modules/options/OptionsWidget_away.cpp:46
 msgid "Change nickname on away"
-msgstr "Cambia nick quando entri in modalità away"
+msgstr "Cambia nick quando passi allo stato away"
 
 #: src/modules/options/OptionsWidget_channel.h:36
 msgid "Channel"
@@ -2440,7 +2440,7 @@ msgstr "Non richiedere la lista dei ban"
 
 #: src/modules/options/OptionsWidget_channel.cpp:127
 msgid "Do not request invite list"
-msgstr "Non richiedere lista degli inviti"
+msgstr "Non richiedere la lista degli inviti"
 
 #: src/modules/options/OptionsWidget_channel.cpp:128
 msgid "Do not request quiet ban list"
@@ -2814,7 +2814,7 @@ msgstr "Ottieni il percorso di salvataggio dal tipo di file"
 
 #: src/modules/options/OptionsWidget_logging.cpp:63
 msgid "Gzip logs"
-msgstr "Gzip logs"
+msgstr "Comprimi i log con Gzip"
 
 #: src/modules/options/OptionsWidget_userList.cpp:61
 msgid "Half-op:"
@@ -2875,7 +2875,7 @@ msgstr "Evidenzia solo le parole intere separate da spazi e:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:342
 msgid "Highlighted message in inactive window"
-msgstr "Evidenzia i messaggi contenenti il mio nickname"
+msgstr "Messaggio evidenziato su una finestra inattiva"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:67
 msgid "Highlighting Method"
@@ -3033,7 +3033,7 @@ msgstr "Invisibile (+i)"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:74
 msgid "Invite messages"
-msgstr "Messaggio di Invito"
+msgstr "Messaggi di Invito"
 
 #: src/modules/options/OptionsWidget_servers.cpp:277
 #: src/modules/options/OptionsWidget_servers.cpp:848
@@ -3052,12 +3052,12 @@ msgstr "Mantieni aggiornata la lista away inviando richieste WHO"
 #: src/modules/options/OptionsWidget_channel.cpp:59
 #: src/modules/options/OptionsWidget_channel.cpp:68
 msgid "Keep channel open"
-msgstr "Lascia i canali aperti"
+msgstr "Mantieni aperta la finestra del canale"
 
 #: src/modules/options/OptionsWidget_connection.cpp:43
 #: src/modules/options/OptionsWidget_connection.cpp:51
 msgid "Keep channels open"
-msgstr "Lascia i canali aperti"
+msgstr "Mantieni aperte le finestre dei canali"
 
 #: src/modules/options/OptionsWidget_connection.cpp:46
 #: src/modules/options/OptionsWidget_connection.cpp:54
@@ -3146,7 +3146,7 @@ msgstr "Provenienza:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:99
 msgid "Log joined channels history"
-msgstr "Log dei canali joinati"
+msgstr "Mantieni storico dei canali visitati"
 
 #: src/modules/options/OptionsWidget_message.cpp:407
 msgid "Log this"
@@ -3234,7 +3234,7 @@ msgstr "Larghezza minima dei pulsanti:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:345
 msgid "Me have been kicked"
-msgstr "Sono stato kickato"
+msgstr "Sei stato kickato"
 
 #: src/modules/options/OptionsWidget_sound.cpp:77
 msgid "Media Player"
@@ -3387,7 +3387,7 @@ msgstr "Nuovo proxy"
 
 #: src/modules/options/OptionsWidget_sound.cpp:336
 msgid "New Query opened"
-msgstr "Mantieni aperte le finestre delle query"
+msgstr "Nuova query aperta"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1322
 msgid "New Server"
@@ -3395,7 +3395,7 @@ msgstr "Nuovo Server"
 
 #: src/modules/options/OptionsWidget_sound.cpp:339
 msgid "New message in inactive query"
-msgstr "Nuovo messaggio nella query inattiva"
+msgstr "Nuovo messaggio su una query inattiva"
 
 #: src/modules/options/OptionsWidget_input.cpp:149
 msgid "Nick completion"
@@ -3593,7 +3593,7 @@ msgstr "Apri query per"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:347
 msgid "Open all minimized"
-msgstr "Apri tutte minimizzate"
+msgstr "Apri sempre minimizzata"
 
 #: src/modules/options/OptionsWidget_query.cpp:58
 msgid "Open incoming queries as minimized"
@@ -3672,16 +3672,16 @@ msgstr "Incolla Server"
 
 #: src/modules/options/OptionsWidget_channel.cpp:132
 msgid "Paste last channel log"
-msgstr "Incolla l'ultimo log del canale"
+msgstr "Mostra l'ultimo log del canale"
 
 #: src/modules/options/OptionsWidget_query.cpp:92
 msgid "Paste last query log"
-msgstr "Incolla l'ultimo log della query"
+msgstr "Mostra l'ultimo log della query"
 
 #: src/modules/options/OptionsWidget_channel.cpp:135
 #: src/modules/options/OptionsWidget_query.cpp:97
 msgid "Paste up to:"
-msgstr "Incolla fino a:"
+msgstr "Mostra fino a:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:77
 msgid "Pattern"
@@ -3689,7 +3689,7 @@ msgstr "Pattern"
 
 #: src/modules/options/OptionsWidget_connection.cpp:174
 msgid "Pick Random IP Address for Round-Robin Servers"
-msgstr "Prendi IP Casuale per Server Round Robin"
+msgstr "Scegli un IP casuale per i Server di tipo Round Robin"
 
 #: src/modules/options/OptionsWidget_userList.cpp:239
 msgid ""
@@ -3756,15 +3756,15 @@ msgstr "Prefisso:"
 
 #: src/modules/options/OptionsWidget_irc.cpp:77
 msgid "Prepend avatar info to realname"
-msgstr "Prependi informazioni avatar al realname"
+msgstr "Prependi informazioni avatar al nome vero"
 
 #: src/modules/options/OptionsWidget_irc.cpp:76
 msgid "Prepend gender info to realname"
-msgstr "Aggiungi informazioni sul sesso nel realname"
+msgstr "Aggiungi informazioni sul sesso nel nome vero"
 
 #: src/modules/options/OptionsWidget_irc.cpp:78
 msgid "Prepend smart nick color info to realname"
-msgstr "Prependi informazioni dei colori del nick al realname"
+msgstr "Prependi informazioni dei colori del nick al nome vero"
 
 #: src/modules/options/OptionsWidget_connection.cpp:119
 msgid "Private Key"
@@ -3772,7 +3772,7 @@ msgstr "Chiave Privata"
 
 #: src/modules/options/OptionsWidget_connection.cpp:122
 msgid "Private key location:"
-msgstr "Locazione della chiave privata:"
+msgstr "File della chiave privata:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:125
 msgid "Private key password:"
@@ -3998,7 +3998,7 @@ msgstr "Ripristina"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:123
 msgid "Restrict alert"
-msgstr "Avvisi limitati"
+msgstr "Limita gli avvisi"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_userList.cpp:143
@@ -4209,7 +4209,7 @@ msgstr "Mostra le etichette di stato della lista utenti"
 
 #: src/modules/options/OptionsWidget_lag.cpp:63
 msgid "Show lag in IRC context display"
-msgstr "Mostra lag nel display del IRC context"
+msgstr "Mostra lag nell'applet del IRC context"
 
 #: src/modules/options/OptionsWidget_message.cpp:72
 msgid "Show message icons"
@@ -4310,7 +4310,7 @@ msgstr "Elimina i colori nei log"
 
 #: src/modules/options/OptionsWidget_logging.cpp:54
 msgid "Strip message type numbers in logs"
-msgstr "Elimina i numer dei tipi di messaggio dai log"
+msgstr "Elimina i numeri rappresentanti i tipi di messaggio dai log"
 
 #: src/modules/options/OptionsWidget_servers.cpp:909
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
@@ -4350,7 +4350,7 @@ msgstr "Codifica Testo:"
 
 #: src/modules/options/OptionsWidget_textIcons.h:37
 msgid "Text icons"
-msgstr "Icone del testo"
+msgstr "Emoticons"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:87
 #: src/modules/options/OptionsWidget_windowList.cpp:245
@@ -4828,7 +4828,7 @@ msgstr "Usa margine nel testo"
 
 #: src/modules/options/OptionsWidget_notify.cpp:40
 msgid "Use online notify list"
-msgstr "Usa online notify list "
+msgstr "Usa lista notifiche utenti online"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:67
 msgid "Use proxy"
@@ -4905,7 +4905,7 @@ msgstr "Modi Utente"
 
 #: src/modules/options/OptionsWidget_away.cpp:43
 msgid "User input exits away mode"
-msgstr "All'input da parte dell'utente esci dallo stato di away"
+msgstr "Esci dallo stato di away quando l'utente scrive qualcosa"
 
 #: src/modules/options/OptionsWidget_message.cpp:95
 msgid "User-defined prefix and postfix"
@@ -4941,7 +4941,7 @@ msgstr "Dettagliato"
 
 #: src/modules/options/OptionsWidget_ircOutput.h:33
 msgid "Verbosity And Output"
-msgstr "Verbosità E Uscita"
+msgstr "Verbosità dei messaggi"
 
 #: src/modules/options/OptionsWidget_userList.cpp:137
 msgid "Vertical Alignment:"
@@ -5001,7 +5001,7 @@ msgstr "Lista Finestre"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.h:68
 msgid "Window List Alert"
-msgstr "Alert List Finestre"
+msgstr "Avvisi della lista finestre"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:46
 msgid "Words considered spam:"
