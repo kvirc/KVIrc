@@ -373,9 +373,8 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 {
 	int iWidth = width();
 	QList<int> def;
-	def.append((iWidth * 75) / 100);
-	def.append((iWidth * 15) / 100);
-	def.append((iWidth * 10) / 100);
+	def.append((iWidth * 82) / 100);
+	def.append((iWidth * 18) / 100);
 	m_pTopSplitter->setSizes(pCfg->readIntListEntry("TopSplitter",def));
 	
 	//this is an hack to simulate qt3's ResizeMode = Stretch
