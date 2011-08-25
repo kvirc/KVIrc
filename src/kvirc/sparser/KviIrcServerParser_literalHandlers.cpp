@@ -901,7 +901,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,query,szNick,szUser,szHost,szMsgText))
 				msg->setHaltOutput();
 
-			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && query!=g_pActiveWindow)
+			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !query->hasAttention())
 			{
 				// KviKvsScript does NOT take parameters ownership
 				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
