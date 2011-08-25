@@ -945,8 +945,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					msg->setHaltOutput();
 
 			// we don't have a query here!
-			//if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && query!=g_pActiveWindow)
-			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && console!=g_pActiveWindow)
+			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !console->hasAttention())
 			{
 				// same as above
 				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
