@@ -394,8 +394,8 @@ void KviConsoleWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	int iWidth = width();
 	QList<int> def;
-	def.append((iWidth * 75) / 100);
-	def.append((iWidth * 25) / 100);
+	def.append((iWidth * 82) / 100);
+	def.append((iWidth * 18) / 100);
 	QList<int> sizes=cfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
 

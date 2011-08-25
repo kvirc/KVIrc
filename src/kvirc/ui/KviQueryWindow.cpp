@@ -258,8 +258,8 @@ void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
 	int iWidth = width();
 	KviWindow::loadProperties(pCfg);
 	QList<int> def;
-	def.append((iWidth * 75) / 100);
-	def.append((iWidth * 25) / 100);
+	def.append((iWidth * 82) / 100);
+	def.append((iWidth * 18) / 100);
 	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
 
