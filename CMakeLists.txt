@@ -582,6 +582,8 @@ ENDIF()
 # OpenSSL support (Secure Sockets, Certificates, Digests etc...)
 ############################################################################
 
+OPTION(WANT_OPENSSL "Whether to compile OpenSSL support" ON)
+
 IF(WANT_OPENSSL)
 	FIND_PACKAGE(OpenSSL)
 	IF(OPENSSL_FOUND)
