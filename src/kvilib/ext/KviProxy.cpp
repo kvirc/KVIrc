@@ -79,6 +79,6 @@ void KviProxy::getSupportedProtocolNames(QStringList & buf)
 
 void KviProxy::normalizeUserAndPass()
 {
-	m_szUser.trimmed();
-	m_szPass.trimmed();
+	m_szUser = m_szUser.trimmed();
+	m_szPass = m_szPass.trimmed();
 }

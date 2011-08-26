@@ -527,8 +527,7 @@ void KviStringListSelector::itemSelectionChanged()
 
 void KviStringListSelector::textChanged(const QString &str)
 {
-	str.trimmed();
-	m_pAddButton->setEnabled((str.length() > 0) && isEnabled());
+	m_pAddButton->setEnabled((str.trimmed().length() > 0) && isEnabled());
 }
 
 void KviStringListSelector::setEnabled(bool bEnabled)
@@ -537,7 +536,7 @@ void KviStringListSelector::setEnabled(bool bEnabled)
 	m_pLineEdit->setEnabled(bEnabled);
 	m_pLabel->setEnabled(bEnabled);
 	QString txt = m_pLineEdit->text();
-	txt.trimmed();
+	txt = txt.trimmed();
 	m_pAddButton->setEnabled(bEnabled && (txt.length() > 0));
 
 	bool bSomeSelected;
@@ -555,7 +554,7 @@ void KviStringListSelector::commit()
 	for(unsigned int u=0;u<uCount;u++)
 	{
 		QString str = m_pListWidget->item(u)->text();
-		str.trimmed();
+		str = str.trimmed();
 		if(str.length() > 0)m_pOption->append(str);
 	}
 }
@@ -563,7 +562,7 @@ void KviStringListSelector::commit()
 void KviStringListSelector::addClicked()
 {
 	QString str = m_pLineEdit->text();
-	str.trimmed();
+	str = str.trimmed();
 	if(str.length() > 0)m_pListWidget->insertItem(m_pListWidget->count(),str);
 	m_pLineEdit->setText("");
 }

@@ -2031,8 +2031,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
 
 	QString tmp(pBegin,KVSP_curCharPointer - pBegin);
-	tmp.trimmed();
-
+	tmp = tmp.trimmed();
 	const QString szHelpName("help");
 
 	KviKvsCoreSimpleCommandExecRoutine * r = KviKvsKernel::instance()->findCoreSimpleCommandExecRoutine(szHelpName);

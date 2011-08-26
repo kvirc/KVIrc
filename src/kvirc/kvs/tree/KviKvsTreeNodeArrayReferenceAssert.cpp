@@ -83,7 +83,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWrite
 	else r = m_pSource->evaluateReadWrite(c);
 
 	if(!r)
-		return false;
+		return 0;
 
 	return r;
 }

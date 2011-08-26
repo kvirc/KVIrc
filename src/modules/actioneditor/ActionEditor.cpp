@@ -407,8 +407,7 @@ void SingleActionEditor::setActionData(ActionData * d)
 			QString t = m_pCategoryCombo->itemText(i);
 			int idx = t.lastIndexOf('(');
 			QString r = t.right(t.length() - (idx + 1));
-			QString r2 = r.left(r.length() - 1);
-			r2.trimmed();
+			QString r2 = r.left(r.length() - 1).trimmed();
 			if(r2 == d->m_szCategory)
 			{
 				m_pCategoryCombo->setCurrentIndex(i);

@@ -1164,8 +1164,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 	for(s = m_pPrologues->first();s;s = m_pPrologues->next())
 	{
 		buffer.append("prologue\n");
-		tmp = s->code();
-		tmp.trimmed();
+		tmp = s->code().trimmed();
 		KviCommandFormatter::blockFromBuffer(tmp);
 		buffer.append(tmp);
 		buffer.append('\n');
@@ -1217,8 +1216,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 	for(s = m_pEpilogues->first();s;s = m_pEpilogues->next())
 	{
 		buffer.append("epilogue\n");
-		tmp = s->code();
-		tmp.trimmed();
+		tmp = s->code().trimmed();
 		KviCommandFormatter::blockFromBuffer(tmp);
 		buffer.append(tmp);
 		buffer.append('\n');

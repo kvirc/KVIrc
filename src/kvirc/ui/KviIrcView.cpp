@@ -2674,7 +2674,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							if(linkCmd)
 							{
 								linkCmd->setUtf16(l->pBlocks[iLastEscapeBlock].pChunk->szPayload,kvi_wstrlen(l->pBlocks[iLastEscapeBlock].pChunk->szPayload));
-								linkCmd->trimmed();
+								*linkCmd = linkCmd->trimmed();
 								if((*linkCmd)=="nc") (*linkCmd)="n";
 							}
 							if(linkText)
@@ -2743,7 +2743,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 								QString tmp;
 								tmp.setUtf16(l->pBlocks[i].pChunk->szPayload,kvi_wstrlen(l->pBlocks[i].pChunk->szPayload));
 								linkCmd->append(tmp);
-								linkCmd->trimmed();
+								*linkCmd = linkCmd->trimmed();
 							}
 							if(linkText)
 							{

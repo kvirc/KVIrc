@@ -1216,7 +1216,7 @@ namespace KviTheme
 
 		#undef READ_OPTIONS
 		#undef READ_ALL_OPTIONS
-		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
+		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
 
 
 		// the pixmap options need special processing
@@ -1226,8 +1226,7 @@ namespace KviTheme
 			{
 				if(cfg.hasKey(g_pixmapOptionsTable[i].name))
 				{
-					QString szVal = cfg.readEntry(g_pixmapOptionsTable[i].name,"");
-					szVal.trimmed();
+					QString szVal = cfg.readEntry(g_pixmapOptionsTable[i].name,"").trimmed();
 					QString szBuffer;
 					if(!szVal.isEmpty())
 					{
@@ -1388,8 +1387,7 @@ bool KviApplication::setOptionValue(const QString &optName,const QString &value)
 	if(KviQString::equalCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
 	{
 		// We lookup the image path (so we allow also relative paths for this option type)
-		QString szVal = value;
-		szVal.trimmed();
+		QString szVal = value.trimmed();
 		QString szBuffer;
 		if(!szVal.isEmpty())
 		{

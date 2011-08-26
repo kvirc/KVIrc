@@ -174,7 +174,7 @@ void DccBroker::rsendAskForFileName(DccDescriptor * dcc)
 				{
 					d = new DccDescriptor(*dcc);
 					d->szLocalFileName = *(it);
-					d->szLocalFileName.trimmed();
+					d->szLocalFileName = d->szLocalFileName.trimmed();
 					++it;
 					if(d->szLocalFileName.isEmpty())
 						cancelDcc(d);
@@ -889,7 +889,7 @@ void DccBroker::sendFileManage(DccDescriptor * dcc)
 			{
 				d = new DccDescriptor(*dcc);
 				d->szLocalFileName = *(it);
-				d->szLocalFileName.trimmed();
+				d->szLocalFileName = d->szLocalFileName.trimmed();
 				++it;
 				if(d->szLocalFileName.isEmpty())
 					cancelDcc(d);

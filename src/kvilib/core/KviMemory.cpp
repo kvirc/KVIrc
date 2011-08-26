@@ -361,7 +361,7 @@ namespace KviMemory
 		return dst_ptr; //asm("   movl 8(%ebp),%eax"); <-- gcc will put that (AFTER THE OPTIMISATION PASS!)
 	}
 
-	#endif COMPILE_ix86_ASM
+	#endif //COMPILE_ix86_ASM
 
 	// The next 4 functions could be optimized with the & and shift technique
 	// used in the assembly implementations but the compilers usually

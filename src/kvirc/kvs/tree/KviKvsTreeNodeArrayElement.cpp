@@ -117,7 +117,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 {
 	kvs_int_t iVal;
 	if(!evaluateIndex(c,iVal))
-		return false;
+		return 0;
 
 	KviKvsRWEvaluationResult * result;
 	if(o)

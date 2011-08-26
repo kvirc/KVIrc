@@ -79,7 +79,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashReferenceAssert::evaluateReadWriteI
 	KviKvsRWEvaluationResult * r;
 	if(o)r = m_pSource->evaluateReadWriteInObjectScope(o,c);
 	else r = m_pSource->evaluateReadWrite(c);
-	if(!r)return false;
+	if(!r)return 0;
 
 	return r;
 }

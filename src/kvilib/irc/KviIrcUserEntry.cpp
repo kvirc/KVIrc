@@ -82,7 +82,7 @@ void KviIrcUserEntry::setRealName(const QString & szReal)
 	 */
 	if(m_szRealName.length() >= 5)
 	{
-		if((m_szRealName[0].unicode() == KviControlCodes::Color))
+		if(m_szRealName[0].unicode() == KviControlCodes::Color)
 		{
 			unsigned char cFore, cBack;
 			int iPos = KviControlCodes::getUnicodeColorBytes(m_szRealName, 1, &cFore, &cBack);

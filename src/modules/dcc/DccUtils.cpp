@@ -111,7 +111,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsoleWindow *
 
 	if(KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault))
 	{
-		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).trimmed();
+		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface) = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).trimmed();
 		if(!KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).isEmpty())
 		{
 			if(KviNetUtils::isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))

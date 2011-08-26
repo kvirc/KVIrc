@@ -87,8 +87,10 @@ char * getLocal(varname)
 			{
 				pVar->asString(tmp);
 				hack = tmp;
-				RETVAL = hack.ptr();
-			} else RETVAL = "";
+			} else {
+				hack = "";
+			}
+			RETVAL = hack.ptr();
 		}
 	OUTPUT:
 		RETVAL
@@ -120,8 +122,10 @@ char * getGlobal(varname)
 			{
 				pVar->asString(tmp);
 				hack = tmp;
-				RETVAL = hack.ptr();
-			} else RETVAL = "";
+			} else {
+				hack = "";
+			}
+			RETVAL = hack.ptr();
 		}
 	OUTPUT:
 		RETVAL
@@ -145,6 +149,7 @@ void setGlobal(varname,value)
 char * eval(code)
 	char * code
 	CODE:
+		KviCString hack;
 		if(g_pCurrentKvsContext && code)
 		{
 			KviKvsVariant ret;
@@ -156,10 +161,11 @@ char * eval(code)
 			} else {
 				g_szLastReturnValue = "";
 			}
-			RETVAL = g_szLastReturnValue.ptr();
+			hack = g_szLastReturnValue.ptr();
 		} else {
-			RETVAL = "";
+			hack = "";
 		}
+		RETVAL = hack.ptr();
 	OUTPUT:
 		RETVAL
 

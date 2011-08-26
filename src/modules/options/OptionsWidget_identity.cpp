@@ -532,8 +532,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 	AvatarSelectionDialog dlg(this,szCurrent);
 	if(dlg.exec() != QDialog::Accepted)return;
 
-	szCurrent = dlg.avatarName();
-	szCurrent.trimmed();
+	szCurrent = dlg.avatarName().trimmed();
 
 	if(KviQString::equalCIN(szCurrent,"http://",7))
 	{

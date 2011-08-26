@@ -70,7 +70,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeExtendedScopeVariable::evaluateReadWrit
 	if(!c->extendedScopeVariables())
 	{
 		c->error(this,__tr2qs_ctx("There are no extended scope variables in this scope","kvs"));
-		return false;
+		return 0;
 	}
 
 	return new KviKvsHashElement(0,c->extendedScopeVariables()->get(m_szIdentifier),c->extendedScopeVariables(),m_szIdentifier);

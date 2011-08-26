@@ -392,7 +392,7 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify",notify))
 		{
-			notify.trimmed();
+			notify = notify.trimmed();
 			while(!notify.isEmpty())
 			{
 				int idx = notify.indexOf(' ');
@@ -1108,7 +1108,7 @@ void KviWatchNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify",notify))
 		{
-			notify.trimmed();
+			notify = notify.trimmed();
 			QStringList sl = notify.split(' ',QString::SkipEmptyParts);
 			for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 			{

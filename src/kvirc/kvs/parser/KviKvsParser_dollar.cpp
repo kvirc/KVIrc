@@ -74,10 +74,10 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		KviKvsTreeNodeInstruction * i = parseInstructionBlock();
 		if(!i)
 		{
-			if(error())return false;
+			if(error())return 0;
 			// trigger an error anyway: this is abused syntax :D
 			error(KVSP_curCharPointer,__tr2qs_ctx("Empty instruction block for command evaluation","kvs"));
-			return false;
+			return 0;
 		}
 
 		return new KviKvsTreeNodeCommandEvaluation(pDollarBegin,i);
