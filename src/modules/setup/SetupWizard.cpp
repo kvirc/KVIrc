@@ -840,7 +840,7 @@ void SetupWizard::makeLink()
 		"Exec=kvirc -m %u\n" \
 		"Icon=kvirc\n" \
 		"MapNotify=true\n" \
-		"Name=KVIrc 4\n" \
+		"Name=KVIrc\n" \
 		"Terminal=false\n" \
 		"Type=Application\n" \
 		"X-KDE-SubstituteUID=false\n";
