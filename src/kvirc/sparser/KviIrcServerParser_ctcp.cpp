@@ -848,7 +848,7 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 
 	for(int i=0;m_ctcpRequestParseProcTable[i].msgName;i++)
 	{
-		if(KviQString::equalCI(msg->szTag,m_ctcpRequestParseProcTable[i].msgName))
+		if(KviQString::equalCS(KviQString::upperISO88591(msg->szTag),m_ctcpRequestParseProcTable[i].msgName))
 		{
 			if(!(m_ctcpReplyParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
 			{
@@ -899,7 +899,7 @@ void KviIrcServerParser::parseCtcpReply(KviCtcpMessage *msg)
 
 	for(int i=0;m_ctcpReplyParseProcTable[i].msgName;i++)
 	{
-		if(KviQString::equalCI(msg->szTag,m_ctcpReplyParseProcTable[i].msgName))
+		if(KviQString::equalCS(KviQString::upperISO88591(msg->szTag),m_ctcpReplyParseProcTable[i].msgName))
 		{
 			if(!(m_ctcpReplyParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
 			{
@@ -1257,7 +1257,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage *msg)
 			KviCString szTag;
 			msg->pData = extractCtcpParameter(msg->pData,szTag,false);
 			szTag.trim();
-			szTag.toUpper();
+			szTag.toUpperISO88591();
 			if(szTag.isEmpty())
 			{
 				QString reply("KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - http://www.kvirc.net - Supported tags: ");
