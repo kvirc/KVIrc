@@ -213,7 +213,12 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 
 	if(!iId) //Delete all spaste's from the current window
 	{
-		if((c->window()->type() != KviWindow::Channel) && (c->window()->type() != KviWindow::Query) && (c->window()->type() != KviWindow::DccChat))
+		if((c->window()->type() != KviWindow::Channel) && 
+			(c->window()->type() != KviWindow::Query) && 
+			(c->window()->type() != KviWindow::DccChat) &&
+			(c->window()->type() != KviWindow::DeadChannel) &&
+			(c->window()->type() != KviWindow::DeadQuery)
+		)
 		{
 			QString szWinId = c->window()->id();
 			c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
