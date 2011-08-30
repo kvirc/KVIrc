@@ -159,9 +159,7 @@
 	#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
 #endif
 
-#define KVI_RELEASE_NAME "Equilibrium"
-// REMINDER: "Aria" is a candidate
-
+#define KVI_RELEASE_NAME KVIRC_VERSION_CODENAME
 
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE

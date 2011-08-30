@@ -5,8 +5,8 @@
 !include "WinMessages.nsh"
 !include "LogicLib.nsh"
 
-Name "KVIrc"
-!define VERSION '4.1.1'
+Name "@NICENAME@"
+!define VERSION '@CMAKE_KVIRC_VERSION_RELEASE@'
 !define RELEASE_NAME 'Equilibrium (wip)'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
