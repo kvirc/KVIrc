@@ -401,6 +401,9 @@ void KviTopicWidget::updateToolTip()
 
 QSize KviTopicWidget::sizeHint() const
 {
+	if(!m_pInput)
+		return m_pLabel->sizeHint();
+
 	QFontMetrics fm(font());
 	int h = qMax(fm.height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
 	int w = fm.width(QLatin1Char('x')) * 17 + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);

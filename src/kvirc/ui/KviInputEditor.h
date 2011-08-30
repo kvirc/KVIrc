@@ -533,28 +533,7 @@ private:
 	* \param font The current input editor font
 	* \return QFontMetrics *
 	*/
-	inline static QFontMetrics * getLastFontMetrics(const QFont & font)
-	{
-		if(g_pLastFontMetrics)
-			return g_pLastFontMetrics;
-		g_pLastFontMetrics = new QFontMetrics(font);
-		unsigned short u;
-		for(u=1; u<32; u++)
-		{
-			QChar c = getSubstituteChar(u);
-			KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(c);
-			if(c != QChar(u))
-				KviInputEditor::g_iInputFontCharWidth[u] += 4;
-		}
-
-		for(u=32; u<256; u++)
-		{
-			KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(QChar(u));
-		}
-
-		g_iCachedHeight = g_pLastFontMetrics->height() + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
-		return g_pLastFontMetrics;
-	}
+	QFontMetrics * getLastFontMetrics(const QFont & font);
 
 public slots:
 	/**
