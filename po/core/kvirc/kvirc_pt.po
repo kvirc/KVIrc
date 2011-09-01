@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 18:06+0200\n"
-"PO-Revision-Date: 2011-06-05 16:51+0100\n"
+"PO-Revision-Date: 2011-09-01 02:11+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
@@ -2590,7 +2590,7 @@ msgstr "Não permitir KICK (a não ser U-Line)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:344
 msgid "Disallow kicking opers (staff only)"
-msgstr "Não permitir expulsar operadores (apenas pela equipa do servidor)"
+msgstr "Não permitir expulsar operadores (apenas pelo pessoal do servidor)"
 
 #: src/kvirc/ui/KviTopicWidget.cpp:482
 msgid "Discard Changes"
@@ -3950,8 +3950,8 @@ msgstr "Línguas:"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:343
 msgid "Large ban/exempt/invex lists (staff only)"
 msgstr ""
-"Listas grandes de 'banir/excepções/excepções de convites' (apenas pela "
-"equipa do servidor )"
+"Listas grandes de banir/excepções/excepções_convites (apenas pelo pessoal do "
+"servidor )"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:289
 #, c-format
@@ -4909,7 +4909,7 @@ msgstr "Ups... por alguma razão o objecto do filtro da ligação foi destruído
 
 #: src/kvirc/ui/KviWindow.cpp:514
 msgid "Ops...I've accidentally lost the crypting engine..."
-msgstr "Ups... perdi acidentalmente o mecanismo de encriptação..."
+msgstr "Ups... perdeu-se acidentalmente o mecanismo de encriptação..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:219
 msgid "Ops...decrypt cipher not initialized"
@@ -4959,7 +4959,7 @@ msgstr ""
 #: src/kvirc/kernel/KviCoreActions.cpp:894
 #: src/kvirc/kernel/KviCoreActions.cpp:907
 msgid "Other..."
-msgstr "Outra Alcunha..."
+msgstr "Outro..."
 
 #: src/kvilib/core/KviError.cpp:91
 msgid "Out of address space"
@@ -5060,7 +5060,7 @@ msgstr "Padrão:"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:99
 msgid "Peer X509 certificate"
-msgstr "Certificado X509 do parceiro"
+msgstr "Certificado X509 do par"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:386
 msgid "Permit foreign users without auth to JOIN"
@@ -5070,7 +5070,7 @@ msgstr "Permitir utilizadores desconhecidos sem autorização para ENTRAR"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:411
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:485
 msgid "Persistent (staff only)"
-msgstr "Persistente (apenas pela equipa do servidor)"
+msgstr "Persistente (apenas pelo pessoal do servidor)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1271
 msgid "Pixmap options (image path)"
@@ -5356,11 +5356,11 @@ msgstr "O 'proxy' disse algo acerca: \n"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:102
 msgid "Query Targets"
-msgstr "Destinos de Consulta"
+msgstr "Consultar destinos"
 
 #: src/kvirc/kernel/KviOptions.cpp:800
 msgid "Query encrypted private message"
-msgstr "Mensagem privada encriptada de consulta"
+msgstr "Consultar mensagem privada encriptada"
 
 #: src/modules/fish/libkvifish.cpp:233
 msgid "Query not found: %Q"
@@ -5368,15 +5368,15 @@ msgstr "Consulta não encontrada: %Q"
 
 #: src/kvirc/kernel/KviOptions.cpp:812
 msgid "Query notice"
-msgstr "Noticia de consulta"
+msgstr "Consultar noticia"
 
 #: src/kvirc/kernel/KviOptions.cpp:759
 msgid "Query private message"
-msgstr "Mensagem privada de consulta"
+msgstr "Consultar mensagem privada"
 
 #: src/kvirc/kernel/KviOptions.cpp:825
 msgid "Query trace message"
-msgstr "Mensagem de rastreio da consulta"
+msgstr "Consultar mensagem de rastreio"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:181
 msgid "Query with %1!%2"
@@ -5408,11 +5408,11 @@ msgstr "Mensagem de saída"
 
 #: src/kvirc/kernel/KviOptions.cpp:769
 msgid "Quit on netsplit message"
-msgstr "Sair em mensagem de separação de redes ('netsplit')"
+msgstr "Sair na mensagem de separação de redes ('netsplit')"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:421
 msgid "Quits KVIrc closing all the current connections"
-msgstr "Sai do KVIrc fechando todas as conexões actuais"
+msgstr "Sai do KVIrc fechando todas as conexões"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:431
 msgid "Raw Events"
