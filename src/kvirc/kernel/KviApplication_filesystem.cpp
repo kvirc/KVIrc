@@ -159,7 +159,7 @@ void KviApplication::getLocalKvircDirectory(QString &szData,KvircSubdir dir,cons
 				if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
 					szData.append(KVI_PATH_SEPARATOR_CHAR);
 				szData.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
-				KVI_OPTION_STRING(KviOption_stringLogsPath) = szData;
+				KVI_OPTION_STRING(KviOption_stringIncomingPath) = szData;
 			}
 		break;
 		case Help          :
