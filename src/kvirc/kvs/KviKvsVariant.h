@@ -595,21 +595,21 @@ public:
 	bool isEqualToNothing() const;
 
 	/**
-	* \brief Eevaluates Integer, Real and String rappresenting an Integer
+	* \brief Eevaluates Integer, Real and String representing an Integer
 	* \param iVal The integer buffer to save
 	* \return bool
 	*/
 	bool asInteger(kvs_int_t & iVal) const;
 
 	/**
-	* \brief Eevaluates Integer, Real and String rappresenting a Real
+	* \brief Eevaluates Integer, Real and String representing a Real
 	* \param dVal The double floating point buffer to save
 	* \return bool
 	*/
 	bool asReal(kvs_real_t & dVal) const;
 
 	/**
-	* \brief Eevaluates Integer, Real and String rappresenting a Real or Integer
+	* \brief Eevaluates Integer, Real and String representing a Real or Integer
 	* \param n The number buffer to save
 	* \return bool
 	*/

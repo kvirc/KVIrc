@@ -2129,10 +2129,10 @@ static bool dcc_kvs_fnc_localFileName(KviKvsModuleFunctionCall * c)
 		function returns '0'[br]
 		If <dcc_id> is not a valid Direct Client Connection identifier
 		then this function prints a warning and returns '0'[br]
-		In upload transfers the local file size rappresents the
+		In upload transfers the local file size represents the
 		total size of the file to be transferred. In download transfers
 		the local file size is non zero only if the transfer has to resume
-		a file already existing on the local disk and it rappresents the
+		a file already existing on the local disk and it represents the
 		size of that file (and thus the offset that the transfer started on).
 */
 
@@ -2371,10 +2371,10 @@ static bool dcc_kvs_fnc_remoteFileName(KviKvsModuleFunctionCall * c)
 		function returns '0'[br]
 		If <dcc_id> is not a valid Direct Client Connection identifier
 		then this function prints a warning and returns '0'[br]
-		In download transfers the remote file size rappresents the
+		In download transfers the remote file size represents the
 		total size of the file to be transferred (advertished by the remote end).[br]
 		In upload transfers the remote file size is non zero only if the
-		remote user has issued a resume request and is rappresents the requested offset
+		remote user has issued a resume request and it represents the requested offset
 		in bytes from which the transfer has started.
 */
 

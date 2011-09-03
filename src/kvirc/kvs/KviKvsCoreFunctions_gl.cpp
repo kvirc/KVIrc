@@ -331,11 +331,11 @@ KVSCF(gender)
 			<float> $hptimestamp
 		@description:
 			Returns a high precision timestamp as a floaint point value.
-			The timestamp rappresent the number of seconds elapsed since
+			The timestamp represents the number of seconds elapsed since
 			a certain moment in the past. The number of seconds
 			contains a "high precision" fractional part. The "certain moment" definition
 			depends on the platform KVIrc is executed. This means that
-			this timestamp is totally useless to rappresent a time value
+			this timestamp is totally useless to represent a time value
 			but is useful to compute time intervals with sub-second precision.
 		@examples:
 			[example]

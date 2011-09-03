@@ -1804,10 +1804,10 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		[tr][td][b]??[/b][/td][td]A literal question mark[/td][/tr]
 		[tr][td][b]?[.N]f[/b][/td][td]The next parameter is evaluated as a real floating point value
 			and its representation substituted in place of ?f. The optional [.N] modifier,
-			where N is an unsigned integer, rappresents the desired precision.[/td][/tr]
+			where N is an unsigned integer, represents the desired precision.[/td][/tr]
 		[tr][td][b]?[.N]e[/b][/td][td]The next parameter is evaluated as a real floating point value
 			and its scientific representation substituted in place of ?e. The optional [.N] modifier,
-			where N is an unsigned integer, rappresents the desired precision.[/td][/tr]
+			where N is an unsigned integer, represents the desired precision.[/td][/tr]
 		[tr][td][b]?[.N]E[/b][/td][td]Same as ?e but an toUppercase E is used as the exponent prefix[/td][/tr]
 		[/table]
 	@examples:

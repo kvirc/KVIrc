@@ -88,7 +88,7 @@ QPixmap * KviKvsScriptWindowWindow::myIconPtr()
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		This class rappresents a MDI window in a KVIrc frame.
+		This class represents a MDI window in a KVIrc frame.
 		Regardless of the parent object passed, the window will be always
 		a "physical" child of the frame window: you can't embed a window object
 		inside a widget or another window. The parent object will just "own" this

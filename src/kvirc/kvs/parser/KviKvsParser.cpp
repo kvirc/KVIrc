@@ -413,7 +413,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		The line above is an example of syntax specification. All the commands
 		are described by such syntax lines. [cmd]join[/cmd] is the command and it stands exactly
 		for the literal string "join" typed in a script. <channel> is in angular parenthesis
-		and rappresents a mandatory parameter: you must substitute a real channel name in its place
+		and represents a mandatory parameter: you must substitute a real channel name in its place
 		otherwise the command will fail and KVIrc will probably complain too.
 		[password] is still a parameter but the square parentheses indicate that it is
 		optional: if you specify it, then it will be interpreted as the channel password,
@@ -2199,7 +2199,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 
 		[p]
 		Nothing is something in between a data type and a special value for all the other data types:
-		it rappresents absence of information.
+		it represents absence of information.
 		This may look a bit confusing but realize that all the unreferenced KVS variable are in fact of type "nothing":
 		they just don't exist. This means that you can use [fnc]$nothing[/fnc]() to effectively
 		unset a variable.
