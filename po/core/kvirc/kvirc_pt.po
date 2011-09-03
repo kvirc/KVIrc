@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 18:06+0200\n"
-"PO-Revision-Date: 2011-09-01 02:11+0100\n"
+"PO-Revision-Date: 2011-09-03 03:52+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
@@ -99,11 +99,11 @@ msgstr " ligado "
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:241
 msgid "### End of existing data buffer."
-msgstr "### Fim da janela de dados existente."
+msgstr "### Fim da janela de dados."
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:237
 msgid "### Existing data buffer:"
-msgstr "### Janela de dados existente:"
+msgstr "### Janela de dados:"
 
 #: src/kvirc/ui/KviIrcView_loghandling.cpp:233
 msgid "### Log session started at %1 ###"
@@ -3033,7 +3033,7 @@ msgstr ""
 
 #: src/modules/fish/libkvifish.cpp:311
 msgid "FiSH: Key for %1 successfully set!"
-msgstr ""
+msgstr "FiSH: Chave para %1 criado com sucesso!"
 
 #: src/modules/fish/libkvifish.cpp:189
 msgid "FiSH: Received DH1080 public key from %1, sending mine..."
