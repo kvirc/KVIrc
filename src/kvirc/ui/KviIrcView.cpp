@@ -169,7 +169,7 @@
 //this is mostly needed to avoid collapsing in slit view
 #define KVI_IRCVIEW_MINIMUM_HEIGHT 22
 #define KVI_IRCVIEW_PIXMAP_AND_SEPARATOR 20
-#define KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH 28
+#define KVI_IRCVIEW_DOUBLEBORDER_WIDTH 8
 #define KVI_IRCVIEW_SIZEHINT_WIDTH 150
 #define KVI_IRCVIEW_SIZEHINT_HEIGHT 150
 
@@ -938,15 +938,15 @@ void KviIrcView::fastScroll(int lines)
 	// It is the only one that needs to be repainted
 	int widgetWidth  = width() - m_pScrollBar->width();
 
-	if(widgetWidth < KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH+10)
+	if(widgetWidth < KVI_IRCVIEW_PIXMAP_AND_SEPARATOR + KVI_IRCVIEW_DOUBLEBORDER_WIDTH + 10)
 		return; //can't show stuff here
 
 	int widgetHeight = height();
-	int maxLineWidth = widgetWidth;
+	int maxLineWidth = widgetWidth - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
 
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 	{
-		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
+		maxLineWidth -= KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	}
 
 
@@ -1081,14 +1081,14 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 	// Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
-	int maxLineWidth   = widgetWidth;
+	int maxLineWidth   = widgetWidth - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
 	int defLeftCoord   = KVI_IRCVIEW_HORIZONTAL_BORDER;
 	int lineWrapsHeight;
 
 	// if we draw an icon as a line preamble, we have to change borders geometry accordingly
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 	{
-		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
+		maxLineWidth -= KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 		defLeftCoord += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	}
 
@@ -2217,9 +2217,9 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 	// The cursor line is over the current line
 	// Here we're in trouble :D
 	int curBottomCoord = height() - KVI_IRCVIEW_VERTICAL_BORDER;
-	int maxLineWidth   = width();
+	int maxLineWidth   = width() - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
-		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
+		maxLineWidth -= KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	//Make sure that we have enough space to paint something...
 	if(maxLineWidth < m_iMinimumPaintWidth)return; // ugh
 	//And loop thru lines until we not run over the upper bound of the view
