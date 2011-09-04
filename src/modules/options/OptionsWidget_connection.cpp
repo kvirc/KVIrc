@@ -54,10 +54,10 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep queries open","options"),KviOption_boolKeepQueriesOpenOnUnexpectedDisconnect,true);
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep queries open after an unexpected disconnect.</center>","options"));
 
-	b1 = addBoolSelector(gbox,__tr2qs_ctx("Rejoin channels after reconnect","options"),KviOption_boolRejoinChannelsAfterReconnect,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
+	b1 = addBoolSelector(gbox,__tr2qs_ctx("Rejoin channels after reconnect","options"),KviOption_boolRejoinChannelsAfterReconnect,true);
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to rejoin channels after a successful reconnect attempt.</center>","options"));
 
-	b1 = addBoolSelector(gbox,__tr2qs_ctx("Reopen queries after reconnect","options"),KviOption_boolReopenQueriesAfterReconnect,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
+	b1 = addBoolSelector(gbox,__tr2qs_ctx("Reopen queries after reconnect","options"),KviOption_boolReopenQueriesAfterReconnect,true);
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to reopen query windows after a successful reconnect attempt.</center>","options"));
 
 //	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
