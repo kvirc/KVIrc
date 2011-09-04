@@ -2216,8 +2216,11 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 
 	// The cursor line is over the current line
 	// Here we're in trouble :D
-	int curBottomCoord = height() - KVI_IRCVIEW_VERTICAL_BORDER;
-	int maxLineWidth   = width() - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
+	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int scrollbarWidth = m_pScrollBar->width();
+	int curBottomCoord = height() - toolWidgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
+	int maxLineWidth   = width() - scrollbarWidth - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
+
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	//Make sure that we have enough space to paint something...
