@@ -93,7 +93,7 @@ static int isnan (double d) {
 	@syntax:
 		<real> $math.sin(<angle:real>)
 	@description:
-		Returns the sinus of the specified angle in radiants
+		Returns the sinus of the specified angle in radiants.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin,"angle",sin)
 
@@ -108,7 +108,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin,"angle",sin)
 	@syntax:
 		<real> $math.cos(<angle:real>)
 	@description:
-		Returns the cosinus of the specified angle in radiants
+		Returns the cosinus of the specified angle in radiants.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos,"angle",cos)
 
@@ -123,7 +123,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos,"angle",cos)
 	@syntax:
 		<real> $math.tan(<angle:real>)
 	@description:
-		Returns the tangent of the specified angle in radiants
+		Returns the tangent of the specified angle in radiants.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_tan,"angle",tan)
 
@@ -184,7 +184,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_atan,"tangent",atan)
 	@syntax:
 		<real> $math.sqrt(<number:real>)
 	@description:
-		Returns the square root of the specified number
+		Returns the square root of the specified number.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt,"number",sqrt)
 
@@ -199,7 +199,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt,"number",sqrt)
 	@syntax:
 		<real> $math.cbrt(<number:real>)
 	@description:
-		Returns the cube root of the specified number
+		Returns the cube root of the specified number.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt,"number",cbrt)
 
@@ -214,7 +214,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt,"number",cbrt)
 	@syntax:
 		<real> $math.abs(<number:real>)
 	@description:
-		Returns the absolute value of the specified number
+		Returns the absolute value of the specified number.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs,"number",fabs)
 
@@ -229,7 +229,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs,"number",fabs)
 	@syntax:
 		<real> $math.floor(<number:real>)
 	@description:
-		Rounds down number to the nearest integer
+		Rounds down the number to the nearest integer.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor,"number",floor)
 
@@ -244,7 +244,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor,"number",floor)
 	@syntax:
 		<real> $math.ceil(<number:real>)
 	@description:
-		Rounds up number to the nearest integer
+		Rounds up the number to the nearest integer.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil,"number",ceil)
 
@@ -259,7 +259,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil,"number",ceil)
 	@syntax:
 		<real> $math.exp(<number:real>)
 	@description:
-		Returns the exponential of the specified number
+		Returns the exponential of the specified number.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp,"number",exp)
 
@@ -274,7 +274,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp,"number",exp)
 	@syntax:
 		<real> $math.log(<number:real>)
 	@description:
-		Returns the natural (base e) logarithm of the specified number
+		Returns the natural (base e) logarithm of the specified number.
 */
 
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log,"number",log)
@@ -291,7 +291,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log,"number",log)
 	@syntax:
 		<real> $math.log10(<number:real>)
 	@description:
-		Returns the base 10 logarithm of the specified number
+		Returns the base 10 logarithm of the specified number.
 */
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log10,"number",log10)
 
@@ -383,7 +383,7 @@ static bool math_kvs_fnc_pow(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<real> $math.pi()
 	@description:
-		Returns the value of pi
+		Returns the value of pi.
 */
 #ifdef COMPILE_ON_WINDOWS
 static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
@@ -409,7 +409,7 @@ static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<real> $math.e()
 	@description:
-		Returns the value of the euler constant e
+		Returns the value of the euler constant e.
 */
 
 

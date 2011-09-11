@@ -625,7 +625,7 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 		If <context_id> is not a valid IRC Context identifier (or it is omitted and the current window
 		has no associated IRC Context) then this function prints a warning and returns an empty string.[br]
 		If the IRC Context is not using ssl then this function returns an empty string.[br]
-		Some queries can accept an optional parameter <param1>[br]
+		Some queries can accept an optional parameter <param1>.[br]
 		Available query strings are:[br]
 		[ul]
 		[li]signatureType[/li]

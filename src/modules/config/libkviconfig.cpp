@@ -309,7 +309,7 @@ static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the filename of the [b]open[/b] config file identifier by <id>.[br]
 		<id> must be a valid config identifier returned by [fnc]$config.open[/fnc]()
-		If the <id> doesn't match any open file, and empty string is returned.[br]
+		If the <id> doesn't match any open file, an empty string is returned.[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
 */

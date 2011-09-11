@@ -100,7 +100,7 @@ static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 		<string> $chan.getUrl(<window_id:string>)
 		<string> $chan.getUrl(<channel_name:string>)
 	@description:
-		Returns IRC URL for this channel
+		Returns the IRC URL for this channel.
 */
 static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 {
@@ -640,7 +640,7 @@ static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 		Returns the channel user mode flag of an user on the channel specified by <window_id>.[br]
 		If <window_id> is not passed, the current window is used.[br]
 		If the specified window is not a channel, a warning is printed and an empty string is returned.[br]
-		If the specified user is not on the channel identified by <window_id>, and empty string is returned.[br]
+		If the specified user is not on the channel identified by <window_id>, an empty string is returned.[br]
 		The possible user flags are:[br]
 			'!' for channel administrators[br]
 			'@' for ops[br]
@@ -933,7 +933,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop,isMeUserOp)
 	@description:
 		Returns the mode string of the channel identified by <window_id>.[br]
 		If no <window_id> is passed, the current channel mode string is returned (assuming that
-		the current window is a chnannel at all).[br]
+		the current window is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 */
 static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
@@ -966,7 +966,7 @@ static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the key of the channel identified by <window_id>.[br]
 		If no <window_id> is passed, the current channel key is returned (assuming that
-		the current window is a chnannel at all).[br]
+		the current window is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no key set, an empty string is returned.[br]
 		Alternatively, you could use $chan.modeParam(k) to get the current key.
@@ -999,7 +999,7 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the limit of the channel identified by <window_id>.[br]
 		If no <window_id> is passed, the current channel limit is returned (assuming that
-		the current window is a chnannel at all).[br]
+		the current window is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no limit set, "0" is returned.[br]
 		Alternatively, you could use $chan.modeParam(l) to get the current limit.
@@ -1037,7 +1037,7 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the parameter for a set mode of a channel identified by <window_id>.[br]
 		If no <window_id> is passed, the current channel key is returned (assuming that
-		the current window is a chnannel at all).[br]
+		the current window is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no such a mode set, an empty string is returned.[br]
 		If you need to get the current channel key or user limit, you can use one of the specialized functions.[br]
@@ -1232,7 +1232,7 @@ next_item:
 	@syntax:
 		$chan.banlist([window_id])
 	@description:
-		Returns an array of ban masks set ont the channel identified by [window_id].[br]
+		Returns an array of ban masks set on the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
 	@seealso:
@@ -1587,7 +1587,7 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		Use [fnc]$chan.matchmask[/fnc] instead.[br]
 		Some networks use +q channel mode to set "mute bans".[br]
 		When an user mask matches such a ban, he won't be able to send messages to the channel.[br]
-		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended
+		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended.[br]
 		This function returns the "mute ban" mask that matches <complete_mask> on channel identified by [window_id].[br]
 		If no ban mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]

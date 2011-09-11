@@ -2715,7 +2715,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window
 		has no associated DCC session) then this function prints a warning and returns an empty sting.[br]
 		If the DCC session is not using ssl then this function returns an empty string.[br]
-		Some queries can accept an optional parameter <param1>[br]
+		Some queries can accept an optional parameter <param1>.[br]
 		Available query strings are:[br]
 		[ul]
 		[li]signatureType[/li]

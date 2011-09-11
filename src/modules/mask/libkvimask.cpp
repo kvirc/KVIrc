@@ -148,7 +148,7 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $mask.hasNumericHost(<mask: string>)
 	@description:
-		Returns 1 if the hostname part of the mask is numeric (e.g : unresolved IPV4 or IPV6 address)
+		Returns 1 if the hostname part of the mask is numeric (e.g: unresolved IPv4 or IPv6 address).
 */
 
 

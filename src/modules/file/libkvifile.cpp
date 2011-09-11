@@ -550,7 +550,7 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 	<array> $file.allSize(<dirname:string>)
 	@description:
 	Returns the size of each file in a specified directory as an array.[br]
-	This function is not recursive: it wont return the size of files in subdirectories of <dirname>.
+	This function is not recursive: it won't return the size of files in subdirectories of <dirname>.
 */
 static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 {
@@ -763,10 +763,10 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		The data read is returned as a string, so if the file contains binary data,
 		expect strange results.[br] If <size> is not specified, then KVIrc tries to read
 		the whole file up to the 1 MiB limit (so if you want to read a file that is
-		bigger thatn 1 MiB then you MUST specify the <size>).[br]
+		bigger than 1 MiB then you MUST specify the <size>).[br]
 		If you want read binary data (with null bytes inside) then take a look at [fnc]$file.readBytes[/fnc].
-		WARNING: always check the file size before attemting to read a whole file...
-		reading a CDROM iso image may sit down your system :) (and will prolly crash while
+		WARNING: always check the file size before attempting to read a whole file...
+		reading a CDROM iso image may sit down your system :) (and will probably crash while
 		allocating memory, before attempting to read anything)[br]
 		An empty string is returned if a serious error occures.[br]
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]
@@ -856,10 +856,10 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		<size> is an upper limit but may be not reached if the real file is smaller.[br]
 		If <size> is not specified, then KVIrc tries to read
 		the whole file up to the 1 MiB limit (so if you want to read a file that is
-		bigger thatn 1 MiB then you MUST specify the <size>).[br]
+		bigger than 1 MiB then you MUST specify the <size>).[br]
 		If you want simple text data then take a look at [fnc]$file.read[/fnc].
 		WARNING: always check the file size before attemting to read a whole file...
-		reading a CDROM iso image may sit down your system :) (and will prolly crash while
+		reading a CDROM iso image may sit down your system :) (and will probably crash while
 		allocating memory, before attempting to read anything)[br]
 		An empty array (or just "nothing") is returned if a serious error occures.[br]
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]

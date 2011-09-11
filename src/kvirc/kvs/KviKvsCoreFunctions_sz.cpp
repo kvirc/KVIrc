@@ -484,7 +484,7 @@ namespace KviKvsCoreFunctions
 			$$
 		@description:
 			Returns the ID of the current object or ('0') if there is
-			none. This function has equivalent to [fnc]$this[/fnc]
+			none. This function is equivalent to [fnc]$this[/fnc]
 	*/
 
 	KVSCF(thisCKEYWORDWORKAROUND)
@@ -731,7 +731,7 @@ namespace KviKvsCoreFunctions
 			have a variable that can assume boolean values it's
 			nicer to use $true and [fnc]$false[/fnc] instead of
 			the integer constants 1 and 0. The reader will
-			undestand immediately that the variable simply can't
+			understand immediately that the variable simply can't
 			assume any other value.
 		@examples:
 			[example]

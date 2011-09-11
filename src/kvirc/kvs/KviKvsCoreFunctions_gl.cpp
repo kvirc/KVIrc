@@ -297,7 +297,7 @@ KVSCF(gender)
 	@short:
 		Returns the lag on the current server
 	@syntax:
-		<integer> lag
+		<integer> $lag
 	@description:
 		This function returns the lag in the current server, in milliseconds.[br]
 	*/
@@ -606,7 +606,7 @@ KVSCF(gender)
 		@syntax:
 			<boolean> $isMainWindowMinimized()
 		@description:
-			Returns true if main KVirc window is minimized and false otherwise.
+			Returns true if main KVIrc window is minimized and false otherwise.
 	*/
 
 	KVSCF(isMainWindowMinimized)
@@ -663,7 +663,7 @@ KVSCF(gender)
 		@syntax:
 			<boolean> $isEventEnabled(<event_name:string>,<handler_name:string>)
 		@description:
-			Returns 1 if the event handler enabled
+			Returns 1 if the event handler is enabled.
 	*/
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -783,7 +783,7 @@ KVSCF(gender)
 		@syntax:
 			<boolean> $istimer(<name:string>)
 		@description:
-			Returns 1 if the timer named <name> is actually running, else 0
+			Returns 1 if the timer named <name> is actually running, 0 otherwise.
 		@seealso:
 			[cmd]timer[/cmd], [cmd]killtimer[/cmd]
 	*/
@@ -943,11 +943,11 @@ KVSCF(gender)
 		@syntax:
 			<string> $lang([<type:string>])
 		@description:
-			Returns the short name of currently used language
+			Returns the short name of currently used language.[br]
 			Type <type> should be one of: [br]
-			"full"  - returns full locale name, such as ru_RU.UTF-8 (default)
-			"lang"  - return language name, such as "ru_RU"
-			"short" - returns only language group such as "ru"
+			"full"  - returns full locale name, such as ru_RU.UTF-8 (default).[br]
+			"lang"  - return language name, such as "ru_RU".[br]
+			"short" - returns only language group such as "ru".[br]
 	*/
 
 	KVSCF(lang)
@@ -1031,7 +1031,7 @@ KVSCF(gender)
 		@syntax:
 			<string> $lf
 		@description:
-			Returns a line feed character
+			Returns a line feed character.
 		@seealso:
 			[fnc]$cr[/fnc], [fnc]$ascii[/fnc], [fnc]$char[/fnc]
 	*/

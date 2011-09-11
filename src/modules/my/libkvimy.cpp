@@ -304,11 +304,11 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 	@title:
 		$my.serverIsSSL
 	@short:
-		Returns 1 if the current server connection use SSL.
+		Returns 1 if the current server connection uses SSL
 	@syntax:
 		<boolean> $my.serverIsSSL([irc_context_id:uint])
 	@description:
-		Returns 1 if the server connection use SSL.[br]
+		Returns 1 if the server connection uses SSL.[br]
 		If the irc context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
