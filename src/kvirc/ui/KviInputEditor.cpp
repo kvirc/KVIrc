@@ -1940,7 +1940,7 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx)
 	if(m_szTextBuffer.isEmpty())
 		return iCurXPos;
 
-	while(iCurChar < iChIdx)
+	while(iCurChar < iChIdx && iCurChar < m_szTextBuffer.size())
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
 		iCurXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm->width(c);
