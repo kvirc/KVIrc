@@ -1359,7 +1359,6 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_COPY,this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_CUT,this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_PASTE,this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PASTE_2,this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDO,this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_REDO,this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SELECT_ALL,this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);

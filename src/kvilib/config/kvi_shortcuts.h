@@ -172,7 +172,6 @@
 #define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Qt::AltModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::ControlModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_MINIMIZE Qt::ControlModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_INPUT_PASTE_2 Qt::ShiftModifier + Qt::Key_Insert
 #define KVI_SHORTCUTS_WIN_PREV_PAGE QKeySequence::MoveToPreviousPage		// Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_PAGE QKeySequence::MoveToNextPage		// Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_PREV_LINE Qt::ShiftModifier + Qt::Key_PageUp
