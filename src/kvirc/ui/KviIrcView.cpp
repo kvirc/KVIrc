@@ -332,6 +332,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviMainWindow *pFrm,KviWindow *pWnd)
 
 //	if(pWnd->input()) setFocusProxy(pWnd->input());
 
+	QSizePolicy oSizePolicy = sizePolicy();
+	oSizePolicy.setHorizontalPolicy(QSizePolicy::Expanding);
+	setSizePolicy(oSizePolicy);
 }
 
 static inline void delete_text_line(KviIrcViewLine * line,QHash<KviIrcViewLine*,KviAnimatedPixmap*>*  animatedSmiles)

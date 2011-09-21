@@ -263,9 +263,17 @@ void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
 	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
 
-	//this is an hack to simulate qt3's ResizeMode = Stretch
-	for(int iWidget=0; iWidget<m_pSplitter->count(); iWidget++)
-		m_pSplitter->setStretchFactor(iWidget,1);
+	// this is an hack to simulate qt3's ResizeMode = Stretch
+	//for(int iWidget=0; iWidget<m_pSplitter->count(); iWidget++)
+	//	m_pSplitter->setStretchFactor(iWidget,1);
+
+	// As of 22/09/2011 the QSplitter layout engine is buggy.
+	// It ignores the values of the stretch factors.
+	// A widget that has a stretch factor set is "expanding" and one
+	// that has no stretch factor has its size "keept fixed".
+
+	m_pSplitter->setStretchFactor(0,1);
+	//m_pSplitter->setStretchFactor(1,100);
 
 	showListView(pCfg->readBoolEntry("UserListViewVisible",false));
 }
