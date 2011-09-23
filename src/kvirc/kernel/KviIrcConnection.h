@@ -669,10 +669,13 @@ public:
 	* \brief Sets the global encoding for this connection.
 	*
 	* This is a default value and can be overridden by specific windows.
+	* This is tipically called upon a successfull CODEPAGE change (numerical 222)
+	* reponse from a server; from now on, the server will translate (encode)
+	* everything (including IDN hostnames, channel names, messages) using this
+	* encoding. So we expect this encoding to be the new default for the server
+	* (connection), the console, each other channel and query.
 	* \param szEncoding The encoding to use
 	* \return void
-	*
-	* FIXME: This is quite unclear (why it forces encoding to all the windows?)
 	*/
 	void setEncoding(const QString & szEncoding);
 

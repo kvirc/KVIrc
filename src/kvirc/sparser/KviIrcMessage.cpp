@@ -152,7 +152,8 @@ void KviIrcMessage::decodeAndSplitMask(char * b,QString &szNick,QString &szUser,
 		return;
 	}
 	p++;
-	szHost = p; // hostnames are NOT encoded (at the moment...)
+	// IDN hostnames can be encoded (see ticket #1215)
+	szHost = m_pConnection->decodeText(p);
 
 }
 

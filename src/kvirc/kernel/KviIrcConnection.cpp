@@ -202,6 +202,8 @@ void KviIrcConnection::setEncoding(const QString & szEncoding)
 				q->output(KVI_OUT_VERBOSE,__tr2qs("Changed text encoding to %Q"),&szTmp);
 		}
 	}
+	
+	m_pSrvCodec = c;
 	m_pTextCodec = c;
 	m_pConsole->setTextEncoding(szEncoding);
 }
