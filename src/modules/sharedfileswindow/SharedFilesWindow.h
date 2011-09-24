@@ -30,7 +30,7 @@
 #include "KviConsoleWindow.h"
 #include "KviModuleExtension.h"
 #include "KviSharedFilesManager.h"
-#include <QTreeWidget>
+#include "KviThemedTreeWidget.h"
 
 #include <QDialog>
 #include <QCheckBox>
@@ -84,7 +84,7 @@ public:
 protected:
 	QSplitter           * m_pVertSplitter;
 
-	QTreeWidget           * m_pTreeWidget;
+	KviThemedTreeWidget * m_pTreeWidget;
 
 	QPushButton         * m_pRemoveButton;
 	QPushButton         * m_pEditButton;

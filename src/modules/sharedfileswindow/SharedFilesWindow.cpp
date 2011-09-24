@@ -215,7 +215,7 @@ SharedFilesWindow::SharedFilesWindow(KviModuleExtensionDescriptor * d,KviMainWin
 
 	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);
 
-	m_pTreeWidget  = new QTreeWidget(vbox);
+	m_pTreeWidget  = new KviThemedTreeWidget(vbox, this, "sharedfileswindow_treewidget");
 	//m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	QStringList columsLabels;

@@ -56,7 +56,7 @@ void KviThemedTreeWidget::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 
-	QString szStyle = QString("QTreeWidget { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
+	QString szStyle = QString("QTreeWidget { background: %1; background-clip: content; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
 	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
 	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : 
 				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
