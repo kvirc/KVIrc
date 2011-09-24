@@ -753,16 +753,16 @@ void KviWindow::createSystemTextEncodingPopup()
 				g_pMdiWindowSystemTextEncodingCurrentAction->setChecked(true);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(true);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setData(i);
-			} else {
-				QMenu * pMenu = pDesc->bSmart ? (pDesc->bSendUtf8 ? 
-					pPopupSmartUtf8[pDesc->uGroup] : 
-					pPopupSmart[pDesc->uGroup]
-				) : pPopupStandard[pDesc->uGroup];
-			
-				QAction * pAction = pMenu->addAction(szTmp);
-				pAction->setData(i);
-				g_pMdiWindowSystemTextEncodingActionGroup->addAction(pAction);
 			}
+			
+			QMenu * pMenu = pDesc->bSmart ? (pDesc->bSendUtf8 ? 
+				pPopupSmartUtf8[pDesc->uGroup] : 
+				pPopupSmart[pDesc->uGroup]
+			) : pPopupStandard[pDesc->uGroup];
+		
+			QAction * pAction = pMenu->addAction(szTmp);
+			pAction->setData(i);
+			g_pMdiWindowSystemTextEncodingActionGroup->addAction(pAction);
 
 			pDesc = KviLocale::instance()->encodingDescription(++i);
 		}
