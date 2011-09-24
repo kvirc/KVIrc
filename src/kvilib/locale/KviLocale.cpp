@@ -356,7 +356,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	{ "Big5-HKSCS"           , 0 , 0 , 5, "Chinese Traditional, Hong Kong" },
 	{ "GB18030"              , 0 , 0 , 5, "Chinese Simplified" },
 	// Japanese
-	{ "JIS7"                 , 0 , 0 , 6, "Japanese (JIS7)" },
+	{ "ISO-2022-JP"          , 0 , 0 , 6, "Japanese (ISO-2022-JP/JIS7)" },
 	{ "Shift-JIS"            , 0 , 0 , 6, "Japanese (Shift-JIS)" },
 	{ "EUC-JP"               , 0 , 0 , 6, "Japanese (EUC-JP)" },
 	// Other asiatic
@@ -404,7 +404,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	{ "Big5-HKSCS [UTF-8]"   , 1 , 0 , 5, "Chinese Traditional, Hong Kong - Unicode" },
 	{ "GB18030 [UTF-8]"      , 1 , 0 , 5, "Chinese Simplified - Unicode" },
 	// Japanese
-	{ "JIS7 [UTF-8]"         , 1 , 0 , 6, "Japanese (JIS7) - Unicode" },
+	{ "ISO-2022-JP [UTF-8]"  , 1 , 0 , 6, "Japanese (ISO-2022-JP/JIS7) - Unicode" },
 	{ "Shift-JIS [UTF-8]"    , 1 , 0 , 6, "Japanese (Shift-JIS) - Unicode" },
 	{ "EUC-JP [UTF-8]"       , 1 , 0 , 6, "Japanese (EUC-JP) - Unicode" },
 	// Other asiatic
@@ -452,7 +452,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	{ "UTF-8 [Big5-HKSCS]"   , 1 , 1 , 5, "Unicode - Chinese Traditional, Hong Kong" },
 	{ "UTF-8 [GB18030]"      , 1 , 1 , 5, "Unicode - Chinese Simplified" },
 	// Japanese
-	{ "UTF-8 [JIS7]"         , 1 , 1 , 6, "Unicode - Japanese (JIS7)" },
+	{ "UTF-8 [ISO-2022-JP]"  , 1 , 1 , 6, "Unicode - Japanese (ISO-2022-JP/JIS7)" },
 	{ "UTF-8 [Shift-JIS]"    , 1 , 1 , 6, "Unicode - Japanese (Shift-JIS)" },
 	{ "UTF-8 [EUC-JP]"       , 1 , 1 , 6, "Unicode - Japanese (EUC-JP)" },
 	// Other asiatic
