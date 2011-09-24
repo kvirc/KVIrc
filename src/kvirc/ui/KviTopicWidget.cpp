@@ -454,7 +454,8 @@ void KviTopicWidget::switchMode()
 		m_pInput=new KviInputEditor(this,m_pKviChannelWindow);
 		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
-		m_pInput->setMaxBufferSize(iMaxLen);
+		if(iMaxLen>0)
+			m_pInput->setMaxBufferSize(iMaxLen);
 		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
 		m_pInput->setText(m_szTopic);
 		connect(m_pInput,SIGNAL(enterPressed()),this,SLOT(acceptClicked()));
