@@ -723,14 +723,19 @@ defpopup(channeltextview)
 
 	separator
 
-	item($tr("&Hop","defscript") $0,145)
+	item($tr("&Hop","defscript") $0,145) ($channel)
 	{
-		hop $0
+		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40)
+	item($tr("&Part","defscript") $0,40) ($channel)
 	{
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
+	}
+
+	item($tr("&Join","defscript") $0,39) (!$channel)
+	{
+		join $0;
 	}
 
 	separator
