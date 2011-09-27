@@ -77,7 +77,6 @@
 * \def KVI_SHORTCUTS_INPUT_NEXT_WORD Move to the end of the next word
 * \def KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT Select up to the end of the next word
 * \def KVI_SHORTCUTS_INPUT_PASTE Paste the clipboard contents (same as middle mouse click)
-* \def KVI_SHORTCUTS_INPUT_PASTE_2 Paste the clipboard contents (same as middle mouse click)
 * \def KVI_SHORTCUTS_INPUT_PLAINTEXT Insert the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line
 * \def KVI_SHORTCUTS_INPUT_PREV_CHAR Move the cursor to the left
 * \def KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT Move the selection to the left

@@ -235,8 +235,8 @@ XS(XS_KVIrc_getLocal)
 			{
 				pVar->asString(tmp);
 				hack = tmp;
-				RETVAL = hack.ptr();
-			} else RETVAL = "";
+			} else hack = "";
+			RETVAL = hack.ptr();
 		}
 #line 242 "KVIrc.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
@@ -299,8 +299,8 @@ XS(XS_KVIrc_getGlobal)
 			{
 				pVar->asString(tmp);
 				hack = tmp;
-				RETVAL = hack.ptr();
-			} else RETVAL = "";
+			} else hack = "";
+			RETVAL = hack.ptr();
 		}
 #line 306 "KVIrc.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
@@ -365,10 +365,10 @@ XS(XS_KVIrc_eval)
 			} else {
 				g_szLastReturnValue = "";
 			}
-			RETVAL = g_szLastReturnValue.ptr();
 		} else {
-			RETVAL = "";
+			g_szLastReturnValue = "";
 		}
+		RETVAL = g_szLastReturnValue.ptr();
 #line 373 "KVIrc.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
