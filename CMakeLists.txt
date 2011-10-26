@@ -675,10 +675,10 @@ IF(WANT_PERL)
 			OUTPUT_VARIABLE PERL_LINK_FLAGS
 		)
 
-                # Remove new line characters
+		# Remove new line characters
 		STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PERL_LINK_FLAGS}")
-                # Remove leading and trailing spaces (string strip)
+		# Remove leading and trailing spaces (string strip)
 		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 	ELSE()
 		SET(CMAKE_STATUS_PERL_SUPPORT "No")
