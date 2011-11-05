@@ -94,8 +94,8 @@ const int align_cod[] = {
 		Sets the default spacing of the widgets in pixels
 		!fn: $setMargin(<margin:uint>)
 		Sets the dimension of the layout margin : the distance from the border to the outermost child widget edges.
-		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
-		Sets the alignment for widget w to  flags, given as parameters.
+		!fn: $setAlignment(<w:widget>, <flag1:string>, <flag2:string>, ...)
+		Sets the alignment for widget w to flags, given as parameters.
 		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center
 		!fn: $setResizeMode(<resize_mode:string>)
 		Sets the resize mode of the parent widget in relation to this layout.
