@@ -67,11 +67,13 @@ protected:
 	bool nextSibling(KviKvsObjectFunctionCall * c);
 
 	bool toPlainText(KviKvsObjectFunctionCall * c);
+	bool setPlainText(KviKvsObjectFunctionCall * c);
 	bool load(KviKvsObjectFunctionCall * c);
 	bool getDocumentElement(KviKvsObjectFunctionCall * c);
 	bool currentElementTagName(KviKvsObjectFunctionCall * c);
 	bool findAll(KviKvsObjectFunctionCall * c);
 	bool findFirst(KviKvsObjectFunctionCall * c);
+	bool findText(KviKvsObjectFunctionCall * c);
 
 	bool moveToQueryResultsAt(KviKvsObjectFunctionCall * c);
 	bool queryResultsCount(KviKvsObjectFunctionCall * c);

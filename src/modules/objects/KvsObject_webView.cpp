@@ -124,7 +124,20 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 #endif
 };
 
+const char * const findflag_tbl[] = {
+	"FindBackward",
+	"FindCaseSensitively",
+	"FindWrapsAroundDocument",
+	"HighlightAllOccurrences"};
+
+const QWebPage::FindFlag findflag_cod[] = {
+	QWebPage::FindBackward,
+	QWebPage::FindCaseSensitively,
+	QWebPage::FindWrapsAroundDocument,
+	QWebPage::HighlightAllOccurrences};
+
 #define webattributes_num (sizeof(webattributes_tbl) / sizeof(webattributes_tbl[0]))
+#define findflag_num (sizeof(findflag_tbl) / sizeof(findflag_tbl[0]))
 
 /*
 	@doc:	webview
@@ -144,7 +157,15 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 	@functions:
 		!fn: $load(<url:string>)
 		Sets the current url for the webView and starts loading it
-
+		!fn: $findText(<txt:string>,[flag 1,flag 2,..;string])
+		Finds the specified string, in the page, using the given options.
+		Valid flags are:
+		[pre]
+		FindBackward		- Searches backwards instead of forwards;
+		FindCaseSensitively	- Changes the behaviour to a case sensitive find operation.
+		FindWrapsAroundDocument	- Restart from the beginning of the document if the end was reached and the text was not found.
+		HighlightAllOccurrences	- Highlights all existing occurrences.
+		[/pre]
 		!fn: array $frames()
 		Returns an array containing the names of the document frames.
 
@@ -165,96 +186,74 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 		!fn: $nextSibling()
 		Sets the element just after the current one as the new current element.
 		Returns true if the current element has been changed.
-
 		!fn: $currentElementTagName()
 		Returns the tag name of the current element
-
 		!fn: $moveToQueryResultsAt(<index:int>)
 		Changes the current element to the <index>th element of the collection
-
 		!fn: int $queryResultsCount()
 		Returns the number of elements in the collection
-
 		!fn: $getDocumentElement([frame_name:string])
 		Sets the document element of the frame [frame_name] as the current element.
 		If no value has been specified for [frame_name] or [frame_name] is empty, the main frame of the page will be used.
-
 		!fn: string $attributeNames()
 		Returns a comma-separated list of the attribute names set on the current element
-
 		!fn: string $attribute(<name:string>)
 		Returns the value of the attribute <name> for the current element.
-
 		!fn: pixmap $makePreview()
 		Returns a 212x142 thumbnail of the current webView contants.
 		The returned object is an instance of the pixmap class.
-
 		!fn: string $rememberCurrent()
 		Returns the id of the current web element and stores it in a cache
-
 		!fn: $moveTo(<id:string>)
 		Changes the current element to <id>
-
 		!fn: string $toPlainText()
-		Returns the string representation of the current element
-
+		Returns the string representation of the current element.
+		!fn: string $setPlainText()
+		Set the string representation of the current element
 		!fn: $setAttribute(<name:string>,<value:string>)
 		Sets the attribute <name> with value <value> to the current element
-
 		!fn: $setWebSetting(<name:string>,<value:bool>)
 		Enables or disables the <name> setting depending on <value>.
 		Valid settings name: JavascriptEnabled, PluginsEnabled, JavascriptCanOpenWindows, JavascriptCanAccessClipboard, ZoomTextOnly, LocalContentCanAccessFileUrls.
-
 		!fn: $removeFromDocument()
 		Removes the current element from the document. The parent element is set as the new current element.
-
 		!fn: $removeClass(<class_name:string>)
 		Removes a class from the current element
-
 		!fn: string $classes()
 		Returns a comma-separated list of classes set on the current element
-
 		!fn: $setLinkDelegationPolicy(<policy:string>)
 		Sets the link delegation policy: what happens when the users click on a link. Valid values:
 		[br] DontDelegateLinks: No links are delegated. Instead, webView tries to handle them all.
 		[br] DelegateExternalLinks: When activating links that point to documents not stored on the local filesystem or an equivalent then $linkClickedEvent() is executed.
 		[br] DelegateAllLinks: Whenever a link is activated the $linkClickedEvent() is executed.	
-		
 		!fn: $linkClickedEvent()
 		This function can be called when the user clicks on a link, depending no the current link delegation policy.
 		The argument of the function is the url that has been clicked.[br]
 		The default implementation emits the [classfnc:webview]$linkClicked[/classfnc]() signal.
-
 		!fn: $loadStartedEvent()
 		This function is called when the load of the page has started.
 		The default implementation emits the [classfnc:webview]$loadStarted[/classfnc]() signal.
-
 		!fn: $loadProgressEvent()
 		This function can be called during the page load progress.
 		The argument of the function is an int value that represent the loading progress status, ranging from 0 to 100.[br]
 		The default implementation emits the [classfnc:webview]$loadProgress[/classfnc]() signal.
-
 		!fn: $loadFinishedEvent()
 		This function is called when the load of the page has finished.
 		The argument of the function is a bool value that is true if the page has been loaded successfully, false otherwise.[br]
 		The default implementation emits the [classfnc:webview]$loadFinished[/classfnc]() signal.
-
 		!fn: $downloadRequestEvent()
 		This function is called when the user tries to download a file.
 		The argument of the function is the url of the file.[br]
 		You should return a valid path in the filesystem where to save the file.[br]
 		The default implementation emits the [classfnc:webview]$downloadRequest[/classfnc]() signal.
-
 		!fn: $downloadProgressEvent()
 		This function can be called during the download of a file.
 		Three integer arguments are passed to this function: the number of downloaded bytes, the download id, the size of the remove file (if known).
 		The default implementation emits the [classfnc:webview]$downloadProgress[/classfnc]() signal.
-
 		!fn: $downloadCompletedEvent()
 		This function can be called when a file download finishes.
 		The argument of the function is the an integer value containing the download id.
 		The default implementation emits the [classfnc:webview]$downloadCompleted[/classfnc]() signal.
-
 	@signals:
 		!sg: linkClicked()
 		This signal is emitted by the default implementation of [classfnc:webview]linkClickedEvent[/classfnc]().
@@ -285,6 +284,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,firstChild)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findAll)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findFirst)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,parentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,nextSibling)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,currentElementTagName)
@@ -297,6 +297,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,rememberCurrent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveTo)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setPlainText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setAttribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setWebSetting)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeFromDocument)
@@ -568,7 +569,37 @@ KVSO_CLASS_FUNCTION(webView,setWebSetting)
 		c->warning(__tr2qs_ctx("Unknown web setting '%Q'","objects"),&szName);
 	return true;
 }
+KVSO_CLASS_FUNCTION(webView,findText)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szName;
+	QStringList szFindFlag;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("find_text",KVS_PT_NONEMPTYSTRING,0,szName)
+		KVSO_PARAMETER("find_flag",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szFindFlag)
+	KVSO_PARAMETERS_END(c)
+	int findflag=0;
+	int sum=0;
+	for ( QStringList::Iterator it = szFindFlag.begin(); it != szFindFlag.end(); ++it )
+	{
+		findflag = 0;
+		for(unsigned int j = 0; j < findflag_num; j++)
+		{
+			if(KviQString::equalCI((*it), findflag_tbl[j]))
+			{
+				findflag=findflag_cod[j];
+				break;
+			}
+		}
+		if(findflag)
+			sum = sum | findflag;
+		else
+			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'","objects"),&(*it));
 
+	}
+	((QWebView *)widget())->findText(szName,(QWebPage::FindFlags)findflag);
+	return true;
+}
 KVSO_CLASS_FUNCTION(webView,attribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -618,7 +649,21 @@ KVSO_CLASS_FUNCTION(webView,toPlainText)
 	c->returnValue()->setString(m_currentElement.toPlainText());
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(webView,setPlainText)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szText;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("plaintext",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETERS_END(c)
+	if(m_currentElement.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		return true;
+	}
+	m_currentElement.setPlainText(szText);
+	return true;
+}
 KVSO_CLASS_FUNCTION(webView,firstChild)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -764,7 +809,8 @@ void KvsObject_webView::slotLoadProgress(int iProgress)
 void KvsObject_webView::slotLinkClicked(const QUrl &url)
 {
 	QString szUrl=url.toString();
-	qDebug("Link clicked %s",szUrl.toUtf8().data());
+	KviKvsVariantList params(new KviKvsVariant(szUrl));
+	callFunction(this,"linkClickedEvent" ,&params);
 }
 
 void KvsObject_webView::slotDownloadRequest(const QNetworkRequest &r)

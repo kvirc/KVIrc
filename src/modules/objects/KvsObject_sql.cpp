@@ -210,6 +210,7 @@ KVSO_CLASS_FUNCTION(sql,queryLastInsertId)
 	QVariant value=m_pCurrentSQlQuery->lastInsertId();
 	if (value.type()==QVariant::LongLong)
 		c->returnValue()->setInteger((kvs_int_t) value.toLongLong());
+	qDebug("type %i",value.type());
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql,features)
