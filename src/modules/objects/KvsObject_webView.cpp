@@ -40,11 +40,14 @@
 #include <QPixmap>
 #include <QFile>
 #include <QSize>
+#include <QPoint>
+#include <QVariant>
 
 static int g_iDownloadId = 1;
 KviKvsDownloadHandler::KviKvsDownloadHandler(KvsObject_webView * pParent,QFile *pFile,QNetworkReply *pNetReply,int iId)
 :QObject(pParent)
 {
+
 	m_Id = iId;
 	m_pParentScript = pParent;
 	m_pReply = pNetReply;
@@ -153,7 +156,7 @@ const QWebPage::FindFlag findflag_cod[] = {
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		Provides an embedded web browser using webkit.
+		Provides an embedded web browser using webkit. Page structure can be managed by web element's unique identifiers.
 	@functions:
 		!fn: $load(<url:string>)
 		Sets the current url for the webView and starts loading it
@@ -169,58 +172,46 @@ const QWebPage::FindFlag findflag_cod[] = {
 		!fn: array $frames()
 		Returns an array containing the names of the document frames.
 
-		!fn: $firstChild()
-		Sets the first child of the current element as the new current element.
-		Returns true if the current element has been changed.
+		!fn: <integer> $firstChild(<element_id:integer>)
+		Return the identifier of element's first childr.
 
-		!fn: $findAll(<query:string>)
-		Searches for all the elements named <query> and stores them in a collection
+		!fn: <array> $findAll(<element_id:integer>,<query:string>)
+		Searches for all the elements named <query> and stores them in an array of element's identifiers.
 
-		!fn: $findFirst(<query:string>)
-		Searches for the first element named <query>; returns true if an element have been found, false if not.
+		!fn: <integer> $findFirst(<element_id:integer>,<query:string>)
+		Searches for the first element named <query>; returns the identifier.
 
-		!fn: $parentElement()
-		Sets the parent of the current element as the new current element.
-		Returns true if the current element has been changed.
-		
-		!fn: $nextSibling()
-		Sets the element just after the current one as the new current element.
-		Returns true if the current element has been changed.
-		!fn: $currentElementTagName()
-		Returns the tag name of the current element
-		!fn: $moveToQueryResultsAt(<index:int>)
-		Changes the current element to the <index>th element of the collection
-		!fn: int $queryResultsCount()
-		Returns the number of elements in the collection
-		!fn: $getDocumentElement([frame_name:string])
-		Sets the document element of the frame [frame_name] as the current element.
+		!fn: <integer> $parentElement(<element_id:integer>,)
+		Returns the parent of <element_id>.
+		!fn: <integer> $nextSibling(<element_id>)
+		Returns the element just after <element_id>.
+		!fn: $elementTagName(<element_id>)
+		Returns the tag name of the <element_id>.
+		!fn: <integer> $getDocumentElement([frame_name:string])
+		Return as unique identifier the document element of the frame [frame_name].
 		If no value has been specified for [frame_name] or [frame_name] is empty, the main frame of the page will be used.
-		!fn: string $attributeNames()
-		Returns a comma-separated list of the attribute names set on the current element
-		!fn: string $attribute(<name:string>)
-		Returns the value of the attribute <name> for the current element.
+		!fn: string $attributeNames(<element_id>)
+		Returns a comma-separated list of the attribute names set on element <element_id>.
+		!fn: string $attribute(<element_id>,<name:string>)
+		Returns the value of the attribute <name> for element <element_id>.
 		!fn: pixmap $makePreview()
 		Returns a 212x142 thumbnail of the current webView contants.
 		The returned object is an instance of the pixmap class.
-		!fn: string $rememberCurrent()
-		Returns the id of the current web element and stores it in a cache
-		!fn: $moveTo(<id:string>)
-		Changes the current element to <id>
-		!fn: string $toPlainText()
-		Returns the string representation of the current element.
-		!fn: string $setPlainText()
-		Set the string representation of the current element
-		!fn: $setAttribute(<name:string>,<value:string>)
-		Sets the attribute <name> with value <value> to the current element
+		!fn: string $toPlainText(<element_id>)
+		Returns the string representation of element <element_id>.
+		!fn: string $setPlainText(<element_id>)
+		Set the string representation of the  element <element_id>.
+		!fn: $setAttribute(<element_id>,<name:string>,<value:string>)
+		Sets the attribute <name> with value <value> to the element <element_id>.
 		!fn: $setWebSetting(<name:string>,<value:bool>)
 		Enables or disables the <name> setting depending on <value>.
 		Valid settings name: JavascriptEnabled, PluginsEnabled, JavascriptCanOpenWindows, JavascriptCanAccessClipboard, ZoomTextOnly, LocalContentCanAccessFileUrls.
-		!fn: $removeFromDocument()
-		Removes the current element from the document. The parent element is set as the new current element.
-		!fn: $removeClass(<class_name:string>)
-		Removes a class from the current element
-		!fn: string $classes()
-		Returns a comma-separated list of classes set on the current element
+		!fn: $removeFromDocument(<element_id>)
+		Removes the element <element_id> from the document.
+		!fn: $removeClass(<element_id>,<class_name:string>)
+		Removes a class from the element <element_id>.
+		!fn: string $classes(<element_id>)
+		Returns a comma-separated list of classes set on the element <element_id>.
 		!fn: $setLinkDelegationPolicy(<policy:string>)
 		Sets the link delegation policy: what happens when the users click on a link. Valid values:
 		[br] DontDelegateLinks: No links are delegated. Instead, webView tries to handle them all.
@@ -287,23 +278,33 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,parentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,nextSibling)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,currentElementTagName)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveToQueryResultsAt)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,queryResultsCount)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementTagName)
+	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveToQueryResultsAt)
+	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,queryResultsCount)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,getDocumentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attributeNames)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,makePreview)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,rememberCurrent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveTo)
+	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,rememberCurrent)
+	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveTo)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementAt)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setPlainText)
+
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setStyleProperty)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,styleProperty)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setAttribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setWebSetting)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeFromDocument)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeClass)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,addClass)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,classes)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setLinkDelegationPolicy)
+
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,addToJavaScriptWindowObject)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,evaluateJavaScript)
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,linkClickedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
@@ -320,12 +321,15 @@ KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_webView)
-qDeleteAll(m_dictCache);
+
+
+m_elementMapper.clear();
 KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
 bool KvsObject_webView::init(KviKvsRunTimeContext *c ,KviKvsVariantList *)
 {
 	SET_OBJECT(QWebView);
+	elementMapId=1;
 	m_pContext = c;
 	m_pNetworkManager = new QNetworkAccessManager(this);
 	/* m_pReplyList=new KviPointerList<QNetworkReply>;
@@ -335,27 +339,67 @@ bool KvsObject_webView::init(KviKvsRunTimeContext *c ,KviKvsVariantList *)
 	connect(((QWebView *)widget()),SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
 	connect(((QWebView *)widget()),SIGNAL(loadProgress(int)),this,SLOT(slotLoadProgress(int)));
 	connect(pPage,SIGNAL(linkClicked(const QUrl &)),this,SLOT(slotLinkClicked(const QUrl &)));
+	//connect(pPage->frame(),SIGNAL(javaScriptWindowObjectCleared()),this,SLOT(javaScriptWindowObjectCleared()));
+
+
 	connect(pPage,SIGNAL(downloadRequested(const QNetworkRequest &)),this,SLOT(slotDownloadRequest(const QNetworkRequest &)));
 	return true;
 }
-
-void KvsObject_webView::getFrames(QWebFrame *pFrame,KviKvsArray *pArray, kvs_uint_t &uIdx)
+int KvsObject_webView::insertElement(const QWebElement &ele)
 {
-	m_dictFrames.insert(pFrame->title(),pFrame);
-	pArray->set(uIdx,new KviKvsVariant(pFrame->title()));
-	uIdx++;
-	QList<QWebFrame *> lFrames = pFrame->childFrames();
+	int eleid=getElementId(ele);
+	if (!eleid)
+	{
+		m_elementMapper[elementMapId]=ele;
+		return ++elementMapId;
+	}
+	else return eleid;
+}
+int KvsObject_webView::getElementId(const QWebElement &ele)
+{
+	QHashIterator<int,QWebElement> it(m_elementMapper);
+	while (it.hasNext())
+	{
+	     it.next();
+	     if(it.value()==ele)
+		     return it.key();
+	}
+	return 0;
+}
+
+QWebElement KvsObject_webView::getElement(int iIdx)
+{
+	//qDebug("ritorno valore con indixe %d",iIdx);
+	return m_elementMapper.value(iIdx);
+}
+void KvsObject_webView::getFrames(QWebFrame *pCurFrame, QStringList &szFramesNames)
+{
+	szFramesNames.append(pCurFrame->title());
+	//framesDict.insert(pCurFrame->title(),pCurFrame);
+	//pArray->set(uIdx,new KviKvsVariant(pFrame->title()));
+	//uIdx++;
+	QList<QWebFrame *> lFrames = pCurFrame->childFrames();
 	for(int i=0; i < lFrames.count(); i++)
 	{
 		QWebFrame *pChildFrame = lFrames.at(i);
 		if(pChildFrame->childFrames().count())
-			getFrames(pChildFrame,pArray,uIdx);
-		else
+			getFrames(pChildFrame,szFramesNames);
+	}
+}
+QWebFrame * KvsObject_webView::findFrame(QWebFrame *pCurFrame, QString &szFrameName)
+{
+	if(pCurFrame->title()==szFrameName) return pCurFrame;
+	QList<QWebFrame *> lFrames = pCurFrame->childFrames();
+	for(int i=0; i < lFrames.count(); i++)
+	{
+		QWebFrame *pChildFrame = lFrames.at(i);
+		if(pChildFrame->childFrames().count())
 		{
-			pArray->set(uIdx,new KviKvsVariant(pChildFrame->title()));
-			uIdx++;
+			pCurFrame=findFrame(pChildFrame,szFrameName);
+			if(pCurFrame) return pCurFrame;
 		}
 	}
+	return 0;
 }
 
 KVSO_CLASS_FUNCTION(webView,setLinkDelegationPolicy)
@@ -424,14 +468,58 @@ KVSO_CLASS_FUNCTION(webView,findAll)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szQuery;
+	KviKvsArray *pArray;
+	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
 		KVSO_PARAMETER("query",KVS_PT_STRING,0,szQuery)
 	KVSO_PARAMETERS_END(c)
-	m_webElementCollection=m_currentElement.findAll(szQuery);
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	QWebElementCollection elementCollection=element.findAll(szQuery);
+	int idx=0;
+	pArray=new KviKvsArray();
+	for(int i=0;i<m_webElementCollection.count();i++)
+	{
+		QWebElement element=elementCollection.at(i);
+		int id=getElementId(element);
+		pArray->set(idx,new KviKvsVariant((kvs_int_t)id));
+		idx++;
+	}
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,rememberCurrent)
+KVSO_CLASS_FUNCTION(webView,evaluateJavaScript)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szScript;
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+		KVSO_PARAMETER("script_code",KVS_PT_STRING,0,szScript)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		return true;
+	}
+	QVariant vRes=element.evaluateJavaScript(szScript);
+	if(vRes.type()==QVariant::String)
+	{
+		QString szVal=vRes.toString();
+		c->returnValue()->setString(szVal);
+	}
+	else c->warning(__tr2qs_ctx("Unsupported datatype","objects"));
+	return true;
+}
+
+
+/*KVSO_CLASS_FUNCTION(webView,rememberCurrent)
 {
 	QString adr=QString::number((long)&m_currentElement,16).toUpper();
 	QWebElement *pElement = new QWebElement(m_currentElement);
@@ -449,25 +537,33 @@ KVSO_CLASS_FUNCTION(webView,moveTo)
 	if(m_dictCache.value(szId))
 		m_currentElement=*m_dictCache.value(szId);
 	return true;
-}
+}*/
 
 KVSO_CLASS_FUNCTION(webView,findFirst)
 {
 	QString szQuery;
+	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
 		KVSO_PARAMETER("query",KVS_PT_STRING,0,szQuery)
 	KVSO_PARAMETERS_END(c)
-	QWebElement tempElement=m_currentElement.findFirst(szQuery);
-	if(!tempElement.isNull())
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		m_currentElement=tempElement;
-		c->returnValue()->setBoolean(true);
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
 	}
-	else c->returnValue()->setBoolean(false);
-
+	QWebElement tempElement=element.findFirst(szQuery);
+	if (tempElement.isNull())
+	{
+		c->returnValue()->setInteger(-1);
+		return true;
+	}
+	int id=insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t) id);
 	return true;
 }
-
+/*
 KVSO_CLASS_FUNCTION(webView,moveToQueryResultsAt)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -478,46 +574,83 @@ KVSO_CLASS_FUNCTION(webView,moveToQueryResultsAt)
 	m_currentElement=m_webElementCollection.at(iIdx);
 	return true;
 }
-
+*/
 KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 {
-	Q_UNUSED(c);
-	QWebElement element=m_currentElement.parent();
-	m_currentElement.removeFromDocument();
-	m_currentElement=element;
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	element.removeFromDocument();
 	return true;
 }
-
+/*
 KVSO_CLASS_FUNCTION(webView,queryResultsCount)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger((kvs_int_t) m_webElementCollection.count());
 	return true;
 }
+*/
+KVSO_CLASS_FUNCTION(webView,nextSibling)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	QWebElement tempElement=element.nextSibling();
+	if (tempElement.isNull())
+	{
+		c->returnValue()->setInteger(-1);
+		return true;
+	}
+	int id=insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t) id);
+	return true;
+}
+
 
 KVSO_CLASS_FUNCTION(webView,frames)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	m_dictFrames.clear();
+	//m_dictFrames.clear();
 	QWebFrame *pFrame=((QWebView *)widget())->page()->mainFrame();
-
-	//dd.toAscii().toHex()
+	QStringList szFramesNames;
+	getFrames(pFrame,szFramesNames);
 	KviKvsArray *pArray=new KviKvsArray();
-	kvs_uint_t uIdx=0;
-	getFrames(pFrame,pArray,uIdx);
+	//kvs_uint_t uIdx=0;
+	//
 	c->returnValue()->setArray(pArray);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,currentElementTagName)
+KVSO_CLASS_FUNCTION(webView,elementTagName)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	c->returnValue()->setString(m_currentElement.tagName());
+	c->returnValue()->setString(element.tagName());
 	return true;
 }
 
@@ -525,11 +658,19 @@ KVSO_CLASS_FUNCTION(webView,setAttribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName,szValue;
+	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
 		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
 		KVSO_PARAMETER("value",KVS_PT_STRING,0,szValue)
 	KVSO_PARAMETERS_END(c)
-	m_currentElement.setAttribute(szName,szValue);
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	element.setAttribute(szName,szValue);
 	return true;
 }
 
@@ -537,13 +678,38 @@ KVSO_CLASS_FUNCTION(webView,removeClass)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szClassName;
+	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
 		KVSO_PARAMETER("class_name",KVS_PT_NONEMPTYSTRING,0,szClassName)
 	KVSO_PARAMETERS_END(c)
-	m_currentElement.removeClass(szClassName);
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	element.removeClass(szClassName);
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(webView,addClass)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szClassName;
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+		KVSO_PARAMETER("class_name",KVS_PT_NONEMPTYSTRING,0,szClassName)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	element.addClass(szClassName);
+	return true;
+}
 KVSO_CLASS_FUNCTION(webView,setWebSetting)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -604,36 +770,59 @@ KVSO_CLASS_FUNCTION(webView,attribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName;
+	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
 		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
 	KVSO_PARAMETERS_END(c)
-	c->returnValue()->setString(m_currentElement.attribute(szName));
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	c->returnValue()->setString(element.attribute(szName));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(webView,attributeNames)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	/*if(m_currentElement.isNull())
 	{
 		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
 		return true;
-	}
+	}*/
 	QString szAttributeNames;
-	szAttributeNames=m_currentElement.attributeNames().join(",");
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
+	{
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
+		return true;
+	}
+	szAttributeNames=element.attributeNames().join(",");
 	c->returnValue()->setString(szAttributeNames);
 	return true;
 }
 KVSO_CLASS_FUNCTION(webView,classes)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
 	QString szClasses;
-	szClasses=m_currentElement.classes().join(",");
+	szClasses=element.classes().join(",");
 	c->returnValue()->setString(szClasses);
 	return true;
 }
@@ -641,82 +830,125 @@ KVSO_CLASS_FUNCTION(webView,classes)
 KVSO_CLASS_FUNCTION(webView,toPlainText)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	c->returnValue()->setString(m_currentElement.toPlainText());
+	c->returnValue()->setString(element.toPlainText());
 	return true;
 }
 KVSO_CLASS_FUNCTION(webView,setPlainText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
+	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
 		KVSO_PARAMETER("plaintext",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
-	if(m_currentElement.isNull())
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	m_currentElement.setPlainText(szText);
+	element.setPlainText(szText);
 	return true;
 }
+
+
 KVSO_CLASS_FUNCTION(webView,firstChild)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	if (!m_currentElement.firstChild().isNull())
+
+	QWebElement tempElement=element.firstChild();
+	if (tempElement.isNull())
 	{
-		m_currentElement=m_currentElement.firstChild();
-		c->returnValue()->setBoolean(true);
+		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	c->returnValue()->setBoolean(false);
+	int id=insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t) id);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(webView,parentElement)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	QWebElement element=m_currentElement.parent();
-	if(!element.isNull())
+
+	QWebElement tempElement=element.parent();
+	if (tempElement.isNull())
 	{
-		m_currentElement=element;
-		c->returnValue()->setBoolean(true);
+		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	c->returnValue()->setBoolean(false);
+	int id=insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t) id);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,nextSibling)
+
+KVSO_CLASS_FUNCTION(webView,styleProperty)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(m_currentElement.isNull())
+	QString szName;
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	QWebElement element=m_currentElement.nextSibling();
-	if (!element.isNull())
+	c->returnValue()->setString(element.styleProperty(szName,QWebElement::CascadedStyle));
+	return true;
+}
+KVSO_CLASS_FUNCTION(webView,setStyleProperty)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szProperty,szValue;
+	kvs_int_t iEleId;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+		KVSO_PARAMETER("property",KVS_PT_STRING,0,szProperty)
+		KVSO_PARAMETER("value",KVS_PT_STRING,0,szValue)
+	KVSO_PARAMETERS_END(c)
+	QWebElement element=getElement(iEleId);
+	if (element.isNull())
 	{
-		m_currentElement=element;
-		c->returnValue()->setBoolean(true);
+		c->warning(__tr2qs_ctx("Document element whith id [%d] does not exists","objects"),&iEleId);
 		return true;
 	}
-	c->returnValue()->setBoolean(false);
+	element.setStyleProperty(szProperty,szValue);
 	return true;
 }
 
@@ -728,20 +960,58 @@ KVSO_CLASS_FUNCTION(webView,getDocumentElement)
 		KVSO_PARAMETER("frame_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFrameName)
 	KVSO_PARAMETERS_END(c)
 	QWebFrame *pFrame;
-	if(szFrameName.isEmpty())
-		pFrame=((QWebView *)widget())->page()->mainFrame();
-	else{
-		pFrame=m_dictFrames.value(szFrameName);
+	pFrame=((QWebView *)widget())->page()->mainFrame();
+	if(!szFrameName.isEmpty())
+	{
+		pFrame=findFrame(pFrame,szFrameName);
 		if(!pFrame)
 		{
-		c->warning(__tr2qs_ctx("Unknown frame '%Q'","objects"),&szFrameName);
-		return true;
+			c->warning(__tr2qs_ctx("Unknown frame '%Q'","objects"),&szFrameName);
+			return true;
 		}
 	}
-	m_currentElement=pFrame->documentElement();
+	int id=insertElement(pFrame->documentElement());
+	c->returnValue()->setInteger((kvs_int_t) id);
+	return true;
+}
+KVSO_CLASS_FUNCTION(webView,addToJavaScriptWindowObject)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szFrameName, szObjectName;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("object_name",KVS_PT_NONEMPTYSTRING,0,szObjectName)
+		KVSO_PARAMETER("frame_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFrameName)
+	KVSO_PARAMETERS_END(c)
+	QWebFrame *pFrame;
+	pFrame=((QWebView *)widget())->page()->mainFrame();
+	if(!szFrameName.isEmpty())
+	{
+		pFrame=findFrame(pFrame,szFrameName);
+		if(!pFrame)
+		{
+			c->warning(__tr2qs_ctx("Unknown frame '%Q'","objects"),&szFrameName);
+			return true;
+		}
+	}
+	pFrame->addToJavaScriptWindowObject(szObjectName,this);
 	return true;
 }
 
+KVSO_CLASS_FUNCTION(webView,elementAt)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iYPos,iXPos;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("x_pos",KVS_PT_INT,0,iXPos)
+		KVSO_PARAMETER("y_pos",KVS_PT_INT,0,iYPos)
+	KVSO_PARAMETERS_END(c)
+	QWebFrame *pFrame;
+	pFrame=((QWebView *)widget())->page()->mainFrame();
+	QWebElement tmpElement=pFrame->hitTestContent(QPoint(iXPos,iYPos)).element();
+	int id=insertElement(tmpElement);
+	c->returnValue()->setInteger((kvs_int_t) id);
+	return true;
+}
 KVSO_CLASS_FUNCTION(webView,loadFinishedEvent)
 {
 	emitSignal("loadFinished",c,c->params());
@@ -784,6 +1054,16 @@ KVSO_CLASS_FUNCTION(webView,downloadRequestEvent)
 	return true;
 }
 
+KVSO_CLASS_FUNCTION(webView,jsSubmitEvent)
+{
+	emitSignal("jsSubmit",c,c->params());
+	return true;
+}
+/*KVSO_CLASS_FUNCTION(webView,jsWindowObjectClearedEvent)
+{
+	emitSignal("jsWindowObjectCleared",c,c->params());
+	return true;
+}*/
 // slots
 
 void KvsObject_webView::slotLoadFinished(bool bOk)
@@ -792,6 +1072,13 @@ void KvsObject_webView::slotLoadFinished(bool bOk)
 		m_currentElement=((QWebView *)widget())->page()->mainFrame()->documentElement();
 	KviKvsVariantList params(new KviKvsVariant(bOk));
 	callFunction(this,"loadFinishedEvent",&params);
+}
+
+void KvsObject_webView::submit()
+{
+	KviKvsVariantList *lParams=0;
+	qDebug("Submit");
+	callFunction(this,"jsSubmitEvent",lParams);
 }
 
 void KvsObject_webView::slotLoadStarted()
@@ -812,6 +1099,12 @@ void KvsObject_webView::slotLinkClicked(const QUrl &url)
 	KviKvsVariantList params(new KviKvsVariant(szUrl));
 	callFunction(this,"linkClickedEvent" ,&params);
 }
+/*void KvsObject_webView::javaScriptWindowObjectCleared(const QUrl &url)
+{
+	//KviKvsVariantList *lParams=0;
+	//callFunction(this,"jsWindowObjectClearedEvent",lParams);
+	addToJavaScriptWindowObject
+}*/
 
 void KvsObject_webView::slotDownloadRequest(const QNetworkRequest &r)
 {

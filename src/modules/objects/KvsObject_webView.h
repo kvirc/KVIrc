@@ -41,26 +41,36 @@ public:
 	KVSO_DECLARE_OBJECT(KvsObject_webView)
 protected:
 	KviKvsRunTimeContext          * m_pContext;
-	QHash<QString,QWebFrame *>      m_dictFrames;
+	int elementMapId;
+	int insertElement(const QWebElement &ele);
+	QWebElement getElement(int iIdx);
+	int getElementId(const QWebElement &);
+	QHash<int,QWebElement> m_elementMapper;
+	//QHash<QString,QWebFrame *>      m_dictFrames;
+	KviPointerList <KviKvsObject>  * lWebelement;
 	QHash<QString,QWebElement *>    m_dictCache;
 	KviPointerList<QNetworkReply> * m_pReplyList;
 	QNetworkAccessManager         * m_pNetworkManager;
 	QWebElementCollection           m_webElementCollection;
 	QWebElement                     m_currentElement;
 public:
+
 	QWidget * widget(){ return (QWidget *)object(); }
 protected:
-	void getFrames(QWebFrame * pFrame, KviKvsArray * pArray, kvs_uint_t & uIdx);
+	void getFrames(QWebFrame *pCurFrame, QStringList &szFramesNames);
+	QWebFrame * findFrame(QWebFrame *pCurFrame, QString &szFrameName);
 	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
-
 	bool removeFromDocument(KviKvsObjectFunctionCall * c);
 	bool makePreview(KviKvsObjectFunctionCall * c);
 
 	bool removeClass(KviKvsObjectFunctionCall * c);
+	bool addClass(KviKvsObjectFunctionCall * c);
+
 	bool classes(KviKvsObjectFunctionCall * c);
 
-	bool rememberCurrent(KviKvsObjectFunctionCall * c);
-	bool moveTo(KviKvsObjectFunctionCall * c);
+
+	//bool rememberCurrent(KviKvsObjectFunctionCall * c);
+	//bool moveTo(KviKvsObjectFunctionCall * c);
 
 	bool firstChild(KviKvsObjectFunctionCall * c);
 	bool parentElement(KviKvsObjectFunctionCall * c);
@@ -70,13 +80,14 @@ protected:
 	bool setPlainText(KviKvsObjectFunctionCall * c);
 	bool load(KviKvsObjectFunctionCall * c);
 	bool getDocumentElement(KviKvsObjectFunctionCall * c);
-	bool currentElementTagName(KviKvsObjectFunctionCall * c);
+	bool elementTagName(KviKvsObjectFunctionCall * c);
 	bool findAll(KviKvsObjectFunctionCall * c);
 	bool findFirst(KviKvsObjectFunctionCall * c);
 	bool findText(KviKvsObjectFunctionCall * c);
 
-	bool moveToQueryResultsAt(KviKvsObjectFunctionCall * c);
-	bool queryResultsCount(KviKvsObjectFunctionCall * c);
+	//bool moveToQueryResultsAt(KviKvsObjectFunctionCall * c);
+	bool elementAt(KviKvsObjectFunctionCall * c);
+	//bool queryResultsCount(KviKvsObjectFunctionCall * c);
 
 	bool attributeNames(KviKvsObjectFunctionCall * c);
 	bool setLinkDelegationPolicy(KviKvsObjectFunctionCall * c);
@@ -85,6 +96,10 @@ protected:
 	bool attribute(KviKvsObjectFunctionCall * c);
 	bool frames(KviKvsObjectFunctionCall * c);
 
+	bool setStyleProperty(KviKvsObjectFunctionCall * c);
+	bool styleProperty(KviKvsObjectFunctionCall * c);
+
+
 	bool loadStartedEvent(KviKvsObjectFunctionCall * c);
 	bool linkClickedEvent(KviKvsObjectFunctionCall * c);
 	bool loadFinishedEvent(KviKvsObjectFunctionCall * c);
@@ -92,12 +107,19 @@ protected:
 	bool downloadCompletedEvent(KviKvsObjectFunctionCall * c);
 	bool downloadProgressEvent(KviKvsObjectFunctionCall * c);
 	bool downloadRequestEvent(KviKvsObjectFunctionCall * c);
+	bool jsSubmitEvent(KviKvsObjectFunctionCall * c);
+	bool addToJavaScriptWindowObject(KviKvsObjectFunctionCall * c);
+	bool evaluateJavaScript(KviKvsObjectFunctionCall * c);
+	//bool jsWindowObjectClearedEvent(KviKvsObjectFunctionCall * c);
+
 protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
 	void slotDownloadRequest(const QNetworkRequest &);
 	void slotLinkClicked(const QUrl &);
+	void submit();
+	//void javaScriptWindowObjectCleared();
 };
 
 class KviKvsDownloadHandler : public QObject
