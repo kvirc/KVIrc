@@ -279,14 +279,10 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,parentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,nextSibling)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementTagName)
-	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveToQueryResultsAt)
-	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,queryResultsCount)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,getDocumentElement)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attributeNames)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,makePreview)
-	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,rememberCurrent)
-	//KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,moveTo)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementAt)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setPlainText)
@@ -332,16 +328,11 @@ bool KvsObject_webView::init(KviKvsRunTimeContext *c ,KviKvsVariantList *)
 	elementMapId=1;
 	m_pContext = c;
 	m_pNetworkManager = new QNetworkAccessManager(this);
-	/* m_pReplyList=new KviPointerList<QNetworkReply>;
-	m_pReplyList->setAutoDelete(false);*/
 	QWebPage *pPage = ((QWebView *)widget())->page();
 	connect(((QWebView *)widget()),SIGNAL(loadStarted()),this,SLOT(slotLoadStarted()));
 	connect(((QWebView *)widget()),SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
 	connect(((QWebView *)widget()),SIGNAL(loadProgress(int)),this,SLOT(slotLoadProgress(int)));
 	connect(pPage,SIGNAL(linkClicked(const QUrl &)),this,SLOT(slotLinkClicked(const QUrl &)));
-	//connect(pPage->frame(),SIGNAL(javaScriptWindowObjectCleared()),this,SLOT(javaScriptWindowObjectCleared()));
-
-
 	connect(pPage,SIGNAL(downloadRequested(const QNetworkRequest &)),this,SLOT(slotDownloadRequest(const QNetworkRequest &)));
 	return true;
 }
@@ -369,15 +360,11 @@ int KvsObject_webView::getElementId(const QWebElement &ele)
 
 QWebElement KvsObject_webView::getElement(int iIdx)
 {
-	//qDebug("ritorno valore con indixe %d",iIdx);
 	return m_elementMapper.value(iIdx);
 }
 void KvsObject_webView::getFrames(QWebFrame *pCurFrame, QStringList &szFramesNames)
 {
 	szFramesNames.append(pCurFrame->title());
-	//framesDict.insert(pCurFrame->title(),pCurFrame);
-	//pArray->set(uIdx,new KviKvsVariant(pFrame->title()));
-	//uIdx++;
 	QList<QWebFrame *> lFrames = pCurFrame->childFrames();
 	for(int i=0; i < lFrames.count(); i++)
 	{
@@ -518,27 +505,6 @@ KVSO_CLASS_FUNCTION(webView,evaluateJavaScript)
 	return true;
 }
 
-
-/*KVSO_CLASS_FUNCTION(webView,rememberCurrent)
-{
-	QString adr=QString::number((long)&m_currentElement,16).toUpper();
-	QWebElement *pElement = new QWebElement(m_currentElement);
-	m_dictCache.insert(adr,pElement);
-	c->returnValue()->setString(adr);
-	return true;
-}
-
-KVSO_CLASS_FUNCTION(webView,moveTo)
-{
-	QString szId;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("id",KVS_PT_STRING,0,szId)
-	KVSO_PARAMETERS_END(c)
-	if(m_dictCache.value(szId))
-		m_currentElement=*m_dictCache.value(szId);
-	return true;
-}*/
-
 KVSO_CLASS_FUNCTION(webView,findFirst)
 {
 	QString szQuery;
@@ -563,18 +529,7 @@ KVSO_CLASS_FUNCTION(webView,findFirst)
 	c->returnValue()->setInteger((kvs_int_t) id);
 	return true;
 }
-/*
-KVSO_CLASS_FUNCTION(webView,moveToQueryResultsAt)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iIdx;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIdx)
-	KVSO_PARAMETERS_END(c)
-	m_currentElement=m_webElementCollection.at(iIdx);
-	return true;
-}
-*/
+
 KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 {
 	kvs_int_t iEleId;
@@ -590,14 +545,7 @@ KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 	element.removeFromDocument();
 	return true;
 }
-/*
-KVSO_CLASS_FUNCTION(webView,queryResultsCount)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger((kvs_int_t) m_webElementCollection.count());
-	return true;
-}
-*/
+
 KVSO_CLASS_FUNCTION(webView,nextSibling)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -626,13 +574,10 @@ KVSO_CLASS_FUNCTION(webView,nextSibling)
 KVSO_CLASS_FUNCTION(webView,frames)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	//m_dictFrames.clear();
 	QWebFrame *pFrame=((QWebView *)widget())->page()->mainFrame();
 	QStringList szFramesNames;
 	getFrames(pFrame,szFramesNames);
 	KviKvsArray *pArray=new KviKvsArray();
-	//kvs_uint_t uIdx=0;
-	//
 	c->returnValue()->setArray(pArray);
 	return true;
 }
@@ -792,11 +737,6 @@ KVSO_CLASS_FUNCTION(webView,attributeNames)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
 	KVSO_PARAMETERS_END(c)
-	/*if(m_currentElement.isNull())
-	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
-		return true;
-	}*/
 	QString szAttributeNames;
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())

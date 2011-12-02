@@ -46,7 +46,6 @@ protected:
 	QWebElement getElement(int iIdx);
 	int getElementId(const QWebElement &);
 	QHash<int,QWebElement> m_elementMapper;
-	//QHash<QString,QWebFrame *>      m_dictFrames;
 	KviPointerList <KviKvsObject>  * lWebelement;
 	QHash<QString,QWebElement *>    m_dictCache;
 	KviPointerList<QNetworkReply> * m_pReplyList;
@@ -69,9 +68,6 @@ protected:
 	bool classes(KviKvsObjectFunctionCall * c);
 
 
-	//bool rememberCurrent(KviKvsObjectFunctionCall * c);
-	//bool moveTo(KviKvsObjectFunctionCall * c);
-
 	bool firstChild(KviKvsObjectFunctionCall * c);
 	bool parentElement(KviKvsObjectFunctionCall * c);
 	bool nextSibling(KviKvsObjectFunctionCall * c);
@@ -85,9 +81,7 @@ protected:
 	bool findFirst(KviKvsObjectFunctionCall * c);
 	bool findText(KviKvsObjectFunctionCall * c);
 
-	//bool moveToQueryResultsAt(KviKvsObjectFunctionCall * c);
 	bool elementAt(KviKvsObjectFunctionCall * c);
-	//bool queryResultsCount(KviKvsObjectFunctionCall * c);
 
 	bool attributeNames(KviKvsObjectFunctionCall * c);
 	bool setLinkDelegationPolicy(KviKvsObjectFunctionCall * c);
@@ -110,7 +104,6 @@ protected:
 	bool jsSubmitEvent(KviKvsObjectFunctionCall * c);
 	bool addToJavaScriptWindowObject(KviKvsObjectFunctionCall * c);
 	bool evaluateJavaScript(KviKvsObjectFunctionCall * c);
-	//bool jsWindowObjectClearedEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void slotLoadFinished(bool);
@@ -119,7 +112,6 @@ protected slots:
 	void slotDownloadRequest(const QNetworkRequest &);
 	void slotLinkClicked(const QUrl &);
 	void submit();
-	//void javaScriptWindowObjectCleared();
 };
 
 class KviKvsDownloadHandler : public QObject
