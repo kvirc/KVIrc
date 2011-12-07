@@ -142,9 +142,8 @@ const int frame_cod[] = {
 		and [i]Left[/i] simoultaneously - this will [b]NOT[/b]
 		result in an error message - this will simply not work :)
 		!fn: $clear()
-		Clears the label. Equal to calling
-		[classfnc]$setText[/classfnc]("")
-		!fn: $frameStyle()
+		Clears the label. Equal to calling [classfnc]$setText[/classfnc]("")
+		!fn: <string> $frameStyle()
 		Returns a string containing this label's frame-style flags,
 		separated with commas. Output from this function could look like
 		this:

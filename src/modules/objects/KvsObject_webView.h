@@ -33,6 +33,30 @@
 #include <QWebView>
 #include <QWebFrame>
 #include <QWebElement>
+#include <QMouseEvent>
+#include <QContextMenuEvent>
+
+class KvsObject_webView;
+class KviKvsWebView :  public QWebView
+{
+	Q_OBJECT
+public:
+	KviKvsWebView(QWidget * par,const char * name,KvsObject_webView *);
+	//void accept();
+	//void reject();
+	virtual ~KviKvsWebView();
+protected:
+	KvsObject_webView *m_pParentScript;
+protected:
+	virtual void	mouseMoveEvent( QMouseEvent * ev );
+	virtual void	contextMenuEvent(QContextMenuEvent *);
+	virtual bool	event(QEvent * e);
+/*protected slots:
+	void slotNextClicked();
+	void slotBackClicked();
+	*/
+};
+
 
 class KvsObject_webView : public KviKvsObject
 {
@@ -69,19 +93,24 @@ protected:
 
 
 	bool firstChild(KviKvsObjectFunctionCall * c);
+	bool lastChild(KviKvsObjectFunctionCall * c);
 	bool parentElement(KviKvsObjectFunctionCall * c);
 	bool nextSibling(KviKvsObjectFunctionCall * c);
 
 	bool toPlainText(KviKvsObjectFunctionCall * c);
 	bool setPlainText(KviKvsObjectFunctionCall * c);
 	bool load(KviKvsObjectFunctionCall * c);
+	bool setHtml(KviKvsObjectFunctionCall * c);
 	bool getDocumentElement(KviKvsObjectFunctionCall * c);
 	bool elementTagName(KviKvsObjectFunctionCall * c);
 	bool findAll(KviKvsObjectFunctionCall * c);
+	bool appendInside(KviKvsObjectFunctionCall * c);
+	bool appendOutside(KviKvsObjectFunctionCall * c);
+
 	bool findFirst(KviKvsObjectFunctionCall * c);
 	bool findText(KviKvsObjectFunctionCall * c);
 
-	bool elementAt(KviKvsObjectFunctionCall * c);
+	bool hitTestContent(KviKvsObjectFunctionCall * c);
 
 	bool attributeNames(KviKvsObjectFunctionCall * c);
 	bool setLinkDelegationPolicy(KviKvsObjectFunctionCall * c);
@@ -92,7 +121,7 @@ protected:
 
 	bool setStyleProperty(KviKvsObjectFunctionCall * c);
 	bool styleProperty(KviKvsObjectFunctionCall * c);
-
+	bool appendWebViewActionToMenu(KviKvsObjectFunctionCall * c);
 
 	bool loadStartedEvent(KviKvsObjectFunctionCall * c);
 	bool linkClickedEvent(KviKvsObjectFunctionCall * c);
@@ -129,6 +158,7 @@ protected:
 protected slots:
 	void slotReadyRead();
 	void slotReplyFinished();
+
 };
 
 #endif // COMPILE_WEBKIT_SUPPORT

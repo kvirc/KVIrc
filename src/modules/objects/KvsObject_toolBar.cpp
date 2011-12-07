@@ -42,7 +42,7 @@
 	@type:
 		class
 	@short:
-		Provides a toolbar for mainwindow widget.
+		Provides a toolbar for widget.
 	@inherits:
 		[class]object[/class]
 		[class]widget[/class]
@@ -77,22 +77,9 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_toolBar)
 
 KVSO_END_CONSTRUCTOR(KvsObject_toolBar)
 
-bool KvsObject_toolBar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
+bool KvsObject_toolBar::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
 {
-	if (!parentObject())
-	{
-		pContext->warning(__tr2qs_ctx("The toolbar cannot be a parent-widget!","objects"));
-		return true;
-	}
-	if(parentObject()->inheritsClass("mainwindow"))
-	{
-		setObject(new QToolBar(getName(), ((KviTalMainWindow *)parentScriptWidget())), true);
-	}
-	else
-	{
-		pContext->warning(__tr2qs_ctx("The parent-widget isn't a MainWindow.","objects"));
-	}
-
+	SET_OBJECT(QToolBar)
 	return true;
 }
 

@@ -343,16 +343,10 @@ const char * const widgettypes_tbl[] = {
 		and are expressed in pixels.
 		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
 		of this event. The default implementation does nothing.
-		!fn: $mouseMoveEvent(<button>,<x>,<y>)
+		!fn: $mouseMoveEvent(<x>,<y>)
 		This function is called when the mouse cursor moves inside this widget.
-		<button> is 0 if the pressed button
-		is the left one, 1 if the button is the right one and 2 if it is the middle one.
-		The special value of -1 indicates that no button is being pressed.
 		The <x> and <y> coordinates are relative to this widget upper-left corner
 		and are expressed in pixels.
-		Normally you will receive this event only if a mouse button is being pressed
-		while moving. If you want to receive it also when the mouse buttons are not
-		pressed, call [classfnc]$setMouseTracking[/classfnc]().
 		If you call "[cmd]return[/cmd]$true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $focusInEvent()
@@ -934,18 +928,7 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			break;
 			 case QEvent::MouseMove:
 			{
-				if( (((QMouseEvent *)e)->button()) & Qt::LeftButton) aparam = 0;
-				else
-				{
-					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
-					else
-						{
-							if(((QMouseEvent *)e)->button() & Qt::MidButton)aparam = 2;
-							else aparam = -1;
-						}
-				}
 				KviKvsVariantList lParams;
-				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
 				if (!callFunction(this,"mouseMoveEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler

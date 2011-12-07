@@ -365,13 +365,23 @@ KVSO_CLASS_FUNCTION(popupMenu,insertSeparator)
 void KvsObject_popupMenu::slothovered(QAction *a)
 {
 	QHashIterator<int, QAction *> i(actionsDict);
+	bool bFound=false;
 	while (i.hasNext())
 	{
 		i.next();
-		if (i.value()== a) break;
+		if (i.value()== a)
+		{
+			bFound=true;
+			break;
+		}
 	}
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
-	callFunction(this,"highlightedEvent",&params);
+
+	// check if the action was created inside this class
+	if(bFound)
+	{
+		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
+		callFunction(this,"highlightedEvent",&params);
+	}
 }
 void KvsObject_popupMenu::aboutToDie(QObject *pObject)
 {
@@ -387,13 +397,23 @@ KVSO_CLASS_FUNCTION(popupMenu,highlightedEvent)
 void KvsObject_popupMenu::slottriggered(QAction *a)
 {
 	QHashIterator<int, QAction *> i(actionsDict);
+	bool bFound=false;
 	while (i.hasNext())
 	{
 		i.next();
-		if (i.value()== a) break;
+		if (i.value()== a)
+		{
+			bFound=true;
+			break;
+		}
 	}
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
-	callFunction(this,"activatedEvent",&params);
+
+	// check if the action was created inside this class
+	if(bFound)
+	{
+		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
+		callFunction(this,"activatedEvent",&params);
+	}
 }
 
 KVSO_CLASS_FUNCTION(popupMenu,activatedEvent)
