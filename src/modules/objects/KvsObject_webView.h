@@ -130,17 +130,28 @@ protected:
 	bool downloadCompletedEvent(KviKvsObjectFunctionCall * c);
 	bool downloadProgressEvent(KviKvsObjectFunctionCall * c);
 	bool downloadRequestEvent(KviKvsObjectFunctionCall * c);
-	bool jsSubmitEvent(KviKvsObjectFunctionCall * c);
 	bool addToJavaScriptWindowObject(KviKvsObjectFunctionCall * c);
 	bool evaluateJavaScript(KviKvsObjectFunctionCall * c);
 
+	//
+	bool setEventFilter(KviKvsObjectFunctionCall * c);
+	bool jsChangeEvent(KviKvsObjectFunctionCall * c);
+	bool jsSubmitEvent(KviKvsObjectFunctionCall * c);
+	bool jsClickEvent(KviKvsObjectFunctionCall * c);
 protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
 	void slotDownloadRequest(const QNetworkRequest &);
 	void slotLinkClicked(const QUrl &);
-	void submit();
+
+	void slotOnChange(QString);
+	void slotOnSubmit(QString);
+	void slotOnClick(QString);
+
+	void pageEventFilter(QVariant );
+	void pageEventFilter(QString);
+
 };
 
 class KviKvsDownloadHandler : public QObject

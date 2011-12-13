@@ -363,10 +363,16 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,classes)
 
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setEventFilter)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,addToJavaScriptWindowObject)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,evaluateJavaScript)
 
 	// events
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsChangeEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsSubmitEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsClickEvent)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,linkClickedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadProgressEvent)
@@ -408,7 +414,6 @@ int KvsObject_webView::insertElement(const QWebElement &ele)
 	int eleid=getElementId(ele);
 	if (!eleid)
 	{
-		//qDebug("set id %i and tagname %s",elementMapId,ele.tagName().toUtf8().data());
 		m_elementMapper[elementMapId]=ele;
 		return elementMapId++;
 	}
@@ -546,15 +551,18 @@ KVSO_CLASS_FUNCTION(webView,findAll)
 		return true;
 	}
 	QWebElementCollection elementCollection=element.findAll(szQuery);
+	if(!elementCollection.count()) return true;
+	qDebug("collection %i",elementCollection.count());
 	int idx=0;
 	pArray=new KviKvsArray();
-	for(int i=0;i<m_webElementCollection.count();i++)
+	for(int i=0;i<elementCollection.count();i++)
 	{
 		QWebElement element=elementCollection.at(i);
-		int id=getElementId(element);
+		int id=insertElement(element);
 		pArray->set(idx,new KviKvsVariant((kvs_int_t)id));
 		idx++;
 	}
+	c->returnValue()->setArray(pArray);
 	return true;
 }
 
@@ -857,6 +865,14 @@ KVSO_CLASS_FUNCTION(webView,attribute)
 		c->warning(__tr2qs_ctx("Document element whith id %d does not exists","objects"),iEleId);
 		return true;
 	}
+
+	// workaround for this issue: https://bugreports.qt.nokia.com//browse/QTWEBKIT-88
+	if(KviQString::equalCI(element.tagName(),"input"))
+	{
+		QVariant value=element.evaluateJavaScript("this."+szName);
+		c->returnValue()->setString(value.toString());
+		return true;
+	}
 	c->returnValue()->setString(element.attribute(szName));
 	return true;
 }
@@ -1102,6 +1118,14 @@ KVSO_CLASS_FUNCTION(webView,addToJavaScriptWindowObject)
 	pFrame->addToJavaScriptWindowObject(szObjectName,this);
 	return true;
 }
+KVSO_CLASS_FUNCTION(webView,setEventFilter)
+{
+	Q_UNUSED(c);
+	QWebFrame *pFrame;
+	pFrame=((QWebView *)widget())->page()->mainFrame();
+	pFrame->addToJavaScriptWindowObject("kvs",this);
+	return true;
+}
 
 KVSO_CLASS_FUNCTION(webView,hitTestContent)
 {
@@ -1221,11 +1245,45 @@ KVSO_CLASS_FUNCTION(webView,downloadRequestEvent)
 	return true;
 }
 
+
 KVSO_CLASS_FUNCTION(webView,jsSubmitEvent)
 {
-	emitSignal("jsSubmit",c,c->params());
+	emitSignal("jssubmit",c,c->params());
 	return true;
 }
+KVSO_CLASS_FUNCTION(webView,jsChangeEvent)
+{
+	emitSignal("jschange",c,c->params());
+	return true;
+}
+KVSO_CLASS_FUNCTION(webView,jsClickEvent)
+{
+	emitSignal("jsclick",c,c->params());
+	return true;
+}
+
+void KvsObject_webView::slotOnChange(QString szParam)
+{
+	qDebug("change");
+	KviKvsVariantList params(new KviKvsVariant(szParam));
+	callFunction(this,"jsChangeEvent",&params);
+}
+
+void KvsObject_webView::slotOnSubmit(QString szParam)
+{
+	// ,QString szParam2,QString szParam3
+	qDebug("slotonsubmit");
+	KviKvsVariantList params(new KviKvsVariant(szParam));
+	callFunction(this,"jsSubmitEvent",&params);
+}
+
+void KvsObject_webView::slotOnClick(QString szParam)
+{
+	KviKvsVariantList params(new KviKvsVariant(szParam));
+	callFunction(this,"jsClickEvent",&params);
+}
+
+
 /*KVSO_CLASS_FUNCTION(webView,jsWindowObjectClearedEvent)
 {
 	emitSignal("jsWindowObjectCleared",c,c->params());
@@ -1240,12 +1298,31 @@ void KvsObject_webView::slotLoadFinished(bool bOk)
 	KviKvsVariantList params(new KviKvsVariant(bOk));
 	callFunction(this,"loadFinishedEvent",&params);
 }
-
-void KvsObject_webView::submit()
+void KvsObject_webView::pageEventFilter(QVariant v1)
 {
-	KviKvsVariantList *lParams=0;
-	qDebug("Submit");
-	callFunction(this,"jsSubmitEvent",lParams);
+	qDebug("come variant");
+	return;
+	//signalName();
+	//if (ele.isNull()) {qDebug ("nulle element");return;}
+	//int id=insertElement(ele);
+	/*qDebug("Elemento che arriva e id %i",id);//%s",szEvent.toUtf8().data());
+	KviKvsVariantList params;
+	params.append(new KviKvsVariant((kvs_int_t) id));
+	if(v1.type()==QVariant::String)
+	{
+		QString szV=v1.toString();
+		params.append(new KviKvsVariant(szV));
+	}
+
+	//,new KviKvsVariant(szEvent));
+//	KviKvsVariantList *lParams=0;
+	callFunction(this,"jsSubmitEvent",&params);*/
+}
+
+void KvsObject_webView::pageEventFilter(QString s)
+{
+
+	qDebug("String  che arriva di %s",s.toUtf8().data());//,szArriva.toUtf8().data());//%s",szEvent.toUtf8().data());
 }
 
 void KvsObject_webView::slotLoadStarted()
