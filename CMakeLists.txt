@@ -680,6 +680,8 @@ IF(WANT_PERL)
 		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PERL_LINK_FLAGS}")
 		# Remove leading and trailing spaces (string strip)
 		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+		# Kill any possible --no-undefined flags
+		STRING(REPLACE "-Wl,--no-undefined" "" ADDITIONAL_LINK_FLAGS ${ADDITIONAL_LINK_FLAGS})
 	ELSE()
 		SET(CMAKE_STATUS_PERL_SUPPORT "No")
 	ENDIF()
@@ -704,6 +706,9 @@ IF(WANT_PYTHON)
 		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PYTHON_LFLAGS}")
                 # Remove leading and trailing spaces (string strip)
 		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+		# Kill any possible --no-undefined flags
+		STRING(REPLACE "-Wl,--no-undefined" "" ADDITIONAL_LINK_FLAGS ${ADDITIONAL_LINK_FLAGS})
+
 		LIST(APPEND LIBS ${PYTHON_LIBRARY})
 
 		INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
