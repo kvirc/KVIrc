@@ -112,11 +112,11 @@ protected:
 
 	bool hitTestContent(KviKvsObjectFunctionCall * c);
 
-	bool attributeNames(KviKvsObjectFunctionCall * c);
+	bool elementAttributeNames(KviKvsObjectFunctionCall * c);
 	bool setLinkDelegationPolicy(KviKvsObjectFunctionCall * c);
-	bool setAttribute(KviKvsObjectFunctionCall * c);
+	bool setElementAttribute(KviKvsObjectFunctionCall * c);
 	bool setWebSetting(KviKvsObjectFunctionCall * c);
-	bool attribute(KviKvsObjectFunctionCall * c);
+	bool elementAttribute(KviKvsObjectFunctionCall * c);
 	bool frames(KviKvsObjectFunctionCall * c);
 
 	bool setStyleProperty(KviKvsObjectFunctionCall * c);
@@ -148,10 +148,6 @@ protected slots:
 	void slotOnChange(QString);
 	void slotOnSubmit(QString);
 	void slotOnClick(QString);
-
-	void pageEventFilter(QVariant );
-	void pageEventFilter(QString);
-
 };
 
 class KviKvsDownloadHandler : public QObject

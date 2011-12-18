@@ -252,7 +252,7 @@ const char * const actions_tbl[] = {
 		Returns the string representation of element <element_id>.
 		!fn: string $setPlainText(<element_id>)
 		Set the string representation of the  element <element_id>.
-		!fn: $setAttribute(<element_id>,<name:string>,<value:string>)
+		!fn: $setElementAttribute(<element_id>,<name:string>,<value:string>)
 		Sets the attribute <name> with value <value> to the element <element_id>.
 		!fn: $setWebSetting(<name:string>,<value:bool>)
 		Enables or disables the <name> setting depending on <value>.
@@ -346,9 +346,9 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 	// element info
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementTagName)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,getDocumentElement)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attributeNames)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setAttribute)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,attribute)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementAttributeNames)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setElementAttribute)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementAttribute)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,hitTestContent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setPlainText)
@@ -738,7 +738,7 @@ KVSO_CLASS_FUNCTION(webView,elementTagName)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,setAttribute)
+KVSO_CLASS_FUNCTION(webView,setElementAttribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName,szValue;
@@ -850,7 +850,7 @@ KVSO_CLASS_FUNCTION(webView,findText)
 	((QWebView *)widget())->findText(szName,(QWebPage::FindFlags)findflag);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,attribute)
+KVSO_CLASS_FUNCTION(webView,elementAttribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName;
@@ -877,7 +877,7 @@ KVSO_CLASS_FUNCTION(webView,attribute)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,attributeNames)
+KVSO_CLASS_FUNCTION(webView,elementAttributeNames)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
@@ -1297,32 +1297,6 @@ void KvsObject_webView::slotLoadFinished(bool bOk)
 		m_currentElement=((QWebView *)widget())->page()->mainFrame()->documentElement();
 	KviKvsVariantList params(new KviKvsVariant(bOk));
 	callFunction(this,"loadFinishedEvent",&params);
-}
-void KvsObject_webView::pageEventFilter(QVariant v1)
-{
-	qDebug("come variant");
-	return;
-	//signalName();
-	//if (ele.isNull()) {qDebug ("nulle element");return;}
-	//int id=insertElement(ele);
-	/*qDebug("Elemento che arriva e id %i",id);//%s",szEvent.toUtf8().data());
-	KviKvsVariantList params;
-	params.append(new KviKvsVariant((kvs_int_t) id));
-	if(v1.type()==QVariant::String)
-	{
-		QString szV=v1.toString();
-		params.append(new KviKvsVariant(szV));
-	}
-
-	//,new KviKvsVariant(szEvent));
-//	KviKvsVariantList *lParams=0;
-	callFunction(this,"jsSubmitEvent",&params);*/
-}
-
-void KvsObject_webView::pageEventFilter(QString s)
-{
-
-	qDebug("String  che arriva di %s",s.toUtf8().data());//,szArriva.toUtf8().data());//%s",szEvent.toUtf8().data());
 }
 
 void KvsObject_webView::slotLoadStarted()
