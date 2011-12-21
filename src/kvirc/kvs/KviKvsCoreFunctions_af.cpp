@@ -521,7 +521,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 #ifndef COMPILE_SSL_SUPPORT
-		KVSCF_pContext->warning(__tr2qs_ctx("This executable was built without SSL support","dcc"));
+		KVSCF_pContext->warning(__tr2qs("This executable was built without SSL support"));
 		return true;
 #else
 		KviSSL::globalSSLInit();
