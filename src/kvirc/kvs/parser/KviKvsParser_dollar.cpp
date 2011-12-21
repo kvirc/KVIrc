@@ -83,6 +83,20 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		return new KviKvsTreeNodeCommandEvaluation(pDollarBegin,i);
 	}
 
+	if(KVSP_curCharUnicode == '#')
+	{
+		// parameter count
+		if(bInObjScope)
+		{
+			error(KVSP_curCharPointer,__tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)","kvs"));
+			return 0;
+		}
+
+		KVSP_skipChar;
+
+		return new KviKvsTreeNodeParameterCount(pDollarBegin);
+	}
+
 	if(KVSP_curCharIsNumber)
 	{
 		// this is a parameter identifier

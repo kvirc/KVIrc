@@ -264,6 +264,7 @@ SET(kvirc_SRCS
 	kvs/tree/KviKvsTreeNodeObjectField.cpp
 	kvs/tree/KviKvsTreeNodeObjectFunctionCall.cpp
 	kvs/tree/KviKvsTreeNodeOperation.cpp
+	kvs/tree/KviKvsTreeNodeParameterCount.cpp
 	kvs/tree/KviKvsTreeNodeParameterReturn.cpp
 	kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp
 	kvs/tree/KviKvsTreeNodeScopeOperator.cpp

@@ -63,6 +63,7 @@
 #include "KviKvsTreeNodeObjectField.h"
 #include "KviKvsTreeNodeObjectFunctionCall.h"
 #include "KviKvsTreeNodeOperation.h"
+#include "KviKvsTreeNodeParameterCount.h"
 #include "KviKvsTreeNodeParameterReturn.h"
 #include "KviKvsTreeNodeRebindingSwitch.h"
 #include "KviKvsTreeNodeScopeOperator.h"

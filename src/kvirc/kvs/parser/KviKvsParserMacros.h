@@ -35,7 +35,7 @@
 #define KVSP_curCharIsLetter (m_ptr->isLetter())
 #define KVSP_curCharIsNumber (m_ptr->isNumber())
 #define KVSP_curCharIsLetterOrNumber (m_ptr->isLetterOrNumber())
-#define KVSP_curCharIsFunctionStart (m_ptr->isLetterOrNumber() || (m_ptr->unicode() == '(') || (m_ptr->unicode() == '{') || (m_ptr->unicode() == '$'))
+#define KVSP_curCharIsFunctionStart (m_ptr->isLetterOrNumber() || (m_ptr->unicode() == '(') || (m_ptr->unicode() == '{') || (m_ptr->unicode() == '$') || (m_ptr->unicode() == '#'))
 #define KVSP_curCharIsEndOfCommand ((m_ptr->unicode() == ';') || (m_ptr->unicode() == 0) || (m_ptr->unicode() == '\n') || (m_ptr->unicode() == '\r'))
 #define KVSP_curCharIsEndOfBuffer (m_ptr->unicode() == 0)
 
