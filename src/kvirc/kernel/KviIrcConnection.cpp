@@ -382,7 +382,7 @@ void KviIrcConnection::handleInitialCapLs()
 	// a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
 	if(
-		KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
+		//KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
 		(!link()->socket()->usingSSL()) &&
 		target()->server()->enabledSTARTTLS() &&
 		serverInfo()->supportedCaps().contains("tls",Qt::CaseInsensitive)
@@ -396,7 +396,8 @@ void KviIrcConnection::handleInitialCapLs()
 	QString szRequests;
 
 	//SASL
-	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
+	if(
+		//KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
 		target()->server()->enabledSASL() &&
 		serverInfo()->supportedCaps().contains("sasl",Qt::CaseInsensitive)
 	)
@@ -432,7 +433,8 @@ void KviIrcConnection::handleInitialCapAck()
 	bool bUsed=false;
 
 	//SASL
-	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
+	if(
+		//KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
 		target()->server()->enabledSASL() &&
 		m_pStateData->enabledCaps().contains("sasl",Qt::CaseInsensitive)
 	)

@@ -86,9 +86,10 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></center>","options"));
 
-	b = addBoolSelector(this,__tr2qs_ctx("Use the SASL authentication protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable)),true);
-	mergeTip(b,__tr2qs_ctx("<center>When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol</center>","options"));
-	addWidgetToLayout(b,0,2,0,2);
+	// This is now handled per-server.
+	//b = addBoolSelector(this,__tr2qs_ctx("Use the SASL authentication protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable)),true);
+	//mergeTip(b,__tr2qs_ctx("<center>When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol</center>","options"));
+	//addWidgetToLayout(b,0,2,0,2);
 
 	addRowSpacer(0,3,4,3);
 }
@@ -126,9 +127,10 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 		&(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)),KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
 	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 
-	b = addBoolSelector(this,__tr2qs_ctx("Use the STARTTLS security protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable)),true);
-	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to try to reconnect to the server using an encrypted connection</center>","options"));
-	addWidgetToLayout(b,0,2,0,2);
+	// This is now handled per-server.
+	//b = addBoolSelector(this,__tr2qs_ctx("Use the STARTTLS security protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable)),true);
+	//mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to try to reconnect to the server using an encrypted connection</center>","options"));
+	//addWidgetToLayout(b,0,2,0,2);
 
 	addRowSpacer(0,3,0,3);
 #else

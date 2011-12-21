@@ -317,7 +317,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolEnableAnimatedAvatars 223
 #define KviOption_boolEnableAnimatedSmiles 224
 #define KviOption_boolPlaceNickWithNonAlphaCharsAtEnd 225
-#define KviOption_boolUseStartTlsIfAvailable 226
+//#define KviOption_boolUseStartTlsIfAvailable 226 // UNUSED
 #define KviOption_boolPasteLastLogOnChannelJoin 227                /* channel */
 #define KviOption_boolPasteLastLogOnQueryJoin 228                  /* query */
 #define KviOption_boolUseSpecifiedSmartColorForOwnNick 229 /* interface::ircview */
@@ -330,7 +330,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPopupNotifierOnNewDccChatMessages 236            /* dcc:chat */
 #define KviOption_boolUseAwayMessage 237                               /* away */
 #define KviOption_boolDisableQuietBanListRequestOnJoin 238       /* channel */
-#define KviOption_boolUseSaslIfAvailable 239
+//#define KviOption_boolUseSaslIfAvailable 239 // UNUSED
 #define KviOption_boolFrameIsMaximized 240                             /* internal */
 #define KviOption_boolPrependNickColorInfoToRealname 241
 #define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 242   /* notifier */
