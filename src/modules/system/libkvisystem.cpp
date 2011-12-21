@@ -753,6 +753,7 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 
 	QString szTerminal;
 	QStringList args;
+	QProcess oProc;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)           // Only »cmd.exe /k« in the list.
 	args << "/k" << szCommand;
@@ -762,7 +763,6 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 
 	if(c->switches()->getAsStringIfExisting('t',"terminal",szTerminal))
 	{
-		QProcess oProc;
 		if(!oProc.startDetached(szTerminal,args))
 			return c->error(__tr2qs("Failed to start the terminal program"));
 		return true;
