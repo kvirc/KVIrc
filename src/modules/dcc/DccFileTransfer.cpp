@@ -122,16 +122,82 @@ bool DccRecvThread::sendAck(int filePos)
 	{
 		iRet = m_pSSL->write((char*)(&size),4);
 	} else {
-#endif
+#endif //COMPILE_SSL_SUPPORT
 		iRet = kvi_socket_send(m_fd,(void *)(&size),4);
 #ifdef COMPILE_SSL_SUPPORT
 	}
-#endif
+#endif //COMPILE_SSL_SUPPORT
 
 	if(iRet != 4)
 	{
-		postErrorEvent(KviError::AcknowledgeError);
-		return false;
+		// When downloading from a fast server using send-ahead via an asymmetric link (such as the
+		// common ADSL lines) it may happen that the network output queue gets saturated with ACKs.
+		// In this case the network stack will refuse to send our packet and we get here.
+		//
+		// We should either retry to send the ACK in a while or avoid sending it at all (as with
+		// send-ahead acks aren't usually checked per-packet).
+
+		if(iRet == 0)
+		{
+			// We can live with this: no data has been sent at all
+			// Not sending the ack and hoping that the server will not stall is better than
+			// killing the connection from our side anyway.
+			return true;
+		}
+
+		if(iRet < 0)
+		{
+			// Reported error. If it's EAGAIN or EINTR then no data has been sent.
+
+#ifdef COMPILE_SSL_SUPPORT
+			if(m_pSSL)
+			{
+				// with ssl error handling is too complex here :/
+				postErrorEvent(KviError::AcknowledgeError);
+				return false;
+			}
+#endif //COMPILE_SSL_SUPPORT
+
+			int err = kvi_socket_error();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+			if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
+#else //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+			if((err != EAGAIN) && (err != EINTR))
+#endif //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+			{
+				// some other kind of error
+				postErrorEvent(KviError::AcknowledgeError);
+				return false;
+			}
+
+			return true; // no data sent: same as iRet == 0 above.
+		}
+
+		// Sent something but not everything.
+
+		// Sleep for a short while and try to send the missing part.
+		// This will probably throttle the bandwidth usage a bit too.
+		msleep(10);
+
+		int iMissingPart = 4 - iRet;
+
+#ifdef COMPILE_SSL_SUPPORT
+		if(m_pSSL)
+		{
+			iRet = m_pSSL->write(((char*)(&size)) + iRet,iMissingPart);
+		} else {
+#endif //COMPILE_SSL_SUPPORT
+			iRet = kvi_socket_send(m_fd,(void *)(((char *)(&size)) + iRet),iMissingPart);
+#ifdef COMPILE_SSL_SUPPORT
+		}
+#endif //COMPILE_SSL_SUPPORT
+
+		if(iRet != iMissingPart)
+		{
+			// Crap.. couldn't send the missing part of the ack :/
+			postErrorEvent(KviError::AcknowledgeError);
+			return false;
+		}
 	}
 	return true;
 }
@@ -895,14 +961,15 @@ void DccSendThread::run()
 #endif
 
 									// error ?
-									if(!handleInvalidSocketRead(written))break;
+									if(!handleInvalidSocketRead(written))
+										break;
 
 handle_system_error:
 									int err = kvi_socket_error();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-									if((err != EAGAIN) || (err != EINTR) || (err != WSAEWOULDBLOCK))
+									if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
-									if((err != EAGAIN)||(err != EINTR))
+									if((err != EAGAIN) && (err != EINTR))
 #endif
 									{
 										postErrorEvent(KviError::translateSystemError(err));
