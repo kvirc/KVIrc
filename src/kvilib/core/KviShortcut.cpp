@@ -38,15 +38,16 @@ QShortcut * KviShortcut::create(const QKeySequence & key, QWidget * parent, cons
 	return new QShortcut(key, parent, member, ambiguousMember, context);
 }
 
-KviPointerList<QShortcut> * KviShortcut::create(QKeySequence::StandardKey key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context)
+void KviShortcut::create(QKeySequence::StandardKey key, QWidget * parent, const char * member, const char * ambiguousMember, Qt::ShortcutContext context,KviPointerList<QShortcut> * pBufferList)
 {
 	QKeySequence singleKey;
 	QList<QKeySequence> allKeys = QKeySequence::keyBindings(key);
-	KviPointerList<QShortcut> * allShortcuts = new KviPointerList<QShortcut>();
 	foreach(singleKey, allKeys)
 	{
 		//qDebug("New Multi Shortcut %s\n", singleKey.toString().toUtf8().data());
-		allShortcuts->append(new QShortcut(singleKey, parent, member, ambiguousMember, context));
+		QShortcut * pShortcut = new QShortcut(singleKey, parent, member, ambiguousMember, context);
+		if(pBufferList)
+			pBufferList->append(pShortcut);
 	}
-	return allShortcuts;
 }
+

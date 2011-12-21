@@ -41,7 +41,7 @@ private:
 public:
 	static QShortcut * create(const char * key, QWidget * parent, const char * member = 0, const char * ambiguousMember = 0, Qt::ShortcutContext context = Qt::WindowShortcut);
 	static QShortcut * create(const QKeySequence & key, QWidget * parent, const char * member = 0, const char * ambiguousMember = 0, Qt::ShortcutContext context = Qt::WindowShortcut);
-	static KviPointerList<QShortcut> * create(QKeySequence::StandardKey key, QWidget * parent, const char * member = 0, const char * ambiguousMember = 0, Qt::ShortcutContext context = Qt::WindowShortcut);
+	static void create(QKeySequence::StandardKey key, QWidget * parent, const char * member = 0, const char * ambiguousMember = 0, Qt::ShortcutContext context = Qt::WindowShortcut,KviPointerList<QShortcut> * pBufferList = NULL);
 };
 
 #endif //_KVI_SHORTCUT_CLASSFILE_H_
