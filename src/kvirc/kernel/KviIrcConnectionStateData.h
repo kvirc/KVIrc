@@ -77,6 +77,15 @@ protected:
 
 
 	bool         m_bInsideInitialCapLs;                  // true if there's a CAP LS request pending
+	///
+	/// This is set to true if a forced STARTTLS request has been sent
+	/// to the server followed by a PING. We use this flag to gracefully
+	/// handle a ERR_NOTREGISTERED related to the PING if STARTTLS is not supported.
+	///
+	/// Note that in this case the STARTTLS support wasn't detected by a previous CAP LS
+	/// (which wasn't sent at all).
+	///
+	bool         m_bInsideInitialStartTls;              
 	bool         m_bIgnoreOneYouHaveNotRegisteredError; // true if we have sent a CAP LS request followed by a PING which will generate an error (and we need to ignore it)
 	bool         m_bInsideInitialCapReq;                 // true if there's a CAP REQ request pending
 	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending
@@ -121,6 +130,9 @@ public:
 
 	bool isInsideInitialCapLs(){ return m_bInsideInitialCapLs; };
 	void setInsideInitialCapLs(bool bInside){ m_bInsideInitialCapLs = bInside; };
+
+	bool isInsideInitialStartTls(){ return m_bInsideInitialStartTls; };
+	void setInsideInitialStartTls(bool bInside){ m_bInsideInitialStartTls = bInside; };
 
 	void setIgnoreOneYouHaveNotRegisteredError(bool bIgnore)
 		{ m_bIgnoreOneYouHaveNotRegisteredError = bIgnore; };

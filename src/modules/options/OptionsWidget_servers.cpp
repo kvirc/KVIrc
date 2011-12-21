@@ -892,6 +892,20 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	iRow = 0;
 
+	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Switch to SSL/TLS by using the STARTTLS extension","options"),tab);
+	gl->addWidget(m_pEnableSTARTTLSCheck,iRow,0,1,2);
+	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
+		"protocol. If you enable the Extended Capabilities below then the TLS protocol support will be detected by using " \
+		"a CAP LS command. Without Extended Capabilities the STARTTLS command will be forcibly sent at the beginning of the " \
+		"connection.</center>","options"));
+#ifndef COMPILE_SSL_SUPPORT
+	m_pEnableSTARTTLSCheck->setEnabled(false);
+#endif
+	m_pEnableSTARTTLSCheck->setChecked(s->enabledSTARTTLS());
+
+	iRow++;
+
+
 	QGroupBox * pCapGroup = new QGroupBox(__tr2qs_ctx("Extended Capabilities","options"),tab);
 	gl->addWidget(pCapGroup,iRow,0,1,2);
 
@@ -904,20 +918,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
 		"support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>","options"));
 	m_pEnableCAPCheck->setChecked(s->enabledCAP());
-
-
-
-	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Switch to SSL/TLS by using the STARTTLS extension","options"),tab);
-	pCapLayout->addWidget(m_pEnableSTARTTLSCheck,1,0);
-
-	m_pEnableSTARTTLSCheck->setEnabled(s->enabledCAP());
-	QObject::connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),m_pEnableSTARTTLSCheck,SLOT(setEnabled(bool)));
-	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
-		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server if available.</center>","options"));
-#ifndef COMPILE_SSL_SUPPORT
-	m_pEnableSTARTTLSCheck->setEnabled(false);
-#endif
-	m_pEnableSTARTTLSCheck->setChecked(s->enabledCAP() && s->enabledSTARTTLS());
 
 
 	QGroupBox * pSASLGroup = new QGroupBox(__tr2qs_ctx("SASL Authentication","options"),tab);

@@ -32,6 +32,7 @@ KviIrcConnectionStateData::KviIrcConnectionStateData()
 	m_bSentQuit = false;
 	m_bInsideInitialCapLs = false;
 	m_bInsideInitialCapReq = false;
+	m_bInsideInitialStartTls = false;
 	m_bIgnoreOneYouHaveNotRegisteredError = false;
 	m_eLoginNickNameState = UsedConnectionSpecificNickName;
 	m_bSimulateUnexpectedDisconnect = false;

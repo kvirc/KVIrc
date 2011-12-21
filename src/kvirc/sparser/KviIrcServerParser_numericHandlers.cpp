@@ -2331,20 +2331,32 @@ void KviIrcServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 
 	if(msg->connection()->stateData()->isInsideInitialCapLs())
 	{
+		// CAP LS wasn't answered correctly.
 		msg->connection()->handleFailedInitialCapLs();
 		return;
 	}
-	
-	// if not registered yet and a CAP LS request was sent out then
-	// hide it (WE have triggered the error).
+
+#ifdef COMPILE_SSL_SUPPORT
+	if(msg->connection()->stateData()->isInsideInitialStartTls())
+	{
+		// The forced STARTTLS wasn't answered correctly.
+		msg->connection()->handleFailedInitialStartTls();
+		return;
+	}
+#endif //COMPILE_SSL_SUPPORT
+
+	// If not registered yet and a CAP LS or STARTTLS request was sent out then
+	// hide it (as WE have triggered the error).
 	if(msg->connection()->stateData()->ignoreOneYouHaveNotRegisteredError())
 	{
-		// eat it once, silently.
+		// We DID send a CAP LS or a forced STARTTLS.
+		// The request was answered properly and this is probably the error related to the following PING.
+		// Eat it once, silently.
 		msg->connection()->stateData()->setIgnoreOneYouHaveNotRegisteredError(false);
 		return;
 	}
 
-	// else we didn't send CAP LS so better show this to the user
+	// We didn't send CAP LS so better show this to the user
 	if(!msg->haltOutput())
 	{
 		QString szCmd = msg->connection()->decodeText(msg->safeParam(0));

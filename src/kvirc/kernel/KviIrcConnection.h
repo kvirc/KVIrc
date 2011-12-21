@@ -723,7 +723,8 @@ protected:
 	void resolveLocalHost();
 
 #ifdef COMPILE_SSL_SUPPORT
-	void trySTARTTLS();
+	void handleFailedInitialStartTls();
+	bool trySTARTTLS(bool bAppendPing);
 	void enableStartTlsSupport(bool bEnable);
 #endif
 
