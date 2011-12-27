@@ -80,6 +80,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("ic",context);
 		_REGFNC("icon",icon);
 		_REGFNC("iconName",iconName);
+		_REGFNC("insideAlias",insideAlias)
 		_REGFNC("int",integer)
 		_REGFNC("integer",integer)
 		_REGFNC("isBot",isBot)

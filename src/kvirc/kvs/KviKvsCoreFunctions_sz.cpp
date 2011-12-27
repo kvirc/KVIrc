@@ -337,6 +337,8 @@ namespace KviKvsCoreFunctions
 			If the switch was not present at all then this function
 			returns an empty string (that evaluates to false in an expression).
 			A warning is printed if this function is used non-alias code.
+			@seealso:
+			[fnc]$insideAlias[/fnc]
 		@examples:
 			[example]
 				[cmd]alias[/cmd](test){

@@ -85,6 +85,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(hptimestamp);
 	KVSCF(icon);
 	KVSCF(iconName);
+	KVSCF(insideAlias);
 	KVSCF(integer);
 	KVSCF(isAnyConsoleConnected);
 	KVSCF(isBot);

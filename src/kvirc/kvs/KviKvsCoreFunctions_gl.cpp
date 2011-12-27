@@ -446,6 +446,34 @@ KVSCF(gender)
 	}
 
 
+	/////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: insideAlias
+		@type:
+			function
+		@title:
+			$insideAlias
+		@short:
+			Returns true if kvs is executing an alias
+		@syntax:
+			<bool> $insideAlias()
+		@description:
+			This function can be used to know if the code is currently being
+			executed in the context of an alias.
+			If $insideAlias is called from inside an alias, it returns true.
+			If $insideAlias is called from inside a function, event handler or
+			everything else not being a direct /alias call, it will return false.
+		@seealso:
+			[fnc]$sw[/fnc]
+	*/
+
+	KVSCF(insideAlias)
+	{
+		KVSCF_pRetBuffer->setBoolean(KVSCF_pContext->aliasSwitchList());
+		return true;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
