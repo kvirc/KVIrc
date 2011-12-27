@@ -138,6 +138,8 @@ protected:
 	bool jsChangeEvent(KviKvsObjectFunctionCall * c);
 	bool jsSubmitEvent(KviKvsObjectFunctionCall * c);
 	bool jsClickEvent(KviKvsObjectFunctionCall * c);
+	bool jsMouseOverEvent(KviKvsObjectFunctionCall * c);
+	bool jsMouseOutEvent(KviKvsObjectFunctionCall * c);
 protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
