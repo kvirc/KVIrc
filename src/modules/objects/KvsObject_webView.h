@@ -147,9 +147,11 @@ protected slots:
 	void slotDownloadRequest(const QNetworkRequest &);
 	void slotLinkClicked(const QUrl &);
 
-	void slotOnChange(QString);
-	void slotOnSubmit(QString);
-	void slotOnClick(QString);
+	void slotOnChange(QString &);
+	void slotOnSubmit(QString &);
+	void slotOnClick(QString &);
+	void slotOnMouseOver(QString &);
+	void slotOnMouseOut(QString &);
 };
 
 class KviKvsDownloadHandler : public QObject
