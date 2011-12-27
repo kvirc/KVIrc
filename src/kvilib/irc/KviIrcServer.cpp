@@ -178,7 +178,7 @@ void KviIrcServer::generateUniqueId()
 {
 	struct timeval tv;
 	kvi_gettimeofday(&tv,0);
-	m_szId = QString("myserver%1%2%3").arg(tv.tv_usec).arg(rand() % 1000,rand() % 1000);
+	m_szId = QString("myserver%1%2%3").arg(tv.tv_usec).arg(rand() % 1000).arg(rand() % 1000);
 }
 
 QString KviIrcServer::ircUri()

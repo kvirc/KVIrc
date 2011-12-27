@@ -1993,6 +1993,8 @@ void OptionsWidget_servers::pasteServer()
 			IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,
 							*(g_pIconManager->getSmallIcon(KviIconManager::Server)),m_pClipboard);
 
+			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessairly unique...
+
 			net->setExpanded(true);
 
 			it->setSelected(true);
