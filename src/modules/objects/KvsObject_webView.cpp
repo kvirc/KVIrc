@@ -1272,14 +1272,14 @@ KVSO_CLASS_FUNCTION(webView,jsMouseOutEvent)
 	emitSignal("jsmouseout",c,c->params());
 	return true;
 }
-void KvsObject_webView::slotOnChange(QString &szParam)
+void KvsObject_webView::slotOnChange(QString szParam)
 {
 	//qDebug("change");
 	KviKvsVariantList params(new KviKvsVariant(szParam));
 	callFunction(this,"jsChangeEvent",&params);
 }
 
-void KvsObject_webView::slotOnSubmit(QString &szParam)
+void KvsObject_webView::slotOnSubmit(QString szParam)
 {
 	// ,QString szParam2,QString szParam3
 	//qDebug("slotonsubmit");
@@ -1287,20 +1287,18 @@ void KvsObject_webView::slotOnSubmit(QString &szParam)
 	callFunction(this,"jsSubmitEvent",&params);
 }
 
-void KvsObject_webView::slotOnClick(QString &szParam)
+void KvsObject_webView::slotOnClick(QString szParam)
 {
 	KviKvsVariantList params(new KviKvsVariant(szParam));
 	callFunction(this,"jsClickEvent",&params);
 }
-void KvsObject_webView::slotOnMouseOver(QString &szParam)
+void KvsObject_webView::slotOnMouseOver(QString szParam)
 {
-	//qDebug("mouse over");
-	KviKvsVariantList params(new KviKvsVariant(szParam));
-	callFunction(this,"jsMouseOverEvent",&params);
+    KviKvsVariantList params(new KviKvsVariant(szParam));
+    callFunction(this,"jsMouseOverEvent",&params);
 }
-void KvsObject_webView::slotOnMouseOut(QString &szParam)
+void KvsObject_webView::slotOnMouseOut(QString szParam)
 {
-	//qDebug("mouse out");
 	KviKvsVariantList params(new KviKvsVariant(szParam));
 	callFunction(this,"jsMouseOutEvent",&params);
 }
