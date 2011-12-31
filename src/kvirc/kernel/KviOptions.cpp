@@ -337,7 +337,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 // FIXME: #warning "Remove the unused string options here!"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#define RUN_THE_BROWSER "run \"cmd.exe /c start \\\"\\\" \\\"$0\\\"\""
+	#define RUN_THE_BROWSER "run cmd.exe /c start \"\" \"$0\""
 #else
 	#ifdef COMPILE_KDE_SUPPORT
 		#define RUN_THE_BROWSER "run xdg-open $0"
