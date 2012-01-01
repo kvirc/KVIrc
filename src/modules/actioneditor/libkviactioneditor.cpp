@@ -45,12 +45,12 @@ ActionEditorWindow * g_pActionEditorWindow = 0;
 		Opens the script action editor dialog.
 */
 
-static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	if(!g_pActionEditorWindow)
 	{
-		g_pActionEditorWindow = new ActionEditorWindow(c->window()->frame());
-		c->window()->frame()->addWindow(g_pActionEditorWindow);
+		g_pActionEditorWindow = new ActionEditorWindow();
+		g_pMainWindow->addWindow(g_pActionEditorWindow);
 	}
 
 	g_pActionEditorWindow->setFocus();

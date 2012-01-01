@@ -66,8 +66,8 @@ static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!(c->window()->context()->linksWindow()))
 	{
-		LinksWindow *w = new LinksWindow(c->window()->frame(),c->window()->console());
-		c->window()->frame()->addWindow(w);
+		LinksWindow *w = new LinksWindow(c->window()->console());
+		g_pMainWindow->addWindow(w);
 	} else {
 		c->warning(__tr2qs("Links window alread open for this IRC context"));
 	}

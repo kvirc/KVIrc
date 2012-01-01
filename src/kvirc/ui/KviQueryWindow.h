@@ -60,12 +60,11 @@ public:
 
 	/**
 	* \brief Constructs the query object
-	* \param lpFrm The parent frame
 	* \param lpConsole The associated console
 	* \param szNick The nickname with who we open a query
 	* \return KviQueryWindow
 	*/
-	KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szNick);
+	KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szNick);
 
 	/**
 	* \brief Destroys the query object

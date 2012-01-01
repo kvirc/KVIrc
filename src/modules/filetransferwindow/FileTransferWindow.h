@@ -91,7 +91,7 @@ class FileTransferWindow : public KviWindow, public KviModuleExtension
 	friend class FileTransferItemDelegate;
 	Q_OBJECT
 public:
-	FileTransferWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm);
+	FileTransferWindow(KviModuleExtensionDescriptor * d);
 	~FileTransferWindow();
 protected:
 	QSplitter		* m_pVertSplitter;

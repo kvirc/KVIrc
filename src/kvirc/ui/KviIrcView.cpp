@@ -99,7 +99,7 @@
 #include "KviTalPopupMenu.h"
 #include "KviAnimatedPixmap.h"
 #include "KviPixmapUtils.h"
-#include "KviDockExtension.h"
+#include "KviTrayIcon.h"
 
 #include <QBitmap>
 #include <QPainter>
@@ -211,7 +211,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KviIrcView::KviIrcView(QWidget *parent,KviMainWindow *pFrm,KviWindow *pWnd)
+KviIrcView::KviIrcView(QWidget *parent, KviWindow *pWnd)
 : QWidget(parent)
 {
 	setObjectName("irc_view");
@@ -258,7 +258,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviMainWindow *pFrm,KviWindow *pWnd)
 	m_bSkipScrollBarRepaint    = false;
 	m_pLogFile                 = 0;
 	m_pKviWindow               = pWnd;
-	m_pFrm                     = pFrm;
 
 	m_iUnprocessedPaintEventRequests = 0;
 	m_bPostedPaintEventPending = false;
@@ -510,9 +509,8 @@ void KviIrcView::clearUnreaded()
 	m_bHaveUnreadedHighlightedMessages = false;
 	m_bHaveUnreadedMessages = false;
 
-	if(m_pFrm)
-		if(m_pFrm->dockExtension())
-			m_pFrm->dockExtension()->refresh();
+	if(g_pMainWindow->trayIcon())
+		g_pMainWindow->trayIcon()->refresh();
 }
 
 void KviIrcView::setMaxBufferSize(int maxBufSize,bool bRepaint)

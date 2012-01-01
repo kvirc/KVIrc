@@ -474,10 +474,9 @@ class ClassEditorWindow : public KviWindow
 public:
 	/**
 	* \brief Constructs the class editor window
-	* \param pFrm The parent frame
 	* \return ClassEditorWindow
 	*/
-	ClassEditorWindow(KviMainWindow * pFrm);
+	ClassEditorWindow();
 	
 	/**
 	* \brief Destroys the class editor window

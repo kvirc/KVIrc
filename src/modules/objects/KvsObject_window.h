@@ -34,7 +34,7 @@ class KviKvsScriptWindowWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviKvsScriptWindowWindow(KviMainWindow * pParent,const QString &szName);
+	KviKvsScriptWindowWindow(const QString &szName);
 	~KviKvsScriptWindowWindow();
 protected:
 	KvsObject_widget * m_pCentralWidgetObject;

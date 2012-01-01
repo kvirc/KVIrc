@@ -65,8 +65,8 @@
 #include <QByteArray>
 #include <QTextDocument> // for Qt::escape_command
 
-KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szNick)
-: KviWindow(KviWindow::Query,lpFrm,szNick,lpConsole)
+KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szNick)
+: KviWindow(KviWindow::Query,szNick,lpConsole)
 {
 	m_iFlags = 0;
 	connection()->registerQuery(this);
@@ -87,7 +87,7 @@ KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConso
 	m_pSplitter->setObjectName("query_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
-	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pSplitter, this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 

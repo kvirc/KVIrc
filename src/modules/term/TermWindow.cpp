@@ -36,12 +36,12 @@
 	extern KviPointerList<TermWidget> * g_pTermWidgetList;
 	extern KviIconManager * g_pIconManager;
 
-	TermWindow::TermWindow(KviMainWindow * lpFrm,const char * name)
-	: KviWindow(KviWindow::Terminal,lpFrm,name)
+	TermWindow::TermWindow(const char * name)
+	: KviWindow(KviWindow::Terminal,name)
 	{
 		g_pTermWindowList->append(this);
 		m_pTermWidget = 0;
-		m_pTermWidget = new TermWidget(this,lpFrm);
+		m_pTermWidget = new TermWidget(this);
 		// Ensure proper focusing
 	//	setFocusHandler(m_pTermWidget->konsoleWidget(),this);
 	}

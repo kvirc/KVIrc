@@ -83,7 +83,7 @@ class KVIRC_API KviConsoleWindow : public KviWindow
 	friend class KviIrcContext;
 	Q_OBJECT
 protected:
-	KviConsoleWindow(KviMainWindow * lpFrm,int iFlags);
+	KviConsoleWindow(int iFlags);
 public:
 	~KviConsoleWindow();
 protected:

@@ -31,8 +31,8 @@
 extern KviPointerList<UserWindow> * g_pUserWindowList;
 
 
-UserWindow::UserWindow(KviMainWindow * pFrm, const char * pcName, QString &szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
-: KviWindow(KviWindow::UserWindow,pFrm,pcName,pConsole)
+UserWindow::UserWindow(const char * pcName, QString &szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
+: KviWindow(KviWindow::UserWindow,pcName,pConsole)
 {
 	g_pUserWindowList->append(this);
 
@@ -41,25 +41,12 @@ UserWindow::UserWindow(KviMainWindow * pFrm, const char * pcName, QString &szIco
 	m_szPlainTextCaption = pcName;
 	fillSingleColorCaptionBuffers(m_szPlainTextCaption);
 
-	// Register ourselves
-	//connection()->registerChannel(this);
-	// Central splitter
-//	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
-	// Spitted vertially on the left
-//	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,
-//		"vertical_splitter");
-	// With the IRC view over
-	m_pIrcView = new KviIrcView(this,pFrm,this);
-	//	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
-	// The userlist on the right
-//	m_pUserListView = new KviUserListView(m_pSplitter,connection()->userDataBase(),this,
-//								AVERAGE_CHANNEL_USERS,__tr2qs("User List"),"user_list_view");
-	// And finally the input line on the bottom
+	m_pIrcView = new KviIrcView(this,this);
+
 	if(iCreationFlags & HasInput)
 		m_pInput = new KviInput(this,0);
 	else
 		m_pInput = 0;
-	//	applyOptions();
 
 	if(context())
 		context()->registerContextWindow(this);

@@ -35,7 +35,7 @@ class DccWindow : public KviWindow, public DccMarshalOutputContext
 {
 	Q_OBJECT
 public:
-	DccWindow(KviWindow::Type eType,KviMainWindow * lpFrm,const char * name,DccDescriptor * d);
+	DccWindow(KviWindow::Type eType,const char * name,DccDescriptor * d);
 	~DccWindow();
 protected:
 	DccDescriptor       * m_pDescriptor;

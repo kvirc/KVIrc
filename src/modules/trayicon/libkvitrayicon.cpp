@@ -60,15 +60,16 @@
 #endif
 
 extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
-static KviPointerList<TrayIcon> * g_pTrayIconList = 0;
+static KviTrayIconWidget * g_pTrayIcon = 0;
 
 static QPixmap * g_pDock1 = 0;
 static QPixmap * g_pDock2 = 0;
 static QPixmap * g_pDock3 = 0;
 
-TrayIcon::TrayIcon(KviMainWindow * frm)
-: QSystemTrayIcon(frm), m_CurrentPixmap(ICON_SIZE,ICON_SIZE)
+KviTrayIconWidget::KviTrayIconWidget()
+: QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE,ICON_SIZE)
 {
+	g_pTrayIcon = this;
 	m_pContextPopup = new KviTalPopupMenu(0);
 	setContextMenu(m_pContextPopup);
 
@@ -81,11 +82,10 @@ TrayIcon::TrayIcon(KviMainWindow * frm)
 	m_pFlashingTimer->setObjectName("flashing_timer");
 	connect( m_pFlashingTimer, SIGNAL(timeout()), this, SLOT(flashingTimerShot()) );
 	m_bFlashed=0;
-	g_pTrayIconList->append(this);
-	m_pFrm = frm;
-	m_pFrm->setDockExtension(this);
 
-	m_pTip = new KviDynamicToolTip(frm,"dock_tooltip");
+	g_pMainWindow->setTrayIcon(this);
+
+	m_pTip = new KviDynamicToolTip(g_pMainWindow,"dock_tooltip");
 	m_pAwayPopup = new KviTalPopupMenu(0);
 
 	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
@@ -121,10 +121,10 @@ TrayIcon::TrayIcon(KviMainWindow * frm)
 }
 
 
-TrayIcon::~TrayIcon()
+KviTrayIconWidget::~KviTrayIconWidget()
 {
-	m_pFrm->setDockExtension(0);
-	g_pTrayIconList->removeRef(this);
+	g_pTrayIcon=0;
+	g_pMainWindow->setTrayIcon(0);
 	delete m_pAwayPopup;
 	delete m_pTitleLabel;
 	delete m_pTip;
@@ -133,20 +133,20 @@ TrayIcon::~TrayIcon()
 }
 
 
-void TrayIcon::executeInternalCommand(bool)
+void KviTrayIconWidget::executeInternalCommand(bool)
 {
 	int iCmd;
 	bool bOk;
 	iCmd=(((QAction*)QObject::sender())->data()).toInt(&bOk);
-	if(m_pFrm && bOk)
-		m_pFrm->executeInternalCommand(iCmd);
+	if(bOk)
+		g_pMainWindow->executeInternalCommand(iCmd);
 }
-void TrayIcon::die()
+void KviTrayIconWidget::die()
 {
 	delete this;
 }
 
-void TrayIcon::flashingTimerShot()
+void KviTrayIconWidget::flashingTimerShot()
 {
 	m_bFlashed=!m_bFlashed;
 	refresh();
@@ -176,14 +176,14 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("idle idle idle idle!")
 };
 
-bool TrayIcon::event(QEvent *e)
+bool KviTrayIconWidget::event(QEvent *e)
 {
 	if(e->type()==QEvent::ToolTip)
 	{
-		QPoint pos= m_pFrm->mapFromGlobal(QCursor::pos());
+		QPoint pos= g_pMainWindow->mapFromGlobal(QCursor::pos());
 		QString tmp;
 
-		KviWindowListBase * t = m_pFrm->windowListWidget();
+		KviWindowListBase * t = g_pMainWindow->windowListWidget();
 
 		QString line;
 		bool first = true;
@@ -226,14 +226,14 @@ bool TrayIcon::event(QEvent *e)
 	return false;
 }
 
-//int TrayIcon::message(int,void *)
+//int KviTrayIconWidget::message(int,void *)
 //{
 //	qDebug("Message");
 //	update();
 //	return 0;
 //}
 
-void TrayIcon::doAway(bool)
+void KviTrayIconWidget::doAway(bool)
 {
 	int id;
 	bool ok;
@@ -289,9 +289,9 @@ void TrayIcon::doAway(bool)
 	}
 }
 
-void TrayIcon::fillContextPopup()
+void KviTrayIconWidget::fillContextPopup()
 {
-	m_pToggleFrame->setText(m_pFrm->isVisible() ? __tr2qs("Hide Window") : __tr2qs("Show Window"));
+	m_pToggleFrame->setText(g_pMainWindow->isVisible() ? __tr2qs("Hide Window") : __tr2qs("Show Window"));
 	if(g_pApp->topmostConnectedConsole())
 	{
 		m_pAwayMenuId->setVisible(true);
@@ -347,50 +347,50 @@ void TrayIcon::fillContextPopup()
 	}
 }
 
-void TrayIcon::toggleParentFrame()
+void KviTrayIconWidget::toggleParentFrame()
 {
 	qDebug("TrayIcon::toggleParentFrame()");
-	if(m_pFrm->isMinimized())
+	if(g_pMainWindow->isMinimized())
 	{
 		qDebug("- frame is minimized");
-		m_pFrm->setWindowState(m_pFrm->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
+		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 
 		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
 		{
 			qDebug("- window was maximized so calling showMaximized()");
-			m_pFrm->showMaximized();
+			g_pMainWindow->showMaximized();
 		} else {
 			qDebug("- window wasn't maximized so calling plain show()");
-			m_pFrm->show();
+			g_pMainWindow->show();
 		}
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// raise it
-		SetForegroundWindow((HWND)m_pFrm->winId());
+		SetForegroundWindow((HWND)g_pMainWindow->winId());
 #endif
-	} else if(!m_pFrm->isVisible())
+	} else if(!g_pMainWindow->isVisible())
 	{
 		qDebug("- frame is not visible");
 		//restore mainwindow
 		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
 		{
 			qDebug("- window was maximized so calling showMaximized()");
-			m_pFrm->showMaximized();
+			g_pMainWindow->showMaximized();
 		} else {
 			qDebug("- window wasn't maximized so calling plain show()");
-			m_pFrm->show();
+			g_pMainWindow->show();
 		}
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// raise it
-		SetForegroundWindow((HWND)m_pFrm->winId());
+		SetForegroundWindow((HWND)g_pMainWindow->winId());
 #endif
 	} else {
-		qDebug("- frame is visible: maximized state=%d, hiding",m_pFrm->isMaximized());
-		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = m_pFrm->isMaximized();
-		m_pFrm->hide();
+		qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
+		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = g_pMainWindow->isMaximized();
+		g_pMainWindow->hide();
 	}
 }
 
-void TrayIcon::refresh()
+void KviTrayIconWidget::refresh()
 {
 	grabActivityInfo();
 
@@ -437,7 +437,7 @@ void TrayIcon::refresh()
 	updateIcon();
 }
 
-void TrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
+void KviTrayIconWidget::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 {
 	switch(reason)
 	{
@@ -448,7 +448,7 @@ void TrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 			// This activates the context menu and is quite confusing if it *also* hides the kvirc window.
 			// So on mac we only _show_ the main window if it's hidden and the CloseInTray option is enabled.
 			if((KVI_OPTION_BOOL(KviOption_boolCloseInTray) || KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
-				&& ((!m_pFrm->isVisible()) || m_pFrm->isMinimized()))
+				&& ((!g_pMainWindow->isVisible()) || g_pMainWindow->isMinimized()))
 				toggleParentFrame();
 #else //!COMPILE_ON_MAC
 			// on other platforms we always toggle the window
@@ -461,9 +461,9 @@ void TrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 	}
 }
 
-void TrayIcon::grabActivityInfo()
+void KviTrayIconWidget::grabActivityInfo()
 {
-	KviWindowListBase * t = m_pFrm->windowListWidget();
+	KviWindowListBase * t = g_pMainWindow->windowListWidget();
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 	{
@@ -553,19 +553,9 @@ void TrayIcon::grabActivityInfo()
 	}
 }
 
-void TrayIcon::updateIcon()
+void KviTrayIconWidget::updateIcon()
 {
 	setIcon(QIcon(m_CurrentPixmap));
-}
-
-static TrayIcon * trayicon_find(KviMainWindow *f)
-{
-	if(!g_pTrayIconList)return 0;
-	for(TrayIcon * w = g_pTrayIconList->first();w;w = g_pTrayIconList->next())
-	{
-		if(w->frame() == f)return w;
-	}
-	return 0;
 }
 
 /*
@@ -575,38 +565,35 @@ static TrayIcon * trayicon_find(KviMainWindow *f)
 	@title:
 		trayicon.show
 	@short:
-		Shows the dock widget for the current frame window
+		Shows the tray icon (dock widget)
 	@keyterms:
 		dock widget, system tray
 	@syntax:
 		trayicon.show
 	@description:
-		Shows the dock widget for the current frame window.[br]
-		The dock widget is a small widget that docks in the KDE panel.[br]
-		It shows a small icon of the earth and eventually displays four squares
+		Shows the tray icon (sometimes called dock widget).[br]
+		The tray icon is a small widget that docks in the window manager panel.[br]
+		It shows a small kvirc icon and eventually displays four squares
 		that cover this icon: the bottom left square appears when there is some new
 		text in any console window, the square becomes red if the text is highlighted.[br]
 		The bottom right square appears when there is some new text in any channel window,
 		and it becomes red when the text is highlighted.[br] The upper right square refers to
 		query windows and the upper left one to any other kind of window (dcc, links...).[br]
-		If you move the mouse over the dock widget a tooltip will show you the last lines
+		If you move the mouse over the tray icon a tooltip will show you the last lines
 		of the "new" text in all these windows.[br]
 		This is useful when you keep the main KVIrc window minimized and you're working on something else:
-		if the dock widget shows nothing but the earth icon, nothing is happening in the main KVIrc window.
-		If the dock widget shows one or more white (or red) squares, you can move the mouse over
-		and check what's happened exactly and eventually bring up the main KVIrc window by clicking on the widget.[br]
-		[big]tecnical details[/big]
-		The dock widget is currently working in KDE compilation mode only:
-		it relies on the KWin implementation of the Window Manager interaction protocol.
+		if the tray icon shows nothing but the kvirc icon, nothing is happening in the main KVIrc window.
+		If the tray icon shows one or more white (or red) squares, you can move the mouse over
+		and check what's happened exactly and eventually bring up the main KVIrc window by clicking on the icon.[br]
 	@seealso:
 		[cmd]trayicon.hide[/cmd]
 */
 
-static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall * c)
+static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall *)
 {
-	if(!(trayicon_find(c->window()->frame())))
+	if(g_pTrayIcon==0)
 	{
-		TrayIcon * w = new TrayIcon(c->window()->frame());
+		KviTrayIconWidget * w = new KviTrayIconWidget();
 		w->show();
 	}
 	return true;
@@ -619,24 +606,25 @@ static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	@title:
 		trayicon.hide
 	@short:
-		Hides the dock widget for the current frame window
+		Hides the tray icon for the current frame window
 	@syntax:
 		trayicon.hide
 	@description:
-		Hides the dock widget for the current frame window
+		Hides the  tray icon for the current frame window
 	@seealso:
 		[cmd]trayicon.show[/cmd]
 */
 
-static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall * c)
+static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall *)
 {
-	TrayIcon * w= trayicon_find(c->window()->frame());
-	if(w)delete w;
+	if(g_pTrayIcon)
+		delete g_pTrayIcon;
+	g_pTrayIcon=0;
+
 	// show the parent frame.. otherwise there will be no way to get it back
-	if(!c->window()->frame()->isVisible())
-	{
-		c->window()->frame()->show();
-	}
+	if(!g_pMainWindow->isVisible())
+		g_pMainWindow->show();
+
 	return true;
 }
 
@@ -656,13 +644,11 @@ static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 		[cmd]trayicon.show[/cmd], [cmd]trayicon.hide[/cmd]
 */
 
-static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
+static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall *)
 {
-	TrayIcon * w= trayicon_find(c->window()->frame());
-	if(w)
-	{
-		c->window()->frame()->hide();
-	}
+	if(g_pMainWindow)
+		g_pMainWindow->hide();
+
 	return true;
 }
 
@@ -684,7 +670,7 @@ static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 
 static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 {
-	c->returnValue()->setBoolean(trayicon_find(c->window()->frame()));
+	c->returnValue()->setBoolean(g_pTrayIcon!=0);
 	return true;
 }
 
@@ -715,10 +701,6 @@ static bool trayicon_module_init(KviModule * m)
 #endif
 	g_pDock3 = new QPixmap(buffer);
 
-	g_pTrayIconList = new KviPointerList<TrayIcon>;
-	g_pTrayIconList->setAutoDelete(false);
-
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",trayicon_kvs_cmd_hide);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"hidewindow",trayicon_kvs_cmd_hidewindow);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",trayicon_kvs_cmd_show);
@@ -729,9 +711,8 @@ static bool trayicon_module_init(KviModule * m)
 
 static bool trayicon_module_cleanup(KviModule *)
 {
-	while(g_pTrayIconList->first())delete g_pTrayIconList->first();
-	delete g_pTrayIconList;
-	g_pTrayIconList = 0;
+	delete g_pTrayIcon;
+	g_pTrayIcon = 0;
 
 	delete g_pDock1;
 	g_pDock1 = 0;
@@ -747,7 +728,7 @@ static bool trayicon_module_cleanup(KviModule *)
 
 static bool trayicon_module_can_unload(KviModule *)
 {
-	return g_pTrayIconList->isEmpty();
+	return g_pTrayIcon==0;
 }
 
 // =======================================

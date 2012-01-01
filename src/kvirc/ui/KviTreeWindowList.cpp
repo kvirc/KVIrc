@@ -33,7 +33,7 @@
 #include "KviWindow.h"
 #include "KviTreeWindowList.h"
 #include "KviPixmapUtils.h"
-#include "KviDockExtension.h"
+#include "KviTrayIcon.h"
 
 #include <QHeaderView>
 #include <QMouseEvent>
@@ -113,7 +113,7 @@ void KviTreeWindowListItem::unhighlight()
 	m_iHighlightLevel = 0;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
-	if(g_pMainWindow->dockExtension())g_pMainWindow->dockExtension()->refresh();
+	if(g_pMainWindow->trayIcon())g_pMainWindow->trayIcon()->refresh();
 }
 
 void KviTreeWindowListItem::highlight(int iLevel)
@@ -123,8 +123,8 @@ void KviTreeWindowListItem::highlight(int iLevel)
 	m_iHighlightLevel = iLevel;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
-	if(g_pMainWindow->dockExtension())
-		g_pMainWindow->dockExtension()->refresh();
+	if(g_pMainWindow->trayIcon())
+		g_pMainWindow->trayIcon()->refresh();
 }
 
 void KviTreeWindowListItem::setProgress(int progress)
@@ -450,7 +450,7 @@ void KviTreeWindowList::setActiveItem(KviWindowListItem * it)
 		}
 
 		((KviTreeWindowListItem *)it)->setActive(true);
-		if(g_pMainWindow->dockExtension())g_pMainWindow->dockExtension()->refresh();
+		if(g_pMainWindow->trayIcon())g_pMainWindow->trayIcon()->refresh();
 	}
 }
 

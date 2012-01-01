@@ -69,10 +69,10 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	c->module()->lock(); // multiple locks are allowed
 	if(c->hasSwitch('m',"mdi"))
 	{
-		TermWindow *w = new TermWindow(c->window()->frame(),"Terminal emulator");
-		c->window()->frame()->addWindow(w);
+		TermWindow *w = new TermWindow("Terminal emulator");
+		g_pMainWindow->addWindow(w);
 	} else {
-		TermWidget *w = new TermWidget(c->window()->frame()->splitter(), c->window()->frame(),true);
+		TermWidget *w = new TermWidget(g_pMainWindow->splitter(), true);
 		w->show();
 	}
 #else

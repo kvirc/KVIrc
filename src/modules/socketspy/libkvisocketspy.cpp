@@ -52,8 +52,8 @@ KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
 static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!c->window()->console())return c->context()->errorNoIrcContext();
-	SocketSpyWindow *w = new SocketSpyWindow(c->window()->frame(),c->window()->console());
-	c->window()->frame()->addWindow(w);
+	SocketSpyWindow *w = new SocketSpyWindow(c->window()->console());
+	g_pMainWindow->addWindow(w);
 	return true;
 }
 

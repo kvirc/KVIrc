@@ -107,7 +107,7 @@ class DccVoiceWindow : public DccWindow
 {
 	Q_OBJECT
 public:
-	DccVoiceWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name);
+	DccVoiceWindow(DccDescriptor * dcc,const char * name);
 	~DccVoiceWindow();
 protected:
 	KviTalHBox                  * m_pHBox;

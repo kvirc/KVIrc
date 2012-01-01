@@ -94,7 +94,7 @@ static KviModuleExtension * logview_extension_alloc(KviModuleExtensionAllocStruc
 			}
 		}
 
-		g_pLogViewWindow = new LogViewWindow(s->pDescriptor,g_pMainWindow);
+		g_pLogViewWindow = new LogViewWindow(s->pDescriptor);
 		g_pMainWindow->addWindow(g_pLogViewWindow,!bCreateMinimized);
 		if(bCreateMinimized)
 			g_pLogViewWindow->minimize();

@@ -1173,13 +1173,12 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	}
 
 	UserWindow * pWnd = new UserWindow(
-		c->window()->frame(),
 		szCaption.toUtf8().data(),
 		szIcon,
 		pConsole,
 		iFlags);
 
-	c->window()->frame()->addWindow(pWnd,!szFlags.contains('m'));
+	g_pMainWindow->addWindow(pWnd,!szFlags.contains('m'));
 	if(szFlags.contains('m'))
 		pWnd->minimize();
 

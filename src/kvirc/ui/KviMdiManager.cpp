@@ -121,7 +121,7 @@ void KviMdiManager::paintEvent(QPaintEvent * e)
 	}
 }
 
-void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
+void KviMdiManager::manageChild(KviMdiChild * lpC)
 {
 	addSubWindow((QMdiSubWindow*)lpC);
 

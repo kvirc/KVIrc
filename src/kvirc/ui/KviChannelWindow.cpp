@@ -82,8 +82,8 @@
 // FIXME: #warning "OnChannelFlood event...."
 
 
-KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szName)
-: KviWindow(KviWindow::Channel,lpFrm,szName,lpConsole)
+KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString & szName)
+: KviWindow(KviWindow::Channel,szName,lpConsole)
 {
 	// Init some member variables
 	m_pInput               = 0;
@@ -136,7 +136,7 @@ KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpC
 	m_pVertSplitter->setSizePolicy(oPolicy);
 
 	// With the IRC view over
-	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pVertSplitter,this);
 	m_pIrcView->setObjectName(szName);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	// And the double view (that may be unused)
@@ -439,7 +439,7 @@ void KviChannelWindow::showDoubleView(bool bShow)
 		if(!bShow)
 			return;
 
-		m_pMessageView = new KviIrcView(m_pVertSplitter,m_pFrm,this);
+		m_pMessageView = new KviIrcView(m_pVertSplitter,this);
 		m_pVertSplitter->setSizes(m_VertSplitterSizesList);
 
 		//this is an hack to simulate qt3's ResizeMode = Stretch

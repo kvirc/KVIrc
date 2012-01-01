@@ -46,12 +46,12 @@ RawEditorWindow * g_pRawEditorWindow = 0;
 		Opens the script raw events editor dialog.
 */
 
-static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	if(!g_pRawEditorWindow)
 	{
-		g_pRawEditorWindow = new RawEditorWindow(c->window()->frame());
-		c->window()->frame()->addWindow(g_pRawEditorWindow);
+		g_pRawEditorWindow = new RawEditorWindow();
+		g_pMainWindow->addWindow(g_pRawEditorWindow);
 	}
 	g_pRawEditorWindow->setFocus();
 	return true;

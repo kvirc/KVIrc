@@ -119,9 +119,9 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 				g_pRegisteredUsersDialog->setParent(0);
 			}
 		} else {
-			if(g_pRegisteredUsersDialog->parent() != c->window()->frame()->splitter())
+			if(g_pRegisteredUsersDialog->parent() != g_pMainWindow->splitter())
 			{
-				g_pRegisteredUsersDialog->setParent(c->window()->frame()->splitter());
+				g_pRegisteredUsersDialog->setParent(g_pMainWindow->splitter());
 			}
 		}
 	} else {
@@ -129,7 +129,7 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		{
 			g_pRegisteredUsersDialog = new RegisteredUsersDialog(0);
 		} else {
-			g_pRegisteredUsersDialog = new RegisteredUsersDialog(c->window()->frame()->splitter());
+			g_pRegisteredUsersDialog = new RegisteredUsersDialog(g_pMainWindow->splitter());
 		}
 	}
 	g_pRegisteredUsersDialog->show();

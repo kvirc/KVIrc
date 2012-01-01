@@ -91,11 +91,11 @@
 extern KVIRC_API KviIrcServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 
-KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
+KviConsoleWindow::KviConsoleWindow(int iFlags)
 #ifdef COMPILE_ON_WINDOWS
-: KviWindow(KviWindow::Console,lpFrm,__tr2qs("CONSOLE"),0)
+: KviWindow(KviWindow::Console,__tr2qs("CONSOLE"),0)
 #else
-: KviWindow(KviWindow::Console,lpFrm,__tr2qs("CONSOLE"),this)
+: KviWindow(KviWindow::Console,__tr2qs("CONSOLE"),this)
 #endif
 {
 	m_pConsole = this;
@@ -131,7 +131,7 @@ KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
 	m_pSplitter->setObjectName("console_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
-	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pSplitter, this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 
 	// FIXME: #warning "If notify list is disabled avoid to show this"
@@ -706,7 +706,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 		if(type < 0)return; // event stopped the message!
 		if(type == KVI_OUT_HIGHLIGHT)
 		{
-			if(!wnd->hasAttention())
+			if(!wnd->hasAttention(KviWindow::MainWindowIsVisible))
 			{
 				if(KVI_OPTION_BOOL(KviOption_boolFlashWindowOnHighlightedMessages) &&
 					(!(iFlags & NoWindowFlashing)))

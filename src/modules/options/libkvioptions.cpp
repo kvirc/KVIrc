@@ -112,9 +112,9 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 				d->setGeometry(0,0,d->width(),d->height());
 			}
 		} else {
-			if(d->parent() != c->window()->frame()->splitter())
+			if(d->parent() != g_pMainWindow->splitter())
 			{
-				d->setParent(c->window()->frame()->splitter());
+				d->setParent(g_pMainWindow->splitter());
 				d->setGeometry(0,0,d->width(),d->height());
 				d->show();
 			}
@@ -124,7 +124,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		{
 			d = new OptionsDialog(0,szGroup);
 		} else {
-			d = new OptionsDialog(c->window()->frame()->splitter(),szGroup);
+			d = new OptionsDialog(g_pMainWindow->splitter(),szGroup);
 		}
 		g_pOptionsDialogDict->insert(szGroup,d);
 	}

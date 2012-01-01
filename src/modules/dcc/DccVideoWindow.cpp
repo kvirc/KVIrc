@@ -422,8 +422,8 @@ exit_dcc:
 	m_fd = KVI_INVALID_SOCKET;
 }
 
-DccVideoWindow::DccVideoWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-: DccWindow(KviWindow::DccVideo,pFrm,name,dcc)
+DccVideoWindow::DccVideoWindow(DccDescriptor * dcc,const char * name)
+: DccWindow(KviWindow::DccVideo,name,dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
@@ -450,7 +450,7 @@ DccVideoWindow::DccVideoWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const cha
 	m_pLayout = new QGridLayout(m_pContainerWidget);
 	m_pContainerWidget->setLayout(m_pLayout);
 
-	m_pIrcView  = new KviIrcView(this,pFrm,this);
+	m_pIrcView  = new KviIrcView(this,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	m_pInput    = new KviInput(this);
 
@@ -822,7 +822,7 @@ bool DccVideoWindow::event(QEvent *e)
 						d.cutLeft(6);
 					d.stripLeftWhiteSpace();
 					output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szNick),d.ptr());
-					if(!hasAttention())
+					if(!hasAttention(KviWindow::MainWindowIsVisible))
 					{
 						if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 						{
@@ -879,7 +879,7 @@ bool DccVideoWindow::event(QEvent *e)
 							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
 								m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
 								m_pDescriptor->szHost.toUtf8().data(),d.ptr());
-							if(!hasAttention())
+							if(!hasAttention(KviWindow::MainWindowIsVisible))
 							{
 								if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 								{

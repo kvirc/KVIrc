@@ -34,8 +34,8 @@
 
 
 
-KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviMainWindow * pParent,const QString &szName)
-: KviWindow(KviWindow::ScriptObject,pParent,szName)
+KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(const QString &szName)
+: KviWindow(KviWindow::ScriptObject,szName)
 {
 	m_pCentralWidget = 0;
 	m_pIcon = 0;
@@ -116,11 +116,11 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_window)
 		g_pMainWindow->closeWindow(((KviKvsScriptWindowWindow *)widget()));
 KVSO_END_CONSTRUCTOR(KvsObject_window)
 
-bool KvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
+bool KvsObject_window::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
-	KviKvsScriptWindowWindow * w = new KviKvsScriptWindowWindow(pContext->window()->frame(),getName());
+	KviKvsScriptWindowWindow * w = new KviKvsScriptWindowWindow(getName());
 	setObject(w);
-	pContext->window()->frame()->addWindow(w,false);
+	g_pMainWindow->addWindow(w,false);
 	w->minimize(); // must be minimized before children are added, otherwise the focus handling goes nuts...
 
 	return true;

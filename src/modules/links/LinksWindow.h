@@ -61,7 +61,7 @@ class LinksWindow : public KviWindow, public KviExternalServerDataParser
 {
 	Q_OBJECT
 public:
-	LinksWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole);
+	LinksWindow(KviConsoleWindow * lpConsole);
 	~LinksWindow();
 protected:
 	QSplitter               * m_pVertSplitter;

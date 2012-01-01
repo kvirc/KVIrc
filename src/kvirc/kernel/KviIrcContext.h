@@ -83,9 +83,6 @@ protected:
 
 	State                              m_eState;               // this context state
 
-	// helper pointers
-	KviMainWindow                         * m_pFrame;               // the owning frame, shallow, never null
-
 	// permanent links and list window
 	KviExternalServerDataParser      * m_pLinksWindow;
 	KviExternalServerDataParser      * m_pListWindow;
@@ -109,8 +106,6 @@ public:
 	inline unsigned int id(){ return m_uId; };
 	// never null and always the same!
 	inline KviConsoleWindow * console(){ return m_pConsole; };
-	// never null and always the same
-	inline KviMainWindow * frame(){ return m_pFrame; };
 	// may be null and may change!
 	inline KviIrcConnection * connection(){ return m_pConnection; };
 	// state

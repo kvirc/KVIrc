@@ -83,11 +83,10 @@ class ChannelsJoinDialog : public QDialog
 public:
 	/**
 	* \brief Constructs the channels join window
-	* \param par The parent widget
 	* \param name The name of the window
 	* \return ChannelsJoinDialog
 	*/
-	ChannelsJoinDialog(QWidget * par, const char * name);
+	ChannelsJoinDialog(const char * name);
 
 	/**
 	* \brief Destroys the channels join window

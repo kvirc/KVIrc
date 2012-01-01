@@ -117,7 +117,7 @@ class EventEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	EventEditorWindow(KviMainWindow * lpFrm);
+	EventEditorWindow();
 	~EventEditorWindow();
 protected:
 	EventEditor * m_pEditor;

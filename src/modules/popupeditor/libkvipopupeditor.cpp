@@ -46,12 +46,12 @@ PopupEditorWindow * g_pPopupEditorWindow = 0;
 		Opens the script popup editor dialog.
 */
 
-static bool popupeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool popupeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	if(!g_pPopupEditorWindow)
 	{
-		g_pPopupEditorWindow = new PopupEditorWindow(c->window()->frame());
-		c->window()->frame()->addWindow(g_pPopupEditorWindow);
+		g_pPopupEditorWindow = new PopupEditorWindow();
+		g_pMainWindow->addWindow(g_pPopupEditorWindow);
 	}
 
 	g_pPopupEditorWindow->setFocus();

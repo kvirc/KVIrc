@@ -186,7 +186,7 @@ class PopupEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	PopupEditorWindow(KviMainWindow * lpFrm);
+	PopupEditorWindow();
 	~PopupEditorWindow();
 protected:
 	PopupEditorWidget * m_pEditor;

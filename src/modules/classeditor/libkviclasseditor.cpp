@@ -46,12 +46,12 @@ KviModule * g_pClassEditorModule = 0;
 	@description:
 		Opens the script class editor dialog.
 */
-static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	if(!g_pClassEditorWindow)
 	{
-		g_pClassEditorWindow = new ClassEditorWindow(c->window()->frame());
-		c->window()->frame()->addWindow(g_pClassEditorWindow);
+		g_pClassEditorWindow = new ClassEditorWindow();
+		g_pMainWindow->addWindow(g_pClassEditorWindow);
 	}
 
 	g_pClassEditorWindow->setFocus();

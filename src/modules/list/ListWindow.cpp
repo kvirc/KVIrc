@@ -173,8 +173,8 @@ void ChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	}
 }
 
-ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
-: KviWindow(KviWindow::List,lpFrm,"list",lpConsole), KviExternalServerDataParser()
+ListWindow::ListWindow(KviConsoleWindow * lpConsole)
+: KviWindow(KviWindow::List,"list",lpConsole), KviExternalServerDataParser()
 {
 	g_pListWindowList->append(this);
 
@@ -261,7 +261,7 @@ ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
 
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
 
-	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pVertSplitter,this);
 
 	m_pConsole->context()->setListWindowPointer(this);
 	connect(m_pConsole->context(),SIGNAL(stateChanged()),this,SLOT(connectionStateChange()));

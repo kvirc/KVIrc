@@ -336,7 +336,7 @@ void KviIrcServerParser::parseLiteralPart(KviIrcMessage *msg)
 		// It's me!
 		if(chan->closeOnPart() && !KVI_OPTION_BOOL(KviOption_boolKeepChannelOpenOnPart))
 		{
-			chan->frame()->closeWindow(chan); // <-- deleted path
+			g_pMainWindow->closeWindow(chan); // <-- deleted path
 		} else {
 			chan->part(szNick); // this will trigger the action too
 			chan->setDeadChan();
@@ -591,7 +591,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 					&szChan,&szNick,&szUser,&szHost,&szKickMsg);
 			}
 		} else {
-			chan->frame()->closeWindow(chan); // <-- deleted path
+			g_pMainWindow->closeWindow(chan); // <-- deleted path
 
 			if(!msg->haltOutput())
 			{
@@ -913,7 +913,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			if(!msg->haltOutput())
 			{
 				int iFlags = 0;
-				if(!query->hasAttention())
+				if(!query->hasAttention(KviWindow::MainWindowIsVisible))
 				{
 					if(KVI_OPTION_BOOL(KviOption_boolFlashQueryWindowOnNewMessages))
 					{
@@ -1346,7 +1346,7 @@ output_to_query_window:
 			{
 				int iFlags = 0;
 
-				if(!query->hasAttention())
+				if(!query->hasAttention(KviWindow::MainWindowIsVisible))
 				{
 					if(KVI_OPTION_BOOL(KviOption_boolFlashQueryWindowOnNewMessages))
 					{
@@ -1630,7 +1630,7 @@ void KviIrcServerParser::parseLiteralNick(KviIrcMessage *msg)
 						&szNick,&szNewNick);
 			}
 			old->mergeQuery(q);
-			q->frame()->closeWindow(q); // deleted path
+			g_pMainWindow->closeWindow(q); // deleted path
 			if(!msg->haltOutput())
 					old->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"),
 					&szNick,&szUser,&szHost,&szNewNick);

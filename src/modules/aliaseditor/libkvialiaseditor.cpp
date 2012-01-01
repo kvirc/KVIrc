@@ -47,12 +47,12 @@ KviModule * g_pAliasEditorModule = 0;
 		Opens the script alias editor dialog.
 */
 
-static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	if(!g_pAliasEditorWindow)
 	{
-		g_pAliasEditorWindow = new AliasEditorWindow(c->window()->frame());
-		c->window()->frame()->addWindow(g_pAliasEditorWindow);
+		g_pAliasEditorWindow = new AliasEditorWindow();
+		g_pMainWindow->addWindow(g_pAliasEditorWindow);
 	}
 
 	g_pAliasEditorWindow->setFocus();

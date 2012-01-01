@@ -42,8 +42,8 @@
 
 KviIOGraphWindow* g_pIOGraphWindow = 0;
 
-KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm,const char * name)
-: KviWindow(KviWindow::IOGraph,lpFrm,name), KviModuleExtension(d)
+KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d, const char * name)
+: KviWindow(KviWindow::IOGraph, name), KviModuleExtension(d)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);
 	setAutoFillBackground(false);
@@ -300,7 +300,7 @@ static KviModuleExtension * iograph_extension_alloc(KviModuleExtensionAllocStruc
 			}
 		}
 
-		g_pIOGraphWindow = new KviIOGraphWindow(s->pDescriptor,g_pMainWindow,"IOGraph Window");
+		g_pIOGraphWindow = new KviIOGraphWindow(s->pDescriptor,"IOGraph Window");
 		g_pMainWindow->addWindow(g_pIOGraphWindow,!bCreateMinimized);
 
 		if(bCreateMinimized)g_pIOGraphWindow->minimize();

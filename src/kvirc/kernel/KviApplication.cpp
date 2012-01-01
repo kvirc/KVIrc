@@ -1237,7 +1237,7 @@ void KviApplication::fileDownloadTerminated(bool bSuccess, const QString & szRem
 		{
 			if(!g_pActiveWindow)
 				return;
-			if(g_pActiveWindow->hasAttention())
+			if(g_pActiveWindow->hasAttention(KviWindow::MainWindowIsVisible))
 				return;
 			QString szMsg;
 			int iIconId;

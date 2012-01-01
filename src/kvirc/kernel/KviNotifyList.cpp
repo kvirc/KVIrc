@@ -203,7 +203,7 @@ void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & 
 
 	pOut->outputNoFmt(KVI_OUT_NOTIFYONLINE,szMsg);
 
-	if(!(pOut->hasAttention()))
+	if(!(pOut->hasAttention(KviWindow::MainWindowIsVisible)))
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolFlashWindowOnNotifyOnLine))
 			pOut->demandAttention();

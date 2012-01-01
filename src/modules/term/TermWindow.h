@@ -36,7 +36,7 @@
 	{
 		Q_OBJECT
 	public:
-		TermWindow(KviMainWindow * lpFrm,const char * name);
+		TermWindow(const char * name);
 		~TermWindow();
 	protected:
 		TermWidget * m_pTermWidget;

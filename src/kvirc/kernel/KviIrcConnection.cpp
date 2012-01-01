@@ -289,7 +289,7 @@ void KviIrcConnection::serverInfoReceived(const QString & szServerName, const QS
 	serverInfo()->setSupportedUserModes(szUserModes);
 	serverInfo()->setSupportedChannelModes(szChanModes);
 	m_pConsole->updateCaption(); // for server name
-	m_pConsole->frame()->childConnectionServerInfoChange(this);
+	g_pMainWindow->childConnectionServerInfoChange(this);
 }
 
 const QString & KviIrcConnection::currentNetworkName()
@@ -692,8 +692,8 @@ KviChannelWindow * KviIrcConnection::createChannel(const QString & szName)
 			c->setFocus();
 		}
 	} else {
-		c = new KviChannelWindow(m_pConsole->frame(),m_pConsole,szName);
-		m_pConsole->frame()->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
+		c = new KviChannelWindow(m_pConsole, szName);
+		g_pMainWindow->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
 
 		if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
 			c->pasteLastLog();
@@ -738,8 +738,8 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick,CreateQuer
 			q->setFocus();
 		}
 	} else {
-		q = new KviQueryWindow(m_pConsole->frame(),m_pConsole,szNick);
-		m_pConsole->frame()->addWindow(q,bShowIt);
+		q = new KviQueryWindow(m_pConsole, szNick);
+		g_pMainWindow->addWindow(q,bShowIt);
 	}
 	return q;
 }
@@ -1038,7 +1038,7 @@ void KviIrcConnection::changeAwayState(bool bAway)
 	else m_pUserInfo->setBack();
 
 	m_pConsole->updateCaption();
-	m_pConsole->frame()->childConnectionAwayStateChange(this);
+	g_pMainWindow->childConnectionAwayStateChange(this);
 
 	emit awayStateChanged();
 }
@@ -1684,7 +1684,7 @@ void KviIrcConnection::nickChange(const QString & szNewNick)
 	m_pConsole->notifyListView()->nickChange(m_pUserInfo->nickName(),szNewNick);
 	m_pUserInfo->setNickName(szNewNick);
 	m_pConsole->updateCaption();
-	m_pConsole->frame()->childConnectionNickNameChange(this);
+	g_pMainWindow->childConnectionNickNameChange(this);
 	emit nickNameChanged();
 	g_pApp->addRecentNickname(szNewNick);
 }
@@ -1702,7 +1702,7 @@ bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 		m_pUserInfo->removeUserMode(cMode);
 	}
 	m_pConsole->updateCaption();
-	console()->frame()->childConnectionUserModeChange(this);
+	g_pMainWindow->childConnectionUserModeChange(this);
 	emit userModeChanged();
 	return true;
 }
@@ -1786,7 +1786,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	restartLagMeter();
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc))
-		m_pConsole->frame()->executeInternalCommand(KVI_INTERNALCOMMAND_CHANNELSJOIN_OPEN);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_CHANNELSJOIN_OPEN);
 
 
 	// join saved channels

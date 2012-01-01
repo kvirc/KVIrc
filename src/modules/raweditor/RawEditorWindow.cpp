@@ -463,8 +463,8 @@ void RawEditorWidget::exportAllEvents()
 }
 
 
-RawEditorWindow::RawEditorWindow(KviMainWindow * lpFrm)
-: KviWindow(KviWindow::ScriptEditor,lpFrm,"raweditor",0)
+RawEditorWindow::RawEditorWindow()
+: KviWindow(KviWindow::ScriptEditor,"raweditor",0)
 {
 	g_pRawEditorWindow = this;
 

@@ -160,7 +160,7 @@ KviUrlAction::~KviUrlAction()
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
 UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
-	:KviWindow(KviWindow::Tool,g_pMainWindow,"URL List")
+	:KviWindow(KviWindow::Tool,"URL List")
 {
 	setAutoFillBackground(false);
 	

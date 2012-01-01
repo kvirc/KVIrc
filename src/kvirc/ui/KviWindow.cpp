@@ -100,7 +100,7 @@ static QAction         * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
-KviWindow::KviWindow(Type eType, KviMainWindow * lpFrm, const QString & szName, KviConsoleWindow * lpConsole)
+KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpConsole)
 : QWidget(0)
 {
 	m_uId = g_uUniqueWindowId;
@@ -114,7 +114,6 @@ KviWindow::KviWindow(Type eType, KviMainWindow * lpFrm, const QString & szName, 
 	m_eType                 = eType;
 	m_pFocusHandler         = 0;
 
-	m_pFrm = lpFrm; // FIXME: Should disappear!
 	m_pIrcView              = 0;
 	m_pInput                = 0;
 	m_pSplitter             = 0;
@@ -184,78 +183,49 @@ void KviWindow::reloadImages()
 	updateIcon();
 }
 
-bool KviWindow::hasAttention()
+bool KviWindow::hasAttention(AttentionLevel eLevel)
 {
-	if(((QApplication *)g_pApp)->activeWindow() == 0)
-		return false; // no application window has the focus atm
-
 	if(mdiParent())
 	{
-		// This frame is not the active window but the
-		// active window still belongs to KVIrc.
-		// When the active window is derived from QDialog
-		// then it is probably a KVIrc's option dialog
-		// or something similar.
-		// In this case we assume that the user has the
-		// KVIrc window just below and can see it.
-		if(frame()->isActiveWindow())
-			return true;
-
-		// Handle the special case of the dialogs then
-		QWidget * pWidget = ((QApplication *)g_pApp)->activeWindow();
-		if(pWidget->inherits("QDialog"))
+		switch(eLevel)
 		{
-			// but make sure that the frame is visible at all!
-			if(!frame()->isVisible())
+			case VisibleAndActive:
+				return (g_pMainWindow->isActiveWindow() && g_pActiveWindow == this);
+				break;
+			case MainWindowIsVisible:
+				return g_pMainWindow->isActiveWindow();
+				break;
+			default:
 				return false;
-			return true;
+				break;
 		}
-		// any other class is so unfrequent that we ignore it
 	} else {
-		// when the window is undocked, instead
-		// it is likely to be covered by KVIrc or other windows...
+		// undocked window
 		if(isActiveWindow())
 			return true;
 	}
+
 	return false;
 }
 
 void KviWindow::demandAttention()
 {
-	if(mdiParent())
-	{
-		if(frame()->isActiveWindow())
-			return;
+	if(hasAttention())
+		return;
+	
+	WId windowId = mdiParent() ? g_pMainWindow->winId() : winId();
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		FLASHWINFO fwi;
-		fwi.cbSize = sizeof(fwi);
-		fwi.hwnd = (HWND)(frame()->winId());
-		fwi.dwFlags = FLASHW_TRAY | FLASHW_TIMERNOFG;
-		fwi.uCount = 20;
-		fwi.dwTimeout = 500;
-		FlashWindowEx(&fwi);
-#else
-	#ifdef COMPILE_KDE_SUPPORT
-		KWindowSystem::demandAttention(frame()->winId(),true);
-	#endif
+	FLASHWINFO fwi;
+	fwi.cbSize = sizeof(fwi);
+	fwi.hwnd = (HWND)windowId;
+	fwi.dwFlags = FLASHW_TRAY | FLASHW_TIMERNOFG;
+	fwi.uCount = 20;
+	fwi.dwTimeout = 500;
+	FlashWindowEx(&fwi);
+#elif defined(COMPILE_KDE_SUPPORT)
+	KWindowSystem::demandAttention(windowId,true);
 #endif
-	} else {
-		if(isActiveWindow())
-			return;
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		FLASHWINFO fwi;
-		fwi.cbSize = sizeof(fwi);
-		fwi.hwnd = (HWND)winId();
-		fwi.dwFlags = FLASHW_TRAY | FLASHW_TIMERNOFG;
-		fwi.uCount = 20;
-		fwi.dwTimeout = 500;
-		FlashWindowEx(&fwi);
-#else
-	#ifdef COMPILE_KDE_SUPPORT
-		KWindowSystem::demandAttention(winId(),true);
-	#endif
-#endif
-	}
 }
 
 bool KviWindow::focusNextPrevChild(bool bNext)
@@ -1206,7 +1176,7 @@ void KviWindow::restore()
 QRect KviWindow::externalGeometry()
 {
 #ifndef COMPILE_ON_MAC
-	return mdiParent() ? mdiParent()->geometry() : frameGeometry();
+	return mdiParent() ? mdiParent()->frameGeometry() : frameGeometry();
 #else
 	return mdiParent() ? mdiParent()->geometry() : geometry();
 #endif
@@ -1244,7 +1214,7 @@ void KviWindow::internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar
 
 	if(pView)
 	{
-		if((this != g_pActiveWindow) || (!isActiveWindow()))
+		if(!hasAttention())
 		{
 			iFlags |= KviIrcView::TriggersNotification;
 			if(!pView->hasLineMark())

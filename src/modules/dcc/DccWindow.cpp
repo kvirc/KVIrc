@@ -26,8 +26,8 @@
 
 #include "KviTalHBox.h"
 
-DccWindow::DccWindow(KviWindow::Type eType,KviMainWindow * lpFrm,const char * name,DccDescriptor * d)
-: KviWindow(eType,lpFrm,name, d->console())
+DccWindow::DccWindow(KviWindow::Type eType,const char * name,DccDescriptor * d)
+: KviWindow(eType,name, d->console())
 {
 	m_pDescriptor = d;
 	m_pDescriptor->setWindow(this);

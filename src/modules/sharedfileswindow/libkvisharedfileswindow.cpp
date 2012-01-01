@@ -57,7 +57,7 @@ static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtension
 			}
 		}
 
-		g_pSharedFilesWindow = new SharedFilesWindow(s->pDescriptor,g_pMainWindow);
+		g_pSharedFilesWindow = new SharedFilesWindow(s->pDescriptor);
 		g_pMainWindow->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pSharedFilesWindow->minimize();
 		return g_pSharedFilesWindow;

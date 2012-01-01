@@ -53,7 +53,7 @@ QRect                   g_rectChannelsJoinGeometry;
 
 static bool channelsjoin_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	if(!g_pChannelsWindow)g_pChannelsWindow = new ChannelsJoinDialog(c->window()->frame(),"channelsjoin");
+	if(!g_pChannelsWindow)g_pChannelsWindow = new ChannelsJoinDialog("channelsjoin");
 
 	g_pChannelsWindow->setConsole(c->window()->console());
 

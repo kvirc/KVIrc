@@ -45,7 +45,7 @@ class HelpWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	HelpWidget(QWidget *par,KviMainWindow * lpFrm,bool bIsStandalone = false);
+	HelpWidget(QWidget *par, bool bIsStandalone = false);
 	~HelpWidget();
 private:
 #ifdef COMPILE_WEBKIT_SUPPORT

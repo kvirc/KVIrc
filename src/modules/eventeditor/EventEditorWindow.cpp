@@ -511,8 +511,8 @@ void EventEditor::exportAllEvents()
 }
 
 
-EventEditorWindow::EventEditorWindow(KviMainWindow * lpFrm)
-: KviWindow(KviWindow::ScriptEditor,lpFrm,"eventeditor",0)
+EventEditorWindow::EventEditorWindow()
+: KviWindow(KviWindow::ScriptEditor, "eventeditor",0)
 {
 	g_pEventEditorWindow = this;
 

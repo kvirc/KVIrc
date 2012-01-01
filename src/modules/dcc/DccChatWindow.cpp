@@ -81,8 +81,8 @@ extern DccBroker * g_pDccBroker;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DccChatWindow::DccChatWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-: DccWindow(KviWindow::DccChat,pFrm,name,dcc)
+DccChatWindow::DccChatWindow(DccDescriptor * dcc,const char * name)
+: DccWindow(KviWindow::DccChat,name,dcc)
 {
 	m_pButtonBox = new KviTalHBox(this);
 
@@ -101,7 +101,7 @@ DccChatWindow::DccChatWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char 
 	m_pSplitter->setObjectName("dcc_chat_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
-	m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
+	m_pIrcView  = new KviIrcView(m_pSplitter,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	m_pInput    = new KviInput(this);
 
@@ -319,7 +319,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 						KviCString buf(KviCString::Format,"%s\r\n",encrypted.ptr());
 						m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 						if(bUserFeedback)
-							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
+							g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
 								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 								m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsoleWindow::NoNotifications);
 					}
@@ -331,7 +331,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 						if(bUserFeedback)
 						{
 							QString encr = decodeText(encrypted.ptr());
-							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+							g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 								m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsoleWindow::NoNotifications);
 						}
@@ -354,7 +354,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 				m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 				
 				if(bUserFeedback)
-					m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+					g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 						m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 						m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsoleWindow::NoNotifications);
 				return;
@@ -366,7 +366,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 	
 	if(bUserFeedback)
-		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+		g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 			m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsoleWindow::NoNotifications);
 }
@@ -431,7 +431,7 @@ bool DccChatWindow::event(QEvent *e)
 					if(kvi_strEqualCIN("ACTION",d.ptr(),6))d.cutLeft(6);
 					d.stripLeftWhiteSpace();
 					output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szNick),d.ptr());
-					if(!hasAttention())
+					if(!hasAttention(KviWindow::MainWindowIsVisible))
 					{
 						if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 						{
@@ -462,7 +462,7 @@ bool DccChatWindow::event(QEvent *e)
 								case KviCryptEngine::DecryptOkWasPlainText:
 									if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(decryptedStuff.ptr()),m_pDescriptor->idString()))
 									{
-										m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
+										g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
 											m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
 											m_pDescriptor->szHost.toUtf8().data(),decryptedStuff.ptr());
 									}
@@ -485,10 +485,10 @@ bool DccChatWindow::event(QEvent *e)
 						// FIXME!
 						if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(d.ptr()),m_pDescriptor->idString()))
 						{
-							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
+							g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
 								m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
 								m_pDescriptor->szHost.toUtf8().data(),d.ptr());
-							if(!hasAttention())
+							if(!hasAttention(KviWindow::MainWindowIsVisible))
 							{
 								if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 								{

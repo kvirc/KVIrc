@@ -93,11 +93,9 @@ public:
 	/**
 	* \brief Add an KviMdiChild to the area
 	* \param lpC The KviMdiChild
-	* \param bCascade Cascade window or not.
-	* \param setGeom Sets the windows geometry before shown
 	* \return void
 	*/
-	void manageChild(KviMdiChild * lpC, bool bCascade = true, QRect * setGeom = 0);
+	void manageChild(KviMdiChild * lpC);
 
 	/**
 	* \brief Show the KviMdiChild and bring it to the front

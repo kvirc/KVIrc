@@ -323,13 +323,13 @@ void DccBroker::executeChat(DccDialog *box,DccDescriptor * dcc)
 	szSubProto.toLower();
 
 	QString tmp = QString("dcc: %1 %2@%3:%4").arg(szSubProto.ptr(), dcc->szNick, dcc->szIp, dcc->szPort);
-	DccChatWindow * chat = new DccChatWindow(dcc->console()->frame(),dcc,tmp.toUtf8().data());
+	DccChatWindow * chat = new DccChatWindow(dcc,tmp.toUtf8().data());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat) || \
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChatWhenAutoAccepted)));
 
-	dcc->console()->frame()->addWindow(chat,!bMinimized);
+	g_pMainWindow->addWindow(chat,!bMinimized);
 	if(bMinimized)chat->minimize();
 	m_pDccWindowList->append(chat);
 }
@@ -374,13 +374,13 @@ void DccBroker::activeVoiceExecute(DccDialog *box,DccDescriptor * dcc)
 	}
 
 	KviCString tmp(KviCString::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
-	DccVoiceWindow * v = new DccVoiceWindow(dcc->console()->frame(),dcc,tmp.ptr());
+	DccVoiceWindow * v = new DccVoiceWindow(dcc,tmp.ptr());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoice) || \
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted)));
 
-	dcc->console()->frame()->addWindow(v,!bMinimized);
+	g_pMainWindow->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();
 
 	m_pDccWindowList->append(v);
@@ -394,10 +394,10 @@ void DccBroker::activeVoiceExecute(DccDialog *box,DccDescriptor * dcc)
 void DccBroker::passiveVoiceExecute(DccDescriptor * dcc)
 {
 	KviCString tmp(KviCString::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
-	DccVoiceWindow * v = new DccVoiceWindow(dcc->console()->frame(),dcc,tmp.ptr());
+	DccVoiceWindow * v = new DccVoiceWindow(dcc,tmp.ptr());
 	//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
-	dcc->console()->frame()->addWindow(v,!bMinimized);
+	g_pMainWindow->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
 }
@@ -444,13 +444,13 @@ void DccBroker::activeVideoExecute(DccDialog *box,DccDescriptor * dcc)
 	}
 
 	KviCString tmp(KviCString::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
-	DccVideoWindow * v = new DccVideoWindow(dcc->console()->frame(),dcc,tmp.ptr());
+	DccVideoWindow * v = new DccVideoWindow(dcc,tmp.ptr());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVideo) || \
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted)));
 
-	dcc->console()->frame()->addWindow(v,!bMinimized);
+	g_pMainWindow->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();
 
 	m_pDccWindowList->append(v);
@@ -469,10 +469,10 @@ void DccBroker::activeVideoExecute(DccDialog *,DccDescriptor *)
 void DccBroker::passiveVideoExecute(DccDescriptor * dcc)
 {
 	KviCString tmp(KviCString::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
-	DccVideoWindow * v = new DccVideoWindow(dcc->console()->frame(),dcc,tmp.ptr());
+	DccVideoWindow * v = new DccVideoWindow(dcc,tmp.ptr());
 	//#warning "Create minimized dcc video ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
-	dcc->console()->frame()->addWindow(v,!bMinimized);
+	g_pMainWindow->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
 #else
@@ -525,14 +525,14 @@ void DccBroker::activeCanvasExecute(DccDialog *box,DccDescriptor * dcc)
 	}
 
 	KviCString tmp(KviCString::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
-	DccCanvasWindow * cnv = new DccCanvasWindow(dcc->console()->frame(),dcc,tmp.ptr());
+	DccCanvasWindow * cnv = new DccCanvasWindow(dcc,tmp.ptr());
 
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat) || \
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChatWhenAutoAccepted)));
 
-	dcc->console()->frame()->addWindow(cnv,!bMinimized);
+	g_pMainWindow->addWindow(cnv,!bMinimized);
 	if(bMinimized)cnv->minimize();
 
 	m_pDccWindowList->append(cnv);
@@ -549,10 +549,10 @@ void DccBroker::activeCanvasExecute(DccDialog *,DccDescriptor *)
 void DccBroker::passiveCanvasExecute(DccDescriptor * dcc)
 {
 	KviCString tmp(KviCString::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
-	DccCanvasWindow * cnv = new DccCanvasWindow(dcc->console()->frame(),dcc,tmp.ptr());
+	DccCanvasWindow * cnv = new DccCanvasWindow(dcc,tmp.ptr());
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
-	dcc->console()->frame()->addWindow(cnv,!bMinimized);
+	g_pMainWindow->addWindow(cnv,!bMinimized);
 	if(bMinimized)cnv->minimize();
 	m_pDccWindowList->append(cnv);
 }
@@ -865,7 +865,6 @@ void DccBroker::recvFileExecute(DccDialog *box,DccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	//KviDccSend * send = new KviDccSend(dcc->console()->frame(),dcc,tmp.ptr());
 	DccFileTransfer * send = new DccFileTransfer(dcc);
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \

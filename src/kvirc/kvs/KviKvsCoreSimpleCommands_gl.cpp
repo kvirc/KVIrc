@@ -305,7 +305,7 @@ namespace KviKvsCoreSimpleCommands
 		KviWindow * pActive = KVSCSC_pWindow->context()->console()->activeWindow();
 
 		// Get the list of open windows
-		KviPointerList<KviWindow> * pList = KVSCSC_pWindow->frame()->windowList();
+		KviPointerList<KviWindow> * pList = g_pMainWindow->windowList();
 
 		// Scan the windows
 		for(KviWindow * pWnd = pList->first(); pWnd; pWnd = pList->next())

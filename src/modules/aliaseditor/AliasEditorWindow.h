@@ -172,7 +172,7 @@ class AliasEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	AliasEditorWindow(KviMainWindow * lpFrm);
+	AliasEditorWindow();
 	~AliasEditorWindow();
 protected:
 	AliasEditorWidget * m_pEditor;

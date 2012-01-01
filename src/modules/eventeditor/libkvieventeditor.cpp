@@ -45,12 +45,12 @@ EventEditorWindow * g_pEventEditorWindow = 0;
 		Opens the script event editor dialog.
 */
 
-static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	if(!g_pEventEditorWindow)
 	{
-		g_pEventEditorWindow = new EventEditorWindow(c->window()->frame());
-		c->window()->frame()->addWindow(g_pEventEditorWindow);
+		g_pEventEditorWindow = new EventEditorWindow();
+		g_pMainWindow->addWindow(g_pEventEditorWindow);
 	}
 
 	g_pEventEditorWindow->setFocus();

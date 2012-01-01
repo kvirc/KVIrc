@@ -90,7 +90,7 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 			delete d;
 			c->error(__tr2qs_ctx("This window has no associated IRC context (an IRC context is required unless -c or -n are passed)","dcc"));
 			return false;
-		} else d->setConsole(c->window()->frame()->firstConsole());
+		} else d->setConsole(g_pMainWindow->firstConsole());
 	}
 
 	KVI_ASSERT(d->console());
@@ -1280,7 +1280,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 	{
 		// We don't need a console with -c and -n, otherwise we need it
 		if(!(c->hasSwitch('c') || c->hasSwitch('n')))return c->noIrcContext();
-		else d->console() = c->window()->frame()->firstConsole();
+		else d->console() = g_pMainWindow->firstConsole();
 	}
 
 	KVI_ASSERT(d->console());

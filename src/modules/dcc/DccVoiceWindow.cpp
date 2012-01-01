@@ -637,15 +637,15 @@ exit_dcc:
 }
 
 
-DccVoiceWindow::DccVoiceWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-: DccWindow(KviWindow::DccVoice,pFrm,name,dcc)
+DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc,const char * name)
+: DccWindow(KviWindow::DccVoice,name,dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("dcc_window_splitter");
-	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
+	m_pIrcView = new KviIrcView(m_pSplitter,this);
 
 	m_pHBox = new KviTalHBox(this);
 

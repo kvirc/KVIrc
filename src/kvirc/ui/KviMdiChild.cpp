@@ -45,10 +45,6 @@
 #include "KviIrcNetwork.h"
 #include "KviKvsEventTriggers.h"
 
-#ifdef COMPILE_ON_MAC
-	#include "KviApplication.h"  //Needed for g_pApp
-#endif
-
 #include <QTimer>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY

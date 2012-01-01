@@ -79,7 +79,7 @@ class SharedFilesWindow : public KviWindow, public KviModuleExtension
 	friend class KviSharedFilesItem;
 	Q_OBJECT
 public:
-	SharedFilesWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm);
+	SharedFilesWindow(KviModuleExtensionDescriptor * d);
 	~SharedFilesWindow();
 protected:
 	QSplitter           * m_pVertSplitter;

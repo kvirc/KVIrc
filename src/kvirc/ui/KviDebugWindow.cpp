@@ -42,12 +42,12 @@ KviDebugWindow * KviDebugWindow::m_pInstance = 0;
 
 
 KviDebugWindow::KviDebugWindow()
-: KviWindow(KviWindow::Debug,g_pMainWindow,__tr2qs("Debug Messages"),0)
+: KviWindow(KviWindow::Debug,__tr2qs("Debug Messages"),0)
 {
 	m_pInstance = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
-	m_pIrcView = new KviIrcView(m_pSplitter,g_pMainWindow,this);
+	m_pIrcView = new KviIrcView(m_pSplitter,this);
 	m_pInput   = new KviInput(this,0);
 	updateCaption();
 }

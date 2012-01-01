@@ -34,13 +34,13 @@
 
 extern KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList;
 
-SocketSpyWindow::SocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
-: KviWindow(KviWindow::SocketSpy,lpFrm,"socket_spy",lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
+SocketSpyWindow::SocketSpyWindow(KviConsoleWindow * lpConsole)
+: KviWindow(KviWindow::SocketSpy,"socket_spy",lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	setObjectName("spysocket_splitter");
-	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pSplitter,this);
 	// Ensure proper focusing
 	//setFocusHandler(m_pIrcView,this);
 }

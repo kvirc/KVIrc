@@ -55,8 +55,8 @@ static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!(c->window()->context()->listWindow()))
 	{
-		ListWindow * w = new ListWindow(c->window()->frame(),c->window()->console());
-		c->window()->frame()->addWindow(w);
+		ListWindow * w = new ListWindow(c->window()->console());
+		g_pMainWindow->addWindow(w);
 	} else {
 		c->warning(__tr2qs("List window already open for this IRC context"));
 	}

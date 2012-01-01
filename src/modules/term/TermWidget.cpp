@@ -46,7 +46,7 @@
 	extern KviPointerList<TermWidget> * g_pTermWidgetList;
 	extern KviPointerList<TermWindow> * g_pTermWindowList;
 
-	TermWidget::TermWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
+	TermWidget::TermWidget(QWidget * par,bool bIsStandalone)
 	: QFrame(par)
 	{
 		setObjectName("term_widget");

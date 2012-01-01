@@ -109,7 +109,7 @@ class DccVideoWindow : public DccWindow
 	Q_OBJECT
 	friend class DccVideoThread;
 public:
-	DccVideoWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name);
+	DccVideoWindow(DccDescriptor * dcc,const char * name);
 	~DccVideoWindow();
 protected:
 	KviThemedLabel         * m_pLabel;

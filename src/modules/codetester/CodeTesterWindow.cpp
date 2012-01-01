@@ -82,8 +82,8 @@ void CodeTesterWidget::execute()
 	delete pSLParams;
 }
 
-CodeTesterWindow::CodeTesterWindow(KviMainWindow * lpFrm)
-: KviWindow(KviWindow::ScriptEditor,lpFrm,"codetester",0)
+CodeTesterWindow::CodeTesterWindow()
+: KviWindow(KviWindow::ScriptEditor,"codetester",0)
 {
 	g_pCodeTesterWindowList->append(this);
 

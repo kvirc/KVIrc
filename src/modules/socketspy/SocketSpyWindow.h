@@ -34,7 +34,7 @@ class SocketSpyWindow : public KviWindow, public KviIrcDataStreamMonitor
 {
 	Q_OBJECT
 public:
-	SocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole);
+	SocketSpyWindow(KviConsoleWindow * lpConsole);
 	~SocketSpyWindow();
 protected:
 	virtual QPixmap * myIconPtr();

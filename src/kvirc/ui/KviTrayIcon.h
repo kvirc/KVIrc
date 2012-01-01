@@ -1,8 +1,8 @@
-#ifndef _KviDockExtension_h_
-#define _KviDockExtension_h_
+#ifndef _KviTrayIcon_h_
+#define _KviTrayIcon_h_
 //=============================================================================
 //
-//   File : KviDockExtension.h
+//   File : KviTrayIcon.h
 //   Creation date : Sun Jun 18 2000 17:59:02 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
@@ -29,12 +29,12 @@
 #include <QWidget>
 
 ///
-/// \class KviDockExtension
-/// \brief The KviDockExtension class
+/// \class KviTrayIcon
+/// \brief The KviTrayIcon class
 ///
 /// Base class for the dock extension applets..
 ///
-class KVIRC_API KviDockExtension
+class KVIRC_API KviTrayIcon
 {
 private:
 	Qt::WindowStates m_oStoredWindowStates;
@@ -42,18 +42,18 @@ private:
 public:
 
 	///
-	/// Creates an instance of KviDockExtension
+	/// Creates an instance of KviTrayIcon
 	///
-	KviDockExtension()
+	KviTrayIcon()
 		: m_oStoredWindowStates(0)
 	{
 	}
 
 	///
-	/// Destroys the instance of KviDockExtension
+	/// Destroys the instance of KviTrayIcon
 	/// and frees all the relevant resources
 	///
-	virtual ~KviDockExtension()
+	virtual ~KviTrayIcon()
 	{
 	}
 
@@ -78,8 +78,8 @@ public:
 		delete this;
 	}
 
-}; // class KviDockExtension
+}; // class KviTrayIcon
 
 
 
-#endif //!_KviDockExtension_h_
+#endif //!_KviTrayIcon_h_

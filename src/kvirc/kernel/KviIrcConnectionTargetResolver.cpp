@@ -457,7 +457,7 @@ bool KviIrcConnectionTargetResolver::validateLocalAddress(const QString &szAddre
 void KviIrcConnectionTargetResolver::haveServerIp()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && !KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
-		m_pConsole->frame()->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
 
 	QString bindAddress;
 

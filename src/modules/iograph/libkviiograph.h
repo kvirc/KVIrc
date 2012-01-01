@@ -57,7 +57,7 @@ class KviIOGraphWindow : public KviWindow, public KviModuleExtension
 {
 	Q_OBJECT
 public:
-	KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm,const char * name);
+	KviIOGraphWindow(KviModuleExtensionDescriptor * d, const char * name);
 	~KviIOGraphWindow();
 private:
 	KviIOGraphWidget * m_pIOGraph;

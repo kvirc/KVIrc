@@ -227,7 +227,7 @@ void NotifierWindow::addMessage(KviWindow * pWnd, const QString & szImageId, con
 
 	if(pWnd)
 	{
-		if(pWnd->hasAttention())
+		if(pWnd->hasAttention(KviWindow::MainWindowIsVisible))
 			m_bDisableHideOnMainWindowGotAttention = true;
 	}
 

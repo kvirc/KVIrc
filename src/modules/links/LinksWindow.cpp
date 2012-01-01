@@ -44,8 +44,8 @@
 
 extern KviPointerList<LinksWindow> * g_pLinksWindowList;
 
-LinksWindow::LinksWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
-: KviWindow(KviWindow::Links,lpFrm,"links",lpConsole), KviExternalServerDataParser()
+LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
+: KviWindow(KviWindow::Links,"links",lpConsole), KviExternalServerDataParser()
 {
 	g_pLinksWindowList->append(this);
 
@@ -83,7 +83,7 @@ LinksWindow::LinksWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
 	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,const QPoint &)),
 			this,SLOT(showHostPopup(QTreeWidgetItem *,const QPoint &)));
 
-	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pVertSplitter,this);
 
 	m_pLinkList = new KviPointerList<KviLink>;
 	m_pLinkList->setAutoDelete(true);

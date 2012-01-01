@@ -65,7 +65,7 @@ public:
 	friend class KviIrcViewToolTip;
 	friend class KviIrcViewToolWidget;
 public:
-	KviIrcView(QWidget *parent,KviMainWindow *pFrm,KviWindow *pWnd);
+	KviIrcView(QWidget *parent, KviWindow *pWnd);
 	~KviIrcView();
 public:
 	int dummyRead() const { return 0; };

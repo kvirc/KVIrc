@@ -69,7 +69,7 @@ class DccChatWindow : public DccWindow
 {
 	Q_OBJECT
 public:
-	DccChatWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name);
+	DccChatWindow(DccDescriptor * dcc,const char * name);
 	~DccChatWindow();
 	QFrame * buttonContainer() { return (QFrame*)m_pButtonContainer; };
 protected:

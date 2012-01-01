@@ -53,7 +53,7 @@ class CodeTesterWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	CodeTesterWindow(KviMainWindow * lpFrm);
+	CodeTesterWindow();
 	~CodeTesterWindow();
 protected:
 	CodeTesterWidget * m_pTester;

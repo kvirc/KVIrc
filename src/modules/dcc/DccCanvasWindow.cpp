@@ -56,14 +56,14 @@
 	extern DccBroker * g_pDccBroker;
 
 
-	DccCanvasWindow::DccCanvasWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-	: DccWindow(KVI_WINDOW_TYPE_DCCCANVAS,pFrm,name,dcc)
+	DccCanvasWindow::DccCanvasWindow(DccDescriptor * dcc,const char * name)
+	: DccWindow(KVI_WINDOW_TYPE_DCCCANVAS,name,dcc)
 	{
 		m_pSplitter = new QSplitter(QSplitter::Vertical,this,"splitter");
 
 		m_pCanvas   = new DccCanvasWidget(m_pSplitter);
 
-		m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
+		m_pIrcView  = new KviIrcView(m_pSplitter,this);
 		m_pInput    = new KviInput(this);
 
 	//	setFocusHandler(m_pInput,this);

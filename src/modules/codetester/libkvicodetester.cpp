@@ -47,10 +47,10 @@ KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList = 0;
 		Opens a new code tester window
 */
 
-static bool codetester_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool codetester_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
-	CodeTesterWindow * w = new CodeTesterWindow(c->window()->frame());
-	c->window()->frame()->addWindow(w);
+	CodeTesterWindow * w = new CodeTesterWindow();
+	g_pMainWindow->addWindow(w);
 	w->setFocus();
 	return true;
 }

@@ -43,7 +43,7 @@
 	{
 		Q_OBJECT
 	public:
-		DccCanvasWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name);
+		DccCanvasWindow(DccDescriptor * dcc,const char * name);
 		~DccCanvasWindow();
 	protected:
 	//	KviDccCanvasThread     * m_pSlaveThread;

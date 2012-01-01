@@ -117,6 +117,14 @@ public:
 	};
 
 	/**
+	* \enum AttentionLevel
+	* \brief attention levels usable in hasAttention()
+	*/
+	enum AttentionLevel {
+		VisibleAndActive	= 0,   /**< The window is visible and active (aka: has user focus) */
+		MainWindowIsVisible  	= 1,   /**< The kvirc frame is visible but the window is not the active one */
+	};
+	/**
 	* \enum Type
 	* \brief Holds the types of a window; these are used by the KVIrc core and distributed modules
 	* \note If you add a new type, insert it just before Unknown
@@ -159,7 +167,7 @@ public:
 	* \param pConsole The parent console
 	* \return KviWindow
 	*/
-	KviWindow(Type eType, KviMainWindow * lpFrm, const QString & szName, KviConsoleWindow * pConsole = 0);
+	KviWindow(Type eType, const QString & szName, KviConsoleWindow * pConsole = 0);
 
 	/**
 	* \brief Destroys the window object
@@ -167,7 +175,6 @@ public:
 	virtual ~KviWindow();
 protected: // almost private: don't touch :D
 	QString                   m_szName;     // the current window name (usually also the target)
-	KviMainWindow           * m_pFrm;
 	KviConsoleWindow        * m_pConsole;
 	Type                      m_eType;
 	KviWindowListItem       * m_pWindowListItem;
@@ -248,14 +255,6 @@ public:
 
 	inline QTextCodec * textCodec(){ return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
 	void forceTextCodec(QTextCodec * pCodec);
-
-	/**
-	* \brief Returns the main window that this window belongs to
-	* 
-	* It is always non-null and never changes
-	* \return KviMainWindow *
-	*/
-	inline KviMainWindow * frame() const { return m_pFrm; };
 
 	/**
 	* \brief Returns the KviIrcView of this window
@@ -386,8 +385,28 @@ public:
 	// Just helpers.. FIXME: might be redesigned in some other way
 	void updateBackgrounds(QObject * pObj = 0);
 
+	/**
+	* \brief Notify the window manager that this window demands attention 
+	* 
+	* Depending on the os/window manager, this method uses different approaches to
+	* trigger a notification that tipically makes the application entry flash
+	* on the application bar. 
+	* \return void
+	*/
 	void demandAttention();
-	bool hasAttention();
+
+	/**
+	* \brief Returns wether this window is the active one
+	* 
+	* This method is useful because it takes in consideration that this window
+	* can be either docked or undocked, and takes a parameter that defines the strictness
+	* of the checks used.
+	* Level MainWindowIsVisible is fine to check if we needs to trigger the notifier
+	* Level VisibleAndActive is useful to trigger highlights
+	* @param eLevel the level of checks to be done
+	* \return bool
+	*/
+	bool hasAttention(AttentionLevel eLevel=VisibleAndActive);
 
 	// This should die, probably
 	void listWindowTypes();

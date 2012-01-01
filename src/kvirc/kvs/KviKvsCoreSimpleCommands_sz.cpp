@@ -227,7 +227,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviConsoleWindow * console = 0;
 		if(KVSCSC_pSwitches->find('n',"new-context"))
-			console = KVSCSC_pWindow->frame()->createNewConsole(false,!KVSCSC_pSwitches->find('m',"minimized"));
+			console = g_pMainWindow->createNewConsole(false,!KVSCSC_pSwitches->find('m',"minimized"));
 		else {
 			if(KVSCSC_pSwitches->find('u',"unused-context"))
 			{
@@ -244,10 +244,10 @@ namespace KviKvsCoreSimpleCommands
 				if(!console)
 				{
 					// yep, have to search
-					console = KVSCSC_pWindow->frame()->firstNotConnectedConsole();
+					console = g_pMainWindow->firstNotConnectedConsole();
 					if(!console)
 					{
-						console = KVSCSC_pWindow->frame()->createNewConsole(false,!KVSCSC_pSwitches->find('m',"minimized"));
+						console = g_pMainWindow->createNewConsole(false,!KVSCSC_pSwitches->find('m',"minimized"));
 					}
 				}
 			} else console = KVSCSC_pWindow->console();
@@ -392,7 +392,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(szPopupName.isEmpty())
 		{
-			if(!(KVSCSC_pWindow->frame()->mainMenuBar()->removeMenu(szVisibleText)))
+			if(!(g_pMainWindow->mainMenuBar()->removeMenu(szVisibleText)))
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("No menu bar item with text '%Q'","kvs"),&szVisibleText);
 			}
@@ -411,12 +411,14 @@ namespace KviKvsCoreSimpleCommands
 					KVSCSC_pContext->warning(__tr2qs_ctx("Invalid index specified: ignored","kvs"));
 			}
 		}
-		KVSCSC_pWindow->frame()->mainMenuBar()->removeMenu(szVisibleText);
+		g_pMainWindow->mainMenuBar()->removeMenu(szVisibleText);
 
-		idx = KVSCSC_pWindow->frame()->mainMenuBar()->getDefaultItemRealIndex(idx);
+		idx = g_pMainWindow->mainMenuBar()->getDefaultItemRealIndex(idx);
 
-		if(p)KVSCSC_pWindow->frame()->mainMenuBar()->addMenu(szVisibleText,p,idx);
-		else {
+		if(p)
+		{
+			g_pMainWindow->mainMenuBar()->addMenu(szVisibleText,p,idx);
+		} else {
 			if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("The popup '%Q' is not defined","kvs"),&szPopupName);
 		}
 

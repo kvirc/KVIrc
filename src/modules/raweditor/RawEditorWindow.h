@@ -122,7 +122,7 @@ class RawEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	RawEditorWindow(KviMainWindow * lpFrm);
+	RawEditorWindow();
 	~RawEditorWindow();
 protected:
 	RawEditorWidget * m_pEditor;

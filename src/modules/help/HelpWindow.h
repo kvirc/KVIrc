@@ -48,7 +48,7 @@ class HelpWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	HelpWindow(KviMainWindow * lpFrm,const char * name);
+	HelpWindow(const char * name);
 	~HelpWindow();
 protected:
 	HelpWidget * m_pHelpWidget;

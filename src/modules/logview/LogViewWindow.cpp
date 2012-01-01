@@ -84,8 +84,8 @@ void LogViewListView::mousePressEvent(QMouseEvent * pEvent)
 }
 
 
-LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow * pMain)
-: KviWindow(KviWindow::LogView,pMain,"log"),KviModuleExtension(pDesc)
+LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc)
+: KviWindow(KviWindow::LogView,"log"),KviModuleExtension(pDesc)
 {
 	g_pLogViewWindow = this;
 	//m_pLogViewWidget = new KviLogViewWidget(this);
@@ -177,7 +177,7 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc, KviMainWindow
 	pWidget->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
 	pLayout->addWidget(pWidget,11,1);
 
-	m_pIrcView = new KviIrcView(m_pSplitter,g_pMainWindow,this);
+	m_pIrcView = new KviIrcView(m_pSplitter,this);
 	m_pIrcView->setMaxBufferSize(INT_MAX);
 	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
 

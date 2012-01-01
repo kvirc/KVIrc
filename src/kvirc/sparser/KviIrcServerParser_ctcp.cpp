@@ -1466,7 +1466,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 
 	if(type == KVI_OUT_HIGHLIGHT || !bIsChannel)
 	{
-		if(!pOut->hasAttention())
+		if(!pOut->hasAttention(KviWindow::MainWindowIsVisible))
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolFlashWindowOnHighlightedMessages))
 				pOut->demandAttention();

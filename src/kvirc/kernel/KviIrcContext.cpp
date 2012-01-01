@@ -78,8 +78,6 @@ KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
 
 	m_pConnection = 0;
 
-	m_pFrame = m_pConsole->frame();
-
 	m_pDeadChannels = 0;
 	m_pDeadQueries = 0;
 	m_pContextWindows = 0;
@@ -156,7 +154,7 @@ void KviIrcContext::closeAllDeadChannels()
 		KviChannelWindow * c = m_pDeadChannels->first();
 		if(c)
 		{
-			m_pFrame->closeWindow(c);
+			g_pMainWindow->closeWindow(c);
 		} else {
 			// ops....
 			delete m_pDeadChannels;
@@ -172,7 +170,7 @@ void KviIrcContext::closeAllDeadQueries()
 		KviQueryWindow * q = m_pDeadQueries->first();
 		if(q)
 		{
-			m_pFrame->closeWindow(q);
+			g_pMainWindow->closeWindow(q);
 		} else {
 			// ops....
 			delete m_pDeadQueries;
@@ -188,7 +186,7 @@ void KviIrcContext::closeAllContextWindows()
 		KviWindow * w = m_pContextWindows->first();
 		if(w)
 		{
-			m_pFrame->closeWindow(w);
+			g_pMainWindow->closeWindow(w);
 		} else {
 			// ops...
 			delete m_pContextWindows;
@@ -344,7 +342,7 @@ void KviIrcContext::setState(State eState)
 	if(m_eState == eState)return;
 	m_eState = eState;
 
-	m_pFrame->childContextStateChange(this);
+	g_pMainWindow->childContextStateChange(this);
 
 	emit stateChanged();
 

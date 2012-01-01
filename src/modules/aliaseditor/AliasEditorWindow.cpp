@@ -1176,8 +1176,8 @@ void AliasEditorWidget::commit()
 }
 
 
-AliasEditorWindow::AliasEditorWindow(KviMainWindow * lpFrm)
-: KviWindow(KviWindow::ScriptEditor,lpFrm,"aliaseditor",0)
+AliasEditorWindow::AliasEditorWindow()
+: KviWindow(KviWindow::ScriptEditor,"aliaseditor",0)
 {
 	g_pAliasEditorWindow = this;
 

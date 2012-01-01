@@ -151,14 +151,14 @@ void NotifierWindowTab::mouseDoubleClickEvent(QMouseEvent *)
 
 	if(m_pWnd->mdiParent())
 	{
-		m_pWnd->frame()->raise();
-		m_pWnd->frame()->setFocus();
-		m_pWnd->frame()->setWindowState((m_pWnd->frame()->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
-		if(!m_pWnd->frame()->isVisible())
-			m_pWnd->frame()->show();
+		g_pMainWindow->raise();
+		g_pMainWindow->setFocus();
+		g_pMainWindow->setWindowState((g_pMainWindow->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+		if(!g_pMainWindow->isVisible())
+			g_pMainWindow->show();
 	}
 
-	m_pWnd->frame()->setActiveWindow(m_pWnd);
+	g_pMainWindow->setActiveWindow(m_pWnd);
 }
 
 void NotifierWindowTab::closeMe()

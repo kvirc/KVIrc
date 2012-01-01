@@ -186,7 +186,7 @@ class ActionEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	ActionEditorWindow(KviMainWindow * lpFrm);
+	ActionEditorWindow();
 	~ActionEditorWindow();
 protected:
 	ActionEditor * m_pEditor;

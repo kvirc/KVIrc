@@ -1368,8 +1368,8 @@ void PopupEditorWidget::getUniquePopupName(MenuTreeWidgetItem *item,QString &buf
 }
 
 
-PopupEditorWindow::PopupEditorWindow(KviMainWindow * lpFrm)
-: KviWindow(KviWindow::ScriptEditor,lpFrm,"popupeditor",0)
+PopupEditorWindow::PopupEditorWindow()
+: KviWindow(KviWindow::ScriptEditor,"popupeditor",0)
 {
 	g_pPopupEditorWindow = this;
 

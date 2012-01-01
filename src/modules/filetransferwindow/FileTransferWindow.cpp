@@ -236,8 +236,8 @@ QSize FileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const QMo
 	return QSize(((FileTransferWidget*)parent())->viewport()->size().width(), 68);
 }
 
-FileTransferWindow::FileTransferWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm)
-: KviWindow(KviWindow::Tool,lpFrm,"file transfer window",0), KviModuleExtension(d)
+FileTransferWindow::FileTransferWindow(KviModuleExtensionDescriptor * d)
+: KviWindow(KviWindow::Tool,"file transfer window",0), KviModuleExtension(d)
 {
 	g_pFileTransferWindow = this;
 	setAutoFillBackground(false);
@@ -272,7 +272,7 @@ FileTransferWindow::FileTransferWindow(KviModuleExtensionDescriptor * d,KviMainW
 	QFontMetrics fm(font());
 	m_iLineSpacing = fm.lineSpacing();
 
-	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
+	m_pIrcView = new KviIrcView(m_pVertSplitter,this);
 
 	m_pTableWidget->installEventFilter(this);
 

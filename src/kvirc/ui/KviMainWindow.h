@@ -50,7 +50,7 @@ class KviIrcContext;
 class KviIrcConnection;
 class KviStatusBar;
 class KviTalPopupMenu;
-class KviDockExtension;
+class KviTrayIcon;
 class QShortcut;
 
 #ifdef COMPILE_ON_WINDOWS
@@ -89,7 +89,7 @@ protected:
 	KviPointerList<KviWindow>             * m_pWinList;                      // the main list of windows
 	KviIrcContext                         * m_pActiveContext;                // the context of the m_pActiveWindow
 	// other
-	KviDockExtension                      * m_pDockExtension;                // the frame's dock extension: this should be prolly moved ?
+	KviTrayIcon                           * m_pTrayIcon;                // the frame's dock extension: this should be prolly moved ?
 	KviPointerList<QShortcut>             * m_pAccellerators;                // global application accellerators
 public:
 	// the mdi manager: handles mdi children
@@ -134,11 +134,11 @@ public:
 	// Returns the first console that has no connection in progress
 	// This function CAN return 0 if all the consoles are connected
 	KviConsoleWindow * firstNotConnectedConsole();
-	// this is explicitly dedicated to the DockExtension applets
-	void setDockExtension(KviDockExtension * e){ m_pDockExtension = e; };
+	// this is explicitly dedicated to the TrayIcon module
+	void setTrayIcon(KviTrayIcon * e){ m_pTrayIcon = e; };
 	// returns the dockExtension applet. Useful for calling refresh() when
 	// some particular event happens
-	KviDockExtension * dockExtension(){ return m_pDockExtension; };
+	KviTrayIcon * trayIcon(){ return m_pTrayIcon; };
 	// helper for saving the window properties
 	void saveWindowProperties(KviWindow * wnd,const QString &szSection);
 	// finds the module extension toolbar with the specified identifier
@@ -168,7 +168,7 @@ protected:
 	void createWindowList();
 	void recreateWindowList();
 
-	KviMdiChild * dockWindow(KviWindow *wnd,bool bCascade = true,QRect * setGeom = 0);
+	KviMdiChild * dockWindow(KviWindow *wnd);
 	void undockWindow(KviWindow *wnd);
 
 	// called by KviWindow

@@ -41,7 +41,7 @@
 		Q_OBJECT
 		Q_PROPERTY( int KviProperty_ChildFocusOwner READ dummy )
 	public:
-		TermWidget(QWidget * par,KviMainWindow * lpFrm,bool bIsStandalone = false);
+		TermWidget(QWidget * par,bool bIsStandalone = false);
 		~TermWidget();
 	private:
 		KviTalHBox   * m_pHBox;

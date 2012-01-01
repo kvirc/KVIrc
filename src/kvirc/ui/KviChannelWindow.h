@@ -145,12 +145,11 @@ public:
 
 	/**
 	* \brief Constructs the channel object
-	* \param lpFrm The parent frame object
 	* \param lpConsole The console of the context
 	* \param szName The name of the channel
 	* \return KviChannelWindow
 	*/
-	KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szName);
+	KviChannelWindow(KviConsoleWindow * lpConsole, const QString & szName);
 
 	/**
 	* \brief Destroys the channel object

@@ -48,15 +48,15 @@ extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
 //bool g_bIndexingDone = FALSE;
-HelpWindow::HelpWindow(KviMainWindow * lpFrm,const char * name)
-: KviWindow(KviWindow::Help,lpFrm,name)
+HelpWindow::HelpWindow(const char * name)
+: KviWindow(KviWindow::Help,name)
 {
 	g_pHelpWindowList->append(this);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
-	m_pHelpWidget = new HelpWidget(m_pSplitter,lpFrm);
+	m_pHelpWidget = new HelpWidget(m_pSplitter);
 
 	m_pToolBar=new KviTalVBox(m_pSplitter);	
 	m_pTabWidget = new QTabWidget(m_pToolBar);
