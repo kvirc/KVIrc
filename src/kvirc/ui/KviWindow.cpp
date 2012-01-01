@@ -210,9 +210,6 @@ bool KviWindow::hasAttention(AttentionLevel eLevel)
 
 void KviWindow::demandAttention()
 {
-	if(hasAttention())
-		return;
-	
 	WId windowId = mdiParent() ? g_pMainWindow->winId() : winId();
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
