@@ -417,6 +417,8 @@ void LogViewWindow::itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *)
 	{
 		QString szNum = (*it).section(' ',0,0);
 		iMsgType = szNum.toInt(&bOk);
+		if(iMsgType < 0 || iMsgType > (KVI_NUM_MSGTYPE_OPTIONS-1))
+			iMsgType=0;
 		if(bOk)
 			outputNoFmt(iMsgType,(*it).section(' ',1),KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
 		else
