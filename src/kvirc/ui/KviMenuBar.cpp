@@ -135,8 +135,6 @@ void KviMenuBar::setupHelpPopup()
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on Freenode"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_FREENODE);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on IRCNet"));
-	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_IRCNET);
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"it",2))
 	{
 		// join #kvirc.net on azzurra

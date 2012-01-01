@@ -65,7 +65,6 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"quit",
 	"openurl http://www.kvirc.ru",
 	"openurl irc://freenode/kvirc",
-	"openurl irc://ircnet/kvirc",
 	"openurl irc://azzurra/kvirc.net",
 	"openurl http://kvirc-fr.info",
 	"openurl irc://freenode/kvirc-fr",
