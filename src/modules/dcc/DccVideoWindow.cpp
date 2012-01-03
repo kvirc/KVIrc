@@ -711,7 +711,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 						KviCString buf(KviCString::Format,"%s\r\n",encrypted.ptr());
 						m_tmpTextDataOut.append(buf.ptr(), buf.len());
 						if(bUserFeedback)
-							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
+							g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
 								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 								m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsoleWindow::NoNotifications);
 					}
@@ -723,7 +723,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 						if(bUserFeedback)
 						{
 							QString encr = decodeText(encrypted.ptr());
-							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+							g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 								m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsoleWindow::NoNotifications);
 						}
@@ -746,7 +746,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 				m_tmpTextDataOut.append(buf.ptr(), buf.len());
 
 				if(bUserFeedback)
-					m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+					g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 						m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 						m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsoleWindow::NoNotifications);
 				return;
@@ -758,7 +758,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 	m_tmpTextDataOut.append(buf.ptr(), buf.len());
 
 	if(bUserFeedback)
-		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+		g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 			m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsoleWindow::NoNotifications);
 }
@@ -853,7 +853,7 @@ bool DccVideoWindow::event(QEvent *e)
 								case KviCryptEngine::DecryptOkWasPlainText:
 									if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(decryptedStuff.ptr()),m_pDescriptor->idString()))
 									{
-										m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
+										g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
 											m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
 											m_pDescriptor->szHost.toUtf8().data(),decryptedStuff.ptr());
 									}
@@ -876,7 +876,7 @@ bool DccVideoWindow::event(QEvent *e)
 						// FIXME!
 						if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(d.ptr()),m_pDescriptor->idString()))
 						{
-							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
+							g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
 								m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
 								m_pDescriptor->szHost.toUtf8().data(),d.ptr());
 							if(!hasAttention(KviWindow::MainWindowIsVisible))
