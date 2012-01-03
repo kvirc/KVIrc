@@ -96,6 +96,7 @@ KviMainWindow::KviMainWindow()
 : KviTalMainWindow(0,"kvirc_frame")
 {
 	g_pMainWindow = this;
+	setAttribute(Qt::WA_DeleteOnClose);
 	setAutoFillBackground(false);
 	setAttribute(Qt::WA_TranslucentBackground);
 	//disable this flag that gets enabled by qt when using Qt::WA_TranslucentBackground
@@ -188,21 +189,6 @@ KviMainWindow::~KviMainWindow()
 	saveToolBarPositions();
 	saveModuleExtensionToolBars();
 
-#if 0
-	// Pragma: This shouldn't be needed any more
-	//         The objects module must call closeWindow() internally.
-	//
-	// close all the KviKvsScriptWindowWindow to avoid a race condition
-	// where such a window will be free'd two times:
-	// the first in the frameDestructorCallback (deleted as an object instance)
-	// the second at the end of this function (deleted as a normal window)
-	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
-	{
-		if(wnd->inherits("KviKvsScriptWindowWindow"))
-			closeWindow(wnd);
-	}
-#endif
-
 	// Call the frame destructor callback AFTER saving the toolbar positions
 	// This is because the destructor callback kills alls the KVS objects
 	// and thus the eventual user toolbar objects too and their position
@@ -246,8 +232,6 @@ KviMainWindow::~KviMainWindow()
 	delete m_pAccellerators;
 
 	g_pMainWindow = 0;
-
-	g_pApp->quit();
 }
 
 void KviMainWindow::registerModuleExtensionToolBar(KviMexToolBar * t)
@@ -881,7 +865,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 	e->accept();
 
 	if(g_pApp)
-		g_pApp->destroyFrame();
+		g_pApp->setKviClosingDown();
 }
 
 void KviMainWindow::hideEvent(QHideEvent *e)

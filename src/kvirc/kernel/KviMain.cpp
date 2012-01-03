@@ -63,14 +63,14 @@ typedef struct _ParseArgs
 	bool      bShowPopup;
 	bool      bShowSplashScreen;
 	bool      bExecuteCommandAndClose;
-	KviCString    szExecCommand;
-	KviCString    szExecRemoteCommand;
+	QString   szExecCommand;
+	QString   szExecRemoteCommand;
 } ParseArgs;
 
 int parseArgs(ParseArgs * a)
 {
-	KviCString szServer;
-	KviCString szPort;
+	QString szServer;
+	QString szPort;
 	int idx;
 
 	if(a->argc < 2)return KVI_ARGS_RETCODE_OK;
@@ -171,7 +171,7 @@ int parseArgs(ParseArgs * a)
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
-			if(a->szExecCommand.hasData())a->szExecCommand.append("\n");
+			if(!a->szExecCommand.isEmpty())a->szExecCommand.append("\n");
 			a->szExecCommand.append(p);
 			continue;
 		}
@@ -185,7 +185,7 @@ int parseArgs(ParseArgs * a)
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
-			if(a->szExecCommand.hasData())a->szExecCommand.append("\n");
+			if(!a->szExecCommand.isEmpty())a->szExecCommand.append("\n");
 			a->szExecCommand.append(p);
 			a->bExecuteCommandAndClose=true;
 			continue;
@@ -200,7 +200,8 @@ int parseArgs(ParseArgs * a)
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
-			if(a->szExecRemoteCommand.hasData())a->szExecRemoteCommand.append("\n");
+			if(!a->szExecRemoteCommand.isEmpty())
+				a->szExecRemoteCommand.append("\n");
 			a->szExecRemoteCommand.append(p);
 			continue;
 		}
@@ -256,12 +257,8 @@ int parseArgs(ParseArgs * a)
 			p = a->argv[idx];
 			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
 			{
-				KviCString tmp = QString::fromLocal8Bit(p);
-				a->szExecCommand ="openurl ";
-				tmp.replaceAll("$",""); // the urls can't contain $ signs
-				tmp.replaceAll(";",""); // the urls can't contain ; signs
-				tmp.replaceAll("%",""); // the urls can't contain % signs
-				a->szExecCommand.append(tmp);
+				a->szExecCommand = "openurl ";
+				a->szExecCommand.append(QString::fromLocal8Bit(p).remove(QChar('$')).remove(QChar(';')).remove(QChar('%')));
 				return KVI_ARGS_RETCODE_OK;
 			}
 			return KVI_ARGS_RETCODE_ERROR;
@@ -272,13 +269,11 @@ int parseArgs(ParseArgs * a)
 			// no dash
 			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
 			{
-				KviCString szTmp = QString::fromLocal8Bit(p);
-				if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
-				a->szExecCommand.append("openurl ");
-				szTmp.replaceAll("$",""); // the urls can't contain $ signs
-				szTmp.replaceAll(";",""); // the urls can't contain ; signs
-				szTmp.replaceAll("%",""); // the urls can't contain % signs
-				a->szExecCommand.append(szTmp);
+				if(!a->szExecCommand.isEmpty())
+					a->szExecCommand.append('\n');
+
+				a->szExecCommand = "openurl ";
+				a->szExecCommand.append(QString::fromLocal8Bit(p).remove(QChar('$')).remove(QChar(';')).remove(QChar('%')));
 			} else {
 				QString szTmp = QString::fromLocal8Bit(p);
 				bool bOk;
@@ -290,26 +285,30 @@ int parseArgs(ParseArgs * a)
 					QString ri = szTmp.right(4);
 					if(KviQString::equalCI(ri,".kvs"))
 					{
-						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+						if(!a->szExecCommand.isEmpty())
+							a->szExecCommand.append('\n');
 						a->szExecCommand.append("parse \"");
-						szTmp.replace('$',"\\$");
-						szTmp.replace('\\',"\\\\");
+						szTmp.replace(QChar('$'), QString("\\$"));
+						szTmp.replace(QChar('\\'), QString("\\\\"));
 						a->szExecCommand.append(szTmp);
 						a->szExecCommand.append('"');
 					} else if(KviQString::equalCI(ri,".kvt"))
 					{
-						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+						if(!a->szExecCommand.isEmpty())
+							a->szExecCommand.append('\n');
+
 						a->szExecCommand.append("theme.install \"");
-						szTmp.replace('$',"\\$");
-						szTmp.replace('\\',"\\\\");
+						szTmp.replace(QChar('$'), QString("\\$"));
+						szTmp.replace(QChar('\\'), QString("\\\\"));
 						a->szExecCommand.append(szTmp);
 						a->szExecCommand.append('"');
 					} else if(KviQString::equalCI(ri,".kva"))
 					{
-						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+						if(!a->szExecCommand.isEmpty())
+							a->szExecCommand.append('\n');
 						a->szExecCommand.append("addon.install \"");
-						szTmp.replace('$',"\\$");
-						szTmp.replace('\\',"\\\\");
+						szTmp.replace(QChar('$'), QString("\\$"));
+						szTmp.replace(QChar('\\'), QString("\\\\"));
 						a->szExecCommand.append(szTmp);
 						a->szExecCommand.append('"');
 					} else {
@@ -320,12 +319,14 @@ int parseArgs(ParseArgs * a)
 		}
 	}
 
-	if(szServer.hasData())
+	if(!szServer.isEmpty())
 	{
-		if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+		if(!a->szExecCommand.isEmpty())
+			a->szExecCommand.append('\n');
+
 		a->szExecCommand.append("server -u ");
 		a->szExecCommand.append(szServer);
-		if(szPort.hasData())
+		if(!szPort.isEmpty())
 		{
 			a->szExecCommand.append(' ');
 			a->szExecCommand.append(szPort);
@@ -385,10 +386,10 @@ int main(int argc, char ** argv)
 	#endif
 #endif
 
-	KviCString szRemoteCommand = a.szExecCommand;
-	if(a.szExecRemoteCommand.hasData())
+	QString szRemoteCommand = a.szExecCommand;
+	if(!a.szExecRemoteCommand.isEmpty())
 	{
-		if(szRemoteCommand.hasData())
+		if(!szRemoteCommand.isEmpty())
 		{
 			szRemoteCommand.append('\n');
 		}
@@ -423,9 +424,9 @@ int main(int argc, char ** argv)
 		// here we could use CreateMutex on win and semget() on linux
 		// in order to get a shared semaphore to ensure instance unicity.
 
-		if(kvi_sendIpcMessage(szRemoteCommand.ptr()))
+		if(kvi_sendIpcMessage(szRemoteCommand.toLocal8Bit().data()))
 		{
-			if(szRemoteCommand.isEmpty())
+			if(!szRemoteCommand.isEmpty())
 			{
 				KviCString szTmp(KviCString::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
 				if(a.bShowPopup)

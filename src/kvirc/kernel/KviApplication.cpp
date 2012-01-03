@@ -586,6 +586,8 @@ KviApplication::~KviApplication()
 	// Another critical phase.
 	// We shutdown our subsystems in the right order here.
 
+	Q_ASSERT(g_pActiveWindow == 0);
+	
 	m_bClosingDown = true;
 
 #ifndef COMPILE_NO_IPC
@@ -596,14 +598,6 @@ KviApplication::~KviApplication()
 		delete g_pSplashScreen;
 	if(g_pCtcpPageDialog)
 		delete g_pCtcpPageDialog;
-
-	// if we still have a frame: kill it
-	if(g_pMainWindow)
-		delete g_pMainWindow;
-	g_pActiveWindow = 0; // .. but it should be already 0 anyway
-
-	// execute pending deletes (this may still contain some UI elements)
-	//delete g_pGarbageCollector;
 
 	if(!m_bSetupDone)
 		return; // killed with IPC (nothing except the m_pFrameList was created yet)
@@ -1751,15 +1745,17 @@ void KviApplication::autoConnectToServers()
 
 void KviApplication::createFrame()
 {
-	if(g_pMainWindow)
-		qDebug("WARNING: Creating the main frame twice!");
-	g_pMainWindow = new KviMainWindow();
+	Q_ASSERT(g_pMainWindow == 0);
+
+	new KviMainWindow();
+	
+	Q_ASSERT(g_pMainWindow != 0);
+
 	g_pMainWindow->createNewConsole(true);
 
-	if(m_szExecAfterStartup.hasData())
+	if(!m_szExecAfterStartup.isEmpty())
 	{
-		// FIXME, this should be a QString
-		KviKvsScript::run(m_szExecAfterStartup.ptr(),g_pMainWindow->firstConsole());
+		KviKvsScript::run(m_szExecAfterStartup,g_pMainWindow->firstConsole());
 		m_szExecAfterStartup = "";
 	}
 
@@ -1776,14 +1772,6 @@ void KviApplication::createFrame()
 		g_pMainWindow->showMinimized();
 	else
 		g_pMainWindow->show();
-}
-
-void KviApplication::destroyFrame()
-{
-	m_bClosingDown=true;
-	if(g_pMainWindow)
-		g_pMainWindow->deleteLater();
-	g_pActiveWindow = 0;
 }
 
 bool KviApplication::connectionExists(KviIrcConnection * pConn)

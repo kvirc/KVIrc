@@ -131,7 +131,7 @@ public:
 	// setup stuff (accessed from KviMain.cpp: consider private othwerise)
 	QString	                                   m_szConfigFile;        // setup
 	bool                                       m_bCreateConfig;      // setup
-	KviCString                                     m_szExecAfterStartup;
+	QString                                    m_szExecAfterStartup;
 	bool                                       m_bShowSplashScreen;
 protected:
 #ifdef COMPILE_KDE_SUPPORT
@@ -159,7 +159,6 @@ protected:
 #endif
 	QFont                                      m_fntDefaultFont;
 public:
-	void destroyFrame();
 	void setup();                                  // THIS SHOULD BE PRIVATE! (but is accessed from KviMain.cpp)
 
 #ifdef COMPILE_KDE_SUPPORT
@@ -175,6 +174,7 @@ public:
 
 	bool firstTimeRun() const { return m_bFirstTimeRun; };
 	bool kviClosingDown() const { return m_bClosingDown; };
+	void setKviClosingDown() { m_bClosingDown=true; };
 
 	inline bool supportsCompositing()
 	{
