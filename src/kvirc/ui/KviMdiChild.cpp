@@ -148,6 +148,47 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 	}
 }
 
+void KviMdiChild::restore()
+{
+	if(isMinimized())
+	{
+		// we don't use showNormal here because it seems to enforce the previous window geometry:
+		// since we were minimized in a shaded form, this creates ugly effects (like bug #823)
+		setWindowState(windowState() & ~Qt::WindowMinimized);
+		show();
+		return;
+	}
+
+	if(isMaximized())
+	{
+		setWindowState(windowState() & ~Qt::WindowMaximized);
+		showNormal();
+		return;
+	}
+
+	if(!isVisible())
+	{
+		show();
+		return;
+	}
+}
+
+void KviMdiChild::maximize()
+{
+	if(isVisible())
+		showMaximized();
+	else
+		setWindowState(windowState() & Qt::WindowMaximized);
+}
+
+void KviMdiChild::minimize()
+{
+	if(isVisible())
+		showMinimized();
+	else
+		setWindowState(windowState() & Qt::WindowMinimized);
+}
+
 void KviMdiChild::updateCaption()
 {
 	if(m_pClient)

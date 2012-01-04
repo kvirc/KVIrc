@@ -66,9 +66,10 @@
 #define KVI_MDICHILD_MIN_WIDTH 100
 #define KVI_MDICHILD_MIN_HEIGHT 40
 
-KviMdiManager::KviMdiManager(QWidget * parent,const char *)
+KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 : QMdiArea(parent)
 {
+	setObjectName(pcName);
 	setFrameShape(NoFrame);
 	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
 
@@ -136,7 +137,7 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 		lpC->showMaximized();
 	} else {
 		//qDebug("Showing window %x->%x",lpC,lpC->client());
-		lpC->showNormal();
+		lpC->show();
 		//qDebug("Window %x->%x is visible is %d",lpC,lpC->client(),lpC->isVisible());
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
@@ -210,7 +211,7 @@ void KviMdiManager::focusPreviousTopChild(KviMdiChild * pExcludeThis)
 		return;
 
 	if(isInSDIMode())
-		lpC->showMaximized();
+		lpC->maximize();
 	else {
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
@@ -342,7 +343,7 @@ void KviMdiManager::menuActivated(int id)
 
 	if(!lpC) return;
 	if(lpC->state() == KviMdiChild::Minimized)
-		lpC->showNormal();
+		lpC->restore();
 
 	setActiveSubWindow(lpC);
 }
@@ -358,8 +359,7 @@ void KviMdiManager::ensureNoMaximized()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Maximized)
-				lpC->showNormal();
+			if(lpC->state() == KviMdiChild::Maximized)lpC->restore();
 		}
 	}
 }
@@ -458,7 +458,7 @@ void KviMdiManager::minimizeAll()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() != KviMdiChild::Minimized) lpC->showMinimized();
+			if(lpC->state() != KviMdiChild::Minimized) lpC->minimize();
 		}
 	}
 }
@@ -475,8 +475,7 @@ void KviMdiManager::restoreAll()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Minimized)
-				lpC->showNormal();
+			if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
 		}
 	}
 	if(!m_bInSDIMode)
