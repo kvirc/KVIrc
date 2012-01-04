@@ -37,6 +37,7 @@
 #include "KviOptions.h"
 #include "kvi_settings.h"
 #include "KviIconManager.h"
+#include "KviMainWindow.h"
 #include "KviWindow.h"
 #include "KviTalPopupMenu.h"
 #include "KviIrcConnection.h"
@@ -58,8 +59,6 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 
 	m_pManager = par;
 	m_pClient = 0;
-
-	setGeometry(QRect(10,10,500,380));
 
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates, Qt::WindowStates)));
@@ -176,9 +175,11 @@ void KviMdiChild::restore()
 void KviMdiChild::maximize()
 {
 	if(isVisible())
+	{
 		showMaximized();
-	else
-		setWindowState(windowState() & Qt::WindowMaximized);
+	} else {
+		setWindowState(windowState() & Qt::WindowMaximized & ~Qt::WindowMaximized);
+	}
 }
 
 void KviMdiChild::minimize()
@@ -186,7 +187,7 @@ void KviMdiChild::minimize()
 	if(isVisible())
 		showMinimized();
 	else
-		setWindowState(windowState() & Qt::WindowMinimized);
+		setWindowState((windowState() & Qt::WindowMinimized) & ~Qt::WindowMaximized);
 }
 
 void KviMdiChild::updateCaption()

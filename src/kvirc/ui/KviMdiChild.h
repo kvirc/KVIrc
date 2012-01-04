@@ -90,7 +90,6 @@ private:
 	void updateCaption();
 
 public:
-
 	/**
 	* \brief Sets the client widget which is shown in the subwindow
 	* \param w The new client widget which is docked into our KviMdiChild

@@ -287,7 +287,7 @@ void KviWindowListButton::mousePressEvent(QMouseEvent *e)
 			m_pWindow->delayedClose();
 		} else {
 			if((g_pActiveWindow != m_pWindow)  || (m_pWindow->isMinimized()))
-				m_pWindow->restore();
+				g_pMainWindow->setActiveWindow(m_pWindow);
 			else 
 				m_pWindow->minimize();
 		}

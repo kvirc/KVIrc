@@ -408,7 +408,8 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->isMaximized());
 	}
 
-	g_pWinPropertiesConfig->writeEntry("WinRect",wnd->normalGeometry());
+	if(wnd->normalGeometry().isValid())
+		g_pWinPropertiesConfig->writeEntry("WinRect",wnd->normalGeometry());
 
 	wnd->saveProperties(g_pWinPropertiesConfig);
 }
@@ -441,7 +442,7 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 
 	// hide it
 	if(wnd->mdiParent())
-		m_pMdi->hideChild(wnd->mdiParent());
+		wnd->mdiParent()->hide();
 	else
 		wnd->hide();
 
@@ -497,6 +498,7 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 	wnd->getConfigGroupName(group);
 
 	bool bGroupSettings = false;
+	bool bDefaultDocking=false;
 
 	if(g_pWinPropertiesConfig->hasGroup(group))
 	{
@@ -514,70 +516,68 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 		} else {
 			g_pWinPropertiesConfig->setGroup("no_settings_group");
 			wnd->loadProperties(g_pWinPropertiesConfig); // load it anyway (will set defaults if windows don't remember properties)
-			goto default_docking; // no settings stored
+			bDefaultDocking=true; // no settings stored
 		}
 	}
 
-	{
-		wnd->loadProperties(g_pWinPropertiesConfig); // load it anyway (will set defaults if windows don't remember properties)
+	wnd->loadProperties(g_pWinPropertiesConfig); // load it anyway (will set defaults if windows don't remember properties)
 
-		if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties))
+	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties) && !bDefaultDocking)
+	{
+		bool bDocked    = g_pWinPropertiesConfig->readBoolEntry("IsDocked",true);
+		QRect rect      = g_pWinPropertiesConfig->readRectEntry("WinRect",QRect(10,10,500,380));
+		if(!rect.isValid())
+			rect = QRect(10,10,500,380);
+
+		if(bDocked)
 		{
-			bool bDocked    = g_pWinPropertiesConfig->readBoolEntry("IsDocked",true);
-			QRect rect      = g_pWinPropertiesConfig->readRectEntry("WinRect",QRect(10,10,500,380));
-
-			if(bDocked)
+			// when group settings are used, we always cascade the windows
+			// this means that windows that have no specialized config group name
+			// are always cascaded : this is true for consoles, queries (and other windows) but not channels (and some other windows)
+			// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
+			KviMdiChild * lpC = dockWindow(wnd);
+			lpC->setGeometry(rect);
+			wnd->triggerCreationEvents();
+			if(bShow)
 			{
-				// when group settings are used, we always cascade the windows
-				// this means that windows that have no specialized config group name
-				// are always cascaded : this is true for consoles, queries (and other windows) but not channels (and some other windows)
-				// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
-				KviMdiChild * lpC = dockWindow(wnd);
-				lpC->setGeometry(rect);
-				wnd->triggerCreationEvents();
-				if(bShow)
-				{
-					m_pMdi->showAndActivate(lpC);
-					// Handle the special case of this top level widget not being the active one.
-					// In this situation the child will not get the focusInEvent
-					// and thus will not call out childWindowActivated() method
-					if(!isActiveWindow())
-						childWindowActivated(wnd);
-				}
-			} else {
-				bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
-				
-				wnd->setGeometry(rect);
-				wnd->triggerCreationEvents();
-
-				if(bShow)
-				{
-					if(bMaximized)
-						wnd->maximize();
-				} else {
-					wnd->setWindowState(wnd->windowState() | Qt::WindowMinimized);
-					if(bMaximized)
-						wnd->setWindowState(wnd->windowState() | Qt::WindowMaximized);
-				}
-				wnd->show();
-				wnd->youAreUndocked();
-				if(bShow)
-				{
-					wnd->raise();
-					wnd->setFocus();
-				}
+				m_pMdi->showAndActivate(lpC);
+				// Handle the special case of this top level widget not being the active one.
+				// In this situation the child will not get the focusInEvent
+				// and thus will not call out childWindowActivated() method
+				if(!isActiveWindow())
+					childWindowActivated(wnd);
 			}
-			goto docking_done;
-		}
-	}
+		} else {
+			bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
+			
+			wnd->setGeometry(rect);
+			wnd->triggerCreationEvents();
 
-default_docking:
-	{
+			if(bShow)
+			{
+				if(bMaximized)
+					wnd->maximize();
+			} else {
+				wnd->setWindowState(wnd->windowState() | Qt::WindowMinimized);
+				if(bMaximized)
+					wnd->setWindowState(wnd->windowState() | Qt::WindowMaximized);
+			}
+			wnd->show();
+			wnd->youAreUndocked();
+			if(bShow)
+			{
+				wnd->raise();
+				wnd->setFocus();
+			}
+		}
+
+	} else {
+
 		KviMdiChild * lpC = dockWindow(wnd);
 		// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
 		// Emulate cascading in some way....
 		int offset = (m_pWinList->count() * 10) % 100;
-		lpC->setGeometry(QRect(offset,offset,500,400));
+		lpC->setGeometry(offset, offset, 500, 400);
 		wnd->triggerCreationEvents();
 		if(bShow)
 		{
@@ -589,7 +589,8 @@ default_docking:
 				childWindowActivated(wnd);
 		}
 	}
-docking_done:
+
+
 	// we like to have an active window.. but don't trigger the events until it is really shown
 	if(!g_pActiveWindow)
 	{

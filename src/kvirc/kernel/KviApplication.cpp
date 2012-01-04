@@ -198,7 +198,7 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	setOrganizationName("KVIrc");
 
 #ifdef COMPILE_ON_MAC
-	// Disable the native menubar on MacOSX as in Qt 4.6 it's quite buggy and
+	// Disable the native menubar on MacOSX as until Qt 4.7 it's quite buggy and
 	// *very* often crashes in QMenuBar::macUpdateMenuBar()->QAction::isVisible().
 	// FIXME: Check it with later Qt versions
 	KviEnvironment::setVariable("QT_MAC_NO_NATIVE_MENUBAR","1");

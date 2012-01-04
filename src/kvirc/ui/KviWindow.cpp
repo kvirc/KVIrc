@@ -1125,7 +1125,7 @@ void KviWindow::moveEvent(QMoveEvent * pEvent)
 void KviWindow::minimize()
 {
 	if(mdiParent())
-		mdiParent()->showMinimized();
+		mdiParent()->minimize();
 	else
 		showMinimized();
 }
@@ -1133,7 +1133,7 @@ void KviWindow::minimize()
 void KviWindow::maximize()
 {
 	if(mdiParent())
-		mdiParent()->showMaximized();
+		mdiParent()->maximize();
 	else
 		showMaximized();
 	autoRaise();
@@ -1158,7 +1158,7 @@ bool KviWindow::isMaximized()
 void KviWindow::restore()
 {
 	if(mdiParent())
-		mdiParent()->showNormal();
+		mdiParent()->restore();
 	else
 		showNormal();
 	autoRaise();

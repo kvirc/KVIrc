@@ -71,6 +71,8 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 {
 	setObjectName(pcName);
 	setFrameShape(NoFrame);
+	setOption(QMdiArea::DontMaximizeSubWindowOnActivation, true);
+
 	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
@@ -125,15 +127,15 @@ void KviMdiManager::manageChild(KviMdiChild * lpC)
 {
 	addSubWindow((QMdiSubWindow*)lpC);
 
-	if(!m_bInSDIMode)
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
-			tile();
+	if(!m_bInSDIMode && KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+		tile();
 }
 
 void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 {
 	if(m_bInSDIMode)
 	{
+		ensureNoMaximized(lpC);
 		lpC->showMaximized();
 	} else {
 		//qDebug("Showing window %x->%x",lpC,lpC->client());
@@ -142,21 +144,10 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
 	}
-	setActiveSubWindow(lpC);
+
 	lpC->setFocus();
 
 	//qDebug("show and activate window %x->%x: geometry is %d,%d,%d,%d, visible is %d",lpC,lpC->client(),lpC->geometry().x(),lpC->geometry().y(),lpC->geometry().width(),lpC->geometry().height(),lpC->isVisible());
-}
-
-KviMdiChild * KviMdiManager::topChild()
-{
-	return (KviMdiChild*)activeSubWindow();
-}
-
-void KviMdiManager::hideChild(KviMdiChild *lpC)
-{
-	focusPreviousTopChild(lpC);
-	lpC->hide();
 }
 
 void KviMdiManager::destroyChild(KviMdiChild *lpC)
@@ -164,26 +155,28 @@ void KviMdiManager::destroyChild(KviMdiChild *lpC)
 	removeSubWindow(lpC);
 	delete lpC;
 	
-	if(!m_bInSDIMode)
-	{
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
-			tile();
-	}
+	if(!m_bInSDIMode && KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+		tile();
 }
 
 void KviMdiManager::setIsInSDIMode(bool bMode)
 {
 // 	qDebug("Sdi Mode %d", bMode);
 	m_bInSDIMode = bMode;
+
 	if(!m_bInSDIMode)
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+	{
+		ensureNoMaximized();
+		
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+			tile();
+	}
 };
 
 void KviMdiManager::focusPreviousTopChild(KviMdiChild * pExcludeThis)
 {
 	KviMdiChild * lpC = NULL;
 
-	//QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::ActivationHistoryOrder);
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> wl(tmp);
 	wl.toBack();
@@ -211,8 +204,10 @@ void KviMdiManager::focusPreviousTopChild(KviMdiChild * pExcludeThis)
 		return;
 
 	if(isInSDIMode())
+	{
+		ensureNoMaximized(lpC);
 		lpC->maximize();
-	else {
+	} else {
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
 	}
@@ -348,19 +343,19 @@ void KviMdiManager::menuActivated(int id)
 	setActiveSubWindow(lpC);
 }
 
-void KviMdiManager::ensureNoMaximized()
+void KviMdiManager::ensureNoMaximized(KviMdiChild * lpExclude)
 {
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
-	for(int i = 0; i < tmp.count(); i++)
+	while (it.hasNext())
 	{
-		if (tmp.at(i)->inherits("KviMdiChild"))
-		{
-			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Maximized)lpC->restore();
-		}
+		lpC = (KviMdiChild *) it.next();
+		if(lpExclude == lpC)
+			continue;
+		if(lpC->windowState() & Qt::WindowMaximized)
+			lpC->setWindowState(lpC->windowState() & ~Qt::WindowMaximized);
 	}
 }
 
@@ -387,111 +382,115 @@ void KviMdiManager::cascadeWindows()
 void KviMdiManager::cascadeMaximized()
 {
 	cascadeSubWindows();
-	QList<QMdiSubWindow *> tmp = subWindowList();
+	
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
-	for(int i = 0; i < tmp.count(); i++)
+	while (it.hasNext())
 	{
-		if (tmp.at(i)->inherits("KviMdiChild"))
-		{
-			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() != KviMdiChild::Minimized)
-			{
-				QPoint pnt(lpC->pos());
-				QSize curSize(viewport()->width() - pnt.x(),viewport()->height() - pnt.y());
-				if((lpC->minimumSize().width() > curSize.width()) ||
-					(lpC->minimumSize().height() > curSize.height()))lpC->resize(lpC->minimumSize());
-				else lpC->resize(curSize);
-			}
-		}
+		lpC = (KviMdiChild *) it.next();
+		if(lpC->windowState() & Qt::WindowMinimized)
+			continue;
+		
+		QPoint pnt(lpC->pos());
+		QSize curSize(viewport()->width() - pnt.x(),viewport()->height() - pnt.y());
+		if((lpC->minimumSize().width() > curSize.width()) ||
+			(lpC->minimumSize().height() > curSize.height()))lpC->resize(lpC->minimumSize());
+		else lpC->resize(curSize);
 	}
 }
 
 void KviMdiManager::expandVertical()
 {
 	ensureNoMaximized();
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
-	for(int i = 0; i < tmp.count(); i++)
+	while (it.hasNext())
 	{
-		if (tmp.at(i)->inherits("KviMdiChild"))
-		{
-			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() != KviMdiChild::Minimized)
-			{
-				lpC->move(lpC->x(),0);
-				lpC->resize(lpC->width(),viewport()->height());
-			}
-		}
+		lpC = (KviMdiChild *) it.next();
+		if(lpC->windowState() & Qt::WindowMinimized)
+			continue;
+
+		lpC->move(lpC->x(),0);
+		lpC->resize(lpC->width(),viewport()->height());
 	}
 }
 
 void KviMdiManager::expandHorizontal()
 {
 	ensureNoMaximized();
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
-	for(int i = 0; i < tmp.count(); i++)
+	while (it.hasNext())
 	{
-		if (tmp.at(i)->inherits("KviMdiChild"))
-		{
-			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() != KviMdiChild::Minimized)
-			{
-				lpC->move(0,lpC->y());
-				lpC->resize(viewport()->width(),lpC->height());
-			}
-		}
+		lpC = (KviMdiChild *) it.next();
+		if(lpC->windowState() & Qt::WindowMinimized)
+			continue;
+
+		lpC->move(0,lpC->y());
+		lpC->resize(viewport()->width(),lpC->height());
 	}
 }
 
 void KviMdiManager::minimizeAll()
 {
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
-	for(int i = 0; i < tmp.count(); i++)
+	while (it.hasNext())
 	{
-		if (tmp.at(i)->inherits("KviMdiChild"))
-		{
-			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() != KviMdiChild::Minimized) lpC->minimize();
-		}
+		lpC = (KviMdiChild *) it.next();
+		if(lpC->windowState() & Qt::WindowMinimized)
+			continue;
+
+		lpC->minimize();
 	}
 }
 
 
 void KviMdiManager::restoreAll()
 {
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
-	for(int i = 0; i < tmp.count(); i++)
+	while (it.hasNext())
 	{
-		if (tmp.at(i)->inherits("KviMdiChild"))
-		{
-			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
-		}
+		lpC = (KviMdiChild *) it.next();
+		if(!(lpC->windowState() & Qt::WindowMinimized))
+			continue;
+
+		lpC->restore();
 	}
-	if(!m_bInSDIMode)
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+	
+	if(!m_bInSDIMode && KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+		tile();
 }
 
 int KviMdiManager::getVisibleChildCount()
 {
-	QList<QMdiSubWindow *> l = subWindowList();
-
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> it(tmp);
+	KviMdiChild * lpC;
 	int cnt = 0;
-	int i = 0;
-	for(i = 0; i < l.count(); i++)
+
+	while (it.hasNext())
 	{
-		if(!l.at(i)->isMinimized()) cnt++;
+		lpC = (KviMdiChild *) it.next();
+		if(lpC->windowState() & Qt::WindowMinimized)
+			continue;
+
+		cnt++;
 	}
+
 	return cnt;
 }
 
@@ -542,7 +541,7 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 	ensureNoMaximized();
 	if (g_pApp->kviClosingDown()) return;
 
-	KviMdiChild * lpTop = topChild();
+	KviMdiChild * lpTop = (KviMdiChild*)activeSubWindow();
 	if (!lpTop) return;
 
 	int numVisible = getVisibleChildCount();

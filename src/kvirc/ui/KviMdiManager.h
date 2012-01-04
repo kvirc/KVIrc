@@ -81,12 +81,7 @@ protected:
 	/// Holds the tiling popup
 	KviTalPopupMenu * m_pTileMethodPopup;
 public:
-	/**
-	* \brief Get the currently active window
-	* \return KviMdiChild *
-	*/
-	KviMdiChild * topChild();
- 
+
 	/**
 	* \brief Add an KviMdiChild to the area
 	* \param lpC The KviMdiChild
@@ -106,7 +101,7 @@ public:
 	* \return KviTalPopupMenu *
 	*/
 	inline KviTalPopupMenu * windowPopup() { return m_pWindowPopup; };
-
+ 
 	/**
 	* \brief Move the focus the the previous active window
 	* \return void
@@ -119,13 +114,6 @@ public:
  	* \return void
  	*/
 	void destroyChild(KviMdiChild * lpC);
-
-	/**
-	* \brief Hides the specified child and focuses some other child
-	* \param lpC The KviMdiChild which will be hidden.
- 	* \return void
- 	*/
-	void hideChild(KviMdiChild * lpC);
 
 	/**
 	* \brief Get all visible subwindows
@@ -157,12 +145,11 @@ protected:
 
 private:
 	/**
- 	 * \brief Make sure that no KviMdiChild is maximized
+ 	 * \brief Ensure that no KviMdiChild is maximized
+	 * \param lpExclude a window to be excluded from the checks
 	 * \return void
-	 *
-	 * Goes trough all KviMdiChild objects and checks for maximized mode and restores that windows
 	 */
-	void ensureNoMaximized();
+	void ensureNoMaximized(KviMdiChild * lpExclude=0);
 
 	/**
 	 * \brief The internal member which provides the tiling methods
