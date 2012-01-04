@@ -359,8 +359,6 @@ public:
 	bool isMaximized();
 	// Retrieves the default log file name: this is pre-build
 	void getDefaultLogFileName(QString & szBuffer);
-	// Well...the external geometry :)
-	QRect externalGeometry();
 
 	void delayedClose(); // close that jumps out of the current event loop
 

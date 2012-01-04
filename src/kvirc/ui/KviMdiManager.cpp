@@ -66,12 +66,11 @@
 #define KVI_MDICHILD_MIN_WIDTH 100
 #define KVI_MDICHILD_MIN_HEIGHT 40
 
-KviMdiManager::KviMdiManager(QWidget * parent,KviMainWindow * pFrm,const char *)
+KviMdiManager::KviMdiManager(QWidget * parent,const char *)
 : QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
 	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
-	m_pFrm = pFrm;
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
 	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
@@ -137,7 +136,7 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 		lpC->showMaximized();
 	} else {
 		//qDebug("Showing window %x->%x",lpC,lpC->client());
-		lpC->show();
+		lpC->showNormal();
 		//qDebug("Window %x->%x is visible is %d",lpC,lpC->client(),lpC->isVisible());
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
@@ -211,7 +210,7 @@ void KviMdiManager::focusPreviousTopChild(KviMdiChild * pExcludeThis)
 		return;
 
 	if(isInSDIMode())
-		lpC->maximize();
+		lpC->showMaximized();
 	else {
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
@@ -343,7 +342,7 @@ void KviMdiManager::menuActivated(int id)
 
 	if(!lpC) return;
 	if(lpC->state() == KviMdiChild::Minimized)
-		lpC->restore();
+		lpC->showNormal();
 
 	setActiveSubWindow(lpC);
 }
@@ -359,7 +358,8 @@ void KviMdiManager::ensureNoMaximized()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Maximized)lpC->restore();
+			if(lpC->state() == KviMdiChild::Maximized)
+				lpC->showNormal();
 		}
 	}
 }
@@ -458,7 +458,7 @@ void KviMdiManager::minimizeAll()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() != KviMdiChild::Minimized) lpC->minimize();
+			if(lpC->state() != KviMdiChild::Minimized) lpC->showMinimized();
 		}
 	}
 }
@@ -475,7 +475,8 @@ void KviMdiManager::restoreAll()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
+			if(lpC->state() == KviMdiChild::Minimized)
+				lpC->showNormal();
 		}
 	}
 	if(!m_bInSDIMode)

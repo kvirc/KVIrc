@@ -170,24 +170,6 @@ protected:
 	virtual void closeEvent(QCloseEvent * e);
 public slots:
 	/**
-	* \brief Maximizes this window
-	* \return void
-	*/
-	void maximize();
-
-	/**
-	* \brief Minimizes this window
-	* \return void
-	*/
-	void minimize();
-
-	/**
-	* \brief Restore it's latest postition/state
-	* \return void
-	*/
-	void restore();
-
-	/**
 	* \brief Triggered when the state of a window changes
 	*
 	* This event is used to catch minmize event of the KviMdiSubWindow

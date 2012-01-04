@@ -1125,10 +1125,7 @@ void KviWindow::moveEvent(QMoveEvent * pEvent)
 void KviWindow::minimize()
 {
 	if(mdiParent())
-	{
-		if(!isMinimized())
-			mdiParent()->minimize();
-	}
+		mdiParent()->showMinimized();
 	else
 		showMinimized();
 }
@@ -1136,10 +1133,7 @@ void KviWindow::minimize()
 void KviWindow::maximize()
 {
 	if(mdiParent())
-	{
-		if(!isMaximized())
-			mdiParent()->maximize();
-	}
+		mdiParent()->showMaximized();
 	else
 		showMaximized();
 	autoRaise();
@@ -1164,19 +1158,10 @@ bool KviWindow::isMaximized()
 void KviWindow::restore()
 {
 	if(mdiParent())
-		mdiParent()->restore();
+		mdiParent()->showNormal();
 	else
 		showNormal();
 	autoRaise();
-}
-
-QRect KviWindow::externalGeometry()
-{
-#ifndef COMPILE_ON_MAC
-	return mdiParent() ? mdiParent()->frameGeometry() : frameGeometry();
-#else
-	return mdiParent() ? mdiParent()->geometry() : geometry();
-#endif
 }
 
 void KviWindow::applyOptions()

@@ -58,11 +58,10 @@ public:
 	/**
 	* \brief Constructs the Mdi manager object
 	* \param pParent The parent widget
-	* \param pFrm The frame container
 	* \param pcName The name of the manager
 	* \return KviMdiManager
 	*/
-	KviMdiManager(QWidget * pParent, KviMainWindow * pFrm, const char * pcName);
+	KviMdiManager(QWidget * pParent, const char * pcName);
 
 	/**
 	* \brief Destroys the Mdi manager object
@@ -81,8 +80,6 @@ protected:
 	KviTalPopupMenu * m_pWindowPopup;
 	/// Holds the tiling popup
 	KviTalPopupMenu * m_pTileMethodPopup;
-	/// The frame where this KviMdiManager belongs to
-	KviMainWindow        * m_pFrm;
 public:
 	/**
 	* \brief Get the currently active window

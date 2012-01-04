@@ -126,7 +126,7 @@ KviMainWindow::KviMainWindow()
 	setIconSize(KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
 	setButtonStyle(KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle));
 
-	m_pMdi      = new KviMdiManager(m_pSplitter,this,"mdi_manager");
+	m_pMdi      = new KviMdiManager(m_pSplitter,"mdi_manager");
 
 	// This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
@@ -408,7 +408,7 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->isMaximized());
 	}
 
-	g_pWinPropertiesConfig->writeEntry("WinRect",wnd->externalGeometry());
+	g_pWinPropertiesConfig->writeEntry("WinRect",wnd->normalGeometry());
 
 	wnd->saveProperties(g_pWinPropertiesConfig);
 }
@@ -603,7 +603,6 @@ KviMdiChild * KviMainWindow::dockWindow(KviWindow * wnd)
 	if(wnd->mdiParent())return wnd->mdiParent();
 	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
 	lpC->setClient(wnd);
-	lpC->setGeometry(wnd->geometry());
 
 	wnd->youAreDocked();
 	m_pMdi->manageChild(lpC);
