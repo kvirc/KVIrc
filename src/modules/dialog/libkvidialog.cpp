@@ -59,7 +59,7 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	const QString &szButton2,
 	const QString &szCode,
 	KviKvsVariantList * pMagicParams,
-	KviWindow * pWindow,bool)
+	KviWindow * pWindow,bool modal)
 : QMessageBox(0),
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
@@ -67,6 +67,7 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setWindowTitle(szCaption);
 	setText(szText);
 	setIcon(QMessageBox::NoIcon);
+	setModal(modal);
 	QMessageBox::StandardButtons buttons;
 	bool btn=false;
 	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Yes;}
@@ -161,7 +162,7 @@ void KviKvsCallbackMessageBox::done(int code)
 		to be the escape button of the dialog.[br]
 		<magic1>,<magic2>... are the magic parameters - evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
-		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour -
+		If the -b or -modal switch is specified the dialog will have blocking modal behaviour -
 		it will appear above its parent widget and block its input until the dialog is closed.[br]
 		Once the dialog is displayed, the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed, passing the number of the button clicked
@@ -173,8 +174,8 @@ void KviKvsCallbackMessageBox::done(int code)
 		[comment]# A question[/comment]
 		dialog.message("And now ?","What do you want to do ?",information,"Go home","Watch TV","Scream")
 		{
-			if($0 == 0)echo "The user want's to go home"
-			else if($0 == 1)echo "The user want's to watch TV"
+			if($0 == 0)echo "The user wants to go home"
+			else if($0 == 1)echo "The user wants to watch TV"
 			else echo "The user wants to scream!"
 		}
 		[/example]
@@ -448,7 +449,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		If the -d switch is used, the initial text input value is set to <default text>.[br]
 		If the -i switch is used, the dialog displays also the icon <icon> to the left of <info_text>.
 		<icon> is an image identifier (a relative or absolute path to an image file, or a signed number that maps to an internal KVIrc image). [br]
-		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
+		If the -b or -modal switch is specified the dialog will have blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
 		In that case <icon> is an [doc:image_id]image identifier[/doc] (can be a relative or absolute
 		path to an image file or a signed number (in that case it defines an internal KVIrc image).[br]
