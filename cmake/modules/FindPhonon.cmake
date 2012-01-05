@@ -35,6 +35,15 @@ else(PHONON_FOUND)
    # then at the default system locations (CMAKE_SYSTEM_PREFIX_PATH, i.e. /usr etc.)
    find_library(PHONON_LIBRARY NAMES phonon phonon4)
 
+   # As discussed on kde-buildsystem: first look at CMAKE_PREFIX_PATH, then at the suggested PATHS (kde4 install dir)
+   find_library(PHONON_DEBUG_LIBRARY NAMES phonond phonond4 phonon4d PATHS ${KDE4_LIB_INSTALL_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
+   # then at the default system locations (CMAKE_SYSTEM_PREFIX_PATH, i.e. /usr etc.)
+   find_library(PHONON_DEBUG_LIBRARY NAMES phonond phonond4 phonon4d)
+
+   if(NOT PHONON_DEBUG_LIBRARY)
+      set(PHONON_DEBUG_LIBRARY PHONON_LIBRARY)
+   endif(NOT PHONON_DEBUG_LIBRARY)
+
    find_path(PHONON_INCLUDE_DIR NAMES phonon/phonon_export.h PATHS ${KDE4_INCLUDE_INSTALL_DIR} ${QT_INCLUDE_DIR} ${INCLUDE_INSTALL_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
    find_path(PHONON_INCLUDE_DIR NAMES phonon/phonon_export.h)
 
