@@ -40,6 +40,7 @@
 #include "kvi_out.h"
 #include "KviTopicWidget.h"
 #include "KviQueryWindow.h"
+#include "KviMainWindow.h"
 #include "KviWindow.h"
 
 #include <QClipboard>
@@ -216,8 +217,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 			if(KviChannelWindow * c = console()->connection()->findChannel(szLinkTextPart))
 			{
 				// already there
-				c->raise();
-				c->setFocus();
+				g_pMainWindow->setActiveWindow(c);
 				return;
 			}
 

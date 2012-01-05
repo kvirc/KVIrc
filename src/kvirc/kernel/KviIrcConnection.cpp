@@ -688,8 +688,7 @@ KviChannelWindow * KviIrcConnection::createChannel(const QString & szName)
 		c->setAliveChan();
 		if(!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels))
 		{
-			c->raise();
-			c->setFocus();
+			g_pMainWindow->setActiveWindow(c);
 		}
 	} else {
 		c = new KviChannelWindow(m_pConsole, szName);
@@ -734,8 +733,7 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick,CreateQuer
 		q->setAliveQuery();
 		if(bShowIt)
 		{
-			q->raise();
-			q->setFocus();
+			g_pMainWindow->setActiveWindow(q);
 		}
 	} else {
 		q = new KviQueryWindow(m_pConsole, szNick);
@@ -1843,8 +1841,6 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				}
 				pQuery->setTarget(szNick,szUser,szHost);
 			}
-			pQuery->autoRaise();
-			pQuery->setFocus();
 		}
 		target()->server()->clearReconnectInfo();
 	}

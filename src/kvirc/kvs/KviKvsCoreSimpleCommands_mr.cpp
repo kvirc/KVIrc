@@ -1050,8 +1050,7 @@ namespace KviKvsCoreSimpleCommands
 					}
 					query->setTarget(szNick,user,host);
 				}
-				query->autoRaise();
-				query->setFocus();
+				g_pMainWindow->setActiveWindow(query);
 				if(!szText.isEmpty())query->ownMessage(szText);
 			}
 		}
