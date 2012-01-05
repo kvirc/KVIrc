@@ -653,19 +653,21 @@ bool KviApplication::findLocalKvircDirectory()
 	}
 #endif
 	//Check if we have a special .kvirc.rc in $HOME
-	QString szF = QDir::homePath();
+	QString szF;
 
 	if(!m_szConfigFile.isEmpty())
 	{
 		QString szConfig = m_szConfigFile;
-		if(QDir::isRelativePath(szConfig))
+		if(QDir::isRelativePath(m_szConfigFile))
 		{
+			szF = QDir::homePath();
 			szF += KVI_PATH_SEPARATOR;
-			szF += szConfig;
+			szF += m_szConfigFile;
 		} else {
 			szF = szConfig;
 		}
 	} else {
+		szF = QDir::homePath();
 		szF += KVI_PATH_SEPARATOR;
 		szF += KVI_HOME_CONFIG_FILE_NAME;
 	}

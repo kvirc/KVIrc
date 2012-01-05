@@ -426,7 +426,7 @@ int main(int argc, char ** argv)
 
 		if(kvi_sendIpcMessage(szRemoteCommand.toLocal8Bit().data()))
 		{
-			if(!szRemoteCommand.isEmpty())
+			if(szRemoteCommand.isEmpty())
 			{
 				KviCString szTmp(KviCString::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
 				if(a.bShowPopup)
