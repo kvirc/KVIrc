@@ -362,9 +362,9 @@ void KviChannelWindow::saveProperties(KviConfigurationFile * pCfg)
 	sizes << m_pIrcView->width() << m_pUserListView->width();
 	pCfg->writeEntry("Splitter",sizes);
 	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
-	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
-		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
-		m_pIrcView->width(), sizes.at(0), m_pUserListView->width(), sizes.at(1), iTimeStamp);
+// 	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
+// 		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
+// 		m_pIrcView->width(), sizes.at(0), m_pUserListView->width(), sizes.at(1), iTimeStamp);
 	pCfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
 	pCfg->writeEntry("PrivateBackground",m_privateBackground);
 	pCfg->writeEntry("DoubleView",m_pMessageView ? true : false);
