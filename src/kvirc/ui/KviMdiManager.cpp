@@ -145,7 +145,9 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 			tile();
 	}
 
-	lpC->setFocus();
+	lpC->raise();
+	if(!lpC->hasFocus())
+		lpC->setFocus();
 
 	//qDebug("show and activate window %x->%x: geometry is %d,%d,%d,%d, visible is %d",lpC,lpC->client(),lpC->geometry().x(),lpC->geometry().y(),lpC->geometry().width(),lpC->geometry().height(),lpC->isVisible());
 }
@@ -203,17 +205,7 @@ void KviMdiManager::focusPreviousTopChild(KviMdiChild * pExcludeThis)
 	if(!lpC)
 		return;
 
-	if(isInSDIMode())
-	{
-		ensureNoMaximized(lpC);
-		lpC->maximize();
-	} else {
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
-			tile();
-	}
-	lpC->raise();
-	if(!lpC->hasFocus())
-		lpC->setFocus();
+	showAndActivate(lpC);
 }
 
 #define KVI_TILE_METHOD_ANODINE 0
@@ -441,6 +433,8 @@ void KviMdiManager::expandHorizontal()
 
 void KviMdiManager::minimizeAll()
 {
+	setIsInSDIMode(false);
+
 	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
