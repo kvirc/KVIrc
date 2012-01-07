@@ -173,7 +173,7 @@ protected slots:
 	void menuActivated(int id);
 	void tileMethodMenuActivated(int id);
 	void fillWindowPopup();
-	void slotSubWindowActivated(QMdiSubWindow * pMdiChild);
+	void processWindowStateChanged(Qt::WindowStates oldState, Qt::WindowStates newState);
 };
 
 #endif //_KVI_MDIMANAGER_H_

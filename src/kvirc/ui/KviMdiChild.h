@@ -185,17 +185,6 @@ public slots:
 	* \return void
 	*/
 	void restore();
-
-	/**
-	* \brief Triggered when the state of a window changes
-	*
-	* This event is used to catch minmize event of the KviMdiSubWindow
-	* \param oldState The old state of the window
-	* \param newState The new state of the window
-	* \return void
-	*/
-	void windowStateChangedEvent( Qt::WindowStates oldState, Qt::WindowStates newState );
-
 private slots:
 	/**
 	* \brief Updates the system popup

@@ -80,7 +80,6 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
-	connect(this, SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slotSubWindowActivated(QMdiSubWindow *)));
 	
 	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
@@ -125,6 +124,9 @@ void KviMdiManager::paintEvent(QPaintEvent * e)
 
 void KviMdiManager::manageChild(KviMdiChild * lpC)
 {
+	connect(lpC, SIGNAL(windowStateChanged(Qt::WindowStates,Qt::WindowStates)),
+		this, SLOT(processWindowStateChanged(Qt::WindowStates,Qt::WindowStates)));
+
 	addSubWindow((QMdiSubWindow*)lpC);
 
 	if(!m_bInSDIMode && KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
@@ -611,20 +613,43 @@ void KviMdiManager::tileAnodine()
 	this->tileSubWindows();
 }
 
-void KviMdiManager::slotSubWindowActivated(QMdiSubWindow * pMdiChild)
+void KviMdiManager::processWindowStateChanged(Qt::WindowStates oldState, Qt::WindowStates newState)
 {
-	if(pMdiChild)
+	KviMdiChild *pMdiChild = qobject_cast<KviMdiChild *>(sender());
+	if(!pMdiChild)
+		return;
+
+	//qDebug("%s %d => %d", m_szPlainCaption.toUtf8().data(), (int) oldState, (int) newState);
+	Qt::WindowStates diffState = oldState ^ newState;
+
+	if(diffState.testFlag(Qt::WindowMinimized))
 	{
-		if(((KviMdiChild*)pMdiChild)->client() && g_pMainWindow->isActiveWindow())
+		//minimized or unminimized
+		pMdiChild->updateCaption();
+		if(newState.testFlag(Qt::WindowMinimized))
 		{
-			//qDebug("subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
-			g_pMainWindow->childWindowActivated((KviWindow *)((KviMdiChild*)pMdiChild)->client());
-		} else {
-			//qDebug("(inactive) subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
+			//a window have just been minimized, but we want another window to get activation
+			focusPreviousTopChild();
 		}
-	} else {
-		//last subwindow deactivated
-		//qDebug("subwindowactivated 0x0");
+	}
+
+	if(newState.testFlag(Qt::WindowActive) &&
+		diffState.testFlag(Qt::WindowMaximized) &&
+		!newState.testFlag(Qt::WindowMinimized)
+	)
+	{
+		//i'm the active window and my maximized state has changed => update sdi mode
+		setIsInSDIMode(newState.testFlag(Qt::WindowMaximized));
+	}
+
+	if(newState.testFlag(Qt::WindowActive) &&
+		diffState.testFlag(Qt::WindowActive) &&
+		pMdiChild->client() &&
+		g_pMainWindow->isActiveWindow()
+	)
+	{
+		//qDebug("subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
+		g_pMainWindow->childWindowActivated((KviWindow *)((KviMdiChild*)pMdiChild)->client());
 	}
 }
 
