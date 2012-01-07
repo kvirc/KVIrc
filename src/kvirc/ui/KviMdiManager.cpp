@@ -73,7 +73,8 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 	setFrameShape(NoFrame);
 	setOption(QMdiArea::DontMaximizeSubWindowOnActivation, true);
 
-	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
+	m_bIgnoreSDIModeChange = false;
+	setIsInSDIMode(KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode));
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
 	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
@@ -165,7 +166,7 @@ void KviMdiManager::destroyChild(KviMdiChild *lpC)
 
 void KviMdiManager::setIsInSDIMode(bool bMode)
 {
-// 	qDebug("Sdi Mode %d", bMode);
+ 	//qDebug("Sdi Mode %d", bMode);
 	m_bInSDIMode = bMode;
 
 	if(!m_bInSDIMode)
@@ -343,6 +344,7 @@ void KviMdiManager::ensureNoMaximized(KviMdiChild * lpExclude)
 	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
 
+	m_bIgnoreSDIModeChange = true;
 	while (it.hasNext())
 	{
 		lpC = (KviMdiChild *) it.next();
@@ -351,6 +353,7 @@ void KviMdiManager::ensureNoMaximized(KviMdiChild * lpExclude)
 		if(lpC->windowState() & Qt::WindowMaximized)
 			lpC->setWindowState(lpC->windowState() & ~Qt::WindowMaximized);
 	}
+	m_bIgnoreSDIModeChange = false;
 }
 
 void KviMdiManager::tileMethodMenuActivated(int id)
@@ -397,7 +400,7 @@ void KviMdiManager::cascadeMaximized()
 
 void KviMdiManager::expandVertical()
 {
-	ensureNoMaximized();
+	setIsInSDIMode(false);
 
 	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> it(tmp);
@@ -416,7 +419,7 @@ void KviMdiManager::expandVertical()
 
 void KviMdiManager::expandHorizontal()
 {
-	ensureNoMaximized();
+	setIsInSDIMode(false);
 
 	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> it(tmp);
@@ -440,7 +443,7 @@ void KviMdiManager::minimizeAll()
 	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
-
+	m_bIgnoreSDIModeChange = true;
 	while (it.hasNext())
 	{
 		lpC = (KviMdiChild *) it.next();
@@ -449,6 +452,7 @@ void KviMdiManager::minimizeAll()
 
 		lpC->minimize();
 	}
+	m_bIgnoreSDIModeChange = false;
 }
 
 
@@ -534,8 +538,10 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 	int * pColrecall = bHorizontal ? colrecall : rowrecall;
 	int * pRowrecall = bHorizontal ? rowrecall : colrecall;
 
-	ensureNoMaximized();
 	if (g_pApp->kviClosingDown()) return;
+
+	m_bInSDIMode=false;
+	ensureNoMaximized();
 
 	KviMdiChild * lpTop = (KviMdiChild*)activeSubWindow();
 	if (!lpTop) return;
@@ -619,14 +625,17 @@ void KviMdiManager::processWindowStateChanged(Qt::WindowStates oldState, Qt::Win
 	if(!pMdiChild)
 		return;
 
-	//qDebug("%s %d => %d", m_szPlainCaption.toUtf8().data(), (int) oldState, (int) newState);
+	//qDebug("%p [%s] old %d new %d", pMdiChild, pMdiChild->plainCaption().toUtf8().data(), (int) oldState, (int) newState);
+
 	Qt::WindowStates diffState = oldState ^ newState;
 
 	if(diffState.testFlag(Qt::WindowMinimized))
 	{
 		//minimized or unminimized
 		pMdiChild->updateCaption();
-		if(newState.testFlag(Qt::WindowMinimized))
+		if(newState.testFlag(Qt::WindowMinimized) &&
+			!m_bIgnoreSDIModeChange	
+		)
 		{
 			//a window have just been minimized, but we want another window to get activation
 			focusPreviousTopChild();
@@ -635,7 +644,8 @@ void KviMdiManager::processWindowStateChanged(Qt::WindowStates oldState, Qt::Win
 
 	if(newState.testFlag(Qt::WindowActive) &&
 		diffState.testFlag(Qt::WindowMaximized) &&
-		!newState.testFlag(Qt::WindowMinimized)
+		!newState.testFlag(Qt::WindowMinimized) &&
+		!m_bIgnoreSDIModeChange
 	)
 	{
 		//i'm the active window and my maximized state has changed => update sdi mode

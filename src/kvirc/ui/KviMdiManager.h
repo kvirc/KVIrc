@@ -75,6 +75,7 @@ public:
 	bool eventFilter(QObject *obj, QEvent *event);
 private:
 	bool m_bInSDIMode;
+	bool m_bIgnoreSDIModeChange;
 protected:
 	/// Holds the specialized window popup
 	KviTalPopupMenu * m_pWindowPopup;
