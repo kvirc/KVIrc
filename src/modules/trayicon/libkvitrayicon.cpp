@@ -366,6 +366,7 @@ void KviTrayIconWidget::toggleParentFrame()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// raise it
 		SetForegroundWindow((HWND)g_pMainWindow->winId());
+		g_pMainWindow->activateWindow();
 #endif
 	} else if(!g_pMainWindow->isVisible())
 	{
@@ -382,6 +383,7 @@ void KviTrayIconWidget::toggleParentFrame()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// raise it
 		SetForegroundWindow((HWND)g_pMainWindow->winId());
+		g_pMainWindow->activateWindow();
 #endif
 	} else {
 		qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
