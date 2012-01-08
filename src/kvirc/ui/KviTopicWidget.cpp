@@ -167,6 +167,7 @@ void KviTopicWidget::applyOptions()
 	m_pLabel->applyOptions();
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	newFont.setKerning(false);
+	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	setFont(newFont);
 	if(m_pCompletionBox)
 		m_pCompletionBox->setFont(newFont);

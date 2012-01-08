@@ -421,6 +421,7 @@ void KviIrcView::setFont(const QFont &f)
 
 	QFont newFont(f);
 	newFont.setKerning(false);
+	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	QWidget::setFont(newFont);
 	update();
 }

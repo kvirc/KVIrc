@@ -166,6 +166,7 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 	//set the font
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
 	newFont.setKerning(false);
+	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	setFont(newFont);
 
 	if(bRefreshCachedMetrics)
