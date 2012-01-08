@@ -376,6 +376,7 @@ void KviIrcConnection::linkEstabilished()
 			target()->server()->enabledSTARTTLS()
 		)
 	{
+#ifdef COMPILE_SSL_SUPPORT
 		// STARTTLS without CAP (forced request)
 
 		m_pStateData->setInsideInitialStartTls(true);
@@ -387,6 +388,7 @@ void KviIrcConnection::linkEstabilished()
 
 		m_pStateData->setInsideInitialStartTls(false);
 		m_pStateData->setIgnoreOneYouHaveNotRegisteredError(false);
+#endif
 	}
 
 	loginToIrcServer();
