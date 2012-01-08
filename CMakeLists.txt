@@ -948,6 +948,15 @@ IF(WANT_BEER)
 	MESSAGE(STATUS "Opening the beer... -  done")
 ENDIF()
 
+############################################################################
+# By default we disable QGtkStyle since it messes up with our themeing
+# Some users wants it anyway, and we sometimes needs to check it
+############################################################################
+
+OPTION(WANT_GTKSTYLE "Enable QGtkStyle" OFF)
+IF(WANT_GTKSTYLE)
+	SET(COMPILE_ENABLE_GTKSTYLE 1)
+ENDIF()
 
 ###############################################################################
 #
@@ -1279,5 +1288,9 @@ ELSEIF(MINGW)
 	MESSAGE(STATUS "I'm ready to build KVIrc for you: please type 'mingw32-make' now...")
 ELSE()
 	MESSAGE(STATUS "I'm ready to build KVIrc for you: please type 'make' now...")
+ENDIF()
+
+if(COMPILE_ENABLE_GTKSTYLE)
+	MESSAGE(STATUS "Warning: you forcibly enabled the GtkStyle engine, which is known to break KVIrc themeing.")
 ENDIF()
 MESSAGE(STATUS " ")

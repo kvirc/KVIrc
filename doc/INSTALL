@@ -395,6 +395,18 @@ General notes for the installation of the 4.0 release of KVIrc
         objects around, CPU consumption may get high as well.
         You can thus disable transparency here.
 
+    -DWANT_GTKSTYLE (default: OFF)
+        QGtkStyle is a QT backend that uses native Gtk widgets. In recent Gtk
+        versions some insane choices are hardcoded and impossible to workaround
+        (example: icons can't be shown in menus, label background color is
+        fixed). By default we disable QGtkStyle since it messes up with KVIrc
+        internal themeing engine creating bad problems (like unreadable white
+        text on a white background). Some users wants to use it anyway and
+        sometimes we like to check if gtk developers quit smoking pot, so this
+        option let you enable the QGtkStyle engine.
+        Please don't report any theme-related bug if you enabled this option:
+        we already know it's broken, but nobody's gonna fix it.
+
     -DWANT_PERL (default: ON)
         Enables or disables perl support.
         You will not be able to use Perl scripts inside of KVIrc.

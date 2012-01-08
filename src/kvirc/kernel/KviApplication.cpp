@@ -225,12 +225,14 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	//workaround for #957
 	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
 #endif
+#ifndef COMPILE_ENABLE_GTKSTYLE
 	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
 	{
 		setStyle(new QCleanlooksStyle());
 		setPalette(style()->standardPalette());
 	}
+#endif
 }
 
 void KviApplication::setup()
