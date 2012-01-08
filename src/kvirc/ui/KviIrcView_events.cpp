@@ -435,13 +435,19 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelect
 			szSelectionText.append(QChar(pC->type));
 			if((pC->colors.fore != KviControlCodes::NoChange) && (pC->colors.fore != KviControlCodes::Transparent))
 			{
-				if(pC->colors.fore > 9)szSelectionText.append(QChar('1'));
+				if(pC->colors.fore > 9)
+					szSelectionText.append(QChar('1'));
+				else
+					szSelectionText.append(QChar('0'));
 				szSelectionText.append(QChar((pC->colors.fore%10)+'0'));
 			}
 			if((pC->colors.back != KviControlCodes::NoChange) && (pC->colors.back != KviControlCodes::Transparent) )
 			{
 				szSelectionText.append(QChar(','));
-				if(pC->colors.back > 9)szSelectionText.append(QChar('1'));
+				if(pC->colors.back > 9)
+					szSelectionText.append(QChar('1'));
+				else
+					szSelectionText.append(QChar('0'));
 				szSelectionText.append(QChar((pC->colors.back%10)+'0'));
 			}
 		break;
