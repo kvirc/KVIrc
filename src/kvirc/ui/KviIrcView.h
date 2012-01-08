@@ -225,8 +225,8 @@ private:
 	bool checkSelectionBlock(KviIrcViewLine * line,int bufIndex);
 	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos,int yPos,QRect * pRect = 0,QString * linkCmd = 0,QString * linkText = 0);
 	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);
-	void doMarkerToolTip(const QRect &rct);
-	bool checkMarkerArea(const QRect & area, const QPoint & mousePos);
+	void doMarkerToolTip();
+	bool checkMarkerArea(const QPoint & mousePos);
 	void addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText);
 public slots:
 	void flushLog();

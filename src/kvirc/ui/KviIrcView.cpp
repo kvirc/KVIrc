@@ -1583,6 +1583,8 @@ no_selection_paint:
 				m_lineMarkArea = QRect(x,y,16,16);
 				pa.drawPixmap(x,y,16,16,*pIcon);
 				//pa.setRasterOp(CopyROP);
+			} else {
+				m_lineMarkArea = QRect();
 			}
 		}
 	}
@@ -2769,11 +2771,6 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 KviConsoleWindow * KviIrcView::console()
 {
 	return m_pKviWindow->console();
-}
-
-bool KviIrcView::checkMarkerArea(const QRect & area, const QPoint & mousePos)
-{
-	return (area.contains(mousePos)) ? true : false;
 }
 
 void KviIrcView::animatedIconChange()
