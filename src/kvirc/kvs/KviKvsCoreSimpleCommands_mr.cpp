@@ -1029,7 +1029,10 @@ namespace KviKvsCoreSimpleCommands
 			if(szNick.isEmpty())KVSCSC_pContext->warning(__tr2qs_ctx("Empty target specified","kvs"));
 			else {
 				query = KVSCSC_pWindow->connection()->findQuery(szNick);
-				if(!query) {
+				if(query) {
+					if(!KVSCSC_pSwitches->find('m',"minimized"))
+						g_pMainWindow->setActiveWindow(query);
+				} else {
 					query = KVSCSC_pWindow->connection()->createQuery(
 							szNick,
 							KVSCSC_pSwitches->find('i',"incoming") ?
@@ -1050,7 +1053,6 @@ namespace KviKvsCoreSimpleCommands
 					}
 					query->setTarget(szNick,user,host);
 				}
-				g_pMainWindow->setActiveWindow(query);
 				if(!szText.isEmpty())query->ownMessage(szText);
 			}
 		}
