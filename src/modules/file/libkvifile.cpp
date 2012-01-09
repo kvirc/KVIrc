@@ -1573,7 +1573,7 @@ static bool file_kvs_fnc_time(KviKvsModuleFunctionCall * c)
 		time = f.lastModified();
 	}
 
-	c->returnValue()->setInteger(time.toMSecsSinceEpoch());
+	c->returnValue()->setInteger(time.toMSecsSinceEpoch() / 1000);
 
 	return true;
 }
