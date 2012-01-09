@@ -1523,16 +1523,16 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	@title:
 		$file.time
 	@short:
-		Returns the datetime of a file
+		Returns the datetime of a file in unixtime format
 	@syntax:
-		<string> $file.time(<file path:string>[,<time type:string>])
+		<integer> $file.time(<file path:string>[,<time type:string>])
 	@description:
-		Returns the datetime of a file.[br]
+		Returns the datetime of a file as the number of milliseconds that have passed since 1970-01-01T00:00:00.000, Coordinated Universal Time (UTC).[br]
 		The path should be given in UNIX-style and is adjusted according to the system that KVIrc is running on.[br]
 		The type have to be:[br]
 		  "a" to retrieve the last time the file was accessed;[br]
 		  "c" to retrieve the creation time of the file (on most UNIX systems, when the creation time or the last status change time - e.g. changing file permissions - are not available, it will fallback to "m";[br]
-		  "m" to retrieve the time of the last modification of the file. This is the default
+		  "m" to retrieve the time of the last modification of the file. This is the default.
 	@examples:
 		[example]
 			# Windows
@@ -1573,7 +1573,8 @@ static bool file_kvs_fnc_time(KviKvsModuleFunctionCall * c)
 		time = f.lastModified();
 	}
 
-	c->returnValue()->setString(time.toString("yyyy-MM-dd hh:mm"));
+	c->returnValue()->setInteger(time.toMSecsSinceEpoch());
+
 	return true;
 }
 
