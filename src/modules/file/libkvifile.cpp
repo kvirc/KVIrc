@@ -1401,7 +1401,7 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 	// this for win
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		ULARGE_INTEGER free,total;
-		GetDiskFreeSpaceExA( (LPCTSTR)path , NULL , &total , &free );
+		GetDiskFreeSpaceExA( (LPCTSTR)pcPath , NULL , &total , &free );
 		fFree = free.QuadPart;
 		fTotal = total.QuadPart;
 	#else
