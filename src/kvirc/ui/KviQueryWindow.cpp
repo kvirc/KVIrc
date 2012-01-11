@@ -247,9 +247,7 @@ void KviQueryWindow::textViewRightClicked()
 void KviQueryWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	KviWindow::saveProperties(pCfg);
-	QList<int> sizes;
-	sizes << m_pIrcView->width() << m_pUserListView->width();
-	pCfg->writeEntry("Splitter",sizes);
+	pCfg->writeEntry("Splitter",m_pUserListView->isHidden() ? m_SplitterSizesList : m_pSplitter->sizes());
 	pCfg->writeEntry("UserListViewVisible",m_pUserListView->isVisible());
 }
 
@@ -260,11 +258,10 @@ void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
 	QList<int> def;
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
-	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
-	m_pSplitter->setSizes(sizes);
+	m_SplitterSizesList = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setStretchFactor(0,1);
 
-	showListView(pCfg->readBoolEntry("UserListViewVisible",false));
+	showListView(pCfg->readBoolEntry("UserListViewVisible",false), true);
 }
 
 void KviQueryWindow::notifyTargetChange(const QString & szOldNick, const QString & szOldUser, const QString & szOldHost, const QString & szNick, const QString & szUser, const QString & szHost)
@@ -391,17 +388,22 @@ bool KviQueryWindow::nickChange(const QString & szOldNick, const QString & szNew
 	return true;
 }
 
-void KviQueryWindow::showListView(bool bShow)
+void KviQueryWindow::showListView(bool bShow, bool bIgnoreSizeChange)
 {
-	if(!bShow)
+	if(bShow)
 	{
-		m_pUserListView->hide();
-		if(m_pListViewButton->isChecked())
-			m_pListViewButton->setChecked(false);
-	} else {
 		m_pUserListView->show();
 		if(!(m_pListViewButton->isChecked()))
 			m_pListViewButton->setChecked(true);
+
+		m_pSplitter->setSizes(m_SplitterSizesList);
+	} else {
+		if(!bIgnoreSizeChange)
+			m_SplitterSizesList = m_pSplitter->sizes();
+
+		m_pUserListView->hide();
+		if(m_pListViewButton->isChecked())
+			m_pListViewButton->setChecked(false);
 	}
 }
 

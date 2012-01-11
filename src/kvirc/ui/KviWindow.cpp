@@ -574,9 +574,8 @@ void KviWindow::saveProperties(KviConfigurationFile * pCfg)
 			szCodec = KviQString::Empty; // store "default"
 	}
 
-	QString szKey = "TextEncoding_";
-	szKey += m_szName;
-	pCfg->writeEntry(szKey,szCodec);
+	if(!szCodec.isEmpty())
+		pCfg->writeEntry("TextEncoding",szCodec);
 	if(m_pInput)
 	{
 		pCfg->writeEntry("inputToolButtonsHidden",m_pInput->isButtonsHidden());
@@ -592,9 +591,16 @@ void KviWindow::saveProperties(KviConfigurationFile * pCfg)
 
 void KviWindow::loadProperties(KviConfigurationFile * pCfg)
 {
-	QString szKey = "TextEncoding_";
-	szKey += m_szName;
-	setTextEncoding(pCfg->readEntry(szKey,KviQString::Empty).toUtf8().data());
+	QString szCodec=pCfg->readEntry("TextEncoding",KviQString::Empty);
+	if(szCodec.isEmpty())
+	{
+		// try to load kvirc 4.0's entry
+		QString szKey = "TextEncoding_";
+		szKey += m_szName;
+		szCodec=pCfg->readEntry(szKey,KviQString::Empty);
+	}
+	
+	setTextEncoding(szCodec.toUtf8().data());
 	if(m_pInput)
 	{
 		m_pInput->setButtonsHidden(pCfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));

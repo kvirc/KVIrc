@@ -367,9 +367,7 @@ void KviConsoleWindow::executeInternalCommand(int index)
 void KviConsoleWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	KviWindow::saveProperties(cfg);
-	QList<int> sizes;
-	sizes << m_pIrcView->width() << m_pNotifyListView->width();
-	cfg->writeEntry("Splitter",sizes);
+	cfg->writeEntry("Splitter", m_pNotifyViewButton->isChecked() ? m_pSplitter->sizes() : m_SplitterSizesList);
 	cfg->writeEntry("NotifyListViewVisible",m_pNotifyViewButton->isChecked());
 }
 
@@ -378,15 +376,23 @@ void KviConsoleWindow::getBaseLogFileName(QString &buffer)
 	buffer=QString("CONSOLE%1").arg(context()->id());
 }
 
-void KviConsoleWindow::showNotifyList(bool bShow)
+void KviConsoleWindow::showNotifyList(bool bShow, bool bIgnoreSizeChange)
 {
-	if(!bShow)
+	if(bShow)
 	{
-		m_pNotifyListView->hide();
-		if(m_pNotifyViewButton->isChecked())m_pNotifyViewButton->setChecked(false);
-	} else {
 		m_pNotifyListView->show();
-		if(!(m_pNotifyViewButton->isChecked()))m_pNotifyViewButton->setChecked(true);
+		if(!(m_pNotifyViewButton->isChecked()))
+			m_pNotifyViewButton->setChecked(true);
+
+		m_pSplitter->setSizes(m_SplitterSizesList);
+	} else {
+		if(!bIgnoreSizeChange)
+			m_SplitterSizesList = m_pSplitter->sizes();
+
+		m_pNotifyListView->hide();
+		if(m_pNotifyViewButton->isChecked())
+			m_pNotifyViewButton->setChecked(false);
+		
 	}
 }
 
@@ -396,12 +402,11 @@ void KviConsoleWindow::loadProperties(KviConfigurationFile *cfg)
 	QList<int> def;
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
-	QList<int> sizes=cfg->readIntListEntry("Splitter",def);
-	m_pSplitter->setSizes(sizes);
+	m_SplitterSizesList=cfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setStretchFactor(0,1);
 
 	KviWindow::loadProperties(cfg);
-	showNotifyList(cfg->readBoolEntry("NotifyListViewVisible",false));
+	showNotifyList(cfg->readBoolEntry("NotifyListViewVisible",false), true);
 }
 
 void KviConsoleWindow::textViewRightClicked()

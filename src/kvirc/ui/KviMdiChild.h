@@ -82,6 +82,8 @@ private:
 	QPixmap m_pIcon;
 	/// Caption as plain text.
 	QString m_szPlainCaption;
+	/// Our geometry when we're in a restored state.
+	QRect m_rNormalizedGeometry;
 private:
 	/**
 	* \brief Updates the caption of the child
@@ -155,12 +157,24 @@ public:
 	* \return void
 	*/
 	void activate();
+
+	/**
+	* \brief Overrides parent implementation to return a correct value even when we're maximized or minimized
+	* \return QRect
+	*/
+	QRect normalGeometry() { return m_rNormalizedGeometry; };
 protected:
 	/**
-	* \brief Updates the widget background when moving
+	* \brief Updates the widget background when moving, and our normalGeometry
 	* \return void
 	*/
 	virtual void moveEvent(QMoveEvent * e);
+
+	/**
+	* \brief Updates our normalGeometry
+	* \return void
+	*/
+	virtual void resizeEvent(QResizeEvent * e);
 
 	/**
 	* \brief Hooks into close event to make user decisions possible

@@ -57,7 +57,6 @@ static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensio
 
 		g_pFileTransferWindow = new FileTransferWindow(s->pDescriptor);
 		g_pMainWindow->addWindow(g_pFileTransferWindow,!bCreateMinimized);
-		if(bCreateMinimized)g_pFileTransferWindow->minimize();
 		return g_pFileTransferWindow;
 	}
 
@@ -73,7 +72,8 @@ static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensio
 		}
 	}
 
-	if(!bNoRaise)g_pFileTransferWindow->delayedAutoRaise();
+	if(!bNoRaise)
+		g_pFileTransferWindow->delayedAutoRaise();
 	return g_pFileTransferWindow;
 }
 

@@ -357,10 +357,8 @@ void KviChannelWindow::getConfigGroupName(QString & szBuffer)
 void KviChannelWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	KviWindow::saveProperties(pCfg);
-	pCfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
-	QList<int> sizes;
-	sizes << m_pIrcView->width() << m_pUserListView->width();
-	pCfg->writeEntry("Splitter",sizes);
+	pCfg->writeEntry("TopSplitter", m_pTopSplitter->sizes());
+	pCfg->writeEntry("Splitter", m_pUserListView->isHidden() ? m_SplitterSizesList : m_pSplitter->sizes());
 //	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
 // 	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
 // 		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
@@ -388,8 +386,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	def.clear();
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
-	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
-	m_pSplitter->setSizes(sizes);
+	m_SplitterSizesList = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setStretchFactor(0,1);
 
 	def.clear();
@@ -413,6 +410,8 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 		bool bHidden = pCfg->readBoolEntry("UserListHidden",0);
 		m_pUserListView->setHidden(bHidden);
 		m_pListViewButton->setChecked(!bHidden);
+		if(!bHidden)
+			m_pSplitter->setSizes(m_SplitterSizesList);
 		resizeEvent(0);
 	}
 
@@ -479,6 +478,8 @@ void KviChannelWindow::toggleListView()
 {
 	if(m_pUserListView->isVisible())
 	{
+		m_SplitterSizesList = m_pSplitter->sizes();
+
 		m_pUserListView->hide();
 		if(m_pListViewButton->isChecked())
 			m_pListViewButton->setChecked(false);
@@ -486,6 +487,8 @@ void KviChannelWindow::toggleListView()
 		m_pUserListView->show();
 		if(!(m_pListViewButton->isChecked()))
 			m_pListViewButton->setChecked(true);
+
+		m_pSplitter->setSizes(m_SplitterSizesList);
 	}
 }
 

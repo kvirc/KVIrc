@@ -87,7 +87,7 @@ protected:
 public:
 	~KviConsoleWindow();
 protected:
-	int                                m_iFlags; // FIXME: make this a KviWindow property ?
+	int                       m_iFlags; // FIXME: make this a KviWindow property ?
 	// UI
 	KviUserListView         * m_pNotifyListView;
 	KviWindowToolPageButton * m_pNotifyViewButton;
@@ -96,6 +96,7 @@ protected:
 	QString                   m_szOwnSmartColor;
 	QStringList             * m_pTmpHighLightedChannels;
 	KviIrcContext           * m_pContext;
+	QList<int>                m_SplitterSizesList;
 protected:
 	// UI
 	virtual QPixmap * myIconPtr();
@@ -119,7 +120,7 @@ protected:
 	// internal helper for applyHighlighting
 	int triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger);
 
-	void showNotifyList(bool bShow);
+	void showNotifyList(bool bShow, bool bIgnoreSizeChange=false);
 	static int getSmartColorHashForNick(QString *szNick);
 public:
 	KviIrcContext * context(){ return m_pContext; };

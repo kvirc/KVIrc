@@ -181,6 +181,7 @@ protected:
 	KviPointerList<KviChannelAction>         * m_pActionHistory;
 	kvi_time_t                                 m_tLastReceivedWhoReply;
 	QList<int>                                 m_VertSplitterSizesList;
+	QList<int>                                 m_SplitterSizesList;
 	KviTalHBox                               * m_pButtonContainer;
 public:
 	/**

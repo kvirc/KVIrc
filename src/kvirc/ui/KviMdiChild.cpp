@@ -184,6 +184,23 @@ void KviMdiChild::moveEvent(QMoveEvent *e)
 	}
 #endif
 	QMdiSubWindow::moveEvent(e);
+
+	if(!(windowState() & (Qt::WindowMinimized | Qt::WindowMaximized)))
+	{
+		m_rNormalizedGeometry.moveTopLeft(e->pos());
+// 		qDebug("[%s] normalGeometry x=%d y=%d w=%d h=%d", m_szPlainCaption.toUtf8().data(), m_rNormalizedGeometry.x(), m_rNormalizedGeometry.y(), m_rNormalizedGeometry.width(), m_rNormalizedGeometry.height());
+	}
+}
+
+void KviMdiChild::resizeEvent(QResizeEvent *e)
+{
+	QMdiSubWindow::resizeEvent(e);
+
+	if(!(windowState() & (Qt::WindowMinimized | Qt::WindowMaximized)))
+	{
+		m_rNormalizedGeometry.setSize(e->size());
+// 		qDebug("[%s] normalGeometry x=%d y=%d w=%d h=%d", m_szPlainCaption.toUtf8().data(), m_rNormalizedGeometry.x(), m_rNormalizedGeometry.y(), m_rNormalizedGeometry.width(), m_rNormalizedGeometry.height());
+	}
 }
 
 void KviMdiChild::setClient(QWidget * w)
