@@ -343,6 +343,7 @@ ENDIF()
 
 IF(MSVC)
 	LIST(APPEND LIBS shlwapi.lib)
+	LIST(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc)
 ENDIF()
 
 # Link libraries
