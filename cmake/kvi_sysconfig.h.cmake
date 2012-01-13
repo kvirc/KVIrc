@@ -62,10 +62,6 @@
 #cmakedefine COMPILE_PERL_SUPPORT 1
 #cmakedefine COMPILE_PYTHON_SUPPORT 1
 
-#if !(defined(MINGW))
-#cmakedefine COMPILE_ix86_ASM 1
-#cmakedefine COMPILE_WITH_SYSTEM_MEMMOVE 1
-#endif
 #cmakedefine COMPILE_USE_DYNAMIC_LABELS 1
 #cmakedefine COMPILE_GET_INTERFACE_ADDRESS 1
 #cmakedefine HAVE_INET_ATON 1
@@ -79,7 +75,7 @@
 
 // KVIrc detects the modules directory on macs/win32 by itself
 // this seems to be used on linux only
-#if !(defined(Q_OS_MACX) || defined(MINGW))
+#if !(defined(Q_OS_MACX) || defined(MINGW) || !defined(MSVC))
 #define KVIRC_RESOURCES_DIR "${CMAKE_KVIRC_RESOURCES_DIR}"
 #define KVIRC_MODULES_DIR "${CMAKE_KVIRC_MODULES_DIR}"
 #endif

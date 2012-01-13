@@ -427,6 +427,12 @@ IF(QT4_FOUND)
 	SET(QT_USE_QTXML true)
 	SET(QT_USE_QTNETWORK true)
 
+	# this is a bit fishy: we need qtmain for non-debug MSVC (/subsystem:windows), but probably not for MinGW, also we are not using WIN32 for ADD_EXECUTABLE for MinGW
+	# TODO: someone should check the impact on MinGW of qtmain and win32 switch for the add_executable statement for src/kvirc/CMakeLists.txt
+	IF(MSVC AND NOT WANT_DEBUG)
+		SET(QT_USE_QTMAIN true)
+	ENDIF()
+
 	# Qt-DBus support
 	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
 	IF(WANT_QTDBUS)
@@ -592,7 +598,11 @@ IF(WANT_OPENSSL)
 	IF(OPENSSL_FOUND)
 		IF(WIN32)
 			# On windows/mingw we need libeay32 too...
-			FIND_LIBRARY(LIB_EAY NAMES libeay32MD eay libeay libeay32)
+			FIND_LIBRARY(LIB_EAY NAMES libeay32MD eay libeay libeay32
+									${_OPENSSL_ROOT_HINTS_AND_PATHS}
+									PATH_SUFFIXES
+									"lib"
+									"lib/MinGW")
 			IF(LIB_EAY)
 				INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
 				# The following are here in order to pick the applink.c file
