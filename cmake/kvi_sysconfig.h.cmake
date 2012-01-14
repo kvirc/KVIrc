@@ -75,7 +75,7 @@
 
 // KVIrc detects the modules directory on macs/win32 by itself
 // this seems to be used on linux only
-#if !(defined(Q_OS_MACX) || defined(MINGW) || !defined(MSVC))
+#if !(defined(Q_OS_MACX) || defined(MINGW) || defined(MSVC))
 #define KVIRC_RESOURCES_DIR "${CMAKE_KVIRC_RESOURCES_DIR}"
 #define KVIRC_MODULES_DIR "${CMAKE_KVIRC_MODULES_DIR}"
 #endif
