@@ -352,25 +352,6 @@ ELSE()
 ENDIF()
 
 ###############################################################################
-# Option for precompiled headers usage (currently broken because of bad gcc support)
-###############################################################################
-#
-#OPTION(WANT_PCH "Whether to use pre-compiled headers" ON)
-#IF(WANT_PCH)
-#	FIND_PACKAGE(PCHSupport)
-#	IF(PCHSupport_FOUND)
-#		SET(CMAKE_STATUS_PCH_SUPPORT "Yes")
-#		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DUSE_PCH=1)
-#	ELSE()
-#		SET(CMAKE_STATUS_PCH_SUPPORT "Not available")
-#	ENDIF()
-#ELSE()
-#	ADD_DEFINITIONS(-DUSE_PCH=0)
-#	SET(CMAKE_STATUS_PCH_SUPPORT "User disabled")
-#ENDIF()
-#
-
-###############################################################################
 #
 # Library and tool checks, in order. First the required ones
 # in order of dependancy, then the optional ones.
@@ -427,8 +408,8 @@ IF(QT4_FOUND)
 	SET(QT_USE_QTXML true)
 	SET(QT_USE_QTNETWORK true)
 
-	# this is a bit fishy: we need qtmain for non-debug MSVC (/subsystem:windows), but probably not for MinGW, also we are not using WIN32 for ADD_EXECUTABLE for MinGW
-	# TODO: someone should check the impact on MinGW of qtmain and win32 switch for the add_executable statement for src/kvirc/CMakeLists.txt
+	# this is a bit fishy: we need qtmain for non-debug MSVC (/subsystem:windows), but probably not for MinGW.
+	# TODO: someone should check the impact on MinGW of qtmain.
 	IF(MSVC AND NOT WANT_DEBUG)
 		SET(QT_USE_QTMAIN true)
 	ENDIF()
@@ -922,12 +903,11 @@ ENDIF()
 
 IF(MINGW)
         LIST(APPEND LIBS -lshlwapi)
+        ADD_DEFINITIONS(-DMINGW)
 	IF(WANT_DEBUG)
                 SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -fno-exceptions")
-				ADD_DEFINITIONS(-DMINGW)
         ELSE()
                 SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -mwindows -fno-exceptions")
-				ADD_DEFINITIONS(-DMINGW -mwindows)
 	ENDIF()
         #remove leading and trailing spaces (string strip)
         STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
@@ -1263,7 +1243,6 @@ MESSAGE(STATUS "   Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_S
 MESSAGE(STATUS "   Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 MESSAGE(STATUS "Features:")
 MESSAGE(STATUS "   X11 Support                 : ${CMAKE_STATUS_X11_SUPPORT}")
-#MESSAGE(STATUS "   PCH Support                : ${CMAKE_STATUS_PCH_SUPPORT}")
 MESSAGE(STATUS "   Qt-DBus Support             : ${CMAKE_STATUS_QTDBUS_SUPPORT}")
 MESSAGE(STATUS "   Qt-WebKit Support           : ${CMAKE_STATUS_QTWEBKIT_SUPPORT}")
 MESSAGE(STATUS "   Qt-Svg Support              : ${CMAKE_STATUS_QTSVG_SUPPORT}")

@@ -347,8 +347,8 @@ IF(MSVC)
 ENDIF()
 
 # Link libraries
-# on MSVC, add WIN32 on no debug so we can get rid of this stupid console window
-IF(MSVC AND NOT WANT_DEBUG)
+# don't mind the WIN32 flag, its needed to not show a console on non-debug windows builds and is ignored anywhere else.
+IF(NOT WANT_DEBUG)
 	ADD_EXECUTABLE(${KVIRC_BINARYNAME} WIN32 ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 ELSE()
 	ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
