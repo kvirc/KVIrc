@@ -914,7 +914,8 @@ IF(MINGW)
 ENDIF()
 
 IF(MSVC)
-	ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+	ADD_DEFINITIONS(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES)
+	ADD_DEFINITIONS(-DMSVC)
 ENDIF()
 
 ############################################################################
