@@ -49,34 +49,85 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 #define SM_SERVERR2            89
 #define BUFSIZE 1024
 
-//Vista :/
+// List stolen from WinNT.h (last updated from 7.1 SDK)
+// MSDN: If the product has not been activated and is no longer in
+// the grace period, this parameter is set to PRODUCT_UNLICENSED (0xABCDABCD).
+// Otherwise, this parameter can be one of the following values.
 
-#define PRODUCT_BUSINESS 0x00000006
-#define PRODUCT_BUSINESS_N 0x00000010
-#define PRODUCT_CLUSTER_SERVER 0x00000012
-#define PRODUCT_DATACENTER_SERVER 0x00000008
-#define PRODUCT_DATACENTER_SERVER_CORE 0x0000000C
-#define PRODUCT_ENTERPRISE 0x00000004
-#define PRODUCT_ENTERPRISE_SERVER 0x0000000A
-#define PRODUCT_ENTERPRISE_SERVER_CORE 0x0000000E
-#define PRODUCT_ENTERPRISE_SERVER_IA64 0x0000000F
-#define PRODUCT_HOME_BASIC 0x00000002
-#define PRODUCT_HOME_BASIC_N 0x00000005
-#define PRODUCT_HOME_PREMIUM 0x00000003
-#define PRODUCT_HOME_SERVER 0x00000013
-#define PRODUCT_SERVER_FOR_SMALLBUSINESS 0x00000018
-#define PRODUCT_SMALLBUSINESS_SERVER 0x00000009
-#define PRODUCT_SMALLBUSINESS_SERVER_PREMIUM 0x00000019
-#define PRODUCT_STANDARD_SERVER 0x00000007
-#define PRODUCT_STANDARD_SERVER_CORE 0x0000000D
-#define PRODUCT_STARTER 0x0000000B
-#define PRODUCT_STORAGE_ENTERPRISE_SERVER 0x00000017
-#define PRODUCT_STORAGE_EXPRESS_SERVER 0x00000014
-#define PRODUCT_STORAGE_STANDARD_SERVER 0x00000015
-#define PRODUCT_STORAGE_WORKGROUP_SERVER 0x00000016
-#define PRODUCT_UNDEFINED 0x00000000
-#define PRODUCT_ULTIMATE 0x00000001
-#define PRODUCT_WEB_SERVER 0x00000011
+#define PRODUCT_UNDEFINED                           0x00000000
+
+#define PRODUCT_ULTIMATE                            0x00000001
+#define PRODUCT_HOME_BASIC                          0x00000002
+#define PRODUCT_HOME_PREMIUM                        0x00000003
+#define PRODUCT_ENTERPRISE                          0x00000004
+#define PRODUCT_HOME_BASIC_N                        0x00000005
+#define PRODUCT_BUSINESS                            0x00000006
+#define PRODUCT_STANDARD_SERVER                     0x00000007
+#define PRODUCT_DATACENTER_SERVER                   0x00000008
+#define PRODUCT_SMALLBUSINESS_SERVER                0x00000009
+#define PRODUCT_ENTERPRISE_SERVER                   0x0000000A
+#define PRODUCT_STARTER                             0x0000000B
+#define PRODUCT_DATACENTER_SERVER_CORE              0x0000000C
+#define PRODUCT_STANDARD_SERVER_CORE                0x0000000D
+#define PRODUCT_ENTERPRISE_SERVER_CORE              0x0000000E
+#define PRODUCT_ENTERPRISE_SERVER_IA64              0x0000000F
+#define PRODUCT_BUSINESS_N                          0x00000010
+#define PRODUCT_WEB_SERVER                          0x00000011
+#define PRODUCT_CLUSTER_SERVER                      0x00000012
+#define PRODUCT_HOME_SERVER                         0x00000013
+#define PRODUCT_STORAGE_EXPRESS_SERVER              0x00000014
+#define PRODUCT_STORAGE_STANDARD_SERVER             0x00000015
+#define PRODUCT_STORAGE_WORKGROUP_SERVER            0x00000016
+#define PRODUCT_STORAGE_ENTERPRISE_SERVER           0x00000017
+#define PRODUCT_SERVER_FOR_SMALLBUSINESS            0x00000018
+#define PRODUCT_SMALLBUSINESS_SERVER_PREMIUM        0x00000019
+#define PRODUCT_HOME_PREMIUM_N                      0x0000001A
+#define PRODUCT_ENTERPRISE_N                        0x0000001B
+#define PRODUCT_ULTIMATE_N                          0x0000001C
+#define PRODUCT_WEB_SERVER_CORE                     0x0000001D
+#define PRODUCT_MEDIUMBUSINESS_SERVER_MANAGEMENT    0x0000001E
+#define PRODUCT_MEDIUMBUSINESS_SERVER_SECURITY      0x0000001F
+#define PRODUCT_MEDIUMBUSINESS_SERVER_MESSAGING     0x00000020
+#define PRODUCT_SERVER_FOUNDATION                   0x00000021
+#define PRODUCT_HOME_PREMIUM_SERVER                 0x00000022
+#define PRODUCT_SERVER_FOR_SMALLBUSINESS_V          0x00000023
+#define PRODUCT_STANDARD_SERVER_V                   0x00000024
+#define PRODUCT_DATACENTER_SERVER_V                 0x00000025
+#define PRODUCT_ENTERPRISE_SERVER_V                 0x00000026
+#define PRODUCT_DATACENTER_SERVER_CORE_V            0x00000027
+#define PRODUCT_STANDARD_SERVER_CORE_V              0x00000028
+#define PRODUCT_ENTERPRISE_SERVER_CORE_V            0x00000029
+#define PRODUCT_HYPERV                              0x0000002A
+#define PRODUCT_STORAGE_EXPRESS_SERVER_CORE         0x0000002B
+#define PRODUCT_STORAGE_STANDARD_SERVER_CORE        0x0000002C
+#define PRODUCT_STORAGE_WORKGROUP_SERVER_CORE       0x0000002D
+#define PRODUCT_STORAGE_ENTERPRISE_SERVER_CORE      0x0000002E
+#define PRODUCT_STARTER_N                           0x0000002F
+#define PRODUCT_PROFESSIONAL                        0x00000030
+#define PRODUCT_PROFESSIONAL_N                      0x00000031
+#define PRODUCT_SB_SOLUTION_SERVER                  0x00000032
+#define PRODUCT_SERVER_FOR_SB_SOLUTIONS             0x00000033
+#define PRODUCT_STANDARD_SERVER_SOLUTIONS           0x00000034
+#define PRODUCT_STANDARD_SERVER_SOLUTIONS_CORE      0x00000035
+#define PRODUCT_SB_SOLUTION_SERVER_EM               0x00000036
+#define PRODUCT_SERVER_FOR_SB_SOLUTIONS_EM          0x00000037
+#define PRODUCT_SOLUTION_EMBEDDEDSERVER             0x00000038
+#define PRODUCT_SOLUTION_EMBEDDEDSERVER_CORE        0x00000039
+#define PRODUCT_SMALLBUSINESS_SERVER_PREMIUM_CORE   0x0000003F
+#define PRODUCT_ESSENTIALBUSINESS_SERVER_MGMT       0x0000003B
+#define PRODUCT_ESSENTIALBUSINESS_SERVER_ADDL       0x0000003C
+#define PRODUCT_ESSENTIALBUSINESS_SERVER_MGMTSVC    0x0000003D
+#define PRODUCT_ESSENTIALBUSINESS_SERVER_ADDLSVC    0x0000003E
+#define PRODUCT_CLUSTER_SERVER_V                    0x00000040
+#define PRODUCT_EMBEDDED                            0x00000041
+#define PRODUCT_STARTER_E                           0x00000042
+#define PRODUCT_HOME_BASIC_E                        0x00000043
+#define PRODUCT_HOME_PREMIUM_E                      0x00000044
+#define PRODUCT_PROFESSIONAL_E                      0x00000045
+#define PRODUCT_ENTERPRISE_E                        0x00000046
+#define PRODUCT_ULTIMATE_E                          0x00000047
+
+#define PRODUCT_UNLICENSED                          0xABCDABCD
 
 static QString queryWinInfo(QueryInfo info)
 {
@@ -118,6 +169,13 @@ static QString queryWinInfo(QueryInfo info)
 
 		// Test for the specific product.
 
+		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 2 )
+		{
+			if( osvi.wProductType == VER_NT_WORKSTATION )
+				szVersion+= "Windows 8 ";
+			else szVersion+="Windows Server 8 ";
+		}
+
 		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 1 )
 		{
 			if( osvi.wProductType == VER_NT_WORKSTATION )
@@ -147,16 +205,10 @@ static QString queryWinInfo(QueryInfo info)
 		if ( osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 1 )
 			szVersion+="Windows XP ";
 
-		if ( osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 0 )
-			szVersion+="Windows 2000 ";
-
-		if ( osvi.dwMajorVersion <= 4 )
-			szVersion+="Windows NT ";
-
 		PGETPRODUCTINFO pGetProductInfo;
 		pGetProductInfo = (PGETPRODUCTINFO) GetProcAddress(
 			GetModuleHandle(TEXT("kernel32.dll")), "GetProductInfo");
-		// Test for specific product on Windows NT 4.0 SP6 and later.
+		// from MSDN, Document Date 9/7/2011
 		if( bOsVersionInfoEx )
 		{
 			DWORD dwPlatformInfo;
@@ -167,82 +219,146 @@ static QString queryWinInfo(QueryInfo info)
 					switch(dwPlatformInfo)
 					{
 					case PRODUCT_BUSINESS:
-						szVersion+="Business Edition";
+						szVersion+="Business";
 						break;
 					case PRODUCT_BUSINESS_N:
-						szVersion+="Business N Edition";
+						szVersion+="Business N";
 						break;
 					case PRODUCT_CLUSTER_SERVER:
-						szVersion+="Cluster Server Edition";
+						szVersion+="HPC Edition";
 						break;
 					case PRODUCT_DATACENTER_SERVER:
-						szVersion+="Server Datacenter Edition (full installation)";
+						szVersion+="Server Datacenter (full installation)";
 						break;
 					case PRODUCT_DATACENTER_SERVER_CORE:
-						szVersion+="Server Datacenter Edition (core installation)";
+						szVersion+="Server Datacenter (core installation)";
+						break;
+					case PRODUCT_DATACENTER_SERVER_CORE_V:
+						szVersion+="Server Datacenter without Hyper-V (core installation)";
+						break;
+					case PRODUCT_DATACENTER_SERVER_V:
+						szVersion+="Server Datacenter without Hyper-V (full installation)";
 						break;
 					case PRODUCT_ENTERPRISE:
-						szVersion+="Enterprise Edition";
+						szVersion+="Enterprise";
+						break;
+					case PRODUCT_ENTERPRISE_N:
+						szVersion+="Enterprise N";
 						break;
 					case PRODUCT_ENTERPRISE_SERVER:
-						szVersion+="Server Enterprise Edition (full installation)";
+						szVersion+="Server Enterprise (full installation)";
 						break;
 					case PRODUCT_ENTERPRISE_SERVER_CORE:
-						szVersion+="Server Enterprise Edition (core installation)";
+						szVersion+="Server Enterprise (core installation)";
 						break;
 					case PRODUCT_ENTERPRISE_SERVER_IA64:
-						szVersion+="Server Enterprise Edition for Itanium-based Systems";
+						szVersion+="Server Enterprise for Itanium-based Systems";
+						break;
+					case PRODUCT_ENTERPRISE_SERVER_V:
+						szVersion+="Server Enterprise without Hyper-V (full installation)";
 						break;
 					case PRODUCT_HOME_BASIC:
-						szVersion+="Home Basic Edition";
+						szVersion+="Home Basic";
 						break;
 					case PRODUCT_HOME_BASIC_N:
-						szVersion+="Home Basic N Edition";
+						szVersion+="Home Basic N";
 						break;
 					case PRODUCT_HOME_PREMIUM:
-						szVersion+="Home Premium Edition";
+						szVersion+="Home Premium";
 						break;
-					case PRODUCT_HOME_SERVER:
-						szVersion+="Home Server Edition";
+					case PRODUCT_HOME_PREMIUM_N:
+						szVersion+="Home Premium N";
+						break;
+					case PRODUCT_HYPERV:
+						szVersion+="Hyper-V Server";
+						break;
+					case PRODUCT_MEDIUMBUSINESS_SERVER_MANAGEMENT:
+						szVersion+="Essential Business Server Management Server";
+						break;
+					case PRODUCT_MEDIUMBUSINESS_SERVER_MESSAGING:
+						szVersion+="Essential Business Server Messaging Server";
+						break;
+					case PRODUCT_MEDIUMBUSINESS_SERVER_SECURITY:
+						szVersion+="Essential Business Server Security Server";
+						break;
+					case PRODUCT_PROFESSIONAL:
+						szVersion+="Professional";
+						break;
+					case PRODUCT_PROFESSIONAL_N:
+						szVersion+="Professional N";
 						break;
 					case PRODUCT_SERVER_FOR_SMALLBUSINESS:
-						szVersion+="Server for Small Business Edition";
+						szVersion+="Server 2008 for Windows Essential Server Solutions";
+						break;
+					case PRODUCT_SERVER_FOR_SMALLBUSINESS_V:
+						szVersion+="Server 2008 without Hyper-V for Windows Essential Server Solutions";
+						break;
+					case PRODUCT_SERVER_FOUNDATION:
+						szVersion+="Server Foundation";
+						break;
+					case PRODUCT_HOME_PREMIUM_SERVER:
+						szVersion+="Home Server 2011";
+						break;
+					case PRODUCT_SB_SOLUTION_SERVER:
+						szVersion+="Small Business Server 2011 Essentials";
+						break;
+					case PRODUCT_HOME_SERVER:
+						szVersion+="Windows Storage Server 2008 R2 Essentials";
 						break;
 					case PRODUCT_SMALLBUSINESS_SERVER:
 						szVersion+="Small Business Server";
 						break;
-					case PRODUCT_SMALLBUSINESS_SERVER_PREMIUM:
-						szVersion+="Small Business Server Premium Edition";
+					case PRODUCT_SOLUTION_EMBEDDEDSERVER:
+						szVersion+="Windows MultiPoint Server";
 						break;
 					case PRODUCT_STANDARD_SERVER:
-						szVersion+="Server Standard Edition (full installation)";
+						szVersion+="Server Standard (full installation)";
 						break;
 					case PRODUCT_STANDARD_SERVER_CORE:
-						szVersion+="Server Standard Edition (core installation)";
+						szVersion+="Server Standard (core installation)";
+						break;
+					case PRODUCT_STANDARD_SERVER_CORE_V:
+						szVersion+="Server Standard without Hyper-V (core installation)";
+						break;
+					case PRODUCT_STANDARD_SERVER_V:
+						szVersion+="Server Standard without Hyper-V (full installation)";
 						break;
 					case PRODUCT_STARTER:
-						szVersion+="Starter Edition";
+						szVersion+="Starter";
+						break;
+					case PRODUCT_STARTER_N:
+						szVersion+="Starter N";
 						break;
 					case PRODUCT_STORAGE_ENTERPRISE_SERVER:
-						szVersion+="Storage Server Enterprise Edition";
+						szVersion+="Storage Server Enterprise";
 						break;
 					case PRODUCT_STORAGE_EXPRESS_SERVER:
-						szVersion+="Storage Server Express Edition";
+						szVersion+="Storage Server Express";
 						break;
 					case PRODUCT_STORAGE_STANDARD_SERVER:
-						szVersion+="Storage Server Standard Edition";
+						szVersion+="Storage Server Standard";
 						break;
 					case PRODUCT_STORAGE_WORKGROUP_SERVER:
-						szVersion+="Storage Server Workgroup Edition";
+						szVersion+="Storage Server Workgroup";
 						break;
 					case PRODUCT_UNDEFINED:
 						szVersion+="An unknown product";
 						break;
+          // just use unknown here since we do not care.
+					case PRODUCT_UNLICENSED:
+						szVersion+="An unknown product";
+						break;
 					case PRODUCT_ULTIMATE:
-						szVersion+="Ultimate Edition";
+						szVersion+="Ultimate";
+						break;
+					case PRODUCT_ULTIMATE_N:
+						szVersion+="Ultimate N";
 						break;
 					case PRODUCT_WEB_SERVER:
-						szVersion+="Web Server Edition";
+						szVersion+="Web Server (full installation)";
+						break;
+					case PRODUCT_WEB_SERVER_CORE:
+						szVersion+="Web Server (core installation)";
 						break;
 
 					}
@@ -256,9 +372,7 @@ static QString queryWinInfo(QueryInfo info)
 					if ( osvi.wProductType == VER_NT_WORKSTATION &&
 						si.wProcessorArchitecture!=PROCESSOR_ARCHITECTURE_AMD64)
 					{
-						if( osvi.dwMajorVersion == 4 )
-							szVersion+= "Workstation 4.0 " ;
-						else if( osvi.wSuiteMask & VER_SUITE_PERSONAL )
+						if( osvi.wSuiteMask & VER_SUITE_PERSONAL )
 							szVersion+= "Home Edition " ;
 						else szVersion+= "Professional " ;
 					}
@@ -297,108 +411,9 @@ static QString queryWinInfo(QueryInfo info)
 								else szVersion+= "Standard Edition " ;
 							}
 						}
-						else if(osvi.dwMajorVersion==5 && osvi.dwMinorVersion==0)
-						{
-							if( osvi.wSuiteMask & VER_SUITE_DATACENTER )
-								szVersion+= "Datacenter Server " ;
-							else if( osvi.wSuiteMask & VER_SUITE_ENTERPRISE )
-								szVersion+= "Advanced Server " ;
-							else szVersion+= "Server " ;
-						}
-						else  // Windows NT 4.0
-						{
-							if( osvi.wSuiteMask & VER_SUITE_ENTERPRISE )
-								szVersion+="Server 4.0, Enterprise Edition " ;
-							else szVersion+= "Server 4.0 " ;
-						}
 					}
 				}
 		}
-		// Test for specific product on Windows NT 4.0 SP5 and earlier
-		else
-		{
-			HKEY hKey;
-			TCHAR szProductType[BUFSIZE];
-			DWORD dwBufLen=BUFSIZE*sizeof(TCHAR);
-			LONG lRet;
-
-			lRet = RegOpenKeyEx( HKEY_LOCAL_MACHINE,
-				TEXT("SYSTEM\\CurrentControlSet\\Control\\ProductOptions"),
-				0, KEY_QUERY_VALUE, &hKey );
-			if( lRet != ERROR_SUCCESS )
-				return FALSE;
-
-			lRet = RegQueryValueEx( hKey, TEXT("ProductType"), NULL, NULL,
-				(LPBYTE) szProductType, &dwBufLen);
-			RegCloseKey( hKey );
-
-			if( (lRet != ERROR_SUCCESS) || (dwBufLen > BUFSIZE*sizeof(TCHAR)) )
-				return FALSE;
-
-			if ( lstrcmpi( TEXT("WINNT"), szProductType) == 0 )
-				szVersion+= "Workstation " ;
-			if ( lstrcmpi( TEXT("LANMANNT"), szProductType) == 0 )
-				szVersion+= "Server " ;
-			if ( lstrcmpi( TEXT("SERVERNT"), szProductType) == 0 )
-				szVersion+= "Advanced Server " ;
-		}
-
-
-		// Display service pack (if any) and build number.
-
-		if( osvi.dwMajorVersion == 4 &&
-			lstrcmpi( osvi.szCSDVersion, TEXT("Service Pack 6") ) == 0 )
-		{
-			HKEY hKey;
-			LONG lRet;
-
-			// Test for SP6 versus SP6a.
-			lRet = RegOpenKeyEx( HKEY_LOCAL_MACHINE,
-				TEXT("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Hotfix\\Q246009"),
-				0, KEY_QUERY_VALUE, &hKey );
-			if( lRet == ERROR_SUCCESS )
-				szVersion+= QString("Service Pack 6a (Build %1)").arg( osvi.dwBuildNumber & 0xFFFF );
-			else // Windows NT 4.0 prior to SP6a
-			{
-				szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion ).arg(osvi.dwBuildNumber & 0xFFFF);
-			}
-
-			RegCloseKey( hKey );
-		}
-		else // not Windows NT 4.0
-		{
-			szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion ).arg(osvi.dwBuildNumber & 0xFFFF);
-		}
-
-		break;
-
-		// Test for the Windows Me/98/95.
-	case VER_PLATFORM_WIN32_WINDOWS:
-
-		if (osvi.dwMajorVersion == 4 && osvi.dwMinorVersion == 0)
-		{
-			szVersion+="Windows 95 ";
-			if (osvi.szCSDVersion[1]=='C' || osvi.szCSDVersion[1]=='B')
-				szVersion+="OSR2 ";
-		}
-
-		if (osvi.dwMajorVersion == 4 && osvi.dwMinorVersion == 10)
-		{
-			szVersion+="Windows 98 ";
-			if ( osvi.szCSDVersion[1]=='A' || osvi.szCSDVersion[1]=='B')
-				szVersion+="SE ";
-		}
-
-		if (osvi.dwMajorVersion == 4 && osvi.dwMinorVersion == 90)
-		{
-			szVersion+="Windows Millennium Edition";
-		}
-		break;
-
-	case VER_PLATFORM_WIN32s:
-
-		szVersion+="Win32s";
-		break;
 	}
 	if(info==Os_Release)
 	{
@@ -415,8 +430,6 @@ static QString queryWinInfo(QueryInfo info)
 	if(info==Os_Type)
 	{
 		if(osvi.dwPlatformId == VER_PLATFORM_WIN32_NT) return " NT ";
-		if(osvi.dwPlatformId == VER_PLATFORM_WIN32_WINDOWS) return " Windows ";
-		if(osvi.dwPlatformId == VER_PLATFORM_WIN32s) return " Win32s ";
 		return __tr2qs("Unknown ");
 	}
 	if(info==Os_Version)
