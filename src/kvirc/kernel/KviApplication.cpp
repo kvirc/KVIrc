@@ -1434,8 +1434,6 @@ void KviApplication::updatePseudoTransparency()
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency))
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		//TODO this has been tested only under mingw!
-		//TODO this needs winxp: #if (_WIN32_WINNT >= 0x0501)
 		if(KVI_OPTION_BOOL(KviOption_boolUseWindowsDesktopForTransparency))
 		{
 			QSize size = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen()).size();

@@ -197,7 +197,7 @@ static QString queryWinInfo(QueryInfo info)
 			else if( osvi.wProductType == VER_NT_WORKSTATION &&
 				si.wProcessorArchitecture==PROCESSOR_ARCHITECTURE_AMD64)
 			{
-				szVersion+="Windows XP Professional x64 Edition ";
+				szVersion+="Windows XP Professional x64 ";
 			}
 			else szVersion+="Windows Server 2003, ";
 		}
@@ -344,7 +344,7 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_UNDEFINED:
 						szVersion+="An unknown product";
 						break;
-          // just use unknown here since we do not care.
+					// just use unknown here since we do not care.
 					case PRODUCT_UNLICENSED:
 						szVersion+="An unknown product";
 						break;
@@ -368,13 +368,15 @@ static QString queryWinInfo(QueryInfo info)
 						szVersion+="(x64) ";
 					}
 				} else {
-					// Test for the workstation type.
-					if ( osvi.wProductType == VER_NT_WORKSTATION &&
-						si.wProcessorArchitecture!=PROCESSOR_ARCHITECTURE_AMD64)
+					// Test for the workstation type, for XP 32 bit
+					if ( osvi.dwMajorVersion == 5 && osvi.dwMinorVersion == 1 )
 					{
-						if( osvi.wSuiteMask & VER_SUITE_PERSONAL )
-							szVersion+= "Home Edition " ;
-						else szVersion+= "Professional " ;
+						if ( osvi.wProductType == VER_NT_WORKSTATION )
+						{
+							if( osvi.wSuiteMask & VER_SUITE_PERSONAL )
+								szVersion+= "Home Edition " ;
+							else szVersion+= "Professional " ;
+						}
 					}
 
 					// Test for the server type.
@@ -414,6 +416,8 @@ static QString queryWinInfo(QueryInfo info)
 					}
 				}
 		}
+		// Display service pack (if any) and build number.
+		szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion ).arg(osvi.dwBuildNumber & 0xFFFF);
 	}
 	if(info==Os_Release)
 	{
