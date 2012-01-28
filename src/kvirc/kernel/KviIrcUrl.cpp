@@ -83,9 +83,9 @@ bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 				passwords.append(splitted[1]);
 			}
 		}
-	}
 
-	cmdBuffer.append(KviCString::Format," -c=\"join %s %s\" ",channels.data(),passwords.data());
+		cmdBuffer.append(KviCString::Format," -c=\"join %s %s\" ",channels.data(),passwords.data());
+	}
 
 	cmdBuffer.append(urlParts.szHost);
 	cmdBuffer.append(KviCString::Format," %d",urlParts.iPort);
