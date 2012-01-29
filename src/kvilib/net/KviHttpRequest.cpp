@@ -33,7 +33,9 @@
 #include "KviFile.h"
 
 #include <QTcpSocket>
-#include <QSslSocket>
+#ifdef COMPILE_SSL_SUPPORT
+	#include <QSslSocket>
+#endif
 #include <QTimer>
 #include <QDir>
 #include <QHostAddress>
@@ -405,9 +407,11 @@ bool KviHttpRequest::doConnect()
 
 	if(m_p->pSocket)
 		closeSocket();
-
+#ifdef COMPILE_SSL_SUPPORT
 	m_p->pSocket = m_p->bIsSSL ? new QSslSocket() : new QTcpSocket();
-
+#else
+	m_p->pSocket = new QTcpSocket();
+#endif
 	QObject::connect(m_p->pSocket,SIGNAL(connected()),this,SLOT(slotSocketConnected()));
 	QObject::connect(m_p->pSocket,SIGNAL(disconnected()),this,SLOT(slotSocketDisconnected()));
 	QObject::connect(m_p->pSocket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(slotSocketError(QAbstractSocket::SocketError)));
@@ -416,6 +420,7 @@ bool KviHttpRequest::doConnect()
 
 	emit resolvingHost(m_url.host());
 
+#ifdef COMPILE_SSL_SUPPORT
 	if(m_p->bIsSSL)
 	{
 		static_cast<QSslSocket *>(m_p->pSocket)->setProtocol(QSsl::AnyProtocol);
@@ -423,6 +428,9 @@ bool KviHttpRequest::doConnect()
 	} else {
 		m_p->pSocket->connectToHost(m_url.host(),m_p->uPort);
 	}
+#else
+	m_p->pSocket->connectToHost(m_url.host(),m_p->uPort);
+#endif
 
 
 	if(m_p->pConnectTimeoutTimer)
