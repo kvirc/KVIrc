@@ -394,7 +394,7 @@ public:
 	void demandAttention();
 
 	/**
-	* \brief Returns wether this window is the active one
+	* \brief Returns whether this window is the active one
 	* 
 	* This method is useful because it takes in consideration that this window
 	* can be either docked or undocked, and takes a parameter that defines the strictness
