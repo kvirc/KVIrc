@@ -28,7 +28,7 @@
 		<string>uk</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>KVirc</string>
+        <string>KVIrc</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

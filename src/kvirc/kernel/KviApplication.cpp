@@ -197,13 +197,6 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	setOrganizationDomain("kvirc.net");
 	setOrganizationName("KVIrc");
 
-#ifdef COMPILE_ON_MAC
-	// Disable the native menubar on MacOSX as until Qt 4.7 it's quite buggy and
-	// *very* often crashes in QMenuBar::macUpdateMenuBar()->QAction::isVisible().
-	// FIXME: Check it with later Qt versions
-	KviEnvironment::setVariable("QT_MAC_NO_NATIVE_MENUBAR","1");
-#endif //COMPILE_ON_MAC
-
 	// Ok...everything begins here
 	g_pApp                  = this;
 	m_szConfigFile          = QString();
@@ -225,7 +218,9 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	//workaround for #957
 	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
 #endif
-#ifndef COMPILE_ENABLE_GTKSTYLE
+
+    //note: the early qApp->style() call leads to a crash on osx
+#if !defined(COMPILE_ENABLE_GTKSTYLE) && !defined(COMPILE_ON_MAC)
 	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
 	{
@@ -595,6 +590,11 @@ KviApplication::~KviApplication()
 #ifndef COMPILE_NO_IPC
 	destroyIpcSentinel();
 #endif
+
+    // if we still have a frame: kill it
+    if(g_pMainWindow)
+        delete g_pMainWindow;
+    g_pActiveWindow = 0; // .. but it should be already 0 anyway
 
 	if(g_pSplashScreen)
 		delete g_pSplashScreen;
