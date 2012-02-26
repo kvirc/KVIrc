@@ -29,7 +29,7 @@
 #include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "KviOptions.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviWindow.h"
 #include "KviTreeWindowList.h"
 #include "KviPixmapUtils.h"
@@ -272,9 +272,9 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 		//clicked on empty space
 		if(e->button() & Qt::RightButton)
 		{
-			KviTalPopupMenu* pPopup=new KviTalPopupMenu();
-			pPopup->insertItem(__tr2qs("Sort"),this,SLOT(sort()));
-			pPopup->insertItem(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
+			QMenu* pPopup=new QMenu();
+			pPopup->addAction(__tr2qs("Sort"),this,SLOT(sort()));
+			pPopup->addAction(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
 			pPopup->popup(QCursor::pos());
 		}
 	}

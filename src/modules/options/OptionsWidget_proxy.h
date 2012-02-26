@@ -34,7 +34,7 @@ class QLabel;
 class QLineEdit;
 class QComboBox;
 class KviIpEditor;
-class KviTalPopupMenu;
+class QMenu;
 class KviProxy;
 class KviProxyDataBase;
 
@@ -76,7 +76,7 @@ protected:
 	QLineEdit    * m_pPortEdit;
 	QLabel       * m_pProtocolLabel;
 	QComboBox    * m_pProtocolBox;
-	KviTalPopupMenu   * m_pContextPopup;
+	QMenu   * m_pContextPopup;
 	QCheckBox    * m_pIPv6Check;
 	ProxyOptionsTreeWidgetItem * m_pLastEditedItem;
 private:

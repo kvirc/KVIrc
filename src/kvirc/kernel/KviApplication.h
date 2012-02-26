@@ -57,7 +57,7 @@
 	#include <QX11Info>
 #endif
 
-class KviTalPopupMenu;
+class QMenu;
 class KviTalListBox;
 class KviConsoleWindow;
 class KviConfigurationFile;
@@ -319,9 +319,9 @@ public:
 
 
 	void addRecentServer(const QString& server);
-	void fillRecentServersPopup(KviTalPopupMenu * m);
-	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsoleWindow * pConsole);
-	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsoleWindow * pConsole);
+    void fillRecentServersPopup(QMenu * m);
+    void fillRecentNicknamesPopup(QMenu * m,KviConsoleWindow * pConsole);
+    void fillRecentChannelsPopup(QMenu * m,KviConsoleWindow * pConsole);
 //
 	void autoConnectToServers();
 

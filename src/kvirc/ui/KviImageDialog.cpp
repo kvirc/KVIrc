@@ -127,13 +127,13 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	{
 		tmp += ": ";
 		tmp += __tr2qs("Small icons");
-		m_pTypeComboBox->insertItem(0,tmp);
+        m_pTypeComboBox->insertItem(0,tmp);
 		m_pTypeList->append(KID_TYPE_BUILTIN_IMAGES_SMALL);
 	}
 
 	if(types & KID_TYPE_FULL_PATH)
 	{
-		m_pTypeComboBox->insertItem(m_pTypeComboBox->count(),__tr2qs("Full path"));
+        m_pTypeComboBox->insertItem(m_pTypeComboBox->count(),__tr2qs("Full path"));
 		m_pTypeList->append(KID_TYPE_FULL_PATH);
 	}
 

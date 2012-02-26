@@ -43,7 +43,7 @@ class KviUserListView;
 class KviWindow;
 class KviInputEditor;
 class KviTalHBox;
-class KviTalPopupMenu;
+class QMenu;
 class KviScriptEditor;
 
 /**

@@ -38,7 +38,7 @@
 #include <QScrollBar>
 
 class KviMainWindow;
-class KviTalPopupMenu;
+class QMenu;
 
 /**
 * \class KviMdiManager
@@ -78,9 +78,9 @@ private:
 	bool m_bIgnoreSDIModeChange;
 protected:
 	/// Holds the specialized window popup
-	KviTalPopupMenu * m_pWindowPopup;
+	QMenu * m_pWindowPopup;
 	/// Holds the tiling popup
-	KviTalPopupMenu * m_pTileMethodPopup;
+	QMenu * m_pTileMethodPopup;
 public:
 
 	/**
@@ -99,9 +99,9 @@ public:
 
 	/**
 	* \brief Returns the window popup
-	* \return KviTalPopupMenu *
+	* \return QMenu *
 	*/
-	inline KviTalPopupMenu * windowPopup() { return m_pWindowPopup; };
+	inline QMenu * windowPopup() { return m_pWindowPopup; };
  
 	/**
 	* \brief Move the focus the the previous active window
@@ -171,8 +171,8 @@ public slots:
 	void toggleAutoTile();
 	void tileAnodine();
 protected slots:
-	void menuActivated(int id);
-	void tileMethodMenuActivated(int id);
+    void menuActivated(QAction *pAction);
+    void tileMethodMenuActivated(QAction *pAction);
 	void fillWindowPopup();
 	void processWindowStateChanged(Qt::WindowStates oldState, Qt::WindowStates newState);
 };

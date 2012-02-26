@@ -33,7 +33,7 @@
 #include "KviFileTransfer.h"
 #include "KviDynamicToolTip.h"
 #include "KviTalTableWidget.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalIconAndRichTextItemDelegate.h"
 
 #include <QTimer>
@@ -97,9 +97,9 @@ protected:
 	QSplitter		* m_pVertSplitter;
 	FileTransferWidget	* m_pTableWidget;
 	QAbstractItemDelegate	* m_pItemDelegate;
-	KviTalPopupMenu		* m_pContextPopup;
-	KviTalPopupMenu		* m_pLocalFilePopup;
-	KviTalPopupMenu		* m_pOpenFilePopup;
+	QMenu		* m_pContextPopup;
+	QMenu		* m_pLocalFilePopup;
+	QMenu		* m_pOpenFilePopup;
 	QTimer			* m_pTimer;
 	int			m_iLineSpacing; // cached fm value
 public: // Methods

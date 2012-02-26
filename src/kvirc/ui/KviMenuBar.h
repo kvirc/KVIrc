@@ -31,7 +31,7 @@
 #include "KviTalMenuBar.h"
 
 class KviMainWindow;
-class KviTalPopupMenu;
+class QMenu;
 class KviKvsPopupMenu;
 
 typedef struct _KviScriptMenuBarItem
@@ -49,14 +49,17 @@ public:
 	KviMenuBar(KviMainWindow * par,const char * name);
 	~KviMenuBar();
 protected:
-	KviTalPopupMenu                       * m_pToolbarsPopup;
-	KviTalPopupMenu                       * m_pRecentServersPopup;
+    QMenu                       * m_pToolbarsPopup;
+    QMenu                       * m_pRecentServersPopup;
+#ifdef COMPILE_ON_MAC
+    QMenu                       * m_pHelpMenu;
+#endif
 	KviMainWindow                         * m_pFrm;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
-	void addDefaultItem(const QString &text,KviTalPopupMenu * pop);
+    void addDefaultItem(const QString &text,QMenu * pop);
 public:
 	int getDefaultItemRealIndex(int iDefaultIndex);
 	void addMenu(const QString &text,KviKvsPopupMenu * p,int index);
@@ -68,11 +71,13 @@ protected slots:
 	void setupHelpPopup();
 	void setupRecentServersPopup();
 	void setupScriptingPopup();
-	void newConnectionToServer(int id);
+    void newConnectionToServer(QAction *pAction);
 	void setupToolbarsPopup();
 	void setupToolsPopup();
-	void toolsPopupSelected(int id);
-	void actionTriggered(int id);
+    void toolsPopupSelected(QAction *pAction);
+    void actionTriggered(QAction *pAction);
+    void actionTriggered(bool);
+    void createMacNativeItems();
 };
 
 #endif //_KVI_MENUBAR_H_

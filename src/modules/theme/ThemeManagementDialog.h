@@ -27,7 +27,7 @@
 #include "KviOptionsWidget.h"
 #include "KviPointerList.h"
 #include "KviTheme.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalWizard.h"
 #include "KviTalListWidget.h"
 
@@ -70,7 +70,7 @@ protected:
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
 	KviTalListWidget    * m_pListWidget;
 	QLabel * m_pCurrentInstalledThemeLabel;
-	KviTalPopupMenu     * m_pContextPopup;
+	QMenu     * m_pContextPopup;
 	QToolButton         * m_pDeleteThemeButton;
 	QToolButton         * m_pPackThemeButton;
 #if defined(COMPILE_WEBKIT_SUPPORT) || defined(Q_MOC_RUN)

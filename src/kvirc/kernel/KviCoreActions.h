@@ -39,7 +39,7 @@ protected:
 	QString m_szAbortConnectionString;
 	QString m_szDisconnectString;
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+    virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected:
 	virtual void setup();
@@ -55,11 +55,11 @@ class KviSeparatorAction : public KviAction
 public:
 	KviSeparatorAction(QObject * pParent);
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+    virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 };
 
-class KviTalPopupMenu;
+class QMenu;
 
 class KviSubmenuAction : public KviKvsAction
 {
@@ -78,15 +78,15 @@ public:
 		);
 	~KviSubmenuAction();
 protected:
-	KviTalPopupMenu * m_pPopup;
+    QMenu * m_pPopup;
 protected:
 	virtual void setup();
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+    virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected slots:
 	virtual void popupAboutToShow();
-	virtual void popupActivated(int iId);
+    virtual void popupActivated(QAction *pAction);
 };
 
 class KviJoinChannelAction : public KviSubmenuAction
@@ -96,7 +96,7 @@ public:
 	KviJoinChannelAction(QObject * pParent);
 protected slots:
 	virtual void popupAboutToShow();
-	virtual void popupActivated(int);
+    virtual void popupActivated(QAction *pAction);
 };
 
 class KviChangeNickAction : public KviSubmenuAction
@@ -106,7 +106,7 @@ public:
 	KviChangeNickAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(int);
+    void popupActivated(QAction *pAction);
 };
 
 class KviConnectToServerAction : public KviSubmenuAction
@@ -116,7 +116,7 @@ public:
 	KviConnectToServerAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(int);
+    void popupActivated(QAction *pAction);
 };
 
 class KviChangeUserModeAction : public KviSubmenuAction
@@ -126,7 +126,7 @@ public:
 	KviChangeUserModeAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(int);
+    void popupActivated(QAction *pAction);
 };
 
 class KviIrcToolsAction : public KviSubmenuAction
@@ -136,7 +136,7 @@ public:
 	KviIrcToolsAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(int);
+    void popupActivated(QAction *pAction);
 };
 
 
@@ -147,7 +147,7 @@ public:
 	KviIrcOperationsAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(int);
+    void popupActivated(QAction *pAction);
 };
 
 #include "KviIrcToolBar.h"
@@ -158,7 +158,7 @@ class KviIrcContextDisplayAction : public KviAction
 public:
 	KviIrcContextDisplayAction(QObject * pParent);
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+    virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 	virtual void activeContextStateChanged();
 	virtual void activeContextChanged();
@@ -176,7 +176,7 @@ protected:
 	QString m_szAwayString;
 	QString m_szBackString;
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+    virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected:
 	virtual void setup();

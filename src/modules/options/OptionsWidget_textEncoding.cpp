@@ -69,8 +69,8 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding)))
 			iSrvMatch = i + 1;
 
-		m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->pcName);
-		m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->pcName);
+        m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->pcName);
+        m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->pcName);
 		i++;
 		d = KviLocale::instance()->encodingDescription(i);
 	}
@@ -113,7 +113,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		QString szTmp=*it;
 		szTmp.replace("kvirc_","");
 		szTmp.replace(".mo","");
-		m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(),szTmp);
+        m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(),szTmp);
 		if(KviQString::equalCI(szTmp,m_szLanguage))
 			iMatch = i + 2;
 		i++;

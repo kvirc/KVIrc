@@ -63,7 +63,7 @@ class KviIrcView;
 class KviConsoleWindow;
 class KviIrcConnection;
 class KviWindowToolPageButton;
-class KviTalPopupMenu;
+class QMenu;
 class KviTalHBox;
 
 #ifdef COMPILE_CRYPT_SUPPORT

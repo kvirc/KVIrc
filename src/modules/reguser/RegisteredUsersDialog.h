@@ -30,13 +30,12 @@
 #include "KviPointerHashTable.h"
 #include <QTreeWidget>
 #include "KviTalListWidget.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QStyledItemDelegate>
-#include <QMultiHash>
 #include <QTextDocument>
 
 class  KviRegisteredUsersListView : public QTreeWidget
@@ -132,7 +131,6 @@ public:
 	QPushButton * m_pExportButton;
 	QPushButton * m_pAddGroupButton;
 	QPushButton * m_pSelectAllButton;
-	QMultiHash<int, KviRegisteredUserGroup*> m_TmpDict;
 protected:
 	void fillList();
 	void editItem(RegisteredUsersDialogItem * i);
@@ -153,7 +151,7 @@ protected slots:
 	void itemPressed(QTreeWidgetItem *it,int c);
 	void itemDoubleClicked(QTreeWidgetItem *it, int);
 	void rightButtonPressed ( QTreeWidgetItem *, QPoint);
-	void moveToGroupMenuClicked(int);
+    void moveToGroupMenuClicked(QAction *pAction);
 };
 
 #endif

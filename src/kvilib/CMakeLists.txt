@@ -33,7 +33,6 @@ SET(
 	tal/KviTalListWidget.h
 	tal/KviTalMainWindow.h
 	tal/KviTalMenuBar.h
-	tal/KviTalPopupMenu.h
 	tal/KviTalTabDialog.h
 	tal/KviTalTableWidget.h
 	tal/KviTalToolTip.h
@@ -133,7 +132,6 @@ SET(kvilib_SRCS
 	tal/KviTalListWidget.cpp
 	tal/KviTalMainWindow.cpp
 	tal/KviTalMenuBar.cpp
-	tal/KviTalPopupMenu.cpp
 	tal/KviTalSplitter.cpp
 	tal/KviTalTabDialog.cpp
 	tal/KviTalTableWidget.cpp

@@ -39,7 +39,7 @@
 #include "KviIconManager.h"
 #include "KviMainWindow.h"
 #include "KviWindow.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcContext.h"

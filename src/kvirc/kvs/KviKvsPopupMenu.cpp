@@ -33,6 +33,7 @@
 #include "KviCommandFormatter.h"
 #include "KviOptions.h"
 
+#include <QWidgetAction>
 // popup names
 
 // rootname : the root popup
@@ -134,7 +135,7 @@ KviKvsPopupMenuItemSeparator::~KviKvsPopupMenuItemSeparator()
 void KviKvsPopupMenuItemSeparator::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLevelData * pData,int)
 {
 	if(!evaluateCondition(pData))return;
-	pMenu->insertSeparator();
+    ((QMenu*)pMenu)->addSeparator();
 }
 
 KviKvsPopupMenuItem * KviKvsPopupMenuItemSeparator::clone() const
@@ -327,7 +328,7 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 
 	if(pPix)m_pLabel->setPixmap(*pPix);
-	pMenu->insertItem(m_pLabel);
+    pMenu->addAction(new QWidgetAction(m_pLabel));
 }
 
 
@@ -358,10 +359,12 @@ void KviKvsPopupMenuItemItem::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLev
 	if(!evaluateCondition(pData))return;
 	QString szText = evaluateText(pData);
 	QPixmap * pPix = evaluateIcon(pData);
-	int id;
-	if(pPix)id = pMenu->insertItem(*pPix,szText);
-	else id = pMenu->insertItem(szText);
-	pMenu->setItemParameter(id,iIdx);
+    QAction *pAction;
+    if(pPix)
+        pAction = pMenu->addAction(*pPix,szText);
+    else
+        pAction = pMenu->addAction(szText);
+    pAction->setData(iIdx);
 }
 
 KviKvsPopupMenuItem * KviKvsPopupMenuItemItem::clone() const
@@ -408,11 +411,14 @@ void KviKvsPopupMenuItemMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLev
 	if(!evaluateCondition(pData))return;
 	QString szText = evaluateText(pData);
 	QPixmap * pPix = evaluateIcon(pData);
-	int id;
+    QAction *pAction;
 	m_pMenu->setParentPopup(pMenu);
-	if(pPix)id = pMenu->insertItem(*pPix,szText,m_pMenu);
-	else id = pMenu->insertItem(szText,m_pMenu);
-	pMenu->setItemParameter(id,iIdx);
+    if(pPix)
+        pAction = pMenu->addAction(*pPix,szText);
+    else
+        pAction = pMenu->addAction(szText);
+    pAction->setMenu(m_pMenu);
+    pAction->setData(iIdx);
 }
 
 void KviKvsPopupMenuItemMenu::clear()
@@ -489,10 +495,14 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 		m_pMenu = new KviKvsPopupMenu(tmp);
 		m_pMenu->copyFrom(source);
 		m_pMenu->setParentPopup(pMenu);
-		int id;
-		if(pPix)id = pMenu->insertItem(*pPix,szText,m_pMenu);
-		else id = pMenu->insertItem(szText,m_pMenu);
-		pMenu->setItemParameter(id,iIdx);
+
+        QAction *pAction;
+        if(pPix)
+            pAction = pMenu->addAction(*pPix,szText);
+        else
+            pAction = pMenu->addAction(szText);
+        pAction->setMenu(m_pMenu);
+        pAction->setData(iIdx);
 	} else {
 		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the external popup '%Q': ignoring","kvs"),&m_szMenuName);
 	}
@@ -516,7 +526,7 @@ KviKvsPopupMenuTopLevelData::~KviKvsPopupMenuTopLevelData()
 
 
 KviKvsPopupMenu::KviKvsPopupMenu(const QString &szName)
-:KviTalPopupMenu(0,szName)
+:QMenu(szName, 0)
 {
 	m_szName = szName;
 	m_pItemList = new KviPointerList<KviKvsPopupMenuItem>;
@@ -529,7 +539,7 @@ KviKvsPopupMenu::KviKvsPopupMenu(const QString &szName)
 	m_pTopLevelData = 0;
 	m_pTempTopLevelData = 0;
 	m_bSetupDone = false;
-	connect(this,SIGNAL(activated(int)),this,SLOT(itemClicked(int)));
+    connect(this,SIGNAL(triggered(QAction*)),this,SLOT(itemClicked(QAction *)));
 	connect(this,SIGNAL(aboutToShow()),this,SLOT(setupMenuContents()));
 }
 
@@ -735,7 +745,7 @@ void KviKvsPopupMenu::doPopup(const QPoint & pnt,KviWindow * wnd,KviKvsVariantLi
 	clearMenuContents();
 	m_pTempTopLevelData = new KviKvsPopupMenuTopLevelData(pParams,wnd);
 	m_pTempTopLevelData->setTestMode(bTestMode);
-	KviTalPopupMenu::popup(pnt);
+    QMenu::popup(pnt);
 }
 
 void KviKvsPopupMenu::clearMenuContents()
@@ -884,9 +894,12 @@ void KviKvsPopupMenu::executeEpilogues(KviKvsPopupMenuTopLevelData * pData)
 }
 
 
-void KviKvsPopupMenu::itemClicked(int itemId)
+void KviKvsPopupMenu::itemClicked(QAction *pAction)
 {
-	int param = itemParameter(itemId);
+    bool bOk=false;
+    int param = pAction->data().toInt(&bOk);
+    if(!bOk)
+        return;
 	KviKvsPopupMenuItem * it = m_pItemList->at(param);
 	KviKvsPopupMenuTopLevelData * d = topLevelData();
 	if(it && d)

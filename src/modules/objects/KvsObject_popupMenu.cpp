@@ -30,7 +30,7 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KviIconManager.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QCursor>
 #include <QMenu>
@@ -53,9 +53,9 @@
 		[class]widget[/class]
 	@description:
 		This widget can be used to display a popup menu.Technically, a popup menu consists of a list of menu items.[br]
-		You add items with insertItem(). An item is either a string. In addition, items can have an optional icon drawn on the very left side.[br]
+		You add items with addAction(). An item is either a string. In addition, items can have an optional icon drawn on the very left side.[br]
 	@functions:
-		!fn: $insertItem(<text:string>,[icon_id:string])
+		!fn: $addAction(<text:string>,[icon_id:string])
 		Inserts menu items into a popup menu with optional icon and return the popup identifier.
 		!fn: $addMenu(<popupmenu:hobject,[idx:uinteger])
 		Add a popupmenu.
@@ -69,7 +69,7 @@
 		Removes the menu item that has the identifier id.
 		!fn: $removeItemAt(<index:uinteger>)
 		Removes the menu item at position index.
-		!fn: $insertSeparator(<index:uinteger>)
+		!fn: $addSeparator(<index:uinteger>)
 		Inserts a separator at position index.[br]
 		If the index is negative the separator becomes the last menu item.
 		!fn: $activatedEvent(<popup_id:uinteger>)
@@ -92,11 +92,11 @@
 			constructor()
 			{
 				// we store the item's id for checkit in activatedEvent
-				@%tile_id=@$insertItem("Tile",118)
-				@%cascade_id=@$insertItem("Cascade",115)
-				@$insertSeparator(3)
-				@%closeactw_id=@$insertItem("Close Active Window",08)
-				@%closeallw_id=@$insertItem("Close All Window",58)
+				@%tile_id=@$addAction("Tile",118)
+				@%cascade_id=@$addAction("Cascade",115)
+				@$addSeparator(3)
+				@%closeactw_id=@$addAction("Close Active Window",08)
+				@%closeallw_id=@$addAction("Close All Window",58)
 			}
 			activatedEvent()
 			{
@@ -198,10 +198,10 @@ static void removeAction(int idx)
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_popupMenu,"popupmenu","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,addAction)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,setTitle)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,exec)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertSeparator)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,addSeparator)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,removeItem)
         KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,addMenu)
 
@@ -229,7 +229,7 @@ bool KvsObject_popupMenu::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,insertItem)
+KVSO_CLASS_FUNCTION(popupMenu,addAction)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szItem,szIcon;
@@ -349,7 +349,7 @@ KVSO_CLASS_FUNCTION(popupMenu,removeItem)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,insertSeparator)
+KVSO_CLASS_FUNCTION(popupMenu,addSeparator)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex;
@@ -358,7 +358,7 @@ KVSO_CLASS_FUNCTION(popupMenu,insertSeparator)
 	KVSO_PARAMETERS_END(c)
 	QAction * pAction=getAction(iIndex);
 	if(pAction)
-		((QMenu *)widget())->insertSeparator(pAction);
+        ((QMenu *)widget())->insertSeparator(pAction);
 	return true;
 }
 

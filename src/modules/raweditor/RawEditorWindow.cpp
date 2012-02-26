@@ -40,7 +40,7 @@
 #include "KviKvsEventManager.h"
 #include "KviKvsEventHandler.h"
 #include "KviTalVBox.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QMessageBox>
 #include <QSplitter>
@@ -91,7 +91,7 @@ RawEditorWidget::RawEditorWidget(QWidget * par)
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 //	m_pTreeWidget->setShowSortIndicator(true);
 	m_pTreeWidget->setRootIsDecorated(true);
-	m_pContextPopup = new KviTalPopupMenu(this);
+	m_pContextPopup = new QMenu(this);
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 
@@ -151,32 +151,32 @@ void RawEditorWidget::customContextMenuRequested(const QPoint &pos)
 		if(it->parent())
 		{
 			if(!(((RawHandlerTreeWidgetItem *)it)->m_bEnabled))
-				m_pContextPopup->insertItem(
+				m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
 					__tr2qs_ctx("&Enable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 			else
-				m_pContextPopup->insertItem(
+				m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)),
 					__tr2qs_ctx("&Disable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 
-			m_pContextPopup->insertItem(
+			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 					__tr2qs_ctx("Re&move Handler","editor"),
 					this,SLOT(removeCurrentHandler()));
-			m_pContextPopup->insertItem(
+			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 					__tr2qs_ctx("&Export Handler To...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
-			m_pContextPopup->insertItem(
+			m_pContextPopup->addAction(
 				*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
 				__tr2qs_ctx("&New Handler","editor"),
 				this,SLOT(addHandlerForCurrentRaw()));
 		}
 	}
 
-	m_pContextPopup->insertSeparator();
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addSeparator();
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::RawEvent)),
 			__tr2qs_ctx("&Add Raw Event...","editor"),
 			this,SLOT(addRaw()));

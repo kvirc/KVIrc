@@ -26,17 +26,17 @@
 #include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviOptions.h"
 
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
 
-static KviTalPopupMenu * g_pToolBarContextPopup     = 0;
-static KviTalPopupMenu * g_pToolBarWindowsPopup     = 0;
-static KviTalPopupMenu * g_pToolBarIconSizesPopup   = 0;
-static KviTalPopupMenu * g_pToolBarButtonStylePopup = 0;
+static QMenu * g_pToolBarContextPopup     = 0;
+static QMenu * g_pToolBarWindowsPopup     = 0;
+static QMenu * g_pToolBarIconSizesPopup   = 0;
+static QMenu * g_pToolBarButtonStylePopup = 0;
 static uint              uToolBarInstances          = 0;
 
 KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
@@ -104,14 +104,17 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 	if(!g_pToolBarContextPopup)
 	{
-		g_pToolBarContextPopup = new KviTalPopupMenu();
-		g_pToolBarIconSizesPopup = new KviTalPopupMenu();
-		g_pToolBarWindowsPopup = new KviTalPopupMenu();
-		g_pToolBarButtonStylePopup = new KviTalPopupMenu();
+        g_pToolBarContextPopup = new QMenu();
+        g_pToolBarIconSizesPopup = new QMenu();
+        g_pToolBarWindowsPopup = new QMenu();
+        g_pToolBarButtonStylePopup = new QMenu();
 
-		g_pToolBarContextPopup->insertItem(__tr2qs("Toolbars"),g_pToolBarWindowsPopup);
-		g_pToolBarContextPopup->insertItem(__tr2qs("Icon Size"),g_pToolBarIconSizesPopup);
-		g_pToolBarContextPopup->insertItem(__tr2qs("Button Style"),g_pToolBarButtonStylePopup);
+        QAction *pAction = g_pToolBarContextPopup->addAction(__tr2qs("Toolbars"));
+        pAction->setMenu(g_pToolBarWindowsPopup);
+        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Icon Size"));
+        pAction->setMenu(g_pToolBarIconSizesPopup);
+        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Button Style"));
+        pAction->setMenu(g_pToolBarButtonStylePopup);
 
 		// fill toolbars menu
 		g_pMainWindow->fillToolBarsPopup(g_pToolBarWindowsPopup);

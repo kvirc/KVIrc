@@ -37,7 +37,7 @@
 #include "KviModuleManager.h"
 #include "KviStatusBarApplet.h"
 #include "KviDynamicToolTip.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QPainter>
 #include <QStyle>
@@ -50,6 +50,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include <QMessageBox>
+#include <QWidgetAction>
 
 KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
 : QStatusBar(pFrame)
@@ -343,7 +344,7 @@ void KviStatusBar::contextMenuRequested(const QPoint & pos)
 {
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new KviTalPopupMenu(this);
+        m_pContextPopup = new QMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(contextPopupAboutToShow()));
 	}
 
@@ -367,23 +368,24 @@ void KviStatusBar::contextPopupAboutToShow()
 		QLabel * pLabel = new QLabel(szTmp,m_pContextPopup);
 		QPalette p;
 		pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-		m_pContextPopup->insertItem(pLabel);
+        m_pContextPopup->addAction(new QWidgetAction(pLabel));
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
 
 		szTmp = QString(__tr2qs("Remove %1")).arg(szApp);
-		m_pContextPopup->insertSeparator();
-		m_pContextPopup->insertItem(szTmp,this,SLOT(removeClickedApplet()));
+        m_pContextPopup->addSeparator();
+		m_pContextPopup->addAction(szTmp,this,SLOT(removeClickedApplet()));
 	}
 
 	if(!m_pAppletsPopup)
 	{
-		m_pAppletsPopup = new KviTalPopupMenu(this);
+        m_pAppletsPopup = new QMenu(this);
 		connect(m_pAppletsPopup,SIGNAL(aboutToShow()),this,SLOT(appletsPopupAboutToShow()));
-		connect(m_pAppletsPopup,SIGNAL(activated(int)),this,SLOT(appletsPopupActivated(int)));
+        connect(m_pAppletsPopup,SIGNAL(triggered(QAction *)),this,SLOT(appletsPopupActivated(QAction *)));
 	}
 
-	m_pContextPopup->insertItem(__tr2qs("Add Applet"),m_pAppletsPopup);
+    QAction *pAction = m_pContextPopup->addAction(__tr2qs("Add Applet"));
+    pAction->setMenu(m_pAppletsPopup);
 }
 
 void KviStatusBar::removeClickedApplet()
@@ -405,16 +407,16 @@ void KviStatusBar::appletsPopupAboutToShow()
 	// FIXME: could we cache the module results in some way ?
 	g_pModuleManager->loadModulesByCaps("statusbarapplet");
 
+    QAction  *pAction=0;
 	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
-		int iId;
 		QPixmap * pix = d->icon();
 		if(pix)
-			iId = m_pAppletsPopup->insertItem(*pix,d->visibleName());
+            pAction = m_pAppletsPopup->addAction(*pix,d->visibleName());
 		else
-			iId = m_pAppletsPopup->insertItem(d->visibleName());
-		m_pAppletsPopup->setItemParameter(iId,d->id());
+            pAction = m_pAppletsPopup->addAction(d->visibleName());
+        pAction->setData(d->id());
 		++it;
 	}
 }
@@ -433,17 +435,18 @@ void KviStatusBar::showLayoutHelp()
 	queueMessage(new KviStatusBarMessage(__tr2qs("Drag the applet while holding the Shift or Ctrl key to move it to the desired position")));
 }
 
-void KviStatusBar::appletsPopupActivated(int iId)
+void KviStatusBar::appletsPopupActivated(QAction *pAction)
 {
 	// FIXME: In fact the applet descriptors in modules could
 	//        have been unloaded while the popup was being shown...
 	//        For now we just assume that this never happens :D
 
-	if(!m_pAppletsPopup)
-		return;
+    bool bOk = false;
+    int iPar = pAction->data().toInt(&bOk);
+    if(!bOk)
+        return;
 
-	int iPar = m_pAppletsPopup->itemParameter(iId);
-	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
+    KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
 		if(iPar == d->id())

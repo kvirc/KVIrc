@@ -67,7 +67,7 @@ protected:
 	QPushButton  * m_pDel;
 	QPushButton  * m_pRestore;
 	QToolButton * m_pCurrentIconButton;
-	KviTalPopupMenu *m_pPopup;
+	QMenu *m_pPopup;
 private:
 	void fillTable();
 public:

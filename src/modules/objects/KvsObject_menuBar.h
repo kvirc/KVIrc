@@ -37,6 +37,6 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool insertItem(KviKvsObjectFunctionCall *c);
+	bool addAction(KviKvsObjectFunctionCall *c);
 };
 #endif	// !_CLASS_MENUBAR_H_

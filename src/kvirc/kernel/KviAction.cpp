@@ -30,7 +30,7 @@
 #include "KviWindow.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QAction>
 
@@ -448,7 +448,7 @@ void KviAction::activeContextStateChanged()
 	}
 }
 
-bool KviAction::addToPopupMenu(KviTalPopupMenu * pMenu)
+bool KviAction::addToPopupMenu(QMenu * pMenu)
 {
 	if(!setupDone())
 		setup();
@@ -459,13 +459,14 @@ bool KviAction::addToPopupMenu(KviTalPopupMenu * pMenu)
 	if(!m_szKeySequence.isEmpty())
 		szTmp += '\t' + m_szKeySequence;
 
+    QAction *pAction;
 	if(pPix)
-		iId = pMenu->insertItem(*pPix,szTmp,this,SLOT(activate()));
+        pAction = pMenu->addAction(*pPix,szTmp,this,SLOT(activate()));
 	else
-		iId = pMenu->insertItem(szTmp,this,SLOT(activate()));
+        pAction = pMenu->addAction(szTmp,this,SLOT(activate()));
 
 	if(!isEnabled())
-		pMenu->setItemEnabled(iId,false);
+        pAction->setEnabled(false);
 	return true;
 }
 

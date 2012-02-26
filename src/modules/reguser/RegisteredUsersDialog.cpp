@@ -469,29 +469,29 @@ void RegisteredUsersDialog::rightButtonPressed ( QTreeWidgetItem * pItem, QPoint
 		RegisteredUsersDialogItemBase* b=(RegisteredUsersDialogItemBase*)pItem;
 		if(b->type()==RegisteredUsersDialogItemBase::User)
 		{
-			KviTalPopupMenu *groups = new KviTalPopupMenu;
+            QMenu *groups = new QMenu;
 
 			KviPointerHashTable<QString,KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-			m_TmpDict.clear();
 			for(KviPointerHashTableEntry<QString,KviRegisteredUserGroup> * g = pGroups->firstEntry();g;g = pGroups->nextEntry())
 			{
-				int id=groups->insertItem(g->key());
-				m_TmpDict.replace(id,g->data());
+                groups->addAction(g->key())
+                        ->setData(g->data()->name());
 			}
 
-			connect(groups,SIGNAL(activated ( int )),this,SLOT(moveToGroupMenuClicked(int)));
+            connect(groups,SIGNAL(triggered(QAction *)),this,SLOT(moveToGroupMenuClicked(QAction *)));
 
-			KviTalPopupMenu *mainPopup = new KviTalPopupMenu;
-			mainPopup->insertItem(__tr2qs_ctx("Move to group","register"),groups);
+            QMenu *mainPopup = new QMenu;
+            mainPopup->addAction(__tr2qs_ctx("Move to group","register"))->setMenu(groups);
 			mainPopup->exec(pnt);
 		}
 	}
 }
 
-void RegisteredUsersDialog::moveToGroupMenuClicked(int id)
+void RegisteredUsersDialog::moveToGroupMenuClicked(QAction *pAction)
 {
-	QString szGroup=(*(m_TmpDict.find(id)))->name();
-	QList<QTreeWidgetItem *> list = m_pListView->selectedItems();
+    QString szGroup=pAction->data().toString();
+
+    QList<QTreeWidgetItem *> list = m_pListView->selectedItems();
 	for(int i=0; i<list.count(); i++)
 	{
 		RegisteredUsersDialogItemBase* b=(RegisteredUsersDialogItemBase*)(list.at(i));

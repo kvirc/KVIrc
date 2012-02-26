@@ -27,7 +27,7 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviHeapObject.h"
 
 #include <QWidget>
@@ -96,7 +96,7 @@ public:
 	QPushButton                  * m_pRenameButton;
 	AliasEditorTreeWidgetItem * m_pLastEditedItem;
 	AliasEditorTreeWidgetItem * m_pLastClickedItem;
-	KviTalPopupMenu              * m_pContextPopup;
+	QMenu              * m_pContextPopup;
 	QSplitter                    * m_pSplitter;
 	QString                        m_szDir;
 	bool                           m_bSaving;

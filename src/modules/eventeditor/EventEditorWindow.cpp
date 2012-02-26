@@ -40,7 +40,7 @@
 #include "KviFileDialog.h"
 #include "KviKvsEventManager.h"
 #include "KviTalVBox.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QMessageBox>
 #include <QSplitter>
@@ -155,7 +155,7 @@ void EventEditor::oneTimeSetup()
 	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
 		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
         connect(KviKvsEventManager::instance(),SIGNAL(eventHandlerDisabled(const QString &)),this,SLOT(eventHandlerDisabled(const QString &)));
-	m_pContextPopup = new KviTalPopupMenu(this);
+	m_pContextPopup = new QMenu(this);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 }
 void EventEditor::eventHandlerDisabled(const QString &szHandler)
@@ -212,24 +212,24 @@ void EventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 		{
 			QString tmp;
 			if(!(((EventEditorHandlerTreeWidgetItem *)it)->m_bEnabled))
-				m_pContextPopup->insertItem(
+				m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
 					__tr2qs_ctx("&Enable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 			else
-				m_pContextPopup->insertItem(
+				m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)),
 					__tr2qs_ctx("&Disable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 
-			m_pContextPopup->insertItem(
+			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 					__tr2qs_ctx("Re&move Handler","editor"),
 					this,SLOT(removeCurrentHandler()));
-			m_pContextPopup->insertItem(
+			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 					__tr2qs_ctx("&Export Handler To...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
-			m_pContextPopup->insertItem(
+			m_pContextPopup->addAction(
 				*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
 				__tr2qs_ctx("&New Handler","editor"),
 				this,SLOT(addHandlerForCurrentEvent()));

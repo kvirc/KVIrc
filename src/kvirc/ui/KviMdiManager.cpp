@@ -39,7 +39,7 @@
 #include "KviMainWindow.h"
 #include "KviMenuBar.h"
 #include "KviApplication.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalHBox.h"
 
 #include <QMenuBar>
@@ -76,11 +76,11 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 	m_bIgnoreSDIModeChange = false;
 	setIsInSDIMode(KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode));
 
-	m_pWindowPopup = new KviTalPopupMenu(this);
-	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
+    m_pWindowPopup = new QMenu(this);
+    connect(m_pWindowPopup,SIGNAL(triggered(QAction *)),this,SLOT(menuActivated(QAction *)));
 	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
-	m_pTileMethodPopup = new KviTalPopupMenu(this);
-	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
+    m_pTileMethodPopup = new QMenu(this);
+    connect(m_pTileMethodPopup,SIGNAL(triggered(QAction *)),this,SLOT(tileMethodMenuActivated(QAction *)));
 	
 	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
@@ -225,47 +225,64 @@ void KviMdiManager::fillWindowPopup()
 {
 	m_pWindowPopup->clear();
 
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::CascadeWindows)),(__tr2qs("&Cascade Windows")),this,SLOT(cascadeWindows()));
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::CascadeWindows)),(__tr2qs("Cascade &Maximized")),this,SLOT(cascadeMaximized()));
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::CascadeWindows)),(__tr2qs("&Cascade Windows")),this,SLOT(cascadeWindows()));
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::CascadeWindows)),(__tr2qs("Cascade &Maximized")),this,SLOT(cascadeMaximized()));
 
-	m_pWindowPopup->insertSeparator();
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("&Tile Windows")),this,SLOT(tile()));
+    m_pWindowPopup->addSeparator();
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("&Tile Windows")),this,SLOT(tile()));
 
 	m_pTileMethodPopup->clear();
-	int id = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::AutoTileWindows)),(__tr2qs("&Auto Tile")),this,SLOT(toggleAutoTile()));
-	m_pTileMethodPopup->setItemChecked(id,KVI_OPTION_BOOL(KviOption_boolAutoTileWindows));
-	m_pTileMethodPopup->setItemParameter(id,-1);
-	m_pTileMethodPopup->insertSeparator();
-	int ids[KVI_NUM_TILE_METHODS];
-	ids[KVI_TILE_METHOD_ANODINE] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Anodine's Full Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_ANODINE],KVI_TILE_METHOD_ANODINE);
-	ids[KVI_TILE_METHOD_PRAGMA4HOR] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Horizontal 4-Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_PRAGMA4HOR],KVI_TILE_METHOD_PRAGMA4HOR);
-	ids[KVI_TILE_METHOD_PRAGMA4VER] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Vertical 4-Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_PRAGMA4VER],KVI_TILE_METHOD_PRAGMA4VER);
-	ids[KVI_TILE_METHOD_PRAGMA6HOR] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Horizontal 6-Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_PRAGMA6HOR],KVI_TILE_METHOD_PRAGMA6HOR);
-	ids[KVI_TILE_METHOD_PRAGMA6VER] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Vertical 6-Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_PRAGMA6VER],KVI_TILE_METHOD_PRAGMA6VER);
-	ids[KVI_TILE_METHOD_PRAGMA9HOR] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Horizontal 9-Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_PRAGMA9HOR],KVI_TILE_METHOD_PRAGMA9HOR);
-	ids[KVI_TILE_METHOD_PRAGMA9VER] = m_pTileMethodPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Vertical 9-Grid")));
-	m_pTileMethodPopup->setItemParameter(ids[KVI_TILE_METHOD_PRAGMA9VER],KVI_TILE_METHOD_PRAGMA9VER);
+    QAction * pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::AutoTileWindows)),(__tr2qs("&Auto Tile")),this,SLOT(toggleAutoTile()));
+    pAction->setCheckable(true);
+    pAction->setChecked(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows));
+    pAction->setData(-1);
+    m_pTileMethodPopup->addSeparator();
 
-	if(KVI_OPTION_UINT(KviOption_uintTileMethod) >= KVI_NUM_TILE_METHODS)KVI_OPTION_UINT(KviOption_uintTileMethod) = KVI_TILE_METHOD_PRAGMA9HOR;
-	m_pTileMethodPopup->setItemChecked(ids[KVI_OPTION_UINT(KviOption_uintTileMethod)],true);
+    if(KVI_OPTION_UINT(KviOption_uintTileMethod) >= KVI_NUM_TILE_METHODS)
+        KVI_OPTION_UINT(KviOption_uintTileMethod) = KVI_TILE_METHOD_PRAGMA9HOR;
 
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Tile Met&hod")),m_pTileMethodPopup);
+    uint uSelectedMethod= KVI_OPTION_UINT(KviOption_uintTileMethod);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Anodine's Full Grid")));
+    pAction->setData(KVI_TILE_METHOD_ANODINE);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_ANODINE) pAction->setChecked(true);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Horizontal 4-Grid")));
+    pAction->setData(KVI_TILE_METHOD_PRAGMA4HOR);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_PRAGMA4HOR) pAction->setChecked(true);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Vertical 4-Grid")));
+    pAction->setData(KVI_TILE_METHOD_PRAGMA4VER);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_PRAGMA4VER) pAction->setChecked(true);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Horizontal 6-Grid")));
+    pAction->setData(KVI_TILE_METHOD_PRAGMA6HOR);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_PRAGMA6HOR) pAction->setChecked(true);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Vertical 6-Grid")));
+    pAction->setData(KVI_TILE_METHOD_PRAGMA6VER);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_PRAGMA6VER) pAction->setChecked(true);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Horizontal 9-Grid")));
+    pAction->setData(KVI_TILE_METHOD_PRAGMA9HOR);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_PRAGMA9HOR) pAction->setChecked(true);
+    pAction = m_pTileMethodPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Pragma's Vertical 9-Grid")));
+    pAction->setData(KVI_TILE_METHOD_PRAGMA9VER);
+    pAction->setCheckable(true);
+    if(uSelectedMethod==KVI_TILE_METHOD_PRAGMA9VER) pAction->setChecked(true);
 
-	m_pWindowPopup->insertSeparator();
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::MaxVertical)),(__tr2qs("Expand &Vertically")),this,SLOT(expandVertical()));
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::MaxHorizontal)),(__tr2qs("Expand &Horizontally")),this,SLOT(expandHorizontal()));
+    pAction = m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TileWindows)),(__tr2qs("Tile Met&hod")));
+    pAction->setMenu(m_pTileMethodPopup);
 
-	m_pWindowPopup->insertSeparator();
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Minimize)),(__tr2qs("Mi&nimize All")),this,SLOT(minimizeAll()));
-	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Restore)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
+    m_pWindowPopup->addSeparator();
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::MaxVertical)),(__tr2qs("Expand &Vertically")),this,SLOT(expandVertical()));
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::MaxHorizontal)),(__tr2qs("Expand &Horizontally")),this,SLOT(expandHorizontal()));
 
-	m_pWindowPopup->insertSeparator();
+    m_pWindowPopup->addSeparator();
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minimize)),(__tr2qs("Mi&nimize All")),this,SLOT(minimizeAll()));
+	m_pWindowPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Restore)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
+
+    m_pWindowPopup->addSeparator();
 	int i = 100;
 	QString szItem;
 	QString szCaption;
@@ -307,10 +324,12 @@ void KviMdiManager::fillWindowPopup()
 
 		if (pix && !(pix->isNull()))
 		{
-			m_pWindowPopup->insertItem(*pix, szItem,i);
+            pAction = m_pWindowPopup->addAction(*pix, szItem);
+            pAction->setData(i);
 		} else {
-			m_pWindowPopup->insertItem(szItem);
-		}
+            pAction = m_pWindowPopup->addAction(szItem);
+            pAction->setData(i);
+        }
 
 		//this is useless, since the windows are listed in stacking order, the active one
 		//will always be the last anyway.
@@ -320,9 +339,11 @@ void KviMdiManager::fillWindowPopup()
 	}
 }
 
-void KviMdiManager::menuActivated(int id)
+void KviMdiManager::menuActivated(QAction *pAction)
 {
-	if(id<100)return;
+    bool bOk=false;
+    int id=pAction->data().toInt(&bOk);
+    if(!bOk || id<100)return;
 	id-=100;
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 
@@ -356,9 +377,12 @@ void KviMdiManager::ensureNoMaximized(KviMdiChild * lpExclude)
 	m_bIgnoreSDIModeChange = false;
 }
 
-void KviMdiManager::tileMethodMenuActivated(int id)
+void KviMdiManager::tileMethodMenuActivated(QAction *pAction)
 {
-	int idx = m_pTileMethodPopup->itemParameter(id);
+    bool bOk=false;
+    int idx = pAction->data().toInt(&bOk);
+    if(!bOk)
+        return;
 
 	if(idx < 0) idx = 0;
 	if(idx >= KVI_NUM_TILE_METHODS) idx = KVI_TILE_METHOD_PRAGMA9VER;

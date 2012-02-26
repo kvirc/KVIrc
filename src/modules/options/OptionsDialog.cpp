@@ -34,7 +34,7 @@
 #include "KviPointerHashTable.h"
 #include "KviTalVBox.h"
 #include "KviTalToolTip.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalGroupBox.h"
 
 #include <QLayout>

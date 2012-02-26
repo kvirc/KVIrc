@@ -273,9 +273,9 @@ void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
 		pDialog->itemSelected();
 		if(!m_pJoinPopup)
 		{
-			m_pJoinPopup = new KviTalPopupMenu(this);
-			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Join)),__tr2qs("Join"),pDialog,SLOT(joinClicked()));
-			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs("Delete"),pDialog,SLOT(deleteClicked()));
+			m_pJoinPopup = new QMenu(this);
+			m_pJoinPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Join)),__tr2qs("Join"),pDialog,SLOT(joinClicked()));
+			m_pJoinPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs("Delete"),pDialog,SLOT(deleteClicked()));
 		}
 
 		m_pJoinPopup->popup(QCursor::pos());

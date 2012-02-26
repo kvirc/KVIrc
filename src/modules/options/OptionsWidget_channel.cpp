@@ -112,7 +112,7 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 
 		hostmask.mask(tmp1,(KviIrcMask::MaskType)i);
 		ipmask.mask(tmp2,(KviIrcMask::MaskType)i);
-		m_pBanTypeCombo->insertItem(m_pBanTypeCombo->count(),QString("%1 (%2)").arg(tmp1, tmp2));
+        m_pBanTypeCombo->insertItem(m_pBanTypeCombo->count(),QString("%1 (%2)").arg(tmp1, tmp2));
 	}
 	m_pBanTypeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 

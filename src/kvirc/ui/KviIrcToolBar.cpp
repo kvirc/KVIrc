@@ -40,7 +40,7 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcContext.h"
 #include "KviLagMeter.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviMdiManager.h"
 #include "KviPixmapUtils.h"
 

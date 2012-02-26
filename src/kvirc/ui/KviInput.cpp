@@ -41,7 +41,7 @@
 #include "KviHistoryWindow.h"
 #include "KviUserInput.h"
 #include "KviShortcut.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalHBox.h"
 #include "KviTalToolTip.h"
 
@@ -66,7 +66,7 @@
 extern KviColorWindow          * g_pColorWindow;
 extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviHistoryWindowWidget  * g_pHistoryWindow;
-extern KviTalPopupMenu         * g_pInputPopup;
+extern QMenu         * g_pInputPopup;
 
 KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 : QWidget(pPar)

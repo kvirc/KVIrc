@@ -39,7 +39,7 @@
 
 class QTimer;
 class QLabel;
-class KviTalPopupMenu;
+class QMenu;
 class KviConfigurationFile;
 class KviMainWindow;
 class KviIrcContext;
@@ -98,7 +98,7 @@ public:
 	inline void setIndex(int i){ mIndex=i; };
 	inline int index() const { return mIndex; };
 protected:
-	virtual void fillContextPopup(KviTalPopupMenu *){};
+	virtual void fillContextPopup(QMenu *){};
 	virtual void loadState(const char *, KviConfigurationFile *){};
 	virtual void saveState(const char *, KviConfigurationFile *){};
 	virtual QString tipText(const QPoint &);
@@ -125,7 +125,7 @@ protected:
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected:
-	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void fillContextPopup(QMenu * p);
 	virtual void timerEvent(QTimerEvent * e);
 
 	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
@@ -148,7 +148,7 @@ protected:
 	bool m_bTotal;
 protected:
 	virtual void timerEvent(QTimerEvent * e);
-	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void fillContextPopup(QMenu * p);
 	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 public:
@@ -182,7 +182,7 @@ protected:
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void fillContextPopup(QMenu * p);
 	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 protected slots:
@@ -217,7 +217,7 @@ public:
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void fillContextPopup(QMenu * p);
 	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	void checkVersion();

@@ -27,7 +27,7 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include <QTreeWidget>
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
@@ -83,7 +83,7 @@ protected:
 	QLineEdit            * m_pIconEditor;
 	QLineEdit            * m_pConditionEditor;
 	QLineEdit            * m_pExtNameEditor;
-	KviTalPopupMenu      * m_pContextPopup;
+    QMenu      * m_pContextPopup;
 public:
 	void edit(MenuTreeWidgetItem * it);
 	KviKvsPopupMenu * getMenu();
@@ -156,8 +156,8 @@ public:
 	QTreeWidget     * m_pTreeWidget;
 	MenuTreeWidgetItem  * m_pLastEditedItem;
 	bool                   m_bOneTimeSetupDone;
-	KviTalPopupMenu      * m_pContextPopup;
-	KviTalPopupMenu      * m_pEmptyContextPopup;
+    QMenu      * m_pContextPopup;
+    QMenu      * m_pEmptyContextPopup;
 	bool                   m_bSaving;
 public:
 	void commit();

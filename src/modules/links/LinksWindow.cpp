@@ -88,8 +88,8 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pLinkList = new KviPointerList<KviLink>;
 	m_pLinkList->setAutoDelete(true);
 
-	m_pHostPopup = new KviTalPopupMenu();
-	connect(m_pHostPopup,SIGNAL(activated(int)),this,SLOT(hostPopupClicked(int)));
+	m_pHostPopup = new QMenu();
+    connect(m_pHostPopup,SIGNAL(triggered(QAction*)),this,SLOT(hostPopupClicked(QAction *)));
 
 	connectionStateChange();
 
@@ -360,53 +360,53 @@ void LinksWindow::showHostPopup(QTreeWidgetItem *i,const QPoint &p)
 	if(host.isEmpty())return;
 	m_pHostPopup->clear();
 	KviCString tmp(KviCString::Format,"LINKS %s *",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Links)),tmp.ptr());
-	m_pHostPopup->insertSeparator();
+	m_pHostPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Links)),tmp.ptr());
+	m_pHostPopup->addSeparator();
 	tmp.sprintf("TIME %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),tmp.ptr());
+	m_pHostPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),tmp.ptr());
 	tmp.sprintf("ADMIN %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("INFO %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::ServerInfo)),tmp.ptr());
+	m_pHostPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerInfo)),tmp.ptr());
 	tmp.sprintf("MOTD %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Motd)),tmp.ptr());
+	m_pHostPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Motd)),tmp.ptr());
 	tmp.sprintf("VERSION %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),tmp.ptr());
+	m_pHostPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),tmp.ptr());
 	tmp.sprintf("TRACE %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("USERS %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
-	m_pHostPopup->insertSeparator();
+	m_pHostPopup->addAction(tmp.ptr());
+	m_pHostPopup->addSeparator();
 	tmp.sprintf("STATS c %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS d %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS h %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS i %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS k %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS l %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS m %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS o %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS t %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS u %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS y %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	tmp.sprintf("STATS z %s",host.ptr());
-	m_pHostPopup->insertItem(tmp.ptr());
+	m_pHostPopup->addAction(tmp.ptr());
 	m_pHostPopup->popup(p);
 }
 
-void LinksWindow::hostPopupClicked(int id)
+void LinksWindow::hostPopupClicked(QAction *pAction)
 {
-	KviCString tmp = m_pHostPopup->text(id);
+    KviCString tmp = pAction->text();
 	if(tmp.hasData())
 	{
 		if(!connection())output(KVI_OUT_SYSTEMERROR,__tr2qs("You're not connected to a server"));

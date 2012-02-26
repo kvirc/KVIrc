@@ -37,7 +37,7 @@ class QScrollBar;
 class QLineEdit;
 class QFile;
 class QFontMetrics;
-class KviTalPopupMenu;
+class QMenu;
 
 class KviWindow;
 class KviMainWindow;
@@ -94,7 +94,7 @@ private:
 	QPixmap                   * m_pPrivateBackgroundPixmap;
 	QScrollBar                * m_pScrollBar;
 	QToolButton               * m_pToolsButton;
-	KviTalPopupMenu           * m_pToolsPopup;
+	QMenu           * m_pToolsPopup;
 
 	KviIrcViewToolWidget      * m_pToolWidget;
 

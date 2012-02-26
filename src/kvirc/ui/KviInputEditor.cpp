@@ -42,7 +42,7 @@
 #include "KviPixmapUtils.h"
 #include "KviQString.h"
 #include "kvi_out.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTextIconWindow.h"
 #include "KviTextIconManager.h"
 #include "KviUserInput.h"
@@ -64,7 +64,7 @@
 #include <QInputContext>
 
 // from KviApplication.cpp
-extern KviTalPopupMenu         * g_pInputPopup;
+extern QMenu         * g_pInputPopup;
 extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviColorWindow          * g_pColorWindow;
 
@@ -122,8 +122,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	setFocusPolicy(Qt::StrongFocus);
 	setAcceptDrops(true);
 
-	m_pIconMenu = new KviTalPopupMenu();
-	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
+    m_pIconMenu = new QMenu();
+    connect(m_pIconMenu,SIGNAL(triggered(QAction*)),this,SLOT(iconPopupActivated(QAction *)));
 
 	setCursor(Qt::IBeamCursor);
 
@@ -798,37 +798,37 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 			}
 		}
 
-		int iId = g_pInputPopup->insertItem(__tr2qs("&Undo") + ACCEL_KEY(Z),this,SLOT(undo()));
-		g_pInputPopup->setItemEnabled(iId,isUndoAvailable());
-		iId = g_pInputPopup->insertItem(__tr2qs("&Redo") + ACCEL_KEY(Y),this,SLOT(redo()));
-		g_pInputPopup->setItemEnabled(iId,isRedoAvailable());
-		iId = g_pInputPopup->insertItem(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
-		g_pInputPopup->setItemEnabled(iId,hasSelection());
-		iId = g_pInputPopup->insertItem(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
-		g_pInputPopup->setItemEnabled(iId,hasSelection());
-		iId = g_pInputPopup->insertItem(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
-		g_pInputPopup->setItemEnabled(iId,!szClip.isEmpty() && !m_bReadOnly);
-		iId = g_pInputPopup->insertItem(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
+        QAction * pAction = g_pInputPopup->addAction(__tr2qs("&Undo") + ACCEL_KEY(Z),this,SLOT(undo()));
+        pAction->setEnabled(isUndoAvailable());
+        pAction = g_pInputPopup->addAction(__tr2qs("&Redo") + ACCEL_KEY(Y),this,SLOT(redo()));
+        pAction->setEnabled(isRedoAvailable());
+        pAction = g_pInputPopup->addAction(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
+        pAction->setEnabled(hasSelection());
+        pAction = g_pInputPopup->addAction(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
+        pAction->setEnabled(hasSelection());
+        pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
+        pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
+        pAction = g_pInputPopup->addAction(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
 		if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
-			g_pInputPopup->setItemEnabled(iId,!szClip.isEmpty() && !m_bReadOnly);
+            pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
 		else
-			g_pInputPopup->setItemEnabled(iId,false);
-		iId = g_pInputPopup->insertItem(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
+            pAction->setEnabled(false);
+        pAction = g_pInputPopup->addAction(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
 		if ((iType != KviWindow::Channel) && (iType != KviWindow::Query) && (iType != KviWindow::DccChat))
-			g_pInputPopup->setItemEnabled(iId,false);
+            pAction->setEnabled(false);
 		else
-			g_pInputPopup->setItemEnabled(iId,!m_bReadOnly);
+            pAction->setEnabled(!m_bReadOnly);
 		if(m_bSpSlowFlag)
 		{
-			iId = g_pInputPopup->insertItem(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
+            pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
 		}
-		iId = g_pInputPopup->insertItem(__tr2qs("Clear"),this,SLOT(clear()));
-		g_pInputPopup->setItemEnabled(iId,!m_szTextBuffer.isEmpty() && !m_bReadOnly);
-		g_pInputPopup->insertSeparator();
-		iId = g_pInputPopup->insertItem(__tr2qs("Select All"),this,SLOT(selectAll()));
-		g_pInputPopup->setItemEnabled(iId,(!m_szTextBuffer.isEmpty()));
+        pAction = g_pInputPopup->addAction(__tr2qs("Clear"),this,SLOT(clear()));
+        pAction->setEnabled(!m_szTextBuffer.isEmpty() && !m_bReadOnly);
+        g_pInputPopup->addSeparator();
+        pAction = g_pInputPopup->addAction(__tr2qs("Select All"),this,SLOT(selectAll()));
+        pAction->setEnabled((!m_szTextBuffer.isEmpty()));
 
-		g_pInputPopup->insertSeparator();
+        g_pInputPopup->addSeparator();
 		m_pIconMenu->clear();
 
 		KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
@@ -851,11 +851,12 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 			if(pIcon)
 			{
 				pPix = pIcon->pixmap();
-				if(pPix) m_pIconMenu->insertItem(*pPix,*iter);
+				if(pPix) m_pIconMenu->addAction(*pPix,*iter);
 			}
 		}
 
-		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),m_pIconMenu);
+        pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"));
+        pAction->setMenu(m_pIconMenu);
 
 		QInputContext *qic = g_pApp->inputContext();
 		if (qic) {
@@ -870,11 +871,11 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 	}
 }
 
-void KviInputEditor::iconPopupActivated(int iId)
+void KviInputEditor::iconPopupActivated(QAction *pAction)
 {
 	if(!m_bReadOnly)
 	{
-		QString szText = m_pIconMenu->text(iId);
+        QString szText = pAction->text();
 		if(!szText.isEmpty())
 		{
 			szText.prepend(KviControlCodes::Icon);

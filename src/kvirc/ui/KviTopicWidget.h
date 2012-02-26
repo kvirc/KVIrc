@@ -36,7 +36,7 @@
 
 class QComboBox;
 class KviChannelWindow;
-class KviTalPopupMenu;
+class QMenu;
 class KviIrcConnection;
 class KviThemedLabel;
 
@@ -76,7 +76,7 @@ private:
 	QPushButton           * m_pAccept;
 	QPushButton           * m_pDiscard;
 	QPushButton           * m_pHistory;
-	KviTalPopupMenu       * m_pContextPopup;
+	QMenu       * m_pContextPopup;
 	QAbstractItemDelegate * m_pItemDelegate;
 	KviThemedLabel        * m_pLabel;
 	KviInputEditor        * m_pInput;

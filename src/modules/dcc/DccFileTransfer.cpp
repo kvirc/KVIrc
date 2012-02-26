@@ -1281,15 +1281,16 @@ void DccFileTransfer::abort()
 	displayUpdate();
 }
 
-void DccFileTransfer::fillContextPopup(KviTalPopupMenu * m)
+void DccFileTransfer::fillContextPopup(QMenu * m)
 {
-	m->insertItem(__tr2qs_ctx("Configure Bandwidth...","dcc"),this,SLOT(configureBandwidth()));
-	m->insertSeparator();
-	m->insertItem(__tr2qs_ctx("Resend DCC","dcc"),this,SLOT(retryDCC()));
-	m->insertItem(__tr2qs_ctx("Resend TDCC","dcc"),this,SLOT(retryTDCC()));
-	m->insertItem(__tr2qs_ctx("Resend RevDCC","dcc"),this,SLOT(retryRevDCC()));
-	int id = m->insertItem(__tr2qs_ctx("Abort","dcc"),this,SLOT(abort()));
-	if(!active())m->setItemEnabled(id,false);
+	m->addAction(__tr2qs_ctx("Configure Bandwidth...","dcc"),this,SLOT(configureBandwidth()));
+    m->addSeparator();
+	m->addAction(__tr2qs_ctx("Resend DCC","dcc"),this,SLOT(retryDCC()));
+	m->addAction(__tr2qs_ctx("Resend TDCC","dcc"),this,SLOT(retryTDCC()));
+	m->addAction(__tr2qs_ctx("Resend RevDCC","dcc"),this,SLOT(retryRevDCC()));
+    QAction *pAction = m->addAction(__tr2qs_ctx("Abort","dcc"),this,SLOT(abort()));
+    if(!active())
+        pAction->setEnabled(false);
 }
 
 void DccFileTransfer::configureBandwidth()

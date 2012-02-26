@@ -46,7 +46,7 @@
 #include "KviMiscUtils.h"
 #include "KviHttpRequest.h"
 #include "KviUrl.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalToolTip.h"
 #include "KviDataBuffer.h"
 
@@ -157,10 +157,11 @@ void KviStatusBarAwayIndicator::toggleContext()
 	m_bAwayOnAllContexts = !m_bAwayOnAllContexts;
 }
 
-void KviStatusBarAwayIndicator::fillContextPopup(KviTalPopupMenu * p)
+void KviStatusBarAwayIndicator::fillContextPopup(QMenu * p)
 {
-	int id = p->insertItem(__tr2qs("Apply to all IRC Contexts"),this,SLOT(toggleContext()));
-	p->setItemChecked(id,m_bAwayOnAllContexts);
+    QAction *pAction = p->addAction(__tr2qs("Apply to all IRC Contexts"),this,SLOT(toggleContext()));
+    pAction->setCheckable(true),
+    pAction->setChecked(m_bAwayOnAllContexts);
 }
 
 void KviStatusBarAwayIndicator::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
@@ -423,25 +424,29 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 	setText(szTmp);
 }
 
-void KviStatusBarClock::fillContextPopup(KviTalPopupMenu * p)
+void KviStatusBarClock::fillContextPopup(QMenu * p)
 {
-	int id = p->insertItem("UTC",this,SLOT(toggleUtc()));
-	p->setItemChecked(id,m_bUtc);
-	id = p->insertItem("24h",this,SLOT(toggle24h()));
-	p->setItemChecked(id,m_b24h);
-	p->insertSeparator();
+    QAction * pAction = p->addAction("UTC",this,SLOT(toggleUtc()));
+    pAction->setCheckable(true);
+    pAction->setChecked(m_bUtc);
+
+    pAction = p->addAction("24h",this,SLOT(toggle24h()));
+    pAction->setCheckable(true);
+    pAction->setChecked(m_b24h);
+    p->addSeparator();
 
 	// Format menu
 	QMenu * pMenu = new QMenu(p);
-	QAction * pAction = pMenu->addAction("hh:mm:ss");
+    pAction = pMenu->addAction("hh:mm:ss");
 	pAction->setData(QVariant(KviStatusBarClock::HMS));
 
 	pAction = pMenu->addAction("hh:mm");
 	pAction->setData(QVariant(KviStatusBarClock::HM));
 	connect(pMenu,SIGNAL(triggered(QAction *)),this,SLOT(changeFormat(QAction *)));
 
-	id = p->insertItem(__tr2qs("Format"),pMenu);
-	p->setItemEnabled(id,true);
+    pAction = p->addAction(__tr2qs("Format"));
+    pAction->setMenu(pMenu);
+    pAction->setEnabled(true);
 }
 
 void KviStatusBarClock::toggleUtc()
@@ -549,10 +554,11 @@ void KviStatusBarConnectionTimer::toggleTotal()
 	m_bTotal = !m_bTotal;
 }
 
-void KviStatusBarConnectionTimer::fillContextPopup(KviTalPopupMenu * p)
+void KviStatusBarConnectionTimer::fillContextPopup(QMenu * p)
 {
-	int id = p->insertItem(__tr2qs("Show total connection time"),this,SLOT(toggleTotal()));
-	p->setItemChecked(id,m_bTotal);
+    QAction *pAction = p->addAction(__tr2qs("Show total connection time"),this,SLOT(toggleTotal()));
+    pAction->setCheckable(true);
+    pAction->setChecked(m_bTotal);
 }
 
 void KviStatusBarConnectionTimer::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
@@ -649,12 +655,15 @@ void KviStatusBarUpdateIndicator::toggleRevision()
 	updateDisplay();
 }
 
-void KviStatusBarUpdateIndicator::fillContextPopup(KviTalPopupMenu * p)
+void KviStatusBarUpdateIndicator::fillContextPopup(QMenu * p)
 {
-	int id = p->insertItem(__tr2qs("Check on startup"),this,SLOT(toggleStartup()));
-	p->setItemChecked(id,m_bUpdateOnStartup);
-	id = p->insertItem(__tr2qs("Check SVN revisions"),this,SLOT(toggleRevision()));
-	p->setItemChecked(id,m_bUpdateRevision);
+    QAction *pAction = p->addAction(__tr2qs("Check on startup"),this,SLOT(toggleStartup()));
+    pAction->setCheckable(true);
+    pAction->setChecked(m_bUpdateOnStartup);
+
+    pAction = p->addAction(__tr2qs("Check SVN revisions"),this,SLOT(toggleRevision()));
+    pAction->setCheckable(true);
+    pAction->setChecked(m_bUpdateRevision);
 }
 
 void KviStatusBarUpdateIndicator::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)

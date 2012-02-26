@@ -52,7 +52,7 @@
 class QKeyEvent;
 class QDragEnterEvent;
 class KviUserListView;
-class KviTalPopupMenu;
+class QMenu;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
 #define KVI_INPUT_XTRAPADDING 1
@@ -148,7 +148,7 @@ protected:
 	KviCString                    m_szAltKeyCode;
 	KviWindow               * m_pKviWindow;
 	QWidget                 * m_pInputParent;
-	KviTalPopupMenu         * m_pIconMenu;
+	QMenu         * m_pIconMenu;
 	bool                      m_bReadOnly;
 
 	/**
@@ -541,7 +541,7 @@ public slots:
 	* \param iId The id of the icon
 	* \return void
 	*/
-	void iconPopupActivated(int iId);
+    void iconPopupActivated(QAction *pAction);
 
 	/**
 	* \brief Copies the text to the system clipboard

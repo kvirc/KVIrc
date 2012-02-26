@@ -48,7 +48,7 @@
 class QTimer;
 class QLabel;
 class KviMainWindow;
-class KviTalPopupMenu;
+class QMenu;
 class KviStatusBarApplet;
 class KviStatusBarAppletDescriptor;
 class KviIrcContext;
@@ -134,8 +134,8 @@ protected:
 	QLabel                                         * m_pMessageLabel;
 	KviPointerList<KviStatusBarApplet>             * m_pAppletList;
 	KviPointerHashTable<QString,KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
-	KviTalPopupMenu                                * m_pContextPopup;
-	KviTalPopupMenu                                * m_pAppletsPopup;
+    QMenu                                * m_pContextPopup;
+    QMenu                                * m_pAppletsPopup;
 	KviStatusBarApplet                             * m_pClickedApplet;
 	int                                              m_iLastMinimumHeight;
 	bool                                             m_bStopLayoutOnAddRemove;
@@ -166,7 +166,7 @@ public:
 	*/
 	KviStatusBarApplet * appletAt(const QPoint & pnt, bool bBestMatch = false);
 
-	//KviTalPopupMenu * contextPopup();
+    //QMenu * contextPopup();
 
 	/**
 	* \brief Queue a statusbar message in the stack
@@ -291,7 +291,7 @@ protected slots:
 	* \param iId The id of the applet
 	* \return void
 	*/
-	void appletsPopupActivated(int iId);
+    void appletsPopupActivated(QAction *pAction);
 
 	/**
 	* \brief Called when the user removes an applet from the statusbar

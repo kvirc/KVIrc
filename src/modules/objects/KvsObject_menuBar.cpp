@@ -42,12 +42,12 @@
 	@description:
 
 	@functions:
-		!fn: <integer> $insertItem(<text:string>)
+		!fn: <integer> $addAction(<text:string>)
 		Returns an integer that identifies the inserted item.
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_menuBar,"menubar","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_menuBar,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_menuBar,addAction)
 KVSO_END_REGISTERCLASS(KvsObject_menuBar)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_menuBar,KvsObject_widget)
@@ -65,7 +65,7 @@ bool KvsObject_menuBar::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(menuBar,insertItem)
+KVSO_CLASS_FUNCTION(menuBar,addAction)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szItem;

@@ -42,7 +42,7 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
 	bool setText(KviKvsObjectFunctionCall *c);
-	bool insertItem(KviKvsObjectFunctionCall *c);
+	bool addAction(KviKvsObjectFunctionCall *c);
 	bool setPixmap(KviKvsObjectFunctionCall *c);
 	bool setItemEditable(KviKvsObjectFunctionCall *c);
 	bool isItemEditable(KviKvsObjectFunctionCall *c);

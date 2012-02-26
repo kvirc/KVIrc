@@ -32,7 +32,7 @@
 #include "KviLocale.h"
 #include "KviFileDialog.h"
 #include "kvi_fileextensions.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalHBox.h"
 #include "KviFileUtils.h"
 
@@ -40,6 +40,7 @@
 #include <QLayout>
 #include <QCursor>
 #include <QHeaderView>
+#include <QWidgetAction>
 
 TextIconTableItem::TextIconTableItem(QTableWidget *,KviTextIcon * icon)
 : QTableWidgetItem(QString(),Qt::ItemIsEditable)
@@ -152,10 +153,10 @@ void OptionsWidget_textIcons::doPopup()
 {
 	if(!m_pPopup)
 	{
-		m_pPopup = new KviTalPopupMenu(this);
+        m_pPopup = new QMenu(this);
 		KviIconWidget * iw = new KviIconWidget(m_pPopup);
 		connect(iw,SIGNAL(selected(KviIconManager::SmallIcon)),this,SLOT(iconSelected(KviIconManager::SmallIcon)));
-		m_pPopup->insertItem(iw);
+        m_pPopup->addAction(new QWidgetAction(iw));
 	}
 	m_pPopup->popup(QCursor::pos());
 }

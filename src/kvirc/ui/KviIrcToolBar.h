@@ -35,7 +35,7 @@
 #include <QToolButton>
 #include <QLabel>
 
-class KviTalPopupMenu;
+class QMenu;
 
 
 //

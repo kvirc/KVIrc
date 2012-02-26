@@ -953,9 +953,9 @@ void NotifierWindow::contextPopup(const QPoint & pos)
 {
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new KviTalPopupMenu(this);
+        m_pContextPopup = new QMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
-		m_pDisablePopup = new KviTalPopupMenu(this);
+        m_pDisablePopup = new QMenu(this);
 	}
 
 	m_pContextPopup->popup(pos);
@@ -964,20 +964,20 @@ void NotifierWindow::contextPopup(const QPoint & pos)
 void NotifierWindow::fillContextPopup()
 {
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Editor)),__tr2qs_ctx("Show/Hide input line","notifier"),this,SLOT(toggleLineEdit()));
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Close)),__tr2qs_ctx("Hide","notifier"),this,SLOT(hideNow()));
-	m_pContextPopup->insertSeparator();
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Editor)),__tr2qs_ctx("Show/Hide input line","notifier"),this,SLOT(toggleLineEdit()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Close)),__tr2qs_ctx("Hide","notifier"),this,SLOT(hideNow()));
+    m_pContextPopup->addSeparator();
 	m_pDisablePopup->clear();
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("1 Minute","notifier"),this,SLOT(disableFor1Minute()));
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("5 Minutes","notifier"),this,SLOT(disableFor5Minutes()));
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("15 Minutes","notifier"),this,SLOT(disableFor15Minutes()));
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("30 Minutes","notifier"),this,SLOT(disableFor30Minutes()));
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("1 Hour","notifier"),this,SLOT(disableFor60Minutes()));
-	m_pDisablePopup->insertSeparator();
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Until KVIrc is Restarted","notifier"),this,SLOT(disableUntilKVIrcRestarted()));
-	m_pDisablePopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Permanently (Until Explicitly Enabled)","notifier"),this,SLOT(disablePermanently()));
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("1 Minute","notifier"),this,SLOT(disableFor1Minute()));
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("5 Minutes","notifier"),this,SLOT(disableFor5Minutes()));
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("15 Minutes","notifier"),this,SLOT(disableFor15Minutes()));
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("30 Minutes","notifier"),this,SLOT(disableFor30Minutes()));
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),__tr2qs_ctx("1 Hour","notifier"),this,SLOT(disableFor60Minutes()));
+    m_pDisablePopup->addSeparator();
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Until KVIrc is Restarted","notifier"),this,SLOT(disableUntilKVIrcRestarted()));
+	m_pDisablePopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Permanently (Until Explicitly Enabled)","notifier"),this,SLOT(disablePermanently()));
 
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Disable","notifier"),m_pDisablePopup);
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Disable","notifier"))->setMenu(m_pDisablePopup);
 }
 
 void NotifierWindow::disableFor15Minutes()

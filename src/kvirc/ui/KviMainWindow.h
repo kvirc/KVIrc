@@ -49,7 +49,7 @@ class KviMexToolBar;
 class KviIrcContext;
 class KviIrcConnection;
 class KviStatusBar;
-class KviTalPopupMenu;
+class QMenu;
 class KviTrayIcon;
 class QShortcut;
 
@@ -146,8 +146,8 @@ public:
 	KviMexToolBar * moduleExtensionToolBar(int extensionId);
 	// Helper to fill the toolbars popup
 	// it is used by KviToolBar and KviMenuBar
-	void fillToolBarsPopup(KviTalPopupMenu * p);
-	void fillIconSizePopup(KviTalPopupMenu * p);
+	void fillToolBarsPopup(QMenu * p);
+	void fillIconSizePopup(QMenu * p);
 	// Set the size of the icons used by the whole app
 	// Allowed sizes are 16, 22, 32 and 48
 	void setIconSize(unsigned int uSize);
@@ -205,7 +205,7 @@ protected slots:
 	void minimizeWindow();
 
 	void accelActivated();
-	void toolbarsPopupSelected(int id);
+    void toolbarsPopupSelected(QAction *pAction);
 	void iconSizePopupSelected(QAction * pAction);
 	void buttonStylePopupSelected(QAction * pAction);
 signals:

@@ -83,7 +83,7 @@
 #include "KviKvsEventTriggers.h"
 #include "kvi_sourcesdate.h"
 #include "KviPointerHashTable.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviQueryWindow.h"
 
 
@@ -149,7 +149,7 @@ KVIRC_API KviProxyDataBase              * g_pProxyDataBase              = 0;
 // Global windows
 KVIRC_API KviColorWindow                * g_pColorWindow                = 0;
 KVIRC_API KviTextIconWindow             * g_pTextIconWindow             = 0;
-KVIRC_API KviTalPopupMenu               * g_pInputPopup                 = 0;
+KVIRC_API QMenu               * g_pInputPopup                 = 0;
 KVIRC_API QStringList                   * g_pRecentTopicList            = 0;
 KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
 KVIRC_API KviMediaManager               * g_pMediaManager               = 0;
@@ -505,7 +505,7 @@ void KviApplication::setup()
 	//g_pGarbageCollector = new KviGarbageCollector();
 
 	// and the input popup
-	g_pInputPopup = new KviTalPopupMenu();
+    g_pInputPopup = new QMenu();
 
 	// create the server parser
 	g_pServerParser = new KviIrcServerParser();
@@ -583,8 +583,6 @@ KviApplication::~KviApplication()
 	// Another critical phase.
 	// We shutdown our subsystems in the right order here.
 
-	Q_ASSERT(g_pActiveWindow == 0);
-	
 	m_bClosingDown = true;
 
 #ifndef COMPILE_NO_IPC
@@ -2094,7 +2092,7 @@ void KviApplication::addRecentServer(const QString & szServer)
 	merge_to_stringlist_option(szServer,KviOption_stringlistRecentServers,KVI_MAX_RECENT_SERVERS);
 }
 
-void KviApplication::fillRecentServersPopup(KviTalPopupMenu * pMenu)
+void KviApplication::fillRecentServersPopup(QMenu * pMenu)
 {
 	// FIXME: #warning "MAYBE DISABLE THE SERVERS THAT WE ARE ALREADY CONNECTED TO ?"
 	pMenu->clear();
@@ -2102,27 +2100,27 @@ void KviApplication::fillRecentServersPopup(KviTalPopupMenu * pMenu)
 	{
 		if(*it == "")
 			continue;
-		pMenu->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),*it);
+		pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),*it);
 	}
 }
 
-void KviApplication::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsoleWindow * pConsole)
+void KviApplication::fillRecentNicknamesPopup(QMenu * pMenu, KviConsoleWindow * pConsole)
 {
 	pMenu->clear();
-	int iId;
+    QAction *pAction;
 	bool bAlreadyFound = false;
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames).end(); ++it)
 	{
 		if(*it == "")
 			continue;
-		iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Nick)),*it);
+        pAction= pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Nick)),*it);
 		if(!pConsole->isConnected())
-			pMenu->setItemEnabled(iId,false);
+            pAction->setEnabled(false);
 		else {
 			if(!bAlreadyFound)
 			{
 				bool bIsCurrent = KviQString::equalCS(pConsole->connection()->currentNickName(),*it);
-				pMenu->setItemEnabled(iId,!bIsCurrent);
+                pAction->setEnabled(!bIsCurrent);
 				if(bIsCurrent)
 					bAlreadyFound = true;
 			}
@@ -2130,9 +2128,10 @@ void KviApplication::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsol
 	}
 }
 
-void KviApplication::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsoleWindow * pConsole)
+void KviApplication::fillRecentChannelsPopup(QMenu * pMenu, KviConsoleWindow * pConsole)
 {
 	pMenu->clear();
+    QAction *pAction;
 	QStringList * pList = recentChannelsForNetwork(pConsole->currentNetworkName());
 	if(pList)
 	{
@@ -2140,11 +2139,11 @@ void KviApplication::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsole
 		{
 			if(*it == "")
 				continue; // ?
-			int iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),*it);
+            pAction = pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),*it);
 			if(!pConsole->isConnected())
-				pMenu->setItemEnabled(iId,false);
+                pAction->setEnabled(false);
 			else
-				pMenu->setItemEnabled(iId,!(pConsole->connection()->findChannel(*it)));
+                pAction->setEnabled(!(pConsole->connection()->findChannel(*it)));
 		}
 	}
 }
@@ -2155,7 +2154,7 @@ void KviApplication::fillRecentServersListBox(KviTalListBox * l)
 {
 	l->clear();
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
-		l->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
+		l->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
 }
 */
 

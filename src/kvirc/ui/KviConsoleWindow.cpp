@@ -68,7 +68,7 @@
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
 #include "KviTalHBox.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviNickColors.h"
 
 #ifdef COMPILE_SSL_SUPPORT

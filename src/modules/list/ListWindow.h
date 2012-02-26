@@ -31,7 +31,7 @@
 #include "KviIrcServerParser.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcContext.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviThemedTreeWidget.h"
 
 #include <QToolButton>

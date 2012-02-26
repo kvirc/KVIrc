@@ -40,7 +40,7 @@ class QComboBox;
 class QPushButton;
 class KviIpEditor;
 class KviIrcServer;
-class KviTalPopupMenu;
+class QMenu;
 class KviScriptEditor;
 class KviNickServRule;
 class NickServRuleEditor;
@@ -182,9 +182,9 @@ protected:
 	QLabel                       * m_pFilterLabel;
 	QLineEdit                    * m_pFilterEdit;
 	QPushButton                  * m_pDetailsButton;
-	KviTalPopupMenu              * m_pRecentPopup;
-	KviTalPopupMenu              * m_pContextPopup;
-	KviTalPopupMenu              * m_pImportPopup;
+    QMenu              * m_pRecentPopup;
+    QMenu              * m_pContextPopup;
+    QMenu              * m_pImportPopup;
 	KviIrcServer                 * m_pClipboard;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
@@ -222,8 +222,8 @@ protected slots:
 	void detailsClicked();
 	void connectCurrentClicked();
 	void recentServersPopupAboutToShow();
-	void recentServersPopupClicked(int id);
-	void importPopupActivated(int id);
+    void recentServersPopupClicked(QAction *pAction);
+    void importPopupActivated(QAction *pAction);
 	void serverNetworkEditTextEdited(const QString &szNewText);
 	void filterTextEdited(const QString &szNewText);
 public:

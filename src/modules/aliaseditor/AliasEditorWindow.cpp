@@ -150,7 +150,7 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
 	connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
 
-	m_pContextPopup = new KviTalPopupMenu(this);
+    m_pContextPopup = new QMenu(this);
 
 	oneTimeSetup();
 
@@ -555,14 +555,12 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 	m_pContextPopup->clear();
 	m_pLastClickedItem = (AliasEditorTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
 
-	int id;
-
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Alias)),
 			__tr2qs_ctx("Add Alias","editor"),
 			this,SLOT(newAlias()));
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Alias)),
 			__tr2qs_ctx("Add Namespace","editor"),
 			this,SLOT(newNamespace()));
@@ -570,49 +568,47 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 	bool bHasItems = m_pTreeWidget->topLevelItemCount();
 	bool bHasSelected = hasSelectedItems();
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	id = m_pContextPopup->insertItem(
+    QAction *pAction = m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 			__tr2qs_ctx("Remove Selected","editor"),
 			this,SLOT(removeSelectedItems()));
-	m_pContextPopup->setItemEnabled(id,bHasSelected);
+    pAction->setEnabled(bHasSelected);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export Selected...","editor"),
-			this,SLOT(exportSelected()));
-	m_pContextPopup->setItemEnabled(id,bHasSelected);
+            this,SLOT(exportSelected()))
+            ->setEnabled(bHasSelected);
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export Selected in singles files...","editor"),
-			this,SLOT(exportSelectedSepFiles()));
+            this,SLOT(exportSelectedSepFiles()))
+            ->setEnabled(bHasSelected);
 
-	m_pContextPopup->setItemEnabled(id,bHasSelected);
-
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export All...","editor"),
-			this,SLOT(exportAll()));
-	m_pContextPopup->setItemEnabled(id,bHasItems);
+            this,SLOT(exportAll()))
+            ->setEnabled(bHasItems);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
 			__tr2qs_ctx("Find In Aliases...","editor"),
-			this,SLOT(slotFind()));
-	m_pContextPopup->setItemEnabled(id,bHasItems);
+            this,SLOT(slotFind()))
+            ->setEnabled(bHasItems);
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 			__tr2qs_ctx("Collapse All Namespaces","editor"),
-			this,SLOT(slotCollapseNamespaces()));
-
-	m_pContextPopup->setItemEnabled(id,bHasItems);
+            this,SLOT(slotCollapseNamespaces()))
+            ->setEnabled(bHasItems);
 	m_pContextPopup->popup( m_pTreeWidget->mapToGlobal(pnt));
 }
 

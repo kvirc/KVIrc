@@ -154,9 +154,9 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	pLabel = new QLabel(__tr2qs("Pattern:"),m_pOptionsWidget);
 	pOptionsLayout->addWidget(pLabel,8,0);
 	m_pSearchMode = new QComboBox(m_pOptionsWidget);
-	m_pSearchMode->insertItem(PlainText, __tr2qs("Plain Text"));
-	m_pSearchMode->insertItem(Wildcards, __tr2qs("Wildcards"));
-	m_pSearchMode->insertItem(RegExp, __tr2qs("RegExp"));
+    m_pSearchMode->insertItem(PlainText, __tr2qs("Plain Text"));
+    m_pSearchMode->insertItem(Wildcards, __tr2qs("Wildcards"));
+    m_pSearchMode->insertItem(RegExp, __tr2qs("RegExp"));
 	pOptionsLayout->addWidget(m_pSearchMode,8,1);
 
 	pLabel = new QLabel(__tr2qs("Match:"),m_pOptionsWidget);

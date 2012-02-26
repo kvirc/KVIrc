@@ -41,13 +41,14 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviOptions.h"
 #include "KviIrcView.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QPixmap>
 #include <QPainter>
 #include <QTimer>
 #include <QEvent>
 #include <QRegExp>
+#include <QWidgetAction>
 
 #include <stdlib.h>
 #include <time.h>
@@ -70,7 +71,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 : QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE,ICON_SIZE)
 {
 	g_pTrayIcon = this;
-	m_pContextPopup = new KviTalPopupMenu(0);
+    m_pContextPopup = new QMenu(0);
 	setContextMenu(m_pContextPopup);
 
 	m_iConsoles = 0;
@@ -86,12 +87,12 @@ KviTrayIconWidget::KviTrayIconWidget()
 	g_pMainWindow->setTrayIcon(this);
 
 	m_pTip = new KviDynamicToolTip(g_pMainWindow,"dock_tooltip");
-	m_pAwayPopup = new KviTalPopupMenu(0);
+    m_pAwayPopup = new QMenu(0);
 
 	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-	m_pContextPopup->insertItem(m_pTitleLabel);
+    m_pContextPopup->addAction(new QWidgetAction(m_pTitleLabel));
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
 	m_pAwayMenuId->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
@@ -103,10 +104,10 @@ KviTrayIconWidget::KviTrayIconWidget()
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),__tr2qs("&About KVIrc"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Raw)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TrayIcon)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);

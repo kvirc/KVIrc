@@ -29,7 +29,7 @@
 #include "KviSelectors.h"
 #include "KviPointerHashTable.h"
 #include <QTreeWidget>
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include <KviTalTabDialog.h>
 
 #include <QListWidget>

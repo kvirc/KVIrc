@@ -33,7 +33,7 @@
 #include "KviKvsEventTriggers.h"
 #include "KviConsoleWindow.h"
 #include "KviKvsScript.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QPainter>
 
@@ -98,10 +98,11 @@ void HttpFileTransfer::abort()
 	m_pHttpRequest->abort();
 }
 
-void HttpFileTransfer::fillContextPopup(KviTalPopupMenu * m)
+void HttpFileTransfer::fillContextPopup(QMenu * m)
 {
-	int id = m->insertItem(__tr2qs_ctx("Abort","http"),this,SLOT(abort()));
-	if(!active())m->setItemEnabled(id,false);
+    QAction *pAction = m->addAction(__tr2qs_ctx("Abort","http"),this,SLOT(abort()));
+    if(!active())
+        pAction->setEnabled(false);
 }
 
 bool HttpFileTransfer::active()

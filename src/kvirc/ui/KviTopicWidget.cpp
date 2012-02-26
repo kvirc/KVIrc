@@ -42,7 +42,7 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviHtmlGenerator.h"
 #include "KviTalToolTip.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviThemedLabel.h"
 
 #include <QLineEdit>
@@ -502,7 +502,7 @@ void KviTopicWidget::mousePressEvent(QMouseEvent * e)
 		return;
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new KviTalPopupMenu(this);
+		m_pContextPopup = new QMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(contextPopupAboutToShow()));
 	}
 	m_pContextPopup->popup(mapToGlobal(e->pos()));
@@ -513,7 +513,7 @@ void KviTopicWidget::contextPopupAboutToShow()
 	if(!m_pContextPopup)
 		return; // hm ?
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs("Copy to clipboard"),this,SLOT(copy()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs("Copy to clipboard"),this,SLOT(copy()));
 }
 
 void KviTopicWidget::copy()

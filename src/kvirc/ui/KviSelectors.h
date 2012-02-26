@@ -340,7 +340,7 @@ private slots:
 	void removeClicked();
 };
 
-class KviTalPopupMenu;
+class QMenu;
 
 class KVIRC_API KviMircTextColorSelector : public KviTalHBox, public KviSelectorInterface
 {
@@ -355,16 +355,16 @@ private:
 	unsigned int * m_pUBack;
 	unsigned int m_uFore;
 	unsigned int m_uBack;
-	KviTalPopupMenu * m_pContextPopup;
-	KviTalPopupMenu * m_pForePopup;
-	KviTalPopupMenu * m_pBackPopup;
+    QMenu * m_pContextPopup;
+    QMenu * m_pForePopup;
+    QMenu * m_pBackPopup;
 public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
 protected slots:
 	void buttonClicked();
-	void foreSelected(int);
-	void backSelected(int);
+    void foreSelected(QAction *pAction);
+    void backSelected(QAction *pAction);
 protected:
 	void setButtonPalette();
 };

@@ -34,7 +34,7 @@
 #include "KviPointerList.h"
 #include "KviFileTransfer.h"
 #include "KviTimeUtils.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalHBox.h"
 #include "KviTalVBox.h"
 
@@ -49,7 +49,7 @@ class QTimer;
 class QPainter;
 class DccFileTransfer;
 class DccMarshal;
-class KviTalPopupMenu;
+class QMenu;
 
 typedef struct _KviDccSendThreadOptions
 {
@@ -216,7 +216,7 @@ public:
 
 	virtual void displayPaint(QPainter * p,int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(KviTalPopupMenu * m);
+	virtual void fillContextPopup(QMenu * m);
 	virtual void fillStatusString(QString &szBuffer);
 	virtual bool active();
 	virtual QString tipText();

@@ -100,7 +100,7 @@ protected:
 	QString                 m_szLastGroup;
 	bool                    m_bAborted;
 	QTimer                * m_pTimer;
-	KviTalPopupMenu       * m_pExportLogPopup;
+	QMenu       * m_pExportLogPopup;
 public:
 	/**
 	* \brief Exports the log and creates the file in the selected format

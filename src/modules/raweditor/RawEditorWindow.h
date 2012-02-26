@@ -33,7 +33,7 @@
 #include <QLineEdit>
 
 class KviScriptEditor;
-class KviTalPopupMenu;
+class QMenu;
 
 class RawTreeWidget : public QTreeWidget
 {
@@ -95,7 +95,7 @@ public:
 	KviScriptEditor * m_pEditor;
 	RawTreeWidget       * m_pTreeWidget;
 	QLineEdit       * m_pNameEditor;
-	KviTalPopupMenu      * m_pContextPopup;
+	QMenu      * m_pContextPopup;
 	RawHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool              m_bOneTimeSetupDone;
 public:

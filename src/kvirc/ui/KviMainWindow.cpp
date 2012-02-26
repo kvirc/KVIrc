@@ -58,7 +58,7 @@
 #include "KviIrcView.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTextIconManager.h"
 #include "KviShortcut.h"
 
@@ -349,7 +349,12 @@ void KviMainWindow::accelActivated()
 
 void KviMainWindow::executeInternalCommand(int index)
 {
-	KviKvsScript::run(kvi_getInternalCommandBuffer(index),firstConsole());
+    KviConsoleWindow *pConsole=0;
+    if(activeContext() && activeContext()->console())
+        pConsole=activeContext()->console();
+    else
+        pConsole=firstConsole();
+    KviKvsScript::run(kvi_getInternalCommandBuffer(index),pConsole);
 }
 
 
@@ -958,14 +963,14 @@ void KviMainWindow::toggleStatusBar()
 	}
 }
 
-void KviMainWindow::fillToolBarsPopup(KviTalPopupMenu * p)
+void KviMainWindow::fillToolBarsPopup(QMenu * p)
 {
 	p->clear();
 
-	disconnect(p,SIGNAL(activated(int)),this,SLOT(toolbarsPopupSelected(int))); // just to be sure
-	connect(p,SIGNAL(activated(int)),this,SLOT(toolbarsPopupSelected(int)));
+    disconnect(p,SIGNAL(triggered(QAction *)),this,SLOT(toolbarsPopupSelected(QAction *))); // just to be sure
+    connect(p,SIGNAL(triggered(QAction *)),this,SLOT(toolbarsPopupSelected(QAction *)));
 
-	int id;
+    QAction *pAction=0;
 	int cnt = 0;
 
 	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("toolbar");
@@ -974,10 +979,13 @@ void KviMainWindow::fillToolBarsPopup(KviTalPopupMenu * p)
 		for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
 		{
 			QString label = __tr2qs("Show %1").arg(d->visibleName());
-			if(d->icon())id = p->insertItem(*(d->icon()),label);
-			else id = p->insertItem(label);
-			p->setItemChecked(id,moduleExtensionToolBar(d->id()));
-			p->setItemParameter(id,d->id());
+            if(d->icon())
+                pAction = p->addAction(*(d->icon()),label);
+            else
+                pAction = p->addAction(label);
+            pAction->setCheckable(true);
+            pAction->setChecked(moduleExtensionToolBar(d->id()));
+            pAction->setData(d->id());
 			cnt++;
 		}
 	}
@@ -987,7 +995,7 @@ void KviMainWindow::fillToolBarsPopup(KviTalPopupMenu * p)
 	if(it2.current())
 	{
 		if(cnt > 0)
-			p->insertSeparator();
+            p->addSeparator();
 
 		while(KviCustomToolBarDescriptor * d = it2.current())
 		{
@@ -998,24 +1006,25 @@ void KviMainWindow::fillToolBarsPopup(KviTalPopupMenu * p)
 				QPixmap * pix = g_pIconManager->getImage(d->iconId());
 				if(pix)
 				{
-					id = p->insertItem(*pix,label);
+                    pAction = p->addAction(*pix,label);
 				} else {
-					id = p->insertItem(label);
+                    pAction = p->addAction(label);
 				}
 			} else {
-				id = p->insertItem(label);
+                pAction = p->addAction(label);
 			}
-			p->setItemParameter(id,d->internalId());
-			p->setItemChecked(id,d->toolBar());
+            pAction->setData(d->internalId());
+            pAction->setCheckable(true);
+            pAction->setChecked(d->toolBar());
 			++it2;
 			cnt++;
 		}
 	}
 
 	if(cnt > 0)
-		p->insertSeparator();
+        p->addSeparator();
 
-	p->insertItem(
+	p->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBar)),
 			__tr2qs("Customize..."),
 			this,
@@ -1028,13 +1037,12 @@ void KviMainWindow::customizeToolBars()
 	KviKvsScript::run("toolbareditor.open",g_pActiveWindow);
 }
 
-void KviMainWindow::toolbarsPopupSelected(int id)
+void KviMainWindow::toolbarsPopupSelected(QAction *pAction)
 {
-	const QObject * o = sender();
-	if(!o)return;
-	if(!o->inherits("KviTalPopupMenu"))return;
-
-	int idext = ((KviTalPopupMenu *)o)->itemParameter(id);
+    bool bOk=false;
+    int idext=pAction->data().toInt(&bOk);
+    if(!bOk)
+        return;
 
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);
 	if(dd)

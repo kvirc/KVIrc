@@ -40,7 +40,7 @@
 
 class QShortcut;
 class QPixmap;
-class KviTalPopupMenu;
+class QMenu;
 class KviCustomToolBar;
 
 #undef None
@@ -275,7 +275,7 @@ public:
 	* \param pMenu The menu where to add the action
 	* \return bool
 	*/
-	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+	virtual bool addToPopupMenu(QMenu * pMenu);
 
 	/**
 	* \brief Adds the action to the given toolbar

@@ -27,7 +27,7 @@
 #ifdef COMPILE_DCC_CANVAS
 	#include "KviCString.h"
 	#include "KviLocale.h"
-	#include "KviTalPopupMenu.h"
+	#include "QMenu.h"
 
 	#include <QCursor>
 	#include <QPainter>
@@ -1229,8 +1229,8 @@
 			case QVariant::Bool:
 			{
 				QComboBox * b = new QComboBox(false,table()->viewport());
-				b->insertItem("FALSE");
-				b->insertItem("TRUE");
+				b->addAction("FALSE");
+				b->addAction("TRUE");
 				b->setCurrentItem(m_property.toBool() ? 1 : 0);
 				return b;
 			}
@@ -1254,20 +1254,20 @@
 				tmp.setNum(m_property.toFont().pointSize());
 				tmp.prepend(", ");
 				tmp.prepend(m_property.toFont().family());
-				b->insertItem(tmp);
-				b->insertItem(tmpDefault + ", 8");
-				b->insertItem(tmpDefault + ", 10");
-				b->insertItem(tmpDefault + ", 12");
-				b->insertItem(tmpDefault + ", 14");
-				b->insertItem(tmpDefault + ", 16");
-				b->insertItem(tmpDefault + ", 18");
-				b->insertItem(tmpDefault + ", 20");
-				b->insertItem(tmpDefault + ", 24");
-				b->insertItem(tmpDefault + ", 28");
-				b->insertItem(tmpDefault + ", 32");
-				b->insertItem(tmpDefault + ", 40");
-				b->insertItem(tmpDefault + ", 48");
-				b->insertItem(f.family() + ", 12");
+				b->addAction(tmp);
+				b->addAction(tmpDefault + ", 8");
+				b->addAction(tmpDefault + ", 10");
+				b->addAction(tmpDefault + ", 12");
+				b->addAction(tmpDefault + ", 14");
+				b->addAction(tmpDefault + ", 16");
+				b->addAction(tmpDefault + ", 18");
+				b->addAction(tmpDefault + ", 20");
+				b->addAction(tmpDefault + ", 24");
+				b->addAction(tmpDefault + ", 28");
+				b->addAction(tmpDefault + ", 32");
+				b->addAction(tmpDefault + ", 40");
+				b->addAction(tmpDefault + ", 48");
+				b->addAction(f.family() + ", 12");
 				b->setCurrentItem(0);
 				b->setCurrentItem(m_property.toBool() ? 1 : 0);
 				return b;
@@ -1471,28 +1471,28 @@
 
 		connect(m_pPropertiesWidget,SIGNAL(propertyChanged(const QString &,const QVariant &)),m_pCanvasView,SLOT(propertyChanged(const QString &,const QVariant &)));
 
-		KviTalPopupMenu * add = new KviTalPopupMenu(m_pMenuBar);
-		KviTalPopupMenu * shapes = new KviTalPopupMenu(add);
-		KviTalPopupMenu * polygons = new KviTalPopupMenu(add);
-		KviTalPopupMenu * items = new KviTalPopupMenu(add);
-		shapes->insertItem(__tr2qs_ctx("&Line","dcc"),m_pCanvasView,SLOT(insertLine()));
-		shapes->insertItem(__tr2qs_ctx("&Rectangle","dcc"),m_pCanvasView,SLOT(insertRectangle()));
-		shapes->insertItem(__tr2qs_ctx("&Ellipse","dcc"),m_pCanvasView,SLOT(insertEllipse()));
-		shapes->insertItem(__tr2qs_ctx("&Pie","dcc"),m_pCanvasView,SLOT(insertPie()));
-		shapes->insertItem(__tr2qs_ctx("&Chord","dcc"),m_pCanvasView,SLOT(insertChord()));
+		QMenu * add = new QMenu(m_pMenuBar);
+		QMenu * shapes = new QMenu(add);
+		QMenu * polygons = new QMenu(add);
+		QMenu * items = new QMenu(add);
+		shapes->addAction(__tr2qs_ctx("&Line","dcc"),m_pCanvasView,SLOT(insertLine()));
+		shapes->addAction(__tr2qs_ctx("&Rectangle","dcc"),m_pCanvasView,SLOT(insertRectangle()));
+		shapes->addAction(__tr2qs_ctx("&Ellipse","dcc"),m_pCanvasView,SLOT(insertEllipse()));
+		shapes->addAction(__tr2qs_ctx("&Pie","dcc"),m_pCanvasView,SLOT(insertPie()));
+		shapes->addAction(__tr2qs_ctx("&Chord","dcc"),m_pCanvasView,SLOT(insertChord()));
 
-		items->insertItem(__tr2qs_ctx("&Rich text (html)","dcc"),m_pCanvasView,SLOT(insertRichText()));
+		items->addAction(__tr2qs_ctx("&Rich text (html)","dcc"),m_pCanvasView,SLOT(insertRichText()));
 
-		polygons->insertItem(__tr2qs_ctx("&Triangle","dcc"),m_pCanvasView,SLOT(insertPolygonTriangle()));
-		polygons->insertItem(__tr2qs_ctx("&Rectangle","dcc"),m_pCanvasView,SLOT(insertPolygonRectangle()));
-		polygons->insertItem(__tr2qs_ctx("&Pentagon","dcc"),m_pCanvasView,SLOT(insertPolygonPentagon()));
-		polygons->insertItem(__tr2qs_ctx("&Hexagon","dcc"),m_pCanvasView,SLOT(insertPolygonHexagon()));
+		polygons->addAction(__tr2qs_ctx("&Triangle","dcc"),m_pCanvasView,SLOT(insertPolygonTriangle()));
+		polygons->addAction(__tr2qs_ctx("&Rectangle","dcc"),m_pCanvasView,SLOT(insertPolygonRectangle()));
+		polygons->addAction(__tr2qs_ctx("&Pentagon","dcc"),m_pCanvasView,SLOT(insertPolygonPentagon()));
+		polygons->addAction(__tr2qs_ctx("&Hexagon","dcc"),m_pCanvasView,SLOT(insertPolygonHexagon()));
 
-		add->insertItem(__tr2qs_ctx("&Shape","dcc"),shapes);
-		add->insertItem(__tr2qs_ctx("&Item","dcc"),items);
-		add->insertItem(__tr2qs_ctx("&Polygons","dcc"),polygons);
+		add->addAction(__tr2qs_ctx("&Shape","dcc"),shapes);
+		add->addAction(__tr2qs_ctx("&Item","dcc"),items);
+		add->addAction(__tr2qs_ctx("&Polygons","dcc"),polygons);
 
-		m_pMenuBar->insertItem(__tr2qs_ctx("&Insert","dcc"),add);
+		m_pMenuBar->addAction(__tr2qs_ctx("&Insert","dcc"),add);
 	}
 
 	DccCanvasWidget::~DccCanvasWidget()

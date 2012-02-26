@@ -37,7 +37,7 @@
 #include "KviQString.h"
 #include "KviApplication.h"
 #include "KviFileUtils.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviControlCodes.h"
 
 #include <QList>
@@ -186,11 +186,11 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc)
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);
 
-	m_pExportLogPopup = new KviTalPopupMenu(this,"exportlog");
-	m_pExportLogPopup->insertItem(__tr2qs_ctx("plain text file","log"));
-	m_pExportLogPopup->insertItem(__tr2qs_ctx("HTML archive","log"));
-	//m_pExportLogPopup->insertItem(__tr2qs_ctx("XML file","log"));
-	//m_pExportLogPopup->insertItem(__tr2qs_ctx("database file","log"));
+    m_pExportLogPopup = new QMenu("exportlog", this);
+	m_pExportLogPopup->addAction(__tr2qs_ctx("plain text file","log"));
+	m_pExportLogPopup->addAction(__tr2qs_ctx("HTML archive","log"));
+	//m_pExportLogPopup->addAction(__tr2qs_ctx("XML file","log"));
+	//m_pExportLogPopup->addAction(__tr2qs_ctx("database file","log"));
 	connect(m_pExportLogPopup,SIGNAL(activated(int)),this,SLOT(exportLog(int)));
 
 	m_pTimer = new QTimer(this);
@@ -433,14 +433,14 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 		return;
 	m_pListView->setCurrentItem(pItem);
 
-	KviTalPopupMenu * pPopup = new KviTalPopupMenu(this);
+    QMenu * pPopup = new QMenu(this);
 	if(((LogListViewItem *)pItem)->childCount())
 	{
-		//pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
-		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all log files within this folder","log"),this,SLOT(deleteCurrent()));
+		//pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all log files within this folder","log"),this,SLOT(deleteCurrent()));
 	} else {
-		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export log file to","log"),m_pExportLogPopup);
-		pPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
+        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export log file to","log"))->setMenu(m_pExportLogPopup);
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
 	}
 
 	pPopup->exec(QCursor::pos());

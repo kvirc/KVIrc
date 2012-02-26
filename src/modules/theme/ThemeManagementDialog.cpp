@@ -47,7 +47,7 @@
 #include "KviDynamicToolTip.h"
 #include "KviIconManager.h"
 #include "KviMessageBox.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalListWidget.h"
 
 
@@ -237,7 +237,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 //	g->setSpacing(1);
 	vBox->setAlignment(b,Qt::AlignRight);
 	fillThemeBox();
-	m_pContextPopup = new KviTalPopupMenu(this);
+	m_pContextPopup = new QMenu(this);
 
 	if(g_rectManagementDialogGeometry.y() < 5)
 	{
@@ -328,8 +328,8 @@ void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 	{
 		m_pListWidget->setCurrentItem(m_pListWidget->itemAt(pos));
 		m_pContextPopup->clear();
-		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
-		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)),__tr2qs_ctx("&Apply Theme","theme"),this,SLOT(applyCurrentTheme()));
+		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
+		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)),__tr2qs_ctx("&Apply Theme","theme"),this,SLOT(applyCurrentTheme()));
 		m_pContextPopup->popup(m_pListWidget->viewport()->mapToGlobal(pos));
 	}
 }

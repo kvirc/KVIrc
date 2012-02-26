@@ -35,7 +35,7 @@
 
 class QPixmap;
 class QTimer;
-class KviTalPopupMenu;
+class QMenu;
 class KviDynamicToolTip;
 //class KviMainWindow;
 
@@ -47,8 +47,8 @@ public:
 	~KviTrayIconWidget();
 protected:
 	KviDynamicToolTip      * m_pTip;
-	KviTalPopupMenu        * m_pContextPopup;
-	KviTalPopupMenu        * m_pAwayPopup;
+	QMenu        * m_pContextPopup;
+	QMenu        * m_pAwayPopup;
 	QLabel                 * m_pTitleLabel;
 
 	QAction* m_pToggleFrame;

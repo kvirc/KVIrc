@@ -384,11 +384,11 @@ void SharedFilesWindow::transferUnregistering(KviSharedFiles * t)
 
 void SharedFilesWindow::rightButtonPressed(QTreeWidgetItem *it,const QPoint &pnt,int col)
 {
-	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
-	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
+	if(!m_pContextPopup)m_pContextPopup = new QMenu(this);
+	if(!m_pLocalFilePopup)m_pLocalFilePopup = new QMenu(this);
 	if(!m_pOpenFilePopup)
 	{
-		m_pOpenFilePopup= new KviTalPopupMenu(this);
+		m_pOpenFilePopup= new QMenu(this);
 		connect(m_pOpenFilePopup,SIGNAL(activated(int)),this,SLOT(openFilePopupActivated(int)));
 	}
 
@@ -429,7 +429,7 @@ void SharedFilesWindow::rightButtonPressed(QTreeWidgetItem *it,const QPoint &pnt
 				QLabel * l = new QLabel(tmp,m_pLocalFilePopup);
 				QPalette p;
 				m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-				m_pLocalFilePopup->insertItem(l);
+				m_pLocalFilePopup->addAction(l);
 
 #ifdef COMPILE_KDE_SUPPORT
 				QString mimetype = KMimeType::findByPath(szFile)->name();
@@ -443,31 +443,31 @@ void SharedFilesWindow::rightButtonPressed(QTreeWidgetItem *it,const QPoint &pnt
 				for(KServiceTypeProfile::OfferList::Iterator itOffers = offers.begin();
 	   				itOffers != offers.end(); ++itOffers)
 				{
-					id = m_pOpenFilePopup->insertItem((*itOffers).service()->pixmap(KIcon::Small),(*itOffers).service()->name());
+					id = m_pOpenFilePopup->addAction((*itOffers).service()->pixmap(KIcon::Small),(*itOffers).service()->name());
 					m_pOpenFilePopup->setItemParameter(id,idx);
 					idx++;
 				}
 
-				m_pOpenFilePopup->insertSeparator();
+				m_pOpenFilePopup->addSeparator();
 
-				id = m_pOpenFilePopup->insertItem(__tr2qs_ctx("Default application","filetransferwindow"),this,SLOT(openLocalFile()));
+				id = m_pOpenFilePopup->addAction(__tr2qs_ctx("Default application","filetransferwindow"),this,SLOT(openLocalFile()));
 				m_pOpenFilePopup->setItemParameter(id,-1);
-				id = m_pOpenFilePopup->insertItem(__tr2qs_ctx("&Other...","filetransferwindow"),this,SLOT(openLocalFileWith()));
+				id = m_pOpenFilePopup->addAction(__tr2qs_ctx("&Other...","filetransferwindow"),this,SLOT(openLocalFileWith()));
 				m_pOpenFilePopup->setItemParameter(id,-1);
 
-				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Open with","filetransferwindow"),m_pOpenFilePopup);
-				m_pLocalFilePopup->insertSeparator();
-				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Open folder","filetransferwindow"),this,SLOT(openLocalFileFolder()));
-				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Reach in terminal","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
-				m_pLocalFilePopup->insertSeparator();
+				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open with","filetransferwindow"),m_pOpenFilePopup);
+				m_pLocalFilePopup->addSeparator();
+				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open folder","filetransferwindow"),this,SLOT(openLocalFileFolder()));
+				m_pLocalFilePopup->addAction(__tr2qs_ctx("Reach in terminal","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
+				m_pLocalFilePopup->addSeparator();
 #endif //COMPILE_KDE_SUPPORT
-				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Copy path to clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
+				m_pLocalFilePopup->addAction(__tr2qs_ctx("Copy path to clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
 
-				m_pContextPopup->insertItem(__tr2qs_ctx("Local file","filetransferwindow"),m_pLocalFilePopup);
+				m_pContextPopup->addAction(__tr2qs_ctx("Local file","filetransferwindow"),m_pLocalFilePopup);
 			}
 
 			i->transfer()->fillContextPopup(m_pContextPopup,col);
-			m_pContextPopup->insertSeparator();
+			m_pContextPopup->addSeparator();
 		}
 	}
 
@@ -484,10 +484,10 @@ void SharedFilesWindow::rightButtonPressed(QTreeWidgetItem *it,const QPoint &pnt
 		item = (KviSharedFilesItem *)item->nextSibling();
 	}
 
-	id = m_pContextPopup->insertItem(__tr2qs_ctx("Clear terminated","filetransferwindow"),this,SLOT(clearTerminated()));
+	id = m_pContextPopup->addAction(__tr2qs_ctx("Clear terminated","filetransferwindow"),this,SLOT(clearTerminated()));
 	m_pContextPopup->setItemEnabled(id,bHaveTerminated);
 
-	id = m_pContextPopup->insertItem(__tr2qs_ctx("Clear all","filetransferwindow"),this,SLOT(clearAll()));
+	id = m_pContextPopup->addAction(__tr2qs_ctx("Clear all","filetransferwindow"),this,SLOT(clearAll()));
 	m_pContextPopup->setItemEnabled(id,it);
 
 	m_pContextPopup->popup(pnt);

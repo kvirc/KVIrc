@@ -96,7 +96,7 @@
 #include "KviIrcConnection.h"
 #include "KviMdiManager.h"
 #include "KviUserInput.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviAnimatedPixmap.h"
 #include "KviPixmapUtils.h"
 #include "KviTrayIcon.h"
@@ -2073,24 +2073,24 @@ QSize KviIrcView::sizeHint() const
 void KviIrcView::showToolsPopup()
 {
 	if(!m_pToolsPopup)
-		m_pToolsPopup = new KviTalPopupMenu(this);
+        m_pToolsPopup = new QMenu(this);
 
 	m_pToolsPopup->clear();
 
 	if(m_pToolWidget)
-		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Hide Filter"),this,SLOT(toggleToolWidget()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Hide Filter"),this,SLOT(toggleToolWidget()));
 	else
-		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Show Filter"),this,SLOT(toggleToolWidget()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Show Filter"),this,SLOT(toggleToolWidget()));
 
-	m_pToolsPopup->insertSeparator();
-	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
-	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
-	m_pToolsPopup->insertItem(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
-	m_pToolsPopup->insertItem(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
-	int id = m_pToolsPopup->insertItem(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
-	m_pToolsPopup->setItemEnabled(id,m_pPrivateBackgroundPixmap != 0);
-	m_pToolsPopup->insertSeparator();
-	m_pToolsPopup->insertItem(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
+    m_pToolsPopup->addSeparator();
+	m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
+	m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
+	m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
+	m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
+    QAction * pAction = m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
+    pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
+    m_pToolsPopup->addSeparator();
+	m_pToolsPopup->addAction(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
 
 	QSize s = m_pToolsPopup->sizeHint();
 

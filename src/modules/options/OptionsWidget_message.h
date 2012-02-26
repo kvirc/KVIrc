@@ -26,7 +26,7 @@
 
 #include "KviOptionsWidget.h"
 #include "KviMessageTypeSettings.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviIconManager.h"
 
 #include <QTreeWidget>
@@ -173,7 +173,7 @@ public:
 	MessageListWidgetItem     * m_pLastItem;
 	QCheckBox                  * m_pEnableLogging;
 	QToolButton                * m_pIconButton;
-	KviTalPopupMenu            * m_pIconPopup;
+	QMenu            * m_pIconPopup;
 public:
 	void saveLastItem();
 protected slots:

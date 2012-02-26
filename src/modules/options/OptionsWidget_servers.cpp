@@ -53,7 +53,7 @@
 #include "KviProxyDataBase.h"
 #include "KviKvsScript.h"
 #include "KviPointerHashTable.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalToolTip.h"
 
 #include <QLineEdit>
@@ -230,8 +230,8 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	while(d->pcName)
 	{
 		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
-		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
-		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
+        m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
+        m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->pcName,n->encoding()))
 			srvcurrent = i + 1;
 		if(KviQString::equalCI(d->pcName,n->textEncoding()))
@@ -786,8 +786,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	while(d->pcName)
 	{
 		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
-		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
-		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
+        m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
+        m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->pcName,s->encoding()))
 			srvcurrent = i + 1;
 		if(KviQString::equalCI(d->pcName,s->textEncoding()))
@@ -815,7 +815,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
-		m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostName()).arg(p->port()));
+        m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostName()).arg(p->port()));
 	}
 	if(m_pProxyEditor->count() > (s->proxy()+2))
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
@@ -1258,11 +1258,11 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	createLayout();
 
-	m_pContextPopup = new KviTalPopupMenu(this);
-	m_pImportPopup = new KviTalPopupMenu(this);
+    m_pContextPopup = new QMenu(this);
+    m_pImportPopup = new QMenu(this);
 
 	connect(m_pImportPopup,SIGNAL(aboutToShow()),this,SLOT(importPopupAboutToShow()));
-	connect(m_pImportPopup,SIGNAL(activated(int)),this,SLOT(importPopupActivated(int)));
+    connect(m_pImportPopup,SIGNAL(triggered(QAction *)),this,SLOT(importPopupActivated(QAction *)));
 
 	m_pServerDetailsDialog = 0;
 	m_pNetworkDetailsDialog = 0;
@@ -1371,9 +1371,9 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pDetailsButton,SIGNAL(clicked()),this,SLOT(detailsClicked()));
 	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
 
-	m_pRecentPopup = new KviTalPopupMenu(gbox);
+    m_pRecentPopup = new QMenu(gbox);
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
-	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
+    connect(m_pRecentPopup,SIGNAL(triggered(QAction *)),this,SLOT(recentServersPopupClicked(QAction *)));
 
 	QToolButton * tb = new QToolButton(gbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
@@ -1479,11 +1479,11 @@ void OptionsWidget_servers::recentServersPopupAboutToShow()
 {
 	g_pApp->fillRecentServersPopup(m_pRecentPopup);
 
-	m_pRecentPopup->insertSeparator();
-	m_pRecentPopup->insertItem(__tr2qs("Clear Recent Servers List"));
+    m_pRecentPopup->addSeparator();
+	m_pRecentPopup->addAction(__tr2qs("Clear Recent Servers List"));
 }
 
-void OptionsWidget_servers::recentServersPopupClicked(int id)
+void OptionsWidget_servers::recentServersPopupClicked(QAction *pAction)
 {
 	if(!g_pActiveWindow)
 		return; // doh
@@ -1492,7 +1492,7 @@ void OptionsWidget_servers::recentServersPopupClicked(int id)
 	if(!c)
 		return;
 
-	QString szItemText = m_pRecentPopup->text(id);
+    QString szItemText = pAction->text();
 	szItemText.remove(QChar('&'));
 	if(szItemText.isEmpty())
 		return;
@@ -1798,27 +1798,26 @@ void OptionsWidget_servers::commit()
 
 void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 {
-	int id;
 	QTreeWidgetItem *it=(QTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
 	bool bServer = (it && ((IrcServerOptionsTreeWidgetItem *)it)->m_pServerData);
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()));
-	m_pContextPopup->setItemEnabled(id,!bServer);
-	m_pContextPopup->insertSeparator();
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()));
-	m_pContextPopup->setItemEnabled(id,bServer);
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
-	m_pContextPopup->setItemEnabled(id,bServer);
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()));
-	m_pContextPopup->setItemEnabled(id,m_pClipboard);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
+        ->setEnabled(!bServer);
+    m_pContextPopup->addSeparator();
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
+        ->setEnabled(bServer);
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
+    m_pContextPopup->setEnabled(bServer);
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
+        ->setEnabled(m_pClipboard);
 
-	m_pContextPopup->insertSeparator();
-	//	m_pContextPopup->insertItem(__c2q(__tr("Merge list from server.ini","options")),this,SLOT(importFromIni()));
-	m_pContextPopup->insertItem(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
-	m_pContextPopup->insertSeparator();
-	m_pContextPopup->insertItem(__tr2qs_ctx("Import List","options"),m_pImportPopup);
+    m_pContextPopup->addSeparator();
+	//	m_pContextPopup->addAction(__c2q(__tr("Merge list from server.ini","options")),this,SLOT(importFromIni()));
+	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
+    m_pContextPopup->addSeparator();
+    m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
 }
 
@@ -1831,19 +1830,19 @@ void OptionsWidget_servers::importPopupAboutToShow()
 
 	if(!l)return;
 
-	int id;
+    QAction *pAction;
 
 	for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
 	{
 		if(d->icon())
-			id = m_pImportPopup->insertItem(*(d->icon()),d->visibleName());
+            pAction = m_pImportPopup->addAction(*(d->icon()),d->visibleName());
 		else
-			id = m_pImportPopup->insertItem(d->visibleName());
-		m_pImportPopup->setItemParameter(id,d->id());
+            pAction = m_pImportPopup->addAction(d->visibleName());
+        pAction->setData(d->id());
 	}
 }
 
-void OptionsWidget_servers::importPopupActivated(int id)
+void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 {
 	// ensure that we have all the modules : they could have been unloaded while the popup was displayed
 	g_pModuleManager->loadModulesByCaps("serverimport");
@@ -1866,7 +1865,10 @@ void OptionsWidget_servers::importPopupActivated(int id)
 		m_pImportFilter = 0;
 	}
 
-	id = m_pImportPopup->itemParameter(id);
+    bool bOk=false;
+    int id = pAction->data().toInt(&bOk);
+    if(!bOk)
+        return;
 
 	m_pImportFilter = (KviMexServerImport *)KviModuleExtensionManager::instance()->allocateExtension("serverimport",id,0);
 

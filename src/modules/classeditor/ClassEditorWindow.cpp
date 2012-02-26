@@ -221,7 +221,7 @@ ClassEditorWidget::ClassEditorWidget(QWidget * pParent)
 	m_pEditor->setFocus();
 	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
 	connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
-	m_pContextPopup = new KviTalPopupMenu(this);
+    m_pContextPopup = new QMenu(this);
 
 	oneTimeSetup();
 
@@ -879,80 +879,79 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	m_pLastClickedItem = (ClassEditorTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
 
-	int iId;
-	iId = m_pContextPopup->insertItem(
+    QAction *pAction = m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 		__tr2qs_ctx("Add Namespace","editor"),
 		this,SLOT(newNamespace()));
 	if(!m_pLastClickedItem)
-		m_pContextPopup->setItemEnabled(iId,true);
+        pAction->setEnabled(true);
 	else
-		m_pContextPopup->setItemEnabled(iId,m_pLastClickedItem->isNamespace());
+        pAction->setEnabled(m_pLastClickedItem->isNamespace());
 
-	iId = m_pContextPopup->insertItem(
+    pAction = m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Class)),
 		__tr2qs_ctx("Add Class","editor"),
 		this,SLOT(newClass()));
 	if(!m_pLastClickedItem)
-		m_pContextPopup->setItemEnabled(iId,true);
+        pAction->setEnabled(true);
 	else
-		m_pContextPopup->setItemEnabled(iId,m_pLastClickedItem->isNamespace());
+        pAction->setEnabled(m_pLastClickedItem->isNamespace());
 
-	iId = m_pContextPopup->insertItem(
+    pAction = m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Function)),
 		__tr2qs_ctx("Add Member Function","editor"),
 		this,SLOT(newMemberFunction()));
 	if(!m_pLastClickedItem)
-		m_pContextPopup->setItemEnabled(iId,false);
+        pAction->setEnabled(false);
 	else
-		m_pContextPopup->setItemEnabled(iId,m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
+        pAction->setEnabled(m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
 
 	bool bHasItems = m_pTreeWidget->topLevelItemCount();
 	bool bHasSelected = hasSelectedItems();
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	iId = m_pContextPopup->insertItem(
+    pAction = m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 		__tr2qs_ctx("Remove Selected","editor"),
 		this,SLOT(removeSelectedItems()));
-	m_pContextPopup->setItemEnabled(iId,bHasSelected);
+    pAction->setEnabled(bHasSelected);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 		__tr2qs_ctx("Export Selected...","editor"),
 		this,SLOT(exportSelected()));
-	m_pContextPopup->setItemEnabled(iId,bHasSelected);
+    pAction->setEnabled(bHasSelected);
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 		__tr2qs_ctx("Export Selected in singles files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
-	m_pContextPopup->setItemEnabled(iId,bHasSelected);
+    pAction->setEnabled(bHasSelected);
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export All...","editor"),
 			this,SLOT(exportAll()));
-	m_pContextPopup->setItemEnabled(iId,bHasItems);
+    pAction->setEnabled(bHasItems);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
 			__tr2qs_ctx("Find In Classes...","editor"),
 			this,SLOT(slotFind()));
-	m_pContextPopup->setItemEnabled(iId,bHasItems);
+    pAction->setEnabled(bHasItems);
 
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 			__tr2qs_ctx("Collapse All Items","editor"),
 			this,SLOT(slotCollapseItems()));
 
-	m_pContextPopup->setItemEnabled(iId,bHasItems);
+    pAction->setEnabled(bHasItems);
 	m_pContextPopup->popup(m_pTreeWidget->mapToGlobal(pnt));
 }
 

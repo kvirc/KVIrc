@@ -33,7 +33,7 @@
 #include "kvi_settings.h"
 #include "KviOptions.h"
 #include "KviTalGroupBox.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalToolTip.h"
 
 #include <QLabel>
@@ -140,7 +140,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	layout()->setRowStretch(0,1);
 	layout()->setColumnStretch(0,1);
 
-	m_pContextPopup = new KviTalPopupMenu(this);
+    m_pContextPopup = new QMenu(this);
 }
 
 OptionsWidget_proxy::~OptionsWidget_proxy()
@@ -323,8 +323,9 @@ void OptionsWidget_proxy::customContextMenuRequested(const QPoint &pos)
 {
 	QTreeWidgetItem *it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
-	m_pContextPopup->setItemEnabled(m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent())),it);
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent()))
+            ->setEnabled(it);
 	m_pContextPopup->popup(QCursor::pos());
 }
 

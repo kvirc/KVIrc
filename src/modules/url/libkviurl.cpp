@@ -36,7 +36,7 @@
 #include "KviWindowListBase.h"
 #include "KviPointerList.h"
 #include "KviKvsEventManager.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviWindow.h"
 #include "KviOptions.h"
 #include "KviQString.h"
@@ -170,19 +170,19 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 	//m_pUrlList = new KviListView(this,"list");
 	KviConfigurationFile cfg(szConfigPath,KviConfigurationFile::Read);
 /*
-	KviTalPopupMenu *pop;
+    QMenu *pop;
 
-	pop = new KviTalPopupMenu(this);
-	pop->insertItem(__tr2qs("&Configure"),this,SLOT(config()));
-// 	pop->insertItem(__tr2qs("&Help"),this,SLOT(help()));
-	pop->insertItem(__tr2qs("Clo&se"),this,SLOT(close_slot()));
+    pop = new QMenu(this);
+	pop->addAction(__tr2qs("&Configure"),this,SLOT(config()));
+// 	pop->addAction(__tr2qs("&Help"),this,SLOT(help()));
+	pop->addAction(__tr2qs("Clo&se"),this,SLOT(close_slot()));
 	pop->setTitle(__tr2qs("&Module"));
 	m_pMenuBar->addMenu(pop);
 
-	pop = new KviTalPopupMenu(this);
-	pop->insertItem(__tr2qs("&Load"),this,SLOT(loadList()));
-	pop->insertItem(__tr2qs("&Save"),this,SLOT(saveList()));
-	pop->insertItem(__tr2qs("&Clear"),this,SLOT(clear()));
+    pop = new QMenu(this);
+	pop->addAction(__tr2qs("&Load"),this,SLOT(loadList()));
+	pop->addAction(__tr2qs("&Save"),this,SLOT(saveList()));
+	pop->addAction(__tr2qs("&Clear"),this,SLOT(clear()));
 	pop->setTitle(__tr2qs("&List"));
 	m_pMenuBar->addMenu(pop);
 */
@@ -317,11 +317,11 @@ void UrlDialog::dblclk_url(QTreeWidgetItem *item, int)
 void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 {
 	m_szUrl = item->text(0);
-	KviTalPopupMenu p(0,"menu");
-	p.insertItem(__tr2qs("&Remove"),this,SLOT(remove()));
-// 	p.insertItem(__tr2qs("&Find Text"),this,SLOT(findtext()));
-	p.insertSeparator();
-	m_pListPopup = new KviTalPopupMenu(0,"list");
+    QMenu p("menu", 0);
+	p.addAction(__tr2qs("&Remove"),this,SLOT(remove()));
+// 	p.addAction(__tr2qs("&Find Text"),this,SLOT(findtext()));
+    p.addSeparator();
+    m_pListPopup = new QMenu("list", 0);
 
 	for(KviWindow *w=g_pMainWindow->windowList()->first();w;w=g_pMainWindow->windowList()->next())
 	{
@@ -332,15 +332,15 @@ void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 			m_pListPopup->addAction(w->plainTextCaption());
 		}
 	}
-	p.insertItem(__tr2qs("&Say to Window"),m_pListPopup);
+    p.addAction(__tr2qs("&Say to Window"))->setMenu(m_pListPopup);
 	connect(m_pListPopup,SIGNAL(triggered(QAction *)), this, SLOT(sayToWin(QAction *)));
 	p.exec(point);
 }
 
 void UrlDialog::contextMenu(const QPoint &point)
 {
-	KviTalPopupMenu p(0,"contextmenu");
-	p.insertItem(__tr2qs("Configure"),this,SLOT(config()));
+    QMenu p("contextmenu", 0);
+	p.addAction(__tr2qs("Configure"),this,SLOT(config()));
 	p.exec(point);
 }
 

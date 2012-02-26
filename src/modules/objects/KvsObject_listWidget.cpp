@@ -106,7 +106,7 @@ const char * const itemflags_tbl[] = {
 		Returns '1' if the eventual item check box is checked, '0' otherwise.[br]
 		!fn: <string> $selectionMode()
 		Returns the current selection mode
-		!fn: $insertItem(<text:string>, <index:uint>)
+		!fn: $addAction(<text:string>, <index:uint>)
 		Inserts a text item at position <index>. If index is negative or
 		not specified the item is appended.
 		!fn: $changeItem(<text:string>, <index:uint>)
@@ -156,7 +156,7 @@ const char * const itemflags_tbl[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_listWidget,"listbox","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,addAction)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertWidgetItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,changeItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,removeItem)
@@ -214,7 +214,7 @@ bool KvsObject_listWidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,insertItem)
+KVSO_CLASS_FUNCTION(listWidget,addAction)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iRow;
@@ -223,7 +223,7 @@ KVSO_CLASS_FUNCTION(listWidget,insertItem)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETER("index",KVS_PT_INT,KVS_PF_OPTIONAL,iRow)
 	KVSO_PARAMETERS_END(c)
-	if (c->parameterCount()==2) ((QListWidget *)widget())->insertItem(iRow, szText);
+    if (c->parameterCount()==2) ((QListWidget *)widget())->insertItem(iRow, szText);
 	else ((QListWidget *)widget())->addItem(szText);
 	return true;
 }

@@ -795,11 +795,11 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	b->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	g->addWidget(b,1,0);
 
-	KviTalPopupMenu * pop = new KviTalPopupMenu(b);
-	pop->insertItem(__tr2qs_ctx("&Open...","editor"),this,SLOT(loadFromFile()));
-	pop->insertItem(__tr2qs_ctx("&Save As...","editor"),this,SLOT(saveToFile()));
-	pop->insertSeparator();
-	pop->insertItem(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
+	QMenu * pop = new QMenu(b);
+	pop->addAction(__tr2qs_ctx("&Open...","editor"),this,SLOT(loadFromFile()));
+	pop->addAction(__tr2qs_ctx("&Save As...","editor"),this,SLOT(saveToFile()));
+	pop->addSeparator();
+	pop->addAction(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
 	b->setMenu(pop);
 	b->setPopupMode(QToolButton::InstantPopup);
 

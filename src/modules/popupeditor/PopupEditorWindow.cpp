@@ -184,7 +184,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 : QWidget(par)
 {
 	m_pLastSelectedItem = 0;
-	m_pContextPopup = new KviTalPopupMenu(this);
+    m_pContextPopup = new QMenu(this);
 	m_pClipboard = 0;
 	m_pTestPopup = 0;
 
@@ -380,85 +380,84 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 		bIsMenu = ((PopupTreeWidgetItem *)it)->m_type == PopupTreeWidgetItem::Menu;
 	}
 
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Separator Below","editor"),this,SLOT(contextNewSeparatorBelow()));
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Separator Above","editor"),this,SLOT(contextNewSeparatorAbove())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Separator Inside","editor"),this,SLOT(contextNewSeparatorInside())),it && bIsMenu);
+	m_pContextPopup->addAction(__tr2qs_ctx("New Separator Below","editor"),this,SLOT(contextNewSeparatorBelow()));
+    m_pContextPopup->addAction(__tr2qs_ctx("New Separator Above","editor"),this,SLOT(contextNewSeparatorAbove()))
+            ->setEnabled(it);
+    m_pContextPopup->addAction(__tr2qs_ctx("New Separator Inside","editor"),this,SLOT(contextNewSeparatorInside()))
+            ->setEnabled(it && bIsMenu);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Label Below","editor"),this,SLOT(contextNewLabelBelow()));
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Label Above","editor"),this,SLOT(contextNewLabelAbove())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Label Inside","editor"),this,SLOT(contextNewLabelInside())),it && bIsMenu);
+	m_pContextPopup->addAction(__tr2qs_ctx("New Label Below","editor"),this,SLOT(contextNewLabelBelow()));
+    m_pContextPopup->addAction(__tr2qs_ctx("New Label Above","editor"),this,SLOT(contextNewLabelAbove()))
+            ->setEnabled(it);
+    m_pContextPopup->addAction(__tr2qs_ctx("New Label Inside","editor"),this,SLOT(contextNewLabelInside()))
+            ->setEnabled(it && bIsMenu);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Item Below","editor"),this,SLOT(contextNewItemBelow()));
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Item Above","editor"),this,SLOT(contextNewItemAbove())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Item Inside","editor"),this,SLOT(contextNewItemInside())),it && bIsMenu);
+	m_pContextPopup->addAction(__tr2qs_ctx("New Item Below","editor"),this,SLOT(contextNewItemBelow()));
+    m_pContextPopup->addAction(__tr2qs_ctx("New Item Above","editor"),this,SLOT(contextNewItemAbove()))
+            ->setEnabled(it);
+    m_pContextPopup->addAction(__tr2qs_ctx("New Item Inside","editor"),this,SLOT(contextNewItemInside()))
+            ->setEnabled(it && bIsMenu);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Menu Below","editor"),this,SLOT(contextNewMenuBelow()));
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Menu Above","editor"),this,SLOT(contextNewMenuAbove())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New Menu Inside","editor"),this,SLOT(contextNewMenuInside())),it && bIsMenu);
+	m_pContextPopup->addAction(__tr2qs_ctx("New Menu Below","editor"),this,SLOT(contextNewMenuBelow()));
+    m_pContextPopup->addAction(__tr2qs_ctx("New Menu Above","editor"),this,SLOT(contextNewMenuAbove()))
+            ->setEnabled(it);
+    m_pContextPopup->addAction(__tr2qs_ctx("New Menu Inside","editor"),this,SLOT(contextNewMenuInside()))
+            ->setEnabled(it && bIsMenu);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs_ctx("New External Menu Below","editor"),this,SLOT(contextNewExtMenuBelow()));
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New External Menu Above","editor"),this,SLOT(contextNewExtMenuAbove())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(__tr2qs_ctx("New External Menu Inside","editor"),this,SLOT(contextNewExtMenuInside())),it && bIsMenu);
+	m_pContextPopup->addAction(__tr2qs_ctx("New External Menu Below","editor"),this,SLOT(contextNewExtMenuBelow()));
+    m_pContextPopup->addAction(__tr2qs_ctx("New External Menu Above","editor"),this,SLOT(contextNewExtMenuAbove()))
+            ->setEnabled(it);
+    m_pContextPopup->addAction(__tr2qs_ctx("New External Menu Inside","editor"),this,SLOT(contextNewExtMenuInside()))
+            ->setEnabled(it && bIsMenu);
 
-	m_pContextPopup->insertSeparator();
+    m_pContextPopup->addSeparator();
 
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),
 		__tr2qs_ctx("Cu&t","editor"),
-		this,SLOT(contextCut())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
+        this,SLOT(contextCut()))
+            ->setEnabled(it);
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),
 		__tr2qs_ctx("&Copy","editor"),
-		this,SLOT(contextCopy())),it);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
+        this,SLOT(contextCopy()))
+            ->setEnabled(it);
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-		__tr2qs_ctx("&Paste Below","editor"),this,SLOT(contextPasteBelow())),
-		m_pClipboard);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
+        __tr2qs_ctx("&Paste Below","editor"),this,SLOT(contextPasteBelow()))
+            ->setEnabled(m_pClipboard);
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-		__tr2qs_ctx("Paste Above","editor"),this,SLOT(contextPasteAbove())),it && m_pClipboard);
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
+        __tr2qs_ctx("Paste Above","editor"),this,SLOT(contextPasteAbove()))
+            ->setEnabled(it && m_pClipboard);
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-		__tr2qs_ctx("Paste Inside","editor"),this,SLOT(contextPasteInside())),it && bIsMenu && m_pClipboard);
+        __tr2qs_ctx("Paste Inside","editor"),this,SLOT(contextPasteInside()))
+            ->setEnabled(it && bIsMenu && m_pClipboard);
 
 	bool bSeparatorInserted = false;
 
 //	if(!findPrologue(parentMenu))
 //	{
-		m_pContextPopup->insertSeparator();
+        m_pContextPopup->addSeparator();
 		bSeparatorInserted = true;
-		m_pContextPopup->insertItem(
+		m_pContextPopup->addAction(
 				*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
 				__tr2qs_ctx("New Menu Prologue","editor"),this,SLOT(contextNewPrologue()));
 //	}
 
 //	if(!findEpilogue(parentMenu))
 //	{
-		if(!bSeparatorInserted)m_pContextPopup->insertSeparator();
-		m_pContextPopup->insertItem(
+        if(!bSeparatorInserted)m_pContextPopup->addSeparator();
+		m_pContextPopup->addAction(
 				*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
 				__tr2qs_ctx("New Menu Epilogue","editor"),this,SLOT(contextNewEpilogue()));
 //	}
@@ -1053,8 +1052,8 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 	m_bOneTimeSetupDone = false;
 	m_pLastEditedItem = 0;
 
-	m_pContextPopup = new KviTalPopupMenu(this);
-	m_pEmptyContextPopup = new KviTalPopupMenu(this);
+    m_pContextPopup = new QMenu(this);
+    m_pEmptyContextPopup = new QMenu(this);
 
 	spl->setStretchFactor (0,20);
 	spl->setStretchFactor (1,80);
@@ -1142,28 +1141,28 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint &pos)
 	{
 		m_pContextPopup->clear();
 
-		m_pContextPopup->insertItem(
+		m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
 			__tr2qs_ctx("&New Popup","editor"),
 			this,SLOT(newPopup()));
 
-		m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
+		m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 			__tr2qs_ctx("Re&move Popup","editor"),
-			this,SLOT(removeCurrentPopup())),it);
+            this,SLOT(removeCurrentPopup()))
+                    ->setEnabled(it);
 
-		m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
+		m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("&Export Popup To...","editor"),
-			this,SLOT(exportCurrentPopup())),it);
+            this,SLOT(exportCurrentPopup()))
+                ->setEnabled(it);
 
 		m_pContextPopup->popup(QCursor::pos());
 	} else {
 		m_pEmptyContextPopup->clear();
 
-		m_pEmptyContextPopup->insertItem(
+		m_pEmptyContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
 			__tr2qs_ctx("&New Popup","editor"),
 			this,SLOT(newPopup()));

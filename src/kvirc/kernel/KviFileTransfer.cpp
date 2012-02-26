@@ -28,7 +28,7 @@
 
 #include "KviApplication.h"
 
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 static KviFileTransferManager * g_pFileTransferManager = 0;
 

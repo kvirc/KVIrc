@@ -26,7 +26,7 @@
 
 #include "KviWindow.h"
 #include "KviCString.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
@@ -90,7 +90,7 @@ public:
 	KviScriptEditor * m_pEditor;
 	EventEditorTreeWidget       * m_pTreeWidget;
 	QLineEdit       * m_pNameEditor;
-	KviTalPopupMenu      * m_pContextPopup;
+	QMenu      * m_pContextPopup;
 	EventEditorHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool              m_bOneTimeSetupDone;
 public:

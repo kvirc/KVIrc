@@ -33,7 +33,7 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviHeapObject.h"
 #include "KviKvsObjectClass.h"
 
@@ -286,7 +286,7 @@ public:
 
 	ClassEditorTreeWidgetItem * m_pLastEditedItem;
 	ClassEditorTreeWidgetItem * m_pLastClickedItem;
-	KviTalPopupMenu              * m_pContextPopup;
+	QMenu              * m_pContextPopup;
 	QSplitter                    * m_pSplitter;
 	QString                        m_szDir;
 	bool                           m_bSaving;

@@ -351,7 +351,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	{
 		QString tmp;
 		tmp.setNum(i);
-		m_pAgeCombo->insertItem(m_pAgeCombo->count(),tmp);
+        m_pAgeCombo->insertItem(m_pAgeCombo->count(),tmp);
 	}
 
 	bool bOk;

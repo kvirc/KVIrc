@@ -33,7 +33,7 @@
 #include <QTimer>
 
 class QPainter;
-class KviTalPopupMenu;
+class QMenu;
 
 class HttpFileTransfer : public KviFileTransfer
 {
@@ -78,7 +78,7 @@ public:
 
 	virtual void displayPaint(QPainter * p,int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(KviTalPopupMenu * m);
+	virtual void fillContextPopup(QMenu * m);
 	virtual bool active();
 	virtual QString tipText();
 	virtual QString localFileName();

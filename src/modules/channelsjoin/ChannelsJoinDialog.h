@@ -32,7 +32,7 @@
 
 #include "KviWindow.h"
 #include "KviCString.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QTreeWidget>
 #include <QDialog>
@@ -62,7 +62,7 @@ public:
 			delete m_pJoinPopup;
 	};
 protected:
-	KviTalPopupMenu                   * m_pJoinPopup;
+	QMenu                   * m_pJoinPopup;
 	/**
 	* \brief Called when the user clicks on the list
 	* \param e mouse event descriptor

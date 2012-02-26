@@ -53,7 +53,7 @@
 #include "KviControlCodes.h"
 #include "KviWindowToolWidget.h"
 #include "KviKvsScript.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviTalToolTip.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
@@ -89,11 +89,11 @@
 
 KVIRC_API KviWindow * g_pActiveWindow = 0;
 
-static KviTalPopupMenu * g_pMdiWindowSystemMainPopup = 0;
-static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
-static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
-static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
-static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
+static QMenu * g_pMdiWindowSystemMainPopup = 0;
+static QMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
+static QMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
+static QMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
+static QMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
 static QActionGroup    * g_pMdiWindowSystemTextEncodingActionGroup = 0;
 static QAction         * g_pMdiWindowSystemTextEncodingCurrentAction = 0;
 static QAction         * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
@@ -656,10 +656,10 @@ void KviWindow::createSystemTextEncodingPopup()
 	if(!g_pMdiWindowSystemTextEncodingPopup)
 	{
 		// first time called, create the menu
-		g_pMdiWindowSystemTextEncodingPopup = new KviTalPopupMenu();
-		g_pMdiWindowSystemTextEncodingPopupStandard = new KviTalPopupMenu();
-		g_pMdiWindowSystemTextEncodingPopupSmart = new KviTalPopupMenu();
-		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new KviTalPopupMenu();
+        g_pMdiWindowSystemTextEncodingPopup = new QMenu();
+        g_pMdiWindowSystemTextEncodingPopupStandard = new QMenu();
+        g_pMdiWindowSystemTextEncodingPopupSmart = new QMenu();
+        g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new QMenu();
 		g_pMdiWindowSystemTextEncodingActionGroup = new QActionGroup(g_pMdiWindowSystemTextEncodingPopup);
 
 		//default action
@@ -687,11 +687,14 @@ void KviWindow::createSystemTextEncodingPopup()
 		g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(false);
 		
 		// other first level menus
-		g_pMdiWindowSystemTextEncodingPopup->insertSeparator();
+        g_pMdiWindowSystemTextEncodingPopup->addSeparator();
 
-		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Standard"),g_pMdiWindowSystemTextEncodingPopupStandard);
-		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send Local)"),g_pMdiWindowSystemTextEncodingPopupSmart);
-		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
+        QAction * pAction = g_pMdiWindowSystemTextEncodingPopup->addAction(__tr2qs("Standard"));
+        pAction->setMenu(g_pMdiWindowSystemTextEncodingPopupStandard);
+        pAction = g_pMdiWindowSystemTextEncodingPopup->addAction(__tr2qs("Smart (Send Local)"));
+        pAction->setMenu(g_pMdiWindowSystemTextEncodingPopupSmart);
+        pAction = g_pMdiWindowSystemTextEncodingPopup->addAction(__tr2qs("Smart (Send UTF-8)"));
+        pAction->setMenu(g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
 
 		// second level menus (encoding groups)
 		QMenu * pPopupStandard[KVI_NUM_ENCODING_GROUPS];

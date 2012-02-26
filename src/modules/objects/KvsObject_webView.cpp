@@ -30,7 +30,7 @@
 #include "KvsObject_pixmap.h"
 #include "KviError.h"
 #include "KviLocale.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #if defined(COMPILE_WEBKIT_SUPPORT)
 #include <QWebView>
@@ -1199,7 +1199,7 @@ KVSO_CLASS_FUNCTION(webView,appendWebViewActionToMenu)
 		if (pix) pAction->setIcon(*pix);
 		else c->warning(__tr2qs_ctx("Icon '%Q' doesn't exist","objects"),&szIcon);
 	}
-	((KviTalPopupMenu  *)(ob->object()))->addAction(pAction);
+	((QMenu  *)(ob->object()))->addAction(pAction);
 	return true;
 }
 

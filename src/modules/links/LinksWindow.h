@@ -30,7 +30,7 @@
 #include "KviIrcServerParser.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcContext.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 #include "KviThemedTreeWidget.h"
 
 #include <QToolButton>
@@ -68,7 +68,7 @@ protected:
 	QSplitter               * m_pTopSplitter;
 	LinksListView        * m_pListView;
 	KviPointerList<KviLink> * m_pLinkList;
-	KviTalPopupMenu         * m_pHostPopup;
+	QMenu         * m_pHostPopup;
 	QString                   m_szRootServer;
 	QToolButton             * m_pRequestButton;
 	KviThemedLabel          * m_pInfoLabel;
@@ -84,7 +84,7 @@ protected:
 	virtual void getBaseLogFileName(QString &buffer);
 protected slots:
 	void showHostPopup(QTreeWidgetItem *i,const QPoint &p);
-	void hostPopupClicked(int id);
+    void hostPopupClicked(QAction *pAction);
 	void requestLinks();
 	void connectionStateChange();
 public:

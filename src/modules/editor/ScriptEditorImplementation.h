@@ -28,7 +28,7 @@
 #include "KviScriptEditor.h"
 #include "KviPointerList.h"
 #include "KviSelectors.h"
-#include "KviTalPopupMenu.h"
+#include "QMenu.h"
 
 #include <QCompleter>
 #include <QLabel>
