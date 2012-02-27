@@ -353,10 +353,7 @@ void KviMdiManager::menuActivated(QAction *pAction)
 	KviMdiChild * lpC = (KviMdiChild *) tmp.at(id);
 
 	if(!lpC) return;
-	if(lpC->state() == KviMdiChild::Minimized)
-		lpC->restore();
-
-	setActiveSubWindow(lpC);
+    showAndActivate(lpC);
 }
 
 void KviMdiManager::ensureNoMaximized(KviMdiChild * lpExclude)
