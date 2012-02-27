@@ -436,29 +436,28 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				QString mimetype = KMimeType::findByPath(szFile)->name();
 				KService::List offers = KMimeTypeTrader::self()->query(mimetype,"Application");
 
-				id = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
-				m_pLocalFilePopup->setItemParameter(id,-1);
+				pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
+				pAction->setData(-1);
 
 				m_pOpenFilePopup->clear();
 
-				int id;
 				int idx = 0;
 
 				for(KService::List::Iterator itOffers = offers.begin();
 	   				itOffers != offers.end(); ++itOffers)
 				{
-					id = m_pOpenFilePopup->addAction(
+					pAction = m_pOpenFilePopup->addAction(
 							SmallIcon((*itOffers).data()->icon()),
 							(*itOffers).data()->name()
 						);
-					m_pOpenFilePopup->setItemParameter(id,idx);
+					pAction->setData(idx);
 					idx++;
 				}
 
                 m_pOpenFilePopup->addSeparator();
 
-				id = m_pOpenFilePopup->addAction(__tr2qs_ctx("&Other...","filetransferwindow"),this,SLOT(openLocalFileWith()));
-				m_pOpenFilePopup->setItemParameter(id,-1);
+				pAction = m_pOpenFilePopup->addAction(__tr2qs_ctx("&Other...","filetransferwindow"),this,SLOT(openLocalFileWith()));
+				pAction->setData(-1);
 
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"),m_pOpenFilePopup);
                 m_pLocalFilePopup->addSeparator();
@@ -469,8 +468,8 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 
 //-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-				id = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
-				m_pLocalFilePopup->setItemParameter(id,-1);
+				pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
+				pAction->setData(-1);
                 m_pOpenFilePopup->addSeparator();
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"),this,SLOT(openLocalFileWith()));
                 m_pLocalFilePopup->addSeparator();
