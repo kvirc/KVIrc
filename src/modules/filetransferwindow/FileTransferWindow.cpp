@@ -537,7 +537,7 @@ void FileTransferWindow::openFilePopupActivated(QAction *pAction)
 {
 #ifdef COMPILE_KDE_SUPPORT
     bool bOk=false;
-    int ip = pAction->data().toInt(bOk);
+    int ip = pAction->data().toInt(&bOk);
     if(!bOk || ip < 0)
         return;
 
