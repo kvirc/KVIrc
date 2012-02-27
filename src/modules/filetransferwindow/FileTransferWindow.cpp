@@ -391,7 +391,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 	if(!m_pOpenFilePopup)
 	{
         m_pOpenFilePopup= new QMenu(this);
-		connect(m_pOpenFilePopup,SIGNAL(activated(int)),this,SLOT(openFilePopupActivated(int)));
+        connect(m_pOpenFilePopup,SIGNAL(triggered(QAction*)),this,SLOT(openFilePopupActivated(QAction*)));
 	}
 
 	m_pContextPopup->clear();
@@ -533,11 +533,13 @@ KviFileTransfer * FileTransferWindow::selectedTransfer()
 	return i->transfer();
 }
 
-void FileTransferWindow::openFilePopupActivated(int id)
+void FileTransferWindow::openFilePopupActivated(QAction *pAction)
 {
 #ifdef COMPILE_KDE_SUPPORT
-	int ip = m_pOpenFilePopup->itemParameter(id);
-	if(ip < 0)return;
+    bool bOk=false;
+    int ip = pAction->data().toInt(bOk);
+    if(!bOk || ip < 0)
+        return;
 
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
