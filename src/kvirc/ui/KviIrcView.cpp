@@ -96,7 +96,6 @@
 #include "KviIrcConnection.h"
 #include "KviMdiManager.h"
 #include "KviUserInput.h"
-#include "QMenu.h"
 #include "KviAnimatedPixmap.h"
 #include "KviPixmapUtils.h"
 #include "KviTrayIcon.h"
@@ -113,6 +112,7 @@
 #include <QScrollBar>
 #include <QFontDialog>
 #include <QByteArray>
+#include <QMenu>
 
 #include <time.h>
 

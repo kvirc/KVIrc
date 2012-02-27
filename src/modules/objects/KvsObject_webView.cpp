@@ -30,7 +30,8 @@
 #include "KvsObject_pixmap.h"
 #include "KviError.h"
 #include "KviLocale.h"
-#include "QMenu.h"
+
+#include <QMenu>
 
 #if defined(COMPILE_WEBKIT_SUPPORT)
 #include <QWebView>

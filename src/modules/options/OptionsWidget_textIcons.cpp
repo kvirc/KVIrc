@@ -32,7 +32,6 @@
 #include "KviLocale.h"
 #include "KviFileDialog.h"
 #include "kvi_fileextensions.h"
-#include "QMenu.h"
 #include "KviTalHBox.h"
 #include "KviFileUtils.h"
 
@@ -41,6 +40,7 @@
 #include <QCursor>
 #include <QHeaderView>
 #include <QWidgetAction>
+#include <QMenu>
 
 TextIconTableItem::TextIconTableItem(QTableWidget *,KviTextIcon * icon)
 : QTableWidgetItem(QString(),Qt::ItemIsEditable)

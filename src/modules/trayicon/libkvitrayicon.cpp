@@ -41,7 +41,6 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviOptions.h"
 #include "KviIrcView.h"
-#include "QMenu.h"
 
 #include <QPixmap>
 #include <QPainter>
@@ -49,6 +48,7 @@
 #include <QEvent>
 #include <QRegExp>
 #include <QWidgetAction>
+#include <QMenu>
 
 #include <stdlib.h>
 #include <time.h>

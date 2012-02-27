@@ -68,7 +68,6 @@
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
 #include "KviTalHBox.h"
-#include "QMenu.h"
 #include "KviNickColors.h"
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -82,8 +81,8 @@
 #include <QCloseEvent>
 #include <QTextDocument>
 #include <QRegExp>
-#include <QDebug>
 #include <QTextDocument> // for Qt::escape_command
+#include <QMenu>
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"

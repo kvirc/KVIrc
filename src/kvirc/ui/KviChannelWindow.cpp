@@ -54,7 +54,6 @@
 #include "KviPointerHashTable.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
-#include "QMenu.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
@@ -77,6 +76,7 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 #include <QTextDocument> // for Qt::escape_command
+#include <QMenu>
 
 // FIXME: #warning "+a Anonymous channel mode!"
 // FIXME: #warning "OnChannelFlood event...."

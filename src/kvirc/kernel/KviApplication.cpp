@@ -83,9 +83,9 @@
 #include "KviKvsEventTriggers.h"
 #include "kvi_sourcesdate.h"
 #include "KviPointerHashTable.h"
-#include "QMenu.h"
 #include "KviQueryWindow.h"
 
+#include <QMenu>
 
 #ifndef COMPILE_NO_IPC
 	#include "KviIpcSentinel.h"

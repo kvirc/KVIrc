@@ -33,7 +33,6 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "QMenu.h"
 #include "KviHeapObject.h"
 #include "KviKvsObjectClass.h"
 
@@ -43,6 +42,7 @@
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QTreeWidget>
+#include <QMenu>
 
 class QLineEdit;
 class QStringList;

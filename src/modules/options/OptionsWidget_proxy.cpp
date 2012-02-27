@@ -33,7 +33,6 @@
 #include "kvi_settings.h"
 #include "KviOptions.h"
 #include "KviTalGroupBox.h"
-#include "QMenu.h"
 #include "KviTalToolTip.h"
 
 #include <QLabel>
@@ -42,6 +41,7 @@
 #include <QCursor>
 #include <QIcon>
 #include <QToolButton>
+#include <QMenu>
 
 
 ProxyOptionsTreeWidgetItem::ProxyOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,KviProxy * prx)

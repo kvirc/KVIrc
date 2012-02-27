@@ -32,10 +32,9 @@
 #include "KviKvsScript.h"
 #include "KviKvsRunTimeContext.h"
 
-#include "QMenu.h"
-
 #include <QLabel>
 #include <QPixmap>
+#include <QMenu>
 
 class KviKvsPopupMenu;
 

@@ -26,11 +26,11 @@
 
 #include "KviWindow.h"
 #include "KviCString.h"
-#include "QMenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QTreeWidget>
+#include <QMenu>
 
 class KviScriptEditor;
 

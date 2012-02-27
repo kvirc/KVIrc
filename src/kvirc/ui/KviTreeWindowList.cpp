@@ -29,7 +29,6 @@
 #include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "KviOptions.h"
-#include "QMenu.h"
 #include "KviWindow.h"
 #include "KviTreeWindowList.h"
 #include "KviPixmapUtils.h"
@@ -43,6 +42,7 @@
 #include <QScrollBar>
 #include <QStyleOptionViewItemV4>
 #include <QStyle>
+#include <QMenu>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;

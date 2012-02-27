@@ -30,7 +30,6 @@
 #include "KviApplication.h"
 #include "KviActionManager.h"
 #include "KviCustomToolBarDescriptor.h"
-#include "QMenu.h"
 
 #include <QCursor>
 #include <QLayout>
@@ -41,6 +40,7 @@
 #include <QStyleOption>
 #include <QDragEnterEvent>
 #include <QMimeData>
+#include <QMenu>
 
 static QAction * g_pDraggedAction = 0;
 

@@ -36,7 +36,6 @@
 #include "KviWindowListBase.h"
 #include "KviPointerList.h"
 #include "KviKvsEventManager.h"
-#include "QMenu.h"
 #include "KviWindow.h"
 #include "KviOptions.h"
 #include "KviQString.h"
@@ -50,6 +49,7 @@
 #include <QTextStream>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QMenu>
 
 static KviUrlAction * g_pUrlAction = 0;
 

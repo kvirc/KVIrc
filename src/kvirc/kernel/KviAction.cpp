@@ -30,9 +30,9 @@
 #include "KviWindow.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
-#include "QMenu.h"
 
 #include <QAction>
+#include <QMenu>
 
 KviActionCategory::KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
 : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)

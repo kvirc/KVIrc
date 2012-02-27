@@ -31,12 +31,12 @@
 #include "KviIrcServerParser.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcContext.h"
-#include "QMenu.h"
 #include "KviThemedTreeWidget.h"
 
 #include <QToolButton>
 #include <QLineEdit>
 #include <QItemDelegate>
+#include <QMenu>
 
 class KviThemedLabel;
 class KviThemedLineEdit;

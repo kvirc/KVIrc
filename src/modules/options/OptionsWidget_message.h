@@ -26,7 +26,6 @@
 
 #include "KviOptionsWidget.h"
 #include "KviMessageTypeSettings.h"
-#include "QMenu.h"
 #include "KviIconManager.h"
 
 #include <QTreeWidget>
@@ -35,6 +34,7 @@
 #include <QToolButton>
 #include <QPainter>
 #include <QColorGroup>
+#include <QMenu>
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message KviIconManager::Messages
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_message __tr2qs_no_lookup("Text")

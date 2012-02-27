@@ -53,7 +53,6 @@
 #include "KviControlCodes.h"
 #include "KviWindowToolWidget.h"
 #include "KviKvsScript.h"
-#include "QMenu.h"
 #include "KviTalToolTip.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
@@ -73,6 +72,7 @@
 #include <QCloseEvent>
 #include <QIcon>
 #include <QActionGroup>
+#include <QMenu>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"

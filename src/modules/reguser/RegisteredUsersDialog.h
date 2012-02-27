@@ -30,13 +30,13 @@
 #include "KviPointerHashTable.h"
 #include <QTreeWidget>
 #include "KviTalListWidget.h"
-#include "QMenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QStyledItemDelegate>
 #include <QTextDocument>
+#include <QMenu>
 
 class  KviRegisteredUsersListView : public QTreeWidget
 {

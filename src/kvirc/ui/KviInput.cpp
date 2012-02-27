@@ -41,7 +41,6 @@
 #include "KviHistoryWindow.h"
 #include "KviUserInput.h"
 #include "KviShortcut.h"
-#include "QMenu.h"
 #include "KviTalHBox.h"
 #include "KviTalToolTip.h"
 
@@ -58,6 +57,7 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QHBoxLayout>
+#include <QMenu>
 
 #include <ctype.h>
 #include <stdlib.h>

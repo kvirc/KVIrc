@@ -29,7 +29,6 @@
 #include "KviSelectors.h"
 #include "KviPointerHashTable.h"
 #include <QTreeWidget>
-#include "QMenu.h"
 #include <KviTalTabDialog.h>
 
 #include <QListWidget>
@@ -38,6 +37,7 @@
 #include <QPushButton>
 #include <QTableWidget>
 #include <QCheckBox>
+#include <QMenu>
 
 class KviRegisteredUser;
 

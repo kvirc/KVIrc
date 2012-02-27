@@ -37,7 +37,6 @@
 #include "KviModuleManager.h"
 #include "KviStatusBarApplet.h"
 #include "KviDynamicToolTip.h"
-#include "QMenu.h"
 
 #include <QPainter>
 #include <QStyle>
@@ -51,6 +50,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QWidgetAction>
+#include <QMenu>
 
 KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
 : QStatusBar(pFrame)

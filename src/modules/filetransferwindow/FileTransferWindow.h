@@ -33,11 +33,11 @@
 #include "KviFileTransfer.h"
 #include "KviDynamicToolTip.h"
 #include "KviTalTableWidget.h"
-#include "QMenu.h"
 #include "KviTalIconAndRichTextItemDelegate.h"
 
 #include <QTimer>
 #include <QPixmap>
+#include <QMenu>
 
 class FileTransferItem;
 

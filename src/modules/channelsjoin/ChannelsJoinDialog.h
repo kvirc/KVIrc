@@ -32,10 +32,10 @@
 
 #include "KviWindow.h"
 #include "KviCString.h"
-#include "QMenu.h"
 
 #include <QTreeWidget>
 #include <QDialog>
+#include <QMenu>
 
 class QCheckBox;
 class QPushButton;

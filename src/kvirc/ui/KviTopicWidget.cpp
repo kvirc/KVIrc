@@ -42,7 +42,6 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviHtmlGenerator.h"
 #include "KviTalToolTip.h"
-#include "QMenu.h"
 #include "KviThemedLabel.h"
 
 #include <QLineEdit>
@@ -53,6 +52,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include <QTextDocument> // for Qt::escape
+#include <QMenu>
 
 extern KviColorWindow * g_pColorWindow;
 

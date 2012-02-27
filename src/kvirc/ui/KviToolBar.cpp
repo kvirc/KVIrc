@@ -26,12 +26,12 @@
 #include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
-#include "QMenu.h"
 #include "KviOptions.h"
 
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QMenu>
 
 static QMenu * g_pToolBarContextPopup     = 0;
 static QMenu * g_pToolBarWindowsPopup     = 0;

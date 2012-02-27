@@ -34,7 +34,6 @@
 #include "KviPointerHashTable.h"
 #include "KviTalVBox.h"
 #include "KviTalToolTip.h"
-#include "QMenu.h"
 #include "KviTalGroupBox.h"
 
 #include <QLayout>
@@ -49,6 +48,7 @@
 #include <QHeaderView>
 #include <QDesktopWidget>
 #include <QStackedWidget>
+#include <QMenu>
 
 //FIXME: some headers must be hidden
 

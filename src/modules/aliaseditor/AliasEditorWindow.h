@@ -27,7 +27,6 @@
 #include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "QMenu.h"
 #include "KviHeapObject.h"
 
 #include <QWidget>
@@ -36,7 +35,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QTreeWidget>
-
+#include <QMenu>
 
 class QSplitter;
 class KviScriptEditor;

@@ -37,7 +37,6 @@
 #include "KviQString.h"
 #include "KviApplication.h"
 #include "KviFileUtils.h"
-#include "QMenu.h"
 #include "KviControlCodes.h"
 
 #include <QList>
@@ -55,6 +54,7 @@
 #include <QTextStream>
 #include <QTabWidget>
 #include <QCheckBox>
+#include <QMenu>
 
 #include <limits.h> //for INT_MAX
 

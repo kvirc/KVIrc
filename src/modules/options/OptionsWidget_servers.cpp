@@ -53,7 +53,6 @@
 #include "KviProxyDataBase.h"
 #include "KviKvsScript.h"
 #include "KviPointerHashTable.h"
-#include "QMenu.h"
 #include "KviTalToolTip.h"
 
 #include <QLineEdit>
@@ -66,6 +65,7 @@
 #include <QHeaderView>
 #include <QIcon>
 #include <QShortcut>
+#include <QMenu>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) || defined(COMPILE_ON_MAC)
 	#include <QStyleFactory>

@@ -39,7 +39,6 @@
 #include "KviMainWindow.h"
 #include "KviMenuBar.h"
 #include "KviApplication.h"
-#include "QMenu.h"
 #include "KviTalHBox.h"
 
 #include <QMenuBar>
@@ -50,6 +49,7 @@
 #include <QMouseEvent>
 #include <QLabel>
 #include <QToolButton>
+#include <QMenu>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>

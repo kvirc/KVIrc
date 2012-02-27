@@ -30,7 +30,6 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KviIconManager.h"
-#include "QMenu.h"
 
 #include <QCursor>
 #include <QMenu>

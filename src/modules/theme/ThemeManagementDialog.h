@@ -27,7 +27,6 @@
 #include "KviOptionsWidget.h"
 #include "KviPointerList.h"
 #include "KviTheme.h"
-#include "QMenu.h"
 #include "KviTalWizard.h"
 #include "KviTalListWidget.h"
 
@@ -38,6 +37,7 @@
 #include <QListWidget>
 #include <QItemDelegate>
 #include <QToolButton>
+#include <QMenu>
 #include "kvi_settings.h"
 #if defined(COMPILE_WEBKIT_SUPPORT) || defined(Q_MOC_RUN)
 #include "WebThemeInterfaceDialog.h"

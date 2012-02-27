@@ -33,9 +33,9 @@
 #include "KviKvsEventTriggers.h"
 #include "KviConsoleWindow.h"
 #include "KviKvsScript.h"
-#include "QMenu.h"
 
 #include <QPainter>
+#include <QMenu>
 
 static KviPointerList<HttpFileTransfer> * g_pHttpFileTransfers = 0;
 static QPixmap * g_pHttpIcon = 0;

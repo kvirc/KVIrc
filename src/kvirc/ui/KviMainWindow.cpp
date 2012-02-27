@@ -58,7 +58,6 @@
 #include "KviIrcView.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
-#include "QMenu.h"
 #include "KviTextIconManager.h"
 #include "KviShortcut.h"
 
@@ -76,6 +75,7 @@
 #include <QCloseEvent>
 #include <QShortcut>
 #include <QFile>
+#include <QMenu>
 
 #include <time.h>
 

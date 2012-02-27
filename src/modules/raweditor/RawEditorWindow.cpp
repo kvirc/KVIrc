@@ -40,7 +40,6 @@
 #include "KviKvsEventManager.h"
 #include "KviKvsEventHandler.h"
 #include "KviTalVBox.h"
-#include "QMenu.h"
 
 #include <QMessageBox>
 #include <QSplitter>
@@ -48,6 +47,7 @@
 #include <QToolTip>
 #include <QInputDialog>
 #include <QPushButton>
+#include <QMenu>
 
 extern RawEditorWindow * g_pRawEditorWindow;
 

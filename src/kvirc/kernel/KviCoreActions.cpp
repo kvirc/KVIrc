@@ -44,9 +44,9 @@
 #include "KviCoreActionNames.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviKvsScript.h"
-#include "QMenu.h"
 
 #include <QObject>
+#include <QMenu>
 
 void register_core_actions(KviActionManager * m)
 {

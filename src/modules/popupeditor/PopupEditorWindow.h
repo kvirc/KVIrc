@@ -26,12 +26,12 @@
 
 #include "KviWindow.h"
 #include "KviCString.h"
-#include <QTreeWidget>
-#include "QMenu.h"
 
+#include <QTreeWidget>
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QMenu>
 
 class KviKvsPopupMenu;
 class KviKvsPopupMenuItem;

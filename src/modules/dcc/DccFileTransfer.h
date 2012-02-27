@@ -34,7 +34,6 @@
 #include "KviPointerList.h"
 #include "KviFileTransfer.h"
 #include "KviTimeUtils.h"
-#include "QMenu.h"
 #include "KviTalHBox.h"
 #include "KviTalVBox.h"
 
@@ -43,6 +42,7 @@
 #include <QFile>
 #include <QDialog>
 #include <QCheckBox>
+#include <QMenu>
 
 class QSpinBox;
 class QTimer;

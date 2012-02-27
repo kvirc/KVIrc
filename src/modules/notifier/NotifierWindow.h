@@ -30,7 +30,6 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviPointerList.h"
-#include "QMenu.h"
 #include "KviTimeUtils.h"
 
 #include <QBitmap>
@@ -44,6 +43,7 @@
 #include <QWidget>
 #include <QTabWidget>
 #include <QProgressBar>
+#include <QMenu>
 
 class QPainter;
 class KviWindow;

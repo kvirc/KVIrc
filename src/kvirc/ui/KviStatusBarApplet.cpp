@@ -46,7 +46,6 @@
 #include "KviMiscUtils.h"
 #include "KviHttpRequest.h"
 #include "KviUrl.h"
-#include "QMenu.h"
 #include "KviTalToolTip.h"
 #include "KviDataBuffer.h"
 
@@ -59,6 +58,7 @@
 #include <QFont>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QMenu>
 
 KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVisibleName, const QString & szInternalName, CreateAppletCallback pProc, const QString & szPreloadModule, const QPixmap & pixIcon)
 : KviHeapObject()

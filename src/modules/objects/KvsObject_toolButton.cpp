@@ -29,7 +29,8 @@
 
 #include "KviLocale.h"
 #include "KviIconManager.h"
-#include "QMenu.h"
+
+#include <QMenu>
 /*
 	@doc:	toolbutton
 	@keyterms:

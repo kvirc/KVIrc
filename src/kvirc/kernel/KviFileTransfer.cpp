@@ -28,7 +28,7 @@
 
 #include "KviApplication.h"
 
-#include "QMenu.h"
+#include <QMenu>
 
 static KviFileTransferManager * g_pFileTransferManager = 0;
 

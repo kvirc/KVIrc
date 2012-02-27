@@ -28,7 +28,6 @@
 #include "KviScriptEditor.h"
 #include "KviPointerList.h"
 #include "KviSelectors.h"
-#include "QMenu.h"
 
 #include <QCompleter>
 #include <QLabel>
@@ -39,6 +38,7 @@
 #include <QCheckBox>
 #include <QSyntaxHighlighter>
 #include <QByteArray>
+#include <QMenu>
 
 class QTimer;
 

@@ -42,7 +42,6 @@
 #include "KviPixmapUtils.h"
 #include "KviQString.h"
 #include "kvi_out.h"
-#include "QMenu.h"
 #include "KviTextIconWindow.h"
 #include "KviTextIconManager.h"
 #include "KviUserInput.h"
@@ -62,6 +61,7 @@
 #include <QKeyEvent>
 #include <QDragEnterEvent>
 #include <QInputContext>
+#include <QMenu>
 
 // from KviApplication.cpp
 extern QMenu         * g_pInputPopup;

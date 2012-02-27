@@ -36,11 +36,11 @@
 #include "KviParameterList.h"
 #include "KviKvsScript.h"
 #include "KviKvsVariantList.h"
-#include "QMenu.h"
 
 #include <QPushButton>
 #include <QLayout>
 #include <QLabel>
+#include <QMenu>
 
 
 extern KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList;

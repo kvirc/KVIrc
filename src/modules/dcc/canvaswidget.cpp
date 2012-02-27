@@ -27,7 +27,6 @@
 #ifdef COMPILE_DCC_CANVAS
 	#include "KviCString.h"
 	#include "KviLocale.h"
-	#include "QMenu.h"
 
 	#include <QCursor>
 	#include <QPainter>
@@ -35,6 +34,7 @@
 	#include <QLineEdit>
 	#include <QComboBox>
 	#include <QValidator>
+	#include <QMenu>
 
 	#include <math.h>
 	#include <stdlib.h>

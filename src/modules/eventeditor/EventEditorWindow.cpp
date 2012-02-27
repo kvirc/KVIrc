@@ -40,7 +40,6 @@
 #include "KviFileDialog.h"
 #include "KviKvsEventManager.h"
 #include "KviTalVBox.h"
-#include "QMenu.h"
 
 #include <QMessageBox>
 #include <QSplitter>
@@ -48,6 +47,7 @@
 #include <QToolTip>
 #include <QPushButton>
 #include <QMouseEvent>
+#include <QMenu>
 
 extern EventEditorWindow * g_pEventEditorWindow;
 

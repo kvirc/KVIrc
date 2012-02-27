@@ -31,7 +31,6 @@
 #include "KviControlCodes.h"
 #include "KviFileDialog.h"
 #include "KviKvsScript.h"
-#include "QMenu.h"
 
 #include <QLabel>
 #include <QPainter>
@@ -40,6 +39,7 @@
 #include <QPalette>
 #include <QFontDialog>
 #include <QAbstractItemView>
+#include <QMenu>
 
 KviBoolSelector::KviBoolSelector(QWidget * par,const QString & txt,bool *pOption,bool bEnabled)
 : QCheckBox(txt,par), KviSelectorInterface()

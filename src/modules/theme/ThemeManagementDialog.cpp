@@ -47,7 +47,6 @@
 #include "KviDynamicToolTip.h"
 #include "KviIconManager.h"
 #include "KviMessageBox.h"
-#include "QMenu.h"
 #include "KviTalListWidget.h"
 
 
@@ -71,6 +70,7 @@
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
 #include <QShortcut>
+#include <QMenu>
 
 extern QRect g_rectManagementDialogGeometry;
 

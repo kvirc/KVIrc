@@ -39,7 +39,6 @@
 #include "KviIconManager.h"
 #include "KviMainWindow.h"
 #include "KviWindow.h"
-#include "QMenu.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcContext.h"
@@ -47,6 +46,7 @@
 #include "KviKvsEventTriggers.h"
 
 #include <QTimer>
+#include <QMenu>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
