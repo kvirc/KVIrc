@@ -108,23 +108,19 @@ Prerequisites
   Newer OpenSSL versions from www.slproweb.com need a specific version of
   Microsoft Visual Studio 2008 runtimes to work (this sucks): so if you plan
   to create a  redistributable kvirc package, our advice is to compile
-  OpenSSL by yourself using MinGW and then use your libs.
+  OpenSSL by yourself using MinGW/MSYS and then use your libs.
 
   To compile OpenSSL by yourself:
    - download the latest source from http://www.openssl.org
-   - unpack it somewhere (say C:\Devel\OpenSSL)
-   - open a command prompt and go to C:\Devel\OpenSSL
-   - run "perl ./Configure mingw shared"
-   - run "make"
-
-   If it complains about undefined DSSPUBKEY or CERT_STORE_SOMETHING_*
-   in e_capi.c or it complains about undefined references to
-   "CryptEnumProviders*" in the linking phase then open engines/e_capi.c
-   and put
-
-     #define OPENSSL_NO_CAPIENG 1
-   
-   at the top. Then restart "make".
+   - move it somewhere inside the msys root directory (C:\MinGW\msys\1.0\)
+   - open the MinGW shell and locate the package
+   - unpack the package (you need to do it from the MinGW shell since it
+     contains symlinks)
+   - enter in the created directory
+   - run "./config shared"
+   - run "make" and then "make install"
+   - grab the entire installation directory (eg: C:\MinGW\msys\1.0\local\ssl)
+     and copy it in a more accessible path (like C:\OpenSSL)
 
   Whatever way you choose, install OpenSSL somewhere (like C:\OpenSSL)
   and remember the path.

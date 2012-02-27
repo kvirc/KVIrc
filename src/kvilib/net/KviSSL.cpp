@@ -40,6 +40,7 @@
 #include <stdio.h>
 
 #if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+    // linux, mac
 	#include <signal.h>
 #endif
 
@@ -308,9 +309,22 @@ void KviSSL::shutdown()
 {
 	if(m_pSSL)
 	{
-		#if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
-		//avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
-		//see bug #440
+        //avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
+        //see bug #440
+
+        #if defined(COMPILE_ON_OSX)
+        // SIG_IGN is ignored under osx, need to use sigprocmask
+        sigset_t x;
+        sigemptyset (&x);
+        sigaddset(&x, SIGPIPE);
+        sigprocmask(SIG_BLOCK, &x, NULL)
+
+        SSL_shutdown(m_pSSL);
+
+        sigprocmask(SIG_UNBLOCK, &x, NULL)
+
+        #elif !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+        // ignore SIGPIPE
 		signal( SIGPIPE, SIG_IGN );
 		// At least attempt to shutdown the connection gracefully
 		SSL_shutdown(m_pSSL);
