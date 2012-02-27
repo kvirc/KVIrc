@@ -48,64 +48,57 @@ KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
 	setAutoFillBackground(false);
 	m_pFrm = par;
 
+    m_pRecentServersPopup = new QMenu("recentservers",this);
+    connect(m_pRecentServersPopup,SIGNAL(aboutToShow()),this,SLOT(updateRecentServersPopup()));
+    connect(m_pRecentServersPopup,SIGNAL(triggered(QAction*)),this,SLOT(newConnectionToServer(QAction *)));
+
     QMenu * pop = new QMenu("KVIrc", this);
-	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupMainPopup()));
+    setupMainPopup(pop);
+    connect(pop,SIGNAL(aboutToShow()),this,SLOT(updateMainPopup()));
 #ifndef COMPILE_ON_MAC
 	addDefaultItem("&KVIrc",pop);
 #else
 	// Qt/Mac creates already a "KVirc" menu item on its own, and we don't like double entries ;-)
 	addDefaultItem("&IRC",pop);
+
+    // qt will automatically  move these elemnts in the application menu
+    QAction * pAction = pop->addAction("about kvirc");
+    pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
+    connect(pAction,SIGNAL(triggered(bool)), this, SLOT(actionTriggered(bool)));
+
+    ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS, pop)
 #endif //COMPILE_ON_MAC
-    m_pRecentServersPopup = new QMenu("recentservers",this);
-	connect(m_pRecentServersPopup,SIGNAL(aboutToShow()),this,SLOT(setupRecentServersPopup()));
-    connect(m_pRecentServersPopup,SIGNAL(triggered(QAction*)),this,SLOT(newConnectionToServer(QAction *)));
 
 	m_pScriptItemList = 0;
 
     pop = new QMenu("scripting",this);
-	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupScriptingPopup()));
+    setupScriptingPopup(pop);
 	addDefaultItem(__tr2qs("Scri&pting"),pop);
 
     pop = new QMenu("tools",this);
-	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupToolsPopup()));
+    setupToolsPopup(pop);
     connect(pop,SIGNAL(triggered(QAction*)),this,SLOT(toolsPopupSelected(QAction *)));
 	addDefaultItem(__tr2qs("&Tools"),pop);
 
     m_pToolbarsPopup = new QMenu("toolbars",this);
-	connect(m_pToolbarsPopup,SIGNAL(aboutToShow()),this,SLOT(setupToolbarsPopup()));
+    connect(m_pToolbarsPopup,SIGNAL(aboutToShow()),this,SLOT(updateToolbarsPopup()));
 
     pop = new QMenu("settings",this);
-	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupSettingsPopup()));
+    setupSettingsPopup(pop);
+    connect(pop,SIGNAL(aboutToShow()),this,SLOT(updateSettingsPopup()));
 	addDefaultItem(__tr2qs("&Settings"),pop);
 
 	addDefaultItem(__tr2qs("&Window"),par->mdiManager()->windowPopup());
 
     pop = new QMenu("help",this);
-	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupHelpPopup()));
+    setupHelpPopup(pop);
     connect(pop,SIGNAL(triggered(QAction*)),this,SLOT(actionTriggered(QAction*)));
 	addDefaultItem(__tr2qs("&Help"),pop);
-
-#ifdef COMPILE_ON_MAC
-    m_pHelpMenu = pop;
-    QTimer::singleShot(0, this, SLOT(createMacNativeItems()));
-#endif
 }
 
 KviMenuBar::~KviMenuBar()
 {
 	if(m_pScriptItemList)delete m_pScriptItemList;
-}
-
-void KviMenuBar::createMacNativeItems()
-{
-#ifdef COMPILE_ON_MAC
-
-    // qt will automatically  move these elemnts in the application menu
-    QAction * pAction = m_pHelpMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),"about kvirc");
-    pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
-
-    ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS, m_pHelpMenu)
-#endif
 }
 
 void KviMenuBar::addDefaultItem(const QString &text,QMenu * pop)
@@ -114,16 +107,15 @@ void KviMenuBar::addDefaultItem(const QString &text,QMenu * pop)
 	addAction(pop->menuAction());
 }
 
-void KviMenuBar::setupHelpPopup()
+void KviMenuBar::setupHelpPopup(QMenu *pop)
 {
-    QMenu * help = (QMenu *)sender();
+    QMenu * help = pop ? pop : (QMenu *)sender();
 	help->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_HELPINDEX,help)
 
     QAction *pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Help)),__tr2qs("&Help Browser (Panel)"));
     pAction->setData(KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
-
 
     pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)),__tr2qs("&Tip of the Day"));
     pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
@@ -187,17 +179,21 @@ void KviMenuBar::actionTriggered(bool)
     actionTriggered(pAction);
 }
 
-void KviMenuBar::setupSettingsPopup()
+void KviMenuBar::updateSettingsPopup()
 {
-    QMenu * opt = (QMenu *)sender();
+    m_pStatusBarAction->setChecked(m_pFrm->mainStatusBar());
+}
+
+void KviMenuBar::setupSettingsPopup(QMenu *pop)
+{
+    QMenu * opt = pop ? pop : (QMenu *)sender();
 	opt->clear();
 
     QAction *pAction = opt->addAction(__tr2qs("Toolbars"));
     pAction->setMenu(m_pToolbarsPopup);
 
-    pAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
-    pAction->setCheckable(true);
-    pAction->setChecked(m_pFrm->mainStatusBar());
+    m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
+    m_pStatusBarAction->setCheckable(true);
 
     opt->addSeparator();
 	// FIXME: #warning "Toggle these items on the fly ?"
@@ -223,9 +219,9 @@ void KviMenuBar::setupSettingsPopup()
 	//opt->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));
 }
 
-void KviMenuBar::setupScriptingPopup()
+void KviMenuBar::setupScriptingPopup(QMenu *pop)
 {
-    QMenu * script = (QMenu *)sender();
+    QMenu * script = pop ? pop : (QMenu *)sender();
 	script->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_ACTIONEDITOR,script)
@@ -243,9 +239,15 @@ void KviMenuBar::setupScriptingPopup()
 	script->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TextExclamative)),__tr2qs("Restore &Default Script..."),g_pApp,SLOT(restoreDefaultScript()));
 }
 
-void KviMenuBar::setupMainPopup()
+void KviMenuBar::updateMainPopup()
 {
-    QMenu * main = (QMenu *)sender();
+    m_pDisconnectAction->setEnabled(m_pFrm->activeContext() &&
+        m_pFrm->activeContext()->state()==KviIrcContext::Connected);
+}
+
+void KviMenuBar::setupMainPopup(QMenu *pop)
+{
+    QMenu * main = pop ? pop : (QMenu *)sender();
 	main->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT,main)
@@ -253,12 +255,8 @@ void KviMenuBar::setupMainPopup()
     QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"));
     pAction->setMenu(m_pRecentServersPopup);
 
-	if(m_pFrm->activeContext())
-		if(m_pFrm->activeContext()->state()==KviIrcContext::Connected)
-		{
-            pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),this,SLOT(actionTriggered(bool)));
-            pAction->setData(KVI_INTERNALCOMMAND_QUIT);
-		}
+    m_pDisconnectAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),this,SLOT(actionTriggered(bool)));
+    m_pDisconnectAction->setData(KVI_INTERNALCOMMAND_QUIT);
 
     main->addSeparator();
 
@@ -272,7 +270,7 @@ void KviMenuBar::setupMainPopup()
 #endif //COMPILE_ON_MAC
 }
 
-void KviMenuBar::setupRecentServersPopup()
+void KviMenuBar::updateRecentServersPopup()
 {
     QMenu * m = (QMenu *)sender();
 	g_pApp->fillRecentServersPopup(m);
@@ -299,9 +297,9 @@ void KviMenuBar::newConnectionToServer(QAction *pAction)
 	}
 }
 
-void KviMenuBar::setupToolsPopup()
+void KviMenuBar::setupToolsPopup(QMenu *pop)
 {
-    QMenu * m = (QMenu *)sender();
+    QMenu * m = pop ? pop : (QMenu *)sender();
 	if(!m)return;
 
 	m->clear();
@@ -322,7 +320,8 @@ void KviMenuBar::setupToolsPopup()
 		}
 	}
     m->addSeparator();
-	ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
+
+    ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
 	ACTION_POPUP_ITEM(KVI_COREACTION_NETWORKLINKS,m)
 	ACTION_POPUP_ITEM(KVI_COREACTION_CHANNELLIST,m)
     m->addSeparator();
@@ -358,7 +357,7 @@ void KviMenuBar::toolsPopupSelected(QAction *pAction)
         g_pModuleExtensionManager->allocateExtension("tool",idext,m_pFrm->firstConsole());
 }
 
-void KviMenuBar::setupToolbarsPopup()
+void KviMenuBar::updateToolbarsPopup()
 {
 	m_pFrm->fillToolBarsPopup(m_pToolbarsPopup);
 }

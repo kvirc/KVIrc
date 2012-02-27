@@ -467,6 +467,7 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 
 	if(!isEnabled())
         pAction->setEnabled(false);
+    registerAction(pAction);
 	return true;
 }
 

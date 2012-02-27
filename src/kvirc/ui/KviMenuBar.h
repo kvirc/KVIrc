@@ -51,11 +51,11 @@ public:
 protected:
     QMenu                       * m_pToolbarsPopup;
     QMenu                       * m_pRecentServersPopup;
-#ifdef COMPILE_ON_MAC
-    QMenu                       * m_pHelpMenu;
-#endif
 	KviMainWindow                         * m_pFrm;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
+    // Dynamic actions
+    QAction                     * m_pStatusBarAction;
+    QAction                     * m_pDisconnectAction;
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
@@ -66,18 +66,22 @@ public:
 	bool removeMenu(const QString &text);
 protected slots:
 	void menuDestroyed();
-	void setupMainPopup();
-	void setupSettingsPopup();
-	void setupHelpPopup();
-	void setupRecentServersPopup();
-	void setupScriptingPopup();
+
+    void setupMainPopup(QMenu *pop=0);
+    void setupSettingsPopup(QMenu *pop=0);
+    void setupHelpPopup(QMenu *pop=0);
+    void setupScriptingPopup(QMenu *pop=0);
+    void setupToolsPopup(QMenu *pop=0);
+
+    void updateMainPopup();
+    void updateSettingsPopup();
+    void updateRecentServersPopup();
+    void updateToolbarsPopup();
+
     void newConnectionToServer(QAction *pAction);
-	void setupToolbarsPopup();
-	void setupToolsPopup();
     void toolsPopupSelected(QAction *pAction);
     void actionTriggered(QAction *pAction);
     void actionTriggered(bool);
-    void createMacNativeItems();
 };
 
 #endif //_KVI_MENUBAR_H_

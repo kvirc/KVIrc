@@ -169,12 +169,20 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_GENERALOPTIONS,
 		"options.dialog -t",
-		__tr2qs("Configure KVIrc..."),
+#ifdef COMPILE_ON_MAC
+        "Configure KVIrc...",
+#else
+        __tr2qs("Configure KVIrc..."),
+#endif
 		__tr2qs("Shows the general options dialog"),
 		KviActionManager::categorySettings(),
-		"kvi_bigicon_settings.png",
+        "kvi_bigicon_settings.png",
+#ifdef COMPILE_ON_MAC
+        -1,
+#else
 		KviIconManager::Options,
-		0,
+#endif
+        0,
 		KVI_SHORTCUTS_OPTIONS);
 
 	SCRIPT_ACTION(

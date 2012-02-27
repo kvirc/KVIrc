@@ -129,6 +129,7 @@ KviMainWindow::KviMainWindow()
 	m_pMdi      = new KviMdiManager(m_pSplitter,"mdi_manager");
 
 	// This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
+    m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
 
@@ -286,7 +287,6 @@ KviMexToolBar * KviMainWindow::moduleExtensionToolBar(int extensionId)
 
 void KviMainWindow::installAccelerators()
 {
-	m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV,this,SLOT(switchToPrevWindow()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT,this,SLOT(switchToNextWindow()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_CONTEXT,this,SLOT(switchToPrevWindowInContext()),0,Qt::ApplicationShortcut));
