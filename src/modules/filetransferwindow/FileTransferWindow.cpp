@@ -459,7 +459,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				pAction = m_pOpenFilePopup->addAction(__tr2qs_ctx("&Other...","filetransferwindow"),this,SLOT(openLocalFileWith()));
 				pAction->setData(-1);
 
-				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"),m_pOpenFilePopup);
+                m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"))->setMenu(m_pOpenFilePopup);
                 m_pLocalFilePopup->addSeparator();
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &Location","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Terminal at Location","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
