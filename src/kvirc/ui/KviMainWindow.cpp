@@ -667,10 +667,13 @@ KviConsoleWindow * KviMainWindow::firstConsole()
 {
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
-		if(wnd->type() == KviWindow::Console)return (KviConsoleWindow *)wnd;
+		if(wnd->type() == KviWindow::Console)
+			return (KviConsoleWindow *)wnd;
 	}
-	KVI_ASSERT(false);
-	return 0; //should newer be here!.. but sometimes we are ?
+
+	// We end up here when we have not console windows.
+	// This may happen at early startup or late before shutdown.
+	return NULL;
 }
 
 KviConsoleWindow * KviMainWindow::firstNotConnectedConsole()
