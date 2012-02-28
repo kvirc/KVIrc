@@ -44,13 +44,13 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool addAction(KviKvsObjectFunctionCall *c);
+    bool insertItem(KviKvsObjectFunctionCall *c);
 	bool setTitle(KviKvsObjectFunctionCall *c);
 	bool addMenu(KviKvsObjectFunctionCall *c);
 	bool exec(KviKvsObjectFunctionCall *c);
 	bool removeItem(KviKvsObjectFunctionCall *c);
 	bool removeItemAt(KviKvsObjectFunctionCall *c);
-	bool addSeparator(KviKvsObjectFunctionCall *c);
+    bool insertSeparator(KviKvsObjectFunctionCall *c);
 	bool activatedEvent(KviKvsObjectFunctionCall *c);
 	bool highlightedEvent(KviKvsObjectFunctionCall *c);
 

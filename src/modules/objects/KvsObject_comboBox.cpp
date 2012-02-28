@@ -49,7 +49,7 @@
 		[class]widget[/class]
 	@description:
 	@functions:
-		!fn: $addAction(<text:string>, <index:int>)
+        !fn: $insertItem(<text:string>, <index:int>)
 		Inserts a text item at position <index>. If index is negative or
 		not specified the item is appended.
 		!fn: $changeItem(<text:string>, <index:uint>)
@@ -99,7 +99,7 @@
 
 */
 KVSO_BEGIN_REGISTERCLASS(KvsObject_comboBox,"combobox","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,addAction)
+    KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,insertItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,changeItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,removeItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,clear)
@@ -139,7 +139,7 @@ bool KvsObject_comboBox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(comboBox,addAction)
+KVSO_CLASS_FUNCTION(comboBox,insertItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iIndex;

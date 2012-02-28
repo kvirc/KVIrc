@@ -550,12 +550,12 @@ const char * const widgettypes_tbl[] = {
 			%checkbox->$setText("This is a checkbox")
 
 			%combobox = $new(combobox,%box)
-			%combobox->$addAction("This is a combobox")
-			%combobox->$addAction("This is a combobox's item")
+            %combobox->$insertItem("This is a combobox")
+            %combobox->$insertItem("This is a combobox's item")
 
 			%listbox = $new(listbox,%box)
-			%listbox->$addAction("This is a listbox item")
-			%listbox->$addAction("This is another item")
+            %listbox->$insertItem("This is a listbox item")
+            %listbox->$insertItem("This is another item")
 
 			%radiobutton = $new(radiobutton,%box)
 			%radiobutton->$setText("This is a radiobutton")
