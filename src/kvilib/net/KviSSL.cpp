@@ -313,16 +313,17 @@ void KviSSL::shutdown()
         //see bug #440
 
         #if defined(COMPILE_ON_OSX)
-        // SIG_IGN is ignored under osx, need to use sigprocmask
-        sigset_t x;
-        sigemptyset (&x);
-        sigaddset(&x, SIGPIPE);
-        sigprocmask(SIG_BLOCK, &x, NULL)
+        // bsd (and probably solaris, too) offers a proper flag to ignore SIGPIPE;
+        // instead of a signal, a write() will get an EPIPE retval, thus fail.
 
-        SSL_shutdown(m_pSSL);
+        int set = 1;
+        int fd = SSL_get_fd(m_pSSL);
+        if(fd>=0)
+        {
+            setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
 
-        sigprocmask(SIG_UNBLOCK, &x, NULL)
-
+            SSL_shutdown(m_pSSL);
+        }
         #elif !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
         // ignore SIGPIPE
 		signal( SIGPIPE, SIG_IGN );
