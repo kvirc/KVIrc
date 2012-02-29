@@ -385,16 +385,16 @@ const char * const widgettypes_tbl[] = {
 		This function is called immediately after this widget has been moved.
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
-                !fn: $paintEvent(<painter:h_object>,<rect_x:integer>,<rect_y:integer>,<width:integer>,<height:integer>)
+		!fn: $paintEvent(<painter:h_object>,<rect_x:integer>,<rect_y:integer>,<width:integer>,<height:integer>)
 		This event handler can be reimplemented to repaint all or part of the widget.
 		It's needed by the Painter class.
 		It's very useful for drawing flicker free animations or low level special graphic effects.
-                The framework will pass as parameter a [class]painter[/class]object. You don't need to begin/end/delete the painter.
+		The framework will pass as parameter a [class]painter[/class]object. You don't need to begin/end/delete the painter.
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event.
 		The default implementation does nothing.
-                !fn: $setParent(<widget_object:parent>)
-                Sets the parent of the widget to parent
+		!fn: $setParent(<widget_object:parent>)
+		Sets the parent of the widget to parent
 		!fn: $setWindowIcon(<image_id>)
 		Sets the icon for this widget. This is meaningful only for toplevel widgets.
 		See the [doc:image_id]image identifier[/doc] documentation for the explaination
@@ -496,7 +496,7 @@ const char * const widgettypes_tbl[] = {
 		NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
 		PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
 		NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
-                !fn: $setStyleSheet(<string>)
+		!fn: $setStyleSheet(<string>)
 		Set a style sheet for this widget.
 		!fn: $customContextMenuRequestedEvent(<x_mouse_pos:integer>,<y_mouse_pos:integer>)
 		This event is triggered when the user has requested a context menu on the widget (i.e. right clicking on the widget).
@@ -515,7 +515,7 @@ const char * const widgettypes_tbl[] = {
 
 		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)
 		Adds a shortcut whith key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
-                !fn: $shortCutEvent(<shortcut_id:integer>)
+		!fn: $shortCutEvent(<shortcut_id:integer>)
 		This function will be called when a shortcut key has been triggered.
 		You must reimplement this event to manage a shortcut system in a custom widget.
 		The default implementation does nothing.
@@ -550,12 +550,12 @@ const char * const widgettypes_tbl[] = {
 			%checkbox->$setText("This is a checkbox")
 
 			%combobox = $new(combobox,%box)
-            %combobox->$insertItem("This is a combobox")
-            %combobox->$insertItem("This is a combobox's item")
+						%combobox->$insertItem("This is a combobox")
+						%combobox->$insertItem("This is a combobox's item")
 
 			%listbox = $new(listbox,%box)
-            %listbox->$insertItem("This is a listbox item")
-            %listbox->$insertItem("This is another item")
+						%listbox->$insertItem("This is a listbox item")
+						%listbox->$insertItem("This is another item")
 
 			%radiobutton = $new(radiobutton,%box)
 			%radiobutton->$setText("This is a radiobutton")

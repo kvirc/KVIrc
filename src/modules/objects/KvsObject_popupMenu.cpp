@@ -52,9 +52,9 @@
 		[class]widget[/class]
 	@description:
 		This widget can be used to display a popup menu.Technically, a popup menu consists of a list of menu items.[br]
-        You add items with insertItem(). An item is either a string. In addition, items can have an optional icon drawn on the very left side.[br]
+		You add items with insertItem(). An item is either a string. In addition, items can have an optional icon drawn on the very left side.[br]
 	@functions:
-        !fn: $insertItem(<text:string>,[icon_id:string])
+		!fn: $insertItem(<text:string>,[icon_id:string])
 		Inserts menu items into a popup menu with optional icon and return the popup identifier.
 		!fn: $addMenu(<popupmenu:hobject,[idx:uinteger])
 		Add a popupmenu.
@@ -68,7 +68,7 @@
 		Removes the menu item that has the identifier id.
 		!fn: $removeItemAt(<index:uinteger>)
 		Removes the menu item at position index.
-        !fn: $insertSeparator(<index:uinteger>)
+		!fn: $insertSeparator(<index:uinteger>)
 		Inserts a separator at position index.[br]
 		If the index is negative the separator becomes the last menu item.
 		!fn: $activatedEvent(<popup_id:uinteger>)
@@ -91,11 +91,11 @@
 			constructor()
 			{
 				// we store the item's id for checkit in activatedEvent
-                @%tile_id=@$insertItem("Tile",118)
-                @%cascade_id=@$insertItem("Cascade",115)
-                @$insertSeparator(3)
-                @%closeactw_id=@$insertItem("Close Active Window",08)
-                @%closeallw_id=@$insertItem("Close All Window",58)
+								@%tile_id=@$insertItem("Tile",118)
+								@%cascade_id=@$insertItem("Cascade",115)
+								@$insertSeparator(3)
+								@%closeactw_id=@$insertItem("Close Active Window",08)
+								@%closeallw_id=@$insertItem("Close All Window",58)
 			}
 			activatedEvent()
 			{
@@ -197,12 +197,12 @@ static void removeAction(int idx)
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_popupMenu,"popupmenu","widget")
-    KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,setTitle)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,exec)
-    KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertSeparator)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertSeparator)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,removeItem)
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,addMenu)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,addMenu)
 
 	// events
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,highlightedEvent)

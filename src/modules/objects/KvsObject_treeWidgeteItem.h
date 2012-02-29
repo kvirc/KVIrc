@@ -42,7 +42,7 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
 	bool setText(KviKvsObjectFunctionCall *c);
-    bool insertItem(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall *c);
 	bool setPixmap(KviKvsObjectFunctionCall *c);
 	bool setItemEditable(KviKvsObjectFunctionCall *c);
 	bool isItemEditable(KviKvsObjectFunctionCall *c);
@@ -55,7 +55,7 @@ protected:
 	bool isCheckable(KviKvsObjectFunctionCall *c);
 	bool setChecked(KviKvsObjectFunctionCall *c);
 	bool isChecked(KviKvsObjectFunctionCall *c);
-        bool setFlags(KviKvsObjectFunctionCall *c);
+	bool setFlags(KviKvsObjectFunctionCall *c);
 
 public:
 	static kvs_hobject_t itemToHandle(QTreeWidgetItem * it);

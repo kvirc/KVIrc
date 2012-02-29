@@ -49,7 +49,7 @@
 		[class]widget[/class]
 	@description:
 	@functions:
-        !fn: $insertItem(<text:string>, <index:int>)
+		!fn: $insertItem(<text:string>, <index:int>)
 		Inserts a text item at position <index>. If index is negative or
 		not specified the item is appended.
 		!fn: $changeItem(<text:string>, <index:uint>)
@@ -83,7 +83,7 @@
 		!fn: $textAt(<index:uint>)
 		Returns item at given index.
 		!fn: $setCurrentItem(<index:uint>)
-                Sets the current combobox item. This is the item to be displayed on the combobox button.
+		Sets the current combobox item. This is the item to be displayed on the combobox button.
 		!fn: $activatedEvent(<index:integer>)
 		This function is called by the framework when a new item  has activated. The index value is the position of the new item.[br]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal,
@@ -99,7 +99,7 @@
 
 */
 KVSO_BEGIN_REGISTERCLASS(KvsObject_comboBox,"combobox","widget")
-    KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,insertItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,changeItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,removeItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,clear)
