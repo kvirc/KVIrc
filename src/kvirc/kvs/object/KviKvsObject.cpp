@@ -373,7 +373,7 @@
 
 		The above class is named "helloworld". It inherits the [class]object[/class] class.
 		This means that it acquires all the [class]object[/class] functions: [classfnc:object]$name[/classfnc](),
-		[classfnc:object]$class[/class](), [classfnc:object]$children[/classfnc]()...
+		[classfnc:object]$class[/classfnc](), [classfnc:object]$children[/classfnc]()...
 		Additionally, it has the $sayhello() function, that "echoes Hello world" to the console.
 		Now you can create an instance of this class:
 		[example]
