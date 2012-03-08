@@ -53,11 +53,11 @@ protected:
 	virtual void paintEvent (QPaintEvent *e);
 };
 
-class KviIOGraphWindow : public KviWindow, public KviModuleExtension
+class KviIOGraphWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviIOGraphWindow(KviModuleExtensionDescriptor * d, const char * name);
+	KviIOGraphWindow(const char * name);
 	~KviIOGraphWindow();
 private:
 	KviIOGraphWidget * m_pIOGraph;

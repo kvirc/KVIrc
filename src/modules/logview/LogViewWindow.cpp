@@ -84,8 +84,8 @@ void LogViewListView::mousePressEvent(QMouseEvent * pEvent)
 }
 
 
-LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * pDesc)
-: KviWindow(KviWindow::LogView,"log"),KviModuleExtension(pDesc)
+LogViewWindow::LogViewWindow()
+: KviWindow(KviWindow::LogView,"log")
 {
 	g_pLogViewWindow = this;
 	//m_pLogViewWidget = new KviLogViewWidget(this);

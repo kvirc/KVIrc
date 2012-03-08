@@ -1,7 +1,5 @@
 # CMakeLists for src/modules/filetransferwindow
 
-SUBDIRS(caps)
-
 SET(kvifiletransferwindow_MOC_HDRS
 	FileTransferWindow.h
 )

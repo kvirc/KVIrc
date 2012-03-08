@@ -58,11 +58,11 @@ signals:
 	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
 
-class LogViewWindow : public KviWindow, public KviModuleExtension
+class LogViewWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	LogViewWindow(KviModuleExtensionDescriptor * pDesc);
+	LogViewWindow();
 	~LogViewWindow();
 protected:
 	KviPointerList<LogFile> m_logList;

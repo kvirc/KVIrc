@@ -1,7 +1,5 @@
 # CMakeLists for src/modules/logview
 
-SUBDIRS(caps)
-
 SET(kvilogview_MOC_HDRS
 	LogViewWindow.h
 )

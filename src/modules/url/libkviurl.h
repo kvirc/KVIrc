@@ -134,13 +134,4 @@ protected slots:
 	void discardbtn();
 };
 
-
-class KviUrlAction : public KviKvsAction
-{
-	Q_OBJECT
-public:
-	KviUrlAction(QObject * pParent);
-	~KviUrlAction();
-};
-
 #endif

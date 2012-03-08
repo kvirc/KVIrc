@@ -59,63 +59,22 @@ LogViewWindow * g_pLogViewWindow = 0;
 */
 static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",LOGVIEW_MODULE_EXTENSION_NAME);
-	if(d)
-	{
-		KviPointerHashTable<QString,QVariant> dict(17,true);
-		dict.setAutoDelete(true);
-		QString dummy;
-		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',dummy)));
-		dict.replace("bNoRaise",new QVariant(c->hasSwitch('n',dummy)));
-
-		d->allocate(c->window(),&dict,0);
-	} else {
-		c->warning(__tr2qs_ctx("Ops.. internal error","log"));
-	}
-	return true;
-}
-
-static KviModuleExtension * logview_extension_alloc(KviModuleExtensionAllocStruct * s)
-{
-	bool bCreateMinimized = false;
-	bool bNoRaise = false;
+	QString dummy;
+	bool bCreateMinimized = c->hasSwitch('m',dummy);
+	bool bNoRaise = c->hasSwitch('n',dummy);
 
 	if(!g_pLogViewWindow)
 	{
-		if(s->pParams)
-		{
-			if(QVariant * v = s->pParams->find("bCreateMinimized"))
-			{
-				if(v->isValid())
-				{
-					if(v->type() == QVariant::Bool)
-						bCreateMinimized = v->toBool();
-				}
-			}
-		}
-
-		g_pLogViewWindow = new LogViewWindow(s->pDescriptor);
+		g_pLogViewWindow = new LogViewWindow();
 		g_pMainWindow->addWindow(g_pLogViewWindow,!bCreateMinimized);
 		if(bCreateMinimized)
 			g_pLogViewWindow->minimize();
-		return g_pLogViewWindow;
-	}
-
-	if(s->pParams)
-	{
-		if(QVariant * v = s->pParams->find("bNoRaise"))
-		{
-			if(v)
-			{
-				if(v->isValid() && v->type() == QVariant::Bool)
-					bNoRaise = v->toBool();
-			}
-		}
+		return true;
 	}
 
 	if(!bNoRaise)
 		g_pLogViewWindow->delayedAutoRaise();
-	return g_pLogViewWindow;
+	return true;
 }
 
 static bool logview_module_init(KviModule * m)
@@ -123,14 +82,6 @@ static bool logview_module_init(KviModule * m)
 	g_pLogViewWindow = 0;
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",logview_kvs_cmd_open);
-
-	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
-		LOGVIEW_MODULE_EXTENSION_NAME,
-		__tr2qs_ctx("Browse Log Files","log"),
-		logview_extension_alloc);
-
-	if(d)
-		d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Log)));
 
 	return true;
 }

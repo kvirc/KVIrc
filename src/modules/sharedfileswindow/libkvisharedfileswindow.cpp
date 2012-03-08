@@ -36,50 +36,6 @@
 
 SharedFilesWindow * g_pSharedFilesWindow = 0;
 
-static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtensionAllocStruct * s)
-{
-	bool bCreateMinimized = false;
-	bool bNoRaise = false;
-
-	if(!g_pSharedFilesWindow)
-	{
-		if(s->pParams)
-		{
-			if(QVariant * v = s->pParams->find("bCreateMinimized"))
-			{
-				if(v->isValid())
-				{
-					if(v->type() == QVariant::Bool)
-					{
-						bCreateMinimized = v->toBool();
-					}
-				}
-			}
-		}
-
-		g_pSharedFilesWindow = new SharedFilesWindow(s->pDescriptor);
-		g_pMainWindow->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
-		if(bCreateMinimized)g_pSharedFilesWindow->minimize();
-		return g_pSharedFilesWindow;
-	}
-
-	if(s->pParams)
-	{
-		if(QVariant * v = s->pParams->find("bNoRaise"))
-		{
-			if(v)
-			{
-				if(v->isValid() && v->type() == QVariant::Bool)
-					bNoRaise = v->toBool();
-			}
-		}
-	}
-
-	if(!bNoRaise)g_pSharedFilesWindow->delayedAutoRaise();
-	return g_pSharedFilesWindow;
-}
-
-
 /*
 	@doc: sharedfileswindow.open
 	@type:
@@ -101,30 +57,24 @@ static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtension
 
 static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",KVI_SHARED_FILES_WINDOW_EXTENSION_NAME);
-	if(d)
-	{
-		KviPointerHashTable<QString,QVariant> dict(17,true);
-		dict.setAutoDelete(true);
-		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',"minimized")));
-		dict.replace("bNoRaise",new QVariant(c->hasSwitch('n',"noraise")));
+	QString dummy;
+	bool bCreateMinimized = c->hasSwitch('m',"minimized");
+	bool bNoRaise = c->hasSwitch('n',"noraise");
 
-		d->allocate(c->window(),&dict,0);
-	} else {
-		c->warning("Ops.. internal error");
+	if(!g_pSharedFilesWindow)
+	{
+		g_pSharedFilesWindow = new SharedFilesWindow();
+		g_pMainWindow->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
+		if(bCreateMinimized)g_pSharedFilesWindow->minimize();
+		return true;
 	}
+
+	if(!bNoRaise)g_pSharedFilesWindow->delayedAutoRaise();
 	return true;
 }
 
 static bool sharedfileswindow_module_init(KviModule * m)
 {
-	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
-		KVI_SHARED_FILES_WINDOW_EXTENSION_NAME,
-		__tr2qs_ctx("Manage S&hared Files","sharedfileswindow"),
-		sharedfileswindow_extension_alloc);
-
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::SharedFiles)));
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",sharedfileswindow_kvs_cmd_open);
 	return true;
 }

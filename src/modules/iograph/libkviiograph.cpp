@@ -42,8 +42,8 @@
 
 KviIOGraphWindow* g_pIOGraphWindow = 0;
 
-KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d, const char * name)
-: KviWindow(KviWindow::IOGraph, name), KviModuleExtension(d)
+KviIOGraphWindow::KviIOGraphWindow(const char * name)
+: KviWindow(KviWindow::IOGraph, name)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);
 	setAutoFillBackground(false);
@@ -262,66 +262,22 @@ void KviIOGraphWidget::paintEvent(QPaintEvent *)
 
 static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)
 {
-	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",IOGRAPH_MODULE_EXTENSION_NAME);
-
-	if(d)
-	{
-		KviPointerHashTable<QString,QVariant> dict(17,true);
-		dict.setAutoDelete(true);
-		QString dummy;
-		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',dummy)));
-		dict.replace("bNoRaise",new QVariant(c->hasSwitch('n',dummy)));
-
-		d->allocate(c->window(),&dict,0);
-	} else {
-		c->warning(__tr("Ops.. internal error"));
-	}
-	return true;
-}
-
-static KviModuleExtension * iograph_extension_alloc(KviModuleExtensionAllocStruct * s)
-{
-	bool bCreateMinimized = false;
-	bool bNoRaise = false;
+	QString dummy;
+	bool bCreateMinimized = c->hasSwitch('m',dummy);
+	bool bNoRaise = c->hasSwitch('n',dummy);
 
 	if(!g_pIOGraphWindow)
 	{
-		if(s->pParams)
-		{
-			if(QVariant * v = s->pParams->find("bCreateMinimized"))
-			{
-				if(v->isValid())
-				{
-					if(v->type() == QVariant::Bool)
-					{
-						bCreateMinimized = v->toBool();
-					}
-				}
-			}
-		}
-
-		g_pIOGraphWindow = new KviIOGraphWindow(s->pDescriptor,"IOGraph Window");
+		g_pIOGraphWindow = new KviIOGraphWindow("IOGraph Window");
 		g_pMainWindow->addWindow(g_pIOGraphWindow,!bCreateMinimized);
 
 		if(bCreateMinimized)g_pIOGraphWindow->minimize();
-		return g_pIOGraphWindow;
-	}
-
-	if(s->pParams)
-	{
-		if(QVariant * v = s->pParams->find("bNoRaise"))
-		{
-			if(v)
-			{
-				if(v->isValid() && v->type() == QVariant::Bool)
-					bNoRaise = v->toBool();
-			}
-		}
+		return true;
 	}
 
 	if(!bNoRaise)
 		g_pIOGraphWindow->delayedAutoRaise();
-	return g_pIOGraphWindow;
+	return true;
 }
 
 static bool iograph_module_init(KviModule *m)
@@ -329,14 +285,6 @@ static bool iograph_module_init(KviModule *m)
 	g_pIOGraphWindow = 0;
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",iograph_module_cmd_open);
-
-	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
-							IOGRAPH_MODULE_EXTENSION_NAME,
-							__tr2qs("Show I/O &Traffic graph"),
-							iograph_extension_alloc);
-
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::SayIcon)));
-
 	return true;
 }
 

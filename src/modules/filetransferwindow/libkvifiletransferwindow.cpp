@@ -34,50 +34,6 @@
 
 FileTransferWindow * g_pFileTransferWindow = 0;
 
-static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensionAllocStruct * s)
-{
-	bool bCreateMinimized = false;
-	bool bNoRaise = false;
-
-	if(!g_pFileTransferWindow)
-	{
-		if(s->pParams)
-		{
-			if(QVariant * v = s->pParams->find("bCreateMinimized"))
-			{
-				if(v->isValid())
-				{
-					if(v->type() == QVariant::Bool)
-					{
-						bCreateMinimized = v->toBool();
-					}
-				}
-			}
-		}
-
-		g_pFileTransferWindow = new FileTransferWindow(s->pDescriptor);
-		g_pMainWindow->addWindow(g_pFileTransferWindow,!bCreateMinimized);
-		return g_pFileTransferWindow;
-	}
-
-	if(s->pParams)
-	{
-		if(QVariant * v = s->pParams->find("bNoRaise"))
-		{
-			if(v)
-			{
-				if(v->isValid() && v->type() == QVariant::Bool)
-					bNoRaise = v->toBool();
-			}
-		}
-	}
-
-	if(!bNoRaise)
-		g_pFileTransferWindow->delayedAutoRaise();
-	return g_pFileTransferWindow;
-}
-
-
 /*
 	@doc: filetransferwindow.open
 	@type:
@@ -99,33 +55,25 @@ static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensio
 
 static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME);
+	QString dummy;
+	bool bCreateMinimized = c->hasSwitch('m',dummy);
+	bool bNoRaise = c->hasSwitch('n',dummy);
 
-	if(d)
+	if(!g_pFileTransferWindow)
 	{
-		KviPointerHashTable<QString,QVariant> dict(17,true);
-		dict.setAutoDelete(true);
-		QString dummy;
-		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',dummy)));
-		dict.replace("bNoRaise",new QVariant(c->hasSwitch('n',dummy)));
 
-		d->allocate(c->window(),&dict,0);
-	} else {
-		c->warning(__tr("Ops.. internal error"));
+		g_pFileTransferWindow = new FileTransferWindow();
+		g_pMainWindow->addWindow(g_pFileTransferWindow,!bCreateMinimized);
+		return true;
 	}
+
+	if(!bNoRaise)
+		g_pFileTransferWindow->delayedAutoRaise();
 	return true;
 }
 
 static bool filetransferwindow_module_init(KviModule * m)
 {
-	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
-		KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME,
-		__tr2qs("Manage File &Transfers"),
-		filetransferwindow_extension_alloc);
-
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::FileTransfer)));
-
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",filetransferwindow_kvs_cmd_open);
 
 	return true;

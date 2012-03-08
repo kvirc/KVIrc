@@ -74,12 +74,12 @@ protected slots:
 };
 
 
-class SharedFilesWindow : public KviWindow, public KviModuleExtension
+class SharedFilesWindow : public KviWindow
 {
 	friend class KviSharedFilesItem;
 	Q_OBJECT
 public:
-	SharedFilesWindow(KviModuleExtensionDescriptor * d);
+	SharedFilesWindow();
 	~SharedFilesWindow();
 protected:
 	QSplitter           * m_pVertSplitter;

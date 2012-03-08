@@ -1,7 +1,5 @@
 # CMakeLists for src/modules/iograph
 
-SUBDIRS(caps)
-
 SET(kviiograph_MOC_HDRS
 	libkviiograph.h
 )
