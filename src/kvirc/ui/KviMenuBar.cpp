@@ -52,6 +52,13 @@ KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
     connect(m_pRecentServersPopup,SIGNAL(aboutToShow()),this,SLOT(updateRecentServersPopup()));
     connect(m_pRecentServersPopup,SIGNAL(triggered(QAction*)),this,SLOT(newConnectionToServer(QAction *)));
 
+	m_pModulesToolsPopup = new QMenu("modulestools",this);
+	connect(m_pModulesToolsPopup,SIGNAL(aboutToShow()),this,SLOT(updateModulesToolsPopup()));
+	connect(m_pModulesToolsPopup,SIGNAL(triggered(QAction*)),this,SLOT(modulesToolsTriggered(QAction *)));
+
+	m_pActionsToolsPopup = new QMenu("actionstools",this);
+	connect(m_pActionsToolsPopup,SIGNAL(aboutToShow()),this,SLOT(updateActionsToolsPopup()));
+
     QMenu * pop = new QMenu("KVIrc", this);
     setupMainPopup(pop);
     connect(pop,SIGNAL(aboutToShow()),this,SLOT(updateMainPopup()));
@@ -77,8 +84,8 @@ KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
 
     pop = new QMenu("tools",this);
     setupToolsPopup(pop);
-    connect(pop,SIGNAL(triggered(QAction*)),this,SLOT(toolsPopupSelected(QAction *)));
 	addDefaultItem(__tr2qs("&Tools"),pop);
+	connect(pop,SIGNAL(aboutToShow()),this,SLOT(updateToolsPopup()));
 
     m_pToolbarsPopup = new QMenu("toolbars",this);
     connect(m_pToolbarsPopup,SIGNAL(aboutToShow()),this,SLOT(updateToolbarsPopup()));
@@ -297,14 +304,21 @@ void KviMenuBar::newConnectionToServer(QAction *pAction)
 	}
 }
 
-void KviMenuBar::setupToolsPopup(QMenu *pop)
+void KviMenuBar::updateToolsPopup()
 {
-    QMenu * m = pop ? pop : (QMenu *)sender();
-	if(!m)return;
+	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("tool");
+	m_pModulesToolsAction->setVisible(l && !(l->isEmpty()));
 
-	m->clear();
+	KviPointerList<KviAction> list;
+	KviActionManager::instance()->listActionsByCategory("tools",&list);
+	m_pActionsToolsAction->setVisible(!list.isEmpty());
+}
 
-    QAction *pAction=0;
+void KviMenuBar::updateModulesToolsPopup()
+{
+	m_pModulesToolsPopup->clear();
+
+	QAction *pAction=0;
 	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("tool");
 	if(l)
 	{
@@ -312,13 +326,42 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
 		{
 			if(d->icon())
 			{
-                pAction = m->addAction(*(d->icon()),d->visibleName());
+				pAction = m_pModulesToolsPopup->addAction(*(d->icon()),d->visibleName());
 			} else {
-                pAction = m->addAction(d->visibleName());
+				pAction = m_pModulesToolsPopup->addAction(d->visibleName());
 			}
-            pAction->setData(d->id());
+			pAction->setData(d->id());
 		}
 	}
+}
+
+void KviMenuBar::updateActionsToolsPopup()
+{
+	m_pActionsToolsPopup->clear();
+
+	KviPointerList<KviAction> list;
+	KviActionManager::instance()->listActionsByCategory("tools",&list);
+	if(!list.isEmpty())
+	{
+		m_pActionsToolsPopup->addSeparator();
+		for(KviAction * ac = list.first();ac;ac = list.next())
+			ac->addToPopupMenu(m_pActionsToolsPopup);
+	}
+}
+
+void KviMenuBar::setupToolsPopup(QMenu *pop)
+{
+    QMenu * m = pop ? pop : (QMenu *)sender();
+	if(!m)return;
+
+	m->clear();
+
+	ACTION_POPUP_ITEM(KVI_COREACTION_FILETRANSFER,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_IOGRAPH,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_LOGVIEWER,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_SHAREDFILES,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_URLLIST,m)
+
     m->addSeparator();
 
     ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
@@ -339,17 +382,14 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
     pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 
-	KviPointerList<KviAction> list;
-	KviActionManager::instance()->listActionsByCategory("tools",&list);
-	if(!list.isEmpty())
-	{
-        m->addSeparator();
-		for(KviAction * ac = list.first();ac;ac = list.next())
-			ac->addToPopupMenu(m);
-	}
+	m_pModulesToolsAction = m->addAction(__tr2qs("Modules tools"));
+	m_pModulesToolsAction->setMenu(m_pModulesToolsPopup);
+
+	m_pActionsToolsAction = m->addAction(__tr2qs("Actions tools"));
+	m_pActionsToolsAction->setMenu(m_pActionsToolsPopup);
 }
 
-void KviMenuBar::toolsPopupSelected(QAction *pAction)
+void KviMenuBar::modulesToolsTriggered(QAction *pAction)
 {
     bool bOk=false;
     int idext = pAction->data().toInt(&bOk);

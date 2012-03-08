@@ -376,6 +376,60 @@ void register_core_actions(KviActionManager * m)
 		0,
 		QString());
 
+	SCRIPT_ACTION(
+		KVI_COREACTION_FILETRANSFER,
+		"filetransferwindow.open",
+		__tr2qs("Manage File &Transfers"),
+		__tr2qs("Shows a window that lists file transfers"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_filetransfer.png",
+		KviIconManager::FileTransfer,
+		0,
+		QString());
+
+	SCRIPT_ACTION(
+		KVI_COREACTION_IOGRAPH,
+		"iograph.open",
+		__tr2qs("Show I/O &Traffic graph"),
+		__tr2qs("Shows a graph representing I/O bandwidth traffic"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_sayicon.png",
+		KviIconManager::SayIcon,
+		0,
+		QString());
+
+	SCRIPT_ACTION(
+		KVI_COREACTION_LOGVIEWER,
+		"logview.open",
+		__tr2qs("Browse Log Files"),
+		__tr2qs("Shows a window that lists and filter log files"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_log.png",
+		KviIconManager::Log,
+		0,
+		QString());
+
+	SCRIPT_ACTION(
+		KVI_COREACTION_SHAREDFILES,
+		"sharedfileswindow.open",
+		__tr2qs("Manage S&hared Files"),
+		__tr2qs("Shows a window that list shared siles"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_sharedfiles.png",
+		KviIconManager::SharedFiles,
+		0,
+		QString());
+
+	SCRIPT_ACTION(
+		KVI_COREACTION_URLLIST,
+		"url.list",
+		__tr2qs("View URL list"),
+		__tr2qs("Shows a window that list catched urls"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_url.png",
+		KviIconManager::Url,
+		0,
+		QString());
 
 	SLOT_ACTION(
 		KVI_COREACTION_CASCADEWINDOWS,

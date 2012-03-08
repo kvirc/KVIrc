@@ -52,10 +52,14 @@ protected:
     QMenu                       * m_pToolbarsPopup;
     QMenu                       * m_pRecentServersPopup;
 	KviMainWindow                         * m_pFrm;
+	QMenu                       * m_pModulesToolsPopup;
+	QMenu                       * m_pActionsToolsPopup;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
     // Dynamic actions
     QAction                     * m_pStatusBarAction;
     QAction                     * m_pDisconnectAction;
+	QAction                     * m_pModulesToolsAction;
+	QAction                     * m_pActionsToolsAction;
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
@@ -77,9 +81,12 @@ protected slots:
     void updateSettingsPopup();
     void updateRecentServersPopup();
     void updateToolbarsPopup();
+	void updateModulesToolsPopup();
+	void updateActionsToolsPopup();
+	void updateToolsPopup();
 
     void newConnectionToServer(QAction *pAction);
-    void toolsPopupSelected(QAction *pAction);
+	void modulesToolsTriggered(QAction *pAction);
     void actionTriggered(QAction *pAction);
     void actionTriggered(bool);
 };
