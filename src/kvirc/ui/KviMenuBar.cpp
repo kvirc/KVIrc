@@ -351,8 +351,10 @@ void KviMenuBar::updateActionsToolsPopup()
 
 void KviMenuBar::setupToolsPopup(QMenu *pop)
 {
-    QMenu * m = pop ? pop : (QMenu *)sender();
+	QMenu * m = pop ? pop : (QMenu *)sender();
 	if(!m)return;
+
+	QAction *pAction=0;
 
 	m->clear();
 
@@ -362,24 +364,24 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
 	ACTION_POPUP_ITEM(KVI_COREACTION_SHAREDFILES,m)
 	ACTION_POPUP_ITEM(KVI_COREACTION_URLLIST,m)
 
-    m->addSeparator();
+	m->addSeparator();
 
-    ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
 	ACTION_POPUP_ITEM(KVI_COREACTION_NETWORKLINKS,m)
 	ACTION_POPUP_ITEM(KVI_COREACTION_CHANNELLIST,m)
-    m->addSeparator();
+	m->addSeparator();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_JOINCHANNELS,m)
 
-    m->addSeparator();
+	m->addSeparator();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_SCREENSHOT,m)
 
 	// moved the old tools here
 	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
 #ifdef COMPILE_KDE_SUPPORT
-    pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &Terminal"),this,SLOT(actionTriggered(bool)));
-    pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
+	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &Terminal"),this,SLOT(actionTriggered(bool)));
+	pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 
 	m_pModulesToolsAction = m->addAction(__tr2qs("Modules tools"));
