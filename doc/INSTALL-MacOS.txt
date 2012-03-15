@@ -21,7 +21,7 @@ Mac OS X. A bundle is "just" a special directory structure on Mac systems which
 contains the application binary, dependant libraries, plugins, modules and
 other resources.
 
-For further details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html
+For further details look at http://qt-project.org/doc/qt-4.8/deployment-mac.html
 and the documentation on http://developer.apple.com, please.
 
 
@@ -38,12 +38,12 @@ free), download XCode and follow the install instructions in the documentation.
 2. QT-MAC
 
 I suggest to download and install the latest binary package from
-http://www.qtsoftware.com/downloads/mac-os-cpp . As of 31.08.2010 the Carbon version
+http://qt-project.org/downloads . As of 31.08.2010 the Carbon version
 of Qt 4.6.3 seems to work a bit better than the Cocoa version since the latter is
 affected by a bug related to font display (and specifically to font kerning).
 
 Hint: If you do not want to do deep debugging of Qt, you do NOT need the debugging
-libraries. Of course you can donwload the sources and build Qt yourself. Read the
+libraries. Of course you can download the sources and build Qt yourself. Read the
 documentation and build a Framework (not the standard Unix-like library version) in
 that case.
 
