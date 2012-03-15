@@ -98,6 +98,7 @@ used by Apple when they built the python package.
 I suggest an "out-of-source" build:
 
 	# mkdir kvirc-build
+	# cd kvirc-build
 	# cmake <path-to-kvirc-src-dir>
 	# make
 	# make install
