@@ -370,19 +370,19 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,0                      ,
 		&&check_http_url       ,&&check_irc_url        ,0                      ,0                      ,
-		0                      ,&&check_mailto_url     ,0                      ,0                      , // 064-079  // 070==F 072==H 073==I  077==M
-		0                      ,0                      ,0                      ,0                      ,
+		0                      ,&&check_mailto_or_magnet_url     ,0            ,0                      , // 064-079  // 070==F 072==H 073==I  077==M
+		0                      ,0                      ,0                      ,&&check_spotify_url    ,
 		0                      ,0                      ,0                      ,&&check_www_url        ,
 		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 080-095  // 087==W
+		0                      ,0                      ,0                      ,0                      , // 080-095  // 083==S 087==W
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,0                      ,
 		&&check_http_url       ,&&check_irc_url        ,0                      ,0                      ,
-		0                      ,&&check_mailto_url     ,0                      ,0                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
-		0                      ,0                      ,0                      ,0                      ,
+		0                      ,&&check_mailto_or_magnet_url     ,0            ,0                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
+		0                      ,0                      ,0                      ,&&check_spotify_url    ,
 		0                      ,0                      ,0                      ,&&check_www_url        ,
 		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 112-127  // 119==w
+		0                      ,0                      ,0                      ,0                      , // 112-127  // 115==s 119==w
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,0                      ,0                      ,0                      ,
@@ -455,9 +455,9 @@ escape_check_loop:
 		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 032-047
 		0,0,0,0,0,0,0,0, 0,0,7,7,0,7,0,0, // 048-063
 		0,0,0,0,0,8,3,0, 2,5,0,0,0,6,0,0, // 064-079  // 070==F 072==H 073==I 077==M
-		0,0,0,0,0,0,0,4, 0,0,0,0,0,0,0,0, // 080-095  // 087==W
+		0,0,0,9,0,0,0,4, 0,0,0,0,0,0,0,0, // 080-095  // 083==S 087==W
 		0,0,0,0,0,8,3,0, 2,5,0,0,0,6,0,0, // 096-111  // 102==f 104==h 105==i 109==m
-		0,0,0,0,0,0,0,4, 0,0,0,0,0,0,0,0, // 112-127  // 119==w
+		0,0,0,9,0,0,0,4, 0,0,0,0,0,0,0,0, // 112-127  // 115==s 119==w
 		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 128-133
 		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 134-159
 		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 160-175
@@ -478,14 +478,15 @@ check_char_loop:
 			{
 				switch(chk)
 				{
-					case 1: goto check_escape_switch;      break; // returns to check_char_loop or returns from the function at all
-					case 2: goto check_http_url;           break; // returns to check_char_loop
-					case 3: goto check_file_or_ftp_url;    break; // returns to check_char_loop
-					case 4: goto check_www_url;            break; // returns to check_char_loop
-					case 5: goto check_irc_url;            break; // returns to check_char_loop
-					case 6: goto check_mailto_url;         break; // returns to check_char_loop
-					case 7: goto check_emoticon_char;      break; // returns to check_char_loop
-					case 8: goto check_e2k_url;            break;
+					case 1: goto check_escape_switch;			break; // returns to check_char_loop or returns from the function at all
+					case 2: goto check_http_url;				break; // returns to check_char_loop
+					case 3: goto check_file_or_ftp_url;			break; // returns to check_char_loop
+					case 4: goto check_www_url;					break; // returns to check_char_loop
+					case 5: goto check_irc_url;					break; // returns to check_char_loop
+					case 6: goto check_mailto_or_magnet_url;	break; // returns to check_char_loop
+					case 7: goto check_emoticon_char;			break; // returns to check_char_loop
+					case 8: goto check_e2k_url;					break;
+					case 9: goto check_spotify_url;				break;
 				}
 			}
 			p++;
@@ -916,7 +917,7 @@ check_irc_url:
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
-check_mailto_url:
+check_mailto_or_magnet_url:
 	p++;
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
@@ -925,7 +926,7 @@ check_mailto_url:
 			p--;
 
 			static kvi_wchar_t aMailtoUrl[] = { 'm', 'a', 'i', 'l', 't', 'o', ':' };
-            static kvi_wchar_t aMagnetUrl[] = { 'm', 'a', 'g', 'n', 'e', 't', ':' };
+			static kvi_wchar_t aMagnetUrl[] = { 'm', 'a', 'g', 'n', 'e', 't', ':' };
 
 			if(url_compare_helper(p,aMailtoUrl,7))
 			{
@@ -934,12 +935,12 @@ check_mailto_url:
 			}
 
 
-            if(url_compare_helper(p,aMagnetUrl,7))
-            {
-                partLen = 7;
-                goto got_url;
-            }
-            p++;
+			if(url_compare_helper(p,aMagnetUrl,7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			p++;
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
@@ -948,6 +949,29 @@ check_mailto_url:
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
+check_spotify_url:
+	p++;
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+	{
+		if((*p == 'p') || (*p == 'P'))
+		{
+			p--;
+
+			static kvi_wchar_t aSpotifyUrl[] = { 's', 'p', 'o', 't', 'i', 'f', 'y', ':' };
+
+			if(url_compare_helper(p,aSpotifyUrl,8))
+			{
+				partLen = 8;
+				goto got_url;
+			}
+			p++;
+		}
+	}
+#ifdef COMPILE_USE_DYNAMIC_LABELS
+	goto *loop_begin;
+#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto check_char_loop;
+#endif // !COMPILE_USE_DYNAMIC_LABELS
 
 
 got_url:
