@@ -328,7 +328,9 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 
 	if(pPix)m_pLabel->setPixmap(*pPix);
-    pMenu->addAction(new QWidgetAction(m_pLabel));
+	QWidgetAction *pAction = new QWidgetAction(pMenu);
+	pAction->setDefaultWidget(m_pLabel);
+	pMenu->addAction(pAction);
 }
 
 
@@ -896,9 +898,9 @@ void KviKvsPopupMenu::executeEpilogues(KviKvsPopupMenuTopLevelData * pData)
 
 void KviKvsPopupMenu::itemClicked(QAction *pAction)
 {
-    // Avoid the event propagation of QMenu::triggered() from submenus
-    if(pAction->parent()!=this)
-        return;
+	// Avoid the event propagation of QMenu::triggered() from submenus
+	if(pAction->parent()!=this)
+		return;
     bool bOk=false;
     int param = pAction->data().toInt(&bOk);
     if(!bOk)
