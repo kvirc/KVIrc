@@ -896,6 +896,9 @@ void KviKvsPopupMenu::executeEpilogues(KviKvsPopupMenuTopLevelData * pData)
 
 void KviKvsPopupMenu::itemClicked(QAction *pAction)
 {
+    // Avoid the event propagation of QMenu::triggered() from submenus
+    if(pAction->parent()!=this)
+        return;
     bool bOk=false;
     int param = pAction->data().toInt(&bOk);
     if(!bOk)
