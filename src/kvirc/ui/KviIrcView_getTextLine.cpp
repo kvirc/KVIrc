@@ -925,13 +925,21 @@ check_mailto_url:
 			p--;
 
 			static kvi_wchar_t aMailtoUrl[] = { 'm', 'a', 'i', 'l', 't', 'o', ':' };
+            static kvi_wchar_t aMagnetUrl[] = { 'm', 'a', 'g', 'n', 'e', 't', ':' };
 
 			if(url_compare_helper(p,aMailtoUrl,7))
 			{
 				partLen = 7;
 				goto got_url;
 			}
-			p++;
+
+
+            if(url_compare_helper(p,aMagnetUrl,7))
+            {
+                partLen = 7;
+                goto got_url;
+            }
+            p++;
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
