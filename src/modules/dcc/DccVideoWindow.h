@@ -121,7 +121,7 @@ protected:
 	QComboBox              * m_pCStandards;
 	QGridLayout            * m_pLayout;
 	QTimer                   m_Timer;
-	QLabel                 * m_pVideoLabel[2];
+    QLabel                 * m_pVideoLabel[3];
 	QString                * m_pszTarget;
 	DccVideoThread         * m_pSlaveThread;
 	QByteArray               m_tmpTextDataOut;
