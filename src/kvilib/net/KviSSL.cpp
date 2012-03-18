@@ -44,10 +44,6 @@
 	#include <signal.h>
 #endif
 
-#ifdef COMPILE_ON_MAC
-    #include <sys/socket.h>
-#endif
-
 static bool g_bSSLInitialized = false;
 static KviMutex * g_pSSLMutex = 0;
 
@@ -317,17 +313,8 @@ void KviSSL::shutdown()
         //see bug #440
 
         #if defined(COMPILE_ON_MAC)
-        // bsd (and probably solaris, too) offers a proper flag to ignore SIGPIPE;
-        // instead of a signal, a write() will get an EPIPE retval, thus fail.
-
-        int set = 1;
-        int fd = SSL_get_fd(m_pSSL);
-        if(fd>=0)
-        {
-            setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
-
-            SSL_shutdown(m_pSSL);
-        }
+        SSL_set_quiet_shutdown(m_pSSL, 1);
+        SSL_shutdown(m_pSSL);
         #elif !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
         // ignore SIGPIPE
 		signal( SIGPIPE, SIG_IGN );
