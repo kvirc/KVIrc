@@ -409,7 +409,10 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 		// qt4's mdi implementation allows only 1 mdichild to be maximized..
 		// so this is useless unless we want to handle the "currently maximized window" => the active window
 		g_pWinPropertiesConfig->writeEntry("IsMaximized",false);
-		g_pWinPropertiesConfig->writeEntry("WinRect",wnd->mdiParent()->normalGeometry());
+		if(wnd->mdiParent()->isMaximized())
+			g_pWinPropertiesConfig->writeEntry("WinRect",wnd->mdiParent()->normalGeometry());
+		else
+			g_pWinPropertiesConfig->writeEntry("WinRect",wnd->mdiParent()->frameGeometry());
 	} else {
 		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->isMaximized());
 		g_pWinPropertiesConfig->writeEntry("WinRect",wnd->frameGeometry());
