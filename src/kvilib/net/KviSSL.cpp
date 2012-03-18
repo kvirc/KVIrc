@@ -312,7 +312,7 @@ void KviSSL::shutdown()
         //avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
         //see bug #440
 
-        #if defined(COMPILE_ON_OSX)
+        #if defined(COMPILE_ON_MAC)
         // bsd (and probably solaris, too) offers a proper flag to ignore SIGPIPE;
         // instead of a signal, a write() will get an EPIPE retval, thus fail.
 
