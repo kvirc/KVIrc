@@ -44,6 +44,10 @@
 	#include <signal.h>
 #endif
 
+#ifdef COMPILE_ON_MAC
+    #include <sys/socket.h>
+#endif
+
 static bool g_bSSLInitialized = false;
 static KviMutex * g_pSSLMutex = 0;
 
