@@ -213,6 +213,8 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	m_bSetupDone            = false;
 	m_bClosingDown          = false;
 	kvi_socket_flushTrafficCounters();
+	// don't let qt quit the application by itself
+	setQuitOnLastWindowClosed(false);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
 	//workaround for #957

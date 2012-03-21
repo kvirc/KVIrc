@@ -875,7 +875,10 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 	e->accept();
 
 	if(g_pApp)
+	{
 		g_pApp->setKviClosingDown();
+		g_pApp->quit();
+	}
 }
 
 void KviMainWindow::hideEvent(QHideEvent *e)
