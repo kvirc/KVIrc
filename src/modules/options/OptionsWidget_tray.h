@@ -43,7 +43,9 @@ protected:
 	KviBoolSelector * m_pEnable;
 	KviBoolSelector * m_pEnableFlashing;
 	KviBoolSelector * m_pLevelBasedNotify;
+#ifndef COMPILE_ON_MAC
 	KviBoolSelector * m_pMinimizeInTray;
+#endif
 	KviBoolSelector * m_pCloseInTray;
 	KviTalGroupBox * m_pLevelsGroup;
 protected slots:

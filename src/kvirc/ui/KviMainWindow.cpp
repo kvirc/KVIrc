@@ -883,6 +883,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 
 void KviMainWindow::hideEvent(QHideEvent *e)
 {
+#ifndef COMPILE_ON_MAC
 	if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
 	{
 		if(!trayIcon())
@@ -896,6 +897,7 @@ void KviMainWindow::hideEvent(QHideEvent *e)
 		}
 		return;
 	}
+#endif
 }
 
 void KviMainWindow::resizeEvent(QResizeEvent *e)

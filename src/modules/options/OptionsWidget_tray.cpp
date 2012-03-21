@@ -41,6 +41,7 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 	createLayout();
 
 	m_pEnable = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable tray icon","options"), KviOption_boolShowDockExtension);
+#ifndef COMPILE_ON_MAC
 	m_pMinimizeInTray = addBoolSelector(0,1,0,1,__tr2qs_ctx("Minimize in tray","options"),KviOption_boolMinimizeInTray);
 #ifdef COMPILE_KDE_SUPPORT
 	QString szTip = "<center>";
@@ -49,6 +50,7 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 		"advanced settings.","options");
 	szTip += "</center>";
 	mergeTip(m_pMinimizeInTray,szTip);
+#endif
 #endif
 	m_pCloseInTray = addBoolSelector(0,2,0,2,__tr2qs_ctx("Close in tray","options"),KviOption_boolCloseInTray);
 
