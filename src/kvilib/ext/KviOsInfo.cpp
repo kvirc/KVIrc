@@ -149,7 +149,7 @@ static QString queryWinInfo(QueryInfo info)
 	{
 		osvi.dwOSVersionInfoSize = sizeof (OSVERSIONINFO);
 		if (! GetVersionEx ( (OSVERSIONINFO *) &osvi) )
-			return FALSE;
+			return KviQString::Empty;
 	}
 
 	// Call GetNativeSystemInfo if supported or GetSystemInfo otherwise.
@@ -441,7 +441,7 @@ static QString queryWinInfo(QueryInfo info)
 		return szVersion;
 	}
 
-	return "what's wrong? o.O";
+	return KviQString::Empty;
 }
 #endif
 
