@@ -362,6 +362,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	// Other asiatic
 	{ "EUC-KR"               , 0 , 0 , 7, "Korean" },
 	{ "TSCII"                , 0 , 0 , 7, "Tamil" },
+	{ "CP-949"               , 0 , 0 , 7, "Korean Codepage" },
 #endif
 	
 	// smart codecs that send in the local charset
@@ -410,6 +411,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	// Other asiatic
 	{ "EUC-KR [UTF-8]"       , 1 , 0 , 7, "Korean - Unicode" },
 	{ "TSCII [UTF-8]"        , 1 , 0 , 7, "Tamil - Unicode" },
+	{ "CP-949 [UTF-8]"       , 1 , 0 , 7, "Korean Codepage - Unicode" },
 #endif
 
 	// smart codecs that send in utf8
@@ -458,6 +460,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	// Other asiatic
 	{ "UTF-8 [EUC-KR]"       , 1 , 1 , 7, "Unicode - Korean" },
 	{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
+	{ "UTF-8 [CP-949]"       , 1 , 1 , 7, "Unicode - Korean Codepage" },
 #endif
 	{ 0                      , 0 , 0 , 0 , 0 }
 };

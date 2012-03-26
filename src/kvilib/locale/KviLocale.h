@@ -46,7 +46,7 @@ class QTextCodec;
 * \def KVI_NUM_ENCODING_GROUPS The number of charset groups
 */
 #ifndef QT_NO_BIG_CODECS
-	#define KVI_NUM_ENCODINGS 109
+	#define KVI_NUM_ENCODINGS 112
 	#define KVI_NUM_ENCODING_GROUPS 8
 #else
 	#define KVI_NUM_ENCODINGS 85
