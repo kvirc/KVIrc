@@ -945,7 +945,7 @@ IF(WANT_BEER)
 ENDIF()
 
 ############################################################################
-# By default we disable QGtkStyle since it messes up with our themeing
+# By default we disable QGtkStyle since it messes up with our theming
 # Some users wants it anyway, and we sometimes needs to check it
 ############################################################################
 
@@ -1286,6 +1286,6 @@ ELSE()
 ENDIF()
 
 if(COMPILE_ENABLE_GTKSTYLE)
-	MESSAGE(STATUS "Warning: you forcibly enabled the GtkStyle engine, which is known to break KVIrc themeing.")
+	MESSAGE(STATUS "Warning: you forcibly enabled the GtkStyle engine, which is known to break KVIrc theming.")
 ENDIF()
 MESSAGE(STATUS " ")
