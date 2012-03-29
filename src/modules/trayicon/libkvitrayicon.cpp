@@ -92,7 +92,10 @@ KviTrayIconWidget::KviTrayIconWidget()
 	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-    m_pContextPopup->addAction(new QWidgetAction(m_pTitleLabel));
+	QWidgetAction * pAction = new QWidgetAction(this);
+	pAction->setDefaultWidget(m_pTitleLabel); 
+	m_pContextPopup->addAction(pAction); 
+
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
 	m_pAwayMenuId->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
