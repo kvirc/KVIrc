@@ -46,8 +46,6 @@ void KviTalApplication::commitData(QSessionManager & manager)
 	saveConfiguration();
 #ifdef COMPILE_KDE_SUPPORT
 	KApplication::commitData(manager);
-#else
-	QApplication::commitData(manager);
 #endif
 }
 
