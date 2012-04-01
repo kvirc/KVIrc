@@ -57,7 +57,6 @@ protected:
 	KviConfigurationFile   * m_pConfig;
 	QString        m_szConfigFileName; // no path!
 protected:
-	virtual void closeEvent(QCloseEvent *e);
 	virtual void showEvent(QShowEvent *e);
 public:
 	bool openConfig(QString  filename,bool bEnsureExists = true);

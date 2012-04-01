@@ -62,6 +62,7 @@ TipFrame::TipFrame(QWidget * par)
 
 TipFrame::~TipFrame()
 {
+	g_pTipWindow = 0;
 }
 
 void TipFrame::setText(const QString &text)
@@ -220,13 +221,6 @@ void TipWindow::prevTip()
 	m_pConfig->writeEntry("uCurTip",uCurTip);
 
 	m_pTipFrame->setText(szTip);
-}
-
-void TipWindow::closeEvent(QCloseEvent *e)
-{
-	e->ignore();
-	delete this;
-	g_pTipWindow = 0;
 }
 
 /*
