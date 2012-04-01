@@ -692,7 +692,10 @@ ENDIF()
 # Check for Python support
 OPTION(WANT_PYTHON "Compile Python Support" ON)
 IF(WANT_PYTHON)
-	FIND_PACKAGE(PythonLibs 2 EXACT)
+	# this should ensure that cmake prefers python 2.7 over python 3
+	# it's not neede from cmake 2.8.8 onwards
+	SET(Python_ADDITIONAL_VERSIONS 2.7)
+	FIND_PACKAGE(PythonLibs)
 	IF(PYTHONLIBS_FOUND)
 		SET(COMPILE_PYTHON_SUPPORT 1)
 		SET(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
