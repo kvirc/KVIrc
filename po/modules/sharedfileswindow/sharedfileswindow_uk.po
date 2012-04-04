@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sharedfileswindow_uk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2012-02-01 18:04+0300\n"
+"PO-Revision-Date: 2012-02-15 20:39+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -22,59 +22,59 @@ msgstr ""
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
-msgstr ""
+msgstr "Файл '%Q' непридатний до читання"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:101
 msgid "Invalid timeout, ignoring"
-msgstr ""
+msgstr "Невірний тайм-аут, ігнорую"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:115
 msgid "Invalid visible name: using default"
-msgstr ""
+msgstr "Невірне видиме ім'я: використовую стандартне"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:121
 msgid "Ops..failed to add the sharedfile..."
-msgstr ""
+msgstr "Ой..не вдалось додати спільний файл..."
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr ""
+msgstr "Немає спільного файлу з видимим іменем '%Q' і маскою '%Q'"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:221
 #, c-format
 msgid "    File: %s (%u bytes)"
-msgstr ""
+msgstr "    Файл: %s (%u байт)"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:223
 #, c-format
 msgid "    Mask: %s"
-msgstr ""
+msgstr "    Маска: %s"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:232
 #, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
-msgstr ""
+msgstr "    Закінчується за %d годин %d хвилин %d секунд"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:242
 msgid "No active file sharedfile"
-msgstr ""
+msgstr "Немає активних спільних файлів"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:243
 #, c-format
 msgid "Total: %d sharedfile"
-msgstr ""
+msgstr "Загалом: %d файлів"
 
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
-msgstr "Керування &загальними файлами"
+msgstr "Керування С&пільними файлами"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:59
 msgid "Edit Shared File - KVIrc"
-msgstr "Редагування загальних файлів - KVIrc"
+msgstr "Редагування спільних файлів - KVIrc"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:61
 msgid "Share name:"
-msgstr "Ім'я загального файлу:"
+msgstr "Спільне ім'я:"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:68
 msgid "File path:"
@@ -82,7 +82,7 @@ msgstr "Шлях до файлу:"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:75
 msgid "&Browse..."
-msgstr "&Перегляд..."
+msgstr "&Огляд..."
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:79
 msgid "User mask:"
@@ -94,11 +94,11 @@ msgstr "Минає в:"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:97
 msgid "&OK"
-msgstr "&Ок"
+msgstr "&Гаразд"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:101
 msgid "Cancel"
-msgstr "Скасування"
+msgstr "Скасувати"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:159
 msgid "Invalid expire time"
@@ -109,30 +109,30 @@ msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
 msgstr ""
-"Минула дата/час: будь ласка видалите одне із двох цих значень, перевірте і "
-"вкажіть дату/час для використання в майбутньому"
+"Дата/час завершення знаходиться в минулому: видаліть мітку \"минає\" або "
+"вкажіть дату/час завершення в майбутньому"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:162
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
 msgid "OK"
-msgstr "Ок"
+msgstr "Гаразд"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:168
 msgid "Invalid share name"
-msgstr "Недійсне ім'я загального файлу"
+msgstr "Невірне спільне ім'я"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
 msgid "The share name can't be empty, please correct it"
-msgstr "Ім'я загального файлу не може бути порожнім, будь ласка скорегуйте його"
+msgstr "Спільне ім'я не може бути порожнім, будь ласка виправте його"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:177
 msgid "Can't open the file"
-msgstr "Не можливо відкрити файл"
+msgstr "Неможливо відкрити файл"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
 msgid "The file doesn't exist or it is not readable, please check the path"
-msgstr "Файл не існує або не читаємо, будь ласка перевірте шлях"
+msgstr "Файл не існує або не читається, будь ласка перевірте шлях"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:199
 msgid "Never"
