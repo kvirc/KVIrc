@@ -44,6 +44,10 @@
 	#include <signal.h>
 #endif
 
+#ifdef COMPILE_ON_MAC
+	#include <sys/socket.h>
+#endif
+
 static bool g_bSSLInitialized = false;
 static KviMutex * g_pSSLMutex = 0;
 
@@ -312,10 +316,7 @@ void KviSSL::shutdown()
         //avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
         //see bug #440
 
-        #if defined(COMPILE_ON_MAC)
-        SSL_set_quiet_shutdown(m_pSSL, 1);
-        SSL_shutdown(m_pSSL);
-        #elif !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+		#if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
         // ignore SIGPIPE
 		signal( SIGPIPE, SIG_IGN );
 		// At least attempt to shutdown the connection gracefully
@@ -375,8 +376,11 @@ bool KviSSL::initSocket(kvi_socket_t fd)
 	m_pSSL = SSL_new(m_pSSLCtx);
 	if(!m_pSSL)return false;
 	if(!SSL_set_fd(m_pSSL,fd))return false;
+#ifdef COMPILE_ON_MAC
+	int set = 1;
+	setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
+#endif
 	return true;
-
 }
 
 static int cb(char *buf, int size, int, void *u)
