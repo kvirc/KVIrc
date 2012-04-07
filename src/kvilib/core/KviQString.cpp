@@ -1047,7 +1047,35 @@ namespace KviQString
 
 	bool matchString(const QString & szExp, const QString & szStr, bool bIsRegExp, bool bExact, bool bCs)
 	{
-		QRegExp re(szExp,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
+		QString szWildcard;
+
+		if(!bIsRegExp)
+		{
+			// In wildcard maching mode, QRegExp not only interprets * and ?, but also [ ]
+			// This workaround embeds square brackes in square brackets (ticket #1264)
+
+			QChar * pPtr = (QChar*)szExp.constData();
+
+			if(!pPtr)
+				return 0;
+
+			while(pPtr->unicode())
+			{
+				if((pPtr->unicode() == '[') || (pPtr->unicode() == ']'))
+				{
+					szWildcard.append("[");
+					szWildcard.append(*pPtr);
+					szWildcard.append("]");
+				} else {
+					szWildcard.append(*pPtr);
+				}
+				pPtr++;
+			}
+		} else {
+			szWildcard = szExp;
+		}
+
+		QRegExp re(szWildcard,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
 
 		if(bExact)
 			return re.exactMatch(szStr);
