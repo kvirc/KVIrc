@@ -118,7 +118,11 @@ TRY_RUN(TEST_DID_RUN TEST_DID_COMPILE "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOU
 IF(TEST_DID_COMPILE)
 	STRING(REGEX MATCH "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z][A-Z][A-Z]" CMAKE_KVIRC_BUILD_DATE "${TEST_BUILD_DATE}")
 ELSE()
-	SET(CMAKE_KVIRC_BUILD_DATE "ERROR")
+	MESSAGE(STATUS " Test datetime program failed to compile:")
+	MESSAGE(STATUS " ----------------------------------------")
+	MESSAGE(STATUS "${TEST_BUILD_DATE}")
+	MESSAGE(STATUS " ----------------------------------------")
+	SET(CMAKE_KVIRC_BUILD_DATE "ERROR ")
 ENDIF()
 
 # Set var to link with, for later use
