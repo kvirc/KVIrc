@@ -803,7 +803,11 @@ void KviMainWindow::changeEvent(QEvent * e)
 		if(isActiveWindow())
 		{
 			if(g_pActiveWindow)
+			{
+				qDebug("KviMainWindow::changeEvent g_pActiveWindow=%s", g_pActiveWindow->windowName().toUtf8().data());
+				setActiveWindow(g_pActiveWindow);
 				childWindowActivated(g_pActiveWindow, true);
+			}
 		} else {
 			if(g_pActiveWindow)
 				g_pActiveWindow->lostUserFocus();
