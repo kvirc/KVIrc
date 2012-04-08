@@ -757,6 +757,8 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)           // Only »cmd.exe /k« in the list.
 	args << "/k" << szCommand;
+#elif defined(COMPILE_ON_MAC)
+	args << "-e" << QString("tell application \"Terminal\" to do script \"%1\"").arg(szCommand);
 #else
 	args << "-e" << szCommand;
 #endif // endif COMPILE_ON_WINDOWS
@@ -779,8 +781,12 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 	QStringList szTerminals;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)           // Only »cmd.exe /k« in the list.
 	szTerminals.append("cmd.exe");
+#elif defined(COMPILE_ON_MAC)
+	szTerminals.append("osascript");
 #else
-	// List: x-terminal-emulator, terminal, xterm
+	// Where the heck is xdg-terminal?
+	// List: gnome-terminal, x-terminal-emulator, terminal, xterm
+	szTerminals.append("gnome-terminal");
 	szTerminals.append("x-terminal-emulator");
 	szTerminals.append("terminal");
 	szTerminals.append("xterm");
