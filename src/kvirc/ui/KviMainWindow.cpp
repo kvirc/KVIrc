@@ -504,7 +504,6 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 	QString group;
 	wnd->getConfigGroupName(group);
 
-	bool bGroupSettings = false;
 	bool bDefaultDocking=false;
 
 	if(g_pWinPropertiesConfig->hasGroup(group))
@@ -516,7 +515,6 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 		// try to load pre-4.2 channel settings
 		g_pWinPropertiesConfig->setGroup(group);
 	} else {
-		bGroupSettings = true;
 		if(g_pWinPropertiesConfig->hasGroup(wnd->typeString()))
 		{
 			g_pWinPropertiesConfig->setGroup(wnd->typeString());
