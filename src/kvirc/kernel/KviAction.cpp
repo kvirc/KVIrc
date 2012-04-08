@@ -453,21 +453,20 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 	if(!setupDone())
 		setup();
 	QPixmap * pPix = smallIcon();
-	int iId;
 	QString szTmp = visibleName();
 
 	if(!m_szKeySequence.isEmpty())
 		szTmp += '\t' + m_szKeySequence;
 
-    QAction *pAction;
+	QAction *pAction;
 	if(pPix)
         pAction = pMenu->addAction(*pPix,szTmp,this,SLOT(activate()));
 	else
         pAction = pMenu->addAction(szTmp,this,SLOT(activate()));
 
 	if(!isEnabled())
-        pAction->setEnabled(false);
-    registerAction(pAction);
+		pAction->setEnabled(false);
+	registerAction(pAction);
 	return true;
 }
 

@@ -606,6 +606,7 @@ void OptionsWidget_messageColors::load()
 	//qDebug("ERRNO (%d)",errno);
 	int dummy; // make gcc happy
 	dummy = symlink(szGlobal.toLocal8Bit().data(),szLocal.toLocal8Bit().data());
+	Q_UNUSED(dummy);
 	// FIXME: Do it also on windows...
 #endif
 

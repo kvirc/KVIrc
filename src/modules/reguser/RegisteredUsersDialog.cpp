@@ -519,7 +519,7 @@ void RegisteredUsersDialog::fillList()
 
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
 	RegisteredUsersDialogItem * item;
-
+	Q_UNUSED(item);
 	for(KviRegisteredUser * u = d->first();u;u = d->next())
 	{
 		if(u->group().isEmpty())

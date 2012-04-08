@@ -389,6 +389,7 @@ int get_id3(mp3info *mp3)
 			retcode |= 4;
 		} else {
 			size_t dummy = fread(fbuf,1,3,mp3->file); fbuf[3] = '\0';
+			Q_UNUSED(dummy);
 			mp3->id3.genre[0]=255;
 
 			if(!strcmp((const char *)"TAG",(const char *)fbuf))

@@ -371,12 +371,12 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 
 	m_pContextPopup->clear();
 
-	PopupTreeWidgetItem * parentMenu = 0;
+	//PopupTreeWidgetItem * parentMenu = 0;
 	bool bIsMenu = false;
 
 	if(it)
 	{
-		parentMenu = (PopupTreeWidgetItem *) (((PopupTreeWidgetItem *)it)->parent());
+		//parentMenu = (PopupTreeWidgetItem *) (((PopupTreeWidgetItem *)it)->parent());
 		bIsMenu = ((PopupTreeWidgetItem *)it)->m_type == PopupTreeWidgetItem::Menu;
 	}
 

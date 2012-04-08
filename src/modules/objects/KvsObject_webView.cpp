@@ -1053,7 +1053,7 @@ KVSO_CLASS_FUNCTION(webView,styleProperty)
 			c->warning(__tr2qs_ctx("Unknown styleResolveStrategy: 'Q' - Switching to default CascadedStyle strategy","objects"),&szStyleResolveStrategy);
 		}
 	}
-	c->returnValue()->setString(element.styleProperty(szName,QWebElement::CascadedStyle));
+	c->returnValue()->setString(element.styleProperty(szName, styleStrategy));
 	return true;
 }
 KVSO_CLASS_FUNCTION(webView,setStyleProperty)

@@ -255,8 +255,7 @@ bool  KvsObject_http::functionSetUser(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("user",KVS_PT_STRING,0,szUser)
 		KVSO_PARAMETER("password",KVS_PT_STRING,0,szPass)
 	KVSO_PARAMETERS_END(c)
-	kvs_int_t id;
-	id=m_pHttp->setUser(szUser,szPass);
+	m_pHttp->setUser(szUser,szPass);
 	return true;
 }
 bool  KvsObject_http::functionSetProxy(KviKvsObjectFunctionCall *c)

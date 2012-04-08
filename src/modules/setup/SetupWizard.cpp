@@ -991,6 +991,7 @@ void SetupWizard::accept()
 		unlink(QTextCodec::codecForLocale()->fromUnicode(localPath).data());
 		int dummy; // make gcc happy
 		dummy = symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(),QTextCodec::codecForLocale()->fromUnicode(localPath).data());
+		Q_UNUSED(dummy);
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT

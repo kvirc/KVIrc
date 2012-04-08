@@ -138,6 +138,7 @@ QString MpInterface::comment()
 QString MpInterface::year()
 {
 	SCAN_MP3_FILE
+	Q_UNUSED(pCodec);
 	return QString(mp3.id3.year);
 }
 
