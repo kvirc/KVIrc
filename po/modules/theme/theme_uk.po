@@ -1,14 +1,14 @@
 # translation of theme.po to Ukrainian
 # Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: theme_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2012-02-18 00:22+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -16,22 +16,41 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: src/modules/theme/ThemeFunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "Обраний файл не є пакунком з темою для KVIrc"
+#: src/modules/theme/ThemeManagementDialog.cpp:332
+msgid "&Apply Theme"
+msgstr "&Застосувати тему"
 
-#: src/modules/theme/ThemeFunctions.cpp:69
-msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "Обраний файл не є пакунком з темою для KVIrc: %1"
+#: src/modules/theme/ThemeManagementDialog.cpp:331
+msgid "&Remove Theme"
+msgstr "&Видалити тему"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:213
+#: src/modules/theme/ThemeManagementDialog.cpp:364
+msgid "<b><u>Current Installed Theme:</u> "
+msgstr "<b><u>Поточна встановлена тема:</u> "
+
+#: src/modules/theme/SaveThemeDialog.cpp:224
+msgid "Acquire Screenshot - KVIrc"
+msgstr "Зробити скріншот - KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
+#: src/modules/theme/ThemeManagementDialog.cpp:348
+#: src/modules/theme/ThemeManagementDialog.cpp:360
+msgid "Apply theme - KVIrc"
+msgstr "Застосувати тему - KVIrc"
 
 #: src/modules/theme/ThemeFunctions.cpp:135
 #: src/modules/theme/ThemeFunctions.cpp:319
 msgid "Author"
 msgstr "Автор"
+
+#: src/modules/theme/libkvitheme.cpp:221
+msgid "Choose a file to save the screenshot to"
+msgstr "Виберіть файл для збереження скріншота"
 
 #: src/modules/theme/ThemeFunctions.cpp:136
 #: src/modules/theme/ThemeFunctions.cpp:320
@@ -43,104 +62,284 @@ msgstr "Дата створення"
 msgid "Created with"
 msgstr "Створено в"
 
-#: src/modules/theme/ThemeFunctions.cpp:217
-msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr "Попередження: тема може бути несумісна з вашою версією KVIrc"
+#: src/modules/theme/ThemeManagementDialog.cpp:163
+msgid "Delete Selected Themes"
+msgstr "Видалити обрані теми"
 
-#: src/modules/theme/ThemeFunctions.cpp:226
-msgid "Go Back to Package Data"
-msgstr "Повернутися до даних пакунку"
+#: src/modules/theme/ThemeManagementDialog.cpp:374
+msgid "Delete Theme - KVIrc"
+msgstr "Видалити тему - KVIrc"
 
-#: src/modules/theme/ThemeFunctions.cpp:233
-msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
-msgstr ""
-"Попередження: Деякі файли цього пакунку можуть бути ушкоджені або несумісні "
-"з вашою версією KVIrc"
-
-#: src/modules/theme/ThemeFunctions.cpp:237
-msgid "Show Details"
-msgstr "Показати подробиці"
-
-#: src/modules/theme/ThemeFunctions.cpp:275
-msgid "Install Theme Pack - KVIrc"
-msgstr "Встановити пакет теми - KVIrc"
-
-#: src/modules/theme/ThemeFunctions.cpp:276
-msgid "You're about to install the following theme package"
-msgstr "Ви намагаєтеся встановити наступний пакунок теми"
-
-#: src/modules/theme/ThemeFunctions.cpp:277
-msgid "Do you want to proceed with the installation ?"
-msgstr "Ви хочете продовжити встанолення?"
+#: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:126
+msgid "Description:"
+msgstr "Опис:"
 
 #: src/modules/theme/ThemeFunctions.cpp:278
 msgid "Do Not Install"
 msgstr "Не встановлювати"
 
-#: src/modules/theme/ThemeFunctions.cpp:279
-msgid "Yes, Proceed"
-msgstr "Так, продовжити"
+#: src/modules/theme/ThemeManagementDialog.cpp:375
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr "Ви дійсно хочете видалити \"%Q\" (версії %Q)?"
 
-#: src/modules/theme/ThemeFunctions.cpp:295
-msgid "Failed to unpack the selected file: %1"
-msgstr "Не можу розпакувати обраний файл: %1"
+#: src/modules/theme/ThemeFunctions.cpp:277
+msgid "Do you want to proceed with the installation ?"
+msgstr "Ви хочете продовжити встанолення?"
 
-#: src/modules/theme/ThemeFunctions.cpp:322
-msgid "Theme Engine Version"
-msgstr "Версія двигуна теми"
+#: src/modules/theme/libkvitheme.cpp:104
+#: src/modules/theme/ThemeManagementDialog.cpp:349
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr "Ви дійсно хочете застосувати тему \"%Q\" (версії %Q)?"
 
-#: src/modules/theme/ThemeFunctions.cpp:323
-msgid "Subdirectory"
-msgstr "Підкаталог"
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
+#, fuzzy
+msgid "Download Themes - KVIrc"
+msgstr "Керування темами - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
 msgstr "Не можу встановити пакет теми: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:103
-#: src/modules/theme/libkvitheme.cpp:112
-#: src/modules/theme/ThemeManagementDialog.cpp:345
-#: src/modules/theme/ThemeManagementDialog.cpp:357
-msgid "Apply theme - KVIrc"
-msgstr "Застосувати тему - KVIrc"
-
-#: src/modules/theme/libkvitheme.cpp:104
-#: src/modules/theme/ThemeManagementDialog.cpp:346
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr "Ви дійсно хочете застосувати тему \"%Q\" (версії %Q)?"
-
-#: src/modules/theme/libkvitheme.cpp:111
-#: src/modules/theme/ThemeManagementDialog.cpp:356
-msgid "Failed to apply the specified theme: %1"
-msgstr "Не можу застосувати обрану тему: %1"
-
-#: src/modules/theme/libkvitheme.cpp:118
-#: src/modules/theme/libkvitheme.cpp:157
-msgid "The theme package '%Q' does not exist"
-msgstr "Пакунок теми '%Q' не існує"
-
-#: src/modules/theme/libkvitheme.cpp:221
-msgid "Choose a file to save the screenshot to"
-msgstr "Виберіть файл для збереження скріншота"
-
 #: src/modules/theme/libkvitheme.cpp:236
 msgid "Error making screenshot"
 msgstr "Не можу зробити скріншот"
 
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-msgid "KVIrc : Download Themes"
-msgstr "KVIrc : Завантаження тем"
+#: src/modules/theme/ThemeManagementDialog.cpp:157
+msgid "Export Selected Themes to a Distributable Package"
+msgstr "Експортувати обрані теми в пакет для подальшого поширення"
+
+#: src/modules/theme/PackThemeDialog.cpp:64
+#: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/PackThemeDialog.cpp:456
+#: src/modules/theme/PackThemeDialog.cpp:546
+#: src/modules/theme/PackThemeDialog.cpp:561
+#: src/modules/theme/PackThemeDialog.cpp:573
+msgid "Export Theme - KVIrc"
+msgstr "Експорт теми - KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:111
+#: src/modules/theme/ThemeManagementDialog.cpp:359
+msgid "Failed to apply the specified theme: %1"
+msgstr "Не можу застосувати обрану тему: %1"
+
+#: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:205
+msgid "Failed to load the selected image"
+msgstr "Не можу завантажити обране зображення"
+
+#: src/modules/theme/PackThemeDialog.cpp:457
+msgid "Failed to load the selected image: please fix it"
+msgstr "Не можу завантажити обране зображення: будь ласка виправте його"
+
+#: src/modules/theme/SaveThemeDialog.cpp:299
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr "Не можу завантажити обране зображення: будь ласка, виправте його"
+
+#: src/modules/theme/SaveThemeDialog.cpp:224
+msgid "Failed to make screenshot"
+msgstr "Не можу зробити знімок"
+
+#: src/modules/theme/ThemeFunctions.cpp:295
+msgid "Failed to unpack the selected file: %1"
+msgstr "Не можу розпакувати обраний файл: %1"
+
+#: src/modules/theme/PackThemeDialog.cpp:392
+msgid "Finally hit the \"Finish\" button to complete the packaging operation."
+msgstr "Для завершення операції пакування натисніть кнопку \"Завершити\"."
+
+#: src/modules/theme/ThemeManagementDialog.cpp:179
+msgid "Get More Themes..."
+msgstr "Отримати більше тем..."
+
+#: src/modules/theme/ThemeFunctions.cpp:226
+msgid "Go Back to Package Data"
+msgstr "Повернутися до даних пакунку"
+
+#: src/modules/theme/PackThemeDialog.cpp:329
+msgid ""
+"Here you can choose the image that will appear in the installation dialog "
+"for your theme package. It can be an icon, a logo or a screenshot and it "
+"should be not larger than 300x225. If you don't provide an image a simple "
+"default icon will be used at installation stage."
+msgstr ""
+"Тут ви можете вибрати зображення, що буде видне користувачеві під час "
+"встановлення теми. Це може бути значок, логотип або скріншот, але їхній "
+"розмір не може перевищувати 300х225 пікселів. Якщо ви не вкажете зображення, "
+"то буде використане типове зображення."
+
+#: src/modules/theme/SaveThemeDialog.cpp:157
+msgid ""
+"Here you can either choose a screenshot image from disk or make one now. The "
+"screenshot will be displayed in the tooltips of the theme management dialog "
+"and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
+msgstr ""
+"Тут ви можете взяти скріншот для теми з диску або зробити новий. Це "
+"зображення буде показано в спливаючих підказках діалогу керування темою, а "
+"також буде показане при встановленні пакунка з темою якщо ви експортуєте "
+"тему в пакунок."
+
+#: src/modules/theme/PackThemeDialog.cpp:381
+msgid ""
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
+msgstr ""
+"Тут вам треба вказати ім'я файлу вашого пакунку з темою. Воно повинне мати "
+"розширення *%1."
+
+#: src/modules/theme/SaveThemeDialog.cpp:100
+msgid ""
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
+msgstr ""
+"Тут ви повинні вказати інформацію про себе (автора) і короткий опис теми, "
+"яку ви створюєте."
+
+#: src/modules/theme/PackThemeDialog.cpp:257
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Тут ви повинні вказати інформацію про себе (пакувальника) й короткий опис "
+"пакунку."
+
+#: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:81
+msgid "Hit the \"Next\" button to begin."
+msgstr "Натисніть \"Далі\" для продовження."
+
+#: src/modules/theme/PackThemeDialog.cpp:328
+msgid "Icon/Screenshot"
+msgstr "Значок/Скріншот"
+
+#: src/modules/theme/ThemeFunctions.cpp:275
+msgid "Install Theme Pack - KVIrc"
+msgstr "Встановити пакет теми - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:173
+msgid "Install Theme Package From Disk"
+msgstr "Встановити пакет теми з локального диску"
+
+#: src/modules/theme/SaveThemeDialog.cpp:173
+msgid "Make Screenshot Now"
+msgstr "Зробити знімок зараз."
+
+#: src/modules/theme/ThemeManagementDialog.cpp:128
+msgid "Manage Themes - KVIrc"
+msgstr "Керування темами - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:390
+msgid "Open Theme - KVIrc"
+msgstr "Відкрити тему - KVIrc"
+
+#: src/modules/theme/PackThemeDialog.cpp:290
+msgid "Package Author:"
+msgstr "Автор пакунку:"
+
+#: src/modules/theme/PackThemeDialog.cpp:256
+msgid "Package Information"
+msgstr "Інформація про пакунок"
+
+#: src/modules/theme/PackThemeDialog.cpp:263
+msgid "Package Name:"
+msgstr "Назва пакету:"
+
+#: src/modules/theme/PackThemeDialog.cpp:380
+msgid "Package Path"
+msgstr "Шлях до пакунку"
+
+#: src/modules/theme/PackThemeDialog.cpp:542
+#: src/modules/theme/PackThemeDialog.cpp:557
+msgid "Packaging failed"
+msgstr "Пакування завершене невдало"
+
+#: src/modules/theme/PackThemeDialog.cpp:163
+msgid "Put a package description here..."
+msgstr "Запишіть тут опис вашого пакунку..."
 
 #: src/modules/theme/SaveThemeDialog.cpp:64
 #: src/modules/theme/SaveThemeDialog.cpp:205
 #: src/modules/theme/SaveThemeDialog.cpp:240
-#: src/modules/theme/SaveThemeDialog.cpp:277
-#: src/modules/theme/SaveThemeDialog.cpp:287
-#: src/modules/theme/SaveThemeDialog.cpp:297
+#: src/modules/theme/SaveThemeDialog.cpp:279
+#: src/modules/theme/SaveThemeDialog.cpp:289
+#: src/modules/theme/SaveThemeDialog.cpp:299
 msgid "Save Current Theme - KVIrc"
 msgstr "Зберегти поточну тему - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:146
+msgid "Save Current Theme..."
+msgstr "Зберегти поточну тему..."
+
+#: src/modules/theme/SaveThemeDialog.cpp:308
+msgid "Save Theme - KVIrc"
+msgstr "Зберегти тему - KVIrc"
+
+#: src/modules/theme/SaveThemeDialog.cpp:180
+msgid "Screenshot"
+msgstr "Скріншот"
+
+#: src/modules/theme/ThemeFunctions.cpp:237
+msgid "Show Details"
+msgstr "Показати подробиці"
+
+#: src/modules/theme/ThemeFunctions.cpp:323
+msgid "Subdirectory"
+msgstr "Підкаталог"
+
+#: src/modules/theme/ThemeFunctions.cpp:69
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
+msgstr "Обраний файл не є пакунком з темою для KVIrc: %1"
+
+#: src/modules/theme/ThemeFunctions.cpp:47
+msgid "The selected file does not seem to be a valid KVIrc theme package"
+msgstr "Обраний файл не є пакунком з темою для KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
+msgid "The theme package '%Q' does not exist"
+msgstr "Пакунок теми '%Q' не існує"
+
+#: src/modules/theme/SaveThemeDialog.cpp:134
+msgid "Theme Author:"
+msgstr "Автор теми:"
+
+#: src/modules/theme/PackThemeDialog.cpp:141
+msgid "Theme Data"
+msgstr "Дані теми"
+
+#: src/modules/theme/ThemeFunctions.cpp:322
+msgid "Theme Engine Version"
+msgstr "Версія двигуна теми"
+
+#: src/modules/theme/SaveThemeDialog.cpp:145
+msgid "Theme Information"
+msgstr "Інформація про тему"
+
+#: src/modules/theme/SaveThemeDialog.cpp:106
+msgid "Theme Name:"
+msgstr "Назва теми:"
+
+#: src/modules/theme/SaveThemeDialog.cpp:306
+msgid "Theme saved successfully to %1"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:142
+msgid ""
+"This is the information list for the themes you're packaging. If it looks OK "
+"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"themes first."
+msgstr ""
+"Це інформація про теми, які ви хочете запакувати. Якщо вона в порядку, "
+"натисніть \"Далі\" для продовження. Інакше, натисніть \"Скасувати\" і "
+"перегляньте теми ще раз."
+
+#: src/modules/theme/PackThemeDialog.cpp:104
+msgid ""
+"This procedure allows you to export the selected themes to a single package. "
+"It is useful when you want to distribute your themes to the public."
+msgstr ""
+"Ця процедура дозволяє вам експортувати виділені теми в один пакунок. Це дуже "
+"зручно якщо ви хочете поширювати ваші теми в інтернеті."
 
 #: src/modules/theme/SaveThemeDialog.cpp:77
 msgid ""
@@ -155,178 +354,43 @@ msgstr ""
 "назад в одиним рухом. Це також зручно якщо ви хочете вручну змінити "
 "параметри теми а потім експортувати їх до пакунку теми."
 
-#: src/modules/theme/SaveThemeDialog.cpp:79
-msgid ""
-"You will be asked to provide a theme name, a description and, if you want, a "
-"screenshot."
-msgstr "Вам буде запропоновано вказати ім'я теми, опис і скріншот."
+#: src/modules/theme/SaveThemeDialog.cpp:279
+msgid "Unable to create theme directory."
+msgstr "Не можу створити теку теми."
 
-#: src/modules/theme/SaveThemeDialog.cpp:81
-#: src/modules/theme/PackThemeDialog.cpp:108
-msgid "Hit the \"Next\" button to begin."
-msgstr "Натисніть \"Далі\" для продовження."
+#: src/modules/theme/SaveThemeDialog.cpp:288
+msgid "Unable to save theme: %1"
+msgstr "Не можу зберегти тему: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:88
-#: src/modules/theme/PackThemeDialog.cpp:101
-msgid "Welcome"
-msgstr "Ласкаво просимо"
-
-#: src/modules/theme/SaveThemeDialog.cpp:100
-msgid ""
-"Here you need to provide information about you (the author) and a short "
-"description of the theme you're creating."
-msgstr ""
-"Тут ви повинні вказати інформацію про себе (автора) і короткий опис теми, "
-"яку ви створюєте."
-
-#: src/modules/theme/SaveThemeDialog.cpp:106
-msgid "Theme Name:"
-msgstr "Назва теми:"
-
-#: src/modules/theme/SaveThemeDialog.cpp:114
 #: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:114
 msgid "Version:"
 msgstr "Версія:"
 
-#: src/modules/theme/SaveThemeDialog.cpp:126
-#: src/modules/theme/PackThemeDialog.cpp:281
-msgid "Description:"
-msgstr "Опис:"
-
-#: src/modules/theme/SaveThemeDialog.cpp:134
-msgid "Theme Author:"
-msgstr "Автор теми:"
-
-#: src/modules/theme/SaveThemeDialog.cpp:145
-msgid "Theme Information"
-msgstr "Інформація про тему"
-
-#: src/modules/theme/SaveThemeDialog.cpp:157
+#: src/modules/theme/ThemeFunctions.cpp:233
 msgid ""
-"Here you can either choose a screenshot image from disk or make one now. The "
-"screenshot will be displayed in the tooltips of the theme management dialog "
-"and will be also visible in the package installation dialog if you will "
-"export the theme to a distributable package."
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
 msgstr ""
-"Тут ви можете взяти скріншот для теми з диску або зробити новий. Це "
-"зображення буде показано в спливаючих підказках діалогу керування темою, а "
-"також буде показане при встановленні пакунка з темою якщо ви експортуєте "
-"тему в пакунок."
+"Попередження: Деякі файли цього пакунку можуть бути ушкоджені або несумісні "
+"з вашою версією KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:173
-msgid "Make Screenshot Now"
-msgstr "Зробити знімок зараз."
+#: src/modules/theme/ThemeFunctions.cpp:217
+msgid "Warning: The theme might be incompatible with this version of KVIrc"
+msgstr "Попередження: тема може бути несумісна з вашою версією KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:180
-msgid "Screenshot"
-msgstr "Скріншот"
+#: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:88
+msgid "Welcome"
+msgstr "Ласкаво просимо"
 
-#: src/modules/theme/SaveThemeDialog.cpp:205
-#: src/modules/theme/PackThemeDialog.cpp:369
-msgid "Failed to load the selected image"
-msgstr "Не можу завантажити обране зображення"
-
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Acquire Screenshot - KVIrc"
-msgstr "Зробити скріншот - KVIrc"
-
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Failed to make screenshot"
-msgstr "Не можу зробити знімок"
+#: src/modules/theme/ThemeFunctions.cpp:279
+msgid "Yes, Proceed"
+msgstr "Так, продовжити"
 
 #: src/modules/theme/SaveThemeDialog.cpp:240
 msgid "You must choose a theme name!"
 msgstr "Ви повинні вибрати назву теми!"
-
-#: src/modules/theme/SaveThemeDialog.cpp:277
-msgid "Unable to create theme directory."
-msgstr "Не можу створити теку теми."
-
-#: src/modules/theme/SaveThemeDialog.cpp:286
-msgid "Unable to save theme: %1"
-msgstr "Не можу зберегти тему: %1"
-
-#: src/modules/theme/SaveThemeDialog.cpp:297
-msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Не можу завантажити обране зображення: будь ласка, виправте його"
-
-#: src/modules/theme/SaveThemeDialog.cpp:304
-msgid "Theme saved successfully to "
-msgstr "Тема успішно збережена в "
-
-#: src/modules/theme/SaveThemeDialog.cpp:309
-msgid "Save Theme - KVIrc"
-msgstr "Зберегти тему - KVIrc"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:97
-msgid "by"
-msgstr "від"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:127
-msgid "Manage Themes - KVIrc"
-msgstr "Керування темами - KVIrc"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:145
-msgid "Save Current Theme..."
-msgstr "Зберегти поточну тему..."
-
-#: src/modules/theme/ThemeManagementDialog.cpp:156
-msgid "Export Selected Themes to a Distributable Package"
-msgstr "Експортувати обрані теми в пакет для подальшого поширення"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:162
-msgid "Delete Selected Themes"
-msgstr "Видалити обрані теми"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:172
-msgid "Install Theme Package From Disk"
-msgstr "Встановити пакет теми з локального диску"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:178
-msgid "Get More Themes..."
-msgstr "Отримати більше тем..."
-
-#: src/modules/theme/ThemeManagementDialog.cpp:212
-#: src/modules/theme/ThemeManagementDialog.cpp:361
-msgid "<b><u>Current Installed Theme:</u> "
-msgstr "<b><u>Поточна встановлена тема:</u> "
-
-#: src/modules/theme/ThemeManagementDialog.cpp:328
-msgid "&Remove Theme"
-msgstr "&Видалити тему"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:329
-msgid "&Apply Theme"
-msgstr "&Застосувати тему"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:371
-msgid "Delete Theme - KVIrc"
-msgstr "Видалити тему - KVIrc"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:372
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr "Ви дійсно хочете видалити \"%Q\" (версії %Q)?"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:387
-msgid "Open Theme - KVIrc"
-msgstr "Відкрити тему - KVIrc"
-
-#: src/modules/theme/PackThemeDialog.cpp:64
-#: src/modules/theme/PackThemeDialog.cpp:369
-#: src/modules/theme/PackThemeDialog.cpp:456
-#: src/modules/theme/PackThemeDialog.cpp:544
-#: src/modules/theme/PackThemeDialog.cpp:559
-#: src/modules/theme/PackThemeDialog.cpp:571
-msgid "Export Theme - KVIrc"
-msgstr "Експорт теми - KVIrc"
-
-#: src/modules/theme/PackThemeDialog.cpp:104
-msgid ""
-"This procedure allows you to export the selected themes to a single package. "
-"It is useful when you want to distribute your themes to the public."
-msgstr ""
-"Ця процедура дозволяє вам експортувати виділені теми в один пакунок. Це дуже "
-"зручно якщо ви хочете поширювати ваші теми в інтернеті."
 
 #: src/modules/theme/PackThemeDialog.cpp:106
 msgid ""
@@ -336,85 +400,23 @@ msgstr ""
 "Вам буде запропоновано вказати назву теми, опис і, якщо ви захочете, додати "
 "значок/скріншот."
 
-#: src/modules/theme/PackThemeDialog.cpp:141
-msgid "Theme Data"
-msgstr "Дані теми"
-
-#: src/modules/theme/PackThemeDialog.cpp:142
+#: src/modules/theme/SaveThemeDialog.cpp:79
 msgid ""
-"This is the information list for the themes you're packaging. If it looks OK "
-"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
-"themes first."
-msgstr ""
-"Це інформація про теми, які ви хочете запакувати. Якщо вона в порядку, "
-"натисніть \"Далі\" для продовження. Інакше, натисніть \"Скасувати\" і "
-"перегляньте теми ще раз."
+"You will be asked to provide a theme name, a description and, if you want, a "
+"screenshot."
+msgstr "Вам буде запропоновано вказати ім'я теми, опис і скріншот."
+
+#: src/modules/theme/ThemeFunctions.cpp:276
+msgid "You're about to install the following theme package"
+msgstr "Ви намагаєтеся встановити наступний пакунок теми"
 
 #: src/modules/theme/PackThemeDialog.cpp:161
 msgid "Your name here"
 msgstr "Ваше ім'я"
 
-#: src/modules/theme/PackThemeDialog.cpp:163
-msgid "Put a package description here..."
-msgstr "Запишіть тут опис вашого пакунку..."
+#: src/modules/theme/ThemeManagementDialog.cpp:98
+msgid "by"
+msgstr "від"
 
-#: src/modules/theme/PackThemeDialog.cpp:256
-msgid "Package Information"
-msgstr "Інформація про пакунок"
-
-#: src/modules/theme/PackThemeDialog.cpp:257
-msgid ""
-"Here you need to provide information about you (the packager) and a short "
-"description of the package you're creating."
-msgstr ""
-"Тут ви повинні вказати інформацію про себе (пакувальника) й короткий опис "
-"пакунку."
-
-#: src/modules/theme/PackThemeDialog.cpp:263
-msgid "Package Name:"
-msgstr "Назва пакету:"
-
-#: src/modules/theme/PackThemeDialog.cpp:290
-msgid "Package Author:"
-msgstr "Автор пакунку:"
-
-#: src/modules/theme/PackThemeDialog.cpp:328
-msgid "Icon/Screenshot"
-msgstr "Значок/Скріншот"
-
-#: src/modules/theme/PackThemeDialog.cpp:329
-msgid ""
-"Here you can choose the image that will appear in the installation dialog "
-"for your theme package. It can be an icon, a logo or a screenshot and it "
-"should be not larger than 300x225. If you don't provide an image a simple "
-"default icon will be used at installation stage."
-msgstr ""
-"Тут ви можете вибрати зображення, що буде видне користувачеві під час "
-"встановлення теми. Це може бути значок, логотип або скріншот, але їхній "
-"розмір не може перевищувати 300х225 пікселів. Якщо ви не вкажете зображення, "
-"то буде використане типове зображення."
-
-#: src/modules/theme/PackThemeDialog.cpp:380
-msgid "Package Path"
-msgstr "Шлях до пакунку"
-
-#: src/modules/theme/PackThemeDialog.cpp:381
-msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
-msgstr ""
-"Тут вам треба вказати ім'я файлу вашого пакунку з темою. Воно повинне мати "
-"розширення *%1."
-
-#: src/modules/theme/PackThemeDialog.cpp:392
-msgid "Finally hit the \"Finish\" button to complete the packaging operation."
-msgstr "Для завершення операції пакування натисніть кнопку \"Завершити\"."
-
-#: src/modules/theme/PackThemeDialog.cpp:457
-msgid "Failed to load the selected image: please fix it"
-msgstr "Не можу завантажити обране зображення: будь ласка виправте його"
-
-#: src/modules/theme/PackThemeDialog.cpp:540
-#: src/modules/theme/PackThemeDialog.cpp:555
-msgid "Packaging failed"
-msgstr "Пакування завершене невдало"
+#~ msgid "KVIrc : Download Themes"
+#~ msgstr "KVIrc : Завантаження тем"

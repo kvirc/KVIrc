@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2007-11-21 19:08+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,6 @@ msgstr "%1 kohteessa %2"
 msgid "Apply filter"
 msgstr "Ota suodatin käyttöön"
 
-#: src/modules/logview/libkvilogview.cpp:129
-#, fuzzy
-msgid "Browse Log Files"
-msgstr "Selaa &lokitiedostoja"
-
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
 msgstr ""
@@ -44,12 +39,12 @@ msgstr "Kanava"
 msgid "Channel"
 msgstr "Kanava"
 
-#: src/modules/logview/LogViewWindow.cpp:640
+#: src/modules/logview/LogViewWindow.cpp:636
 #, fuzzy
 msgid "Channel %1 on %2"
 msgstr "%1 kohteessa %2"
 
-#: src/modules/logview/LogViewWindow.cpp:459
+#: src/modules/logview/LogViewWindow.cpp:461
 msgid "Confirm current user log deletion"
 msgstr ""
 
@@ -61,7 +56,7 @@ msgstr ""
 msgid "Console"
 msgstr "Konsoli"
 
-#: src/modules/logview/LogViewWindow.cpp:643
+#: src/modules/logview/LogViewWindow.cpp:639
 msgid "Console on %1"
 msgstr ""
 
@@ -73,7 +68,7 @@ msgstr "Sisältösuodatin"
 msgid "DCC Chat"
 msgstr "DCC -keskustelu"
 
-#: src/modules/logview/LogViewWindow.cpp:649
+#: src/modules/logview/LogViewWindow.cpp:645
 msgid "DCC Chat with %1"
 msgstr ""
 
@@ -81,15 +76,15 @@ msgstr ""
 msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:460
+#: src/modules/logview/LogViewWindow.cpp:462
 msgid "Do you really wish to delete this log?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:440
+#: src/modules/logview/LogViewWindow.cpp:442
 msgid "Export log file to"
 msgstr ""
 
@@ -101,7 +96,7 @@ msgstr ""
 msgid "Failed to load logview module, aborting"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "File '%1' already exists. Do you want to overwrite it?"
 msgstr ""
 
@@ -148,10 +143,6 @@ msgstr "Vain uudemmat kuin"
 msgid "Only older than"
 msgstr "Vain vanhemmat kuin"
 
-#: src/modules/logview/libkvilogview.cpp:73
-msgid "Ops.. internal error"
-msgstr ""
-
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Muut"
@@ -160,16 +151,16 @@ msgstr "Muut"
 msgid "Query"
 msgstr "Kysely"
 
-#: src/modules/logview/LogViewWindow.cpp:646
+#: src/modules/logview/LogViewWindow.cpp:642
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:438
+#: src/modules/logview/LogViewWindow.cpp:440
 #, fuzzy
-msgid "Remove all log files"
+msgid "Remove all log files within this folder"
 msgstr "Poista tiedosto"
 
-#: src/modules/logview/LogViewWindow.cpp:441
+#: src/modules/logview/LogViewWindow.cpp:443
 #, fuzzy
 msgid "Remove log file"
 msgstr "Poista tiedosto"
@@ -194,7 +185,7 @@ msgstr "Näytä muut lokit"
 msgid "Show query logs"
 msgstr "Näytä yksityisviestilokit"
 
-#: src/modules/logview/LogViewWindow.cpp:652
+#: src/modules/logview/LogViewWindow.cpp:648
 msgid "Something on %1"
 msgstr ""
 
@@ -218,6 +209,10 @@ msgstr "Sisältösuodatin"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Keskeytä suodatus"
+
+#, fuzzy
+#~ msgid "Browse Log Files"
+#~ msgstr "Selaa &lokitiedostoja"
 
 #~ msgid "Filtering files..."
 #~ msgstr "Suodatetaan tiedostoja..."

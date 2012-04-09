@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-03-25 01:59+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -60,15 +60,15 @@ msgstr "Impossibile aprire il file in lettura."
 msgid "Cannot write to the file descriptor."
 msgstr "Impossibile scrivere sul file."
 
-#: src/modules/addon/AddonManagementDialog.cpp:184
+#: src/modules/addon/AddonManagementDialog.cpp:185
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/modules/addon/AddonManagementDialog.cpp:124
+#: src/modules/addon/AddonManagementDialog.cpp:125
 msgid "Configure Addon..."
 msgstr "Configura Addon..."
 
-#: src/modules/addon/AddonManagementDialog.cpp:277
+#: src/modules/addon/AddonManagementDialog.cpp:280
 msgid "Confirm addon uninstallation"
 msgstr "Conferma disinstallazione addon"
 
@@ -76,7 +76,7 @@ msgstr "Conferma disinstallazione addon"
 msgid "Create Addon Package - KVIrc"
 msgstr "Crea Pacchetto Addon - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:146
+#: src/modules/addon/AddonManagementDialog.cpp:147
 msgid "Create an Addon as a Distributable Package"
 msgstr "Crea un Addon come Pacchetto Distribuibile"
 
@@ -88,7 +88,7 @@ msgstr "Creato il"
 msgid "Created with"
 msgstr "Creato con"
 
-#: src/modules/addon/AddonManagementDialog.cpp:136
+#: src/modules/addon/AddonManagementDialog.cpp:137
 msgid "Delete Selected Addons"
 msgstr "Cancella Addon Selezionati"
 
@@ -100,7 +100,7 @@ msgstr "Descrizione: %Q"
 msgid "Do Not Install"
 msgstr "Non Installare"
 
-#: src/modules/addon/AddonManagementDialog.cpp:272
+#: src/modules/addon/AddonManagementDialog.cpp:275
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Vuoi davvero disinstallare l'addon \"%1\"?"
 
@@ -149,7 +149,7 @@ msgstr "Informazioni Finali"
 msgid "Finish"
 msgstr "Fine"
 
-#: src/modules/addon/AddonManagementDialog.cpp:162
+#: src/modules/addon/AddonManagementDialog.cpp:163
 msgid "Get More Addons..."
 msgstr "Scarica Altri Addon..."
 
@@ -198,8 +198,8 @@ msgstr "Premi il pulsante \"Successivo\" per iniziare."
 msgid "Icon File"
 msgstr "File Icona"
 
-#: src/modules/addon/AddonManagementDialog.cpp:318
-#: src/modules/addon/AddonManagementDialog.cpp:332
+#: src/modules/addon/AddonManagementDialog.cpp:321
+#: src/modules/addon/AddonManagementDialog.cpp:335
 msgid "Install Addon - KVIrc"
 msgstr "Installa Addon - KVIrc"
 
@@ -207,7 +207,7 @@ msgstr "Installa Addon - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "Installa Pacchetto Addon - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:156
+#: src/modules/addon/AddonManagementDialog.cpp:157
 msgid "Install Addon Package From Disk"
 msgstr "Installa Pacchetto Addon Dal Disco"
 
@@ -223,7 +223,7 @@ msgstr "Errore interno: chiamo uno strizzacervelli"
 msgid "KVIrc : Download Addons"
 msgstr "KVIrc : Scarica Addon"
 
-#: src/modules/addon/AddonManagementDialog.cpp:102
+#: src/modules/addon/AddonManagementDialog.cpp:103
 msgid "Manage Script-Based Addons"
 msgstr "Gestione Script Addon"
 
@@ -239,7 +239,7 @@ msgstr "Versione Minima di KVIrc"
 msgid "Name: %Q"
 msgstr "Nome: %Q"
 
-#: src/modules/addon/AddonManagementDialog.cpp:278
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "No"
 msgstr "No"
 
@@ -298,7 +298,7 @@ msgstr "Pacchetto salvato con successo in %1"
 msgid "Packaging failed"
 msgstr "Pacchettizzazione fallita"
 
-#: src/modules/addon/AddonManagementDialog.cpp:305
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Please select the addon installation file"
 msgstr "Seleziona il file di installazione dell'addon"
 
@@ -322,12 +322,11 @@ msgstr "Seleziona il file icona:"
 msgid "Select the source directory:"
 msgstr "Seleziona la directory dei sorgenti:"
 
-#: src/modules/addon/AddonManagementDialog.cpp:130
+#: src/modules/addon/AddonManagementDialog.cpp:131
 msgid "Show Help"
 msgstr "Mostra Aiuto"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr "Salto l'entry non esistente '%1'"
 
@@ -339,12 +338,9 @@ msgstr "Salto l'entry invalida '%1'"
 msgid "Source Directory"
 msgstr "Directory Sorgenti"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "L'addon \"%1\" non esiste"
 
@@ -434,8 +430,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Totale: %d addon installati"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Disinstallo l'addon esistente con versione %Q"
 
@@ -453,7 +448,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Benvenuto"
 
-#: src/modules/addon/AddonManagementDialog.cpp:278
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Yes"
 msgstr "Sì"
 

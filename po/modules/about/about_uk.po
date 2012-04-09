@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2012-01-30 20:36+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -15,87 +15,70 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.0\n"
 "10<=4 && (N%100<10 || N%100>=20) ? 1: 2);\n"
-
-#: src/modules/about/AboutDialog.cpp:79
-msgid "About KVIrc..."
-msgstr "Про KVIrc..."
-
-#: src/modules/about/AboutDialog.cpp:80
-msgid "Close"
-msgstr "Закрити"
-
-#: src/modules/about/AboutDialog.cpp:102
-msgid "Forged by the <b>KVIrc Development Team</b>"
-msgstr "Викувано <b>Командою розробників KVIrc</b>"
 
 #: src/modules/about/AboutDialog.cpp:108
 msgid "About"
 msgstr "Про програму"
 
-#: src/modules/about/AboutDialog.cpp:122
-msgid "Runtime Info"
-msgstr "Інфо часу виконання"
-
-#: src/modules/about/AboutDialog.cpp:124
-#: src/modules/about/AboutDialog.cpp:155
-msgid "System Name"
-msgstr "Назва системи"
-
-#: src/modules/about/AboutDialog.cpp:132
-msgid "System Version"
-msgstr "Версія системи"
+#: src/modules/about/AboutDialog.cpp:79
+msgid "About KVIrc..."
+msgstr "Про KVIrc..."
 
 #: src/modules/about/AboutDialog.cpp:136
 msgid "Architecture"
 msgstr "Архітектура"
 
-#: src/modules/about/AboutDialog.cpp:141
-msgid "Build Info"
-msgstr "Інфо про збірку"
+#: src/modules/about/AboutDialog.cpp:163
+msgid "Build Command"
+msgstr "Команда збирання"
 
 #: src/modules/about/AboutDialog.cpp:143
 msgid "Build Date"
 msgstr "Дата компіляції"
 
-#: src/modules/about/AboutDialog.cpp:147
-msgid "Sources Date"
-msgstr "Дата початкових кодів"
+#: src/modules/about/AboutDialog.cpp:167
+msgid "Build Flags"
+msgstr "Прапорці збирання"
 
-#: src/modules/about/AboutDialog.cpp:151
-msgid "Revision Number"
-msgstr "Номер ревізії"
+#: src/modules/about/AboutDialog.cpp:141
+msgid "Build Info"
+msgstr "Інфо про збірку"
 
 #: src/modules/about/AboutDialog.cpp:159
 msgid "CPU Name"
 msgstr "Ім'я ЦП"
 
-#: src/modules/about/AboutDialog.cpp:163
-msgid "Build Command"
-msgstr "Команда збирання"
-
-#: src/modules/about/AboutDialog.cpp:167
-msgid "Build Flags"
-msgstr "Прапорці збирання"
-
-#: src/modules/about/AboutDialog.cpp:172
-msgid "Compiler Name"
-msgstr "Ім'я компілятора"
+#: src/modules/about/AboutDialog.cpp:80
+msgid "Close"
+msgstr "Закрити"
 
 #: src/modules/about/AboutDialog.cpp:176
 msgid "Compiler Flags"
 msgstr "Прапорці компілятора"
 
+#: src/modules/about/AboutDialog.cpp:172
+msgid "Compiler Name"
+msgstr "Ім'я компілятора"
+
 #: src/modules/about/AboutDialog.cpp:182
 msgid "Executable Information"
 msgstr "Інфо про виконуваний файл"
 
+#: src/modules/about/AboutDialog.cpp:102
+msgid "Forged by the <b>KVIrc Development Team</b>"
+msgstr "Викувано <b>Командою розробників KVIrc</b>"
+
 #: src/modules/about/AboutDialog.cpp:195
 msgid "Honor && Glory"
 msgstr "Слава й пошана"
+
+#: src/modules/about/AboutDialog.cpp:221
+msgid "License"
+msgstr "Ліцензія"
 
 #: src/modules/about/AboutDialog.cpp:214
 msgid ""
@@ -107,6 +90,22 @@ msgstr ""
 "Він ПОВИНЕН бути в дистрибутиві...\n"
 "Будь ласка напишіть за адресою <pragma at kvirc dot net>"
 
-#: src/modules/about/AboutDialog.cpp:221
-msgid "License"
-msgstr "Ліцензія"
+#: src/modules/about/AboutDialog.cpp:151
+msgid "Revision Number"
+msgstr "Номер ревізії"
+
+#: src/modules/about/AboutDialog.cpp:122
+msgid "Runtime Info"
+msgstr "Інфо часу виконання"
+
+#: src/modules/about/AboutDialog.cpp:147
+msgid "Sources Date"
+msgstr "Дата початкових кодів"
+
+#: src/modules/about/AboutDialog.cpp:124 src/modules/about/AboutDialog.cpp:155
+msgid "System Name"
+msgstr "Назва системи"
+
+#: src/modules/about/AboutDialog.cpp:132
+msgid "System Version"
+msgstr "Версія системи"

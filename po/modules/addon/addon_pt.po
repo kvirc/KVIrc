@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-03-25 00:39+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
@@ -59,15 +59,15 @@ msgstr "Não é possível abrir o ficheiro para escrita."
 msgid "Cannot write to the file descriptor."
 msgstr "Não é possível escrever para o ficheiro descritor."
 
-#: src/modules/addon/AddonManagementDialog.cpp:184
+#: src/modules/addon/AddonManagementDialog.cpp:185
 msgid "Close"
 msgstr "Fechar"
 
-#: src/modules/addon/AddonManagementDialog.cpp:124
+#: src/modules/addon/AddonManagementDialog.cpp:125
 msgid "Configure Addon..."
 msgstr "Configurar Extra..."
 
-#: src/modules/addon/AddonManagementDialog.cpp:277
+#: src/modules/addon/AddonManagementDialog.cpp:280
 msgid "Confirm addon uninstallation"
 msgstr "Confirme a desinstalação do extra"
 
@@ -75,7 +75,7 @@ msgstr "Confirme a desinstalação do extra"
 msgid "Create Addon Package - KVIrc"
 msgstr "Criar Pacote Extra - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:146
+#: src/modules/addon/AddonManagementDialog.cpp:147
 msgid "Create an Addon as a Distributable Package"
 msgstr "Criar um Extra como um Pacote Distribuível"
 
@@ -87,7 +87,7 @@ msgstr "Criado em "
 msgid "Created with"
 msgstr "Criado com"
 
-#: src/modules/addon/AddonManagementDialog.cpp:136
+#: src/modules/addon/AddonManagementDialog.cpp:137
 msgid "Delete Selected Addons"
 msgstr "Apagar Extras Seleccionados"
 
@@ -99,7 +99,7 @@ msgstr "Descrição: %Q"
 msgid "Do Not Install"
 msgstr "Não Instalar"
 
-#: src/modules/addon/AddonManagementDialog.cpp:272
+#: src/modules/addon/AddonManagementDialog.cpp:275
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Deseja realmente desinstalar o extra \"%1\" ?"
 
@@ -148,7 +148,7 @@ msgstr "Informação Final"
 msgid "Finish"
 msgstr "Terminar"
 
-#: src/modules/addon/AddonManagementDialog.cpp:162
+#: src/modules/addon/AddonManagementDialog.cpp:163
 msgid "Get More Addons..."
 msgstr "Obter Mais Extras..."
 
@@ -197,8 +197,8 @@ msgstr "Clique no botão \"Próximo\" para começar."
 msgid "Icon File"
 msgstr "Ficheiro do Ícone"
 
-#: src/modules/addon/AddonManagementDialog.cpp:318
-#: src/modules/addon/AddonManagementDialog.cpp:332
+#: src/modules/addon/AddonManagementDialog.cpp:321
+#: src/modules/addon/AddonManagementDialog.cpp:335
 msgid "Install Addon - KVIrc"
 msgstr "Instalar Extra - KVIrc"
 
@@ -206,7 +206,7 @@ msgstr "Instalar Extra - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "Instalar Pacote Extra - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:156
+#: src/modules/addon/AddonManagementDialog.cpp:157
 msgid "Install Addon Package From Disk"
 msgstr "Instalar Pacote Extra Do Disco"
 
@@ -222,7 +222,7 @@ msgstr "Erro interno: chame um psiquiatra"
 msgid "KVIrc : Download Addons"
 msgstr "KVIrc: Transferir Extras"
 
-#: src/modules/addon/AddonManagementDialog.cpp:102
+#: src/modules/addon/AddonManagementDialog.cpp:103
 msgid "Manage Script-Based Addons"
 msgstr "Gerir Extras Baseados em 'Scripts'"
 
@@ -238,7 +238,7 @@ msgstr "Versão KVIrc Mínima"
 msgid "Name: %Q"
 msgstr "Nome: %Q"
 
-#: src/modules/addon/AddonManagementDialog.cpp:278
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "No"
 msgstr "Não"
 
@@ -297,7 +297,7 @@ msgstr "Pacote gravado com sucesso em %1"
 msgid "Packaging failed"
 msgstr "Empacotamento falhado"
 
-#: src/modules/addon/AddonManagementDialog.cpp:305
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Please select the addon installation file"
 msgstr "Por favor seleccione o ficheiro extra de instalação"
 
@@ -321,12 +321,11 @@ msgstr "Seleccione o ficheiro do ícone:"
 msgid "Select the source directory:"
 msgstr "Seleccione o directório fonte:"
 
-#: src/modules/addon/AddonManagementDialog.cpp:130
+#: src/modules/addon/AddonManagementDialog.cpp:131
 msgid "Show Help"
 msgstr "Mostrar Ajuda"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr "A saltar a entrada inexistente '%1'"
 
@@ -338,12 +337,9 @@ msgstr "A saltar a entrada inválida '%1'"
 msgid "Source Directory"
 msgstr "Directório Fonte"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "O extra \"%1\" não existe"
 
@@ -432,8 +428,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Total: %d extras instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "A desinstalar a versão do extra existente %Q"
 
@@ -449,7 +444,7 @@ msgstr "Aviso: O extra pode ser incompatível com esta versão KVIrc"
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: src/modules/addon/AddonManagementDialog.cpp:278
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Yes"
 msgstr "Sim"
 

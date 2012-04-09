@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: addon_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2010-07-24 23:55+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -57,15 +57,15 @@ msgstr "書き込み用にファイルを開けませんでした。"
 msgid "Cannot write to the file descriptor."
 msgstr "ファイルの詳細を書き込めませんでした。"
 
-#: src/modules/addon/AddonManagementDialog.cpp:184
+#: src/modules/addon/AddonManagementDialog.cpp:185
 msgid "Close"
 msgstr "閉じる"
 
-#: src/modules/addon/AddonManagementDialog.cpp:124
+#: src/modules/addon/AddonManagementDialog.cpp:125
 msgid "Configure Addon..."
 msgstr "アドオンの設定..."
 
-#: src/modules/addon/AddonManagementDialog.cpp:277
+#: src/modules/addon/AddonManagementDialog.cpp:280
 msgid "Confirm addon uninstallation"
 msgstr "アドオンの削除確認"
 
@@ -73,7 +73,7 @@ msgstr "アドオンの削除確認"
 msgid "Create Addon Package - KVIrc"
 msgstr "アドオン パッケージを作成する - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:146
+#: src/modules/addon/AddonManagementDialog.cpp:147
 msgid "Create an Addon as a Distributable Package"
 msgstr "配布用パッケージとしてアドオンの作成"
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Created with"
 msgstr ""
 
-#: src/modules/addon/AddonManagementDialog.cpp:136
+#: src/modules/addon/AddonManagementDialog.cpp:137
 msgid "Delete Selected Addons"
 msgstr "選択したアドオンの削除"
 
@@ -97,7 +97,7 @@ msgstr "説明: %Q"
 msgid "Do Not Install"
 msgstr "インストールしない"
 
-#: src/modules/addon/AddonManagementDialog.cpp:272
+#: src/modules/addon/AddonManagementDialog.cpp:275
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "本当にアドオン「%1」を削除しますか?"
 
@@ -146,7 +146,7 @@ msgstr "最終情報"
 msgid "Finish"
 msgstr "完了"
 
-#: src/modules/addon/AddonManagementDialog.cpp:162
+#: src/modules/addon/AddonManagementDialog.cpp:163
 msgid "Get More Addons..."
 msgstr "さらにアドオンを取得する..."
 
@@ -186,8 +186,8 @@ msgstr "「次へ」のボタンを押すと開始します。"
 msgid "Icon File"
 msgstr "アイコン用ファイル"
 
-#: src/modules/addon/AddonManagementDialog.cpp:318
-#: src/modules/addon/AddonManagementDialog.cpp:332
+#: src/modules/addon/AddonManagementDialog.cpp:321
+#: src/modules/addon/AddonManagementDialog.cpp:335
 msgid "Install Addon - KVIrc"
 msgstr "アドオンをインストールする - KVIrc"
 
@@ -195,7 +195,7 @@ msgstr "アドオンをインストールする - KVIrc"
 msgid "Install Addon Pack - KVIrc"
 msgstr "アドオン パックをインストールする - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:156
+#: src/modules/addon/AddonManagementDialog.cpp:157
 msgid "Install Addon Package From Disk"
 msgstr "ディスクからアドオン パッケージのインストール"
 
@@ -211,7 +211,7 @@ msgstr ""
 msgid "KVIrc : Download Addons"
 msgstr ""
 
-#: src/modules/addon/AddonManagementDialog.cpp:102
+#: src/modules/addon/AddonManagementDialog.cpp:103
 msgid "Manage Script-Based Addons"
 msgstr "スクリプト ベースのアドオンを管理する"
 
@@ -227,7 +227,7 @@ msgstr "最低限の KVIrc のバージョン"
 msgid "Name: %Q"
 msgstr "名前: %Q"
 
-#: src/modules/addon/AddonManagementDialog.cpp:278
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "No"
 msgstr "いいえ"
 
@@ -286,7 +286,7 @@ msgstr ""
 msgid "Packaging failed"
 msgstr "パッケージ作成の失敗"
 
-#: src/modules/addon/AddonManagementDialog.cpp:305
+#: src/modules/addon/AddonManagementDialog.cpp:308
 msgid "Please select the addon installation file"
 msgstr "インストールするアドオンのファイルを選択してください"
 
@@ -310,12 +310,11 @@ msgstr "アイコン用ファイルの選択"
 msgid "Select the source directory:"
 msgstr "ソース用ディレクトリーの選択"
 
-#: src/modules/addon/AddonManagementDialog.cpp:130
+#: src/modules/addon/AddonManagementDialog.cpp:131
 msgid "Show Help"
 msgstr "ヘルプの表示"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -327,12 +326,9 @@ msgstr ""
 msgid "Source Directory"
 msgstr "ソース用ディレクトリー"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "アドオン「%1」が存在しません。"
 
@@ -419,8 +415,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "合計: %d 個のアドオンをインストールしました"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "存在するアドオンのバージョン %Q を削除しています "
 
@@ -436,7 +431,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "ようこそ"
 
-#: src/modules/addon/AddonManagementDialog.cpp:278
+#: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Yes"
 msgstr "はい"
 

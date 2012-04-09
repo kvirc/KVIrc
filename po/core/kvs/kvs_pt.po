@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-05-08 07:35+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
@@ -70,19 +70,19 @@ msgid "Array reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 "Falha na referência do 'array': a variável foi avaliada para o tipo '%Q'"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:111
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:112
 msgid "Broken condition in menu setup: assuming false"
 msgstr "Condição falhada na configuração do menu: a assumir falso"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:881
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:893
 msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr "Epilogo falhado no menu que aparece '%Q': a ignorar"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:218
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:219
 msgid "Broken icon parameter: ignoring"
 msgstr "Parâmetro de ícone falhado: a ignorar"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:866
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:878
 msgid "Broken prologue in popup menu '%Q': ignoring"
 msgstr "Prólogo falhado na menu que aparece '%Q': a ignorar"
 
@@ -94,7 +94,7 @@ msgstr ""
 "Encaixe inválido'%Q' no objecto de destino '%Q::%Q' enquanto emitia o sinal "
 "'%Q' do objecto '%Q::%Q': a desconectar"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:243
 msgid "Broken text parameter: assuming empty string"
 msgstr "Parâmetro de texto danificado: a assumir texto vazio"
 
@@ -142,7 +142,7 @@ msgstr ""
 "classe '%Q': o proprietário está indexado e definido mas a variante de "
 "retorno não é válida"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:497
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:509
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Incapaz de encontrar o menu externo '%Q': a ignorar"
 
@@ -151,7 +151,7 @@ msgstr "Incapaz de encontrar o menu externo '%Q': a ignorar"
 msgid "Can't find the icon '%Q'"
 msgstr "Não é possível encontrar o ícone '%Q'"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:226
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:227
 msgid "Can't find the icon '%Q': ignoring"
 msgstr "Não é possível encontrar o ícone '%Q': a ignorar"
 
@@ -234,14 +234,14 @@ msgstr ""
 "Detectado um ciclo na árvore de herança da classe base '%Q': redefinir "
 "primeiro esta classe"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 msgid "Division by zero"
 msgstr "Divisão por zero"
 
@@ -271,7 +271,7 @@ msgstr ""
 "Identificador de janela vazio indicado na opção predefinida e religação: "
 "nenhuma religação executada"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:139
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:153
 msgid ""
 "Ending index of a multiple parameter identifier is lower or equal to the "
 "starting index. This will evaluate to a single parameter identifier."
@@ -647,8 +647,8 @@ msgstr "Atraso de tempo limite em falta"
 msgid "Missing timer name"
 msgstr "Nome do temporizador em falta"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
 "Chamada de comando do módulo falhada: não é possível carregar o módulo '%Q': "
@@ -716,7 +716,7 @@ msgstr ""
 msgid "No button with type %Q named %Q"
 msgstr "Nenhum botão com o tipo %Q chamado %Q"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:780
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:782
 msgid "No catalogue %Q for the current language found"
 msgstr "Nenhum catalogo %Q encontrado para a língua actual"
 
@@ -747,24 +747,24 @@ msgstr "Nenhum item da barra de menu com texto '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Nenhum contexto IRC (%u)"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:689
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:697
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 msgid "No such event (%Q)"
 msgstr "Nenhum evento (%Q)"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:705
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:735
 msgid "No such event handler (%Q) for event %Q"
 msgstr "Nenhum manipulador de evento (%Q) para o evento %Q"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:679
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:681
 msgid "No target channel specified and the current window is not a channel"
 msgstr "Nenhum canal de destino especificado e a janela actual não é um canal"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1025
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1027
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
@@ -789,7 +789,8 @@ msgstr ""
 "Erro na definição de opção: opção desconhecida ou valor inválido para o tipo "
 "de opção"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:93
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:91
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:107
 msgid ""
 "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
@@ -818,7 +819,7 @@ msgstr ""
 msgid "Property: %1%2%3, type %4"
 msgstr "Propriedade: %1%2%3, tipo %4"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:492
 msgid "Recursive definition detected for popup '%Q': ignoring"
 msgstr "Definição recursiva detectada no menu '%Q': a ignorar"
 
@@ -857,13 +858,13 @@ msgstr ""
 "<nome> ?"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 "Caracter ':' perdido: queria dizer '...<nomedeespaço>::<nome_da_alias>' ?"
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Sequência '::' perdida ou inválida a seguir ao nome da alias"
 
@@ -897,7 +898,7 @@ msgstr ""
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr "Erro de sintaxe: confuso pelos erros anteriores: a sair"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:154
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:168
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
 msgstr ""
 "Syntax error: chamada de função $$ ($this) inválida no âmbito do objecto"
@@ -906,12 +907,12 @@ msgstr ""
 msgid "Syntax error: malformed (alias?) command identifier"
 msgstr "Erro de sintaxe: identificador de comando mal-formado (alias?)"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:188
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:202
 msgid "Syntax error: malformed (alias?) function call identifier"
 msgstr ""
 "Erro de sintaxe: identificador de chamada de função mal-formado (alias?)"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:180
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:194
 msgid "Syntax error: malformed alias function call identifier"
 msgstr "Erro de sintaxe: identificador de chamada de função alias mal-formado"
 
@@ -923,7 +924,7 @@ msgstr "Erro de sintaxe: identificador de alias mal formado"
 msgid "Syntax error: malformed module command identifier"
 msgstr "Erro de sintaxe: identificador do comando do módulo mal formado"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:369
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:371
 msgid "The $sw() function can be used only in aliases"
 msgstr "A função $sw() pode ser apenas usada nas aliases"
 
@@ -1054,7 +1055,7 @@ msgstr ""
 "O argumento do 'subscript' {} não avaliou para uma 'hash': conversão "
 "automática do tipo '%Q' fornecida"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:819
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:821
 msgid "The catalogue %Q was not loaded"
 msgstr "O catálogo %Q não foi carregado"
 
@@ -1165,7 +1166,7 @@ msgstr ""
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "O objecto chamado '%Q' da classe '%Q' não tem propriedades Qt"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:420
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:422
 msgid "The popup '%Q' is not defined"
 msgstr "O menu '%Q' não está definido"
 
@@ -1288,10 +1289,6 @@ msgstr "Não existe nenhuma opção chamada '%Q'"
 msgid "This command can be used only in windows bound to an IRC context"
 msgstr ""
 "Este comando pode ser usado apenas nas janelas vinculadas a um contexto IRC"
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:524
-msgid "This executable was built without SSL support"
-msgstr "Este executável foi compilado sem suporte SSL"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp:162
 msgid "This is not a channel"
@@ -1635,12 +1632,12 @@ msgstr "Tempo de Vida da Janela"
 msgid "Window button '%Q' not found"
 msgstr "Botão da janela '%Q' não encontrado"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:441
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:443
 #, c-format
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr "Janela com id '%s' não encontrada, a devolver 'string' vazia"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1263
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1266
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Janela com id '%Q' não encontrada: nenhuma re-ligação realizada"
 
@@ -1686,13 +1683,12 @@ msgstr "[KVS]%c Erro de Compilação: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Erro de Execução: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188
-#: src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Aviso: %Q"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1216
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:99
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1213
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
@@ -1730,3 +1726,6 @@ msgstr "diga: linhadecomando injectada"
 
 #~ msgid "The specified window is not a channel"
 #~ msgstr "A janela indicada não é um canal"
+
+#~ msgid "This executable was built without SSL support"
+#~ msgstr "Este executável foi compilado sem suporte SSL"

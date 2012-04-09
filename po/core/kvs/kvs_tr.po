@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-02-26 16:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -68,19 +68,19 @@ msgstr ""
 msgid "Array reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:111
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:112
 msgid "Broken condition in menu setup: assuming false"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:881
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:893
 msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:218
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:219
 msgid "Broken icon parameter: ignoring"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:866
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:878
 msgid "Broken prologue in popup menu '%Q': ignoring"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgid ""
 "object '%Q::%Q': disconnecting"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:243
 msgid "Broken text parameter: assuming empty string"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgid ""
 "property is indexed and defined but the returned variant is not valid"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:497
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:509
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr ""
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Can't find the icon '%Q'"
 msgstr "Simge '%Q' bulunamıyor"
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:226
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:227
 msgid "Can't find the icon '%Q': ignoring"
 msgstr ""
 
@@ -211,14 +211,14 @@ msgid ""
 "that class first"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 msgid "Division by zero"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgid ""
 "rebinding performed"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:139
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:153
 msgid ""
 "Ending index of a multiple parameter identifier is lower or equal to the "
 "starting index. This will evaluate to a single parameter identifier."
@@ -579,8 +579,8 @@ msgstr ""
 msgid "Missing timer name"
 msgstr "Zamanlayıcı adı eksik"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
 
@@ -631,7 +631,7 @@ msgstr ""
 msgid "No button with type %Q named %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:780
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:782
 msgid "No catalogue %Q for the current language found"
 msgstr ""
 
@@ -662,24 +662,24 @@ msgstr ""
 msgid "No such IRC context (%u)"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:689
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:697
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 msgid "No such event (%Q)"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:705
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:735
 msgid "No such event handler (%Q) for event %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:679
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:681
 msgid "No target channel specified and the current window is not a channel"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1025
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1027
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
@@ -700,7 +700,8 @@ msgstr ""
 msgid "Option setting error: Unknown option or invalid value for option type"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:93
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:91
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:107
 msgid ""
 "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
@@ -725,7 +726,7 @@ msgstr ""
 msgid "Property: %1%2%3, type %4"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:492
 msgid "Recursive definition detected for popup '%Q': ignoring"
 msgstr ""
 
@@ -760,12 +761,12 @@ msgid ""
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 
@@ -794,7 +795,7 @@ msgstr ""
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:154
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:168
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
 msgstr ""
 
@@ -802,11 +803,11 @@ msgstr ""
 msgid "Syntax error: malformed (alias?) command identifier"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:188
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:202
 msgid "Syntax error: malformed (alias?) function call identifier"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:180
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:194
 msgid "Syntax error: malformed alias function call identifier"
 msgstr ""
 
@@ -818,7 +819,7 @@ msgstr ""
 msgid "Syntax error: malformed module command identifier"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:369
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:371
 msgid "The $sw() function can be used only in aliases"
 msgstr ""
 
@@ -926,7 +927,7 @@ msgid ""
 "conversion from type '%Q' supplied"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:819
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:821
 msgid "The catalogue %Q was not loaded"
 msgstr ""
 
@@ -1025,7 +1026,7 @@ msgstr ""
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:420
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:422
 msgid "The popup '%Q' is not defined"
 msgstr ""
 
@@ -1136,10 +1137,6 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:194
 msgid "This command can be used only in windows bound to an IRC context"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:524
-msgid "This executable was built without SSL support"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp:162
@@ -1442,12 +1439,12 @@ msgstr ""
 msgid "Window button '%Q' not found"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:441
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:443
 #, c-format
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1263
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1266
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr ""
 
@@ -1493,13 +1490,12 @@ msgstr ""
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188
-#: src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Uyarı: %Q"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1216
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:99
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1213
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 

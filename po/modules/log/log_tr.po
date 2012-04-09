@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-08-15 23:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -28,10 +28,6 @@ msgstr "%1 üstünde %2"
 msgid "Apply filter"
 msgstr "Filtreyi uygula:"
 
-#: src/modules/logview/libkvilogview.cpp:129
-msgid "Browse Log Files"
-msgstr "Kayıt Göstericiyi Aç"
-
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
 msgstr ""
@@ -44,11 +40,11 @@ msgstr "İptal Et"
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/modules/logview/LogViewWindow.cpp:640
+#: src/modules/logview/LogViewWindow.cpp:636
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:459
+#: src/modules/logview/LogViewWindow.cpp:461
 msgid "Confirm current user log deletion"
 msgstr ""
 
@@ -60,7 +56,7 @@ msgstr ""
 msgid "Console"
 msgstr "Konsol"
 
-#: src/modules/logview/LogViewWindow.cpp:643
+#: src/modules/logview/LogViewWindow.cpp:639
 msgid "Console on %1"
 msgstr ""
 
@@ -72,7 +68,7 @@ msgstr "Filtre içeriği"
 msgid "DCC Chat"
 msgstr "DCC Sohbet"
 
-#: src/modules/logview/LogViewWindow.cpp:649
+#: src/modules/logview/LogViewWindow.cpp:645
 msgid "DCC Chat with %1"
 msgstr ""
 
@@ -80,15 +76,15 @@ msgstr ""
 msgid "Do you really wish to delete all these logs?"
 msgstr "Bu bölümdeki kayıtlarını hepsini silmek istiyor musunuz ?"
 
-#: src/modules/logview/LogViewWindow.cpp:460
+#: src/modules/logview/LogViewWindow.cpp:462
 msgid "Do you really wish to delete this log?"
 msgstr "Bu kaydı silmek istiyor musunuz ?"
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:440
+#: src/modules/logview/LogViewWindow.cpp:442
 msgid "Export log file to"
 msgstr ""
 
@@ -100,7 +96,7 @@ msgstr ""
 msgid "Failed to load logview module, aborting"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "File '%1' already exists. Do you want to overwrite it?"
 msgstr ""
 
@@ -132,8 +128,7 @@ msgstr "Kayıt içeriği arama:"
 msgid "Log name mask:"
 msgstr "Kayıt adı arama:"
 
-#: src/modules/log/libkvilog.cpp:107
-#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr ""
@@ -146,10 +141,6 @@ msgstr "Bu tarihten yeni:"
 msgid "Only older than"
 msgstr "Bu tarihten eski:"
 
-#: src/modules/logview/libkvilogview.cpp:73
-msgid "Ops.. internal error"
-msgstr ""
-
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Diğer"
@@ -158,15 +149,16 @@ msgstr "Diğer"
 msgid "Query"
 msgstr "Özel"
 
-#: src/modules/logview/LogViewWindow.cpp:646
+#: src/modules/logview/LogViewWindow.cpp:642
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:438
-msgid "Remove all log files"
+#: src/modules/logview/LogViewWindow.cpp:440
+#, fuzzy
+msgid "Remove all log files within this folder"
 msgstr "Dosyaları sil"
 
-#: src/modules/logview/LogViewWindow.cpp:441
+#: src/modules/logview/LogViewWindow.cpp:443
 msgid "Remove log file"
 msgstr "Dosyayı sil"
 
@@ -190,7 +182,7 @@ msgstr "Diğer kayıtları göster"
 msgid "Show query logs"
 msgstr "Özel kayıtları göster"
 
-#: src/modules/logview/LogViewWindow.cpp:652
+#: src/modules/logview/LogViewWindow.cpp:648
 msgid "Something on %1"
 msgstr ""
 
@@ -198,8 +190,7 @@ msgstr ""
 msgid "This window has no logging capabilities"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
 msgstr ""
@@ -211,6 +202,9 @@ msgstr ""
 #: src/modules/logview/LogViewWindow.cpp:190
 msgid "plain text file"
 msgstr "Filtre içeriği"
+
+#~ msgid "Browse Log Files"
+#~ msgstr "Kayıt Göstericiyi Aç"
 
 #~ msgid "Remove all these channel/query log files"
 #~ msgstr "Bu bölümdeki kayıtlarını hepsini sil"

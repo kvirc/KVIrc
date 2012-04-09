@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-08-15 23:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -54,8 +54,8 @@ msgid "&Halfop"
 msgstr "&Halfop"
 
 #: data/defscript/popups.kvs:653
-#: data/defscript/popups.kvs:759
-#: data/defscript/popups.kvs:1308
+#: data/defscript/popups.kvs:764
+#: data/defscript/popups.kvs:1313
 msgid "&Highlight"
 msgstr "&Uyarıcı"
 
@@ -64,19 +64,23 @@ msgstr "&Uyarıcı"
 msgid "&Hop"
 msgstr "&Çık-Gir"
 
-#: data/defscript/popups.kvs:1163
+#: data/defscript/popups.kvs:1168
 msgid "&Ignore"
 msgstr "&Ignore"
 
 #: data/defscript/popups.kvs:501
-#: data/defscript/popups.kvs:786
-#: data/defscript/popups.kvs:1125
-#: data/defscript/popups.kvs:1266
+#: data/defscript/popups.kvs:791
+#: data/defscript/popups.kvs:1130
+#: data/defscript/popups.kvs:1271
 msgid "&Information"
 msgstr "&Bilgi"
 
+#: data/defscript/popups.kvs:736
+msgid "&Join"
+msgstr "&Gir"
+
 #: data/defscript/popups.kvs:719
-#: data/defscript/popups.kvs:781
+#: data/defscript/popups.kvs:786
 msgid "&Join Channels..."
 msgstr "&Kanallara giriş"
 
@@ -93,7 +97,7 @@ msgstr "&Kick/Ban"
 msgid "&Op"
 msgstr "&Op"
 
-#: data/defscript/popups.kvs:916
+#: data/defscript/popups.kvs:921
 msgid "&Page"
 msgstr "&Sayfa"
 
@@ -103,13 +107,13 @@ msgid "&Part"
 msgstr "&Ayrıl"
 
 #: data/defscript/popups.kvs:638
-#: data/defscript/popups.kvs:1293
+#: data/defscript/popups.kvs:1298
 msgid "&Query"
 msgstr "&Özel Sohbet"
 
 #: data/defscript/popups.kvs:651
-#: data/defscript/popups.kvs:1165
-#: data/defscript/popups.kvs:1306
+#: data/defscript/popups.kvs:1170
+#: data/defscript/popups.kvs:1311
 msgid "&Registration"
 msgstr "&Kayıt"
 
@@ -146,26 +150,26 @@ msgid "-w: send notice to all channel owners"
 msgstr "-w: tüm kanal kurucularına uyarı gönder "
 
 #: data/defscript/popups.kvs:513
-#: data/defscript/popups.kvs:1137
-#: data/defscript/popups.kvs:1278
+#: data/defscript/popups.kvs:1142
+#: data/defscript/popups.kvs:1283
 msgid "/WHO ?s"
 msgstr "Kim ?s"
 
 #: data/defscript/popups.kvs:503
-#: data/defscript/popups.kvs:1127
-#: data/defscript/popups.kvs:1268
+#: data/defscript/popups.kvs:1132
+#: data/defscript/popups.kvs:1273
 msgid "/WHOIS ?s"
 msgstr "Kimdir ?s"
 
 #: data/defscript/popups.kvs:493
-#: data/defscript/popups.kvs:1118
-#: data/defscript/popups.kvs:1259
+#: data/defscript/popups.kvs:1123
+#: data/defscript/popups.kvs:1264
 msgid "/WHOIS ?s (idle time)"
 msgstr "Kimdir ?s"
 
 #: data/defscript/popups.kvs:508
-#: data/defscript/popups.kvs:1132
-#: data/defscript/popups.kvs:1273
+#: data/defscript/popups.kvs:1137
+#: data/defscript/popups.kvs:1278
 msgid "/WHOWAS ?s"
 msgstr "Kim idi ?s"
 
@@ -178,7 +182,7 @@ msgstr "Bildiri listesine ekle"
 msgid "Always Highlight"
 msgstr "Devamlı Uyarı"
 
-#: data/defscript/popups.kvs:1409
+#: data/defscript/popups.kvs:1414
 msgid "Automatically Join Channel"
 msgstr "Kanala Otomatik Giriş"
 
@@ -192,7 +196,7 @@ msgstr "Ban"
 
 #: data/defscript/popups.kvs:594
 #: data/defscript/popups.kvs:620
-#: data/defscript/popups.kvs:916
+#: data/defscript/popups.kvs:921
 msgid "Cancel"
 msgstr "İptal Et"
 
@@ -209,11 +213,11 @@ msgid "Channel Owner"
 msgstr "Kanal Kurucu"
 
 #: data/defscript/popups.kvs:717
-#: data/defscript/popups.kvs:777
+#: data/defscript/popups.kvs:782
 msgid "Channels"
 msgstr "Kanallar"
 
-#: data/defscript/popups.kvs:937
+#: data/defscript/popups.kvs:942
 msgid "Chat with"
 msgstr "Sohbet -->"
 
@@ -221,8 +225,8 @@ msgstr "Sohbet -->"
 msgid "Choose Avatar Image File"
 msgstr "Avatar Resmi Seç "
 
-#: data/defscript/popups.kvs:1223
-#: data/defscript/popups.kvs:1231
+#: data/defscript/popups.kvs:1228
+#: data/defscript/popups.kvs:1236
 msgid "Choose Log Filename"
 msgstr "Kayıt Defteri Dosya Adı Seç"
 
@@ -230,11 +234,11 @@ msgstr "Kayıt Defteri Dosya Adı Seç"
 msgid "Choose..."
 msgstr "Seç ..."
 
-#: data/defscript/popups.kvs:766
-#: data/defscript/popups.kvs:869
-#: data/defscript/popups.kvs:1085
-#: data/defscript/popups.kvs:1174
-#: data/defscript/popups.kvs:1319
+#: data/defscript/popups.kvs:771
+#: data/defscript/popups.kvs:874
+#: data/defscript/popups.kvs:1090
+#: data/defscript/popups.kvs:1179
+#: data/defscript/popups.kvs:1324
 msgid "Clear Buffer"
 msgstr "Ekranı Temizle"
 
@@ -242,19 +246,19 @@ msgstr "Ekranı Temizle"
 msgid "Clear Default"
 msgstr "Varsayılan Sil"
 
-#: data/defscript/popups.kvs:1397
+#: data/defscript/popups.kvs:1402
 msgid "Close"
 msgstr "Kapat"
 
-#: data/defscript/popups.kvs:1469
+#: data/defscript/popups.kvs:1474
 msgid "Close All Dead Channels"
 msgstr "Ölü kanalları kapat"
 
-#: data/defscript/popups.kvs:1475
+#: data/defscript/popups.kvs:1480
 msgid "Close All Dead Queries"
 msgstr "Ölü özelleri kapat"
 
-#: data/defscript/popups.kvs:1463
+#: data/defscript/popups.kvs:1468
 msgid "Close All Queries"
 msgstr "Tüm Özelleri Kapat"
 
@@ -266,7 +270,7 @@ msgstr "Ban maskesini ayarla..."
 msgid "Copy Channel Address"
 msgstr "Kanal Adreslerini Kopyala"
 
-#: data/defscript/popups.kvs:761
+#: data/defscript/popups.kvs:766
 msgid "Copy Channel URL to Clipboard"
 msgstr "Panoya kanal URL'sini kopyala"
 
@@ -279,15 +283,15 @@ msgid "D&evoice"
 msgstr "D&evoice"
 
 #: data/defscript/popups.kvs:520
-#: data/defscript/popups.kvs:1144
+#: data/defscript/popups.kvs:1149
 msgid "DNS for"
 msgstr "DNS"
 
-#: data/defscript/popups.kvs:990
+#: data/defscript/popups.kvs:995
 msgid "Default"
 msgstr "Varsayılan"
 
-#: data/defscript/popups.kvs:1386
+#: data/defscript/popups.kvs:1391
 msgid "Dock"
 msgstr "Ayrı Pencereyi Kapat"
 
@@ -307,11 +311,11 @@ msgstr "Kick sebebi giriniz"
 msgid "Enter a kick/ban reason"
 msgstr "kick/ban sebebi giriniz"
 
-#: data/defscript/popups.kvs:916
+#: data/defscript/popups.kvs:921
 msgid "Enter the message text"
 msgstr "Mesajınızı Giriniz"
 
-#: data/defscript/popups.kvs:1197
+#: data/defscript/popups.kvs:1202
 msgid "Flush Log File"
 msgstr "Kayıt Dosyasını Renklendir"
 
@@ -341,7 +345,7 @@ msgid "IRC Context"
 msgstr "IRC Bağlantısı "
 
 #: data/defscript/popups.kvs:655
-#: data/defscript/popups.kvs:1310
+#: data/defscript/popups.kvs:1315
 msgid "Ig&nore"
 msgstr "Ig&nore"
 
@@ -379,8 +383,8 @@ msgstr "İgnore Et"
 msgid "Ignore as..."
 msgstr "İgnore Tipleri..."
 
-#: data/defscript/popups.kvs:1216
-#: data/defscript/popups.kvs:1229
+#: data/defscript/popups.kvs:1221
+#: data/defscript/popups.kvs:1234
 msgid "Include Existing Buffer"
 msgstr "Açık Sayfaları Dahil Et"
 
@@ -401,41 +405,41 @@ msgstr "Kick/Ban"
 msgid "Kick/Ban Reason"
 msgstr "Kick/Ban Sebep"
 
-#: data/defscript/popups.kvs:1211
 #: data/defscript/popups.kvs:1216
+#: data/defscript/popups.kvs:1221
 msgid "Log To Default File"
 msgstr "Kayıt Defterini Varsayılan Dosyaya Kaydet"
 
-#: data/defscript/popups.kvs:1221
-#: data/defscript/popups.kvs:1229
+#: data/defscript/popups.kvs:1226
+#: data/defscript/popups.kvs:1234
 msgid "Log To..."
 msgstr "Kayıt Defteri Kaydet..."
 
-#: data/defscript/popups.kvs:1401
 #: data/defscript/events.kvs:68
 #: data/defscript/events.kvs:76
 #: data/defscript/events.kvs:84
+#: data/defscript/popups.kvs:1406
 msgid "Logging"
 msgstr "Kayıt Tutma"
 
-#: data/defscript/popups.kvs:1195
+#: data/defscript/popups.kvs:1200
 msgid "Logging to"
 msgstr "Kayıt Defterini Dizine Kaydet"
 
-#: data/defscript/popups.kvs:1508
+#: data/defscript/popups.kvs:1513
 msgid "Look Up "
 msgstr ""
 
 #: data/defscript/popups.kvs:525
-#: data/defscript/popups.kvs:1149
+#: data/defscript/popups.kvs:1154
 msgid "Mask for"
 msgstr "Mask"
 
-#: data/defscript/popups.kvs:1392
+#: data/defscript/popups.kvs:1397
 msgid "Maximize"
 msgstr "Büyült "
 
-#: data/defscript/popups.kvs:1391
+#: data/defscript/popups.kvs:1396
 msgid "Minimize"
 msgstr "Küçült "
 
@@ -444,9 +448,9 @@ msgid "Missing target, no action taken"
 msgstr "Hedef bulunamadı ve hiçbir işlem yapılmadı"
 
 #: data/defscript/popups.kvs:462
-#: data/defscript/popups.kvs:1065
-#: data/defscript/popups.kvs:1112
-#: data/defscript/popups.kvs:1254
+#: data/defscript/popups.kvs:1070
+#: data/defscript/popups.kvs:1117
+#: data/defscript/popups.kvs:1259
 msgid "Multiple Users"
 msgstr "Çoklu Kullanıcılar"
 
@@ -458,18 +462,18 @@ msgstr "Kullanıcı çevrimiçi değil:"
 msgid "Normal User"
 msgstr "Normal Kullanıcı"
 
-#: data/defscript/popups.kvs:1209
+#: data/defscript/popups.kvs:1214
 msgid "Not Logging"
 msgstr "Log tutulmuyor"
 
 #: data/defscript/popups.kvs:657
-#: data/defscript/popups.kvs:752
-#: data/defscript/popups.kvs:1078
-#: data/defscript/popups.kvs:1167
+#: data/defscript/popups.kvs:757
+#: data/defscript/popups.kvs:1083
+#: data/defscript/popups.kvs:1172
 msgid "Notify Avatar"
 msgstr "Avatarı Bildir"
 
-#: data/defscript/popups.kvs:1312
+#: data/defscript/popups.kvs:1317
 msgid "Notify avatar"
 msgstr "Avatarı Bildir"
 
@@ -477,7 +481,7 @@ msgstr "Avatarı Bildir"
 msgid "O&wner"
 msgstr "O&wner"
 
-#: data/defscript/popups.kvs:1515
+#: data/defscript/popups.kvs:1520
 msgid "Open "
 msgstr "Aç\t"
 
@@ -489,7 +493,7 @@ msgstr "Seçenekler "
 msgid "Parameter message missing"
 msgstr "Parametre mesajı bulunamadı "
 
-#: data/defscript/popups.kvs:1457
+#: data/defscript/popups.kvs:1462
 msgid "Part All Channels"
 msgstr "Tüm Kanallardan Ayrıl "
 
@@ -514,15 +518,15 @@ msgstr "Kayıt..."
 msgid "Remove from Notify"
 msgstr "Bildiri listesinden çıkar "
 
-#: data/defscript/popups.kvs:1393
+#: data/defscript/popups.kvs:1398
 msgid "Restore"
 msgstr "Geri Al"
 
-#: data/defscript/popups.kvs:942
+#: data/defscript/popups.kvs:947
 msgid "Reverse Chat with"
 msgstr ""
 
-#: data/defscript/popups.kvs:964
+#: data/defscript/popups.kvs:969
 msgid "Reverse Send to"
 msgstr ""
 
@@ -530,19 +534,19 @@ msgstr ""
 msgid "Scripting"
 msgstr "Scripting"
 
-#: data/defscript/popups.kvs:947
+#: data/defscript/popups.kvs:952
 msgid "Secure Chat with"
 msgstr "Güvenli Sohbet -->"
 
-#: data/defscript/popups.kvs:969
+#: data/defscript/popups.kvs:974
 msgid "Secure Reverse Send to"
 msgstr ""
 
-#: data/defscript/popups.kvs:959
+#: data/defscript/popups.kvs:964
 msgid "Secure send to"
 msgstr "Güvenli gönder -->"
 
-#: data/defscript/popups.kvs:954
+#: data/defscript/popups.kvs:959
 msgid "Send to"
 msgstr "Gönder -->"
 
@@ -554,7 +558,7 @@ msgstr "Wallop gönder --> "
 msgid "Set as Default"
 msgstr "Varsayılan Olarak Ayarla "
 
-#: data/defscript/popups.kvs:1403
+#: data/defscript/popups.kvs:1408
 msgid "Set window props as default"
 msgstr "Sayfa özelliklerini varsayılan olarak ayarla"
 
@@ -563,11 +567,11 @@ msgstr "Sayfa özelliklerini varsayılan olarak ayarla"
 msgid "Start Highlighting (Local)"
 msgstr "Uyarıcıyı Başlat (Yerel)"
 
-#: data/defscript/popups.kvs:1440
+#: data/defscript/popups.kvs:1445
 msgid "Stop Auto-Joining Channel on Network '?s'"
 msgstr "'?s' Ağında Otomatik Kanal Girişi İptal Et"
 
-#: data/defscript/popups.kvs:1427
+#: data/defscript/popups.kvs:1432
 msgid "Stop Auto-Joining Channel on Server '?s'"
 msgstr "'?s' Sunucusunda Otomatik Kanal Girişi İptal Et"
 
@@ -580,19 +584,19 @@ msgstr "Uyarıcıyı Durdur"
 msgid "Stop Highlighting (Local)"
 msgstr "Uyarıcıyı Durdur (Yerel)"
 
-#: data/defscript/popups.kvs:1204
+#: data/defscript/popups.kvs:1209
 msgid "Stop Logging"
 msgstr "Kayıt Defterini İptal Et"
 
-#: data/defscript/popups.kvs:981
+#: data/defscript/popups.kvs:986
 msgid "TDCC Reverse Send to"
 msgstr ""
 
-#: data/defscript/popups.kvs:976
+#: data/defscript/popups.kvs:981
 msgid "TDCC Send to"
 msgstr "TDCC Gönder -->"
 
-#: data/defscript/popups.kvs:1520
+#: data/defscript/popups.kvs:1525
 msgid "Telnet to "
 msgstr "Telnet -->"
 
@@ -609,11 +613,11 @@ msgstr "Burası kanal penceresi değil"
 msgid "To connect to a server, type /server <server name>"
 msgstr "Sunucuya bağlanmak için /server <sunucu adı> komutunu yazınız"
 
-#: data/defscript/popups.kvs:1527
+#: data/defscript/popups.kvs:1532
 msgid "Traceroute to "
 msgstr "Traceroute -->"
 
-#: data/defscript/popups.kvs:1533
+#: data/defscript/popups.kvs:1538
 msgid "Traceroute6 to "
 msgstr "Traceroute6 --> "
 
@@ -621,19 +625,19 @@ msgstr "Traceroute6 --> "
 msgid "Type /gnotice for help"
 msgstr "Yardım için /gnotice yazınız    "
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1392
 msgid "Undock"
 msgstr "Ayrı Pencereye Aç"
 
-#: data/defscript/popups.kvs:1489
+#: data/defscript/popups.kvs:1494
 msgid "Unhighlight All Channels"
 msgstr "Tüm Kanallardaki Uyarıcıyı Kapat"
 
-#: data/defscript/popups.kvs:1495
+#: data/defscript/popups.kvs:1500
 msgid "Unhighlight All Queries"
 msgstr "Tüm Özel Sohbetlerdeki Uyarıcıyı Kapat"
 
-#: data/defscript/popups.kvs:1483
+#: data/defscript/popups.kvs:1488
 msgid "Unhighlight All Windows"
 msgstr "Tüm Pencerelerdeki Uyarıcıyı Kapat"
 
@@ -674,15 +678,15 @@ msgstr "Kullanıcı Operatör"
 msgid "Voice"
 msgstr "Voice"
 
-#: data/defscript/popups.kvs:988
+#: data/defscript/popups.kvs:993
 msgid "Voice Chat"
 msgstr "Sesli Chat"
 
-#: data/defscript/popups.kvs:1419
+#: data/defscript/popups.kvs:1424
 msgid "When Connecting to Network '?s'"
 msgstr "'?s' Ağına Bağlandığım Zaman"
 
-#: data/defscript/popups.kvs:1412
+#: data/defscript/popups.kvs:1417
 msgid "When Connecting to Server '?s'"
 msgstr "'?s' Sunucusuna Bağlandığım Zaman"
 
@@ -703,21 +707,29 @@ msgstr "Sunucuya bağlı olmak zorundasınız "
 msgid "You must use DNS in an IRC context"
 msgstr ""
 
-#: data/defscript/popups.kvs:775
+#: data/defscript/popups.kvs:780
 msgid "You're not connected to a server"
 msgstr "Sunucuya bağlı değilsiniz"
 
 #: data/defscript/classes.kvs:18
-msgid "[Installer] Error: the first argument of copyFiles must be a source directory"
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr "[Yükleyici] Hata: copyFiles’ın ilk argümanı kaynak dizinde olmalıdır"
 
 #: data/defscript/classes.kvs:24
-msgid "[Installer] Error: the second argument of copyFiles must be a file name or file regexp"
-msgstr "[Yükleyici] Hata: copyFiles’ın ikinci argümanı bir dosya ismi ya da regexp dosyası olmalıdır"
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr ""
+"[Yükleyici] Hata: copyFiles’ın ikinci argümanı bir dosya ismi ya da regexp "
+"dosyası olmalıdır"
 
 #: data/defscript/classes.kvs:30
-msgid "[Installer] Error: the third argument of copyFiles must be a destination directory"
-msgstr "[Yükleyici] Hata: copyFiles’ın üçüncü argümanı bir hedef dizin olmalıdır"
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
+msgstr ""
+"[Yükleyici] Hata: copyFiles’ın üçüncü argümanı bir hedef dizin olmalıdır"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
@@ -748,11 +760,11 @@ msgstr "kaydedilmemiş  "
 msgid "is registered as"
 msgstr "şöyle kayıtlı"
 
-#: data/defscript/popups.kvs:810
+#: data/defscript/popups.kvs:815
 msgid "l (Connections)"
 msgstr "I (Bağlantılar)"
 
-#: data/defscript/popups.kvs:815
+#: data/defscript/popups.kvs:820
 msgid "m (Command Usage)"
 msgstr "m (Komut Kullanımı)"
 
@@ -761,7 +773,7 @@ msgstr "m (Komut Kullanımı)"
 msgid "message"
 msgstr "mesaj"
 
-#: data/defscript/popups.kvs:820
+#: data/defscript/popups.kvs:825
 msgid "o (Operators)"
 msgstr "o (Operatörler)"
 
@@ -769,24 +781,21 @@ msgstr "o (Operatörler)"
 msgid "reason"
 msgstr "sebep"
 
-#: data/defscript/popups.kvs:825
+#: data/defscript/popups.kvs:830
 msgid "t (Connection stats?)"
 msgstr "t (Bağlantı istatistikleri ?)"
 
-#: data/defscript/popups.kvs:830
+#: data/defscript/popups.kvs:835
 msgid "u (Uptime)"
 msgstr "u (Çalışma Zamanı)"
 
-#: data/defscript/popups.kvs:835
+#: data/defscript/popups.kvs:840
 msgid "y (y-Lines)"
 msgstr "y (y-Lines)"
 
-#: data/defscript/popups.kvs:840
+#: data/defscript/popups.kvs:845
 msgid "z (Debug Stats?)"
 msgstr "z (Hata Ayıklama İstatistikleri?)"
-
-#~ msgid "&Join"
-#~ msgstr "&Gir"
 
 #~ msgid "Log To Default File,"
 #~ msgstr "Kayıt Defterini Varsayılan Dosyaya Kaydet,"

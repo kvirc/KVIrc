@@ -1,14 +1,14 @@
 # translation of torrent.po to Ukrainian
 # Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: torrent_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2012-02-15 20:28+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
@@ -28,21 +28,29 @@ msgstr ""
 "Інтерфейс для чудового клієнта KDE KTorrent.\n"
 "Завантажте на http://www.ktorrent.org\n"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Пробую інтерфейс торрент-клієнта \"%Q\": рахунок %d"
-
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Вибираю інтерфейс торрент-клієнта \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:109
-msgid "Seems that there is no usable torrent client on this machine"
-msgstr "Здається на цій машині немає придатного торрент-клієнта"
+#: src/modules/torrent/libkvitorrent.cpp:722
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Помилковий інтерфейс клієнта \"%Q\"!"
+
+#: src/modules/torrent/libkvitorrent.cpp:129
+msgid "Last interface error: "
+msgstr "Остання помилка інтерфейсу: "
+
+#: src/modules/torrent/StatusBarApplet.cpp:92
+msgid "No client selected!"
+msgstr "Клієнт не вибрано!"
 
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Не вибрано інтерфейс торрент-клієнта. Спробуйте /torrent.detect"
+
+#: src/modules/torrent/libkvitorrent.cpp:109
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Здається на цій машині немає придатного торрент-клієнта"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
 msgid ""
@@ -50,23 +58,15 @@ msgid ""
 "function"
 msgstr "Вибраний інтерфейс торрент-клієнта не зміг виконати вказану функцію"
 
-#: src/modules/torrent/libkvitorrent.cpp:129
-msgid "Last interface error: "
-msgstr "Остання помилка інтерфейсу: "
-
-#: src/modules/torrent/libkvitorrent.cpp:714
-msgid "Using client interface \"%Q\"."
-msgstr "Використовую інтерфейс клієнта \"%Q\"."
-
-#: src/modules/torrent/libkvitorrent.cpp:722
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Помилковий інтерфейс клієнта \"%Q\"!"
-
 #: src/modules/torrent/StatusBarApplet.cpp:44
 #: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Торрент-клієнт"
 
-#: src/modules/torrent/StatusBarApplet.cpp:92
-msgid "No client selected!"
-msgstr "Клієнт не вибрано!"
+#: src/modules/torrent/libkvitorrent.cpp:62
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Пробую інтерфейс торрент-клієнта \"%Q\": рахунок %d"
+
+#: src/modules/torrent/libkvitorrent.cpp:714
+msgid "Using client interface \"%Q\"."
+msgstr "Використовую інтерфейс клієнта \"%Q\"."

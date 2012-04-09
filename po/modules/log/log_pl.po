@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2011-03-03 17:16+0100\n"
 "Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -27,11 +27,6 @@ msgstr "%1 na %2"
 msgid "Apply filter"
 msgstr "Zastosuj filtr"
 
-#: src/modules/logview/libkvilogview.cpp:129
-#, fuzzy
-msgid "Browse Log Files"
-msgstr "Przeglą&daj pliki dziennika"
-
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
 msgstr ""
@@ -44,12 +39,12 @@ msgstr "Anuluj"
 msgid "Channel"
 msgstr "Kanał"
 
-#: src/modules/logview/LogViewWindow.cpp:640
+#: src/modules/logview/LogViewWindow.cpp:636
 #, fuzzy
 msgid "Channel %1 on %2"
 msgstr "%1 na %2"
 
-#: src/modules/logview/LogViewWindow.cpp:459
+#: src/modules/logview/LogViewWindow.cpp:461
 msgid "Confirm current user log deletion"
 msgstr ""
 
@@ -61,7 +56,7 @@ msgstr ""
 msgid "Console"
 msgstr "Konsola"
 
-#: src/modules/logview/LogViewWindow.cpp:643
+#: src/modules/logview/LogViewWindow.cpp:639
 msgid "Console on %1"
 msgstr ""
 
@@ -73,7 +68,7 @@ msgstr "Filtr zawartości"
 msgid "DCC Chat"
 msgstr "Czat DCC"
 
-#: src/modules/logview/LogViewWindow.cpp:649
+#: src/modules/logview/LogViewWindow.cpp:645
 msgid "DCC Chat with %1"
 msgstr ""
 
@@ -82,16 +77,16 @@ msgstr ""
 msgid "Do you really wish to delete all these logs?"
 msgstr "Usuń wszystkie te pliki dziennika kanału/rozmowy"
 
-#: src/modules/logview/LogViewWindow.cpp:460
+#: src/modules/logview/LogViewWindow.cpp:462
 #, fuzzy
 msgid "Do you really wish to delete this log?"
 msgstr "Usuń wszystkie te pliki dziennika kanału/rozmowy"
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:440
+#: src/modules/logview/LogViewWindow.cpp:442
 msgid "Export log file to"
 msgstr ""
 
@@ -103,7 +98,7 @@ msgstr ""
 msgid "Failed to load logview module, aborting"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "File '%1' already exists. Do you want to overwrite it?"
 msgstr ""
 
@@ -151,10 +146,6 @@ msgstr "Tylko nowsze niż"
 msgid "Only older than"
 msgstr "Tylko starsze niż"
 
-#: src/modules/logview/libkvilogview.cpp:73
-msgid "Ops.. internal error"
-msgstr ""
-
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Inne"
@@ -163,16 +154,16 @@ msgstr "Inne"
 msgid "Query"
 msgstr "Rozmowa"
 
-#: src/modules/logview/LogViewWindow.cpp:646
+#: src/modules/logview/LogViewWindow.cpp:642
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:438
+#: src/modules/logview/LogViewWindow.cpp:440
 #, fuzzy
-msgid "Remove all log files"
+msgid "Remove all log files within this folder"
 msgstr "Usuń plik"
 
-#: src/modules/logview/LogViewWindow.cpp:441
+#: src/modules/logview/LogViewWindow.cpp:443
 #, fuzzy
 msgid "Remove log file"
 msgstr "Usuń plik"
@@ -197,7 +188,7 @@ msgstr "Pokaż dzienniki innych zdarzeń"
 msgid "Show query logs"
 msgstr "Pokaż dzienniki rozmowy"
 
-#: src/modules/logview/LogViewWindow.cpp:652
+#: src/modules/logview/LogViewWindow.cpp:648
 msgid "Something on %1"
 msgstr ""
 
@@ -221,6 +212,10 @@ msgstr "Filtr zawartości"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Przerwij fitrowanie"
+
+#, fuzzy
+#~ msgid "Browse Log Files"
+#~ msgstr "Przeglą&daj pliki dziennika"
 
 #~ msgid "Filtering files..."
 #~ msgstr "Filtrowanie plików..."

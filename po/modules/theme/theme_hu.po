@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:329
+#: src/modules/theme/ThemeManagementDialog.cpp:332
 msgid "&Apply Theme"
 msgstr "Kinézet &Alkalmazása"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:328
+#: src/modules/theme/ThemeManagementDialog.cpp:331
 msgid "&Remove Theme"
 msgstr "Kinézet eltávolítása"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:212
-#: src/modules/theme/ThemeManagementDialog.cpp:361
+#: src/modules/theme/ThemeManagementDialog.cpp:213
+#: src/modules/theme/ThemeManagementDialog.cpp:364
 msgid "<b><u>Current Installed Theme:</u> "
 msgstr ""
 
@@ -34,10 +34,9 @@ msgstr ""
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Képernyőkép Készítése - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:103
-#: src/modules/theme/libkvitheme.cpp:112
-#: src/modules/theme/ThemeManagementDialog.cpp:345
-#: src/modules/theme/ThemeManagementDialog.cpp:357
+#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
+#: src/modules/theme/ThemeManagementDialog.cpp:348
+#: src/modules/theme/ThemeManagementDialog.cpp:360
 msgid "Apply theme - KVIrc"
 msgstr "Kinézet Alkalmazása - KVIrc"
 
@@ -60,16 +59,16 @@ msgstr "Készült "
 msgid "Created with"
 msgstr "Készült"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:162
+#: src/modules/theme/ThemeManagementDialog.cpp:163
 msgid "Delete Selected Themes"
 msgstr "Kiválasztott Kinézet(ek) Törlése"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:371
+#: src/modules/theme/ThemeManagementDialog.cpp:374
 msgid "Delete Theme - KVIrc"
 msgstr "Kinézet Törlése - KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:126
 #: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:126
 msgid "Description:"
 msgstr "Leírás:"
 
@@ -77,7 +76,7 @@ msgstr "Leírás:"
 msgid "Do Not Install"
 msgstr "Ne Telepíts"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:372
+#: src/modules/theme/ThemeManagementDialog.cpp:375
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Tényleg törölni szeretnéd a kinézetet \"%Q\" (Verzió: %Q)?"
 
@@ -86,9 +85,14 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Szeretnéd folytatni a telepítéssel?"
 
 #: src/modules/theme/libkvitheme.cpp:104
-#: src/modules/theme/ThemeManagementDialog.cpp:346
+#: src/modules/theme/ThemeManagementDialog.cpp:349
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Szeretnéd alkalmazni a \"%Q\" Kinézetet (%Q verzió)"
+
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
+#, fuzzy
+msgid "Download Themes - KVIrc"
+msgstr "Kinézet Kezelése - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
@@ -98,26 +102,26 @@ msgstr "Hiba a kinézet-csomag telepítésekor: %Q"
 msgid "Error making screenshot"
 msgstr "Képernyőkép készítése sikertelen"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:156
+#: src/modules/theme/ThemeManagementDialog.cpp:157
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "A kiválsztott csomag exportálása hordozható csomagba"
 
 #: src/modules/theme/PackThemeDialog.cpp:64
 #: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/PackThemeDialog.cpp:456
-#: src/modules/theme/PackThemeDialog.cpp:544
-#: src/modules/theme/PackThemeDialog.cpp:559
-#: src/modules/theme/PackThemeDialog.cpp:571
+#: src/modules/theme/PackThemeDialog.cpp:546
+#: src/modules/theme/PackThemeDialog.cpp:561
+#: src/modules/theme/PackThemeDialog.cpp:573
 msgid "Export Theme - KVIrc"
 msgstr "Kinézet Exportálása - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:111
-#: src/modules/theme/ThemeManagementDialog.cpp:356
+#: src/modules/theme/ThemeManagementDialog.cpp:359
 msgid "Failed to apply the specified theme: %1"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:205
 #: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:205
 msgid "Failed to load the selected image"
 msgstr "Kiválasztott kép betöltése sikertelen"
 
@@ -125,7 +129,7 @@ msgstr "Kiválasztott kép betöltése sikertelen"
 msgid "Failed to load the selected image: please fix it"
 msgstr "Kiválasztott kép betöltése sikertelen: kérlek javítsd"
 
-#: src/modules/theme/SaveThemeDialog.cpp:297
+#: src/modules/theme/SaveThemeDialog.cpp:299
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "A kiválasztott képernyőkép betöltése nem lehetséges: kérlek javítsd"
 
@@ -143,7 +147,7 @@ msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 "Végül kattints a \"Befejezés\" gombra, hogy elkezdődjön a csomag készítése."
 
-#: src/modules/theme/ThemeManagementDialog.cpp:178
+#: src/modules/theme/ThemeManagementDialog.cpp:179
 msgid "Get More Themes..."
 msgstr "Még több kinézet..."
 
@@ -200,8 +204,8 @@ msgstr ""
 "Itt meg kell adnod néhány információt magadról (csomagkészítő) és egy rövid "
 "leírást a csomagról, amit készítesz."
 
-#: src/modules/theme/SaveThemeDialog.cpp:81
 #: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:81
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
@@ -213,23 +217,19 @@ msgstr "Ikon/Képernyőkép"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Kinézet Csomag Telepítése - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:172
+#: src/modules/theme/ThemeManagementDialog.cpp:173
 msgid "Install Theme Package From Disk"
 msgstr "Kinézet csomag telepítése lemezről"
-
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-msgid "KVIrc : Download Themes"
-msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:173
 msgid "Make Screenshot Now"
 msgstr "Képernyőkép készítése most"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:127
+#: src/modules/theme/ThemeManagementDialog.cpp:128
 msgid "Manage Themes - KVIrc"
 msgstr "Kinézet Kezelése - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:387
+#: src/modules/theme/ThemeManagementDialog.cpp:390
 msgid "Open Theme - KVIrc"
 msgstr "Kinézet Megnyitása - KVIrc"
 
@@ -249,8 +249,8 @@ msgstr "Csomag Neve:"
 msgid "Package Path"
 msgstr "Csomag Útvonala"
 
-#: src/modules/theme/PackThemeDialog.cpp:540
-#: src/modules/theme/PackThemeDialog.cpp:555
+#: src/modules/theme/PackThemeDialog.cpp:542
+#: src/modules/theme/PackThemeDialog.cpp:557
 msgid "Packaging failed"
 msgstr "Csomagkészítés sikertelen"
 
@@ -261,17 +261,17 @@ msgstr "A csomag leírása"
 #: src/modules/theme/SaveThemeDialog.cpp:64
 #: src/modules/theme/SaveThemeDialog.cpp:205
 #: src/modules/theme/SaveThemeDialog.cpp:240
-#: src/modules/theme/SaveThemeDialog.cpp:277
-#: src/modules/theme/SaveThemeDialog.cpp:287
-#: src/modules/theme/SaveThemeDialog.cpp:297
+#: src/modules/theme/SaveThemeDialog.cpp:279
+#: src/modules/theme/SaveThemeDialog.cpp:289
+#: src/modules/theme/SaveThemeDialog.cpp:299
 msgid "Save Current Theme - KVIrc"
 msgstr "Aktuális Kinézet Mentése - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:145
+#: src/modules/theme/ThemeManagementDialog.cpp:146
 msgid "Save Current Theme..."
 msgstr "Aktuális Kinézet Mentése..."
 
-#: src/modules/theme/SaveThemeDialog.cpp:309
+#: src/modules/theme/SaveThemeDialog.cpp:308
 msgid "Save Theme - KVIrc"
 msgstr "Kinézet Mentése - KVIrc"
 
@@ -296,8 +296,7 @@ msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csom
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csomag"
 
-#: src/modules/theme/libkvitheme.cpp:118
-#: src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 
@@ -321,9 +320,9 @@ msgstr "Kinézet Információk"
 msgid "Theme Name:"
 msgstr "Kinézet Neve:"
 
-#: src/modules/theme/SaveThemeDialog.cpp:304
-msgid "Theme saved successfully to "
-msgstr "A kinézet sikeresen mentve "
+#: src/modules/theme/SaveThemeDialog.cpp:306
+msgid "Theme saved successfully to %1"
+msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:142
 msgid ""
@@ -358,17 +357,17 @@ msgstr ""
 "manuálisan is módosíthatod a beállításokat és később is exportálhatod "
 "csomagba."
 
-#: src/modules/theme/SaveThemeDialog.cpp:277
+#: src/modules/theme/SaveThemeDialog.cpp:279
 msgid "Unable to create theme directory."
 msgstr "Kinézet könyvtár létrehozása sikertelen."
 
-#: src/modules/theme/SaveThemeDialog.cpp:286
+#: src/modules/theme/SaveThemeDialog.cpp:288
 #, fuzzy
 msgid "Unable to save theme: %1"
 msgstr "%1 kinézet mentése sikertelen."
 
-#: src/modules/theme/SaveThemeDialog.cpp:114
 #: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:114
 msgid "Version:"
 msgstr "Verzió:"
 
@@ -386,8 +385,8 @@ msgstr ""
 "Figyelmeztetés: A kinézet nem biztos, hogy kompatibilis a KVIrc ezen "
 "verziójával"
 
-#: src/modules/theme/SaveThemeDialog.cpp:88
 #: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:88
 msgid "Welcome"
 msgstr "Üdvözlet"
 
@@ -422,7 +421,7 @@ msgstr "A következő kinézet csomag kerül telepítésre:"
 msgid "Your name here"
 msgstr "A neved"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:97
+#: src/modules/theme/ThemeManagementDialog.cpp:98
 msgid "by"
 msgstr "-"
 

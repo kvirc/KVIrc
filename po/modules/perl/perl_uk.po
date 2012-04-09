@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2012-01-30 20:43+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -15,35 +15,33 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.0\n"
+
+#: src/modules/perlcore/libkviperlcore.cpp:232
+msgid "Internal error: perl interpreter not initialized"
+msgstr "Внутрішня помилка: інтерпретатор perl не ініціалізовано"
+
+#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
+msgid "Perl execution error:"
+msgstr "Помилка виконання perl:"
 
 #: src/modules/perl/libkviperl.cpp:47
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Неможливо завантажити модуль perlcore: підтримка perl недоступна"
 
-#: src/modules/perl/libkviperl.cpp:48
-msgid "To see more details about loading failure try /perlcore.load"
-msgstr ""
-"Для детальної інформації про помилку завантаження спробуйте /perlcore.load"
-
-#: src/modules/perl/libkviperl.cpp:61
-msgid "This KVIrc executable has been compiled without perl scripting support"
-msgstr "Ця збірка KVIrc компілювалась без підтримки perl"
-
-#: src/modules/perl/libkviperl.cpp:460
-#: src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
 msgstr "Модуль perlcore не може виконати код: проблема з підтримкою perl"
 
-#: src/modules/perl/libkviperl.cpp:477
-#: src/modules/perl/libkviperl.cpp:481
-msgid "Perl execution error:"
-msgstr "Помилка виконання perl:"
+#: src/modules/perl/libkviperl.cpp:61
+msgid "This KVIrc executable has been compiled without perl scripting support"
+msgstr "Ця збірка KVIrc компілювалась без підтримки perl"
 
-#: src/modules/perlcore/libkviperlcore.cpp:232
-msgid "Internal error: perl interpreter not initialized"
-msgstr "Внутрішня помилка: інтерпретатор perl не ініціалізовано"
+#: src/modules/perl/libkviperl.cpp:48
+msgid "To see more details about loading failure try /perlcore.load"
+msgstr ""
+"Для детальної інформації про помилку завантаження спробуйте /perlcore.load"

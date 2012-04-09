@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"POT-Creation-Date: 2012-04-09 20:01+0200\n"
 "PO-Revision-Date: 2010-07-26 16:10+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -24,11 +24,6 @@ msgstr ""
 msgid "Apply filter"
 msgstr "フィルターの適用"
 
-#: src/modules/logview/libkvilogview.cpp:129
-#, fuzzy
-msgid "Browse Log Files"
-msgstr "ログファイルの参照(&L)"
-
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
 msgstr ""
@@ -42,11 +37,11 @@ msgstr "チャンネル"
 msgid "Channel"
 msgstr "チャンネル"
 
-#: src/modules/logview/LogViewWindow.cpp:640
+#: src/modules/logview/LogViewWindow.cpp:636
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:459
+#: src/modules/logview/LogViewWindow.cpp:461
 msgid "Confirm current user log deletion"
 msgstr ""
 
@@ -58,7 +53,7 @@ msgstr ""
 msgid "Console"
 msgstr "コンソール"
 
-#: src/modules/logview/LogViewWindow.cpp:643
+#: src/modules/logview/LogViewWindow.cpp:639
 msgid "Console on %1"
 msgstr ""
 
@@ -70,7 +65,7 @@ msgstr "内容によるフィルター"
 msgid "DCC Chat"
 msgstr "DCC チャット"
 
-#: src/modules/logview/LogViewWindow.cpp:649
+#: src/modules/logview/LogViewWindow.cpp:645
 msgid "DCC Chat with %1"
 msgstr ""
 
@@ -79,16 +74,16 @@ msgstr ""
 msgid "Do you really wish to delete all these logs?"
 msgstr "全チャンネル/問い合わせのログ ファイルを削除する"
 
-#: src/modules/logview/LogViewWindow.cpp:460
+#: src/modules/logview/LogViewWindow.cpp:462
 #, fuzzy
 msgid "Do you really wish to delete this log?"
 msgstr "全チャンネル/問い合わせのログ ファイルを削除する"
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:440
+#: src/modules/logview/LogViewWindow.cpp:442
 msgid "Export log file to"
 msgstr ""
 
@@ -100,7 +95,7 @@ msgstr ""
 msgid "Failed to load logview module, aborting"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:781
+#: src/modules/logview/LogViewWindow.cpp:777
 msgid "File '%1' already exists. Do you want to overwrite it?"
 msgstr ""
 
@@ -147,10 +142,6 @@ msgstr "より新しいもののみ"
 msgid "Only older than"
 msgstr "より古いもののみ"
 
-#: src/modules/logview/libkvilogview.cpp:73
-msgid "Ops.. internal error"
-msgstr ""
-
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "その他"
@@ -159,16 +150,16 @@ msgstr "その他"
 msgid "Query"
 msgstr "問い合わせ"
 
-#: src/modules/logview/LogViewWindow.cpp:646
+#: src/modules/logview/LogViewWindow.cpp:642
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:438
+#: src/modules/logview/LogViewWindow.cpp:440
 #, fuzzy
-msgid "Remove all log files"
+msgid "Remove all log files within this folder"
 msgstr "ファイルの削除"
 
-#: src/modules/logview/LogViewWindow.cpp:441
+#: src/modules/logview/LogViewWindow.cpp:443
 #, fuzzy
 msgid "Remove log file"
 msgstr "ファイルの削除"
@@ -193,7 +184,7 @@ msgstr "その他のログの表示"
 msgid "Show query logs"
 msgstr "問い合わせのログの表示"
 
-#: src/modules/logview/LogViewWindow.cpp:652
+#: src/modules/logview/LogViewWindow.cpp:648
 msgid "Something on %1"
 msgstr ""
 
@@ -217,6 +208,10 @@ msgstr "内容によるフィルター"
 
 #~ msgid "Abort filtering"
 #~ msgstr "フィルター処理の中断"
+
+#, fuzzy
+#~ msgid "Browse Log Files"
+#~ msgstr "ログファイルの参照(&L)"
 
 #~ msgid "Filtering files..."
 #~ msgstr "ファイルをフィルター処理しています..."
