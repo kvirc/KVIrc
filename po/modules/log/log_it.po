@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: logview_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-09 20:01+0200\n"
-"PO-Revision-Date: 2011-04-21 23:55+0200\n"
+"PO-Revision-Date: 2012-04-09 21:04+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -130,7 +130,8 @@ msgstr "Maschera contenuti log:"
 msgid "Log name mask:"
 msgstr "Maschera nome log:"
 
-#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107
+#: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr "Manca l'id della finestra dopo lo switch 'w'"
@@ -156,9 +157,8 @@ msgid "Query with %1 on %2"
 msgstr "Query con %1 su %2"
 
 #: src/modules/logview/LogViewWindow.cpp:440
-#, fuzzy
 msgid "Remove all log files within this folder"
-msgstr "Elimina tutti i file di log"
+msgstr "Elimina tutti i file di log contenuti in questa cartella"
 
 #: src/modules/logview/LogViewWindow.cpp:443
 msgid "Remove log file"
@@ -192,7 +192,8 @@ msgstr "Qualcosa su %1"
 msgid "This window has no logging capabilities"
 msgstr "Questa finestra non può essere loggata"
 
-#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:103
+#: src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
 msgstr "Finestra '%1' non trovata"
