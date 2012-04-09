@@ -260,7 +260,7 @@ ThemeManagementDialog::~ThemeManagementDialog()
 #ifdef COMPILE_WEBKIT_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
-		delete m_pWebThemeInterfaceDialog;
+		m_pWebThemeInterfaceDialog->deleteLater();
 		m_pWebThemeInterfaceDialog = NULL;
 	}
 #endif //COMPILE_WEBKIT_SUPPORT
@@ -268,7 +268,7 @@ ThemeManagementDialog::~ThemeManagementDialog()
 
 void ThemeManagementDialog::closeClicked()
 {
-	delete this;
+	deleteLater();
 	m_pInstance = 0;
 }
 
@@ -304,7 +304,7 @@ void ThemeManagementDialog::display(bool bTopLevel)
 void ThemeManagementDialog::cleanup()
 {
 	if(!m_pInstance)return;
-	delete m_pInstance;
+	m_pInstance->deleteLater();
 	m_pInstance = 0;
 }
 
@@ -319,7 +319,7 @@ void ThemeManagementDialog::packTheme()
 
 	PackThemeDialog * pDialog = new PackThemeDialog(this,&dl);
 	pDialog->exec();
-	delete pDialog;
+	pDialog->deleteLater();
 }
 
 void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
@@ -428,7 +428,7 @@ void ThemeManagementDialog::saveCurrentTheme()
 {
 	SaveThemeDialog * pSaveThemeDialog = new SaveThemeDialog(this);
 	pSaveThemeDialog->exec();
-	delete pSaveThemeDialog;
+	pSaveThemeDialog->deleteLater();
 	fillThemeBox();
 }
 
@@ -479,7 +479,7 @@ void ThemeManagementDialog::enableDisableButtons()
 void ThemeManagementDialog::closeEvent(QCloseEvent * e)
 {
 	e->ignore();
-	delete this;
+	deleteLater();
 }
 
 void ThemeManagementDialog::tipRequest(QListWidgetItem *,const QPoint &)
