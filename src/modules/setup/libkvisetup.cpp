@@ -90,7 +90,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		switch(g_iThemeToApply)
 		{
 			case THEME_APPLY_HIRES:
-				KviTheme::load("YellowIRC-1.0.0",out,BUILTIN);
+				KviTheme::load("Aria-1.0.0",out,BUILTIN);
 			break;
 			case THEME_APPLY_LORES:
 				KviTheme::load("MinimalDark-1.0.0",out,BUILTIN);
