@@ -1,4 +1,4 @@
-# CMakeLists for data/deftheme/YellowIRC-1.0.0
+# CMakeLists for data/deftheme/Aria-1.0.0
 
 FILE(GLOB images "${CMAKE_CURRENT_SOURCE_DIR}/*.png")
 FILE(GLOB themefiles "${CMAKE_CURRENT_SOURCE_DIR}/*.kvc")
