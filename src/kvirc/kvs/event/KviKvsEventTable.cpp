@@ -1236,7 +1236,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Someone has issued a NOTICE with a channel as his target
 			For normal channel notices $2 parameter will only a channel name.
 			For channel op or channel voice notices it will contain also the leading '@' or '+' flag.
-			Please note that this convention is different from the one used in [event:onchannelprivmsg]OnChannelPrivmsg[/event]:
+			Please note that this convention is different from the one used in [event:onchannelprivmsg]OnChannelMessage[/event]:
 			the incompatibility is here for historical reasons: it is not a big deal so we're not fighting it :)
 		@seealso:
 			[event:onservernotice]OnServerNotice[/event]
@@ -3834,6 +3834,37 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = MemoServ nick\n" \
 		"$1 = MemoServ username\n" \
 		"$2 = MemoServ host\n" \
-		"$3 = message")
+		"$3 = message"),
+
+
+	/*
+		@doc: onbroadcastnotice
+		@type:
+			event
+		@title:
+			OnBroadcastNotice
+		@short:
+			A broadcast NOTICE has been received.
+		@parameters:
+			$0 = source nick
+			$1 = source user
+			$2 = source host
+			$3 = target
+			$4 = message
+		@window:
+			Console window
+		@description:
+			A NOTICE directed to a special target has been received.
+			A special target is actually anything that kvirc couldn't
+			recognize: not the local user nor a channel.
+		@seealso:
+			[event:onservernotice]OnServerNotice[/event]
+	*/
+	EVENT("OnBroadcastNotice", \
+		"$0 = source nick\n" \
+		"$1 = source user\n" \
+		"$2 = source host\n" \
+		"$3 = target\n" \
+		"$4 = message")
 
 };
