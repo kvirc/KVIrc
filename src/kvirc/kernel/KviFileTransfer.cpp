@@ -99,7 +99,7 @@ void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateM
 		d.replace("bNoRaise",new QVariant(bNoRaise));
 
 		KviModuleExtensionManager::instance()->allocateExtension(
-				"tool",
+				"transfer",
 				KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME,
 				pWnd,&d,0,
 				"filetransferwindow");

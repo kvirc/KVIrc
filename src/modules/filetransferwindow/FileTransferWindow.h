@@ -85,13 +85,13 @@ public:
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
 
-class FileTransferWindow : public KviWindow
+class FileTransferWindow : public KviWindow, public KviModuleExtension
 {
 	friend class FileTransferItem;
 	friend class FileTransferItemDelegate;
 	Q_OBJECT
 public:
-	FileTransferWindow();
+	FileTransferWindow(KviModuleExtensionDescriptor * d);
 	~FileTransferWindow();
 protected:
 	QSplitter		* m_pVertSplitter;
