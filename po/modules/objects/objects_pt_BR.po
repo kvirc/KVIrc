@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_objects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 20:01+0200\n"
+"POT-Creation-Date: 2012-04-10 15:55+0200\n"
 "PO-Revision-Date: 2011-06-29 13:01-0300\n"
 "Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -765,8 +765,9 @@ msgid "Unknown Color Role '%Q'"
 msgstr "Função de Cor Desconhecida '%Q'"
 
 #: src/modules/objects/KvsObject_webView.cpp:1193
-msgid "Unknown action 'Q':"
-msgstr ""
+#, fuzzy
+msgid "Unknown action '%Q':"
+msgstr "Posição desconhecida '%Q'"
 
 #: src/modules/objects/KvsObject_groupBox.cpp:299
 #: src/modules/objects/KvsObject_hBox.cpp:197
@@ -854,10 +855,12 @@ msgid "Unknown style '%Q'"
 msgstr "Estilo desconhecido '%Q'"
 
 #: src/modules/objects/KvsObject_webView.cpp:1053
+#, fuzzy
 msgid ""
-"Unknown styleResolveStrategy: 'Q' - Switching to default CascadedStyle "
+"Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
 "strategy"
 msgstr ""
+"Rácio de aspecto %Q desconhecido - A mudar para o rácio ManterRáciodoAspecto"
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:188
 #, fuzzy

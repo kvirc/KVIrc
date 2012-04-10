@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 20:01+0200\n"
+"POT-Creation-Date: 2012-04-10 15:55+0200\n"
 "PO-Revision-Date: 2011-06-16 01:13-0300\n"
 "Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -326,7 +326,8 @@ msgstr "Seleccione o diretório fonte:"
 msgid "Show Help"
 msgstr "Mostrar Ajuda"
 
-#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693
+#: src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -338,9 +339,12 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Diretório Fonte"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "O extra \"%1\" não existe"
 
@@ -432,7 +436,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Total: %d extras instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "A desinstalar a versão do extra existente %Q"
 

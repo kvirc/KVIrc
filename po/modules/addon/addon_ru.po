@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 20:01+0200\n"
+"POT-Creation-Date: 2012-04-10 15:55+0200\n"
 "PO-Revision-Date: 2011-06-06 01:53+0700\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
 "alexeysokolov co cc>\n"
@@ -323,7 +323,8 @@ msgstr "Выберите исходную директорию:"
 msgid "Show Help"
 msgstr "Показать помощь"
 
-#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693
+#: src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -335,9 +336,12 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Исходная директория"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "Дополнение \"%1\" не существует"
 
@@ -427,7 +431,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Всего установлено %d дополнений"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Удаление имеющегося дополнения версии %Q"
 

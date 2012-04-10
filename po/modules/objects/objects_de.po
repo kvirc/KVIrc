@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 20:01+0200\n"
+"POT-Creation-Date: 2012-04-10 15:55+0200\n"
 "PO-Revision-Date: 2011-01-26 14:37+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -760,8 +760,9 @@ msgid "Unknown Color Role '%Q'"
 msgstr "Unbekannte Farbrolle ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:1193
-msgid "Unknown action 'Q':"
-msgstr ""
+#, fuzzy
+msgid "Unknown action '%Q':"
+msgstr "Unbekannte Position ›%Q‹"
 
 #: src/modules/objects/KvsObject_groupBox.cpp:299
 #: src/modules/objects/KvsObject_hBox.cpp:197
@@ -851,10 +852,11 @@ msgid "Unknown style '%Q'"
 msgstr "Unbekannter Stil ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:1053
+#, fuzzy
 msgid ""
-"Unknown styleResolveStrategy: 'Q' - Switching to default CascadedStyle "
+"Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
 "strategy"
-msgstr ""
+msgstr "Unbekannte Achse ›%Q‹, wechsle zum Standard Z-Achse"
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:188
 #, fuzzy

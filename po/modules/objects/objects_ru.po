@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 20:01+0200\n"
+"POT-Creation-Date: 2012-04-10 15:55+0200\n"
 "PO-Revision-Date: 2010-12-13 01:56+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -754,8 +754,9 @@ msgid "Unknown Color Role '%Q'"
 msgstr "Неизвестная роль цвета '%Q'"
 
 #: src/modules/objects/KvsObject_webView.cpp:1193
-msgid "Unknown action 'Q':"
-msgstr ""
+#, fuzzy
+msgid "Unknown action '%Q':"
+msgstr "Неизвестная позиция '%Q'"
 
 #: src/modules/objects/KvsObject_groupBox.cpp:299
 #: src/modules/objects/KvsObject_hBox.cpp:197
@@ -842,10 +843,11 @@ msgid "Unknown style '%Q'"
 msgstr "Неизвестный стиль %Q"
 
 #: src/modules/objects/KvsObject_webView.cpp:1053
+#, fuzzy
 msgid ""
-"Unknown styleResolveStrategy: 'Q' - Switching to default CascadedStyle "
+"Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
 "strategy"
-msgstr ""
+msgstr "Неизвестные способ сжатия %Q - переключаемся на KeepAspectRatio"
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:188
 #, fuzzy
