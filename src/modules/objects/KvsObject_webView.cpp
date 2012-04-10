@@ -1050,7 +1050,7 @@ KVSO_CLASS_FUNCTION(webView,styleProperty)
 		else if(KviQString::equalCI(szStyleResolveStrategy, "ComputedStyle")) styleStrategy=QWebElement::ComputedStyle;
 		else
 		{
-			c->warning(__tr2qs_ctx("Unknown styleResolveStrategy: 'Q' - Switching to default CascadedStyle strategy","objects"),&szStyleResolveStrategy);
+			c->warning(__tr2qs_ctx("Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle strategy","objects"),&szStyleResolveStrategy);
 		}
 	}
 	c->returnValue()->setString(element.styleProperty(szName, styleStrategy));
@@ -1190,7 +1190,7 @@ KVSO_CLASS_FUNCTION(webView,appendWebViewActionToMenu)
 	}
 	if(!pAction)
 	{
-		c->warning(__tr2qs_ctx("Unknown action 'Q':","objects"),&szActionName);
+		c->warning(__tr2qs_ctx("Unknown action '%Q':","objects"),&szActionName);
 		return true;
 	}
 	if(!szIcon.isEmpty())
