@@ -1,7 +1,7 @@
 # translation of theme.po to Ukrainian
 # Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: theme_uk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2012-02-18 00:22+0300\n"
+"PO-Revision-Date: 2012-04-11 21:17+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:332
@@ -94,9 +94,8 @@ msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Ви дійсно хочете застосувати тему \"%Q\" (версії %Q)?"
 
 #: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-#, fuzzy
 msgid "Download Themes - KVIrc"
-msgstr "Керування темами - KVIrc"
+msgstr "Завантажити теми - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"

@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Igor Paliychuk <mansonigor@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-29 17:59+0200\n"
+"PO-Revision-Date: 2012-03-14 18:45+0300\n"
+"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.0\n"
+
+#: src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr "Неможливо завантажити модуль pythoncore: підтримка python недоступна"
+
+#: src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr ""
+"Для детальної інформації про помилку завантаження спробуйте /pythoncore.load"
+
+#: src/modules/python/libkvipython.cpp:60
+msgid ""
+"This KVIrc executable has been compiled without python scripting support"
+msgstr "Ця збірка KVIrc компілювалась без підтримки скриптування python"
+
+#: src/modules/python/libkvipython.cpp:424
+#: src/modules/python/libkvipython.cpp:477
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the python support"
+msgstr "Модуль pythoncore не може виконати код: проблема з підтримкою python"
+
+#: src/modules/python/libkvipython.cpp:441
+#: src/modules/python/libkvipython.cpp:445
+msgid "Python execution error:"
+msgstr "Помилка виконання Python:"
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:129
+msgid "Internal error: python interpreter not initialized"
+msgstr "Внутрішня помилка: інтерпретатор python не ініціалізовано"
