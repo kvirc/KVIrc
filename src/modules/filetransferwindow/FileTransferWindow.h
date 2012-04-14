@@ -29,7 +29,9 @@
 #include "KviIrcSocket.h"
 #include "KviIrcServerParser.h"
 #include "KviConsoleWindow.h"
+#if 0
 #include "KviModuleExtension.h"
+#endif
 #include "KviFileTransfer.h"
 #include "KviDynamicToolTip.h"
 #include "KviTalTableWidget.h"
@@ -85,13 +87,20 @@ public:
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
 
-class FileTransferWindow : public KviWindow, public KviModuleExtension
+class FileTransferWindow : public KviWindow
+#if 0
+	,public KviModuleExtension
+#endif
 {
 	friend class FileTransferItem;
 	friend class FileTransferItemDelegate;
 	Q_OBJECT
 public:
-	FileTransferWindow(KviModuleExtensionDescriptor * d);
+	FileTransferWindow(
+#if 0
+			KviModuleExtensionDescriptor * d
+#endif
+		);
 	~FileTransferWindow();
 protected:
 	QSplitter		* m_pVertSplitter;

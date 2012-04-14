@@ -236,8 +236,15 @@ QSize FileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const QMo
 	return QSize(((FileTransferWidget*)parent())->viewport()->size().width(), 68);
 }
 
-FileTransferWindow::FileTransferWindow(KviModuleExtensionDescriptor * d)
-: KviWindow(KviWindow::Tool,"file transfer window",0), KviModuleExtension(d)
+FileTransferWindow::FileTransferWindow(
+#if 0
+		KviModuleExtensionDescriptor * d
+#endif
+	)
+: KviWindow(KviWindow::Tool,"file transfer window",0)
+#if 0
+	, KviModuleExtension(d)
+#endif
 {
 	g_pFileTransferWindow = this;
 	setAutoFillBackground(false);
