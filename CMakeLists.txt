@@ -36,7 +36,7 @@ SET(VERSION_MAJOR "4")
 SET(VERSION_BRANCH "4.1")
 SET(VERSION_RELEASE "4.1.3")
 SET(VERSION_CODENAME "Equilibrium")
-# REMINDER: "Aria" is a candidate
+# REMINDER: "Aria" is a candidate, trunk name "Quasar"
 
 STRING(REGEX MATCH "[0-9]+$" VERSION_MINOR ${VERSION_BRANCH})
 
