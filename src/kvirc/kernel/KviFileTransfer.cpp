@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "KviFileTransfer.h"
+#include "KviKvsScript.h"
 #include "KviModuleExtension.h"
 #include "KviWindow.h"
 
@@ -93,16 +94,12 @@ void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateM
 {
 	if(!m_pTransferWindow)
 	{
-		KviPointerHashTable<QString,QVariant> d(7,false);
-		d.setAutoDelete(true);
-		d.replace("bCreateMinimized",new QVariant(bCreateMinimized));
-		d.replace("bNoRaise",new QVariant(bNoRaise));
-
-		KviModuleExtensionManager::instance()->allocateExtension(
-				"transfer",
-				KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME,
-				pWnd,&d,0,
-				"filetransferwindow");
+		QString szScript("filetransferwindow.open");
+		if(bCreateMinimized)
+			szScript.append(" -m");
+		if(bNoRaise)
+			szScript.append(" -n");
+		KviKvsScript::run(szScript,g_pActiveWindow);
 	}
 }
 

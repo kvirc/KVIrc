@@ -48,39 +48,6 @@ static FileTransferWindow * filetransferwindow_alloc(bool bCreateMinimized,bool 
 	return g_pFileTransferWindow;
 }
 
-#if 0
-static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensionAllocStruct * s)
-{
-	bool bCreateMinimized = false;
-	bool bNoRaise = false;
-
-	if(s->pParams)
-	{
-		if(QVariant * v1 = s->pParams->find("bCreateMinimized"))
-		{
-			if(v1->isValid())
-			{
-				if(v1->type() == QVariant::Bool)
-				{
-					bCreateMinimized = v1->toBool();
-				}
-			}
-		}
-
-		if(QVariant * v2 = s->pParams->find("bNoRaise"))
-		{
-			if(v2)
-			{
-				if(v2->isValid() && v2->type() == QVariant::Bool)
-					bNoRaise = v2->toBool();
-			}
-		}
-	}
-
-	return filetransferwindow_alloc(bCreateMinimized,bNoRaise);
-}
-#endif
-
 /*
 	@doc: filetransferwindow.open
 	@type:
@@ -109,18 +76,6 @@ static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool filetransferwindow_module_init(KviModule * m)
 {
-#if 0
-	KviModuleExtensionDescriptor * d = m->registerExtension(
-			"transfer",
-			KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME,
-			__tr2qs("Manage File &Transfers"),
-			filetransferwindow_extension_alloc
-		);
-
-	if(d)
-		d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::FileTransfer)));
-#endif
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",filetransferwindow_kvs_cmd_open);
 
 	return true;
