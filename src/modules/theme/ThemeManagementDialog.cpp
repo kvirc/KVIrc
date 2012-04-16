@@ -382,11 +382,18 @@ void ThemeManagementDialog::deleteTheme()
 	QList<QListWidgetItem *> itemsSelected = m_pListWidget->selectedItems();
 	for(int i=0; i < itemsSelected.count(); i++)
 	{
+		ThemeListWidgetItem * pItem = dynamic_cast<ThemeListWidgetItem *>(itemsSelected.at(i));
+		if(!pItem)
+			return;
+		KviThemeInfo * pInfo = pItem->themeInfo();
+		if(pInfo->isBuiltin())
+			continue;
+
 		if(!KviMessageBox::yesNo(
 			__tr2qs_ctx("Delete Theme - KVIrc","theme"),
 			__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
-			&(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->name()),&(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->version())
-		))
+			pInfo->name().toUtf8().data(),pInfo->version().toUtf8().data())
+		)
 			goto jump_out;
 			
 		QString szThemePath;
@@ -480,18 +487,23 @@ void ThemeManagementDialog::fillThemeBox()
 void ThemeManagementDialog::enableDisableButtons()
 {
 	QList<QListWidgetItem *> itemsSelected = m_pListWidget->selectedItems();
-	bool bHasItems = itemsSelected.count() ? true : false;
+	int iCount = itemsSelected.count();
+	bool bHasItems = iCount ? true : false;
 
 	m_pPackThemeButton->setEnabled(bHasItems);
-	
-	ThemeListWidgetItem * pItem = dynamic_cast<ThemeListWidgetItem *>(m_pListWidget->currentItem());
-	if(!pItem)
-		return;
-	KviThemeInfo * pInfo = pItem->themeInfo();
-	if(pInfo->isBuiltin())
-		m_pDeleteThemeButton->setEnabled(false);
-	else
-		m_pDeleteThemeButton->setEnabled(bHasItems);
+
+	unsigned int u = 0;
+	for(int i = 0; i < iCount; i++)
+	{
+		ThemeListWidgetItem * pItem = dynamic_cast<ThemeListWidgetItem *>(itemsSelected.at(i));
+		if(!pItem)
+			return;
+		KviThemeInfo * pInfo = pItem->themeInfo();
+		if(!pInfo->isBuiltin())
+			u++;
+	}
+
+	m_pDeleteThemeButton->setEnabled(u >= 1);
 }
 
 void ThemeManagementDialog::closeEvent(QCloseEvent * e)
