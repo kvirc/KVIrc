@@ -8,6 +8,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,6 +25,12 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
+
+/**
+* \file KviIconManager.h
+* \author Szymon Stefanek
+* \brief Icon manager
+*/
 
 #include "kvi_settings.h"
 #include "KviCString.h"
@@ -75,6 +82,10 @@
 
 class KVIRC_API KviIconWidget;
 
+/**
+* \class KviCachedPixmap
+* \brief Class for holding a cached pixmap
+*/
 class KVIRC_API KviCachedPixmap
 {
 public:
@@ -82,7 +93,7 @@ public:
 	* \brief Constructs the KviCachedPixmap object
 	* \param pPix The image object
 	* \param szPath The path of the image
-	* \warning The pixmap MUST be allocated with new QPixmap(). This calss takes the ownership
+	* \warning The pixmap MUST be allocated with new QPixmap(). This class takes the ownership
 	* \return KviCachedPixmap
 	*/
 	KviCachedPixmap(QPixmap * pPix, const QString & szPath);
@@ -473,7 +484,15 @@ public:
 		IconCount            = 317
 	};
 
+	/**
+	* \brief Creates the icon manager object
+	* \return KviIconManager
+	*/
 	KviIconManager();
+
+	/**
+	* \brief Destroys the icon manager object
+	*/
 	~KviIconManager();
 private:
 	QPixmap                                      * m_smallIcons[IconCount];
@@ -483,26 +502,57 @@ private:
 	unsigned int                                   m_uCacheTotalSize;
 	unsigned int                                   m_uCacheMaxSize;
 public:
-	// WARNING: Don't store this pointer!
-	// id == filename | number that indicates an internal pixmap
-	// 0 stands for "any"
+	/**
+	* \brief Returns the image
+	* \param szId The ID of the image
+	* This can be a filename or a number that indicates an internal pixmap. 0 stands
+	* for "any"
+	* \param bCanBeNumber Whether the image is specified by a number, especially for
+	* scripts or popups
+	* \param pRetPath Holds the path of the image
+	* \warning Don't store this pointer!
+	* 
+	* \return QPixmap *
+	*/
 	QPixmap * getImage(const QString & szId, bool bCanBeNumber = true, QString * pRetPath = 0);
 
-	// The returned pointer is owned by the icon manager
-	// and can be deleted at any time : so don't store it
+	/**
+	* \brief Returns the cached pixmap of the image
+	* \param szName The name of the image
+	* \warning Don't store this pointer!
+	* The returned pointer is owned by the icon manager and can be deleted at any time
+	* \return KviCachedPixmap *
+	*/
 	KviCachedPixmap * getPixmapWithCache(const QString & szName);
 
-	// The returned pointer is owned by the icon manager
-	// and can be deleted at any time : so don't store it
+	/**
+	* \brief Returns the cached pixmap of the image and scales it on load
+	* \param szName The name of the image
+	* \param iMaxWidth The max width to scale
+	* \param iMaxHeight The max height to scale
+	* \warning Don't store this pointer!
+	* The returned pointer is owned by the icon manager and can be deleted at any time
+	* \return KviCachedPixmap *
+	*/
 	KviCachedPixmap * getPixmapWithCacheScaleOnLoad(const QString & szName, int iMaxWidth, int iMaxHeight);
 
-	// The returned pointer is owned by the icon manager
-	// and can be deleted at any time : so don't store it
+	/**
+	* \brief Returns the pixmap of the image
+	* \param szName The name of the image
+	* \warning Don't store this pointer!
+	* The returned pointer is owned by the icon manager and can be deleted at any time
+	* \return QPixmap *
+	*/
 	QPixmap * getPixmap(const QString & szName)
 		{ KviCachedPixmap * pPix = getPixmapWithCache(szName); return pPix ? pPix->pixmap() : 0; };
 
-	// this one never fails... if the image can't be found
-	// a default 32x32 image is returned
+	/**
+	* \brief Returns the big icon
+	* \param szName The icon to get
+	* \note This one never fails... if the icon isn't there, then a default 32x32 image
+	* is returned
+	* \return QPixmap *
+	*/
 	QPixmap * getBigIcon(const QString & szName);
 
 	/**
@@ -539,13 +589,18 @@ public:
 	const char * getSmallIconName(int iIcon);
 
 	/**
+	* \brief Returns the resource name of the small icon
+	* \param eIcon The icon to get
+	* \return QString
+	*/
+	QString getSmallIconResourceName(SmallIcon eIcon);
+
+	/**
 	* \brief Returns the name of the small icon
 	* \param iIcon The icon to get
 	* \return KviIconManager::SmallIcon
 	*/
 	SmallIcon iconName(int iIcon);
-
-	QString getSmallIconResourceName(SmallIcon eIcon);
 
 	/**
 	* \brief Returns the index of the small icon
@@ -554,30 +609,70 @@ public:
 	*/
 	int getSmallIconIdFromName(const QString & szName);
 
-	// if szLocalPath is empty then szName can be the identification
-	// string for the avatar
-	// if szName is empty then it is found from szLocalPath
+	/**
+	* \brief Returns the avatar
+	* If szLocalPath is empty then szName can be the identification string for the
+	* avatar
+	* If szName is empty then it is found from szLocalPath
+	* \param szLocalPath The local path of the avatar
+	* \param szName The name of the avatar
+	* \return KviAvatar *
+	*/
 	KviAvatar * getAvatar(const QString & szLocalPath, const QString & szName);
 
-	void urlToCachedFileName(QString & szFName);
+	/**
+	* \brief Returns the url of the image in cache
+	* \param szName The path of the image
+	* \return void
+	*/
+	void urlToCachedFileName(QString & szName);
 
+	/**
+	* \brief Clears the cache!
+	* \return void
+	*/
 	void clearCache();
+
+	/**
+	* \brief Reloads all images
+	* \return void
+	*/
 	void reloadImages();
 
-	void cacheCleanup();
-
+	//void cacheCleanup();
 protected:
 	void addToCache(const QString & szName, KviCachedPixmap * pPix);
-	//void loadSmallIcons();
+
+	/**
+	* \brief Returns the icon
+	* \param iIdx The ID of the icon
+	* \return QPixmap *
+	*/
 	QPixmap * loadSmallIcon(int iIdx);
 
+	/**
+	* \brief Initializes the Qt resource backend
+	* \return void
+	*/
 	void initQResourceBackend();
 public slots:
+	/**
+	* \brief Shows the table of icons
+	* \return void
+	*/
 	void showIconWidget();
 protected slots:
+	/**
+	* \brief Called when we close the table of icons
+	* \return void
+	*/
 	void iconWidgetClosed();
 };
 
+/**
+* \class KviIconWidget
+* \brief The widget with holds the table of icons
+*/
 class KVIRC_API KviIconWidget : public QWidget
 {
 	Q_OBJECT
@@ -605,6 +700,7 @@ protected:
 	* \return void
 	*/
 	void init();
+
 	virtual void closeEvent(QCloseEvent * pEvent);
 	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
 signals:

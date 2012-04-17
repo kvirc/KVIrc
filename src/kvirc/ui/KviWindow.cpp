@@ -34,6 +34,7 @@
 #define _KVI_DEBUG_CHECK_RANGE_
 
 #include "kvi_debug.h"
+#include "kvi_out.h"
 #include "KviApplication.h"
 #include "KviWindow.h"
 #include "KviMainWindow.h"
@@ -41,7 +42,6 @@
 #include "KviMdiChild.h"
 #include "KviLocale.h"
 #include "KviIrcView.h"
-#include "kvi_out.h"
 #include "KviMemory.h"
 #include "KviInput.h"
 #include "KviFileUtils.h"
@@ -94,9 +94,9 @@ static QMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
 static QMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
 static QMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
 static QMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
-static QActionGroup    * g_pMdiWindowSystemTextEncodingActionGroup = 0;
-static QAction         * g_pMdiWindowSystemTextEncodingCurrentAction = 0;
-static QAction         * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
+static QActionGroup * g_pMdiWindowSystemTextEncodingActionGroup = 0;
+static QAction * g_pMdiWindowSystemTextEncodingCurrentAction = 0;
+static QAction * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
@@ -111,29 +111,26 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 
 	g_pApp->registerWindow(this);
 
-	m_eType                 = eType;
-	m_pFocusHandler         = 0;
-
-	m_pIrcView              = 0;
-	m_pInput                = 0;
-	m_pSplitter             = 0;
-	m_pButtonBox            = 0;
-	m_pConsole              = lpConsole;
-	m_pLastFocusedChild     = 0;
-	m_pTextCodec            = 0; // will be set by loadProperties
-	m_pTextEncodingButton   = 0;
-	m_pHideToolsButton      = 0;
-//	m_pEditorsContainer     = 0;
-	m_bIsDocked             = false;
-
+	m_eType                  = eType;
+	m_pFocusHandler          = 0;
+	m_pIrcView               = 0;
+	m_pInput                 = 0;
+	m_pSplitter              = 0;
+	m_pButtonBox             = 0;
+	m_pConsole               = lpConsole;
+	m_pLastFocusedChild      = 0;
+	m_pTextCodec             = 0; // will be set by loadProperties
+	m_pTextEncodingButton    = 0;
+	m_pHideToolsButton       = 0;
+//	m_pEditorsContainer       = 0;
+	m_bIsDocked              = false;
+	m_pWindowListItem        = 0;
 #ifdef COMPILE_CRYPT_SUPPORT
 	m_pCryptControllerButton = 0;
-	m_pCryptController = 0;
-	m_pCryptSessionInfo = 0;
+	m_pCryptController       = 0;
+	m_pCryptSessionInfo      = 0;
 #endif
-
-	m_pWindowListItem = 0;
-
+	
 	setMinimumSize(KVI_WINDOW_MIN_WIDTH,KVI_WINDOW_MIN_HEIGHT);
 	//setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);

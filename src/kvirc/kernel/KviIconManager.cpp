@@ -523,7 +523,6 @@ KviIconManager::KviIconManager()
 		m_smallIcons[i] = 0;
 
 	initQResourceBackend();
-	//loadSmallIcons();
 
 	m_pCachedImages = new KviPointerHashTable<QString,KviCachedPixmap>(21,true);
 	m_pCachedImages->setAutoDelete(true);
@@ -1054,8 +1053,8 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString & 
 
 void KviIconManager::addToCache(const QString & szName, KviCachedPixmap * pCache)
 {
-	if((m_uCacheTotalSize + pCache->size()) >= m_uCacheMaxSize)
-		cacheCleanup();
+	//if((m_uCacheTotalSize + pCache->size()) >= m_uCacheMaxSize)
+	//	cacheCleanup();
 
 	m_pCachedImages->insert(szName,pCache);
 	m_uCacheTotalSize += pCache->size();
@@ -1139,24 +1138,24 @@ QPixmap * KviIconManager::getBigIcon(const QString & szName)
 	return pCache->pixmap();
 }
 
-void KviIconManager::urlToCachedFileName(QString & szFName)
+void KviIconManager::urlToCachedFileName(QString & szName)
 {
-	szFName.replace(":","_");
-	szFName.replace(";","_");
-	szFName.replace("/","_");
-	szFName.replace("\\","_");
-	szFName.replace("\"","_");
-	szFName.replace("\'","_");
-	szFName.replace("(","_");
-	szFName.replace(")","_");
-	szFName.replace("?","_");
-	szFName.replace("___",".");
+	szName.replace(":","_");
+	szName.replace(";","_");
+	szName.replace("/","_");
+	szName.replace("\\","_");
+	szName.replace("\"","_");
+	szName.replace("\'","_");
+	szName.replace("(","_");
+	szName.replace(")","_");
+	szName.replace("?","_");
+	szName.replace("___",".");
 	//cut filenames to 255 chars, trying to preserve file name/extension (bug #616)
-	if(szFName.size()>255)
+	if(szName.size() > 255)
 	{
-		QString szExt = szFName.right(55);
-		szFName.truncate(200);
-		szFName.append(szExt);
+		QString szExt = szName.right(55);
+		szName.truncate(200);
+		szName.append(szExt);
 	}
 }
 
@@ -1259,15 +1258,13 @@ QPixmap * KviIconManager::loadSmallIcon(int iIdx)
 	return m_smallIcons[iIdx];
 }
 
+#warning IMPLEMENT CLEANUP
+/*
 void KviIconManager::cacheCleanup()
 {
 	QStringList l;
-
 	KviPointerHashTableIterator<QString,KviCachedPixmap> it(*m_pCachedImages);
 
-
-//#warning "IMPLEMENT CLEANUP"
-/*
 	while(it.current())
 	{
 		kvi_time_t curTime = kvi_unixTime();
@@ -1285,15 +1282,14 @@ void KviIconManager::cacheCleanup()
 	{
 		m_pCachedImages->remove(*it);
 	}
-*/
-/*
+
 	for(KviCString * p =l.first();p;p = l.next())
 	{
 		m_pCachedImages->remove(p->ptr());
 	}
 	if(m_pCachedImages->isEmpty())m_pCleanupTimer->stop();
-*/
 }
+*/
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "KviIconManager.moc"

@@ -31,23 +31,18 @@
 
 #include <QTextDocument> // for Qt::escape
 
-#define KVI_LABEL_DEF_BACK 100
-#define KVI_LABEL_DEF_FORE 101
-
 namespace KviHtmlGenerator
 {
 	QString convertToHtml(const QString & szText, bool bEscape)
 	{
-		QString szResult="<qt>";
-		bool bCurBold      = false;
-		bool bCurUnderline = false;
-		bool bIgnoreIcons  = false;
-		bool bShowIcons    = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
-
-		unsigned char uCurFore = KVI_LABEL_DEF_FORE; //default fore
-		unsigned char uCurBack = KVI_LABEL_DEF_BACK; //default back
-
-		unsigned int uIdx = 0;
+		QString szResult       = "<qt>";
+		bool bCurBold          = false;
+		bool bCurUnderline     = false;
+		bool bIgnoreIcons      = false;
+		bool bShowIcons        = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
+		unsigned char uCurFore = Foreground;
+		unsigned char uCurBack = Background;
+		unsigned int uIdx      = 0;
 
 		QString szTxt = bEscape ? Qt::escape(szText) : szText;
 
@@ -102,14 +97,14 @@ namespace KviHtmlGenerator
 			{
 				bool bOpened = false;
 
-				if(uCurFore != KVI_LABEL_DEF_FORE)
+				if(uCurFore != Foreground)
 				{
 					szResult.append("<span style=\"color:");
 					szResult.append(KVI_OPTION_MIRCCOLOR(uCurFore).name());
 					bOpened = true;
 				}
 
-				if(uCurBack != KVI_LABEL_DEF_BACK)
+				if(uCurBack != Background)
 				{
 					if(!bOpened)
 					{
@@ -176,8 +171,8 @@ namespace KviHtmlGenerator
 				}
 				case KviControlCodes::Reset:
 				{
-					uCurFore = KVI_LABEL_DEF_FORE;
-					uCurBack = KVI_LABEL_DEF_BACK;
+					uCurFore = Foreground;
+					uCurBack = Background;
 					bCurBold = false;
 					bCurUnderline = false;
 					++uIdx;
@@ -196,8 +191,8 @@ namespace KviHtmlGenerator
 							uCurBack = ucBack;
 					} else {
 						// only a CTRL+K
-						uCurBack = KVI_LABEL_DEF_BACK;
-						uCurFore = KVI_LABEL_DEF_FORE;
+						uCurBack = Background;
+						uCurFore = Foreground;
 					}
 					break;
 				}
@@ -252,9 +247,7 @@ namespace KviHtmlGenerator
 						{
 							//look up for a space
 							if(szTxt[(int)uIdx]== ' ')
-							{
 								uIsEmoticon++;
-							}
 						} else {
 							//got a smile at the end of the szTxt
 							uIsEmoticon++;
@@ -268,7 +261,7 @@ namespace KviHtmlGenerator
 							{
 								szResult.append("<img src=\"");
 								szResult.append(g_pIconManager->getSmallIconResourceName(pIcon->id()));
-								if(uCurBack != KVI_LABEL_DEF_BACK)
+								if(uCurBack != Background)
 								{
 									szResult.append("\" style=\"background-color:");
 									szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
@@ -304,7 +297,7 @@ namespace KviHtmlGenerator
 						{
 							szResult.append("<img src=\"");
 							szResult.append(g_pIconManager->getSmallIconResourceName(pIcon->id()));
-							if(uCurBack != KVI_LABEL_DEF_BACK)
+							if(uCurBack != Background)
 							{
 								szResult.append("\" style=\"background-color:");
 								szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
@@ -314,7 +307,6 @@ namespace KviHtmlGenerator
 							uIdx = uIcoStart;
 						}
 					}
-
 					break;
 				}
 			}

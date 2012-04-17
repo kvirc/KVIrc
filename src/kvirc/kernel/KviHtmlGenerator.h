@@ -7,6 +7,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Fabio Bas < ctrlaltca at gmail dot com >
+//   Copyright (C) 2012 Elvio Basello < hellvis69 at gmail dot com >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,6 +39,15 @@
 */
 namespace KviHtmlGenerator
 {
+	/**
+	* \enum DefaultColor
+	* \brief Defines back and foreground colors
+	*/
+	enum DefaultColor {
+		Background = 100,
+		Foreground = 101
+	};
+	
 	/**
 	* \brief Converts a raw irc message to its html equivalent text
 	* \param szText Const reference to a message text
