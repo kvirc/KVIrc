@@ -90,7 +90,7 @@ void KviFileTransferManager::killTerminatedTransfers()
 	}
 }
 
-void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateMinimized,bool bNoRaise)
+void KviFileTransferManager::invokeTransferWindow(bool bCreateMinimized, bool bNoRaise)
 {
 	if(!m_pTransferWindow)
 	{
@@ -156,9 +156,9 @@ KviWindow * KviFileTransfer::outputWindow()
 	return g_pActiveWindow;
 }
 
-void KviFileTransfer::invokeTransferWindow(KviWindow * pWnd,bool bCreateMinimized,bool bNoRaise)
+void KviFileTransfer::invokeTransferWindow(bool bCreateMinimized, bool bNoRaise)
 {
-	manager()->invokeTransferWindow(pWnd,bCreateMinimized,bNoRaise);
+	manager()->invokeTransferWindow(bCreateMinimized,bNoRaise);
 }
 
 QString KviFileTransfer::localFileName()

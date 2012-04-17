@@ -871,7 +871,7 @@ void DccBroker::recvFileExecute(DccDialog *box,DccDescriptor * dcc)
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend) || \
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSendWhenAutoAccepted)));
 
-	send->invokeTransferWindow(dcc->console(),bMinimized,bMinimized);
+	send->invokeTransferWindow(bMinimized,bMinimized);
 }
 
 
@@ -930,7 +930,7 @@ void DccBroker::sendFileExecute(DccDialog * box,DccDescriptor *dcc)
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend);
 
-	send->invokeTransferWindow(dcc->console(),bMinimized,bMinimized);
+	send->invokeTransferWindow(bMinimized,bMinimized);
 }
 
 bool DccBroker::canUnload()

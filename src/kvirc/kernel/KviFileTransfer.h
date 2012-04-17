@@ -62,7 +62,7 @@ public:
 	KviWindow * transferWindow(){ return m_pTransferWindow; };
 	static KviFileTransferManager * instance();
 	KviPointerList<KviFileTransfer> * transferList(){ return m_pTransferList; };
-	void invokeTransferWindow(KviWindow * pWnd = 0,bool bCreateMinimized = false,bool bNoRaise = false);
+	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
 	void killAllTransfers();
 	void killTerminatedTransfers();
 signals:
@@ -90,7 +90,7 @@ public:
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();
 	// This may be used to invoke the transfer window
-	void invokeTransferWindow(KviWindow * pWnd = 0,bool bCreateMinimized = false,bool bNoRaise = false);
+	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
 	KviFileTransferManager * manager(){ return KviFileTransferManager::instance(); };
 	// this returns the pointer to the transfer window : may be 0!
 	KviWindow * transferWindow(){ return manager()->transferWindow(); };

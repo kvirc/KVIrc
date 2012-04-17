@@ -120,9 +120,10 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 
 	if(c->switches()->getAsStringIfExisting('w',"winctrl",tmp))
 	{
-		if(!tmp.contains('h'))hft->invokeTransferWindow(c->window(),tmp.contains('m'),tmp.contains('n'));
+		if(!tmp.contains('h'))
+			hft->invokeTransferWindow(tmp.contains('m'),tmp.contains('n'));
 	} else {
-		hft->invokeTransferWindow(c->window(),false,false);
+		hft->invokeTransferWindow(false,false);
 	}
 
 	KviKvsVariant * v = c->switches()->find('i',"identifier");
