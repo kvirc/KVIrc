@@ -229,9 +229,9 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		if the window alread exists. The flag 'n' causes the window to be NOT activated (brought to top).
 
 		!sw: -i=<magic identifier> | --identifier=<magic identifier>
-		This identifier is passed as $3 parameter to the [event]OnHTTPGetTerminated[/event]
+		This identifier is passed as $3 parameter to the [event:OnHTTPGetTerminated]OnHTTPGetTerminated[/event]
 		when this transfer terminates. If this switch is not present then an empty string is used.
-		With [cmd]http.asyngGet[/cmd] this parameter is passed to the callback command instead.
+		With [cmd]http.asyncGet[/cmd] this parameter is passed to the callback command instead.
 
 		!sw: -p=<post data> | --post-data=<post data>
 		The request is sent in form of a POST request. <post data> is the urlencoded payload of
