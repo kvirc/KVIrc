@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: about_uk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2012-04-11 21:15+0300\n"
+"PO-Revision-Date: 2012-04-14 15:10+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
 msgid ""
@@ -112,7 +112,7 @@ msgstr "&Виконати"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1045
 #: src/modules/raweditor/RawEditorWindow.cpp:100
 msgid "&Export All To..."
-msgstr ""
+msgstr "&Експортувати всі до..."
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:229
 #: src/modules/raweditor/RawEditorWindow.cpp:168
@@ -169,7 +169,7 @@ msgstr "&Замінити"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1087
 msgid "&Replace in all editor's items"
-msgstr ""
+msgstr "&Замінити в усіх об'єктах редактора"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1854
 msgid "&Save"
@@ -185,6 +185,9 @@ msgid ""
 "order to decide if this entry has to be shown.<br>An empty condition "
 "evaluates to true.</center>"
 msgstr ""
+"<center><b>Логічна умова</b><br>Буде оцінена при виклику спливаючого вікна "
+"для того, щоб вирішити, це цей об'єкт слід показати.<br>Порожня умова "
+"оцінюється як істина.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
 msgid ""
@@ -192,6 +195,9 @@ msgid ""
 "defined popup menus. The popup menu with the specified name will be looked "
 "up at menu setup time.</center>"
 msgstr ""
+"<center><b>Ім'я зовнішнього меню</b><br>Це дозволяє вставляти визначені "
+"зовні спливаючі меню. Спливаюче меню з вказаним ім'ям вигляне під час "
+"встановлення меню.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:252
 msgid ""
@@ -199,12 +205,17 @@ msgid ""
 "path or a relative path.<br>Portable scripts should never use absolute paths."
 "</center>"
 msgstr ""
+"<center><b>Ідентифікатор значка</b><br>Може бути ID внутрішнього значка, "
+"абсолютний шлях або відносний шлях.<br>Переносні скрипти не повинні ніколи "
+"користуватися абсолютними шляхами.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:271
 msgid ""
 "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
 "center>"
 msgstr ""
+"<center><b>id елементу</b><br>Це дозволить вам користуватися delpopupitem "
+"пізніше.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:234
 msgid ""
@@ -212,6 +223,9 @@ msgid ""
 "evaluated at popup call time.<br>For labels, this text can contain also "
 "limited HTML tags.</center>"
 msgstr ""
+"<center><b>Видимий текст</b><br>Може містити ідентифікатори, які будуть "
+"оцінені під час виклику спливаючих вікон.<br>Для міток, цей текст може "
+"містити також обмежені теги HTML.</center>"
 
 #: src/modules/actioneditor/ActionEditor.cpp:580
 msgid "Action"
@@ -223,7 +237,7 @@ msgstr "Редактор дій"
 
 #: src/modules/actioneditor/ActionEditor.cpp:124
 msgid "Action code"
-msgstr ""
+msgstr "Код дії"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:560
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
@@ -258,7 +272,7 @@ msgstr "Псевдонім"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1180
 msgid "Alias Editor"
-msgstr ""
+msgstr "Редактор псевдонімів"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:720
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:788
@@ -274,18 +288,24 @@ msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
+"Імена псевдонімів можуть містити лише букви, цифри, символи підкреслення і "
+"роздільники простору імен '::'"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:326
 msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
+"Зовнішній скрипт змінив псевдонім, який ви зараз редагуєте. Ви хочете "
+"прийняти зовнішні зміни?"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1115
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
+"Зовнішній скрипт змінив спливаюче вікно, яке ви зараз редагуєте. Ви хочете "
+"прийняти зовнішні зміни?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:867
 msgid "Apply"
@@ -316,7 +336,7 @@ msgstr "Невірна назва простору імен"
 
 #: src/modules/actioneditor/ActionEditor.cpp:158
 msgid "Big Icon:"
-msgstr ""
+msgstr "Великий значок:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:532
 msgid "Brackets:"
@@ -350,48 +370,64 @@ msgid ""
 "Check this option if this action should be enabled also during the login "
 "operations (so when the logical IRC connection hasn't been estabilished yet)"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена також впродовж "
+"операцій входу (коли логічне під'єднання до IRC ще не було здійснене)"
 
 #: src/modules/actioneditor/ActionEditor.cpp:197
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window belongs to an irc context"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно належить до irc контексту"
 
 #: src/modules/actioneditor/ActionEditor.cpp:208
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window has an active IRC connection"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно має активне IRC з'єднання"
 
 #: src/modules/actioneditor/ActionEditor.cpp:241
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a channel"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно є каналом"
 
 #: src/modules/actioneditor/ActionEditor.cpp:230
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a console"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно є консоллю"
 
 #: src/modules/actioneditor/ActionEditor.cpp:263
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a dcc chat"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно є dcc чатом"
 
 #: src/modules/actioneditor/ActionEditor.cpp:252
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a query"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно є приватом"
 
 #: src/modules/actioneditor/ActionEditor.cpp:224
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is of a specified type"
 msgstr ""
+"Відзначте цю опцію, якщо ця дія повинна бути ввімкнена лише коли активне "
+"вікно є вказаного типу"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:726
 #: src/modules/classeditor/ClassEditorWindow.cpp:1118
@@ -414,7 +450,7 @@ msgstr "Виберіть ім'я файлу - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:136
 msgid "Choose the category that best fits for this action"
-msgstr ""
+msgstr "Виберіть категорію, що найкраще підходить для цієї дії"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:72
 #: src/modules/classeditor/ClassEditorWindow.cpp:802
@@ -423,7 +459,7 @@ msgstr "Клас"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1842
 msgid "Class Editor"
-msgstr ""
+msgstr "Редактор класів"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1112
 #: src/modules/classeditor/ClassEditorWindow.cpp:1207
@@ -466,7 +502,7 @@ msgstr "Коментарі:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1709
 msgid "Compilation error - KVIrc"
-msgstr ""
+msgstr "Помилка компіляції - KVIrc"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:237
 msgid "Condition:"
@@ -478,7 +514,7 @@ msgstr "Підтвердіть вилучення панелі"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:255
 msgid "Context sensitive help"
-msgstr ""
+msgstr "Контекстна довідка"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:425
 msgid "Cu&t"
@@ -502,36 +538,38 @@ msgstr "Опис:"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
 msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr ""
+msgstr "Ви дійсно хочете видалити інструментальну панель \"%1\" ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:922
 msgid "Do you really want to remove the alias \"%1\"?"
-msgstr ""
+msgstr "Ви справді хочете вилучити псевдонім \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1356
 msgid "Do you really want to remove the class \"%1\"?"
-msgstr ""
+msgstr "Ви справді хочете вилучити клас \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1364
 msgid "Do you really want to remove the function \"%1\"?"
-msgstr ""
+msgstr "Ви справді хочете вилучити функцію \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:924
 #: src/modules/classeditor/ClassEditorWindow.cpp:1359
 msgid "Do you really want to remove the namespace \"%1\"?"
-msgstr ""
+msgstr "Ви справді хочете вилучити простір імен \"%1\"?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
 msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
+"Ви хочете, щоб асоційовані дії були експортовані з інструментальною панеллю "
+"?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
 msgid "Drop here the icons from the toolbars to remove them"
-msgstr ""
+msgstr "Киньте тут значки з інструментальних панелей щоб їх видалити"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
 msgid "Duplicate ToolBar Id"
-msgstr ""
+msgstr "Id дубльованої панелі"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
 msgid "Edit ToolBar"
@@ -539,27 +577,27 @@ msgstr "Змінити панель"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:146
 msgid "Edit the alias or namespace name"
-msgstr ""
+msgstr "Змінити назву псевдоніму або простору імен"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:198
 msgid "Edit the class or namespace name"
-msgstr ""
+msgstr "Змінити назву функції або простору імен"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:115
 msgid "Edit the event handler name."
-msgstr ""
+msgstr "Змінити назву обробника подій."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:212
 msgid "Edit the function member name"
-msgstr ""
+msgstr "Знінити назву члена функції"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:105
 msgid "Edit the raw event handler name."
-msgstr ""
+msgstr "Змінити назву обробника сирих подій."
 
 #: src/modules/actioneditor/ActionEditor.cpp:222
 msgid "Enable Only in Specified Windows"
-msgstr ""
+msgstr "Ввімкнути лише в вказаних вікнах"
 
 #: src/modules/actioneditor/ActionEditor.cpp:217
 msgid "Enable at Login"
@@ -567,7 +605,7 @@ msgstr "Ввімкнути при вході"
 
 #: src/modules/actioneditor/ActionEditor.cpp:240
 msgid "Enable in Channel Windows"
-msgstr ""
+msgstr "Ввімкнути в вікнах каналів"
 
 #: src/modules/actioneditor/ActionEditor.cpp:229
 msgid "Enable in Console Windows"
@@ -583,7 +621,7 @@ msgstr "Ввімкнути в вікнах приватів"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:221
 msgid "Enter the numeric code of the message (0-999)"
-msgstr ""
+msgstr "Введіть числовий код повідомлення (0-999)"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:97
 msgid "Epilogue"
@@ -609,7 +647,7 @@ msgstr "Експортувати всі..."
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:589
 #: src/modules/classeditor/ClassEditorWindow.cpp:930
 msgid "Export Selected in singles files..."
-msgstr ""
+msgstr "Експортувати вибране в окремі файли..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:583
 #: src/modules/classeditor/ClassEditorWindow.cpp:924
@@ -666,20 +704,21 @@ msgstr "Шрифт:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1027
 msgid "Found an empty namespace in alias name"
-msgstr ""
+msgstr "Знайдено порожній простір імен в назві псевдоніму"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1095
 #: src/modules/classeditor/ClassEditorWindow.cpp:1545
 msgid "Found an empty namespace in namespace name"
-msgstr ""
+msgstr "Знайдено порожній простір імен в назві простору імен"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:542
 msgid "Function already exists"
-msgstr ""
+msgstr "Функція вже існує"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2052
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
+"Назви функцій мають складатися лише з літер, цифр та символів підкреслювання"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:534
 msgid "Functions:"
@@ -690,6 +729,8 @@ msgid ""
 "Here you can specify a semicolon-separated list of parameters that will be "
 "available in the code as $0, $1, $2, .."
 msgstr ""
+"Тут ви можете задати список розділений крапкою з комою параметрів, які "
+"будуть доступні в коді як $0, $1, $2, .."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
 msgid "Hide Advanced"
@@ -712,6 +753,8 @@ msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
 msgstr ""
+"В режимі перейменування імена класів можуть містити тільки букви, цифри, "
+"символи підкреслення і роздільник просторів імен ::"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1951
 msgid "Inherits Class:"
@@ -719,11 +762,11 @@ msgstr "Успадковує клас:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:106
 msgid "Internal unique name for the action"
-msgstr ""
+msgstr "Внутрішня унікальна назва для дії"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
 msgid "Invalid ToolBar Label"
-msgstr ""
+msgstr "Невірна мітка панелі інструментів"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:80
 #: src/modules/popupeditor/PopupEditorWindow.cpp:211
@@ -749,7 +792,7 @@ msgstr "Мітка"
 
 #: src/modules/actioneditor/ActionEditor.cpp:108
 msgid "Label:"
-msgstr ""
+msgstr "Мітка:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1011
 msgid "Load Script File - KVIrc"
@@ -807,6 +850,8 @@ msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
 msgstr ""
+"Імена простору імен можуть містити лише букви, цифри, символи підкреслення і "
+"роздільники простору імен '::'"
 
 #: src/modules/actioneditor/ActionEditor.cpp:206
 msgid "Needs IRC Connection"
@@ -962,7 +1007,7 @@ msgstr "Спробуємо знову..."
 #: src/modules/actioneditor/ActionEditor.cpp:246
 #: src/modules/actioneditor/ActionEditor.cpp:257
 msgid "Only If There Are Selected Users"
-msgstr ""
+msgstr "Лише якщо є вибрані користувачі"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1024
 msgid "Open Failed - KVIrc"
@@ -976,6 +1021,10 @@ msgid ""
 "\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
 "Ctrl+C\" ..."
 msgstr ""
+"Додаткова послідовність клавіш, яка буде активувати цю дію.<br>Послідовність "
+"повинна бути виражена у вигляді рядка до чотирьох клавіш, розділених комами "
+"і в кінці в поєднанні з модифікаторами \"Ctrl\",\"Shift\",\"Alt\" і \"Мета\".<br> "
+"Прикладами таких послідовностей \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:794
 msgid "Options"
@@ -1011,20 +1060,20 @@ msgstr "Будь ласка, введіть назву для класу:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2043
 msgid "Please enter the name for the member function:"
-msgstr ""
+msgstr "Будь ласка, введіть назву для функції-члена:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
 msgid "Please enter the name for the new alias"
-msgstr ""
+msgstr "Будь ласка, введіть назву для нового псевдоніму"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1129
 #: src/modules/classeditor/ClassEditorWindow.cpp:1596
 msgid "Please enter the name for the new namespace"
-msgstr ""
+msgstr "Будь ласка, введіть назву для нового простору імен"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:430
 msgid "Please enter the new name for the alias"
-msgstr ""
+msgstr "Будь ласка, введіть нову назву для псевдоніму"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:432
 #: src/modules/classeditor/ClassEditorWindow.cpp:677
@@ -1033,36 +1082,39 @@ msgstr "Будь ласка, введіть нову назву для прос�
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2064
 msgid "Please enter the optional reminder string for the member function:"
-msgstr ""
+msgstr "Будь ласка, введіть додатковий рядок нагадування функції-члена:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:639
 msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
 msgstr ""
+"Будь ласка введіть текст для пошуку. Співпадаючі псевдоніми будуть виділені."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:996
 msgid ""
 "Please enter the text to be searched for. The matching function will be "
 "highlighted."
-msgstr ""
+msgstr "Будь ласка введіть текст для пошуку. Співпадаюча функція буде виділена."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1361
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
 msgstr ""
+"Будь ласка, зверніть увагу, що всі класи/функції-нащадки будуть видалені "
+"теж."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
 msgid "Please note that all the children items will be deleted too."
-msgstr ""
+msgstr "Будь ласка, зверніть увагу, що всі об'єкти-нащадки будуть видалені теж."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
 msgid "Please specify the properties for the new toolbar"
-msgstr ""
+msgstr "Будь ласка, вкажіть властивості нової панелі інструментів"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:471
 msgid "Please specify the properties for the toolbar \"%1\""
-msgstr ""
+msgstr "Будь ласка, вкажіть властивості панелі інструментів \"%1\""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1041
 msgid "Popup"
@@ -1070,11 +1122,11 @@ msgstr "Вигульк"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1427
 msgid "Popup Editor"
-msgstr "Редактор контекстних меню"
+msgstr "Редактор спливаючих вікон"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:197
 msgid "Popup name"
-msgstr ""
+msgstr "Назва спливаючого вікна"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:519
 msgid "Preferences"
@@ -1094,7 +1146,7 @@ msgstr "Розділові знаки:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:764
 msgid "Put here a short description of your action"
-msgstr ""
+msgstr "Введіть тут короткий опис вашої дії"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:524
 msgid "Raw Editor"
@@ -1149,7 +1201,7 @@ msgstr "Замінити файл"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1075
 msgid "Replace with"
-msgstr ""
+msgstr "Замінити на"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:815
 #: src/modules/editor/ScriptEditorImplementation.cpp:994
@@ -1170,7 +1222,7 @@ msgstr "Роздільник"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2077
 msgid "Set as <b>Internal</b> Function: "
-msgstr ""
+msgstr "Встановити як <b>Внутрішня</b> функція: "
 
 #: src/modules/actioneditor/ActionEditor.cpp:144
 msgid "Small Icon:"
@@ -1180,12 +1232,15 @@ msgstr "Малий значок:"
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
+"Символ ':' в назві псевдоніму: ви мали на увазі ...<простір_імен>::<ім'я> ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1084
 #: src/modules/classeditor/ClassEditorWindow.cpp:1534
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
+"Символ ':' в назві простору імен: ви мали на увазі ...<простір_імен>::<ім'я> "
+"?"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:83
 msgid "Submenu"
@@ -1201,29 +1256,35 @@ msgstr "Текст:"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
 msgid "The ToolBar Label can't be empty!"
-msgstr ""
+msgstr "Мітка панелі інструментів не може бути порожньою!"
 
 #: src/modules/actioneditor/ActionEditor.cpp:167
 msgid ""
 "The big icon associated to this action.<br>It will appear at least in the "
 "toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
 msgstr ""
+"Великий значок, асоційований з цією дією.<br>Він з'явиться принаймні на "
+"кнопках панелі інструментів коли ця дія буде вставлена.<br>Він повинен мати "
+"розмір 32х32 пікселів."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:788
 #: src/modules/classeditor/ClassEditorWindow.cpp:1207
 msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr ""
+msgstr "Експортований файл буде порожнім: боязко відмовляюсь його писати"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:746
 #: src/modules/classeditor/ClassEditorWindow.cpp:1137
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr ""
+msgstr "Файл \"%1\" існує. Хочете його замінити?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:152
 msgid ""
 "The small icon associated to this action.<br>It will appear at least in the "
 "popup menus when this action is inserted.<br>It has to be 16x16 pixels."
 msgstr ""
+"Малий значок, асоційований з цією дією.<br>Він з'явиться принаймні в "
+"спливаючих меню коли ця дія буде вставлена.<br>Він повинен мати розмір "
+"316х16 пікселів."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
 msgid ""
@@ -1231,6 +1292,9 @@ msgid ""
 "it automatically (so it doesn't collide with any other toolbar) or you "
 "prefer to do it manually ?"
 msgstr ""
+"Вказаний Id панелі вже існує.<br>Хочете щоб KVIrc призначив його автоматично "
+"(щоб не перетнутись з іншою панеллю інструментів) чи ви хочете зробити це "
+"вручну ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:720
 #: src/modules/classeditor/ClassEditorWindow.cpp:1112
@@ -1239,11 +1303,11 @@ msgstr "Нічого не вибрано!"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1700
 msgid "These inherited classes will be not compiled too:"
-msgstr ""
+msgstr "Ці успадковані класи не будуть скомпільовані також:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:689
 msgid "This name is already in use as Class name. Please choose another one."
-msgstr ""
+msgstr "Це ім'я вже використовується в якості імені класу. Виберіть інше."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:445
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:457
@@ -1251,7 +1315,7 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:605
 #: src/modules/classeditor/ClassEditorWindow.cpp:694
 msgid "This name is already in use. Please choose another one."
-msgstr ""
+msgstr "Це ім'я вже використовується. Будь ласка виберіть інше."
 
 #: src/modules/actioneditor/ActionEditor.cpp:236
 #: src/modules/actioneditor/ActionEditor.cpp:247
@@ -1260,6 +1324,7 @@ msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
 msgstr ""
+"Це дозволить дію лише при наявності вибраних користувачів в активному вікні"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
 msgid "ToolBar Export"
@@ -1275,20 +1340,20 @@ msgstr "Тип"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1693
 msgid "Unable to compile class: "
-msgstr ""
+msgstr "Не вдалось скомпілювати клас: "
 
 #: src/modules/actioneditor/ActionEditor.cpp:715
 msgid "Unable to write to the actions file."
-msgstr ""
+msgstr "Не вдалося записати в файл дій."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:819
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1241
 msgid "Unable to write to the alias file."
-msgstr ""
+msgstr "Не вдалося записати в файл псевдоніму."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1239
 msgid "Unable to write to the class file."
-msgstr ""
+msgstr "Не вдалося записати в файл класу."
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:471
 msgid "Unable to write to the event file."
@@ -1312,7 +1377,7 @@ msgstr "Не вдалося записати в файл сирих подій."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
 msgid "Unable to write to the toolbar file."
-msgstr ""
+msgstr "Не вдалося записати в файл панелі інструментів."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:536
 msgid "Variables:"
@@ -1323,16 +1388,20 @@ msgid ""
 "Visible name for this action.<br>This string will be displayed to the user "
 "so it is a good idea to use $tr() here"
 msgstr ""
+"Видима назва для цієї дії.<br>Цей рядок відображатиметься користувачеві, "
+"тому хороша ідея використати тут $tr()"
 
 #: src/modules/actioneditor/ActionEditor.cpp:142
 msgid ""
 "Visible short description for this action.<br>This string will be displayed "
 "to the user so it is a good idea to use $tr() here"
 msgstr ""
+"Видимий короткий опис для цієї дії.<br>Цей рядок відображатиметься "
+"користувачеві, тому хороша ідея використати тут $tr()"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1066
 msgid "Word to Find"
-msgstr ""
+msgstr "Слово для пошуку"
 
 #: src/modules/actioneditor/ActionEditor.cpp:715
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:819
@@ -1364,12 +1433,12 @@ msgstr "Так для всіх"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:989
 msgid "You must specify a valid name for the alias"
-msgstr ""
+msgstr "Ви повинні вказати вірне ім'я для псевдоніму"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1057
 #: src/modules/classeditor/ClassEditorWindow.cpp:1507
 msgid "You must specify a valid name for the namespace"
-msgstr ""
+msgstr "Ви повинні вказати вірне ім'я для простору імен"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:285
 #: src/modules/raweditor/RawEditorWindow.cpp:257
@@ -1378,7 +1447,7 @@ msgstr "типовий"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:806
 msgid "inherits from class "
-msgstr ""
+msgstr "успадковує від класу"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:409
 msgid "none"

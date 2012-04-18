@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2012-04-11 20:34+0300\n"
+"PO-Revision-Date: 2012-04-13 11:09+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #: src/kvilib/core/KviError.cpp:50
 #: src/kvilib/net/KviHttpRequest.cpp:255
@@ -1491,7 +1491,7 @@ msgstr "Менеджер &завантажень"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:383
 msgid "Shows a window that lists file transfers"
-msgstr ""
+msgstr "Показує вікно зі списком файлових передач"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:393
 msgid "Show I/O &Traffic graph"
@@ -1499,23 +1499,23 @@ msgstr "Показувати графік I/O &трафіку"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:394
 msgid "Shows a graph representing I/O bandwidth traffic"
-msgstr ""
+msgstr "Показує графік I/O трафіку"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:404
 msgid "Browse Log Files"
-msgstr ""
+msgstr "Огляд журналів"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:405
 msgid "Shows a window that lists and filter log files"
-msgstr ""
+msgstr "Показує вікно зі списком та фільтром журналів"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:415
 msgid "Manage S&hared Files"
-msgstr ""
+msgstr "Керування С&пільними файлами"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:416
 msgid "Shows a window that list shared siles"
-msgstr ""
+msgstr "Показує вікно зі списком спільних файлів"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:426
 msgid "View URL list"
@@ -1523,7 +1523,7 @@ msgstr "Показати список URL"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:427
 msgid "Shows a window that list catched urls"
-msgstr ""
+msgstr "Показує вікно зі списком кешованих url"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:438
 msgid "Cascade windows"
@@ -1832,6 +1832,7 @@ msgstr "Кодування тексту змінене на %Q"
 msgid ""
 "Failed to send the CAP LS request. Server capabilities will not be detected."
 msgstr ""
+"Не вдалось відіслати запит CAP LS. Серверні можливості не будуть виявлені."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:407
 msgid ""
@@ -1850,7 +1851,7 @@ msgstr ""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:572
 msgid "Extended Capabilities don't seem to be supported by the server"
-msgstr ""
+msgstr "Здається, розширені можливості не підтримуються сервером"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:789
 #: src/kvirc/kernel/KviIrcConnection.cpp:798
@@ -3898,7 +3899,7 @@ msgstr "Ви не під'єднані до серверу"
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:524
 #: src/modules/context/libkvicontext.cpp:682
 msgid "This executable was built without SSL support"
-msgstr ""
+msgstr "Ця збірка програми зібрана без підтримки SSL"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:532
 msgid "No public key certificate defined in KVIrc options."
@@ -5978,11 +5979,11 @@ msgstr "Відкрити &термінал"
 
 #: src/kvirc/ui/KviMenuBar.cpp:387
 msgid "Modules tools"
-msgstr ""
+msgstr "Інструменти модулів"
 
 #: src/kvirc/ui/KviMenuBar.cpp:390
 msgid "Actions tools"
-msgstr ""
+msgstr "Інструменти дій"
 
 #: src/kvirc/ui/KviModeEditor.cpp:71
 msgid "Channel Modes"
@@ -6036,7 +6037,7 @@ msgstr "Загальні канали: %2"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:200
 msgid "No common channels"
-msgstr ""
+msgstr "Немає загальних каналів"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:274
 msgid ""
@@ -6633,48 +6634,49 @@ msgstr "Конфігураційний файл із ID '%Q' доступний 
 
 #: src/modules/context/libkvicontext.cpp:695
 msgid "Unable to find the specified context"
-msgstr ""
+msgstr "Не можу знайти вказаний контекст"
 
 #: src/modules/context/libkvicontext.cpp:697
 msgid "Unable to find the current context"
-msgstr ""
+msgstr "Не можу знайти поточний контекст"
 
 #: src/modules/context/libkvicontext.cpp:709
 msgid "You specified a bad string for the parameter \"type\""
-msgstr ""
+msgstr "Ви вказали невірний рядок для параметру \"тип\""
 
 #: src/modules/context/libkvicontext.cpp:718
 msgid "The specified context is disconnected"
-msgstr ""
+msgstr "Вказаний контекст від'єднаний"
 
 #: src/modules/context/libkvicontext.cpp:720
 msgid "The current context is disconnected"
-msgstr ""
+msgstr "Поточний контекст від'єднаний"
 
 #: src/modules/context/libkvicontext.cpp:729
 msgid "The specified context's socket is disconnected"
-msgstr ""
+msgstr "Вказаний сокет контексту від'єднаний"
 
 #: src/modules/context/libkvicontext.cpp:731
 msgid "The current context's socket is disconnected"
-msgstr ""
+msgstr "Поточний сокет контексту від'єднаний"
 
 #: src/modules/context/libkvicontext.cpp:738
 msgid "Unable to get SSL information: the IRC Connection is not using SSL"
-msgstr ""
+msgstr "Не можу отримати інформацію SSL: IRC з'єднання не використовує SSL"
 
 #: src/modules/context/libkvicontext.cpp:746
 msgid ""
 "Unable to get SSL information: SSL non initialized yet in IRC Connection"
 msgstr ""
+"Не можу отримати інформацію SSL: SSL ще не ініціалізовано в IRC з'єднанні"
 
 #: src/modules/context/libkvicontext.cpp:755
 msgid "Unable to get SSL information: No peer certificate available"
-msgstr ""
+msgstr "Не можу отримати інформацію SSL: Піровий сертифікат відсутній"
 
 #: src/modules/context/libkvicontext.cpp:763
 msgid "Unable to get SSL information: query not recognized"
-msgstr ""
+msgstr "Не можу отримати інформацію SSL: черга не розпізнана"
 
 #: src/modules/file/libkvifile.cpp:94
 msgid "Destination file exists: no copy made"
@@ -6682,7 +6684,7 @@ msgstr "Файл призначення існує: копію не зробле
 
 #: src/modules/file/libkvifile.cpp:99
 msgid "Failed to copy from '%Q' to '%Q'"
-msgstr ""
+msgstr "Помилка копіювання '%Q' до '%Q'"
 
 #: src/modules/file/libkvifile.cpp:100
 msgid "Either the source doesn't exist or the destination can not be created"
@@ -6690,7 +6692,7 @@ msgstr "Або джерело не існує, або призначення н�
 
 #: src/modules/file/libkvifile.cpp:218
 msgid "Failed to write to file '%Q': the destination couldn't be opened"
-msgstr ""
+msgstr "Помилка запису у файл '%Q': файл не може бути відкритий"
 
 #: src/modules/file/libkvifile.cpp:268
 msgid "Missing data array"
@@ -6698,11 +6700,11 @@ msgstr "Відсутній масив даних"
 
 #: src/modules/file/libkvifile.cpp:273
 msgid "Can't open file '%1' for writing"
-msgstr ""
+msgstr "Неможливо відкрити файл '%1' для запису"
 
 #: src/modules/file/libkvifile.cpp:296
 msgid "Error writing bytes to file '%1'"
-msgstr ""
+msgstr "Помилка при записі байтів до файлу '%1'"
 
 #: src/modules/file/libkvifile.cpp:335
 msgid "Destination file exists: file not renamed"
@@ -6710,19 +6712,19 @@ msgstr "Файл призначення існує: файл не перейме
 
 #: src/modules/file/libkvifile.cpp:338
 msgid "Failed to rename '%Q' to '%Q'"
-msgstr ""
+msgstr "Помилка перейменування '%Q' на '%Q'"
 
 #: src/modules/file/libkvifile.cpp:370
 msgid "Failed to make the directory '%Q'"
-msgstr ""
+msgstr "Помилка при створенні каталогу '%Q'"
 
 #: src/modules/file/libkvifile.cpp:408
 msgid "Failed to remove the file '%Q'"
-msgstr ""
+msgstr "Помилка видалення файлу '%Q'"
 
 #: src/modules/file/libkvifile.cpp:449
 msgid "Failed to remove the directory '%Q'"
-msgstr ""
+msgstr "Помилка видалення каталогу '%Q'"
 
 #: src/modules/file/libkvifile.cpp:571
 #: src/modules/file/libkvifile.cpp:708
@@ -6734,23 +6736,23 @@ msgstr "Заданий каталог не існує '%Q'"
 #: src/modules/file/libkvifile.cpp:997
 #: src/modules/file/libkvifile.cpp:1451
 msgid "Can't open the file '%Q' for reading"
-msgstr ""
+msgstr "Не можу відкрити файл '%Q' для читання"
 
 #: src/modules/file/libkvifile.cpp:824
 #: src/modules/file/libkvifile.cpp:914
 msgid ""
 "Read error for file '%Q' (have been unable to read the requested size in "
 "1000 retries)"
-msgstr ""
+msgstr "Помилка при читанні файлу '%Q' (неможливо прочитати після 1000 спроб)"
 
 #: src/modules/file/libkvifile.cpp:833
 #: src/modules/file/libkvifile.cpp:923
 msgid "Read error for file '%Q'"
-msgstr ""
+msgstr "Помилка при читанні файлу '%Q'"
 
 #: src/modules/file/libkvifile.cpp:1098
 msgid "Can't open the file '%Q' for writing"
-msgstr ""
+msgstr "Неможливо відкрити файл '%Q' для запису"
 
 #: src/modules/file/libkvifile.cpp:1458
 msgid "Can't read data from file"
@@ -6758,7 +6760,7 @@ msgstr "Неможливо прочитати дані з файлу"
 
 #: src/modules/file/libkvifile.cpp:1476
 msgid "'%Q' algorithm is not supported"
-msgstr ""
+msgstr "алгоритм '%Q' не підтримується"
 
 #: src/modules/file/libkvifile.cpp:1507
 msgid ""
@@ -6770,7 +6772,7 @@ msgstr ""
 
 #: src/modules/file/libkvifile.cpp:1572
 msgid "Unknown option '%1', defaulting to 'm'"
-msgstr ""
+msgstr "Невідома опція '%1', скидаю до 'm'"
 
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 msgid "Ops.. internal error"
@@ -6780,7 +6782,7 @@ msgstr "Ой.. внутрішня помилка"
 #: src/modules/fish/libkvifish.cpp:143
 #: src/modules/fish/libkvifish.cpp:224
 msgid "FiSH has been compiled without ssl support, unable to proceed"
-msgstr ""
+msgstr "FiSH зібраний без підтримки ssl, не в змозі продовжувати"
 
 #: src/modules/fish/libkvifish.cpp:151
 msgid "FiSH: Received DH1080 public key from %1, sending mine..."
@@ -7466,6 +7468,14 @@ msgid ""
 ">This engine works in CBC mode by default: if you want to use the old and "
 "INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\"."
 msgstr ""
+"Популярна шифрувальна машина основана на алгоритмі шифрування Blowfish. "
+"<br/>Текст спочатку шифрується Blowfish і конвертується в запис base64. "
+"Використовуваний ключ має змінну довжину і подається в вигляді рядка "
+"символів. Ви можете вказати ключ довжиною до 56 байт (448 біт). Якщо задати "
+"лише один ключ, то він буде використаний і для шифрування й для "
+"дешифрування.  <br/>Машина працює в режимі CBC за замовчуванням: якщо ви "
+"хочете працювати з старим INSECURE ECB режимом, ви повинні додати \"ecb:\" або "
+"\"old:\" перед ключем."
 
 #: src/modules/rot13/libkvirot13.cpp:123
 msgid ""
@@ -7967,12 +7977,12 @@ msgstr "Виклики DBus доступні тільки під UNIX"
 
 #: src/modules/system/libkvisystem.cpp:752
 msgid "No command specified"
-msgstr ""
+msgstr "Команда не вказана"
 
 #: src/modules/system/libkvisystem.cpp:769
 #: src/modules/system/libkvisystem.cpp:804
 msgid "Failed to start the terminal program"
-msgstr ""
+msgstr "Не вдалось запустити консольну програму"
 
 #: src/modules/system/Plugin.cpp:234
 msgid "Plugin not found. Please check the plugin-name and path."

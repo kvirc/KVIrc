@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-05-29 17:59+0200\n"
-"PO-Revision-Date: 2012-03-14 19:06+0300\n"
+"PO-Revision-Date: 2012-04-14 15:56+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #: src/modules/regchan/libkviregchan.cpp:124
 #: src/modules/regchan/libkviregchan.cpp:184
@@ -83,24 +83,31 @@ msgid ""
 "Insert a mask for this user.<br>It can contain the wildcard characters '*' "
 "and '?'."
 msgstr ""
+"Вставте маску для цього користувача.<br>Може містити символи '*' та '?'."
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:226
 msgid ""
 "<center>This is the <b>nickname</b> that will match this user, default value "
 "is the registered name.</center>"
 msgstr ""
+"<center>Це <b>нікнейм</b> який буде відповідати цьому користувачеві, типове "
+"значення - зареєстроване ім'я.</center>"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:235
 msgid ""
 "<center>This is the <b>username</b> that will match this user. <b>*</b> will "
 "match any username.</center>"
 msgstr ""
+"<center>Це <b>ім'я користувача</b> який буде відповідати цьому "
+"користувачеві. <b>*</b> буде відповідати всім іменам користувачів.</center>"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:244
 msgid ""
 "<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
 "match any hostname.</center>"
 msgstr ""
+"<center>Це <b>ім'я хосту</b> який буде відповідати цьому користувачеві, "
+"<b>*</b> буде відповідати всім іменам хостів.</center>"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:320
 msgid "Registered User Entry"
@@ -147,7 +154,7 @@ msgstr "Сповістити ніки:"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:384
 msgid "<center>You can enter a space separated list of nicknames.</center>"
-msgstr ""
+msgstr "<center>Можна ввести список ніків через пробіл.</center>"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:409
 msgid "Avatar"
@@ -155,7 +162,7 @@ msgstr "Аватар"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:416
 msgid "Use custom color in userlist"
-msgstr ""
+msgstr "Використовати заданий колір у списку користувачів"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:424
 msgid "All Properties..."
@@ -217,6 +224,12 @@ msgid ""
 "add users to the notify list. Notify list fine-tuning can be performed by "
 "editing the entry properties.</center>"
 msgstr ""
+"<center>Це список зареєстрованих користувачів. KVIrc може автоматично "
+"розпізнавати і пов'язувати з ними властивості.<br>Використовуйте кнопки "
+"праворуч для додавання, редагування та видалення записів. Колонка "
+"\"сповіщення\" дозволяє швидко додавати користувачів у список сповіщень. Тонке "
+"налаштування списку сповіщень може бути виконане редагуванням "
+"властивостей.</center>"
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:122
 msgid "Notify disabled"
@@ -240,11 +253,11 @@ msgstr "Додати (Майстер)..."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:244
 msgid "Add a registered user by means of a user-friendly wizard."
-msgstr ""
+msgstr "Додати зареєстрованого користувача за допомогою зручного майстра."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:250
 msgid "Open the edit dialog to create a new user entry."
-msgstr ""
+msgstr "Відкрийте діалог редагування для створення нового користувача."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:253
 msgid "&Add Group..."
@@ -284,6 +297,9 @@ msgid ""
 "selected registered users will be exported.<br>You (or anyone else) can "
 "later import the entries by using the \"Import\" button."
 msgstr ""
+"Експорт обраних записів у файл.<br>Всі дані, пов'язані з обраним "
+"зареєстрованим користувачам будуть експортовані.<br>Ви (або хто-небудь ще) "
+"може пізніше імпортувати ці дані використовуючи кнопку \"Імпорт\"."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:286
 msgid "Import From..."
@@ -294,6 +310,8 @@ msgid ""
 "Import entries from a file exported earlier by the \"export\" function of "
 "this dialog."
 msgstr ""
+"Імпортувати дані з файлу які були раніше експортовані функцією \"експорт\" "
+"цього діалогу."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:414
 #: src/modules/reguser/RegisteredUsersDialog.cpp:427
@@ -323,30 +341,32 @@ msgstr "Виберіть ім'я файлу - KVIrc"
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:730
 msgid "Can't open file %Q for writing."
-msgstr ""
+msgstr "Не можу відкрити файл %Q для запису."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:808
 msgid "Can't export the registered users database: Write error."
 msgstr ""
+"Неможливо експортувати базу зареєстрованих користувачів: Помилка запису."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:834
 #, c-format
 msgid "Can't open file %s for reading."
-msgstr ""
+msgstr "Не можу відкрити файл %s для читання."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:845
 #, c-format
 msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr ""
+msgstr "Схоже файл %s не є базою зареєстрованих користувачів."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:852
 #, c-format
 msgid "The file %s contains an invalid registered users database version."
-msgstr ""
+msgstr "Файл %s містить невірну версію бази зареєстрованих користувачів."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:921
 msgid "Can't import the registered users database: Read error."
 msgstr ""
+"Неможливо імпортувати базу зареєстрованих користувачів: Помилка читання."
 
 #: src/modules/reguser/libkvireguser.cpp:188
 #: src/modules/reguser/libkvireguser.cpp:268
@@ -438,6 +458,15 @@ msgid ""
 "you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
 "</p>"
 msgstr ""
+"<p>Ласкаво просимо в майстер реєстрації користувача.<br>Цей процес дозволяє "
+"додати користувача IRC до бази даних і задати властивості цього користувача. "
+"KVIrc буде (сподіваюся) здатний ідентифікувати користувача, додати його в "
+"список сповіщень, а також відобразити пов'язаний аватар.<br><br>Перш за все, "
+"необхідно вказати <b>ім'я запису або реальне ім'я</b> для користувача, що "
+"ви збираєтесь зареєструватися. Це ім'я буде використовуватися для "
+"ідентифікації запису бази даних і не має ніяких особливих вимог, це може "
+"бути ім'я, нікнейм чи просто текст, щоб нагадає вам про реальну "
+"людину.<br>Приклади: \"Джордж Буш\", \"Вася\".</p>"
 
 #: src/modules/reguser/RegistrationWizard.cpp:97
 msgid "Step 1: Entry Name"
@@ -453,6 +482,14 @@ msgid ""
 "add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
 "dialog. You must enter at least one mask.</p>"
 msgstr ""
+"<p>Зареєстрований користувач ідентифікується по одній або більше <b>IRC "
+"масках</b>. <br>Маска повинна мати наступний "
+"вигляд:<br><b>нікнейм!ім'я_користувача@хост</b><br> і може містити символи "
+"'*' та '?'. Будьте обережні у виборі маски, тому що вони є єдиним способом "
+"перевірити справжність зареєстрованих користувачів.<br><br>Ви можете ввести "
+"тут не більше двох масок, якщо ви хочете додати більше масок, використовуйте "
+"кнопку \"<b>Змінити</b>\" в діалозі Зареєстрованих Користувачів. Ви повинні "
+"ввести хоча б одну маску.</p>"
 
 #: src/modules/reguser/RegistrationWizard.cpp:171
 msgid "Step 2: Mask Selection"
@@ -467,10 +504,17 @@ msgid ""
 "fit in the userlist, thus it's better to use small, low-resolution images.</"
 "p>"
 msgstr ""
+"<p>Якщо ви хочете зберегти аватар для цього користувача, ви можете зробити "
+"це тут. KVIrc буде показувати цей аватар у списку користувачів поруч з ніком "
+"користувача. <br>Аватари можуть бути в будь-якому підтримуваному форматі "
+"зображення (PNG рекомендується). Майте на увазі, що KVIrc зберігає аватари в "
+"пам'яті і повинен змінити їх розмір, щоб вони помістилися в список "
+"користувачів. Тому краще використовувати маленькі зображення, з низьким "
+"розширенням.</p>"
 
 #: src/modules/reguser/RegistrationWizard.cpp:192
 msgid "Store an avatar for this user"
-msgstr ""
+msgstr "Помістити аватар для цього користувача"
 
 #: src/modules/reguser/RegistrationWizard.cpp:197
 msgid "Step 3: Avatar Selection"
@@ -483,6 +527,11 @@ msgid ""
 "enter at most two nicknames here, if you wish to add more nicknames, use the "
 "\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
 msgstr ""
+"<p>Якщо ви хочете отримувати сповіщення коли користувач знаходиться в мережі "
+"і виходить з мережі, необхідно вказати список ніків, які KVIrc буде "
+"перевіряти.<br><br>Ви можете ввести тут не більше двох ніків, якщо ви хочете "
+"додати ніки, використайте кнопку \"<b>Змінити</b>\" в діалозі Зареєстрованих "
+"Користувачів.</p>"
 
 #: src/modules/reguser/RegistrationWizard.cpp:218
 msgid "Add this user to the notify list"
@@ -505,6 +554,8 @@ msgid ""
 "<p>That's it. The user registration has been completed.<br><br>Click "
 "\"<b>Finish</b>\" to close this dialog.</p>"
 msgstr ""
+"<p>От і все. Реєстрація користувача завершена.<br><br>Натисніть кнопку "
+"\"<b>Готово</b>\" щоб закрити це вікно.</p>"
 
 #: src/modules/reguser/RegistrationWizard.cpp:258
 msgid "Registration Complete"
