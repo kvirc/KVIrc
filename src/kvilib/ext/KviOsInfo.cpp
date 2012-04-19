@@ -173,7 +173,7 @@ static QString queryWinInfo(QueryInfo info)
 		{
 			if( osvi.wProductType == VER_NT_WORKSTATION )
 				szVersion+= "Windows 8 ";
-			else szVersion+="Windows Server 8 ";
+			else szVersion+="Windows Server 2012 ";
 		}
 
 		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 1 )
