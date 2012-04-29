@@ -1026,8 +1026,8 @@ ENDIF()
 #CMakeFindXCode.cmake
 #CheckLibraryExists.cmake
 
-# Search for subdirectories
-SUBDIRS(src data po scripts doc)
+# Search for subdirectories; under osx, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
+SUBDIRS(data doc po scripts src)
 
 #install additional resources for win32
 IF(WIN32)
@@ -1189,19 +1189,19 @@ LIST(APPEND LIBS "${ADDITIONAL_LINK_FLAGS}")
 # Binary path
 IF(UNIX)
 	IF(APPLE)
-		SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/${KVIRC_BINARYNAME})
+		SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/)
 	ELSE()
 		# Assume linux
-		SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/bin/${KVIRC_BINARYNAME})
+		SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/bin/)
 	ENDIF()
 ELSEIF(WIN32)
-	SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/${KVIRC_BINARYNAME})
+	SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/)
 ENDIF()
 
 # KviLib path
 IF(UNIX)
 	IF(APPLE)
-		SET(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/)
+		SET(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/)
 	ELSE()
 		# Assume linux
 		SET(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/)
@@ -1213,19 +1213,19 @@ ENDIF()
 # Modules path
 IF(UNIX)
 	IF(APPLE)
-		SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
+		SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/)
 	ELSE()
 		# Assume linux
-		SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
+		SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/kvirc/${VERSION_BRANCH}/modules/)
 	ENDIF()
 ELSEIF(WIN32)
-	SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
+	SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/modules/)
 ENDIF()
 
 # Man path
 IF(UNIX)
 	IF(APPLE)
-		# does MacOS X use man pages?
+		# does MacOS X use man pages? <= yes!
 	ELSE()
 		# Assume linux
 		SET(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)

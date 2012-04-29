@@ -51,3 +51,8 @@ ENDIF()
 IF(COMPILE_PYTHON_SUPPORT)
 	SUBDIRS(python)
 ENDIF()
+
+IF(APPLE)
+	# This is a dirty trick ensure we get some code executed after the last module gets installed
+	SUBDIRS(zzz_afterlastmodule)
+ENDIF()

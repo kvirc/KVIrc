@@ -376,13 +376,29 @@ IF(WANT_STRIP)
 ENDIF()
 
 # Installation directives
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/MacOS)
+INSTALL(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION "${KVIRC_BIN_PATH}")
+
+IF(APPLE)
+	SET(plugin_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Plugins)
+	SET(qtconf_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Resources)
+
+	IF(WANT_DEBUG)
+		INSTALL(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
+			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|phonon_backend|sqldrivers)/.*_debug\\.dylib")
 	ELSE()
-		# Assume linux
-		INSTALL(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+		INSTALL(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
+			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|phonon_backend|sqldrivers)/[^_]*\\.dylib")
 	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+	INSTALL(CODE "
+	    file(WRITE \"${qtconf_dest_dir}/qt.conf\" \"[Paths]
+Plugins = Plugins\")
+	    " COMPONENT Runtime)
+
+	INSTALL(CODE "
+	    file(GLOB_RECURSE QTPLUGINS
+	      \"${plugin_dest_dir}/*.dylib\")
+	    include(BundleUtilities)
+	    fixup_bundle(\"${CMAKE_INSTALL_PREFIX}\" \"\${QTPLUGINS}\" \"${QT_LIBRARY_DIRS}\")
+	    " COMPONENT Runtime)
 ENDIF()
