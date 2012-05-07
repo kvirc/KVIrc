@@ -50,7 +50,7 @@
 		__asm add eax,supercalifragilisticoespiralidoso \
 		__asm mov __list,eax \
 	}
-#elif defined(__GNUC__)
+#elif defined(__GNUC__) && !defined(__clang__)
 	// gcc doesn't use the second argument
 	// so we just fool it to avoid the warnings
 	#define kvi_va_start_by_reference(__list,__arg) va_start(__list,((const char *)(&(__arg))))

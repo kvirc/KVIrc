@@ -399,6 +399,6 @@ Plugins = Plugins\")
 	    file(GLOB_RECURSE QTPLUGINS
 	      \"${plugin_dest_dir}/*.dylib\")
 	    include(BundleUtilities)
-	    fixup_bundle(\"${CMAKE_INSTALL_PREFIX}\" \"\${QTPLUGINS}\" \"${QT_LIBRARY_DIRS}\")
+	    fixup_bundle(\"${CMAKE_INSTALL_PREFIX}\" \"\${QTPLUGINS}\" \"${QT_LIBRARY_DIR}\")
 	    " COMPONENT Runtime)
 ENDIF()
