@@ -590,7 +590,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("TotalConnectionTime",0,0),
 	UINT_OPTION("DccSocketTimeout",360,KviOption_sectFlagDcc),
 	UINT_OPTION("DccSendIdleStepInMSec",30,KviOption_sectFlagDcc),
-	UINT_OPTION("DccSendPacketSize",4096,KviOption_sectFlagDcc),
+	UINT_OPTION("DccSendPacketSize",16384,KviOption_sectFlagDcc),
 	UINT_OPTION("GlobalTransparencyParentFadeFactor",10,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
 	UINT_OPTION("GlobalTransparencyChildFadeFactor",50,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
 	UINT_OPTION("NotifyListCheckTimeInSecs",180,KviOption_sectFlagConnection),
