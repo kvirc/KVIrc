@@ -6,6 +6,7 @@ This paper describes how to successfully compile a working copy of KVIrc 4.x
 under Microsoft Windows operating systems.
 
 
+
 -------------------------------------------------------------------------------
 Prerequisites
 -------------------------------------------------------------------------------
@@ -322,3 +323,5 @@ Common errors, pitfalls, ..
   In the compilation we call qt's moc to parse headers files and expand qt macros; 
   that warning simply means that moc found nothing to expand in that header file. We can fix this 
   removing headers that doesn't need to be moc-ed from the lists in CMakeLists.txt.
+
+- * Windows Vista and 7 Users * If you have UAC enabled (default setting) and KVIrc is installed in the Program Files folder and you have opted to use the portable setting, then KVIrc's data files will be found in the VirtualStore folder, typically: C:\Users\[UserName]\AppData\Local\VirtualStore\Program Files\KVIrc\ If you plan on using the portable setting, it is recommended that you install KVIrc in a non UAC protected folder.
