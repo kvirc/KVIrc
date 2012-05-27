@@ -3045,8 +3045,7 @@ KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 					return 0;
 				}
 				delete p;
-				QString * s = new QString(pBegin,KVSP_curCharPointer - pBegin);
-				s->trimmed();
+				QString * s = new QString(QString(pBegin,KVSP_curCharPointer - pBegin).trimmed());
 				l->append(s);
 
 				switch(KVSP_curCharUnicode)
