@@ -2425,7 +2425,17 @@ static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
 
 	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
-	if(dcc)c->returnValue()->setInteger(dcc->console()->context()->id());
+	if(dcc)
+	{
+		KviWindow * pEventWindow = dcc->console();
+		if(pEventWindow && (g_pApp->windowExists(pEventWindow)))
+		{
+			c->returnValue()->setInteger(dcc->console()->context()->id());
+		} else {
+			c->error(__tr2qs_ctx("The irc context that originated the dcc doesn't exists anymore.","dcc"));
+			return false;
+		}
+	}
 	return true;
 }
 

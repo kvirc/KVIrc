@@ -98,18 +98,12 @@ DccDescriptor::~DccDescriptor()
 	if(m_bCreationEventTriggered)
 	{
 		KviWindow * pEventWindow = m_pConsole;
-		if(!pEventWindow)pEventWindow = g_pApp->activeConsole(); // any console
-		else {
-			if(!(g_pApp->windowExists(pEventWindow)))pEventWindow = g_pApp->activeConsole();
-		}
+		if(!pEventWindow || !(g_pApp->windowExists(pEventWindow)))
+			pEventWindow = g_pApp->activeConsole(); // any console
 
-		if(pEventWindow)
+		if(pEventWindow && g_pApp->windowExists(pEventWindow))
 		{
-			// recheck it again...
-			if(g_pApp->windowExists(pEventWindow))
-			{
-				KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionDestroyed,pEventWindow,m_szId);
-			}
+			KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionDestroyed,pEventWindow,m_szId);
 		}
 	}
 
@@ -133,9 +127,12 @@ void DccDescriptor::triggerCreationEvent()
 		return;
 	}
 	m_bCreationEventTriggered = true;
+
 	KviWindow * pEventWindow = m_pConsole;
-	if(!pEventWindow)pEventWindow = g_pApp->activeConsole(); // any console
-	if(pEventWindow)
+	if(!pEventWindow || !(g_pApp->windowExists(pEventWindow)))
+		pEventWindow = g_pApp->activeConsole(); // any console
+
+	if(pEventWindow && g_pApp->windowExists(pEventWindow))
 	{
 		KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionCreated,pEventWindow,m_szId);
 	}
