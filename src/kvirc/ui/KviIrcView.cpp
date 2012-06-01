@@ -1006,7 +1006,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	}
 
 	int scrollbarWidth = m_pScrollBar->width();
-	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
 	int widgetWidth  = width() - scrollbarWidth;
 	int widgetHeight = height() - toolWidgetHeight;
 
@@ -1139,7 +1139,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 				pa.drawPixmap(KVI_IRCVIEW_HORIZONTAL_BORDER,imageYPos,*(g_pIconManager->getSmallIcon(iPixId)));
 		}
 
-		if(m_pToolWidget)
+		if(m_pToolWidget && m_pToolWidget->isVisible())
 		{
 			if(!m_pToolWidget->messageEnabled(pCurTextLine->iMsgType))
 			{
@@ -2057,7 +2057,7 @@ void KviIrcView::resizeEvent(QResizeEvent *)
 	m_pToolsButton->setGeometry(iLeft,0,iScr,iScr);
 	m_pScrollBar->setGeometry(iLeft,iScr,iScr,height() - iScr);
 
-	if(m_pToolWidget)
+	if(m_pToolWidget && m_pToolWidget->isVisible())
 	{
 		int h = m_pToolWidget->sizeHint().height();
 		m_pToolWidget->setGeometry(0, height() - h, width() - iScr, h);
@@ -2077,19 +2077,19 @@ void KviIrcView::showToolsPopup()
 
 	m_pToolsPopup->clear();
 
-	if(m_pToolWidget)
+	if(m_pToolWidget && m_pToolWidget->isVisible())
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Hide Filter"),this,SLOT(toggleToolWidget()));
 	else
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Show Filter"),this,SLOT(toggleToolWidget()));
 
-    m_pToolsPopup->addSeparator();
+	m_pToolsPopup->addSeparator();
 	m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
 	m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
 	m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
 	m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
-    QAction * pAction = m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
-    pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
-    m_pToolsPopup->addSeparator();
+	QAction * pAction = m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
+	pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
+	m_pToolsPopup->addSeparator();
 	m_pToolsPopup->addAction(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
 
 	QSize s = m_pToolsPopup->sizeHint();
@@ -2154,19 +2154,20 @@ void KviIrcView::resetBackground()
 
 void KviIrcView::toggleToolWidget()
 {
-	if(m_pToolWidget)
+	if(m_pToolWidget && m_pToolWidget->isVisible())
 	{
-		KviIrcViewToolWidget *pTmp=m_pToolWidget;
-		m_pToolWidget = 0;
-		pTmp->deleteLater();
+		m_pToolWidget->setVisible(false);
 		m_pCursorLine = 0;
 	} else {
-		m_pToolWidget = new KviIrcViewToolWidget(this);
+		if(!m_pToolWidget)
+			m_pToolWidget = new KviIrcViewToolWidget(this);
+
 		int h = m_pToolWidget->sizeHint().height();
 		int iScr = m_pScrollBar->sizeHint().width();
 		m_pToolWidget->setGeometry(0, height() - h, width() - iScr, h);
-		m_pToolWidget->show();
+		m_pToolWidget->setVisible(true);
 	}
+
 	repaint();
 }
 
