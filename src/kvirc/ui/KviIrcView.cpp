@@ -1139,17 +1139,6 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 				pa.drawPixmap(KVI_IRCVIEW_HORIZONTAL_BORDER,imageYPos,*(g_pIconManager->getSmallIcon(iPixId)));
 		}
 
-		if(m_pToolWidget && m_pToolWidget->isVisible())
-		{
-			if(!m_pToolWidget->messageEnabled(pCurTextLine->iMsgType))
-			{
-				// not in update rect... skip
-				curBottomCoord -= (m_iFontLineSpacing + m_iFontDescent);
-				pCurTextLine = pCurTextLine->pPrev;
-				continue;
-			}
-		}
-
 		// Initialize for drawing this line of text
 		// The first block is always an attribute block
 		char defaultBack  = pCurTextLine->pBlocks->pChunk->colors.back;
@@ -2073,25 +2062,21 @@ QSize KviIrcView::sizeHint() const
 void KviIrcView::showToolsPopup()
 {
 	if(!m_pToolsPopup)
+	{
         m_pToolsPopup = new QMenu(this);
 
-	m_pToolsPopup->clear();
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Toggle Search"),this,SLOT(toggleToolWidget()));
 
-	if(m_pToolWidget && m_pToolWidget->isVisible())
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Hide Filter"),this,SLOT(toggleToolWidget()));
-	else
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Show Filter"),this,SLOT(toggleToolWidget()));
-
-	m_pToolsPopup->addSeparator();
-	m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
-	m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
-	m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
-	m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
-	QAction * pAction = m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
-	pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
-	m_pToolsPopup->addSeparator();
-	m_pToolsPopup->addAction(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
-
+		m_pToolsPopup->addSeparator();
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
+		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
+		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
+		QAction * pAction = m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
+//		pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
+		m_pToolsPopup->addSeparator();
+		m_pToolsPopup->addAction(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
+	}
 	QSize s = m_pToolsPopup->sizeHint();
 
 	m_pToolsPopup->popup(m_pToolsButton->mapToGlobal(QPoint(m_pToolsButton->width() - s.width(),m_pToolsButton->height())));
@@ -2221,7 +2206,7 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 
 	// The cursor line is over the current line
 	// Here we're in trouble :D
-	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
 	int scrollbarWidth = m_pScrollBar->width();
 	int curBottomCoord = height() - toolWidgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth   = width() - scrollbarWidth - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
@@ -2380,7 +2365,7 @@ do_pPrev:
 KviIrcViewLine * KviIrcView::getVisibleLineAt(int yPos)
 {
 	KviIrcViewLine * l = m_pCurLine;
-	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
 	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	while(iTop > yPos)
@@ -2406,7 +2391,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 	 */
 
 	KviIrcViewLine * l = m_pCurLine;
-	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
 	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	// our current line begins after the mouse position... go on
@@ -2521,7 +2506,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 	 */
 
 	KviIrcViewLine * l = m_pCurLine;
-	int toolWidgetHeight = m_pToolWidget ? m_pToolWidget->sizeHint().height() : 0;
+	int toolWidgetHeight = (m_pToolWidget && m_pToolWidget->isVisible()) ? m_pToolWidget->sizeHint().height() : 0;
 	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER - toolWidgetHeight;
 
 	// our current line begins after the mouse position... go on
