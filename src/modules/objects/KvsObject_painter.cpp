@@ -280,14 +280,22 @@ const char * const brushstyles_tbl[] = {
 		!fn: $drawChord(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)
 		Draws a chord defined by the rectangle (x, y, w, h), the start angle a and the arc length alen.[br]
 		The angles <angle> and <alen> are 1/16th of a degree, i.e. a full circle equals 5760 (16*360).
-		!fn: $drawText(<x:integer>,<y:integer>,<text:string>,[<nr chars:integer>,<dir:enum>])
-		Draws the given <text> at position <x>, <y>.[br]
-		If <len> is -1 (the default) all the text is drawn, otherwise the first <len> characters are drawn.
-		The text's direction is given by <dir>, valid flag are:[br]
+		!fn: $drawText(<x:integer>,<y:integer>,<width:unsigned integer>,<height:unsigned integer>,<text:string>[,<flag:string>[,<flag:string>[,...]]])
+		Draws the given <text> within the rectangle specified by <x>,<y> <width> and <height>.[br]
+		The <flag> parameters may be:[br]
 		[pre]
-		Auto [br]
-		RTL (right to left) [br]
-		LTR (left to right) [br]
+		Left[br]
+		Top[br]
+		Right[br]
+		Bottom[br]
+		HCenter[br]
+		VCenter[br]
+		Center[br]
+		TextSingleLine[br]
+		TextExpandTabs[br]
+		TextShowMnemonic[br]
+		TextWordWrap[br]
+		TextIncludeTrailingSpaces[br]
 		[/pre]
 		!fn: $drawPixmap(<x:integer>,<y:integer>,<pixmap:hobject>,<sx:integer>,<sy:integer>,<ex:integer>,<ey:integer>)
 		Draws a pixmap at x,y coordinates[br]
@@ -1265,6 +1273,7 @@ KVSO_CLASS_FUNCTION(painter,beginPdf)
 	m_pPainter->begin(m_pPrinter);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(painter,drawText)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
