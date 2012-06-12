@@ -73,7 +73,7 @@ static const char * g_szAboutText = "" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
 "[" \
-"hellvis69 at netsons dot org" \
+"hellvis69 at gmail dot com" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
@@ -205,6 +205,22 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>José Melo</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Ze_M" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"mmodem00 at netvisao dot pt" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Portuguese translation, default script patches and Mandriva (MDE) packager." \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+2\"><b>Ahinu</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
@@ -281,22 +297,6 @@ static const char * g_szAboutText = "" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "Hungarian translation" \
-"</font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>José Melo</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Ze_M" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"mmodem00 at netvisao dot pt" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Portuguese translation, default script patches and Mandriva (MDE) packager." \
 "</font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
