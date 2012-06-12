@@ -413,7 +413,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_SHAREDFILES,
 		"sharedfileswindow.open",
 		__tr2qs("Manage S&hared Files"),
-		__tr2qs("Shows a window that list shared siles"),
+		__tr2qs("Shows a window that list shared files"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_sharedfiles.png",
 		KviIconManager::SharedFiles,
