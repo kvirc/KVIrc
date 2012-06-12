@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 15:55+0200\n"
+"POT-Creation-Date: 2012-06-12 22:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,80 +37,6 @@ msgstr ""
 #: src/modules/regchan/libkviregchan.cpp:237
 #, c-format
 msgid "Total %d channels"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:188
-#: src/modules/reguser/libkvireguser.cpp:268
-#: src/modules/reguser/libkvireguser.cpp:331
-#: src/modules/reguser/libkvireguser.cpp:451
-#: src/modules/reguser/libkvireguser.cpp:516
-#: src/modules/reguser/libkvireguser.cpp:690
-msgid "No name specified"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:208
-msgid "User already registered: found exact name match"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:221
-msgid "Mask %Q is already used to identify user %s"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:274
-msgid "User not found (%Q)"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:337
-#: src/modules/reguser/libkvireguser.cpp:402
-msgid "No mask specified"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:458
-#: src/modules/reguser/libkvireguser.cpp:523
-#: src/modules/reguser/libkvireguser.cpp:703
-msgid "User %Q not found"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:354
-msgid "Mask %Q already used to identify user %Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:409
-msgid "Mask %Q not found"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:696
-msgid "No property specified"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:801
-msgid "Registered users database dump:"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:812
-msgid " User: %c%Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:816
-msgid "    Warning: this user has no registration masks"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:820
-msgid "    Mask: %Q!%Q@%Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:831
-msgid "    Property: %Q=%Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:834
-msgid "    No properties"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:840
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:78
@@ -274,6 +200,168 @@ msgstr ""
 msgid "Ignore"
 msgstr ""
 
+#: src/modules/reguser/RegistrationWizard.cpp:77
+msgid "User Registration Wizard - KVIrc"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:88
+msgid ""
+"<p>Welcome to the user registration wizard.<br>This process allows you to "
+"add an IRC user to the database and set properties for that user. KVIrc will "
+"be (hopefully) able to recognize the user, add him to the notify list, and "
+"display the associated avatar.<br><br>First of all, you must insert an "
+"<b>entry name or real name</b> for the user you're going to register. The "
+"name will be used to identify the database entry and has no specific "
+"requirements, it can be a given name, nickname, or just some text to remind "
+"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
+"</p>"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:97
+msgid "Step 1: Entry Name"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:112
+msgid ""
+"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+"mask must be in the following form:<br><b>nickname!username@hostname</"
+"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
+"choosing the masks, as they are the only way to verify the identity of a "
+"registered user.<br><br>You can enter at most two masks here, if you wish to "
+"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
+"dialog. You must enter at least one mask.</p>"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:171
+msgid "Step 2: Mask Selection"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:183
+msgid ""
+"<p>If you want to store an avatar image for this user, you can set it here. "
+"KVIrc will show the avatar in the userlist next to the user's nickname."
+"<br>An avatar can be in any supported image format (PNG is recommended). "
+"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
+"fit in the userlist, thus it's better to use small, low-resolution images.</"
+"p>"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:192
+msgid "Store an avatar for this user"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:197
+msgid "Step 3: Avatar Selection"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:208
+msgid ""
+"<p>If you want to be notified when this user is online or goes offline, you "
+"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
+"enter at most two nicknames here, if you wish to add more nicknames, use the "
+"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:218
+msgid "Add this user to the notify list"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:224
+msgid "Nickname:"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:228
+msgid "Nickname 2:"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:242
+msgid "Step 4: Notify List"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:254
+msgid ""
+"<p>That's it. The user registration has been completed.<br><br>Click "
+"\"<b>Finish</b>\" to close this dialog.</p>"
+msgstr ""
+
+#: src/modules/reguser/RegistrationWizard.cpp:258
+msgid "Registration Complete"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:188
+#: src/modules/reguser/libkvireguser.cpp:268
+#: src/modules/reguser/libkvireguser.cpp:331
+#: src/modules/reguser/libkvireguser.cpp:451
+#: src/modules/reguser/libkvireguser.cpp:516
+#: src/modules/reguser/libkvireguser.cpp:690
+msgid "No name specified"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:208
+msgid "User already registered: found exact name match"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:221
+msgid "Mask %Q is already used to identify user %s"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:274
+msgid "User not found (%Q)"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:337
+#: src/modules/reguser/libkvireguser.cpp:402
+msgid "No mask specified"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:344
+#: src/modules/reguser/libkvireguser.cpp:458
+#: src/modules/reguser/libkvireguser.cpp:523
+#: src/modules/reguser/libkvireguser.cpp:703
+msgid "User %Q not found"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:354
+msgid "Mask %Q already used to identify user %Q"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:409
+msgid "Mask %Q not found"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:696
+msgid "No property specified"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:801
+msgid "Registered users database dump:"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:812
+msgid " User: %c%Q"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:816
+msgid "    Warning: this user has no registration masks"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:820
+msgid "    Mask: %Q!%Q@%Q"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:831
+msgid "    Property: %Q=%Q"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:834
+msgid "    No properties"
+msgstr ""
+
+#: src/modules/reguser/libkvireguser.cpp:840
+#, c-format
+msgid "Total: %d matching users (of %d in the database)"
+msgstr ""
+
 #: src/modules/reguser/RegisteredUsersDialog.cpp:84
 msgid "Name"
 msgstr ""
@@ -419,92 +507,4 @@ msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:924
 msgid "Can't import the registered users database: Read error."
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:77
-msgid "User Registration Wizard - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:88
-msgid ""
-"<p>Welcome to the user registration wizard.<br>This process allows you to "
-"add an IRC user to the database and set properties for that user. KVIrc will "
-"be (hopefully) able to recognize the user, add him to the notify list, and "
-"display the associated avatar.<br><br>First of all, you must insert an "
-"<b>entry name or real name</b> for the user you're going to register. The "
-"name will be used to identify the database entry and has no specific "
-"requirements, it can be a given name, nickname, or just some text to remind "
-"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
-"</p>"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:97
-msgid "Step 1: Entry Name"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:112
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:171
-msgid "Step 2: Mask Selection"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:183
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:192
-msgid "Store an avatar for this user"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:197
-msgid "Step 3: Avatar Selection"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:208
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:218
-msgid "Add this user to the notify list"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:224
-msgid "Nickname:"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:228
-msgid "Nickname 2:"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:242
-msgid "Step 4: Notify List"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:254
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
-msgstr ""
-
-#: src/modules/reguser/RegistrationWizard.cpp:258
-msgid "Registration Complete"
 msgstr ""

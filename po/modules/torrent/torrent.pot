@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 15:54+0200\n"
+"POT-Creation-Date: 2012-06-12 22:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/torrent/KTorrentDbusInterface.cpp:40
-msgid ""
-"An interface to KDE's excellent KTorrent client.\n"
-"Download it from http://www.ktorrent.org\n"
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
+msgid "Torrent Client"
+msgstr ""
+
+#: src/modules/torrent/StatusBarApplet.cpp:92
+msgid "No client selected!"
 msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:62
@@ -57,11 +60,8 @@ msgstr ""
 msgid "Invalid client interface \"%Q\"!"
 msgstr ""
 
-#: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
-msgid "Torrent Client"
-msgstr ""
-
-#: src/modules/torrent/StatusBarApplet.cpp:92
-msgid "No client selected!"
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
 msgstr ""

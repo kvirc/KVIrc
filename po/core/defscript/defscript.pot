@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 15:55+0200\n"
+"POT-Creation-Date: 2012-06-12 22:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,23 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
+msgstr ""
+
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr ""
+
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
+msgstr ""
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
@@ -140,23 +157,6 @@ msgstr ""
 msgid "No such user:"
 msgstr ""
 
-#: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
-msgstr ""
-
-#: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-
-#: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
-msgstr ""
-
 #: data/defscript/default.kvs:34
 msgid "The default script has been successfully installed."
 msgstr ""
@@ -174,6 +174,26 @@ msgstr ""
 #: data/defscript/events.kvs:84
 #: data/defscript/popups.kvs:1406
 msgid "Logging"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:15
+msgid "Options"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:22
+msgid "Help"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:30
+msgid "Scripting"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:40
+msgid "Window operations"
 msgstr ""
 
 #: data/defscript/popups.kvs:22
@@ -769,24 +789,4 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1538
 msgid "Traceroute6 to "
-msgstr ""
-
-#: data/defscript/toolbars.kvs:3
-msgid "IRC Context"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:15
-msgid "Options"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:22
-msgid "Help"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:30
-msgid "Scripting"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:40
-msgid "Window operations"
 msgstr ""

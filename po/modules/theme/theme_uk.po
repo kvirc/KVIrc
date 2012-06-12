@@ -1,14 +1,14 @@
 # translation of theme.po to Ukrainian
 # Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
 # Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: theme_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 15:55+0200\n"
+"POT-Creation-Date: 2012-06-12 22:55+0200\n"
 "PO-Revision-Date: 2012-04-14 15:25+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -16,20 +16,20 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:332
+#: src/modules/theme/ThemeManagementDialog.cpp:342
 msgid "&Apply Theme"
 msgstr "&Застосувати тему"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:331
+#: src/modules/theme/ThemeManagementDialog.cpp:340
 msgid "&Remove Theme"
 msgstr "&Видалити тему"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:213
-#: src/modules/theme/ThemeManagementDialog.cpp:364
+#: src/modules/theme/ThemeManagementDialog.cpp:214
+#: src/modules/theme/ThemeManagementDialog.cpp:375
 msgid "<b><u>Current Installed Theme:</u> "
 msgstr "<b><u>Поточна встановлена тема:</u> "
 
@@ -37,10 +37,9 @@ msgstr "<b><u>Поточна встановлена тема:</u> "
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Зробити скріншот - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:103
-#: src/modules/theme/libkvitheme.cpp:112
-#: src/modules/theme/ThemeManagementDialog.cpp:348
-#: src/modules/theme/ThemeManagementDialog.cpp:360
+#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
+#: src/modules/theme/ThemeManagementDialog.cpp:359
+#: src/modules/theme/ThemeManagementDialog.cpp:371
 msgid "Apply theme - KVIrc"
 msgstr "Застосувати тему - KVIrc"
 
@@ -63,11 +62,11 @@ msgstr "Дата створення"
 msgid "Created with"
 msgstr "Створено в"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:163
+#: src/modules/theme/ThemeManagementDialog.cpp:164
 msgid "Delete Selected Themes"
 msgstr "Видалити обрані теми"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:374
+#: src/modules/theme/ThemeManagementDialog.cpp:393
 msgid "Delete Theme - KVIrc"
 msgstr "Видалити тему - KVIrc"
 
@@ -80,7 +79,7 @@ msgstr "Опис:"
 msgid "Do Not Install"
 msgstr "Не встановлювати"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:375
+#: src/modules/theme/ThemeManagementDialog.cpp:394
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Ви дійсно хочете видалити \"%Q\" (версії %Q)?"
 
@@ -89,7 +88,7 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Ви хочете продовжити встанолення?"
 
 #: src/modules/theme/libkvitheme.cpp:104
-#: src/modules/theme/ThemeManagementDialog.cpp:349
+#: src/modules/theme/ThemeManagementDialog.cpp:360
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Ви дійсно хочете застосувати тему \"%Q\" (версії %Q)?"
 
@@ -105,7 +104,7 @@ msgstr "Не можу встановити пакет теми: %Q"
 msgid "Error making screenshot"
 msgstr "Не можу зробити скріншот"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:157
+#: src/modules/theme/ThemeManagementDialog.cpp:158
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Експортувати обрані теми в пакет для подальшого поширення"
 
@@ -119,7 +118,7 @@ msgid "Export Theme - KVIrc"
 msgstr "Експорт теми - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:111
-#: src/modules/theme/ThemeManagementDialog.cpp:359
+#: src/modules/theme/ThemeManagementDialog.cpp:370
 msgid "Failed to apply the specified theme: %1"
 msgstr "Не можу застосувати обрану тему: %1"
 
@@ -148,7 +147,7 @@ msgstr "Не можу розпакувати обраний файл: %1"
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Для завершення операції пакування натисніть кнопку \"Завершити\"."
 
-#: src/modules/theme/ThemeManagementDialog.cpp:179
+#: src/modules/theme/ThemeManagementDialog.cpp:180
 msgid "Get More Themes..."
 msgstr "Отримати більше тем..."
 
@@ -217,7 +216,7 @@ msgstr "Значок/Скріншот"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Встановити пакет теми - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:173
+#: src/modules/theme/ThemeManagementDialog.cpp:174
 msgid "Install Theme Package From Disk"
 msgstr "Встановити пакет теми з локального диску"
 
@@ -225,11 +224,11 @@ msgstr "Встановити пакет теми з локального дис�
 msgid "Make Screenshot Now"
 msgstr "Зробити знімок зараз."
 
-#: src/modules/theme/ThemeManagementDialog.cpp:128
+#: src/modules/theme/ThemeManagementDialog.cpp:129
 msgid "Manage Themes - KVIrc"
 msgstr "Керування темами - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:390
+#: src/modules/theme/ThemeManagementDialog.cpp:412
 msgid "Open Theme - KVIrc"
 msgstr "Відкрити тему - KVIrc"
 
@@ -267,7 +266,7 @@ msgstr "Запишіть тут опис вашого пакунку..."
 msgid "Save Current Theme - KVIrc"
 msgstr "Зберегти поточну тему - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:146
+#: src/modules/theme/ThemeManagementDialog.cpp:147
 msgid "Save Current Theme..."
 msgstr "Зберегти поточну тему..."
 
@@ -295,8 +294,7 @@ msgstr "Обраний файл не є пакунком з темою для KV
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Обраний файл не є пакунком з темою для KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:118
-#: src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr "Пакунок теми '%Q' не існує"
 
@@ -415,7 +413,7 @@ msgstr "Ви намагаєтеся встановити наступний па
 msgid "Your name here"
 msgstr "Ваше ім'я"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:98
+#: src/modules/theme/ThemeManagementDialog.cpp:100
 msgid "by"
 msgstr "від"
 

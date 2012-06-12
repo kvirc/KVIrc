@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_filetransferwindow \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-10 15:55+0200\n"
+"POT-Creation-Date: 2012-06-12 22:55+0200\n"
 "PO-Revision-Date: 2011-01-13 03:21+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <>\n"
@@ -18,56 +18,56 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:513
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:520
 msgid "&Clear Terminated"
 msgstr "&Limpar Terminados"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:482
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:489
 msgid "&Copy Path to Clipboard"
 msgstr "&Copiar Localização para a Área de Transferência"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:484
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:491
 msgid "&Delete file"
 msgstr "&Apagar ficheiro"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:439
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:471
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:446
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:478
 msgid "&Open"
 msgstr "&Abrir"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:459
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:466
 msgid "&Other..."
 msgstr "&Outro..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:520
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:527
 msgid "Clear &All"
 msgstr "Limpar &Todos"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:782
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
 msgid "Clear All Transfers? - KVIrc"
 msgstr "Limpar Todas as Transferências? - KVIrc"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:778
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:785
 msgid "Clear all transfers, including any in progress?"
 msgstr "Limpar todas as transferências, incluindo alguma em progresso?"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:615
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:622
 msgid "Confirm delete"
 msgstr "Confirmar remoção"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:620
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
 msgid "Delete failed"
 msgstr "Remoção falhada"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:613
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:620
 msgid "Do you really want to delete the file %1?"
 msgstr "Deseja realmente apagar o ficheiro %1?"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:621
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:628
 msgid "Failed to remove the file"
 msgstr "Falha ao remover o ficheiro"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:815
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:822
 msgid "File Transfers"
 msgstr "Transferências de Ficheiros"
 
@@ -75,30 +75,30 @@ msgstr "Transferências de Ficheiros"
 msgid "Information"
 msgstr "Informação"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:486
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
 msgid "Local &File"
 msgstr "&Ficheiro Local"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:477
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:484
 msgid "MS-DOS Prompt at Location"
 msgstr "Terminal MS-DOS na Localização"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:616
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:782
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:623
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
 msgid "No"
 msgstr "Não"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:622
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:629
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:464
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:476
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:471
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:483
 msgid "Open &Location"
 msgstr "Abrir &Localização"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:462
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:474
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:469
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:481
 msgid "Open &With"
 msgstr "Abrir &Com"
 
@@ -106,11 +106,11 @@ msgstr "Abrir &Com"
 msgid "Progress"
 msgstr "Progresso"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:420
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:427
 msgid "Size: %1"
 msgstr "Tamanho: %1"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:465
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:472
 msgid "Terminal at Location"
 msgstr "Terminal na Localização"
 
@@ -118,7 +118,7 @@ msgstr "Terminal na Localização"
 msgid "Type"
 msgstr "Tipo"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:616
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:782
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:623
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
 msgid "Yes"
 msgstr "Sim"
