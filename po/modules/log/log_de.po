@@ -4,20 +4,20 @@
 #
 # Eva Schaller <eva at cyberbeat dot it>, 2003.
 # Christoph Thielecke <crissi99@gmx.de>, 2003, 2004.
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2010, 2011.
+# Markus Rennings <markus@rennings.net>, 2007, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: logview_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2011-01-26 14:30+0100\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"PO-Revision-Date: 2012-06-12 23:59+0200\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/logview/LogViewWindow.cpp:356
@@ -30,7 +30,7 @@ msgstr "Filter anwenden"
 
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
-msgstr ""
+msgstr "Kann nicht in Datei ›%1‹ protokollieren"
 
 #: src/modules/logview/LogViewWindow.cpp:103
 msgid "Cancel"
@@ -41,17 +41,16 @@ msgid "Channel"
 msgstr "Channel"
 
 #: src/modules/logview/LogViewWindow.cpp:636
-#, fuzzy
 msgid "Channel %1 on %2"
-msgstr "%1 auf %2"
+msgstr "Channel %1 auf %2"
 
 #: src/modules/logview/LogViewWindow.cpp:461
 msgid "Confirm current user log deletion"
-msgstr ""
+msgstr "Löschen des aktuellen Benutzerprotokolls bestätigen"
 
 #: src/modules/logview/LogViewWindow.cpp:477
 msgid "Confirm current user logs deletion"
-msgstr ""
+msgstr "Löschen der aktuellen Benutzerprotokolle bestätigen"
 
 #: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
@@ -59,7 +58,7 @@ msgstr "Konsole"
 
 #: src/modules/logview/LogViewWindow.cpp:639
 msgid "Console on %1"
-msgstr ""
+msgstr "Konsole auf %1"
 
 #: src/modules/logview/LogViewWindow.cpp:141
 msgid "Contents filter"
@@ -71,37 +70,35 @@ msgstr "DCC Chat"
 
 #: src/modules/logview/LogViewWindow.cpp:645
 msgid "DCC Chat with %1"
-msgstr ""
+msgstr "DCC-Chat mir %1"
 
 #: src/modules/logview/LogViewWindow.cpp:478
-#, fuzzy
 msgid "Do you really wish to delete all these logs?"
-msgstr "All diese Channel-/Query-Logs entfernen"
+msgstr "All diese Protokolle entfernen?"
 
 #: src/modules/logview/LogViewWindow.cpp:462
-#, fuzzy
 msgid "Do you really wish to delete this log?"
-msgstr "All diese Channel-/Query-Logs entfernen"
+msgstr "Dieses Protokoll löschen?"
 
 #: src/modules/logview/LogViewWindow.cpp:777
 msgid "Export Log - KVIrc"
-msgstr ""
+msgstr "Protokoll exportieren – KVIrc"
 
 #: src/modules/logview/LogViewWindow.cpp:442
 msgid "Export log file to"
-msgstr ""
+msgstr "Protokoll exportieren nach"
 
 #: src/modules/log/libkvilog.cpp:323
 msgid "Failed to export the log '%1'"
-msgstr ""
+msgstr "Export des Protokolls nach ›%1‹ fehlgeschlagen"
 
 #: src/modules/log/libkvilog.cpp:313
 msgid "Failed to load logview module, aborting"
-msgstr ""
+msgstr "Laden des Protokollbetrachtermoduls fehlgeschlagen, breche ab"
 
 #: src/modules/logview/LogViewWindow.cpp:777
 msgid "File '%1' already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Datei ›%1‹ existiert bereits. Überschreiben?"
 
 #: src/modules/logview/LogViewWindow.cpp:116
 msgid "Filter"
@@ -109,12 +106,11 @@ msgstr "Filter"
 
 #: src/modules/logview/LogViewWindow.cpp:191
 msgid "HTML archive"
-msgstr ""
+msgstr "HTML-Archiv"
 
 #: src/modules/logview/LogViewWindow.cpp:108
-#, fuzzy
 msgid "Index"
-msgstr "Hilfe-Index"
+msgstr "Index"
 
 #: src/modules/logview/LogViewWindow.cpp:68
 msgid "Log File"
@@ -136,10 +132,9 @@ msgstr "Logdateienmaske:"
 #: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
-msgstr ""
+msgstr "Fehlende Fenster-Id nach dem ›w‹-Schalter"
 
 #: src/modules/logview/LogViewWindow.cpp:164
-#, fuzzy
 msgid "Only newer than"
 msgstr "Nur neuer als"
 
@@ -157,17 +152,15 @@ msgstr "Anfrage (Query)"
 
 #: src/modules/logview/LogViewWindow.cpp:642
 msgid "Query with %1 on %2"
-msgstr ""
+msgstr "Query mit %1 auf %2"
 
 #: src/modules/logview/LogViewWindow.cpp:440
-#, fuzzy
 msgid "Remove all log files within this folder"
-msgstr "Datei löschen"
+msgstr "Alle Dateien in diesem Verzeichnis löschen"
 
 #: src/modules/logview/LogViewWindow.cpp:443
-#, fuzzy
 msgid "Remove log file"
-msgstr "Datei löschen"
+msgstr "Protokolldatei löschen"
 
 #: src/modules/logview/LogViewWindow.cpp:132
 msgid "Show DCC chat logs"
@@ -191,26 +184,25 @@ msgstr "Anfrage- (Query) Logdateien anzeigen"
 
 #: src/modules/logview/LogViewWindow.cpp:648
 msgid "Something on %1"
-msgstr ""
+msgstr "Etwas auf %1"
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "This window has no logging capabilities"
-msgstr ""
+msgstr "Dieses Fenster hat keine Protokoll-Fähigkeiten"
 
 #: src/modules/log/libkvilog.cpp:103
 #: src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
-msgstr ""
+msgstr "Fenster ›%1‹ nicht gefunden"
 
 #: src/modules/log/libkvilog.cpp:265
 msgid "Window with id '%1' not found, returning empty string"
-msgstr ""
+msgstr "Fenster mit Id ›%1‹ nicht gefunden, gebe leere Zeichenkette zurück"
 
 #: src/modules/logview/LogViewWindow.cpp:190
-#, fuzzy
 msgid "plain text file"
-msgstr "Inhaltsfilter"
+msgstr "Einfache Textdatei"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Filtern abbrechen"

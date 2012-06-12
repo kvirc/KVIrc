@@ -3,20 +3,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Christoph Thielecke <crissi99@gmx.de>, 2004.
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010, 2011.
+# Markus Rennings <markus@rennings.net>, 2007, 2008, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2011-01-26 14:29+0100\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"PO-Revision-Date: 2012-06-12 23:51+0200\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
@@ -106,7 +106,7 @@ msgstr "Handler aktivi&eren"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:57
 msgid "&Execute"
-msgstr ""
+msgstr "&Ausführen"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:104
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1045
@@ -190,7 +190,6 @@ msgstr ""
 "<br>Eine leere Bedingung wird als Wahr gewertet.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
-#, fuzzy
 msgid ""
 "<center><b>External menu name</b><br>This allows one to nest externally "
 "defined popup menus. The popup menu with the specified name will be looked "
@@ -728,6 +727,8 @@ msgid ""
 "Here you can specify a semicolon-separated list of parameters that will be "
 "available in the code as $0, $1, $2, .."
 msgstr ""
+"Hier kann eine Semikolon-separierte Liste von Parametern angegeben werden, "
+"die im Code als $0, $1, $2, … verfügbar sein werden."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
 msgid "Hide Advanced"
@@ -1025,9 +1026,8 @@ msgstr ""
 "solchen Sequenzen sind \"Strg+X\", \"Strg+Alt+Z\", \"Strg+X, Strg+C\"..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:794
-#, fuzzy
 msgid "Options"
-msgstr "Aktion"
+msgstr "Optionen"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:325
 msgid "OverWrite Current Alias"
@@ -1039,7 +1039,7 @@ msgstr "Aktuelles Popup überschreiben"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:61
 msgid "Params:"
-msgstr ""
+msgstr "Parameter:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:439
 msgid "Paste Above"
@@ -1217,7 +1217,7 @@ msgstr "Speichern fehlgeschlagen - KVIrc"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:110
 msgid "Script Tester"
-msgstr ""
+msgstr "Skripttester"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "Separator"

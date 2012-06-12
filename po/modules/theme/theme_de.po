@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010, 2011.
+# Markus Rennings <markus@rennings.net>, 2007, 2008, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: theme_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-12 22:55+0200\n"
-"PO-Revision-Date: 2011-01-26 15:06+0100\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"PO-Revision-Date: 2012-06-13 00:19+0200\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/theme/ThemeManagementDialog.cpp:342
@@ -29,7 +29,7 @@ msgstr "Thema entfe&rnen"
 #: src/modules/theme/ThemeManagementDialog.cpp:214
 #: src/modules/theme/ThemeManagementDialog.cpp:375
 msgid "<b><u>Current Installed Theme:</u> "
-msgstr ""
+msgstr "<b><u>Aktuell installiertes Thema:</u>"
 
 #: src/modules/theme/SaveThemeDialog.cpp:224
 msgid "Acquire Screenshot - KVIrc"
@@ -91,9 +91,8 @@ msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Soll das Thema »%Q« (Version %Q) verwendet werden?"
 
 #: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-#, fuzzy
 msgid "Download Themes - KVIrc"
-msgstr "Themen verwalten - KVIrc"
+msgstr "Themen downloaden - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
@@ -322,7 +321,7 @@ msgstr "Themenname:"
 
 #: src/modules/theme/SaveThemeDialog.cpp:306
 msgid "Theme saved successfully to %1"
-msgstr ""
+msgstr "Thema erfolgreich nach ›%1‹ gespeichert"
 
 #: src/modules/theme/PackThemeDialog.cpp:142
 msgid ""

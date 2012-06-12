@@ -2,20 +2,20 @@
 # Copyright (C) 2005 THE KVIrc'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010, 2011.
+# Markus Rennings <markus@rennings.net>, 2007, 2008, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2011-01-26 14:34+0100\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"PO-Revision-Date: 2012-06-13 00:02+0200\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:470
@@ -99,6 +99,9 @@ msgid ""
 "It is only available for certain countries in Europe.\n"
 "You can download it from http://www.spotify.com.\n"
 msgstr ""
+"Ein Interface zum Spotify Musikstream-Service.\n"
+"Es ist nur in einiges europäischen Ländern verfügbar.\n"
+"Es kann unter http://www.spotify.com heruntergeladen werden.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:506
 msgid ""
@@ -125,7 +128,6 @@ msgstr ""
 "Sie können ihn unter http://legacy.xmms2.org herunterladen.\n"
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:194
-#, fuzzy
 msgid ""
 "An interface to the popular Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -198,7 +200,7 @@ msgstr "Es scheint kein nutzbarer Mediaplayer auf diesem System zu sein."
 
 #: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
 msgid "Spotify is not running"
-msgstr ""
+msgstr "Spotify läuft nicht"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:571

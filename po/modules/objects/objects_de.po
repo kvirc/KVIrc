@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2008, 2009, 2010, 2011.
+# Markus Rennings <markus@rennings.net>, 2008, 2009, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-12 22:55+0200\n"
-"PO-Revision-Date: 2011-01-26 14:37+0100\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"PO-Revision-Date: 2012-06-13 00:09+0200\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/objects/KvsObject_painter.cpp:746
@@ -89,9 +89,8 @@ msgstr "Eine Zeichenkette mit 6 Hex-Ziffern ist erforderlich"
 #: src/modules/objects/KvsObject_pixmap.cpp:312
 #: src/modules/objects/KvsObject_pixmap.cpp:385
 #: src/modules/objects/KvsObject_pixmap.cpp:421
-#, fuzzy
 msgid "AnimatedPixmap not supported"
-msgstr "Datentyp nicht unterstützt"
+msgstr "AnimatedPixmap nicht unterstützt"
 
 #: src/modules/objects/KvsObject_file.cpp:335
 msgid "Argument too long, using only first char"
@@ -218,6 +217,8 @@ msgstr "Datentyp nicht unterstützt"
 #: src/modules/objects/KvsObject_webView.cpp:583
 msgid "Document element is null: you must call getDocumentElement first"
 msgstr ""
+"Dokumentenelement ist »Null«, es muss erst »getDocumentElement« aufgerufen "
+"werden."
 
 #: src/modules/objects/KvsObject_webView.cpp:552
 #: src/modules/objects/KvsObject_webView.cpp:607
@@ -239,9 +240,9 @@ msgstr ""
 #: src/modules/objects/KvsObject_webView.cpp:1013
 #: src/modules/objects/KvsObject_webView.cpp:1042
 #: src/modules/objects/KvsObject_webView.cpp:1072
-#, fuzzy, c-format
+#, c-format
 msgid "Document element whith id %d does not exists"
-msgstr "Verbindung %d existiert nicht"
+msgstr "Dokumentenelement mit Id ›%d‹ existiert nicht"
 
 #: src/modules/objects/KvsObject_file.cpp:229
 msgid "Empty filename string"
@@ -306,7 +307,7 @@ msgstr "Bild-Parameter fehlen"
 
 #: src/modules/objects/KvsObject_memoryBuffer.cpp:131
 msgid "Index '%I' out of the buffer size"
-msgstr ""
+msgstr "Index ›%I‹ ist außerhalb der Puffergröße"
 
 #: src/modules/objects/libkviobjects.cpp:570
 msgid "Inexistant class object for objects.name"
@@ -341,9 +342,8 @@ msgid "Invalid dock area specified"
 msgstr "Ungültiger Dock-Bereich angegeben"
 
 #: src/modules/objects/KvsObject_webView.cpp:1361
-#, fuzzy
 msgid "Invalid file path '%Q'"
-msgstr "Ungültiger Modus ›%Q‹"
+msgstr "Ungültiger Dateipfad ›%Q‹"
 
 #: src/modules/objects/KvsObject_comboBox.cpp:331
 msgid "Invalid insertion Policy '%Q'"
@@ -708,9 +708,8 @@ msgstr "Die Pixmap ist ungültig"
 #: src/modules/objects/KvsObject_pixmap.cpp:469
 #: src/modules/objects/KvsObject_pixmap.cpp:563
 #: src/modules/objects/KvsObject_pixmap.cpp:571
-#, fuzzy
 msgid "The pixmap is null"
-msgstr "Die Pixmap ist ungültig"
+msgstr "Die Pixmap ist »Null«"
 
 #: src/modules/objects/KvsObject_vBox.cpp:183
 #: src/modules/objects/KvsObject_hBox.cpp:146
@@ -760,9 +759,8 @@ msgid "Unknown Color Role '%Q'"
 msgstr "Unbekannte Farbrolle ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:1193
-#, fuzzy
 msgid "Unknown action '%Q':"
-msgstr "Unbekannte Position ›%Q‹"
+msgstr "Unbekannte Aktion ›%Q‹:"
 
 #: src/modules/objects/KvsObject_painter.cpp:1308
 #: src/modules/objects/KvsObject_groupBox.cpp:299
@@ -793,29 +791,27 @@ msgid "Unknown brush style '%Q'"
 msgstr "Unbekannter Pinsel-Stil ›%Q‹"
 
 #: src/modules/objects/KvsObject_painter.cpp:2081
-#, fuzzy
 msgid "Unknown composition mode '%Q'"
-msgstr "Unbekannte Position ›%Q‹"
+msgstr "Unbekannter Composition-Modus ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:482
-#, fuzzy
 msgid "Unknown delegation policy '%Q'- Switch do default dontDelegateLinks"
-msgstr "Unbekannte Achse ›%Q‹, wechsle zum Standard Z-Achse"
+msgstr ""
+"Unbekannte Delegationsrichtlinie ›%Q‹, wechsle zum Standard "
+"»dontDelegateLinks«"
 
 #: src/modules/objects/KvsObject_lineEdit.cpp:407
 msgid "Unknown echo mode '%Q'"
 msgstr "Unbekannter Echo-Modus ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:849
-#, fuzzy
 msgid "Unknown findflag  '%Q'"
-msgstr "Unbekanntes Widget-Flag ›%Q‹"
+msgstr "Unbekanntes findflag ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:1093
 #: src/modules/objects/KvsObject_webView.cpp:1116
-#, fuzzy
 msgid "Unknown frame '%Q'"
-msgstr "Unbekannter Modus ›%Q‹"
+msgstr "Unbekannter Rahmen ›%Q‹"
 
 #: src/modules/objects/KvsObject_treeWidgeteItem.cpp:288
 #: src/modules/objects/KvsObject_tableWidget.cpp:795
@@ -852,16 +848,16 @@ msgid "Unknown style '%Q'"
 msgstr "Unbekannter Stil ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:1053
-#, fuzzy
 msgid ""
 "Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
 "strategy"
-msgstr "Unbekannte Achse ›%Q‹, wechsle zum Standard Z-Achse"
+msgstr ""
+"Unbekannte styleResolveStrategy ›%Q‹, wechsle zum Standard "
+"»CascadedStyle«-Strategie"
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:188
-#, fuzzy
 msgid "Unknown szOptions '%Q'"
-msgstr "Unbekannte Position ›%Q‹"
+msgstr "Unbekannte szOptions ›%Q‹"
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:713
 msgid "Unknown text format '%Q'"
@@ -876,9 +872,8 @@ msgid "Unknown tickmark '%Q'"
 msgstr "Unbekanntes Häkchen ›%Q‹"
 
 #: src/modules/objects/KvsObject_webView.cpp:821
-#, fuzzy
 msgid "Unknown web setting '%Q'"
-msgstr "Unbekannte Textposition ›%Q‹"
+msgstr "Unbekannte Web-Einstellung ›%Q‹"
 
 #: src/modules/objects/KvsObject_widget.cpp:1921
 msgid "Unknown widget attribute '%Q'"
@@ -900,7 +895,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_webView.cpp:592
 msgid "Unsupported datatype"
-msgstr ""
+msgstr "Nicht unterstützter Datentyp"
 
 #: src/modules/objects/KvsObject_file.cpp:468
 msgid "Unsupported datatype '%Q'"

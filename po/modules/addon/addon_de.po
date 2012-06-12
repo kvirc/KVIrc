@@ -1,20 +1,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2010, 2011.
+# Markus Rennings <markus@rennings.net>, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-10 15:55+0200\n"
-"PO-Revision-Date: 2011-02-27 22:32+0100\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"PO-Revision-Date: 2012-06-12 23:47+0200\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
@@ -132,7 +132,7 @@ msgstr "Entpacken der ausgewählten Datei fehlgeschlagen: %1"
 
 #: src/modules/addon/PackAddonDialog.cpp:376
 msgid "File %1 already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Datei ›%1‹ existiert bereits. Überschreiben?"
 
 #: src/modules/addon/PackAddonDialog.cpp:605
 msgid "File Summary"
@@ -220,7 +220,7 @@ msgstr "Interner Fehler: Rufe einen Psychiater"
 
 #: src/modules/addon/WebAddonInterfaceDialog.cpp:43
 msgid "KVIrc : Download Addons"
-msgstr ""
+msgstr "KVIrc: Erweiterungen downloaden"
 
 #: src/modules/addon/AddonManagementDialog.cpp:103
 msgid "Manage Script-Based Addons"
@@ -288,7 +288,7 @@ msgstr "Paketversion"
 
 #: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Package saved successfully in %1"
-msgstr ""
+msgstr "Paket erfolgreich in ›%1‹ gespeichert"
 
 #: src/modules/addon/PackAddonDialog.cpp:326
 #: src/modules/addon/PackAddonDialog.cpp:341
@@ -390,9 +390,8 @@ msgstr ""
 "Die ausgewählte Datei scheint kein gültiges KVIrc-Erweiterungspaket zu sein"
 
 #: src/modules/addon/AddonFunctions.cpp:70
-#, fuzzy
 msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "Die ausgewählte Datei scheint kein gültiges KVIrc-Paket zu sein: %1"
+msgstr "Die ausgewählte Datei scheint kein gültiges KVIrc-Paket zu sein: ›%1‹"
 
 #: src/modules/addon/libkviaddon.cpp:544
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
