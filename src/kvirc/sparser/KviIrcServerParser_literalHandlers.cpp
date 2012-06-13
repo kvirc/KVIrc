@@ -1623,7 +1623,7 @@ void KviIrcServerParser::parseLiteralNick(KviIrcMessage *msg)
 		if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing) && (!_OUTPUT_QUIET))
 		{
 			old->output(KVI_OUT_QUERYTRACE,
-				__tr2qs("The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h\r%Q\r] changed his nickname to \r!n\r%Q\r"),
+				__tr2qs("The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h\r%Q\r] changed their nickname to \r!n\r%Q\r"),
 				&szNick,&szUser,&szHost,&szNewNick);
 		}
 
