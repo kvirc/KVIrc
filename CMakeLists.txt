@@ -59,27 +59,44 @@ SET(MANUAL_REVISION
 	CACHE STRING "Manually set the revision number"
 )
 
+
+
 STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
 IF(MANUAL_REVISION_UNSET)
 	# No manually forced revision number, gotta guess one now
-	FIND_PACKAGE(Subversion)
-	IF(Subversion_FOUND)
-		MESSAGE(STATUS "Found Subversion ${Subversion_VERSION_SVN}")
-		Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
-		IF(DEFINED KVIrc_WC_REVISION)
-			SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
-			MESSAGE(STATUS "Current revision is ${KVIrc_WC_REVISION}")
-		ELSE()
-			MESSAGE(STATUS "No Subversion working copy found")
-		ENDIF()
+	IF(EXISTS "${CMAKE_SOURCE_DIR}/.svnrevision")
+		# We're in a release package created using makedist.sh, so we should include a .svnrevision file
+		FILE(READ "${CMAKE_SOURCE_DIR}/.svnrevision" DISTSVNREVISION)
+		STRING(STRIP "${DISTSVNREVISION}" CMAKE_KVIRC_BUILD_REVISION)
+		MESSAGE(STATUS "SVN revision is ${CMAKE_KVIRC_BUILD_REVISION}")
 	ELSE()
-		IF(EXISTS "${CMAKE_SOURCE_DIR}/.svnrevision")
-			# We're in a release package created using makedist.sh, so we should include a .svnrevision file
-			FILE(READ "${CMAKE_SOURCE_DIR}/.svnrevision" DISTSVNREVISION)
-			STRING(STRIP "${DISTSVNREVISION}" CMAKE_KVIRC_BUILD_REVISION)
-			MESSAGE(STATUS "SVN revision is ${CMAKE_KVIRC_BUILD_REVISION}")
+		FIND_PACKAGE(Subversion)
+		IF(Subversion_FOUND)
+			MESSAGE(STATUS "Found Subversion ${Subversion_VERSION_SVN}")
+			
+			# Subversion_WC_INFO is buggy and will croak if ran on a directory that is not checked out from svn
+
+			# SVN info does not like .. as paths, so be sure that we use a full path
+			GET_FILENAME_COMPONENT(ABS_FOLDER ${CMAKE_SOURCE_DIR} ABSOLUTE)
+			EXECUTE_PROCESS(
+					COMMAND ${Subversion_SVN_EXECUTABLE} info ${ABS_FOLDER}
+					RESULT_VARIABLE INFO_RESULT
+					OUTPUT_VARIABLE IGNORED
+					ERROR_VARIABLE IGNORED
+				)
+			IF(INFO_RESULT EQUAL 0)
+				Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc) 
+				IF(DEFINED KVIrc_WC_REVISION)
+					SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
+					MESSAGE(STATUS "Current revision is ${KVIrc_WC_REVISION}")
+				ELSE()
+					MESSAGE(STATUS "No revision number found (no clue why though).")
+				ENDIF()
+			ELSE()
+				MESSAGE(STATUS "No revision number found (not a subversion repository).")
+			ENDIF()
 		ELSE()
-			MESSAGE(STATUS "No revision number found.")
+			MESSAGE(STATUS "No revision number found (subversion not available).")
 		ENDIF()
 	ENDIF()
 
