@@ -36,8 +36,8 @@
 * \def KVI_SOURCES_DATE Defines the sources date
 * \def KVI_SOURCES_DATE_NUMERIC Defines the sources date
 */
-#define KVI_SOURCES_DATE "20120416"
-#define KVI_SOURCES_DATE_NUMERIC 0x20120416
+#define KVI_SOURCES_DATE "20120701"
+#define KVI_SOURCES_DATE_NUMERIC 0x20120701
 
 /**
 * \brief This is the date of the sources before that we should force a setup

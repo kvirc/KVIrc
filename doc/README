@@ -1,3 +1,50 @@
+01.07.2012: Release 4.2.0 "Equilibrium"
+###############################################################################
+
+Finally, a new major milestone version of KVIrc is released!
+
+Two years has passed since the original KVIrc 4 release. While the original
+4.0 code was put in maintenance mode, a lot of time has been dedicated to merge
+new features inside KVIrc. Today we present the result of this development.
+
+Support for new os/architectures:
+ - Mac OSX support, clang support
+ - 64-bit Windows support
+ - improved FreeBSD integration
+ - even an esperimental OS/2 patch is available
+
+More scripting power:
+ - the interface to the popup subsystem has been rewritten: the new popup module
+ - a new interface to the userlist: the userlist module
+ - a new webView class that embeds a webkit
+ - improved SQL classes
+ - a new trayicon KVS class
+ - added a default script manager to restore default scripts without overwriting
+   custom user scripts
+ - lots of new functions: $file.time(), $insideAlias(), $log.export(), 
+   $file.diskspace(), $isBot(), $gender(), $context.connectionStartTime,
+   $context.lastMessageTime, $listtimers(), $window.isDocked, $aliasBody(),
+   $file.readBytes(), $file.writeBytes(), window.savePropertiesAsDefault,
+   $chan.modeParam(), ...
+ - new certificate related functions: $dcc.getSSLCertInfo(), $certificate(),
+   $str.evpSign(), $str.evpVerify()
+
+A lot of new misc features:
+ - a module to support FiSH irc encryption
+ - smart logging paths using KVS
+ - medialayer support: VLC, Spotify, Totem, Clementine, ...
+ - a rewritten log viewer module
+ - dynamic support for custom channel modes
+
+As usual, we'd like to thank all the people supporting KVIrc development and its
+userbase. A big hug to the resident users of #kvirc@Freenode for their continuous
+effort on bridging the gap between developers and users.
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+
+
 19.03.2011: Release 4.0.4 "Insomnia"
 ###############################################################################
 

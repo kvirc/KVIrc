@@ -2,12 +2,67 @@ This is KVIrc's changelog. It tipically lists new added features and changes tha
 KVIrc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
 https://svn.kvirc.de/kvirc/timeline
 
-Update: 20110813
+Update: 20120701
+
+May 2012
+   [egns]
+   - Change max dcc packet size to increase the transfer speed
+
+April 2012
+   [CtrlAltCa]
+   - system.runcmd: added gnome-terminal to the list of terminals, added
+     proper handling for osx Terminal.app
+   - new splashy
+   - use fixup_bundle to create a distributable OSX bundle
+
+March 2012
+   [CtrlAltCa]
+   - Add support for magnet and spotify urls
+   - Added CP949 to KviLocale
+   - A lot of misc OSX fixes
+   [pragma]
+   - Added Aria theme
+
+February 2012
+   [CtrlAltCa]
+   - Dropped the KviTalPopupMenu layer, ported the involved code to QAction
+
+January 2012
+   [CtrlAltCa]
+   - Some work on cleaning window management and activation
+   [dessa]
+   - Improved support for msvc
+   [HelLViS69]
+   - Added $file.time() function
+
+December 2011
+   [CtrlAltCa]
+   - added $insideAlias(): a function to identify whether code was called as
+     /alias or $function
+   [pragma]
+   - Add a -t switch to system.runcmd so a terminal can be explicitly provided
+   - Allow STARTTLS to be used also without CAP support
+
+November 2011
+   [Noldor]
+   - Improvements in class webview, cleaning of kvs classes
+
+September 2011
+   [CtrlAltCa]
+   - Theme the background of KviSharedFilesWindow
+   [egns]
+   - Added rejoin popup entry on dead channels
 
 August 2011
    [CtrlAltCa]
    - Win32 only: fixed some visual artifacts removing WS_EX_LAYERED attribute from
      KviMainWindow when global transparency is not used
+   - Improve irc:// url handling: avoid a double connection when the url points to
+     an already connected server
+   - Added KviShortcut to better handle keyboard accellerators
+   - Dropped cryptopp dependency
+   [egns]
+   - Make KVIrc compile under clang
 
 July 2011
    [CtrlAltCa]

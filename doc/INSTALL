@@ -1,10 +1,10 @@
 Elvio Basello (HelLViS69)                                       Mon Nov 17 2008
 ###############################################################################
-General notes for the installation of the 4.0 release of KVIrc
+General notes for the installation of the 4.2 release of KVIrc
 ###############################################################################
 
     This document contains the procedures to compile and install
-    the version 4.0 of KVIrc.
+    the version 4.2 of KVIrc.
 
 ###############################################################################
 # 0. Table of contents
@@ -25,7 +25,7 @@ General notes for the installation of the 4.0 release of KVIrc
 ###############################################################################
 
     This document contains the procedures to compile and install
-    the version 4.0 of KVIrc.
+    the version 4.2 of KVIrc.
 
     If you have found this document in a binary distribution then
     KVIrc has been probably already installed by your favorite package
@@ -41,9 +41,9 @@ General notes for the installation of the 4.0 release of KVIrc
 # 2. Minimal requirements:
 ###############################################################################
 
-    In order to compile KVIrc 4.0 you need at least these software:
-    - Qt GUI Toolkit 4.6 - http://www.qtsoftware.com
-    - CMake 2.6 - http://www.cmake.org
+    In order to compile KVIrc 4.2 you need at least these software:
+    - Qt GUI Toolkit 4.6 ore newer - http://www.qtsoftware.com
+    - CMake 2.6.4 or newer - http://www.cmake.org
     - C++ compiler, such as g++ - http://gcc.gnu.org (btw: we'd be glad if any-
         one could find the time to test KVIrc with ICC!)
     - Pthread implementation
@@ -268,7 +268,7 @@ General notes for the installation of the 4.0 release of KVIrc
 # 3. Configuring the environment
 ###############################################################################
 
-    Since KVIrc 4.0 uses CMake as build system, we have to use it to create
+    Since KVIrc 4.2 uses CMake as build system, we have to use it to create
     the Makefile's rules for make program.
     To do it, we encourage the "out-of-source" building: build all files
     without dirtying the sources directory.
@@ -578,7 +578,7 @@ General notes for the installation of the 4.0 release of KVIrc
     So, if you want to make a package for your distro, you simply have to pass
     it at "make install" stage: your install files will go to the chosen path.
 
-    # make install DESTDIR=/tmp/kvirc-4.0
+    # make install DESTDIR=/tmp/kvirc-4.2
 
     After this step, just follow your distribution's rules to make a good
     package for the distro you're running.

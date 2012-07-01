@@ -1,5 +1,5 @@
 KVIrc hackers guide - Szymon Stefanek - 2004.05.26
-last updated on 2008.06.02
+last updated on 2012.07.01
 -------------------------------------------------------------------------------
 
 This is an always-work-in-progress guide for KVIrc source code hackers.
@@ -19,6 +19,8 @@ The source tree
 |   |                     installed in $(prefix)/share/kvirc/$VERSION/
 |   |
 |   |-- applnk            *.desktop and menu entries for KDE
+|   |
+|   |-- audio             audio files: currently only a test file
 |   |
 |   |-- config            Default configuration files
 |   |
@@ -43,15 +45,15 @@ The source tree
 |   |
 |   |-- protocols         irc:// and irc6:// protocol definitions for konqueror
 |   |
-|   |-- resources_win32   Resources for the windows compilation.
+|   |-- resources_mac     Resources for the macosx compilation
 |   |
-|   `-- resources_mac     Resources for the macosx compilation.
+|   `-- resources_win32   Resources for the windows compilation
 |
 |-- doc                   Any kind of documentation
-|   |
-|   `-- scriptexamples    Various script examples
 |
 |-- po                    Internationalization (i18n :)
+|   |                     msgcheckformat.c is a small program to check/fix for
+|   |                     for broken format strings in translations
 |   |
 |   |-- core              Translations for the main application
 |   |   |
@@ -63,7 +65,12 @@ The source tree
 |   |
 |   `-- modules           Translations for the modules
 |
-|-- scripts               Some SHELL scripts. Probably only config is used atm.
+|-- scripts               Some misc scripts.
+|   |
+|   |-- config            A pkgconfig-like tool to get info about KVIrc paths
+|   |
+|   `-- pydocparser       A python script to create html user documentation; an 
+|                         alternative to admin/gendoc.pl
 |
 |-- src                   The sources
 |   |
@@ -82,10 +89,9 @@ The source tree
 |   |   |
 |   |   |-- file          File management and file utilities
 |   |   |
-|   |   |-- include       Compile-time generated include files. these are
-|   |   |                 only links.
+|   |   |-- irc           IRC protocol related classes
 |   |   |
-|   |   |-- irc           IRC protocol related classes.
+|   |   |-- locale        Translations related classes
 |   |   |
 |   |   |-- net           Networking related stuff: sockets, ssl, http ...
 |   |   |
@@ -119,160 +125,170 @@ The source tree
 |   |                     KviConsole, KviInput, KviIrcView and KviUserListView
 |   |                     which are the most common widgets in kvirc.
 |   |
-|   |-- modules           Yes, the modules :D
-|   |   |
-|   |   |-- about         The about dialog
-|   |   |
-|   |   |-- action        The action module
-|   |   |
-|   |   |-- actioneditor  The action editor
-|   |   |
-|   |   |-- addon         The addon module
-|   |   |
-|   |   |-- aliaseditor   The alias editor window
-|   |   |
-|   |   |-- avatar        Avatar manipulation stuff
-|   |   |
-|   |   |-- chan          $chan.* scripting stuff
-|   |   |
-|   |   |-- channelsjoin  The channelsjoin dialog
-|   |   |
-|   |   |-- clock         This was a clock applet but actually it is not
-|   |   |                 working and thus not compiled.
-|   |   |
-|   |   |-- codetester    The codetester window
-|   |   |
-|   |   |-- config        config.* scripting stuff
-|   |   |
-|   |   |-- context       The context module
-|   |   |
-|   |   |-- dcc           This module implements the whole DCC protocol.
-|   |   |                 Windows, transfer threads etc: everyting is here.
-|   |   |
-|   |   |-- dialog        dialog.* scripting stuff
-|   |   |
-|   |   |-- editor        The scripting editor core widget.
-|   |   |
-|   |   |-- eventeditor   The event editor window
-|   |   |
-|   |   |-- file          file.* scripting stuff
-|   |   |
-|   |   |-- filetransferwindow The file transfers window
-|   |   |
-|   |   |-- help          The help browser
-|   |   |
-|   |   |-- http          http.* scripting stuff
-|   |   |
-|   |   |-- ident         A small ident daemon
-|   |   |
-|   |   |-- iograph       an input/output graph window
-|   |   |
-|   |   |-- lamerizer     A crypt/text-transformation engine
-|   |   |
-|   |   |-- language      A language detector module
-|   |   |
-|   |   |-- links         The links window
-|   |   |
-|   |   |-- list          The channel list window
-|   |   |
-|   |   |-- log           log.* scripting stuff
-|   |   |
-|   |   |-- logview       The logviewer window
-|   |   |
-|   |   |-- mask          mask.* scripting stuff
-|   |   |
-|   |   |-- math          the math module
-|   |   |
-|   |   |-- mediaplayer   the media player module
-|   |   |                 This is an interface to some multimedia programs
-|   |   |                 (amarok, audacious, juk, xmms, winamp) and libs
-|   |   |                 (amip, DBus). This replaces the old mp3player
-|   |   |                 module. You'll need to satisfy some dependencies
-|   |   |                 to enable support for a specific program/library,
-|   |   |                 by example on unix libxmms.so is
-|   |   |                 loaded at runtime. On windows there is also
-|   |   |                 a gen_kvirc.dll plugin for winamp that needs
-|   |   |                 to be loaded by the winamp program in order to make
-|   |   |                 communications with KVIrc possible.
-|   |   |
-|   |   |-- mircimport    A server entry importer from the mirc's servers.ini
-|   |   |
-|   |   |-- my            my.* scripting stuff
-|   |   |
-|   |   |-- notifier      the notifier module creates a dialog that keeps you
-|   |   |                 informed about new messages when kvirc is minimized
-|   |   |
-|   |   |-- objects       All the object oriented scripting stuff
-|   |   |
-|   |   |-- options       The options dialog
-|   |   |
-|   |   |-- perl          The perl scripting module
-|   |   |
-|   |   |-- perlcore      The perlcore module
-|   |   |
-|   |   |-- popupeditor   The popup editor window
-|   |   |
-|   |   |-- proxydb       The proxy DB management stuff from KVS
-|   |   |
-|   |   |-- python        The python scripting module
-|   |   |
-|   |   |-- pythoncore    The pythoncore module
-|   |   |
-|   |   |-- raweditor     The raw events editor window
-|   |   |
-|   |   |-- regchan       regchan.* scripting stuff
-|   |   |
-|   |   |-- reguser       reguser.* scripting stuff
-|   |   |
-|   |   |-- rijndael      A crypting engine
-|   |   |
-|   |   |-- rot13         A crypt/text-transformation engine
-|   |   |
-|   |   |-- serverdb      The server DB management stuff from KVS
-|   |   |
-|   |   |-- setup         The module that is loaded when KVIrc is started
-|   |   |                 for the first time. It contains the initial
-|   |   |                 configuration wizard.
-|   |   |
-|   |   |-- sharedfile    sharedfile.* scripting stuff
-|   |   |
-|   |   |-- sharedfileswindow The shared files window
-|   |   |
-|   |   |-- snd           snd.* scripting stuff
-|   |   |
-|   |   |-- socketspy     The socketspy window
-|   |   |
-|   |   |-- spaste        spaste.* scripting stuff
-|   |   |
-|   |   |-- str           str.* scripting stuff
-|   |   |
-|   |   |-- system        system.* scripting stuff
-|   |   |
-|   |   |-- term          The embedded terminal emulator (needs KDE)
-|   |   |
-|   |   |-- texticons     Texticons handling functions module
-|   |   |
-|   |   |-- theme         Theme management/package module
-|   |   |
-|   |   |-- tip           The tip of the day
-|   |   |
-|   |   |-- tmphighlight  tmphighlight.* scripting stuff
-|   |   |
-|   |   |-- toolbar       toolbar.* scripting stuff
-|   |   |
-|   |   |-- toolbareditor The toolbar editor window
-|   |   |
-|   |   |-- torrent       The torrent module
-|   |   |
-|   |   |-- trayicon      The trayicon module
-|   |   |
-|   |   |-- upnp          The UPnP management module
-|   |   |
-|   |   |-- url           The url window
-|   |   |
-|   |    `-- window       window.* scripting stuff
-|   |
-|    `-- win32registrar   win32 support files. WinMain is here
+|   `-- modules           Yes, the modules :D
+|       |
+|       |-- about         The about dialog
+|       |
+|       |-- action        The action module
+|       |
+|       |-- actioneditor  The action editor
+|       |
+|       |-- addon         The addon module
+|       |
+|       |-- aliaseditor   The alias editor window
+|       |
+|       |-- avatar        Avatar manipulation stuff
+|       |
+|       |-- chan          $chan.* scripting stuff
+|       |
+|       |-- channelsjoin  The channelsjoin dialog
+|       |
+|       |-- classeditor   The class (OOP) editor
+|       |
+|       |-- clock         This was a clock applet but actually it is not
+|       |                 working and thus not compiled.
+|       |
+|       |-- codetester    The codetester window
+|       |
+|       |-- config        config.* scripting stuff
+|       |
+|       |-- context       The context module
+|       |
+|       |-- dcc           This module implements the whole DCC protocol.
+|       |                 Windows, transfer threads etc: everyting is here.
+|       |
+|       |-- dialog        dialog.* scripting stuff
+|       |
+|       |-- editor        The scripting editor core widget.
+|       |
+|       |-- eventeditor   The event editor window
+|       |
+|       |-- file          file.* scripting stuff
+|       |
+|       |-- filetransferwindow The file transfers window
+|       |
+|       |-- fish          FiSH IRC encryption support
+|       |
+|       |-- help          The help browser
+|       |
+|       |-- http          http.* scripting stuff
+|       |
+|       |-- ident         A small ident daemon
+|       |
+|       |-- iograph       an input/output graph window
+|       |
+|       |-- lamerizer     A crypt/text-transformation engine
+|       |
+|       |-- language      A language detector module
+|       |
+|       |-- links         The links window
+|       |
+|       |-- list          The channel list window
+|       |
+|       |-- log           log.* scripting stuff
+|       |
+|       |-- logview       The logviewer window
+|       |
+|       |-- mask          mask.* scripting stuff
+|       |
+|       |-- math          the math module
+|       |
+|       |-- mediaplayer   the media player module
+|       |                 This is an interface to some multimedia programs
+|       |                 (amarok, audacious, juk, xmms, winamp) and libs
+|       |                 (amip, DBus). This replaces the old mp3player
+|       |                 module. You'll need to satisfy some dependencies
+|       |                 to enable support for a specific program/library,
+|       |                 by example on unix libxmms.so is
+|       |                 loaded at runtime. On windows there is also
+|       |                 a gen_kvirc.dll plugin for winamp that needs
+|       |                 to be loaded by the winamp program in order to make
+|       |                 communications with KVIrc possible.
+|       |
+|       |-- mircimport    A server entry importer from the mirc's servers.ini
+|       |
+|       |-- my            my.* scripting stuff
+|       |
+|       |-- notifier      the notifier module creates a dialog that keeps you
+|       |                 informed about new messages when kvirc is minimized
+|       |
+|       |-- objects       All the object oriented scripting stuff
+|       |
+|       |-- options       The options dialog
+|       |
+|       |-- perl          The perl scripting module
+|       |
+|       |-- perlcore      The perlcore module
+|       |
+|       |-- popup         popup.* scripting stuff
+|       |
+|       |-- popupeditor   The popup editor window
+|       |
+|       |-- proxydb       The proxy DB management stuff from KVS
+|       |
+|       |-- python        The python scripting module
+|       |
+|       |-- pythoncore    The pythoncore module
+|       |
+|       |-- raweditor     The raw events editor window
+|       |
+|       |-- regchan       regchan.* scripting stuff
+|       |
+|       |-- reguser       reguser.* scripting stuff
+|       |
+|       |-- rijndael      A crypting engine
+|       |
+|       |-- rot13         A crypt/text-transformation engine
+|       |
+|       |-- serverdb      The server DB management stuff from KVS
+|       |
+|       |-- setup         The module that is loaded when KVIrc is started
+|       |                 for the first time. It contains the initial
+|       |                 configuration wizard.
+|       |
+|       |-- sharedfile    sharedfile.* scripting stuff
+|       |
+|       |-- sharedfileswindow The shared files window
+|       |
+|       |-- snd           snd.* scripting stuff
+|       |
+|       |-- socketspy     The socketspy window
+|       |
+|       |-- spaste        spaste.* scripting stuff
+|       |
+|       |-- str           str.* scripting stuff
+|       |
+|       |-- system        system.* scripting stuff
+|       |
+|       |-- term          The embedded terminal emulator (needs KDE)
+|       |
+|       |-- texticons     Texticons handling functions module
+|       |
+|       |-- theme         Theme management/package module
+|       |
+|       |-- tip           The tip of the day
+|       |
+|       |-- tmphighlight  tmphighlight.* scripting stuff
+|       |
+|       |-- toolbar       toolbar.* scripting stuff
+|       |
+|       |-- toolbareditor The toolbar editor window
+|       |
+|       |-- torrent       The torrent module
+|       |
+|       |-- trayicon      The trayicon module
+|       |
+|       |-- upnp          The UPnP management module
+|       |
+|       |-- url           The url window
+|       |
+|       |-- userlist      userlist.* scripting stuff
+|       |
+|       |-- window        window.* scripting stuff
+|       |
+|       `-- zzz_afterlastmodule A dummy module used by the compilation
+|                         process to execute last-minute cleanup
+|    
 |
 `-- win32build            The directory for Windows builds
 
@@ -299,6 +315,12 @@ As of 2010.01.02:
   61101
 [pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
  254434
+
+As of 2012.07.01:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  66672
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 271397
 
 -------------------------------------------------------------------------------
 The coding style
