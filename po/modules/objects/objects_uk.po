@@ -234,7 +234,7 @@ msgstr "Елемент локументу нульовий: спочатку в�
 #: src/modules/objects/KvsObject_webView.cpp:1072
 #, fuzzy, c-format
 msgid "Document element whith id %d does not exists"
-msgstr "З'єднання %Q не існує"
+msgstr "З'єднання %d не існує"
 
 #: src/modules/objects/KvsObject_file.cpp:229
 msgid "Empty filename string"
@@ -298,9 +298,8 @@ msgid "Image parameter missing"
 msgstr "Параметр зображення відсутній"
 
 #: src/modules/objects/KvsObject_memoryBuffer.cpp:131
-#, fuzzy
 msgid "Index '%I' out of the buffer size"
-msgstr "Елемент має більший розмір ніж віджет-таблиця"
+msgstr ""
 
 #: src/modules/objects/libkviobjects.cpp:570
 msgid "Inexistant class object for objects.name"
@@ -867,9 +866,8 @@ msgstr ""
 "Невідомий режим завершення '%Q', перемикаюсь до типового popupCompletition"
 
 #: src/modules/objects/KvsObject_webView.cpp:592
-#, fuzzy
 msgid "Unsupported datatype"
-msgstr "Непідтримуваний тип даних '%Q'"
+msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:468
 msgid "Unsupported datatype '%Q'"
