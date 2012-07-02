@@ -3,7 +3,7 @@
 //   File : version.h
 //   Creation date : Unknown by Szymon Stefanek
 //
-//   This toolbar is part of the KVirc irc client distribution
+//   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -30,16 +30,16 @@
 #define IDD_ICON4                       103
 #define IDD_ICON5                       104
 
-#define VER_FILEVERSION             4,1,3,0
-#define VER_FILEVERSION_STR         "4.1.3.0\0"
+#define VER_FILEVERSION             4,2,0,0
+#define VER_FILEVERSION_STR         "4.2.0.0\0"
 
-#define VER_PRODUCTVERSION          4,1,3,0
-#define VER_PRODUCTVERSION_STR      "4.1\0"
+#define VER_PRODUCTVERSION          4,2,0,0
+#define VER_PRODUCTVERSION_STR      "4.2\0"
 
 #define VER_COMPANYNAME_STR         "KVIrc Development Team"
 #define VER_FILEDESCRIPTION_STR     "KVIrc"
 #define VER_INTERNALNAME_STR        "KVIrc"
-#define VER_LEGALCOPYRIGHT_STR      "Copyright © 2011"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright © 2012"
 #define VER_ORIGINALFILENAME_STR    "kvirc.exe"
 #define VER_PRODUCTNAME_STR         "K Visual IRC Client"
 
