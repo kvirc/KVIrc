@@ -8,7 +8,7 @@
 
 Name "@NICENAME@"
 !define VERSION '@CMAKE_KVIRC_VERSION_RELEASE@'
-!define RELEASE_NAME 'Equilibrium (wip)'
+!define RELEASE_NAME '@CMAKE_KVIRC_VERSION_CODENAME@'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
 !define URL_SUPPORT 'http://www.kvirc.net/'
