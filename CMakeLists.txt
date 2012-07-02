@@ -436,7 +436,13 @@ IF(QT4_FOUND)
 	ENDIF()
 
 	# Qt-DBus support
-	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
+	IF(APPLE OR WIN32)
+		# No Qt-DBus on Mac and Windows
+		OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" OFF)
+	ELSE()
+		OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
+	ENDIF()
+	
 	IF(WANT_QTDBUS)
 		IF(QT_QTDBUS_FOUND)
 			SET(QT_USE_QTDBUS true)
