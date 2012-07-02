@@ -421,7 +421,9 @@ void KviIrcView::setFont(const QFont &f)
 
 	QFont newFont(f);
 	newFont.setKerning(false);
+#if QT_VERSION >= 0x040700
 	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
+#endif
 	QWidget::setFont(newFont);
 	update();
 }
@@ -2063,7 +2065,7 @@ void KviIrcView::showToolsPopup()
 {
 	if(!m_pToolsPopup)
 	{
-        m_pToolsPopup = new QMenu(this);
+		m_pToolsPopup = new QMenu(this);
 
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Toggle Search"),this,SLOT(toggleToolWidget()));
 
@@ -2072,8 +2074,8 @@ void KviIrcView::showToolsPopup()
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
 		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
 		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
-		QAction * pAction = m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
-//		pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
+		m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
+		//		pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
 		m_pToolsPopup->addSeparator();
 		m_pToolsPopup->addAction(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
 	}
