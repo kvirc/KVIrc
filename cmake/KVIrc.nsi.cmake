@@ -5,6 +5,7 @@
 !include "WinMessages.nsh"
 !include "LogicLib.nsh"
 !include "WinVer.nsh"
+!include "x64.nsh"
 
 Name "@NICENAME@"
 !define VERSION '@CMAKE_KVIRC_VERSION_RELEASE@'
@@ -196,6 +197,13 @@ Function .onInit
 
     Call CloseKVIrcInstances
 
+    ${If} ${RunningX64}
+        ; disable registry redirection (enable access to 64-bit portion of registry)
+        SetRegView 64
+        ; change install dir
+        StrCpy $INSTDIR $PROGRAMFILES64\KVIrc
+    ${EndIf}
+
     ReadRegStr $R0 HKCU Software\Winamp ""
     IfFileExists "$R0\winamp.exe" continue 0
         SectionSetFlags ${WinampSection_IDX} 16 # 10000 in binary: disabled+unchecked
@@ -203,18 +211,31 @@ continue:
 
 
     SetShellVarContext all
-    ; Remove old installer
-    ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
-    StrCmp $R0 "" done
+    ; Remove old installer, check for 32 bit first, we don't want both installed
+    ${If} ${RunningX64}
+        SetRegView 32
+        ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
+        StrCmp $R0 "" check64
+    ${Else}
+        ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
+        StrCmp $R0 "" done
+    ${EndIf}    
+    
 
     MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(MsgUninstallOldInstaller)" IDOK uninst
     Abort
+
+check64:
+    SetRegView 64
+    ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
+    StrCmp $R0 "" done
+    MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(MsgUninstallOldInstaller)" IDOK uninst
  
     ;Run the uninstaller
 uninst:
     ClearErrors
     ExecWait "$R0"
- 
+
 done:
 
 FunctionEnd
