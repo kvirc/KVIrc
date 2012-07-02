@@ -847,7 +847,7 @@ Let's see the scheme to understand which is choosen:
 #if KDE_IS_VERSION(4,4,0)
 		pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
 #else
-		pNotify = new KNotification("incomingMessage",this,KNotification::CloseWhenWidgetActivated);
+		pNotify = new KNotification("incomingMessage",g_pMainWindow,KNotification::CloseWhenWidgetActivated);
 #endif
 		pNotify->setFlags(KNotification::Persistent);
 		pNotify->setTitle(szTitle);
