@@ -29,7 +29,7 @@ SET(PACKAGE "kvirc")
 SET(NICENAME "KVIrc")
 SET(VERSION_MAJOR "4")
 SET(VERSION_BRANCH "4.2")
-SET(VERSION_RELEASE "4.2.0")
+SET(VERSION_RELEASE "4.2.1")
 SET(VERSION_CODENAME "Equilibrium")
 # REMINDER: "Aria" is a candidate, trunk name "Quasar"
 

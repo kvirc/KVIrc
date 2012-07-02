@@ -8,16 +8,16 @@
 
 Name "@NICENAME@"
 !define VERSION '@CMAKE_KVIRC_VERSION_RELEASE@'
-!define RELEASE_NAME 'Equilibrium (wip)'
+!define RELEASE_NAME 'Equilibrium'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
 !define URL_SUPPORT 'http://www.kvirc.net/'
 !define URL_UPDATE 'http://www.kvirc.net/'
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
-; Svn release, eg: KVIrc-4.0.0-rc3-dev-r4300.exe
+; Svn release, eg: KVIrc-4.2.1-dev-r6000.exe
 OutFile KVIrc-${VERSION}-${RELEASE_VERSION}-dev.exe
-; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
+; Stable version, eg: KVIrc-4.2.2-Equilibrium.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
 SetCompressor /SOLID lzma
