@@ -1803,7 +1803,8 @@ void KviChannelWindow::updateModeLabel()
 	while (iter != m_szChannelParameterModes.constEnd())
 	{
 		QString szDescription = Qt::escape(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
-		KviQString::appendFormatted(szTip,"<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &iter.value());
+		QString szValue = Qt::escape(iter.value());
+		KviQString::appendFormatted(szTip,"<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
 		++iter;
 	}
 
