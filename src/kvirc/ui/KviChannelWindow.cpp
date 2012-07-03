@@ -1799,11 +1799,13 @@ void KviChannelWindow::updateModeLabel()
 		++pcAux;
 	}
 
-	if(hasChannelMode('k'))
-		szTip.append(__tr2qs("<br><b>Key:</b> %1").arg(channelModeParam('k')));
-
-	if(hasChannelMode('l'))
-		szTip.append(__tr2qs("<br><b>Limit:</b> %1").arg(channelModeParam('k')));
+	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
+	while (iter != m_szChannelParameterModes.constEnd())
+	{
+		QString szDescription = Qt::escape(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
+		KviQString::appendFormatted(szTip,"<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &iter.value());
+		++iter;
+	}
 
 	m_pModeWidget->refreshModes();
 	KviTalToolTip::remove(m_pModeWidget);
