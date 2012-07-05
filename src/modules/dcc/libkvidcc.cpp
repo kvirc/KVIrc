@@ -1682,8 +1682,10 @@ static bool dcc_kvs_cmd_abort(KviKvsModuleCommandCall * c)
 
 	if(dcc)
 	{
-		if(dcc->transfer())dcc->transfer()->abort();
-		else if(dcc->window())dcc->window()->close();
+		if(dcc->transfer())
+			dcc->transfer()->abort();
+		else if(dcc->window())
+			dcc->window()->delayedClose();
 	}
 
 	return true;
