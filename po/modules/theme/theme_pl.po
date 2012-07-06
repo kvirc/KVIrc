@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-12 22:55+0200\n"
+"POT-Creation-Date: 2012-07-06 17:36+0200\n"
 "PO-Revision-Date: 2010-04-09 19:53+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -36,9 +36,10 @@ msgstr ""
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Zdobądz zrzut ekranu - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
 #: src/modules/theme/ThemeManagementDialog.cpp:359
 #: src/modules/theme/ThemeManagementDialog.cpp:371
+#: src/modules/theme/libkvitheme.cpp:103
+#: src/modules/theme/libkvitheme.cpp:112
 msgid "Apply theme - KVIrc"
 msgstr "Zastosuj motyw - KVIrc"
 
@@ -69,8 +70,8 @@ msgstr "Usuń zaznaczone motywy"
 msgid "Delete Theme - KVIrc"
 msgstr "Usuń motyw - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Opis:"
 
@@ -86,8 +87,8 @@ msgstr "Czy napewno chcesz usunąć motyw \"%Q\" (wersja %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Czy chcesz kontynuować z instalacją ?"
 
-#: src/modules/theme/libkvitheme.cpp:104
 #: src/modules/theme/ThemeManagementDialog.cpp:360
+#: src/modules/theme/libkvitheme.cpp:104
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr ""
 
@@ -117,13 +118,13 @@ msgstr ""
 msgid "Export Theme - KVIrc"
 msgstr "Eksportuj motyw - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:111
 #: src/modules/theme/ThemeManagementDialog.cpp:370
+#: src/modules/theme/libkvitheme.cpp:111
 msgid "Failed to apply the specified theme: %1"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr ""
 
@@ -189,8 +190,8 @@ msgid ""
 "description of the package you're creating."
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Naciśnij przycisk \"Dalej\" aby rozpocząć."
 
@@ -280,7 +281,8 @@ msgstr ""
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118
+#: src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 
@@ -338,8 +340,8 @@ msgstr ""
 msgid "Unable to save theme: %1"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Wersja:"
 
@@ -353,8 +355,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Witamy"
 
