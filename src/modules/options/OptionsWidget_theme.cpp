@@ -72,19 +72,19 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 		mergeTip(m_pUseTransparencyBoolSelector,
 			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
 				"transparent.<br>You must choose a blending " \
-				"background image to below or check the " \
+				"background image below or check the " \
 				"\"Use compositing for real transparency\" option.</center>","options"));
 	#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		mergeTip(m_pUseTransparencyBoolSelector,
 			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
 				"transparent.<br>You must choose a blending " \
-				"background image to below or check the " \
+				"background image below or check the " \
 				"\"Use desktop background for transparency\" option.</center>","options"));
 	#else
 		mergeTip(m_pUseTransparencyBoolSelector,
 			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
 				"like transparent.<br>You must choose a blending " \
-				"background image to below.</center>","options"));
+				"background image below.</center>","options"));
 	#endif
 
 	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Child window opacity:","options"),KviOption_uintGlobalTransparencyChildFadeFactor,
