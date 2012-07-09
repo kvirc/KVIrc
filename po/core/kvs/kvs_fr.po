@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-06 17:36+0200\n"
+"POT-Creation-Date: 2012-07-09 23:25+0200\n"
 "PO-Revision-Date: 2010-07-13 08:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: Français <LL@li.org>\n"
@@ -198,8 +198,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:156
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr ""
 
@@ -209,14 +209,14 @@ msgid ""
 "that class first"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 msgid "Division by zero"
 msgstr ""
 
@@ -266,8 +266,8 @@ msgstr ""
 msgid "Error triggered from process callback handler: killing process"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 msgid "Error: %Q"
 msgstr ""
 
@@ -409,13 +409,13 @@ msgstr ""
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 msgid "Hostname: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 msgid "IP address %d: %Q"
 msgstr ""
 
@@ -654,18 +654,18 @@ msgstr ""
 msgid "No menu bar item with text '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 msgid "No such event (%Q)"
 msgstr ""
 
@@ -758,13 +758,13 @@ msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 
@@ -1147,8 +1147,8 @@ msgid ""
 "fact it isn't. Maybe you forgot a '$' just after?"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 msgid "This window has no associated IRC context"
 msgstr ""
 
@@ -1156,9 +1156,9 @@ msgstr ""
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr ""
 

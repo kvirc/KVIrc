@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-06 17:36+0200\n"
+"POT-Creation-Date: 2012-07-09 23:25+0200\n"
 "PO-Revision-Date: 2011-05-08 07:35+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
@@ -221,8 +221,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Não foi possível encontrar uma classe base chamada '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:156
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Resultado da procura DNS para a consulta \"%Q\""
 
@@ -234,14 +234,14 @@ msgstr ""
 "Detectado um ciclo na árvore de herança da classe base '%Q': redefinir "
 "primeiro esta classe"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 msgid "Division by zero"
 msgstr "Divisão por zero"
 
@@ -299,8 +299,8 @@ msgstr ""
 "Erro accionado pelo manipulador de chamada de retorno do processo: a "
 "desligar o processo"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 msgid "Error: %Q"
 msgstr "Erro: %Q"
 
@@ -472,13 +472,13 @@ msgstr ""
 "Declaração de referência de 'hash' falhada: a variável avaliou para o tipo "
 "'%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 msgid "Hostname: %Q"
 msgstr "Nome da máquina: %Q"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 msgid "IP address %d: %Q"
 msgstr "Endereço IP %d: %Q"
 
@@ -741,18 +741,18 @@ msgstr "Nenhum manipulador '%Q' para o evento numérico bruto '%d'"
 msgid "No menu bar item with text '%Q'"
 msgstr "Nenhum item da barra de menu com texto '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Nenhum contexto IRC (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 msgid "No such event (%Q)"
 msgstr "Nenhum evento (%Q)"
 
@@ -857,14 +857,14 @@ msgstr ""
 "Caracter ':' perdido no nome da alias: queria dizer ...<nomedeespaço>::"
 "<nome> ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 "Caracter ':' perdido: queria dizer '...<nomedeespaço>::<nome_da_alias>' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Sequência '::' perdida ou inválida a seguir ao nome da alias"
 
@@ -1302,8 +1302,8 @@ msgstr ""
 "Isto parece um operador de desreferência de manipulação de objecto '->' mas "
 "de facto não é. Talvez se tenha esquecido apenas de um'$' antes?"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 msgid "This window has no associated IRC context"
 msgstr "Esta janela não tem um contexto IRC associado"
 
@@ -1311,9 +1311,9 @@ msgstr "Esta janela não tem um contexto IRC associado"
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "Esta janela não tem um contexto IRC associado e não é um conversa DCC"
 
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "Esta janela não está associada a um contexto IRC"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-06 17:36+0200\n"
+"POT-Creation-Date: 2012-07-09 23:25+0200\n"
 "PO-Revision-Date: 2012-04-18 12:06+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -214,8 +214,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Не можу знайти базовий клас '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:156
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Результат DNS пошуку для запиту \"%Q\""
 
@@ -227,14 +227,14 @@ msgstr ""
 "Виявлено цикл в дереві спадковості базового класу '%Q': спершу перевизначіть "
 "цей клас"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
 #: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
 msgid "Division by zero"
 msgstr "Ділення на нуль"
 
@@ -292,8 +292,8 @@ msgstr "Помилка при отриманні інформації з лок�
 msgid "Error triggered from process callback handler: killing process"
 msgstr "Помилка запуску процесу обробника зворотнього виклику: вбиваю процес"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 msgid "Error: %Q"
 msgstr "Помилка: %Q"
 
@@ -456,13 +456,13 @@ msgstr "Клавіша хешу рівна порожньому рядку: ви
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr "Невдалий ассерт посилання хешу: змінна оцінена як типу '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 msgid "Hostname: %Q"
 msgstr "Назва вузла: %Q"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 msgid "IP address %d: %Q"
 msgstr "IP-адреса %d: %Q"
 
@@ -724,18 +724,18 @@ msgstr "Немає обробника '%Q' для сирої числової п
 msgid "No menu bar item with text '%Q'"
 msgstr "Немає ел-ту панелі меню з текстом '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Немає такого IRC контексту (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 msgid "No such event (%Q)"
 msgstr "Немає такої події (%Q)"
 
@@ -835,15 +835,15 @@ msgstr ""
 "Випадковий символ ':' в імені псевдоніму: ви мали на увазі ..."
 "<простір_імен>::<ім'я> ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 "Випадковий символ ':': ви мали на увазі '...<простір_імен>::"
 "<ім'я_псевдоніму>' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Випадкова послідовність '::' або недійсне наступне ім'я песвдоніму"
 
@@ -1263,8 +1263,8 @@ msgstr ""
 "Це виглядяає як оператор відв'язування об'єктного обробника '->' але "
 "фактично це не він. Можливо ви забули '$' після нього?"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
 msgid "This window has no associated IRC context"
 msgstr "Це вікно не пов'язане з жодним IRC контекстом"
 
@@ -1272,9 +1272,9 @@ msgstr "Це вікно не пов'язане з жодним IRC контек�
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "Це вікно не має жодного асоційованого IRC контексту і не є чатом DCC"
 
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "Це вікно не пов'язане з IRC контекстом"
 
