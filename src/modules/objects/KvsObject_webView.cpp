@@ -549,7 +549,7 @@ KVSO_CLASS_FUNCTION(webView,findAll)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	QWebElementCollection elementCollection=element.findAll(szQuery);
@@ -604,7 +604,7 @@ KVSO_CLASS_FUNCTION(webView,findFirst)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	QWebElement tempElement=element.findFirst(szQuery);
@@ -627,7 +627,7 @@ KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.removeFromDocument();
@@ -642,7 +642,7 @@ KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.removeFromDocument();
@@ -662,7 +662,7 @@ KVSO_CLASS_FUNCTION(webView,appendInside)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.appendInside(szCode);
@@ -680,7 +680,7 @@ KVSO_CLASS_FUNCTION(webView,appendOutside)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.appendOutside(szCode);
@@ -696,7 +696,7 @@ KVSO_CLASS_FUNCTION(webView,nextSibling)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	QWebElement tempElement=element.nextSibling();
@@ -733,7 +733,7 @@ KVSO_CLASS_FUNCTION(webView,elementTagName)
 	if (element.isNull())
 	{
 	//	qDebug("isnull ad index %i",iEleId);
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	c->returnValue()->setString(element.tagName());
@@ -753,7 +753,7 @@ KVSO_CLASS_FUNCTION(webView,setElementAttribute)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.setAttribute(szName,szValue);
@@ -772,7 +772,7 @@ KVSO_CLASS_FUNCTION(webView,removeClass)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.removeClass(szClassName);
@@ -790,7 +790,7 @@ KVSO_CLASS_FUNCTION(webView,addClass)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.addClass(szClassName);
@@ -864,7 +864,7 @@ KVSO_CLASS_FUNCTION(webView,elementAttribute)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 
@@ -890,7 +890,7 @@ KVSO_CLASS_FUNCTION(webView,elementAttributeNames)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	szAttributeNames=element.attributeNames().join(",");
@@ -907,7 +907,7 @@ KVSO_CLASS_FUNCTION(webView,classes)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	QString szClasses;
@@ -926,7 +926,7 @@ KVSO_CLASS_FUNCTION(webView,toPlainText)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	c->returnValue()->setString(element.toPlainText());
@@ -944,7 +944,7 @@ KVSO_CLASS_FUNCTION(webView,setPlainText)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.setPlainText(szText);
@@ -962,7 +962,7 @@ KVSO_CLASS_FUNCTION(webView,firstChild)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 
@@ -986,7 +986,7 @@ KVSO_CLASS_FUNCTION(webView,lastChild)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 
@@ -1010,7 +1010,7 @@ KVSO_CLASS_FUNCTION(webView,parentElement)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 
@@ -1039,7 +1039,7 @@ KVSO_CLASS_FUNCTION(webView,styleProperty)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	QWebElement::StyleResolveStrategy styleStrategy=QWebElement::CascadedStyle;
@@ -1069,7 +1069,7 @@ KVSO_CLASS_FUNCTION(webView,setStyleProperty)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element whith id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
 		return true;
 	}
 	element.setStyleProperty(szProperty,szValue);

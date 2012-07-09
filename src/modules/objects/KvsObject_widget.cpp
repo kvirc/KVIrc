@@ -514,7 +514,7 @@ const char * const widgettypes_tbl[] = {
 		HighlightedText - A text color that contrasts with Highlight.
 
 		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)
-		Adds a shortcut whith key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
+		Adds a shortcut with key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
 		!fn: $shortCutEvent(<shortcut_id:integer>)
 		This function will be called when a shortcut key has been triggered.
 		You must reimplement this event to manage a shortcut system in a custom widget.
