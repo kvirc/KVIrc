@@ -423,7 +423,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 	KviKvsObject *ob=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 	if (!ob)
 	{
-		c->warning(__tr2qs_ctx("Object does not exists","objects"));
+		c->warning(__tr2qs_ctx("Object does not exist","objects"));
 		return true;
 	}
 	KviPointerHashTableIterator<QString,KviKvsVariant> it(* ob->dataContainer()->dict());

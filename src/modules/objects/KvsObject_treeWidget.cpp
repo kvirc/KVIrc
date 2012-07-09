@@ -102,7 +102,7 @@
 		Returns the first child [class]listviewitem[/class] of this listview or $null if there are no items at all.
 
 		!fn: <listviewitem> $topLevelItem(<index:int>)
-		Returns the <index> child [class]listviewitem[/class] of this listview or $null if it does not exists.
+		Returns the <index> child [class]listviewitem[/class] of this listview or $null if it does not exist.
 
 		!fn: <int> $topLevelItemCount()
 		Returns the number of top level items of this listview.
