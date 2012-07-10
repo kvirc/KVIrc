@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: logview_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-09 23:25+0200\n"
-"PO-Revision-Date: 2010-08-20 15:30+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2012-07-08 13:53+0100\n"
+"Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/logview/LogViewWindow.cpp:356
-#, fuzzy
 msgid "%1 on %2"
-msgstr "%1 on %2"
+msgstr "%1 %2"
 
 #: src/modules/logview/LogViewWindow.cpp:172
 msgid "Apply filter"
@@ -29,29 +28,27 @@ msgstr "Szűrő alkalmazása"
 
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
-msgstr ""
+msgstr "Nem tudok naplózni a fájlba:'%1'"
 
 #: src/modules/logview/LogViewWindow.cpp:103
-#, fuzzy
 msgid "Cancel"
-msgstr "Csatorna"
+msgstr "Mégsem"
 
 #: src/modules/logview/LogViewWidget.cpp:69
 msgid "Channel"
 msgstr "Csatorna"
 
 #: src/modules/logview/LogViewWindow.cpp:636
-#, fuzzy
 msgid "Channel %1 on %2"
-msgstr "%1 on %2"
+msgstr "%1 csatorna %2 hálózat"
 
 #: src/modules/logview/LogViewWindow.cpp:461
 msgid "Confirm current user log deletion"
-msgstr ""
+msgstr "Napló fájl törlésének megerősítése"
 
 #: src/modules/logview/LogViewWindow.cpp:477
 msgid "Confirm current user logs deletion"
-msgstr ""
+msgstr "Napló fájlok törlésének megerősítése"
 
 #: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
@@ -59,7 +56,7 @@ msgstr "Konzol"
 
 #: src/modules/logview/LogViewWindow.cpp:639
 msgid "Console on %1"
-msgstr ""
+msgstr "Konzol: %1"
 
 #: src/modules/logview/LogViewWindow.cpp:141
 msgid "Contents filter"
@@ -71,37 +68,35 @@ msgstr "DCC beszélgetés"
 
 #: src/modules/logview/LogViewWindow.cpp:645
 msgid "DCC Chat with %1"
-msgstr ""
+msgstr "DCC Beszélgetés: %1"
 
 #: src/modules/logview/LogViewWindow.cpp:478
-#, fuzzy
 msgid "Do you really wish to delete all these logs?"
-msgstr "Minden ehhez tartozó csatorna/privát napló törlése"
+msgstr "Tényleg törölni szeretnéd ezeket a naplófájlokat?"
 
 #: src/modules/logview/LogViewWindow.cpp:462
-#, fuzzy
 msgid "Do you really wish to delete this log?"
-msgstr "Minden ehhez tartozó csatorna/privát napló törlése"
+msgstr "Tényleg törölni szeretnéd ezt a naplófájlt?"
 
 #: src/modules/logview/LogViewWindow.cpp:777
 msgid "Export Log - KVIrc"
-msgstr ""
+msgstr "Naplófájl Exportálás - KVIrc"
 
 #: src/modules/logview/LogViewWindow.cpp:442
 msgid "Export log file to"
-msgstr ""
+msgstr "Log fájl exportálása:"
 
 #: src/modules/log/libkvilog.cpp:323
 msgid "Failed to export the log '%1'"
-msgstr ""
+msgstr "Naplófájl exportálása sikertelen: '%1'"
 
 #: src/modules/log/libkvilog.cpp:313
 msgid "Failed to load logview module, aborting"
-msgstr ""
+msgstr "Naplófájl böngésző modul betöltése sikertelen, megszakítás"
 
 #: src/modules/logview/LogViewWindow.cpp:777
 msgid "File '%1' already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "'%1' már létezik, szeretnéd felülírni?"
 
 #: src/modules/logview/LogViewWindow.cpp:116
 msgid "Filter"
@@ -109,10 +104,9 @@ msgstr "Szűrő"
 
 #: src/modules/logview/LogViewWindow.cpp:191
 msgid "HTML archive"
-msgstr ""
+msgstr "HTML archív"
 
 #: src/modules/logview/LogViewWindow.cpp:108
-#, fuzzy
 msgid "Index"
 msgstr "Index"
 
@@ -136,12 +130,11 @@ msgstr "Napló név maszk:"
 #: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
-msgstr ""
+msgstr "Ablak azonosító hiányzik a 'w' kapcsoló után"
 
 #: src/modules/logview/LogViewWindow.cpp:164
-#, fuzzy
 msgid "Only newer than"
-msgstr "Újabb, mint"
+msgstr "Csak újabb, mint"
 
 #: src/modules/logview/LogViewWindow.cpp:156
 msgid "Only older than"
@@ -157,17 +150,15 @@ msgstr "Privát"
 
 #: src/modules/logview/LogViewWindow.cpp:642
 msgid "Query with %1 on %2"
-msgstr ""
+msgstr "Privát beszélgetés: %1 a %2 hálózaton"
 
 #: src/modules/logview/LogViewWindow.cpp:440
-#, fuzzy
 msgid "Remove all log files within this folder"
-msgstr "Fájl Eltávolítása"
+msgstr "Minden naplófájl törlése a mappán belül"
 
 #: src/modules/logview/LogViewWindow.cpp:443
-#, fuzzy
 msgid "Remove log file"
-msgstr "Fájl Eltávolítása"
+msgstr "Naplófájl eltávolítása"
 
 #: src/modules/logview/LogViewWindow.cpp:132
 msgid "Show DCC chat logs"
@@ -191,26 +182,25 @@ msgstr "Privát naplók mutatása"
 
 #: src/modules/logview/LogViewWindow.cpp:648
 msgid "Something on %1"
-msgstr ""
+msgstr "Nem ismert: %1"
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "This window has no logging capabilities"
-msgstr ""
+msgstr "Ez az ablak nem rendelkezik naplózási képességekkel"
 
 #: src/modules/log/libkvilog.cpp:103
 #: src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
-msgstr ""
+msgstr "'%1' ablak nem található"
 
 #: src/modules/log/libkvilog.cpp:265
 msgid "Window with id '%1' not found, returning empty string"
-msgstr ""
+msgstr "'%1' ablak azonosító nem található, visszatérési érték: üres karaktersor"
 
 #: src/modules/logview/LogViewWindow.cpp:190
-#, fuzzy
 msgid "plain text file"
-msgstr "Tartalomszűrő"
+msgstr "egyszerű szöveges fájl"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Szűrés megszakítása"

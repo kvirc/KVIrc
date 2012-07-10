@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: sharedfileswindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-09 23:25+0200\n"
-"PO-Revision-Date: 2008-03-03 10:03+0100\n"
-"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
+"PO-Revision-Date: 2012-07-09 14:39+0100\n"
+"Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,17 +20,17 @@ msgstr ""
 #: src/modules/sharedfile/libkvisharedfile.cpp:232
 #, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
-msgstr ""
+msgstr "    Lejár: %d óra %d perc %d másodperc múlva"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:221
 #, c-format
 msgid "    File: %s (%u bytes)"
-msgstr ""
+msgstr "    Fájl %s (%u bájt)"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:223
 #, c-format
 msgid "    Mask: %s"
-msgstr ""
+msgstr "    Maszk: %s"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:242
 msgid "&Add..."
@@ -86,11 +86,11 @@ msgstr "Helytelen megosztási név"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:101
 msgid "Invalid timeout, ignoring"
-msgstr ""
+msgstr "Helytelen időtúllépés, mellőzve"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:115
 msgid "Invalid visible name: using default"
-msgstr ""
+msgstr "Helytelen látható név: alapértelmezett használata"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
 msgid "Mask"
@@ -106,11 +106,11 @@ msgstr "Soha"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:242
 msgid "No active file sharedfile"
-msgstr ""
+msgstr "Nincs aktív megosztott fájl"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr ""
+msgstr "Nincs megosztott fájl ezzal a látható névvel: '%Q' felhasználómaszk: '%Q'"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:162
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
@@ -120,7 +120,7 @@ msgstr "OK"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:121
 msgid "Ops..failed to add the sharedfile..."
-msgstr ""
+msgstr "Upsz, megosztott fájl hozzáadása sikertelen..."
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:244
 msgid "Re&move"
@@ -135,21 +135,16 @@ msgid "Shared Files"
 msgstr "Megosztott Fájlok"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
-msgid ""
-"The expire date/time is in the past: please either remove the \"expires"
-"\"check mark or specify a expire date/time in the future"
-msgstr ""
-"A lejárati idő/dátum a múltban van, kérlek ne használd a lejárati időt vagy "
-"adj meg helyes, jövőbeli időt/dátumot."
+msgid "The expire date/time is in the past: please either remove the \"expires\"check mark or specify a expire date/time in the future"
+msgstr "A lejárati idő/dátum a múltban van, kérlek ne használd a lejárati időt vagy adj meg helyes, jövőbeli időt/dátumot."
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
-msgstr ""
+msgstr "A fájl nem olvasható: '%Q'"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
 msgid "The file doesn't exist or it is not readable, please check the path"
-msgstr ""
-"A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
+msgstr "A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
 msgid "The share name can't be empty, please correct it"
@@ -158,7 +153,7 @@ msgstr "A megosztási név nem lehet üres, kérlek javítsd"
 #: src/modules/sharedfile/libkvisharedfile.cpp:243
 #, c-format
 msgid "Total: %d sharedfile"
-msgstr ""
+msgstr "Összesen: %d megosztott fájl"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:79
 msgid "User mask:"
