@@ -1354,7 +1354,26 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 {
 	if(!connection())
 		return;
-        QString szTmpBuffer;
+
+	//my full mask as seen by other users
+	QString szMyFullMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
+	QByteArray myFullMask = connection()->encodeText(szMyFullMask);   //target name
+	QByteArray name = connection()->encodeText(windowName());         //message
+	QByteArray data = encodeText(szBuffer);
+	const char * pData = data.data();
+	/* max length of a PRIVMSG text. Max buffer length for our send is 512 byte, but we have to
+	* remember that the server will prepend to the message our full mask and truncate the resulting
+	* at 512 bytes again..
+	* So we have:
+	* :NickName!~ident@hostname.tld PRIVMSG #channel :text of message(CrLf)
+	* NickName!~ident@hostname.tld#channeltext of message
+	* 512(rfc) -2(CrLf) -2(:) -3(spaces) -7(PRIVMSG) -8(\x01ACTION\x01) = 490
+	* usable bytes, excluding our full mask and the target name.
+	*/
+	int iMaxMsgLen = 490 - name.length() - myFullMask.length();
+
+	// our copy of the message
+	QString szTmpBuffer;
 
 	//see bug ticket #220
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
@@ -1363,22 +1382,108 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 		szTmpBuffer = szBuffer;
 
 	QString szName = m_szName;
-	QByteArray data = encodeText(szTmpBuffer);
-	const char * pData = data.data();
 
 	if(!pData)
 		return;
 	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,szName))
 		return;
-	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",connection()->encodeText(szName).data(),0x01,pData,0x01))
-		return;
 
-	QString szBuf = "\r!nc\r";
-	szBuf += connection()->currentNickName();
-	szBuf += "\r ";
-	szBuf += szTmpBuffer;
-	outputMessage(KVI_OUT_ACTION,szBuf);
-	userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
+	if(data.length() > iMaxMsgLen)
+	{
+		/* Multi message; we want to split the message, preferably on a word boundary,
+		 * and send each message part as a different PRIVMSG
+		 * Due to encoding stuff, this is frikin'time eater
+		 */
+		QTextEncoder * pEncoder = makeEncoder(); // our temp encoder
+		QByteArray szTmp;         // used to calculate the length of an encoded message
+		int iPos;                 // contains the index where to truncate szTmpBuffer
+		int iC;                   // cycles counter (debugging/profiling purpose)
+		float fPosDiff;           // optimization internal; aggressivity factor
+		QString szCurSubString;   // truncated parts as reported to the user
+
+		// run until we've something remaining in the message
+		while(szTmpBuffer.length())
+		{
+			// init counters
+			iPos = szTmpBuffer.length();
+			iC = 0;
+
+			// first part (optimization): quickly find an high index that is _surely_lesser_
+			// than the correct one
+			while(1)
+			{
+				iC++;
+				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
+				if(szTmp.length() <= iMaxMsgLen)
+					break;
+				//if szTmp.length() == 0 we already have break'ed out from here,
+				// so we can safely use it as a divisor
+				fPosDiff = (float)iMaxMsgLen / szTmp.length();
+				iPos = (int)(iPos*fPosDiff); // cut the string at each cycle
+				//printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
+			}
+			//printf("Multi message: %d optimization cyles", iC);
+
+			// now, do it the simple way: increment our index until we perfectly fit into the
+			// available space
+			while(1)
+			{
+				iC++;
+
+				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
+
+				// perfect match
+				if(iPos == szTmpBuffer.length())
+					break;
+
+				if(szTmp.length() > iMaxMsgLen)
+				{
+					// overflowed.. last one was the good one
+					iPos--;
+					szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
+					break;
+				} else {
+					//there's still free space.. add another char
+					iPos++;
+				}
+
+			}
+			//printf(", finished at %d cycles, truncated at pos %d\n", iC, iPos);
+
+			//prepare the feedback string for the user
+			szCurSubString=szTmpBuffer.left(iPos);
+
+			//send the string to the server
+			if(connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",name.data(),0x01,szTmp.data(),0x01))
+			{
+				//feeedback the user
+				QString szBuf = "\r!nc\r";
+				szBuf += connection()->currentNickName();
+				szBuf += "\r ";
+				szBuf += szTmp.data();
+				outputMessage(KVI_OUT_ACTION,szBuf);
+				userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
+			} else {
+				// skipped a part in this multi message.. we don't want to continue
+				return;
+			}
+
+			// remove the sent part of the string
+			szTmpBuffer.remove(0, iPos);
+			//printf("Sent %d chars, %d remaining in the Qstring\n",iPos, szTmpBuffer.length());
+		}
+
+	} else {
+		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",connection()->encodeText(szName).data(),0x01,pData,0x01))
+			return;
+
+		QString szBuf = "\r!nc\r";
+		szBuf += connection()->currentNickName();
+		szBuf += "\r ";
+		szBuf += szTmpBuffer;
+		outputMessage(KVI_OUT_ACTION,szBuf);
+		userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
+	}
 }
 
 bool KviChannelWindow::nickChange(const QString & szOldNick, const QString & szNewNick)
