@@ -213,7 +213,7 @@ void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & 
 			szWho += szNick;
 			szWho += "</b>";
 			szMsg = QString(szFmt).arg(szWho);
-			g_pApp->notifierMessage(0,KVI_OPTION_MSGTYPE(KVI_OUT_NOTIFYONLINE).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+			g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_NOTIFYONLINE).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 		}
 	}
 }
