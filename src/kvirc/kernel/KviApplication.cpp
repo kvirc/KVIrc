@@ -496,6 +496,8 @@ void KviApplication::setup()
 	KviDefaultScriptManager::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_DEFAULTSCRIPT))
 		KviDefaultScriptManager::instance()->load(szTmp);
+	else
+		KviDefaultScriptManager::instance()->loadEmptyConfig();
 
 	KVI_SPLASH_SET_PROGRESS(90)
 
@@ -543,6 +545,8 @@ void KviApplication::setup()
 	{
 		// Finish the setup...
 		setupFinish();
+		// ensure mainwindow is visible
+		g_pMainWindow->show();
 	}
 
 	// hello world!
