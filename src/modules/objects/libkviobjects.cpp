@@ -445,7 +445,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 	/*
 		@doc: objects.classAllHandlers
 		@title:
-			objects.classAllHandlers
+			$objects.classAllHandlers
 		@type:
 			function
 		@short:

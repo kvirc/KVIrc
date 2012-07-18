@@ -123,7 +123,7 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	@type:
 		function
 	@title:
-		theme.info
+		$theme.info
 	@short:
 		Return info about an user defined theme.
 	@syntax:
@@ -163,7 +163,7 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	@type:
 		function
 	@title:
-		theme.list
+		$theme.list
 	@short:
 		Return a list of the installed themes.
 	@syntax:
