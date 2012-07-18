@@ -50,6 +50,10 @@
 		where <left_operand> and [right_operand] depend on the <operator>.[br]
 		Some operators have no [right_operand] and these are called [b]unary operators[/b]:
 		they operate directly on <left_operand>.[br]
+		Some operators, like arithmetic ones, are tipically used inside the special function
+		[b]$(<expression>)[/b], called the "[doc:expressioneval]Expression evaluation identifier[/doc]";
+		This special function returns the result of the evaluation of the <expression>.
+		In previous versions of KVIrc this function was called $calc().[br]
 		[br]
 		[table]
 			[tr][td]Operator[/td][td]document[/td][/tr]

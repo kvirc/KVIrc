@@ -868,9 +868,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The function [b]$#[/b] evaluates to the number of positional parameters available.
 		The [b]positional parameter[/b] functions do not accept parameters.[br]
-		The special function [b]$(<expression>)[/b] returns the result
+		The special function [b]$(<expression>)[/b], called the
+		"[doc:expressioneval]Expression evaluation identifier[/doc]", returns the result
 		of the evaluation of the <expression>. In previous versions of KVIrc this
-		function was called [fnc]$calc[/fnc].[br]
+		function was called $calc().[br]
 		[example]
 			[cmd]echo[/cmd] $(2 + (3 ^ 7) <= 1 * (3 && 2))
 		[/example]
