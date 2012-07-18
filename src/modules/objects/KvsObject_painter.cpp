@@ -1648,7 +1648,7 @@ KVSO_CLASS_FUNCTION(painter,drawIcon)
 	QPixmap *pix=g_pIconManager->getImage(szIcon);
 	if (!pix)
 	{
-		c->warning("The icon '%Q' does not exists",&szIcon);
+		c->warning("The icon '%Q' does not exist",&szIcon);
 		return true;
 	}
 	QSize pixsize(pix->width(),pix->height());

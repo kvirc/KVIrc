@@ -1202,7 +1202,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@description:
 		Sets the caption of the user window specified by <window_id> to <plain_text_caption>.[br]
 		If <window_id> is an empty string then the current window is assumed.[br]
-		If the window does not exists then a warning is printed unless the -q switch is used.[br]
+		If the window does not exist then a warning is printed unless the -q switch is used.[br]
 	@seealso:
 */
 

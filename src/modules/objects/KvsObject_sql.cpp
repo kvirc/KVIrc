@@ -223,7 +223,7 @@ KVSO_CLASS_FUNCTION(sql,features)
 	QStringList connections = QSqlDatabase::connectionNames();
 	if (!connections.contains(szConnectionName))
 	{
-		c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
+		c->warning(__tr2qs_ctx("Connection %Q does not exist","objects"),&szConnectionName);
 		return true;
 	}
 	QSqlDatabase db=QSqlDatabase::database(szConnectionName);
@@ -280,7 +280,7 @@ KVSO_CLASS_FUNCTION(sql,closeConnection)
 	    QStringList connections = QSqlDatabase::connectionNames();
 	    if (!connections.contains(szConnectionName))
 	    {
-		c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
+		c->warning(__tr2qs_ctx("Connection %Q does not exist","objects"),&szConnectionName);
 		return true;
 	    }
 	    if(m_pCurrentSQlQuery)
