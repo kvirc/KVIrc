@@ -147,7 +147,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 				}
 			}
 
-			int i=g_pDocIndex->titlesList().indexOf(szParam);
+			int i=g_pDocIndex->titlesList().indexOf(QRegExp(QRegExp::escape(szParam), Qt::CaseInsensitive));
 			if (i!=-1)
 			{
 				szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
@@ -156,7 +156,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 				QString szTmpDocName(".*/doc_");
 				szTmpDocName.append(QRegExp::escape(szParam));
 				szTmpDocName.append("\\.html");
-				i=g_pDocIndex->documentList().indexOf(QRegExp(szTmpDocName));
+				i=g_pDocIndex->documentList().indexOf(QRegExp(szTmpDocName, Qt::CaseInsensitive));
 				if (i!=-1)
 				{
 					szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
