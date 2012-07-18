@@ -54,9 +54,20 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 
 	if(!QFile::exists(szLocal))
 	{
-		QString szGlobal;
-		g_pApp->getGlobalKvircDirectory(szGlobal,KviApplication::DefScript,"default.kvc");
-		QFile::copy(szGlobal,szLocal);
+		if(g_pApp->firstTimeRun())
+		{
+			// new installation, create it
+			QString szGlobal;
+			g_pApp->getGlobalKvircDirectory(szGlobal,KviApplication::DefScript,"default.kvc");
+			QFile::copy(szGlobal,szLocal);
+
+			m_bConfigFileMissing=false;
+		} else {
+			// update from a < 4.2.0 (previous installation)
+			m_bConfigFileMissing = true;
+		}
+	} else {
+		m_bConfigFileMissing = false;
 	}
 }
 
@@ -83,6 +94,10 @@ void KviDefaultScriptManager::done()
 bool KviDefaultScriptManager::isDefscriptUpToDate()
 {
 	QString szConfig, szTmp;
+
+	if(m_bConfigFileMissing)
+		return false;
+
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApplication::DefScript,"default.kvc");
 	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
 
@@ -127,6 +142,7 @@ void KviDefaultScriptManager::restoreInternal()
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApplication::DefScript,"default.kvc");
 	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
 
+	m_szVersion = oConfig.readEntry("Version");
 	m_szDate = oConfig.readEntry("Date");
 
 	// Select elements to restore
@@ -274,50 +290,68 @@ void KviDefaultScriptManager::load(const QString & szConfigFile)
 	if(__var.isEmpty()) \
 		__var = __default;
 
+void KviDefaultScriptManager::loadEmptyConfig()
+{
+	QString szEmptyDate = QString("1970-01-01");
+	QString szEmptyVersion = QString("0.0.0");
+
+	m_szVersion = szEmptyVersion;
+	m_szDate = szEmptyDate;
+	m_szAction = szEmptyVersion;
+	m_szAddon = szEmptyVersion;
+	m_szAlias = szEmptyVersion;
+	m_szClass = szEmptyVersion;
+	m_szEvent = szEmptyVersion;
+	m_szPopup = szEmptyVersion;
+	m_szRaw = szEmptyVersion;
+	m_szToolbar = szEmptyVersion;
+}
+
 void KviDefaultScriptManager::loadInternal(KviConfigurationFile * pCfg)
 {
 	QString szTmp;
-	QString szDate = QDate::currentDate().toString("yyyy-MM-dd");
+	QString szEmptyDate = QString("1970-01-01");
+	QString szEmptyVersion = QString("0.0.0");
 
 	szTmp = "Version";
-	m_szVersion = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szVersion,KVI_VERSION)
+	m_szVersion = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szVersion,szEmptyVersion)
 
 	szTmp = "Date";
-	m_szDate = pCfg->readEntry(szTmp,szDate);
-	IS_EMPTY(m_szDate,szDate)
+	m_szDate = pCfg->readEntry(szTmp,szEmptyDate);
+	IS_EMPTY(m_szDate,szEmptyDate)
 
 	szTmp = "ActionVersion";
-	m_szAction = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szAction,KVI_VERSION)
+	m_szAction = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szAction,szEmptyVersion)
 
 	szTmp = "AddonVersion";
-	m_szAddon = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szAddon,KVI_VERSION)
+	m_szAddon = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szAddon,szEmptyVersion)
 
 	szTmp = "AliasVersion";
-	m_szAlias = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szAlias,KVI_VERSION)
+	m_szAlias = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szAlias,szEmptyVersion)
 
 	szTmp = "ClassVersion";
-	m_szClass = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szClass,KVI_VERSION)
+	m_szClass = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szClass,szEmptyVersion)
 
 	szTmp = "EventVersion";
-	m_szEvent = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szEvent,KVI_VERSION)
+	m_szEvent = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szEvent,szEmptyVersion)
 
 	szTmp = "PopupVersion";
-	m_szPopup = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szPopup,KVI_VERSION)
+	m_szPopup = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szPopup,szEmptyVersion)
 
 	szTmp = "RawVersion";
-	m_szRaw = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szRaw,KVI_VERSION)
+	m_szRaw = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szRaw,szEmptyVersion)
 
 	szTmp = "ToolbarVersion";
-	m_szToolbar = pCfg->readEntry(szTmp,KVI_VERSION);
-	IS_EMPTY(m_szToolbar,KVI_VERSION)
+	m_szToolbar = pCfg->readEntry(szTmp,szEmptyVersion);
+	IS_EMPTY(m_szToolbar,szEmptyVersion)
 }
 
 void KviDefaultScriptManager::save(const QString & szConfigFile)

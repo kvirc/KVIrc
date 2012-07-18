@@ -62,6 +62,7 @@ private:
 	static KviDefaultScriptManager * m_pSelf;
 	static unsigned int              m_uCount;
 	bool                             m_bNoNeedToRestore;
+	bool							 m_bConfigFileMissing;
 	KviDefaultScriptDialog         * m_pDialog;
 	QString                          m_szVersion;
 	QString                          m_szDate;
@@ -124,6 +125,13 @@ public:
 	* \return void
 	*/
 	void load(const QString & szConfigFile);
+
+	/**
+	* \brief Initilizes an empty configuration
+	*
+	* \return void
+	*/
+	void loadEmptyConfig();
 
 	/**
 	* \brief Saves the configuration of the default script
