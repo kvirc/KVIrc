@@ -105,8 +105,6 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,m_pButtonBox);
 	m_pTopSplitter->setChildrenCollapsible(false);
 
-	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
-
 	m_pButtonContainer = new KviTalHBox(m_pButtonBox);
 	m_pButtonContainer->setSpacing(0);
 	m_pButtonContainer->setMargin(0);
