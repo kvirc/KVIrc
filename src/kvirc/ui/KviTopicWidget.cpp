@@ -136,7 +136,6 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 	m_pCompletionBox->hide();
 
 	setContentsMargins(0,0,0,0);
-	setMinimumWidth(80);
 	applyOptions();
 }
 
