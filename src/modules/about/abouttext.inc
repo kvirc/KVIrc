@@ -315,6 +315,22 @@ static const char * g_szAboutText = "" \
 "Turkish translation and bug hunting" \
 "</font></td></tr>" \
 "</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Sian Mountbatten</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Poenikatu" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"poenikatu at fastmail dot co dot uk" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Esperanto translation" \
+"</font></td></tr>" \
+"</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Graphics</b></font>" \
