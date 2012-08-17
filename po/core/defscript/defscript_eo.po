@@ -12,7 +12,7 @@ msgstr ""
 "PO-Revision-Date: 2012-07-08 23:11+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
-"Language: Esperanto\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr "Mankanta celo, nenia ago farata"
+msgstr "Mankas celo, nenia ago farata"
 
 #: data/defscript/aliases.kvs:100
 #: data/defscript/aliases.kvs:145
@@ -72,11 +72,11 @@ msgstr "-a: sendi avizon al ĉiuj kanalaj administrantoj"
 
 #: data/defscript/aliases.kvs:104
 msgid "-o: send notice to all channel ops"
-msgstr "-o: sendi avizon al ĉiuj kanalaj operaciantoj"
+msgstr "-o: sendi avizon al ĉiuj kanalaj operaciuloj"
 
 #: data/defscript/aliases.kvs:105
 msgid "-h: send notice to all channel halfops"
-msgstr "-h: sendi avizon al ĉiuj kanalaj duon-operaciantoj"
+msgstr "-h: sendi avizon al ĉiuj kanalaj duon-operaciuloj"
 
 #: data/defscript/aliases.kvs:106
 msgid "-v: send notice to all channel voices"
@@ -92,11 +92,11 @@ msgstr "Parametra mesaĝo mankas"
 
 #: data/defscript/aliases.kvs:116
 msgid "Type /gnotice for help"
-msgstr "Tajpi /gnotice por helpo"
+msgstr "Tajpu /gnotice por helpo"
 
 #: data/defscript/aliases.kvs:150
 msgid "Sending wallop to"
-msgstr "Sendante bategon al"
+msgstr "Sendas bategon al"
 
 #: data/defscript/aliases.kvs:185
 #: data/defscript/aliases.kvs:197
@@ -133,11 +133,11 @@ msgstr "Kanala Administranto"
 
 #: data/defscript/aliases.kvs:447
 msgid "Channel Operator"
-msgstr "Kanala Operacianto"
+msgstr "Kanala Operaciulo"
 
 #: data/defscript/aliases.kvs:449
 msgid "Half Operator"
-msgstr "Duon-Operacianto"
+msgstr "Duon-Operaciulo"
 
 #: data/defscript/aliases.kvs:451
 msgid "Voice"
@@ -145,7 +145,7 @@ msgstr "Voĉo"
 
 #: data/defscript/aliases.kvs:453
 msgid "User Operator"
-msgstr "UzantOperacianto"
+msgstr "UzantOperaciulo"
 
 #: data/defscript/aliases.kvs:455
 msgid "Normal User"
@@ -161,7 +161,7 @@ msgstr "Vi devas esti konektata al servilo"
 
 #: data/defscript/aliases.kvs:498
 msgid "No such user:"
-msgstr "Nenia tia uzanto:"
+msgstr "Neniu tia uzanto:"
 
 #: data/defscript/default.kvs:34
 msgid "The default script has been successfully installed."
@@ -437,7 +437,7 @@ msgstr "&Op"
 
 #: data/defscript/popups.kvs:560
 msgid "&Deop"
-msgstr "&Forigi operaciantan flagon"
+msgstr "&Forigi operaciulan flagon"
 
 #: data/defscript/popups.kvs:565
 msgid "&Halfop"
@@ -563,7 +563,7 @@ msgstr "&Aliĝi"
 
 #: data/defscript/popups.kvs:766
 msgid "Copy Channel URL to Clipboard"
-msgstr "Kopii Kanalan URL al Poŝo"
+msgstr "Kopii Kanalan URL al Tondejo"
 
 #: data/defscript/popups.kvs:771
 #: data/defscript/popups.kvs:874
@@ -587,11 +587,11 @@ msgstr "m (Komanda Uzado"
 
 #: data/defscript/popups.kvs:825
 msgid "o (Operators)"
-msgstr "o (Operaciantoj"
+msgstr "o (Operaciuloj"
 
 #: data/defscript/popups.kvs:830
 msgid "t (Connection stats?)"
-msgstr "t (Konekta statistikoj?)"
+msgstr "t (Konektaj statistikoj?)"
 
 #: data/defscript/popups.kvs:835
 msgid "u (Uptime)"
@@ -603,7 +603,7 @@ msgstr "y (y-Linioj)"
 
 #: data/defscript/popups.kvs:845
 msgid "z (Debug Stats?)"
-msgstr "z (Senerarigaj Statistikoj"
+msgstr "z (Senmisaj Statistikoj?)"
 
 #: data/defscript/popups.kvs:921
 msgid "Enter the message text"
@@ -639,7 +639,7 @@ msgstr "Inverse Sendi al"
 
 #: data/defscript/popups.kvs:974
 msgid "Secure Reverse Send to"
-msgstr "Sekura Inveresa Sendi al"
+msgstr "Sekura Inversa Sendi al"
 
 #: data/defscript/popups.kvs:981
 msgid "TDCC Send to"
@@ -663,7 +663,7 @@ msgstr "&Ignori"
 
 #: data/defscript/popups.kvs:1200
 msgid "Logging to"
-msgstr "Protokolante al"
+msgstr "Protokolas al"
 
 #: data/defscript/popups.kvs:1202
 msgid "Flush Log File"
@@ -727,7 +727,7 @@ msgstr "Fermi"
 
 #: data/defscript/popups.kvs:1408
 msgid "Set window props as default"
-msgstr "Agordi fenestrajn atributojn kiel defaŭltaj"
+msgstr "Starigi fenestrajn atributojn kiel defaŭltaj"
 
 #: data/defscript/popups.kvs:1414
 msgid "Automatically Join Channel"
@@ -759,7 +759,7 @@ msgstr "Fermi Ĉiujn Demandojn"
 
 #: data/defscript/popups.kvs:1474
 msgid "Close All Dead Channels"
-msgstr "Fermi Ĉiujn Mortintaj Kanalojn"
+msgstr "Fermi Ĉiujn Mortintajn Kanalojn"
 
 #: data/defscript/popups.kvs:1480
 msgid "Close All Dead Queries"
@@ -779,20 +779,20 @@ msgstr "Malmarki Ĉiujn Demandojn"
 
 #: data/defscript/popups.kvs:1513
 msgid "Look Up "
-msgstr "Serĉi"
+msgstr "Serĉi "
 
 #: data/defscript/popups.kvs:1520
 msgid "Open "
-msgstr "Malfermi"
+msgstr "Malfermi "
 
 #: data/defscript/popups.kvs:1525
 msgid "Telnet to "
-msgstr "Telneti al"
+msgstr "Telneti al "
 
 #: data/defscript/popups.kvs:1532
 msgid "Traceroute to "
-msgstr "Spuri enkursigo al "
+msgstr "Spuri enkursigon al "
 
 #: data/defscript/popups.kvs:1538
 msgid "Traceroute6 to "
-msgstr "Spuri enkursigo6 al "
+msgstr "Spuri enkursigon al "

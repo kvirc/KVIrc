@@ -12,18 +12,15 @@ msgstr ""
 "PO-Revision-Date: 2012-07-22 19:04+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
-"Language: Esperanto\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: j jn\n"
-"X-Poedit-Language: Esperanto\n"
-"X-Poedit-Country: UNITED KINGDOM\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
 #: src/kvilib/file/KviPackageWriter.cpp:167
 msgid "Packaging file %1"
-msgstr "Enpakanta dosieron %1"
+msgstr "Enpakas dosieron %1"
 
 #: src/kvilib/file/KviPackageWriter.cpp:175
 #: src/kvilib/file/KviPackageReader.cpp:192
@@ -47,15 +44,15 @@ msgstr "Densiga biblioteka interna eraro"
 
 #: src/kvilib/file/KviPackageWriter.cpp:325
 msgid "Error while compressing a file stream"
-msgstr "Eraro dum densigata dosieran fluon"
+msgstr "Eraro dum densigas dosieran fluon"
 
 #: src/kvilib/file/KviPackageWriter.cpp:365
 msgid "Creating package..."
-msgstr "Kreante pakaĵon..."
+msgstr "Kreas pakon..."
 
 #: src/kvilib/file/KviPackageWriter.cpp:366
 msgid "Writing package header"
-msgstr "Skribante pakaĵan ĉapon"
+msgstr "Skribas pakan ĉapon"
 
 #: src/kvilib/file/KviPackageWriter.cpp:381
 #: src/kvilib/core/KviError.cpp:140
@@ -64,11 +61,11 @@ msgstr "Ne povas malfermi dosieron por skribi"
 
 #: src/kvilib/file/KviPackageWriter.cpp:414
 msgid "Writing informational fields"
-msgstr "Skribante informajn kampojn"
+msgstr "Skribas informajn kampojn"
 
 #: src/kvilib/file/KviPackageWriter.cpp:446
 msgid "Writing package data"
-msgstr "Skribante pakaĵajn datumojn"
+msgstr "Skribas pakajn datumojn"
 
 #: src/kvilib/file/KviPackageWriter.cpp:469
 #: src/kvilib/core/KviError.cpp:52
@@ -100,15 +97,15 @@ msgstr "Dosiera legeraro"
 
 #: src/kvilib/file/KviPackageReader.cpp:63
 msgid "The file specified is not a valid KVIrc package"
-msgstr "La dosiero specifita ne estas valida KVIrc pakaĵo"
+msgstr "La dosiero specifita ne estas valida KVIrc pako"
 
 #: src/kvilib/file/KviPackageReader.cpp:73
 msgid "The package has an invalid version number, it might have been created by a newer KVIrc"
-msgstr "La pakaĵo havas ne validan versian numeron, ĝin povis krei de pli nova KVIrc"
+msgstr "La pako havas ne validan versian numeron, ĝin povis krei de pli nova KVIrc"
 
 #: src/kvilib/file/KviPackageReader.cpp:123
 msgid "Invalid info field: the package is probably corrupt"
-msgstr "Nevalida informa kampo: la pakaĵo estas eble difektita"
+msgstr "Nevalida informa kampo: la pako estas eble difektita"
 
 #: src/kvilib/file/KviPackageReader.cpp:137
 #: src/kvilib/file/KviPackageReader.cpp:397
@@ -118,7 +115,7 @@ msgstr "Ne povas malfermi dosieron por legi"
 
 #: src/kvilib/file/KviPackageReader.cpp:157
 msgid "The package contains compressed data but this executable does not support compression"
-msgstr "La pakaĵo enhavas densigitajn datumojn sed ĉi tiu plenumeblaĵo ne subtenas densigon"
+msgstr "La pako enhavas densigitajn datumojn sed ĉi tiu plenumeblaĵo ne subtenas densigon"
 
 #: src/kvilib/file/KviPackageReader.cpp:184
 msgid "Failed to create the target directory"
@@ -126,7 +123,7 @@ msgstr "Malsukcesis krei la celan dosierujon"
 
 #: src/kvilib/file/KviPackageReader.cpp:196
 msgid "Unpacking file %1"
-msgstr "Malpakante dosieron %1"
+msgstr "Malpakas dosieron %1"
 
 #: src/kvilib/file/KviPackageReader.cpp:329
 msgid "Error in compressed file stream"
@@ -134,19 +131,19 @@ msgstr "Eraro en densigita dosiera fluo"
 
 #: src/kvilib/file/KviPackageReader.cpp:405
 msgid "Reading package..."
-msgstr "Legante pakaĵon..."
+msgstr "Legas pakon..."
 
 #: src/kvilib/file/KviPackageReader.cpp:406
 msgid "Reading package header"
-msgstr "Legante pakaĵan ĉapon"
+msgstr "Legas pakan ĉapon"
 
 #: src/kvilib/file/KviPackageReader.cpp:412
 msgid "Reading package data"
-msgstr "Legante pakaĵajn datumojn"
+msgstr "Legas pakajn datumojn"
 
 #: src/kvilib/file/KviPackageReader.cpp:431
 msgid "Invalid data field: the package is probably corrupt"
-msgstr "Nevalida datuma kampo: la pakaĵo estas elbe difektita"
+msgstr "Nevalida datuma kampo: la pako estas eble difektita"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:156
 #: src/kvilib/ext/avdevice/videodevice.cpp:3071
@@ -247,11 +244,11 @@ msgstr "Eksponado"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3088
 msgid "Automatic Gain"
-msgstr "Aŭtomata "
+msgstr "Aŭtomata Amplifiko"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3089
 msgid "Gain"
-msgstr "Multipliko"
+msgstr "Amplifiko"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3092
 msgid "Horizontal Center"
@@ -291,7 +288,7 @@ msgstr "Kolora Ĉesigilo"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3106
 msgid "Color Effects"
-msgstr "Koloraj Efektoj"
+msgstr "Koloraj Efikoj"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3109
 msgid "Rotate"
@@ -303,7 +300,7 @@ msgstr "Fona koloro"
 
 #: src/kvilib/ext/KviCryptEngine.cpp:160
 msgid "Invalid crypt engine"
-msgstr "Nevalida ĉifra modulo"
+msgstr "Nevalida ĉifra maŝino"
 
 #: src/kvilib/ext/KviRegisteredUserDataBase.cpp:510
 #: src/kvilib/ext/KviRegisteredUserDataBase.cpp:511
@@ -395,15 +392,15 @@ msgstr "Abortita"
 
 #: src/kvilib/net/KviHttpRequest.cpp:124
 msgid "No request"
-msgstr "Nenia peto"
+msgstr "Neniu peto"
 
 #: src/kvilib/net/KviHttpRequest.cpp:169
 msgid "No filename specified for the \"StoreToFile\" processing type"
-msgstr "Nenia dosiernomo specifita por la \"StoreToFile\" (MemoriAlDosiero) proceza tipo"
+msgstr "Neniu dosiernomo specifita por la \"StoreToFile\" (MemoriAlDosiero) proceza tipo"
 
 #: src/kvilib/net/KviHttpRequest.cpp:188
 msgid "Invalid URL: Missing hostname"
-msgstr "Nevalida URL: Mankas retnodan nomon"
+msgstr "Nevalida URL: Mankas retnodnomo"
 
 #: src/kvilib/net/KviHttpRequest.cpp:197
 msgid "Unsupported protocol %1"
@@ -429,7 +426,7 @@ msgstr "Konekto preteriris tempolimon"
 
 #: src/kvilib/net/KviHttpRequest.cpp:399
 msgid "Contacting host %1 on port %2"
-msgstr "Kontakta retnodo %1 ĉe pordo %2"
+msgstr "Kontaktas retnodon %1 ĉe pordo %2"
 
 #: src/kvilib/net/KviHttpRequest.cpp:546
 msgid "Failed to rename the existing file, please rename manually and retry"
@@ -470,7 +467,7 @@ msgstr "Peca ĉapo tro longa: superis 4096 bajtojn"
 
 #: src/kvilib/net/KviHttpRequest.cpp:991
 msgid "Unable to start the DNS lookup"
-msgstr "Ne povis starti la adrestrovila serĉo"
+msgstr "Ne povis starti la adrestrovilan serĉon"
 
 #: src/kvilib/net/KviHttpRequest.cpp:996
 msgid "Looking up host %1"
@@ -491,7 +488,7 @@ msgstr "Nekonata"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:74
 msgid "DNS resolver busy"
-msgstr "adrestrovilo okupata"
+msgstr "Adrestrovilo okupata"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:87
 msgid "Failed to start the host lookup"
@@ -503,7 +500,7 @@ msgstr "Interna eraro: netraktita adrestrovila informpeta tipo"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:158
 msgid "DNS query returned no IP address results of the requested type"
-msgstr "adrestrovila informpeto revenigis nenian IP adresajn rezultojn de la petita tipo"
+msgstr "Adrestrovila informpeto revenigis neniun IP adresajn rezultojn de la petita tipo"
 
 #: src/kvilib/core/KviQString.cpp:231
 msgid "%1 bytes"
@@ -536,7 +533,7 @@ msgstr "Nekonata komando"
 
 #: src/kvilib/core/KviError.cpp:54
 msgid "Missing closing brace"
-msgstr "Mankas ferman krampon"
+msgstr "Mankas ferma krampo"
 
 #: src/kvilib/core/KviError.cpp:55
 msgid "Unexpected end of command in string"
@@ -548,7 +545,7 @@ msgstr "Neatendata fino de komando en vortara ŝlosilo"
 
 #: src/kvilib/core/KviError.cpp:57
 msgid "Switch dash without switch letter"
-msgstr "Ŝaltila streko sen ŝaltila litero"
+msgstr "Ŝaltila streketo sen ŝaltila litero"
 
 #: src/kvilib/core/KviError.cpp:58
 msgid "Unknown function"
@@ -564,7 +561,7 @@ msgstr "Neatendata fino de komando en funkciaj parametroj"
 
 #: src/kvilib/core/KviError.cpp:61
 msgid "Missing variable name"
-msgstr "Mankas variablan nomon"
+msgstr "Mankas variabla nomo"
 
 #: src/kvilib/core/KviError.cpp:62
 msgid "Variable or identifier expected"
@@ -640,7 +637,7 @@ msgstr "(Adrestrovila Interna) Servo ne subtenata"
 
 #: src/kvilib/core/KviError.cpp:80
 msgid "Unknown node (host not found)"
-msgstr "Nekonata nodo (retnodo ne troviata)"
+msgstr "Nekonata nodo (retnodo ne trovata)"
 
 #: src/kvilib/core/KviError.cpp:81
 msgid "(DNS Internal) Unsupported socket type"
@@ -660,7 +657,7 @@ msgstr "Retnodo ne trovita"
 
 #: src/kvilib/core/KviError.cpp:85
 msgid "(DNS Internal) IPC failure (slave data corrupted)"
-msgstr "(Adrestrovila Interna) IPC malsukceso (sklavaj datumaj difektisJ)"
+msgstr "(Adrestrovila Interna) IPC malsukceso (sklavaj datumaj difektis)"
 
 #: src/kvilib/core/KviError.cpp:86
 msgid "Another connection in progress"
@@ -716,15 +713,15 @@ msgstr "Nevalida IRC kunteksta id"
 
 #: src/kvilib/core/KviError.cpp:100
 msgid "Error in loading module"
-msgstr "Eraro je ŝargo de modulo"
+msgstr "Eraro dum ŝargo de modulo"
 
 #: src/kvilib/core/KviError.cpp:101
 msgid "No such module command"
-msgstr "Nenia tia modula komando"
+msgstr "Neniu tia modula komando"
 
 #: src/kvilib/core/KviError.cpp:102
 msgid "No such module function"
-msgstr "Nenia tia modula funkcio"
+msgstr "Neniu tia modula funkcio"
 
 #: src/kvilib/core/KviError.cpp:103
 msgid "Left operand is not a dictionary reference"
@@ -736,19 +733,19 @@ msgstr "Dekstra operando ne estas vortara referenco"
 
 #: src/kvilib/core/KviError.cpp:105
 msgid "Missing object class name"
-msgstr "Mankas objektan klasnomon"
+msgstr "Mankas objekta klasnomo"
 
 #: src/kvilib/core/KviError.cpp:106
 msgid "No such object class"
-msgstr "Nenia tia objekta klaso"
+msgstr "Neniu tia objekta klaso"
 
 #: src/kvilib/core/KviError.cpp:107
 msgid "No such object"
-msgstr "Nenia tia objekto"
+msgstr "Neniu tia objekto"
 
 #: src/kvilib/core/KviError.cpp:108
 msgid "No such object function"
-msgstr "Nenia tia objekta funkcio"
+msgstr "Neniu tia objekta funkcio"
 
 #: src/kvilib/core/KviError.cpp:109
 msgid "Invalid left operand"
@@ -768,7 +765,7 @@ msgstr "Nevalida parametro"
 
 #: src/kvilib/core/KviError.cpp:113
 msgid "No such file"
-msgstr "Nenia tia dosiero"
+msgstr "Neniu tia dosiero"
 
 #: src/kvilib/core/KviError.cpp:114
 msgid "Open parenthesis expected"
@@ -784,7 +781,7 @@ msgstr "Ne povas ĉesigi enkonstruitan klason"
 
 #: src/kvilib/core/KviError.cpp:117
 msgid "The SOCKSv4 protocol lacks IPv6 support"
-msgstr "La SOCKSv4 protokolo mankas IPv6 subtenon"
+msgstr "La SOCKSv4 protokolo mankas IPv6 subteno"
 
 #: src/kvilib/core/KviError.cpp:118
 msgid "Unrecognized proxy reply"
@@ -796,7 +793,7 @@ msgstr "Prokura respondo: aŭtentiko malsukcesis: atingon malkonsentis"
 
 #: src/kvilib/core/KviError.cpp:120
 msgid "Proxy response: No acceptable auth method: request rejected"
-msgstr "Prokura respondo: Nenia akceptebla aŭtentikan metodon: peto negita"
+msgstr "Prokura respondo: Neniu akceptebla aŭtentikan metodon: peto negita"
 
 #: src/kvilib/core/KviError.cpp:121
 msgid "Proxy response: request failed"
@@ -868,7 +865,7 @@ msgstr "Ne povas adrestrovi la lokretnodan nomon"
 
 #: src/kvilib/core/KviError.cpp:138
 msgid "Unsupported image format"
-msgstr "Nesubtenata bilda formato"
+msgstr "Nesubtenata bilda aranĝo"
 
 #: src/kvilib/core/KviError.cpp:139
 msgid "Can't open file for appending"
@@ -888,7 +885,7 @@ msgstr "Ne povas sendi nul-grandecan dosieron"
 
 #: src/kvilib/core/KviError.cpp:145
 msgid "Missing popup name"
-msgstr "Mankas ŝprucfenestran nomon"
+msgstr "Mankas ŝprucfenestra nomo"
 
 #: src/kvilib/core/KviError.cpp:146
 msgid "'item', 'popup', 'label' or 'separator' keyword expected"
@@ -920,7 +917,7 @@ msgstr "Konekto per HTTP prokuro malsukcesis"
 
 #: src/kvilib/core/KviError.cpp:153
 msgid "Case, match, regexp, default or break keyword expected"
-msgstr "case, match, regexp, default aŭ break ŝlosilvorto atendata"
+msgstr "Case, match, regexp, default aŭ break ŝlosilvorto atendata"
 
 #: src/kvilib/core/KviError.cpp:154
 msgid "Access denied"
@@ -940,7 +937,7 @@ msgstr "Konekto rekomenciĝis per kundividanto"
 
 #: src/kvilib/core/KviError.cpp:158
 msgid "Host unreachable (no route to host)"
-msgstr "Retnodo neatingebla (nenia vojo al retnodo)"
+msgstr "Retnodo neatingebla (Neniu vojo al retnodo)"
 
 #: src/kvilib/core/KviError.cpp:159
 msgid "Variable expected"
@@ -968,7 +965,7 @@ msgstr "Suprenstreka (/) signo atendata"
 
 #: src/kvilib/core/KviError.cpp:165
 msgid "Unknown string manipulation operation"
-msgstr "Nekonata ĉena manipula operatio"
+msgstr "Nekonata ĉena manipula operacio"
 
 #: src/kvilib/core/KviError.cpp:166
 msgid "Operation aborted"
@@ -984,7 +981,7 @@ msgstr "Regiona objekto jam difinita (neatendata @)"
 
 #: src/kvilib/core/KviError.cpp:169
 msgid "There is no $this pointer in this scope (unexpected @)"
-msgstr "Ne estas $this montrilo en ĉi tiu regiono (neatendata @)"
+msgstr "Estas neniu $this montrilo en ĉi tiu regiono (neatendata @)"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:112
 msgid "The specified network has no server entries"
@@ -996,7 +993,7 @@ msgstr "La servila specifo ŝajnas esti en la reto:<ĉeno> sed la reto ne povis 
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:188
 msgid "The server specification seems to be in the id:<string> form but the identifier coulnd't be found in the database"
-msgstr "La servila specifo ŝajnas esti en la id:<ĉeno> formato sed la identigilo ne povis esti trovata en la datumbazo"
+msgstr "La servila specifo ŝajnas esti en la id:<ĉeno> aranĝo sed la nomo ne povis esti trovata en la datumbazo"
 
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:284
 #: src/kvilib/irc/KviIrcServerDataBase.cpp:287
@@ -1029,7 +1026,7 @@ msgstr "Fora mIRC servers.ini Importa Asistanto"
 
 #: src/modules/mircimport/libkvimircimport.cpp:152
 msgid "<center><b>Welcome!</b><br><br>This wizard will guide you in the process of downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation.</center>"
-msgstr "<center><b>Bonvenon!</b><br><br>Ĉi tiu asistanto gvidos vin tra la procezo de elŝutado liston de IRC serviloj. Bonvolu alklaku \"<b>Antaŭe</b>\" por komenci la operacion.</center>"
+msgstr "<center><b>Bonvenon!</b><br><br>Ĉi tiu asistanto gvidos vin tra la procezo de elŝuti liston de IRC serviloj. Bonvolu alklaku \"<b>Antaŭe</b>\" por komenci la operacion.</center>"
 
 #: src/modules/mircimport/libkvimircimport.cpp:160
 msgid "<center>Here you can modify the URL that the list will be downloaded from. In most cases the default URL is acceptable.</center>"
@@ -1079,11 +1076,11 @@ msgstr "Ĉi tiu fenestro ne havas asociitan IRC kuntekston"
 #: src/modules/my/libkvimy.cpp:52
 #, c-format
 msgid "No such irc context (%d)"
-msgstr "Nenia tia IRC kunteksto (%d)"
+msgstr "Neniu tia IRC kunteksto (%d)"
 
 #: src/modules/my/libkvimy.cpp:148
 msgid "Global idle timer must be started before using $my.globalIdle function"
-msgstr "Malloka sencela horloĝo devas esti startita antaŭ uzi $my.globalIdle funkcion"
+msgstr "Malloka sencela horloĝo devas esti startita antaŭ ol uzi $my.globalIdle funkcion"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:92
 msgid "<b>KVIrc</b>"
@@ -1262,11 +1259,11 @@ msgstr "FiSH: eraro dum kontrolado de samtavola publika ŝlosilo (grandeco=%1)"
 
 #: src/modules/fish/libkvifish.cpp:244
 msgid "Failed to initialize the Mircryption engine: %Q"
-msgstr "Malsukcesis pravalorizi la Mircryption modulon: %Q"
+msgstr "Malsukcesis pravalorizi la Mircryption maŝinon: %Q"
 
 #: src/modules/fish/libkvifish.cpp:248
 msgid "The Mircryption crypt engine does not exist"
-msgstr "La Mircryption ĉifra modulo ne ekzistas"
+msgstr "La Mircryption ĉifra maŝino ne ekzistas"
 
 #: src/modules/fish/libkvifish.cpp:251
 msgid "FiSH: Key for %1 successfully set!"
@@ -1278,11 +1275,11 @@ msgstr "FiSH: Sendis mian DH1080 publikan ŝlosilon al %1, atendas respondon ...
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:218
 msgid "A really lame text transformation engine :D"
-msgstr "Vere lama teksta transforma modulo :D"
+msgstr "Vere lama teksta transforma maŝino :D"
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:228
 msgid "A really lame text transformation engine: Light Version."
-msgstr "Vere lama teksta transforma modulo: Malpeza Versio."
+msgstr "Vere lama teksta transforma maŝino: Malpeza Versio."
 
 #: src/modules/spaste/libkvispaste.cpp:64
 msgid "Window with ID '%Q' not found"
@@ -1375,7 +1372,7 @@ msgstr "Ne povas starti la ident servon ĉe IPv6 : malsinkrona agordo fiaskis"
 
 #: src/modules/ident/libkviident.cpp:284
 msgid "Can't set the IPv6 ident service protection level to unrestricted: the ident service won't be exposed to the internet"
-msgstr "Ne povas agordi la IPv6 ident servan protektan nivelon al nelimigita: la ident servo ne estos videbligita al la interreto"
+msgstr "Ne povas starigi la IPv6 ident servan protektan nivelon al nelimigita: la ident servo ne estos videbligita al la interreto"
 
 #: src/modules/ident/libkviident.cpp:289
 msgid "Can't enable the ident service on IPv6 : can't setup the listen address"
@@ -1481,19 +1478,19 @@ msgstr "Ambaŭ -n kaj -m ŝaltiloj specifite, -n ekprioritatas"
 
 #: src/modules/window/libkviwindow.cpp:1567
 msgid "No encrypt key specified: can't allocate engine"
-msgstr "Nenia ĉifra ŝlosilo specifita: ne povas signi modulon"
+msgstr "Neniu ĉifra ŝlosilo specifita: ne povas signi maŝinon"
 
 #: src/modules/window/libkviwindow.cpp:1589
 msgid "Unknown engine error"
-msgstr "Nekonata modula eraro"
+msgstr "Nekonata maŝina eraro"
 
 #: src/modules/window/libkviwindow.cpp:1592
 msgid "Failed to initialize the specified crypt engine: %Q"
-msgstr "Malsukcesis pravalorizi la specifitan ĉifran modulon: %Q"
+msgstr "Malsukcesis pravalorizi la specifitan ĉifran maŝinon: %Q"
 
 #: src/modules/window/libkviwindow.cpp:1596
 msgid "The crypt engine \"%Q\" does not exist"
-msgstr "La ĉifra modulo \"%Q\" ne ekzistas"
+msgstr "La ĉifra maŝino \"%Q\" ne ekzistas"
 
 #: src/modules/window/libkviwindow.cpp:1601
 msgid "This executable has been compiled without crypt support"
@@ -1505,7 +1502,7 @@ msgstr "%Q algoritmo ne estas subtenata"
 
 #: src/modules/str/libkvistr.cpp:1417
 msgid "KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports only MD4, MD5 and SHA1."
-msgstr "KVIrc estis kompilita sen nek Ĉifra++ nek OpenSSL subteno. $str.digest subtenas nur MD4, MD5 kaj SHA1."
+msgstr "KVIrc estis kompilita sen nek Crypto++ nek OpenSSL subteno. $str.digest subtenas nur MD4, MD5 kaj SHA1."
 
 #: src/modules/str/libkvistr.cpp:1904
 msgid "Invalid argument for ?d escape sequence, 0 assumed"
@@ -1513,7 +1510,7 @@ msgstr "Nevalida argumento por ?d eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:1908
 msgid "Missing argument for ?d escape sequence, 0 assumed"
-msgstr "Mankas argumenton por ?d eskapsekvenco, 0 supozita"
+msgstr "Mankas argumento por ?d eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:1940
 msgid "Invalid argument for ?u escape sequence, 0 assumed"
@@ -1521,7 +1518,7 @@ msgstr "Nevalida argumento por ?u eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:1944
 msgid "Missing argument for ?u escape sequence, 0 assumed"
-msgstr "Mankas argumenton por ?u eskapsekvenco, 0 supozita"
+msgstr "Mankas argumento por ?u eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:1971
 msgid "Invalid argument for ?x escape sequence, 0 assumed"
@@ -1533,23 +1530,23 @@ msgstr "Mankas argumento por ?x eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:2002
 msgid "Invalid argument for ?X escape sequence, 0 assumed"
-msgstr "Nevalida argumento por ?x eskapsekvenco, 0 supozita"
+msgstr "Nevalida argumento por ?X eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:2006
 msgid "Missing argument for ?X escape sequence, 0 assumed"
-msgstr "Mankas argumenton por ?X eskapsekvenco, 0 supozita"
+msgstr "Mankas argumento por ?X eskapsekvenco, 0 supozita"
 
 #: src/modules/str/libkvistr.cpp:2067
 msgid "Invalid argument for a floating point escape sequence, 0.0 assumed"
-msgstr "Nevalida argumento por glitpunkta eskapsekvenco, 0.0 supozita"
+msgstr "Nevalida argumento por glitpunkta eskapsekvenco, 0,0 supozita"
 
 #: src/modules/str/libkvistr.cpp:2071
 msgid "Missing argument for a floating point escape sequence, 0.0 assumed"
-msgstr "Mankas argumenton por glitpunkta eskapsekvenco, 0.0 supozita"
+msgstr "Mankas argumento por glitpunkta eskapsekvenco, 0,0 supozita"
 
 #: src/modules/str/libkvistr.cpp:2197
 msgid "No certificate specified and no private key certificate defined in KVIrc options."
-msgstr "Nenia atestilo specifita kaj nenia privata ŝlosila atestilo difinita en KVIrc opcioj."
+msgstr "Neniu atestilo specifita kaj neniu privata ŝlosila atestilo difinita en KVIrc opcioj."
 
 #: src/modules/str/libkvistr.cpp:2205
 #, c-format
@@ -1567,7 +1564,7 @@ msgstr "Ne povas legi privatan ŝlosilon dum provante uzi la provizitan atestilo
 
 #: src/modules/str/libkvistr.cpp:2249
 msgid "An error occured while signing the message."
-msgstr "Eraro okazis dum subskribante la mesaĝon."
+msgstr "Eraro okazis dum subskribas la mesaĝon."
 
 #: src/modules/str/libkvistr.cpp:2254
 #: src/modules/str/libkvistr.cpp:2404
@@ -1576,7 +1573,7 @@ msgstr "KVIrc estis kompilita sen OpenSSL subteno."
 
 #: src/modules/str/libkvistr.cpp:2332
 msgid "No certificate specified and no public key certificate defined in KVIrc options."
-msgstr "Nenia atestilo specifita kaj nenia publika ŝlosila atestilo difinia en KVIrc opcioj."
+msgstr "Neniu atestilo specifita kaj neniu publika ŝlosila atestilo difinita en KVIrc opcioj."
 
 #: src/modules/str/libkvistr.cpp:2340
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:540
@@ -1603,7 +1600,7 @@ msgstr "Elekti Avataron - KVIrc"
 
 #: src/modules/avatar/libkviavatar.cpp:74
 msgid "Please select an avatar image. The full path to a local file or an image on the Web can be used.<br>If you wish to use a local image file, click the \"<b>Browse</b>\"button to browse local folders.<br>The full URL for an image (including <b>http://</b>) can be entered manually."
-msgstr "Bonvolu elekti avataran bildon. La plena pado al la loka dosiero aŭ bildo ĉe la TTT povas esti uzata.<br>Se vi volas uzi lokan bildan dosieron, alklaku la \"<b>Foliumi</b>\" butono foliumi lokajn dosierujojn.<br>La plena URL por bildo (inkluzivante <b>http://</b>) povas esti enmetita permane."
+msgstr "Bonvolu elekti avataran bildon. La plena pado al la loka dosiero aŭ bildo ĉe la TTT povas esti uzata.<br>Se vi volas uzi lokan bildan dosieron, alklaku la \"<b>Foliumi</b>\" butonon foliumi lokajn dosierujojn.<br>La plena URL por bildo (inkluzivante <b>http://</b>) povas esti enmetita permane."
 
 #: src/modules/avatar/libkviavatar.cpp:94
 #: src/modules/setup/SetupWizard.cpp:239
@@ -1631,11 +1628,11 @@ msgstr "Interna eraro: ĉu mi ne estas en la uzanta datumbazo?"
 
 #: src/modules/avatar/libkviavatar.cpp:255
 msgid "Can't set the current avatar to '%Q': failed to start the http transfer"
-msgstr "Ne povas agordi la nunan avataron al '%Q': malsukcesis starti la http transiron"
+msgstr "Ne povas starigi la nunan avataron al '%Q': malsukcesis starti la http transiron"
 
 #: src/modules/avatar/libkviavatar.cpp:259
 msgid "Can't set the current avatar to '%Q': can't load the image"
-msgstr "Ne povas agordi la nunan avataron al '%Q': ne povas ŝargi la bildon"
+msgstr "Ne povas starigi la nunan avataron al '%Q': ne povas ŝargi la bildon"
 
 #: src/modules/avatar/libkviavatar.cpp:361
 msgid "Invalid timeout specified, using default"
@@ -1643,7 +1640,7 @@ msgstr "Nevalida tempolimo specifita, uzas defaŭlton"
 
 #: src/modules/avatar/libkviavatar.cpp:405
 msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
-msgstr "Ne povas aldoni dosieran oferto por dosiero %Q (huh ? dosiero ne legebla ?)"
+msgstr "Ne povas aldoni dosieran oferton por dosiero %Q (huh ? dosiero ne legebla ?)"
 
 #: src/modules/avatar/libkviavatar.cpp:412
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
@@ -1655,7 +1652,7 @@ msgstr "Sciigas avataron '%Q' al %Q"
 
 #: src/modules/file/libkvifile.cpp:94
 msgid "Destination file exists: no copy made"
-msgstr "Celdosiero ekzistas: nenia kopio farita"
+msgstr "Celdosiero ekzistas: neniu kopio farita"
 
 #: src/modules/file/libkvifile.cpp:99
 msgid "Failed to copy from '%Q' to '%Q'"
@@ -1671,7 +1668,7 @@ msgstr "Malsukcesis skribi al dosiero '%Q': la celo ne povis esti malfermita"
 
 #: src/modules/file/libkvifile.cpp:268
 msgid "Missing data array"
-msgstr "Mankas datuman tabelon"
+msgstr "Mankas datuma tabelo"
 
 #: src/modules/file/libkvifile.cpp:273
 msgid "Can't open file '%1' for writing"
@@ -1716,7 +1713,7 @@ msgstr "Ne povas malfermi la dosieron '%Q' por legi"
 #: src/modules/file/libkvifile.cpp:824
 #: src/modules/file/libkvifile.cpp:914
 msgid "Read error for file '%Q' (have been unable to read the requested size in 1000 retries)"
-msgstr "Legeraro por dosiero '%Q' (ne povis legi la petitan gradecon en 1000 reprovoj)"
+msgstr "Legeraro por dosiero '%Q' (ne povis legi la petitan grandecon en 1000 reprovoj)"
 
 #: src/modules/file/libkvifile.cpp:833
 #: src/modules/file/libkvifile.cpp:923
@@ -1737,11 +1734,11 @@ msgstr "'%Q' algoritmo ne subtenata"
 
 #: src/modules/file/libkvifile.cpp:1507
 msgid "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports only MD4, MD5 and SHA1."
-msgstr "KVIrc estis kompilita sen nek Ĉifra++ nek OpenSSL subteno. $file.digest subtenas nur MD4, MD5 kaj SHA1."
+msgstr "KVIrc estis kompilita sen nek Crypto++ nek OpenSSL subteno. $file.digest subtenas nur MD4, MD5 kaj SHA1."
 
 #: src/modules/file/libkvifile.cpp:1572
 msgid "Unknown option '%1', defaulting to 'm'"
-msgstr "Nekonata opcio '%1', uzante defaŭlton 'm'"
+msgstr "Nekonata opcio '%1', defaŭltas al 'm'"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:123
 msgid "Text"
@@ -1780,7 +1777,7 @@ msgstr "Bonvenon al KVIrc"
 
 #: src/modules/setup/SetupWizard.cpp:183
 msgid "<p>All of the files in this distribution are covered by the GPL. In human terms this can be read as follows:<br><ul><li><b>KVIrc is free</b>, use it, have fun! <b>:)</b></li><li>If you use <b>any</b> part of KVIrc in your own project, you <b>must</b> release that project under the same license.</li></ul></p><p>The \"legalese\" version of the license is shown in the box below.</p>"
-msgstr "<p>La GPL kovras ĉiujn dosierojn en ĉi tiu distribuo. Home ĉi tio povas esti legata kiel sekvas:<br><ul><li><b>KVIrc estas libera</b>, uzi ĝin, havu amuzon! <b>:-)</b></li><li>Se vi uzas <b>iu ajn</b> parton de KVIrc en via propra projekto, vi <b>devas</b> eldoni tiun projekton sub la sama permesilo.</li></ul></p><p>La \"leĝlingva\" versio de la permesilo estas montrata en la skatolo sube.</p>"
+msgstr "<p>La GPL kovras ĉiujn dosierojn en ĉi tiu distribuo. Home ĉi tio povas esti legata kiel sekvas:<br><ul><li><b>KVIrc estas libera</b>, uzi ĝin, havu amuzon! <b>:-)</b></li><li>Se vi uzas <b>iun ajn</b> parton de KVIrc en via propra projekto, vi <b>devas</b> eldoni tiun projekton sub la sama permesilo.</li></ul></p><p>La \"leĝlingva\" versio de la permesilo estas montrata en la skatolo sube.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:199
 msgid ""
@@ -1798,11 +1795,11 @@ msgstr "Antaŭtimita Permesila Interkonsento"
 
 #: src/modules/setup/SetupWizard.cpp:218
 msgid "<p>Please choose a folder for KVIrc to store its settings and other data, and another for downloaded files. Make sure that you have permission to write to both folders.<br><br>The suggested locations are fine in most cases. If you don't know what this is about, just click \"<b>Next</b>\".<br><br>If you had a previous version of KVIrc installed, you can choose the existing directory for the settings, and your configuration will be preserved.</p>"
-msgstr "<p>Bonvolu elekti dosierujon por KVIrc enmemorigi ĝiajn agordojn kaj aliaj datumoj, kaj alian dosierujon por elŝutitaj dosieroj. Certigu ke vi havas permeson skribi al ambaŭ dosierujojn.<br><br>La sugestitaj lokoj bonas plej ofte. Si vi ne scias pri ĉi ĉio, nur alklaku \"<b>Antaŭen</b\".<br><br>Se vi havis antaŭan version de KVIrc instalita, vi povas elekti la ekzistantan dosierujon por la agordoj, kaj via agordo estos konservata.</p>"
+msgstr "<p>Bonvolu elekti dosierujon por KVIrc konservi ĝiajn agordojn kaj aliaj datumoj, kaj alian dosierujon por elŝutitaj dosieroj. Certigu ke vi havas permeson skribi al ambaŭ dosierujoj.<br><br>La sugestitaj lokoj bonas plej ofte. Si vi ne scias pri ĉi ĉio, nur alklaku \"<b>Antaŭen</b\".<br><br>Se vi havis antaŭan version de KVIrc instalita, vi povas elekti la ekzistantan dosierujon por la agordoj, kaj via agordo estos konservata.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:231
 msgid "Store configuration in folder"
-msgstr "Enmemorigi agordon en dosierujo"
+msgstr "Konservi agordon en dosierujo"
 
 #: src/modules/setup/SetupWizard.cpp:232
 msgid "Use settings folder from previous installation"
@@ -1830,7 +1827,7 @@ msgstr "Aplikaĵaj Dosierujoj"
 
 #: src/modules/setup/SetupWizard.cpp:319
 msgid "Please choose a Nickname.<br><br>Your nickname is the name that other IRC users will know you by. It can't contain spaces or punctuation. Some IRC networks will shorten your nickname if it is more than 32 characters long.<br><br>If in doubt, just enter the first nick that comes to mind. You will be able to change it later in the Identity properties, or with the /NICK command."
-msgstr "Bonvolu elekti Kromnomon.<br><br>Via kromnomo estas la nomo kiel aliaj IRC uzantoj konos vin. Ĝi ne povas enhavi spacojn aŭ interpunkcion. Kelkaj IRC retoj mallongigos vian kromnomon se ĝi havas pli ol 32 signojn.<br><br>Se en dubo, nur enmeti la unuan kromnomon kiu envenas vian menson. Vi povos ŝanĝi ĝin poste en la Identigaj atributoj, aŭ kun la /NICK komando."
+msgstr "Bonvolu elekti Kromnomon.<br><br>Via kromnomo estas la nomo kiel aliaj IRC uzantoj konos vin. Ĝi ne povas enhavi spacetojn aŭ interpunkcion. Kelkaj IRC retoj mallongigos vian kromnomon se ĝi havas pli ol 32 signojn.<br><br>Se en dubo, nur enmeti la unuan kromnomon kiu envenas vian menson. Vi povos ŝanĝi ĝin poste en la Identigaj atributoj, aŭ kun la /NICK komando."
 
 #: src/modules/setup/SetupWizard.cpp:336
 msgid "Nickname:"
@@ -1838,7 +1835,7 @@ msgstr "Kromnomo:"
 
 #: src/modules/setup/SetupWizard.cpp:343
 msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr "Ĉi tiu kampo estas opcia kaj aperos kiel parto de la CTCP USERINFO (UZINFORMO) respondo."
+msgstr "Ĉi tiu kampo estas opcia kaj aperos kiel parto de la CTCP USERINFO (UZANTINFORMO) respondo."
 
 #: src/modules/setup/SetupWizard.cpp:348
 msgid "Profile"
@@ -1886,31 +1883,31 @@ msgstr "Identigo"
 
 #: src/modules/setup/SetupWizard.cpp:425
 msgid "<p>Here you can choose the default appearance of KVIrc.<br><br>The Fancy Theme uses icons, a transparent background and a lot of colors. The Minimalist Theme is designed for low-color displays or for \"console\" extremists; it's more or less white text on a black background.<br><br>If you had a previous version of KVIrc installed, you can choose to not apply any theme in order to preserve your current visual settings.<br><br>If you don't know what to choose, just use the default.</p>"
-msgstr "<p>Ĉi tie vi povas elekti la defaŭltan aperon de KVIrc.<br><br>La Fantazia Temo uzas piktogramojn, travideblan fonon kaj multajn kolorojn. La Minimuma Temo estas desegnita por malmultkoloraj ekranoj aŭ por \"konzolo\" ekstremismuloj; ĝi estas pli malpli blanka teksto sur nigra fono.<br><br>Se vi havis antaŭan version de KVIrc instalita, vi povas elekti ne apliki iun ajn temon por konservi viajn nunajn vidajn agordojn.<br><br>Se vi "
+msgstr "<p>Ĉi tie vi povas elekti la defaŭltan aspekton de KVIrc.<br><br>La Fantazia Etoso uzas piktogramojn, travideblan fonon kaj multajn kolorojn. La Minimuma Etoso estas desegnita por malmultkoloraj ekranoj aŭ por \"konzolo\" ekstremismuloj; ĝi estas pli malpli blanka teksto sur nigra fono.<br><br>Se vi havis antaŭan version de KVIrc instalita, vi povas elekti ne apliki iun ajn etoson por konservi viajn nunajn vidajn agordojn.<br><br>Se vi ne scias kion elekti, nur uzu la defaŭlton.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:456
 msgid "&Fancy Theme"
-msgstr "&Fantazia Temo"
+msgstr "&Fantazia Etoso"
 
 #: src/modules/setup/SetupWizard.cpp:475
 msgid "&Minimalist Theme"
-msgstr "&Minimuma Temo"
+msgstr "&Minimuma Etoso"
 
 #: src/modules/setup/SetupWizard.cpp:477
 msgid "&Don't apply any theme"
-msgstr "&Ne apliki iun ajn temon"
+msgstr "&Ne apliki iun ajn etoson"
 
 #: src/modules/setup/SetupWizard.cpp:482
 msgid "Default Theme"
-msgstr "Defaŭlta Temo"
+msgstr "Defaŭlta Etoso"
 
 #: src/modules/setup/SetupWizard.cpp:492
 msgid "<p>Here you can choose how much KVIrc will integrate with your system.<br><br>The default settings are fine for most users so if you're in doubt just click \"<b>Finish</b>\" to continue.</p>"
-msgstr "<p>Ĉi tie vi povas elekti kiom KVIrc estos integrita kun via sistemo.<br><br>La defaŭltaj agordoj estas bonaj por plej uzantoj do se vi dubas nur klaku \"<b>Fini</b>\" por daŭri.</p>"
+msgstr "<p>Ĉi tie vi povas elekti kiom KVIrc estos integrita kun via sistemo.<br><br>La defaŭltaj agordoj estas bonaj por plej multaj uzantoj do se vi dubas nur klaku \"<b>Fini</b>\" por daŭri.</p>"
 
 #: src/modules/setup/SetupWizard.cpp:502
 msgid "Desktop Integration"
-msgstr "Labortabela Integro"
+msgstr "Labortabela Integrado"
 
 #: src/modules/setup/SetupWizard.cpp:505
 msgid "Make KVIrc default IRC client"
@@ -1989,11 +1986,11 @@ msgstr ""
 #: src/modules/config/libkviconfig.cpp:733
 #: src/modules/config/libkviconfig.cpp:776
 msgid "The config file with id '%Q' is not open"
-msgstr "La agorda dosiero kun id '%Q' ne estas malfermita"
+msgstr "La agorda dosiero kun id '%Q' ne estas malferma"
 
 #: src/modules/config/libkviconfig.cpp:539
 msgid "The config file '%Q' has been changed but is opened as read-only: changes will be lost"
-msgstr "La agorda dosiero '%Q' estis ŝanĝita sed estas malfermata kiel nurlebi: ŝanĝoj estos perdataj"
+msgstr "La agorda dosiero '%Q' estis ŝanĝita sed estas malfermata kiel nurlegi: ŝanĝoj estos perdataj"
 
 #: src/modules/config/libkviconfig.cpp:545
 #: src/modules/config/libkviconfig.cpp:593
@@ -2094,7 +2091,7 @@ msgstr "Sonsistemo detektita al: %s"
 
 #: src/modules/system/Plugin.cpp:234
 msgid "Plugin not found. Please check the plugin-name and path."
-msgstr "Kromprogramo ne trovita. Bonvolu kontrol la kromprograman nomon kaj padon."
+msgstr "Kromprogramo ne trovita. Bonvolu kontroli la kromprograman nomon kaj padon."
 
 #: src/modules/system/Plugin.cpp:241
 msgid "Error while loading plugin."
@@ -2110,7 +2107,7 @@ msgstr "La kromprogramo ne havas funkcion por malokupi memoron. Ĉi tio povas re
 
 #: src/modules/system/libkvisystem.cpp:484
 msgid "No DBus type specified"
-msgstr "Nenia DBus tipo specifita"
+msgstr "Neniu DBus tipo specifita"
 
 #: src/modules/system/libkvisystem.cpp:502
 msgid "Invalid DBus interface"
@@ -2146,7 +2143,7 @@ msgstr "DBus vokoj disponeblas nur ĉe Unikso"
 
 #: src/modules/system/libkvisystem.cpp:752
 msgid "No command specified"
-msgstr "Nenia komando specifita"
+msgstr "Neniu komando specifita"
 
 #: src/modules/system/libkvisystem.cpp:769
 #: src/modules/system/libkvisystem.cpp:804
@@ -2243,23 +2240,23 @@ msgstr "La specifita fenestro (%Q) ne estas kanalo"
 
 #: src/modules/list/ListWindow.cpp:204
 msgid "Import List"
-msgstr "Importa Listo"
+msgstr "Importi Liston"
 
 #: src/modules/list/ListWindow.cpp:211
 msgid "Export List"
-msgstr "Eksporta Listo"
+msgstr "Eksporti Liston"
 
 #: src/modules/list/ListWindow.cpp:218
 msgid "Request List"
-msgstr "Peta Listo"
+msgstr "Peti Liston"
 
 #: src/modules/list/ListWindow.cpp:225
 msgid "Stop list download"
-msgstr "Ĉesigi listan elŝutadon"
+msgstr "Ĉesigi listan elŝuton"
 
 #: src/modules/list/ListWindow.cpp:230
 msgid "<center><b>/LIST command parameters:</b><br>Many servers accept special parameters that allow you to filter the returned entries.<br>Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel.</center>"
-msgstr "<center><b>/LIST komandaj parametroj:</b><br>Multaj serviloj akceptas apartajn parametrojn kiuj permesas vin filtri la redonitajn elementojn.<br>Ofte, maskitaj kanalaj nomoj (*kvirc*) estas akceptataj kiel parametroj, tiel kiel ĉenoj kiel <b>c&lt;n</b> aŭ <b>c&gt;n</b> kie <b>n</b> estas la minimumo aŭ maksimumo de uzantoj sur la kanalo.</center>"
+msgstr "<center><b>/LIST komandaj parametroj:</b><br>Multaj serviloj akceptas apartajn parametrojn kiuj permesas vin filtri la liveritajn elementojn.<br>Ofte, maskitaj kanalaj nomoj (*kvirc*) estas akceptataj kiel parametroj, tiel kiel ĉenoj kiel <b>c&lt;n</b> aŭ <b>c&gt;n</b> kie <b>n</b> estas la minimumo aŭ maksimumo de uzantoj sur la kanalo.</center>"
 
 #: src/modules/list/ListWindow.cpp:244
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:71
@@ -2282,15 +2279,15 @@ msgstr "Sendis listan peton, atendas respondon..."
 
 #: src/modules/list/ListWindow.cpp:301
 msgid "Cannot request list: No active connection"
-msgstr "Ne povas peti liston: Nenia aktiva konekto"
+msgstr "Ne povas peti liston: Neniu aktiva konekto"
 
 #: src/modules/list/ListWindow.cpp:310
 msgid "Stopping the list download..."
-msgstr "Ĉesigas la listan elŝutadon..."
+msgstr "Ĉesigas la listan elŝuton..."
 
 #: src/modules/list/ListWindow.cpp:312
 msgid "Cannot stop list download, no active connection."
-msgstr "Ne povas ĉesigi listan elŝutadon, nenia aktiva konekto."
+msgstr "Ne povas ĉesigi listan elŝuton, neniu aktiva konekto."
 
 #: src/modules/list/ListWindow.cpp:322
 #: src/modules/links/LinksWindow.cpp:132
@@ -2330,11 +2327,11 @@ msgstr "Agordaj dosieroj (*.kvc)"
 #: src/modules/links/LinksWindow.cpp:419
 #: src/modules/help/HelpWidget.cpp:94
 msgid "Reset"
-msgstr "Rekomencigo"
+msgstr "Rekomenco"
 
 #: src/modules/list/ListWindow.cpp:472
 msgid "Channels list download finished"
-msgstr "Kanala lista elŝutado finita"
+msgstr "Elŝuto de listo de kanaloj finita"
 
 #: src/modules/list/ListWindow.cpp:544
 msgid "Processing list: %Q"
@@ -2342,7 +2339,7 @@ msgstr "Procezas liston: %Q"
 
 #: src/modules/list/libkvilist.cpp:61
 msgid "List window already open for this IRC context"
-msgstr "Listan fenestron jam malfermita por ĉi tiu IRC kunteksto"
+msgstr "Lista fenestro jam malfermita por ĉi tiu IRC kunteksto"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:63
 msgid "Join Channels"
@@ -2423,7 +2420,7 @@ msgstr "Sendis ligilan peton, atendas respondon..."
 
 #: src/modules/links/LinksWindow.cpp:122
 msgid "Cannot request links: No active connection"
-msgstr "Ne povas peti ligilojn: Nenia aktiva konekto"
+msgstr "Ne povas peti ligilojn: Neniu aktiva konekto"
 
 #: src/modules/links/LinksWindow.cpp:135
 msgid "Links cannot be requested: Not connected to a server"
@@ -2440,7 +2437,7 @@ msgstr "Ricevis finon de ligiloj"
 #: src/modules/links/LinksWindow.cpp:232
 #, c-format
 msgid "Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
-msgstr "Rompita ligilo: Mankas gepatron (%s) por %s (%d saltoj): %s (uzis /LINKS <masko> ?)"
+msgstr "Rompita ligilo: Mankas gepatro (%s) por %s (%d saltetoj): %s (uzis /LINKS <masko> ?)"
 
 #: src/modules/links/LinksWindow.cpp:235
 msgid "%1: Parent link %2"
@@ -2448,7 +2445,7 @@ msgstr "%1: Gepatra ligilo %2"
 
 #: src/modules/links/LinksWindow.cpp:244
 msgid "Warning: No root link was sent by the server, the stats may be invalid."
-msgstr "Averto: Nenia radika ligilo estis sendata de la servilo, la statistikoj povas esti nevalidaj"
+msgstr "Averto: Neniu radika ligilo estis sendata de la servilo, la statistikoj povas esti nevalidaj"
 
 #: src/modules/links/LinksWindow.cpp:283
 msgid "%c%cLinks for %Q"
@@ -2460,12 +2457,12 @@ msgstr "Totalaj retnodoj listigitaj"
 
 #: src/modules/links/LinksWindow.cpp:285
 msgid "Total hosts in the network"
-msgstr "Totala retonodoj en la reto"
+msgstr "Totalaj retonodoj en la reto"
 
 #: src/modules/links/LinksWindow.cpp:287
 #, c-format
 msgid "Wildcard servers (hubs?): %d"
-msgstr "Ĵokeraj serviloj (naboj): %d"
+msgstr "Ĵokeraj serviloj (naboj?): %d"
 
 #: src/modules/links/LinksWindow.cpp:288
 msgid "Direct links: %d (~%d.%d %)"
@@ -2473,15 +2470,15 @@ msgstr "Rektaj ligiloj: %d (~%d.%d %)"
 
 #: src/modules/links/LinksWindow.cpp:289
 msgid "Close links (1 <= hops <= 3): %d (~%d.%d %)"
-msgstr "Fermi ligilojn (1 <= saltoj <= 3): %d (~%d.%d %)"
+msgstr "Fermi ligilojn (1 <= saltetoj <= 3): %d (~%d.%d %)"
 
 #: src/modules/links/LinksWindow.cpp:290
 msgid "Mid-range links (4 <= hops <= 6): %d (~%d.%d %)"
-msgstr "Mez-gamaj ligiloj (4 <= saltoj <= 6): %d (~%d.%d %)"
+msgstr "Mez-gamaj ligiloj (4 <= saltetoj <= 6): %d (~%d.%d %)"
 
 #: src/modules/links/LinksWindow.cpp:291
 msgid "Distant links (7 <= hops): %d (~%d.%d %)"
-msgstr "Malproksimaj ligiloj (7 <= saltoj): %d (~%d.%d %)"
+msgstr "Malproksimaj ligiloj (7 <= saltetoj): %d (~%d.%d %)"
 
 #: src/modules/links/LinksWindow.cpp:292
 #, c-format
@@ -2501,12 +2498,12 @@ msgstr "Totalaj ligiloj: %d"
 #: src/modules/links/LinksWindow.cpp:295
 #, c-format
 msgid "Maximum hops: %d [%s]"
-msgstr "Maksimumaj saltoj: %d [%s]"
+msgstr "Maksimumaj saltetoj: %d [%s]"
 
 #: src/modules/links/LinksWindow.cpp:296
 #, c-format
 msgid "Average hops: ~%d.%d"
-msgstr "Meznombraj saltoj: ~%d.%d"
+msgstr "Meznombraj saltetoj: ~%d.%d"
 
 #: src/modules/links/LinksWindow.cpp:298
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:683
@@ -2518,7 +2515,7 @@ msgstr "(Nekonata)"
 
 #: src/modules/links/LinksWindow.cpp:299
 msgid "Incomplete LINKS result, no stats available"
-msgstr "Malkompleta LINKS rezulto, neniaj statistikoj disponeblas"
+msgstr "Malkompleta LINKS rezulto, neniuj statistikoj disponeblas"
 
 #: src/modules/links/LinksWindow.cpp:412
 msgid "You're not connected to a server"
@@ -2531,7 +2528,7 @@ msgstr "Procezas ligilon: %s"
 
 #: src/modules/links/LinksWindow.cpp:440
 msgid "Broken message syntax, can't extract hops number, assuming 0"
-msgstr "Rompita mesaĝa sintakso, ne povas elpreni saltan nombron, supozas 0"
+msgstr "Rompita mesaĝa sintakso, ne povas elpreni saltetan nombron, supozas 0"
 
 #: src/modules/links/LinksWindow.cpp:471
 msgid "Link"
@@ -2539,7 +2536,7 @@ msgstr "Ligilo"
 
 #: src/modules/links/LinksWindow.cpp:471
 msgid "Hops"
-msgstr "Saltoj"
+msgstr "Saltetoj"
 
 #: src/modules/links/LinksWindow.cpp:471
 msgid "Description"
@@ -2592,7 +2589,7 @@ msgstr "Ne povas havigi SSL informon: SSL ne pravalorizita ankoraŭ en IRC Konek
 
 #: src/modules/context/libkvicontext.cpp:755
 msgid "Unable to get SSL information: No peer certificate available"
-msgstr "Ne povas havigi SSL informon: Nenia samtavolana atestilo disponebla"
+msgstr "Ne povas havigi SSL informon: Neniu samtavolana atestilo disponebla"
 
 #: src/modules/context/libkvicontext.cpp:763
 msgid "Unable to get SSL information: query not recognized"
@@ -2613,7 +2610,7 @@ msgstr "Ingo fermita"
 #: src/modules/rijndael/libkvirijndael.cpp:116
 #: src/modules/rijndael/libkvirijndael.cpp:435
 msgid "Missing both encrypt and decrypt key: at least one is needed"
-msgstr "Mankas kaj ĉifra kaj malĉifran ŝlosilojn: almenaŭ unu estas bezonata"
+msgstr "Mankas kaj ĉifra kaj malĉifra ŝlosiloj: almenaŭ unu estas bezonata"
 
 #: src/modules/rijndael/libkvirijndael.cpp:192
 msgid "Error 0: Success ?"
@@ -2637,11 +2634,11 @@ msgstr "Malbonaj ŝlosilaj datumoj"
 
 #: src/modules/rijndael/libkvirijndael.cpp:197
 msgid "Engine not initialized"
-msgstr "Modulo ne pravalorizita"
+msgstr "Maŝino ne pravalorizita"
 
 #: src/modules/rijndael/libkvirijndael.cpp:198
 msgid "Invalid direction for this engine"
-msgstr "Nevalida direkto por ĉi tiu modulo"
+msgstr "Nevalida direkto por ĉi tiu maŝino"
 
 #: src/modules/rijndael/libkvirijndael.cpp:199
 msgid "Corrupted message data or invalid decrypt key"
@@ -2662,12 +2659,12 @@ msgstr "Ho ve...malĉifra teksto ne pravalorizita"
 
 #: src/modules/rijndael/libkvirijndael.cpp:328
 msgid "The message is not a hexadecimal string: this is not my stuff"
-msgstr "La mesaĝo ne estas deksesuma ĉeno: ĉi tio ne estas mia aĵo"
+msgstr "La mesaĝo ne estas deksesuma ĉeno: ĉi tio ne estas miaj aĵoj"
 
 #: src/modules/rijndael/libkvirijndael.cpp:354
 #: src/modules/rijndael/libkvirijndael.cpp:628
 msgid "The message is not a base64 string: this is not my stuff"
-msgstr "La mesaĝo ne estas baza64 ĉeno: ĉi tio ne estas mia aĵo"
+msgstr "La mesaĝo ne estas baza64 ĉeno: ĉi tio ne estas miaj aĵoj"
 
 #: src/modules/rijndael/libkvirijndael.cpp:633
 msgid "The message doesn't seem to be encoded with CBC Mircryption"
@@ -2675,7 +2672,7 @@ msgstr "La mesaĝo ŝajnas ne esti kodita kun CBC Mircryption"
 
 #: src/modules/rijndael/libkvirijndael.cpp:669
 msgid "Cryptographic engine based on the Advanced Encryption Standard (AES) algorithm called Rijndael. <br/>The text is first encrypted with rijndael and then converted to %1 notation. The keys used are %2 bit long and will be padded with zeros if you provide shorter ones. If only one key is provided, this engine will use it for both encrypting and decrypting. See the rijndael module documentation for more info on the algorithm used. <br/>This engine works in CBC mode by default: other modes are considered INSECURE and should be avoided. The old pseudo-CBC mode used in KVIrc &lt; 4.2 is still available prefixing your key(s) with \"old:\"; if you want to use ECB mode you must prefix your key(s) with \"ecb:\"."
-msgstr "Ĉifrika modulo bazita sur la Altnivela Ĉifra Norma (AES) algoritmo nomita Rijndael.<br/>La teksto estas unue ĉifrita kun rijndael kaj poste konvertita al %1 nombrosistemo. La ŝlosiloj uzataj estas %2 bitoj longe kaj estos ŝtopita kun nuloj se vi provizas pli mallongajn ŝlosilojn. Se nur unu ŝlosilo estas provizata, ĉi tiu modulo uzos ĝin por kaj ĉifrado kaj malĉifrado. Vidi la rijndael modula dokumentado por plia informo sur la algoritmo uzata.<br/>Ĉi tiu moduleo funkcias en CBC reĝimo defaŭlte: aliaj reĝimoj estas konsiderataj kiel NESEKURAJ kaj devus esti evitataj. La malnova pseŭdo-CBC reĝimo uzata en KVIrc &lt; 4.2 estas ankoraŭ disponebla se vi prefiksas viajn ŝlosilojn kun \"old:\"; se vi volas uzi ECB reĝimon vi devas antaŭfiksi viajn ŝlosilojn kun \"ecb:\"."
+msgstr "Ĉifrika maŝino bazita sur la Altnivela Ĉifra Norma (AES) algoritmo nomita Rijndael.<br/>La teksto estas unue ĉifrita kun rijndael kaj poste konvertita al %1 nombrosistemo. La ŝlosiloj uzataj estas %2 bitoj longe kaj estos ŝtopitaj kun nuloj se vi provizas malpli longajn ŝlosilojn. Se nur unu ŝlosilo estas provizata, ĉi tiu maŝino uzos ĝin por kaj ĉifrado kaj malĉifrado. Vidi la rijndael modula dokumentado por plia informo sur la algoritmo uzata.<br/>Ĉi tiu maŝino funkcias en CBC reĝimo defaŭlte: aliaj reĝimoj estas konsiderataj kiel NESEKURAJ kaj devus esti evitataj. La malnova pseŭdo-CBC reĝimo uzata en KVIrc &lt; 4.2 estas ankoraŭ disponebla se vi prefiksas viajn ŝlosilojn kun \"old:\"; se vi volas uzi ECB reĝimon vi devas antaŭfiksi viajn ŝlosilojn kun \"ecb:\"."
 
 #: src/modules/rijndael/libkvirijndael.cpp:683
 #: src/modules/rijndael/libkvirijndael.cpp:693
@@ -2691,7 +2688,7 @@ msgstr "bazo64"
 
 #: src/modules/rijndael/libkvirijndael.cpp:744
 msgid "Popular cryptographic engine based on the Blowfish encryption algorithm. <br/>The text is first encrypted with Blowfish and then converted to base64 notation. The keys used have variable length and are specified as character strings.You can specify keys long up to 56 bytes (448 bits). If only one key is provided, this engine will use it for both encrypting and decrypting. <br/>This engine works in CBC mode by default: if you want to use the old and INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\"."
-msgstr "Populara ĉifrika modulo bazita sur la Blowfish ĉifra algoritmo.<br/>La teksto estas unue ĉifrita kun Blowfish kaj poste konvertita al bazo64 nombrosistemo. La ŝlosiloj uzataj havas longecon variablan kaj estas specifitaj kiel signaj ĉenoj. Vi povas specifi ŝlosilojn longajn ĝis 56 bajtoj (448 bitoj). Se nur unu ŝlosilo estas provizata, ĉi tiu modulo uzos ĝin por kaj ĉifrado kaj malĉifrado.<br/>Ĉi tiu modulo funkcias en CBC reĝimo defaŭlte: se vi volas uzi la malnovan kaj NESEKURA ECB reĝimo vi devas prefiksi viajn ŝlosilojn kun \"ecb:\" aŭ \"old:\"."
+msgstr "Populara ĉifrika maŝino bazita sur la Blowfish ĉifra algoritmo.<br/>La teksto estas unue ĉifrita kun Blowfish kaj poste konvertita al bazo64 nombrosistemo. La ŝlosiloj uzataj havas longecojn variablajn kaj estas specifitaj kiel signaj ĉenoj. Vi povas specifi ŝlosilojn longajn ĝis 56 bajtoj (448 bitoj). Se nur unu ŝlosilo estas provizata, ĉi tiu maŝino uzos ĝin por kaj ĉifrado kaj malĉifrado.<br/>Ĉi tiu maŝino funkcias en CBC reĝimo defaŭlte: se vi volas uzi la malnovan kaj NESEKURAN ECB reĝimon vi devas prefiksi viajn ŝlosilojn kun \"ecb:\" aŭ \"old:\"."
 
 #: src/modules/help/HelpIndex.cpp:407
 msgid "Untitled"
@@ -2717,7 +2714,7 @@ msgstr "Plena Teksta Serĉo"
 
 #: src/modules/help/HelpWindow.cpp:219
 msgid "Using a wildcard within phrases is not allowed."
-msgstr "Uzante ĵokeron en frazoj ne estas permesata"
+msgstr "Uzi ĵokeron en frazoj ne estas permesata"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."
@@ -2733,7 +2730,7 @@ msgstr "Marki: "
 
 #: src/modules/help/HelpWidget.cpp:95
 msgid "Find previous"
-msgstr "Trovi antaŭa"
+msgstr "Trovi antaŭan"
 
 #: src/modules/help/HelpWidget.cpp:96
 msgid "Find next"
@@ -2766,11 +2763,11 @@ msgstr "Ĉu vi sciis..."
 #: src/modules/tip/libkvitip.cpp:180
 #: src/modules/tip/libkvitip.cpp:217
 msgid "<b>Can't find any tip... :(</b>"
-msgstr "<b>Ne povas trovi iu ajn ŝpruchelpilon... :-(</b>"
+msgstr "<b>Ne povas trovi iun ajn ŝpruchelpilon... :-(</b>"
 
 #: src/modules/theme/PackThemeDialog.cpp:574
 msgid "Package saved successfully"
-msgstr "Pakaĵo savita sukcese"
+msgstr "Pako savita sukcese"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:137
 #: src/modules/toolbar/libkvitoolbar.cpp:180
@@ -2784,7 +2781,7 @@ msgstr "La specifita ilobreto ne ekzistas"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:422
 msgid "No action name/index specified"
-msgstr "Nenia aga nomo/indekso specifita"
+msgstr "Neniu aga nomo/indekso specifita"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
@@ -2801,7 +2798,7 @@ msgstr "La ago \"%Q\" ne ekzistas"
 
 #: src/modules/rot13/libkvirot13.cpp:123
 msgid "The simple Caesar-cypher encryption that replaces each letter with the one 13 places forward or back along the alphabet; it is used to enclose the text in a sealed wrapper that the reader must choose to open - e.g. for posting things that might offend some readers, or spoilers."
-msgstr "La simpla Caesar-ĉifra ĉifrado kiu antataŭigas ĉiun literon kun tiu 13 lokoj antaŭen aŭ malantaŭen en la alfabeto; ĝi estas uzata por ĉirkaŭfermi la tekston en sigelita kovrilo kiun la leganto devas elekti malfermi - ekz. por afiŝi mesaĝojn kiuj povus ofendi iuj legantoj, aŭ fuŝuloj."
+msgstr "La simpla Caesar-ĉifra ĉifrado kiu anstataŭigas ĉiun literon kun tiu 13 lokoj antaŭen aŭ malantaŭen en la alfabeto; ĝi estas uzata por ĉirkaŭfermi la tekston en sigelita kovrilo kiun la leganto devas elekti malfermi - ekz. por afiŝi mesaĝojn kiuj povus ofendi iujn legantojn, aŭ fuŝulojn."
 
 #: src/modules/logview/LogViewWindow.cpp:463
 #: src/modules/logview/LogViewWindow.cpp:479
@@ -2852,7 +2849,7 @@ msgstr "Disponeblaj kanalaj reĝimoj:"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:200
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
-msgstr "Servilo %Q versio %S subtenanta uzantajn reĝimojn '%S' kaj kanalajn reĝimojn '%S'"
+msgstr "Servilo %Q versio %S subtenas uzantajn reĝimojn '%S' kaj kanalajn reĝimojn '%S'"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:285
 msgid "This server supports the WATCH notify list method, it will be used"
@@ -2894,27 +2891,27 @@ msgstr "Temo por \r!c\r%Q\r estas: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:559
 msgid "No channel topic is set"
-msgstr "Nenia kanala temo agordita"
+msgstr "Neniu kanala temo starigita"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:564
 msgid "No topic is set for channel \r!c\r%Q\r"
-msgstr "Nenia temo agordita por kanalo \r!c\r%Q\r"
+msgstr "Neniu temo starigita por kanalo \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:618
 msgid "Topic was set by %Q on %Q"
-msgstr "Temon agordis %Q sur %Q"
+msgstr "Temon starigis %Q sur %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:619
 msgid "Topic was set by %Q"
-msgstr "Temon agordis %Q"
+msgstr "Temon starigis %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:627
 msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
-msgstr "Temon por \r!c\r%Q\r agordis %Q sur %Q"
+msgstr "Temon por \r!c\r%Q\r starigis %Q sur %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:630
 msgid "Topic for \r!c\r%Q\r was set by %Q"
-msgstr "Temon por \r!c\r%Q\r agordis %Q"
+msgstr "Temon por \r!c\r%Q\r starigis %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:650
 msgid "Channel mode for \r!c\r%Q\r is %s"
@@ -2927,7 +2924,7 @@ msgstr "Uzanta reĝimo por \r!n\r%Q\r estas %s"
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:715
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:793
 msgid "%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"
-msgstr "%Q por \r!c\r%Q\r: \r!m-%c\r%Q\r (agordis de %Q sur %Q)"
+msgstr "%Q por \r!c\r%Q\r: \r!m-%c\r%Q\r (starigita de %Q sur %Q)"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:716
 msgid "Ban listing"
@@ -3145,7 +3142,7 @@ msgstr "Restaŭras antaŭ-foran kromnomon (%Q)"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1932
 msgid "[Entering away status]: %Q"
-msgstr "[Enirante forstaton]: %Q"
+msgstr "[Eniras forstaton]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1950
 msgid "Setting away nickname (%Q)"
@@ -3187,11 +3184,11 @@ msgstr "La tempo de %c\r!s\r%s\r%c estas %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2153
 msgid "%Q: no such server"
-msgstr "%Q: nenia tia servilo"
+msgstr "%Q: Neniu tia servilo"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2164
 msgid "%Q: no such channel"
-msgstr "%Q: nenia tia kanalo"
+msgstr "%Q: Neniu tia kanalo"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2178
 msgid "Cannot send to channel: %Q"
@@ -3339,28 +3336,28 @@ msgstr "%1 ŝanĝas avataron al %2"
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1662
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (HTTP GET %s)"
-msgstr ": Nenia valida loka kopio de avataro disponebla, petas unu (HTTP GET %s)"
+msgstr ": Neniu valida loka kopio de avataro disponebla, petas unu (HTTP GET %s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1669
 msgid ": No valid local copy of avatar available; failed to start an HTTP transfer, ignoring"
-msgstr ": Nenia valida loka kopio de avataro disponebla; malsukcesis starti HTTP transiron, ignoras"
+msgstr ": Neniu valida loka kopio de avataro disponebla; malsukcesis starti HTTP transiron, ignoras"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1677
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (DCC GET %s)"
-msgstr ": Nenia valida loka kopio de avataro disponeblas, petas unu (DCC GET %s)"
+msgstr ": Neniu valida loka kopio de avataro disponeblas, petas unu (DCC GET %s)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1689
 msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
-msgstr ": Nenia valida loka kopio de avataro disponeblas; superŝuta limo superita, ignoras"
+msgstr ": Neniu valida loka kopio de avataro disponeblas; superŝuta limo superita, ignoras"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1694
 msgid ": No valid local copy of avatar available, ignoring"
-msgstr ": Nenia valida loka kopio de avataro disponeblas, ignoras"
+msgstr ": Neniu valida loka kopio de avataro disponeblas, ignoras"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1702
 msgid ": No such nickname in the user database, ignoring the change"
-msgstr ": Nenia tia kromnomo en la uzanta datumbazo, ignoras la ŝanĝon"
+msgstr ": Neniu tia kromnomo en la uzanta datumbazo, ignoras la ŝanĝon"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1742
 msgid "Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
@@ -3472,7 +3469,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] ĵus estis pelita de \r!c\r%Q\r de \r!n\r%Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:684
 msgid "The following message appears to be encrypted, but the crypto engine failed to decode it: %Q"
-msgstr "La sekvanta mesaĝo ŝajnas esti ĉifrita, sed la ĉifra modulo malsukcese malĉifris ĝin: %Q"
+msgstr "La sekvanta mesaĝo ŝajnas esti ĉifrita, sed la ĉifra maŝino malsukcese malĉifris ĝin: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:777
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -3744,7 +3741,7 @@ msgstr "%1 foriris IRC"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:377
 msgid "Notify list: No users to check for, quitting"
-msgstr "Sciiga listo: Neniaj uzantoj por kontroli, ĉesas"
+msgstr "Sciiga listo: Neniuj uzantoj por kontroli, ĉesas"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:423
 #, c-format
@@ -3939,7 +3936,7 @@ msgstr "La tema datuma dosiero ne ekzistas"
 
 #: src/kvirc/kernel/KviTheme.cpp:88
 msgid "This KVIrc executable is too old for this theme (minimum theme engine version required is %1 while this theme engine has version %2)"
-msgstr "Ĉi tiu KVIrc plenumerblaĵo estas tro malnova por ĉi tiu temo (minimum tema modula versio bezonata estas %1 dum ĉi tiu tema modulo havas version %2)"
+msgstr "Ĉi tiu KVIrc plenumeblaĵo estas tro malnova por ĉi tiu etoso (minimum tema maŝina versio bezonata estas %1 dum ĉi tiu tema modulo havas version %2)"
 
 #: src/kvirc/kernel/KviTheme.cpp:97
 msgid "Theme information file is not valid"
@@ -4026,7 +4023,7 @@ msgstr "Agordi KVIrc..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:195
 msgid "Configure Theme..."
-msgstr "Agordi Temon..."
+msgstr "Agordi Etoson..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:196
 msgid "Shows the theme options dialog"
@@ -4034,11 +4031,11 @@ msgstr "Montras la teman opcian dialogon"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:206
 msgid "Manage Themes..."
-msgstr "Administri Temojn..."
+msgstr "Administri Etosojn..."
 
 #: src/kvirc/kernel/KviCoreActions.cpp:207
 msgid "Allows you to manage the themes"
-msgstr "Permesas vin administri la temojn"
+msgstr "Permesas vin administri la etosojn"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:217
 msgid "Customize Toolbars..."
@@ -4187,11 +4184,11 @@ msgstr "Montras fenestron kiu listas kaj filtras protokolajn dosierojn"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:415
 msgid "Manage S&hared Files"
-msgstr "Administri &Divditajn Dosierojn"
+msgstr "Administri Dividitajn Dosierojn"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:416
 msgid "Shows a window that list shared siles"
-msgstr "Montras fenestron kiu listas divditajn dosierojn"
+msgstr "Montras fenestron kiu listas dividitajn dosierojn"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:426
 msgid "View URL list"
@@ -4500,7 +4497,7 @@ msgstr "[%s}: [SSL]: Uzas atestilan dosieron %s"
 #: src/kvirc/kernel/KviSSLMaster.cpp:133
 #, c-format
 msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
-msgstr "[SSL ERARO]: Dosiera eneliga eraro dum provi uzi la atestilan dosieron %s"
+msgstr "[%s]: [SSL ERARO]: Dosiera eneliga eraro dum provi uzi la atestilan dosieron %s"
 
 #: src/kvirc/kernel/KviSSLMaster.cpp:140
 #: src/kvirc/kernel/KviSSLMaster.cpp:163
@@ -4516,7 +4513,7 @@ msgstr "[%s]: [SSL]: Uzas privatan ŝlosilan dosieron %s"
 #: src/kvirc/kernel/KviSSLMaster.cpp:156
 #, c-format
 msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
-msgstr "[SSL ERARO]: Dosiera eneliga eraro dum provi uzi la privatan ŝlosilan dosieron %s"
+msgstr "[%s]: [SSL ERARO]: Dosiera eneliga eraro dum provi uzi la privatan ŝlosilan dosieron %s"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:384
 msgid "Reconnect attempt aborted"
@@ -4536,7 +4533,7 @@ msgstr "Ho ve.. vi trovis eraron en la servila datumbazo... Mi trovis servilon s
 
 #: src/kvirc/kernel/KviIrcContext.cpp:514
 msgid "No proxy hosts available, resuming direct connection"
-msgstr "Neniuj prokuraj retnodoj disponeblas, daŭrigas rekatn konekton"
+msgstr "Neniuj prokuraj retnodoj disponeblas, daŭrigas rektan konekton"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:598
 #, c-format
@@ -4570,7 +4567,7 @@ msgstr "La problemo *povus* esti kaŭzita de ĝisdatigita Adrestrovila enigo"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:665
 msgid "Try reconnecting with caching disabled"
-msgstr "Provi rekonekti kun kaŝmemorigado malebligita"
+msgstr "Provu rekonekti kun kaŝmemorigado malebligita"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:691
 msgid "Secure connection"
@@ -4835,11 +4832,11 @@ msgstr "Uzas SOCKSv5 protokolo."
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:839
 msgid "We can accept auth method 0 (no auth)"
-msgstr "Ni povas akcepti aŭtentigan metodon 0 (nenia aŭt)"
+msgstr "Ni povas akcepti aŭtentigan metodon 0 (Neniu aŭt)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:847
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
-msgstr "Ni povas akcepti aŭtentigan metodon 0 (nenia aŭt) aŭ 2 (uzant/pas)"
+msgstr "Ni povas akcepti aŭtentigan metodon 0 (Neniu aŭt) aŭ 2 (uzant/pas)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1041
 msgid "Proxy response: auth OK: access granted"
@@ -4847,7 +4844,7 @@ msgstr "Prokura respondo: aŭt bona: atingo donita"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1076
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
-msgstr "Prokura respondo: Aŭtentiga metodo bona: uzas metodon 0 (nenia aŭt)"
+msgstr "Prokura respondo: Aŭtentiga metodo bona: uzas metodon 0 (Neniu aŭt)"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:1084
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
@@ -4925,7 +4922,7 @@ msgstr "Neniuj eksternaj mesaĝoj"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:275
 msgid "Channel operators"
-msgstr "Kanalaj operaciantoj"
+msgstr "Kanalaj operaciuloj"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:276
 msgid "Private"
@@ -4953,11 +4950,11 @@ msgstr "Voĉitaj uzantoj"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:292
 msgid "o: IRC operator (OPER)"
-msgstr "o: IRC operacianto (OPER)"
+msgstr "o: IRC operaciulo (OPER)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:293
 msgid "O: Local IRC operator (LOCOP)"
-msgstr "O: Loka IRC operacianto (LOKOP)"
+msgstr "O: Loka IRC operaciulo (LOKOP)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:294
 msgid "i: Invisible"
@@ -5086,7 +5083,7 @@ msgstr "Superŝutada protekto (<nombr><tipo>:<sek>)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:388
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:482
 msgid "Half-operators"
-msgstr "Duon-operaciantoj"
+msgstr "Duon-operaciuloj"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:327
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:353
@@ -5111,7 +5108,7 @@ msgstr "Registrita"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:330
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:422
 msgid "Auditorium: /NAMES and /WHO show only ops"
-msgstr "Aŭditorio: /NAMES (/NOMOJ) kaj /WHO (/KIU) montras nur operaciantojn"
+msgstr "Aŭditorio: /NAMES (/NOMOJ) kaj /WHO (/KIU) montras nur operaciulojn"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:331
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:385
@@ -5131,7 +5128,7 @@ msgstr "Grandaj ekzil/sendevig/invit-escept listoj (staboj nur)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:344
 msgid "Disallow kicking opers (staff only)"
-msgstr "Malpermesi peli operaciantoj (stabo nur)"
+msgstr "Malpermesi peli operaciulojn (stabo nur)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:345
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:411
@@ -5178,7 +5175,7 @@ msgstr "Bezonas aŭtentikon por aliĝi al kanalo"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:357
 msgid "Reduced moderation for ops"
-msgstr "Malgrandigi kontroladon por operaciantoj"
+msgstr "Malgrandigi kontroladon por operaciuloj"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:366
 msgid "Channel visible in LIST"
@@ -5642,11 +5639,11 @@ msgstr "ICQ mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:808
 msgid "ICQ user-message"
-msgstr "ICQ uza-ms"
+msgstr "ICQ uzanto-mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:809
 msgid "Outgoing ICQ user-message"
-msgstr "Eliranta ICQ uza-ms"
+msgstr "Eliranta ICQ uzanto-mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:810
 msgid "Channel notice"
@@ -5654,7 +5651,7 @@ msgstr "Kanala sciigo"
 
 #: src/kvirc/kernel/KviOptions.cpp:811
 msgid "Encrypted channel notice"
-msgstr "Ĉifrita kna sciigo"
+msgstr "Ĉifrita kanala sciigo"
 
 #: src/kvirc/kernel/KviOptions.cpp:812
 msgid "Query notice"
@@ -5670,7 +5667,7 @@ msgstr "Servila sciigo"
 
 #: src/kvirc/kernel/KviOptions.cpp:815
 msgid "Halfop mode change"
-msgstr "Duonop reĝima sg"
+msgstr "Duonop reĝima ŝanĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:816
 msgid "Unknown CTCP reply"
@@ -5678,51 +5675,51 @@ msgstr "Nekonata CTCP respondo"
 
 #: src/kvirc/kernel/KviOptions.cpp:817
 msgid "NickServ message"
-msgstr "NickServ ms"
+msgstr "NickServ mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:818
 msgid "ChanServ message"
-msgstr "ChanServ ms"
+msgstr "ChanServ mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:819
 msgid "Away message"
-msgstr "Fora ms"
+msgstr "Fora mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:820
 msgid "Ident message"
-msgstr "Ident ms"
+msgstr "Ident mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:821
 msgid "Channel list message"
-msgstr "Kanala lista ms"
+msgstr "Kanala lista mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:822
 msgid "Half-deop mode change"
-msgstr "Duon-deop rga sg"
+msgstr "Duon-deop reĝima ŝanĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:823
 msgid "Invite message"
-msgstr "Invita ms"
+msgstr "Invita mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:824
 msgid "Multimedia message"
-msgstr "Plurmedia ms"
+msgstr "Plurmedia mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:825
 msgid "Query trace message"
-msgstr "Qya spurms"
+msgstr "Informpeta spurmesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:826
 msgid "Wallops message"
-msgstr "Batega ms"
+msgstr "Batega mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:827
 msgid "Join error message"
-msgstr "Aliĝa erara ms"
+msgstr "Aliĝa erara mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:828
 msgid "Broadcast private message"
-msgstr "Dissenda privata ms"
+msgstr "Dissenda privata mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:829
 msgid "Broadcast notice"
@@ -5782,7 +5779,7 @@ msgstr "Inviti malescepton kongruante mian maskon"
 
 #: src/kvirc/kernel/KviOptions.cpp:843
 msgid "Ignored user message"
-msgstr "Ignoris uzanta ms"
+msgstr "Ignoris uzanta mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:844
 msgid "Server statistics"
@@ -5790,7 +5787,7 @@ msgstr "Servilaj statistikoj"
 
 #: src/kvirc/kernel/KviOptions.cpp:845
 msgid "SSL message"
-msgstr "SSL ms"
+msgstr "SSL mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:847
 msgid "Generic success"
@@ -5802,7 +5799,7 @@ msgstr "Komuna stato"
 
 #: src/kvirc/kernel/KviOptions.cpp:849
 msgid "Generic verbose message"
-msgstr "Komuna multvota ms"
+msgstr "Komuna multvorta mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:850
 msgid "Generic warning"
@@ -5826,19 +5823,19 @@ msgstr "Kanala admin stato malstarigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:855
 msgid "Own chan admin status set"
-msgstr "Propra kna admin stato starigita"
+msgstr "Propra kanala admin stato starigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:856
 msgid "Own chan admin status unset"
-msgstr "Propra kna stato malstarigita"
+msgstr "Propra kanala stato malstarigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:857
 msgid "Userop mode change"
-msgstr "Uzantop rg sg"
+msgstr "Uzantop reĝima ŝanĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:858
 msgid "User-deop mode change"
-msgstr "Uzant-deop rg sg"
+msgstr "Uzant-deop reĝima ŝanĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:859
 msgid "Am userop'd"
@@ -5866,7 +5863,7 @@ msgstr "Propra kanala posedanta stato starigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:865
 msgid "Own chan owner status unset"
-msgstr "Propra kna stato malstarigita"
+msgstr "Propra kanala stato malstarigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:866
 msgid "Server error"
@@ -5874,11 +5871,11 @@ msgstr "Servila eraro"
 
 #: src/kvirc/kernel/KviOptions.cpp:868
 msgid "Text Encoding Server message"
-msgstr "Teksta Kodoprezenta Servila ms"
+msgstr "Teksta Kodoprezenta Servila mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:874
 msgid "BitTorrent message"
-msgstr "BitTorenta ms"
+msgstr "BitTorenta mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:875
 msgid "IRC Op status set"
@@ -5890,15 +5887,15 @@ msgstr "IRC Op stato malstarigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:877
 msgid "Own IRC Op status set"
-msgstr "Propra IRC Op stato sx"
+msgstr "Propra IRC Op stato starigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:878
 msgid "Own IRC Op status unset"
-msgstr "Propra IRC Op stato malsx"
+msgstr "Propra IRC Op stato malstarigita"
 
 #: src/kvirc/kernel/KviOptions.cpp:879
 msgid "Extended capability message"
-msgstr "Etendita kapabla ms"
+msgstr "Etendita kapabla mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:880
 msgid "Channel URL"
@@ -5906,7 +5903,7 @@ msgstr "Kanala URL"
 
 #: src/kvirc/kernel/KviOptions.cpp:881
 msgid "MemoServ message"
-msgstr "MemoServ ms"
+msgstr "MemoServ mesaĝo"
 
 #: src/kvirc/kernel/KviOptions.cpp:963
 msgid "KVIrc warning"
@@ -5928,16 +5925,16 @@ msgstr "Mankas absolutan dosierujon por la tema informo"
 
 #: src/kvirc/kernel/KviOptions.cpp:1041
 msgid "Failed to create the theme directory"
-msgstr "Mk krei la teman dosierujon"
+msgstr "Malsukcesis krei la teman dosierujon"
 
 #: src/kvirc/kernel/KviOptions.cpp:1116
 #: src/kvirc/kernel/KviOptions.cpp:1145
 msgid "Failed to save one of the theme images"
-msgstr "Mk savi unu el la temaj bildoj"
+msgstr "Malsukcesis savi unu el la temaj bildoj"
 
 #: src/kvirc/kernel/KviOptions.cpp:1124
 msgid "Failed to create the theme subdirectory"
-msgstr "Mk krei la teman subdosierujon"
+msgstr "Malsukcesis krei la teman subdosierujon"
 
 #: src/kvirc/kernel/KviOptions.cpp:1264
 msgid "Boolean options (1/0)"
@@ -5965,7 +5962,7 @@ msgstr "IRC kuntekstaj koloraj opcioj (#RRVVBB)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1270
 msgid "Pixmap options (image path)"
-msgstr "Pxaj opcioj (bilda pado)"
+msgstr "Bildermastrumaj opcioj (bilda pado)"
 
 #: src/kvirc/kernel/KviOptions.cpp:1271
 msgid "Unsigned integer options (unsigned integer constant)"
@@ -5985,7 +5982,7 @@ msgstr "Ĉenaj listaj opcioj (koma apartigita listo de ĉenoj)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:181
 msgid "Failed to set the encoding to %Q: mapping not available."
-msgstr "Mk starigi la kodoprezento al %Q: mapigo ne disponeblas."
+msgstr "Malsukcesis starigi la kodoprezenton al %Q: mapigo ne disponeblas."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:192
 #: src/kvirc/kernel/KviIrcConnection.cpp:202
@@ -5994,7 +5991,7 @@ msgstr "Ŝanĝis tekstan kodoprezenton al %Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:371
 msgid "Failed to send the CAP LS request. Server capabilities will not be detected."
-msgstr "Mk sendi la CAP LS peton. Servilaj kapabloj ne estos detektitaj."
+msgstr "Malsukcesis sendi la CAP LS peton. Servilaj kapabloj ne estos detektitaj."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:407
 msgid "Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"
@@ -6020,7 +6017,7 @@ msgstr "Konekto al servilo establita"
 #: src/kvirc/kernel/KviIrcConnection.cpp:851
 #: src/kvirc/kernel/KviIrcConnection.cpp:880
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
-msgstr "[LIGILA AVERTO]: Inga ms distranĉita al 512 bajtoj."
+msgstr "[LIGILA AVERTO]: Inga mesaĝo distranĉita al 512 bajtoj."
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:960
 msgid "The server seems to support the WATCH notify list method, will try to use it"
@@ -6162,15 +6159,15 @@ msgstr "Ensalutas kiel %Q!%Q :%Q"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1658
 msgid "Executing scheduled network specific \"on connect\" commands"
-msgstr "Plenumas planitajn retajn specifajn \"je konekto\" komandojn"
+msgstr "Plenumigas planitajn retajn specifajn \"je konekto\" komandojn"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1666
 msgid "Executing scheduled server specific \"on connect\" commands"
-msgstr "Plenumas planitajn servilajn specifajn \"je konekto\" komandojn"
+msgstr "Plenumigas planitajn servilajn specifajn \"je konekto\" komandojn"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1674
 msgid "Executing scheduled identity specific \"on connect\" commands"
-msgstr "Plenumas planitajn identigajn specifajn \"je konekto\" komandojn"
+msgstr "Plenumigas planitajn identigajn specifajn \"je konekto\" komandojn"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1732
 #, c-format
@@ -6183,15 +6180,15 @@ msgstr "Ensalutaj operacioj kompletaj, feliĉan IRC-on!"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1752
 msgid "Executing scheduled network specific \"on login\" commands"
-msgstr "Plenumas planitajn retajn specifajn \"je ensaluto\" komandojn"
+msgstr "Plenumigas planitajn retajn specifajn \"je ensaluto\" komandojn"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1760
 msgid "Executing scheduled server specific \"on login\" commands"
-msgstr "Plenumas planitajn servilajn specifajn \"je ensaluto\" komandojn"
+msgstr "Plenumigas planitajn servilajn specifajn \"je ensaluto\" komandojn"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1768
 msgid "Executing scheduled identity specific \"on login\" commands"
-msgstr "Plenumas planitajn identigajn specifajn \"je ensaluto\" komandojn"
+msgstr "Plenumigas planitajn identigajn specifajn \"je ensaluto\" komandojn"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1781
 msgid "Setting configured user mode"
@@ -6383,7 +6380,7 @@ msgstr "Duoble-klaki por starigi<br>"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:946
 msgid "You're not an operator: You may not change channel modes"
-msgstr "Vi ne estas operacianto: Vi ne povas ŝanĝi kanalajn reĝimojn"
+msgstr "Vi ne estas operaciulo: Vi ne povas ŝanĝi kanalajn reĝimojn"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:965
 #: src/kvirc/ui/KviQueryWindow.cpp:155
@@ -6392,7 +6389,7 @@ msgstr "Nenio konata pri %1"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:966
 msgid "Nothing known about %1 (no connection)"
-msgstr "Nenio konata pri %1 (nenia konekto)"
+msgstr "Nenio konata pri %1 (Neniu konekto)"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:990
 msgid "<b>%1</b> (<u><font color=\"blue\"><nowrap>%2</nowrap></font></u>): <br><nowrap>+%3 (%4 users)<hr>%5</nowrap>"
@@ -6590,7 +6587,7 @@ msgstr "Ĉifreca/teksta transformigo"
 
 #: src/kvirc/ui/KviCryptController.cpp:85
 msgid "Use the crypt engine"
-msgstr "Uzi la ĉifran modulon"
+msgstr "Uzi la ĉifran maŝinon"
 
 #: src/kvirc/ui/KviCryptController.cpp:103
 msgid "Enable encryption"
@@ -6619,20 +6616,20 @@ msgstr "Se vi ne volas ĉifri apartan tekstan linion tiam nur komenci ĝin kun l
 
 #: src/kvirc/ui/KviCryptController.cpp:245
 msgid "Sorry, no crypt engines available"
-msgstr "Mi bedaŭras ke neniuj ĉifraj moduloj disponeblas"
+msgstr "Mi bedaŭras ke neniuj ĉifraj maŝinoj disponeblas"
 
 #: src/kvirc/ui/KviCryptController.cpp:265
 msgid "Crypt: Can't create an engine instance: crypting disabled"
-msgstr "Ĉifri: Ne povas krei modulan ekzemplon: ĉifrado malebligita"
+msgstr "Ĉifri: Ne povas krei maŝinan ekzemplon: ĉifrado malebligita"
 
 #: src/kvirc/ui/KviCryptController.cpp:276
 #, c-format
 msgid "Crypt: Can't initialize the engine :%s"
-msgstr "Ĉifri: Ne povas pravalorizi la modulon :%s"
+msgstr "Ĉifri: Ne povas pravalorizi la maŝinon :%s"
 
 #: src/kvirc/ui/KviCryptController.cpp:284
 msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
-msgstr "Ĉifri: Vi devas ebligi ĉifradon kaj/aŭ malĉifradon tiel kela modulo funkcios"
+msgstr "Ĉifri: Vi devas ebligi ĉifradon kaj/aŭ malĉifradon tiel kela maŝino funkcios"
 
 #: src/kvirc/ui/KviInputEditor.cpp:782
 msgid "Clipboard"
@@ -6708,7 +6705,7 @@ msgstr "Vi estis avizita de"
 
 #: src/kvirc/ui/KviWindow.cpp:376
 msgid "Crypting"
-msgstr "Ĉifrante"
+msgstr "Ĉifras"
 
 #: src/kvirc/ui/KviWindow.cpp:386
 msgid "Text Encoding"
@@ -6716,7 +6713,7 @@ msgstr "Teksta Kodoprezento"
 
 #: src/kvirc/ui/KviWindow.cpp:478
 msgid "Ops...I've accidentally lost the crypting engine..."
-msgstr "Ho ve...Mi akcidente perdis la ĉifran modulon..."
+msgstr "Ho ve...Mi akcidente perdis la ĉifran maŝinon..."
 
 #: src/kvirc/ui/KviWindow.cpp:492
 msgid "List of window types available in this release of KVIrc:"
@@ -7065,7 +7062,7 @@ msgstr "Ĉi tiu informpeto havas neniujn aktivajn celojn, neniu mesaĝo sendite"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:571
 msgid "The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"
-msgstr "La ĉifra module ne povis ĉifri la nunan mesaĝon (%Q): %s, neniuj datumoj senditaj al la servilo"
+msgstr "La ĉifra maŝino ne povis ĉifri la nunan mesaĝon (%Q): %s, neniuj datumoj senditaj al la servilo"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:798
 #: src/kvirc/ui/KviChannelWindow.cpp:2006
@@ -7150,7 +7147,7 @@ msgstr "Prokrasta mezurilo ankoraŭ ne disponeblas"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:296
 msgid "Lag meter engine disabled"
-msgstr "Prokrasta mezurila modulo malebligita"
+msgstr "Prokrasta mezurila maŝino malebligita"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:298
 msgid "Double click to enable it"
@@ -7498,11 +7495,11 @@ msgstr "Morta kanalo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:911
 msgid "operator"
-msgstr "operacianto"
+msgstr "operaciulo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:912
 msgid "operators"
-msgstr "operaciantoj"
+msgstr "operaciuloj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:925
 msgid "active user"
@@ -7522,11 +7519,11 @@ msgstr "varmaj uzantoj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:995
 msgid "irc operator"
-msgstr "irc operacianto"
+msgstr "irc operaciulo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:995
 msgid "irc operators"
-msgstr "irc operaciantoj"
+msgstr "irc operaciuloj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1006
 msgid "channel owner"
@@ -7546,11 +7543,11 @@ msgstr "kanalaj administrantoj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1039
 msgid "half-operator"
-msgstr "duon-operacianto"
+msgstr "duon-operaciulo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1039
 msgid "half-operators"
-msgstr "duon-operaciantoj"
+msgstr "duon-operaciuloj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1050
 msgid "voiced user"
@@ -7562,11 +7559,11 @@ msgstr "voĉaj uzantoj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1061
 msgid "user-operator"
-msgstr "uzant-operacianto"
+msgstr "uzant-operaciulo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1061
 msgid "user-operators"
-msgstr "uzant-operaciantoj"
+msgstr "uzant-operaciuloj"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1070
 msgid "user total"
@@ -7638,11 +7635,11 @@ msgstr "[Morta kanalo]"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1244
 msgid "The crypto engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"
-msgstr "La ĉifra modulo ne povis ĉifri la nunan mesaĝon (%Q): %Q, neniuj datumoj sendite al la servilo"
+msgstr "La ĉifra maŝino ne povis ĉifri la nunan mesaĝon (%Q): %Q, neniuj datumoj sendite al la servilo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1693
 msgid "Sent part request, waiting for reply..."
-msgstr "Sendis partan peton, atendante por respondo..."
+msgstr "Sendis partan peton, atendas por respondo..."
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1790
 msgid "<b>Channel mode:</b>"
@@ -7813,4 +7810,3 @@ msgstr "Ordigi"
 #: src/kvirc/ui/KviTreeWindowList.cpp:277
 msgid "Reverse Sort"
 msgstr "Renverse Ordigi"
-

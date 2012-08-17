@@ -5,13 +5,13 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: kvirc 4.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-12 22:55+0200\n"
 "PO-Revision-Date: 2012-06-26 18:29+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: Esperanto <eo@li.org>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +26,7 @@ msgstr "Interna unika nomo por la ago"
 
 #: src/modules/actioneditor/ActionEditor.cpp:108
 msgid "Label:"
-msgstr "Etikedo"
+msgstr "Etikedo:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:112
 msgid "Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
@@ -58,15 +58,15 @@ msgstr "Videbla mallonga priskribo por ĉi tiu ago.<br>Ĉi tiu ĉeno estos montr
 
 #: src/modules/actioneditor/ActionEditor.cpp:144
 msgid "Small Icon:"
-msgstr "Malgranda piktogramo:"
+msgstr "Malgranda Piktogramo:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:152
 msgid "The small icon associated to this action.<br>It will appear at least in the popup menus when this action is inserted.<br>It has to be 16x16 pixels."
-msgstr "La malgranda piktogramo asociita kun ĉi tiu ago.<br>Ĝi aperos almenaŭ en la ŝrucmenuoj kiam ĉi tiu ago estas enigata.<br>Ĝi devas esti 16x16 bilderoj."
+msgstr "La malgranda piktogramo asociita kun ĉi tiu ago.<br>Ĝi aperos almenaŭ en la ŝprucmenuoj kiam ĉi tiu ago estas enigata.<br>Ĝi devas esti 16x16 bilderoj."
 
 #: src/modules/actioneditor/ActionEditor.cpp:158
 msgid "Big Icon:"
-msgstr "Granda piktogramo:"
+msgstr "Granda Piktogramo:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:167
 msgid "The big icon associated to this action.<br>It will appear at least in the toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
@@ -78,7 +78,7 @@ msgstr "Klavsinsekvo:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:177
 msgid "Optional keyboard sequence that will activate this action.<br>The sequence has to be expressed as a string of up to four key codes separated by commas eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
-msgstr "Opcia klavara sinsekvo kiu aktivigos ĉi tiu agon.<br>La sinsekvo devas esti esprimita kiel ĉeno de ĝis kvar klavkodoj apartigita de komoj iam kombinita kun la modifiloj \"Ktrl\",\"Ŝov\",\"Alt\" kaj \"Meta\".<br>Ekzempleroj de tiaj sinsekvoj estas \"Ktrl+X\",\"Ktrl+Alt+Z\",\"Ktrl+X,Ctrl+C\" ..."
+msgstr "Opcia klavara sinsekvo kiu aktivigos ĉi tiun agon.<br>La sinsekvo devas esti esprimita kiel ĉeno de ĝis kvar klavkodoj apartigita de komoj iam kombinita kun la modifiloj \"Stir\",\"Ŝov\",\"Alt\" kaj \"Meta\".<br>Ekzempleroj de tiaj sinsekvoj estas \"Stir+X\",\"Stir+Alt+Z\",\"Stir+X,Ctrl+C\" ..."
 
 #: src/modules/actioneditor/ActionEditor.cpp:188
 msgid "Properties"
@@ -110,7 +110,7 @@ msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita ankaŭ dum la e
 
 #: src/modules/actioneditor/ActionEditor.cpp:222
 msgid "Enable Only in Specified Windows"
-msgstr "Ebligi Nur en Specifita Fenestroj"
+msgstr "Ebligi Nur en Specifitaj Fenestroj"
 
 #: src/modules/actioneditor/ActionEditor.cpp:224
 msgid "Check this option if this action should be enabled only when the active window is of a specified type"
@@ -128,13 +128,13 @@ msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la akt
 #: src/modules/actioneditor/ActionEditor.cpp:246
 #: src/modules/actioneditor/ActionEditor.cpp:257
 msgid "Only If There Are Selected Users"
-msgstr "Nur se Estas Selektitaj Uzuloj"
+msgstr "Nur Se Estas Elektitaj Uzuloj"
 
 #: src/modules/actioneditor/ActionEditor.cpp:236
 #: src/modules/actioneditor/ActionEditor.cpp:247
 #: src/modules/actioneditor/ActionEditor.cpp:258
 msgid "This will enable the action only if there are selected users in the active window"
-msgstr "Ĉi tio ebligos la agon nur se estas selektitaj uzuloj en la aktiva fenestro"
+msgstr "Ĉi tio ebligos la agon nur se estas elektitaj uzuloj en la aktiva fenestro"
 
 #: src/modules/actioneditor/ActionEditor.cpp:240
 msgid "Enable in Channel Windows"
@@ -262,7 +262,7 @@ msgstr "Rezigni"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:343
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:539
 msgid "Alias"
-msgstr "Kromnomo"
+msgstr "Alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:141
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:517
@@ -282,15 +282,15 @@ msgstr "Renomi"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:146
 msgid "Edit the alias or namespace name"
-msgstr "Redakti la kromnomon aŭ nomspacan nomon"
+msgstr "Redakti la alinomon aŭ nomspacan nomon"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:325
 msgid "OverWrite Current Alias"
-msgstr "Anstataŭigi Nunan Kromnomon"
+msgstr "Anstataŭigi Nunan Alinomon"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:326
 msgid "An external script has changed the alias you are currently editing. Do you want to accept the external changes?"
-msgstr "Eksterna skripto ŝanĝis la kromnomon ke vi nuntempe redaktas. Ĉu vi vollas akcepti la eksterajn ŝanĝojn?"
+msgstr "Ekstera skripto ŝanĝis la alinomon ke vi nuntempe redaktas. Ĉu vi volas akcepti la eksterajn ŝanĝojn?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:341
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:527
@@ -300,11 +300,11 @@ msgstr "Nomspaco"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:430
 msgid "Rename Alias"
-msgstr "Renomi Kromnomon"
+msgstr "Renomi Alinomon"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:430
 msgid "Please enter the new name for the alias"
-msgstr "Bonvolu enigi la novan nomon por la kromnomo"
+msgstr "Bonvolu enigi la novan nomon por la alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:432
 #: src/modules/classeditor/ClassEditorWindow.cpp:677
@@ -318,7 +318,7 @@ msgstr "Bonvolu enigi la novan nomon por la nomspaco"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:444
 msgid "Alias already exists"
-msgstr "Kromnomo jam ekzistas"
+msgstr "Alinomo jam ekzistas"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:445
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:457
@@ -347,7 +347,7 @@ msgstr "Ĉi tiu nomo jam estas uzata. Bonvolu elekti alian."
 #: src/modules/classeditor/ClassEditorWindow.cpp:1535
 #: src/modules/classeditor/ClassEditorWindow.cpp:1546
 msgid "Ok, Let me try again..."
-msgstr "Bone. Lasu min provi denove..."
+msgstr "Bone. Lasu min peni denove..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:456
 #: src/modules/classeditor/ClassEditorWindow.cpp:693
@@ -357,7 +357,7 @@ msgstr "Nomspaco jam ekzistas"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:560
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
 msgid "Add Alias"
-msgstr "Adicii Kromnomon"
+msgstr "Adicii Alinomon"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:565
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1129
@@ -374,7 +374,7 @@ msgstr "Forigi Elektitaĵon"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:583
 #: src/modules/classeditor/ClassEditorWindow.cpp:924
 msgid "Export Selected..."
-msgstr "Eksporti Elektitaĵon"
+msgstr "Eksporti Elektitaĵon..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:589
 #: src/modules/classeditor/ClassEditorWindow.cpp:930
@@ -384,11 +384,11 @@ msgstr "Eksporti Elektitaĵon en simplaj dosieroj..."
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:595
 #: src/modules/classeditor/ClassEditorWindow.cpp:937
 msgid "Export All..."
-msgstr "Eksporti Ĉion,,,"
+msgstr "Eksporti Ĉion..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:603
 msgid "Find In Aliases..."
-msgstr "Trovi en Kromnomoj..."
+msgstr "Trovi en Alinomoj..."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:609
 msgid "Collapse All Namespaces"
@@ -396,16 +396,16 @@ msgstr "Kolapsi Ĉiujn Nomspacojn"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:638
 msgid "Find In Aliases"
-msgstr "Trovi en Kromnomoj"
+msgstr "Trovi en Alinomoj"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:639
 msgid "Please enter the text to be searched for. The matching aliases will be highlighted."
-msgstr "Bonvolu enigi la tekston serĉotan. La kongruantaj kromnomoj estos markitaj."
+msgstr "Bonvolu enigi la tekston serĉotan. La kongruantaj alinomoj estos markitaj."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:720
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:788
 msgid "Alias Export"
-msgstr "Kromnoma Eksporto"
+msgstr "Alinoma Eksporto"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:720
 #: src/modules/classeditor/ClassEditorWindow.cpp:1112
@@ -453,16 +453,16 @@ msgstr "Ne"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:788
 #: src/modules/classeditor/ClassEditorWindow.cpp:1207
 msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr "Le eksportita dosiero estus malplena: malkuraĝe rifuzante skribi ĝin"
+msgstr "Le eksportita dosiero estus malplena: malkuraĝe rifuzas skribi ĝin"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:819
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1241
 msgid "Unable to write to the alias file."
-msgstr "Ne povas skribi al la kromnoma dosiero"
+msgstr "Ne povas skribi al la alinoma dosiero"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:922
 msgid "Do you really want to remove the alias \"%1\"?"
-msgstr "Ĉu vi vere volas forigi la kromnomon \"%1\"?"
+msgstr "Ĉu vi vere volas forigi la alinomon \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:924
 #: src/modules/classeditor/ClassEditorWindow.cpp:1359
@@ -471,7 +471,7 @@ msgstr "Ĉu vi vere volas forigi la nomspacon \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
 msgid "Please note that all the children items will be deleted too."
-msgstr "Bonvolu noti ke ĉiuj eridoj estos forigata ankaŭ."
+msgstr "Bonvolu noti ke ĉiuj eridoj estos forigataj ankaŭ."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:930
 #: src/modules/classeditor/ClassEditorWindow.cpp:1368
@@ -480,29 +480,29 @@ msgstr "Forigi eron"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:988
 msgid "Missing Alias Name"
-msgstr "Mankanta Kromnomo"
+msgstr "Mankas Alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:989
 msgid "You must specify a valid name for the alias"
-msgstr "Vi devas specifi validan nomon por la kromnomo"
+msgstr "Vi devas specifi validan nomon por la alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1001
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1015
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1026
 msgid "Bad Alias Name"
-msgstr "Malbona Kromnomo"
+msgstr "Malbona Alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1002
 msgid "Alias names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "Kromnomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' nomspacajn apartigilojn"
+msgstr "Alinomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' nomspacajn apartigilojn"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1016
 msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr "Hazarda '':'  signo en kromnomo: ĉu vi volas signifi...<namspaco>::<nomo> ?"
+msgstr "Hazarda '':'  signo en alinomo: ĉu vi volas signifi...<namspaco>::<nomo>?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1027
 msgid "Found an empty namespace in alias name"
-msgstr "Trovis malplenan nomspacon en kromnomo"
+msgstr "Trovis malplenan nomspacon en alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1056
 #: src/modules/classeditor/ClassEditorWindow.cpp:1506
@@ -531,7 +531,7 @@ msgstr "Nomspacaj nomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1084
 #: src/modules/classeditor/ClassEditorWindow.cpp:1534
 msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr "Hazard ':' signo en nomspaca nomo: ĉu vi volas diri ...<nomspaco>::<nomo> ?"
+msgstr "Hazarda ':' signo en nomspaca nomo: ĉu vi volas diri ...<nomspaco>::<nomo>?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1095
 #: src/modules/classeditor/ClassEditorWindow.cpp:1545
@@ -540,16 +540,16 @@ msgstr "Trovis malplenan nomspacon en nomspaca nomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
 msgid "Please enter the name for the new alias"
-msgstr "Bonvolu enigi la nomon por la nova kromnomo"
+msgstr "Bonvolu enigi la nomon por la nova alinomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1129
 #: src/modules/classeditor/ClassEditorWindow.cpp:1596
 msgid "Please enter the name for the new namespace"
-msgstr "Bonvolu enigi la nonom por la nova nomspaco"
+msgstr "Bonvolu enigi la nomon por la nova nomspaco"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1180
 msgid "Alias Editor"
-msgstr "Kromnoma Redaktilo"
+msgstr "Alinoma Redaktilo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1187
 #: src/modules/eventeditor/EventEditorWindow.cpp:471
@@ -594,11 +594,11 @@ msgstr "Nomo jam ekzistas kiel Klasa nomo"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:689
 msgid "This name is already in use as Class name. Please choose another one."
-msgstr "Ĉo tiu nomo jam estas uzata kiel Klasnomo. Bonvolu elekti alian."
+msgstr "Ĉi tiu nomo jam estas uzata kiel Klasnomo. Bonvolu elekti alian."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:806
 msgid "inherits from class "
-msgstr "Heredas de klaso"
+msgstr "heredas de klaso"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:812
 msgid "Member Function"
@@ -622,7 +622,7 @@ msgstr "Trovi en Klasoj..."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:951
 msgid "Collapse All Items"
-msgstr "Kolapsigi Ĉiujn erojn"
+msgstr "Kolapsigi Ĉiujn Erojn"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:995
 msgid "Find In Classes"
@@ -688,11 +688,11 @@ msgstr "Bonvolu enigi la nomon por la klaso:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1934
 msgid "Class names can contain only letters, digits and underscores"
-msgstr "Klasaj nomoj povas enteni nur literojn, ciferojn kaj substrekojn"
+msgstr "Klasaj nomoj povas havi nur literojn, ciferojn kaj substrekojn"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1938
 msgid "In rename mode class names can contain only letters, digits and underscores and namespaces :: separator"
-msgstr "Ĉe renoma reĝimo klasnomoj povas enteni nur literojn, ciferojn kaj substrekojn kaj nomspacan :: apartigilo"
+msgstr "Ĉe renoma reĝimo klasnomoj povas havi nur literojn, ciferojn kaj substrekojn kaj nomspacan :: apartigilon"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1951
 msgid "Inherits Class:"
@@ -714,19 +714,19 @@ msgstr "&Rezigni"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2043
 msgid "Please enter the name for the member function:"
-msgstr "Bonvolu enigi la nomon por la ana funkcio:"
+msgstr "Bonvolu enigi la nomon por la funkciano:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2052
 msgid "Function names can contain only letters, digits and underscores"
-msgstr "Funkciaj nomoj povas enteni nur literojn, ciferojn kaj substrekojn"
+msgstr "Funkciaj nomoj povas havi nur literojn, ciferojn kaj substrekojn"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2064
 msgid "Please enter the optional reminder string for the member function:"
-msgstr "Bonvolu enigi la opcian atentigilan ĉenon por la ana funkcio"
+msgstr "Bonvolu enigi la opcian atentigilan ĉenon por la funkciano"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2077
 msgid "Set as <b>Internal</b> Function: "
-msgstr "Starigi kiel <b>interna</b> Funkcio:"
+msgstr "Starigi kiel <b>interna</b> Funkcio: "
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2097
 msgid "&Add"
@@ -746,7 +746,7 @@ msgstr "Parametroj:"
 
 #: src/modules/codetester/CodeTesterWindow.cpp:64
 msgid "Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, .."
-msgstr "Ĉi tie vi povas specifi punktokome apartigitan liston de parametroj kiuj haveblos en la kodo kiel $0, $1, $2, ..."
+msgstr "Ĉi tie vi povas specifi punktokome apartigitan liston de parametroj kiuj disponeblos en la kodo kiel $0, $1, $2, ..."
 
 #: src/modules/codetester/CodeTesterWindow.cpp:110
 msgid "Script Tester"
@@ -763,7 +763,7 @@ msgstr "&Anstataŭigi"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:269
 msgid "Find & Replace"
-msgstr "&Trovi & Anstataŭigi"
+msgstr "Trovi & Anstataŭigi"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:519
 msgid "Preferences"
@@ -823,7 +823,7 @@ msgstr "&Malfermi..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:800
 msgid "&Save As..."
-msgstr "&Savi kiel..."
+msgstr "&Savi Kiel..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:802
 msgid "&Configure Editor..."
@@ -840,11 +840,11 @@ msgstr "Vico: %1 Kol: %2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:936
 msgid "Save Failed - KVIrc"
-msgstr "Savo malsukcesis - KVIrc"
+msgstr "Savo Malsukcesis - KVIrc"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:937
 msgid "Can't open the file %1 for writing."
-msgstr "Ne povas malfermi la dosieron %1 por skribado"
+msgstr "Ne povas malfermi la dosieron %1 por skribi"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1011
 msgid "Load Script File - KVIrc"
@@ -856,7 +856,7 @@ msgstr "Malfermo Malsukcesis - KVIrc"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1025
 msgid "Can't open the file %1 for reading."
-msgstr "Ne povas malfermi la dosieron por legado."
+msgstr "Ne povas malfermi la dosieron %1 por legi."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1066
 msgid "Word to Find"
@@ -1010,7 +1010,7 @@ msgstr "Teksto:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:234
 msgid "<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>"
-msgstr "<center><b>Videbla teksto</b><br>Povas enteni identifigilojn ke estos evaluata je ŝprucaĵa tempo.<br>Por etikedoj, ĉi tiu teksto povas enteni ankaŭ limigitajn HTML foliojn.</center>"
+msgstr "<center><b>Videbla teksto</b><br>Povas enhavi identifigilojn kiuj estos evaluataj je ŝprucaĵa tempo.<br>Por etikedoj, ĉi tiu teksto povas enhavi ankaŭ limigitajn HTML foliojn.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:237
 msgid "Condition:"
@@ -1018,7 +1018,7 @@ msgstr "Kondiĉo:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:243
 msgid "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>"
-msgstr "<center><b>Bulea kondiĉo</b><br>estos evlaluata je ŝprucaĵa voka tempo por decidi ĉu ĉi tiu eniro devas esti montrata.<br>Malplena kondiĉo evaluas al vera.</center>"
+msgstr "<center><b>Bulea kondiĉo</b><br>Estos evaluata je ŝprucaĵa voka tempo por decidi ĉu ĉi tiu eniro devas esti montrata.<br>Malplena kondiĉo evaluas al true.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:246
 msgid "Icon:"
@@ -1026,7 +1026,7 @@ msgstr "Piktogramo:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:252
 msgid "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>"
-msgstr "<center><b>Piktograma identifilo</b><br>Povus estis interna piktograma ID, absoluta pado aŭ relative pado.<br>Porteblaj skriptoj devas neniam uzi absolutajn padojn.</center>"
+msgstr "<center><b>Piktograma identifigilo</b><br>Povus esti interna piktograma ID, absoluta pado aŭ relative pado.<br>Porteblaj skriptoj devas neniam uzi absolutajn padojn.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:255
 msgid "External menu:"
@@ -1034,7 +1034,7 @@ msgstr "Ekstera menuo:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
 msgid "<center><b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>"
-msgstr "<center><b>Ekstera menua nomo</b><br>Ĉi tiu permesas eningigi ekstere difinitajn ŝprucmenuojn. La ŝprucmenuo kun la specifita nome estos serĉata je menua stariga tempo.</center>"
+msgstr "<center><b>Ekstera menua nomo</b><br>Ĉi tiu permesas eningigi ekstere difinitajn ŝprucmenuojn. La ŝprucmenuo kun la specifita nomo estos serĉata je menustariga tempo.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:264
 msgid "Item Id:"
@@ -1187,7 +1187,7 @@ msgstr "Nova Kruda Evento"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:221
 msgid "Enter the numeric code of the message (0-999)"
-msgstr "Enmenti la ciferan kodon de la mesaĝo (0-999)"
+msgstr "Enmeti la ciferan kodon de la mesaĝo (0-999)"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
 msgid ""
@@ -1252,7 +1252,7 @@ msgstr "Duobligi Ilbretan Id"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
 msgid "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign it automatically (so it doesn't collide with any other toolbar) or you prefer to do it manually ?"
-msgstr "La specifita Ilbreta Id jam ekzistas.<br>Ĉi vi volus ke KVIrc disponigi ĝin aŭtomate (tiel ke ĝi ne kolizias kun iu ajn alia ilbreto) aŭ ĉu vi preferas fari ĝin permane?"
+msgstr "La specifita Ilbreta Id jam ekzistas.<br>Ĉu vi volus ke KVIrc disponigi ĝin aŭtomate (tiel ke ĝi ne kolizias kun iu ajn alia ilbreto) aŭ ĉu vi preferas fari ĝin permane?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
 msgid "Manually"
@@ -1268,7 +1268,7 @@ msgstr "Kaŝi Altgradan"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
 msgid "Customize Toolbars"
-msgstr "Agordi Ilbretojn"
+msgstr "Tajlori Ilbretojn"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
 msgid "New ToolBar"
@@ -1318,4 +1318,3 @@ msgstr "Bonvolu specifi la atributojn por la nova ilbreto"
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:499
 msgid "My ToolBar"
 msgstr "Mia Ilbreto"
-
