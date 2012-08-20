@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc 4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-12 22:55+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2012-06-26 18:29+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -16,169 +16,420 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/actioneditor/ActionEditor.cpp:102
-msgid "Name:"
-msgstr "Nomo:"
+#: src/modules/eventeditor/EventEditorWindow.cpp:412
+msgid ""
+"\n"
+"\n"
+"Event:\n"
+"%1\n"
+"\n"
+"Parameters:\n"
+"%2"
+msgstr ""
+"\n"
+"\n"
+"Evento:\n"
+"%1\n"
+"\n"
+"Parametroj:\n"
+"%2"
 
-#: src/modules/actioneditor/ActionEditor.cpp:106
-msgid "Internal unique name for the action"
-msgstr "Interna unika nomo por la ago"
+#: src/modules/raweditor/RawEditorWindow.cpp:366
+msgid ""
+"\n"
+"\n"
+"Raw Event:\n"
+"%1"
+msgstr ""
+"\n"
+"\n"
+"Kruda Evento:\n"
+"%1"
 
-#: src/modules/actioneditor/ActionEditor.cpp:108
-msgid "Label:"
-msgstr "Etikedo:"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:96
+msgid "### Epilogue ###"
+msgstr "### Epilogo ###"
 
-#: src/modules/actioneditor/ActionEditor.cpp:112
-msgid "Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
-msgstr "Videbla nomo por ĉi tiu ago.<br>Ĉi tiu ĉeno estos montrata al la uzulo do estas bona ideo uzi $tr() ĉi tie"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:100
+msgid "### Prologue ###"
+msgstr "### Prologo ###"
 
-#: src/modules/actioneditor/ActionEditor.cpp:124
-msgid "Action code"
-msgstr "Aga kodo"
+#: src/modules/classeditor/ClassEditorWindow.cpp:2097
+msgid "&Add"
+msgstr "&Adicii"
 
-#: src/modules/actioneditor/ActionEditor.cpp:126
-msgid "Code"
-msgstr "Kodo"
+#: src/modules/raweditor/RawEditorWindow.cpp:181
+msgid "&Add Raw Event..."
+msgstr "&Adicii Krudan Eventon..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:132
-msgid "Category:"
-msgstr "Kategorio:"
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1192
+#: src/modules/eventeditor/EventEditorWindow.cpp:528
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1384
+#: src/modules/raweditor/RawEditorWindow.cpp:481
+msgid "&Apply"
+msgstr "&Apliki"
 
-#: src/modules/actioneditor/ActionEditor.cpp:136
-msgid "Choose the category that best fits for this action"
-msgstr "Elekti la kategorion kiu plej bone akordas kun ĉi tiu ago"
+#: src/modules/classeditor/ClassEditorWindow.cpp:1849
+msgid "&Build"
+msgstr "&Konstrui"
 
-#: src/modules/actioneditor/ActionEditor.cpp:138
-msgid "Description:"
-msgstr "Priskribo:"
+#: src/modules/classeditor/ClassEditorWindow.cpp:2005
+#: src/modules/classeditor/ClassEditorWindow.cpp:2107
+#: src/modules/editor/ScriptEditorImplementation.cpp:1092
+msgid "&Cancel"
+msgstr "&Rezigni"
 
-#: src/modules/actioneditor/ActionEditor.cpp:142
-msgid "Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
-msgstr "Videbla mallonga priskribo por ĉi tiu ago.<br>Ĉi tiu ĉeno estos montrata al la uzulo do estas bona ideo uzi $tr() ĉi tie"
+#: src/modules/editor/ScriptEditorImplementation.cpp:802
+msgid "&Configure Editor..."
+msgstr "Agordi Redaktilon..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:144
-msgid "Small Icon:"
-msgstr "Malgranda Piktogramo:"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:430
+msgid "&Copy"
+msgstr "&Kopii"
 
-#: src/modules/actioneditor/ActionEditor.cpp:152
-msgid "The small icon associated to this action.<br>It will appear at least in the popup menus when this action is inserted.<br>It has to be 16x16 pixels."
-msgstr "La malgranda piktogramo asociita kun ĉi tiu ago.<br>Ĝi aperos almenaŭ en la ŝprucmenuoj kiam ĉi tiu ago estas enigata.<br>Ĝi devas esti 16x16 bilderoj."
+#: src/modules/classeditor/ClassEditorWindow.cpp:1998
+msgid "&Create Class"
+msgstr "&Krei Klason"
 
-#: src/modules/actioneditor/ActionEditor.cpp:158
-msgid "Big Icon:"
-msgstr "Granda Piktogramo:"
+#: src/modules/eventeditor/EventEditorWindow.cpp:221
+#: src/modules/raweditor/RawEditorWindow.cpp:160
+msgid "&Disable Handler"
+msgstr "&Malebligi Traktilon"
 
-#: src/modules/actioneditor/ActionEditor.cpp:167
-msgid "The big icon associated to this action.<br>It will appear at least in the toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
-msgstr "La granda piktogramo asociita al ĉi tiu ago.<br>Ĝi aperos almenaŭ en la ilbretaj butonoj kiam ĉi tiu ago estas enigata.<br>Ĝi devas esti 32x32 bilderoj."
+#: src/modules/eventeditor/EventEditorWindow.cpp:217
+#: src/modules/raweditor/RawEditorWindow.cpp:156
+msgid "&Enable Handler"
+msgstr "&Ebligi Traktilon"
 
-#: src/modules/actioneditor/ActionEditor.cpp:173
-msgid "Key Sequence:"
-msgstr "Klavsinsekvo:"
+#: src/modules/codetester/CodeTesterWindow.cpp:57
+msgid "&Execute"
+msgstr "&Plenumi"
 
-#: src/modules/actioneditor/ActionEditor.cpp:177
-msgid "Optional keyboard sequence that will activate this action.<br>The sequence has to be expressed as a string of up to four key codes separated by commas eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
-msgstr "Opcia klavara sinsekvo kiu aktivigos ĉi tiun agon.<br>La sinsekvo devas esti esprimita kiel ĉeno de ĝis kvar klavkodoj apartigita de komoj iam kombinita kun la modifiloj \"Stir\",\"Ŝov\",\"Alt\" kaj \"Meta\".<br>Ekzempleroj de tiaj sinsekvoj estas \"Stir+X\",\"Stir+Alt+Z\",\"Stir+X,Ctrl+C\" ..."
+#: src/modules/eventeditor/EventEditorWindow.cpp:104
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1045
+#: src/modules/raweditor/RawEditorWindow.cpp:100
+msgid "&Export All To..."
+msgstr "&Eksporti Ĉiujn Al..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:188
-msgid "Properties"
-msgstr "Atributoj"
+#: src/modules/eventeditor/EventEditorWindow.cpp:229
+#: src/modules/raweditor/RawEditorWindow.cpp:168
+msgid "&Export Handler To..."
+msgstr "&Eksporti Traktilon Al..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:195
-msgid "Needs IRC Context"
-msgstr "Bezonas IRC Kuntekston"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1157
+msgid "&Export Popup To..."
+msgstr "&Eksporti Ŝprucaĵon Al..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:197
-msgid "Check this option if this action should be enabled only when the active window belongs to an irc context"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro apartenas al la irc kunteksto"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1047
+msgid "&Export selected To..."
+msgstr "&Eksporti selektitaĵon Al..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:206
-msgid "Needs IRC Connection"
-msgstr "Bezonas IRC Konekton"
+#: src/modules/eventeditor/EventEditorWindow.cpp:234
+#: src/modules/raweditor/RawEditorWindow.cpp:173
+msgid "&New Handler"
+msgstr "&Nova Traktilo"
 
-#: src/modules/actioneditor/ActionEditor.cpp:208
-msgid "Check this option if this action should be enabled only when the active window has an active IRC connection"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro havas aktivan IRC konekton"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1146
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1167
+msgid "&New Popup"
+msgstr "&Nova Ŝprucaĵo"
 
-#: src/modules/actioneditor/ActionEditor.cpp:217
-msgid "Enable at Login"
-msgstr "Ebligi je Ensaluto"
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1187
+#: src/modules/eventeditor/EventEditorWindow.cpp:471
+#: src/modules/eventeditor/EventEditorWindow.cpp:523
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1379
+#: src/modules/raweditor/RawEditorWindow.cpp:426
+#: src/modules/raweditor/RawEditorWindow.cpp:476
+msgid "&OK"
+msgstr "&Bone"
 
-#: src/modules/actioneditor/ActionEditor.cpp:218
-msgid "Check this option if this action should be enabled also during the login operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita ankaŭ dum la ensalutaj operacioj (do kiam la logika IRC konekto ne estis ebligita ankoraŭ)"
+#: src/modules/editor/ScriptEditorImplementation.cpp:799
+msgid "&Open..."
+msgstr "&Malfermi..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:222
-msgid "Enable Only in Specified Windows"
-msgstr "Ebligi Nur en Specifitaj Fenestroj"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:435
+msgid "&Paste Below"
+msgstr "&Alglui Sube"
 
-#: src/modules/actioneditor/ActionEditor.cpp:224
-msgid "Check this option if this action should be enabled only when the active window is of a specified type"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro estas de specifita tipo"
+#: src/modules/classeditor/ClassEditorWindow.cpp:2099
+msgid "&Rename"
+msgstr "&Renomi"
 
-#: src/modules/actioneditor/ActionEditor.cpp:229
-msgid "Enable in Console Windows"
-msgstr "Ebligi en Konzolaj Fenestroj"
+#: src/modules/classeditor/ClassEditorWindow.cpp:1996
+msgid "&Rename Class"
+msgstr "&Renomi Klason"
 
-#: src/modules/actioneditor/ActionEditor.cpp:230
-msgid "Check this option if this action should be enabled only when the active window is a console"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro estas konzolo"
+#: src/modules/editor/ScriptEditorImplementation.cpp:256
+#: src/modules/editor/ScriptEditorImplementation.cpp:1097
+msgid "&Replace"
+msgstr "&Anstataŭigi"
 
-#: src/modules/actioneditor/ActionEditor.cpp:235
-#: src/modules/actioneditor/ActionEditor.cpp:246
-#: src/modules/actioneditor/ActionEditor.cpp:257
-msgid "Only If There Are Selected Users"
-msgstr "Nur Se Estas Elektitaj Uzuloj"
+#: src/modules/editor/ScriptEditorImplementation.cpp:1087
+msgid "&Replace in all editor's items"
+msgstr "&Anstataŭigi en ĉiuj redaktilaj eroj"
 
-#: src/modules/actioneditor/ActionEditor.cpp:236
-#: src/modules/actioneditor/ActionEditor.cpp:247
-#: src/modules/actioneditor/ActionEditor.cpp:258
-msgid "This will enable the action only if there are selected users in the active window"
-msgstr "Ĉi tio ebligos la agon nur se estas elektitaj uzuloj en la aktiva fenestro"
+#: src/modules/classeditor/ClassEditorWindow.cpp:1854
+msgid "&Save"
+msgstr "&Savi"
 
-#: src/modules/actioneditor/ActionEditor.cpp:240
-msgid "Enable in Channel Windows"
-msgstr "Ebligi en Kanalaj Fenestroj"
+#: src/modules/editor/ScriptEditorImplementation.cpp:800
+msgid "&Save As..."
+msgstr "&Savi Kiel..."
 
-#: src/modules/actioneditor/ActionEditor.cpp:241
-msgid "Check this option if this action should be enabled only when the active window is a channel"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro estas kanalo"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:243
+msgid ""
+"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
+"order to decide if this entry has to be shown.<br>An empty condition "
+"evaluates to true.</center>"
+msgstr ""
+"<center><b>Bulea kondiĉo</b><br>Estos evaluata je ŝprucaĵa voka tempo por "
+"decidi ĉu ĉi tiu eniro devas esti montrata.<br>Malplena kondiĉo evaluas al "
+"true.</center>"
 
-#: src/modules/actioneditor/ActionEditor.cpp:251
-msgid "Enable in Query Windows"
-msgstr "Ebligi en Petaj Fenestroj"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:261
+msgid ""
+"<center><b>External menu name</b><br>This allows one to nest externally "
+"defined popup menus. The popup menu with the specified name will be looked "
+"up at menu setup time.</center>"
+msgstr ""
+"<center><b>Ekstera menua nomo</b><br>Ĉi tiu permesas eningigi ekstere "
+"difinitajn ŝprucmenuojn. La ŝprucmenuo kun la specifita nomo estos serĉata "
+"je menustariga tempo.</center>"
 
-#: src/modules/actioneditor/ActionEditor.cpp:252
-msgid "Check this option if this action should be enabled only when the active window is a query"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro estas peto"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:252
+msgid ""
+"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+"path or a relative path.<br>Portable scripts should never use absolute paths."
+"</center>"
+msgstr ""
+"<center><b>Piktograma identifigilo</b><br>Povus esti interna piktograma ID, "
+"absoluta pado aŭ relative pado.<br>Porteblaj skriptoj devas neniam uzi "
+"absolutajn padojn.</center>"
 
-#: src/modules/actioneditor/ActionEditor.cpp:262
-msgid "Enable in DCC Chat Windows"
-msgstr "Ebligi en DCC Babilaj Fenestroj"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:271
+msgid ""
+"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+"center>"
+msgstr ""
+"<center><b>Era id</b><br>Ĉi tiu permesos vin uzi forigŝpruceron poste.</"
+"center>"
 
-#: src/modules/actioneditor/ActionEditor.cpp:263
-msgid "Check this option if this action should be enabled only when the active window is a dcc chat"
-msgstr "Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva fenestro estas dcc babilo"
-
-#: src/modules/actioneditor/ActionEditor.cpp:272
-msgid "Flags"
-msgstr "Flagoj"
+#: src/modules/popupeditor/PopupEditorWindow.cpp:234
+msgid ""
+"<center><b>Visible text</b><br>May contain identifiers that will be "
+"evaluated at popup call time.<br>For labels, this text can contain also "
+"limited HTML tags.</center>"
+msgstr ""
+"<center><b>Videbla teksto</b><br>Povas enhavi identifigilojn kiuj estos "
+"evaluataj je ŝprucaĵa tempo.<br>Por etikedoj, ĉi tiu teksto povas enhavi "
+"ankaŭ limigitajn HTML foliojn.</center>"
 
 #: src/modules/actioneditor/ActionEditor.cpp:580
 msgid "Action"
 msgstr "Ago"
 
-#: src/modules/actioneditor/ActionEditor.cpp:621
-msgid "New Action"
-msgstr "Nova Ago"
+#: src/modules/actioneditor/ActionEditor.cpp:855
+msgid "Action Editor"
+msgstr "Aga Redaktilo"
 
-#: src/modules/actioneditor/ActionEditor.cpp:624
-msgid "Delete Actions"
-msgstr "Forigi Agojn"
+#: src/modules/actioneditor/ActionEditor.cpp:124
+msgid "Action code"
+msgstr "Aga kodo"
 
-#: src/modules/actioneditor/ActionEditor.cpp:627
-msgid "Export Actions..."
-msgstr "Eksporti Agojn..."
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:560
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
+msgid "Add Alias"
+msgstr "Adicii Alinomon"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:893
+msgid "Add Class"
+msgstr "Adicii Klason"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:902
+msgid "Add Member Function"
+msgstr "Adicii Funkcianon"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:565
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1129
+#: src/modules/classeditor/ClassEditorWindow.cpp:884
+#: src/modules/classeditor/ClassEditorWindow.cpp:1596
+msgid "Add Namespace"
+msgstr "Adicii Nomspacon"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
+msgid "Advanced..."
+msgstr "Altgrada..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:100
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:343
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:539
+msgid "Alias"
+msgstr "Alinomo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1180
+msgid "Alias Editor"
+msgstr "Alinoma Redaktilo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:720
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:788
+msgid "Alias Export"
+msgstr "Alinoma Eksporto"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:444
+msgid "Alias already exists"
+msgstr "Alinomo jam ekzistas"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1002
+msgid ""
+"Alias names can contain only letters, digits, underscores and '::' namespace "
+"separators"
+msgstr ""
+"Alinomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' nomspacajn "
+"apartigilojn"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:326
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Ekstera skripto ŝanĝis la alinomon ke vi nuntempe redaktas. Ĉu vi volas "
+"akcepti la eksterajn ŝanĝojn?"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1115
+msgid ""
+"An external script has changed the popup you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Ekstera skripto ŝanĝis la ŝprucaĵon kiun vi nuntempe redaktas. Ĉu vi volas "
+"akcepti la eksterajn ŝanĝojn?"
+
+#: src/modules/actioneditor/ActionEditor.cpp:867
+msgid "Apply"
+msgstr "Apliki"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+msgid "Automatically"
+msgstr "Aŭtomate"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:530
+msgid "Background:"
+msgstr "Fono:"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1001
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1015
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1026
+msgid "Bad Alias Name"
+msgstr "Malbona Alinomo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1069
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1083
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1094
+#: src/modules/classeditor/ClassEditorWindow.cpp:1519
+#: src/modules/classeditor/ClassEditorWindow.cpp:1533
+#: src/modules/classeditor/ClassEditorWindow.cpp:1544
+msgid "Bad Namespace Name"
+msgstr "Malbona Nomspaca Nomo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:158
+msgid "Big Icon:"
+msgstr "Granda Piktogramo:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:532
+msgid "Brackets:"
+msgstr "Parentezoj:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1025
+msgid "Can't open the file %1 for reading."
+msgstr "Ne povas malfermi la dosieron %1 por legi."
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:937
+msgid "Can't open the file %1 for writing."
+msgstr "Ne povas malfermi la dosieron %1 por skribi"
+
+#: src/modules/actioneditor/ActionEditor.cpp:872
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1197
+#: src/modules/editor/ScriptEditorImplementation.cpp:546
+#: src/modules/eventeditor/EventEditorWindow.cpp:533
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1389
+#: src/modules/raweditor/RawEditorWindow.cpp:486
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:408
+msgid "Cancel"
+msgstr "Rezigni"
+
+#: src/modules/actioneditor/ActionEditor.cpp:132
+msgid "Category:"
+msgstr "Kategorio:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:218
+msgid ""
+"Check this option if this action should be enabled also during the login "
+"operations (so when the logical IRC connection hasn't been estabilished yet)"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita ankaŭ dum la "
+"ensalutaj operacioj (do kiam la logika IRC konekto ne estis ebligita ankoraŭ)"
+
+#: src/modules/actioneditor/ActionEditor.cpp:197
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window belongs to an irc context"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro apartenas al la irc kunteksto"
+
+#: src/modules/actioneditor/ActionEditor.cpp:208
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window has an active IRC connection"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro havas aktivan IRC konekton"
+
+#: src/modules/actioneditor/ActionEditor.cpp:241
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a channel"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro estas kanalo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:230
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a console"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro estas konzolo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:263
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a dcc chat"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro estas dcc babilo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:252
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a query"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro estas peto"
+
+#: src/modules/actioneditor/ActionEditor.cpp:224
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is of a specified type"
+msgstr ""
+"Marki ĉi tiun opcion se ĉi tiu ago devus esti ebligita nur kiam la aktiva "
+"fenestro estas de specifita tipo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:726
+#: src/modules/classeditor/ClassEditorWindow.cpp:1118
+msgid "Choose a Directory - KVIrc"
+msgstr "Elekti Dosierujon - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:688
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:808
@@ -194,22 +445,516 @@ msgstr "Eksporti Agojn..."
 msgid "Choose a Filename - KVIrc"
 msgstr "Elekti Dosiernomon - KVIrc"
 
-#: src/modules/actioneditor/ActionEditor.cpp:715
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:819
-#: src/modules/classeditor/ClassEditorWindow.cpp:1239
-#: src/modules/eventeditor/EventEditorWindow.cpp:471
-#: src/modules/eventeditor/EventEditorWindow.cpp:509
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1193
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1241
-#: src/modules/raweditor/RawEditorWindow.cpp:426
-#: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
-msgid "Write Failed - KVIrc"
-msgstr "Skribo Malsukcesis - KVIrc"
+#: src/modules/actioneditor/ActionEditor.cpp:136
+msgid "Choose the category that best fits for this action"
+msgstr "Elekti la kategorion kiu plej bone akordas kun ĉi tiu ago"
 
-#: src/modules/actioneditor/ActionEditor.cpp:715
-msgid "Unable to write to the actions file."
-msgstr "Ne povas skribi al la aga dosiero."
+#: src/modules/classeditor/ClassEditorWindow.cpp:72
+#: src/modules/classeditor/ClassEditorWindow.cpp:802
+msgid "Class"
+msgstr "Klaso"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1842
+msgid "Class Editor"
+msgstr "Klasredaktilo"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1112
+#: src/modules/classeditor/ClassEditorWindow.cpp:1207
+msgid "Class Export"
+msgstr "Klasa Eksporto"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:604
+msgid "Class already exists"
+msgstr "Klaso jam ekzistas"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1934
+msgid "Class names can contain only letters, digits and underscores"
+msgstr "Klasaj nomoj povas havi nur literojn, ciferojn kaj substrekojn"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1859
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
+msgid "Close"
+msgstr "Fermi"
+
+#: src/modules/actioneditor/ActionEditor.cpp:126
+msgid "Code"
+msgstr "Kodo"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:951
+msgid "Collapse All Items"
+msgstr "Kolapsigi Ĉiujn Erojn"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:609
+msgid "Collapse All Namespaces"
+msgstr "Kolapsi Ĉiujn Nomspacojn"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:527
+msgid "Colors"
+msgstr "Koloroj"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:533
+msgid "Comments:"
+msgstr "Komentoj:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1709
+msgid "Compilation error - KVIrc"
+msgstr "Kompilada eraro - KVIrc"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:237
+msgid "Condition:"
+msgstr "Kondiĉo:"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:380
+msgid "Confirm ToolBar Deletion"
+msgstr "Konfirmi Ilbretan Forigon"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:255
+msgid "Context sensitive help"
+msgstr "Kunteksta sentiva helpo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:425
+msgid "Cu&t"
+msgstr "&Tranĉi"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
+msgid "Customize Toolbars"
+msgstr "Tajlori Ilbretojn"
+
+#: src/modules/actioneditor/ActionEditor.cpp:624
+msgid "Delete Actions"
+msgstr "Forigi Agojn"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:307
+msgid "Delete ToolBar"
+msgstr "Forigi Ilbreton"
+
+#: src/modules/actioneditor/ActionEditor.cpp:138
+msgid "Description:"
+msgstr "Priskribo:"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
+msgid "Do you really want to delete toolbar \"%1\" ?"
+msgstr "Ĉu vi vere volas forigi ilbreton \"%1\"?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:922
+msgid "Do you really want to remove the alias \"%1\"?"
+msgstr "Ĉu vi vere volas forigi la alinomon \"%1\"?"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1356
+msgid "Do you really want to remove the class \"%1\"?"
+msgstr "Ĉu vi vere volas forigi la klason \"%1\"?"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1364
+msgid "Do you really want to remove the function \"%1\"?"
+msgstr "Ĉu vi vere volas forigi la funkcion \"%1\"?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:924
+#: src/modules/classeditor/ClassEditorWindow.cpp:1359
+msgid "Do you really want to remove the namespace \"%1\"?"
+msgstr "Ĉu vi vere volas forigi la nomspacon \"%1\"?"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
+msgid "Do you want the associated actions to be exported with the toolbar ?"
+msgstr "Ĉu vi volas ke la asociitaj agoj esti eksportitaj kun la ilbreto?"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
+msgid "Drop here the icons from the toolbars to remove them"
+msgstr "Faligu ĉi tie la piktogramojn de la ilbretoj por forigi ilin"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
+msgid "Duplicate ToolBar Id"
+msgstr "Duobligi Ilbretan Id"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
+msgid "Edit ToolBar"
+msgstr "Redakti Ilbreton"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:146
+msgid "Edit the alias or namespace name"
+msgstr "Redakti la alinomon aŭ nomspacan nomon"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:198
+msgid "Edit the class or namespace name"
+msgstr "Redakti la klason aŭ nomspacan nomon"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:115
+msgid "Edit the event handler name."
+msgstr "Redakti la eventan traktilan nomon."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:212
+msgid "Edit the function member name"
+msgstr "Redakti la funkcianan nomon"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:105
+msgid "Edit the raw event handler name."
+msgstr "Redakti la krudan eventan traktilan nomon."
+
+#: src/modules/actioneditor/ActionEditor.cpp:222
+msgid "Enable Only in Specified Windows"
+msgstr "Ebligi Nur en Specifitaj Fenestroj"
+
+#: src/modules/actioneditor/ActionEditor.cpp:217
+msgid "Enable at Login"
+msgstr "Ebligi je Ensaluto"
+
+#: src/modules/actioneditor/ActionEditor.cpp:240
+msgid "Enable in Channel Windows"
+msgstr "Ebligi en Kanalaj Fenestroj"
+
+#: src/modules/actioneditor/ActionEditor.cpp:229
+msgid "Enable in Console Windows"
+msgstr "Ebligi en Konzolaj Fenestroj"
+
+#: src/modules/actioneditor/ActionEditor.cpp:262
+msgid "Enable in DCC Chat Windows"
+msgstr "Ebligi en DCC Babilaj Fenestroj"
+
+#: src/modules/actioneditor/ActionEditor.cpp:251
+msgid "Enable in Query Windows"
+msgstr "Ebligi en Petaj Fenestroj"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:221
+msgid "Enter the numeric code of the message (0-999)"
+msgstr "Enmeti la ciferan kodon de la mesaĝo (0-999)"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:97
+msgid "Epilogue"
+msgstr "Epilogo"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:187
+msgid "Event"
+msgstr "Evento"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:571
+msgid "Event Editor"
+msgstr "Eventa Redaktilo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:627
+msgid "Export Actions..."
+msgstr "Eksporti Agojn..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:595
+#: src/modules/classeditor/ClassEditorWindow.cpp:937
+msgid "Export All..."
+msgstr "Eksporti Ĉion..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:589
+#: src/modules/classeditor/ClassEditorWindow.cpp:930
+msgid "Export Selected in singles files..."
+msgstr "Eksporti Elektitaĵon en simplaj dosieroj..."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:583
+#: src/modules/classeditor/ClassEditorWindow.cpp:924
+msgid "Export Selected..."
+msgstr "Eksporti Elektitaĵon..."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:319
+msgid "Export ToolBar"
+msgstr "Eksporti Ilbreton"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:86
+msgid "External Menu"
+msgstr "Ekstera Menuo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:255
+msgid "External menu:"
+msgstr "Ekstera menuo:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:811
+msgid "Find"
+msgstr "Trovi"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:269
+msgid "Find & Replace"
+msgstr "Trovi & Anstataŭigi"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:638
+msgid "Find In Aliases"
+msgstr "Trovi en Alinomoj"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:603
+msgid "Find In Aliases..."
+msgstr "Trovi en Alinomoj..."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:995
+msgid "Find In Classes"
+msgstr "Trovi en Klasoj"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:945
+msgid "Find In Classes..."
+msgstr "Trovi en Klasoj..."
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:538
+msgid "Find:"
+msgstr "Trovi:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:272
+msgid "Flags"
+msgstr "Flagoj"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:525
+msgid "Font:"
+msgstr "Tiparo:"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1027
+msgid "Found an empty namespace in alias name"
+msgstr "Trovis malplenan nomspacon en alinomo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1095
+#: src/modules/classeditor/ClassEditorWindow.cpp:1545
+msgid "Found an empty namespace in namespace name"
+msgstr "Trovis malplenan nomspacon en nomspaca nomo"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:542
+msgid "Function already exists"
+msgstr "Funkcio jam ekzistas"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2052
+msgid "Function names can contain only letters, digits and underscores"
+msgstr "Funkciaj nomoj povas havi nur literojn, ciferojn kaj substrekojn"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:534
+msgid "Functions:"
+msgstr "Funkcioj:"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:64
+msgid ""
+"Here you can specify a semicolon-separated list of parameters that will be "
+"available in the code as $0, $1, $2, .."
+msgstr ""
+"Ĉi tie vi povas specifi punktokome apartigitan liston de parametroj kiuj "
+"disponeblos en la kodo kiel $0, $1, $2, ..."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
+msgid "Hide Advanced"
+msgstr "Kaŝi Altgradan"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:153
+msgid "Icon"
+msgstr "Piktogramo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:246
+msgid "Icon:"
+msgstr "Piktogramo:"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:169
+msgid "Id"
+msgstr "Id"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1938
+msgid ""
+"In rename mode class names can contain only letters, digits and underscores "
+"and namespaces :: separator"
+msgstr ""
+"Ĉe renoma reĝimo klasnomoj povas havi nur literojn, ciferojn kaj substrekojn "
+"kaj nomspacan :: apartigilon"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1951
+msgid "Inherits Class:"
+msgstr "Heredas Klason:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:106
+msgid "Internal unique name for the action"
+msgstr "Interna unika nomo por la ago"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+msgid "Invalid ToolBar Label"
+msgstr "Nevalida Ilbreta Etikedo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:80
+#: src/modules/popupeditor/PopupEditorWindow.cpp:211
+msgid "Item"
+msgstr "Ero"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:264
+msgid "Item Id:"
+msgstr "Era id:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:173
+msgid "Key Sequence:"
+msgstr "Klavsinsekvo:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:535
+msgid "Keywords:"
+msgstr "Ŝlosilvortoj:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:93
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
+msgid "Label"
+msgstr "Etikedo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:108
+msgid "Label:"
+msgstr "Etikedo:"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1011
+msgid "Load Script File - KVIrc"
+msgstr "Ŝargi Skriptan Dosieron - KVIrc"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+msgid "Manually"
+msgstr "Permane"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:812
+msgid "Member Function"
+msgstr "Ana Funkcio"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:988
+msgid "Missing Alias Name"
+msgstr "Mankas Alinomo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1056
+#: src/modules/classeditor/ClassEditorWindow.cpp:1506
+msgid "Missing Namespace Name"
+msgstr "Mankanta Nomspaca Nomo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:762
+#: src/modules/actioneditor/ActionEditor.cpp:763
+msgid "My Action"
+msgstr "Mia Ago"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:498
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:499
+msgid "My ToolBar"
+msgstr "Mia Ilbreto"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:688
+msgid "Name already exists as Class name"
+msgstr "Nomo jam ekzistas kiel Klasa nomo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:102
+msgid "Name:"
+msgstr "Nomo:"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:341
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:527
+#: src/modules/classeditor/ClassEditorWindow.cpp:787
+msgid "Namespace"
+msgstr "Nomspaco"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:456
+#: src/modules/classeditor/ClassEditorWindow.cpp:693
+msgid "Namespace already exists"
+msgstr "Nomspaco jam ekzistas"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1070
+#: src/modules/classeditor/ClassEditorWindow.cpp:1520
+msgid ""
+"Namespace names can contain only letters, digits, underscores and '::' "
+"namespace separators"
+msgstr ""
+"Nomspacaj nomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' "
+"nomspacajn apartigilojn"
+
+#: src/modules/actioneditor/ActionEditor.cpp:206
+msgid "Needs IRC Connection"
+msgstr "Bezonas IRC Konekton"
+
+#: src/modules/actioneditor/ActionEditor.cpp:195
+msgid "Needs IRC Context"
+msgstr "Bezonas IRC Kuntekston"
+
+#: src/modules/actioneditor/ActionEditor.cpp:621
+msgid "New Action"
+msgstr "Nova Ago"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:416
+msgid "New External Menu Above"
+msgstr "Nova Ekstera Menuo Supre"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:415
+msgid "New External Menu Below"
+msgstr "Nova Ekstera Menuo Sube"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:418
+msgid "New External Menu Inside"
+msgstr "Nova Ekstera Menuo Ene"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:400
+msgid "New Item Above"
+msgstr "Nova Ero Supre"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:399
+msgid "New Item Below"
+msgstr "Nova Ero Sube"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:402
+msgid "New Item Inside"
+msgstr "Nova Ero Ene"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:392
+msgid "New Label Above"
+msgstr "Nova Etikedo Supre"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:391
+msgid "New Label Below"
+msgstr "Nove Etikedo Sube"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:394
+msgid "New Label Inside"
+msgstr "Nova Etikedo Ene"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:408
+msgid "New Menu Above"
+msgstr "Nova Menuo Supre"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:407
+msgid "New Menu Below"
+msgstr "Nova Menuo Sube"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:462
+msgid "New Menu Epilogue"
+msgstr "Nova Menua Epilogo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:410
+msgid "New Menu Inside"
+msgstr "Nova Menuo Ene"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:454
+msgid "New Menu Prologue"
+msgstr "Nova Menua Prologo"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:221
+msgid "New Raw Event"
+msgstr "Nova Kruda Evento"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:384
+msgid "New Separator Above"
+msgstr "Nova Apartigilo Supre"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:383
+msgid "New Separator Below"
+msgstr "Nova Apartigilo Sube"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:386
+msgid "New Separator Inside"
+msgstr "Nova Apartigilo Ene"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
+msgid "New ToolBar"
+msgstr "Nova Ilbreto"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:747
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:930
+#: src/modules/classeditor/ClassEditorWindow.cpp:1138
+#: src/modules/classeditor/ClassEditorWindow.cpp:1368
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:407
+msgid "No"
+msgstr "Ne"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:141
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:517
+#: src/modules/classeditor/ClassEditorWindow.cpp:194
+#: src/modules/classeditor/ClassEditorWindow.cpp:209
+#: src/modules/classeditor/ClassEditorWindow.cpp:216
+#: src/modules/classeditor/ClassEditorWindow.cpp:770
+#: src/modules/eventeditor/EventEditorWindow.cpp:388
+msgid "No item selected"
+msgstr "Nenia ero elektita"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:531
+msgid "Normal text:"
+msgstr "Normala teksto:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:715
 #: src/modules/actioneditor/ActionEditor.cpp:862
@@ -229,104 +974,6 @@ msgstr "Ne povas skribi al la aga dosiero."
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
 msgid "OK"
 msgstr "Bone"
-
-#: src/modules/actioneditor/ActionEditor.cpp:762
-#: src/modules/actioneditor/ActionEditor.cpp:763
-msgid "My Action"
-msgstr "Mia Ago"
-
-#: src/modules/actioneditor/ActionEditor.cpp:764
-msgid "Put here a short description of your action"
-msgstr "Meti ĉi tien mallongan priskribon de via ago"
-
-#: src/modules/actioneditor/ActionEditor.cpp:855
-msgid "Action Editor"
-msgstr "Aga Redaktilo"
-
-#: src/modules/actioneditor/ActionEditor.cpp:867
-msgid "Apply"
-msgstr "Apliki"
-
-#: src/modules/actioneditor/ActionEditor.cpp:872
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1197
-#: src/modules/editor/ScriptEditorImplementation.cpp:546
-#: src/modules/eventeditor/EventEditorWindow.cpp:533
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1389
-#: src/modules/raweditor/RawEditorWindow.cpp:486
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:408
-msgid "Cancel"
-msgstr "Rezigni"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:100
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:343
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:539
-msgid "Alias"
-msgstr "Alinomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:141
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:517
-#: src/modules/classeditor/ClassEditorWindow.cpp:194
-#: src/modules/classeditor/ClassEditorWindow.cpp:209
-#: src/modules/classeditor/ClassEditorWindow.cpp:216
-#: src/modules/classeditor/ClassEditorWindow.cpp:770
-#: src/modules/eventeditor/EventEditorWindow.cpp:388
-msgid "No item selected"
-msgstr "Nenia ero elektita"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:142
-#: src/modules/classeditor/ClassEditorWindow.cpp:197
-#: src/modules/classeditor/ClassEditorWindow.cpp:211
-msgid "Rename"
-msgstr "Renomi"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:146
-msgid "Edit the alias or namespace name"
-msgstr "Redakti la alinomon aŭ nomspacan nomon"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:325
-msgid "OverWrite Current Alias"
-msgstr "Anstataŭigi Nunan Alinomon"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:326
-msgid "An external script has changed the alias you are currently editing. Do you want to accept the external changes?"
-msgstr "Ekstera skripto ŝanĝis la alinomon ke vi nuntempe redaktas. Ĉu vi volas akcepti la eksterajn ŝanĝojn?"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:341
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:527
-#: src/modules/classeditor/ClassEditorWindow.cpp:787
-msgid "Namespace"
-msgstr "Nomspaco"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:430
-msgid "Rename Alias"
-msgstr "Renomi Alinomon"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:430
-msgid "Please enter the new name for the alias"
-msgstr "Bonvolu enigi la novan nomon por la alinomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:432
-#: src/modules/classeditor/ClassEditorWindow.cpp:677
-msgid "Rename Namespace"
-msgstr "Renomi Nomspacon"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:432
-#: src/modules/classeditor/ClassEditorWindow.cpp:677
-msgid "Please enter the new name for the namespace"
-msgstr "Bonvolu enigi la novan nomon por la nomspaco"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:444
-msgid "Alias already exists"
-msgstr "Alinomo jam ekzistas"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:445
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:457
-#: src/modules/classeditor/ClassEditorWindow.cpp:543
-#: src/modules/classeditor/ClassEditorWindow.cpp:605
-#: src/modules/classeditor/ClassEditorWindow.cpp:694
-msgid "This name is already in use. Please choose another one."
-msgstr "Ĉi tiu nomo jam estas uzata. Bonvolu elekti alian."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:446
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:458
@@ -349,83 +996,414 @@ msgstr "Ĉi tiu nomo jam estas uzata. Bonvolu elekti alian."
 msgid "Ok, Let me try again..."
 msgstr "Bone. Lasu min peni denove..."
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:456
-#: src/modules/classeditor/ClassEditorWindow.cpp:693
-msgid "Namespace already exists"
-msgstr "Nomspaco jam ekzistas"
+#: src/modules/actioneditor/ActionEditor.cpp:235
+#: src/modules/actioneditor/ActionEditor.cpp:246
+#: src/modules/actioneditor/ActionEditor.cpp:257
+msgid "Only If There Are Selected Users"
+msgstr "Nur Se Estas Elektitaj Uzuloj"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:560
+#: src/modules/editor/ScriptEditorImplementation.cpp:1024
+msgid "Open Failed - KVIrc"
+msgstr "Malfermo Malsukcesis - KVIrc"
+
+#: src/modules/actioneditor/ActionEditor.cpp:177
+msgid ""
+"Optional keyboard sequence that will activate this action.<br>The sequence "
+"has to be expressed as a string of up to four key codes separated by commas "
+"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
+"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
+"Ctrl+C\" ..."
+msgstr ""
+"Opcia klavara sinsekvo kiu aktivigos ĉi tiun agon.<br>La sinsekvo devas esti "
+"esprimita kiel ĉeno de ĝis kvar klavkodoj apartigita de komoj iam kombinita "
+"kun la modifiloj \"Stir\",\"Ŝov\",\"Alt\" kaj \"Meta\".<br>Ekzempleroj de "
+"tiaj sinsekvoj estas \"Stir+X\",\"Stir+Alt+Z\",\"Stir+X,Ctrl+C\" ..."
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:794
+msgid "Options"
+msgstr "Opcioj"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:325
+msgid "OverWrite Current Alias"
+msgstr "Anstataŭigi Nunan Alinomon"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1114
+msgid "OverWrite Current Popup"
+msgstr "Anstataŭigi Nunan Ŝprucaĵon"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:61
+msgid "Params:"
+msgstr "Parametroj:"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:439
+msgid "Paste Above"
+msgstr "&Alglui Supre"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:443
+msgid "Paste Inside"
+msgstr "&Alglui Ene"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:225
+msgid "Please choose the icon for the ToolBar"
+msgstr "Bonvolu elekti la piktogramon por la Ilbreto"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1923
+msgid "Please enter the name for the class:"
+msgstr "Bonvolu enigi la nomon por la klaso:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2043
+msgid "Please enter the name for the member function:"
+msgstr "Bonvolu enigi la nomon por la funkciano:"
+
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
-msgid "Add Alias"
-msgstr "Adicii Alinomon"
+msgid "Please enter the name for the new alias"
+msgstr "Bonvolu enigi la nomon por la nova alinomo"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:565
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1129
-#: src/modules/classeditor/ClassEditorWindow.cpp:884
 #: src/modules/classeditor/ClassEditorWindow.cpp:1596
-msgid "Add Namespace"
-msgstr "Adicii Nomspacon"
+msgid "Please enter the name for the new namespace"
+msgstr "Bonvolu enigi la nomon por la nova nomspaco"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:430
+msgid "Please enter the new name for the alias"
+msgstr "Bonvolu enigi la novan nomon por la alinomo"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:432
+#: src/modules/classeditor/ClassEditorWindow.cpp:677
+msgid "Please enter the new name for the namespace"
+msgstr "Bonvolu enigi la novan nomon por la nomspaco"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2064
+msgid "Please enter the optional reminder string for the member function:"
+msgstr "Bonvolu enigi la opcian atentigilan ĉenon por la funkciano"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:639
+msgid ""
+"Please enter the text to be searched for. The matching aliases will be "
+"highlighted."
+msgstr ""
+"Bonvolu enigi la tekston serĉotan. La kongruantaj alinomoj estos markitaj."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:996
+msgid ""
+"Please enter the text to be searched for. The matching function will be "
+"highlighted."
+msgstr "Bonvolu enmeti la tekston serĉotan. La kongrua funkcio estos markita."
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1361
+msgid ""
+"Please note that all the children classes/functions will be deleted too."
+msgstr "Bonvolu noti ke ĉiuj idaj klasoj/funkcioj estos forigitaj ankaŭ."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:926
+msgid "Please note that all the children items will be deleted too."
+msgstr "Bonvolu noti ke ĉiuj eridoj estos forigataj ankaŭ."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
+msgid "Please specify the properties for the new toolbar"
+msgstr "Bonvolu specifi la atributojn por la nova ilbreto"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:471
+msgid "Please specify the properties for the toolbar \"%1\""
+msgstr "Bonvolu specifi la atributojn por la ilbreto \"%1\""
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1041
+msgid "Popup"
+msgstr "Ŝprucaĵo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1427
+msgid "Popup Editor"
+msgstr "Ŝprucaĵa Redaktilo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:197
+msgid "Popup name"
+msgstr "Ŝprucaĵa Nomo"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:519
+msgid "Preferences"
+msgstr "Preferoj"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:101
+msgid "Prologue"
+msgstr "Prologo"
+
+#: src/modules/actioneditor/ActionEditor.cpp:188
+msgid "Properties"
+msgstr "Atributoj"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:537
+msgid "Punctuation:"
+msgstr "Interpunkcio:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:764
+msgid "Put here a short description of your action"
+msgstr "Meti ĉi tien mallongan priskribon de via ago"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:524
+msgid "Raw Editor"
+msgstr "Krudeca Redaktilo"
+
+#: src/modules/raweditor/RawEditorWindow.cpp:88
+msgid "Raw Event"
+msgstr "Kruda Evento"
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:225
+#: src/modules/raweditor/RawEditorWindow.cpp:164
+msgid "Re&move Handler"
+msgstr "&Forigi Traktilon"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1151
+msgid "Re&move Popup"
+msgstr "Forigi Ŝprucaĵon"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:822
+msgid "Reminder text."
+msgstr "Atentiga teksto."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:575
 #: src/modules/classeditor/ClassEditorWindow.cpp:916
 msgid "Remove Selected"
 msgstr "Forigi Elektitaĵon"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:583
-#: src/modules/classeditor/ClassEditorWindow.cpp:924
-msgid "Export Selected..."
-msgstr "Eksporti Elektitaĵon..."
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:930
+#: src/modules/classeditor/ClassEditorWindow.cpp:1368
+msgid "Remove item"
+msgstr "Forigi eron"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:589
-#: src/modules/classeditor/ClassEditorWindow.cpp:930
-msgid "Export Selected in singles files..."
-msgstr "Eksporti Elektitaĵon en simplaj dosieroj..."
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:142
+#: src/modules/classeditor/ClassEditorWindow.cpp:197
+#: src/modules/classeditor/ClassEditorWindow.cpp:211
+msgid "Rename"
+msgstr "Renomi"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:595
-#: src/modules/classeditor/ClassEditorWindow.cpp:937
-msgid "Export All..."
-msgstr "Eksporti Ĉion..."
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:430
+msgid "Rename Alias"
+msgstr "Renomi Alinomon"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:603
-msgid "Find In Aliases..."
-msgstr "Trovi en Alinomoj..."
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:432
+#: src/modules/classeditor/ClassEditorWindow.cpp:677
+msgid "Rename Namespace"
+msgstr "Renomi Nomspacon"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:609
-msgid "Collapse All Namespaces"
-msgstr "Kolapsi Ĉiujn Nomspacojn"
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:747
+#: src/modules/classeditor/ClassEditorWindow.cpp:1138
+msgid "Replace file"
+msgstr "Anstataŭigi dosieron"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:638
-msgid "Find In Aliases"
-msgstr "Trovi en Alinomoj"
+#: src/modules/editor/ScriptEditorImplementation.cpp:1075
+msgid "Replace with"
+msgstr "Anstataŭigi kun"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:639
-msgid "Please enter the text to be searched for. The matching aliases will be highlighted."
-msgstr "Bonvolu enigi la tekston serĉotan. La kongruantaj alinomoj estos markitaj."
+#: src/modules/editor/ScriptEditorImplementation.cpp:815
+#: src/modules/editor/ScriptEditorImplementation.cpp:994
+msgid "Row: %1 Col: %2"
+msgstr "Vico: %1 Kol: %2"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:720
+#: src/modules/editor/ScriptEditorImplementation.cpp:936
+msgid "Save Failed - KVIrc"
+msgstr "Savo Malsukcesis - KVIrc"
+
+#: src/modules/codetester/CodeTesterWindow.cpp:110
+msgid "Script Tester"
+msgstr "Skripta Testilo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:90
+msgid "Separator"
+msgstr "Apartigilo"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:2077
+msgid "Set as <b>Internal</b> Function: "
+msgstr "Starigi kiel <b>interna</b> Funkcio: "
+
+#: src/modules/actioneditor/ActionEditor.cpp:144
+msgid "Small Icon:"
+msgstr "Malgranda Piktogramo:"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1016
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Hazarda '':'  signo en alinomo: ĉu vi volas signifi...<namspaco>::<nomo>?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:1084
+#: src/modules/classeditor/ClassEditorWindow.cpp:1534
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Hazarda ':' signo en nomspaca nomo: ĉu vi volas diri ...<nomspaco>::<nomo>?"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:83
+msgid "Submenu"
+msgstr "Submenuo"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:201
+msgid "Test"
+msgstr "Testi"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:229
+msgid "Text:"
+msgstr "Teksto:"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+msgid "The ToolBar Label can't be empty!"
+msgstr "La Ilbreta Etikedo ne povas esti malplena!"
+
+#: src/modules/actioneditor/ActionEditor.cpp:167
+msgid ""
+"The big icon associated to this action.<br>It will appear at least in the "
+"toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
+msgstr ""
+"La granda piktogramo asociita al ĉi tiu ago.<br>Ĝi aperos almenaŭ en la "
+"ilbretaj butonoj kiam ĉi tiu ago estas enigata.<br>Ĝi devas esti 32x32 "
+"bilderoj."
+
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:788
-msgid "Alias Export"
-msgstr "Alinoma Eksporto"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:720
-#: src/modules/classeditor/ClassEditorWindow.cpp:1112
-msgid "There is no selection!"
-msgstr "Estas nenia elekto!"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:726
-#: src/modules/classeditor/ClassEditorWindow.cpp:1118
-msgid "Choose a Directory - KVIrc"
-msgstr "Elekti Dosierujon - KVIrc"
+#: src/modules/classeditor/ClassEditorWindow.cpp:1207
+msgid "The exported file would be empty: cowardly refusing to write it"
+msgstr "Le eksportita dosiero estus malplena: malkuraĝe rifuzas skribi ĝin"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:746
 #: src/modules/classeditor/ClassEditorWindow.cpp:1137
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "La dosiero \"%1\" ekzistas. Ĉu vi volas anstataŭigi ĝin?"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:747
-#: src/modules/classeditor/ClassEditorWindow.cpp:1138
-msgid "Replace file"
-msgstr "Anstataŭigi dosieron"
+#: src/modules/actioneditor/ActionEditor.cpp:152
+msgid ""
+"The small icon associated to this action.<br>It will appear at least in the "
+"popup menus when this action is inserted.<br>It has to be 16x16 pixels."
+msgstr ""
+"La malgranda piktogramo asociita kun ĉi tiu ago.<br>Ĝi aperos almenaŭ en la "
+"ŝprucmenuoj kiam ĉi tiu ago estas enigata.<br>Ĝi devas esti 16x16 bilderoj."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
+msgid ""
+"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
+"it automatically (so it doesn't collide with any other toolbar) or you "
+"prefer to do it manually ?"
+msgstr ""
+"La specifita Ilbreta Id jam ekzistas.<br>Ĉu vi volus ke KVIrc disponigi ĝin "
+"aŭtomate (tiel ke ĝi ne kolizias kun iu ajn alia ilbreto) aŭ ĉu vi preferas "
+"fari ĝin permane?"
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:720
+#: src/modules/classeditor/ClassEditorWindow.cpp:1112
+msgid "There is no selection!"
+msgstr "Estas nenia elekto!"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1700
+msgid "These inherited classes will be not compiled too:"
+msgstr "Ĉi tiuj hereditaj klasoj ne estos kompilataj ankaŭ:"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:689
+msgid "This name is already in use as Class name. Please choose another one."
+msgstr "Ĉi tiu nomo jam estas uzata kiel Klasnomo. Bonvolu elekti alian."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:445
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:457
+#: src/modules/classeditor/ClassEditorWindow.cpp:543
+#: src/modules/classeditor/ClassEditorWindow.cpp:605
+#: src/modules/classeditor/ClassEditorWindow.cpp:694
+msgid "This name is already in use. Please choose another one."
+msgstr "Ĉi tiu nomo jam estas uzata. Bonvolu elekti alian."
+
+#: src/modules/actioneditor/ActionEditor.cpp:236
+#: src/modules/actioneditor/ActionEditor.cpp:247
+#: src/modules/actioneditor/ActionEditor.cpp:258
+msgid ""
+"This will enable the action only if there are selected users in the active "
+"window"
+msgstr ""
+"Ĉi tio ebligos la agon nur se estas elektitaj uzuloj en la aktiva fenestro"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
+msgid "ToolBar Export"
+msgstr "Ilbreta Eksporto"
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:136
+msgid "ToolBar Properties"
+msgstr "Ilbretaj Atributoj"
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:211
+msgid "Type"
+msgstr "Tipo"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1693
+msgid "Unable to compile class: "
+msgstr "Ne povas kompili klason:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:715
+msgid "Unable to write to the actions file."
+msgstr "Ne povas skribi al la aga dosiero."
+
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:819
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1241
+msgid "Unable to write to the alias file."
+msgstr "Ne povas skribi al la alinoma dosiero"
+
+#: src/modules/classeditor/ClassEditorWindow.cpp:1239
+msgid "Unable to write to the class file."
+msgstr "Ne povas skribi al la klasdosiero."
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:471
+msgid "Unable to write to the event file."
+msgstr "Ne povas skribi al la eventa dosiero."
+
+#: src/modules/eventeditor/EventEditorWindow.cpp:509
+msgid "Unable to write to the events file."
+msgstr "Ne povas skribi al la eventa dosiero."
+
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1193
+msgid "Unable to write to the popup file."
+msgstr "Ne povas skribi al la ŝprucaĵa dosiero."
+
+#: src/modules/raweditor/RawEditorWindow.cpp:426
+msgid "Unable to write to the raw event file."
+msgstr "Ne povas skribi al la kruda eventa dosiero."
+
+#: src/modules/raweditor/RawEditorWindow.cpp:461
+msgid "Unable to write to the raw events file."
+msgstr "Ne povas skribi al la kruda eventa dosiero."
+
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+msgid "Unable to write to the toolbar file."
+msgstr "Ne povas skribi al la ilbreta dosiero."
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:536
+msgid "Variables:"
+msgstr "Variabloj:"
+
+#: src/modules/actioneditor/ActionEditor.cpp:112
+msgid ""
+"Visible name for this action.<br>This string will be displayed to the user "
+"so it is a good idea to use $tr() here"
+msgstr ""
+"Videbla nomo por ĉi tiu ago.<br>Ĉi tiu ĉeno estos montrata al la uzulo do "
+"estas bona ideo uzi $tr() ĉi tie"
+
+#: src/modules/actioneditor/ActionEditor.cpp:142
+msgid ""
+"Visible short description for this action.<br>This string will be displayed "
+"to the user so it is a good idea to use $tr() here"
+msgstr ""
+"Videbla mallonga priskribo por ĉi tiu ago.<br>Ĉi tiu ĉeno estos montrata al "
+"la uzulo do estas bona ideo uzi $tr() ĉi tie"
+
+#: src/modules/editor/ScriptEditorImplementation.cpp:1066
+msgid "Word to Find"
+msgstr "Vorto por Trovi"
+
+#: src/modules/actioneditor/ActionEditor.cpp:715
+#: src/modules/aliaseditor/AliasEditorWindow.cpp:819
+#: src/modules/classeditor/ClassEditorWindow.cpp:1239
+#: src/modules/eventeditor/EventEditorWindow.cpp:471
+#: src/modules/eventeditor/EventEditorWindow.cpp:509
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1193
+#: src/modules/popupeditor/PopupEditorWindow.cpp:1241
+#: src/modules/raweditor/RawEditorWindow.cpp:426
+#: src/modules/raweditor/RawEditorWindow.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+msgid "Write Failed - KVIrc"
+msgstr "Skribo Malsukcesis - KVIrc"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:747
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:930
@@ -442,879 +1420,30 @@ msgstr "Jes"
 msgid "Yes to All"
 msgstr "Jes al Ĉiuj"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:747
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:930
-#: src/modules/classeditor/ClassEditorWindow.cpp:1138
-#: src/modules/classeditor/ClassEditorWindow.cpp:1368
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:407
-msgid "No"
-msgstr "Ne"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:788
-#: src/modules/classeditor/ClassEditorWindow.cpp:1207
-msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr "Le eksportita dosiero estus malplena: malkuraĝe rifuzas skribi ĝin"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:819
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1241
-msgid "Unable to write to the alias file."
-msgstr "Ne povas skribi al la alinoma dosiero"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:922
-msgid "Do you really want to remove the alias \"%1\"?"
-msgstr "Ĉu vi vere volas forigi la alinomon \"%1\"?"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:924
-#: src/modules/classeditor/ClassEditorWindow.cpp:1359
-msgid "Do you really want to remove the namespace \"%1\"?"
-msgstr "Ĉu vi vere volas forigi la nomspacon \"%1\"?"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:926
-msgid "Please note that all the children items will be deleted too."
-msgstr "Bonvolu noti ke ĉiuj eridoj estos forigataj ankaŭ."
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:930
-#: src/modules/classeditor/ClassEditorWindow.cpp:1368
-msgid "Remove item"
-msgstr "Forigi eron"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:988
-msgid "Missing Alias Name"
-msgstr "Mankas Alinomo"
-
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:989
 msgid "You must specify a valid name for the alias"
 msgstr "Vi devas specifi validan nomon por la alinomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1001
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1015
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1026
-msgid "Bad Alias Name"
-msgstr "Malbona Alinomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1002
-msgid "Alias names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "Alinomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' nomspacajn apartigilojn"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1016
-msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr "Hazarda '':'  signo en alinomo: ĉu vi volas signifi...<namspaco>::<nomo>?"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1027
-msgid "Found an empty namespace in alias name"
-msgstr "Trovis malplenan nomspacon en alinomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1056
-#: src/modules/classeditor/ClassEditorWindow.cpp:1506
-msgid "Missing Namespace Name"
-msgstr "Mankanta Nomspaca Nomo"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1057
 #: src/modules/classeditor/ClassEditorWindow.cpp:1507
 msgid "You must specify a valid name for the namespace"
 msgstr "Vi devas specifi validan nomon por la nomspaco"
 
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1069
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1083
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1094
-#: src/modules/classeditor/ClassEditorWindow.cpp:1519
-#: src/modules/classeditor/ClassEditorWindow.cpp:1533
-#: src/modules/classeditor/ClassEditorWindow.cpp:1544
-msgid "Bad Namespace Name"
-msgstr "Malbona Nomspaca Nomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1070
-#: src/modules/classeditor/ClassEditorWindow.cpp:1520
-msgid "Namespace names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "Nomspacaj nomoj povas havi nur literojn, ciferojn, substrekojn kaj '::' nomspacajn apartigilojn"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1084
-#: src/modules/classeditor/ClassEditorWindow.cpp:1534
-msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr "Hazarda ':' signo en nomspaca nomo: ĉu vi volas diri ...<nomspaco>::<nomo>?"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1095
-#: src/modules/classeditor/ClassEditorWindow.cpp:1545
-msgid "Found an empty namespace in namespace name"
-msgstr "Trovis malplenan nomspacon en nomspaca nomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1122
-msgid "Please enter the name for the new alias"
-msgstr "Bonvolu enigi la nomon por la nova alinomo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1129
-#: src/modules/classeditor/ClassEditorWindow.cpp:1596
-msgid "Please enter the name for the new namespace"
-msgstr "Bonvolu enigi la nomon por la nova nomspaco"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1180
-msgid "Alias Editor"
-msgstr "Alinoma Redaktilo"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1187
-#: src/modules/eventeditor/EventEditorWindow.cpp:471
-#: src/modules/eventeditor/EventEditorWindow.cpp:523
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1379
-#: src/modules/raweditor/RawEditorWindow.cpp:426
-#: src/modules/raweditor/RawEditorWindow.cpp:476
-msgid "&OK"
-msgstr "&Bone"
-
-#: src/modules/aliaseditor/AliasEditorWindow.cpp:1192
-#: src/modules/eventeditor/EventEditorWindow.cpp:528
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1384
-#: src/modules/raweditor/RawEditorWindow.cpp:481
-msgid "&Apply"
-msgstr "&Apliki"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:72
-#: src/modules/classeditor/ClassEditorWindow.cpp:802
-msgid "Class"
-msgstr "Klaso"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:198
-msgid "Edit the class or namespace name"
-msgstr "Redakti la klason aŭ nomspacan nomon"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:212
-msgid "Edit the function member name"
-msgstr "Redakti la funkcianan nomon"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:542
-msgid "Function already exists"
-msgstr "Funkcio jam ekzistas"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:604
-msgid "Class already exists"
-msgstr "Klaso jam ekzistas"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:688
-msgid "Name already exists as Class name"
-msgstr "Nomo jam ekzistas kiel Klasa nomo"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:689
-msgid "This name is already in use as Class name. Please choose another one."
-msgstr "Ĉi tiu nomo jam estas uzata kiel Klasnomo. Bonvolu elekti alian."
+#: src/modules/eventeditor/EventEditorWindow.cpp:285
+#: src/modules/raweditor/RawEditorWindow.cpp:257
+msgid "default"
+msgstr "defaŭlto"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:806
 msgid "inherits from class "
 msgstr "heredas de klaso"
 
-#: src/modules/classeditor/ClassEditorWindow.cpp:812
-msgid "Member Function"
-msgstr "Ana Funkcio"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:822
-msgid "Reminder text."
-msgstr "Atentiga teksto."
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:893
-msgid "Add Class"
-msgstr "Adicii Klason"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:902
-msgid "Add Member Function"
-msgstr "Adicii Funkcianon"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:945
-msgid "Find In Classes..."
-msgstr "Trovi en Klasoj..."
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:951
-msgid "Collapse All Items"
-msgstr "Kolapsigi Ĉiujn Erojn"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:995
-msgid "Find In Classes"
-msgstr "Trovi en Klasoj"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:996
-msgid "Please enter the text to be searched for. The matching function will be highlighted."
-msgstr "Bonvolu enmeti la tekston serĉotan. La kongrua funkcio estos markita."
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1112
-#: src/modules/classeditor/ClassEditorWindow.cpp:1207
-msgid "Class Export"
-msgstr "Klasa Eksporto"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1239
-msgid "Unable to write to the class file."
-msgstr "Ne povas skribi al la klasdosiero."
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1356
-msgid "Do you really want to remove the class \"%1\"?"
-msgstr "Ĉu vi vere volas forigi la klason \"%1\"?"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1361
-msgid "Please note that all the children classes/functions will be deleted too."
-msgstr "Bonvolu noti ke ĉiuj idaj klasoj/funkcioj estos forigitaj ankaŭ."
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1364
-msgid "Do you really want to remove the function \"%1\"?"
-msgstr "Ĉu vi vere volas forigi la funkcion \"%1\"?"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1693
-msgid "Unable to compile class: "
-msgstr "Ne povas kompili klason:"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1700
-msgid "These inherited classes will be not compiled too:"
-msgstr "Ĉi tiuj hereditaj klasoj ne estos kompilataj ankaŭ:"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1709
-msgid "Compilation error - KVIrc"
-msgstr "Kompilada eraro - KVIrc"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1842
-msgid "Class Editor"
-msgstr "Klasredaktilo"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1849
-msgid "&Build"
-msgstr "&Konstrui"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1854
-msgid "&Save"
-msgstr "&Savi"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1859
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
-msgid "Close"
-msgstr "Fermi"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1923
-msgid "Please enter the name for the class:"
-msgstr "Bonvolu enigi la nomon por la klaso:"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1934
-msgid "Class names can contain only letters, digits and underscores"
-msgstr "Klasaj nomoj povas havi nur literojn, ciferojn kaj substrekojn"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1938
-msgid "In rename mode class names can contain only letters, digits and underscores and namespaces :: separator"
-msgstr "Ĉe renoma reĝimo klasnomoj povas havi nur literojn, ciferojn kaj substrekojn kaj nomspacan :: apartigilon"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1951
-msgid "Inherits Class:"
-msgstr "Heredas Klason:"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1996
-msgid "&Rename Class"
-msgstr "&Renomi Klason"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:1998
-msgid "&Create Class"
-msgstr "&Krei Klason"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2005
-#: src/modules/classeditor/ClassEditorWindow.cpp:2107
-#: src/modules/editor/ScriptEditorImplementation.cpp:1092
-msgid "&Cancel"
-msgstr "&Rezigni"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2043
-msgid "Please enter the name for the member function:"
-msgstr "Bonvolu enigi la nomon por la funkciano:"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2052
-msgid "Function names can contain only letters, digits and underscores"
-msgstr "Funkciaj nomoj povas havi nur literojn, ciferojn kaj substrekojn"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2064
-msgid "Please enter the optional reminder string for the member function:"
-msgstr "Bonvolu enigi la opcian atentigilan ĉenon por la funkciano"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2077
-msgid "Set as <b>Internal</b> Function: "
-msgstr "Starigi kiel <b>interna</b> Funkcio: "
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2097
-msgid "&Add"
-msgstr "&Adicii"
-
-#: src/modules/classeditor/ClassEditorWindow.cpp:2099
-msgid "&Rename"
-msgstr "&Renomi"
-
-#: src/modules/codetester/CodeTesterWindow.cpp:57
-msgid "&Execute"
-msgstr "&Plenumi"
-
-#: src/modules/codetester/CodeTesterWindow.cpp:61
-msgid "Params:"
-msgstr "Parametroj:"
-
-#: src/modules/codetester/CodeTesterWindow.cpp:64
-msgid "Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, .."
-msgstr "Ĉi tie vi povas specifi punktokome apartigitan liston de parametroj kiuj disponeblos en la kodo kiel $0, $1, $2, ..."
-
-#: src/modules/codetester/CodeTesterWindow.cpp:110
-msgid "Script Tester"
-msgstr "Skripta Testilo"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:255
-msgid "Context sensitive help"
-msgstr "Kunteksta sentiva helpo"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:256
-#: src/modules/editor/ScriptEditorImplementation.cpp:1097
-msgid "&Replace"
-msgstr "&Anstataŭigi"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:269
-msgid "Find & Replace"
-msgstr "Trovi & Anstataŭigi"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:519
-msgid "Preferences"
-msgstr "Preferoj"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:525
-msgid "Font:"
-msgstr "Tiparo:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:527
-msgid "Colors"
-msgstr "Koloroj"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:530
-msgid "Background:"
-msgstr "Fono:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:531
-msgid "Normal text:"
-msgstr "Normala teksto:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:532
-msgid "Brackets:"
-msgstr "Parentezoj:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:533
-msgid "Comments:"
-msgstr "Komentoj:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:534
-msgid "Functions:"
-msgstr "Funkcioj:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:535
-msgid "Keywords:"
-msgstr "Ŝlosilvortoj:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:536
-msgid "Variables:"
-msgstr "Variabloj:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:537
-msgid "Punctuation:"
-msgstr "Interpunkcio:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:538
-msgid "Find:"
-msgstr "Trovi:"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:794
-msgid "Options"
-msgstr "Opcioj"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:799
-msgid "&Open..."
-msgstr "&Malfermi..."
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:800
-msgid "&Save As..."
-msgstr "&Savi Kiel..."
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:802
-msgid "&Configure Editor..."
-msgstr "Agordi Redaktilon..."
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:811
-msgid "Find"
-msgstr "Trovi"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:815
-#: src/modules/editor/ScriptEditorImplementation.cpp:994
-msgid "Row: %1 Col: %2"
-msgstr "Vico: %1 Kol: %2"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:936
-msgid "Save Failed - KVIrc"
-msgstr "Savo Malsukcesis - KVIrc"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:937
-msgid "Can't open the file %1 for writing."
-msgstr "Ne povas malfermi la dosieron %1 por skribi"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:1011
-msgid "Load Script File - KVIrc"
-msgstr "Ŝargi Skriptan Dosieron - KVIrc"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:1024
-msgid "Open Failed - KVIrc"
-msgstr "Malfermo Malsukcesis - KVIrc"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:1025
-msgid "Can't open the file %1 for reading."
-msgstr "Ne povas malfermi la dosieron %1 por legi."
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:1066
-msgid "Word to Find"
-msgstr "Vorto por Trovi"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:1075
-msgid "Replace with"
-msgstr "Anstataŭigi kun"
-
-#: src/modules/editor/ScriptEditorImplementation.cpp:1087
-msgid "&Replace in all editor's items"
-msgstr "&Anstataŭigi en ĉiuj redaktilaj eroj"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:104
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1045
-#: src/modules/raweditor/RawEditorWindow.cpp:100
-msgid "&Export All To..."
-msgstr "&Eksporti Ĉiujn Al..."
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:115
-msgid "Edit the event handler name."
-msgstr "Redakti la eventan traktilan nomon."
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:187
-msgid "Event"
-msgstr "Evento"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:217
-#: src/modules/raweditor/RawEditorWindow.cpp:156
-msgid "&Enable Handler"
-msgstr "&Ebligi Traktilon"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:221
-#: src/modules/raweditor/RawEditorWindow.cpp:160
-msgid "&Disable Handler"
-msgstr "&Malebligi Traktilon"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:225
-#: src/modules/raweditor/RawEditorWindow.cpp:164
-msgid "Re&move Handler"
-msgstr "&Forigi Traktilon"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:229
-#: src/modules/raweditor/RawEditorWindow.cpp:168
-msgid "&Export Handler To..."
-msgstr "&Eksporti Traktilon Al..."
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:234
-#: src/modules/raweditor/RawEditorWindow.cpp:173
-msgid "&New Handler"
-msgstr "&Nova Traktilo"
+#: src/modules/eventeditor/EventEditorWindow.cpp:409
+msgid "none"
+msgstr "neniom"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:247
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1340
 #: src/modules/raweditor/RawEditorWindow.cpp:191
 msgid "unnamed"
 msgstr "nenomita"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:285
-#: src/modules/raweditor/RawEditorWindow.cpp:257
-msgid "default"
-msgstr "defaŭlto"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:409
-msgid "none"
-msgstr "neniom"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:412
-msgid ""
-"\n"
-"\n"
-"Event:\n"
-"%1\n"
-"\n"
-"Parameters:\n"
-"%2"
-msgstr ""
-"\n"
-"\n"
-"Evento:\n"
-"%1\n"
-"\n"
-"Parametroj:\n"
-"%2"
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:471
-msgid "Unable to write to the event file."
-msgstr "Ne povas skribi al la eventa dosiero."
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:509
-msgid "Unable to write to the events file."
-msgstr "Ne povas skribi al la eventa dosiero."
-
-#: src/modules/eventeditor/EventEditorWindow.cpp:571
-msgid "Event Editor"
-msgstr "Eventa Redaktilo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:80
-#: src/modules/popupeditor/PopupEditorWindow.cpp:211
-msgid "Item"
-msgstr "Ero"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:83
-msgid "Submenu"
-msgstr "Submenuo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:86
-msgid "External Menu"
-msgstr "Ekstera Menuo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:90
-msgid "Separator"
-msgstr "Apartigilo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:93
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
-msgid "Label"
-msgstr "Etikedo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:96
-msgid "### Epilogue ###"
-msgstr "### Epilogo ###"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:97
-msgid "Epilogue"
-msgstr "Epilogo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:100
-msgid "### Prologue ###"
-msgstr "### Prologo ###"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:101
-msgid "Prologue"
-msgstr "Prologo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:197
-msgid "Popup name"
-msgstr "Ŝprucaĵa Nomo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:201
-msgid "Test"
-msgstr "Testi"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:211
-msgid "Type"
-msgstr "Tipo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:229
-msgid "Text:"
-msgstr "Teksto:"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:234
-msgid "<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>"
-msgstr "<center><b>Videbla teksto</b><br>Povas enhavi identifigilojn kiuj estos evaluataj je ŝprucaĵa tempo.<br>Por etikedoj, ĉi tiu teksto povas enhavi ankaŭ limigitajn HTML foliojn.</center>"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:237
-msgid "Condition:"
-msgstr "Kondiĉo:"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:243
-msgid "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>"
-msgstr "<center><b>Bulea kondiĉo</b><br>Estos evaluata je ŝprucaĵa voka tempo por decidi ĉu ĉi tiu eniro devas esti montrata.<br>Malplena kondiĉo evaluas al true.</center>"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:246
-msgid "Icon:"
-msgstr "Piktogramo:"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:252
-msgid "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>"
-msgstr "<center><b>Piktograma identifigilo</b><br>Povus esti interna piktograma ID, absoluta pado aŭ relative pado.<br>Porteblaj skriptoj devas neniam uzi absolutajn padojn.</center>"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:255
-msgid "External menu:"
-msgstr "Ekstera menuo:"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:261
-msgid "<center><b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>"
-msgstr "<center><b>Ekstera menua nomo</b><br>Ĉi tiu permesas eningigi ekstere difinitajn ŝprucmenuojn. La ŝprucmenuo kun la specifita nomo estos serĉata je menustariga tempo.</center>"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:264
-msgid "Item Id:"
-msgstr "Era id:"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:271
-msgid "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>"
-msgstr "<center><b>Era id</b><br>Ĉi tiu permesos vin uzi forigŝpruceron poste.</center>"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:383
-msgid "New Separator Below"
-msgstr "Nova Apartigilo Sube"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:384
-msgid "New Separator Above"
-msgstr "Nova Apartigilo Supre"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:386
-msgid "New Separator Inside"
-msgstr "Nova Apartigilo Ene"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:391
-msgid "New Label Below"
-msgstr "Nove Etikedo Sube"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:392
-msgid "New Label Above"
-msgstr "Nova Etikedo Supre"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:394
-msgid "New Label Inside"
-msgstr "Nova Etikedo Ene"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:399
-msgid "New Item Below"
-msgstr "Nova Ero Sube"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:400
-msgid "New Item Above"
-msgstr "Nova Ero Supre"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:402
-msgid "New Item Inside"
-msgstr "Nova Ero Ene"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:407
-msgid "New Menu Below"
-msgstr "Nova Menuo Sube"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:408
-msgid "New Menu Above"
-msgstr "Nova Menuo Supre"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:410
-msgid "New Menu Inside"
-msgstr "Nova Menuo Ene"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:415
-msgid "New External Menu Below"
-msgstr "Nova Ekstera Menuo Sube"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:416
-msgid "New External Menu Above"
-msgstr "Nova Ekstera Menuo Supre"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:418
-msgid "New External Menu Inside"
-msgstr "Nova Ekstera Menuo Ene"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:425
-msgid "Cu&t"
-msgstr "&Tranĉi"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:430
-msgid "&Copy"
-msgstr "&Kopii"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:435
-msgid "&Paste Below"
-msgstr "&Alglui Sube"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:439
-msgid "Paste Above"
-msgstr "&Alglui Supre"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:443
-msgid "Paste Inside"
-msgstr "&Alglui Ene"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:454
-msgid "New Menu Prologue"
-msgstr "Nova Menua Prologo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:462
-msgid "New Menu Epilogue"
-msgstr "Nova Menua Epilogo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1041
-msgid "Popup"
-msgstr "Ŝprucaĵo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1047
-msgid "&Export selected To..."
-msgstr "&Eksporti selektitaĵon Al..."
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1114
-msgid "OverWrite Current Popup"
-msgstr "Anstataŭigi Nunan Ŝprucaĵon"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1115
-msgid "An external script has changed the popup you are currently editing. Do you want to accept the external changes?"
-msgstr "Ekstera skripto ŝanĝis la ŝprucaĵon kiun vi nuntempe redaktas. Ĉu vi volas akcepti la eksterajn ŝanĝojn?"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1146
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1167
-msgid "&New Popup"
-msgstr "&Nova Ŝprucaĵo"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1151
-msgid "Re&move Popup"
-msgstr "Forigi Ŝprucaĵon"
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1157
-msgid "&Export Popup To..."
-msgstr "&Eksporti Ŝprucaĵon Al..."
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1193
-msgid "Unable to write to the popup file."
-msgstr "Ne povas skribi al la ŝprucaĵa dosiero."
-
-#: src/modules/popupeditor/PopupEditorWindow.cpp:1427
-msgid "Popup Editor"
-msgstr "Ŝprucaĵa Redaktilo"
-
-#: src/modules/raweditor/RawEditorWindow.cpp:88
-msgid "Raw Event"
-msgstr "Kruda Evento"
-
-#: src/modules/raweditor/RawEditorWindow.cpp:105
-msgid "Edit the raw event handler name."
-msgstr "Redakti la krudan eventan traktilan nomon."
-
-#: src/modules/raweditor/RawEditorWindow.cpp:181
-msgid "&Add Raw Event..."
-msgstr "&Adicii Krudan Eventon..."
-
-#: src/modules/raweditor/RawEditorWindow.cpp:221
-msgid "New Raw Event"
-msgstr "Nova Kruda Evento"
-
-#: src/modules/raweditor/RawEditorWindow.cpp:221
-msgid "Enter the numeric code of the message (0-999)"
-msgstr "Enmeti la ciferan kodon de la mesaĝo (0-999)"
-
-#: src/modules/raweditor/RawEditorWindow.cpp:366
-msgid ""
-"\n"
-"\n"
-"Raw Event:\n"
-"%1"
-msgstr ""
-"\n"
-"\n"
-"Kruda Evento:\n"
-"%1"
-
-#: src/modules/raweditor/RawEditorWindow.cpp:426
-msgid "Unable to write to the raw event file."
-msgstr "Ne povas skribi al la kruda eventa dosiero."
-
-#: src/modules/raweditor/RawEditorWindow.cpp:461
-msgid "Unable to write to the raw events file."
-msgstr "Ne povas skribi al la kruda eventa dosiero."
-
-#: src/modules/raweditor/RawEditorWindow.cpp:524
-msgid "Raw Editor"
-msgstr "Krudeca Redaktilo"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
-msgid "Drop here the icons from the toolbars to remove them"
-msgstr "Faligu ĉi tie la piktogramojn de la ilbretoj por forigi ilin"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:136
-msgid "ToolBar Properties"
-msgstr "Ilbretaj Atributoj"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:153
-msgid "Icon"
-msgstr "Piktogramo"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:169
-msgid "Id"
-msgstr "Id"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
-msgid "Advanced..."
-msgstr "Altgrada..."
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:225
-msgid "Please choose the icon for the ToolBar"
-msgstr "Bonvolu elekti la piktogramon por la Ilbreto"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
-msgid "Invalid ToolBar Label"
-msgstr "Nevalida Ilbreta Etikedo"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
-msgid "The ToolBar Label can't be empty!"
-msgstr "La Ilbreta Etikedo ne povas esti malplena!"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
-msgid "Duplicate ToolBar Id"
-msgstr "Duobligi Ilbretan Id"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
-msgid "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign it automatically (so it doesn't collide with any other toolbar) or you prefer to do it manually ?"
-msgstr "La specifita Ilbreta Id jam ekzistas.<br>Ĉu vi volus ke KVIrc disponigi ĝin aŭtomate (tiel ke ĝi ne kolizias kun iu ajn alia ilbreto) aŭ ĉu vi preferas fari ĝin permane?"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
-msgid "Manually"
-msgstr "Permane"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
-msgid "Automatically"
-msgstr "Aŭtomate"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
-msgid "Hide Advanced"
-msgstr "Kaŝi Altgradan"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
-msgid "Customize Toolbars"
-msgstr "Tajlori Ilbretojn"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
-msgid "New ToolBar"
-msgstr "Nova Ilbreto"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:307
-msgid "Delete ToolBar"
-msgstr "Forigi Ilbreton"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
-msgid "Edit ToolBar"
-msgstr "Redakti Ilbreton"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:319
-msgid "Export ToolBar"
-msgstr "Eksporti Ilbreton"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:380
-msgid "Confirm ToolBar Deletion"
-msgstr "Konfirmi Ilbretan Forigon"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
-msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr "Ĉu vi vere volas forigi ilbreton \"%1\"?"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
-msgid "ToolBar Export"
-msgstr "Ilbreta Eksporto"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
-msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr "Ĉu vi volas ke la asociitaj agoj esti eksportitaj kun la ilbreto?"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
-msgid "Unable to write to the toolbar file."
-msgstr "Ne povas skribi al la ilbreta dosiero."
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:471
-msgid "Please specify the properties for the toolbar \"%1\""
-msgstr "Bonvolu specifi la atributojn por la ilbreto \"%1\""
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
-msgid "Please specify the properties for the new toolbar"
-msgstr "Bonvolu specifi la atributojn por la nova ilbreto"
-
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:498
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:499
-msgid "My ToolBar"
-msgstr "Mia Ilbreto"

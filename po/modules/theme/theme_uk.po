@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2012-04-14 15:25+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -37,10 +37,9 @@ msgstr "<b><u>Поточна встановлена тема:</u> "
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Зробити скріншот - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:103
-#: src/modules/theme/libkvitheme.cpp:112
 #: src/modules/theme/ThemeManagementDialog.cpp:359
 #: src/modules/theme/ThemeManagementDialog.cpp:371
+#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
 msgid "Apply theme - KVIrc"
 msgstr "Застосувати тему - KVIrc"
 
@@ -71,8 +70,8 @@ msgstr "Видалити обрані теми"
 msgid "Delete Theme - KVIrc"
 msgstr "Видалити тему - KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:281
 #: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:281
 msgid "Description:"
 msgstr "Опис:"
 
@@ -88,8 +87,8 @@ msgstr "Ви дійсно хочете видалити \"%Q\" (версії %Q)
 msgid "Do you want to proceed with the installation ?"
 msgstr "Ви хочете продовжити встанолення?"
 
-#: src/modules/theme/libkvitheme.cpp:104
 #: src/modules/theme/ThemeManagementDialog.cpp:360
+#: src/modules/theme/libkvitheme.cpp:104
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Ви дійсно хочете застосувати тему \"%Q\" (версії %Q)?"
 
@@ -118,13 +117,13 @@ msgstr "Експортувати обрані теми в пакет для по
 msgid "Export Theme - KVIrc"
 msgstr "Експорт теми - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:111
 #: src/modules/theme/ThemeManagementDialog.cpp:370
+#: src/modules/theme/libkvitheme.cpp:111
 msgid "Failed to apply the specified theme: %1"
 msgstr "Не можу застосувати обрану тему: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
 #: src/modules/theme/SaveThemeDialog.cpp:205
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Не можу завантажити обране зображення"
 
@@ -204,8 +203,8 @@ msgstr ""
 "Тут ви повинні вказати інформацію про себе (пакувальника) й короткий опис "
 "пакунку."
 
-#: src/modules/theme/PackThemeDialog.cpp:108
 #: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Натисніть \"Далі\" для продовження."
 
@@ -295,8 +294,7 @@ msgstr "Обраний файл не є пакунком з темою для KV
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Обраний файл не є пакунком з темою для KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:118
-#: src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr "Пакунок теми '%Q' не існує"
 
@@ -363,8 +361,8 @@ msgstr "Не можу створити теку теми."
 msgid "Unable to save theme: %1"
 msgstr "Не можу зберегти тему: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
 #: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:272
 msgid "Version:"
 msgstr "Версія:"
 
@@ -380,8 +378,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Попередження: тема може бути несумісна з вашою версією KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
 #: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:101
 msgid "Welcome"
 msgstr "Ласкаво просимо"
 

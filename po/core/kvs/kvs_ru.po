@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2012-07-04 07:30+0700\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 asokolov "
 "org>\n"
@@ -223,8 +223,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Не найдено имя базового класса '%Q'"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Результат поиска адреса для запроса \"%Q\""
 
@@ -236,14 +236,14 @@ msgstr ""
 "Обнаружен цикл в дереве наследования базового класса '%Q':  сначала "
 "переопределите тот класс"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 msgid "Division by zero"
 msgstr "Деление на нуль"
 
@@ -296,8 +296,8 @@ msgstr "Ошибка при получении информации из лок�
 msgid "Error triggered from process callback handler: killing process"
 msgstr "Ошибка запуска процесса из обработчика: процесс убит"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 msgid "Error: %Q"
 msgstr "Ошибка: %Q"
 
@@ -381,13 +381,13 @@ msgstr ""
 "Найден символ '%q' (уникод %x) там где ожидался '%' или '$' : смотри /help "
 "foreach для справки по синтаксису"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:593
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:611
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:634
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:597
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:615
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:638
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr "Найден символ '%q' (уникод %x) там где ожидался слеш '/'"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2799
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2800
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
 msgstr "Найден символ '%q' (уникод %x) там где ожидалась инструкция"
 
@@ -461,13 +461,13 @@ msgstr "Хеш ключ является пустой строкой: испра
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr "Ошибочная ссылка на хеш: переменная определена как типа '%Q'"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 msgid "Hostname: %Q"
 msgstr "Имя хоста: %Q"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 msgid "IP address %d: %Q"
 msgstr "IP адрес %d: %Q"
 
@@ -588,43 +588,43 @@ msgstr "Отсутствует обязательный параметр \"%1\""
 msgid "Missing parameter"
 msgstr "Параметр отсутствует"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:875
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:879
 msgid "Missing right operand for operator '"
 msgstr "Отсутствует правый операнд для оператора '"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:722
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:726
 msgid "Missing right operand for operator '+='"
 msgstr "Отсутствует правый операнд для оператора '+='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:756
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:760
 msgid "Missing right operand for operator '-='"
 msgstr "Отсутствует правый операнд для оператора '-='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:856
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:860
 msgid "Missing right operand for operator '.='"
 msgstr "Отсутствует правый операнд для оператора '.='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:815
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:819
 msgid "Missing right operand for operator '<+'"
 msgstr "Отсутствует правый операнд для оператора '<+'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:801
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:805
 msgid "Missing right operand for operator '<,'"
 msgstr "Отсутствует правый операнд для оператора '<,'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:787
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:791
 msgid "Missing right operand for operator '<<'"
 msgstr "Отсутствует правый операнд для оператора '<<'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:777
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:781
 msgid "Missing right operand for operator '<<='"
 msgstr "Отсутствует правый операнд для оператора '<<='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:837
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:841
 msgid "Missing right operand for operator '>>='"
 msgstr "Отсутствует правый операнд для оператора '>>='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:688
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:692
 msgid "Missing right side operand for the binding operator '=~'"
 msgstr "Отсутствует крайний правый операнд для оператора '=~'"
 
@@ -682,7 +682,7 @@ msgstr ""
 "Ошибка обращения к функциональному модулю: модуль '%Q' не предоставляет "
 "функцию с именем '%Q'"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3150
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3151
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
@@ -724,18 +724,18 @@ msgstr "Нет обработчика '%Q' для заготовки событ�
 msgid "No menu bar item with text '%Q'"
 msgstr "Нет пункта меню с текстом '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Нет такого контекста IRC (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 msgid "No such event (%Q)"
 msgstr "Нет такого события (%Q)"
 
@@ -756,7 +756,7 @@ msgstr "Не задана маска/канал, и текущее окно не
 msgid "None"
 msgstr "Ничего"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2739
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2740
 msgid "Objects have no extended scope variables"
 msgstr "Объект не имеет расширенных значений"
 
@@ -821,7 +821,7 @@ msgstr "Бессмысленная пустая команда: исправьт
 msgid "Single Shot"
 msgstr "Одноразовый режим"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3160
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3161
 msgid "Skipping nested terminator character %q"
 msgstr "Пропуск вложенного символа окончания %q"
 
@@ -838,20 +838,20 @@ msgid ""
 msgstr ""
 "Одинокое ':' в имени алиаса. Может быть вы имели ввиду <namespace>::<name> ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 "Символ ':' не на своём месте: он должен быть в середине выражения ."
 "<namespace>::<alias_name>'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 "Потерянная последовательность '::' или недопустимое последующее имя алиаса"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3187
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3188
 msgid "Stray backslash at the end of the script"
 msgstr "Лишний обратный слеш в конце сценария"
 
@@ -870,7 +870,7 @@ msgstr ""
 "использовать просто символ '$' в вашем коде - используйте escape-"
 "последовательность"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2722
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2723
 msgid ""
 "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 "the code you need to escape it"
@@ -878,8 +878,8 @@ msgstr ""
 "Синтаксическая ошибка в начале переменной '%'. Если вы хотите использовать "
 "просто '%' в вашем коде, вам нужно использовать escape-последовательность"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:920
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:924
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:946
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr "Синтаксическая ошибка: обусловлена более ранними ошибками: bailing out"
 
@@ -964,7 +964,7 @@ msgid ""
 "parenthesis"
 msgstr "Блоку 'while' команды 'do' требуется выражение в круглых скобках"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2941
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2942
 msgid ""
 "The above problem might be related to the switch dash and the following "
 "equal sign"
@@ -1049,7 +1049,7 @@ msgstr "Текущее окно не является каналом"
 msgid "The current window is not a channel, a query or a console"
 msgstr "Текущее окно не является каналом, приватом или консолью"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2910
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2911
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
@@ -1262,7 +1262,7 @@ msgstr "Эта команда может быть использована то�
 msgid "This is not a channel"
 msgstr "Это не канал"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:748
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:752
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after?"
@@ -1270,8 +1270,8 @@ msgstr ""
 "Похоже на оператор разыменования указателя но объект '->', но на самом деле "
 "это не так. Возможно вы забыли после него '$'?"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
 msgid "This window has no associated IRC context"
 msgstr "Это окно не связано с IRC контекстом"
 
@@ -1279,9 +1279,9 @@ msgstr "Это окно не связано с IRC контекстом"
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "Это окно не связано с контекстом IRC и не является DCC чатом"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "Это окно не ассоциировано с контекстом IRC"
 
@@ -1308,11 +1308,11 @@ msgstr "Мусор в конце команды: проигнорировано"
 msgid "Trailing garbage at the end of the continue command: ignored"
 msgstr "Мусор в конце команды continue: проигнорировано"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:710
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:714
 msgid "Trailing garbage ignored after operator '++'"
 msgstr "Остальной мусор проигнорирован после оператора '++'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:741
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:745
 msgid "Trailing garbage ignored after operator '--'"
 msgstr "Остальной мусор проигнорирован после оператора '--'"
 
@@ -1324,8 +1324,8 @@ msgstr "Не могу добавить таймер: недостаточно с
 msgid "Unable to get certificate information: query not recognized"
 msgstr "Не могу получить информацию о сертификате: запрос не распознан"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:919
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:940
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:923
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:944
 msgid "Unexpected (and senseless) read-only data evaluation"
 msgstr "Неожиданные (и бессмысленные) данные только для чтения"
 
@@ -1341,7 +1341,7 @@ msgstr ""
 msgid "Unexpected character %q (unicode %x) after '$' function call prefix"
 msgstr "Неожиданный символ %q (уникод %x) после префикса функции '$'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:941
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:945
 msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Неожиданный символ '%q' (уникод %x)"
 
@@ -1353,11 +1353,11 @@ msgstr ""
 "Неожиданный символ '%q' (уникод %x) после слеша (это опечатка или попытка "
 "начать комментарий?)"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2914
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2915
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr "Неожиданный символ '%q' (уникод %x) после тире"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:938
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
 msgid ""
 "Unexpected character '%q' (unicode %x) after a void function call: end of "
 "instruction expected"
@@ -1436,14 +1436,14 @@ msgid ""
 msgstr ""
 "Неожиданный конец команды после блока 'do': ожидается ключевое слово 'while'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:627
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:631
 msgid ""
 "Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 "Неожиданный конец команды в обёртке операции, по крайней мере один слеш "
 "пропущен"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:604
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:608
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
@@ -1451,7 +1451,7 @@ msgstr ""
 "Неожиданный конец команды в обёртке операции, по крайней мере два слеша "
 "пропущены"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3476
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3477
 msgid ""
 "Unexpected end of line in hash key (missing '}' character or unescaped "
 "newline)"
@@ -1459,12 +1459,12 @@ msgstr ""
 "Неожиданный конец строки в хеше ключа (не хватает символа '}' или новой "
 "строки)"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3023
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3089
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3024
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3090
 msgid "Unexpected end of line in parameter list"
 msgstr "Неожиданный конец строки в списке параметров"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3762
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3763
 msgid ""
 "Unexpected end of line in string constant (missing \" character or unescaped "
 "newline)"
@@ -1476,11 +1476,11 @@ msgstr ""
 msgid "Unexpected end of script after '$' function call prefix"
 msgstr "Неожиданный конец сценария после после префикса функции '$'"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2916
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2917
 msgid "Unexpected end of script after a switch dash"
 msgstr "Неожиданный конец сценария после тире"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:922
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:926
 msgid "Unexpected end of script after a variable reference: expected operator"
 msgstr ""
 "Неожиданный конец сценария после ссылки на переменную: ожидается оператор"
@@ -1490,11 +1490,11 @@ msgstr ""
 msgid "Unexpected end of script in expression"
 msgstr "Неожиданный конец сценария в выражении"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3469
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3470
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
 msgstr "Неожиданный конец сценария в хеше ключа (не хватает символа '}' ?)"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2833
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2834
 msgid "Unexpected end of script in instruction block (missing closing brace)"
 msgstr "Неожиданный конец сценария в блоке инструкций (нет закрывающей скобки)"
 
@@ -1502,12 +1502,12 @@ msgstr "Неожиданный конец сценария в блоке инс�
 msgid "Unexpected end of script in multiline comment"
 msgstr "Неожиданный конец сценария в многострочном комментарии"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3017
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3083
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3018
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3084
 msgid "Unexpected end of script in parameter list"
 msgstr "Неожиданный конец сценария в списке параметров"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3755
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3756
 msgid "Unexpected end of script in string constant (missing \" character ?)"
 msgstr ""
 "Неожиданный конец сценария в строковой константе (отсутствует символ \" ? )"
@@ -1545,7 +1545,7 @@ msgstr "Неизвестный бинарный оператор '%q'"
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
 msgstr "Неизвестный бинарный оператор '=%q': наверное хотите '==' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:667
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:671
 msgid "Unknown binding operation '%Q'"
 msgstr "Неизвестная операция '%Q'"
 
@@ -1553,7 +1553,7 @@ msgstr "Неизвестная операция '%Q'"
 msgid "Unknown callback command \"%Q\""
 msgstr "Неизвестный ответ от команды \"%Q\""
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:892
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:896
 msgid "Unknown operator"
 msgstr "Неизвестный оператор"
 
@@ -1561,17 +1561,17 @@ msgstr "Неизвестный оператор"
 msgid "Unterminated c-style multiline comment"
 msgstr "С-стиль многострочных комментариев"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3468
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3475
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3469
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3476
 msgid "Unterminated hash key"
 msgstr "Не закрытый хеш ключа"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2832
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2833
 msgid "Unterminated instruction block"
 msgstr "Незаконченный блок инструкций"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3754
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3761
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3755
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3762
 msgid "Unterminated string constant"
 msgstr "Строка с константой не закрыта"
 
@@ -1638,8 +1638,7 @@ msgstr "[KVS]%c Ошибка при компиляции: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ошибка при выполнении: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188
-#: src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Предупреждение: %Q"
 

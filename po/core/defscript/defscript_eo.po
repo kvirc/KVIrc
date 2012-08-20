@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-12 22:55+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2012-07-08 23:11+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -17,115 +17,185 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
-msgstr ""
-"[Instalilo] Eraro: la unua argumento de copyFiles (kopiDosierojn) devas esti "
-"fonta dosierujo"
+#: data/defscript/popups.kvs:545
+msgid "&Administrator"
+msgstr "&Administracianto"
 
-#: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-"[Instalilo] Eraro: la dua argumento de copyFiles (kopiDosierojn) devas esti "
-"dosiera nomo aŭ dosiera regula esprimo"
+#: data/defscript/popups.kvs:468
+#: data/defscript/popups.kvs:603
+msgid "&Ban"
+msgstr "&Ekzili"
 
-#: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
-msgstr ""
-"[Instalilo] Eraro: la tria argumento de copyFiles (kopiDosierojn) devas esti "
-"cel-dosierujon"
+#: data/defscript/popups.kvs:531
+msgid "&Control"
+msgstr "&Kontroli"
 
-#: data/defscript/aliases.kvs:21
-msgid "Missing target, no action taken"
-msgstr "Mankas celo, nenia ago farata"
+#: data/defscript/popups.kvs:550
+msgid "&Deadministrator"
+msgstr "Forigi administraciantan flagon"
 
-#: data/defscript/aliases.kvs:100
-#: data/defscript/aliases.kvs:145
-msgid "Usage"
-msgstr "Uzado"
+#: data/defscript/popups.kvs:570
+msgid "&Dehalfop"
+msgstr "&Forviŝi duon-op flagon"
 
-#: data/defscript/aliases.kvs:100
-msgid "channel"
-msgstr "kanalo"
+#: data/defscript/popups.kvs:560
+msgid "&Deop"
+msgstr "&Forigi operaciulan flagon"
 
-#: data/defscript/aliases.kvs:100
-#: data/defscript/aliases.kvs:145
-msgid "message"
-msgstr "mesaĝo"
+#: data/defscript/popups.kvs:540
+msgid "&Deowner"
+msgstr "Forigi posedantan flagon"
 
-#: data/defscript/aliases.kvs:101
-msgid "-m: send a message instead of a notice"
-msgstr "-m: sendi mesaĝon anstataŭ avizo"
+#: data/defscript/popups.kvs:565
+msgid "&Halfop"
+msgstr "&Duon-op"
 
-#: data/defscript/aliases.kvs:102
-msgid "-w: send notice to all channel owners"
-msgstr "-w: sendi avizon al ĉiuj kanalaj posedantoj"
+#: data/defscript/popups.kvs:653
+#: data/defscript/popups.kvs:764
+#: data/defscript/popups.kvs:1313
+msgid "&Highlight"
+msgstr "&Marki"
+
+#: data/defscript/popups.kvs:667
+#: data/defscript/popups.kvs:726
+msgid "&Hop"
+msgstr "&Salteti"
+
+#: data/defscript/popups.kvs:1168
+msgid "&Ignore"
+msgstr "&Ignori"
+
+#: data/defscript/popups.kvs:501
+#: data/defscript/popups.kvs:791
+#: data/defscript/popups.kvs:1130
+#: data/defscript/popups.kvs:1271
+msgid "&Information"
+msgstr "&Informo"
+
+#: data/defscript/popups.kvs:736
+msgid "&Join"
+msgstr "&Aliĝi"
+
+#: data/defscript/popups.kvs:719
+#: data/defscript/popups.kvs:786
+msgid "&Join Channels..."
+msgstr "&Aliĝi al Kanaloj..."
+
+#: data/defscript/popups.kvs:587
+#: data/defscript/popups.kvs:594
+msgid "&Kick"
+msgstr "&Peli"
+
+#: data/defscript/popups.kvs:620
+msgid "&Kick/Ban"
+msgstr "&Peli/Ekzili"
+
+#: data/defscript/popups.kvs:555
+msgid "&Op"
+msgstr "&Op"
+
+#: data/defscript/popups.kvs:921
+msgid "&Page"
+msgstr "&Paĝo"
+
+#: data/defscript/popups.kvs:672
+#: data/defscript/popups.kvs:731
+msgid "&Part"
+msgstr "&Foriri"
+
+#: data/defscript/popups.kvs:638
+#: data/defscript/popups.kvs:1298
+msgid "&Query"
+msgstr "&Demando"
+
+#: data/defscript/popups.kvs:651
+#: data/defscript/popups.kvs:1170
+#: data/defscript/popups.kvs:1311
+msgid "&Registration"
+msgstr "&Registrado"
+
+#: data/defscript/popups.kvs:575
+msgid "&Voice"
+msgstr "&Voĉo"
 
 #: data/defscript/aliases.kvs:103
 msgid "-a: send notice to all channel admins"
 msgstr "-a: sendi avizon al ĉiuj kanalaj administrantoj"
 
-#: data/defscript/aliases.kvs:104
-msgid "-o: send notice to all channel ops"
-msgstr "-o: sendi avizon al ĉiuj kanalaj operaciuloj"
-
 #: data/defscript/aliases.kvs:105
 msgid "-h: send notice to all channel halfops"
 msgstr "-h: sendi avizon al ĉiuj kanalaj duon-operaciuloj"
 
-#: data/defscript/aliases.kvs:106
-msgid "-v: send notice to all channel voices"
-msgstr "-v: sendi avizon al ĉiuj kanalaj voĉoj"
+#: data/defscript/aliases.kvs:101
+msgid "-m: send a message instead of a notice"
+msgstr "-m: sendi mesaĝon anstataŭ avizo"
+
+#: data/defscript/aliases.kvs:104
+msgid "-o: send notice to all channel ops"
+msgstr "-o: sendi avizon al ĉiuj kanalaj operaciuloj"
 
 #: data/defscript/aliases.kvs:107
 msgid "-q: quiet mode"
 msgstr "-q: kvieta reĝimo"
 
-#: data/defscript/aliases.kvs:115
-msgid "Parameter message missing"
-msgstr "Parametra mesaĝo mankas"
+#: data/defscript/aliases.kvs:106
+msgid "-v: send notice to all channel voices"
+msgstr "-v: sendi avizon al ĉiuj kanalaj voĉoj"
 
-#: data/defscript/aliases.kvs:116
-msgid "Type /gnotice for help"
-msgstr "Tajpu /gnotice por helpo"
+#: data/defscript/aliases.kvs:102
+msgid "-w: send notice to all channel owners"
+msgstr "-w: sendi avizon al ĉiuj kanalaj posedantoj"
 
-#: data/defscript/aliases.kvs:150
-msgid "Sending wallop to"
-msgstr "Sendas bategon al"
+#: data/defscript/popups.kvs:513
+#: data/defscript/popups.kvs:1142
+#: data/defscript/popups.kvs:1283
+msgid "/WHO ?s"
+msgstr "/WHO (KIU) ?s"
 
-#: data/defscript/aliases.kvs:185
-#: data/defscript/aliases.kvs:197
-#: data/defscript/aliases.kvs:209
-#: data/defscript/aliases.kvs:224
-#: data/defscript/aliases.kvs:238
-#: data/defscript/aliases.kvs:320
-#: data/defscript/aliases.kvs:362
-#: data/defscript/aliases.kvs:432
-#: data/defscript/aliases.kvs:487
-msgid "Usage:"
-msgstr "Uzado:"
+#: data/defscript/popups.kvs:503
+#: data/defscript/popups.kvs:1132
+#: data/defscript/popups.kvs:1273
+msgid "/WHOIS ?s"
+msgstr "/WHOIS (KIUESTAS) ?s"
 
-#: data/defscript/aliases.kvs:239
-msgid "reason"
-msgstr "kialo"
+#: data/defscript/popups.kvs:493
+#: data/defscript/popups.kvs:1123
+#: data/defscript/popups.kvs:1264
+msgid "/WHOIS ?s (idle time)"
+msgstr "/WHOIS (KIUESTAS) ?s (sencela tempo)"
 
-#: data/defscript/aliases.kvs:245
-#: data/defscript/aliases.kvs:438
-msgid "This is not a channel window"
-msgstr "Ĉi tio ne estas kanala fenestro"
+#: data/defscript/popups.kvs:508
+#: data/defscript/popups.kvs:1137
+#: data/defscript/popups.kvs:1278
+msgid "/WHOWAS ?s"
+msgstr "/WHOWAS (KIUESTIS) ?s"
 
-#: data/defscript/aliases.kvs:420
-msgid "Unsupported type:"
-msgstr "Nesubtenata tipo:"
+#: data/defscript/popups.kvs:398
+msgid "Add to Notify"
+msgstr "Aldoni al Avizi"
 
-#: data/defscript/aliases.kvs:443
-msgid "Channel Owner"
-msgstr "Kanala Posedanto"
+#: data/defscript/popups.kvs:32
+#: data/defscript/popups.kvs:65
+msgid "Always Highlight"
+msgstr "Ĉiam Marki"
+
+#: data/defscript/popups.kvs:1414
+msgid "Automatically Join Channel"
+msgstr "Aŭtomate Aliĝi al Kanalo"
+
+#: data/defscript/popups.kvs:408
+msgid "Avatar"
+msgstr "Avataro"
+
+#: data/defscript/popups.kvs:458
+msgid "Ban"
+msgstr "Ekzili"
+
+#: data/defscript/popups.kvs:594
+#: data/defscript/popups.kvs:620
+#: data/defscript/popups.kvs:921
+msgid "Cancel"
+msgstr "Rezigni"
 
 #: data/defscript/aliases.kvs:445
 msgid "Channel Administrator"
@@ -135,87 +205,128 @@ msgstr "Kanala Administranto"
 msgid "Channel Operator"
 msgstr "Kanala Operaciulo"
 
+#: data/defscript/aliases.kvs:443
+msgid "Channel Owner"
+msgstr "Kanala Posedanto"
+
+#: data/defscript/popups.kvs:717
+#: data/defscript/popups.kvs:782
+msgid "Channels"
+msgstr "Kanaloj"
+
+#: data/defscript/popups.kvs:942
+msgid "Chat with"
+msgstr "Babili kun"
+
+#: data/defscript/popups.kvs:412
+msgid "Choose Avatar Image File"
+msgstr "Elekti Avataran Bildan Dosieron"
+
+#: data/defscript/popups.kvs:1228
+#: data/defscript/popups.kvs:1236
+msgid "Choose Log Filename"
+msgstr "Elekti Protokolan Dosiernomon"
+
+#: data/defscript/popups.kvs:410
+msgid "Choose..."
+msgstr "Elekti..."
+
+#: data/defscript/popups.kvs:771
+#: data/defscript/popups.kvs:874
+#: data/defscript/popups.kvs:1090
+#: data/defscript/popups.kvs:1179
+#: data/defscript/popups.kvs:1324
+msgid "Clear Buffer"
+msgstr "Vakigi Bufron"
+
+#: data/defscript/popups.kvs:426
+msgid "Clear Default"
+msgstr "Vakigi Defaŭlton"
+
+#: data/defscript/popups.kvs:1402
+msgid "Close"
+msgstr "Fermi"
+
+#: data/defscript/popups.kvs:1474
+msgid "Close All Dead Channels"
+msgstr "Fermi Ĉiujn Mortintajn Kanalojn"
+
+#: data/defscript/popups.kvs:1480
+msgid "Close All Dead Queries"
+msgstr "Fermi Ĉiujn Mortintajn Demandojn"
+
+#: data/defscript/popups.kvs:1468
+msgid "Close All Queries"
+msgstr "Fermi Ĉiujn Demandojn"
+
+#: data/defscript/popups.kvs:630
+msgid "Configure ban mask..."
+msgstr "Agordi ekzilan maskon..."
+
+#: data/defscript/popups.kvs:690
+msgid "Copy Channel Address"
+msgstr "Kopii Kanalan Adreson"
+
+#: data/defscript/popups.kvs:766
+msgid "Copy Channel URL to Clipboard"
+msgstr "Kopii Kanalan URL al Tondejo"
+
+#: data/defscript/popups.kvs:437
+msgid "Copy To Clipboard"
+msgstr "Kopii Al Poŝo"
+
+#: data/defscript/popups.kvs:580
+msgid "D&evoice"
+msgstr "Forviŝi voĉan flagon"
+
+#: data/defscript/popups.kvs:520
+#: data/defscript/popups.kvs:1149
+msgid "DNS for"
+msgstr "DNS por"
+
+#: data/defscript/popups.kvs:995
+msgid "Default"
+msgstr "Defaŭlto"
+
+#: data/defscript/popups.kvs:1391
+msgid "Dock"
+msgstr "Doki"
+
+#: data/defscript/popups.kvs:386
+msgid "Edit Registration..."
+msgstr "Redakti Registradon..."
+
+#: data/defscript/popups.kvs:118
+msgid "Enable Ignore"
+msgstr "Ebligi Ignori"
+
+#: data/defscript/popups.kvs:594
+msgid "Enter a kick reason"
+msgstr "Enigi pelan kialon"
+
+#: data/defscript/popups.kvs:620
+msgid "Enter a kick/ban reason"
+msgstr "Enigi pelan/ekzilan kialon"
+
+#: data/defscript/popups.kvs:921
+msgid "Enter the message text"
+msgstr "Enigi la mesaĝan tekston"
+
+#: data/defscript/popups.kvs:1202
+msgid "Flush Log File"
+msgstr "Elbufrigi Protokolan Dosieron"
+
 #: data/defscript/aliases.kvs:449
 msgid "Half Operator"
 msgstr "Duon-Operaciulo"
-
-#: data/defscript/aliases.kvs:451
-msgid "Voice"
-msgstr "Voĉo"
-
-#: data/defscript/aliases.kvs:453
-msgid "User Operator"
-msgstr "UzantOperaciulo"
-
-#: data/defscript/aliases.kvs:455
-msgid "Normal User"
-msgstr "Normala Uzanto"
-
-#: data/defscript/aliases.kvs:475
-msgid "You must use DNS in an IRC context"
-msgstr "Vi devas uzi DNS en IRC kunteksto"
-
-#: data/defscript/aliases.kvs:481
-msgid "You must be connected to a server"
-msgstr "Vi devas esti konektata al servilo"
-
-#: data/defscript/aliases.kvs:498
-msgid "No such user:"
-msgstr "Neniu tia uzanto:"
-
-#: data/defscript/default.kvs:34
-msgid "The default script has been successfully installed."
-msgstr "La defaŭlta skripto estas instalita sukcese."
-
-#: data/defscript/default.kvs:35
-msgid "To connect to a server, type /server <server name>"
-msgstr "Konekti al servilo, tajpu /server <servila-nomo>"
 
 #: data/defscript/default.kvs:37
 msgid "Happy ircing :)"
 msgstr "Feliĉa irc-ado :-)"
 
-#: data/defscript/events.kvs:68
-#: data/defscript/events.kvs:76
-#: data/defscript/events.kvs:84
-#: data/defscript/popups.kvs:1406
-msgid "Logging"
-msgstr "Protokolado"
-
-#: data/defscript/toolbars.kvs:3
-msgid "IRC Context"
-msgstr "IRC Kunteksto"
-
-#: data/defscript/toolbars.kvs:15
-msgid "Options"
-msgstr "Opcioj"
-
 #: data/defscript/toolbars.kvs:22
 msgid "Help"
 msgstr "Helpo"
-
-#: data/defscript/toolbars.kvs:30
-msgid "Scripting"
-msgstr "Skriptado"
-
-#: data/defscript/toolbars.kvs:40
-msgid "Window operations"
-msgstr "Fenestraj operacioj"
-
-#: data/defscript/popups.kvs:22
-#: data/defscript/popups.kvs:86
-msgid "Stop Highlighting (Local)"
-msgstr "Ĉesi Marki (Loka)"
-
-#: data/defscript/popups.kvs:27
-#: data/defscript/popups.kvs:91
-msgid "Start Highlighting (Local)"
-msgstr "Komenci Marki (Loka)"
-
-#: data/defscript/popups.kvs:32
-#: data/defscript/popups.kvs:65
-msgid "Always Highlight"
-msgstr "Ĉiam Marki"
 
 #: data/defscript/popups.kvs:34
 #: data/defscript/popups.kvs:39
@@ -226,26 +337,14 @@ msgstr "Ĉiam Marki"
 msgid "Highlight as"
 msgstr "Marki kiel"
 
-#: data/defscript/popups.kvs:70
-msgid "Stop Highlighting"
-msgstr "Ĉesi Marki"
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr "IRC Kunteksto"
 
-#: data/defscript/popups.kvs:107
-msgid "is being ignored"
-msgstr "estas ignorata"
-
-#: data/defscript/popups.kvs:108
-#: data/defscript/popups.kvs:112
-msgid "is not being ignored"
-msgstr "ne estas ignorata"
-
-#: data/defscript/popups.kvs:118
-msgid "Enable Ignore"
-msgstr "Ebligi Ignori"
-
-#: data/defscript/popups.kvs:123
-msgid "Ignore as..."
-msgstr "Ignori kiel..."
+#: data/defscript/popups.kvs:655
+#: data/defscript/popups.kvs:1315
+msgid "Ig&nore"
+msgstr "Ig&nori"
 
 #: data/defscript/popups.kvs:125
 #: data/defscript/popups.kvs:132
@@ -277,29 +376,123 @@ msgstr "Ignori kiel..."
 msgid "Ignore as"
 msgstr "Ignori kiel"
 
-#: data/defscript/popups.kvs:315
-msgid "Unignore"
-msgstr "Malignori"
+#: data/defscript/popups.kvs:123
+msgid "Ignore as..."
+msgstr "Ignori kiel..."
 
-#: data/defscript/popups.kvs:333
-msgid "is registered as"
-msgstr "estas registrita kiel"
+#: data/defscript/popups.kvs:1221
+#: data/defscript/popups.kvs:1234
+msgid "Include Existing Buffer"
+msgstr "Inkluzivi Ekzistantan Bufron"
 
-#: data/defscript/popups.kvs:336
-msgid "is in the notify list"
-msgstr "estas en la aviza listo"
+#: data/defscript/popups.kvs:592
+msgid "K&ick"
+msgstr "&Peli"
 
-#: data/defscript/popups.kvs:339
-msgid "has a default avatar"
-msgstr "havas defaŭltan avataron"
+#: data/defscript/popups.kvs:594
+msgid "Kick Reason"
+msgstr "Pela Kialo"
 
-#: data/defscript/popups.kvs:342
-msgid "is not registered"
-msgstr "ne estas registrita"
+#: data/defscript/popups.kvs:613
+#: data/defscript/popups.kvs:618
+msgid "Kick/Ban"
+msgstr "Peli/Ekzili"
 
-#: data/defscript/popups.kvs:348
-msgid "Register..."
-msgstr "Registri..."
+#: data/defscript/popups.kvs:620
+msgid "Kick/Ban Reason"
+msgstr "Peli/Ekzili Kialo"
+
+#: data/defscript/popups.kvs:1216
+#: data/defscript/popups.kvs:1221
+msgid "Log To Default File"
+msgstr "Protokoli Al Defaŭlta Dosiero"
+
+#: data/defscript/popups.kvs:1226
+#: data/defscript/popups.kvs:1234
+msgid "Log To..."
+msgstr "Protokoli Al..."
+
+#: data/defscript/events.kvs:68
+#: data/defscript/events.kvs:76
+#: data/defscript/events.kvs:84
+#: data/defscript/popups.kvs:1406
+msgid "Logging"
+msgstr "Protokolado"
+
+#: data/defscript/popups.kvs:1200
+msgid "Logging to"
+msgstr "Protokolas al"
+
+#: data/defscript/popups.kvs:1513
+msgid "Look Up "
+msgstr "Serĉi "
+
+#: data/defscript/popups.kvs:525
+#: data/defscript/popups.kvs:1154
+msgid "Mask for"
+msgstr "Masko por"
+
+#: data/defscript/popups.kvs:1397
+msgid "Maximize"
+msgstr "Maksimumigi"
+
+#: data/defscript/popups.kvs:1396
+msgid "Minimize"
+msgstr "Minimumigi"
+
+#: data/defscript/aliases.kvs:21
+msgid "Missing target, no action taken"
+msgstr "Mankas celo, nenia ago farata"
+
+#: data/defscript/popups.kvs:462
+#: data/defscript/popups.kvs:1070
+#: data/defscript/popups.kvs:1117
+#: data/defscript/popups.kvs:1259
+msgid "Multiple Users"
+msgstr "Pluropaj Uzantoj"
+
+#: data/defscript/aliases.kvs:498
+msgid "No such user:"
+msgstr "Neniu tia uzanto:"
+
+#: data/defscript/aliases.kvs:455
+msgid "Normal User"
+msgstr "Normala Uzanto"
+
+#: data/defscript/popups.kvs:1214
+msgid "Not Logging"
+msgstr "Ne Protokolas"
+
+#: data/defscript/popups.kvs:657
+#: data/defscript/popups.kvs:757
+#: data/defscript/popups.kvs:1083
+#: data/defscript/popups.kvs:1172
+msgid "Notify Avatar"
+msgstr "Avizi Avataron"
+
+#: data/defscript/popups.kvs:1317
+msgid "Notify avatar"
+msgstr "Avizi avataron"
+
+#: data/defscript/popups.kvs:535
+msgid "O&wner"
+msgstr "Posedanto"
+
+#: data/defscript/popups.kvs:1520
+msgid "Open "
+msgstr "Malfermi "
+
+#: data/defscript/toolbars.kvs:15
+msgid "Options"
+msgstr "Opcioj"
+
+#: data/defscript/aliases.kvs:115
+msgid "Parameter message missing"
+msgstr "Parametra mesaĝo mankas"
+
+#: data/defscript/popups.kvs:1462
+msgid "Part All Channels"
+msgstr "Foriri Ĉiujn Kanalojn"
 
 #: data/defscript/popups.kvs:353
 msgid "Quick Registration"
@@ -314,268 +507,258 @@ msgstr "Rapida Registrado"
 msgid "Register as"
 msgstr "Registri kiel"
 
-#: data/defscript/popups.kvs:386
-msgid "Edit Registration..."
-msgstr "Redakti Registradon..."
-
-#: data/defscript/popups.kvs:391
-msgid "Unregister"
-msgstr "Malregistri"
-
-#: data/defscript/popups.kvs:398
-msgid "Add to Notify"
-msgstr "Aldoni al Avizi"
+#: data/defscript/popups.kvs:348
+msgid "Register..."
+msgstr "Registri..."
 
 #: data/defscript/popups.kvs:403
 msgid "Remove from Notify"
 msgstr "Forviŝi de Avizi"
 
-#: data/defscript/popups.kvs:408
-msgid "Avatar"
-msgstr "Avataro"
+#: data/defscript/popups.kvs:1398
+msgid "Restore"
+msgstr "Restaŭri"
 
-#: data/defscript/popups.kvs:410
-msgid "Choose..."
-msgstr "Elekti..."
+#: data/defscript/popups.kvs:947
+msgid "Reverse Chat with"
+msgstr "Inversa Babilado kun"
 
-#: data/defscript/popups.kvs:412
-msgid "Choose Avatar Image File"
-msgstr "Elekti Avataran Bildan Dosieron"
+#: data/defscript/popups.kvs:969
+msgid "Reverse Send to"
+msgstr "Inverse Sendi al"
+
+#: data/defscript/toolbars.kvs:30
+msgid "Scripting"
+msgstr "Skriptado"
+
+#: data/defscript/popups.kvs:952
+msgid "Secure Chat with"
+msgstr "Sekura Babilado kun"
+
+#: data/defscript/popups.kvs:974
+msgid "Secure Reverse Send to"
+msgstr "Sekura Inversa Sendi al"
+
+#: data/defscript/popups.kvs:964
+msgid "Secure send to"
+msgstr "Sekure sendi al"
+
+#: data/defscript/popups.kvs:959
+msgid "Send to"
+msgstr "Sendi al"
+
+#: data/defscript/aliases.kvs:150
+msgid "Sending wallop to"
+msgstr "Sendas bategon al"
 
 #: data/defscript/popups.kvs:421
 msgid "Set as Default"
 msgstr "Agordi kiel Defaŭlto"
 
-#: data/defscript/popups.kvs:426
-msgid "Clear Default"
-msgstr "Vakigi Defaŭlton"
+#: data/defscript/popups.kvs:1408
+msgid "Set window props as default"
+msgstr "Starigi fenestrajn atributojn kiel defaŭltaj"
 
-#: data/defscript/popups.kvs:437
-msgid "Copy To Clipboard"
-msgstr "Kopii Al Poŝo"
+#: data/defscript/popups.kvs:27
+#: data/defscript/popups.kvs:91
+msgid "Start Highlighting (Local)"
+msgstr "Komenci Marki (Loka)"
 
-#: data/defscript/popups.kvs:458
-msgid "Ban"
-msgstr "Ekzili"
+#: data/defscript/popups.kvs:1445
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr "Ĉesi Aŭto-Aliĝon al Kanalo en Reto '?s'"
 
-#: data/defscript/popups.kvs:462
-#: data/defscript/popups.kvs:1070
-#: data/defscript/popups.kvs:1117
-#: data/defscript/popups.kvs:1259
-msgid "Multiple Users"
-msgstr "Pluropaj Uzantoj"
+#: data/defscript/popups.kvs:1432
+msgid "Stop Auto-Joining Channel on Server '?s'"
+msgstr "Ĉesi Aŭto-Aliĝon al Kanalo sur Servilo '?s'"
 
-#: data/defscript/popups.kvs:468
-#: data/defscript/popups.kvs:603
-msgid "&Ban"
-msgstr "&Ekzili"
+#: data/defscript/popups.kvs:70
+msgid "Stop Highlighting"
+msgstr "Ĉesi Marki"
 
-#: data/defscript/popups.kvs:493
-#: data/defscript/popups.kvs:1123
-#: data/defscript/popups.kvs:1264
-msgid "/WHOIS ?s (idle time)"
-msgstr "/WHOIS (KIUESTAS) ?s (sencela tempo)"
+#: data/defscript/popups.kvs:22
+#: data/defscript/popups.kvs:86
+msgid "Stop Highlighting (Local)"
+msgstr "Ĉesi Marki (Loka)"
 
-#: data/defscript/popups.kvs:501
-#: data/defscript/popups.kvs:791
-#: data/defscript/popups.kvs:1130
-#: data/defscript/popups.kvs:1271
-msgid "&Information"
-msgstr "&Informo"
+#: data/defscript/popups.kvs:1209
+msgid "Stop Logging"
+msgstr "Ĉesi protokoli"
 
-#: data/defscript/popups.kvs:503
-#: data/defscript/popups.kvs:1132
-#: data/defscript/popups.kvs:1273
-msgid "/WHOIS ?s"
-msgstr "/WHOIS (KIUESTAS) ?s"
+#: data/defscript/popups.kvs:986
+msgid "TDCC Reverse Send to"
+msgstr "TDCC Inverse Sendi al"
 
-#: data/defscript/popups.kvs:508
-#: data/defscript/popups.kvs:1137
-#: data/defscript/popups.kvs:1278
-msgid "/WHOWAS ?s"
-msgstr "/WHOWAS (KIUESTIS) ?s"
+#: data/defscript/popups.kvs:981
+msgid "TDCC Send to"
+msgstr "TDCC Sendi al"
 
-#: data/defscript/popups.kvs:513
-#: data/defscript/popups.kvs:1142
-#: data/defscript/popups.kvs:1283
-msgid "/WHO ?s"
-msgstr "/WHO (KIU) ?s"
+#: data/defscript/popups.kvs:1525
+msgid "Telnet to "
+msgstr "Telneti al "
 
-#: data/defscript/popups.kvs:520
-#: data/defscript/popups.kvs:1149
-msgid "DNS for"
-msgstr "DNS por"
+#: data/defscript/default.kvs:34
+msgid "The default script has been successfully installed."
+msgstr "La defaŭlta skripto estas instalita sukcese."
 
-#: data/defscript/popups.kvs:525
-#: data/defscript/popups.kvs:1154
-msgid "Mask for"
-msgstr "Masko por"
+#: data/defscript/aliases.kvs:245
+#: data/defscript/aliases.kvs:438
+msgid "This is not a channel window"
+msgstr "Ĉi tio ne estas kanala fenestro"
 
-#: data/defscript/popups.kvs:531
-msgid "&Control"
-msgstr "&Kontroli"
+#: data/defscript/default.kvs:35
+msgid "To connect to a server, type /server <server name>"
+msgstr "Konekti al servilo, tajpu /server <servila-nomo>"
 
-#: data/defscript/popups.kvs:535
-msgid "O&wner"
-msgstr "Posedanto"
+#: data/defscript/popups.kvs:1532
+msgid "Traceroute to "
+msgstr "Spuri enkursigon al "
 
-#: data/defscript/popups.kvs:540
-msgid "&Deowner"
-msgstr "Forigi posedantan flagon"
+#: data/defscript/popups.kvs:1538
+msgid "Traceroute6 to "
+msgstr "Spuri enkursigon al "
 
-#: data/defscript/popups.kvs:545
-msgid "&Administrator"
-msgstr "&Administracianto"
+#: data/defscript/aliases.kvs:116
+msgid "Type /gnotice for help"
+msgstr "Tajpu /gnotice por helpo"
 
-#: data/defscript/popups.kvs:550
-msgid "&Deadministrator"
-msgstr "Forigi administraciantan flagon"
+#: data/defscript/popups.kvs:1392
+msgid "Undock"
+msgstr "Maldoki"
 
-#: data/defscript/popups.kvs:555
-msgid "&Op"
-msgstr "&Op"
+#: data/defscript/popups.kvs:1494
+msgid "Unhighlight All Channels"
+msgstr "Malmarki Ĉiujn Kanalojn"
 
-#: data/defscript/popups.kvs:560
-msgid "&Deop"
-msgstr "&Forigi operaciulan flagon"
+#: data/defscript/popups.kvs:1500
+msgid "Unhighlight All Queries"
+msgstr "Malmarki Ĉiujn Demandojn"
 
-#: data/defscript/popups.kvs:565
-msgid "&Halfop"
-msgstr "&Duon-op"
+#: data/defscript/popups.kvs:1488
+msgid "Unhighlight All Windows"
+msgstr "Malmarki Ĉiujn Fenestrojn"
 
-#: data/defscript/popups.kvs:570
-msgid "&Dehalfop"
-msgstr "&Forviŝi duon-op flagon"
+#: data/defscript/popups.kvs:315
+msgid "Unignore"
+msgstr "Malignori"
 
-#: data/defscript/popups.kvs:575
-msgid "&Voice"
-msgstr "&Voĉo"
+#: data/defscript/popups.kvs:391
+msgid "Unregister"
+msgstr "Malregistri"
 
-#: data/defscript/popups.kvs:580
-msgid "D&evoice"
-msgstr "Forviŝi voĉan flagon"
+#: data/defscript/aliases.kvs:420
+msgid "Unsupported type:"
+msgstr "Nesubtenata tipo:"
 
-#: data/defscript/popups.kvs:587
-#: data/defscript/popups.kvs:594
-msgid "&Kick"
-msgstr "&Peli"
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "Usage"
+msgstr "Uzado"
 
-#: data/defscript/popups.kvs:592
-msgid "K&ick"
-msgstr "&Peli"
+#: data/defscript/aliases.kvs:185
+#: data/defscript/aliases.kvs:197
+#: data/defscript/aliases.kvs:209
+#: data/defscript/aliases.kvs:224
+#: data/defscript/aliases.kvs:238
+#: data/defscript/aliases.kvs:320
+#: data/defscript/aliases.kvs:362
+#: data/defscript/aliases.kvs:432
+#: data/defscript/aliases.kvs:487
+msgid "Usage:"
+msgstr "Uzado:"
+
+#: data/defscript/aliases.kvs:453
+msgid "User Operator"
+msgstr "UzantOperaciulo"
+
+#: data/defscript/aliases.kvs:451
+msgid "Voice"
+msgstr "Voĉo"
+
+#: data/defscript/popups.kvs:993
+msgid "Voice Chat"
+msgstr "Voĉa Babilado"
+
+#: data/defscript/popups.kvs:1424
+msgid "When Connecting to Network '?s'"
+msgstr "Kiam Konektante al Reto '?s'"
+
+#: data/defscript/popups.kvs:1417
+msgid "When Connecting to Server '?s'"
+msgstr "Kiam Konektante al Servilo '?s'"
+
+#: data/defscript/toolbars.kvs:40
+msgid "Window operations"
+msgstr "Fenestraj operacioj"
 
 #: data/defscript/popups.kvs:592
 #: data/defscript/popups.kvs:618
 msgid "With..."
 msgstr "Kun..."
 
-#: data/defscript/popups.kvs:594
-msgid "Kick Reason"
-msgstr "Pela Kialo"
+#: data/defscript/aliases.kvs:481
+msgid "You must be connected to a server"
+msgstr "Vi devas esti konektata al servilo"
 
-#: data/defscript/popups.kvs:594
-msgid "Enter a kick reason"
-msgstr "Enigi pelan kialon"
-
-#: data/defscript/popups.kvs:594
-#: data/defscript/popups.kvs:620
-#: data/defscript/popups.kvs:921
-msgid "Cancel"
-msgstr "Rezigni"
-
-#: data/defscript/popups.kvs:613
-#: data/defscript/popups.kvs:618
-msgid "Kick/Ban"
-msgstr "Peli/Ekzili"
-
-#: data/defscript/popups.kvs:620
-msgid "Kick/Ban Reason"
-msgstr "Peli/Ekzili Kialo"
-
-#: data/defscript/popups.kvs:620
-msgid "Enter a kick/ban reason"
-msgstr "Enigi pelan/ekzilan kialon"
-
-#: data/defscript/popups.kvs:620
-msgid "&Kick/Ban"
-msgstr "&Peli/Ekzili"
-
-#: data/defscript/popups.kvs:630
-msgid "Configure ban mask..."
-msgstr "Agordi ekzilan maskon..."
-
-#: data/defscript/popups.kvs:638
-#: data/defscript/popups.kvs:1298
-msgid "&Query"
-msgstr "&Demando"
-
-#: data/defscript/popups.kvs:651
-#: data/defscript/popups.kvs:1170
-#: data/defscript/popups.kvs:1311
-msgid "&Registration"
-msgstr "&Registrado"
-
-#: data/defscript/popups.kvs:653
-#: data/defscript/popups.kvs:764
-#: data/defscript/popups.kvs:1313
-msgid "&Highlight"
-msgstr "&Marki"
-
-#: data/defscript/popups.kvs:655
-#: data/defscript/popups.kvs:1315
-msgid "Ig&nore"
-msgstr "Ig&nori"
-
-#: data/defscript/popups.kvs:657
-#: data/defscript/popups.kvs:757
-#: data/defscript/popups.kvs:1083
-#: data/defscript/popups.kvs:1172
-msgid "Notify Avatar"
-msgstr "Avizi Avataron"
-
-#: data/defscript/popups.kvs:667
-#: data/defscript/popups.kvs:726
-msgid "&Hop"
-msgstr "&Salteti"
-
-#: data/defscript/popups.kvs:672
-#: data/defscript/popups.kvs:731
-msgid "&Part"
-msgstr "&Foriri"
-
-#: data/defscript/popups.kvs:690
-msgid "Copy Channel Address"
-msgstr "Kopii Kanalan Adreson"
-
-#: data/defscript/popups.kvs:717
-#: data/defscript/popups.kvs:782
-msgid "Channels"
-msgstr "Kanaloj"
-
-#: data/defscript/popups.kvs:719
-#: data/defscript/popups.kvs:786
-msgid "&Join Channels..."
-msgstr "&Aliĝi al Kanaloj..."
-
-#: data/defscript/popups.kvs:736
-msgid "&Join"
-msgstr "&Aliĝi"
-
-#: data/defscript/popups.kvs:766
-msgid "Copy Channel URL to Clipboard"
-msgstr "Kopii Kanalan URL al Tondejo"
-
-#: data/defscript/popups.kvs:771
-#: data/defscript/popups.kvs:874
-#: data/defscript/popups.kvs:1090
-#: data/defscript/popups.kvs:1179
-#: data/defscript/popups.kvs:1324
-msgid "Clear Buffer"
-msgstr "Vakigi Bufron"
+#: data/defscript/aliases.kvs:475
+msgid "You must use DNS in an IRC context"
+msgstr "Vi devas uzi DNS en IRC kunteksto"
 
 #: data/defscript/popups.kvs:780
 msgid "You're not connected to a server"
 msgstr "Vi ne estas konektata al servilo"
+
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
+msgstr ""
+"[Instalilo] Eraro: la unua argumento de copyFiles (kopiDosierojn) devas esti "
+"fonta dosierujo"
+
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr ""
+"[Instalilo] Eraro: la dua argumento de copyFiles (kopiDosierojn) devas esti "
+"dosiera nomo aŭ dosiera regula esprimo"
+
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
+msgstr ""
+"[Instalilo] Eraro: la tria argumento de copyFiles (kopiDosierojn) devas esti "
+"cel-dosierujon"
+
+#: data/defscript/aliases.kvs:100
+msgid "channel"
+msgstr "kanalo"
+
+#: data/defscript/popups.kvs:339
+msgid "has a default avatar"
+msgstr "havas defaŭltan avataron"
+
+#: data/defscript/popups.kvs:107
+msgid "is being ignored"
+msgstr "estas ignorata"
+
+#: data/defscript/popups.kvs:336
+msgid "is in the notify list"
+msgstr "estas en la aviza listo"
+
+#: data/defscript/popups.kvs:108
+#: data/defscript/popups.kvs:112
+msgid "is not being ignored"
+msgstr "ne estas ignorata"
+
+#: data/defscript/popups.kvs:342
+msgid "is not registered"
+msgstr "ne estas registrita"
+
+#: data/defscript/popups.kvs:333
+msgid "is registered as"
+msgstr "estas registrita kiel"
 
 #: data/defscript/popups.kvs:815
 msgid "l (Connections)"
@@ -585,9 +768,18 @@ msgstr "l (Konektoj)"
 msgid "m (Command Usage)"
 msgstr "m (Komanda Uzado"
 
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "message"
+msgstr "mesaĝo"
+
 #: data/defscript/popups.kvs:825
 msgid "o (Operators)"
 msgstr "o (Operaciuloj"
+
+#: data/defscript/aliases.kvs:239
+msgid "reason"
+msgstr "kialo"
 
 #: data/defscript/popups.kvs:830
 msgid "t (Connection stats?)"
@@ -604,195 +796,3 @@ msgstr "y (y-Linioj)"
 #: data/defscript/popups.kvs:845
 msgid "z (Debug Stats?)"
 msgstr "z (Senmisaj Statistikoj?)"
-
-#: data/defscript/popups.kvs:921
-msgid "Enter the message text"
-msgstr "Enigi la mesaĝan tekston"
-
-#: data/defscript/popups.kvs:921
-msgid "&Page"
-msgstr "&Paĝo"
-
-#: data/defscript/popups.kvs:942
-msgid "Chat with"
-msgstr "Babili kun"
-
-#: data/defscript/popups.kvs:947
-msgid "Reverse Chat with"
-msgstr "Inversa Babilado kun"
-
-#: data/defscript/popups.kvs:952
-msgid "Secure Chat with"
-msgstr "Sekura Babilado kun"
-
-#: data/defscript/popups.kvs:959
-msgid "Send to"
-msgstr "Sendi al"
-
-#: data/defscript/popups.kvs:964
-msgid "Secure send to"
-msgstr "Sekure sendi al"
-
-#: data/defscript/popups.kvs:969
-msgid "Reverse Send to"
-msgstr "Inverse Sendi al"
-
-#: data/defscript/popups.kvs:974
-msgid "Secure Reverse Send to"
-msgstr "Sekura Inversa Sendi al"
-
-#: data/defscript/popups.kvs:981
-msgid "TDCC Send to"
-msgstr "TDCC Sendi al"
-
-#: data/defscript/popups.kvs:986
-msgid "TDCC Reverse Send to"
-msgstr "TDCC Inverse Sendi al"
-
-#: data/defscript/popups.kvs:993
-msgid "Voice Chat"
-msgstr "Voĉa Babilado"
-
-#: data/defscript/popups.kvs:995
-msgid "Default"
-msgstr "Defaŭlto"
-
-#: data/defscript/popups.kvs:1168
-msgid "&Ignore"
-msgstr "&Ignori"
-
-#: data/defscript/popups.kvs:1200
-msgid "Logging to"
-msgstr "Protokolas al"
-
-#: data/defscript/popups.kvs:1202
-msgid "Flush Log File"
-msgstr "Elbufrigi Protokolan Dosieron"
-
-#: data/defscript/popups.kvs:1209
-msgid "Stop Logging"
-msgstr "Ĉesi protokoli"
-
-#: data/defscript/popups.kvs:1214
-msgid "Not Logging"
-msgstr "Ne Protokolas"
-
-#: data/defscript/popups.kvs:1216
-#: data/defscript/popups.kvs:1221
-msgid "Log To Default File"
-msgstr "Protokoli Al Defaŭlta Dosiero"
-
-#: data/defscript/popups.kvs:1221
-#: data/defscript/popups.kvs:1234
-msgid "Include Existing Buffer"
-msgstr "Inkluzivi Ekzistantan Bufron"
-
-#: data/defscript/popups.kvs:1226
-#: data/defscript/popups.kvs:1234
-msgid "Log To..."
-msgstr "Protokoli Al..."
-
-#: data/defscript/popups.kvs:1228
-#: data/defscript/popups.kvs:1236
-msgid "Choose Log Filename"
-msgstr "Elekti Protokolan Dosiernomon"
-
-#: data/defscript/popups.kvs:1317
-msgid "Notify avatar"
-msgstr "Avizi avataron"
-
-#: data/defscript/popups.kvs:1391
-msgid "Dock"
-msgstr "Doki"
-
-#: data/defscript/popups.kvs:1392
-msgid "Undock"
-msgstr "Maldoki"
-
-#: data/defscript/popups.kvs:1396
-msgid "Minimize"
-msgstr "Minimumigi"
-
-#: data/defscript/popups.kvs:1397
-msgid "Maximize"
-msgstr "Maksimumigi"
-
-#: data/defscript/popups.kvs:1398
-msgid "Restore"
-msgstr "Restaŭri"
-
-#: data/defscript/popups.kvs:1402
-msgid "Close"
-msgstr "Fermi"
-
-#: data/defscript/popups.kvs:1408
-msgid "Set window props as default"
-msgstr "Starigi fenestrajn atributojn kiel defaŭltaj"
-
-#: data/defscript/popups.kvs:1414
-msgid "Automatically Join Channel"
-msgstr "Aŭtomate Aliĝi al Kanalo"
-
-#: data/defscript/popups.kvs:1417
-msgid "When Connecting to Server '?s'"
-msgstr "Kiam Konektante al Servilo '?s'"
-
-#: data/defscript/popups.kvs:1424
-msgid "When Connecting to Network '?s'"
-msgstr "Kiam Konektante al Reto '?s'"
-
-#: data/defscript/popups.kvs:1432
-msgid "Stop Auto-Joining Channel on Server '?s'"
-msgstr "Ĉesi Aŭto-Aliĝon al Kanalo sur Servilo '?s'"
-
-#: data/defscript/popups.kvs:1445
-msgid "Stop Auto-Joining Channel on Network '?s'"
-msgstr "Ĉesi Aŭto-Aliĝon al Kanalo en Reto '?s'"
-
-#: data/defscript/popups.kvs:1462
-msgid "Part All Channels"
-msgstr "Foriri Ĉiujn Kanalojn"
-
-#: data/defscript/popups.kvs:1468
-msgid "Close All Queries"
-msgstr "Fermi Ĉiujn Demandojn"
-
-#: data/defscript/popups.kvs:1474
-msgid "Close All Dead Channels"
-msgstr "Fermi Ĉiujn Mortintajn Kanalojn"
-
-#: data/defscript/popups.kvs:1480
-msgid "Close All Dead Queries"
-msgstr "Fermi Ĉiujn Mortintajn Demandojn"
-
-#: data/defscript/popups.kvs:1488
-msgid "Unhighlight All Windows"
-msgstr "Malmarki Ĉiujn Fenestrojn"
-
-#: data/defscript/popups.kvs:1494
-msgid "Unhighlight All Channels"
-msgstr "Malmarki Ĉiujn Kanalojn"
-
-#: data/defscript/popups.kvs:1500
-msgid "Unhighlight All Queries"
-msgstr "Malmarki Ĉiujn Demandojn"
-
-#: data/defscript/popups.kvs:1513
-msgid "Look Up "
-msgstr "Serĉi "
-
-#: data/defscript/popups.kvs:1520
-msgid "Open "
-msgstr "Malfermi "
-
-#: data/defscript/popups.kvs:1525
-msgid "Telnet to "
-msgstr "Telneti al "
-
-#: data/defscript/popups.kvs:1532
-msgid "Traceroute to "
-msgstr "Spuri enkursigon al "
-
-#: data/defscript/popups.kvs:1538
-msgid "Traceroute6 to "
-msgstr "Spuri enkursigon al "

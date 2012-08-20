@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2011-06-01 04:42+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -222,8 +222,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Non trovo la classe base '%Q'"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Risultato DNS Lookup della query \"%Q\""
 
@@ -235,14 +235,14 @@ msgstr ""
 "Rilevato un ciclo nell'albero di ereditarietà della classe base '%Q': "
 "ridefinisci quella classe prima"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
 #: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
 msgid "Division by zero"
 msgstr "Divisione per zero"
 
@@ -302,8 +302,8 @@ msgid "Error triggered from process callback handler: killing process"
 msgstr ""
 "Errore generato dal gestore della callback del processo: uccido il processo"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
 msgid "Error: %Q"
 msgstr "Errore: %Q"
 
@@ -394,13 +394,13 @@ msgstr ""
 "Trovato carattere %q (unicode %x) mentre mi aspettavo '%' o '$': digita /"
 "help foreach per la sintassi del comando"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:593
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:611
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:634
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:597
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:615
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:638
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr "Trovato carattere %q (unicode %x) mentre mi aspettavo una slash '/'"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2799
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2800
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
 msgstr "Trovato carattere %q (unicode %x) mentre mi aspettavo un'istruzione"
 
@@ -474,13 +474,13 @@ msgstr ""
 "Asserto fallito per la referenza dell'hash: la variabile è valutata con tipo "
 "'%Q'"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
 msgid "Hostname: %Q"
 msgstr "Hostname: %Q"
 
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 msgid "IP address %d: %Q"
 msgstr "Indirizzo IP %d: %Q"
 
@@ -603,43 +603,43 @@ msgstr "Parametro non opzionale \"%1\" mancante"
 msgid "Missing parameter"
 msgstr "Parametro mancante"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:875
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:879
 msgid "Missing right operand for operator '"
 msgstr "Operando destro mancante per l'operatore '"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:722
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:726
 msgid "Missing right operand for operator '+='"
 msgstr "Operando destro mancante per l'operatore '+='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:756
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:760
 msgid "Missing right operand for operator '-='"
 msgstr "Operando destro mancante per l'operatore '-='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:856
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:860
 msgid "Missing right operand for operator '.='"
 msgstr "Operando destro mancante per l'operatore '.='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:815
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:819
 msgid "Missing right operand for operator '<+'"
 msgstr "Operando destro mancante per l'operatore '<+'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:801
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:805
 msgid "Missing right operand for operator '<,'"
 msgstr "Operando destro mancante per l'operatore '<.'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:787
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:791
 msgid "Missing right operand for operator '<<'"
 msgstr "Operando destro mancante per l'operatore '<<'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:777
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:781
 msgid "Missing right operand for operator '<<='"
 msgstr "Operando destro mancante per l'operatore '<<='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:837
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:841
 msgid "Missing right operand for operator '>>='"
 msgstr "Operando destro mancante per l'operatore '>>='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:688
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:692
 msgid "Missing right side operand for the binding operator '=~'"
 msgstr "Operando destro mancante per l'operatore '=~'"
 
@@ -702,7 +702,7 @@ msgstr ""
 "Errore nella chiamata della funzione del modulo: il modulo '%Q' non esporta "
 "una funzione chiamata '%Q'"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3150
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3151
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
@@ -744,18 +744,18 @@ msgstr "Nessun gestore '%Q' per l'evento raw '%d'"
 msgid "No menu bar item with text '%Q'"
 msgstr "Nessun elemento del menu con testo '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Nessun contesto IRC (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 msgid "No such event (%Q)"
 msgstr "Nessun evento (%Q)"
 
@@ -779,7 +779,7 @@ msgstr ""
 msgid "None"
 msgstr "Nessuno"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2739
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2740
 msgid "Objects have no extended scope variables"
 msgstr "Gli oggetti non hanno variabili a visibilità estesa"
 
@@ -843,7 +843,7 @@ msgstr "Comando dello switch vuoto senza senso: sistema lo script"
 msgid "Single Shot"
 msgstr "Colpo Singolo"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3160
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3161
 msgid "Skipping nested terminator character %q"
 msgstr "Salto il carattere terminatore %q annidato"
 
@@ -861,17 +861,17 @@ msgstr ""
 "Carattere ':' isolato nel nome dell'alias: intendevi dire ...<namespace>::"
 "<nome> ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr "Carattere ':' isolato: intendevi dire '...<namespace>::<nome alias>' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
 #: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Sequenza '::' isolata o non valida seguendo il nome dell'alias"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3187
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3188
 msgid "Stray backslash at the end of the script"
 msgstr "Backslash isolata alla fine dello script"
 
@@ -889,7 +889,7 @@ msgstr ""
 "Errore di sintassi dopo il prefisso di chiamata a funzione '$'. Se vuoi "
 "usare un semplice '$' nel codice devi usare l'escape"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2722
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2723
 msgid ""
 "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 "the code you need to escape it"
@@ -897,8 +897,8 @@ msgstr ""
 "Errore di sintassi dopo il prefisso di variabile '%'. Se vuoi usare un "
 "semplice '%' nel codice devi usare l'escape"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:920
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:924
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:946
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr "Errore di sintassi: confuso da errori precedenti: esco"
 
@@ -991,7 +991,7 @@ msgstr ""
 "Il blocco 'while' del comando 'do' necessita di un'espressione racchiusa tra "
 "parentesi"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2941
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2942
 msgid ""
 "The above problem might be related to the switch dash and the following "
 "equal sign"
@@ -1081,7 +1081,7 @@ msgstr "La finestra corrente non è un canale"
 msgid "The current window is not a channel, a query or a console"
 msgstr "La finestra corrente non è un canale, una query o una console"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2910
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2911
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
@@ -1308,7 +1308,7 @@ msgstr ""
 msgid "This is not a channel"
 msgstr "Questo non è un canale"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:748
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:752
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after?"
@@ -1316,8 +1316,8 @@ msgstr ""
 "Questo sembra proprio un operatore di dereferenziazione di un oggetto '->' "
 "ma in realtà non lo è. Forse hai dimenticato un '$' subito dopo?"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:341
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:230
 msgid "This window has no associated IRC context"
 msgstr "La finestra non ha un contesto IRC associato"
 
@@ -1325,9 +1325,9 @@ msgstr "La finestra non ha un contesto IRC associato"
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "La finestra non ha un contesto IRC associato e non è una DCC chat"
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "La finestra non ha un contesto IRC associato"
 
@@ -1356,11 +1356,11 @@ msgstr "Striscia di spazzatura alla fine del comando break: ignoro"
 msgid "Trailing garbage at the end of the continue command: ignored"
 msgstr "Striscia di spazzatura alla fine del comando continue: ignoro"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:710
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:714
 msgid "Trailing garbage ignored after operator '++'"
 msgstr "Striscia di spazzatura ignorata dopo l'operatore '++'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:741
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:745
 msgid "Trailing garbage ignored after operator '--'"
 msgstr "Striscia di spazzatura ignorata dopo l'operatore '--'"
 
@@ -1373,8 +1373,8 @@ msgid "Unable to get certificate information: query not recognized"
 msgstr ""
 "Non riesco a prendere le informazioni del certificato: query non riconosciuta"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:919
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:940
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:923
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:944
 msgid "Unexpected (and senseless) read-only data evaluation"
 msgstr "Valutazione di dati in sola lettura non attesa (e senza senso)"
 
@@ -1392,7 +1392,7 @@ msgstr ""
 "Carattere %q (unicode %x) non atteso dopo il prefisso di chiamata a funzione "
 "'$'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:941
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:945
 msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Carattere '%q' (unicode %x)"
 
@@ -1404,11 +1404,11 @@ msgstr ""
 "Carattere '%q' (unicode %x) non atteso dopo lo slash (è un errore o un "
 "commento malformato?)"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2914
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2915
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr "Carattere '%q' (unicode %x) non atteso dopo il trattino dello switch"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:938
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
 msgid ""
 "Unexpected character '%q' (unicode %x) after a void function call: end of "
 "instruction expected"
@@ -1488,13 +1488,13 @@ msgstr ""
 "Fine del comando inattesa dopo il blocco del comando 'do': mi aspetto la "
 "parola chiave 'while'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:627
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:631
 msgid ""
 "Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 "Fine del comando inattesa nell'operazione di binding, manca almeno uno slash"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:604
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:608
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
@@ -1502,7 +1502,7 @@ msgstr ""
 "Fine del comando inattesa nell'operazione di binding, mancano almeno due "
 "slash"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3476
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3477
 msgid ""
 "Unexpected end of line in hash key (missing '}' character or unescaped "
 "newline)"
@@ -1510,12 +1510,12 @@ msgstr ""
 "Fine della riga inattesa nella chiave dell'hash (manca il carattere '}' o "
 "nuova riga senza escape)"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3023
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3089
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3024
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3090
 msgid "Unexpected end of line in parameter list"
 msgstr "Fine della riga inattesa nella lista dei parametri"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3762
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3763
 msgid ""
 "Unexpected end of line in string constant (missing \" character or unescaped "
 "newline)"
@@ -1527,11 +1527,11 @@ msgstr ""
 msgid "Unexpected end of script after '$' function call prefix"
 msgstr "Fine dello script inattesa dopo il prefisso di chiamata a funzione '$'"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2916
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2917
 msgid "Unexpected end of script after a switch dash"
 msgstr "Fine dello script inattesa dopo il trattino dello switch"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:922
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:926
 msgid "Unexpected end of script after a variable reference: expected operator"
 msgstr ""
 "Fine dello script inattesa dopo una referenza di variabile: atteso operatore"
@@ -1541,12 +1541,12 @@ msgstr ""
 msgid "Unexpected end of script in expression"
 msgstr "Fine dello script inattesa nell'espressione"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3469
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3470
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
 msgstr ""
 "Fine dello script inattesa nella chiave dell'hash (manca il carattere '}' ?)"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2833
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2834
 msgid "Unexpected end of script in instruction block (missing closing brace)"
 msgstr ""
 "Fine dello script inattesa nel blocco di istruzioni (manca la parentesi che "
@@ -1556,12 +1556,12 @@ msgstr ""
 msgid "Unexpected end of script in multiline comment"
 msgstr "Fine dello script inattesa nel commento della multiline"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3017
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3083
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3018
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3084
 msgid "Unexpected end of script in parameter list"
 msgstr "Fine dello script inattesa nella lista dei parametri"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3755
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3756
 msgid "Unexpected end of script in string constant (missing \" character ?)"
 msgstr ""
 "Fine dello script inattesa nella costante stringa (manca il carattere \" ?)"
@@ -1604,7 +1604,7 @@ msgstr "Operatore binario '%q' sconosciuto"
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
 msgstr "Operatore binario '=%q' sconosciuto: volevi dire '==' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:667
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:671
 msgid "Unknown binding operation '%Q'"
 msgstr "Operazione di binding '%Q' sconosciuta"
 
@@ -1612,7 +1612,7 @@ msgstr "Operazione di binding '%Q' sconosciuta"
 msgid "Unknown callback command \"%Q\""
 msgstr "Comando di callback \"%Q\" sconosciuto"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:892
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:896
 msgid "Unknown operator"
 msgstr "Operatore sconosciuto"
 
@@ -1620,17 +1620,17 @@ msgstr "Operatore sconosciuto"
 msgid "Unterminated c-style multiline comment"
 msgstr "Commento di multiline in stile C non terminato"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3468
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3475
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3469
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3476
 msgid "Unterminated hash key"
 msgstr "Chiave dell'hash non terminata"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:2832
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:2833
 msgid "Unterminated instruction block"
 msgstr "Blocco di istruzioni non terminato"
 
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3754
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:3761
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3755
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:3762
 msgid "Unterminated string constant"
 msgstr "Costrante stringa non terminata"
 
@@ -1697,8 +1697,7 @@ msgstr "[KVS]%c Errore di Compilazione: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Errore di Esecuzione: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188
-#: src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Attenzione: %Q"
 

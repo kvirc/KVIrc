@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-12 22:55+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2012-06-25 11:07+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -16,89 +16,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/addon/AddonFunctions.cpp:49
-msgid "The selected file does not seem to be a valid KVIrc addon package"
-msgstr "La elektata dosiero ŝajnas ne esti valida KVIrc kromprograma pako"
+#: src/modules/addon/libkviaddon.cpp:146
+msgid "%cAddon id %Q, version %Q%c"
+msgstr "%cKromprograma idento %Q, versio %Q%c"
 
-#: src/modules/addon/AddonFunctions.cpp:70
-msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "La elektata dosiero ŝajnas ne esti valida KVIrc pako: %1"
-
-#: src/modules/addon/AddonFunctions.cpp:117
-msgid "Author"
-msgstr "Aŭtoro"
-
-#: src/modules/addon/AddonFunctions.cpp:118
-msgid "Created at"
-msgstr "Kreita je"
-
-#: src/modules/addon/AddonFunctions.cpp:119
-msgid "Created with"
-msgstr "Kreita kun"
-
-#: src/modules/addon/AddonFunctions.cpp:144
-msgid "Warning: The addon might be incompatible with this version of KVIrc"
-msgstr "Averto: La kromprogramo povus esti malkongrua kun ĉi tiu versio de KVIrc"
-
-#: src/modules/addon/AddonFunctions.cpp:180
-msgid "Install Addon Pack - KVIrc"
-msgstr "Instali Kromprograman Pakon - KVIrc"
-
-#: src/modules/addon/AddonFunctions.cpp:181
-msgid "You're about to install the following addon package"
-msgstr "Vi estas instalonta la sekvan kromprograman pakon"
-
-#: src/modules/addon/AddonFunctions.cpp:182
-msgid "Do you want to proceed with the installation ?"
-msgstr "Ĉu vi volas daŭrigi kun la instalado?"
-
-#: src/modules/addon/AddonFunctions.cpp:183
-msgid "Do Not Install"
-msgstr "Ne Instali"
-
-#: src/modules/addon/AddonFunctions.cpp:184
-msgid "Yes, Proceed"
-msgstr "Jes, Daŭrigi"
-
-#: src/modules/addon/AddonFunctions.cpp:218
-msgid "Failed to unpack the selected file: %1"
-msgstr "Malsukcesis elpaki la elektitan dosieron: %1"
+#: src/modules/addon/PackAddonDialog.cpp:280
+msgid "Addon Packaging Error"
+msgstr "Kromprograma Pakada Eraro"
 
 #: src/modules/addon/AddonFunctions.cpp:231
 msgid "Addon Unpack Warning"
 msgstr "Kromprograma Elpaka Averto"
 
-#: src/modules/addon/AddonFunctions.cpp:231
-msgid "Failed to delete the directory '%1'"
-msgstr "Malsukcesis forigi la dosierujon '%1'"
+#: src/modules/addon/libkviaddon.cpp:583
+msgid "Addon registration failed"
+msgstr "Kromprograma registrado malsukcesis"
 
-#: src/modules/addon/PackAddonDialog.cpp:53
-msgid "Create Addon Package - KVIrc"
-msgstr "Krei Kromprograman Pakon - KVIrc"
+#: src/modules/addon/libkviaddon.cpp:588
+msgid "Addon successfully registered"
+msgstr "Kromprogramo sukcese registrita"
 
-#: src/modules/addon/PackAddonDialog.cpp:87
-msgid "Welcome"
-msgstr "Bonvenon"
+#: src/modules/addon/libkviaddon.cpp:555
+msgid "Attempting to register addon \"%Q\" with version %Q"
+msgstr "Provante registri kromprogramon \"%Q\" kun versio %Q"
 
-#: src/modules/addon/PackAddonDialog.cpp:91
-msgid "This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public."
-msgstr "Ĉi tiu proceduro permesas vin eksporti la elektitan kromprogramon al sola pako. Estas utila kiam vi volas distribui vian kromprogramon al la publiko."
+#: src/modules/addon/AddonFunctions.cpp:117
+msgid "Author"
+msgstr "Aŭtoro"
 
-#: src/modules/addon/PackAddonDialog.cpp:97
-msgid "You will be asked to provide some information like the package name, the version, a description and so on."
-msgstr "Vi estos demandita provizi iom informon kiel la paka nomo, la versio, priskribo kaj tiel plu."
-
-#: src/modules/addon/PackAddonDialog.cpp:99
-msgid "Hit the \"Next\" button to begin."
-msgstr "Klavu la \"Antaŭen\" butonon por komenci."
-
-#: src/modules/addon/PackAddonDialog.cpp:144
-msgid "The selected directory does not exist."
-msgstr "La elektita dosierujo ne ekzistas."
-
-#: src/modules/addon/PackAddonDialog.cpp:151
-msgid "The initialization script (install.kvs) does not exist."
-msgstr "La pravaloriza skripto (install.kvs) ne ekzistas."
+#: src/modules/addon/PackAddonDialog.cpp:621
+msgid "Cancel"
+msgstr "Rezigni"
 
 #: src/modules/addon/PackAddonDialog.cpp:246
 msgid "Cannot open file for writing."
@@ -108,20 +56,61 @@ msgstr "Ne povas malfermi dosieron por skribi"
 msgid "Cannot write to the file descriptor."
 msgstr "Ne povas skribi al la dosiera priaĵo."
 
-#: src/modules/addon/PackAddonDialog.cpp:280
-msgid "Addon Packaging Error"
-msgstr "Kromprograma Pakada Eraro"
+#: src/modules/addon/AddonManagementDialog.cpp:185
+msgid "Close"
+msgstr "Fermi"
 
-#: src/modules/addon/PackAddonDialog.cpp:326
-#: src/modules/addon/PackAddonDialog.cpp:341
-#: src/modules/addon/PackAddonDialog.cpp:354
-#: src/modules/addon/PackAddonDialog.cpp:382
-msgid "Packaging failed"
-msgstr "Pakado malsukcesis"
+#: src/modules/addon/AddonManagementDialog.cpp:125
+msgid "Configure Addon..."
+msgstr "Agordi Kromprogramon..."
 
-#: src/modules/addon/PackAddonDialog.cpp:328
-msgid "The package file list is empty"
-msgstr "La paka dosiera listo vakas"
+#: src/modules/addon/AddonManagementDialog.cpp:280
+msgid "Confirm addon uninstallation"
+msgstr "Konfirmi kromprograman malinstaladon"
+
+#: src/modules/addon/PackAddonDialog.cpp:53
+msgid "Create Addon Package - KVIrc"
+msgstr "Krei Kromprograman Pakon - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:147
+msgid "Create an Addon as a Distributable Package"
+msgstr "Krei Kromprogramon kiel Distruebla Pako"
+
+#: src/modules/addon/AddonFunctions.cpp:118
+msgid "Created at"
+msgstr "Kreita je"
+
+#: src/modules/addon/AddonFunctions.cpp:119
+msgid "Created with"
+msgstr "Kreita kun"
+
+#: src/modules/addon/AddonManagementDialog.cpp:137
+msgid "Delete Selected Addons"
+msgstr "Forigi Elektitajn Kromprogramojn"
+
+#: src/modules/addon/libkviaddon.cpp:148
+msgid "Description: %Q"
+msgstr "Priskribo: %Q"
+
+#: src/modules/addon/AddonFunctions.cpp:183
+msgid "Do Not Install"
+msgstr "Ne Instali"
+
+#: src/modules/addon/AddonManagementDialog.cpp:275
+msgid "Do you really want to uninstall the addon \"%1\" ?"
+msgstr "Ĉu vi vere volas malinstali la kromprogramon \"%1\"?"
+
+#: src/modules/addon/AddonFunctions.cpp:182
+msgid "Do you want to proceed with the installation ?"
+msgstr "Ĉu vi volas daŭrigi kun la instalado?"
+
+#: src/modules/addon/libkviaddon.cpp:662
+msgid "Empty file list"
+msgstr "Malplena dosiera listo"
+
+#: src/modules/addon/libkviaddon.cpp:809
+msgid "Error installing addon package: %Q"
+msgstr "Eraro dum instalado de kromprograma pako: %Q"
 
 #: src/modules/addon/PackAddonDialog.cpp:329
 #: src/modules/addon/PackAddonDialog.cpp:344
@@ -132,97 +121,159 @@ msgstr "La paka dosiera listo vakas"
 msgid "Export Addon - KVIrc"
 msgstr "Eksporti Kromprogramon"
 
+#: src/modules/addon/AddonFunctions.cpp:231
+msgid "Failed to delete the directory '%1'"
+msgstr "Malsukcesis forigi la dosierujon '%1'"
+
+#: src/modules/addon/AddonFunctions.cpp:218
+msgid "Failed to unpack the selected file: %1"
+msgstr "Malsukcesis elpaki la elektitan dosieron: %1"
+
 #: src/modules/addon/PackAddonDialog.cpp:376
 msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr "Dosiero %1 jam ekzistas. Ĉu vi volas anstataŭigi ĝin?"
 
-#: src/modules/addon/PackAddonDialog.cpp:390
-msgid "Package saved successfully in %1"
-msgstr "Pako savita sukcese en %1"
-
-#: src/modules/addon/PackAddonDialog.cpp:400
-msgid "Package Information"
-msgstr "Paka Informo"
-
-#: src/modules/addon/PackAddonDialog.cpp:401
-msgid "Here you need to provide information about you (the packager) and a short description of the package you're creating."
-msgstr "Ĉi tie vi bezonas provizi informon pri vi (la pakaĵulo) kaj mallongan priskribon de la pakaĵo kiun vi kreas."
-
-#: src/modules/addon/PackAddonDialog.cpp:406
-msgid "Package &Author:"
-msgstr "Paka &Aŭtoro"
-
-#: src/modules/addon/PackAddonDialog.cpp:410
-msgid "Your name here"
-msgstr "Via nomo ĉi tie"
-
-#: src/modules/addon/PackAddonDialog.cpp:415
-msgid "Package &Name:"
-msgstr "Paka &Nomo:"
-
-#: src/modules/addon/PackAddonDialog.cpp:419
-msgid "No spaces allowed, like MyAddon"
-msgstr "Spacoj ne permesataj, kiel MiaKromprogramo"
-
-#: src/modules/addon/PackAddonDialog.cpp:424
-msgid "Package &Version:"
-msgstr "Paka &Versio:"
-
-#: src/modules/addon/PackAddonDialog.cpp:428
-msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
-msgstr "Versio en la aranĝo x.y[.z], kiel 1.0 aŭ 2.0.3"
-
-#: src/modules/addon/PackAddonDialog.cpp:433
-msgid "Package &Description:"
-msgstr "Paka &Priskribo"
-
-#: src/modules/addon/PackAddonDialog.cpp:442
-msgid "Minimum &KVIrc Version:"
-msgstr "Minimuma &KVIrc Versio:"
-
-#: src/modules/addon/PackAddonDialog.cpp:467
-msgid "Package Files"
-msgstr "Pakaj Dosieroj"
-
-#: src/modules/addon/PackAddonDialog.cpp:468
-msgid "Here you need to select the directory where the addon files are."
-msgstr "Ĉi tie vi bezonas elekti la dosierujon kie la kromprogramaj dosieroj estas."
-
-#: src/modules/addon/PackAddonDialog.cpp:473
-msgid "Select the source directory:"
-msgstr "Elekti la fontdosierujon:"
-
-#: src/modules/addon/PackAddonDialog.cpp:477
-msgid "Select the icon file:"
-msgstr "Elekti la piktograman dosieron:"
-
-#: src/modules/addon/PackAddonDialog.cpp:494
-msgid "Save Package"
-msgstr "Savi Pakon"
-
-#: src/modules/addon/PackAddonDialog.cpp:495
-msgid "Here you need to provide the path where to save the addon package"
-msgstr "Ĉi tie vi bezonas provizi la padon kie savi la kromprograman pakon"
-
-#: src/modules/addon/PackAddonDialog.cpp:502
-msgid "Select save path:"
-msgstr "Elekti savpadon:"
+#: src/modules/addon/PackAddonDialog.cpp:605
+msgid "File Summary"
+msgstr "Dosiera Resumo"
 
 #: src/modules/addon/PackAddonDialog.cpp:539
 msgid "Final Information"
 msgstr "Fina Informo"
 
-#: src/modules/addon/PackAddonDialog.cpp:540
-msgid "Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations."
-msgstr "Ĉi tie estas la informo kiun vi provizis. Se ĉi tiu informo estas korekta, klavu la \"Fini\" butonon por kompleti la pakajn operaciojn."
+#: src/modules/addon/PackAddonDialog.cpp:625
+msgid "Finish"
+msgstr "Fini"
 
-#: src/modules/addon/PackAddonDialog.cpp:563
-msgid "This is what I will check for:"
-msgstr "Jen tio kion mi kontrolos:"
+#: src/modules/addon/AddonManagementDialog.cpp:163
+msgid "Get More Addons..."
+msgstr "Havigi Pli da Kromprogramoj..."
+
+#: src/modules/addon/PackAddonDialog.cpp:612
+msgid ""
+"Here there are the files I found in the directories you provided.\n"
+"If these and the information showed in the previous page are correct, hit "
+"the \"Finish\" button to complete\n"
+"the packaging operations."
+msgstr ""
+"Ĉi tie estas la dosieroj kujn mi trovis en la dosierujojn vi provizis.\n"
+"Se ĉi tiuj kaj la informo montrita en la antaŭa paĝo estas korektaj klavu la "
+"\"Fino\" butonon por kompleti\n"
+"la Pakajn operaciojn."
+
+#: src/modules/addon/PackAddonDialog.cpp:540
+msgid ""
+"Here there are the information you provided. If these information are "
+"correct, hit the \"Finish\" button to complete the packaging operations."
+msgstr ""
+"Ĉi tie estas la informo kiun vi provizis. Se ĉi tiu informo estas korekta, "
+"klavu la \"Fini\" butonon por kompleti la pakajn operaciojn."
+
+#: src/modules/addon/PackAddonDialog.cpp:401
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Ĉi tie vi bezonas provizi informon pri vi (la pakaĵulo) kaj mallongan "
+"priskribon de la pakaĵo kiun vi kreas."
+
+#: src/modules/addon/PackAddonDialog.cpp:495
+msgid "Here you need to provide the path where to save the addon package"
+msgstr "Ĉi tie vi bezonas provizi la padon kie savi la kromprograman pakon"
+
+#: src/modules/addon/PackAddonDialog.cpp:468
+msgid "Here you need to select the directory where the addon files are."
+msgstr ""
+"Ĉi tie vi bezonas elekti la dosierujon kie la kromprogramaj dosieroj estas."
+
+#: src/modules/addon/PackAddonDialog.cpp:99
+msgid "Hit the \"Next\" button to begin."
+msgstr "Klavu la \"Antaŭen\" butonon por komenci."
+
+#: src/modules/addon/PackAddonDialog.cpp:585
+msgid "Icon File"
+msgstr "Piktograma Dosiero"
+
+#: src/modules/addon/AddonManagementDialog.cpp:321
+#: src/modules/addon/AddonManagementDialog.cpp:335
+msgid "Install Addon - KVIrc"
+msgstr "Instali Kromprogramon - KVIrc"
+
+#: src/modules/addon/AddonFunctions.cpp:180
+msgid "Install Addon Pack - KVIrc"
+msgstr "Instali Kromprograman Pakon - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:157
+msgid "Install Addon Package From Disk"
+msgstr "Instali Kromprograman Pakon de Disko"
+
+#: src/modules/addon/libkviaddon.cpp:751
+msgid "Installing file '%1' into '%2'"
+msgstr "Instalas dosieron '%1' en '%2'"
+
+#: src/modules/addon/libkviaddon.cpp:529
+msgid "Internal error: call a head-shrinker"
+msgstr "Interna eraro: voku psikiatron"
+
+#: src/modules/addon/WebAddonInterfaceDialog.cpp:43
+msgid "KVIrc : Download Addons"
+msgstr "KVIrc - Elŝuti Kromprogramojn"
+
+#: src/modules/addon/AddonManagementDialog.cpp:103
+msgid "Manage Script-Based Addons"
+msgstr "Administri Skripte-Bazitajn Kromprogramojn"
+
+#: src/modules/addon/PackAddonDialog.cpp:442
+msgid "Minimum &KVIrc Version:"
+msgstr "Minimuma &KVIrc Versio:"
+
+#: src/modules/addon/PackAddonDialog.cpp:581
+msgid "Minimum KVIrc Version"
+msgstr "Minimuma KVIrc Versio"
+
+#: src/modules/addon/libkviaddon.cpp:147
+msgid "Name: %Q"
+msgstr "Nomo: %Q"
+
+#: src/modules/addon/AddonManagementDialog.cpp:281
+msgid "No"
+msgstr "Ne"
+
+#: src/modules/addon/PackAddonDialog.cpp:419
+msgid "No spaces allowed, like MyAddon"
+msgstr "Spacoj ne permesataj, kiel MiaKromprogramo"
+
+#: src/modules/addon/PackAddonDialog.cpp:406
+msgid "Package &Author:"
+msgstr "Paka &Aŭtoro"
+
+#: src/modules/addon/PackAddonDialog.cpp:433
+msgid "Package &Description:"
+msgstr "Paka &Priskribo"
+
+#: src/modules/addon/PackAddonDialog.cpp:415
+msgid "Package &Name:"
+msgstr "Paka &Nomo:"
+
+#: src/modules/addon/PackAddonDialog.cpp:424
+msgid "Package &Version:"
+msgstr "Paka &Versio:"
 
 #: src/modules/addon/PackAddonDialog.cpp:565
 msgid "Package Author"
 msgstr "Paka Aŭtoro"
+
+#: src/modules/addon/PackAddonDialog.cpp:577
+msgid "Package Description"
+msgstr "Paka Priskribo"
+
+#: src/modules/addon/PackAddonDialog.cpp:467
+msgid "Package Files"
+msgstr "Pakaj Dosieroj"
+
+#: src/modules/addon/PackAddonDialog.cpp:400
+msgid "Package Information"
+msgstr "Paka Informo"
 
 #: src/modules/addon/PackAddonDialog.cpp:569
 msgid "Package Name"
@@ -232,76 +283,60 @@ msgstr "Paka Nomo"
 msgid "Package Version"
 msgstr "Paka Versio"
 
-#: src/modules/addon/PackAddonDialog.cpp:577
-msgid "Package Description"
-msgstr "Paka Priskribo"
+#: src/modules/addon/PackAddonDialog.cpp:390
+msgid "Package saved successfully in %1"
+msgstr "Pako savita sukcese en %1"
 
-#: src/modules/addon/PackAddonDialog.cpp:581
-msgid "Minimum KVIrc Version"
-msgstr "Minimuma KVIrc Versio"
+#: src/modules/addon/PackAddonDialog.cpp:326
+#: src/modules/addon/PackAddonDialog.cpp:341
+#: src/modules/addon/PackAddonDialog.cpp:354
+#: src/modules/addon/PackAddonDialog.cpp:382
+msgid "Packaging failed"
+msgstr "Pakado malsukcesis"
 
-#: src/modules/addon/PackAddonDialog.cpp:585
-msgid "Icon File"
-msgstr "Piktograma Dosiero"
+#: src/modules/addon/AddonManagementDialog.cpp:308
+msgid "Please select the addon installation file"
+msgstr "Bonviolu elekti la kromprograman instaladan dosieron"
 
-#: src/modules/addon/PackAddonDialog.cpp:589
-msgid "Source Directory"
-msgstr "Fonta Dosierujo"
+#: src/modules/addon/PackAddonDialog.cpp:494
+msgid "Save Package"
+msgstr "Savi Pakon"
 
 #: src/modules/addon/PackAddonDialog.cpp:593
 msgid "Save Path"
 msgstr "Sava Pado"
 
-#: src/modules/addon/PackAddonDialog.cpp:605
-msgid "File Summary"
-msgstr "Dosiera Resumo"
+#: src/modules/addon/PackAddonDialog.cpp:502
+msgid "Select save path:"
+msgstr "Elekti savpadon:"
 
-#: src/modules/addon/PackAddonDialog.cpp:612
-msgid ""
-"Here there are the files I found in the directories you provided.\n"
-"If these and the information showed in the previous page are correct, hit the \"Finish\" button to complete\n"
-"the packaging operations."
-msgstr ""
-"Ĉi tie estas la dosieroj kujn mi trovis en la dosierujojn vi provizis.\n"
-"Se ĉi tiuj kaj la informo montrita en la antaŭa paĝo estas korektaj klavu la \"Fino\" butonon por kompleti\n"
-"la Pakajn operaciojn."
+#: src/modules/addon/PackAddonDialog.cpp:477
+msgid "Select the icon file:"
+msgstr "Elekti la piktograman dosieron:"
 
-#: src/modules/addon/PackAddonDialog.cpp:621
-msgid "Cancel"
-msgstr "Rezigni"
+#: src/modules/addon/PackAddonDialog.cpp:473
+msgid "Select the source directory:"
+msgstr "Elekti la fontdosierujon:"
 
-#: src/modules/addon/PackAddonDialog.cpp:625
-msgid "Finish"
-msgstr "Fini"
+#: src/modules/addon/AddonManagementDialog.cpp:131
+msgid "Show Help"
+msgstr "Montri Helpon"
 
-#: src/modules/addon/libkviaddon.cpp:146
-msgid "%cAddon id %Q, version %Q%c"
-msgstr "%cKromprograma idento %Q, versio %Q%c"
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
+msgid "Skipping inexistant entry '%1'"
+msgstr "Transsaltante neekzistantan enskribon '%1'"
 
-#: src/modules/addon/libkviaddon.cpp:147
-msgid "Name: %Q"
-msgstr "Nomo: %Q"
+#: src/modules/addon/libkviaddon.cpp:725
+msgid "Skipping invalid entry '%1'"
+msgstr "Transsaltas nevalidan enskribon '%1'"
 
-#: src/modules/addon/libkviaddon.cpp:148
-msgid "Description: %Q"
-msgstr "Priskribo: %Q"
+#: src/modules/addon/PackAddonDialog.cpp:589
+msgid "Source Directory"
+msgstr "Fonta Dosierujo"
 
-#: src/modules/addon/libkviaddon.cpp:154
-#, c-format
-msgid "Total: %d addons installed"
-msgstr "Totalo: %d kromprogramoj instalitaj"
-
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
-msgid "Uninstalling existing addon version %Q"
-msgstr "Malinstalas ekzistantan kromprogramon versio %Q"
-
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "La kromprogramo \"%1\" ne ekzistas"
 
@@ -313,37 +348,50 @@ msgstr "La kromprogramo \"%1\" ne havas agordan revokon starigitan"
 msgid "The addon \"%1\" has no help callback set"
 msgstr "La kromprogramo \"%1\" ne havas helpan revokon starigitan"
 
-#: src/modules/addon/libkviaddon.cpp:529
-msgid "Internal error: call a head-shrinker"
-msgstr "Interna eraro: voku psikiatron"
+#: src/modules/addon/libkviaddon.cpp:567
+msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
+msgstr ""
+"La kromprogramo \"%Q\" jam ekzistas kun versio %Q kiu estas pli alta ol %Q"
 
-#: src/modules/addon/libkviaddon.cpp:538
-msgid "The specified version \"%Q\" is not a valid version string"
-msgstr "La specifita versio \"%Q\" ne estas valida versia ĉeno"
+#: src/modules/addon/libkviaddon.cpp:691
+msgid "The directory '%1' doesn't exist"
+msgstr "La dosierujo '%1' ne ekzistas"
+
+#: src/modules/addon/libkviaddon.cpp:723
+msgid "The entry '%1' is not a file"
+msgstr "La enskribo '%1' ne estas dosiero"
+
+#: src/modules/addon/libkviaddon.cpp:714
+msgid "The file '%1' doesn't exist"
+msgstr "La dosiero '%1' ne ekzistas"
+
+#: src/modules/addon/PackAddonDialog.cpp:151
+msgid "The initialization script (install.kvs) does not exist."
+msgstr "La pravaloriza skripto (install.kvs) ne ekzistas."
+
+#: src/modules/addon/PackAddonDialog.cpp:328
+msgid "The package file list is empty"
+msgstr "La paka dosiera listo vakas"
+
+#: src/modules/addon/PackAddonDialog.cpp:144
+msgid "The selected directory does not exist."
+msgstr "La elektita dosierujo ne ekzistas."
+
+#: src/modules/addon/AddonFunctions.cpp:49
+msgid "The selected file does not seem to be a valid KVIrc addon package"
+msgstr "La elektata dosiero ŝajnas ne esti valida KVIrc kromprograma pako"
+
+#: src/modules/addon/AddonFunctions.cpp:70
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
+msgstr "La elektata dosiero ŝajnas ne esti valida KVIrc pako: %1"
 
 #: src/modules/addon/libkviaddon.cpp:544
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "La specifita KVIrc versio \"%Q\" ne estas valida versia ĉeno"
 
-#: src/modules/addon/libkviaddon.cpp:550
-msgid "This KVIrc executable is too old to run this addon (minimum version required is %Q)"
-msgstr "Ĉi tiu KVIrc plenumeblaĵo estas tro maljuna por ruli ĉi tiun kromprogramon (minimuma versio bezonata estas %Q)"
-
-#: src/modules/addon/libkviaddon.cpp:555
-msgid "Attempting to register addon \"%Q\" with version %Q"
-msgstr "Provante registri kromprogramon \"%Q\" kun versio %Q"
-
-#: src/modules/addon/libkviaddon.cpp:567
-msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
-msgstr "La kromprogramo \"%Q\" jam ekzistas kun versio %Q kiu estas pli alta ol %Q"
-
-#: src/modules/addon/libkviaddon.cpp:583
-msgid "Addon registration failed"
-msgstr "Kromprograma registrado malsukcesis"
-
-#: src/modules/addon/libkviaddon.cpp:588
-msgid "Addon successfully registered"
-msgstr "Kromprogramo sukcese registrita"
+#: src/modules/addon/libkviaddon.cpp:538
+msgid "The specified version \"%Q\" is not a valid version string"
+msgstr "La specifita versio \"%Q\" ne estas valida versia ĉeno"
 
 #: src/modules/addon/libkviaddon.cpp:654
 msgid "The target path can't be empty"
@@ -353,96 +401,68 @@ msgstr "La cela pado ne povas esti malplena"
 msgid "The target path can't contain .."
 msgstr "La cela pado ne povas enteni .."
 
-#: src/modules/addon/libkviaddon.cpp:662
-msgid "Empty file list"
-msgstr "Malplena dosiera listo"
+#: src/modules/addon/libkviaddon.cpp:550
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required "
+"is %Q)"
+msgstr ""
+"Ĉi tiu KVIrc plenumeblaĵo estas tro maljuna por ruli ĉi tiun kromprogramon "
+"(minimuma versio bezonata estas %Q)"
 
-#: src/modules/addon/libkviaddon.cpp:691
-msgid "The directory '%1' doesn't exist"
-msgstr "La dosierujo '%1' ne ekzistas"
+#: src/modules/addon/PackAddonDialog.cpp:563
+msgid "This is what I will check for:"
+msgstr "Jen tio kion mi kontrolos:"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
-msgid "Skipping inexistant entry '%1'"
-msgstr "Transsaltante neekzistantan enskribon '%1'"
+#: src/modules/addon/PackAddonDialog.cpp:91
+msgid ""
+"This procedure allows you to export the selected addon to a single package. "
+"It is useful when you want to distribute your addon to the public."
+msgstr ""
+"Ĉi tiu proceduro permesas vin eksporti la elektitan kromprogramon al sola "
+"pako. Estas utila kiam vi volas distribui vian kromprogramon al la publiko."
 
-#: src/modules/addon/libkviaddon.cpp:714
-msgid "The file '%1' doesn't exist"
-msgstr "La dosiero '%1' ne ekzistas"
+#: src/modules/addon/libkviaddon.cpp:154
+#, c-format
+msgid "Total: %d addons installed"
+msgstr "Totalo: %d kromprogramoj instalitaj"
 
-#: src/modules/addon/libkviaddon.cpp:723
-msgid "The entry '%1' is not a file"
-msgstr "La enskribo '%1' ne estas dosiero"
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+msgid "Uninstalling existing addon version %Q"
+msgstr "Malinstalas ekzistantan kromprogramon versio %Q"
 
-#: src/modules/addon/libkviaddon.cpp:725
-msgid "Skipping invalid entry '%1'"
-msgstr "Transsaltas nevalidan enskribon '%1'"
+#: src/modules/addon/PackAddonDialog.cpp:428
+msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
+msgstr "Versio en la aranĝo x.y[.z], kiel 1.0 aŭ 2.0.3"
 
-#: src/modules/addon/libkviaddon.cpp:751
-msgid "Installing file '%1' into '%2'"
-msgstr "Instalas dosieron '%1' en '%2'"
+#: src/modules/addon/AddonFunctions.cpp:144
+msgid "Warning: The addon might be incompatible with this version of KVIrc"
+msgstr ""
+"Averto: La kromprogramo povus esti malkongrua kun ĉi tiu versio de KVIrc"
 
-#: src/modules/addon/libkviaddon.cpp:809
-msgid "Error installing addon package: %Q"
-msgstr "Eraro dum instalado de kromprograma pako: %Q"
-
-#: src/modules/addon/AddonManagementDialog.cpp:103
-msgid "Manage Script-Based Addons"
-msgstr "Administri Skripte-Bazitajn Kromprogramojn"
-
-#: src/modules/addon/AddonManagementDialog.cpp:125
-msgid "Configure Addon..."
-msgstr "Agordi Kromprogramon..."
-
-#: src/modules/addon/AddonManagementDialog.cpp:131
-msgid "Show Help"
-msgstr "Montri Helpon"
-
-#: src/modules/addon/AddonManagementDialog.cpp:137
-msgid "Delete Selected Addons"
-msgstr "Forigi Elektitajn Kromprogramojn"
-
-#: src/modules/addon/AddonManagementDialog.cpp:147
-msgid "Create an Addon as a Distributable Package"
-msgstr "Krei Kromprogramon kiel Distruebla Pako"
-
-#: src/modules/addon/AddonManagementDialog.cpp:157
-msgid "Install Addon Package From Disk"
-msgstr "Instali Kromprograman Pakon de Disko"
-
-#: src/modules/addon/AddonManagementDialog.cpp:163
-msgid "Get More Addons..."
-msgstr "Havigi Pli da Kromprogramoj..."
-
-#: src/modules/addon/AddonManagementDialog.cpp:185
-msgid "Close"
-msgstr "Fermi"
-
-#: src/modules/addon/AddonManagementDialog.cpp:275
-msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr "Ĉu vi vere volas malinstali la kromprogramon \"%1\"?"
-
-#: src/modules/addon/AddonManagementDialog.cpp:280
-msgid "Confirm addon uninstallation"
-msgstr "Konfirmi kromprograman malinstaladon"
+#: src/modules/addon/PackAddonDialog.cpp:87
+msgid "Welcome"
+msgstr "Bonvenon"
 
 #: src/modules/addon/AddonManagementDialog.cpp:281
 msgid "Yes"
 msgstr "Jes"
 
-#: src/modules/addon/AddonManagementDialog.cpp:281
-msgid "No"
-msgstr "Ne"
+#: src/modules/addon/AddonFunctions.cpp:184
+msgid "Yes, Proceed"
+msgstr "Jes, Daŭrigi"
 
-#: src/modules/addon/AddonManagementDialog.cpp:308
-msgid "Please select the addon installation file"
-msgstr "Bonviolu elekti la kromprograman instaladan dosieron"
+#: src/modules/addon/PackAddonDialog.cpp:97
+msgid ""
+"You will be asked to provide some information like the package name, the "
+"version, a description and so on."
+msgstr ""
+"Vi estos demandita provizi iom informon kiel la paka nomo, la versio, "
+"priskribo kaj tiel plu."
 
-#: src/modules/addon/AddonManagementDialog.cpp:321
-#: src/modules/addon/AddonManagementDialog.cpp:335
-msgid "Install Addon - KVIrc"
-msgstr "Instali Kromprogramon - KVIrc"
+#: src/modules/addon/AddonFunctions.cpp:181
+msgid "You're about to install the following addon package"
+msgstr "Vi estas instalonta la sekvan kromprograman pakon"
 
-#: src/modules/addon/WebAddonInterfaceDialog.cpp:43
-msgid "KVIrc : Download Addons"
-msgstr "KVIrc - Elŝuti Kromprogramojn"
+#: src/modules/addon/PackAddonDialog.cpp:410
+msgid "Your name here"
+msgstr "Via nomo ĉi tie"

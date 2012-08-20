@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-06 17:36+0200\n"
+"POT-Creation-Date: 2012-08-20 21:40+0200\n"
 "PO-Revision-Date: 2012-07-09 14:35+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: Hungarian\n"
@@ -18,29 +18,37 @@ msgstr ""
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-Country: HUNGARY\n"
 
-#: src/modules/python/libkvipython.cpp:46
-msgid "The pythoncore module can't be loaded: python support not available"
-msgstr "A pythoncore modult nem lehet beltölteni: pyhton támogatás nem elérhető"
-
-#: src/modules/python/libkvipython.cpp:47
-msgid "To see more details about loading failure try /pythoncore.load"
-msgstr "Sikertelen betöltéssel kapcsolatos további információkért próbáld a /pythoncore.load parancsot"
-
-#: src/modules/python/libkvipython.cpp:60
-msgid "This KVIrc executable has been compiled without python scripting support"
-msgstr "Ez a KVIrc példány python szkriptelési támogatás nélkül lett lefordítva"
-
-#: src/modules/python/libkvipython.cpp:424
-#: src/modules/python/libkvipython.cpp:477
-msgid "The pythoncore module failed to execute the code: something is wrong with the python support"
-msgstr "A pythoncore modulnak nem sikerült a kódot futtatnia: valami probléma van a python támogatással"
+#: src/modules/pythoncore/libkvipythoncore.cpp:129
+msgid "Internal error: python interpreter not initialized"
+msgstr "Belső hiba: python értelmező nincs inicializálva"
 
 #: src/modules/python/libkvipython.cpp:441
 #: src/modules/python/libkvipython.cpp:445
 msgid "Python execution error:"
 msgstr "Python futtatási hiba:"
 
-#: src/modules/pythoncore/libkvipythoncore.cpp:129
-msgid "Internal error: python interpreter not initialized"
-msgstr "Belső hiba: python értelmező nincs inicializálva"
+#: src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr ""
+"A pythoncore modult nem lehet beltölteni: pyhton támogatás nem elérhető"
 
+#: src/modules/python/libkvipython.cpp:424
+#: src/modules/python/libkvipython.cpp:477
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the python support"
+msgstr ""
+"A pythoncore modulnak nem sikerült a kódot futtatnia: valami probléma van a "
+"python támogatással"
+
+#: src/modules/python/libkvipython.cpp:60
+msgid ""
+"This KVIrc executable has been compiled without python scripting support"
+msgstr ""
+"Ez a KVIrc példány python szkriptelési támogatás nélkül lett lefordítva"
+
+#: src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr ""
+"Sikertelen betöltéssel kapcsolatos további információkért próbáld a /"
+"pythoncore.load parancsot"
