@@ -57,10 +57,14 @@ General notes for the installation of the 4.2 release of KVIrc
     # Qt GUI Toolkit
     #
 
-    If your distro has KDE installed, then Qt is already installed. If not,
-    simply install qt4 from your distro's repositories.
+    You need the qt development package. Install it with your distribution
+    package manager. On ubuntu, for instance, the package is called libqt4-dev.
 
-    So before running CMake make sure that the environment variable $QTDIR
+    If your distribution is sane installing the development package
+    will set up everything properly. However you might need the following
+    paragraphs in case something goes wrong.
+
+    Before running CMake make sure that the environment variable $QTDIR
     points to the right location. This will help in finding the correct version
     of Qt.
 
