@@ -161,7 +161,10 @@ QString KviTreeWindowListItem::key() const
 	{
 		if(iType==KviWindow::Console)
 		{
-			ret.sprintf("%2d%4u",iType,((KviConsoleWindow*)m_pWindow)->context() ? ((KviConsoleWindow*)m_pWindow)->context()->id() : 9999);
+			QString szText;
+			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
+
+			ret.sprintf("%2d%s",iType,szText.toLower().toUtf8().data());
 		} else {
 			ret.sprintf("%2d%s",iType,m_pWindow->windowName().toLower().toUtf8().data());
 		}
