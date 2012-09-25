@@ -150,7 +150,7 @@
 		{
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: Received DH1080 public key from %1, sending mine...").arg(szNick));
 			// fish appends an 'A' to all base64 coded strings
-			szHisPubKey = szMessage.mid(12).toAscii();
+			szHisPubKey = szMessage.mid(12).toLatin1();
 			szHisPubKey.truncate(FISH_KEYLEN);
 			szHisPubKey = QByteArray::fromBase64(szHisPubKey);
 
@@ -164,7 +164,7 @@
 		if(szMessage.startsWith("DH1080_FINISH ", Qt::CaseSensitive))
 		{
 			// fish appends an 'A' to all base64 coded strings
-			szHisPubKey = szMessage.mid(14).toAscii();
+			szHisPubKey = szMessage.mid(14).toLatin1();
 			szHisPubKey.truncate(FISH_KEYLEN);
 			szHisPubKey = QByteArray::fromBase64(szHisPubKey);
 		}
@@ -318,9 +318,3 @@ KVIRC_MODULE(
 	fish_module_cleanup,
 	0
 )
-
-#ifdef COMPILE_CRYPT_SUPPORT
-	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-		#include "libkvifish.moc"
-	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-#endif

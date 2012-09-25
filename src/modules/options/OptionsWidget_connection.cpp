@@ -305,6 +305,3 @@ OptionsWidget_connectionAdvanced::~OptionsWidget_connectionAdvanced()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_connection.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

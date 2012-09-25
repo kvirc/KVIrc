@@ -89,6 +89,3 @@ void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 	QTreeWidget::paintEvent(e);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviThemedTreeWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

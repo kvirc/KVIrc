@@ -113,6 +113,3 @@ OptionsWidget_ctcpFloodProtection::~OptionsWidget_ctcpFloodProtection()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_ctcpFloodProtection.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

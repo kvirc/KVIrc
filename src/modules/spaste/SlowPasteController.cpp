@@ -114,7 +114,7 @@ void SlowPasteController::pasteFile(void)
 			m_pFile->close();
 			delete this;
 		} else {
-			m_pWindow->ownMessage(line.toAscii());
+			m_pWindow->ownMessage(line.toLatin1());
 		}
 	} else { //File finished
 		m_pFile->close();
@@ -134,6 +134,3 @@ void SlowPasteController::pasteClipboard(void)
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "SlowPasteController.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

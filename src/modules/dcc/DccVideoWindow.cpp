@@ -46,7 +46,6 @@
 #include <QToolTip>
 #include <QByteArray>
 #include <QBuffer>
-#include <QTextDocument> //for Qt::escape
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptController.h"
@@ -833,7 +832,7 @@ bool DccVideoWindow::event(QEvent *e)
 							QString szMsg = "<b>";
 							szMsg += m_pDescriptor->szNick;
 							szMsg += "</b> ";
-							szMsg += Qt::escape(QString(d.ptr()));
+							szMsg += KviQString::toHtmlEscaped(QString(d.ptr()));
 							//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
 							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 						}
@@ -887,7 +886,7 @@ bool DccVideoWindow::event(QEvent *e)
 								}
 								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
 								{
-									QString szMsg = Qt::escape(QString(d.ptr()));
+									QString szMsg = KviQString::toHtmlEscaped(QString(d.ptr()));
 									g_pApp->notifierMessage(this,KviIconManager::DccChatMsg,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 								}
 							}
@@ -1054,7 +1053,3 @@ void DccVideoWindow::videoInputChanged(int )
 // 	if(m_pSlaveThread)
 // 		m_pSlaveThread->restartRecording(m_pCDevices->currentIndex(), m_pCInputs->currentIndex(), m_pCStandards->currentIndex());
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccVideoWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

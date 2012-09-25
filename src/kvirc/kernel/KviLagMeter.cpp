@@ -261,6 +261,3 @@ void KviLagMeter::lagCheckAbort(const char * key)
 	for(c = l.first();c;c = l.next())m_pCheckList->removeRef(c);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviLagMeter.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

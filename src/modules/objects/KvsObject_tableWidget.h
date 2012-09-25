@@ -30,7 +30,6 @@
 
 #include "KviKvsRunTimeContext.h"
 
-#include <QtSql>
 #include <QTableWidgetItem>
 #include <QItemDelegate>
 #include <QAbstractItemView>
@@ -59,7 +58,6 @@ public:
 	bool paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index);
 
 protected:
-	QSqlQueryModel       * model;
 	KviKvsRunTimeContext * m_pContext;
 	KviCellItemDelegate  * m_pCellItemDelegate;
 protected:

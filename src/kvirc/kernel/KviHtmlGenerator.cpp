@@ -29,8 +29,6 @@
 #include "KviOptions.h"
 #include "KviTextIconManager.h"
 
-#include <QTextDocument> // for Qt::escape
-
 namespace KviHtmlGenerator
 {
 	QString convertToHtml(const QString & szText, bool bEscape)
@@ -44,7 +42,7 @@ namespace KviHtmlGenerator
 		unsigned char uCurBack = Background;
 		unsigned int uIdx      = 0;
 
-		QString szTxt = bEscape ? Qt::escape(szText) : szText;
+		QString szTxt = bEscape ? KviQString::toHtmlEscaped(szText) : szText;
 
 		while(uIdx < (unsigned int)szTxt.length())
 		{

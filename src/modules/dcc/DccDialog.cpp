@@ -220,7 +220,3 @@ void DccRenameDialog::cancelClicked()
 	this->deleteLater();
 	//g_pApp->collectGarbage(this);
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

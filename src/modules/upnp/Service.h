@@ -39,8 +39,9 @@
 #include <QMap>
 #include <QString>
 
+#if (QT_VERSION < 0x050000)
 class QHttp;
-
+#endif
 namespace UPnP
 {
 
@@ -110,8 +111,10 @@ private:
 private:
 	// The URL to control the service
 	QString              m_szControlUrl;
+#if (QT_VERSION < 0x050000)
 	// The HTTP requester
 	QHttp               *m_pHttp;
+#endif
 	// The URL to request service information
 	QString              m_szInformationUrl;
 	// The number of pending queries/actions

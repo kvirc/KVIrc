@@ -64,7 +64,11 @@ class QMenu;
 #define KVI_INPUT_DEF_FORE 101
 
 #ifndef ACCEL_KEY
-	#define ACCEL_KEY(k) "\t" + QString(QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ))
+	#if (QT_VERSION >= 0x050000)
+		#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ).toString()
+	#else
+		#define ACCEL_KEY(k) "\t" + QString(QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ))
+	#endif
 #endif
 
 /**

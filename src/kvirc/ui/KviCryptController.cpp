@@ -385,7 +385,5 @@
 		delete *ppInfo;
 		*ppInfo = 0;
 	}
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviCryptController.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 #endif //COMPILE_CRYPT_SUPPORT

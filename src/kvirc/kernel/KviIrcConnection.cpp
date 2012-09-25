@@ -1476,7 +1476,7 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szOut = __tr2qs("Using '%1' as nickname").arg(szTmpNick);
 		if(_OUTPUT_VERBOSE)
-			szOut += QString::fromAscii(" (%1)").arg(szChoiceDescription);
+			szOut += QString::fromLatin1(" (%1)").arg(szChoiceDescription);
 			
 		m_pConsole->outputNoFmt(KVI_OUT_VERBOSE,szOut);
 	}

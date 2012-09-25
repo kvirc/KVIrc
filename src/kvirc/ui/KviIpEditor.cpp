@@ -113,7 +113,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 	//       is valid before effectively setting the fields
 	clear();
 
-	QByteArray ip = ipAddr.toAscii(); // ip addresses are digits & latin letters abcdef (IPv6)
+	QByteArray ip = ipAddr.toLatin1(); // ip addresses are digits & latin letters abcdef (IPv6)
 
 	ip = ip.trimmed();
 	const char * c = ip.data();
@@ -289,7 +289,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 					if(((QKeyEvent *)e)->text().size() < 1)
 						return false;
 					// a normal key (this part substitutes a QValidator)
-					const char c = tolower(((QKeyEvent *)e)->text().toAscii().at(0));
+					const char c = tolower(((QKeyEvent *)e)->text().toLatin1().at(0));
 					if(m_addrType == IPv4)
 					{
 						if((c >= '0') && (c <= '9'))
@@ -410,6 +410,3 @@ QSize KviIpEditor::sizeHint() const
 	} else return QFrame::sizeHint();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviIpEditor.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

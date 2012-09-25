@@ -30,7 +30,6 @@
 
 	#include <QCursor>
 	#include <QPainter>
-	#include <QTextDocument>
 	#include <QLineEdit>
 	#include <QComboBox>
 	#include <QValidator>
@@ -1508,5 +1507,4 @@
 		m_pSplitter->setGeometry(0,h,width(),height() - (h + h2));
 	}
 
-	#include "m_canvaswidget.moc"
 #endif

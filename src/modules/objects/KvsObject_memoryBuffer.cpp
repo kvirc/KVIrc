@@ -156,8 +156,5 @@ KVSO_CLASS_FUNCTION(memoryBuffer,saveToFile)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_memoryBuffer.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 

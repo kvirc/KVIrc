@@ -82,6 +82,3 @@ KviWindowScriptButton::~KviWindowScriptButton()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviScriptButton.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

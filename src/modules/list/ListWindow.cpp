@@ -52,7 +52,6 @@
 #include <QToolTip>
 #include <QDateTime>
 #include <QByteArray>
-#include <QTextDocument> // for Qt::escape
 
 extern KviPointerList<ListWindow> * g_pListWindowList;
 
@@ -71,9 +70,9 @@ ChannelTreeWidgetItemData::~ChannelTreeWidgetItemData()
 ChannelTreeWidgetItem::ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData)
 : QTreeWidgetItem(), m_pData(pData)
 {
-	setToolTip(0, Qt::escape(m_pData->m_szChan));
-	setToolTip(1, Qt::escape(m_pData->m_szUsers));
-	setToolTip(2, KviHtmlGenerator::convertToHtml(Qt::escape(m_pData->m_szTopic)));
+	setToolTip(0, KviQString::toHtmlEscaped(m_pData->m_szChan));
+	setToolTip(1, KviQString::toHtmlEscaped(m_pData->m_szUsers));
+	setToolTip(2, KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_pData->m_szTopic)));
 }
 
 ChannelTreeWidgetItem::~ChannelTreeWidgetItem()
@@ -618,6 +617,3 @@ void ListWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "ListWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -33,7 +33,6 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QCursor>
-#include <QTextDocument>
 #include <QListWidget>
 #include <QItemDelegate>
 #include <QToolButton>

@@ -160,8 +160,3 @@ void KvsObject_button::slotClicked()
 	KviKvsVariantList *params=0;
 	callFunction(this,"clickEvent",params);
 }
-
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_button.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

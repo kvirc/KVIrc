@@ -657,6 +657,3 @@ void OptionsWidget_messageColors::load()
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_message.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

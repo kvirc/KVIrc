@@ -488,6 +488,3 @@ void KviInput::toggleMultiLine()
 		[/p]
 */
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviInput.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

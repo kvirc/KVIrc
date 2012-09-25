@@ -218,7 +218,7 @@ void RawEditorWidget::addRaw()
 {
 	bool bOk = false;
 
-	int iIdx = QInputDialog::getInteger(this,__tr2qs_ctx("New Raw Event","editor"),__tr2qs_ctx("Enter the numeric code of the message (0-999)","editor"),0,0,999,1,&bOk);
+	int iIdx = QInputDialog::getInt(this,__tr2qs_ctx("New Raw Event","editor"),__tr2qs_ctx("Enter the numeric code of the message (0-999)","editor"),0,0,999,1,&bOk);
 
 	if(!bOk)return;
 

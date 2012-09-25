@@ -53,7 +53,6 @@
 #include <QStatusBar>
 #include <QUrl>
 #include <QPainter>
-#include <QPrinter>
 #include <QApplication>
 #include <QPoint>
 #include <QContextMenuEvent>
@@ -2035,6 +2034,4 @@ KVSO_CLASS_FUNCTION(widget,grab)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_widget.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

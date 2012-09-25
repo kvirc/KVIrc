@@ -104,9 +104,3 @@ void KviTalToolTip::maybeTip(const QPoint &)
 {
 	// does nothing here..
 }
-
-#ifndef COMPILE_ON_WINDOWS
-	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-		#include "KviTalToolTip.moc"
-	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-#endif

@@ -996,7 +996,7 @@ void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 
 		QString szOut = __tr2qs("Trying to use '%1' as nickname").arg(szNextNick);
 		if(_OUTPUT_VERBOSE)
-			szOut += QString::fromAscii(" (%1)").arg(szChoiceDescriptionBuffer);
+			szOut += QString::fromLatin1(" (%1)").arg(szChoiceDescriptionBuffer);
 		
 		msg->console()->outputNoFmt(KVI_OUT_NICKNAMEPROBLEM,szOut);
 	}

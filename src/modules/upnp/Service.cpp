@@ -34,8 +34,12 @@
 #include "Service.h"
 #include "XmlFunctions.h"
 
+#warning upnp/Service uses QHttp, it must be either ported or dropped
+
 #include <QDebug>
+#if (QT_VERSION < 0x050000)
 #include <QHttp>
+#endif
 #include <QByteArray>
 
 // This implementation was created with the help of the following documentation:
@@ -57,9 +61,10 @@ Service::Service(const QString &hostname, int port, const QString &informationUr
 , m_iPort(port)
 {
 	m_szInformationUrl = informationUrl;
+#if (QT_VERSION < 0x050000)
 	m_pHttp = new QHttp(hostname, port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ), this, SLOT( slotRequestFinished(int,bool) ) );
-
+#endif
 	qDebug() << "UPnP::Service: Created information service url='" << m_szInformationUrl << "'." << endl;
 }
 
@@ -75,9 +80,10 @@ Service::Service(const ServiceParameters &params)
 , m_szHostname(params.hostname)
 , m_iPort(params.port)
 {
+#if (QT_VERSION < 0x050000)
 	m_pHttp = new QHttp(params.hostname, params.port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ), this, SLOT( slotRequestFinished(int,bool) ) );
-
+#endif
 	qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << endl;
 }
 
@@ -87,8 +93,9 @@ Service::Service(const ServiceParameters &params)
 Service::~Service()
 {
 	qDebug() << "DESTROYED UPnP::Service [url=" << m_szControlUrl << ",  id=" << m_szServiceId << "]" << endl;
-
+#if (QT_VERSION < 0x050000)
 	delete m_pHttp;
+#endif
 }
 
 
@@ -114,6 +121,7 @@ int Service::callAction(const QString &actionName, const QMap<QString,QString> &
 int Service::callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments, const QString &prefix)
 {
 	qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << endl;
+#if (QT_VERSION < 0x050000)
 
 	// Create the data message
 	//NOTE: we shouldm use serviceId_ instead of serviceType_, but it seems that my router
@@ -166,7 +174,9 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	m_iPendingRequests++;
 
 	qDebug() << "Sending request:\n" << header.toString() << "\n---" << content << endl;
+
 	return m_pHttp->request(header, content);
+#endif
 }
 
 
@@ -181,7 +191,9 @@ int Service::callInformationUrl()
 	// Send the GET request
 	// TODO: User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
 	m_iPendingRequests++;
+#if (QT_VERSION < 0x050000)
 	return m_pHttp->get(m_szInformationUrl);
+#endif
 }
 
 
@@ -224,6 +236,7 @@ void Service::gotInformationResponse(const QDomNode &response)
 // The QHttp object retrieved data.
 void Service::slotRequestFinished(int id, bool error)
 {
+#if (QT_VERSION < 0x050000)
 	qDebug() << "UPnP::Service: Got HTTP response for request #"<< id << ", state: " << m_pHttp->state() << ", " << m_pHttp->bytesAvailable() << " bytes." << endl;
 
 	if(! error)
@@ -324,7 +337,7 @@ void Service::slotRequestFinished(int id, bool error)
 		m_iPendingRequests--;
 		emit queryFinished(error);
 	}
-
+#endif
 }
 
 

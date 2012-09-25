@@ -53,6 +53,7 @@
 #include <QSplitter>
 #include <QDropEvent>
 #include <QDesktopWidget>
+#include <QMimeData>
 
 CustomizeToolBarsDialog * CustomizeToolBarsDialog::m_pInstance = 0;
 extern QRect g_rectToolBarEditorDialogGeometry;

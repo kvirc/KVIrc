@@ -116,6 +116,3 @@ OptionsWidget_avatar::~OptionsWidget_avatar()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_avatar.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

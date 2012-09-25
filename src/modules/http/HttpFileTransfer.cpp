@@ -488,7 +488,3 @@ bool HttpFileTransfer::startDownload()
 	m_eGeneralStatus = Connecting;
 	return m_pHttpRequest->start();
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_HttpFileTransfer.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

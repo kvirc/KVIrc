@@ -934,6 +934,3 @@ void KviChannelListSelector::removeClicked()
 	lst.clear();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviSelectors.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

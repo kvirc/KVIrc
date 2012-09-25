@@ -137,8 +137,13 @@ FileTransferWidget::FileTransferWidget(QWidget * pParent)
 	setHorizontalHeaderLabels(colHeaders);
 	//default column widths
 	setColumnWidth(0, FILETRANSFERW_CELLSIZE);
+#if (QT_VERSION >= 0x050000)
+	horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
+	horizontalHeader()->setSectionResizeMode(1, QHeaderView::Interactive);
+#else
 	horizontalHeader()->setResizeMode(0, QHeaderView::Fixed);
 	horizontalHeader()->setResizeMode(1, QHeaderView::Interactive);
+#endif
 	setColumnWidth(1, 500);
 	horizontalHeader()->setStretchLastSection(true);
 	//focus policy
@@ -326,13 +331,15 @@ bool FileTransferWindow::eventFilter( QObject *obj, QEvent *ev )
 	return KviWindow::eventFilter( obj, ev );
 }
 
+#warning FileTransferWindow::fontChange
+/*
 void FileTransferWindow::fontChange(const QFont &oldFont)
 {
 	QFontMetrics fm(font());
 	m_iLineSpacing = fm.lineSpacing();
 	KviWindow::fontChange(oldFont);
 }
-
+*/
 void FileTransferWindow::tipRequest(KviDynamicToolTip * tip,const QPoint &pnt)
 {
 	FileTransferItem * it = (FileTransferItem *)m_pTableWidget->itemAt(pnt);
@@ -863,7 +870,3 @@ void FileTransferWindow::applyOptions()
 	m_pIrcView->applyOptions();
 	KviWindow::applyOptions();
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_FileTransferWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

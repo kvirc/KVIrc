@@ -622,6 +622,3 @@ KVIRC_MODULE(
 	0
 )
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "libkviident.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

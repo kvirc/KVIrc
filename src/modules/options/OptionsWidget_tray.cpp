@@ -107,6 +107,3 @@ void OptionsWidget_tray::setEnabled(bool)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_tray.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

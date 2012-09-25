@@ -422,6 +422,3 @@ KVSO_CLASS_FUNCTION(popupMenu,activatedEvent)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_popupMenu.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

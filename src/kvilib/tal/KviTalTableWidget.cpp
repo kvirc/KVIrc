@@ -96,6 +96,4 @@ void KviTalTreeWidget::redirect_itemPressed(QTreeWidgetItem *pItem,int col)
 	emit itemPressed((KviTalTreeWidgetItem *)pItem,col);
 }
 */
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalTableWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -466,10 +466,6 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 	return findInstanceEntry(pcName,m_pInstanceTree);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "m_OptionsInstanceManager.moc"
-#endif
-
 EOF
 #################################################################################
 

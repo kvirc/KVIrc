@@ -107,6 +107,4 @@ void KviTalFileDialog::setDirectory(const QString & szDirectory)
 #endif
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalFileDialog.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

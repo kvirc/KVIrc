@@ -110,7 +110,7 @@ bool kvi_mayBeSpam(KviCString * msg,KviCString &spamWord)
 	{
 		// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!)
 
-		const char * aux = (*it).toAscii();
+		const char * aux = (*it).toLatin1();
 		if(aux)
 		{
 			if(msg->findFirstIdx(aux,false) != -1)

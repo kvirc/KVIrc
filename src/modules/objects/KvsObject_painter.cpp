@@ -33,7 +33,9 @@
 #include "KviError.h"
 #include "KviIconManager.h"
 #include "KviMemory.h"
-#include <QPrintDialog>
+#if (QT_VERSION < 0x050000)
+	#include <QPrintDialog>
+#endif
 #include <QTextDocument>
 #include <QIcon>
 
@@ -620,7 +622,9 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_painter,KviKvsObject)
 
 	m_pPainter = new QPainter();
 	bDonotdeleteinternalqpainter=false;
+#if (QT_VERSION < 0x050000)
 	m_pPrinter = 0 ;
+#endif
 	m_pDeviceObject=0;
 	m_pPainterPath=0;
 	m_pGradient=0;
@@ -635,8 +639,10 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_painter)
 		m_pGradient=0;
 	if (m_pPainter && !bDonotdeleteinternalqpainter) delete m_pPainter;
 		m_pPainter = 0;
+#if (QT_VERSION < 0x050000)
 	if (m_pPrinter) delete m_pPrinter;
 		m_pPrinter = 0;
+#endif
 
 KVSO_END_CONSTRUCTOR(KvsObject_painter)
 
@@ -1158,6 +1164,10 @@ KVSO_CLASS_FUNCTION(painter,begin)
 	{
 		QString szDev;
 		v->asString(szDev);
+#if (QT_VERSION >= 0x050000)
+		c->warning(__tr2qs_ctx("No valid paint device","objects"));
+		return true;
+#else
 		if(KviQString::equalCI(szDev,"printer") || KviQString::equalCI(szDev,"pdf"))
 		{
 			if (m_pPrinter) delete m_pPrinter;
@@ -1192,6 +1202,7 @@ KVSO_CLASS_FUNCTION(painter,begin)
 		}
 		m_pPainter->begin(m_pPrinter);
 		return true;
+#endif
 	} else if (v->isHObject()) {
 		v->asHObject(hObject);
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
@@ -1234,11 +1245,13 @@ void KvsObject_painter::detachDevice()
 	if(!m_pDeviceObject)return;
 	disconnect(m_pDeviceObject,SIGNAL(aboutToDie()),this,SLOT(detachDevice()));
 	m_pPainter->end();
+#if (QT_VERSION < 0x050000)
 	if (m_pPrinter)
 	{
 		delete m_pPrinter;
 		m_pPrinter=0;
 	}
+#endif
 	m_pDeviceObject = 0;
 }
 
@@ -1249,11 +1262,13 @@ KVSO_CLASS_FUNCTION(painter,end)
 	if(!m_pDeviceObject)
 	{
 		m_pPainter->end();
+#if (QT_VERSION < 0x050000)
 		if (m_pPrinter)
 		{
 			delete m_pPrinter;
 			m_pPrinter=0;
 		}
+#endif
 	}
 	else detachDevice();
 	return true;
@@ -1266,11 +1281,13 @@ KVSO_CLASS_FUNCTION(painter,beginPdf)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFileName)
 	KVSO_PARAMETERS_END(c)
+#if (QT_VERSION < 0x050000)
 	if (m_pPrinter) delete m_pPrinter;
 	m_pPrinter=new QPrinter();//QPrinter::HighResolution);
 	m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
 	m_pPrinter->setOutputFileName(szFileName);
 	m_pPainter->begin(m_pPrinter);
+#endif
 	return true;
 }
 
@@ -2097,6 +2114,4 @@ void KvsObject_painter::setInternalPainter(QPainter *p)
 	m_pPainter=p;
 	bDonotdeleteinternalqpainter=true;
 }
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_painter.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

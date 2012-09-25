@@ -326,7 +326,7 @@ void KviHttpRequest::slotSocketConnected()
 	}
 
 	// FIXME: Handle this better
-	QString req = QString::fromAscii(szRequest.ptr());
+	QString req = QString::fromLatin1(szRequest.ptr());
 	QStringList sl = req.split("\r\n");
 	emit requestSent(sl);
 
@@ -395,7 +395,7 @@ void KviHttpRequest::slotConnectionTimedOut()
 
 void KviHttpRequest::slotSocketHostResolved()
 {
-	emit contactingHost(QString::fromAscii("%1:%2").arg(m_url.host()).arg(m_p->uPort));
+	emit contactingHost(QString::fromLatin1("%1:%2").arg(m_url.host()).arg(m_p->uPort));
 	emit status(__tr2qs("Contacting host %1 on port %2").arg(m_url.host()).arg(m_p->uPort));
 }
 

@@ -2308,8 +2308,3 @@ void DccFileTransferBandwidthDialog::closeEvent(QCloseEvent * e)
 	e->ignore();
 	delete this;
 }
-
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccFileTransfer.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

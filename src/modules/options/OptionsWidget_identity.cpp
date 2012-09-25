@@ -1010,6 +1010,4 @@ void IdentityProfileEditor::toggleButton(const QString & szText)
 	m_pBtnOk->setEnabled(bEnabled);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_identity.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -297,5 +297,4 @@
 	//	m_pSlaveThread->start();
 	}
 
-	#include "m_DccCanvasWindow.moc"
 #endif

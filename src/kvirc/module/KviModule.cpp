@@ -212,7 +212,7 @@ void KviModule::unregisterCryptEngines()
 
 void * KviModule::getSymbol(const char * symname)
 {
-	return m_pLibrary->resolve(symname);
+	return (void *)m_pLibrary->resolve(symname);
 }
 
 

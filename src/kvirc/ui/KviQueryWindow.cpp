@@ -63,7 +63,6 @@
 #include <QPixmap>
 #include <QList>
 #include <QByteArray>
-#include <QTextDocument> // for Qt::escape_command
 
 KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szNick)
 : KviWindow(KviWindow::Query,szNick,lpConsole)
@@ -857,6 +856,4 @@ QByteArray KviQueryWindow::loadLogFile(const QString & szFileName, bool bGzip)
 	return data;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviQueryWindow.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

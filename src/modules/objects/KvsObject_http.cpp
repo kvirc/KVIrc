@@ -24,6 +24,9 @@
 
 #include "KvsObject_http.h"
 
+#warning QFtp doesn't exists anymore in Qt5, port this class or drop it
+#if (QT_VERSION < 0x050000)
+
 #include "kvi_debug.h"
 #include "KviError.h"
 #include "KviLocale.h"
@@ -556,6 +559,5 @@ bool KvsObject_http::functionSslErrorsEvent(KviKvsObjectFunctionCall *c)
 	return true;
 }
 #endif
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_http.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
+#endif

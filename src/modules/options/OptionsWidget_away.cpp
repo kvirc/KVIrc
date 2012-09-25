@@ -69,6 +69,3 @@ void OptionsWidget_away::enableAwayMessage(bool)
 	m_pAwayMessage->setEnabled(m_pEnableAwayMessage->isChecked());
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_away.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

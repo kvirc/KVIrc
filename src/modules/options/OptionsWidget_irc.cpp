@@ -83,6 +83,4 @@ OptionsWidget_ircAdvanced::~OptionsWidget_ircAdvanced()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_irc.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

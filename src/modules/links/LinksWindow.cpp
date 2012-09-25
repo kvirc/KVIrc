@@ -484,7 +484,3 @@ void LinksListView::mousePressEvent (QMouseEvent *e)
 	}
 	KviThemedTreeWidget::mousePressEvent(e);
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_LinksWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

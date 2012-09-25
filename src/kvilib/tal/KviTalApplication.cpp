@@ -49,6 +49,4 @@ void KviTalApplication::commitData(QSessionManager & manager)
 #endif
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalApplication.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

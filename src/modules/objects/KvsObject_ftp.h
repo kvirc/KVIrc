@@ -26,6 +26,8 @@
 
 #include "object_macros.h"
 
+#if (QT_VERSION < 0x050000)
+
 #include <QFtp>
 #include <QHash>
 #include <QFile>
@@ -60,4 +62,7 @@ protected slots:
 	void slotReadyRead ();
 	void slotStateChanged ( int state);
 };
+
+#endif
+
 #endif //_CLASS_FTP_H_

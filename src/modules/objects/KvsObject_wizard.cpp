@@ -380,7 +380,4 @@ KviKvsMdmWizard::~KviKvsMdmWizard()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_wizard.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

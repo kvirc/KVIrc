@@ -162,6 +162,3 @@ OptionsWidget_inputFeatures::~OptionsWidget_inputFeatures()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_input.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

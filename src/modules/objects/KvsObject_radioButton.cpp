@@ -140,7 +140,4 @@ void KvsObject_radioButton::toggled(bool b)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_radioButton.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

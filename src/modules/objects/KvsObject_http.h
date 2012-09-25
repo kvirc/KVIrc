@@ -29,6 +29,10 @@
 
 //===============================================================
 #include "object_macros.h"
+
+#warning QFtp doesn't exists anymore in Qt5, port this class or drop it
+#if (QT_VERSION < 0x050000)
+
 #include <QHttp>
 #include <QFile>
 #include <QHash>
@@ -86,4 +90,7 @@ protected slots:
 
 
 };
+
+#endif
+
 #endif //_CLASS_HTTP_H_

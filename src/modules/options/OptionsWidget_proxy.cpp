@@ -360,6 +360,3 @@ void OptionsWidget_proxy::removeCurrent()
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_proxy.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

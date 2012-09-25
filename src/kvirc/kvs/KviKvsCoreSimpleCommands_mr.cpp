@@ -898,7 +898,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szParams;
 		for(unsigned int i=0;i<lParameters.count();i++)
-			szParams.append(QString::fromAscii(" $%1 ").arg(i));
+			szParams.append(QString::fromLatin1(" $%1 ").arg(i));
 
 		KviKvsScript s("popup","popup.show " + szSwitches + szParams);
 		s.run(KVSCSC_pContext->window(),&lParameters,0,KviKvsScript::PreserveParams);

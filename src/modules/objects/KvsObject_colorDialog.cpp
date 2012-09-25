@@ -231,7 +231,4 @@ void KvsObject_colorDialog::slotColorSelected(const QColor &col)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_colorDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

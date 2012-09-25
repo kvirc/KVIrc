@@ -277,8 +277,5 @@
 		}
 	#endif //!COMPILE_NO_X
 #endif
-	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-		#include "KviIpcSentinel.moc"
-	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif

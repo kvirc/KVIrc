@@ -273,9 +273,3 @@ KVIRC_MODULE(
 	lamerizer_module_cleanup,
 	0
 )
-
-#ifdef COMPILE_CRYPT_SUPPORT
-	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-		#include "libkvilamerizer.moc"
-	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-#endif

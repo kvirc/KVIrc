@@ -657,6 +657,3 @@ QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem &, con
 	return QSize(treeWidget->viewport()->size().width(), iHeight);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviTreeWindowList.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

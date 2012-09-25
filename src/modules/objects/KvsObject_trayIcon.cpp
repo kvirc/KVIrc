@@ -238,6 +238,3 @@ void KvsObject_trayIcon::slotActivated(QSystemTrayIcon::ActivationReason reason)
 	lParams.append(new KviKvsVariant(szReason));
 	callFunction(this,"activatedEvent",0,&lParams);
 }
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_trayIcon.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

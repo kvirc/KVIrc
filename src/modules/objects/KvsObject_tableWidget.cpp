@@ -37,7 +37,6 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QPainter>
-#include <QPrinter>
 #include <QApplication>
 #include <QPoint>
 #include <QPaintEvent>
@@ -894,6 +893,4 @@ QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QM
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_tableWidget.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

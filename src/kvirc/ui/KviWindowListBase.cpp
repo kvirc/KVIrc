@@ -794,6 +794,3 @@ bool KviClassicWindowList::setIterationPointer(KviWindowListItem * it)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviWindowListBase.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

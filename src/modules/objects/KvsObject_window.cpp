@@ -172,7 +172,4 @@ KVSO_CLASS_FUNCTION(window,setCentralWidget)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_window.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

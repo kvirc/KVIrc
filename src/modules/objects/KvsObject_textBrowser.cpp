@@ -149,7 +149,4 @@ KVSO_CLASS_FUNCTION(textBrowser,linkClickedEvent)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_textBrowser.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

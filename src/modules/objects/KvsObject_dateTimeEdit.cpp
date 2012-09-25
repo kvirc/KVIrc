@@ -208,6 +208,4 @@ void KvsObject_dateTimeEdit::slotDateChanged(const QDate &)
 	callFunction(this,"dateChangedEvent",params);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_dateTimeEdit.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

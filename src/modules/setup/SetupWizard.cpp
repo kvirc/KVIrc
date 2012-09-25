@@ -1104,6 +1104,3 @@ void SetupWizard::accept()
 	KviTalWizard::accept();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "SetupWizard.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

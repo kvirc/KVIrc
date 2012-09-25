@@ -168,6 +168,3 @@ void OptionsWidget_textEncoding::commit()
 		QMessageBox::information(0,"KVIrc",__tr2qs_ctx("You need to restart KVirc to apply a language changing","options"),QMessageBox::Ok);*/
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_textEncoding.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -161,6 +161,4 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 	g_pToolBarContextPopup->popup(QCursor::pos());
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviToolBar.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

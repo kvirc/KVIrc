@@ -130,6 +130,3 @@ void Idle::doCheck()
 	secondsIdle(secondsIdle());
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "Idle.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

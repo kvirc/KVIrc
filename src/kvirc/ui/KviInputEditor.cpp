@@ -51,6 +51,7 @@
 
 #include <QClipboard>
 #include <QLabel>
+#include <QMimeData>
 #include <QUrl>
 #include <QStyle>
 #include <QStyleOption>
@@ -60,7 +61,11 @@
 #include <QFontMetrics>
 #include <QKeyEvent>
 #include <QDragEnterEvent>
-#include <QInputContext>
+#if (QT_VERSION >= 0x050000)
+	#include <QInputMethod>
+#else
+	#include <QInputContext>
+#endif
 #include <QMenu>
 
 // from KviApplication.cpp
@@ -860,13 +865,16 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
         pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"));
         pAction->setMenu(m_pIconMenu);
 
+#if (QT_VERSION >= 0x050000)
+	#warning Implement Input Methods in KviInputEditor using the new qt5 api!
+#else
 		QInputContext *qic = g_pApp->inputContext();
 		if (qic) {
 			QList<QAction *> imActions = qic->actions();
 			for (int i = 0; i < imActions.size(); ++i)
 				g_pInputPopup->addAction(imActions.at(i));
 		}
-
+#endif
 		g_pInputPopup->popup(mapToGlobal(e->pos()));
 	} else {
 		pasteSelectionWithConfirmation();
@@ -2591,6 +2599,3 @@ void KviInputEditor::dummy()
 	// this function does nothing. check the header file for explanation
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviInputEditor.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -46,6 +46,4 @@ KviTalMenuBar::~KviTalMenuBar()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalMenuBar.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -106,6 +106,3 @@ void OptionsWidget_ircOutput::commit()
 	KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat) = m_pDatetimeCombo->currentIndex();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_ircOutput.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

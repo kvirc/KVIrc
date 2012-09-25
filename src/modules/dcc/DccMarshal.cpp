@@ -651,8 +651,3 @@ void DccMarshal::connectionTimedOut()
 	reset();
 	emit error(KviError::ConnectionTimedOut);
 }
-
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccMarshal.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

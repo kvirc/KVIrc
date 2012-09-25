@@ -52,7 +52,3 @@ const char * DccWindow::dccMarshalOutputContextString()
 	static const char * static_context = "DCC";
 	return static_context;
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

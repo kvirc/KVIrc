@@ -498,8 +498,5 @@
 		return true;
 	}
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KTorrentDbusInterface.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif //	COMPILE_KDE_SUPPORT

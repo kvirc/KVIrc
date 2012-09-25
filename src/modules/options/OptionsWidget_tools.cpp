@@ -46,6 +46,3 @@ OptionsWidget_tools::~OptionsWidget_tools()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_tools.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

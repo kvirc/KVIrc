@@ -33,6 +33,3 @@ KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
 
 #endif
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviDbusAdaptor.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -61,7 +61,6 @@
 
 #include <QDateTime>
 #include <QLocale>
-#include <QTextDocument>
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
@@ -1379,7 +1378,7 @@ void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 				if(!g_pCtcpPageDialog)g_pCtcpPageDialog = new KviCtcpPageDialog();
 				KviCString szData8;
 				szData8 = msg->pData;
-				QString szData = Qt::escape(msg->msg->connection()->decodeText(szData8.ptr()));
+				QString szData = KviQString::toHtmlEscaped(msg->msg->connection()->decodeText(szData8.ptr()));
 				g_pCtcpPageDialog->addPage(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),szData);
 				g_pCtcpPageDialog->popup();
 			}
@@ -1475,7 +1474,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				QString szMsg = "<b>";
 				szMsg += msg->pSource->nick();
 				szMsg += "</b> ";
-				szMsg += Qt::escape(szData);
+				szMsg += KviQString::toHtmlEscaped(szData);
 				//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
 				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 			}

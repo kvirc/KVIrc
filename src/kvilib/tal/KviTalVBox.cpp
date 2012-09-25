@@ -93,6 +93,4 @@ void KviTalVBox::setAlignment(QWidget * pChild, Qt::Alignment alignment)
 	m_pLayout->setAlignment(pChild,alignment);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalVBox.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

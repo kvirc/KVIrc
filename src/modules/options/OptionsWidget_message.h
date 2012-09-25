@@ -33,7 +33,6 @@
 #include <QCheckBox>
 #include <QToolButton>
 #include <QPainter>
-#include <QColorGroup>
 #include <QMenu>
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message KviIconManager::Messages

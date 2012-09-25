@@ -360,7 +360,4 @@ void KvsObject_comboBox::slotActivated(int i)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_comboBox.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

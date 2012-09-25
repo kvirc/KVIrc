@@ -61,6 +61,3 @@ void OptionsWidget_ignore::enableVerbose(bool)
 
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_ignore.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -148,7 +148,7 @@ bool KviPythonInterpreter::execute(
 		else
 			bFirst = false;
 
-		szVarCode += QString::fromAscii("\"%1\"").arg(szArg);
+		szVarCode += QString::fromLatin1("\"%1\"").arg(szArg);
 	}
 
 	szVarCode += "]";

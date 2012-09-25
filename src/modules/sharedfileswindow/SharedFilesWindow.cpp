@@ -732,6 +732,3 @@ void SharedFilesWindow::die()
 //}
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_SharedFilesWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

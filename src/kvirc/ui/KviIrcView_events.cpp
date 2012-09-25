@@ -45,10 +45,10 @@
 
 #include <QClipboard>
 #include <QEvent>
+#include <QMimeData>
 #include <QMouseEvent>
 #include <QScrollBar>
 #include <QUrl>
-#include <QTextDocument> // for Qt::escape_command
 
 #define KVI_IRCVIEW_SELECT_REPAINT_INTERVAL 100
 
@@ -988,12 +988,12 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
 					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
-						"%2</nowrap></font></u>): <br><nowrap>+%3 (%4 users)<hr>%5</nowrap>")).arg(Qt::escape(szChan),Qt::escape(szUrl),Qt::escape(chanMode)).arg(c->count()).arg(Qt::escape(topic));
+						"%2</nowrap></font></u>): <br><nowrap>+%3 (%4 users)<hr>%5</nowrap>")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(chanMode)).arg(c->count()).arg(KviQString::toHtmlEscaped(topic));
 				} else {
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
 					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
-						"%2</nowrap></font></u>)<hr>Double-click to join %3<br>Right click to view other options")).arg(Qt::escape(szChan),Qt::escape(szUrl),Qt::escape(szChan));
+						"%2</nowrap></font></u>)<hr>Double-click to join %3<br>Right click to view other options")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(szChan));
 				}
 
 				tip += buf;

@@ -987,7 +987,3 @@ bool DccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename,co
 
 	return DccFileTransfer::handleResumeRequest(filename,port,filePos);
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccBroker.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

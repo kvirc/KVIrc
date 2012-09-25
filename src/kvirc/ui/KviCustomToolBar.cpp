@@ -32,6 +32,7 @@
 #include "KviCustomToolBarDescriptor.h"
 
 #include <QCursor>
+#include <QDrag>
 #include <QLayout>
 #include <QPixmap>
 #include <QPainter>

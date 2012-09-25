@@ -69,9 +69,7 @@ bool WebAddonInterfaceDialog::packageIsInstalled(const QString &szId,const QStri
 	return KviMiscUtils::compareVersions(pAddon->version(),szVersion) < 0;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "WebAddonInterfaceDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 
 #endif //COMPILE_WEBKIT_SUPPORT
 

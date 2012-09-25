@@ -295,7 +295,4 @@ void KvsObject_slider::valueChanged(int value)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_slider.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

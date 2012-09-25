@@ -2136,7 +2136,8 @@ void KviIrcView::chooseBackground()
 
 void KviIrcView::resetBackground()
 {
-	setPrivateBackgroundPixmap(0);
+	QPixmap dummy;
+	setPrivateBackgroundPixmap(dummy);
 }
 
 void KviIrcView::toggleToolWidget()
@@ -2782,6 +2783,3 @@ void KviIrcView::scrollToMarker()
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviIrcView.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

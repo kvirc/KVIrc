@@ -34,7 +34,6 @@
 #include <QStringList>
 #include <QToolButton>
 #include <QPainter>
-#include <QColorGroup>
 
 class QLabel;
 class QPushButton;

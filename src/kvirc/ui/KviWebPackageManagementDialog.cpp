@@ -273,9 +273,7 @@ void KviWebPackageManagementDialog::showEvent(QShowEvent *)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviWebPackageManagementDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 
 #endif //COMPILE_WEBKIT_SUPPORT
 

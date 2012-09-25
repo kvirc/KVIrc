@@ -340,6 +340,4 @@ void KvsObject_toolButton::slotClicked()
 	callFunction(this,"clickEvent",params);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_toolButton.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -1333,7 +1333,7 @@ void KviWindow::preprocessMessage(QString & szMessage)
 	if(!m_pConsole->connection())
 		return;
 
-	static QString szNonStandardLinkPrefix = QString::fromAscii("\r![");
+	static QString szNonStandardLinkPrefix = QString::fromLatin1("\r![");
 
 	if(szMessage.contains(szNonStandardLinkPrefix))
 		return; // contains a non standard link that may contain spaces, do not break it.
@@ -1392,6 +1392,3 @@ KviIrcContext * KviWindow::context()
 	return 0;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

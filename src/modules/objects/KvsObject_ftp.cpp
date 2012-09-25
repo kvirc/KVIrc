@@ -22,14 +22,18 @@
 //
 //=============================================================================
 
+#include "KvsObject_ftp.h"
+
+#warning QFtp doesn't exists anymore in Qt5, port this class or drop it
+#if (QT_VERSION < 0x050000)
+
 #include "kvi_debug.h"
 #include "KviError.h"
-#include "KvsObject_ftp.h"
+
 #include "KviLocale.h"
 
 #include <QFtp>
 #include <QHashIterator>
-
 
 /*
 	@doc: ftp
@@ -327,6 +331,4 @@ KVSO_CLASS_FUNCTION(ftp,stateChangedEvent)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_ftp.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif

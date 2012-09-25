@@ -264,6 +264,3 @@ OptionsWidget_windowListClassic::~OptionsWidget_windowListClassic()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_windowList.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -367,6 +367,3 @@ OptionsWidget_dccVoice::~OptionsWidget_dccVoice()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_dcc.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

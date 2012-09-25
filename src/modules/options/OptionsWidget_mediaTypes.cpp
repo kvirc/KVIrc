@@ -260,6 +260,3 @@ void OptionsWidget_mediaTypes::commit()
 	g_pMediaManager->unlock();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_mediaTypes.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

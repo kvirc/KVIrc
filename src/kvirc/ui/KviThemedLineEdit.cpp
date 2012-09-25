@@ -118,6 +118,3 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	QLineEdit::paintEvent(event);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviThemedLineEdit.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -171,8 +171,5 @@
 		return QSize(wdth + 2,hght + 2);
 	}
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "TermWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif //COMPILE_KDE_SUPPORT

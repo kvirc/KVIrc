@@ -277,6 +277,3 @@ inline bool KviModeWidget::modeNeedsParameterOnlyWhenSet(char cMode)
 		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);
 	return false;
 }
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviModeWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

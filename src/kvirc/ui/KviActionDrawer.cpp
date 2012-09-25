@@ -32,13 +32,14 @@
 #include "KviLocale.h"
 #include "KviTalListWidget.h"
 
+#include <QDrag>
 #include <QLayout>
 #include <QLabel>
+#include <QMimeData>
 #include <QPainter>
 #include <QPixmap>
 #include <QEvent>
 #include <QMouseEvent>
-#include <QTextDocument>
 
 KviActionDrawer::KviActionDrawer(QWidget * pParent)
 : QTabWidget(pParent)

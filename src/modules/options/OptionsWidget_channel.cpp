@@ -161,6 +161,4 @@ void OptionsWidget_channelAdvanced::commit()
 	KviOptionsWidget::commit();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_channel.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

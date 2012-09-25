@@ -2473,6 +2473,3 @@ void KviUserListViewArea::wheelEvent(QWheelEvent * e)
 	bHere = false;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviUserListView.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -38,6 +38,7 @@
 #include "KviStatusBarApplet.h"
 #include "KviDynamicToolTip.h"
 
+#include <QDrag>
 #include <QPainter>
 #include <QStyle>
 #include <QLayout>
@@ -47,6 +48,7 @@
 #include <QLabel>
 #include <QFont>
 #include <QEvent>
+#include <QMimeData>
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QWidgetAction>

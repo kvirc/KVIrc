@@ -630,8 +630,8 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 	unsigned char byte,lsb,msb;
 	for(unsigned int i=0;i<uLen;i+=2)
 	{
-		msb=szBlock.at(i).toAscii();
-		lsb=szBlock.at(i+1).toAscii();
+		msb=szBlock.at(i).toLatin1();
+		lsb=szBlock.at(i+1).toLatin1();
 
 		if (((msb>='A' && msb<='F')||(msb>='0' && msb<='9')) && ((lsb>='A' && lsb<='F')|| (lsb>='0' && lsb<='9')))
 		{

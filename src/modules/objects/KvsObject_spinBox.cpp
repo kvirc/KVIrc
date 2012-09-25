@@ -261,7 +261,4 @@ void KvsObject_spinBox::valueChanged(int value)
 	callFunction(this,"valueChangedEvent",&params);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_spinBox.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

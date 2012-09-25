@@ -68,6 +68,3 @@ OptionsWidget_uparser::~OptionsWidget_uparser()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_uparser.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

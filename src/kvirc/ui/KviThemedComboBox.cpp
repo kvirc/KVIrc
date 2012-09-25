@@ -138,6 +138,3 @@ void KviThemedComboBox::keyPressEvent(QKeyEvent *e)
 	QComboBox::keyPressEvent(e);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviThemedComboBox.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

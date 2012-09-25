@@ -102,6 +102,3 @@ OptionsWidget_notify::~OptionsWidget_notify()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_notify.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

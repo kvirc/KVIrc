@@ -245,6 +245,4 @@ OptionsWidget_userListFeatures::~OptionsWidget_userListFeatures()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_userList.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

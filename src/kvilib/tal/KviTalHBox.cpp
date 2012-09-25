@@ -123,6 +123,4 @@ void KviTalHBox::addSpacing(int iSpacing)
 	m_pLayout->addSpacing(iSpacing);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalHBox.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

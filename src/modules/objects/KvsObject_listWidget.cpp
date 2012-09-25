@@ -674,7 +674,4 @@ void KvsObject_listWidget::slotItemChanged(QListWidgetItem *item)
 	callFunction(this,"itemChangedEvent",0,&params);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_listWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

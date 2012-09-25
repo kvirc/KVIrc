@@ -137,6 +137,3 @@ void KviScriptEditor::destroyInstance(KviScriptEditor * e)
 	editorModuleDestroyScriptEditor(e);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviScriptEditor.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

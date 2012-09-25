@@ -1728,7 +1728,7 @@ void OptionsWidget_servers::saveLastItem()
 	{
 		QString tmp = m_pSrvNetEdit->text();
 		if(tmp.isEmpty())
-			tmp = QString::fromAscii("irc.unknown.net");
+			tmp = QString::fromLatin1("irc.unknown.net");
 		m_pLastEditedItem->m_pServerData->setHostName(tmp);
 		m_pLastEditedItem->updateVisibleStrings();
 	} else if(m_pLastEditedItem->m_pNetworkData)
@@ -2102,6 +2102,3 @@ void OptionsWidget_servers::detailsClicked()
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_servers.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

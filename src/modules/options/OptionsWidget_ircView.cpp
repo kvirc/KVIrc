@@ -216,6 +216,3 @@ void OptionsWidget_ircViewMarker::commit()
 	KviOptionsWidget::commit();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_ircView.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

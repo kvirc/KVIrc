@@ -707,7 +707,4 @@ void KvsObject_pixmap::frameChanged()
 	callFunction(this,"frameChangedEvent",params);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_pixmap.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

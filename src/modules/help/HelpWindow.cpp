@@ -336,6 +336,3 @@ void HelpWindow::fillCaptionBuffers()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "HelpWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -69,7 +69,7 @@ static FileTransferWindow * filetransferwindow_alloc(bool bCreateMinimized,bool 
 
 static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	filetransferwindow_alloc(c->hasSwitch('m',QString::fromAscii("minimized")),c->hasSwitch('n',QString::fromAscii("noraise")));
+	filetransferwindow_alloc(c->hasSwitch('m',QString::fromLatin1("minimized")),c->hasSwitch('n',QString::fromLatin1("noraise")));
 
 	return true;
 }

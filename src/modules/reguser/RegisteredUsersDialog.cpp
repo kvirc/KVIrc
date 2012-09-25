@@ -62,7 +62,6 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QAbstractItemView>
-#include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
 #include <QShortcut>
 
@@ -932,6 +931,3 @@ succesfull_import:
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "dialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

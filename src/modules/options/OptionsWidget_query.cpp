@@ -111,6 +111,4 @@ OptionsWidget_query::~OptionsWidget_query()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_query.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

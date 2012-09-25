@@ -45,6 +45,3 @@ OptionsWidget_topicLabel::~OptionsWidget_topicLabel()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_topicLabel.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

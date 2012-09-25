@@ -256,6 +256,3 @@ QSize HelpWidget::sizeHint() const
 	return s;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "HelpWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

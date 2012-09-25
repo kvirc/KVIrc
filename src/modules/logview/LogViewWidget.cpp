@@ -95,6 +95,3 @@ LogListViewLog::LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, LogF
 	setText(0,m_pFileData->date().toString("yyyy-MM-dd"));
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "LogViewWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

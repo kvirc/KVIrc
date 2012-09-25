@@ -30,7 +30,6 @@
 
 #include <QTextBlock>
 #include <QFile>
-#include <QTextDocument>
 #include <QTextEdit>
 #include <QTextStream>
 #include <QTextCursor>
@@ -786,6 +785,3 @@ bool KvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall *)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_multiLineEdit.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

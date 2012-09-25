@@ -240,7 +240,4 @@ void AboutDialog::closeButtonPressed()
 	delete this;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "AboutDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

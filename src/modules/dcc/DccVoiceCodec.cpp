@@ -227,7 +227,7 @@ void DccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * videoSign
 		if(!img.isNull())
 		{
 			videoSignal->clear();
-			videoSignal->append(img.bits(),img.numBytes());
+			videoSignal->append(img.bits(),img.byteCount());
 		}
 		stream->remove(len);
 	}

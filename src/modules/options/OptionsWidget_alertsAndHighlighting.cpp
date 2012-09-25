@@ -147,8 +147,5 @@ OptionsWidget_alerts::~OptionsWidget_alerts()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_alertsAndHighlighting.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif //_OPTW_HIGHLIGHTING_CPP_

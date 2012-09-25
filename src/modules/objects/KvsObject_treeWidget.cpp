@@ -36,6 +36,7 @@
 #include <QDropEvent>
 #include <QHeaderView>
 #include <QUrl>
+#include <QMimeData>
 
 /*
 	@doc: listview
@@ -654,6 +655,3 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_treeWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

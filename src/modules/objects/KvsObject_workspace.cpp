@@ -33,6 +33,8 @@
 #include <QMdiArea>
 #include <QMdiSubWindow>
 #include <QHash>
+#include <QMimeData>
+
 /*
 	@doc:	workspace
 	@keyterms:

@@ -105,7 +105,6 @@
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QMetaObject>
-#include <QTextDocument>
 #include <QCleanlooksStyle>
 
 #ifdef COMPILE_ON_WINDOWS
@@ -304,7 +303,11 @@ void KviApplication::setup()
 	// encoding every time.
 	QTextCodec * pUTF8Codec = KviLocale::instance()->codecForName("UTF-8");
 	if(pUTF8Codec)
+#if (QT_VERSION >= 0x050000)
+		QTextCodec::setCodecForLocale(pUTF8Codec);
+#else
 		QTextCodec::setCodecForCStrings(pUTF8Codec);
+#endif
 	else
 		qDebug("Aaargh... have no UTF-8 codec?");
 
@@ -1263,7 +1266,7 @@ void KviApplication::fileDownloadTerminated(bool bSuccess, const QString & szRem
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			}
-			notifierMessage(0,iIconId,Qt::escape(szMsg),KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+			notifierMessage(0,iIconId,KviQString::toHtmlEscaped(szMsg),KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 		}
 		return;
 	}
@@ -2212,6 +2215,3 @@ void KviApplication::timerEvent(QTimerEvent * e)
 #endif
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviApplication.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

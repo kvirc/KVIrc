@@ -34,7 +34,12 @@
 #include "KviLocale.h"
 #include "KviQString.h"
 
-#include <QSound>
+#warning in libkvisnd to use QSound we need proper cmake rules and includes for QtMultimedia
+
+#if (QT_VERSION < 0x050000)
+	#include <QSound>
+#endif
+
 
 #ifdef COMPILE_PHONON_SUPPORT
 	#include <phonon/mediaobject.h>
@@ -238,13 +243,13 @@ void KviSoundPlayer::detectSoundSystem()
 		#endif
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss";
 	#endif
-
+#if (QT_VERSION < 0x050000)
 	if(QSound::isAvailable())
 	{
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
 		return;
 	}
-
+#endif
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "null";
 #endif
 }
@@ -359,7 +364,9 @@ bool KviSoundPlayer::playQt(const QString &szFileName)
 {
 	if(isMuted())
 		return true;
+#if (QT_VERSION < 0x050000)
 	QSound::play(szFileName);
+#endif
 	return true;
 }
 
@@ -859,6 +866,3 @@ KVIRC_MODULE(
 	0
 )
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "libkvisnd.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

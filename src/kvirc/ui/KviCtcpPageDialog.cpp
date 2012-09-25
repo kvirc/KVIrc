@@ -139,6 +139,3 @@ void KviCtcpPageDialog::showEvent(QShowEvent *e)
 	center();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviCtcpPageDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

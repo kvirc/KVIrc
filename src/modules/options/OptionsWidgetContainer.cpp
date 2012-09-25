@@ -164,7 +164,3 @@ void OptionsWidgetContainer::cancelClicked()
 {
 	deleteLater();
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidgetContainer.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

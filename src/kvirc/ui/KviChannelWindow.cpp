@@ -75,7 +75,6 @@
 #include <QPalette>
 #include <QMessageBox>
 #include <QCloseEvent>
-#include <QTextDocument> // for Qt::escape_command
 #include <QMenu>
 
 // FIXME: #warning "+a Anonymous channel mode!"
@@ -828,34 +827,34 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 	if(list.count() == 1)
 	{
 		szBuffer += "<b>";
-		szBuffer += Qt::escape(list.first());
+		szBuffer += KviQString::toHtmlEscaped(list.first());
 		szBuffer += "</b>";
 		szBuffer += " ";
 		szBuffer += bPast ? __tr2qs("said something recently") : __tr2qs("is talking");
 	} else if(list.count() == 2)
 	{
 		szBuffer += "<b>";
-		szBuffer += Qt::escape(list.first());
+		szBuffer += KviQString::toHtmlEscaped(list.first());
 		szBuffer += "</b> ";
 		szBuffer += __tr2qs("and");
 		szBuffer += " <b>";
 		list.erase(list.begin());
-		szBuffer += Qt::escape(list.first());
+		szBuffer += KviQString::toHtmlEscaped(list.first());
 		szBuffer += "</b> ";
 		szBuffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
 	} else {
 		szBuffer += "<b>";
-		szBuffer += Qt::escape(list.first());
+		szBuffer += KviQString::toHtmlEscaped(list.first());
 		szBuffer += "</b>, <b>";
 		list.erase(list.begin());
-		szBuffer += Qt::escape(list.first());
+		szBuffer += KviQString::toHtmlEscaped(list.first());
 		if(list.count() == 2)
 		{
 			szBuffer += "</b> ";
 			szBuffer += __tr2qs("and");
 			szBuffer += " <b>";
 			list.erase(list.begin());
-			szBuffer += Qt::escape(list.first());
+			szBuffer += KviQString::toHtmlEscaped(list.first());
 			szBuffer += "</b>";
 		} else {
 			// (list.count() - 1) is > 1
@@ -901,7 +900,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	m_pUserListView->userStats(&s);
 
 
-	szBuffer += Qt::escape(m_szPlainTextCaption);
+	szBuffer += KviQString::toHtmlEscaped(m_szPlainTextCaption);
 	szBuffer += szEndOfFontBoldRow;
 
 	szBuffer += szRowStart;
@@ -1708,7 +1707,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 		{
 			if(!userDict.find(pAction->szNick))
 			{
-				if(isOn(pAction->szNick.toAscii()))
+				if(isOn(pAction->szNick.toLatin1()))
 				{
 					if(pAction->tTime >= tTwoMinsAgo)
 						pStats->lTalkingUsers.append(pAction->szNick);
@@ -1905,8 +1904,8 @@ void KviChannelWindow::updateModeLabel()
 	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
 	while (iter != m_szChannelParameterModes.constEnd())
 	{
-		QString szDescription = Qt::escape(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
-		QString szValue = Qt::escape(iter.value());
+		QString szDescription = KviQString::toHtmlEscaped(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
+		QString szValue = KviQString::toHtmlEscaped(iter.value());
 		KviQString::appendFormatted(szTip,"<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
 		++iter;
 	}
@@ -1980,7 +1979,7 @@ void KviChannelWindow::preprocessMessage(QString & szMessage)
 	if(!pServerInfo)
 		return;
 
-	static QString szNonStandardLinkPrefix = QString::fromAscii("\r![");
+	static QString szNonStandardLinkPrefix = QString::fromLatin1("\r![");
 
 	if(szMessage.contains(szNonStandardLinkPrefix))
 		return; // contains a non standard link that may contain spaces, do not break it.
@@ -2170,7 +2169,3 @@ QByteArray KviChannelWindow::loadLogFile(const QString & szFileName, bool bGzip)
 
 	return data;
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviChannelWindow.moc"
-#endif

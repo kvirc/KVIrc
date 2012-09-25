@@ -747,6 +747,3 @@ KVSO_CLASS_FUNCTION(socket,stateChangedEvent)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_socket.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

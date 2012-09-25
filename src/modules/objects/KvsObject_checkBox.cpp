@@ -131,7 +131,4 @@ void KvsObject_checkBox::toggled(bool b)
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_checkBox.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

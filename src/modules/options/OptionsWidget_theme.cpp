@@ -199,6 +199,3 @@ OptionsWidget_themeToolBarApplets::~OptionsWidget_themeToolBarApplets()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_theme.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

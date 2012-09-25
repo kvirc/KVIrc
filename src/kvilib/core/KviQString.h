@@ -515,6 +515,13 @@ namespace KviQString
 	extern KVILIB_API void escapeKvs(QString * szData, uint uFlags = 0);
 
 	/**
+	* \brief Escapes any html special character from a string (wrapper to QString::toHtmlEscaped)
+	* \param szData The string to escape
+	* \return QString
+	*/
+	extern KVILIB_API QString toHtmlEscaped(QString szData);
+
+	/**
 	* \brief Return the string converted to a long
 	* \param szNumber The source number
 	* \param bOk The conversion error handling

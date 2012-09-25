@@ -75,6 +75,3 @@ OptionsWidget_lag::~OptionsWidget_lag()
 }
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_lag.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

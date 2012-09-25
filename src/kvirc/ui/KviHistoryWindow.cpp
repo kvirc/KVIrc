@@ -273,7 +273,5 @@ void KviHistoryWindowWidget::popup(KviInput * pOwner)
 	show();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviHistoryWindow.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+
 #endif //_KVI_HISTORYWIN_CPP_

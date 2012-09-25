@@ -793,6 +793,3 @@ void RegisteredUserEntryDialog::editAllPropertiesClicked()
 
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "RegisteredUserEntryDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

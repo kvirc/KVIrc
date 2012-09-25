@@ -184,6 +184,4 @@ int KviTalListWidgetPixmap::rtti() const
 	return RTTI;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalListWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

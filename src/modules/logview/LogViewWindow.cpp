@@ -799,6 +799,4 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	log.close();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "LogViewWindow.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+

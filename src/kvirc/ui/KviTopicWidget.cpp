@@ -51,7 +51,6 @@
 #include <QClipboard>
 #include <QEvent>
 #include <QMouseEvent>
-#include <QTextDocument> // for Qt::escape
 #include <QMenu>
 
 extern KviColorWindow * g_pColorWindow;
@@ -313,7 +312,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 void KviTopicWidget::setTopic(const QString & topic)
 {
 	m_szTopic = topic;
-	m_pLabel->setText(KviHtmlGenerator::convertToHtml(Qt::escape(m_szTopic)));
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic)));
 
 	bool bFound = false;
 	for(QStringList::Iterator it=g_pRecentTopicList->begin();it != g_pRecentTopicList->end(); ++it)
@@ -363,7 +362,7 @@ void KviTopicWidget::updateToolTip()
 
 		txt +=          "<tr><td><center>";
 
-		txt += KviHtmlGenerator::convertToHtml(Qt::escape(m_szTopic));
+		txt += KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic));
 		txt +=          "</center></td></tr>";
 
 		//FIXME hardcoding styles sucks
@@ -702,6 +701,3 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviTopicWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

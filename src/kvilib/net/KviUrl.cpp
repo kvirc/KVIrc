@@ -58,11 +58,20 @@ void KviUrl::parse()
 	QUrl url(m_szUrl);
 	m_szProtocol = url.scheme();
 	m_szHost = url.host();
-	m_szPath = url.encodedPath();
+#if (QT_VERSION >= 0x050000)
+		m_szPath.append(url.path(QUrl::FullyEncoded));
+#else
+		m_szPath = url.encodedPath();
+#endif
+
 	if(url.hasQuery())
 	{
 		m_szPath.append(QChar('?'));
+#if (QT_VERSION >= 0x050000)
+		m_szPath.append(url.query(QUrl::FullyEncoded));
+#else
 		m_szPath.append(url.encodedQuery());
+#endif
 	}
 	if(m_szPath.isEmpty()) m_szPath=QString("/");
 	m_szUser = url.userName();

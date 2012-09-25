@@ -778,6 +778,3 @@ void KviOptionsWidget::switchToAdvancedPage()
 	emit wantToSwitchToAdvancedPage(this);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviOptionsWidget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

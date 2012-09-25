@@ -33,7 +33,11 @@
 #include "KviPointerHashTable.h"
 
 #include <QObject>
-#include <QAbstractSocket>
+#if (QT_VERSION >= 0x050000)
+	#include <QtNetwork/QAbstractSocket>
+#else
+	#include <QAbstractSocket>
+#endif
 
 class KviDnsResolver;
 class KviDataBuffer;

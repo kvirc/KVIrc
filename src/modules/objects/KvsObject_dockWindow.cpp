@@ -175,7 +175,4 @@ KVSO_CLASS_FUNCTION(dockWindow,dock)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_dockWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

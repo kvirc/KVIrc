@@ -225,7 +225,3 @@ void NotifierWindowTab::paintEvent(QPaintEvent * e)
 	delete pPainter;
 	e->ignore();
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_NotifierWindowTab.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

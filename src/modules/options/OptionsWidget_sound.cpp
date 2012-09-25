@@ -353,6 +353,3 @@ OptionsWidget_sounds::~OptionsWidget_sounds()
 {
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_OptionsWidget_sound.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

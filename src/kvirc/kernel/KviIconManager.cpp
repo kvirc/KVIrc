@@ -40,6 +40,8 @@
 #include <QCloseEvent>
 #include <QIcon>
 #include <QDir>
+#include <QDrag>
+#include <QMimeData>
 
 /*
 	@doc: image_id
@@ -1291,6 +1293,3 @@ void KviIconManager::cacheCleanup()
 }
 */
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviIconManager.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

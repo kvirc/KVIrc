@@ -58,7 +58,6 @@
 #include <QEvent>
 #include <QResizeEvent>
 #include <QByteArray>
-#include <QTextDocument> //for Qt::escape
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
@@ -442,7 +441,7 @@ bool DccChatWindow::event(QEvent *e)
 							QString szMsg = "<b>";
 							szMsg += m_pDescriptor->szNick;
 							szMsg += "</b> ";
-							szMsg += Qt::escape(QString(d.ptr()));
+							szMsg += KviQString::toHtmlEscaped(QString(d.ptr()));
 							//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
 							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 						}
@@ -496,7 +495,7 @@ bool DccChatWindow::event(QEvent *e)
 								}
 								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
 								{
-									QString szMsg = Qt::escape(QString(d.ptr()));
+									QString szMsg = KviQString::toHtmlEscaped(QString(d.ptr()));
 									g_pApp->notifierMessage(this,KviIconManager::DccChatMsg,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 								}
 							}
@@ -887,7 +886,3 @@ out_of_the_loop:
 	m_pMutex->unlock();
 	return bRet;
 }
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_DccChatWindow.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -77,6 +77,4 @@ void KviTalTabDialog::cancelPressed()
 	emit cancelButtonPressed();
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "KviTalTabDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

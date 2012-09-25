@@ -25,13 +25,17 @@
 //
 //=============================================================================
 
-#include <QPrinter>
+#warning QPrinter support in KvsObject_painter needs Qt5PrintSupport module: cmake rules, ifdefs, etc
 
-#include <qpainter.h>
-#include <qpaintdevice.h>
+#include "object_macros.h"
+#if (QT_VERSION < 0x050000)
+	#include <QPrinter>
+#endif
+
+#include <QPainter>
+#include <QPaintDevice>
 #include "KviCString.h"
 #include <QPainterPath>
-#include "object_macros.h"
 
 
 class KvsObject_painter : public KviKvsObject
@@ -40,7 +44,9 @@ class KvsObject_painter : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_painter)
 protected:
+#if (QT_VERSION < 0x050000)
 	QPrinter * m_pPrinter;
+#endif
 	bool bDonotdeleteinternalqpainter;
 	QPainter * m_pPainter;
 	QMatrix  m_pMatrix;

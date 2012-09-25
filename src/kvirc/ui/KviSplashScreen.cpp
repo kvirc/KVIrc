@@ -192,6 +192,3 @@ void KviSplashScreen::fadeTimerShot()
 	}
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "KviSplashScreen.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

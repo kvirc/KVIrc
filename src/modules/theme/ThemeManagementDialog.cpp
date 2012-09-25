@@ -66,7 +66,6 @@
 #include <QBuffer>
 #include <QCloseEvent>
 #include <QSplitter>
-#include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
 #include <QShortcut>
 #include <QMenu>

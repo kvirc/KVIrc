@@ -70,9 +70,7 @@ bool WebThemeInterfaceDialog::packageIsInstalled(const QString &szId,const QStri
 			KviFileUtils::fileExists(m_szLocalThemesPath+szId+"-"+szVersion);
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "WebThemeInterfaceDialog.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 
 #endif //COMPILE_WEBKIT_SUPPORT
 

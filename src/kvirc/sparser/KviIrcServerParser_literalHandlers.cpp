@@ -72,7 +72,6 @@
 //#include "KviRegisteredUserDataBase.h"
 //#include "KviIconManager.h"
 #include <QDateTime>
-#include <QTextDocument>
 #include <QByteArray>
 #include <QLocale>
 
@@ -925,7 +924,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					{
 						// don't send the message to the notifier twice
 						iFlags |= KviConsoleWindow::NoNotifier;
-						QString szMsg = Qt::escape(szMsgText);
+						QString szMsg = KviQString::toHtmlEscaped(szMsgText);
 						//qDebug("KviIrcServerParser_literalHandlers.cpp:908 debug: %s",szMsgText.data());
 						g_pApp->notifierMessage(query,KviIconManager::QueryPrivMsg,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
@@ -933,7 +932,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 				// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
 				if(eCapState != IdentifyMsgCapNotUsed)
-					szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+					szMsgText = QString::fromLatin1("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
 
 				console->outputPrivmsg(query,msgtype,szNick,szUser,szHost,szMsgText,iFlags);
 			}
@@ -954,7 +953,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 			// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
 			if(eCapState != IdentifyMsgCapNotUsed)
-				szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+				szMsgText = QString::fromLatin1("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
 
 			// spit the message text out
 			if(!msg->haltOutput())
@@ -1023,7 +1022,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 				// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
 				if(eCapState != IdentifyMsgCapNotUsed)
-					szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+					szMsgText = QString::fromLatin1("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
 
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
@@ -1043,7 +1042,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 			// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
 			if(eCapState != IdentifyMsgCapNotUsed)
-				szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+				szMsgText = QString::fromLatin1("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
 
 
 			if(!msg->haltOutput())
@@ -1358,7 +1357,7 @@ output_to_query_window:
 					{
 						// don't send the message twice to the notifier
 						iFlags |= KviConsoleWindow::NoNotifier;
-						QString szMsg = Qt::escape(szMsgText);
+						QString szMsg = KviQString::toHtmlEscaped(szMsgText);
 						//qDebug("KviIrcServerParser_literalHandlers.cpp:1262 debug: %s",szMsgText.data());
 						g_pApp->notifierMessage(query,KviIconManager::QueryNotice,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}

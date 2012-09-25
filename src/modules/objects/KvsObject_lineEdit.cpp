@@ -535,7 +535,4 @@ void KvsObject_lineEdit::slottextChanged(const QString &text)
 
 
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_KvsObject_lineEdit.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
