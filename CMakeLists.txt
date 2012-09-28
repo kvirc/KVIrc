@@ -164,7 +164,6 @@ ELSEIF(WIN32)
 ENDIF()
 LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX})
 
-
 ###############################################################################
 #
 # Release type
@@ -189,7 +188,7 @@ ELSE()
 		SET(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 		SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
 		IF(CMAKE_COMPILER_IS_GNUCXX)
-			#force gdb format of debug symbols
+			# force gdb format of debug symbols
 			SET(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			SET(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			INCLUDE(CheckCXXCompilerFlag)
@@ -208,12 +207,7 @@ ELSE()
 			ENDIF()
 		ELSE()
 			IF(MSVC)
-				#CMake default options are conflicting for some modules, such as perl
-				STRING(REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG_INIT ${CMAKE_CXX_FLAGS_DEBUG_INIT})
-				STRING(REPLACE "/RTC1" "" CMAKE_C_FLAGS_DEBUG_INIT ${CMAKE_C_FLAGS_DEBUG_INIT})
-				STRING(REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG})
-				STRING(REPLACE "/RTC1" "" CMAKE_C_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
-				#this is the equivalent of -O0 -g according to MSDN, /Zc:wchar_t- is default for QT 4.x but not 5; reevaluate then.
+				# this is the equivalent of -O0 -g according to MSDN, /Zc:wchar_t- is default for QT 4.x but not 5; reevaluate then.
 				SET(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t-")
 				SET(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t-")
 			ELSE()
@@ -236,7 +230,6 @@ ELSE()
 			SET(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 		ENDIF()
 		IF(CMAKE_COMPILER_IS_GNUCXX)
-			#force gdb options
 			SET(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			SET(CMAKE_C_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			INCLUDE(CheckCXXCompilerFlag)
@@ -248,7 +241,7 @@ ELSE()
 			ENDIF()
 		ELSE()
 			IF(MSVC)
-				#/Ox is -O3, /Zc:wchar_t- is default for QT 4.x but not 5; reevaluate then.
+				# /Ox is -O3, /Zc:wchar_t- is default for QT 4.x but not 5; reevaluate then.
 				SET(CMAKE_CXX_FLAGS "/Ox /Zc:wchar_t-")
 				SET(CMAKE_C_FLAGS "/Ox /Zc:wchar_t-")
 			ELSE()
