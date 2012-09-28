@@ -1,4 +1,5 @@
 # CMakeLists for po/modules/logview
+
 # Includes:
 # src/modules/log
 # src/modules/logview

@@ -1,4 +1,5 @@
 # CMakeLists for win32build
+
 SUBDIRS(translations)
 
 IF(WIN32)

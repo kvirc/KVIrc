@@ -1,50 +1,5 @@
 # CMakeLists for src/modules/options
 
-SET(kvioptions_MOC_HDRS
-	OptionsWidgetContainer.h
-	OptionsDialog.h
-	OptionsInstanceManager.h
-	OptionsWidget_antiSpam.h
-	OptionsWidget_avatar.h
-	OptionsWidget_channel.h
-	OptionsWidget_connection.h
-	OptionsWidget_ctcp.h
-	OptionsWidget_ctcpFloodProtection.h
-	OptionsWidget_dcc.h
-	OptionsWidget_general.h
-	OptionsWidget_alertsAndHighlighting.h
-	OptionsWidget_identity.h
-	OptionsWidget_ignore.h
-	OptionsWidget_input.h
-	OptionsWidget_interfaceFeatures.h
-	OptionsWidget_theme.h
-	OptionsWidget_irc.h
-	OptionsWidget_ircOutput.h
-	OptionsWidget_ircView.h
-	OptionsWidget_lag.h
-	OptionsWidget_logging.h
-	OptionsWidget_mediaTypes.h
-	OptionsWidget_message.h
-	OptionsWidget_nickserv.h
-	OptionsWidget_notify.h
-	OptionsWidget_notifier.h
-	OptionsWidget_protection.h
-	OptionsWidget_proxy.h
-	OptionsWidget_query.h
-	OptionsWidget_servers.h
-	OptionsWidget_sound.h
-	OptionsWidget_windowList.h
-	OptionsWidget_textEncoding.h
-	OptionsWidget_textIcons.h
-	OptionsWidget_tools.h
-	OptionsWidget_topicLabel.h
-	OptionsWidget_away.h
-	OptionsWidget_uparser.h
-	OptionsWidget_urlHandlers.h
-	OptionsWidget_userList.h
-	OptionsWidget_tray.h
-)
-
 SET(kvioptions_SRCS
 	libkvioptions.cpp
 	OptionsWidgetContainer.cpp
@@ -90,9 +45,6 @@ SET(kvioptions_SRCS
 	OptionsWidget_userList.cpp
 	OptionsWidget_tray.cpp
 )
-
-# After this call, files will be moc'ed to moc_kvi_*.cpp
-QT4_WRAP_CPP(kvioptions_MOC_SRCS ${kvioptions_MOC_HDRS})
 
 SET(kvi_module_name kvioptions)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

@@ -11,9 +11,6 @@ SET(kvimediaplayer_SRCS
 	MpSpotifyInterface.cpp
 )
 
-# After this call, files will be moc'ed to moc_kvi_*.cpp
-QT4_WRAP_CPP(kvimediaplayer_MOC_SRCS ${kvimediaplayer_MOC_HDRS})
-
 SET(kvi_module_name kvimediaplayer)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 

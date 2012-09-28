@@ -1,4 +1,5 @@
 # CMakeLists for po/modules/sharedfileswindow
+
 # Includes:
 # src/modules/sharedfile
 # src/modules/sharedfileswindow

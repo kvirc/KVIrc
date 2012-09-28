@@ -7,37 +7,7 @@ IF(WIN32)
 	LIST(APPEND LIBS -lws2_32)
 ENDIF()
 
-SET(kviobjects_MOC_HDRS
-	KvsObject_button.h
-	KvsObject_checkBox.h
-	KvsObject_comboBox.h
-	KvsObject_colorDialog.h
-	KvsObject_dateTimeEdit.h
-	KvsObject_dockWindow.h
-	KvsObject_ftp.h
-	KvsObject_http.h
-	KvsObject_lineEdit.h
-	KvsObject_listWidget.h
-	KvsObject_multiLineEdit.h
-	KvsObject_painter.h
-	KvsObject_pixmap.h
-	KvsObject_popupMenu.h
-	KvsObject_process.h
-	KvsObject_radioButton.h
-	KvsObject_slider.h
-	KvsObject_socket.h
-	KvsObject_spinBox.h
-	KvsObject_tabWidget.h
-	KvsObject_tableWidget.h
-	KvsObject_trayIcon.h
-	KvsObject_textBrowser.h
-	KvsObject_toolButton.h
-	KvsObject_treeWidget.h
-	KvsObject_webView.h
-	KvsObject_widget.h
-	KvsObject_window.h
-	KvsObject_wizard.h
-)
+
 
 SET(kviobjects_SRCS
 	libkviobjects.cpp
@@ -91,9 +61,6 @@ SET(kviobjects_SRCS
 	KvsObject_wrapper.cpp
 	KvsObject_xmlreader.cpp
 )
-
-# After this call, files will be moc'ed to moc_kvi_*.cpp
-QT4_WRAP_CPP(kviobjects_MOC_SRCS ${kviobjects_MOC_HDRS})
 
 SET(kvi_module_name kviobjects)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

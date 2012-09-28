@@ -1,6 +1,5 @@
 # CMakeLists for data/pics
 
-
 FILE(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.wav")
 
 IF(UNIX)

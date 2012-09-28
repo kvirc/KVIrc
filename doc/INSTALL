@@ -297,6 +297,12 @@ General notes for the installation of the 4.2 release of KVIrc
 
     Here's a list with explainations:
 
+    -DWANT_QT4 (default: OFF)
+        Prefer Qt4 over Qt5.
+        If both Qt4 and Qt5 supported versions are found on the system, Qt5
+        is preferred and used for compilation. Enabling this option changes
+        this behaviour, forcing Qt4 to be used.
+
     -DWANT_DEBUG (default: OFF)
         When enabled, compiles the executable with debug symbols.
         Useful for reporting bugs.

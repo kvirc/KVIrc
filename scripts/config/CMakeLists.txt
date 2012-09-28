@@ -1,4 +1,5 @@
 # CMakeLists for scripts/config
+
 # Create bin
 IF(WANT_COEXISTENCE)
 	SET(KVIRC_CONFIG ${PACKAGE}${VERSION_MAJOR}-config)

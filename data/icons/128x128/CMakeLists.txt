@@ -1,4 +1,5 @@
 # CMakeLists for data/icons/128x128/
+
 SET(iconapps
 	kvirc.png
 )

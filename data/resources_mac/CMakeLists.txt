@@ -1,4 +1,5 @@
 # CMakeLists for data/resources_mac
+
 IF(APPLE)
 	IF(WANT_COEXISTENCE)
 		SET(KVIRC_BINARYNAME ${PACKAGE}${VERSION_MAJOR})

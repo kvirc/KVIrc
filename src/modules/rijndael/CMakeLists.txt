@@ -1,4 +1,5 @@
 # CMakeLists for src/modules/rijndael
+
 IF(WANT_OPENSSL)
 	SUBDIRS(caps)
 
@@ -10,12 +11,7 @@ IF(WANT_OPENSSL)
 		InitVectorEngine.cpp
 	)
 
-	SET(kvirijndael_MOC_HDRS
-		libkvirijndael.h
-	)
-
-	# After this call, files will be moc'ed to moc_kvi_*.cpp
-	QT4_WRAP_CPP(kvirijndael_MOC_SRCS ${kvirijndael_MOC_HDRS})
+	
 
 	# SET(ADDITIONAL_COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS} -fno-strict-aliasing")
 

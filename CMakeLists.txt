@@ -15,7 +15,7 @@ PROJECT(kvirc)
 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Minimum cmake version
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.4)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.6)
 
 if(POLICY CMP0017)
 	cmake_policy(SET CMP0017 NEW)
@@ -408,11 +408,47 @@ IF(ZLIB_FOUND)
 ENDIF()
 
 ############################################################################
-# Check for Qt4
+# Check for Qt{4,5}
 ############################################################################
 
-# We require at least Qt 4.6.x
-FIND_PACKAGE(Qt4 4.6.0 REQUIRED)
+OPTION(WANT_QT4 "Whether to prefer Qt4 over Qt5" OFF)
+
+IF(WANT_QT4)
+	FIND_PACKAGE(Qt4 4.6.0)
+	IF(NOT QT4_FOUND)
+		MESSAGE(FATAL ERROR "The use of Qt4 has been forced, but no Qt4 found on the system (WANT_QT4=ON)")
+		SET(CMAKE_STATUS_QT_VERSION "None")
+	ENDIF()
+ELSE()
+	FIND_PACKAGE(Qt5Widgets)
+	IF(Qt5Widgets_FOUND)
+		SET(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
+		SET(qt5_kvirc_modules)
+	ELSE()
+		FIND_PACKAGE(Qt4 4.6.0)
+		IF(QT4_FOUND)
+			SET(CMAKE_STATUS_QT_VERSION "${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}")
+		ELSE()
+			MESSAGE(FATAL ERROR "No Qt4 or Qt5 found!")
+		ENDIF()
+	ENDIF()
+ENDIF()
+
+# automoc is used by both qt4 and qt5
+SET(CMAKE_AUTOMOC TRUE)
+
+# Shared options
+IF(APPLE OR WIN32)
+	# No Qt-DBus on Mac and Windows
+	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" OFF)
+ELSE()
+	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
+ENDIF()
+
+OPTION(WANT_QTWEBKIT "Whether to compile Qt-WebKit support" ON)
+OPTION(WANT_QTSVG "Whether to compile Qt-Svg support" ON)
+
+# Qt4 stuff
 IF(QT4_FOUND)
 	SET(QT_USE_QTSQL true)
 	SET(QT_USE_QTXML true)
@@ -423,14 +459,7 @@ IF(QT4_FOUND)
 		SET(QT_USE_QTMAIN true)
 	ENDIF()
 
-	# Qt-DBus support
-	IF(APPLE OR WIN32)
-		# No Qt-DBus on Mac and Windows
-		OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" OFF)
-	ELSE()
-		OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
-	ENDIF()
-	
+	# Qt-DBus support	
 	IF(WANT_QTDBUS)
 		IF(QT_QTDBUS_FOUND)
 			SET(QT_USE_QTDBUS true)
@@ -444,7 +473,6 @@ IF(QT4_FOUND)
 	ENDIF()
 
 	# Qt-WebKit support
-	OPTION(WANT_QTWEBKIT "Whether to compile Qt-WebKit support" ON)
 	IF(WANT_QTWEBKIT)
 		IF(QT_QTWEBKIT_FOUND)
 			SET(QT_USE_QTWEBKIT true)
@@ -456,8 +484,7 @@ IF(QT4_FOUND)
 	ELSE()
 		SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "No")
 	ENDIF()
-	# Qt-WebKit support
-	OPTION(WANT_QTSVG "Whether to compile Qt-Svg support" ON)
+	# Qt-Svg support
 	IF(WANT_QTSVG)
 		IF(QT_QTSVG_FOUND)
 			SET(QT_USE_QTSVG true)
@@ -470,11 +497,83 @@ IF(QT4_FOUND)
 		SET(CMAKE_STATUS_QTSVG_SUPPORT "No")
 	ENDIF()
 
-
-
 	INCLUDE(${QT_USE_FILE})
 	INCLUDE_DIRECTORIES(${QT_INCLUDES})
 	LIST(APPEND LIBS ${QT_LIBRARIES})
+ENDIF()
+
+IF(Qt5Widgets_FOUND)
+	LIST(APPEND qt5_kvirc_modules Widgets)
+
+	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it.
+	IF(MSVC AND NOT WANT_DEBUG)
+		SET(QT_USE_QTMAIN true)
+	ENDIF()
+
+	# QtSql
+	FIND_PACKAGE(Qt5Sql)
+	IF(Qt5Sql_FOUND)
+	    INCLUDE_DIRECTORIES(${Qt5Sql_INCLUDE_DIRS})
+	    LIST(APPEND qt5_kvirc_modules Sql)
+	ENDIF()
+
+	# QtXml
+	FIND_PACKAGE(Qt5Xml)
+	IF(Qt5Xml_FOUND)
+	    INCLUDE_DIRECTORIES(${Qt5Xml_INCLUDE_DIRS})
+	    LIST(APPEND qt5_kvirc_modules Xml)
+	ENDIF()
+
+	# QtNetwork
+	FIND_PACKAGE(Qt5Network)
+	IF(Qt5Network_FOUND)
+	    INCLUDE_DIRECTORIES(${Qt5Network_INCLUDE_DIRS})
+	    LIST(APPEND qt5_kvirc_modules Network)
+	ENDIF()
+
+	# Qt-DBus support	
+	IF(WANT_QTDBUS)
+	    FIND_PACKAGE(Qt5DBus)
+	    IF(Qt5DBus_FOUND)
+			LIST(APPEND qt5_kvirc_modules DBus)
+			INCLUDE_DIRECTORIES(${Qt5DBus_INCLUDE_DIRS})
+			SET(CMAKE_STATUS_QTDBUS_SUPPORT "Yes")
+			SET(COMPILE_DBUS_SUPPORT 1)
+		ELSE()
+			SET(CMAKE_STATUS_QTDBUS_SUPPORT "Not available")
+		ENDIF()
+	ELSE()
+		SET(CMAKE_STATUS_QTDBUS_SUPPORT "No")
+	ENDIF()
+
+	# Qt-WebKit support
+	IF(WANT_QTWEBKIT)
+	    FIND_PACKAGE(Qt5WebKit)
+	    IF(Qt5WebKit_FOUND)
+			LIST(APPEND qt5_kvirc_modules WebKit)
+			INCLUDE_DIRECTORIES(${Qt5WebKit_INCLUDE_DIRS})
+			SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "Yes")
+			SET(COMPILE_WEBKIT_SUPPORT 1)
+		ELSE()
+			SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "Not available")
+		ENDIF()
+	ELSE()
+		SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "No")
+	ENDIF()
+	# Qt-Svg support
+	IF(WANT_QTSVG)
+	    FIND_PACKAGE(Qt5Svg)
+	    IF(Qt5Svg_FOUND)
+			LIST(APPEND qt5_kvirc_modules Svg)
+			INCLUDE_DIRECTORIES(${Qt5Svg_INCLUDE_DIRS})
+			SET(CMAKE_STATUS_QTSVG_SUPPORT "Yes")
+			SET(COMPILE_SVG_SUPPORT 1)
+		ELSE()
+			SET(CMAKE_STATUS_QTSVG_SUPPORT "Not available")
+		ENDIF()
+	ELSE()
+		SET(CMAKE_STATUS_QTSVG_SUPPORT "No")
+	ENDIF()
 ENDIF()
 
 # Check for X11
@@ -532,7 +631,7 @@ IF(WANT_ESD)
 	FIND_PACKAGE(ESD)
 	IF(ESD_FOUND)
 		SET(COMPILE_ESD_SUPPORT 1)
-	        LIST(APPEND LIBS ${ESD_LIBRARY})
+		LIST(APPEND LIBS ${ESD_LIBRARY})
 		LIST(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Esd")
 	ENDIF()
 ENDIF()
@@ -569,13 +668,13 @@ ENDIF()
 ############################################################################
 
 IF(APPLE)
-	OPTION(WANT_UNIVERSAL_BINARY "Whether to compile an Universal Binary on MacOSX" OFF)
+	OPTION(WANT_UNIVERSAL_BINARY "Whether to compile an Universal Binary on MacOSX" ON)
 	IF(WANT_UNIVERSAL_BINARY)
-		SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
+		SET(CMAKE_OSX_ARCHITECTURES x86_64)
 		SET(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "User enabled")
 		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
-		#SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
-		#SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
+		SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.6")
+		SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.6")
 	ELSE()
 		SET(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "No")
 	ENDIF()
@@ -713,7 +812,7 @@ IF(WANT_PYTHON)
 		#under win32/mingw, if no link flag is needed ${PYTHON_LFLAGS} is set to a braindead "None"
 #		STRING(REPLACE "None" "" PYTHON_LIBRARIES "${PYTHON_LIBRARIES}")
 #		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PYTHON_LIBRARIES}")
-                # Remove leading and trailing spaces (string strip)
+		# Remove leading and trailing spaces (string strip)
 #		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 		# Kill any possible --no-undefined flags
 #		STRING(REPLACE "-Wl,--no-undefined" "" ADDITIONAL_LINK_FLAGS ${ADDITIONAL_LINK_FLAGS})
@@ -928,11 +1027,11 @@ IF(WIN32)
 ENDIF()
 
 IF(MINGW)
-        LIST(APPEND LIBS -lshlwapi)
-        ADD_DEFINITIONS(-DMINGW)
-        SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -fno-exceptions")
-        #remove leading and trailing spaces (string strip)
-        STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+	LIST(APPEND LIBS -lshlwapi)
+	ADD_DEFINITIONS(-DMINGW)
+	SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -fno-exceptions")
+	#remove leading and trailing spaces (string strip)
+	STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 ENDIF()
 
 IF(MSVC)
@@ -1266,6 +1365,7 @@ MESSAGE(STATUS "   Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_S
 MESSAGE(STATUS "   Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 MESSAGE(STATUS "Features:")
 MESSAGE(STATUS "   X11 Support                 : ${CMAKE_STATUS_X11_SUPPORT}")
+MESSAGE(STATUS "   Qt Version                  : ${CMAKE_STATUS_QT_VERSION}")
 MESSAGE(STATUS "   Qt-DBus Support             : ${CMAKE_STATUS_QTDBUS_SUPPORT}")
 MESSAGE(STATUS "   Qt-WebKit Support           : ${CMAKE_STATUS_QTWEBKIT_SUPPORT}")
 MESSAGE(STATUS "   Qt-Svg Support              : ${CMAKE_STATUS_QTSVG_SUPPORT}")

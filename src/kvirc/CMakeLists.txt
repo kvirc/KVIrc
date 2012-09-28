@@ -21,90 +21,6 @@ INCLUDE_DIRECTORIES(
 	../kvilib/system
 )
 
-SET(kvirc_MOC_HDRS
-	ui/KviActionDrawer.h
-	ui/KviChannelWindow.h
-	ui/KviColorSelectionWindow.h
-	ui/KviConsoleWindow.h
-	ui/KviCryptController.h
-	ui/KviCtcpPageDialog.h
-	ui/KviCustomToolBar.h
-	ui/KviDebugWindow.h
-	ui/KviDynamicToolTip.h
-	ui/KviFileDialog.h
-	ui/KviMainWindow.h
-	ui/KviHistoryWindow.h
-	ui/KviHtmlDialog.h
-	ui/KviImageDialog.h
-	ui/KviInput.h
-	ui/KviInputEditor.h
-	ui/KviIpEditor.h
-	ui/KviIrcToolBar.h
-	ui/KviIrcView.h
-	ui/KviIrcView_tools.h
-	ui/KviMaskEditor.h
-	ui/KviMdiChild.h
-	ui/KviMdiManager.h
-	ui/KviMenuBar.h
-	ui/KviModeEditor.h
-	ui/KviModeWidget.h
-	ui/KviOptionsWidget.h
-	ui/KviQueryWindow.h
-	ui/KviScriptButton.h
-	ui/KviScriptEditor.h
-	ui/KviSelectors.h
-	ui/KviSplashScreen.h
-	ui/KviStatusBar.h
-	ui/KviStatusBarApplet.h
-	ui/KviTextIconWindow.h
-	ui/KviThemedComboBox.h
-	ui/KviThemedLabel.h
-	ui/KviThemedLineEdit.h
-	ui/KviThemedTreeWidget.h
-	ui/KviToolBar.h
-	ui/KviWindowToolWidget.h
-	ui/KviTopicWidget.h
-	ui/KviUserListView.h
-	ui/KviWebPackageManagementDialog.h
-	ui/KviWindow.h
-	ui/KviWindowListBase.h
-	ui/KviTreeWindowList.h
-	sparser/KviIrcServerParser.h
-	module/KviMexLinkFilter.h
-	module/KviMexServerImport.h
-	module/KviMexToolBar.h
-	module/KviModuleManager.h
-	kvs/KviKvsAction.h
-	kvs/KviKvsAliasManager.h
-	kvs/KviKvsAsyncDnsOperation.h
-	kvs/KviKvsAsyncOperation.h
-	kvs/KviKvsDnsManager.h
-	kvs/KviKvsPopupMenu.h
-	kvs/KviKvsPopupManager.h
-	kvs/KviKvsProcessManager.h
-	kvs/KviKvsTimerManager.h
-	kvs/KviKvsUserAction.h
-	kvs/event/KviKvsEventManager.h
-	kvs/object/KviKvsObject.h
-	kernel/KviAction.h
-	kernel/KviActionManager.h
-	kernel/KviApplication.h
-	kernel/KviCoreActions.h
-	kernel/KviDefaultScript.h
-	kernel/KviFileTransfer.h
-	kernel/KviIconManager.h
-	kernel/KviIpcSentinel.h
-	kernel/KviIrcConnection.h
-	kernel/KviIrcConnectionRequestQueue.h
-	kernel/KviIrcConnectionTargetResolver.h
-	kernel/KviIrcContext.h
-	kernel/KviIrcLink.h
-	kernel/KviIrcSocket.h
-	kernel/KviLagMeter.h
-	kernel/KviNotifyList.h
-	kernel/KviTextIconManager.h
-)
-
 SET(kvirc_SRCS
 	ui/KviActionDrawer.cpp
 	ui/KviChannelWindow.cpp
@@ -329,9 +245,6 @@ SET(kvirc_SRCS
 	kernel/KviUserInput.cpp
 )
 
-# After this call, files will be moc'ed to moc_kvi_*.cpp
-QT4_WRAP_CPP(kvirc_MOC_SRCS ${kvirc_MOC_HDRS})
-
 IF(MINGW)
 	# resource compilation for mingw
 	set(CMAKE_RC_COMPILER_INIT windres)
@@ -354,6 +267,11 @@ ELSE()
 	ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 ENDIF()
 TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
+
+IF(Qt5Widgets_FOUND)
+	qt5_use_modules(${KVIRC_BINARYNAME} ${qt5_kvirc_modules})
+ENDIF()
+
 SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
 IF(CMAKE_HOST_SYSTEM MATCHES "FreeBSD")
@@ -367,7 +285,6 @@ IF(WIN32)
 
 	# We need this defined when mingw will compile moc files
 	ADD_DEFINITIONS(-D__KVIRC__)
-	ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
 ENDIF()
 
 IF(WANT_STRIP)
@@ -381,13 +298,20 @@ INSTALL(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION "${KVIRC_BIN_PATH}")
 IF(APPLE)
 	SET(plugin_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Plugins)
 	SET(qtconf_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Resources)
+	#fixme dirty hack
+	SET(QT_PLUGINS_DIR "${Qt5Widgets_DIR}/../../../plugins")
 
+	# note: no codecs in qt5
+	# note: phonon_backend => mediaservice
+	# note: needs platform on osx
+	# note: check if printsupport is needed, too
+	
 	IF(WANT_DEBUG)
 		INSTALL(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
-			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|phonon_backend|sqldrivers)/.*_debug\\.dylib")
+			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/.*_debug\\.dylib")
 	ELSE()
 		INSTALL(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
-			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|phonon_backend|sqldrivers)/[^_]*\\.dylib")
+			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/[^_]*\\.dylib")
 	ENDIF()
 
 	INSTALL(CODE "

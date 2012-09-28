@@ -9,48 +9,7 @@ INCLUDE_DIRECTORIES(
 	locale
 	net
 	system
-	${QT_INCLUDES}
 )
-
-# Please note that the sources have alphabetic order here
-
-SET(
-	kvilib_MOC_HDRS
-	ext/KviAnimatedPixmap.h
-	ext/KviAnimatedPixmapCache.h
-	ext/KviCryptEngine.h
-	ext/KviRegisteredUserDataBase.h
-	ext/KviSharedFilesManager.h
-	irc/KviIrcUserDataBase.h
-	locale/KviTranslator.h
-	net/KviDnsResolver.h
-	net/KviHttpRequest.h
-	system/KviThread.h
-	tal/KviTalApplication.h
-	tal/KviTalFileDialog.h
-	tal/KviTalGroupBox.h
-	tal/KviTalHBox.h
-	tal/KviTalListWidget.h
-	tal/KviTalMainWindow.h
-	tal/KviTalMenuBar.h
-	tal/KviTalTabDialog.h
-	tal/KviTalTableWidget.h
-	tal/KviTalToolTip.h
-	tal/KviTalVBox.h
-	tal/KviTalWizard.h
-)
-
-IF(COMPILE_DBUS_SUPPORT)
-	LIST(APPEND kvilib_MOC_HDRS
-		ext/KviDbusAdaptor.h
-	)
-ENDIF()
-
-IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
-	LIST(APPEND kvilib_MOC_HDRS
-		ext/avdevice/videodevicepool.h
-	)
-ENDIF()
 
 # Please note that the sources have alphabetic order here
 
@@ -157,9 +116,6 @@ IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
 	)
 ENDIF()
 
-# After this call, files will be moc'ed to moc_kvi_*.cpp
-QT4_WRAP_CPP(kvilib_MOC_SRCS ${kvilib_MOC_HDRS})
-
 # Create library
 IF(WANT_COEXISTENCE)
 	SET(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
@@ -180,6 +136,11 @@ ENDIF()
 
 ADD_LIBRARY(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 TARGET_LINK_LIBRARIES(${KVILIB_BINARYNAME} ${LIBS})
+
+IF(Qt5Widgets_FOUND)
+	qt5_use_modules(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
+ENDIF()
+
 SET_TARGET_PROPERTIES(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
 IF(WANT_STRIP)
