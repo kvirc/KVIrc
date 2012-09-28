@@ -39,7 +39,6 @@
 #else
 	#ifdef COMPILE_X11_SUPPORT
 		#include <qcoreevent.h>
-		#include "KviXlib.h" // for XEvent
 	#endif //!COMPILE_X11_SUPPORT
 #endif
 

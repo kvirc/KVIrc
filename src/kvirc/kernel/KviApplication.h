@@ -53,10 +53,6 @@
 	class KviIpcSentinel;
 #endif // !COMPILE_NO_IPC
 
-#ifdef COMPILE_X11_SUPPORT
-	#include <QX11Info>
-#endif
-
 class QMenu;
 class KviTalListBox;
 class KviConsoleWindow;
@@ -176,20 +172,8 @@ public:
 	bool kviClosingDown() const { return m_bClosingDown; };
 	void setKviClosingDown() { m_bClosingDown=true; };
 
-	inline bool supportsCompositing()
-	{
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		//we need >= win2000
-		return true;
-#endif
-#ifdef COMPILE_X11_SUPPORT
-		return QX11Info::isCompositingManagerRunning();
-#endif
-#ifdef COMPILE_ON_MAC
-		return true;
-#endif
-		return false;
-	};
+	bool supportsCompositing();
+
 	void setupBegin();
 	void setupFinish();
 

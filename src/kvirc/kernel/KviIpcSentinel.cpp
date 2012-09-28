@@ -50,6 +50,7 @@
 
 	#ifdef COMPILE_X11_SUPPORT
 		#include <X11/Xatom.h>
+		#include "KviXlib.h" // for XEvent
 
 		#include <unistd.h>    // for getuid
 		#include <sys/types.h> // for getuid

@@ -120,6 +120,10 @@
 	#include <KNotification>
 #endif
 
+#ifdef COMPILE_X11_SUPPORT
+	#include <QX11Info>
+#endif
+
 /*
 HACK These 2 hacks are defined because X11 defines Unsorted and None
 which conflicts with QDir and KviApplication::KvircSubdir
@@ -711,6 +715,21 @@ int KviApplication::getGloballyUniqueId()
 	g_iGloballyUniqueId++;
 	return g_iGloballyUniqueId;
 }
+
+bool KviApplication::supportsCompositing()
+{
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	//we need >= win2000
+	return true;
+#endif
+#ifdef COMPILE_X11_SUPPORT
+	return QX11Info::isCompositingManagerRunning();
+#endif
+#ifdef COMPILE_ON_MAC
+	return true;
+#endif
+	return false;
+};
 
 void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMsg, unsigned int uMessageLifetime)
 {
