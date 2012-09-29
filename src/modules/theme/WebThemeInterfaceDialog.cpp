@@ -50,7 +50,7 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 	m_szGlobalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
 	setPackagePageUrl(
-			QString::fromAscii("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
+			QString::fromLatin1("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
 					.arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr()))
 		);
 }

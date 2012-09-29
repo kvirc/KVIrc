@@ -43,7 +43,7 @@ WebAddonInterfaceDialog::WebAddonInterfaceDialog(QWidget * par)
 	setWindowTitle(__tr2qs_ctx("KVIrc : Download Addons","theme"));
 
 	setPackagePageUrl(
-			QString::fromAscii("http://www.kvirc.de/app/addons.php?version=" KVI_VERSION "&lang=%1")
+			QString::fromLatin1("http://www.kvirc.de/app/addons.php?version=" KVI_VERSION "&lang=%1")
 					.arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr()))
 		);
 }

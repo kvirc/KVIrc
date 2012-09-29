@@ -26,6 +26,7 @@
 
 #include "KviWebPackageManagementDialog.h"
 
+#warning KviWebPackageManagementDialog uses QFtp, either port it or drop it
 #ifdef COMPILE_WEBKIT_SUPPORT
 
 #include "KviLocale.h"
@@ -47,7 +48,9 @@
 #include <QVBoxLayout>
 #include <QToolBar>
 #include <QFile>
+#if (QT_VERSION < 050000)
 #include <QFtp>
+#endif
 #include <QProgressBar>
 #include <QDir>
 #include <QWebView>
@@ -68,8 +71,9 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 	m_pLayout->setSpacing(2);
 
 	setLayout(m_pLayout);
-
+#if (QT_VERSION < 050000)
 	m_pFtp = NULL;
+#endif
 	m_pFile = NULL;
 	m_bBusy = false;
 
@@ -107,8 +111,10 @@ KviWebPackageManagementDialog::~KviWebPackageManagementDialog()
 {
 	if(m_pFile)
 		delete m_pFile;
+#if (QT_VERSION < 050000)
 	if(m_pFtp)
 		delete m_pFtp;
+#endif
 }
 
 void KviWebPackageManagementDialog::setPackagePageUrl(const QString &szUrl)
@@ -197,6 +203,7 @@ void KviWebPackageManagementDialog::slotLinkClicked(const QUrl &url)
 		{
 			// one download at once
 			m_bBusy = true;
+#if (QT_VERSION < 050000)
 			if(!m_pFtp)
 			{
 				m_pFtp = new QFtp();
@@ -214,6 +221,7 @@ void KviWebPackageManagementDialog::slotLinkClicked(const QUrl &url)
 			m_pFtp->connectToHost(url.host());
 			m_pFtp->login("anonymous","anonymous");
 			m_pFtp->get(url.path(),m_pFile);
+#endif
 		} else {
 			qDebug("uninstall theme");//to be continued
 		}
@@ -236,6 +244,7 @@ void KviWebPackageManagementDialog::slotLoadProgress(int iProgress)
 
 void KviWebPackageManagementDialog::slotCommandFinished(int id,bool error)
 {
+#if (QT_VERSION < 050000)
 	if(m_pFtp->currentCommand() == QFtp::Get)
 	{
 		m_pProgressBar->hide();
@@ -263,6 +272,7 @@ void KviWebPackageManagementDialog::slotCommandFinished(int id,bool error)
 		}
 	}
 	id=0; //to be continued
+#endif
 }
 
 void KviWebPackageManagementDialog::showEvent(QShowEvent *)

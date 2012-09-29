@@ -36,7 +36,9 @@ class QToolBar;
 class QVBoxLayout;
 class QWebView;
 class QFile;
+#if (QT_VERSION < 050000)
 class QFtp;
+#endif
 class QProgressBar;
 class QUrl;
 
@@ -69,7 +71,9 @@ private:
 	QVBoxLayout *m_pLayout;
 	QWebView * m_pWebView;
 	QFile *m_pFile;
+#if (QT_VERSION < 050000)
 	QFtp *m_pFtp;
+#endif
 	bool m_bBusy;
 	QProgressBar *m_pProgressBar;
 	QString m_szPackagePageUrl;
