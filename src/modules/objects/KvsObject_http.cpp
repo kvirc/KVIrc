@@ -24,7 +24,7 @@
 
 #include "KvsObject_http.h"
 
-#warning QFtp doesn't exists anymore in Qt5, port this class or drop it
+#warning QHttp doesn't exists anymore in Qt5, port this class or drop it
 #if (QT_VERSION < 0x050000)
 
 #include "kvi_debug.h"
