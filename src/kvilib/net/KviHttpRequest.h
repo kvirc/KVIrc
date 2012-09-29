@@ -27,12 +27,19 @@
 #include "kvi_settings.h"
 #include "kvi_inttypes.h"
 
+#ifdef Status
+	#undef Status
+#endif // otherwise QTextStream freaks out
+
+#include <QTextStream> // with automoc we need this to be included before the other files
+
 #include "KviHeapObject.h"
 #include "KviCString.h"
 #include "KviUrl.h"
 #include "KviPointerHashTable.h"
 
 #include <QObject>
+
 #if (QT_VERSION >= 0x050000)
 	#include <QtNetwork/QAbstractSocket>
 #else

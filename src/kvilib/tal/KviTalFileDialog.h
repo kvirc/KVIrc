@@ -33,6 +33,10 @@
 
 #include "kvi_settings.h"
 
+#ifdef None
+	#undef None
+#endif // otherwise gcc freaks out somewhere inside the include chain of KFileDialog
+
 /**
 * \class KviTalFileDialog
 * \brief Toolkit Abstraction Layer: filedialog class

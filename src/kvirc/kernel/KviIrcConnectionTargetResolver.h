@@ -29,6 +29,18 @@
 
 #include <QObject>
 
+#ifdef Status
+	#undef Status
+#endif
+
+#ifdef Success
+	#undef Success
+#endif
+
+#ifdef Error
+	#undef Error
+#endif
+
 class KviConsoleWindow;
 class KviDnsResolver;
 class KviIrcConnection;
