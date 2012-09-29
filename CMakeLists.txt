@@ -503,6 +503,7 @@ IF(QT4_FOUND)
 ENDIF()
 
 IF(Qt5Widgets_FOUND)
+	INCLUDE_DIRECTORIES(${Qt5Widgets_INCLUDE_DIRS})
 	LIST(APPEND qt5_kvirc_modules Widgets)
 
 	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it.
@@ -529,6 +530,13 @@ IF(Qt5Widgets_FOUND)
 	IF(Qt5Network_FOUND)
 	    INCLUDE_DIRECTORIES(${Qt5Network_INCLUDE_DIRS})
 	    LIST(APPEND qt5_kvirc_modules Network)
+	ENDIF()
+
+	# QtPrintSupport
+	FIND_PACKAGE(Qt5PrintSupport)
+	IF(Qt5PrintSupport_FOUND)
+	    INCLUDE_DIRECTORIES(${Qt5PrintSupport_INCLUDE_DIRS})
+	    LIST(APPEND qt5_kvirc_modules PrintSupport)
 	ENDIF()
 
 	# Qt-DBus support	

@@ -26,7 +26,6 @@
 
 #include "KviWebPackageManagementDialog.h"
 
-#warning KviWebPackageManagementDialog uses QFtp, either port it or drop it
 #ifdef COMPILE_WEBKIT_SUPPORT
 
 #include "KviLocale.h"
@@ -36,6 +35,7 @@
 #include "KviFileUtils.h"
 #include "KviIconManager.h"
 #include "KviMainWindow.h"
+#include "KviNetworkAccessManager.h"
 
 #include <QDesktopWidget>
 #include <QToolButton>
@@ -48,9 +48,6 @@
 #include <QVBoxLayout>
 #include <QToolBar>
 #include <QFile>
-#if (QT_VERSION < 050000)
-#include <QFtp>
-#endif
 #include <QProgressBar>
 #include <QDir>
 #include <QWebView>
@@ -71,10 +68,6 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 	m_pLayout->setSpacing(2);
 
 	setLayout(m_pLayout);
-#if (QT_VERSION < 050000)
-	m_pFtp = NULL;
-#endif
-	m_pFile = NULL;
 	m_bBusy = false;
 
 	QWidget *pStatus = new QWidget(this);
@@ -109,12 +102,6 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 
 KviWebPackageManagementDialog::~KviWebPackageManagementDialog()
 {
-	if(m_pFile)
-		delete m_pFile;
-#if (QT_VERSION < 050000)
-	if(m_pFtp)
-		delete m_pFtp;
-#endif
 }
 
 void KviWebPackageManagementDialog::setPackagePageUrl(const QString &szUrl)
@@ -203,25 +190,13 @@ void KviWebPackageManagementDialog::slotLinkClicked(const QUrl &url)
 		{
 			// one download at once
 			m_bBusy = true;
-#if (QT_VERSION < 050000)
-			if(!m_pFtp)
-			{
-				m_pFtp = new QFtp();
-				connect(m_pFtp,SIGNAL(commandFinished(int,bool)),this,SLOT(slotCommandFinished(int,bool)));
-				connect(m_pFtp,SIGNAL(dataTransferProgress(qint64,qint64)),this,SLOT(slotDataTransferProgress(qint64,qint64)));
-			}
+
+			QNetworkRequest req(url);
+			QNetworkReply *pReply = KviNetworkAccessManager::getInstance()->get(req);
+			connect(pReply, SIGNAL(finished()), this, SLOT(slotCommandFinished()));
+			connect(pReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(slotDataTransferProgress(qint64,qint64)));
+
 			m_pProgressBar->show();
-			QString szUrl = url.toString();
-			int iIdx=szUrl.lastIndexOf("/");
-			QString szFile = szUrl.right(szUrl.length()-iIdx-1);
-			m_pFile = new QFile(m_pFtp);
-			g_pApp->getLocalKvircDirectory(m_szLocalTemporaryPath,KviApplication::Tmp,szFile);
-			m_pFile->setFileName(m_szLocalTemporaryPath);
-			m_pFile->open(QIODevice::ReadWrite);
-			m_pFtp->connectToHost(url.host());
-			m_pFtp->login("anonymous","anonymous");
-			m_pFtp->get(url.path(),m_pFile);
-#endif
 		} else {
 			qDebug("uninstall theme");//to be continued
 		}
@@ -242,19 +217,29 @@ void KviWebPackageManagementDialog::slotLoadProgress(int iProgress)
 	m_pProgressBar->setFormat(__tr2qs_ctx("Loading: %p%","theme"));
 }
 
-void KviWebPackageManagementDialog::slotCommandFinished(int id,bool error)
+void KviWebPackageManagementDialog::slotCommandFinished()
 {
-#if (QT_VERSION < 050000)
-	if(m_pFtp->currentCommand() == QFtp::Get)
+	QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
+
+	m_pProgressBar->hide();
+	m_pProgressBar->setValue(0);
+
+	if (reply)
 	{
-		m_pProgressBar->hide();
-		m_pProgressBar->setValue(0);
-		if(!error)
+		if (reply->error() == QNetworkReply::NoError)
 		{
+			//read data from reply
+			QString szUrl = reply->url().toString();
+			int iIdx=szUrl.lastIndexOf("/");
+			QString szFile = szUrl.right(szUrl.length()-iIdx-1);
+			QFile tmpFile;
+			g_pApp->getLocalKvircDirectory(m_szLocalTemporaryPath,KviApplication::Tmp,szFile);
+			tmpFile.setFileName(m_szLocalTemporaryPath);
+			tmpFile.open(QIODevice::ReadWrite);
+			tmpFile.write(reply->readAll());
+			tmpFile.close();
+
 			QString szError;
-			m_pFile->close();
-
-
 			if(!installPackage(m_szLocalTemporaryPath,szError))
 			{
 				KviMessageBox::information(szError);
@@ -263,16 +248,16 @@ void KviWebPackageManagementDialog::slotCommandFinished(int id,bool error)
 			}
 			QFileInfo info(m_szLocalTemporaryPath);
 
-			delete m_pFile;
-			m_pFile = 0;
 			if (info.exists())
 				KviFileUtils::removeFile(m_szLocalTemporaryPath);
 			m_bBusy = false;
-			m_pFtp->close();
+		} else {
+			//get http status code
+			int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+			KviMessageBox::information(QString("Download failed:%1").arg(reply->errorString()));
 		}
+		reply->deleteLater();
 	}
-	id=0; //to be continued
-#endif
 }
 
 void KviWebPackageManagementDialog::showEvent(QShowEvent *)
@@ -281,9 +266,6 @@ void KviWebPackageManagementDialog::showEvent(QShowEvent *)
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 	move(rect.x() + ((rect.width() - width())/2),rect.y() + ((rect.height() - height())/2));
 }
-
-
-
 
 #endif //COMPILE_WEBKIT_SUPPORT
 

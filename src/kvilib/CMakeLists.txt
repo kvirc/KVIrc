@@ -76,6 +76,7 @@ SET(kvilib_SRCS
 	net/KviDnsResolver.cpp
 	net/KviHttpRequest.cpp
 	net/KviNetUtils.cpp
+	net/KviNetworkAccessManager.cpp
 	net/KviSASL.cpp
 	net/kvi_socket.cpp
 	net/KviSSL.cpp

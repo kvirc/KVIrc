@@ -36,9 +36,6 @@ class QToolBar;
 class QVBoxLayout;
 class QWebView;
 class QFile;
-#if (QT_VERSION < 050000)
-class QFtp;
-#endif
 class QProgressBar;
 class QUrl;
 
@@ -70,10 +67,6 @@ private:
 	QToolBar   * m_pToolBar;
 	QVBoxLayout *m_pLayout;
 	QWebView * m_pWebView;
-	QFile *m_pFile;
-#if (QT_VERSION < 050000)
-	QFtp *m_pFtp;
-#endif
 	bool m_bBusy;
 	QProgressBar *m_pProgressBar;
 	QString m_szPackagePageUrl;
@@ -90,7 +83,7 @@ protected slots:
 	void slotLoadFinished(bool ok);
 	void slotLoadProgress(int iProgress);
 	void slotDataTransferProgress(qint64 iDone,qint64 iTotal);
-	void slotCommandFinished(int id,bool error);
+	void slotCommandFinished();
 	void slotLinkClicked(const QUrl &url);
 
 }; // class KviWebPackageManagementDialog
