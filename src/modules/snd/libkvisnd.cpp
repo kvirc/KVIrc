@@ -238,13 +238,18 @@ void KviSoundPlayer::detectSoundSystem()
 		#endif
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss";
 	#endif
+
 #if (QT_VERSION < 0x050000)
 	if(QSound::isAvailable())
+#else
+	// on qt5 QSound::isAvailable() is not available anymore
+	// Note: consider the use of QMediaPlayer
+	if(true)
+#endif
 	{
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
 		return;
 	}
-#endif
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "null";
 #endif
 }
@@ -359,15 +364,14 @@ bool KviSoundPlayer::playQt(const QString &szFileName)
 {
 	if(isMuted())
 		return true;
-#if (QT_VERSION < 0x050000)
 	QSound::play(szFileName);
-#endif
 	return true;
 }
 
 void KviSoundPlayer::cleanupQt()
 {
 	// how to stop Qt sounds ?
+	// using the play/stop slots instead of the static ::play (TODO)
 }
 
 bool KviSoundPlayer::playNull(const QString &)
