@@ -61,9 +61,7 @@
 #include <QFontMetrics>
 #include <QKeyEvent>
 #include <QDragEnterEvent>
-#if (QT_VERSION >= 0x050000)
-	#include <QInputMethod>
-#else
+#if (QT_VERSION < 0x050000)
 	#include <QInputContext>
 #endif
 #include <QMenu>
@@ -867,6 +865,11 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 
 #if (QT_VERSION >= 0x050000)
 	#warning Implement Input Methods in KviInputEditor using the new qt5 api!
+	/*
+	 * Actually the use of input method composing works, but we are unable to query the list of
+	 * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
+	 * check it again on newer qt versions!
+	 */
 #else
 		QInputContext *qic = g_pApp->inputContext();
 		if (qic) {

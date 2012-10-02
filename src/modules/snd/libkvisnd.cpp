@@ -34,12 +34,7 @@
 #include "KviLocale.h"
 #include "KviQString.h"
 
-#warning in libkvisnd to use QSound we need proper cmake rules and includes for QtMultimedia
-
-#if (QT_VERSION < 0x050000)
-	#include <QSound>
-#endif
-
+#include <QSound>
 
 #ifdef COMPILE_PHONON_SUPPORT
 	#include <phonon/mediaobject.h>
