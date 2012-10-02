@@ -34,13 +34,10 @@
 #include "Service.h"
 #include "XmlFunctions.h"
 
-#warning upnp/Service uses QHttp, it must be either ported or dropped
-
 #include <QDebug>
-#if (QT_VERSION < 0x050000)
-#include <QHttp>
-#endif
 #include <QByteArray>
+
+#include "KviNetworkAccessManager.h"
 
 // This implementation was created with the help of the following documentation:
 //   http://www.upnp.org/standardizeddcps/documents/UPnP_IGD_1.0.zip
@@ -61,10 +58,6 @@ Service::Service(const QString &hostname, int port, const QString &informationUr
 , m_iPort(port)
 {
 	m_szInformationUrl = informationUrl;
-#if (QT_VERSION < 0x050000)
-	m_pHttp = new QHttp(hostname, port);
-	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ), this, SLOT( slotRequestFinished(int,bool) ) );
-#endif
 	qDebug() << "UPnP::Service: Created information service url='" << m_szInformationUrl << "'." << endl;
 }
 
@@ -80,10 +73,6 @@ Service::Service(const ServiceParameters &params)
 , m_szHostname(params.hostname)
 , m_iPort(params.port)
 {
-#if (QT_VERSION < 0x050000)
-	m_pHttp = new QHttp(params.hostname, params.port);
-	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ), this, SLOT( slotRequestFinished(int,bool) ) );
-#endif
 	qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << endl;
 }
 
@@ -93,9 +82,6 @@ Service::Service(const ServiceParameters &params)
 Service::~Service()
 {
 	qDebug() << "DESTROYED UPnP::Service [url=" << m_szControlUrl << ",  id=" << m_szServiceId << "]" << endl;
-#if (QT_VERSION < 0x050000)
-	delete m_pHttp;
-#endif
 }
 
 
@@ -121,7 +107,6 @@ int Service::callAction(const QString &actionName, const QMap<QString,QString> &
 int Service::callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments, const QString &prefix)
 {
 	qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << endl;
-#if (QT_VERSION < 0x050000)
 
 	// Create the data message
 	//NOTE: we shouldm use serviceId_ instead of serviceType_, but it seems that my router
@@ -162,21 +147,28 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	QByteArray content = soapMessage.toUtf8().data();
 
 	// Create the HTTP header
-	QHttpRequestHeader header("POST", m_szControlUrl);
-	header.setContentType("text/xml");
-	header.setContentLength(content.size());
-	header.setValue("SOAPAction", "\"" + m_szServiceType + "#" + actionName + "\"");
+	QNetworkRequest request;
+	request.setHeader(QNetworkRequest::ContentTypeHeader, "text/xml");
+	request.setHeader(QNetworkRequest::ContentLengthHeader, content.size());
+	request.setRawHeader("SOAPAction", QString("\"%1#%2\"").arg(m_szServiceType, actionName).toUtf8());
+
 	QString port;
 	port.setNum(m_iPort);
-	header.setValue("HOST", m_szHostname + ":" + port);
+	request.setRawHeader("HOST", QString("%1:%2").arg(m_szHostname, port).toUtf8());
+
+	QUrl url;
+	url.setHost(m_szHostname);
+	url.setPort(m_iPort);
+	request.setUrl(url);
 
 	// Send the POST request
 	m_iPendingRequests++;
 
-	qDebug() << "Sending request:\n" << header.toString() << "\n---" << content << endl;
+	QByteArray dummy;
+	QNetworkReply * pReply = KviNetworkAccessManager::getInstance()->post(request, dummy);
+	connect(pReply, SIGNAL(finished()), this, SLOT(slotRequestFinished()));
 
-	return m_pHttp->request(header, content);
-#endif
+	return 0;
 }
 
 
@@ -191,9 +183,18 @@ int Service::callInformationUrl()
 	// Send the GET request
 	// TODO: User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
 	m_iPendingRequests++;
-#if (QT_VERSION < 0x050000)
-	return m_pHttp->get(m_szInformationUrl);
-#endif
+
+	QNetworkRequest request;
+	QByteArray dummy;
+	QUrl url;
+	url.setHost(m_szHostname);
+	url.setPort(m_iPort);
+	url.setPath(m_szInformationUrl);
+	request.setUrl(url);
+	QNetworkReply * pReply = KviNetworkAccessManager::getInstance()->post(request, dummy);
+	connect(pReply, SIGNAL(finished()), this, SLOT(slotRequestFinished()));
+
+	return 0;
 }
 
 
@@ -234,110 +235,113 @@ void Service::gotInformationResponse(const QDomNode &response)
 
 
 // The QHttp object retrieved data.
-void Service::slotRequestFinished(int id, bool error)
+void Service::slotRequestFinished()
 {
-#if (QT_VERSION < 0x050000)
-	qDebug() << "UPnP::Service: Got HTTP response for request #"<< id << ", state: " << m_pHttp->state() << ", " << m_pHttp->bytesAvailable() << " bytes." << endl;
+	QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
 
-	if(! error)
+	qDebug() << "UPnP::Service: Got HTTP response for request " << endl;
+
+	if(!reply)
 	{
-		// an answer with 0 bytes is probably an error
-		if(m_pHttp->bytesAvailable() > 0)
+		qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << endl;
+		m_iPendingRequests--;
+		emit queryFinished(true);
+		return;
+	}
+
+	if (reply->error() != QNetworkReply::NoError)
+	{
+		qWarning() << "UPnP::Service - HTTP Request failed: " << reply->errorString() << endl;
+		m_iPendingRequests--;
+		emit queryFinished(true);
+		reply->deleteLater();
+		return;
+	}
+
+	// Get the XML content
+	QByteArray   response = reply->readAll();
+	QDomDocument xml;
+
+	qDebug() << "Response:\n" << response << "\n---\n";
+
+	// Parse the XML
+	QString errorMessage;
+	bool error = ! xml.setContent(response, false, &errorMessage);
+
+	if(!error)
+	{
+		//extract the xml prefix used by the device; should be "s"
+
+		//this is the reply of my Zyxel:
+		// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" >
+		//  <SOAP-ENV:Body>
+		//   <u:GetDefaultConnectionServiceResponse xmlns:u="urn:schemas-upnp-org:service:Layer3Forwarding:1" >
+		//    <NewDefaultConnectionService>WANIPConnection</NewDefaultConnectionService>
+		//   </u:GetDefaultConnectionServiceResponse>
+		//  </SOAP-ENV:Body>
+		// </SOAP-ENV:Envelope>
+
+		QString baseNamespace = xml.documentElement().tagName();
+
+		if(baseNamespace.length() > 0)
 		{
-			// Get the XML content
-			QByteArray   response = m_pHttp->readAll();
-			QDomDocument xml;
+			int cutAt = baseNamespace.indexOf(':');
+			if(cutAt > -1)
+			{
+				baseNamespace.truncate(cutAt);
+				qDebug() << "Device is using " << baseNamespace << " as xml namespace" << endl;
+				m_szBaseXmlPrefix = baseNamespace;
+			}
+		}
 
-			qDebug() << "Response:\n" << response << "\n---\n";
+		// Determine how to process the data
+		if(xml.namedItem(m_szBaseXmlPrefix + ":Envelope").isNull())
+		{
+			qDebug() << "UPnP::Service: Plain XML detected, calling gotInformationResponse()." << endl;
+			// No SOAP envelope found, this is a normal response to callService()
+			gotInformationResponse( xml.lastChild() );
+		} else {
+			qDebug() << xml.toString() << endl;
+			// Got a SOAP message response to callAction()
+			QDomNode resultNode = XmlFunctions::getNode(xml, "/" + m_szBaseXmlPrefix + ":Envelope/" + m_szBaseXmlPrefix + ":Body").firstChild();
 
-			// Parse the XML
-			QString errorMessage;
-			error = ! xml.setContent(response, false, &errorMessage);
+			error = (resultNode.nodeName() == m_szBaseXmlPrefix + ":Fault");
 
 			if(! error)
 			{
-				//extract the xml prefix used by the device; should be "s"
-
-				//this is the reply of my Zyxel:
-				// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" >
-				//  <SOAP-ENV:Body>
-				//   <u:GetDefaultConnectionServiceResponse xmlns:u="urn:schemas-upnp-org:service:Layer3Forwarding:1" >
-				//    <NewDefaultConnectionService>WANIPConnection</NewDefaultConnectionService>
-				//   </u:GetDefaultConnectionServiceResponse>
-				//  </SOAP-ENV:Body>
-				// </SOAP-ENV:Envelope>
-
-				QString baseNamespace = xml.documentElement().tagName();
-
-				if(baseNamespace.length() > 0)
+				if(resultNode.nodeName().startsWith("m:") || resultNode.nodeName().startsWith("u:"))
 				{
-					int cutAt = baseNamespace.indexOf(':');
-					if(cutAt > -1)
+					qDebug() << "UPnP::Service: SOAP Envelope detected, calling gotActionResponse()." << endl;
+					// Action success, return SOAP body
+					QMap<QString,QString> resultValues;
+
+					// Parse all parameters
+					// It's possible to pass the entire QDomNode object to the gotActionResponse()
+					// function, but this is somewhat nicer, and reduces code boat in the subclasses
+					QDomNodeList children = resultNode.childNodes();
+					for(int i = 0; i < children.count(); i++)
 					{
-						baseNamespace.truncate(cutAt);
-						qDebug() << "Device is using " << baseNamespace << " as xml namespace" << endl;
-						m_szBaseXmlPrefix = baseNamespace;
+						QString key = children.item(i).nodeName();
+						resultValues[ key ] = children.item(i).toElement().text();
 					}
-				}
 
-				// Determine how to process the data
-				if(xml.namedItem(m_szBaseXmlPrefix + ":Envelope").isNull())
-				{
-					qDebug() << "UPnP::Service: Plain XML detected, calling gotInformationResponse()." << endl;
-					// No SOAP envelope found, this is a normal response to callService()
-					gotInformationResponse( xml.lastChild() );
-				} else {
-					qDebug() << xml.toString() << endl;
-					// Got a SOAP message response to callAction()
-					QDomNode resultNode = XmlFunctions::getNode(xml, "/" + m_szBaseXmlPrefix + ":Envelope/" + m_szBaseXmlPrefix + ":Body").firstChild();
-
-					error = (resultNode.nodeName() == m_szBaseXmlPrefix + ":Fault");
-
-					if(! error)
-					{
-						if(resultNode.nodeName().startsWith("m:") || resultNode.nodeName().startsWith("u:"))
-						{
-							qDebug() << "UPnP::Service: SOAP Envelope detected, calling gotActionResponse()." << endl;
-							// Action success, return SOAP body
-							QMap<QString,QString> resultValues;
-
-							// Parse all parameters
-							// It's possible to pass the entire QDomNode object to the gotActionResponse()
-							// function, but this is somewhat nicer, and reduces code boat in the subclasses
-							QDomNodeList children = resultNode.childNodes();
-							for(int i = 0; i < children.count(); i++)
-							{
-								QString key = children.item(i).nodeName();
-								resultValues[ key ] = children.item(i).toElement().text();
-							}
-
-							// Call the gotActionResponse()
-							gotActionResponse(resultNode.nodeName().mid(2), resultValues);
-						}
-					} else {
-						qDebug() << "UPnP::Service: SOAP Error detected, calling gotActionResponse()." << endl;
-
-						// Action failed
-						gotActionErrorResponse(resultNode);
-					}
+					// Call the gotActionResponse()
+					gotActionResponse(resultNode.nodeName().mid(2), resultValues);
 				}
 			} else {
-				qWarning() << "UPnP::Service - XML Parsing failed: " << errorMessage << endl;
-			}
+				qDebug() << "UPnP::Service: SOAP Error detected, calling gotActionResponse()." << endl;
 
-			// Only emit when bytes>0
-			m_iPendingRequests--;
-			emit queryFinished(error);
-		} else {
-			QHttpResponseHeader header = m_pHttp->lastResponse();
-			qDebug() << "Received zero-bytes HTTP response! Status: " << header.statusCode() << "; reason: " << header.reasonPhrase() << endl;
+				// Action failed
+				gotActionErrorResponse(resultNode);
+			}
 		}
 	} else {
-		qWarning() << "UPnP::Service - HTTP Request failed: " << m_pHttp->errorString() << endl;
-		m_iPendingRequests--;
-		emit queryFinished(error);
+		qWarning() << "UPnP::Service - XML Parsing failed: " << errorMessage << endl;
 	}
-#endif
+
+	// Only emit when bytes>0
+	m_iPendingRequests--;
+	emit queryFinished(error);
 }
 
 
