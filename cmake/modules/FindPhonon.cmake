@@ -19,62 +19,29 @@ macro(_phonon_find_version)
    file(READ ${_phonon_namespace_header_file} _phonon_header LIMIT 5000 OFFSET 1000)
    string(REGEX MATCH "define PHONON_VERSION_STR \"(4\\.[0-9]+\\.[0-9a-z]+)\"" _phonon_version_match "${_phonon_header}")
    set(PHONON_VERSION "${CMAKE_MATCH_1}")
-   message(STATUS "Phonon Version: ${PHONON_VERSION}")
 endmacro(_phonon_find_version)
 
-if(PHONON_FOUND)
-   # Already found, nothing more to do except figuring out the version
+# if we want a debug build, prefer the debug libs
+if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
+# the dirs listed with HINTS are searched before the default sets of dirs
+find_library(PHONON_LIBRARY NAMES phonond phonond4 HINTS ${KDE4_LIB_INSTALL_DIR} ${QT_LIBRARY_DIR})
+endif()
+# fall back to release if we don't have debug phonon
+if(NOT DEFINED PHONON_LIBRARAY)
+# the dirs listed with HINTS are searched before the default sets of dirs
+find_library(PHONON_LIBRARY NAMES phonon phonon4 HINTS ${KDE4_LIB_INSTALL_DIR} ${QT_LIBRARY_DIR})
+endif()
+
+find_path(PHONON_INCLUDE_DIR NAMES phonon/phonon_export.h HINTS ${KDE4_INCLUDE_INSTALL_DIR} ${QT_INCLUDE_DIR} ${INCLUDE_INSTALL_DIR} ${QT_LIBRARY_DIR})
+
+
+if(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
+   set(PHONON_LIBS ${phonon_LIB_DEPENDS} ${PHONON_LIBRARY})
+   set(PHONON_INCLUDES ${PHONON_INCLUDE_DIR}/KDE ${PHONON_INCLUDE_DIR})
    _phonon_find_version()
-else(PHONON_FOUND)
-   if(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
-      set(PHONON_FIND_QUIETLY TRUE)
-   endif(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
+endif(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
 
-   # As discussed on kde-buildsystem: first look at CMAKE_PREFIX_PATH, then at the suggested PATHS (kde4 install dir)
-   find_library(PHONON_LIBRARY NAMES phonon phonon4 PATHS ${KDE4_LIB_INSTALL_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
-   # then at the default system locations (CMAKE_SYSTEM_PREFIX_PATH, i.e. /usr etc.)
-   find_library(PHONON_LIBRARY NAMES phonon phonon4)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(Phonon  DEFAULT_MSG  PHONON_INCLUDE_DIR PHONON_LIBRARY)
 
-   # As discussed on kde-buildsystem: first look at CMAKE_PREFIX_PATH, then at the suggested PATHS (kde4 install dir)
-   find_library(PHONON_DEBUG_LIBRARY NAMES phonond phonond4 phonon4d PATHS ${KDE4_LIB_INSTALL_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
-   # then at the default system locations (CMAKE_SYSTEM_PREFIX_PATH, i.e. /usr etc.)
-   find_library(PHONON_DEBUG_LIBRARY NAMES phonond phonond4 phonon4d)
-
-   if(NOT PHONON_DEBUG_LIBRARY)
-      set(PHONON_DEBUG_LIBRARY ${PHONON_LIBRARY})
-   endif(NOT PHONON_DEBUG_LIBRARY)
-
-   find_path(PHONON_INCLUDE_DIR NAMES phonon/phonon_export.h PATHS ${KDE4_INCLUDE_INSTALL_DIR} ${QT_INCLUDE_DIR} ${INCLUDE_INSTALL_DIR} ${QT_LIBRARY_DIR} NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_SYSTEM_PATH)
-   find_path(PHONON_INCLUDE_DIR NAMES phonon/phonon_export.h)
-
-   if(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
-      set(PHONON_LIBS ${phonon_LIB_DEPENDS} ${PHONON_LIBRARY})
-      set(PHONON_INCLUDES ${PHONON_INCLUDE_DIR}/KDE ${PHONON_INCLUDE_DIR})
-      set(PHONON_FOUND TRUE)
-      _phonon_find_version()
-   else(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
-      set(PHONON_FOUND FALSE)
-   endif(PHONON_INCLUDE_DIR AND PHONON_LIBRARY)
-
-   if(PHONON_FOUND)
-      if(NOT PHONON_FIND_QUIETLY)
-         message(STATUS "Found Phonon: ${PHONON_LIBRARY}")
-         message(STATUS "Found Phonon Includes: ${PHONON_INCLUDES}")
-      endif(NOT PHONON_FIND_QUIETLY)
-   else(PHONON_FOUND)
-      if(Phonon_FIND_REQUIRED)
-         if(NOT PHONON_INCLUDE_DIR)
-            message(STATUS "Phonon includes NOT found!")
-         endif(NOT PHONON_INCLUDE_DIR)
-         if(NOT PHONON_LIBRARY)
-            message(STATUS "Phonon library NOT found!")
-         endif(NOT PHONON_LIBRARY)
-         message(FATAL_ERROR "Phonon library or includes NOT found!")
-      else(Phonon_FIND_REQUIRED)
-         message(STATUS "Unable to find Phonon")
-      endif(Phonon_FIND_REQUIRED)
-   endif(PHONON_FOUND)
-
-
-   mark_as_advanced(PHONON_INCLUDE_DIR PHONON_LIBRARY PHONON_INCLUDES)
-endif(PHONON_FOUND)
+mark_as_advanced(PHONON_INCLUDE_DIR PHONON_LIBRARY)
