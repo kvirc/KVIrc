@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/str
 
-SET(kvistr_SRCS
+set(kvistr_SRCS
 	libkvistr.cpp
 )
 
-SET(kvi_module_name kvistr)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvistr)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

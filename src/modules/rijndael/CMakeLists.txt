@@ -1,9 +1,9 @@
 # CMakeLists for src/modules/rijndael
 
-IF(WANT_OPENSSL)
-	SUBDIRS(caps)
+if(WANT_OPENSSL)
+	subdirs(caps)
 
-	SET(kvirijndael_SRCS
+	set(kvirijndael_SRCS
 		libkvirijndael.cpp
 		Rijndael.cpp
 		BlowFish.cpp
@@ -13,8 +13,8 @@ IF(WANT_OPENSSL)
 
 	
 
-	# SET(ADDITIONAL_COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS} -fno-strict-aliasing")
+	# set(ADDITIONAL_COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS} -fno-strict-aliasing")
 
-	SET(kvi_module_name kvirijndael)
-	INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
-ENDIF()
+	set(kvi_module_name kvirijndael)
+	include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+endif()

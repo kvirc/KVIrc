@@ -1,6 +1,6 @@
 # CMakeLists.txt for src/kvilib/
 
-INCLUDE_DIRECTORIES(
+include_directories(
 	config
 	core
 	ext
@@ -13,7 +13,7 @@ INCLUDE_DIRECTORIES(
 
 # Please note that the sources have alphabetic order here
 
-SET(kvilib_SRCS
+set(kvilib_SRCS
 	config/KviBuildInfo.cpp
 	core/KviError.cpp
 	core/KviHeapObject.cpp
@@ -100,59 +100,59 @@ SET(kvilib_SRCS
 	tal/KviTalWizard.cpp
 )
 
-IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
-	LIST(APPEND kvilib_SRCS
+if(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	list(APPEND kvilib_SRCS
 		ext/avdevice/videodevice.cpp 
 		ext/avdevice/videoinput.cpp 
 		ext/avdevice/videodevicepool.cpp 
 		ext/avdevice/bayer.cpp
 		ext/avdevice/sonix_compress.cpp
 	)
-ENDIF()
+endif()
 
-IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
-	LIST(APPEND kvilib_SRCS
+if(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
+	list(APPEND kvilib_SRCS
 		ext/KviOggTheoraDecoder.cpp
 		ext/KviOggTheoraEncoder.cpp
 	)
-ENDIF()
+endif()
 
 # Create library
-IF(WANT_COEXISTENCE)
-	SET(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
-ELSE()
-	SET(KVILIB_BINARYNAME kvilib)
-ENDIF()
+if(WANT_COEXISTENCE)
+	set(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
+else()
+	set(KVILIB_BINARYNAME kvilib)
+endif()
 
 #we need this defined when mingw will compile moc files
-IF(WIN32)
-        ADD_DEFINITIONS(-D__KVILIB__)
-ENDIF()
+if(WIN32)
+        add_definitions(-D__KVILIB__)
+endif()
 
-IF(MSVC)
+if(MSVC)
 	# THIS IS A DIRTY HACK: add winmm.lib for kvisnd. (maybe also needed for mingw?) perl does add a bunch of crap unconditionally, including winmm
 	# TODO: fix it properly at some point: APPEND LIBS does not seem to work at all for modules(?)
-	LIST(APPEND LIBS wsock32.lib ws2_32.lib winmm.lib)
-ENDIF()
+	list(APPEND LIBS wsock32.lib ws2_32.lib winmm.lib)
+endif()
 
-ADD_LIBRARY(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
-TARGET_LINK_LIBRARIES(${KVILIB_BINARYNAME} ${LIBS})
+add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
+target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
 
-IF(Qt5Widgets_FOUND)
+if(Qt5Widgets_FOUND)
 	qt5_use_modules(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
-ENDIF()
+endif()
 
-SET_TARGET_PROPERTIES(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+set_target_properties(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
-IF(WANT_STRIP)
-	GET_TARGET_PROPERTY(KVILIB_LOCATION ${KVILIB_BINARYNAME} LOCATION)
-	INSTALL(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${KVILIB_LOCATION}\")")
-ENDIF()
+if(WANT_STRIP)
+	get_target_property(KVILIB_LOCATION ${KVILIB_BINARYNAME} LOCATION)
+	install(CODE "exec_program(${STRIP_EXECUTABLE} ARGS -s \"${KVILIB_LOCATION}\")")
+endif()
 
 # Installation directives
-IF(UNIX)
-	INSTALL(TARGETS ${KVILIB_BINARYNAME} LIBRARY DESTINATION "${KVIRC_LIB_PATH}")
-ELSEIF(WIN32)
+if(UNIX)
+	install(TARGETS ${KVILIB_BINARYNAME} LIBRARY DESTINATION "${KVIRC_LIB_PATH}")
+elseif(WIN32)
 	# For DLL platforms the DLL part of a shared library is treated as a RUNTIME target and the corresponding import library is treated as an ARCHIVE target
-	INSTALL(TARGETS ${KVILIB_BINARYNAME} RUNTIME DESTINATION "${KVIRC_LIB_PATH}")
-ENDIF()
+	install(TARGETS ${KVILIB_BINARYNAME} RUNTIME DESTINATION "${KVIRC_LIB_PATH}")
+endif()

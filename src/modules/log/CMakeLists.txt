@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/log
 
-SET(kvilog_SRCS
+set(kvilog_SRCS
 	libkvilog.cpp
 )
 
-SET(kvi_module_name kvilog)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvilog)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

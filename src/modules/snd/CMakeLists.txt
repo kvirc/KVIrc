@@ -1,22 +1,22 @@
 # CMakeLists for src/modules/snd
 
-IF(COMPILE_PHONON_SUPPORT)
-	INCLUDE_DIRECTORIES(${PHONON_INCLUDE_DIR})
-ENDIF()
+if(COMPILE_PHONON_SUPPORT)
+	include_directories(${PHONON_INCLUDE_DIR})
+endif()
 
-IF(MINGW)
-	LIST(APPEND LIBS -lwinmm)
-ENDIF()
+if(MINGW)
+	list(APPEND LIBS -lwinmm)
+endif()
 
-IF(MSVC)
-	LIST(APPEND LIBS winmm.lib)
-ENDIF()
+if(MSVC)
+	list(APPEND LIBS winmm.lib)
+endif()
 
 
 
-SET(kvisnd_SRCS
+set(kvisnd_SRCS
 	libkvisnd.cpp
 )
 
-SET(kvi_module_name kvisnd)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvisnd)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

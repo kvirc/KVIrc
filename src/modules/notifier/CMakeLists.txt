@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/notifier
 
-SET(kvinotifier_SRCS
+set(kvinotifier_SRCS
 	libkvinotifier.cpp
 	NotifierWindow.cpp
 	NotifierMessage.cpp
@@ -8,7 +8,7 @@ SET(kvinotifier_SRCS
 	NotifierWindowBorder.cpp
 )
 
-SET(kvi_module_name kvinotifier)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvinotifier)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
-ADD_SUBDIRECTORY(pics)
+add_subdirectory(pics)

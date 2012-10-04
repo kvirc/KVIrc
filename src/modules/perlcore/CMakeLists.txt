@@ -1,31 +1,31 @@
 # CMakeLists for src/modules/perlcore
 
-SET(kviperlcore_SRCS
+set(kviperlcore_SRCS
 	libkviperlcore.cpp
 )
 
-SET(kvi_module_name kviperlcore)
+set(kvi_module_name kviperlcore)
 
-IF(COMPILE_PERL_SUPPORT)
-	EXECUTE_PROCESS(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ccopts
+if(COMPILE_PERL_SUPPORT)
+	execute_process(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ccopts
 		OUTPUT_VARIABLE PERL_COMPILE_FLAGS
 	)
 
 	#remove new line characters
-	STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
+	string(REGEX REPLACE "(\r?\n)+$" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
 	#remove leading and trailing spaces (string strip)
-	STRING(REGEX REPLACE "(^( )+|( )+$)" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
-ENDIF()
+	string(REGEX REPLACE "(^( )+|( )+$)" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
+endif()
 
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
-IF(COMPILE_PERL_SUPPORT)
-	IF(WANT_DEBUG AND MSVC)
+if(COMPILE_PERL_SUPPORT)
+	if(WANT_DEBUG AND MSVC)
 		# Activestates Perl does not support Run-Time Error checks
-		STRING(REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG_INIT ${CMAKE_CXX_FLAGS_DEBUG_INIT})
-		STRING(REPLACE "/RTC1" "" CMAKE_C_FLAGS_DEBUG_INIT ${CMAKE_C_FLAGS_DEBUG_INIT})
-		STRING(REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG})
-		STRING(REPLACE "/RTC1" "" CMAKE_C_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
-	ENDIF()
-	SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
-ENDIF()
+		string(REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG_INIT ${CMAKE_CXX_FLAGS_DEBUG_INIT})
+		string(REPLACE "/RTC1" "" CMAKE_C_FLAGS_DEBUG_INIT ${CMAKE_C_FLAGS_DEBUG_INIT})
+		string(REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG})
+		string(REPLACE "/RTC1" "" CMAKE_C_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
+	endif()
+	set_target_properties(${kvi_module_name} PROPERTIES COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
+endif()

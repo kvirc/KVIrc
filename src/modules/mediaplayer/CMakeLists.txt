@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/mediaplayer
 
-SET(kvimediaplayer_SRCS
+set(kvimediaplayer_SRCS
 	libkvimediaplayer.cpp
 	MpInterface.cpp
 	MpMp3.cpp
@@ -11,13 +11,13 @@ SET(kvimediaplayer_SRCS
 	MpSpotifyInterface.cpp
 )
 
-SET(kvi_module_name kvimediaplayer)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvimediaplayer)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
-IF(WIN32)
-	ADD_LIBRARY(gen_kvirc MODULE winamp.cpp)
-	IF(MINGW)
-		SET_TARGET_PROPERTIES(gen_kvirc PROPERTIES PREFIX "" LINK_FLAGS -static-libgcc COMPILE_FLAGS -static-libgcc)
-	ENDIF()
-	INSTALL(TARGETS gen_kvirc LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/modules)
-ENDIF()
+if(WIN32)
+	add_library(gen_kvirc MODULE winamp.cpp)
+	if(MINGW)
+		set_target_properties(gen_kvirc PROPERTIES PREFIX "" LINK_FLAGS -static-libgcc COMPILE_FLAGS -static-libgcc)
+	endif()
+	install(TARGETS gen_kvirc LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/modules)
+endif()

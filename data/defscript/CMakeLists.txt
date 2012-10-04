@@ -1,14 +1,14 @@
 # CMakeLists for data/defscript
 
-FILE(GLOB files "*.kv?")
+file(GLOB files "*.kv?")
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/defscript/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/defscript/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/defscript/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/defscript/)
-ENDIF()
+		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/defscript/)
+	endif()
+elseif(WIN32)
+	install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/defscript/)
+endif()

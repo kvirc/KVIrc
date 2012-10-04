@@ -3,13 +3,13 @@
 # From qmake
 #QT += xml
 
-IF(WIN32)
-	LIST(APPEND LIBS -lws2_32)
-ENDIF()
+if(WIN32)
+	list(APPEND LIBS -lws2_32)
+endif()
 
 
 
-SET(kviobjects_SRCS
+set(kviobjects_SRCS
 	libkviobjects.cpp
 	KvsObject_button.cpp
 	KvsObject_buttonGroup.cpp
@@ -62,5 +62,5 @@ SET(kviobjects_SRCS
 	KvsObject_xmlreader.cpp
 )
 
-SET(kvi_module_name kviobjects)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviobjects)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

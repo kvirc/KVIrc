@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/proxydb
 
-SET(kviproxydb_SRCS
+set(kviproxydb_SRCS
 	libkviproxydb.cpp
 )
 
-SET(kvi_module_name kviproxydb)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviproxydb)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

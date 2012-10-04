@@ -4,13 +4,13 @@
 # src/modules/log
 # src/modules/logview
 
-FILE(GLOB pofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.po")
-FILE(GLOB mofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.mo")
+file(GLOB pofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.po")
+file(GLOB mofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.mo")
 
-SET(POTFILE log.pot)
-SET(XGETTEXT_SOURCESDIR)
-LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/log)
-LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/logview)
+set(POTFILE log.pot)
+set(XGETTEXT_SOURCESDIR)
+list(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/log)
+list(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/logview)
 
 # Install target
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/translation.rules.txt)
+include(${CMAKE_SOURCE_DIR}/cmake/translation.rules.txt)

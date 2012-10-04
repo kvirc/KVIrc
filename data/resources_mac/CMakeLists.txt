@@ -1,13 +1,13 @@
 # CMakeLists for data/resources_mac
 
-IF(APPLE)
-	IF(WANT_COEXISTENCE)
-		SET(KVIRC_BINARYNAME ${PACKAGE}${VERSION_MAJOR})
-	ELSE()
-		SET(KVIRC_BINARYNAME ${PACKAGE})
-	ENDIF()
+if(APPLE)
+	if(WANT_COEXISTENCE)
+		set(KVIRC_BINARYNAME ${PACKAGE}${VERSION_MAJOR})
+	else()
+		set(KVIRC_BINARYNAME ${PACKAGE})
+	endif()
 
-	CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/Info.plist.cmake ${CMAKE_CURRENT_BINARY_DIR}/Info.plist @ONLY)
-	INSTALL(FILES kvirc.icns DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/)
-	INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/Info.plist DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/)
-ENDIF()
+	configure_file(${kvirc_SOURCE_DIR}/cmake/Info.plist.cmake ${CMAKE_CURRENT_BINARY_DIR}/Info.plist @ONLY)
+	install(FILES kvirc.icns DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/)
+	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Info.plist DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/)
+endif()

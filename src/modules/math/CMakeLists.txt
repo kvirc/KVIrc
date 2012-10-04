@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/math
 
-SET(kvimath_SRCS
+set(kvimath_SRCS
 	libkvimath.cpp
 )
 
-SET(kvi_module_name kvimath)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvimath)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

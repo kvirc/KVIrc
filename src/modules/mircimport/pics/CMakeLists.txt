@@ -1,14 +1,14 @@
 # CMakeLists for ./pics
 
-SET(PICSFILE kvi_mircimport.png)
+set(PICSFILE kvi_mircimport.png)
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${PICSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${PICSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${PICSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
-ENDIF()
+		install(FILES ${PICSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+	endif()
+elseif(WIN32)
+	install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
+endif()

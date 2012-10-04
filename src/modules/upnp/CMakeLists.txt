@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/upnp
 
-SET(kviupnp_SRCS
+set(kviupnp_SRCS
 	igdcontrolpoint.cpp
 	libkviupnp.cpp
 	Manager.cpp
@@ -13,5 +13,5 @@ SET(kviupnp_SRCS
 
 
 
-SET(kvi_module_name kviupnp)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviupnp)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

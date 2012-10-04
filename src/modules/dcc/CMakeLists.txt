@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/dcc
 
-SET(kvidcc_SRCS
+set(kvidcc_SRCS
 	DccVoiceAdpcmCodec.cpp
 	DccBroker.cpp
 	DccCanvasWindow.cpp
@@ -20,31 +20,31 @@ SET(kvidcc_SRCS
 	DccWindow.cpp
 )
 
-IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
-        LIST(APPEND kvidcc_SRCS 
+if(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
+        list(APPEND kvidcc_SRCS 
                 DccVideoWindow.cpp 
         ) 
-ENDIF()
+endif()
 
-SET(files
+set(files
 	kvi_dccfiletransfericons.png
 )
 
-IF(WIN32)
-	LIST(APPEND LIBS -lws2_32)
-ENDIF()
+if(WIN32)
+	list(APPEND LIBS -lws2_32)
+endif()
 
-SET(kvi_module_name kvidcc)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvidcc)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
-ENDIF()
+		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+	endif()
+elseif(WIN32)
+	install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
+endif()
 

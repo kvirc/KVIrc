@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/config
 
-SET(kviconfig_SRCS
+set(kviconfig_SRCS
 	libkviconfig.cpp
 )
 
-SET(kvi_module_name kviconfig)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviconfig)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

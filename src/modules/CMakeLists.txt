@@ -1,9 +1,9 @@
 # CMakeLists.txt for src/modules/
-IF(APPLE)
-	SET(CMAKE_MODULE_LINKER_FLAGS "-undefined dynamic_lookup")
-ENDIF()
+if(APPLE)
+	set(CMAKE_MODULE_LINKER_FLAGS "-undefined dynamic_lookup")
+endif()
 
-INCLUDE_DIRECTORIES(
+include_directories(
 	../kvilib/tal/
 	../kvilib/config/
 	../kvilib/core/
@@ -24,7 +24,7 @@ INCLUDE_DIRECTORIES(
 	../kvirc/ui/
 )
 
-SUBDIRS(
+subdirs(
 	about action actioneditor addon aliaseditor avatar
 	chan channelsjoin classeditor codetester config context
 	dcc dialog
@@ -44,15 +44,15 @@ SUBDIRS(
 	window
 )
 
-IF(COMPILE_PERL_SUPPORT)
-	SUBDIRS(perl)
-ENDIF()
+if(COMPILE_PERL_SUPPORT)
+	subdirs(perl)
+endif()
 
-IF(COMPILE_PYTHON_SUPPORT)
-	SUBDIRS(python)
-ENDIF()
+if(COMPILE_PYTHON_SUPPORT)
+	subdirs(python)
+endif()
 
-IF(APPLE)
+if(APPLE)
 	# This is a dirty trick ensure we get some code executed after the last module gets installed
-	SUBDIRS(zzz_afterlastmodule)
-ENDIF()
+	subdirs(zzz_afterlastmodule)
+endif()

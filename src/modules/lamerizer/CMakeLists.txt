@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/lamerizer
 
-SUBDIRS(caps)
+subdirs(caps)
 
 
 
-SET(kvilamerizer_SRCS
+set(kvilamerizer_SRCS
 	libkvilamerizer.cpp
 )
 
-SET(kvi_module_name kvilamerizer)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvilamerizer)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

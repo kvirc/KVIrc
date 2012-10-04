@@ -1,26 +1,26 @@
 # CMakeLists for src/modules/tip
 
-SET(kvitip_SRCS
+set(kvitip_SRCS
 	libkvitip.cpp
 )
 
-FILE(GLOB tips "*.kvc")
-FILE(GLOB pics "*.png")
+file(GLOB tips "*.kvc")
+file(GLOB pics "*.png")
 
-SET(kvi_module_name kvitip)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvitip)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
 # Install rule
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${tips} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/config/modules/)
-		INSTALL(FILES ${pics} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${tips} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/config/modules/)
+		install(FILES ${pics} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${tips} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/config/modules/)
-		INSTALL(FILES ${pics} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${tips} DESTINATION ${CMAKE_INSTALL_PREFIX}/config/modules/)
-	INSTALL(FILES ${pics} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
-ENDIF()
+		install(FILES ${tips} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/config/modules/)
+		install(FILES ${pics} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+	endif()
+elseif(WIN32)
+	install(FILES ${tips} DESTINATION ${CMAKE_INSTALL_PREFIX}/config/modules/)
+	install(FILES ${pics} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
+endif()

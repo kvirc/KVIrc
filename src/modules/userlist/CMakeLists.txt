@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/userlist
 
-SET(kviuserlist_SRCS
+set(kviuserlist_SRCS
 	libkviuserlist.cpp
 )
 
-SET(kvi_module_name kviuserlist)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviuserlist)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

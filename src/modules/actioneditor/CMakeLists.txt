@@ -1,9 +1,9 @@
 # CMakeLists for src/modules/actioneditor
 
-SET(kviactioneditor_SRCS
+set(kviactioneditor_SRCS
 	ActionEditor.cpp
 	libkviactioneditor.cpp
 )
 
-SET(kvi_module_name kviactioneditor)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviactioneditor)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

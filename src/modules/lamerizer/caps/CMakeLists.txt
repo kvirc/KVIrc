@@ -1,14 +1,14 @@
 # CMakeLists for ./caps
 
-SET(CAPSFILE lamerizer)
+set(CAPSFILE lamerizer)
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/caps/crypt/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/caps/crypt/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/caps/crypt/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/modules/caps/crypt/)
-ENDIF()
+		install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/caps/crypt/)
+	endif()
+elseif(WIN32)
+	install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/modules/caps/crypt/)
+endif()

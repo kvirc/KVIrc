@@ -1,28 +1,28 @@
 # CMakeLists for data/icons/scalable/
 
-SET(iconapps
+set(iconapps
 	kvirc.svgz
 )
 
-SET(iconmime
+set(iconmime
         text-x-kvs.svgz
         text-x-kvc.svgz
         application-x-kvt.svgz
         application-x-kva.svgz
 )
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/apps/)
-		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/mimetypes/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/apps/)
+		install(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/mimetypes/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
-		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/mimetypes/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/apps/)
-	INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/mimetypes/)
-ENDIF()
+		install(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
+		install(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/mimetypes/)
+	endif()
+elseif(WIN32)
+	install(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/apps/)
+	install(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/mimetypes/)
+endif()
 
 

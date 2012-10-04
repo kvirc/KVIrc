@@ -1,9 +1,9 @@
 # CMakeLists for src/modules/sharedfileswindow
 
-SET(kvisharedfileswindow_SRCS
+set(kvisharedfileswindow_SRCS
 	libkvisharedfileswindow.cpp
 	SharedFilesWindow.cpp
 )
 
-SET(kvi_module_name kvisharedfileswindow)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvisharedfileswindow)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/addon
 
-SET(
+set(
 	kviaddon_SRCS
 	libkviaddon.cpp
 	AddonManagementDialog.cpp
@@ -9,5 +9,5 @@ SET(
 	WebAddonInterfaceDialog.cpp
 )
 
-SET(kvi_module_name kviaddon)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviaddon)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

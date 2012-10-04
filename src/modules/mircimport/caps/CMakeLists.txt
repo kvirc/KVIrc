@@ -1,14 +1,14 @@
 # CMakeLists for ./caps
 
-SET(CAPSFILE mircimport)
+set(CAPSFILE mircimport)
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/caps/serverimport/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/caps/serverimport/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/caps/serverimport/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/modules/caps/serverimport/)
-ENDIF()
+		install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/caps/serverimport/)
+	endif()
+elseif(WIN32)
+	install(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/modules/caps/serverimport/)
+endif()

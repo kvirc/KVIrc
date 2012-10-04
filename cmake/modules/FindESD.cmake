@@ -6,18 +6,18 @@
 #  ESD_FOUND        - True if ESD found.
 
 # Look for the header file.
-FIND_PATH( ESD_INCLUDE_DIR NAMES esd.h
+find_path( ESD_INCLUDE_DIR NAMES esd.h
            PATHS /usr/include /usr/local/include)
-MARK_AS_ADVANCED(ESD_INCLUDE_DIR)
+mark_as_advanced(ESD_INCLUDE_DIR)
 
 # Look for the library.
-FIND_LIBRARY( ESD_LIBRARY NAMES esd
+find_library( ESD_LIBRARY NAMES esd
               PATHS /usr/lib /usr/lib64 )
-MARK_AS_ADVANCED(ESD_LIBRARY)
+mark_as_advanced(ESD_LIBRARY)
 
 # Copy the results to the output variables.
-IF(ESD_INCLUDE_DIR AND ESD_LIBRARY)
-  SET(ESD_FOUND 1)
-ELSE(ESD_INCLUDE_DIR AND ESD_LIBRARY)
-  SET(ESD_FOUND 0)
-ENDIF(ESD_INCLUDE_DIR AND ESD_LIBRARY)
+if(ESD_INCLUDE_DIR AND ESD_LIBRARY)
+  set(ESD_FOUND 1)
+else(ESD_INCLUDE_DIR AND ESD_LIBRARY)
+  set(ESD_FOUND 0)
+endif(ESD_INCLUDE_DIR AND ESD_LIBRARY)

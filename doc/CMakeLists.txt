@@ -1,12 +1,12 @@
 # CMakeLists for doc/
 
-SET(license
+set(license
 	COPYING
 	LICENSE-GPLV2
 	LICENSE-GPLV3
 	LICENSE-OPENSSL
 )
-SET(howto
+set(howto
 	README
 	FAQ
 	INSTALL
@@ -22,69 +22,69 @@ SET(howto
 )
 
 # User documentation
-IF(PERL_FOUND)
+if(PERL_FOUND)
 
 	# The userdocs target is in the normal build process and rebuilds the documentation
 	# only when the revision number changes. This is useful for svn users and package users.
 
 	# The docs target is standalone and explicitly builds the documentation (useful for developers)
 
-	IF(DEFINED CMAKE_KVIRC_BUILD_REVISION)
-		SET(USERDOCS_VERSION "${VERSION_RELEASE}.${CMAKE_KVIRC_BUILD_REVISION}")
-	ELSE()
-		SET(USERDOCS_VERSION "${VERSION_RELEASE}")
-	ENDIF()
+	if(DEFINED CMAKE_KVIRC_BUILD_REVISION)
+		set(USERDOCS_VERSION "${VERSION_RELEASE}.${CMAKE_KVIRC_BUILD_REVISION}")
+	else()
+		set(USERDOCS_VERSION "${VERSION_RELEASE}")
+	endif()
 
-	SET(USERDOCS_OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/help/en/documentation.${USERDOCS_VERSION}.tag")
+	set(USERDOCS_OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/help/en/documentation.${USERDOCS_VERSION}.tag")
 
-	ADD_CUSTOM_TARGET(userdocs ALL)
-	ADD_CUSTOM_TARGET(userdocs-en DEPENDS ${USERDOCS_OUTPUT_FILE})
-	ADD_DEPENDENCIES(userdocs userdocs-en)
+	add_custom_target(userdocs ALL)
+	add_custom_target(userdocs-en DEPENDS ${USERDOCS_OUTPUT_FILE})
+	add_dependencies(userdocs userdocs-en)
 
-	IF(UNIX)
-		ADD_CUSTOM_COMMAND(
+	if(UNIX)
+		add_custom_command(
 			OUTPUT ${USERDOCS_OUTPUT_FILE}
 			COMMENT "Generating user documentation..."
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
-		IF(APPLE)
-			INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/help)
-		ELSE()
+		if(APPLE)
+			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/help)
+		else()
 			# Assume linux
-			INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help)
-		ENDIF()
-		ADD_CUSTOM_TARGET(
+			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help)
+		endif()
+		add_custom_target(
 			docs
 			COMMENT "Generating user documentation..."
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
-	ELSEIF(WIN32)
-		ADD_CUSTOM_COMMAND(
+	elseif(WIN32)
+		add_custom_command(
 			OUTPUT ${USERDOCS_OUTPUT_FILE}
 			COMMENT "Generating user documentation..."
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
-		INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/help)	
-		ADD_CUSTOM_TARGET(
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/help)	
+		add_custom_target(
 			docs
 			COMMENT "Generating user documentation..."
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
-	ENDIF()
+	endif()
 
-ENDIF()
+endif()
 
 # Install target
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/license)
-		INSTALL(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/license)
+		install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc)
+	else()
 		# Assume linux
-		INSTALL(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/license/)
-		INSTALL(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/license/)
-	INSTALL(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/doc/)
-ENDIF()
+		install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/license/)
+		install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/)
+	endif()
+elseif(WIN32)
+	install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/license/)
+	install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/doc/)
+endif()

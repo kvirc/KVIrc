@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/options
 
-SET(kvioptions_SRCS
+set(kvioptions_SRCS
 	libkvioptions.cpp
 	OptionsWidgetContainer.cpp
 	OptionsDialog.cpp
@@ -46,5 +46,5 @@ SET(kvioptions_SRCS
 	OptionsWidget_tray.cpp
 )
 
-SET(kvi_module_name kvioptions)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvioptions)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

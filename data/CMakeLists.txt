@@ -1,15 +1,15 @@
 # CMakeLists for data/
 
 # Find subdirs
-SUBDIRS(applnk audio config defscript deftheme helppics man msgcolors pics)
+subdirs(applnk audio config defscript deftheme helppics man msgcolors pics)
 
-IF(APPLE)
+if(APPLE)
 	# MacOS X
-	ADD_SUBDIRECTORY(resources_mac)
-ELSEIF(WIN32)
-	ADD_SUBDIRECTORY(resources_win32)
-ELSEIF(UNIX AND NOT APPLE)
-	ADD_SUBDIRECTORY(icons)
-	ADD_SUBDIRECTORY(mimetypes)
-	ADD_SUBDIRECTORY(protocols)
-ENDIF()
+	add_subdirectory(resources_mac)
+elseif(WIN32)
+	add_subdirectory(resources_win32)
+elseif(UNIX AND NOT APPLE)
+	add_subdirectory(icons)
+	add_subdirectory(mimetypes)
+	add_subdirectory(protocols)
+endif()

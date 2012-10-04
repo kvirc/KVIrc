@@ -1,15 +1,15 @@
 # CMakeLists for src/modules/setup
 
-IF(WIN32)
-	LIST(APPEND LIBS -lole32 -luuid)
-ENDIF()
+if(WIN32)
+	list(APPEND LIBS -lole32 -luuid)
+endif()
 
 
 
-SET(kvisetup_SRCS
+set(kvisetup_SRCS
 	libkvisetup.cpp
 	SetupWizard.cpp
 )
 
-SET(kvi_module_name kvisetup)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvisetup)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

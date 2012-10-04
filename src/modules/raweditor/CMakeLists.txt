@@ -1,9 +1,9 @@
 # CMakeLists for src/modules/raweditor
 
-SET(kviraweditor_SRCS
+set(kviraweditor_SRCS
 	libkviraweditor.cpp
 	RawEditorWindow.cpp
 )
 
-SET(kvi_module_name kviraweditor)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviraweditor)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

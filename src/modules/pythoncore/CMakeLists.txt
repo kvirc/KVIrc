@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/pythoncore
 
-SET(kvipythoncore_SRCS
+set(kvipythoncore_SRCS
 	libkvipythoncore.cpp
 	kvircmodule.cpp
 )
 
-SET(KVI_DEFAULT_FRAME_CAPTION "") 
+set(KVI_DEFAULT_FRAME_CAPTION "") 
 
-SET(kvi_module_name kvipythoncore)
+set(kvi_module_name kvipythoncore)
 
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

@@ -1,10 +1,10 @@
 # CMakeLists for src/modules/term
 
-SET(kviterm_SRCS
+set(kviterm_SRCS
 	libkviterm.cpp
 	TermWidget.cpp
 	TermWindow.cpp
 )
 
-SET(kvi_module_name kviterm)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviterm)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

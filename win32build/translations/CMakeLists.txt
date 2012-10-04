@@ -1,7 +1,7 @@
 # CMakeLists for win32build/translations
 
-FILE(GLOB translations "${CMAKE_CURRENT_SOURCE_DIR}/*.nsi")
+file(GLOB translations "${CMAKE_CURRENT_SOURCE_DIR}/*.nsi")
 
-IF(WIN32)
-	INSTALL(FILES ${translations} DESTINATION ${PROJECT_BINARY_DIR}/translations/)
-ENDIF()
+if(WIN32)
+	install(FILES ${translations} DESTINATION ${PROJECT_BINARY_DIR}/translations/)
+endif()

@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/tmphighlight
 
-SET(kvitmphighlight_SRCS
+set(kvitmphighlight_SRCS
 	libkvitmphighlight.cpp
 )
 
-SET(kvi_module_name kvitmphighlight)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvitmphighlight)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

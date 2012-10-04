@@ -1,9 +1,9 @@
 # CMakeLists for src/modules/spaste
 
-SET(kvispaste_SRCS
+set(kvispaste_SRCS
 	libkvispaste.cpp
 	SlowPasteController.cpp
 )
 
-SET(kvi_module_name kvispaste)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvispaste)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

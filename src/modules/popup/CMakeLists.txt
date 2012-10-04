@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/popup
 
-SET(kvipopup_SRCS
+set(kvipopup_SRCS
 	libkvipopup.cpp
 )
 
-SET(kvi_module_name kvipopup)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvipopup)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

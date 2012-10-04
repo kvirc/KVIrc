@@ -1,15 +1,15 @@
 # CMakeLists for data/config
 
-FILE(GLOB files "*.kvc")
-LIST(APPEND ${files} "style.css")
+file(GLOB files "*.kvc")
+list(APPEND ${files} "style.css")
 
-IF(UNIX)
-	IF(APPLE)
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/config/)
-	ELSE()
+if(UNIX)
+	if(APPLE)
+		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/config/)
+	else()
 		# Assume linux
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/config/)
-	ENDIF()
-ELSEIF(WIN32)
-	INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/config/)
-ENDIF()
+		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/config/)
+	endif()
+elseif(WIN32)
+	install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/config/)
+endif()

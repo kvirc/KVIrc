@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/perl
 
-SET(kviperl_SRCS
+set(kviperl_SRCS
 	libkviperl.cpp
 )
 
-SET(kvi_module_name kviperl)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kviperl)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

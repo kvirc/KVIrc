@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/theme
 
-SET(kvitheme_SRCS
+set(kvitheme_SRCS
 	libkvitheme.cpp
 	WebThemeInterfaceDialog.cpp
 	ThemeManagementDialog.cpp
@@ -9,5 +9,5 @@ SET(kvitheme_SRCS
 	ThemeFunctions.cpp
 )
 
-SET(kvi_module_name kvitheme)
-INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+set(kvi_module_name kvitheme)
+include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
