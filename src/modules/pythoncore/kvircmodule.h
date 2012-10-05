@@ -39,6 +39,15 @@
 
 #include <Python.h>
 
+// python included like to pollute the global namespace, let's #undef some beef
+#undef isspace
+#undef isupper
+#undef islower
+#undef isalpha
+#undef isalnum
+#undef toupper
+#undef tolower
+
 // Prototype
 PyMODINIT_FUNC python_init();
 

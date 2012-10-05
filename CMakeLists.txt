@@ -770,19 +770,7 @@ if(WANT_PERL)
 		set(COMPILE_PERL_SUPPORT 1)
 		set(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting+doc")
 
-		# Get the right flags to link with
-		execute_process(
-			COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ldopts
-			OUTPUT_VARIABLE PERL_LINK_FLAGS
-		)
-
-		# Remove new line characters
-		string(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
-		set(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PERL_LINK_FLAGS}")
-		# Remove leading and trailing spaces (string strip)
-		string(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
-		# Kill any possible --no-undefined flags
-		string(REPLACE "-Wl,--no-undefined" "" ADDITIONAL_LINK_FLAGS ${ADDITIONAL_LINK_FLAGS})
+		# Perl compilation / linking flags are handled inside perlcore module
 	else()
 		set(CMAKE_STATUS_PERL_SUPPORT "No")
 	endif()
