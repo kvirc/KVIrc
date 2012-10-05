@@ -7,6 +7,10 @@ set(kviperlcore_SRCS
 set(kvi_module_name kviperlcore)
 
 if(COMPILE_PERL_SUPPORT)
+	if(WIN32)
+		# Activestates perl is too chatty for us
+		set( ENV{ACTIVEPERL_CONFIG_SILENT} 1 )
+	endif()
 	execute_process(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ccopts
 		OUTPUT_VARIABLE PERL_COMPILE_FLAGS
 	)
@@ -26,8 +30,6 @@ if(COMPILE_PERL_SUPPORT)
 	string(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 	# Remove leading and trailing spaces (string strip)
 	string(REGEX REPLACE "(^( )+|( )+$)" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
-	# Kill any possible --no-undefined flags
-	string(REPLACE "-Wl,--no-undefined" "" PERL_LINK_FLAGS ${PERL_LINK_FLAGS})
 
 endif()
 
