@@ -30,9 +30,9 @@ set(files
 	kvi_dccfiletransfericons.png
 )
 
-if(WIN32)
+if(MINGW)
 	list(APPEND LIBS -lws2_32)
-endif()
+endif(MINGW)
 
 set(kvi_module_name kvidcc)
 include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

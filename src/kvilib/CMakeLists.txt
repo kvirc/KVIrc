@@ -126,13 +126,11 @@ endif()
 
 #we need this defined when mingw will compile moc files
 if(WIN32)
-        add_definitions(-D__KVILIB__)
+	add_definitions(-D__KVILIB__)
 endif()
 
 if(MSVC)
-	# THIS IS A DIRTY HACK: add winmm.lib for kvisnd. (maybe also needed for mingw?) perl does add a bunch of crap unconditionally, including winmm
-	# TODO: fix it properly at some point: APPEND LIBS does not seem to work at all for modules(?)
-	list(APPEND LIBS wsock32.lib ws2_32.lib winmm.lib)
+	list(APPEND LIBS wsock32.lib ws2_32.lib)
 endif()
 
 add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})

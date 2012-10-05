@@ -4,9 +4,9 @@ set(kviident_SRCS
 	libkviident.cpp
 )
 
-if(WIN32)
-	set(LIBS ${LIBS} -lws2_32)
-endif(WIN32)
+if(MINGW)
+	list(APPEND LIBS -lws2_32)
+endif(MINGW)
 
 set(kvi_module_name kviident)
 include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

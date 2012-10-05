@@ -268,10 +268,6 @@ if(WANT_KDE4)
 		set(COMPILE_KDE_SUPPORT 1)
 		list(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
 		set(CMAKE_STATUS_KDE4_SUPPORT "Yes")
-
-		# The KDE4 cmake module has a VERY WEIRD behaviour: it adds -Wl,--no-undefined
-		# to the CMAKE_MODULE_LINKER_FLAGS .. which is BAD
-		string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
 	else()
 		set(CMAKE_STATUS_KDE4_SUPPORT "Not available")
 	endif()
@@ -792,14 +788,6 @@ if(WANT_PYTHON)
 	if(PYTHONLIBS_FOUND)
 		set(COMPILE_PYTHON_SUPPORT 1)
 		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
-
-		#under win32/mingw, if no link flag is needed ${PYTHON_LFLAGS} is set to a braindead "None"
-#		string(REPLACE "None" "" PYTHON_LIBRARIES "${PYTHON_LIBRARIES}")
-#		set(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PYTHON_LIBRARIES}")
-		# Remove leading and trailing spaces (string strip)
-#		string(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
-		# Kill any possible --no-undefined flags
-#		string(REPLACE "-Wl,--no-undefined" "" ADDITIONAL_LINK_FLAGS ${ADDITIONAL_LINK_FLAGS})
 
 		if(WANT_DEBUG)
 			list(APPEND LIBS ${PYTHON_DEBUG_LIBRARIES})

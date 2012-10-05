@@ -9,28 +9,15 @@ endif()
 
 add_library(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
 
-# LIBS is a list.. but we need to get rid of -Wl,--no-undefined inside each element
-set(MODULE_LIBS)
-
-foreach(LIB ${LIBS})
-	string(REPLACE "-Wl,--no-undefined" "" LIB ${LIB})
-	if(${LIB})
-		set(MODULE_LIBS ${MODULE_LIBS} ${LIB})
-	endif(${LIB})
-endforeach(LIB ${LIBS})
-
-
 if(WIN32)
-	target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${MODULE_LIBS})
+	target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 else()
-	target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${MODULE_LIBS})
+	target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 endif()
 
 if(Qt5Widgets_FOUND)
 	qt5_use_modules(${kvi_module_name} ${qt5_kvirc_modules})
 endif()
-
-string(REPLACE "-Wl,--no-undefined" "" MODULE_ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
 set_target_properties(${kvi_module_name} PROPERTIES LINK_FLAGS "${MODULE_ADDITIONAL_LINK_FLAGS}")
 set_target_properties(${kvi_module_name} PROPERTIES COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS}")

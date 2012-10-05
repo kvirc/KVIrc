@@ -3,9 +3,9 @@
 # From qmake
 #QT += xml
 
-if(WIN32)
+if(MINGW)
 	list(APPEND LIBS -lws2_32)
-endif()
+endif(MINGW)
 
 
 

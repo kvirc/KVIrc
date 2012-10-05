@@ -1,8 +1,8 @@
 # CMakeLists for src/modules/setup
 
-if(WIN32)
+if(MINGW)
 	list(APPEND LIBS -lole32 -luuid)
-endif()
+endif(MINGW)
 
 
 
