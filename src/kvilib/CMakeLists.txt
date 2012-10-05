@@ -133,6 +133,10 @@ if(MSVC)
 	list(APPEND LIBS wsock32.lib ws2_32.lib)
 endif()
 
+if(MINGW)
+	list(APPEND LIBS -lws2_32)
+endif()
+
 add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
 
