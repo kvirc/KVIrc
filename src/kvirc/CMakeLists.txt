@@ -251,6 +251,7 @@ if(MINGW)
 	enable_language(RC)
 	set(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> -O coff <DEFINES> -i <SOURCE> -o <OBJECT>")
 
+	list(APPEND LIBS -lws2_32)
 	list(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc)
 endif()
 
