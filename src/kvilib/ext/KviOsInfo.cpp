@@ -46,13 +46,23 @@ typedef enum _QueryInfo
 typedef void (WINAPI *PGNSI)(LPSYSTEM_INFO);
 typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 
-#define SM_SERVERR2            89
 #define BUFSIZE 1024
 
-// List stolen from WinNT.h (last updated from 7.1 SDK)
+// stolen from WinNT.h (last updated from 8.0 SDK)
+// Product types
+// This list grows with each OS release.
+//
+// There is no ordering of values to ensure callers
+// do an equality test i.e. greater-than and less-than
+// comparisons are not useful.
+//
+// NOTE: Values in this list should never be deleted.
+//       When a product-type 'X' gets dropped from a
+//       OS release onwards, the value of 'X' continues
+//       to be used in the mapping table of GetProductInfo.
 // MSDN: If the product has not been activated and is no longer in
-// the grace period, this parameter is set to PRODUCT_UNLICENSED (0xABCDABCD).
-// Otherwise, this parameter can be one of the following values.
+//       the grace period, this parameter is set to
+//       PRODUCT_UNLICENSED (0xABCDABCD).
 
 #define PRODUCT_UNDEFINED                           0x00000000
 
@@ -113,11 +123,11 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 #define PRODUCT_SERVER_FOR_SB_SOLUTIONS_EM          0x00000037
 #define PRODUCT_SOLUTION_EMBEDDEDSERVER             0x00000038
 #define PRODUCT_SOLUTION_EMBEDDEDSERVER_CORE        0x00000039
-#define PRODUCT_SMALLBUSINESS_SERVER_PREMIUM_CORE   0x0000003F
 #define PRODUCT_ESSENTIALBUSINESS_SERVER_MGMT       0x0000003B
 #define PRODUCT_ESSENTIALBUSINESS_SERVER_ADDL       0x0000003C
 #define PRODUCT_ESSENTIALBUSINESS_SERVER_MGMTSVC    0x0000003D
 #define PRODUCT_ESSENTIALBUSINESS_SERVER_ADDLSVC    0x0000003E
+#define PRODUCT_SMALLBUSINESS_SERVER_PREMIUM_CORE   0x0000003F
 #define PRODUCT_CLUSTER_SERVER_V                    0x00000040
 #define PRODUCT_EMBEDDED                            0x00000041
 #define PRODUCT_STARTER_E                           0x00000042
@@ -126,6 +136,28 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 #define PRODUCT_PROFESSIONAL_E                      0x00000045
 #define PRODUCT_ENTERPRISE_E                        0x00000046
 #define PRODUCT_ULTIMATE_E                          0x00000047
+#define PRODUCT_ENTERPRISE_EVALUATION               0x00000048
+#define PRODUCT_MULTIPOINT_STANDARD_SERVER          0x0000004C
+#define PRODUCT_MULTIPOINT_PREMIUM_SERVER           0x0000004D
+#define PRODUCT_STANDARD_EVALUATION_SERVER          0x0000004F
+#define PRODUCT_DATACENTER_EVALUATION_SERVER        0x00000050
+#define PRODUCT_ENTERPRISE_N_EVALUATION             0x00000054
+#define PRODUCT_EMBEDDED_AUTOMOTIVE                 0x00000055
+#define PRODUCT_EMBEDDED_INDUSTRY_A                 0x00000056
+#define PRODUCT_THINPC                              0x00000057
+#define PRODUCT_EMBEDDED_A                          0x00000058
+#define PRODUCT_EMBEDDED_INDUSTRY                   0x00000059
+#define PRODUCT_EMBEDDED_E                          0x0000005A
+#define PRODUCT_EMBEDDED_INDUSTRY_E                 0x0000005B
+#define PRODUCT_EMBEDDED_INDUSTRY_A_E               0x0000005C
+#define PRODUCT_STORAGE_WORKGROUP_EVALUATION_SERVER 0x0000005F
+#define PRODUCT_STORAGE_STANDARD_EVALUATION_SERVER  0x00000060
+#define PRODUCT_CORE_ARM                            0x00000061
+#define PRODUCT_CORE_N                              0x00000062
+#define PRODUCT_CORE_COUNTRYSPECIFIC                0x00000063
+#define PRODUCT_CORE_SINGLELANGUAGE                 0x00000064
+#define PRODUCT_CORE                                0x00000065
+#define PRODUCT_PROFESSIONAL_WMC                    0x00000067
 
 #define PRODUCT_UNLICENSED                          0xABCDABCD
 
@@ -208,7 +240,10 @@ static QString queryWinInfo(QueryInfo info)
 		PGETPRODUCTINFO pGetProductInfo;
 		pGetProductInfo = (PGETPRODUCTINFO) GetProcAddress(
 			GetModuleHandle(TEXT("kernel32.dll")), "GetProductInfo");
-		// from MSDN, Document Date 9/7/2011
+		// from MSDN, Document Date 9/7/2012
+		// http://msdn.microsoft.com/en-us/library/windows/desktop/ms724358
+		// the entire PRODUCT_CORE group has the base Windows version in the
+		// returned value. rip out "Windows" of all PRODUCT values as well
 		if( bOsVersionInfoEx )
 		{
 			DWORD dwPlatformInfo;
@@ -227,6 +262,24 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_CLUSTER_SERVER:
 						szVersion+="HPC Edition";
 						break;
+					case PRODUCT_CLUSTER_SERVER_V:
+						szVersion+="Server Hyper Core V";
+						break;
+					case PRODUCT_CORE:
+						//szVersion+="Windows 8";
+						break;
+					case PRODUCT_CORE_N:
+						szVersion+="N";
+						break;
+					case PRODUCT_CORE_COUNTRYSPECIFIC:
+						szVersion+="China";
+						break;
+					case PRODUCT_CORE_SINGLELANGUAGE:
+						szVersion+="Single Language";
+						break;
+					case PRODUCT_DATACENTER_EVALUATION_SERVER:
+						szVersion+="Server Datacenter (evaluation installation)";
+						break;
 					case PRODUCT_DATACENTER_SERVER:
 						szVersion+="Server Datacenter (full installation)";
 						break;
@@ -242,8 +295,17 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_ENTERPRISE:
 						szVersion+="Enterprise";
 						break;
+					case PRODUCT_ENTERPRISE_E:
+						//szVersion+="Not supported";
+						break;
+					case PRODUCT_ENTERPRISE_N_EVALUATION:
+						szVersion+="Enterprise N (evaluation installation)";
+						break;
 					case PRODUCT_ENTERPRISE_N:
 						szVersion+="Enterprise N";
+						break;
+					case PRODUCT_ENTERPRISE_EVALUATION:
+						szVersion+="Server Enterprise (evaluation installation)";
 						break;
 					case PRODUCT_ENTERPRISE_SERVER:
 						szVersion+="Server Enterprise (full installation)";
@@ -251,14 +313,32 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_ENTERPRISE_SERVER_CORE:
 						szVersion+="Server Enterprise (core installation)";
 						break;
+					case PRODUCT_ENTERPRISE_SERVER_CORE_V:
+						szVersion+="Server Enterprise without Hyper-V (core installation)";
+						break;
 					case PRODUCT_ENTERPRISE_SERVER_IA64:
 						szVersion+="Server Enterprise for Itanium-based Systems";
 						break;
 					case PRODUCT_ENTERPRISE_SERVER_V:
 						szVersion+="Server Enterprise without Hyper-V (full installation)";
 						break;
+					case PRODUCT_ESSENTIALBUSINESS_SERVER_MGMT:
+						szVersion+="Essential Server Solution Management";
+						break;
+					case PRODUCT_ESSENTIALBUSINESS_SERVER_ADDL:
+						szVersion+="Essential Server Solution Additional";
+						break;
+					case PRODUCT_ESSENTIALBUSINESS_SERVER_MGMTSVC:
+						szVersion+="Essential Server Solution Management SVC";
+						break;
+					case PRODUCT_ESSENTIALBUSINESS_SERVER_ADDLSVC:
+						szVersion+="Essential Server Solution Additional SVC";
+						break;
 					case PRODUCT_HOME_BASIC:
 						szVersion+="Home Basic";
+						break;
+					case PRODUCT_HOME_BASIC_E:
+						//szVersion+="Not supported";
 						break;
 					case PRODUCT_HOME_BASIC_N:
 						szVersion+="Home Basic N";
@@ -266,8 +346,17 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_HOME_PREMIUM:
 						szVersion+="Home Premium";
 						break;
+					case PRODUCT_HOME_PREMIUM_E:
+						//szVersion+="Not supported";
+						break;
 					case PRODUCT_HOME_PREMIUM_N:
 						szVersion+="Home Premium N";
+						break;
+					case PRODUCT_HOME_PREMIUM_SERVER:
+						szVersion+="Home Server 2011";
+						break;
+					case PRODUCT_HOME_SERVER:
+						szVersion+="Storage Server 2008 R2 Essentials";
 						break;
 					case PRODUCT_HYPERV:
 						szVersion+="Hyper-V Server";
@@ -281,11 +370,32 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_MEDIUMBUSINESS_SERVER_SECURITY:
 						szVersion+="Essential Business Server Security Server";
 						break;
+					case PRODUCT_MULTIPOINT_STANDARD_SERVER:
+						szVersion+="MultiPoint Server Standard (full installation)";
+						break;
+					case PRODUCT_MULTIPOINT_PREMIUM_SERVER:
+						szVersion+="MultiPoint Server Premium (full installation)";
+						break;
 					case PRODUCT_PROFESSIONAL:
 						szVersion+="Professional";
 						break;
+					case PRODUCT_PROFESSIONAL_E:
+						//szVersion+="Not supported";
+						break;
 					case PRODUCT_PROFESSIONAL_N:
 						szVersion+="Professional N";
+						break;
+					case PRODUCT_PROFESSIONAL_WMC:
+						szVersion+="Professional with Media Center";
+						break;
+					case PRODUCT_SB_SOLUTION_SERVER_EM:
+						szVersion+="Server For SB Solutions EM";
+						break;
+					case PRODUCT_SERVER_FOR_SB_SOLUTIONS:
+						szVersion+="Server For SB Solutions";
+						break;
+					case PRODUCT_SERVER_FOR_SB_SOLUTIONS_EM:
+						szVersion+="Server For SB Solutions EM";
 						break;
 					case PRODUCT_SERVER_FOR_SMALLBUSINESS:
 						szVersion+="Server 2008 for Windows Essential Server Solutions";
@@ -296,35 +406,47 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_SERVER_FOUNDATION:
 						szVersion+="Server Foundation";
 						break;
-					case PRODUCT_HOME_PREMIUM_SERVER:
-						szVersion+="Home Server 2011";
-						break;
 					case PRODUCT_SB_SOLUTION_SERVER:
 						szVersion+="Small Business Server 2011 Essentials";
-						break;
-					case PRODUCT_HOME_SERVER:
-						szVersion+="Windows Storage Server 2008 R2 Essentials";
 						break;
 					case PRODUCT_SMALLBUSINESS_SERVER:
 						szVersion+="Small Business Server";
 						break;
+					case PRODUCT_SMALLBUSINESS_SERVER_PREMIUM:
+						szVersion+="Small Business Server Premium";
+						break;
+					case PRODUCT_SMALLBUSINESS_SERVER_PREMIUM_CORE:
+						szVersion+="Small Business Server Premium (core installation)";
+						break;
 					case PRODUCT_SOLUTION_EMBEDDEDSERVER:
-						szVersion+="Windows MultiPoint Server";
+						szVersion+="MultiPoint Server";
+						break;
+					case PRODUCT_STANDARD_EVALUATION_SERVER:
+						szVersion+="Server Standard (evaluation installation)";
 						break;
 					case PRODUCT_STANDARD_SERVER:
-						szVersion+="Server Standard (full installation)";
+						szVersion+="Server Standard";
 						break;
 					case PRODUCT_STANDARD_SERVER_CORE:
 						szVersion+="Server Standard (core installation)";
 						break;
+					case PRODUCT_STANDARD_SERVER_V:
+						szVersion+="Server Standard without Hyper-V";
+						break;
 					case PRODUCT_STANDARD_SERVER_CORE_V:
 						szVersion+="Server Standard without Hyper-V (core installation)";
 						break;
-					case PRODUCT_STANDARD_SERVER_V:
-						szVersion+="Server Standard without Hyper-V (full installation)";
+					case PRODUCT_STANDARD_SERVER_SOLUTIONS:
+						szVersion+="Server Solutions Premium";
+						break;
+					case PRODUCT_STANDARD_SERVER_SOLUTIONS_CORE:
+						szVersion+="Server Solutions Premium (core installation)";
 						break;
 					case PRODUCT_STARTER:
 						szVersion+="Starter";
+						break;
+					case PRODUCT_STARTER_E:
+						//szVersion+="Not supported";
 						break;
 					case PRODUCT_STARTER_N:
 						szVersion+="Starter N";
@@ -332,14 +454,32 @@ static QString queryWinInfo(QueryInfo info)
 					case PRODUCT_STORAGE_ENTERPRISE_SERVER:
 						szVersion+="Storage Server Enterprise";
 						break;
+					case PRODUCT_STORAGE_ENTERPRISE_SERVER_CORE:
+						szVersion+="Storage Server Enterprise (core installation)";
+						break;
 					case PRODUCT_STORAGE_EXPRESS_SERVER:
 						szVersion+="Storage Server Express";
+						break;
+					case PRODUCT_STORAGE_EXPRESS_SERVER_CORE:
+						szVersion+="Storage Server Express (core installation)";
+						break;
+					case PRODUCT_STORAGE_STANDARD_EVALUATION_SERVER:
+						szVersion+="Storage Server Standard (evaluation installation)";
 						break;
 					case PRODUCT_STORAGE_STANDARD_SERVER:
 						szVersion+="Storage Server Standard";
 						break;
+					case PRODUCT_STORAGE_STANDARD_SERVER_CORE:
+						szVersion+="Storage Server Standard (core installation)";
+						break;
+					case PRODUCT_STORAGE_WORKGROUP_EVALUATION_SERVER:
+						szVersion+="Storage Server Workgroup (evaluation installation)";
+						break;
 					case PRODUCT_STORAGE_WORKGROUP_SERVER:
 						szVersion+="Storage Server Workgroup";
+						break;
+					case PRODUCT_STORAGE_WORKGROUP_SERVER_CORE:
+						szVersion+="Storage Server Workgroup (core installation)";
 						break;
 					case PRODUCT_UNDEFINED:
 						szVersion+="An unknown product";
@@ -350,6 +490,9 @@ static QString queryWinInfo(QueryInfo info)
 						break;
 					case PRODUCT_ULTIMATE:
 						szVersion+="Ultimate";
+						break;
+					case PRODUCT_ULTIMATE_E:
+						//szVersion+="Not supported";
 						break;
 					case PRODUCT_ULTIMATE_N:
 						szVersion+="Ultimate N";

@@ -246,6 +246,7 @@ set(kvirc_SRCS
 )
 
 if(MINGW)
+	list(APPEND LIBS -lshlwapi)
 	# resource compilation for mingw
 	set(CMAKE_RC_COMPILER_INIT windres)
 	enable_language(RC)

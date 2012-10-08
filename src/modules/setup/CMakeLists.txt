@@ -2,7 +2,7 @@
 
 if(MINGW)
 	list(APPEND LIBS -lole32 -luuid)
-endif(MINGW)
+endif()
 
 
 

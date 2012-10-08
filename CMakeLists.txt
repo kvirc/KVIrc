@@ -19,7 +19,7 @@ cmake_minimum_required(VERSION 2.8.6)
 
 if(POLICY CMP0017)
 	cmake_policy(SET CMP0017 NEW)
-endif(POLICY CMP0017)
+endif()
 
 # Check modules first in local dir
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)

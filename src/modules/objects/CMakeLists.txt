@@ -1,14 +1,5 @@
 # CMakeLists for src/modules/objects
 
-# From qmake
-#QT += xml
-
-if(MINGW)
-	list(APPEND LIBS -lws2_32)
-endif(MINGW)
-
-
-
 set(kviobjects_SRCS
 	libkviobjects.cpp
 	KvsObject_button.cpp

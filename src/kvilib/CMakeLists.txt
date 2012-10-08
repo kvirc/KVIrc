@@ -130,7 +130,7 @@ if(WIN32)
 endif()
 
 if(MSVC)
-	list(APPEND LIBS wsock32.lib ws2_32.lib)
+	list(APPEND LIBS ws2_32.lib)
 endif()
 
 if(MINGW)

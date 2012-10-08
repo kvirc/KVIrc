@@ -7,11 +7,6 @@ set(kviperlcore_SRCS
 set(kvi_module_name kviperlcore)
 
 if(COMPILE_PERL_SUPPORT)
-	if(WIN32)
-		# Activestates perl is too chatty for us
-		set( ENV{ACTIVEPERL_CONFIG_SILENT} 1 )
-	endif()
-	
 	# Get compile flags
 	execute_process(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ccopts
 		OUTPUT_VARIABLE PERL_COMPILE_FLAGS
