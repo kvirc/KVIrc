@@ -105,7 +105,12 @@
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QMetaObject>
-#include <QCleanlooksStyle>
+
+#if (QT_VERSION < 0x050000)
+	#include <QCleanlooksStyle>
+#else
+	#include <QFusionStyle>
+#endif
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <QPluginLoader>
@@ -229,7 +234,11 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
 	{
+#if (QT_VERSION < 0x050000)
 		setStyle(new QCleanlooksStyle());
+#else
+		setStyle(new QFusionStyle());
+#endif
 		setPalette(style()->standardPalette());
 	}
 #endif

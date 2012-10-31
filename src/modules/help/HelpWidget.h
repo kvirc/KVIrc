@@ -28,12 +28,16 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKit/QWebView>
-#include <QToolBar>
-#include <QVBoxLayout>
+	#if (QT_VERSION < 0x050000)
+		#include <QtWebKit/QWebView>
+	#else
+		#include <QtWebKitWidgets/QWebView>
+	#endif
+	#include <QToolBar>
+	#include <QVBoxLayout>
 #else
-#include "KviTalHBox.h"
-#include <QTextBrowser>
+	#include "KviTalHBox.h"
+	#include <QTextBrowser>
 #endif
 #include <QProgressBar>
 

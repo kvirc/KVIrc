@@ -32,9 +32,13 @@
 
 #include <QTabWidget>
 #ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKit/QWebView>
+	#if (QT_VERSION < 0x050000)
+		#include <QtWebKit/QWebView>
+	#else
+		#include <QtWebKitWidgets/QWebView>
+	#endif
 #else
-class QTextBrowser;
+	class QTextBrowser;
 #endif
 
 #include <QLineEdit>

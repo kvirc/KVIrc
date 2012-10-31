@@ -45,7 +45,6 @@ extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKit/QWebView>
 #include <QShortcut>
 
 #define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
