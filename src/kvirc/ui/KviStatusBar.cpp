@@ -370,7 +370,10 @@ void KviStatusBar::contextPopupAboutToShow()
 		QLabel * pLabel = new QLabel(szTmp,m_pContextPopup);
 		QPalette p;
 		pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-        m_pContextPopup->addAction(new QWidgetAction(pLabel));
+
+		QWidgetAction * pWaction = new QWidgetAction(m_pContextPopup);
+		pWaction->setDefaultWidget(pLabel);
+		m_pContextPopup->addAction(pWaction);
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
 

@@ -402,8 +402,10 @@ OptionsWidget_messageColors::OptionsWidget_messageColors(QWidget * parent)
     m_pIconPopup = new QMenu(this);
 	KviIconWidget * iw = new KviIconWidget(m_pIconPopup);
 	connect(iw,SIGNAL(selected(KviIconManager::SmallIcon)),this,SLOT(newIconSelected(KviIconManager::SmallIcon)));
-    m_pIconPopup->addAction(new QWidgetAction(iw));
 
+	QWidgetAction * pWaction = new QWidgetAction(m_pIconPopup);
+	pWaction->setDefaultWidget(iw);
+	m_pIconPopup->addAction(pWaction);
 
 	m_pEnableLogging = new QCheckBox(__tr2qs_ctx("Log this","options"),box);
 

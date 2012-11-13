@@ -160,7 +160,9 @@ void OptionsWidget_textIcons::doPopup()
         m_pPopup = new QMenu(this);
 		KviIconWidget * iw = new KviIconWidget(m_pPopup);
 		connect(iw,SIGNAL(selected(KviIconManager::SmallIcon)),this,SLOT(iconSelected(KviIconManager::SmallIcon)));
-        m_pPopup->addAction(new QWidgetAction(iw));
+		QWidgetAction * pWaction = new QWidgetAction(m_pPopup);
+		pWaction->setDefaultWidget(iw);
+		m_pPopup->addAction(pWaction);
 	}
 	m_pPopup->popup(QCursor::pos());
 }
