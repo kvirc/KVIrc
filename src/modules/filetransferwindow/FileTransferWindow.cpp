@@ -441,10 +441,12 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				tmp += "</nobr>";
 #endif //COMPILE_KDE_SUPPORT
 
-				QLabel * l = new QLabel(tmp,m_pLocalFilePopup);
+				QWidgetAction * pWaction = new QWidgetAction(m_pLocalFilePopup);
+				QLabel * l = new QLabel(tmp, m_pLocalFilePopup);
 				QPalette p;
 				l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-                m_pLocalFilePopup->addAction(new QWidgetAction(l));
+				pWaction->setDefaultWidget(l);
+                m_pLocalFilePopup->addAction(pWaction);
 
 #ifdef COMPILE_KDE_SUPPORT
 				QString mimetype = KMimeType::findByPath(szFile)->name();
