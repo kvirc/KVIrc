@@ -281,7 +281,7 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 		m_iSelectionEndCharIndex=m_iSelectionInitCharIndex;
 	}
 
-	if(m_pToolWidget)
+	if(m_pToolWidget && m_pToolWidget->isVisible())
 	{
 		m_pCursorLine = m_pSelectionInitLine;
 		repaint();
