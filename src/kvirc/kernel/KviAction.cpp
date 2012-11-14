@@ -464,6 +464,9 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 	else
         pAction = pMenu->addAction(szTmp,this,SLOT(activate()));
 
+    // avoid Qt to put this action in the application menu based on its title
+    pAction->setMenuRole(QAction::NoRole);
+
 	if(!isEnabled())
 		pAction->setEnabled(false);
 	registerAction(pAction);

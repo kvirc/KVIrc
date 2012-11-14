@@ -67,13 +67,6 @@ KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
 #else
 	// Qt/Mac creates already a "KVirc" menu item on its own, and we don't like double entries ;-)
 	addDefaultItem("&IRC",pop);
-
-	// qt will automatically  move these elemnts in the application menu
-	QAction * pAction = pop->addAction("about kvirc");
-	pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
-	connect(pAction,SIGNAL(triggered(bool)), this, SLOT(actionTriggered(bool)));
-
-	ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS, pop)
 #endif //COMPILE_ON_MAC
 
 	m_pScriptItemList = 0;
@@ -127,10 +120,11 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)),__tr2qs("&Tip of the Day"));
 	pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->addSeparator();
-#ifndef COMPILE_ON_MAC
+
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),__tr2qs("About &KVIrc"));
 	pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
-#endif
+	pAction->setMenuRole(QAction::AboutRole);
+
 	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Home&page"));
 	pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
@@ -204,9 +198,7 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 
 	opt->addSeparator();
 	// FIXME: #warning "Toggle these items on the fly ?"
-#ifndef COMPILE_ON_MAC
 	ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS,opt)
-#endif
 	ACTION_POPUP_ITEM(KVI_COREACTION_THEMEOPTIONS,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_EDITREGUSERS,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_TOOLBAREDITOR,opt)
