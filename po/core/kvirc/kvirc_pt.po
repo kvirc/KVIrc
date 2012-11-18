@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-20 21:40+0200\n"
-"PO-Revision-Date: 2012-11-18 03:21+0000\n"
-"Last-Translator: tuxer\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2012-11-18 04:14+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,13 +31,13 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] mudou o tópico para \"%Q%c\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:278
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou no \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou em \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:273
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou no \r!c\r%Q\r [alteração implícita umode +"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou em \r!c\r%Q\r [alteração implícita umode +"
 "%c]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:656
@@ -50,7 +50,7 @@ msgstr ""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:291
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de entrar no \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de entrar em \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:373
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
@@ -82,11 +82,11 @@ msgstr "\r!n\r%Q\r convidou %Q para o canal %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:391
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] acabou de sair do \r!c\r%Q\r"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] acabou de sair de \r!c\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:387
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] acabou de sair do \r!c\r%Q\r: %Q"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] acabou de sair de \r!c\r%Q\r: %Q"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:190
 msgid " (%1 hops)"
@@ -349,7 +349,7 @@ msgstr "%c\r!n\r%Q\r%c informação: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1264
 msgid "%c\r!n\r%Q\r%c's real name was: %Q"
-msgstr "%c\r!n\r%Q\r%c nome real era: %Q"
+msgstr "O nome real de %c\r!n\r%Q\r%c era: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1240
 msgid "%c\r!n\r%Q\r%c's real name: %Q"
@@ -833,14 +833,14 @@ msgstr ""
 "porqueacidentalmente apagou ou danificou os seus ficheiros de configuração, "
 "ou porque instalou um 'script' incompleto, ou porque encontrou algum erro no "
 "KVIrc.<br><br>Pode-se repetir a instalação do 'script' predefinido para "
-"restaurar as opções em falta.\n"
-"<br><b>Deseja que o 'script' predefinido seja restaurado?</b><br><br><font "
-"size=\"-1\">\n"
-"Dica: se é um programador e removeu intencionalmente algumas opções do "
-"'script' então pode com certeza clicar em \"Não perguntar novamente\", senão "
-"será melhor clicar em \"Sim\". Se ainda quiser escolher \"Não\", pode sempre "
-"restaurar o 'script' predefinido ao escolher a entrada apropriada do menu "
-"\"Scripting\".</font>"
+"restaurar as opções em falta. <br><b>Deseja que o 'script' predefinido seja "
+"restaurado?</b><br><br><font size=\"-1\">Dica: se é um programador e removeu "
+"intencionalmente algumas opções do 'script' então pode com certeza clicar em "
+"\"Não perguntar novamente\", senão será melhor clicar em \"Sim\". Se ainda "
+"quiser "
+"escolher \"Não\", pode sempre restaurar o 'script' predefinido ao escolher a "
+"entrada "
+"apropriada do menu \"Scripting\".</font>"
 
 #: src/kvirc/ui/KviStatusBar.cpp:337
 msgid "<b>Right click</b> to add/remove applets"
