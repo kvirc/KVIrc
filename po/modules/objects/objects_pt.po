@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: kvirc_objects \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-20 21:40+0200\n"
-"PO-Revision-Date: 2012-04-13 01:27+0100\n"
-"Last-Translator: Simple\n"
+"PO-Revision-Date: 2012-11-18 03:47+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -196,7 +196,6 @@ msgstr "É necessário um nome de cor ou valor 'triplette' rgb/hsv"
 
 #: src/modules/objects/KvsObject_sql.cpp:226
 #: src/modules/objects/KvsObject_sql.cpp:283
-#, fuzzy
 msgid "Connection %Q does not exist"
 msgstr "A conexão %Q não existe"
 
@@ -241,9 +240,9 @@ msgstr ""
 #: src/modules/objects/KvsObject_webView.cpp:1013
 #: src/modules/objects/KvsObject_webView.cpp:1042
 #: src/modules/objects/KvsObject_webView.cpp:1072
-#, fuzzy, c-format
+#, c-format
 msgid "Document element with id %d does not exist"
-msgstr "O id do comprimento do elemento do documento %d não existe"
+msgstr "O elemento do documento com o id %d não existe"
 
 #: src/modules/objects/KvsObject_file.cpp:229
 msgid "Empty filename string"
@@ -454,7 +453,6 @@ msgid "Object Pixmap required!"
 msgstr "Objecto 'Pixmap' requerido!"
 
 #: src/modules/objects/libkviobjects.cpp:426
-#, fuzzy
 msgid "Object does not exist"
 msgstr "O objecto não existe"
 
@@ -842,13 +840,13 @@ msgid "Unknown style '%Q'"
 msgstr "Estilo desconhecido '%Q'"
 
 #: src/modules/objects/KvsObject_webView.cpp:1053
-#, fuzzy
 msgid ""
 "Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
 "strategy"
 msgstr ""
-"Política de delegação desconhecida '%Q' - mudar para a predefinição "
-"dontDeleGateLinks"
+"Desconhecido styleResolveStrategy: '%Q' - A mudar para a estratégia "
+"predefinida "
+"CascadedStyle"
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:188
 msgid "Unknown szOptions '%Q'"
