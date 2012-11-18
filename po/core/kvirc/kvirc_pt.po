@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-20 21:40+0200\n"
-"PO-Revision-Date: 2012-04-13 01:20+0100\n"
-"Last-Translator: Simple\n"
+"PO-Revision-Date: 2012-11-18 03:21+0000\n"
+"Last-Translator: tuxer\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -5056,8 +5056,8 @@ msgid ""
 msgstr ""
 "Por favor escolha uma Alcunha.<br><br>A sua alcunha é o nome com que os "
 "outros utilizadores IRC te irão conhecer . Não pode conter espaços ou "
-"pontuação. Algumas redes IRC irão encurtar a sua alcunha se tiver mais que "
-"32 caracteres.\n"
+"pontuação. "
+"Algumas redes IRC irão encurtar a sua alcunha se tiver mais que 32 caracteres."
 "<br><br>Em caso de dúvida, indique apenas a primeira alcunha que lhe vier à "
 "cabeça. Poderá alterá-la posteriormente nas propriedades de Identidade, ou "
 "com o comando /NICK."
@@ -5086,8 +5086,7 @@ msgstr "Por favor aguarde enquanto a lista está a ser transferida"
 #: src/modules/system/Plugin.cpp:234
 msgid "Plugin not found. Please check the plugin-name and path."
 msgstr ""
-"'Plugin' não encontrado. Por favor verifique o nome do 'plugin' e a "
-"localização."
+"'Plugin' não encontrado. Por favor verifique o nome do 'plugin' e localização."
 
 #: src/modules/rijndael/libkvirijndael.cpp:744
 msgid ""
@@ -5100,12 +5099,12 @@ msgid ""
 "INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\"."
 msgstr ""
 "Mecanismo de criptografia popular baseado no algoritmo de encriptação <br/"
-">Blowfish. O texto é primeiro encriptado com Blowfish e depois convertidona "
-"notação base64. As chaves usadas são de comprimento variável esão indicadas "
-"como 'strings' de caracteres. Pode indicar chaves comcomprimento até 56 "
+">Blowfish. O texto é primeiro encriptado com Blowfish e depois convertido na "
+"notação base64. As chaves usadas são de comprimento variável e são indicadas "
+"como 'strings' de caracteres. Pode indicar chaves com comprimento até 56 "
 "bytes (448 bits). Se apenas uma chave é indicada,este mecanismo irá usá-la "
 "tanto para encriptar e desencriptar.<br/>Este mecanismo funciona em modo ECB "
-"por predefinição: se desejausar o modo CBC deve adicionar o prefixo \"cbc:\" "
+"por predefinição: se deseja usar o modo CBC deve adicionar o prefixo \"cbc:\" "
 "às suas chaves."
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:460
@@ -6024,9 +6023,8 @@ msgid "Shows a window that list catched urls"
 msgstr "Mostra uma janela que lista os URL apanhados"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:416
-#, fuzzy
 msgid "Shows a window that list shared files"
-msgstr "Mostra uma janela que os ficheiros partilhados"
+msgstr "Mostra uma janela que lista ficheiros partilhados"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:405
 msgid "Shows a window that lists and filter log files"
@@ -6702,13 +6700,12 @@ msgstr ""
 "\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1626
-#, fuzzy
 msgid ""
 "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] changed their nickname to \r!n\r%Q\r"
 msgstr ""
-"O alvo desta consulta perdeu-se e foi encontrado quando o \r!n\r%Q\r [%Q@\r!h"
-"\r%Q\r] mudou a sua alcunha para \r!n\r%Q\r"
+"O alvo desta consulta perdeu-se e foi encontrado quando \r!n\r%Q\r [%Q@\r!h"
+"\r%Q\r] mudou a alcunha para \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviTheme.cpp:76
 msgid "The theme data file does not exist"
@@ -6885,9 +6882,8 @@ msgid "Tip: %Q"
 msgstr "Dica: %Q"
 
 #: src/kvirc/ui/KviIrcView.cpp:2070
-#, fuzzy
 msgid "Toggle Search"
-msgstr "Procurar"
+msgstr "Iniciar Pesquisa"
 
 #: src/kvirc/ui/KviMenuBar.cpp:199 src/kvirc/ui/KviToolBar.cpp:112
 #: src/kvirc/kernel/KviDefaultScript.cpp:470
