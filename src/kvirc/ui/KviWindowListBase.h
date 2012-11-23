@@ -154,7 +154,6 @@ protected:
 	void calcButtonHeight();
 	void insertButton(KviWindowListButton * b);
 public:
-//	virtual void fontChange(const QFont & old);
 	virtual void resizeEvent(QResizeEvent *e);
 public:
 	virtual KviWindowListItem * addItem(KviWindow *);

@@ -122,7 +122,6 @@ protected:
 	FileTransferItem * findItem(KviFileTransfer * t);
 	void fillTransferView();
 	KviFileTransfer * selectedTransfer();
-//	virtual void fontChange(const QFont &oldFont);
 	bool eventFilter( QObject *obj, QEvent *ev );
 public:
 	virtual QSize sizeHint() const;

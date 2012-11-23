@@ -331,15 +331,6 @@ bool FileTransferWindow::eventFilter( QObject *obj, QEvent *ev )
 	return KviWindow::eventFilter( obj, ev );
 }
 
-#warning FileTransferWindow::fontChange
-/*
-void FileTransferWindow::fontChange(const QFont &oldFont)
-{
-	QFontMetrics fm(font());
-	m_iLineSpacing = fm.lineSpacing();
-	KviWindow::fontChange(oldFont);
-}
-*/
 void FileTransferWindow::tipRequest(KviDynamicToolTip * tip,const QPoint &pnt)
 {
 	FileTransferItem * it = (FileTransferItem *)m_pTableWidget->itemAt(pnt);
