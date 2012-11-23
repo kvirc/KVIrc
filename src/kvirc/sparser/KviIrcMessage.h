@@ -73,6 +73,7 @@ public:
 private:
 	const char * m_ptr;                // shallow! never null
 	KviCString m_szPrefix;           // the extracted prefix string
+	KviCString m_szMessageTags;      // the extracted message tags
 	KviCString m_szCommand;          // the extracted command (may be numeric)
 	KviPointerList<KviCString> * m_pParams;            // the list of parameters
 	KviConsoleWindow * m_pConsole;           // the console we're attacched to
@@ -92,6 +93,10 @@ public:
 	const char * prefix(){ return m_szPrefix.ptr(); };
 	const char * safePrefix();
 	bool hasPrefix(){ return m_szPrefix.hasData(); };
+
+	KviCString * messageTagsPtr(){ return &m_szMessageTags; };
+	const char * messageTags(){ return m_szMessageTags.ptr(); };
+	bool hasMessageTags(){ return m_szMessageTags.hasData(); };
 
 	bool isEmpty(){ return (m_szPrefix.isEmpty() && m_szCommand.isEmpty() && m_pParams->isEmpty()); };
 

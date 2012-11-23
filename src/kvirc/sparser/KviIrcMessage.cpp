@@ -45,6 +45,14 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 	const char * allParams = m_ptr; // just to be sure
 	if(*m_ptr)
 	{
+		if(*m_ptr == '@')
+		{
+			aux = ++m_ptr;
+			while(*m_ptr && (*m_ptr != ' '))++m_ptr;
+			m_szMessageTags.extractFromString(aux,m_ptr);
+			while(*m_ptr == ' ')++m_ptr;
+		}
+
 		if(*m_ptr == ':')
 		{
 			aux = ++m_ptr;
@@ -63,13 +71,11 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 			{
 				++m_ptr;
 				m_pParams->append(new KviCString(m_ptr));
-				//m_pcParams->append(new QCString(m_ptr));
 				break; // this was the last
 			} else {
 				aux = m_ptr;
 				while(*m_ptr && (*m_ptr != ' '))++m_ptr;
 				m_pParams->append(new KviCString(aux,m_ptr));
-				//m_pcParams->append(new QCString(KviCString(aux,m_ptr).ptr()));
 				while(*m_ptr == ' ')++m_ptr;
 			}
 		}

@@ -469,14 +469,15 @@ void KviIrcConnection::handleInitialCapLs()
 		szRequests.append("sasl ");
 	}
 
-#if 0
 	if(serverInfo()->supportedCaps().contains("multi-prefix",Qt::CaseInsensitive))
 	{
-		szRequest.append("multi-prefix"); // NAMES supports this, WHO probably not yet
+		szRequests.append("multi-prefix "); // NAMES supports this, WHO probably not yet
 	}
-#endif
 
-	//TODO MULTI-PREFIX, others goes here
+	if(serverInfo()->supportedCaps().contains("server-time",Qt::CaseInsensitive))
+	{
+		szRequests.append("server-time ");
+	}
 
 	if(szRequests.isEmpty())
 	{
