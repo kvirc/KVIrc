@@ -69,7 +69,6 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) || defined(COMPILE_ON_MAC)
 	#include <QStyleFactory>
-	#include <QWindowsStyle>
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n)

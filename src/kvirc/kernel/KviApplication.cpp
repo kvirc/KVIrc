@@ -109,7 +109,7 @@
 #if (QT_VERSION < 0x050000)
 	#include <QCleanlooksStyle>
 #else
-	#include <QFusionStyle>
+	#include <QCommonStyle>
 #endif
 
 #ifdef COMPILE_ON_WINDOWS
@@ -237,7 +237,7 @@ KviApplication::KviApplication(int &argc,char ** argv)
 #if (QT_VERSION < 0x050000)
 		setStyle(new QCleanlooksStyle());
 #else
-		setStyle(new QFusionStyle());
+		setStyle(new QCommonStyle());
 #endif
 		setPalette(style()->standardPalette());
 	}
