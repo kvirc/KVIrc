@@ -992,6 +992,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	KviFileUtils::adjustFilePath(szName);
 
 	QFile f(szName);
+
 	if(!f.open(QIODevice::ReadOnly))
 	{
 		c->warning(__tr2qs("Can't open the file '%Q' for reading"),&szName);
@@ -1019,13 +1020,22 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 
 	if(iCount > 0)
 	{
-		for(;(iCount > 0 && !stream.atEnd()); iCount--)
-			pArray->set(iIndex,new KviKvsVariant(stream.readLine()));
-			iIndex++;
-	} else {
-		while(!stream.atEnd())
+		while(iCount > 0)
 		{
-			pArray->set(iIndex,new KviKvsVariant(stream.readLine()));
+			QString szLine = stream.readLine();
+			if(szLine.isNull())
+				break; // EOF (atEnd() is unreliable on files in /proc)
+			pArray->set(iIndex,new KviKvsVariant(szLine));
+			iIndex++;
+			iCount--;
+		}
+	} else {
+		for(;;)
+		{
+			QString szLine = stream.readLine();
+			if(szLine.isNull())
+				break; // EOF (atEnd() is unreliable on files in /proc)
+			pArray->set(iIndex,new KviKvsVariant(szLine));
 			iIndex++;
 		}
 	}
