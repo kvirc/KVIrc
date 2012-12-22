@@ -169,7 +169,7 @@ namespace KviKvsCoreSimpleCommands
 			then a new one is created.
 
 			!sw: -l | --last
-			When <server> and <port> are empty use the last ones used in any IRC context.
+			When <server> and <port> are empty use the last ones used in the IRC context.
 		@description:
 			Attempts a connection to the specified <server>
 			on the specified <port>. If no <port> is specified
