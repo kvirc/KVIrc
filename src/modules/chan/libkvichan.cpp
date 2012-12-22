@@ -263,7 +263,7 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the number of users on a channel
 	@syntax:
-		<intger> $chan.usercount
+		<integer> $chan.usercount
 		<integer> $chan.usercount(<window_id:string>)
 	@description:
 		The first form returns the number of users on the current channel (assuming that the current window
@@ -295,7 +295,7 @@ static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 		Returns the number of channel owner users on a channel
 	@syntax:
 		<integer> $chan.ownercount
-		<integer> $chan.ownercount(<window_id:integer>)
+		<integer> $chan.ownercount(<window_id:string>)
 	@description:
 		The first form returns the number of owners users on the current channel (assuming that the current window
 		is a channel at all). If the current window is not a channel, a warning is printed

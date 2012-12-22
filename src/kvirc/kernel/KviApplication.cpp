@@ -126,7 +126,11 @@
 #endif
 
 #ifdef COMPILE_X11_SUPPORT
+#if (QT_VERSION < 0x050000)
 	#include <QX11Info>
+#else
+	// FIXME: Need a replacement for this
+#endif
 #endif
 
 /*
@@ -226,7 +230,7 @@ KviApplication::KviApplication(int &argc,char ** argv)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
 	//workaround for #957
-	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
+	QApplication::setEffectEnabled(Qt::UI_FadeMenu, false);
 #endif
 
     //note: the early qApp->style() call leads to a crash on osx
@@ -732,8 +736,13 @@ bool KviApplication::supportsCompositing()
 	return true;
 #endif
 #ifdef COMPILE_X11_SUPPORT
+#if (QT_VERSION < 0x050000)
 	return QX11Info::isCompositingManagerRunning();
-#endif
+#else // QT_VERSION >= 0x050000
+	// FIXME: Need a replacement for this?
+	return false;
+#endif // QT_VERSION >= 0x050000
+#endif // COMPILE_X11_SUPPORT
 #ifdef COMPILE_ON_MAC
 	return true;
 #endif

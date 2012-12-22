@@ -48,7 +48,7 @@
 		!fn: $settext(<text:string>)
 		Sets the text that will appear in the radiobutton.
 		!fn: <boolean> $isChecked()
-		Returns 1 (TRUE) if the radio button is checked; otherwise returns 0 (FALSE).
+		Returns 1 (true) if the radio button is checked; otherwise returns 0 (false).
 		!fn: $setChecked(<bChecked:boolean>)
 		Sets whether the radio button is checked to check.
 		!fn: $setPixmap(<image_id>)

@@ -60,12 +60,12 @@
 		!fn: $setNumDigits(<number:integer>)
 		Sets the lcd number value.
 		!fn: <boolean> $checkOverflow()
-		Returns TRUE if num is too big to be displayed in its entirety;
-		otherwise returns FALSE.
+		Returns true if num is too big to be displayed in its entirety;
+		otherwise returns false.
 		!fn: $setSmallDecimalPoint(<bflag:boolean>)
 		Sets the the decimal point style, valid bool values are 1 or 0.
 		!fn: <boolean> $checkOverflow(<number:integer>)
-		Returns 1 (TRUE) if num is too big to be displayed in its entirety; otherwise returns 0 (FALSE).
+		Returns 1 (true) if num is too big to be displayed in its entirety; otherwise returns 0 (false).
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_lcd,"lcdnumber","widget")

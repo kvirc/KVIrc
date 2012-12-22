@@ -261,20 +261,25 @@ endif()
 
 option(WANT_KDE4 "Whether to use KDE4 support" ON)
 if(WANT_KDE4)
-	find_package(KDE4)
-	if(KDE4_FOUND)
-		include_directories(${KDE4_INCLUDES})
-		add_definitions(${KDE4_DEFINITIONS})
-		set(COMPILE_KDE_SUPPORT 1)
-		list(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
-		set(CMAKE_STATUS_KDE4_SUPPORT "Yes")
-		# The FindKDE4Internal cmake module adds -Wl,--no-undefined
-		# to the CMAKE_MODULE_LINKER_FLAGS .. which is not good for us
-		string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
-		# and for kvilib...
-		string(REPLACE "-Wl,--no-undefined" "" CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS})
+	if(QT4_FOUND)
+		find_package(KDE4)
+		if(KDE4_FOUND)
+			include_directories(${KDE4_INCLUDES})
+			add_definitions(${KDE4_DEFINITIONS})
+			set(COMPILE_KDE_SUPPORT 1)
+			list(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
+			set(CMAKE_STATUS_KDE4_SUPPORT "Yes")
+			# The FindKDE4Internal cmake module adds -Wl,--no-undefined
+			# to the CMAKE_MODULE_LINKER_FLAGS .. which is not good for us
+			string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
+			# and for kvilib...
+			string(REPLACE "-Wl,--no-undefined" "" CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS})
+		else()
+			set(CMAKE_STATUS_KDE4_SUPPORT "Not available")
+		endif()
 	else()
-		set(CMAKE_STATUS_KDE4_SUPPORT "Not available")
+		# Must be Qt5
+		set(CMAKE_STATUS_KDE4_SUPPORT "Unsupported with Qt5")
 	endif()
 else()
 	set(CMAKE_STATUS_KDE4_SUPPORT "No")

@@ -423,7 +423,7 @@ void KviTopicWidget::switchMode()
 	int iMaxLen=-1;
 	QObject * w = parent();
 	QString szModes;
-	bool bCanEdit = TRUE;
+	bool bCanEdit = true;
 	while(w)
 	{
 		if(w->inherits("KviChannelWindow"))
@@ -529,14 +529,14 @@ void KviTopicWidget::copy()
 bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 {
 	if ( !e )
-		return TRUE;
+		return true;
 	if(object==m_pCompletionBox)
 	{
 		switch( e->type() ) {
 		case QEvent::MouseButtonPress:
 			if ( m_pCompletionBox->rect().contains( ((QMouseEvent*)e)->pos() ) ) {
 				complete();
-				return TRUE;
+				return true;
 			}
 			break;
 		case QEvent::MouseButtonRelease:
@@ -545,7 +545,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 						((QMouseEvent*)e)->pos(), ((QMouseEvent*)e)->button(), ((QMouseEvent*)e)->buttons(), ((QMouseEvent*)e)->modifiers() ) ;
 				// will hide popup
 				QApplication::sendEvent( object, &tmp );
-				return TRUE;
+				return true;
 			} else {
 				if ( m_pCompletionBox->isVisible() )
 					popDownListBox();
@@ -561,7 +561,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 			case Qt::Key_Escape:
 				if ( m_pCompletionBox->isVisible() ) {
 				popDownListBox();
-				return TRUE;
+				return true;
 				}
 				break;
 			default:

@@ -475,11 +475,11 @@ namespace KviNetUtils
 		QStringList ipv4 = szAddr.split(".", QString::KeepEmptyParts, Qt::CaseInsensitive);
 		if (ipv4.count() == 4) {
 			int i = 0;
-			bool ok = TRUE;
+			bool ok = true;
 			while(ok && i < 4) {
 				uint byteValue = ipv4[i].toUInt(&ok);
 				if ( (byteValue > 255) && ok )
-					ok = FALSE;
+					ok = false;
 				if (ok)
 					iAddr = (iAddr << 8) + byteValue;
 				++i;
@@ -490,7 +490,7 @@ namespace KviNetUtils
 				return true;
 			}
 		}
-		return FALSE;
+		return false;
 #else //HAVE_INET_ATON
 		if(szStringIp.isEmpty())return false;
 		return (inet_aton(szStringIp.toUtf8().data(),address) != 0);

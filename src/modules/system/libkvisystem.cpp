@@ -34,6 +34,7 @@
 #include "KviEnvironment.h"
 #include "KviOsInfo.h"
 #include "KviModuleManager.h"
+#include "KviByteOrder.h"
 
 #include <QClipboard>
 #include <QByteArray>
@@ -804,6 +805,117 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 	return c->error(__tr2qs("Failed to start the terminal program"));
 }
 
+/*
+	@doc: system.ntohi
+	@type:
+		function
+	@title:
+		$system.ntohi
+	@short:
+		Convert an integer from network to host byte order.
+	@syntax:
+		<integer> $system.ntohi(<value:integer>)
+		<integer> $system.ntohi(<value:integer>,<bytecount:integer>)
+	@description:
+		Converts the integer value in network byte order
+		to it's host byte order counterpart.
+		Since the conversion is carried at binary rappresentation
+		level you must specify the number of bytes you want
+		the binary rappresentation to have. Valid values are
+		1 (no conversion), 2 (short), 4 (32 bit int) and 8 (64 bit int).
+		If omitted, bytecount is assumed to be 4.
+*/
+static bool system_kvs_fnc_ntohi(KviKvsModuleFunctionCall * c)
+{
+	kvs_int_t iValue;
+	kvs_uint_t uBytes;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("value",KVS_PT_INT,0,iValue)
+		KVSM_PARAMETER("bytecount",KVS_PT_UINT,KVS_PF_OPTIONAL,uBytes)
+	KVSM_PARAMETERS_END(c)
+
+	switch(uBytes)
+	{
+		case 0:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::networkByteOrderToLocalCpu32((kvi_u32_t)iValue));
+		break;
+		case 1:
+			c->returnValue()->setInteger((kvs_int_t)((kvi_u8_t)iValue));
+		break;
+		case 2:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::networkByteOrderToLocalCpu16((kvi_u16_t)iValue));
+		break;
+		case 4:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::networkByteOrderToLocalCpu32((kvi_u32_t)iValue));
+		break;
+		case 8:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::networkByteOrderToLocalCpu64((kvi_u64_t)iValue));
+		break;
+		default:
+			return c->error(__tr2qs("Bad bytecount specification: 1, 2, 4 and 8 are allowed"));
+		break;
+	}
+
+	return true;
+}
+
+
+/*
+	@doc: system.htoni
+	@type:
+		function
+	@title:
+		$system.htoni
+	@short:
+		Convert an integer from host to network byte order.
+	@syntax:
+		<integer> $system.htoni(<value:integer>)
+		<integer> $system.htoni(<value:integer>,<bytecount:integer>)
+	@description:
+		Converts the integer value in host byte order
+		to it's network byte order counterpart.
+		Since the conversion is carried at binary rappresentation
+		level you must specify the number of bytes you want
+		the binary rappresentation to have. Valid values are
+		1 (no conversion), 2 (short), 4 (32 bit int) and 8 (64 bit int).
+		If omitted, bytecount is assumed to be 4.
+*/
+static bool system_kvs_fnc_htoni(KviKvsModuleFunctionCall * c)
+{
+	kvs_int_t iValue;
+	kvs_uint_t uBytes;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("value",KVS_PT_INT,0,iValue)
+		KVSM_PARAMETER("bytecount",KVS_PT_UINT,KVS_PF_OPTIONAL,uBytes)
+	KVSM_PARAMETERS_END(c)
+
+	switch(uBytes)
+	{
+		case 0:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::localCpuToNetworkByteOrder32((kvi_u32_t)iValue));
+		break;
+		case 1:
+			c->returnValue()->setInteger((kvs_int_t)((kvi_u8_t)iValue));
+		break;
+		case 2:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::localCpuToNetworkByteOrder16((kvi_u16_t)iValue));
+		break;
+		case 4:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::localCpuToNetworkByteOrder32((kvi_u32_t)iValue));
+		break;
+		case 8:
+			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::localCpuToNetworkByteOrder64((kvi_u64_t)iValue));
+		break;
+		default:
+			return c->error(__tr2qs("Bad bytecount specification: 1, 2, 4 and 8 are allowed"));
+		break;
+	}
+
+	return true;
+}
+
 static bool system_module_init(KviModule * m)
 {
 	KVSM_REGISTER_FUNCTION(m,"ostype",system_kvs_fnc_ostype);
@@ -815,6 +927,8 @@ static bool system_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"getenv",system_kvs_fnc_getenv);
 	KVSM_REGISTER_FUNCTION(m,"hostname",system_kvs_fnc_hostname);
 	KVSM_REGISTER_FUNCTION(m,"dbus",system_kvs_fnc_dbus);
+	KVSM_REGISTER_FUNCTION(m,"htoni",system_kvs_fnc_htoni);
+	KVSM_REGISTER_FUNCTION(m,"ntohi",system_kvs_fnc_ntohi);
 	KVSM_REGISTER_FUNCTION(m,"clipboard",system_kvs_fnc_clipboard);
 	KVSM_REGISTER_FUNCTION(m,"selection",system_kvs_fnc_selection);
 	KVSM_REGISTER_FUNCTION(m,"checkModule",system_kvs_fnc_checkModule);

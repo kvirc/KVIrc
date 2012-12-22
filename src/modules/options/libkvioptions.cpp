@@ -225,7 +225,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	// a trick for the dialog covering the splash screen before the time (this is prolly a WM or Qt bug)
 	if(g_pSplashScreen)
 	{
-		if(g_pSplashScreen->isVisible()) // another bug: this ALWAYS RETURNS TRUE, even if the splash was hidden by a mouse click...
+		if(g_pSplashScreen->isVisible()) // another bug: this ALWAYS RETURNS true, even if the splash was hidden by a mouse click...
 		{
 			QObject::connect(g_pSplashScreen,SIGNAL(destroyed()),wc,SLOT(show()));
 			return true;

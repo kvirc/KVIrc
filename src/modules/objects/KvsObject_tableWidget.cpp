@@ -230,7 +230,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_tableWidget,"tablewidget","widget")
 	KVSO_REGISTER_HANDLER(KvsObject_tableWidget,"itemEnteredEvent",itemEnteredEvent);
 	KVSO_REGISTER_HANDLER(KvsObject_tableWidget,"cellActivatedEvent",cellActivatedEvent);
 	KVSO_REGISTER_HANDLER(KvsObject_tableWidget,"cellDoubleClickedEvent",cellDoubleClickedEvent);
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_tableWidget,"paintCellEvent")
+	KVSO_REGISTER_STANDARD_trueRETURN_HANDLER(KvsObject_tableWidget,"paintCellEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_tableWidget,"sizeHintCellRequestEvent")
 
 

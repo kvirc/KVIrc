@@ -90,9 +90,9 @@ int MpMprisInterface::detect(bool)
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
 		QDBusError err = reply; \
 		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
-		return FALSE; \
+		return false; \
 	} \
-	return TRUE;
+	return true;
 
 bool MpMprisInterface::prev()
 {
@@ -342,7 +342,7 @@ int MpAudaciousInterface::getPlayListPos()
 bool MpAudaciousInterface::quit()
 {
 	if (MpMprisInterface::quit())
-		return TRUE;
+		return true;
 
 	/* compability with older versions */
 	MPRIS_SIMPLE_CALL("/Player", "Quit")

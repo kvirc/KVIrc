@@ -1752,12 +1752,12 @@ KVSO_CLASS_FUNCTION(widget,setFont)
 	for(int i=0;i<szListStyle.length();i++)
 	{
 		szStyle=szListStyle.at(i);
-		if(KviQString::equalCI(szStyle,"italic")) font.setItalic(TRUE);
-		else if(KviQString::equalCI(szStyle,"bold")) font.setBold(TRUE);
-		else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(TRUE);
-		else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
-		else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
-		else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
+		if(KviQString::equalCI(szStyle,"italic")) font.setItalic(true);
+		else if(KviQString::equalCI(szStyle,"bold")) font.setBold(true);
+		else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(true);
+		else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(true);
+		else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(true);
+		else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(true);
 		else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
 	}
 	widget()->setFont(font);

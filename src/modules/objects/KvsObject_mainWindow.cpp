@@ -93,7 +93,7 @@ KVSO_CLASS_FUNCTION(mainWindow,setCentralWidget)
 	if(!pObject->inheritsClass("widget"))
 	{
 		c->warning(__tr2qs_ctx("Widget object required","objects"));
-		return TRUE;
+		return true;
 	}
 	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
 	return true;

@@ -89,7 +89,7 @@ KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
 
 	setSelectionBehavior(QAbstractItemView::SelectRows);
 	setSelectionMode(QAbstractItemView::ExtendedSelection);
-	setRootIsDecorated(TRUE);
+	setRootIsDecorated(true);
 	setSortingEnabled(true);
 
 	setToolTip(__tr2qs_ctx("<center>This is the list of registered users. " \
@@ -513,7 +513,7 @@ void RegisteredUsersDialog::fillList()
 	{
 		RegisteredUsersGroupItem* pCur = new RegisteredUsersGroupItem(m_pListView,g);
 		groupItems.insert(g->name(),pCur);
-		pCur->setExpanded(TRUE);
+		pCur->setExpanded(true);
 	}
 
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();

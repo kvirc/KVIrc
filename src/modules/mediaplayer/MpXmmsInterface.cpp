@@ -137,7 +137,7 @@ void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 			return 0;
 		}
 	}
-	void * symptr =m_pPlayerLibrary->resolve(szSymbolName);
+	void * symptr = (void *)m_pPlayerLibrary->resolve(szSymbolName);
 	if(!symptr)
 	{
 		QString szTmp = QString(__tr2qs_ctx("Can't find symbol %1 in %2","mediaplayer")).arg(szSymbolName,m_szPlayerLibraryName);

@@ -90,7 +90,7 @@ const char * const itemflags_tbl[] = {
 		Pixmap can be a Kvirc imageid, an image file or a [class]pixmap[/class] object.
 
 		!fn: $setItemEditable(<bEnabled:boolean>)
-		If bEnabled is TRUE (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.
+		If bEnabled is true (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.
 
 		!fn: $isItemEditable()
 		Returns $true if this item is editable and $false otherwise.

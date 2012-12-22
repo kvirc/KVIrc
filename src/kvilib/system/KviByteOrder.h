@@ -120,6 +120,68 @@ namespace KviByteOrder
 		return swap64(u);
 	}
 
+	inline kvi_u16_t localCpuToBigEndian16(kvi_u16_t u)
+	{
+		return u;
+	}
+	
+	inline kvi_u32_t localCpuToBigEndian32(kvi_u32_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u64_t localCpuToBigEndian64(kvi_u64_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u16_t bigEndianToLocalCpu16(kvi_u16_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u32_t bigEndianToLocalCpu32(kvi_u32_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u64_t bigEndianToLocalCpu64(kvi_u64_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u16_t localCpuToNetworkByteOrder16(kvi_u16_t u)
+	{
+		return u;
+	}
+	
+	inline kvi_u32_t localCpuToNetworkByteOrder32(kvi_u32_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u64_t localCpuToNetworkByteOrder64(kvi_u64_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u16_t networkByteOrderToLocalCpu16(kvi_u16_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u32_t networkByteOrderToLocalCpu32(kvi_u32_t u)
+	{
+		return u;
+	}
+
+	inline kvi_u64_t networkByteOrderToLocalCpu64(kvi_u64_t u)
+	{
+		return u;
+	}
+
+
+
 #else //!BIG_ENDIAN_MACHINE_BYTE_ORDER
 
 	// We ASSUME that the local cpu is little endian.. if it isn't.. well :)
@@ -153,6 +215,68 @@ namespace KviByteOrder
 	inline kvi_u64_t littleEndianToLocalCpu64(kvi_u64_t u)
 	{
 		return u;
+	}
+
+	inline kvi_u16_t localCpuToBigEndian16(kvi_u16_t u)
+	{
+		return swap16(u);
+	}
+	
+	inline kvi_u32_t localCpuToBigEndian32(kvi_u32_t u)
+	{
+		return swap32(u);
+	}
+
+	inline kvi_u64_t localCpuToBigEndian64(kvi_u64_t u)
+	{
+		return swap64(u);
+	}
+
+	inline kvi_u16_t bigEndianToLocalCpu16(kvi_u16_t u)
+	{
+		return swap16(u);
+	}
+
+	inline kvi_u32_t bigEndianToLocalCpu32(kvi_u32_t u)
+	{
+		return swap32(u);
+	}
+
+	inline kvi_u64_t bigEndianToLocalCpu64(kvi_u64_t u)
+	{
+		return swap64(u);
+	}
+
+
+
+	inline kvi_u16_t localCpuToNetworkByteOrder16(kvi_u16_t u)
+	{
+		return swap16(u);
+	}
+	
+	inline kvi_u32_t localCpuToNetworkByteOrder32(kvi_u32_t u)
+	{
+		return swap32(u);
+	}
+
+	inline kvi_u64_t localCpuToNetworkByteOrder64(kvi_u64_t u)
+	{
+		return swap64(u);
+	}
+
+	inline kvi_u16_t networkByteOrderToLocalCpu16(kvi_u16_t u)
+	{
+		return swap16(u);
+	}
+
+	inline kvi_u32_t networkByteOrderToLocalCpu32(kvi_u32_t u)
+	{
+		return swap32(u);
+	}
+
+	inline kvi_u64_t networkByteOrderToLocalCpu64(kvi_u64_t u)
+	{
+		return swap64(u);
 	}
 
 #endif //!BIG_ENDIAN_MACHINE_BYTE_ORDER

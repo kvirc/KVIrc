@@ -58,7 +58,7 @@
 		!fn:$usesTextLabel()
 		Return 1 if the setUsesTextLabel is enabled, otherwise return 0.
 		!fn:$setTextLabel(<text:String>,[tooltip:string])
-		Sets the label of this button to <text> and automatically sets it as a tool tip if <tip> is TRUE.
+		Sets the label of this button to <text> and automatically sets it as a tool tip if <tip> is true.
 		!fn:<string> $textLabel()
 		Returns the label of tthe button.
 		!fn:$setAutoRaise(<bAutoraise:boolean>)

@@ -49,7 +49,7 @@
 
 // 		QTimer *timer = new QTimer(this);
 // 		connect(timer, SIGNAL(timeout()), this, SLOT(slotTimer()));
-// 		timer->start(250, FALSE);
+// 		timer->start(250, false);
 
 		// make sure we have a list of files,
 		// otherwise functions dealing would
@@ -96,9 +96,9 @@
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
 		QDBusError err = reply; \
 		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
-		return FALSE; \
+		return false; \
 	} \
-	return TRUE;
+	return true;
 
 	bool KTorrentDbusInterface::startAll()
 	{

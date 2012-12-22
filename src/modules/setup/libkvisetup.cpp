@@ -112,14 +112,14 @@ KVIMODULEEXPORTFUNC void setup_finish()
 			pParams->append(szUrl);
 			KviKvsScript::run("openurl $0",g_pActiveWindow,pParams);
 			delete pParams;
-			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = TRUE;
+			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = true;
 		} else if(!szHost.isEmpty()) {
 			KviKvsVariantList * pParams = new KviKvsVariantList();
 			pParams->append(szHost);
 			pParams->append((kvs_int_t)uPort);
 			KviKvsScript::run("server $0 $1",g_pActiveWindow,pParams);
 			delete pParams;
-			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = TRUE;
+			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = true;
 		}
 	}
 }

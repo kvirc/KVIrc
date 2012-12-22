@@ -754,7 +754,7 @@ static bool snd_kvs_cmd_mute(KviKvsModuleCommandCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
-	g_pSoundPlayer->setMuted(TRUE);
+	g_pSoundPlayer->setMuted(true);
 	return true;
 }
 
@@ -776,7 +776,7 @@ static bool snd_kvs_cmd_unmute(KviKvsModuleCommandCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
-	g_pSoundPlayer->setMuted(FALSE);
+	g_pSoundPlayer->setMuted(false);
 	return true;
 }
 

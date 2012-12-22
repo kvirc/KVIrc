@@ -58,7 +58,7 @@
 		!fn: <object> $activeWindow()
 		Returns the active window, or 0 if no window is active.
 		!fn: <boolean> $scrollBarsEnabled()
-		Returns TRUE if the workspace provides scrollbars; otherwise returns FALSE.
+		Returns true if the workspace provides scrollbars; otherwise returns false.
 		!fn: $setscrollBarsEnabled(<bEnabled:boolean>)
 		Sets whether the workspace provides scrollbars to enable. (bEnabled 1 or 0)
 		!fn: $cascade()

@@ -301,7 +301,7 @@ public:
 	* \param bAutoDelete Whether the list has to auto delete itself
 	* \return void
 	*/
-	void setAutoDelete(bool bAutoDelete); // this is TRUE by default
+	void setAutoDelete(bool bAutoDelete); // this is true by default
 
 	/**
 	* \brief Appends all elements in a single string delimited by spaces

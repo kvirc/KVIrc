@@ -192,7 +192,7 @@ __DATA__
 #endif /* PERL_REVISION != 5 */
 
 #ifndef ERRSV
-#	define ERRSV perl_get_sv("@",FALSE)
+#	define ERRSV perl_get_sv("@",false)
 #endif
 
 #if (PERL_VERSION < 4) || ((PERL_VERSION == 4) && (PERL_SUBVERSION <= 5))
@@ -376,7 +376,7 @@ SV *sv;
      		start_subparse(0),
 #  else
      /* 5.003_23  onwards */
-     		start_subparse(FALSE, 0),
+     		start_subparse(false, 0),
 #  endif
 #endif
 
@@ -426,11 +426,11 @@ SV *sv;
 #if (PERL_VERSION < 4 || (PERL_VERSION == 4 && PERL_SUBVERSION < 68 ))
 /* Fetches the SV that keeps the per-interpreter data. */
 #define dMY_CXT_SV \
-	SV *my_cxt_sv = perl_get_sv(MY_CXT_KEY, FALSE)
+	SV *my_cxt_sv = perl_get_sv(MY_CXT_KEY, false)
 #else /* >= perl5.004_68 */
 #define dMY_CXT_SV \
 	SV *my_cxt_sv = *hv_fetch(PL_modglobal, MY_CXT_KEY,		\
-				  sizeof(MY_CXT_KEY)-1, TRUE)
+				  sizeof(MY_CXT_KEY)-1, true)
 #endif /* < perl5.004_68 */
 
 /* This declaration should be used within all functions that use the

@@ -513,7 +513,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 
 KviKvsPopupMenuTopLevelData::KviKvsPopupMenuTopLevelData(KviKvsVariantList * pParameters,KviWindow * pWindow)
 {
-	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),TRUE);
+	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),true);
 	m_pParameters = pParameters;
 	m_pWindow = pWindow;
 	m_bTestMode = false;

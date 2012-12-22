@@ -143,7 +143,7 @@
 		!fn: <boolean> $isRunning()
 		Return 1 if the process is running, else return 0.
 		!fn: <boolean> $normalExit()
-		Returns TRUE if the process has exited normally; otherwise returns FALSE.
+		Returns true if the process has exited normally; otherwise returns false.
 		!fn: $readyReadStdoutEvent()
 		This function is invoched by the process when there are new datas.[br]
 		The default implementation emits the [classfnc]$readyReadStdout[/classfnc]() signal.

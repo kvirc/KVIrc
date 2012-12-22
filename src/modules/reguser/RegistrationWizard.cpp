@@ -77,7 +77,7 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 	setWindowTitle(__tr2qs_ctx("User Registration Wizard - KVIrc","register"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
 
-	setSizeGripEnabled( TRUE );
+	setSizeGripEnabled( true );
 
 	m_pPage1 = new QWidget(this);
 	m_pPage1Layout = new QGridLayout(m_pPage1);

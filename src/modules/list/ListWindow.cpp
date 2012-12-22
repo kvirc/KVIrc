@@ -245,8 +245,8 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	columnLabels.append(__tr2qs("Topic"));
 	m_pTreeWidget->setColumnCount(3);
 	m_pTreeWidget->setHeaderLabels(columnLabels);
-	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
-	m_pTreeWidget->setSortingEnabled(TRUE);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
+	m_pTreeWidget->setSortingEnabled(true);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 	m_pTreeWidget->setUniformRowHeights(true);
 	

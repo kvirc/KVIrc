@@ -871,7 +871,7 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 	}
 
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
-	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
 	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
 	setSpacing(4);
 	setStretchFactor(m_pTreeWidget,1);
@@ -930,7 +930,7 @@ void KviChannelListSelector::removeClicked()
 	{
 		lst.append((QTreeWidgetItem *)items.at(i));
 	}
-	lst.setAutoDelete(TRUE);
+	lst.setAutoDelete(true);
 	lst.clear();
 }
 

@@ -75,9 +75,9 @@ const int align_cod[] = {
 		!fn: $setFlat(<bflag:boolean>)
 		Sets whether the group box is painted flat. Valid Values are 1 or 0.
 		!fn: <boolean> $isFlat()
-		Returns 1 (TRUE) if the group box is painted flat; otherwise returns 0 (FALSE).
+		Returns 1 (true) if the group box is painted flat; otherwise returns 0 (false).
 		!fn: <boolean> $isCheckable()
-		Returns 1 (TRUE) if the group box has a checkbox in its title; otherwise returns 0 (FALSE).
+		Returns 1 (true) if the group box has a checkbox in its title; otherwise returns 0 (false).
 		!fn: $setCheckable(<bflag:boolean>)
 		Sets whether the group box has a checkbox in its title: Valid values are 1 or 0.
 		!fn: $setInsideMargin(<margin:uint>)

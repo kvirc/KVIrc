@@ -103,7 +103,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pHistoryButton->setObjectName("historybutton");
 
 	m_pHistoryButton->setIconSize(QSize(22,22));
-	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
+	//m_pHistoryButton->setUpdatesEnabled(true); ???
 	QIcon is1;
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
 	{

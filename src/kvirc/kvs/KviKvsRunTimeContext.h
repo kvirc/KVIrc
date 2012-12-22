@@ -57,10 +57,10 @@ public:
 		m_pAliasSwitchList(0),
 		m_pThisObject(0),
 		m_pScriptFilePath(0),
-		m_bAutoDelete(FALSE),
+		m_bAutoDelete(false),
 		m_pPopupId(0)
 		{};
-	KviKvsExtendedRunTimeData(KviKvsHash * pExtScopeVariables,bool autoDelete=FALSE)
+	KviKvsExtendedRunTimeData(KviKvsHash * pExtScopeVariables,bool autoDelete = false)
 		: m_pExtendedScopeVariables(pExtScopeVariables),
 		m_pAliasSwitchList(0),
 		m_pThisObject(0),
@@ -68,7 +68,7 @@ public:
 		m_bAutoDelete(autoDelete),
 		m_pPopupId(0)
 		{};
-	KviKvsExtendedRunTimeData(KviKvsSwitchList * pAliasSwitchList,bool autoDelete=FALSE)
+	KviKvsExtendedRunTimeData(KviKvsSwitchList * pAliasSwitchList,bool autoDelete = false)
 		: m_pExtendedScopeVariables(0),
 		m_pAliasSwitchList(pAliasSwitchList),
 		m_pThisObject(0),
@@ -76,7 +76,7 @@ public:
 		m_bAutoDelete(autoDelete),
 		m_pPopupId(0)
 		{};
-	KviKvsExtendedRunTimeData(KviKvsObject * pThisObject,bool autoDelete=FALSE)
+	KviKvsExtendedRunTimeData(KviKvsObject * pThisObject,bool autoDelete = false)
 		: m_pExtendedScopeVariables(0),
 		m_pAliasSwitchList(0),
 		m_pThisObject(pThisObject),
@@ -84,7 +84,7 @@ public:
 		m_bAutoDelete(autoDelete),
 		m_pPopupId(0)
 		{};
-	KviKvsExtendedRunTimeData(QString * pScriptFilePath,bool autoDelete=FALSE)
+	KviKvsExtendedRunTimeData(QString * pScriptFilePath,bool autoDelete = false)
 		: m_pExtendedScopeVariables(0),
 		m_pAliasSwitchList(0),
 		m_pThisObject(0),

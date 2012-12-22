@@ -40,6 +40,12 @@
 #include "KviKvsKernel.h"
 #include "KviKvsObjectController.h"
 
+#if (QT_VERSION >= 0x050000)
+	#ifndef COMPILE_NO_X_BELL
+		#define COMPILE_NO_X_BELL
+	#endif // QX11Info is not available with Qt5
+#endif
+
 #ifdef COMPILE_X11_SUPPORT
 	#ifndef COMPILE_NO_X_BELL
 		#include "KviXlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
@@ -347,7 +353,7 @@ namespace KviKvsCoreSimpleCommands
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		Beep(pitch,duration);
-#elif defined(COMPILE_X11_SUPPORT)
+#elif defined(COMPILE_X11_SUPPORT) && (!defined(COMPILE_NO_X_BELL))
 		bool bSync   = (KVSCSC_pSwitches->find('s',"sync") != 0);
 
 		XKeyboardState st;

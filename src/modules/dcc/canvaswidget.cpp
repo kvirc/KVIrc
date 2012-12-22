@@ -1228,8 +1228,8 @@
 			case QVariant::Bool:
 			{
 				QComboBox * b = new QComboBox(false,table()->viewport());
-				b->addAction("FALSE");
-				b->addAction("TRUE");
+				b->addAction("false");
+				b->addAction("true");
 				b->setCurrentItem(m_property.toBool() ? 1 : 0);
 				return b;
 			}
@@ -1335,7 +1335,7 @@
 					sz = m_property.toString();
 				break;
 				case QVariant::Bool:
-					sz = m_property.toBool() ? "TRUE" : "FALSE";
+					sz = m_property.toBool() ? "true" : "false";
 				break;
 				case QVariant::Font:
 					sz.setNum(m_property.toFont().pointSize());

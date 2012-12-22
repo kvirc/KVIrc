@@ -64,9 +64,9 @@
 		Sets the editor to be read-only if bReadOnly is 1 or
 		removes the read-only status is ReadOnly is 0
 		!fn: <boolean> $atBeginning()
-		Returns 1(TRUE) if the cursor is placed at the beginning of the text; otherwise returns 0(FALSE).
+		Returns 1(true) if the cursor is placed at the beginning of the text; otherwise returns 0(false).
 		!fn: <boolean> $atEnd()
-		Returns 1(TRUE) if the cursor is placed at the end of the text; otherwise returns 0(FALSE).
+		Returns 1(true) if the cursor is placed at the end of the text; otherwise returns 0(false).
 		!fn: $setWordWrap(<wrap_mode:string>)
 		Sets the word wrap mode to mode. Valid Values are:[br]
 		- NoWrap - Do not wrap the text.[br]
@@ -102,11 +102,11 @@
 		!fn: $setUnderline(<bUnderline:boolean>)
 		If the bool value is 1 sets the current format to underline; otherwise, if it's 0 sets the current format to no-underline.
 		!fn: <boolean> $italic()
-		Returns 1(TRUE) if the current format is italic; otherwise returns 0(FALSE).
+		Returns 1(true) if the current format is italic; otherwise returns 0(false).
 		!fn: <boolean> $bold()
-		Returns 1(TRUE) if the current format is bold; otherwise returns 0(FALSE).
+		Returns 1(true) if the current format is bold; otherwise returns 0(false).
 		!fn: <boolean> $underline()
-		Returns 1(TRUE) if the current format is underline; otherwise returns 0(FALSE).
+		Returns 1(true) if the current format is underline; otherwise returns 0(false).
 		!fn: $zoomIn(<zoom_range:integer>)
 		Zooms in on the text by making the base font size range points larger.
 		!fn: $zoomOut(<zoom_range:integer>)
@@ -120,7 +120,7 @@
 		!fn: $setUndoRedoEnabled(<bUndoRedo:boolean>)
 		Sets whether undo/redo is enabled to the bool value.
 		!fn: <boolean> $isUndoRedoEnabled()
-		Returns 1 (TRUE) if undo/redo is enabled; otherwise returns 0 (FALSE).
+		Returns 1 (true) if undo/redo is enabled; otherwise returns 0 (false).
 		!fn: <integer> $undoDepth()
 		Returns the depth of the undo history.
 		!fn: $setText(<txt:string>)
@@ -144,16 +144,16 @@
 		!fn: $loadFile(<path:string>)
 		Load the file specified in the <path>, also html files.
 		!fn: <boolean> $isUndoAvailable ()
-		Returns 1(TRUE) if undo is available; otherwise returns 0(FALSE).
+		Returns 1(true) if undo is available; otherwise returns 0(false).
 		!fn: <boolean> $isRedoAvailable ()
-		Returns 1(TRUE) if redo is available; otherwise returns 0(FALSE).
+		Returns 1(true) if redo is available; otherwise returns 0(false).
 		!fn: <integer> $lines()
 		Returns the number of lines in the multilineedit.
 		!fn: <integer> $lineOfChar(<paragraph:integer>,<index:integer>)
 		Returns the line number of the line in paragraph par in which the character at position index appears.[br]
 		If there is no such paragraph or no such character at the index position  -1 is returned.
 		!fn: $setModified(<bModified:boolean>)
-		Sets whether the document has been modified by the user. Valid Values are 1(TRUE) or 0(FALSE)
+		Sets whether the document has been modified by the user. Valid Values are 1(true) or 0(false)
 		!fn: $setAlignment(<alignment:string>)
 		Sets the alignment of the current paragraph to <alignment>. Valid values are:[br]
 		- Auto - Aligns according to the language.[b

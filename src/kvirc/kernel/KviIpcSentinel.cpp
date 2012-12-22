@@ -48,7 +48,7 @@
 
 #else
 
-	#ifdef COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 		#include <X11/Xatom.h>
 		#include "KviXlib.h" // for XEvent
 
@@ -88,7 +88,7 @@
 			int format;
 			unsigned long nItems,after;
 			unsigned char * data = 0;
-			if(XGetWindowProperty(kvi_ipc_get_xdisplay(),win,kvi_atom_ipc_sentinel_window,0,32,FALSE,XA_STRING,
+			if(XGetWindowProperty(kvi_ipc_get_xdisplay(),win,kvi_atom_ipc_sentinel_window,0,32,false,XA_STRING,
 				&type,&format,&nItems,&after,&data) == Success)
 			{
 				if((type == XA_STRING) && (format == 8))
@@ -154,7 +154,7 @@
 			return true;
 		}
 #else
-	#ifdef COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 
 		kvi_ipcLoadAtoms();
 
@@ -198,7 +198,7 @@
 		setWindowTitle("kvirc4_ipc_sentinel");
 		setWindowFlags(Qt::FramelessWindowHint);
 #else
-	#ifdef COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 		kvi_ipcLoadAtoms();
 
 		XChangeProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_sentinel_window,XA_STRING,8,
@@ -247,7 +247,7 @@
 	}
 
 #else
-	#ifdef COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 		bool KviIpcSentinel::x11Event(XEvent *e)
 		{
 			if(e->type == ClientMessage)
@@ -259,7 +259,7 @@
 					unsigned long nItems,after;
 					unsigned char * data = 0;
 					KviCString szData;
-					if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,FALSE,XA_STRING,
+					if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,false,XA_STRING,
 						&type,&format,&nItems,&after,&data) == Success)
 					{
 						if((type == XA_STRING) && (format == 8) && (nItems > 0) && data)

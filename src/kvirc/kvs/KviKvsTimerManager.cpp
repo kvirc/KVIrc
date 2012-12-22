@@ -45,7 +45,7 @@ KviKvsTimer::KviKvsTimer(const QString &szName,Lifetime l,KviWindow * pWnd,int i
 	m_iId = iId;
 	m_pCallback = pCallback;
 	//m_pVariables = new KviKvsHash();
-	m_pRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),TRUE);
+	m_pRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),true);
 	m_pParameterList = pParams;
 }
 

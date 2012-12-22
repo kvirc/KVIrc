@@ -299,7 +299,7 @@ SetupWizard::SetupWizard()
 #endif
 	// Pragma: Unused, takes only space.
 	//m_pDirRestore = new QRadioButton(__tr2qs("Restore from backup archive"),m_pDirButtonGroup);
-	//m_pDirRestore->setEnabled(FALSE);
+	//m_pDirRestore->setEnabled(false);
 
 	//l = new QLabel(m_pDirectory->m_pVBox,"<b> </b>");
 
@@ -526,7 +526,7 @@ SetupWizard::SetupWizard()
 	{
 		KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);
 		cfg.setGroup("Setup");
-		if(cfg.readBoolEntry("hideServerList",FALSE))
+		if(cfg.readBoolEntry("hideServerList",false))
 		{
 			//setPageEnabled(m_pServers,false);
 			//setFinishEnabled(m_pIdentity,true);
@@ -1075,12 +1075,12 @@ void SetupWizard::accept()
 
 			if(m_pServersSpecifyManually->isOn())
 			{
-				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = FALSE;
+				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = false;
 				szHost = m_szServerHost;
 				uPort=m_uServerPort;
 			} else if(m_pServersOpenIrcUrl->isOn())
 			{
-				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = FALSE;
+				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = false;
 				szUrl=m_szServerUrl;
 			}
 			*/

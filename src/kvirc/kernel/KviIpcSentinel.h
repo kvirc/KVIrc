@@ -37,7 +37,7 @@
  #include <winsock2.h>
 	#include <windows.h>
 #else
-	#ifdef COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 		#include <qcoreevent.h>
 	#endif //!COMPILE_X11_SUPPORT
 #endif
@@ -57,7 +57,7 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		virtual bool winEvent(MSG * msg, long * result);
 #else
-	#ifdef COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 		virtual bool x11Event(XEvent *e);
 	#endif //!COMPILE_X11_SUPPORT
 #endif

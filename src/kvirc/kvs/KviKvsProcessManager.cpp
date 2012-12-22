@@ -37,7 +37,7 @@ KviKvsProcessAsyncOperation::KviKvsProcessAsyncOperation(KviKvsProcessDescriptor
 {
 	m_pData = d;
 	m_pProcess = 0;
-	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),TRUE);
+	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),true);
 	m_pPingTimer = 0;
 	m_pRunTimeTimer = 0;
 	m_bDeletePending = false;

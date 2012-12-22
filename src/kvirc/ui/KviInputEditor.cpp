@@ -425,7 +425,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 					if(iSubLen)
 					{
-						drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iSubStart,iSubLen,FALSE);
+						drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iSubStart,iSubLen,false);
 						iCurXPos += m_iBlockWidth;
 						m_iBlockWidth=0;
 					}
@@ -436,7 +436,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 					if(iSubLen)
 					{
-						drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iSubStart,iSubLen,TRUE);
+						drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iSubStart,iSubLen,true);
 						iCurXPos += m_iBlockWidth;
 						m_iBlockWidth=0;
 					}
@@ -445,7 +445,7 @@ void KviInputEditor::drawContents(QPainter * p)
 					{
 						iSubStart += iSubLen;
 						iSubLen = iBlockEnd-iSubStart;
-						drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iSubStart,iSubLen,FALSE);
+						drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iSubStart,iSubLen,false);
 					}
 				} else {
 					drawTextBlock(p,iTop,iBottom,iCurXPos,iTextBaseline,iCharIdx,m_iBlockLen);

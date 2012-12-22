@@ -47,7 +47,7 @@ extern HelpIndex        * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
-//bool g_bIndexingDone = FALSE;
+//bool g_bIndexingDone = false;
 HelpWindow::HelpWindow(const char * name)
 : KviWindow(KviWindow::Help,name)
 {
@@ -238,7 +238,7 @@ void HelpWindow::startSearch()
 		m_pResultBox->addItem( g_pDocIndex->getDocumentTitle( *it ) );
 
 	m_terms.clear();
-	bool isPhrase = FALSE;
+	bool isPhrase = false;
 	QString s = "";
 	for ( int i = 0; i < (int)buf.length(); ++i ) {
 		if ( buf[i] == '\"' ) {
