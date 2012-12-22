@@ -409,8 +409,8 @@ void KviIrcContext::connectToCurrentServer()
 	// If we have a saved target, reuse it
 	if(!m_pAsynchronousConnectionData && m_pSavedAsynchronousConnectionData)
 	{
-			m_pAsynchronousConnectionData = m_pSavedAsynchronousConnectionData;
-			m_pSavedAsynchronousConnectionData = 0;
+		m_pAsynchronousConnectionData = m_pSavedAsynchronousConnectionData;
+		m_pSavedAsynchronousConnectionData = 0;
 	}
 
 	if(m_pAsynchronousConnectionData)
@@ -433,6 +433,7 @@ void KviIrcContext::connectToCurrentServer()
 				m_pAsynchronousConnectionData->bUseIPv6 = m_pSavedAsynchronousConnectionData->bUseIPv6;
 				m_pAsynchronousConnectionData->bUseSSL = m_pSavedAsynchronousConnectionData->bUseSSL;
 				m_pAsynchronousConnectionData->bSTARTTLS = m_pSavedAsynchronousConnectionData->bSTARTTLS;
+
 				if(m_pSavedAsynchronousConnectionData->m_pReconnectInfo)
 					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
 				else
@@ -454,7 +455,10 @@ void KviIrcContext::connectToCurrentServer()
 			} else {
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This is the first connection in this IRC context: using the global server setting"));
 			}
-		} else {
+		}
+		
+		if(!m_pAsynchronousConnectionData->szServer.isEmpty())
+		{
 			// !m_pAsynchronousConnectionData->szServer.isEmpty()
 			// ok, have a server to look for in the db
 			// FIXME: this is a bit ugly... could it be managed in some completly different and nicer way ?
@@ -546,6 +550,7 @@ void KviIrcContext::connectToCurrentServer()
 
 	if(m_pConnection)
 		delete m_pConnection;
+
 	m_pConnection = new KviIrcConnection(
 		this,
 		new KviIrcConnectionTarget(
@@ -570,7 +575,9 @@ void KviIrcContext::connectToCurrentServer()
 	// save stuff for later
 
 	// FIXME: this management of "next" connection should be reviewed a bit anyway
-	if(m_pSavedAsynchronousConnectionData) delete m_pSavedAsynchronousConnectionData;
+	if(m_pSavedAsynchronousConnectionData)
+		delete m_pSavedAsynchronousConnectionData;
+
 	m_pSavedAsynchronousConnectionData = new KviAsynchronousConnectionData();
 	m_pSavedAsynchronousConnectionData->szServer = srv->hostName();
 	m_pSavedAsynchronousConnectionData->uPort = srv->port();
@@ -581,6 +588,7 @@ void KviIrcContext::connectToCurrentServer()
 	m_pSavedAsynchronousConnectionData->szPass = srv->password();
 	m_pSavedAsynchronousConnectionData->szServerId = srv->id();
 	m_pSavedAsynchronousConnectionData->szInitUMode = srv->initUMode();
+
 	if(srv->reconnectInfo())
 		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(srv->reconnectInfo()));
 	else

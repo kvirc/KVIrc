@@ -273,22 +273,23 @@ namespace KviKvsCoreSimpleCommands
 			{
 				KVSCSC_pContext->error(__tr2qs_ctx("Another connection is already in progress in the selected IRC context","kvs"));
 				return false;
-			} else {
-				KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
-				d->bUseLastServerInContext = KVSCSC_pSwitches->find('l',"last") != 0;
-				d->szCommandToExecAfterConnect = szCmd;
-				d->szBindAddress = szBindAddress;
-				d->szPass = szPassword;
-				d->szNick = szNick;
-				d->szLinkFilter = szSocketFilter;
-
-				d->m_pReconnectInfo = new KviIrcServerReconnectInfo();
-				d->m_pReconnectInfo->m_szNick = szNick;
-				d->m_pReconnectInfo->m_szPass = szPassword;
-				
-				console->context()->setAsynchronousConnectionData(d);
-				console->context()->connectToCurrentServer();
 			}
+
+			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
+			d->bUseLastServerInContext = KVSCSC_pSwitches->find('l',"last") != 0;
+			d->szCommandToExecAfterConnect = szCmd;
+			d->szBindAddress = szBindAddress;
+			d->szPass = szPassword;
+			d->szNick = szNick;
+			d->szLinkFilter = szSocketFilter;
+
+			d->m_pReconnectInfo = new KviIrcServerReconnectInfo();
+			d->m_pReconnectInfo->m_szNick = szNick;
+			d->m_pReconnectInfo->m_szPass = szPassword;
+			
+			console->context()->setAsynchronousConnectionData(d);
+			console->context()->connectToCurrentServer();
+
 		} else {
 			// server is not empty.
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
