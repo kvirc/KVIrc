@@ -51,10 +51,10 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 #define KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(__className,__szName) \
 	g_pKvs##__className##Class->registerStandardNothingReturnFunctionHandler(__szName);
 
-#define KVSO_REGISTER_STANDARD_trueRETURN_HANDLER(__className,__szName) \
+#define KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(__className,__szName) \
 	g_pKvs##__className##Class->registerStandardTrueReturnFunctionHandler(__szName);
 
-#define KVSO_REGISTER_STANDARD_falseRETURN_HANDLER(__className,__szName) \
+#define KVSO_REGISTER_STANDARD_FALSERETURN_HANDLER(__className,__szName) \
 	g_pKvs##__className##Class->registerStandardFalseReturnFunctionHandler(__szName);
 
 #define KVSO_BEGIN_REGISTERCLASS(__className,__stringName,__baseClass) \
