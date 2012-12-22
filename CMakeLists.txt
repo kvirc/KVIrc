@@ -31,10 +31,9 @@ set(VERSION_MAJOR "4")
 set(VERSION_BRANCH "4.3")
 set(VERSION_RELEASE "4.3.1")
 set(VERSION_CODENAME "Aria")
-# REMINDER: "Aria" is a candidate, trunk name "Quasar"
+# REMINDER: "Quasar" is a new candidate.
 
 string(REGEX MATCH "[0-9]+$" VERSION_MINOR ${VERSION_BRANCH})
-
 
 set(CMAKE_KVIRC_VERSION_MAJOR ${VERSION_MAJOR})
 set(CMAKE_KVIRC_VERSION_BRANCH ${VERSION_BRANCH})
