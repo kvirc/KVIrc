@@ -1053,6 +1053,7 @@ private slots:
 	*/
 	void toggleToolButtons();
 
+	void splitterMoved(int pos, int index);
 signals:
 	/**
 	* \brief Emitted when our op status change

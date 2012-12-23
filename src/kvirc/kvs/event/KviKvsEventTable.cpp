@@ -26,6 +26,11 @@
 #include "KviKvsEventTable.h"
 #include "KviKvsEventManager.h"
 
+/*
+ * Note: the definition order of the EVENT(..) entries in this file
+ * must match the order of event ids defined in the header file.
+ */
+
 #define EVENT(_name,_parm) KviKvsEvent(_name,_parm)
 
 KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
@@ -3865,6 +3870,110 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source user\n" \
 		"$2 = source host\n" \
 		"$3 = target\n" \
-		"$4 = message")
+		"$4 = message"),
+
+	/*
+		@doc: onquietban
+		@type:
+			event
+		@title:
+			OnQuietBan
+		@short:
+			Someone has set a +q flag on the channel
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source hostname
+			$3 = ban mask
+		@window:
+			Channel window
+		@description:
+			Triggered when someone sets a +q flag on the channel
+		@seealso:
+			[event:onquietunban]OnQuietUnban[/event]
+	*/
+	EVENT("OnQuietBan", \
+		"$0 = source nick\n"
+		"$1 = source username\n"
+		"$2 = source hostname\n"
+		"$3 = ban mask"),
+
+	/*
+		@doc: onquietunban
+		@type:
+			event
+		@title:
+			OnQuietUnban
+		@short:
+			Someone has set a -q flag on the channel
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source hostname
+			$3 = unban mask
+		@window:
+			Channel window
+		@description:
+			Triggered when someone sets a -q flag on the channel
+		@seealso:
+			[event:onquietban]OnQuietBan[/event]
+	*/
+	EVENT("OnQuietUnban", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = ban mask"),
+
+	/*
+		@doc: onmequietban
+		@type:
+			event
+		@title:
+			OnMeQuietBan
+		@short:
+			Local user is being quiet-banned (+q) in a channel
+		@parameters:
+			$0 = source nickname
+			$1 = source username
+			$2 = source hostname
+			$3 = ban mask
+		@window:
+			Channel
+		@description:
+			Triggered when someone has set a +q flag that matches your mask (quiet bans you) in the channel.[br]
+		@seealso:
+			[event:onmequietunban]OnMeQuietUnban[/event]
+	*/
+	EVENT("OnMeQuietBan", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = ban mask"),
+
+	/*
+		@doc: onmequietunban
+		@type:
+			event
+		@title:
+			OnMeQuietUnban
+		@short:
+			Local user is being quiet-debanned (-q) in a channel
+		@parameters:
+			$0 = source nickname
+			$1 = source username
+			$2 = source hostname
+			$3 = ban mask
+		@window:
+			Channel
+		@description:
+			Triggered when someone has set a -q flag that matches your mask (quiet debans you) in the channel.[br]
+		@seealso:
+			[event:onmequietban]OnMeQuietBan[/event]
+	*/
+	EVENT("OnMeQuietUnban", \
+		"$0 = source nick\n"
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = ban mask")
 
 };

@@ -123,6 +123,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName(szName);
 	m_pSplitter->setChildrenCollapsible(false);
+	connect(m_pSplitter, SIGNAL(splitterMoved(int, int)), this, SLOT(splitterMoved(int, int)));
 
 	// Spitted vertially on the left
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
@@ -351,12 +352,23 @@ void KviChannelWindow::getConfigGroupName(QString & szBuffer)
 	}
 }
 
+void KviChannelWindow::splitterMoved(int pos, int index)
+{
+	printf("\n[SPLITTER] %s pos=%d index=%d", windowName().toUtf8().data(), pos, index);
+	printf("\n[SPLITTER] %s w=%d h=%d s1=%d s2=%d", windowName().toUtf8().data(), width(), height(), (int)m_pSplitter->sizes().at(0), (int)m_pSplitter->sizes().at(1));
+	fflush(NULL);
+}
+
 void KviChannelWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	KviWindow::saveProperties(pCfg);
 	pCfg->writeEntry("TopSplitter", m_pTopSplitter->sizes());
 	pCfg->writeEntry("Splitter", m_pUserListView->isHidden() ? m_SplitterSizesList : m_pSplitter->sizes());
-//	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
+
+	printf("\n[SPLITTER SAVE] %s w=%d h=%d s1=%d s2=%d", windowName().toUtf8().data(), width(), height(), (int)m_pSplitter->sizes().at(0), (int)m_pSplitter->sizes().at(1));
+	fflush(NULL);
+
+	//	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
 // 	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
 // 		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
 // 		m_pIrcView->width(), sizes.at(0), m_pUserListView->width(), sizes.at(1), iTimeStamp);
@@ -657,6 +669,9 @@ void KviChannelWindow::resizeEvent(QResizeEvent *)
 	m_pButtonBox->setGeometry(0,0,width(),iHeight2);
 	m_pSplitter->setGeometry(0,iHeight2,width(),height() - (iHeight + iHeight2));
 	m_pInput->setGeometry(0,height() - iHeight, width(),iHeight);
+	printf("\n[WINDOW] %s w=%d h=%d s1=%d s2=%d", windowName().toUtf8().data(), width(), height(), (int)m_pSplitter->sizes().at(0), (int)m_pSplitter->sizes().at(1));
+	fflush(NULL);
+
 }
 
 QSize KviChannelWindow::sizeHint() const

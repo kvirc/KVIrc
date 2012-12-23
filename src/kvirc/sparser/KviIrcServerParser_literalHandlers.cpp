@@ -2003,7 +2003,6 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 					// we call setModeInList anyway to fill the "mode q editor"
 					chan->setModeInList(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
-
 					if(aParam.contains('!'))
 					{
 						// it's a mask
@@ -2015,9 +2014,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						delete auxMask;
 						if(bIsMe)
 						{
-							if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnMeBan : KviEvent_OnMeUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
+							if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnMeQuietBan : KviEvent_OnMeQuietUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
 						} else {
-							if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnBan : KviEvent_OnUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
+							if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnQuietBan : KviEvent_OnQuietUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
 						}
 						if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
 						{

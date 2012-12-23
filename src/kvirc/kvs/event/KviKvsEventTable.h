@@ -238,6 +238,10 @@
 * \def KviEvent_OnDeIrcOp Someone has given a user the -O flag
 * \def KviEvent_OnMeIrcOp Someone has given the local user the +O flag
 * \def KviEvent_OnMeDeIrcOp Someone has given the local user the -O flag
+* \def KviEvent_OnQuietBan Someone has set a +q flag on the channel
+* \def KviEvent_OnQuietUnban Someone has set a -q flag on the channel
+* \def KviEvent_OnMeQuietBan Local user is being quiet-banned in a channel
+* \def KviEvent_OnMeQuietUnban Local user is being quiet-debanned in a channel
 */
 #define KviEvent_OnChannelModeChange        64
 #define KviEvent_OnUserModeChange           65
@@ -254,6 +258,10 @@
 #define KviEvent_OnInviteExceptionRemove    76
 #define KviEvent_OnMeInviteException        77
 #define KviEvent_OnMeInviteExceptionRemove  78
+#define KviEvent_OnQuietBan                149
+#define KviEvent_OnQuietUnban              150
+#define KviEvent_OnMeQuietBan              151
+#define KviEvent_OnMeQuietUnban            152
 #define KviEvent_OnLimitSet                 79
 #define KviEvent_OnLimitUnset               80
 #define KviEvent_OnKeySet                   81
@@ -369,6 +377,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 149
+#define KVI_KVS_NUM_APP_EVENTS 153
 
 #endif //_KVI_KVS_EVENTTABLE_H_
