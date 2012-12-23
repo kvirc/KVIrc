@@ -33,7 +33,7 @@ KviIrcConnectionUserInfo::KviIrcConnectionUserInfo()
 
 bool KviIrcConnectionUserInfo::hasUserMode(const QChar &m)
 {
-	return m_szUserMode.contains(m) > 0;
+	return m_szUserMode.contains(m);
 }
 
 bool KviIrcConnectionUserInfo::addUserMode(const QChar &m)

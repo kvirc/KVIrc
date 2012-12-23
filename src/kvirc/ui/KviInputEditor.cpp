@@ -1045,7 +1045,7 @@ void KviInputEditor::pasteClipboardWithConfirmation()
 	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste,m_pKviWindow,m_pKviWindow->id(),szText))
 		return;
 
-	if(szText.contains(QChar('\n')) > 0)
+	if(szText.contains(QChar('\n')))
 	{
 		if(m_pInputParent->inherits("KviInput"))
 			((KviInput*)(m_pInputParent))->multiLinePaste(szText);
@@ -1063,7 +1063,7 @@ void KviInputEditor::pasteSelectionWithConfirmation()
 	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste,m_pKviWindow,m_pKviWindow->id(),szText))
 		return;
 
-	if(szText.contains(QChar('\n')) > 0)
+	if(szText.contains(QChar('\n')))
 	{
 		if(m_pInputParent->inherits("KviInput"))
 			((KviInput*)(m_pInputParent))->multiLinePaste(szText);

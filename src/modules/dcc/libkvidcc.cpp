@@ -2689,9 +2689,9 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 			++it;
 		}
 	} else {
-		bool bWantFileUploads = szFlags.indexOf('u',Qt::CaseInsensitive) != -1;
-		bool bWantFileDownloads = szFlags.contains('d',Qt::CaseInsensitive) != -1;
-		bool bWantChats = szFlags.contains('c',Qt::CaseInsensitive) != -1;
+		bool bWantFileUploads = szFlags.contains('u',Qt::CaseInsensitive);
+		bool bWantFileDownloads = szFlags.contains('d',Qt::CaseInsensitive);
+		bool bWantChats = szFlags.contains('c',Qt::CaseInsensitive);
 
 		while(DccDescriptor * dcc = it.current())
 		{
