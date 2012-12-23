@@ -688,6 +688,8 @@ static bool trayicon_module_init(KviModule * m)
 	QString buffer;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pApp->findImage(buffer,"kvi_dock_win32-0.png");
+#elif defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
+	g_pApp->findImage(buffer,"kvi_dock_mono-0.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-0.png");
 #endif
@@ -695,6 +697,8 @@ static bool trayicon_module_init(KviModule * m)
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pApp->findImage(buffer,"kvi_dock_win32-1.png");
+#elif defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
+	g_pApp->findImage(buffer,"kvi_dock_mono-1.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-1.png");
 #endif
@@ -702,6 +706,8 @@ static bool trayicon_module_init(KviModule * m)
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pApp->findImage(buffer,"kvi_dock_win32-2.png");
+#elif defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
+	g_pApp->findImage(buffer,"kvi_dock_mono-2.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-2.png");
 #endif
