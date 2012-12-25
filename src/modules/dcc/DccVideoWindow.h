@@ -44,9 +44,8 @@
 #include <QComboBox>
 #include <QGridLayout>
 
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	#include "avdevice/videodevicepool.h"
-#endif
+#include <QCamera>
+#include <QCameraViewfinder>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptSessionInfo;
@@ -63,6 +62,7 @@ class DccMarshal;
 #define KVI_DCC_VIDEO_THREAD_ACTION_STOP_RECORDING 1
 #define KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING 2
 #define KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING 3
+#define KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME 4
 
 typedef struct _KviDccVideoThreadOptions
 {
@@ -114,8 +114,10 @@ public:
 protected:
 	KviThemedLabel         * m_pLabel;
 	QWidget                * m_pContainerWidget;
+	QImage                 * m_pCameraImage;
+	QCameraViewfinder      * m_pCameraView;
+	QCamera				   * m_pCamera;
 	QLabel                 * m_pInVideoLabel;
-	QLabel                 * m_pOutVideoLabel;
 	QComboBox              * m_pCDevices;
 	QComboBox              * m_pCInputs;
 	QComboBox              * m_pCStandards;
@@ -148,11 +150,9 @@ protected slots:
 	void startOrStopTalking(bool bStart);
 	void connectionInProgress();
 	void slotUpdateImage();
-	void deviceRegistered(const QString &);
-	void deviceUnregistered(const QString &);
 	void textViewRightClicked();
 	void videoInputChanged(int );
 };
 
 
-#endif //_VOICE_H_
+#endif //_VIDEO_H_

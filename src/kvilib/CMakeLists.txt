@@ -100,16 +100,6 @@ set(kvilib_SRCS
 	tal/KviTalWizard.cpp
 )
 
-if(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
-	list(APPEND kvilib_SRCS
-		ext/avdevice/videodevice.cpp 
-		ext/avdevice/videoinput.cpp 
-		ext/avdevice/videodevicepool.cpp 
-		ext/avdevice/bayer.cpp
-		ext/avdevice/sonix_compress.cpp
-	)
-endif()
-
 if(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
 	list(APPEND kvilib_SRCS
 		ext/KviOggTheoraDecoder.cpp

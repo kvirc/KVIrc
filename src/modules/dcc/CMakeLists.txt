@@ -20,7 +20,7 @@ set(kvidcc_SRCS
 	DccWindow.cpp
 )
 
-if(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
+if(NOT COMPILE_DISABLE_DCC_VIDEO)
         list(APPEND kvidcc_SRCS 
                 DccVideoWindow.cpp 
         ) 

@@ -61,11 +61,6 @@
 
 extern DccBroker * g_pDccBroker;
 
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	Kopete::AV::VideoDevicePool *g_pVideoDevicePool=0;
-	int g_iVideoDevicePoolInstances=0;
-#endif
-
 bool kvi_dcc_video_is_valid_codec(const char * codecName)
 {
 	if(kvi_strEqualCI("sjpeg",codecName))
@@ -91,42 +86,25 @@ static DccVideoCodec * kvi_dcc_video_get_codec(const char * codecName)
 DccVideoThread::DccVideoThread(KviWindow * wnd,kvi_socket_t fd,KviDccVideoThreadOptions * opt)
 : DccThread(wnd,fd)
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pOpt = opt;
 	m_bPlaying = false;
 	m_bRecording = false;
 
-	//local video input
-	if(!g_pVideoDevicePool)
-	{
-		g_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
-		if (EXIT_SUCCESS != g_pVideoDevicePool->open()) return;
-		g_pVideoDevicePool->setImageSize(320, 240);
-	}
-	g_iVideoDevicePoolInstances++;
-#endif
 	startRecording();
 	startPlaying();
-
 }
 
 DccVideoThread::~DccVideoThread()
 {
 	stopRecording();
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	g_iVideoDevicePoolInstances--;
-	if(g_iVideoDevicePoolInstances==0)
-		g_pVideoDevicePool->close();
 
 	delete m_pOpt->pCodec;
 	delete m_pOpt;
-#endif
 }
 
 bool DccVideoThread::readWriteStep()
 {
 //	qDebug("DccVideoThread::readWriteStep()");
-#ifndef COMPILE_DISABLE_DCC_VIDEO
 	// Socket management
 	bool bCanRead;
 	bool bCanWrite;
@@ -164,21 +142,20 @@ bool DccVideoThread::readWriteStep()
 			}
 		}
 	}
-#endif // !COMPILE_DISABLE_DCC_VOICE
 	return true;
 }
 
 bool DccVideoThread::videoStep()
 {
 //	qDebug("DccVideoThread::videoStep()");
-#ifndef COMPILE_DISABLE_DCC_VIDEO
+
 	// Are we playing ?
 	if(m_bPlaying)
 	{
 		if(m_videoInSignalBuffer.size() > 0)
 		{
 			QImage img(m_videoInSignalBuffer.data(), 320, 240, 1280, QImage::Format_ARGB32);
-// 			qDebug("IMG data %p size %d", m_videoInSignalBuffer.data(), m_videoInSignalBuffer.size());
+			//qDebug("IMG data %p size %d", m_videoInSignalBuffer.data(), m_videoInSignalBuffer.size());
 			if(!img.isNull())
 				m_inImage = img;
 		}
@@ -187,26 +164,25 @@ bool DccVideoThread::videoStep()
 	// Are we recording ?
 	if(m_bRecording)
 	{
-		//grab the image, compress using the codec
-		if(g_pVideoDevicePool->getFrame() == EXIT_FAILURE)
-			return true;
-		if(g_pVideoDevicePool->getImage(&m_outImage) == EXIT_FAILURE)
-			return true;
-		if(m_outImage.numBytes() > 0)
+		QImage * pImage =  ((DccVideoWindow*)parent())->m_pCameraImage;
+		if(pImage)
 		{
-			m_videoOutSignalBuffer.append((const unsigned char*) m_outImage.bits(), m_outImage.numBytes());
+			// grab the frame
+			m_videoOutSignalBuffer.append((const unsigned char*) pImage->bits(), pImage->byteCount());
 			m_pOpt->pCodec->encodeVideo(&m_videoOutSignalBuffer,&m_outFrameBuffer);
+
+			// tell our parent to prepare a new frame
+			KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
+			e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME));
+			postEvent(DccThread::parent(),e);
 		}
 	}
-
-#endif // !COMPILE_DISABLE_DCC_VIDEO
 	return true;
 }
 
 bool DccVideoThread::textStep()
 {
 //	qDebug("DccVideoThread::textStep()");
-#ifndef COMPILE_DISABLE_DCC_VIDEO
 	// Are we playing ?
 	if(m_bPlaying)
 	{
@@ -235,13 +211,12 @@ bool DccVideoThread::textStep()
 			m_pOpt->pCodec->encodeText(&m_textOutSignalBuffer,&m_outFrameBuffer);
 	}
 
-#endif // !COMPILE_DISABLE_DCC_VIDEO
 	return true;
 }
 
 bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool bCritical)
 {
-//	qDebug("DccVideoThread::handleIncomingData");
+	//qDebug("DccVideoThread::handleIncomingData");
 	KVI_ASSERT(data->iLen);
 	KVI_ASSERT(data->buffer);
 	char * aux = data->buffer;
@@ -304,8 +279,8 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool bCr
 
 void DccVideoThread::restartRecording(int iDevice, int iInput, int)
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_bRecording=false;
+	/*
 	if(!g_pVideoDevicePool)
 		g_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
 
@@ -315,33 +290,29 @@ void DccVideoThread::restartRecording(int iDevice, int iInput, int)
 	if(iInput >= 0)
 		g_pVideoDevicePool->selectInput(iInput);
 	g_pVideoDevicePool->startCapturing();
-
+*/
 	m_bRecording=true;
-#endif
 }
 
 void DccVideoThread::startRecording()
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
 	//qDebug("Start recording");
 	if(m_bRecording)return; // already started
 
 	//ensure capturing
-	g_pVideoDevicePool->startCapturing();
+//	g_pVideoDevicePool->startCapturing();
 
-	qDebug("Posting event");
+	//qDebug("Posting event");
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING));
 	postEvent(DccThread::parent(),e);
 
 	m_bRecording = true;
-#endif
 }
 
 void DccVideoThread::stopRecording()
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	qDebug("Stop recording");
+	//qDebug("Stop recording");
 	if(!m_bRecording)return; // already stopped
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -349,40 +320,33 @@ void DccVideoThread::stopRecording()
 	postEvent(DccThread::parent(),e);
 
 	m_bRecording = false;
-#endif
 }
 
 void DccVideoThread::startPlaying()
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	qDebug("Start playing");
+	//qDebug("Start playing");
 	if(m_bPlaying)return;
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING));
 	postEvent(DccThread::parent(),e);
 	m_bPlaying = true;
-
-#endif
 }
 
 void DccVideoThread::stopPlaying()
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	qDebug("Stop playing");
+	//qDebug("Stop playing");
 	if(!m_bPlaying)return;
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING));
 	postEvent(DccThread::parent(),e);
 	m_bPlaying = false;
-#endif
 }
 
 void DccVideoThread::run()
 {
-qDebug("DccVideoThread::run()");
-#ifndef COMPILE_DISABLE_DCC_VIDEO
+	//qDebug("DccVideoThread::run()");
 	for(;;)
 	{
 		// Dequeue events
@@ -410,13 +374,12 @@ qDebug("DccVideoThread::run()");
 		if(!textStep())goto exit_dcc;
 
 		usleep(FRAME_DURATION*1000);
-// 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
+		//qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
 	}
 
 
 exit_dcc:
 
-#endif //! COMPILE_DISABLE_DCC_VIDEO
 	kvi_socket_close(m_fd);
 	m_fd = KVI_INVALID_SOCKET;
 }
@@ -463,13 +426,22 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc,const char * name)
 	m_pLayout->addWidget(m_pInVideoLabel, 1, 0, 6, 1);
 
 	//local video
-	m_pOutVideoLabel = new QLabel();
-	m_pOutVideoLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	m_pOutVideoLabel->setMinimumSize(320, 240);
-	m_pOutVideoLabel->setFrameShape(QFrame::Box);
-	m_pOutVideoLabel->setScaledContents(true);
-	m_pOutVideoLabel->setAlignment(Qt::AlignCenter);
-	m_pLayout->addWidget(m_pOutVideoLabel, 1, 1, 6, 1);
+	QByteArray cameraDevice;
+	if (cameraDevice.isEmpty())
+		m_pCamera = new QCamera;
+	else
+		m_pCamera = new QCamera(cameraDevice);
+
+	m_pCameraView = new QCameraViewfinder();
+	m_pCameraView->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	m_pCameraView->setMinimumSize(320, 240);
+	m_pCameraView->setMaximumSize(320, 240);
+	m_pCameraView->setAspectRatioMode(Qt::KeepAspectRatio);
+	m_pLayout->addWidget(m_pCameraView, 1, 1, 6, 1);
+
+	m_pCamera->setViewfinder(m_pCameraView);
+
+	m_pCameraImage = new QImage(320, 240, QImage::Format_ARGB32);
 
 	//local video input: config
 	m_pVideoLabel[0] = new QLabel();
@@ -512,6 +484,7 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc,const char * name)
 	connect(m_pCStandards, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
 
 	startConnection();
+	m_pCamera->start();
 }
 
 DccVideoWindow::~DccVideoWindow()
@@ -521,10 +494,20 @@ DccVideoWindow::~DccVideoWindow()
 		delete m_pInVideoLabel;
 		m_pInVideoLabel=0;
 	}
-	if(m_pOutVideoLabel)
+	if(m_pCameraView)
 	{
-		delete m_pOutVideoLabel;
-		m_pOutVideoLabel=0;
+		delete m_pCameraView;
+		m_pCameraView=0;
+	}
+	if(m_pCameraImage)
+	{
+		delete m_pCameraImage;
+		m_pCameraImage=0;
+	}
+	if(m_pCamera)
+	{
+		delete m_pCamera;
+		m_pCamera=0;
 	}
 	if(m_pCDevices)
 	{
@@ -924,6 +907,10 @@ bool DccVideoWindow::event(QEvent *e)
 					case KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING:
 // 						m_pPlayingLabel->setEnabled(false);
 					break;
+					case KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME:
+						m_pCameraView->render( m_pCameraImage );
+					break;
+
 				}
 				delete act;
 				return true;
@@ -966,7 +953,7 @@ void DccVideoWindow::connected()
 	output(KVI_OUT_DCCMSG,__tr2qs_ctx("Actual codec used is '%s'","dcc"),opt->pCodec->name());
 
 	m_pSlaveThread = new DccVideoThread(this,m_pMarshal->releaseSocket(),opt);
-
+/*
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	if(g_pVideoDevicePool)
 	{
@@ -978,7 +965,7 @@ void DccVideoWindow::connected()
 		connect(g_pVideoDevicePool, SIGNAL(deviceUnregistered(const QString &) ), SLOT(deviceUnregistered(const QString &)) );
 	}
 #endif
-
+*/
 	m_pSlaveThread->start();
 }
 
@@ -1004,47 +991,10 @@ void DccVideoWindow::startOrStopTalking(bool bStart)
 
 void DccVideoWindow::slotUpdateImage()
 {
-#ifndef COMPILE_DISABLE_DCC_VIDEO
 	if(m_pSlaveThread && isVisible())
 	{
-		m_pOutVideoLabel->setPixmap(QPixmap::fromImage(m_pSlaveThread->m_outImage));
 		m_pInVideoLabel->setPixmap(QPixmap::fromImage(m_pSlaveThread->m_inImage));
 	}
-#endif
-}
-
-void DccVideoWindow::deviceRegistered(const QString &)
-{
-
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	g_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
-	g_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
-	g_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
-
-	if (g_pVideoDevicePool->size() < 2) // otherwise we are already capturing
-	{
-		// update the mVideoImageLabel to show the camera frames
-		if (EXIT_SUCCESS != g_pVideoDevicePool->open()) return;
-		g_pVideoDevicePool->setImageSize(320, 240);
-		g_pVideoDevicePool->startCapturing();
-	}
-// 	setVideoInputParameters();
-
-// 	if ( g_pVideoDevicePool->hasDevices() )
-// 	{
-// 		m_Timer.start(200); //5fps
-// 	}
-#endif
-}
-
-
-void DccVideoWindow::deviceUnregistered(const QString & )
-{
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	g_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
-	g_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
-	g_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
-#endif
 }
 
 void DccVideoWindow::videoInputChanged(int )
