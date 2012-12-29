@@ -503,7 +503,7 @@ namespace KviKvsCoreSimpleCommands
 			Does not print warnings if the specified timer is not running
 		@description:
 			The first version (with -a) kill all the running timers.[br]
-			The second verdion kills a running timer named [name].[br]
+			The second version kills a running timer named [name].[br]
 			The timer has been started by the [cmd]timer[/cmd].[br]
 			[name] can be omitted if this command is called from a [cmd]timer[/cmd] callback:
 			in this case the current timer will be scheduled for killing immediately
