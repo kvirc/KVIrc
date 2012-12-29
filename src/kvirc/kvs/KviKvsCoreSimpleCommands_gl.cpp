@@ -494,7 +494,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Stops a timer
 		@syntax:
-			killtimer [-a]
+			killtimer -a
 			killtimer [-q] [name]
 		@switches:
 			!sw: -a | --active
