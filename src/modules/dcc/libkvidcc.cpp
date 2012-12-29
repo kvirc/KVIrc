@@ -25,7 +25,9 @@
 #include "DccVoiceGsmCodec.h"
 #include "DccBroker.h"
 #include "DccVoiceWindow.h"
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 #include "DccVideoWindow.h"
+#endif
 #include "DccUtils.h"
 #include "DccFileTransfer.h"
 #include "DccWindow.h"
