@@ -30,7 +30,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 if(UNIX)
 	if(APPLE)
 		install(FILES ${monoFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
-	elseif(COMPILE_ON_KDE)
+	elseif(COMPILE_KDE_SUPPORT)
 		install(FILES ${monoFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
 	else()
 		# Assume linux
