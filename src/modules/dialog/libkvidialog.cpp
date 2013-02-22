@@ -214,6 +214,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		const QString &szDefaultText,
 		const QString &szIcon,
 		bool bMultiLine,
+		bool bPassword,
 		const QString &szButton0,
 		const QString &szButton1,
 		const QString &szButton2,
@@ -248,6 +249,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	g->setColumnStretch(1,1);
 
 	m_bMultiLine = bMultiLine;
+	m_bPassword = bPassword;
 
 	if(m_bMultiLine)
 	{
@@ -256,6 +258,8 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		((QTextEdit *)m_pEdit)->selectAll();
 	} else {
 		m_pEdit = new QLineEdit(this);
+		if (m_bPassword)
+			((QLineEdit *)m_pEdit)->setEchoMode(QLineEdit::Password);
 		((QLineEdit *)m_pEdit)->setText(szDefaultText);
 		((QLineEdit *)m_pEdit)->selectAll();
 	}
@@ -418,7 +422,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 	@short:
 		Shows a dialog that accepts user input as text
 	@syntax:
-		dialog.textinput [-d=<default text>] [-i=<icon>] [-m] [-b] (<caption>,<info_text>,<button0>[,<button1>[,<button2>[,<magic1>[,<magic2>[...]]]]])
+		dialog.textinput [-d=<default text>] [-i=<icon>] [-m] [-b] [-p] (<caption>,<info_text>,<button0>[,<button1>[,<button2>[,<magic1>[,<magic2>[...]]]]])
 		{
 			<callback_command>
 		}
@@ -429,6 +433,8 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		Display the specified icon, to the left of the informational text
 		!sw: -m | --multiline
 		Input multiline text instead of single line
+		!sw: -p | --password
+		Display asterisks instead of the characters actually entered
 	@description:
 		Shows a text input dialog box with the specified <caption>, <info_text>, <icon> and
 		buttons.[br]
@@ -446,6 +452,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		to be the escape button of the dialog.[br]
 		If the -m switch is used, the dialog will be a multi-line text input, otherwise the user will be able to
 		input only a single line of text.[br]
+		If the -p switch is used, the text will be show as asterisks, useful for sensitive data (passwords).[br]
 		If the -d switch is used, the initial text input value is set to <default text>.[br]
 		If the -i switch is used, the dialog displays also the icon <icon> to the left of <info_text>.
 		<icon> is an image identifier (a relative or absolute path to an image file, or a signed number that maps to an internal KVIrc image). [br]
@@ -498,7 +505,7 @@ static bool dialog_kvs_cmd_textinput(KviKvsModuleCallbackCommandCall * c)
 	if(c->hasSwitch('b',"modal")) modal=true;
 	else modal=false;
 	KviKvsCallbackTextInput * box = new KviKvsCallbackTextInput(
-			szCaption,szInfoText,szDefaultText,szIcon,c->switches()->find('m',"multiline"),
+			szCaption,szInfoText,szDefaultText,szIcon,c->switches()->find('m',"multiline"),c->switches()->find('p',"password"),
 			szButton0,szButton1,szButton2,szCmd,&params,c->window(),modal);
 	box->show();
 

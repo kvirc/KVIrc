@@ -64,6 +64,7 @@ public:
 		const QString &szDefaultText,
 		const QString &szIcon,
 		bool bMultiLine,
+		bool bPassword,
 		const QString &szButton0,
 		const QString &szButton1,
 		const QString &szButton2,
@@ -73,6 +74,7 @@ public:
 	~KviKvsCallbackTextInput();
 protected:
 	bool      m_bMultiLine;
+	bool      m_bPassword;
 	QWidget * m_pEdit;
 	int       m_iEscapeButton;
 	int       m_iDefaultButton;
