@@ -294,13 +294,13 @@ static bool objects_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	/*
 		@doc: objects.exists
 		@title:
-			objects.exists
+			$objects.exists
 		@type:
-			command
+			function
 		@short:
 			Check if an object exists.
 		@syntax:
-			<boolean> $object.exists(<obejct id:hobject>)
+			<boolean> $objects.exists(<obejct id:hobject>)
 		@description:
 			Check if an objects exists and return a boolean value.
 		@seealso:
@@ -322,13 +322,13 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	/*
 		@doc: objects.instances
 		@title:
-			objects.instances
+			$objects.instances
 		@type:
-			command
+			function
 		@short:
 			List object instances
 		@syntax:
-			<array> $object.instances(<class name:string>[,<flags:string>])
+			<array> $objects.instances(<class name:string>[,<flags:string>])
 		@description:
 			Returns an array with the instance handles of
 			of objects of the specified class. <flags> is a
@@ -405,13 +405,13 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 	/*
 		@doc: objects.variables
 		@title:
-			objects.variables
+			$objects.variables
 		@type:
-			command
+			function
 		@short:
 			List object's variables.
 		@syntax:
-			<hash> objects.variables(<hobject>)
+			<hash> $objects.variables(<hobject>)
 		@description:
 			Returns an hash with the object's variables(useful only for debugging).
 		@seealso:
@@ -453,7 +453,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 		@short:
 			List all the functions .
 		@syntax:
-			<hash> objects.classAllHandlers(<class name:string>)
+			<hash> $objects.classAllHandlers(<class name:string>)
 		@description:
 			Returns an hash with the class's functions(useful only for debugging).
 		@seealso:
@@ -491,13 +491,13 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	/*
 		@doc: objects.classes
 		@title:
-			objects.classes
+			$objects.classes
 		@type:
-			command
+			function
 		@short:
 			List user defined classes
 		@syntax:
-			<array> $object.classes()
+			<array> $objects.classes()
 		@description:
 			Returns an array with the user defined classes.
 		@seealso:
@@ -547,13 +547,13 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	/*
 		@doc: objects.name
 		@title:
-			objects.name
+			$objects.name
 		@type:
-			command
+			function
 		@short:
 			Returns class name
 		@syntax:
-			<array> $object.name()
+			<array> $objects.name()
 		@description:
 			Returns a string with the name of the class.
 		@seealso:
