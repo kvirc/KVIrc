@@ -152,8 +152,25 @@ bool DccRecvThread::sendAck(int filePos)
 #ifdef COMPILE_SSL_SUPPORT
 			if(m_pSSL)
 			{
-				// with ssl error handling is too complex here :/
-				postErrorEvent(KviError::AcknowledgeError);
+
+				// dropping ack when no serious ssl error occured
+				switch(m_pSSL->getProtocolError(iRet))
+				{
+					case KviSSL::ZeroReturn:
+						//return false; check eagain
+					case KviSSL::Success:
+					case KviSSL::WantRead:
+					case KviSSL::WantWrite:
+						return true;
+						break;
+					default:
+						// Raise unknown SSL ERROR
+						postErrorEvent(KviError::SSLError);
+						return false;
+						break;
+				}
+
+
 				return false;
 			}
 #endif //COMPILE_SSL_SUPPORT
@@ -174,7 +191,7 @@ bool DccRecvThread::sendAck(int filePos)
 		}
 
 		// Sent something but not everything.
-
+		// How likely is it to get in here ?!
 		// Sleep for a short while and try to send the missing part.
 		// This will probably throttle the bandwidth usage a bit too.
 		msleep(10);
@@ -237,8 +254,11 @@ void DccRecvThread::postMessageEvent(const char * m)
 }
 
 // FIXME: This stuff should be somewhat related to the 1448 bytes TCP basic packet size
-#define KVI_DCC_RECV_BLOCK_SIZE 8192
-#define KVI_DCC_RECV_75PERCENTOF_BLOCK_SIZE 6150
+//#define KVI_DCC_RECV_BLOCK_SIZE 8192
+//#define KVI_DCC_RECV_75PERCENTOF_BLOCK_SIZE 6150
+#define KVI_DCC_RECV_BLOCK_SIZE 16384
+#define KVI_DCC_RECV_75PERCENTOF_BLOCK_SIZE 12280
+
 
 void DccRecvThread::run()
 {
@@ -412,12 +432,16 @@ void DccRecvThread::run()
 							switch(m_pSSL->getProtocolError(readLen))
 							{
 								case KviSSL::ZeroReturn:
+									//check eagain not necessary a connection closure!
+									//if (!handleInvalidSocketRead(readLen)
+									// break;
 									readLen = 0;
-								break;
+									break;
+								case KviSSL::Success:
 								case KviSSL::WantRead:
 								case KviSSL::WantWrite:
-									// hmmm...
-								break;
+									// hmmm... DO NOT CALL handleInvalidSocketRead
+									break;
 								case KviSSL::SyscallError:
 								{
 									int iE = m_pSSL->getLastError(true);
@@ -456,7 +480,13 @@ void DccRecvThread::run()
 								break;
 							}
 						}
-						if(!handleInvalidSocketRead(readLen))break;
+#ifdef COMPILE_SSL_SUPPORT
+						if (!m_pSSL && !handleInvalidSocketRead(readLen))
+							break;
+#else
+						if (!handleInvalidSocketRead(readLen))
+							break;
+#endif
 					}
 				} else {
 					updateStats();
@@ -743,9 +773,13 @@ void DccSendThread::run()
 							// ssl error....?
 							switch(m_pSSL->getProtocolError(readLen))
 							{
+								
 								case KviSSL::ZeroReturn:
+									//if (!handleInvalidSocketRead(readLen)
+									// break;
 									readLen = 0;
 								break;
+								case KviSSL::Success:
 								case KviSSL::WantRead:
 								case KviSSL::WantWrite:
 									// hmmm...
@@ -775,9 +809,15 @@ void DccSendThread::run()
 								break;
 							}
 						}
+
+						if (!m_pSSL && !handleInvalidSocketRead(readLen))
+							break;
+#else
+						if (!handleInvalidSocketRead(readLen))
+							break;
 #endif
 
-						if(!handleInvalidSocketRead(readLen))break;
+
 					}
 
 					// update stats
@@ -826,9 +866,11 @@ void DccSendThread::run()
 										// ssl error....?
 										switch(m_pSSL->getProtocolError(readLen))
 										{
+											
 											case KviSSL::ZeroReturn:
 												readLen = 0;
 											break;
+											case KviSSL::Success:
 											case KviSSL::WantRead:
 											case KviSSL::WantWrite:
 												// hmmm...
@@ -858,9 +900,14 @@ void DccSendThread::run()
 											break;
 										}
 									}
-#endif
 
-									if(!handleInvalidSocketRead(readLen))break;
+									if (!m_pSSL && !handleInvalidSocketRead(readLen))
+										break;
+#else
+									if (!handleInvalidSocketRead(readLen))
+										break;
+#endif
+									
 								} else {
 									KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
 									e->setData(new KviCString(__tr2qs_ctx("WARNING: Received data in a DCC TSEND, there should be no acknowledges","dcc")));
@@ -924,6 +971,7 @@ void DccSendThread::run()
 										// ops...might be an SSL error
 										switch(m_pSSL->getProtocolError(written))
 										{
+											case KviSSL::Success:
 											case KviSSL::WantWrite:
 											case KviSSL::WantRead:
 												// Async continue...
@@ -958,11 +1006,15 @@ void DccSendThread::run()
 											break;
 										}
 									}
+
+									if (!m_pSSL && !handleInvalidSocketRead(written))
+										break;
+
+#else
+									if (!handleInvalidSocketRead(written))
+										break;
 #endif
 
-									// error ?
-									if(!handleInvalidSocketRead(written))
-										break;
 
 handle_system_error:
 									int err = kvi_socket_error();
