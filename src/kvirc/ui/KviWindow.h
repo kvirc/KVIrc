@@ -122,7 +122,7 @@ public:
 	*/
 	enum AttentionLevel {
 		VisibleAndActive	= 0,   /**< The window is visible and active (aka: has user focus) */
-		MainWindowIsVisible  	= 1,   /**< The kvirc frame is visible but the window is not the active one */
+		MainWindowIsVisible  	= 1    /**< The kvirc frame is visible but the window is not the active one */
 	};
 	/**
 	* \enum Type

@@ -70,7 +70,7 @@ public:
 		Console = 1,   /**< the log file of a console */
 		Query   = 2,   /**< the log file of a query */
 		DccChat = 3,   /**< the log file of a dcc chat */
-		Other   = 4,   /**< any other log file */
+		Other   = 4    /**< any other log file */
 	};
 
 	/**
@@ -79,9 +79,9 @@ public:
 	*/
 	enum ExportType {
 		PlainText,   /**< export log in plain text file */
-		HTML,        /**< export log in a HTML archive */ 
-		//XML,         /**< export log in a XML file */
-		//DB           /**< export log in a database file */
+		HTML         /**< export log in a HTML archive */ 
+		//XML        /**< export log in a XML file */
+		//DB         /**< export log in a database file */
 	};
 
 	/**

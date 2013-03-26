@@ -41,6 +41,10 @@
 
 #include <sys/types.h>
 
+#ifdef SOLARIS
+	#include <sys/sockio.h>
+#endif
+
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
 	#include <sys/ioctl.h>
 	#include <net/if.h>

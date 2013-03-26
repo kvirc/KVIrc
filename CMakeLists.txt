@@ -985,7 +985,7 @@ else()
 endif()
 
 ############################################################################
-# Win32 mingw/cmake build checks
+# Platform Specific checks
 ############################################################################
 if(WIN32)
 	add_definitions(-D_WIN32_WINNT=0x501 -DWINVER=0x501)
@@ -1002,6 +1002,10 @@ endif()
 if(MSVC)
 	add_definitions(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES)
 	add_definitions(-DMSVC)
+endif()
+
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
+	add_definitions(-DSOLARIS)
 endif()
 
 ############################################################################

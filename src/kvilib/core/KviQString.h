@@ -56,7 +56,7 @@ namespace KviQString
 		PermitVariables   =  2,   /**< escapes '%' character to permit variables */
 		PermitFunctions   =  4,   /**< escapes '$' character to permit functions */
 		PermitMultiLine   =  8,   /**< escapes '\r' and '\n' characters */
-		EscapeParenthesis = 16,   /**< escapes parenthesis */
+		EscapeParenthesis = 16    /**< escapes parenthesis */
 	};
 
 	/**
