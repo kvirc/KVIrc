@@ -86,7 +86,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 	@type:
 		command
 	@title:
-		$texticons.set
+		texticons.set
 	@short:
 		Sets texticon data
 	@syntax:
