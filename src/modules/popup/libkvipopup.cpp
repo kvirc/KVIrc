@@ -127,7 +127,7 @@
 	@description:
 		Adds a menu item with visible <text> and the optional <icon> to an already existing popup or
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
-		"popup.item".[br]
+		"popup.item", for example, "channeltextview.myNestedItem".[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
@@ -180,7 +180,8 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 		Run quietly: don't print warning and errors
 	@description:
 		Adds a menu prologue to an already existing popup or nested popup named <popupname>. If you
-		want to add an item to a nested popup, use the form "popup.item".[br]
+		want to add an item to a nested popup, use the form "popup.item", for example,
+		"channeltextview.myNestedItem".[br]
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		<command> will be executed just before the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
@@ -228,7 +229,8 @@ static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 		Run quietly: don't print warning and errors
 	@description:
 		Adds a menu epilogue to an already existing popup or nested popup named <popupname>. If you
-		want to add an item to a nested popup, use the form "popup.item".[br]
+		want to add an item to a nested popup, use the form "popup.item", for example,
+		"channeltextview.myNestedItem".[br]
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		<command> will be executed just after the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
@@ -274,7 +276,7 @@ static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
 	@description:
 		Adds a nested popup item with visible <text> and the optional <icon> to an already existing popup or
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
-		"popup.item".[br]
+		"popup.item", for example, "channeltextview.myNestedItem".[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
@@ -322,7 +324,8 @@ static bool popup_kvs_cmd_addExtPopup(KviKvsModuleCommandCall * c)
 	@description:
 		Adds a descriptive label with visible <text> and the optional <icon> to an already existing popup or
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
-		"popup.item". The label acts like a separator - it is not selectable or clickable.[br]
+		"popup.item", for example, "channeltextview.myNestedItem". The label acts like a separator - it is
+		not selectable or clickable.[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
@@ -368,7 +371,7 @@ static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
 	@description:
 		Adds an empty nested popup item with visible <text> and the optional <icon> to an already existing popup or
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
-		"popup.item".[br]
+		"popup.item", for example, "channeltextview.myNestedItem".[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
@@ -415,7 +418,8 @@ static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
 	@description:
 		Adds a separator (typically drawn as a straight line) to an already existing popup or
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
-		"popup.item". The separator is not selectable or clickable.[br]
+		"popup.item", for example, "channeltextview.myNestedItem". The separator is not selectable
+		or clickable.[br]
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
@@ -455,7 +459,8 @@ static bool popup_kvs_cmd_addSeparator(KviKvsModuleCommandCall * c)
 		Run quietly: don't print warning and errors
 	@description:
 		Removes all the items from an already existing popup or nested popup named <popupname>.
-		If you want to clear a nested popup, use the form "popup.item".[br]
+		If you want to clear a nested popup, use the form "popup.item", for example,
+		"channeltextview.myNestedItem".[br]
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [fnc]popup.isEmpty[/fnc]
 */
@@ -577,7 +582,7 @@ static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		!sw: -d | --deep
 		Search the whole popup tree instead of only the first level
 	@description:
-		Deletes the item specified by <id> from the poup <popupname>.
+		Deletes the item specified by <id> from the popup <popupname>.
 		If the -d flag is specified then the item with the specified
 		<id> is searched in the whole popup tree (containing submenus)
 		otherwise only the first level is searched. [br]
