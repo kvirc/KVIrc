@@ -56,7 +56,7 @@
 		@description:
 			This class permits KVIrc to have an interface with a SQL database supported by Qt library drivers.
 		@functions:
-			!fn: <boolean> $setConnection(<connection_name:string>,<database_name:string>,[<user:string>,<host_name_string>,<password:string>,<database_driver:string>])
+			!fn: <boolean> $setConnection(<database_name:string>,<connection_name:string>,[<user:string>,<host_name_string>,<password:string>,<database_driver:string>])
 			Connects to the DBMS using the connection <connection_name> and selecting the database <database_name>.[br]
 			If the optional parameter <database_driver> is passed, it will be used the corresponding driver (if present), otherwise Sqlite will be used.
 			Returns true if the operation is successful, false otherwise.
@@ -88,7 +88,7 @@
 			Prepare the query <query> to execute. The string must follow the right syntax against the database in use.
 			It's possible to use the placeholders. It's supported either the identifier ':' and '?' but it's not possible to use them together.
 			Returns true if the operation is successful, false otherwise.
-			See also [classfnc]$queryExec[/classfnc]and[classfnc]$queryBindValue[/classfnc.
+			See also [classfnc]$queryExec[/classfnc]and[classfnc]$queryBindValue[/classfnc].
 			!fn: $queryBindValue()
 			Sets the placeholder <placeholder> to be bound to the value <val> in the prepared statement.
 			Note that the placeholder mark (e.g :) must be included when specifing the placeholder name.
