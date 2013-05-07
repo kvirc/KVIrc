@@ -1457,13 +1457,21 @@ defpopup(windowpopup)
 	item($tr("Part All Channels","defscript"), 31) (%:bIsConnectedConsole && ($window.list(channel)))
 	{
 		foreach(%x,$window.list(channel))
-			window.close %x
+			%channels <+ $target(%x);
+		part $str.join(",",%channels);
 	}
 
 	item($tr("Close All Queries","defscript"), 47) (%:bIsConnectedConsole && ($window.list(query)))
 	{
 		foreach(%x,$window.list(query))
 			window.close %x
+	}
+
+	item($tr("Rejoin All Dead Channels" ,"defscript"), 61) (%:bIsConnectedConsole && ($window.list(deadchannel)))
+	{
+		foreach(%x,$window.list(deadchannel))
+			%channels <+ $target(%x);
+		join $str.join(",",%channels);
 	}
 
 	item($tr("Close All Dead Channels" ,"defscript"), 232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
