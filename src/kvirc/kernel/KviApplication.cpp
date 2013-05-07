@@ -301,10 +301,8 @@ void KviApplication::setup()
 	//qDebug("%1",loader.isLoaded());
 #endif
 
-	// check if we want to permanently disable the splash screen
-	// we do it once for every version: the user should see the new splash screens at least once
 	QString szSplashDisableFile;
-	getLocalKvircDirectory(szSplashDisableFile,Pics,"disable-splash." KVI_VERSION);
+	getLocalKvircDirectory(szSplashDisableFile,Pics,"disable-splash");
 
 	if(KviFileUtils::fileExists(szSplashDisableFile))
 		m_bShowSplashScreen = false;
