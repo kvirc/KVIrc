@@ -713,6 +713,8 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 	}
 }
 
+// FIXME: this currently does not work if the user has changed his date format,
+// since . is hardcoded as date parts separator.
 void KviQueryWindow::pasteLastLog()
 {
 	QString szQuery = target().toLower();

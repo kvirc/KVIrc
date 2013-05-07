@@ -466,7 +466,7 @@ namespace KviFileUtils
 			if(cur.unicode() == 0 || cur=='/')
 #endif
 			{
-				szPath += '_';
+				szPath += '-';
 			} else {
 				szPath += cur;
 			}

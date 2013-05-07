@@ -2026,6 +2026,8 @@ KviIrcConnectionServerInfo * KviChannelWindow::serverInfo()
 	return connection()->serverInfo();
 }
 
+// FIXME: this currently does not work if the user has changed his date format,
+// since . is hardcoded as date parts separator.
 void KviChannelWindow::pasteLastLog()
 {
 	QString szChannel = target().toLower();

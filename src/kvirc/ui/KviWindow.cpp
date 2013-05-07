@@ -536,7 +536,8 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 			szDate = date.toString("yyyy.MM.dd");
 			break;
 	}
-	szDate.replace(KVI_PATH_SEPARATOR_CHAR, '-');
+	szDate.replace('_', '-'); // this would confuse the log viewer
+	KviFileUtils::cleanFileName(szDate);
 
 	QString szBase;
 	getBaseLogFileName(szBase);
