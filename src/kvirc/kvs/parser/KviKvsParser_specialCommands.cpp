@@ -1185,7 +1185,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 			If <item> is an array, a dictionary or a function that returns a dictionary or array reference
 			the iteration is done through all the dictionary/array items.[br]
 			Please note that the iteration order of dictionary items is undefined.[br]
-			You can always break from the loop by using the [cmd]break[/cmd] command.[br]
+			You can always break from the loop by using the [cmd]break[/cmd] command,
+			or skip to the next item with continue.[br]
 			foreach doesn't iterate over empty scalar variables (i.e. the ones set to [fnc]$nothing[/fnc])
 			unless you use the -a switch. (Note that an array with *some* empty entries is NOT empty so
 			the iteration is in fact done).

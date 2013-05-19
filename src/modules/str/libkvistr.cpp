@@ -1517,11 +1517,11 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 		If the flag 'p' is specified the returned array will contain at its index 0
 		the text that matched the full pattern, and in the following array indexes
 		the captured texts that matched each parenthesized subpattern.[br]
-		The 'p' flag has effect only if used toghether with the 'r' flag.[br]
+		The 'p' flag has effect only if used together with the 'r' flag.[br]
 		If the offset is specified attempts to find a match in from position offset in every array's item. [br]
 		If offset is -1, the search starts at the last character; if -2, at the next to last character; etc. [br]
 		Note that since almost any other variable type can be automatically cast
-		to an array, then you can use this function also on scalars or hashes.
+		to an array, you can also use this function on scalars or hashes.
 	@examples:
 		[example]
 			[comment]# Find all the nicknames starting with the letter A or a[/comment]
