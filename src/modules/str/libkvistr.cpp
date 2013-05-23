@@ -466,12 +466,12 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.find
 	@short:
-		Find the index of the nth ocurrence of a substring in a string
+		Find the index of the nth occurrence of a substring in a string
 	@syntax:
-		<int> $str.find(<findIn:string>,<tofind:string>[,ocurrence:int])
+		<int> $str.find(<findIn:string>,<tofind:string>[,occurrence:int])
 	@description:
 		This function search in the string given as the first parameter for the string
-		given as his second parameter, and will return the index where the nth ocurrence
+		given as his second parameter, and will return the index where the nth occurrence
 		given as the third parameter is found or -1 if it's not located. It starts
 		counting at 0. If occurence is not specified then the first occurence
 		is searched. WARNING: The occurence number starts from 1! (Yes, that's a bug, but
@@ -486,7 +486,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szFindIn)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szToFind)
-		KVSM_PARAMETER("ocurrence",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iOcurence)
+		KVSM_PARAMETER("occurrence",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iOcurence)
 	KVSM_PARAMETERS_END(c)
 	int pos = 1;
 	if(iOcurence!=0) pos = iOcurence;
@@ -868,7 +868,7 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $str.replace(<string:string>,<toreplace:string>,<replacewith:string>[,<case:bool>])
 	@description:
-		This function returns a string created replacing all ocurrences of the second parameter
+		This function returns a string created replacing all occurrences of the second parameter
 		('toreplace') in the string given as the first parameter ('string') with the string
 		given as the third parameter ('replacewith').
 		If the fourth parameter is set to true, then the string replacement is case sensitive.
@@ -903,7 +903,7 @@ static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $str.urlencode(<string:string>)
 	@description:
-		This function returns a string created replacing all ocurrences in the parameter ('string') with their respective html entities.[br]
+		This function returns a string created replacing all occurrences in the parameter ('string') with their respective html entities.[br]
 		The replacement is case insensitive.
 */
 static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
@@ -983,12 +983,12 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.lefttolast
 	@short:
-		Returns the left part of a string until the last ocurrence of a given substring
+		Returns the left part of a string until the last occurrence of a given substring
 	@syntax:
 		<string> $str.lefttolast(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the left part of the string given as the first parameter
-		from the start until the last ocurrence of the string given as the second parameter
+		from the start until the last occurrence of the string given as the second parameter
 		is found. It doesn't include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
@@ -1021,12 +1021,12 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.rightfromfirst
 	@short:
-		Returns the right part of a string from the first ocurrence of a given substring
+		Returns the right part of a string from the first occurrence of a given substring
 	@syntax:
 		<string> $str.rightfromfirst(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the right part of the string given as the first parameter
-		from the position where the first ocurrence of the string given as the second parameter
+		from the position where the first occurrence of the string given as the second parameter
 		is found. It doesn't include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
@@ -1059,12 +1059,12 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.rightfromlast
 	@short:
-		Returns the right part of a string from the last ocurrence of a given substring
+		Returns the right part of a string from the last occurrence of a given substring
 	@syntax:
 		<string> $str.rightfromlast(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the right part of the string given as the first parameter
-		from the position where the last ocurrence of the string given as the second parameter
+		from the position where the last occurrence of the string given as the second parameter
 		is found. It doesn't include the substring of the second parameter in the returned value.
 		If the second parameter is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
