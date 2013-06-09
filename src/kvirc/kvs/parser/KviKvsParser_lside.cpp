@@ -419,17 +419,14 @@ end_of_the_param:
 	@short:
 		Array concatenation operator
 	@body:
-		This operator concatenates arrays
+		This operator concatenates scalars, arrays or hashes to a target array
+		- if the target is not an array, it is converted to one first.[br]
 		The syntax is:[br]
 		[br]
 		[b]<target> <+ <right_operand>[/b][br]
 		[br]
-		If <target> is not an array, it is converted to one first.
-		After that, if <right_operand> is a scalar then it is appended
-		to the end of the <target> array. If <right_operand> is an array
-		then all of its items are appended to the end of the <target> array.
-		If <right_operand> is a hash then all of its value items
-		are appended to the end of the <target> array.
+		If <right_operand> is a scalar then it is appended to <target>,
+		otherwise the constituent items of the array or values of the hash are appended. 
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
