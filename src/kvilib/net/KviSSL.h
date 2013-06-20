@@ -33,6 +33,13 @@
 
 #include "KviPointerHashTable.h"
 
+// Apple deprecated openssl since osx 10.7: 
+
+#ifdef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+	#undef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+	#define DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+#endif
+				
 #include <openssl/ssl.h>
 
 
