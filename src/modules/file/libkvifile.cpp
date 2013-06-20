@@ -47,6 +47,14 @@
 
 
 #if defined(COMPILE_SSL_SUPPORT)
+
+	// Apple deprecated openssl since osx 10.7: 
+
+	#ifdef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+		#undef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+		#define DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+	#endif
+
 	#include <openssl/evp.h>
 #else
 	// The fallback we can always use, but with very limited set of
