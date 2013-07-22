@@ -225,6 +225,7 @@ namespace KviError
 			case EPIPE:        return KviError::BrokenPipe;            break;
 			case ENOTCONN:     return KviError::SocketNotConnected;    break;
 			case ENOBUFS:      return KviError::InsufficientResources; break;
+			case ECONNRESET:   return KviError::ConnectionResetByPeer; break;
 			case EHOSTUNREACH: return KviError::HostUnreachable;       break;
 			// Unhandled error...pass errno to the strerror function
 			default:           return KviError::UnknownError;          break;
