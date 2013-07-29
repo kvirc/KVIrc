@@ -1,0 +1,26 @@
+[KVIrc]
+uNextTip=0
+uNumTips=22
+TranslatorHint=This-file-MUST-be-encoded-in-UTF8
+0=Voit avata yhteyden moeen palvelimeen yhdellä KVIrc-ikkuna, valitse vain "Uusi IRC-konteksti" KVIrc-valikosta.
+1=IPv6 on nyt täysin tuettu, jopa DCC-tiedonsiirtoihin.<br><b>/server -i &lt;palvelimen nimi&gt;</b> komentoa käyttäen :)
+2=KVIrcillä on tuki SSL-salaukseen.<br>SSL-salattuja yhteyksiä voidaan luoda käyttämällä komentoa <b>/server -s</b> ja DCC-yhteyksiä käyttämällä komentoa <b>/dcc.chat -s</b><br>Se toimii myös IPv6:n kautta.
+3=<b>IRC-konteksti</b> on sarja resursseja, jotka kommunikoivat palvelimen yhteyden kanssa. Se on yhdistetty <b>konsoli</b>-ikkunaan, joka näyttää järjestelmä- ja palvelinviestit.
+4=KVIrc on modulaarinen sovellus. Moodulit ladataan ja puretaan näkymättömästi käyttäjälle (ja skripterille!) Voit myös kirjoittaa omia moduulejasi, jotka laajentavat skriptauskieltä, tai lisäävät uusia ominaisuuksia.
+5=KVIrcillä on tuki monelle käsittelijäskriptille yhdelle tapahtumalle. Tämä sallii monien skriptien asentaminen samaan aikaan, vältetään käsittelijöiden törmäykset ja auttaa lisäämään/poistamaan ja akvoimaan/deaktivoimaan skriptiosioita.
+6=KVIrcillä tukee <b>irc://</b> Uniform Resource Locatoria (URL:ää). Aja komento: <br><b>kvirc irc://irc.palvelimesi.org:6667/kanava</b><br> yhdistääksesi palvelimeen.<br>Yleinen syntaksi on:<br><b>irc[6]://&lt;palvelimennimi&gt;[:&lt;port&gt;][/[&lt;kanava&gt;[?&lt;salasana&gt;]]]</b>
+7=KVIrc-suoritettava käyttäytyy kuin "netscape -ohjaus" komento, jos jokin KVIrcin osa on jo käynnissä, komentorivin parametrit siihen osaan suoritetaan IPC:n kautta. Voit ylikirjoittaa tämän ominaisuuden <b>-f</b> kytkimellä.
+8=KVIrc voi olla selaimesi käsittelijä <b>irc://</b> URL:lle. Jos KVIrcillä on käännetty KDE-tuen kanssa, sinun pitäisi pystyä ajamaan se yksinkertaisesti kirjoittamalla <b>irc://</b> URL Konqueror:in sijaintipalkkiin.<br>Kokeile <b>irc://irc.freenode.net/kvirc</b> :)
+9=URL-osoitteita voi tehdä myös IPv6-palvelimilli seuraavalla syntaksilla:<br><b>irc6://&lt;ipv6-palvelimennimi&gt;[:&lt;portti&gt;][/[&lt;kanava&gt;[?&lt;salasana&gt;]]]</b>
+10=Voit vaihtaa ikkunoiden välillä painamalla <b>Alt+ylös/alas</b>. <b>Vaihto+ylös/alas</b> vaihtaa ikkunoita vain nykyisessä kontekstissa.
+11=Nopea tapa yhdistää palvelimeen uudessa IRC-kontekstissa on <b>/server -n &lt;palvelimennimi&gt;</b>
+12=KVIrc on siirrettävä Windowsin, Mac OSX:n, Linuxin ja muiden Unix-koneiden kanssa. Jos olet hyvä skripteri, sinunkin skriptisi ovat siirrettäviä!
+13=Haluatko automaattisesti liittyä kanavalla yhdistettäessä?<br>Helppoa!<br>Klikkaa vain "Edistynyt (Advanced)" palvelimen asetuksissa ja lisää kanava "Liity kanaville (Join Channels)" välilehdellä. Tämä toimii kaikille palvelimille: <b>/event(OnIrc,autojoin){ join #kanavasi; }</b>
+14=Tiedätkö mikä avatar on? Saa se selville komennolla <b>/help The AVATAR idea</b>
+15=DCC-asetussivulla on paljon valintoja, jotka voivat ratkaista monia yleisiä DCC-yhteysongelmia. Ihmiset palomuurin takana voivat lähettää myös dataa. Se on vain parin asetuksen takana. :)
+16=KVIrc tukee monia 8-bittisiä kirjainsalauksia. Voit "puhua" KOI8-R:ään perustuvaa venäjää toisella kanavalla ja japania toisella, samassa yhteydessä (asianmukaisilla fonteilla). Me suoittelemme käyttämään <b>Unicode</b>-merkistöä (UTF-8), mikä tukee melkein kaikkia kieliä maailmassa.
+17=Välttääksesi liiallisia DCC-siirtoja, on suositeltavaa, että teet avatarisi niin, että ne ovat saatavissa verkosta. Voit myös käyttää jo verkossa olevaa kuvaa avatarina.<br><b>/avatar #kanavasi http://hauskapalvelin.fi/hauskaa/hauskakuva.png</b> toimii!
+18=KVIrc sisältää sisäänrakennetun HTTP-asiakkaan, ja voit ladata tiedostoja verkosta käyttämällä komentoa <b>/http.get</b>.
+19=Etkö pidä ikkunoiden puutehtäväpalkkitilasta? Voit käyttää perinteistä tehtäväpalkkia (samanlainen kuin mIRCissä) tehtäväpalkin asetussivulla.
+20=Voit kopioida tekstiä teksti-ikkunasta leikepöydälle yksinkertaisesti "maalaamalla" (valitsemalla) sen hiirellä. Jos pidät vaihtonäppäintä samaan aikaan pohjassa, silloin myös värikoodit kopioituvat.
+21=Tämä on viimeinen vinkki. Voit lisätä omia vinkkejäsi - käytä komentoa <b>/help tip.open</b> saadaksesi lisätietoja. Voit myös lähettää uudet vinkkisi (millä tahansa kielellä) sähköpostilla osoitteeseen <b>trisk-kvirc(at)quasarnet.org</b>.
