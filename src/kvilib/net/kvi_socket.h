@@ -108,7 +108,18 @@
 
 inline kvi_socket_t kvi_socket_create(int pf,int type,int proto)
 {
+#ifdef COMPILE_ON_MAC
+	/*
+	 * Ignore SIGPIPE. Under linux we set MSG_NOSIGNAL on send and recv calls,
+	 * but under OSX (and probably other *BSD) we need to set SO_NOSIGPIPE
+	 */
+	kvi_socket_t fd = (kvi_socket_t)socket(pf,type,proto);
+	int set = 1;
+	setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
+	return fd;
+#else
 	return (kvi_socket_t)socket(pf,type,proto);
+#endif
 }
 
 //================================================================================================

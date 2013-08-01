@@ -44,10 +44,6 @@
 	#include <signal.h>
 #endif
 
-#ifdef COMPILE_ON_MAC
-	#include <sys/socket.h>
-#endif
-
 static bool g_bSSLInitialized = false;
 static KviMutex * g_pSSLMutex = 0;
 
@@ -376,10 +372,6 @@ bool KviSSL::initSocket(kvi_socket_t fd)
 	m_pSSL = SSL_new(m_pSSLCtx);
 	if(!m_pSSL)return false;
 	if(!SSL_set_fd(m_pSSL,fd))return false;
-#ifdef COMPILE_ON_MAC
-	int set = 1;
-	setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
-#endif
 	return true;
 }
 
