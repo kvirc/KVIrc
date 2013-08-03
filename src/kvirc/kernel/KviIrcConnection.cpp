@@ -368,8 +368,11 @@ void KviIrcConnection::linkEstabilished()
 		if(sendFmtData("CAP LS\r\nPING :%Q",&(target()->server()->hostName())))
 			return;
 
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Failed to send the CAP LS request. Server capabilities will not be detected."));
+		//m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Failed to send the CAP LS request. Server capabilities will not be detected."));
 	}
+
+	if(!link()->socket())
+		return;
 
 	if(
 			(!link()->socket()->usingSSL()) &&
