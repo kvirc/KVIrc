@@ -371,7 +371,7 @@ void KviIrcConnection::linkEstabilished()
 		//m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Failed to send the CAP LS request. Server capabilities will not be detected."));
 	}
 
-	if(!link()->socket())
+	if(!link() || !link()->socket())
 		return;
 
 	if(
