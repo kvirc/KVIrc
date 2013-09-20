@@ -1424,44 +1424,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-/*
-	@doc: window.setCryptEngine
-	@type:
-		command
-	@title:
-		window.setCryptEngine
-	@short:
-		Sets the crypt engine for a window that supports it
-	@syntax:
-		window.setCryptEngine [-q] [-n] [-m] <window_id:integer> <enginename:string> <hex_encrypt_key;string> [hex_decrypt_key:string]
-	@switches:
-		!sw: -q | --quiet
-		Be quiet: do echo the raw data.
-		!sw: -n | --onlydecrypt
-		Disables encryption
-		!sw: -m | --onlyencrypt
-		Disables decryption
-	@description:
-		Sets the specified [doc:crypt_engines]cryptographic engine[/doc] for the window. If <enginename> is empty
-		then any current crypting engine is removed (i.e. crypting is disabled).
-		The must be both expressed in hexadecimal notation and are internally transformed in bytes.
-		If only the encrypt key is specified then it will be used for both encrypting and
-		decrypting. This command works only if crypt support is compiled in.
-	@examples:
-		[example]
-		[comment]# This is a really lame example :D[/comment]
-		alias(saylame)
-		{
-			window.setCryptEngine $window Lamerizer
-			say $0-
-			window.setCryptEngine $window
-		}
-		saylame Hello eleet!
-		[/example]
 
-	@seealso:
-		[fnc]$asciiToHex[/fnc], [fnc]$features[/fnc]
-*/
 
 /*
 	@doc: window.savePropertiesAsDefault
@@ -1529,6 +1492,44 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 }
 #endif
 
+/*
+	@doc: window.setCryptEngine
+	@type:
+		command
+	@title:
+		window.setCryptEngine
+	@short:
+		Sets the crypt engine for a window that supports it
+	@syntax:
+		window.setCryptEngine [-q] [-n] [-m] <window_id:integer> <enginename:string> <hex_encrypt_key;string> [hex_decrypt_key:string]
+	@switches:
+		!sw: -q | --quiet
+		Be quiet: do echo the raw data.
+		!sw: -n | --onlydecrypt
+		Disables encryption
+		!sw: -m | --onlyencrypt
+		Disables decryption
+	@description:
+		Sets the specified [doc:crypt_engines]cryptographic engine[/doc] for the window. If <enginename> is empty
+		then any current crypting engine is removed (i.e. crypting is disabled).
+		The must be both expressed in hexadecimal notation and are internally transformed in bytes.
+		If only the encrypt key is specified then it will be used for both encrypting and
+		decrypting. This command works only if crypt support is compiled in.
+	@examples:
+		[example]
+		[comment]# This is a really lame example :D[/comment]
+		alias(saylame)
+		{
+			window.setCryptEngine $window Lamerizer
+			say $0-
+			window.setCryptEngine $window
+		}
+		saylame Hello eleet!
+		[/example]
+
+	@seealso:
+		[fnc]$asciiToHex[/fnc], [fnc]$features[/fnc]
+*/
 static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 {
 	QString szWnd;
@@ -1603,6 +1604,38 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: $window.cryptEngine
+	@type:
+		function
+	@title:
+		$window.cryptEngine
+	@short:
+		Returns the name of the crypt engine currently set in a window
+	@syntax:
+		$window.inputText(<window_id:integer>)
+	@description:
+		Returns the name of the crypt engine set in the current window.
+		If no current engine is set then empty string is returned.
+	@seealso:
+		[cmd]window.setCryptEngine[/cmd]
+*/
+
+static bool window_kvs_fnc_cryptEngine(KviKvsModuleFunctionCall * c)
+{
+	GET_KVS_FNC_WINDOW_ID
+	if(pWnd)
+	{
+#ifdef COMPILE_CRYPT_SUPPORT
+		if(KviCryptSessionInfo * pCryptSessionInfo = pWnd->cryptSessionInfo())
+			c->returnValue()->setString(pCryptSessionInfo->m_szEngineName);
+#else //!COMPILE_CRYPT_SUPPORT
+		// do nothing
+#endif //!COMPILE_CRYPT_SUPPORT
+	}
+	return true;
+}
+
 static bool window_module_init(KviModule *m)
 {
 	g_pUserWindowList = new KviPointerList<UserWindow>();
@@ -1625,6 +1658,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_FUNCTION(m,"open",window_kvs_fnc_open);
 	KVSM_REGISTER_FUNCTION(m,"inputText",window_kvs_fnc_inputText);
 	KVSM_REGISTER_FUNCTION(m,"context",window_kvs_fnc_context);
+	KVSM_REGISTER_FUNCTION(m,"cryptEngine",window_kvs_fnc_cryptEngine);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"highlight",window_kvs_cmd_highlight);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",window_kvs_cmd_close);
