@@ -1205,6 +1205,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$2 = source host
 			$3 = message
 			$4 = [target mode prefixes]
+			$5 = was encrypted
 		@window:
 			Channels window
 		@description:
@@ -1212,6 +1213,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$0!$1@$2 is the source of the message, $3 is the message text
 			and $4 are the eventual mode prefixes added to the target channel (i.e:
 			if the message is only for channel operators then you will get the string @ in $4).
+			$5 will be 1 if the message was encrypted and 0 otherwise.
 		@seealso:
 			[event:onquerymessage]OnQueryMessage[/event]
 			[event:ondccchatmessage]OnDCCChatMessage[/event]
@@ -1221,7 +1223,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
 		"$3 = message\n" \
-		"$4 = target mode prefixes"),
+		"$4 = target mode prefixes\n" \
+		"$5 = was encrypted"),
 
 	/*
 		@doc: onchannelnotice
@@ -1235,6 +1238,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$0 = source nick
 			$1 = message
 			$2 = target
+			$3 = was encrypted
 		@window:
 			Channel window
 		@description:
@@ -1243,13 +1247,15 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			For channel op or channel voice notices it will contain also the leading '@' or '+' flag.
 			Please note that this convention is different from the one used in [event:onchannelprivmsg]OnChannelMessage[/event]:
 			the incompatibility is here for historical reasons: it is not a big deal so we're not fighting it :)
+			$3 will be 1 if the message was encrypted and 0 otherwise.
 		@seealso:
 			[event:onservernotice]OnServerNotice[/event]
 	*/
 	EVENT("OnChannelNotice", \
 		"$0 = source nick\n" \
 		"$1 = message\n" \
-		"$2 = target"),
+		"$2 = target\n" \
+		"$3 = was encrypted"),
 
 	// Queries
 	/*
@@ -1265,6 +1271,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = source username
 			$2 = source host
 			$3 = message
+			$4 = was encrypted
 		@window:
 			Query or console window.
 		@description:
@@ -1277,6 +1284,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Note also that you may not receive this event if the anti-spam option is in use and
 			KVIrc has detected that this might be a spam message. This is usually not an issue
 			but if you care about it then write to pragma at kvirc dot net asking to add a OnSpam event.
+			$4 will be 1 if the message is encrypted and 0 otherwise.
 		@seealso:
 			[event:onquerywindowrequest]OnQueryWindowRequest[/event]
 			[event:onquerywindowcreated]OnQueryWindowCreated[/event]
@@ -1288,7 +1296,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nick\n" \
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
-		"$3 = message"),
+		"$3 = message\n" \
+		"$4 = was encrypted"),
 
 	/*
 		@doc: onquerynotice
@@ -1303,11 +1312,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = source username
 			$2 = source host
 			$3 = message
+			$4 = was encrypted
 		@window:
 			Query window or console
 		@description:
 			Triggered when a private notice is received.[br]
 			If you call [cmd]halt[/cmd] in this event, the message output will be stopped and if the message was going to cause a query window creation, the window will NOT be created
+			$4 will be 1 if the message is encrypted and 0 otherwise.
 		@seealso:
 			[event:onchannelmessage]OnChannelMessage[/event]
 			[event:onchannelnotice]OnChannelNotice[/event]
@@ -1316,7 +1327,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nick\n" \
 		"$1 = source username\n" \
 		"$2 = source host\n" \
-		"$3 = message"),
+		"$3 = message\n" \
+		"$4 = was encrypted"),
 
 	/*
 		@doc: onquerywindowrequest

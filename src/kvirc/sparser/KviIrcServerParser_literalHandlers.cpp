@@ -897,7 +897,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 			// trigger the script event and eventually kill the output
 			QString szMsgText = query->decodeText(txtptr);
-			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,query,szNick,szUser,szHost,szMsgText))
+			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnQueryMessage,query,szNick,szUser,szHost,szMsgText,(kvs_int_t)(msgtype == KVI_OUT_QUERYPRIVMSGCRYPTED)))
 				msg->setHaltOutput();
 
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !query->hasAttention())
@@ -940,7 +940,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			// no query creation: no decryption possible
 			// trigger the query message event in the console
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,console,szNick,szUser,szHost,szMsgText))
+			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnQueryMessage,console,szNick,szUser,szHost,szMsgText,(kvs_int_t)0))
 					msg->setHaltOutput();
 
 			// we don't have a query here!
@@ -1037,7 +1037,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 			QString szMsgText = chan->decodeText(txtptr);
 
-			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnChannelMessage,chan,szNick,szUser,szHost,szMsgText,szPrefixes))
+			if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnChannelMessage,chan,szNick,szUser,szHost,szMsgText,szPrefixes,(kvs_int_t)(msgtype == KVI_OUT_CHANPRIVMSGCRYPTED)))
 				msg->setHaltOutput();
 
 			// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
@@ -1338,7 +1338,7 @@ output_to_query_window:
 			DECRYPT_IF_NEEDED(query,msg->safeTrailing(),KVI_OUT_QUERYNOTICE,KVI_OUT_QUERYNOTICECRYPTED,szBuffer,txtptr,msgtype)
 			QString szMsgText = query->decodeText(txtptr);
 			// trigger the script event and eventually kill the output
-			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryNotice,query,szNick,szUser,szHost,szMsgText))
+			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnQueryNotice,query,szNick,szUser,szHost,szMsgText,(kvs_int_t)(msgtype == KVI_OUT_QUERYNOTICECRYPTED)))
 				msg->setHaltOutput();
 			// spit out the message text
 			if(!msg->haltOutput())
@@ -1369,7 +1369,7 @@ output_to_query_window:
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 			// no query creation: no decryption possible
 			// trigger the query message event in the console
-			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryNotice,console,szNick,szUser,szHost,szMsgText))
+			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnQueryNotice,console,szNick,szUser,szHost,szMsgText,(kvs_int_t)0))
 				msg->setHaltOutput();
 			// spit the message text out
 			if(!msg->haltOutput())
@@ -1470,7 +1470,8 @@ output_to_query_window:
 	DECRYPT_IF_NEEDED(chan,msg->safeTrailing(),KVI_OUT_CHANNELNOTICE,KVI_OUT_CHANNELNOTICECRYPTED,szBuffer,txtptr,msgtype)
 	QString szMsgText = chan->decodeText(txtptr);
 
-	if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnChannelNotice,chan,szNick,szMsgText,szOriginalTarget))msg->setHaltOutput();
+	if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnChannelNotice,chan,szNick,szMsgText,szOriginalTarget,(kvs_int_t)(msgtype == KVI_OUT_CHANNELNOTICECRYPTED)))
+		msg->setHaltOutput();
 
 	if(!msg->haltOutput())
 	{
