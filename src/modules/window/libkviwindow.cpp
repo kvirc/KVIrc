@@ -1613,7 +1613,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	@short:
 		Returns the name of the crypt engine currently set in a window
 	@syntax:
-		$window.inputText(<window_id:integer>)
+		$window.cryptEngine(<window_id:integer>)
 	@description:
 		Returns the name of the crypt engine set in the current window.
 		If no current engine is set then empty string is returned.
