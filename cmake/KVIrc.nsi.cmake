@@ -135,8 +135,6 @@ Section !$(KVIrc) KVIrc_IDX
 
 	WriteUninstaller "$INSTDIR\uninstall.exe"
 
-	ExecWait "$INSTDIR\win32registrar.exe"
-
 SectionEnd
 
 ; Optional section (can be disabled by the user)
