@@ -29,6 +29,10 @@
 // KviIrcConnectionAsyncWhowasData for creating an awhowas command
 // It is now also used by KviIrcConnectionAsyncWhoisData
 
+#ifndef __GNUC__
+#define __attribute__(X)
+#endif
+
 template <class T>
 class KVIRC_API KviIrcConnectionAsyncData
 {

@@ -41,7 +41,7 @@
 
 #include <sys/types.h>
 
-#ifdef SOLARIS
+#if defined (__SVR4) && defined (__sun)
 	#include <sys/sockio.h>
 #endif
 

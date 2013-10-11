@@ -200,6 +200,12 @@ static QString queryWinInfo(QueryInfo info)
 	case VER_PLATFORM_WIN32_NT:
 
 		// Test for the specific product.
+		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 3 )
+		{
+			if( osvi.wProductType == VER_NT_WORKSTATION )
+				szVersion+= "Windows 8.1 ";
+			else szVersion+="Windows Server 2012 R2";
+		}
 
 		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 2 )
 		{

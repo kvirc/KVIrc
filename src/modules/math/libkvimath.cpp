@@ -39,6 +39,14 @@
 	#endif
 #endif
 
++/* Solaris doesn't have isinf? */
+#if defined (__SVR4) && defined (__sun)
+	#ifndef isinf
+		#include <ieeefp.h>
+		#define isinf(x) (!finite((x)) && (x)==(x))
+	#endif
+#endif
+
 #define MATH_KVS_1PARAM_FUNCTION(__fncname,__paramname,__mathcallname) \
 static bool __fncname(KviKvsModuleFunctionCall * c) \
 { \

@@ -629,15 +629,15 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	m_pIMode = new QCheckBox(__tr2qs_ctx("Invisible (+i)","options"),gbox);
 	m_pIMode->setEnabled(bHasUmode);
-	m_pIMode->setChecked(bHasUmode ? s->initUMode().contains('i',Qt::CaseInsensitive) : szDefUMode.contains('i',Qt::CaseInsensitive));
+	m_pIMode->setChecked(bHasUmode ? bool(s->initUMode().contains('i',Qt::CaseInsensitive)) : bool(szDefUMode.contains('i',Qt::CaseInsensitive)));
 
 	m_pSMode = new QCheckBox(__tr2qs_ctx("Server notices (+s)","options"),gbox);
 	m_pSMode->setEnabled(bHasUmode);
-	m_pSMode->setChecked(bHasUmode ? s->initUMode().contains('s',Qt::CaseInsensitive) : szDefUMode.contains('s',Qt::CaseInsensitive));
+	m_pSMode->setChecked(bHasUmode ? bool(s->initUMode().contains('s',Qt::CaseInsensitive)) : bool(szDefUMode.contains('s',Qt::CaseInsensitive)));
 
 	m_pWMode = new QCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
 	m_pWMode->setEnabled(bHasUmode);
-	m_pWMode->setChecked(bHasUmode ? s->initUMode().contains('w',Qt::CaseInsensitive) : szDefUMode.contains('w',Qt::CaseInsensitive));
+	m_pWMode->setChecked(bHasUmode ? bool(s->initUMode().contains('w',Qt::CaseInsensitive)) : bool(szDefUMode.contains('w',Qt::CaseInsensitive)));
 
 	l = new QLabel("",tab);
 	gl->addWidget(l,2,0);
