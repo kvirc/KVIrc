@@ -622,9 +622,8 @@ if(WANT_PHONON)
 		set(COMPILE_PHONON_SUPPORT 1)
 		list(APPEND LIBS ${PHONON_LIBRARY})
 		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
-		elseif(Qt5Multimedia_FOUND)
-			list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
-		endif()
+	elseif(Qt5Multimedia_FOUND)
+		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
 	endif()
 endif()
 
@@ -1004,9 +1003,11 @@ if(MSVC)
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
-	# SunPro breaks with non-C, maybe users will yell at me for overriding this :D
-	SET(ENV{LANG} "C")
-	SET(ENV{LC_ALL} "C")
+	# SunPro breaks with non-C, and we can't set it here, so nag the user.
+	# looks nasty, maybe there is a better way?
+	IF (NOT ($ENV{LANG} STREQUAL "C"))
+  	message( FATAL_ERROR "Please set enviroment variable \"LANG\" to \"C\" and rerun CMake" )
+	enfif()
 endif()
 
 ############################################################################

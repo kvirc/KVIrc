@@ -39,7 +39,7 @@
 	#endif
 #endif
 
-+/* Solaris doesn't have isinf? */
+/* Solaris doesn't have isinf? */
 #if defined (__SVR4) && defined (__sun)
 	#ifndef isinf
 		#include <ieeefp.h>
