@@ -68,6 +68,9 @@ protected:
 public:
 	~KviIrcContext();
 public:
+
+	/* If you add further states, remember to  update the
+	 * bUnexpectedDisconnect determination in KviIrcContext::connectionTerminated */
 	enum State
 	{
 		Idle,         // connection() == 0

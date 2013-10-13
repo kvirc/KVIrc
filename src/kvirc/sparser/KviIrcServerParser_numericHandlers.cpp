@@ -2320,7 +2320,7 @@ void KviIrcServerParser::parseNumericStartTls(KviIrcMessage * msg)
 	msg->connection()->enableStartTlsSupport(bEnable);
 #else //!COMPILE_SSL_SUPPORT
 	if(!msg->haltOutput())
-		msg->console()->output(KVI_OUT_GENERICERROR,__tr2qs("STARTTLS reply received but SSL support is not complied in: ignoring"));
+		msg->console()->output(KVI_OUT_GENERICERROR,__tr2qs("STARTTLS reply received but SSL support is not compiled in: ignoring"));
 #endif //!COMPILE_SSL_SUPPORT
 }
 
