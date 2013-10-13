@@ -820,7 +820,8 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 					break;
 				case Qt::Key_0:
 					tmp="0";
-					case Qt::Key_1:
+					break;
+				case Qt::Key_1:
 					tmp="1";
 					break;
 				case Qt::Key_2:
