@@ -831,7 +831,7 @@ namespace KviKvsCoreFunctions
 		@short:
 			Retrieves the user flags of a user
 		@syntax:
-			$uflags[(<nickname>)]
+			$uflags[(<nickname>[,<irc context id>])]
 		@description:
 			Returns the user flags of the user with <nickname>.[br]
 			If the <nickname> is not given it is assumed to be the current nickname.[br]
@@ -844,23 +844,35 @@ namespace KviKvsCoreFunctions
 	KVSCF(uflags)
 	{
 		QString szNick;
+		kvs_uint_t uContextId;
 
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("nickname",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
+			KVSCF_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
 		KVSCF_PARAMETERS_END
 
-		if(KVSCF_pContext->window()->console())
+		KviConsoleWindow * cons;
+		if(KVSCF_pParams->count() > 1)
 		{
-			if(KVSCF_pContext->window()->console()->isConnected())
+			cons = g_pApp->findConsole(uContextId);
+			if(!cons)
+				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
+		} else {
+			cons = KVSCF_pContext->window()->console();
+			if(!cons)
+				KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context","kvs"));
+		}
+
+		if(cons && cons->isConnected())
+		{
+			KviIrcUserEntry * e = cons->connection()->userDataBase()->find(szNick.isEmpty() ? cons->connection()->currentNickName() : szNick);
+			if(e)
 			{
-				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick.isEmpty() ? KVSCF_pContext->window()->connection()->currentNickName() : szNick);
-				if(e)
-				{
-					KVSCF_pRetBuffer->setString(e->userFlags());
-					return true;
-				}
+				KVSCF_pRetBuffer->setString(e->userFlags());
+				return true;
 			}
 		}
+
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
