@@ -115,17 +115,17 @@ static bool str_kvs_fnc_fromclipboard(KviKvsModuleFunctionCall * c)
 }
 
 /*
-	@doc: system.toClipboard
+	@doc: str.toClipboard
 	@type:
 		command
 	@title:
-		system.toClipboard
+		str.toClipboard
 	@keyterms:
 		OS clipboard
 	@short:
 		Sets the OS clipboard contents
 	@syntax:
-		system.setenv <value:string>
+		str.toClipboard <value:string>
 	@description:
 		Sets the OS clipboard contents
 	@seealso:
