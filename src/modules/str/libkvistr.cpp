@@ -1037,7 +1037,7 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 			%test = "Hello! My nickname is Pragma, my name is Szymon"
 			echo $str.rightfromfirst(%test, my);		//  " nickname is Pragma, my name is Szymon"
 			echo $str.rightfromfirst(%test, my, true);	//  " name is Szymon"
-			echo $str.rightfromfirst(%test, invalid);	//  "Hello! My nickname is Pragma, my name is Szymon"
+			echo $str.rightfromfirst(%test, invalid);	//  ""
 		[/example]
 */
 static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
@@ -1069,13 +1069,14 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 		This function returns the right part of the string given as the first parameter
 		from the position where the last occurrence of the string given as the second parameter
 		is found. It doesn't include the substring of the second parameter in the returned value.
-		If the second parameter is not found, an empty string is returned.
+		If the substring is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 		@examples:
 		[example]
 			%test = "Hello! My nickname is Pragma, my name is Szymon"
 			echo $str.rightfromlast(%test, My);		//  " name is Szymon"
 			echo $str.rightfromlast(%test, My, true);	//  " nickname is Pragma, my name is Szymon"
+			echo $str.rightfromlast(%test, invalid);	//  ""
 		[/example]
 */
 static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
