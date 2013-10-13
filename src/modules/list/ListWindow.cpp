@@ -291,8 +291,10 @@ void ListWindow::requestList()
 		KviCString parms = m_pParamsEdit->text();
 		if(parms.isEmpty())
 			m_pConsole->connection()->sendFmtData("list");
-		else
+		else {
+			m_pParamsEdit->setText("");
 			m_pConsole->connection()->sendFmtData("list %s",m_pConsole->connection()->encodeText(parms.ptr()).data());
+		}
 
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request, waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
