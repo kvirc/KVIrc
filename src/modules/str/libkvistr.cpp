@@ -950,15 +950,16 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 		<string> $str.lefttofirst(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the left part of the string given as the first parameter
-		from the start until the string given as the second parameter is found. It doesn't
-		include the substring of the second parameter in the returned value.
-		If the second parameter is not found, an empty string is returned.
+		from the first character until the first occurrence of the string given as the second parameter.
+		The returned string doesn't include the substring of the second parameter in the returned value.
+		If the substring is not found, the original string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 	@examples:
 		[example]
 			%test = "Hello! My nickname is Pragma, my name is Szymon"
 			echo $str.lefttofirst(%test, my);	//  "Hello! "
 			echo $str.lefttofirst(%test, my, true);	//  "Hello! My nickname is Pragma, "
+			echo $str.lefttofirst(%test, invalid);	//  "Hello! My nickname is Pragma, my name is Szymon"
 		[/example]
 */
 static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
@@ -988,15 +989,16 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 		<string> $str.lefttolast(<string:string>,<substring:string>[,<case:bool>])
 	@description:
 		This function returns the left part of the string given as the first parameter
-		from the start until the last occurrence of the string given as the second parameter
-		is found. It doesn't include the substring of the second parameter in the returned value.
-		If the second parameter is not found, an empty string is returned.
+		from the first character until the last occurrence of the string given as the second parameter.
+		The returned string doesn't include the substring of the second parameter in the returned value.
+		If the substring is not found, the original string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 	@examples:
 		[example]
 			%test = "Hello! My nickname is Pragma, my name is Szymon"
 			echo $str.lefttolast(%test, My);		//  "Hello! My nickname is Pragma, "
 			echo $str.lefttolast(%test, My, true);	//  "Hello! "
+			echo $str.lefttolast(%test, invalid);	//  "Hello! My nickname is Pragma, my name is Szymon"
 		[/example]
 */
 static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
@@ -1027,14 +1029,15 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 	@description:
 		This function returns the right part of the string given as the first parameter
 		from the position where the first occurrence of the string given as the second parameter
-		is found. It doesn't include the substring of the second parameter in the returned value.
-		If the second parameter is not found, an empty string is returned.
+		is found to the end. It doesn't include the substring of the second parameter in the returned value.
+		If the substring is not found, an empty string is returned.
 		If the third parameter is set to true, then the search is case sensitive; it defaults to false.
 	@examples:
 		[example]
 			%test = "Hello! My nickname is Pragma, my name is Szymon"
 			echo $str.rightfromfirst(%test, my);		//  " nickname is Pragma, my name is Szymon"
 			echo $str.rightfromfirst(%test, my, true);	//  " name is Szymon"
+			echo $str.rightfromfirst(%test, invalid);	//  "Hello! My nickname is Pragma, my name is Szymon"
 		[/example]
 */
 static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
