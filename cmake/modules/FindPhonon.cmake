@@ -18,7 +18,6 @@ macro(_phonon_find_version)
    endif (APPLE AND EXISTS "${PHONON_INCLUDE_DIR}/Headers/phononnamespace.h")
    file(READ ${_phonon_namespace_header_file} _phonon_header LIMIT 5000 OFFSET 1000)
    string(REGEX MATCH "define PHONON_VERSION_STR \"(4\\.[0-9]+\\.[0-9a-z]+)\"" _phonon_version_match "${_phonon_header}")
-   set(PHONON_VERSION "${CMAKE_MATCH_1}")
 endmacro(_phonon_find_version)
 
 # if we want a debug build, prefer the debug libs

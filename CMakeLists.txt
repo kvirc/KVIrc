@@ -251,40 +251,6 @@ else()
 	endif()
 endif()
 
-############################################################################
-# Check for KDE4
-# This has been moved to the top of CMakeLists.txt, since FindKde4 overwrite
-# cmake's module search paths, forcing us to use their version of these
-# modules (eg: FindOpenSSL, see bug #655)
-############################################################################
-
-option(WANT_KDE4 "Whether to use KDE4 support" ON)
-if(WANT_KDE4 AND WANT_QT4)
-	find_package(Qt4 4.6.0)
-	if(Qt4_FOUND)
-		find_package(KDE4)
-		if(KDE4_FOUND)
-			include_directories(${KDE4_INCLUDES})
-			add_definitions(${KDE4_DEFINITIONS})
-			set(COMPILE_KDE_SUPPORT 1)
-			list(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
-			set(CMAKE_STATUS_KDE4_SUPPORT "Yes")
-			# The FindKDE4Internal cmake module adds -Wl,--no-undefined
-			# to the CMAKE_MODULE_LINKER_FLAGS .. which is not good for us
-			string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
-			# and for kvilib...
-			string(REPLACE "-Wl,--no-undefined" "" CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS})
-		else()
-			set(CMAKE_STATUS_KDE4_SUPPORT "Not available")
-		endif()
-	endif()
-elseif(NOT WANT_QT4)
-	# Must be Qt4
-	set(CMAKE_STATUS_KDE4_SUPPORT "Unsupported with Qt5")
-else()
-	set(CMAKE_STATUS_KDE4_SUPPORT "No")
-endif()
-
 ###############################################################################
 #
 # Verbose Makefile
@@ -432,6 +398,7 @@ else()
 		find_package(Qt4 4.6.0)
 		if(Qt4_FOUND)
 			set(CMAKE_STATUS_QT_VERSION "${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}")
+			set(WANT_QT4 ON CACHE BOOL "Whether to prefer Qt4 over Qt5" FORCE)
 		else()
 			message(FATAL_ERROR "No Qt4 or Qt5 found!")
 		endif()
@@ -578,6 +545,37 @@ if(Qt5Widgets_FOUND)
 		set(COMPILE_SVG_SUPPORT 1)
 		endif()
 	endif()
+endif()
+
+############################################################################
+# Check for KDE4
+############################################################################
+
+option(WANT_KDE4 "Whether to use KDE4 support" ON)
+if(WANT_KDE4 AND WANT_QT4)
+	find_package(Qt4 4.6.0)
+	if(Qt4_FOUND)
+		find_package(KDE4)
+		if(KDE4_FOUND)
+			include_directories(${KDE4_INCLUDES})
+			add_definitions(${KDE4_DEFINITIONS})
+			set(COMPILE_KDE_SUPPORT 1)
+			list(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
+			set(CMAKE_STATUS_KDE4_SUPPORT "Yes")
+			# The FindKDE4Internal cmake module adds -Wl,--no-undefined
+			# to the CMAKE_MODULE_LINKER_FLAGS .. which is not good for us
+			string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
+			# and for kvilib...
+			string(REPLACE "-Wl,--no-undefined" "" CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS})
+		else()
+			set(CMAKE_STATUS_KDE4_SUPPORT "Not available")
+		endif()
+	endif()
+elseif(NOT WANT_QT4)
+	# Must be Qt4
+	set(CMAKE_STATUS_KDE4_SUPPORT "Unsupported with Qt5")
+else()
+	set(CMAKE_STATUS_KDE4_SUPPORT "No")
 endif()
 
 # Check for X11
@@ -1005,7 +1003,7 @@ endif()
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
 	# SunPro breaks with non-C, and we can't set it here, so nag the user.
 	# looks nasty, maybe there is a better way?
-	IF (NOT ($ENV{LANG} STREQUAL "C"))
+	if(NOT ($ENV{LANG} STREQUAL "C"))
   	message( FATAL_ERROR "Please set enviroment variable \"LANG\" to \"C\" and rerun CMake" )
 	endif()
 endif()
