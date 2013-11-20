@@ -276,7 +276,7 @@ endif()
 set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
 if(CMAKE_HOST_SYSTEM MATCHES "FreeBSD")
-	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS -export-dynamic)
+	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS -Wl,-export-dynamic)
 	message(STATUS "Patching for FreeBSD...")
 endif()
 
