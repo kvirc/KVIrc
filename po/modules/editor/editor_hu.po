@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2013-12-19 16:16+0100\n"
 "PO-Revision-Date: 2012-07-08 13:11+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -179,24 +179,52 @@ msgid "&Save As..."
 msgstr "Mentés másként"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:243
-msgid "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>"
-msgstr "<center><b>Bináris feltétel</b><br>A popup hívásakor kerül kiértékelésre annak eldöntésére, hogy az elemnek meg kell-e jelennie.<br> Az üres feltétel Igaz értékű lesz.</center>"
+msgid ""
+"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
+"order to decide if this entry has to be shown.<br>An empty condition "
+"evaluates to true.</center>"
+msgstr ""
+"<center><b>Bináris feltétel</b><br>A popup hívásakor kerül kiértékelésre "
+"annak eldöntésére, hogy az elemnek meg kell-e jelennie.<br> Az üres feltétel "
+"Igaz értékű lesz.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
-msgid "<center><b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>"
-msgstr "<center><b>Külső menü név</b><br>Ez lehetővé teszi kívülről definiált popup menük beágyazását. A menü a megadott névvel a menü létrehozásakor lesz kikeresve.</center>"
+msgid ""
+"<center><b>External menu name</b><br>This allows one to nest externally "
+"defined popup menus. The popup menu with the specified name will be looked "
+"up at menu setup time.</center>"
+msgstr ""
+"<center><b>Külső menü név</b><br>Ez lehetővé teszi kívülről definiált popup "
+"menük beágyazását. A menü a megadott névvel a menü létrehozásakor lesz "
+"kikeresve.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:252
-msgid "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>"
-msgstr "<center><b>Ikon Azonosító</b><br>Lehet egy belső Azonosító, abszolút vagy relatív elérési útvonal.<br> Hordozható szkripteknek nem javasolt abszolút elérési útvonal megadása.</center>"
+msgid ""
+"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+"path or a relative path.<br>Portable scripts should never use absolute paths."
+"</center>"
+msgstr ""
+"<center><b>Ikon Azonosító</b><br>Lehet egy belső Azonosító, abszolút vagy "
+"relatív elérési útvonal.<br> Hordozható szkripteknek nem javasolt abszolút "
+"elérési útvonal megadása.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:271
-msgid "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>"
-msgstr "<center><b>Elem Azonosító</b><br>Ezzel az azonosítóval tudod a delpopupitem<br> parancsot később meghívni.</center>"
+msgid ""
+"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+"center>"
+msgstr ""
+"<center><b>Elem Azonosító</b><br>Ezzel az azonosítóval tudod a "
+"delpopupitem<br> parancsot később meghívni.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:234
-msgid "<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>"
-msgstr "<center><b>Látható szöveg</b><br> Tartalmazhat azonosítókat amik a popup meghívásakor értékelődnek ki.<br> Címkék tartalmazhatnak korlátozottan HTML elemeket is.</center>"
+msgid ""
+"<center><b>Visible text</b><br>May contain identifiers that will be "
+"evaluated at popup call time.<br>For labels, this text can contain also "
+"limited HTML tags.</center>"
+msgstr ""
+"<center><b>Látható szöveg</b><br> Tartalmazhat azonosítókat amik a popup "
+"meghívásakor értékelődnek ki.<br> Címkék tartalmazhatnak korlátozottan HTML "
+"elemeket is.</center>"
 
 #: src/modules/actioneditor/ActionEditor.cpp:580
 msgid "Action"
@@ -230,8 +258,8 @@ msgstr "Tag Függvény Hozzáadása"
 msgid "Add Namespace"
 msgstr "Névtér Hozzáadása"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:195
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:282
 msgid "Advanced..."
 msgstr "Haladó..."
 
@@ -255,22 +283,34 @@ msgid "Alias already exists"
 msgstr "Alias már létezik"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1002
-msgid "Alias names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "Alias neve csak betűket, számokat, aláhúzást és '::' névtér elválasztókat tartalmazhat"
+msgid ""
+"Alias names can contain only letters, digits, underscores and '::' namespace "
+"separators"
+msgstr ""
+"Alias neve csak betűket, számokat, aláhúzást és '::' névtér elválasztókat "
+"tartalmazhat"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:326
-msgid "An external script has changed the alias you are currently editing. Do you want to accept the external changes?"
-msgstr "Egy külső szkript megváltoztatta az aliast, amit épp szerkesztesz. Szeretnéd a külső változtatásokat elfogadni?"
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Egy külső szkript megváltoztatta az aliast, amit épp szerkesztesz. Szeretnéd "
+"a külső változtatásokat elfogadni?"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1115
-msgid "An external script has changed the popup you are currently editing. Do you want to accept the external changes?"
-msgstr "Egy külső szkript megváltoztatta a felbukkanót, amit épp szerkesztesz. Szeretnéd a külső változtatásokat elfogadni?"
+msgid ""
+"An external script has changed the popup you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Egy külső szkript megváltoztatta a felbukkanót, amit épp szerkesztesz. "
+"Szeretnéd a külső változtatásokat elfogadni?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:867
 msgid "Apply"
 msgstr "Alkalmaz"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:267
 msgid "Automatically"
 msgstr "Automatikus"
 
@@ -315,8 +355,8 @@ msgstr "Nem tudom megnyitni írásra: %1"
 #: src/modules/eventeditor/EventEditorWindow.cpp:533
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1389
 #: src/modules/raweditor/RawEditorWindow.cpp:486
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:408
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:190
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:409
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -325,36 +365,68 @@ msgid "Category:"
 msgstr "Kategória:"
 
 #: src/modules/actioneditor/ActionEditor.cpp:218
-msgid "Check this option if this action should be enabled also during the login operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr "Jelöld be ezt az opciót, ha az akciót engedélyezni akarod belépési műveletek közben (amikor az IRC kapcsolat még nem jött létre)"
+msgid ""
+"Check this option if this action should be enabled also during the login "
+"operations (so when the logical IRC connection hasn't been estabilished yet)"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót engedélyezni akarod belépési műveletek "
+"közben (amikor az IRC kapcsolat még nem jött létre)"
 
 #: src/modules/actioneditor/ActionEditor.cpp:197
-msgid "Check this option if this action should be enabled only when the active window belongs to an irc context"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az aktív ablak egy IRC környezethez tartozik"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window belongs to an irc context"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"aktív ablak egy IRC környezethez tartozik"
 
 #: src/modules/actioneditor/ActionEditor.cpp:208
-msgid "Check this option if this action should be enabled only when the active window has an active IRC connection"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az egy aktív IRC kapcsolathoz tartozik"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window has an active IRC connection"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"egy aktív IRC kapcsolathoz tartozik"
 
 #: src/modules/actioneditor/ActionEditor.cpp:241
-msgid "Check this option if this action should be enabled only when the active window is a channel"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az aktív ablak egy csatorna"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a channel"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"aktív ablak egy csatorna"
 
 #: src/modules/actioneditor/ActionEditor.cpp:230
-msgid "Check this option if this action should be enabled only when the active window is a console"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az aktív ablak egy konzol"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a console"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"aktív ablak egy konzol"
 
 #: src/modules/actioneditor/ActionEditor.cpp:263
-msgid "Check this option if this action should be enabled only when the active window is a dcc chat"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az aktív ablak egy dcc beszélgetés"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a dcc chat"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"aktív ablak egy dcc beszélgetés"
 
 #: src/modules/actioneditor/ActionEditor.cpp:252
-msgid "Check this option if this action should be enabled only when the active window is a query"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az aktív ablak egy privát"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a query"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"aktív ablak egy privát"
 
 #: src/modules/actioneditor/ActionEditor.cpp:224
-msgid "Check this option if this action should be enabled only when the active window is of a specified type"
-msgstr "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az aktív ablak a megadott típusú"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is of a specified type"
+msgstr ""
+"Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
+"aktív ablak a megadott típusú"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:726
 #: src/modules/classeditor/ClassEditorWindow.cpp:1118
@@ -371,7 +443,7 @@ msgstr "Válassz Mappát - KVIrc"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1237
 #: src/modules/raweditor/RawEditorWindow.cpp:419
 #: src/modules/raweditor/RawEditorWindow.cpp:457
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:399
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:400
 msgid "Choose a Filename - KVIrc"
 msgstr "Válassz Fájlnevet - KVIrc"
 
@@ -402,7 +474,7 @@ msgid "Class names can contain only letters, digits and underscores"
 msgstr "Osztálynév csak betűt, számot és aláhúzást tartalmazhat"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1859
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:327
 msgid "Close"
 msgstr "Bezár"
 
@@ -434,7 +506,7 @@ msgstr "Fordítási hiba - KVIrc"
 msgid "Condition:"
 msgstr "Feltétel:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:380
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
 msgid "Confirm ToolBar Deletion"
 msgstr "Eszköztár Törlésének Megerősítése"
 
@@ -446,7 +518,7 @@ msgstr "Környezetérzékeny Súgó"
 msgid "Cu&t"
 msgstr "Kivág"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:295
 msgid "Customize Toolbars"
 msgstr "Eszköztárak Testreszabása"
 
@@ -454,7 +526,7 @@ msgstr "Eszköztárak Testreszabása"
 msgid "Delete Actions"
 msgstr "Akciók Törlése"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:307
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:308
 msgid "Delete ToolBar"
 msgstr "Eszköztár Törlése"
 
@@ -462,7 +534,7 @@ msgstr "Eszköztár Törlése"
 msgid "Description:"
 msgstr "Leírás:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:382
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Tényleg törölni akarod ezt az eszköztárat: '%1'?"
 
@@ -483,19 +555,21 @@ msgstr "Tényleg szeretnéd az alábbi függvényt eltávolítani: \"%1\" ?"
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr "Tényleg eltávolítod a \"%1\" névteret?"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
 msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr "Szeretnéd, hogy a hozzárendelt akciók az eszköztárral exportálásra kerüljenek?"
+msgstr ""
+"Szeretnéd, hogy a hozzárendelt akciók az eszköztárral exportálásra "
+"kerüljenek?"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:67
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr "Húzd ide az ikonokat az eszköztárról hogy eltávolítsd őket"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
 msgid "Duplicate ToolBar Id"
 msgstr "Duplikált Eszköztár Azonosító"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:312
 msgid "Edit ToolBar"
 msgstr "Eszköztár Szerkesztése"
 
@@ -578,7 +652,7 @@ msgstr "Kijelöltek Exportálása külön fájlokként..."
 msgid "Export Selected..."
 msgstr "Kijelölt Exportálása..."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:319
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:320
 msgid "Export ToolBar"
 msgstr "Eszköztár Exportálása"
 
@@ -648,14 +722,18 @@ msgid "Functions:"
 msgstr "Függvények: "
 
 #: src/modules/codetester/CodeTesterWindow.cpp:64
-msgid "Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, .."
-msgstr "Itt adhatod meg a vesszővel elválasztott paraméterlistát, ami elérhető lesz a kódban, mint $0, $1, $2, ..."
+msgid ""
+"Here you can specify a semicolon-separated list of parameters that will be "
+"available in the code as $0, $1, $2, .."
+msgstr ""
+"Itt adhatod meg a vesszővel elválasztott paraméterlistát, ami elérhető lesz "
+"a kódban, mint $0, $1, $2, ..."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:285
 msgid "Hide Advanced"
 msgstr "Haladó Elrejtése"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:153
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:154
 msgid "Icon"
 msgstr "Ikon"
 
@@ -663,13 +741,17 @@ msgstr "Ikon"
 msgid "Icon:"
 msgstr "Ikon:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:169
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:170
 msgid "Id"
 msgstr "Azonosító"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1938
-msgid "In rename mode class names can contain only letters, digits and underscores and namespaces :: separator"
-msgstr "Átnevezéskor az osztály neve csak betűket, számokat, aláhúzást és '::' névtér elválasztókat tartalmazhat"
+msgid ""
+"In rename mode class names can contain only letters, digits and underscores "
+"and namespaces :: separator"
+msgstr ""
+"Átnevezéskor az osztály neve csak betűket, számokat, aláhúzást és '::' "
+"névtér elválasztókat tartalmazhat"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1951
 msgid "Inherits Class:"
@@ -679,7 +761,7 @@ msgstr "Öröklött Osztály:"
 msgid "Internal unique name for the action"
 msgstr "Belső egyedi név az aciónak"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:250
 msgid "Invalid ToolBar Label"
 msgstr "Helytelen Eszköztár Címke"
 
@@ -701,7 +783,7 @@ msgid "Keywords:"
 msgstr "Kulcsszavak: "
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:93
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:146
 msgid "Label"
 msgstr "Címke"
 
@@ -713,7 +795,7 @@ msgstr "Címke:"
 msgid "Load Script File - KVIrc"
 msgstr "Szkript Fájl Betöltése - KVIrc"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:267
 msgid "Manually"
 msgstr "Manuálisan"
 
@@ -735,8 +817,8 @@ msgstr "Hiányzó Névtér Név"
 msgid "My Action"
 msgstr "SajatAkcio"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:498
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:499
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:500
 msgid "My ToolBar"
 msgstr "Saját Eszköztár"
 
@@ -761,8 +843,12 @@ msgstr "Névtér már létezik"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1070
 #: src/modules/classeditor/ClassEditorWindow.cpp:1520
-msgid "Namespace names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "A névtér neve betűket, számokat, aláhúzást és '::' névtér elválasztókat tartalmazhat"
+msgid ""
+"Namespace names can contain only letters, digits, underscores and '::' "
+"namespace separators"
+msgstr ""
+"A névtér neve betűket, számokat, aláhúzást és '::' névtér elválasztókat "
+"tartalmazhat"
 
 #: src/modules/actioneditor/ActionEditor.cpp:206
 msgid "Needs IRC Connection"
@@ -848,7 +934,7 @@ msgstr "Új Elválasztó Lent"
 msgid "New Separator Inside"
 msgstr "Új Elválasztó Bent"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:304
 msgid "New ToolBar"
 msgstr "Új Eszköztár"
 
@@ -856,7 +942,7 @@ msgstr "Új Eszköztár"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:930
 #: src/modules/classeditor/ClassEditorWindow.cpp:1138
 #: src/modules/classeditor/ClassEditorWindow.cpp:1368
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:407
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:408
 msgid "No"
 msgstr "Nem"
 
@@ -887,9 +973,9 @@ msgstr "Normál szöveg:"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1193
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1241
 #: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:184
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:185
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:250
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:462
 msgid "OK"
 msgstr "OK"
 
@@ -925,8 +1011,17 @@ msgid "Open Failed - KVIrc"
 msgstr "Megnyitás Sikertelen - KVIrc"
 
 #: src/modules/actioneditor/ActionEditor.cpp:177
-msgid "Optional keyboard sequence that will activate this action.<br>The sequence has to be expressed as a string of up to four key codes separated by commas eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
-msgstr "Választható billentyűparancs ami aktiválja ezt az akciót.<br> A parancsot billentyűnként kell megadni négy lehetséges módosítóval az alábbiak közül: \"Ctrl\",\"Shift\",\"Alt\" és \"Meta\".<br> Például: \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X, Ctrl+C\" ..."
+msgid ""
+"Optional keyboard sequence that will activate this action.<br>The sequence "
+"has to be expressed as a string of up to four key codes separated by commas "
+"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
+"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
+"Ctrl+C\" ..."
+msgstr ""
+"Választható billentyűparancs ami aktiválja ezt az akciót.<br> A parancsot "
+"billentyűnként kell megadni négy lehetséges módosítóval az alábbiak közül: "
+"\"Ctrl\",\"Shift\",\"Alt\" és \"Meta\".<br> Például: \"Ctrl+X\", \"Ctrl+Alt+Z"
+"\", \"Ctrl+X, Ctrl+C\" ..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:794
 msgid "Options"
@@ -952,7 +1047,7 @@ msgstr "Beilleszt Fent"
 msgid "Paste Inside"
 msgstr "Beilleszt Bent"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:225
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:226
 msgid "Please choose the icon for the ToolBar"
 msgstr "Kérlek adj meg egy ikont az Eszköztárnak"
 
@@ -987,26 +1082,33 @@ msgid "Please enter the optional reminder string for the member function:"
 msgstr "Kérlek adj meg egy emlékeztetőt a tagfüggvényről:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:639
-msgid "Please enter the text to be searched for. The matching aliases will be highlighted."
+msgid ""
+"Please enter the text to be searched for. The matching aliases will be "
+"highlighted."
 msgstr "Add meg a keresendő szöveget. Az egyező aliasok ki lesznek emelve."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:996
-msgid "Please enter the text to be searched for. The matching function will be highlighted."
+msgid ""
+"Please enter the text to be searched for. The matching function will be "
+"highlighted."
 msgstr "Add meg a keresendő szöveget. Az egyező függvények ki lesznek emelve."
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1361
-msgid "Please note that all the children classes/functions will be deleted too."
-msgstr "Vedd figyelembe, hogy az ehhez tartozó osztályok/függvények is törlésre kerülnek."
+msgid ""
+"Please note that all the children classes/functions will be deleted too."
+msgstr ""
+"Vedd figyelembe, hogy az ehhez tartozó osztályok/függvények is törlésre "
+"kerülnek."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
 msgid "Please note that all the children items will be deleted too."
 msgstr "Vedd figyelembe, hogy az összes ehhez tartozó elem törlésre kerül."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:498
 msgid "Please specify the properties for the new toolbar"
 msgstr "Add meg az új eszköztár tulajdonságait."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:471
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:472
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr "Kérlek add meg az eszköztár tulajdonságait: \"%1\""
 
@@ -1123,12 +1225,14 @@ msgid "Small Icon:"
 msgstr "Kis Ikon:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1016
-msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr "':' karakter az alias nevében: úgy érted... <névtér>::<név> ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1084
 #: src/modules/classeditor/ClassEditorWindow.cpp:1534
-msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr "':' karakter a névtér nevében: úgy érted... <névtér>::<név> ?"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:83
@@ -1143,13 +1247,17 @@ msgstr "Teszt"
 msgid "Text:"
 msgstr "Szöveg:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:250
 msgid "The ToolBar Label can't be empty!"
 msgstr "Az Eszköztár Címkéje nem lehet üres!"
 
 #: src/modules/actioneditor/ActionEditor.cpp:167
-msgid "The big icon associated to this action.<br>It will appear at least in the toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
-msgstr "Az akcióhoz hozzárendelt nagy ikon.<br>Ez fog megjelenni az eszköztárban ha ezt az akciót beszúrod.<br>32x32 pixel méretűnek kell lennie."
+msgid ""
+"The big icon associated to this action.<br>It will appear at least in the "
+"toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
+msgstr ""
+"Az akcióhoz hozzárendelt nagy ikon.<br>Ez fog megjelenni az eszköztárban ha "
+"ezt az akciót beszúrod.<br>32x32 pixel méretűnek kell lennie."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:788
 #: src/modules/classeditor/ClassEditorWindow.cpp:1207
@@ -1162,12 +1270,22 @@ msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "A \"%1\" fájl már létezik. Szeretnéd cserélni?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:152
-msgid "The small icon associated to this action.<br>It will appear at least in the popup menus when this action is inserted.<br>It has to be 16x16 pixels."
-msgstr "Az akcióhoz hozzárendelt kis ikon.<br>Ez fog megjelenni az eszköztárban ha ezt az akciót beszúrod.<br>16x16 pixel méretűnek kell lennie."
+msgid ""
+"The small icon associated to this action.<br>It will appear at least in the "
+"popup menus when this action is inserted.<br>It has to be 16x16 pixels."
+msgstr ""
+"Az akcióhoz hozzárendelt kis ikon.<br>Ez fog megjelenni az eszköztárban ha "
+"ezt az akciót beszúrod.<br>16x16 pixel méretűnek kell lennie."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
-msgid "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign it automatically (so it doesn't collide with any other toolbar) or you prefer to do it manually ?"
-msgstr "A megadott Eszköztár azonosító már létezik.<br> Szeretnéd, hogy a KVIrc hozzárendeljen egyet automatikusan (olyat, ami nem ütközik másik eszköztárral) vagy inkább megadod manuálisan?"
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:264
+msgid ""
+"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
+"it automatically (so it doesn't collide with any other toolbar) or you "
+"prefer to do it manually ?"
+msgstr ""
+"A megadott Eszköztár azonosító már létezik.<br> Szeretnéd, hogy a KVIrc "
+"hozzárendeljen egyet automatikusan (olyat, ami nem ütközik másik "
+"eszköztárral) vagy inkább megadod manuálisan?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:720
 #: src/modules/classeditor/ClassEditorWindow.cpp:1112
@@ -1180,7 +1298,8 @@ msgstr "Ezek az öröklött osztályok nem lesznek lefordítva:"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:689
 msgid "This name is already in use as Class name. Please choose another one."
-msgstr "Ez a név már létezik mint egy Osztály neve. Kérlek adj meg egy másikat."
+msgstr ""
+"Ez a név már létezik mint egy Osztály neve. Kérlek adj meg egy másikat."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:445
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:457
@@ -1193,14 +1312,18 @@ msgstr "Ez a név már foglalt. Kérlek adj meg egy másik nevet."
 #: src/modules/actioneditor/ActionEditor.cpp:236
 #: src/modules/actioneditor/ActionEditor.cpp:247
 #: src/modules/actioneditor/ActionEditor.cpp:258
-msgid "This will enable the action only if there are selected users in the active window"
-msgstr "Csak akkor lesz engedélyezve, ha vannak kijelölt felhasználók az aktív ablakban"
+msgid ""
+"This will enable the action only if there are selected users in the active "
+"window"
+msgstr ""
+"Csak akkor lesz engedélyezve, ha vannak kijelölt felhasználók az aktív "
+"ablakban"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
 msgid "ToolBar Export"
 msgstr "Eszköztár Exportálása"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:136
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:137
 msgid "ToolBar Properties"
 msgstr "Eszköztár Tulajdonságok"
 
@@ -1245,7 +1368,7 @@ msgstr "A nyers esemény fájl írása sikertelen."
 msgid "Unable to write to the raw events file."
 msgstr "A nyers események fájlba írása sikertelen."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:462
 msgid "Unable to write to the toolbar file."
 msgstr "Az eszköztár fájl írása sikertelen."
 
@@ -1254,12 +1377,20 @@ msgid "Variables:"
 msgstr "Változók: "
 
 #: src/modules/actioneditor/ActionEditor.cpp:112
-msgid "Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
-msgstr "Látható név az akcióhoz.<br> Ez a karaktersor fog a felhasználónak megjelenni. Itt érdemes a $tr() függvényt használni."
+msgid ""
+"Visible name for this action.<br>This string will be displayed to the user "
+"so it is a good idea to use $tr() here"
+msgstr ""
+"Látható név az akcióhoz.<br> Ez a karaktersor fog a felhasználónak "
+"megjelenni. Itt érdemes a $tr() függvényt használni."
 
 #: src/modules/actioneditor/ActionEditor.cpp:142
-msgid "Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
-msgstr "Látható rövid leírás az akcióhoz.<br> Ez a karaktersor fog a felhasználónak megjelenni. Itt érdemes a $tr() függvényt használni."
+msgid ""
+"Visible short description for this action.<br>This string will be displayed "
+"to the user so it is a good idea to use $tr() here"
+msgstr ""
+"Látható rövid leírás az akcióhoz.<br> Ez a karaktersor fog a felhasználónak "
+"megjelenni. Itt érdemes a $tr() függvényt használni."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1066
 msgid "Word to Find"
@@ -1274,7 +1405,7 @@ msgstr "Keresendő Szó"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1241
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:462
 msgid "Write Failed - KVIrc"
 msgstr "Írás Sikertelen - KVIrc"
 
@@ -1282,7 +1413,7 @@ msgstr "Írás Sikertelen - KVIrc"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:930
 #: src/modules/classeditor/ClassEditorWindow.cpp:1138
 #: src/modules/classeditor/ClassEditorWindow.cpp:1368
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:407
 msgid "Yes"
 msgstr "Igen"
 

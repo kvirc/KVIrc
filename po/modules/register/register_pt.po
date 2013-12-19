@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2013-12-19 16:16+0100\n"
 "PO-Revision-Date: 2011-03-23 21:17+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
@@ -41,12 +41,12 @@ msgstr "    Aviso: este utilizador não tem máscaras de registo"
 msgid " User: %c%Q"
 msgstr " Utilizador: %c%Q"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:254
+#: src/modules/reguser/RegisteredUsersDialog.cpp:253
 msgid "&Add Group..."
 msgstr "&Adicionar Grupo..."
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:248
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
-#: src/modules/reguser/RegisteredUsersDialog.cpp:249
 msgid "&Add..."
 msgstr "&Adicionar..."
 
@@ -54,7 +54,7 @@ msgstr "&Adicionar..."
 msgid "&Edit"
 msgstr "&Editar"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:266
+#: src/modules/reguser/RegisteredUsersDialog.cpp:265
 msgid "&Edit..."
 msgstr "&Editar..."
 
@@ -62,10 +62,10 @@ msgstr "&Editar..."
 msgid "&New"
 msgstr "&Novo"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:299
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
-#: src/modules/reguser/RegisteredUsersDialog.cpp:300
 msgid "&OK"
 msgstr "&OK"
 
@@ -97,7 +97,7 @@ msgstr ""
 "<center>Este é o <b>nome de utilizador</b> que corresponderá a este "
 "utilizador. <b>*</b> corresponderá a qualquer nome de utilizador.</center>"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:96
+#: src/modules/reguser/RegisteredUsersDialog.cpp:95
 msgid ""
 "<center>This is the list of registered users. KVIrc can automatically "
 "recognize and associate properties to them.<br>Use the buttons on the right "
@@ -196,11 +196,11 @@ msgstr ""
 "real.<br>Exemplos: \"George W Bush\", \"Macaco\".\n"
 "</p>"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:243
+#: src/modules/reguser/RegisteredUsersDialog.cpp:242
 msgid "Add (Wizard)..."
 msgstr "Adicionar (Assistente)..."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:245
+#: src/modules/reguser/RegisteredUsersDialog.cpp:244
 msgid "Add a registered user by means of a user-friendly wizard."
 msgstr "Adicione um utilizador ao registo através de um assistente amigável"
 
@@ -208,7 +208,7 @@ msgstr "Adicione um utilizador ao registo através de um assistente amigável"
 msgid "Add this user to the notify list"
 msgstr "Adicionar este utilizador à lista de notificação"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:256
+#: src/modules/reguser/RegisteredUsersDialog.cpp:255
 msgid "Adds a new group"
 msgstr "Adiciona um grupo novo"
 
@@ -220,31 +220,31 @@ msgstr "Todas as Propriedades..."
 msgid "Avatar"
 msgstr "Avatar"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:811
+#: src/modules/reguser/RegisteredUsersDialog.cpp:810
 msgid "Can't export the registered users database: Write error."
 msgstr ""
 "Não é possível exportar a base de dados de utilizadores registados: Error de "
 "escrita."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:924
+#: src/modules/reguser/RegisteredUsersDialog.cpp:923
 msgid "Can't import the registered users database: Read error."
 msgstr ""
 "Não é possível importar a base de dados dos utilizadores registados: Erro de "
 "leitura."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:733
+#: src/modules/reguser/RegisteredUsersDialog.cpp:732
 msgid "Can't open file %Q for writing."
 msgstr "Não é possível abrir o ficheiro %Q para escrita."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:837
+#: src/modules/reguser/RegisteredUsersDialog.cpp:836
 #, c-format
 msgid "Can't open file %s for reading."
 msgstr "Não é possível abrir o ficheiro %s para leitura."
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:304
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
-#: src/modules/reguser/RegisteredUsersDialog.cpp:305
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -252,25 +252,25 @@ msgstr "Cancelar"
 msgid "Channel: %1%2@%3"
 msgstr "Canal: %1%2@%3"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:726
-#: src/modules/reguser/RegisteredUsersDialog.cpp:830
+#: src/modules/reguser/RegisteredUsersDialog.cpp:725
+#: src/modules/reguser/RegisteredUsersDialog.cpp:829
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolher um Ficheiro - KVIrc"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:136
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
-#: src/modules/reguser/RegisteredUsersDialog.cpp:137
 msgid "Comment:"
 msgstr "Comentário:"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:526
+#: src/modules/reguser/RegisteredUsersDialog.cpp:525
+#: src/modules/reguser/RegisteredUsersDialog.cpp:529
 #: src/modules/reguser/RegisteredUsersDialog.cpp:530
-#: src/modules/reguser/RegisteredUsersDialog.cpp:531
-#: src/modules/reguser/RegisteredUsersDialog.cpp:533
-#: src/modules/reguser/RegisteredUsersDialog.cpp:535
+#: src/modules/reguser/RegisteredUsersDialog.cpp:532
+#: src/modules/reguser/RegisteredUsersDialog.cpp:534
 msgid "Default"
 msgstr "Predefinido"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:269
+#: src/modules/reguser/RegisteredUsersDialog.cpp:268
 msgid "Edit the first selected entry."
 msgstr "Edita a primeira entrada seleccionada."
 
@@ -278,11 +278,11 @@ msgstr "Edita a primeira entrada seleccionada."
 msgid "Enable ignore for this user"
 msgstr "Activar ignore para este utilizador"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:280
+#: src/modules/reguser/RegisteredUsersDialog.cpp:279
 msgid "Export To..."
 msgstr "Exportar Para..."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:283
+#: src/modules/reguser/RegisteredUsersDialog.cpp:282
 msgid ""
 "Export the selected entries to a file.<br>All the data associated with the "
 "selected registered users will be exported.<br>You (or anyone else) can "
@@ -293,12 +293,12 @@ msgstr ""
 "<br>Você (ou outro qualquer) podem mais tarde importar as entradas usando o "
 "botão \"Importar\"."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+#: src/modules/reguser/RegisteredUsersDialog.cpp:83
 msgid "Flags"
 msgstr "Opções"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:417
-#: src/modules/reguser/RegisteredUsersDialog.cpp:430
+#: src/modules/reguser/RegisteredUsersDialog.cpp:416
+#: src/modules/reguser/RegisteredUsersDialog.cpp:429
 msgid "Group name:"
 msgstr "Nome do grupo..."
 
@@ -338,11 +338,11 @@ msgstr "Ignorar mensagens de noticias"
 msgid "Ignore query messages"
 msgstr "Ignorar mensagens de consulta"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:287
+#: src/modules/reguser/RegisteredUsersDialog.cpp:286
 msgid "Import From..."
 msgstr "Importar De..."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:289
+#: src/modules/reguser/RegisteredUsersDialog.cpp:288
 msgid ""
 "Import entries from a file exported earlier by the \"export\" function of "
 "this dialog."
@@ -377,11 +377,11 @@ msgstr "Editor de Máscaras"
 msgid "Masks:"
 msgstr "Máscaras:"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:484
+#: src/modules/reguser/RegisteredUsersDialog.cpp:483
 msgid "Move to group"
 msgstr "Mover para o grupo"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:84
+#: src/modules/reguser/RegisteredUsersDialog.cpp:83
 msgid "Name"
 msgstr "Nome"
 
@@ -397,11 +397,11 @@ msgstr "Alcunha 2:"
 msgid "Nickname:"
 msgstr "Alcunha:"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:135
+#: src/modules/reguser/RegisteredUsersDialog.cpp:134
 msgid "No comment set"
 msgstr "Nenhum cometário definido"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:720
+#: src/modules/reguser/RegisteredUsersDialog.cpp:719
 msgid "No entries selected."
 msgstr "Nenhuma entrada seleccionada."
 
@@ -428,11 +428,11 @@ msgstr "Nenhuma propriedade indicada"
 msgid "No such channel/netmask entry in the database"
 msgstr "Nenhuma entrada de máscara de rede/canal na base de dados"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:125
+#: src/modules/reguser/RegisteredUsersDialog.cpp:124
 msgid "Notify as:"
 msgstr "Notificar como:"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:123
+#: src/modules/reguser/RegisteredUsersDialog.cpp:122
 msgid "Notify disabled"
 msgstr "Notificação desactivada"
 
@@ -444,7 +444,7 @@ msgstr "Alcunhas a notificar:"
 msgid "Notify when user is online"
 msgstr "Notificar quando este utilizador estiver ligado"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:251
+#: src/modules/reguser/RegisteredUsersDialog.cpp:250
 msgid "Open the edit dialog to create a new user entry."
 msgstr "Abre o diálogo de edição para criar uma nova entrada de utilizador."
 
@@ -460,8 +460,8 @@ msgstr "Propriedades"
 msgid "Property Editor"
 msgstr "Editor de Propriedades"
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
-#: src/modules/reguser/RegisteredUsersDialog.cpp:259
 msgid "Re&move"
 msgstr "Re&mover"
 
@@ -469,7 +469,7 @@ msgstr "Re&mover"
 msgid "Registered User Entry"
 msgstr "Entrada de Utilizador Registado"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:226
+#: src/modules/reguser/RegisteredUsersDialog.cpp:225
 msgid "Registered Users - KVIrc"
 msgstr "Utilizadores Registados - KVIrc"
 
@@ -485,15 +485,15 @@ msgstr "Depósito da base de dados de utilizadores registados:"
 msgid "Registration Complete"
 msgstr "Registo Completo"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:262
+#: src/modules/reguser/RegisteredUsersDialog.cpp:261
 msgid "Remove the currently selected entries."
 msgstr "Remove as entradas seleccionadas actualmente."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:275
+#: src/modules/reguser/RegisteredUsersDialog.cpp:274
 msgid "Select all"
 msgstr "Seleccionar tudo"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:277
+#: src/modules/reguser/RegisteredUsersDialog.cpp:276
 msgid "Select all the entries"
 msgstr "Seleccionar todas as entradas"
 
@@ -517,14 +517,14 @@ msgstr "Passo 4: Lista de Notificação"
 msgid "Store an avatar for this user"
 msgstr "Guardar avatar para este utilizador"
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:855
+#: src/modules/reguser/RegisteredUsersDialog.cpp:854
 #, c-format
 msgid "The file %s contains an invalid registered users database version."
 msgstr ""
 "O ficheiro %s contém uma versão inválida da base de dados de utilizadores "
 "registados."
 
-#: src/modules/reguser/RegisteredUsersDialog.cpp:848
+#: src/modules/reguser/RegisteredUsersDialog.cpp:847
 #, c-format
 msgid "The file %s doesn't appear to be a valid registered users database."
 msgstr ""

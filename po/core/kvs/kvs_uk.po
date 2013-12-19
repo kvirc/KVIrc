@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 21:40+0200\n"
+"POT-Creation-Date: 2013-12-19 16:16+0100\n"
 "PO-Revision-Date: 2012-04-18 12:06+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,11 +105,11 @@ msgstr "Виклик до невизначеної команди '%Q'"
 msgid "Call to undefined function '%Q'"
 msgstr "Виклик до невизначеної функції '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:890
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:896
 msgid "Can't delete a null object reference"
 msgstr "Не можу видалити нульове об'єктне посилання"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:896
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:902
 msgid "Can't delete an inexistant object"
 msgstr "Не можу видалити неіснуючий об'єкт"
 
@@ -142,8 +142,8 @@ msgstr ""
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Не можу знайти зовнішній вигульк '%Q': ігнорую"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:478
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:472
 msgid "Can't find the icon '%Q'"
 msgstr "Не можу знайти значок '%Q'"
 
@@ -214,8 +214,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Не можу знайти базовий клас '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:156
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Результат DNS пошуку для запиту \"%Q\""
 
@@ -292,8 +292,8 @@ msgstr "Помилка при отриманні інформації з лок�
 msgid "Error triggered from process callback handler: killing process"
 msgstr "Помилка запуску процесу обробника зворотнього виклику: вбиваю процес"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:161
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
 msgid "Error: %Q"
 msgstr "Помилка: %Q"
 
@@ -314,7 +314,7 @@ msgstr "Не вдалось відіслати невідому команду �
 msgid "Failed to start the process"
 msgstr "Не вдалося запустити процес"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1511
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1512
 msgid ""
 "Found 'break' label where a 'case','match','regexp' or 'default' label was "
 "expected"
@@ -332,7 +332,7 @@ msgid ""
 msgstr ""
 "Знайдений символ %q (юнікод %x) при пошуку завершальної ')' в команді 'for'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1473
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1474
 msgid ""
 "Found character %q (unicode %x) where a 'case','match','regexp','default' or "
 "'break' label was expected"
@@ -340,7 +340,7 @@ msgstr ""
 "Знайдений символ %q (юнікод %x), де очікувались мітки "
 "'case','match','regexp','default' або 'break'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1620
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1621
 msgid ""
 "Found character %q (unicode %x) where a 'prologue', 'separator', "
 "'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was "
@@ -370,7 +370,7 @@ msgstr "Знайдений символ %q (юнікод %x), а очікува�
 msgid "Found character %q (unicode %x) where an open parenthesis was expected"
 msgstr "Знайдений символ %q (юнікод %x), а очікувалась відкрита кругла дужка"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1225
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1226
 msgid ""
 "Found character '%q' (unicode %x) where '%' or '$' was expected: see /help "
 "foreach for the command syntax"
@@ -378,9 +378,9 @@ msgstr ""
 "Знайдений символ '%q' (юнікод %x), а очікувався '%' чи '$': дивіться /help "
 "foreach для перегляду синтаксису команди"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:597
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:615
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:638
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:594
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:612
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:635
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr "Знайдений символ '%q' (юнікод %x), а очікувався слеш '/'"
 
@@ -396,25 +396,25 @@ msgstr ""
 "Знайдений символ '%q' (юнікод 0x%x), а очікувався '%c': дивіться \"/help %s"
 "\" для перегляду синтаксису команди"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1273
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1274
 msgid ""
 "Found empty 'foreach' execution block: maybe you need to fix your script?"
 msgstr ""
 "Знайдене порожній блок виконання 'foreach': можливо вам треба виправити "
 "скрипт?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1719
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1720
 msgid "Found empty epilogue block: maybe you need to fix the script?"
 msgstr "Знайдено порожній блок епілогу: можливо вам треба виправити скрипт?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1833
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1834
 msgid ""
 "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 "Знайдена порожня команда для спливаючого елементу: можливо вам треба "
 "виправити скрипт?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1717
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1718
 msgid "Found empty prologue block: maybe you need to fix the script?"
 msgstr "Знайдено порожній блок прологу: можливо вам треба виправити скрипт?"
 
@@ -427,7 +427,7 @@ msgstr ""
 "Знайдений кінець вводу, а очікувався '%c': дивіться \"/help %s\" для "
 "перегляду синтаксису команди"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1516
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1517
 msgid ""
 "Found token '%Q' where a 'case','match','regexp','default' or 'break' label "
 "was expected"
@@ -435,7 +435,7 @@ msgstr ""
 "Знайдений символ '%Q', де очікувались мітки "
 "'case','match','regexp','default' або 'break'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1877
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1878
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
@@ -456,13 +456,13 @@ msgstr "Клавіша хешу рівна порожньому рядку: ви
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr "Невдалий ассерт посилання хешу: змінна оцінена як типу '%Q'"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 msgid "Hostname: %Q"
 msgstr "Назва вузла: %Q"
 
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 msgid "IP address %d: %Q"
 msgstr "IP-адреса %d: %Q"
 
@@ -491,7 +491,7 @@ msgstr ""
 msgid "Invalid IRC url (%Q)"
 msgstr "Недійсний IRC url (%Q)"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1251
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1257
 msgid "Invalid color-set specification, using default"
 msgstr "Невірна специфікація набору кольорів, користуюсь типовою"
 
@@ -520,7 +520,7 @@ msgstr ""
 "Недійсний тип даних для параметра \"%1\": знайдено ціле число зі знаком "
 "\"%2\", коли очікувався 'unsigned integer'"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:341
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:347
 msgid "Invalid duration value: using default"
 msgstr "Невірне значення тривалості: використовую типове"
 
@@ -528,11 +528,11 @@ msgstr "Невірне значення тривалості: використо
 msgid "Invalid expression evaluation in object scope"
 msgstr "Недійсний вираз в об'єктному контексті"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:411
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:412
 msgid "Invalid index specified: ignored"
 msgstr "Вказаний невірний індекс: ігнорую"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:331
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:337
 msgid "Invalid pitch value: using default"
 msgstr "Невірне значення кроку: використовую типове"
 
@@ -585,43 +585,43 @@ msgstr "Відсутній обов'язковий параметр \"%1\""
 msgid "Missing parameter"
 msgstr "Відсутній параметр"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:879
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:876
 msgid "Missing right operand for operator '"
 msgstr "Відсутній правий операнд для оператора '"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:726
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:723
 msgid "Missing right operand for operator '+='"
 msgstr "Відсутній правий операнд для оператора '+='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:760
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:757
 msgid "Missing right operand for operator '-='"
 msgstr "Відсутній правий операнд для оператора '-='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:860
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:857
 msgid "Missing right operand for operator '.='"
 msgstr "Відсутній правий операнд для оператора '.='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:819
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:816
 msgid "Missing right operand for operator '<+'"
 msgstr "Відсутній правий операнд для оператора '<+'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:805
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:802
 msgid "Missing right operand for operator '<,'"
 msgstr "Відсутній правий операнд для оператора '<,'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:791
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:788
 msgid "Missing right operand for operator '<<'"
 msgstr "Відсутній правий операнд для оператора '<<'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:781
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:778
 msgid "Missing right operand for operator '<<='"
 msgstr "Відсутній правий операнд для оператора '<<='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:841
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:838
 msgid "Missing right operand for operator '>>='"
 msgstr "Відсутній правий операнд для оператора '>>='"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:692
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:689
 msgid "Missing right side operand for the binding operator '=~'"
 msgstr "Відсутній правосторонній операнд для операції зв'язування '=~'"
 
@@ -633,8 +633,8 @@ msgstr "Відсутня затримка таймауту"
 msgid "Missing timer name"
 msgstr "Відсутня назва таймера"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
 #: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
 "Виклик модульної команди зазнав невдачі: не можу завантажити модуль '%Q': %Q"
@@ -695,11 +695,11 @@ msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr ""
 "Немає властивості Qt з назвою '%Q' для об'єкту з іменем '%Q' класу '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:448
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:454
 msgid "No button with type %Q named %Q"
 msgstr "Немає кнопки типу %Q з іменем %Q"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:782
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:783
 msgid "No catalogue %Q for the current language found"
 msgstr "Не знайдено каталог %Q для поточної мови"
 
@@ -707,33 +707,34 @@ msgstr "Не знайдено каталог %Q для поточної мови
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Не вказаний командний рядок для цього типу url (%Q)"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1499
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1512
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1534
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1506
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1528
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Немає обробника '%Q' для події '%Q'"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1495
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1508
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1489
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1502
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Немає обробника '%Q' для сирої числової події '%d'"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:397
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:398
 msgid "No menu bar item with text '%Q'"
 msgstr "Немає ел-ту панелі меню з текстом '%Q'"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:618
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:859
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Немає такого IRC контексту (%u)"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1475
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1483
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
 msgid "No such event (%Q)"
@@ -743,11 +744,11 @@ msgstr "Немає такої події (%Q)"
 msgid "No such event handler (%Q) for event %Q"
 msgstr "Немає такого обробника (%Q) для події %Q"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:681
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:682
 msgid "No target channel specified and the current window is not a channel"
 msgstr "Не вказано цільовий канал і поточне вікно не є каналом"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1027
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:1028
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr "Не вказано цільові маску/канал і поточне вікно не є каналом"
@@ -810,7 +811,7 @@ msgstr "Правий операнд не є числом"
 msgid "Say parse error: Broken command"
 msgstr "Помилка розбору say: Зламана команда"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1579
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1580
 msgid "Senseless empty switch command: fix the script"
 msgstr "Безглузда порожня команда switch: виправте скрипт"
 
@@ -835,15 +836,15 @@ msgstr ""
 "Випадковий символ ':' в імені псевдоніму: ви мали на увазі ..."
 "<простір_імен>::<ім'я> ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:201
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 "Випадковий символ ':': ви мали на увазі '...<простір_імен>::"
 "<ім'я_псевдоніму>' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:193
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Випадкова послідовність '::' або недійсне наступне ім'я песвдоніму"
 
@@ -872,8 +873,8 @@ msgstr ""
 "Синтаксична помилка після префіксу '%' змінної. Якщо ви хочете використати в "
 "коді чистий '%' ви повинні додати спец. знак"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:924
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:946
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:921
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:943
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr "Синтаксична помилка: спутана більш ранніми помилками: порятунку"
 
@@ -907,7 +908,7 @@ msgstr "Синтаксична помилка: потворний ідентиф
 msgid "The $sw() function can be used only in aliases"
 msgstr "Функція $sw() може бути використана лише в псевдонімах"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1989
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1990
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 msgstr "Команда 'defpopup' потребує вираз заключений в круглі дужки"
 
@@ -915,7 +916,7 @@ msgstr "Команда 'defpopup' потребує вираз заключени
 msgid "The 'for' command needs an expression enclosed in parenthesis"
 msgstr "Команда 'for' потребує вираз заключений в круглі дужки"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1252
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1253
 msgid ""
 "The 'foreach' command expects a comma separated list of iteration data items "
 "after the first parameter"
@@ -923,15 +924,15 @@ msgstr ""
 "Команда 'foreach' очікує список відокремлений комами елементів ітеративних "
 "даних після першого параметра"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1224
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1234
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1225
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1235
 msgid ""
 "The 'foreach' command expects a writable iteration variable as first "
 "parameter"
 msgstr ""
 "Команда 'foreach' очікує перезаписувану ітеративну змінну як перший параметр"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1210
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1211
 msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr "Команда 'foreach' потребує вираз заключений в круглі дужки"
 
@@ -943,7 +944,7 @@ msgstr "Команда 'global' потребує список змінних"
 msgid "The 'if' command needs an expression enclosed in parenthesis"
 msgstr "Команда 'if' потребує вираз заключений в круглі дужки"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1416
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1417
 msgid "The 'switch' command needs an expression enclosed in parenthesis"
 msgstr "Команда 'switch' потребує вираз заключений в круглі дужки"
 
@@ -969,7 +970,7 @@ msgstr ""
 msgid "The alias '%Q' does not exist"
 msgstr "Псевдонім '%Q' не існує"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1130
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1136
 msgid ""
 "The argument of the -w switch did not evaluate to a valid window id: using "
 "default"
@@ -1006,7 +1007,7 @@ msgstr ""
 "Аргумент оператора рахунку хешу '#' не є хешем: здійснена автоматична "
 "конвертація з типу '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1139
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1145
 msgid ""
 "The argument of the i switch did not evaluate to a number: using default"
 msgstr "Аргумент перемикача i не є числом: користуюсь типовим"
@@ -1026,7 +1027,7 @@ msgstr ""
 "Аргумент підскрипта {} не є хешем: здійснена автоматична конвертація з типу "
 "'%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:821
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:822
 msgid "The catalogue %Q was not loaded"
 msgstr "Каталог %Q не був завантажений"
 
@@ -1130,7 +1131,7 @@ msgstr ""
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Об'єкт з іменем '%Q' класу '%Q' не має властивостей Qt"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:422
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:423
 msgid "The popup '%Q' is not defined"
 msgstr "Вигульк '%Q' не визначений"
 
@@ -1215,8 +1216,8 @@ msgstr "Вказаний батьківський об'єкт не існує"
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "Вказаний час пінгу невірний: приймаю за нуль (немає пінгу)"
 
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:445
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:439
 msgid "The specified window has no button containers"
 msgstr "Зазначене вікно не має контейнерів кнопок"
 
@@ -1255,7 +1256,7 @@ msgstr ""
 msgid "This is not a channel"
 msgstr "Це не канал"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:752
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:749
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after?"
@@ -1274,6 +1275,7 @@ msgstr "Це вікно не має жодного асоційованого IR
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:629
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:744
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:863
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
 msgid "This window is not associated to an IRC context"
 msgstr "Це вікно не пов'язане з IRC контекстом"
@@ -1303,11 +1305,11 @@ msgstr "Кінцеве сміття у кінці команди break: ігно
 msgid "Trailing garbage at the end of the continue command: ignored"
 msgstr "Кінцеве сміття у кінці команди continue: ігнорую"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:714
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:711
 msgid "Trailing garbage ignored after operator '++'"
 msgstr "Кінцеве сміття проігнороване після оператора '++'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:745
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:742
 msgid "Trailing garbage ignored after operator '--'"
 msgstr "Кінцеве сміття проігнороване після оператора '--'"
 
@@ -1319,8 +1321,8 @@ msgstr "Не в змозі додати таймер: недостатньо с�
 msgid "Unable to get certificate information: query not recognized"
 msgstr "Не можу отримати інформацію сертифікату: черга не розпізнана"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:923
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:944
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:920
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:941
 msgid "Unexpected (and senseless) read-only data evaluation"
 msgstr "Несподівані (і безглузді) доступні лише для читання дані"
 
@@ -1336,7 +1338,7 @@ msgstr ""
 msgid "Unexpected character %q (unicode %x) after '$' function call prefix"
 msgstr "Несподіваний символ %q (юнікод %x) після префіксу '$' виклику функції"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:945
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
 msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Неочікуваний символ '%q' (юнікод %x)"
 
@@ -1352,7 +1354,7 @@ msgstr ""
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr "Несподіваний символ '%q' (юнікод %x) після тире перемикача"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:939
 msgid ""
 "Unexpected character '%q' (unicode %x) after a void function call: end of "
 "instruction expected"
@@ -1360,7 +1362,7 @@ msgstr ""
 "Несподіваний символ '%q' (юнікод %x) після виклику void функції: очікується "
 "кінець команди"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1865
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1866
 msgid ""
 "Unexpected empty <name> field in extpopup parameters. See /help defpopup for "
 "the syntax"
@@ -1368,9 +1370,9 @@ msgstr ""
 "Несподіване порожнє поле <name> в параметрах extpopup. Дивіться /help "
 "defpopup для синтаксису"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1778
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1809
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1857
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1779
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1810
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1858
 msgid ""
 "Unexpected empty <text> field in extpopup parameters. See /help defpopup for "
 "the syntax"
@@ -1378,7 +1380,7 @@ msgstr ""
 "Несподіване порожнє поле <text> в параметрах extpopup. Дивіться /help "
 "defpopup для синтаксису"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1759
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1760
 msgid ""
 "Unexpected empty <text> field in label parameters. See /help defpopup for "
 "the syntax"
@@ -1390,7 +1392,7 @@ msgstr ""
 msgid "Unexpected empty expression operand"
 msgstr "Несподіваний порожній вираз операнду"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1248
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1249
 msgid ""
 "Unexpected end of 'foreach' parameters: at least one iteration data argument "
 "must be given"
@@ -1405,7 +1407,7 @@ msgstr ""
 msgid "Unexpected end of buffer in class definition"
 msgstr "Несподіваний кінець буферу в визначенні класу"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1613
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1614
 msgid "Unexpected end of buffer in defpopup block"
 msgstr "Несподіваний кінець буфера в блоці defpopup"
 
@@ -1413,7 +1415,7 @@ msgstr "Несподіваний кінець буфера в блоці defpopu
 msgid "Unexpected end of buffer in function parameter list reminder"
 msgstr "Несподіваний кінець буфера в списку нагадування параметру функції"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1466
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1467
 msgid "Unexpected end of buffer in switch condition block"
 msgstr "Несподіваний кінець буфера в умовному блоці switch"
 
@@ -1431,14 +1433,14 @@ msgstr ""
 "Несподіваний кінець команди після командного блоку 'do': очікується ключове "
 "слово 'while'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:631
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:628
 msgid ""
 "Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 "Неочікуваний кінець команди в операції зв'язування, принаймні один слеш "
 "відсутній"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:608
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:605
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
@@ -1475,7 +1477,7 @@ msgstr "Несподіваний кінець скрипта після преф
 msgid "Unexpected end of script after a switch dash"
 msgstr "Несподіваний кінець скрипта після тире перемикача"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:926
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:923
 msgid "Unexpected end of script after a variable reference: expected operator"
 msgstr ""
 "Несподіваний кінець скрипта після посилання на змінну: очікується оператор"
@@ -1520,11 +1522,11 @@ msgid ""
 "while command"
 msgstr "Несподіваний кінець скрипта при пошуку блоку інструкцій команди while"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1236
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1237
 msgid "Unexpected function call as 'foreach' iteration variable"
 msgstr "Несподіваний виклик функції як ітеративна змінна 'foreach'"
 
-#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1238
+#: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1239
 msgid "Unexpected read-only variable as 'foreach' iteration variable"
 msgstr "Несподівана змінна лише для читання як ітеративна змінна 'foreach'"
 
@@ -1540,7 +1542,7 @@ msgstr "Невідомий бінарний оператор '%q'"
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
 msgstr "Невідомий бінарний оператор '=%q': ви мали на увазі '==' ?"
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:671
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:668
 msgid "Unknown binding operation '%Q'"
 msgstr "Невідомий оператор прив'язування '%Q'"
 
@@ -1548,7 +1550,7 @@ msgstr "Невідомий оператор прив'язування '%Q'"
 msgid "Unknown callback command \"%Q\""
 msgstr "Невідома команда зворотнього виклику \"%Q\""
 
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:896
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:893
 msgid "Unknown operator"
 msgstr "Невідомий оператор"
 
@@ -1570,7 +1572,7 @@ msgstr "Незавершений командний блок"
 msgid "Unterminated string constant"
 msgstr "Незавершена рядкова константа"
 
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1261
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1267
 msgid "Window '%Q' not found, using current one"
 msgstr "Вікно '%Q' не знайдене, використовую поточне"
 

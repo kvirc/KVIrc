@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2013-12-19 16:16+0100\n"
 "PO-Revision-Date: 2012-06-12 23:51+0200\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
@@ -259,8 +259,8 @@ msgstr "Member-Funktion hinzufügen"
 msgid "Add Namespace"
 msgstr "Namensraum hinzufügen"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:194
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:281
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:195
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:282
 msgid "Advanced..."
 msgstr "Erweitert..."
 
@@ -311,7 +311,7 @@ msgstr ""
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:267
 msgid "Automatically"
 msgstr "Automatisch"
 
@@ -356,8 +356,8 @@ msgstr "Kann Datei %1 nicht zum Schreiben öffnen."
 #: src/modules/eventeditor/EventEditorWindow.cpp:533
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1389
 #: src/modules/raweditor/RawEditorWindow.cpp:486
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:189
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:408
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:190
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:409
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -444,7 +444,7 @@ msgstr "Verzeichnis auswählen – KVIrc"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1237
 #: src/modules/raweditor/RawEditorWindow.cpp:419
 #: src/modules/raweditor/RawEditorWindow.cpp:457
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:399
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:400
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateiname auswählen - KVIrc"
 
@@ -475,7 +475,7 @@ msgid "Class names can contain only letters, digits and underscores"
 msgstr "Klassennamen können nur Buchstaben, Ziffern und Unterstriche enthalten"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1859
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:326
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:327
 msgid "Close"
 msgstr "Schließen"
 
@@ -507,7 +507,7 @@ msgstr "Kompilierungsfehler – KVIrc"
 msgid "Condition:"
 msgstr "Bedingung:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:380
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
 msgid "Confirm ToolBar Deletion"
 msgstr "Löschen der Werkzeugleiste bestätigen"
 
@@ -519,7 +519,7 @@ msgstr "Kontextsensitive Hilfe"
 msgid "Cu&t"
 msgstr "&Ausschneiden"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:294
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:295
 msgid "Customize Toolbars"
 msgstr "Werkzeugleiste anpassen"
 
@@ -527,7 +527,7 @@ msgstr "Werkzeugleiste anpassen"
 msgid "Delete Actions"
 msgstr "Aktionon löschen"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:307
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:308
 msgid "Delete ToolBar"
 msgstr "Werkzeugleiste löschen"
 
@@ -535,7 +535,7 @@ msgstr "Werkzeugleiste löschen"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:381
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:382
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Soll die Werkzeugleiste »%1« wirklich gelöscht werden?"
 
@@ -556,20 +556,20 @@ msgstr "Soll die Funktion »%1« wirklich gelöscht werden?"
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr "Soll der Namensraum »%1« wirklich gelöscht werden?"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
 msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
 "Sollen die zugeordneten Aktionen mit der Werkzeugleiste exportiert werden?"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:66
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:67
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr "Ziehen Sie die aus der Werkzeugleiste zu löschenden Symbole hierher"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:262
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
 msgid "Duplicate ToolBar Id"
 msgstr "Werkzeugleisten-ID duplizieren"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:311
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:312
 msgid "Edit ToolBar"
 msgstr "Werkzeugleiste bearbeiten"
 
@@ -652,7 +652,7 @@ msgstr "Ausgewählte in einzelne Dateien exportieren..."
 msgid "Export Selected..."
 msgstr "Ausgewählte exportieren..."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:319
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:320
 msgid "Export ToolBar"
 msgstr "Werkzeugleiste exportieren"
 
@@ -730,11 +730,11 @@ msgstr ""
 "Hier kann eine Semikolon-separierte Liste von Parametern angegeben werden, "
 "die im Code als $0, $1, $2, … verfügbar sein werden."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:284
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:285
 msgid "Hide Advanced"
 msgstr "Verberge Erweitert"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:153
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:154
 msgid "Icon"
 msgstr "Symbol"
 
@@ -742,7 +742,7 @@ msgstr "Symbol"
 msgid "Icon:"
 msgstr "Symbol:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:169
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:170
 msgid "Id"
 msgstr "Id"
 
@@ -762,7 +762,7 @@ msgstr "Erbt von Klasse: "
 msgid "Internal unique name for the action"
 msgstr "Eindeutiger interner Name für die Aktion"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:250
 msgid "Invalid ToolBar Label"
 msgstr "Ungültiges Werkzeugleisten-Label"
 
@@ -784,7 +784,7 @@ msgid "Keywords:"
 msgstr "Schlüsselwörter:"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:93
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:146
 msgid "Label"
 msgstr "Label"
 
@@ -796,7 +796,7 @@ msgstr "Label:"
 msgid "Load Script File - KVIrc"
 msgstr "Skriptdatei laden - KVIrc"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:267
 msgid "Manually"
 msgstr "Manuell"
 
@@ -818,8 +818,8 @@ msgstr "Fehlender Namensraumname"
 msgid "My Action"
 msgstr "Meine Aktion"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:498
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:499
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:500
 msgid "My ToolBar"
 msgstr "Meine Werkzeugleiste"
 
@@ -935,7 +935,7 @@ msgstr "Neuer Separator unterhalb"
 msgid "New Separator Inside"
 msgstr "Neuer Separator innerhalb"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:303
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:304
 msgid "New ToolBar"
 msgstr "Neue Werkzeugleiste"
 
@@ -943,7 +943,7 @@ msgstr "Neue Werkzeugleiste"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:930
 #: src/modules/classeditor/ClassEditorWindow.cpp:1138
 #: src/modules/classeditor/ClassEditorWindow.cpp:1368
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:407
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:408
 msgid "No"
 msgstr "Nein"
 
@@ -974,9 +974,9 @@ msgstr "Normaler Text:"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1193
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1241
 #: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:184
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:185
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:250
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:462
 msgid "OK"
 msgstr "OK"
 
@@ -1049,7 +1049,7 @@ msgstr "Oberhalb einfügen"
 msgid "Paste Inside"
 msgstr "Innerhalb einfügen"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:225
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:226
 msgid "Please choose the icon for the ToolBar"
 msgstr "Bitte wählen Sie ein Symbol für die Werkzeugleiste"
 
@@ -1110,11 +1110,11 @@ msgstr ""
 msgid "Please note that all the children items will be deleted too."
 msgstr "Bitte beachten Sie, dass die Kind-Elemente ebenfalls gelöscht werden."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:497
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:498
 msgid "Please specify the properties for the new toolbar"
 msgstr "Bitte spezifizieren Sie die Eigenschaften der neuen Werkzeugleiste"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:471
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:472
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr ""
 "Bitte spezifizieren Sie die Eigenschaften der neuen Werkzeugleiste \"%1\""
@@ -1257,7 +1257,7 @@ msgstr "Test"
 msgid "Text:"
 msgstr "Text:"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:250
 msgid "The ToolBar Label can't be empty!"
 msgstr "Das Werkzeugleisten-Label kann nicht leer sein!"
 
@@ -1290,7 +1290,7 @@ msgstr ""
 "Popup-Menü, wenn diese Aktion eingefügt wird.<br>Es muss 16x16 Pixel groß "
 "sein,"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:264
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
@@ -1333,11 +1333,11 @@ msgstr ""
 "Dies aktiviert die Aktion nur, wenn es ausgewählte Benutzer im aktiven "
 "Fenster gibt"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:404
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:405
 msgid "ToolBar Export"
 msgstr "Werkzeugleistenexport"
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:136
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:137
 msgid "ToolBar Properties"
 msgstr "Werkzeugleisteneigenschaften"
 
@@ -1382,7 +1382,7 @@ msgstr "Kann nicht in die Raw-Ereignisdatei schreiben."
 msgid "Unable to write to the raw events file."
 msgstr "Kann nicht in die Raw-Ereignisse-Datei schreiben."
 
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:462
 msgid "Unable to write to the toolbar file."
 msgstr "Kann nicht in die Werkzeugleistendatei schreiben."
 
@@ -1419,7 +1419,7 @@ msgstr "Zu suchendes Wort"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1241
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 #: src/modules/raweditor/RawEditorWindow.cpp:461
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:461
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:462
 msgid "Write Failed - KVIrc"
 msgstr "Schreiben fehlgeschlagen – KVIrc"
 
@@ -1427,7 +1427,7 @@ msgstr "Schreiben fehlgeschlagen – KVIrc"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:930
 #: src/modules/classeditor/ClassEditorWindow.cpp:1138
 #: src/modules/classeditor/ClassEditorWindow.cpp:1368
-#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:406
+#: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:407
 msgid "Yes"
 msgstr "Ja"
 

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 21:40+0200\n"
+"POT-Creation-Date: 2013-12-19 16:16+0100\n"
 "PO-Revision-Date: 2012-06-13 00:25+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -30,12 +30,12 @@ msgstr ""
 msgid "\"any\""
 msgstr "\"qualsiasi\""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1604
+#: src/modules/dcc/DccFileTransfer.cpp:1656
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1593
-#: src/modules/dcc/DccFileTransfer.cpp:1600
+#: src/modules/dcc/DccFileTransfer.cpp:1645
+#: src/modules/dcc/DccFileTransfer.cpp:1652
 msgid "%1 of %2 (%3%)"
 msgstr "%1 di %2 (%3%)"
 
@@ -47,43 +47,43 @@ msgstr "%Q [%Q@%Q] è pronto per ricevere il file \"%s\""
 msgid "&Accept"
 msgstr "&Accetta"
 
-#: src/modules/dcc/canvaswidget.cpp:1482
+#: src/modules/dcc/canvaswidget.cpp:1481
 msgid "&Chord"
 msgstr "Gr&afo"
 
-#: src/modules/dcc/canvaswidget.cpp:1480
+#: src/modules/dcc/canvaswidget.cpp:1479
 msgid "&Ellipse"
 msgstr "&Ellisse"
 
-#: src/modules/dcc/canvaswidget.cpp:1489
+#: src/modules/dcc/canvaswidget.cpp:1488
 msgid "&Hexagon"
 msgstr "&Esagono"
 
-#: src/modules/dcc/canvaswidget.cpp:1495
+#: src/modules/dcc/canvaswidget.cpp:1494
 msgid "&Insert"
 msgstr "&Inserisci"
 
-#: src/modules/dcc/canvaswidget.cpp:1492
+#: src/modules/dcc/canvaswidget.cpp:1491
 msgid "&Item"
 msgstr "&Oggetto"
 
-#: src/modules/dcc/canvaswidget.cpp:1478
+#: src/modules/dcc/canvaswidget.cpp:1477
 msgid "&Line"
 msgstr "&Linea"
 
-#: src/modules/dcc/canvaswidget.cpp:1488
+#: src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Pentagon"
 msgstr "&Pentagono"
 
-#: src/modules/dcc/canvaswidget.cpp:1481
+#: src/modules/dcc/canvaswidget.cpp:1480
 msgid "&Pie"
 msgstr "&Grafico a torta"
 
-#: src/modules/dcc/canvaswidget.cpp:1493
+#: src/modules/dcc/canvaswidget.cpp:1492
 msgid "&Polygons"
 msgstr "&Poligoni"
 
-#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1478 src/modules/dcc/canvaswidget.cpp:1486
 msgid "&Rectangle"
 msgstr "&Rettangolo"
 
@@ -95,15 +95,15 @@ msgstr "&Rifiuta"
 msgid "&Rename"
 msgstr "&Rinomina"
 
-#: src/modules/dcc/canvaswidget.cpp:1484
+#: src/modules/dcc/canvaswidget.cpp:1483
 msgid "&Rich text (html)"
 msgstr "H&ypertesto (html)"
 
-#: src/modules/dcc/canvaswidget.cpp:1491
+#: src/modules/dcc/canvaswidget.cpp:1490
 msgid "&Shape"
 msgstr "&Forma"
 
-#: src/modules/dcc/canvaswidget.cpp:1486
+#: src/modules/dcc/canvaswidget.cpp:1485
 msgid "&Triangle"
 msgstr "&Triangolo"
 
@@ -111,8 +111,8 @@ msgstr "&Triangolo"
 msgid "(unknown)"
 msgstr "(sconosciuto)"
 
-#: src/modules/dcc/libkvidcc.cpp:432 src/modules/dcc/libkvidcc.cpp:655
-#: src/modules/dcc/libkvidcc.cpp:1157 src/modules/dcc/libkvidcc.cpp:1224
+#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159 src/modules/dcc/libkvidcc.cpp:1226
 msgid "-c requires -i and -p"
 msgstr "-c richiede -i e -p"
 
@@ -189,21 +189,21 @@ msgstr ""
 "che KVIrc accetti automaticamente tutti gli avatar in entrata impostando "
 "l'opzione <tt>boolAutoAcceptIncomingAvatars</tt> come vera.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:632 src/modules/dcc/requests.cpp:448
+#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:448
 #: src/modules/dcc/requests.cpp:741
 msgid "<unknown size>"
 msgstr "<dimensione sconosciuta>"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1291
+#: src/modules/dcc/DccFileTransfer.cpp:1343
 msgid "Abort"
 msgstr "Annullato"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1265
-#: src/modules/dcc/DccFileTransfer.cpp:1276
+#: src/modules/dcc/DccFileTransfer.cpp:1317
+#: src/modules/dcc/DccFileTransfer.cpp:1328
 msgid "Aborted"
 msgstr "Annullato"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2210
+#: src/modules/dcc/DccFileTransfer.cpp:2262
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 "Accettata richiesta di RESUME: il trasferimento inizierà dalla posizione %1"
@@ -226,16 +226,16 @@ msgstr ""
 "dell'utente)"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:931
-#: src/modules/dcc/DccVideoWindow.cpp:967
+#: src/modules/dcc/DccVideoWindow.cpp:953
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Il codec attualmente in uso è '%s'"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1158
+#: src/modules/dcc/DccFileTransfer.cpp:1210
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Tento di stabilire una connessione DCC %1 passiva"
 
-#: src/modules/dcc/DccChatWindow.cpp:160
+#: src/modules/dcc/DccChatWindow.cpp:159
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Tento di stabilire una connessione DCC %s passiva "
@@ -244,7 +244,7 @@ msgstr "Tento di stabilire una connessione DCC %s passiva "
 msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Tento una connessione DCC CANVAS passiva"
 
-#: src/modules/dcc/DccVideoWindow.cpp:614
+#: src/modules/dcc/DccVideoWindow.cpp:596
 msgid "Attempting a passive DCC VIDEO connection"
 msgstr "Tento di stabilire una connessione DCC VIDEO passiva "
 
@@ -252,11 +252,11 @@ msgstr "Tento di stabilire una connessione DCC VIDEO passiva "
 msgid "Attempting a passive DCC VOICE connection"
 msgstr "Tento di stabilire una connessione DCC VOICE passiva "
 
-#: src/modules/dcc/DccFileTransfer.cpp:1162
+#: src/modules/dcc/DccFileTransfer.cpp:1214
 msgid "Attempting an active DCC %1 connection"
 msgstr "Tento di stabilire una connessione DCC %1 attiva"
 
-#: src/modules/dcc/DccChatWindow.cpp:170
+#: src/modules/dcc/DccChatWindow.cpp:169
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Tento di stabilire una connessione DCC %s attiva"
@@ -265,7 +265,7 @@ msgstr "Tento di stabilire una connessione DCC %s attiva"
 msgid "Attempting an active DCC CANVAS connection"
 msgstr "Tento una connessione DCC CANVAS attiva"
 
-#: src/modules/dcc/DccVideoWindow.cpp:620
+#: src/modules/dcc/DccVideoWindow.cpp:602
 msgid "Attempting an active DCC VIDEO connection"
 msgstr "Tento di stabilire una connessione DCC VIDEO attiva"
 
@@ -282,7 +282,7 @@ msgstr ""
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Auto-salvataggio DCC %Q file %Q come \r![!dbl]play $0\r%Q\r"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1628
+#: src/modules/dcc/DccFileTransfer.cpp:1680
 msgid "Avg:"
 msgstr "Media:"
 
@@ -325,13 +325,13 @@ msgstr ""
 "Impossibile inviare la richiesta di DCC %Q a %Q: la connessione IRC è stata "
 "terminata"
 
-#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2275
+#: src/modules/dcc/DccFileTransfer.cpp:2327 src/modules/dcc/DccDialog.cpp:158
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
-#: src/modules/dcc/DccVideoWindow.cpp:690
-#: src/modules/dcc/DccVideoWindow.cpp:793
+#: src/modules/dcc/DccChatWindow.cpp:297 src/modules/dcc/DccChatWindow.cpp:401
+#: src/modules/dcc/DccVideoWindow.cpp:672
+#: src/modules/dcc/DccVideoWindow.cpp:775
 msgid "Cannot send data: No active connection"
 msgstr "Impossibile inviare dati: nessuna connessione attiva"
 
@@ -347,32 +347,32 @@ msgstr "Scegli i Files da Inviare - KVIrc"
 msgid "Concurrent transfer limit reached (%1 of %2 transfers running)"
 msgstr "Limite dei trasferimenti raggiunto (%1 di %2 trasferimenti attivi)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1286
+#: src/modules/dcc/DccFileTransfer.cpp:1338
 msgid "Configure Bandwidth..."
 msgstr "Configurazione della larghezza di banda..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:2246
+#: src/modules/dcc/DccFileTransfer.cpp:2298
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Configurazione larghezza di banda per il trasferimento DCC %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2035
+#: src/modules/dcc/DccFileTransfer.cpp:2087
 msgid "Connected to %1:%2"
 msgstr "Connesso a %1:%2"
 
-#: src/modules/dcc/DccChatWindow.cpp:566
+#: src/modules/dcc/DccChatWindow.cpp:565
 #: src/modules/dcc/DccVoiceWindow.cpp:911
-#: src/modules/dcc/DccVideoWindow.cpp:951
+#: src/modules/dcc/DccVideoWindow.cpp:937
 #: src/modules/dcc/DccCanvasWindow.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Connesso a %Q:%Q"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1824
+#: src/modules/dcc/DccFileTransfer.cpp:1876
 msgid "Contacting host %1 on port %2"
 msgstr "Contatto l'host %1 sulla porta %2"
 
-#: src/modules/dcc/DccChatWindow.cpp:185
+#: src/modules/dcc/DccChatWindow.cpp:184
 #: src/modules/dcc/DccVoiceWindow.cpp:756
-#: src/modules/dcc/DccVideoWindow.cpp:631
+#: src/modules/dcc/DccVideoWindow.cpp:613
 #: src/modules/dcc/DccCanvasWindow.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Contatto l'host %Q sulla porta %Q"
@@ -381,19 +381,19 @@ msgstr "Contatto l'host %Q sulla porta %Q"
 msgid "DCC %1 Request - KVIrc"
 msgstr "Richiesta DCC %1 - KVIrc"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1911
+#: src/modules/dcc/DccFileTransfer.cpp:1963
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "Richiesta di DCC %1 non inviata: attendo una connessione manuale"
 
-#: src/modules/dcc/DccChatWindow.cpp:537
+#: src/modules/dcc/DccChatWindow.cpp:536
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %Q fallita: %Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:239
+#: src/modules/dcc/DccChatWindow.cpp:238
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "Richiesta di DCC %Q non inviata, attendo una connessione manuale"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1973
+#: src/modules/dcc/DccFileTransfer.cpp:2025
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "Trasferimento DCC %s con %Q@%Q:%Q completato: \r![!dbl]play $0\r%s\r"
 
@@ -406,7 +406,7 @@ msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Richiesta di DCC CANVAS non inviata: attendo una connessione manuale."
 
 #: src/modules/dcc/DccVoiceWindow.cpp:902
-#: src/modules/dcc/DccVideoWindow.cpp:946
+#: src/modules/dcc/DccVideoWindow.cpp:932
 #: src/modules/dcc/DccCanvasWindow.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC Fallita: %Q"
@@ -415,11 +415,11 @@ msgstr "DCC Fallita: %Q"
 msgid "DCC VIDEO request"
 msgstr "Richiesta DCC VIDEO"
 
-#: src/modules/dcc/DccVideoWindow.cpp:653
+#: src/modules/dcc/DccVideoWindow.cpp:635
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "Richiesta di DCC VIDEO non inviata: attendo una connessione manuale"
 
-#: src/modules/dcc/libkvidcc.cpp:1190
+#: src/modules/dcc/libkvidcc.cpp:1192
 msgid "DCC VIDEO support not enabled at compilation time"
 msgstr "Supporto DCC VIDEO non abilitato durante la compilazione"
 
@@ -431,11 +431,11 @@ msgstr "Richiesta DCC VOICE"
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr "Richiesta di DCC VOICE non inviata: attendo una connessione manuale"
 
-#: src/modules/dcc/libkvidcc.cpp:1112
+#: src/modules/dcc/libkvidcc.cpp:1114
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "Supporto DCC VOICE non abilitato durante la compilazione"
 
-#: src/modules/dcc/DccFileTransfer.cpp:487
+#: src/modules/dcc/DccFileTransfer.cpp:517
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
@@ -443,13 +443,13 @@ msgstr ""
 "Trasferimento dei dati terminato, attendo 30 secondi che il peer chiuda la "
 "connessione..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:494
+#: src/modules/dcc/DccFileTransfer.cpp:524
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Trasferimento dei dati terminato 30 secondi fa, chiudo la connessione"
 
-#: src/modules/dcc/DccChatWindow.cpp:417
+#: src/modules/dcc/DccChatWindow.cpp:416
 #: src/modules/dcc/DccVoiceWindow.cpp:819
-#: src/modules/dcc/DccVideoWindow.cpp:807
+#: src/modules/dcc/DccVideoWindow.cpp:789
 msgid "ERROR: %Q"
 msgstr "ERRORE: %Q"
 
@@ -461,7 +461,7 @@ msgstr "Il file %s esiste: lo rinomino automaticamente in %Q"
 msgid "File Already Exists - KVIrc"
 msgstr "Il file esiste già - KVIrc"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1491
+#: src/modules/dcc/DccFileTransfer.cpp:1543
 msgid "From: "
 msgstr "Da: "
 
@@ -490,11 +490,11 @@ msgstr "Input buffer"
 msgid "Input buffer: %d bytes"
 msgstr "Input buffer: %d bytes"
 
-#: src/modules/dcc/DccVideoWindow.cpp:484
+#: src/modules/dcc/DccVideoWindow.cpp:455
 msgid "Input:"
 msgstr "Ingresso:"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2200
+#: src/modules/dcc/DccFileTransfer.cpp:2252
 msgid "Internal error in RESUME request"
 msgstr "Errore interno nella richiesta di RESUME"
 
@@ -512,23 +512,23 @@ msgstr ""
 "Richiesta RECV non valida: la posizione %1 è più grande della dimensione del "
 "file"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2183
+#: src/modules/dcc/DccFileTransfer.cpp:2235
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
 msgstr ""
 "Richiesta RESUME invalida: nome del file non valido (trovo '%1' ma dovrebbe "
 "essere '%2')"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2206
+#: src/modules/dcc/DccFileTransfer.cpp:2258
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 "Richiesta di RESUME non valida: la posizione %1 è più grande della "
 "dimensione del file"
 
-#: src/modules/dcc/libkvidcc.cpp:1211
+#: src/modules/dcc/libkvidcc.cpp:1213
 msgid "Invalid codec specified"
 msgstr "Il codec specificato non è valido"
 
-#: src/modules/dcc/libkvidcc.cpp:1146
+#: src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Il codec specificato non è valido, utilizzo quello predefinito 'adpcm'"
 
@@ -540,7 +540,7 @@ msgstr "Numero della porta %1 non valido"
 msgid "Invalid resume position argument '%1'"
 msgstr "Argomento della posizione del resume non valido '%1'"
 
-#: src/modules/dcc/libkvidcc.cpp:1130
+#: src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
 msgstr ""
 "Il sample-rate specificato non è valido, utilizzo quello predefinito di 8000"
@@ -549,38 +549,38 @@ msgstr ""
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Sembra che non ho richiesto questa dcc chat"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2249
+#: src/modules/dcc/DccFileTransfer.cpp:2301
 msgid "Limit download bandwidth to"
 msgstr "Limita la banda in download a"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2249
+#: src/modules/dcc/DccFileTransfer.cpp:2301
 msgid "Limit upload bandwidth to"
 msgstr "Limita la banda in upload a"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1831
+#: src/modules/dcc/DccFileTransfer.cpp:1883
 msgid "Listening on interface %1 port %2"
 msgstr "In ascolto sull'interfaccia %1 sulla porta %2"
 
-#: src/modules/dcc/DccChatWindow.cpp:187
+#: src/modules/dcc/DccChatWindow.cpp:186
 #: src/modules/dcc/DccVoiceWindow.cpp:759
-#: src/modules/dcc/DccVideoWindow.cpp:634
+#: src/modules/dcc/DccVideoWindow.cpp:616
 #: src/modules/dcc/DccCanvasWindow.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "In ascolto sull'interfaccia %Q sulla porta %Q"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2036
+#: src/modules/dcc/DccFileTransfer.cpp:2088
 msgid "Local end is %1:%2"
 msgstr "L'indirizzo locale è %1:%2"
 
-#: src/modules/dcc/DccChatWindow.cpp:568
+#: src/modules/dcc/DccChatWindow.cpp:567
 #: src/modules/dcc/DccVoiceWindow.cpp:913
-#: src/modules/dcc/DccVideoWindow.cpp:953
+#: src/modules/dcc/DccVideoWindow.cpp:939
 #: src/modules/dcc/DccCanvasWindow.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "L'indirizzo locale è %Q:%Q"
 
-#: src/modules/dcc/DccChatWindow.cpp:247
-#: src/modules/dcc/DccFileTransfer.cpp:1922
+#: src/modules/dcc/DccChatWindow.cpp:246
+#: src/modules/dcc/DccFileTransfer.cpp:1974
 msgid "Low-level transport connection established"
 msgstr "Connessione stabilita ad un basso livello di trasporto dati"
 
@@ -594,11 +594,11 @@ msgstr ""
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Nessuna interfaccia disponibile in ascolto: provo a continuare..."
 
-#: src/modules/dcc/libkvidcc.cpp:138
+#: src/modules/dcc/libkvidcc.cpp:140
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Nessuna interfaccia su cui stare in ascolto, usa -i"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2270
+#: src/modules/dcc/DccFileTransfer.cpp:2322
 msgid "OK"
 msgstr "OK"
 
@@ -621,15 +621,15 @@ msgstr "Output buffer: %d bytes"
 msgid "Over&write"
 msgstr "So&vrascrivi"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2191
+#: src/modules/dcc/DccFileTransfer.cpp:2243
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr "Processo la richiesta RESUME col file interrotto (%1)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2165
+#: src/modules/dcc/DccFileTransfer.cpp:2217
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr "Processo la richiesta di RESUME con porta differente (%1)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2121
+#: src/modules/dcc/DccFileTransfer.cpp:2173
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME accettato, il trasferimento inizierà dalla posizione %1"
 
@@ -637,24 +637,24 @@ msgstr "RESUME accettato, il trasferimento inizierà dalla posizione %1"
 msgid "Re&sume"
 msgstr "Ri&prendi"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1288
+#: src/modules/dcc/DccFileTransfer.cpp:1340
 msgid "Resend DCC"
 msgstr "Reinvio DCC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1290
+#: src/modules/dcc/DccFileTransfer.cpp:1342
 msgid "Resend RevDCC"
 msgstr "Reinvio RevDCC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1289
+#: src/modules/dcc/DccFileTransfer.cpp:1341
 msgid "Resend TDCC"
 msgstr "Reinvio TDCC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1909
+#: src/modules/dcc/DccFileTransfer.cpp:1961
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "Inviata richiesta di DCC %1 a %2, aspetto la connessione del client remoto..."
 
-#: src/modules/dcc/DccChatWindow.cpp:236
+#: src/modules/dcc/DccChatWindow.cpp:235
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Inviata richiesta di DCC %Q a %Q, attendo la connessione del client remoto..."
@@ -666,11 +666,11 @@ msgstr ""
 "Inviata richiesta di DCC CANVAS a %Q, aspetto la connessione dal client "
 "remoto..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1188
+#: src/modules/dcc/DccFileTransfer.cpp:1240
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Inviata richiesta di DCC RESUME a %1, attendo ACCEPT"
 
-#: src/modules/dcc/DccVideoWindow.cpp:651
+#: src/modules/dcc/DccVideoWindow.cpp:633
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
@@ -686,7 +686,7 @@ msgstr ""
 "Inviata richiesta di DCC VOICE (%s) a %Q, attendo che il client remoto si "
 "connetta..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:1099
+#: src/modules/dcc/DccFileTransfer.cpp:1151
 msgid "Setting up the connection"
 msgstr "Tento di stabilire una connessione"
 
@@ -694,20 +694,20 @@ msgstr "Tento di stabilire una connessione"
 msgid "Slot limit reached (%1 slots of %2)"
 msgstr "Limite degli slots raggiunto (%1 slot su %2)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1617
+#: src/modules/dcc/DccFileTransfer.cpp:1669
 msgid "Spd:"
 msgstr "Velocità:"
 
-#: src/modules/dcc/DccVideoWindow.cpp:491
+#: src/modules/dcc/DccVideoWindow.cpp:462
 msgid "Standard:"
 msgstr "Standard:"
 
-#: src/modules/dcc/DccChatWindow.cpp:248
-#: src/modules/dcc/DccFileTransfer.cpp:1923
+#: src/modules/dcc/DccChatWindow.cpp:247
+#: src/modules/dcc/DccFileTransfer.cpp:1975
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Avvio del protocollo di scambio con Socket sicuro"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1073
+#: src/modules/dcc/DccFileTransfer.cpp:1125
 msgid "TRANSFER %1"
 msgstr "TRASFERIMENTO %1"
 
@@ -792,8 +792,8 @@ msgstr ""
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La connessione sarà resa sicura utilizzando SSL.<br>"
 
-#: src/modules/dcc/DccChatWindow.cpp:344
-#: src/modules/dcc/DccVideoWindow.cpp:736
+#: src/modules/dcc/DccChatWindow.cpp:343
+#: src/modules/dcc/DccVideoWindow.cpp:718
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
@@ -801,8 +801,8 @@ msgstr ""
 "Il motore di cifratura non riesce a criptare il messaggio corrente (%Q): %Q, "
 "nessun dato inviato all'utente remoto"
 
-#: src/modules/dcc/libkvidcc.cpp:1640 src/modules/dcc/libkvidcc.cpp:2617
-#: src/modules/dcc/libkvidcc.cpp:2637
+#: src/modules/dcc/libkvidcc.cpp:1642 src/modules/dcc/libkvidcc.cpp:2619
+#: src/modules/dcc/libkvidcc.cpp:2639
 msgid "The current window has no associated DCC session"
 msgstr "La finestra corrente non ha sessioni DCC associate"
 
@@ -827,8 +827,8 @@ msgstr ""
 "<br><b>auto-rinominare</b> il nuovo file o <b>sovrascrivere</b> quello "
 "esistente?"
 
-#: src/modules/dcc/DccChatWindow.cpp:477
-#: src/modules/dcc/DccVideoWindow.cpp:868
+#: src/modules/dcc/DccChatWindow.cpp:476
+#: src/modules/dcc/DccVideoWindow.cpp:850
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -836,31 +836,31 @@ msgstr ""
 "Il seguente messaggio sembra essere crittato, ma il motore di cifratura non "
 "riesce a decrittarlo: %Q"
 
-#: src/modules/dcc/libkvidcc.cpp:2437
+#: src/modules/dcc/libkvidcc.cpp:2439
 msgid "The irc context that originated the dcc doesn't exists anymore."
 msgstr "Il contesto irc che ha originato la dcc non esiste più."
 
-#: src/modules/dcc/DccChatWindow.cpp:214
-#: src/modules/dcc/DccFileTransfer.cpp:1859
+#: src/modules/dcc/DccChatWindow.cpp:213
+#: src/modules/dcc/DccFileTransfer.cpp:1911
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'indirizzo IP locale è privato, non c'è nessun server IRC da cui "
 "determinarlo"
 
-#: src/modules/dcc/DccChatWindow.cpp:211
-#: src/modules/dcc/DccFileTransfer.cpp:1856
+#: src/modules/dcc/DccChatWindow.cpp:210
+#: src/modules/dcc/DccFileTransfer.cpp:1908
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
 "L'indirizzo IP locale è privato, impossibile determinarlo dal server IRC"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1854
+#: src/modules/dcc/DccFileTransfer.cpp:1906
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %1"
 
-#: src/modules/dcc/DccChatWindow.cpp:209
+#: src/modules/dcc/DccChatWindow.cpp:208
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %s"
@@ -870,19 +870,19 @@ msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %s"
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "Il client remoto è in ascolto sull'interfaccia %s e porta %s"
 
-#: src/modules/dcc/libkvidcc.cpp:1645
+#: src/modules/dcc/libkvidcc.cpp:1647
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "Il parametro specificato non è un identificativo valido per una DCC"
 
-#: src/modules/dcc/libkvidcc.cpp:2628
+#: src/modules/dcc/libkvidcc.cpp:2630
 msgid "The specified window identifier is not valid"
 msgstr "L'identificativo per la finestra specificata non è valido"
 
-#: src/modules/dcc/libkvidcc.cpp:1727
+#: src/modules/dcc/libkvidcc.cpp:1729
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Questa sessione DCC non è una sessione di trasferimento DCC"
 
-#: src/modules/dcc/libkvidcc.cpp:888
+#: src/modules/dcc/libkvidcc.cpp:890
 msgid "This executable has been built without SSL support, -s switch ignored"
 msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL, opzione -s "
@@ -928,21 +928,21 @@ msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL: l'estensione SSL "
 "per DCC SEND non è disponibile"
 
-#: src/modules/dcc/libkvidcc.cpp:958
+#: src/modules/dcc/libkvidcc.cpp:960
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Questo eseguibile non ha il supporto SSL, opzione -s ignorata"
 
-#: src/modules/dcc/libkvidcc.cpp:2785
+#: src/modules/dcc/libkvidcc.cpp:2787
 msgid "This executable was built without SSL support"
 msgstr "Questo eseguibile è stato compilato senza il supporto SSL;"
 
-#: src/modules/dcc/libkvidcc.cpp:171
+#: src/modules/dcc/libkvidcc.cpp:173
 msgid "This executable was built without SSL support, -s switch ignored"
 msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL, opzione -s "
 "ignorata"
 
-#: src/modules/dcc/libkvidcc.cpp:91
+#: src/modules/dcc/libkvidcc.cpp:93
 msgid ""
 "This window has no associated IRC context (an IRC context is required unless "
 "-c or -n are passed)"
@@ -950,7 +950,7 @@ msgstr ""
 "Questa finestra non ha un Contesto IRC associato (ne necessiti almeno uno, a "
 "meno che tu non scelga l'opzione -c o -n)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1492
+#: src/modules/dcc/DccFileTransfer.cpp:1544
 msgid "To: "
 msgstr "A: "
 
@@ -958,52 +958,52 @@ msgstr "A: "
 msgid "Too many pending connections"
 msgstr "Troppe connessioni in sospeso"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1693
+#: src/modules/dcc/DccFileTransfer.cpp:1745
 msgid "Transfer Log"
 msgstr "Log del Trasferimento"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1987
+#: src/modules/dcc/DccFileTransfer.cpp:2039
 msgid "Transfer completed"
 msgstr "Trasferimento completato"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1275
-#: src/modules/dcc/DccFileTransfer.cpp:1948
-#: src/modules/dcc/DccFileTransfer.cpp:2026
+#: src/modules/dcc/DccFileTransfer.cpp:1327
+#: src/modules/dcc/DccFileTransfer.cpp:2000
+#: src/modules/dcc/DccFileTransfer.cpp:2078
 msgid "Transfer failed: "
 msgstr "Trasferimento fallito: "
 
-#: src/modules/dcc/DccFileTransfer.cpp:2095
+#: src/modules/dcc/DccFileTransfer.cpp:2147
 msgid "Transferring data"
 msgstr "Trasferimento dati"
 
-#: src/modules/dcc/libkvidcc.cpp:2807
+#: src/modules/dcc/libkvidcc.cpp:2809
 msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr ""
 "Impossibile prendere le informazioni SSL: la sessione DCC non sta usando SSL"
 
-#: src/modules/dcc/libkvidcc.cpp:2820
+#: src/modules/dcc/libkvidcc.cpp:2822
 msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr ""
 "Impossibile prendere le informazioni SSL: la sessione DCC non è ancora "
 "inizializzata"
 
-#: src/modules/dcc/libkvidcc.cpp:2837
+#: src/modules/dcc/libkvidcc.cpp:2839
 msgid "Unable to get SSL information: No peer certificate available"
 msgstr ""
 "Impossibile prendere le informazioni SSL: nessun certificato remoto "
 "disponibile"
 
-#: src/modules/dcc/libkvidcc.cpp:2828
+#: src/modules/dcc/libkvidcc.cpp:2830
 msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr ""
 "Impossibile prendere le informazioni SSL: SSL non è ancora inizializzato "
 "nella sessione DCC"
 
-#: src/modules/dcc/libkvidcc.cpp:2845
+#: src/modules/dcc/libkvidcc.cpp:2847
 msgid "Unable to get SSL information: query not recognized"
 msgstr "Impossibile prenderele informazioni SSL: query non riconosciuta"
 
-#: src/modules/dcc/libkvidcc.cpp:128
+#: src/modules/dcc/libkvidcc.cpp:130
 msgid "Unable to get address of interface %Q"
 msgstr "Impossibile trovare l'indirizzo dell'interfaccia %Q"
 
@@ -1023,7 +1023,7 @@ msgstr ""
 "Usa %c\r [!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "per inviare il file (o doppio click sul link)"
 
-#: src/modules/dcc/DccVideoWindow.cpp:477
+#: src/modules/dcc/DccVideoWindow.cpp:448
 msgid "Video device:"
 msgstr "Periferica video:"
 
@@ -1031,7 +1031,7 @@ msgstr "Periferica video:"
 msgid "Volume: %1"
 msgstr "Volume: %1"
 
-#: src/modules/dcc/DccFileTransfer.cpp:346
+#: src/modules/dcc/DccFileTransfer.cpp:366
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
@@ -1039,12 +1039,12 @@ msgstr ""
 "ATTENZIONE: sto ignorando i dati ricevuti dopo la fine del file e sto "
 "chiudendo la connessione"
 
-#: src/modules/dcc/DccFileTransfer.cpp:866
+#: src/modules/dcc/DccFileTransfer.cpp:913
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 "ATTENZIONE: ricevuti dati in una DCC TSEND, non esiste alcun riconoscimento"
 
-#: src/modules/dcc/DccFileTransfer.cpp:345
+#: src/modules/dcc/DccFileTransfer.cpp:365
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "ATTENZIONE: il peer sta inviando dati spazzatura alla fine del file"
 
@@ -1067,7 +1067,7 @@ msgstr ""
 "ATTENZIONE: impossibile impostare il sample-rate richiesto (%d): il "
 "dispositivo ha utilizzato quello più simile (%d)"
 
-#: src/modules/dcc/libkvidcc.cpp:2796
+#: src/modules/dcc/libkvidcc.cpp:2798
 msgid "You specified a bad string for the parameter \"type\""
 msgstr "Hai specificato una stringa sbagliata per il parametro \"tipo\""
 
@@ -1075,7 +1075,7 @@ msgstr "Hai specificato una stringa sbagliata per il parametro \"tipo\""
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Sarai il lato passivo della connessione.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:104
+#: src/modules/dcc/libkvidcc.cpp:106
 msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
@@ -1083,27 +1083,27 @@ msgstr ""
 "Non sei connesso ad un server (hai bisogno di una connessione attiva a meno "
 "che tu non scelga l'opzione -c o -n)"
 
-#: src/modules/dcc/DccFileTransfer.cpp:1930
+#: src/modules/dcc/DccFileTransfer.cpp:1982
 msgid "[SSL ERROR]: %1"
 msgstr "[ERRORE SSL]: %1"
 
-#: src/modules/dcc/DccChatWindow.cpp:256
+#: src/modules/dcc/DccChatWindow.cpp:255
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[ERRORE SSL]: %s"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2266
+#: src/modules/dcc/DccFileTransfer.cpp:2318
 msgid "bytes/sec"
 msgstr "bytes/sec"
 
-#: src/modules/dcc/libkvidcc.cpp:110 src/modules/dcc/libkvidcc.cpp:406
-#: src/modules/dcc/libkvidcc.cpp:441 src/modules/dcc/libkvidcc.cpp:640
-#: src/modules/dcc/libkvidcc.cpp:664 src/modules/dcc/libkvidcc.cpp:801
-#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:1119
-#: src/modules/dcc/libkvidcc.cpp:1169 src/modules/dcc/libkvidcc.cpp:1197
-#: src/modules/dcc/libkvidcc.cpp:1236 src/modules/dcc/DccDescriptor.cpp:65
 #: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/libkvidcc.cpp:112
+#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/DccDescriptor.cpp:65 src/modules/dcc/requests.cpp:138
 #: src/modules/dcc/requests.cpp:139 src/modules/dcc/requests.cpp:140
 msgid "unknown"
 msgstr "sconosciuto"

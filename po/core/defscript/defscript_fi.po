@@ -7,653 +7,195 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc Finnish\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 21:40+0200\n"
+"POT-Creation-Date: 2013-12-19 16:16+0100\n"
 "PO-Revision-Date: 2013-07-13 15:19+0200\n"
 "Last-Translator: Jermakovi <jere.v@live.fi>\n"
 "Language-Team:  <jere.v@live.fi>\n"
+"Language: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
-"Language: Finnish\n"
-
-#: data/defscript/events.kvs:68 data/defscript/events.kvs:76
-#: data/defscript/events.kvs:84 data/defscript/popups.kvs:1406
-msgid "Logging"
-msgstr "Kirjataan"
-
-#: data/defscript/popups.kvs:22 data/defscript/popups.kvs:86
-msgid "Stop Highlighting (Local)"
-msgstr "Lopeta korostus (paikallinen)"
-
-#: data/defscript/popups.kvs:27 data/defscript/popups.kvs:91
-msgid "Start Highlighting (Local)"
-msgstr "Aloita korostus (paikallinen)"
-
-#: data/defscript/popups.kvs:32 data/defscript/popups.kvs:65
-msgid "Always Highlight"
-msgstr "Korosta aina"
-
-#: data/defscript/popups.kvs:34 data/defscript/popups.kvs:39
-#: data/defscript/popups.kvs:44 data/defscript/popups.kvs:49
-#: data/defscript/popups.kvs:54 data/defscript/popups.kvs:59
-msgid "Highlight as"
-msgstr "Korosta"
-
-#: data/defscript/popups.kvs:70
-msgid "Stop Highlighting"
-msgstr "Lopeta korostus"
-
-#: data/defscript/popups.kvs:107
-msgid "is being ignored"
-msgstr "on ohitettu"
-
-#: data/defscript/popups.kvs:108 data/defscript/popups.kvs:112
-msgid "is not being ignored"
-msgstr "ei ole ohitettu"
-
-#: data/defscript/popups.kvs:118
-msgid "Enable Ignore"
-msgstr "Ota ohitus käyttöön"
-
-#: data/defscript/popups.kvs:123
-msgid "Ignore as..."
-msgstr "Ohita nimellä..."
-
-#: data/defscript/popups.kvs:125 data/defscript/popups.kvs:132
-#: data/defscript/popups.kvs:139 data/defscript/popups.kvs:146
-#: data/defscript/popups.kvs:153 data/defscript/popups.kvs:160
-#: data/defscript/popups.kvs:167 data/defscript/popups.kvs:174
-#: data/defscript/popups.kvs:181 data/defscript/popups.kvs:188
-#: data/defscript/popups.kvs:195 data/defscript/popups.kvs:202
-#: data/defscript/popups.kvs:209 data/defscript/popups.kvs:216
-#: data/defscript/popups.kvs:223 data/defscript/popups.kvs:230
-#: data/defscript/popups.kvs:237 data/defscript/popups.kvs:244
-#: data/defscript/popups.kvs:251 data/defscript/popups.kvs:258
-#: data/defscript/popups.kvs:265 data/defscript/popups.kvs:272
-#: data/defscript/popups.kvs:279 data/defscript/popups.kvs:286
-#: data/defscript/popups.kvs:293 data/defscript/popups.kvs:300
-#: data/defscript/popups.kvs:307
-msgid "Ignore as"
-msgstr "Ohita nimellä"
-
-#: data/defscript/popups.kvs:315
-msgid "Unignore"
-msgstr "Älä ohita"
-
-#: data/defscript/popups.kvs:333
-msgid "is registered as"
-msgstr "on rekisteröitynyt nimellä"
-
-#: data/defscript/popups.kvs:336
-msgid "is in the notify list"
-msgstr "on ilmoituslistalla"
-
-#: data/defscript/popups.kvs:339
-msgid "has a default avatar"
-msgstr "on  oletusavatarin"
-
-#: data/defscript/popups.kvs:342
-msgid "is not registered"
-msgstr "ei ole rekisteröitynyt"
-
-#: data/defscript/popups.kvs:348
-msgid "Register..."
-msgstr "Rekisteröidy..."
-
-#: data/defscript/popups.kvs:353
-msgid "Quick Registration"
-msgstr "Pikarekisteröinti"
-
-#: data/defscript/popups.kvs:355 data/defscript/popups.kvs:360
-#: data/defscript/popups.kvs:365 data/defscript/popups.kvs:370
-#: data/defscript/popups.kvs:375 data/defscript/popups.kvs:380
-msgid "Register as"
-msgstr "Rekisteröiy numellä"
-
-#: data/defscript/popups.kvs:386
-msgid "Edit Registration..."
-msgstr "Muokkaa rekisteröintiä..."
-
-#: data/defscript/popups.kvs:391
-msgid "Unregister"
-msgstr "Poista rekisteröinti"
-
-#: data/defscript/popups.kvs:398
-msgid "Add to Notify"
-msgstr "Lisää ilmoitettavaksi"
-
-#: data/defscript/popups.kvs:403
-msgid "Remove from Notify"
-msgstr "Poista ilmoitettavista"
-
-#: data/defscript/popups.kvs:408
-msgid "Avatar"
-msgstr "Avatar"
-
-#: data/defscript/popups.kvs:410
-msgid "Choose..."
-msgstr "Valitse..."
-
-#: data/defscript/popups.kvs:412
-msgid "Choose Avatar Image File"
-msgstr "Valitse avatarin kuvatiedosto"
-
-#: data/defscript/popups.kvs:421
-msgid "Set as Default"
-msgstr "Aseta oletukseksi"
-
-#: data/defscript/popups.kvs:426
-msgid "Clear Default"
-msgstr "Tyhjennä oletus"
-
-#: data/defscript/popups.kvs:437
-msgid "Copy To Clipboard"
-msgstr "Kopioi leikepöydälle"
-
-#: data/defscript/popups.kvs:458
-msgid "Ban"
-msgstr "Porttikielto"
-
-#: data/defscript/popups.kvs:462 data/defscript/popups.kvs:1070
-#: data/defscript/popups.kvs:1117 data/defscript/popups.kvs:1259
-msgid "Multiple Users"
-msgstr "Monta käyttäjää"
-
-#: data/defscript/popups.kvs:468 data/defscript/popups.kvs:603
-msgid "&Ban"
-msgstr "&Porttikielto"
-
-#: data/defscript/popups.kvs:493 data/defscript/popups.kvs:1123
-#: data/defscript/popups.kvs:1264
-msgid "/WHOIS ?s (idle time)"
-msgstr "/WHOIS ?s (idle-aika)"
-
-#: data/defscript/popups.kvs:501 data/defscript/popups.kvs:791
-#: data/defscript/popups.kvs:1130 data/defscript/popups.kvs:1271
-msgid "&Information"
-msgstr "&Tiedot"
-
-#: data/defscript/popups.kvs:503 data/defscript/popups.kvs:1132
-#: data/defscript/popups.kvs:1273
-msgid "/WHOIS ?s"
-msgstr "/WHOIS ?s"
-
-#: data/defscript/popups.kvs:508 data/defscript/popups.kvs:1137
-#: data/defscript/popups.kvs:1278
-msgid "/WHOWAS ?s"
-msgstr "/WHOWAS ?s"
-
-#: data/defscript/popups.kvs:513 data/defscript/popups.kvs:1142
-#: data/defscript/popups.kvs:1283
-msgid "/WHO ?s"
-msgstr "/WHO ?s"
-
-#: data/defscript/popups.kvs:520 data/defscript/popups.kvs:1149
-msgid "DNS for"
-msgstr "DNS >"
-
-#: data/defscript/popups.kvs:525 data/defscript/popups.kvs:1154
-msgid "Mask for"
-msgstr "Maski >"
-
-#: data/defscript/popups.kvs:531
-msgid "&Control"
-msgstr "&Hallinta"
-
-#: data/defscript/popups.kvs:535
-msgid "O&wner"
-msgstr "O&mistajaksi"
-
-#: data/defscript/popups.kvs:540
-msgid "&Deowner"
-msgstr "Poista o&mistajuus"
 
 #: data/defscript/popups.kvs:545
 msgid "&Administrator"
 msgstr "&Ylläpitäjäksi"
 
+#: data/defscript/popups.kvs:468
+#: data/defscript/popups.kvs:603
+msgid "&Ban"
+msgstr "&Porttikielto"
+
+#: data/defscript/popups.kvs:531
+msgid "&Control"
+msgstr "&Hallinta"
+
 #: data/defscript/popups.kvs:550
 msgid "&Deadministrator"
 msgstr "Poista y&lläpitäjyys"
-
-#: data/defscript/popups.kvs:555
-msgid "&Op"
-msgstr "&Op"
-
-#: data/defscript/popups.kvs:560
-msgid "&Deop"
-msgstr "Poista o&p"
-
-#: data/defscript/popups.kvs:565
-msgid "&Halfop"
-msgstr "P&uoli-op"
 
 #: data/defscript/popups.kvs:570
 msgid "&Dehalfop"
 msgstr "Poista puol&i-op"
 
-#: data/defscript/popups.kvs:575
-msgid "&Voice"
-msgstr "&Äänioikeus"
+#: data/defscript/popups.kvs:560
+msgid "&Deop"
+msgstr "Poista o&p"
 
-#: data/defscript/popups.kvs:580
-msgid "D&evoice"
-msgstr "&Ei äänioikeutta"
+#: data/defscript/popups.kvs:540
+msgid "&Deowner"
+msgstr "Poista o&mistajuus"
 
-#: data/defscript/popups.kvs:587 data/defscript/popups.kvs:594
+#: data/defscript/popups.kvs:565
+msgid "&Halfop"
+msgstr "P&uoli-op"
+
+#: data/defscript/popups.kvs:653
+#: data/defscript/popups.kvs:759
+#: data/defscript/popups.kvs:1308
+msgid "&Highlight"
+msgstr "Koros&ta"
+
+#: data/defscript/popups.kvs:667
+#: data/defscript/popups.kvs:721
+msgid "&Hop"
+msgstr "&Uudelleenliity"
+
+#: data/defscript/popups.kvs:1163
+msgid "&Ignore"
+msgstr "&Ohita"
+
+#: data/defscript/popups.kvs:501
+#: data/defscript/popups.kvs:786
+#: data/defscript/popups.kvs:1125
+#: data/defscript/popups.kvs:1266
+msgid "&Information"
+msgstr "&Tiedot"
+
+#: data/defscript/popups.kvs:731
+msgid "&Join"
+msgstr "&Liity"
+
+#: data/defscript/popups.kvs:714
+#: data/defscript/popups.kvs:781
+msgid "&Join Channels..."
+msgstr "&Liity kanaville..."
+
+#: data/defscript/popups.kvs:587
+#: data/defscript/popups.kvs:594
 msgid "&Kick"
 msgstr "&Potkaise"
-
-#: data/defscript/popups.kvs:592
-msgid "K&ick"
-msgstr "Po&tkaise"
-
-#: data/defscript/popups.kvs:592 data/defscript/popups.kvs:618
-msgid "With..."
-msgstr "syyllä..."
-
-#: data/defscript/popups.kvs:594
-msgid "Kick Reason"
-msgstr "Potkun syy"
-
-#: data/defscript/popups.kvs:594
-msgid "Enter a kick reason"
-msgstr "Kirjoita potkujen syy"
-
-#: data/defscript/popups.kvs:594 data/defscript/popups.kvs:620
-#: data/defscript/popups.kvs:921
-msgid "Cancel"
-msgstr "Peru"
-
-#: data/defscript/popups.kvs:613 data/defscript/popups.kvs:618
-msgid "Kick/Ban"
-msgstr "Potkut/porttikielto"
-
-#: data/defscript/popups.kvs:620
-msgid "Kick/Ban Reason"
-msgstr "Potkujen/porttikiellon syy"
-
-#: data/defscript/popups.kvs:620
-msgid "Enter a kick/ban reason"
-msgstr "Kirjoita potkujen/porttikiellon syy"
 
 #: data/defscript/popups.kvs:620
 msgid "&Kick/Ban"
 msgstr "&Potkaise/porttikieltoon"
 
-#: data/defscript/popups.kvs:630
-msgid "Configure ban mask..."
-msgstr "Määritä kieltomaski..."
+#: data/defscript/popups.kvs:555
+msgid "&Op"
+msgstr "&Op"
 
-#: data/defscript/popups.kvs:638 data/defscript/popups.kvs:1298
-msgid "&Query"
-msgstr "Ky&sely"
-
-#: data/defscript/popups.kvs:651 data/defscript/popups.kvs:1170
-#: data/defscript/popups.kvs:1311
-msgid "&Registration"
-msgstr "&Rekisteröinti"
-
-#: data/defscript/popups.kvs:653 data/defscript/popups.kvs:764
-#: data/defscript/popups.kvs:1313
-msgid "&Highlight"
-msgstr "Koros&ta"
-
-#: data/defscript/popups.kvs:655 data/defscript/popups.kvs:1315
-msgid "Ig&nore"
-msgstr "O&hita"
-
-#: data/defscript/popups.kvs:657 data/defscript/popups.kvs:757
-#: data/defscript/popups.kvs:1083 data/defscript/popups.kvs:1172
-msgid "Notify Avatar"
-msgstr "Ilmoita avatarista"
-
-#: data/defscript/popups.kvs:667 data/defscript/popups.kvs:726
-msgid "&Hop"
-msgstr "&Uudelleenliity"
-
-#: data/defscript/popups.kvs:672 data/defscript/popups.kvs:731
-msgid "&Part"
-msgstr "&Poistu"
-
-#: data/defscript/popups.kvs:690
-msgid "Copy Channel Address"
-msgstr "Kopioi kanavan osoite"
-
-#: data/defscript/popups.kvs:717 data/defscript/popups.kvs:782
-msgid "Channels"
-msgstr "Kanavat"
-
-#: data/defscript/popups.kvs:719 data/defscript/popups.kvs:786
-msgid "&Join Channels..."
-msgstr "&Liity kanaville..."
-
-#: data/defscript/popups.kvs:736
-msgid "&Join"
-msgstr "&Liity"
-
-#: data/defscript/popups.kvs:766
-msgid "Copy Channel URL to Clipboard"
-msgstr "Kopioi kanavan URL leikepöydälle"
-
-#: data/defscript/popups.kvs:771 data/defscript/popups.kvs:874
-#: data/defscript/popups.kvs:1090 data/defscript/popups.kvs:1179
-#: data/defscript/popups.kvs:1324
-msgid "Clear Buffer"
-msgstr "Tyhjennä puskuri"
-
-#: data/defscript/popups.kvs:780
-msgid "You're not connected to a server"
-msgstr "Et ole yhdistettynä palvelimelle"
-
-#: data/defscript/popups.kvs:815
-msgid "l (Connections)"
-msgstr "l (yhteydet)"
-
-#: data/defscript/popups.kvs:820
-msgid "m (Command Usage)"
-msgstr "m (komentokäyttö)"
-
-#: data/defscript/popups.kvs:825
-msgid "o (Operators)"
-msgstr "o (operaattorit)"
-
-#: data/defscript/popups.kvs:830
-msgid "t (Connection stats?)"
-msgstr "t (yhteystilastot?)"
-
-#: data/defscript/popups.kvs:835
-msgid "u (Uptime)"
-msgstr "u (päälläoloaika)"
-
-#: data/defscript/popups.kvs:840
-msgid "y (y-Lines)"
-msgstr "y (y-Lines)"
-
-#: data/defscript/popups.kvs:845
-msgid "z (Debug Stats?)"
-msgstr "z (Debug-tilastot?)"
-
-#: data/defscript/popups.kvs:921
-msgid "Enter the message text"
-msgstr "Kirjoita viestin teksti"
-
-#: data/defscript/popups.kvs:921
+#: data/defscript/popups.kvs:916
 msgid "&Page"
 msgstr "&Sivu"
 
-#: data/defscript/popups.kvs:942
-msgid "Chat with"
-msgstr "Chättää käyttäjälle"
+#: data/defscript/popups.kvs:672
+#: data/defscript/popups.kvs:726
+msgid "&Part"
+msgstr "&Poistu"
 
-#: data/defscript/popups.kvs:947
-msgid "Reverse Chat with"
-msgstr "Käänteinen chat käyttäjälle"
+#: data/defscript/popups.kvs:638
+#: data/defscript/popups.kvs:1293
+msgid "&Query"
+msgstr "Ky&sely"
 
-#: data/defscript/popups.kvs:952
-msgid "Secure Chat with"
-msgstr "Turva-chat käyttäjälle"
+#: data/defscript/popups.kvs:651
+#: data/defscript/popups.kvs:1165
+#: data/defscript/popups.kvs:1306
+msgid "&Registration"
+msgstr "&Rekisteröinti"
 
-#: data/defscript/popups.kvs:959
-msgid "Send to"
-msgstr "Lähetä käyttäjälle"
-
-#: data/defscript/popups.kvs:964
-msgid "Secure send to"
-msgstr "Turvalähetys käyttäjälle"
-
-#: data/defscript/popups.kvs:969
-msgid "Reverse Send to"
-msgstr "Käänteinen lähetys käyttäjälle"
-
-#: data/defscript/popups.kvs:974
-msgid "Secure Reverse Send to"
-msgstr "Turvallinen käänteinen lähetys käyttäjälle"
-
-#: data/defscript/popups.kvs:981
-msgid "TDCC Send to"
-msgstr "TDCC-lähetys käyttäjälle"
-
-#: data/defscript/popups.kvs:986
-msgid "TDCC Reverse Send to"
-msgstr "TDCC käänteinen lähetys käyttäjälle"
-
-#: data/defscript/popups.kvs:993
-msgid "Voice Chat"
-msgstr "Äänichat"
-
-#: data/defscript/popups.kvs:995
-msgid "Default"
-msgstr "Oletus"
-
-#: data/defscript/popups.kvs:1168
-msgid "&Ignore"
-msgstr "&Ohita"
-
-#: data/defscript/popups.kvs:1200
-msgid "Logging to"
-msgstr "Kirjataan tiedostoon"
-
-#: data/defscript/popups.kvs:1202
-msgid "Flush Log File"
-msgstr "Pyyhi lokitiedosto"
-
-#: data/defscript/popups.kvs:1209
-msgid "Stop Logging"
-msgstr "Lopeta kirjaus"
-
-#: data/defscript/popups.kvs:1214
-msgid "Not Logging"
-msgstr "Ei kirjata"
-
-#: data/defscript/popups.kvs:1216 data/defscript/popups.kvs:1221
-msgid "Log To Default File"
-msgstr "Kirjaa oletustiedostoon"
-
-#: data/defscript/popups.kvs:1221 data/defscript/popups.kvs:1234
-msgid "Include Existing Buffer"
-msgstr "Sisällytä jo olemassa oleva puskuri"
-
-#: data/defscript/popups.kvs:1226 data/defscript/popups.kvs:1234
-msgid "Log To..."
-msgstr "Kirjaa tiedostoon..."
-
-#: data/defscript/popups.kvs:1228 data/defscript/popups.kvs:1236
-msgid "Choose Log Filename"
-msgstr "Valitse lokin tiedostonimi"
-
-#: data/defscript/popups.kvs:1317
-msgid "Notify avatar"
-msgstr "Ilmoita avatarista"
-
-#: data/defscript/popups.kvs:1391
-msgid "Dock"
-msgstr "Telakoi"
-
-#: data/defscript/popups.kvs:1392
-msgid "Undock"
-msgstr "Vapauta"
-
-#: data/defscript/popups.kvs:1396
-msgid "Minimize"
-msgstr "Pienennä"
-
-#: data/defscript/popups.kvs:1397
-msgid "Maximize"
-msgstr "Suurenna"
-
-#: data/defscript/popups.kvs:1398
-msgid "Restore"
-msgstr "Palauta"
-
-#: data/defscript/popups.kvs:1402
-msgid "Close"
-msgstr "Sulje"
-
-#: data/defscript/popups.kvs:1408
-msgid "Set window props as default"
-msgstr "Aseta ikkunatiedot oletuksiksi"
-
-#: data/defscript/popups.kvs:1414
-msgid "Automatically Join Channel"
-msgstr "Liity automaattisesti kanavalle"
-
-#: data/defscript/popups.kvs:1417
-msgid "When Connecting to Server '?s'"
-msgstr "Kun yhdistetään palvelimelle '?s'"
-
-#: data/defscript/popups.kvs:1424
-msgid "When Connecting to Network '?s'"
-msgstr "Kun yhdistetään verkkoon '?s'"
-
-#: data/defscript/popups.kvs:1432
-msgid "Stop Auto-Joining Channel on Server '?s'"
-msgstr "Lopeta automaattinen liittyminen kanavalle palvelimella '?s'"
-
-#: data/defscript/popups.kvs:1445
-msgid "Stop Auto-Joining Channel on Network '?s'"
-msgstr "Lopeta automaattinen liityminen kanavalle verkossa '?s'"
-
-#: data/defscript/popups.kvs:1462
-msgid "Part All Channels"
-msgstr "Poistu kaikilta kanavilta"
-
-#: data/defscript/popups.kvs:1468
-msgid "Close All Queries"
-msgstr "Sulje kaikki kyselyt"
-
-#: data/defscript/popups.kvs:1474
-msgid "Close All Dead Channels"
-msgstr "Sulje kaikki kuolleet kanavat"
-
-#: data/defscript/popups.kvs:1480
-msgid "Close All Dead Queries"
-msgstr "Sulje kaikki kuolleet kyselyt"
-
-#: data/defscript/popups.kvs:1488
-msgid "Unhighlight All Windows"
-msgstr "Poista korostus kaikista ikkunoista"
-
-#: data/defscript/popups.kvs:1494
-msgid "Unhighlight All Channels"
-msgstr "Poista korostus kaikista kanavista"
-
-#: data/defscript/popups.kvs:1500
-msgid "Unhighlight All Queries"
-msgstr "Poista korostus kaikista kyselyistä"
-
-#: data/defscript/popups.kvs:1513
-msgid "Look Up "
-msgstr "Ratkaise DNS"
-
-#: data/defscript/popups.kvs:1520
-msgid "Open "
-msgstr "Avaa"
-
-#: data/defscript/popups.kvs:1525
-msgid "Telnet to "
-msgstr "Telnet-yhteys käyttäjään"
-
-#: data/defscript/popups.kvs:1532
-msgid "Traceroute to "
-msgstr "Traceroute kohteeseen"
-
-#: data/defscript/popups.kvs:1538
-msgid "Traceroute6 to "
-msgstr "Traceroute6 kohteeseen"
-
-#: data/defscript/default.kvs:34
-msgid "The default script has been successfully installed."
-msgstr "Oletuskoodi asennettu."
-
-#: data/defscript/default.kvs:35
-msgid "To connect to a server, type /server <server name>"
-msgstr "Yhdistääksesi palvelimeen, kirjoita /server <palvelimen nimi>"
-
-#: data/defscript/default.kvs:37
-msgid "Happy ircing :)"
-msgstr "Iloista irkkaamista! :)"
-
-#: data/defscript/aliases.kvs:21
-msgid "Missing target, no action taken"
-msgstr "Puuttuva kohde, toimintoja ei tehdä."
-
-#: data/defscript/aliases.kvs:100 data/defscript/aliases.kvs:145
-msgid "Usage"
-msgstr "Käyttö"
-
-#: data/defscript/aliases.kvs:100
-msgid "channel"
-msgstr "kanava"
-
-#: data/defscript/aliases.kvs:100 data/defscript/aliases.kvs:145
-msgid "message"
-msgstr "viesti"
-
-#: data/defscript/aliases.kvs:101
-msgid "-m: send a message instead of a notice"
-msgstr "-m: lähetä viesti ilmoituksen sijaan"
-
-#: data/defscript/aliases.kvs:102
-msgid "-w: send notice to all channel owners"
-msgstr "-w: lähetä ilmoitus kaikille kanavan omistajille"
+#: data/defscript/popups.kvs:575
+msgid "&Voice"
+msgstr "&Äänioikeus"
 
 #: data/defscript/aliases.kvs:103
 msgid "-a: send notice to all channel admins"
 msgstr "-a: lähetä ilmoitus kaikille kanavan ylläpitäjille"
 
-#: data/defscript/aliases.kvs:104
-msgid "-o: send notice to all channel ops"
-msgstr "-o: lähetä ilmoitus kaikille kanavan operaattoreille"
-
 #: data/defscript/aliases.kvs:105
 msgid "-h: send notice to all channel halfops"
 msgstr "-h: lähetä ilmoitus kaikille kanavan puoli-operaattoreille"
 
-#: data/defscript/aliases.kvs:106
-msgid "-v: send notice to all channel voices"
-msgstr "-v: lähetä ilmoitus kaikille kanavan äänioikeutetuille"
+#: data/defscript/aliases.kvs:101
+msgid "-m: send a message instead of a notice"
+msgstr "-m: lähetä viesti ilmoituksen sijaan"
+
+#: data/defscript/aliases.kvs:104
+msgid "-o: send notice to all channel ops"
+msgstr "-o: lähetä ilmoitus kaikille kanavan operaattoreille"
 
 #: data/defscript/aliases.kvs:107
 msgid "-q: quiet mode"
 msgstr "-q: hiljainen tila"
 
-#: data/defscript/aliases.kvs:115
-msgid "Parameter message missing"
-msgstr "Parametrin viesti puuttuu"
+#: data/defscript/aliases.kvs:106
+msgid "-v: send notice to all channel voices"
+msgstr "-v: lähetä ilmoitus kaikille kanavan äänioikeutetuille"
 
-#: data/defscript/aliases.kvs:116
-msgid "Type /gnotice for help"
-msgstr "Kirjoita /gnotice saadaksesi apua"
+#: data/defscript/aliases.kvs:102
+msgid "-w: send notice to all channel owners"
+msgstr "-w: lähetä ilmoitus kaikille kanavan omistajille"
 
-#: data/defscript/aliases.kvs:150
-msgid "Sending wallop to"
-msgstr "Lähetetään wallop käyttäjälle"
+#: data/defscript/popups.kvs:513
+#: data/defscript/popups.kvs:1137
+#: data/defscript/popups.kvs:1278
+msgid "/WHO ?s"
+msgstr "/WHO ?s"
 
-#: data/defscript/aliases.kvs:185 data/defscript/aliases.kvs:197
-#: data/defscript/aliases.kvs:209 data/defscript/aliases.kvs:224
-#: data/defscript/aliases.kvs:238 data/defscript/aliases.kvs:320
-#: data/defscript/aliases.kvs:362 data/defscript/aliases.kvs:432
-#: data/defscript/aliases.kvs:487
-msgid "Usage:"
-msgstr "Käyttö:"
+#: data/defscript/popups.kvs:503
+#: data/defscript/popups.kvs:1127
+#: data/defscript/popups.kvs:1268
+msgid "/WHOIS ?s"
+msgstr "/WHOIS ?s"
 
-#: data/defscript/aliases.kvs:239
-msgid "reason"
-msgstr "syy"
+#: data/defscript/popups.kvs:493
+#: data/defscript/popups.kvs:1118
+#: data/defscript/popups.kvs:1259
+msgid "/WHOIS ?s (idle time)"
+msgstr "/WHOIS ?s (idle-aika)"
 
-#: data/defscript/aliases.kvs:245 data/defscript/aliases.kvs:438
-msgid "This is not a channel window"
-msgstr "Tämä ei ole kanavaikkuna"
+#: data/defscript/popups.kvs:508
+#: data/defscript/popups.kvs:1132
+#: data/defscript/popups.kvs:1273
+msgid "/WHOWAS ?s"
+msgstr "/WHOWAS ?s"
 
-#: data/defscript/aliases.kvs:420
-msgid "Unsupported type:"
-msgstr "Tuntematon tyyppi:"
+#: data/defscript/popups.kvs:398
+msgid "Add to Notify"
+msgstr "Lisää ilmoitettavaksi"
 
-#: data/defscript/aliases.kvs:443
-msgid "Channel Owner"
-msgstr "Kanavaomistaja"
+#: data/defscript/popups.kvs:32
+#: data/defscript/popups.kvs:65
+msgid "Always Highlight"
+msgstr "Korosta aina"
+
+#: data/defscript/popups.kvs:1409
+msgid "Automatically Join Channel"
+msgstr "Liity automaattisesti kanavalle"
+
+#: data/defscript/popups.kvs:408
+msgid "Avatar"
+msgstr "Avatar"
+
+#: data/defscript/popups.kvs:458
+msgid "Ban"
+msgstr "Porttikielto"
+
+#: data/defscript/popups.kvs:594
+#: data/defscript/popups.kvs:620
+#: data/defscript/popups.kvs:916
+msgid "Cancel"
+msgstr "Peru"
 
 #: data/defscript/aliases.kvs:445
 msgid "Channel Administrator"
@@ -663,53 +205,513 @@ msgstr "Kanavaylläpitäjä"
 msgid "Channel Operator"
 msgstr "Kanavaoperaattori"
 
+#: data/defscript/aliases.kvs:443
+msgid "Channel Owner"
+msgstr "Kanavaomistaja"
+
+#: data/defscript/popups.kvs:712
+#: data/defscript/popups.kvs:777
+msgid "Channels"
+msgstr "Kanavat"
+
+#: data/defscript/popups.kvs:937
+msgid "Chat with"
+msgstr "Chättää käyttäjälle"
+
+#: data/defscript/popups.kvs:412
+msgid "Choose Avatar Image File"
+msgstr "Valitse avatarin kuvatiedosto"
+
+#: data/defscript/popups.kvs:1223
+#: data/defscript/popups.kvs:1231
+msgid "Choose Log Filename"
+msgstr "Valitse lokin tiedostonimi"
+
+#: data/defscript/popups.kvs:410
+msgid "Choose..."
+msgstr "Valitse..."
+
+#: data/defscript/popups.kvs:766
+#: data/defscript/popups.kvs:869
+#: data/defscript/popups.kvs:1085
+#: data/defscript/popups.kvs:1174
+#: data/defscript/popups.kvs:1319
+msgid "Clear Buffer"
+msgstr "Tyhjennä puskuri"
+
+#: data/defscript/popups.kvs:426
+msgid "Clear Default"
+msgstr "Tyhjennä oletus"
+
+#: data/defscript/popups.kvs:1397
+msgid "Close"
+msgstr "Sulje"
+
+#: data/defscript/popups.kvs:1477
+msgid "Close All Dead Channels"
+msgstr "Sulje kaikki kuolleet kanavat"
+
+#: data/defscript/popups.kvs:1483
+msgid "Close All Dead Queries"
+msgstr "Sulje kaikki kuolleet kyselyt"
+
+#: data/defscript/popups.kvs:1464
+msgid "Close All Queries"
+msgstr "Sulje kaikki kyselyt"
+
+#: data/defscript/popups.kvs:630
+msgid "Configure ban mask..."
+msgstr "Määritä kieltomaski..."
+
+#: data/defscript/popups.kvs:690
+msgid "Copy Channel Address"
+msgstr "Kopioi kanavan osoite"
+
+#: data/defscript/popups.kvs:761
+msgid "Copy Channel URL to Clipboard"
+msgstr "Kopioi kanavan URL leikepöydälle"
+
+#: data/defscript/popups.kvs:437
+msgid "Copy To Clipboard"
+msgstr "Kopioi leikepöydälle"
+
+#: data/defscript/popups.kvs:580
+msgid "D&evoice"
+msgstr "&Ei äänioikeutta"
+
+#: data/defscript/popups.kvs:520
+#: data/defscript/popups.kvs:1144
+msgid "DNS for"
+msgstr "DNS >"
+
+#: data/defscript/popups.kvs:990
+msgid "Default"
+msgstr "Oletus"
+
+#: data/defscript/popups.kvs:1386
+msgid "Dock"
+msgstr "Telakoi"
+
+#: data/defscript/popups.kvs:386
+msgid "Edit Registration..."
+msgstr "Muokkaa rekisteröintiä..."
+
+#: data/defscript/popups.kvs:118
+msgid "Enable Ignore"
+msgstr "Ota ohitus käyttöön"
+
+#: data/defscript/popups.kvs:594
+msgid "Enter a kick reason"
+msgstr "Kirjoita potkujen syy"
+
+#: data/defscript/popups.kvs:620
+msgid "Enter a kick/ban reason"
+msgstr "Kirjoita potkujen/porttikiellon syy"
+
+#: data/defscript/popups.kvs:916
+msgid "Enter the message text"
+msgstr "Kirjoita viestin teksti"
+
+#: data/defscript/popups.kvs:1197
+msgid "Flush Log File"
+msgstr "Pyyhi lokitiedosto"
+
 #: data/defscript/aliases.kvs:449
 msgid "Half Operator"
 msgstr "Puoli-operaattori"
 
-#: data/defscript/aliases.kvs:451
-msgid "Voice"
-msgstr "Äänioikeutettu"
-
-#: data/defscript/aliases.kvs:453
-msgid "User Operator"
-msgstr "Käyttäjätoiminto"
-
-#: data/defscript/aliases.kvs:455
-msgid "Normal User"
-msgstr "Normaali käyttäjä"
-
-#: data/defscript/aliases.kvs:475
-msgid "You must use DNS in an IRC context"
-msgstr "Sinun täytyy käyttää DNS:ää IRC-kontekstissä"
-
-#: data/defscript/aliases.kvs:481
-msgid "You must be connected to a server"
-msgstr "Sinun täytyy olla yhdistettynä palvelimeen"
-
-#: data/defscript/aliases.kvs:498
-msgid "No such user:"
-msgstr "Ei sen nimistä käyttäjää:"
-
-#: data/defscript/toolbars.kvs:3
-msgid "IRC Context"
-msgstr "IRC-konteksti"
-
-#: data/defscript/toolbars.kvs:15
-msgid "Options"
-msgstr "Valinnat"
+#: data/defscript/default.kvs:37
+msgid "Happy ircing :)"
+msgstr "Iloista irkkaamista! :)"
 
 #: data/defscript/toolbars.kvs:22
 msgid "Help"
 msgstr "Apu"
 
+#: data/defscript/popups.kvs:34
+#: data/defscript/popups.kvs:39
+#: data/defscript/popups.kvs:44
+#: data/defscript/popups.kvs:49
+#: data/defscript/popups.kvs:54
+#: data/defscript/popups.kvs:59
+msgid "Highlight as"
+msgstr "Korosta"
+
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr "IRC-konteksti"
+
+#: data/defscript/popups.kvs:655
+#: data/defscript/popups.kvs:1310
+msgid "Ig&nore"
+msgstr "O&hita"
+
+#: data/defscript/popups.kvs:125
+#: data/defscript/popups.kvs:132
+#: data/defscript/popups.kvs:139
+#: data/defscript/popups.kvs:146
+#: data/defscript/popups.kvs:153
+#: data/defscript/popups.kvs:160
+#: data/defscript/popups.kvs:167
+#: data/defscript/popups.kvs:174
+#: data/defscript/popups.kvs:181
+#: data/defscript/popups.kvs:188
+#: data/defscript/popups.kvs:195
+#: data/defscript/popups.kvs:202
+#: data/defscript/popups.kvs:209
+#: data/defscript/popups.kvs:216
+#: data/defscript/popups.kvs:223
+#: data/defscript/popups.kvs:230
+#: data/defscript/popups.kvs:237
+#: data/defscript/popups.kvs:244
+#: data/defscript/popups.kvs:251
+#: data/defscript/popups.kvs:258
+#: data/defscript/popups.kvs:265
+#: data/defscript/popups.kvs:272
+#: data/defscript/popups.kvs:279
+#: data/defscript/popups.kvs:286
+#: data/defscript/popups.kvs:293
+#: data/defscript/popups.kvs:300
+#: data/defscript/popups.kvs:307
+msgid "Ignore as"
+msgstr "Ohita nimellä"
+
+#: data/defscript/popups.kvs:123
+msgid "Ignore as..."
+msgstr "Ohita nimellä..."
+
+#: data/defscript/popups.kvs:1216
+#: data/defscript/popups.kvs:1229
+msgid "Include Existing Buffer"
+msgstr "Sisällytä jo olemassa oleva puskuri"
+
+#: data/defscript/popups.kvs:592
+msgid "K&ick"
+msgstr "Po&tkaise"
+
+#: data/defscript/popups.kvs:594
+msgid "Kick Reason"
+msgstr "Potkun syy"
+
+#: data/defscript/popups.kvs:613
+#: data/defscript/popups.kvs:618
+msgid "Kick/Ban"
+msgstr "Potkut/porttikielto"
+
+#: data/defscript/popups.kvs:620
+msgid "Kick/Ban Reason"
+msgstr "Potkujen/porttikiellon syy"
+
+#: data/defscript/popups.kvs:1211
+#: data/defscript/popups.kvs:1216
+msgid "Log To Default File"
+msgstr "Kirjaa oletustiedostoon"
+
+#: data/defscript/popups.kvs:1221
+#: data/defscript/popups.kvs:1229
+msgid "Log To..."
+msgstr "Kirjaa tiedostoon..."
+
+#: data/defscript/popups.kvs:1401
+#: data/defscript/events.kvs:68
+#: data/defscript/events.kvs:76
+#: data/defscript/events.kvs:84
+msgid "Logging"
+msgstr "Kirjataan"
+
+#: data/defscript/popups.kvs:1195
+msgid "Logging to"
+msgstr "Kirjataan tiedostoon"
+
+#: data/defscript/popups.kvs:1516
+msgid "Look Up "
+msgstr "Ratkaise DNS"
+
+#: data/defscript/popups.kvs:525
+#: data/defscript/popups.kvs:1149
+msgid "Mask for"
+msgstr "Maski >"
+
+#: data/defscript/popups.kvs:1392
+msgid "Maximize"
+msgstr "Suurenna"
+
+#: data/defscript/popups.kvs:1391
+msgid "Minimize"
+msgstr "Pienennä"
+
+#: data/defscript/aliases.kvs:21
+msgid "Missing target, no action taken"
+msgstr "Puuttuva kohde, toimintoja ei tehdä."
+
+#: data/defscript/popups.kvs:462
+#: data/defscript/popups.kvs:1065
+#: data/defscript/popups.kvs:1112
+#: data/defscript/popups.kvs:1254
+msgid "Multiple Users"
+msgstr "Monta käyttäjää"
+
+#: data/defscript/aliases.kvs:498
+msgid "No such user:"
+msgstr "Ei sen nimistä käyttäjää:"
+
+#: data/defscript/aliases.kvs:455
+msgid "Normal User"
+msgstr "Normaali käyttäjä"
+
+#: data/defscript/popups.kvs:1209
+msgid "Not Logging"
+msgstr "Ei kirjata"
+
+#: data/defscript/popups.kvs:657
+#: data/defscript/popups.kvs:752
+#: data/defscript/popups.kvs:1078
+#: data/defscript/popups.kvs:1167
+msgid "Notify Avatar"
+msgstr "Ilmoita avatarista"
+
+#: data/defscript/popups.kvs:1312
+msgid "Notify avatar"
+msgstr "Ilmoita avatarista"
+
+#: data/defscript/popups.kvs:535
+msgid "O&wner"
+msgstr "O&mistajaksi"
+
+#: data/defscript/popups.kvs:1523
+msgid "Open "
+msgstr "Avaa"
+
+#: data/defscript/toolbars.kvs:15
+msgid "Options"
+msgstr "Valinnat"
+
+#: data/defscript/aliases.kvs:115
+msgid "Parameter message missing"
+msgstr "Parametrin viesti puuttuu"
+
+#: data/defscript/popups.kvs:1457
+msgid "Part All Channels"
+msgstr "Poistu kaikilta kanavilta"
+
+#: data/defscript/popups.kvs:353
+msgid "Quick Registration"
+msgstr "Pikarekisteröinti"
+
+#: data/defscript/popups.kvs:355
+#: data/defscript/popups.kvs:360
+#: data/defscript/popups.kvs:365
+#: data/defscript/popups.kvs:370
+#: data/defscript/popups.kvs:375
+#: data/defscript/popups.kvs:380
+msgid "Register as"
+msgstr "Rekisteröiy numellä"
+
+#: data/defscript/popups.kvs:348
+msgid "Register..."
+msgstr "Rekisteröidy..."
+
+#: data/defscript/popups.kvs:1470
+#, fuzzy
+msgid "Rejoin All Dead Channels"
+msgstr "Sulje kaikki kuolleet kanavat"
+
+#: data/defscript/popups.kvs:403
+msgid "Remove from Notify"
+msgstr "Poista ilmoitettavista"
+
+#: data/defscript/popups.kvs:1393
+msgid "Restore"
+msgstr "Palauta"
+
+#: data/defscript/popups.kvs:942
+msgid "Reverse Chat with"
+msgstr "Käänteinen chat käyttäjälle"
+
+#: data/defscript/popups.kvs:964
+msgid "Reverse Send to"
+msgstr "Käänteinen lähetys käyttäjälle"
+
 #: data/defscript/toolbars.kvs:30
 msgid "Scripting"
 msgstr "Koodaus"
 
+#: data/defscript/popups.kvs:947
+msgid "Secure Chat with"
+msgstr "Turva-chat käyttäjälle"
+
+#: data/defscript/popups.kvs:969
+msgid "Secure Reverse Send to"
+msgstr "Turvallinen käänteinen lähetys käyttäjälle"
+
+#: data/defscript/popups.kvs:959
+msgid "Secure send to"
+msgstr "Turvalähetys käyttäjälle"
+
+#: data/defscript/popups.kvs:954
+msgid "Send to"
+msgstr "Lähetä käyttäjälle"
+
+#: data/defscript/aliases.kvs:150
+msgid "Sending wallop to"
+msgstr "Lähetetään wallop käyttäjälle"
+
+#: data/defscript/popups.kvs:421
+msgid "Set as Default"
+msgstr "Aseta oletukseksi"
+
+#: data/defscript/popups.kvs:1403
+msgid "Set window props as default"
+msgstr "Aseta ikkunatiedot oletuksiksi"
+
+#: data/defscript/popups.kvs:27
+#: data/defscript/popups.kvs:91
+msgid "Start Highlighting (Local)"
+msgstr "Aloita korostus (paikallinen)"
+
+#: data/defscript/popups.kvs:1440
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr "Lopeta automaattinen liityminen kanavalle verkossa '?s'"
+
+#: data/defscript/popups.kvs:1427
+msgid "Stop Auto-Joining Channel on Server '?s'"
+msgstr "Lopeta automaattinen liittyminen kanavalle palvelimella '?s'"
+
+#: data/defscript/popups.kvs:70
+msgid "Stop Highlighting"
+msgstr "Lopeta korostus"
+
+#: data/defscript/popups.kvs:22
+#: data/defscript/popups.kvs:86
+msgid "Stop Highlighting (Local)"
+msgstr "Lopeta korostus (paikallinen)"
+
+#: data/defscript/popups.kvs:1204
+msgid "Stop Logging"
+msgstr "Lopeta kirjaus"
+
+#: data/defscript/popups.kvs:981
+msgid "TDCC Reverse Send to"
+msgstr "TDCC käänteinen lähetys käyttäjälle"
+
+#: data/defscript/popups.kvs:976
+msgid "TDCC Send to"
+msgstr "TDCC-lähetys käyttäjälle"
+
+#: data/defscript/popups.kvs:1528
+msgid "Telnet to "
+msgstr "Telnet-yhteys käyttäjään"
+
+#: data/defscript/default.kvs:34
+msgid "The default script has been successfully installed."
+msgstr "Oletuskoodi asennettu."
+
+#: data/defscript/aliases.kvs:245
+#: data/defscript/aliases.kvs:438
+msgid "This is not a channel window"
+msgstr "Tämä ei ole kanavaikkuna"
+
+#: data/defscript/default.kvs:35
+msgid "To connect to a server, type /server <server name>"
+msgstr "Yhdistääksesi palvelimeen, kirjoita /server <palvelimen nimi>"
+
+#: data/defscript/popups.kvs:1535
+msgid "Traceroute to "
+msgstr "Traceroute kohteeseen"
+
+#: data/defscript/popups.kvs:1541
+msgid "Traceroute6 to "
+msgstr "Traceroute6 kohteeseen"
+
+#: data/defscript/aliases.kvs:116
+msgid "Type /gnotice for help"
+msgstr "Kirjoita /gnotice saadaksesi apua"
+
+#: data/defscript/popups.kvs:1387
+msgid "Undock"
+msgstr "Vapauta"
+
+#: data/defscript/popups.kvs:1497
+msgid "Unhighlight All Channels"
+msgstr "Poista korostus kaikista kanavista"
+
+#: data/defscript/popups.kvs:1503
+msgid "Unhighlight All Queries"
+msgstr "Poista korostus kaikista kyselyistä"
+
+#: data/defscript/popups.kvs:1491
+msgid "Unhighlight All Windows"
+msgstr "Poista korostus kaikista ikkunoista"
+
+#: data/defscript/popups.kvs:315
+msgid "Unignore"
+msgstr "Älä ohita"
+
+#: data/defscript/popups.kvs:391
+msgid "Unregister"
+msgstr "Poista rekisteröinti"
+
+#: data/defscript/aliases.kvs:420
+msgid "Unsupported type:"
+msgstr "Tuntematon tyyppi:"
+
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "Usage"
+msgstr "Käyttö"
+
+#: data/defscript/aliases.kvs:185
+#: data/defscript/aliases.kvs:197
+#: data/defscript/aliases.kvs:209
+#: data/defscript/aliases.kvs:224
+#: data/defscript/aliases.kvs:238
+#: data/defscript/aliases.kvs:320
+#: data/defscript/aliases.kvs:362
+#: data/defscript/aliases.kvs:432
+#: data/defscript/aliases.kvs:487
+msgid "Usage:"
+msgstr "Käyttö:"
+
+#: data/defscript/aliases.kvs:453
+msgid "User Operator"
+msgstr "Käyttäjätoiminto"
+
+#: data/defscript/aliases.kvs:451
+msgid "Voice"
+msgstr "Äänioikeutettu"
+
+#: data/defscript/popups.kvs:988
+msgid "Voice Chat"
+msgstr "Äänichat"
+
+#: data/defscript/popups.kvs:1419
+msgid "When Connecting to Network '?s'"
+msgstr "Kun yhdistetään verkkoon '?s'"
+
+#: data/defscript/popups.kvs:1412
+msgid "When Connecting to Server '?s'"
+msgstr "Kun yhdistetään palvelimelle '?s'"
+
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"
 msgstr "Ikkuna-tiedot"
+
+#: data/defscript/popups.kvs:592
+#: data/defscript/popups.kvs:618
+msgid "With..."
+msgstr "syyllä..."
+
+#: data/defscript/aliases.kvs:481
+msgid "You must be connected to a server"
+msgstr "Sinun täytyy olla yhdistettynä palvelimeen"
+
+#: data/defscript/aliases.kvs:475
+msgid "You must use DNS in an IRC context"
+msgstr "Sinun täytyy käyttää DNS:ää IRC-kontekstissä"
+
+#: data/defscript/popups.kvs:775
+msgid "You're not connected to a server"
+msgstr "Et ole yhdistettynä palvelimelle"
 
 #: data/defscript/classes.kvs:18
 msgid ""
@@ -731,3 +733,69 @@ msgid ""
 "directory"
 msgstr ""
 "[Asennin] Virhe: kolmas  copyFiles:n argumentti pitää olla kohdehakemisto"
+
+#: data/defscript/aliases.kvs:100
+msgid "channel"
+msgstr "kanava"
+
+#: data/defscript/popups.kvs:339
+msgid "has a default avatar"
+msgstr "on  oletusavatarin"
+
+#: data/defscript/popups.kvs:107
+msgid "is being ignored"
+msgstr "on ohitettu"
+
+#: data/defscript/popups.kvs:336
+msgid "is in the notify list"
+msgstr "on ilmoituslistalla"
+
+#: data/defscript/popups.kvs:108
+#: data/defscript/popups.kvs:112
+msgid "is not being ignored"
+msgstr "ei ole ohitettu"
+
+#: data/defscript/popups.kvs:342
+msgid "is not registered"
+msgstr "ei ole rekisteröitynyt"
+
+#: data/defscript/popups.kvs:333
+msgid "is registered as"
+msgstr "on rekisteröitynyt nimellä"
+
+#: data/defscript/popups.kvs:810
+msgid "l (Connections)"
+msgstr "l (yhteydet)"
+
+#: data/defscript/popups.kvs:815
+msgid "m (Command Usage)"
+msgstr "m (komentokäyttö)"
+
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "message"
+msgstr "viesti"
+
+#: data/defscript/popups.kvs:820
+msgid "o (Operators)"
+msgstr "o (operaattorit)"
+
+#: data/defscript/aliases.kvs:239
+msgid "reason"
+msgstr "syy"
+
+#: data/defscript/popups.kvs:825
+msgid "t (Connection stats?)"
+msgstr "t (yhteystilastot?)"
+
+#: data/defscript/popups.kvs:830
+msgid "u (Uptime)"
+msgstr "u (päälläoloaika)"
+
+#: data/defscript/popups.kvs:835
+msgid "y (y-Lines)"
+msgstr "y (y-Lines)"
+
+#: data/defscript/popups.kvs:840
+msgid "z (Debug Stats?)"
+msgstr "z (Debug-tilastot?)"
