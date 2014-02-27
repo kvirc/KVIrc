@@ -104,30 +104,22 @@ void KviKvsDownloadHandler::slotReadyRead()
 
 const char * const webattributes_tbl[] = {
 	"JavascriptEnabled",
-#if (QT_VERSION >= 0x040700)
 	"PluginsEnabled",
-#endif
 	"JavascriptCanOpenWindows",
 	"JavascriptCanAccessClipboard",
 	"ZoomTextOnly"
-#if (QT_VERSION >= 0x040700)
 	,
 	"LocalContentCanAccessFileUrls"
-#endif
 };
 
 const QWebSettings::WebAttribute webattributes_cod[] = {
 	QWebSettings::JavascriptEnabled,
-#if (QT_VERSION >= 0x040700)
 	QWebSettings::PluginsEnabled,
-#endif
 	QWebSettings::JavascriptCanOpenWindows,
 	QWebSettings::JavascriptCanAccessClipboard,
 	QWebSettings::ZoomTextOnly
-#if (QT_VERSION >= 0x040700)
 	,
 	QWebSettings::LocalContentCanAccessFileUrls
-#endif
 };
 
 const char * const findflag_tbl[] = {

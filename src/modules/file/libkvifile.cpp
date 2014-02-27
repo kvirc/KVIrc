@@ -1588,11 +1588,8 @@ static bool file_kvs_fnc_time(KviKvsModuleFunctionCall * c)
 		c->warning(__tr2qs("Unknown option '%1', defaulting to 'm'").arg(szType));
 		time = f.lastModified();
 	}
-#if QT_VERSION >= 0x040700
+
 	c->returnValue()->setInteger(time.toMSecsSinceEpoch() / 1000);
-#else
-	c->returnValue()->setInteger(time.toTime_t());
-#endif
 
 	return true;
 }

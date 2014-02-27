@@ -17,13 +17,12 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # Minimum cmake version
 cmake_minimum_required(VERSION 2.8.6)
 
-if(POLICY CMP0017)
-	cmake_policy(SET CMP0017 NEW)
-endif()
+# remove when we require cmake 2.8.11+
 if(POLICY CMP0020)
 	cmake_policy(SET CMP0020 NEW)
 endif()
 # fix the project to the new-style policy when we require cmake 2.8.10+
+# and remove it when we require cmake 3.0+
 if(POLICY CMP0043)
 	cmake_policy(SET CMP0043 OLD)
 endif()
@@ -397,7 +396,7 @@ endif()
 option(WANT_QT4 "Whether to prefer Qt4 over Qt5" OFF)
 
 if(WANT_QT4)
-	find_package(Qt4 4.6.0)
+	find_package(Qt4 4.7.0)
 	if(NOT Qt4_FOUND)
 		message(FATAL_ERROR "The use of Qt4 has been forced, but no Qt4 found on the system (WANT_QT4=ON)")
 		set(CMAKE_STATUS_QT_VERSION "None")
@@ -410,7 +409,7 @@ else()
 		set(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
 		set(qt5_kvirc_modules)
 	else()
-		find_package(Qt4 4.6.0)
+		find_package(Qt4 4.7.0)
 		if(Qt4_FOUND)
 			set(CMAKE_STATUS_QT_VERSION "${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}")
 			set(WANT_QT4 ON CACHE BOOL "Whether to prefer Qt4 over Qt5" FORCE)
@@ -477,6 +476,11 @@ if(Qt4_FOUND)
 	else()
 		set(CMAKE_STATUS_QTSVG_SUPPORT "No")
 	endif()
+
+	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it. 
+	if(MSVC AND NOT WANT_DEBUG) 
+		set(QT_USE_QTMAIN true) 
+	endif() 
 
 	include(${QT_USE_FILE})
 	include_directories(${QT_INCLUDES})
