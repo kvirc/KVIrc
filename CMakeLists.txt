@@ -20,6 +20,13 @@ cmake_minimum_required(VERSION 2.8.6)
 if(POLICY CMP0017)
 	cmake_policy(SET CMP0017 NEW)
 endif()
+if(POLICY CMP0020)
+	cmake_policy(SET CMP0020 NEW)
+endif()
+# fix the project to the new-style policy when we require cmake 2.8.10+
+if(POLICY CMP0043)
+	cmake_policy(SET CMP0043 OLD)
+endif()
 
 # Check modules first in local dir
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -205,10 +212,14 @@ else()
 				endif()
 			endif()
 		else()
-			if(MSVC)
-				# this is the equivalent of -O0 -g according to MSDN, /Zc:wchar_t- is default for QT 4.x but not 5; reevaluate then.
+			if(MSVC AND WANT_QT4)
+				# this is the equivalent of -O0 -g according to MSDN
+				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t 
 				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t-")
 				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t-")
+			elseif(MSVC)
+				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t")
+				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t")
 			else()
 				set(CMAKE_CXX_FLAGS "-O0 -g")
 				set(CMAKE_C_FLAGS "-O0 -g")
@@ -239,10 +250,14 @@ else()
 				set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
 			endif()
 		else()
-			if(MSVC)
-				# /Ox is -O3, /Zc:wchar_t- is default for QT 4.x but not 5; reevaluate then.
+			if(MSVC AND WANT_QT4)
+				# /Ox is -O3
+				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
 				set(CMAKE_CXX_FLAGS "/Ox /Zc:wchar_t-")
 				set(CMAKE_C_FLAGS "/Ox /Zc:wchar_t-")
+			elseif(MSVC)
+				set(CMAKE_CXX_FLAGS "/Ox /Zc:wchar_t")
+				set(CMAKE_C_FLAGS "/Ox /Zc:wchar_t")
 			else()
 				set(CMAKE_CXX_FLAGS "-O3")
 				set(CMAKE_C_FLAGS "-O3")
@@ -425,11 +440,6 @@ if(Qt4_FOUND)
 	set(QT_USE_QTXML true)
 	set(QT_USE_QTNETWORK true)
 
-	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it.
-	if(MSVC AND NOT WANT_DEBUG)
-		set(QT_USE_QTMAIN true)
-	endif()
-
 	# Qt-DBus support	
 	if(WANT_QTDBUS)
 		if(QT_QTDBUS_FOUND)
@@ -477,50 +487,45 @@ if(Qt5Widgets_FOUND)
 	include_directories(${Qt5Widgets_INCLUDE_DIRS})
 	list(APPEND qt5_kvirc_modules Widgets)
 
-	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it.
-	if(MSVC AND NOT WANT_DEBUG)
-		set(QT_USE_QTMAIN true)
-	endif()
-
 	# QtSql
 	find_package(Qt5Sql)
 	if(Qt5Sql_FOUND)
-	    include_directories(${Qt5Sql_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules Sql)
+		include_directories(${Qt5Sql_INCLUDE_DIRS})
+		list(APPEND qt5_kvirc_modules Sql)
 	endif()
 
 	# QtXml
 	find_package(Qt5Xml)
 	if(Qt5Xml_FOUND)
-	    include_directories(${Qt5Xml_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules Xml)
+		include_directories(${Qt5Xml_INCLUDE_DIRS})
+		list(APPEND qt5_kvirc_modules Xml)
 	endif()
 
 	# QtNetwork
 	find_package(Qt5Network)
 	if(Qt5Network_FOUND)
-	    include_directories(${Qt5Network_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules Network)
+		include_directories(${Qt5Network_INCLUDE_DIRS})
+		list(APPEND qt5_kvirc_modules Network)
 	endif()
 
 	# QtPrintSupport
 	find_package(Qt5PrintSupport)
 	if(Qt5PrintSupport_FOUND)
-	    include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules PrintSupport)
+		include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
+		list(APPEND qt5_kvirc_modules PrintSupport)
 	endif()
 
 	# QtMultimedia
 	find_package(Qt5Multimedia)
 	if(Qt5Multimedia_FOUND)
-	    include_directories(${Qt5Multimedia_INCLUDE_DIRS})
-	    list(APPEND qt5_kvirc_modules Multimedia)
+		include_directories(${Qt5Multimedia_INCLUDE_DIRS})
+		list(APPEND qt5_kvirc_modules Multimedia)
 	endif()
 
 	# Qt-DBus support	
 	if(WANT_QTDBUS)
-	    find_package(Qt5DBus)
-	    if(Qt5DBus_FOUND)
+		find_package(Qt5DBus)
+		if(Qt5DBus_FOUND)
 			list(APPEND qt5_kvirc_modules DBus)
 			include_directories(${Qt5DBus_INCLUDE_DIRS})
 			set(COMPILE_DBUS_SUPPORT 1)
@@ -529,8 +534,8 @@ if(Qt5Widgets_FOUND)
 
 	# Qt-WebKit support
 	if(WANT_QTWEBKIT)
-	    find_package(Qt5WebKitWidgets)
-	    if(Qt5WebKitWidgets_FOUND)
+		find_package(Qt5WebKitWidgets)
+		if(Qt5WebKitWidgets_FOUND)
 			list(APPEND qt5_kvirc_modules WebKitWidgets)
 			include_directories(${Qt5WebKitWidgets_INCLUDE_DIRS})
 			set(COMPILE_WEBKIT_SUPPORT 1)
@@ -538,11 +543,18 @@ if(Qt5Widgets_FOUND)
 	endif()
 	# Qt-Svg support
 	if(WANT_QTSVG)
-	    find_package(Qt5Svg)
-	    if(Qt5Svg_FOUND)
-		list(APPEND qt5_kvirc_modules Svg)
-		include_directories(${Qt5Svg_INCLUDE_DIRS})
-		set(COMPILE_SVG_SUPPORT 1)
+		find_package(Qt5Svg)
+		if(Qt5Svg_FOUND)
+			list(APPEND qt5_kvirc_modules Svg)
+			include_directories(${Qt5Svg_INCLUDE_DIRS})
+			set(COMPILE_SVG_SUPPORT 1)
+		endif()
+	endif()
+	if(WIN32)
+		find_package(Qt5WinExtras)
+		if(Qt5WinExtras_FOUND)
+			list(APPEND qt5_kvirc_modules WinExtras)
+			include_directories(${Qt5WinExtras_INCLUDE_DIRS})
 		endif()
 	endif()
 endif()
@@ -984,7 +996,7 @@ endif()
 # Platform Specific checks
 ############################################################################
 if(WIN32)
-	add_definitions(-D_WIN32_WINNT=0x501 -DWINVER=0x501)
+	add_definitions(-D_WIN32_WINNT=0x501 -DWINVER=0x501 -DWIN32_LEAN_AND_MEAN)
 endif()
 
 if(MINGW)
@@ -996,7 +1008,7 @@ if(MINGW)
 endif()
 
 if(MSVC)
-	add_definitions(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES)
+	add_definitions(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES -DNOMINMAX)
 	add_definitions(-DMSVC)
 endif()
 

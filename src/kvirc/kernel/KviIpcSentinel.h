@@ -28,14 +28,11 @@
 
 
 #ifndef COMPILE_NO_IPC
-
 	#include "KviCString.h"
-
 	#include <QWidget>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
- #include <winsock2.h>
-	#include <windows.h>
+	#include <winsock2.h>
 #else
 	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
 		#include <qcoreevent.h>

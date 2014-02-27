@@ -34,7 +34,7 @@
 #endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-#include <windows.h>
+#include <winsock2.h>
 
 typedef enum _QueryInfo
 {

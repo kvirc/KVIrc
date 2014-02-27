@@ -114,6 +114,9 @@
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <QPluginLoader>
+	#if (QT_VERSION >= 0x050000) 
+		#include <QtWinExtras>
+	#endif
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT
@@ -1490,8 +1493,11 @@ void KviApplication::updatePseudoTransparency()
 
 			SelectObject(bitmap_dc, null_bitmap);
 			DeleteDC(bitmap_dc);
-
-			QPixmap pix = QPixmap::fromWinHBITMAP(bitmap);
+			#if (QT_VERSION >= 0x050000)
+						QPixmap pix = QtWin::fromHBITMAP(bitmap);
+			#else
+						QPixmap pix = QPixmap::fromWinHBITMAP(bitmap);
+			#endif
 
 			DeleteObject(bitmap);
 

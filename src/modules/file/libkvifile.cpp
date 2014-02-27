@@ -39,10 +39,8 @@
 #include <QByteArray>
 #include <QDateTime>
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-#include <windows.h>
-#else
-#include <sys/statvfs.h>
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
+	#include <sys/statvfs.h>
 #endif
 
 

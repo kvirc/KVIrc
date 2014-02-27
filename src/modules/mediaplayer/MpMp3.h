@@ -53,9 +53,7 @@
 #include <stdlib.h>
 #include <QString>
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <windows.h>
-#else
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <unistd.h>
 	#include <sys/stat.h>
 	#include <ctype.h>

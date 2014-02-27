@@ -32,8 +32,6 @@
 #include "KviLocale.h"
 #include "KviModule.h"
 
-#include <windows.h>
-
 enum ac_StartMode
 {
 	AC_START_ALL = 0,
@@ -95,7 +93,7 @@ static bool loadAmipDll()
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii());
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
 	if(!c)
 		c = QTextCodec::codecForLocale();
 	return c;
@@ -237,7 +235,7 @@ QString MpAmipInterface::mrl()
 	QString ret;
 	QString fn = eval_str("var_fn");
 	QTextCodec *c=mediaplayer_get_codec();
-	if (c) ret = c->toUnicode(fn.toAscii());
+	if (c) ret = c->toUnicode(fn.toLatin1());
 	else ret=fn;
 	if(!ret.startsWith("http://",Qt::CaseInsensitive))
 	ret.prepend("file://");
@@ -250,7 +248,7 @@ QString getAmipString(const char * var)
 	QString ret;
 	QString s = eval_str(var);
 	QTextCodec *c=mediaplayer_get_codec();
-	if (c) ret = c->toUnicode(s.toAscii());
+	if (c) ret = c->toUnicode(s.toLatin1());
 	else ret=s;
 	return ret;
 }
@@ -406,7 +404,7 @@ QString MpAmipInterface::amipEval(const QString &cmd)
 	if((ac_eval(szCmd, buff) == AC_ERR_NOERROR)) {
 		QString s = buff;
 		QTextCodec *c=mediaplayer_get_codec();
-		if (c) ret = c->toUnicode(s.toAscii());
+		if (c) ret = c->toUnicode(s.toLatin1());
 		else ret=s;
 	}
 	return ret;

@@ -83,10 +83,6 @@
 	#include <KWindowSystem>
 #endif
 
-#ifdef COMPILE_ON_WINDOWS
-	#include <windows.h>
-#endif
-
 KVIRC_API KviWindow * g_pActiveWindow = 0;
 
 static QMenu * g_pMdiWindowSystemMainPopup = 0;

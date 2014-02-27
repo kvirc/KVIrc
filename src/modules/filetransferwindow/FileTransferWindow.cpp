@@ -59,6 +59,10 @@
 	#include <kiconloader.h>
 #endif //COMPILE_KDE_SUPPORT
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <shellapi.h>
+#endif
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif

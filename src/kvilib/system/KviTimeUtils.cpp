@@ -28,7 +28,6 @@
 #include "KviLocale.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <windows.h> // GetSystemTime
 
 	// Call SystemTimeToFileTime to copy the system time to a FILETIME structure.
 	// Call GetSystemTime to get the current system time to pass to SystemTimeToFileTime.

@@ -25,24 +25,24 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#define IDD_ICON2                       101
-#define IDD_ICON3                       102
-#define IDD_ICON4                       103
-#define IDD_ICON5                       104
+#define VER_FILEVERSION			4,3,1,0
+#define VER_FILEVERSION_STR		"4.3.1.0\0"
 
-#define VER_FILEVERSION             4,3,0,0
-#define VER_FILEVERSION_STR         "4.3.0.0\0"
+#define VER_PRODUCTVERSION		VER_FILEVERSION
+#define VER_PRODUCTVERSION_STR		VER_FILEVERSION_STR
 
-#define VER_PRODUCTVERSION          4,3,0,0
-#define VER_PRODUCTVERSION_STR      "4.3\0"
+#define IDD_ICON2			101
+#define IDD_ICON3			102
+#define IDD_ICON4			103
+#define IDD_ICON5			104
 
-#define VER_COMPANYNAME_STR         "KVIrc Development Team"
-#define VER_FILEDESCRIPTION_STR     "KVIrc"
-#define VER_INTERNALNAME_STR        "KVIrc"
-#define VER_LEGALCOPYRIGHT_STR      "Copyright © 2012"
-#define VER_ORIGINALFILENAME_STR    "kvirc.exe"
-#define VER_PRODUCTNAME_STR         "K Visual IRC Client"
+#define VER_COMPANYNAME_STR		"KVIrc Development Team"
+#define VER_FILEDESCRIPTION_STR		"KVIrc"
+#define VER_INTERNALNAME_STR		"KVIrc"
+#define VER_LEGALCOPYRIGHT_STR		"Copyright © 2014"
+#define VER_ORIGINALFILENAME_STR	"kvirc.exe"
+#define VER_PRODUCTNAME_STR		"K Visual IRC Client"
 
-#define VER_COMPANYDOMAIN_STR       "kvirc.net"
+#define VER_COMPANYDOMAIN_STR		"kvirc.net"
 
 #endif // VERSION_H

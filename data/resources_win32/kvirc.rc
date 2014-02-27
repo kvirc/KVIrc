@@ -22,18 +22,19 @@
 //
 //=============================================================================
 
-#include <windows.h>
 #include "version.h"
 
-IDI_ICON1               ICON    DISCARDABLE "icon1.ico"
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
 IDD_ICON2               ICON    DISCARDABLE     "kvs.ico"
 IDD_ICON3               ICON    DISCARDABLE     "kvc.ico"
 IDD_ICON4               ICON    DISCARDABLE     "kvt.ico"
 IDD_ICON5               ICON    DISCARDABLE     "kva.ico"
 
-VS_VERSION_INFO VERSIONINFO
+1 VERSIONINFO
 FILEVERSION     VER_FILEVERSION
 PRODUCTVERSION  VER_PRODUCTVERSION
+FILEOS         	0x40004L
+FILETYPE       	0x2L
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN

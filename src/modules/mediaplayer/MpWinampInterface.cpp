@@ -32,8 +32,6 @@
 #include "KviLocale.h"
 #include "KviModule.h"
 
-#include <windows.h>
-
 #define IPC_STARTPLAY 102
 #define IPC_ISPLAYING 104
 
@@ -169,7 +167,7 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii());
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
 	if(!c)c = QTextCodec::codecForLocale();
 	return c;
 

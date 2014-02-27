@@ -32,8 +32,6 @@
 #include "KviLocale.h"
 #include "KviModule.h"
 
-#include <windows.h>
-
 static HWND find_spotify(KviSpotifyInterface * i)
 {
 	HWND hWnd = FindWindow("SpotifyMainWindow",NULL);

@@ -60,7 +60,7 @@ static bool __fncname(KviKvsModuleFunctionCall * c) \
 
 #ifdef COMPILE_ON_WINDOWS
 // we have to test better the results
-static double cbrt(double x)
+inline static double cbrt(double x)
 {
 	if (x > 0.0) return pow(x, 1.0/3.0);
 	else return -pow(-x, 1.0/3.0);

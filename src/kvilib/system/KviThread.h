@@ -44,8 +44,7 @@ class QSocketNotifier;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	#include <winsock2.h> // this will pull in windows.h and will avoid windock.h inclusion
-	//#include <windows.h>
+	#include <winsock2.h>
 	// Windoze thread abstraction layer
 	#define kvi_mutex_t HANDLE
 	inline void kvi_threadMutexInit(kvi_mutex_t * _pMutex_t)

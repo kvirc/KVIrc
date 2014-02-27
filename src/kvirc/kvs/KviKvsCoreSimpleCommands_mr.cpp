@@ -49,6 +49,10 @@
 #include <QProcess>
 #include <QTimer>
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <shellapi.h>
+#endif
+
 namespace KviKvsCoreSimpleCommands
 {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////

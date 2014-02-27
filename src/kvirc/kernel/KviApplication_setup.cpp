@@ -41,7 +41,6 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <shlwapi.h>
-	#include <windows.h> // at least for GetModuleFileName and *PrivateProfileString
 #else
 	#include <stdlib.h> // for getenv()
 	#include <unistd.h> // for symlink() <-- unused ?

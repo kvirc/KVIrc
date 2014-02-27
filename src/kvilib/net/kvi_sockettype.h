@@ -31,15 +31,13 @@
 #include "kvi_settings.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-
 	#include <winsock2.h>
-
+		#if defined(COMPILE_ON_WINDOWS)
+			#include <ws2ipdef.h>
+		#endif
 	typedef SOCKET kvi_socket_t;
-
 #else
-
 	typedef int    kvi_socket_t;
-
 #endif
 
 #endif //_KVI_SOCKETTYPE_H_

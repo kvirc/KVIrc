@@ -274,8 +274,6 @@ void NotifierWindow::stopAutoHideTimer()
 	}
 #else // COMPILE_KDE_SUPPORT
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	
-		#include <windows.h>
 		
 		static bool active_window_is_full_screen()
 		{

@@ -54,7 +54,7 @@ class KviTrayIcon;
 class QShortcut;
 
 #ifdef COMPILE_ON_WINDOWS
-	// MSCV has problems with KviPointerList<KviWindow> otherwise
+	// MSVC has problems with KviPointerList<KviWindow> otherwise
 	#include "KviWindow.h"
 #endif
 

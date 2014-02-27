@@ -48,7 +48,6 @@ bool g_bFoundMirc;
 #include <QDesktopWidget>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <windows.h>
 	#include <winnls.h>  // for MultiByteToWideChar
 	#include <objbase.h> // CoCreateInstance, CoInitialize & CO.
 	#include <shlobj.h>  // IShellLink IPersistFile & CO.

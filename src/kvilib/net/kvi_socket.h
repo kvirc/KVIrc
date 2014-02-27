@@ -48,13 +48,15 @@
 
 	//every decent win version should contain IPPROTO_IPV6
 
-	//old mingw win32 headers doesn't contain this
+	//mingw win32 headers do not have this, mingw-w64-headers do however
+#if defined(COMPILE_ON_MINGW)
 	#ifndef IPV6_PROTECTION_LEVEL
 		#define IPV6_PROTECTION_LEVEL          23
 		#define PROTECTION_LEVEL_UNRESTRICTED  10  /* for peer-to-peer apps  */
 		#define PROTECTION_LEVEL_DEFAULT       20  /* default level          */
 		#define PROTECTION_LEVEL_RESTRICTED    30  /* for Intranet apps      */
 	#endif
+#endif
 
 	#define KVI_IPV6_PROTECTION_LEVEL          IPV6_PROTECTION_LEVEL
 	#define KVI_PROTECTION_LEVEL_RESTRICTED    PROTECTION_LEVEL_RESTRICTED

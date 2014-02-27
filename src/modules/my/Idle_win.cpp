@@ -22,7 +22,6 @@
 	#include "Idle.h"
 
 	#include <QLibrary>
-	#include< windows.h>
 
 	typedef struct tagLASTINPUTINFO {
 		UINT cbSize;
