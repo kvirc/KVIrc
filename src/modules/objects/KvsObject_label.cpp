@@ -138,9 +138,9 @@ const int frame_cod[] = {
 		Center    - Equals HCenter + VCenter[br]
 		WordBreak - Enables automatic word breaking[br]
 		[/pre]
-		It is obvious that you can not set for example [i]Right[/i]
+		It is obvious that you can not set [i]Right[/i]
 		and [i]Left[/i] simoultaneously - this will [b]NOT[/b]
-		result in an error message - this will simply not work :)
+		result in an error message - it will simply not work :)
 		!fn: $clear()
 		Clears the label. Equal to calling [classfnc]$setText[/classfnc]("")
 		!fn: <string> $frameStyle()
@@ -149,10 +149,10 @@ const int frame_cod[] = {
 		this:
 		[pre]Panel, Raised[/pre]
 		See [classfnc]$setFrameStyle[/classfnc]() for a list of all
-		frame-style flags and their explenation.
+		frame-style flags and their explanation.
 		!fn: $setFrameStyle(<flag1>, <flag2>, ...)
 		Sets the frame-style flags to the ones passed as arguments.
-		The flags can either decide of the shape or shadow of the
+		The flags determine the shape or shadow of the
 		label's frame. Valid shape flags are:[br]
 		[pre]
 		NoFrame     - draw no frame. You shouldn't specify a shadow when
@@ -175,7 +175,7 @@ const int frame_cod[] = {
 		[/pre]
 		!fn: $setImage(<image_id>)
 		Sets the image to be displayed on this label.
-		Giving empty argument clears the pixmap[br]
+		Giving empty argument clears the pixmap.[br]
 		See the [doc:image_id]image identifier[/doc] documentation for
 		the explaination of the <image_id> parameter.
 
