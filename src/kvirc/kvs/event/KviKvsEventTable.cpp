@@ -452,7 +452,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Console
 		@description:
-			Triggered when the lag metering engine periodically calculates the current lag (the interval is configurable under settings -> IRC -> Tools -> Lag). 
+			Triggered when the lag metering engine periodically calculates the current lag (the interval is configurable under settings -> IRC -> Tools -> Lag).
 	*/
 	EVENT("OnLagCheck", \
 		"$0 = server\n" \
@@ -1317,7 +1317,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Query window or console
 		@description:
 			Triggered when a private notice is received.[br]
-			If you call [cmd]halt[/cmd] in this event, the message output will be stopped and if the message was going to cause a query window creation, the window will NOT be created
+			If you call [cmd]halt[/cmd] in this event, the message output will be stopped and if the message was going to cause a query window creation, the window will NOT be created.
 			$4 will be 1 if the message is encrypted and 0 otherwise.
 		@seealso:
 			[event:onchannelmessage]OnChannelMessage[/event]
@@ -3032,7 +3032,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			console
 		@description:
 			Triggered when a notice is received and the source user is recognized as
-			the NickServ service (the source nick is 'NickServ' or its mask matches 
+			the NickServ service (the source nick is 'NickServ' or its mask matches
 			a mask defined in the Nickserver identify options).[br]
 			Calling [cmd]halt[/cmd] stops the message output.
 		@seealso:
