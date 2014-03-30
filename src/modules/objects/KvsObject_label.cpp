@@ -208,6 +208,7 @@ bool KvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLabel)
 	((QLabel *)widget())->setWordWrap(true);
+	((QLabel *)widget())->setTextInteractionFlags(Qt::TextSelectableByMouse);
 	return true;
 }
 
