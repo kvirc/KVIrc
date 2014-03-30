@@ -3178,7 +3178,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Console window
 		@description:
 			A CTCP reply has been received.[br]
-			If you call [cmd]halt[/cmd] in this event, you will stop the further processing of the CTCP (thus, you can disable some of the KVIrc features).[br]
+			If you call [cmd]halt[/cmd] in this event, you will stop the further processing of the CTCP reply (thus, you can disable some of the KVIrc features).[br]
 			Be careful when using this.
 		@seealso:
 			[event:onctcpreply]OnCTCPReply[/event]
