@@ -128,7 +128,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 		{
 			QString szType;
 			result->result()->getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash automatic conversion from %Q supplied","kvs"),&szType);
+            c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from %Q supplied","kvs"),&szType);
 		}
 		result->result()->setHash(new KviKvsHash());
 	}
