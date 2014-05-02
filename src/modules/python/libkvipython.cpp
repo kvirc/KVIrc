@@ -78,12 +78,12 @@
 		This feature is present only if a working python installation
 		has been found at build time.[br]
 		The python support is very similar to the perl support present
-		since 3.x. So if you have used perl from kvirc before you'll
+		since 3.x, so if you have used perl from KVIrc before you'll
 		find the api is almost the same.. otherwise read on :)
 		[br]
 
 		[big]Using python from KVS[/big][br]
-		Using python from KVIrc is really easy: just enclose
+		Using python from KVIrc is really easy - just enclose
 		your python code snippet inside [cmd]python.begin[/cmd] and [cmd]python.end[/cmd].
 		[example]
 		[cmd]python.begin[/cmd]
@@ -99,11 +99,11 @@
 		[cmd]python.end[/cmd]
 		[/example]
 		A python code snippet can appear anywhere a KVS code snippet can
-		with the only restriction that i must be enclosed in [cmd]python.begin[/cmd]
+		with the only restriction that it must be enclosed in [cmd]python.begin[/cmd]
 		and [cmd]python.end[/cmd]. This means that you can write python code
-		in the commandline, in the aliases, the event handlers, popups...anywhere.[br]
-		If you have already encountered the KVIrc's [cmd]eval[/cmd] command
-		that you probably also know how to execute a python code snippet from a file :)[br]
+		in the commandline, in the aliases, the event handlers, popups... anywhere.[br]
+		If you have already encountered KVIrc's [cmd]eval[/cmd] command
+		then you probably also know how to execute a python code snippet from a file :)[br]
 		[br]
 
 		[big]Using KVS from python[/big][br]
@@ -125,16 +125,17 @@
 		[br]
 
 		[big]Python execution contexts[/big][br]
-		The python code snippets are executed by the means of a python interpreter.
-		Each python interpreter has its own context and thus it's own variables,
+		The python code snippets are executed by a python interpreter - each
+		interpreter has its own context and thus its own variables,
 		own function namespace etc.[br]
 		[br]
-		In the example above KVIrc creates an interpreter when [cmd]python.begin[/cmd]
+		In the example above, KVIrc creates an interpreter when [cmd]python.begin[/cmd]
 		is invoked and destroys it at [cmd]python.end[/cmd] parsing time.
 		In fact, KVIrc can mantain multiple persistent interpreters that will
 		allow you to preserve your context across [cmd]python.begin[/cmd] invocations.[br]
+		[br]
 		You can invoke a specific python context by passing it as parameter to the [cmd]python.begin[/cmd]
-		command.[br]
+		command:[br]
 		[example]
 		[cmd]python.begin("mycontext")[/cmd]
 		myvariable = "mycontext"
@@ -148,31 +149,32 @@
 		kvirc.echo("myvariable is still equal to " + myvariable)
 		[cmd]python.end[/cmd]
 		[/example]
-		The first time you invoke a named python context it gets automatically created and
-		it persists until KVIrc terminates or the python context is explicitly destroyed
-		by the means of [cmd]python.destroy[/cmd].[br]
+		The first time you invoke a named python context it is automatically created and
+		persists until KVIrc terminates or the python context is explicitly destroyed
+		by [cmd]python.destroy[/cmd].[br]
 		[br]
-		In fact there is a third possibility to destroy a context: it's when the
-		pythoncore module is forcibly unloaded (by the means of /pythoncore.unload) but
-		this is really a rare case and should be threated just like a KVIrc restart (the
+		There is a third possibility to destroy a context - when the
+		pythoncore module is forcibly unloaded (by /pythoncore.unload). This
+		is however a rare case and should be treated just like a KVIrc restart (the
 		user probably WANTS the contexts to be reinitialized).[br]
 		[br]
-		The nice thing is that not only your variables will get preserved
-		but also any python function or class you declare in a context will persist.
+		The nice thing is that not only will your variables be preserved, any python
+		function or class you declare in a context will persist.
 		It's just like executing a long python script file with pauses inside.[br]
 		[br]
 		If you omit the python context name in the [cmd]python.begin[/cmd] command
-		(or if you use an empty string in it's place)
+		(or if you use an empty string in its place)
 		then KVIrc will create a temporary context for the snippet execution
 		and will destroy it immediately after [cmd]python.end[/cmd] has been called.[br]
 		[br]
 		The major side effect of keeping persistent python contexts is that
-		the python's symbol table will grow and if not used carefully the interpreter
-		may become a memory hog. So if you're going to use persistent contexts
+		python's symbol table will grow, and if not used carefully, the interpreter
+		may become a memory hog. So if you're going to use persistent contexts,
 		either try to keep the symbol table clean or explicitly call [cmd]python.destroy[/cmd]
 		once in a while to recreate the interpreter.[br]
-		If you just execute occasional python code snippets and don't need to keep persistent variables
-		then just use the nameless temporary context provided by [cmd]python.begin[/cmd]("").[br]
+		If you just execute occasional python code snippets and don't need to keep
+		persistent variables, then just use the nameless temporary context provided
+		by [cmd]python.begin[/cmd]("").[br]
 		[br]
 
 		[big]Passing parameters to the python script[/big][br]
@@ -191,17 +193,17 @@
 		[br]
 
 		[big]Accessing the KVIrc scripting context from python[/big][br]
-		KVIrc exposes the following functions that manipulate the
-		variables of the KVIrc's current KVS execution context.[br]
+		KVIrc exposes the following functions that manipulate
+		variables of KVIrc's current KVS execution context:[br]
 		&nbsp; &nbsp; [b]kvirc.getLocal(&lt;x&gt;)[/b][br]
-		Returns the value of the KVIrc's local variable %x.[br]
+		Returns the value of KVIrc's local variable %x.[br]
 		&nbsp; &nbsp; [b]kvirc.getGlobal(&lt;Y&gt;)[/b][br]
-		Returns the value of the KVIrc's global variable %Y.[br]
+		Returns the value of KVIrc's global variable %Y.[br]
 		&nbsp; &nbsp; [b]kvirc.setLocal(&lt;x&gt;,&lt;value&gt;)[/b][br]
-		Sets the KVIrc's global variable %x to &lt;value&gt;[br]
+		Sets KVIrc's local variable %x to &lt;value&gt;[br]
 		&nbsp; &nbsp; [b]kvirc.setGlobal(&lt;Y&gt;,&lt;value&gt;)[/b][br]
-		Sets the KVIrc's global variable %Y to &lt;value&gt;[br]
-		The local variables interested belong to the current KVS exection context
+		Sets KVIrc's global variable %Y to &lt;value&gt;[br]
+		The local variables referenced belong to the current KVS exection context
 		while the global variables are visible everywhere.[br]
 		[example]
 		%pippo = test
@@ -220,10 +222,10 @@
 		[br]
 
 		[big]Executing arbitrary KVIrc commands from python[/big][br]
-		You can execute arbitrary KVS commands from python by the means of:[br]
+		You can execute arbitrary KVS commands from python by means of:[br]
 		&nbsp; &nbsp; [b]kvirc.eval(&lt;code&gt;)[/b][br]
-		This function behaves exactly like the ${ &lt;code&gt; } KVS construct:
-		it executes &lt;code&gt; in a child context and returns it's evaluation retult.[br]
+		This function behaves exactly like the ${ &lt;code&gt; } KVS construct -
+		it executes &lt;code&gt; in a child context and returns its evaluation result.[br]
 		The following two code snippets have equivalent visible effects:[br]
 		[example]
 		[cmd]echo[/cmd] ${ return "Yeah!"; }
@@ -233,9 +235,9 @@
 		kvirc.echo(kvirc.eval("return \"Yeah!\""));
 		[cmd]python.end[/cmd]
 		[/example]
-		You can "eval" composite command sequences and variable ones.[br]
+		You can "eval" compound command sequences and variable ones.[br]
 		Remember that the python code snippet is evaluated in a child KVS context
-		and thus the local variables are NOT visible!.
+		and thus the local variables are NOT visible!
 		The following code snippets may easily fool you:[br]
 		[example]
 		%x = 10
@@ -255,8 +257,8 @@
 		[br]
 
 		[big]A shortcut for kvirc.eval("/say...")[/big][br]
-		Since kvirc.eval("/say...") is a common calling pattern then say
-		has been added to the KVIrc python namespace. You can now call
+		Since kvirc.eval("/say...") is a common calling pattern, say has been added
+		to the KVIrc python namespace. You can now call
 		[example]
 		kvirc.say("Hi all!")
 		[/example]
@@ -269,13 +271,19 @@
 		and the semantics are obvious (see also /[cmd]say[/cmd]).
 		[br]
 
-		[big]The python script return values[/big][br]
+		[big]Python script return values[/big][br]
 		The [cmd]python.begin[/cmd] command propagates the python code return
-		value to the KVIrc context (just like a setreturn() would do).[br]
-		In fact the python snippet return value is the last "thing" that
-		the interpreter evaluates.[br]
-		In this way you can write python aliases that return values
-		without doing any variable passing equilibrism.[br]
+		value to the KVIrc context (just like a [cmd]setreturn[/cmd]() would do)
+		- this makes it easier to create an alias that executes a python script and
+		returns its result.[br]
+		[br]
+		Without this automatic propagation, you would be forced to play with variables:
+		[ul]
+		[li]First use [b]kvirc.setLocal('var', '123')[/b] from inside the
+		python script;[/li]
+		[li]Then, from the KVIrc script after [cmd]python.end[/cmd], retrieve the
+		%var variable, check its value and call [cmd]setreturn[/cmd]() on it.[/li]
+		[/ul]
 		[br]
 
 		[big]Executing python scripts from files[/big][br]
@@ -296,15 +304,14 @@
 		[big]Curiosity[/big][br]
 		The python support in KVIrc is implemented as a master-slave module pair.
 		The python.* module is the master while pythoncore is the slave.
-		When the python support isn't compiled in, the python.* commands
+		When python support isn't compiled in, the python.* commands
 		print some warnings and exit gracefully while the pythoncore module
 		refuses to be loaded. When python support is compiled in but
-		for some reason the libpython.so can't be found or loaded
-		then pythoncore fails the dynamic loading stage but python.* still fails
-		gracefully with just some warning messages. This trick allows
-		the scripters to check for python support with [fnc]python.isAvailable[/fnc]
-		and to embed python code snippets in KVS even if the support is missing.
-		The snippets will be just skipped.[br]
+		for some reason the libpython.so can't be found or loaded, pythoncore fails
+		the dynamic loading stage, however python.* only fails gracefully with warning
+		messages. This trick allows scripters to check for python
+		support with [fnc]python.isAvailable[/fnc] and to embed python code snippets
+		in KVS even if the support is missing - the snippets will be just skipped.[br]
 		[br]
 		Happy python hacking :)[br]
 */
@@ -456,6 +463,28 @@ static bool python_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 
 	return true;
 }
+
+/*
+	@doc: python.destroy
+	@type:
+		command
+	@title:
+		python.destroy
+	@short:
+		Destroys a python execution context
+	@syntax:
+		python.destroy [-q] <context_name:string>
+	@description:
+		Destroys the python execution context <context_name>.
+		If the context does not exist then a warning is printed unless the
+		-q switch is used.[br]
+		The destruction will clear any state associated with the context
+		including the stored functions, classes and variable symbols.
+		You may want to destroy a context to re-initialize its state
+		or to simply clear its memory when it is no longer needed.
+	@seealso:
+		[cmd]python.begin[/cmd]
+*/
 
 static bool python_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
