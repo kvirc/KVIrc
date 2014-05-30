@@ -77,6 +77,13 @@
 	static KviCString g_szLastReturnValue("");
 	static QStringList g_lWarningList;
 
+	// this is why we can't have nice things
+	#ifdef __cplusplus
+		#define dNOOP (void)0
+	#else
+		#define dNOOP extern int Perl___notused(void)
+	#endif
+
 	#include "xs.inc"
 #endif // COMPILE_PERL_SUPPORT
 
