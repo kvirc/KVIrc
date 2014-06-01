@@ -631,14 +631,26 @@ endif()
 # Phonon support
 option(WANT_PHONON "Whether to compile Phonon support" ON)
 if(WANT_PHONON)
-	find_package(Phonon)
-	if(PHONON_FOUND AND NOT Qt5Multimedia_FOUND)
-		set(COMPILE_PHONON_SUPPORT 1)
-		list(APPEND LIBS ${PHONON_LIBRARY})
-		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
-	elseif(Qt5Multimedia_FOUND)
-		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
+	if(WANT_QT4)
+		find_package(Phonon)
+		if(PHONON_FOUND)
+			set(COMPILE_PHONON_SUPPORT 1)
+			list(APPEND LIBS ${PHONON_LIBRARY})
+			list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
+		endif()
+	else()
+		find_package(Phonon4Qt5 NO_MODULE)
+		if(Phonon4Qt5_FOUND)
+			set(COMPILE_PHONON_SUPPORT 1)
+			list(APPEND LIBS ${PHONON_LIBRARY})
+			list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
+		endif()
 	endif()
+endif()
+
+# this is a no-op - not nice i know, but real no point in making it optional...
+if(Qt5Multimedia_FOUND AND NOT WANT_QT4)
+	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
 endif()
 
 # esd
@@ -806,7 +818,7 @@ endif()
 option(WANT_PYTHON "Compile Python Support" ON)
 if(WANT_PYTHON)
 	# this should ensure that cmake prefers python 2.7 over python 3
-	# it's not neede from cmake 2.8.8 onwards
+	# it's not needed from cmake 2.8.8 onwards
 	set(Python_ADDITIONAL_VERSIONS 2.7)
 	find_package(PythonLibs)
 	if(PYTHONLIBS_FOUND)
@@ -985,7 +997,6 @@ else()
 	set(CMAKE_STATUS_MEMORY_PROFILE_SUPPORT "No")
 endif()
 
-
 ############################################################################
 # Memory checks support
 ############################################################################
@@ -1114,13 +1125,6 @@ if(WANT_GETTEXT)
 else()
 	set(CMAKE_STATUS_GETTEXT_SUPPORT "No")
 endif()
-
-
-#Unused by now
-#CMakeUnixFindMake.cmake
-#FindCygwin.cmake
-#CMakeFindXCode.cmake
-#CheckLibraryExists.cmake
 
 # Search for subdirectories; under osx, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
 subdirs(data doc po scripts src)

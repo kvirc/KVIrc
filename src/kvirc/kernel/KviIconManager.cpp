@@ -1260,7 +1260,9 @@ QPixmap * KviIconManager::loadSmallIcon(int iIdx)
 	return m_smallIcons[iIdx];
 }
 
-#warning IMPLEMENT CLEANUP
+#ifdef __GNUC__
+	#warning IMPLEMENT CLEANUP
+#endif
 /*
 void KviIconManager::cacheCleanup()
 {

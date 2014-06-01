@@ -921,16 +921,16 @@ void KviMainWindow::updatePseudoTransparency()
 	uint uOpacity = KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent) < 50 ? 50 : KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent);
 	setWindowOpacity((float) uOpacity / 100);
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		#ifndef Q_OS_WIN_EX_LAYERED
-			#define Q_OS_WIN_EX_LAYERED WS_EX_LAYERED
+		#ifndef Q_WS_EX_LAYERED
+			#define Q_WS_EX_LAYERED WS_EX_LAYERED
 		#endif
 	if(uOpacity < 100)
 	{
 		SetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE,
-			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) | Q_OS_WIN_EX_LAYERED);
+			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) | Q_WS_EX_LAYERED);
 	} else {
 		SetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE,
-			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) & ~Q_OS_WIN_EX_LAYERED);
+			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) & ~Q_WS_EX_LAYERED);
 	}
 	#endif
 	if(g_pShadedParentGlobalDesktopBackground)m_pMdi->viewport()->update();

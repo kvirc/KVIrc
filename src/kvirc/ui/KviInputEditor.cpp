@@ -862,7 +862,9 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
         pAction->setMenu(m_pIconMenu);
 
 #if (QT_VERSION >= 0x050000)
+	#ifdef __GNUC__
 	#warning Implement Input Methods in KviInputEditor using the new qt5 api!
+	#endif
 	/*
 	 * Actually the use of input method composing works, but we are unable to query the list of
 	 * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,

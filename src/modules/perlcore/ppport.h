@@ -4,9 +4,9 @@
 /*
 ----------------------------------------------------------------------
 
-    ppport.h -- Perl/Pollution/Portability Version 3.21
+    ppport.h -- Perl/Pollution/Portability Version 3.24
 
-    Automatically created by Devel::PPPort running under perl 5.018001.
+    Automatically created by Devel::PPPort running under perl 5.020000.
 
     Version 3.x, Copyright (c) 2004-2013, Marcus Holland-Moritz.
 
@@ -23,8 +23,8 @@ SKIP
 if (@ARGV && $ARGV[0] eq '--unstrip') {
   eval { require Devel::PPPort };
   $@ and die "Cannot require Devel::PPPort, please install.\n";
-  if (eval $Devel::PPPort::VERSION < 3.21) {
-    die "ppport.h was originally generated with Devel::PPPort 3.21.\n"
+  if (eval $Devel::PPPort::VERSION < 3.24) {
+    die "ppport.h was originally generated with Devel::PPPort 3.24.\n"
       . "Your Devel::PPPort is only version $Devel::PPPort::VERSION.\n"
       . "Please install a newer version, or --unstrip will not work.\n";
   }
@@ -788,6 +788,13 @@ typedef OP* (CPERLscope(*Perl_check_t)) (pTHX_ OP*);
 #define isXDIGIT(c) (isDIGIT(c) || ((c) >= 'a' && (c) <= 'f') || ((c) >= 'A' && (c) <= 'F'))
 #endif
 #endif
+#if (PERL_BCDVERSION >= 0x5008000)
+#ifndef HeUTF8
+#define HeUTF8(he) ((HeKLEN(he) == HEf_SVKEY) ? \
+SvUTF8(HeKEY_sv(he)) : \
+(U32)HeKUTF8(he))
+#endif
+#endif
 #ifndef PERL_SIGNALS_UNSAFE_FLAG
 #define PERL_SIGNALS_UNSAFE_FLAG 0x0001
 #if (PERL_BCDVERSION < 0x5008000)
@@ -1041,6 +1048,9 @@ COP * const ocurcop = PL_curcop;
 const int oexpect = PL_expect;
 #if (PERL_BCDVERSION >= 0x5004000)
 utilize(!(flags & PERL_LOADMOD_DENY), start_subparse(FALSE, 0),
+veop, modname, imop);
+#elif (PERL_BCDVERSION > 0x5003000)
+utilize(!(flags & PERL_LOADMOD_DENY), start_subparse(),
 veop, modname, imop);
 #else
 utilize(!(flags & PERL_LOADMOD_DENY), start_subparse(),
@@ -2017,6 +2027,15 @@ warn("%s", SvPV_nolen(sv));
 #ifndef SvGETMAGIC
 #define SvGETMAGIC(x) STMT_START { if (SvGMAGICAL(x)) mg_get(x); } STMT_END
 #endif
+#ifndef HEf_SVKEY
+#define HEf_SVKEY -2
+#endif
+#if defined(__GNUC__) && !defined(PERL_GCC_BRACE_GROUPS_FORBIDDEN)
+#define MUTABLE_PTR(p) ({ void *_p = (p); _p; })
+#else
+#define MUTABLE_PTR(p) ((void *) (p))
+#endif
+#define MUTABLE_SV(p) ((SV *)MUTABLE_PTR(p))
 #ifndef PERL_MAGIC_sv
 #define PERL_MAGIC_sv '\0'
 #endif
@@ -2257,6 +2276,89 @@ sv_magic(SvMp_sv, obj, how, SvMp_name, SvMp_namlen); \
 } STMT_END
 #else
 #define sv_magic_portable(a, b, c, d, e) sv_magic(a, b, c, d, e)
+#endif
+#if !defined(mg_findext)
+#if defined(NEED_mg_findext)
+static MAGIC * DPPP_(my_mg_findext)(pTHX_ SV * sv, int type, const MGVTBL *vtbl);
+static
+#else
+extern MAGIC * DPPP_(my_mg_findext)(pTHX_ SV * sv, int type, const MGVTBL *vtbl);
+#endif
+#ifdef mg_findext
+#undef mg_findext
+#endif
+#define mg_findext(a,b,c) DPPP_(my_mg_findext)(aTHX_ a,b,c)
+#define Perl_mg_findext DPPP_(my_mg_findext)
+#if defined(NEED_mg_findext) || defined(NEED_mg_findext_GLOBAL)
+MAGIC *
+DPPP_(my_mg_findext)(pTHX_ SV * sv, int type, const MGVTBL *vtbl) {
+if (sv) {
+MAGIC *mg;
+#ifdef AvPAD_NAMELIST
+assert(!(SvTYPE(sv) == SVt_PVAV && AvPAD_NAMELIST(sv)));
+#endif
+for (mg = SvMAGIC (sv); mg; mg = mg->mg_moremagic) {
+if (mg->mg_type == type && mg->mg_virtual == vtbl)
+return mg;
+}
+}
+return NULL;
+}
+#endif
+#endif
+#if !defined(sv_unmagicext)
+#if defined(NEED_sv_unmagicext)
+static int DPPP_(my_sv_unmagicext)(pTHX_ SV * const sv, const int type, MGVTBL * vtbl);
+static
+#else
+extern int DPPP_(my_sv_unmagicext)(pTHX_ SV * const sv, const int type, MGVTBL * vtbl);
+#endif
+#ifdef sv_unmagicext
+#undef sv_unmagicext
+#endif
+#define sv_unmagicext(a,b,c) DPPP_(my_sv_unmagicext)(aTHX_ a,b,c)
+#define Perl_sv_unmagicext DPPP_(my_sv_unmagicext)
+#if defined(NEED_sv_unmagicext) || defined(NEED_sv_unmagicext_GLOBAL)
+int
+DPPP_(my_sv_unmagicext)(pTHX_ SV *const sv, const int type, MGVTBL *vtbl)
+{
+MAGIC* mg;
+MAGIC** mgp;
+if (SvTYPE(sv) < SVt_PVMG || !SvMAGIC(sv))
+return 0;
+mgp = &(SvMAGIC(sv));
+for (mg = *mgp; mg; mg = *mgp) {
+const MGVTBL* const virt = mg->mg_virtual;
+if (mg->mg_type == type && virt == vtbl) {
+*mgp = mg->mg_moremagic;
+if (virt && virt->svt_free)
+virt->svt_free(aTHX_ sv, mg);
+if (mg->mg_ptr && mg->mg_type != PERL_MAGIC_regex_global) {
+if (mg->mg_len > 0)
+Safefree(mg->mg_ptr);
+else if (mg->mg_len == HEf_SVKEY)
+SvREFCNT_dec(MUTABLE_SV(mg->mg_ptr));
+else if (mg->mg_type == PERL_MAGIC_utf8)
+Safefree(mg->mg_ptr);
+}
+if (mg->mg_flags & MGf_REFCOUNTED)
+SvREFCNT_dec(mg->mg_obj);
+Safefree(mg);
+}
+else
+mgp = &mg->mg_moremagic;
+}
+if (SvMAGIC(sv)) {
+if (SvMAGICAL(sv))
+mg_magical(sv);
+}
+else {
+SvMAGICAL_off(sv);
+SvFLAGS(sv) |= (SvFLAGS(sv) & (SVp_IOK|SVp_NOK|SVp_POK)) >> PRIVSHIFT;
+}
+return 0;
+}
+#endif
 #endif
 #ifdef USE_ITHREADS
 #ifndef CopFILE
@@ -3040,10 +3142,10 @@ const U8 c = (U8)u & 0xFF;
 if (u > 255 || (flags & PERL_PV_ESCAPE_ALL)) {
 if (flags & PERL_PV_ESCAPE_FIRSTCHAR)
 chsize = my_snprintf(octbuf, sizeof octbuf,
-"%"UVxf, u);
+"%" UVxf, u);
 else
 chsize = my_snprintf(octbuf, sizeof octbuf,
-"%cx{%"UVxf"}", esc, u);
+"%cx{%" UVxf "}", esc, u);
 } else if (flags & PERL_PV_ESCAPE_NOBACKSLASH) {
 chsize = 1;
 } else {

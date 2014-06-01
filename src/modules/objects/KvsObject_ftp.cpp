@@ -24,7 +24,9 @@
 
 #include "KvsObject_ftp.h"
 
-#warning QFtp doesn't exists anymore in Qt5, port this class or drop it
+#ifdef __GNUC__
+#warning QFtp doesn't exist anymore in Qt5, port this class or drop it
+#endif
 #if (QT_VERSION < 0x050000)
 
 #include "kvi_debug.h"

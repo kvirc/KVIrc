@@ -93,19 +93,19 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumeric002)                           , // 002 RPL_YOURHOST
 	PTM(parseNumeric003)                           , // 003 RPL_CREATED
 	PTM(parseNumeric004)                           , // 004 RPL_MYINFO
-	PTM(parseNumeric005)                           , // 005 RPL_BOUNCE, RPL_PROTOCTL
-	0,                                               // 006
-	0,                                               // 007
-	0,                                               // 008
-	0,                                               // 009
-	0,                                               // 010
+	PTM(parseNumeric005)                           , // 005 RPL_BOUNCE, RPL_PROTOCTL, RPL_ISUPPORT
+	0,                                               // 006 RPL_MAP
+	0,                                               // 007 RPL_MAPEND
+	0,                                               // 008 RPL_SNOMASK
+	0,                                               // 009 RPL_STATMEMTOT
+	0,                                               // 010 RPL_BOUNCE, RPL_REDIR, RPL_STATMEM
 	0,                                               // 011
 	0,                                               // 012
 	0,                                               // 013
-	0,                                               // 014
-	0,                                               // 015
-	0,                                               // 016
-	0,                                               // 017
+	0,                                               // 014 RPL_YOURCOOKIE
+	0,                                               // 015 RPL_MAP
+	0,                                               // 016 RPL_MAPMORE
+	0,                                               // 017 RPL_MAPEND
 	0,                                               // 018
 	0,                                               // 019
 	PTM(parseNumeric020)                           , // 020
@@ -130,16 +130,16 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 039
 	0,                                               // 040
 	0,                                               // 041
-	0,                                               // 042
-	0,                                               // 043
+	0,                                               // 042 RPL_YOURID
+	0,                                               // 043 RPL_SAVENICK
 	0,                                               // 044
 	0,                                               // 045
 	0,                                               // 046
 	0,                                               // 047
 	0,                                               // 048
 	0,                                               // 049
-	0,                                               // 050
-	0,                                               // 051
+	0,                                               // 050 RPL_ATTEMPTINGJUNC
+	0,                                               // 051 RPL_ATTEMPTINGREROUTE
 	0,                                               // 052
 	0,                                               // 053
 	0,                                               // 054
@@ -288,45 +288,45 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 197
 	0,                                               // 198
 	0,                                               // 199
-	0,                                               // 200
-	0,                                               // 201
-	0,                                               // 202
-	0,                                               // 203
-	0,                                               // 204
-	0,                                               // 205
-	0,                                               // 206
-	0,                                               // 207
-	0,                                               // 208
-	0,                                               // 209
-	0,                                               // 210
-	0,                                               // 211
-	0,                                               // 212
-	0,                                               // 213
-	0,                                               // 214
-	0,                                               // 215
-	0,                                               // 216
-	0,                                               // 217
-	0,                                               // 218
+	0,                                               // 200 RPL_TRACELINK
+	0,                                               // 201 RPL_TRACECONNECTING
+	0,                                               // 202 RPL_TRACEHANDSHAKE
+	0,                                               // 203 RPL_TRACEUNKNOWN
+	0,                                               // 204 RPL_TRACEOPERATOR
+	0,                                               // 205 RPL_TRACEUSER
+	0,                                               // 206 RPL_TRACESERVER
+	0,                                               // 207 RPL_TRACESERVICE
+	0,                                               // 208 RPL_TRACENEWTYPE
+	0,                                               // 209 RPL_TRACECLASS
+	0,                                               // 210 RPL_TRACERECONNECT, RPL_STATS
+	0,                                               // 211 RPL_STATSLINKINFO
+	0,                                               // 212 RPL_STATSCOMMANDS
+	0,                                               // 213 RPL_STATSCLINE
+	0,                                               // 214 RPL_STATSNLINE
+	0,                                               // 215 RPL_STATSILINE
+	0,                                               // 216 RPL_STATSKLINE
+	0,                                               // 217 RPL_STATSQLINE, RPL_STATSPLINE
+	0,                                               // 218 RPL_STATSYLINE
 	PTM(parseNumericEndOfStats),                     // 219 RPL_ENDOFSTATS
-	0,                                               // 220
+	0,                                               // 220 RPL_STATSPLINE, RPL_STATSBLINE
 	PTM(parseNumericUserMode)                      , // 221 RPL_UMODEIS
-	PTM(parseNumericCodePageSet),                    // 222 RusNet Codepage set
-	0,                                               // 223
-	0,                                               // 224
-	0,                                               // 225
-	0,                                               // 226
-	0,                                               // 227
-	0,                                               // 228
+	PTM(parseNumericCodePageSet),                    // 222 RusNet Codepage set, RPL_MODLIST, RPL_SQLINE_NICK, RPL_STATSBLINE
+	0,                                               // 223 RPL_STATSELINE, RPL_STATSGLINE
+	0,                                               // 224 RPL_STATSFLINE, RPL_STATSTLINE
+	0,                                               // 225 RPL_STATSDLINE, RPL_STATSZLINE, RPL_STATSELINE
+	0,                                               // 226 RPL_STATSCOUNT, RPL_STATSNLINE
+	0,                                               // 227 RPL_STATSGLINE, RPL_STATSVLINE
+	0,                                               // 228 RPL_STATSQLINE
 	0,                                               // 229
 	0,                                               // 230
-	0,                                               // 231
-	0,                                               // 232
-	0,                                               // 233
-	0,                                               // 234
-	0,                                               // 235
-	0,                                               // 236
-	0,                                               // 237
-	0,                                               // 238
+	0,                                               // 231 RPL_SERVICEINFO
+	0,                                               // 232 RPL_ENDOFSERVICES, RPL_RULES
+	0,                                               // 233 RPL_SERVICE
+	0,                                               // 234 RPL_SERVLIST
+	0,                                               // 235 RPL_SERVLISTEND
+	0,                                               // 236 RPL_STATSVERBOSE
+	0,                                               // 237 RPL_STATSENGINE
+	0,                                               // 238 RPL_STATSFLINE
 	PTM(parseNumericStats)                         , // 239 RPL_STATSIAUTH
 	PTM(parseNumericStats)                         , // 240 RPL_STATSVLINE
 	PTM(parseNumericStats)                         , // 241 RPL_STATSLLINE
@@ -349,55 +349,55 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericServerAdminInfoAdminName)      , // 258 RPL_ADMINLOC2
 	PTM(parseNumericServerAdminInfoAdminContact)   , // 259 RPL_ADMINEMAIL
 	0,                                               // 260
-	0,                                               // 261
-	0,                                               // 262
-	0,                                               // 263
+	0,                                               // 261 RPL_TRACELOG
+	0,                                               // 262 RPL_TRACEPING, RPL_TRACEEND
+	0,                                               // 263 RPL_TRYAGAIN
 	0,                                               // 264
 	PTM(parseNumericStats)                         , // 265 RPL_LOCALUSERS
 	PTM(parseNumericStats)                         , // 266 RPL_GLOBALUSERS
-	PTM(parseNumericStats)                         , // 267 RPL_SHAREDUSERS
-	0,                                               // 268
-	0,                                               // 269
-	0,                                               // 270
-	0,                                               // 271
-	0,                                               // 272
-	0,                                               // 273
-	0,                                               // 274
-	PTM(parseNumericWhoisOther)                    , // 275 RPL_WHOISSSL
-	0,                                               // 276
-	0,                                               // 277
-	0,                                               // 278
+	PTM(parseNumericStats)                         , // 267 RPL_SHAREDUSERS, RPL_START_NETSTAT
+	0,                                               // 268 RPL_NETSTAT
+	0,                                               // 269 RPL_END_NETSTAT
+	0,                                               // 270 RPL_PRIVS, RPL_MAPUSERS
+	0,                                               // 271 RPL_SILELIST
+	0,                                               // 272 RPL_ENDOFSILELIST
+	0,                                               // 273 RPL_NOTIFY
+	0,                                               // 274 RPL_ENDOFNOTIFY, RPL_STATSDELTA
+	PTM(parseNumericWhoisOther)                    , // 275 RPL_WHOISSSL, RPL_STATSDLINE
+	0,                                               // 276 RPL_VCHANEXIST
+	0,                                               // 277 RPL_VCHANLIST
+	0,                                               // 278 RPL_VCHANHELP
 	0,                                               // 279
-	0,                                               // 280
-	0,                                               // 281
-	0,                                               // 282
-	0,                                               // 283
-	0,                                               // 284
-	0,                                               // 285
-	0,                                               // 286
-	0,                                               // 287
-	0,                                               // 288
-	0,                                               // 289
-	0,                                               // 290
-	0,                                               // 291
-	0,                                               // 292
-	0,                                               // 293
-	0,                                               // 294
-	0,                                               // 295
-	0,                                               // 296
+	0,                                               // 280 RPL_GLIST
+	0,                                               // 281 RPL_ENDOFGLIST, RPL_ACCEPTLIST
+	0,                                               // 282 RPL_ENDOFACCEPT, RPL_JUPELIST
+	0,                                               // 283 RPL_ALIST, RPL_ENDOFJUPELIST
+	0,                                               // 284 RPL_ENDOFALIST, RPL_FEATURE
+	0,                                               // 285 RPL_FEATURE, RPL_CHANINFO_HANDLE
+	0,                                               // 286 RPL_CHANINFO_USERS, RPL_CHKHEAD
+	0,                                               // 287 RPL_CHANINFO_CHOPS, RPL_CHANUSER 
+	0,                                               // 288 RPL_CHANINFO_VOICES, RPL_PATCHHEAD
+	0,                                               // 289 RPL_CHANINFO_AWAY, RPL_PATCHCON
+	0,                                               // 290 RPL_CHANINFO_OPERS, RPL_HELPHDR, RPL_DATASTR
+	0,                                               // 291 RPL_CHANINFO_BANNED, RPL_HELPOP, RPL_ENDOFCHECK
+	0,                                               // 292 RPL_CHANINFO_BANS, RPL_HELPTLR
+	0,                                               // 293 RPL_CHANINFO_INVITE, RPL_HELPHLP
+	0,                                               // 294 RPL_CHANINFO_INVITES, RPL_HELPFWD
+	0,                                               // 295 RPL_CHANINFO_KICK, RPL_HELPIGN
+	0,                                               // 296 RPL_CHANINFO_KICKS
 	0,                                               // 297
 	0,                                               // 298
-	0,                                               // 299
-	0,                                               // 300
-	PTM(parseNumericWhoisAway)                     , // 301
+	0,                                               // 299 RPL_END_CHANINFO
+	0,                                               // 300 RPL_NONE
+	PTM(parseNumericWhoisAway)                     , // 301 RPL_AWAY
 	PTM(parseNumericUserhost)                      , // 302 RPL_USERHOST
 	PTM(parseNumericIsOn)                          , // 303 RPL_ISON
-	0,                                               // 304
+	0,                                               // 304 RPL_TEXT, RPL_SYNTAX
 	PTM(parseNumericBackFromAway)                  , // 305 RPL_UNAWAY
 	PTM(parseNumericAway)                          , // 306 RPL_NOWAWAY
 	PTM(parseNumericWhoisAuth)                     , // 307 RPL_WHOISREGNICK
-	PTM(parseNumericWhoisOther)                    , // 308 RPL_WHOISADMIN
-	PTM(parseNumericWhoisOther)                    , // 309 RPL_WHOISSADMIN
+	PTM(parseNumericWhoisOther)                    , // 308 RPL_WHOISADMIN, RPL_RULESTART
+	PTM(parseNumericWhoisOther)                    , // 309 RPL_WHOISSADMIN, RPL_RULESEND
 	PTM(parseNumericWhoisOther)                    , // 310 RPL_WHOISHELPOP
 	PTM(parseNumericWhoisUser)                     , // 311 RPL_WHOISUSER
 	PTM(parseNumericWhoisServer)                   , // 312 RPL_WHOISSERVER
@@ -413,24 +413,24 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericList)                          , // 322 RPL_LIST
 	PTM(parseNumericListEnd)                       , // 323 RPL_LISTEND
 	PTM(parseNumericChannelModeIs)                 , // 324 RPL_CHANNELMODEIS
-	0,                                               // 325
-	0,                                               // 326
-	0,                                               // 327
-	PTM(parseNumericChanUrl)                       , // 328 RPL_CHANURL
-	PTM(parseNumericCreationTime)                  , // 329 RPL_CREATIONTIME
+	0,                                               // 325 RPL_UNIQOPIS, RPL_CHANNELPASSIS
+	0,                                               // 326 RPL_NOCHANPASS
+	0,                                               // 327 RPL_CHPASSUNKNOWN
+	PTM(parseNumericChanUrl)                       , // 328 RPL_CHANNEL_URL
+	PTM(parseNumericCreationTime)                  , // 329 RPL_CREATIONTIME, RPL_CHANNELCREATED
 	PTM(parseNumericWhoisAuth)                     , // 330 RPL_WHOISAUTH
-	PTM(parseNumericNoTopic)                       , // 331 RPL_NOTOPIC
+	PTM(parseNumericNoTopic)                       , // 331 RPL_NOTOPIC, RPL_NOTOPICSET
 	PTM(parseNumericTopic)                         , // 332 RPL_TOPIC
-	PTM(parseNumericTopicWhoTime)                  , // 333 RPL_TOPICWHOTIME
+	PTM(parseNumericTopicWhoTime)                  , // 333 RPL_TOPICWHOTIME, RPL_TOPICTIME
 	PTM(parseNumericCommandSyntax)                 , // 334 RPL_COMMANDSYNTAX
-	0,                                               // 335
+	0,                                               // 335 RPL_WHOISBOT
 	0,                                               // 336
 	0,                                               // 337
-	PTM(parseNumericWhoisActually),                  // 338 RPL_WHOISACTUALLY
-	PTM(parseNumericWhoisOther),                     // 339
-	0,                                               // 340
-	PTM(parseNumericInviting)                      , // 351 RPL_INVITING
-	0,                                               // 342
+	PTM(parseNumericWhoisActually),                  // 338 RPL_WHOISACTUALLY, RPL_CHANPASSOK
+	PTM(parseNumericWhoisOther),                     // 339 RPL_BADCHANPASS
+	0,                                               // 340 RPL_USERIP
+	PTM(parseNumericInviting)                      , // 341 RPL_INVITING
+	0,                                               // 342 RPL_SUMMONING
 	0,                                               // 343
 	PTM(parseNumericReopList)                      , // 344 RPL_REOPLIST
 	PTM(parseNumericEndOfReopList)                 , // 345 RPL_ENDOFREOPLIST
@@ -439,19 +439,19 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericExceptList)                    , // 348 RPL_EXCEPTLIST
 	PTM(parseNumericEndOfExceptList)               , // 349 RPL_ENDOFEXCEPTLIST
 	0,                                               // 350
-	0,                                               // 351
+	0,                                               // 351 RPL_VERSION
 	PTM(parseNumericWhoReply)                      , // 352 RPL_WHOREPLY
 	PTM(parseNumericNames)                         , // 353 RPL_NAMREPLY
-	0,                                               // 354
-	0,                                               // 355
+	0,                                               // 354 RPL_WHOSPCRPL
+	0,                                               // 355 RPL_NAMREPLY_
 	0,                                               // 356
-	0,                                               // 357
-	0,                                               // 358
-	0,                                               // 359
+	0,                                               // 357 RPL_MAP
+	0,                                               // 358 RPL_MAPMORE
+	0,                                               // 359 RPL_MAPEND
 	0,                                               // 360
-	0,                                               // 361
-	0,                                               // 362
-	0,                                               // 363
+	0,                                               // 361 RPL_KILLDONE
+	0,                                               // 362 RPL_CLOSING
+	0,                                               // 363 RPL_CLOSEEND
 	PTM(parseNumericLinks)                         , // 364 RPL_LINKS
 	PTM(parseNumericEndOfLinks)                    , // 365 RPL_ENDOFLINKS
 	PTM(parseNumericEndOfNames)                    , // 366 RPL_ENDOFNAMES
@@ -465,161 +465,161 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericInfoEnd)                       , // 374 RPL_ENDOFINFO
 	PTM(parseNumericMotd)                          , // 375 RPL_MOTDSTART
 	PTM(parseNumericMotd)                          , // 376 RPL_ENDOFMOTD
-	PTM(parseNumericMotd)                          , // 377 RPL_MOTD2
-	PTM(parseNumericWhoisOther)                    , // 378 RPL_WHOISHOST
-	0,                                               // 379
-	0,                                               // 380
-	0,                                               // 381
-	0,                                               // 382
-	0,                                               // 383
-	0,                                               // 384
-	0,                                               // 385
+	PTM(parseNumericMotd)                          , // 377 RPL_MOTD2, RPL_KICKEXPIRED, RPL_SPAM
+	PTM(parseNumericWhoisOther)                    , // 378 RPL_WHOISHOST, RPL_BANEXPIRED
+	0,                                               // 379 RPL_KICKLINKED, RPL_WHOISMODES, RPL_WHOWASIP
+	0,                                               // 380 RPL_BANLINKED, RPL_YOURHELPER
+	0,                                               // 381 RPL_YOUREOPER
+	0,                                               // 382 RPL_REHASHING
+	0,                                               // 383 RPL_YOURESERVICE
+	0,                                               // 384 RPL_MYPORTIS
+	0,                                               // 385 RPL_NOTOPERANYMORE
 	PTM(parseNumericQList)                         , // 386 RPL_QLIST
-	PTM(parseNumericEndOfQList)                    , // 387 RPL_ENDOFQLIST
+	PTM(parseNumericEndOfQList)                    , // 387 RPL_ENDOFQLIST, RPL_ENDOFIRCOPS
 	PTM(parseNumericAList)                         , // 388 RPL_ALIST
 	PTM(parseNumericEndOfAList)                    , // 389 RPL_ENDOFALIST
 	0,                                               // 390
 	PTM(parseNumericTime)                          , // 391 RPL_TIME
-	0,                                               // 392
-	0,                                               // 393
-	0,                                               // 394
-	0,                                               // 395
-	0,                                               // 396
+	0,                                               // 392 RPL_USERSSTART
+	0,                                               // 393 RPL_USERS
+	0,                                               // 394 RPL_ENDOFUSERS
+	0,                                               // 395 RPL_NOUSERS
+	0,                                               // 396 RPL_HOSTHIDDEN, RPL_YOURDISPLAYEDHOST
 	0,                                               // 397
 	0,                                               // 398
 	0,                                               // 399
-	0,                                               // 400
+	0,                                               // 400 ERR_UNKNOWNERROR
 	PTM(parseNumericNoSuchNick)                    , // 401 ERR_NOSUCHNICK
 	PTM(parseNumericNoSuchServer)                  , // 402 ERR_NOSUCHSERVER
 	PTM(parseNumericNoSuchChannel)                 , // 403 ERR_NOSUCHCHANNEL
 	PTM(parseNumericCannotSend)                    , // 404 ERR_CANNOTSENDTOCHAN
-	0,                                               // 405
+	0,                                               // 405 ERR_TOOMANYCHANNELS
 	PTM(parseNumericNoSuchNick)                    , // 406 ERR_WASNOSUCHNICK
-	0,                                               // 407
-	PTM(parseNumericCannotSendColor)               , // 408 ERR_NOCOLORSONCHAN
-	0,                                               // 409
-	0,                                               // 410
-	0,                                               // 411
-	0,                                               // 412
-	0,                                               // 413
-	0,                                               // 414
-	0,                                               // 415
-	0,                                               // 416
+	0,                                               // 407 ERR_TOOMANYTARGETS
+	PTM(parseNumericCannotSendColor)               , // 408 ERR_NOCOLORSONCHAN, ERR_NOSUCHSERVICE
+	0,                                               // 409 ERR_NOORIGIN
+	0,                                               // 410 ERR_INVALIDCAPSUBCOMMAND
+	0,                                               // 411 ERR_NORECIPIENT
+	0,                                               // 412 ERR_NOTEXTTOSEND 
+	0,                                               // 413 ERR_NOTOPLEVEL
+	0,                                               // 414 ERR_WILDTOPLEVEL
+	0,                                               // 415 ERR_BADMASK
+	0,                                               // 416 ERR_TOOMANYMATCHES, ERR_QUERYTOOLONG
 	0,                                               // 417
 	0,                                               // 418
-	0,                                               // 419
+	0,                                               // 419 ERR_LENGTHTRUNCATED
 	0,                                               // 420
-	0,                                               // 421
-	0,                                               // 422
-	0,                                               // 423
-	0,                                               // 424
-	0,                                               // 425
+	0,                                               // 421 ERR_UNKNOWNCOMMAND
+	0,                                               // 422 ERR_NOMOTD
+	0,                                               // 423 ERR_NOADMININFO
+	0,                                               // 424 ERR_FILEERROR
+	0,                                               // 425 ERR_NOOPERMOTD
 	0,                                               // 426
 	0,                                               // 427
 	0,                                               // 428
-	0,                                               // 429
-	0,                                               // 430
-	0,                                               // 431
+	0,                                               // 429 ERR_TOOMANYAWAY
+	0,                                               // 430 ERR_EVENTNICKCHANGE
+	0,                                               // 431 ERR_NONICKNAMEGIVEN
 	PTM(parseNumericNicknameProblem)               , // 432 ERR_ERRONEUSNICKNAME
 	PTM(parseNumericNicknameProblem)               , // 433 ERR_NICKNAMEINUSE
-	0,                                               // 434
-	0,                                               // 435
-	0,                                               // 436
-	PTM(parseNumericUnavailResource)               , // 437 ERR_UNAVAILRESOURCE
-	0,                                               // 438
-	0,                                               // 439
-	0,                                               // 440
-	0,                                               // 441
-	0,                                               // 442
-	0,                                               // 443
-	0,                                               // 444
-	0,                                               // 445
-	0,                                               // 446
-	0,                                               // 447
+	0,                                               // 434 ERR_SERVICENAMEINUSE, ERR_NORULES
+	0,                                               // 435 ERR_SERVICECONFUSED, ERR_BANONCHAN
+	0,                                               // 436 ERR_NICKCOLLISION
+	PTM(parseNumericUnavailResource)               , // 437 ERR_UNAVAILRESOURCE, ERR_BANNICKCHANGE
+	0,                                               // 438 ERR_NICKTOOFAST, ERR_DEAD
+	0,                                               // 439 ERR_TARGETTOOFAST
+	0,                                               // 440 ERR_SERVICESDOWN
+	0,                                               // 441 ERR_USERNOTINCHANNEL
+	0,                                               // 442 ERR_NOTONCHANNEL
+	0,                                               // 443 ERR_USERONCHANNEL
+	0,                                               // 444 ERR_NOLOGIN
+	0,                                               // 445 ERR_SUMMONDISABLED
+	0,                                               // 446 ERR_USERSDISABLED
+	0,                                               // 447 ERR_NONICKCHANGE, ERR_CANTCHANGENICK
 	0,                                               // 448
-	0,                                               // 449
+	0,                                               // 449 ERR_NOTIMPLEMENTED
 	0,                                               // 450
 	PTM(parseNumericNotRegistered)                 , // 451 ERR_NOTREGISTERED
-	0,                                               // 452
-	0,                                               // 453
+	0,                                               // 452 ERR_IDCOLLISION
+	0,                                               // 453 ERR_NICKLOST
 	0,                                               // 454
-	0,                                               // 455
-	0,                                               // 456
-	0,                                               // 457
-	0,                                               // 458
-	0,                                               // 459
-	0,                                               // 460
-	0,                                               // 461
-	0,                                               // 462
-	0,                                               // 463
-	0,                                               // 464
-	0,                                               // 465
-	0,                                               // 466
+	0,                                               // 455 ERR_HOSTILENAME
+	0,                                               // 456 ERR_ACCEPTFULL
+	0,                                               // 457 ERR_ACCEPTEXIST
+	0,                                               // 458 ERR_ACCEPTNOT
+	0,                                               // 459 ERR_NOHIDING
+	0,                                               // 460 ERR_NOTFORHALFOPS
+	0,                                               // 461 ERR_NEEDMOREPARAMS
+	0,                                               // 462 ERR_ALREADYREGISTERED
+	0,                                               // 463 ERR_NOPERMFORHOST
+	0,                                               // 464 ERR_PASSWDMISMATCH
+	0,                                               // 465 ERR_YOUREBANNEDCREEP
+	0,                                               // 466 ERR_YOUWILLBEBANNED
 	PTM(otherChannelError),                          // 467 ERR_KEYSET
-	0,                                               // 468
-	0,                                               // 469
-	0,                                               // 470
+	0,                                               // 468 ERR_ONLYSERVERSCANCHANGE
+	0,                                               // 469 ERR_LINKSET
+	0,                                               // 470 ERR_LINKCHANNEL, ERR_KICKEDFROMCHAN
 	PTM(parseNumericCantJoinChannel)               , // 471 ERR_CHANNELISFULL
 	PTM(otherChannelError),                          // 472 ERR_UNKNOWNMODE
 	PTM(parseNumericCantJoinChannel)               , // 473 ERR_INVITEONLYCHAN
 	PTM(parseNumericCantJoinChannel)               , // 474 ERR_BANNEDFROMCHAN
 	PTM(parseNumericCantJoinChannel)               , // 475 ERR_BADCHANNELKEY
-	0,                                               // 476
+	0,                                               // 476 ERR_BADCHANMASK
 	PTM(parseChannelHelp),                           // 477 RPL_CHANNELHELP
-	0,                                               // 478
-	0,                                               // 479
-	0,                                               // 480
-	0,                                               // 481
+	0,                                               // 478 ERR_BANLISTFULL
+	0,                                               // 479 ERR_BADCHANNAME, ERR_LINKFAIL
+	0,                                               // 480 ERR_NOULINE, ERR_CANNOTKNOCK
+	0,                                               // 481 ERR_NOPRIVILEGES
 	PTM(otherChannelError),                          // 482 ERR_CHANOPRIVSNEEDED
-	0,                                               // 483
-	0,                                               // 484
-	0,                                               // 485
-	0,                                               // 486
-	0,                                               // 487
-	0,                                               // 488
-	0,                                               // 489
-	0,                                               // 490
-	0,                                               // 491
-	0,                                               // 492
-	0,                                               // 493
-	0,                                               // 494
-	0,                                               // 495
-	0,                                               // 496
-	0,                                               // 497
-	0,                                               // 498
-	0,                                               // 499
+	0,                                               // 483 ERR_CANTKILLSERVER
+	0,                                               // 484 ERR_RESTRICTED, ERR_ISCHANSERVICE, ERR_DESYNC, ERR_ATTACKDENY
+	0,                                               // 485 ERR_UNIQOPRIVSNEEDED, ERR_KILLDENY, ERR_CANTKICKADMIN, ERR_ISREALSERVICE
+	0,                                               // 486 ERR_NONONREG, ERR_HTMDISABLED, ERR_ACCOUNTONLY
+	0,                                               // 487 ERR_CHANTOORECENT, ERR_MSGSERVICES
+	0,                                               // 488 ERR_TSLESSCHAN
+	0,                                               // 489 ERR_VOICENEEDED, ERR_SECUREONLYCHAN
+	0,                                               // 490 ERR_ALLMUSTSSL
+	0,                                               // 491 ERR_NOOPERHOST
+	0,                                               // 492 ERR_NOSERVICEHOST, ERR_NOCTCPALLOWED
+	0,                                               // 493 ERR_NOFEATURE
+	0,                                               // 494 ERR_BADFEATURE
+	0,                                               // 495 ERR_BADLOGTYPE, ERR_DELAYREJOIN
+	0,                                               // 496 ERR_BADLOGSYS
+	0,                                               // 497 ERR_BADLOGVALUE
+	0,                                               // 498 ERR_ISOPERLCHAN
+	0,                                               // 499 ERR_CHANOWNPRIVNEEDED
 	0,                                               // 500
-	0,                                               // 501
-	0,                                               // 502
-	0,                                               // 503
-	0,                                               // 504
+	0,                                               // 501 ERR_UMODEUNKNOWNFLAG, ERR_UNKNOWNSNOMASK
+	0,                                               // 502 ERR_USERSDONTMATCH
+	0,                                               // 503 ERR_GHOSTEDCLIENT
+	0,                                               // 504 ERR_USERNOTONSERV
 	0,                                               // 505
 	0,                                               // 506
 	0,                                               // 507
 	0,                                               // 508
 	0,                                               // 509
 	0,                                               // 510
-	0,                                               // 511
-	0,                                               // 512
-	0,                                               // 513
-	0,                                               // 514
-	0,                                               // 515
-	0,                                               // 516
-	0,                                               // 517
-	0,                                               // 518
-	0,                                               // 519
-	0,                                               // 520
-	0,                                               // 521
-	0,                                               // 522
-	0,                                               // 523
-	0,                                               // 524
-	0,                                               // 525
-	0,                                               // 526
+	0,                                               // 511 ERR_SILELISTFULL
+	0,                                               // 512 ERR_TOOMANYWATCH
+	0,                                               // 513 ERR_BADPING
+	0,                                               // 514 ERR_INVALID_ERROR, ERR_TOOMANYDCC
+	0,                                               // 515 ERR_BADEXPIRE
+	0,                                               // 516 ERR_DONTCHEAT
+	0,                                               // 517 ERR_DISABLED
+	0,                                               // 518 ERR_NOINVITE, ERR_LONGMASK
+	0,                                               // 519 ERR_ADMONLY, ERR_TOOMANYUSERS
+	0,                                               // 520 ERR_OPERONLY, ERR_MASKTOOWIDE, ERR_WHOTRUNC, ERR_CANTJOINOPERSONLY
+	0,                                               // 521 ERR_LISTSYNTAX
+	0,                                               // 522 ERR_WHOSYNTAX
+	0,                                               // 523 ERR_WHOLIMEXCEED
+	0,                                               // 524 ERR_QUARANTINED, ERR_OPERSPVERIFY
+	0,                                               // 525 ERR_REMOTEPFX
+	0,                                               // 526 ERR_PFXUNROUTABLE
 	0,                                               // 527
 	0,                                               // 528
 	0,                                               // 529
 	0,                                               // 530
-	0,                                               // 531
+	0,                                               // 531 ERR_CANTSENDTOUSER
 	0,                                               // 532
 	0,                                               // 533
 	0,                                               // 534
@@ -638,10 +638,10 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 547
 	0,                                               // 548
 	0,                                               // 549
-	0,                                               // 550
-	0,                                               // 551
-	0,                                               // 552
-	0,                                               // 553
+	0,                                               // 550 ERR_BADHOSTMASK
+	0,                                               // 551 ERR_HOSTUNAVAIL
+	0,                                               // 552 ERR_USINGSLINE
+	0,                                               // 553 ERR_STATSSLINE
 	0,                                               // 554
 	0,                                               // 555
 	0,                                               // 556
@@ -696,30 +696,30 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericWatch)                         , // 605 RPL_NOWOFF
 	0,                                               // 606 RPL_WATCHLIST
 	0,                                               // 607 RPL_ENDOFWATCH
-	0,                                               // 608
+	0,                                               // 608 RPL_WATCHCLEAR
 	0,                                               // 609
-	0,                                               // 610
-	0,                                               // 611
-	0,                                               // 612
-	0,                                               // 613
+	0,                                               // 610 RPL_MAPMORE, RPL_ISOPER
+	0,                                               // 611 RPL_ISLOCOP
+	0,                                               // 612 RPL_ISNOTOPER
+	0,                                               // 613 RPL_ENDOFISOPER
 	0,                                               // 614
-	0,                                               // 615
-	0,                                               // 616
-	0,                                               // 617
-	0,                                               // 618
-	0,                                               // 619
-	0,                                               // 620
-	0,                                               // 621
-	0,                                               // 622
-	0,                                               // 623
-	0,                                               // 624
-	0,                                               // 625
-	0,                                               // 626
+	0,                                               // 615 RPL_MAPMORE
+	0,                                               // 616 RPL_WHOISHOST
+	0,                                               // 617 RPL_DCCSTATUS, RPL_WHOISBOT
+	0,                                               // 618 RPL_DCCLIST
+	0,                                               // 619 RPL_ENDOFDCCLIST, RPL_WHOWASHOST
+	0,                                               // 620 RPL_DCCINFO, RPL_RULESSTART
+	0,                                               // 621 RPL_RULES
+	0,                                               // 622 RPL_ENDOFRULES
+	0,                                               // 623 RPL_MAPMORE
+	0,                                               // 624 RPL_OMOTDSTART
+	0,                                               // 625 RPL_OMOTD
+	0,                                               // 626 RPL_ENDOFO
 	0,                                               // 627
 	0,                                               // 628
 	0,                                               // 629
-	0,                                               // 630
-	0,                                               // 631
+	0,                                               // 630 RPL_SETTINGS
+	0,                                               // 631 RPL_ENDOFSETTINGS
 	0,                                               // 632
 	0,                                               // 633
 	0,                                               // 634
@@ -728,9 +728,9 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 637
 	0,                                               // 638
 	0,                                               // 639
-	0,                                               // 640
-	0,                                               // 641
-	0,                                               // 642
+	0,                                               // 640 RPL_DUMPING
+	0,                                               // 641 RPL_DUMPRPL
+	0,                                               // 642 RPL_EODUMP
 	0,                                               // 643
 	0,                                               // 644
 	0,                                               // 645
@@ -748,37 +748,37 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 657
 	0,                                               // 658
 	0,                                               // 659
-	0,                                               // 660
-	0,                                               // 661
-	0,                                               // 662
-	0,                                               // 663
-	0,                                               // 664
-	0,                                               // 665
-	0,                                               // 666
+	0,                                               // 660 RPL_TRACEROUTE_HOP
+	0,                                               // 661 RPL_TRACEROUTE_START
+	0,                                               // 662 RPL_MODECHANGEWARN
+	0,                                               // 663 RPL_CHANREDIR
+	0,                                               // 664 RPL_SERVMODEIS
+	0,                                               // 665 RPL_OTHERUMODEIS
+	0,                                               // 666 RPL_ENDOF_GENERIC
 	0,                                               // 667
 	0,                                               // 668
 	0,                                               // 669
-	PTM(parseNumericStartTls)                      , // 670 RPL_STARTTLSOK
+	PTM(parseNumericStartTls)                      , // 670 RPL_STARTTLSOK, RPL_WHOWASDETAILS
 	PTM(parseNumericWhoisOther)                    , // 671 RPL_WHOISSECURE
-	0,                                               // 672
-	0,                                               // 673
+	0,                                               // 672 RPL_UNKNOWNMODES
+	0,                                               // 673 RPL_CANNOTSETMODES
 	0,                                               // 674
 	0,                                               // 675
 	0,                                               // 676
 	0,                                               // 677
-	0,                                               // 678
-	0,                                               // 679
+	0,                                               // 678 RPL_LUSERSTAFF
+	0,                                               // 679 RPL_TIMEONSERVERIS
 	0,                                               // 680
 	0,                                               // 681
-	0,                                               // 682
+	0,                                               // 682 RPL_NETWORKS
 	0,                                               // 683
 	0,                                               // 684
 	0,                                               // 685
 	0,                                               // 686
-	0,                                               // 687
-	0,                                               // 688
-	0,                                               // 689
-	0,                                               // 690
+	0,                                               // 687 RPL_YOURLANGUAGEIS
+	0,                                               // 688 RPL_LANGUAGE
+	0,                                               // 689 RPL_WHOISSTAFF
+	0,                                               // 690 RPL_WHOISLANGUAGE
 	PTM(parseNumericStartTls)                      , // 691 RPL_STARTTLSFAIL
 	0,                                               // 692
 	0,                                               // 693
@@ -790,31 +790,31 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 699
 	PTM(parseNumericCodePageSet)                   , // 700 RPL_CODEPAGESET
 	0,                                               // 701
-	0,                                               // 702
-	PTM(parseNumericCodePageScheme)                , // 703 RPL_WHOISSCHEME
-	PTM(parseCommandSyntaxHelp),                     // 704 RPL_COMMANDSYNTAX
-	PTM(parseCommandHelp),                           // 705 RPL_COMMANDHELP
-	PTM(parseCommandEndOfHelp),                      // 706 RPL_ENDOFCOMMANDHELP
+	0,                                               // 702 RPL_MODLIST, RPL_COMMANDS
+	PTM(parseNumericCodePageScheme)                , // 703 RPL_WHOISSCHEME, RPL_ENDOFMODLIST, RPL_COMMANDSEND
+	PTM(parseCommandSyntaxHelp),                     // 704 RPL_COMMANDSYNTAX, RPL_HELPSTART
+	PTM(parseCommandHelp),                           // 705 RPL_COMMANDHELP, RPL_HELPTXT
+	PTM(parseCommandEndOfHelp),                      // 706 RPL_ENDOFCOMMANDHELP, RPL_ENDOFHELP
 	0,                                               // 707
-	0,                                               // 708
-	0,                                               // 709
-	0,                                               // 710
-	0,                                               // 711
-	0,                                               // 712
-	0,                                               // 713
-	0,                                               // 714
-	0,                                               // 715
-	0,                                               // 716
-	0,                                               // 717
-	0,                                               // 718
+	0,                                               // 708 RPL_ETRACEFULL
+	0,                                               // 709 RPL_ETRACE
+	0,                                               // 710 RPL_KNOCK
+	0,                                               // 711 RPL_KNOCKDLVR
+	0,                                               // 712 ERR_TOOMANYKNOCK
+	0,                                               // 713 ERR_CHANOPEN
+	0,                                               // 714 ERR_KNOCKONCHAN
+	0,                                               // 715 ERR_KNOCKDISABLED
+	0,                                               // 716 RPL_TARGUMODEG
+	0,                                               // 717 RPL_TARGNOTIFY
+	0,                                               // 718 RPL_UMODEGMSG 
 	0,                                               // 719
-	0,                                               // 720
-	0,                                               // 721
-	0,                                               // 722
-	0,                                               // 723
-	0,                                               // 724
-	0,                                               // 725
-	0,                                               // 726
+	0,                                               // 720 RPL_OMOTDSTART
+	0,                                               // 721 RPL_OMOTD
+	0,                                               // 722 RPL_ENDOFOMOTD
+	0,                                               // 723 ERR_NOPRIVS
+	0,                                               // 724 RPL_TESTMARK
+	0,                                               // 725 RPL_TESTLINE
+	0,                                               // 726 RPL_NOTESTLINE
 	0,                                               // 727
 	0,                                               // 728
 	0,                                               // 729
@@ -859,10 +859,10 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 768
 	0,                                               // 769
 	0,                                               // 770
-	0,                                               // 771
+	0,                                               // 771 RPL_XINFO
 	0,                                               // 772
-	0,                                               // 773
-	0,                                               // 774
+	0,                                               // 773 RPL_XINFOSTART
+	0,                                               // 774 RPL_XINFOEND
 	0,                                               // 775
 	0,                                               // 776
 	0,                                               // 777
@@ -989,7 +989,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 898
 	0,                                               // 899
 	PTM(parseNumericSaslLogin),                      // 900 RPL_SASLLOGIN
-	0,                                               // 901 
+	0,                                               // 901
 	0,                                               // 902
 	PTM(parseNumericSaslSuccess),                    // 903 RPL_SASLSUCCESS
 	PTM(parseNumericSaslFail),                       // 904 RPL_SASLFAILED
@@ -1024,7 +1024,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 933
 	0,                                               // 934
 	0,                                               // 935
-	0,                                               // 936
+	0,                                               // 936 RPL_WORDFILTERED
 	0,                                               // 937
 	0,                                               // 938
 	0,                                               // 939
@@ -1060,18 +1060,18 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 969
 	0,                                               // 970
 	0,                                               // 971
-	0,                                               // 972
-	0,                                               // 973
-	0,                                               // 974
-	0,                                               // 975
-	0,                                               // 976
-	0,                                               // 977
+	0,                                               // 972 ERR_CANNOTDOCOMMAND, ERR_CANTUNLOADMODULE
+	0,                                               // 973 ERR_CANNOTCHANGEUMODE, RPL_UNLOADEDMODULE
+	0,                                               // 974 ERR_CANNOTCHANGECHANMODE, ERR_CANTLOADMODULE
+	0,                                               // 975 ERR_CANNOTCHANGESERVERMODE, RPL_LOADEDMODULE 
+	0,                                               // 976 ERR_CANNOTSENDTONICK
+	0,                                               // 977 ERR_UNKNOWNSERVERMODE
 	0,                                               // 978
-	0,                                               // 979
-	0,                                               // 980
-	0,                                               // 981
-	0,                                               // 982
-	0,                                               // 983
+	0,                                               // 979 ERR_SERVERMODELOCK
+	0,                                               // 980 ERR_BADCHARENCODING
+	0,                                               // 981 ERR_TOOMANYLANGUAGES
+	0,                                               // 982 ERR_NOLANGUAGE
+	0,                                               // 983 ERR_TEXTTOOSHORT
 	0,                                               // 984
 	0,                                               // 985
 	0,                                               // 986
@@ -1087,5 +1087,5 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 996
 	0,                                               // 997
 	0,                                               // 998
-	0                                                // 999
+	0                                                // 999 ERR_NUMERIC_ERR
 };
