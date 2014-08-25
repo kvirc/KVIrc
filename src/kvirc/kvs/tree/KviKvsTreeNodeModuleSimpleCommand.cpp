@@ -71,7 +71,13 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 	KviKvsModuleSimpleCommandExecRoutine * proc = m->kvsFindSimpleCommand(m_szCmdName);
 	if(!proc)
 	{
-		c->error(this,__tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
+		KviKvsModuleCallbackCommandExecRoutine * tmpProc = m->kvsFindCallbackCommand(m_szCmdName);
+		if(tmpProc)
+		{
+			c->error(this,__tr2qs_ctx("Module command call failed, however the module '%Q' exports a callback command named '%Q' - possibly missing brackets in a callback command?","kvs"),&m_szModuleName,&m_szCmdName);
+		} else {
+			c->error(this,__tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
+		}
 		return false;
 	}
 
