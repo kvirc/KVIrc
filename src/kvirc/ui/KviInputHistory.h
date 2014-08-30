@@ -38,8 +38,8 @@
 #include "kvi_settings.h"
 #include "KviPointerList.h"
 
-#define KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES 100
-#define KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES 20
+#define KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES 500
+#define KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES 50
 
 /**
 * \class KviInputHistory
