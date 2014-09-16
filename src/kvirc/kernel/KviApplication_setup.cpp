@@ -831,7 +831,7 @@ void KviApplication::saveKvircDirectory()
 		}
 	}
 #endif //COMPILE_KDE_SUPPORT
-	// In NON-KDE we use $HOME/.kvirc.rc or $HOME/kvirc.ini
+	// In NON-KDE we use $HOME/.kvirc4.rc or $HOME/kvirc4.ini
 	QString szF = QDir::homePath();
 	if(!m_szConfigFile.isEmpty())
 	{
