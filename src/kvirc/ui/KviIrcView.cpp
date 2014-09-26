@@ -2144,6 +2144,10 @@ void KviIrcView::toggleToolWidget()
 	{
 		m_pToolWidget->setVisible(false);
 		m_pCursorLine = 0;
+
+		// When the tool widget is hidden, ensure the input is focussed (otherwise text is still entered into the 'string to find' widget...)
+		if(m_pKviWindow && m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
+
 	} else {
 		if(!m_pToolWidget)
 			m_pToolWidget = new KviIrcViewToolWidget(this);
@@ -2152,6 +2156,9 @@ void KviIrcView::toggleToolWidget()
 		int iScr = m_pScrollBar->sizeHint().width();
 		m_pToolWidget->setGeometry(0, height() - h, width() - iScr, h);
 		m_pToolWidget->setVisible(true);
+
+		// Ensure the 'string to find' widget is always in focus when the search functionality is requested
+		m_pToolWidget->focusStringToFind();
 	}
 
 	repaint();

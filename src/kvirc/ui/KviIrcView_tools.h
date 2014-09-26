@@ -109,6 +109,7 @@ protected:
 public:
 	enum SearchMode { PlainText, Wildcards, RegExp };
 	void setFindResult(const QString & text);
+	void focusStringToFind();
 	inline bool messageEnabled(int msg_type){ return m_pFilterItems[msg_type]->isOn();};
 	void forceRepaint();
 protected slots:

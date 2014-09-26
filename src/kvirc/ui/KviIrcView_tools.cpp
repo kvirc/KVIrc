@@ -169,9 +169,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 // 	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 // 	pOptionsLayout->addWidget(m_pFindResult,0,6);
 
-#ifndef COMPILE_ON_MAC
-	m_pStringToFind->setFocus(); // this makes MacOSX version of Qt go nuts and crash
-#endif //!COMPILE_ON_MAC
+	// Focussing the 'string to find' widget has been moved to the toggle function so that it happens whenever the widget is shown
 
 	KviShortcut::create(Qt::Key_Escape,m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH,m_pIrcView,SLOT(toggleToolWidget()),0,Qt::WidgetWithChildrenShortcut);
@@ -262,6 +260,13 @@ void KviIrcViewToolWidget::filterSave()
 			f.close();
 		} else KviMessageBox::warning(__tr2qs("Can't open the filter file %Q for writing"),&szFile);
 	}
+}
+
+void KviIrcViewToolWidget::focusStringToFind()
+{
+	#ifndef COMPILE_ON_MAC
+		m_pStringToFind->setFocus(); // this makes MacOSX version of Qt go nuts and crash
+	#endif //!COMPILE_ON_MAC
 }
 
 void KviIrcViewToolWidget::forceRepaint()
