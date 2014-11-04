@@ -6,6 +6,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil@startmail.com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -41,7 +42,7 @@ const char * const align_tbl[] = {
 			"Center",
 			"Top",
 			"Bottom",
-			"WordBreak"
+			"Justify"
 			   };
 
 
@@ -83,7 +84,7 @@ const int align_cod[] = {
 		Adds a stretchable space with zero minimum size and stretch factor stretch to the end of this box layout.
 		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
 		Sets the alignment for widget w to  flags, given as parameters.
-		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center
+		Valid flags are: Right, Left, Top, Bottom, HCenter, VCenter, Center, Justify
 */
 
 

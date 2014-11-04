@@ -6,6 +6,7 @@
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil@startmail.com)
 //LinkDelegationPolicy
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -45,7 +46,7 @@ const char * const align_tbl[] = {
 	"Center",
 	"Top",
 	"Bottom",
-	"WordBreak"
+	"Justify"
 };
 
 const int align_cod[] = {
@@ -136,7 +137,7 @@ const int frame_cod[] = {
 		HCenter   - Text is horizontally centered[br]
 		VCenter   - Text is vertically centered[br]
 		Center    - Equals HCenter + VCenter[br]
-		WordBreak - Enables automatic word breaking[br]
+		Justify   - Text is spaced apart to cover available room[br]
 		[/pre]
 		It is obvious that you can not set [i]Right[/i]
 		and [i]Left[/i] simoultaneously - this will [b]NOT[/b]

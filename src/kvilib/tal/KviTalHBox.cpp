@@ -6,6 +6,7 @@
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil@startmail.com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -36,7 +37,7 @@ const char * const align_tbl[] = {
 	"Center",
 	"Top",
 	"Bottom",
-	"WordBreak"
+	"Justify"
 };
 
 const int align_cod[] = {
