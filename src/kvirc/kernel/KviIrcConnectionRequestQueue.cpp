@@ -80,7 +80,7 @@ void KviIrcConnectionRequestQueue::timerSlot()
 	} else {
 		KviChannelWindow * pChan = m_channels.head();
 		QByteArray encodedChan = pChan->connection()->encodeText(pChan->target()).data();
-		/* The following switch will let the execution flow pass-trought if any request type
+		/* The following switch will let the execution flow pass-through if any request type
 		 * is currently disabled (or not available on the server). Channel's "MODE" request is
 		 * the only mandatory request.
 		 */
