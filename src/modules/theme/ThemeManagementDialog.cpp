@@ -391,7 +391,7 @@ void ThemeManagementDialog::deleteTheme()
 		if(!KviMessageBox::yesNo(
 			__tr2qs_ctx("Delete Theme - KVIrc","theme"),
 			__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
-			pInfo->name().toUtf8().data(),pInfo->version().toUtf8().data())
+			&(pInfo->name()), &(pInfo->version()))
 		)
 			goto jump_out;
 			
