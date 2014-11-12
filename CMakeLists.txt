@@ -54,7 +54,7 @@ set(CMAKE_KVIRC_BUILD_CPU ${CMAKE_SYSTEM_PROCESSOR})
 set(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
 set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 
-# Suffix for Linux
+# Suffix for GNU/Linux
 set(LIB_SUFFIX
 	CACHE STRING "Define suffix of directory name (32/64)"
 )
@@ -193,9 +193,13 @@ else()
 		set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 		set(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
 		if(CMAKE_COMPILER_IS_GNUCXX)
-			# force gdb format of debug symbols
-			set(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-			set(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			# force gdb format of debug symbols - the release-specific
+			# variable is used, as cmake concatenates CMAKE_CXX_FLAGS with
+			# CMAKE_CXX_FLAGS_DEBUG before finalising. This results in the
+			# default DEBUG flag of '-g' being appended, and therefore
+			# overriding what you specify here
+			set(CMAKE_CXX_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			include(CheckCXXCompilerFlag)
 			CHECK_CXX_COMPILER_FLAG("-fvisibility=hidden" CXX_HAS_VH_FLAG)
 			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
@@ -308,7 +312,7 @@ if(UNIX)
 	if(APPLE)
 		set(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/Contents/Resources/")
 	else()
-		# Assume linux
+		# Assume GNU/Linux
 		set(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/")
 		set(CMAKE_KVIRC_MODULES_DIR "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/kvirc/${VERSION_BRANCH}/modules")
 		list(APPEND CMAKE_KVIRC_BUILD_FLAGS LIB_SUFFIX=${LIB_SUFFIX})
@@ -350,11 +354,11 @@ endif()
 ###############################################################################
 #
 # Library and tool checks, in order. First the required ones
-# in order of dependancy, then the optional ones.
+# in order of dependency, then the optional ones.
 #
 ###############################################################################
 
-# ingore sigalarm
+# ignore sigalarm
 option(WANT_IGNORE_SIGALARM "Ignore SIGALARM signal" OFF)
 # Check for threads
 find_package(Threads REQUIRED)
@@ -485,6 +489,7 @@ if(Qt4_FOUND)
 	include(${QT_USE_FILE})
 	include_directories(${QT_INCLUDES})
 	list(APPEND LIBS ${QT_LIBRARIES})
+
 endif()
 
 if(Qt5Widgets_FOUND)
@@ -862,13 +867,13 @@ endif()
 
 include(CheckFunctionExists)
 CHECK_FUNCTION_EXISTS("inet_ntoa" HAVE_INET_NTOA_EXISTS)
-# what systems lacks this!?
+# what systems lack this!?
 if(HAVE_INET_NTOA_EXISTS)
 	set(HAVE_INET_NTOA 1)
 endif()
 
 CHECK_FUNCTION_EXISTS("inet_aton" HAVE_INET_ATON_EXISTS)
-# what systems lacks this!?
+# what systems lack this!?
 if(HAVE_INET_ATON_EXISTS)
 	set(HAVE_INET_ATON 1)
 endif()
@@ -883,13 +888,13 @@ endif()
 # SetEnv/PutEnv support
 ############################################################################
 CHECK_FUNCTION_EXISTS("setenv" HAVE_SETENV_EXISTS)
-# what systems lacks this!?
+# what systems lack this!?
 if(HAVE_SETENV_EXISTS)
 	set(HAVE_SETENV 1)
 endif()
 
 CHECK_FUNCTION_EXISTS("putenv" HAVE_PUTENV_EXISTS)
-# what systems lacks this!?
+# what systems lack this!?
 if(HAVE_PUTENV_EXISTS)
 	set(HAVE_PUTENV 1)
 endif()
@@ -1059,7 +1064,7 @@ endif()
 
 ############################################################################
 # By default we disable QGtkStyle since it messes up with our theming
-# Some users wants it anyway, and we sometimes needs to check it
+# Some users want it anyway, and we sometimes need to check it
 ############################################################################
 
 option(WANT_GTKSTYLE "Enable QGtkStyle" OFF)
@@ -1216,7 +1221,7 @@ endif()
 # CONFIGURE FILES
 ###############################################################################
 
-# System configuration is now splitted in 2 files
+# System configuration is now split into 2 files
 # kvi_sysconfig.h contains the "saveable" configuration: stuff that
 # may be preserved between multiple cmake runs (and thus may save compilation time)
 # kvi_sysbuildinfo.h contains the configuration that changes at every
@@ -1278,7 +1283,7 @@ mark_as_advanced(FORCE CMAKE_BACKWARDS_COMPATIBILITY)
 mark_as_advanced(FORCE EXECUTABLE_OUTPUT_PATH)
 
 ###############################################################################
-# ADD LINK FLAGS TO LIBS: THIS HAVE TO BE DONE AT LAST
+# ADD LINK FLAGS TO LIBS: THIS HAS TO BE DONE LAST
 ###############################################################################
 
 list(APPEND LIBS "${ADDITIONAL_LINK_FLAGS}")
@@ -1315,7 +1320,7 @@ if(UNIX)
 	if(APPLE)
 		set(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/)
 	else()
-		# Assume linux
+		# Assume GNU/Linux
 		set(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/kvirc/${VERSION_BRANCH}/modules/)
 	endif()
 elseif(WIN32)
@@ -1327,7 +1332,7 @@ if(UNIX)
 	if(APPLE)
 		# does MacOS X use man pages? <= yes!
 	else()
-		# Assume linux
+		# Assume GNU/Linux
 		set(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)
 	endif()
 else()
