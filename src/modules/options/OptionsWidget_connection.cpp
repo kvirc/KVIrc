@@ -155,7 +155,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	u = addUIntSelector(g,__tr2qs_ctx("Outgoing data queue flush timeout:","options"),KviOption_uintSocketQueueFlushTimeout,100,2000,500);
 	u->setSuffix(__tr2qs_ctx(" msec","options"));
-	KviBoolSelector * b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Limit outgoing traffic","options"),KviOption_boolLimitOutgoingTraffic);
+	KviBoolSelector * b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Limit outgoing traffic per connection","options"),KviOption_boolLimitOutgoingTraffic);
 	u = addUIntSelector(0,2,0,2,__tr2qs_ctx("Limit to 1 message every:","options"),
 			KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000001,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
 	u->setSuffix(__tr2qs_ctx(" usec","options"));
