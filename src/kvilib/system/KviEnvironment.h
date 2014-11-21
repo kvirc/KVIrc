@@ -58,7 +58,7 @@ namespace KviEnvironment
 	{
 		SetEnvironmentVariable(szName,szValue);
 	}
-	
+
 	inline void unsetVariable(const char * name)
 	{
 		SetEnvironmentVariable(name,NULL);

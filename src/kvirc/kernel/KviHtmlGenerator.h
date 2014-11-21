@@ -47,7 +47,7 @@ namespace KviHtmlGenerator
 		Background = 100,
 		Foreground = 101
 	};
-	
+
 	/**
 	* \brief Converts a raw irc message to its html equivalent text
 	* \param szText Const reference to a message text

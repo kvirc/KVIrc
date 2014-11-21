@@ -3,11 +3,11 @@ Last updated by Fabio Bas, 2012.04.07
 #########################
 
 This document contains step-by-step instructions for compiling KVIrc4 from SVN
-sources on a Mac OS X system. Due to changed prerequisites and compilation 
+sources on a Mac OS X system. Due to changed prerequisites and compilation
 system, this compilation howto does not apply to older versions of KVirc.
 
 
-All this has worked fine several times for me. I've been using KVirc on Mac 
+All this has worked fine several times for me. I've been using KVirc on Mac
 since May 2004 without any crashes & faults. Only the sound interface does not
 work, but I have no use for it within an IRC client. However, I cannot
 guarantee that this instructions will work for you as they do for me and I'm
@@ -17,7 +17,7 @@ them. You should always understand what you are doing!
 
 IMPORTANT: Installing KVIrc "the usual way" like on other popular Unix-like
 OSes with files spread across several directories does not work and is
-unsupported. The provided compilation system builds a typical "Bundle" for 
+unsupported. The provided compilation system builds a typical "Bundle" for
 Mac OS X. A bundle is "just" a special directory structure on Mac systems which
 contains the application binary, dependant libraries, plugins, modules and
 other resources.
@@ -65,7 +65,7 @@ Open a terminal window
 4. CMake
 
 Get the latest version of the automatic build system from http://www.cmake.org.
-Again it's up to you if you want the easily installable binary package or read 
+Again it's up to you if you want the easily installable binary package or read
 the documentation and compile by yourself.
 Please note that when using XCode >= 4.3 you need at least cmake 2.8.8.
 

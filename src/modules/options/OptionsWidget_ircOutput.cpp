@@ -54,7 +54,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	if(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) > KVI_VERBOSITY_LEVEL_PARANOIC)
 		KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = KVI_VERBOSITY_LEVEL_NORMAL;
 	m_pVerbosityCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
-	
+
 	pLabel = new QLabel(__tr2qs_ctx("Datetime format","options"),this);
 	addWidgetToLayout(pLabel,0,1,0,1);
 
@@ -63,7 +63,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	m_pDatetimeCombo->addItem(__tr2qs_ctx("ISO 8601 format","options"));
 	m_pDatetimeCombo->addItem(__tr2qs_ctx("System locale format","options"));
 	addWidgetToLayout(m_pDatetimeCombo,1,1,1,1);
-	
+
 	m_pDatetimeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat));
 
 	KviTalGroupBox * pGroup = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Show in active window","options"));
@@ -102,7 +102,7 @@ void OptionsWidget_ircOutput::commit()
 		iIdx = KVI_VERBOSITY_LEVEL_NORMAL;
 	}
 	KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = iIdx;
-	
+
 	KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat) = m_pDatetimeCombo->currentIndex();
 }
 

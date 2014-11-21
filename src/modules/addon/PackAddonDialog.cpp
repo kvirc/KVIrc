@@ -99,9 +99,9 @@ PackAddonDialog::PackAddonDialog(QWidget * pParent)
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","addon");
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel);
-	
+
 	pPage->setMinimumWidth(350);
-	
+
 	addPage(pPage);
 
 	// Packager information
@@ -273,7 +273,7 @@ bool PackAddonDialog::packAddon()
 
 	// Check the addon tree
 	QString szError;
-	
+
 	if(!checkDirTree(&szError))
 	{
 		QMessageBox::critical(this,
@@ -282,7 +282,7 @@ bool PackAddonDialog::packAddon()
 		);
 		return false;
 	}
-	
+
 	// Raise the files summary dialog
 	m_pPackAddonSummaryFilesWidget = new PackAddonSummaryFilesWidget(this);
 	m_pPackAddonSummaryFilesWidget->setPath(m_szDirPath);
@@ -405,7 +405,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	QLabel * pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package &Author:","addon"));
 	pLayout->addWidget(pLabel,0,0);
-	
+
 	m_pPackageAuthorEdit = new QLineEdit(this);
 	m_pPackageAuthorEdit->setText(__tr2qs_ctx("Your name here","addon"));
 	pLabel->setBuddy(m_pPackageAuthorEdit);
@@ -414,7 +414,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package &Name:","addon"));
 	pLayout->addWidget(pLabel,1,0);
-	
+
 	m_pPackageNameEdit = new QLineEdit(this);
 	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed, like MyAddon","addon"));
 	pLabel->setBuddy(m_pPackageNameEdit);
@@ -423,7 +423,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package &Version:","addon"));
 	pLayout->addWidget(pLabel,2,0);
-	
+
 	m_pPackageVersionEdit = new QLineEdit(this);
 	m_pPackageVersionEdit->setText(__tr2qs_ctx("Version in the form x.y[.z], like 1.0 or 2.0.3","addon"));
 	pLabel->setBuddy(m_pPackageVersionEdit);

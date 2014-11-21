@@ -202,7 +202,7 @@ public:
 	*
 	* If the host or username are not known, the mask may contain less
 	* information than requested.
-	* 
+	*
 	* Mask types:
 	*  0: nick!user@\machine.host.top  (nick!user@\XXX.XXX.XXX.XXX) (default)
 	*  1: nick!user@*.host.top        (nick!user@\XXX.XXX.XXX.*)
@@ -226,7 +226,7 @@ public:
 	* 19: *!~user@*.host.top          (*!~user@\XXX.XXX.*)
 	* 20: nick!*user@*.host.top       (nick!*user@\XXX.XXX.*)
 	* 21: *!*user@*.host.top          (*!user@*XXX.XXX.*)
-	* 
+	*
 	* Smart versions of the masks 17-21 that try take care of masked ip addresses
 	* in the form xxx.xxx.INVALID-TOP-MASK
 	* 22: nick!~user@*.host.top       (nick!~user@\XXX.XXX.*)
@@ -234,10 +234,10 @@ public:
 	* 24: *!~user@*.host.top          (*!~user@\XXX.XXX.*)
 	* 25: nick!*user@*.host.top          (nick!*user@\XXX.XXX.*)
 	* 26: *!*user@*.host.top          (*!user@*XXX.XXX.*)
-	* 
+	*
 	* If some data is missing, these types may change:
 	* For example, if hostname is missing, the mask type 3 or 4 may be reduced to type 5
-	* 
+	*
 	* ident is fun.. ahem
 	* prefixes used:
 	* none   I line with ident

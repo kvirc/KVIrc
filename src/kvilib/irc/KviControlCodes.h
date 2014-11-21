@@ -36,7 +36,7 @@
 * \file KviControlCodes.h
 * \author Szymon Stefanek
 * \brief This file holds the text control codes
-* 
+*
 * It was originally named KviMircCntrl
 */
 
@@ -55,7 +55,7 @@
 // created when looking for a good placement for the CRYPT escape char in KVirc.
 // I guess that the best chars to be used were FS,GS,RS,US,DC1,DC2,DC3,DC4...they have the "less defined"
 // meaning as ASCII control chars.
-// mmmh... :) 
+// mmmh... :)
 
 // ASCII                              IRC Meaning
 // 000 NUL Null                       (Cannot be assigned)
@@ -172,7 +172,7 @@ namespace KviControlCodes
 	*/
 	KVILIB_API QString stripControlBytes(const QString & szData);
 
-	
+
 	KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t * pwData, unsigned char * pcByte1, unsigned char * pcByte2);
 
 	KVILIB_API unsigned int getUnicodeColorBytes(const QString & szData, unsigned int iChar, unsigned char * pcByte1, unsigned char * pcByte2);

@@ -142,7 +142,7 @@ namespace KviMemory
 	{
 		memmove(dst_ptr,src_ptr,len);
 	}
-	
+
 	/**
 	* \brief Initializes len bytes of memory starting from dst_ptr to c
 	*

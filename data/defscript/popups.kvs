@@ -1114,7 +1114,7 @@ defpopup(querytextview)
 		}
 	}
 
-		
+
 	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
 	{
 		whois $0 $0
@@ -1345,13 +1345,13 @@ defpopup(windowpopup)
 			%:szServer = $context.serverdbServerHostName()
 			%:bIsAutoJoinedOnNetwork = $false;
 			%:bIsAutoJoinedOnServer = $false;
-	
+
 			if($serverdb.networkExists(%:szNetwork))
 			{
 				foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
 				{
 					%aChanAndPass = $str.split(":",%szChanAndPass)
-				
+
 					if(%aChanAndPass[0] == $chan.name)
 					{
 						%:bIsAutoJoinedOnNetwork = $true;
@@ -1363,7 +1363,7 @@ defpopup(windowpopup)
 					foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
 					{
 						%aChanAndPass = $str.split(":",%szChanAndPass)
-				
+
 						if(%aChanAndPass[0] == $chan.name)
 						{
 							%:bIsAutoJoinedOnServer = $true;
@@ -1430,7 +1430,7 @@ defpopup(windowpopup)
 		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
 		{
 			%aChanAndPass = $str.split(":",%szChanAndPass)
-	
+
 			if(%aChanAndPass[0] != $chan.name)
 				%aChans <+ %szChanAndPass;
 		}
@@ -1443,7 +1443,7 @@ defpopup(windowpopup)
 		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
 		{
 			%aChanAndPass = $str.split(":",%szChanAndPass)
-	
+
 			if(%aChanAndPass[0] != $chan.name)
 				%aChans <+ %szChanAndPass;
 		}

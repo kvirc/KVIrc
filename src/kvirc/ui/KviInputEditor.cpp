@@ -153,7 +153,7 @@ KviInputEditor::~KviInputEditor()
 		delete m_pIconMenu;
 
 	delete m_pHistory;
-	
+
 	if(m_pUndoStack)
 		delete m_pUndoStack;
 	if(m_pRedoStack)
@@ -243,7 +243,7 @@ QFontMetrics * KviInputEditor::getLastFontMetrics(const QFont & font)
 	}
 
 	//height calculation
-	
+
 	int h = qMax(g_pLastFontMetrics->height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
 	int w = 100;
 	QStyleOptionFrameV2 option;
@@ -257,7 +257,7 @@ QFontMetrics * KviInputEditor::getLastFontMetrics(const QFont & font)
 
 	QSize dummySize = style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).
 			expandedTo(QApplication::globalStrut()), this);
-			
+
 	g_iCachedHeight = dummySize.height();
 	return g_pLastFontMetrics;
 }
@@ -1234,7 +1234,7 @@ void KviInputEditor::clearUndoStack()
 		delete m_pUndoStack;
 		m_pUndoStack = NULL;
 	}
-	
+
 	if(m_pRedoStack)
 	{
 		delete m_pRedoStack;
@@ -2000,13 +2000,13 @@ void KviInputEditor::undo()
 			return;
 		break;
 	}
-	
+
 	if(!m_pRedoStack)
 	{
 		m_pRedoStack = new KviPointerList<EditCommand>;
 		m_pRedoStack->setAutoDelete(true);
 	}
-	
+
 	m_pRedoStack->append(pCommand);
 	if(m_pRedoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
 		m_pRedoStack->removeFirst(); // will delete it
@@ -2048,13 +2048,13 @@ void KviInputEditor::redo()
 			return;
 		break;
 	}
-	
+
 	if(!m_pUndoStack)
 	{
 		m_pUndoStack = new KviPointerList<EditCommand>;
 		m_pUndoStack->setAutoDelete(true);
 	}
-	
+
 	m_pUndoStack->append(pCommand);
 	if(m_pUndoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
 		m_pUndoStack->removeFirst(); // will delete it

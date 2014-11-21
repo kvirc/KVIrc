@@ -52,7 +52,7 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
 	m_pTopSplitter->setChildrenCollapsible(false);
-	
+
 	// The button box on the left
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 

@@ -651,7 +651,7 @@ void RegisteredUserEntryDialog::okClicked()
 	} else {
 		u->setProperty("notify",QString(""));
 	}
-	
+
 	m_pPropertyDict->remove("comment");
 	m_pPropertyDict->remove("notify");
 	m_pPropertyDict->remove("avatar");

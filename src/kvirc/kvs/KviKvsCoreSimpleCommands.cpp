@@ -179,14 +179,14 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		int iCurModeChangesPerLine = iMaxModeChangesPerLine;
-		
+
 		// Calculate the max number of available characters in a MODE command
 		// 512 (max) - 2 (cr, lf) - 4 (MODE) - 3 (spaces) - 1 (plus/minus)
 		// since we already know the channel name, take it in account, too
 
 		const int iMaxCharsPerLine = 502 - szTarget.size();
 		int iCurCharsPerLine = iMaxCharsPerLine;
-		
+
 		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 		{
 			QByteArray szTxt = KVSCSC_pConnection->encodeText(*it);
@@ -200,7 +200,7 @@ namespace KviKvsCoreSimpleCommands
 					szMessage += " ";
 					iCurCharsPerLine--;
 				}
-				
+
 				szMessage += szTxt;
 				iCurCharsPerLine-=szTxt.size();
 
@@ -209,7 +209,7 @@ namespace KviKvsCoreSimpleCommands
 				{
 					if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s",szTarget.data(),plusminus,szFlags.data(),szMessage.data()))
 						return KVSCSC_pContext->warningNoIrcConnection();
-					
+
 					// move back the iterator by one position
 					// WARNING: this could lead to an infinite loop if a single specified mode
 					// change is longer than iMaxCharsPerLine

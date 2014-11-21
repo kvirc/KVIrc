@@ -53,7 +53,7 @@ public:
 	* \return KviIrcConnectionRequestQueue
 	*/
 	KviIrcConnectionRequestQueue();
-	
+
 	/**
 	* \brief Destroys the request queue objects
 	*/
@@ -73,7 +73,7 @@ protected:
 		QuietBan = 4,     /**< Quiet ban request */
 		Ban = 5           /**< Ban request */
 	};
-	
+
 	QQueue<KviChannelWindow *> m_channels;
 	QTimer               m_timer;
 	RequestTypes         m_curType;
@@ -84,7 +84,7 @@ public:
 	* \return void
 	*/
 	void enqueueChannel(KviChannelWindow * pChan);
-	
+
 	/**
 	* \brief Removes the channel from the queue stack
 	* \param pChan The channel to dequeue

@@ -208,7 +208,7 @@ protected:
 		* \return void
 		*/
 		void setStartPosition(int iStartPosition){ m_iStartPosition = iStartPosition; }
-	
+
 		/**
 		* \brief Returns the start position
 		* \return int
@@ -220,7 +220,7 @@ protected:
 		* \param szText The text to set
 		*/
 		void setText(const QString & szText){ m_szText = szText; }
-	
+
 		/**
 		* \brief Returns the text of the command
 		* \return const QString &
@@ -233,7 +233,7 @@ protected:
 		* \return void
 		*/
 		void setType(const Type & eType){ m_eType = eType; }
-	
+
 		/**
 		* \brief Returns the type of the command
 		* \return const Type &
@@ -244,7 +244,7 @@ protected:
 	/**
 	* \var m_pUndoStack
 	* \brief The undo stack.
-	* 
+	*
 	* Contains owned pointers and has autodelete set to true. The most recent command
 	* is at the end. Null when no undo is available.
 	*/
@@ -253,7 +253,7 @@ protected:
 	/**
 	* \var m_pRedoStack
 	* \brief The redo stack.
-	* 
+	*
 	* Contains owned pointers and has autodelete set to true. The most recently undone
 	* command is at the end. Null when no redo is available.
 	*/

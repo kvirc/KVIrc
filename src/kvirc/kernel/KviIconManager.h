@@ -143,7 +143,7 @@ public:
 /**
 * \class KviIconManager
 * \brief This class manages the images used by KVIrc.
-* 
+*
 * We handle three types of images: builtin small icons, builtin big icons and generic images.
 * The builtin small icons are in the pics/coresmall directory (this is to optimize the directory
 * size since it's a linear search...), are 16x16 in size and are indexed by numbers in a way that
@@ -511,7 +511,7 @@ public:
 	* scripts or popups
 	* \param pRetPath Holds the path of the image
 	* \warning Don't store this pointer!
-	* 
+	*
 	* \return QPixmap *
 	*/
 	QPixmap * getImage(const QString & szId, bool bCanBeNumber = true, QString * pRetPath = 0);

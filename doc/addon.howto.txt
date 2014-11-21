@@ -42,7 +42,7 @@ automatically invoke "/addon.install <filename>" on it.
 
 As stated above, the addons are usually shipped in a compressed archive. The
 /addon.install command will uncompress it to a temporary directory.
-The uncompressed tree is substantially the same directory tree that you have 
+The uncompressed tree is substantially the same directory tree that you have
 to create in order to package your addon and it usually looks like this:
 
     name-version/
@@ -110,13 +110,13 @@ For example:
 
     # Register classes
     MyAddon::classes::register
-    
+
     # Initialize events
     MyAddon::events::init
-    
+
     # Load configuration
     MyAddon::config::load
-    
+
     # Setup popups
     defpopup("MyAddon")
     {
@@ -125,7 +125,7 @@ For example:
             ...
         }
     }
-    
+
     # Set options
     option boolAutoAcceptDccSend 1
     option boolShowMinimizedDebugWindow 1
@@ -161,7 +161,7 @@ subdirectory when no other language is found around...
 
 4. THE INIT FILE
 
-The smallest addon that you can write is the one that does nothing. 
+The smallest addon that you can write is the one that does nothing.
 
     addon.register("MyAddon", \
                     "1.0.0", \
@@ -193,7 +193,7 @@ The fourth parameter is a short description of the feature that the addon implem
 it can contain the $tr() function too.
 The fifth parameter is the minimal KVIrc version required to run the addon.
 The sixth parameter is the icon to show in the manager: it has to be 32x32 pixel big.
-There are also some switches that can be used to fiddle a little bit more :) 
+There are also some switches that can be used to fiddle a little bit more :)
 
 
 5. THE HELP AND CONFIGURATION CALLBACKS
@@ -234,7 +234,7 @@ you've created. Be a clean coder :)
 7. SOME EXAMPLES
 
 The code below is just an example of how to write a useful initalizazion of your own addon.
-The name of the classes refer to the ones described above. 
+The name of the classes refer to the ones described above.
 
     # Register the classes
     alias(MyAddon::classes::register)
@@ -246,7 +246,7 @@ The name of the classes refer to the ones described above.
             MyAddon::classes::gui::options, \
             ...
             )
-        
+
         # Scan the array and register the classes
         for(%i=0; %i < $length(%classes[]); %i++)
         {
@@ -257,7 +257,7 @@ The name of the classes refer to the ones described above.
             eval %classes[%i]
         }
     }
-    
+
     # Initialize events
     alias(MyAddon::events::init)
     {
@@ -274,7 +274,7 @@ The name of the classes refer to the ones described above.
             ...
         }
     }
-    
+
     # Load configuration
     alias(MyAddon::config::load)
     {
@@ -283,15 +283,15 @@ The name of the classes refer to the ones described above.
         {
             MyAddon::classes::register
         }
-        
+
         # Set some variables
         %MyAddonConfig = $new(MyAddon::classes::ConfHandler)
         %MyAddonConfigPath = $file.localdir(config/scripts/MyAddon)
-        
+
         # Open the configuration file and move to the section "general"
         %c = $config.open(%MyAddonConfigPath/MyAddon.kvc,"r")
         config.setsection %c general
-        
+
         # Store the value of the key "Key" in the global variable %Key
         %Key = $config.read(%c,"Key",2)
         ...
@@ -317,6 +317,6 @@ software!). It will be easier to do than it was to explain it :D
 Another great resource place is the IRC channel #KVIrc located on irc.freenode.org
 network. There you can find many people able to code and help you.
 
-Have fun! :) 
+Have fun! :)
 
 Elvio Basello

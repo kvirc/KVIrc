@@ -59,7 +59,7 @@ public:
 	{
 		return m_pHostnameList;
 	}
-	
+
 	KviPointerList<QString> * ipAddressList()
 	{
 		return m_pIpAddressList;
@@ -164,7 +164,7 @@ public:
 	{
 		KVI_ASSERT(pResult);
 	}
-	
+
 	virtual ~KviDnsResolverThreadEvent()
 	{
 		if(m_pResult)

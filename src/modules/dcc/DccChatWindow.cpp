@@ -271,9 +271,9 @@ void DccChatWindow::fillCaptionBuffers()
 {
 	QString tmp = QString("DCC %1 %2@%3:%4").arg(
 #ifdef COMPILE_SSL_SUPPORT
-		m_pDescriptor->bIsSSL ? "SChat" : "Chat", 
+		m_pDescriptor->bIsSSL ? "SChat" : "Chat",
 #else
-		"Chat", 
+		"Chat",
 #endif
 		m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
 
@@ -351,7 +351,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 				KviCString buf(KviCString::Format,"%s\r\n",d);
 				QString tmp = text.right(text.length() - 1);
 				m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-				
+
 				if(bUserFeedback)
 					g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 						m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
@@ -363,7 +363,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 #endif
 	KviCString buf(KviCString::Format,"%s\r\n",d);
 	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-	
+
 	if(bUserFeedback)
 		g_pMainWindow->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
@@ -549,7 +549,7 @@ void DccChatWindow::connected()
 	updateCaption();
 
 	m_pSlaveThread = new DccChatThread(this,m_pMarshal->releaseSocket());
-	
+
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL * s = m_pMarshal->releaseSSL();
 	if(s)

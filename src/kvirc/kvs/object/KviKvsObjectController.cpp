@@ -95,9 +95,9 @@ void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 
 	KviPointerList< QPointer<KviKvsObject> > lDying;
 	lDying.setAutoDelete(true);
-	
+
 	KviKvsObject * pObject;
-		
+
 	for(pObject = m_pTopLevelObjectList->first();pObject;pObject = m_pTopLevelObjectList->next())
 	{
 		if(pObject->getClass() == pClass)
@@ -107,7 +107,7 @@ void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 			pObject->killAllChildrenWithClass(pClass);
 		}
 	}
-	
+
 	for(QPointer<KviKvsObject> * pObject = lDying.first();pObject;pObject = lDying.next())
 	{
 		if(pObject->isNull())
@@ -128,7 +128,7 @@ void KviKvsObjectController::clearUserClasses()
 			lDying.append(it.current());
 		++it;
 	}
-	
+
 	for(KviKvsObjectClass * pDyingClass = lDying.first();pDyingClass;pDyingClass = lDying.next())
 	{
 		if(!m_pClassDict->findRef(pDyingClass))

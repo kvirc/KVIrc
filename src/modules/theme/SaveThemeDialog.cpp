@@ -244,7 +244,7 @@ bool SaveThemeDialog::saveTheme()
 
 	sto.setAuthor(m_pAuthorNameEdit->text());
 	sto.setDescription(m_pThemeDescriptionEdit->toPlainText());
-	
+
 	QString szTmp;
 	QDateTime date = QDateTime::currentDateTime();
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
@@ -261,7 +261,7 @@ bool SaveThemeDialog::saveTheme()
 			szTmp = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
-	
+
 	sto.setDate(szTmp);
 	sto.setVersion(m_pThemeVersionEdit->text());
 	sto.setApplication("KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);

@@ -66,7 +66,7 @@ public:
 	* \return ClassEditorTreeWidget
 	*/
 	ClassEditorTreeWidget(QWidget * pParent);
-	
+
 	/**
 	* \brief Destroys the tree widget
 	*/
@@ -109,7 +109,7 @@ public:
 	* \return ClassEditorTreeWidgetItem
 	*/
 	ClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget, Type eType, const QString & szName);
-	
+
 	/**
 	* \brief Constructs the class editor tree widget item
 	* \param pParentItem The parent tree widget item
@@ -118,7 +118,7 @@ public:
 	* \return ClassEditorTreeWidgetItem
 	*/
 	ClassEditorTreeWidgetItem(ClassEditorTreeWidgetItem * pParentItem, Type eType, const QString & szName);
-	
+
 	/**
 	* \brief Destroys the class editor tree widget item
 	*/
@@ -139,33 +139,33 @@ public:
 	* \return void
 	*/
 	void setInheritsClass(QString szInheritsClassName){ m_szInheritsClassName = szInheritsClassName; };
-	
+
 	/**
 	* \brief Returns the class name of the classes we inherit from
 	* \return QString
 	*/
 	QString inheritsClass(){ return m_szInheritsClassName; };
-	
+
 	/**
 	* \brief Returns the name of the item
 	* \return const QString &
 	*/
 	const QString & name(){ return m_szName; };
-	
+
 	/**
 	* \brief Sets the name of the item
 	* \param szName The name of the item :P
 	* \return void
 	*/
 	void setName(const QString & szName);
-	
+
 	/**
 	* \brief Sets the list of parameters the function accept
 	* \param szRem The parameters' list
 	* \return void
 	*/
 	void setReminder(const QString & szRem){ m_szReminder = szRem; };
-	
+
 	/**
 	* \brief Returns the parameters list
 	* \return QString
@@ -178,70 +178,70 @@ public:
 	* \return void
 	*/
 	void setClassNotBuilt(bool bModified);
-	
+
 	/**
 	* \brief Returns true if we class is not built yet, false otherwise
 	* \return bool
 	*/
 	bool classNotBuilt(){ return m_bClassModified; };
-	
+
 	/**
 	* \brief Sets the function as internal
 	* \param bInternal Whether the function is internal or not
 	* \return void
 	*/
 	void setInternalFunction(bool bInternal){ m_bInternal = bInternal; };
-	
+
 	/**
 	* \brief Returns true if the function is set as internal, false otherwise
 	* \return bool
 	*/
 	bool isInternalFunction(){ return m_bInternal; };
-	
+
 	/**
 	* \brief Returns the type of the item
 	* \return Type
 	*/
 	Type type(){ return m_eType; };
-	
+
 	/**
 	* \brief Sets the type of the item
 	* \param eType The type!
 	* \return void
 	*/
 	void setType(Type eType);
-	
+
 	/**
 	* \brief Returns true if the item is a class, false otherwise
 	* \return bool
 	*/
 	bool isClass(){ return m_eType == Class; };
-	
+
 	/**
 	* \brief Returns true if the item is a namespace, false otherwise
 	* \return bool
 	*/
 	bool isNamespace(){ return m_eType == Namespace; };
-	
+
 	/**
 	* \brief Returns true if the item is a member function, false otherwise
 	* \return bool
 	*/
 	bool isMethod(){ return m_eType == Method; };
-	
+
 	/**
 	* \brief Saves the code of the item in a buffer
 	* \param szBuffer The buffer ;)
 	* \return void
 	*/
 	void setBuffer(const QString & szBuffer){ m_szBuffer = szBuffer; };
-	
+
 	/**
 	* \brief Returns the buffer containing the code of the item
 	* \return const QString &
 	*/
 	const QString & buffer(){ return m_szBuffer; };
-	
+
 	/**
 	* \brief Returns the cursor's position
 	* \return const int &
@@ -270,7 +270,7 @@ public:
 	* \return ClassEditorWidget
 	*/
 	ClassEditorWidget(QWidget * pParent);
-	
+
 	/**
 	* \brief Destroys the class editor object
 	*/
@@ -299,32 +299,32 @@ public:
 	* \return void
 	*/
 	virtual void saveProperties(KviConfigurationFile * pCfg);
-	
+
 	/**
 	* \brief Called to load the window properties
 	* \param pCfg The configuration file
 	* \return void
 	*/
 	virtual void loadProperties(KviConfigurationFile * pCfg);
-	
+
 	/**
 	* \brief Builds the class!
 	* \return void
 	*/
 	void build();
-	
+
 	/**
 	* \brief Saves non-built classes to a file
 	* \return void
 	*/
 	void saveNotBuiltClasses();
-	
+
 	/**
 	* \brief Loads non-built classes to a file
 	* \return void
 	*/
 	void loadNotBuiltClasses();
-	
+
 	/**
 	* \brief Searches a function
 	* \param szFunctionName The name of the function
@@ -340,14 +340,14 @@ public:
 	* \return void
 	*/
 	void exportClasses(bool bSelectedOnly, bool bSingleFiles = false);
-	
+
 	/**
 	* \brief Exports the current selection to single files
 	* \param pList The list of file to export
 	* \return void
 	*/
 	void exportSelectionInSinglesFiles(KviPointerList<ClassEditorTreeWidgetItem> * pList);
-	
+
 	/**
 	* \brief Removes the item from the tree
 	* \param pItem The item to remove
@@ -376,21 +376,21 @@ protected:
 	bool askForNamespaceName(const QString & szAction, const QString & szText, const QString & szInitialText, QString & szNameBuffer);
 	bool askForFunction(QString & szFunctionName, QString & szReminder, bool * pbInternal, const QString & szClassName, bool bRenameMode);
 	void searchInheritedClasses(const QString szClass, KviPointerList<ClassEditorTreeWidgetItem> & lInheritsedClasses);
-	
+
 	/**
 	* \brief Returns true if the class exists, false otherwise
 	* \param szName The name of the class
 	* \return bool
 	*/
 	bool classExists(QString & szName);
-	
+
 	/**
 	* \brief Renames a class
 	* \param pClass The class to rename
 	* \return void
 	*/
 	void renameClass(ClassEditorTreeWidgetItem * pClass);
-	
+
 	/**
 	* \brief Renames a namespace
 	* \param pNamespace The namespace to rename
@@ -413,9 +413,9 @@ protected:
 	* \return ClassEditorTreeWidgetItem *
 	*/
 	ClassEditorTreeWidgetItem * findItem(const QString & szName);
-	
-	
-	
+
+
+
 	ClassEditorTreeWidgetItem * findTopLevelItem(const QString & szName);
 	ClassEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem * pCurrent, QStringList & lNameSpaces, int & iLevel, bool bCreateNameSpace = 0);
 protected slots:
@@ -435,13 +435,13 @@ protected slots:
 	void slotFind();
 	void slotFindWord(const QString &);
 	void searchReplace(const QString & szSearch, bool bReplace = false, const QString & szReplace = "n");
-	
+
 	/**
 	* \brief Called when we collapse an item
 	* \return void
 	*/
 	void slotCollapseItems();
-	
+
 	/**
 	* \brief Called when we collapse an item recursively
 	* \param pItem The starting item to collapse
@@ -454,7 +454,7 @@ protected slots:
 	* \return void
 	*/
 	void removeSelectedItems();
-	
+
 	/**
 	* \brief Called when we replace text everywhere
 	* \param szBefore The text before the replace
@@ -477,7 +477,7 @@ public:
 	* \return ClassEditorWindow
 	*/
 	ClassEditorWindow();
-	
+
 	/**
 	* \brief Destroys the class editor window
 	*/
@@ -490,21 +490,21 @@ protected:
 	* \return QPixmap *
 	*/
 	virtual QPixmap * myIconPtr();
-	
+
 	/**
 	* \brief Sets the configuration group name as classeditor
 	* \param szName The name of the group
 	* \return void
 	*/
 	virtual void configGroupName(QString & szName);
-	
+
 	/**
 	* \brief Called to save the window properties
 	* \param pCfg The configuration file
 	* \return void
 	*/
 	virtual void saveProperties(KviConfigurationFile * pCfg);
-	
+
 	/**
 	* \brief Called to load the window properties
 	* \param pCfg The configuration file
@@ -517,13 +517,13 @@ protected slots:
 	* \return void
 	*/
 	void cancelClicked();
-	
+
 	/**
 	* \brief Called when we want to build the class
 	* \return void
 	*/
 	void buildClicked();
-	
+
 	/**
 	* \brief Called when we want to save the class
 	* \return void
@@ -550,7 +550,7 @@ public:
 	* \return KviClassEditorDialog
 	*/
 	KviClassEditorDialog(QWidget * pParent, const QString & szName, KviPointerHashTable<QString,ClassEditorTreeWidgetItem> * pClasses, const QString & szClassName, const QString & szInheritsClassName, bool bRenameMode = false);
-	
+
 	/**
 	* \brief Destroys the class dialog
 	*/
@@ -565,7 +565,7 @@ public:
 	* \return QString
 	*/
 	QString className(){ return m_pClassNameLineEdit->text(); };
-	
+
 	/**
 	* \brief Returns the class name of the parent classes
 	* \return QString
@@ -599,7 +599,7 @@ public:
 	* \return KviClassEditorFunctionDialog
 	*/
 	KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName, const QString & szFunctionName, const QString & szReminder, bool bIsInternal, bool bRenameMode = false);
-	
+
 	/**
 	* \brief Destroys the function dialog
 	*/
@@ -615,7 +615,7 @@ public:
 	* \return QString
 	*/
 	QString functionName(){ return m_pFunctionNameLineEdit->text(); };
-	
+
 	/**
 	* \brief Returns the parameters of the function
 	* \return QString

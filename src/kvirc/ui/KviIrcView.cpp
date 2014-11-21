@@ -1511,12 +1511,12 @@ no_selection_paint:
 	 * Try to get the current number of KviIrcViewLines from the paintEvent and set the m_pScrollBar's
 	 * pageStep accordingly; the calculated value is valid only:
 	 * if there are enough lines to fill up at least a page (pCurTextLine)
-	 * if the value is safe (iLinesPerPage > 0) 
+	 * if the value is safe (iLinesPerPage > 0)
 	 * if it's different from the actual one (iLinesPerPage != m_pScrollBar->pageStep())
 	 * only on full repaints: rectHeight == rect().height()
 	 */
-	if(pCurTextLine && 
-		iLinesPerPage > 0 && 
+	if(pCurTextLine &&
+		iLinesPerPage > 0 &&
 		iLinesPerPage != m_pScrollBar->pageStep() &&
 		rectHeight == rect().height()
 	)

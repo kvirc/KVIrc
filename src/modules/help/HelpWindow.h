@@ -92,7 +92,7 @@ public slots:
 	void startSearch();
 	void searchSelected ( QListWidgetItem * );
 	void refreshIndex();
-	
+
 	void initialSetup();
 	void indexingStart( int iNum );
 	void indexingProgress( int iNum );

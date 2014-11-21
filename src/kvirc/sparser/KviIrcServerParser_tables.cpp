@@ -375,7 +375,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 284 RPL_ENDOFALIST, RPL_FEATURE
 	0,                                               // 285 RPL_FEATURE, RPL_CHANINFO_HANDLE
 	0,                                               // 286 RPL_CHANINFO_USERS, RPL_CHKHEAD
-	0,                                               // 287 RPL_CHANINFO_CHOPS, RPL_CHANUSER 
+	0,                                               // 287 RPL_CHANINFO_CHOPS, RPL_CHANUSER
 	0,                                               // 288 RPL_CHANINFO_VOICES, RPL_PATCHHEAD
 	0,                                               // 289 RPL_CHANINFO_AWAY, RPL_PATCHCON
 	0,                                               // 290 RPL_CHANINFO_OPERS, RPL_HELPHDR, RPL_DATASTR
@@ -500,7 +500,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 409 ERR_NOORIGIN
 	0,                                               // 410 ERR_INVALIDCAPSUBCOMMAND
 	0,                                               // 411 ERR_NORECIPIENT
-	0,                                               // 412 ERR_NOTEXTTOSEND 
+	0,                                               // 412 ERR_NOTEXTTOSEND
 	0,                                               // 413 ERR_NOTOPLEVEL
 	0,                                               // 414 ERR_WILDTOPLEVEL
 	0,                                               // 415 ERR_BADMASK
@@ -806,7 +806,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 715 ERR_KNOCKDISABLED
 	0,                                               // 716 RPL_TARGUMODEG
 	0,                                               // 717 RPL_TARGNOTIFY
-	0,                                               // 718 RPL_UMODEGMSG 
+	0,                                               // 718 RPL_UMODEGMSG
 	0,                                               // 719
 	0,                                               // 720 RPL_OMOTDSTART
 	0,                                               // 721 RPL_OMOTD
@@ -1063,7 +1063,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 972 ERR_CANNOTDOCOMMAND, ERR_CANTUNLOADMODULE
 	0,                                               // 973 ERR_CANNOTCHANGEUMODE, RPL_UNLOADEDMODULE
 	0,                                               // 974 ERR_CANNOTCHANGECHANMODE, ERR_CANTLOADMODULE
-	0,                                               // 975 ERR_CANNOTCHANGESERVERMODE, RPL_LOADEDMODULE 
+	0,                                               // 975 ERR_CANNOTCHANGESERVERMODE, RPL_LOADEDMODULE
 	0,                                               // 976 ERR_CANNOTSENDTONICK
 	0,                                               // 977 ERR_UNKNOWNSERVERMODE
 	0,                                               // 978

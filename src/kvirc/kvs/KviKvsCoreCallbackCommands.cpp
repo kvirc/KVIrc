@@ -191,7 +191,7 @@ namespace KviKvsCoreCallbackCommands
 			Any alias without the "<name>::" prefix is created in the root
 			namespace. Namespaces are useful to avoid collisions in alias names
 			between scripts. Only really common aliases should be created
-			in the root namespace - all of the internal functionality of your 
+			in the root namespace - all of the internal functionality of your
 			scripts should be hidden in your own namespace.
 		@examples:
 			[example]

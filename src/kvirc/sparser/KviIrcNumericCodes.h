@@ -381,7 +381,7 @@
 #define RPL_ENDOFSPAMFILTERLIST  940 // <nick> <channel> :End of channel spamfilter list
 #define RPL_SPAMFILTERLIST  941 // <nick> <channel> <spamfilter>
 
- 	
+
 ///* 303 */	RPL_ISON, ":",
 ///* 304 */	RPL_TEXT, (char *)NULL,
 ///* 305 */	RPL_UNAWAY, ":You are no longer marked as being away",

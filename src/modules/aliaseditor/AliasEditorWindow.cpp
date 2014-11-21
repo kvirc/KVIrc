@@ -333,7 +333,7 @@ void AliasEditorWidget::aliasRefresh(const QString &szName)
 void AliasEditorWidget::itemRenamed(QTreeWidgetItem *it,int col)
 {
 	if(it!=m_pLastEditedItem) return;
-	
+
 	((AliasEditorTreeWidgetItem *)it)->setName(it->text(col));
 	QString szNam = buildFullItemName((AliasEditorTreeWidgetItem *)it);
 	QString szLabelText;
@@ -1183,7 +1183,7 @@ AliasEditorWindow::AliasEditorWindow()
 
 	m_pEditor = new AliasEditorWidget(this);
 	g->addWidget(m_pEditor,0,0,1,4);
-	
+
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));

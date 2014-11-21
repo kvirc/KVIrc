@@ -63,7 +63,7 @@ namespace KviQString
 	* \brief A global empty string (note that this is ALSO NULL under Qt 3.x)
 	*/
 	extern KVILIB_API const QString Empty;
-	
+
 	/**
 	* \brief Returns a readable size in byte's multiples
 	*
@@ -72,7 +72,7 @@ namespace KviQString
 	* \return QString
 	*/
 	extern KVILIB_API QString makeSizeReadable(quint64 size);
-	
+
 	/**
 	* \brief Compares two strings with case sensitive
 	*
@@ -82,7 +82,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCS(const QString & sz1, const QString & sz2);
-	
+
 	/**
 	* \brief Compares two strings with case sensitive
 	*
@@ -92,7 +92,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCS(const QString & sz1, const char * pc2);
-	
+
 	/**
 	* \brief Compares two strings with case insensitive
 	*
@@ -102,7 +102,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCI(const QString & sz1, const QString & sz2);
-	
+
 	/**
 	* \brief Compares two strings with case insensitive
 	*
@@ -112,7 +112,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCI(const QString & sz1, const char * pc2);
-	
+
 	/**
 	* \brief Compares two strings with case insensitive
 	*
@@ -156,7 +156,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCIN(const QString & sz1, const QString & sz2, unsigned int uLen);
-	
+
 	/**
 	* \brief Compares two strings with case insensitive up to N chars
 	*
@@ -167,7 +167,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCIN(const QString & sz1, const char * pc2, unsigned int uLen);
-	
+
 	/**
 	* \brief Compares two strings with case insensitive up to N chars
 	*
@@ -179,7 +179,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool equalCIN(const QString & sz1, const QChar * pC2, unsigned int uLen);
-	
+
 	/**
 	* \brief Compares two strings with case insensitive
 	*
@@ -194,7 +194,7 @@ namespace KviQString
 	*/
 	extern KVILIB_API int cmpCI(const QString & sz1, const QString & sz2, bool bNonAlphaGreater = false);
 	// sz1.compare(sz2,Qt::CaseInsensitive)
-	
+
 	/**
 	* \brief Compares two strings with case insensitive up to N chars
 	*
@@ -208,7 +208,7 @@ namespace KviQString
 	* \return int
 	*/
 	extern KVILIB_API int cmpCIN(const QString & sz1, const QString & sz2, unsigned int uLen);
-	
+
 	/**
 	* \brief Ensures the last char of a string is the given char
 	*
@@ -226,7 +226,7 @@ namespace KviQString
 	* \return bool
 	*/
 	extern KVILIB_API bool matchWildExpressions(const QString & szM1, const QString & szM2);
-	
+
 	/**
 	* \brief Matches two string containging wildcards (* and ?) or regular expressions
 	* \param szExp The regular expression to match
@@ -246,14 +246,14 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void vsprintf(QString & szSrc, const QString & szFmt, kvi_va_list list);
-	
+
 	/**
 	* \brief Trims all the whitespaces at the end of the given string
 	* \param szSrc The source string
 	* \return void
 	*/
 	extern KVILIB_API void stripRightWhiteSpace(QString & szSrc);
-	
+
 	/**
 	* \brief Trims all c chars at the start of the given string
 	* \param szSrc The source string
@@ -261,7 +261,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void stripLeft(QString & szSrc, const QChar & c);
-	
+
 	/**
 	* \brief Trims all c chars at the end of the given string
 	* \param szSrc The source string
@@ -269,7 +269,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void stripRight(QString & szSrc, const QChar & c);
-	
+
 	/**
 	* \brief Appends a formatted string
 	* \param szSrc The source string
@@ -278,7 +278,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void appendFormatted(QString & szSrc, const QString & szFmt, ...);
-	
+
 	/**
 	* \brief Appends the given number to the source string
 	* \param szSrc The source string
@@ -286,7 +286,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void appendNumber(QString & szSrc, double dReal);
-	
+
 	/**
 	* \brief Appends the given number to the source string
 	* \param szSrc The source string
@@ -294,7 +294,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void appendNumber(QString & szSrc, kvi_i64_t iInteger);
-	
+
 	/**
 	* \brief Appends the given number to the source string
 	* \param szSrc The source string
@@ -302,7 +302,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void appendNumber(QString & szSrc, int iInteger);
-	
+
 	/**
 	* \brief Appends the given number to the source string
 	* \param szSrc The source string
@@ -310,7 +310,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void appendNumber(QString & szSrc, unsigned int uInteger);
-	
+
 	/**
 	* \brief Appends the given number to the source string
 	* \param szSrc The source string
@@ -329,7 +329,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutFromFirst(QString & szSrc, const QChar & c, bool bIncluded = true);
-	
+
 	/**
 	* \brief Cuts the string after the first occurrence of the given char
 	*
@@ -340,7 +340,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutFromFirst(QString & szSrc, const QString & szFind, bool bIncluded = true);
-	
+
 	/**
 	* \brief Cuts the string after the last occurrence of the given char
 	*
@@ -351,7 +351,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutFromLast(QString & szSrc, const QChar & c, bool bIncluded = true);
-	
+
 	/**
 	* \brief Cuts the string after the last occurrence of the given char
 	*
@@ -362,7 +362,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutFromLast(QString & szSrc, const QString & szFind, bool bIncluded = true);
-	
+
 	/**
 	* \brief Cuts the string until the first occurrence of the given char is found
 	*
@@ -374,7 +374,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutToFirst(QString & szSrc, const QChar & c, bool bIncluded = true, bool bClearIfNotFound = false);
-	
+
 	/**
 	* \brief Cuts the string until the first occurrence of the given char is found
 	*
@@ -386,7 +386,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutToFirst(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bClearIfNotFound = false);
-	
+
 	/**
 	* \brief Cuts the string until the last occurrence of the given char is found
 	*
@@ -398,7 +398,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void cutToLast(QString & szSrc, const QChar & c, bool bIncluded = true, bool bClearIfNotFound = false);
-	
+
 	/**
 	* \brief Cuts the string until the last occurrence of the given char is found
 	*
@@ -424,7 +424,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API QString leftToFirst(QString & szSrc, const QChar & c, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
-	
+
 	/**
 	* \brief Returns the string up to the first occurrence of the given string
 	*
@@ -438,7 +438,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API QString leftToFirst(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
-	
+
 	/**
 	* \brief Returns the string up to the last occurrence of the given char
 	*
@@ -452,7 +452,7 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API QString leftToLast(QString & szSrc, const QChar & c, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
-	
+
 	/**
 	* \brief Returns the string up to the last occurrence of the given string
 	*
@@ -473,14 +473,14 @@ namespace KviQString
 	* \return QString
 	*/
 	extern KVILIB_API QString upperISO88591(const QString & szSrc);
-	
+
 	/**
 	* \brief Returns an ISO-8859-1 lower case string
 	* \param szSrc The source string
 	* \return QString
 	*/
 	extern KVILIB_API QString lowerISO88591(const QString & szSrc);
-	
+
 	/**
 	* \brief Returns a token from a string
 	* \param szSrc The source string

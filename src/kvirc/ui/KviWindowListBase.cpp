@@ -75,7 +75,7 @@ KviWindowListBase::KviWindowListBase()
 	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
 	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
 	m_pActivityMeterTimer->start(5000);
-	
+
 	applyOptions();
 }
 
@@ -187,11 +187,11 @@ void KviWindowListBase::applyOptions()
 	} else {
 		m_pTitleWidget = new KviWindowListTitleWidget(this);
 	}
-	
+
 	setTitleBarWidget(m_pTitleWidget);
-	
+
 // 	if(features() & QDockWidget::DockWidgetVerticalTitleBar)
-	
+
 }
 
 void KviWindowListTitleWidget::paintEvent(QPaintEvent *)
@@ -225,7 +225,7 @@ QSize KviWindowListTitleWidget::sizeHint() const
 	QStyleOption opt(0);
 	opt.init(m_pParent);
 	opt.state = QStyle::State_None;
-// 	
+//
 	return m_pParent->style()->sizeFromContents(QStyle::CT_Splitter, &opt, QSize(w, h), m_pParent).expandedTo(QApplication::globalStrut());
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,7 +288,7 @@ void KviWindowListButton::mousePressEvent(QMouseEvent *e)
 		} else {
 			if((g_pActiveWindow != m_pWindow)  || (m_pWindow->isMinimized()))
 				g_pMainWindow->setActiveWindow(m_pWindow);
-			else 
+			else
 				m_pWindow->minimize();
 		}
 	} else m_pWindow->contextPopup();
@@ -594,7 +594,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 					m_pButtonList->insert(idx,b);
 					return;
 				}
-				
+
 				if(btn->kviWindow()->type() == b->kviWindow()->type())
 				{
 					// same type!
@@ -615,7 +615,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 			m_pButtonList->append(b);
 			return;
 		}
-		
+
 		if(!(btn->kviWindow()->console()) && b->kviWindow()->console())
 		{
 			// this must be a new console...insert before the contextless windows

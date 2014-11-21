@@ -300,7 +300,7 @@ void KviSoundPlayer::cleanupPhonon()
 		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
 		return true;
 	}
-	
+
 	void KviSoundPlayer::cleanupWinmm()
 	{
 		// FIXME: how to stop playing on windows ?
@@ -319,7 +319,7 @@ void KviSoundPlayer::cleanupPhonon()
 				}
 				return true;
 			}
-			
+
 			void KviSoundPlayer::cleanupOssAudiofile()
 			{
 			}

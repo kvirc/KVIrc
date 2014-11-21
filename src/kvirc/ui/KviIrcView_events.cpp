@@ -260,7 +260,7 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 		triggerMouseRelatedKvsEvents(e);
 		return;
 	}
-	
+
 	// Left button handler
 
 	// We are inside the line marker

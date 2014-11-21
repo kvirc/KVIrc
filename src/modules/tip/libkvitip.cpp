@@ -209,7 +209,7 @@ void TipWindow::prevTip()
 	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips",0);
 	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip",0);
 
-	
+
 	if(uCurTip == 0)uCurTip = uNumTips-1;
 	else uCurTip--;
 

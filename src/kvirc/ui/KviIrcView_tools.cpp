@@ -118,7 +118,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 
 	QLabel * pLabel = new QLabel(__tr2qs("Message types"), m_pOptionsWidget);
 	pOptionsLayout->addWidget(pLabel,0,0,1,2);
-	
+
 	m_pFilterView = new QTreeWidget(m_pOptionsWidget);
 	m_pFilterView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	m_pFilterView->setRootIsDecorated(false);

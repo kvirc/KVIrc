@@ -57,22 +57,22 @@ public:
 	{
 		return m_pServer;
 	}
-	
+
 	KviIrcNetwork * network()
 	{
 		return m_pNetwork;
 	}
-	
+
 	KviProxy * proxy()
 	{
 		return m_pProxy;
 	}
-	
+
 	const QString & bindAddress()
 	{
 		return m_szBindAddress;
 	}
-	
+
 	bool hasBindAddress()
 	{
 		return (!m_szBindAddress.isEmpty());

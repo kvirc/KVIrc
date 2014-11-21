@@ -109,7 +109,7 @@ const char * const sockerrors_tbl[] = {
 		4=Bound[br]
 		5=Closing[br]
 		6=Listening
-		
+
 		!fn: $connect(<host>,<port>)
 		Attempts a connection to <host> on port <port>.[br]
 		<host> can be a numeric internet address (either Ipv4 or Ipv6 (if supported)) or a hostname.[br]
@@ -124,7 +124,7 @@ const char * const sockerrors_tbl[] = {
 		and you will be notified of the attempt result by an asynchronous event call:
 		in case of failure, $connectFailedEvent() will be called, in case of
 		succes, $connectEvent() will be called.
-		
+
 		!fn: $listen([<port>[,<interface>[,<force_ipv6>]]])
 		Attempts to listen on the specified <port> and <interface>.[br]
 		If <port> is not passed it is assumed to be 0, if <interface> is not passed, it is assumed to be
@@ -136,14 +136,14 @@ const char * const sockerrors_tbl[] = {
 		On some systems listening in the IPV6 namespace allows to accept also IPV4 connections (this includes
 		linux but not windows afaik).[br]
 		When an incoming connection will arrive, $incomingConnectionEvent() will be called.
-		
+
 		!fn: $connectedEvent()
 		This function is called when a connection attempt has been successfully completed.
 		The socket is actually connected to [classfnc:socket]$remoteIp[/classfnc]() on
 		[classfnc:socket]$remotePort[/classfnc](). You can start
 		writing data and you may expect [classfnc:socket]$dataAvailableEvent[/classfnc]() to be
 		triggered.
-		
+
 		!fn: $incomingConnectionEvent(<socket:h_object>)
 		This function is called when an incoming connection arrives over a socket in listening state.[br]
 		You must return 1 if you to terminad this incoming connectioncall [classfnc:socket]$accept[/classfnc]() passing a newly created socket object
@@ -165,14 +165,14 @@ const char * const sockerrors_tbl[] = {
 		This function is called when some data is available to be read: the <data_length> parameter specifies
 		the length of the available data in bytes.[br]
 		You can use one of the $read* functions to obtain the data
-		
+
 		!fn: $read(<length>[,<hobject>])
 		Reads at most <length> bytes of data from the socket. If <length> is anything "outside" the
 		available data range (<length> < 0 or <length> > available_data_length), this function
 		returns all the available data.[br]
 		By default this function can deal ascii data only: NULL characters are transformed to
 		ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
-		
+
 		!fn: $write(<data, array,files or hobject>[,length])
 		Writes <data> to the socket.[br]
 		This function can deal with binary data passing  a [class]memorybuffer[/class] object[br]
@@ -182,7 +182,7 @@ const char * const sockerrors_tbl[] = {
 		Using an array you can pass bytes or data string like this: @$write($array($(0xff),$(0xff),$(0xff),$(0xff),"This is an example"));
 		If you're going to [cmd]delete[/cmd] this object just after the $write call, you should
 		call [classfnc:socket]$close[/classfnc]() just before [cmd]delete[/cmd] to ensure the data delivery.
-		
+
 		!fn: $close()
 		Resets this socket state: kills any pending or active connection. After a close() call
 		the socket may be used for a new connection.[br]
@@ -190,22 +190,22 @@ const char * const sockerrors_tbl[] = {
 		You don't need to call $close() if you [cmd]delete[/cmd] the socket: KVIrc will
 		reset the socket state automatically and free the memory. But if you want to ensure data delivery
 		after a $write call sequece and just before a [cmd]delete[/cmd], $close() is the only chance to do it.
-		
+
 		!fn: $remoteIp()
 		Returns the IP address of the remote end of this socket.[br]
 		The return value is meaningful only if the socket is in connected or connecting state.
-		
+
 		!fn: $setProtocol(<protocol>)
 		Let KVIrc use TCP or UDP protocol
-		
+
 		!fn: $remotePort()
 		Returns the port of the remote end of this socket.[br]
 		The return value is meaningful only if the socket is in connected or connecting state.
-		
+
 		!fn: $localIp()
 		Returns the IP address of the local end of this socket.[br]
 		The return value is meaningful only if the socket is in connected, listening or connecting state.
-		
+
 		!fn: $localPort()
 		Returns the port of the local end of this socket.[br]
 		The return value is meaningful only if the socket is in connected, listening or connecting state.

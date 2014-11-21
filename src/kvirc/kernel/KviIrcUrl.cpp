@@ -241,7 +241,7 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 			contextSpec = FirstFreeContext;
 		}
 	}
-	
+
 	if(contextSpec & TryEveryContext)
 	{
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
@@ -253,7 +253,7 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 			if(wnd->type() == KviWindow::Console)
 			{
 				pTmpConsole = (KviConsoleWindow *) wnd;
-				
+
 				if(pTmpConsole->connection())
 				{
 					KviIrcServer* server = pTmpConsole->connection()->target()->server();
@@ -269,14 +269,14 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 					}
 				}
 			}
-				
+
 			++it;
 		}
-		
+
 		if(!pConsole)
 			contextSpec = FirstFreeContext;
 	}
-	
+
 	if(contextSpec & FirstFreeContext)
 	{
 		if(pConsole)

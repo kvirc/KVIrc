@@ -462,7 +462,7 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 		if(!g_pApp->kviClosingDown())
 		{
 			qDebug("Have no active window: trying to pick one");
-		
+
 			// this happens when there are only minimized windows in the Mdi area
 			// just pick another window to be the active one
 			bool bGotIt = false;
@@ -475,7 +475,7 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 					break;
 				}
 			}
-			
+
 			if(!bGotIt)
 			{
 				// :/
@@ -513,7 +513,7 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 	if(g_pWinPropertiesConfig->hasGroup(group))
 	{
 		g_pWinPropertiesConfig->setGroup(group);
-	} else if(wnd->type() == KviWindow::Channel && 
+	} else if(wnd->type() == KviWindow::Channel &&
 		g_pWinPropertiesConfig->hasGroup(group = wnd->windowName())
 	) {
 		// try to load pre-4.2 channel settings
@@ -558,7 +558,7 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 			}
 		} else {
 			bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
-			
+
 			wnd->setGeometry(rect);
 			wnd->triggerCreationEvents();
 
@@ -1076,12 +1076,12 @@ void KviMainWindow::iconSizePopupSelected(QAction *pAction)
 {
 	if(!pAction)
 		return;
-	
+
 	bool bOk=false;
 	uint uSize=pAction->data().toUInt(&bOk);
 	if(!bOk)
 		return;
-	
+
 	setIconSize(uSize);
 	g_pApp->optionResetUpdate(KviOption_resetReloadImages);
 }
@@ -1090,12 +1090,12 @@ void KviMainWindow::buttonStylePopupSelected(QAction *pAction)
 {
 	if(!pAction)
 		return;
-	
+
 	bool bOk=false;
 	uint uStyle=pAction->data().toUInt(&bOk);
 	if(!bOk)
 		return;
-	
+
 	setButtonStyle(uStyle);
 }
 

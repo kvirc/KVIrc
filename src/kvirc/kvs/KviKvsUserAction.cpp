@@ -190,7 +190,7 @@ void KviKvsUserAction::exportToKvs(
 	szBuffer += " (\"";
 	szBuffer += szName;
 	szBuffer += "\",";
-	
+
 	QString szTmp;
 	if(szVisibleName.contains('$'))
 	{

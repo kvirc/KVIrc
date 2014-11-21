@@ -329,13 +329,13 @@ void KviIrcLink::clearOutputQueue(bool bPrivateMessagesOnly)
 {
 	if(!m_pSocket)
 		return; // we have no queue at all
-	
+
 	if(m_pLinkFilter)
 	{
 		m_pLinkFilter->clearOutputQueue(bPrivateMessagesOnly);
 		return;
 	}
-	
+
 	m_pSocket->clearOutputQueue(bPrivateMessagesOnly);
 }
 

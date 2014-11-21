@@ -150,7 +150,7 @@ protected:
 
 	QString askForAliasName(const QString &szAction,const QString &szText,const QString &szInitialText);
 	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
-// 
+//
 	bool itemExists(QTreeWidgetItem *pSearchFor);
 	bool namespaceExists(QString &szFullItemName);
 	bool aliasExists(QString &szFullItemName);

@@ -42,7 +42,7 @@ namespace KviSASL
 	* \param szOut A KviCString that will be filled with the authentication message
 	* \param baNick The username
 	* \param baPass	The password
-	* \return bool 
+	* \return bool
 	*/
 	extern KVILIB_API bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass);
 

@@ -213,8 +213,8 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 
 	if(!iId) //Delete all spaste's from the current window
 	{
-		if((c->window()->type() != KviWindow::Channel) && 
-			(c->window()->type() != KviWindow::Query) && 
+		if((c->window()->type() != KviWindow::Channel) &&
+			(c->window()->type() != KviWindow::Query) &&
 			(c->window()->type() != KviWindow::DccChat) &&
 			(c->window()->type() != KviWindow::DeadChannel) &&
 			(c->window()->type() != KviWindow::DeadQuery)

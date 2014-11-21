@@ -84,7 +84,7 @@ namespace KviHtmlGenerator
 				uIdx++;
 				if(uIdx >= (unsigned int)szTxt.length())
 					break;
-				
+
 				c = szTxt[(int)uIdx].unicode();
 			}
 

@@ -80,7 +80,7 @@ void KviRegisteredChannelDataBase::save(const QString &filename)
 
 			QHash<QString,QString> * pPropertyDict = c->propertyDict();
 			KVI_ASSERT(pPropertyDict);
-			
+
 			for(QHash<QString,QString>::Iterator it2 = pPropertyDict->begin();it2 != pPropertyDict->end();++it2)
 				cfg.writeEntry(it2.key(),it2.value());
 		}
@@ -150,7 +150,7 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 		// merge properties
 		QHash<QString,QString> * pPropertyDict = old->propertyDict();
 		KVI_ASSERT(pPropertyDict);
-		
+
 		for(QHash<QString,QString>::Iterator it = pPropertyDict->begin();it != pPropertyDict->end();++it)
 		{
 			if(!c->property(it.key()).isEmpty())
@@ -182,6 +182,6 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 		}
 		idx++;
 	}
-	
+
 	l->append(c);
 }

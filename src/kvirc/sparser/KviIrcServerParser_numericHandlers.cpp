@@ -226,12 +226,12 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 			 * EXCEPTS -> supports channels mode e (ban exception): we already use CHANMODES to handle that
 			 * INVEX -> supports channels mode I (invite exception): we already use CHANMODES to handle that
 			 * MAXCHANNELS -> Maximum number of channels allowed to join. (deprecated by CHANLIMIT, eg: MAXCHANNELS=10)
-			 * CHANLIMIT -> Maximum number of channels allowed to join by channel prefix (eg: CHANLIMIT=#&!+:10) 
+			 * CHANLIMIT -> Maximum number of channels allowed to join by channel prefix (eg: CHANLIMIT=#&!+:10)
 			 * NICKLEN -> Maximum nickname length
 			 * MAXBANS -> Maximum number of bans per channel (deprecated by MAXLIST, eg: MAXBANS=30)
 			 * MAXLIST -> Maximum number entries in the list per mode (eg: MAXLIST=beI:30)
-			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, eg usage: notice @#channel) 
-			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, eg usage: notice +#channel) 
+			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, eg usage: notice @#channel)
+			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, eg usage: notice +#channel)
 			 * STATUSMSG -> The server supports messaging a particular class of channel users (eg: STATUSMSG=+@)
 			 * CASEMAPPING -> Case mapping used for nick- and channel name comparing (eg: CASEMAPPING=rfc1459)
 			 * ELIST -> search extensions to list modes, like mask search, topic search, creation time search (eg: ELIST=MNUCT)
@@ -240,7 +240,7 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 			 * CHIDLEN -> Channel ID length for !channels (deprecated by IDCHAN, 5 by default, eg: CHIDLEN=5)
 			 * IDCHAN -> The ID length for channels with an ID (eg: IDCHAN=!:5)
 			 * SILENCE -> Max entires for the SILENCE command (eg: SILENCE=15)
-			 * PENALTY -> Server gives extra penalty to some commands instead of the normal 2 seconds per message and 1 second for every 120 bytes in a message. 
+			 * PENALTY -> Server gives extra penalty to some commands instead of the normal 2 seconds per message and 1 second for every 120 bytes in a message.
 			 * FNC -> Forced nick change: the server could change the client nickname
 			 * SAFELIST -> The LIST reaply won't killl the client for excess flood.
 			 * AWAYLEN -> Maximum away message length (eg: AWAYLEN=160)
@@ -251,8 +251,8 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 			 * MAXNICKLEN -> Max length of nick for other users (like NICKLEN, but ensures the server won't overflow it for other users)
 			 * MAXTARGETS -> Maximum targets allowed for PRIVMSG and NOTICE commands (eg: MAXTARGETS=4)
 			 * KNOCK -> KNOCK command supported
-			 * VCHANS -> Virtual channels support 
-			 * WHOX -> The WHO command uses WHOX protocol. 
+			 * VCHANS -> Virtual channels support
+			 * WHOX -> The WHO command uses WHOX protocol.
 			 * CALLERID -> The server supports server side ignores via the +g user mode
 			 * ACCEPT -> The server supports server side ignore (deprecated by CALLERID)
 			 * LANGUAGE -> The server supports the LANGUAGE command (experimental, eg: LANGUAGE=2,en,i-klingon)
@@ -582,7 +582,7 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 	QString szDate;
 	QDateTime date;
 	date.setTime_t(t);
-	
+
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:
@@ -665,7 +665,7 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 	{
 		QDateTime date;
 		date.setTime_t(uTime);
-		
+
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
 			case 0:
@@ -869,7 +869,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 				}
 			}
 		}
-		
+
 		//this has to be done after the avatar part
 		e->setRealName(szReal);
 	}
@@ -963,9 +963,9 @@ void KviIrcServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 {
 	// ops...not logged in yet...
-	
+
 	QString szChoiceDescriptionBuffer;
-	
+
 	QString szNextNick = msg->connection()->pickNextLoginNickName(
 			false, // false = fallback to random choices, then give up with an empty string
 			msg->connection()->decodeText(msg->safeParam(1)),
@@ -997,7 +997,7 @@ void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 		QString szOut = __tr2qs("Trying to use '%1' as nickname").arg(szNextNick);
 		if(_OUTPUT_VERBOSE)
 			szOut += QString::fromLatin1(" (%1)").arg(szChoiceDescriptionBuffer);
-		
+
 		msg->console()->outputNoFmt(KVI_OUT_NICKNAMEPROBLEM,szOut);
 	}
 
@@ -1381,7 +1381,7 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 			QString szTmp;
 			QDateTime date;
 			date.setTime_t((time_t)uTime);
-			
+
 			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 			{
 				case 0:
@@ -1485,7 +1485,7 @@ void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 	QString szUserHost = msg->connection()->decodeText(msg->safeParam(2));
 	QString szIpAddr = msg->connection()->decodeText(msg->safeParam(3));
 	QString szOth = msg->connection()->decodeText(msg->safeTrailing());
-	
+
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
 	if(i)
 	{
@@ -1666,12 +1666,12 @@ void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage *msg)
 {
 	// 328: RPL_CHANURL
 	// :prefix 328 target <channel> :<url>
-	
+
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
-	
+
 	QString szUrl;
-	
+
 	if(chan)
 	{
 		szUrl = chan->decodeText(msg->safeTrailing());
@@ -1702,7 +1702,7 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 		UNRECOGNIZED_MESSAGE(msg,__tr2qs("Can't evaluate creation time"));
 		return;
 	}
-	
+
 	QString szDate;
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
@@ -1718,7 +1718,7 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 			szDate = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
-	
+
 	if(chan)
 	{
 		if(!msg->haltOutput())
@@ -2122,7 +2122,7 @@ void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 
 	//this can be an "awhois -i" reply for a nickname that's not connected
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
-	
+
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
 	if(i)
 	{
@@ -2386,7 +2386,7 @@ void KviIrcServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 {
 	// 903: RPL_SASLSUCCESS
 	// :prefix 903 <nickname> :SASL authentication successful
-	
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());

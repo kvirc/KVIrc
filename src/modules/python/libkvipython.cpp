@@ -36,7 +36,7 @@
 	#include <Python.h>
 
 	static KviModule * g_pPythonCoreModule = 0;
-	
+
 	#define KVS_CHECK_PYTHONCORE(_m,_c) \
 		g_pPythonCoreModule = g_pModuleManager->getModule("pythoncore"); \
 		if(!g_pPythonCoreModule) \

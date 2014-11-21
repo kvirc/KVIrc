@@ -354,7 +354,7 @@ bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) c
 
 	if(!pPtr)
 		return 0;
-		
+
 	while(pPtr->unicode())
 	{
 		if((pPtr->unicode() == '[') || (pPtr->unicode() == ']'))
@@ -371,7 +371,7 @@ bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) c
 
 	return re.exactMatch(szStr);
 }
-	
+
 int KviIrcMask::getIpDomainMaskLen() const
 {
 	int iLen = m_szHost.length();

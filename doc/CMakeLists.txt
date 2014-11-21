@@ -64,7 +64,7 @@ if(PERL_FOUND)
 			COMMENT "Generating user documentation..."
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/help)	
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/help)
 		add_custom_target(
 			docs
 			COMMENT "Generating user documentation..."

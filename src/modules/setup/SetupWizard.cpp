@@ -451,7 +451,7 @@ SetupWizard::SetupWizard()
 	pPixmapLabelHiRes->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	pPixmapLabelHiRes->setMargin(0);
 	pThemeGrid->addWidget(pPixmapLabelHiRes, 1,1);
-	
+
 	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeHiRes, 2,1);
 
@@ -464,18 +464,18 @@ SetupWizard::SetupWizard()
 	}
 
 	QLabel* pPixmapLabelLowRes = new QLabel(m_pThemeButtonGroup);
-	
+
 	pPixmapLabelLowRes->setPixmap(*pLowResPixmap);
 	pPixmapLabelLowRes->setFixedSize(pLowResPixmap->size());
 	pPixmapLabelLowRes->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	pPixmapLabelLowRes->setMargin(0);
 	pThemeGrid->addWidget(pPixmapLabelLowRes, 1,2);
-	
+
 	m_pThemeLoRes = new QRadioButton(__tr2qs("&Minimalist Theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeLoRes, 2,2);
 	m_pThemeNone = new QRadioButton(__tr2qs("&Don't apply any theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeNone, 3,1);
-	
+
 	m_pThemeHiRes->setChecked(true);
 
 	addPage(m_pTheme,__tr2qs("Default Theme"));

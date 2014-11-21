@@ -75,7 +75,7 @@ LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc 
 LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently running. Exit KVIrc and then try again."
 LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
 LangString WinampSectionDescr ${LANG_ENGLISH} "Install Winamp plugin"
-LangString WinVerUnsupported ${LANG_ENGLISH} "KVIrc does not support the currently running Windows Version.$\r$\nWindows XP or higher is required." 
+LangString WinVerUnsupported ${LANG_ENGLISH} "KVIrc does not support the currently running Windows Version.$\r$\nWindows XP or higher is required."
 
 !include ".\translations\*.nsi"
 
@@ -217,8 +217,8 @@ continue:
     ${Else}
         ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
         StrCmp $R0 "" done
-    ${EndIf}    
-    
+    ${EndIf}
+
 
     MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(MsgUninstallOldInstaller)" IDOK uninst
     Abort
@@ -228,7 +228,7 @@ check64:
     ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
     StrCmp $R0 "" done
     MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(MsgUninstallOldInstaller)" IDOK uninst
- 
+
     ;Run the uninstaller
 uninst:
     ClearErrors
@@ -261,7 +261,7 @@ Section !un.$(UnGeneralFiles)
     RMDir "$SMPROGRAMS\KVIrc"
     Delete "$DESKTOP\KVIrc.lnk"
     Delete "$QUICKLAUNCH\KVIrc.lnk"
-  
+
     ; Delete installed trees of files
     RMDir /r "$INSTDIR\config"
     RMDir /r "$INSTDIR\audio"

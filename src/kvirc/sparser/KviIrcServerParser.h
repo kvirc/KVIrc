@@ -232,7 +232,7 @@ private:
 	void parseUserMode(KviIrcMessage *msg,const char * modeflptr);
 	void parseLiteralCap(KviIrcMessage * msg);
 	void parseLiteralAuthenticate(KviIrcMessage * msg);
-	
+
 	void parseCtcpRequest(KviCtcpMessage *msg);
 	void parseCtcpReply(KviCtcpMessage *msg);
 	void echoCtcpRequest(KviCtcpMessage *msg);
@@ -263,7 +263,7 @@ private:
 	void parseNumericSaslSuccess(KviIrcMessage * msg);
 	void parseNumericSaslLogin(KviIrcMessage * msg);
 	void parseNumericSaslFail(KviIrcMessage * msg);
-	
+
 public:
 	static void encodeCtcpParameter(const char * param,KviCString &buffer,bool bSpaceBreaks = true);
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);

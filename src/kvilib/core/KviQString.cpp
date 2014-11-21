@@ -52,7 +52,7 @@ namespace KviQString
 {
 	// The global empty (and null) string
 	const QString Empty;
-	
+
 	static char cHexDigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
 
 	bool equalCSN(const QString & sz1, const QString & sz2, unsigned int uLen)
@@ -565,7 +565,7 @@ namespace KviQString
 			szSrc.remove(szSrc.length() - iRemove,iRemove);
 		}
 	}
-	
+
 	void stripLeft(QString & szSrc, const QChar & c)
 	{
 		int iRemove = 0;
@@ -951,7 +951,7 @@ namespace KviQString
 		{
 			return false;
 		}
-		
+
 		const QChar * pSavePos1 = 0;
 		const QChar * pSavePos2 = pM2;
 		while(pM1->unicode())
@@ -1093,7 +1093,7 @@ namespace KviQString
 		if(iIdx == -1) return;
 		szSrc.truncate(bIncluded ? iIdx : iIdx + 1);
 	}
-	
+
 	void cutFromFirst(QString & szSrc, const QString & szFind, bool bIncluded)
 	{
 		int iIdx = szSrc.indexOf(szFind);
@@ -1108,7 +1108,7 @@ namespace KviQString
 		if(iIdx == -1) return;
 		szSrc.truncate(bIncluded ? iIdx : iIdx + 1);
 	}
-	
+
 	void cutFromLast(QString & szSrc, const QString & szFind, bool bIncluded)
 	{
 		int iIdx = szSrc.lastIndexOf(szFind);
@@ -1126,7 +1126,7 @@ namespace KviQString
 		}
 		szSrc.remove(0,bIncluded ? iIdx + 1 : iIdx);
 	}
-	
+
 	void cutToFirst(QString & szSrc, const QString & szFind, bool bIncluded, bool bClearIfNotFound)
 	{
 		int iIdx = szSrc.indexOf(szFind);
@@ -1148,7 +1148,7 @@ namespace KviQString
 		}
 		szSrc.remove(0,bIncluded ? iIdx + 1 : iIdx);
 	}
-	
+
 	void cutToLast(QString & szSrc, const QString & szFind, bool bIncluded, bool bClearIfNotFound)
 	{
 		int iIdx = szSrc.lastIndexOf(szFind);
@@ -1167,7 +1167,7 @@ namespace KviQString
 			return bReturnFullStringIfNotFound ? szSrc : QString();
 		return szSrc.left(bIncluded ? iIdx + 1 : iIdx);
 	}
-	
+
 	QString leftToFirst(QString & szSrc, const QString & szFind, bool bIncluded, bool bReturnFullStringIfNotFound)
 	{
 		int iIdx = szSrc.indexOf(szFind);
@@ -1183,7 +1183,7 @@ namespace KviQString
 			return bReturnFullStringIfNotFound ? szSrc : QString();
 		return szSrc.left(bIncluded ? iIdx + 1 : iIdx);
 	}
-	
+
 	QString leftToLast(QString & szSrc, const QString & szFind, bool bIncluded, bool bReturnFullStringIfNotFound)
 	{
 		int iIdx = szSrc.lastIndexOf(szFind);

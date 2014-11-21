@@ -260,7 +260,7 @@ const char * const actions_tbl[] = {
 		Sets the link delegation policy: what happens when the users click on a link. Valid values:
 		[br] DontDelegateLinks: No links are delegated. Instead, webView tries to handle them all.
 		[br] DelegateExternalLinks: When activating links that point to documents not stored on the local filesystem or an equivalent then $linkClickedEvent() is executed.
-		[br] DelegateAllLinks: Whenever a link is activated the $linkClickedEvent() is executed.	
+		[br] DelegateAllLinks: Whenever a link is activated the $linkClickedEvent() is executed.
 		!fn: $linkClickedEvent()
 		This function can be called when the user clicks on a link, depending no the current link delegation policy.
 		The argument of the function is the url that has been clicked.[br]

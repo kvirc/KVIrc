@@ -51,7 +51,7 @@ typedef struct _LogFileData
 /**
 * \class LogFile
 * \brief The LogFile class which handle any log file
-* 
+*
 * Log is in the format:
 * $type_$nick.$network_$YYYY.$MM.$DD.log
 * Examples:
@@ -79,7 +79,7 @@ public:
 	*/
 	enum ExportType {
 		PlainText,   /**< export log in plain text file */
-		HTML         /**< export log in a HTML archive */ 
+		HTML         /**< export log in a HTML archive */
 		//XML        /**< export log in a XML file */
 		//DB         /**< export log in a database file */
 	};

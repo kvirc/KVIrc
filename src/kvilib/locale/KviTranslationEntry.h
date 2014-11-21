@@ -30,7 +30,7 @@
 * \file KviTranslationEntry.h
 * \author Szymon Stefanek
 * \brief Holds the translation strings
-* 
+*
 * This file was originally part of KviLocale.h
 */
 

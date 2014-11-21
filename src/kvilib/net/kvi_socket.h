@@ -63,7 +63,7 @@
 	#define KVI_PROTECTION_LEVEL_DEFAULT       PROTECTION_LEVEL_DEFAULT
 	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  PROTECTION_LEVEL_UNRESTRICTED
 	#define KVI_IPPROTO_IPV6                   IPPROTO_IPV6
-	
+
 #else //!(defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
 	#include <sys/time.h>

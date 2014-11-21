@@ -57,14 +57,14 @@ public:
 	* \return KviFile
 	*/
 	KviFile();
-	
+
 	/**
 	* \brief Constructs file object
 	* \param szName The name of the file
 	* \return KviFile
 	*/
 	KviFile(const QString & szName);
-	
+
 	/**
 	* \brief Destroys file object
 	*/
@@ -165,7 +165,7 @@ public:
 	* \return bool
 	*/
 	bool save(KviPointerList<KviCString> * pData);
-	
+
 	/**
 	* \brief Loads a file
 	* \param file The file to load

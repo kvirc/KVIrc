@@ -319,7 +319,7 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 
 #ifdef COMPILE_ON_MAC
 		QString tmpHelpLabel =__tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor");
-		tmpHelpLabel.replace(QString("Ctrl"), QString("⌘")); 
+		tmpHelpLabel.replace(QString("Ctrl"), QString("⌘"));
 		m_pHelpLabel->setText(tmpHelpLabel);
 #else
 		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor"));

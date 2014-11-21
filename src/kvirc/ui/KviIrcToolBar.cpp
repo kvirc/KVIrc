@@ -80,7 +80,7 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * 
 	if(KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth) < 32)
 		KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth) = 32;
 
-	resize(KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth), 
+	resize(KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth),
 	       KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
 }
 

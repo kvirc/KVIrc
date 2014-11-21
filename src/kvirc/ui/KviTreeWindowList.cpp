@@ -253,7 +253,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				//left click activate/deactivate window
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
 					g_pMainWindow->setActiveWindow(wnd);
-				else 
+				else
 					wnd->minimize();
 
 				// let our parent handle clicks on branches, etc

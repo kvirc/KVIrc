@@ -89,6 +89,6 @@ bool KviIdentityProfile::load(KviConfigurationFile * pCfg, const QString & szPre
 
 	szTmp = QString("%1RealName").arg(szPrefix);
 	m_szRealName = pCfg->readEntry(szTmp);
-	
+
 	return true;
 }

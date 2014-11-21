@@ -514,7 +514,7 @@ namespace KviKvsCoreFunctions
 	{
 		QString szQuery;
 		QString szParam1;
-		
+
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("query",KVS_PT_STRING,0,szQuery)
 			KVSCF_PARAMETER("param1",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam1)
@@ -533,7 +533,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_pRetBuffer->setString("");
 			return true;
 		}
-		
+
 		FILE * f = fopen(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data(),"r");
 		if(!f)
 		{
@@ -544,7 +544,7 @@ namespace KviKvsCoreFunctions
 
 		QString szPass = KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8();
 		PEM_read_X509(f, &cert, NULL, szPass.data());
-		
+
 		fclose(f);
 
 		if(!cert)
@@ -556,7 +556,7 @@ namespace KviKvsCoreFunctions
 
 		// KviSSLCertificate takes ownership of the X509 structure, no need to free it
 		KviSSLCertificate * pCert = new KviSSLCertificate(cert);
-		
+
 		if(!pCert)
 		{
 			KVSCF_pContext->warning(__tr2qs_ctx("Error retrieving information from the local certificate","dcc"));
@@ -767,7 +767,7 @@ namespace KviKvsCoreFunctions
 			If no context matches the server and nickname, and invalid
 			[b]IRC context ID[/b] is returned (0).[br]
 			If <server> is an empty string, the first context that matches
-			the specified nickname is returned. If <nickname> is an empty string, 
+			the specified nickname is returned. If <nickname> is an empty string,
 			the first context that uses the specified server is returned.
 			If both parameters are missing this function returns the
 			id of the current IRC context, or '0' if the
@@ -1132,7 +1132,7 @@ namespace KviKvsCoreFunctions
 				// as I don't want to reimplement KTimeZone, but can't
 				// use KTimeZone. I'll need to do some research on this.
 				//case 'Z':   // TZ abbrev.
-				//    szFmtTime += 
+				//    szFmtTime +=
 				default:
 					szFmtTime += szFormat.at(i);
 			}
@@ -1147,7 +1147,7 @@ namespace KviKvsCoreFunctions
 				szFmtTime += QString("%1").arg(iVal, iLength, 10, cDiv);
 			}
 		}
-		
+
 		KVSCF_pRetBuffer->setString(szFmtTime);
 
 		leavenow:
@@ -1520,7 +1520,7 @@ namespace KviKvsCoreFunctions
 		if(!szToolTip.isEmpty())
 			KviQString::appendFormatted(szPart,"[!txt]%Q",&szToolTip);
 		QString szLink = QString("\r!%1\r%2\r").arg(szPart,szLinkText);
-		
+
 		KVSCF_pRetBuffer->setString(szLink);
 		return true;
 	}

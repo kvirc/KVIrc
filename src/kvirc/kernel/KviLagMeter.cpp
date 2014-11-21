@@ -53,14 +53,14 @@ KviLagMeter::KviLagMeter(KviIrcConnection * c)
 	m_tFirstOwnCheck = 0;
 	m_bOnAlarm = false;
 	m_pDeletionSignal = 0;
-	
+
 	// FIXME: We could use the KviIrcConnection::heartbeat() here!
 	if(KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) < 2000)
 		KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) = 2000; // kinda absurd
 
 	if(KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) > 10000)
 		KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) = 10000; // kinda absurd
-	
+
 	startTimer(KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat)); // 5 seconds by default
 }
 
@@ -88,7 +88,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		g_pMainWindow->childConnectionLagChange(m_pConnection);
 
 		KviCString szLag(KviCString::Format,"%u",m_uLag);
-		
+
 		bool bDeletionSignal = false;
 		m_pDeletionSignal = &bDeletionSignal;
 
@@ -98,7 +98,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 				m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
 			if(bDeletionSignal)return; // killed, probably by a quit -f -u
 			m_bOnAlarm = true;
-		} else if(m_bOnAlarm) 
+		} else if(m_bOnAlarm)
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeDown,
 				m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
@@ -223,7 +223,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 	unsigned int uLag = ((tv.tv_sec - c->lSecs) * 1000);
 	if(tv.tv_usec < c->lUSecs)uLag -= ((c->lUSecs - tv.tv_usec) / 1000);
 	else uLag += ((tv.tv_usec - c->lUSecs) / 1000);
-	
+
 	// now check the reliability
 
 	if(m_uLastReliability > c->uReliability)
@@ -243,7 +243,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 	m_uLastReliability = c->uReliability;
 
 	m_pCheckList->removeFirst();
-	
+
 	return true;
 }
 

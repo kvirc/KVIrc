@@ -64,7 +64,7 @@
 	#define KVI_FILTER_INI "*.ini|INI File (*.ini)"
 	#define KVI_FILTER_IMAGE "*.png *.jpg *.jpeg *.bmp *.gif *.xpm|Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
 	//#define KVI_FILTER_UI "*.ui|User Interface File (*.ui)"
-#else 
+#else
 	#define KVI_FILTER_CONFIG "KVIrc Config (*.kvc)"
 	#define KVI_FILTER_SCRIPT "KVIrc Script (*.kvs)"
 	#define KVI_FILTER_THEME "KVIrc Theme (*.kvt)"

@@ -205,7 +205,7 @@ public:
 
 	/**
 	* \brief Returns the global ID of this window
-	* 
+	*
 	* This is unique in the application
 	* \return QString
 	*/
@@ -213,7 +213,7 @@ public:
 
 	/**
 	* \brief Returns the global ID of this window
-	* 
+	*
 	* This is unique in the application
 	* \return QString
 	*/
@@ -234,7 +234,7 @@ public:
 
 	/**
 	* \brief Sets the progress for the WindowList item
-	* 
+	*
 	* If "progress" makes sense in your window, well, use this
 	* \param iProgress The progress to set
 	* \return void
@@ -258,7 +258,7 @@ public:
 
 	/**
 	* \brief Returns the KviIrcView of this window
-	* 
+	*
 	* May be NULL if the window has no KviIrcView (and thus supports no direct output)
 	* \return KviIrcView *
 	*/
@@ -266,7 +266,7 @@ public:
 
 	/**
 	* \brief Returns the mdiParent widget
-	* 
+	*
 	* May be nulll if the window is undocked
 	* \return KviMdiChild *
 	*/
@@ -274,7 +274,7 @@ public:
 
 	/**
 	* \brief Returns the console that this window belongs to
-	* 
+	*
 	* May be null for windows that aren't bound to irc contexts
 	* \return KviConsoleWindow *
 	*/
@@ -291,7 +291,7 @@ public:
 
 	/**
 	* \brief Returns the splitter of this window
-	* 
+	*
 	* It *shouldn't* be null... but... well... who knows ? :D ...better check it
 	* \return KviTalSplitter *
 	*/
@@ -299,7 +299,7 @@ public:
 
 	/**
 	* \brief Returns the windowList item
-	* 
+	*
 	* The window has ALWAYS a WindowList item
 	* \return KviWindowListItem *
 	*/
@@ -384,18 +384,18 @@ public:
 	void updateBackgrounds(QObject * pObj = 0);
 
 	/**
-	* \brief Notify the window manager that this window demands attention 
-	* 
+	* \brief Notify the window manager that this window demands attention
+	*
 	* Depending on the os/window manager, this method uses different approaches to
 	* trigger a notification that tipically makes the application entry flash
-	* on the application bar. 
+	* on the application bar.
 	* \return void
 	*/
 	void demandAttention();
 
 	/**
 	* \brief Returns whether this window is the active one
-	* 
+	*
 	* This method is useful because it takes in consideration that this window
 	* can be either docked or undocked, and takes a parameter that defines the strictness
 	* of the checks used.

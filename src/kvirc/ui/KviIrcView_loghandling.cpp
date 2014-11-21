@@ -64,7 +64,7 @@ void KviIrcView::stopLogging()
 				szDate = date.toString(Qt::SystemLocaleShortDate);
 				break;
 		}
-		
+
 		QString szLogEnd = QString(__tr2qs("### Log session terminated at %1 ###")).arg(szDate);
 		add2Log(szLogEnd);
 		m_pLogFile->close();
@@ -234,7 +234,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 			szDate = date.toString(Qt::SystemLocaleShortDate);
 			break;
 	}
-	
+
 	QString szLogStart = QString(__tr2qs("### Log session started at %1 ###")).arg(szDate);
 	add2Log(szLogStart);
 	if(bPrependCurBuffer)
@@ -264,7 +264,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
 			qDebug("WARNING : Can not write to the log file.");
 	}
-	
+
 	if(bPrependDate)
 	{
 		QString szDate;
@@ -287,7 +287,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
 			qDebug("WARNING : Can not write to the log file.");
 	}
-	
+
 	tmp = szBuffer.toUtf8();
 	tmp.append('\n');
 

@@ -286,7 +286,7 @@ namespace KviKvsCoreSimpleCommands
 			d->m_pReconnectInfo = new KviIrcServerReconnectInfo();
 			d->m_pReconnectInfo->m_szNick = szNick;
 			d->m_pReconnectInfo->m_szPass = szPassword;
-			
+
 			console->context()->setAsynchronousConnectionData(d);
 			console->context()->connectToCurrentServer();
 
@@ -308,7 +308,7 @@ namespace KviKvsCoreSimpleCommands
 			d->szBindAddress = szBindAddress;
 			d->szPass = szPassword;
 			d->szNick = szNick;
-			
+
 			d->m_pReconnectInfo = new KviIrcServerReconnectInfo();
 			d->m_pReconnectInfo->m_szNick = szNick;
 			d->m_pReconnectInfo->m_szPass = szPassword;
@@ -864,7 +864,7 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','b');
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -1032,7 +1032,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QByteArray szC = KVSCSC_pConnection->encodeText(szChannel);
 		QByteArray szO = KVSCSC_pConnection->encodeText(szOther);
-		
+
 		if(!KVSCSC_pConnection->sendFmtData("WHO %s %s",szC.data(),szO.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
 

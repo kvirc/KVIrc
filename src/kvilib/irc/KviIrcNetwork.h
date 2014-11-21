@@ -186,7 +186,7 @@ public:
 	* \return KviNickServRuleSet *
 	*/
 	inline KviNickServRuleSet * nickServRuleSet(){ return m_pNickServRuleSet; };
-	
+
 	/**
 	* \brief Sets the rules for NickServ
 	* \param pSet The rule set where to add rules
@@ -282,7 +282,7 @@ public:
 	* \return void
 	*/
 	inline void setPassword(const QString & szPass){ m_szPass = szPass; };
-	
+
 	/**
 	* \brief Sets the list of channels to mark for autojoin
 	* \param pNewChannelList The channel list

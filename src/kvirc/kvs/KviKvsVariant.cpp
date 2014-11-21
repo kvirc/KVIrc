@@ -503,7 +503,7 @@ bool KviKvsVariant::asBoolean() const
 		{
 			if(m_pData->m_u.pString->isEmpty())
 				return false;
-			
+
 			// check integer or real values
 			bool bOk;
 			kvs_int_t iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString),&bOk);
@@ -984,7 +984,7 @@ void KviKvsVariant::getTypeName(QString & szBuffer) const
 			szBuffer = "array";
 		break;
 		case KviKvsVariantData::Real:
-			szBuffer = "real"; 
+			szBuffer = "real";
 		break;
 		case KviKvsVariantData::Integer:
 			szBuffer = "integer";

@@ -74,28 +74,28 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	// However, in many cases this isn't respected. Since the browsers will automatically encode the invalid characters
 	// then the users will tend to write the links without the special encoding. ed2k links also use the | character
 	// and it's common for the file names to appear partially unencoded.
-	
-	// There is also a very common case of urls being enclosed inside parentheses: (http://url.here). 
-	// In this case the rightmost ')' is shouldn't be included in the url. On the other hand there are many links that 
+
+	// There is also a very common case of urls being enclosed inside parentheses: (http://url.here).
+	// In this case the rightmost ')' is shouldn't be included in the url. On the other hand there are many links that
 	// actually contain the ')' character and have it exactly at the end. Wikipedia, for instance, has a lot of such links.
-	
+
 	// So in the end, we just can't have an algorithm that pleases everybody. If we follow exactly the RFC1738
 	// then some links that would actually work inside a browser will not be recognized as links and some other links that
 	// a human would recognize being inside parentheses will contain too many chars.
-	
+
 	// The following algorithm, then, is a compromise that works in most cases.
-	
+
 	int iSquareParenthesisLevel = 0;
 	int iRoundParenthesisLevel = 0;
-	
+
 	for(;;)
 	{
 		if(*p <= 32)
 			return p; // no spaces and control characters below 32
-	
+
 		if((*p == '{') || (*p == '}') || (*p == '<') || (*p == '>') || (*p == '"') || (*p == '\''))
 			return p; // never valid inside an url
-	
+
 		if(*p == '[')
 		{
 			iSquareParenthesisLevel++;
@@ -132,7 +132,7 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 
 		p++;
 	}
-	
+
 	return p;
 }
 
@@ -738,7 +738,7 @@ check_http_url:
 		 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
 		 * "http://" tag, it takes us more cpu time)
 		 */
-	
+
 		//
 		if((*p == 't') || (*p == 'T'))
 		{
@@ -907,7 +907,7 @@ check_irc_url:
 				partLen = 8;
 				goto got_url;
 			}
-			
+
 			p++;
 		}
 	}
@@ -1219,7 +1219,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 				iFlags &= ~SetLineMark;
 			}
 		}
-		
+
 		if(iFlags & TriggersNotification)
 		{
 			if(!m_bHaveUnreadedHighlightedMessages && iMsgType == KVI_OUT_HIGHLIGHT)
@@ -1235,7 +1235,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 				iMsgType == KVI_OUT_DCCCHATMSG ||
 				iMsgType == KVI_OUT_DCCCHATMSGCRYPTED ||
 				iMsgType == KVI_OUT_HIGHLIGHT
-			)) 
+			))
 				m_bHaveUnreadedMessages = true;
 		}
 	}

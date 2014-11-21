@@ -656,7 +656,7 @@ void DccSendThread::run()
 	quint64 uTotLastAck       = 0;
 	bool bAckHack             = false;
 	int iAckHackRounds        = 0;
-	
+
 	if(m_pOpt->iPacketSize < 32)m_pOpt->iPacketSize = 32;
 	char * buffer = (char *)KviMemory::allocate(m_pOpt->iPacketSize * sizeof(char));
 
@@ -761,7 +761,7 @@ void DccSendThread::run()
 							{
 								uTotLastAck = (iAckHackRounds*4u*1024u*1024u*1024u) + iNewAck;
 							} else {
-								
+
 								uTotLastAck = iNewAck;
 							}
 							iBytesInAckBuffer = 0;
@@ -773,7 +773,7 @@ void DccSendThread::run()
 							// ssl error....?
 							switch(m_pSSL->getProtocolError(readLen))
 							{
-								
+
 								case KviSSL::ZeroReturn:
 									//if (!handleInvalidSocketRead(readLen)
 									// break;
@@ -866,7 +866,7 @@ void DccSendThread::run()
 										// ssl error....?
 										switch(m_pSSL->getProtocolError(readLen))
 										{
-											
+
 											case KviSSL::ZeroReturn:
 												readLen = 0;
 											break;
@@ -907,7 +907,7 @@ void DccSendThread::run()
 									if (!handleInvalidSocketRead(readLen))
 										break;
 #endif
-									
+
 								} else {
 									KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
 									e->setData(new KviCString(__tr2qs_ctx("WARNING: Received data in a DCC TSEND, there should be no acknowledges","dcc")));
@@ -2207,7 +2207,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 		// port doesn't match
 		if(!bFileNameMatches)
 			return false; // neither filename nor port match
-		
+
 		if(!KVI_OPTION_BOOL(KviOption_boolAcceptMismatchedPortDccResumeRequests))
 			return false;
 
@@ -2218,7 +2218,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 	}
 
 	// port matches
-	
+
 	if(!bFileNameMatches)
 	{
 		// bad file name
@@ -2226,7 +2226,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 			return false; // neither filename nor port match
 
 		// port matches (this is very likely to be the right transfer)
-		
+
 		if(!KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
 		{
 			if(_OUTPUT_VERBOSE)

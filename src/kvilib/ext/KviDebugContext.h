@@ -59,7 +59,7 @@ private:
 	KviCString m_szContext;
 public:
 	/**
-	* \brief 
+	* \brief
 	* \param pcFmt The format list argument
 	* \param ... The succeding arguments
 	* \return void

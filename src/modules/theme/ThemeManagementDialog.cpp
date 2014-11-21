@@ -80,7 +80,7 @@ ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo *
 : KviTalListWidgetItem(pBox)
 {
 	m_pThemeInfo = pInfo;
-	
+
 	QString szText;
 	szText = "<nobr><b>";
 	szText += pInfo->name();
@@ -334,7 +334,7 @@ void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 		if(!pInfo)
 			return;
 		QString szDir = pInfo->dirName();
-		
+
 		if(!pInfo->isBuiltin())
 			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
 
@@ -394,7 +394,7 @@ void ThemeManagementDialog::deleteTheme()
 			&(pInfo->name()), &(pInfo->version()))
 		)
 			goto jump_out;
-			
+
 		QString szThemePath;
 		((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->getCompleteDirPath(szThemePath);
 		KviFileUtils::deleteDir(szThemePath);

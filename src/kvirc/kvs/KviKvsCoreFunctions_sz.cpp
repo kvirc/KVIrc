@@ -1075,7 +1075,7 @@ namespace KviKvsCoreFunctions
 	static QString full_version_helper()
 	{
 		QString szVersion;
-		
+
 		szVersion = "KVIrc";
 		szVersion += " " KVI_RELEASE_NAME " " KVI_VERSION;
 		szVersion += ", revision: ";
@@ -1084,7 +1084,7 @@ namespace KviKvsCoreFunctions
 		szVersion += KviBuildInfo::buildSourcesDate();
 		szVersion += ", built on: ";
 		szVersion += KviBuildInfo::buildDate();
-		
+
 		return szVersion;
 	}
 

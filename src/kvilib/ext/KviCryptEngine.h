@@ -64,13 +64,13 @@ class KviCString;
 			WantEncryptKey = 4,
 			WantDecryptKey = 8
 		};
-		
+
 		enum EncryptResult {
 			Encrypted,
 			Encoded,
 			EncryptError
 		};
-		
+
 		enum DecryptResult {
 			DecryptOkWasEncrypted,
 			DecryptOkWasEncoded,

@@ -456,7 +456,7 @@ void KviIrcContext::connectToCurrentServer()
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This is the first connection in this IRC context: using the global server setting"));
 			}
 		}
-		
+
 		if(!m_pAsynchronousConnectionData->szServer.isEmpty())
 		{
 			// !m_pAsynchronousConnectionData->szServer.isEmpty()

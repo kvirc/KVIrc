@@ -95,7 +95,7 @@ namespace UglyBase64
 			*p++ = fake_base64[*dd1 & 0x3f];
 		}
 	}
-	
+
 	void decode(KviCString & szText, unsigned char ** buf, int *len)
 	{
 		// make sure its length is multiple of 12 (eventually pad with zeroes)

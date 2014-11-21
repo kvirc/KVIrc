@@ -39,7 +39,7 @@
 namespace KviFileUtils
 {
 	static char cHexChars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-	
+
 	/*
 	WORKING CODE BUT UNUSED FOR NOW
 	bool readLine(QFile * f,QString &szBuffer,bool bClearBuffer)
@@ -260,14 +260,14 @@ namespace KviFileUtils
 			// just to be sure check that we're not deleting ..
 			if(KviQString::equalCS(inf.fileName(),"..") || KviQString::equalCS(inf.fileName(),"."))
 				continue;
-		
+
 			if(inf.isDir())
 			{
 				if(!deleteDir(inf.absoluteFilePath()))
 					return false;
 				continue;
 			}
-			
+
 			if(!KviFileUtils::removeFile(inf.absoluteFilePath()))
 			{
 				qDebug("Failed to remove file %s",inf.absoluteFilePath().toUtf8().data());

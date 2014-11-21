@@ -30,7 +30,7 @@
 * \file KviTranslator.h
 * \author Szymon Stefanek
 * \brief KVIrc translator class
-* 
+*
 * This file was originally part of KviLocale.h
 */
 

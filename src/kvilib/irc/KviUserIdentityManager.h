@@ -104,7 +104,7 @@ public:
 	* \return void
 	*/
 	void setDefaultIdentity(const QString & szIdentityId){ m_szDefaultIdentity = szIdentityId; };
-	
+
 	/**
 	* \brief Creates a new working copy
 	* \return KviUserIdentityManager *

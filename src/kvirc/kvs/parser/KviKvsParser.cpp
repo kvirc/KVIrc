@@ -771,7 +771,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			kb spammer You're not welcome here!
 		[/example]
 		This will first execute "ban spammer" and then "kick spammer You're not welcome here".
-		Our kb is a really simple example... it doesn't check for the validity of the parameters - 
+		Our kb is a really simple example... it doesn't check for the validity of the parameters -
 		the server will warn us if the parameters passed to kb were empty.
 		[/p]
 		[p]
@@ -792,9 +792,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				[cmd]kick[/cmd] $0 %reason
 			}
 		[/example]
-		The example above will first check the validity of the <nickname> passed to kb - 
+		The example above will first check the validity of the <nickname> passed to kb -
 		if no nickname was passed, it will warn the user and stop.
-		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason" - 
+		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason" -
 		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
 		and if the variable is empty, a default kick reason is assigned.
 		Finally the "kick <nickname> <reason>" will be executed.
@@ -803,11 +803,11 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 		[p]
 		Aliases can be used as a means for structured programming.
-		In large scripts you will SURELY have "common tasks" to perform (like having 
+		In large scripts you will SURELY have "common tasks" to perform (like having
 		specially-colored output or calculating a value from a set of other values)...
 		Aliases are the way of writing the common tasks - they are equivalent to the "procedures"
 		or "functions" in many high-level programming languages.
-		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above - 
+		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above -
 		it might be commonly called from more complex scripts or other aliases in the case that a
 		kick & ban action is needed.
 		[/p]
@@ -838,7 +838,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The above is a perfectly valid call.... however there will be no visible results
 		(because a command call implies ignoring the return value.
-		In fact there is no difference at all between function-aliases and normal-aliases - 
+		In fact there is no difference at all between function-aliases and normal-aliases -
 		the caller makes the difference. By calling an alias as a command, the return value
 		just disappears into hyperspace, however if you call an alias as a function, the return value
 		is propagated (and in fact "used").
@@ -1314,26 +1314,26 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		be expressed in the classic format [major].[minor].[pathlevel] or something
 		really similar (in fact KVIrc just expects the version to be a string composed
 		of numbers separated by dots). The version is compared when an addon is
-		installed and KVIrc complains if the user tries to downgrade an addon (that is 
+		installed and KVIrc complains if the user tries to downgrade an addon (that is
 		to install a less recent version over a more recent one). The third parameter
 		is the visible name of your addon: it will be displayed to the user in the
 		addon management dialog. It can contain the [fnc]$tr[/fnc] function so you
 		can have it translated to several languages. The fourth parameter
-		is a short description of the feature that the addon implements; it can 
+		is a short description of the feature that the addon implements; it can
 		contain the $tr() function too. The fifth parameter is the minimal KVIrc
 		version required to run the addon. The sixth parameter is the icon to show in
-		the manager: it has to be 32x32 pixel big. There are also some switches that 
+		the manager: it has to be 32x32 pixel big. There are also some switches that
 		can be used to fiddle a little bit more :)
 		[/p]
 		[p]
 		The callback instruction that follows the registration command is the
 		uninstallation code. KVIrc will invoke it when the user will ask for your
 		addon to be uninstalled. Don't assume that your addon will be never
-		uninstalled: sooner or later it will be. For example, when upgrading an addon 
+		uninstalled: sooner or later it will be. For example, when upgrading an addon
 		KVIrc will first uninstall the existing version and after that install the new
 		one. The uninstallation process is a very important requisite for any program
 		(in any programming language). In the example above there is nothing to
-		uninstall (yet) so the callback code is empty, but if you continue reading we 
+		uninstall (yet) so the callback code is empty, but if you continue reading we
 		will soon fill it.
 		To uninstall all files which are not automatically spotted by the installation
 		process, you need to write an alias which handles them.
@@ -1410,13 +1410,13 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[comment]# Register classes[/comment]
 			MyAddon::classes::register
-			
+
 			[comment]# Initialize events[/comment]
 			MyAddon::events::init
-			
+
 			[comment]# Load configuration[/comment]
 			MyAddon::config::load
-			
+
 			[comment]# Setup popups[/comment]
 			defpopup("MyAddon")
 			{
@@ -1425,7 +1425,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 					...
 				}
 			}
-			
+
 			[comment]# Set options[/comment]
 			option boolAutoAcceptDccSend 1
 			option boolShowMinimizedDebugWindow 1
@@ -1439,10 +1439,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[comment]# A class which handles a database[/comment]
 			MyAddon_classes_database.kvs
-			
+
 			[comment]# A class which handles the options of our addon in a GUI[/comment]
 			MyAddon_classes_gui_options.kvs
-			
+
 			[comment]# A script containing some logging functions[/comment]
 			MyAddon_functions_logging.kvs
 		[/example]
@@ -1458,7 +1458,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		extension.
 		[/p]
 		[p]
-		The "[b]pics[/b]" and "[b]sound[/b]" (if relevant) directories should contain 
+		The "[b]pics[/b]" and "[b]sound[/b]" (if relevant) directories should contain
 		your multimedia files. I's a good idea to have your pics file in PNG format
 		and sound files in WAV format.
 		[/p]
@@ -1486,7 +1486,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 					MyAddon::classes::gui::options, \
 					...
 					)
-				
+
 				[comment]# Scan the array and register the classes[/comment]
 				for(%i=0; %i < [fnc]$length[/fnc](%classes[]); %i++)
 				{
@@ -1497,7 +1497,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 					[cmd]eval[/cmd] %classes[%i]
 				}
 			}
-			
+
 			[comment]# Initialize events[/comment]
 			alias(MyAddon::events::init)
 			{
@@ -1514,7 +1514,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				...
 				}
 			}
-			
+
 			[comment]# Load configuration[/comment]
 			alias(MyAddon::config::load)
 			{
@@ -1523,15 +1523,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				{
 					MyAddon::classes::register
 				}
-				
+
 				[comment]# Sets some variables[/comment]
 				%MyAddonConfig = [fnc]$new[/fnc](MyAddon::classes::ConfHandler)
 				%MyAddonConfigPath = [fnc]$file.localdir[/fnc](config/scripts/MyAddon)
-				
+
 				[comment]# Open the configuration file and sets the section "general"[/comment]
 				%c = [fnc]$config.open[/fnc](%MyAddonConfigPath/MyAddon.kvc,"r")
 				[cmd]config.setsection[/cmd] %c general
-				
+
 				[comment]# Store the value of the key "Key" in the global variable %Key[/comment]
 				%Key = [fnc]$config.read[/fnc](%c,"Key",2)
 				...
@@ -2513,7 +2513,7 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 		if(!r)return 0;
 	} else {
 		// this is @
-		
+
 		static QString szStrayAtRoutineName("@");
 		static QString szMightBeStrayAtOrThisRoutineName("@?");
 

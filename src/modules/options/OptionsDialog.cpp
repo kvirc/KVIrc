@@ -393,7 +393,7 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem,const QS
 		for(int j=0;j<lKeywords.count() && !bFoundSomethingHere;j++)
 			if(szInstanceKeywords.at(i).contains(lKeywords.at(j),Qt::CaseInsensitive))
 				bFoundSomethingHere = true;
-	
+
 	if(bFoundSomethingHere)
 	{
 		pItem->setForeground(0, Qt::yellow);

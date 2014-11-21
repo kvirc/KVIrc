@@ -46,7 +46,7 @@
 
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	
+
 	#include "KviMemory.h"
 	#include "KviPointerList.h"
 	#include "KviCryptEngineDescription.h"
@@ -102,7 +102,7 @@
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 223 :
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 231 :
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 239 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 247 : 
+		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 247 :
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0
 	};
 
@@ -138,11 +138,11 @@
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 223 :
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 231 :
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 239 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 247 : 
+		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 247 :
 		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0
 	};
-	
-	
+
+
 	KviCryptEngine::EncryptResult KviLamerizerEngine::encrypt(const char * plainText,KviCString &outBuffer)
 	{
 		outBuffer = plainText;
@@ -167,7 +167,7 @@
 				aux++;
 			}
 		}
-		
+
 		if(!m_bLight)
 		{
 			outBuffer.replaceAll("F","Ph");

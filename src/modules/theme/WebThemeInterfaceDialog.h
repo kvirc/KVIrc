@@ -48,9 +48,9 @@ protected:
 	virtual bool installPackage(const QString &szPath,QString &szError);
 
 };
-	
+
 #endif //COMPILE_WEBKIT_SUPPORT
-	
+
 
 #endif //_WEBTHEMEINTERFACEDIALOG_H_
 

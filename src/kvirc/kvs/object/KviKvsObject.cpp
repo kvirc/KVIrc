@@ -582,7 +582,7 @@
 		Starts a builtin timer for this object and returns its timer id
 		as a string or '-1' if <timeout> was invalid.
 		The [classfnc]$timerEvent[/classfnc]() handler function
-		will be called every <timeout> milliseconds until the timer is stopped by $killTimer(). 
+		will be called every <timeout> milliseconds until the timer is stopped by $killTimer().
 		!fn: $killTimer(<timer id>)
 		Stops the timer specified by <timer id>.
 		!fn: $className()
@@ -607,7 +607,7 @@
 		triggered directly or from a signal emission.
 		!fn: $signalName()
 		Returns the name of the last signal that has triggered one of this object's slots.
-		When called in a slot handler, the triggering signal name is returned. 
+		When called in a slot handler, the triggering signal name is returned.
 		!fn: $property(<Qt property name>[,bNowarning:boolean])
 		This is for really advanced scripting.[br]
 		All KVIrc widgets are based on the Qt library ones.[br]

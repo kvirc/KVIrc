@@ -32,7 +32,7 @@
 #include "KviControlCodes.h"
 #include "UglyBase64.h"
 #include "InitVectorEngine.h"
-	
+
 //#warning "Other engines: mircStrip koi2win colorizer lamerizer etc.."
 
 /*
@@ -120,7 +120,7 @@
 
 		KviCString szTmpEncryptKey = KviCString(encKey,encKeyLen);
 		KviCString szTmpDecryptKey = KviCString(decKey,decKeyLen);
-		
+
 		m_bEncryptMode = CBC; // default mode
 		m_bDecryptMode = CBC; // default mode
 
@@ -438,7 +438,7 @@
 		}
 		m_szEncryptKey = KviCString(encKey,encKeyLen);
 		m_szDecryptKey = KviCString(decKey,decKeyLen);
-		
+
 		m_bEncryptCBC = true;
 		m_bDecryptCBC = true;
 

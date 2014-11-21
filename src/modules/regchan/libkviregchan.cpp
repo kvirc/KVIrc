@@ -221,7 +221,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 						.arg(ch->name())
 						.arg(ch->netMask())
 				);
-			
+
 			for(QHash<QString,QString>::Iterator it2 = ch->propertyDict()->begin();it2 != ch->propertyDict()->end();++it2)
 			{
 				c->window()->outputNoFmt(

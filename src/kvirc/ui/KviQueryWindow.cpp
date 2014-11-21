@@ -446,12 +446,12 @@ void KviQueryWindow::setAliveQuery()
 		connection()->registerQuery(this);
 
 	QString szNick = target();
-	
+
 	if(!szNick.isEmpty())
 	{
 		QString szUser;
 		QString szHost;
-	
+
 		if(pUserDataBase)
 		{
 			KviIrcUserEntry * pEntry = pUserDataBase->find(szNick);
@@ -461,7 +461,7 @@ void KviQueryWindow::setAliveQuery()
 				szHost = pEntry->host();
 			}
 		}
-	
+
 		setTarget(szNick,szUser,szHost);
 	}
 

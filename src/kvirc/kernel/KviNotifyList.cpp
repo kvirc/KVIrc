@@ -188,7 +188,7 @@ void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & 
 		}
 		++it;
 	}
-	
+
 	QString szFmt = __tr2qs("%1 is on IRC");
 
 	if(szMsg.isEmpty())

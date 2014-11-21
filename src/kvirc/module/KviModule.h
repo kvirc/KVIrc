@@ -44,7 +44,7 @@ template<typename Key,typename T> class KviPointerHashTable;
 		#define KVIMODULEEXPORT extern "C" __declspec(dllexport) __attribute__((visibility("default")))
 	#else
 		#define KVIMODULEEXPORT extern "C" __declspec(dllexport)
-	#endif	
+	#endif
 	#define KVIMODULEEXPORTDATA KVIMODULEEXPORT
 	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
 #else

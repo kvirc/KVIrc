@@ -81,7 +81,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
     m_pTileMethodPopup = new QMenu(this);
     connect(m_pTileMethodPopup,SIGNAL(triggered(QAction *)),this,SLOT(tileMethodMenuActivated(QAction *)));
-	
+
 	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
 
@@ -159,7 +159,7 @@ void KviMdiManager::destroyChild(KviMdiChild *lpC)
 {
 	removeSubWindow(lpC);
 	delete lpC;
-	
+
 	if(!m_bInSDIMode && KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 		tile();
 }
@@ -172,7 +172,7 @@ void KviMdiManager::setIsInSDIMode(bool bMode)
 	if(!m_bInSDIMode)
 	{
 		ensureNoMaximized();
-		
+
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
 	}
@@ -400,7 +400,7 @@ void KviMdiManager::cascadeWindows()
 void KviMdiManager::cascadeMaximized()
 {
 	cascadeSubWindows();
-	
+
 	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> it(tmp);
 	KviMdiChild * lpC;
@@ -410,7 +410,7 @@ void KviMdiManager::cascadeMaximized()
 		lpC = (KviMdiChild *) it.next();
 		if(lpC->windowState() & Qt::WindowMinimized)
 			continue;
-		
+
 		QPoint pnt(lpC->pos());
 		QSize curSize(viewport()->width() - pnt.x(),viewport()->height() - pnt.y());
 		if((lpC->minimumSize().width() > curSize.width()) ||
@@ -491,7 +491,7 @@ void KviMdiManager::restoreAll()
 
 		lpC->restore();
 	}
-	
+
 	if(!m_bInSDIMode && KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 		tile();
 }
@@ -655,7 +655,7 @@ void KviMdiManager::processWindowStateChanged(Qt::WindowStates oldState, Qt::Win
 		//minimized or unminimized
 		pMdiChild->updateCaption();
 		if(newState.testFlag(Qt::WindowMinimized) &&
-			!m_bIgnoreSDIModeChange	
+			!m_bIgnoreSDIModeChange
 		)
 		{
 			//a window have just been minimized, but we want another window to get activation

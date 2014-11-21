@@ -167,7 +167,7 @@ OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 	addBoolSelector(pGroup,__tr2qs_ctx("Nick links","options"),KviOption_boolEnableNickLinkToolTip);
 	addBoolSelector(pGroup,__tr2qs_ctx("Channel links","options"),KviOption_boolEnableChannelLinkToolTip);
 	addBoolSelector(pGroup,__tr2qs_ctx("Escape sequences","options"),KviOption_boolEnableEscapeLinkToolTip);
-	
+
 	addRowSpacer(0,14,0,14);
 }
 

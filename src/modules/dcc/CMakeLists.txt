@@ -21,9 +21,9 @@ set(kvidcc_SRCS
 )
 
 if(NOT COMPILE_DISABLE_DCC_VIDEO)
-        list(APPEND kvidcc_SRCS 
-                DccVideoWindow.cpp 
-        ) 
+        list(APPEND kvidcc_SRCS
+                DccVideoWindow.cpp
+        )
 endif()
 
 set(files

@@ -426,7 +426,7 @@ end_of_the_param:
 		[b]<target> <+ <right_operand>[/b][br]
 		[br]
 		If <right_operand> is a scalar then it is appended to <target>,
-		otherwise the constituent items of the array or values of the hash are appended. 
+		otherwise the constituent items of the array or values of the hash are appended.
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
@@ -471,7 +471,7 @@ end_of_the_param:
 		<search pattern> may contain parentheses to capture parts of the matched text.
 		<replacement string> can contain the escape sequences \\N where N is a number between 1 and 9
 		to be replaced by the captured text.[br]
-		Please note that you need to double the backslashes in the search pattern 
+		Please note that you need to double the backslashes in the search pattern
 		since the KVS parser will first unquote the string and then pass it to the regexp engine.
 		That's also why we use \\N and not \N.[br]
 		\\0 is a special escape that will be replaced by the entire match (is always valid!).[br]

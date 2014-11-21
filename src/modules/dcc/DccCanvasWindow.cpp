@@ -160,7 +160,7 @@
 	{
 		KviCString buf(KviCString::Format,"%s\r\n",text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-		
+
 		if(bUserFeedback)
 			m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 				m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),

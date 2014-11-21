@@ -221,7 +221,7 @@ void NotifierWindowTab::paintEvent(QPaintEvent * e)
 	#ifdef COMPILE_PSEUDO_TRANSPARENCY
 		}
 	#endif
-	
+
 	delete pPainter;
 	e->ignore();
 }

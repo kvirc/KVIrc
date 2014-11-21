@@ -144,7 +144,7 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 	if (!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
-		if (c->paramCount()<2) 
+		if (c->paramCount()<2)
 			iOpacity=255;
 		else {
 			if (!var2->asInteger(iOpacity))
@@ -362,11 +362,11 @@ KVSO_CLASS_FUNCTION(pixmap,rotate)
 	{
 		if (KviQString::equalCI(szAxis,"XAxis"))
 			axis=Qt::XAxis;
-		else if (KviQString::equalCI(szAxis,"YAxis")) 
+		else if (KviQString::equalCI(szAxis,"YAxis"))
 			axis=Qt::YAxis;
-		else if (KviQString::equalCI(szAxis,"ZAxis")) 
+		else if (KviQString::equalCI(szAxis,"ZAxis"))
 			axis=Qt::ZAxis;
-		else 
+		else
 			c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
 	}
 

@@ -389,7 +389,7 @@ void KviConsoleWindow::showNotifyList(bool bShow, bool bIgnoreSizeChange)
 		m_pNotifyListView->hide();
 		if(m_pNotifyViewButton->isChecked())
 			m_pNotifyViewButton->setChecked(false);
-		
+
 	}
 }
 

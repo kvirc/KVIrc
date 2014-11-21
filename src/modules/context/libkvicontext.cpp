@@ -732,7 +732,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setString("");
 		return true;
 	}
-	
+
 	if(!pSocket->usingSSL())
 	{
 		c->warning(__tr2qs("Unable to get SSL information: the IRC Connection is not using SSL"));

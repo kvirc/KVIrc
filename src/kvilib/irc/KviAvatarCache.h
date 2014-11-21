@@ -80,7 +80,7 @@ public:
 	* \return void
 	*/
 	static void done();
-	
+
 	/**
 	* \brief Returns the instance of the avatar cache
 	* \return KviAvatarCache *
@@ -111,13 +111,13 @@ public:
 	* \return const QString &
 	*/
 	const QString & lookup(const KviIrcMask & mask, const QString & szNetwork);
-	
+
 	/**
 	* \brief Deletes the cache
 	* \return void
 	*/
 	void cleanup();
-	
+
 	/**
 	* \brief Loads the cache
 	* \param szFileName The cache filename

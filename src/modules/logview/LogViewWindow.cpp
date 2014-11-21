@@ -98,7 +98,7 @@ LogViewWindow::LogViewWindow()
 	m_pTabWidget = new QTabWidget(m_pLeftLayout);
 	m_pBottomLayout = new KviTalHBox(m_pLeftLayout);
 	m_pProgressBar = new QProgressBar(m_pBottomLayout);
-	
+
 	m_pCancelButton = new QPushButton(m_pBottomLayout);
 	m_pCancelButton->setText(__tr2qs_ctx("Cancel","log"));
 	connect(m_pCancelButton,SIGNAL(clicked()),this,SLOT(abortFilter()));
@@ -368,7 +368,7 @@ void LogViewWindow::filterNext()
 				break;
 			}
 		}
-		
+
 		if(!m_pLastGroupItem)
 			m_pLastGroupItem = new LogListViewItemFolder(m_pLastCategory,m_szLastGroup);
 	}

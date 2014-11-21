@@ -154,7 +154,7 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 		}
 
 		connect(pButtonStyleGroup,SIGNAL(triggered(QAction*)),g_pMainWindow,SLOT(buttonStylePopupSelected(QAction*)));
-		
+
 
 	}
 

@@ -46,7 +46,7 @@ class NotifierMessage : public QWidget
 public:
 	/**
 	* \brief Constructs the NotifierMessage object
-	* \param pPixmap pointer to a message icon, can be null 
+	* \param pPixmap pointer to a message icon, can be null
 	* \param szText const reference to message text in irc format
 	* \return NotifierMessage
 	*/

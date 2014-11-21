@@ -39,7 +39,7 @@ for filename in filelist:
 
 	# read file
 	data = open(filename).read();
-	
+
 	# get all comments
 	comments_found = regex_comment.findall(data)
 

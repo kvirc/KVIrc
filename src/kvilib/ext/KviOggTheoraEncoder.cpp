@@ -142,7 +142,7 @@ KviOggTheoraEncoder::KviOggTheoraEncoder(KviDataBuffer * stream, int iWidth, int
 	}
 	// write the bitstream header packets with proper page interleave
 	th_comment_init(&tc);
-	
+
 	// Repeatedly call th_encode_flushheader() to retrieve all the header packets.
 	// first packet will get its own page automatically
 	if(th_encode_flushheader(td,&tc,&op)<=0){
@@ -223,7 +223,7 @@ void KviOggTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
 
 	rgb32toyuv444(rgb32, videoYuv, geometry.pic_w, geometry.pic_h);
 //	qDebug("addFrame p%p size%d yuv%p",rgb32,videoSize,videoYuv);
-	
+
 	ogg_page videopage;
 
 	// is there a video page flushed?  If not, fetch one if possible

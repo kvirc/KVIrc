@@ -126,7 +126,7 @@ static bool userlist_kvs_fnc_selected(KviKvsModuleFunctionCall * c)
 static bool userlist_kvs_cmd_select(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID_AND_NICK
-	
+
 	if(pWnd->type() != KviWindow::Channel)
 	{
 		c->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));
@@ -140,7 +140,7 @@ static bool userlist_kvs_cmd_select(KviKvsModuleCommandCall * c)
 static bool userlist_kvs_cmd_ensureVisible(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID_AND_NICK
-	
+
 	if(pWnd->type() != KviWindow::Channel)
 	{
 		c->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));

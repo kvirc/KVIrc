@@ -52,7 +52,7 @@
 	#include "KviCryptController.h"
 	// KviApplication.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
-	
+
 	#if defined(COMPILE_SSL_SUPPORT)
 
 		#include <KviSSL.h>
@@ -64,7 +64,7 @@
 		#include <openssl/sha.h>
 
 		DH * g_fish_dh = 0;
-		
+
 		// ### new sophie-germain 1080bit prime number ###
 		// const char *g_fish_prime1080_bin="++ECLiPSE+is+proud+to+present+latest+FiSH+release+featuring+even+more+security+for+you+++shouts+go+out+to+TMG+for+helping+to+generate+this+cool+sophie+germain+prime+number++++/C32L";
 		const char *g_fish_prime1080_hex="FBE1022E23D213E8ACFA9AE8B9DFADA3EA6B7AC7A7B7E95AB5EB2DF858921FEADE95E6AC7BE7DE6ADBAB8A783E7AF7A7FA6A2B7BEB1E72EAE2B72F9FA2BFB2A2EFBEFAC868BADB3E828FA8BADFADA3E4CC1BE7E8AFE85E9698A783EB68FA07A77AB6AD7BEB618ACF9CA2897EB28A6189EFA07AB99A8A7FA9AE299EFA7BA66DEAFEFBEFBF0B7D8B";
@@ -124,7 +124,7 @@
 
 		if(!pParams->firstAsString(szNick))
 			return true;
-		
+
 		pParams->next();
 		pParams->next();
 
@@ -160,7 +160,7 @@
 				szTmp.data()
 				);
 		}
-		
+
 		if(szMessage.startsWith("DH1080_FINISH ", Qt::CaseSensitive))
 		{
 			// fish appends an 'A' to all base64 coded strings
@@ -171,7 +171,7 @@
 
 		if(!c->window()->connection())
 			return false;
-		
+
 		KviQueryWindow * pWnd = c->window()->connection()->findQuery(szNick);
 		if(!pWnd)
 		{
@@ -218,7 +218,7 @@
 		szFinalKey.bufferToBase64((char *) hashedSecret, SHA256_LEN);
 		//strip the trailing =
 		szFinalKey.stripRight('=');
-		
+
 		KviMemory::free(hashedSecret);
 		#else
 			c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
@@ -238,7 +238,7 @@
 				inf->m_szEngineName = szEngine;
 				inf->m_bDoEncrypt = true;
 				inf->m_bDoDecrypt = true;
-			
+
 				pWnd->setCryptSessionInfo(inf);
 			} else {
 				c->warning(__tr2qs("Failed to initialize the Mircryption engine: %Q"),&(e->lastError()));
@@ -285,11 +285,11 @@ static bool fish_module_init(KviModule * m)
 		KviSSL::globalSSLInit();
 	#endif
 	m->kvsRegisterAppEventHandler(KviEvent_OnQueryNotice,fish_event_onQueryNotice);
-		
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"keyx",fish_cmd_keyx);
 
 	return true;
-#else 
+#else
 	return false;
 #endif
 }

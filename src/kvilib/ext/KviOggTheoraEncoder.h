@@ -103,7 +103,7 @@ private:
 public:
 	/**
 	* \brief Appends a video frame to the stream
-	* \param rgb32 video frame as a matrix of rgb32 pixels 
+	* \param rgb32 video frame as a matrix of rgb32 pixels
 	* \param videoSize size of the video frame
 	* \return void
 	*/

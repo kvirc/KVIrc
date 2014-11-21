@@ -54,7 +54,7 @@ protected:
 	PackThemeImageWidget      * m_pPackThemeImageWidget;
 	PackThemeSaveWidget       * m_pPackThemeSaveWidget;
 	KviPointerList<KviThemeInfo> * m_pThemeInfoList;
-	
+
 	QString                        m_szAuthor;
 	QString                        m_szName;
 	QString                        m_szVersion;

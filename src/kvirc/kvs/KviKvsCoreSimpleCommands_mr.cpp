@@ -407,7 +407,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				// FIXME: Write a better error message
 				/*
-					The ShellExecute() function returns the value 31 if there is no association for the specified file 
+					The ShellExecute() function returns the value 31 if there is no association for the specified file
 					type or if there is no association for the specified action within the file type.
 					The other possible error values are as follows:
 
@@ -998,7 +998,7 @@ namespace KviKvsCoreSimpleCommands
 			it is simply focused and the [text] is sent to the target.[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
 			Normally the new query windows opened with this command are created and immediately shown.
-			If the -i switch is specified then the windows are created either as minimized or as visible 
+			If the -i switch is specified then the windows are created either as minimized or as visible
 			depending on the global visibility setting specified by the boolCreateIncomingQueriesAsMinimized option.
 			This switch should be used when automatically opening a query from a script without user
 			intervention (as happens when the query is opened due to an incoming private message).
@@ -1162,7 +1162,7 @@ namespace KviKvsCoreSimpleCommands
 		Q_UNUSED(__pSwitches);
 		Q_UNUSED(__pParams);
 		Q_UNUSED(__pContext);
-		
+
 		if(!g_pMainWindow->isVisible())
 			g_pMainWindow->show();
 		g_pMainWindow->raise();

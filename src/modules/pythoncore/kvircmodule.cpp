@@ -89,7 +89,7 @@ static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-		
+
 	const char * pcText=0;
 	const char * pcWinId=0;
 	KviWindow * pWnd=0;
@@ -169,7 +169,7 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 
 	if(!PyArg_ParseTuple(pArgs,"s",&szVarName))
 		return 0;
-	
+
 	if(g_pCurrentKvsContext)
 	{
 		KviKvsVariant * pVar = g_pCurrentKvsContext->localVariables()->find(szVarName);
@@ -402,7 +402,7 @@ PyMODINIT_FUNC python_init()
 	PyKVIrc_API[7] = (void *)PyKVIrc_eval;
 	PyKVIrc_API[8] = (void *)PyKVIrc_internalWarning;
 	PyKVIrc_API[9] = (void *)PyKVIrc_error;
-	
+
 	// Create a CObject containing the API pointer array's address
 	pC_API_Object = PyCObject_FromVoidPtr((void *)PyKVIrc_API,NULL);
 

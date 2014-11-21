@@ -196,7 +196,7 @@ QString HelpIndex::getCharsetForDocument(QFile *file)
         meta = meta.toLower();
         QRegExp r(QLatin1String("charset=([^\"\\s]+)"));
         if (r.indexIn(meta) != -1) {
-            encoding = r.cap(1);        
+            encoding = r.cap(1);
         }
     }
 
@@ -284,13 +284,13 @@ void HelpIndex::writeDocumentList()
         return;
     QDataStream s( &f );
     s << docList;
-    
+
     QFile f1( docListFile+".titles" );
     if ( !f1.open(QFile::WriteOnly ) )
         return;
     QDataStream s1( &f1 );
     s1 << titleList;
-    
+
 }
 
 void HelpIndex::readDict()

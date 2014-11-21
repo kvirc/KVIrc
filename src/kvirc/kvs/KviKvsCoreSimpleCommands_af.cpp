@@ -386,7 +386,7 @@ namespace KviKvsCoreSimpleCommands
 		ctl.bell_pitch = st.bell_pitch;
 		ctl.bell_duration = st.bell_duration;
 		ctl.bell_percent = st.bell_percent;
-	
+
 		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
 #endif //COMPILE_X11_SUPPORT
 

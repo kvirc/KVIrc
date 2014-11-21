@@ -270,9 +270,9 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of users on the channel specified by <window_id>.[br]
-		The number of users returned depends on the state of KVIrc's data on the channel, which will be 
-		out-of-synch with the server just after the channel is joined. If the function is used prior to 
-		the channel's OnChannelSync event, a smaller user count than there really is will be returned. 
+		The number of users returned depends on the state of KVIrc's data on the channel, which will be
+		out-of-synch with the server just after the channel is joined. If the function is used prior to
+		the channel's OnChannelSync event, a smaller user count than there really is will be returned.
 */
 static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 {
@@ -1390,7 +1390,7 @@ static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	char cMode = szMode.at(0).unicode();
-		
+
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
@@ -1818,7 +1818,7 @@ static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 {
 	QString szNick, szChans;
 	kvs_uint_t iContextId;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
 		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,iContextId) \
@@ -1835,7 +1835,7 @@ static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 		pConsole->connection()->getCommonChannels(szNick,szChans,false);
 		c->returnValue()->setString(szChans);
 	}
-	
+
 	return true;
 }
 

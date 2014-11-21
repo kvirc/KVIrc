@@ -178,7 +178,7 @@ KviKvsVariantList::KviKvsVariantList(QStringList * pSL)
 	m_pList->setAutoDelete(true);
 	if(!pSL)
 		return;
-	
+
 	foreach(QString pS, *pSL)
 		m_pList->append(new KviKvsVariant(new QString(pS)));
 }

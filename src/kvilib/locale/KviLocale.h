@@ -157,7 +157,7 @@ public:
 
 	/**
 	* \brief Finds the catalogue
-	* 
+	*
 	* This function attempts to determine the current locale and then load the
 	* corresponding translation file from the KVIrc locale directory.
 	* Returns true if the locale was correctly set; i.e. the locale is C or POSIX

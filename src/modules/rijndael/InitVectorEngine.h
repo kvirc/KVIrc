@@ -28,5 +28,5 @@ namespace InitVectorEngine
 {
 	extern int fillRandomIV(unsigned char * pIn, int iLen=8);
 }
-	
+
 #endif //!_INITVECTORENGINE_H_

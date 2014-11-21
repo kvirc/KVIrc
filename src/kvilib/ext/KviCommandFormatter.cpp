@@ -32,7 +32,7 @@ namespace KviCommandFormatter
 	{
 		if(!(*pszArray))
 			return false; // can't have more leading chars
-		
+
 		bool bGotIt = false;
 		while(*pszArray)
 		{

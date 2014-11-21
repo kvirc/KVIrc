@@ -48,7 +48,7 @@ class KviCustomToolBar;
 /**
 * \class KviActionCategory
 * \brief Holds the categories of an action
-* 
+*
 * Known categories are: general (or empty), irc, script
 */
 class KVIRC_API KviActionCategory
@@ -128,7 +128,7 @@ public:
 	/**
 	* \brief Constructs the action object
 	* \param pParent The parent object
-	* 
+	*
 	* It can be 0, but using a QObject will help in deleting this action :)
 	* \param szName Internal name of this action, in form [module.]name
 	* \param szVisibleName Permanent visible name, visible at least in the action drawer
@@ -148,7 +148,7 @@ public:
 	/**
 	* \brief Constructs the action object
 	* \param pParent The parent object
-	* 
+	*
 	* It can be 0, but using a QObject will help in deleting this action :)
 	* \param szName Internal name of this action, in form [module.]name
 	* \param szVisibleName Permanent visible name, visible at least in the action drawer
@@ -330,7 +330,7 @@ protected:
 public slots:
 	/**
 	* \brief Activates the action
-	* 
+	*
 	* It's called when the user activates the action clicking on the toolbar, the menu or by
 	* hitting its shortcut.
 	* \return void
@@ -339,7 +339,7 @@ public slots:
 protected slots:
 	/**
 	* \brief Removes the action from the list
-	* 
+	*
 	* Called when the action is being destroyed
 	* \return void
 	*/
@@ -347,7 +347,7 @@ protected slots:
 
 	/**
 	* \brief Reloads the images
-	* 
+	*
 	* Called when the application wants to refresh the images in the toolbar
 	* \return void
 	*/
@@ -355,9 +355,9 @@ protected slots:
 
 	/**
 	* \brief Enables or disables the action upon checking the active context
-	* 
+	*
 	* If the context doesn't exist, the action is disabled
-	* 
+	*
 	* Called when the frame changes the active context.
 	* \note It works only if NeedsContext is specified
 	* \return void
@@ -366,7 +366,7 @@ protected slots:
 
 	/**
 	* \brief Enables or disables the action upon checking the active context
-	* 
+	*
 	* Called when the frame changes the state of the context
 	* \return void
 	*/
@@ -374,7 +374,7 @@ protected slots:
 
 	/**
 	* \brief Enables or disables the action upon checking the active window
-	* 
+	*
 	* Called when the frame changes the active window.
 	* \return void
 	*/
@@ -382,7 +382,7 @@ protected slots:
 
 	/**
 	* \brief Enables or disables the action upon checking the active window
-	* 
+	*
 	* Called when the frame changes the active window.
 	* \note We jump here ONLY if m_uFlags & WindowOnlyIfUsersSelected and thus also
 	* m_uFlags & InternalWindowMask

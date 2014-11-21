@@ -298,7 +298,7 @@ protected:
 
 static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict      = 0;
 
-static const char * encoding_groups[] = 
+static const char * encoding_groups[] =
 {
 	"Unicode",
 	"West European",
@@ -364,7 +364,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	{ "TSCII"                , 0 , 0 , 7, "Tamil" },
 	{ "CP-949"               , 0 , 0 , 7, "Korean Codepage" },
 #endif
-	
+
 	// smart codecs that send in the local charset
 	// West European
 	{ "ISO-8859-1 [UTF-8]"   , 1 , 0 , 1, "Western, Latin-1 - Unicode" },
@@ -516,7 +516,7 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	{
 		// ensure Qt will use the right locale when formatting dates, numbers, ..
 		// Note: Qt will use the system() locale anyway, we need to construct an empty QLocale()
-		// to get it use our specified locale. 
+		// to get it use our specified locale.
 		QLocale::setDefault(QLocale(QString::fromLatin1(g_szLang.ptr(), g_szLang.len())));
 
 		QString szBuffer;
@@ -752,7 +752,7 @@ const QString & KviLocale::translateToQString(const char * pcText, const char * 
 {
 	if(!pcContext)
 		return g_pMainCatalogue->translateToQString(pcText);
-	
+
 	KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
 	if(!pCatalogue)
 	{

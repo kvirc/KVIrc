@@ -57,7 +57,7 @@ public:
 	* \return NotifierWindowTab
 	*/
 	NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent);
-	
+
 	/**
 	* \brief Destroys the tab object
 	*/
@@ -75,19 +75,19 @@ public:
 	* \return void
 	*/
 	void appendMessage(NotifierMessage * pMessage);
-	
+
 	/**
 	* \brief Updates the GUI
 	* \return void
 	*/
 	void updateGui();
-	
+
 	/**
 	* \brief Returns the name of the current window
 	* \return QString
 	*/
 	inline QString label() const { return m_szLabel; };
-	
+
 	/**
 	* \brief Returns the pointer of the current window
 	* \return KviWindow *
@@ -103,13 +103,13 @@ private slots:
 	* \return void
 	*/
 	void scrollRangeChanged(int, int);
-	
+
 	/**
 	* \brief Emitted when the window changes its name
 	* \return void
 	*/
 	void labelChanged();
-	
+
 	/**
 	* \brief Emitted when the window is being destroyed
 	* \return void

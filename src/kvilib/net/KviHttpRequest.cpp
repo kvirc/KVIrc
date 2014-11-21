@@ -77,7 +77,7 @@ KviHttpRequest::KviHttpRequest()
 KviHttpRequest::~KviHttpRequest()
 {
 	resetInternalStatus();
-	
+
 	KVI_ASSERT(!(m_p->pSocket));
 	KVI_ASSERT(!(m_p->pFile));
 
@@ -212,12 +212,12 @@ void KviHttpRequest::closeSocket()
 
 	m_p->pSocket->abort();
 	m_p->pSocket->close();
-	
+
 	// This can be called from a socket handler slot
 	m_p->pSocket->deleteLater();
-	
+
 	//delete m_p->pSocket;
-	
+
 	m_p->pSocket = NULL;
 }
 
@@ -272,9 +272,9 @@ void KviHttpRequest::slotSocketConnected()
 		);
 
 	KviCString szMethod;
-	
+
 	bool bIsPost = false;
-	
+
 	if(m_eProcessingType == HeadersOnly)
 		szMethod = "HEAD";
 	else if(m_szPostData.isEmpty())
@@ -349,7 +349,7 @@ void KviHttpRequest::slotSocketReadDataReady()
 	}
 
 	// FIXME: Avoid double-buffering here!
-	
+
 	KviDataBuffer oBuffer(iBytes);
 
 	int iRead = m_p->pSocket->read((char *)(oBuffer.data()),iBytes);
@@ -361,7 +361,7 @@ void KviHttpRequest::slotSocketReadDataReady()
 			slotSocketDisconnected();
 			return;
 		}
-		
+
 		// FIXME
 		// well... otherwise just wait.
 		// FIXME ?
@@ -438,7 +438,7 @@ bool KviHttpRequest::doConnect()
 		delete m_p->pConnectTimeoutTimer;
 		m_p->pConnectTimeoutTimer = NULL;
 	}
-	
+
 	m_p->pConnectTimeoutTimer = new QTimer();
 	m_p->pConnectTimeoutTimer->setSingleShot(true);
 	QObject::connect(m_p->pConnectTimeoutTimer,SIGNAL(timeout()),this,SLOT(slotConnectionTimedOut()));
@@ -459,7 +459,7 @@ bool KviHttpRequest::doConnect()
 		);
 	*/
 
-	
+
 	return true;
 }
 
@@ -727,9 +727,9 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	{
 		// this is not "OK" and not "Partial content"
 		// Error, redirect or something confusing
-		
+
 		// FIXME: Handle 30x codes by re-issuing the request with the new URI ?
-		
+
 		if(m_eProcessingType != HeadersOnly)
 		{
 			// this is an error then

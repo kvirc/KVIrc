@@ -148,9 +148,9 @@ public:
 	{
 		m_pInstance->internalFree(data);
 	}
-	
+
 	static QPixmap* dummyPixmap();
-	
+
 	static void notifyDelete(KviAnimatedPixmapInterface* receiver)
 	{
 		m_pInstance->internalNotifyDelete(receiver);

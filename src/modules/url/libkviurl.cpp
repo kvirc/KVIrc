@@ -137,7 +137,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 	:KviWindow(KviWindow::Tool,"URL List")
 {
 	setAutoFillBackground(false);
-	
+
 	m_pUrlList = new UrlDialogTreeWidget(this);
 
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");

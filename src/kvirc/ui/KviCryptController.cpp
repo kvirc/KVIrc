@@ -357,7 +357,7 @@
 			else if(bOld)
 				szDecKey.prepend("old:");
 		}
-		
+
 		bool bRet = pEngine->init(szEncKey.ptr(),szEncKey.len(),szDecKey.ptr(),szDecKey.len());
 
 		return bRet;

@@ -394,22 +394,22 @@ KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOp
 	m_uFlags = uFlags;
 	m_szFilter = szFilter;
 	m_pLabel = new QLabel(txt,this);
-	
+
 	if(uFlags & VerticalLayout)
 		m_Layout->addWidget(m_pLabel,0,0,1,2);
 	else
 		m_Layout->addWidget(m_pLabel,0,0);
-	
+
 	m_pLineEdit = new QLineEdit(this);
-	
+
 	if(uFlags & VerticalLayout)
 		m_Layout->addWidget(m_pLineEdit,1,0);
 	else
 		m_Layout->addWidget(m_pLineEdit,0,1);
-	
+
 	//m_pLineEdit->setMinimumWidth(200);
 	m_pLineEdit->setText(*pOption);
-	
+
 	m_pButton = new QPushButton(__tr2qs("&Browse..."),this);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(browseClicked()));
 
@@ -803,7 +803,7 @@ KviSoundSelector::KviSoundSelector(QWidget * par,const QString & txt,QString * p
 {
 	m_pPlayButton =  new QPushButton(__tr2qs("Play"),this);
 	connect(m_pPlayButton,SIGNAL(clicked()),this,SLOT(playSound()));
-	
+
 	//parent layout
 	if(m_uFlags & VerticalLayout)
 		m_Layout->addWidget(m_pPlayButton,2,1);

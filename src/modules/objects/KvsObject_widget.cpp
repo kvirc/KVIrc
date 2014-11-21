@@ -1741,7 +1741,7 @@ KVSO_CLASS_FUNCTION(widget,setFont)
 	QString szFamily;
 	QStringList szListStyle;
 	kvs_int_t iSize;
-	KVSO_PARAMETERS_BEGIN(c)	
+	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
 		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
 		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szListStyle)

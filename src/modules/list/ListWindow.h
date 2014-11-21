@@ -75,7 +75,7 @@ private:
 	ChannelTreeWidgetItemData * m_pData;
 public:
 	bool operator<(const QTreeWidgetItem & other) const;
-	inline ChannelTreeWidgetItemData * itemData() { return m_pData; }; 
+	inline ChannelTreeWidgetItemData * itemData() { return m_pData; };
 };
 
 class ChannelTreeWidget: public KviThemedTreeWidget

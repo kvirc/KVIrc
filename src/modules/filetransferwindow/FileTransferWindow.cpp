@@ -257,7 +257,7 @@ FileTransferWindow::FileTransferWindow(
 {
 	g_pFileTransferWindow = this;
 	setAutoFillBackground(false);
-	
+
 	m_pContextPopup = 0;
 	m_pLocalFilePopup = 0;
 	m_pOpenFilePopup = 0;
@@ -560,7 +560,7 @@ void FileTransferWindow::openFilePopupActivated(QAction *pAction)
 
 	QString mimetype = KMimeType::findByPath(tmp)->name();
 	KService::List offers = KMimeTypeTrader::self()->query(mimetype,"Application");
-	
+
 	int idx = 0;
 	for(KService::List::Iterator itOffers = offers.begin();
 	   				itOffers != offers.end(); ++itOffers)

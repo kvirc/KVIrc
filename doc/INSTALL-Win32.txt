@@ -27,7 +27,7 @@ Prerequisites
   Differences in its network stack and the difficulty to retrieve packages
   of kvirc dependencies still working on win2000 make compiling kvirc an
   overkill job.
-  
+
 - CMake from Kitware
 
   [Configuration tool; needed to compile KVIrc, mandatory]
@@ -35,7 +35,7 @@ Prerequisites
   Download the tool from http://www.cmake.org. The package you want is called
   "Windows (Win32 Installer) cmake-<version>-win32-x86.exe" (version may vary).
 
-  You need at least version 2.6.4 to compile KVirc. Avoid version 2.8.0; use 
+  You need at least version 2.6.4 to compile KVirc. Avoid version 2.8.0; use
   version 2.8.2 instead.
 
   Recent versions of the cmake installer will ask if you want to add cmake to
@@ -58,7 +58,7 @@ Prerequisites
   [Compiler; needed to compile KVIrc, mandatory]
 
   If you installed the Qt SDK >= 4.6.0, you already have MinGW installed and
-  you can jump to the next requisite. Otherwise you need to install MinGW 
+  you can jump to the next requisite. Otherwise you need to install MinGW
   manually: refer to http://www.mingw.org/wiki/InstallationHOWTOforMinGW
   Please note that you need to install gcc4 (gcc3 could work but is not supported).
 
@@ -85,7 +85,7 @@ Prerequisites
 
   [Compression library; needed for many stuffs, mandatory]
 
-  MinGW offers a zlib package: You'll need to download from 
+  MinGW offers a zlib package: You'll need to download from
   http://sourceforge.net/projects/mingw/ the packages:
 
       libz-1.2.3-1-mingw32-dll-1.tar.gz
@@ -102,8 +102,8 @@ Prerequisites
   To compile KVIrc for your own use you can download a precompiled
   package from http://www.slproweb.com/products/Win32OpenSSL.html
   The package you want is called "Win32 OpenSSL v0.9.8l" (version number may
-  vary; there should be a notice like "Recommended for software developers" 
-  in the package description). Any recent version should work; general rule: 
+  vary; there should be a notice like "Recommended for software developers"
+  in the package description). Any recent version should work; general rule:
   more recent usually means more secure.
 
   Newer OpenSSL versions from www.slproweb.com need a specific version of
@@ -134,8 +134,8 @@ Prerequisites
   at http://www.activestate.com/activepython/downloads/ .
   You want the "Free Community Edition" package.
 
-  Please note that we are currently supporting the 2.x version of python 
-  (currently 2.6). Python3000 (aka python3k) is not backwards compatible 
+  Please note that we are currently supporting the 2.x version of python
+  (currently 2.6). Python3000 (aka python3k) is not backwards compatible
   and supported by now.
 
 - GNU GetText for Win32
@@ -144,7 +144,7 @@ Prerequisites
   own language; required if you're building a redistributable package,
   otherwise optional]
 
-  We advice you to use the version you can find at 
+  We advice you to use the version you can find at
   http://gnuwin32.sourceforge.net/packages/gettext.htm,
   follow the "Setup program" link.
   Install the package somewhere (like c:\gettext) and remember the path.
@@ -153,15 +153,15 @@ Prerequisites
 
   [Tool; needed to tidy kvirc translation files, optional]
 
-  We advice you to use the version you can find at 
+  We advice you to use the version you can find at
   http://gnuwin32.sourceforge.net/packages/sed.htm,
   follow the "Setup program" link.
-  
+
   Install the package somewhere (like c:\sed) and remember the path.
 
 - Subversion cli for windows
 
-  [Versioning tool; needed for cmake to automatically set the correct 
+  [Versioning tool; needed for cmake to automatically set the correct
   revision number in kvirc build; can be overridden (see below)]
 
   Any version will work; Recently the subversion guys went nuts and despite
@@ -175,10 +175,10 @@ Prerequisites
 
 - Nullsoft scriptable install system (NSIS)
 
-  [Installer packages creator; needed if you want to create an installer 
+  [Installer packages creator; needed if you want to create an installer
   package for kvirc]
 
-  Get it at http://nsis.sourceforge.net/Download ; the package you want 
+  Get it at http://nsis.sourceforge.net/Download ; the package you want
   is called "nsis-2.46-setup.exe" (version numbers may vary).
 
 
@@ -204,7 +204,7 @@ Further reccomended download if you plan to develop KVIrc:
 Compilation
 -------------------------------------------------------------------------------
 
-Download KVIrc sources from KVIrc's website, a mirror or using svn (see 
+Download KVIrc sources from KVIrc's website, a mirror or using svn (see
 instructions on KVIrc website about how to do that). From now on I'll assume
 that you have saved the sources in C:\KVIrc
 
@@ -263,9 +263,9 @@ those dlls recognized and loaded automatically from your OS.
 
 If you want to create an installer package, you need to:
 
-1) fill the binary directory (in our example: c:\KVIrc\build\release) with 
-  all the files that cmake doesn't create: 
-  - needed dlls: 
+1) fill the binary directory (in our example: c:\KVIrc\build\release) with
+  all the files that cmake doesn't create:
+  - needed dlls:
         - Qt: QtCore4, QtGui4 (mandatory); QtNetwork4, QtSvg4, QtWebkit4,
             QtXml, QtXmlPatterns (used in objects module);
         - Zlib: libz.dll (aka libz-1.dll, zlib.dll, ...);
@@ -320,8 +320,8 @@ Common errors, pitfalls, ..
   ----------
   C:/kvirctrunk/src/kvilib/system/kvi_time.h:0: Warning: No relevant classes found. No output generated.
   ----------
-  In the compilation we call qt's moc to parse headers files and expand qt macros; 
-  that warning simply means that moc found nothing to expand in that header file. We can fix this 
+  In the compilation we call qt's moc to parse headers files and expand qt macros;
+  that warning simply means that moc found nothing to expand in that header file. We can fix this
   removing headers that doesn't need to be moc-ed from the lists in CMakeLists.txt.
 
 - * Windows Vista and 7 Users * If you have UAC enabled (default setting) and KVIrc is installed in the Program Files folder and you have opted to use the portable setting, then KVIrc's data files will be found in the VirtualStore folder, typically: C:\Users\[UserName]\AppData\Local\VirtualStore\Program Files\KVIrc\ If you plan on using the portable setting, it is recommended that you install KVIrc in a non UAC protected folder.

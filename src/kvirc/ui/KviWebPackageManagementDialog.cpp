@@ -122,10 +122,10 @@ void KviWebPackageManagementDialog::slotLoadFinished(bool bOk)
 	m_pProgressBar->setValue(0);
 
 	if(!isVisible())
-		show(); 
+		show();
 
 	// main frame
-	QWebFrame *pFrame=m_pWebView->page()->mainFrame();	
+	QWebFrame *pFrame=m_pWebView->page()->mainFrame();
 	/*QWebElement style=pFrame->documentElement().findFirst("style");
 	QString szCss=style.toPlainText();
 	szCss.append("div.item_entry:hover {background-color: rgba(0,0,0,0.9)}");
@@ -135,7 +135,7 @@ void KviWebPackageManagementDialog::slotLoadFinished(bool bOk)
 
 	// if this is null something is wrong
 	if(elementscollection.count())
-	{  
+	{
 		foreach(QWebElement element,elementscollection)
 		{
 			// web element 'title'
@@ -173,7 +173,7 @@ void KviWebPackageManagementDialog::slotLinkClicked(const QUrl &url)
 		m_pWebView->load(url);
 		return;
 	}
-	
+
 	// let's search for the 'a' tag
 	QWebElementCollection elementscollection=m_pWebView->page()->mainFrame()->findAllElements("a.item_download_link");
 	if(elementscollection.count() == 0)

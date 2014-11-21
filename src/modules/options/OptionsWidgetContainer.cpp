@@ -86,7 +86,7 @@ void OptionsWidgetContainer::childEvent(QChildEvent * e)
 			m_pOptionsWidget = NULL;
 		}
 	}
-	
+
 	QWidget::childEvent(e);
 }
 

@@ -80,7 +80,7 @@ LogFile::LogFile(const QString & szName)
 
 	QString szDate = szTmpName.section('_',-1).section('.',0,-2);
 
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat)) 
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 1:
 			m_date = QDate::fromString(szDate, Qt::ISODate);

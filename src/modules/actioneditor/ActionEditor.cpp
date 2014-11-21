@@ -342,7 +342,7 @@ void SingleActionEditor::displaySmallIcon(const QString &szIconId)
 		m_pSmallIconEdit->setText(QString());
 		m_pSmallIconButton->setIcon(QIcon());
 	}
-	
+
 }
 
 void SingleActionEditor::displayBigIcon(const QString &szIconId)

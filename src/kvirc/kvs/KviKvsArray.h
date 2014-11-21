@@ -51,7 +51,7 @@ public:
 
 	/**
 	* \brief Constructs the array data
-	* 
+	*
 	* This is a carbon copy
 	* \param array The array to copy from
 	* \return KviKvsArray
@@ -91,7 +91,7 @@ public:
 
 	/**
 	* \brief Returns the element at the given index
-	* 
+	*
 	* If the element doesn't exists, it returns an empty element. If the index is out of
 	* array bounds, it increases the array size, fillin the array in with zeros.
 	* \param uIdx The index of the element to retrieve

@@ -85,18 +85,18 @@ General notes for the installation of the 4.2 release of KVIrc
     QMake version 2.01a
     Using Qt version 4.7.2 in /usr/lib64/qt/lib
 
-    If you have multiple versions of Qt4 installed in your system and want to 
-    use a specific version, exporting QTDIR won't suffice. Since the CMake 
+    If you have multiple versions of Qt4 installed in your system and want to
+    use a specific version, exporting QTDIR won't suffice. Since the CMake
     module searching for Qt4 uses qmake itself to determine the Qt4 library dir,
-    you can set your $PATH variable to have CMake using 
+    you can set your $PATH variable to have CMake using
     your preferred qmake version:
 
     # PATH=/opt/qt4.7/bin/:$PATH cmake ..
 
-    Please note that compiling with KDE4 support enabled will force KVIrc to 
-    link against the Qt4 version that KDE4 is using. This may lead to problems 
+    Please note that compiling with KDE4 support enabled will force KVIrc to
+    link against the Qt4 version that KDE4 is using. This may lead to problems
     in linking. Disabling KDE4 support is the only known solution at the moment.
-    Note also that in this case you'll need to override the Qt libraries used 
+    Note also that in this case you'll need to override the Qt libraries used
     when running KVIrc:
 
     # LD_LIBRARY_PATH=/opt/qt4.7/lib/ kvirc4
@@ -119,11 +119,11 @@ General notes for the installation of the 4.2 release of KVIrc
     # C++ compiler
     #
 
-    You need a decent C++ compiler. Usually under linux it is GCC from GNU 
+    You need a decent C++ compiler. Usually under linux it is GCC from GNU
     tools.
     It is preferred to use GCC 4.x, but GCC 3.4.6 works as well. Older version
     *might* work.
-    ICC is *neither* officially supported *nor* tested. Reports are welcome, 
+    ICC is *neither* officially supported *nor* tested. Reports are welcome,
     though.
     To check your GCC version, just run:
 
@@ -133,12 +133,12 @@ General notes for the installation of the 4.2 release of KVIrc
 
     Reading specs from /usr/lib64/gcc/x86_64-slackware-linux/4.3.3/specs
     Target: x86_64-slackware-linux
-    Configured with: ../gcc-4.3.3/configure --prefix=/usr --libdir=/usr/lib64 
---enable-shared --enable-bootstrap 
---enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix 
---enable-checking=release --with-system-zlib --disable-libunwind-exceptions 
---enable-__cxa_atexit --enable-libssp --with-gnu-ld --verbose 
---disable-multilib --target=x86_64-slackware-linux 
+    Configured with: ../gcc-4.3.3/configure --prefix=/usr --libdir=/usr/lib64
+--enable-shared --enable-bootstrap
+--enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix
+--enable-checking=release --with-system-zlib --disable-libunwind-exceptions
+--enable-__cxa_atexit --enable-libssp --with-gnu-ld --verbose
+--disable-multilib --target=x86_64-slackware-linux
 --build=x86_64-slackware-linux --host=x86_64-slackware-linux
     Thread model: posix
     gcc version 4.3.3 (GCC)
@@ -213,8 +213,8 @@ General notes for the installation of the 4.2 release of KVIrc
     If you want PERL SCRIPTING support to be compiled, you need a working perl
     installation. Your libperl.so MUST be compiled with the MULTIPLICITY option.
     You can check it with perl -V
-    The way external software can embed perl has changed between perl version 
-    5.8 and 5.10. KVIrc should play nice with perl as of version 5.004 and 
+    The way external software can embed perl has changed between perl version
+    5.8 and 5.10. KVIrc should play nice with perl as of version 5.004 and
     higher, but 5.10 is strongly recommended, since future updates can break
     backwards compatibility.
 
@@ -223,7 +223,7 @@ General notes for the installation of the 4.2 release of KVIrc
     # OpenSSL (Optional)
     #
 
-    If you want the secure socket layer (SSL) support to be compiled, you need 
+    If you want the secure socket layer (SSL) support to be compiled, you need
     the OpenSSL library and headers. (libssl.so and openssl/ssl.h)
 
     - (Optional) If you want DCC VOICE to support the gsm codec,
@@ -281,8 +281,8 @@ General notes for the installation of the 4.2 release of KVIrc
     # cd release
     # cmake [your options] ..
 
-    In this way you have just created an out-of-source environment which is 
-    clean at the beginning and can be changed afterwards, as well as a clean 
+    In this way you have just created an out-of-source environment which is
+    clean at the beginning and can be changed afterwards, as well as a clean
     source directory.
     Note that the final dots are required or CMake will NOT create the right
     environment.
@@ -308,23 +308,23 @@ General notes for the installation of the 4.2 release of KVIrc
         Useful for reporting bugs.
 
     -DWANT_STRIP (default: OFF)
-        Available only if debug is disabled, this flag disables objects 
+        Available only if debug is disabled, this flag disables objects
         stripping before installation.
-        (Object stripping discards symbols from object files, lowering their 
-        size on disk, at the expense of more complicated or rather impossible 
+        (Object stripping discards symbols from object files, lowering their
+        size on disk, at the expense of more complicated or rather impossible
         debugging.)
 
     -DWANT_VERBOSE (default: OFF)
         Generate verbose output when compiling.
-        (Note: this will be deactivated when using a job setting higher than 1 
-        with gmake. I.e., make -j2 will *not* show any verbose compilation 
+        (Note: this will be deactivated when using a job setting higher than 1
+        with gmake. I.e., make -j2 will *not* show any verbose compilation
         output.)
 
     -DCMAKE_INSTALL_PREFIX=PATH (default: a system-dependant directory)
         This will install all stuff under PATH directory.
 
     -DLIB_SUFFIX=SUFFIX (default: empty)
-        This will install libkvilib and KVIrc modules to 
+        This will install libkvilib and KVIrc modules to
         ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
         directory. It defaults to an empty suffix.
         Mainly used for 64bit distros.
@@ -337,14 +337,14 @@ General notes for the installation of the 4.2 release of KVIrc
         different KVIrc versions can co-exist on the same system.
 
     -DWANT_ENV_FLAGS (default: OFF)
-        When enabled, KVIrc install rules won't try to figure out and set 
+        When enabled, KVIrc install rules won't try to figure out and set
         CMAKE_C(XX)_FLAGS. Instead, it will let CMake use the ones taken
         from environment variables.
         Activating this flag will override the value of -DWANT_DEBUG.
 
     -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT (default: OFF, not cached)
         This will re-initialize the installation path to a good default.
-        Following compilations should use the correct path value cached by 
+        Following compilations should use the correct path value cached by
         CMake.
         This flag is useful to solve MacOS X install problems.
 
@@ -489,10 +489,10 @@ General notes for the installation of the 4.2 release of KVIrc
         Most probably you will not need to enable this flag.
 
     -DMANUAL_REVISION (default: empty)
-        Manually set a revision number if subversion is not found on your 
+        Manually set a revision number if subversion is not found on your
         system.
         This is useful mostly on windows.
-        Please do not specify useless information here, as it will make 
+        Please do not specify useless information here, as it will make
         debugging harder and you won't profit from it.
 
     -DWANT_PIZZA (default: OFF)
@@ -551,7 +551,7 @@ General notes for the installation of the 4.2 release of KVIrc
     # ldconfig
 
     with super-user privileges.
-    
+
     If you have decided to use the KDE support the installation might have
     placed all these files in your $KDEDIR tree instead of /usr/local.
     In this case you should be OK since KDE requires its library dir to be

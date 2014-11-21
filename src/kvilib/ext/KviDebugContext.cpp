@@ -22,14 +22,14 @@ KviDebugContext::KviDebugContext(const char * pcContext, ...)
 	m_szContext.vsprintf(pcContext,list);
 
 	kvi_va_end(list);
-	
+
 	static KviCString szEnterMark = ">> %s";
-	
+
 	KviCString szPrefix = g_szIndentPrefix;
 	szPrefix.append(szEnterMark);
-	
+
 	qDebug(szPrefix.ptr(),m_szContext.ptr());
-	
+
 	g_szIndentPrefix.append("  ");
 }
 
@@ -56,11 +56,11 @@ void KviDebugContext::trace(const char * pcFmt, ...)
 	szOut.vsprintf(pcFmt,list);
 
 	kvi_va_end(list);
-	
+
 	static KviCString szEnterMark = "-- %s";
-	
+
 	KviCString szPrefix = g_szIndentPrefix;
 	szPrefix.append(szEnterMark);
-	
+
 	qDebug(szPrefix.ptr(),szOut.ptr());
 }

@@ -321,7 +321,7 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 							pAfterAction=pTmp;
 							break;
 						}
-						
+
 						if(pTmp==g_pDraggedAction)
 							found=true;
 					}

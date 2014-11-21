@@ -163,7 +163,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 		"Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's","options");
 	szTip += "</center>";
 	mergeTip(m_pKdeNotifier,szTip);
-	
+
 	m_pKdeNotifier->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
 	connect(b,SIGNAL(toggled(bool)),m_pKdeNotifier,SLOT(setEnabled(bool)));
 	connect(m_pKdeNotifier,SIGNAL(toggled(bool)),this,SLOT(toggleNotifierProtocol(bool)));
@@ -205,7 +205,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 		"your game from fullscreen to window mode.","options");
 	szTip += "</center>";
 	mergeTip(b2,szTip);
-	
+
 	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
 	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
 
@@ -219,7 +219,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
 
 	iRow++;
-	
+
 	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
 
 	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));

@@ -55,7 +55,7 @@ public:
 
 	/**
 	* \brief Constructs the hash data
-	* 
+	*
 	* This is a carbon copy
 	* \param hash The hash to copy from
 	* \return KviKvsHash
@@ -93,7 +93,7 @@ public:
 
 	/**
 	* \brief Returns the element associated to the given key
-	* 
+	*
 	* If the element doesn't exists, it returns an empty element. If the index is out of
 	* hash bounds, it increases the hash size, fillin the hash in with empty strings.
 	* \param szKey The key of the element to retrieve

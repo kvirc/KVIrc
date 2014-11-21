@@ -61,8 +61,8 @@ protected:
 	QTextCodec * m_pTextCodec;
 public:
 	/**
-	* \brief 
-	* \param szName 
+	* \brief
+	* \param szName
 	* \return bool
 	*/
 	bool load(const QString & szName);

@@ -355,8 +355,8 @@ bool KviSSL::initContext(Method m)
 	{
 		// we have to request the peer certificate, else only the client can see the peer identity, not the server
 		SSL_CTX_set_verify(m_pSSLCtx, SSL_VERIFY_PEER, verify_clientCallback);
-	} 
-	
+	}
+
 	// we want all ciphers to be available here, except insecure ones, orderer by strength;
 	// ADH are moved to the end since they are less secure, but they don't need a certificate
 	// (so we can use secure dcc without a cert)
@@ -547,7 +547,7 @@ KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 	SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
 #endif
 	if(!c)return 0;
-	return new KviSSLCipherInfo(c);
+	return new KviSSLCipherInfo(c, m_pSSL);
 }
 
 
@@ -621,7 +621,7 @@ bool KviSSLCertificate::fingerprintIsValid()
 
 	EVP_PKEY * pkey = X509_get_pubkey(m_pX509);
 	int rv = X509_verify(m_pX509, pkey);
-	
+
 	// careful: https://support.ntp.org/bugs/show_bug.cgi?id=1127
 	// quote: X509_verify is a call to ASN1_item_verify which can return both 0 and -1 for error cases.
 	// In particular it can return -1 when the message digest type is not known, or memory allocation failed.
@@ -632,33 +632,33 @@ int KviSSLCertificate::fingerprintDigestId()
 {
 	if(!m_pX509)
 		return -1;
-	
+
 	int NID = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
-	if (NID == NID_undef) 
+	if (NID == NID_undef)
 	{
 		// unknow digest function: it means the signature can't be verified: the certificate can't be trusted
 		return 0;
 	}
-	
+
 	const EVP_MD * mdType = NULL;
 	mdType = EVP_get_digestbyname(OBJ_nid2sn(NID));
-	
-	if (mdType == NULL) 
+
+	if (mdType == NULL)
 	{
 		// Unknown digest
 		return 0;
 	}
-	
+
 	return mdType->type;
 }
 
 const char * KviSSLCertificate::fingerprintDigestStr()
 {
 	int iDigestType = fingerprintDigestId();
-	
+
 	if(iDigestType == 0)
 		return "";
-	
+
 	return OBJ_nid2ln(iDigestType);
 }
 
@@ -674,10 +674,10 @@ const char * KviSSLCertificate::fingerprintContents(QString digestName)
 	} else {
 		pDigestName = digestName.toUtf8().data();
 	}
-	
+
 	if(getFingerprint(bufferData, &bufferLen, pDigestName) != 0)
 		return "";
-	
+
 	QByteArray digestByteArray = QByteArray::fromRawData((char *) bufferData, bufferLen);
 	return digestByteArray.toHex().data();
 }
@@ -688,21 +688,21 @@ int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int *
 	// doesn't collide with the one from openssl
 	if(!m_pX509)
 		return -99;
-	
+
 	const EVP_MD * mdType = NULL;
 	mdType = EVP_get_digestbyname(digestName);
-	
-	if (mdType == NULL) 
+
+	if (mdType == NULL)
 	{
 		// Unknown digest
 		return -98;
 	}
-	
+
 	if (!X509_digest(m_pX509, mdType, bufferData, bufferLen))
 	{
 		return -97;
 	}
-	
+
 	return 0;
 }
 
@@ -829,12 +829,12 @@ const char * KviSSLCertificate::verify()
 */
 
 #if OPENSSL_VERSION_NUMBER >= 0x10000000L
-KviSSLCipherInfo::KviSSLCipherInfo(const SSL_CIPHER * c)
+KviSSLCipherInfo::KviSSLCipherInfo(const SSL_CIPHER * c, const SSL * s)
 #else
-KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c)
+KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c, SSL * s)
 #endif
 {
-	m_szVersion = SSL_CIPHER_get_version(c);
+	m_szVersion = SSL_get_version(s);
 	m_iNumBitsUsed = SSL_CIPHER_get_bits(c,&m_iNumBits);
 	m_szName = SSL_CIPHER_get_name(c);
 	char buf[1024];

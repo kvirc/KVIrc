@@ -69,7 +69,7 @@ The source tree
 |   |
 |   |-- config            A pkgconfig-like tool to get info about KVIrc paths
 |   |
-|   `-- pydocparser       A python script to create html user documentation; an 
+|   `-- pydocparser       A python script to create html user documentation; an
 |                         alternative to admin/gendoc.pl
 |
 |-- src                   The sources
@@ -288,7 +288,7 @@ The source tree
 |       |
 |       `-- zzz_afterlastmodule A dummy module used by the compilation
 |                         process to execute last-minute cleanup
-|    
+|
 |
 `-- win32build            The directory for Windows builds
 
@@ -912,7 +912,7 @@ following scheme (R means 'stable public release'):
 trunk: N.0.0--N.1.0--N.1.1--N.1.2--N.1.3--N.2.0--N.3.0--N.3.1--N.4.0--N.5.0
          |                                  |                    |
 branch:  +--N.0.1--N.0.2--N.0.3--N.0.4      +--N.2.1--N.2.2      +--N.4.1-...
-                     R             R                    R  
+                     R             R                    R
 
 - Official, semi-official and unofficial packages
 

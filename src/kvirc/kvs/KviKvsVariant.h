@@ -332,7 +332,7 @@ public:
 /**
 * \class KviKvsVariant
 * \brief This class defines a new data type which contains variant data
-* 
+*
 * A variant data is a data which can assume different data types. This is very useful when you
 * don't know in advance which data type you have to manage.
 * \warning This class must NOT have virtual functions nor destructor otherwise it will happily
@@ -350,7 +350,7 @@ public:
 
 	/**
 	* \brief Constructs the variant data
-	* 
+	*
 	* This is a carbon copy
 	* \param variant The variant data to use as a copy
 	* \return KviKvsVariant
@@ -644,7 +644,7 @@ public:
 
 	/**
 	* \brief Casts the variant data to a number
-	* 
+	*
 	* Always evaluates to some number
 	* \param number The string buffer to save
 	* \return void
@@ -653,7 +653,7 @@ public:
 
 	/**
 	* \brief Casts the variant data to an integer
-	* 
+	*
 	* Always evaluates to an integer
 	* \param iVal The integer buffer to save
 	* \return void
@@ -662,7 +662,7 @@ public:
 
 	/**
 	* \brief Casts the variant data to an array
-	* 
+	*
 	* Always evaluates to an array
 	* \param pCast The array buffer to save
 	* \return void
@@ -754,7 +754,7 @@ public:
 
 	/**
 	* \brief Compares two variants
-	* 
+	*
 	* Returns -1 if this variant is greater than the other, 0 if they are equal, 1 if the
 	* other is greater.
 	* If bPreferNumeric is true then a conversion to a numeric format is first attempted

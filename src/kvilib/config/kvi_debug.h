@@ -41,7 +41,7 @@
 
 	#define kvi_debug(fmt,arg...) qDebug(fmt,##arg)
 	#define kvi_warning(fmt,arg...) qWarning(fmt,##arg)
-	#define kvi_fatal(fmt,arg...) do { qFatal(fmt,##arg); abort(); } while(0) 
+	#define kvi_fatal(fmt,arg...) do { qFatal(fmt,##arg); abort(); } while(0)
 	#define KVI_PRETTY_FUNCTION __PRETTY_FUNCTION__
 
 #else //!__GNUC__
@@ -50,7 +50,7 @@
 
 	#define kvi_debug(fmt,...) qDebug(fmt,__VA_ARGS__)
 	#define kvi_warning(fmt,...) qWarning(fmt,__VA_ARGS__)
-	#define kvi_fatal(fmt,...) do { qFatal(fmt,__VA_ARGS__); abort(); } while(0) 
+	#define kvi_fatal(fmt,...) do { qFatal(fmt,__VA_ARGS__); abort(); } while(0)
 	#define KVI_PRETTY_FUNCTION __FUNCTION__
 
 #endif //!__GNUC__
@@ -89,7 +89,7 @@
 	// But this doesn't work since the specification of the token pasting operator is
 	//
 	// "If a formal parameter in a macro definition is preceded or followed by the token-pasting operator,
-	// the formal parameter is immediately replaced by the __unexpanded__ actual argument. Macro expansion 
+	// the formal parameter is immediately replaced by the __unexpanded__ actual argument. Macro expansion
 	// is __not performed__ on the argument prior to replacement."
 	//
 	// So to actually have __LINE__ expanded we need another level of indirection
@@ -107,7 +107,7 @@
 
 		#define KVI_TRACE_BLOCK(_szBlockDescription) \
 				KviDebugContext KVI_TRACE_HACK_TOKENPASTE_1(ctx,__LINE__)("%s - %s",__PRETTY_FUNCTION__,_szBlockDescription)
-		
+
 		#define KVI_TRACE(_szFmt,arg...) KviDebugContext::trace(_szFmt,##arg)
 
 	#else
@@ -136,8 +136,8 @@
 		#define KVI_TRACE(_szFmt,arg...) do { } while(0)
 	#else
 		#define KVI_TRACE(_szFmt,...) do { } while(0)
-	#endif 
-	
+	#endif
+
 #endif //!COMPILE_DEBUG_MODE
 
 

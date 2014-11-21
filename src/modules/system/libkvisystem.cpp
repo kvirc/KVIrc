@@ -420,7 +420,7 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		<variant> $system.dbus(<service:string>,<path:string>,<interface:string>,<method:string>[,<bus_type:string>[,<parameter1:string>[,<parameter2:string>[,...]]]])
 	@description:
 		This function allows performing simple Dbus calls without executing
-		an external process. This feature is available ONLY under unix: 
+		an external process. This feature is available ONLY under unix:
 		this means that this function is absolutely
 		non portable (don't use it in scripts that you're going to distribute).
 		<application> is the name of the application being called, <objectid> is the
@@ -475,7 +475,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 		szBusType = "session";
 
 	QDBusConnection busType("");
-	
+
 	if(szBusType == "system")
 	{
 		busType = QDBusConnection::systemBus();
@@ -485,7 +485,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 		c->warning(__tr2qs("No DBus type specified"));
 		return false;
 	}
-	
+
 	if(szService.left(1).compare("?")==0)
 	{
 		szService.remove(0,1);

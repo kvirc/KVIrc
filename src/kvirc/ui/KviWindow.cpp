@@ -126,7 +126,7 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 	m_pCryptController       = 0;
 	m_pCryptSessionInfo      = 0;
 #endif
-	
+
 	setMinimumSize(KVI_WINDOW_MIN_WIDTH,KVI_WINDOW_MIN_HEIGHT);
 	//setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
@@ -519,7 +519,7 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 	QString szDate;
 	QDate date(QDate::currentDate());
 
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat)) 
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 1:
 			szDate = date.toString(Qt::ISODate);
@@ -548,7 +548,7 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 		szTmp = "%1_%2_%3.log";
 
 	szLog.append(QString(szTmp).arg(typeString(),szBase,szDate));
-	
+
 	szBuffer=szLog;
 }
 
@@ -593,7 +593,7 @@ void KviWindow::loadProperties(KviConfigurationFile * pCfg)
 		szKey += m_szName;
 		szCodec=pCfg->readEntry(szKey,KviQString::Empty);
 	}
-	
+
 	setTextEncoding(szCodec.toUtf8().data());
 	if(m_pInput)
 	{
@@ -679,7 +679,7 @@ void KviWindow::createSystemTextEncodingPopup()
 		g_pMdiWindowSystemTextEncodingCurrentAction = g_pMdiWindowSystemTextEncodingPopup->addAction(__tr2qs("Current: "));
 		g_pMdiWindowSystemTextEncodingActionGroup->addAction(g_pMdiWindowSystemTextEncodingCurrentAction);
 		g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(false);
-		
+
 		// other first level menus
         g_pMdiWindowSystemTextEncodingPopup->addSeparator();
 
@@ -706,7 +706,7 @@ void KviWindow::createSystemTextEncodingPopup()
 				pPopupSmart[u] = g_pMdiWindowSystemTextEncodingPopupSmart->addMenu(pcEncodingGroup);
 				pPopupSmartUtf8[u] = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->addMenu(pcEncodingGroup);
 			}
-			
+
 			pcEncodingGroup = KviLocale::instance()->encodingGroup(++u);
 		}
 
@@ -724,12 +724,12 @@ void KviWindow::createSystemTextEncodingPopup()
 				g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(true);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setData(i);
 			}
-			
-			QMenu * pMenu = pDesc->bSmart ? (pDesc->bSendUtf8 ? 
-				pPopupSmartUtf8[pDesc->uGroup] : 
+
+			QMenu * pMenu = pDesc->bSmart ? (pDesc->bSendUtf8 ?
+				pPopupSmartUtf8[pDesc->uGroup] :
 				pPopupSmart[pDesc->uGroup]
 			) : pPopupStandard[pDesc->uGroup];
-		
+
 			QAction * pAction = pMenu->addAction(szTmp);
 			pAction->setData(i);
 			g_pMdiWindowSystemTextEncodingActionGroup->addAction(pAction);

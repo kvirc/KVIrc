@@ -112,7 +112,7 @@ void KviModeWidget::editorReturnPressed()
 			char cMode = szSubstring.at(0).unicode();
 			szSubstring.remove(0,2);
 
-			if(!m_pChannel->hasChannelMode(cMode) || 
+			if(!m_pChannel->hasChannelMode(cMode) ||
 				(szSubstring != m_pChannel->channelModeParam(cMode)))
 			{
 				// mode was not set before, or the parameter has changed
@@ -132,7 +132,7 @@ void KviModeWidget::editorReturnPressed()
 			}
 		}
 	}
-	
+
 	// check for any mode that has been unset
 	for(int i=0; i<szOldModes.count(); ++i)
 	{
@@ -218,7 +218,7 @@ void KviModeWidget::editorReturnPressed()
 				szParameters.clear();
 			}
 			iModes=0;
-			
+
 			emit setMode(szCommitModes);
 		}
 	}
@@ -248,7 +248,7 @@ void KviModeWidget::editorReturnPressed()
 				szParameters.clear();
 			}
 			iModes=0;
-			
+
 			emit setMode(szCommitModes);
 		}
 	}

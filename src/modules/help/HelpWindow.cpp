@@ -58,7 +58,7 @@ HelpWindow::HelpWindow(const char * name)
 
 	m_pHelpWidget = new HelpWidget(m_pSplitter);
 
-	m_pToolBar=new KviTalVBox(m_pSplitter);	
+	m_pToolBar=new KviTalVBox(m_pSplitter);
 	m_pTabWidget = new QTabWidget(m_pToolBar);
 
 	m_pBottomLayout = new KviTalHBox(m_pToolBar);

@@ -202,7 +202,7 @@ void KviIrcConnection::setEncoding(const QString & szEncoding)
 				q->output(KVI_OUT_VERBOSE,__tr2qs("Changed text encoding to %Q"),&szTmp);
 		}
 	}
-	
+
 	m_pSrvCodec = c;
 	m_pTextCodec = c;
 	m_pConsole->setTextEncoding(szEncoding);
@@ -1458,7 +1458,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	m_pUserInfo->setUserName(szTmpUser);
-	
+
 	// Nick
 	if(pServer->reconnectInfo())
 		szTmpNick=pServer->reconnectInfo()->m_szNick;
@@ -1467,7 +1467,7 @@ void KviIrcConnection::loginToIrcServer()
 	m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedConnectionSpecificNickName);
 
 	QString szChoiceDescription;
-	
+
 	if(!szTmpNick.isEmpty())
 	{
 		szChoiceDescription = __tr2qs("connection specific");
@@ -1481,10 +1481,10 @@ void KviIrcConnection::loginToIrcServer()
 		QString szOut = __tr2qs("Using '%1' as nickname").arg(szTmpNick);
 		if(_OUTPUT_VERBOSE)
 			szOut += QString::fromLatin1(" (%1)").arg(szChoiceDescription);
-			
+
 		m_pConsole->outputNoFmt(KVI_OUT_VERBOSE,szOut);
 	}
-	
+
 	m_pUserInfo->setNickName(szTmpNick);
 
 	// Real name
@@ -1511,7 +1511,7 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		szTmpPass=pServer->reconnectInfo()->m_szPass;
 	}
-	
+
 	if(!szTmpPass.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
@@ -1540,7 +1540,7 @@ void KviIrcConnection::loginToIrcServer()
 			}
 		}
 	}
-	
+
 	m_pUserInfo->setPassword(szTmpPass);
 
 	// Check for identity profiles
@@ -1556,7 +1556,7 @@ void KviIrcConnection::loginToIrcServer()
 	QByteArray szUser = encodeText(m_pUserInfo->userName()); // never empty
 	QByteArray szReal = encodeText(m_pUserInfo->realName()); // may be empty
 	QByteArray szPass = encodeText(m_pUserInfo->password()); // may be empty
-	
+
 	if(!szReal.data())szReal = "";
 	if(!szPass.data())szReal = "";
 
@@ -1794,7 +1794,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 
 	// join saved channels
-	
+
 	// FIXME: It should be possible to delay the channel join process after identification
 	//        (or maybe just delay by a fixed amount ?)
 	//        (or maybe retry joining after a while ?)
@@ -1803,7 +1803,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	// There is no standard for this purpose. We might look at a special NOTICE by NickServ
 	// but the format is not well defined and we would need to make it user configurable.
 	// Not very reliable, actually :/
-	
+
 	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
 
 	if(!(m_pStateData->commandToExecAfterConnect().isEmpty()))
@@ -1813,7 +1813,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	}
 
 	bool bJoinStdChannels=true;
-	
+
 	if(target()->server()->reconnectInfo())
 	{
 		if(!target()->server()->reconnectInfo()->m_szJoinChannels.isEmpty())
@@ -1850,7 +1850,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		}
 		target()->server()->clearReconnectInfo();
 	}
-	
+
 	if(bJoinStdChannels)
 	{
 		if(target()->network()->autoJoinChannelList())

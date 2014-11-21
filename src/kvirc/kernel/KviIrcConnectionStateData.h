@@ -85,7 +85,7 @@ protected:
 	/// Note that in this case the STARTTLS support wasn't detected by a previous CAP LS
 	/// (which wasn't sent at all).
 	///
-	bool         m_bInsideInitialStartTls;              
+	bool         m_bInsideInitialStartTls;
 	bool         m_bIgnoreOneYouHaveNotRegisteredError; // true if we have sent a CAP LS request followed by a PING which will generate an error (and we need to ignore it)
 	bool         m_bInsideInitialCapReq;                 // true if there's a CAP REQ request pending
 	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending

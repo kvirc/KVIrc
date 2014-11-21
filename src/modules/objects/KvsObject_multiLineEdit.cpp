@@ -212,7 +212,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_textedit,"multilineedit","widget")
 
 	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setPointSize", functionsetPointSize)
 	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setReadOnly",functionSetReadOnly)
-	
+
 	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setTextFormat", functionsetTextFormat)
 	KVSO_REGISTER_HANDLER(KvsObject_textedit,"textFormat", functiontextFormat)
 	KVSO_REGISTER_HANDLER(KvsObject_textedit,"loadFile", functionloadFile);

@@ -249,7 +249,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pTreeWidget->setSortingEnabled(true);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 	m_pTreeWidget->setUniformRowHeights(true);
-	
+
 	m_pTreeWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	m_pTreeWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	m_pTreeWidget->header()->setStretchLastSection(false);

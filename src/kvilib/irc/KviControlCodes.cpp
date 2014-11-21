@@ -82,7 +82,7 @@ namespace KviControlCodes
 			szRet += szData.mid(iBegin,i - iBegin);
 		return szRet;
 	}
-	
+
 	const kvi_wchar_t * getColorBytesW(const kvi_wchar_t * pwData, unsigned char * pcByte1, unsigned char * pcByte2)
 	{
 		//

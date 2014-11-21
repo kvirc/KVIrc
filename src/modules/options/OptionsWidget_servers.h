@@ -64,7 +64,7 @@ public:
 	{
 		return m_pServerData;
 	}
-	
+
 	KviIrcNetwork * networkData() const
 	{
 		return m_pNetworkData;

@@ -46,7 +46,7 @@
 
 #if defined(COMPILE_SSL_SUPPORT)
 
-	// Apple deprecated openssl since osx 10.7: 
+	// Apple deprecated openssl since osx 10.7:
 
 	#ifdef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
 		#undef DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
@@ -262,7 +262,7 @@ static bool file_kvs_cmd_writeBytes(KviKvsModuleCommandCall * c)
 {
 	QString szFileName;
 	KviKvsArray * pArray = NULL;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)
 		KVSM_PARAMETER("dataArray",KVS_PT_ARRAY,0,pArray)
@@ -1107,7 +1107,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	bool bLocal8Bit = c->switches()->find('l',"local-8-bit");
 	bool bNoSeparator = c->switches()->find('n',"no-separator");
 	bool bAddCR = c->switches()->find('c',"crlf");
-	
+
 	if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 	{
 		if(!c->switches()->find('q',"quiet"))
@@ -1410,7 +1410,7 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szPath.isEmpty())
 		szPath = ".";
-	
+
 	const char * pcPath = szPath.toUtf8().data();
 	long long int fTotal;
 	long long int fFree;
@@ -1467,7 +1467,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		c->warning(__tr2qs("Can't open the file '%Q' for reading"),&szFile);
 		return true;
 	}
-	
+
 	QByteArray content = file.readAll();
 	if(content.isEmpty())
 	{

@@ -112,7 +112,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 // 	qDebug("adddata signal %p stream size %d",m_pVideoSignal, stream->size() );
 	if(stream->size()==0)return;
 	/* Ogg file open; parse the headers */
-		
+
 	if(!stateflag)
 	{
 
@@ -209,7 +209,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 		geometry.frame_h = ti.frame_height;
 		geometry.pic_x = ti.pic_x;
 		geometry.pic_y = ti.pic_y;
-		
+
 		px_fmt=ti.pixel_fmt;
 		switch(ti.pixel_fmt)
 		{
@@ -326,7 +326,7 @@ void KviOggTheoraDecoder::video_write(void)
 			out[j*4+2]   = OC_CLAMP255(r);
 			out[j*4+3]   = 255; //alpha
 		}
-		
+
 	}
 
 	int size = sizeof(char) * geometry.pic_w * geometry.pic_h * ARGB32_BPP;

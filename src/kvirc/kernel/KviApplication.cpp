@@ -112,10 +112,10 @@
 	#include <QCommonStyle>
 #endif
 
-#ifdef COMPILE_ON_WINDOWS
+#ifdef COMPILE_ON_WINDOWS || defined(COMPILE_ON_MINGW)
 	#include <QPluginLoader>
-	#if (QT_VERSION >= 0x050000) 
-		#include <QtWinExtras>
+	#if (QT_VERSION >= 0x050000)
+		#include <QtWin>
 	#endif
 #endif
 
@@ -831,7 +831,7 @@ Let's see the scheme to understand which is choosen:
 
 				KviFileUtils::writeFile(szFileName,szKNotifyConfig);
 			}
-		
+
 			bKNotifyConfigFileChecked = true;
 		}
 
@@ -889,7 +889,7 @@ Let's see the scheme to understand which is choosen:
 		if(!pIcon)
 			pIcon = g_pIconManager->getSmallIcon(eIcon);
 
-		
+
 		KNotification * pNotify = 0;
 #if KDE_IS_VERSION(4,4,0)
 		pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
@@ -901,7 +901,7 @@ Let's see the scheme to understand which is choosen:
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
-		pNotify->setComponentData(KComponentData(aboutData())); 
+		pNotify->setComponentData(KComponentData(aboutData()));
 
 		connect(pNotify,SIGNAL(activated()),this,SLOT(showParentFrame()));
 		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(showParentFrame()));
@@ -1798,7 +1798,7 @@ void KviApplication::createFrame()
 	Q_ASSERT(g_pMainWindow == 0);
 
 	new KviMainWindow();
-	
+
 	Q_ASSERT(g_pMainWindow != 0);
 
 	g_pMainWindow->createNewConsole(true);

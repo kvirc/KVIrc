@@ -58,7 +58,7 @@ bool KviThemeInfo::load(const QString &szThemeFileName,bool bBuiltin)
 {
 	m_bBuiltin = bBuiltin;
 	m_szSubdirectory = szThemeFileName;
-	
+
 	QString szThemePath;
 	getCompleteDirPath(szThemePath);
 

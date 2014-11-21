@@ -76,12 +76,12 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
 	m_pLayout->addWidget(m_pTextBrowser);
 	connect(m_pTextBrowser,SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
-	
+
 	// lower toolbar
 	m_pToolBarHighlight = new QToolBar(this);
 	m_pLayout->addWidget(m_pToolBarHighlight);
 	m_pToolBarHighlight->hide();
-	
+
 	QLabel *pHighlightLabel = new QLabel();
 	pHighlightLabel->setText(__tr2qs("Highlight: "));
 	m_pToolBarHighlight->addWidget(pHighlightLabel);

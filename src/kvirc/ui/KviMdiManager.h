@@ -102,7 +102,7 @@ public:
 	* \return QMenu *
 	*/
 	inline QMenu * windowPopup() { return m_pWindowPopup; };
- 
+
 	/**
 	* \brief Move the focus the the previous active window
 	* \return void

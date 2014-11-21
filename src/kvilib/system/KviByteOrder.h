@@ -50,7 +50,7 @@ namespace KviByteOrder
 			((i >> 40) & 0xff00) |     /* b to g */
 			(i >> 56));                /* a to h */
 	}
-	
+
 	/**
 	* \brief Swaps the endianess of a kvi_u32_t
 	*
@@ -62,7 +62,7 @@ namespace KviByteOrder
 		// abcd to dcba
 		return ((i << 24) | ((i & 0xff00) << 8) | ((i >> 8) & 0xff00) | (i >> 24));
 	}
-	
+
 	/**
 	* \brief Swaps the endianess of a kvi_u16_t
 	*
@@ -74,7 +74,7 @@ namespace KviByteOrder
 		// ab to ba
 		return ((i << 8) | (i >> 8));
 	}
-	
+
 
 	//
 	// Byte Orders Reminder
@@ -94,7 +94,7 @@ namespace KviByteOrder
 	{
 		return swap16(u);
 	}
-	
+
 	inline kvi_u32_t localCpuToLittleEndian32(kvi_u32_t u)
 	{
 		return swap32(u);
@@ -124,7 +124,7 @@ namespace KviByteOrder
 	{
 		return u;
 	}
-	
+
 	inline kvi_u32_t localCpuToBigEndian32(kvi_u32_t u)
 	{
 		return u;
@@ -154,7 +154,7 @@ namespace KviByteOrder
 	{
 		return u;
 	}
-	
+
 	inline kvi_u32_t localCpuToNetworkByteOrder32(kvi_u32_t u)
 	{
 		return u;
@@ -191,7 +191,7 @@ namespace KviByteOrder
 	{
 		return u;
 	}
-	
+
 	inline kvi_u32_t localCpuToLittleEndian32(kvi_u32_t u)
 	{
 		return u;
@@ -221,7 +221,7 @@ namespace KviByteOrder
 	{
 		return swap16(u);
 	}
-	
+
 	inline kvi_u32_t localCpuToBigEndian32(kvi_u32_t u)
 	{
 		return swap32(u);
@@ -253,7 +253,7 @@ namespace KviByteOrder
 	{
 		return swap16(u);
 	}
-	
+
 	inline kvi_u32_t localCpuToNetworkByteOrder32(kvi_u32_t u)
 	{
 		return swap32(u);

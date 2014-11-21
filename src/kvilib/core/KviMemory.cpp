@@ -420,7 +420,7 @@ namespace KviMemory
 	//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 	//
 	//=============================================================================
-	
+
 	//=============================================================================
 	//
 	//   Inline assembly implementations of the commonly used string functions
@@ -428,7 +428,7 @@ namespace KviMemory
 	//   only by gcc
 	//
 	//=============================================================================
-	
+
 	inline bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
 	{
 		// An instruction pattern is really useful in this case.
@@ -454,7 +454,7 @@ namespace KviMemory
 		);
 		return bEax;
 	}
-	
+
 	inline bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
 		register bool bEax;
@@ -480,7 +480,7 @@ namespace KviMemory
 		);
 		return bEax;
 	}
-	
+
 	// OPTIMIZATION
 	// The following two functions are used to compare a variable string with one in that
 	// only A-Z<->a-z case insensivity is significant.
@@ -489,7 +489,7 @@ namespace KviMemory
 	// will always give the correct result
 	// These will NOT work with localizable characters:
 	// 'a' with umlaut will be not equal to 'A' with umlaut
-	
+
 	inline bool kvi_strEqualNoLocaleCI(const char * pcStr1, const char * pcStr2)
 	{
 		// Trivial implementation
@@ -529,10 +529,10 @@ namespace KviMemory
 		);
 		return bEax;
 	}
-	
+
 	inline bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
-	
+
 		register int iReg;
 		register bool bEax;
 		__asm__ __volatile__ (
@@ -585,7 +585,7 @@ namespace KviMemory
 		);
 		return iEcx;
 	}
-	
+
 
 #endif //0
 

@@ -96,7 +96,7 @@ public:
     void setDictionaryFile( const QString& );
     void setDocListFile( const QString& );
     void setDocList( const QStringList & );
-    
+
     const QStringList& documentList() { return docList; };
     const QStringList& titlesList() { return titleList; };
 

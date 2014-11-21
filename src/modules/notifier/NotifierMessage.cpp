@@ -36,7 +36,7 @@ NotifierMessage::NotifierMessage(QPixmap * pPixmap, const QString & szText)
 {
 	m_pLabel0 = 0;
 	m_pLabel1 = 0;
-	
+
 	m_szText=szText;
 	m_pPixmap=pPixmap;
 
@@ -88,8 +88,8 @@ void NotifierMessage::updateGui()
 	m_pLabel1->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
 	QPalette pal = m_pLabel1->palette();
 	pal.setColor(QPalette::WindowText, KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
-	m_pLabel1->setPalette(pal);	
-	
+	m_pLabel1->setPalette(pal);
+
 	if(bShowImages)
 	{
 		m_pHBox->setStretch(1,99);

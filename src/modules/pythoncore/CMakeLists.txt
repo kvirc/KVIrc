@@ -5,7 +5,7 @@ set(kvipythoncore_SRCS
 	kvircmodule.cpp
 )
 
-set(KVI_DEFAULT_FRAME_CAPTION "") 
+set(KVI_DEFAULT_FRAME_CAPTION "")
 
 set(kvi_module_name kvipythoncore)
 

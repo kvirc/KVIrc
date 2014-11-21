@@ -93,8 +93,8 @@ KviTrayIconWidget::KviTrayIconWidget()
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 	QWidgetAction * pAction = new QWidgetAction(this);
-	pAction->setDefaultWidget(m_pTitleLabel); 
-	m_pContextPopup->addAction(pAction); 
+	pAction->setDefaultWidget(m_pTitleLabel);
+	m_pContextPopup->addAction(pAction);
 
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);

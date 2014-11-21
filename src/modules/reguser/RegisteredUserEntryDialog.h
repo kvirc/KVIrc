@@ -107,7 +107,7 @@ protected:
 	QCheckBox          * m_pNotifyCheck;
 	QLineEdit          * m_pNotifyNick;
 	QLabel             * m_pNotifyLabel;
-	
+
 	KviPixmap          * m_pAvatar;
 	KviPixmapSelector  * m_pAvatarSelector;
 

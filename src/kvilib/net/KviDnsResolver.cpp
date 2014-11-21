@@ -373,9 +373,9 @@ KviDnsResolver::~KviDnsResolver()
 			qDebug("Failed to wait for the slave dns thread: we're probably going to crash!");
 		delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
 	}
-		
+
 	//QApplication::removePostedEvents(this); // the Qt doc says that we shouldn't need this
-		
+
 	if(m_pDnsResult)
 		delete m_pDnsResult;
 	if(m_pAuxData)

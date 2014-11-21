@@ -63,7 +63,7 @@ KviAction::~KviAction()
 		m_pActionList->setAutoDelete(true);
 		delete m_pActionList;
 	}
-	
+
 	if(m_pAccel)
 		unregisterAccelerator();
 }
@@ -91,7 +91,7 @@ void KviAction::registerAccelerator()
 	if(!m_szKeySequence.isEmpty())
 	{
 		g_pMainWindow->freeAccelleratorKeySequence(m_szKeySequence);
-		
+
 		m_pAccel = new QShortcut(m_szKeySequence,g_pMainWindow,0,0,Qt::ApplicationShortcut);
 		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
@@ -496,9 +496,9 @@ QAction * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)
 {
 	if(!setupDone())
 		setup();
-	
+
 	QPixmap * pPix = bigIcon();
-	
+
 	QAction * pAction = new QAction(pPix ? *pPix : QPixmap(), visibleName(), pParentToolBar);
 	// important: when customizing the toolbar, we'll get the action name from QAction::objectName();
 	pAction->setObjectName(m_szName);

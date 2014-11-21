@@ -389,13 +389,13 @@ bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow *
 		{
 			QString szPath;
 			g_pApp->getLocalKvircDirectory(szPath,KviApplication::None,szFileName);
-	
+
 			//qDebug("Uninstalling %s",szPath.toUtf8().data());
-	
+
 			QFileInfo inf(szPath);
 			if(!inf.exists())
 				continue;
-	
+
 			KviFileUtils::removeFile(szPath);
 		}
 		// FIXME: remove empty directories!!

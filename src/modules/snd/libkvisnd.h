@@ -124,12 +124,12 @@ public:
 	{
 		return m_pPlayRoutine;
 	}
-	
+
 	SoundSystemCleanupRoutine cleanupRoutine() const
 	{
 		return m_pCleanupRoutine;
 	}
-	
+
 };
 
 class KviSoundPlayer : public QObject

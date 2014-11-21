@@ -147,7 +147,7 @@ void KviStatusBar::dragMoveEvent(QDragMoveEvent *de)
 			pApplet=m_pAppletList->first();
 			newIndex = pApplet->index();
 		}
-		
+
 		//swap indexes
 		if(newIndex!=oldIndex)
 		{
@@ -220,7 +220,7 @@ void KviStatusBar::save()
 
 	//ensure the applets are correctly ordered
 	m_pAppletList->sort();
-	
+
 	int i = 0;
 	for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
 	{

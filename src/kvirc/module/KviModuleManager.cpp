@@ -215,7 +215,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 	KviModule * module = new KviModule(pLibrary,info,modName,szName.toUtf8().data());
 
 	// the module is probably up.. the only thing can fail is the init_routine now
-	
+
 	// load the message catalogue if any
 	if(info->szModuleContext)
 	{
@@ -231,7 +231,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 			KviLocale::instance()->loadCatalogue(info->szModuleContext,szDir);
 		}
 	}
-	
+
 	if(info->init_routine)
 	{
 		if(!((info->init_routine)(module)))

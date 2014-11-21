@@ -71,7 +71,7 @@
 		#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
 		#define KVIRC_API_TYPEDEF __declspec(dllimport)
 	#endif
-	
+
 // note: unofficial cmake ports defines OS2
 #elif defined(OS2)
 
@@ -124,7 +124,7 @@
 	// we failback on unix/linux variants
 	#define KVILIB_API __attribute__((visibility("default")))
 	#define KVILIB_API_TYPEDEF
-		
+
 	#define KVIRC_API __attribute__((visibility("default")))
 	#define KVIRC_API_TYPEDEF
 

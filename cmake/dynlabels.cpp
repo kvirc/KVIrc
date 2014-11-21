@@ -18,4 +18,4 @@ int main(int argc,char ** argv)
 		goto *label;
 	endofcode:
 		return retVal;
-} 
+}

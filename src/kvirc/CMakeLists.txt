@@ -306,7 +306,7 @@ if(APPLE)
 	# note: phonon_backend => mediaservice
 	# note: needs platform on osx
 	# note: check if printsupport is needed, too
-	
+
 	if(WANT_DEBUG)
 		install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
 			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/.*_debug\\.dylib")

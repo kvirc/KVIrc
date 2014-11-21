@@ -155,14 +155,14 @@ void OptionsWidget_soundGeneral::showEvent(QShowEvent *)
 		return;
 	// We fill these boxes only before the first show since the soundFillBox()
 	// is likely to trigger sound system-detection which may take time...
-	
+
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
-	
+
 	soundFillBox();
 	mediaFillBox();
-	
+
 	g_pApp->restoreOverrideCursor();
-	
+
 	m_bFirstShow = false;
 }
 
@@ -177,7 +177,7 @@ void OptionsWidget_soundGeneral::soundTest()
 		return; // doh
 
 	QString szFileName;
-	
+
 	if(!g_pApp->findAudioFile(szFileName,QString::fromUtf8("jingle.wav")))
 	{
 		qDebug("Can't find the jingle.wav file: was it shipped with your kvirc installation?");

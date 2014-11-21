@@ -187,7 +187,7 @@ KVIRC_API void freeSSL(KviSSL * s)
 KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QString szOptionalParam, KviKvsVariant * pRetBuffer)
 {
 	pRetBuffer->setString("");
-	
+
 	if(szQuery.compare("signatureType")==0)
 	{
 		pRetBuffer->setString(pCert->signatureType());
@@ -306,7 +306,7 @@ KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QStrin
 		pRetBuffer->setString(pCert->fingerprintContents(szOptionalParam));
 		return true;
 	}
-	
+
 	// the warning is displayed in the caller
 	return false;
 }

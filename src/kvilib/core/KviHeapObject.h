@@ -73,7 +73,7 @@
 	{
 	public:
 		/**
-		* \brief Overloading of the new operator 
+		* \brief Overloading of the new operator
 		*
 		* \param size_t size in bytes of the memory that has to be allocated
 		* \return void *

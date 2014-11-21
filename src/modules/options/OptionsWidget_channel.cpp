@@ -120,7 +120,7 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two channel requests:","options"),KviOption_uintOnJoinRequestsDelay,0,10,1);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	mergeTip(u,__tr2qs_ctx("<center>This is an artificial delay for the channel requests made on join.<br>You may increase it if your server complains about flooding when joining many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: <b>10 secs</b></center>","options"));
-	
+
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
 	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
 	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);

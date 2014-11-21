@@ -110,7 +110,7 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 
 	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
 	connect(m_pTable,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)));
-	
+
 	fillTable();
 }
 
@@ -128,7 +128,7 @@ void OptionsWidget_textIcons::fillTable()
 	header.append(__tr2qs("Emoticon"));
 	m_pTable->setHorizontalHeaderLabels(header);
 	m_pTable->setRowCount(g_pTextIconManager->textIconDict()->count());
-	
+
 	int idx = 0;
 	QTableWidgetItem *item0;
 	TextIconTableItem *item1;
@@ -148,7 +148,7 @@ void OptionsWidget_textIcons::fillTable()
 		++idx;
 		++it;
 	}
-	
+
 	// disable the delete button
 	m_pDel->setEnabled(false);
 }

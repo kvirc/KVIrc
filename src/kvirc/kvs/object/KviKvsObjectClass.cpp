@@ -160,7 +160,7 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 		pObject->dieNow();
 		return 0;
 	}
-	
+
 	if(!ret.isEmpty())
 		pContext->warning(__tr2qs_ctx("It's not allowed to return values in the constructor","kvs"));
 

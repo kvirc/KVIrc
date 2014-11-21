@@ -165,7 +165,7 @@ namespace KviSASL
 		 * 4) our password, crypted using blowfish in ecb mode and the dh secret as the blowfish key
 		 * Then, the answer is to be base64 encoded.
 		 */
-		
+
 		int answerLen = 2 + pKlen + baNick.size() + 1 + passLen;
 		char * answer = (char *) malloc(answerLen);
 		char * answer2 = answer;

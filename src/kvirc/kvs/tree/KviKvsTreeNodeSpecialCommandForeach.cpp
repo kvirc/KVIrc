@@ -115,7 +115,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							idx++;
 							continue;
 						}
-						
+
 					}
 					delete v; // we're done with it for this iteration
 
@@ -156,7 +156,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
 					if(!v)
 						return false;
-					
+
 					if(bIncludeEmptyScalars || (!pOne->isEmpty()))
 					{
 						v->result()->copyFrom(*pOne);

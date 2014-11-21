@@ -78,7 +78,7 @@ if(MANUAL_REVISION_UNSET)
 		find_package(Subversion)
 		if(Subversion_FOUND)
 			message(STATUS "Found Subversion ${Subversion_VERSION_SVN}")
-			
+
 			# Subversion_WC_INFO is buggy and will croak if ran on a directory that is not checked out from svn
 
 			# SVN info does not like .. as paths, so be sure that we use a full path
@@ -90,7 +90,7 @@ if(MANUAL_REVISION_UNSET)
 					ERROR_VARIABLE IGNORED
 				)
 			if(INFO_RESULT EQUAL 0)
-				Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc) 
+				Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
 				if(DEFINED KVIrc_WC_REVISION)
 					set(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
 					message(STATUS "Current revision is ${KVIrc_WC_REVISION}")
@@ -217,7 +217,7 @@ else()
 		else()
 			if(MSVC AND WANT_QT4)
 				# this is the equivalent of -O0 -g according to MSDN
-				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t 
+				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
 				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t-")
 				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t-")
 			elseif(MSVC)
@@ -443,7 +443,7 @@ if(Qt4_FOUND)
 	set(QT_USE_QTXML true)
 	set(QT_USE_QTNETWORK true)
 
-	# Qt-DBus support	
+	# Qt-DBus support
 	if(WANT_QTDBUS)
 		if(QT_QTDBUS_FOUND)
 			set(QT_USE_QTDBUS true)
@@ -481,10 +481,10 @@ if(Qt4_FOUND)
 		set(CMAKE_STATUS_QTSVG_SUPPORT "No")
 	endif()
 
-	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it. 
-	if(MSVC AND NOT WANT_DEBUG) 
-		set(QT_USE_QTMAIN true) 
-	endif() 
+	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it.
+	if(MSVC AND NOT WANT_DEBUG)
+		set(QT_USE_QTMAIN true)
+	endif()
 
 	include(${QT_USE_FILE})
 	include_directories(${QT_INCLUDES})
@@ -531,7 +531,7 @@ if(Qt5Widgets_FOUND)
 		list(APPEND qt5_kvirc_modules Multimedia)
 	endif()
 
-	# Qt-DBus support	
+	# Qt-DBus support
 	if(WANT_QTDBUS)
 		find_package(Qt5DBus)
 		if(Qt5DBus_FOUND)

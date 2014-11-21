@@ -235,7 +235,7 @@ public:
 	* \return bool
 	*/
 	bool getLocalHostIp(QString & szIp, bool bIPv6);
-	
+
 	/**
 	* \brief Clears the output queue
 	* \param bPrivateMessagesOnly Whether to clear only private messages

@@ -57,28 +57,28 @@ protected:
 	QString m_szId; // the identity set name
 
 	QString m_szNickName;
-	
+
 	QString m_szAltNickName1;
 	QString m_szAltNickName2;
 	QString m_szAltNickName3;
-	
+
 	QString m_szUserName;
 	QString m_szRealName;
 	QString m_szPassword;
-	
+
 	KviPixmap m_pixAvatar;
-	
+
 	QString m_szPartMessage;
 	QString m_szQuitMessage;
-	
+
 	QString m_szAge;
 	QString m_szGender;
 	QString m_szLocation;
 	QString m_szLanguages;
 	QString m_szOtherInfo;
-	
+
 	QString m_szUserMode;
-	
+
 	QString m_szOnConnectCommand;
 	QString m_szOnLoginCommand;
 public:

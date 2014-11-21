@@ -424,7 +424,7 @@ void KviIconWidget::init()
 	int iRows = KviIconManager::IconCount / 20;
 	if((iRows * 20) < KviIconManager::IconCount)
 		iRows++;
-	
+
 	QGridLayout * pLayout = new QGridLayout(this);
 	int i;
 	for(i = 0; i < 20; i++)
@@ -553,7 +553,7 @@ KviIconManager::~KviIconManager()
 
 	if(m_pIconWidget)
 		delete m_pIconWidget;
-	
+
 	int i;
 
 	for(i=0; i < KviIconManager::IconCount; i++)
@@ -1087,7 +1087,7 @@ QPixmap * KviIconManager::getImage(const QString & szId, bool bCanBeNumber, QStr
 				iIdx = getSmallIconIdFromName(szTmp.trimmed());
 				if(iIdx >= 0)
 					return getSmallIcon(iIdx % KviIconManager::IconCount);
-				
+
 			}
 		}
 	}

@@ -102,7 +102,7 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget, 
 	m_bInternal           = false;
 	m_bClassModified      = false;
 	QPixmap * pIcon       = 0;
-	
+
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
 	else
@@ -121,14 +121,14 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(ClassEditorTreeWidgetItem *
 	m_iPos                = 0;
 	m_bClassModified      = false;
 	QPixmap * pIcon       = 0;
-	
+
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
 	else if(eType == ClassEditorTreeWidgetItem::Class)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
 	else
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Function);
-	
+
 	setIcon(0,QIcon(*pIcon));
 }
 
@@ -136,12 +136,12 @@ void ClassEditorTreeWidgetItem::setClassNotBuilt(bool bModified)
 {
 	m_bClassModified = bModified;
 	QPixmap * pIcon = 0;
-	
+
 	if(bModified)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::ClassNotBuilt);
 	else
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
-	
+
 	setIcon(0,QIcon(*pIcon));
 }
 
@@ -155,14 +155,14 @@ void ClassEditorTreeWidgetItem::setType(Type eType)
 {
 	m_eType = eType;
 	QPixmap * pIcon = 0;
-	
+
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
 	else if(eType == ClassEditorTreeWidgetItem::Class)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
 	else
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Function);
-	
+
 	setIcon(0,QIcon(*pIcon));
 }
 
@@ -290,7 +290,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::findItem(const QString & szFullNa
 	ClassEditorTreeWidgetItem * pItem = findTopLevelItem(lNamespaces.at(0));
 	if(!pItem)
 		return 0;
-	
+
 	for(int i=1; i < lNamespaces.count(); i++)
 	{
 		bFound = false;
@@ -313,7 +313,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::createFullItem(const QString & sz
 {
 	bool bFound;
 	int i;
-	
+
 	QStringList lNamespaces = szFullName.split("::");
 	if(lNamespaces.count() == 0)
 		return 0;
@@ -350,7 +350,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::createFullNamespace(const QString
 {
 	bool bFound;
 	int i;
-	
+
 	QStringList lNamespaces = szFullName.split("::");
 	if(lNamespaces.count() == 0)
 		return 0;
@@ -385,13 +385,13 @@ void ClassEditorWidget::oneTimeSetup()
 	QString szPath;
 	g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes);
 	QDir d(szPath);
-	
+
 	QString szExtension = QString("*%1").arg(KVI_FILEEXTENSION_SCRIPT); // *.kvs
 	sl = d.entryList(QStringList(szExtension), QDir::Files | QDir::NoDotAndDotDot);
-	
+
 	g_pModuleManager->getModule("objects");
 	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-	
+
 	KviKvsObjectClass * pClass = 0;
 	ClassEditorTreeWidgetItem * pClassItem = 0;
 	while(KviKvsObjectClass * pClass = it.current())
@@ -546,13 +546,13 @@ void ClassEditorWidget::renameFunction()
 			return;
 		}
 	}
-	
+
 	pFunction->setName(szNewFunctionName);
 	pFunction->setReminder(szNewReminder);
 	currentItemChanged(pFunction,pFunction);
 	pFunction->setInternalFunction(bInternal);
 	pParentClass->setClassNotBuilt(true);
-	
+
 	KviPointerList<ClassEditorTreeWidgetItem> lInheritedClasses;
 	lInheritedClasses.setAutoDelete(false);
 	searchInheritedClasses(szClassName,lInheritedClasses);
@@ -633,7 +633,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 	m_pClasses->insert(szNewClassName,pClassItem);
 	pClassItem->setInheritsClass(szNewInheritsClassName);
 	pClassItem->setClassNotBuilt(true);
-	
+
 	KviPointerList<ClassEditorTreeWidgetItem> lInheritedClasses;
 	lInheritedClasses.setAutoDelete(false);
 	searchInheritedClasses(szClassName,lInheritedClasses);
@@ -643,7 +643,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		lInheritedClasses.at(i)->setExpanded(true);
 		lInheritedClasses.at(i)->setInheritsClass(szNewClassName);
 	}
-	
+
 	if(pNewItem)
 	{
 		activateItem(pNewItem);
@@ -652,7 +652,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		activateItem(pClassItem);
 		pClassItem->setExpanded(true);
 	}
-	
+
 	qDebug("delete class %s caused by rename",szClassName.toUtf8().data());
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 	if(pClass)
@@ -773,15 +773,15 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		m_pEditor->setEnabled(false);
 		return;
 	}
-	
+
 	ClassEditorTreeWidgetItem * pClassItem = 0;
 	if(m_pLastEditedItem->isMethod())
 		pClassItem = (ClassEditorTreeWidgetItem *)m_pLastEditedItem->parent();
 	else
 		pClassItem = m_pLastEditedItem;
-	
+
 	QString szClassName = buildFullClassName(pClassItem);
-	
+
 	if(m_pLastEditedItem->isNamespace())
 	{
 		QString szLabelText = __tr2qs_ctx("Namespace","editor");
@@ -798,7 +798,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		m_pTreeWidget->setFocus();
 		return;
 	}
-	
+
 	QString szLabelText = __tr2qs_ctx("Class","editor");
 	szLabelText += ": <b>";
 	szLabelText += szClassName;
@@ -826,7 +826,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 			m_pReminderLabel->setText(szReminderText);
 			m_pReminderLabel->show();
 		}
-		
+
 		m_pFunctionNameLabel->setText(szLabelText);
 		m_pFunctionNameLabel->show();
 		m_pFunctionNameRenameButton->show();
@@ -846,7 +846,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		QStringList szFunctionsList;
 		KviPointerHashTable<QString,ClassEditorTreeWidgetItem> lFunctions;
 		lFunctions.setAutoDelete(false);
-		
+
 		ClassEditorTreeWidgetItem * pItem = 0;
 		for(int i=0; i < pTree->childCount(); i++)
 		{
@@ -1103,7 +1103,7 @@ void ClassEditorWidget::exportSelected()
 void ClassEditorWidget::exportSelectionInSinglesFiles(KviPointerList<ClassEditorTreeWidgetItem> * pList)
 {
 	bool bReplaceAll = false;
-	
+
 	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))
 		m_szDir += KVI_PATH_SEPARATOR;
 	if(!pList->first())
@@ -1155,7 +1155,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 	QString szNameFile;
 	QString szFile;
 	int iCount = 0;
-	
+
 	saveLastEditedItem();
 
 	KviPointerList<ClassEditorTreeWidgetItem> list;
@@ -1165,13 +1165,13 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 		appendSelectedClassItems(&list);
 	else
 		appendAllClassItems(&list);
-	
+
 	if(bSingleFiles)
 	{
 		exportSelectionInSinglesFiles(&list);
 		return;
 	}
-	
+
 	ClassEditorTreeWidgetItem * pTempItem = 0;
 	KviPointerList<ClassEditorTreeWidgetItem> skiplist;
 	skiplist.setAutoDelete(false);
@@ -1200,7 +1200,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 			szOut += "\n";
 		}
 	}
-	
+
 	if(szOut.isEmpty())
 	{
 		g_pClassEditorModule->lock();
@@ -1213,7 +1213,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))
 		szName += KVI_PATH_SEPARATOR;
-	
+
 	g_pClassEditorModule->lock();
 
 	if(iCount != 1)
@@ -1222,7 +1222,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 		QString szTmp = buildFullClassName(pTempItem);
 		szNameFile = szTmp.replace("::","_");
 	}
-	
+
 	szName += szNameFile;
 	szName += ".kvs";
 	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,false,true,true))
@@ -1321,7 +1321,7 @@ void ClassEditorWidget::removeItemChildren(ClassEditorTreeWidgetItem * pItem, Kv
 			lInheritedClasses.at(u)->setInheritsClass("object");
 		}
 	}
-	
+
 	while(pItem->childCount() > 0)
 	{
 		ClassEditorTreeWidgetItem * pChild = (ClassEditorTreeWidgetItem *)(pItem->child(0));
@@ -1363,7 +1363,7 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 		{
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the function \"%1\"?","editor")).arg(szName);
 		}
-		
+
 		g_pClassEditorModule->lock();
 		int iRet = QMessageBox::question(this,__tr2qs_ctx("Remove item","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 		g_pClassEditorModule->unlock();
@@ -1577,7 +1577,7 @@ void ClassEditorWidget::newClass()
 	if(szClassName.isEmpty())
 		return;
 	ClassEditorTreeWidgetItem * pItem = newItem(szClassName,ClassEditorTreeWidgetItem::Class);
-	
+
 	KviQString::escapeKvs(&szClassName, KviQString::EscapeSpace);
 	KviQString::escapeKvs(&szinheritsClassName, KviQString::EscapeSpace);
 
@@ -1606,7 +1606,7 @@ void ClassEditorWidget::newMemberFunction()
 	QString szFunctionName;
 	QString szClassName;
 	QString szReminder;
-	
+
 	if(m_pLastClickedItem->isMethod())
 		m_pLastClickedItem = (ClassEditorTreeWidgetItem*)m_pLastClickedItem->parent();
 	szClassName = buildFullClassName(m_pLastClickedItem);
@@ -1615,7 +1615,7 @@ void ClassEditorWidget::newMemberFunction()
 		return;
 	if(szFunctionName.isEmpty())
 		return;
-	
+
 	ClassEditorTreeWidgetItem * pItem = newItem(szFunctionName,ClassEditorTreeWidgetItem::Method);
 	pItem->setInternalFunction(bInternal);
 	if(!szReminder.isEmpty())
@@ -1628,11 +1628,11 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::newItem(QString & szName, ClassEd
 {
 	if(m_pLastClickedItem)
 		buildFullItemPath(m_pLastClickedItem,szName);
-	
+
 	QString szTmp;
 	if(findItem(szName))
 		szName.append("1");
-	
+
 	int iIdx = 2;
 	while(findItem(szName))
 	{
@@ -1940,7 +1940,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	QRegExpValidator * pValidator = new QRegExpValidator(re,this);
 	m_pClassNameLineEdit->setValidator(pValidator);
 	m_pClassNameLineEdit->setObjectName("functionameineedit");
-	
+
 	pHBox = new KviTalHBox(this);
 	pHBox->setSpacing(0);
 	pHBox->setMargin(0);
@@ -1969,7 +1969,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 			szClasses.append(pBuiltinClasses.currentKey());
 		++pBuiltinClasses;
 	}
-	
+
 	int iCurrentIdx;
 	szClasses.sort();
 	for(int i=0; i < szClasses.count(); i++)
@@ -2004,7 +2004,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	pCancelButton->setObjectName("cancelButton");
 	pCancelButton->setText(__tr2qs_ctx("&Cancel","editor"));
 	connect(pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
-	
+
 	setLayout(pLayout);
 }
 
@@ -2081,7 +2081,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 	m_pFunctionNameLineEdit->setFocus();
 	pLabel->setBuddy(m_pInternalCheckBox);
 	connect(m_pFunctionNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
-	
+
 	pHBox->setAlignment(m_pInternalCheckBox,Qt::AlignLeft);
 	pHBox->setStretchFactor(m_pInternalCheckBox,70);
 	pHBox->setStretchFactor(pLabel,30);
@@ -2097,7 +2097,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 		m_pNewFunctionButton->setText(__tr2qs_ctx("&Add","editor"));
 	else
 		m_pNewFunctionButton->setText(__tr2qs_ctx("&Rename","editor"));
-	
+
 	if(szFunctionName.isEmpty())
 		m_pNewFunctionButton->setEnabled(false);
 	connect(m_pNewFunctionButton, SIGNAL(clicked()), this, SLOT(accept()));

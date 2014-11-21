@@ -28,10 +28,10 @@
 #include "KviOptions.h"
 
 //[05:10:48] <Nataly19> :2http://www.extrababes.com5Go ahead punk, make my day !
-//[05:11:04] <treeman>  :-ææ¸`ææ¸`ææ¸ -= for mp3's go to http://members.xoom.com/treemansmp3/start.htm 
-//						=- `ææ¸`ææ¸`ææ- 
+//[05:11:04] <treeman>  :-ææ¸`ææ¸`ææ¸ -= for mp3's go to http://members.xoom.com/treemansmp3/start.htm
+//						=- `ææ¸`ææ¸`ææ-
 //[05:10:51] <Suzi48498>:P*** **** squirms like CRAZY when **** licks between her ...
-//[05:12:11] <dea_>     :Hi my name is **** and I just posted pics of myself and 
+//[05:12:11] <dea_>     :Hi my name is **** and I just posted pics of myself and
 //						other hot girls on my website at http://133.16.114.32/~guest/
 //						tell me what you think!
 //[15:18:37] <JuL|aN^bZ> Join #Teens4eva...Have Fun PPl!!!

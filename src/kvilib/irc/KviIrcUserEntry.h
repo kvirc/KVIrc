@@ -89,7 +89,7 @@ protected:
 	int         m_iHops;
 	Gender      m_eGender;
 	QString     m_szUserFlags;
-	
+
 	bool        m_bAway;
 	bool        m_bIrcOp;
 
@@ -204,7 +204,7 @@ public:
 	* \return void
 	*/
 	void setUserFlags(const QString & szFlags){ m_szUserFlags = szFlags; };
-	
+
 	/**
 	* \brief Returns true if the user is marked as a bot
 	* \return bool

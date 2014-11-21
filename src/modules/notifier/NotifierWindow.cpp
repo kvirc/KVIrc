@@ -163,7 +163,7 @@ void NotifierWindow::updateGui()
 	palette.setColor(m_pLineEdit->foregroundRole(), KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
 	m_pLineEdit->setPalette(palette);
 	m_pLineEdit->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
-	
+
 	for(int i=0; i<m_pWndTabs->count();++i)
 	{
 		((NotifierWindowTab*)m_pWndTabs->widget(i))->updateGui();
@@ -265,7 +265,7 @@ void NotifierWindow::stopAutoHideTimer()
 
 #if COMPILE_KDE_SUPPORT
 	#include <kwindowsystem.h>
-	
+
 	static bool active_window_is_full_screen()
 	{
 		WId activeId = KWindowSystem::activeWindow();
@@ -274,7 +274,7 @@ void NotifierWindow::stopAutoHideTimer()
 	}
 #else // COMPILE_KDE_SUPPORT
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		
+
 		static bool active_window_is_full_screen()
 		{
 			HWND hForeground = ::GetForegroundWindow();
@@ -294,13 +294,13 @@ void NotifierWindow::stopAutoHideTimer()
 
 			if((rct.right - rct.left) < GetSystemMetrics(SM_CXSCREEN))
 				return false;
-			
+
 			if((rct.bottom - rct.top) < GetSystemMetrics(SM_CYSCREEN))
 				return false;
 
 			return true;
 		}
-	
+
 	#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 #endif // COMPILE_KDE_SUPPORT
 
@@ -636,7 +636,7 @@ void NotifierWindow::paintEvent(QPaintEvent * e)
 			szTitle += "notifier";
 	}
 	pPaint->drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::AlignVCenter | Qt::TextSingleLine,szTitle);
-	
+
 	delete pPaint;
 	e->ignore();
 }
@@ -712,7 +712,7 @@ void NotifierWindow::mousePressEvent(QMouseEvent * e)
 		update();
 		return;
 	}
-	
+
 	if(m_pWndBorder->captionRect().contains(e->pos()))
 	{
 		if(m_pWndBorder->closeRect().contains(e->pos()))
@@ -933,13 +933,13 @@ void NotifierWindow::leaveEvent(QEvent *)
 	m_pWndBorder->resetIcons();
 	if(!m_bResizing)
 		setCursor(-1);
-	
+
 	if(!m_pShowHideTimer)
 	{
 		m_pShowHideTimer = new QTimer();
 		connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 	}
-	
+
 	if(m_eState!=Hidden)
 	{
 		m_eState = FocusingOff;
@@ -1049,7 +1049,7 @@ void NotifierWindow::showLineEdit(bool bShow)
 		if(!((NotifierWindowTab *)m_pWndTabs->currentWidget())->wnd())
 			return;
 		m_pLineEdit->setToolTip("");
-		
+
 		QString szTip = __tr2qs_ctx("Write text or commands to window","notifier");
 		szTip += " \"";
 		szTip += ((NotifierWindowTab *)m_pWndTabs->currentWidget())->wnd()->plainTextCaption();

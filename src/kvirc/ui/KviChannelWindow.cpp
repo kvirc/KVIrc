@@ -341,8 +341,8 @@ void KviChannelWindow::getConfigGroupName(QString & szBuffer)
 
 	// save per-network channel settings, so that the settings of two channels
 	// with the same name but of different networks gets different config entries.
-	if(connection() && connection()->target() && 
-		connection()->target() && 
+	if(connection() && connection()->target() &&
+		connection()->target() &&
 		connection()->target()->network())
 	{
 		szBuffer.append("@");
@@ -375,7 +375,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	def.append((iWidth * 82) / 100);
 	def.append((iWidth * 18) / 100);
 	m_pTopSplitter->setSizes(pCfg->readIntListEntry("TopSplitter",def));
-	
+
 	//this is an hack to simulate qt3's ResizeMode = Stretch
 	for(int iWidget=0; iWidget<m_pTopSplitter->count(); iWidget++)
 		m_pTopSplitter->setStretchFactor(iWidget,1);
@@ -601,7 +601,7 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 	}
 
 	int iCurModeChangesPerLine = iMaxModeChangesPerLine;
-	
+
 	// Calculate the max number of available characters in a MODE command
 	// 512 (max) - 2 (cr, lf) - 4 (MODE) - 3 (spaces) - 1 (plus/minus)
 	// since we already know the channel name, take it in account, too
@@ -619,7 +619,7 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 			szMasks += " ";
 			iCurCharsPerLine--;
 		}
-			
+
 		szMasks += pEntry->szMask;
 		iCurCharsPerLine-=pEntry->szMask.size();
 
@@ -627,7 +627,7 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 		if(iCurModeChangesPerLine < 0 || iCurCharsPerLine < 0)
 		{
 			connection()->sendFmtData("MODE %s -%s %s",szTarget.data(),szFlags.data(),connection()->encodeText(szMasks).data());
-				
+
 			// move back the iterator by one position
 			// WARNING: this could lead to an infinite loop if a single specified mode
 			// change is longer than iMaxCharsPerLine

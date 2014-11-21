@@ -65,7 +65,7 @@ PackThemeDialog::PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo>
 	setMinimumSize(400,350);
 	setDefaultProperty("QTextEdit","plainText",SIGNAL(textChanged()));
 	m_pThemeInfoList = pThemeInfoList;
-	
+
 	QPixmap * pSide = g_pIconManager->getBigIcon("kvi_setup_label.png");
 	QPixmap * pLogo = g_pIconManager->getBigIcon("kvi_bigicon_addons.png");
 
@@ -99,7 +99,7 @@ PackThemeDialog::PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo>
 
 	pPage->setLayout(pLayout);
 	pPage->setTitle(__tr2qs_ctx("Welcome","theme"));
-	
+
 	QString szText = "<p>";
 	szText += __tr2qs_ctx("This procedure allows you to export the selected themes to a single package. It is useful when you want to distribute your themes to the public.","theme");
 	szText += "</p><p>";
@@ -121,11 +121,11 @@ PackThemeDialog::PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo>
 	// Packager information
 	m_pPackThemeInfoWidget = new PackThemeInfoWidget(this);
 	addPage(m_pPackThemeInfoWidget);
-	
+
 	// Screenshot/logo/icon
 	m_pPackThemeImageWidget = new PackThemeImageWidget(this);
 	addPage(m_pPackThemeImageWidget);
-	
+
 	// Save file name
 	m_pPackThemeSaveWidget = new PackThemeSaveWidget(this);
 	addPage(m_pPackThemeSaveWidget);
@@ -151,10 +151,10 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 	KviThemeInfo * pThemeInfo = 0;
 	bool bPackagePathSet = false;
 
-	
+
 	QString szPackagePath = QDir::homePath();
 	KviQString::ensureLastCharIs(szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-	
+
 	if(pThemeInfoList->count() > 1)
 	{
 		szPackageName = "MyThemes";
@@ -181,7 +181,7 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 			bPackagePathSet = true;
 		}
 	}
-	
+
 	if(!bPackagePathSet)
 	{
 		szPackagePath += szPackageName;
@@ -255,7 +255,7 @@ PackThemeInfoWidget::PackThemeInfoWidget(PackThemeDialog * pParent)
 	setObjectName("theme_package_info_page");
 	setTitle(__tr2qs_ctx("Package Information","theme"));
 	setSubTitle(__tr2qs_ctx("Here you need to provide information about you (the packager) and a short description of the package you're creating.","theme"));
-	
+
 
 	QGridLayout * pLayout = new QGridLayout(this);
 
@@ -297,7 +297,7 @@ PackThemeInfoWidget::PackThemeInfoWidget(PackThemeDialog * pParent)
 
 	pLayout->setRowStretch(3,1);
 	pLayout->setColumnStretch(1,1);
-	
+
 	// Store data in the fields
 	registerField("packageName*",m_pPackageNameEdit);
 	registerField("packageVersion*",m_pPackageVersionEdit);
@@ -391,7 +391,7 @@ PackThemeSaveWidget::PackThemeSaveWidget(PackThemeDialog * pParent)
 	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Finally hit the \"Finish\" button to complete the packaging operation.","theme"));
 	pLayout->addWidget(pLabel);
-	
+
 	// Store data in the fields
 	registerField("packageSavePath*",m_pSavePathSelector);
 }
@@ -466,7 +466,7 @@ bool PackThemeDialog::packTheme()
 
 	QString szTmp;
 	QDateTime date = QDateTime::currentDateTime();
-	
+
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:
@@ -562,7 +562,7 @@ bool PackThemeDialog::packTheme()
 			szTmp,
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 			);
-			
+
 		return false;
 	}
 
@@ -574,6 +574,6 @@ bool PackThemeDialog::packTheme()
 		__tr2qs("Package saved successfully"),
 		QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 		);
-		
+
 	return true;
 }

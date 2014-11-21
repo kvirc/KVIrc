@@ -213,7 +213,7 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 	//
 	// If you're playing with unstable stuff then use /options.save to obtain
 	// the same effect.
-	// 
+	//
 	//opt->addSeparator();
 	//opt->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));
 }
