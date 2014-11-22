@@ -186,12 +186,18 @@ LogViewWindow::LogViewWindow()
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);
 
-    m_pExportLogPopup = new QMenu("exportlog", this);
-	m_pExportLogPopup->addAction(__tr2qs_ctx("plain text file","log"));
-	m_pExportLogPopup->addAction(__tr2qs_ctx("HTML archive","log"));
+	// Using setData to track the option ordinal that used to be passed as id
+	m_pExportLogPopup = new QMenu("exportlog", this);
+	QAction* pAction = m_pExportLogPopup->addAction(__tr2qs_ctx("Plain text file","log"));
+	pAction->setData(LogFile::PlainText);
+	pAction = m_pExportLogPopup->addAction(__tr2qs_ctx("HTML archive","log"));
+	pAction->setData(LogFile::HTML);
 	//m_pExportLogPopup->addAction(__tr2qs_ctx("XML file","log"));
 	//m_pExportLogPopup->addAction(__tr2qs_ctx("database file","log"));
-	connect(m_pExportLogPopup,SIGNAL(activated(int)),this,SLOT(exportLog(int)));
+
+	// 18.11.14: Originally this hooked activated, but Qt4 kept sending bullshit IDs here
+	// https://svn.kvirc.de/kvirc/ticket/934#comment:9
+	connect(m_pExportLogPopup,SIGNAL(triggered(QAction*)),this,SLOT(exportLog(QAction*)));
 
 	m_pTimer = new QTimer(this);
 	m_pTimer->setSingleShot(true);
@@ -507,6 +513,17 @@ void LogViewWindow::deleteCurrent()
 	delete pItem;
 }
 
+void LogViewWindow::exportLog(QAction* pAction)
+{
+	/* This slot is required as Qt4 has started to screw up the menu ordinal
+	 * sent with the old activated signal - the ordinal is now stored as
+	 * QAction user data */
+	if (pAction)
+		exportLog(pAction->data().toInt());
+	else
+		qDebug("LogViewWindow::exportLog called with invalid pAction");
+}
+
 void LogViewWindow::exportLog(int iId)
 {
 	LogListViewItem * pItem = (LogListViewItem *)(m_pListView->currentItem());
@@ -516,7 +533,7 @@ void LogViewWindow::exportLog(int iId)
 	if(!pItem->childCount())
 	{
 		// Export the log
-		createLog(pItem->log(),iId);
+		createLog(pItem->log(), iId);
 		return;
 	}
 
@@ -551,7 +568,7 @@ void LogViewWindow::exportLog(int iId)
 	for(unsigned int u = 0; u < logList.count(); u++)
 	{
 		LogListViewItem * pCurItem = logList.at(u);
-		createLog(pCurItem->log(),iId);
+		createLog(pCurItem->log(), iId);
 	}
 }
 

@@ -104,13 +104,14 @@ protected:
 public:
 	/**
 	* \brief Exports the log and creates the file in the selected format
-	* \param pLog The log file associated to the item selected in the popup
+	* \param pLog The log file associated with the item selected in the popup
 	* \param iId The id of the item in the popup
-	* \param pszFile The buffer where to store the exported log name
+	* \param pszFile The buffer to store the exported log name
 	* \return void
 	*/
 	void createLog(LogFile * pLog, int iId, QString * pszFile = 0);
 protected:
+	void exportLog(int iId);
 	void recurseDirectory(const QString & szDir);
 	void setupItemList();
 
@@ -128,7 +129,7 @@ protected slots:
 	void abortFilter();
 	void cacheFileList();
 	void filterNext();
-	void exportLog(int iId);
+	void exportLog(QAction * pAction);
 };
 
 #endif //_LOGVIEWWINDOW_H_
