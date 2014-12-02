@@ -8,6 +8,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil at startmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -420,8 +421,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringDefaultSrvEncoding 57                        /* server encoding */
 #define KviOption_stringLogsPath 58                                  /* logfolder */
 #define KviOption_stringLogsDynamicPath 59                           /* logfolder */
+#define KviOption_stringLogsExportPath 60                            /* logview module log export */
 
-#define KVI_NUM_STRING_OPTIONS 60
+#define KVI_NUM_STRING_OPTIONS 61
 
 
 

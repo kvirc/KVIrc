@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil at startmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -411,7 +412,8 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("PreferredTorrentClient","auto",KviOption_sectFlagFrame),
 	STRING_OPTION("DefaultSrvEncoding","",KviOption_sectFlagFrame),
 	STRING_OPTION("LogsPath","",KviOption_sectFlagUser | KviOption_encodePath),
-	STRING_OPTION("LogsDynamicPath","",KviOption_sectFlagUser | KviOption_encodePath)
+	STRING_OPTION("LogsDynamicPath","",KviOption_sectFlagUser | KviOption_encodePath),
+	STRING_OPTION("LogsExportPath","",KviOption_sectFlagUser | KviOption_encodePath)
 };
 
 #define STRINGLIST_OPTION(_txt,_flags) \

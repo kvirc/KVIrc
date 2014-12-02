@@ -7,6 +7,7 @@
 //   Copyright (C) 2002 Juanjo Alvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil at startmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -37,6 +38,7 @@
 #include "KviQString.h"
 #include "KviApplication.h"
 #include "KviFileUtils.h"
+#include "KviFileDialog.h"
 #include "KviControlCodes.h"
 
 #include <QList>
@@ -581,14 +583,25 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	QString szLog, szLogDir, szBuffer, szLine, szTmp;
 	QString szDate = pLog->date().toString("yyyy.MM.dd");
 
-	// The fresh new log
-	g_pApp->getLocalKvircDirectory(szLogDir,KviApplication::Tmp);
-	KviFileUtils::adjustFilePath(szLogDir);
-	szLogDir += KVI_PATH_SEPARATOR_CHAR;
-	szLog += szLogDir;
+	/* Fetching previous export path and concatenating with generated filename
+	 * adjustFilePath is for file paths not directory paths */
+	szLog = KVI_OPTION_STRING(KviOption_stringLogsExportPath).trimmed();
+	if (!szLog.isEmpty())
+		szLog += KVI_PATH_SEPARATOR_CHAR;
 	szLog += QString("%1_%2.%3_%4").arg(pLog->typeString(),pLog->name(),pLog->network(),szDate);
+	KviFileUtils::adjustFilePath(szLog);
 
-	// Open file for reading
+	// Getting output file path from the user, with overwrite confirmation
+	if(!KviFileDialog::askForSaveFileName(szLog, __tr2qs_ctx("Export Log - KVIrc","log"), szLog, NULL, false, true))
+		return;
+
+	/* Save export directory - this directory path is also used in the HTML export
+	 * and info is used when working with pszFile */
+	QFileInfo info(szLog);
+	szLogDir = info.absoluteDir().absolutePath();
+	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szLogDir;
+
+	// Open log file for reading
 	QFile file(pLog->fileName());
 	if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
 		return;
@@ -601,7 +614,10 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	{
 		case LogFile::PlainText:
 		{
-			szLog += ".txt";
+			/* Only append extension if it isn't there already (e.g. a specific
+			 * file is to be overwritten) */
+			if(!szLog.endsWith(".txt"))
+				szLog += ".txt";
 
 			// Scan the file
 			while(!input.atEnd())
@@ -641,7 +657,11 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 		}
 		case LogFile::HTML:
 		{
-			szLog += ".html";
+			/* Only append extension if it isn't there already (e.g. a specific
+			 * file is to be overwritten) */
+			if(!szLog.endsWith(".html"))
+				szLog += ".html";
+
 			szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
 			QString szNick = "";
 			bool bFirstLine = true;
@@ -789,12 +809,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 		}
 	}
 
-	if(QFile::exists(szLog))
-	{
-		if(QMessageBox::question(this,__tr2qs_ctx("Export Log - KVIrc","log"),__tr2qs_ctx("File '%1' already exists. Do you want to overwrite it?","log").arg(szLog),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
-			return;
-	}
-
+	// File overwriting already dealt with when file path was obtained
 	QFile log(szLog);
 	if(!log.open(QIODevice::WriteOnly | QIODevice::Text))
 		return;
@@ -802,7 +817,6 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	if(pszFile)
 	{
 		*pszFile = "";
-		QFileInfo info(log);
 		*pszFile = info.filePath();
 	}
 

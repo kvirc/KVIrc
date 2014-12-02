@@ -9,6 +9,7 @@
 //   Copyright (C) 2002 Juanjo Alvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil at startmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
