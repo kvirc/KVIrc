@@ -580,7 +580,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 		return;
 
 	QRegExp rx;
-	QString szLog, szLogDir, szBuffer, szLine, szTmp;
+	QString szLog, szLogDir, szInputBuffer, szOutputBuffer, szLine, szTmp;
 	QString szDate = pLog->date().toString("yyyy.MM.dd");
 
 	/* Fetching previous export path and concatenating with generated filename
@@ -601,14 +601,10 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	szLogDir = info.absoluteDir().absolutePath();
 	KVI_OPTION_STRING(KviOption_stringLogsExportPath) = szLogDir;
 
-	// Open log file for reading
-	QFile file(pLog->fileName());
-	if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
-		return;
-
-	// Set up a 16bit Unicode string
-	QTextStream input(&file);
-	input.setCodec("UTF-8");
+	/* Reading in log file - LogFiles are read in as bytes, so '\r' isn't
+	 * sanitised by default */
+	pLog->getText(szInputBuffer);
+	QStringList lines = szInputBuffer.replace('\r', "").split('\n');
 
 	switch(iId)
 	{
@@ -620,19 +616,19 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 				szLog += ".txt";
 
 			// Scan the file
-			while(!input.atEnd())
+			for(QStringList::Iterator it = lines.begin(); it != lines.end(); ++it)
 			{
-				szTmp = input.readLine();
+				szTmp = (*it);
 				szLine = KviControlCodes::stripControlBytes(szTmp);
 
 				// Remove icons' code
 				rx.setPattern("^\\d{1,3}\\s");
 				szLine.replace(rx,"");
 
-				// Remove link from a user speaking
+				// Remove link from a user speaking, deal with (and keep) various ranks
 				// e.g.: <!ncHelLViS69>  -->  <HelLViS69>
-				rx.setPattern("\\s<!nc");
-				szLine.replace(rx," <");
+				rx.setPattern("\\s<([+%@&~!]?)!nc");
+				szLine.replace(rx," <\\1");
 
 				// Remove link from a nick in a mask
 				// e.g.: !nFoo [~bar@!hfoo.bar]  -->  Foo [~bar@!hfoo.bar]
@@ -649,8 +645,8 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 				rx.setPattern("!c#");
 				szLine.replace(rx,"#");
 
-				szBuffer += szLine;
-				szBuffer += "\n";
+				szOutputBuffer += szLine;
+				szOutputBuffer += "\n";
 			}
 
 			break;
@@ -687,19 +683,19 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 			}
 
 			// Prepare HTML document
-			szBuffer += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
-			szBuffer += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
-			szBuffer += "<head>\n";
-			szBuffer += "\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=utf-8\" />\n";
-			szBuffer += "\t<meta name=\"author\" content=\"" + szTmp + "\" />\n";
-			szBuffer += "\t<title>" + szTitle + "</title>\n";
-			szBuffer += "</head>\n<body>\n";
-			szBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
+			szOutputBuffer += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
+			szOutputBuffer += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
+			szOutputBuffer += "<head>\n";
+			szOutputBuffer += "\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=utf-8\" />\n";
+			szOutputBuffer += "\t<meta name=\"author\" content=\"" + szTmp + "\" />\n";
+			szOutputBuffer += "\t<title>" + szTitle + "</title>\n";
+			szOutputBuffer += "</head>\n<body>\n";
+			szOutputBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
 
 			// Scan the file
-			while(!input.atEnd())
+			for(QStringList::Iterator it = lines.begin(); it != lines.end(); ++it)
 			{
-				szTmp = input.readLine();
+				szTmp = (*it);
 
 				// Find who has talked
 				QString szTmpNick = szTmp.section(" ",2,2);
@@ -737,7 +733,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 					 * before and open a new one
 					 */
 					if(!bFirstLine)
-						szBuffer += "</p>\n";
+						szOutputBuffer += "</p>\n";
 					szTmp.prepend("<p>");
 
 					szNick = szTmpNick;
@@ -746,16 +742,16 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 					szTmp.prepend("<br />\n");
 				}
 
-				szBuffer += szTmp;
+				szOutputBuffer += szTmp;
 				bFirstLine = false;
 			}
 
 			// Close the last paragraph
-			szBuffer += "</p>\n";
+			szOutputBuffer += "</p>\n";
 
 			// regexp to search all embedded icons
 			rx.setPattern("<img src=\"smallicons:([^\"]+)");
-			int iIndex = szBuffer.indexOf(rx);
+			int iIndex = szOutputBuffer.indexOf(rx);
 			QStringList szImagesList;
 
 			// search for icons
@@ -767,7 +763,7 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 				// if the icon isn't in the images list then add
 				if(szImagesList.indexOf(szCap) == -1)
 					szImagesList.append(szCap);
-				iIndex = szBuffer.indexOf(rx, iIndex + iLength);
+				iIndex = szOutputBuffer.indexOf(rx, iIndex + iLength);
 			}
 
 			// get current theme path
@@ -797,13 +793,13 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 
 			// remove internal tags
 			rx.setPattern("<qt>|</qt>|smallicons:");
-			szBuffer.replace(rx,"");
-			szBuffer.replace(">!nc",">");
-			szBuffer.replace("@!nc","@");
-			szBuffer.replace("%!nc","%");
+			szOutputBuffer.replace(rx,"");
+			szOutputBuffer.replace(">!nc",">");
+			szOutputBuffer.replace("@!nc","@");
+			szOutputBuffer.replace("%!nc","%");
 
 			// Close the document
-			szBuffer += "</body>\n</html>\n";
+			szOutputBuffer += "</body>\n</html>\n";
 
 			break;
 		}
@@ -823,10 +819,9 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	// Ensure we're writing in UTF-8
 	QTextStream output(&log);
 	output.setCodec("UTF-8");
-	output << szBuffer;
+	output << szOutputBuffer;
 
 	// Close file descriptors
-	file.close();
 	log.close();
 }
 
