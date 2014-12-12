@@ -65,6 +65,7 @@
 	#include <QInputContext>
 #endif
 #include <QMenu>
+#include <QStyleFactory>
 
 // from KviApplication.cpp
 extern QMenu         * g_pInputPopup;
@@ -117,6 +118,13 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
+
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	// this should be removed as soon as Qt fixes this bug (>W8)
+	QStyle * pWindowsStyle = QStyleFactory::create("plastique");
+	if(pWindowsStyle)
+		this->setStyle(pWindowsStyle);
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 

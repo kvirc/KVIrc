@@ -34,6 +34,7 @@
 #include <QPainter>
 #include <QLineEdit>
 #include <QStyleOptionFrameV2>
+#include <QStyleFactory>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -44,6 +45,14 @@ KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const c
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
+
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	// this should be removed as soon as Qt fixes this bug (>W8)
+	QStyle * pWindowsStyle = QStyleFactory::create("plastique");
+	if(pWindowsStyle)
+		setStyle(pWindowsStyle);
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+
 	setAutoFillBackground(true);
 	applyOptions();
 }
@@ -103,6 +112,7 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 		if(le->isReadOnly())
 			option.state |= QStyle::State_ReadOnly;
 		option.features = QStyleOptionFrameV2::None;
+		style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
 
 		r = style()->subElementRect(QStyle::SE_LineEditContents, &option, le);
 		int left, right, top, bottom;

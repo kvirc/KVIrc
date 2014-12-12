@@ -32,6 +32,8 @@
 #include "KviMdiManager.h"
 
 #include <QPainter>
+#include <QStyleOptionFrameV2>
+#include <QStyleFactory>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -42,6 +44,13 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * n
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
+
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	QStyle * pWindowsStyle = QStyleFactory::create("plastique");
+	if(pWindowsStyle)
+		setStyle(pWindowsStyle);
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	setAutoFillBackground(false);
 	applyOptions();
@@ -75,6 +84,11 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter *p = new QPainter(this);
+	QStyleOptionFrameV2 option;
+	option.initFrom(this);
+
+	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
+
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
