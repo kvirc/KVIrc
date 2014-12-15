@@ -790,6 +790,12 @@ protected:
 	void handleAuthenticate(KviCString & szResponse);
 
 	/**
+	* \brief Called when AUTHENTICATE fails ad we fallback to PLAIN auth
+	* \return void
+	*/
+	void handleAuthenticateFallback();
+
+	/**
 	* \brief Called when CAP LS answer is received
 	* \return void
 	*/

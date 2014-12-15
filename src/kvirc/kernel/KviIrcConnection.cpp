@@ -508,6 +508,7 @@ void KviIrcConnection::handleInitialCapAck()
 	)
 	{
 		m_pStateData->setInsideAuthenticate(true);
+		m_pStateData->setInsideAuthenticateFallback(false);
 		bUsed=true;
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -519,6 +520,26 @@ void KviIrcConnection::handleInitialCapAck()
 
 	if(!bUsed)
 		endInitialCapNegotiation();
+}
+
+void KviIrcConnection::handleAuthenticateFallback()
+{
+#ifdef COMPILE_SSL_SUPPORT
+	// we tried DH_BLOWFISH but the server doesn't support it
+	if(m_pStateData->isInsideAuthenticateFallback())
+	{
+		// we alredy tried the fallback, move on
+		endInitialCapNegotiation();
+	} else {
+		// fallback to plain auth
+		m_pStateData->setInsideAuthenticateFallback(true);
+		sendFmtData("AUTHENTICATE PLAIN");	
+	}	
+#else 
+	// we failed authentication, move on
+	endInitialCapNegotiation();
+#endif
+
 }
 
 void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
@@ -566,6 +587,7 @@ void KviIrcConnection::handleInitialCapNak()
 
 void KviIrcConnection::endInitialCapNegotiation()
 {
+	m_pStateData->setInsideAuthenticateFallback(false);
 	m_pStateData->setInsideAuthenticate(false);
 	sendFmtData("CAP END");
 	loginToIrcServer();

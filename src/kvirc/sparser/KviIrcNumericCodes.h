@@ -376,8 +376,10 @@
 #define RPL_SASLLOGIN        900 /* :jaguar.test 900 jilles jilles!jilles@localhost.stack.nl jilles :You are now logged in as jilles. */
 #define RPL_SASLSUCCESS      903 /* :jaguar.test 903 jilles :SASL authentication successful  */
 #define RPL_SASLFAILED       904 /* :lindbohm.freenode.net 904 * :SASL authentication failed */
-#define RPL_SASLERROR        905 // sasl message too long
-#define RPL_SASLABORT        906 // sasl authentication aborted
+#define RPL_SASLERROR        905 // :server 905 <nick> :SASL message too long 
+#define RPL_SASLABORT        906 // :server 906 <nick> :SASL authentication aborted
+#define ERR_SASLALREADY      907 // :server 907 <nick> :You have already completed SASL authentication
+#define RPL_SASLMECHS        908 // :server 908 <nick> <mechanisms> :are available SASL mechanisms
 #define RPL_ENDOFSPAMFILTERLIST  940 // <nick> <channel> :End of channel spamfilter list
 #define RPL_SPAMFILTERLIST  941 // <nick> <channel> <spamfilter>
 

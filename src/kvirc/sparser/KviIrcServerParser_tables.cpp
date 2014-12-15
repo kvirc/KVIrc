@@ -992,11 +992,11 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 901
 	0,                                               // 902
 	PTM(parseNumericSaslSuccess),                    // 903 RPL_SASLSUCCESS
-	PTM(parseNumericSaslFail),                       // 904 RPL_SASLFAILED
+	PTM(parseNumericSaslIdiocy),                     // 904 RPL_SASLFAILED
 	PTM(parseNumericSaslFail),                       // 905 RPL_SASLERROR
 	PTM(parseNumericSaslFail),                       // 906 RPL_SASLABORT
 	PTM(parseNumericSaslFail),                       // 907 RPL_SASLALREADYAUTH
-	0,                                               // 908
+	PTM(parseNumericSaslIdiocy),                     // 908 RPL_SASLMECHS
 	0,                                               // 909
 	0,                                               // 910
 	0,                                               // 911

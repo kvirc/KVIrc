@@ -263,6 +263,7 @@ private:
 	void parseNumericSaslSuccess(KviIrcMessage * msg);
 	void parseNumericSaslLogin(KviIrcMessage * msg);
 	void parseNumericSaslFail(KviIrcMessage * msg);
+	void parseNumericSaslIdiocy(KviIrcMessage * msg);
 
 public:
 	static void encodeCtcpParameter(const char * param,KviCString &buffer,bool bSpaceBreaks = true);
