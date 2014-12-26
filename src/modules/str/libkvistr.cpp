@@ -1155,9 +1155,9 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		Returns the nth word inside the <string> (with n starting from 0!)[br]
 		A word is a substring not containing spaces (ASCII chars 32, carriage returns, tabs etc...).[br]
 		If the string contains less than n+1 words then an empty string is returned.[br]
-		This function is faster than a call to [fnc]split[/fnc]() and array indexing
+		This function is faster than a call to [fnc]$str.split[/fnc]() and array indexing
 		if you need a single word to be extracted from a complex string.[br]
-		If you need to manage more than one word from the string then the [fnc]split[/fnc]()
+		If you need to manage more than one word from the string then the [fnc]$str.split[/fnc]()
 		method is more efficient.[br]
 		This function is a special case of [fnc]$str.token[/fnc]() and it runs a bit faster.
 	@examples:
