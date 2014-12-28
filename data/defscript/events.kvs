@@ -121,3 +121,8 @@ event(OnHostLinkPopupRequest,default)
 {
 	popup.show hostpopup $0;
 }
+
+event(OnKVIrcStartup,autoloadfish)
+{
+	fish.load
+}
