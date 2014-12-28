@@ -146,19 +146,32 @@
 			return false;
 		}
 
-		if(szMessage.startsWith("DH1080_INIT ", Qt::CaseSensitive))
+		if(szMessage.startsWith("DH1080_INIT ", Qt::CaseSensitive) || szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
 		{
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: Received DH1080 public key from %1, sending mine...").arg(szNick));
 			// fish appends an 'A' to all base64 coded strings
-			szHisPubKey = szMessage.mid(12).toLatin1();
+			if(szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
+				szHisPubKey = szMessage.mid(16).toLatin1();
+			else
+				szHisPubKey = szMessage.mid(12).toLatin1();
 			szHisPubKey.truncate(FISH_KEYLEN);
 			szHisPubKey = QByteArray::fromBase64(szHisPubKey);
 
 			szTmp = QByteArray((char *)szMyPubKey, iMyPubKeyLen).toBase64();
-			c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA",
-				c->window()->console()->connection()->encodeText(szNick).data(),
-				szTmp.data()
-				);
+			if(szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
+			{
+				c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH_cbc %sA",
+					c->window()->console()->connection()->encodeText(szNick).data(),
+					szTmp.data()
+					);
+			}
+			else
+			{
+				c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA",
+					c->window()->console()->connection()->encodeText(szNick).data(),
+					szTmp.data()
+					);
+			}
 		}
 
 		if(szMessage.startsWith("DH1080_FINISH ", Qt::CaseSensitive))
