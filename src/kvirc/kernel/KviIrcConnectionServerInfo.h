@@ -60,6 +60,30 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
+class KVIRC_API KviCritenIrcServerInfo : public KviBasicIrcServerInfo
+{
+	//abjects
+public:
+	KviCritenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Criten"; };
+	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
+class KVIRC_API KviNemesisIrcServerInfo : public KviBasicIrcServerInfo
+{
+	//criten
+public:
+	KviNemesisIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Nemesis"; };
+	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
 class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//dalnet, azzurranet

@@ -242,6 +242,10 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviIrcuIrcServerInfo(this, version);
 	else if(version.contains("plexus",Qt::CaseInsensitive))
 		m_pServInfo = new KviPlexusIrcServerInfo(this, version);
+	else if(version.contains("criten",Qt::CaseInsensitive))
+		m_pServInfo = new KviCritenIrcServerInfo(this, version);
+	else if(version.contains("nemesis",Qt::CaseInsensitive))
+		m_pServInfo = new KviNemesisIrcServerInfo(this, version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(this, version);
 }
@@ -333,6 +337,37 @@ const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
+const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'A': return __tr2qs("Server/Network/Tech Admin only channel"); break;
+		case 'K': return __tr2qs("Forbid /KNOCK"); break;
+		case 'M': return __tr2qs("Need auth to speak and change nick"); break;
+		case 'N': return __tr2qs("No invites"); break;
+		case 'O': return __tr2qs("IRC-Op only channel"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Need SSL connection to join"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviNemesisIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'A': return __tr2qs("Server/Network/Tech Admin only channel"); break;
+		case 'K': return __tr2qs("Forbid /KNOCK"); break;
+		case 'M': return __tr2qs("Need auth to speak and change nick"); break;
+		case 'N': return __tr2qs("No invites"); break;
+		case 'O': return __tr2qs("IRC-Op only channel"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Need SSL connection to join"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
 
 const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
 {
