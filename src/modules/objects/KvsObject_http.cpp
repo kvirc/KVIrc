@@ -25,7 +25,7 @@
 #include "KvsObject_http.h"
 
 #ifdef __GNUC__
-#warning QHttp doesn't exist anymore in Qt5, port this class or drop it
+#warning "QHttp doesn't exist anymore in Qt5, port this class or drop it"
 #endif
 #if (QT_VERSION < 0x050000)
 

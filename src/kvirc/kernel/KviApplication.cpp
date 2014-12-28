@@ -112,7 +112,7 @@
 	#include <QCommonStyle>
 #endif
 
-#ifdef COMPILE_ON_WINDOWS || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <QPluginLoader>
 	#if (QT_VERSION >= 0x050000)
 		#include <QtWin>
