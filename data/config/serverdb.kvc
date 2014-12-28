@@ -1,5 +1,25 @@
 # KVIrc configuration file
 
+[Abjects]
+0_Hostname=irc.abjects.net
+0_Description=Abjects:%20Random%20server
+1_Hostname=irc.eu.abjects.net
+1_Description=Abjects:%20Random%20EU%20server
+2_Hostname=irc.us.abjects.net
+2_Description=Abjects:%20Random%20US%20server
+3_Hostname=irc.abjects.net
+3_Description=Abjects:%20Random%20server%20SSL
+3_Port=9999
+3_SSL=true
+4_Hostname=irc.eu.abjects.net
+4_Description=Abjects:%20Random%20EU%20server%20SSL
+4_Port=9999
+4_SSL=true
+5_Hostname=irc.us.abjects.net
+5_Description=Abjects:%20Random%20US%20server%20SSL
+5_Port=9999
+5_SSL=true
+NServers=6
 [Accessirc]
 0_Hostname=irc.accessirc.net
 0_Description=Accessirc:%20Random%20server
@@ -1332,6 +1352,7 @@ NServers=1
 1_Description=rawrIRC%20na%20server
 2_Hostname=irc.eu.rawrirc.net
 2_Description=rawrIRC%20eu%20server
+NServers=3
 [Realirc]
 0_Hostname=irc.realirc.org
 0_Description=Realirc:%20Random%20server
