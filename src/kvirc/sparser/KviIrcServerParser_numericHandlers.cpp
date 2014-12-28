@@ -56,6 +56,11 @@
 #include "KviKvsVariantList.h"
 #include "KviIdentityProfileSet.h"
 
+#ifdef COMPILE_CRYPT_SUPPORT
+	#include "KviCryptEngine.h"
+	#include "KviCryptController.h"
+#endif
+
 #include <QPixmap>
 #include <QDateTime>
 #include <QTextCodec>
@@ -516,6 +521,38 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage *msg)
 	}
 }
 
+#ifdef COMPILE_CRYPT_SUPPORT
+	#define DECRYPT_IF_NEEDED(_target,_txt,_type,_type2,_buffer,_retptr,_retmsgtype) \
+		if(KviCryptSessionInfo * cinf = _target->cryptSessionInfo()){ \
+			if(cinf->m_bDoDecrypt){ \
+				switch(cinf->m_pEngine->decrypt(_txt,_buffer)) \
+				{ \
+					case KviCryptEngine::DecryptOkWasEncrypted: \
+						_retptr = _buffer.ptr(); \
+						_retmsgtype = _type2; \
+					break; \
+					case KviCryptEngine::DecryptOkWasPlainText: \
+					case KviCryptEngine::DecryptOkWasEncoded: \
+						_retptr = _buffer.ptr(); \
+						_retmsgtype = _type; \
+					break; \
+					default: /* also case KviCryptEngine::DecryptError: */ \
+					{ \
+						QString szEngineError = cinf->m_pEngine->lastError(); \
+						_target->output(KVI_OUT_SYSTEMERROR, \
+							__tr2qs("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q"), \
+							&szEngineError); \
+						_retptr = _txt + 1; _retmsgtype=_type; \
+					} \
+					break; \
+				} \
+			} else _retptr = _txt, _retmsgtype=_type; \
+		} else _retptr = _txt, _retmsgtype=_type;
+#else //COMPILE_CRYPT_SUPPORT
+	#define DECRYPT_IF_NEEDED(_target,_txt,_type,_type2,_buffer,_retptr,_retmsgtype) \
+		_retptr = _txt; _retmsgtype = _type;
+#endif //COMPILE_CRYPT_SUPPORT
+
 void KviIrcServerParser::parseNumericTopic(KviIrcMessage *msg)
 {
 	// 332: RPL_TOPIC [I,E,U,D]
@@ -524,7 +561,13 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage *msg)
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
-		QString szTopic = chan->decodeText(msg->safeTrailing());
+		KviCString szBuffer;
+		const char * txtptr;
+		int msgtype;
+
+		DECRYPT_IF_NEEDED(chan,msg->safeTrailing(),KVI_OUT_QUERYPRIVMSG,KVI_OUT_QUERYPRIVMSGCRYPTED,szBuffer,txtptr,msgtype)
+
+		QString szTopic = chan->decodeText(txtptr);
 
 		chan->topicWidget()->setTopic(szTopic);
 		chan->topicWidget()->setTopicSetBy(__tr2qs("(unknown)"));

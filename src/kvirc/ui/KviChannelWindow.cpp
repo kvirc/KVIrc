@@ -1753,6 +1753,53 @@ void KviChannelWindow::topicSelected(const QString & szTopic)
 
 	QByteArray encoded = encodeText(szTopic);
 	QByteArray name = connection()->encodeText(m_szName);
+
+#ifdef COMPILE_CRYPT_SUPPORT
+	if (encoded.length() <= 0)
+	{
+		connection()->sendFmtData("TOPIC %s :",name.data());
+		return;
+	}
+
+	const char * pcData = encoded.data();
+
+	QString szTmpTopic(szTopic);
+
+	if (!pcData)
+		return;
+
+	if (cryptSessionInfo())
+	{
+		if (cryptSessionInfo()->m_bDoEncrypt)
+		{
+			if (*pcData != KviControlCodes::CryptEscape)
+			{
+				KviCString szEncrypted;
+				switch (cryptSessionInfo()->m_pEngine->encrypt(pcData,szEncrypted))
+				{
+					case KviCryptEngine::Encrypted:
+					case KviCryptEngine::Encoded:
+						connection()->sendFmtData("TOPIC %s :%s",name.data(),szEncrypted.ptr());
+						return;
+					break;
+					default:
+						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
+						output(KVI_OUT_SYSTEMERROR,
+							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+							&szTopic,&szEngineError);
+					break;
+				}
+			}
+			else
+			{
+				szTmpTopic.remove(0,1);
+				// re-encode for removed CryptEscape
+				encoded = encodeText(szTmpTopic);
+			}
+		}
+	}
+#endif
+
 	connection()->sendFmtData("TOPIC %s :%s",name.data(),encoded.length() ? encoded.data() : "");
 }
 

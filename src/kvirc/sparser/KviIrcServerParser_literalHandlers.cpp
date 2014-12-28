@@ -1509,7 +1509,13 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage *msg)
 		return;
 	}
 
-	QString szTopic = chan->decodeText(msg->safeTrailing());
+	KviCString szBuffer;
+	const char * txtptr;
+	int msgtype;
+
+	DECRYPT_IF_NEEDED(chan,msg->safeTrailing(),KVI_OUT_QUERYPRIVMSG,KVI_OUT_QUERYPRIVMSGCRYPTED,szBuffer,txtptr,msgtype)
+
+	QString szTopic = chan->decodeText(txtptr);
 
 	if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnTopic,chan,szNick,szUser,szHost,szTopic))
 		msg->setHaltOutput();
