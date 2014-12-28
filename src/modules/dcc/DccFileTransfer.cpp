@@ -2266,11 +2266,13 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 	KviCString szBuffy;
 	KviIrcServerParser::encodeCtcpParameter(filename,szBuffy);
 
-	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %u%c",
+	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %s%c",
 			m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
 			0x01,
 			m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
-			port,filePos,0x01
+			port,
+			m_pDescriptor->console()->connection()->encodeText(QString::number(filePos)).data(),
+			0x01
 		);
 
 	return true;

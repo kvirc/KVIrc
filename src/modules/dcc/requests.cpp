@@ -413,6 +413,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		KviDccZeroPortTag * t = g_pDccBroker->findZeroPortTag(dcc->szParam5.ptr());
 		if(t)
 		{
+			// FIXME: #warning "%u will not support 64-bit numbers and won't work as intended here"
 			dcc->szParam4.sprintf("%u",t->m_uResumePosition);
 			g_pDccBroker->removeZeroPortTag(dcc->szParam5.ptr());
 		} else {
@@ -901,10 +902,12 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 				&(o->absFilePath()),szSubproto.ptr());
 		}
 
-		dcc->pConsole->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %u%c",
+		dcc->pConsole->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s%c",
 			dcc->pConsole->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(),
 			0x01,szSubproto.ptr(),
-			dcc->pConsole->connection()->encodeText(dcc->szParam1.ptr()).data(),o->fileSize(),0x01);
+			dcc->pConsole->connection()->encodeText(dcc->szParam1.ptr()).data(),
+			dcc->pConsole->connection()->encodeText(QString::number(o->fileSize())).data(),
+			0x01);
 		return;
 	}
 

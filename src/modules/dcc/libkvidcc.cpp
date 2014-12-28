@@ -970,12 +970,13 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 			c->window()->console()->connection()->encodeText(szFileName).data(),
 			0x01);
 	} else {
-		c->window()->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %u%c",
+		c->window()->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s%c",
 			c->window()->console()->connection()->encodeText(szTarget).data(),
 			0x01,
 			c->window()->console()->connection()->encodeText(szDCC.ptr()).data(),
 			c->window()->console()->connection()->encodeText(szFileName).data(),
-			uSize,0x01);
+			c->window()->console()->connection()->encodeText(QString::number(uSize)).data(),
+			0x01);
 	}
 
 	return true;

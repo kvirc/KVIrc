@@ -227,21 +227,22 @@ void DccBroker::rsendExecute(DccDescriptor * dcc)
 		szTag = t->m_szTag;
 
 		// DCC [ST]SEND <filename> <fakeipaddress> <zero-port> <filesize> <sessionid>
-		dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s 127.0.0.1 0 %u %s%c",
+		dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s 127.0.0.1 0 %s %s%c",
 			dcc->console()->connection()->encodeText(dcc->szNick).data(),
 			0x01,
 			dcc->console()->connection()->encodeText(dcc->szType).data(),
 			dcc->console()->connection()->encodeText(fName).data(),
-			fi.size(),
+			dcc->console()->connection()->encodeText(QString::number(fi.size())).data(),
 			dcc->console()->connection()->encodeText(szTag).data(),
 			0x01);
 	} else {
-		dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %u%c",
+		dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s%c",
 			dcc->console()->connection()->encodeText(dcc->szNick).data(),
 			0x01,
 			dcc->console()->connection()->encodeText(dcc->szType).data(),
 			dcc->console()->connection()->encodeText(fName).data(),
-			fi.size(),0x01);
+			dcc->console()->connection()->encodeText(QString::number(fi.size())).data(),
+			0x01);
 		szTag = dcc->szFileName;
 	}
 
@@ -970,12 +971,12 @@ bool DccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename,co
 			KviIrcServerParser::encodeCtcpParameter(filename,szBuffy);
 
 			dcc->ctcpMsg->msg->console()->connection()->sendFmtData(
-					"PRIVMSG %s :%cDCC ACCEPT %s %s %u %s%c",
+					"PRIVMSG %s :%cDCC ACCEPT %s %s %s %s%c",
 					dcc->ctcpMsg->msg->console()->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(),
 					0x01,
 					szBuffy.ptr(),
 					port,
-					filePos,
+					dcc->ctcpMsg->msg->console()->connection()->encodeText(QString::number(filePos)).data(),
 					szZeroPortTag,
 					0x01
 				);
