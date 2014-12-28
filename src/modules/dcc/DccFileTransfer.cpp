@@ -655,7 +655,7 @@ void DccSendThread::run()
 	quint32 uLastAck          = 0;
 	quint64 uTotLastAck       = 0;
 	bool bAckHack             = false;
-	int iAckHackRounds        = 0;
+	quint64 iAckHackRounds    = 0;
 
 	if(m_pOpt->iPacketSize < 32)m_pOpt->iPacketSize = 32;
 	char * buffer = (char *)KviMemory::allocate(m_pOpt->iPacketSize * sizeof(char));
@@ -759,7 +759,7 @@ void DccSendThread::run()
 							uLastAck = iNewAck;
 							if(bAckHack)
 							{
-								uTotLastAck = (iAckHackRounds*4u*1024u*1024u*1024u) + iNewAck;
+								uTotLastAck = (iAckHackRounds << 32) + iNewAck;
 							} else {
 
 								uTotLastAck = iNewAck;
