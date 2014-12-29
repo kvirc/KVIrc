@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-29 23:02+0000\n"
-"PO-Revision-Date: 2012-06-13 00:17+0200\n"
-"Last-Translator: Markus Rennings <markus@rennings.net>\n"
+"PO-Revision-Date: 2014-12-30 00:42+0100\n"
+"Last-Translator: Michael Kaufmann (d00p) <ich@d00p.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:72
 #: src/modules/options/OptionsWidget_dcc.cpp:285
@@ -3459,6 +3459,10 @@ msgid ""
 "To open network settings choose a network (with a globe) in list of networks "
 "and servers and click Advanced."
 msgstr ""
+"NickServ-Einstellungen sind nur für das gesamte IRC Netzwerk verfügbar, "
+"nicht nur für bestimmte Server.\n"
+"Um die Netzwerk-Einstellungen zu öffnen, wähle ein Netzwerk (mit einem "
+"Globus) aus der Liste der Netzwerke und klicke auf Erweitert."
 
 #: src/modules/options/OptionsWidget_servers.cpp:333
 #: src/modules/options/OptionsWidget_identity.cpp:718
@@ -3873,7 +3877,7 @@ msgstr "Protokoll:"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:157
 msgid "Provided by"
-msgstr ""
+msgstr "Angeboten von"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:71
 msgid "Proxy"
@@ -4345,7 +4349,7 @@ msgstr "Klänge"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:139
 msgid "Spell checker dictionaries"
-msgstr ""
+msgstr "Rechtschreibprüfung Wörterbücher"
 
 #: src/modules/options/OptionsWidget_logging.cpp:55
 msgid "Strip colors in logs"
