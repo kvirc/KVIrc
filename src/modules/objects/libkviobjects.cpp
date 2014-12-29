@@ -713,7 +713,7 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 			{
 				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
 					spacing, list.at(i), KviControlCodes::Bold,
-					list.at(i)->objectName().data(), KviControlCodes::Bold, list.at(i)->metaObject()->className()
+					list.at(i)->objectName().toUtf8().data(), KviControlCodes::Bold, list.at(i)->metaObject()->className()
 				);
 			}
 			QString szClass=list.at(i)->metaObject()->className();
