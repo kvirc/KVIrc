@@ -76,6 +76,69 @@ extern KviColorWindow          * g_pColorWindow;
 	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
 #endif
 
+#ifdef COMPILE_ENCHANT_SUPPORT
+static void checkWordSpelling(const QString& szWord, QString* szResult, const QString& szToAppend) {
+	// TODO: If szWord is a nick of a person in this channel, don't mark it as a spelling mistake.
+	KviKvsVariant bCorrect;
+	KviKvsVariantList params(new KviKvsVariant(szWord));
+	KviKvsScript::evaluate("$spellchecker.check($0)", NULL, &params, &bCorrect);
+	if (!bCorrect.asBoolean()) {
+		*szResult += QChar(KviControlCodes::SpellingMistake);
+	}
+	*szResult += szToAppend;
+	if (!bCorrect.asBoolean()) {
+		*szResult += QChar(KviControlCodes::SpellingMistake);
+	}
+}
+// Insert KviControlCodes::SpellingMistake around every word with a spelling mistake
+static QString substituteSpelling(const QString& szText) {
+	// TODO: If no dictionaries are enabled, just return szText.
+	QString szResult;
+	QString szWord;
+	int iStartOfWord = -1;
+	for (int i = 0; i < szText.length(); ++i) {
+		QChar c = szText[i];
+		switch (c.unicode()) {
+			case KviControlCodes::Bold:
+			case KviControlCodes::Underline:
+			case KviControlCodes::Reset:
+			case KviControlCodes::Reverse:
+			case KviControlCodes::CryptEscape:
+			case KviControlCodes::Icon:
+				break;
+			case KviControlCodes::Color:
+			{
+				i++; // \0x03 character itself
+				if (i >= szText.length()) break;
+				unsigned char uFore;
+				unsigned char uBack;
+				i = KviControlCodes::getUnicodeColorBytes(szText, i, &uFore, &uBack);
+				i--; // It will now ++i again in for-loop
+				break;
+			}
+			default:
+				if (c.isLetter()) {
+					if (szWord.isEmpty()) {
+						iStartOfWord = i;
+					}
+					szWord += c;
+				} else {
+					if (!szWord.isEmpty()) {
+						// word finished
+						checkWordSpelling(szWord, &szResult, szText.mid(iStartOfWord, i - iStartOfWord));
+						szWord.clear();
+					}
+					szResult += c;
+				}
+		}
+	}
+	if (!szWord.isEmpty()) {
+		checkWordSpelling(szWord, &szResult, szText.mid(iStartOfWord));
+	}
+	return szResult;
+}
+#endif
+
 //static members initialization
 int            KviInputEditor::g_iInputInstances = 0;
 int            KviInputEditor::g_iInputFontCharWidth[256];
@@ -343,15 +406,20 @@ void KviInputEditor::drawContents(QPainter * p)
 	m_iCurFore       = KVI_INPUT_DEF_FORE; //normal fore color
 	m_bCurBold       = false;
 	m_bCurUnderline  = false;
+	m_bCurSpellingMistake = false;
+#ifdef COMPILE_ENCHANT_SUPPORT
+	m_szTextDisplayBuffer = substituteSpelling(m_szTextBuffer);
+#else
+	m_szTextDisplayBuffer = m_szTextBuffer;
+#endif
 
 	int iTop          = KVI_INPUT_XTRAPADDING;
 	int iBottom       = rect.height() - KVI_INPUT_XTRAPADDING;
 
 	int iTextBaseline = iBottom - fm->descent();
 
-	runUpToTheFirstVisibleChar();
-
-	int iCharIdx      = m_iFirstVisibleChar;
+	int iCharIdx      = runUpToTheFirstVisibleChar();
+	int iInvisibleOffset = iCharIdx - m_iFirstVisibleChar;
 
 	//Control the selection state
 	if((m_iSelectionEnd < m_iSelectionBegin) || (m_iSelectionEnd == -1) || (m_iSelectionBegin == -1))
@@ -399,27 +467,32 @@ void KviInputEditor::drawContents(QPainter * p)
 		p->drawLine(xIMLeft, iBottom, xIMRight, iBottom);
 	}
 
-	while((iCharIdx < ((int)(m_szTextBuffer.length()))) && (iCurXPos < iMaxXPos))
+	while((iCharIdx < ((int)(m_szTextDisplayBuffer.length()))) && (iCurXPos < iMaxXPos))
 	{
 		extractNextBlock(iCharIdx,fm,iCurXPos,iMaxXPos);
 
 		if(m_bControlBlock)
 		{
-			p->setPen(KVI_OPTION_COLOR(KviOption_colorInputControl));
+			if(m_bVisibleControlBlock)
+			{
+				p->setPen(KVI_OPTION_COLOR(KviOption_colorInputControl));
 
-			QChar s = getSubstituteChar(m_szTextBuffer[iCharIdx].unicode());
+				QChar s = getSubstituteChar(m_szTextDisplayBuffer[iCharIdx].unicode());
 
-			// the block width is 4 pixels more than the actual character
+				// the block width is 4 pixels more than the actual character
 
-			p->drawText(iCurXPos + 2,iTextBaseline,s);
+				p->drawText(iCurXPos + 2,iTextBaseline,s);
 
-			p->drawRect(iCurXPos,iTop,m_iBlockWidth-1,iBottom-1);
+				p->drawRect(iCurXPos,iTop,m_iBlockWidth-1,iBottom-1);
+			} else {
+				iInvisibleOffset += m_iBlockLen;
+			}
 		} else {
 			if(m_iSelectionBegin!=-1)
 			{
 				int iBlockEnd = iCharIdx + m_iBlockLen;
 				//block is selected (maybe partially)
-				if( iBlockEnd > m_iSelectionBegin && iCharIdx <= m_iSelectionEnd )
+				if( iBlockEnd > m_iSelectionBegin + iInvisibleOffset && iCharIdx <= m_iSelectionEnd + iInvisibleOffset )
 				{
 					int iSubStart,iSubLen;
 					//in common it consists of 3 parts: unselected-selected-unselected
@@ -427,7 +500,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 					//first part start is always equal to the block start
 					iSubStart = iCharIdx;
-					iSubLen = m_iSelectionBegin > iCharIdx ? m_iSelectionBegin-iCharIdx : 0;
+					iSubLen = m_iSelectionBegin + iInvisibleOffset > iCharIdx ? m_iSelectionBegin + iInvisibleOffset - iCharIdx : 0;
 
 					if(iSubLen)
 					{
@@ -438,7 +511,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 					//second one
 					iSubStart += iSubLen;
-					iSubLen = m_iSelectionEnd<iBlockEnd ? m_iSelectionEnd-iSubStart+1 : iBlockEnd-iSubStart;
+					iSubLen = m_iSelectionEnd + iInvisibleOffset < iBlockEnd ? m_iSelectionEnd + iInvisibleOffset - iSubStart+1 : iBlockEnd - iSubStart;
 
 					if(iSubLen)
 					{
@@ -447,7 +520,7 @@ void KviInputEditor::drawContents(QPainter * p)
 						m_iBlockWidth=0;
 					}
 
-					if(m_iSelectionEnd<(iBlockEnd-1))
+					if(m_iSelectionEnd+iInvisibleOffset<(iBlockEnd-1))
 					{
 						iSubStart += iSubLen;
 						iSubLen = iBlockEnd-iSubStart;
@@ -466,6 +539,7 @@ void KviInputEditor::drawContents(QPainter * p)
 	}
 
 	//Now the cursor
+	//Iterating over m_szTextBuffer here, not m_szTextDisplayBuffer
 	m_iLastCursorXPosition = 0;
 	m_iBlockLen = m_iFirstVisibleChar;
 
@@ -488,7 +562,7 @@ void KviInputEditor::drawContents(QPainter * p)
 void KviInputEditor::drawTextBlock(QPainter * pa, int iTop, int iBottom, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected)
 {
 	QFontMetrics * fm = getLastFontMetrics(font());
-	QString szTmp = m_szTextBuffer.mid(iIdx,iLen);
+	QString szTmp = m_szTextDisplayBuffer.mid(iIdx,iLen);
 	m_iBlockWidth = fm->width(szTmp);
 
 	if(m_iCurFore == KVI_INPUT_DEF_FORE)
@@ -519,6 +593,12 @@ void KviInputEditor::drawTextBlock(QPainter * pa, int iTop, int iBottom, int iCu
 		pa->drawText(iCurXPos+1,iTextBaseline,szTmp);
 	if(m_bCurUnderline)
 		pa->drawLine(iCurXPos,iTextBaseline + fm->descent(),iCurXPos+m_iBlockWidth,iTextBaseline + fm->descent());
+
+	if(m_bCurSpellingMistake)
+	{
+		pa->setPen(QPen(Qt::red, 1, Qt::DotLine));
+		pa->drawLine(iCurXPos,iTextBaseline + fm->descent() - 1,iCurXPos+m_iBlockWidth,iTextBaseline + fm->descent() - 1);
+	}
 }
 
 QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
@@ -557,30 +637,32 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 	m_iBlockLen = 0;
 	m_iBlockWidth = 0;
 
-	QChar c = m_szTextBuffer[iIdx];
+	QChar c = m_szTextDisplayBuffer[iIdx];
 
-	if((c.unicode() > 32) ||
+	if((c.unicode() > 32 && c != QChar(KviControlCodes::SpellingMistake)) ||
 		((c != QChar(KviControlCodes::Color)) &&
 		(c != QChar(KviControlCodes::Bold)) &&
 		(c != QChar(KviControlCodes::Underline)) &&
 		(c != QChar(KviControlCodes::Reset)) &&
 		(c != QChar(KviControlCodes::Reverse)) &&
 		(c != QChar(KviControlCodes::CryptEscape)) &&
-		(c != QChar(KviControlCodes::Icon))))
+		(c != QChar(KviControlCodes::Icon)) &&
+		(c != QChar(KviControlCodes::SpellingMistake))))
 	{
 		m_bControlBlock = false;
 		//Not a control code...run..
-		while((iIdx < ((int)(m_szTextBuffer.length()))) && (iCurXPos < iMaxXPos))
+		while((iIdx < ((int)(m_szTextDisplayBuffer.length()))) && (iCurXPos < iMaxXPos))
 		{
-			c = m_szTextBuffer[iIdx];
-			if((c.unicode() > 32) ||
+			c = m_szTextDisplayBuffer[iIdx];
+			if((c.unicode() > 32 && c != QChar(KviControlCodes::SpellingMistake)) ||
 				((c != QChar(KviControlCodes::Color)) &&
 				(c != QChar(KviControlCodes::Bold)) &&
 				(c != QChar(KviControlCodes::Underline)) &&
 				(c != QChar(KviControlCodes::Reset)) &&
 				(c != QChar(KviControlCodes::Reverse)) &&
 				(c != QChar(KviControlCodes::CryptEscape)) &&
-				(c != QChar(KviControlCodes::Icon))))
+				(c != QChar(KviControlCodes::Icon)) &&
+				(c != QChar(KviControlCodes::SpellingMistake))))
 			{
 				m_iBlockLen++;
 				int iXxx = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm->width(c);
@@ -592,8 +674,9 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 		return;
 	} else {
 		m_bControlBlock = true;
+		m_bVisibleControlBlock = true;
 		m_iBlockLen = 1;
-		m_iBlockWidth = g_iInputFontCharWidth[c.unicode()];
+		m_iBlockWidth = c.unicode() < 256 ? g_iInputFontCharWidth[c.unicode()] : 0;
 		//Control code
 		switch(c.unicode())
 		{
@@ -623,12 +706,12 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 			case KviControlCodes::Color:
 			{
 				iIdx++;
-				if(iIdx >= ((int)(m_szTextBuffer.length())))
+				if(iIdx >= ((int)(m_szTextDisplayBuffer.length())))
 					return;
 
 				unsigned char uFore;
 				unsigned char uBack;
-				iIdx = KviControlCodes::getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
+				iIdx = KviControlCodes::getUnicodeColorBytes(m_szTextDisplayBuffer,iIdx,&uFore,&uBack);
 				if(uFore != KviControlCodes::NoChange)
 				{
 					m_iCurFore = uFore;
@@ -641,6 +724,10 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 				}
 			}
 			break;
+			case KviControlCodes::SpellingMistake:
+				m_bCurSpellingMistake = ! m_bCurSpellingMistake;
+				m_bVisibleControlBlock = false;
+				break;
 			default:
 				qDebug("Ops..");
 				exit(0);
@@ -649,12 +736,13 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 	}
 }
 
-void KviInputEditor::runUpToTheFirstVisibleChar()
+int KviInputEditor::runUpToTheFirstVisibleChar()
 {
 	register int iIdx = 0;
-	while(iIdx < m_iFirstVisibleChar)
+	int iFirstVisibleCharInDisplay = m_iFirstVisibleChar;
+	while(iIdx < iFirstVisibleCharInDisplay)
 	{
-		unsigned short uChar = m_szTextBuffer[iIdx].unicode();
+		unsigned short uChar = m_szTextDisplayBuffer[iIdx].unicode();
 		if(uChar < 32)
 		{
 			switch(uChar)
@@ -681,10 +769,10 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 				case KviControlCodes::Color:
 				{
 					iIdx++;
-					if(iIdx >= ((int)(m_szTextBuffer.length())))return;
+					if(iIdx >= ((int)(m_szTextDisplayBuffer.length())))return iFirstVisibleCharInDisplay;
 					unsigned char uFore;
 					unsigned char uBack;
-					iIdx = KviControlCodes::getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
+					iIdx = KviControlCodes::getUnicodeColorBytes(m_szTextDisplayBuffer,iIdx,&uFore,&uBack);
 					iIdx--;
 					if(uFore != KviControlCodes::NoChange) m_iCurFore = uFore;
 					else m_iCurFore = KVI_INPUT_DEF_FORE;
@@ -697,9 +785,13 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 					exit(0);
 				break;
 			}
+		} else if (uChar == KviControlCodes::SpellingMistake) {
+			iFirstVisibleCharInDisplay++;
+			m_bCurSpellingMistake = ! m_bCurSpellingMistake;
 		}
 		iIdx++;
 	}
+	return iFirstVisibleCharInDisplay;
 }
 
 void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)

@@ -850,6 +850,25 @@ else()
 endif()
 
 ############################################################################
+# Enchant (spell checker) support
+############################################################################
+option(WANT_SPELLCHECKER "Compile Spell-Checker Support" ON)
+if(WANT_SPELLCHECKER)
+	find_package(PkgConfig)
+	pkg_check_modules(Enchant enchant)
+	if(Enchant_FOUND)
+		set(CMAKE_STATUS_SPELLCHECKER_SUPPORT "Yes")
+		include_directories(${Enchant_INCLUDE_DIRS})
+		list(APPEND LIBS ${Enchant_LIBRARIES})
+		set(COMPILE_ENCHANT_SUPPORT 1)
+	else()
+		set(CMAKE_STATUS_SPELLCHECKER_SUPPORT "No (libenchant not found)")
+	endif()
+else()
+	set(CMAKE_STATUS_SPELLCHECKER_SUPPORT "No")
+endif()
+
+############################################################################
 # IPC (inter-process communication) support
 ############################################################################
 option(WANT_IPC "Compile Inter-Process Communication Support" ON)
@@ -1371,6 +1390,7 @@ endif()
 message(STATUS "   KDE4 Support                : ${CMAKE_STATUS_KDE4_SUPPORT}")
 message(STATUS "   IPv6 Support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
 message(STATUS "   Pseudo-Transparency Support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
+message(STATUS "   Spell Checker Support       : ${CMAKE_STATUS_SPELLCHECKER_SUPPORT}")
 message(STATUS "   IPC Support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
 message(STATUS "   Audio Backends              : ${CMAKE_STATUS_AUDIO_BACKENDS}")
 message(STATUS "Cryptography:")

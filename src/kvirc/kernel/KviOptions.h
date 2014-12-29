@@ -438,8 +438,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringlistModuleExtensionToolbars 5               /* internal */
 #define KviOption_stringlistImageSearchPaths 6                      /* ??? */
 #define KviOption_stringlistRecentIrcUrls 7                      /* internal */
+#define KviOption_stringlistSpellCheckerDictionaries 8              /* spellchecker */
 
-#define KVI_NUM_STRINGLIST_OPTIONS 8
+#define KVI_NUM_STRINGLIST_OPTIONS 9
 
 
 

@@ -30,9 +30,11 @@
 #include "KviQString.h"
 #include "KviApplication.h"
 #include "KviFileUtils.h"
+#include "KviKvsScript.h"
 
 #include <QDir>
 #include <QMessageBox>
+#include <QHeaderView>
 
 QString g_szPrevSettedLocale;
 
@@ -42,19 +44,23 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	setObjectName("textencoding_options_widget");
 	createLayout();
 
-	//server encoding
-	addLabel(0,0,0,0,__tr2qs_ctx("Default server encoding:","options"));
+	KviTalGroupBox* gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Encoding","options"));
+	QGridLayout* grid = new QGridLayout;
+	gbox->setLayout(grid);
 
-	m_pSrvEncodingCombo = new QComboBox(this);
-	addWidgetToLayout(m_pSrvEncodingCombo,1,0,1,0);
+	//server encoding
+	grid->addWidget(addLabel(gbox,__tr2qs_ctx("Default server encoding:","options")),0,0);
+
+	m_pSrvEncodingCombo = new QComboBox(gbox);
+	grid->addWidget(m_pSrvEncodingCombo,0,1);
 
 	m_pSrvEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
 
 	//text encoding
-	addLabel(0,1,0,1,__tr2qs_ctx("Default text encoding:","options"));
+	grid->addWidget(addLabel(gbox,__tr2qs_ctx("Default text encoding:","options")),1,0);
 
-	m_pTextEncodingCombo = new QComboBox(this);
-	addWidgetToLayout(m_pTextEncodingCombo,1,1,1,1);
+	m_pTextEncodingCombo = new QComboBox(gbox);
+	grid->addWidget(m_pTextEncodingCombo,1,1);
 
 	m_pTextEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
 
@@ -78,14 +84,17 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	m_pTextEncodingCombo->setCurrentIndex(iTextMatch);
 	m_pSrvEncodingCombo->setCurrentIndex(iSrvMatch);
 
- 	addLabel(0,2,0,2,__tr2qs_ctx("Force language:","options"));
+	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Language","options"));
+	grid = new QGridLayout;
+	gbox->setLayout(grid);
 
-	m_pForcedLocaleCombo = new QComboBox(this);
+	grid->addWidget(addLabel(gbox,__tr2qs_ctx("Force language:","options")),0,0);
 
-	addWidgetToLayout(m_pForcedLocaleCombo,1,2,1,2);
+	m_pForcedLocaleCombo = new QComboBox(gbox);
 
-	QLabel * l = new QLabel(__tr2qs_ctx("<b>Note:</b> You need to restart KVirc to apply a language changing","options"),this);
-	addWidgetToLayout(l,0,3,1,3);
+	grid->addWidget(m_pForcedLocaleCombo,0,1);
+
+	grid->addWidget(addLabel(gbox,__tr2qs_ctx("<b>Note:</b> You need to restart KVirc to apply a language changing","options")),1,0,1,2);
 
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection","options"));
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en","options"));
@@ -124,7 +133,56 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		m_pForcedLocaleCombo->setCurrentIndex(1);
 	else
 		m_pForcedLocaleCombo->setCurrentIndex(iMatch);
-	addRowSpacer(0,4,1,4);
+
+#ifdef COMPILE_ENCHANT_SUPPORT
+	{
+		gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Spell checker dictionaries","options"));
+
+		KviKvsVariant availableDictionaries;
+		KviKvsScript::evaluate("$spellchecker.availableDictionaries", NULL, NULL, &availableDictionaries);
+		const KviPointerHashTable<QString, KviKvsVariant>* hashTable = availableDictionaries.hash()->dict();
+		KviPointerHashTableIterator<QString, KviKvsVariant> iter(*hashTable);
+		QMap<QString, QString> dictMap;
+		for (bool b = iter.moveFirst(); b; b = iter.moveNext()) {
+			QString szDescription;
+			iter.current()->asString(szDescription);
+			dictMap[iter.currentKey()] = szDescription;
+		}
+
+		m_pSpellCheckerDictionaries = new QTableWidget(gbox);
+		m_pSpellCheckerDictionaries->setRowCount(dictMap.size());
+		m_pSpellCheckerDictionaries->setColumnCount(2);
+		QStringList header;
+		header << __tr2qs_ctx("Language code", "options");
+		header << __tr2qs_ctx("Provided by", "options");
+		m_pSpellCheckerDictionaries->setHorizontalHeaderLabels(header);
+#if (QT_VERSION >= 0x050000)
+		m_pSpellCheckerDictionaries->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+#else
+		m_pSpellCheckerDictionaries->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+#endif
+		m_pSpellCheckerDictionaries->setSelectionBehavior(QAbstractItemView::SelectRows);
+		m_pSpellCheckerDictionaries->setSelectionMode(QAbstractItemView::SingleSelection);
+		m_pSpellCheckerDictionaries->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+		int row = 0;
+		for (QMap<QString, QString>::iterator it = dictMap.begin(); it != dictMap.end(); ++it, ++row) {
+			QTableWidgetItem* itemLang = new QTableWidgetItem(it.key());
+			itemLang->setCheckState(KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries).contains(it.key()) ? Qt::Checked : Qt::Unchecked);
+			itemLang->setFlags(itemLang->flags() & ~Qt::ItemIsEditable);
+			m_pSpellCheckerDictionaries->setItem(row,0,itemLang);
+
+			QTableWidgetItem* itemDesc = new QTableWidgetItem(it.value());
+			itemDesc->setFlags(itemDesc->flags() & ~Qt::ItemIsEditable);
+			m_pSpellCheckerDictionaries->setItem(row,1,itemDesc);
+		}
+		
+		m_pSpellCheckerDictionaries->resizeColumnsToContents();
+		m_pSpellCheckerDictionaries->resizeRowsToContents();
+	}
+#else
+	addRowSpacer(0,2,0,2);
+#endif
 }
 
 OptionsWidget_textEncoding::~OptionsWidget_textEncoding()
@@ -166,5 +224,16 @@ void OptionsWidget_textEncoding::commit()
 	}
 /*	if(!KviQString::equalCI(m_pForcedLocaleCombo->text(idx),m_szLanguage))
 		QMessageBox::information(0,"KVIrc",__tr2qs_ctx("You need to restart KVirc to apply a language changing","options"),QMessageBox::Ok);*/
+
+#ifdef COMPILE_ENCHANT_SUPPORT
+	QStringList wantedDictionaries;
+	for (int i = 0; i < m_pSpellCheckerDictionaries->rowCount(); ++i) {
+		if (m_pSpellCheckerDictionaries->item(i,0)->checkState() == Qt::Checked) {
+			wantedDictionaries << m_pSpellCheckerDictionaries->item(i,0)->text();
+		}
+	}
+	KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries) = wantedDictionaries;
+	KviKvsScript::run("spellchecker.reloadDictionaries", NULL);
+#endif
 }
 

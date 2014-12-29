@@ -27,6 +27,7 @@
 #include "KviOptionsWidget.h"
 
 #include <QComboBox>
+#include <QTableWidget>
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding KviIconManager::TextEncoding
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_textEncoding __tr2qs_no_lookup("Language")
@@ -45,6 +46,7 @@ protected:
 	QComboBox * m_pTextEncodingCombo;
 	QComboBox * m_pSrvEncodingCombo;
 	QComboBox * m_pForcedLocaleCombo;
+	QTableWidget * m_pSpellCheckerDictionaries;
 public:
 	virtual void commit();
 };

@@ -432,7 +432,8 @@ KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS]=
 	STRINGLIST_OPTION("RecentNicknames",KviOption_sectFlagRecent),
 	STRINGLIST_OPTION("ModuleExtensionToolbars",KviOption_sectFlagFrame),
 	STRINGLIST_OPTION("ImageSearchPaths",KviOption_sectFlagFrame | KviOption_encodePath),
-	STRINGLIST_OPTION("RecentIrcUrls",KviOption_sectFlagRecent)
+	STRINGLIST_OPTION("RecentIrcUrls",KviOption_sectFlagRecent),
+	STRINGLIST_OPTION("SpellCheckerDictionaries",KviOption_sectFlagInput)
 };
 
 #define MIRC_COLOR_OPTION(_num,_red,_green,_blue) \

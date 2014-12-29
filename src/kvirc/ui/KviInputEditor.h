@@ -101,6 +101,7 @@ protected:
 	static int                g_iInputInstances;
 	static int                g_iCachedHeight;
 	QString                   m_szTextBuffer;
+	QString                   m_szTextDisplayBuffer;
 	int                       m_iCursorPosition;
 	int                       m_iFirstVisibleChar;
 	int                       m_iSelectionBegin;
@@ -120,10 +121,12 @@ protected:
 	unsigned char             m_iCurBack;
 	bool                      m_bCurBold;
 	bool                      m_bCurUnderline;
+	bool                      m_bCurSpellingMistake;
 
 	int                       m_iBlockLen;
 	int                       m_iBlockWidth;
 	bool                      m_bControlBlock;
+	bool                      m_bVisibleControlBlock;
 
 	bool                      m_bCursorOn;
 
@@ -355,9 +358,9 @@ private:
 
 	/**
 	* \brief Moves the cursor to the first visible character
-	* \return void
+	* \return position of m_iFirstVisibleChar in m_szTextDisplayBuffer
 	*/
-	void runUpToTheFirstVisibleChar();
+	int runUpToTheFirstVisibleChar();
 
 	/**
 	* \brief Extracts the next block of text

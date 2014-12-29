@@ -162,7 +162,8 @@ namespace KviControlCodes
 		Reverse     = 0x16,   /**< Reverse */
 		Icon        = 0x1d,   /**< Icon, KVIrc control code */
 		CryptEscape = 0x1e,   /**< Crypt escape, KVIrc control code */
-		Underline   = 0x1f    /**< Underline */
+		Underline   = 0x1f,   /**< Underline */
+		SpellingMistake = 0xE942, /**< Totally artificial and internal to KviInputEditor. This is a character from unicode private use area */
 	};
 
 	/**
