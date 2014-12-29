@@ -77,7 +77,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(l,2,0);
 
 	m_pMessageRegexpEdit = new QLineEdit(this);
-	gl->addWidget(m_pMessageRegexpEdit,2,2,1,3);
+	gl->addWidget(m_pMessageRegexpEdit,2,1,1,3);
 //	gl->addMultiCellWidget(m_pMessageRegexpEdit,2,2,1,3);
 
 	KviTalToolTip::add(m_pMessageRegexpEdit,
