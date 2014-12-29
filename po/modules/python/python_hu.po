@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 21:40+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2012-07-09 14:35+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: Hungarian\n"
@@ -22,8 +22,8 @@ msgstr ""
 msgid "Internal error: python interpreter not initialized"
 msgstr "Belső hiba: python értelmező nincs inicializálva"
 
-#: src/modules/python/libkvipython.cpp:441
-#: src/modules/python/libkvipython.cpp:445
+#: src/modules/python/libkvipython.cpp:448
+#: src/modules/python/libkvipython.cpp:452
 msgid "Python execution error:"
 msgstr "Python futtatási hiba:"
 
@@ -32,8 +32,8 @@ msgid "The pythoncore module can't be loaded: python support not available"
 msgstr ""
 "A pythoncore modult nem lehet beltölteni: pyhton támogatás nem elérhető"
 
-#: src/modules/python/libkvipython.cpp:424
-#: src/modules/python/libkvipython.cpp:477
+#: src/modules/python/libkvipython.cpp:431
+#: src/modules/python/libkvipython.cpp:506
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the python support"

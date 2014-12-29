@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2010-01-30 19:45+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -22,8 +22,8 @@ msgstr ""
 msgid "Internal error: python interpreter not initialized"
 msgstr "Внутренняя ошибка: интерпретатор python не инициализирован"
 
-#: src/modules/python/libkvipython.cpp:441
-#: src/modules/python/libkvipython.cpp:445
+#: src/modules/python/libkvipython.cpp:448
+#: src/modules/python/libkvipython.cpp:452
 msgid "Python execution error:"
 msgstr "Ошибка выполнения python:"
 
@@ -31,8 +31,8 @@ msgstr "Ошибка выполнения python:"
 msgid "The pythoncore module can't be loaded: python support not available"
 msgstr "Не возможно загрузить модуль pythoncore: поддержка python не доступна"
 
-#: src/modules/python/libkvipython.cpp:424
-#: src/modules/python/libkvipython.cpp:477
+#: src/modules/python/libkvipython.cpp:431
+#: src/modules/python/libkvipython.cpp:506
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the python support"

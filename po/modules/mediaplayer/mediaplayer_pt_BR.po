@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_mediaplayer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2011-06-16 01:13-0300\n"
 "Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -71,7 +71,7 @@ msgid ""
 "interface in the Vlc preferences\n"
 msgstr ""
 
-#: src/modules/mediaplayer/MpAmipInterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:106
 #, fuzzy
 msgid ""
 "An interface to the AMIP plug-in.\n"
@@ -95,7 +95,7 @@ msgstr ""
 "Para usando também tem de instalar o extra MPRIS disponível em http://addons."
 "songbirdnest.com/addon/1626.\n"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
 msgid ""
 "An interface to the Spotify music streaming service.\n"
 "It is only available for certain countries in Europe.\n"
@@ -128,7 +128,7 @@ msgstr ""
 "Uma interface para o popular reprodutor de Mídia xmms do UNIX.\n"
 "Transfira-o a partir de http://www.xmms.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:192
 #, fuzzy
 msgid ""
 "An interface to the popular Winamp media player.\n"
@@ -151,7 +151,7 @@ msgstr ""
 "Uma interface para o popular reprodutor de Mídia audacious.\n"
 "Transfira-o a partir de http://audacious-mídia-player.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:182
 msgid "Can't find a running winamp window"
 msgstr "Não é possível encontrar uma janela do winamp em funcionamento"
 
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Parece que não existe um reprodutor de Mídia utilizável nesta máquina"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
 msgid "Spotify is not running"
 msgstr ""
 
@@ -223,8 +223,8 @@ msgstr ""
 "O interface de reprodução da Mídia seleccionada falhou ao executar a função "
 "pedida"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:316
-#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:314
+#: src/modules/mediaplayer/MpWinampInterface.cpp:348
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: log_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2012-04-11 21:17+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -19,11 +19,11 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: src/modules/logview/LogViewWindow.cpp:356
+#: src/modules/logview/LogViewWindow.cpp:364
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: src/modules/logview/LogViewWindow.cpp:172
+#: src/modules/logview/LogViewWindow.cpp:174
 msgid "Apply filter"
 msgstr "Застосувати фільтр"
 
@@ -31,7 +31,7 @@ msgstr "Застосувати фільтр"
 msgid "Can't log to file '%1'"
 msgstr "Не можу писати журнал до файлу '%1'"
 
-#: src/modules/logview/LogViewWindow.cpp:103
+#: src/modules/logview/LogViewWindow.cpp:105
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -39,15 +39,15 @@ msgstr "Скасувати"
 msgid "Channel"
 msgstr "Канал"
 
-#: src/modules/logview/LogViewWindow.cpp:636
+#: src/modules/logview/LogViewWindow.cpp:669
 msgid "Channel %1 on %2"
 msgstr "Канал %1 на %2"
 
-#: src/modules/logview/LogViewWindow.cpp:461
+#: src/modules/logview/LogViewWindow.cpp:469
 msgid "Confirm current user log deletion"
 msgstr "Підтвердження видалення журналу"
 
-#: src/modules/logview/LogViewWindow.cpp:477
+#: src/modules/logview/LogViewWindow.cpp:485
 msgid "Confirm current user logs deletion"
 msgstr "Підтвердження видалення журналів"
 
@@ -55,11 +55,11 @@ msgstr "Підтвердження видалення журналів"
 msgid "Console"
 msgstr "Консоль"
 
-#: src/modules/logview/LogViewWindow.cpp:639
+#: src/modules/logview/LogViewWindow.cpp:672
 msgid "Console on %1"
 msgstr "Консоль на %1"
 
-#: src/modules/logview/LogViewWindow.cpp:141
+#: src/modules/logview/LogViewWindow.cpp:143
 msgid "Contents filter"
 msgstr "Фільтр вмісту"
 
@@ -67,23 +67,23 @@ msgstr "Фільтр вмісту"
 msgid "DCC Chat"
 msgstr "DCC-балачка"
 
-#: src/modules/logview/LogViewWindow.cpp:645
+#: src/modules/logview/LogViewWindow.cpp:678
 msgid "DCC Chat with %1"
 msgstr "DCC-чат з %1"
 
-#: src/modules/logview/LogViewWindow.cpp:478
+#: src/modules/logview/LogViewWindow.cpp:486
 msgid "Do you really wish to delete all these logs?"
 msgstr "Ви дійсно хочете видалити всі ці журнали?"
 
-#: src/modules/logview/LogViewWindow.cpp:462
+#: src/modules/logview/LogViewWindow.cpp:470
 msgid "Do you really wish to delete this log?"
 msgstr "Ви дійсно хочете видалити цей журнал?"
 
-#: src/modules/logview/LogViewWindow.cpp:777
+#: src/modules/logview/LogViewWindow.cpp:595
 msgid "Export Log - KVIrc"
 msgstr "Експортую журнал - KVIrc"
 
-#: src/modules/logview/LogViewWindow.cpp:442
+#: src/modules/logview/LogViewWindow.cpp:450
 msgid "Export log file to"
 msgstr "Експортувати журнал до"
 
@@ -95,49 +95,44 @@ msgstr "Не вдалось експортувати журнал '%1'"
 msgid "Failed to load logview module, aborting"
 msgstr "Не вдалось завантажити модуль logview, скасовую"
 
-#: src/modules/logview/LogViewWindow.cpp:777
-msgid "File '%1' already exists. Do you want to overwrite it?"
-msgstr "Файл '%1' вже існує. Хочете переписати його?"
-
-#: src/modules/logview/LogViewWindow.cpp:116
+#: src/modules/logview/LogViewWindow.cpp:118
 msgid "Filter"
 msgstr "Фільтр"
 
-#: src/modules/logview/LogViewWindow.cpp:191
+#: src/modules/logview/LogViewWindow.cpp:195
 msgid "HTML archive"
 msgstr "HTML архів"
 
-#: src/modules/logview/LogViewWindow.cpp:108
+#: src/modules/logview/LogViewWindow.cpp:110
 msgid "Index"
 msgstr "Індекс"
 
-#: src/modules/logview/LogViewWindow.cpp:68
+#: src/modules/logview/LogViewWindow.cpp:70
 msgid "Log File"
 msgstr "Файл журналу"
 
-#: src/modules/logview/LogViewWindow.cpp:235
+#: src/modules/logview/LogViewWindow.cpp:243
 msgid "Log Viewer"
 msgstr "Переглядач журналу"
 
-#: src/modules/logview/LogViewWindow.cpp:150
+#: src/modules/logview/LogViewWindow.cpp:152
 msgid "Log contents mask:"
 msgstr "Маска вмісту журналу:"
 
-#: src/modules/logview/LogViewWindow.cpp:144
+#: src/modules/logview/LogViewWindow.cpp:146
 msgid "Log name mask:"
 msgstr "Маска назви журналу:"
 
-#: src/modules/log/libkvilog.cpp:107
-#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr "Відсутній id вікна після перемикача 'w'"
 
-#: src/modules/logview/LogViewWindow.cpp:164
+#: src/modules/logview/LogViewWindow.cpp:166
 msgid "Only newer than"
 msgstr "Лише новіші ніж"
 
-#: src/modules/logview/LogViewWindow.cpp:156
+#: src/modules/logview/LogViewWindow.cpp:158
 msgid "Only older than"
 msgstr "Лише старіші ніж"
 
@@ -145,43 +140,48 @@ msgstr "Лише старіші ніж"
 msgid "Other"
 msgstr "Інше"
 
+#: src/modules/logview/LogViewWindow.cpp:193
+#, fuzzy
+msgid "Plain text file"
+msgstr "звичайний текстовий файл "
+
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Приват"
 
-#: src/modules/logview/LogViewWindow.cpp:642
+#: src/modules/logview/LogViewWindow.cpp:675
 msgid "Query with %1 on %2"
 msgstr "Приват з %1 на %2"
 
-#: src/modules/logview/LogViewWindow.cpp:440
+#: src/modules/logview/LogViewWindow.cpp:448
 msgid "Remove all log files within this folder"
 msgstr "Видалити всі журнали в цій теці"
 
-#: src/modules/logview/LogViewWindow.cpp:443
+#: src/modules/logview/LogViewWindow.cpp:451
 msgid "Remove log file"
 msgstr "Видалити файл журналу"
 
-#: src/modules/logview/LogViewWindow.cpp:132
+#: src/modules/logview/LogViewWindow.cpp:134
 msgid "Show DCC chat logs"
 msgstr "Показати логи DCC-чатів"
 
-#: src/modules/logview/LogViewWindow.cpp:120
+#: src/modules/logview/LogViewWindow.cpp:122
 msgid "Show channel logs"
 msgstr "Показати логи каналів"
 
-#: src/modules/logview/LogViewWindow.cpp:128
+#: src/modules/logview/LogViewWindow.cpp:130
 msgid "Show console logs"
 msgstr "Показати логи консолі"
 
-#: src/modules/logview/LogViewWindow.cpp:136
+#: src/modules/logview/LogViewWindow.cpp:138
 msgid "Show other logs"
 msgstr "Показати інші логи"
 
-#: src/modules/logview/LogViewWindow.cpp:124
+#: src/modules/logview/LogViewWindow.cpp:126
 msgid "Show query logs"
 msgstr "Показати логи приватів"
 
-#: src/modules/logview/LogViewWindow.cpp:648
+#: src/modules/logview/LogViewWindow.cpp:681
 msgid "Something on %1"
 msgstr "Щось на %1"
 
@@ -189,8 +189,7 @@ msgstr "Щось на %1"
 msgid "This window has no logging capabilities"
 msgstr "Це вікно не має можливості журналювання"
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
 msgstr "Вікно '%1' не знайдене"
@@ -199,12 +198,11 @@ msgstr "Вікно '%1' не знайдене"
 msgid "Window with id '%1' not found, returning empty string"
 msgstr "Вікно з id '%1' не знайдене, повертаю порожній рядок"
 
-#: src/modules/logview/LogViewWindow.cpp:190
-msgid "plain text file"
-msgstr "звичайний текстовий файл "
-
 #~ msgid "Browse Log Files"
 #~ msgstr "Перегляд файлів журналу"
+
+#~ msgid "File '%1' already exists. Do you want to overwrite it?"
+#~ msgstr "Файл '%1' вже існує. Хочете переписати його?"
 
 #~ msgid "Ops.. internal error"
 #~ msgstr "Ой.. внутрішня помилка"

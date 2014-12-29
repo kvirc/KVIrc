@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2011-08-15 23:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: src/modules/logview/LogViewWindow.cpp:356
+#: src/modules/logview/LogViewWindow.cpp:364
 msgid "%1 on %2"
 msgstr "%1 üstünde %2"
 
-#: src/modules/logview/LogViewWindow.cpp:172
+#: src/modules/logview/LogViewWindow.cpp:174
 msgid "Apply filter"
 msgstr "Filtreyi uygula:"
 
@@ -32,7 +32,7 @@ msgstr "Filtreyi uygula:"
 msgid "Can't log to file '%1'"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:103
+#: src/modules/logview/LogViewWindow.cpp:105
 msgid "Cancel"
 msgstr "İptal Et"
 
@@ -40,15 +40,15 @@ msgstr "İptal Et"
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/modules/logview/LogViewWindow.cpp:636
+#: src/modules/logview/LogViewWindow.cpp:669
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:461
+#: src/modules/logview/LogViewWindow.cpp:469
 msgid "Confirm current user log deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:477
+#: src/modules/logview/LogViewWindow.cpp:485
 msgid "Confirm current user logs deletion"
 msgstr ""
 
@@ -56,11 +56,11 @@ msgstr ""
 msgid "Console"
 msgstr "Konsol"
 
-#: src/modules/logview/LogViewWindow.cpp:639
+#: src/modules/logview/LogViewWindow.cpp:672
 msgid "Console on %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:141
+#: src/modules/logview/LogViewWindow.cpp:143
 msgid "Contents filter"
 msgstr "Filtre içeriği"
 
@@ -68,23 +68,23 @@ msgstr "Filtre içeriği"
 msgid "DCC Chat"
 msgstr "DCC Sohbet"
 
-#: src/modules/logview/LogViewWindow.cpp:645
+#: src/modules/logview/LogViewWindow.cpp:678
 msgid "DCC Chat with %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:478
+#: src/modules/logview/LogViewWindow.cpp:486
 msgid "Do you really wish to delete all these logs?"
 msgstr "Bu bölümdeki kayıtlarını hepsini silmek istiyor musunuz ?"
 
-#: src/modules/logview/LogViewWindow.cpp:462
+#: src/modules/logview/LogViewWindow.cpp:470
 msgid "Do you really wish to delete this log?"
 msgstr "Bu kaydı silmek istiyor musunuz ?"
 
-#: src/modules/logview/LogViewWindow.cpp:777
+#: src/modules/logview/LogViewWindow.cpp:595
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:442
+#: src/modules/logview/LogViewWindow.cpp:450
 msgid "Export log file to"
 msgstr ""
 
@@ -96,49 +96,44 @@ msgstr ""
 msgid "Failed to load logview module, aborting"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:777
-msgid "File '%1' already exists. Do you want to overwrite it?"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:116
+#: src/modules/logview/LogViewWindow.cpp:118
 msgid "Filter"
 msgstr "Filtre"
 
-#: src/modules/logview/LogViewWindow.cpp:191
+#: src/modules/logview/LogViewWindow.cpp:195
 msgid "HTML archive"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:108
+#: src/modules/logview/LogViewWindow.cpp:110
 msgid "Index"
 msgstr "Dizin"
 
-#: src/modules/logview/LogViewWindow.cpp:68
+#: src/modules/logview/LogViewWindow.cpp:70
 msgid "Log File"
 msgstr "Kayıt Dosyası"
 
-#: src/modules/logview/LogViewWindow.cpp:235
+#: src/modules/logview/LogViewWindow.cpp:243
 msgid "Log Viewer"
 msgstr "Kayıt Gösterici"
 
-#: src/modules/logview/LogViewWindow.cpp:150
+#: src/modules/logview/LogViewWindow.cpp:152
 msgid "Log contents mask:"
 msgstr "Kayıt içeriği arama:"
 
-#: src/modules/logview/LogViewWindow.cpp:144
+#: src/modules/logview/LogViewWindow.cpp:146
 msgid "Log name mask:"
 msgstr "Kayıt adı arama:"
 
-#: src/modules/log/libkvilog.cpp:107
-#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:164
+#: src/modules/logview/LogViewWindow.cpp:166
 msgid "Only newer than"
 msgstr "Bu tarihten yeni:"
 
-#: src/modules/logview/LogViewWindow.cpp:156
+#: src/modules/logview/LogViewWindow.cpp:158
 msgid "Only older than"
 msgstr "Bu tarihten eski:"
 
@@ -146,44 +141,49 @@ msgstr "Bu tarihten eski:"
 msgid "Other"
 msgstr "Diğer"
 
+#: src/modules/logview/LogViewWindow.cpp:193
+#, fuzzy
+msgid "Plain text file"
+msgstr "Filtre içeriği"
+
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Özel"
 
-#: src/modules/logview/LogViewWindow.cpp:642
+#: src/modules/logview/LogViewWindow.cpp:675
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:440
+#: src/modules/logview/LogViewWindow.cpp:448
 #, fuzzy
 msgid "Remove all log files within this folder"
 msgstr "Dosyaları sil"
 
-#: src/modules/logview/LogViewWindow.cpp:443
+#: src/modules/logview/LogViewWindow.cpp:451
 msgid "Remove log file"
 msgstr "Dosyayı sil"
 
-#: src/modules/logview/LogViewWindow.cpp:132
+#: src/modules/logview/LogViewWindow.cpp:134
 msgid "Show DCC chat logs"
 msgstr "DCC sohbet kayıtlarını göster"
 
-#: src/modules/logview/LogViewWindow.cpp:120
+#: src/modules/logview/LogViewWindow.cpp:122
 msgid "Show channel logs"
 msgstr "Kanal kayıtlarını göster"
 
-#: src/modules/logview/LogViewWindow.cpp:128
+#: src/modules/logview/LogViewWindow.cpp:130
 msgid "Show console logs"
 msgstr "Konsol kayıtlarını göster"
 
-#: src/modules/logview/LogViewWindow.cpp:136
+#: src/modules/logview/LogViewWindow.cpp:138
 msgid "Show other logs"
 msgstr "Diğer kayıtları göster"
 
-#: src/modules/logview/LogViewWindow.cpp:124
+#: src/modules/logview/LogViewWindow.cpp:126
 msgid "Show query logs"
 msgstr "Özel kayıtları göster"
 
-#: src/modules/logview/LogViewWindow.cpp:648
+#: src/modules/logview/LogViewWindow.cpp:681
 msgid "Something on %1"
 msgstr ""
 
@@ -191,8 +191,7 @@ msgstr ""
 msgid "This window has no logging capabilities"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
 #: src/modules/log/libkvilog.cpp:207
 msgid "Window '%1' not found"
 msgstr ""
@@ -200,10 +199,6 @@ msgstr ""
 #: src/modules/log/libkvilog.cpp:265
 msgid "Window with id '%1' not found, returning empty string"
 msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:190
-msgid "plain text file"
-msgstr "Filtre içeriği"
 
 #~ msgid "Browse Log Files"
 #~ msgstr "Kayıt Göstericiyi Aç"

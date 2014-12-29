@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2010-12-13 01:54+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -75,7 +75,7 @@ msgstr ""
 "Необходимо вручную включить управление через DBus\n"
 "в настройках VLC\n"
 
-#: src/modules/mediaplayer/MpAmipInterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:106
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
@@ -98,7 +98,7 @@ msgstr ""
 "Для использования вам также придётся установить дополнение MPRIS доступное "
 "по адресу http://addons.songbirdnest.com/addon/1626.\n"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
 msgid ""
 "An interface to the Spotify music streaming service.\n"
 "It is only available for certain countries in Europe.\n"
@@ -129,7 +129,7 @@ msgstr ""
 "Интерфейс к популярному в UNIX медиаплееру xmms.\n"
 "Вы можете загрузить его с http://legacy.xmms2.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:192
 #, fuzzy
 msgid ""
 "An interface to the popular Winamp media player.\n"
@@ -152,7 +152,7 @@ msgstr ""
 "Интерфейс к популярному в UNIX медиаплееру audacious.\n"
 "Вы можете загрузить его с http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:182
 msgid "Can't find a running winamp window"
 msgstr "Не могу найти запущенное окно winamp"
 
@@ -202,7 +202,7 @@ msgstr ""
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Кажется на этой машине нет подходящих медиаплееров"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
 msgid "Spotify is not running"
 msgstr ""
 
@@ -220,8 +220,8 @@ msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Выбранный интерфейс медиаплеера не смог выполнить требуемую функцию"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:316
-#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:314
+#: src/modules/mediaplayer/MpWinampInterface.cpp:348
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"

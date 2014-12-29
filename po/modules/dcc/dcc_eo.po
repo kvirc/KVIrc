@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 16:16+0100\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2012-06-26 12:23+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/dcc/requests.cpp:856
+#: src/modules/dcc/requests.cpp:857
 msgid "\"any\""
 msgstr "\"ajna\""
 
@@ -29,7 +29,7 @@ msgstr "%1"
 msgid "%1 of %2 (%3%)"
 msgstr "%1 de %2 (%3%)"
 
-#: src/modules/dcc/requests.cpp:694
+#: src/modules/dcc/requests.cpp:695
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
 msgstr "%Q [%Q@%Q] estas preta ricevi la dosieron \"%s\""
 
@@ -97,16 +97,16 @@ msgstr "&Formo"
 msgid "&Triangle"
 msgstr "&Triangulo"
 
-#: src/modules/dcc/requests.cpp:774 src/modules/dcc/requests.cpp:938
+#: src/modules/dcc/requests.cpp:775 src/modules/dcc/requests.cpp:941
 msgid "(unknown)"
 msgstr "(nekonata)"
 
 #: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
-#: src/modules/dcc/libkvidcc.cpp:1159 src/modules/dcc/libkvidcc.cpp:1226
+#: src/modules/dcc/libkvidcc.cpp:1160 src/modules/dcc/libkvidcc.cpp:1227
 msgid "-c requires -i and -p"
 msgstr "-c bezonas -i kaj -p"
 
-#: src/modules/dcc/DccBroker.cpp:276
+#: src/modules/dcc/DccBroker.cpp:277
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
@@ -114,7 +114,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> petas <b>Direktan Klientan Konekton</b> (DCC) en <b>%4</b> "
 "reĝimo.<br>"
 
-#: src/modules/dcc/DccBroker.cpp:496
+#: src/modules/dcc/DccBroker.cpp:497
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -124,7 +124,7 @@ msgstr ""
 "<b>KANVASA</b> reĝimo.<br>La konekta celo estos retnodo <b>%4</b> ĉe pordo "
 "<b>%5</b><br>"
 
-#: src/modules/dcc/DccBroker.cpp:417
+#: src/modules/dcc/DccBroker.cpp:418
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VIDEO</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -134,7 +134,7 @@ msgstr ""
 "<b>VIDEA</b> reĝimo.<br>La konekta celo estos retnodo <b>%4</b) ĉe pordo <b>"
 "%5</b><br>"
 
-#: src/modules/dcc/DccBroker.cpp:347
+#: src/modules/dcc/DccBroker.cpp:348
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -144,7 +144,7 @@ msgstr ""
 "<b>VOICE</b> reĝimo.<br>La konekta celo estos retnodo <b>%4</b> ĉe pordo <b>"
 "%5</b><br>"
 
-#: src/modules/dcc/DccBroker.cpp:588
+#: src/modules/dcc/DccBroker.cpp:589
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
@@ -152,7 +152,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> volas sendi al vi la dosieron '<b>%4</b>', <b>%5</b> "
 "grandeco.<br>La konekta celo estos retnodo <b>%6</b> ĉe pordo <b>%7</b><br>"
 
-#: src/modules/dcc/DccBroker.cpp:601
+#: src/modules/dcc/DccBroker.cpp:602
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
@@ -160,7 +160,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> volas sendi al vi la dosieron '<b>%4</b>', <b>%5</b> "
 "grandeco.<br>Vi estos la pasiva flanko de la konekto.<br>"
 
-#: src/modules/dcc/DccBroker.cpp:614
+#: src/modules/dcc/DccBroker.cpp:615
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -178,8 +178,8 @@ msgstr ""
 "aŭtomate per starigo de la opcio <tt>boolAutoAcceptIncomingAvatars</tt> al "
 "true.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:448
-#: src/modules/dcc/requests.cpp:741
+#: src/modules/dcc/requests.cpp:449 src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/libkvidcc.cpp:634
 msgid "<unknown size>"
 msgstr "<ne konata grandeco>"
 
@@ -196,7 +196,7 @@ msgstr "Abortis"
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Akceptas REKOMENCO peton, transirigo komencos ĉe pozicio %1"
 
-#: src/modules/dcc/requests.cpp:954
+#: src/modules/dcc/requests.cpp:957
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
@@ -204,7 +204,7 @@ msgstr ""
 "Akceptas dosieran peton de %Q [%Q@%Q] por '%s' (vera dosiero: %Q), prezentas "
 "DCC %Q"
 
-#: src/modules/dcc/requests.cpp:897
+#: src/modules/dcc/requests.cpp:898
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
@@ -212,8 +212,8 @@ msgstr ""
 "Akceptas dosieran peton de %Q [%Q@%Q] por '%s' (vera dosiero: %Q), prezentas "
 "DCC %s ĉar ni ne povas akcepti envenantajn konektojn (uzula opcio)"
 
-#: src/modules/dcc/DccVoiceWindow.cpp:931
 #: src/modules/dcc/DccVideoWindow.cpp:953
+#: src/modules/dcc/DccVoiceWindow.cpp:931
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Reala kodeko uzata estas '%s'"
@@ -260,11 +260,11 @@ msgstr "Penas aktivan DCC VIDEO konekton"
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Penas aktivan DCC VOICE konekton"
 
-#: src/modules/dcc/DccBroker.cpp:642
+#: src/modules/dcc/DccBroker.cpp:643
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr "Aŭtomatakceptas DCC %Q peton de %Q!%Q@%Q por dosiero %Q"
 
-#: src/modules/dcc/DccBroker.cpp:724
+#: src/modules/dcc/DccBroker.cpp:725
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Aŭtomatsavas DCC %Q dosieron kiel \r![!dbl]ludi $0\r%Q\r"
 
@@ -281,18 +281,18 @@ msgstr ""
 "Ne povas aŭskulti ĉe defaŭlta interfaco '%s': ripari ĝin en la opcia "
 "dialogo, malebligas la opcion (tiel ke la sekvanta dcc funkcios)"
 
-#: src/modules/dcc/DccBroker.cpp:207 src/modules/dcc/DccBroker.cpp:918
+#: src/modules/dcc/DccBroker.cpp:207 src/modules/dcc/DccBroker.cpp:919
 msgid "Can't open file %Q for reading"
 msgstr "Ne povas malfermi dosieron %Q por legi"
 
-#: src/modules/dcc/requests.cpp:542
+#: src/modules/dcc/requests.cpp:543
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %1 on port %2"
 msgstr ""
 "Ne povas procedi kun DCC RECV: Transirigo ne iniciata por dosiero %1 ĉe "
 "pordo %2"
 
-#: src/modules/dcc/requests.cpp:578
+#: src/modules/dcc/requests.cpp:579
 msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %1 on port %2, "
 "or invalid resume size"
@@ -308,7 +308,7 @@ msgstr "Ne povas repreni taŭgan lokan IPV4 adreson"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Ne povas sendi DCC %Q peton al %Q: IRC konekto estas finigita"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2327 src/modules/dcc/DccDialog.cpp:158
+#: src/modules/dcc/DccDialog.cpp:158 src/modules/dcc/DccFileTransfer.cpp:2329
 msgid "Cancel"
 msgstr "Rezigni"
 
@@ -318,11 +318,11 @@ msgstr "Rezigni"
 msgid "Cannot send data: No active connection"
 msgstr "Ne povas sendi datumojn: Neniu aktiva konekto"
 
-#: src/modules/dcc/DccBroker.cpp:709
+#: src/modules/dcc/DccBroker.cpp:710
 msgid "Choose Files to Save - KVIrc"
 msgstr "Elekti Dosierojn por Savi - KVIrc"
 
-#: src/modules/dcc/DccBroker.cpp:167 src/modules/dcc/DccBroker.cpp:881
+#: src/modules/dcc/DccBroker.cpp:167 src/modules/dcc/DccBroker.cpp:882
 msgid "Choose Files to Send - KVIrc"
 msgstr "Elekti Dosierojn por Sendi - KVIrc"
 
@@ -334,7 +334,7 @@ msgstr "Kunrula transiga limigo atingita (%1 de %2 transigoj rulantaj)"
 msgid "Configure Bandwidth..."
 msgstr "Agordi Kapaciton..."
 
-#: src/modules/dcc/DccFileTransfer.cpp:2298
+#: src/modules/dcc/DccFileTransfer.cpp:2300
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Agordi kapaciton por DCC transirigo %1"
 
@@ -343,8 +343,8 @@ msgid "Connected to %1:%2"
 msgstr "Konektite al %1:%2"
 
 #: src/modules/dcc/DccChatWindow.cpp:565
-#: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccVideoWindow.cpp:937
+#: src/modules/dcc/DccVoiceWindow.cpp:911
 #: src/modules/dcc/DccCanvasWindow.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Konektite al %Q:%Q"
@@ -354,13 +354,13 @@ msgid "Contacting host %1 on port %2"
 msgstr "Kontaktas retnodon %1 ĉe pordo %2"
 
 #: src/modules/dcc/DccChatWindow.cpp:184
-#: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccVideoWindow.cpp:613
+#: src/modules/dcc/DccVoiceWindow.cpp:756
 #: src/modules/dcc/DccCanvasWindow.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Kontaktas retnodon %Q ĉe pordo %Q"
 
-#: src/modules/dcc/DccBroker.cpp:296 src/modules/dcc/DccBroker.cpp:629
+#: src/modules/dcc/DccBroker.cpp:297 src/modules/dcc/DccBroker.cpp:630
 msgid "DCC %1 Request - KVIrc"
 msgstr "DCC %1 Peto - KVIrc"
 
@@ -380,7 +380,7 @@ msgstr "DCC %Q peto ne sendata, atendas permanan konekton"
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s transirigo kun %Q@%Q:%Q kompletigita: \r![!dbl]ludi $0\r%s\r"
 
-#: src/modules/dcc/DccBroker.cpp:502
+#: src/modules/dcc/DccBroker.cpp:503
 msgid "DCC CANVAS request"
 msgstr "DCC KANVASA peto"
 
@@ -388,13 +388,13 @@ msgstr "DCC KANVASA peto"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC KANVASO peto ne sendita: atendas permanajn konektojn"
 
-#: src/modules/dcc/DccVoiceWindow.cpp:902
 #: src/modules/dcc/DccVideoWindow.cpp:932
+#: src/modules/dcc/DccVoiceWindow.cpp:902
 #: src/modules/dcc/DccCanvasWindow.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC Malsukcesis: %Q"
 
-#: src/modules/dcc/DccBroker.cpp:423
+#: src/modules/dcc/DccBroker.cpp:424
 msgid "DCC VIDEO request"
 msgstr "DCC VIDEA peto"
 
@@ -402,11 +402,11 @@ msgstr "DCC VIDEA peto"
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "DCC VIDEO peto ne estis sendata: atendas permanan konekton"
 
-#: src/modules/dcc/libkvidcc.cpp:1192
+#: src/modules/dcc/libkvidcc.cpp:1193
 msgid "DCC VIDEO support not enabled at compilation time"
 msgstr "DCC VIDEO subteno ne ebligita je kompila tempo"
 
-#: src/modules/dcc/DccBroker.cpp:353
+#: src/modules/dcc/DccBroker.cpp:354
 msgid "DCC VOICE request"
 msgstr "DCC VOICE peto"
 
@@ -414,7 +414,7 @@ msgstr "DCC VOICE peto"
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr "DCC VOICE peto ne estis sendata: atendas permanajn konektojn"
 
-#: src/modules/dcc/libkvidcc.cpp:1114
+#: src/modules/dcc/libkvidcc.cpp:1115
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "DCC VOICE subteno ne ebligita je kompilada tempo"
 
@@ -432,12 +432,12 @@ msgstr ""
 "Transporto de datumoj estis finigita antaŭ 30 sekundoj, fermas la konekton"
 
 #: src/modules/dcc/DccChatWindow.cpp:416
-#: src/modules/dcc/DccVoiceWindow.cpp:819
 #: src/modules/dcc/DccVideoWindow.cpp:789
+#: src/modules/dcc/DccVoiceWindow.cpp:819
 msgid "ERROR: %Q"
 msgstr "ERARO: %Q"
 
-#: src/modules/dcc/DccBroker.cpp:848
+#: src/modules/dcc/DccBroker.cpp:849
 msgid "File %s exists, auto-renaming to %Q"
 msgstr "Dosiero %s ekzistas, aŭtomate renomas al %Q"
 
@@ -488,7 +488,7 @@ msgstr "Ne valida IP adreso %1"
 msgid "Invalid IP address in old format %1"
 msgstr "Nevalida IP adreso en malnova aranĝo %1"
 
-#: src/modules/dcc/requests.cpp:640
+#: src/modules/dcc/requests.cpp:641
 msgid "Invalid RECV request: Position %1 is larger than file size"
 msgstr "Nevalida RECV peto: Pozicio %1 estas pli granda ol dosiera grandeco"
 
@@ -503,11 +503,11 @@ msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 "Nevalida REKOMENCO peto: Pozicio %1 estas pli granda ol dosiera grandeco"
 
-#: src/modules/dcc/libkvidcc.cpp:1213
+#: src/modules/dcc/libkvidcc.cpp:1214
 msgid "Invalid codec specified"
 msgstr "Nevalida kodeko specifita"
 
-#: src/modules/dcc/libkvidcc.cpp:1148
+#: src/modules/dcc/libkvidcc.cpp:1149
 msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Nevalida kodekon specifita, uzas defaŭlton de 'adpcm'"
 
@@ -515,11 +515,11 @@ msgstr "Nevalida kodekon specifita, uzas defaŭlton de 'adpcm'"
 msgid "Invalid port number %1"
 msgstr "Nevalida porda numero %1"
 
-#: src/modules/dcc/requests.cpp:567
+#: src/modules/dcc/requests.cpp:568
 msgid "Invalid resume position argument '%1'"
 msgstr "Nevalida daŭriga pozicia argumento '%1'"
 
-#: src/modules/dcc/libkvidcc.cpp:1132
+#: src/modules/dcc/libkvidcc.cpp:1133
 msgid "Invalid sample rate specified, defaulting to 8000"
 msgstr "Nevalida specimena rapideco specifita, uzas defaŭlton 8000"
 
@@ -527,11 +527,11 @@ msgstr "Nevalida specimena rapideco specifita, uzas defaŭlton 8000"
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Ŝajnas ke mi ne petis ĉi tiun dcc babiladon"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2301
+#: src/modules/dcc/DccFileTransfer.cpp:2303
 msgid "Limit download bandwidth to"
 msgstr "Limigi elŝutan kapaciton al"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2301
+#: src/modules/dcc/DccFileTransfer.cpp:2303
 msgid "Limit upload bandwidth to"
 msgstr "Limigi enŝutan kapaciton al"
 
@@ -540,8 +540,8 @@ msgid "Listening on interface %1 port %2"
 msgstr "Aŭskultas ĉe interfaco %1 pordo %2"
 
 #: src/modules/dcc/DccChatWindow.cpp:186
-#: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccVideoWindow.cpp:616
+#: src/modules/dcc/DccVoiceWindow.cpp:759
 #: src/modules/dcc/DccCanvasWindow.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Aŭskultas ĉe interfaco %Q pordo %Q"
@@ -551,8 +551,8 @@ msgid "Local end is %1:%2"
 msgstr "Loka fino estas %1:%2"
 
 #: src/modules/dcc/DccChatWindow.cpp:567
-#: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccVideoWindow.cpp:939
+#: src/modules/dcc/DccVoiceWindow.cpp:913
 #: src/modules/dcc/DccCanvasWindow.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Loka fino estas %Q:%Q"
@@ -562,13 +562,13 @@ msgstr "Loka fino estas %Q:%Q"
 msgid "Low-level transport connection established"
 msgstr "Malaltnivela transiriga konekto establigita"
 
-#: src/modules/dcc/requests.cpp:856
+#: src/modules/dcc/requests.cpp:857
 msgid "No file offer named '%1' (with size %2) available for %3 [%4@%5]"
 msgstr ""
 "Nenia dosiera prezento nomita '%1' (kun grandeco %2) disponeblas por %3 [%4@"
 "%5]"
 
-#: src/modules/dcc/requests.cpp:780 src/modules/dcc/requests.cpp:924
+#: src/modules/dcc/requests.cpp:781 src/modules/dcc/requests.cpp:927
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Nenia taŭga interfaco por aŭskultado, penas daŭrigi ĉiuokaze..."
 
@@ -576,7 +576,7 @@ msgstr "Nenia taŭga interfaco por aŭskultado, penas daŭrigi ĉiuokaze..."
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Neniaj taŭgaj interfacoj por suraŭskulti, uzu -i"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2322
+#: src/modules/dcc/DccFileTransfer.cpp:2324
 msgid "OK"
 msgstr "Bone"
 
@@ -681,7 +681,7 @@ msgstr "Komencas Sekuran Ingan Tavolan manpremon"
 msgid "TRANSFER %1"
 msgstr "TRANSIRIGO %1"
 
-#: src/modules/dcc/requests.cpp:1011
+#: src/modules/dcc/requests.cpp:1014
 #, c-format
 msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
@@ -690,7 +690,7 @@ msgstr ""
 "La supra peto ŝajnas esti rompita: ne valida specimen-rapido '%s', defaŭltas "
 "al 8000"
 
-#: src/modules/dcc/requests.cpp:1062
+#: src/modules/dcc/requests.cpp:1065
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
@@ -698,7 +698,7 @@ msgstr ""
 "La supra peto ne povas esti akceptata: DCC VIDEO subteno ne ebligita je "
 "kompila tempo"
 
-#: src/modules/dcc/requests.cpp:988
+#: src/modules/dcc/requests.cpp:991
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
@@ -706,12 +706,12 @@ msgstr ""
 "La supra peto ne povas esti akceptata: DCC VOICE subteno ne ebligita je "
 "kompila tempo"
 
-#: src/modules/dcc/requests.cpp:998 src/modules/dcc/requests.cpp:1072
+#: src/modules/dcc/requests.cpp:1001 src/modules/dcc/requests.cpp:1075
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "La supra peto ne povas esti akceptata: Ne subtenita kodeko '%s'"
 
-#: src/modules/dcc/requests.cpp:602
+#: src/modules/dcc/requests.cpp:603
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
@@ -719,8 +719,8 @@ msgstr ""
 "La supra peto havas daŭrigan dosieran grandecon mankanta, supozas daŭrigan "
 "dosieran grandeco de 0"
 
-#: src/modules/dcc/requests.cpp:456 src/modules/dcc/requests.cpp:466
-#: src/modules/dcc/requests.cpp:612 src/modules/dcc/requests.cpp:749
+#: src/modules/dcc/requests.cpp:457 src/modules/dcc/requests.cpp:467
+#: src/modules/dcc/requests.cpp:613 src/modules/dcc/requests.cpp:750
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -728,7 +728,7 @@ msgstr ""
 "La supra peto estas rompita: La dosiernomo enhavas padajn komponantojn, "
 "senigas la unuan padon kaj penas daŭrigi"
 
-#: src/modules/dcc/requests.cpp:446 src/modules/dcc/requests.cpp:739
+#: src/modules/dcc/requests.cpp:447 src/modules/dcc/requests.cpp:740
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -754,11 +754,11 @@ msgstr ""
 "sed mi nek neniam vidis ĉi tiun etikedon nek ĝi estis sendite pli ol antaŭ "
 "120 sekundoj"
 
-#: src/modules/dcc/DccBroker.cpp:291
+#: src/modules/dcc/DccBroker.cpp:292
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr "La konekta celo estos retnodo <b>%1</b> ĉe pordo <b>%2</b><br>"
 
-#: src/modules/dcc/DccBroker.cpp:281
+#: src/modules/dcc/DccBroker.cpp:282
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La konekto estos sekurita uzante SSL.<br>"
 
@@ -771,12 +771,12 @@ msgstr ""
 "La ĉifra maŝino ne eblis enĉifri la nunan mesaĝon (%Q): %Q, neniuj datumoj "
 "estis sendataj al la fora fino"
 
-#: src/modules/dcc/libkvidcc.cpp:1642 src/modules/dcc/libkvidcc.cpp:2619
-#: src/modules/dcc/libkvidcc.cpp:2639
+#: src/modules/dcc/libkvidcc.cpp:1643 src/modules/dcc/libkvidcc.cpp:2620
+#: src/modules/dcc/libkvidcc.cpp:2640
 msgid "The current window has no associated DCC session"
 msgstr "La nuna fenestro ne havas asociitan DCC sesion"
 
-#: src/modules/dcc/DccBroker.cpp:758
+#: src/modules/dcc/DccBroker.cpp:759
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>auto-rename</b> the new file,<br><b>overwrite</b> the existing "
@@ -786,7 +786,7 @@ msgstr ""
 "vi volas <br><b>aŭtomate renomi</b> la novan dosieron,<br><b>anstataŭigi</b> "
 "la ekzistantan dosieron, aŭ<br> <b>rekomenci</b> nekompletan elŝutadon?"
 
-#: src/modules/dcc/DccBroker.cpp:770
+#: src/modules/dcc/DccBroker.cpp:771
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
@@ -805,7 +805,7 @@ msgstr ""
 "La sekvanta mesaĝo ŝajnas esti enĉifrita, sed la ĉifra maŝino malsukcesis "
 "deĉifri ĝin: %Q"
 
-#: src/modules/dcc/libkvidcc.cpp:2439
+#: src/modules/dcc/libkvidcc.cpp:2440
 msgid "The irc context that originated the dcc doesn't exists anymore."
 msgstr "Ĉi tiu irc kunteksto kiu iniciatis la dcc ne plu ekzistas"
 
@@ -833,20 +833,20 @@ msgstr "La loka IP adreso estas privata, determinas de IRC servilo: %1"
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "La loka IP adreso estas privata, determinas de IRC servilo: %s"
 
-#: src/modules/dcc/requests.cpp:700
+#: src/modules/dcc/requests.cpp:701
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "La fora kliento aŭskultas ĉe interfaco %s kaj pordo %s"
 
-#: src/modules/dcc/libkvidcc.cpp:1647
+#: src/modules/dcc/libkvidcc.cpp:1648
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "La specifita parametro ne estas valida DCC identigilo"
 
-#: src/modules/dcc/libkvidcc.cpp:2630
+#: src/modules/dcc/libkvidcc.cpp:2631
 msgid "The specified window identifier is not valid"
 msgstr "La specifita fenestra identigilo ne estas valida"
 
-#: src/modules/dcc/libkvidcc.cpp:1729
+#: src/modules/dcc/libkvidcc.cpp:1730
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Ĉi tiu DCC sesio ne estas DCC transmeta sesio"
 
@@ -863,7 +863,7 @@ msgstr ""
 "Ĉi tiu plenumeblaĵo estis kompilita sen SSL subteno, la SSL etendo al DCC "
 "CHAT ne disponeblas"
 
-#: src/modules/dcc/requests.cpp:846
+#: src/modules/dcc/requests.cpp:847
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC GET is not available"
@@ -871,7 +871,7 @@ msgstr ""
 "Ĉi tiu plenumeblaĵo estis kompilita sen SSL subteno, la SSL etendo al DCC "
 "GET ne disponeblas"
 
-#: src/modules/dcc/requests.cpp:626
+#: src/modules/dcc/requests.cpp:627
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RECV is not available"
@@ -879,7 +879,7 @@ msgstr ""
 "Ĉi tiu plenumeblaĵo estis kompilita sen SSL subteno, la SSL etendo de DCC "
 "RECV ne disponeblas"
 
-#: src/modules/dcc/requests.cpp:763
+#: src/modules/dcc/requests.cpp:764
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RSEND is not available"
@@ -887,7 +887,7 @@ msgstr ""
 "Ĉi tiu plenumeblaĵo estis kompilita sen SSL subteno, la SSL etendo al DCC "
 "RSEND ne disponeblas"
 
-#: src/modules/dcc/requests.cpp:480
+#: src/modules/dcc/requests.cpp:481
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC SEND is not available"
@@ -899,7 +899,7 @@ msgstr ""
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Ĉi tiu plenumeblaĵo ne havas SSL subtenon, -s ŝaltilo ignorita"
 
-#: src/modules/dcc/libkvidcc.cpp:2787
+#: src/modules/dcc/libkvidcc.cpp:2788
 msgid "This executable was built without SSL support"
 msgstr "Ĉi tiu plenumeblaĵo estis konstruita sen SSL subteno"
 
@@ -942,23 +942,23 @@ msgstr "Transirigo malsukcesis:"
 msgid "Transferring data"
 msgstr "Transirigas datumojn"
 
-#: src/modules/dcc/libkvidcc.cpp:2809
+#: src/modules/dcc/libkvidcc.cpp:2810
 msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr "Ne povas havigi SSL informon: DCC sesio ne uzas SSL"
 
-#: src/modules/dcc/libkvidcc.cpp:2822
+#: src/modules/dcc/libkvidcc.cpp:2823
 msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr "Ne povas havigi SSL informon: DCC sesio ne iniciatis ankoraŭ"
 
-#: src/modules/dcc/libkvidcc.cpp:2839
+#: src/modules/dcc/libkvidcc.cpp:2840
 msgid "Unable to get SSL information: No peer certificate available"
 msgstr "Ne povas havigi SSL informon: Nenia egalula atestilo havebla"
 
-#: src/modules/dcc/libkvidcc.cpp:2830
+#: src/modules/dcc/libkvidcc.cpp:2831
 msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr "Ne povas havigi SSL informon: SSL ne iniciatis ankoraŭ en DCC sesio"
 
-#: src/modules/dcc/libkvidcc.cpp:2847
+#: src/modules/dcc/libkvidcc.cpp:2848
 msgid "Unable to get SSL information: query not recognized"
 msgstr "Ne povas havigi SSL informon: demando ne rekonata"
 
@@ -970,11 +970,11 @@ msgstr "Ne povas havigi adreson de interfaco %Q"
 msgid "Unable to process the above request: %Q, %Q"
 msgstr "Ne povas operacii la supran peton: %Q, %Q"
 
-#: src/modules/dcc/requests.cpp:1228
+#: src/modules/dcc/requests.cpp:1231
 msgid "Unknown DCC type '%1'"
 msgstr "Nekonata DCC tipo '%1'"
 
-#: src/modules/dcc/requests.cpp:707
+#: src/modules/dcc/requests.cpp:708
 msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
@@ -1024,11 +1024,11 @@ msgstr ""
 "AVERTO: malsukcesis starigi la petitan specimenan rapidecon (%d): la aparato "
 "uzis plejproksiman kongruecon (%d)"
 
-#: src/modules/dcc/libkvidcc.cpp:2798
+#: src/modules/dcc/libkvidcc.cpp:2799
 msgid "You specified a bad string for the parameter \"type\""
 msgstr "Vi specifis malbonan ĉenon por la parametra \"tipo\""
 
-#: src/modules/dcc/DccBroker.cpp:287
+#: src/modules/dcc/DccBroker.cpp:288
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Vi estos la pasiva flanko de la konekto.<br>"
 
@@ -1049,18 +1049,18 @@ msgstr "[SSL ERARO]: %1"
 msgid "[SSL ERROR]: %s"
 msgstr "[SSL ERARO]: %s"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2318
+#: src/modules/dcc/DccFileTransfer.cpp:2320
 msgid "bytes/sec"
 msgstr "bajtoj/sek"
 
+#: src/modules/dcc/DccDescriptor.cpp:65 src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/requests.cpp:139 src/modules/dcc/requests.cpp:140
 #: src/modules/dcc/DccMarshal.cpp:494 src/modules/dcc/DccMarshal.cpp:524
 #: src/modules/dcc/DccMarshal.cpp:529 src/modules/dcc/libkvidcc.cpp:112
 #: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
 #: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
 #: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
-#: src/modules/dcc/DccDescriptor.cpp:65 src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/requests.cpp:139 src/modules/dcc/requests.cpp:140
+#: src/modules/dcc/libkvidcc.cpp:1122 src/modules/dcc/libkvidcc.cpp:1172
+#: src/modules/dcc/libkvidcc.cpp:1200 src/modules/dcc/libkvidcc.cpp:1239
 msgid "unknown"
 msgstr "ne konata"

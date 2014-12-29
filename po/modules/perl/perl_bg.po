@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 
-#: src/modules/perlcore/libkviperlcore.cpp:232
+#: src/modules/perlcore/libkviperlcore.cpp:240
 msgid "Internal error: perl interpreter not initialized"
 msgstr ""
 
-#: src/modules/perl/libkviperl.cpp:477
-#: src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:482 src/modules/perl/libkviperl.cpp:486
 msgid "Perl execution error:"
 msgstr ""
 
@@ -30,8 +29,7 @@ msgstr ""
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr ""
 
-#: src/modules/perl/libkviperl.cpp:460
-#: src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:465 src/modules/perl/libkviperl.cpp:539
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

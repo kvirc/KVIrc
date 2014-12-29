@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2010-08-22 17:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -70,7 +70,7 @@ msgid ""
 "interface in the Vlc preferences\n"
 msgstr ""
 
-#: src/modules/mediaplayer/MpAmipInterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:106
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
@@ -93,7 +93,7 @@ msgstr ""
 "Pour l'utiliser vous devez avoir installé l'extension MPRIS disponible ici : "
 "http://addons.songbirdnest.com/addon/1626.\n"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
 msgid ""
 "An interface to the Spotify music streaming service.\n"
 "It is only available for certain countries in Europe.\n"
@@ -124,7 +124,7 @@ msgstr ""
 "Une interface pour xmms, le lecteur multimédia populaire UNIX.\n"
 "Téléchargez-le depuis http://legacy.xmms2.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:192
 #, fuzzy
 msgid ""
 "An interface to the popular Winamp media player.\n"
@@ -147,7 +147,7 @@ msgstr ""
 "Une interface pour audacious, le lecteur multimédia populaire.\n"
 "Téléchargez-le depuis http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:182
 msgid "Can't find a running winamp window"
 msgstr "Impossible de trouver une fenêtre winamp"
 
@@ -201,7 +201,7 @@ msgstr ""
 "Il semble qu'il n'y ait pas de lecteur multimédia utilisable sur cette "
 "machine"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
 msgid "Spotify is not running"
 msgstr ""
 
@@ -221,8 +221,8 @@ msgstr ""
 "Le lecteur multimédia choisie à échouer lors de l'exécution de la fonction "
 "demandée"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:316
-#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:314
+#: src/modules/mediaplayer/MpWinampInterface.cpp:348
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"

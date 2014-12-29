@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc 3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2004-10-16 11:22+0200\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -18,12 +18,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/perlcore/libkviperlcore.cpp:232
+#: src/modules/perlcore/libkviperlcore.cpp:240
 msgid "Internal error: perl interpreter not initialized"
 msgstr ""
 
-#: src/modules/perl/libkviperl.cpp:477
-#: src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:482 src/modules/perl/libkviperl.cpp:486
 msgid "Perl execution error:"
 msgstr "Spouštěcí chyba Perlu:"
 
@@ -31,8 +30,7 @@ msgstr "Spouštěcí chyba Perlu:"
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Modul perlcore nemůže být nahrán: chybí podpora perlu"
 
-#: src/modules/perl/libkviperl.cpp:460
-#: src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:465 src/modules/perl/libkviperl.cpp:539
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

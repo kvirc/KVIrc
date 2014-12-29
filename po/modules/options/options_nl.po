@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 12831.0.options\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 16:16+0100\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2009-06-22 16:47+0200\n"
 "Last-Translator: Stijn <Valenstijn@gmail.com>\n"
 "Language-Team: Dutch <kde-i18n-doc@kde.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/OptionsWidget_dcc.cpp:285
 #: src/modules/options/OptionsWidget_avatar.cpp:72
+#: src/modules/options/OptionsWidget_dcc.cpp:285
 msgid " bytes"
 msgstr "bytes"
 
-#: src/modules/options/OptionsWidget_channel.cpp:140
 #: src/modules/options/OptionsWidget_query.cpp:102
+#: src/modules/options/OptionsWidget_channel.cpp:140
 msgid " days"
 msgstr "dagen"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:155
-#: src/modules/options/OptionsWidget_channel.cpp:136
 #: src/modules/options/OptionsWidget_query.cpp:98
+#: src/modules/options/OptionsWidget_channel.cpp:136
 msgid " lines"
 msgstr ""
 
@@ -37,12 +37,12 @@ msgstr ""
 msgid " min"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:157
-#: src/modules/options/OptionsWidget_ircView.cpp:159
-#: src/modules/options/OptionsWidget_connection.cpp:157
-#: src/modules/options/OptionsWidget_dcc.cpp:276
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:56
+#: src/modules/options/OptionsWidget_ircView.cpp:157
+#: src/modules/options/OptionsWidget_ircView.cpp:159
+#: src/modules/options/OptionsWidget_dcc.cpp:276
+#: src/modules/options/OptionsWidget_connection.cpp:157
 msgid " msec"
 msgstr "msec"
 
@@ -54,12 +54,12 @@ msgstr "pixels"
 msgid " requests"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:121
-#: src/modules/options/OptionsWidget_connection.cpp:85
-#: src/modules/options/OptionsWidget_connection.cpp:155
+#: src/modules/options/OptionsWidget_avatar.cpp:96
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
 #: src/modules/options/OptionsWidget_dcc.cpp:140
-#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_connection.cpp:85
+#: src/modules/options/OptionsWidget_connection.cpp:155
+#: src/modules/options/OptionsWidget_channel.cpp:121
 msgid " sec"
 msgstr "sec"
 
@@ -95,10 +95,10 @@ msgstr "&Nieuwe proxy"
 msgid "&New Server"
 msgstr "&Nieuwe server"
 
+#: src/modules/options/OptionsWidget_servers.cpp:383
+#: src/modules/options/OptionsDialog.cpp:230
 #: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsWidgetContainer.cpp:101
-#: src/modules/options/OptionsDialog.cpp:230
-#: src/modules/options/OptionsWidget_servers.cpp:383
 msgid "&OK"
 msgstr "&OK"
 
@@ -114,7 +114,7 @@ msgstr ""
 msgid "3D Grid"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:87
+#: src/modules/options/OptionsWidget_textEncoding.cpp:97
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 "<b>Opmerking:</b> U dient KVirc te herstarten om de taal verandering te "
@@ -362,15 +362,15 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:103
+#: src/modules/options/OptionsWidget_channel.cpp:141
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:137
 #: src/modules/options/OptionsWidget_query.cpp:99
+#: src/modules/options/OptionsWidget_channel.cpp:137
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
@@ -1477,18 +1477,18 @@ msgid "Add Rule"
 msgstr "Voeg regel toe"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1005
-#: src/modules/options/OptionsWidget_irc.h:57
-#: src/modules/options/OptionsWidget_channel.h:64
-#: src/modules/options/OptionsWidget_connection.h:46
-#: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
+#: src/modules/options/OptionsWidget_identity.h:202
+#: src/modules/options/OptionsWidget_connection.h:46
+#: src/modules/options/OptionsWidget_irc.h:57
+#: src/modules/options/OptionsWidget_channel.h:64
 #, fuzzy
 msgid "Advanced"
 msgstr "Geavanceerd..."
 
-#: src/modules/options/OptionsWidget_notifier.cpp:230
 #: src/modules/options/OptionsWidget_notify.cpp:60
+#: src/modules/options/OptionsWidget_notifier.cpp:230
 msgid "Advanced configuration"
 msgstr "Expert configuratie"
 
@@ -1622,7 +1622,7 @@ msgstr ""
 msgid "Auto-detect"
 msgstr "Auto-detectie"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:90
+#: src/modules/options/OptionsWidget_textEncoding.cpp:99
 msgid "Automatic detection"
 msgstr "Automatische detectie"
 
@@ -1700,13 +1700,13 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.cpp:164
 #: src/modules/options/OptionsWidget_theme.cpp:184
-#: src/modules/options/OptionsWidget_windowList.h:79
 #: src/modules/options/OptionsWidget_userList.h:46
+#: src/modules/options/OptionsWidget_windowList.h:79
 msgid "Background"
 msgstr "Achtergrond"
 
-#: src/modules/options/OptionsWidget_userList.cpp:126
 #: src/modules/options/OptionsWidget_windowList.cpp:119
+#: src/modules/options/OptionsWidget_userList.cpp:126
 msgid "Background Colors"
 msgstr "Achtergrond kleuren"
 
@@ -1716,8 +1716,8 @@ msgid "Background Image"
 msgstr "Achtergrond beeld:"
 
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
-#: src/modules/options/OptionsWidget_input.cpp:39
 #: src/modules/options/OptionsWidget_notifier.cpp:39
+#: src/modules/options/OptionsWidget_input.cpp:39
 msgid "Background color"
 msgstr "Achtergrond kleur"
 
@@ -1726,14 +1726,14 @@ msgid "Background color:"
 msgstr "Achtergrond kleur:"
 
 #: src/modules/options/OptionsWidget_topicLabel.cpp:39
-#: src/modules/options/OptionsWidget_input.cpp:46
 #: src/modules/options/OptionsWidget_notifier.cpp:44
+#: src/modules/options/OptionsWidget_input.cpp:46
 msgid "Background image"
 msgstr "Achtergrond beeld"
 
+#: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_userList.cpp:131
-#: src/modules/options/OptionsWidget_windowList.cpp:123
 msgid "Background image:"
 msgstr "Achtergrond beeld:"
 
@@ -1757,11 +1757,11 @@ msgstr ""
 msgid "Blend color:"
 msgstr "Gemengde kleur:"
 
+#: src/modules/options/OptionsWidget_windowList.cpp:140
 #: src/modules/options/OptionsWidget_ircView.cpp:71
-#: src/modules/options/OptionsWidget_input.cpp:63
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_userList.cpp:148
-#: src/modules/options/OptionsWidget_windowList.cpp:140
+#: src/modules/options/OptionsWidget_input.cpp:63
 msgid "Bottom"
 msgstr "Onderaan"
 
@@ -1789,27 +1789,27 @@ msgstr ""
 msgid "Cache IP address"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_servers.cpp:389
+#: src/modules/options/OptionsWidget_servers.cpp:1025
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:951
-#: src/modules/options/OptionsWidgetContainer.cpp:109
-#: src/modules/options/OptionsDialog.cpp:245
-#: src/modules/options/OptionsWidget_servers.cpp:389
-#: src/modules/options/OptionsWidget_servers.cpp:1025
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "Annuleren"
 
+#: src/modules/options/OptionsWidget_windowList.cpp:136
+#: src/modules/options/OptionsWidget_windowList.cpp:141
 #: src/modules/options/OptionsWidget_ircView.cpp:67
 #: src/modules/options/OptionsWidget_ircView.cpp:72
-#: src/modules/options/OptionsWidget_input.cpp:59
-#: src/modules/options/OptionsWidget_input.cpp:64
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_userList.cpp:144
 #: src/modules/options/OptionsWidget_userList.cpp:149
-#: src/modules/options/OptionsWidget_windowList.cpp:136
-#: src/modules/options/OptionsWidget_windowList.cpp:141
+#: src/modules/options/OptionsWidget_input.cpp:59
+#: src/modules/options/OptionsWidget_input.cpp:64
 msgid "Center"
 msgstr "Centreer"
 
@@ -1912,13 +1912,13 @@ msgstr "Ledig lijst"
 msgid "Close in tray"
 msgstr "Sluit in de werkbalk"
 
-#: src/modules/options/OptionsWidgetContainer.cpp:102
 #: src/modules/options/OptionsDialog.cpp:232
+#: src/modules/options/OptionsWidgetContainer.cpp:102
 msgid "Close this dialog, accepting all changes."
 msgstr "Sluit dit venster en sla alle wijzigingen op"
 
-#: src/modules/options/OptionsWidgetContainer.cpp:110
 #: src/modules/options/OptionsDialog.cpp:247
+#: src/modules/options/OptionsWidgetContainer.cpp:110
 msgid "Close this dialog, discarding all changes."
 msgstr "Sluit deze dialoog en negeer alle wijzigingen."
 
@@ -1934,10 +1934,10 @@ msgstr "Commando lijn in gebruiksvriendelijk mode als standaard"
 msgid "Commit all changes immediately."
 msgstr "Bevestig alle wijzigingen onmiddellijk"
 
-#: src/modules/options/OptionsWidget_connection.cpp:227
 #: src/modules/options/OptionsWidget_lag.cpp:43
-#: src/modules/options/OptionsWidget_proxy.cpp:107
 #: src/modules/options/OptionsWidget_notify.cpp:41
+#: src/modules/options/OptionsWidget_connection.cpp:227
+#: src/modules/options/OptionsWidget_proxy.cpp:107
 msgid "Configuration"
 msgstr "Configuratie"
 
@@ -2052,11 +2052,11 @@ msgstr "Standaard afwezigheid boodschap:"
 msgid "Default ban mask:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:46
+#: src/modules/options/OptionsWidget_textEncoding.cpp:52
 msgid "Default server encoding:"
 msgstr "Standaard server versleuteling:"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:54
+#: src/modules/options/OptionsWidget_textEncoding.cpp:60
 msgid "Default text encoding:"
 msgstr "Standaard tekst versleuteling;"
 
@@ -2300,6 +2300,11 @@ msgstr "Activeer de venster hulpmiddelen tips"
 msgid "Enable word highlighting"
 msgstr "Activeer woord markering"
 
+#: src/modules/options/OptionsWidget_textEncoding.cpp:47
+#, fuzzy
+msgid "Encoding"
+msgstr "Tekst codering:"
+
 #: src/modules/options/OptionsWidget_ircView.cpp:169
 msgid "Escape sequences"
 msgstr ""
@@ -2348,8 +2353,8 @@ msgid "Failed to start the download"
 msgstr "Kan het ophalen niet starten"
 
 #: src/modules/options/OptionsWidget_ircView.h:70
-#: src/modules/options/OptionsWidget_windowList.h:98
 #: src/modules/options/OptionsWidget_userList.h:103
+#: src/modules/options/OptionsWidget_windowList.h:98
 msgid "Features"
 msgstr ""
 
@@ -2393,15 +2398,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
-#: src/modules/options/OptionsWidget_input.cpp:38
 #: src/modules/options/OptionsWidget_notifier.cpp:38
+#: src/modules/options/OptionsWidget_input.cpp:38
 msgid "Font"
 msgstr "Lettertype"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:51
-#: src/modules/options/OptionsWidget_userList.cpp:52
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
+#: src/modules/options/OptionsWidget_ircView.cpp:51
+#: src/modules/options/OptionsWidget_userList.cpp:52
 msgid "Font:"
 msgstr "Lettertype:"
 
@@ -2417,19 +2422,19 @@ msgstr ""
 msgid "Force immediate quit"
 msgstr "Dwing het onmiddellijk afsluiten af."
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:81
+#: src/modules/options/OptionsWidget_textEncoding.cpp:91
 msgid "Force language:"
 msgstr "Gebruik volgende taal:"
 
-#: src/modules/options/OptionsWidget_windowList.h:64
 #: src/modules/options/OptionsWidget_userList.h:67
+#: src/modules/options/OptionsWidget_windowList.h:64
 #, fuzzy
 msgid "Foreground"
 msgstr "Voorgrond:"
 
 #: src/modules/options/OptionsWidget_topicLabel.cpp:37
-#: src/modules/options/OptionsWidget_input.cpp:40
 #: src/modules/options/OptionsWidget_notifier.cpp:40
+#: src/modules/options/OptionsWidget_input.cpp:40
 msgid "Foreground color"
 msgstr "Voorgrond kleur"
 
@@ -2443,11 +2448,11 @@ msgstr "Geslacht:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_message.cpp:71
-#: src/modules/options/OptionsWidget_irc.h:43
-#: src/modules/options/OptionsWidget_channel.h:52
-#: src/modules/options/OptionsWidget_identity.h:153
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
+#: src/modules/options/OptionsWidget_identity.h:153
+#: src/modules/options/OptionsWidget_irc.h:43
+#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_theme.h:33
 msgid "General"
 msgstr "Algemeen"
@@ -2564,10 +2569,10 @@ msgstr ""
 msgid "Horizontal Alignment:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:56
-#: src/modules/options/OptionsWidget_input.cpp:48
-#: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_windowList.cpp:125
+#: src/modules/options/OptionsWidget_ircView.cpp:56
+#: src/modules/options/OptionsWidget_notifier.cpp:46
+#: src/modules/options/OptionsWidget_input.cpp:48
 msgid "Horizontal align:"
 msgstr "Horizontale uitlijning:"
 
@@ -2635,8 +2640,8 @@ msgstr "Ident gebruikersnaam:"
 msgid "Identify Command"
 msgstr "Identificatie commando"
 
-#: src/modules/options/OptionsWidget_servers.cpp:647
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
+#: src/modules/options/OptionsWidget_servers.cpp:647
 #: src/modules/options/OptionsWidget_identity.h:137
 msgid "Identity"
 msgstr "Identiteit"
@@ -2690,8 +2695,8 @@ msgstr ""
 msgid "Interface"
 msgstr "Interval:"
 
-#: src/modules/options/OptionsWidget_channel.cpp:139
 #: src/modules/options/OptionsWidget_query.cpp:101
+#: src/modules/options/OptionsWidget_channel.cpp:139
 msgid "Interval:"
 msgstr "Interval:"
 
@@ -2703,8 +2708,8 @@ msgstr "Ongeldige Nickserv regel"
 msgid "Invalid Profile Rule"
 msgstr "Ongeldige profiel regel"
 
-#: src/modules/options/OptionsWidget_identity.cpp:656
 #: src/modules/options/OptionsWidget_servers.cpp:630
+#: src/modules/options/OptionsWidget_identity.cpp:656
 msgid "Invisible (+i)"
 msgstr "Onzichtbaar (+i)"
 
@@ -2712,9 +2717,9 @@ msgstr "Onzichtbaar (+i)"
 msgid "Invite messages"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
 #: src/modules/options/OptionsWidget_servers.cpp:277
 #: src/modules/options/OptionsWidget_servers.cpp:848
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
 msgid "Join Channels"
 msgstr "Neem deel aan kanalen"
 
@@ -2757,20 +2762,26 @@ msgstr ""
 msgid "Lag meter heartbeat:"
 msgstr "Hartslag van de vertraging meter:"
 
-#: src/modules/options/OptionsWidget_textEncoding.h:32
+#: src/modules/options/OptionsWidget_textEncoding.cpp:87
+#: src/modules/options/OptionsWidget_textEncoding.h:33
 #, fuzzy
 msgid "Language"
+msgstr "Talen:"
+
+#: src/modules/options/OptionsWidget_textEncoding.cpp:156
+#, fuzzy
+msgid "Language code"
 msgstr "Talen:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:395
 msgid "Languages:"
 msgstr "Talen:"
 
+#: src/modules/options/OptionsWidget_windowList.cpp:134
 #: src/modules/options/OptionsWidget_ircView.cpp:65
-#: src/modules/options/OptionsWidget_input.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:55
 #: src/modules/options/OptionsWidget_userList.cpp:142
-#: src/modules/options/OptionsWidget_windowList.cpp:134
+#: src/modules/options/OptionsWidget_input.cpp:57
 msgid "Left"
 msgstr "Links"
 
@@ -2779,7 +2790,7 @@ msgid "Limit download bandwidth to"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:158
-msgid "Limit outgoing traffic"
+msgid "Limit outgoing traffic per connection"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_connection.cpp:159
@@ -3119,8 +3130,8 @@ msgid ""
 "and servers and click Advanced."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:718
 #: src/modules/options/OptionsWidget_servers.cpp:333
+#: src/modules/options/OptionsWidget_identity.cpp:718
 #: src/modules/options/OptionsWidget_nickserv.cpp:243
 msgid "Nickname"
 msgstr "Bijnaam"
@@ -3138,10 +3149,10 @@ msgstr "Bijnaam"
 msgid "Nickname alternatives"
 msgstr "Alternatieve bijnamen"
 
-#: src/modules/options/OptionsWidget_identity.cpp:304
-#: src/modules/options/OptionsWidget_identity.cpp:915
 #: src/modules/options/OptionsWidget_servers.cpp:161
 #: src/modules/options/OptionsWidget_servers.cpp:580
+#: src/modules/options/OptionsWidget_identity.cpp:304
+#: src/modules/options/OptionsWidget_identity.cpp:915
 msgid "Nickname:"
 msgstr "Bijnaam:"
 
@@ -3161,11 +3172,11 @@ msgstr ""
 msgid "Normal"
 msgstr "Normaal"
 
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 msgid "Normal:"
 msgstr "Normaal:"
 
@@ -3196,16 +3207,16 @@ msgstr ""
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_servers.cpp:1019
 #: src/modules/options/OptionsWidget_identity.cpp:840
 #: src/modules/options/OptionsWidget_identity.cpp:955
-#: src/modules/options/OptionsWidget_servers.cpp:1019
 #: src/modules/options/OptionsWidget_nickserv.cpp:133
 #: src/modules/options/OptionsWidget_nickserv.cpp:154
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:164
 #: src/modules/options/OptionsWidget_identity.cpp:99
+#: src/modules/options/OptionsWidget_textEncoding.cpp:222
 msgid "Ok"
 msgstr "Ok"
 
@@ -3366,8 +3377,8 @@ msgstr ""
 msgid "Paste last query log"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:135
 #: src/modules/options/OptionsWidget_query.cpp:97
+#: src/modules/options/OptionsWidget_channel.cpp:135
 msgid "Paste up to:"
 msgstr ""
 
@@ -3464,13 +3475,13 @@ msgstr ""
 msgid "Private key password:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:43
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
+#: src/modules/options/OptionsWidget_query.cpp:43
 msgid "Private messages"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:50
 #: src/modules/options/OptionsWidget_antiSpam.cpp:42
+#: src/modules/options/OptionsWidget_query.cpp:50
 msgid "Private notices"
 msgstr ""
 
@@ -3530,6 +3541,10 @@ msgstr ""
 #: src/modules/options/OptionsWidget_proxy.cpp:122
 msgid "Protocol:"
 msgstr "Protocol:"
+
+#: src/modules/options/OptionsWidget_textEncoding.cpp:157
+msgid "Provided by"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_proxy.cpp:71
 msgid "Proxy"
@@ -3609,9 +3624,9 @@ msgstr "Ver&wijder proxy"
 msgid "Re&move Server"
 msgstr "Ver&wijder server"
 
-#: src/modules/options/OptionsWidget_identity.cpp:324
 #: src/modules/options/OptionsWidget_servers.cpp:187
 #: src/modules/options/OptionsWidget_servers.cpp:606
+#: src/modules/options/OptionsWidget_identity.cpp:324
 msgid "Real name:"
 msgstr "Echte naam:"
 
@@ -3691,11 +3706,11 @@ msgstr ""
 msgid "Restrict alert"
 msgstr "Beperkt alarm"
 
+#: src/modules/options/OptionsWidget_windowList.cpp:135
 #: src/modules/options/OptionsWidget_ircView.cpp:66
-#: src/modules/options/OptionsWidget_input.cpp:58
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_userList.cpp:143
-#: src/modules/options/OptionsWidget_windowList.cpp:135
+#: src/modules/options/OptionsWidget_input.cpp:58
 msgid "Right"
 msgstr "Rechts"
 
@@ -3762,10 +3777,10 @@ msgstr ""
 msgid "Select message levels to notify"
 msgstr "Selecteer boodschappen niveaus om te notificeren"
 
-#: src/modules/options/OptionsWidget_userList.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:128
 #: src/modules/options/OptionsWidget_windowList.cpp:90
 #: src/modules/options/OptionsWidget_windowList.cpp:121
+#: src/modules/options/OptionsWidget_userList.cpp:56
+#: src/modules/options/OptionsWidget_userList.cpp:128
 msgid "Selected:"
 msgstr "Geselecteerd:"
 
@@ -3819,8 +3834,8 @@ msgstr "Server masker"
 msgid "Server notices"
 msgstr "Server notities"
 
-#: src/modules/options/OptionsWidget_identity.cpp:657
 #: src/modules/options/OptionsWidget_servers.cpp:634
+#: src/modules/options/OptionsWidget_identity.cpp:657
 msgid "Server notices (+s)"
 msgstr "Server notities (+s)"
 
@@ -4003,6 +4018,10 @@ msgstr ""
 #, fuzzy
 msgid "Sounds"
 msgstr "Geluidssysteem"
+
+#: src/modules/options/OptionsWidget_textEncoding.cpp:139
+msgid "Spell checker dictionaries"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_logging.cpp:55
 msgid "Strip colors in logs"
@@ -4289,16 +4308,16 @@ msgid ""
 "display the CTRL+I escape sequences and eventually the emoticons."
 msgstr ""
 
+#: src/modules/options/OptionsWidget_windowList.cpp:133
+#: src/modules/options/OptionsWidget_windowList.cpp:138
 #: src/modules/options/OptionsWidget_ircView.cpp:64
 #: src/modules/options/OptionsWidget_ircView.cpp:69
-#: src/modules/options/OptionsWidget_input.cpp:56
-#: src/modules/options/OptionsWidget_input.cpp:61
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
 #: src/modules/options/OptionsWidget_userList.cpp:141
 #: src/modules/options/OptionsWidget_userList.cpp:146
-#: src/modules/options/OptionsWidget_windowList.cpp:133
-#: src/modules/options/OptionsWidget_windowList.cpp:138
+#: src/modules/options/OptionsWidget_input.cpp:56
+#: src/modules/options/OptionsWidget_input.cpp:61
 msgid "Tile"
 msgstr "Tegels"
 
@@ -4332,11 +4351,11 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_windowList.cpp:139
 #: src/modules/options/OptionsWidget_ircView.cpp:70
-#: src/modules/options/OptionsWidget_input.cpp:62
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_userList.cpp:147
-#: src/modules/options/OptionsWidget_windowList.cpp:139
+#: src/modules/options/OptionsWidget_input.cpp:62
 msgid "Top"
 msgstr "Boven"
 
@@ -4389,7 +4408,7 @@ msgstr "USERHOST vertraging (in seconden) "
 msgid "USERINFO"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:164
+#: src/modules/options/OptionsWidget_textEncoding.cpp:222
 msgid "Unable to write language information to"
 msgstr "Onmogelijk de taal informatie te schrijven naar"
 
@@ -4423,10 +4442,10 @@ msgstr "Gebruik de \"slim\" notificatie bewerker"
 msgid "Use IPv6 protocol"
 msgstr "Gebruik het IPv6 protocol"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:51
-#: src/modules/options/OptionsWidget_textEncoding.cpp:59
 #: src/modules/options/OptionsWidget_sound.cpp:101
 #: src/modules/options/OptionsWidget_sound.cpp:126
+#: src/modules/options/OptionsWidget_textEncoding.cpp:57
+#: src/modules/options/OptionsWidget_textEncoding.cpp:65
 msgid "Use Language Encoding"
 msgstr "Gebruik taal ondersteuning"
 
@@ -4573,8 +4592,8 @@ msgstr ""
 msgid "Use zsh-like nick completion"
 msgstr "Gebruik zsh gelijkende bijnaam aanvulling"
 
-#: src/modules/options/OptionsWidget_identity.cpp:655
 #: src/modules/options/OptionsWidget_servers.cpp:619
+#: src/modules/options/OptionsWidget_identity.cpp:655
 msgid "User Mode"
 msgstr "Gebruiker mode"
 
@@ -4598,10 +4617,10 @@ msgstr ""
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: src/modules/options/OptionsWidget_identity.cpp:317
-#: src/modules/options/OptionsWidget_identity.cpp:931
 #: src/modules/options/OptionsWidget_servers.cpp:141
 #: src/modules/options/OptionsWidget_servers.cpp:559
+#: src/modules/options/OptionsWidget_identity.cpp:317
+#: src/modules/options/OptionsWidget_identity.cpp:931
 #: src/modules/options/OptionsWidget_proxy.cpp:118
 msgid "Username:"
 msgstr "Gebruikersnaam:"
@@ -4622,10 +4641,10 @@ msgstr ""
 msgid "Vertical Alignment:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:60
-#: src/modules/options/OptionsWidget_input.cpp:52
-#: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_windowList.cpp:129
+#: src/modules/options/OptionsWidget_ircView.cpp:60
+#: src/modules/options/OptionsWidget_notifier.cpp:50
+#: src/modules/options/OptionsWidget_input.cpp:52
 msgid "Vertical align:"
 msgstr "Vertikale uitlijning:"
 
@@ -4641,8 +4660,8 @@ msgstr ""
 msgid "Volume slider controls PCM, not Master"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:658
 #: src/modules/options/OptionsWidget_servers.cpp:638
+#: src/modules/options/OptionsWidget_identity.cpp:658
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 
@@ -4762,7 +4781,7 @@ msgstr ""
 msgid "debug"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:91
+#: src/modules/options/OptionsWidget_textEncoding.cpp:100
 msgid "en"
 msgstr "en"
 
@@ -4774,7 +4793,7 @@ msgstr ""
 msgid "irc.unknown.net"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textEncoding.h:35
+#: src/modules/options/OptionsWidget_textEncoding.h:36
 msgid "language,encoding,charset,codepage"
 msgstr ""
 
@@ -4811,13 +4830,13 @@ msgstr ""
 msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_theme.h:34
 #: src/modules/options/OptionsWidget_windowList.h:36
 #: src/modules/options/OptionsWidget_windowList.h:50
 #: src/modules/options/OptionsWidget_windowList.h:66
 #: src/modules/options/OptionsWidget_windowList.h:81
 #: src/modules/options/OptionsWidget_windowList.h:100
 #: src/modules/options/OptionsWidget_windowList.h:115
-#: src/modules/options/OptionsWidget_theme.h:34
 msgid "theme"
 msgstr ""
 
@@ -4837,8 +4856,8 @@ msgstr ""
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_notifier.h:34
 #: src/modules/options/OptionsWidget_input.h:34
+#: src/modules/options/OptionsWidget_notifier.h:34
 msgid "theme,colors,text"
 msgstr ""
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2011-03-03 17:16+0100\n"
 "Last-Translator: B M <penteljapan@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -66,7 +66,7 @@ msgid ""
 "interface in the Vlc preferences\n"
 msgstr ""
 
-#: src/modules/mediaplayer/MpAmipInterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:106
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
@@ -85,7 +85,7 @@ msgstr ""
 "Aby tego używać musisz zainstalować również dodatek MPRIS dostępny na  "
 "http://addons.songbirdnest.com/addon/1626.\n"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
 msgid ""
 "An interface to the Spotify music streaming service.\n"
 "It is only available for certain countries in Europe.\n"
@@ -116,7 +116,7 @@ msgstr ""
 "Interfejs do popularnego na UNIX'ie odtwarzacza multimedialnego XMMS.\n"
 "Pobierz go z http://legacy.xmms2.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:192
 #, fuzzy
 msgid ""
 "An interface to the popular Winamp media player.\n"
@@ -139,7 +139,7 @@ msgstr ""
 "Interfejs do popularnego odtwarzacza multimedialnego audacious.\n"
 "Pobierz go z http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:182
 msgid "Can't find a running winamp window"
 msgstr "Nie można odnaleźć uruchomionego okna winampa"
 
@@ -193,7 +193,7 @@ msgstr ""
 "Wygląda na to, że nie ma nadającego się do użytku odtwarzacza "
 "multimedialnego na tej maszynie"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
 msgid "Spotify is not running"
 msgstr ""
 
@@ -215,8 +215,8 @@ msgstr ""
 
 # poprawnie/właściwie
 # ?
-#: src/modules/mediaplayer/MpWinampInterface.cpp:316
-#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:314
+#: src/modules/mediaplayer/MpWinampInterface.cpp:348
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"

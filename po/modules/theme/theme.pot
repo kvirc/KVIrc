@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 16:16+0100\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,79 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/theme/ThemeFunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:69
-msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:135
-#: src/modules/theme/ThemeFunctions.cpp:319
-msgid "Author"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:136
-#: src/modules/theme/ThemeFunctions.cpp:320
-msgid "Created at"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:137
-#: src/modules/theme/ThemeFunctions.cpp:321
-msgid "Created with"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:217
-msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:226
-msgid "Go Back to Package Data"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:233
-msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:237
-msgid "Show Details"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:275
-msgid "Install Theme Pack - KVIrc"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:276
-msgid "You're about to install the following theme package"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:277
-msgid "Do you want to proceed with the installation ?"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:278
-msgid "Do Not Install"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:279
-msgid "Yes, Proceed"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:295
-msgid "Failed to unpack the selected file: %1"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:322
-msgid "Theme Engine Version"
-msgstr ""
-
-#: src/modules/theme/ThemeFunctions.cpp:323
-msgid "Subdirectory"
-msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:64
 #: src/modules/theme/PackThemeDialog.cpp:369
@@ -208,8 +135,77 @@ msgstr ""
 msgid "Packaging failed"
 msgstr ""
 
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-msgid "Download Themes - KVIrc"
+#: src/modules/theme/ThemeFunctions.cpp:47
+msgid "The selected file does not seem to be a valid KVIrc theme package"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:69
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:135
+#: src/modules/theme/ThemeFunctions.cpp:319
+msgid "Author"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:136
+#: src/modules/theme/ThemeFunctions.cpp:320
+msgid "Created at"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:137
+#: src/modules/theme/ThemeFunctions.cpp:321
+msgid "Created with"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:217
+msgid "Warning: The theme might be incompatible with this version of KVIrc"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:226
+msgid "Go Back to Package Data"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:233
+msgid ""
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:237
+msgid "Show Details"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:275
+msgid "Install Theme Pack - KVIrc"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:276
+msgid "You're about to install the following theme package"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:277
+msgid "Do you want to proceed with the installation ?"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:278
+msgid "Do Not Install"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:279
+msgid "Yes, Proceed"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:295
+msgid "Failed to unpack the selected file: %1"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:322
+msgid "Theme Engine Version"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:323
+msgid "Subdirectory"
 msgstr ""
 
 #: src/modules/theme/libkvitheme.cpp:73
@@ -244,6 +240,10 @@ msgstr ""
 
 #: src/modules/theme/libkvitheme.cpp:236
 msgid "Error making screenshot"
+msgstr ""
+
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
+msgid "Download Themes - KVIrc"
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:64

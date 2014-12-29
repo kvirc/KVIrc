@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 21:40+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2012-07-07 23:42+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/perlcore/libkviperlcore.cpp:232
+#: src/modules/perlcore/libkviperlcore.cpp:240
 msgid "Internal error: perl interpreter not initialized"
 msgstr "Interna eraro: perl interpretilo ne pravalorizita"
 
-#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:482 src/modules/perl/libkviperl.cpp:486
 msgid "Perl execution error:"
 msgstr "Perl ruliga eraro:"
 
@@ -28,7 +28,7 @@ msgstr "Perl ruliga eraro:"
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "La perlcore modulo ne povas esti ŝargata: perl subteno ne disponeblas"
 
-#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:465 src/modules/perl/libkviperl.cpp:539
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

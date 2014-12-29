@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2014-12-29 23:02+0000\n"
 "PO-Revision-Date: 2012-02-18 00:31+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -72,7 +72,7 @@ msgstr ""
 "Вам треба вручну ввімкнути інтерфейс керування DBus\n"
 "в налаштуваннях Vlc\n"
 
-#: src/modules/mediaplayer/MpAmipInterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:106
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
@@ -94,7 +94,7 @@ msgstr ""
 "Щоб його використовувати вам треба встановити також доповнення\n"
 "MPRIS, наявне за адресою http://addons.songbirdnest.com/addon/1626.\n"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:52
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
 msgid ""
 "An interface to the Spotify music streaming service.\n"
 "It is only available for certain countries in Europe.\n"
@@ -128,7 +128,7 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєра xmms.\n"
 "Ви можете завантажити його з http://legacy.xmms2.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:192
 msgid ""
 "An interface to the popular Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -150,7 +150,7 @@ msgstr ""
 "Інтерфейс до популярного аудіоплеєра.\n"
 "Ви можете завантажити його з http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:182
 msgid "Can't find a running winamp window"
 msgstr "Не можу знайти запущене вікно winamp"
 
@@ -196,7 +196,7 @@ msgstr "Не впевнений у результаті, пробую більш
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Здається на цій машині немає придатних медіаплеєрів"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:43
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
 msgid "Spotify is not running"
 msgstr "Spotify не запущений"
 
@@ -214,8 +214,8 @@ msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Обраний інтерфейс медіаплеєра не зміг виконати необхідну функцію"
 
-#: src/modules/mediaplayer/MpWinampInterface.cpp:316
-#: src/modules/mediaplayer/MpWinampInterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:314
+#: src/modules/mediaplayer/MpWinampInterface.cpp:348
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
