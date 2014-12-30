@@ -8,20 +8,20 @@
 # Alessio Paoletti <nate at paranoici dot org>, 2004,2005, 2006;.
 # Elvio Basello <hell at hellvis69 dot netsons dot org>, 2005, 2006, 2009.
 # HelLViS69, 2009, 2010.
-# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010, 2011, 2012.
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010, 2011, 2012, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-29 23:02+0000\n"
-"PO-Revision-Date: 2012-06-13 00:24+0200\n"
-"Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
+"PO-Revision-Date: 2014-12-30 03:17+0100\n"
+"Last-Translator: Elvio Basello <hellvis69 at gmail dot com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:643
@@ -1323,7 +1323,7 @@ msgstr "Sfondo"
 #: src/modules/system/libkvisystem.cpp:856
 #: src/modules/system/libkvisystem.cpp:912
 msgid "Bad bytecount specification: 1, 2, 4 and 8 are allowed"
-msgstr ""
+msgstr "Specifica dei byte errata: sono permessi 1, 2, 4 e 8"
 
 #: src/kvilib/core/KviError.cpp:90
 msgid "Bad file descriptor"
@@ -4369,9 +4369,8 @@ msgstr "Nessun Host da risolvere"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:347
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:363
-#, fuzzy
 msgid "No invites"
-msgstr "lista Inviti"
+msgstr "Nessun Invito"
 
 #: src/kvirc/ui/KviInputEditor.cpp:1816
 msgid "No matches"
@@ -5486,7 +5485,6 @@ msgid "SSL message"
 msgstr "Messaggio SSL"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:2366
-#, fuzzy
 msgid "STARTTLS reply received but SSL support is not compiled in: ignoring"
 msgstr ""
 "Ricevuta risposta STARTTLS ma il supporto a SSL non è compilato: ignoro"
@@ -5907,7 +5905,6 @@ msgid "Shows a window that list catched urls"
 msgstr "Mostra la lista degli url collezionati in una finestra"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:404
-#, fuzzy
 msgid "Shows a window that list shared files"
 msgstr "Mostra la lista dei file condivisi in una finestra"
 
@@ -6586,13 +6583,12 @@ msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1632
-#, fuzzy
 msgid ""
 "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] changed their nickname to \r!n\r%Q\r"
 msgstr ""
-"Il destinatario di questa Query era stato perso; è stato trovato quando \r!n"
-"\r%Q\r [%Q@\r!h\r%Q\r] ha cambiato il suo nickname in \r!n\r%Q\r"
+"Il destinatario di questa query era stato perso; è stato trovato quando "
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] ha cambiato il suo nickname in \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviTheme.cpp:76
 msgid "The theme data file does not exist"
@@ -7793,9 +7789,8 @@ msgstr ""
 "messaggio:"
 
 #: src/kvirc/sparser/KviIrcServerParser.cpp:60
-#, fuzzy
 msgid "[Server parser]: Message Tags: [%s][%s] %Q"
-msgstr "[Server Parser]: [%s][%s] %Q"
+msgstr "[Server Parser]: Messaggi di Segnalazione: [%s][%s] %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser.cpp:142
 msgid "[Server parser]: [%s][%s] %Q"

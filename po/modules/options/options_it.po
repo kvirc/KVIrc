@@ -11,20 +11,20 @@
 # Nate Grey <nate@paranoici.org>, 2004, 2005, 2006.
 # Elvio Basello <hellvis69 at netsons dot org>, 2005, 2006-2009.
 # HelLViS69, 2009, 2010.
-# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010, 2011.
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010, 2011, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-29 23:02+0000\n"
-"PO-Revision-Date: 2012-04-09 21:23+0100\n"
-"Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
+"PO-Revision-Date: 2014-12-30 03:28+0100\n"
+"Last-Translator: Elvio Basello <hellvis69 at gmail dot com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:72
@@ -1257,7 +1257,6 @@ msgstr ""
 "\"flood\" di mesaggi CTCP.</center>"
 
 #: src/modules/options/OptionsWidget_theme.cpp:85
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
 "must choose a blending background image below.</center>"
@@ -1266,26 +1265,24 @@ msgstr ""
 "trasparenti.<br>Devi scegliere un immagine di sfondo.</center>"
 
 #: src/modules/options/OptionsWidget_theme.cpp:73
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image below or check the \"Use compositing for "
 "real transparency\" option.</center>"
 msgstr ""
 "<center>Questa opzione fa sì che tutte le finestre di KVIrc siano "
-"trasparenti.<br>Devi scegliere un immagine di sfondo, o attivare l'opzione "
+"trasparenti.<br>Devi scegliere un immagine di sfondo o attivare l'opzione "
 "\"Usa il composite per la vera trasparenza\".</center>"
 
 #: src/modules/options/OptionsWidget_theme.cpp:79
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image below or check the \"Use desktop "
 "background for transparency\" option.</center>"
 msgstr ""
 "<center>Questa opzione fa sì che tutte le finestre di KVIrc siano "
-"trasparenti.<br>Devi scegliere un immagine di sfondo, o attivare l'opzione "
-"\"Usa il desktop per la trasparenza\".</center>"
+"trasparenti.<br>Devi scegliere un immagine di sfondo o attivare l'opzione "
+"\"Usa lol sfondo del desktop per la trasparenza\".</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:139
 msgid ""
@@ -2616,9 +2613,8 @@ msgid "Enable word highlighting"
 msgstr "Attiva evidenziazione parole"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:47
-#, fuzzy
 msgid "Encoding"
-msgstr "Codifica Testo:"
+msgstr "Codifica"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:169
 msgid "Escape sequences"
@@ -3082,9 +3078,8 @@ msgid "Language"
 msgstr "Lingua"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:156
-#, fuzzy
 msgid "Language code"
-msgstr "Lingua"
+msgstr "Codice lingua"
 
 #: src/modules/options/OptionsWidget_identity.cpp:395
 msgid "Languages:"
@@ -3103,9 +3098,8 @@ msgid "Limit download bandwidth to"
 msgstr "Limita banda in download a"
 
 #: src/modules/options/OptionsWidget_connection.cpp:158
-#, fuzzy
 msgid "Limit outgoing traffic per connection"
-msgstr "Limita il traffico in uscita"
+msgstr "Limita il traffico in uscita per connessione"
 
 #: src/modules/options/OptionsWidget_connection.cpp:159
 msgid "Limit to 1 message every:"
@@ -3440,6 +3434,10 @@ msgid ""
 "To open network settings choose a network (with a globe) in list of networks "
 "and servers and click Advanced."
 msgstr ""
+"Le preferenze del NickServ sono disponibili solo per tutta la rete IRC, non "
+"per server specifici.\n"
+"Per aprire le preferenze di rete scegli una rete (con un globo) nella lista "
+"delle reti e server e clicca Avanzate."
 
 #: src/modules/options/OptionsWidget_servers.cpp:333
 #: src/modules/options/OptionsWidget_identity.cpp:718
@@ -3856,7 +3854,7 @@ msgstr "Protocollo:"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:157
 msgid "Provided by"
-msgstr ""
+msgstr "Fornito da"
 
 #: src/modules/options/OptionsWidget_proxy.cpp:71
 msgid "Proxy"
@@ -4326,7 +4324,7 @@ msgstr "Suoni"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:139
 msgid "Spell checker dictionaries"
-msgstr ""
+msgstr "Dizionari del correttore ortografico"
 
 #: src/modules/options/OptionsWidget_logging.cpp:55
 msgid "Strip colors in logs"
