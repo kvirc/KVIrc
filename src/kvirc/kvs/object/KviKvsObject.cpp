@@ -1151,7 +1151,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				if(bArray)
 					szOut = QString("%1, %2").arg(szName,szType);
 				else {
-					szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4","kvs")).arg(KviControlCodes::Bold).arg(szName).arg(KviControlCodes::Bold).arg(szType);
+					szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4","kvs")).arg(QChar(KviControlCodes::Bold)).arg(szName).arg(QChar(KviControlCodes::Bold)).arg(szType);
 					szOut.prepend(" ");
 				}
 
@@ -1211,6 +1211,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
+
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
 	if(!p)
@@ -1222,7 +1223,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	QVariant vv = m_pObject->property(szName.toUtf8().data());
 	if(!vv.isValid())
 	{
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q'of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
@@ -1231,6 +1232,11 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		QString szKey;
 		v->asString(szKey);
 		int val = p->enumerator().keyToValue(szKey.toUtf8().data());
+		if(val < 0)
+		{
+			c->warning(__tr2qs_ctx("Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid","kvs"),&szKey,&szName,&m_szName,&(m_pClass->name()));
+			return true;
+		}
 		QVariant var(val);
 		m_pObject->setProperty(szName.toUtf8().data(),var);
 		return true;
@@ -1420,46 +1426,40 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	if(!m_pObject)
 	{
 		// there are no Qt properties at all
-		if (bNoerror) c->returnValue()->setString("No Qt properties");
-		else
-		{
+		c->returnValue()->setNothing();
+		if(!bNoerror)
 			c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
-			c->returnValue()->setNothing();
-		}
 		return true;
 	}
 
 	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
 	{
-		if(bNoerror)
-			c->returnValue()->setString("No Qt properties");
-		else
-		{
+		c->returnValue()->setNothing();
+		if(!bNoerror)
 			c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'","kvs"),&szName,&m_szName,&(m_pClass->name()));
-			c->returnValue()->setNothing();
-		}
 		return true;
 	}
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
 	if(!p)
 	{
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		c->returnValue()->setNothing();
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
 	QVariant v = m_pObject->property(szName.toUtf8().data());
 	if(!v.isValid())
 	{
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		c->returnValue()->setNothing();
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
 	if(p->isEnumType())
 	{
+		qDebug("Enum type prop %d %s",v.toInt(),p->enumerator().valueToKey(v.toInt()));
 		c->returnValue()->setString(p->enumerator().valueToKey(v.toInt()));
 		return true;
 	}

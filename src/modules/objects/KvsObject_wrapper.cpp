@@ -45,59 +45,145 @@
 	@type:
 		class
 	@short:
-		Provides a wrapper class that hooks to an existing Qt graphic object modifying it.
+		A wrapper for the existing Qt widgets.
 	@inherits:
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		This is a class for advanced KVIrc scripting.[br]
-		It can wrap any existing KVIrc widget.[br]
-		This class allows some unbelievable changes to the whole graphic environment of the kvirc,[br]
-		in fact, could hook every widget, you can modify the property or you can be inserted other widget as child of this...[br]
-		in short you have absolute liberty. [br]
-		The power of this class is fantastic, because it allows the change at "run time" of almost all the elements of the Kvirc.[br]
-		But to use this class in optimal way and to exploit its power, you have to know the Qt.... so you won't have limits [br]
-		The KVIrc Qt widgets are arranged in trees (just as the objects).[br]
-		The difference is that there are more toplevel widgets (and so more than one tree).[br]
-		You can use [fnc]$objects.dump()[/fnc] to take a look at the KVIrc Qt objects tree.[br]
-		Here is a part of the tree:[br][br]
-		Ptr 14332520: top level object: kvirc_frame, class KviMainWindow, visible, rect = -4, -4, 1024, 708
-		Ptr 17296024: object: qt_top_dock, class QDockArea
-		Ptr 14882136: object: qt_custom_toolbar, class KviCustomToolBar
-		Ptr 18143368: object: qt_dockwidget_internal, class QDockWindowTitleBar
-		[br][br]
-		Every listed widget has a "name", a "class" and a set of properties.[br]
-		The first entry in this example is a KVIrc server window, class "KviMainWindow" and name "kvirc_frame":
-		it is a toplevel widget.[br]
-		The "qt_top_dock", "qt_custom_toolbar" and the "qt_dockwidget_internal" are
-		direct children of that widget.[br]
-		To indicate a specific widget we will use the "class::name" form.[br]
-		So to indicate the main KVIrc frame you will use "KviMainWindow::kvirc_main_frame".
-		Look at this example:[br]
-		%A=$new(wrapper,0,test,KviMainWindow::kvirc_frame,KviStatusBar::unnamed)[br]
-		%A->$setBackGroundColor(FFFFFF)[br]
-		For first thing we create an object type wrapper,then we flow the tree that there from the command /object.dump and we will have:[br]
-		.  [br]
-		.  [br]
-		Ptr 14196288: top level object: kvirc_frame, class KviMainWindow, visible, rect = -4, -4, 1024, 712  [br]
-.                  [br]
-		Ptr 17197360: object: unnamed, class KviStatusBar  [br]
-		.  [br]
-		.  [br]
-		in this way we can follow the order, father->child from the top-level widget(KviMainWindow::kvirc_frame)[br]
-		to reach the child that interests us (KviStatusBar::unnamed)[br]
-		Then, following the syntax we will have:
-		%A=$new(wrapper,0,test,KviMainWindow::kvirc_frame,KviStatusBar::unnamed)
-		Now %A. will be point to the wrapped object, therefore we could modify its property or to consider it as if it were an object created by us in scripting. [br]
-		Obviously, deleting the created object (for example %A) you don't will delete the object of Kvirc (in this case the statusbar). [br]
-		Another example could be this:[br]
-		%A=$new(wrapper,0,test,KviMainWindow::kvirc_frame,QToolButton::kvirc.identityoptions)[br]
-		%A->$setProperty(usesBigPixmap,0)[br]
-		In this fool example with the function $setProperty, we has setted the property usesBigPixmap to False, making to become the small icons of the ToolBar.[br]
-		[br]
-		The wrapping object search can optionally start with a window
-		identifier with the following syntax: WinId::<window_id>.
-
+		[p]
+		This class "wraps" existing kvirc widgets and allows using the [class]widget[/class]
+		class API to manipulate them. You can use it, for example, to set the geometry of the
+		kvirc main window or to apply some crazy graphical changes to the UI.
+		[/p]
+		[p]
+		The KVIrc Qt widgets are arranged in trees (just as the objects). The difference is that there can be more than one
+		toplevel widget and so more than one tree. You can use [fnc]$objects.dump()[/fnc] to take a look at the KVIrc Qt objects tree.
+		[/p]
+		[p]
+		Here is a part of the tree:
+		[/p]
+		[example]
+		Ptr 23786128: top level object: kvirc_frame, class KviMainWindow, visible, rect = 1678, -3, 1680, 1030
+		>Ptr 23496976: object: qt_rubberband, class QRubberBand
+		>Ptr 23536608: object: main_frame_splitter, class QSplitter
+		>>Ptr 23795232: object: mdi_manager, class KviMdiManager
+		>>>Ptr 23863200: object: qt_scrollarea_hcontainer, class QWidget
+		>>>>Ptr 23418224: object: , class QScrollBar
+		>>>Ptr 23864832: object: qt_scrollarea_vcontainer, class QWidget
+		>>>>Ptr 22383424: object: , class QScrollBar
+		>>Ptr 25750832: object: mdi_manager, class KviMdiManager
+		>>>Ptr 26112928: object: , class QWidget
+		>>>>Ptr 45381568: object: , class Oxygen::MdiWindowShadow
+		>>>>Ptr 45952496: object: mdi_child_Azzurra_#kvirc, class KviMdiChild
+		>>>>>Ptr 43714656: object: #kvirc, class KviChannelWindow
+		>Ptr 18004432: object: , class KviStatusBar
+		>>Ptr 18007408: object: msgstatuslabel, class QLabel
+		>>>Ptr 24067088: object: , class Oxygen::TransitionWidget
+		>Ptr 24503248: object: windowlist, class KviTreeWindowList
+		>>Ptr 24459744: object: qt_dockwidget_floatbutton, class QDockWidgetTitleButton
+		>>Ptr 24498560: object: qt_dockwidget_closebutton, class QDockWidgetTitleButton
+		>>Ptr 23996288: object: tree_windowlist, class KviTreeWindowListTreeWidget
+		[/example]
+		[p]
+		As you can see the objects are identified by their names (for example "mdi_manager") and
+		by their class names (for example KviChannelWindow).
+		To wrap a specific widget you must provide a path in the tree composed of search specifiers.
+		Each search specifier can have one of the following forms:
+		[/p]
+		[example]
+		(1) <class>
+		(2) <class>::<name>
+		(3) ::<name>
+		(4) !Window::<window_identifier>
+		(5) !Parent::N
+		[/example]
+		[p]
+		The first three forms may be preceeded by the prefix '*' which will tell KVS to perform
+		a recursive search from this point. Let's see some examples.
+		[/p]
+		[p]
+		The form (1) mathches the first widget with the specified class name. For instance:
+		[/p]
+		[example]
+		%Frame = $new(wrapper,0,test,KviMainWindow)
+		[/example]
+		[p]
+		This will wrap the first top level object with class KviMainWindow. Now you can use
+		any [class]widget[/class] or [class]object[/class] methods on it.
+		[/p]
+		[example]
+		%Frame = $new(wrapper,0,test,KviMainWindow)
+		%Frame->$setGeometry(20,20,400,400);
+		[/example]
+		[p]
+		If you want to wrap the kvirc status bar you can use a composite path:
+		[/p]
+		[example]
+		%StatusBar = $new(wrapper,0,test,KviMainWindow,KviStatusBar)
+		%StatusBar->$setProperty(autoFillBackground,1)
+		%StatusBar->$setBackgroundColor(80,80,0)
+		[/example]
+		[p]
+		The form (2) matches both the class and the widget name. In this way you can differentiate
+		between children that have the same class. For instance:
+		[/p]
+		[example]
+		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviMdiManager,QWidget::qt_scrollarea_vcontainer,QScrollBar)
+		%VerticalScrollBar->$setProperty(invertedAppearance,1);
+		[/example]
+		[p]
+		In this way KVS was able to pick the vertical scrollbar instead of the horizontal one (which comes first in the list).
+		(Now try to move a window out of the MDI area: the vertical scroll bar will be inverted!).
+		[/p]
+		[p]
+		The form (3) matches only the name and ignores the class. In our sample tree the following example is equivalent to the previous one.
+		[/p]
+		[example]
+		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviMdiManager,::qt_scrollarea_vcontainer,QScrollBar)
+		%VerticalScrollBar->$setProperty(invertedAppearance,1);
+		[/example]
+		[p]
+		If you don't want to specify the full path to the widget you can try to use a recursive search which may skip some levels.
+		Keep in mind that the recursive search is breadth-first and will return the first widget that matches.
+		In our sample tree the following would match the first widget with class KviChannelWindow.
+		[/p]
+		[example]
+		%Chan = $new(wrapper,0,test,*KviChannelWindow)
+		%Chan->$setBackgroundColor(80,0,0);
+		[/example]
+		[p]
+		The following would match the first widget with name #kvirc
+		[/p]
+		[example]
+		%Chan = $new(wrapper,0,test,*::#kvirc)
+		%Chan->$setBackgroundColor(80,0,0);
+		[/example]
+		[p]
+		The recursive search can start at any level, so if starting from the root does not work properly you might try
+		specifying a part of the path and then searching recursively.
+		[/p]
+		[example]
+		%Chan = $new(wrapper,0,test,KviMainWindow,*::#kvirc)
+		%Chan->$setBackgroundColor(80,0,0);
+		[/example]
+		[p]
+		The form (4) allows you to jump directly to a specific kvirc channel/query/console window,
+		without the need of looking it up in the tree.
+		[/p]
+		[example]
+		%Win = $new(wrapper,0,test,!Window::$window)
+		%Win->$setBackgroundColor(80,0,0);
+		[/example]
+		[p]
+		Finally the last form allows you to jump N levels up in the tree. If N is omitted it is assumed to be 1.
+		[/p]
+		[example]
+		%Win = $new(wrapper,0,test,!Window::$window,!Parent::3)
+		%Win->$setGeometry(10,10,40,40)
+		[/example]
+		[p]
+		Experiment with it :)
+		[/p]
 */
 
 
@@ -117,95 +203,183 @@ KVSO_END_CONSTRUCTOR(KvsObject_wrapper)
 
 bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	if( !pParams ) return false;
-	QWidget *pWidget = 0;
-	unsigned int i=0;
-	while(i!=pParams->count())
+	if(!pParams)
+		return false;
+
+	QWidget *pWidget = NULL;
+	unsigned int i = 0;
+
+	while(i < pParams->count())
 	{
 		QString szClass;
 		QString szName;
 		QString s=0;
+
 		pParams->at(i)->asString(s);
-		if (!s.isEmpty())
+		i++;
+
+		if(s.isEmpty())
+			continue;
+
+		bool bRecursive = false;
+
+		if(s.startsWith("*"))
 		{
-			int idx = s.indexOf("::");
-			if( idx != -1 )
+			s.remove(0,1);
+			bRecursive = true;
+			if(s.isEmpty())
 			{
-				szClass = s.left(idx);
-				szName  = s.right(s.length() - idx - 2);
-			} else {
-				szClass = s;
-				szName  = "";
-			}
-			if(KviQString::equalCI(szClass,"WinId"))
-			{
-				if(pWidget)
-				{
-					pContext->warning(__tr2qs_ctx("The window identifier preceded by WinId must be the first object in the search path","objects"));
-					return false;
-				} else {
-					pWidget = g_pApp->findWindow(szName);
-				}
-			} else {
-				if(pWidget)
-				{
-					pWidget = findWidgetToWrap(!szClass.isEmpty() ? szClass.toUtf8().data() : "", !szName.isEmpty() ? szName.toUtf8().data() : "", pWidget);
-				} else {
-					pWidget = findTopLevelWidgetToWrap(!szClass.isEmpty() ? szClass.toUtf8().data() : "", !szName.isEmpty() ? szName.toUtf8().data() : "");
-				}
-			}
-			if( !pWidget )
-			{
-				pContext->warning(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')","objects"),&szClass,&szName);
+				pContext->error(__tr2qs_ctx("The search specifier can't be empty","objects"));
 				return false;
 			}
 		}
-		i++;
+
+		int idx = s.indexOf("::");
+		if(idx != -1)
+		{
+			szClass = s.left(idx);
+			szName  = s.right(s.length() - idx - 2);
+		} else {
+			szClass = s;
+			szName  = "";
+		}
+
+		if(
+				KviQString::equalCI(szClass,"!Window") ||
+				KviQString::equalCI(szClass,"WinId") // compat
+			)
+		{
+			if(pWidget)
+				pContext->warning(__tr2qs_ctx("The window identifier preceded by '!Window' should be the first in the search path","objects"));
+
+			pWidget = g_pApp->findWindow(szName);
+
+		} else if(KviQString::equalCI(szClass,"!Parent"))
+		{
+			if(!pWidget)
+			{
+				pContext->warning(__tr2qs_ctx("The '!Parent' specifier can't be used as first in the search path","objects"));
+				return false;
+			}
+			
+			int iLevels = 1;
+			if(!szName.isEmpty())
+			{
+				bool ok;
+				int iLevels = szName.toInt(&ok);
+				if(!ok)
+				{
+					pContext->warning(__tr2qs_ctx("Bad number of levels for the '!Parent' specifier","objects"));
+					return false;
+				}
+			}
+
+			while(iLevels > 0)
+			{
+				pWidget = pWidget->parentWidget();
+	
+				if(!pWidget)
+				{
+					pContext->warning(__tr2qs_ctx("The '!Parent' specifier was applied to a widget that has no parent","objects"));
+					return false;
+				}
+
+				iLevels--;
+			}
+		} else {
+			if(pWidget)
+				pWidget = findWidgetToWrap(szClass,szName,pWidget,bRecursive);
+			else
+				pWidget = findTopLevelWidgetToWrap(szClass,szName,bRecursive);
+		}
+
+		if(!pWidget)
+		{
+			pContext->error(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')","objects"),&szClass,&szName);
+			return false;
+		}
 	}
-	if( !pWidget )
+
+	if(!pWidget)
 	{
-		pContext->warning(__tr2qs_ctx("Failed to find the widget to wrap","objects"));
+		pContext->error(__tr2qs_ctx("Failed to find the widget to wrap","objects"));
 		return false;
 	}
+
 	setObject(pWidget,false);
 	return true;
 }
 
-QWidget *KvsObject_wrapper::findTopLevelWidgetToWrap(const QString szClass, const QString szName)
+QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString &szClass,const QString &szName,bool bRecursive)
 {
 	QWidgetList list = g_pApp->topLevelWidgets();
-	if( !list.count() ) return 0;
-	for(int idx=0;idx<list.count();idx++)
+	if(list.isEmpty())
+		return NULL;
+
+	Q_FOREACH(QWidget * w,list)
 	{
-		bool bNameMatch  = false;
-		bool bClassMatch = false;
-		if( !szName.isEmpty() )
-			bNameMatch = KviQString::equalCI(list.at(idx)->objectName(), szName);
-		else
-			bNameMatch = true;
-		if( !szClass.isEmpty())
-			bClassMatch = KviQString::equalCI(list.at(idx)->metaObject()->className(), szClass);
-		else
-			bClassMatch = true;
-		if( bNameMatch && bClassMatch ) {
-			QWidget *w = list.at(idx);
+		//qDebug("TLW: %s::%s (look for %s::%s)",w->metaObject()->className(),w->objectName().toUtf8().data(),szClass.toUtf8().data(),szName.toUtf8().data());
+		if(
+				(
+					szClass.isEmpty() ||
+					KviQString::equalCI(w->metaObject()->className(),szClass)
+				) && (
+					szName.isEmpty() ||
+					KviQString::equalCI(w->objectName(),szName)
+				)
+			)
 			return w;
+	}
+
+	if(bRecursive)
+	{
+		Q_FOREACH(QWidget * w,list)
+		{
+			w = findWidgetToWrap(szClass,szName,w,bRecursive);
+			if(w)
+				return w;
 		}
 	}
-	return 0;
+	
+	return NULL;
 }
 
-QWidget *KvsObject_wrapper::findWidgetToWrap(const QString szClass, const QString szName, QWidget *childOf)
+QWidget * KvsObject_wrapper::findWidgetToWrap(const QString &szClass, const QString &szName, QWidget *pParent,bool bRecursive)
 {
-	QList<QObject *> list=childOf->children();
-	if( !list.count() ) return 0;
-	for(int idx=0;idx<list.count();idx++)
+	QList<QObject *> list = pParent->children();
+	if(list.isEmpty())
+		return NULL;
+
+	Q_FOREACH(QObject * obj,list)
 	{
-		if( list.at(idx)->isWidgetType() )
+		if(!obj->isWidgetType())
+			continue;
+
+		QWidget *w = (QWidget *)obj;
+		if(
+				(
+					szClass.isEmpty() ||
+					KviQString::equalCI(w->metaObject()->className(),szClass)
+				) && (
+					szName.isEmpty() ||
+					KviQString::equalCI(w->objectName(),szName)
+				)
+			)
+			return w;
+	}
+
+	if(bRecursive)
+	{
+		Q_FOREACH(QObject * obj,list)
 		{
-			QWidget *w = (QWidget *)list.at(idx);
-			if (KviQString::equalCI(w->metaObject()->className(),szClass) &&KviQString::equalCI(w->objectName(),szName))return w;
+			if(!obj->isWidgetType())
+				continue;
+
+			QWidget * w = findWidgetToWrap(szClass,szName,(QWidget *)obj,bRecursive);
+			if(w)
+				return w;
 		}
 	}
-	return 0;
+
+	return NULL;
 }

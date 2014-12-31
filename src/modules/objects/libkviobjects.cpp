@@ -674,7 +674,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
 				list.at(i),
-				KviControlCodes::Bold, list.at(i)->objectName().data(), KviControlCodes::Bold,
+				KviControlCodes::Bold, list.at(i)->objectName().toUtf8().data(), KviControlCodes::Bold,
 				list.at(i)->metaObject()->className(),
 				list.at(i)->isVisible() ? "visible" : "hidden",
 				list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
