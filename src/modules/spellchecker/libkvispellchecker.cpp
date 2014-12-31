@@ -24,7 +24,9 @@
 
 #include "KviModule.h"
 #include "KviOptions.h"
+
 #include <enchant.h>
+#include <enchant-provider.h>
 
 static EnchantBroker* g_pEnchantBroker = NULL;
 static KviPointerList<EnchantDict>* g_pEnchantDicts = NULL;
@@ -70,7 +72,8 @@ static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall* c)
 	@description:
 		This function returns true if the word is spelled correctly.
 */
-static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c) {
+static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c)
+{
 	QString szWord;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
@@ -78,17 +81,18 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c) {
 	QByteArray utf8 = szWord.toUtf8();
 	bool bResult = g_pEnchantDicts->isEmpty();
 	KviPointerListIterator<EnchantDict> it(*g_pEnchantDicts);
-	for (bool b = it.moveFirst(); b; b = it.moveNext()) {
+	for (bool b = it.moveFirst(); b; b = it.moveNext())
 		bResult |= enchant_dict_check(*it, utf8.data(), utf8.size()) == 0;
-	}
+
 	c->returnValue()->setBoolean(bResult);
 	return true;
 }
 
-static void spellchecker_reload_dicts() {
-	while (!g_pEnchantDicts->isEmpty()) {
+static void spellchecker_reload_dicts()
+{
+	while (!g_pEnchantDicts->isEmpty())
 		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
-	}
+
 	const QStringList& wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
 	foreach(QString szLang, wantedDictionaries) {
 		EnchantDict* pDict = enchant_broker_request_dict(g_pEnchantBroker, szLang.toUtf8().data());
@@ -121,7 +125,8 @@ static bool spellchecker_kvs_reload_dictionaries(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-static bool spellchecker_module_init(KviModule* m) {
+static bool spellchecker_module_init(KviModule* m)
+{
 	g_pEnchantBroker = enchant_broker_init();
 	g_pEnchantDicts = new KviPointerList<EnchantDict>(/* bAutoDelete = */ false);
 
@@ -133,10 +138,11 @@ static bool spellchecker_module_init(KviModule* m) {
 	return true;
 }
 
-static bool spellchecker_module_cleanup(KviModule*) {
-	while (!g_pEnchantDicts->isEmpty()) {
+static bool spellchecker_module_cleanup(KviModule*)
+{
+	while (!g_pEnchantDicts->isEmpty())
 		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
-	}
+
 	delete g_pEnchantDicts;
 	g_pEnchantDicts = NULL;
 	enchant_broker_free(g_pEnchantBroker);
