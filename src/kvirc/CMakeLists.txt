@@ -302,18 +302,12 @@ if(APPLE)
 	#fixme dirty hack
 	set(QT_PLUGINS_DIR "${Qt5Widgets_DIR}/../../../plugins")
 
-	# note: no codecs in qt5
-	# note: phonon_backend => mediaservice
-	# note: needs platform on osx
-	# note: check if printsupport is needed, too
+    # qt4: codecs, iconengines, imageformats, phonon_backend, sqldrivers
+    # qt5: audio, iconengines, imageformats, mediaservice, platforms, sqldrivers
 
-	if(WANT_DEBUG)
-		install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
-			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/.*_debug\\.dylib")
-	else()
-		install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
-			FILES_MATCHING REGEX "(codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/[^_]*\\.dylib")
-	endif()
+    install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime
+        FILES_MATCHING REGEX "(audio|codecs|iconengines|imageformats|mediaservice|phonon_backend|platforms|sqldrivers)/.*\\.dylib"
+        REGEX ".*_debug\\.dylib" EXCLUDE)
 
 	install(CODE "
 	    file(WRITE \"${qtconf_dest_dir}/qt.conf\" \"[Paths]
