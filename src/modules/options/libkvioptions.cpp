@@ -128,6 +128,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		}
 		g_pOptionsDialogDict->insert(szGroup,d);
 	}
+	d->setModal(true);
 	d->raise();
 	d->show();
 	d->setFocus();
@@ -181,7 +182,7 @@ static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 	@type:
 		command
 	@title:
-		options.edit [-m]
+		options.edit [-n]
 	@short:
 		Shows a single options page
 	@syntax:
@@ -189,8 +190,7 @@ static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 	@description:
 		Shows an options page as toplevel dialog.
 		The available option pages can be listed by using [cmd]options.pages[/cmd].
-		If the -m switch is used, the dialog will appear as modal, blocking input
-		to the main frame until it's closed.
+		If the -n switch is used then dialog will appear as NON modal (will not block input).
 	@seealso:
 */
 
@@ -200,6 +200,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("option",KVS_PT_STRING,0,szOption)
 	KVSM_PARAMETERS_END(c)
+
 	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
 	if(!e)
 	{
@@ -217,10 +218,12 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 
 	OptionsWidgetContainer * wc = new OptionsWidgetContainer(
 			0,
-			c->hasSwitch('m',"modal")
+			!c->hasSwitch('n',"non-modal")
 		);
 
 	wc->setup(g_pOptionsInstanceManager->getInstance(e,wc));
+
+	//wc->setModal(true);
 
 	// a trick for the dialog covering the splash screen before the time (this is prolly a WM or Qt bug)
 	if(g_pSplashScreen)

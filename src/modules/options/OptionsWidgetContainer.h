@@ -26,12 +26,12 @@
 
 #include "KviOptionsWidget.h"
 
-#include <QWidget>
+#include <QDialog>
 
 class QPushButton;
 class QGridLayout;
 
-class OptionsWidgetContainer : public QWidget
+class OptionsWidgetContainer : public QDialog
 {
 	Q_OBJECT
 public:

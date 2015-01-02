@@ -966,6 +966,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	// If we're not, then fix this.
 	if(g_pActiveWindow != this)
 		g_pMainWindow->childWindowActivated(this);
+
 	updateCaption();
 }
 

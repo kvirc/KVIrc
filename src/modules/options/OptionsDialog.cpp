@@ -60,7 +60,7 @@ extern KVIRC_API KviApplication * g_pApp;
 extern OptionsInstanceManager * g_pOptionsInstanceManager;
 
 OptionsDialogFrontWidget::OptionsDialogFrontWidget(QWidget *parent,const QString &szText)
-:KviOptionsWidget(parent)
+	:KviOptionsWidget(parent)
 {
 	setObjectName("general_options_front_widget");
 	createLayout();
@@ -100,7 +100,7 @@ OptionsDialogTreeWidgetItem::~OptionsDialogTreeWidgetItem()
 }
 
 OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup)
-: QWidget(par)
+: QDialog(par)
 {
 	setObjectName("general_options_dialog");
 

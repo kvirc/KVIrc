@@ -31,6 +31,7 @@
 #include <QTreeWidget>
 
 #include <QWidget>
+#include <QDialog>
 #include <QStringList>
 #include <QToolButton>
 #include <QPainter>
@@ -59,7 +60,7 @@ public:
 	KviOptionsWidget              * m_pOptionsWidget;
 };
 
-class OptionsDialog : public QWidget
+class OptionsDialog : public QDialog
 {
 	Q_OBJECT
 public:
@@ -69,7 +70,7 @@ private:
 	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pCategoryLabel;
 	QStackedWidget               * m_pWidgetStack;
-	OptionsDialogFrontWidget * m_pFrontWidget;
+	OptionsDialogFrontWidget     * m_pFrontWidget;
 	QString                        m_szGroup;
 	QLineEdit                    * m_pSearchLineEdit;
 	QToolButton                  * m_pSearchButton;
