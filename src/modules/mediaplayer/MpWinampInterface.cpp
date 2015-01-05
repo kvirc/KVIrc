@@ -157,7 +157,6 @@
 #define WINAMP_CMD_QUIT 40001
 
 #define KVIRC_WM_USER 63112
-
 #define KVIRC_WM_USER_CHECK 13123
 #define KVIRC_WM_USER_CHECK_REPLY 13124
 #define KVIRC_WM_USER_GETTITLE 5000
@@ -167,10 +166,17 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
-	if(!c)c = QTextCodec::codecForLocale();
-	return c;
+	QTextCodec * pCodec = 0;
 
+#if (QT_VERSION < 0x050000)
+	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
+#else
+	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
+#endif
+
+	if(!pCodec)
+		pCodec = QTextCodec::codecForLocale();
+	return pCodec;
 }
 
 static HWND find_winamp(KviWinampInterface * i)

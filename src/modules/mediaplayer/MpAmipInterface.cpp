@@ -66,13 +66,13 @@ static HINSTANCE amip_dll = NULL;
 
 #define COMMA() ,
 
-MP_AC_DYNPTR(void, ac_init,        int mode);
-MP_AC_DYNPTR(void, ac_uninit,      void);
-MP_AC_DYNPTR(void, ac_getDestHost, char *out);
-MP_AC_DYNPTR(int,  ac_getDestPort, void);
-MP_AC_DYNPTR(bool, ac_pingServer,  const char *host COMMA() int port COMMA() int timeout);
-MP_AC_DYNPTR(int,  ac_exec,        const char *cmd);
-MP_AC_DYNPTR(int,  ac_eval,        const char *cmd COMMA() char *result);
+MP_AC_DYNPTR(void, ac_init, int mode);
+MP_AC_DYNPTR(void, ac_uninit, void);
+MP_AC_DYNPTR(void, ac_getDestHost, char * out);
+MP_AC_DYNPTR(int, ac_getDestPort, void);
+MP_AC_DYNPTR(bool, ac_pingServer, const char * host COMMA() int port COMMA() int timeout);
+MP_AC_DYNPTR(int, ac_exec, const char * cmd);
+MP_AC_DYNPTR(int, ac_eval, const char * cmd COMMA() char *result);
 
 
 static bool loadAmipDll()
@@ -93,10 +93,17 @@ static bool loadAmipDll()
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
-	if(!c)
-		c = QTextCodec::codecForLocale();
-	return c;
+	QTextCodec * pCodec = 0;
+
+#if (QT_VERSION < 0x050000)
+	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
+#else
+	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
+#endif
+
+	if(!pCodec)
+		pCodec = QTextCodec::codecForLocale();
+	return pCodec;
 }
 
 MP_IMPLEMENT_DESCRIPTOR(
@@ -232,25 +239,41 @@ MpInterface::PlayerStatus MpAmipInterface::status()
 
 QString MpAmipInterface::mrl()
 {
-	QString ret;
-	QString fn = eval_str("var_fn");
-	QTextCodec *c=mediaplayer_get_codec();
-	if (c) ret = c->toUnicode(fn.toLatin1());
-	else ret=fn;
-	if(!ret.startsWith("http://",Qt::CaseInsensitive))
-	ret.prepend("file://");
+	QString szRet;
+	QString szFn = eval_str("var_fn");
+	QTextCodec * pCodec = mediaplayer_get_codec();
+	if(pCodec)
+	{
+#if (QT_VERSION < 0x050000)
+		szRet = pCodec->toUnicode(szFn.toLatin1());
+#else
+		szRet = pCodec->toUnicode(szFn.toUtf8());
+#endif
+	} else {
+		szRet = szFn;
+	}
+	
+	if(!szRet.startsWith("http://", Qt::CaseInsensitive))
+		szRet.prepend("file://");
 
-	return ret;
+	return szRet;
 }
 
 QString getAmipString(const char * var)
 {
-	QString ret;
-	QString s = eval_str(var);
-	QTextCodec *c=mediaplayer_get_codec();
-	if (c) ret = c->toUnicode(s.toLatin1());
-	else ret=s;
-	return ret;
+	QString szRet;
+	QString szString = eval_str(var);
+	QTextCodec * pCodec = mediaplayer_get_codec();
+	if(pCodec) {
+#if (QT_VERSION < 0x050000)
+		szRet = pCodec->toUnicode(szString.toLatin1());
+#else
+		szRet = pCodec->toUnicode(szString.toUtf8());
+#endif
+	} else {
+		szRet = szString;
+	}
+	return szRet;
 }
 
 QString MpAmipInterface::nowPlaying()
