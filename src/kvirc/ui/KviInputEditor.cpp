@@ -66,6 +66,7 @@
 #endif
 #include <QMenu>
 #include <QStyleFactory>
+#include <QTextBoundaryFinder>
 
 // from KviApplication.cpp
 extern QMenu         * g_pInputPopup;
@@ -80,8 +81,12 @@ extern KviColorWindow          * g_pColorWindow;
 static void checkWordSpelling(const QString& szWord, QString* szResult, const QString& szToAppend) {
 	// TODO: If szWord is a nick of a person in this channel, don't mark it as a spelling mistake.
 	KviKvsVariant bCorrect;
-	KviKvsVariantList params(new KviKvsVariant(szWord));
-	KviKvsScript::evaluate("$spellchecker.check($0)", NULL, &params, &bCorrect);
+	if (szWord.isEmpty()) {
+		bCorrect.setBoolean(true);
+	} else {
+		KviKvsVariantList params(new KviKvsVariant(szWord));
+		KviKvsScript::evaluate("$spellchecker.check($0)", NULL, &params, &bCorrect);
+	}
 	if (!bCorrect.asBoolean()) {
 		*szResult += QChar(KviControlCodes::SpellingMistake);
 	}
@@ -94,8 +99,13 @@ static void checkWordSpelling(const QString& szWord, QString* szResult, const QS
 static QString substituteSpelling(const QString& szText) {
 	// TODO: If no dictionaries are enabled, just return szText.
 	QString szResult;
-	QString szWord;
-	int iStartOfWord = -1;
+	// QTextBoundaryFinder will want a string without embedded control codes (bold, colors, etc), so strip them from string.
+	QString szCleanText;
+	// But need to remember where they were, so that when copying parts of string into result with or without spelling mistake markers, control codes will be copied too.
+	// For Nth character boundary in clean text, that character boundary is at N+offsets[N] position in original text.
+	QList<int> offsets;
+	int iCurrentOffset = 0;
+	offsets.push_back(iCurrentOffset);
 	for (int i = 0; i < szText.length(); ++i) {
 		QChar c = szText[i];
 		switch (c.unicode()) {
@@ -105,36 +115,41 @@ static QString substituteSpelling(const QString& szText) {
 			case KviControlCodes::Reverse:
 			case KviControlCodes::CryptEscape:
 			case KviControlCodes::Icon:
+				iCurrentOffset++;
 				break;
 			case KviControlCodes::Color:
 			{
 				i++; // \0x03 character itself
+				iCurrentOffset++;
 				if (i >= szText.length()) break;
 				unsigned char uFore;
 				unsigned char uBack;
-				i = KviControlCodes::getUnicodeColorBytes(szText, i, &uFore, &uBack);
-				i--; // It will now ++i again in for-loop
+				int j = KviControlCodes::getUnicodeColorBytes(szText, i, &uFore, &uBack);
+				iCurrentOffset += j - i;
+				i = j - 1; // It will now ++i again in for-loop
 				break;
 			}
 			default:
-				if (c.isLetter()) {
-					if (szWord.isEmpty()) {
-						iStartOfWord = i;
-					}
-					szWord += c;
-				} else {
-					if (!szWord.isEmpty()) {
-						// word finished
-						checkWordSpelling(szWord, &szResult, szText.mid(iStartOfWord, i - iStartOfWord));
-						szWord.clear();
-					}
-					szResult += c;
-				}
+				szCleanText += c;
+				offsets.push_back(iCurrentOffset);
 		}
 	}
-	if (!szWord.isEmpty()) {
-		checkWordSpelling(szWord, &szResult, szText.mid(iStartOfWord));
+
+	QTextBoundaryFinder finder(QTextBoundaryFinder::Word, szCleanText);
+	finder.toStart();
+	int iPreviousBoundary = 0;
+	while (true) {
+		int iBoundary = finder.toNextBoundary();
+		if (iBoundary == -1) {
+			break;
+		}
+		if (!finder.boundaryReasons()) {
+			continue;
+		}
+		checkWordSpelling(szCleanText.mid(iPreviousBoundary, iBoundary - iPreviousBoundary), &szResult, szText.mid(iPreviousBoundary + offsets[iPreviousBoundary], iBoundary + offsets[iBoundary] - iPreviousBoundary - offsets[iPreviousBoundary]));
+		iPreviousBoundary = iBoundary;
 	}
+	checkWordSpelling(szCleanText.mid(iPreviousBoundary), &szResult, szText.mid(iPreviousBoundary + offsets[iPreviousBoundary]));
 	return szResult;
 }
 #endif
