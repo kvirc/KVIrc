@@ -53,13 +53,6 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 	{
 		KviIrcMessage msg(message,pConnection);
 
-		if(msg.hasMessageTags())
-		{
-			QString szWText = pConnection->decodeText(msg.allParams());
-			pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-				__tr2qs("[Server parser]: Message Tags: [%s][%s] %Q"),msg.messageTags(),msg.command(),&szWText);
-		}
-
 		if(msg.isNumeric())
 		{
 			if(KviKvsEventManager::instance()->hasRawHandlers(msg.numeric()))

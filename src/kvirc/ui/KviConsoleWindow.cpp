@@ -674,7 +674,8 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 	const QString &msg,
 	int iFlags,
 	const QString &prefix,
-	const QString &suffix)
+	const QString &suffix,
+	const QDateTime& datetime)
 {
 	// FIXME: #warning "THIS IS USED BY WINDOWS THAT ARE NOT BOUND TO THIS IRC CONTEXT"
 	// FIXME: #warning "REMEMBER IT IN ESCAPE COMMANDS"
@@ -853,8 +854,8 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 
 	szMessage += szDecodedMessage;
 
-	if(bIsChan)((KviChannelWindow *)wnd)->outputMessage(type,szMessage);
-	else wnd->outputNoFmt(type,szMessage);
+	if(bIsChan)((KviChannelWindow *)wnd)->outputMessage(type,szMessage,datetime);
+	else wnd->outputNoFmt(type,szMessage,0,datetime);
 }
 
 void KviConsoleWindow::avatarChangedUpdateWindows(const QString &nick,const QString &textLine)

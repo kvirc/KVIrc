@@ -163,7 +163,8 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		int iMsgType,
 		const kvi_wchar_t * data_ptr,
 		KviIrcViewLine *line_ptr,
-		bool bEnableTimeStamp
+		bool bEnableTimeStamp,
+		const QDateTime& datetime_param
 	)
 {
 	const kvi_wchar_t* pUnEscapeAt = 0;
@@ -193,7 +194,9 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	if(bEnableTimeStamp && KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
 	{
 		QString szTimestamp;
-		QDateTime datetime=KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? QDateTime::currentDateTime().toUTC(): QDateTime::currentDateTime();
+		QDateTime datetime = datetime_param;
+		if (!datetime.isValid()) datetime = QDateTime::currentDateTime();
+		datetime = datetime.toTimeSpec(KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? Qt::UTC : Qt::LocalTime);
 		szTimestamp=datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
 		szTimestamp.append(' ');
 		int iTimeStampLength=szTimestamp.length();
@@ -1176,7 +1179,7 @@ check_emoticon_char:
 
 
 
-void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
+void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags,const QDateTime& datetime)
 {
 	//appends a text string to the buffer list
 	//splits the lines
@@ -1207,7 +1210,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 		line_ptr->iBlockCount = 0;
 		line_ptr->uLineWraps = 0;
 
-		data_ptr = getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp));
+		data_ptr = getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp),datetime);
 
 		appendLine(line_ptr,!(iFlags & NoRepaint));
 

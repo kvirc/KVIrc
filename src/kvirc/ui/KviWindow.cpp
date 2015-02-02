@@ -1194,7 +1194,7 @@ void KviWindow::lostUserFocus()
 		m_pIrcView->clearLineMark(true);
 }
 
-void KviWindow::internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags)
+void KviWindow::internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags, const QDateTime& datetime)
 {
 	// all roads lead to Rome :)
 
@@ -1208,12 +1208,12 @@ void KviWindow::internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar
 				iFlags |= KviIrcView::SetLineMark;
 			}
 		}
-		pView->appendText(iMsgType,pwText,iFlags);
+		pView->appendText(iMsgType,pwText,iFlags,datetime);
 	} else {
 		// Redirect to the output proxy
 		KviWindow * pWnd = outputProxy();
 		if(pWnd)
-			pWnd->outputNoFmt(iMsgType,pwText,iFlags);
+			pWnd->outputNoFmt(iMsgType,pwText,iFlags,datetime);
 	}
 
 	if(!m_pWindowListItem)
@@ -1295,24 +1295,67 @@ void KviWindow::output(int iMsgType, const kvi_wchar_t * pwFormat, ...)
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
 }
 
-void KviWindow::outputNoFmt(int iMsgType, const char * pcText, int iFlags)
+void KviWindow::output(int iMsgType, const QDateTime& datetime, const char * pcFormat, ...)
+{
+	QString szFmt(pcFormat);
+	kvi_va_list l;
+	kvi_va_start(l,pcFormat);
+	QString szBuf;
+	KviQString::vsprintf(szBuf,szFmt,l);
+	kvi_va_end(l);
+	preprocessMessage(szBuf);
+	const QChar * pC = szBuf.constData();
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,0,datetime);
+}
+
+void KviWindow::output(int iMsgType, const QDateTime& datetime, const QString & szFmt, ...)
+{
+	kvi_va_list l;
+	kvi_va_start_by_reference(l,szFmt);
+	QString szBuf;
+	KviQString::vsprintf(szBuf,szFmt,l);
+	kvi_va_end(l);
+	preprocessMessage(szBuf);
+	const QChar * pC = szBuf.constData();
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,0,datetime);
+}
+
+void KviWindow::output(int iMsgType, const QDateTime& datetime, const kvi_wchar_t * pwFormat, ...)
+{
+	QString szFmt = QString::fromUtf8(KviCString(pwFormat).ptr());
+	kvi_va_list l;
+	kvi_va_start(l,pwFormat);
+	QString szBuf;
+	KviQString::vsprintf(szBuf,szFmt,l);
+	kvi_va_end(l);
+	preprocessMessage(szBuf);
+	const QChar * pC = szBuf.constData();
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,0,datetime);
+}
+void KviWindow::outputNoFmt(int iMsgType, const char * pcText, int iFlags, const QDateTime& datetime)
 {
 	QString szText(pcText);
 	preprocessMessage(szText);
 	const QChar * pC = szText.constData();
 	if(!pC)
 		return;
-	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags);
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags,datetime);
 }
 
-void KviWindow::outputNoFmt(int iMsgType, const QString & szText, int iFlags)
+void KviWindow::outputNoFmt(int iMsgType, const QString & szText, int iFlags, const QDateTime& datetime)
 {
 	QString szBuf(szText);
 	preprocessMessage(szBuf);
 	const QChar * pC = szBuf.constData();
 	if(!pC)
 		return;
-	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags);
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags,datetime);
 }
 
 void KviWindow::unhighlight()

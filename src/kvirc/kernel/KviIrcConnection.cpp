@@ -482,6 +482,11 @@ void KviIrcConnection::handleInitialCapLs()
 		szRequests.append("server-time ");
 	}
 
+	if(serverInfo()->supportedCaps().contains("znc.in/server-time-iso",Qt::CaseInsensitive))
+	{
+		szRequests.append("znc.in/server-time-iso ");
+	}
+
 	if(szRequests.isEmpty())
 	{
 		endInitialCapNegotiation();

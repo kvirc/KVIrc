@@ -1487,9 +1487,9 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 		szMsg += szData;
 		if(bIsChannel)
 		{
-			((KviChannelWindow *)pOut)->outputMessage(type,szMsg);
+			((KviChannelWindow *)pOut)->outputMessage(type,szMsg,msg->msg->serverTime());
 		} else {
-			pOut->outputNoFmt(type,szMsg);
+			pOut->outputNoFmt(type,szMsg,0,msg->msg->serverTime());
 		}
 	} else {
 		if(bIsChannel)

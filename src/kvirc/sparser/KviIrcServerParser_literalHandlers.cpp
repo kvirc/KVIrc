@@ -773,7 +773,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					return;
 
 				if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
-					console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+					console->output(KVI_OUT_IGNORE,msg->serverTime(),__tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
 				return;
 			}
 		}
@@ -799,13 +799,13 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		//							m_pFrm->findMultimediaFileOffert(filePath,file);
 		//							if(filePath.hasData())
 		//							{
-		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,__tr("%s requests previously offered file %s: sending (%s)"),talker.nick(),file.ptr(),filePath.ptr());
+		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,msg->serverTime(),__tr("%s requests previously offered file %s: sending (%s)"),talker.nick(),file.ptr(),filePath.ptr());
 		//								KviCString cmd(KviCString::Format,"DCC SEND %s %s",talker.nick(),filePath.ptr());
 		//								m_pFrm->m_pUserParser->parseUserCommand(cmd,m_pConsole);
 		//								return;
 
 		//							} else {
-		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,__tr("%s requests file %s: no such file was offered, ignoring"),talker.nick(),file.ptr());
+		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,msg->serverTime(),__tr("%s requests file %s: no such file was offered, ignoring"),talker.nick(),file.ptr());
 		//								return;
 		//							}
 		//						}
@@ -838,7 +838,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						if(!(msg->haltOutput() || KVI_OPTION_BOOL(KviOption_boolSilentAntiSpam)))
 						{
 							QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
-							console->output(KVI_OUT_SPAM,
+							console->output(KVI_OUT_SPAM,msg->serverTime(),
 								__tr2qs("Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"),
 								&szNick,&szUser,&szHost,&szMsg,spamWord.ptr());
 						}
@@ -934,7 +934,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 				if(eCapState != IdentifyMsgCapNotUsed)
 					szMsgText = QString::fromLatin1("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
 
-				console->outputPrivmsg(query,msgtype,szNick,szUser,szHost,szMsgText,iFlags);
+				console->outputPrivmsg(query,msgtype,szNick,szUser,szHost,szMsgText,iFlags,"","",msg->serverTime());
 			}
 		} else {
 			// no query creation: no decryption possible
@@ -976,7 +976,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					}
 				}
 
-				pOut->output(KVI_OUT_QUERYPRIVMSG,"[PRIVMSG \r!nc\r%Q\r]: %Q",&szNick,&szMsgText);
+				pOut->output(KVI_OUT_QUERYPRIVMSG,msg->serverTime(),"[PRIVMSG \r!nc\r%Q\r]: %Q",&szNick,&szMsgText);
 			}
 		}
 	} else {
@@ -997,7 +997,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 				if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
 				{
-					console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+					console->output(KVI_OUT_IGNORE,msg->serverTime(),__tr2qs("Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
 				}
 				return;
 			}
@@ -1027,7 +1027,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				QString szBroad = QString("[>> %1] %2").arg(szOriginalTarget,szMsgText);
-				console->outputPrivmsg(pOut,KVI_OUT_BROADCASTPRIVMSG,szNick,szUser,szHost,szBroad,0);
+				console->outputPrivmsg(pOut,KVI_OUT_BROADCASTPRIVMSG,szNick,szUser,szHost,szBroad,0,"","",msg->serverTime());
 			}
 		} else {
 			chan->userAction(szNick,szUser,szHost,KVI_USERACTION_PRIVMSG);
@@ -1050,9 +1050,9 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 				if(szPrefixes.length() > 0)
 				{
 					QString szBroad = QString("[>> %1\r!c\r%2\r] %3").arg(szPrefixes,szTarget,szMsgText);
-					console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szBroad,0);
+					console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szBroad,0,"","",msg->serverTime());
 				} else {
-					console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szMsgText,0);
+					console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szMsgText,0,"","",msg->serverTime());
 				}
 			}
 		}
@@ -1110,7 +1110,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
 			{
 				QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
-				console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+				console->output(KVI_OUT_IGNORE,msg->serverTime(),__tr2qs("Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
 			}
 			return;
 		}
@@ -1285,7 +1285,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 						{
 							QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 							QString szSpamWord = spamWord.ptr();
-							console->output(KVI_OUT_SPAM,__tr2qs("Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"),
+							console->output(KVI_OUT_SPAM,msg->serverTime(),__tr2qs("Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"),
 								&szNick,&szUser,&szHost,&szMsgText,&szSpamWord);
 						}
 						return;
@@ -1363,7 +1363,7 @@ output_to_query_window:
 					}
 				}
 
-				console->outputPrivmsg(query,msgtype,szNick,szUser,szHost,szMsgText,iFlags);
+				console->outputPrivmsg(query,msgtype,szNick,szUser,szHost,szMsgText,iFlags,"","",msg->serverTime());
 			}
 		} else {
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
@@ -1392,7 +1392,7 @@ output_to_query_window:
 					}
 				}
 
-				pOut->output(KVI_OUT_QUERYNOTICE,"*\r!n\r%Q\r* %Q",&szNick,&szMsgText);
+				pOut->output(KVI_OUT_QUERYNOTICE,msg->serverTime(),"*\r!n\r%Q\r* %Q",&szNick,&szMsgText);
 			}
 		}
 		return;
@@ -1431,7 +1431,7 @@ output_to_query_window:
 			{
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
-				pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
+				pOut->output(KVI_OUT_SERVERNOTICE,msg->serverTime(),"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
 			}
 			return;
 		}
@@ -1456,7 +1456,7 @@ output_to_query_window:
 
 			QString szBroad;
 			szBroad = QString("[>> %1] %2").arg(szOriginalTarget,szMsgText);
-			console->outputPrivmsg(pOut,KVI_OUT_BROADCASTNOTICE,szNick,szUser,szHost,szBroad,0);
+			console->outputPrivmsg(pOut,KVI_OUT_BROADCASTNOTICE,szNick,szUser,szHost,szBroad,0,"","",msg->serverTime());
 		}
 
 		return;
@@ -1478,9 +1478,9 @@ output_to_query_window:
 		if(szPrefixes.length() > 0)
 		{
 			QString szBroad = QString("[>> %1\r!c\r%2\r] %3").arg(szPrefixes,szTarget,szMsgText);
-			console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szBroad,0);
+			console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szBroad,0,"","",msg->serverTime());
 		} else {
-			console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szMsgText,0);
+			console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szMsgText,0,"","",msg->serverTime());
 		}
 	}
 }

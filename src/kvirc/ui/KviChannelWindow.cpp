@@ -1962,7 +1962,7 @@ void KviChannelWindow::updateModeLabel()
 	KviTalToolTip::add(m_pModeWidget,szTip);
 }
 
-void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg)
+void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg, const QDateTime& datetime)
 {
 	QString szBuf(szMsg);
 	preprocessMessage(szBuf);
@@ -1971,7 +1971,7 @@ void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg)
 	if(!pC)
 		return;
 
-	internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,iMsgType,(const kvi_wchar_t *)pC);
+	internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,iMsgType,(const kvi_wchar_t *)pC,0,datetime);
 }
 
 void KviChannelWindow::checkChannelSync()

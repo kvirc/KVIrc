@@ -740,7 +740,7 @@ public:
 	* \param szMsg The message :)
 	* \return void
 	*/
-	virtual void outputMessage(int iMsgType, const QString & szMsg);
+	virtual void outputMessage(int iMsgType, const QString & szMsg, const QDateTime& datetime = QDateTime());
 
 	/**
 	* \brief Called when we send a message

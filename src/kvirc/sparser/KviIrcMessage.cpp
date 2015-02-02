@@ -50,6 +50,7 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 			aux = ++m_ptr;
 			while(*m_ptr && (*m_ptr != ' '))++m_ptr;
 			m_szMessageTags.extractFromString(aux,m_ptr);
+			parseMessageTags();
 			while(*m_ptr == ' ')++m_ptr;
 		}
 
@@ -180,5 +181,50 @@ const char * KviIrcMessage::safePrefix()
 	if(m_szPrefix.hasData())return m_szPrefix.ptr();
 	m_szPrefix = connection()->currentServerName();
 	return m_szPrefix.ptr();
+}
+
+void KviIrcMessage::parseMessageTags() {
+	if (m_szMessageTags.isEmpty()) return;
+	KviCString szKey;
+	KviCString szValue;
+	for (int i = 0; i < m_szMessageTags.len(); ++i) {
+		if (m_szMessageTags.at(i) == '=') {
+			for (++i; i < m_szMessageTags.len(); ++i) {
+				if (m_szMessageTags.at(i) == ';') {
+					m_ParsedMessageTags[connection()->decodeText(szKey)] = connection()->decodeText(szValue);
+					szKey.clear();
+					szValue.clear();
+					break;
+				} else if (m_szMessageTags.at(i) == '\\') {
+					if (++i >= m_szMessageTags.len()) break;
+					switch (m_szMessageTags.at(i)) {
+						case ':': szValue += ';'; break;
+						case 's': szValue += ' '; break;
+						case '0': szValue += '\0'; break;
+						case 'r': szValue += '\r'; break;
+						case 'n': szValue += '\n'; break;
+						default: szValue += m_szMessageTags.at(i);
+					}
+				} else {
+					szValue += m_szMessageTags.at(i);
+				}
+			}
+		} else if (m_szMessageTags.at(i) == ';') {
+			// Insert key without value
+			m_ParsedMessageTags[connection()->decodeText(szKey)].clear();
+			szKey.clear();
+		} else {
+			szKey += m_szMessageTags.at(i);
+		}
+	}
+	m_ParsedMessageTags[connection()->decodeText(szKey)] = connection()->decodeText(szValue);
+
+	m_time = QDateTime::fromString(m_ParsedMessageTags.value("time"), Qt::ISODate); // empty value will be invalid time
+}
+
+QString* KviIrcMessage::messageTagPtr(const QString& szTag) {
+	QHash<QString, QString>::iterator i = m_ParsedMessageTags.find(szTag);
+	if (i == m_ParsedMessageTags.end()) return NULL;
+	return &*i;
 }
 

@@ -32,6 +32,7 @@
 #include <QWidget>
 #include <QPixmap>      // needed
 #include <QMultiHash>
+#include <QDateTime>
 
 class QScrollBar;
 class QLineEdit;
@@ -152,7 +153,7 @@ public:
 	bool haveUnreadedMessages() { return m_bHaveUnreadedMessages; };
 	bool haveUnreadedHighlightedMessages() { return m_bHaveUnreadedHighlightedMessages; };
 	enum AppendTextFlags { NoRepaint = 1, NoTimestamp = 2, SetLineMark = 4, TriggersNotification = 8 };
-	void appendText(int msg_type,const kvi_wchar_t *data_ptr,int iFlags = 0);
+	void appendText(int msg_type,const kvi_wchar_t *data_ptr,int iFlags = 0,const QDateTime& datetime = QDateTime());
 	void clearLineMark(bool bRepaint=false);
 	bool hasLineMark(){ return m_uLineMarkLineIndex != KVI_IRCVIEW_INVALID_LINE_MARK_INDEX; };
 	void removeHeadLine(bool bRepaint=false);
@@ -219,7 +220,7 @@ private:
 	void appendLine(KviIrcViewLine *ptr,bool bRepaint);
 	void postUpdateEvent();
 	void fastScroll(int lines = 1);
-	const kvi_wchar_t * getTextLine(int msg_type,const kvi_wchar_t * data_ptr,KviIrcViewLine *line_ptr,bool bEnableTimeStamp = true);
+	const kvi_wchar_t * getTextLine(int msg_type,const kvi_wchar_t * data_ptr,KviIrcViewLine *line_ptr,bool bEnableTimeStamp = true,const QDateTime& datetime = QDateTime());
 	void calculateLineWraps(KviIrcViewLine *ptr,int maxWidth);
 	void recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi);
 	bool checkSelectionBlock(KviIrcViewLine * line,int bufIndex);

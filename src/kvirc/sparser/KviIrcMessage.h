@@ -30,6 +30,9 @@
 #include "KviQString.h"
 #include "KviConsoleWindow.h"
 
+#include <QMap>
+#include <QDateTime>
+
 class KviIrcConnection;
 class KviIrcContext;
 class KviConneciton;
@@ -76,10 +79,12 @@ private:
 	KviCString m_szMessageTags;      // the extracted message tags
 	KviCString m_szCommand;          // the extracted command (may be numeric)
 	KviPointerList<KviCString> * m_pParams;            // the list of parameters
+	QHash<QString, QString> m_ParsedMessageTags; // parsed messaged tags
 	KviConsoleWindow * m_pConsole;           // the console we're attacched to
 	KviIrcConnection * m_pConnection;        // the connection we're attacched to
 	int m_iNumericCommand;    // the numeric of the command (0 if non numeric)
 	int m_iFlags;             // yes.. flags :D
+	QDateTime m_time; // from server-time tag, if presented
 public:
 	KviConsoleWindow * console(){ return m_pConsole; };
 	KviIrcConnection * connection(){ return m_pConsole->connection(); };
@@ -97,6 +102,12 @@ public:
 	KviCString * messageTagsPtr(){ return &m_szMessageTags; };
 	const char * messageTags(){ return m_szMessageTags.ptr(); };
 	bool hasMessageTags(){ return m_szMessageTags.hasData(); };
+
+	QString * messageTagPtr(const QString& szTag);
+	bool hasMessageTag(const QString& szTag){ return m_ParsedMessageTags.contains(szTag); };
+	QHash<QString, QString>& messageTagsMap() { return m_ParsedMessageTags; };
+
+	QDateTime serverTime() { return m_time; }
 
 	bool isEmpty(){ return (m_szPrefix.isEmpty() && m_szCommand.isEmpty() && m_pParams->isEmpty()); };
 
@@ -125,6 +136,8 @@ public:
 
 	void decodeAndSplitPrefix(QString &szNick,QString &szUser,QString &szHost);
 	void decodeAndSplitMask(char * mask,QString &szNick,QString &szUser,QString &szHost);
+private:
+	void parseMessageTags();
 };
 
 #endif //_KVI_IRCMESSAGE_H_

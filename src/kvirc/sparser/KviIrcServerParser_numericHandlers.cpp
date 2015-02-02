@@ -394,7 +394,7 @@ void KviIrcServerParser::parseNumericMotd(KviIrcMessage *msg)
 	// :prefix 376 target :End of /MOTD command.
 	// FIXME: #warning "SKIP MOTD, MOTD IN A SEPARATE WINDOW, SILENT ENDOFMOTD, MOTD IN ACTIVE WINDOW"
 	if(!msg->haltOutput())
-		msg->console()->outputNoFmt(KVI_OUT_MOTD,msg->connection()->decodeText(msg->safeTrailing()));
+		msg->console()->outputNoFmt(KVI_OUT_MOTD,msg->connection()->decodeText(msg->safeTrailing()),0,msg->serverTime());
 
 	if(msg->numeric() == RPL_ENDOFMOTD)
 	{
