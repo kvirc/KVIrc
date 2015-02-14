@@ -350,8 +350,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolMinimizeInTray 255                                    /* interface */
 #define KviOption_boolDisplayNotifierOnPrimaryScreen 256                 /* notifier */
 #define KviOption_boolShowDialogOnChannelCtcpPage 257
+#define KviOption_boolPopupNotifierOnNewNotices 258                      /* query */
 
-#define KVI_NUM_BOOL_OPTIONS 258
+#define KVI_NUM_BOOL_OPTIONS 259
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

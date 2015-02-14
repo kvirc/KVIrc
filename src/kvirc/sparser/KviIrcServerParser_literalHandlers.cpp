@@ -1353,7 +1353,7 @@ output_to_query_window:
 						iFlags |= KviConsoleWindow::NoWindowFlashing;
 						query->demandAttention();
 					}
-					if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewQueryMessages))
+					if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewNotices))
 					{
 						// don't send the message twice to the notifier
 						iFlags |= KviConsoleWindow::NoNotifier;

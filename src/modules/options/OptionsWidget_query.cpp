@@ -82,17 +82,22 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
 			"in the low right corner of the screen when a new message is received " \
 			"and the KVIrc window is not active.</center>","options"));
-	b = addBoolSelector(0,5,1,5, __tr2qs_ctx("Show information about query target at the top of the query","options"),KviOption_boolShowExtendedInfoInQueryLabel);
+	b = addBoolSelector(0,5,1,5, __tr2qs_ctx("Popup notifier on new notice","options"),KviOption_boolPopupNotifierOnNewNotices);
+	mergeTip(b,
+		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
+			"in the low right corner of the screen when a new notice is received " \
+			"and the KVIrc window is not active.</center>","options"));
+	b = addBoolSelector(0,6,1,6, __tr2qs_ctx("Show information about query target at the top of the query","options"),KviOption_boolShowExtendedInfoInQueryLabel);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window information " \
 			"label. It can show you known information about query target at the top of the window.<br>" \
 			"Uncheck if you think,that it wastes your query space" \
 			"</center>","options"));
 
-	b = addBoolSelector(0,6,1,6,__tr2qs_ctx("Paste last query log","options"),KviOption_boolPasteLastLogOnQueryJoin);
+	b = addBoolSelector(0,7,1,7,__tr2qs_ctx("Paste last query log","options"),KviOption_boolPasteLastLogOnQueryJoin);
 
 	KviTalHBox * box = new KviTalHBox(this);
-	addWidgetToLayout(box,0,7,1,7);
+	addWidgetToLayout(box,0,8,1,8);
 
 	KviUIntSelector * u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnQueryJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
 	u->setSuffix(__tr2qs_ctx(" lines","options"));
@@ -103,7 +108,7 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	addRowSpacer(0,8,1,8);
+	addRowSpacer(0,9,1,9);
 }
 
 OptionsWidget_query::~OptionsWidget_query()
