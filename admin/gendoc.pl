@@ -658,8 +658,11 @@ sub process_body_line
 	$_[0] =~ s/\[\/example\]/<\/font><\/code><\/pre><\/td><\/tr><\/table><\/p>/g;
 	$_[0] =~ s/\[comment\]/\<font color=\"$g_commentcolor\"\>/g;
 	$_[0] =~ s/\[\/comment\]/\<\/font\>/g;
-	$_[0] =~ s/\[doc\]([a-zA-Z0-9_]*)\[\/doc\]/\<a href=\"doc_\L\1$g_fileextension">\1\<\/a\>/g;
-	$_[0] =~ s/\[doc:([a-zA-Z0-9_]*)\]([a-zA-Z0-9_\-\&\;\. ]*)\[\/doc\]/\<a href=\"doc_\L\1$g_fileextension"\>\2\<\/a\>/g;
+
+	# The doc tag needs to include '$(*)' due to the expressioneval article
+	$_[0] =~ s/\[doc\]([a-zA-Z0-9_\$*\(\)]*)\[\/doc\]/\<a href=\"doc_\L\1$g_fileextension">\1\<\/a\>/g;
+	$_[0] =~ s/\[doc:([a-zA-Z0-9_]*)\]([a-zA-Z0-9_\-\&\;\.\$*\(\) ]*)\[\/doc\]/\<a href=\"doc_\L\1$g_fileextension"\>\2\<\/a\>/g;
+
 	$_[0] =~ s/\[cmd\]([a-zA-Z0-9_\.]*)\[\/cmd\]/\<a href=\"cmd_\L\1$g_fileextension">\1\<\/a\>/g;
 	$_[0] =~ s/\[cmd:([a-zA-Z0-9_\.]*)\]([a-zA-Z0-9_\-\&\;\. ]*)\[\/cmd\]/\<a href=\"cmd_\L\1$g_fileextension"\>\2\<\/a\>/g;
 	$_[0] =~ s/\[fnc\]\$([a-zA-Z0-9_\.]*)\[\/fnc\]/\<a href=\"fnc_\L\1$g_fileextension">\$\1\<\/a\>/g;

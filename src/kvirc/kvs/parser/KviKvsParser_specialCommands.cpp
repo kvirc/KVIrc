@@ -836,20 +836,22 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 		@description:
 			Executes <command1> if the <condition> evaluates
 			to true (non zero result).
-			If the "else part" is given <command2> is executed
-			if the <condition> evaluates to false (result == '0')
-			<condition> is an expression as the ones evaluated by [doc:expressioneval]$(*)[/doc]
+			If the "else part" is given, <command2> is executed
+			if the <condition> evaluates to false (result == '0').[br]
+			<condition> is an expression evaluated in the same way as [doc:expressioneval]$(*)[/doc]
 			with the following extensions:[br]
-			If <condition> is a string, its length is evaluated: in this way a non-empty string
-			causes the <condition> to be true, an empty string causes it to be false.[br]
-			If <condition> is an array, its size is evaluated: in this way a non-empty array
-			causes the <condition> to be true, an empty array causes it to be false.[br]
-			If <condition> is a hash, the number of its entries is evaluated: in this way a non-empty hash
-			causes the <condition> to be true, an empty hash causes it to be false.[br]
+			If <condition> is a string, its length is evaluated - in this way a non-empty string
+			causes the <condition> to be true, and an empty string causes it to be false.[br]
+			If <condition> is an array, its size is evaluated - a non-empty array
+			is true, an empty array is false.[br]
+			If <condition> is a hash, the number of its entries is evaluated - a non-empty hash
+			is true, an empty hash is false.[br]
 		@examples:
 			if(%a != 10)[cmd]echo[/cmd] \%a was != 10
 			else [cmd]echo[/cmd] \%a was 10!
 	*/
+
+	// $(*)
 
 	if(KVSP_curCharUnicode != '(')
 	{
