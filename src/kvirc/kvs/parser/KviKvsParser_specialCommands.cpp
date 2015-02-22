@@ -851,8 +851,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 			else [cmd]echo[/cmd] \%a was 10!
 	*/
 
-	// $(*)
-
 	if(KVSP_curCharUnicode != '(')
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'if' command needs an expression enclosed in parenthesis","kvs"));
