@@ -45,17 +45,6 @@ namespace KviSASL
 	* \return bool
 	*/
 	extern KVILIB_API bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass);
-
-	/**
-	* \brief Create the auth message for DH-BLOWFISH authentication
-	* \param szIn The server-provided token
-	* \param szOut A KviCString that will be filled with the authentication message
-	* \param baNick The username
-	* \param baPass	The password
-	* \return bool
-	*/
-	extern KVILIB_API bool dh_blowfishMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass);
-
 };
 
 #endif //_KVI_SASL_H_

@@ -513,38 +513,13 @@ void KviIrcConnection::handleInitialCapAck()
 	)
 	{
 		m_pStateData->setInsideAuthenticate(true);
-		m_pStateData->setInsideAuthenticateFallback(false);
 		bUsed=true;
 
-#ifdef COMPILE_SSL_SUPPORT
-		sendFmtData("AUTHENTICATE DH-BLOWFISH");
-#else
 		sendFmtData("AUTHENTICATE PLAIN");
-#endif
 	}
 
 	if(!bUsed)
 		endInitialCapNegotiation();
-}
-
-void KviIrcConnection::handleAuthenticateFallback()
-{
-#ifdef COMPILE_SSL_SUPPORT
-	// we tried DH_BLOWFISH but the server doesn't support it
-	if(m_pStateData->isInsideAuthenticateFallback())
-	{
-		// we alredy tried the fallback, move on
-		endInitialCapNegotiation();
-	} else {
-		// fallback to plain auth
-		m_pStateData->setInsideAuthenticateFallback(true);
-		sendFmtData("AUTHENTICATE PLAIN");	
-	}	
-#else 
-	// we failed authentication, move on
-	endInitialCapNegotiation();
-#endif
-
 }
 
 void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
@@ -555,33 +530,18 @@ void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
 
 	QByteArray szNick = encodeText(target()->server()->saslNick());
 	QByteArray szPass = encodeText(target()->server()->saslPass());
-	if(szAuth=="+")
+
+	//PLAIN
+	KviCString szOut;
+	if(KviSASL::plainMethod(szAuth,
+				szOut,
+				szNick,
+				szPass
+				))
 	{
-		//PLAIN
-		KviCString szOut;
-		if(KviSASL::plainMethod(szAuth,
-					szOut,
-					szNick,
-					szPass
-					))
-		{
-			sendFmtData("AUTHENTICATE %s",szOut.ptr());
-		} else {
-			sendFmtData("AUTHENTICATE *");
-		}
+		sendFmtData("AUTHENTICATE %s",szOut.ptr());
 	} else {
-		//DH-BLOWFISH sasl auth
-		KviCString szOut;
-		if(KviSASL::dh_blowfishMethod(szAuth,
-					szOut,
-					szNick,
-					szPass
-					))
-		{
-			sendFmtData("AUTHENTICATE %s",szOut.ptr());
-		} else {
-			sendFmtData("AUTHENTICATE *");
-		}
+		sendFmtData("AUTHENTICATE *");
 	}
 }
 
@@ -592,7 +552,6 @@ void KviIrcConnection::handleInitialCapNak()
 
 void KviIrcConnection::endInitialCapNegotiation()
 {
-	m_pStateData->setInsideAuthenticateFallback(false);
 	m_pStateData->setInsideAuthenticate(false);
 	sendFmtData("CAP END");
 	loginToIrcServer();

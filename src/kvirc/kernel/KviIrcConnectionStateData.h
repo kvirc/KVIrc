@@ -89,7 +89,6 @@ protected:
 	bool         m_bIgnoreOneYouHaveNotRegisteredError; // true if we have sent a CAP LS request followed by a PING which will generate an error (and we need to ignore it)
 	bool         m_bInsideInitialCapReq;                 // true if there's a CAP REQ request pending
 	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending
-	bool         m_bInsideAuthenticateFallback;   // true if there's a AUTHENTICATE PLAIN request pending as a fallback
 	bool         m_bSentStartTls;                 // the state of STARTTLS protocol
 	bool         m_bSentQuit;                     // have we sent the quit message for this connection ?
 	QString      m_szCommandToExecAfterConnect;   // yes.. this is a special command to execute after connection
@@ -128,9 +127,6 @@ public:
 
 	bool isInsideAuthenticate(){ return m_bInsideAuthenticate; };
 	void setInsideAuthenticate(bool bInside){ m_bInsideAuthenticate = bInside; };
-
-	bool isInsideAuthenticateFallback(){ return m_bInsideAuthenticateFallback; };
-	void setInsideAuthenticateFallback(bool bInside){ m_bInsideAuthenticateFallback = bInside; };
 
 	bool isInsideInitialCapLs(){ return m_bInsideInitialCapLs; };
 	void setInsideInitialCapLs(bool bInside){ m_bInsideInitialCapLs = bInside; };

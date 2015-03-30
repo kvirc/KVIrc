@@ -2442,27 +2442,14 @@ void KviIrcServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 
 void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 {
+	// 904: RPL_SASLFAILED
+	// :prefix 904 * :SASL authentication failed
+
 	// 906: RPL_SASLBORTED
 	// :prefix 906 <nickname> :SASL authentication aborted
 
 	// 907: RPL_SASLALREADYAUTH
 	// :prefix 907 <nick> :You have already completed SASL authentication
-
-	if(!msg->haltOutput())
-	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
-		QString szParam=msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL Authentication error: %Q"),&szParam);
-	}
-
-	if(msg->connection()->stateData()->isInsideAuthenticate())
-		msg->connection()->endInitialCapNegotiation();
-}
-
-void KviIrcServerParser::parseNumericSaslIdiocy(KviIrcMessage * msg)
-{
-	// 904: RPL_SASLFAILED
-	// :prefix 904 * :SASL authentication failed
 
 	// 908: RPL_SASLMECHS
 	// :server 908 <nick> <mechanisms> :are available SASL mechanisms
@@ -2475,8 +2462,5 @@ void KviIrcServerParser::parseNumericSaslIdiocy(KviIrcMessage * msg)
 	}
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
-	{
-			// fallback to plain auth
-			msg->connection()->handleAuthenticateFallback();
-	}
+		msg->connection()->endInitialCapNegotiation();
 }
