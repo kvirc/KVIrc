@@ -296,14 +296,13 @@ void KviApplication::setup()
 	QDir::addSearchPath("audio",szPath);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#if (QT_VERSION < 0x050000)
-		// need to load image plugins :( QT5 uses "plugins" in application dir
-		QString szPluginsDir;
-		getGlobalKvircDirectory(szPluginsDir,None,"qt-plugins/");
-		setLibraryPaths(QStringList(szPluginsDir));
-		//KviMessageBox::information(libraryPaths().join(";"));
-		//qDebug("%1",loader.isLoaded());
-	#endif
+	// need to load image plugins :(
+	QString szPluginsDir;
+	getGlobalKvircDirectory(szPluginsDir,None,"qt-plugins/");
+	addLibraryPath(szPluginsDir);
+	//MessageBox(0,QApplication::libraryPaths().join(";").toLocal8Bit().data(),"KVIrc",0);
+	//KviMessageBox::information(libraryPaths().join(";"));
+	//qDebug("%1",loader.isLoaded());
 #endif
 
 	QString szSplashDisableFile;

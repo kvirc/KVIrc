@@ -1,0 +1,77 @@
+# http://help.appveyor.com/discussions/suggestions/419-qt-libraries
+os: unstable
+version: 0.0.0.0.1-branch-{branch}-build-{build}
+shallow_clone: true
+cache:
+    - c:\OpenSSL-Win64
+    - 'c:\Program Files\NSIS'
+    - c:\deps
+install:
+    - systeminfo
+    - c:\cygwin\bin\uname -a
+    - c:\cygwin\bin\cat /proc/cpuinfo
+    - c:\cygwin\bin\cat /proc/meminfo
+    - c:\cygwin\bin\ls -l /cygdrive/c
+    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
+    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
+    - c:\cygwin\bin\ls -l /cygdrive/c/Qt
+    - c:\cygwin\bin\ls -l /cygdrive/c/Qt/5.4
+    - c:\cygwin\bin\ls -l /cygdrive/c/Tools
+    - c:\cygwin\bin\ls -l /cygdrive/c/Libraries
+    - c:\cygwin\bin\ls -l /cygdrive/c/ProgramData
+    - c:\cygwin\bin\env
+    - nuget install zlib -OutputDirectory c:\deps
+    - nuget install Gettext.Tools -OutputDirectory c:\deps
+    - c:\cygwin\bin\find /cygdrive/c/deps
+    - ps: |
+        if (Test-Path c:\OpenSSL-Win64) {
+            echo "using openssl from cache"
+        } else {
+            echo "downloading openssl"
+            Invoke-WebRequest https://slproweb.com/download/Win64OpenSSL-1_0_2a.exe -OutFile c:\openssl-setup.exe
+            echo "installing openssl"
+            Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
+        }
+    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-Win64
+    - ps: |
+        if (Test-Path "c:/Program Files/NSIS/makensis.exe") {
+            echo "using nsis from cache"
+        } else {
+            choco install nsis -y
+        }
+    - dir "c:/Program Files/NSIS"
+build_script:
+    - mkdir build
+    - cd build
+    - '"c:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall" amd64'
+    - path
+    - ps: |
+        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -name zlib.targets
+        $zlib = c:\cygwin\bin\dirname $zlib
+        $zlib = c:\cygwin\bin\cygpath -m $zlib
+        $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
+        $gettext = c:\cygwin\bin\dirname $gettext
+        $gettext = c:\cygwin\bin\cygpath -m $gettext
+        $env:Path += ";" + $gettext
+        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlib/include" "-DZLIB_LIBRARY=$zlib/lib/v120/x64/Release/dynamic/cdecl/zlib.lib" "-DWANT_PERL=NO" "-DWANT_PHONON=NO"
+    - ps: Push-AppveyorArtifact CMakeCache.txt
+    - nmake install
+    - c:\cygwin\bin\ls -l release/
+    - ps: |
+        $env:Path += ";c:/Qt/5.4/msvc2013_64_opengl/bin"
+        windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        # platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
+        # applicationDirPath() isn't available before QCoreApplication's constructor.
+        # Alternatively, kvirc could detect its own directory without help of Qt.
+        # Chicken-and-egg FTW.
+        # But let's not put all other qt plugins (imageformats, etc) to this crowded place.
+        c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
+    - ps: |
+        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -name zlib.redist.targets
+        $zlib = c:\cygwin\bin\dirname $zlib
+        c:\cygwin\bin\cp "-v" "$zlib/bin/v120/x64/Release/dynamic/cdecl/zlib.dll" /cygdrive/c/OpenSSL-Win64/libeay32.dll /cygdrive/c/OpenSSL-Win64/ssleay32.dll release/
+    - c:\cygwin\bin\ls -l release/
+    - '"c:\Program Files\NSIS\makensis.exe" KVIrc.nsi'
+    - c:\cygwin\bin\ls -l
+    - ps: Push-AppveyorArtifact *.exe
+test: off

@@ -90,34 +90,7 @@ Section !$(KVIrc) KVIrc_IDX
 	SetDetailsPrint listonly
 
 	SetOutPath "$INSTDIR"
-	File release\*.*
-	SetOutPath "$INSTDIR\config"
-	File /r release\config\*.*
-	SetOutPath "$INSTDIR\qt-plugins"
-	File /r release\qt-plugins\*.*
-	SetOutPath "$INSTDIR\defscript"
-	File /r release\defscript\*.*
-	SetOutPath "$INSTDIR\doc"
-	File /r release\doc\*.*
-	SetOutPath "$INSTDIR\help"
-	File /r release\help\*.*
-	SetOutPath "$INSTDIR\license"
-	File release\license\COPYING
-	SetOutPath "$INSTDIR\locale"
-	File release\locale\*.mo
-	SetOutPath "$INSTDIR\audio"
-	File release\audio\*.wav
-	SetOutPath "$INSTDIR\modules"
-	File /r release\modules\*.*
-	SetOutPath "$INSTDIR\msgcolors"
-	File /r release\msgcolors\*.*
-	SetOutPath "$INSTDIR\pics"
-	File release\pics\*.png
-	SetOutPath "$INSTDIR\pics\coresmall\"
-	File release\pics\coresmall\*.png
-	SetOutPath "$INSTDIR\themes"
-	File /r release\themes\*.*
-
+	File /r release\*.*
 
 	; Write the installation path into the registry
 	WriteRegStr HKLM SOFTWARE\KVIrc "Install_Dir" "$INSTDIR"
@@ -134,6 +107,16 @@ Section !$(KVIrc) KVIrc_IDX
 
 
 	WriteUninstaller "$INSTDIR\uninstall.exe"
+
+	IfFileExists "$INSTDIR\vcredist_x86.exe" VcRedist86Exists PastVcRedist86Check
+	VcRedist86Exists:
+		ExecWait '"$INSTDIR\vcredist_x86.exe"  /passive /norestart'
+	PastVcRedist86Check:
+
+	IfFileExists "$INSTDIR\vcredist_x64.exe" VcRedist64Exists PastVcRedist64Check
+	VcRedist64Exists:
+		ExecWait '"$INSTDIR\vcredist_x64.exe"  /passive /norestart'
+	PastVcRedist64Check:
 
 SectionEnd
 
