@@ -1,0 +1,16 @@
+language: cpp
+os:
+    - linux
+compiler:
+    - gcc
+install:
+    - cat /proc/cpuinfo /proc/meminfo
+    - lsb_release -a
+    - sudo apt-get update
+    - sudo apt-get install libperl-dev
+script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make -j3
+    - sudo make install
