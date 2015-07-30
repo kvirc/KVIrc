@@ -222,13 +222,12 @@ msgstr "Avatar"
 #: src/modules/reguser/RegisteredUsersDialog.cpp:810
 msgid "Can't export the registered users database: Write error."
 msgstr ""
-"Impossible d'exporter les utilisateurs enregistré dans une base de donnée : "
-"erreur d'écriture."
+"Impossible d'exporter la base d'utilisateurs enregistrés : Erreur d'écriture."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:923
 msgid "Can't import the registered users database: Read error."
 msgstr ""
-"Impossible d'importer la base d'utilisateur enregistré : erreur de lecture."
+"Impossible d'importer la base d'utilisateurs enregistrés : erreur de lecture."
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:732
 msgid "Can't open file %Q for writing."
@@ -356,7 +355,7 @@ msgstr ""
 
 #: src/modules/reguser/libkvireguser.cpp:354
 msgid "Mask %Q already used to identify user %Q"
-msgstr "Le masque %Q est déjà définie pour identifier l'utilisateur %Q"
+msgstr "Le masque %Q est déjà défini pour identifier l'utilisateur %Q"
 
 #: src/modules/reguser/libkvireguser.cpp:221
 msgid "Mask %Q is already used to identify user %s"
@@ -364,7 +363,7 @@ msgstr "Le masque %Q est déjà défini pour identifier l'utilisateur %s"
 
 #: src/modules/reguser/libkvireguser.cpp:409
 msgid "Mask %Q not found"
-msgstr "Le masque %Q n'a pas été tourver"
+msgstr "Le masque %Q n'a pas été trouvé"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:212
 msgid "Mask Editor"
@@ -492,7 +491,7 @@ msgstr "Tout sélectionner"
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:276
 msgid "Select all the entries"
-msgstr "Sélécter toutes les entrées"
+msgstr "Sélectionner toutes les entrées"
 
 #: src/modules/reguser/RegistrationWizard.cpp:97
 msgid "Step 1: Entry Name"
@@ -523,7 +522,7 @@ msgstr "Le fichier %s contient une base de données d'utilisateurs invalide."
 #, c-format
 msgid "The file %s doesn't appear to be a valid registered users database."
 msgstr ""
-"Le fichier %s ne semble pas être une base d'utilisateur enregsitré valide."
+"Le fichier %s ne semble pas être une base valide d'utilisateurs enregistrés."
 
 #: src/modules/regchan/libkviregchan.cpp:237
 #, c-format
@@ -553,11 +552,11 @@ msgstr "Assistant d'enregistrement d'un utilisateur - KVIrc"
 
 #: src/modules/reguser/libkvireguser.cpp:208
 msgid "User already registered: found exact name match"
-msgstr "Utilisateur déjà enregistré : nom correspond trouvée"
+msgstr "Utilisateur déjà enregistré : correspondance exacte trouvée"
 
 #: src/modules/reguser/libkvireguser.cpp:274
 msgid "User not found (%Q)"
-msgstr "Utilisateur non trouvée (%Q)"
+msgstr "Utilisateur non trouvé (%Q)"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:92
 msgid "Value"

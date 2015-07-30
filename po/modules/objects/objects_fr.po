@@ -446,7 +446,7 @@ msgstr "Le fichier '%Q' n'existe pas"
 #: src/modules/objects/KvsObject_dockWindow.cpp:109
 #, fuzzy
 msgid "Object in invalid state"
-msgstr "état de l'object invalide"
+msgstr "Etat de l'objet invalide"
 
 #: src/modules/objects/KvsObject_painter.cpp:696
 #: src/modules/objects/KvsObject_painter.cpp:731
@@ -586,7 +586,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_widget.cpp:1598
 #: src/modules/objects/KvsObject_widget.cpp:1655
 msgid "The array passed as parameter must contain at least 2 elements"
-msgstr "Le tableau passer en paramètre doit contenir au moins 2 éléments"
+msgstr "Le tableau passé en paramètre doit contenir au moins 2 éléments"
 
 #: src/modules/objects/KvsObject_painter.cpp:718
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:589
@@ -594,17 +594,17 @@ msgstr "Le tableau passer en paramètre doit contenir au moins 2 éléments"
 #: src/modules/objects/KvsObject_widget.cpp:1240
 #: src/modules/objects/KvsObject_widget.cpp:1322
 msgid "The array passed as parameter must contain at least 3 elements"
-msgstr "Le tableau passer en paramètre doit contenir au moins 3 éléments"
+msgstr "Le tableau passé en paramètre doit contenir au moins 3 éléments"
 
 #: src/modules/objects/KvsObject_painter.cpp:648
 #: src/modules/objects/KvsObject_widget.cpp:1142
 msgid "The array passed as parameter must contain at least 4 elements"
-msgstr "Le tableau passez en paramètre doit contenir au moins 4 éléments"
+msgstr "Le tableau passé en paramètre doit contenir au moins 4 éléments"
 
 #: src/modules/objects/libkviobjects.cpp:371
 #: src/modules/objects/libkviobjects.cpp:470
 msgid "The class '%Q' does not exist"
-msgstr ""
+msgstr "La classe '%Q' n'existe pas"
 
 #: src/modules/objects/KvsObject_memoryBuffer.cpp:112
 msgid "The file '%Q' does not exist"
@@ -748,7 +748,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_vBox.cpp:204
 #: src/modules/objects/KvsObject_layout.cpp:309
 msgid "Unknown alignment: '%Q'"
-msgstr ""
+msgstr "Alignement inconnu : '%Q'"
 
 #: src/modules/objects/KvsObject_pixmap.cpp:452
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
@@ -877,7 +877,7 @@ msgstr "Type de données '%Q' non supporté"
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
-"La valeur %d pour le port n'est pas valide (les valeurs autoriser vont de 0 "
+"La valeur %d pour le port n'est pas valide (les valeurs autorisées vont de 0 "
 "à 65535)"
 
 #: src/modules/objects/KvsObject_socket.cpp:579
@@ -886,7 +886,7 @@ msgid ""
 "Value %d for port is out of range (values allowed are from 0 to 65535): "
 "switch to random value"
 msgstr ""
-"La valeur %d pour le port n'est pas valide (les valeurs autoriser vont de 0 "
+"La valeur %d pour le port n'est pas valide (les valeurs autorisées vont de 0 "
 "à 65535)"
 
 #: src/modules/objects/KvsObject_xmlreader.cpp:161
@@ -930,7 +930,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:337
 msgid "Write error occured!"
-msgstr "Une erreur d'écriture est intervenu !"
+msgstr "Une erreur d'écriture est survenue !"
 
 #: src/modules/objects/KvsObject_xmlreader.cpp:313
 #, fuzzy
@@ -941,7 +941,7 @@ msgstr "Le support du XML n'est pas disponible dans Qt"
 #~ msgstr "Une autre connexion est en cours"
 
 #~ msgid "Connect failure: "
-#~ msgstr "Connexion échouer :"
+#~ msgstr "Echec de la connexion :"
 
 #~ msgid "Invalid IP address "
 #~ msgstr "Adresse IP invalide"
@@ -953,7 +953,7 @@ msgstr "Le support du XML n'est pas disponible dans Qt"
 #~ msgstr "Adresse de socket invalide"
 
 #~ msgid "No IPv6 support in this executable"
-#~ msgstr "Pas de support IPv6 dans cette executable"
+#~ msgstr "Pas de support IPv6 dans cet executable"
 
 #~ msgid "Socket creation failed"
 #~ msgstr "La création du socket a échoué"
