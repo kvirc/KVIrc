@@ -120,7 +120,7 @@ msgstr "### Session du journal terminée à %1 ###"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:627
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/kvilib/core/KviQString.cpp:254
 msgid "%1 GiB"
@@ -815,14 +815,23 @@ msgstr "Double-cliquez pour ouvrir ce lien"
 #: src/kvirc/kernel/KviApplication.cpp:1058
 msgid ""
 "<b>Hi!</b><br><br><b>It seems that you have just upgraded KVirc from a "
-"previous version.</b><br><br>The KVIrc default scripts needs to be updated "
+"previous version.</b><br><br>The KVIrc default script needs to be updated "
 "too, to play nice with your fresh new KVIrc.<br>You may want to avoid this "
 "update if you plan to revert to a previous KVIrc version soon,or if you have "
 "created a lot of custom scripts and want to stay safe and avoid any deletion "
-"or overwrite.<br>If you want to update the default scripts, i can restore "
+"or overwrite.<br>If you want to update the default script, i can restore "
 "the new default script for you.<br><b>Do you want the default script to be "
 "restored?</b><br><br>"
 msgstr ""
+"<b>Salut !</b><br><br><b>Il semble que vous veniez juste de mettre à jour "
+"KVirc à partir d'une version antérieure.</b><br><br>Le script par défaut "
+"de KVIrc doivent aussi être mis à jour, pour fonctionner correctement avec "
+"votre nouvelle version de KVIrc.<br>Vous devriez éviter cela si vous prévoyez "
+"de revenir bientôt à une version précédente de KVIrc, ou si vous avez créé "
+"beaucoup de scripts personnalisés et ne voulez pas prendre de risque et éviter"
+" une suppression ou un écrasement.<br>Si vous désirez mettre à jour le script "
+"par défaut, je peux rétablir le nouveau script par défaut pour vous.<br><b>"
+"Voulez-vous rétablir le script par défaut ?</b><br><br>"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:92
 msgid "<b>KVIrc</b>"
@@ -905,7 +914,7 @@ msgid ""
 msgstr ""
 "<center><b>Bienvenue !</b><br><br>Cet assistant va vous guider dans le "
 "processus de téléchargement d'une liste de serveurs IRC. Cliquez \"<b>Suite</"
-"b>\" pour commencer les opérations.</center>"
+"b>\" pour commencer cette opération.</center>"
 
 #: src/modules/mircimport/libkvimircimport.cpp:160
 msgid ""
@@ -944,8 +953,8 @@ msgstr ""
 "termes humains, cela peut être interprété de la manière suivante :"
 "<br><ul><li><b>KVIrc est gratuit</b>, utilisez-le et amusez-vous !<b>:)</b></"
 "li><li>Si vous utilisez une partie <b>quelconque</b> de KVIrc dans votre "
-"propre projet, vous <b>devez</b> le diffuser sous la même license.</li></"
-"ul></p>La version \"légale\" de la license est montrée dans la boîte ci-"
+"propre projet, vous <b>devez</b> le diffuser sous la même licence.</li></"
+"ul></p>La version \"légale\" de la licence est montrée dans la boîte ci-"
 "dessous.<p>"
 
 #: src/modules/setup/SetupWizard.cpp:491
@@ -1000,7 +1009,7 @@ msgstr ""
 
 #: src/modules/setup/SetupWizard.cpp:718
 msgid ""
-"A folder %1 seems to be not a valid KVIrc settings folder.Do you want to use "
+"A folder %1 seems to be not a valid KVIrc settings folder. Do you want to use "
 "it anyway?"
 msgstr ""
 "Le répertoire %1 ne semble pas contenir une configuration valide de KVIrc. "
@@ -1259,7 +1268,7 @@ msgstr "T'es là ?"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:427
 msgid "Arranges the MDI windows in a maximized-cascade fashion"
-msgstr "Arranger les fenêtres MDI en cascade et maximisée"
+msgstr "Arranger les fenêtres MDI en cascade et maximisées"
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:159
 msgid "Attempting %Q to %Q (%Q) on port %u"
@@ -1655,7 +1664,7 @@ msgstr "Impossible d'ouvrir le fichier de filtre %Q en écriture"
 #: src/kvirc/ui/KviIrcView_tools.cpp:238
 #, c-format
 msgid "Can't open the filter file %s for reading."
-msgstr "Impossible de fichier de filtre %s en lecture."
+msgstr "Impossible d'ouvrir en lecture le fichier de filtre %s."
 
 #: src/modules/file/libkvifile.cpp:1474
 msgid "Can't read data from file"
@@ -1734,22 +1743,22 @@ msgstr "Impossible de démarrer le service d'ident : socket() échoué"
 #, fuzzy
 msgid "Can't start the ident service on IPv6 : async setting failed"
 msgstr ""
-"Impossible de démarrer le service d'ident sur IpV6 : réglage async échoué"
+"Impossible de démarrer le service d'ident sur IPv6 : réglage async échoué"
 
 #: src/modules/ident/libkviident.cpp:297
 #, fuzzy
 msgid "Can't start the ident service on IPv6 : bind() failed"
-msgstr "Impossible de démarrer le service d'ident sur IpV6 : bind() échoué"
+msgstr "Impossible de démarrer le service d'ident sur IPv6 : bind() échoué"
 
 #: src/modules/ident/libkviident.cpp:306
 #, fuzzy
 msgid "Can't start the ident service on IPv6 : listen() failed"
-msgstr "Impossible de démarrer le service d'ident sur IpV6 : listen() échoué"
+msgstr "Impossible de démarrer le service d'ident sur IPv6 : listen() échoué"
 
 #: src/modules/ident/libkviident.cpp:262
 #, fuzzy
 msgid "Can't start the ident service on IPv6 : socket() failed"
-msgstr "Impossible de démarrer le service d'ident sur IpV6 : socket() échoué"
+msgstr "Impossible de démarrer le service d'ident sur IPv6 : socket() échoué"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:92 src/kvirc/ui/KviImageDialog.cpp:156
 #: src/kvirc/kernel/KviCoreActions.cpp:882
@@ -3397,7 +3406,7 @@ msgstr "Message d'identification"
 
 #: src/modules/ident/libkviident.cpp:403 src/modules/ident/libkviident.cpp:423
 msgid "Identd accepting connection"
-msgstr "Connection identd acceptée"
+msgstr "Connexion identd acceptée"
 
 #: src/modules/ident/libkviident.cpp:451
 msgid "Identd connection closed by remote host"
@@ -3765,7 +3774,7 @@ msgstr "Site web francophone de KVIrc"
 
 #: src/kvirc/ui/KviMenuBar.cpp:129
 msgid "KVIrc Home&page"
-msgstr "&Page d'acceuil de KVIrc"
+msgstr "&Page d'accueil de KVIrc"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:154
 #: src/kvirc/kernel/KviApplication_setup.cpp:475
@@ -4132,7 +4141,7 @@ msgstr "Tout ré&duire"
 #: src/modules/links/LinksWindow.cpp:290
 #, fuzzy
 msgid "Mid-range links (4 <= hops <= 6): %d (~%d.%d %)"
-msgstr "Liens moyenne distance (4 <= hops  <= 6): %d (~%d.%d %)"
+msgstr "Liens moyenne distance (4 <= hops <= 6): %d (~%d.%d %)"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:179
 msgid "Mieeeeeowww!"
@@ -4738,7 +4747,7 @@ msgid ""
 "Notify list: Unexpected inconsistency, expected \r!n\r%Q\r in the registered "
 "user DB"
 msgstr ""
-"Liste de notifications : Inconsistance,  \r!n\r%Q\r aurait dû être dans la "
+"Liste de notifications : Incohérence, \r!n\r%Q\r aurait dû être dans la "
 "base de donnée des utilisateurs"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:704
@@ -4746,7 +4755,7 @@ msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? "
 "(restarting)"
 msgstr ""
-"Liste de notifications : Inconsistance inattendue, la base de donnée des "
+"Liste de notifications : Incohérence inattendue, la base de donnée des "
 "utilisateurs enregistrés a été modifiée ? (rechargement)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:1212
@@ -4754,12 +4763,12 @@ msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? (watch: "
 "restarting)"
 msgstr ""
-"Liste de notifications : Inconsistance inattendue, la liste des utilisateurs "
+"Liste de notifications : Incohérence inattendue, la liste des utilisateurs "
 "enregistrés a-t-elle changé ? (watch: relance)"
 
 #: src/kvirc/kernel/KviNotifyList.cpp:741
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
-msgstr "Liste de notifications : Inconsistance inattendue, userhost est vide !"
+msgstr "Liste de notifications : Incohérence inattendue, userhost est vide !"
 
 #: src/modules/avatar/libkviavatar.cpp:419
 msgid "Notifying avatar '%Q' to %Q"
@@ -4839,7 +4848,7 @@ msgid ""
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
-"Oups... impossible de trouver le fichier de la license.\n"
+"Oups... impossible de trouver le fichier de la licence.\n"
 "Elle DOIT être incluse dans la distribution...\n"
 "Signalez-le à <pragma at kvirc dot net>"
 
@@ -5240,7 +5249,7 @@ msgstr "Réponse du proxy : Authentification réussie : accès accordé"
 
 #: src/kvilib/core/KviError.cpp:119
 msgid "Proxy response: auth failed: access denied"
-msgstr "Réponse du proxy : l?identification a échoué : accès interdit"
+msgstr "Réponse du proxy : l'identification a échoué : accès interdit"
 
 #: src/kvilib/core/KviError.cpp:130
 msgid "Proxy response: command not supported"
@@ -6320,7 +6329,7 @@ msgstr "Message d'encodage de texte du serveur"
 #: src/modules/system/libkvisystem.cpp:571
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
-msgstr "L'appele à DBus à retourner une erreur\"%s\": %s"
+msgstr "L'appel à DBus a renvoyé une erreur\"%s\": %s"
 
 #: src/modules/fish/libkvifish.cpp:261
 msgid "The Mircryption crypt engine does not exist"
@@ -6339,13 +6348,13 @@ msgstr "L'alias \"%1\" n'existe pas"
 
 #: src/modules/action/libkviaction.cpp:255
 msgid "The action \"%1\" is a core action and cannot be destroyed"
-msgstr "L'action \"%1\" est une action interne and ne peut être détruite"
+msgstr "L'action \"%1\" est une action interne et ne peut être détruite"
 
 #: src/modules/action/libkviaction.cpp:420
 msgid ""
 "The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr ""
-"L'action \"%1\"  est déjà définie comme une action interne et ne peut être "
+"L'action \"%1\" est déjà définie comme une action interne et ne peut être "
 "écrasée"
 
 #: src/modules/action/libkviaction.cpp:112
@@ -6358,7 +6367,7 @@ msgstr "L'action \"%Q\" n'existe pas"
 
 #: src/modules/toolbar/libkvitoolbar.cpp:439
 msgid "The action parameter didn't evaluate to an index"
-msgstr "Le paramètre de l'action n'a pas été évalué à un entier"
+msgstr "Le paramètre de l'action n'a pas été évalué en entier"
 
 #: src/kvilib/net/KviHttpRequest.cpp:830 src/kvilib/net/KviHttpRequest.cpp:972
 #, fuzzy
@@ -6372,7 +6381,7 @@ msgstr "Le flot a atteint sa longueur maximale"
 
 #: src/modules/help/HelpWindow.cpp:228
 msgid "The closing quotation mark is missing."
-msgstr "Il manque guillemet de fermeture."
+msgstr "Il manque un guillemet de fermeture."
 
 #: src/modules/config/libkviconfig.cpp:539
 msgid ""
@@ -6380,7 +6389,7 @@ msgid ""
 "will be lost"
 msgstr ""
 "Le fichier de config '%Q' a été modifié mais est ouvert en lecture seule : "
-"les modifications seront perdus"
+"les modifications seront perdues"
 
 #: src/modules/config/libkviconfig.cpp:219
 #: src/modules/config/libkviconfig.cpp:255
@@ -6406,7 +6415,7 @@ msgid ""
 "The connection attempt failed while using a cached IP address for the "
 "current server"
 msgstr ""
-"La tentative de connexion a échoué en utilisation l'adresse IP en cache pour "
+"La tentative de connexion a échoué en utilisant l'adresse IP en cache pour "
 "le serveur actuel"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:818
@@ -6417,7 +6426,7 @@ msgstr ""
 
 #: src/modules/window/libkviwindow.cpp:1597
 msgid "The crypt engine \"%Q\" does not exist"
-msgstr "L'e moteur de chiffrage \"%Q\" n'existe pas"
+msgstr "Le moteur de chiffrage \"%Q\" n'existe pas"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1241
 msgid ""
@@ -6432,16 +6441,16 @@ msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
 msgstr ""
-"Le moteur de chiffrage n'a pas été capable de chiffrer le message en court "
+"Le moteur de chiffrage n'a pas été capable de chiffrer le message courant "
 "(%Q) : %s, aucune donnée envoyée au serveur"
 
 #: src/modules/context/libkvicontext.cpp:720
 msgid "The current context is disconnected"
-msgstr ""
+msgstr "Le contexte courant est déconnecté"
 
 #: src/modules/context/libkvicontext.cpp:731
 msgid "The current context's socket is disconnected"
-msgstr ""
+msgstr "Le socket du contexte courant est déconnecté"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:311
 msgid "The current network is %Q"
@@ -6454,12 +6463,12 @@ msgstr "La fenêtre courante n'est pas un salon"
 #: src/modules/window/libkviwindow.cpp:1483
 msgid "The decrypt key wasn't a valid hexadecimal string"
 msgstr ""
-"La clé de déchiffrage n'est pas une chaîne de caractère hexadécimale valide"
+"La clé de déchiffrage n'est pas une chaîne de caractères hexadécimaux valides"
 
 #: src/modules/window/libkviwindow.cpp:1469
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
-"La clé de chiffrage n'est pas une chaîne de caractère hexadécimale valide"
+"La clé de chiffrage n'est pas une chaîne de caractères hexadécimaux valides"
 
 #: src/kvirc/ui/KviFileDialog.cpp:118 src/kvirc/ui/KviFileDialog.cpp:162
 #, fuzzy
@@ -6507,7 +6516,7 @@ msgstr ""
 #: src/kvirc/kernel/KviIrcConnection.cpp:1144
 #: src/kvirc/kernel/KviIrcConnection.cpp:1154
 msgid "The local IP address as seen by the IRC server is %Q"
-msgstr "L'adresse IP locale  telle qu'elle est vue par le serveur IRC est %Q"
+msgstr "L'adresse IP locale telle qu'elle est vue par le serveur IRC est %Q"
 
 #: src/modules/rijndael/libkvirijndael.cpp:633
 msgid "The message doesn't seem to be encoded with CBC Mircryption"
@@ -6520,7 +6529,7 @@ msgstr "Ce message n'est pas une chaîne en base64 : je me m'en occupe pas"
 
 #: src/modules/rijndael/libkvirijndael.cpp:328
 msgid "The message is not a hexadecimal string: this is not my stuff"
-msgstr "Ce message n'est pas une chaîne hexadecimale : je me m'en occupe pas"
+msgstr "Ce message n'est pas une chaîne hexadécimale : je me m'en occupe pas"
 
 #: src/kvilib/file/KviPackageReader.cpp:157
 msgid ""
@@ -8110,7 +8119,7 @@ msgstr "semi-opérateurs"
 #: src/modules/rijndael/libkvirijndael.cpp:693
 #: src/modules/rijndael/libkvirijndael.cpp:703
 msgid "hexadecimal"
-msgstr "hexadecimal"
+msgstr "hexadécimal"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:965
 msgid "hot user"
@@ -9038,7 +9047,7 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ "de type '%Q'"
 
 #~ msgid "Attempting to register addon \"%Q\" with version %Q"
-#~ msgstr "Tentative d'enregistrement de l'addon  \"%Q\" avec la version %Q"
+#~ msgstr "Tentative d'enregistrement de l'addon \"%Q\" avec la version %Q"
 
 #~ msgid "Automatic Brightness/Contrast Correction"
 #~ msgstr "Correction de luminosité/contraste automatique"
@@ -9515,8 +9524,8 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgid "Desktop"
 #~ msgstr "Bureau"
 
-#~ msgid "Destination  parameter is not an object"
-#~ msgstr "Le paramètre  de destination n'est pas un objet"
+#~ msgid "Destination parameter is not an object"
+#~ msgstr "Le paramètre de destination n'est pas un objet"
 
 #~ msgid "Destination is not an object"
 #~ msgstr "La destination n'est pas un objet"
@@ -10669,7 +10678,7 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgstr "Objet dans un état invalide"
 
 #~ msgid "Objects have no extended scope variables"
-#~ msgstr "Les objets n'ont pas  de variable à portée étendue"
+#~ msgstr "Les objets n'ont pas de variable à portée étendue"
 
 #~ msgid "Offset height area is out of pixmap size "
 #~ msgstr "Le décalage de hauteur dépasse la taille du pixmap"
@@ -11371,10 +11380,10 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgstr "L'addon \"%1\" n'existe pas"
 
 #~ msgid "The addon \"%1\" has no configure callback set"
-#~ msgstr "L'addon  \"%1\" n'a pas de commande de configuration définie"
+#~ msgstr "L'addon \"%1\" n'a pas de commande de configuration définie"
 
 #~ msgid "The addon \"%1\" has no help callback set"
-#~ msgstr "L'addon  \"%1\" n'a pas d'aide définie"
+#~ msgstr "L'addon \"%1\" n'a pas d'aide définie"
 
 #~ msgid "The alias %Q is not existing"
 #~ msgstr "L'alias %Q n'existe pas"
@@ -11834,7 +11843,7 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ "Timer name omitted but there is not current timer (this is not a timer "
 #~ "callback)"
 #~ msgstr ""
-#~ "Le nom du chronomètre a été omis mais il n'y a pas de chronomètre  en "
+#~ "Le nom du chronomètre a été omis mais il n'y a pas de chronomètre en "
 #~ "cours (ce n'est pas un rappel de chronomètre)"
 
 #~ msgid "To connect to a server, type /server <server name>"
