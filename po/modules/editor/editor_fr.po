@@ -365,15 +365,15 @@ msgid ""
 "Check this option if this action should be enabled also during the login "
 "operations (so when the logical IRC connection hasn't been estabilished yet)"
 msgstr ""
-"Cocher cette option si l'action doit être activer durant l'opération de "
-"connection (quand aucune connexion IRC n'a encore été établie)"
+"Cocher cette option si l'action doit être activée durant l'opération de "
+"connexion (quand aucune connexion IRC n'a encore été établie)"
 
 #: src/modules/actioneditor/ActionEditor.cpp:197
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window belongs to an irc context"
 msgstr ""
-"Cocher cette option si l'action doit être activer seulement quand la fenêtre "
+"Cocher cette option si l'action doit être activée seulement quand la fenêtre "
 "active appartient à un context IRC"
 
 #: src/modules/actioneditor/ActionEditor.cpp:208
@@ -381,23 +381,23 @@ msgid ""
 "Check this option if this action should be enabled only when the active "
 "window has an active IRC connection"
 msgstr ""
-"Cocher cette option si cette action doit être activer seulement quand la "
-"fenêtre active posséde une connexion IRC active"
+"Cocher cette option si cette action doit être activée seulement quand la "
+"fenêtre active possède une connexion IRC active"
 
 #: src/modules/actioneditor/ActionEditor.cpp:241
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a channel"
 msgstr ""
-"Cocher cette option si cette action doit être activer seulement quand la "
-"fenêtre active est un cannal de discution"
+"Cocher cette option si cette action doit être activée seulement quand la "
+"fenêtre active est un canal de discussion"
 
 #: src/modules/actioneditor/ActionEditor.cpp:230
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a console"
 msgstr ""
-"Cocher cette option si cette action doit être activer seulement quand la "
+"Cocher cette option si cette action doit être activée seulement quand la "
 "fenêtre active est une console"
 
 #: src/modules/actioneditor/ActionEditor.cpp:263
@@ -405,7 +405,7 @@ msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a dcc chat"
 msgstr ""
-"Cocher cette option si cette action doit être activer seulement quand la "
+"Cocher cette option si cette action doit être activée seulement quand la "
 "fenêtre active est un chat DCC"
 
 #: src/modules/actioneditor/ActionEditor.cpp:252
@@ -419,7 +419,7 @@ msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is of a specified type"
 msgstr ""
-"Cocher cette option si cette action doit être activer seulement quand la "
+"Cocher cette option si cette action doit être activée seulement quand la "
 "fenêtre active est d'un type spécifié"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:726
@@ -566,7 +566,7 @@ msgstr "Déposer ici les icônes de la barre d'outils pour les enlever"
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:263
 #, fuzzy
 msgid "Duplicate ToolBar Id"
-msgstr "L'id de la barre d'outils est déjà utilser"
+msgstr "L'id de la barre d'outils est déjà utilisé"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:312
 msgid "Edit ToolBar"
@@ -870,15 +870,15 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:400
 msgid "New Item Above"
-msgstr ""
+msgstr "Nouvel élément au-dessus"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:399
 msgid "New Item Below"
-msgstr ""
+msgstr "Nouvel élément en-dessous"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:402
 msgid "New Item Inside"
-msgstr ""
+msgstr "Nouvel élément à l'intérieur"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:392
 msgid "New Label Above"
@@ -993,7 +993,7 @@ msgstr "&Valider"
 #: src/modules/classeditor/ClassEditorWindow.cpp:1535
 #: src/modules/classeditor/ClassEditorWindow.cpp:1546
 msgid "Ok, Let me try again..."
-msgstr "OK, laisse moi essayer encore..."
+msgstr "OK, laisse-moi essayer encore..."
 
 #: src/modules/actioneditor/ActionEditor.cpp:235
 #: src/modules/actioneditor/ActionEditor.cpp:246
@@ -1205,7 +1205,7 @@ msgstr ""
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:90
 msgid "Separator"
-msgstr "Separarteur"
+msgstr "Separateur"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2077
 msgid "Set as <b>Internal</b> Function: "
@@ -1429,7 +1429,7 @@ msgstr "défaut"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:806
 msgid "inherits from class "
-msgstr ""
+msgstr "hérite de la classe "
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:409
 msgid "none"
@@ -1442,4 +1442,4 @@ msgid "unnamed"
 msgstr ""
 
 #~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
-#~ msgstr "Le fichier \"%Q\" existe déjà. Voulez-vous le remplcer ?"
+#~ msgstr "Le fichier \"%Q\" existe déjà. Voulez-vous le remplacer ?"

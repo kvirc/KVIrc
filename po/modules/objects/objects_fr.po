@@ -43,15 +43,15 @@ msgstr ""
 #: src/modules/objects/KvsObject_widget.cpp:1674
 msgid "$resize() requires either an array as first parameter or two integers"
 msgstr ""
-"$resize() à besoin d'un tableau ou de deux entiers, en premier paramètre"
+"$resize() a besoin d'un tableau ou de deux entiers, en premier paramètre"
 
 #: src/modules/objects/KvsObject_widget.cpp:1374
 msgid ""
 "$setBackgroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
 msgstr ""
-"$setBackgroundColor à besoin soit d'un tableau, d'une chaîne hexadécimale, "
-"d'un nom de douleur ou de 3 entiers en tant que premier paramètre"
+"$setBackgroundColor a besoin soit d'un tableau, d'une chaîne hexadécimale, "
+"d'un nom de couleur ou de 3 entiers en tant que premier paramètre"
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:634
 msgid "$setColor requires either an array as first parameter or three integers"
@@ -63,8 +63,8 @@ msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
 msgstr ""
-"$setForegroundColor à besoin soit d'un tableau, d'une chaîne hexadécimale, "
-"d'un nom de douleur ou de 3 entiers en tant que premier paramètre"
+"$setForegroundColor a besoin soit d'un tableau, d'une chaîne hexadécimale, "
+"d'un nom de couleur ou de 3 entiers en tant que premier paramètre"
 
 #: src/modules/objects/KvsObject_widget.cpp:1170
 msgid ""
@@ -141,14 +141,14 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_tabWidget.cpp:428
 msgid "Can't find the tab"
-msgstr ""
+msgstr "Impossible de trouver l'onglet"
 
 #: src/modules/objects/KvsObject_tabWidget.cpp:308
 #: src/modules/objects/KvsObject_tabWidget.cpp:327
 #: src/modules/objects/KvsObject_tabWidget.cpp:349
 #: src/modules/objects/KvsObject_tabWidget.cpp:404
 msgid "Can't find the tab "
-msgstr ""
+msgstr "Impossible de trouver l'onglet "
 
 #: src/modules/objects/KvsObject_listWidget.cpp:558
 msgid "Can't insert a non-widget object"
@@ -404,7 +404,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:264
 #, c-format
 msgid "No such line '%d'"
-msgstr ""
+msgstr "La ligne '%d' n'existe pas"
 
 #: src/modules/objects/KvsObject_file.cpp:251
 msgid "No such open mode '%Q'"
@@ -867,11 +867,11 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_webView.cpp:584
 msgid "Unsupported datatype"
-msgstr ""
+msgstr "Type de données non supporté"
 
 #: src/modules/objects/KvsObject_file.cpp:468
 msgid "Unsupported datatype '%Q'"
-msgstr ""
+msgstr "Type de données '%Q' non supporté"
 
 #: src/modules/objects/KvsObject_socket.cpp:549
 #, c-format
@@ -956,4 +956,4 @@ msgstr "Le support du XML n'est pas disponible dans Qt"
 #~ msgstr "Pas de support IPv6 dans cette executable"
 
 #~ msgid "Socket creation failed"
-#~ msgstr "La création du socket à échouer"
+#~ msgstr "La création du socket a échoué"
