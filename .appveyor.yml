@@ -1,10 +1,8 @@
-# http://help.appveyor.com/discussions/suggestions/419-qt-libraries
-os: unstable
 version: 0.0.0.0.1-branch-{branch}-build-{build}
 shallow_clone: true
 cache:
     - c:\OpenSSL-Win64
-    - 'c:\Program Files\NSIS'
+    - 'c:\Program Files\NSIS (x86)'
     - c:\deps
 install:
     - systeminfo
@@ -22,38 +20,43 @@ install:
     - c:\cygwin\bin\env
     - nuget install zlib -OutputDirectory c:\deps
     - nuget install Gettext.Tools -OutputDirectory c:\deps
-    - c:\cygwin\bin\find /cygdrive/c/deps
+    - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
         if (Test-Path c:\OpenSSL-Win64) {
             echo "using openssl from cache"
         } else {
             echo "downloading openssl"
-            Invoke-WebRequest https://slproweb.com/download/Win64OpenSSL-1_0_2a.exe -OutFile c:\openssl-setup.exe
+            Invoke-WebRequest https://slproweb.com/download/Win64OpenSSL-1_0_2d.exe -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         }
-    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-Win64
+    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-Win64 "-type" f
     - ps: |
-        if (Test-Path "c:/Program Files/NSIS/makensis.exe") {
+        if (Test-Path "c:/Program Files/NSIS (x86)/makensis.exe") {
             echo "using nsis from cache"
         } else {
             choco install nsis -y
         }
-    - dir "c:/Program Files/NSIS"
+    - dir "c:/Program Files"
+    - dir "c:/Program Files (x86)"
+    - c:\cygwin\bin\sh -c "/bin/find '/cygdrive/c/Program Files/NSIS' -type f; /bin/true"
+    - c:\cygwin\bin\sh -c "/bin/find '/cygdrive/c/Program Files (x86)/NSIS' -type f; /bin/true"
 build_script:
     - mkdir build
     - cd build
     - '"c:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall" amd64'
     - path
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -name zlib.targets
-        $zlib = c:\cygwin\bin\dirname $zlib
-        $zlib = c:\cygwin\bin\cygpath -m $zlib
+        $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
+        $zlibinc = c:\cygwin\bin\dirname $zlibinc
+        $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
+        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/x64/Release/zlib.lib'
+        $zliblib = c:\cygwin\bin\cygpath -m $zliblib
         $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlib/include" "-DZLIB_LIBRARY=$zlib/lib/v120/x64/Release/dynamic/cdecl/zlib.lib" "-DWANT_PERL=NO" "-DWANT_PHONON=NO"
+        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=NO" "-DWANT_PHONON=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install
     - c:\cygwin\bin\ls -l release/
@@ -67,11 +70,10 @@ build_script:
         # But let's not put all other qt plugins (imageformats, etc) to this crowded place.
         c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -name zlib.redist.targets
-        $zlib = c:\cygwin\bin\dirname $zlib
-        c:\cygwin\bin\cp "-v" "$zlib/bin/v120/x64/Release/dynamic/cdecl/zlib.dll" /cygdrive/c/OpenSSL-Win64/libeay32.dll /cygdrive/c/OpenSSL-Win64/ssleay32.dll release/
+        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/x64/Release/zlib.dll'
+        c:\cygwin\bin\cp "-v" "$zlib" /cygdrive/c/OpenSSL-Win64/libeay32.dll /cygdrive/c/OpenSSL-Win64/ssleay32.dll release/
     - c:\cygwin\bin\ls -l release/
-    - '"c:\Program Files\NSIS\makensis.exe" KVIrc.nsi'
+    - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - c:\cygwin\bin\ls -l
     - ps: Push-AppveyorArtifact *.exe
 test: off
