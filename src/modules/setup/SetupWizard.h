@@ -138,6 +138,7 @@ protected:
 	void makeLink();
 	void setUrlHandlers();
 	virtual void showEvent(QShowEvent *e);
+	void enableOrDisableIdentityPageNextButton();
 public slots:
 	void chooseOldDataPath();
 	void chooseDataPath();
@@ -149,9 +150,10 @@ public slots:
 	void newDirClicked();
 	void portableClicked();
 
-	void oldDataTextChanged ( const QString & );
-	void newDataTextChanged ( const QString & );
-	void newIncomingTextChanged ( const QString & );
+	void nickSelectorTextChanged(const QString & );
+	void oldDataTextChanged(const QString & );
+	void newDataTextChanged(const QString & );
+	void newIncomingTextChanged(const QString & );
 };
 
 

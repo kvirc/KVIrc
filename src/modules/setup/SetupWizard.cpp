@@ -322,19 +322,12 @@ SetupWizard::SetupWizard()
 		"If in doubt, just enter the first nick that comes to mind. " \
 		"You will be able to change it later in the Identity properties, or with the /NICK command."));
 
-	QString nick;
-	char * nnn = KviEnvironment::getVariable("USER");
-	if(nnn)nick = nnn;
-	else nick = "newbie";
-	if(nick.isEmpty())nick = "newbie";
-	if(nick == "root")nick = "newbie";
-//m_pIdentity->m_pVBox
-//__tr2qs("Basic Properties")
 	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal,QString(),m_pIdentity->m_pVBox);
 
 	m_pNickSelector = new KviStringSelector(gbox,__tr2qs("Nickname:"),&(KVI_OPTION_STRING(KviOption_stringNickname1)),true);
 	m_pNickSelector->setMinimumLabelWidth(120);
 	m_pNickSelector->setMargin(0);
+	QObject::connect(m_pNickSelector->lineEdit(),SIGNAL(textChanged(const QString &)),this,SLOT(nickSelectorTextChanged(const QString &)));
 
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),gbox);
 	m_pNickSelector->setValidator(v);
@@ -415,7 +408,6 @@ SetupWizard::SetupWizard()
 	//l = new QLabel(m_pIdentity->m_pVBox,"<b> </b>");
 
 	setHelpEnabled(m_pIdentity,false);
-
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Default theme
@@ -576,7 +568,8 @@ SetupWizard::SetupWizard()
 			if(!KviFileUtils::fileExists(szMircIni))
 				szMircIni = szMircDir + "/pirc.ini";
 
-			if(KviFileUtils::fileExists(szMircIni)){
+			if(KviFileUtils::fileExists(szMircIni))
+			{
 				KviConfigurationFile cfg(szMircIni,KviConfigurationFile::Read,true);
 				if(cfg.hasGroup("mirc"))
 				{
@@ -613,6 +606,8 @@ SetupWizard::SetupWizard()
 	newDirClicked();
 
 	//setMinimumSize(630,450);
+
+	enableOrDisableIdentityPageNextButton();
 }
 
 
@@ -645,6 +640,17 @@ void SetupWizard::showEvent(QShowEvent *e)
 	KviTalWizard::showEvent(e);
 }
 
+void SetupWizard::enableOrDisableIdentityPageNextButton()
+{
+	setNextEnabled(m_pIdentity,!m_pNickSelector->currentText().trimmed().isEmpty());
+}
+
+
+void SetupWizard::nickSelectorTextChanged(const QString & str)
+{
+	enableOrDisableIdentityPageNextButton();
+}
+
 void SetupWizard::oldDirClicked()
 {
 	m_pOldPathBox->setEnabled(true);
@@ -659,17 +665,17 @@ void SetupWizard::oldDirClicked()
 	else setNextEnabled(m_pDirectory,true);
 }
 
-void SetupWizard::oldDataTextChanged ( const QString & str)
+void SetupWizard::oldDataTextChanged(const QString & str)
 {
 	setNextEnabled(m_pDirectory,!str.isEmpty());
 }
 
-void SetupWizard::newDataTextChanged ( const QString & str)
+void SetupWizard::newDataTextChanged(const QString & str)
 {
 	setNextEnabled(m_pDirectory,!str.isEmpty() && !m_pIncomingPathEdit->text().isEmpty());
 }
 
-void SetupWizard::newIncomingTextChanged ( const QString & str)
+void SetupWizard::newIncomingTextChanged(const QString & str)
 {
 	setNextEnabled(m_pDirectory,!str.isEmpty() && !m_pDataPathEdit->text().isEmpty());
 }

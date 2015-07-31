@@ -112,6 +112,8 @@ public:
 	void setText(const QString& text);
 	QString textForSearch(){return m_pLabel->text();};
 	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
+	QLineEdit * lineEdit(){ return m_pLineEdit; };
+	QString currentText(){ return m_pLineEdit->text(); };
 public slots:
 	virtual void setEnabled(bool bEnabled);
 };

@@ -23,7 +23,6 @@
 //=============================================================================
 
 
-
 //#define _KVI_DEBUG_CHECK_RANGE_
 //#include "kvi_debug.h"
 
@@ -48,7 +47,6 @@
 	#ifdef COMPILE_KDE_SUPPORT
 		#include <kconfig.h>
 		#include <KConfigGroup>
-//		#include <kstddirs.h>
 	#endif
 #endif
 
@@ -856,3 +854,4 @@ void KviApplication::saveKvircDirectory()
 	cfgx.writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
 	cfgx.writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
 }
+

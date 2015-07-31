@@ -355,7 +355,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 {
 	STRING_OPTION("UNUSED:FrameCaption","",KviOption_sectFlagFrame),
-	STRING_OPTION("Nickname1",KVI_DEFAULT_NICKNAME1,KviOption_sectFlagUser),
+	STRING_OPTION("Nickname1","",KviOption_sectFlagUser),
 	STRING_OPTION("Nickname2","",KviOption_sectFlagUser),
 	STRING_OPTION("Nickname3","",KviOption_sectFlagUser),
 	STRING_OPTION("Nickname4","",KviOption_sectFlagUser),

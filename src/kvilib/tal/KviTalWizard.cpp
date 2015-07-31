@@ -333,13 +333,22 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 	QString szTitle;
 	QString szSteps;
 
+	bool bHaveNextPage = false;
+	bool bHavePrevPage = false;
+
 	if(pData)
 	{
-		bNextEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableNext) && m_p->findNextEnabledPage(pData->pWidget);
-		bBackEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableBack) && m_p->findPrevEnabledPage(pData->pWidget);
+		bHavePrevPage = m_p->findPrevEnabledPage(pData->pWidget);
+		bHaveNextPage = m_p->findNextEnabledPage(pData->pWidget);
+	
+		bNextEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableNext) && bHaveNextPage;
+		bBackEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableBack) && bHavePrevPage;
+
 		bCancelEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableCancel);
 		bFinishEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableFinish);
+
 		bHelpEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableHelp);
+
 		m_p->pWidgetStack->setCurrentWidget(pData->pWidget);
 
 		szTitle = "<b>";
@@ -365,7 +374,7 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 	m_p->pStepsLabel->setText(szSteps);
 
 	m_p->pNextButton->setEnabled(bNextEnabled);
-	if(bNextEnabled)
+	if(bHaveNextPage)
 	{
 		m_p->pNextButton->show();
 		m_p->pNextSpacer->show();
@@ -375,14 +384,22 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		m_p->pNextSpacer->hide();
 		m_p->pNextButton->setDefault(false);
 	}
+
 	m_p->pBackButton->setEnabled(bBackEnabled);
+	if(bHavePrevPage)
+		m_p->pBackButton->show();
+	else
+		m_p->pBackButton->hide();
+
 	m_p->pHelpButton->setEnabled(bHelpEnabled);
 	if(bHelpEnabled)
 		m_p->pHelpButton->show();
 	else
 		m_p->pHelpButton->hide();
+
 	m_p->pCancelButton->setEnabled(bCancelEnabled);
 	m_p->pFinishButton->setEnabled(bFinishEnabled);
+
 	if(bFinishEnabled)
 	{
 		m_p->pFinishButton->show();
