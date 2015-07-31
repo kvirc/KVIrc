@@ -933,13 +933,13 @@ endif()
 # DCC canvas support
 ############################################################################
 
-option(WANT_DCC_CANVAS "Compile DCC Canvas Support" OFF)
-if(WANT_DCC_CANVAS)
-	set(CMAKE_STATUS_DCC_CANVAS_SUPPORT "Yes")
-	set(COMPILE_DCC_CANVAS 1)
-else()
-	set(CMAKE_STATUS_DCC_CANVAS_SUPPORT "No")
-endif()
+#option(WANT_DCC_CANVAS "Compile DCC Canvas Support" OFF)
+#if(WANT_DCC_CANVAS)
+#	set(CMAKE_STATUS_DCC_CANVAS_SUPPORT "Yes")
+#	set(COMPILE_DCC_CANVAS 1)
+#else()
+#	set(CMAKE_STATUS_DCC_CANVAS_SUPPORT "No")
+#endif()
 
 ############################################################################
 # DCC voice support
@@ -1400,7 +1400,7 @@ message(STATUS "Scripting:")
 message(STATUS "   Perl Support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 message(STATUS "   Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 message(STATUS "DCC features:")
-message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
+#message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
 message(STATUS "   DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
 message(STATUS "   GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 message(STATUS "   DCC Video Support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
