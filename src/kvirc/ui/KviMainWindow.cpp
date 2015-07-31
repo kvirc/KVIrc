@@ -793,6 +793,21 @@ void KviMainWindow::childWindowActivated(KviWindow *wnd, bool bForce)
 
 void KviMainWindow::changeEvent(QEvent * e)
 {
+#ifndef COMPILE_ON_MAC
+	// For Qt5 this should be used to minimize to tray
+	if(e->type() == QEvent::WindowStateChange && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+	{
+		if(!trayIcon())
+		{
+			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+		}
+		if(trayIcon())
+		{
+			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
+			QTimer::singleShot( 0, this, SLOT(hide()) );
+		}
+	}
+#endif
 	if (e->type() == QEvent::ActivationChange)
 	{
 		//WINDOW (DE)ACTIVATION
@@ -883,6 +898,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 	}
 }
 
+// For Qt4, see changeEvent method for Qt5
 void KviMainWindow::hideEvent(QHideEvent *e)
 {
 #ifndef COMPILE_ON_MAC
