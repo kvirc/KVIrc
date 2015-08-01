@@ -47,8 +47,10 @@ install:
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
         }
+    - choco install jom
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
+    - c:\cygwin\bin\bash -c "which jom"
 build_script:
     - mkdir build
     - cd build
@@ -64,9 +66,9 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.5/msvc2013_64" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1"
     - ps: Push-AppveyorArtifact CMakeCache.txt
-    - nmake install VERBOSE=1
+    - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/5.4/msvc2013_64_opengl/bin"
