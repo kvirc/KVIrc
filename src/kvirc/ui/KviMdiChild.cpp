@@ -53,14 +53,16 @@
 #endif
 
 KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
-: QMdiSubWindow(par)
+: QMdiSubWindow(par->viewport())
 {
 	setObjectName(name ? name : "mdi_child");
 
 	m_pManager = par;
-	m_pClient = 0;
+	m_pClient = NULL;
 
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
+	
+	// FIXME: This shouldn't be needed anymore?
 	QTimer::singleShot( 0, this, SLOT(transparencyWorkaround()));
 }
 
@@ -69,7 +71,7 @@ KviMdiChild::~KviMdiChild()
 	if(m_pClient)
 	{
 		delete m_pClient;
-		m_pClient=0;
+		m_pClient=NULL;
 	}
 	m_pManager->focusPreviousTopChild();
 }
@@ -205,8 +207,8 @@ void KviMdiChild::resizeEvent(QResizeEvent *e)
 
 void KviMdiChild::setClient(QWidget * w)
 {
-	KVI_ASSERT(m_pClient==0);
-	KVI_ASSERT(w!=0);
+	KVI_ASSERT(!m_pClient);
+	KVI_ASSERT(w);
 
 	m_pClient = w;
 	setWidget(w);
@@ -224,10 +226,13 @@ void KviMdiChild::setClient(QWidget * w)
 
 void KviMdiChild::unsetClient()
 {
-	KVI_ASSERT(m_pClient!=0);
-	if(!m_pClient)return;
-	setWidget(0);
-	m_pClient = 0;
+	KVI_ASSERT(m_pClient);
+	if(!m_pClient)
+		return;
+
+	setWidget(NULL);
+	m_pClient = NULL;
+
 	setObjectName("mdi_child");
 }
 
@@ -239,12 +244,13 @@ void KviMdiChild::activate()
 
 void KviMdiChild::updateSystemPopup()
 {
-	if(m_pClient)
-		if(m_pClient->inherits("KviWindow"))
-		{
-			systemMenu()->clear();
-			//FIXME this is an hack
-			KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest, ((KviWindow*) m_pClient));
-		}
+	if(!m_pClient)
+		return ;
+	if(!m_pClient->inherits("KviWindow"))
+		return;
+
+	systemMenu()->clear();
+	//FIXME this is an hack
+	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest, ((KviWindow*) m_pClient));
 }
 

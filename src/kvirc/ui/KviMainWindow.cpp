@@ -611,7 +611,9 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 
 KviMdiChild * KviMainWindow::dockWindow(KviWindow * wnd)
 {
-	if(wnd->mdiParent())return wnd->mdiParent();
+	if(wnd->mdiParent())
+		return wnd->mdiParent();
+
 	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
 	lpC->setClient(wnd);
 
