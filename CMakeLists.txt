@@ -69,53 +69,43 @@ set(MANUAL_REVISION
 string(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
 if(MANUAL_REVISION_UNSET)
 	# No manually forced revision number, gotta guess one now
-	if(EXISTS "${CMAKE_SOURCE_DIR}/.svnrevision")
-		# We're in a release package created using makedist.sh, so we should include a .svnrevision file
-		file(READ "${CMAKE_SOURCE_DIR}/.svnrevision" DISTSVNREVISION)
-		string(STRIP "${DISTSVNREVISION}" CMAKE_KVIRC_BUILD_REVISION)
-		message(STATUS "SVN revision is ${CMAKE_KVIRC_BUILD_REVISION}")
-	else()
-		find_package(Subversion)
-		if(Subversion_FOUND)
-			message(STATUS "Found Subversion ${Subversion_VERSION_SVN}")
-
-			# Subversion_WC_INFO is buggy and will croak if ran on a directory that is not checked out from svn
-
-			# SVN info does not like .. as paths, so be sure that we use a full path
-			get_filename_component(ABS_FOLDER ${CMAKE_SOURCE_DIR} ABSOLUTE)
+	if(EXISTS "${CMAKE_SOURCE_DIR}/.gitrevision")
+		# We're in a release package created using makedist.sh, so we should include a .gitrevision file
+		file(READ "${CMAKE_SOURCE_DIR}/.gitrevision" DISTGITREVISION)
+		string(STRIP "${DISTGITREVISION}" CMAKE_KVIRC_BUILD_REVISION)
+		message(STATUS "Current revision is ${CMAKE_KVIRC_BUILD_REVISION} (from .gitrevision)")
+	elseif(EXISTS "${CMAKE_SOURCE_DIR}/.git")
+		find_package(Git)
+		if(GIT_FOUND)
+			message(STATUS "Found Git ${GIT_VERSION_STRING}")
 			execute_process(
-					COMMAND ${Subversion_SVN_EXECUTABLE} info ${ABS_FOLDER}
-					RESULT_VARIABLE INFO_RESULT
-					OUTPUT_VARIABLE IGNORED
-					ERROR_VARIABLE IGNORED
-				)
-			if(INFO_RESULT EQUAL 0)
-				Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
-				if(DEFINED KVIrc_WC_REVISION)
-					set(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
-					message(STATUS "Current revision is ${KVIrc_WC_REVISION}")
-				else()
-					message(STATUS "No revision number found (no clue why though).")
-				endif()
+				COMMAND ${GIT_EXECUTABLE} log -1 --date=short "--pretty=%h"
+				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+				RESULT_VARIABLE res_var
+				OUTPUT_VARIABLE GIT_COM_ID
+			)
+			if(${res_var} EQUAL 0)
+				string( REPLACE "\n" "" GIT_COMMIT_ID "${GIT_COM_ID}" )
+				set(CMAKE_KVIRC_BUILD_REVISION ${GIT_COMMIT_ID})
+				message(STATUS "Current revision is ${CMAKE_KVIRC_BUILD_REVISION}")
 			else()
-				message(STATUS "No revision number found (not a subversion repository).")
+				set( GIT_COMMIT_ID "git commit id unknown")
+				message( STATUS "Git failed (not a repo, or no tags). Build will not contain git revision info." )
 			endif()
+			
 		else()
-			message(STATUS "No revision number found (subversion not available).")
+			set( GIT_COMMIT_ID "unknown (git not found!)")
+			message( STATUS "Git not found. Build will not contain git revision info." )
 		endif()
+	else()
+			set( GIT_COMMIT_ID "unknown (not in a git tree!)")
+			message( STATUS "Missing .git directory. Build will not contain git revision info." )		
 	endif()
-
 else()
 	# Manually forced revision number
 	set(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
 	message(STATUS "Current revision has been manually set to ${MANUAL_REVISION}")
 endif()
-
-
-# Simplify eventual mixed revisions and strange tweaks with letters in it
-string(REGEX REPLACE ":[0-9a-zA-Z]+" "" CMAKE_KVIRC_BUILD_REVISION "${CMAKE_KVIRC_BUILD_REVISION}")
-string(REGEX REPLACE "[^0-9]+" "" CMAKE_KVIRC_BUILD_REVISION "${CMAKE_KVIRC_BUILD_REVISION}")
-
 
 # Set man dir
 set(MANDIR

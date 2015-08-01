@@ -98,22 +98,21 @@ if [ -d "$TEMPSRCDIR" ]; then
 fi
 
 #################################################################################################
-# Export svn into the temporary dir
+# Export git into the temporary dir
 
-echo "Exporting svn dir into ${TEMPSRCDIR}..."
-svn export "${SOURCETREEDIR}" "${TEMPSRCDIR}"
+cd "$SOURCETREEDIR"
+echo "Exporting git dir into ${TEMPSRCDIR}..."
+# Ensure the prefix parameter has a slash at the end, or bad things could happen
+git checkout-index -a -f --prefix="${TEMPSRCDIR}/"
 
 #################################################################################################
-# Figure out the svn revision
+# Figure out the git revision
 
-echo "Determining svn revision..."
-cd "$SOURCETREEDIR"
-# If we update svn here, we have a different revision than we exported above
-#svn update
-REVISION=$(svnversion -n .)
+echo "Determining git revision..."
+REVISION=$(git log -1 --date=short "--pretty=%h")
 
 echo "Revision is $REVISION"
-echo $REVISION > "$TEMPSRCDIR/.svnrevision"
+echo $REVISION > "$TEMPSRCDIR/.gitrevision"
 
 #################################################################################################
 # Make room for the output files
