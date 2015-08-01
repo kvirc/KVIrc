@@ -28,12 +28,12 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:100
 msgid "/me can be used only in channels, queries and DCC chat windows"
 msgstr ""
-"la commande '/me' ne peux être utiliser que dans les fenêtres de cannal, "
+"la commande '/me' ne peux être utilisée que dans les fenêtres de canaux, "
 "message privée et DCC"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:127
 msgid "A class can't be a subclass of itself"
-msgstr ""
+msgstr "Une classe ne peut pas être une sous-classe d'elle-même"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1376
 msgid ""
@@ -93,11 +93,11 @@ msgstr ""
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:103
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:106
 msgid "Call to undefined command '%Q'"
-msgstr ""
+msgstr "Appel à une commande non définie '%Q'"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:63
 msgid "Call to undefined function '%Q'"
-msgstr ""
+msgstr "Appel à une fonction non définie '%Q'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:896
 msgid "Can't delete a null object reference"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:153
 msgid "Can't override the builtin class '%Q'"
-msgstr ""
+msgstr "Impossible d'écraser la classe interne '%Q'"
 
 #: src/kvirc/kvs/KviKvsModuleInterface.cpp:164
 msgid "Can't unload the module: it has locked itself in memory"
@@ -173,11 +173,11 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:654
 msgid "Choose a file to parse"
-msgstr ""
+msgstr "Choisissez un fichier à analyser"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:293
 msgid "Class '%Q' is not defined"
-msgstr ""
+msgstr "La classe '%Q' n'est pas définie"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:110
 msgid ""
@@ -286,7 +286,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:966
 msgid "Failed to start the process"
-msgstr ""
+msgstr "Echec du lancement du processus"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:1512
 msgid ""
@@ -417,7 +417,7 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
 msgid "IP address %d: %Q"
-msgstr ""
+msgstr "Adresse IP %d : %Q"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:327
 msgid "Injected incoming data: %1"
@@ -451,7 +451,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
 msgid "Invalid data type for parameter \"%1\""
-msgstr ""
+msgstr "Type de données invalide pour le paramètre \"%1\""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:222
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:268
@@ -490,7 +490,7 @@ msgstr ""
 
 #: src/kvirc/kvs/object/KviKvsObjectClass.cpp:165
 msgid "It's not allowed to return values in the constructor"
-msgstr ""
+msgstr "Il n'est pas autorisé de retourner des valeurs dans le constructeur"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:313
 msgid "Lag meter was not enabled"
@@ -519,7 +519,7 @@ msgstr ""
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:97
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:118
 msgid "Missing class name"
-msgstr ""
+msgstr "Nom de classe manquant"
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:146
 msgid "Missing non-optional parameter \"%1\""
@@ -527,7 +527,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:206
 msgid "Missing parameter"
-msgstr ""
+msgstr "Paramètre manquant"
 
 #: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:876
 msgid "Missing right operand for operator '"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1154
 msgid "Property: %1%2%3, type %4"
-msgstr ""
+msgstr "Propriété : %1%2%3, type %4"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:492
 msgid "Recursive definition detected for popup '%Q': ignoring"
@@ -883,7 +883,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:277
 msgid "The alias '%Q' does not exist"
-msgstr ""
+msgstr "L'alias '%Q' n'existe pas"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1136
 msgid ""
@@ -942,7 +942,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:466
 msgid "The current window is not a channel"
-msgstr ""
+msgstr "La fenêtre courante n'est pas un salon"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:300
 msgid "The current window is not a channel, a query or a console"
@@ -1426,7 +1426,7 @@ msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:2833
 msgid "Unterminated instruction block"
-msgstr ""
+msgstr "Bloc d'instructions non terminé"
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3755
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:3762
@@ -1435,7 +1435,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1267
 msgid "Window '%Q' not found, using current one"
-msgstr ""
+msgstr "Fenêtre '%Q' non trouvée, utilisation de la fenêtre courante"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
 msgid "Window Lifetime"
@@ -1461,12 +1461,12 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:200
 msgid "You're not connected to an IRC server"
-msgstr "Vous n'etes pas connecter à un serveur IRC"
+msgstr "Vous n'etes pas connecté à un serveur IRC"
 
 #: src/kvirc/kvs/KviKvsReport.cpp:223
 #, c-format
 msgid "[KVS]   Destroyed window with pointer %x"
-msgstr "[KVS]   Fenêtre détruite avec le pointeur %x"
+msgstr "[KVS]   Destruction de la fenêtre avec le pointeur %x"
 
 #: src/kvirc/kvs/KviKvsReport.cpp:205
 msgid "[KVS]   in script context \"%Q\""
@@ -1490,11 +1490,11 @@ msgstr "[KVS] Fenêtre :"
 
 #: src/kvirc/kvs/KviKvsReport.cpp:192
 msgid "[KVS]%c Compilation Error: %Q"
-msgstr "[KVS]%c Erreur de compilation: %Q"
+msgstr "[KVS]%c Erreur de compilation : %Q"
 
 #: src/kvirc/kvs/KviKvsReport.cpp:200
 msgid "[KVS]%c Runtime Error: %Q"
-msgstr ""
+msgstr "[KVS]%c Erreur d'exécution : %Q"
 
 #: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
@@ -1537,7 +1537,7 @@ msgstr ""
 #~ msgid ""
 #~ "Popup menu self-modification is not allowed (the popup is probably open)"
 #~ msgstr ""
-#~ "L'auto modification du menu n'est pas autoriser (le popup est "
+#~ "L'auto modification du menu n'est pas autorisée (le popup est "
 #~ "probablement déjà ouvert)"
 
 #~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
