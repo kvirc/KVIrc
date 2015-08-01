@@ -372,6 +372,9 @@
 // WeNet codepage extension
 #define RPL_CODEPAGESET      700 /* :irc.wenet.ru 700 Pragma CP1251 :is now your translation scheme # */
 #define RPL_WHOISSCHEME      703 /* :interdacom.vgd.wenet.ru 703 Alexey Begemot KOI8-R :translation scheme */
+// Quiet ban listing (freenode)
+#define RPL_QUIETLIST        728 /* :sendak.freenode.net 728 CtrlAltCa #kde q *!*@* sendak.freenode.net 1436979239 */
+#define RPL_QUIETLISTEND     729 /* :sendak.freenode.net 729 CtrlAltCa #kde q :End of Channel Quiet List */
 //SASL EXTENSION
 #define RPL_SASLLOGIN        900 /* :jaguar.test 900 jilles jilles!jilles@localhost.stack.nl jilles :You are now logged in as jilles. */
 #define RPL_SASLSUCCESS      903 /* :jaguar.test 903 jilles :SASL authentication successful  */
