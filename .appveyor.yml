@@ -2,8 +2,9 @@ version: 0.0.0.0.1-branch-{branch}-build-{build}
 shallow_clone: true
 cache:
     - c:\OpenSSL-Win64
-    - 'c:\Program Files\NSIS (x86)'
+    - 'c:\Program Files (x86)\NSIS'
     - c:\deps
+    - c:\Strawberry
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -32,15 +33,22 @@ install:
         }
     - c:\cygwin\bin\find /cygdrive/c/OpenSSL-Win64 "-type" f
     - ps: |
-        if (Test-Path "c:/Program Files/NSIS (x86)/makensis.exe") {
+        if (Test-Path "c:/Program Files (x86)/NSIS/makensis.exe") {
             echo "using nsis from cache"
         } else {
             choco install nsis -y
         }
-    - dir "c:/Program Files"
-    - dir "c:/Program Files (x86)"
-    - c:\cygwin\bin\sh -c "/bin/find '/cygdrive/c/Program Files/NSIS' -type f; /bin/true"
-    - c:\cygwin\bin\sh -c "/bin/find '/cygdrive/c/Program Files (x86)/NSIS' -type f; /bin/true"
+    - ps: |
+        if (Test-Path "c:/Strawberry/kvirc_workaround") {
+            echo "using perl from cache"
+        } else {
+            choco install strawberryperl -y
+            # Strawberry perl doesn't support MSVC, but we force the support.
+            c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
+            c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
+        }
+    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
+    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
 build_script:
     - mkdir build
     - cd build
@@ -56,9 +64,9 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=NO" "-DWANT_PHONON=NO"
+        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1"
     - ps: Push-AppveyorArtifact CMakeCache.txt
-    - nmake install
+    - nmake install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/5.4/msvc2013_64_opengl/bin"
