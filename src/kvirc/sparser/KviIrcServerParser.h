@@ -234,6 +234,7 @@ private:
 	void parseUserMode(KviIrcMessage *msg,const char * modeflptr);
 	void parseLiteralCap(KviIrcMessage * msg);
 	void parseLiteralAuthenticate(KviIrcMessage * msg);
+	void parseLiteralAway(KviIrcMessage *msg);
 
 	void parseCtcpRequest(KviCtcpMessage *msg);
 	void parseCtcpReply(KviCtcpMessage *msg);

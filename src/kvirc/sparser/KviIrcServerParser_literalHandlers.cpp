@@ -2385,3 +2385,27 @@ void KviIrcServerParser::parseLiteralAuthenticate(KviIrcMessage *msg)
 	KviCString szAuth(msg->safeParam(0));
 	msg->connection()->handleAuthenticate(szAuth);
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// AWAY
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void KviIrcServerParser::parseLiteralAway(KviIrcMessage *msg)
+{
+	// AWAY (IRCv3.1)
+	// :<source_mask> AWAY :<part message>
+	QString szNick,szUser,szHost;
+	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
+
+	QString awayMsg = msg->paramCount() > 0 ? msg->connection()->decodeText(msg->safeTrailing()) : QString();
+
+	// Update the user entry
+	KviIrcUserDataBase * db = msg->connection()->userDataBase();
+	KviIrcUserEntry * e = db->find(szNick);
+	if(e)
+	{
+		e->setAway(!awayMsg.isEmpty());
+	}
+}

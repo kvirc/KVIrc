@@ -141,11 +141,11 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
- 	b = addBoolSelector(0,3,4,3,__tr2qs_ctx("Keep away list updated by sending WHO requests","options"),KviOption_boolEnableAwayListUpdates);
+ 	b = addBoolSelector(0,3,4,3,__tr2qs_ctx("Keep away list updated","options"),KviOption_boolEnableAwayListUpdates);
 	mergeTip(b,
 		__tr2qs_ctx("<center>KVIrc sends out a channel /WHO message every now and then to keep " \
 			"the channel away list in sync. Use this option to disable this feature (and to save " \
-			"your IRC bandwidth.</center>","options"));
+			"your IRC bandwidth. If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.</center>","options"));
 
 	addRowSpacer(0,5,4,5);
 }
