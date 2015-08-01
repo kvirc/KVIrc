@@ -1098,6 +1098,7 @@ void KviConsoleWindow::applyOptions()
 
 void KviConsoleWindow::resizeEvent(QResizeEvent *)
 {
+	qDebug("Console window resize event %d,%d",width(),height());
 	int hght = m_pInput->heightHint();
 	int hght2 = m_pButtonBox->sizeHint().height();
 	m_pButtonBox->setGeometry(0,0,width(),hght2);

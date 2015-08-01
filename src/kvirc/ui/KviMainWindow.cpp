@@ -76,6 +76,7 @@
 #include <QShortcut>
 #include <QFile>
 #include <QMenu>
+#include <QWindowStateChangeEvent>
 
 #include <time.h>
 
@@ -795,17 +796,25 @@ void KviMainWindow::changeEvent(QEvent * e)
 {
 #ifndef COMPILE_ON_MAC
 	// For Qt5 this should be used to minimize to tray
-	if(e->type() == QEvent::WindowStateChange && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+	if(
+			(e->type() == QEvent::WindowStateChange) &&
+			(windowState() & Qt::WindowMinimized) &&
+			KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) &&
+			e->spontaneous()
+		)
 	{
+		
 		if(!trayIcon())
 		{
 			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 		}
 		if(trayIcon())
 		{
-			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
+			QWindowStateChangeEvent * ev = (QWindowStateChangeEvent *)e;
+			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = ev->oldState() & Qt::WindowMaximized;
 			QTimer::singleShot( 0, this, SLOT(hide()) );
 		}
+		return;
 	}
 #endif
 	if (e->type() == QEvent::ActivationChange)
