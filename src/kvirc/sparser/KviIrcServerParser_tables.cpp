@@ -816,8 +816,8 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 725 RPL_TESTLINE
 	0,                                               // 726 RPL_NOTESTLINE
 	0,                                               // 727
-	0,                                               // 728
-	0,                                               // 729
+	PTM(parseNumeric728)                           , // 728 RPL_QUIETLIST
+	PTM(parseNumeric729)                           , // 729 RPL_QUIETLISTEND
 	0,                                               // 730
 	0,                                               // 731
 	0,                                               // 732

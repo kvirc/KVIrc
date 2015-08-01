@@ -138,6 +138,8 @@ private:
 	void parseNumeric005(KviIrcMessage *msg);
 	void parseNumeric367(KviIrcMessage *msg);
 	void parseNumeric368(KviIrcMessage *msg);
+	void parseNumeric728(KviIrcMessage *msg);
+	void parseNumeric729(KviIrcMessage *msg);
 
 	void parseNumericMotd(KviIrcMessage *msg);
 	void parseNumericNames(KviIrcMessage *msg);

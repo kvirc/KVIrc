@@ -726,7 +726,6 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 	} else szBuffer = __tr2qs("(Unknown)");
 }
 
-// Freenode likes it hard, so it's using the same numeric for bans and quiet bans
 void KviIrcServerParser::parseNumeric367(KviIrcMessage *msg)
 {
 	// 367: RPL_BANLIST [I,E,U,D]
@@ -738,18 +737,10 @@ void KviIrcServerParser::parseNumeric367(KviIrcMessage *msg)
 	getDateTimeStringFromCharTimeT(bansetat,msg->safeParam(4));
 	if(bansetby.isEmpty())bansetby = __tr2qs("(Unknown)");
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
-	if(chan)
+	if(chan && chan->sentListRequest('b'))
 	{
-		if(msg->connection()->serverInfo()->supportedListModes().contains('q') && chan->sentListRequest('q'))
-		{
-			chan->setModeInList('q',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
-			return;
-		}
-		if(chan->sentListRequest('b'))
-		{
-			chan->setModeInList('b',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
-			return;
-		}
+		chan->setModeInList('b',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
+		return;
 	}
 	if(!msg->haltOutput())
 	{
@@ -764,18 +755,10 @@ void KviIrcServerParser::parseNumeric368(KviIrcMessage *msg)
 {
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
-	if(chan)
+	if(chan && chan->sentListRequest('b'))
 	{
-		if(msg->connection()->serverInfo()->supportedListModes().contains('q') && chan->sentListRequest('q'))
-		{
-			chan->setListRequestDone('q');
-			return;
-		}
-		if(chan->sentListRequest('b'))
-		{
-			chan->setListRequestDone('b');
-			return;
-		}
+		chan->setListRequestDone('b');
+		return;
 	}
 	if(!msg->haltOutput())
 	{
@@ -2463,4 +2446,52 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
 		msg->connection()->endInitialCapNegotiation();
+}
+
+void KviIrcServerParser::parseNumeric728(KviIrcMessage *msg)
+{
+	// 728: RPL_QUIETLIST (freenode)
+	// :prefix 728 target <channel> <mode> <banmask> [bansetby] [bansetat]
+	QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
+	// chMode is supposes to be an hardcoded 'q', but they could add other flags in the future
+	char chMode     = msg->connection()->decodeText(msg->safeParam(2)).at(0).toLatin1();
+	QString banmask  = msg->connection()->decodeText(msg->safeParam(3));
+	QString bansetby = msg->connection()->decodeText(msg->safeParam(4));
+	QString bansetat;
+	getDateTimeStringFromCharTimeT(bansetat,msg->safeParam(5));
+	if(bansetby.isEmpty())bansetby = __tr2qs("(Unknown)");
+	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+	if(chan && chan->sentListRequest(chMode))
+	{
+		chan->setModeInList(chMode,banmask,true,bansetby,QString(msg->safeParam(5)).toUInt());
+		return;
+	}
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_BAN,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
+			&(__tr2qs("mode listing")),&szChan,chMode,&banmask,&bansetby,&bansetat);
+	}
+}
+
+void KviIrcServerParser::parseNumeric729(KviIrcMessage *msg)
+{
+	// 729: RPL_QUIETLISTEND (freenode)
+	// :prefix 729 target <channel> <mode> :End of Channel Quiet List
+	QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
+	// chMode is supposes to be an hardcoded 'q', but they could add other flags in the future
+	char chMode     = msg->connection()->decodeText(msg->safeParam(2)).at(0).toLatin1();
+	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+	if(chan && chan->sentListRequest(chMode))
+	{
+		chan->setListRequestDone(chMode);
+		return;
+	}
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_BAN,__tr2qs("End of channel \"%c\" %Q for \r!c\r%Q\r"),chMode,&(__tr2qs("mode list")),&szChan);
+	}
 }
