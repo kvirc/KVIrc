@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 23:02+0000\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -24,14 +24,14 @@ msgstr ""
 msgid " bytes"
 msgstr " bajtů"
 
-#: src/modules/options/OptionsWidget_query.cpp:102
+#: src/modules/options/OptionsWidget_query.cpp:107
 #: src/modules/options/OptionsWidget_channel.cpp:140
 msgid " days"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:155
-#: src/modules/options/OptionsWidget_query.cpp:98
+#: src/modules/options/OptionsWidget_query.cpp:103
 #: src/modules/options/OptionsWidget_channel.cpp:136
+#: src/modules/options/OptionsWidget_ircView.cpp:155
 msgid " lines"
 msgstr " řádků"
 
@@ -39,12 +39,12 @@ msgstr " řádků"
 msgid " min"
 msgstr " min"
 
+#: src/modules/options/OptionsWidget_connection.cpp:157
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:56
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
 #: src/modules/options/OptionsWidget_dcc.cpp:276
-#: src/modules/options/OptionsWidget_connection.cpp:157
 msgid " msec"
 msgstr " msek"
 
@@ -57,12 +57,12 @@ msgstr "pixelů"
 msgid " requests"
 msgstr " požadavků"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:96
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
-#: src/modules/options/OptionsWidget_dcc.cpp:140
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:121
+#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_dcc.cpp:140
 msgid " sec"
 msgstr " sek"
 
@@ -98,9 +98,9 @@ msgstr "&Nová Proxy"
 msgid "&New Server"
 msgstr "&Nový server"
 
-#: src/modules/options/OptionsWidget_servers.cpp:383
-#: src/modules/options/OptionsDialog.cpp:230
 #: src/modules/options/OptionsWidget_identity.cpp:234
+#: src/modules/options/OptionsDialog.cpp:230
+#: src/modules/options/OptionsWidget_servers.cpp:383
 #: src/modules/options/OptionsWidgetContainer.cpp:101
 msgid "&OK"
 msgstr "&OK"
@@ -402,10 +402,11 @@ msgstr ""
 msgid ""
 "<center>KVIrc sends out a channel /WHO message every now and then to keep "
 "the channel away list in sync. Use this option to disable this feature (and "
-"to save your IRC bandwidth.</center>"
+"to save your IRC bandwidth. If the server supports IRCv3.1's away-notify "
+"extension, it will be used instead of WHO requests.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:103
+#: src/modules/options/OptionsWidget_query.cpp:108
 #: src/modules/options/OptionsWidget_channel.cpp:141
 #, fuzzy
 msgid ""
@@ -415,7 +416,7 @@ msgstr ""
 "<center>Minimální hodnota: <b>0 sek</b><br>Maximální hodnota: <b>86400 sek</"
 "b></center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:99
+#: src/modules/options/OptionsWidget_query.cpp:104
 #: src/modules/options/OptionsWidget_channel.cpp:137
 #, fuzzy
 msgid ""
@@ -1085,11 +1086,22 @@ msgstr ""
 "pokud se DCC přenosy zastaví ihned po navázaní spojení bez zaslání dat.</"
 "center>"
 
-#: src/modules/options/OptionsWidget_dcc.cpp:331
 #: src/modules/options/OptionsWidget_query.cpp:82
+#: src/modules/options/OptionsWidget_dcc.cpp:331
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
+"window is not active.</center>"
+msgstr ""
+"<center>Tato volba způsobí, že se objeví malé upozorňovací okno v pravém "
+"dolním rohu obrazovky, když obdržíte novou zprávu a okno KVIrc není aktivní."
+"</center>"
+
+#: src/modules/options/OptionsWidget_query.cpp:87
+#, fuzzy
+msgid ""
+"<center>This option causes a small notifier window to pop up in the low "
+"right corner of the screen when a new notice is received and the KVIrc "
 "window is not active.</center>"
 msgstr ""
 "<center>Tato volba způsobí, že se objeví malé upozorňovací okno v pravém "
@@ -1167,7 +1179,7 @@ msgstr ""
 "přijato soukromé ohlášení (NOTICE).<br>Pokud ji vypnete, soukromé ohlášení "
 "se budou zobrazovat v aktivním okně, nebo na běžném kanále.</center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:87
+#: src/modules/options/OptionsWidget_query.cpp:92
 msgid ""
 "<center>This option enables query window information label. It can show you "
 "known information about query target at the top of the window.<br>Uncheck if "
@@ -1708,18 +1720,18 @@ msgstr "Přidat"
 msgid "Add Profile"
 msgstr "Profil"
 
-#: src/modules/options/OptionsWidget_servers.cpp:349
 #: src/modules/options/OptionsWidget_nickserv.cpp:264
+#: src/modules/options/OptionsWidget_servers.cpp:349
 msgid "Add Rule"
 msgstr "Přidat pravidlo"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1005
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
-#: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_connection.h:46
-#: src/modules/options/OptionsWidget_irc.h:57
 #: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_identity.h:202
+#: src/modules/options/OptionsWidget_irc.h:57
 msgid "Advanced"
 msgstr "Pokročilé"
 
@@ -1969,8 +1981,8 @@ msgid "Background image"
 msgstr "Obrázek na pozadí"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:123
-#: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_userList.cpp:131
+#: src/modules/options/OptionsWidget_ircView.cpp:54
 msgid "Background image:"
 msgstr "Obrázek na pozadí:"
 
@@ -1995,10 +2007,10 @@ msgid "Blend color:"
 msgstr "Míchaná barva:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:71
 #: src/modules/options/OptionsWidget_notifier.cpp:61
-#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_input.cpp:63
+#: src/modules/options/OptionsWidget_userList.cpp:148
+#: src/modules/options/OptionsWidget_ircView.cpp:71
 msgid "Bottom"
 msgstr "Dole"
 
@@ -2026,27 +2038,27 @@ msgstr "CTCP Odezvy"
 msgid "Cache IP address"
 msgstr "Cache IP adresy"
 
-#: src/modules/options/OptionsWidget_servers.cpp:389
-#: src/modules/options/OptionsWidget_servers.cpp:1025
-#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:951
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsWidget_servers.cpp:389
+#: src/modules/options/OptionsWidget_servers.cpp:1025
 #: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "Zrušit"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_ircView.cpp:67
-#: src/modules/options/OptionsWidget_ircView.cpp:72
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
+#: src/modules/options/OptionsWidget_ircView.cpp:67
+#: src/modules/options/OptionsWidget_ircView.cpp:72
 msgid "Center"
 msgstr "Centrovat"
 
@@ -2172,9 +2184,9 @@ msgstr ""
 msgid "Commit all changes immediately."
 msgstr "Provede všechny změny okamžitě."
 
-#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_notify.cpp:41
 #: src/modules/options/OptionsWidget_connection.cpp:227
+#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_proxy.cpp:107
 msgid "Configuration"
 msgstr "Nastavení"
@@ -2233,6 +2245,7 @@ msgid "Cursor color"
 msgstr "Barva kurzoru"
 
 #: src/modules/options/OptionsWidget_away.cpp:53
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
 msgstr ""
 
@@ -2311,8 +2324,8 @@ msgstr "Smazat"
 msgid "Delete Profile"
 msgstr "Smazat pravidlo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:358
 #: src/modules/options/OptionsWidget_nickserv.cpp:272
+#: src/modules/options/OptionsWidget_servers.cpp:358
 msgid "Delete Rule"
 msgstr "Smazat pravidlo"
 
@@ -2425,8 +2438,8 @@ msgstr "Vypsat téma kanálu"
 msgid "Edit Profile"
 msgstr "Profil"
 
-#: src/modules/options/OptionsWidget_servers.cpp:354
 #: src/modules/options/OptionsWidget_nickserv.cpp:268
+#: src/modules/options/OptionsWidget_servers.cpp:354
 msgid "Edit Rule"
 msgstr "Upravit pravidlo"
 
@@ -2443,8 +2456,8 @@ msgstr "Povolit ignorování pro"
 msgid "Enable Network Profiles"
 msgstr "Vlastnosti sítě"
 
-#: src/modules/options/OptionsWidget_servers.cpp:321
 #: src/modules/options/OptionsWidget_nickserv.cpp:232
+#: src/modules/options/OptionsWidget_servers.cpp:321
 msgid "Enable NickServ Identification"
 msgstr "Povolit identifikaci NickServ"
 
@@ -2602,9 +2615,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Stahování selhalo"
 
-#: src/modules/options/OptionsWidget_ircView.h:70
 #: src/modules/options/OptionsWidget_userList.h:103
 #: src/modules/options/OptionsWidget_windowList.h:98
+#: src/modules/options/OptionsWidget_ircView.h:70
 msgid "Features"
 msgstr "Vlastnosti"
 
@@ -2646,17 +2659,17 @@ msgstr "Blikající okno, když je uživatel online"
 msgid "Flood Protection"
 msgstr "Ochrana před zahlcením"
 
-#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 #: src/modules/options/OptionsWidget_notifier.cpp:38
 #: src/modules/options/OptionsWidget_input.cpp:38
+#: src/modules/options/OptionsWidget_theme.cpp:182
 msgid "Font"
 msgstr "Font"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
-#: src/modules/options/OptionsWidget_ircView.cpp:51
 #: src/modules/options/OptionsWidget_userList.cpp:52
+#: src/modules/options/OptionsWidget_ircView.cpp:51
 msgid "Font:"
 msgstr "Font:"
 
@@ -2695,13 +2708,13 @@ msgstr "Popředí:"
 msgid "Gender:"
 msgstr "Pohlaví:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_message.cpp:71
+#: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
+#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_identity.h:153
 #: src/modules/options/OptionsWidget_irc.h:43
-#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_theme.h:33
 msgid "General"
 msgstr "Hlavní"
@@ -2811,9 +2824,9 @@ msgid "Horizontal Alignment:"
 msgstr "Horizontální zarovnání:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_input.cpp:48
+#: src/modules/options/OptionsWidget_ircView.cpp:56
 msgid "Horizontal align:"
 msgstr "Horizontální zarovnání:"
 
@@ -2830,8 +2843,8 @@ msgstr "Dvojklikem navštívíte odkaz"
 msgid "ID3 tags' encoding"
 msgstr "kódování ID3 tagů"
 
-#: src/modules/options/OptionsWidget_servers.cpp:670
 #: src/modules/options/OptionsWidget_proxy.cpp:116
+#: src/modules/options/OptionsWidget_servers.cpp:670
 msgid "IP address:"
 msgstr "IP adresa:"
 
@@ -2876,9 +2889,9 @@ msgstr "Ident služba"
 msgid "Ident username:"
 msgstr "Ident:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:336
 #: src/modules/options/OptionsWidget_nickserv.cpp:89
 #: src/modules/options/OptionsWidget_nickserv.cpp:247
+#: src/modules/options/OptionsWidget_servers.cpp:336
 msgid "Identify Command"
 msgstr "Příkaz identifikace"
 
@@ -2937,7 +2950,7 @@ msgstr "Vstup"
 msgid "Interface"
 msgstr "Rozhraní"
 
-#: src/modules/options/OptionsWidget_query.cpp:101
+#: src/modules/options/OptionsWidget_query.cpp:106
 #: src/modules/options/OptionsWidget_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
@@ -2952,8 +2965,8 @@ msgstr "Neplatné NickServ pravidlo"
 msgid "Invalid Profile Rule"
 msgstr "Neplatné NickServ pravidlo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:630
 #: src/modules/options/OptionsWidget_identity.cpp:656
+#: src/modules/options/OptionsWidget_servers.cpp:630
 msgid "Invisible (+i)"
 msgstr "Neviditelný (+i)"
 
@@ -2972,7 +2985,7 @@ msgid "KVIrc Preferences"
 msgstr "KVIrc Předvolby"
 
 #: src/modules/options/OptionsWidget_channel.cpp:144
-msgid "Keep away list updated by sending WHO requests"
+msgid "Keep away list updated"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_channel.cpp:59
@@ -3021,10 +3034,10 @@ msgid "Languages:"
 msgstr "Jazyky:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_ircView.cpp:65
 #: src/modules/options/OptionsWidget_notifier.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_input.cpp:57
+#: src/modules/options/OptionsWidget_userList.cpp:142
+#: src/modules/options/OptionsWidget_ircView.cpp:65
 msgid "Left"
 msgstr "Vlevo"
 
@@ -3360,14 +3373,14 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "Autentifikační pravidlo NIckServ"
 
-#: src/modules/options/OptionsWidget_servers.cpp:334
 #: src/modules/options/OptionsWidget_nickserv.cpp:63
 #: src/modules/options/OptionsWidget_nickserv.cpp:245
+#: src/modules/options/OptionsWidget_servers.cpp:334
 msgid "NickServ Mask"
 msgstr "NickServ Maska"
 
-#: src/modules/options/OptionsWidget_servers.cpp:335
 #: src/modules/options/OptionsWidget_nickserv.cpp:246
+#: src/modules/options/OptionsWidget_servers.cpp:335
 msgid "NickServ Request Mask"
 msgstr "NickServ Maska požadavku"
 
@@ -3379,9 +3392,9 @@ msgid ""
 "and servers and click Advanced."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:333
 #: src/modules/options/OptionsWidget_identity.cpp:718
 #: src/modules/options/OptionsWidget_nickserv.cpp:243
+#: src/modules/options/OptionsWidget_servers.cpp:333
 msgid "Nickname"
 msgstr "Přezdívka"
 
@@ -3397,10 +3410,10 @@ msgstr "Mřížka přezdívky"
 msgid "Nickname alternatives"
 msgstr "Alternativní přezdívky"
 
-#: src/modules/options/OptionsWidget_servers.cpp:161
-#: src/modules/options/OptionsWidget_servers.cpp:580
 #: src/modules/options/OptionsWidget_identity.cpp:304
 #: src/modules/options/OptionsWidget_identity.cpp:915
+#: src/modules/options/OptionsWidget_servers.cpp:161
+#: src/modules/options/OptionsWidget_servers.cpp:580
 msgid "Nickname:"
 msgstr "Přezdívka:"
 
@@ -3412,7 +3425,7 @@ msgstr "Přezdívky"
 msgid "No selection"
 msgstr "Žádný výběr"
 
-#: src/modules/options/libkvioptions.cpp:206
+#: src/modules/options/libkvioptions.cpp:207
 msgid "No such options page class name %Q"
 msgstr ""
 
@@ -3453,11 +3466,11 @@ msgstr "Oznámit dokončení v oznamovači"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Oznámit selhanou DCC komunikaci vzdálenému konci"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1019
 #: src/modules/options/OptionsWidget_identity.cpp:840
 #: src/modules/options/OptionsWidget_identity.cpp:955
 #: src/modules/options/OptionsWidget_nickserv.cpp:133
 #: src/modules/options/OptionsWidget_nickserv.cpp:154
+#: src/modules/options/OptionsWidget_servers.cpp:1019
 msgid "OK"
 msgstr "OK"
 
@@ -3611,9 +3624,9 @@ msgstr "Neprůsvitnost zdrojového okna:"
 msgid "Part message:"
 msgstr "Odchodová zpráva:"
 
+#: src/modules/options/OptionsWidget_proxy.cpp:120
 #: src/modules/options/OptionsWidget_servers.cpp:152
 #: src/modules/options/OptionsWidget_servers.cpp:571
-#: src/modules/options/OptionsWidget_proxy.cpp:120
 msgid "Password:"
 msgstr "Heslo:"
 
@@ -3626,12 +3639,12 @@ msgstr "Vložit Server"
 msgid "Paste last channel log"
 msgstr "seznam uživatelů,kanál"
 
-#: src/modules/options/OptionsWidget_query.cpp:92
+#: src/modules/options/OptionsWidget_query.cpp:97
 #, fuzzy
 msgid "Paste last query log"
 msgstr "seznam uživatelů,kanál"
 
-#: src/modules/options/OptionsWidget_query.cpp:97
+#: src/modules/options/OptionsWidget_query.cpp:102
 #: src/modules/options/OptionsWidget_channel.cpp:135
 #, fuzzy
 msgid "Paste up to:"
@@ -3672,6 +3685,11 @@ msgstr ""
 msgid "Popup notifier on new dcc chat message"
 msgstr "Zobrazit oznamovač při nové query zprávě"
 
+#: src/modules/options/OptionsWidget_query.cpp:85
+#, fuzzy
+msgid "Popup notifier on new notice"
+msgstr "Zobrazit oznamovač při nové query zprávě"
+
 #: src/modules/options/OptionsWidget_query.cpp:80
 msgid "Popup notifier on new query message"
 msgstr "Zobrazit oznamovač při nové query zprávě"
@@ -3684,8 +3702,8 @@ msgstr "Zobrazit Oznamovač, když je uživatel online"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Zobrazit okno oznamovače při zvýrazeněných zprávách"
 
-#: src/modules/options/OptionsWidget_servers.cpp:656
 #: src/modules/options/OptionsWidget_proxy.cpp:114
+#: src/modules/options/OptionsWidget_servers.cpp:656
 msgid "Port:"
 msgstr "Port:"
 
@@ -3881,9 +3899,9 @@ msgstr "Ode&brat proxy"
 msgid "Re&move Server"
 msgstr "S&mazat server"
 
+#: src/modules/options/OptionsWidget_identity.cpp:324
 #: src/modules/options/OptionsWidget_servers.cpp:187
 #: src/modules/options/OptionsWidget_servers.cpp:606
-#: src/modules/options/OptionsWidget_identity.cpp:324
 msgid "Real name:"
 msgstr "Skutečné jméno:"
 
@@ -3967,10 +3985,10 @@ msgid "Restrict alert"
 msgstr "Omezit výstrahu"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_notifier.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_input.cpp:58
+#: src/modules/options/OptionsWidget_userList.cpp:143
+#: src/modules/options/OptionsWidget_ircView.cpp:66
 msgid "Right"
 msgstr "Vpravo"
 
@@ -4099,8 +4117,8 @@ msgstr "Serverová maska"
 msgid "Server notices"
 msgstr "Oznámení serveru"
 
-#: src/modules/options/OptionsWidget_servers.cpp:634
 #: src/modules/options/OptionsWidget_identity.cpp:657
+#: src/modules/options/OptionsWidget_servers.cpp:634
 msgid "Server notices (+s)"
 msgstr "Oznámení serveru (+s)"
 
@@ -4183,7 +4201,7 @@ msgstr "Zobrazí okno, které umožní úpravy vyskakovacích (popup) menu"
 msgid "Show in active window"
 msgstr "Zobrazovat v aktivním okně"
 
-#: src/modules/options/OptionsWidget_query.cpp:85
+#: src/modules/options/OptionsWidget_query.cpp:90
 msgid "Show information about query target at the top of the query"
 msgstr ""
 
@@ -4414,8 +4432,8 @@ msgstr ""
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr "Toto umožňuje výběr zvukového systému použitého s KVIrc."
 
-#: src/modules/options/OptionsWidget_servers.cpp:325
 #: src/modules/options/OptionsWidget_nickserv.cpp:235
+#: src/modules/options/OptionsWidget_servers.cpp:325
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Toto povolí automatickou identifikaci s NickServ"
 
@@ -4572,14 +4590,14 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_ircView.cpp:64
-#: src/modules/options/OptionsWidget_ircView.cpp:69
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
+#: src/modules/options/OptionsWidget_ircView.cpp:64
+#: src/modules/options/OptionsWidget_ircView.cpp:69
 msgid "Tile"
 msgstr "Dlaždice"
 
@@ -4614,10 +4632,10 @@ msgid "Tools"
 msgstr "Nástroje"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_ircView.cpp:70
 #: src/modules/options/OptionsWidget_notifier.cpp:60
-#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_input.cpp:62
+#: src/modules/options/OptionsWidget_userList.cpp:147
+#: src/modules/options/OptionsWidget_ircView.cpp:70
 msgid "Top"
 msgstr "Nahoře"
 
@@ -4698,8 +4716,8 @@ msgstr "Použít \"broken bouncer hack\" pro detekci adresy"
 msgid "Use \"smart\" notify list manager"
 msgstr "Použít \"smart\" seznam oznamování"
 
-#: src/modules/options/OptionsWidget_servers.cpp:721
 #: src/modules/options/OptionsWidget_proxy.cpp:130
+#: src/modules/options/OptionsWidget_servers.cpp:721
 msgid "Use IPv6 protocol"
 msgstr "Použít IPv6 protokol"
 
@@ -4859,8 +4877,8 @@ msgstr "Použít podporu pro firewall"
 msgid "Use zsh-like nick completion"
 msgstr "Použít doplňování přezdívek jako v bashi"
 
-#: src/modules/options/OptionsWidget_servers.cpp:619
 #: src/modules/options/OptionsWidget_identity.cpp:655
+#: src/modules/options/OptionsWidget_servers.cpp:619
 msgid "User Mode"
 msgstr "Uživatelský mód"
 
@@ -4885,11 +4903,11 @@ msgstr "Uživatelé"
 msgid "Username"
 msgstr "Uživatelské jméno:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:141
-#: src/modules/options/OptionsWidget_servers.cpp:559
 #: src/modules/options/OptionsWidget_identity.cpp:317
 #: src/modules/options/OptionsWidget_identity.cpp:931
 #: src/modules/options/OptionsWidget_proxy.cpp:118
+#: src/modules/options/OptionsWidget_servers.cpp:141
+#: src/modules/options/OptionsWidget_servers.cpp:559
 msgid "Username:"
 msgstr "Uživatelské jméno:"
 
@@ -4910,9 +4928,9 @@ msgid "Vertical Alignment:"
 msgstr "Vertikální zarovnání:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_input.cpp:52
+#: src/modules/options/OptionsWidget_ircView.cpp:60
 msgid "Vertical align:"
 msgstr "Vertikální zarovnání:"
 
@@ -4928,8 +4946,8 @@ msgstr "Voice:"
 msgid "Volume slider controls PCM, not Master"
 msgstr "Posuvník hlasitosti ovládá PCM, ne Hlasitost"
 
-#: src/modules/options/OptionsWidget_servers.cpp:638
 #: src/modules/options/OptionsWidget_identity.cpp:658
+#: src/modules/options/OptionsWidget_servers.cpp:638
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 
@@ -5103,9 +5121,9 @@ msgstr "motiv,pozadí"
 msgid "theme,colors,messages,output"
 msgstr "motiv,barvy,zprávy,výstup"
 
+#: src/modules/options/OptionsWidget_message.h:40
 #: src/modules/options/OptionsWidget_ircView.h:37
 #: src/modules/options/OptionsWidget_ircView.h:51
-#: src/modules/options/OptionsWidget_message.h:40
 msgid "theme,colors,output"
 msgstr "motiv,barvy,výstup"
 

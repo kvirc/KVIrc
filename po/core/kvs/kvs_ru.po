@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 23:02+0000\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2012-07-04 07:30+0700\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 asokolov "
 "org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "A class can't be a subclass of itself"
 msgstr "Класс не может быть подклассом для самого себя"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1376
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1382
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
@@ -119,6 +119,7 @@ msgstr "Невозможно удалить ссылку на нулевой о�
 msgid "Can't delete an inexistant object"
 msgstr "Невозможно удалить несуществующий объект"
 
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1226
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1456
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
@@ -128,7 +129,7 @@ msgstr ""
 "свойство приндексировано и определено, но возвращаемое значение не "
 "действительно"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1218
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1219
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1448
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
@@ -137,21 +138,12 @@ msgstr ""
 "Невозможно найти свойство с именем '%Q' для объекта '%Q' класса '%Q': "
 "свойство проиндексировано, но в действительности не существует"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1225
-msgid ""
-"Can't find property named '%Q' for object named '%Q'of class '%Q': the "
-"property is indexed and defined but the returned variant is not valid"
-msgstr ""
-"Невозможно найти свойство с именем '%Q' для объекта '%Q' класса '%Q': "
-"свойство приндексировано и определено, но возвращаемое значение не "
-"действительно"
-
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:509
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Не найдено всплывающее меню '%Q': проигнорировано"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:478
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
 msgid "Can't find the icon '%Q'"
 msgstr "Не найдена иконка '%Q"
 
@@ -159,7 +151,7 @@ msgstr "Не найдена иконка '%Q"
 msgid "Can't find the icon '%Q': ignoring"
 msgstr "Не могу найти иконку '%Q': проигнорировано"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1397
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1403
 msgid "Can't find the requested image"
 msgstr "Не могу найти запрошенное изображение"
 
@@ -700,7 +692,7 @@ msgstr ""
 "заключать это в кавычки"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1211
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1439
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1440
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Нет Qt-свойства с именем '%Q' для объекта '%Q' класса '%Q'"
 
@@ -716,16 +708,16 @@ msgstr "Каталог текущего языка %Q не найден"
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Не определена для типа url (%Q)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1499
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1512
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1534
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Нет обработчика '%Q' для события '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1495
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1508
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Нет обработчика '%Q' для заготовки события с номером '%d'"
 
@@ -740,12 +732,12 @@ msgstr "Нет пункта меню с текстом '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Нет такого контекста IRC (%u)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1475
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1483
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 msgid "No such event (%Q)"
 msgstr "Нет такого события (%Q)"
 
@@ -796,7 +788,7 @@ msgstr "Постоянный"
 msgid "Properties for Qt class %s"
 msgstr "Свойства Qt-класса %s"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1404
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1410
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1547
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
@@ -1145,7 +1137,7 @@ msgstr ""
 "существует)"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1204
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1426
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1431
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Объект \"''%Q\" класса %Q не является Qt-свойством"
 
@@ -1159,7 +1151,7 @@ msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
 "Всплывающее меню '%s' фактически заблокировано: самомодификация не допустима"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1241
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1247
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
@@ -1234,8 +1226,8 @@ msgstr "Заданный родительский объект не сущест
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "Заданное время пинга не действительно: принимается 0 (без пинга)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:445
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
 msgid "The specified window has no button containers"
 msgstr "Заданное окно не имеет контейнеров с кнопками"
 
@@ -1587,6 +1579,12 @@ msgstr "Незаконченный блок инструкций"
 msgid "Unterminated string constant"
 msgstr "Строка с константой не закрыта"
 
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1237
+#, fuzzy
+msgid ""
+"Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid"
+msgstr "Нет Qt-свойства с именем '%Q' для объекта '%Q' класса '%Q'"
+
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1267
 msgid "Window '%Q' not found, using current one"
 msgstr "Окно '%Q' не найдено, используется текущее"
@@ -1650,7 +1648,8 @@ msgstr "[KVS]%c Ошибка при компиляции: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ошибка при выполнении: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188
+#: src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Предупреждение: %Q"
 
@@ -1687,6 +1686,14 @@ msgstr "say: внутрь текста вставлена команда"
 
 #~ msgid "A popup menu cannot be popped up twice"
 #~ msgstr "Всплывающее меню не может быть показано дважды"
+
+#~ msgid ""
+#~ "Can't find property named '%Q' for object named '%Q'of class '%Q': the "
+#~ "property is indexed and defined but the returned variant is not valid"
+#~ msgstr ""
+#~ "Невозможно найти свойство с именем '%Q' для объекта '%Q' класса '%Q': "
+#~ "свойство приндексировано и определено, но возвращаемое значение не "
+#~ "действительно"
 
 #~ msgid "Inexisting popup \"%Q\""
 #~ msgstr "В существующем всплывающем меню \"%Q\""

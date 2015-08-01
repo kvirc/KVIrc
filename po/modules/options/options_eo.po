@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 23:02+0000\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2012-07-03 12:55+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -21,14 +21,14 @@ msgstr ""
 msgid " bytes"
 msgstr " bajtoj"
 
-#: src/modules/options/OptionsWidget_query.cpp:102
+#: src/modules/options/OptionsWidget_query.cpp:107
 #: src/modules/options/OptionsWidget_channel.cpp:140
 msgid " days"
 msgstr " tagoj"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:155
-#: src/modules/options/OptionsWidget_query.cpp:98
+#: src/modules/options/OptionsWidget_query.cpp:103
 #: src/modules/options/OptionsWidget_channel.cpp:136
+#: src/modules/options/OptionsWidget_ircView.cpp:155
 msgid " lines"
 msgstr " linioj"
 
@@ -36,12 +36,12 @@ msgstr " linioj"
 msgid " min"
 msgstr " min"
 
+#: src/modules/options/OptionsWidget_connection.cpp:157
 #: src/modules/options/OptionsWidget_lag.cpp:45
 #: src/modules/options/OptionsWidget_lag.cpp:56
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
 #: src/modules/options/OptionsWidget_dcc.cpp:276
-#: src/modules/options/OptionsWidget_connection.cpp:157
 msgid " msec"
 msgstr "msek"
 
@@ -53,12 +53,12 @@ msgstr " bilderoj"
 msgid " requests"
 msgstr " petoj"
 
-#: src/modules/options/OptionsWidget_avatar.cpp:96
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
-#: src/modules/options/OptionsWidget_dcc.cpp:140
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_channel.cpp:121
+#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_dcc.cpp:140
 msgid " sec"
 msgstr " sek"
 
@@ -94,9 +94,9 @@ msgstr "&Nova Prokuro"
 msgid "&New Server"
 msgstr "&Nova Servilo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:383
-#: src/modules/options/OptionsDialog.cpp:230
 #: src/modules/options/OptionsWidget_identity.cpp:234
+#: src/modules/options/OptionsDialog.cpp:230
+#: src/modules/options/OptionsWidget_servers.cpp:383
 #: src/modules/options/OptionsWidgetContainer.cpp:101
 msgid "&OK"
 msgstr "&Bone"
@@ -397,16 +397,18 @@ msgstr ""
 "center>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:146
+#, fuzzy
 msgid ""
 "<center>KVIrc sends out a channel /WHO message every now and then to keep "
 "the channel away list in sync. Use this option to disable this feature (and "
-"to save your IRC bandwidth.</center>"
+"to save your IRC bandwidth. If the server supports IRCv3.1's away-notify "
+"extension, it will be used instead of WHO requests.</center>"
 msgstr ""
 "<center>KVIrc elsendas kanalan /WHO (KIU) mesaĝon de tempo al tempo por teni "
 "la kanalan foran liston sinkronigita. Uzu ĉi tiun opcion por malebligi ĉi "
 "tiun trajton (kaj savi vian IRC kapaciton).</center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:103
+#: src/modules/options/OptionsWidget_query.cpp:108
 #: src/modules/options/OptionsWidget_channel.cpp:141
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -415,7 +417,7 @@ msgstr ""
 "<center>Minimuma valuo: <b>0 tagoj</b><br>Maksimuma valuo: <b>10 tagoj</b></"
 "center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:99
+#: src/modules/options/OptionsWidget_query.cpp:104
 #: src/modules/options/OptionsWidget_channel.cpp:137
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -1120,11 +1122,22 @@ msgstr ""
 "transirigoj haltas ĵus post starigo de konekto sen sendante iujn ajn "
 "datumojn.</center>"
 
-#: src/modules/options/OptionsWidget_dcc.cpp:331
 #: src/modules/options/OptionsWidget_query.cpp:82
+#: src/modules/options/OptionsWidget_dcc.cpp:331
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
+"window is not active.</center>"
+msgstr ""
+"<center>Ĉi tiu opcio kaŭzas ŝprucon de malgranda sciiga fenestro en la "
+"subdekstra angulo de la ekrano kiam nova mesaĝo estas ricevita kaj la KVIrc "
+"fenestro ne estas aktiva.</center>"
+
+#: src/modules/options/OptionsWidget_query.cpp:87
+#, fuzzy
+msgid ""
+"<center>This option causes a small notifier window to pop up in the low "
+"right corner of the screen when a new notice is received and the KVIrc "
 "window is not active.</center>"
 msgstr ""
 "<center>Ĉi tiu opcio kaŭzas ŝprucon de malgranda sciiga fenestro en la "
@@ -1203,7 +1216,7 @@ msgstr ""
 "(NOTICE) estas ricevita.<br>Se vi malebligas ĉi tion, privataj sciigoj estos "
 "montrataj en la aktiva fenestro aŭ komuna kanalo.</center>"
 
-#: src/modules/options/OptionsWidget_query.cpp:87
+#: src/modules/options/OptionsWidget_query.cpp:92
 msgid ""
 "<center>This option enables query window information label. It can show you "
 "known information about query target at the top of the window.<br>Uncheck if "
@@ -1776,18 +1789,18 @@ msgstr "Aldoni"
 msgid "Add Profile"
 msgstr "Aldoni Profilon"
 
-#: src/modules/options/OptionsWidget_servers.cpp:349
 #: src/modules/options/OptionsWidget_nickserv.cpp:264
+#: src/modules/options/OptionsWidget_servers.cpp:349
 msgid "Add Rule"
 msgstr "Aldoni Regulon"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1005
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
-#: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_connection.h:46
-#: src/modules/options/OptionsWidget_irc.h:57
 #: src/modules/options/OptionsWidget_channel.h:64
+#: src/modules/options/OptionsWidget_identity.h:202
+#: src/modules/options/OptionsWidget_irc.h:57
 msgid "Advanced"
 msgstr "Altnivela"
 
@@ -2032,8 +2045,8 @@ msgid "Background image"
 msgstr "Fona bildo"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:123
-#: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_userList.cpp:131
+#: src/modules/options/OptionsWidget_ircView.cpp:54
 msgid "Background image:"
 msgstr "Fona bildo:"
 
@@ -2058,10 +2071,10 @@ msgid "Blend color:"
 msgstr "Miksa koloro:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:140
-#: src/modules/options/OptionsWidget_ircView.cpp:71
 #: src/modules/options/OptionsWidget_notifier.cpp:61
-#: src/modules/options/OptionsWidget_userList.cpp:148
 #: src/modules/options/OptionsWidget_input.cpp:63
+#: src/modules/options/OptionsWidget_userList.cpp:148
+#: src/modules/options/OptionsWidget_ircView.cpp:71
 msgid "Bottom"
 msgstr "Malsupro"
 
@@ -2089,27 +2102,27 @@ msgstr "CTCP Respondoj"
 msgid "Cache IP address"
 msgstr "Kaŝi IP adreson"
 
-#: src/modules/options/OptionsWidget_servers.cpp:389
-#: src/modules/options/OptionsWidget_servers.cpp:1025
-#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:951
+#: src/modules/options/OptionsDialog.cpp:245
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsWidget_servers.cpp:389
+#: src/modules/options/OptionsWidget_servers.cpp:1025
 #: src/modules/options/OptionsWidgetContainer.cpp:109
 msgid "Cancel"
 msgstr "Rezigni"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:141
-#: src/modules/options/OptionsWidget_ircView.cpp:67
-#: src/modules/options/OptionsWidget_ircView.cpp:72
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
+#: src/modules/options/OptionsWidget_ircView.cpp:67
+#: src/modules/options/OptionsWidget_ircView.cpp:72
 msgid "Center"
 msgstr "Centra"
 
@@ -2232,9 +2245,9 @@ msgstr "Komandlinio en uzant-amika reĝimo defaŭlte"
 msgid "Commit all changes immediately."
 msgstr "Enmeti ĉiujn ŝanĝojn tuj"
 
-#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_notify.cpp:41
 #: src/modules/options/OptionsWidget_connection.cpp:227
+#: src/modules/options/OptionsWidget_lag.cpp:43
 #: src/modules/options/OptionsWidget_proxy.cpp:107
 msgid "Configuration"
 msgstr "Agordo"
@@ -2293,6 +2306,7 @@ msgid "Cursor color"
 msgstr "Kursora koloro"
 
 #: src/modules/options/OptionsWidget_away.cpp:53
+#, fuzzy, c-format
 msgid "Custom nickname (%nick% means a current nick):"
 msgstr "Laŭmenda kromnomo (%nick% signifas nunan kromnomon):"
 
@@ -2368,8 +2382,8 @@ msgstr "Forviŝi"
 msgid "Delete Profile"
 msgstr "Forviŝi Profilon"
 
-#: src/modules/options/OptionsWidget_servers.cpp:358
 #: src/modules/options/OptionsWidget_nickserv.cpp:272
+#: src/modules/options/OptionsWidget_servers.cpp:358
 msgid "Delete Rule"
 msgstr "Forviŝi Regulon"
 
@@ -2477,8 +2491,8 @@ msgstr "Montri kanalan temon"
 msgid "Edit Profile"
 msgstr "Redakti Profilon"
 
-#: src/modules/options/OptionsWidget_servers.cpp:354
 #: src/modules/options/OptionsWidget_nickserv.cpp:268
+#: src/modules/options/OptionsWidget_servers.cpp:354
 msgid "Edit Rule"
 msgstr "Redakti Regulon"
 
@@ -2494,8 +2508,8 @@ msgstr "Ebligi Ignori Por"
 msgid "Enable Network Profiles"
 msgstr "Ebligi Retajn Profilojn"
 
-#: src/modules/options/OptionsWidget_servers.cpp:321
 #: src/modules/options/OptionsWidget_nickserv.cpp:232
+#: src/modules/options/OptionsWidget_servers.cpp:321
 msgid "Enable NickServ Identification"
 msgstr "Ebligi NickServ Identigo"
 
@@ -2642,9 +2656,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Malsukcesis komenci la elŝuton"
 
-#: src/modules/options/OptionsWidget_ircView.h:70
 #: src/modules/options/OptionsWidget_userList.h:103
 #: src/modules/options/OptionsWidget_windowList.h:98
+#: src/modules/options/OptionsWidget_ircView.h:70
 msgid "Features"
 msgstr "Trajtoj"
 
@@ -2684,17 +2698,17 @@ msgstr "Ekbrili fenestron kiam uzantoj enretiĝas"
 msgid "Flood Protection"
 msgstr "Superŝuta Protekto"
 
-#: src/modules/options/OptionsWidget_theme.cpp:182
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 #: src/modules/options/OptionsWidget_notifier.cpp:38
 #: src/modules/options/OptionsWidget_input.cpp:38
+#: src/modules/options/OptionsWidget_theme.cpp:182
 msgid "Font"
 msgstr "Tiparo"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
-#: src/modules/options/OptionsWidget_ircView.cpp:51
 #: src/modules/options/OptionsWidget_userList.cpp:52
+#: src/modules/options/OptionsWidget_ircView.cpp:51
 msgid "Font:"
 msgstr "Tiparo:"
 
@@ -2733,13 +2747,13 @@ msgstr "Malfono:"
 msgid "Gender:"
 msgstr "Sekso:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_message.cpp:71
+#: src/modules/options/OptionsWidget_servers.cpp:259
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
+#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_identity.h:153
 #: src/modules/options/OptionsWidget_irc.h:43
-#: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_theme.h:33
 msgid "General"
 msgstr "Ĝenerala"
@@ -2853,9 +2867,9 @@ msgid "Horizontal Alignment:"
 msgstr "Horizontala Ĝisgrandigo:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:46
 #: src/modules/options/OptionsWidget_input.cpp:48
+#: src/modules/options/OptionsWidget_ircView.cpp:56
 msgid "Horizontal align:"
 msgstr "Horizontala ĝisgrandigo:"
 
@@ -2871,8 +2885,8 @@ msgstr "Kiom da klakoj por malfermi ligilojn?"
 msgid "ID3 tags' encoding"
 msgstr "ID3 folia' kodoprezento"
 
-#: src/modules/options/OptionsWidget_servers.cpp:670
 #: src/modules/options/OptionsWidget_proxy.cpp:116
+#: src/modules/options/OptionsWidget_servers.cpp:670
 msgid "IP address:"
 msgstr "IP adreso:"
 
@@ -2916,9 +2930,9 @@ msgstr "Identa Servo"
 msgid "Ident username:"
 msgstr "Identa uzantnomo:"
 
-#: src/modules/options/OptionsWidget_servers.cpp:336
 #: src/modules/options/OptionsWidget_nickserv.cpp:89
 #: src/modules/options/OptionsWidget_nickserv.cpp:247
+#: src/modules/options/OptionsWidget_servers.cpp:336
 msgid "Identify Command"
 msgstr "Identifa Komando"
 
@@ -2976,7 +2990,7 @@ msgstr "Enigo"
 msgid "Interface"
 msgstr "Interfaco"
 
-#: src/modules/options/OptionsWidget_query.cpp:101
+#: src/modules/options/OptionsWidget_query.cpp:106
 #: src/modules/options/OptionsWidget_channel.cpp:139
 msgid "Interval:"
 msgstr "Intervalo:"
@@ -2989,8 +3003,8 @@ msgstr "Nevalida NickServ Regulo"
 msgid "Invalid Profile Rule"
 msgstr "Nevalida Profila Regulo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:630
 #: src/modules/options/OptionsWidget_identity.cpp:656
+#: src/modules/options/OptionsWidget_servers.cpp:630
 msgid "Invisible (+i)"
 msgstr "Nevidebla (+i)"
 
@@ -3009,7 +3023,8 @@ msgid "KVIrc Preferences"
 msgstr "KVIrc Preferoj"
 
 #: src/modules/options/OptionsWidget_channel.cpp:144
-msgid "Keep away list updated by sending WHO requests"
+#, fuzzy
+msgid "Keep away list updated"
 msgstr "Teni foran liston ĝisdatigitan per sendado de WHO (KIU) petojn"
 
 #: src/modules/options/OptionsWidget_channel.cpp:59
@@ -3058,10 +3073,10 @@ msgid "Languages:"
 msgstr "Lingvoj:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:134
-#: src/modules/options/OptionsWidget_ircView.cpp:65
 #: src/modules/options/OptionsWidget_notifier.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:142
 #: src/modules/options/OptionsWidget_input.cpp:57
+#: src/modules/options/OptionsWidget_userList.cpp:142
+#: src/modules/options/OptionsWidget_ircView.cpp:65
 msgid "Left"
 msgstr "Maldekstra"
 
@@ -3387,14 +3402,14 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "NickServ Aŭtentiga Regulo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:334
 #: src/modules/options/OptionsWidget_nickserv.cpp:63
 #: src/modules/options/OptionsWidget_nickserv.cpp:245
+#: src/modules/options/OptionsWidget_servers.cpp:334
 msgid "NickServ Mask"
 msgstr "NickServ Masko"
 
-#: src/modules/options/OptionsWidget_servers.cpp:335
 #: src/modules/options/OptionsWidget_nickserv.cpp:246
+#: src/modules/options/OptionsWidget_servers.cpp:335
 msgid "NickServ Request Mask"
 msgstr "NickServ Peta Masko"
 
@@ -3406,9 +3421,9 @@ msgid ""
 "and servers and click Advanced."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:333
 #: src/modules/options/OptionsWidget_identity.cpp:718
 #: src/modules/options/OptionsWidget_nickserv.cpp:243
+#: src/modules/options/OptionsWidget_servers.cpp:333
 msgid "Nickname"
 msgstr "Kromnomo"
 
@@ -3424,10 +3439,10 @@ msgstr "Kromnoma Krado"
 msgid "Nickname alternatives"
 msgstr "Kromnomoj alternativoj"
 
-#: src/modules/options/OptionsWidget_servers.cpp:161
-#: src/modules/options/OptionsWidget_servers.cpp:580
 #: src/modules/options/OptionsWidget_identity.cpp:304
 #: src/modules/options/OptionsWidget_identity.cpp:915
+#: src/modules/options/OptionsWidget_servers.cpp:161
+#: src/modules/options/OptionsWidget_servers.cpp:580
 msgid "Nickname:"
 msgstr "Kromnomo:"
 
@@ -3439,7 +3454,7 @@ msgstr "Kromnomoj"
 msgid "No selection"
 msgstr "Neniu elekto"
 
-#: src/modules/options/libkvioptions.cpp:206
+#: src/modules/options/libkvioptions.cpp:207
 msgid "No such options page class name %Q"
 msgstr "Neniaj tiaj opcioj kiel paĝa klasnomo %Q"
 
@@ -3480,11 +3495,11 @@ msgstr "Sciigi kompletigon en sciigilo"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Sciigi malsukcesajn DCC kvitancaĵojn al la fora fino"
 
-#: src/modules/options/OptionsWidget_servers.cpp:1019
 #: src/modules/options/OptionsWidget_identity.cpp:840
 #: src/modules/options/OptionsWidget_identity.cpp:955
 #: src/modules/options/OptionsWidget_nickserv.cpp:133
 #: src/modules/options/OptionsWidget_nickserv.cpp:154
+#: src/modules/options/OptionsWidget_servers.cpp:1019
 msgid "OK"
 msgstr "Bone"
 
@@ -3636,9 +3651,9 @@ msgstr "Gepatra fenestra opakeco:"
 msgid "Part message:"
 msgstr "Forirmesaĝo:"
 
+#: src/modules/options/OptionsWidget_proxy.cpp:120
 #: src/modules/options/OptionsWidget_servers.cpp:152
 #: src/modules/options/OptionsWidget_servers.cpp:571
-#: src/modules/options/OptionsWidget_proxy.cpp:120
 msgid "Password:"
 msgstr "Pasvorto:"
 
@@ -3650,11 +3665,11 @@ msgstr "Alglui Servilon"
 msgid "Paste last channel log"
 msgstr "Alglui lastan kanalan protokolon"
 
-#: src/modules/options/OptionsWidget_query.cpp:92
+#: src/modules/options/OptionsWidget_query.cpp:97
 msgid "Paste last query log"
 msgstr "Alglui lastan demandan protokolon"
 
-#: src/modules/options/OptionsWidget_query.cpp:97
+#: src/modules/options/OptionsWidget_query.cpp:102
 #: src/modules/options/OptionsWidget_channel.cpp:135
 msgid "Paste up to:"
 msgstr "Alglui ĝis:"
@@ -3695,6 +3710,11 @@ msgstr ""
 msgid "Popup notifier on new dcc chat message"
 msgstr "Ŝprucsciigi ĉe nova DCC babila mesaĝo"
 
+#: src/modules/options/OptionsWidget_query.cpp:85
+#, fuzzy
+msgid "Popup notifier on new notice"
+msgstr "Ŝprucsciigilo je nova demanda mesaĝo"
+
 #: src/modules/options/OptionsWidget_query.cpp:80
 msgid "Popup notifier on new query message"
 msgstr "Ŝprucsciigilo je nova demanda mesaĝo"
@@ -3707,8 +3727,8 @@ msgstr "Ŝpruci sciigon kiam uzantoj enretiĝas"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Ŝprucigi la sciigan fenestron ĉe markitaj mesaĝoj"
 
-#: src/modules/options/OptionsWidget_servers.cpp:656
 #: src/modules/options/OptionsWidget_proxy.cpp:114
+#: src/modules/options/OptionsWidget_servers.cpp:656
 msgid "Port:"
 msgstr "Pordo:"
 
@@ -3896,9 +3916,9 @@ msgstr "For&igi Prokuron"
 msgid "Re&move Server"
 msgstr "For&igi Servilon"
 
+#: src/modules/options/OptionsWidget_identity.cpp:324
 #: src/modules/options/OptionsWidget_servers.cpp:187
 #: src/modules/options/OptionsWidget_servers.cpp:606
-#: src/modules/options/OptionsWidget_identity.cpp:324
 msgid "Real name:"
 msgstr "Vera nomo:"
 
@@ -3979,10 +3999,10 @@ msgid "Restrict alert"
 msgstr "Limigi alarmon"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:135
-#: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_notifier.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:143
 #: src/modules/options/OptionsWidget_input.cpp:58
+#: src/modules/options/OptionsWidget_userList.cpp:143
+#: src/modules/options/OptionsWidget_ircView.cpp:66
 msgid "Right"
 msgstr "Dekstra"
 
@@ -4102,8 +4122,8 @@ msgstr "Servila masko"
 msgid "Server notices"
 msgstr "Servilaj avizoj"
 
-#: src/modules/options/OptionsWidget_servers.cpp:634
 #: src/modules/options/OptionsWidget_identity.cpp:657
+#: src/modules/options/OptionsWidget_servers.cpp:634
 msgid "Server notices (+s)"
 msgstr "Servilaj anoncoj (+s)"
 
@@ -4181,7 +4201,7 @@ msgstr "Montri piktogramojn en ŝprucmenuoj"
 msgid "Show in active window"
 msgstr "Montri en aktiva fenestro"
 
-#: src/modules/options/OptionsWidget_query.cpp:85
+#: src/modules/options/OptionsWidget_query.cpp:90
 msgid "Show information about query target at the top of the query"
 msgstr "Montri informon pri demanda celo ĉe la supro de la demando"
 
@@ -4418,8 +4438,8 @@ msgstr ""
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr "Ĉi tiu permesas vin elekti la sonsistemon esti uzata kun KVIrc."
 
-#: src/modules/options/OptionsWidget_servers.cpp:325
 #: src/modules/options/OptionsWidget_nickserv.cpp:235
+#: src/modules/options/OptionsWidget_servers.cpp:325
 msgid "This check enables the automatic identification with NickServ"
 msgstr ""
 "Ĉi tiu kvadrato ebligas la aŭtomatan identigon kun NickServ (Kromnoma "
@@ -4600,14 +4620,14 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:133
 #: src/modules/options/OptionsWidget_windowList.cpp:138
-#: src/modules/options/OptionsWidget_ircView.cpp:64
-#: src/modules/options/OptionsWidget_ircView.cpp:69
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
+#: src/modules/options/OptionsWidget_ircView.cpp:64
+#: src/modules/options/OptionsWidget_ircView.cpp:69
 msgid "Tile"
 msgstr "Kaheli"
 
@@ -4640,10 +4660,10 @@ msgid "Tools"
 msgstr "Iloj"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:139
-#: src/modules/options/OptionsWidget_ircView.cpp:70
 #: src/modules/options/OptionsWidget_notifier.cpp:60
-#: src/modules/options/OptionsWidget_userList.cpp:147
 #: src/modules/options/OptionsWidget_input.cpp:62
+#: src/modules/options/OptionsWidget_userList.cpp:147
+#: src/modules/options/OptionsWidget_ircView.cpp:70
 msgid "Top"
 msgstr "Supro"
 
@@ -4722,8 +4742,8 @@ msgstr "Uzi \"rompitan resaltigilan rimedon\" por detekti adreson"
 msgid "Use \"smart\" notify list manager"
 msgstr "Uzi \"lertan\" sciigan listan administrilon"
 
-#: src/modules/options/OptionsWidget_servers.cpp:721
 #: src/modules/options/OptionsWidget_proxy.cpp:130
+#: src/modules/options/OptionsWidget_servers.cpp:721
 msgid "Use IPv6 protocol"
 msgstr "Uzi IPv6 protokolon"
 
@@ -4876,8 +4896,8 @@ msgstr "Uzi solvon por fajroŝirmilo"
 msgid "Use zsh-like nick completion"
 msgstr "Uzi zsh-an kromnoman kompletigon"
 
-#: src/modules/options/OptionsWidget_servers.cpp:619
 #: src/modules/options/OptionsWidget_identity.cpp:655
+#: src/modules/options/OptionsWidget_servers.cpp:619
 msgid "User Mode"
 msgstr "Uzanta Reĝimo"
 
@@ -4901,11 +4921,11 @@ msgstr "Uzantlisto"
 msgid "Username"
 msgstr "Uzantnomo"
 
-#: src/modules/options/OptionsWidget_servers.cpp:141
-#: src/modules/options/OptionsWidget_servers.cpp:559
 #: src/modules/options/OptionsWidget_identity.cpp:317
 #: src/modules/options/OptionsWidget_identity.cpp:931
 #: src/modules/options/OptionsWidget_proxy.cpp:118
+#: src/modules/options/OptionsWidget_servers.cpp:141
+#: src/modules/options/OptionsWidget_servers.cpp:559
 msgid "Username:"
 msgstr "Uzantnomo:"
 
@@ -4926,9 +4946,9 @@ msgid "Vertical Alignment:"
 msgstr "Vertikala Ĝisgrandigo:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:50
 #: src/modules/options/OptionsWidget_input.cpp:52
+#: src/modules/options/OptionsWidget_ircView.cpp:60
 msgid "Vertical align:"
 msgstr "Vertikala ĝisgrandigo:"
 
@@ -4944,8 +4964,8 @@ msgstr "Voĉo:"
 msgid "Volume slider controls PCM, not Master"
 msgstr "Sonforteca ŝovilo kontrolas PCM, ne Master (Ĉefa)"
 
-#: src/modules/options/OptionsWidget_servers.cpp:638
 #: src/modules/options/OptionsWidget_identity.cpp:658
+#: src/modules/options/OptionsWidget_servers.cpp:638
 msgid "Wallops (+w)"
 msgstr "Bategoj (+w)"
 
@@ -5132,9 +5152,9 @@ msgstr "etoso,fono"
 msgid "theme,colors,messages,output"
 msgstr "etoso,koloroj,mesaĝoj,eligo"
 
+#: src/modules/options/OptionsWidget_message.h:40
 #: src/modules/options/OptionsWidget_ircView.h:37
 #: src/modules/options/OptionsWidget_ircView.h:51
-#: src/modules/options/OptionsWidget_message.h:40
 msgid "theme,colors,output"
 msgstr "etoso,koloroj,eligo"
 

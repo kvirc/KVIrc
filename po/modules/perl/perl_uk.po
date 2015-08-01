@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_uk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 23:02+0000\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2012-01-30 20:43+0300\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: Ukrainian\n"
@@ -23,7 +23,8 @@ msgstr ""
 msgid "Internal error: perl interpreter not initialized"
 msgstr "Внутрішня помилка: інтерпретатор perl не ініціалізовано"
 
-#: src/modules/perl/libkviperl.cpp:482 src/modules/perl/libkviperl.cpp:486
+#: src/modules/perl/libkviperl.cpp:482
+#: src/modules/perl/libkviperl.cpp:486
 msgid "Perl execution error:"
 msgstr "Помилка виконання perl:"
 
@@ -31,7 +32,8 @@ msgstr "Помилка виконання perl:"
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Неможливо завантажити модуль perlcore: підтримка perl недоступна"
 
-#: src/modules/perl/libkviperl.cpp:465 src/modules/perl/libkviperl.cpp:539
+#: src/modules/perl/libkviperl.cpp:465
+#: src/modules/perl/libkviperl.cpp:539
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

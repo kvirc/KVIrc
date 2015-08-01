@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 16:16+0100\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2007-12-05 18:29+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -33,9 +33,10 @@ msgstr ""
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Udělat snímek obrazovky - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:103 src/modules/theme/libkvitheme.cpp:112
 #: src/modules/theme/ThemeManagementDialog.cpp:358
 #: src/modules/theme/ThemeManagementDialog.cpp:370
+#: src/modules/theme/libkvitheme.cpp:103
+#: src/modules/theme/libkvitheme.cpp:112
 msgid "Apply theme - KVIrc"
 msgstr ""
 
@@ -83,8 +84,8 @@ msgstr ""
 msgid "Do you want to proceed with the installation ?"
 msgstr "Chcete pokračovat v instalaci?"
 
-#: src/modules/theme/libkvitheme.cpp:104
 #: src/modules/theme/ThemeManagementDialog.cpp:359
+#: src/modules/theme/libkvitheme.cpp:104
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr ""
 
@@ -114,8 +115,8 @@ msgstr ""
 msgid "Export Theme - KVIrc"
 msgstr "Eport tématu - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:111
 #: src/modules/theme/ThemeManagementDialog.cpp:369
+#: src/modules/theme/libkvitheme.cpp:111
 #, fuzzy
 msgid "Failed to apply the specified theme: %1"
 msgstr "Selhalo rozbalení zvoleného souboru: %1"
@@ -279,7 +280,8 @@ msgstr ""
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:118 src/modules/theme/libkvitheme.cpp:157
+#: src/modules/theme/libkvitheme.cpp:118
+#: src/modules/theme/libkvitheme.cpp:157
 msgid "The theme package '%Q' does not exist"
 msgstr ""
 

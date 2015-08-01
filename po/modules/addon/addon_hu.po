@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2012-07-08 12:48+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -153,20 +153,30 @@ msgstr "További bővítmények beszerzése.."
 #: src/modules/addon/PackAddonDialog.cpp:612
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
-"If these and the information showed in the previous page are correct, hit the \"Finish\" button to complete\n"
+"If these and the information showed in the previous page are correct, hit "
+"the \"Finish\" button to complete\n"
 "the packaging operations."
 msgstr ""
 "Itt vannak a fájlok a mappából, amelyet te adtál meg.\n"
-"Ha ezek és az előző oldalon megadott információk helyesek, kattints a \"Befejezés\" gombra a csomagolás.\n"
+"Ha ezek és az előző oldalon megadott információk helyesek, kattints a "
+"\"Befejezés\" gombra a csomagolás.\n"
 "véglegesítéséhez."
 
 #: src/modules/addon/PackAddonDialog.cpp:540
-msgid "Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations."
-msgstr "Itt vannak az általad megadott információk. Ha ezek helyesek, kattints a \"Befejezés\" gombra, hogy a csomag elkészüljön."
+msgid ""
+"Here there are the information you provided. If these information are "
+"correct, hit the \"Finish\" button to complete the packaging operations."
+msgstr ""
+"Itt vannak az általad megadott információk. Ha ezek helyesek, kattints a "
+"\"Befejezés\" gombra, hogy a csomag elkészüljön."
 
 #: src/modules/addon/PackAddonDialog.cpp:401
-msgid "Here you need to provide information about you (the packager) and a short description of the package you're creating."
-msgstr "Itt meg kell adnod némi információt magadról (a csomag készítője) és egy rövid leírást a csomagról amit csinálsz."
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Itt meg kell adnod némi információt magadról (a csomag készítője) és egy "
+"rövid leírást a csomagról amit csinálsz."
 
 #: src/modules/addon/PackAddonDialog.cpp:495
 msgid "Here you need to provide the path where to save the addon package"
@@ -372,7 +382,8 @@ msgstr "A kiválasztott mappa nem létezik"
 
 #: src/modules/addon/AddonFunctions.cpp:49
 msgid "The selected file does not seem to be a valid KVIrc addon package"
-msgstr "A kiválasztott fájl nem úgy néz ki mint egy érvényes KVIrc bővítmény csomag"
+msgstr ""
+"A kiválasztott fájl nem úgy néz ki mint egy érvényes KVIrc bővítmény csomag"
 
 #: src/modules/addon/AddonFunctions.cpp:70
 msgid "The selected file does not seem to be a valid KVIrc package: %1"
@@ -395,16 +406,24 @@ msgid "The target path can't contain .."
 msgstr "A cél útvonal nem tartalmazhat .."
 
 #: src/modules/addon/libkviaddon.cpp:550
-msgid "This KVIrc executable is too old to run this addon (minimum version required is %Q)"
-msgstr "Ez a KVIrc túl régi ennek a bővítménynek a futtatásához (szükséges minimum verzió: \"%Q\")"
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required "
+"is %Q)"
+msgstr ""
+"Ez a KVIrc túl régi ennek a bővítménynek a futtatásához (szükséges minimum "
+"verzió: \"%Q\")"
 
 #: src/modules/addon/PackAddonDialog.cpp:563
 msgid "This is what I will check for:"
 msgstr "Ezeket fogom leellenőrízni:"
 
 #: src/modules/addon/PackAddonDialog.cpp:91
-msgid "This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public."
-msgstr "Ez az eljárás lehetővé teszi a bővítményed exportálását egy önálló csomagba. Hasznos, ha szeretnéd megosztani a munkád másokkal is."
+msgid ""
+"This procedure allows you to export the selected addon to a single package. "
+"It is useful when you want to distribute your addon to the public."
+msgstr ""
+"Ez az eljárás lehetővé teszi a bővítményed exportálását egy önálló csomagba. "
+"Hasznos, ha szeretnéd megosztani a munkád másokkal is."
 
 #: src/modules/addon/libkviaddon.cpp:154
 #, c-format
@@ -422,7 +441,9 @@ msgstr "A verzió ilyen formában x.y[.z], például 1.0 vagy 2.0.3"
 
 #: src/modules/addon/AddonFunctions.cpp:144
 msgid "Warning: The addon might be incompatible with this version of KVIrc"
-msgstr "Figyelmeztetés: A bővítmény lehet, hogy nem kompatibilis a KVIrc ezen verziójával"
+msgstr ""
+"Figyelmeztetés: A bővítmény lehet, hogy nem kompatibilis a KVIrc ezen "
+"verziójával"
 
 #: src/modules/addon/PackAddonDialog.cpp:87
 msgid "Welcome"
@@ -437,8 +458,12 @@ msgid "Yes, Proceed"
 msgstr "Igen, Telepítsd"
 
 #: src/modules/addon/PackAddonDialog.cpp:97
-msgid "You will be asked to provide some information like the package name, the version, a description and so on."
-msgstr "Itt meg kell adnod némi információt a csomagról, mint a neve, a verziója, leírása, stb."
+msgid ""
+"You will be asked to provide some information like the package name, the "
+"version, a description and so on."
+msgstr ""
+"Itt meg kell adnod némi információt a csomagról, mint a neve, a verziója, "
+"leírása, stb."
 
 #: src/modules/addon/AddonFunctions.cpp:181
 msgid "You're about to install the following addon package"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 23:02+0000\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2014-12-30 03:19+0100\n"
 "Last-Translator: Elvio Basello <hellvis69 at gmail dot com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -38,7 +38,7 @@ msgstr "/me può essere usato solo nei canali, query e finestre DCC chat"
 msgid "A class can't be a subclass of itself"
 msgstr "Una classe non può essere sottoclasse di sè stessa"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1376
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1382
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
@@ -120,6 +120,7 @@ msgstr "Non posso cancellare una referenza a un oggetto nullo"
 msgid "Can't delete an inexistant object"
 msgstr "Non posso cancellare un oggetto inesistente"
 
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1226
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1456
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
@@ -128,7 +129,7 @@ msgstr ""
 "Non trovo la proprietà '%Q' dell'oggetto '%Q' della classe '%Q': la "
 "proprietà è indicizzata e definita ma il variant ritornato non è valido"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1218
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1219
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1448
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
@@ -137,20 +138,12 @@ msgstr ""
 "Non trovo la proprietà '%Q' dell'oggetto '%Q' della classe '%Q': la "
 "proprietà è indicizzata ma non esiste"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1225
-msgid ""
-"Can't find property named '%Q' for object named '%Q'of class '%Q': the "
-"property is indexed and defined but the returned variant is not valid"
-msgstr ""
-"Non trovo la proprietà '%Q' dell'oggetto '%Q' della classe '%Q': la "
-"proprietà è indicizzata e definita ma il variant ritornato non è valido"
-
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:509
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Impossibile trovare il popup esterno '%Q': ignoro"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:478
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
 msgid "Can't find the icon '%Q'"
 msgstr "Impossibile trovare l'icona '%Q'"
 
@@ -158,7 +151,7 @@ msgstr "Impossibile trovare l'icona '%Q'"
 msgid "Can't find the icon '%Q': ignoring"
 msgstr "Non trovo l'icona '%Q': ignoro"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1397
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1403
 msgid "Can't find the requested image"
 msgstr "Non trovo l'immagine richiesta"
 
@@ -719,7 +712,7 @@ msgstr ""
 "potrebbe confondermi un po': è una buona idea racchiuderlo tra virgolette"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1211
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1439
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1440
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Nessuna proprietà Qt '%Q' per l'oggetto '%Q' della classe '%Q'"
 
@@ -735,16 +728,16 @@ msgstr "Nessun catalogo %Q trovato per la lingua corrente"
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Nessuna linea di comando specificata per questo tipo di url (%Q)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1499
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1512
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1534
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Nessun gestore '%Q' per l'evento '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1495
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1508
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Nessun gestore '%Q' per l'evento raw '%d'"
 
@@ -759,12 +752,12 @@ msgstr "Nessun elemento del menu con testo '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Nessun contesto IRC (%u)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1475
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1483
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 msgid "No such event (%Q)"
 msgstr "Nessun evento (%Q)"
 
@@ -819,7 +812,7 @@ msgstr "Persistente"
 msgid "Properties for Qt class %s"
 msgstr "Proprietà per la classe Qt %s"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1404
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1410
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1547
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
@@ -1185,7 +1178,7 @@ msgstr ""
 "a un oggetto invalido (l'oggetto non esiste)"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1204
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1426
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1431
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "L'oggetto '%Q' della classe '%Q' non ha proprietà Qt"
 
@@ -1199,7 +1192,7 @@ msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
 "Il popup '%s' è attualmente bloccato: 'auto-modifiche' non sono permesse"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1241
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1247
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
@@ -1274,8 +1267,8 @@ msgstr "L'oggetto padre specificato non esiste"
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "Il tempo di ping specificato non è valido: assumo zero (nessun ping)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:445
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
 msgid "The specified window has no button containers"
 msgstr "La finestra specificata non ha contenitori per i pulsanti"
 
@@ -1644,6 +1637,12 @@ msgstr "Blocco di istruzioni non terminato"
 msgid "Unterminated string constant"
 msgstr "Costrante stringa non terminata"
 
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1237
+#, fuzzy
+msgid ""
+"Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid"
+msgstr "Nessuna proprietà Qt '%Q' per l'oggetto '%Q' della classe '%Q'"
+
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1267
 msgid "Window '%Q' not found, using current one"
 msgstr "Finestra '%Q' non trovata, uso quella corrente"
@@ -1707,7 +1706,8 @@ msgstr "[KVS]%c Errore di Compilazione: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Errore di Esecuzione: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188
+#: src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Attenzione: %Q"
 
@@ -1741,6 +1741,13 @@ msgstr "riga %1, vicino al carattere %2"
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"
 msgstr "say: linea di comando iniettata"
+
+#~ msgid ""
+#~ "Can't find property named '%Q' for object named '%Q'of class '%Q': the "
+#~ "property is indexed and defined but the returned variant is not valid"
+#~ msgstr ""
+#~ "Non trovo la proprietà '%Q' dell'oggetto '%Q' della classe '%Q': la "
+#~ "proprietà è indicizzata e definita ma il variant ritornato non è valido"
 
 #~ msgid "This executable was built without SSL support"
 #~ msgstr "Questo eseguibile è stato compilato senza supporto SSL"

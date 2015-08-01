@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 23:02+0000\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2012-07-09 00:40+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "A class can't be a subclass of itself"
 msgstr "Klaso ne povas esti subklaso de ĝi mem"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1376
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1382
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
@@ -114,6 +114,7 @@ msgstr "Ne povas forviŝi senvaloran objektan referencon"
 msgid "Can't delete an inexistant object"
 msgstr "Ne povas forviŝi neekzistantan objekton"
 
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1226
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1456
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
@@ -123,7 +124,7 @@ msgstr ""
 "la atributo estas indeksita kaj difinita sed la redonita varianto ne estas "
 "valida"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1218
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1219
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1448
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
@@ -132,21 +133,12 @@ msgstr ""
 "Ne povas trovi atributon nomitan '%Q' por objekto nomita '%Q' de klaso '%Q': "
 "la atributo estas indeksita sed ĝi ne vere ekzistas"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1225
-msgid ""
-"Can't find property named '%Q' for object named '%Q'of class '%Q': the "
-"property is indexed and defined but the returned variant is not valid"
-msgstr ""
-"Ne povas trovi atributon nomitan '%Q' por objekto nomita '%Q' de klaso '%Q': "
-"la atributo estas indeksita kaj difinita sed la redonita varianto ne estas "
-"valida"
-
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:509
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Ne povas trovi la eksteran ŝprucfenestron '%Q': ignoras"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:478
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
 msgid "Can't find the icon '%Q'"
 msgstr "Ne povas trovi la piktogramon '%Q'"
 
@@ -154,7 +146,7 @@ msgstr "Ne povas trovi la piktogramon '%Q'"
 msgid "Can't find the icon '%Q': ignoring"
 msgstr "Ne povas trovi la piktogramo '%Q': ignoras"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1397
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1403
 msgid "Can't find the requested image"
 msgstr "Ne povas trovi la petitan bildon"
 
@@ -695,7 +687,7 @@ msgstr ""
 "iom: estas bona ideo meti ĝin inter citiloj"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1211
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1439
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1440
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Neniu Qt atributo nomita '%Q' por objekto nomita '%Q' de klaso '%Q'"
 
@@ -711,16 +703,16 @@ msgstr "Neniu katalogo %Q por la nuna lingvo trovita"
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Neniu komandlinio specifita por ĉi tiu tipo de url (%Q)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1499
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1512
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1534
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Neniu traktilo '%Q' por evento '%Q'"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1495
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1508
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Neniu traktilo '%Q' por kruda cifera evento '%d'"
 
@@ -735,12 +727,12 @@ msgstr "Neniu menua breta elemento kun teksto '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Neniu tia IRC kunteksto (%u)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1475
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1483
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:719
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:727
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
 msgid "No such event (%Q)"
 msgstr "Neniu tia evento (%Q)"
 
@@ -790,7 +782,7 @@ msgstr "Daŭra"
 msgid "Properties for Qt class %s"
 msgstr "Atributoj por Qt klaso %s"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1404
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1410
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1547
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
@@ -1138,7 +1130,7 @@ msgstr ""
 "referenco (objekto ne ekzistas)"
 
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1204
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1426
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1431
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "La objekto nomita '%Q' de klaso '%Q' havas neniujn Qt atributojn"
 
@@ -1152,7 +1144,7 @@ msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
 "La ŝprucfenestro '%s' estas nun ŝlosita: 'mem-modifoj' ne estas permesataj"
 
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1241
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1247
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
@@ -1226,8 +1218,8 @@ msgstr "La specifita gepatra objekto ne ekzistas"
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "La specifita ping tempo ne estas valida: supozas nulon (neniu ping)"
 
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:445
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
 msgid "The specified window has no button containers"
 msgstr "La specifita fenestro havas neniom da butonujoj"
 
@@ -1584,6 +1576,12 @@ msgstr "Nefinata komanda bloko"
 msgid "Unterminated string constant"
 msgstr "Nefinita ĉena konstanto"
 
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1237
+#, fuzzy
+msgid ""
+"Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid"
+msgstr "Neniu Qt atributo nomita '%Q' por objekto nomita '%Q' de klaso '%Q'"
+
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1267
 msgid "Window '%Q' not found, using current one"
 msgstr "Fenestro '%Q' ne trovita, uzas la nunan"
@@ -1647,7 +1645,8 @@ msgstr "[KVS]%c Kompilada Eraro: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Rultempa Eraro: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:188 src/kvirc/kvs/KviKvsReport.cpp:196
+#: src/kvirc/kvs/KviKvsReport.cpp:188
+#: src/kvirc/kvs/KviKvsReport.cpp:196
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Averto: %Q"
 
@@ -1681,3 +1680,11 @@ msgstr "linio %1, proksime al signo %2"
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"
 msgstr "diri: enmetita komandlinio"
+
+#~ msgid ""
+#~ "Can't find property named '%Q' for object named '%Q'of class '%Q': the "
+#~ "property is indexed and defined but the returned variant is not valid"
+#~ msgstr ""
+#~ "Ne povas trovi atributon nomitan '%Q' por objekto nomita '%Q' de klaso "
+#~ "'%Q': la atributo estas indeksita kaj difinita sed la redonita varianto "
+#~ "ne estas valida"

@@ -187,7 +187,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 	KviModuleInfo * info = (KviModuleInfo *)pLibrary->resolve(KVIRC_MODULE_STRUCTURE_SYMBOL);
 	if(!info)
 	{
-		m_szLastError = __tr2qs("No " KVIRC_MODULE_STRUCTURE_SYMBOL " symbol exported: not a kvirc module ?");
+		m_szLastError = __tr2qs("No %1 symbol exported: not a kvirc module ?").arg(QString::fromUtf8(KVIRC_MODULE_STRUCTURE_SYMBOL));
 		pLibrary->unload();
 		delete pLibrary;
 		return false;

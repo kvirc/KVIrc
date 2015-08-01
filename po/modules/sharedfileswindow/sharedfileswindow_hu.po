@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-09 23:25+0200\n"
+"POT-Creation-Date: 2015-08-02 01:40+0200\n"
 "PO-Revision-Date: 2012-07-09 14:39+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -110,7 +110,8 @@ msgstr "Nincs aktív megosztott fájl"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr "Nincs megosztott fájl ezzal a látható névvel: '%Q' felhasználómaszk: '%Q'"
+msgstr ""
+"Nincs megosztott fájl ezzal a látható névvel: '%Q' felhasználómaszk: '%Q'"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:162
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
@@ -135,8 +136,12 @@ msgid "Shared Files"
 msgstr "Megosztott Fájlok"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
-msgid "The expire date/time is in the past: please either remove the \"expires\"check mark or specify a expire date/time in the future"
-msgstr "A lejárati idő/dátum a múltban van, kérlek ne használd a lejárati időt vagy adj meg helyes, jövőbeli időt/dátumot."
+msgid ""
+"The expire date/time is in the past: please either remove the \"expires"
+"\"check mark or specify a expire date/time in the future"
+msgstr ""
+"A lejárati idő/dátum a múltban van, kérlek ne használd a lejárati időt vagy "
+"adj meg helyes, jövőbeli időt/dátumot."
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
@@ -144,7 +149,8 @@ msgstr "A fájl nem olvasható: '%Q'"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
 msgid "The file doesn't exist or it is not readable, please check the path"
-msgstr "A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
+msgstr ""
+"A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
 
 #: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
 msgid "The share name can't be empty, please correct it"
