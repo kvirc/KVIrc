@@ -487,6 +487,11 @@ void KviIrcConnection::handleInitialCapLs()
 		szRequests.append("znc.in/server-time-iso ");
 	}
 
+	if(serverInfo()->supportedCaps().contains("away-notify",Qt::CaseInsensitive))
+	{
+		szRequests.append("away-notify ");
+	}
+
 	if(szRequests.isEmpty())
 	{
 		endInitialCapNegotiation();
@@ -1953,6 +1958,11 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAwayListUpdates))
 		{
+			if(m_pStateData->enabledCaps().contains("away-notify"))
+			{
+				// no need to send WHO requests if the away-notify extension is enabled
+				return;
+			}
 			// update the channel WHO lists (fixes users away state)
 			// first of all, we send our request not more often than every 50 secs
 			if((tNow - stateData()->lastSentChannelWhoRequest()) > 50)
