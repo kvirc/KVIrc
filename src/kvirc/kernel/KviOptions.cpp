@@ -331,7 +331,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("MinimizeInTray",false,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("DisplayNotifierOnPrimaryScreen",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowDialogOnChannelCtcpPage",false,KviOption_sectFlagCtcp),
-	BOOL_OPTION("PopupNotifierOnNewNotices",true,KviOption_sectFlagFrame)
+	BOOL_OPTION("PopupNotifierOnNewNotices",true,KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowWindowListWithUserFlag",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
