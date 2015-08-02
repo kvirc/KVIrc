@@ -50,7 +50,8 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Show IRC context indicator in window list","options"),KviOption_boolUseWindowListIrcContextIndicator);
 	addBoolSelector(0,5,0,5,__tr2qs_ctx("Enable window tooltips","options"),KviOption_boolShowWindowListToolTips);
 	addBoolSelector(0,6,0,6,__tr2qs_ctx("Show header","options"),KviOption_boolShowTreeWindowListHeader);
-	addRowSpacer(0,7,0,7);
+	addBoolSelector(0,7,0,7,__tr2qs_ctx("Show user flag for channels","options"),KviOption_boolShowWindowListWithUserFlag);
+	addRowSpacer(0,8,0,8);
 }
 
 
