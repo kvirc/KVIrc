@@ -64,7 +64,7 @@ OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * par
 
 	KviTalHBox * ahb = new KviTalHBox(g);
 	ahb->setSpacing(4);
-	KviBoolSelector * ab = addBoolSelector(ahb,__tr2qs_ctx("Away:","options"),KviOption_BoolUserListViewAwayColor);
+	KviBoolSelector * ab = addBoolSelector(ahb,__tr2qs_ctx("Away:","options"),KviOption_boolUserListViewAwayColor);
 	KviColorSelector * as = addColorSelector(ahb,__tr2qs_ctx("","options"),KviOption_colorUserListViewAwayForeground);
 	connect(ab,SIGNAL(toggled(bool)),as,SLOT(setEnabled(bool)));
 
