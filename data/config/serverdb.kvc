@@ -813,6 +813,14 @@ NServers=1
 2_Hostname=reaper.lagnet.org.za
 2_Description=LagNet:%20AF,%20ZA,%20Cape%20Town
 NServers=3
+[LibraIRC]
+0_Hostname=irc.librairc.net
+0_Description=LibraIRC:%20Random%20server
+1_Hostname=irc.librairc.net
+1_Description=LibraIRC:%20Random%20Server%20SSL
+1_SSL=true
+1_Port=6697
+NServers=2
 [Librenet]
 0_Hostname=irc.librenet.net
 0_Description=Librenet:%20Random%20server
