@@ -1853,7 +1853,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				iAvatarAndTextX += 1;
 			}
 
-			if(pEntry->globalData()->isAway())
+			if(pEntry->globalData()->isAway() && KVI_OPTION_BOOL(KviOption_BoolUserListViewAwayColor))
 			{
 				QRgb rgb2 = pClrFore->rgb();
 				QRgb rgb1 = KVI_OPTION_COLOR(KviOption_colorUserListViewAwayForeground).rgb();
