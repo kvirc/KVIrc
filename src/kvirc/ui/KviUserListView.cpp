@@ -1853,20 +1853,15 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				iAvatarAndTextX += 1;
 			}
 
-			if(pEntry->globalData()->isAway())
+			if(pEntry->globalData()->isAway() && KVI_OPTION_BOOL(KviOption_BoolUserListViewAwayColor))
 			{
 				QRgb rgb2 = pClrFore->rgb();
-				QRgb rgb1 = KVI_OPTION_COLOR(KviOption_colorUserListViewAwayForeground).rgba();
-				if(qAlpha(rgb1) == 0)
-				{
-					p.setPen(*pClrFore);
-				} else {
-					p.setPen(QColor(
-						((qRed(rgb1)*2) + qRed(rgb2)) / 3,
-						((qGreen(rgb1)*2) + qGreen(rgb2)) / 3,
-						((qBlue(rgb1)*2) + qBlue(rgb2)) / 3)
-					);
-				}
+				QRgb rgb1 = KVI_OPTION_COLOR(KviOption_colorUserListViewAwayForeground).rgb();
+				p.setPen(QColor(
+					((qRed(rgb1)*2) + qRed(rgb2)) / 3,
+					((qGreen(rgb1)*2) + qGreen(rgb2)) / 3,
+					((qBlue(rgb1)*2) + qBlue(rgb2)) / 3)
+				);
 			} else {
 				p.setPen(*pClrFore);
 			}
