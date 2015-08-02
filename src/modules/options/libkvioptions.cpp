@@ -186,7 +186,7 @@ static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 	@short:
 		Shows a single options page
 	@syntax:
-		options.edit <"options page class name">
+		options.edit <options_page_class_name:string>
 	@description:
 		Shows an options page as toplevel dialog.
 		The available option pages can be listed by using [cmd]options.pages[/cmd].
@@ -270,11 +270,66 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+
+/*
+	@doc: options.close
+	@type:
+		command
+	@title:
+		options.close
+	@short:
+		Close an options dialog
+	@syntax:
+		options.close [options_group_or_page_class_name]
+	@description:
+		Closes the KVIrc options dialog for the specified options group
+		or containing the specified options page.
+		If [options_group] is omitted, the option group "general" is assumed.
+		This command is exported by the "options" module.
+	@seealso:
+		[fnc]$options.isDialog[/fnc]
+*/
+
+
+static bool options_kvs_cmd_close(KviKvsModuleCommandCall * c)
+{
+	QString szGroup;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
+	KVSM_PARAMETERS_END(c)
+	if(szGroup.isEmpty())
+		szGroup = "general";
+
+	OptionsDialog * d = g_pOptionsDialogDict->find(szGroup);
+	if(d)
+	{
+		d->close();
+		return true;
+	}
+	
+	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szGroup.toUtf8().data());
+	if(!e)
+		return true;
+
+	if(!e->pWidget)
+		return true; // not open
+
+	QWidget * w = e->pWidget->topLevelWidget();
+	if(!w)
+		return true; // hm?
+
+	w->deleteLater();
+	
+	return true;
+}
+
+
 static bool options_module_init(KviModule * m)
 {
 	g_pOptionsInstanceManager = new OptionsInstanceManager();
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",options_kvs_cmd_dialog);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",options_kvs_cmd_close);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"save",options_kvs_cmd_save);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"pages",options_kvs_cmd_pages);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"edit",options_kvs_cmd_edit);
