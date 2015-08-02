@@ -106,7 +106,8 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
 			If no away reason is specified, the behaviour of this command depends from the value
 			of the option boolUseAwayMessage: if enabled, user will be set away using the default
-			away message; otherway, the user will return from a previous away state.
+			away message (or "Away from keyboard" if no default away message is set);
+			otherwise, the user will return from a previous away state.
 		@examples:
 			[example]
 			away I'm asleep. Don't wake me up.
@@ -128,6 +129,8 @@ namespace KviKvsCoreSimpleCommands
 			{
 				//user want to use its default away message
 				szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
+				if(szReason.isEmpty())
+					szReason = __tr2qs("Away from keyboard.");
 			} else {
 				//user want to /back
 				if(KVSCSC_pSwitches->find('a',"all-networks"))
