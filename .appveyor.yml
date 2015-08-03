@@ -60,25 +60,25 @@ install:
         } else {
             Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/sgoxl0gbgfu1lurl/artifacts/enchant.7z -OutFile c:\enchant.7z
         }
-    - c:\cygwin\bin\bash -lc "cd /cygdrive/c; 7z x enchant.7z"
+    - c:\cygwin\bin\bash -lc "cd /cygdrive/c; 7z x -y enchant.7z"
     - c:\cygwin\bin\ls -l /cygdrive/c/enchant-inst
     - c:\cygwin\bin\sh -lc "cd /cygdrive/c/enchant-inst/include; patch -p1 < $APPVEYOR_BUILD_FOLDER/.appveyor.ench"
     - c:\cygwin\bin\sh -lc "mkdir -p /cygdrive/c/spellcheck-dicts; cd /cygdrive/c/spellcheck-dicts; mkdir -p zip unzip ru"
     - ps: |
-        if (Test-Path "c:/spellcheck-dicts/ru.zip") { # LGPL
+        if (Test-Path "c:/spellcheck-dicts/zip/ru.zip") { # LGPL
             echo "using ru dict from cache"
         } else {
             Invoke-WebRequest http://extensions.libreoffice.org/extension-center/russian-spellcheck-dictionary.-based-on-works-of-aot-group/pscreleasefolder.2011-09-06.6209385965/0.4.0/dict_ru_ru-aot-0-4-0.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
-            c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/ru; 7z x ../zip/ru.zip"
+            c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/ru; 7z x -y ../zip/ru.zip"
         }
     - ps: |
-        if (Test-Path "c:/spellcheck-dicts/en_US.zip") {
+        if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
             (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_US-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
             (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_GB-ize-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
             (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_GB-ise-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
-            c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x ../zip/en_US.zip; 7z x ../zip/en_GB-ize.zip; 7z x ../zip/en_GB-ise.zip"
+            c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
 build_script:
