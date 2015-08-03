@@ -5,6 +5,8 @@ cache:
     - 'c:\Program Files (x86)\NSIS'
     - c:\deps
     - c:\Strawberry
+    - c:\enchant.7z
+    - c:\spellcheck-dicts
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -47,8 +49,38 @@ install:
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
         }
+    - choco install jom
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
+    - c:\cygwin\bin\bash -c "which jom"
+      # https://ci.appveyor.com/project/DarthGandalf/enchant/build/0.0.0.0.1-branch-mingw-build-20
+    - ps: |
+        if (Test-Path c:\enchant.7z) {
+            echo "using enchant from cache"
+        } else {
+            Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/sgoxl0gbgfu1lurl/artifacts/enchant.7z -OutFile c:\enchant.7z
+        }
+    - c:\cygwin\bin\bash -lc "cd /cygdrive/c; 7z x enchant.7z"
+    - c:\cygwin\bin\ls -l /cygdrive/c/enchant-inst
+    - c:\cygwin\bin\sh -lc "cd /cygdrive/c/enchant-inst/include; patch -p1 < $APPVEYOR_BUILD_FOLDER/.appveyor.ench"
+    - c:\cygwin\bin\sh -lc "mkdir -p /cygdrive/c/spellcheck-dicts; cd /cygdrive/c/spellcheck-dicts; mkdir -p zip unzip ru"
+    - ps: |
+        if (Test-Path "c:/spellcheck-dicts/ru.zip") { # LGPL
+            echo "using ru dict from cache"
+        } else {
+            Invoke-WebRequest http://extensions.libreoffice.org/extension-center/russian-spellcheck-dictionary.-based-on-works-of-aot-group/pscreleasefolder.2011-09-06.6209385965/0.4.0/dict_ru_ru-aot-0-4-0.oxt -OutFile c:\spellcheck-dicts\zip\ru.zip
+            c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/ru; 7z x ../zip/ru.zip"
+        }
+    - ps: |
+        if (Test-Path "c:/spellcheck-dicts/en_US.zip") {
+            echo "using en dict from cache"
+        } else {
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_US-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_GB-ize-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_GB-ise-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x ../zip/en_US.zip; 7z x ../zip/en_GB-ize.zip; 7z x ../zip/en_GB-ise.zip"
+        }
+    - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
 build_script:
     - mkdir build
     - cd build
@@ -64,12 +96,12 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.4/msvc2013_64_opengl" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.5/msvc2013_64" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
     - ps: Push-AppveyorArtifact CMakeCache.txt
-    - nmake install VERBOSE=1
+    - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $env:Path += ";c:/Qt/5.4/msvc2013_64_opengl/bin"
+        $env:Path += ";c:/Qt/5.5/msvc2013_64/bin"
         windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
         # platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
         # applicationDirPath() isn't available before QCoreApplication's constructor.
@@ -77,9 +109,23 @@ build_script:
         # Chicken-and-egg FTW.
         # But let's not put all other qt plugins (imageformats, etc) to this crowded place.
         c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
+    - c:\cygwin\bin\ls -l release/
     - ps: |
         $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/x64/Release/zlib.dll'
         c:\cygwin\bin\cp "-v" "$zlib" /cygdrive/c/OpenSSL-Win64/libeay32.dll /cygdrive/c/OpenSSL-Win64/ssleay32.dll release/
+        c:\cygwin\bin\sh -c '/bin/cp -v /cygdrive/c/enchant-inst/bin/*.dll release/'
+        c:\cygwin\bin\cp "-v" /cygdrive/c/enchant-inst/COPYING.glib release/license/
+        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
+        c:\cygwin\bin\sh -c '/bin/cp -v /cygdrive/c/enchant-inst/lib/enchant/libenchant_myspell.dll release/lib/enchant/'
+        c:\cygwin\bin\cp -v /cygdrive/c/enchant-inst/share/enchant/enchant.ordering release/share/enchant/
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/myspell/dicts/ru_RU_yo.aff
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/myspell/dicts/ru_RU_yo.dic
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/myspell/dicts/
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_US.dic release/share/myspell/dicts/
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic release/share/myspell/dicts/en_GB_ise.dic
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/myspell/dicts/en_GB_ise.aff
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/myspell/dicts/en_GB_ize.dic
+        c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/myspell/dicts/en_GB_ize.aff
     - c:\cygwin\bin\ls -l release/
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - c:\cygwin\bin\ls -l
