@@ -37,6 +37,8 @@
 
 #include <QString>
 #include <QStringList>
+#include <QList>
+#include <QPair>
 
 /**
 * \class KviIrcServerReconnectInfo
@@ -66,9 +68,11 @@ public:
 	QString     m_szNick;
 	QString     m_szPass;
 	QString     m_szAwayReason;
-	QString     m_szJoinChannels;
-	QStringList m_szOpenQueryes;
+	QStringList m_lOpenQueries;
 	bool        m_bIsAway;
+	
+	// The list of channels to join (first = channel name, second = password)
+	QList< QPair< QString,QString > > m_lJoinChannels;
 };
 
 #endif //_KVI_IRCSERVER_INFO_H_

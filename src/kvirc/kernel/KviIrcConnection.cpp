@@ -74,6 +74,7 @@
 
 #include <QTimer>
 #include <QTextCodec>
+#include <QtGlobal>
 
 extern KVIRC_API KviIrcServerDataBase   * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
@@ -1702,6 +1703,83 @@ bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 	return true;
 }
 
+void KviIrcConnection::gatherChannelAndPasswordPairs(QList< QPair< QString,QString > > &lChannelsAndPasses)
+{
+	for(KviChannelWindow * c = m_pChannelList->first();c;c = m_pChannelList->next())
+		lChannelsAndPasses.append(
+				QPair<QString,QString>(
+						c->windowName(),
+						c->hasChannelMode('k') ? c->channelModeParam('k') : QString()
+					)
+			);
+}
+
+void KviIrcConnection::gatherQueryNames(QStringList &lQueryNames)
+{
+	for(KviQueryWindow * q = m_pQueryList->first(); q; q = m_pQueryList->next())
+		lQueryNames.append(q->target());
+}
+
+void KviIrcConnection::joinChannels(const QList< QPair< QString,QString > > &lChannelsAndPasses)
+{
+	if(lChannelsAndPasses.count() < 1)
+		return;
+
+	// Sort the list so the channels with passwords come first
+	QList< QPair< QString,QString> > lSorted;
+	
+	QPair<QString,QString> oChanAndPass;
+	Q_FOREACH(oChanAndPass,lChannelsAndPasses)
+	{
+		if(oChanAndPass.second.isEmpty())
+			lSorted.append(oChanAndPass);
+		else
+			lSorted.prepend(oChanAndPass);
+	}
+
+	// We send the channel list in chunks to avoid overflowing the 510 character limit on the message.
+	QString szChans,szPasses;
+	QString szCommand;
+
+	while(lSorted.count() > 0)
+	{
+		QPair<QString,QString> oChanAndPass = lSorted.takeFirst();
+		
+		if(!szChans.isEmpty())
+			szChans.append(',');
+		szChans.append(oChanAndPass.first);
+		
+		if(!oChanAndPass.second.isEmpty())
+		{
+			if(!szPasses.isEmpty())
+				szPasses.append(',');
+			szPasses.append(oChanAndPass.second);
+		}
+
+		// empirical limit
+		if((szChans.length() + szPasses.length()) > 450)
+		{
+			szCommand = szChans;
+			if(!szPasses.isEmpty())
+			{
+				szCommand.append(" ");
+				szCommand.append(szPasses);
+			}
+			sendFmtData("JOIN %s",encodeText(szCommand).data());
+			szChans = QString();
+			szPasses = QString();
+		}
+	}
+
+	szCommand = szChans;
+	if(!szPasses.isEmpty())
+	{
+		szCommand.append(" ");
+		szCommand.append(szPasses);
+	}
+	sendFmtData("JOIN %s",encodeText(szCommand).data());
+}
+
 void KviIrcConnection::loginComplete(const QString & szNickName)
 {
 	if(context()->state() == KviIrcContext::Connected)
@@ -1807,16 +1885,16 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	if(target()->server()->reconnectInfo())
 	{
-		if(!target()->server()->reconnectInfo()->m_szJoinChannels.isEmpty())
+		if(!target()->server()->reconnectInfo()->m_lJoinChannels.isEmpty())
 		{
 			bJoinStdChannels=false;
-			sendFmtData("JOIN %s",encodeText(target()->server()->reconnectInfo()->m_szJoinChannels).data());
+			joinChannels(target()->server()->reconnectInfo()->m_lJoinChannels);
 		}
 
 		KviQueryWindow * pQuery;
 
-		for(QStringList::Iterator it = target()->server()->reconnectInfo()->m_szOpenQueryes.begin();
-			it != target()->server()->reconnectInfo()->m_szOpenQueryes.end();it++)
+		for(QStringList::Iterator it = target()->server()->reconnectInfo()->m_lOpenQueries.begin();
+			it != target()->server()->reconnectInfo()->m_lOpenQueries.end();it++)
 		{
 			QString szNick = *it;
 			pQuery = findQuery(szNick);
@@ -1844,6 +1922,8 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	if(bJoinStdChannels)
 	{
+		QList< QPair< QString,QString > > lChansAndPass;
+	
 		if(target()->network()->autoJoinChannelList())
 		{
 			if(_OUTPUT_VERBOSE)
@@ -1856,23 +1936,9 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				szCurChan = (*it).section(':',0,0);
 				if(szCurChan.isEmpty())
 					continue;
-				if(szCurPass.isEmpty())
-				{
-					if(!szChannels.isEmpty())
-						szChannels.append(",");
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
-						szCurChan.prepend('#');
-					szChannels.append(szCurChan);
-				} else {
-					if(!szProtectedChannels.isEmpty())
-						szProtectedChannels.append(",");
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
-						szCurChan.prepend('#');
-					szProtectedChannels.append(szCurChan);
-					if(!szPasswords.isEmpty())
-						szPasswords.append(",");
-					szPasswords.append(szCurPass);
-				}
+				if(!m_pServerInfo->isSupportedChannelType(szCurChan[0]))
+					szCurChan.prepend('#');
+				lChansAndPass.append(QPair<QString,QString>(szCurChan,szCurPass));
 			}
 		}
 
@@ -1888,38 +1954,13 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				szCurChan = (*it).section(':',0,0);
 				if(szCurChan.isEmpty())
 					continue;
-				if(szCurPass.isEmpty())
-				{
-					if(!szChannels.isEmpty())
-						szChannels.append(",");
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
-						szCurChan.prepend('#');
-					szChannels.append(szCurChan);
-				} else {
-					if(!szProtectedChannels.isEmpty())
-						szProtectedChannels.append(",");
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
-						szCurChan.prepend('#');
-					szProtectedChannels.append(szCurChan);
-					if(!szPasswords.isEmpty())
-						szPasswords.append(",");
-					szPasswords.append(szCurPass);
-				}
+				if(!m_pServerInfo->isSupportedChannelType(szCurChan[0]))
+					szCurChan.prepend('#');
+				lChansAndPass.append(QPair<QString,QString>(szCurChan,szCurPass));
 			}
 		}
 
-		QString szCommand;
-		if( (!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()) )
-		{
-			szCommand.append(szProtectedChannels);
-			if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
-				szCommand.append(',');
-			szCommand.append(szChannels);
-			szCommand.append(" ");
-			szCommand.append(szPasswords);
-
-			sendFmtData("JOIN %s",encodeText(szCommand).data());
-		}
+		joinChannels(lChansAndPass);
 	}
 	// minimize after connect
 	if(KVI_OPTION_BOOL(KviOption_boolMinimizeConsoleAfterConnect))

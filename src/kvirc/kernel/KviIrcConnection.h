@@ -37,6 +37,9 @@
 
 #include <QObject>
 #include <QByteArray>
+#include <QStringList>
+#include <QList>
+#include <QPair>
 
 class QTimer;
 class QTextCodec;
@@ -751,6 +754,23 @@ protected:
 	* \return void
 	*/
 	void loginToIrcServer();
+
+	/**
+	* Joins a list of channels.
+	* The first element of the pair is the channel name, the second element of the pair is the eventual password.
+	* May send multiple JOIN messages.
+	*/
+	void joinChannels(const QList< QPair< QString,QString > > &lChannelsAndPasses);
+
+	/**
+	* Gather the list of currently joined channels with the relative passwords.
+	*/
+	void gatherChannelAndPasswordPairs(QList< QPair< QString,QString > > &lChannelsAndPasses);
+
+	/**
+	* Gather the list of currently open query names.
+	*/
+	void gatherQueryNames(QStringList &lQueryNames);
 
 	/**
 	* Picks the next login nickname to be tried. If bForceDefaultIfPrimaryNicknamesEmpty is true then the algorithm

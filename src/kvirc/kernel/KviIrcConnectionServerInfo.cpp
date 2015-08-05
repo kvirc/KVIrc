@@ -58,6 +58,12 @@ KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 		KviMemory::free(m_pModePrefixTable);
 }
 
+bool KviIrcConnectionServerInfo::isSupportedChannelType(QChar c)
+{
+	return m_szSupportedChannelTypes.contains(c);
+}
+
+
 void KviIrcConnectionServerInfo::addSupportedCaps(const QString &szCapList)
 {
 	m_bSupportsCap = true;

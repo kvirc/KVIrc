@@ -240,6 +240,7 @@ public:
 	const QString & getChannelModeDescription(char mode) { return m_pServInfo->getChannelModeDescription(mode); };
 	const QString & getUserModeDescription(QChar mode) { return m_pServInfo->getUserModeDescription(mode); };
 
+	bool isSupportedChannelType(QChar c);
 	bool isSupportedModePrefix(QChar c);
 	bool isSupportedModeFlag(QChar c);
 	QChar modePrefixChar(kvi_u32_t flag);

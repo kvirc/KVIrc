@@ -738,48 +738,10 @@ void KviIrcContext::connectionTerminated()
 		if(KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect))
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolRejoinChannelsAfterReconnect))
-			{
-				// FIXME: THIS SHOULD BE A KviIrcConnection FUNCTION
-				KviChannelWindow * c;
-				QString szChannels, szProtectedChannels, szPasswords, szCurPass, szCurChan;
-				// first only chans without key, in groups of 4
-				for(c = connection()->channelList()->first(); c; c = connection()->channelList()->next())
-				{
-					szCurPass = c->hasChannelMode('k') ? c->channelModeParam('k') : "";
-					szCurChan = c->windowName();
-					if(szCurPass.isEmpty())
-					{
-						if(!szChannels.isEmpty())
-							szChannels.append(",");
-						szChannels.append(szCurChan);
-					} else {
-						if(!szProtectedChannels.isEmpty())
-							szProtectedChannels.append(",");
-						szProtectedChannels.append(szCurChan);
-						if(!szPasswords.isEmpty())
-							szPasswords.append(",");
-						szPasswords.append(szCurPass);
-					}
-				}
-				if((!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()))
-				{
-					info.m_szJoinChannels.append(szProtectedChannels);
-					if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
-						info.m_szJoinChannels.append(',');
-					info.m_szJoinChannels.append(szChannels);
-					info.m_szJoinChannels.append(" ");
-					info.m_szJoinChannels.append(szPasswords);
-				}
-			}
-
+				connection()->gatherChannelAndPasswordPairs(info.m_lJoinChannels);
 
 			if(KVI_OPTION_BOOL(KviOption_boolReopenQueriesAfterReconnect))
-			{
-				for(KviQueryWindow * q = connection()->queryList()->first(); q; q = connection()->queryList()->next())
-				{
-					info.m_szOpenQueryes.append(q->target());
-				}
-			}
+				connection()->gatherQueryNames(info.m_lOpenQueries);
 		}
 
 		if(KVI_OPTION_BOOL(KviOption_boolKeepChannelsOpenOnUnexpectedDisconnect) || KVI_OPTION_BOOL(KviOption_boolKeepChannelsOpenOnDisconnect))
@@ -816,6 +778,7 @@ void KviIrcContext::connectionTerminated()
 		//m_uConnectAttemptCount = 1;
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
+
 		KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
 		d->szServerId = oldServer.id();
 		d->szServer = oldServer.hostName();
@@ -827,6 +790,7 @@ void KviIrcContext::connectionTerminated()
 		d->szPass = oldServer.password();
 		d->szInitUMode = oldServer.initUMode();
 		d->m_pReconnectInfo = new KviIrcServerReconnectInfo(info);
+
 		setAsynchronousConnectionData(d);
 
 		beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
