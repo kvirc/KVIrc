@@ -113,7 +113,7 @@ DccRecvThread::~DccRecvThread()
 	delete m_pTimeInterval;
 }
 
-bool DccRecvThread::sendAck(int filePos)
+bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 {
 	quint32 size = htonl(filePos & 0xffffffff);
 	int iRet=0;
@@ -128,93 +128,96 @@ bool DccRecvThread::sendAck(int filePos)
 	}
 #endif //COMPILE_SSL_SUPPORT
 
-	if(iRet != 4)
+	if(iRet == 4)
+		return true; // everything sent
+
+	// When downloading from a fast server using send-ahead via an asymmetric link (such as the
+	// common ADSL lines) it may happen that the network output queue gets saturated with ACKs.
+	// In this case the network stack will refuse to send our packet and we get here.
+	//
+	// We should either retry to send the ACK in a while or avoid sending it at all (as with
+	// send-ahead acks aren't usually checked per-packet).
+
+	if(iRet == 0)
 	{
-		// When downloading from a fast server using send-ahead via an asymmetric link (such as the
-		// common ADSL lines) it may happen that the network output queue gets saturated with ACKs.
-		// In this case the network stack will refuse to send our packet and we get here.
-		//
-		// We should either retry to send the ACK in a while or avoid sending it at all (as with
-		// send-ahead acks aren't usually checked per-packet).
+		// We can live with this: no data has been sent at all
+		// Not sending the ack and hoping that the server will not stall is better than
+		// killing the connection from our side anyway.
+		return true;
+	}
 
-		if(iRet == 0)
-		{
-			// We can live with this: no data has been sent at all
-			// Not sending the ack and hoping that the server will not stall is better than
-			// killing the connection from our side anyway.
-			return true;
-		}
-
-		if(iRet < 0)
-		{
-			// Reported error. If it's EAGAIN or EINTR then no data has been sent.
-
-#ifdef COMPILE_SSL_SUPPORT
-			if(m_pSSL)
-			{
-
-				// dropping ack when no serious ssl error occured
-				switch(m_pSSL->getProtocolError(iRet))
-				{
-					case KviSSL::ZeroReturn:
-						//return false; check eagain
-					case KviSSL::Success:
-					case KviSSL::WantRead:
-					case KviSSL::WantWrite:
-						return true;
-						break;
-					default:
-						// Raise unknown SSL ERROR
-						postErrorEvent(KviError::SSLError);
-						return false;
-						break;
-				}
-
-
-				return false;
-			}
-#endif //COMPILE_SSL_SUPPORT
-
-			int err = kvi_socket_error();
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
-#else //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
-			if((err != EAGAIN) && (err != EINTR))
-#endif //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
-			{
-				// some other kind of error
-				postErrorEvent(KviError::AcknowledgeError);
-				return false;
-			}
-
-			return true; // no data sent: same as iRet == 0 above.
-		}
-
-		// Sent something but not everything.
-		// How likely is it to get in here ?!
-		// Sleep for a short while and try to send the missing part.
-		// This will probably throttle the bandwidth usage a bit too.
-		msleep(10);
-
-		int iMissingPart = 4 - iRet;
-
+	if(iRet < 0)
+	{
+		if(bTolerateErrors)
+			return true; // ignore at all
+	
+		// Reported error. If it's EAGAIN or EINTR then no data has been sent.
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
 		{
-			iRet = m_pSSL->write(((char*)(&size)) + iRet,iMissingPart);
-		} else {
-#endif //COMPILE_SSL_SUPPORT
-			iRet = kvi_socket_send(m_fd,(void *)(((char *)(&size)) + iRet),iMissingPart);
-#ifdef COMPILE_SSL_SUPPORT
+			// dropping ack when no serious ssl error occured
+			switch(m_pSSL->getProtocolError(iRet))
+			{
+				case KviSSL::ZeroReturn:
+					//return false; check eagain
+				case KviSSL::Success:
+				case KviSSL::WantRead:
+				case KviSSL::WantWrite:
+					return true;
+					break;
+				default:
+					// Raise unknown SSL ERROR
+					postErrorEvent(KviError::SSLError);
+					return false;
+					break;
+			}
+
+			return false;
 		}
 #endif //COMPILE_SSL_SUPPORT
 
-		if(iRet != iMissingPart)
+		int err = kvi_socket_error();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
+#else //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+		if((err != EAGAIN) && (err != EINTR))
+#endif //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 		{
-			// Crap.. couldn't send the missing part of the ack :/
+			// some other kind of error
 			postErrorEvent(KviError::AcknowledgeError);
 			return false;
 		}
+
+		return true; // no data sent: same as iRet == 0 above.
+	}
+
+	// Sent something but not everything.
+	// How likely is it to get in here ?!
+	// Sleep for a short while and try to send the missing part.
+	// This will probably throttle the bandwidth usage a bit too.
+	msleep(10);
+
+	int iMissingPart = 4 - iRet;
+
+#ifdef COMPILE_SSL_SUPPORT
+	if(m_pSSL)
+	{
+		iRet = m_pSSL->write(((char*)(&size)) + iRet,iMissingPart);
+	} else {
+#endif //COMPILE_SSL_SUPPORT
+		iRet = kvi_socket_send(m_fd,(void *)(((char *)(&size)) + iRet),iMissingPart);
+#ifdef COMPILE_SSL_SUPPORT
+	}
+#endif //COMPILE_SSL_SUPPORT
+
+	if(iRet != iMissingPart)
+	{
+		if(bTolerateErrors)
+			return true; // ignore at all
+
+		// Crap.. couldn't send the missing part of the ack :/
+		postErrorEvent(KviError::AcknowledgeError);
+		return false;
 	}
 	return true;
 }
@@ -305,7 +308,8 @@ void DccRecvThread::run()
 
 	if(m_pOpt->bSendZeroAck && (!m_pOpt->bNoAcks))
 	{
-		if(!sendAck(m_pFile->pos()))goto exit_dcc;
+		if(!sendAck(m_pFile->pos(),false))
+			goto exit_dcc;
 	}
 
 	for(;;)
@@ -403,7 +407,16 @@ void DccRecvThread::run()
 							}
 						} else {
 							// Must send the ack... the peer must close the connection
-							if(!sendAck(m_pFile->pos()))break;
+							
+							// We tollerate ack errors if we're in the last 90% of the file.
+							// It might be that we're slow with receiving data but the server
+							// has already closed the connection (buggy server though).
+							
+							bool bTolerateErrors = (m_pOpt->uTotalFileSize > 0) &&
+								(((quint64)m_pFile->pos()) >= (m_pOpt->uTotalFileSize - (m_pOpt->uTotalFileSize / 10)));
+							
+							if(!sendAck(m_pFile->pos(),bTolerateErrors))
+								break;
 						}
 
 						// now take care of short reads

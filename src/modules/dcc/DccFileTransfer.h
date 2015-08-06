@@ -143,7 +143,7 @@ public:
 protected:
 	void postMessageEvent(const char * msg);
 	void updateStats();
-	bool sendAck(int filePos);
+	bool sendAck(int filePos,bool bTolerateErrors = false);
 	virtual void run();
 };
 
