@@ -403,7 +403,7 @@ void DccRecvThread::run()
 							}
 						} else {
 							// Must send the ack... the peer must close the connection
-							if(!sendAck(m_pFile->pos()))break;
+							// if(!sendAck(m_pFile->pos()))break; // comment out line - workaround allows fixing issue #1447
 						}
 
 						// now take care of short reads
