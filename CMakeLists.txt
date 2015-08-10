@@ -79,27 +79,24 @@ if(MANUAL_REVISION_UNSET)
 		if(GIT_FOUND)
 			message(STATUS "Found Git ${GIT_VERSION_STRING}")
 			execute_process(
-				COMMAND ${GIT_EXECUTABLE} log -1 --date=short "--pretty=%h"
+				COMMAND ${GIT_EXECUTABLE} describe "--dirty"
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 				RESULT_VARIABLE res_var
-				OUTPUT_VARIABLE GIT_COM_ID
+				OUTPUT_VARIABLE GIT_COMMIT_ID
 			)
 			if(${res_var} EQUAL 0)
-				string( REPLACE "\n" "" GIT_COMMIT_ID "${GIT_COM_ID}" )
+				string(REPLACE "\n" "" GIT_COMMIT_ID "${GIT_COMMIT_ID}")
 				set(CMAKE_KVIRC_BUILD_REVISION ${GIT_COMMIT_ID})
 				message(STATUS "Current revision is ${CMAKE_KVIRC_BUILD_REVISION}")
 			else()
-				set( GIT_COMMIT_ID "git commit id unknown")
 				message( STATUS "Git failed (not a repo, or no tags). Build will not contain git revision info." )
 			endif()
 			
 		else()
-			set( GIT_COMMIT_ID "unknown (git not found!)")
 			message( STATUS "Git not found. Build will not contain git revision info." )
 		endif()
 	else()
-			set( GIT_COMMIT_ID "unknown (not in a git tree!)")
-			message( STATUS "Missing .git directory. Build will not contain git revision info." )		
+		message( STATUS "Missing .git directory. Build will not contain git revision info." )
 	endif()
 else()
 	# Manually forced revision number
