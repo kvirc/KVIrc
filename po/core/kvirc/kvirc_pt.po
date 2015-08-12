@@ -5078,7 +5078,7 @@ msgstr ""
 ">Blowfish. O texto é primeiro encriptado com Blowfish e depois convertido na "
 "notação base64. As chaves usadas são de comprimento variável e são indicadas "
 "como 'strings' de caracteres. Pode indicar chaves com comprimento até 56 "
-"bytes (448 bits) by default or change this with /option uintBlowfishKeysize
+"bytes (448 bits) by default or change this with /option uintBlowfishKeysize"
 " UINT. Se apenas uma chave é indicada,este mecanismo irá usá-la "
 "tanto para encriptar e desencriptar.<br/>Este mecanismo funciona em modo ECB "
 "por predefinição: se deseja usar o modo CBC deve adicionar o prefixo \"cbc:"
