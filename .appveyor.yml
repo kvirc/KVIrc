@@ -6,6 +6,7 @@ cache:
     - c:\Strawberry
     - c:\enchant.7z
     - c:\spellcheck-dicts
+    - c:\ProgramData\chocolatey
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -48,10 +49,12 @@ install:
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
         }
-    - choco install jom
-    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
-    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
-    - c:\cygwin\bin\bash -c "which jom"
+    - ps: |
+        if (Test-Path "c:/ProgramData/chocolatey/bin/jom") {
+            echo "using jom from cache"
+        } else {
+            choco install jom
+        }
       # https://ci.appveyor.com/project/DarthGandalf/enchant/build/0.0.0.0.1-branch-mingw-build-20
     - ps: |
         if (Test-Path c:\enchant.7z) {
