@@ -8,8 +8,10 @@ cache:
     - c:\enchant.7z
     - c:\spellcheck-dicts
     - c:\ProgramData\chocolatey
+    - c:\Qt-tversoft
 environment:
     # libenchant is built at https://ci.appveyor.com/project/DarthGandalf/enchant/build/0.0.0.0.1-branch-mingw-build-23
+    # Qt is from http://tver-soft.org/qt64 as they have proper .pdb files if one needs to debug. Also they have Qt4 for 64bits.
     matrix:
         - ssl_arch: Win64
           nuget_arch: x64
@@ -17,14 +19,16 @@ environment:
           choco_arch:
           target_arch: x86_64
           enchant_url: https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
-          qt_ver: 5.5/msvc2013_64
+          qt_ver: qt-5.5.0-x64-msvc2013
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86-64/5.5.0/msvc2013/qt-5.5.0-x64-msvc2013-rev0.7z
         - ssl_arch: Win32
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
           target_arch: x86
           enchant_url: https://ci.appveyor.com/api/buildjobs/ni6n19rijuxt2i6r/artifacts/enchant.7z
-          qt_ver: 5.5/msvc2013
+          qt_ver: qt-5.5.0-x86-msvc2013
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86/5.5.0/msvc2013/qt-5.5.0-x86-msvc2013-rev0.7z
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -33,8 +37,6 @@ install:
     - c:\cygwin\bin\ls -l /cygdrive/c
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
-    - c:\cygwin\bin\ls -l /cygdrive/c/Qt
-    - c:\cygwin\bin\ls -l /cygdrive/c/Qt/5.5
     - c:\cygwin\bin\ls -l /cygdrive/c/Tools
     - c:\cygwin\bin\ls -l /cygdrive/c/Libraries
     - c:\cygwin\bin\ls -l /cygdrive/c/ProgramData
@@ -42,6 +44,16 @@ install:
     - nuget install zlib -OutputDirectory c:\deps
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
+    - ps: |
+      if (Test-Path "c:/Qt-tversoft/$($env:qt_ver)/BUILDINFO.TXT") {
+            echo "using qt from cache"
+        } else {
+            c:\cygwin\bin\bash -lc 'mkdir -p /cygdrive/c/Qt-tversoft; cd /cygdrive/c/Qt-tversoft; wget $qt_url 2>&1'
+            c:\cygwin\bin\ls -l /cygdrive/c/Qt-tversoft
+            c:\cygwin\bin\bash -lc 'cd /cygdrive/c/Qt-tversoft; 7z x -y "-x!$qt_ver/examples/*" "-x!$qt_ver/doc/*" "-x!$qt_ver/demos/*" *.7z > /dev/null'
+            # Teach qmake.exe about where it is located
+            & "c:\Qt-tversoft\$env:qt_ver\qtbinpatcher.exe" "--qt-dir=c:/Qt-tversoft/$env:qt_ver"
+        }
     - ps: |
         if (Test-Path "c:\OpenSSL-$env:ssl_arch") {
             echo "using openssl from cache"
@@ -115,12 +127,12 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt-tversoft/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $env:Path += ";c:/Qt/$env:qt_ver/bin"
+        $env:Path += ";c:/Qt-tversoft/$env:qt_ver/bin"
         windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
         # platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
         # applicationDirPath() isn't available before QCoreApplication's constructor.
