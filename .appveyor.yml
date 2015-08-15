@@ -1,11 +1,34 @@
 version: 0.0.0.0.1-branch-{branch}-build-{build}
 cache:
+    - c:\OpenSSL-Win32
     - c:\OpenSSL-Win64
     - 'c:\Program Files (x86)\NSIS'
     - c:\deps
     - c:\Strawberry
     - c:\enchant.7z
     - c:\spellcheck-dicts
+    - c:\ProgramData\chocolatey
+    - c:\Qt-tversoft
+environment:
+    # libenchant is built at https://ci.appveyor.com/project/DarthGandalf/enchant/build/0.0.0.0.1-branch-mingw-build-23
+    # Qt is from http://tver-soft.org/qt64 as they have proper .pdb files if one needs to debug. Also they have Qt4 for 64bits.
+    matrix:
+        - ssl_arch: Win64
+          nuget_arch: x64
+          vc_arch: amd64
+          choco_arch:
+          target_arch: x86_64
+          enchant_url: https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
+          qt_ver: qt-4.8.7-x64-msvc2013
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86-64/4.8.7/msvc2013/qt-4.8.7-x64-msvc2013.7z
+        - ssl_arch: Win32
+          nuget_arch: Win32
+          vc_arch: amd64_x86  # cross-compile from amd64 to x86
+          choco_arch: --x86
+          target_arch: x86
+          enchant_url: https://ci.appveyor.com/api/buildjobs/ni6n19rijuxt2i6r/artifacts/enchant.7z
+          qt_ver: qt-4.8.7-x86-msvc2013
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86/4.8.7/msvc2013/qt-4.8.7-x86-msvc2013.7z
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -14,8 +37,6 @@ install:
     - c:\cygwin\bin\ls -l /cygdrive/c
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
     - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
-    - c:\cygwin\bin\ls -l /cygdrive/c/Qt
-    - c:\cygwin\bin\ls -l /cygdrive/c/Qt/5.4
     - c:\cygwin\bin\ls -l /cygdrive/c/Tools
     - c:\cygwin\bin\ls -l /cygdrive/c/Libraries
     - c:\cygwin\bin\ls -l /cygdrive/c/ProgramData
@@ -24,15 +45,25 @@ install:
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-        if (Test-Path c:\OpenSSL-Win64) {
+        if (Test-Path "c:/Qt-tversoft/$($env:qt_ver)/BUILDINFO.TXT") {
+            echo "using qt from cache"
+        } else {
+            c:\cygwin\bin\bash -lc 'mkdir -p /cygdrive/c/Qt-tversoft; cd /cygdrive/c/Qt-tversoft; wget $qt_url 2>&1'
+            c:\cygwin\bin\ls -l /cygdrive/c/Qt-tversoft
+            c:\cygwin\bin\bash -lc 'cd /cygdrive/c/Qt-tversoft; 7z x -y "-x!$qt_ver/examples/*" "-x!$qt_ver/doc/*" "-x!$qt_ver/demos/*" *.7z > /dev/null'
+            # Teach qmake.exe about where it is located
+            & "c:\Qt-tversoft\$env:qt_ver\qtbinpatcher.exe" "--qt-dir=c:/Qt-tversoft/$env:qt_ver"
+        }
+    - ps: |
+        if (Test-Path "c:\OpenSSL-$env:ssl_arch") {
             echo "using openssl from cache"
         } else {
             echo "downloading openssl"
-            Invoke-WebRequest https://slproweb.com/download/Win64OpenSSL-1_0_2d.exe -OutFile c:\openssl-setup.exe
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2d.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         }
-    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-Win64 "-type" f
+    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-%ssl_arch% "-type" f
     - ps: |
         if (Test-Path "c:/Program Files (x86)/NSIS/makensis.exe") {
             echo "using nsis from cache"
@@ -43,21 +74,22 @@ install:
         if (Test-Path "c:/Strawberry/kvirc_workaround") {
             echo "using perl from cache"
         } else {
-            choco install strawberryperl -y
+            choco install strawberryperl -y $env:choco_arch
             # Strawberry perl doesn't support MSVC, but we force the support.
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
         }
-    - choco install jom
-    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files (x86)"
-    - c:\cygwin\bin\ls -l "/cygdrive/c/Program Files"
-    - c:\cygwin\bin\bash -c "which jom"
-      # https://ci.appveyor.com/project/DarthGandalf/enchant/build/0.0.0.0.1-branch-mingw-build-20
+    - ps: |
+        if (Test-Path "c:/ProgramData/chocolatey/bin/jom") {
+            echo "using jom from cache"
+        } else {
+            choco install jom
+        }
     - ps: |
         if (Test-Path c:\enchant.7z) {
             echo "using enchant from cache"
         } else {
-            Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/sgoxl0gbgfu1lurl/artifacts/enchant.7z -OutFile c:\enchant.7z
+            Invoke-WebRequest $env:enchant_url -OutFile c:\enchant.7z
         }
     - c:\cygwin\bin\bash -lc "cd /cygdrive/c; 7z x -y enchant.7z"
     - c:\cygwin\bin\ls -l /cygdrive/c/enchant-inst
@@ -83,35 +115,46 @@ install:
 build_script:
     - mkdir build
     - cd build
-    - '"c:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall" amd64'
+    - '"c:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/vcvarsall" %vc_arch%'
     - path
     - ps: |
         $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
         $zlibinc = c:\cygwin\bin\dirname $zlibinc
         $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
-        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/x64/Release/zlib.lib'
+        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.lib"
         $zliblib = c:\cygwin\bin\cygpath -m $zliblib
         $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/5.5/msvc2013_64" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt-tversoft/$env:qt_ver" "-DWANT_QT4=YES" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $env:Path += ";c:/Qt/5.5/msvc2013_64/bin"
-        windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
-        # platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
-        # applicationDirPath() isn't available before QCoreApplication's constructor.
-        # Alternatively, kvirc could detect its own directory without help of Qt.
-        # Chicken-and-egg FTW.
-        # But let's not put all other qt plugins (imageformats, etc) to this crowded place.
-        c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
+        # This block is for Qt5.
+        # $env:Path += ";c:/Qt-tversoft/$env:qt_ver/bin"
+        # windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        # # qt-plugins/platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
+        # # applicationDirPath() isn't available before QCoreApplication's constructor.
+        # # Alternatively, kvirc could detect its own directory without help of Qt.
+        # # Chicken-and-egg FTW.
+        # # So put platforms/ to a place visible to Qt by default.
+        # # But it's very crowded place, so let's leave all other plugins (imageformats, etc) in qt-plugins/
+        # c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
+        # End of block for Qt5.
+
+        # This block is for Qt4.
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtCore4.dll" release/
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtGui4.dll" release/
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtNetwork4.dll" release/
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtWebKit4.dll" release/
+        c:\cygwin\bin\cp -vR "/cygdrive/c/Qt-tversoft/$env:qt_ver/plugins" release/qt-plugins
+        # End of block for Qt4.
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/x64/Release/zlib.dll'
-        c:\cygwin\bin\cp "-v" "$zlib" /cygdrive/c/OpenSSL-Win64/libeay32.dll /cygdrive/c/OpenSSL-Win64/ssleay32.dll release/
+        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
+        c:\cygwin\bin\cp "-v" "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
         c:\cygwin\bin\sh -c '/bin/cp -v /cygdrive/c/enchant-inst/bin/*.dll release/'
         c:\cygwin\bin\cp "-v" /cygdrive/c/enchant-inst/COPYING.glib release/license/
         c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
@@ -128,5 +171,8 @@ build_script:
     - c:\cygwin\bin\ls -l release/
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - c:\cygwin\bin\ls -l
-    - ps: Push-AppveyorArtifact *.exe
+    - ps: |
+        $exe = dir -name *.exe
+        $new_name = $exe.Replace(".exe", "-$env:target_arch.exe")
+        Push-AppveyorArtifact $exe -FileName $new_name
 test: off
