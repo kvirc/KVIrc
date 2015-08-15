@@ -87,8 +87,8 @@ private: // parsing helpers
 	// dedicated to parseSpecialCommandFor() : in KviKvsParser_specialCommands.cpp
 	bool skipToEndOfForControlBlock();
 	// error handlers
-	void error(const QChar * pLocation,const QString &szMsgFmt,...);
-	void warning(const QChar * pLocation,const QString &szMsgFmt,...);
+	void error(const QChar * pLocation,QString szMsgFmt,...);
+	void warning(const QChar * pLocation,QString szMsgFmt,...);
 	void errorBadChar(const QChar * pLocation,char cExpected,const char * szCommandName);
 
 protected:

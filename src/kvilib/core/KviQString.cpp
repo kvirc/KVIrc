@@ -913,11 +913,11 @@ namespace KviQString
 		//szSrc.squeeze();
 	}
 
-	void appendFormatted(QString & szSrc, const QString & szFmt, ...)
+	void appendFormatted(QString & szSrc, QString szFmt, ...)
 	{
 		QString szTmp;
 		kvi_va_list list;
-		kvi_va_start_by_reference(list,szFmt);
+		kvi_va_start(list,szFmt);
 		//print...with max 256 chars
 		KviQString::vsprintf(szTmp,szFmt,list);
 		kvi_va_end(list);

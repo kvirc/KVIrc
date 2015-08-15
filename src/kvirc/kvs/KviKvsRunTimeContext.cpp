@@ -153,38 +153,38 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 	KviKvsReport::report(&rep,m_pWindow);
 }
 
-void KviKvsRunTimeContext::error(KviKvsTreeNode * pNode,const QString &szMsgFmt,...)
+void KviKvsRunTimeContext::error(KviKvsTreeNode * pNode,QString szMsgFmt,...)
 {
 	m_bError = true;
 
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szMsgFmt);
+	kvi_va_start(va,szMsgFmt);
 	report(true,pNode,szMsgFmt,va);
 	kvi_va_end(va);
 }
 
-void KviKvsRunTimeContext::warning(KviKvsTreeNode * pNode,const QString &szMsgFmt,...)
+void KviKvsRunTimeContext::warning(KviKvsTreeNode * pNode,QString szMsgFmt,...)
 {
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szMsgFmt);
+	kvi_va_start(va,szMsgFmt);
 	report(false,pNode,szMsgFmt,va);
 	kvi_va_end(va);
 }
 
-void KviKvsRunTimeContext::error(const QString &szMsgFmt,...)
+void KviKvsRunTimeContext::error(QString szMsgFmt,...)
 {
 	m_bError = true;
 
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szMsgFmt);
+	kvi_va_start(va,szMsgFmt);
 	report(true,m_pDefaultReportLocation,szMsgFmt,va);
 	kvi_va_end(va);
 }
 
-void KviKvsRunTimeContext::warning(const QString &szMsgFmt,...)
+void KviKvsRunTimeContext::warning(QString szMsgFmt,...)
 {
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szMsgFmt);
+	kvi_va_start(va,szMsgFmt);
 	report(false,m_pDefaultReportLocation,szMsgFmt,va);
 	kvi_va_end(va);
 }

@@ -113,20 +113,20 @@ void KviKvsParser::errorBadChar(const QChar * pLocation,char cExpected,const cha
 			cExpected,szCommandName);
 }
 
-void KviKvsParser::error(const QChar * pLocation,const QString &szMsgFmt,...)
+void KviKvsParser::error(const QChar * pLocation,QString szMsgFmt,...)
 {
 	m_bError = true;
 
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szMsgFmt);
+	kvi_va_start(va,szMsgFmt);
 	report(true,pLocation,szMsgFmt,va);
 	kvi_va_end(va);
 }
 
-void KviKvsParser::warning(const QChar * pLocation,const QString &szMsgFmt,...)
+void KviKvsParser::warning(const QChar * pLocation,QString szMsgFmt,...)
 {
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szMsgFmt);
+	kvi_va_start(va,szMsgFmt);
 	report(false,pLocation,szMsgFmt,va);
 	kvi_va_end(va);
 }

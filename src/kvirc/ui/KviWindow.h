@@ -377,10 +377,10 @@ public:
 	// You *might* want to override these too.. but better don't touch them :D
 	virtual void output(int iMsgType, const char * pcFormat, ...);
 	virtual void output(int iMsgType, const kvi_wchar_t * pwFormat, ...);
-	virtual void output(int iMsgType, const QString & szFmt, ...);
+	virtual void output(int iMsgType, QString szFmt, ...);
 	void output(int iMsgType, const QDateTime& datetime, const char * pcFormat, ...);
 	void output(int iMsgType, const QDateTime& datetime, const kvi_wchar_t * pwFormat, ...);
-	void output(int iMsgType, const QDateTime& datetime, const QString & szFmt, ...);
+	void output(int iMsgType, const QDateTime& datetime, QString szFmt, ...);
 	virtual void outputNoFmt(int iMsgType, const char * pcText, int iFlags = 0, const QDateTime& datetime = QDateTime());
 	virtual void outputNoFmt(int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime& datetime = QDateTime()){ internalOutput(m_pIrcView,iMsgType,pwText,iFlags,datetime); };
 	virtual void outputNoFmt(int iMsgType, const QString & szText, int iFlags = 0, const QDateTime& datetime = QDateTime()); // <-- iFlags are KviIrcView::AppendTextFlags

@@ -46,9 +46,9 @@ class KviMessageBox : public KviTalMessageBox
 
 namespace KviMessageBox
 {
-	KVIRC_API void warning(const QString &fmt,...);
-	KVIRC_API void information(const QString &fmt,...);
-	KVIRC_API bool yesNo(const QString &caption,const QString &fmt,...);
+	KVIRC_API void warning(QString fmt,...);
+	KVIRC_API void information(QString fmt,...);
+	KVIRC_API bool yesNo(const QString &caption,QString fmt,...);
 }
 
 #endif //!_KVI_MSGBOX_H_

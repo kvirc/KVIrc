@@ -75,8 +75,8 @@ public:
 	bool leaveBlockingSection(){ return m_pContext->leaveBlockingSection(); };
 
 	// forwarders for context: they ease the porting
-	void warning(const QString &szFmt,...);
-	bool error(const QString &szFmt,...); // this ALWAYS returns false
+	void warning(QString szFmt,...);
+	bool error(QString szFmt,...); // this ALWAYS returns false
 };
 
 #endif //!_KVI_KVS_RUNTIMECALL_H_

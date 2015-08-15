@@ -30,37 +30,8 @@
 
 #define kvi_va_list va_list
 #define kvi_va_start va_start
-//
-// kvi_va_start_by_reference should be used when the last known argument
-// is a reference type and not a pointer
-//
-// int SomeClass::sprintf(const QString &fmt,...)
-// {
-//       kvi_va_list list;
-//       kvi_va_start_by_reference(list,fmt);
-//       ...
-// }
-//
-//
-#if defined(COMPILE_ON_WINDOWS) && defined(MINGW)
-	#define kvi_va_start_by_reference(__list,__arg) \
-	{ \
-		int supercalifragilisticoespiralidoso=_INTSIZEOF(__arg); \
-		__asm lea eax,__arg \
-		__asm add eax,supercalifragilisticoespiralidoso \
-		__asm mov __list,eax \
-	}
-#elif defined(__GNUC__) && !defined(__clang__)
-	// gcc doesn't use the second argument
-	// so we just fool it to avoid the warnings
-	#define kvi_va_start_by_reference(__list,__arg) va_start(__list,((const char *)(&(__arg))))
-#else
-	#define kvi_va_start_by_reference va_start
-#endif
-
 #define kvi_va_arg va_arg
 #define kvi_va_end va_end
-
 
 #ifdef va_copy
 	#define kvi_va_copy(a,b) va_copy(a,b)

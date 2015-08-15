@@ -38,10 +38,10 @@
 
 namespace KviMessageBox
 {
-	void warning(const QString &fmt,...)
+	void warning(QString fmt,...)
 	{
 		kvi_va_list list;
-		kvi_va_start_by_reference(list,fmt);
+		kvi_va_start(list,fmt);
 		QString s;
 		KviQString::vsprintf(s,fmt,list);
 		kvi_va_end(list);
@@ -52,10 +52,10 @@ namespace KviMessageBox
 #endif
 	}
 
-	void information(const QString &fmt,...)
+	void information(QString fmt,...)
 	{
 		kvi_va_list list;
-		kvi_va_start_by_reference(list,fmt);
+		kvi_va_start(list,fmt);
 		QString s;
 		KviQString::vsprintf(s,fmt,list);
 		kvi_va_end(list);
@@ -66,10 +66,10 @@ namespace KviMessageBox
 #endif
 	}
 
-	bool yesNo(const QString &caption,const QString &fmt,...)
+	bool yesNo(const QString &caption,QString fmt,...)
 	{
 		kvi_va_list list;
-		kvi_va_start_by_reference(list,fmt);
+		kvi_va_start(list,fmt);
 		QString s;
 		KviQString::vsprintf(s,fmt,list);
 		kvi_va_end(list);

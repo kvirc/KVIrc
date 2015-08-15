@@ -199,10 +199,10 @@ public:
 	// was error(...) ever called ?
 	bool error() const { return m_bError; };
 
-	void error(KviKvsTreeNode * pNode,const QString &szMsgFmt,...);
-	void warning(KviKvsTreeNode * pNode,const QString &szMsgFmt,...);
-	void error(const QString &szMsgFmt,...);
-	void warning(const QString &szMsgFmt,...);
+	void error(KviKvsTreeNode * pNode,QString szMsgFmt,...);
+	void warning(KviKvsTreeNode * pNode,QString szMsgFmt,...);
+	void error(QString szMsgFmt,...);
+	void warning(QString szMsgFmt,...);
 	void setDefaultReportLocation(KviKvsTreeNode * pNode);
 	bool errorNoIrcContext();
 	bool warningNoIrcConnection();

@@ -1266,10 +1266,10 @@ void KviWindow::output(int iMsgType, const char * pcFormat, ...)
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
 }
 
-void KviWindow::output(int iMsgType, const QString & szFmt, ...)
+void KviWindow::output(int iMsgType, QString szFmt, ...)
 {
 	kvi_va_list l;
-	kvi_va_start_by_reference(l,szFmt);
+	kvi_va_start(l,szFmt);
 	QString szBuf;
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);
@@ -1310,10 +1310,10 @@ void KviWindow::output(int iMsgType, const QDateTime& datetime, const char * pcF
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,0,datetime);
 }
 
-void KviWindow::output(int iMsgType, const QDateTime& datetime, const QString & szFmt, ...)
+void KviWindow::output(int iMsgType, const QDateTime& datetime, QString szFmt, ...)
 {
 	kvi_va_list l;
-	kvi_va_start_by_reference(l,szFmt);
+	kvi_va_start(l,szFmt);
 	QString szBuf;
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);

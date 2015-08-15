@@ -277,7 +277,7 @@ namespace KviQString
 	* \param ... Format string parameters
 	* \return void
 	*/
-	extern KVILIB_API void appendFormatted(QString & szSrc, const QString & szFmt, ...);
+	extern KVILIB_API void appendFormatted(QString & szSrc, QString szFmt, ...);
 
 	/**
 	* \brief Appends the given number to the source string

@@ -25,18 +25,18 @@
 #include "KviKvsRunTimeCall.h"
 
 
-void KviKvsRunTimeCall::warning(const QString &szFmt,...)
+void KviKvsRunTimeCall::warning(QString szFmt,...)
 {
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szFmt);
+	kvi_va_start(va,szFmt);
 	m_pContext->report(false,m_pContext->defaultReportLocation(),szFmt,va);
 	kvi_va_end(va);
 }
 
-bool KviKvsRunTimeCall::error(const QString &szFmt,...)
+bool KviKvsRunTimeCall::error(QString szFmt,...)
 {
 	kvi_va_list va;
-	kvi_va_start_by_reference(va,szFmt);
+	kvi_va_start(va,szFmt);
 	m_pContext->report(true,m_pContext->defaultReportLocation(),szFmt,va);
 	kvi_va_end(va);
 	return false;
