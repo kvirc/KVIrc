@@ -19,16 +19,16 @@ environment:
           choco_arch:
           target_arch: x86_64
           enchant_url: https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
-          qt_ver: qt-5.5.0-x64-msvc2013
-          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86-64/5.5.0/msvc2013/qt-5.5.0-x64-msvc2013-rev0.7z
+          qt_ver: qt-4.8.7-x64-msvc2013
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86-64/4.8.7/msvc2013/qt-4.8.7-x64-msvc2013.7z
         - ssl_arch: Win32
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
           target_arch: x86
           enchant_url: https://ci.appveyor.com/api/buildjobs/ni6n19rijuxt2i6r/artifacts/enchant.7z
-          qt_ver: qt-5.5.0-x86-msvc2013
-          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86/5.5.0/msvc2013/qt-5.5.0-x86-msvc2013-rev0.7z
+          qt_ver: qt-4.8.7-x86-msvc2013
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86/4.8.7/msvc2013/qt-4.8.7-x86-msvc2013.7z
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -45,7 +45,7 @@ install:
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-      if (Test-Path "c:/Qt-tversoft/$($env:qt_ver)/BUILDINFO.TXT") {
+        if (Test-Path "c:/Qt-tversoft/$($env:qt_ver)/BUILDINFO.TXT") {
             echo "using qt from cache"
         } else {
             c:\cygwin\bin\bash -lc 'mkdir -p /cygdrive/c/Qt-tversoft; cd /cygdrive/c/Qt-tversoft; wget $qt_url 2>&1'
@@ -127,19 +127,30 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt-tversoft/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt-tversoft/$env:qt_ver" "-DWANT_QT4=YES" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $env:Path += ";c:/Qt-tversoft/$env:qt_ver/bin"
-        windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
-        # platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
-        # applicationDirPath() isn't available before QCoreApplication's constructor.
-        # Alternatively, kvirc could detect its own directory without help of Qt.
-        # Chicken-and-egg FTW.
-        # But let's not put all other qt plugins (imageformats, etc) to this crowded place.
-        c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
+        # This block is for Qt5.
+        # $env:Path += ";c:/Qt-tversoft/$env:qt_ver/bin"
+        # windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        # # qt-plugins/platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
+        # # applicationDirPath() isn't available before QCoreApplication's constructor.
+        # # Alternatively, kvirc could detect its own directory without help of Qt.
+        # # Chicken-and-egg FTW.
+        # # So put platforms/ to a place visible to Qt by default.
+        # # But it's very crowded place, so let's leave all other plugins (imageformats, etc) in qt-plugins/
+        # c:\cygwin\bin\mv "-v" "release/qt-plugins/platforms" release/
+        # End of block for Qt5.
+
+        # This block is for Qt4.
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtCore4.dll" release/
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtGui4.dll" release/
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtNetwork4.dll" release/
+        c:\cygwin\bin\cp -v "/cygdrive/c/Qt-tversoft/$env:qt_ver/bin/QtWebKit4.dll" release/
+        c:\cygwin\bin\cp -vR "/cygdrive/c/Qt-tversoft/$env:qt_ver/plugins" release/qt-plugins
+        # End of block for Qt4.
     - c:\cygwin\bin\ls -l release/
     - ps: |
         $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
