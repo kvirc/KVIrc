@@ -54,6 +54,7 @@ install:
             # Teach qmake.exe about where it is located
             & "c:\Qt-tversoft\$env:qt_ver\qtbinpatcher.exe" "--qt-dir=c:/Qt-tversoft/$env:qt_ver"
         }
+        c:\cygwin\bin\bash -c 'rm -f /cygdrive/c/Qt-tversoft/*.7z'
     - ps: |
         if (Test-Path "c:\OpenSSL-$env:ssl_arch") {
             echo "using openssl from cache"
@@ -80,7 +81,7 @@ install:
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
         }
     - ps: |
-        if (Test-Path "c:/ProgramData/chocolatey/bin/jom") {
+        if (Test-Path "c:/ProgramData/chocolatey/bin/jom.exe") {
             echo "using jom from cache"
         } else {
             choco install jom
