@@ -1441,7 +1441,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	@description:
 		Joins all the string in the <data> array by using
 		the specified <separator> and returns the result.
-		If <flags> contains the character "n" then empty strings in teh <data>
+		If <flags> contains the character "n" then empty strings in the <data>
 		array are skipped.
 
 */
