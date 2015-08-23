@@ -128,12 +128,8 @@
 	#include <KNotification>
 #endif
 
-#ifdef COMPILE_X11_SUPPORT
-#if (QT_VERSION < 0x050000)
+#ifdef COMPILE_QX11INFO_SUPPORT
 	#include <QX11Info>
-#else
-	// FIXME: Need a replacement for this
-#endif
 #endif
 
 /*
@@ -737,14 +733,14 @@ bool KviApplication::supportsCompositing()
 	//we need >= win2000
 	return true;
 #endif
-#ifdef COMPILE_X11_SUPPORT
-#if (QT_VERSION < 0x050000)
-	return QX11Info::isCompositingManagerRunning();
-#else // QT_VERSION >= 0x050000
-	// FIXME: Need a replacement for this?
-	return false;
-#endif // QT_VERSION >= 0x050000
-#endif // COMPILE_X11_SUPPORT
+#ifdef COMPILE_QX11INFO_SUPPORT
+	#if (QT_VERSION >= 0x050000)
+		// Qt5 is always compositing-capable
+		return true;
+	#else
+		return QX11Info::isCompositingManagerRunning();
+	#endif
+#endif // COMPILE_QX11INFO_SUPPORT
 #ifdef COMPILE_ON_MAC
 	return true;
 #endif

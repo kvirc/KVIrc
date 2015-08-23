@@ -34,9 +34,13 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <winsock2.h>
 #else
-	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
-		#include <qcoreevent.h>
-	#endif //!COMPILE_X11_SUPPORT
+	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+		#if (QT_VERSION >= 0x050000)
+			#include "KviXlib.h" // for XEvent
+		#else
+			#include <qcoreevent.h>
+		#endif
+	#endif
 #endif
 
 	//////////////////////////////////////////////////////////////////////
@@ -54,9 +58,12 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		virtual bool winEvent(MSG * msg, long * result);
 #else
-	#if defined(COMPILE_X11_SUPPORT) && (QT_VERSION < 0x050000)
+	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 		virtual bool x11Event(XEvent *e);
 	#endif //!COMPILE_X11_SUPPORT
+#endif
+#if (QT_VERSION >= 0x050000)
+		virtual bool nativeEvent(const QByteArray &id,void * msg,long * res);
 #endif
 	};
 #endif //!COMPILE_NO_IPC

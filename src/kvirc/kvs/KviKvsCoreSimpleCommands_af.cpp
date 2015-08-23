@@ -40,19 +40,18 @@
 #include "KviKvsKernel.h"
 #include "KviKvsObjectController.h"
 
-#if (QT_VERSION >= 0x050000)
-	#ifndef COMPILE_NO_X_BELL
-		#define COMPILE_NO_X_BELL
-	#endif // QX11Info is not available with Qt5
-#endif
 
-#ifdef COMPILE_X11_SUPPORT
+#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 	#ifndef COMPILE_NO_X_BELL
 		#include "KviXlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
 		#include <unistd.h>   // for usleep();
 
-		#include <qx11info_x11.h>
+		#include <QX11Info>
 		#define get_xdisplay QX11Info::display
+	#endif
+#else
+	#ifndef COMPILE_NO_X_BELL
+		#define COMPILE_NO_X_BELL
 	#endif
 #endif
 #include "KviTalToolTip.h"

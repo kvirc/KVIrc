@@ -31,6 +31,10 @@
 		// Someone has defined Bool ?
 		#undef Bool
 	#endif
+	
+	#ifdef None
+		#undef None
+	#endif
 
 	#include <X11/Xlib.h>
 
@@ -43,6 +47,40 @@
 		// NO!
 		#undef Bool
 	#endif
+
+	#ifdef None
+		// No
+		#undef None
+	#endif
+	
+	#ifdef KeyPress
+		#undef KeyPress
+	#endif
+
+	#ifdef KeyRelease
+		#undef KeyRelease
+	#endif
+
+	#ifdef FocusIn
+		#undef FocusIn
+	#endif
+
+	#ifdef FocusOut
+		#undef FocusOut
+	#endif
+
+	#ifdef FontChange
+		#undef FontChange
+	#endif
+
+	#ifdef Expose
+		#undef Expose
+	#endif
+
+	#ifdef CursorShape
+		#undef CursorShape
+	#endif
+
 #endif //COMPILE_X11_SUPPORT
 
 #endif //_KVI_XLIB_H_
