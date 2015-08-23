@@ -25,14 +25,12 @@
 //=============================================================================
 
 
-
-
 //===============================================================
 #include "object_macros.h"
 
-#if (QT_VERSION < 0x050000)
+class QHttp;
+class QHttpResponseHeader;
 
-#include <QHttp>
 #include <QFile>
 #include <QHash>
 #include <QSslError>
@@ -86,10 +84,6 @@ protected slots:
 	void slotReadyRead(const QHttpResponseHeader &r);
 	void slotStateChanged ( int state);
 
-
-
 };
-
-#endif
 
 #endif //_CLASS_HTTP_H_

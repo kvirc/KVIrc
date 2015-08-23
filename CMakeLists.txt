@@ -21,6 +21,7 @@ cmake_minimum_required(VERSION 2.8.6)
 if(POLICY CMP0020)
 	cmake_policy(SET CMP0020 NEW)
 endif()
+
 # fix the project to the new-style policy when we require cmake 2.8.10+
 # and remove it when we require cmake 3.0+
 if(POLICY CMP0043)

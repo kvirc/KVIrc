@@ -24,18 +24,20 @@
 
 #include "KvsObject_http.h"
 
-#ifdef __GNUC__
-#warning "QHttp doesn't exist anymore in Qt5, port this class or drop it"
-#endif
-#if (QT_VERSION < 0x050000)
-
 #include "kvi_debug.h"
 #include "KviError.h"
 #include "KviLocale.h"
 
-#include <QHttp>
+#if (QT_VERSION > 0x050000)
+	// Qt >= 5.0.0 has no QHttp.
+	// We use the external source code module provided by digia (in qthttp)
+	#include <qhttp.h>
+#else
+	// Use standard QHttp
+	#include <QHttp>
+#endif
+
 #include <QUrl>
-#include <QUrlInfo>
 
 #ifndef QT_NO_OPENSSL
 	#include <QSslError>
@@ -326,7 +328,7 @@ bool  KvsObject_http::functionPost(KviKvsObjectFunctionCall *c)
 		}
 	}
 	if (szPath.isEmpty()) szPath="/";
-	int id=m_pHttp->post(szPath,szDest.toAscii(),pFile);
+	int id=m_pHttp->post(szPath,szDest.toUtf8(),pFile);
 	if (pFile) getDict[id]=pFile;
 	c->returnValue()->setInteger(id);
 	return true;
@@ -562,4 +564,3 @@ bool KvsObject_http::functionSslErrorsEvent(KviKvsObjectFunctionCall *c)
 }
 #endif
 
-#endif

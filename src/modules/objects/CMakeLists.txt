@@ -1,6 +1,7 @@
 # CMakeLists for src/modules/objects
 
-set(kviobjects_SRCS
+set(
+	kviobjects_SRCS
 	libkviobjects.cpp
 	KvsObject_button.cpp
 	KvsObject_buttonGroup.cpp
@@ -53,5 +54,19 @@ set(kviobjects_SRCS
 	KvsObject_xmlreader.cpp
 )
 
+if(NOT CMAKE_STATUS_QT_VERSION VERSION_LESS 5.0.0)
+	# Qt >= 5.0.0 has no QHttp implementation. We use the external code provided by digia.
+	set(
+		kviobjects_SRCS
+		${kviobjects_SRCS}
+		qthttp/qhttp.cpp
+		qthttp/qhttpauthenticator.cpp
+	)
+	
+	include_directories(qthttp/)
+endif()
+
 set(kvi_module_name kviobjects)
+
 include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+
