@@ -752,14 +752,9 @@ void KviIrcView::removeHeadLine(bool bRepaint)
 		repaint();
 }
 
-void KviIrcView::splitMessagesTo(KviIrcView *v)
+bool KviIrcView::messageShouldGoToMessageView(int iMsgType)
 {
-	v->emptyBuffer(false);
-
-	KviIrcViewLine * l = m_pFirstLine;
-	KviIrcViewLine * tmp;
-	while(l)
-		switch(l->iMsgType)
+	switch(iMsgType)
 	{
 		case KVI_OUT_CHANPRIVMSG:
 		case KVI_OUT_CHANPRIVMSGCRYPTED:
@@ -769,6 +764,25 @@ void KviIrcView::splitMessagesTo(KviIrcView *v)
 		case KVI_OUT_OWNPRIVMSG:
 		case KVI_OUT_OWNPRIVMSGCRYPTED:
 		case KVI_OUT_HIGHLIGHT:
+			return true;
+		break;
+		default:
+			// fall down
+		break;
+	}
+	
+	return false;
+}
+
+void KviIrcView::splitMessagesTo(KviIrcView *v)
+{
+	v->emptyBuffer(false);
+
+	KviIrcViewLine * l = m_pFirstLine;
+	KviIrcViewLine * tmp;
+	while(l)
+	{
+		if(messageShouldGoToMessageView(l->iMsgType))
 		{
 			m_iNumLines--;
 			v->m_iNumLines++;
@@ -790,12 +804,11 @@ void KviIrcView::splitMessagesTo(KviIrcView *v)
 			tmp = l->pNext;
 			l->pNext = 0;
 			l = tmp;
-		}
-		break;
-		default:
+		} else {
 			l = l->pNext;
-		break;
+		}
 	}
+
 	v->m_pCurLine = v->m_pLastLine;
 	m_pCurLine = m_pLastLine;
 

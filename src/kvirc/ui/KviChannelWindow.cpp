@@ -1971,7 +1971,10 @@ void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg, const 
 	if(!pC)
 		return;
 
-	internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,iMsgType,(const kvi_wchar_t *)pC,0,datetime);
+	if(m_pMessageView && m_pIrcView->messageShouldGoToMessageView(iMsgType))
+		internalOutput(m_pMessageView,iMsgType,(const kvi_wchar_t *)pC,0,datetime);
+	else
+		internalOutput(m_pIrcView,iMsgType,(const kvi_wchar_t *)pC,0,datetime);
 }
 
 void KviChannelWindow::checkChannelSync()

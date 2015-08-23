@@ -186,6 +186,9 @@ public:
 	void joinMessagesFrom(KviIrcView * v);
 	void appendMessagesFrom(KviIrcView * v);
 
+	// Return true if the specified message type should be "split" to the user message specific view.
+	bool messageShouldGoToMessageView(int iMsgType);
+
 	void prevLine();
 	void nextLine();
 	void nextPage();
