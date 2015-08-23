@@ -733,9 +733,11 @@ bool KviApplication::supportsCompositing()
 	//we need >= win2000
 	return true;
 #endif
+
 #ifdef COMPILE_QX11INFO_SUPPORT
 	#if (QT_VERSION >= 0x050000)
-		// Qt5 is always compositing-capable
+		// Qt5 does not support QX11Info::isCompositingManagerRunning()
+		// Well...assume we're compositing capable, should be true on all recent linux distros
 		return true;
 	#else
 		return QX11Info::isCompositingManagerRunning();
