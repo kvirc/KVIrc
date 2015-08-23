@@ -24,17 +24,21 @@
 
 #include "KvsObject_ftp.h"
 
-#ifdef __GNUC__
-#warning "QFtp doesn't exist anymore in Qt5, port this class or drop it"
-#endif
-#if (QT_VERSION < 0x050000)
 
 #include "kvi_debug.h"
 #include "KviError.h"
 
 #include "KviLocale.h"
 
-#include <QFtp>
+#if (QT_VERSION > 0x050000)
+	// Qt >= 5.0.0 has no QFtp.
+	// We use the external source code module provided by digia (in qtftp)
+	#include <qftp.h>
+#else
+	// Use standard QFtp
+	#include <QFtp>
+#endif
+
 #include <QHashIterator>
 
 /*
@@ -333,4 +337,4 @@ KVSO_CLASS_FUNCTION(ftp,stateChangedEvent)
 	return true;
 }
 
-#endif
+

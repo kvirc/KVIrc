@@ -55,15 +55,18 @@ set(
 )
 
 if(NOT CMAKE_STATUS_QT_VERSION VERSION_LESS 5.0.0)
-	# Qt >= 5.0.0 has no QHttp implementation. We use the external code provided by digia.
+	# Qt >= 5.0.0 has no QHttp/QFtp implementation. We use the external code provided by digia.
 	set(
 		kviobjects_SRCS
 		${kviobjects_SRCS}
 		qthttp/qhttp.cpp
 		qthttp/qhttpauthenticator.cpp
+		qtftp/qftp.cpp
+		qtftp/qurlinfo.cpp
 	)
 	
 	include_directories(qthttp/)
+	include_directories(qtftp/)
 endif()
 
 set(kvi_module_name kviobjects)
