@@ -759,7 +759,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 					sum=KviNickColors::getSmartColorForNick(&nick);
 					if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 					{
-						//avoid the use of teh color specifier for own nickname
+						//avoid the use of the color specifier for own nickname
 						if(m_szOwnSmartColor==KviNickColors::getSmartColor(sum))
 							sum++;
 					}
@@ -777,7 +777,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 				int sum=KviNickColors::getSmartColorForNick(&nick);
 				if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 				{
-					//avoid the use of teh color specifier for own nickname
+					//avoid the use of the color specifier for own nickname
 					if(m_szOwnSmartColor==KviNickColors::getSmartColor(sum))
 					sum++;
 				}
