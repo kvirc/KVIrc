@@ -45,7 +45,7 @@ install:
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-      if (Test-Path "c:/Qt-tversoft/$($env:qt_ver)/BUILDINFO.TXT") {
+        if (Test-Path "c:/Qt-tversoft/$($env:qt_ver)/BUILDINFO.TXT") {
             echo "using qt from cache"
         } else {
             c:\cygwin\bin\bash -lc 'mkdir -p /cygdrive/c/Qt-tversoft; cd /cygdrive/c/Qt-tversoft; wget $qt_url 2>&1'
