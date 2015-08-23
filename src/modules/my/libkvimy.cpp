@@ -136,7 +136,8 @@ static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall *)
 	@syntax:
 		<int> $my.globalIdle()
 	@description:
-		Returns the current user global idle time
+		Returns the current user global idle time.
+		You must execute [cmd]my.startIdleTimer[/cmd] before using this function.
 */
 
 static bool my_kvs_fnc_globalIdle(KviKvsModuleFunctionCall * c)

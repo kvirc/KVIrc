@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  */
-#ifndef COMPILE_ON_MAC
-#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
+
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW) && !defined(COMPILE_ON_MAC)
 
 #include"Idle.h"
 
@@ -30,10 +30,7 @@
 #else
 	#include <QApplication>
 	#include <QDesktopWidget>
-#if (QT_VERSION < 0x050000)
 	#include <QX11Info>
-#endif // QT_VERSION < 0x050000
-
 	#include <X11/Xlib.h>
 	#include <X11/Xutil.h>
 	#include <X11/extensions/scrnsaver.h>
@@ -80,14 +77,12 @@
 		old_handler = XSetErrorHandler(xerrhandler);
 
 		int event_base, error_base;
-#if (QT_VERSION < 0x050000)
+
 		if(XScreenSaverQueryExtension(QX11Info::display(), &event_base, &error_base)) {
 			d->ss_info = XScreenSaverAllocInfo();
 			return true;
 		}
-#else
-		// FIXME: Need a replacement for this?
-#endif
+
 		return false;
 	}
 
@@ -95,16 +90,12 @@
 	{
 		if(!d->ss_info)
 			return 0;
-#if (QT_VERSION < 0x050000)
+
 		if(!XScreenSaverQueryInfo(QX11Info::display(), QX11Info::appRootWindow(), d->ss_info))
 			return 0;
-#else
-		// FIXME: Need a replacement for this?
-		return 0;
-#endif
 
 		return d->ss_info->idle / 1000;
 	}
-#endif
+
 #endif
 #endif
