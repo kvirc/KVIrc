@@ -177,7 +177,7 @@
 #define RPL_UNAWAY           305 /*                                                      [I,E,U,D] # */
 #define RPL_NOWAWAY          306 /*                                                      [I,E,U,D] # */
 //#define RPL_USERIP           307 /* [U] */
-#define RPL_WHOISREGNICK     307 /* "???"                                                      [D] # */
+#define RPL_WHOISREGNICK     307 /* "%s :is a registered nick"                                 [D] # */
 #define RPL_WHOISADMIN       308 /* "???"                                                      [d] # */
 #define RPL_WHOISSADMIN      309 /* "???"                                                      [d] # */
 #define RPL_WHOISHELPOP      310 /* "???"                                                      [D] # */

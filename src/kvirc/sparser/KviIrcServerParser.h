@@ -171,6 +171,7 @@ private:
 	void parseNumericWhoisActually(KviIrcMessage *msg);
 	void parseNumericWhoisOther(KviIrcMessage *msg);
 	void parseNumericWhoisAuth(KviIrcMessage *msg);
+	void parseNumericWhoisRegistered(KviIrcMessage *msg);
 	void parseNumericWhowasUser(KviIrcMessage *msg);
 	void parseNumericEndOfWhois(KviIrcMessage *msg);
 	void parseNumericEndOfWhowas(KviIrcMessage *msg);

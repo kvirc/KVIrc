@@ -1471,8 +1471,6 @@ void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 {
 	// 330 RPL_WHOISAUTH
 	// :prefix RPL_WHOISAUTH <target> <nick> <nick>:is authed as
-	// 307 RPL_WHOISREGNICK
-	// :prefix RPL_WHOISREGNICK <target> <nick> :is a registered nick
 
 	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
@@ -1495,6 +1493,26 @@ void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 			&szNick,KviControlCodes::Bold,&szAuth);
 	}
 }
+
+void KviIrcServerParser::parseNumericWhoisRegistered(KviIrcMessage *msg)
+{
+	// 307 RPL_WHOISREGNICK
+	// :prefix RPL_WHOISREGNICK <target> <nick> :is a registered nick
+
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
+	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c is a registered nickname"),KviControlCodes::Bold,
+			&szNick,KviControlCodes::Bold);
+	}
+}
+
 
 void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 {
