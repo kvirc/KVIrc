@@ -58,19 +58,29 @@
 			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
 		return true; \
 	} \
-	if(!szSubPopupName.isEmpty()) \
+	while(!szSubPopupName.isEmpty()) \
 	{ \
-		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
+		iIdx = szSubPopupName.indexOf(QChar('.')); \
+		QString szTargetPopupName; \
+		if(iIdx >= 0) \
+		{ \
+			szTargetPopupName = szSubPopupName.mid(0,iIdx); \
+			szSubPopupName = szSubPopupName.mid(iIdx+1); \
+		} else { \
+			szTargetPopupName = szSubPopupName; \
+			szSubPopupName = QString(); \
+		} \
+		pPopup = pPopup->findChildPopupByName(szTargetPopupName); \
 		if(!pPopup) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exist","kvs"),&szPopupName, &szSubPopupName); \
+				c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szTargetPopupName); \
 			return true; \
 		} \
 		if(pPopup->LOCKING_CHECK()) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the subpopup is probably open)","kvs")); \
+				c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
 			return true; \
 		} \
 	}
@@ -98,12 +108,22 @@
 		c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName); \
 		return true; \
 	} \
-	if(!szSubPopupName.isEmpty()) \
+	while(!szSubPopupName.isEmpty()) \
 	{ \
+		iIdx = szSubPopupName.indexOf(QChar('.')); \
+		QString szTargetPopupName; \
+		if(iIdx >= 0) \
+		{ \
+			szTargetPopupName = szSubPopupName.mid(0,iIdx); \
+			szSubPopupName = szSubPopupName.mid(iIdx+1); \
+		} else { \
+			szTargetPopupName = szSubPopupName; \
+			szSubPopupName = QString(); \
+		} \
 		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
 		if(!pPopup) \
 		{ \
-			c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exist","kvs"),&szPopupName, &szSubPopupName); \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szTargetPopupName); \
 			return true; \
 		} \
 	}
