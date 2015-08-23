@@ -107,10 +107,8 @@ static bool objects_module_cleanup(KviModule *)
 	KvsObject_memoryBuffer::unregisterSelf();
 	KvsObject_process::unregisterSelf();
 	KvsObject_trayIcon::unregisterSelf();
-#if (QT_VERSION < 0x050000)
 	KvsObject_ftp::unregisterSelf();
 	KvsObject_http::unregisterSelf();
-#endif
 	KvsObject_socket::unregisterSelf();
 	KvsObject_xmlReader::unregisterSelf();
 	KvsObject_wrapper::unregisterSelf();
@@ -801,16 +799,14 @@ static bool objects_module_init(KviModule * m)
 	KvsObject_wrapper::registerSelf();
 	KvsObject_xmlReader::registerSelf();
 	KvsObject_socket::registerSelf();
-#if (QT_VERSION < 0x050000)
 	KvsObject_http::registerSelf();
 	KvsObject_ftp::registerSelf();
-#endif
 	KvsObject_trayIcon::registerSelf();
 	KvsObject_process::registerSelf();
 	KvsObject_memoryBuffer::registerSelf();
-	#if defined(COMPILE_WEBKIT_SUPPORT)
+#if defined(COMPILE_WEBKIT_SUPPORT)
 	KvsObject_webView::registerSelf();
-	#endif
+#endif
 	return true;
 }
 
