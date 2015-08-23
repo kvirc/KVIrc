@@ -50,7 +50,7 @@ install:
         } else {
             c:\cygwin\bin\bash -lc 'mkdir -p /cygdrive/c/Qt-tversoft; cd /cygdrive/c/Qt-tversoft; wget $qt_url 2>&1'
             c:\cygwin\bin\ls -l /cygdrive/c/Qt-tversoft
-            c:\cygwin\bin\bash -lc 'cd /cygdrive/c/Qt-tversoft; 7z x -y "-x!$qt_ver/examples/*" "-x!$qt_ver/doc/*" "-x!$qt_ver/demos/*" *.7z > /dev/null; rm *.z'
+            c:\cygwin\bin\bash -lc 'cd /cygdrive/c/Qt-tversoft; 7z x -y "-x!$qt_ver/examples/*" "-x!$qt_ver/doc/*" "-x!$qt_ver/demos/*" *.7z > /dev/null; rm *.7z'
             # Teach qmake.exe about where it is located
             & "c:\Qt-tversoft\$env:qt_ver\qtbinpatcher.exe" "--qt-dir=c:/Qt-tversoft/$env:qt_ver"
         }
