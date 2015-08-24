@@ -107,4 +107,3 @@ void KviTalFileDialog::setDirectory(const QString & szDirectory)
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 }
 
-

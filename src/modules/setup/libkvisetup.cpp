@@ -57,7 +57,6 @@ KVIMODULEEXPORTFUNC bool setup_begin()
 {
 	// FIXME: try to guess the user's .kvirc directory
 	//        and the preferred nickname from a previous installation
-
 	SetupWizard * w = new SetupWizard();
 	int retcode = w->exec();
 	delete w;

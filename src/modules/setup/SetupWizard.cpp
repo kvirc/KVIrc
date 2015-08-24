@@ -134,8 +134,9 @@ SetupPage::~SetupPage()
 SetupWizard::SetupWizard()
 : KviTalWizard(0)
 {
-	setModal(true);
 	setWindowTitle(__tr2qs("KVIrc Setup"));
+
+	setWindowModality(Qt::NonModal); // non modal, otherwise the dialogs we show will not be usable
 
 	g_bFoundMirc = false;
 	QString szLabelText;
@@ -710,28 +711,36 @@ void SetupWizard::portableClicked()
 void SetupWizard::chooseOldDataPath()
 {
 	// FIXME: We'd like to show hidden directories here ($HOME/.kvirc is hidden)...
-	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),0);
+	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
+			m_pDataPathEdit->text(),
+			__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),
+			this
+		);
+
+	if(szBuffer.isEmpty())
+		return;
+
 	KviFileUtils::adjustFilePath(szBuffer);
-	if(!szBuffer.isEmpty())
+
+	KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
+	if(!g_pApp->checkLocalKvircDirectory(szBuffer))
 	{
-		KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
-		if(!g_pApp->checkLocalKvircDirectory(szBuffer))
-		{
-			if(
-				QMessageBox::question(
+		if(
+			QMessageBox::question(
 				this,
 				__tr2qs("Do not overwrite folder? - KVIrc"),
-				tr("A folder %1 seems to be not a valid KVIrc settings folder."
-					"Do you want to use it anyway?")
-					.arg( szBuffer ),
-				__tr2qs("&Yes"), __tr2qs("&No"),
-				QString(), 0, 1 ) == 0
-			) {
-				m_pOldDataPathEdit->setText(szBuffer);
-			}
-		} else {
+				__tr2qs("The folder %1 does not seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
+					.arg(szBuffer),
+				__tr2qs("&Yes"),
+				__tr2qs("&No"),
+				QString(),
+				0,
+				1
+			) == 0
+		)
 			m_pOldDataPathEdit->setText(szBuffer);
-		}
+	} else {
+		m_pOldDataPathEdit->setText(szBuffer);
 	}
 }
 
