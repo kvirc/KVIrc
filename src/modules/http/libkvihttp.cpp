@@ -32,6 +32,7 @@
 #include "KviWindow.h"
 #include "KviError.h"
 #include "KviCommandFormatter.h"
+#include "KviMainWindow.h"
 
 static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QString &szFileName,const QString &szCallback)
 {
@@ -57,7 +58,16 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 			// http____path_path2_path3_filename.ext
 			g_pApp->getLocalKvircDirectory(szFileName,KviApplication::Incoming,tmp);
 		} else {
-			if(!KviFileDialog::askForSaveFileName(szFileName,__tr2qs_ctx("Choose a save file name","http")))
+			if(!KviFileDialog::askForSaveFileName(
+					szFileName,
+					__tr2qs_ctx("Choose a save file name","http"),
+					QString(),
+					QString(),
+					false,
+					false,
+					true,
+					g_pMainWindow
+				))
 				return true;
 			if(szFileName.isEmpty())return true;
 		}

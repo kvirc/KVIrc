@@ -592,7 +592,15 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	KviFileUtils::adjustFilePath(szLog);
 
 	// Getting output file path from the user, with overwrite confirmation
-	if(!KviFileDialog::askForSaveFileName(szLog, __tr2qs_ctx("Export Log - KVIrc","log"), szLog, NULL, false, true))
+	if(!KviFileDialog::askForSaveFileName(
+			szLog,
+			__tr2qs_ctx("Export Log - KVIrc","log"),
+			szLog,
+			QString(),
+			false,
+			true,
+			true,
+			this))
 		return;
 
 	/* Save export directory - this directory path is also used in the HTML export

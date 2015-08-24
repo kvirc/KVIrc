@@ -408,7 +408,15 @@ void ThemeManagementDialog::installFromFile()
 	QString szFileName;
 	QString szError;
 
-	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs_ctx("Open Theme - KVIrc","theme"),QString(),KVI_FILTER_THEME))
+	if(!KviFileDialog::askForOpenFileName(
+			szFileName,
+			__tr2qs_ctx("Open Theme - KVIrc","theme"),
+			QString(),
+			KVI_FILTER_THEME,
+			false,
+			true,
+			this)
+		)
 		return;
 	if(!ThemeFunctions::installThemePackage(szFileName,szError,this))
 	{

@@ -722,7 +722,7 @@ void RegisteredUsersDialog::exportClicked()
 
 	QString buffer;
 
-	if(!KviFileDialog::askForSaveFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register"),0,0,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register"),0,0,true,true,this))return;
 
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 
@@ -826,7 +826,7 @@ void RegisteredUsersDialog::importClicked()
 	//KviCString buffer;
 	QString buffer;
 
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register")))return;
+	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register"),QString(),QString(),false,true,this))return;
 
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 

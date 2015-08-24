@@ -306,7 +306,7 @@ void AddonManagementDialog::installScript()
 	if(!KviFileDialog::askForOpenFileName(
 		szFileName,
 		__tr2qs_ctx("Please select the addon installation file","addon"),
-		QString(),KVI_FILTER_ADDON,false,true
+		QString(),KVI_FILTER_ADDON,false,true,this
 		)) return;
 
 	szFileName.replace("\\","\\\\");

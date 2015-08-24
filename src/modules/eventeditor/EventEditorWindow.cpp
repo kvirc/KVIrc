@@ -37,7 +37,6 @@
 #include "KviCommandFormatter.h"
 #include "kvi_fileextensions.h"
 #include "KviQString.h"
-#include "KviFileDialog.h"
 #include "KviKvsEventManager.h"
 #include "KviTalVBox.h"
 
@@ -461,7 +460,7 @@ void EventEditor::exportCurrentHandler()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true,this))return;
 
 	QString szOut;
 	getExportEventBuffer(szOut,m_pLastEditedItem);
@@ -502,7 +501,7 @@ void EventEditor::exportAllEvents()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,QString(),true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,QString(),true,true,true,this))return;
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{

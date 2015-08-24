@@ -41,6 +41,7 @@
 #include "KviApplication.h"
 #include "KviMainWindow.h"
 #include "KviLocale.h"
+#include "KviFileDialog.h"
 #include "KviOptions.h"
 #include "KviConsoleWindow.h"
 #include "KviFileUtils.h"
@@ -163,8 +164,15 @@ void DccBroker::rsendAskForFileName(DccDescriptor * dcc)
 {
 	QStringList filenames;
 	if(
-		KviFileDialog::askForOpenFileNames(filenames,
-		__tr2qs_ctx("Choose Files to Send - KVIrc","dcc"),"")
+		KviFileDialog::askForOpenFileNames(
+				filenames,
+				__tr2qs_ctx("Choose Files to Send - KVIrc","dcc"),
+				QString(),
+				QString(),
+				false,
+				true,
+				g_pMainWindow
+			)
 		) {
 			if(filenames.count() > 0)
 			{
@@ -706,8 +714,16 @@ void DccBroker::chooseSaveFileName(DccDialog *box,DccDescriptor *dcc)
 		QString cleanFilename = dcc->szFileName;
 		KviFileUtils::cleanFileName(cleanFilename);
 		dcc->szLocalFileName.append(cleanFilename);
-		if(KviFileDialog::askForSaveFileName(dcc->szLocalFileName,
-			__tr2qs_ctx("Choose Files to Save - KVIrc","dcc"),dcc->szLocalFileName))
+		if(KviFileDialog::askForSaveFileName(
+				dcc->szLocalFileName,
+				__tr2qs_ctx("Choose Files to Save - KVIrc","dcc"),
+				dcc->szLocalFileName,
+				QString(),
+				false,
+				false,
+				true,
+				g_pMainWindow
+			))
 		{
 			renameOverwriteResume(0,dcc);
 		} else {
@@ -879,7 +895,15 @@ void DccBroker::recvFileExecute(DccDialog *box,DccDescriptor * dcc)
 void DccBroker::sendFileManage(DccDescriptor * dcc)
 {
 	QStringList filenames;
-	if(KviFileDialog::askForOpenFileNames(filenames,__tr2qs_ctx("Choose Files to Send - KVIrc","dcc"),""))
+	if(KviFileDialog::askForOpenFileNames(
+			filenames,
+			__tr2qs_ctx("Choose Files to Send - KVIrc","dcc"),
+			QString(),
+			QString(),
+			false,
+			true,
+			g_pMainWindow
+		))
 	{
 		if(filenames.count() > 0)
 		{

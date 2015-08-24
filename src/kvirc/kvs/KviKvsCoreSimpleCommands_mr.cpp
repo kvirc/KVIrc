@@ -651,7 +651,15 @@ namespace KviKvsCoreSimpleCommands
 			QString szTmp;
 			KVSCSC_pContext->enterBlockingSection();
 
-			bool bResult = KviFileDialog::askForOpenFileName(szTmp,__tr2qs_ctx("Choose a file to parse","kvs"),szFileName.toUtf8().data(),"*.kvs");
+			bool bResult = KviFileDialog::askForOpenFileName(
+					szTmp,
+					__tr2qs_ctx("Choose a file to parse","kvs"),
+					szFileName.toUtf8().data(),
+					"*.kvs",
+					false,
+					true,
+					g_pMainWindow
+				);
 
 			if(!KVSCSC_pContext->leaveBlockingSection())return false; // need to stop immediately
 			if(!bResult)return true;

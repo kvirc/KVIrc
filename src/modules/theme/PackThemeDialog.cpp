@@ -35,8 +35,6 @@
 #include "KviIconManager.h"
 #include "KviPackageWriter.h"
 #include "kvi_fileextensions.h"
-#include "KviFileDialog.h"
-//#include "KviMessageBox.h"
 #include "KviSelectors.h"
 #include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"

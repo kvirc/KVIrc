@@ -146,7 +146,17 @@ void KviAsyncAvatarSelectionDialog::cancelClicked()
 void KviAsyncAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
-	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs("Choose an Image File - KVIrc")))
+	if(
+		KviFileDialog::askForOpenFileName(
+				tmp,
+				__tr2qs("Choose an Image File - KVIrc"),
+				QString(),
+				QString(),
+				false,
+				true,
+				this
+			)
+		)
 	{
 		m_pLineEdit->setText(tmp);
 	}

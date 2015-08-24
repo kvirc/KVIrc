@@ -2133,15 +2133,29 @@ void KviIrcView::chooseFont()
 void KviIrcView::chooseBackground()
 {
 	QString f;
-	if(!KviFileDialog::askForOpenFileName(f,__tr2qs("Choose the background image...")))
+	if(
+		!KviFileDialog::askForOpenFileName(
+				f,
+				__tr2qs("Choose the background image..."),
+				QString(),
+				QString(),
+				false,
+				true,
+				this
+			)
+	)
 		return;
-	if(f.isEmpty())return;
+
+	if(f.isEmpty())
+		return;
+
 	QPixmap p(f);
 	if(p.isNull())
 	{
 		QMessageBox::information(this,__tr2qs("Invalid image"),__tr2qs("Failed to load the selected image"),__tr2qs("Ok"));
 		return;
 	}
+
 	setPrivateBackgroundPixmap(p);
 }
 

@@ -28,7 +28,6 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
-#include "KviFileDialog.h"
 #include "KviFileUtils.h"
 #include "KviScriptEditor.h"
 #include "KviApplication.h"

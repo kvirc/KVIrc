@@ -201,17 +201,13 @@ void KviIrcViewToolWidget::toggleOptions()
 void KviIrcViewToolWidget::filterEnableAll()
 {
 	for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
-	{
 		m_pFilterItems[i]->setOn(true);
-	}
 }
 
 void KviIrcViewToolWidget::filterEnableNone()
 {
 	for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
-	{
 		m_pFilterItems[i]->setOn(false);
-	}
 }
 
 void KviIrcViewToolWidget::filterLoad()
@@ -220,7 +216,7 @@ void KviIrcViewToolWidget::filterLoad()
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::Filters);
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a Filter File"),szInit))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a Filter File"),szInit,QString(),false,true,this))
 	{
 		QFile f(szFile);
 		if(f.open(QIODevice::ReadOnly))
@@ -245,7 +241,7 @@ void KviIrcViewToolWidget::filterSave()
 	QString szFile;
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::Filters,"filter.kvf");
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Select a Name for the Filter File"),szInit,0,false,true))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Select a Name for the Filter File"),szInit,QString(),false,false,true,this))
 	{
 		QFile f(szFile);
 		if(f.open(QIODevice::WriteOnly))

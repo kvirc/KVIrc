@@ -521,7 +521,7 @@ KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
 		const QString &szCode,
 		KviKvsVariantList * pMagicParams,
 		KviWindow * pWindow,bool modal)
-	: KviFileDialog(szInitialSelection,szFilter,0,0,modal), KviKvsCallbackObject("dialog.file",pWindow,szCode,pMagicParams,0)
+	: KviFileDialog(szInitialSelection,szFilter,pWindow,0,modal), KviKvsCallbackObject("dialog.file",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
 	setWindowTitle(szCaption);

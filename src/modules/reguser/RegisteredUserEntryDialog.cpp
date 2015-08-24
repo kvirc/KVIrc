@@ -36,7 +36,6 @@
 #include "KviApplication.h"
 #include "KviOptions.h"
 #include "KviFile.h"
-#include "KviFileDialog.h"
 #include "KviMessageBox.h"
 #include "KviFileUtils.h"
 #include "kvi_settings.h"

@@ -40,7 +40,6 @@
 #include "KviKvsKernel.h"
 #include "KviKvsObjectClass.h"
 #include "KviKvsObjectController.h"
-#include "KviFileDialog.h"
 #include "KviCommandFormatter.h"
 #include "KviModule.h"
 #include "KviTalVBox.h"
@@ -1115,7 +1114,14 @@ void ClassEditorWidget::exportSelectionInSinglesFiles(KviPointerList<ClassEditor
 	}
 	g_pClassEditorModule->lock();
 
-	if(!KviFileDialog::askForDirectoryName(m_szDir,__tr2qs_ctx("Choose a Directory - KVIrc","editor"),m_szDir))
+	if(!KviFileDialog::askForDirectoryName(
+			m_szDir,
+			__tr2qs_ctx("Choose a Directory - KVIrc","editor"),
+			m_szDir,
+			false,
+			true,
+			this
+		))
 	{
 		g_pClassEditorModule->unlock();
 		return;
@@ -1225,7 +1231,16 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 
 	szName += szNameFile;
 	szName += ".kvs";
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,false,true,true))
+	if(!KviFileDialog::askForSaveFileName(
+			szFile,
+			__tr2qs_ctx("Choose a Filename - KVIrc","editor"),
+			szName,
+			KVI_FILTER_SCRIPT,
+			false,
+			true,
+			true,
+			this
+		))
 	{
 		g_pClassEditorModule->unlock();
 		return;

@@ -397,7 +397,7 @@ void CustomizeToolBarsDialog::exportToolBar()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true,this))return;
 
 	QString szCode;
 

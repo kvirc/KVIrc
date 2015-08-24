@@ -133,7 +133,7 @@ void SharedFileEditDialog::browse()
 {
 	QString szBuf;
 	QString szTxt = m_pFilePathEdit->text();
-	if(!KviFileDialog::askForOpenFileName(szBuf,__tr2qs("Choose the file to share"),szTxt))return;
+	if(!KviFileDialog::askForOpenFileName(szBuf,__tr2qs("Choose the file to share"),szTxt,QString(),false,true,this))return;
 	m_pFilePathEdit->setText(szBuf);
 }
 

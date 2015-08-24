@@ -26,8 +26,6 @@
 
 #include "DccBroker.h"
 
-#include "KviFileDialog.h"
-
 #include <QWidget>
 
 class DccDialog

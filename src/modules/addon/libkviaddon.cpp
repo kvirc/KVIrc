@@ -39,9 +39,9 @@
 #include "kvi_sourcesdate.h"
 #include "KviMiscUtils.h"
 #include "KviFileUtils.h"
-#include "KviFileDialog.h"
 
 #include <QFileInfo>
+#include <QDir>
 
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 

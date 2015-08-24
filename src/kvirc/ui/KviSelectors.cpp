@@ -349,10 +349,18 @@ void KviPixmapSelector::commit()
 void KviPixmapSelector::choosePixmap()
 {
 	QString tmp;
-	if(KviFileDialog::askForOpenFileName(tmp,__tr("Choose an Image File - KVIrc")))
-	{
+	if(
+		KviFileDialog::askForOpenFileName(
+			tmp,
+			__tr2qs("Choose an Image File - KVIrc"),
+			QString(),
+			QString(),
+			false,
+			true,
+			this
+		)
+	)
 		setImagePath(tmp);
-	}
 }
 
 void KviPixmapSelector::setImagePath(const QString &path)
@@ -459,13 +467,34 @@ void KviFileSelector::select()
 	QString tmp = *m_pOption;
 	if(m_uFlags & ChooseSaveFileName)
 	{
- 		if(KviFileDialog::askForSaveFileName(tmp,__tr2qs("Choose a File - KVIrc"),tmp,m_szFilter,true,!(m_uFlags & DontConfirmOverwrite)))
+ 		if(
+			KviFileDialog::askForSaveFileName(
+				tmp,
+				__tr2qs("Choose a File - KVIrc"),
+				tmp,
+				m_szFilter,
+				true,
+				!(m_uFlags & DontConfirmOverwrite),
+				true,
+				this
+			)
+		)
 		{
 			m_pLineEdit->setText(tmp);
 			emit selectionChanged(tmp);
 		}
 	} else {
- 		if(KviFileDialog::askForOpenFileName(tmp,__tr2qs("Choose a File - KVIrc"),tmp,m_szFilter,true))
+ 		if(
+			KviFileDialog::askForOpenFileName(
+				tmp,
+				__tr2qs("Choose a File - KVIrc"),
+				tmp,
+				m_szFilter,
+				true,
+				true,
+				this
+			)
+		)
 		{
 			m_pLineEdit->setText(tmp);
 			emit selectionChanged(tmp);
@@ -482,7 +511,17 @@ KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QSt
 void KviDirectorySelector::select()
 {
 	QString szTmp;
-	if(KviFileDialog::askForDirectoryName(szTmp,__tr2qs("Choose a Directory - KVIrc"),""))
+	if(
+		KviFileDialog::askForDirectoryName(
+				szTmp,
+				__tr2qs("Choose a Directory - KVIrc"),
+				QString(),
+				QString(),
+				false,
+				true,
+				this
+			)
+	)
 	{
 		m_pLineEdit->setText(szTmp);
 		emit selectionChanged(szTmp);
