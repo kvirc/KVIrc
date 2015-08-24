@@ -34,14 +34,14 @@
 		setObjectName(pcName);
 	}
 
-#else
+#else //!COMPILE_KDE_SUPPORT
 	KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
 	: QMainWindow(pParent)
 	{
 		setObjectName(pcName);
 	}
 
-#endif
+#endif //!COMPILE_KDE_SUPPORT
 
 KviTalMainWindow::~KviTalMainWindow()
 {

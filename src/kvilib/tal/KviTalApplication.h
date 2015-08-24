@@ -41,15 +41,18 @@
 * \brief Toolkit Abstraction Layer: application class
 */
 
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE4_SUPPORT)
 
-#include <KApplication>
-class KVILIB_API KviTalApplication : public KApplication
-#else
+	#include <KApplication>
+	class KVILIB_API KviTalApplication : public KApplication
 
-#include <QApplication>
-class KVILIB_API KviTalApplication : public QApplication
-#endif
+#else //!defined(COMPILE_KDE4_SUPPORT)
+
+	// Either no KDE or KDE5 (which uses QApplication)
+	#include <QApplication>
+	class KVILIB_API KviTalApplication : public QApplication
+
+#endif //!defined(COMPILE_KDE4_SUPPORT)
 {
 	Q_OBJECT
 public:
@@ -67,17 +70,20 @@ public:
 	~KviTalApplication();
 
 	/**
-	* \brief Commits the data and save the session
-	* \param manager The session manager
-	* \return void
-	*/
-	void commitData(QSessionManager & manager);
-
-	/**
 	* \brief Saves configuration to disk
 	* \return void
 	*/
 	virtual void saveConfiguration() = 0;
+
+#if (QT_VERSION >= 0x050000)
+public Q_SLOTS:
+#endif
+	/**
+	* \brief Commits the data and save the session
+	* \param manager The session manager
+	* \return void
+	*/
+	virtual void commitData(QSessionManager & manager);
 };
 
 #endif // _KVI_TAL_APPLICATION_H_

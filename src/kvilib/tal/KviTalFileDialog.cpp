@@ -26,7 +26,7 @@
 
 #include "KviTalFileDialog.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE4_SUPPORT)
 
 KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool)
 : KFileDialog(KUrl(szDirName),szFilter,pParent)
@@ -34,7 +34,7 @@ KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & sz
 	//clearWFlags(WDestructiveClose);
 }
 
-#else // COMPILE_KDE_SUPPORT
+#else //!defined(COMPILE_KDE4_SUPPORT))
 
 KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool bModal)
 : QFileDialog(pParent,"",szDirName,szFilter)
@@ -42,7 +42,7 @@ KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & sz
 	setModal(bModal);
 }
 
-#endif // COMPILE_KDE_SUPPORT
+#endif //!defined(COMPILE_KDE4_SUPPORT))
 
 KviTalFileDialog::~KviTalFileDialog()
 {
@@ -52,7 +52,7 @@ void KviTalFileDialog::setFileMode(FileMode m)
 {
 	switch(m)
 	{
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE4_SUPPORT)
 		case AnyFile:
 			setMode(KFile::File | KFile::LocalOnly);
 			setOperationMode(Saving);
@@ -75,7 +75,7 @@ void KviTalFileDialog::setFileMode(FileMode m)
 			setMode(KFile::File | KFile::LocalOnly);
 			setOperationMode(Saving);
 		break;
-#else // COMPILE_KDE_SUPPORT
+#else //!defined(COMPILE_KDE4_SUPPORT)
 		case AnyFile:
 			QFileDialog::setFileMode(QFileDialog::AnyFile);
 		break;
@@ -94,17 +94,17 @@ void KviTalFileDialog::setFileMode(FileMode m)
 		default:
 			QFileDialog::setFileMode(QFileDialog::AnyFile);
 		break;
-#endif // COMPILE_KDE_SUPPORT
+#endif //!defined(COMPILE_KDE4_SUPPORT)
 	}
 }
 
 void KviTalFileDialog::setDirectory(const QString & szDirectory)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE4_SUPPORT)
 	setUrl(KUrl(szDirectory));
-#else
+#else //!defined(COMPILE_KDE4_SUPPORT)
 	QFileDialog::setDirectory(szDirectory);
-#endif
+#endif //!defined(COMPILE_KDE4_SUPPORT)
 }
 
 

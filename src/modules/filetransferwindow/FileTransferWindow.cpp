@@ -51,13 +51,13 @@
 #include <QWidgetAction>
 #include <QHeaderView>
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	#include <kurl.h>
 	#include <krun.h>
 	#include <kmimetype.h>
 	#include <kmimetypetrader.h>
 	#include <kiconloader.h>
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE4_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <shellapi.h>
@@ -430,11 +430,11 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 					tmp += "</nobr><br>";
 				}
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 				tmp += "<nobr>Mime: ";
 				tmp += KMimeType::findByPath(szFile)->name();
 				tmp += "</nobr>";
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE4_SUPPORT
 
 				QWidgetAction * pWaction = new QWidgetAction(m_pLocalFilePopup);
 				QLabel * l = new QLabel(tmp, m_pLocalFilePopup);
@@ -443,7 +443,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				pWaction->setDefaultWidget(l);
                 m_pLocalFilePopup->addAction(pWaction);
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 				QString mimetype = KMimeType::findByPath(szFile)->name();
 				KService::List offers = KMimeTypeTrader::self()->query(mimetype,"Application");
 
@@ -475,7 +475,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &Location","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Terminal at Location","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
                 m_pLocalFilePopup->addSeparator();
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE4_SUPPORT
 
 //-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -546,7 +546,7 @@ KviFileTransfer * FileTransferWindow::selectedTransfer()
 
 void FileTransferWindow::openFilePopupActivated(QAction *pAction)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
     bool bOk=false;
     int ip = pAction->data().toInt(&bOk);
     if(!bOk || ip < 0)
@@ -576,7 +576,7 @@ void FileTransferWindow::openFilePopupActivated(QAction *pAction)
 		}
 		idx++;
 	}
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE4_SUPPORT
 }
 
 void FileTransferWindow::openLocalFileTerminal()
@@ -596,7 +596,7 @@ void FileTransferWindow::openLocalFileTerminal()
 	system(tmp.toLocal8Bit().data());
 #else
 // G&N end
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE4_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
 		if(!t)return;
 		QString tmp = t->localFileName();
@@ -610,7 +610,7 @@ void FileTransferWindow::openLocalFileTerminal()
 		tmp.append("\"");
 
 		KRun::runCommand(tmp,g_pMainWindow);
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE4_SUPPORT
 #endif
 }
 
@@ -646,7 +646,7 @@ void FileTransferWindow::openLocalFile()
 	ShellExecute(0,"open",tmp.toLocal8Bit().data(),NULL,NULL,SW_SHOWNORMAL);  //You have to link the shell32.lib
 #else
 // G&N end
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE4_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
 		if(!t)return;
 		QString tmp = t->localFileName();
@@ -666,7 +666,7 @@ void FileTransferWindow::openLocalFile()
 		lst.append(url);
 
 		KRun::run(*offer, lst, g_pMainWindow);
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE4_SUPPORT
 #endif
 }
 
@@ -683,7 +683,7 @@ void FileTransferWindow::openLocalFileWith()
 	WinExec(tmp.toLocal8Bit().data(),SW_SHOWNORMAL);
 #else
 // G&N end
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE4_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
 		if(!t)return;
 		QString tmp = t->localFileName();
@@ -694,7 +694,7 @@ void FileTransferWindow::openLocalFileWith()
 		url.setPath(tmp);
 		lst.append(url);
 		KRun::displayOpenWithDialog(lst,g_pMainWindow);
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE4_SUPPORT
 #endif
 }
 
@@ -721,7 +721,7 @@ void FileTransferWindow::openLocalFileFolder()
 	WinExec(tmp.toLocal8Bit().data(), SW_MAXIMIZE);
 #else
 // G&N end
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE4_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
 		if(!t)return;
 		QString tmp = t->localFileName();
@@ -740,7 +740,7 @@ void FileTransferWindow::openLocalFileFolder()
 		url.setPath(tmp);
 		lst.append(url);
 		KRun::run(*offer,lst,g_pMainWindow);
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE4_SUPPORT
 #endif
 }
 

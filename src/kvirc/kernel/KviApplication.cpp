@@ -124,7 +124,11 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include <KStandardDirs>
+	#ifdef COMPILE_KDE4_SUPPORT
+		#include <KStandardDirs>
+	#else
+		#include <QStandardPaths>
+	#endif
 	#include <KNotification>
 #endif
 
@@ -803,9 +807,13 @@ Let's see the scheme to understand which is choosen:
 
 		if(!bKNotifyConfigFileChecked)
 		{
-			QString szFileName = KStandardDirs::locateLocal("data",QString::fromAscii("kvirc/kvirc.notifyrc"));
+#ifdef COMPILE_KDE4_SUPPORT
+			QString szFileName = KStandardDirs::locateLocal("data",QString::fromUtf8("kvirc/kvirc.notifyrc"));
+#else
+			QString szFileName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/" + QString::fromUtf8("kvirc/kvirc.notifyrc");
+#endif
 			if(szFileName.isEmpty())
-				szFileName = QString::fromAscii("%1/.kde/share/apps/kvirc/kvirc.notifyrc").arg(QDir::homePath());
+				szFileName = QString::fromUtf8("%1/.kde/share/apps/kvirc/kvirc.notifyrc").arg(QDir::homePath());
 
 			QFileInfo inf(szFileName);
 
@@ -888,8 +896,12 @@ Let's see the scheme to understand which is choosen:
 
 
 		KNotification * pNotify = 0;
-#if KDE_IS_VERSION(4,4,0)
+#if defined(COMPILE_KDE4_SUPPORT)
+	#if KDE_IS_VERSION(4,4,0)
 		pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
+	#else
+		pNotify = new KNotification("incomingMessage",g_pMainWindow,KNotification::CloseWhenWidgetActivated);
+	#endif
 #else
 		pNotify = new KNotification("incomingMessage",g_pMainWindow,KNotification::CloseWhenWidgetActivated);
 #endif
@@ -898,7 +910,12 @@ Let's see the scheme to understand which is choosen:
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
+
+#if defined(COMPILE_KDE4_SUPPORT)
 		pNotify->setComponentData(KComponentData(aboutData()));
+#else
+		pNotify->setComponentName("kvirc");
+#endif
 
 		connect(pNotify,SIGNAL(activated()),this,SLOT(showParentFrame()));
 		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(showParentFrame()));

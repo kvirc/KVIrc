@@ -54,7 +54,7 @@ set(
 	KvsObject_xmlreader.cpp
 )
 
-if(NOT CMAKE_STATUS_QT_VERSION VERSION_LESS 5.0.0)
+if(CMAKE_RESULT_USING_QT5)
 	# Qt >= 5.0.0 has no QHttp/QFtp implementation. We use the external code provided by digia.
 	set(
 		kviobjects_SRCS

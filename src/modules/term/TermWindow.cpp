@@ -25,7 +25,7 @@
 #include "TermWindow.h"
 #include "TermWidget.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	#include "KviIconManager.h"
 	#include "KviOptions.h"
 	#include "KviLocale.h"

@@ -42,19 +42,19 @@
 * \brief Toolkit Abstraction Layer: filedialog class
 */
 
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE4_SUPPORT)
 
-#include <KFileDialog>
+	#include <KFileDialog>
+	class KVILIB_API KviTalFileDialog : public KFileDialog
 
-class KVILIB_API KviTalFileDialog : public KFileDialog
+#else //!defined(COMPILE_KDE4_SUPPORT)
 
-#else // COMPILE_KDE_SUPPORT
+	// no KDE or KDE5 (which has no KFileDialog)
 
-#include <QFileDialog>
+	#include <QFileDialog>
+	class KVILIB_API KviTalFileDialog : public QFileDialog
 
-class KVILIB_API KviTalFileDialog : public QFileDialog
-
-#endif // COMPILE_KDE_SUPPORT
+#endif //!defined(COMPILE_KDE4_SUPPORT)
 {
 	Q_OBJECT
 public:
@@ -109,13 +109,13 @@ public:
 	*/
 	static QString getExistingDirectoryPath(const QString & szDir = QString(), const QString & szCaption = QString(), QWidget * pParent = 0)
 	{
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE4_SUPPORT)
 		// QFileDialog allows making new directories...kfiledialog not :/
 		return KFileDialog::getExistingDirectory(KUrl(szDir),pParent,szCaption);
 		//return getExistingDirectory(dir,parent,caption);
-#else // COMPILE_KDE_SUPPORT
+#else //!defined(COMPILE_KDE4_SUPPORT)
 		return getExistingDirectory(pParent,szCaption,szDir);
-#endif // COMPILE_KDE_SUPPORT
+#endif //!defined(COMPILE_KDE4_SUPPORT)
 	};
 };
 

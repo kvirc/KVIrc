@@ -35,7 +35,7 @@
 #include <QToolTip>
 #include <QTimer>
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 
 	#include "klibloader.h"
 	#include "kparts/part.h"
@@ -172,4 +172,4 @@
 	}
 
 
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE4_SUPPORT

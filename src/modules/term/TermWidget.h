@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	#include <QFrame>
 	#include <QLabel>
 	#include <QPushButton>

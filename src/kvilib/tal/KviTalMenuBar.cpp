@@ -25,7 +25,7 @@
 
 #include "KviTalMenuBar.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 
 	KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
 	: KMenuBar(pParent)
@@ -33,7 +33,7 @@
 		setWindowTitle(pcName);
 	}
 
-#else
+#else //!COMPILE_KDE4_SUPPORT
 
 	KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
 #ifdef COMPILE_ON_MAC
@@ -45,7 +45,7 @@
 	{
 	}
 
-#endif
+#endif //!COMPILE_KDE4_SUPPORT
 
 KviTalMenuBar::~KviTalMenuBar()
 {

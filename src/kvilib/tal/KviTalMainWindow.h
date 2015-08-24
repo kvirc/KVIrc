@@ -40,17 +40,16 @@
 #ifdef COMPILE_KDE_SUPPORT
 
 #include <kmainwindow.h>
-#include <kstatusbar.h> // statusBar() is overridden to return a KStatusBar
 
 class KVILIB_API KviTalMainWindow : public KMainWindow
 
-#else
+#else //!COMPILE_KDE_SUPPORT
 
 #include <QMainWindow>
 
 class KVILIB_API KviTalMainWindow : public QMainWindow
 
-#endif
+#endif //!COMPILE_KDE_SUPPORT
 {
 	Q_OBJECT
 public:

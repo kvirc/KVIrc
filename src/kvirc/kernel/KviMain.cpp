@@ -45,7 +45,11 @@
 #include <QMessageBox>
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include <KCmdLineArgs>
+	#ifdef COMPILE_KDE4_SUPPORT
+		#include <KCmdLineArgs>
+	#else
+		#include <KLocalizedString>
+	#endif
 	#include <KAboutData>
 #endif
 
@@ -358,25 +362,40 @@ int main(int argc, char ** argv)
 #ifdef COMPILE_KDE_SUPPORT
 	KAboutData * pAboutData = new KAboutData( // FIXME: this is never deleted ? Should it be ?
 			"kvirc", // internal program name
+#ifdef COMPILE_KDE4_SUPPORT
 			"kvirc", // message catalogue name
-			ki18n("KVIrc"), // user-visible program name
+#endif
+			"KVIrc", // user-visible program name
 			KVI_VERSION, // program version
+#ifdef COMPILE_KDE4_SUPPORT
 			ki18n("Visual IRC Client"), // description
 			KAboutData::License_GPL, // license
-			ki18n("(c) 1998-2010 The KVIrc Development Team"),
-			ki18n("???"), // *some other text* ????
+#else
+			ki18n("Visual IRC Client").toString(), // description
+			KAboutLicense::GPL, // license
+#endif
+			"(c) 1998-2015 The KVIrc Development Team",
+			"???", // *some other text* ????
 			"http://www.kvirc.net", // homepage
-			"https://svn.kvirc.de/kvirc/" // bug address (FIXME: this would be an E-MAIL address...)
+			"https://github.com/kvirc/KVIrc/issues" // bug address (FIXME: this would be an E-MAIL address...)
 		);
 
-	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
-	// (eg: kdebase/workspace/kwin/killer/killer.cpp)
-	KCmdLineArgs::init(1, &argv[0], pAboutData);
+	#ifdef COMPILE_KDE4_SUPPORT
+		//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
+		// (eg: kdebase/workspace/kwin/killer/killer.cpp)
+		KCmdLineArgs::init(1, &argv[0], pAboutData);
+	#endif //COMPILE_KDE4_SUPPORT
 #endif
 
 	KviApplication * pTheApp = new KviApplication(argc,argv);
+
 #ifdef COMPILE_KDE_SUPPORT
-	pTheApp->setAboutData(pAboutData);
+	#ifdef COMPILE_KDE4_SUPPORT
+		pTheApp->setAboutData(pAboutData);
+	#else
+		KAboutData::setApplicationData(*pAboutData);
+		delete pAboutData;
+	#endif
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT

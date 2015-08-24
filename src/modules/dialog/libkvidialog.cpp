@@ -540,7 +540,7 @@ void KviKvsCallbackFileDialog::done(int code)
 
 	if(code == QDialog::Accepted)
 	{
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 		if(mode() == KFile::ExistingOnly)
 #else
 		if(fileMode() == QFileDialog::ExistingFiles)

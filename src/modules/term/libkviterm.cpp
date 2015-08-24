@@ -30,7 +30,7 @@
 
 #include <QSplitter>
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	#include "TermWidget.h"
 	#include "TermWindow.h"
 
@@ -65,7 +65,7 @@ KviModule * g_pTermModule = 0;
 
 static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	c->module()->lock(); // multiple locks are allowed
 	if(c->hasSwitch('m',"mdi"))
 	{
@@ -76,7 +76,7 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		w->show();
 	}
 #else
-	c->warning("Terminal emulation service not supported (non-KDE compilation)");
+	c->warning("Terminal emulation service not supported (non-KDE4 compilation)");
 #endif
 	return true;
 }
@@ -85,7 +85,7 @@ static bool term_module_init(KviModule * m)
 {
 	g_pTermModule = m;
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	g_pTermWidgetList = new KviPointerList<TermWidget>;
 	g_pTermWidgetList->setAutoDelete(false);
 	g_pTermWindowList = new KviPointerList<TermWindow>;
@@ -98,7 +98,7 @@ static bool term_module_init(KviModule * m)
 
 static bool term_module_cleanup(KviModule *)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	while(g_pTermWidgetList->first())
 		delete g_pTermWidgetList->first();
 	delete g_pTermWidgetList;

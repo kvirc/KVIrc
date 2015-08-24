@@ -33,7 +33,12 @@
 #cmakedefine COMPILE_IPV6_SUPPORT 1
 #cmakedefine COMPILE_PSEUDO_TRANSPARENCY 1
 #cmakedefine COMPILE_ENCHANT_SUPPORT 1
+// Do we use KDE at all?
 #cmakedefine COMPILE_KDE_SUPPORT 1
+// Using KDE4 ? Implies COMPILE_KDE_SUPPORT
+#cmakedefine COMPILE_KDE4_SUPPORT 1
+// Using KDE5 ? Implies COMPILE_KDE_SUPPORT
+#cmakedefine COMPILE_KDE5_SUPPORT 1
 #cmakedefine COMPILE_WEBKIT_SUPPORT 1
 #cmakedefine COMPILE_DBUS_SUPPORT 1
 #cmakedefine COMPILE_ZLIB_SUPPORT 1
