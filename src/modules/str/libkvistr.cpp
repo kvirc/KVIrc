@@ -1506,22 +1506,18 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.grep
 	@short:
-		Performs searches in arrays of strings via regular expression matching
+		Performs a search in an array of strings via regular expression matching
 	@syntax:
 		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>,<offset:integer>])
 	@description:
 		Returns an array with the elements of <strings> which match the string <match>.
-		<flags> can be any combination of the characters 's','w','r' and 'p'.[br]
+		<flags> can be any combination of the characters 's','w' and 'r'.[br]
 		If the  flag 'w' is specified then <match> is assumed to be a wildcard regular
 		expression (with * and ? wildcards). If the flag 'r' is specified
 		then <match> is assumed to be a standard regular expression. If none of
 		'w' and 'r' is specified then <match> is treated as a simple string to be
 		searched in each element of the <strings> array. 'r' takes precedence over 'w'.
 		If the flag 's' is specified the matches are case sensitive.[br]
-		If the flag 'p' is specified the returned array will contain at its index 0
-		the text that matched the full pattern, and in the following array indexes
-		the captured texts that matched each parenthesized subpattern.[br]
-		The 'p' flag has effect only if used together with the 'r' flag.[br]
 		If the offset is specified attempts to find a match in from position offset in every array's item. [br]
 		If offset is -1, the search starts at the last character; if -2, at the next to last character; etc. [br]
 		Note that since almost any other variable type can be automatically cast
@@ -1558,10 +1554,14 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 
 	bool bCaseSensitive = szFlags.indexOf('s',0,Qt::CaseInsensitive) != -1;
 	bool bRegexp = szFlags.indexOf('r',0,Qt::CaseInsensitive) != -1;
+	bool bWild = szFlags.indexOf('w',0,Qt::CaseInsensitive) != -1;
+
+	// FIXME: The sub pattern matching does not belong to grep.
+	// FIXME: DO NOT DOCUMENT FLAGS p and x (they should be removed)
+	// 2015.08.24: Left for compatibility: remove in some years :)
 	bool bSubPatterns = szFlags.indexOf('p',0,Qt::CaseInsensitive) != -1;
 	bool bExcludeCompleteMatch = szFlags.indexOf('x',0,Qt::CaseInsensitive) != -1;
-
-	bool bWild = szFlags.indexOf('w',0,Qt::CaseInsensitive) != -1;
+	// 2015.08.24: End of "left for compatibility": remove in some years :)
 
 	int idx = 0;
 	int cnt = a->size();
@@ -1569,7 +1569,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	int i = 0;
 	if(bRegexp || bWild)
 	{
-		QRegExp re(szMatch,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive,bRegexp?QRegExp::RegExp:QRegExp::Wildcard);
+		QRegExp re(szMatch,bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive,bRegexp ? QRegExp::RegExp : QRegExp::Wildcard);
 		while(idx < cnt)
 		{
 			KviKvsVariant * v = a->at(idx);
@@ -1580,6 +1580,9 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 				int index=re.indexIn(sz,iOffset);
 				if( index != -1)
 				{
+					// FIXME: The sub pattern matching does not belong to grep.
+					// FIXME: DO NOT DOCUMENT FLAGS p and x (they should be removed)
+					// 2015.08.24: Left for compatibility: remove in some years :)
 					if(bSubPatterns)
 					{
 						int start=0;
@@ -1595,9 +1598,12 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 							i++;
 						}
 					} else {
+					// 2015.08.24: End of "left for compatibility": remove in some years :)
 						n->set(i,new KviKvsVariant(sz));
 						i++;
+					// 2015.08.24: Left for compatibility: remove in some years :)
 					}
+					// 2015.08.24: End of "left for compatibility": remove in some years :)
 				}
 			}
 			idx++;
