@@ -52,7 +52,7 @@ OptionsWidgetContainer::OptionsWidgetContainer(QWidget * par,bool bModal)
 	m_pOptionsWidget = NULL;
 
 	if(bModal)
-		setWindowModality(Qt::ApplicationModal);
+		setWindowModality(par ? Qt::WindowModal : Qt::ApplicationModal);
 }
 
 OptionsWidgetContainer::~OptionsWidgetContainer()

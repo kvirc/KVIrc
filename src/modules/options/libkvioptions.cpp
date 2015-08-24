@@ -122,13 +122,12 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 	} else {
 		if(c->hasSwitch('t',"toplevel"))
 		{
-			d = new OptionsDialog(0,szGroup);
+			d = new OptionsDialog(g_pMainWindow,szGroup,true);
 		} else {
-			d = new OptionsDialog(g_pMainWindow->splitter(),szGroup);
+			d = new OptionsDialog(g_pMainWindow->splitter(),szGroup,false);
 		}
 		g_pOptionsDialogDict->insert(szGroup,d);
 	}
-	d->setModal(true);
 	d->raise();
 	d->show();
 	d->setFocus();
@@ -217,7 +216,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	}
 
 	OptionsWidgetContainer * wc = new OptionsWidgetContainer(
-			0,
+			g_pMainWindow,
 			!c->hasSwitch('n',"non-modal")
 		);
 

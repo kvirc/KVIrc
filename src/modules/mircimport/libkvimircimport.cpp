@@ -143,6 +143,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	QString capt = __tr2qs("Remote mIRC servers.ini Import Wizard");
 	setWindowTitle(capt);
 
+	setModal(true);
 
 	m_pRequest = 0;
 	m_pFilter = f;

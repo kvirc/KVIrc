@@ -99,7 +99,7 @@ OptionsDialogTreeWidgetItem::~OptionsDialogTreeWidgetItem()
 {
 }
 
-OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup)
+OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 : QDialog(par)
 {
 	setObjectName("general_options_dialog");
@@ -270,6 +270,9 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup)
 	}
 
 	new QShortcut(Qt::Key_Escape,this,SLOT(close()));
+	
+	if(bModal)
+		setWindowModality(par ? Qt::WindowModal : Qt::ApplicationModal);
 }
 
 OptionsDialog::~OptionsDialog()

@@ -1844,10 +1844,10 @@ void OptionsWidget_servers::importPopupAboutToShow()
 	for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
 	{
 		if(d->icon())
-            pAction = m_pImportPopup->addAction(*(d->icon()),d->visibleName());
+			pAction = m_pImportPopup->addAction(*(d->icon()),d->visibleName());
 		else
-            pAction = m_pImportPopup->addAction(d->visibleName());
-        pAction->setData(d->id());
+			pAction = m_pImportPopup->addAction(d->visibleName());
+		pAction->setData(d->id());
 	}
 }
 

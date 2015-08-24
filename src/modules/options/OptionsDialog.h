@@ -64,7 +64,7 @@ class OptionsDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	OptionsDialog(QWidget * par,const QString &szGroup);
+	OptionsDialog(QWidget * par,const QString &szGroup,bool bModal);
 	~OptionsDialog();
 private:
 	QTreeWidget                  * m_pTreeWidget;
