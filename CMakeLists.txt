@@ -63,9 +63,9 @@ set(PACKAGE "kvirc")
 set(NICENAME "KVIrc")
 set(VERSION_MAJOR "4")
 set(VERSION_BRANCH "4.3")
-set(VERSION_RELEASE "4.3.1")
-set(VERSION_CODENAME "Aria")
-# REMINDER: "Quasar" is a new candidate.
+set(VERSION_RELEASE "4.3.2")
+set(VERSION_CODENAME "Quasar")
+# REMINDER: Write here new candidate names :)
 
 string(REGEX MATCH "[0-9]+$" VERSION_MINOR ${VERSION_BRANCH})
 
@@ -1506,6 +1506,10 @@ message(STATUS "   GetText Messages Tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
 message(STATUS "   Doxygen Support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 message(STATUS " ")
 message(STATUS "Build Date                     : ${CMAKE_KVIRC_BUILD_DATE}")
+message(STATUS "Build Version                  : ${CMAKE_KVIRC_VERSION_RELEASE}")
+message(STATUS "Build Codename                 : ${CMAKE_KVIRC_VERSION_CODENAME}")
+message(STATUS "Build Revision                 : ${CMAKE_KVIRC_BUILD_REVISION}")
+
 message(STATUS " ")
 if(MSVC)
 	message(STATUS "I'm ready to build KVIrc for you: please type 'nmake' now...")

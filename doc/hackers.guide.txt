@@ -322,6 +322,37 @@ As of 2012.07.01:
 [pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
  271397
 
+As of 2015.08.24:
+pragma@photon:/src/pragma/kvirc-git/KVIrc$ cloc  ./
+    5654 text files.
+    4080 unique files.                                          
+    2882 files ignored.
+
+http://cloc.sourceforge.net v 1.60  T=7.61 s (417.3 files/s, 76656.1 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+C++                            858          36407          63486         223125
+HTML                          1317            257              0         129327
+C/C++ Header                   518           7540          27983          34989
+make                            75           7557           6406          19576
+CMake                          383           2191           2944          15615
+Perl                             5            317            263           2072
+Pascal                           2             47            172           1267
+ ^--- Pascal? Really?
+C                                6            128             82            706
+Bourne Shell                     7            139            113            581
+YAML                             2              0             11            185
+ ^--- ???
+Python                           1             21             14             54
+DOS Batch                        1             18             11             24
+XML                              1              0              0             19
+CSS                              1              1              3             12
+-------------------------------------------------------------------------------
+SUM:                          3177          54623         101488         427552
+-------------------------------------------------------------------------------
+
+
 -------------------------------------------------------------------------------
 The coding style
 -------------------------------------------------------------------------------
@@ -806,13 +837,13 @@ or some new features have been included in the software. Compatibility
 should be assumed unless explicitly noted. Again, when the revision number
 is bumped up all the following parts are reset to 0.
 
-The fourth part is actually used only on the svn tree and it is usually not
+The fourth part is actually used only on the git tree and it is usually not
 present in the official public releases (it is assumed to be 0 for comparison
 purposes). It is called the "internal revision" number and when taken
 out of the version string it may assume a meaning on its own (but it's not
 required in fact). KVIrc uses the ISO sources date in the format YYYYMMDD for this
 number. The sources date number is defined in src/kvilib/config/kvi_sourcesdate.h
-and is also displayed by kvirc --version. Some packagers prefer to use the svn
+and is also displayed by kvirc --version. Some packagers prefer to use the git
 revision number instead of the sources date. This is not "official" but it's
 still ok as long as it follows the "order-preserving" rule (see below).
 
@@ -856,10 +887,10 @@ It is common for packages to add letters to some of the parts
 of the version string. This causes the string to lose the
 advantage of being universally comparable but it might still
 define a consistent scheme for some package line. In the case
-that letters are added to a version string (like 3.2.6.svn10)
+that letters are added to a version string (like 3.2.6.git10)
 we say that it is comparable only to the version strings
-that have the same letter pattern: 3.2.6.svn10 and 4.3.1.svn344
-are comparable but 3.2.6.svn10 and 3.2.6.cvs15 are not.
+that have the same letter pattern: 3.2.6.git10 and 4.3.1.git344
+are comparable but 3.2.6.git10 and 3.2.6.cvs15 are not.
 For comparable strings we strip the letters in order to make the comparison.
 
 - Stable and unstable versions
@@ -878,11 +909,11 @@ recurrent so we *might* try to use the following one from now on:
     When a major number increases the minor and patchlevel restart from 0.
 
   + Even minor versions are used for stable releases with major changes.
-    Odd minor versions are used for trunk svn development.
+    Odd minor versions are used for trunk git development.
 
   + For stable (even) minor numbers:
     + Even patchlevel versions are used for public releases
-    + Odd patchlevel versions are used for svn development
+    + Odd patchlevel versions are used for git development
 
   + For unstable (odd) minor numbers
     + The patchlevels are increased freely by the developers when a
@@ -890,17 +921,17 @@ recurrent so we *might* try to use the following one from now on:
 
 So:
 
-  4.1.0 is an unstable svn build that comes from svn trunk
-  4.1.3 is an unstable svn build that comes from svn trunk that reached some
+  4.1.0 is an unstable git build that comes from git HEAD
+  4.1.3 is an unstable git build that comes from git HEAD that reached some
         kind of third milestone
   4.2.0 is a stable with major changes with respect to 4.0.0
-        it still comes from trunk
-  4.2.1 is a work-in-progress build that comes from svn branch 4.2
+        it still comes from git HEAD
+  4.2.1 is a work-in-progress build that comes from git branch 4.2
   4.2.2 is a stable with bugfix changes with respect to 4.2.0
-        it comes from svn 4.2 branch
-  4.2.3 is a work-in-progress build that comes from svn branch 4.2
+        it comes from git 4.2 branch
+  4.2.3 is a work-in-progress build that comes from git branch 4.2
   4.2.4 is a stable with bugfix changes with respect to 4.2.2
-        it comes from svn 4.2 branch
+        it comes from git 4.2 branch
   ...
 
 Note that in stable stuff both the minor AND the patchlevel are even numbers.
@@ -934,10 +965,10 @@ We do not sign the semi-official packages but it's still somewhat
 granted that WE (the KVIrc Development Team) make them and thus the
 source can be trusted.
 
-The unofficial packages are random snapshots of the svn source tree made
+The unofficial packages are random snapshots of the git source tree made
 by anyone who wants to do it at any time. They are not announced on the KVIrc
 web site (but might be uploaded to ftp.kvirc.net) but rather announced and available
-at some other internet location. Since we always try to keep the svn
+at some other internet location. Since we always try to keep the git
 tree clean and compilable they should work fine but there is no guarantee.
 There is no rule for the unofficial package format: there might be source-only
 or binary only packages. We *suggest* to use the four part version string format
