@@ -144,9 +144,12 @@ void KviIrcConnectionRequestQueue::timerSlot()
 				if(!KVI_OPTION_BOOL(KviOption_boolDisableBanListRequestOnJoin))
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s b",encodedChan.data()))
+					{
 						clearAll(); // disconnected
-					else pChan->setSentListRequest('b');
-					m_channels.dequeue();
+					} else {
+						pChan->setSentListRequest('b');
+						m_channels.dequeue();
+					}
 					m_curType = Mode;
 					break;
 				}
