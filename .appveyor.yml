@@ -113,7 +113,7 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a" 2>&1
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a" "-DWANT_KDE=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
