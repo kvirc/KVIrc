@@ -57,7 +57,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"url.list",
 	"openurl http://www.kvirc.net/?id=themes",
 	"openurl http://www.kvirc.net/?id=mailinglist",
-	"openurl https://svn.kvirc.de/kvirc/wiki#Bugreportticket",
+	"openurl https://github.com/kvirc/KVIrc/issues",
 	"raweditor.open",
 	"popupeditor.open",
 	"dialog.file(open,\"Select a Script File\"){ if(!$str.isEmpty($0))parse $0; }",

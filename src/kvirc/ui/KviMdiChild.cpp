@@ -29,6 +29,7 @@
 */
 
 #define _KVI_DEBUG_CHECK_RANGE_
+
 #include "kvi_debug.h"
 #include "KviMdiChild.h"
 #include "KviMdiManager.h"
@@ -190,7 +191,9 @@ void KviMdiChild::moveEvent(QMoveEvent *e)
 	if(!(windowState() & (Qt::WindowMinimized | Qt::WindowMaximized)))
 	{
 		m_rNormalizedGeometry.moveTopLeft(e->pos());
-// 		qDebug("[%s] normalGeometry x=%d y=%d w=%d h=%d", m_szPlainCaption.toUtf8().data(), m_rNormalizedGeometry.x(), m_rNormalizedGeometry.y(), m_rNormalizedGeometry.width(), m_rNormalizedGeometry.height());
+ 		//qDebug("[%s] normalGeometry x=%d y=%d w=%d h=%d", m_szPlainCaption.toUtf8().data(), m_rNormalizedGeometry.x(), m_rNormalizedGeometry.y(), m_rNormalizedGeometry.width(), m_rNormalizedGeometry.height());
+		//if(m_rNormalizedGeometry.x() < -300)
+		//	qDebug("Freak!");
 	}
 }
 
@@ -201,7 +204,7 @@ void KviMdiChild::resizeEvent(QResizeEvent *e)
 	if(!(windowState() & (Qt::WindowMinimized | Qt::WindowMaximized)))
 	{
 		m_rNormalizedGeometry.setSize(e->size());
-// 		qDebug("[%s] normalGeometry x=%d y=%d w=%d h=%d", m_szPlainCaption.toUtf8().data(), m_rNormalizedGeometry.x(), m_rNormalizedGeometry.y(), m_rNormalizedGeometry.width(), m_rNormalizedGeometry.height());
+ 		//qDebug("[%s] normalGeometry x=%d y=%d w=%d h=%d", m_szPlainCaption.toUtf8().data(), m_rNormalizedGeometry.x(), m_rNormalizedGeometry.y(), m_rNormalizedGeometry.width(), m_rNormalizedGeometry.height());
 	}
 }
 

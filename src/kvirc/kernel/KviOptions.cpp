@@ -1157,7 +1157,7 @@ namespace KviTheme
 
 	bool load(const QString &szThemeDir,KviThemeInfo &buffer,bool bBuiltin)
 	{
-		qDebug("Loading and apply theme");
+		//qDebug("Loading and apply theme");
 		if(!buffer.load(szThemeDir,bBuiltin))
 		{
 			qDebug("data does not exist in theme dir %s",szThemeDir.toUtf8().data());
@@ -1166,7 +1166,7 @@ namespace KviTheme
 
 		QString szThemeDirPath;
 		buffer.getCompleteDirPath(szThemeDirPath);
-		qDebug("Ok loading from %s",szThemeDirPath.toUtf8().data());
+		//qDebug("Ok loading from %s",szThemeDirPath.toUtf8().data());
 		// reset the current theme subdir
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
 

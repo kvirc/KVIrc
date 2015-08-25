@@ -32,6 +32,7 @@
 #include "KviCommandFormatter.h"
 #include "KviError.h"
 #include "kvi_out.h"
+#include "KviMainWindow.h"
 #include "KviIconManager.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
@@ -218,14 +219,28 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	QString szTmp;
 	c->enterBlockingSection();
 
-	bool bResult = KviFileDialog::askForSaveFileName(szTmp,__tr2qs_ctx("Choose a file to save the screenshot to","theme"),szFileName,"*.png");
+	bool bResult = KviFileDialog::askForSaveFileName(
+			szTmp,
+			__tr2qs_ctx("Choose a file to save the screenshot to","theme"),
+			szFileName,
+			"*.png",
+			false,
+			false,
+			true,
+			g_pMainWindow
+		);
 
-	if(!c->leaveBlockingSection())return false; // need to stop immediately
-	if(!bResult)return true;
+	if(!c->leaveBlockingSection())
+		return false; // need to stop immediately
+
+	if(!bResult)
+		return true;
 
 	szFileName = szTmp;
 
-	if(szFileName.isEmpty())return true; // done
+	if(szFileName.isEmpty())
+		return true; // done
+
 	KviFileUtils::adjustFilePath(szFileName);
 	if(QFileInfo(szFileName).suffix()!="png")
 		szFileName+=".png";

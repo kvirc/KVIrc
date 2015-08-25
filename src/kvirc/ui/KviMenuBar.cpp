@@ -371,7 +371,7 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
 
 	// moved the old tools here
 	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE4_SUPPORT
 	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &Terminal"),this,SLOT(actionTriggered(bool)));
 	pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif

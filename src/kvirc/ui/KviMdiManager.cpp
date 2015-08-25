@@ -87,6 +87,8 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	//setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	//setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 KviMdiManager::~KviMdiManager()

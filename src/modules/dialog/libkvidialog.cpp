@@ -521,7 +521,13 @@ KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
 		const QString &szCode,
 		KviKvsVariantList * pMagicParams,
 		KviWindow * pWindow,bool modal)
-	: KviFileDialog(szInitialSelection,szFilter,pWindow,0,modal), KviKvsCallbackObject("dialog.file",pWindow,szCode,pMagicParams,0)
+	: KviFileDialog(
+		szInitialSelection,
+		szFilter,
+		NULL, // parent
+		0,
+		modal
+	), KviKvsCallbackObject("dialog.file",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
 	setWindowTitle(szCaption);
@@ -627,18 +633,21 @@ static bool dialog_kvs_cmd_file(KviKvsModuleCallbackCommandCall * c)
 		KVSM_PARAMETER("filter",KVS_PT_STRING,KVS_PF_OPTIONAL,szFilter)
 		KVSM_PARAMETER("magic",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,params)
 	KVSM_PARAMETERS_END(c)
-	bool modal;
-	if(c->hasSwitch('b',"modal")) modal=true;
-	else modal=false;
+
+	bool modal = c->hasSwitch('b',"modal");
+
 	QString szCmd = c->callback()->code();
 
 	KviKvsCallbackFileDialog * box = new KviKvsCallbackFileDialog(szCaption,szInitialSelection,szFilter,szCmd,&params,c->window(),modal);
 
 	KviFileDialog::FileMode md = KviFileDialog::ExistingFile;
 
-	if(KviQString::equalCI(szMode,"openm"))md = KviFileDialog::ExistingFiles;
-	else if(KviQString::equalCI(szMode,"save"))md = KviFileDialog::AnyFile;
-	else if(KviQString::equalCI(szMode,"dir"))md = KviFileDialog::DirectoryOnly;
+	if(KviQString::equalCI(szMode,"open"))
+		md = KviFileDialog::ExistingFiles;
+	else if(KviQString::equalCI(szMode,"save"))
+		md = KviFileDialog::AnyFile;
+	else if(KviQString::equalCI(szMode,"dir"))
+		md = KviFileDialog::DirectoryOnly;
 
 	box->setFileMode(md);
 
