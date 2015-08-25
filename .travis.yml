@@ -6,6 +6,7 @@ compiler:
 install:
     - cat /proc/cpuinfo /proc/meminfo
     - lsb_release -a
+    - add-apt-repository -y ppa:smspillaz/cmake-2.8.12
     - sudo apt-get update
     - sudo apt-get install libperl-dev
 script:
