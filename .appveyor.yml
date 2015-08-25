@@ -20,7 +20,7 @@ environment:
           target_arch: x86_64
           enchant_url: https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
           qt_ver: qt-5.5.0-x64-msvc2013
-          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86-64/5.5.0/msvc2013/qt-5.5.0-x64-msvc2013-rev0.7z
+          qt_url: http://sourceforge.net/projects/qt64ng/files/qt/x86-64/5.5.0/msvc2013/qt-5.5.0-x64-msvc2013-rev0.7z?use_mirror=skylink
         - ssl_arch: Win32
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
