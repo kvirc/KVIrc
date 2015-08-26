@@ -24,6 +24,7 @@
 
 #include "BlowFish.h"
 #include "KviMemory.h"
+#include "KviOptions.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
@@ -328,10 +329,14 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 	 * security risk), we go the safe way using the standard keylength.
 	 */
 
-	//Check the Key - the key length should be between 1 and 56 bytes
-	if(keysize>56)
-		keysize = 56;
-	unsigned char aucLocalKey[56];
+	//Check the Key - the key length should be between 1 and uintBlowfishKeysize bytes
+	unsigned int maxKeysize=KVI_OPTION_UINT(KviOption_uintBlowfishKeysize);
+	if(maxKeysize<1)return;
+	if(keysize>maxKeysize)
+		keysize = maxKeysize;
+	// Allocate dynamically as we need a constant expression for the array size in c++
+	unsigned char *aucLocalKey = NULL;
+	aucLocalKey = new unsigned char[maxKeysize];
 	unsigned int i, j;
 	KviMemory::copy(aucLocalKey, ucKey, keysize);
 	//Reflexive Initialization of the Blowfish.
@@ -367,6 +372,9 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 	for(j=0; j<4; j++)
 		for(int k=0; k<256; )
 			Encrypt(block), m_auiS[j][k++] = block.m_uil, m_auiS[j][k++] = block.m_uir;
+	
+	delete [] aucLocalKey;
+	aucLocalKey = NULL;
 }
 
 //Sixteen Round Encipher of Block

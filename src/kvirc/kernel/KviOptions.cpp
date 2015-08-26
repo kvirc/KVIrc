@@ -668,7 +668,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("OutputDatetimeFormat",0,KviOption_sectFlagIrcView),
 	UINT_OPTION("OnJoinRequestsDelay",1,KviOption_sectFlagConnection), // FIXME: Wouldn't this be nicer in msecs defaulting to 100-200 ?
 	UINT_OPTION("ToolBarIconSize",22,KviOption_groupTheme | KviOption_resetReloadImages),
-	UINT_OPTION("ToolBarButtonStyle",0,KviOption_groupTheme ) // 0 = Qt::ToolButtonIconOnly
+	UINT_OPTION("ToolBarButtonStyle",0,KviOption_groupTheme ), // 0 = Qt::ToolButtonIconOnly
+	UINT_OPTION("BlowfishKeysize",56,KviOption_sectFlagNone)
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

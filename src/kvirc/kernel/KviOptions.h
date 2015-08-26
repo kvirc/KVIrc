@@ -617,8 +617,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintOnJoinRequestsDelay 78
 #define KviOption_uintToolBarIconSize 79
 #define KviOption_uintToolBarButtonStyle 80
+#define KviOption_uintBlowfishKeysize 81
 
-#define KVI_NUM_UINT_OPTIONS 81
+#define KVI_NUM_UINT_OPTIONS 82
 
 namespace KviIdentdOutputMode {
 	enum Mode {
