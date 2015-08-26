@@ -447,12 +447,10 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 		break;
 		case KviWindow::Channel:
 		case KviWindow::DeadChannel:
-			if(KVI_OPTION_BOOL(KviOption_boolShowWindowListWithUserFlag))
-			{
+			if(KVI_OPTION_BOOL(KviOption_boolShowUserFlagForChannelsInWindowList))
 				szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
-			} else {
+			else
 				szText = ((KviChannelWindow *)m_pWindow)->target();
-			}
 		break;
 		case KviWindow::Query:
 		case KviWindow::DeadQuery:
