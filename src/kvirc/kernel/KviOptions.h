@@ -352,8 +352,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowDialogOnChannelCtcpPage 257
 #define KviOption_boolPopupNotifierOnNewNotices 258                      /* query */
 #define KviOption_boolUserListViewUseAwayColor 259                       /* userlist */
+#define KviOption_boolShowWindowListWithUserFlag 260
 
-#define KVI_NUM_BOOL_OPTIONS 260
+#define KVI_NUM_BOOL_OPTIONS 261
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
