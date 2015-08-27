@@ -121,7 +121,7 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 	pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->addSeparator();
 
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),__tr2qs("About &KVIrc"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Info)),__tr2qs("About &KVIrc"));
 	pAction->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 	pAction->setMenuRole(QAction::AboutRole);
 

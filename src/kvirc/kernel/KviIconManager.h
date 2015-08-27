@@ -481,7 +481,8 @@ public:
 		SexBot               = 314,
 		SexIrcOp             = 315,
 		MemoServ             = 316,
-		IconCount            = 317
+		Info                 = 317,
+		IconCount            = 318
 	};
 
 	/**
