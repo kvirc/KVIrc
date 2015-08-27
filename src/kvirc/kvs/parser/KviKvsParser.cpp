@@ -45,7 +45,8 @@ KviKvsParser::KviKvsParser(KviKvsScript * pScript,KviWindow * pOutputWindow)
 
 KviKvsParser::~KviKvsParser()
 {
-	if(m_pGlobals)delete m_pGlobals;
+	if(m_pGlobals)
+		delete m_pGlobals;
 }
 
 void KviKvsParser::init()
@@ -136,7 +137,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parse(const QChar * pBuffer,int iFlags
 	m_iFlags = iFlags;
 
 	m_bError = false;
-	if(m_pGlobals)m_pGlobals->clear(); // this shouldn't be needed since this is a one time parser
+	if(m_pGlobals)
+		m_pGlobals->clear(); // this shouldn't be needed since this is a one time parser
 
 	m_pBuffer = pBuffer;
 	m_ptr = pBuffer;
@@ -154,7 +156,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsExpression(const QChar * pBuffe
 	m_iFlags = iFlags;
 
 	m_bError = false;
-	if(m_pGlobals)m_pGlobals->clear(); // this shouldn't be needed since this is a one time parser
+	if(m_pGlobals)
+		m_pGlobals->clear(); // this shouldn't be needed since this is a one time parser
 
 	m_pBuffer = pBuffer;
 	m_ptr = pBuffer;
@@ -175,7 +178,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 	m_iFlags = iFlags;
 
 	m_bError = false;
-	if(m_pGlobals)m_pGlobals->clear(); // this shouldn't be needed since this is a one time parser
+	if(m_pGlobals)
+		m_pGlobals->clear(); // this shouldn't be needed since this is a one time parser
 
 	m_pBuffer = pBuffer;
 	m_ptr = pBuffer;
@@ -2746,16 +2750,19 @@ KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
 	if(bInObjScope)
 		return new KviKvsTreeNodeObjectField(pBegin,szIdentifier);
 
+	// Check if explicitly declared as global
 	if(m_pGlobals)
 	{
-		if(m_pGlobals->find(szIdentifier))return new KviKvsTreeNodeGlobalVariable(pBegin,szIdentifier);
+		if(m_pGlobals->find(szIdentifier))
+			return new KviKvsTreeNodeGlobalVariable(pBegin,szIdentifier);
 	}
 
 	if(m_iFlags & AssumeLocals)
 		return new KviKvsTreeNodeLocalVariable(pBegin,szIdentifier);
 
-	if(pIdBegin->category() & QChar::Letter_Uppercase)
+	if(pIdBegin->category() == QChar::Letter_Uppercase)
 	{
+		//qDebug("Variable %s is global",szIdentifier.toUtf8().data());
 		//if(m_iFlags & Pedantic)
 		//	warning(pIdBegin,__tr2qs_ctx("Declaring global variables with an uppercase letter is deprecated. Global variables should be declared with 'global'","kvs"));
 		return new KviKvsTreeNodeGlobalVariable(pBegin,szIdentifier);

@@ -107,6 +107,8 @@ public:
 	*/
 	bool isEmpty() const { return m_pDict->isEmpty(); };
 
+	void clear(){ m_pDict->clear(); };
+
 	/**
 	* \brief Returns the size of the hash
 	* \return kvs_uint_t

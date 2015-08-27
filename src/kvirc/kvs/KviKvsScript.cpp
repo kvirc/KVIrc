@@ -254,7 +254,8 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 	// parse never blocks
 
 	int iFlags = iRunFlags & AssumeLocals ? KviKvsParser::AssumeLocals : 0;
-	if(iRunFlags & Pedantic)iFlags |= KviKvsParser::Pedantic;
+	if(iRunFlags & Pedantic)
+		iFlags |= KviKvsParser::Pedantic;
 
 	switch(m_pData->m_eType)
 	{
