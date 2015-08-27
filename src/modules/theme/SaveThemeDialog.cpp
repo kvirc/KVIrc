@@ -56,7 +56,6 @@
 
 
 
-
 SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 : KviTalWizard(pParent)
 {
@@ -64,7 +63,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	setMinimumSize(400,350);
 
 	KviThemeInfo info;
-	info.load(KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+	info.load(KVI_OPTION_STRING(KviOption_stringIconThemeSubdir),KviThemeInfo::Auto);
 
 	// welcome page ==================================================================================
 	QWidget * pPage = new QWidget(this);
@@ -244,24 +243,9 @@ bool SaveThemeDialog::saveTheme()
 	sto.setAuthor(m_pAuthorNameEdit->text());
 	sto.setDescription(m_pThemeDescriptionEdit->toPlainText());
 
-	QString szTmp;
-	QDateTime date = QDateTime::currentDateTime();
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
-	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			break;
-		case 1:
-			szTmp = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szTmp = date.toString(Qt::SystemLocaleShortDate);
-			break;
-	}
-
-	sto.setDate(szTmp);
+	// this is the equivalent to an empty date.toString() call, but it's needed
+	// to ensure qt4 will use the default() locale and not the system() one
+	sto.setDate(QLocale().toString(QDateTime::currentDateTime(), "ddd MMM d hh:mm:ss yyyy"));
 	sto.setVersion(m_pThemeVersionEdit->text());
 	sto.setApplication("KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
@@ -269,17 +253,15 @@ bool SaveThemeDialog::saveTheme()
 
 	QString szSubdir = sto.name() + QString("-") + sto.version();
 	szSubdir.replace(QRegExp("[ \\\\/:][ \\\\/:]*"),"_");
-	sto.setSubdirectory(szSubdir);
+	sto.setDirectoryAndLocation(szSubdir,KviThemeInfo::User);
 
-	QString szAbsDir;
-	g_pApp->getLocalKvircDirectory(szAbsDir,KviApplication::Themes,sto.subdirectory(),true);
+	QString szAbsDir = sto.directory();
 	if(!KviFileUtils::makeDir(szAbsDir))
 	{
 		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("Unable to create theme directory.","theme"),
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
-
 
 	if(!KviTheme::save(sto))
 	{

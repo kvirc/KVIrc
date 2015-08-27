@@ -33,7 +33,7 @@
 #include "KviFileUtils.h"
 
 #include <QPixmap>
-#define BUILTIN 1
+
 #define KVI_THEMEINFO_FILE_NAME "themeinfo" KVI_FILEEXTENSION_CONFIG
 #define KVI_THEMEDATA_FILE_NAME "themedata" KVI_FILEEXTENSION_CONFIG
 #define KVI_THEMEINFO_CONFIG_GROUP "ThemeInfo"
@@ -60,11 +60,34 @@ class KVIRC_API KviThemeInfo : public KviHeapObject
 public:
 	KviThemeInfo();
 	~KviThemeInfo();
+public:
+	enum Location
+	{
+		///
+		/// Theme is a builtin theme. The subdirectory is inside the kvirc global theme directory.
+		///
+		Builtin = 0,
+		///
+		/// Theme is an user theme. The subdirectory is inside the kvirc local theme directory.
+		///
+		User = 1,
+		///
+		/// Theme is an external theme. The subdirectory is somewhere on the filesystem.
+		///
+		External = 3,
+		///
+		/// Automatically determine location
+		///
+		Auto = 4
+	};
 protected:
 	QString m_szName;               //< name of the theme
 	QString m_szVersion;            //< version of the theme
-	QString m_szSubdirectory;       //< subdirectory of $LOCALKVIRCDIR/themes where the theme is saved to (not always used)
-	QString m_szDirName;	        //< directory where the theme should be saved to (or is loaded from)
+
+	QString m_szDirectory;          //< the absolute directory of the theme
+	QString m_szSubdirectory;       //< the last component of m_szDirectory (this is needed when the theme is installed)
+	Location m_eLocation;           //< the location of the theme
+
 	QString m_szAuthor;             //< author of the theme
 	QString m_szDescription;        //< description of the theme
 	QString m_szDate;               //< theme creation date
@@ -77,32 +100,49 @@ protected:
 	QPixmap m_pixScreenshotMedium;  //< the medium screenshot pixmap
 	QPixmap m_pixScreenshotSmall;   //< the small screenshot pixmap
 
-	bool m_bBuiltin; //< bool is a builtin theme
 public:
 	///
-	/// load data from a specified theme config file
+	/// Load theme data from the specified location.
+	/// If eLocation is Builtin then szThemeDirectory is assumed to be a subdirectory of the kvirc global theme directory.
+	/// If eLocation is User then szThemeDirectory is assumed to be a subdirectory of the kvirc local theme directory.
+	/// If eLocation is External the szThemeDirectory is assumed to be a full path to a theme directory.
 	///
-	bool load(const QString &szThemeFileName,bool bBuiltin=false);
+	bool load(const QString &szDirectory,Location eLocation);
+
 	///
 	/// save the currently defined theme configuration in the specified file
 	///
 	bool save(const QString &szThemeFileName);
-	bool isBuiltin(){return m_bBuiltin;}
+
 	const QString & lastError(){ return m_szLastError; }
 	void setLastError(const QString &szLastError){ m_szLastError = szLastError; }
 	const QString & name(){ return m_szName; }
 	void setName(const QString &szName){ m_szName = szName; }
 	const QString & version(){ return m_szVersion; }
 	void setVersion(const QString &szVersion){ m_szVersion = szVersion; }
-	const QString & subdirectory(){ return m_szSubdirectory; }
-	void setSubdirectory(const QString &szSubdirectory){ m_szSubdirectory = szSubdirectory; }
-	void getCompleteDirPath(QString &szBuffer)
+
+	const QString & directory() const
 	{
-	    if(m_bBuiltin) g_pApp->getGlobalKvircDirectory(szBuffer,KviApplication::Themes,m_szSubdirectory);
-	    else g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Themes,m_szSubdirectory);
-	    KviQString::ensureLastCharIs(szBuffer,QChar(KVI_PATH_SEPARATOR_CHAR));
+		return m_szDirectory;
 	}
-	const QString & dirName(){ return m_szDirName; }
+
+	const QString & subdirectory() const
+	{
+		return m_szSubdirectory;
+	}
+
+	Location location() const
+	{
+		return m_eLocation;
+	}
+
+	void setDirectoryAndLocation(const QString &szDirectory,Location eLocation);
+
+	bool isBuiltin()
+	{
+		return m_eLocation == KviThemeInfo::Builtin;
+	}
+
 	const QString & author(){ return m_szAuthor; }
 	void setAuthor(const QString &szAuthor){ m_szAuthor = szAuthor; }
 	const QString & description(){ return m_szDescription; }
@@ -139,18 +179,24 @@ public:
 	/// has been set, otherwise the returned pixmap will be null.
 	///
 	QString smallScreenshotPath();
+
+
 };
 
 namespace KviTheme
 {
 	///
-	/// Attempt to load (apply) a theme from globaldir::theme (bBuiltin=true) or from localdir::theme.
+	/// Attempt to load and apply a theme.
+	/// If eLocation is Builtin then szThemeDirectory is assumed to be a subdirectory of the kvirc global theme directory.
+	/// If eLocation is User then szThemeDirectory is assumed to be a subdirectory of the kvirc local theme directory.
+	/// If eLocation is External the szThemeDirectory is assumed to be a full path to a theme directory.
 	/// Will return true on success and false on failure.
 	/// On success this function will return the theme information in the buffer.
 	/// On failure this function will also set buffer.lastError() to a meaningful value
 	/// Note that for convenience this function is implemented in KviOptions.cpp
 	///
-    	bool KVIRC_API load(const QString &szThemeName,KviThemeInfo &buffer,bool bBuiltin=false);
+	bool KVIRC_API apply(const QString &szThemeDirectory,KviThemeInfo::Location eLocation,KviThemeInfo &buffer);
+
 	///
 	/// Save a theme given the specified options.
 	/// Will return true on success and false on failure.
@@ -162,13 +208,17 @@ namespace KviTheme
 	/// Note that for convenience this function is implemented in KviOptions.cpp
 	///
 	bool KVIRC_API save(KviThemeInfo &options);
+
 	///
 	/// Save the theme screenshots in the given EXISTING directory and given
 	/// an existing screenshot on disk (usually in the tmp directory).
 	///
 	bool KVIRC_API saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath);
 
-	void KVIRC_API installedThemes(QStringList &slThemes,bool bBuiltin);
+	///
+	/// List directory names of installed themes.
+	///
+	void KVIRC_API installedThemeDirectories(QStringList &slThemes,KviThemeInfo::Location eLocation);
 }
 
 

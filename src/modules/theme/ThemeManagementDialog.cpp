@@ -72,10 +72,6 @@
 
 extern QRect g_rectManagementDialogGeometry;
 
-#define BUILTIN_THEMES 1
-
-#define USER_DEFINED_THEMES 0
-
 ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo * pInfo)
 : KviTalListWidgetItem(pBox)
 {
@@ -333,7 +329,6 @@ void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 		KviThemeInfo * pInfo = pItem->themeInfo();
 		if(!pInfo)
 			return;
-		QString szDir = pInfo->dirName();
 
 		if(!pInfo->isBuiltin())
 			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
@@ -353,27 +348,29 @@ void ThemeManagementDialog::applyTheme(QListWidgetItem * it)
 void ThemeManagementDialog::applyCurrentTheme()
 {
 	ThemeListWidgetItem * it = (ThemeListWidgetItem *)m_pListWidget->currentItem();
-	if(!it)return;
+	if(!it)
+		return;
 
-	if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
+	if(!KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
 		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?","theme"),
 		&(it->themeInfo()->name()),&(it->themeInfo()->version())))
+		return;
+
+	KviThemeInfo out;
+
+	//qDebug("Apply theme item %x, info %x, %s : %s at location %d",(long)it,(long)it->themeInfo(),it->themeInfo()->directory().toUtf8().data(),it->themeInfo()->subdirectory().toUtf8().data(),it->themeInfo()->location());
+
+	if(!KviTheme::apply(it->themeInfo()->subdirectory(),it->themeInfo()->location(),out))
 	{
-		QString szPath = it->themeInfo()->dirName();
-		if(szPath.isEmpty())return;
-
-		KviThemeInfo out;
-		if(!KviTheme::load(szPath,out,it->themeInfo()->isBuiltin()))
-		{
-			QString szErr = out.lastError();
-			QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
-			QMessageBox::critical(this,__tr2qs_ctx("Apply theme - KVIrc","theme"),szMsg,
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-
-		}
-		else m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ","theme")+KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)+"</b>");
-		m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
+		QString szErr = out.lastError();
+		QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
+		QMessageBox::critical(this,__tr2qs_ctx("Apply theme - KVIrc","theme"),szMsg,
+			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		return;
 	}
+
+	m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ","theme")+KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)+"</b>");
+	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
 }
 
 void ThemeManagementDialog::deleteTheme()
@@ -395,8 +392,7 @@ void ThemeManagementDialog::deleteTheme()
 		)
 			goto jump_out;
 
-		QString szThemePath;
-		((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->getCompleteDirPath(szThemePath);
+		QString szThemePath = ((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->directory();
 		KviFileUtils::deleteDir(szThemePath);
 	}
 jump_out:
@@ -418,11 +414,13 @@ void ThemeManagementDialog::installFromFile()
 			this)
 		)
 		return;
+
 	if(!ThemeFunctions::installThemePackage(szFileName,szError,this))
 	{
 		KviMessageBox::information(szError);
 		return;
 	}
+
 	fillThemeBox();
 }
 
@@ -463,15 +461,19 @@ void ThemeManagementDialog::saveCurrentTheme()
 void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 {
 	QStringList slThemes;
-	KviTheme::installedThemes(slThemes,bBuiltin);
+	KviTheme::installedThemeDirectories(slThemes,bBuiltin ? KviThemeInfo::Builtin : KviThemeInfo::User);
 
 	for(int i=0;i<slThemes.count();i++)
 	{
+		//qDebug("Installed theme %s builtin %d",slThemes.at(i).toUtf8().data(),bBuiltin);
+	
 		KviThemeInfo * inf = new KviThemeInfo();
-		if(inf->load(slThemes.at(i),bBuiltin))
+		if(inf->load(slThemes.at(i),bBuiltin ? KviThemeInfo::Builtin : KviThemeInfo::User))
 		{
-			inf->setSubdirectory(slThemes.at(i));
 			ThemeListWidgetItem *it=new ThemeListWidgetItem(m_pListWidget,inf);
+
+			//qDebug("Item %x, info %x, info2 %x, %s : %s at location %d",(long)it,(long)inf,(long)it->themeInfo(),it->themeInfo()->directory().toUtf8().data(),it->themeInfo()->subdirectory().toUtf8().data(),it->themeInfo()->location());
+
 			QPixmap pixmap=inf->smallScreenshot();
 			if(!pixmap.isNull())
 				it->setIcon(pixmap.scaled(32,32));
@@ -485,8 +487,8 @@ void ThemeManagementDialog::fillThemeBox()
 {
 	m_pListWidget->clear();
 
-	fillThemeBox(BUILTIN_THEMES);
-	fillThemeBox(USER_DEFINED_THEMES);
+	fillThemeBox(true);
+	fillThemeBox(false);
 
 	enableDisableButtons();
 }

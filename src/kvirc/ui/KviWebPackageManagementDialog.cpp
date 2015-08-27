@@ -207,14 +207,14 @@ void KviWebPackageManagementDialog::slotDataTransferProgress(qint64 iDone,qint64
 {
 	m_pProgressBar->setMaximum(iTotal);
 	m_pProgressBar->setValue(iDone);
-	m_pProgressBar->setFormat(__tr2qs_ctx("Downloading: %p%","theme"));
+	m_pProgressBar->setFormat(__tr2qs("Downloading: %p%"));
 }
 
 void KviWebPackageManagementDialog::slotLoadProgress(int iProgress)
 {
 	m_pProgressBar->setMaximum(100);
 	m_pProgressBar->setValue(iProgress);
-	m_pProgressBar->setFormat(__tr2qs_ctx("Loading: %p%","theme"));
+	m_pProgressBar->setFormat(__tr2qs("Loading: %p%"));
 }
 
 void KviWebPackageManagementDialog::slotCommandFinished()
@@ -254,7 +254,7 @@ void KviWebPackageManagementDialog::slotCommandFinished()
 		} else {
 			//get http status code
 			int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-			KviMessageBox::information(QString("Download failed:%1").arg(reply->errorString()));
+			KviMessageBox::information(__tr2qs("Download failed: %1").arg(reply->errorString()));
 		}
 		reply->deleteLater();
 	}

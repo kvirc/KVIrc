@@ -25,6 +25,7 @@
 #include "ThemeFunctions.h"
 
 #include "KviPackageReader.h"
+#include "KviPackageWriter.h"
 #include "KviLocale.h"
 #include "KviMessageBox.h"
 #include "KviApplication.h"
@@ -34,6 +35,12 @@
 #include "kvi_sourcesdate.h"
 #include "KviTheme.h"
 #include "KviMainWindow.h"
+
+#include <QImage>
+#include <QPixmap>
+#include <QByteArray>
+#include <QBuffer>
+#include <QDateTime>
 
 
 //#include <qmime.h>
@@ -381,6 +388,130 @@ namespace ThemeFunctions
 		if(bMaximizeFrame)
 			g_pMainWindow->showNormal();
 		return bResult;
+	}
+	
+
+	bool packageThemes(
+			const QString &szPackagePath,
+			const QString &szPackageName,
+			const QString &szPackageVersion,
+			const QString &szPackageDescription,
+			const QString &szPackageAuthor,
+			const QString &szPackageImagePath,
+			KviPointerList<KviThemeInfo> &lThemeInfoList,
+			QString &szError
+		)
+	{
+
+		if(szPackagePath.isEmpty())
+		{
+			szError = __tr2qs_ctx("Invalid empty package path","theme");
+			return false;
+		}
+
+		if(szPackageName.isEmpty())
+		{
+			szError = __tr2qs_ctx("Invalid empty package name","theme");
+			return false;
+		}
+
+		QPixmap out;
+
+		if(!szPackageImagePath.isEmpty())
+		{
+			QImage pix(szPackageImagePath);
+			if(pix.isNull())
+			{
+				szError = __tr2qs_ctx("Failed to load the selected image: please fix it","theme");
+				return false;
+			}
+	
+			if((pix.width() > 300) || (pix.height() > 225))
+				out = out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
+			else
+				out=out.fromImage(pix);
+		}
+	
+		KviPackageWriter f;
+	
+		f.addInfoField("PackageType","ThemePack");
+		f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
+		f.addInfoField("Name",szPackageName);
+		f.addInfoField("Version",szPackageVersion.isEmpty() ? "1.0.0" : szPackageVersion);
+		f.addInfoField("Author",szPackageAuthor);
+		f.addInfoField("Description",szPackageDescription);
+		// this is the equivalent to an empty date.toString() call, but it's needed
+		// to ensure qt4 will use the default() locale and not the system() one
+		f.addInfoField("Date",QLocale().toString(QDateTime::currentDateTime(),"ddd MMM d hh:mm:ss yyyy"));
+		f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
+	
+		if(!out.isNull())
+		{
+			QByteArray * pba = new QByteArray();
+			QBuffer buffer(pba,0);
+			buffer.open(QIODevice::WriteOnly);
+			out.save(&buffer,"PNG");
+			buffer.close();
+			f.addInfoField("Image",pba); // cool :) [no disk access needed]
+		}
+	
+		QString szTmp;
+	
+		szTmp.setNum(lThemeInfoList.count());
+		f.addInfoField("ThemeCount",szTmp);
+	
+		int iIdx = 0;
+		for(KviThemeInfo * pInfo = lThemeInfoList.first();pInfo;pInfo = lThemeInfoList.next())
+		{
+			szTmp = QString("Theme%1Name").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->name());
+			szTmp = QString("Theme%1Version").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->version());
+			szTmp = QString("Theme%1Description").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->description());
+			szTmp = QString("Theme%1Date").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->date());
+			szTmp = QString("Theme%1Subdirectory").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->subdirectory());
+			szTmp = QString("Theme%1Author").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->author());
+			szTmp = QString("Theme%1Application").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->application());
+			szTmp = QString("Theme%1ThemeEngineVersion").arg(iIdx);
+			f.addInfoField(szTmp,pInfo->themeEngineVersion());
+			QPixmap pixScreenshot = pInfo->smallScreenshot();
+			if(!pixScreenshot.isNull())
+			{
+				szTmp = QString("Theme%1Screenshot").arg(iIdx);
+				QByteArray * pba = new QByteArray();
+	
+				QBuffer bufferz(pba,0);
+				bufferz.open(QIODevice::WriteOnly);
+				pixScreenshot.save(&bufferz,"PNG");
+				bufferz.close();
+				f.addInfoField(szTmp,pba);
+			}
+
+			if(!f.addDirectory(pInfo->directory(),pInfo->subdirectory()))
+			{
+				szError = __tr2qs_ctx("Packaging failed","theme");
+				szError += ": ";
+				szError += f.lastError();
+				return false;
+			}
+	
+			iIdx++;
+		}
+	
+		if(!f.pack(szPackagePath))
+		{
+			szError = __tr2qs_ctx("Packaging failed","theme");
+			szError += ": ";
+			szError += f.lastError();
+			return false;
+		}
+	
+		return true;
 	}
 }
 

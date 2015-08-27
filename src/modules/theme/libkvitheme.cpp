@@ -39,6 +39,7 @@
 #include "KviFileUtils.h"
 #include "KviFileDialog.h"
 #include "KviTheme.h"
+#include "ThemeFunctions.h"
 
 #include <QFileInfo>
 #include <QMessageBox>
@@ -77,6 +78,7 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 
 	return true;
 }
+
 /*
 	@doc: theme.apply
 	@type:
@@ -86,39 +88,53 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	@short:
 		Apply a theme.
 	@syntax:
-		theme.apply <package_name:string>
+		theme.apply [-b] [-e] [-u] <theme:string>
+	@switches:
+		!sw: -e | --external
+		<theme> is an absolute directory containing a theme
+		!sw: -b | --builtin
+		<theme> is the name of a builtin theme (a subdirectory of the kvirc global themes directory)
+		!sw: -u | --user
+		<theme> is the name of an user theme (a subdirectory of the kvirc local themes directory)
 	@description:
-		Attempts to apply the theme specified by <package_name>.
+		Attempts to apply the global theme specified by <theme>.
+		If the -b switch is present then <theme> is assumed to be a name of
+		a builtin installed theme (a subdirectory of the kvirc global themes directory).
+		If the -l switch is present then <theme> is assumed to be a name of
+		an user installed theme (a subdirectory of the kvirc local themes directory).
+		If the -e switch is present then <theme> is assumed to be an absolute
+		directory containing the theme data.
+		If no switch is present then kvirc tries to determine automatically the
+		type of theme (user, builtin or external).
 */
 static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 {
-	QString szThemePackFile;
+	QString szTheme;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("package_name",KVS_PT_STRING,0,szThemePackFile)
+		KVSM_PARAMETER("theme",KVS_PT_STRING,0,szTheme)
 	KVSM_PARAMETERS_END(c)
-	KviThemeInfo * themeInfo = new KviThemeInfo();
-	if(themeInfo->load(szThemePackFile))
+
+	KviThemeInfo out;
+	KviThemeInfo::Location eLocation = KviThemeInfo::Auto;
+
+	if(c->switches()->find('b',"builtin"))
+		eLocation = KviThemeInfo::Builtin;
+	else if(c->switches()->find('e',"external"))
+		eLocation = KviThemeInfo::External;
+	else if(c->switches()->find('u',"user"))
+		eLocation = KviThemeInfo::User;
+
+	if(!KviTheme::apply(szTheme,eLocation,out))
 	{
-		themeInfo->setSubdirectory(szThemePackFile);
-		if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
-		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?","theme"),
-		&(themeInfo->name()),&(themeInfo->version())))
-		{
-			KviThemeInfo out;
-			if(!KviTheme::load(szThemePackFile,out))
-			{
-				QString szErr = out.lastError();
-				QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
-				QMessageBox::critical(0,__tr2qs_ctx("Apply theme - KVIrc","theme"),szMsg,
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-			}
-			return true;
-		}
+		QString szErr = out.lastError();
+		c->error(__tr2qs_ctx("Failed to apply theme: %Q","theme"),&szErr);
+		return false;
 	}
-	c->warning(__tr2qs_ctx("The theme package '%Q' does not exist","theme"),&szThemePackFile);
+
 	return true;
 }
+
 /*
 	@doc: theme.info
 	@type:
@@ -127,65 +143,31 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 		$theme.info
 	@short:
 		Return info about an user defined theme.
-	@syntax:
-		<themes_list:string> $theme.info(<theme_name:string>)
 	@description:
-		Returns as hash the info about an user definded theme.
-		Hash keys are: name, version, author, description.
+		Returns a hash with information about the global theme specified by <theme>.
 */
 static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 {
-	QString szThemePackFile;
+	QString szTheme;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("package_name",KVS_PT_STRING,0,szThemePackFile)
+		KVSM_PARAMETER("theme",KVS_PT_STRING,0,szTheme)
 	KVSM_PARAMETERS_END(c)
-	KviThemeInfo * themeInfo = new KviThemeInfo();
-	if(themeInfo->load(szThemePackFile))
+
+	KviKvsHash *pHash = new KviKvsHash();
+	c->returnValue()->setHash(pHash);
+
+	KviThemeInfo theme;
+	if(!theme.load(szTheme,KviThemeInfo::Auto))
 	{
-		KviKvsHash *pHash=new KviKvsHash();
-		KviKvsVariant *name=new KviKvsVariant(themeInfo->name());
-		pHash->set("name",name);
-		KviKvsVariant *version=new KviKvsVariant(themeInfo->version());
-		pHash->set("version",version);
-		KviKvsVariant *author=new KviKvsVariant(themeInfo->author());
-		pHash->set("author",author);
-		KviKvsVariant *description=new KviKvsVariant(themeInfo->description());
-		pHash->set("description",description);
-		c->returnValue()->setHash(pHash);
+		c->warning(__tr2qs_ctx("The theme package '%Q' does not exist","theme"),&szTheme);
 		return true;
 	}
-	c->warning(__tr2qs_ctx("The theme package '%Q' does not exist","theme"),&szThemePackFile);
-	return true;
-}
 
-/*
-	@doc: theme.list
-	@type:
-		function
-	@title:
-		$theme.list
-	@short:
-		Return a list of the installed themes.
-	@syntax:
-		<themes_list:string> $theme.list
-	@description:
-		Returns a comma separated string list of the KVIrc installed themes.
-*/
-static bool theme_kvs_fnc_list(KviKvsModuleFunctionCall * c)
-{
-	QString szDir;
-	g_pApp->getLocalKvircDirectory(szDir,KviApplication::Themes);
-	QDir d(szDir);
-	QStringList sl = d.entryList(QDir::Dirs);
-	QStringList szThemes;
-	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
-	{
-		if(*it == ".")continue;
-		if(*it == "..")continue;
-		szThemes.append(*it);
-	}
-	c->returnValue()->setString(szThemes.join(","));
+	pHash->set("name",new KviKvsVariant(theme.name()));
+	pHash->set("version",new KviKvsVariant(theme.version()));
+	pHash->set("author",new KviKvsVariant(theme.author()));
+	pHash->set("description",new KviKvsVariant(theme.description()));
 	return true;
 }
 
@@ -212,7 +194,6 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("file_name_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
 	KVSM_PARAMETERS_END(c)
-
 
 	KviFileUtils::adjustFilePath(szFileName);
 
@@ -273,9 +254,90 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 
 static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 {
-
 	ThemeManagementDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
+}
+
+/*
+	@doc: theme.pack
+	@type:
+		command
+	@title:
+		theme.pack
+	@short:
+		Creates a kvt package containing a set of themes
+	@syntax:
+		theme.pack <package_path> <package_name> <package_version> <package_description> <package_author> <package_image> <theme_path> [<theme_path> [<theme_path>... ]]
+	@description:
+		Creates a *.kvt package containing a set of KVIrc themes.[br]
+		<package_path> is the absolute path and file name of the package that should be saved.[br]
+		<package_name> is the visible name of the package (something like "My Theme Set").[br]
+		<package_version> is the version of the package in the form X.Y.Z.[br]
+		<package_description> is a textual description of the package.
+		<package_author> is the name of the person that is creating the package (NOT necessairly the themes contained within).
+		<package_image> is the path of an image to be used as package rappresentative image. If the package is going
+		to contain a single theme you may specify the theme's screenshot here. Pass an empty string if you
+		don't want an image to be stored in the package.
+		<theme_path> is a path to a directory containing a theme as it's exported by kvirc,
+		may be repeated more than once to pack multiple themes within a single package.
+*/
+static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
+{
+	QString szPath,szName,szVersion,szDescription,szAuthor,szImage;
+	QStringList lThemeList;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,szPath)
+		KVSM_PARAMETER("package_name",KVS_PT_NONEMPTYSTRING,0,szName)
+		KVSM_PARAMETER("package_version",KVS_PT_NONEMPTYSTRING,0,szVersion)
+		KVSM_PARAMETER("package_description",KVS_PT_STRING,0,szDescription)
+		KVSM_PARAMETER("package_author",KVS_PT_NONEMPTYSTRING,0,szAuthor)
+		KVSM_PARAMETER("package_image",KVS_PT_STRING,0,szImage)
+		KVSM_PARAMETER("theme",KVS_PT_STRINGLIST,0,lThemeList)
+	KVSM_PARAMETERS_END(c)
+
+	KviPointerList<KviThemeInfo> lThemeInfoList;
+	lThemeInfoList.setAutoDelete(true);
+
+
+	Q_FOREACH(QString szTheme,lThemeList)
+	{
+		KviThemeInfo * pInfo = new KviThemeInfo();
+		if(!pInfo->load(szTheme,KviThemeInfo::External))
+		{
+			QString szErr = pInfo->lastError();
+			c->error(__tr2qs_ctx("Failed to load theme from directory %Q: %Q","theme"),&szTheme,&szErr);
+			delete pInfo;
+			return false;
+		}
+
+		lThemeInfoList.append(pInfo);
+	}
+
+	if(lThemeInfoList.isEmpty())
+	{
+		c->error(__tr2qs_ctx("No themes specified: refusing to create an empty theme package","theme"));
+		return false;
+	}
+
+	QString szError;
+
+	if(
+			ThemeFunctions::packageThemes(
+					szPath,
+					szName,
+					szVersion,
+					szDescription,
+					szAuthor,
+					szImage,
+					lThemeInfoList,
+					szError
+				)
+		)
+		return true;
+
+	c->error(szError);
+	return false;
 }
 
 static bool theme_module_init(KviModule *m)
@@ -284,8 +346,8 @@ static bool theme_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"install",theme_kvs_cmd_install);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"apply",theme_kvs_cmd_apply);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"screenshot",theme_kvs_cmd_screenshot);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"pack",theme_kvs_cmd_pack);
 
-	KVSM_REGISTER_FUNCTION(m,"list",theme_kvs_fnc_list);
 	KVSM_REGISTER_FUNCTION(m,"info",theme_kvs_fnc_info);
 
 	QString szBuf;

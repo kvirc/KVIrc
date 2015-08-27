@@ -27,6 +27,8 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviHtmlDialog.h"
+#include "KviPointerList.h"
+#include "KviTheme.h"
 
 #include <QWidget>
 #include <QPixmap>
@@ -34,6 +36,7 @@
 namespace ThemeFunctions
 {
 	bool installThemePackage(const QString &szThemePackageFileName,QString &szError,QWidget * pDialogParent = 0);
+
 	void getThemeHtmlDescription(
 		QString &szBuffer,
 		const QString &szThemeName,
@@ -47,9 +50,20 @@ namespace ThemeFunctions
 		const QPixmap &pixScreenshot,
 		int iUniqueIndexInDocument = 0,
 		KviHtmlDialogData *hd=0
-
 	);
+
 	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame = false);
+
+	bool packageThemes(
+			const QString &szPackagePath,
+			const QString &szPackageName,
+			const QString &szPackageVersion,
+			const QString &szPackageDescription,
+			const QString &szPackageAuthor,
+			const QString &szPackageImagePath,
+			KviPointerList<KviThemeInfo> &lThemeInfo,
+			QString &szError
+		);
 }
 
 

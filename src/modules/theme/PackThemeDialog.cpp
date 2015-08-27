@@ -433,145 +433,36 @@ bool PackThemeDialog::packTheme()
 	m_szDescription = field("packageDescription").toString();
 	m_szImagePath = field("packageImagePath").toString();
 	m_szPackagePath = field("packageSavePath").toString();
-	//m_szSavePath = field("packageSavePath").toString();
 
-	//return false;
+	QString szError;
 
-	QImage pix(m_szImagePath);
-	QPixmap out;
-	if(!pix.isNull())
+	if(!
+			ThemeFunctions::packageThemes(
+					m_szPackagePath,
+					m_szName,
+					m_szVersion,
+					m_szDescription,
+					m_szAuthor,
+					m_szImagePath,
+					*m_pThemeInfoList,
+					szError
+				)
+		)
 	{
-		if((pix.width() > 300) || (pix.height() > 225))
-		{
-			out=out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
-		} else {
-			out=out.fromImage(pix);
-		}
-	} else {
-		if(!m_szImagePath.isEmpty())
-		{
-			QMessageBox::critical(this,
-				__tr2qs_ctx("Export Theme - KVIrc","theme"),
-				__tr2qs_ctx("Failed to load the selected image: please fix it","theme"),
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
-				);
-			//setCurrentPage(m_pImageSelectionPage);
-			return false;
-		}
-	}
-
-	KviPackageWriter f;
-
-	QString szTmp;
-	QDateTime date = QDateTime::currentDateTime();
-
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
-	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			break;
-		case 1:
-			szTmp = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szTmp = date.toString(Qt::SystemLocaleShortDate);
-			break;
-	}
-
-	f.addInfoField("PackageType","ThemePack");
-	f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
-	f.addInfoField("Name",m_szName);
-	f.addInfoField("Version",m_szVersion);
-	f.addInfoField("Author",m_szAuthor);
-	f.addInfoField("Description",m_szDescription);
-	f.addInfoField("Date",szTmp);
-	f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
-
-	if(!out.isNull())
-	{
-		QByteArray * pba = new QByteArray();
-		QBuffer buffer(pba,0);
-		buffer.open(QIODevice::WriteOnly);
-		out.save(&buffer,"PNG");
-		buffer.close();
-		f.addInfoField("Image",pba); // cool :) [no disk access needed]
-	}
-
-	szTmp.setNum(m_pThemeInfoList->count());
-	f.addInfoField("ThemeCount",szTmp);
-
-	int iIdx = 0;
-	for(KviThemeInfo * pInfo = m_pThemeInfoList->first(); pInfo; pInfo = m_pThemeInfoList->next())
-	{
-		szTmp = QString("Theme%1Name").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->name());
-		szTmp = QString("Theme%1Version").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->version());
-		szTmp = QString("Theme%1Description").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->description());
-		szTmp = QString("Theme%1Date").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->date());
-		szTmp = QString("Theme%1Subdirectory").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->subdirectory());
-		szTmp = QString("Theme%1Author").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->author());
-		szTmp = QString("Theme%1Application").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->application());
-		szTmp = QString("Theme%1ThemeEngineVersion").arg(iIdx);
-		f.addInfoField(szTmp,pInfo->themeEngineVersion());
-		QPixmap pixScreenshot = pInfo->smallScreenshot();
-		if(!pixScreenshot.isNull())
-		{
-			szTmp = QString("Theme%1Screenshot").arg(iIdx);
-			QByteArray * pba = new QByteArray();
-
-			QBuffer bufferz(pba,0);
-			bufferz.open(QIODevice::WriteOnly);
-			pixScreenshot.save(&bufferz,"PNG");
-			bufferz.close();
-			f.addInfoField(szTmp,pba);
-		}
-		QString szThemePath;
-		pInfo->getCompleteDirPath(szThemePath);
-		if(!f.addDirectory(szThemePath,pInfo->subdirectory()))
-		{
-			szTmp = __tr2qs_ctx("Packaging failed","theme");
-			szTmp += ": ";
-			szTmp += f.lastError();
-			QMessageBox::critical(this,
-				__tr2qs_ctx("Export Theme - KVIrc","theme"),
-				szTmp,
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
-				);
-		}
-
-		iIdx++;
-	}
-
-	if(!f.pack(m_szPackagePath))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","theme");
-		szTmp += ": ";
-		szTmp += f.lastError();
 		QMessageBox::critical(this,
-			__tr2qs_ctx("Export Theme - KVIrc","theme"),
-			szTmp,
-			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+				__tr2qs_ctx("Export Theme - KVIrc","theme"),
+				szError,
+				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 			);
-
 		return false;
 	}
 
-	//KviPackageReader r;
-	//r.unpack("/root/test.kvt","/root/unpacked_test_kvt");
-
 	QMessageBox::information(this,
-		__tr2qs_ctx("Export Theme - KVIrc","theme"),
-		__tr2qs("Package saved successfully"),
-		QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+			__tr2qs_ctx("Export Theme - KVIrc","theme"),
+			__tr2qs("Package saved successfully"),
+			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 		);
 
 	return true;
 }
+

@@ -1032,8 +1032,7 @@ namespace KviTheme
 	// that are implemented here for convenience (in saving the options)
 	bool save(KviThemeInfo &options)
 	{
-		QString szThemeDirPath;
-		options.getCompleteDirPath(szThemeDirPath);
+		QString szThemeDirPath = options.directory();
 
 		if(szThemeDirPath.isEmpty())
 		{
@@ -1049,7 +1048,6 @@ namespace KviTheme
 				return false;
 			}
 		}
-
 
 		if(!options.save(szThemeDirPath+KVI_THEMEINFO_FILE_NAME))
 		{
@@ -1157,17 +1155,17 @@ namespace KviTheme
 		return true;
 	}
 
-	bool load(const QString &szThemeDir,KviThemeInfo &buffer,bool bBuiltin)
+	bool apply(const QString &szThemeDir,KviThemeInfo::Location eLocation,KviThemeInfo &buffer)
 	{
 		//qDebug("Loading and apply theme");
-		if(!buffer.load(szThemeDir,bBuiltin))
+		if(!buffer.load(szThemeDir,eLocation))
 		{
-			qDebug("data does not exist in theme dir %s",szThemeDir.toUtf8().data());
+			qDebug("data does not exist in theme dir %s at location %d",szThemeDir.toUtf8().data(),eLocation);
 			return false; // makes sure that themedata exists too
 		}
 
-		QString szThemeDirPath;
-		buffer.getCompleteDirPath(szThemeDirPath);
+		QString szThemeDirPath = buffer.directory();
+
 		//qDebug("Ok loading from %s",szThemeDirPath.toUtf8().data());
 		// reset the current theme subdir
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
