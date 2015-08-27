@@ -1233,4 +1233,11 @@ public:
 	template class KVILIB_API KviPointerList<KviCString>;
 #endif
 
+// Provide a default implementation of kvi_compare()
+template<typename T> int kvi_compare(const T * p1,const T * p2)
+{
+	return p1 > p2; // just compare pointers
+}
+
+
 #endif //_KVI_POINTERLIST_H_

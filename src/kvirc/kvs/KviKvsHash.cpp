@@ -24,6 +24,7 @@
 
 #include "KviKvsHash.h"
 
+
 KviKvsHash::KviKvsHash()
 {
 	m_pDict = new KviPointerHashTable<QString,KviKvsVariant>(17,false);
@@ -45,6 +46,57 @@ KviKvsHash::KviKvsHash(const KviKvsHash & hash)
 KviKvsHash::~KviKvsHash()
 {
 	delete m_pDict;
+}
+
+//
+// Don't inline these short functions as they instantiate a huge template
+// which would be then placed in every single module.
+//
+// There would be also an interesting problem when the modules are unloaded.
+// KviPointerHashTable uses a KviPointerList which has a _vtable.
+// Assume you allocate a KviKvsHash inside a module and the KviPointerList
+// implementation ends up in the module's text segment. Now if you unload the
+// module and then later delete the KviKvsHash (or just cause the destruction
+// of the internal KviPointerList in some way) you'll end up calling the
+// destructor via _vtable. The _vtable will no longer be there and you'll
+// be dead :)
+//
+// It took me a whole day to figure this out.
+//
+
+void KviKvsHash::unset(const QString & szKey)
+{
+	m_pDict->remove(szKey);
+}
+
+void KviKvsHash::set(const QString & szKey, KviKvsVariant * pVal)
+{
+	m_pDict->replace(szKey,pVal);
+}
+
+KviKvsVariant * KviKvsHash::find(const QString & szKey) const
+{
+	return m_pDict->find(szKey);
+}
+
+bool KviKvsHash::isEmpty() const
+{
+	return m_pDict->isEmpty();
+}
+
+void KviKvsHash::clear()
+{
+	m_pDict->clear();
+}
+
+const KviPointerHashTable<QString,KviKvsVariant> * KviKvsHash::dict()
+{
+	return m_pDict;
+}
+
+kvs_uint_t KviKvsHash::size() const
+{
+	return m_pDict->count();
 }
 
 void KviKvsHash::appendAsString(QString & szBuffer) const

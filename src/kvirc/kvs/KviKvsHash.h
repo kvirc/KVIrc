@@ -66,15 +66,14 @@ public:
 	* \brief Destroys the array data
 	*/
 	~KviKvsHash();
-protected:
-	KviPointerHashTable<QString,KviKvsVariant> * m_pDict;
+
 public:
 	/**
 	* \brief Unsets an element from the hash
 	* \param szKey The key of the element to unset
 	* \return void
 	*/
-	void unset(const QString & szKey){ m_pDict->remove(szKey); };
+	void unset(const QString & szKey);
 
 	/**
 	* \brief Sets an element into the hash
@@ -82,14 +81,14 @@ public:
 	* \param pVal The value to set
 	* \return void
 	*/
-	void set(const QString & szKey, KviKvsVariant * pVal){ m_pDict->replace(szKey,pVal); };
+	void set(const QString & szKey, KviKvsVariant * pVal);
 
 	/**
 	* \brief Returns the element associated to the given key
 	* \param szKey The key of the element to retrieve
 	* \return KviKvsVariant *
 	*/
-	KviKvsVariant * find(const QString & szKey) const { return m_pDict->find(szKey); };
+	KviKvsVariant * find(const QString & szKey) const;
 
 	/**
 	* \brief Returns the element associated to the given key
@@ -105,15 +104,18 @@ public:
 	* \brief Returns true if the hash is empty
 	* \return bool
 	*/
-	bool isEmpty() const { return m_pDict->isEmpty(); };
+	bool isEmpty() const;
 
-	void clear(){ m_pDict->clear(); };
+	/**
+	* \brief clear the hash
+	*/
+	void clear();
 
 	/**
 	* \brief Returns the size of the hash
 	* \return kvs_uint_t
 	*/
-	kvs_uint_t size() const { return m_pDict->count(); };
+	kvs_uint_t size() const;
 
 	/**
 	* \brief Appends data to the hash converting it into a string
@@ -126,7 +128,7 @@ public:
 	* \brief Returns the internal dictionary of the hash
 	* \return const KviPointerHashTable<QString,KviKvsVariant> *
 	*/
-	const KviPointerHashTable<QString,KviKvsVariant> * dict(){ return m_pDict; };
+	const KviPointerHashTable<QString,KviKvsVariant> * dict();
 
 	/**
 	* \brief Serializes the hash to a given buffer
@@ -134,6 +136,9 @@ public:
 	* \return void
 	*/
 	void serialize(QString & szResult);
+
+private:
+	KviPointerHashTable<QString,KviKvsVariant> * m_pDict;
 };
 
 #endif // _KVI_KVS_HASH_H_

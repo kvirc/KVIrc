@@ -267,6 +267,7 @@ if(NOT WANT_DEBUG)
 else()
 	add_executable(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 endif()
+
 target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
 if(Qt5Widgets_FOUND)
@@ -280,10 +281,10 @@ if(CMAKE_HOST_SYSTEM MATCHES "FreeBSD")
 	message(STATUS "Patching for FreeBSD...")
 endif()
 
-if(WIN32)
-	# Needed for linking
-	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES ENABLE_EXPORTS ON)
+# This is needed for linking the modules (not actually used by gcc on linux... but it SHOULD be)
+set_target_properties(${KVIRC_BINARYNAME} PROPERTIES ENABLE_EXPORTS ON)
 
+if(WIN32)
 	# We need this defined when mingw will compile moc files
 	add_definitions(-D__KVIRC__)
 endif()

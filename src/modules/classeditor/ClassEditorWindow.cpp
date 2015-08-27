@@ -1118,6 +1118,7 @@ void ClassEditorWidget::exportSelectionInSinglesFiles(KviPointerList<ClassEditor
 			m_szDir,
 			__tr2qs_ctx("Choose a Directory - KVIrc","editor"),
 			m_szDir,
+			QString(),
 			false,
 			true,
 			this
