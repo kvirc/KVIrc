@@ -402,7 +402,6 @@ namespace ThemeFunctions
 			QString &szError
 		)
 	{
-
 		if(szPackagePath.isEmpty())
 		{
 			szError = __tr2qs_ctx("Invalid empty package path","theme");
@@ -463,6 +462,20 @@ namespace ThemeFunctions
 		int iIdx = 0;
 		for(KviThemeInfo * pInfo = lThemeInfoList.first();pInfo;pInfo = lThemeInfoList.next())
 		{
+			if(pInfo->name().isEmpty())
+			{
+				szError = __tr2qs_ctx("Invalid theme name","theme");
+				return false;
+			}
+			if(pInfo->version().isEmpty())
+			{
+				szError = __tr2qs_ctx("Invalid theme version","theme");
+				return false;
+			}
+		
+			QString szSubdir = pInfo->name() + QString("-") + pInfo->version();
+			szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"),"_");
+		
 			szTmp = QString("Theme%1Name").arg(iIdx);
 			f.addInfoField(szTmp,pInfo->name());
 			szTmp = QString("Theme%1Version").arg(iIdx);
@@ -472,7 +485,7 @@ namespace ThemeFunctions
 			szTmp = QString("Theme%1Date").arg(iIdx);
 			f.addInfoField(szTmp,pInfo->date());
 			szTmp = QString("Theme%1Subdirectory").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->subdirectory());
+			f.addInfoField(szTmp,szSubdir);
 			szTmp = QString("Theme%1Author").arg(iIdx);
 			f.addInfoField(szTmp,pInfo->author());
 			szTmp = QString("Theme%1Application").arg(iIdx);
@@ -492,7 +505,7 @@ namespace ThemeFunctions
 				f.addInfoField(szTmp,pba);
 			}
 
-			if(!f.addDirectory(pInfo->directory(),pInfo->subdirectory()))
+			if(!f.addDirectory(pInfo->directory(),szSubdir))
 			{
 				szError = __tr2qs_ctx("Packaging failed","theme");
 				szError += ": ";

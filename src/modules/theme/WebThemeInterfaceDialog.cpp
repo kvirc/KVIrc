@@ -65,9 +65,12 @@ bool WebThemeInterfaceDialog::installPackage(const QString &szPath,QString &szEr
 
 bool WebThemeInterfaceDialog::packageIsInstalled(const QString &szId,const QString &szVersion)
 {
+	QString szSubdir = szId + QString("-") + szVersion;
+	szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"),"_");
+
 	return \
-			KviFileUtils::fileExists(m_szGlobalThemesPath+szId+"-"+szVersion) || \
-			KviFileUtils::fileExists(m_szLocalThemesPath+szId+"-"+szVersion);
+			KviFileUtils::fileExists(m_szGlobalThemesPath+szSubdir) || \
+			KviFileUtils::fileExists(m_szLocalThemesPath+szSubdir);
 }
 
 

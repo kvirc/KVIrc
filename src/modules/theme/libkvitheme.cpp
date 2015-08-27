@@ -25,6 +25,7 @@
 #include "ThemeManagementDialog.h"
 #include "ThemeFunctions.h"
 
+#include "KviKvsArrayCast.h"
 #include "KviMessageBox.h"
 #include "KviModule.h"
 #include "KviLocale.h"
@@ -267,7 +268,7 @@ static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 	@short:
 		Creates a kvt package containing a set of themes
 	@syntax:
-		theme.pack <package_path> <package_name> <package_version> <package_description> <package_author> <package_image> <theme_path> [<theme_path> [<theme_path>... ]]
+		theme.pack <package_path> <package_name> <package_version> <package_description> <package_author> <package_image> <themes>
 	@description:
 		Creates a *.kvt package containing a set of KVIrc themes.[br]
 		<package_path> is the absolute path and file name of the package that should be saved.[br]
@@ -278,13 +279,14 @@ static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 		<package_image> is the path of an image to be used as package rappresentative image. If the package is going
 		to contain a single theme you may specify the theme's screenshot here. Pass an empty string if you
 		don't want an image to be stored in the package.
-		<theme_path> is a path to a directory containing a theme as it's exported by kvirc,
-		may be repeated more than once to pack multiple themes within a single package.
+		<theme> is a either a single path to a directory containing a theme as it's exported by kvirc,
+		or an array of such paths.
 */
 static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 {
 	QString szPath,szName,szVersion,szDescription,szAuthor,szImage;
-	QStringList lThemeList;
+
+	KviKvsArrayCast aCast;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,szPath)
@@ -293,8 +295,30 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("package_description",KVS_PT_STRING,0,szDescription)
 		KVSM_PARAMETER("package_author",KVS_PT_NONEMPTYSTRING,0,szAuthor)
 		KVSM_PARAMETER("package_image",KVS_PT_STRING,0,szImage)
-		KVSM_PARAMETER("theme",KVS_PT_STRINGLIST,0,lThemeList)
+		KVSM_PARAMETER("theme",KVS_PT_ARRAYCAST,0,aCast)
 	KVSM_PARAMETERS_END(c)
+
+	KviKvsArray * pArray = aCast.array();
+	if((!pArray) || (pArray->size() < 1))
+	{
+		c->error(__tr2qs_ctx("No themes specified","theme"));
+		return false;
+	}
+
+	kvs_uint_t s = pArray->size();
+	QStringList lThemeList;
+	
+	for(kvs_uint_t i=0;i<s;i++)
+	{
+		KviKvsVariant * v = pArray->at(i);
+		if(!v)
+			continue; // ?
+		QString szVal;
+		v->asString(szVal);
+		if(szVal.isEmpty())
+			continue;
+		lThemeList.append(szVal);
+	}
 
 	KviPointerList<KviThemeInfo> lThemeInfoList;
 	lThemeInfoList.setAutoDelete(true);

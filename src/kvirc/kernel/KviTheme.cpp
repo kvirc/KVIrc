@@ -68,7 +68,7 @@ void KviThemeInfo::setDirectoryAndLocation(const QString &szDirectory,Location e
 				} else {
 					m_eLocation = External;
 					m_szDirectory = szDirectory;
-					m_szSubdirectory = KviFileUtils::extractFileName(szDirectory);
+					m_szSubdirectory = KviFileUtils::extractFileName(szDirectory,false);
 				}
 			}
 		break;
@@ -86,7 +86,7 @@ void KviThemeInfo::setDirectoryAndLocation(const QString &szDirectory,Location e
 		{
 			m_eLocation = External;
 			m_szDirectory = szDirectory;
-			m_szSubdirectory = KviFileUtils::extractFileName(szDirectory);
+			m_szSubdirectory = KviFileUtils::extractFileName(szDirectory,false);
 		}
 		break;
 	}

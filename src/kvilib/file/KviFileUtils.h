@@ -186,10 +186,16 @@ namespace KviFileUtils
 
 	/**
 	* \brief Extracts the filename from a complete path (strips leading path)
+	*
+	* Extracts the filename from a complete path (strips leading path).
+	* If szFileNameWithPath ends with a trailing slash/backslash then if bAllowEmpty is set
+	* to true then the name is considered to be empty, if bAllowEmpty is set to false
+	* then the trailing slash/backslash is stripped.
+	*
 	* \param szFileNameWithPath The complete path to the file
 	* \return QString
 	*/
-	KVILIB_API QString extractFileName(const QString & szFileNameWithPath);
+	KVILIB_API QString extractFileName(const QString & szFileNameWithPath,bool bAllowEmpty = true);
 
 	/**
 	* \brief Extracts the filename from a complete path (strips leading path)

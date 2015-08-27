@@ -355,8 +355,13 @@ namespace KviFileUtils
 		return readFile(szPath,szBuffer,uMaxSize);
 	}
 
-	QString extractFileName(const QString & szFileNameWithPath)
+	QString extractFileName(const QString & szFileNameWithPath,bool bAllowEmpty)
 	{
+		if(!bAllowEmpty)
+		{
+			if(szFileNameWithPath.endsWith(KVI_PATH_SEPARATOR))
+				return QFileInfo(szFileNameWithPath.left(szFileNameWithPath.length() - 1)).fileName();
+		}
 		return QFileInfo(szFileNameWithPath).fileName();
 	}
 

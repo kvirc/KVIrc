@@ -249,10 +249,11 @@ bool SaveThemeDialog::saveTheme()
 	sto.setVersion(m_pThemeVersionEdit->text());
 	sto.setApplication("KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
-	if(sto.version().isEmpty())sto.setVersion("1.0.0");
+	if(sto.version().isEmpty())
+		sto.setVersion("1.0.0");
 
 	QString szSubdir = sto.name() + QString("-") + sto.version();
-	szSubdir.replace(QRegExp("[ \\\\/:][ \\\\/:]*"),"_");
+	szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"),"_");
 	sto.setDirectoryAndLocation(szSubdir,KviThemeInfo::User);
 
 	QString szAbsDir = sto.directory();
@@ -291,3 +292,4 @@ bool SaveThemeDialog::saveTheme()
 
 	return true;
 }
+
