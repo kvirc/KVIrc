@@ -11,7 +11,7 @@ filelist = []
 print "Step 1:"
 print "Searching files ",
 
-for root, dirs, files in os.walk("/path/to/your/svn/kvirc/src/"):
+for root, dirs, files in os.walk("/src/pragma/kvirc-git/KVIrc/"):
 	for f in files:
 		r = re.compile("(.*)\.(h|cpp|c)$")
 		if r.match(f):

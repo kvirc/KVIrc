@@ -42,17 +42,9 @@ $g_bodybgcolor="#FFFFFF";
 $g_bodytextcolor="#000000";
 $g_bodylinkcolor="#000000";
 $g_tablebgcolor="#B4B4C8";
-#$g_titletablebgcolor="#999999";
-$g_titletextcolor="#31507B";
-#$g_titletablebgcolor="#68838B"; #LightBlue4
-$g_titletablebgcolor="#BEBEF0";
-#$g_subtitletablebgcolor="#C5C5C5";
-$g_subtitletablebgcolor="#D2D2D2";
 $g_internaltablecolor="#D5D5D5";
 $g_classfnctablecolor="#D5D5D5";
 $g_classfncbodytablecolor="#E0E0E0";
-$g_switchbodytablecolor="#D5D5D5";
-$g_switchnametablecolor="#E0E0E0";
 $g_bodytablebgcolor="#EAEAEA";
 $g_commentcolor="#207500";
 $g_fileextension=".html";
@@ -174,13 +166,203 @@ sub print_header
 
 	print $g_filehandle "<style type=\"text/css\">\n";
 	print $g_filehandle "body {\n";
-	print $g_filehandle " font-size: 11pt;\n";
+	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle " margin-left: 8px;\n";
 	print $g_filehandle " margin-right: 8px;\n";
 	print $g_filehandle " margin-top: 6px;\n";
 	print $g_filehandle " margin-bottom: 6px;\n";
-	print $g_filehandle " font-family:Helvetica,Arial,Verdana;\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle "}\n";
+
+	print $g_filehandle "table, td, tr {\n";
+	print $g_filehandle " font-size: 10pt;\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
+	print $g_filehandle " color: #3c3c3c;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle "td {\n";
+	print $g_filehandle " padding: 6px;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle "a:link {\n";
+	print $g_filehandle " text-decoration: none;\n";
+	print $g_filehandle " color: #2883e2;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle "a:visited {\n";
+	print $g_filehandle " text-decoration: none;\n";
+	print $g_filehandle " color: #6856cc;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle "a:hover {\n";
+	print $g_filehandle " text-decoration: underline;\n";
+	print $g_filehandle " color: #1873d2;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle "a:active {\n";
+	print $g_filehandle " text-decoration: underline;\n";
+	print $g_filehandle " color: #1873d2;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".title-table-cell {\n";
+	print $g_filehandle " border-top-left-radius: 5px;\n";
+	print $g_filehandle " border-top-right-radius: 5px;\n";
+	print $g_filehandle " background-color: #BEBEF0;\n";
+	print $g_filehandle " background: linear-gradient(#B5E1FC,#4E94D2);\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".title-text {\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
+	print $g_filehandle " font-size: 18pt;\n";
+	print $g_filehandle " font-weight: bold;\n";
+	print $g_filehandle " padding-bottom: 3px;\n";
+	print $g_filehandle " color: #ffffff;\n";
+	print $g_filehandle " text-shadow: 2px 2px 2px rgba(88,88,88,1);\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".title-secondary-text {\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
+	print $g_filehandle " font-size: 11pt;\n";
+	print $g_filehandle " padding-top: 3px;\n";
+	print $g_filehandle " color: #d0d0d0;\n";
+	print $g_filehandle " text-shadow: 1px 1px 1px rgba(88,88,88,1);\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".subtitle-table-cell {\n";
+	print $g_filehandle " background-color: #cccccc;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".subtitle-text {\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
+	print $g_filehandle " font-size: 11pt;\n";
+	print $g_filehandle " color: #000000;\n";
+	print $g_filehandle " text-shadow: 1px 1px 1px rgba(110,110,110,1);\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".subsubtitle-table-cell {\n";
+	print $g_filehandle " background-color: #dadada;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".subsubtitle-text {\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
+	print $g_filehandle " font-size: 10pt;\n";
+	print $g_filehandle " color: #4e4e4e;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".syntax-text {\n";
+	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
+	print $g_filehandle " font-size: 10pt;\n";
+	print $g_filehandle " font-weight: bold;\n";
+	print $g_filehandle " white-space: pre;\n";
+	print $g_filehandle " color: #800000;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-box {\n";
+	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
+	print $g_filehandle " font-size: 10pt;\n";
+	print $g_filehandle " white-space: pre;\n";
+	print $g_filehandle " background-color: #f5f5f5;\n";
+	print $g_filehandle " border: 1px solid #d5d5d5;\n";
+	print $g_filehandle " color: #800000;\n";
+	print $g_filehandle " padding: 10px;\n";
+	print $g_filehandle " margin-top: 6px;\n";
+	print $g_filehandle " margin-bottom: 6px;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-box a:link {\n";
+	print $g_filehandle " color: #600030;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-box a:visited {\n";
+	print $g_filehandle " color: #600030;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-box a:hover {\n";
+	print $g_filehandle " color: #ff0020;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-box a:active {\n";
+	print $g_filehandle " color: #ff0020;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text a:link {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text a:visited {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text a:hover {\n";
+	print $g_filehandle " color: #376A47;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text a:active {\n";
+	print $g_filehandle " color: #376A47;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-paren {\n";
+	print $g_filehandle " color: #8A7000;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-bracket {\n";
+	print $g_filehandle " color: #9C7914;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-oper {\n";
+	print $g_filehandle " color: #9C7914;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".example-variable {\n";
+	print $g_filehandle " color: #AB6332;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text .example-variable {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text .example-oper {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text .example-paren {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".comment-text .example-bracket {\n";
+	print $g_filehandle " color: #578A57;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".switch-table {\n";
+	print $g_filehandle " width: 100%;\n";
+	print $g_filehandle " border-collapse: collapse;\n";
+	#print $g_filehandle " border: 1px solid #d5d5d5;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".switch-title-table-cell {\n";
+	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
+	print $g_filehandle " font-size: 10pt;\n";
+	print $g_filehandle " color: #670000;\n";
+	print $g_filehandle " background-color: #e0e0e0;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".switch-body-table-cell {\n";
+	#print $g_filehandle " background-color: #e0e0e0;\n";
+	print $g_filehandle "}\n";
+
+	print $g_filehandle ".footer {\n";
+	print $g_filehandle " border-top: 1px solid #a2a2a2;\n";
+	print $g_filehandle " color: #a2a2a2;\n";
+	print $g_filehandle " margin-top: 8px;\n";
+	print $g_filehandle " padding-top: 4px;\n";
+	print $g_filehandle " font-style: italic;\n";
+	print $g_filehandle " font-size: 8pt;\n";
+	print $g_filehandle "}\n";
+
 
 	print $g_filehandle "</style>\n";
 	print $g_filehandle "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" >\n";
@@ -201,14 +383,14 @@ sub print_header
 
 sub print_footer
 {
-	print $g_filehandle "<hr>KVIrc $g_version Documentation<br>Generated by $g_currentuser at $g_currenttime\n";
+	print $g_filehandle "<div class='footer'>KVIrc $g_version Documentation - generated by $g_currentuser at $g_currenttime</div>\n";
 	print $g_filehandle "</body>\n";
 	print $g_filehandle "</html>\n";
 }
 
 sub print_tablestart
 {
-	print $g_filehandle "<table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\">\n";
+	print $g_filehandle "<table width=\"100%\" cellpadding=\"3\" cellspacing=\"0\" border=\"0\">\n";
 	#print $g_filehandle "<tr><td bgcolor=\"$g_tablebgcolor\">\n";
 }
 
@@ -220,38 +402,26 @@ sub print_tableend
 
 sub print_title
 {
-	print $g_filehandle "  <tr bgcolor=\"$g_titletablebgcolor\">\n";
-	print $g_filehandle "    <td>\n";
-	print $g_filehandle "      <font color=\"$g_titletextcolor\">\n";
-
-	print $g_filehandle "      <h1>$_[0]</h1>\n";
+	print $g_filehandle "  <tr>\n";
+	print $g_filehandle "    <td class='title-table-cell'>\n";
+	print $g_filehandle "      <div class='title-text'>$_[0]</div>";
 	if($_[1] ne "")
 	{
-		print $g_filehandle "$_[1]\n";
-	} else {
-		print $g_filehandle "\n";
+		print $g_filehandle "      <div class='title-secondary-text'>$_[1]</div>";
 	}
-
-	print $g_filehandle "      </font>\n";
 	print $g_filehandle "    </td>\n";
 	print $g_filehandle "  </tr>\n";
 }
 
 sub print_twocolumntitle
 {
-	print $g_filehandle "  <tr bgcolor=\"$g_titletablebgcolor\">\n";
-	print $g_filehandle "    <td colspan=\"2\">\n";
-	print $g_filehandle "      <font color=\"$g_titletextcolor\">\n";
-
-	print $g_filehandle "      <h1>$_[0]</h1>\n";
+	print $g_filehandle "  <tr>\n";
+	print $g_filehandle "    <td colspan='2' class='title-table-cell'>\n";
+	print $g_filehandle "      <div class='title-text'>$_[0]</div>";
 	if($_[1] ne "")
 	{
-		print $g_filehandle "$_[1]\n";
-	} else {
-		print $g_filehandle "\n";
+		print $g_filehandle "      <div class='title-secondary-text'>$_[1]</div>";
 	}
-
-	print $g_filehandle "      </font>\n";
 	print $g_filehandle "    </td>\n";
 	print $g_filehandle "  </tr>\n";
 }
@@ -259,15 +429,15 @@ sub print_twocolumntitle
 
 sub print_subtitle
 {
-	print $g_filehandle "  <tr bgcolor=\"$g_subtitletablebgcolor\">\n";
-	print $g_filehandle "    <td><b>$_[0]</b></td>\n";
+	print $g_filehandle "  <tr>\n";
+	print $g_filehandle "    <td class='subtitle-table-cell'><div class='subtitle-text'>$_[0]</div></td>\n";
 	print $g_filehandle "  </tr>\n";
 }
 
 sub print_twocolumnsubtitle
 {
-	print $g_filehandle "  <tr bgcolor=\"$g_subtitletablebgcolor\">\n";
-	print $g_filehandle "    <td colspan=\"2\"><b>$_[0]</b></td>\n";
+	print $g_filehandle "  <tr>\n";
+	print $g_filehandle "    <td colspan='2' class='subtitle-table-cell'><div class='subtitle-text'>$_[0]</div></td>\n";
 	print $g_filehandle "  </tr>\n";
 }
 
@@ -416,7 +586,7 @@ sub extract_keyterms
 								$_ =~ s/^$tabblock//g;
 							}
 
-							process_body_line($_);
+							process_body_line($_,0);
 
 							$partbody="$partbody$_";
 						}
@@ -611,31 +781,50 @@ sub process_kvs_syntax
 }
 
 
-
-
 sub process_body_line
 {
-	$_[0] =~ s/	/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
+	my($bInExample);
+	
+	$bInExample = $_[1];
+
+	# Kill plain text tags
 	$_[0] =~ s/\</\&lt\;/g;
 	$_[0] =~ s/\>/\&gt\;/g;
+
+	if($bInExample)
+	{
+		# Additional processing for examples
+		if($_[0] =~ /^[	 ]*#.*/)
+		{
+			$_[0] =~ s/^(.*)(#[^\"]*)/\1\<span class=\"comment-text\">\2\<\/span\>/g;
+		} else {
+			$_[0] =~ s/([\(\)]+)/\<span class=\"example-paren\">\1\<\/span\>/g;
+			$_[0] =~ s/([\{\}]+)/\<span class=\"example-bracket\">\1\<\/span\>/g;
+			$_[0] =~ s/(%[a-zA-Z0-9_\.]+)/\<span class=\"example-variable\">\1\<\/span\>/g;
+			# Too hard to fix these
+			#$_[0] =~ s/([ ][\.\+\-\*\=]+[ ]*)/\<span class=\"example-oper\">\1\<\/span\>/g;
+			#$_[0] =~ s/(\&gt\;)/\<span class=\"example-oper\">\1\<\/span\>/g;
+			#$_[0] =~ s/(\&lt\;)/\<span class=\"example-oper\">\1\<\/span\>/g;
+		}
+	}
+
+	$_[0] =~ s/^				/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
+	$_[0] =~ s/^			/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
+	$_[0] =~ s/^		/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
+	$_[0] =~ s/^	/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
+
 	$_[0] =~ s/\[br\]/\<br\>/g;
 	$_[0] =~ s/\[b\]/\<b\>/g;
 	$_[0] =~ s/\[p\]/\<p\>/g;
 	$_[0] =~ s/\[\/p\]/\<\/p\>/g;
 	$_[0] =~ s/\[\/b\]/\<\/b\>/g;
 	# [big][/big] is an alias to [title][/title]
-	$_[0] =~ s/\[big\]/\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"#A7D3DB\"\>\<div style=\"font-size:16pt;font-weight:800;\"\>/g;
+	$_[0] =~ s/\[big\]/\<\/td\>\<\/tr\>\<tr\>\<td class=\"subtitle-table-cell\"\>\<div class=\"subtitle-text\"\>/g;
 	$_[0] =~ s/\[\/big\]/\<\/div\>\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"$g_bodytablebgcolor\"\>/g;
-#	$_[0] =~ s/\[title\]/\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"#A7D3DB\"\>\<div style=\"font-size:16pt;font-weight:800;\"\>/g;
-#	$_[0] =~ s/\[\/title\]/\<\/div\>\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"$g_bodytablebgcolor\"\>/g;
-	$_[0] =~ s/\[title\]/\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"#A7D3DB\"\>\<div style=\"font-size:16pt;font-weight:800;\"\>/g;
+	$_[0] =~ s/\[title\]/\<\/td\>\<\/tr\>\<tr\>\<td class=\"subtitle-table-cell\"\>\<div class=\"subtitle-text\"\>/g;
 	$_[0] =~ s/\[\/title\]/\<\/div\>\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"$g_bodytablebgcolor\"\>/g;
-#	$_[0] =~ s/\[title\]/\<table width="100%" border="0" cellpadding="1" cellspacing="0" bgcolor=\"#80B3BB\"\>\<tr\>\<td\>\<table align=\"left\" width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor=\"#A7D3DB\"\>\<tr\>\<td\>\<div style=\"font-size:16pt;font-weight:800;\"\>/g;
-#	$_[0] =~ s/\[\/title\]/\<\/div\>\<\/td\>\<\/tr\>\<\/table\>\<\/td\>\<\/tr\>\<\/table\>/g;
-	$_[0] =~ s/\[subtitle\]/\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"#D6E0E8\"\>\<div style=\"font-size:13pt;font-weight:800;\"\>/g;
+	$_[0] =~ s/\[subtitle\]/\<\/td\>\<\/tr\>\<tr\>\<td class=\"subsubtitle-table-cell\"\>\<div class=\"subsubtitle-text\"\>/g;
 	$_[0] =~ s/\[\/subtitle\]/\<\/div\>\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"$g_bodytablebgcolor\"\>/g;
-#	$_[0] =~ s/\[subtitle\]/\<table width="100%" border="0" cellpadding="1" cellspacing="0" bgcolor=\"#A6C0C8\"\>\<tr\>\<td\>\<table align=\"left\" width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor=\"#D6E0E8\"\>\<tr\>\<td\>\<div style=\"font-size:13pt;font-weight:800;\"\>/g;
-#	$_[0] =~ s/\[\/subtitle\]/\<\/div\>\<\/td\>\<\/tr\>\<\/table\>\<\/td\>\<\/tr\>\<\/table\>/g;
 	$_[0] =~ s/\[pre\]/\<pre\>/g;
 	$_[0] =~ s/\[\/pre\]/\<\/pre\>/g;
 	$_[0] =~ s/\[center\]/\<center\>/g;
@@ -652,12 +841,10 @@ sub process_body_line
 	$_[0] =~ s/\[\/tr\]/\<\/tr\>/g;
 	$_[0] =~ s/\[td\]/\<td\>/g;
 	$_[0] =~ s/\[\/td\]/\<\/td\>/g;
-#	$_[0] =~ s/\[example\][ 	\n]*/<p><table width=\"100%\" cellpadding=\"1\" cellspacing=\"0\" border=\"0\" bgcolor=\"#D5D5D5\"><tr><td><table align=\"left\" width=\"100%\" cellpadding=\"3\" cellspacing=\"0\" border=\"0\" bgcolor=\"#F5F5F5\">\<tr\>\<td\>\<pre\>\<code\>\<font color=\"#FF0000\"\>/g;
-#	$_[0] =~ s/\[\/example\]/<\/font><\/code><\/pre><\/td><\/tr><\/table><\/td><\/tr><\/table><\/p>/g;
-	$_[0] =~ s/\[example\][ 	\n]*/<p><table width=\"100%\" cellpadding=\"3\" cellspacing=\"1\" border=\"0\" bgcolor=\"#D5D5D5\">\<tr\>\<td bgcolor=\"#F5F5F5\"\>\<pre\>\<code\>\<font color=\"#FF0000\"\>/g;
-	$_[0] =~ s/\[\/example\]/<\/font><\/code><\/pre><\/td><\/tr><\/table><\/p>/g;
-	$_[0] =~ s/\[comment\]/\<font color=\"$g_commentcolor\"\>/g;
-	$_[0] =~ s/\[\/comment\]/\<\/font\>/g;
+	$_[0] =~ s/\[example\][ 	\n]*/<div class="example-box">/g;
+	$_[0] =~ s/\[\/example\]/<\/div>/g;
+	$_[0] =~ s/\[comment\]/<span class="comment-text">/g;
+	$_[0] =~ s/\[\/comment\]/<\/span>/g;
 
 	# The doc tag needs to include '$(*)' due to the expressioneval article
 	$_[0] =~ s/\[doc\]([a-zA-Z0-9_\$*\(\)]*)\[\/doc\]/\<a href=\"doc_\L\1$g_fileextension">\1\<\/a\>/g;
@@ -668,7 +855,7 @@ sub process_body_line
 	$_[0] =~ s/\[fnc\]\$([a-zA-Z0-9_\.]*)\[\/fnc\]/\<a href=\"fnc_\L\1$g_fileextension">\$\1\<\/a\>/g;
 	$_[0] =~ s/\[fnc\]\$([a-zA-Z0-9_\.]*)\(\)\[\/fnc\]/\<a href=\"fnc_\L\1$g_fileextension">\$\1()\<\/a\>/g;
 	$_[0] =~ s/\[fnc\]([a-zA-Z0-9_\.]*)\[\/fnc\]/\<a href=\"fnc_\L\1$g_fileextension">\$\1\<\/a\>/g;
-	$_[0] =~ s/\[fnc:\$([a-zA-Z0-9_\.]*)\]\$([a-zA-Z0-9_\-\&\;\. ]*)\[\/fnc\]/\<a href=\"fnc_\L\1$g_fileextension"\>\$\2\<\/a\>/g;
+	$_[0] =~ s/\[fnc:\$([a-zA-Z0-9_\.]*)\]\$([\$a-zA-Z0-9_\-\&\;\. ]*)\[\/fnc\]/\<a href=\"fnc_\L\1$g_fileextension"\>\$\2\<\/a\>/g;
 	$_[0] =~ s/\[event\]\$([a-zA-Z0-9_]*)\[\/event\]/\<a href=\"event_\L\1$g_fileextension">\$\1\<\/a\>/g;
 	$_[0] =~ s/\[event:([a-zA-Z0-9_]*)\]([a-zA-Z0-9_]*)\[\/event\]/\<a href=\"event_\L\1$g_fileextension">\2\<\/a\>/g;
 	$_[0] =~ s/\[class\]([a-zA-Z0-9_]*)\[\/class\]/\<a href=\"class_\L\1$g_fileextension">\1\<\/a\>/g;
@@ -685,7 +872,10 @@ sub process_body_line
 	$_[0] =~ s/\[\/anchor\]/\<\/a\>/g;
 	$_[0] =~ s/\[note\][ 	\n]*/<p>\<table width=\"100%\"\ cellpadding=\"2\">\<tr\>\<td\ bgcolor=\"$g_notetablebgcolor\">\<font color=\"$g_notetextcolor\" size=\"-1\"\>/g;
 	$_[0] =~ s/\[\/note\]/\<\/font\>\<\/td\>\<\/tr\>\<\/table\><\/p>/g;
+
+
 }
+
 
 sub process_file
 {
@@ -696,6 +886,8 @@ sub process_file
 	my($tabblock);
 	my($tmp);
 	my($type);
+	my($iExampleState);
+	my($szExampleTabBlock);
 
 
 	if(!open(CPPFILE,"$_[0]"))
@@ -703,6 +895,8 @@ sub process_file
 		return;
 	}
 	# Process the entire file
+
+	$iExampleState = 0;
 
 	while(<CPPFILE>)
 	{
@@ -750,6 +944,7 @@ sub process_file
 						$part=~ s/\n//g;
 						# Clear the body (begin)
 						$partbody="";
+						$iExampleState = 0;
 					} else {
 						# Somewhere in a part body
 						if(($_ ne "") && ($_ ne "\n"))
@@ -769,8 +964,44 @@ sub process_file
 								# If we have the initial tabblock , remove it from the line (remove indentation)
 								$_ =~ s/^$tabblock//g;
 							}
+							
+							# Process example code blocks
+							if($iExampleState eq 0)
+							{
+								if(($_ =~ /\[example\]*/) && (!($_ =~ /\[\/example\]*/)))
+								{
+									$iExampleState = 1;
+									$szExampleTabBlock = "";
+								}
+							} else {
+								if($szExampleTabBlock ne "")
+								{
+									# If we have the initial tabblock , remove it from the line (remove indentation)
+									$_ =~ s/^$szExampleTabBlock//g;
+								}
 
-							process_body_line($_);
+								if(($_ =~ /\[\/example\]*/))
+								{
+									$iExampleState = 0;
+								} else {
+									if($iExampleState eq 1)
+									{
+										$iExampleState = 2;
+										$szExampleTabBlock = "$_";
+										$szExampleTabBlock =~ s/^([	]*).*/\1/g;
+										$szExampleTabBlock =~ s/\n//g;
+
+										if($szExampleTabBlock ne "")
+										{
+											# If we have the initial tabblock , remove it from the line (remove indentation)
+											$_ =~ s/^$szExampleTabBlock//g;
+										}
+									}
+								}
+							}
+
+							process_body_line($_,$iExampleState);
+							
 
 							$partbody="$partbody$_";
 						}
@@ -794,6 +1025,7 @@ sub process_file
 					$parts{'usage'} = build_usage_from_kvs_syntax($parts{'syntax'})
 				}
 			}
+
 			make_syntax($parts{'usage'});
 			make_syntax($parts{'syntax'});
 			make_single_line($parts{'parameters'});
@@ -829,18 +1061,21 @@ sub process_file
 			#print "$tmp, $g_shorts{$tmp}\n";
 			$g_shortsIdx{$type}++;
 
-			if($parts{'body'} ne "")
-			{
-				substitute_keyterms($parts{'body'},"$docfilename$g_fileextension");
-			}
-			if($parts{'description'} ne "")
-			{
-				substitute_keyterms($parts{'description'},"$docfilename$g_fileextension");
-			}
-			if($parts{'switches'} ne "")
-			{
-				substitute_keyterms($parts{'switches'},"$docfilename$g_fileextension");
-			}
+			# Keyterms substitution is confusing. Better to rely on manual linking only.
+
+			#if($parts{'body'} ne "")
+			#{
+			#	substitute_keyterms($parts{'body'},"$docfilename$g_fileextension");
+			#}
+			#if($parts{'description'} ne "")
+			#{
+			#	substitute_keyterms($parts{'description'},"$docfilename$g_fileextension");
+			#}
+			#if($parts{'switches'} ne "")
+			#{
+			#	substitute_keyterms($parts{'switches'},"$docfilename$g_fileextension");
+			#}
+			
 			use File::Path;
 			mkpath("$g_directory");
 			if(open(DOCFILE,">$g_directory/$docfilename$g_fileextension"))
@@ -851,10 +1086,18 @@ sub process_file
 				print_tablestart();
 
 				print_title($parts{'title'},$parts{'short'});
-				if($parts{'usage'} ne "")
+
+				if($parts{'syntax'} ne "")
 				{
-					print_entry("Usage","<font color=\"$g_syntaxcolor\"><pre><code>$parts{'usage'}</code></pre></font>");
+					process_kvs_syntax($parts{'syntax'});
+					print_entry("Usage","<div class='syntax-text'>$parts{'syntax'}</div>");
+				} else {
+					if($parts{'usage'} ne "")
+					{
+						print_entry("Usage","<div class='syntax-text'>$parts{'usage'}</div>");
+					}
 				}
+				
 				if($parts{'parameters'} ne "")
 				{
 					print_entry("Parameters","<font color=\"$g_syntaxcolor\"><pre><code>$parts{'parameters'}</code></pre></font>");
@@ -871,7 +1114,7 @@ sub process_file
 
 					print DOCFILE "  <tr bgcolor=\"$g_bodytablebgcolor\">\n";
 					print DOCFILE "    <td>\n";
-					print DOCFILE "      <table bgcolor=\"$g_switchbodytablecolor\">\n";
+					print DOCFILE "      <table class=\"switch-table\">\n";
 
 					@lines = split("\n","$parts{'switches'}");
 					$swbody = "";
@@ -881,7 +1124,7 @@ sub process_file
 						{
 							if("$swbody" ne "")
 							{
-								print DOCFILE "<tr><td>$swbody</td></tr>\n";
+								print DOCFILE "<tr><td class=\"switch-body-table-cell\">$swbody</td></tr>\n";
 								$swbody = "";
 							}
 							$_ =~ s/!sw:[ 	]*//g;
@@ -890,7 +1133,7 @@ sub process_file
 							$tmp = $_;
 							$tmp =~ s/\(.*\)//g;
 							$tmp =~ s/\$//g;
-							print DOCFILE "<tr bgcolor=\"$g_switchnametablecolor\"><td><b>$_</b></td></tr>\n";
+							print DOCFILE "<tr><td class=\"switch-title-table-cell\">$_</td></tr>\n";
 						} else {
 							if($swbody ne "")
 							{
@@ -1002,12 +1245,6 @@ sub process_file
 					print DOCFILE "      </table>\n";
 					print DOCFILE "    </td>\n";
 					print DOCFILE "  </tr>\n";
-				}
-
-				if($parts{'syntax'} ne "")
-				{
-					process_kvs_syntax($parts{'syntax'});
-					print_entry("Syntax Specification","<font color=\"$g_kvssyntaxcolor\"><pre><code>$parts{'syntax'}</code></pre></font>");
 				}
 
 				print_entry("Examples","$parts{'examples'}");
