@@ -41,7 +41,7 @@
 #include <QByteArray>
 #include <QBuffer>
 #include <QDateTime>
-
+#include <QLocale>
 
 //#include <qmime.h>
 
