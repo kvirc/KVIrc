@@ -36,9 +36,10 @@ OptionsWidget_tools::OptionsWidget_tools(QWidget * parent)
 	setObjectName("tools_options_widget");
 	createLayout();
 
-	addLabel(0,0,0,0,__tr2qs_ctx("This section contains irc tools<br>"\
-		"<p>like<b> away, lag and logging system. </b> " \
-		"</p>","options"));
+	addLabel(0,0,0,0,__tr2qs_ctx("This section contains irc tools "\
+		"like <b>away, lag and logging system</b>. ","options"));
+
+	addRowSpacer(0,1,0,1);
 
 }
 
