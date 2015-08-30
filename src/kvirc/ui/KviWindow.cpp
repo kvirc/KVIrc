@@ -83,16 +83,16 @@
 	#include <KWindowSystem>
 #endif
 
-KVIRC_API KviWindow * g_pActiveWindow = 0;
+KVIRC_API KviWindow * g_pActiveWindow                              = 0;
 
-static QMenu * g_pMdiWindowSystemMainPopup = 0;
-static QMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
-static QMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
-static QMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
-static QMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
-static QActionGroup * g_pMdiWindowSystemTextEncodingActionGroup = 0;
-static QAction * g_pMdiWindowSystemTextEncodingCurrentAction = 0;
-static QAction * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
+static QMenu        * g_pMdiWindowSystemMainPopup                  = 0;
+static QMenu        * g_pMdiWindowSystemTextEncodingPopup          = 0;
+static QMenu        * g_pMdiWindowSystemTextEncodingPopupStandard  = 0;
+static QMenu        * g_pMdiWindowSystemTextEncodingPopupSmart     = 0;
+static QMenu        * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
+static QActionGroup * g_pMdiWindowSystemTextEncodingActionGroup    = 0;
+static QAction      * g_pMdiWindowSystemTextEncodingCurrentAction  = 0;
+static QAction      * g_pMdiWindowSystemTextEncodingDefaultAction  = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
@@ -118,7 +118,7 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 	m_pTextCodec             = 0; // will be set by loadProperties
 	m_pTextEncodingButton    = 0;
 	m_pHideToolsButton       = 0;
-//	m_pEditorsContainer       = 0;
+	//m_pEditorsContainer       = 0;
 	m_bIsDocked              = false;
 	m_pWindowListItem        = 0;
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -260,7 +260,7 @@ bool KviWindow::setTextEncoding(const QString & szTextEncoding)
 		// this is an error because we specified an encoding
 		// and we couldn't find a codec for this
 	} // else it is empty : this means : guess from locale
-	// either empty or not found...
+	  // either empty or not found...
 	m_pTextCodec = 0;
 	m_szTextEncoding = ""; // empty: we're using the default
 	return false;
@@ -300,33 +300,33 @@ bool KviWindow::highlightMe(unsigned int uValue)
 
 const char * KviWindow::m_typeTable[TypeCount] =
 {
-	"console",  // 0
-	"channel",  // 1
-	"query",  // 2
-	"deadchannel",  // 3
-	"deadquery",  // 4
-	"editor",  // 5
-	"help",  // 6
-	"terminal",  // 7
-	"socketspy",  // 8
-	"links",  // 9
-	"list",  // 10
-	"dccchat",  // 11
-	"dcctransfer",  // 12
-	"dcccanvas",  // 13
-	"dccvoice",  // 14
-	"dccvideo",  // 15
-	"userwindow",  // 16
-	"tool",  // 17
-	"iograph",  // 18
-	"dirbrowser",  // 19
+	"console",       // 0
+	"channel",       // 1
+	"query",         // 2
+	"deadchannel",   // 3
+	"deadquery",     // 4
+	"editor",        // 5
+	"help",          // 6
+	"terminal",      // 7
+	"socketspy",     // 8
+	"links",         // 9
+	"list",          // 10
+	"dccchat",       // 11
+	"dcctransfer",   // 12
+	"dcccanvas",     // 13
+	"dccvoice",      // 14
+	"dccvideo",      // 15
+	"userwindow",    // 16
+	"tool",          // 17
+	"iograph",       // 18
+	"dirbrowser",    // 19
 	"scripteditor",  // 20
 	"scriptobject",  // 21
-	"logview",  // 22
-	"offer",  // 23
-	"debug",  // 24
+	"logview",       // 22
+	"offer",         // 23
+	"debug",         // 24
 	// <------ NEW TYPES GO HERE!
-	"unknown"  // 25
+	"unknown"        // 25
 };
 
 const char * KviWindow::typeString()

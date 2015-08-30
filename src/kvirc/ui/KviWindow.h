@@ -391,7 +391,7 @@ public:
 	* \brief Notify the window manager that this window demands attention
 	*
 	* Depending on the os/window manager, this method uses different approaches to
-	* trigger a notification that tipically makes the application entry flash
+	* trigger a notification that typically makes the application entry flash
 	* on the application bar.
 	* \return void
 	*/
