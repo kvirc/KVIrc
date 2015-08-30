@@ -40,7 +40,7 @@
 
 #include <QPixmap>
 
-#define TEXTICONMANAGER_CURRENT_CONFIG_UPDATE 4
+#define TEXTICONMANAGER_CURRENT_CONFIG_UPDATE 5
 
 /**
 * \typedef KviTextIconAssocEntry
