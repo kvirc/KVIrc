@@ -188,7 +188,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	line_ptr->pChunks[0].iTextStart = 0;
 	line_ptr->pChunks[0].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
 	line_ptr->pChunks[0].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
-	line_ptr->pChunks[0].customFore=QColor();
+	line_ptr->pChunks[0].customFore = QColor();
 
 	// print a nice timestamp at the begin of the first line
 	if(bEnableTimeStamp && KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
@@ -606,7 +606,8 @@ found_command_escape:
 									KviUserListEntry *e = ((KviChannelWindow*)m_pKviWindow)->userListView()->findEntry(QString((QChar*)next_cr,term_cr-next_cr));
 									if(e)
 									{
-										line_ptr->pChunks[iCurChunk].colors.fore = KVI_COLOR_CUSTOM; e->color(line_ptr->pChunks[iCurChunk].customFore);
+										line_ptr->pChunks[iCurChunk].colors.fore = KVI_COLOR_CUSTOM;
+										e->color(line_ptr->pChunks[iCurChunk].customFore);
 										bColorSet=true;
 									}
 								}
@@ -1177,7 +1178,34 @@ check_emoticon_char:
 
 }
 
+void KviIrcView::reapplyMessageColors()
+{
+	// This function is usually called when the theme is changed.
+	// It re-applies the colors for all the messages (which may have been changed).
 
+	KviIrcViewLine * pLine = m_pFirstLine;
+	while(pLine)
+	{
+		pLine->iMaxLineWidth = -1; // force recompuation of blocks
+
+		if(pLine->uChunkCount > 0) // always true?
+		{
+			unsigned char oldBack = pLine->pChunks[0].colors.back;
+			unsigned char oldFore = pLine->pChunks[0].colors.fore;
+		
+			for(unsigned int u=0;u<pLine->uChunkCount;u++)
+			{
+				if((pLine->pChunks[u].colors.back == oldBack) && (pLine->pChunks[u].colors.fore == oldFore))
+				{
+					pLine->pChunks[u].colors.back = KVI_OPTION_MSGTYPE(pLine->iMsgType).back();
+					pLine->pChunks[u].colors.fore = KVI_OPTION_MSGTYPE(pLine->iMsgType).fore();
+				}
+			}
+		}
+	
+		pLine = pLine->pNext;
+	}
+}
 
 void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags,const QDateTime& datetime)
 {

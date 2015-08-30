@@ -430,13 +430,16 @@ void KviIrcView::applyOptions()
 {
 	flushLog();
 
-	setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
-
 	if(m_iFlushTimer)
 		killTimer(m_iFlushTimer);
 
 	if(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs))
 		m_iFlushTimer = startTimer(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)*60*1000);
+		
+	// Will do nothing if the view is still empty (i.e. called from the constructor)
+	reapplyMessageColors(); 
+
+	setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
 }
 
 

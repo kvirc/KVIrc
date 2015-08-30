@@ -232,6 +232,7 @@ private:
 	void doMarkerToolTip();
 	bool checkMarkerArea(const QPoint & mousePos);
 	void addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText);
+	void reapplyMessageColors();
 public slots:
 	void flushLog();
 	void showToolsPopup();

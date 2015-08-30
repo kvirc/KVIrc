@@ -1171,8 +1171,10 @@ void KviWindow::restore()
 void KviWindow::applyOptions()
 {
 	updateCaption();
+
 	if(m_pIrcView)
 		m_pIrcView->applyOptions();
+
 	if(m_pInput)
 		m_pInput->applyOptions();
 

@@ -983,7 +983,9 @@ void KviMainWindow::moveEvent(QMoveEvent *e)
 void KviMainWindow::applyOptions()
 {
 	m_pMdi->update();
-	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->applyOptions();
+
+	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
+		wnd->applyOptions();
 
 	m_pWindowList->applyOptions();
 	g_pTextIconManager->applyOptions();
