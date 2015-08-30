@@ -155,41 +155,42 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN KviApplication.h
 #include <time.h> // time() in srand()
 
 // Global application pointer
-KVIRC_API KviApplication                        * g_pApp                        = 0;
+KVIRC_API KviApplication                          * g_pApp                                 = 0;
 
-KviConfigurationFile                               * g_pWinPropertiesConfig        = 0;
-KVIRC_API KviIrcServerDataBase             * g_pServerDataBase             = 0;
-KVIRC_API KviProxyDataBase              * g_pProxyDataBase              = 0;
+KviConfigurationFile                              * g_pWinPropertiesConfig                 = 0;
+KVIRC_API KviIrcServerDataBase                    * g_pServerDataBase                      = 0;
+KVIRC_API KviProxyDataBase                        * g_pProxyDataBase                       = 0;
 
 // Global windows
-KVIRC_API KviColorWindow                * g_pColorWindow                = 0;
-KVIRC_API KviTextIconWindow             * g_pTextIconWindow             = 0;
-KVIRC_API QMenu               * g_pInputPopup                 = 0;
-KVIRC_API QStringList                   * g_pRecentTopicList            = 0;
+KVIRC_API KviColorWindow                          * g_pColorWindow                         = 0;
+KVIRC_API KviTextIconWindow                       * g_pTextIconWindow                      = 0;
+KVIRC_API QMenu                                   * g_pInputPopup                          = 0;
+KVIRC_API QStringList                             * g_pRecentTopicList                     = 0;
 KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
-KVIRC_API KviMediaManager               * g_pMediaManager               = 0;
-KVIRC_API KviSharedFilesManager         * g_pSharedFilesManager         = 0;
-KVIRC_API KviNickServRuleSet            * g_pNickServRuleSet            = 0;
-KVIRC_API KviCtcpPageDialog             * g_pCtcpPageDialog             = 0;
-KVIRC_API KviRegisteredChannelDataBase  * g_pRegisteredChannelDataBase  = 0;
-KVIRC_API KviHistoryWindowWidget        * g_pHistoryWindow              = 0;
+KVIRC_API KviMediaManager                         * g_pMediaManager                        = 0;
+KVIRC_API KviSharedFilesManager                   * g_pSharedFilesManager                  = 0;
+KVIRC_API KviNickServRuleSet                      * g_pNickServRuleSet                     = 0;
+KVIRC_API KviCtcpPageDialog                       * g_pCtcpPageDialog                      = 0;
+KVIRC_API KviRegisteredChannelDataBase            * g_pRegisteredChannelDataBase           = 0;
+KVIRC_API KviHistoryWindowWidget                  * g_pHistoryWindow                       = 0;
 
 // this is eventually set by libkviident
-KVIRC_API int                             g_iIdentDaemonRunningUsers    = 0;
+KVIRC_API int                                       g_iIdentDaemonRunningUsers             = 0;
 
-KVIRC_API KviSplashScreen               * g_pSplashScreen               = 0;
+KVIRC_API KviSplashScreen                         * g_pSplashScreen                        = 0;
 
 
 // Loaded and destroyed by KviIconManager
-QPixmap                                 * g_pUserChanStatePixmap        = 0;
-QPixmap                                 * g_pActivityMeterPixmap        = 0;
+QPixmap                                           * g_pUserChanStatePixmap                 = 0;
+QPixmap                                           * g_pActivityMeterPixmap                 = 0;
+
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
 	#include <QImage>
 
-	KVIRC_API QPixmap               * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
-	KVIRC_API QPixmap               * g_pShadedChildGlobalDesktopBackground  = 0; // the pixmap that we use for MdiChild
+	KVIRC_API QPixmap                         * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
+	KVIRC_API QPixmap                         * g_pShadedChildGlobalDesktopBackground  = 0; // the pixmap that we use for MdiChild
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		#include <winuser.h>
 		#include <QDesktopWidget>
@@ -199,7 +200,7 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
 	// global crypt engine manager
-	KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = 0;
+	KVIRC_API KviCryptEngineManager           * g_pCryptEngineManager                  = 0;
 #endif
 
 #include <QStyleFactory>

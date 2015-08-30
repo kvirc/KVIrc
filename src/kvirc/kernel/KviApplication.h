@@ -124,9 +124,9 @@ public:
 	KviApplication(int &argc,char ** argv);
 	~KviApplication();
 public:
-	// setup stuff (accessed from KviMain.cpp: consider private othwerise)
+	// setup stuff (accessed from KviMain.cpp: consider private otherwise)
 	QString	                                   m_szConfigFile;        // setup
-	bool                                       m_bCreateConfig;      // setup
+	bool                                       m_bCreateConfig;       // setup
 	QString                                    m_szExecAfterStartup;
 	bool                                       m_bShowSplashScreen;
 protected:
@@ -241,7 +241,7 @@ public:
 	//
 	// Returns a config path suitable for reading (at least)
 	// First lookups the user local config directory,
-	// if no config file is found, it earches in the global one
+	// if no config file is found, it searches in the global one
 	// returns false if no config file has been found
 	// If bNoFail is true, the buffer is filled with the file name even
 	// if no config file has been found: in this case the local config
