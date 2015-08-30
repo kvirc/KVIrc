@@ -41,7 +41,7 @@ OptionsWidget_general::OptionsWidget_general(QWidget * parent)
 
 	addRowSpacer(0,1,0,1);
 
-	addAdvancedButton(4,1,4,1);
+	//addAdvancedButton(4,1,4,1);
 }
 
 OptionsWidget_general::~OptionsWidget_general()

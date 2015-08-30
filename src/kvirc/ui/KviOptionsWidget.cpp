@@ -733,17 +733,19 @@ KviTalGroupBox * KviOptionsWidget::addGroupBox(int x1,int y1,int x2,int y2,Qt::O
 	return g;
 }
 
+/*
 void KviOptionsWidget::addAdvancedButton(int x1,int y1,int x2,int y2)
 {
 	QWidget * w = topLevelWidget();
 	if(!w)return;
-	if(!w->inherits("KviGeneralOptionsDialog"))return;
+	if(!w->inherits("KviGeneralOptionsDialog"))
+		return;
 
 	QPushButton * b = new QPushButton(__tr2qs("Advanced..."),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(switchToAdvancedPage()));
 	addWidgetToLayout(b,x1,y1,x2,y2);
 }
-
+*/
 
 void KviOptionsWidget::commitSelectors()
 {
@@ -770,11 +772,11 @@ void KviOptionsWidget::commit()
 	commitOptionsReset();
 }
 
-void KviOptionsWidget::switchToAdvancedPage()
-{
+//void KviOptionsWidget::switchToAdvancedPage()
+//{
 	// FIXME: what happens if we're toplevel ????
 	// (so nobody listens to this signal....)
 
-	emit wantToSwitchToAdvancedPage(this);
-}
+//	emit wantToSwitchToAdvancedPage(this);
+//}
 
