@@ -197,6 +197,8 @@ void ChannelsJoinDialog::fillListView()
 
 	bool bGotChanOnCurrentNetwork = false;
 
+	QTreeWidgetItem * hdr;
+
 	if(m_pConsole)
 	{
 		QStringList * pList = g_pApp->recentChannelsForNetwork(m_pConsole->currentNetworkName());
@@ -206,17 +208,17 @@ void ChannelsJoinDialog::fillListView()
 			{
 				bGotChanOnCurrentNetwork = true;
 
-				par = new QTreeWidgetItem(par, HeaderItem);
-				par->setText(0,__tr2qs("Current Network"));
-				par->setExpanded(true);
+				hdr = new QTreeWidgetItem(par, HeaderItem);
+				hdr->setText(0,__tr2qs("Current Network"));
+				hdr->setExpanded(true);
 
 				for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 				{
-					chld = new QTreeWidgetItem(par, RecentChannelItem);
+					chld = new QTreeWidgetItem(hdr, RecentChannelItem);
 					chld->setText(0,*it);
 					chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 				}
-				par->sortChildren(0, Qt::AscendingOrder);
+				hdr->sortChildren(0, Qt::AscendingOrder);
 			}
 		}
 	}
@@ -225,11 +227,11 @@ void ChannelsJoinDialog::fillListView()
 	if(!pDict)
 		return;
 
-	par = new QTreeWidgetItem(par, HeaderItem);
-	par->setText(0,__tr2qs("All Networks"));
+	hdr = new QTreeWidgetItem(par, HeaderItem);
+	hdr->setText(0,__tr2qs("All Networks"));
 
 	if(!bGotChanOnCurrentNetwork)
-		par->setExpanded(true); // expand this one instead
+		hdr->setExpanded(true); // expand this one instead
 
 	QHash<QString,int> hNoDuplicates;
 
@@ -241,12 +243,12 @@ void ChannelsJoinDialog::fillListView()
 			if(hNoDuplicates.contains(chan.toLower()))
 				continue;
 			hNoDuplicates.insert(chan.toLower(),1);
-			chld = new QTreeWidgetItem(par, RecentChannelItem);
+			chld = new QTreeWidgetItem(hdr, RecentChannelItem);
 			chld->setText(0,chan);
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 		}
 	}
-	par->sortChildren(0, Qt::AscendingOrder);
+	hdr->sortChildren(0, Qt::AscendingOrder);
 }
 
 void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
