@@ -19,17 +19,17 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Stop Highlighting (Local)","defscript")) (%:beingHlTmp && !%:beingHl)
+	item($tr("Stop Highlighting (Local)","defscript"),41) (%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.removeNick $0
 	}
 
-	item($tr("Start Highlighting (Local)","defscript")) (!%:beingHlTmp && !%:beingHl)
+	item($tr("Start Highlighting (Local)","defscript"),181) (!%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.addNick $0
 	}
 
-	popup($tr("Always Highlight","defscript")) (!%:beingHl && !%:regName)
+	popup($tr("Always Highlight","defscript"),181) (!%:beingHl && !%:regName)
 	{
 		item($tr("Highlight as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
@@ -62,14 +62,902 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Always Highlight","defscript")) (!%:beingHl && %:regName)
+	item($tr("Always Highlight","defscript"),181) (!%:beingHl && %:regName)
 	{
 		reguser.setproperty $0 highlight 1
 	}
 
-	item($tr("Stop Highlighting","defscript")) (%:beingHl)
+	item($tr("Stop Highlighting","defscript"),41) (%:beingHl)
 	{
 		reguser.setproperty $0 highlight 0
+	}
+}
+
+defpopup(dccchat)
+{
+	prologue
+	{
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users","defscript")")"
+			%:multiple = 1
+		}
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77)
+
+	separator
+
+	item($tr("Notify Avatar","defscript"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	item($tr("Clear Buffer","defscript"),120)
+	{
+		clear
+	}
+}
+
+defpopup(querytextview)
+{
+	prologue
+	{
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users","defscript")")"
+			%:multiple = 1
+		}
+	}
+
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
+	{
+		whois $0 $0
+	}
+
+	separator
+
+	popup($tr("&Information","defscript"),317)
+	{
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
+		{
+			whois $0
+		}
+
+		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
+		{
+			whowas $0
+		}
+
+		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
+		{
+			who $0
+		}
+
+		separator
+
+		item($tr("DNS for","defscript") $0,75)
+		{
+			foreach(%i,$str.split(",",$0))dns %i
+		}
+
+		item($tr("Mask for","defscript") $0,75) (!%:multiple)
+		{
+			echo $mask($0,11)
+		}
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77)
+
+	separator
+
+	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple)
+
+	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
+
+	item($tr("Notify Avatar","defscript"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	item($tr("Clear Buffer","defscript"),120)
+	{
+		clear
+	}
+}
+
+defpopup(channelpopup)
+{
+	item($tr("&Hop","defscript") $0,289)
+	{
+		hop $0;
+	}
+
+	item($tr("&Part","defscript") $0,40)
+	{
+		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
+	}
+
+	separator
+
+	item(/NAMES $0,75)
+	{
+		names $0;
+	}
+
+	item(/WHO $0,75)
+	{
+		who $0;
+	}
+
+	separator
+
+	item($tr("Copy Channel Address","defscript"),18)
+	{
+		str.toClipboard $chan.getUrl($0)
+	}
+}
+
+defpopup(ctcp)
+{
+	item(PING,36)
+	{
+		ctcp $0 PING
+	}
+
+	item(FINGER,53)
+	{
+		ctcp $0 FINGER
+	}
+
+	item(VERSION,16)
+	{
+		ctcp $0 VERSION
+	}
+
+	item(USERINFO,111)
+	{
+		ctcp $0 USERINFO
+	}
+
+	item(CLIENTINFO,52)
+	{
+		ctcp $0 CLIENTINFO
+	}
+
+	item(SOURCE,14)
+	{
+		ctcp $0 SOURCE
+	}
+
+	item(TIME,93)
+	{
+		ctcp $0 TIME
+	}
+
+	item(PAGE...,180)
+	{
+		#dialog.textinput -d=$tr("Wakeup!","defscript") ($tr("CTCP Page to","defscript") $0,$tr("Enter the message text","defscript"),$tr("Ok","defscript"),$tr("Cancel","defscript"))
+		dialog.textinput(CTCP Page $0,$tr("Enter the message text","defscript"),$tr("&Page","defscript"),$tr("Cancel","defscript"),"",$0)
+		{
+			if($0 == 0)ctcp $2 PAGE $1
+		}
+	}
+
+	item(AVATAR,57)
+	{
+		ctcp $0 AVATAR
+	}
+}
+
+defpopup(urlpopup)
+{
+	item($tr("Copy To Clipboard","defscript"),18)
+	{
+		str.toClipboard $0
+	}
+}
+
+defpopup(consoletextview)
+{
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
+	extpopup($tr("Channels","defscript"),channels,31) ($server)
+
+	separator
+
+	item($tr("&Join Channels...","defscript"),39) ($server)
+	{
+		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
+	}
+
+	popup($tr("&Information","defscript"),317) ($server)
+	{
+		item(/MOTD,30)
+		{
+			motd
+		}
+
+		item(/INFO,29)
+		{
+			info
+		}
+
+		item(/LUSERS,57)
+		{
+			lusers
+		}
+
+		popup(/STATS,205)
+		{
+			item(d "(Debug/DNS?)")
+			{
+				stats d
+			}
+
+			item($tr("l (Connections)","defscript"))
+			{
+				stats l
+			}
+
+			item($tr("m (Command Usage)","defscript"))
+			{
+				stats m
+			}
+
+			item($tr("o (Operators)","defscript"))
+			{
+				stats o
+			}
+
+			item($tr("t (Connection stats?)","defscript"),205)
+			{
+				stats t
+			}
+
+			item($tr("u (Uptime)","defscript"),93)
+			{
+				stats u
+			}
+
+			item($tr("y (y-Lines)","defscript"))
+			{
+				stats y
+			}
+
+			item($tr("z (Debug Stats?)","defscript"),11)
+			{
+				stats z
+			}
+		}
+
+		item(/TIME,93)
+		{
+			time
+		}
+
+		item(/ADMIN,29)
+		{
+			admin
+		}
+
+		item(/VERSION,16)
+		{
+			version
+		}
+
+		item(/HELP,49)
+		{
+			raw help
+		}
+	}
+
+	separator
+
+	item($tr("Clear Buffer","defscript"),120)
+	{
+		clear;
+	}
+}
+
+defpopup(windowpopup)
+{
+	prologue
+	{
+		%:bIsConnectedConsole = $(($window.type == "console") && ($context.state == "connected"));
+
+		if($window.type == "channel")
+		{
+			%:bIsChannel = $true;
+			%:szNetwork = $context.serverdbNetworkName()
+			%:szServer = $context.serverdbServerHostName()
+			%:bIsAutoJoinedOnNetwork = $false;
+			%:bIsAutoJoinedOnServer = $false;
+
+			if($serverdb.networkExists(%:szNetwork))
+			{
+				foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
+				{
+					%aChanAndPass = $str.split(":",%szChanAndPass)
+
+					if(%aChanAndPass[0] == $chan.name)
+					{
+						%:bIsAutoJoinedOnNetwork = $true;
+						break;
+					}
+				}
+				if($serverdb.serverExists(%:szServer,%:szNetwork))
+				{
+					foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
+					{
+						%aChanAndPass = $str.split(":",%szChanAndPass)
+
+						if(%aChanAndPass[0] == $chan.name)
+						{
+							%:bIsAutoJoinedOnServer = $true;
+							break;
+						}
+					}
+				} else {
+					%:szServer = ""
+				}
+			} else {
+				%:szNetwork = ""
+			}
+			%:bIsAutoJoined = $(%:bIsAutoJoinedOnNetwork || %:bIsAutoJoinedOnServer)
+		} else {
+			%:bIsChannel = $false;
+		}
+	}
+
+	item($tr("Dock","defscript"),6) (!$window.isDocked())
+	{
+		window.dock
+	}
+
+	item($tr("Undock","defscript"),7) ($window.isDocked())
+	{
+		window.undock
+	}
+
+	separator
+
+	item($tr("Minimize","defscript"),3) (!$window.isMinimized())
+	{
+		window.minimize
+	}
+
+	item($tr("Maximize","defscript"),2) (!$window.isMaximized())
+	{
+		window.maximize
+	}
+
+	item($tr("Restore","defscript"),4) ($window.isMinimized() || $window.isMaximized())
+	{
+		window.restore
+	}
+
+	separator
+
+	item($tr("Close","defscript"),1)
+	{
+		window.close
+	}
+
+	separator
+
+	extpopup($tr("Logging","defscript"),logging,119)
+
+	item($tr("Set window props as default","defscript"),10)
+	{
+		window.savePropertiesAsDefault
+	}
+
+	separator(%:bIsChannel)
+
+	popup($tr("Automatically Join Channel","defscript"),$icon("join")) (%:bIsChannel && (!%:bIsAutoJoined) && ((%:szServer != "") || (%:szNetwork != "")))
+	{
+		item($str.printf($tr("When Connecting to Server '?s'","defscript"),%:szServer),$icon("server")) (%:szServer != "")
+		{
+			%aChans = $serverdb.serverJoinChannels(%:szNetwork,%:szServer)
+			%aChans <+ $chan.name
+			serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
+		}
+
+		item($str.printf($tr("When Connecting to Network '?s'","defscript"),%:szNetwork),$icon("world")) (%:szNetwork != "")
+		{
+			%aChans = $serverdb.networkJoinChannels(%:szNetwork)
+			%aChans <+ $chan.name
+			serverdb.setNetworkJoinChannels %:szNetwork %aChans
+		}
+	}
+
+	item($str.printf($tr("Stop Auto-Joining Channel on Server '?s'","defscript"),%:szServer),41) (%:bIsChannel && %:bIsAutoJoinedOnServer)
+	{
+		%aChans = $array()
+		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
+		{
+			%aChanAndPass = $str.split(":",%szChanAndPass)
+
+			if(%aChanAndPass[0] != $chan.name)
+				%aChans <+ %szChanAndPass;
+		}
+		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
+	}
+
+	item($str.printf($tr("Stop Auto-Joining Channel on Network '?s'","defscript"),%:szNetwork),41) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
+	{
+		%aChans = $array()
+		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
+		{
+			%aChanAndPass = $str.split(":",%szChanAndPass)
+
+			if(%aChanAndPass[0] != $chan.name)
+				%aChans <+ %szChanAndPass;
+		}
+		serverdb.setNetworkJoinChannels %:szNetwork %aChans
+	}
+
+	separator(%:bIsConnectedConsole)
+
+	item($tr("Part All Channels","defscript"),40) (%:bIsConnectedConsole && ($window.list(channel)))
+	{
+		foreach(%x,$window.list(channel))
+			%channels <+ $target(%x);
+		part $str.join(",",%channels);
+	}
+
+	item($tr("Close All Queries","defscript"),47) (%:bIsConnectedConsole && ($window.list(query)))
+	{
+		foreach(%x,$window.list(query))
+			window.close %x
+	}
+
+	item($tr("Rejoin All Dead Channels" ,"defscript"),232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
+	{
+		foreach(%x,$window.list(deadchannel))
+			%channels <+ $target(%x);
+		join $str.join(",",%channels);
+	}
+
+	item($tr("Close All Dead Channels" ,"defscript"),232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
+	{
+		foreach(%x,$window.list(deadchannel))
+			window.close %x
+	}
+
+	item($tr("Close All Dead Queries" ,"defscript"),233) (%:bIsConnectedConsole && ($window.list(deadquery)))
+	{
+		foreach(%x,$window.list(deadquery))
+			window.close %x
+	}
+
+	separator(%:bIsConnectedConsole)
+
+	item($tr("Unhighlight All Windows" ,"defscript")) (%:bIsConnectedConsole)
+	{
+		foreach(%x,$window.list(all))
+			window.highlight 0 %x
+	}
+
+	item($tr("Unhighlight All Channels" ,"defscript")) (%:bIsConnectedConsole && ($window.list(channel)))
+	{
+		foreach(%x,$window.list(channel))
+			window.highlight 0 %x
+	}
+
+	item($tr("Unhighlight All Queries" ,"defscript")) (%:bIsConnectedConsole && ($window.list(query)))
+	{
+		foreach(%x,$window.list(query))
+			window.highlight 0 %x
+	}
+}
+
+defpopup(defaulttextview)
+{
+	prologue
+	{
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users","defscript")")"
+			%:multiple = 1
+		}
+	}
+
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
+	{
+		whois $0 $0
+	}
+
+	separator
+
+	popup($tr("&Information","defscript"),317)
+	{
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
+		{
+			whois $0
+		}
+
+		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
+		{
+			whowas $0
+		}
+
+		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
+		{
+			who $0
+		}
+
+		separator
+
+		item(DNS $0,75)
+		{
+			foreach(%i,$str.split(",",$0))dns %i
+		}
+	}
+
+	separator
+
+	item($tr("&Query","defscript") %:visible,47)
+	{
+		query $0
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77)
+
+	separator
+
+	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
+
+	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
+
+	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
+
+	item($tr("Notify avatar","defscript"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	item($tr("Clear Buffer","defscript"),120)
+	{
+		clear
+	}
+}
+
+defpopup(hostpopup)
+{
+	item($tr("Look Up ","defscript")$0,13)
+	{
+		host -a $0
+	}
+
+	separator
+
+	item($tr("Open ","defscript")"ftp://"$0"/",185) ("$system.ostype" == "unix")
+	{
+		openurl "ftp://$0/"
+	}
+
+	item($tr("Telnet to ","defscript")$0,9)
+	{
+		system.runcmd telnet $0
+	}
+
+	separator
+
+	item($tr("Traceroute to ","defscript")$0,184)
+	{
+		if("$system.ostype" == "unix") system.runcmd traceroute $0
+		else system.runcmd tracert $0
+	}
+
+	item($tr("Traceroute6 to ","defscript")$0,184)
+	{
+		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
+		else system.runcmd tracert6 $0
+	}
+
+	item("Ping "$0,36)
+	{
+		system.runcmd ping $0
+	}
+
+	item("Ping6 "$0,36)
+	{
+		system.runcmd ping6 $0
+	}
+}
+
+defpopup(dcc)
+{
+	prologue
+	{
+		if($features("SSL"))%:bHaveSSL=1
+		else %:bHaveSSL=0
+	}
+
+	item($tr("Chat with","defscript") $0,78)
+	{
+		dcc.chat $0
+	}
+
+	item($tr("Reverse Chat with","defscript") $0,78)
+	{
+		dcc.chat -z $0
+	}
+
+	item($tr("Secure Chat with","defscript") $0,78) (%:bHaveSSL)
+	{
+		dcc.chat -s $0
+	}
+
+	separator
+
+	item($tr("Send to","defscript") $0,79)
+	{
+		dcc.send $0
+	}
+
+	item($tr("Secure send to","defscript") $0,79)
+	{
+		dcc.send -s $0
+	}
+
+	item($tr("Reverse Send to","defscript") $0,79)
+	{
+		dcc.rsend -z $0
+	}
+
+	item($tr("Secure Reverse Send to","defscript") $0,79)
+	{
+		dcc.rsend -z -s $0
+	}
+
+	separator
+
+	item($tr("TDCC Send to","defscript") $0,77)
+	{
+		dcc.send -t $0
+	}
+
+	item($tr("TDCC Reverse Send to","defscript") $0,77)
+	{
+		dcc.rsend -t $0
+	}
+
+	separator
+
+	popup($tr("Voice Chat","defscript"),166)
+	{
+		item($tr("Default","defscript")": ADPCM 8 KHz (32 kbps)")
+		{
+			dcc.voice $0
+		}
+
+		separator
+
+		item("ADPCM 11.025 KHz (44.1 kbps)")
+		{
+			dcc.voice -h=11025 $0
+		}
+
+		item("ADPCM 16 KHz (64 kbps)")
+		{
+			dcc.voice -h=16000 $0
+		}
+
+		item("ADPCM 22.05 KHz (88.2 kbps)")
+		{
+			dcc.voice -h=22050 $0
+		}
+
+		item("GSM 8 KHz (13.2 kbps)")
+		{
+			dcc.voice -g=gsm $0
+		}
+
+		item("GSM 11.025 KHz (18.1 kbps)")
+		{
+			dcc.voice -g=gsm -h=11025 $0
+		}
+
+		item("GSM 16 KHz (26.4 kbps)")
+		{
+			dcc.voice -g=gsm -h=16000 $0
+		}
+
+		item("GSM 22.05 KHz (36.2 kbps)")
+		{
+			dcc.voice -g=gsm -h=22050 $0
+		}
+
+		item("GSM 44.1 KHz (72.4 kbps)")
+		{
+			dcc.voice -g=gsm -h=44100 $0
+		}
+
+		item("NULL 8 KHz (128 kbps)")
+		{
+			dcc.voice -g=null $0
+		}
+
+		item("NULL 11.025 KHz (176.4 kbps)")
+		{
+			dcc.voice -g=null -h=11025 $0
+		}
+	}
+}
+
+defpopup(channeltextview)
+{
+	extpopup($tr("Channels","defscript"),channels,31)
+
+	item($tr("&Join Channels...","defscript"),31) ($server)
+	{
+		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
+	}
+
+	separator
+
+	item($tr("&Hop","defscript") $0,289) ($channel)
+	{
+		hop $0;
+	}
+
+	item($tr("&Part","defscript") $0,40) ($channel)
+	{
+		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
+	}
+
+	item($tr("&Join","defscript") $0,39) (!$channel)
+	{
+		join $0;
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	separator
+
+	item(/NAMES $0,75)
+	{
+		names $0;
+	}
+
+	item(/WHO $0,75)
+	{
+		who $0;
+	}
+
+	item($tr("Notify Avatar","defscript"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	extpopup($tr("&Highlight","defscript"),channelhighlight,181)
+
+	item($tr("Copy Channel URL to Clipboard","defscript"),18)
+	{
+		str.toClipboard $chan.getUrl
+	}
+
+	item($tr("Clear Buffer","defscript"),120)
+	{
+		clear;
+	}
+}
+
+defpopup(channels)
+{
+	item(#KVIrc,31)
+	{
+		j #KVIrc;
+	}
+
+	item(#kde,31)
+	{
+		j #kde;
+	}
+}
+
+defpopup(logging)
+{
+	prologue
+	{
+		# If this window is being logged actually , $log.file will be non empty
+		# and pointing to the log file actually open.
+		if($isSet($log.file))
+			%:logfile = $file.extractfilename($log.file)
+	}
+
+	label($tr("Logging to","defscript"):<br><b>%:logfile</b>) ("%:logfile" != "")
+
+	item($tr("Flush Log File","defscript"),120) (%:logfile)
+	{
+		log.flush
+	}
+
+	separator
+
+	item($tr("Stop Logging","defscript"),41) (%:logfile)
+	{
+		log.stop
+	}
+
+	label($tr("Not Logging","defscript")) (!%:logfile)
+
+	item($tr("Log To Default File","defscript"),119) (!%:logfile)
+	{
+		log.start
+	}
+
+	item($tr("Log To Default File","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
+	{
+		log.start -p
+	}
+
+	item($tr("Log To...","defscript"),119) (!%:logfile)
+	{
+		dialog.file(save,$tr("Choose Log Filename","defscript"))
+		{
+			if($0)log.start  $0
+		}
+	}
+
+	item($tr("Log To...","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
+	{
+		dialog.file(save,$tr("Choose Log Filename","defscript"))
+		{
+			if($0)log.start -p $0
+		}
 	}
 }
 
@@ -115,12 +1003,12 @@ defpopup(ignore)
 
 	label(%:ignLabelText)
 
-	item($tr("Enable Ignore","defscript"),168) (!%:inIgnoreList && %:regName)
+	item($tr("Enable Ignore","defscript"),203) (!%:inIgnoreList && %:regName)
 	{
 		reguser.setIgnoreEnabled %:regName 1;
 	}
 
-	popup($tr("Ignore as...","defscript"),44) (!%:inIgnoreList)
+	popup($tr("Ignore as...","defscript"),195) (!%:inIgnoreList)
 	{
 		item($tr("Ignore as","defscript") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
 		{
@@ -312,7 +1200,7 @@ defpopup(ignore)
 		}
 	}
 
-	item($tr("Unignore","defscript"),217) (%:inIgnoreList)
+	item($tr("Unignore","defscript"),196) (%:inIgnoreList)
 	{
 		reguser.setIgnoreEnabled %:regName 0;
 	}
@@ -322,7 +1210,6 @@ defpopup(registration)
 {
 	prologue
 	{
-
 		# This is really smart...we are loading
 		# the reguser module only if this popup is being requested (the user effectively
 		# puts the mouse on the "Registration" item and the sub-popup is being shown)
@@ -350,7 +1237,7 @@ defpopup(registration)
 		reguser.wizard $mask($0)
 	}
 
-	popup($tr("Quick Registration","defscript")) (!%:regName)
+	popup($tr("Quick Registration","defscript"),113) (!%:regName)
 	{
 		item($tr("Register as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
@@ -395,17 +1282,17 @@ defpopup(registration)
 
 	separator
 
-	item($tr("Add to Notify","defscript")) (%:regName && !%:inNotifyList)
+	item($tr("Add to Notify","defscript"),94) (%:regName && !%:inNotifyList)
 	{
 		reguser.setproperty -n "%:regName" notify $0
 	}
 
-	item($tr("Remove from Notify","defscript")) (%:regName && %:inNotifyList)
+	item($tr("Remove from Notify","defscript"),95) (%:regName && %:inNotifyList)
 	{
 		reguser.setproperty -n "%:regName" notify
 	}
 
-	popup($tr("Avatar","defscript")) (%:regName)
+	popup($tr("Avatar","defscript"),57) (%:regName)
 	{
 		item($tr("Choose...","defscript")) (%:regName)
 		{
@@ -431,17 +1318,6 @@ defpopup(registration)
 		}
 	}
 }
-
-defpopup("urlpopup")
-{
-	item($tr("Copy To Clipboard","defscript"),259)
-	{
-		str.toClipboard $0
-	}
-}
-
-# This code adds a channel popup that accepts
-# a comma separated list of nicknames as parameter (to the /popup command)
 
 defpopup(channel)
 {
@@ -489,8 +1365,7 @@ defpopup(channel)
 		}
 	}
 
-
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),75,whois_item)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),75)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -498,9 +1373,9 @@ defpopup(channel)
 
 	separator
 
-	popup($tr("&Information","defscript"),49,"information_popup")
+	popup($tr("&Information","defscript"),317)
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),75,"whois_item")
+		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),75)
 		{
 			whois $0
 		}
@@ -528,7 +1403,7 @@ defpopup(channel)
 		}
 	}
 
-	popup($tr("&Control","defscript"),9,"control_popup") (%:isMeHalfOp)
+	popup($tr("&Control","defscript"),20) (%:isMeHalfOp)
 	{
 		label($usermodename($me()))
 
@@ -625,6 +1500,7 @@ defpopup(channel)
 				}
 			}
 		}
+
 		separator
 
 		item($tr("Configure ban mask...","defscript"),20)
@@ -659,899 +1535,3 @@ defpopup(channel)
 		avatar.notify $0
 	}
 }
-
-# Popup to show on right-clicking channel links
-#
-defpopup(channelpopup)
-{
-	item($tr("&Hop","defscript") $0,145)
-	{
-		hop $0;
-	}
-
-	item($tr("&Part","defscript") $0,40)
-	{
-		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
-	}
-
-	separator
-
-	item(/NAMES $0,75)
-	{
-		names $0;
-	}
-
-	item(/WHO $0,75)
-	{
-		who $0;
-	}
-	separator
-
-	item($tr("Copy Channel Address","defscript"),259)
-	{
-		str.toClipboard $chan.getUrl($0)
-	}
-
-}
-
-defpopup(channels)
-{
-	item(#KVIrc,46)
-	{
-		j #KVIrc;
-	}
-
-	item(#kde,46)
-	{
-		j #kde;
-	}
-}
-
-defpopup(channeltextview)
-{
-	extpopup($tr("Channels","defscript"),channels,46)
-
-	item($tr("&Join Channels...","defscript"),46) ($server)
-	{
-		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
-	}
-
-	separator
-
-	item($tr("&Hop","defscript") $0,145) ($channel)
-	{
-		hop $0;
-	}
-
-	item($tr("&Part","defscript") $0,40) ($channel)
-	{
-		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
-	}
-
-	item($tr("&Join","defscript") $0,39) (!$channel)
-	{
-		join $0;
-	}
-
-	separator
-
-	extpopup(C&TCP,ctcp,51)
-
-	separator
-
-	item(/NAMES $0,75)
-	{
-		names $0;
-	}
-
-	item(/WHO $0,75)
-	{
-		who $0;
-	}
-
-	item($tr("Notify Avatar","defscript"),57)
-	{
-		avatar.notify $0
-	}
-
-	separator
-
-	extpopup($tr("&Highlight","defscript"),channelhighlight,181)
-
-	item($tr("Copy Channel URL to Clipboard","defscript"),259)
-	{
-		str.toClipboard $chan.getUrl
-	}
-
-	item($tr("Clear Buffer","defscript"),121)
-	{
-		clear;
-	}
-
-}
-
-defpopup(consoletextview)
-{
-	label($tr("You're not connected to a server","defscript")) (!$server)
-
-	extpopup($tr("Channels","defscript"),channels,46) ($server)
-
-	separator
-
-	item($tr("&Join Channels...","defscript"),46) ($server)
-	{
-		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
-	}
-
-	popup($tr("&Information","defscript"),13) ($server)
-	{
-		item(/MOTD,30)
-		{
-			motd
-		}
-
-		item(/INFO,29)
-		{
-			info
-		}
-
-		item(/LUSERS,57)
-		{
-			lusers
-		}
-
-		popup(/STATS,22)
-		{
-			item(d "(Debug/DNS?)")
-			{
-				stats d
-			}
-
-			item($tr("l (Connections)","defscript"))
-			{
-				stats l
-			}
-
-			item($tr("m (Command Usage)","defscript"))
-			{
-				stats m
-			}
-
-			item($tr("o (Operators)","defscript"))
-			{
-				stats o
-			}
-
-			item($tr("t (Connection stats?)","defscript"),23)
-			{
-				stats t
-			}
-
-			item($tr("u (Uptime)","defscript"),93)
-			{
-				stats u
-			}
-
-			item($tr("y (y-Lines)","defscript"))
-			{
-				stats y
-			}
-
-			item($tr("z (Debug Stats?)","defscript"),11)
-			{
-				stats z
-			}
-		}
-
-		item(/TIME,93)
-		{
-			time
-		}
-
-		item(/ADMIN,29)
-		{
-			admin
-		}
-
-		item(/VERSION,16)
-		{
-			version
-		}
-
-		item(/HELP,49)
-		{
-			raw help
-		}
-	}
-
-	separator
-
-	item($tr("Clear Buffer","defscript"),121)
-	{
-		clear;
-	}
-}
-
-# This is a common popup , accepts a list of nicknames as parameter
-defpopup(ctcp)
-{
-	item(PING,36)
-	{
-		ctcp $0 PING
-	}
-
-	item(FINGER,53)
-	{
-		ctcp $0 FINGER
-	}
-
-	item(VERSION,16)
-	{
-		ctcp $0 VERSION
-	}
-
-	item(USERINFO,57)
-	{
-		ctcp $0 USERINFO
-	}
-
-	item(CLIENTINFO,52)
-	{
-		ctcp $0 CLIENTINFO
-	}
-
-	item(SOURCE,14)
-	{
-		ctcp $0 SOURCE
-	}
-
-	item(TIME,93)
-	{
-		ctcp $0 TIME
-	}
-
-	item(PAGE...,223)
-	{
-		#dialog.textinput -d=$tr("Wakeup!","defscript") ($tr("CTCP Page to","defscript") $0,$tr("Enter the message text","defscript"),$tr("Ok","defscript"),$tr("Cancel","defscript"))
-		dialog.textinput(CTCP Page $0,$tr("Enter the message text","defscript"),$tr("&Page","defscript"),$tr("Cancel","defscript"),"",$0)
-		{
-			if($0 == 0)ctcp $2 PAGE $1
-		}
-	}
-
-	item(AVATAR,57)
-	{
-		ctcp $0 AVATAR
-	}
-}
-
-defpopup(dcc)
-{
-	prologue
-	{
-
-		if($features("SSL"))%:bHaveSSL=1
-		else %:bHaveSSL=0
-	}
-
-	item($tr("Chat with","defscript") $0,78)
-	{
-		dcc.chat $0
-	}
-
-	item($tr("Reverse Chat with","defscript") $0,78)
-	{
-		dcc.chat -z $0
-	}
-
-	item($tr("Secure Chat with","defscript") $0,78) (%:bHaveSSL)
-	{
-		dcc.chat -s $0
-	}
-
-	separator
-
-	item($tr("Send to","defscript") $0,79)
-	{
-		dcc.send $0
-	}
-
-	item($tr("Secure send to","defscript") $0,79)
-	{
-		dcc.send -s $0
-	}
-
-	item($tr("Reverse Send to","defscript") $0,79)
-	{
-		dcc.rsend -z $0
-	}
-
-	item($tr("Secure Reverse Send to","defscript") $0,79)
-	{
-		dcc.rsend -z -s $0
-	}
-
-	separator
-
-	item($tr("TDCC Send to","defscript") $0,77)
-	{
-		dcc.send -t $0
-	}
-
-	item($tr("TDCC Reverse Send to","defscript") $0,77)
-	{
-		dcc.rsend -t $0
-	}
-
-	separator
-
-	popup($tr("Voice Chat","defscript"),166)
-	{
-		item($tr("Default","defscript")": ADPCM 8 KHz (32 kbps)")
-		{
-			dcc.voice $0
-		}
-
-		separator
-
-		item("ADPCM 11.025 KHz (44.1 kbps)")
-		{
-			dcc.voice -h=11025 $0
-		}
-
-		item("ADPCM 16 KHz (64 kbps)")
-		{
-			dcc.voice -h=16000 $0
-		}
-
-		item("ADPCM 22.05 KHz (88.2 kbps)")
-		{
-			dcc.voice -h=22050 $0
-		}
-
-		item("GSM 8 KHz (13.2 kbps)")
-		{
-			dcc.voice -g=gsm $0
-		}
-
-		item("GSM 11.025 KHz (18.1 kbps)")
-		{
-			dcc.voice -g=gsm -h=11025 $0
-		}
-
-		item("GSM 16 KHz (26.4 kbps)")
-		{
-			dcc.voice -g=gsm -h=16000 $0
-		}
-
-		item("GSM 22.05 KHz (36.2 kbps)")
-		{
-			dcc.voice -g=gsm -h=22050 $0
-		}
-
-		item("GSM 44.1 KHz (72.4 kbps)")
-		{
-			dcc.voice -g=gsm -h=44100 $0
-		}
-
-		item("NULL 8 KHz (128 kbps)")
-		{
-			dcc.voice -g=null $0
-		}
-
-		item("NULL 11.025 KHz (176.4 kbps)")
-		{
-			dcc.voice -g=null -h=11025 $0
-		}
-	}
-}
-
-defpopup(dccchat)
-{
-	prologue
-	{
-
-		# we use the extended scope variables: they are visible in the entire defpopup scope
-		# %:visible is the string that we will "show to the user" in the popup widget
-		# for multiple users the string might become long so we are going to change it in "multiple users"
-		%:visible = $0
-		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
-		# of multiple nicknames rather than a single nick
-		%:multiple = 0
-		# finally , set these variables
-		if($str.findfirst(%:visible,",") != -1)
-		{
-			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users","defscript")")"
-			%:multiple = 1
-		}
-	}
-
-	separator
-
-	extpopup(C&TCP,ctcp,51)
-
-	extpopup(&DCC,dcc,77)
-
-	separator
-
-	item($tr("Notify Avatar","defscript"),57)
-	{
-		avatar.notify $0
-	}
-
-	separator
-
-	item($tr("Clear Buffer","defscript"),121)
-	{
-		clear
-	}
-}
-
-#
-# Some minimal work on the query
-# A text view popup (right click on a query view)
-#
-
-defpopup(querytextview)
-{
-	prologue
-	{
-
-		# we use the extended scope variables: they are visible in the entire defpopup scope
-		# %:visible is the string that we will "show to the user" in the popup widget
-		# for multiple users the string might become long so we are going to change it in "multiple users"
-		%:visible = $0
-		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
-		# of multiple nicknames rather than a single nick
-		%:multiple = 0
-		# finally , set these variables
-		if($str.findfirst(%:visible,",") != -1)
-		{
-			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users","defscript")")"
-			%:multiple = 1
-		}
-	}
-
-
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
-	{
-		whois $0 $0
-	}
-
-	separator
-
-	popup($tr("&Information","defscript"),49)
-	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
-		{
-			whois $0
-		}
-
-		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
-		{
-			whowas $0
-		}
-
-		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
-		{
-			who $0
-		}
-
-		separator
-
-		item($tr("DNS for","defscript") $0,75)
-		{
-			foreach(%i,$str.split(",",$0))dns %i
-		}
-
-		item($tr("Mask for","defscript") $0,75) (!%:multiple)
-		{
-			echo $mask($0,11)
-		}
-	}
-
-	separator
-
-	extpopup(C&TCP,ctcp,51)
-
-	extpopup(&DCC,dcc,77)
-
-	separator
-
-	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple)
-
-	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
-
-	item($tr("Notify Avatar","defscript"),57)
-	{
-		avatar.notify $0
-	}
-
-	separator
-
-	item($tr("Clear Buffer","defscript"),121)
-	{
-		clear
-	}
-}
-
-
-#
-# Logging popup for the windows
-#
-defpopup(logging)
-{
-	prologue
-	{
-
-		# If this window is being logged actually , $log.file will be non empty
-		# and pointing to the log file actually open.
-		if($isSet($log.file))
-			%:logfile = $file.extractfilename($log.file)
-	}
-
-	label($tr("Logging to","defscript"):<br><b>%:logfile</b>) ("%:logfile" != "")
-
-	item($tr("Flush Log File","defscript"),19) (%:logfile)
-	{
-		log.flush
-	}
-
-	separator
-
-	item($tr("Stop Logging","defscript"),58) (%:logfile)
-	{
-		log.stop
-	}
-
-	label($tr("Not Logging","defscript")) (!%:logfile)
-
-	item($tr("Log To Default File","defscript"),119) (!%:logfile)
-	{
-		log.start
-	}
-
-	item($tr("Log To Default File","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
-	{
-		log.start -p
-	}
-
-	item($tr("Log To...","defscript"),119) (!%:logfile)
-	{
-		dialog.file(save,$tr("Choose Log Filename","defscript"))
-		{
-			if($0)log.start  $0
-		}
-	}
-
-	item($tr("Log To...","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
-	{
-		dialog.file(save,$tr("Choose Log Filename","defscript"))
-		{
-			if($0)log.start -p $0
-		}
-	}
-}
-
-defpopup(defaulttextview)
-{
-	prologue
-	{
-
-		# we use the extended scope variables: they are visible in the entire defpopup scope
-		# %:visible is the string that we will "show to the user" in the popup widget
-		# for multiple users the string might become long so we are going to change it in "multiple users"
-		%:visible = $0
-		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
-		# of multiple nicknames rather than a single nick
-		%:multiple = 0
-		# finally , set these variables
-		if($str.findfirst(%:visible,",") != -1)
-		{
-			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users","defscript")")"
-			%:multiple = 1
-		}
-	}
-
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
-	{
-		whois $0 $0
-	}
-
-	separator
-
-	popup($tr("&Information","defscript"),49)
-	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
-		{
-			whois $0
-		}
-
-		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
-		{
-			whowas $0
-		}
-
-		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
-		{
-			who $0
-		}
-
-		separator
-
-		item(DNS $0,75)
-		{
-			foreach(%i,$str.split(",",$0))dns %i
-		}
-	}
-
-	separator
-
-	item($tr("&Query","defscript") %:visible,47)
-	{
-		query $0
-	}
-
-	separator
-
-	extpopup(C&TCP,ctcp,51)
-
-	extpopup(&DCC,dcc,77)
-
-	separator
-
-	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
-
-	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
-
-	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
-
-	item($tr("Notify avatar","defscript"),57)
-	{
-		avatar.notify $0
-	}
-
-	separator
-
-	item($tr("Clear Buffer","defscript"),121)
-	{
-		clear
-	}
-}
-
-file.addimagepath %mypath/pics/
-
-#
-# FIXME: Add uninstall part:
-#  file.delimagepath
-#
-
-
-# window popup
-
-defpopup(windowpopup)
-{
-	prologue
-	{
-		%:bIsConnectedConsole = $(($window.type == "console") && ($context.state == "connected"));
-
-		if($window.type == "channel")
-		{
-			%:bIsChannel = $true;
-			%:szNetwork = $context.serverdbNetworkName()
-			%:szServer = $context.serverdbServerHostName()
-			%:bIsAutoJoinedOnNetwork = $false;
-			%:bIsAutoJoinedOnServer = $false;
-
-			if($serverdb.networkExists(%:szNetwork))
-			{
-				foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
-				{
-					%aChanAndPass = $str.split(":",%szChanAndPass)
-
-					if(%aChanAndPass[0] == $chan.name)
-					{
-						%:bIsAutoJoinedOnNetwork = $true;
-						break;
-					}
-				}
-				if($serverdb.serverExists(%:szServer,%:szNetwork))
-				{
-					foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
-					{
-						%aChanAndPass = $str.split(":",%szChanAndPass)
-
-						if(%aChanAndPass[0] == $chan.name)
-						{
-							%:bIsAutoJoinedOnServer = $true;
-							break;
-						}
-					}
-				} else {
-					%:szServer = ""
-				}
-			} else {
-				%:szNetwork = ""
-			}
-			%:bIsAutoJoined = $(%:bIsAutoJoinedOnNetwork || %:bIsAutoJoinedOnServer)
-		} else {
-			%:bIsChannel = $false;
-		}
-	}
-
-
-	item($tr("Dock","defscript"), 6) (!$window.isDocked()) window.dock
-	item($tr("Undock","defscript"), 7) ($window.isDocked()) window.undock
-
-	separator
-
-	item($tr("Minimize","defscript"), 3) (!$window.isMinimized()) window.minimize
-	item($tr("Maximize","defscript"), 2) (!$window.isMaximized()) window.maximize
-	item($tr("Restore","defscript"), 4) ($window.isMinimized() || $window.isMaximized()) window.restore
-
-	separator
-
-	item($tr("Close","defscript"), 1) window.close
-
-	separator
-
-	extpopup($tr("Logging","defscript"),logging,119)
-
-	item($tr("Set window props as default","defscript"), 10) window.savePropertiesAsDefault
-
-	# channel-specific items
-
-	separator(%:bIsChannel)
-
-	popup($tr("Automatically Join Channel","defscript"),$icon("join"))(%:bIsChannel && (!%:bIsAutoJoined) && ((%:szServer != "") || (%:szNetwork != "")))
-	{
-
-		item($str.printf($tr("When Connecting to Server '?s'","defscript"),%:szServer),$icon("server"))(%:szServer != "")
-		{
-			%aChans = $serverdb.serverJoinChannels(%:szNetwork,%:szServer)
-			%aChans <+ $chan.name
-			serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
-		}
-
-		item($str.printf($tr("When Connecting to Network '?s'","defscript"),%:szNetwork),$icon("world"))(%:szNetwork != "")
-		{
-			%aChans = $serverdb.networkJoinChannels(%:szNetwork)
-			%aChans <+ $chan.name
-			serverdb.setNetworkJoinChannels %:szNetwork %aChans
-		}
-	}
-
-	item($str.printf($tr("Stop Auto-Joining Channel on Server '?s'","defscript"),%:szServer),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnServer)
-	{
-		%aChans = $array()
-		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
-		{
-			%aChanAndPass = $str.split(":",%szChanAndPass)
-
-			if(%aChanAndPass[0] != $chan.name)
-				%aChans <+ %szChanAndPass;
-		}
-		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
-	}
-
-	item($str.printf($tr("Stop Auto-Joining Channel on Network '?s'","defscript"),%:szNetwork),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnNetwork)
-	{
-		%aChans = $array()
-		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
-		{
-			%aChanAndPass = $str.split(":",%szChanAndPass)
-
-			if(%aChanAndPass[0] != $chan.name)
-				%aChans <+ %szChanAndPass;
-		}
-		serverdb.setNetworkJoinChannels %:szNetwork %aChans
-	}
-
-	# console-specific items
-
-	separator(%:bIsConnectedConsole)
-
-	item($tr("Part All Channels","defscript"), 31) (%:bIsConnectedConsole && ($window.list(channel)))
-	{
-		foreach(%x,$window.list(channel))
-			%channels <+ $target(%x);
-		part $str.join(",",%channels);
-	}
-
-	item($tr("Close All Queries","defscript"), 47) (%:bIsConnectedConsole && ($window.list(query)))
-	{
-		foreach(%x,$window.list(query))
-			window.close %x
-	}
-
-	item($tr("Rejoin All Dead Channels" ,"defscript"), 61) (%:bIsConnectedConsole && ($window.list(deadchannel)))
-	{
-		foreach(%x,$window.list(deadchannel))
-			%channels <+ $target(%x);
-		join $str.join(",",%channels);
-	}
-
-	item($tr("Close All Dead Channels" ,"defscript"), 232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
-	{
-		foreach(%x,$window.list(deadchannel))
-			window.close %x
-	}
-
-	item($tr("Close All Dead Queries" ,"defscript"), 233) (%:bIsConnectedConsole && ($window.list(deadquery)))
-	{
-		foreach(%x,$window.list(deadquery))
-			window.close %x
-	}
-
-	separator(%:bIsConnectedConsole)
-
-	item($tr("Unhighlight All Windows" ,"defscript")) (%:bIsConnectedConsole)
-	{
-		foreach(%x,$window.list(all))
-			window.highlight 0 %x
-	}
-
-	item($tr("Unhighlight All Channels" ,"defscript")) (%:bIsConnectedConsole && ($window.list(channel)))
-	{
-		foreach(%x,$window.list(channel))
-			window.highlight 0 %x
-	}
-
-	item($tr("Unhighlight All Queries" ,"defscript")) (%:bIsConnectedConsole && ($window.list(query)))
-	{
-		foreach(%x,$window.list(query))
-			window.highlight 0 %x
-	}
-
-# end: console-specific items
-}
-
-# Host link popup
-
-defpopup(hostpopup)
-{
-	item($tr("Look Up ","defscript")$0,13)
-	{
-		host -a $0
-	}
-
-	separator
-
-	item($tr("Open ","defscript")"ftp://"$0"/",145) ("$system.ostype" == "unix")
-	{
-		openurl "ftp://$0/"
-	}
-
-	item($tr("Telnet to ","defscript")$0,25)
-	{
-		system.runcmd telnet $0
-	}
-
-	separator
-
-	item($tr("Traceroute to ","defscript")$0,42)
-	{
-		if("$system.ostype" == "unix") system.runcmd traceroute $0
-		else system.runcmd tracert $0
-	}
-
-	item($tr("Traceroute6 to ","defscript")$0,42)
-	{
-		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
-		else system.runcmd tracert6 $0
-	}
-
-	item("Ping "$0,147)
-	{
-		system.runcmd ping $0
-	}
-
-	item("Ping6 "$0,147)
-	{
-		system.runcmd ping6 $0
-	}
-}
-
