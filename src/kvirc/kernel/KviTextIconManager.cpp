@@ -69,7 +69,6 @@ KviTextIcon::KviTextIcon(QString szFile)
 
 	if(g_pApp->findImage(szRetPath, szFile))
 	{
-		qDebug("resize");
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 			m_pAnimatedPixmap->start();

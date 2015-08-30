@@ -58,7 +58,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 		{
 			c->warning("Icon '%s' not found",szIcon.toUtf8().data());
 		} else {
-			if(pIcon->id() != -1)
+			if(pIcon->id() != KviIconManager::None)
 				c->returnValue()->setInteger(pIcon->id());
 			else
 				c->returnValue()->setString(pIcon->filename());
@@ -70,7 +70,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 
 		while(KviTextIcon * i = it.current())
 		{
-			if(i->id() != -1)
+			if(i->id() != KviIconManager::None)
 				pHash->set(it.currentKey(),new KviKvsVariant((kvs_int_t)(i->id()) ));
 			else
 				pHash->set(it.currentKey(),new KviKvsVariant(i->filename()));
