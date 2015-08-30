@@ -57,6 +57,9 @@
 #include <QPoint>
 #include <QContextMenuEvent>
 
+#ifdef COMPILE_KDE4_SUPPORT
+	#include <KStatusBar>
+#endif
 
 KviKvsWidget::KviKvsWidget(KvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
