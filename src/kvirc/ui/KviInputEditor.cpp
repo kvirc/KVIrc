@@ -68,6 +68,10 @@
 #include <QStyleFactory>
 #include <QTextBoundaryFinder>
 
+#if (QT_VERSION >= 0x050000)
+	#include <qdrawutil.h> // qDrawShadePanel
+#endif
+
 // from KviApplication.cpp
 extern QMenu         * g_pInputPopup;
 extern KviTextIconWindow       * g_pTextIconWindow;
@@ -357,6 +361,8 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 
+	QRect cr = rect();
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
@@ -364,23 +370,29 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p.fillRect(contentsRect(), col);
+		p.fillRect(cr, col);
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, contentsRect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
-		p.drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, cr.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, cr.topLeft());
+		p.drawTiledPixmap(cr,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorInputBackground));
+		p.fillRect(cr,KVI_OPTION_COLOR(KviOption_colorInputBackground));
 
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap();
 		if(pix)
-			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
+			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),cr,cr.width(),cr.height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
 
+#if (QT_VERSION >= 0x050000)
+	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
+	qDrawShadePanel(&p,0,0,width(),height(),palette(),true,1,NULL);
+	
+	QRect r(1,1,width()-1,height()-1);
+#else
 	QStyleOptionFrameV2 option;
 
 	option.initFrom(this);
@@ -393,11 +405,15 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		option.state |= QStyle::State_ReadOnly;
 
 	//option.state &= ~(QStyle::State_HasFocus | QStyle::State_Active | QStyle::State_MouseOver); // kill any state that will cause an "active" frame to be painted
+	//option.palette.setBrush(QPalette::Background,QBrush()); // no background brush, thank you
+	//option.palette.setBrush(QPalette::Window,QBrush()); // no background brush, thank you
 	option.features = QStyleOptionFrameV2::None;
 
 	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
 
 	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
+#endif
+
 
 	r.setX(r.x() + KVI_INPUT_MARGIN + KVI_INPUT_PADDING);
 	r.setY(r.y() + KVI_INPUT_MARGIN + KVI_INPUT_PADDING);
