@@ -151,16 +151,23 @@ build_script:
         $exe = dir -name *.exe
         $new_name = $exe.Replace(".exe", "-$env:target_arch.exe")
         Push-AppveyorArtifact $exe -FileName $new_name
+        $cmake_name = $exe.Replace(".exe", "-$env:target_arch.cmake.txt")
+        Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name
+        (New-Object PSObject
+          | Add-Member -PassThru NoteProperty bin $new_name
+          | Add-Member -PassThru NoteProperty cmake $cmake_name
+        ) | ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch"
+        Push-AppveyorArtifact "latest-$env:target_arch"
 test: off
 # Upload installer to kvirc.d00p.de
 deploy:
-  provider: FTP
-  protocol: ftp
-  host:
-    secure: j/QMZIWjw1PO1NmBNRjeZA==
-  username:
-    secure: LGLjbFeFZcpNFnnkHGXX4g==
-  password:
-    secure: 4S03mCVua0ENN3fmxF07XOvDfuN9AgPsUB4jyLS2RD0=
-  folder: /
-  artifact: /.*\.exe/
+  - provider: FTP
+    protocol: ftp
+    host:
+      secure: j/QMZIWjw1PO1NmBNRjeZA==
+    username:
+      secure: LGLjbFeFZcpNFnnkHGXX4g==
+    password:
+      secure: 4S03mCVua0ENN3fmxF07XOvDfuN9AgPsUB4jyLS2RD0=
+    folder: /
+    artifact: /.*\.exe$|.*\.cmake\.txt$|^latest-.*/
