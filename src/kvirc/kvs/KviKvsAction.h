@@ -60,7 +60,45 @@ public:
 	* \param szKeySequence The shortcut to activate the action
 	* \return KviKvsAction
 	*/
-	KviKvsAction(QObject * pParent, const QString & szName, const QString & szScriptCode, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const QString & szSmallIconId = QString(), unsigned int uFlags = 0, const QString & szKeySequence = QString());
+	KviKvsAction(
+			QObject * pParent,
+			const QString & szName,
+			const QString & szScriptCode,
+			const QString & szVisibleName,
+			const QString & szDescription,
+			KviActionCategory * pCategory = NULL,
+			const QString & szBigIconId = QString(),
+			const QString & szSmallIconId = QString(),
+			unsigned int uFlags = 0,
+			const QString & szKeySequence = QString()
+		);
+
+	/**
+	* \brief Contructs the action object
+	* \param pParent The parent object
+	* \param szName The name of the action
+	* \param szScriptCode The code of the script contained in the action
+	* \param szVisibleName Permanent visible name, visible at least in the action drawer
+	* \param szDescription The description of the action
+	* \param pCategory One of KviActionManager::category*() or 0 (default category)
+	* \param szBigIconId The id of a big icon (32x32)
+	* \param szSmallIconId The id of a small icon (16x16)
+	* \param uFlags Flags of the action like connection needed, context needed, ...
+	* \param szKeySequence The shortcut to activate the action
+	* \return KviKvsAction
+	*/
+	KviKvsAction(
+			QObject * pParent,
+			const QString & szName,
+			const QString & szScriptCode,
+			const QString & szVisibleName,
+			const QString & szDescription,
+			KviActionCategory * pCategory = NULL,
+			const QString & szBigIconId = QString(),
+			KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+			unsigned int uFlags = 0,
+			const QString & szKeySequence = QString()
+		);
 
 	/**
 	* \brief Destroys the action object

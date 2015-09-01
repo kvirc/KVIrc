@@ -73,7 +73,7 @@ public:
 			const QString & szDescription,
 			KviActionCategory * pCategory = NULL,
 			const QString & szBigIconId = QString(),
-			const QString & szSmallIcoNId = QString(),
+			KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
 			unsigned int uFlags = 0
 		);
 	~KviSubmenuAction();

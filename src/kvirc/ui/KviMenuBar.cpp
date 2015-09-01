@@ -240,8 +240,10 @@ void KviMenuBar::setupScriptingPopup(QMenu *pop)
 
 void KviMenuBar::updateMainPopup()
 {
-	m_pDisconnectAction->setEnabled(m_pFrm->activeContext() &&
-		m_pFrm->activeContext()->state()==KviIrcContext::Connected);
+	m_pDisconnectAction->setEnabled(
+			m_pFrm->activeContext() &&
+			m_pFrm->activeContext()->state() == KviIrcContext::Connected
+		);
 }
 
 void KviMenuBar::setupMainPopup(QMenu *pop)

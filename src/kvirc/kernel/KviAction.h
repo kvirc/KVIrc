@@ -143,7 +143,17 @@ public:
 	* loaded when the module is loaded.
 	* \return KviAction
 	*/
-	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const QString & szSmallIconId = QString(), unsigned int uFlags = 0, const QString & szKeySequence = QString());
+	KviAction(
+			QObject * pParent,
+			const QString & szName,
+			const QString & szVisibleName,
+			const QString & szDescription,
+			KviActionCategory * pCategory = NULL,
+			const QString & szBigIconId = QString(),
+			const QString & szSmallIconId = QString(),
+			unsigned int uFlags = 0,
+			const QString & szKeySequence = QString()
+		);
 
 	/**
 	* \brief Constructs the action object
@@ -163,7 +173,17 @@ public:
 	* loaded when the module is loaded.
 	* \return KviAction
 	*/
-	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const KviIconManager::SmallIcon eIcon = KviIconManager::None, unsigned int uFlags = 0, const QString & szKeySequence = QString());
+	KviAction(
+			QObject * pParent,
+			const QString & szName,
+			const QString & szVisibleName,
+			const QString & szDescription,
+			KviActionCategory * pCategory = NULL,
+			const QString & szBigIconId = QString(),
+			KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+			unsigned int uFlags = 0,
+			const QString & szKeySequence = QString()
+		);
 
 	/**
 	* \brief Destroys the action object
@@ -175,8 +195,8 @@ protected:
 	QString                   m_szDescription;
 	KviActionCategory       * m_pCategory;
 	QString                   m_szBigIconId;
-	QString                   m_szSmallIconId;
-	QString                   m_eIcon;
+	QString                   m_szSmallIconId; // this is alternative to m_eSmallIcon
+	KviIconManager::SmallIcon m_eSmallIcon;
 	KviPointerList<QAction> * m_pActionList;
 	unsigned short int        m_uInternalFlags;
 	unsigned int              m_uFlags;

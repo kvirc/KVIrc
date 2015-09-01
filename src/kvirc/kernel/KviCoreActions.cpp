@@ -71,7 +71,7 @@ void register_core_actions(KviActionManager * m)
 		QString(__description), \
 		__category, \
 		QString(__icon), \
-		QString("%1").arg(__smallicon), \
+		__smallicon, \
 		__flags, \
 		QKeySequence(__accel).toString()); \
 	m->registerAction(a)
@@ -83,7 +83,7 @@ void register_core_actions(KviActionManager * m)
 		QString(__description), \
 		__category, \
 		QString(__icon), \
-		QString("%1").arg(__smallicon), \
+		__smallicon, \
 		__flags, \
 		QKeySequence(__accel).toString()); \
 	QObject::connect(a,SIGNAL(activated()),__object,__slot); \
@@ -463,7 +463,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Creates a new IRC context console"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_newirccontext.png",
-		KviIconManager::Console,
+		KviIconManager::NewItem,
 		0,
 		KVI_SHORTCUTS_CONTEXT);
 
@@ -747,7 +747,7 @@ KviSubmenuAction::KviSubmenuAction(
 		const QString &szDescription,
 		KviActionCategory * pCategory,
 		const QString &szBigIconId,
-		const QString &szSmallIconId,
+		KviIconManager::SmallIcon eSmallIcon,
 		unsigned int uFlags
 	)
 : KviKvsAction(
@@ -758,7 +758,7 @@ KviSubmenuAction::KviSubmenuAction(
 		szDescription,
 		pCategory,
 		szBigIconId,
-		szSmallIconId,
+		eSmallIcon,
 		uFlags
 	)
 {
@@ -829,7 +829,7 @@ KviJoinChannelAction::KviJoinChannelAction(QObject * pParent)
 	__tr2qs("Shows a popup menu that allows quickly selecting a channel to join"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_channelspopup.png",
-	QString("%1").arg(KviIconManager::Channel),
+	KviIconManager::Channel,
 	NeedsConnection | NeedsContext)
 {
 }
@@ -884,7 +884,7 @@ KviChangeNickAction::KviChangeNickAction(QObject * pParent)
 	__tr2qs("Shows a popup menu that allows quickly changing the nickname"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_nickpopup.png",
-	QString("%1").arg(KviIconManager::Nick),
+	KviIconManager::Nick,
 	NeedsConnection | NeedsContext)
 {
 }
@@ -936,7 +936,7 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
 	__tr2qs("Shows a popup menu that allows quickly connecting to a server"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_server.png",
-	QString("%1").arg(KviIconManager::Server),
+	KviIconManager::Server,
 	NeedsContext)
 {
 }
@@ -985,7 +985,7 @@ KviChangeUserModeAction::KviChangeUserModeAction(QObject * pParent)
 	__tr2qs("Shows a popup menu that allows quickly changing user modes"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_usermode.png",
-	QString("%1").arg(KviIconManager::Mode),
+	KviIconManager::Mode,
 	NeedsContext | NeedsConnection)
 {
 }
@@ -1060,7 +1060,7 @@ KviGoAwayAction::KviGoAwayAction(QObject * pParent)
 		__tr2qs("Allows entering and leaving away state"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_nokeyboard.png",
-		QString("%1").arg(KviIconManager::NotAway),
+		KviIconManager::NotAway,
 		KviKvsAction::NeedsContext | KviKvsAction::NeedsConnection,
 		KVI_SHORTCUTS_AWAY
 	)
@@ -1192,7 +1192,7 @@ KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
 	__tr2qs("Shows a popup menu with some IRC Tools"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_tools.png",
-	QString("%1").arg(KviIconManager::None),
+	KviIconManager::None,
 	NeedsConnection | NeedsContext)
 {
 }
@@ -1225,7 +1225,7 @@ KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
 	__tr2qs("Shows a popup menu with some IRC Actions"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_actions.png",
-	QString("%1").arg(KviIconManager::None),
+	KviIconManager::None,
 	NeedsConnection | NeedsContext)
 {
 }
