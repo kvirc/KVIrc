@@ -15,7 +15,7 @@ install:
     - |
         if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
           # want cmake newer than in ubuntu 12.04
-          sudo add-apt-repository -y ppa:sschuberth/cmake-here
+          sudo add-apt-repository -y ppa:yjwong/cmake
           sudo apt-get update
           sudo apt-get install cmake cmake-data
 
