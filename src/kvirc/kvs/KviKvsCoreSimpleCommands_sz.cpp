@@ -986,13 +986,20 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			who
 		@syntax:
-			who [+|-][flags] {[mask] | [channel] | [flag parameters]}
+			who <filter>
 		@short:
 			Requests WHO information
 		@description:
-			Requests WHO information about the specified user or channel.[br]
-			The first parameter is an optional set of flags (preceeded by a + or a -) to match
-			against the user/channel: this is supported only on some servers and networks.[br]
+			Requests WHO information about users/channels.[br]
+			The <filter> is a string specifying the subject of the query.
+			In the standard IRC protocol the subject can be a nickname or a channel.
+			If a channel name is used as filter then the list of all the users on that channel is returned.
+			Recent IRC servers support the WHOX extension which specifies that the <filter> can have
+			a much more complex syntax: <mask1> <options> [<mask2>].
+			<mask1> is a comma separated list of filters that can contain wildcards (* and ?),
+			<options> is a set of characters specifying what <mask1> is matching (nicknames, channel
+			names, user names, real names, ip addresses etc) and what kind of informations should be returned.
+			Look for the extended WHOX syntax on your favorite search engine.[br]
 			If no parameter is specified at all, it requests a WHO information about the current
 			channel.[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
@@ -1000,8 +1007,8 @@ namespace KviKvsCoreSimpleCommands
 			[example]
 			[comment]# Lists users on #kvirc[/comment]
 			who #kvirc
-			[comment]# Get a list of +o users, aka ircops (works on unreal, bahamut, others)[/comment]
-			who +m o
+			[comment]# WHOX: Get a list of +o users, aka ircops (works on unreal, bahamut, others)[/comment]
+			who 0 o%nuhs
 			[/example]
 		@seealso:
 			[cmd]names[/cmd]
@@ -1011,29 +1018,27 @@ namespace KviKvsCoreSimpleCommands
 	{
 		Q_UNUSED(__pSwitches);
 
-		QString szChannel;
-		QString szOther;
+		QString szData;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("channel",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szChannel)
-			KVSCSC_PARAMETER("other",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szOther)
+			KVSCSC_PARAMETER("filter",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szData)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(szChannel.isEmpty())
+		if(szData.isEmpty())
 		{
-			if(KVSCSC_pWindow->type() == KviWindow::Channel)
-				szChannel = KVSCSC_pWindow->target();
-			else {
+			if(KVSCSC_pWindow->type() != KviWindow::Channel)
+			{
 				KVSCSC_pContext->error(__tr2qs_ctx("No target mask/channel specified and the current window is not a channel","kvs"));
 				return false;
 			}
+
+			szData = KVSCSC_pWindow->target();
 		}
 
-		QByteArray szC = KVSCSC_pConnection->encodeText(szChannel);
-		QByteArray szO = KVSCSC_pConnection->encodeText(szOther);
+		QByteArray szData2 = KVSCSC_pConnection->encodeText(szData);
 
-		if(!KVSCSC_pConnection->sendFmtData("WHO %s %s",szC.data(),szO.data()))
+		if(!KVSCSC_pConnection->sendFmtData("WHO %s",szData2.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
 		return true;
@@ -1081,12 +1086,10 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szNick)
 		KVSCSC_PARAMETERS_END
 
-                if(!KVSCSC_pContext->connection())return KVSCSC_pContext->warningNoIrcConnection();
-
 		QByteArray szData = KVSCSC_pContext->connection()->encodeText(szNick);
 
-
-		if(!KVSCSC_pContext->connection()->sendFmtData("WHOIS %s",szData.data()))return KVSCSC_pContext->warningNoIrcConnection();
+		if(!KVSCSC_pContext->connection()->sendFmtData("WHOIS %s",szData.data()))
+			return KVSCSC_pContext->warningNoIrcConnection();
 
 		return true;
 	}
