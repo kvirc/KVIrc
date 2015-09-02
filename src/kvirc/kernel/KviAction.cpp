@@ -245,11 +245,18 @@ void KviAction::reloadImages()
 {
 	if(!m_pActionList)
 		return;
-	QPixmap * pPix = bigIcon();
+
+	QPixmap * pBigPix = bigIcon();
+	QPixmap * pSmallPix = smallIcon();
+
+	QIcon icon;
+	if(pBigPix)
+		icon.addPixmap(*pBigPix);
+	if(pSmallPix)
+		icon.addPixmap(*pSmallPix);
+
 	for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
-	{
-		pAction->setIcon(pPix ? *pPix : QPixmap());
-	}
+		pAction->setIcon(icon);
 }
 
 void KviAction::activeWindowChanged()

@@ -1105,6 +1105,7 @@ namespace KviTheme
 		QString szPicsPath;
 
 		g_pApp->getGlobalKvircDirectory(szPicsPath,KviApplication::Pics);
+
 		QDir d(szPicsPath);
 		QStringList sl = d.entryList(QDir::nameFiltersFromString("kvi_bigicon_*.png"),QDir::Files);
 
@@ -1220,8 +1221,8 @@ namespace KviTheme
 
 		#undef READ_OPTIONS
 		#undef READ_ALL_OPTIONS
-		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
 
+		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
 
 		// the pixmap options need special processing
 		for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
