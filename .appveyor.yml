@@ -153,7 +153,7 @@ build_script:
         Push-AppveyorArtifact $exe -FileName $new_name
         $cmake_name = $exe.Replace(".exe", "-$env:target_arch.cmake.txt")
         Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name
-        (New-Object PSObject | Add-Member -PassThru NoteProperty bin $new_name | Add-Member -PassThru NoteProperty cmake $cmake_name) | ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch" -Encoding UTF8
+        (New-Object PSObject | Add-Member -PassThru NoteProperty bin $new_name | Add-Member -PassThru NoteProperty cmake $cmake_name) | ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch" -Encoding ASCII
         Push-AppveyorArtifact "latest-$env:target_arch"
 test: off
 # Upload installer to kvirc.d00p.de
