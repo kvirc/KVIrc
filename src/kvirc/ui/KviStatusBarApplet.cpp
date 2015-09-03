@@ -661,7 +661,7 @@ void KviStatusBarUpdateIndicator::fillContextPopup(QMenu * p)
     pAction->setCheckable(true);
     pAction->setChecked(m_bUpdateOnStartup);
 
-    pAction = p->addAction(__tr2qs("Check SVN revisions"),this,SLOT(toggleRevision()));
+    pAction = p->addAction(__tr2qs("Check Git revisions"),this,SLOT(toggleRevision()));
     pAction->setCheckable(true);
     pAction->setChecked(m_bUpdateRevision);
 }
@@ -704,7 +704,7 @@ void KviStatusBarUpdateIndicator::checkVersion()
 	QString szUrl,szFileName;
 
 	if(m_bUpdateRevision)
-		szUrl = "http://kvirc.net/checkversion.php?svn=1";
+		szUrl = "http://kvirc.net/checkversion.php?git=1";
 	else
 		szUrl = "http://kvirc.net/checkversion.php";
 
@@ -786,7 +786,7 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 
 	if(m_bUpdateRevision)
 	{
-		szUrl = "https://svn.kvirc.de/kvirc/changeset/";
+		szUrl = "https://svn.kvirc.de/kvirc/changeset/"; // this needs a git URL probably to releases or something else.
 		szUrl += m_szNewVersion;
 	} else {
 		QString szSystem = KviBuildInfo::buildSystemName();
@@ -806,7 +806,7 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 	QString szCommand = "openurl ";
 	szCommand += szUrl;
 
-	// Open the svn or the download page for the platform we're using
+	// Open the Git or the download page for the platform we're using
 	KviKvsScript::run(szCommand,g_pActiveWindow);
 }
 
@@ -835,7 +835,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 	} else if(m_bUpdateStatus){
 		szRet += __tr2qs("New updates found");
 		szRet += "</b><br>";
-		szRet += __tr2qs("Double click to get the lastest version");
+		szRet += __tr2qs("Double click to get the latest version");
 	}
 	szRet += "</center>";
 	return szRet;

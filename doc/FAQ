@@ -6,7 +6,7 @@
 
 2. COMPILATION
 
-2.1 I can't compile kvirc from svn, what's wrong?
+2.1 I can't compile KVIrc from Git, what's wrong?
 2.2 Internal Compiler Errors ?
 
 
@@ -27,7 +27,7 @@
 4.6 /me doesn't support the '$' character, what's wrong ?
 4.7 /me doesn't support the '"' (double quote) character, what's wrong ?
 4.8 /me can't contain the ';' character, what's wrong ?
-4.9 I try to do a /whois on nick blah\ but i get the reply for blah (without the slash)
+4.9 I try to do a /whois on nick blah\ but I get the reply for blah (without the slash)
 4.10 What is AVATAR protocol ? Is there any documentation about it ?
 4.11 The log files seem to be saved randomly, when I open a log
      I can see only a part of the text that actually should be there
@@ -63,7 +63,7 @@
 7. CRASHES
 
 7.1 What the heck is a gdb stack trace and how do I get it ?
-7.2 KVIrc hangs up, but doesn't crash. How do i report debug information ?
+7.2 KVIrc hangs up, but doesn't crash. How do I report debug information ?
 7.3 KVIrc exits by itself or simply "disappears" without any apparent reason.
 7.4 KVIrc dies when using alias(identify){ identify password; }
 
@@ -96,22 +96,23 @@
    the KVIrc sources with the KDE library changes we choose not to do it.
    If you wish to contribute some code that better integrates KVIrc with
    KDE you're welcome to do so: we will happily accept your patches as long
-   as you promise to mantain them :)
+   as you promise to maintain them :)
 
 
 --------------------------------------------------------------------------------
 2. COMPILATION
 --------------------------------------------------------------------------------
 
-2.1 I can't compile kvirc from svn, what's wrong?
+2.1 I can't compile KVIrc from Git, what's wrong?
 
    Have you checked the requirements ?
    *Carefully* read the INSTALL file that comes with the distribution:
-   it contains the information to solve 95% of the problems that
+   it contains the information which solves 95% of the problems that
    you may encounter. You may also try digging in our mailing list
    archive: many problems have been solved there.
-   If you still can't get it to work please either subscribe to the KVIrc
-   mailing list (see www.kvirc.net) and report the problem there or join #kvirc
+   If you still can't get it to work, please either subscribe to the KVIrc
+   mailing list (see www.kvirc.net) and report the problem there. Alternatively
+   open a issue at https://github.com/kvirc/KVIrc/issues or join #kvirc
    on Freenode and ask the channel members for a hint.
 
 
@@ -129,7 +130,7 @@
       out 5-6 of them daily. Usually it is solved by simply restarting the "make" command.
       If it doesn't go away or if it gets really frequent and annoying you might try to upgrade the compiler.
    2) A memory corruption: this is really frequent: one of your memory banks is spitting random bytes
-      sometimes. Usually the problems come out under heavy system load (kernel, KDE or kvirc compilation for example).
+      sometimes. Usually the problems come out under heavy system load (kernel, KDE or KVIrc compilation for example).
       You can check for memory corruption by trying different RAM modules (or removing them one at a time to discover
       the broken bank). You can also try a program called memtest and a kernel
       patch that can force the broken memory banks to be ignored by the kernel (allocated permanently to a dummy kernel task).
@@ -160,12 +161,12 @@
 4. IRC
 -------------------------------------------------------------------------------
 
-4.1 How do i join a channel ?
+4.1 How do I join a channel ?
 
   Type "/join #channelname"
 
 
-4.2 How do i autojoin channels?
+4.2 How do I autojoin channels?
 
   There are many ways to do it.
   For example:
@@ -180,7 +181,7 @@
   Now click OK and you're done: you have just created a handler for an event.
   Reconnect to a server and KVIrc will autojoin the channels that you have selected.
   Another option (nicer, if you use several servers) is to go to the servers options
-  page and click the button labeled 'Advanced' on the entry for the single server.
+  page and click the button labelled 'Advanced' on the entry for the single server.
   There is a server-specific "On connect execute..." event.
 
 
@@ -192,7 +193,7 @@
   "Advanced...". In the dialog that appears there is a NickServ tab
   on that you can add your identification rules. Adding a rule
   should be straightforward (if you stop the mouse over an item you will likely get a small
-  tool tip with the explaination). Each rule is composed of:
+  tool tip with the explanation). Each rule is composed of:
   - the nickname that is being identified: the rule will be applied only
       when your current nickname corresponds to this one.
   - a nick server user mask that must be matched by the NickServ user
@@ -264,12 +265,12 @@
 
         # ping6 ipv6.google.com
 
-  Is the IPV6 support enabled in your kvirc executable ?
+  Is the IPV6 support enabled in your KVIrc executable ?
   To find it out, try
 
         /echo $features
 
-  in the KVIrc commandline. You should get a comma separated list of
+  in the KVIrc command line. You should get a comma separated list of
   features compiled in the executable. If the list contains "IPv6" then
   the support is compiled in, otherwise you must check your compilation
   stage to guess what went wrong.
@@ -281,12 +282,12 @@
 
 4.6 /me doesn't support the '$' character, what's wrong ?
 
-  This is NOT a bug : this is a feature : kvirc supports (and substitutes!) variables in all the commands.
+  This is NOT a bug : this is a feature : KVIrc supports (and substitutes!) variables in all the commands.
   You can escape your $ sign by using the backslash character:
 
         /me has gained \$100
 
-  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  Otherwise, you can use friendly command line mode, where special symbols are not interpreted. Just click the green
   arrow next to the input field and then click the KVS icon.
 
 
@@ -298,29 +299,29 @@
 
         /me feels a bit \"foo\"
 
-  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  Otherwise, you can use friendly command line mode, where special symbols are not interpreted. Just click the green
   arrow next to the input field and then click the KVS icon.
 
 
 4.8 /me can't contain the ';' character, what's wrong ?
 
-  This is NOT a bug : this is a feature : kvirc supports multiple commands on a single line and uses ';' as a command
+  This is NOT a bug : this is a feature : KVIrc supports multiple commands on a single line and uses ';' as a command
   separator. You can escape your ';' sign by using the backslash character:
 
         /me is hungry \;)
 
-  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  Otherwise, you can use friendly command line mode, where special symbols are not interpreted. Just click the green
   arrow next to the input field and then click the KVS icon.
 
 
-4.9 I try to do a /whois on nick blah\ but i get the reply for blah (without the slash)
+4.9 I try to do a /whois on nick blah\ but I get the reply for blah (without the slash)
 
   In KVIrc /whois is a scripting command and the nickname is a command parameter.
   In scripting commands the backslash is a special character with several "escape"
   meanings. To include a literal backslash inside a parameter you MUST double it,
   thus the correct command to issue is /whois blah\\
 
-  Otherwise, you can use friendly commandline mode, where special symbols are not interpreted. Just click the green
+  Otherwise, you can use friendly command line mode, where special symbols are not interpreted. Just click the green
   arrow next to the input field and then click the KVS icon.
 
 
@@ -342,7 +343,7 @@
   prefix but is a simple file name. The remote users request the avatars
   by issuing a DCC GET command. This is an useful but secondary extension
   and can be ignored by simple implementations. If you need more information
-  about this method please write to pragma at kvirc dot net.
+  about this method please write to pragma at KVIrc dot net.
 
 
 4.11 The log files seem to be saved randomly, when I open a log
@@ -379,8 +380,6 @@
    This option should be used ONLY IF you have problems without.
 
 
-
-
 -------------------------------------------------------------------------------
 5. ADVANCED IRC FEATURES
 -------------------------------------------------------------------------------
@@ -395,7 +394,7 @@
 
        /echo $features
 
-  in the KVIrc commandline. If "SSL" is not in the list then you must go back
+  in the KVIrc command line. If "SSL" is not in the list then you must go back
   to the compilation phase and see what went wrong.
 
 
@@ -441,7 +440,7 @@
   and then choose one of the available engines.
   The Mircryption engine is an implementation of the mircryption protocol and
   supports both ECB and CBC mode. There is also a wide variety of Rijndael based encryption
-  engies as well as some funky other text transform tricks.
+  engines as well as some funky other text transform tricks.
   Most of the engines will need a pair of keys to encrypt and decrypt text
   and in most cases you will use the same key for both encrypting and
   decrypting. In the particular case of Mircryption you can enable
@@ -604,14 +603,14 @@
 
       run "C:\\path\\to\\your\\browser.exe" "$0"
 
-  as url handler for the protocol you're interested in (maybe in all).
+  as URL handler for the protocol you're interested in (maybe in all).
   Please note the double backslashes (a single backslash is an escaping character)
 
   Suepahfly suggests to use
 
      rundll32 url.dll,FileProtocolHandler "$0"
 
-  as url handler to open the url in the default windows browser.
+  as URL handler to open the URL in the default windows browser.
 
 
 -------------------------------------------------------------------------------
@@ -621,7 +620,7 @@
 7.1 What the heck is a gdb stack trace and how do I get it ?
 
   A gdb stack trace is a "photography" of the state of the KVIrc internals
-  taken when a certain event has occured. The most common event
+  taken when a certain event has occurred. The most common event
   is a program crash (Segmentation Fault).
   The stack trace helps (or even allows) the developers to locate the
   crash cause in the program sources.
@@ -632,7 +631,7 @@
   - Have a working installation of gdb (the gnu debugger)
     This is usually available on your distribution cd
     and you may already have it installed.
-  - Run KVirc:
+  - Run KVIrc:
     # gdb kvirc
     When the gdb prompt appears write:
     # (gdb) run -f
@@ -641,10 +640,10 @@
     # (gdb) bt
     The text you see is the stack trace you wanted :)
     Copy+Paste and create a new bug ticket in the web bugtracker
-    (you can find a link on the kvirc website).
+    (you can find a link on the KVIrc website).
 
 
-7.2 KVIrc hangs up, but doesn't crash. How do i report debug information ?
+7.2 KVIrc hangs up, but doesn't crash. How do I report debug information ?
 
   Use gdb to get a stack trace as in answer to question 7.1.
   Since your KVIrc doesn't crash you will have to interrupt the execution
@@ -665,20 +664,19 @@
   that once for all and fix your script.
 
 
-
 -------------------------------------------------------------------------------
 8. SCRIPTING / ADDONS
 -------------------------------------------------------------------------------
 
 8.1 Trying to load a script i get a "can't load the module 'script'" error.
-  Full version of the error (this is for linux, may vary on windows/other os):
+  Full version of the error (this is for Linux, may vary on Windows/other OS):
   ---
   [KVS] Runtime Error: Module command call failed: can't load the module 'script':
   QLibrary::load_sys: Cannot load /usr/local/share/kvirc/4.0/modules/libkviscript.so
   (/usr/local/share/kvirc/4.0/modules/libkviscript.so: no such file or directory)
   ---
   The script you are trying to load is calling an old KVIrc interface. Probably the
-  script was created for kvirc <= 3.2, and has not been updated to work on newer
+  script was created for KVIrc <= 3.2, and has not been updated to work on newer
   versions. The "script" module interface has been renamed to "addon" between 3.2.0.99
   and 3.2.4; the new "addon" module exports all the old "script" interfaces, so
   converting the script should be quite easy.

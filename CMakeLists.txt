@@ -87,7 +87,7 @@ set(LIB_SUFFIX
 	CACHE STRING "Define suffix of directory name (32/64)"
 )
 
-# Get revision number from SVN
+# Get revision number from Git
 set(MANUAL_REVISION
 	CACHE STRING "Manually set the revision number"
 )
