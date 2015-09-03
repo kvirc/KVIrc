@@ -4,22 +4,22 @@ set(kvitrayicon_SRCS
 	libkvitrayicon.cpp
 )
 
-set(unixFiles
-	kvi_dock_part-0.png
-	kvi_dock_part-1.png
-	kvi_dock_part-2.png
-)
-
-set(win32Files
-	kvi_dock_win32-0.png
-	kvi_dock_win32-1.png
-	kvi_dock_win32-2.png
-)
-
-set(monoFiles
-	kvi_dock_mono-0.png
-	kvi_dock_mono-1.png
-	kvi_dock_mono-2.png
+set(imageFiles
+	kvi_dock_normal_16-0.png
+	kvi_dock_normal_16-1.png
+	kvi_dock_normal_16-2.png
+	kvi_dock_normal_22-0.png
+	kvi_dock_normal_22-1.png
+	kvi_dock_normal_22-2.png
+	kvi_dock_normal_48-0.png
+	kvi_dock_normal_48-1.png
+	kvi_dock_normal_48-2.png
+	kvi_dock_mono_22-0.png
+	kvi_dock_mono_22-1.png
+	kvi_dock_mono_22-2.png
+	kvi_dock_mono_48-0.png
+	kvi_dock_mono_48-1.png
+	kvi_dock_mono_48-2.png
 )
 
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.png")
@@ -29,13 +29,10 @@ include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
 if(UNIX)
 	if(APPLE)
-		install(FILES ${monoFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
-	elseif(COMPILE_KDE_SUPPORT)
-		install(FILES ${monoFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+		install(FILES ${imageFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
 	else()
-		# Assume linux
-		install(FILES ${unixFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+		install(FILES ${imageFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
 	endif()
 elseif(WIN32)
-	install(FILES ${win32Files} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
+	install(FILES ${imageFiles} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
 endif()

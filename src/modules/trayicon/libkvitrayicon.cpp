@@ -57,7 +57,11 @@
 	#define ICON_SIZE 16
 	#include <Windows.h>
 #else
-	#define ICON_SIZE 22
+	#if QT_VERSION >= 0x050000
+		#define ICON_SIZE 48
+	#else
+		#define ICON_SIZE 22
+	#endif
 #endif
 
 extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
@@ -353,18 +357,18 @@ void KviTrayIconWidget::fillContextPopup()
 
 void KviTrayIconWidget::toggleParentFrame()
 {
-	qDebug("TrayIcon::toggleParentFrame()");
+	//qDebug("TrayIcon::toggleParentFrame()");
 	if(g_pMainWindow->isMinimized())
 	{
-		qDebug("- frame is minimized");
+		//qDebug("- frame is minimized");
 		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 
 		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
 		{
-			qDebug("- window was maximized so calling showMaximized()");
+			//qDebug("- window was maximized so calling showMaximized()");
 			g_pMainWindow->showMaximized();
 		} else {
-			qDebug("- window wasn't maximized so calling plain show()");
+			//qDebug("- window wasn't maximized so calling plain show()");
 			g_pMainWindow->show();
 		}
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -374,14 +378,14 @@ void KviTrayIconWidget::toggleParentFrame()
 #endif
 	} else if(!g_pMainWindow->isVisible())
 	{
-		qDebug("- frame is not visible");
+		//qDebug("- frame is not visible");
 		//restore mainwindow
 		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
 		{
-			qDebug("- window was maximized so calling showMaximized()");
+			//qDebug("- window was maximized so calling showMaximized()");
 			g_pMainWindow->showMaximized();
 		} else {
-			qDebug("- window wasn't maximized so calling plain show()");
+			//qDebug("- window wasn't maximized so calling plain show()");
 			g_pMainWindow->show();
 		}
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -390,7 +394,7 @@ void KviTrayIconWidget::toggleParentFrame()
 		g_pMainWindow->activateWindow();
 #endif
 	} else {
-		qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
+		//qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
 		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = g_pMainWindow->isMaximized();
 		g_pMainWindow->hide();
 	}
@@ -680,37 +684,25 @@ static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
+	#define ICON_INFIX "mono"
+#else
+	#define ICON_INFIX "normal"
+#endif
+
 // =======================================
 // init routine
 // =======================================
 static bool trayicon_module_init(KviModule * m)
 {
 	QString buffer;
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	g_pApp->findImage(buffer,"kvi_dock_win32-0.png");
-#elif defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
-	g_pApp->findImage(buffer,"kvi_dock_mono-0.png");
-#else
-	g_pApp->findImage(buffer,"kvi_dock_part-0.png");
-#endif
+	g_pApp->findImage(buffer,QString("kvi_dock_" ICON_INFIX "_%1-0.png").arg(ICON_SIZE));
 	g_pDock1 = new QPixmap(buffer);
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	g_pApp->findImage(buffer,"kvi_dock_win32-1.png");
-#elif defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
-	g_pApp->findImage(buffer,"kvi_dock_mono-1.png");
-#else
-	g_pApp->findImage(buffer,"kvi_dock_part-1.png");
-#endif
+	g_pApp->findImage(buffer,QString("kvi_dock_" ICON_INFIX "_%1-1.png").arg(ICON_SIZE));
 	g_pDock2 = new QPixmap(buffer);
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	g_pApp->findImage(buffer,"kvi_dock_win32-2.png");
-#elif defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MAC)
-	g_pApp->findImage(buffer,"kvi_dock_mono-2.png");
-#else
-	g_pApp->findImage(buffer,"kvi_dock_part-2.png");
-#endif
+	g_pApp->findImage(buffer,QString("kvi_dock_" ICON_INFIX "_%1-2.png").arg(ICON_SIZE));
 	g_pDock3 = new QPixmap(buffer);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",trayicon_kvs_cmd_hide);

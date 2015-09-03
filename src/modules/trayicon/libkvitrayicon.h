@@ -46,10 +46,10 @@ public:
 	KviTrayIconWidget();
 	~KviTrayIconWidget();
 protected:
-	KviDynamicToolTip      * m_pTip;
-	QMenu        * m_pContextPopup;
-	QMenu        * m_pAwayPopup;
-	QLabel                 * m_pTitleLabel;
+	KviDynamicToolTip * m_pTip;
+	QMenu * m_pContextPopup;
+	QMenu * m_pAwayPopup;
+	QLabel * m_pTitleLabel;
 
 	QAction* m_pToggleFrame;
 	QAction* m_pAwayMenuId;
@@ -57,7 +57,8 @@ protected:
 	bool m_bFlashed;
 
 	QPixmap m_CurrentPixmap;
-	QTimer* m_pFlashingTimer;
+
+	QTimer * m_pFlashingTimer;
 	unsigned int m_iConsoles;
 	unsigned int m_iChannels;
 	unsigned int m_iQueries;
