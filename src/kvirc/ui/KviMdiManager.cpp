@@ -87,6 +87,10 @@ KviMdiManager::KviMdiManager(QWidget * parent,const char *pcName)
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	
+#if (QT_VERSION >= 0x050000)
+	setActivationOrder(QMdiArea::StackingOrder);
+#endif
 	//setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	//setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
@@ -150,6 +154,9 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 			tile();
 	}
 
+#if QT_VERSION >= 0x050000
+	setActiveSubWindow(lpC);
+#endif
 	lpC->raise();
 	if(!lpC->hasFocus())
 		lpC->setFocus();

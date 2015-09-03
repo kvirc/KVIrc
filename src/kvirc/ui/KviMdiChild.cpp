@@ -241,8 +241,7 @@ void KviMdiChild::unsetClient()
 
 void KviMdiChild::activate()
 {
-	m_pManager->setActiveSubWindow(this);
-	//setFocus(); // should propagate to the client
+	m_pManager->showAndActivate(this);
 }
 
 void KviMdiChild::updateSystemPopup()

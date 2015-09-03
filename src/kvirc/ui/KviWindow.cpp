@@ -839,6 +839,8 @@ void KviWindow::autoRaise()
 	{
 		raise();
 		activateWindow();
+	} else {
+		mdiParent()->activate();
 	}
 
 	if(m_pFocusHandler)
