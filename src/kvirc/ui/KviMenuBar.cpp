@@ -145,21 +145,21 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on Freenode"));
-	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_FREENODE);
+	pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_ON_FREENODE);
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"it",2))
 	{
 		// join #kvirc.net on azzurra
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
-		pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_IT_ON_AZZURRA);
+		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_IT_ON_AZZURRA);
 	}
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
 	{
 		// join #kvirc-fr on freenode
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on Freenode"));
-		pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_FREENODE);
+		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_FREENODE);
 		// join #kvirc on europnet
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on EuropNet"));
-		pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPNET);
+		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_EUROPNET);
 	}
 }
 

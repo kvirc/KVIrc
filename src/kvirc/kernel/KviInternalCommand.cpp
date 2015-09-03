@@ -28,6 +28,30 @@
 
 // FIXME: #warning "LOCALIZE THIS!"
 
+#define JOIN_CHANNEL_ON_NETWORK(_chan,_net) \
+	"foreach(%ctx,$context.list)" \
+	"{" \
+	"	if(" \
+	"			$str.contains($my.server(%ctx),\"" _net "\",false) ||" \
+	"			$str.contains($my.network(%ctx),\"" _net "\",false)" \
+	"		)" \
+	"	{" \
+	"		foreach(%chan,$window.list(channel,%ctx))" \
+	"		{" \
+	"			if($target(%chan) == \"" _chan "\")" \
+	"			{" \
+	"				window.activate %chan;" \ 
+	"				return;" \
+	"			}" \
+	"		}" \
+	"		rebind $console(%ctx);" \
+	"		join \"" _chan "\";" \
+	"		return;" \
+	"	}" \
+	"}" \
+	"server -u -c=\"join " _chan "\" net:" _net ""
+
+
 static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 {
 	"echo INTERNAL COMMAND ERROR: INDEX OUT OF RANGE",
@@ -64,11 +88,11 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"actioneditor.open",
 	"quit",
 	"openurl http://www.kvirc.ru",
-	"openurl irc://freenode/kvirc",
-	"openurl irc://azzurra/kvirc.net",
+	JOIN_CHANNEL_ON_NETWORK("#KVIrc","freenode"),
+	JOIN_CHANNEL_ON_NETWORK("#KVIrc.net","azzurra"),
 	"openurl http://kvirc-fr.info",
-	"openurl irc://freenode/kvirc-fr",
-	"openurl irc://irc.europnet.org/kvirc"
+	JOIN_CHANNEL_ON_NETWORK("#KVIrc-fr","freenode"),
+	JOIN_CHANNEL_ON_NETWORK("#KVIrc-fr","europnet")
 };
 
 
