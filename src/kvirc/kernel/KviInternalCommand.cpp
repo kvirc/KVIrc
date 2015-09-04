@@ -40,7 +40,7 @@
 	"		{" \
 	"			if($target(%chan) == \"" _szChan "\")" \
 	"			{" \
-	"				window.activate %chan;" \ 
+	"				window.activate %chan;" \
 	"				return;" \
 	"			}" \
 	"		}" \
