@@ -28,31 +28,31 @@
 
 // FIXME: #warning "LOCALIZE THIS!"
 
-#define JOIN_CHANNEL_ON_NETWORK(_chan,_net) \
+#define JOIN_CHANNEL_ON_NETWORK(_szChan,_szNet) \
 	"foreach(%ctx,$context.list)" \
 	"{" \
 	"	if(" \
-	"			$str.contains($my.server(%ctx),\"" _net "\",false) ||" \
-	"			$str.contains($my.network(%ctx),\"" _net "\",false)" \
+	"			$str.contains($my.server(%ctx),\"" _szNet "\",false) ||" \
+	"			$str.contains($my.network(%ctx),\"" _szNet "\",false)" \
 	"		)" \
 	"	{" \
 	"		foreach(%chan,$window.list(channel,%ctx))" \
 	"		{" \
-	"			if($target(%chan) == \"" _chan "\")" \
+	"			if($target(%chan) == \"" _szChan "\")" \
 	"			{" \
 	"				window.activate %chan;" \ 
 	"				return;" \
 	"			}" \
 	"		}" \
 	"		rebind $console(%ctx);" \
-	"		join \"" _chan "\";" \
+	"		join \"" _szChan "\";" \
 	"		return;" \
 	"	}" \
 	"}" \
-	"server -u -c=\"join " _chan "\" net:" _net ""
+	"server -u -c=\"join " _szChan "\" net:" _szNet ""
 
 
-static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
+static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] =
 {
 	"echo INTERNAL COMMAND ERROR: INDEX OUT OF RANGE",
 	"help.open -n -m",
