@@ -150,7 +150,7 @@ if [ "${DOMD5SUM}" = "yes" ]; then
 fi
 
 #################################################################################################
-# Cleanup the exported svn tree
+# Cleanup the exported Git branch
 
 echo "Removing target directory..."
 rm -rf "${TEMPSRCDIR}"

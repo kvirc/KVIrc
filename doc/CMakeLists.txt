@@ -25,7 +25,7 @@ set(howto
 if(PERL_FOUND)
 
 	# The userdocs target is in the normal build process and rebuilds the documentation
-	# only when the revision number changes. This is useful for svn users and package users.
+	# only when the revision number changes. This is useful for Git users and package users.
 
 	# The docs target is standalone and explicitly builds the documentation (useful for developers)
 

@@ -80,7 +80,7 @@ to create in order to package your addon and it usually looks like this:
 The entries with a slash (/) at the end are directories while the other are files.
 
 The toplevel directory should be named with your addon name and version. Use no spaces
-in the directory entries: this will make the things simplier for people that want to
+in the directory entries: this will make the things simpler for people that want to
 use your addon.
 
 The install.kvs is the mandatory initialization script which must contain all the
@@ -155,7 +155,7 @@ The "help" directory should contain subdirectories for each language your help f
 are written in. The languages dirs should be named with the language code also used for
 the translation files (like "en", "it" etc...).
 
-Please note that english is the default language and KVIrc will fallback to the "en"
+Please note that English is the default language and KVIrc will fallback to the "en"
 subdirectory when no other language is found around...
 
 
@@ -201,7 +201,7 @@ There are also some switches that can be used to fiddle a little bit more :)
 Each addon can have a help and a configuration callback. These are set respectively by
 addon.sethelpcallback and addon.setconfigurecallback.
 The help callback will be invoked by KVIrc when the user will ask help for your addon
-(mainly from the addon management dialog, but not necessairly). It should call help.open
+(mainly from the addon management dialog, but not necessarily). It should call help.open
 with the name of your documentation index html file (it should be relative to the help
 language directory.
 
@@ -212,7 +212,7 @@ A good and relatively complex addon *should* have at least a minimal help file e
 the features.
 
 The configuration callback will be invoked when the user will try to configure your addon
-from the addon management dialog. This callback is useful mainly for complexier graphical
+from the addon management dialog. This callback is useful mainly for more complex graphical
 scripts that can show up a dialog that allows configuring all of the addon features.
 To use this callback you will probably need some object scripting.
 
@@ -304,8 +304,9 @@ The name of the classes refer to the ones described above.
   collisions with other scripts and addons.
 
 - Remember that your addon is going to be installed on different platforms (at
-  least linux, macosx and windows based). The poor windows' notepad has serious problems
-  with reading text files that contain only linefeeds as line separators. Keep it in mind...
+  least Linux, Mac OS X and Windows based). The poor Windows' notepad has serious problems
+  with reading text files that contain only linefeeds as line separators.
+  You could consider using a proper editor like e.g. Notepad++
 
 
 9. WHERE TO START
@@ -314,7 +315,7 @@ It is a good idea to start on the KVIrc web site. There are surely several addon
 look at. Pick one that seems simple and analyze its layout and code (wow... the free
 software!). It will be easier to do than it was to explain it :D
 
-Another great resource place is the IRC channel #KVIrc located on irc.freenode.org
+Another great resource place is the IRC channel #kvirc located on irc.freenode.org
 network. There you can find many people able to code and help you.
 
 Have fun! :)

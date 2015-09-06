@@ -617,7 +617,7 @@ In earlier KVIrc versions there was only KviConsole that did the role of both
 KviConsole and KviIrcContext, but since the class has grown in complexity
 to a point where it started to be unmantainable the splitting has been unavoidable.
 
-KviIrcConnection rappresents an IRC connection: it is the highest protocol
+KviIrcConnection represents an IRC connection: it is the highest protocol
 implementation on the KVIrc's networking stack. A KviIrcConnection
 owns a KviIrcLink (that is the lower level). KviIrcConnection is NOT reusable:
 it lives only for the lifetime of a single IRC connection inside the parent
@@ -821,7 +821,7 @@ when the major number was bumped from N-1 to N. This usually also means
 that the software might be somewhat incompatible with the previous major release.
 
 When the major number is bumped up all the following parts are reset to 0
-(and could be even temporairly omitted).
+(and could be even temporarily omitted).
 
 The second part is called minor release number and it is increased
 more often than the major. A bump from N to N+1 in the minor version number
@@ -953,11 +953,11 @@ ones considered to be stable and released on the site in all the supported forms
 in tracker sites and spread between distributors. Since "most" stable, the
 official releases are the ones likely to be included in the OS distributions.
 The official packages have md5 sums and a gpg signature of one of the KVIrc
-developers (with a public key available from a "trusteable" location such
+developers (with a public key available from a "trusted" location such
 as the KVIrc web site).
 
 The semi-official packages are snapshots of the source tree made when
-some important changes have occured. They are announced on the KVIrc site
+some important changes have occurred. They are announced on the KVIrc site
 only and are likely to be stable (but are not declared officially to be so).
 The semi-official packages usually are at least in the source form but
 there are likely to be some binaries available too.
