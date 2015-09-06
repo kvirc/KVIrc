@@ -3,15 +3,15 @@
 -------------------------------------------------------------------------------
 
    1. Introduction
-   2. Dependencies and requirements
-   3. Configuring the environment
-   4. Getting and updating the source code:
-   5. Configuring KVIrc
-   6. Interactive cmake KVIrc configuration
-   7. Compiling KVIrc
-   8. Compiling on Mac OS X
-   9. Compiling on Win32
-  10. Hacker installation
+   2. Hacker installation
+   3. Dependencies and requirements
+   4. Configuring the environment
+   5. Getting and updating the source code:
+   6. Configuring KVIrc
+   7. Interactive cmake KVIrc configuration
+   8. Compiling KVIrc
+   9. Compiling on Mac OS X
+  10. Compiling on Win32
   11. Creating a KVIrc package
 
 -------------------------------------------------------------------------------
@@ -40,43 +40,66 @@
   From here on in this doc refer to "Ubuntu or variants", where variants
   are distributions which are Ubuntu derivatives.
     
-  Note: If anyone could find the time to test KVIrc with ICC please let us know!)
+  Note: If anyone could find the time to test KVIrc with ICC please let us know!
 
 -------------------------------------------------------------------------------
-  2. Dependencies and requirements:
+  2. Hacker Installation
 -------------------------------------------------------------------------------
-"
-  KVIrc requires the development libraries it depends on below.
-  Some of these libraries are optional but they all extend KVIrc functionality.
-  Dependencies marked as preferred, while not required for compiling KVIrc,
-  these are suggested that their installation should be chosen by default.
+
+  First of all, if you often compile applications from source on linux
+  and you know how to solve dependency problems then well, KVIrc is not
+  very different. It uses a build system based on CMake and follows its
+  standard procedures.
+
+  If you feel brave try:
+
+    # cd <kvirc_source_directory>
+    # mkdir release
+    # cd release
+    # ccmake ..
+    # make
+    # sudo make install
+
+  If something goes wrong with the above procedure then you should read
+  the step-by-step instructions below.
+
+-------------------------------------------------------------------------------
+  3. Dependencies and requirements:
+-------------------------------------------------------------------------------
+
+  KVIrc compilation process depends on a set of tools and development libraries.
+  Some of them are strictly required (the process will fail without them)
+  and some are optional. The ones marked as "preferred" are optional but
+  without them KVIrc may lack some fundamental features.
+
   Where OpenSSL is concerned, you should check it is legal to use cryptographic
   libraries in your Country.
-  In order to get the source code configure and compile KVIrc you will require:
+
+  In order to compile KVIrc you will need:
 
     - C++ compiler ............ (Required)
     - CMake ................... (Required)  >= 2.8.12.2
-    - Enchant ................. (Optional)
-    - git-core ................ (Preferred)
-    - Qt GUI Toolkit .......... (Required)  >= 4.8
-    - Pthread implementation .. (Required)
-    - Python .................. (Optional)
-    - Phonon framework......... (Preferred)
     - pkg-config .............. (Required)
-    - GSM speech compressor ... (Optional)
+    - git-core ................ (Preferred)
+    - Pthreads ................ (Required)
     - ZLib .................... (Required)  >= 1.2.8
-    - KDE ..................... (Optional)
-    - GNU gettext ............. (Optional)
-    - Perl .................... (Optional)  >= 5.004
-    - OpenSSL ................. (Preferred)
     - X Rendering Extension ... (Required)
     - X11 client-side library . (Required)
+    - Qt GUI Toolkit .......... (Required)  >= 4.8
+    - KDE ..................... (Optional)
+    - Enchant ................. (Optional)
+    - Phonon framework......... (Preferred)
+    - OpenSSL ................. (Preferred)
+    - GSM speech compressor ... (Optional)
+    - GNU gettext ............. (Optional)
+    - Python .................. (Optional)
+    - Perl .................... (Preferred)  >= 5.004
 
   For Ubuntu or variant distributions the complete list of dependencies 
   and installation command is:
   
-    $ sudo apt-get install build-essential cmake git-core libenchant-dev
-      libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev
+    $ sudo apt-get install build-essential cmake cmake-curses-gui git-core \
+      libenchant-dev libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev \
       libssl-dev libx11-dev libxrender-dev pkg-config python-dev zlib1g-dev
     
   Additionally if you are compiling KVIRC with Qt4.x install:
@@ -85,8 +108,8 @@
 
   Additionally if you are compiling KVIRC with Qt5.x install:
     
-    $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev
-      libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev
+    $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev \
+      libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev \
       libqt5x11extras5-dev qtbase5-dev qtmultimedia5-dev
       
   Note: You can install QT5.x and QT4.x libraries side by side.
@@ -97,14 +120,15 @@
     $ sudo apt-get install <package> <package> <package> etc.
       
 -------------------------------------------------------------------------------
-  3. Configuring the environment:
+  4. Configuring the environment:
 -------------------------------------------------------------------------------
 
   If your distribution is sane, installing the development packages should set up
   your environment variables correctly. You will know that something is wrong when
   you run CMake, the configuration output will complain if paths are not found.
   
-  If cmake configuration terminates successfully you can skip step 3.
+  If cmake configuration terminates successfully you can skip directly to step 5.
+
   However when this is not the case you may need to export the path variables manually.
   e.g. $QTDIR.
    
@@ -161,10 +185,9 @@
   The library is called libpthread.so. You can search for it using the "find"
   or, at your option, "locate" command.
 
-0.  $ find / -name libpthread*
+    0.  $ find / -name libpthread*
 
-1.  $ locate -i "libpthread*"
-
+    1.  $ locate -i "libpthread*"
 
   ## GNU gettext (Optional)
 
@@ -211,15 +234,15 @@
   and only if the DCC VOICE with the gsm codec is requested.
   You can check for libgsm using the 'find' or 'locate' command.
 
-0.  $ find / -name libgsm*
+    0.  $ find / -name libgsm*
 
-1.  $ locate -i "libgsm*"
+    1.  $ locate -i "libgsm*"
 
-    This library is included in most distributions.
-    Some distros ship only the static version of the library "libgsm.a".
-    If the previous find or locate command returned something similar
-    to "/usr/lib/libgsm.a", you might create the shared library manually
-    by running:
+  This library is included in most distributions.
+  Some distros ship only the static version of the library "libgsm.a".
+  If the previous find or locate command returned something similar
+  to "/usr/lib/libgsm.a", you might create the shared library manually
+  by running:
 
     $ cd /usr/lib
     $ ld --whole-archive -shared -o libgsm.so.1 libgsm.a
@@ -252,22 +275,23 @@
 -------------------------------------------------------------------------------
 
   The KVIrc development code is located at https://github.com/kvirc/KVIrc
+
   There are several ways to get KVIrc's source code, if you compile often,
-  Preferable way is to clone the repository, this allows for the most flexibility.
-  Alternatively if you prefer. you can also download a tarball.
+  the best way is to clone the repository as this allows for the most flexibility.
     
     $ mkdir /home/setup && cd /home/setup
-0.  $ git clone https://github.com/kvirc/KVIrc.git
+    $ git clone https://github.com/kvirc/KVIrc.git
 
-    Keeping the git clone up-to-date  is simple.
+  Keeping the git clone up-to-date  is simple.
     
     $ git pull --rebase upstream master
 
-    Or download the latest release tarball
+  Alternatively if you prefer. you can download a tarball of the most recent
+  sources.
 
     $ mkdir /home/setup && cd /home/setup
-1.  $ wget https://github.com/kvirc/KVIrc/archive/master.tar.gz -O kvirc.git.tar.gz
-
+    $ wget https://github.com/kvirc/KVIrc/archive/master.tar.gz -O kvirc.git.tar.gz
+    $ tar -zxvf kvirc.git.tar.gz
 
 -------------------------------------------------------------------------------
   5. Configuring KVIrc
@@ -275,27 +299,32 @@
 
   Since KVIrc 4.2 uses CMake as build system, we have to use it to create
   the Makefile's rules for make program.
+
   To do it, we encourage the "out-of-source" building: build all files
   without dirtying the sources directory.
 
-    $ cd /home/setup && mkdir release
-    $ cd release
-    $ cmake [your options] ..
+    $ cd /home/setup
+    $ mkdir release
 
   In this way you have just created an out-of-source environment which is
   clean at the beginning and can be changed afterwards, as well as a clean
   source directory.
 
-  Note: The trailing dots are required when you build out-of-source e.g. 
-  or CMake will likely fail.
+    $ cd release
+    $ cmake [your options] ..
+
+  Note: The two trailing dots are required when you build out-of-source.
 
   The CMake rules support some flags. If you don't specify them, CMake will
-  try to guess a good environment for you. :)
+  try to guess a good environment for you.
+
   To use these flags, you have to pass a bool value or a string.
   e.g. To install KVIrc in /usr instead of /usr/local and to disable
   Phonon support, the command looks like:
 
     $ cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_PHONON=0 ..
+
+  When using the 
 
   -DWANT_QT4=  (default: OFF)
     Prefer Qt4 over Qt5.
@@ -369,8 +398,9 @@
   -DWANT_QTWEBKIT=  (default: ON)
     Enables or disables Qt-WebKit support.
 
-  -DWANT_KDE4 (default: ON)
-    Enables or disables KDE4 support.
+  -DWANT_KDE (default: ON)
+    Enables or disables KDE support. The KDE version used
+    depends on the Qt version used. Qt4 implies KDE4, Qt5 implies KDE5.
 
   -DWANT_OPENSSL=  (default: ON)
     Enables or disables the crypto functions support using OpenSSL.
@@ -525,20 +555,21 @@
   This step is easy:
   Cross your fingers and run:
 
-0.  $ make
+    $ make
 
-  Or to speed up compilation you can add more jobs to make with -jN
+  If you have a multiprocessor or multicore machine then you can use -jN
+  to speed up the compilation.
 
-1.  $ make -j2
+    $ make -j4
 
   If your make is not a GNU make (this happens on FreeBSD for example) you
   should use "gmake" instead.
-  The compilation process will take from 6-7 minutes to several hours
+  The compilation process will take from 2-3 minutes to several hours
   depending on the machine capabilities and load.
-  If you have a slow CPU but have a couple of computers in a LAN you might
+  If you have a slow old CPU but have a couple of computers in a LAN you might
   consider using distcc to distribute the compilation.
 
-  Once the compilation has been successfully, run:
+  Once the compilation has finished successfully, run:
 
     $ sudo make install
 
@@ -553,9 +584,7 @@
   Make sure that /usr/local/lib is in your /etc/ld.so.conf. If it isn't,
   put it in there and run:
 
-    $ ldconfig
-
-    with super-user privileges.
+    $ sudo ldconfig
 
   If you have decided to use the KDE support the installation might have
   placed all these files in your $KDEDIR tree instead of /usr/local.
@@ -577,15 +606,6 @@
   located in the doc directory. It's named INSTALL-Win32.txt.
 
 -------------------------------------------------------------------------------
-  10. Hacker installation:
--------------------------------------------------------------------------------
-
-    # mkdir release
-    # cd release
-    # cmake ..
-    # make install
-
--------------------------------------------------------------------------------
   11. Creating a KVIrc package
 -------------------------------------------------------------------------------
 
@@ -601,3 +621,4 @@
   Alternatively, you can try the experimental CPack support included in
   CMakelist.txt to build a package. In this case, please refer to the CPack
   documentation.
+
