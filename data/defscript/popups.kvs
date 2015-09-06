@@ -165,7 +165,7 @@ defpopup(querytextview)
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") $0,75) (!%:multiple)
+		item($tr("Mask for","defscript") $0,90) (!%:multiple)
 		{
 			echo $mask($0,11)
 		}
@@ -181,7 +181,7 @@ defpopup(querytextview)
 
 	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple)
 
-	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple)
 
 	item($tr("Notify Avatar","defscript"),57)
 	{
@@ -650,7 +650,7 @@ defpopup(defaulttextview)
 
 	separator
 
-	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple)
 
 	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
 
@@ -1397,7 +1397,7 @@ defpopup(channel)
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") %:visible,75) (!%:multiple)
+		item($tr("Mask for","defscript") %:visible,90) (!%:multiple)
 		{
 			echo $mask($0,11)
 		}
@@ -1524,7 +1524,7 @@ defpopup(channel)
 
 	separator
 
-	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple)
 
 	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
 
