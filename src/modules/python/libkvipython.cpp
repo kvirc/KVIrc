@@ -25,11 +25,7 @@
 #include "kvi_settings.h"
 #include "KviModule.h"
 #include "KviModuleManager.h"
-//#include "KviFileUtils.h"
 #include "KviLocale.h"
-//#include "KviApplication.h"
-//#include "KviOptions.h"
-//#include "kvi_out.h"
 
 #ifdef COMPILE_PYTHON_SUPPORT
 	#include "../pythoncore/pythoncoreinterface.h"
@@ -186,8 +182,8 @@
 		are passed to the python context as elements of the aArgs array.[br]
 		[example]
 		[cmd]python.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
-		for(i=0;i<5;i++)
-			kvirc.echo(aArgs[i],40)
+		for l in range(0,5):
+		    kvirc.echo(aArgs[l])
 		[cmd]python.end[/cmd]
 		[/example]
 		[br]
@@ -213,8 +209,8 @@
 		mypippo += " rox"
 		mypluto = kvirc.getGlobal("Pluto")
 		mypluto += " rox"
-		kvirc.setLocal("pippo",mypluto)
-		kvirc.setGlobal("Pluto",mypippo)
+		kvirc.setLocal("pippo",mypippo)
+		kvirc.setGlobal("Pluto",mypluto)
 		[cmd]python.end[/cmd]
 		[cmd]echo[/cmd] "\%pippo is" %pippo
 		[cmd]echo[/cmd] "\%Pluto is" %Pluto
