@@ -123,7 +123,7 @@
 
   Note: You can install QT5.x and QT4.x libraries side by side.
   You may want to only install a preferred Qt version instead of both at same time.
-  Then to try a different QT version, uninstall one before installing the other, e.g.
+  Then to try a different Qt version, uninstall one before installing the other, e.g.
 
       $ sudo apt-get remove --purge <package> <package> <package> etc.
       $ sudo apt-get install <package> <package> <package> etc.
@@ -450,7 +450,7 @@
     You can thus disable transparency here.
 
   -DWANT_GTKSTYLE= (default: OFF)
-    QGtkStyle is a QT backend that uses native Gtk widgets. In recent Gtk
+    QGtkStyle is a Qt backend that uses native Gtk widgets. In recent Gtk
     versions some insane choices are hardcoded and impossible to workaround
     (example: icons can't be shown in menus, label background color is
     fixed). By default we disable QGtkStyle since it messes up with KVIrc
@@ -557,7 +557,7 @@
   The CMake build system provide also an interactive mode to configure
   the environment before compiling.
   Again, we encourage the "out-of-source" building: build all files
-  without dirting the sources directory.
+  without dirtying the sources directory.
 
       $ mkdir release
       $ cd release
