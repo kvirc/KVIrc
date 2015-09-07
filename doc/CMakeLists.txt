@@ -9,7 +9,7 @@ set(license
 set(howto
 	README
 	FAQ
-	INSTALL
+	INSTALL.txt
 	INSTALL-MacOS.txt
 	INSTALL-Win32.txt
 	addon.howto.txt
