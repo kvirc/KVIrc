@@ -3,12 +3,12 @@
 -------------------------------------------------------------------------------
 
    1. Introduction
-   2. Hacker installation
+   2. Hacker Installation - Advanced or power users:
    3. Dependencies and requirements
    4. Configuring the environment
    5. Getting and updating the source code:
    6. Configuring KVIrc
-   7. Interactive cmake KVIrc configuration
+   7. Interactive CMake KVIrc configuration
    8. Compiling KVIrc
    9. Compiling on Mac OS X
   10. Compiling on Win32
@@ -30,35 +30,41 @@
   If you have found this document in a source distribution or you
   have downloaded it by using Git or downloaded tarball then well...
   this is a standard INSTALL file :)
-    
+
   Note: It isn't practical to cover all Linux distributions in this doc.
-    
+
   This doc provides fully working instructions for Ubuntu or variants.
   Compiling KVIrc in your preferred Linux distributions is possible,
-  provided the minimum required dependencies are met.
+  provided the minimum required dependencies and their versions are met.
 
   From here on in this doc refer to "Ubuntu or variants", where variants
   are distributions which are Ubuntu derivatives.
-    
+
+  Note on lines prefixed with "$" or "0." or "1.":
+
+  "$"  Signifies the command prompt on your shell.
+  "0." Prefixes are default command variation or the default command.
+  "1." Prefixes are alternative variation of command or alternative option.
+
   Note: If anyone could find the time to test KVIrc with ICC please let us know!
 
 -------------------------------------------------------------------------------
-  2. Hacker Installation
+  2. Hacker Installation - Advanced or power users:
 -------------------------------------------------------------------------------
 
-  First of all, if you often compile applications from source on linux
+  First of all, if you often compile applications from source on Linux
   and you know how to solve dependency problems then well, KVIrc is not
   very different. It uses a build system based on CMake and follows its
   standard procedures.
 
   If you feel brave try:
 
-    # cd <kvirc_source_directory>
-    # mkdir release
-    # cd release
-    # ccmake ..
-    # make
-    # sudo make install
+      $ cd <kvirc_source_directory>
+      $ mkdir release
+      $ cd release
+      $ ccmake ..
+      $ make
+      $ sudo make install
 
   If something goes wrong with the above procedure then you should read
   the step-by-step instructions below.
@@ -79,6 +85,7 @@
 
     - C++ compiler ............ (Required)
     - CMake ................... (Required)  >= 2.8.12.2
+    - cmake-curses-gui ........ (Optional)
     - pkg-config .............. (Required)
     - git-core ................ (Preferred)
     - Pthreads ................ (Required)
@@ -93,32 +100,34 @@
     - GSM speech compressor ... (Optional)
     - GNU gettext ............. (Optional)
     - Python .................. (Optional)
-    - Perl .................... (Preferred)  >= 5.004
+    - Perl .................... (Preferred) >= 5.004 (5.10 recommended)
 
-  For Ubuntu or variant distributions the complete list of dependencies 
+  For further information on these libraries read 4. Configuring the environment
+
+  For Ubuntu or variant distributions the complete list of dependencies
   and installation command is:
-  
-    $ sudo apt-get install build-essential cmake cmake-curses-gui git-core \
-      libenchant-dev libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev \
-      libssl-dev libx11-dev libxrender-dev pkg-config python-dev zlib1g-dev
-    
+
+      $ sudo apt-get install build-essential cmake cmake-curses-gui git-core \
+        libenchant-dev libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev \
+        libssl-dev libx11-dev libxrender-dev pkg-config python-dev zlib1g-dev
+
   Additionally if you are compiling KVIRC with Qt4.x install:
-  
-    $ sudo apt-get install libphonon-dev libqt4-dev libqtwebkit-dev
+
+      $ sudo apt-get install libphonon-dev libqt4-dev libqtwebkit-dev
 
   Additionally if you are compiling KVIRC with Qt5.x install:
-    
-    $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev \
-      libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev \
-      libqt5x11extras5-dev qtbase5-dev qtmultimedia5-dev
-      
+
+      $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev \
+        libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev \
+        libqt5x11extras5-dev qtbase5-dev qtmultimedia5-dev
+
   Note: You can install QT5.x and QT4.x libraries side by side.
   You may want to only install a preferred Qt version instead of both at same time.
   Then to try a different QT version, uninstall one before installing the other, e.g.
 
-    $ sudo apt-get remove --purge <package> <package> <package> etc.
-    $ sudo apt-get install <package> <package> <package> etc.
-      
+      $ sudo apt-get remove --purge <package> <package> <package> etc.
+      $ sudo apt-get install <package> <package> <package> etc.
+
 -------------------------------------------------------------------------------
   4. Configuring the environment:
 -------------------------------------------------------------------------------
@@ -126,32 +135,32 @@
   If your distribution is sane, installing the development packages should set up
   your environment variables correctly. You will know that something is wrong when
   you run CMake, the configuration output will complain if paths are not found.
-  
-  If cmake configuration terminates successfully you can skip directly to step 5.
+
+  If the CMake configuration terminates successfully you can skip directly to step 5.
 
   However when this is not the case you may need to export the path variables manually.
   e.g. $QTDIR.
-   
+
   Note: Where x is either 4 or 5)
 
   For x86 e.g.
 
-    $ export QTDIR=/usr/lib/qtx 
+      $ export QTDIR=/usr/lib/qtx
 
   For x86_64 e.g.
-  
-    $ export QTDIR=/usr/lib/x86_64-linux-gnu/qtx
- 
+
+      $ export QTDIR=/usr/lib/x86_64-linux-gnu/qtx
+
   Note: If you have multiple distinct versions of the same Qtx.x installed
   and want to use a specific version, exporting QTDIR won't suffice, since the
   CMake module searching for Qtx.x uses qmake itself to determine the Qtx library dir.
-  
+
   You can set your $PATH variable to have CMake using your specified Qtx.x version:
 
-    $ PATH=/opt/qtx.x/bin/:$PATH cmake ..
-    
-  Note: See step [5. Configuring KVIrc] for supported cmake configuration flags.
-  The trailing dots are required when you build out-of-source 
+      $ PATH=/opt/qtx.x/bin/:$PATH cmake ..
+
+  Note: See step [5. Configuring KVIrc] for supported CMake configuration flags.
+  The trailing dots are required when you build out-of-source
   or CMake will likely fail.
 
   ## KDE (Optional)
@@ -164,18 +173,18 @@
 
   You might eventually set it with the command:
 
-    $ export KDEDIR="your kde dir"
+      $ export KDEDIR="your KDE dir"
 
   Where KDE is for e.g. installed in /usr use:
 
-    $ export KDEDIR=/usr
-  
+      $ export KDEDIR=/usr
+
   Note: Compiling with KDE4 support enabled will force KVIrc to
   link against the Qt4 version that KDE4 is using. This may lead to problems
   in linking. Disabling KDE4 support is the only known solution at the moment.
   In this case override the Qt libraries used when running KVIrc:
 
-    $ LD_LIBRARY_PATH=/opt/qt4.8/lib/ kvirc4
+      $ LD_LIBRARY_PATH=/opt/qt4.8/lib/ kvirc4
 
 
   ## Pthread implementation (required)
@@ -185,9 +194,9 @@
   The library is called libpthread.so. You can search for it using the "find"
   or, at your option, "locate" command.
 
-    0.  $ find / -name libpthread*
+  0.  $ find / -name libpthread*
 
-    1.  $ locate -i "libpthread*"
+  1.  $ locate -i "libpthread*"
 
   ## GNU gettext (Optional)
 
@@ -198,26 +207,26 @@
   In Ubuntu or variants this library is libgettextpo-dev.
   If your distro is not Ubuntu or variant you can check it by running:
 
-    $ msgfmt --version
+      $ msgfmt --version
 
   KVIrc will not complain if the command above is missing. It will just skip
-  the creation of the translation files. See the cmake configuration output.
+  the creation of the translation files. See the CMake configuration output.
 
 
   ## Perl (Optional)
 
-  If you want to generate the on-line documentation you'll also need perl.
+  If you want to generate the on-line documentation you'll also need Perl.
 
-  Note: The way external software can embed perl has changed between perl version
-  5.8 and 5.10. KVIrc should play nice with perl as of version 5.004 and
+  Note: The way external software can embed Perl has changed between Perl version
+  5.8 and 5.10. KVIrc should play nice with Perl as of version 5.004 and
   higher, but 5.10 is strongly recommended, since future updates can break
   backwards compatibility.
 
-  If you want perl scripting support to be compiled, you need a working perl
+  If you want Perl scripting support to be compiled, you need a working Perl
   installation. Your libperl.so MUST be compiled with the multiplicity option.
   You can check it with:
 
-    $ perl -V
+      $ perl -V
 
 
   ## OpenSSL (Preferred)
@@ -244,21 +253,21 @@
   to "/usr/lib/libgsm.a", you might create the shared library manually
   by running:
 
-    $ cd /usr/lib
-    $ ld --whole-archive -shared -o libgsm.so.1 libgsm.a
-    $ ln -s libgsm.so.1 libgsm.so
-    $ ldconfig
-    
+      $ cd /usr/lib
+      $ ld --whole-archive -shared -o libgsm.so.1 libgsm.a
+      $ ln -s libgsm.so.1 libgsm.so
+      $ ldconfig
+
   Notes:
   1. This won't work if the library was compiled without -fPIE.
-  2. Files in /usr/lib should really be managed by package manager of the distro. 
+  2. Files in /usr/lib should really be managed by package manager of the distro.
      Whenever package containing libgsm.a upgrades, the manually created libgsm.so stays old.
-  3. The distribution can provide a better way to install libgsm.so. 
+  3. The distribution can provide a better way to install libgsm.so.
      e.g. in Gentoo many packages have static-libs USE-flag which tells the package manager
      to install not only .so files, but also .a (which is kinda the reverse, but the point still stands)
 
   ## Phonon framework - (Preferred)
-    
+
   If you want the /snd plugin to play various audio formats,
   you either need the phonon framework, a running ESounD daemon,
   or a reasonably recent audiofile library.
@@ -269,7 +278,7 @@
   This is usually installed on your system, so don't care until configure
   complains about it. Some system have the interface builtin in libc. The
   configure script can detect this.
-    
+
 -------------------------------------------------------------------------------
   4. Getting and updating the source code:
 -------------------------------------------------------------------------------
@@ -278,20 +287,27 @@
 
   There are several ways to get KVIrc's source code, if you compile often,
   the best way is to clone the repository as this allows for the most flexibility.
-    
-    $ mkdir /home/setup && cd /home/setup
-    $ git clone https://github.com/kvirc/KVIrc.git
+
+      $ mkdir /home/setup && cd /home/setup
+      $ git clone https://github.com/kvirc/KVIrc.git
 
   Keeping the git clone up-to-date  is simple.
-    
-    $ git pull --rebase upstream master
+
+      $ git pull --rebase upstream master
+
+  Cleaning the git directory of any files or directories generated my CMake or Make.
+  This is recommended previous to configuring or compiling any updated git clones,
+  it will minimize the chance of errors during the reconfiguration / compilation,
+  If you experience any compile issues make sure this command is executed.
+
+      $ git clean -xfd
 
   Alternatively if you prefer. you can download a tarball of the most recent
   sources.
 
-    $ mkdir /home/setup && cd /home/setup
-    $ wget https://github.com/kvirc/KVIrc/archive/master.tar.gz -O kvirc.git.tar.gz
-    $ tar -zxvf kvirc.git.tar.gz
+      $ mkdir /home/setup && cd /home/setup
+      $ wget https://github.com/kvirc/KVIrc/archive/master.tar.gz -O kvirc.git.tar.gz
+      $ tar -zxvf kvirc.git.tar.gz
 
 -------------------------------------------------------------------------------
   5. Configuring KVIrc
@@ -303,15 +319,15 @@
   To do it, we encourage the "out-of-source" building: build all files
   without dirtying the sources directory.
 
-    $ cd /home/setup
-    $ mkdir release
+      $ cd /home/setup
+      $ mkdir release
 
   In this way you have just created an out-of-source environment which is
   clean at the beginning and can be changed afterwards, as well as a clean
   source directory.
 
-    $ cd release
-    $ cmake [your options] ..
+      $ cd release
+      $ cmake [your options] ..
 
   Note: The two trailing dots are required when you build out-of-source.
 
@@ -322,9 +338,9 @@
   e.g. To install KVIrc in /usr instead of /usr/local and to disable
   Phonon support, the command looks like:
 
-    $ cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_PHONON=0 ..
+      $ cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_PHONON=0 ..
 
-  When using the 
+  When using the configuration flags below.
 
   -DWANT_QT4=  (default: OFF)
     Prefer Qt4 over Qt5.
@@ -351,13 +367,13 @@
   -DCMAKE_INSTALL_PREFIX=PATH 0 (default: a system-dependant directory)
     This will install all stuff under PATH directory.
 
-  -DLIB_SUFFIX=SUFFIX - (default: empty)
+  -DLIB_SUFFIX=SUFFIX=  (default: empty)
     This will install libkvilib and KVIrc modules to
     ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
     directory. It defaults to an empty suffix.
     Mainly used for x86_64 architectures.
 
-  -DMANDIR=DIRECTORY  (default: $CMAKE_INSTALL_PREFIX/share/man)
+  -DMANDIR=DIRECTORY=  (default: $CMAKE_INSTALL_PREFIX/share/man)
     This will install man pages to DIRECTORY.
 
   -DWANT_COEXISTENCE=  (default: OFF)
@@ -398,25 +414,25 @@
   -DWANT_QTWEBKIT=  (default: ON)
     Enables or disables Qt-WebKit support.
 
-  -DWANT_KDE (default: ON)
+  -DWANT_KDE= (default: ON)
     Enables or disables KDE support. The KDE version used
     depends on the Qt version used. Qt4 implies KDE4, Qt5 implies KDE5.
 
   -DWANT_OPENSSL=  (default: ON)
-    Enables or disables the crypto functions support using OpenSSL.
+    Enables or disables the cryptographic functions support using OpenSSL.
 
-  -DWANT_CRYPT (default: ON)
+  -DWANT_CRYPT= (default: ON)
     Enables or disables the cryptographic engines and the whole cryptography/text
     transformation support. Produces a slightly smaller executable.
     You will lack features, though.
 
-  -DWANT_IPV6 (default: ON)
+  -DWANT_IPV6= (default: ON)
     Enables or disables the IPv6 support.
     Even if you have a plain IPv4-only connection, you might want to
     keep the IPv6 support. This way you will be able to resolve
     IPv6 hostnames.
 
-  -DWANT_TRANSPARENCY (default: ON)
+  -DWANT_TRANSPARENCY= (default: ON)
     This option enables or disables pseudo and real transparency support.
     The pseudo-transparency support makes the KVIrc windows
     look like semi-transparent (this is NOT real transparency, it is
@@ -433,31 +449,31 @@
     objects around, CPU consumption may get high as well.
     You can thus disable transparency here.
 
-  -DWANT_GTKSTYLE (default: OFF)
+  -DWANT_GTKSTYLE= (default: OFF)
     QGtkStyle is a QT backend that uses native Gtk widgets. In recent Gtk
     versions some insane choices are hardcoded and impossible to workaround
     (example: icons can't be shown in menus, label background color is
     fixed). By default we disable QGtkStyle since it messes up with KVIrc
     internal theme engine creating issues (like unreadable white
     text on a white background). Some users wants to use it anyway and
-    sometimes we like to check if gtk developers quit smoking pot, so this
-    option let you enable the QGtkStyle engine.
+    sometimes we like to check if Gtk developers quit smoking pot,
+    so this option let you enable the QGtkStyle engine.
     Please don't report any theme-related bug if you enabled this option:
-    we already know it's broken, but nobody's gonna fix it.
+    we already know it's broken. It should be fixed upstream in Qt.
 
-  -DWANT_PERL (default: ON)
-    Enables or disables perl support.
+  -DWANT_PERL= (default: ON)
+    Enables or disables Perl support.
     You will not be able to use Perl scripts inside of KVIrc.
     You still can execute Perl scripts outside of KVIrc, i.e. with
     the exec() command.
-    Note that perl support will be checked anyway, and used to generate
+    Note: Perl support will be checked anyway, and used to generate
     the documentation if present.
 
-  -DWANT_PYTHON (default: ON)
+  -DWANT_PYTHON= (default: ON)
     Enables or disables python support.
     You will not be able to use Python scripts inside of KVIrc.
 
-  -DWANT_IPC (default: ON)
+  -DWANT_IPC= (default: ON)
     Enables or disables support for inter-process communication.
     You will not be able to send remote commands to running
     KVIrc sessions. This basically means that every time you run
@@ -471,46 +487,48 @@
     so if you're really, really short in memory, you might use it,
     otherwise, IPC is a nice feature.
 
-  -DWANT_GETTEXT (default: ON)
+  -DWANT_GETTEXT= (default: ON)
     Enables or disables the use of GetText to generate translation files.
 
   -DWANT_DOXYGEN (default: ON)
      Enables or disables developers docs generation through Doxygen.
 
-  -DWANT_GSM (default: ON)
+  -DWANT_GSM= (default: ON)
     Enables or disables the usage of the GSM library. This will
     disable the DCC VOICE gsm codec but might help when the
     compilation stops complaining of something related to GSM. :)
 
-  -DWANT_IGNORE_SIGALARM (default: OFF)
+  -DWANT_IGNORE_SIGALARM= (default: OFF)
     Under Solaris, both usleep() and threads implementation are based on
     SIGALARM. KVIrc uses both, and this could lead to some spontaneous
     application quits. This option enables a workaround for this problem.
 
-  -DWANT_DCC_VOICE (default: ON)
+  -DWANT_DCC_VOICE= (default: ON)
     Enables or disables the DCC VOICE sound support. This might help
     if you have problems in compilation of src/modules/dcc/voice.cpp.
     It will disable the sound support (and thus render DCC VOICE unusable).
 
-  -DWANT_DCC_VIDEO (default: OFF)
+  -DWANT_DCC_VIDEO= (default: OFF)
     Enables or disables EXPERIMENTAL DCC VIDEO support.
 
-  -DWANT_OGG_THEORA (default: OFF)
+  -DWANT_OGG_THEORA= (default: OFF)
     Enables or disables EXPERIMENTAL Ogg/Theora Support for dcc video.
 
-  -DWANT_DCC_CANVAS (default: OFF)
+  -DWANT_DCC_CANVAS= (default: OFF)
     Enables or disables OBSOLETE DCC CANVAS support.
 
-  -DWANT_SPELLCHECKER (default: ON)
-    Compile Spell-Checker Support
+  -DWANT_SPELLCHECKER= (default: ON)
+    Compile Spell-Checker Support.
+    Note: If libenchant development package is installed,
+    this option is automatically enabled during configuration.
 
-  -DWANT_MEMORY_PROFILE (default: OFF)
+  -DWANT_MEMORY_PROFILE= (default: OFF)
     Enables or disables memory allocation profiling.
     Don't set it, unless you are a developer and know what you are doing.
-    It will have high impact on executable size and most noteably speed.
+    It will have high impact on executable size and most notably speed.
     Please do not use this.
 
-  -DWANT_MEMORY_CHECKS (default: OFF)
+  -DWANT_MEMORY_CHECKS= (default: OFF)
     Enables or disables malloc() memory checks. This will print a nice
     message if your system goes out of memory.
     It can't save you from buying new RAM, but at least you will know that
@@ -519,21 +537,21 @@
     (i.e. Linux and the OOM killer.)
     Most probably you will not need to enable this flag.
 
-  -DMANUAL_REVISION (default: empty)
+  -DMANUAL_REVISION= (default: empty)
     Manually set a revision number if subversion is not found on your
     system.
     This is useful mostly on windows.
     Please do not specify useless information here, as it will make
     debugging harder and you won't profit from it.
 
-  -DWANT_PIZZA (default: OFF)
+  -DWANT_PIZZA= (default: OFF)
     Add some pizza for dinner. :)
 
-  -DWANT_BEER (default: OFF)
+  -DWANT_BEER= (default: OFF)
     Add some beers to chat. :)
 
 -------------------------------------------------------------------------------
-   6. Interactive cmake KVIrc configuration
+   6. Interactive CMake KVIrc configuration
 -------------------------------------------------------------------------------
 
   The CMake build system provide also an interactive mode to configure
@@ -541,9 +559,9 @@
   Again, we encourage the "out-of-source" building: build all files
   without dirting the sources directory.
 
-    $ mkdir release
-    $ cd release
-    $ ccmake ..
+      $ mkdir release
+      $ cd release
+      $ ccmake ..
 
   Now you're in interactive mode, just follow the instructions on screen
   to configure your compilation environment.
@@ -555,12 +573,12 @@
   This step is easy:
   Cross your fingers and run:
 
-    $ make
+  0.  $ make
 
   If you have a multiprocessor or multicore machine then you can use -jN
   to speed up the compilation.
 
-    $ make -j4
+  1.  $ make -j4
 
   If your make is not a GNU make (this happens on FreeBSD for example) you
   should use "gmake" instead.
@@ -571,7 +589,7 @@
 
   Once the compilation has finished successfully, run:
 
-    $ sudo make install
+      $ sudo make install
 
   Same as above: use "gmake install" if your make is not GNU make.
 
@@ -584,7 +602,7 @@
   Make sure that /usr/local/lib is in your /etc/ld.so.conf. If it isn't,
   put it in there and run:
 
-    $ sudo ldconfig
+      $ sudo ldconfig
 
   If you have decided to use the KDE support the installation might have
   placed all these files in your $KDEDIR tree instead of /usr/local.
@@ -613,7 +631,7 @@
   So, if you want to make a package for your distribution, you simply have to pass
   it at "make install" stage: your install files will go to the chosen path.
 
-    $ make install DESTDIR=/tmp/kvirc-4.3
+      $ make install DESTDIR=/tmp/kvirc-4.3
 
   After this step, just follow your distribution's rules to make a good
   package for the distro you're running.
