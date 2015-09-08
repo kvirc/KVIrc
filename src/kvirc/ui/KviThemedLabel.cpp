@@ -35,6 +35,10 @@
 #include <QStyleOptionFrameV2>
 #include <QStyleFactory>
 
+#if (QT_VERSION >= 0x050000)
+	#include <qdrawutil.h> // qDrawShadePanel
+#endif
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
@@ -51,7 +55,11 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * n
 		setStyle(pWindowsStyle);
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
+#if (QT_VERSION < 0x050000)
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+#else
+	setMargin(4);
+#endif
 	setAutoFillBackground(false);
 	applyOptions();
 }
@@ -84,21 +92,32 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter *p = new QPainter(this);
+
+#if (QT_VERSION >= 0x050000)
+	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
+	qDrawShadePanel(p,0,0,width(),height(),palette(),true,1,NULL);
+
+	QRect r(1,1,width()-1,height()-1);
+#else
 	QStyleOptionFrameV2 option;
 	option.initFrom(this);
 
 	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
+
+	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
+
+#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(contentsRect(), col);
+		p->fillRect(r, col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, contentsRect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, r.topLeft());
+		p->drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif

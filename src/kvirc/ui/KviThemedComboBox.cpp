@@ -102,6 +102,7 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 	{
 		QRect r = rect();
 		QPalette pal = palette();
+
 		QStyleOptionFrameV2 option;
 
 		option.initFrom(this);

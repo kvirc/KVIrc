@@ -112,8 +112,6 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 	m_pContextPopup = 0;
 	m_iCursorPosition = 0;
 	m_pInput = 0;
-	m_pLabel = 0;
-	setAutoFillBackground(false);
 
 	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
 	m_pLabel->setTextFormat(Qt::RichText);
@@ -121,10 +119,10 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 
 	reset();
 
-	m_pCompletionBox=new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
+	m_pCompletionBox = new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
-	m_pCompletionBox->setFrameStyle( QFrame::Box | QFrame::Plain );
+	m_pCompletionBox->setFrameStyle(QFrame::Box | QFrame::Plain);
 	m_pCompletionBox->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pCompletionBox->setSelectionMode(QAbstractItemView::SingleSelection);
 
@@ -134,6 +132,7 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged()),this,SLOT(complete()));
 	m_pCompletionBox->hide();
 
+	setAutoFillBackground(false);
 	setContentsMargins(0,0,0,0);
 	applyOptions();
 }
@@ -447,7 +446,7 @@ void KviTopicWidget::switchMode()
 	}
 	if(m_pInput == 0)
 	{
-		m_pInput=new KviInputEditor(this,m_pKviChannelWindow);
+		m_pInput = new KviInputEditor(this,m_pKviChannelWindow);
 		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
 		if(iMaxLen>0)

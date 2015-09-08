@@ -35,6 +35,11 @@
 #include <QStyleOptionFrameV2>
 #include <QStyleFactory>
 
+#if (QT_VERSION >= 0x050000)
+	#include <qdrawutil.h> // qDrawShadePanel
+#endif
+
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
@@ -51,6 +56,19 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const ch
 	if(pWindowsStyle)
 		setStyle(pWindowsStyle);
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+
+#if (QT_VERSION >= 0x050000)
+	setFrame(false);
+
+	int l,t,r,b;
+	getTextMargins(&l,&t,&r,&b);
+	if(l < 4)
+		l = 4;
+	if(r < 4)
+		r = 4;
+	setTextMargins(l,t,r,b);
+#endif
+
 
 	setAutoFillBackground(false);
 	applyOptions();
@@ -84,8 +102,15 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter *p = new QPainter(this);
-	QRect r = rect();
 	QPalette pal = palette();
+
+#if (QT_VERSION >= 0x050000)
+	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
+	qDrawShadePanel(p,0,0,width(),height(),palette(),true,1,NULL);
+
+	QRect r(1,1,width()-1,height()-1);
+#else
+
 	QStyleOptionFrameV2 option;
 
 	option.initFrom(this);
@@ -99,33 +124,29 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 
 	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
 
-	r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
-	int left, right, top, bottom;
-	getTextMargins(&left, &top, &right, &bottom);
-	r.setX(r.x() + left);
-	r.setY(r.y() + top);
-	r.setRight(r.right() - right);
-	r.setBottom(r.bottom() - bottom);
-	p->setClipRect(r);
+	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
+
+#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(contentsRect(), col);
+		p->fillRect(r, col);
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt;
 		if(m_pKviWindow)
-			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, contentsRect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
+			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, r.topLeft());
 		else
 			pnt = mapToGlobal(event->rect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		p->drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif
+
 	QLineEdit::paintEvent(event);
 }
 
