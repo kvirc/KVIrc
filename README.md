@@ -12,29 +12,36 @@ This is the Github development and bug tracker home for the KVIrc project.
 
 #### Getting involved
 
-- [Contributing](http://www.kvirc.net/?id=contribute "Contribute")
+- [Contributing](http://www.kvirc.net/?id=contribute)
 
 #### Help & Support
 
-- [KVIrc - wiki F.A.Q.](https://github.com/kvirc/KVIrc/wiki/FAQ "KVIrc - FAQ")
-- [KVIrc - Project F.A.Q.](https://github.com/kvirc/KVIrc/blob/master/doc/FAQ "Project F.A.Q.")
-- [KVIrc manual](http://www.kvirc.net/doc/ "KVIrc manual")
-- [Open a bug report](https://github.com/kvirc/KVIrc/issues "Open a bug report")
+- [KVIrc - wiki FAQ](https://github.com/kvirc/KVIrc/wiki/FAQ)
+- [KVIrc - Project FAQ](https://github.com/kvirc/KVIrc/blob/master/doc/FAQ)
+- [KVIrc manual](http://www.kvirc.net/doc/)
+- [Open a bug report or make a suggestion](https://github.com/kvirc/KVIrc/issues)
 - [#KVIrc](http://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
-- [Further information](https://github.com/kvirc/KVIrc/tree/master/doc "Further information reading")
+- [KVIrc - Community forums](http://www.kvirc.ru/forum/)
+- [Further information](https://github.com/kvirc/KVIrc/tree/master/doc)
 
 #### Download
 
- Coming soon...
+Try one of our fresh out-of-the-press Windows development builds for x86 or x64 bit.  
+
+- [Nightly Windows x86 / x64 bit builds](http://kvirc.d00p.de/)
+- [Ubuntu PPA] Coming soon, maybe!
+- [Other Linux] - Volunteer now.
 
 #### Install and compile
 
-- [Linux install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL "Linux install")
-- [Mac install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-MacOS.txt "MacOS install")
-- [Windows install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-Win32.txt "Windows 32 install")
+Compiling KVIrc on your Linux platform is now easier than ever, and the best way to enjoy the best KVIrc versions yet.
+
+- [Linux install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL.txt)
+- [OS X install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-MacOS.txt)
+- [Windows install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-Win32.txt)
 
 #### Licensing
 
-[GPLv2](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2 "GPLv2")  
-[GPLv3](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3 "GPLv3")  
-[OpenSSL](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL "OpenSSL")
+- [GPLv2](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)  
+- [GPLv3](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)  
+- [OpenSSL](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)
