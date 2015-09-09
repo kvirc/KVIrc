@@ -26,10 +26,10 @@ This is the Github development and bug tracker home for the KVIrc project.
 
 #### Download
 
-Try one of our fresh out-of-the-press Windows development builds for x86 or x64 bit.  
+Try one of our fresh out-of-the-press nightly development builds for x86 or x64 bit.  
 
 - [Nightly Windows x86 / x64 bit builds](http://kvirc.d00p.de/)
-- [Ubuntu PPA] Coming soon, maybe!
+- [Ubuntu 14.4x LTS / 15.x](https://launchpad.net/~alex-p/+archive/ubuntu/kvirc) 
 - [Other Linux] - Volunteer now.
 
 #### Install and compile
