@@ -228,7 +228,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing actions"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_actioneditor.png",
-		KviIconManager::ScriptAction,
+		KviIconManager::ActionEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_ACTION);
 
@@ -239,7 +239,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing aliases"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_aliaseditor.png",
-		KviIconManager::Alias,
+		KviIconManager::AliasEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_ALIAS);
 
@@ -261,7 +261,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing script events"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_eventeditor.png",
-		KviIconManager::Event,
+		KviIconManager::EventEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_EVENT);
 
@@ -272,7 +272,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing popup menus"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_popupeditor.png",
-		KviIconManager::Popup,
+		KviIconManager::PopupEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_POPUP);
 
