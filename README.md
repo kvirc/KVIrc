@@ -19,7 +19,7 @@ This is the Github development and bug tracker home for the KVIrc project.
 - [KVIrc - wiki FAQ](https://github.com/kvirc/KVIrc/wiki/FAQ)
 - [KVIrc - Project FAQ](https://github.com/kvirc/KVIrc/blob/master/doc/FAQ)
 - [KVIrc manual](http://www.kvirc.net/doc)
-- [KVIrc API](http://www.kvirc.net/api
+- [KVIrc API](http://www.kvirc.net/api)
 - [Open a bug report or make a suggestion](https://github.com/kvirc/KVIrc/issues)
 - [#KVIrc](http://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
 - [KVIrc - Community forums](http://www.kvirc.ru/forum/)
