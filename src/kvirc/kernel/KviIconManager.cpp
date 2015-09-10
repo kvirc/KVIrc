@@ -401,7 +401,9 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"sexircop",            // 315
 	"memoserv",            // 316
 	"info",                // 317
-	"warning"              // 318
+	"warning",             // 318
+	"shield",              // 319
+	"raweventeditor"       // 320
 };
 
 KviIconWidget::KviIconWidget()
@@ -916,6 +918,8 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 316: return KviIconManager::MemoServ;             break;
 		case 317: return KviIconManager::Info;                 break;
 		case 318: return KviIconManager::Warning;              break;
+		case 319: return KviIconManager::Shield;               break;
+		case 320: return KviIconManager::RawEventEditor;       break;
 		case   0:
 		case KviIconManager::IconCount:
 		default: return KviIconManager::None;                  break;
