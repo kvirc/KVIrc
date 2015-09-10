@@ -483,7 +483,9 @@ public:
 		MemoServ             = 316,
 		Info                 = 317,
 		Warning              = 318,
-		IconCount            = 319
+		Shield               = 319,
+		RawEventEditor       = 320,
+		IconCount            = 321
 	};
 
 	/**

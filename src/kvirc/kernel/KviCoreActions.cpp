@@ -283,7 +283,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing raw scripting events"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_raweditor.png",
-		KviIconManager::RawEvent,
+		KviIconManager::RawEventEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_RAW);
 
