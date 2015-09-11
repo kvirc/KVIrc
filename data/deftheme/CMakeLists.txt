@@ -1,5 +1,5 @@
 # CMakeLists for data/deftheme
 
 # Find subdirs
-subdirs(MinimalDark-1.0.0 Aria-1.0.0)
+subdirs(MinimalDark-2.0.0 Aria-2.0.0)
 
