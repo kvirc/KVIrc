@@ -220,11 +220,11 @@ void EventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 					__tr2qs_ctx("&Disable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 
 			m_pContextPopup->addAction(
-					*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
 					__tr2qs_ctx("Re&move Handler","editor"),
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->addAction(
-					*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
 					__tr2qs_ctx("&Export Handler To...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {

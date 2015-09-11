@@ -445,10 +445,10 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 	if(((LogListViewItem *)pItem)->childCount())
 	{
 		//pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
-		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all log files within this folder","log"),this,SLOT(deleteCurrent()));
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove all log files within this folder","log"),this,SLOT(deleteCurrent()));
 	} else {
-        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export log file to","log"))->setMenu(m_pExportLogPopup);
-		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
+        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),__tr2qs_ctx("Export log file to","log"))->setMenu(m_pExportLogPopup);
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
 	}
 
 	pPopup->exec(QCursor::pos());
