@@ -485,7 +485,11 @@ public:
 		Warning              = 318,
 		Shield               = 319,
 		RawEventEditor       = 320,
-		IconCount            = 321
+		EventEditor          = 321,
+		ActionEditor         = 322,
+		AliasEditor          = 323,
+		PopupEditor          = 324,
+		IconCount            = 325
 	};
 
 	/**
