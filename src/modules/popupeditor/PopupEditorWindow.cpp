@@ -1147,13 +1147,13 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint &pos)
 			this,SLOT(newPopup()));
 
 		m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
 			__tr2qs_ctx("Re&move Popup","editor"),
             this,SLOT(removeCurrentPopup()))
                     ->setEnabled(it);
 
 		m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
 			__tr2qs_ctx("&Export Popup To...","editor"),
             this,SLOT(exportCurrentPopup()))
                 ->setEnabled(it);

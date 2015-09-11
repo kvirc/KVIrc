@@ -911,7 +911,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
     m_pContextPopup->addSeparator();
 
     pAction = m_pContextPopup->addAction(
-		*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
 		__tr2qs_ctx("Remove Selected","editor"),
 		this,SLOT(removeSelectedItems()));
     pAction->setEnabled(bHasSelected);
@@ -919,20 +919,20 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
     m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(
-		*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
 		__tr2qs_ctx("Export Selected...","editor"),
 		this,SLOT(exportSelected()));
     pAction->setEnabled(bHasSelected);
 
 	m_pContextPopup->addAction(
-		*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
 		__tr2qs_ctx("Export Selected in singles files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
     pAction->setEnabled(bHasSelected);
 
 	m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
 			__tr2qs_ctx("Export All...","editor"),
 			this,SLOT(exportAll()));
     pAction->setEnabled(bHasItems);
