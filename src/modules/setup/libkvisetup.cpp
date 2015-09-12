@@ -89,10 +89,10 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		switch(g_iThemeToApply)
 		{
 			case THEME_APPLY_HIRES:
-				KviTheme::apply("Aria-1.0.0",KviThemeInfo::Builtin,out);
+				KviTheme::apply("Aria-2.0.0",KviThemeInfo::Builtin,out);
 			break;
 			case THEME_APPLY_LORES:
-				KviTheme::apply("MinimalDark-1.0.0",KviThemeInfo::Builtin,out);
+				KviTheme::apply("MinimalDark-2.0.0",KviThemeInfo::Builtin,out);
 			break;
 			// default: no theme
 		}
