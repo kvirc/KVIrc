@@ -26,7 +26,6 @@
 
 #include "kvi_settings.h"
 
-
 #ifndef COMPILE_NO_IPC
 	#include "KviCString.h"
 	#include <QWidget>
@@ -60,6 +59,7 @@
 #else
 	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 		virtual bool x11Event(XEvent *e);
+		bool x11GetRemoteMessage();
 	#endif //!COMPILE_X11_SUPPORT
 #endif
 #if (QT_VERSION >= 0x050000)

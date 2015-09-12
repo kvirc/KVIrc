@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-
+// FIXME: This stuff is hopelessly complex... nearly pathetic.
 
 #include <qmetatype.h>
 #include "KviIpcSentinel.h"
@@ -51,10 +51,13 @@
 	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
 		#include <X11/Xatom.h>
+
 		#include "KviXlib.h" // for XEvent
 
-		#include <unistd.h>    // for getuid
-		#include <sys/types.h> // for getuid
+		#include <unistd.h>    // for getuid, getpid
+		#include <sys/types.h> // for getuid, getpid
+		#include <string.h> // for memcpy
+		#include <stdlib.h> // for malloc
 
 		#include <QX11Info>
 
@@ -66,11 +69,15 @@
 		static Atom kvi_atom_ipc_remote_message;
 		static KviCString kvi_sentinel_id;
 		static bool g_bIpcAtomsLoaded = false;
+		
+		static kvi_u64_t g_uLocalInstanceId = 0;
 
 		static void kvi_ipcLoadAtoms()
 		{
-			if(g_bIpcAtomsLoaded)return;
+			if(g_bIpcAtomsLoaded)
+				return;
 			g_bIpcAtomsLoaded = true;
+			g_uLocalInstanceId = (kvi_u64_t)::getpid();
 			kvi_sentinel_id.sprintf("pane tonno e mistero - %d",getuid());
 			kvi_atom_ipc_sentinel_window = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI4_IPC_SENTINEL_WINDOW",False);
 			kvi_atom_ipc_remote_command = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI4_IPC_REMOTE_COMMAND",False);
@@ -79,8 +86,21 @@
 
 		static void kvi_ipcSetRemoteCommand(Window w,const char * command)
 		{
+			if(!command)
+				return;
+			
+			int len = kvi_strLen(command) + 1;
+			
+			char * buffer = (char *)::malloc(len + 8);
+			
+			*((kvi_u64_t *)buffer) = g_uLocalInstanceId;
+			
+			::memcpy(buffer+8,command,len);
+			
 			XChangeProperty(kvi_ipc_get_xdisplay(),w,kvi_atom_ipc_remote_command,
-				XA_STRING,8,PropModeReplace,(const unsigned char *)command,kvi_strLen(command) + 1);
+				XA_STRING,8,PropModeReplace,(const unsigned char *)buffer,len+8);
+				
+			::free(buffer);
 		}
 
 		static Window kvi_x11_findIpcSentinel(Window win)
@@ -143,7 +163,7 @@
 			cpd.dwData = KVI_WINDOWS_IPC_MESSAGE;
 			cpd.lpData = (void *)message;
 			DWORD dwResult;
-			//qDebug(message);
+
 #if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
 			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,(PDWORD_PTR)&dwResult))
 #else
@@ -166,6 +186,8 @@
 //				PropModeReplace,(const unsigned char *)message,kvi_strLen(message));
 			kvi_ipcSetRemoteCommand(sentinel,message);
 
+#if (QT_VERSION < 0x050000)
+
 			XEvent e;
 			KviMemory::set(&e,0,sizeof(XEvent));
 			e.type = ClientMessage;
@@ -174,7 +196,10 @@
 			e.xclient.message_type = kvi_atom_ipc_remote_message;
 			e.xclient.format = 8;
 
-			XSendEvent(kvi_ipc_get_xdisplay(),sentinel,False,0,&e);
+			Status ret = XSendEvent(kvi_ipc_get_xdisplay(),sentinel,False,0,&e);
+#else
+			// On Qt5 the ClientMessage events aren't propagated at all.. we have to rely on the property change only
+#endif
 
 			return true;
 		}
@@ -235,7 +260,6 @@
 			{
 				if(cpd->dwData == KVI_WINDOWS_IPC_MESSAGE)
 				{
-					qDebug((char *)(cpd->lpData));
 					if(g_pApp)
 						g_pApp->ipcMessage((char *)(cpd->lpData));
 					if(result)
@@ -249,31 +273,43 @@
 
 #else
 	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+	
+		bool KviIpcSentinel::x11GetRemoteMessage()
+		{
+			Atom type;
+			int format;
+			unsigned long nItems,after;
+			unsigned char * data = 0;
+			KviCString szData;
+			
+			if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,false,XA_STRING,
+				&type,&format,&nItems,&after,&data) == Success)
+			{
+				if((type == XA_STRING) && (format == 8) && (nItems > 8) && data)
+				{
+					kvi_u32_t uSenderId = *((kvi_u32_t *)(data));
+					if(uSenderId != g_uLocalInstanceId)
+					szData = (char *)(data + 8);
+					XFree((char *)data);
+				}
+			}
+			
+			if(szData.isEmpty())
+				return false; // no command, or our own command
+				
+			kvi_ipcSetRemoteCommand(winId(),"");
+
+			if(g_pApp)
+				g_pApp->ipcMessage(szData.ptr());
+			return true;
+		}
+	
 		bool KviIpcSentinel::x11Event(XEvent *e)
 		{
 			if(e->type == ClientMessage)
 			{
 				if((e->xclient.message_type = kvi_atom_ipc_remote_message) && (e->xclient.format == 8))
-				{
-					Atom type;
-					int format;
-					unsigned long nItems,after;
-					unsigned char * data = 0;
-					KviCString szData;
-					if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,false,XA_STRING,
-						&type,&format,&nItems,&after,&data) == Success)
-					{
-						if((type == XA_STRING) && (format == 8) && (nItems > 0) && data)
-						{
-							szData = (char *)data;
-							XFree((char *)data);
-						}
-					}
-					kvi_ipcSetRemoteCommand(winId(),"");
-
-					if(g_pApp)g_pApp->ipcMessage(szData.ptr());
-					return true;
-				}
+					return x11GetRemoteMessage();
 			}
 			return false;
 		}
@@ -281,19 +317,61 @@
 #endif
 
 #if (QT_VERSION >= 0x050000)
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+
+	#else
+		#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+			// This is not an XEvent anymore.... it's a xcb_generic_event_t actually.
+			// But we don't want to add yet another dependency.
+			// Also it turns out that Qt5 filters out ClientMessage events (it uses them for its own purposes)
+			// Have to rely on the sole PropertyNotify instead :(
+
+			extern "C" {
+
+				typedef struct {
+					kvi_u8_t response_type;
+					kvi_u8_t pad0;
+					kvi_u16_t sequence;
+					kvi_u32_t pad[7];
+					kvi_u32_t full_sequence;
+				} fake_xcb_generic_event_t;
+
+				typedef struct xcb_property_notify_event_t {
+					kvi_u8_t response_type;
+					kvi_u8_t pad0;
+					kvi_u16_t sequence;
+					kvi_u32_t window;
+					kvi_u32_t atom;
+					// .. other stuff follows, but we don't care
+				} fake_xcb_property_notify_event_t;
+	
+				#define FAKE_XCB_PROPERTY_NOTIFY 28
+
+			}
+		#endif
+	#endif
+
 	bool KviIpcSentinel::nativeEvent(const QByteArray &id,void * msg,long * res)
 	{
 		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 				return winEvent((MSG *)msg,res);
 		#else
 			#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
-				return x11Event((XEvent *)msg);
+
+				fake_xcb_generic_event_t *event = static_cast<fake_xcb_generic_event_t *>(msg);
+
+				if(event->response_type == FAKE_XCB_PROPERTY_NOTIFY)
+				{
+					fake_xcb_property_notify_event_t * ev = static_cast<fake_xcb_property_notify_event_t *>(msg);
+
+					if(ev->atom == (kvi_u32_t)kvi_atom_ipc_remote_command)
+						return x11GetRemoteMessage();
+				}
 			#else
 				return false;
 			#endif
 		#endif
 	}
 #endif
-
 
 #endif

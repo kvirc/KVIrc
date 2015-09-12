@@ -175,7 +175,8 @@ int parseArgs(ParseArgs * a)
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
-			if(!a->szExecCommand.isEmpty())a->szExecCommand.append("\n");
+			if(!a->szExecCommand.isEmpty())
+				a->szExecCommand.append("\n");
 			a->szExecCommand.append(p);
 			continue;
 		}
@@ -189,7 +190,8 @@ int parseArgs(ParseArgs * a)
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
-			if(!a->szExecCommand.isEmpty())a->szExecCommand.append("\n");
+			if(!a->szExecCommand.isEmpty())
+				a->szExecCommand.append("\n");
 			a->szExecCommand.append(p);
 			a->bExecuteCommandAndClose=true;
 			continue;
@@ -416,9 +418,7 @@ int main(int argc, char ** argv)
 	if(!a.szExecRemoteCommand.isEmpty())
 	{
 		if(!szRemoteCommand.isEmpty())
-		{
 			szRemoteCommand.append('\n');
-		}
 		szRemoteCommand.append(a.szExecRemoteCommand);
 	}
 
