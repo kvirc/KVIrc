@@ -80,6 +80,7 @@ class KVIRC_API KviInputEditor : public QWidget
 	//Q_PROPERTY(int KviProperty_FocusOwner READ heightHint)
 	Q_PROPERTY(int TransparencyCapable READ heightHint)
 	Q_OBJECT
+	friend class KviTextIconWindow; // it uses insetIconCode(const QString &)
 	friend class KviTopicWidget; // it uses home()
 public:
 	/**
@@ -100,8 +101,9 @@ protected:
 	static QFontMetrics     * g_pLastFontMetrics;
 	static int                g_iInputInstances;
 	static int                g_iCachedHeight;
-	QString                   m_szTextBuffer;
-	QString                   m_szTextDisplayBuffer;
+	QString                   m_szTextBuffer;        // original buffer
+	QString                   m_szTextDisplayBuffer; // buffer with spelling mistakes marked
+	bool                      m_bTextDisplayBufferDirty;
 	int                       m_iCursorPosition;
 	int                       m_iFirstVisibleChar;
 	int                       m_iSelectionBegin;
@@ -917,7 +919,14 @@ private slots:
 	* \return void
 	*/
 	void zoomDefault();
+	
+	/**
+	* Shows the text icon window at cursor position
+	*/
+	void popupTextIconWindow();
+
 protected:
+	void insertIconCode(const QString &szCode);
 	void completionEscapeUnsafeToken(QString &szToken);
 	void installShortcuts();
 	virtual void drawContents(QPainter *);
@@ -934,6 +943,8 @@ protected:
 	virtual void dropEvent(QDropEvent * e);
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;
 	virtual void paintEvent(QPaintEvent * e);
+	QString checkSpelling(const QString &szText);
+	void checkWordSpelling(const QString &szWord,QString * pszResult);
 signals:
 	/**
 	* \brief Called when the user press escape

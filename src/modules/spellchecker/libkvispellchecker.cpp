@@ -45,12 +45,20 @@ static KviPointerList<EnchantDict>* g_pEnchantDicts = NULL;
 		This function returns a hash. For every supported dictionary, key is the language code,
 		value is name of provider for that language (e.g. Aspell).
 */
-static void spellchecker_enumerate_dicts(const char* szLang, const char* /*szName*/,
-		const char* szDesc, const char* /*szFile*/, void* pData) {
+static void spellchecker_enumerate_dicts(
+		const char* szLang,
+		const char* /*szName*/,
+		const char* szDesc,
+		const char* /*szFile*/,
+		void* pData
+	)
+{
 	KviKvsHash* pHash = reinterpret_cast<KviKvsHash*>(pData);
 	pHash->set(szLang, new KviKvsVariant(szDesc));
 }
-static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall* c) {
+
+static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall* c)
+{
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
 	KviKvsHash* pHash = new KviKvsHash;
@@ -85,6 +93,59 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c)
 		bResult |= enchant_dict_check(*it, utf8.data(), utf8.size()) == 0;
 
 	c->returnValue()->setBoolean(bResult);
+	return true;
+}
+
+
+/*
+	@doc: spellchecker.suggestions
+	@type:
+		function
+	@title:
+		$spellchecker.suggestions
+	@short:
+		Get spelling suggestions for a single word
+	@syntax:
+		<array> $spellchecker.suggestions(<word:string>)
+	@description:
+		This function returns the suggestions for the specified word.
+		If the word seems to be spelled correctly or there are no dictionaries
+		selected then the functon returns an empty array.
+*/
+static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
+{
+	QString szWord;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
+	KVSM_PARAMETERS_END(c)
+
+	QHash<QString,int> hAllSuggestions;
+
+	if(!g_pEnchantDicts->isEmpty())
+	{
+		QByteArray utf8 = szWord.toUtf8();
+
+		KviPointerListIterator<EnchantDict> it(*g_pEnchantDicts);
+		for(bool b = it.moveFirst(); b; b = it.moveNext())
+		{
+			size_t iCount = 0;
+			char ** suggestions = enchant_dict_suggest(*it,utf8.data(),utf8.size(),&iCount);
+			if(suggestions)
+			{
+				for(int i=0;i<iCount;i++)
+					hAllSuggestions.insert(QString::fromUtf8(suggestions[i]),1);
+				enchant_dict_free_string_list(*it,suggestions);
+			}
+		}
+	}
+
+	KviKvsArray * pArray = new KviKvsArray();
+
+	QList<QString> lSuggestions = hAllSuggestions.keys();
+	Q_FOREACH(QString szSuggestion,lSuggestions)
+		pArray->append(new KviKvsVariant(szSuggestion));
+
+	c->returnValue()->setArray(pArray);
 	return true;
 }
 
@@ -135,6 +196,7 @@ static bool spellchecker_module_init(KviModule* m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "reloadDictionaries", spellchecker_kvs_reload_dictionaries);
 	KVSM_REGISTER_FUNCTION(m, "availableDictionaries", spellchecker_kvs_available_dictionaries);
 	KVSM_REGISTER_FUNCTION(m, "check", spellchecker_kvs_check);
+	KVSM_REGISTER_FUNCTION(m, "suggestions", spellchecker_kvs_suggestions);
 	return true;
 }
 

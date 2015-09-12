@@ -249,6 +249,21 @@ public:
 	inline Type type() const { return m_eType; };
 
 	/**
+	* Returns true if the window is a channel
+	*/
+	inline bool isChannel() const { return m_eType == Channel; };
+
+	/**
+	* Returns true if the window is a query
+	*/
+	inline bool isQuery() const { return m_eType == Query; };
+
+	/**
+	* Returns true if the window is a console
+	*/
+	inline bool isConsole() const { return m_eType == Console; };
+
+	/**
 	* \brief Returns a descriptive name of the window type
 	* \return const char *
 	*/

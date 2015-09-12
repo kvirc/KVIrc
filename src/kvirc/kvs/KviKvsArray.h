@@ -83,6 +83,11 @@ public:
 	void set(kvs_uint_t uIdx, KviKvsVariant * pVal);
 
 	/**
+	* Appends a variant to this array.
+	*/
+	void append(KviKvsVariant * pVal);
+
+	/**
 	* \brief Returns the element at the given index
 	* \param uIdx The index of the element to retrieve
 	* \return KviKvsVariant *

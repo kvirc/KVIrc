@@ -158,28 +158,27 @@ void KviTextIconWindow::doHide()
 
 void KviTextIconWindow::cellSelected(int row, int column)
 {
-	if(m_pTable->cellWidget(row, column))
+	if(!m_pTable->cellWidget(row, column))
+		return;
+
+	QString szItem(m_pTable->cellWidget(row, column)->toolTip());
+	szItem.append(' ');
+
+	if(m_bAltMode)
+		szItem.prepend(KviControlCodes::Icon);
+
+	if(m_pOwner->inherits("KviInputEditor"))
+		((KviInputEditor *)m_pOwner)->insertIconCode(szItem);
+	else if(m_pOwner->inherits("KviInput"))
+		((KviInput *)m_pOwner)->insertText(szItem);
+	else if(m_pOwner->inherits("QLineEdit"))
 	{
-//		qDebug("%i %i %i %s",m_pOwner->inherits("KviInputEditor"),m_pOwner->inherits("KviInput"),m_pOwner->inherits("QLineEdit"),m_pOwner->className());
-		QString szItem(m_pTable->cellWidget(row, column)->toolTip());
-		szItem.append(' ');
-
-		if(m_bAltMode)
-			szItem.prepend(KviControlCodes::Icon);
-
-		if(m_pOwner->inherits("KviInputEditor"))
-			((KviInputEditor *)m_pOwner)->insertText(szItem);
-		else if(m_pOwner->inherits("KviInput"))
-			((KviInput *)m_pOwner)->insertText(szItem);
-		else if(m_pOwner->inherits("QLineEdit"))
-		{
-			QString szTmp = ((QLineEdit *)m_pOwner)->text();
-			szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
-			((QLineEdit *)m_pOwner)->setText(szTmp);
-			((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
-		}
-		doHide();
+		QString szTmp = ((QLineEdit *)m_pOwner)->text();
+		szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
+		((QLineEdit *)m_pOwner)->setText(szTmp);
+		((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
 	}
+	doHide();
 }
 
 

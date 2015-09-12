@@ -181,6 +181,12 @@ void KviKvsArray::set(kvs_uint_t uIdx, KviKvsVariant * pVal)
 	}
 }
 
+void KviKvsArray::append(KviKvsVariant * pVal)
+{
+	set(m_uSize,pVal);
+}
+
+
 KviKvsVariant * KviKvsArray::getAt(kvs_uint_t uIdx)
 {
 	if(uIdx >= m_uSize)
