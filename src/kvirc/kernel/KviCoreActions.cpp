@@ -129,7 +129,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Allows you to configure nickname, username, avatar etc..."),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_identity.png",
-		KviIconManager::Who,
+		KviIconManager::Ident,
 		0,
 		KVI_SHORTCUTS_IDENTITY);
 

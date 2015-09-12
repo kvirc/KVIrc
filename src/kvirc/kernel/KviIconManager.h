@@ -47,6 +47,7 @@
 #define KVI_BIGICON_CONNECTED "kvi_bigicon_connected.png"
 #define KVI_BIGICON_TOOLS "kvi_bigicon_tools.png"
 #define KVI_BIGICON_ACTIONS "kvi_bigicon_actions.png"
+#define KVI_BIGICON_USERACTION "kvi_bigicon_useraction.png"
 #define KVI_BIGICON_FOLDER "kvi_bigicon_folder.png"
 #define KVI_BIGICON_UNKNOWN "kvi_bigicon_unknown.png"
 #define KVI_BIGICON_SEPARATOR "kvi_bigicon_separator.png"
@@ -489,7 +490,9 @@ public:
 		ActionEditor         = 322,
 		AliasEditor          = 323,
 		PopupEditor          = 324,
-		IconCount            = 325
+		Dcc                  = 325,
+		Socket               = 326,
+		IconCount            = 327
 	};
 
 	/**
