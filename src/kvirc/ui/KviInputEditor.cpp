@@ -1129,17 +1129,8 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
 
-	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
-	
-	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
-	{
-		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
-		{
-			pCurrentBlock = pBlock;
-			break;
-		}
-	}
-	
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
+
 	if(pCurrentBlock && pCurrentBlock->bSpellCheckable && (!pCurrentBlock->bCorrect))
 	{
 		g_pInputPopup->addSeparator();
@@ -1176,6 +1167,22 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 
 }
 
+KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks)
+{
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
+	
+	for(KviInputEditorSpellCheckerBlock * pBlock = lBlocks.first();pBlock;pBlock = lBlocks.next())
+	{
+		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
+		{
+			pCurrentBlock = pBlock;
+			break;
+		}
+	}
+
+	return pCurrentBlock;
+}
+
 void KviInputEditor::showSpellCheckerCorrectionsPopup()
 {
 	g_pSpellCheckerPopup->clear();
@@ -1195,16 +1202,7 @@ void KviInputEditor::showSpellCheckerCorrectionsPopup()
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
 
-	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
-	
-	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
-	{
-		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
-		{
-			pCurrentBlock = pBlock;
-			break;
-		}
-	}
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
 	if(!pCurrentBlock)
 		return; // doh?
@@ -1280,16 +1278,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
 
-	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
-	
-	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
-	{
-		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
-		{
-			pCurrentBlock = pBlock;
-			break;
-		}
-	}
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
 	if(!pCurrentBlock)
 		return; // doh?

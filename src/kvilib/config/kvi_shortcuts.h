@@ -49,6 +49,7 @@
 * \def KVI_SHORTCUTS_USERS Open "Registered Users" dialog
 * \def KVI_SHORTCUTS_MANAGE_THEMES Open "Manage Theme" dialog
 * \def KVI_SHORTCUTS_MANAGE_ADDONS Open "Manage Theme" dialog
+* \def KVI_SHORTCUTS_QUIT Quit KVIrc
 *
 * \def KVI_SHORTCUTS_INPUT_ALT Alt key
 * \def KVI_SHORTCUTS_INPUT_ALT_2 Meta key
@@ -138,6 +139,7 @@
 #define KVI_SHORTCUTS_CONTEXT QKeySequence::New					// Ctrl+N
 #define KVI_SHORTCUTS_INPUT_RESET "Ctrl+O"
 #define KVI_SHORTCUTS_INPUT_PLAINTEXT "Ctrl+P"
+#define KVI_SHORTCUTS_QUIT "Ctrl+Q"
 #define KVI_SHORTCUTS_INPUT_REVERSE "Ctrl+R"
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_INPUT_UNDERLINE QKeySequence::Underline			// Ctrl+U
@@ -245,6 +247,7 @@
 		[b]Ctrl+N:[/b] Open new context[br]
 		[b]Ctrl+O:[/b] Insert Reset control character[br]
 		[b]Ctrl+P:[/b] Insert "Plain text" control character[br]
+		[b]Ctrl+Q:[/b] Quit [br]
 		[b]Ctrl+R:[/b] Insert Reverse control character[br]
 		[b]Ctrl+S:[/b] Open "Servers" dialog [br]
 		[b]Ctrl+U:[/b] Insert Underline control character[br]

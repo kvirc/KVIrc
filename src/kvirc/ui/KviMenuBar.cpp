@@ -39,6 +39,7 @@
 #include "KviActionManager.h"
 #include "KviCoreActionNames.h"
 #include "KviKvsScript.h"
+#include "KviShortcut.h"
 
 #include <QMenu>
 
@@ -267,7 +268,13 @@ void KviMenuBar::setupMainPopup(QMenu *pop)
 #ifndef COMPILE_ON_MAC
 	main->addSeparator();
 
-	main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()));
+	main->addAction(
+			*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),
+			__tr2qs("&Quit"),
+			g_pMainWindow,
+			SLOT(close()),
+			QKeySequence(KVI_SHORTCUTS_QUIT)
+		);
 #endif //COMPILE_ON_MAC
 }
 

@@ -971,6 +971,7 @@ protected:
 	QString checkSpelling(const QString &szText);
 	bool checkWordSpelling(const QString &szWord);
 	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);
+	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks);
 signals:
 	/**
 	* \brief Called when the user press escape
