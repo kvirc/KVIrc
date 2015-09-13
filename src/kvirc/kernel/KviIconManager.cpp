@@ -349,7 +349,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"mechanunowner",       // 263
 	"afraid",              // 264
 	"tongue2",             // 265
-	"sayicon",             // 266
+	"sysmonitor",          // 266
 	"saycolors",           // 267
 	"finger",              // 268
 	"scriptaction",        // 269
@@ -872,7 +872,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 263: return KviIconManager::MeChanUnOwner;        break;
 		case 264: return KviIconManager::Afraid;               break;
 		case 265: return KviIconManager::Tongue2;              break;
-		case 266: return KviIconManager::SayIcon;              break;
+		case 266: return KviIconManager::SysMonitor;           break;
 		case 267: return KviIconManager::SayColors;            break;
 		case 268: return KviIconManager::Finger;               break;
 		case 269: return KviIconManager::ScriptAction;         break;

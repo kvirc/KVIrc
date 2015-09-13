@@ -60,7 +60,7 @@ KviIOGraphWindow::~KviIOGraphWindow()
 
 QPixmap * KviIOGraphWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::SayIcon);
+	return g_pIconManager->getSmallIcon(KviIconManager::SysMonitor);
 }
 
 void KviIOGraphWindow::resizeEvent(QResizeEvent *)

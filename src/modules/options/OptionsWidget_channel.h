@@ -60,7 +60,7 @@ public:
 	~OptionsWidget_channelGeneral();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced KviIconManager::Channel
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channelAdvanced OptionsWidget_channel
 
