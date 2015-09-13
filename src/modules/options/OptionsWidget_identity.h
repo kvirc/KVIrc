@@ -149,7 +149,7 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget KviIconManager::Default
+#define KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget KviIconManager::Who
 #define KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityGeneralOptionsWidget 90000
 #define KVI_OPTIONS_WIDGET_PARENT_KviIdentityGeneralOptionsWidget OptionsWidget_identity
