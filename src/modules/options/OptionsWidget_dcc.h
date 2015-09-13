@@ -27,7 +27,7 @@
 #include "KviOptionsWidget.h"
 #include "KviIconManager.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dcc KviIconManager::DccError
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dcc KviIconManager::Dcc
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dcc __tr2qs_no_lookup("DCC")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dcc 70000
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dcc true
@@ -42,7 +42,7 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccGeneral KviIconManager::DccError
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccGeneral KviIconManager::Dcc
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccGeneral __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccGeneral 70000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccGeneral OptionsWidget_dcc
@@ -55,7 +55,7 @@ public:
 	~OptionsWidget_dccGeneral();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccAdvanced KviIconManager::DccError
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccAdvanced 70000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccAdvanced OptionsWidget_dcc
@@ -85,7 +85,7 @@ public:
 	~OptionsWidget_dccSend();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral KviIconManager::DccMsg
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral KviIconManager::Dcc
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSendGeneral OptionsWidget_dccSend
 
@@ -99,7 +99,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendAdvanced KviIconManager::DccMsg
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSendAdvanced OptionsWidget_dccSend
 

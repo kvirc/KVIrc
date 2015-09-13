@@ -42,7 +42,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced KviIconManager::World
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionAdvanced OptionsWidget_connection
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionAdvanced true
@@ -73,7 +73,7 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket KviIconManager::SocketError
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket KviIconManager::Socket
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket __tr2qs_no_lookup("Socket")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSocket OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket 20

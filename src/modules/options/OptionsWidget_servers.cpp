@@ -644,7 +644,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	gl->setRowStretch(2,1);
 
-	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::Who)),__tr2qs_ctx("Identity","options"));
+	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::Ident)),__tr2qs_ctx("Identity","options"));
 
 	// Connection tab
 

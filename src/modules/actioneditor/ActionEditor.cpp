@@ -782,6 +782,7 @@ void ActionEditor::newAction()
 			szVis,
 			szDes,
 			KviActionManager::categoryGeneric()->name(),
+			KVI_BIGICON_USERACTION,
 			QString(),
 			QString(),
 			0,
