@@ -63,7 +63,7 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListForeground KviIconManager::UserList
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListForeground KviIconManager::Canvas
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListForeground __tr2qs_no_lookup("Foreground")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListForeground __tr2qs_no_lookup("theme,userlist,channel,colors")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListForeground "theme"
@@ -79,7 +79,7 @@ public:
 	~OptionsWidget_userListForeground();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListGrid KviIconManager::Gui
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListGrid KviIconManager::UserList
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListGrid __tr2qs_no_lookup("Nickname Grid")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListGrid __tr2qs_no_lookup("theme,userlist,channel,grid")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListGrid "theme"
@@ -99,7 +99,7 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListFeatures KviIconManager::Gui
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListFeatures KviIconManager::UserList
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListFeatures __tr2qs_no_lookup("Features")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListFeatures __tr2qs_no_lookup("userlist,channel")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_userListFeatures OptionsWidget_userList
