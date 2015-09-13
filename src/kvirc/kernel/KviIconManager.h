@@ -431,7 +431,7 @@ public:
 		MeChanUnOwner        = 263,
 		Afraid               = 264,
 		Tongue2              = 265,
-		SayIcon              = 266,
+		SysMonitor           = 266,
 		SayColors            = 267,
 		Finger               = 268,
 		ScriptAction         = 269,

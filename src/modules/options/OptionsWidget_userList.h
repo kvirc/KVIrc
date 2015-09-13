@@ -42,7 +42,7 @@ public:
 	~OptionsWidget_userList();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListBackground KviIconManager::Transparent
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListBackground KviIconManager::Canvas
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListBackground __tr2qs_no_lookup("Background")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListBackground __tr2qs_no_lookup("theme,userlist,channel,background")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListBackground "theme"

@@ -71,7 +71,7 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSend KviIconManager::DccMsg
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSend KviIconManager::FileTransfer
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSend __tr2qs_no_lookup("File Transfer")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSend OptionsWidget_dcc
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSend true
@@ -85,7 +85,7 @@ public:
 	~OptionsWidget_dccSend();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral KviIconManager::Dcc
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral KviIconManager::FileTransfer
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSendGeneral OptionsWidget_dccSend
 
@@ -112,7 +112,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccChat KviIconManager::DccRequest
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccChat KviIconManager::Dcc
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccChat __tr2qs_no_lookup("Chat")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccChat OptionsWidget_dcc
 #define KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccChat true

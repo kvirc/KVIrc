@@ -381,8 +381,8 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Show I/O &Traffic graph"),
 		__tr2qs("Shows a graph representing I/O bandwidth traffic"),
 		KviActionManager::categoryGeneric(),
-		"kvi_bigicon_sayicon.png",
-		KviIconManager::SayIcon,
+		"kvi_bigicon_sysmonitor.png",
+		KviIconManager::SysMonitor,
 		0,
 		QString());
 

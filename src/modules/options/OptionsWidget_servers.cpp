@@ -829,7 +829,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	gl->setRowStretch(iRow,1);
 
-	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::SocketWarning)),__tr2qs_ctx("Connection","options"));
+	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::Socket)),__tr2qs_ctx("Connection","options"));
 
 	// after login join channels
 	tab = new QWidget(tw);

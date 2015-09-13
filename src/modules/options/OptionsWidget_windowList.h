@@ -60,7 +60,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground KviIconManager::TreeWindowList
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground KviIconManager::Canvas
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground __tr2qs_no_lookup("Foreground")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTreeForeground OptionsWidget_windowListTree
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskForegroundBarOptionsWidget __tr2qs_no_lookup("theme")
@@ -75,7 +75,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground KviIconManager::TreeWindowList
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground KviIconManager::Canvas
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground __tr2qs_no_lookup("Background")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTreeBackground OptionsWidget_windowListTree
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBackgroundBarOptionsWidget __tr2qs_no_lookup("theme")
