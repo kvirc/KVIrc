@@ -784,7 +784,6 @@ void ActionEditor::newAction()
 			KviActionManager::categoryGeneric()->name(),
 			KVI_BIGICON_USERACTION,
 			QString(),
-			QString(),
 			0,
 			QString(),
 			0);
