@@ -76,9 +76,13 @@ void KviColorWindow::paintEvent(QPaintEvent *)
 void KviColorWindow::keyPressEvent(QKeyEvent * e)
 {
 	if(m_iTimerId != -1)
+	{
 		killTimer(m_iTimerId);
+		m_iTimerId = -1;
+	}
 	hide();
-	if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
+	if(m_pOwner)
+		g_pApp->sendEvent(m_pOwner,e);
 }
 
 void KviColorWindow::mousePressEvent(QMouseEvent * e)

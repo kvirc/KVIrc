@@ -71,6 +71,16 @@ class QMenu;
 	#endif
 #endif
 
+class KviInputEditorSpellCheckerBlock
+{
+public:
+	QString szText;
+	int iStart;
+	int iLength;
+	bool bSpellCheckable;
+	bool bCorrect;
+};
+
 /**
 * \class KviInputEditor
 * \brief Input editor class
@@ -925,6 +935,21 @@ private slots:
 	*/
 	void popupTextIconWindow();
 
+	/**
+	* Shows the contextual popup menu at the global position pos
+	*/
+	void showContextPopup(const QPoint &pos);
+
+	/**
+	* Show the spell checker corrections popup.
+	*/
+	void showSpellCheckerCorrectionsPopup();
+
+	/**
+	* Handles spellchecker suggestions popup
+	*/
+	void spellCheckerPopupCorrectionActionTriggered();
+
 protected:
 	void insertIconCode(const QString &szCode);
 	void completionEscapeUnsafeToken(QString &szToken);
@@ -944,7 +969,8 @@ protected:
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;
 	virtual void paintEvent(QPaintEvent * e);
 	QString checkSpelling(const QString &szText);
-	void checkWordSpelling(const QString &szWord,QString * pszResult);
+	bool checkWordSpelling(const QString &szWord);
+	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);
 signals:
 	/**
 	* \brief Called when the user press escape

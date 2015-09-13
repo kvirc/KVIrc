@@ -35,6 +35,7 @@
 #include "KviIrcView.h"
 #include "KviKvsScript.h"
 #include "KviKvsKernel.h"
+#include "KviKvsArrayCast.h"
 #include "KviLocale.h"
 #include "KviMdiManager.h"
 #include "KviControlCodes.h"
@@ -75,7 +76,8 @@
 #endif
 
 // from KviApplication.cpp
-extern QMenu         * g_pInputPopup;
+extern QMenu * g_pInputPopup;
+extern QMenu * g_pSpellCheckerPopup;
 extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviColorWindow          * g_pColorWindow;
 
@@ -353,12 +355,11 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	drawContents(&p);
 }
 
-void KviInputEditor::checkWordSpelling(const QString &szWord,QString * pszResult)
+bool KviInputEditor::checkWordSpelling(const QString &szWord)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
-	// TODO: If szWord is a nick of a person in this channel, don't mark it as a spelling mistake.
 	if(szWord.isEmpty())
-		return;
+		return true;
 
 	if(m_pKviWindow && m_pKviWindow->isChannel())
 	{
@@ -366,8 +367,7 @@ void KviInputEditor::checkWordSpelling(const QString &szWord,QString * pszResult
 		if(c->isOn(szWord))
 		{
 			// a nickname on channel
-			pszResult->append(szWord);
-			return;
+			return true;
 		}
 	}
 	
@@ -375,31 +375,32 @@ void KviInputEditor::checkWordSpelling(const QString &szWord,QString * pszResult
 	KviKvsVariantList params(new KviKvsVariant(szWord));
 	KviKvsScript::evaluate("$spellchecker.check($0)", NULL, &params, &bCorrect);
 	
-	if(bCorrect.asBoolean())
-	{
-		pszResult->append(szWord);
-		return;
-	}
-	
-	pszResult->append(QChar(KviControlCodes::SpellingMistake));
-	pszResult->append(szWord);
-	pszResult->append(QChar(KviControlCodes::SpellingMistake));
+	return bCorrect.asBoolean();
+#else
+	return true; // assume correct
 #endif
 }
 
-// Insert KviControlCodes::SpellingMistake around every word with a spelling mistake
+#define  ADD_SPELLCHECKER_BLOCK(_szText,_iStart,_bSpellCheckable,_bCorrect) \
+	do { \
+		KviInputEditorSpellCheckerBlock * pBlock = new KviInputEditorSpellCheckerBlock(); \
+		pBlock->szText = _szText; \
+		pBlock->iStart = _iStart; \
+		pBlock->iLength = pBlock->szText.length(); \
+		pBlock->bSpellCheckable = _bSpellCheckable; \
+		pBlock->bCorrect = _bCorrect; \
+		lBuffer.append(pBlock); \
+	} while(0)
 
-QString KviInputEditor::checkSpelling(const QString &szText)
+void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
 	if(szText.isEmpty())
-		return szText;
+		return;
 	
-	const QChar * b = szText.unicode();
-	const QChar * p = b;
-	const QChar * e = b + szText.length();
-
-	QString szResult;
+	const QChar * const pBufferBegin = szText.unicode();
+	const QChar * p = pBufferBegin;
+	const QChar * e = pBufferBegin + szText.length();
 
 	// first of all skip any spaces
 	while(p < e)
@@ -409,8 +410,8 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 		p++;
 	}
 	
-	if(p > b)
-		szResult.append(b,p-b);
+	if(p > pBufferBegin)
+		ADD_SPELLCHECKER_BLOCK(QString(pBufferBegin,p-pBufferBegin),0,false,false);
 
 	// check if the buffer starts with a command
 	if((p < e) && (p->unicode() == '/'))
@@ -426,7 +427,6 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 				break;
 			p++;
 		}
-		
 		
 		const QChar * pCommandWordBegin = p;
 		
@@ -456,11 +456,15 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 					(szCommand != szPart) &&
 					(szCommand != szQuit)
 				)
-				return szText; // the command parameters usually have no spellcheckable text
+			{
+				// the command parameters usually have no spellcheckable text
+				ADD_SPELLCHECKER_BLOCK(szText,0,false,false);
+				return;
+			}
 			
 		}
 
-		szResult.append(pCommandBlockBegin,p-pCommandBlockBegin);
+		ADD_SPELLCHECKER_BLOCK(QString(pCommandBlockBegin,p-pCommandBlockBegin),pCommandBlockBegin - pBufferBegin,false,false);
 	}
 
 	const QChar * pNonWordBegin = NULL;
@@ -480,7 +484,7 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 					// a word starts here
 					if(pNonWordBegin)
 					{
-						szResult.append(pNonWordBegin,p - pNonWordBegin);
+						ADD_SPELLCHECKER_BLOCK(QString(pNonWordBegin,p - pNonWordBegin),pNonWordBegin - pBufferBegin,false,false);
 						pNonWordBegin = NULL;
 					}
 					pWordBegin = p;
@@ -508,14 +512,11 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 						if(pWordBegin)
 						{
 							// a word to spellcheck
-							if((p-1)->unicode() == '\'')
-							{
-								// exclude the trailing ' from the word
-								checkWordSpelling(QString(pWordBegin,p - 1 - pWordBegin),&szResult);
-								szResult.append(QChar('\''));
-							} else {
-								checkWordSpelling(QString(pWordBegin,p - pWordBegin),&szResult);
-							}
+							if((p-1)->unicode() == '\'') // exclude the trailing ' from the word
+								p--; // go back one char, so it will become a non-word
+
+							QString szWord(pWordBegin,p - pWordBegin);
+							ADD_SPELLCHECKER_BLOCK(szWord,pWordBegin - pBufferBegin,true,checkWordSpelling(szWord));
 							pWordBegin = NULL;
 						}
 						pNonWordBegin = p;
@@ -532,11 +533,36 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 	if(pWordBegin)
 	{
 		// last word to spellcheck
-		checkWordSpelling(QString(pWordBegin,p - pWordBegin),&szResult);
+		QString szWord(pWordBegin,p - pWordBegin);
+		ADD_SPELLCHECKER_BLOCK(szWord,pWordBegin - pBufferBegin,true,checkWordSpelling(szWord));
 	} else if(pNonWordBegin)
 	{
 		// last non-word
-		szResult.append(pNonWordBegin,p - pNonWordBegin);
+		ADD_SPELLCHECKER_BLOCK(QString(pNonWordBegin,p - pNonWordBegin),pNonWordBegin - pBufferBegin,false,false);
+	}
+#endif
+}
+
+// Insert KviControlCodes::SpellingMistake around every word with a spelling mistake
+QString KviInputEditor::checkSpelling(const QString &szText)
+{
+#ifdef COMPILE_ENCHANT_SUPPORT
+	
+	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	splitTextIntoSpellCheckerBlocks(szText,lBuffer);
+	
+	QString szResult;
+	
+	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
+	{
+		if(pBlock->bSpellCheckable && (!pBlock->bCorrect))
+		{
+			szResult.append(QChar(KviControlCodes::SpellingMistake));
+			szResult.append(pBlock->szText);
+			szResult.append(QChar(KviControlCodes::SpellingMistake));
+		} else {
+			szResult.append(pBlock->szText);
+		}
 	}
 	
 	return szResult;
@@ -566,6 +592,7 @@ void KviInputEditor::drawContents(QPainter * p)
 #else
 		m_szTextDisplayBuffer = m_szTextBuffer;
 #endif
+		m_bTextDisplayBufferDirty = false;
 	}
 
 	int iTop          = KVI_INPUT_XTRAPADDING;
@@ -999,6 +1026,280 @@ void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
 	}
 }
 
+void KviInputEditor::showContextPopup(const QPoint &pos)
+{
+	int iType = m_pKviWindow->type();
+
+	//Popup menu
+	g_pInputPopup->clear();
+
+	QString szClip;
+
+	QClipboard * pClip = QApplication::clipboard();
+	if(pClip)
+	{
+		szClip = pClip->text(QClipboard::Clipboard);
+
+		int iOcc = szClip.count(QChar('\n'));
+
+		if(!szClip.isEmpty())
+		{
+			if(szClip.length() > 60)
+			{
+				szClip.truncate(60);
+				szClip.append("...");
+			}
+
+			szClip.replace(QChar('&'),"&amp;");
+			szClip.replace(QChar('<'),"&lt;");
+			szClip.replace(QChar('>'),"&gt;");
+			szClip.replace(QChar('\n'),"<br>");
+
+			QString szLabel = "<center><b>";
+			szLabel += __tr2qs("Clipboard");
+			szLabel += ":</b><br>";
+			szLabel += szClip;
+			szLabel += "<br><b>";
+
+			QString szNum;
+			szNum.setNum(iOcc);
+
+			szLabel += szNum;
+			szLabel += QChar(' ');
+			szLabel += (iOcc == 1) ? __tr2qs("line break") : __tr2qs("line breaks");
+			szLabel += "</b></center>";
+
+			QLabel * pLabel = new QLabel(szLabel,g_pInputPopup);
+			pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
+			pLabel->setMargin(5);
+
+			QWidgetAction * pAction = new QWidgetAction(g_pInputPopup);
+			pAction->setDefaultWidget(pLabel);
+
+			g_pInputPopup->addAction(pAction);
+
+			//delete pLabel;
+		}
+	}
+
+	QAction * pAction = g_pInputPopup->addAction(__tr2qs("&Undo") + ACCEL_KEY(Z),this,SLOT(undo()));
+	pAction->setEnabled(isUndoAvailable());
+	pAction = g_pInputPopup->addAction(__tr2qs("&Redo") + ACCEL_KEY(Y),this,SLOT(redo()));
+	pAction->setEnabled(isRedoAvailable());
+
+	g_pInputPopup->addSeparator();
+
+	pAction = g_pInputPopup->addAction(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
+	pAction->setEnabled(hasSelection());
+	pAction = g_pInputPopup->addAction(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
+	pAction->setEnabled(hasSelection());
+	pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
+	pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
+	if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
+	    pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
+	else
+	    pAction->setEnabled(false);
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
+	if((iType != KviWindow::Channel) && (iType != KviWindow::Query) && (iType != KviWindow::DccChat))
+	    pAction->setEnabled(false);
+	else
+	    pAction->setEnabled(!m_bReadOnly);
+
+	if(m_bSpSlowFlag)
+	    pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
+
+	g_pInputPopup->addSeparator();
+
+	pAction = g_pInputPopup->addAction(__tr2qs("Clear"),this,SLOT(clear()));
+	pAction->setEnabled(!m_szTextBuffer.isEmpty() && !m_bReadOnly);
+	g_pInputPopup->addSeparator();
+	pAction = g_pInputPopup->addAction(__tr2qs("Select All"),this,SLOT(selectAll()));
+	pAction->setEnabled((!m_szTextBuffer.isEmpty()));
+
+	g_pInputPopup->addSeparator();
+
+	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),this,SLOT(popupTextIconWindow()));
+	pAction->setEnabled(!m_bReadOnly);
+	
+
+#ifdef COMPILE_ENCHANT_SUPPORT
+	// check if the cursor is in a spellcheckable block
+
+	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
+
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
+	
+	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
+	{
+		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
+		{
+			pCurrentBlock = pBlock;
+			break;
+		}
+	}
+	
+	if(pCurrentBlock && pCurrentBlock->bSpellCheckable && (!pCurrentBlock->bCorrect))
+	{
+		g_pInputPopup->addSeparator();
+
+		pAction = g_pInputPopup->addAction(
+				__tr2qs("Correct Spelling of '%1'").arg(pCurrentBlock->szText),
+				this,
+				SLOT(showSpellCheckerCorrectionsPopup())
+			);
+		pAction->setEnabled(!m_bReadOnly);
+	} else {
+		pAction = g_pInputPopup->addAction(
+				__tr2qs("Correct Spelling")
+			);
+		pAction->setEnabled(false);
+	}
+#endif
+
+#if (QT_VERSION >= 0x050000)
+/*
+ * With Qt5 the use of input method composing works, but we are unable to query the list of
+ * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
+ * check it again on newer qt versions!
+ */
+#else
+	QInputContext *qic = g_pApp->inputContext();
+	if (qic) {
+		QList<QAction *> imActions = qic->actions();
+		for (int i = 0; i < imActions.size(); ++i)
+			g_pInputPopup->addAction(imActions.at(i));
+	}
+#endif
+	g_pInputPopup->popup(pos);
+
+}
+
+void KviInputEditor::showSpellCheckerCorrectionsPopup()
+{
+	g_pSpellCheckerPopup->clear();
+
+	QWidgetAction * pWidgetAction = new QWidgetAction(g_pInputPopup);
+	QLabel * pLabel = new QLabel(g_pSpellCheckerPopup);
+	pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
+	pLabel->setMargin(5);
+
+	pWidgetAction->setDefaultWidget(pLabel);
+	g_pSpellCheckerPopup->addAction(pWidgetAction);
+
+
+#ifdef COMPILE_ENCHANT_SUPPORT
+	// check if the cursor is in a spellcheckable block
+
+	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
+
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
+	
+	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
+	{
+		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
+		{
+			pCurrentBlock = pBlock;
+			break;
+		}
+	}
+
+	if(!pCurrentBlock)
+		return; // doh?
+
+	if(!pCurrentBlock->bSpellCheckable)
+	{
+		pLabel->setText(__tr2qs("Spelling Checker"));
+	
+		g_pSpellCheckerPopup->addAction(__tr2qs("No Suggestions Available"))->setEnabled(false);
+	} else {
+
+		pLabel->setText(__tr2qs("Spelling Suggestions for '%1'").arg(pCurrentBlock->szText));
+		g_pSpellCheckerPopup->addAction(pWidgetAction);
+	
+		KviKvsVariant aRet;
+		KviKvsVariantList params(new KviKvsVariant(pCurrentBlock->szText));
+		KviKvsScript::evaluate("$spellchecker.suggestions($0)", NULL, &params, &aRet);
+	
+		KviKvsArrayCast aCast;
+		aRet.castToArray(&aCast);
+
+		KviKvsArray * pArray = aCast.array();
+
+		int s = pArray->size();
+		
+		for(int i=0;i<s;i++)
+		{
+			KviKvsVariant * v = pArray->at(i);
+			if(!v)
+				continue;
+			
+			QString szWord;
+			v->asString(szWord);
+
+			if(szWord.isEmpty())
+				continue;
+
+			g_pSpellCheckerPopup->addAction(szWord,this,SLOT(spellCheckerPopupCorrectionActionTriggered()));
+		}
+	}
+
+#else
+
+	pLabel->setText(__tr2qs("Spelling Checker"));
+
+	g_pSpellCheckerPopup->addAction(__tr2qs("Not Supported"))->setEnabled(false);
+
+#endif
+
+	int iXPos = xPositionFromCharIndex(m_iCursorPosition);
+	if(iXPos > 24)
+		iXPos -= 24;
+
+	QSize sh = g_pSpellCheckerPopup->sizeHint();
+
+	g_pSpellCheckerPopup->popup(mapToGlobal(QPoint(iXPos,-sh.height())));
+}
+
+void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
+{
+	QObject * pSender = sender();
+	if(!pSender)
+		return;
+	if(!pSender->inherits("QAction"))
+		return;
+	
+	QAction * pAction = (QAction *)pSender;
+	QString szWord = pAction->text();
+
+	if(szWord.isEmpty())
+		return;
+
+	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
+
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
+	
+	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
+	{
+		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
+		{
+			pCurrentBlock = pBlock;
+			break;
+		}
+	}
+
+	if(!pCurrentBlock)
+		return; // doh?
+		
+	m_iSelectionBegin = pCurrentBlock->iStart;
+	m_iSelectionEnd = pCurrentBlock->iStart + pCurrentBlock->iLength;
+
+	insertText(szWord);
+}
+
 void KviInputEditor::mousePressEvent(QMouseEvent * e)
 {
 	if(e->button() & Qt::LeftButton)
@@ -1016,115 +1317,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 
 	} else if(e->button() & Qt::RightButton)
 	{
-		int iType = g_pActiveWindow->type();
-
-		//Popup menu
-		g_pInputPopup->clear();
-
-		QString szClip;
-
-		QClipboard * pClip = QApplication::clipboard();
-		if(pClip)
-		{
-			szClip = pClip->text(QClipboard::Clipboard);
-
-			int iOcc = szClip.count(QChar('\n'));
-
-			if(!szClip.isEmpty())
-			{
-				if(szClip.length() > 60)
-				{
-					szClip.truncate(60);
-					szClip.append("...");
-				}
-
-				szClip.replace(QChar('&'),"&amp;");
-				szClip.replace(QChar('<'),"&lt;");
-				szClip.replace(QChar('>'),"&gt;");
-				szClip.replace(QChar('\n'),"<br>");
-
-				QString szLabel = "<center><b>";
-				szLabel += __tr2qs("Clipboard");
-				szLabel += ":</b><br>";
-				szLabel += szClip;
-				szLabel += "<br><b>";
-
-				QString szNum;
-				szNum.setNum(iOcc);
-
-				szLabel += szNum;
-				szLabel += QChar(' ');
-				szLabel += (iOcc == 1) ? __tr2qs("line break") : __tr2qs("line breaks");
-				szLabel += "</b></center>";
-
-				QLabel * pLabel = new QLabel(szLabel,g_pInputPopup);
-				pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-				pLabel->setMargin(5);
-
-				QWidgetAction * pAction = new QWidgetAction(g_pInputPopup);
-				pAction->setDefaultWidget(pLabel);
-
-				g_pInputPopup->addAction(pAction);
-
-				//delete pLabel;
-			}
-		}
-
-		QAction * pAction = g_pInputPopup->addAction(__tr2qs("&Undo") + ACCEL_KEY(Z),this,SLOT(undo()));
-		pAction->setEnabled(isUndoAvailable());
-		pAction = g_pInputPopup->addAction(__tr2qs("&Redo") + ACCEL_KEY(Y),this,SLOT(redo()));
-		pAction->setEnabled(isRedoAvailable());
-
-		g_pInputPopup->addSeparator();
-
-		pAction = g_pInputPopup->addAction(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
-		pAction->setEnabled(hasSelection());
-		pAction = g_pInputPopup->addAction(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
-		pAction->setEnabled(hasSelection());
-		pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
-		pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
-		pAction = g_pInputPopup->addAction(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
-		if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
-		    pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
-		else
-		    pAction->setEnabled(false);
-		pAction = g_pInputPopup->addAction(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
-		if ((iType != KviWindow::Channel) && (iType != KviWindow::Query) && (iType != KviWindow::DccChat))
-		    pAction->setEnabled(false);
-		else
-		    pAction->setEnabled(!m_bReadOnly);
-
-		if(m_bSpSlowFlag)
-		    pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
-
-		g_pInputPopup->addSeparator();
-
-		pAction = g_pInputPopup->addAction(__tr2qs("Clear"),this,SLOT(clear()));
-		pAction->setEnabled(!m_szTextBuffer.isEmpty() && !m_bReadOnly);
-		g_pInputPopup->addSeparator();
-		pAction = g_pInputPopup->addAction(__tr2qs("Select All"),this,SLOT(selectAll()));
-		pAction->setEnabled((!m_szTextBuffer.isEmpty()));
-
-		g_pInputPopup->addSeparator();
-
-		if(!m_bReadOnly)
-			pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),this,SLOT(popupTextIconWindow()));
-
-#if (QT_VERSION >= 0x050000)
-	/*
-	 * With Qt5 the use of input method composing works, but we are unable to query the list of
-	 * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
-	 * check it again on newer qt versions!
-	 */
-#else
-		QInputContext *qic = g_pApp->inputContext();
-		if (qic) {
-			QList<QAction *> imActions = qic->actions();
-			for (int i = 0; i < imActions.size(); ++i)
-				g_pInputPopup->addAction(imActions.at(i));
-		}
-#endif
-		g_pInputPopup->popup(mapToGlobal(e->pos()));
+		showContextPopup(mapToGlobal(e->pos()));
 	} else {
 		pasteSelectionWithConfirmation();
 	}
@@ -1655,6 +1848,7 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY,this,SLOT(dummy()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_IN,this,SLOT(zoomIn()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_OUT,this,SLOT(zoomOut()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING,this,SLOT(showSpellCheckerCorrectionsPopup()),0,Qt::WidgetShortcut);
 	// this is currently ambigous, since we're using it for scripting, too
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_DEFAULT,this,SLOT(zoomDefault()),SLOT(zoomDefault()),Qt::WidgetShortcut);
 }

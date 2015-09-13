@@ -96,6 +96,7 @@
 * \def KVI_SHORTCUTS_INPUT_UNDO Undo last action
 * \def KVI_SHORTCUTS_INPUT_DUMMY Dummy combo
 * \def KVI_SHORTCUTS_INPUT_DUMMY_2 Dummy combo
+* \def KVI_SHORTCUTS_INPUT_CORRECT_SPELLING Correct spelling of the word near the cursor
 *
 * \def KVI_SHORTCUTS_EDITORS_ACTION Open Action editor
 * \def KVI_SHORTCUTS_EDITORS_ALIAS Open Alias editor
@@ -209,6 +210,7 @@
 #define KVI_SHORTCUTS_WIN_ZOOM_IN QKeySequence::ZoomIn				// Ctrl++
 #define KVI_SHORTCUTS_WIN_ZOOM_OUT QKeySequence::ZoomOut			// Ctrl+-
 #define KVI_SHORTCUTS_WIN_ZOOM_DEFAULT Qt::ControlModifier + Qt::Key_0
+#define KVI_SHORTCUTS_INPUT_CORRECT_SPELLING Qt::ControlModifier + Qt::Key_G
 
 /*
 	@doc: keyboard
@@ -234,6 +236,7 @@
 		[b]Ctrl+B:[/b] Insert Bold control character[br]
 		[b]Ctrl+C:[/b] Copy to clipboard[br]
 		[b]Ctrl+F:[/b] Open "Find Text" dialog[br]
+		[b]Ctrl+G:[/b] Activate spellchecker[br]
 		[b]Ctrl+L:[/b] Scroll to the "last read" line marker[br]
 		[b]Ctrl+I:[/b] Open "Insert icon" dialog[br]
 		[b]Ctrl+J:[/b] Open "Join Channels" dialog[br]
