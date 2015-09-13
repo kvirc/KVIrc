@@ -70,7 +70,7 @@ protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea KviIconManager::Applet
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea __tr2qs_no_lookup("Workspace")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea __tr2qs_no_lookup("theme,mdi")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea "theme"
