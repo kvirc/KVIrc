@@ -26,7 +26,7 @@ This is the Github development and bug tracker home for the KVIrc project.
 - [Further information](https://github.com/kvirc/KVIrc/tree/master/doc)
 
 ---
-Try one of our fresh off-the-press nightly development x86 or x64 bit builds for Windows, Ubuntu and Debian.
+Try one of our fresh off-the-press nightly development 32-bit or 64-bit builds for Windows, Ubuntu and Debian.
 #### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrc-source-or-binaries#source-downloads-master)
 
 We're also looking for volunteer packagers and maintainers to other distributions that can help us extend KVIrc's availability to other OS's.
