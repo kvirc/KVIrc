@@ -68,7 +68,7 @@ bool KviKvsAliasManager::removeNamespace(const QString & szName)
 	QList<QString> lKill;
 	while(it.current())
 	{
-		if(szName.compare(it.current()->name()) == 0)
+		if(it.current()->name().startsWith(szName,Qt::CaseInsensitive))
 			lKill.append(it.current()->name());
 		it.moveNext();
 	}

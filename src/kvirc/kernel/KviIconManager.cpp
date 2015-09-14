@@ -1004,16 +1004,14 @@ KviCachedPixmap * KviIconManager::getPixmapWithCache(const QString & szName)
 
 	QString szRetPath;
 
-	if(g_pApp->findImage(szRetPath,szName))
+	if(!g_pApp->findImage(szRetPath,szName))
+		return 0;
+
+	pPix = new QPixmap(szRetPath);
+	if(pPix->isNull())
 	{
-		pPix = new QPixmap(szRetPath);
-		if(pPix->isNull())
-		{
-			delete pPix; // it is not an valid image!!! (really bad situation...)
-			pPix = 0;
-			return 0;
-		}
-	} else {
+		delete pPix; // it is not an valid image!!! (really bad situation...)
+		pPix = 0;
 		return 0;
 	}
 
@@ -1040,32 +1038,31 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString & 
 
 	QString szRetPath;
 
-	if(g_pApp->findImage(szRetPath,szName))
-	{
-		pPix = new QPixmap(szRetPath);
-		if(pPix->isNull())
-		{
-			delete pPix; // it is not an valid image!!! (really bad situation...)
-			pPix = 0;
-			return 0;
-		}
-		if((pPix->width() > iMaxWidth) || (pPix->height() > iMaxHeight))
-		{
-			// scale to fit
-			int scaleW = iMaxWidth;
-			int scaleH;
-			scaleH = (pPix->height() * iMaxWidth) / pPix->width();
-			if(scaleH > iMaxHeight)
-			{
-				scaleH = iMaxHeight;
-				scaleW = (scaleH * pPix->width()) / pPix->height();
-			}
 
-			QImage img = pPix->toImage();
-			*pPix = QPixmap::fromImage(img.scaled(scaleW,scaleH,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
-		}
-	} else {
+	if(!g_pApp->findImage(szRetPath,szName))
 		return 0;
+
+	pPix = new QPixmap(szRetPath);
+	if(pPix->isNull())
+	{
+		delete pPix; // it is not an valid image!!! (really bad situation...)
+		pPix = 0;
+		return 0;
+	}
+	if((pPix->width() > iMaxWidth) || (pPix->height() > iMaxHeight))
+	{
+		// scale to fit
+		int scaleW = iMaxWidth;
+		int scaleH;
+		scaleH = (pPix->height() * iMaxWidth) / pPix->width();
+		if(scaleH > iMaxHeight)
+		{
+			scaleH = iMaxHeight;
+			scaleW = (scaleH * pPix->width()) / pPix->height();
+		}
+
+		QImage img = pPix->toImage();
+		*pPix = QPixmap::fromImage(img.scaled(scaleW,scaleH,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
 	}
 
 	pCache = new KviCachedPixmap(pPix,QString(szRetPath));
