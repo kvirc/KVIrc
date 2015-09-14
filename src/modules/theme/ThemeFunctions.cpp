@@ -101,22 +101,16 @@ namespace ThemeFunctions
 		}
 
 		pValue = pInfoFields->find("ThemeCount");
-		if(!pValue){
-			qDebug("no theme count");
+		if(!pValue)
 			return notAValidThemePackage(szError);
-		    }
 
 		bool bOk;
 		int iThemeCount = pValue->toInt(&bOk);
-		if(!bOk){
-			qDebug("no theme count 2");
+		if(!bOk)
 			return notAValidThemePackage(szError);
-		    }
-		if(iThemeCount < 1){
 
-		    qDebug("no theme count 2");
+		if(iThemeCount < 1)
 			return notAValidThemePackage(szError);
-		    }
 
 		// ok.. it should be really valid at this point
 

@@ -35,6 +35,7 @@ class QLineEdit;
 class QPushButton;
 class QLabel;
 class QTextEdit;
+class QCheckBox;
 class KviFileSelector;
 
 
@@ -54,6 +55,7 @@ protected:
 	QLineEdit       * m_pAuthorNameEdit;
 	QWidget         * m_pImageSelectionPage;
 	QPushButton     * m_pOkButton;
+	QCheckBox       * m_pSaveIconsCheckBox;
 protected:
 	virtual void accept();
 	bool saveTheme();

@@ -53,6 +53,7 @@
 #include <QDateTime>
 #include <QBuffer>
 #include <QLabel>
+#include <QCheckBox>
 
 
 
@@ -146,6 +147,23 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	setNextEnabled(pPage,true);
 	setFinishEnabled(pPage,false);
 
+
+	// options page ==================================================================================
+	pPage = new QWidget(this);
+	pLayout = new QGridLayout(pPage);
+
+	m_pSaveIconsCheckBox = new QCheckBox(__tr2qs_ctx("Save icons","theme"),this);
+	m_pSaveIconsCheckBox->setChecked(true);
+
+	pLayout->addWidget(m_pSaveIconsCheckBox,0,0);
+	pLayout->setRowStretch(1,1);
+
+	addPage(pPage,__tr2qs_ctx("Options","theme"));
+	setBackEnabled(pPage,true);
+	setNextEnabled(pPage,true);
+	setHelpEnabled(pPage,false);
+	setFinishEnabled(pPage,false);
+
 	// screenshot/logo/icon ================================================================================
 
 	pPage = new QWidget(this);
@@ -180,6 +198,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	setHelpEnabled(pPage,false);
 	setNextEnabled(pPage,true);
 	setFinishEnabled(pPage,true);
+
 }
 
 SaveThemeDialog::~SaveThemeDialog()
@@ -264,7 +283,7 @@ bool SaveThemeDialog::saveTheme()
 		return false;
 	}
 
-	if(!KviTheme::save(sto))
+	if(!KviTheme::save(sto,m_pSaveIconsCheckBox->isChecked()))
 	{
 		QString szErr = sto.lastError();
 		QString szMsg2 = QString(__tr2qs_ctx("Unable to save theme: %1","theme")).arg(szErr);

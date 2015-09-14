@@ -207,7 +207,7 @@ namespace KviTheme
 	/// but this feature is actually unused.
 	/// Note that for convenience this function is implemented in KviOptions.cpp
 	///
-	bool KVIRC_API save(KviThemeInfo &options);
+	bool KVIRC_API save(KviThemeInfo &options,bool bSaveIcons);
 
 	///
 	/// Save the theme screenshots in the given EXISTING directory and given

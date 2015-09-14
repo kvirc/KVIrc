@@ -1030,7 +1030,7 @@ namespace KviTheme
 {
 	// utility functions for the KviTheme namespace (KviTheme.h)
 	// that are implemented here for convenience (in saving the options)
-	bool save(KviThemeInfo &options)
+	bool save(KviThemeInfo &options,bool bSaveIcons)
 	{
 		QString szThemeDirPath = options.directory();
 
@@ -1101,58 +1101,62 @@ namespace KviTheme
 
 		cfg.writeEntry("stringIconThemeSubdir",options.subdirectory());
 
-		// find all the "kvi_bigicon" images that we can find in the main pics directory
-		QString szPicsPath;
-
-		g_pApp->getGlobalKvircDirectory(szPicsPath,KviApplication::Pics);
-
-		QDir d(szPicsPath);
-		QStringList sl = d.entryList(QDir::nameFiltersFromString("kvi_bigicon_*.png"),QDir::Files);
-
-		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
+		if(bSaveIcons)
 		{
-			KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
-			if(p)
-			{
-				QString szPixPath = szThemeDirPath;
-				szPixPath += *it;
 
-				if(!KviFileUtils::copyFile(p->path(),szPixPath))
+			// find all the "kvi_bigicon" images that we can find in the main pics directory
+			QString szPicsPath;
+	
+			g_pApp->getGlobalKvircDirectory(szPicsPath,KviApplication::Pics);
+	
+			QDir d(szPicsPath);
+			QStringList sl = d.entryList(QDir::nameFiltersFromString("kvi_bigicon_*.png"),QDir::Files);
+	
+			for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
+			{
+				KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
+				if(p)
+				{
+					QString szPixPath = szThemeDirPath;
+					szPixPath += *it;
+	
+					if(!KviFileUtils::copyFile(p->path(),szPixPath))
+					{
+						options.setLastError(__tr2qs("Failed to save one of the theme images"));
+						return false;
+					}
+				}
+			}
+	
+			if(!KviFileUtils::makeDir(szThemeDirPath+KVI_SMALLICONS_SUBDIRECTORY))
+			{
+				options.setLastError(__tr2qs("Failed to create the theme subdirectory"));
+				return false;
+			}
+	
+			// We actually need to *save* the small icons since
+			// we have a compatibility mode that can load them from
+			// the old format kvi_smallicon_XY.png multiimage libraries.
+	
+			for(int j=0;j<KviIconManager::IconCount;j++)
+			{
+				QPixmap * pix = g_pIconManager->getSmallIcon(j);
+	
+				QString szPixPath = szThemeDirPath;
+				szPixPath.append(KVI_SMALLICONS_SUBDIRECTORY);
+				szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+				szPixPath.append("kcs_");
+				szPixPath.append(g_pIconManager->getSmallIconName(j));
+				szPixPath.append(".png");
+	
+				if(!pix->save(szPixPath,"PNG",90))
 				{
 					options.setLastError(__tr2qs("Failed to save one of the theme images"));
 					return false;
 				}
 			}
 		}
-
-		if(!KviFileUtils::makeDir(szThemeDirPath+KVI_SMALLICONS_SUBDIRECTORY))
-		{
-			options.setLastError(__tr2qs("Failed to create the theme subdirectory"));
-			return false;
-		}
-
-		// We actually need to *save* the small icons since
-		// we have a compatibility mode that can load them from
-		// the old format kvi_smallicon_XY.png multiimage libraries.
-
-		for(int j=0;j<KviIconManager::IconCount;j++)
-		{
-			QPixmap * pix = g_pIconManager->getSmallIcon(j);
-
-			QString szPixPath = szThemeDirPath;
-			szPixPath.append(KVI_SMALLICONS_SUBDIRECTORY);
-			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
-			szPixPath.append("kcs_");
-			szPixPath.append(g_pIconManager->getSmallIconName(j));
-			szPixPath.append(".png");
-
-			if(!pix->save(szPixPath,"PNG",90))
-			{
-				options.setLastError(__tr2qs("Failed to save one of the theme images"));
-				return false;
-			}
-		}
-
+		
 		return true;
 	}
 
