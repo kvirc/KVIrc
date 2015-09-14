@@ -112,7 +112,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::QuitSplit)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
 	}
@@ -147,7 +147,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pMultiEditorButton->setCheckable(true);
 	m_pMultiEditorButton->setIconSize(QSize(22,22));
 	QIcon is2;
-	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),QIcon::Normal,QIcon::On);
+	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::IrcView)),QIcon::Normal,QIcon::On);
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),QIcon::Normal,QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
 	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Return&gt;");
