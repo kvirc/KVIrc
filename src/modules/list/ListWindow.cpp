@@ -199,14 +199,14 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pOpenButton = new QToolButton(pBox);
 	m_pOpenButton->setObjectName("import_list");
 	m_pOpenButton->setIconSize(QSize(16,16));
-	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN))));
+	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder))));
 	KviTalToolTip::add(m_pOpenButton,__tr2qs("Import List"));
 	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));
 
 	m_pSaveButton = new QToolButton(pBox);
 	m_pSaveButton->setObjectName("export_list");
 	m_pSaveButton->setIconSize(QSize(16,16));
-	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE))));
+	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy))));
 	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export List"));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
@@ -220,7 +220,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pStopListDownloadButton = new QToolButton(pBox);
 	m_pStopListDownloadButton->setObjectName("stoplistdownload_button");
 	m_pStopListDownloadButton->setIconSize(QSize(16,16));
-	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NickNameProblem))));
+	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard))));
 	KviTalToolTip::add(m_pStopListDownloadButton,__tr2qs("Stop list download"));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
 
