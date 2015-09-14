@@ -1156,7 +1156,7 @@ namespace KviTheme
 				}
 			}
 		}
-		
+
 		return true;
 	}
 
