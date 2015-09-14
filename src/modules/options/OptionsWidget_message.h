@@ -198,7 +198,10 @@ class OptionsWidget_standardColors : public KviOptionsWidget
 public:
 	OptionsWidget_standardColors(QWidget * par);
 	~OptionsWidget_standardColors();
-
+private:
+	KviColorSelector * m_pColorSelector[16];
+private slots:
+	void resetToDefaults();
 };
 
 

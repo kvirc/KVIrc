@@ -692,6 +692,15 @@ void KviOptionsWidget::addRowSpacer(int x1,int y1,int x2,int y2)
 	layout()->setRowStretch(y1,1);
 }
 
+QPushButton * KviOptionsWidget::addPushButton(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled)
+{
+	QPushButton * pb = new QPushButton(text,this);
+	pb->setEnabled(bEnabled);
+	addWidgetToLayout(pb,x1,y1,x2,y2);
+	return pb;
+}
+
+
 QLabel * KviOptionsWidget::addLabel(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled)
 {
 	QLabel * l = new QLabel(text,this);

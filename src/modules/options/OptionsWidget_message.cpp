@@ -172,30 +172,50 @@ OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
 	setObjectName("stdcolors");
 	createLayout();
 
-	addColorSelector(0,0,0,0,"0:",&(KVI_OPTION_MIRCCOLOR(0)));
-	addColorSelector(1,0,1,0,"1:",&(KVI_OPTION_MIRCCOLOR(1)));
-	addColorSelector(2,0,2,0,"2:",&(KVI_OPTION_MIRCCOLOR(2)));
-	addColorSelector(3,0,3,0,"3:",&(KVI_OPTION_MIRCCOLOR(3)));
-	addColorSelector(0,1,0,1,"4:",&(KVI_OPTION_MIRCCOLOR(4)));
-	addColorSelector(1,1,1,1,"5:",&(KVI_OPTION_MIRCCOLOR(5)));
-	addColorSelector(2,1,2,1,"6:",&(KVI_OPTION_MIRCCOLOR(6)));
-	addColorSelector(3,1,3,1,"7:",&(KVI_OPTION_MIRCCOLOR(7)));
-	addColorSelector(0,2,0,2,"8:",&(KVI_OPTION_MIRCCOLOR(8)));
-	addColorSelector(1,2,1,2,"9:",&(KVI_OPTION_MIRCCOLOR(9)));
-	addColorSelector(2,2,2,2,"10:",&(KVI_OPTION_MIRCCOLOR(10)));
-	addColorSelector(3,2,3,2,"11:",&(KVI_OPTION_MIRCCOLOR(11)));
-	addColorSelector(0,3,0,3,"12:",&(KVI_OPTION_MIRCCOLOR(12)));
-	addColorSelector(1,3,1,3,"13:",&(KVI_OPTION_MIRCCOLOR(13)));
-	addColorSelector(2,3,2,3,"14:",&(KVI_OPTION_MIRCCOLOR(14)));
-	addColorSelector(3,3,3,3,"15:",&(KVI_OPTION_MIRCCOLOR(15)));
+	for(int i=0;i<16;i++)
+		m_pColorSelector[i] = addColorSelector(i%4,i/4,i%4,i/4,QString("%1:").arg(i),&(KVI_OPTION_MIRCCOLOR(i)));
 
-	addRowSpacer(0,4,3,4);
+	QLabel * l = addLabel(0,4,3,4,__tr2qs_ctx(
+				"Please note that this is a set of standard IRC colors. " \
+				"You can adjust them a bit, make them darker or lighter but you " \
+				"shouldn't change their fundamental tint. "  \
+				"Black should stay black, dark green should still remain a green darker than the light one.",
+				"options"
+			)
+		);
+	l->setAlignment(Qt::AlignCenter);
 
-	layout()->setRowStretch(4,1);
+	addRowSpacer(0,5,3,5);
+
+	layout()->setRowStretch(5,1);
+	
+	QPushButton * pReset = addPushButton(3,6,3,6,__tr2qs_ctx("Reset to Default","options"));
+	
+	QObject::connect(pReset,SIGNAL(clicked()),this,SLOT(resetToDefaults()));
 }
 
 OptionsWidget_standardColors::~OptionsWidget_standardColors()
 {
+}
+
+void OptionsWidget_standardColors::resetToDefaults()
+{
+	m_pColorSelector[0]->forceColor(QColor(255,255,255));
+	m_pColorSelector[1]->forceColor(QColor(0,0,0));
+	m_pColorSelector[2]->forceColor(QColor(0,0,140));
+	m_pColorSelector[3]->forceColor(QColor(0,100,0));
+	m_pColorSelector[4]->forceColor(QColor(230,0,0));
+	m_pColorSelector[5]->forceColor(QColor(150,0,0));
+	m_pColorSelector[6]->forceColor(QColor(80,0,80));
+	m_pColorSelector[7]->forceColor(QColor(255,90,0));
+	m_pColorSelector[8]->forceColor(QColor(255,255,0));
+	m_pColorSelector[9]->forceColor(QColor(0,255,0));
+	m_pColorSelector[10]->forceColor(QColor(0,150,180));
+	m_pColorSelector[11]->forceColor(QColor(170,170,255));
+	m_pColorSelector[12]->forceColor(QColor(15,15,255));
+	m_pColorSelector[13]->forceColor(QColor(200,0,200));
+	m_pColorSelector[14]->forceColor(QColor(80,80,80));
+	m_pColorSelector[15]->forceColor(QColor(170,170,170));
 }
 
 MessageListWidgetItem::MessageListWidgetItem(MessageListWidget* l,int optId)

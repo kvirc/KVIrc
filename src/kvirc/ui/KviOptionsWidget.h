@@ -35,6 +35,7 @@
 #include <QLayout>
 #include <QLineEdit>
 #include <QTabWidget>
+#include <QPushButton>
 
 class KVIRC_API KviOptionsWidget : public QFrame, public KviSelectorInterface
 {
@@ -135,6 +136,7 @@ public:
 	QLabel * addLabel(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled = true);
 	QLabel * addLabel(QWidget * pParent,const QString & text,bool bEnabled = true);
 	QLineEdit * addLineEdit(int x1,int y1,int x2,int y2,bool bEnabled = true);
+	QPushButton * addPushButton(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled = true);
 	KviTalGroupBox * addGroupBox(int x1,int y1,int x2,int y2,Qt::Orientation o,const QString &txt,bool bEnabled = true);
 	QFrame * addSeparator(int x1,int y1,int x2,int y2);
 	void addRowSpacer(int x1,int y1,int x2,int y2);

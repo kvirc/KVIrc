@@ -32,6 +32,8 @@ namespace KviNickColors
 
 	#define KVI_NUM_NICK_COLORS 95
 
+	// FIXME: Maybe make this table settable via options?
+	//        Or maybe a kvc file...
 	static const char * g_nickColors[KVI_NUM_NICK_COLORS]=
 	{
 		"0,1"  ,"0,2"  ,"0,3"  ,"0,4"  ,"0,5"  ,"0,6"  ,"0,10" ,"0,12" ,"0,14" , //9
