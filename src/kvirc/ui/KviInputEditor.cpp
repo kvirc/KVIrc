@@ -1284,7 +1284,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 		return; // doh?
 		
 	m_iSelectionBegin = pCurrentBlock->iStart;
-	m_iSelectionEnd = pCurrentBlock->iStart + pCurrentBlock->iLength;
+	m_iSelectionEnd = pCurrentBlock->iStart + pCurrentBlock->iLength - 1;
 
 	insertText(szWord);
 }
