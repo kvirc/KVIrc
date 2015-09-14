@@ -193,6 +193,9 @@ namespace KviKvsCoreCallbackCommands
 			between scripts. Only really common aliases should be created
 			in the root namespace - all of the internal functionality of your
 			scripts should be hidden in your own namespace.
+			The special syntax "<namespace>::" can be used to remove all
+			the aliases belonging to the specified namespace. When creating
+			aliases this syntax is not allowed.
 		@examples:
 			[example]
 				[comment]# Add the alias j[/comment]
@@ -207,6 +210,8 @@ namespace KviKvsCoreCallbackCommands
 				{
 					[cmd]echo[/cmd] "j"
 				}
+				[comment]# Kill the whole 'letters' namespace[/comments]
+				alias(autoaway::){}
 			[/example]
 		@seealso:
 			[doc:kvs_aliasesandfunctions]Aliases and functions[/doc]
@@ -263,7 +268,7 @@ namespace KviKvsCoreCallbackCommands
 			return false;
 		}
 
-		if(tmp.indexOf("@@") != -1)
+		if((tmp.indexOf("@@") != -1) || tmp.startsWith("@"))
 		{
 			KVSCCC_pContext->error(__tr2qs_ctx("Found an empty namespace in alias name","kvs"));
 			return false;
@@ -271,12 +276,28 @@ namespace KviKvsCoreCallbackCommands
 
 		if(KVSCCC_pCallback->code().isEmpty())
 		{
-			if(!KviKvsAliasManager::instance()->remove(szName))
+			if(tmp.endsWith("@"))
 			{
-				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs_ctx("The alias '%Q' does not exist","kvs"),&szName);
+				if(!KviKvsAliasManager::instance()->removeNamespace(szName))
+				{
+					if(!KVSCCC_pSwitches->find('q',"quiet"))
+						KVSCCC_pContext->warning(__tr2qs_ctx("The namespace '%Q' does not exist","kvs"),&szName);
+				}
+			} else {
+				if(!KviKvsAliasManager::instance()->remove(szName))
+				{
+					if(!KVSCCC_pSwitches->find('q',"quiet"))
+						KVSCCC_pContext->warning(__tr2qs_ctx("The alias '%Q' does not exist","kvs"),&szName);
+				}
 			}
 		} else {
+		
+			if(tmp.endsWith("@"))
+			{
+				KVSCCC_pContext->error(__tr2qs_ctx("Found an empty alias name within a namespace","kvs"));
+				return false;
+			}
+		
 			KviKvsScript * pScript = new KviKvsScript(*KVSCCC_pCallback);
 			pScript->setName(szName);
 			KviKvsAliasManager::instance()->add(szName,pScript);

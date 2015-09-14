@@ -25,6 +25,7 @@
 #include "AddonFunctions.h"
 
 #include "KviPackageReader.h"
+#include "KviPackageWriter.h"
 #include "KviLocale.h"
 #include "KviMessageBox.h"
 #include "KviApplication.h"
@@ -37,8 +38,12 @@
 #include "KviKvsScript.h"
 
 #include <QMessageBox>
-
+#include <QBuffer>
 #include <QDir>
+#include <QDirIterator>
+#include <QFile>
+#include <QDateTime>
+
 
 #include <stdlib.h>
 
@@ -113,6 +118,7 @@ namespace AddonFunctions
 		QString szPackageDate;
 		QString szAddonPackVersion;
 		QString szPackageApplication;
+		QString szMinKVIrcVersion;
 
 		QString szAuthor = __tr2qs_ctx("Author","addon");
 		QString szCreatedAt = __tr2qs_ctx("Created at","addon");
@@ -125,6 +131,7 @@ namespace AddonFunctions
 		r.getStringInfoField("Application",szPackageApplication);
 		r.getStringInfoField("Date",szPackageDate);
 		r.getStringInfoField("AddonPackVersion",szAddonPackVersion);
+		r.getStringInfoField("MinimumKVIrcVersion",szMinKVIrcVersion);
 
 		QString szWarnings;
 		QString szTmp;
@@ -137,6 +144,11 @@ namespace AddonFunctions
 		if(KviMiscUtils::compareVersions(szAddonPackVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
 			bValid = false;
 
+		if(!szMinKVIrcVersion.isEmpty())
+		{
+			if(KviMiscUtils::compareVersions(szMinKVIrcVersion,KVI_VERSION) < 0)
+				bValid = false;
+		}
 
 		if(!bValid)
 		{
@@ -144,6 +156,7 @@ namespace AddonFunctions
 			szWarnings += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc","addon");
 			szWarnings += "</b></font></center></p>";
 		}
+
 
 		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
@@ -255,4 +268,110 @@ namespace AddonFunctions
 
 		return szDirName;
 	}
+	
+	bool checkDirTree(const QString &szDirPath,QString * pszError)
+	{
+		if(pszError)
+			*pszError = "";
+	
+		QDir addon(szDirPath);
+		if(!addon.exists())
+		{
+			*pszError = __tr2qs_ctx("The selected directory does not exist.","addon");
+			return false;
+		}
+	
+		QFileInfo init(szDirPath + "/install.kvs");
+		if(!init.exists())
+		{
+			*pszError = __tr2qs_ctx("The initialization script (install.kvs) does not exist.","addon");
+			return false;
+		}
+	
+		return true;
+	}
+	
+	bool pack(AddonInfo &info,QString &szError)
+	{
+		if(!checkDirTree(info.szDirPath,&szError))
+			return false;
+
+		if(info.szMinVersion.isEmpty())
+			info.szMinVersion = KVI_VERSION;
+
+		QString szTmp;
+		szTmp = QDateTime::currentDateTime().toString();
+	
+		KviPackageWriter pw;
+		pw.addInfoField("PackageType","AddonPack");
+		pw.addInfoField("AddonPackVersion",KVI_CURRENT_ADDONS_ENGINE_VERSION);
+		pw.addInfoField("Name",info.szName);
+		pw.addInfoField("Version",info.szVersion);
+		pw.addInfoField("Author",info.szAuthor);
+		pw.addInfoField("Description",info.szDescription);
+		pw.addInfoField("Date",szTmp);
+		pw.addInfoField("MinimumKVIrcVersion",info.szMinVersion);
+		pw.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
+
+		QPixmap pix(info.szIcon);
+		if(!pix.isNull())
+		{
+			QByteArray * pba = new QByteArray();
+			QBuffer bufferz(pba,0);
+	
+			bufferz.open(QIODevice::WriteOnly);
+			pix.save(&bufferz,"PNG");
+			bufferz.close();
+			pw.addInfoField("Image",pba);
+		}
+	
+		QDir dir(info.szDirPath);
+		QFileInfoList ls = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::Readable | QDir::NoSymLinks | QDir::NoDotAndDotDot);
+	
+		if(ls.isEmpty())
+		{
+			szError = __tr2qs_ctx("The package file list is empty","addon");
+			return false;
+		}
+	
+		for(QFileInfoList::Iterator it = ls.begin();it != ls.end();++it)
+		{
+			const QFileInfo &inf = *it;
+	
+			if(inf.isDir())
+			{
+				if(!pw.addDirectory(inf.absoluteFilePath(),QString("%1/").arg(inf.fileName())))
+				{
+					szError = pw.lastError();
+					return false;
+				}
+	
+				continue;
+			}
+	
+			// must be a file
+			if(!pw.addFile(inf.absoluteFilePath(),inf.fileName()))
+			{
+				szError = pw.lastError();
+				return false;
+			}
+		}
+	
+	
+		// Create the addon package
+		if(info.szSavePath.isEmpty())
+		{
+			szError = __tr2qs_ctx("Save path is empty","addon");
+			return false;
+		}
+	
+		if(!pw.pack(info.szSavePath))
+		{
+			szError = pw.lastError();
+			return false;
+		}
+
+		return true;
+	}
+	
 }

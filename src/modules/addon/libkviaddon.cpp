@@ -813,6 +813,56 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: addon.pack
+	@type:
+		command
+	@title:
+		addon.pack
+	@short:
+		Creates a kva package containing an addon
+	@syntax:
+		addon.pack <package_path> <addon_name> <addon_version> <description> <author> <min_kvirc_version> <icon> <addon_path>
+	@description:
+		Creates a *.kva package containing a KVIrc addon.[br]
+		<package_path> is the absolute path and file name of the package that should be saved.[br]
+		<addon_name> is the visible name of the addon (something like "My Addon").[br]
+		<addon_version> is the version of the addon in the form X.Y.Z.[br]
+		<description> is a textual description of the addon.
+		<author> is the name of the person that is creating the addon.
+		<min_kvirc_version> is the minimum kvirc version that this addon supports. Pass an empty string if you want
+		this to become the current kvirc version.
+		<icon> is the path of an icon to be used as rappresentative image of the addon. Pass an empty string if you
+		don't want an icon to be stored in the package.
+		<addon_path> is a path to a directory containing an addon. It should contain an install.kvs file
+		that calls [cmd]addon.register[/cmd] and then installs all the addon aliases, events and files (via [cmd]addon.installfiles[/cmd].
+*/
+static bool addon_kvs_cmd_pack(KviKvsModuleCommandCall * c)
+{
+	AddonInfo info;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,info.szSavePath)
+		KVSM_PARAMETER("addon_name",KVS_PT_NONEMPTYSTRING,0,info.szName)
+		KVSM_PARAMETER("addon_version",KVS_PT_NONEMPTYSTRING,0,info.szVersion)
+		KVSM_PARAMETER("description",KVS_PT_STRING,0,info.szDescription)
+		KVSM_PARAMETER("author",KVS_PT_NONEMPTYSTRING,0,info.szAuthor)
+		KVSM_PARAMETER("min_kvirc_version",KVS_PT_STRING,0,info.szMinVersion)
+		KVSM_PARAMETER("addon_icon",KVS_PT_STRING,0,info.szIcon)
+		KVSM_PARAMETER("addon_path",KVS_PT_NONEMPTYSTRING,0,info.szDirPath)
+	KVSM_PARAMETERS_END(c)
+
+	QString szError;
+
+	if(AddonFunctions::pack(info,szError))
+		return true;
+
+	c->error(szError);
+	return false;
+}
+
+
+
 static bool addon_module_init(KviModule *m)
 {
 	KVSM_REGISTER_FUNCTION(m,"exists",addon_kvs_fnc_exists);
@@ -825,6 +875,7 @@ static bool addon_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"configure",addon_kvs_cmd_configure);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"help",addon_kvs_cmd_help);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"installfiles",addon_kvs_cmd_installfiles);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"pack",addon_kvs_cmd_pack);
 
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"setconfigurecallback",addon_kvs_cmd_setconfigurecallback);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"sethelpcallback",addon_kvs_cmd_sethelpcallback);

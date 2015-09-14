@@ -62,6 +62,27 @@ void KviKvsAliasManager::done()
 	delete KviKvsAliasManager::instance();
 }
 
+bool KviKvsAliasManager::removeNamespace(const QString & szName)
+{
+	KviPointerHashTableIterator<QString,KviKvsScript> it(*m_pAliasDict);
+	QList<QString> lKill;
+	while(it.current())
+	{
+		if(szName.compare(it.current()->name()) == 0)
+			lKill.append(it.current()->name());
+		it.moveNext();
+	}
+	
+	if(lKill.isEmpty())
+		return false;
+	
+	Q_FOREACH(QString szKill,lKill)
+		remove(szKill);
+	
+	return true;
+}
+
+
 void KviKvsAliasManager::add(const QString &szName,KviKvsScript * pAlias)
 {
 	// This piece of code, when inlined by gcc (i.e, placed in a header),

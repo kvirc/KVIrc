@@ -32,8 +32,23 @@
 
 #define KVI_CURRENT_ADDONS_ENGINE_VERSION "2.0.0"
 
+class AddonInfo
+{
+public:
+	QString szAuthor;
+	QString szName;
+	QString szVersion;
+	QString szDescription;
+	QString szMinVersion;
+	QString szIcon;
+	QString szDirPath;
+	QString szSavePath;
+};
+
 namespace AddonFunctions
 {
+	bool checkDirTree(const QString &szDirPath,QString * pszError);
+	bool pack(AddonInfo &info,QString &szError);
 	bool notAValidAddonPackage(QString & szError);
 	bool installAddonPackage(const QString & szAddonPackageFileName, QString & szError, QWidget * pDialogParent = 0);
 	QString createRandomDir();

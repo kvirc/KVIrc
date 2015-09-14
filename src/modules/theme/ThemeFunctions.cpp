@@ -80,10 +80,8 @@ namespace ThemeFunctions
 		pInfoFields = r.stringInfoFields();
 
 		pValue = pInfoFields->find("PackageType");
-		if(!pValue){
-			qDebug("no package type");
+		if(!pValue)
 			return notAValidThemePackage(szError);
-		    }
 
 		if(!KviQString::equalCI(*pValue,"ThemePack"))
 			return notAValidThemePackage(szError);

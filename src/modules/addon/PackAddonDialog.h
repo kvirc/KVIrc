@@ -98,6 +98,7 @@ protected:
 	*/
 	bool packAddon();
 
+#if 0
 	/**
 	* \brief Ensures the sources directory is complete
 	* \param pszError The buffer containing errors
@@ -111,6 +112,7 @@ protected:
 	* \return bool
 	*/
 	bool createInstaller(QString * pszError);
+#endif
 };
 
 /**

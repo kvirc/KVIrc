@@ -53,6 +53,7 @@ public:
 	void add(const QString &szName,KviKvsScript * pAlias);
 	bool remove(const QString & szName)
 		{ return m_pAliasDict->remove(szName); };
+	bool removeNamespace(const QString & szName);
 	void clear()
 		{ m_pAliasDict->clear(); };
 

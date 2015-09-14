@@ -40,9 +40,6 @@
 #include <QMessageBox>
 #include <QDir>
 #include <QDirIterator>
-#include <QDateTime>
-#include <QBuffer>
-#include <QFile>
 
 PackAddonDialog::PackAddonDialog(QWidget * pParent)
 : QWizard(pParent)
@@ -133,6 +130,8 @@ void PackAddonDialog::accept()
 	QWizard::accept();
 }
 
+
+#if 0
 bool PackAddonDialog::checkDirTree(QString * pszError)
 {
 	if(pszError)
@@ -154,8 +153,6 @@ bool PackAddonDialog::checkDirTree(QString * pszError)
 
 	return true;
 }
-
-#if 0
 bool PackAddonDialog::createInstaller(QString * pszError)
 {
 	if(pszError)
@@ -259,22 +256,55 @@ bool PackAddonDialog::createInstaller(QString * pszError)
 #endif
 
 
+
+
 bool PackAddonDialog::packAddon()
 {
 	// Get data from registered fields
-	m_szAuthor = field("packageAuthor").toString();
-	m_szName = field("packageName").toString();
-	m_szVersion = field("packageVersion").toString();
-	m_szDescription = field("packageDescription").toString();
-	m_szMinVersion = field("packageMinVersion").toString();
-	m_szIcon = field("packageIcon").toString();
-	m_szDirPath = field("packageDirPath").toString();
-	m_szSavePath = field("packageSavePath").toString();
+	AddonInfo info;
+	info.szAuthor = field("packageAuthor").toString();
+	info.szName = field("packageName").toString();
+	info.szVersion = field("packageVersion").toString();
+	info.szDescription = field("packageDescription").toString();
+	info.szMinVersion = field("packageMinVersion").toString();
+	info.szIcon = field("packageIcon").toString();
+	info.szDirPath = field("packageDirPath").toString();
+	info.szSavePath = field("packageSavePath").toString();
 
-	// Check the addon tree
+	if(info.szSavePath.isEmpty())
+	{
+		info.szSavePath = QDir::homePath();
+		KviQString::ensureLastCharIs(info.szSavePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+		info.szSavePath += m_szName;
+		info.szSavePath += "-";
+		info.szSavePath += m_szVersion;
+		info.szSavePath += KVI_FILEEXTENSION_ADDONPACKAGE;
+	}
+
+	if(QFile::exists(info.szSavePath))
+	{
+		if(QMessageBox::question(
+				this,
+				__tr2qs_ctx("Export Addon - KVIrc","addon"),
+				__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?","addon").arg(info.szSavePath),
+				QMessageBox::Yes,
+				QMessageBox::No
+			) == QMessageBox::No)
+			return false;
+	}
+
+	// Raise the files summary dialog
+	m_pPackAddonSummaryFilesWidget = new PackAddonSummaryFilesWidget(this);
+	m_pPackAddonSummaryFilesWidget->setPath(info.szDirPath);
+	if(m_pPackAddonSummaryFilesWidget->exec() == QDialog::Rejected)
+	{
+		delete m_pPackAddonSummaryFilesWidget;
+		return false;
+	}
+
 	QString szError;
 
-	if(!checkDirTree(&szError))
+	if(!AddonFunctions::pack(info,szError))
 	{
 		QMessageBox::critical(this,
 			__tr2qs_ctx("Addon Packaging Error","addon"),
@@ -282,110 +312,6 @@ bool PackAddonDialog::packAddon()
 		);
 		return false;
 	}
-
-	// Raise the files summary dialog
-	m_pPackAddonSummaryFilesWidget = new PackAddonSummaryFilesWidget(this);
-	m_pPackAddonSummaryFilesWidget->setPath(m_szDirPath);
-	if(m_pPackAddonSummaryFilesWidget->exec() == QDialog::Rejected)
-	{
-		delete m_pPackAddonSummaryFilesWidget;
-		return false;
-	}
-
-
-	QString szTmp;
-	szTmp = QDateTime::currentDateTime().toString();
-
-	KviPackageWriter pw;
-	pw.addInfoField("PackageType","AddonPack");
-	pw.addInfoField("AddonPackVersion",KVI_CURRENT_ADDONS_ENGINE_VERSION);
-	pw.addInfoField("Name",m_szName);
-	pw.addInfoField("Version",m_szVersion);
-	pw.addInfoField("Author",m_szAuthor);
-	pw.addInfoField("Description",m_szDescription);
-	pw.addInfoField("Date",szTmp);
-	pw.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
-
-	QPixmap pix(m_szIcon);
-	if(!pix.isNull())
-	{
-		QByteArray * pba = new QByteArray();
-		QBuffer bufferz(pba,0);
-
-		bufferz.open(QIODevice::WriteOnly);
-		pix.save(&bufferz,"PNG");
-		bufferz.close();
-		pw.addInfoField("Image",pba);
-	}
-
-	QDir dir(m_szDirPath);
-	QFileInfoList ls = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::Readable | QDir::NoSymLinks | QDir::NoDotAndDotDot);
-
-	if(ls.isEmpty())
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += __tr2qs_ctx("The package file list is empty","addon");
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-		return false;
-	}
-
-	for(QFileInfoList::Iterator it = ls.begin();it != ls.end();++it)
-	{
-		const QFileInfo &inf = *it;
-
-		if(inf.isDir())
-		{
-			if(!pw.addDirectory(inf.absoluteFilePath(),QString("%1/").arg(inf.fileName())))
-			{
-				QString szTmp = __tr2qs_ctx("Packaging failed","addon");
-				szTmp += ": ";
-				szTmp += pw.lastError();
-				QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-				return false;
-			}
-
-			continue;
-		}
-
-		// must be a file
-		if(!pw.addFile(inf.absoluteFilePath(),inf.fileName()))
-		{
-			szTmp = __tr2qs_ctx("Packaging failed","addon");
-			szTmp += ": ";
-			szTmp += pw.lastError();
-			QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-			return false;
-		}
-	}
-
-
-	// Create the addon package
-	if(m_szSavePath.isEmpty())
-	{
-		m_szSavePath = QDir::homePath();
-		KviQString::ensureLastCharIs(m_szSavePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-		m_szSavePath += m_szName;
-		m_szSavePath += "-";
-		m_szSavePath += m_szVersion;
-		m_szSavePath += KVI_FILEEXTENSION_ADDONPACKAGE;
-	}
-
-	if(QFile::exists(m_szSavePath))
-	{
-		if(QMessageBox::question(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?","addon").arg(m_szSavePath),QMessageBox::Yes,QMessageBox::No) == QMessageBox::No)
-			return false;
-	}
-
-	if(!pw.pack(m_szSavePath))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-		return false;
-	}
-
 
 	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("Package saved successfully in %1","addon").arg(m_szSavePath),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
