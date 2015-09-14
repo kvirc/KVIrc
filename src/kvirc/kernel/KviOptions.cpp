@@ -740,8 +740,8 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("Echo",__tr_no_lookup("Normal text"),KviIconManager::None,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("Selection",__tr_no_lookup("Selection"),KviIconManager::None,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("Highlight",__tr_no_lookup("Highlighted text"),KviIconManager::Alert,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION_SPEC("Url",__tr_no_lookup("URL foreground"),KviIconManager::None,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION_SPEC("Link",__tr_no_lookup("Link overlay foreground"),KviIconManager::None,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("Url",__tr_no_lookup("URL foreground"),KviIconManager::Url,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION_SPEC("Link",__tr_no_lookup("Link overlay foreground"),KviIconManager::Url,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("ParserError",__tr_no_lookup("Parser error"),KviIconManager::ParserError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION_SPEC("ParserWarning",__tr_no_lookup("Parser warning"),KviIconManager::ParserWarning,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("HostLookup",__tr_no_lookup("Host lookup result"),KviIconManager::Server,KVI_MSGTYPE_LEVEL_3),
@@ -878,7 +878,7 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	//         messages with higher level are rendered with more visible color (i.e. red)
 	//         messages with very high level might flash the tray and end up in the notifier
 	//         level 1 or 2 for standard torrent messages is ok
-	MSGTYPE_OPTION("BitTorrent",__tr_no_lookup("BitTorrent message"),KviIconManager::MultiMedia,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION("BitTorrent",__tr_no_lookup("BitTorrent message"),KviIconManager::Gnutella,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("IrcOp",__tr_no_lookup("IRC Op status set"),KviIconManager::IrcOp,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("DeIrcOp",__tr_no_lookup("IRC Op status unset"),KviIconManager::DeIrcOp,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeIrcOp",__tr_no_lookup("Own IRC Op status set"),KviIconManager::MeIrcOp,KVI_MSGTYPE_LEVEL_5),
