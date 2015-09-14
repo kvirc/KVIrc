@@ -85,7 +85,7 @@ KviKvsScriptAddon::~KviKvsScriptAddon()
 
 QPixmap * KviKvsScriptAddon::icon()
 {
-	qDebug("Addon requests icon %s",m_szIconId.toUtf8().data());
+	//qDebug("Addon requests icon %s",m_szIconId.toUtf8().data());
 	return g_pIconManager->getBigIcon(m_szIconId.isEmpty() ? QString(KVI_BIGICON_KVS) : m_szIconId);
 }
 

@@ -40,7 +40,7 @@ public:
 	QString szVersion;
 	QString szDescription;
 	QString szMinVersion;
-	QString szIcon;
+	QString szImage;
 	QString szDirPath;
 	QString szSavePath;
 };

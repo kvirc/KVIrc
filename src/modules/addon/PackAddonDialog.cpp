@@ -139,7 +139,7 @@ bool PackAddonDialog::packAddon()
 	info.szVersion = field("packageVersion").toString();
 	info.szDescription = field("packageDescription").toString();
 	info.szMinVersion = field("packageMinVersion").toString();
-	info.szIcon = field("packageIcon").toString();
+	info.szImage = field("packageImage").toString();
 	info.szDirPath = field("packageDirPath").toString();
 	info.szSavePath = field("packageSavePath").toString();
 
@@ -272,12 +272,12 @@ PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pPa
 	pLayout->addWidget(m_pDirPathSelector);
 
 	// Select addon icon
-	m_pPackageIconEdit = new KviFileSelector(this,__tr2qs_ctx("Select the icon file:","addon"),&m_szPackageIcon,true,KviFileSelector::VerticalLayout,KVI_FILTER_IMAGE);
-	pLayout->addWidget(m_pPackageIconEdit);
+	m_pPackageImageEdit = new KviFileSelector(this,__tr2qs_ctx("Select the image file:","addon"),&m_szPackageImage,true,KviFileSelector::VerticalLayout,KVI_FILTER_IMAGE);
+	pLayout->addWidget(m_pPackageImageEdit);
 
 	// Store data in the fields
 	registerField("packageDirPath*",m_pDirPathSelector);
-	registerField("packageIcon*",m_pPackageIconEdit);
+	registerField("packageImage*",m_pPackageImageEdit);
 }
 
 PackAddonFileSelectionWidget::~PackAddonFileSelectionWidget()
@@ -354,7 +354,7 @@ void PackAddonSummaryInfoWidget::initializePage()
 	QString szVersion = field("packageVersion").toString();
 	QString szDescription = field("packageDescription").toString();
 	QString szMinVersion = field("packageMinVersion").toString();
-	QString szIcon = field("packageIcon").toString();
+	QString szImage = field("packageImage").toString();
 	QString szDirPath = field("packageDirPath").toString();
 	QString szSavePath = field("packageSavePath").toString();
 
@@ -380,9 +380,9 @@ void PackAddonSummaryInfoWidget::initializePage()
 	szText += ":</b> ";
 	szText += szMinVersion;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Icon File","addon");
+	szText += __tr2qs_ctx("Image File","addon");
 	szText += ":</b> ";
-	szText += szIcon;
+	szText += szImage;
 	szText += "<br><b>";
 	szText += __tr2qs_ctx("Source Directory","addon");
 	szText += ":</b> ";

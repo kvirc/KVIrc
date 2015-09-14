@@ -313,9 +313,15 @@ namespace AddonFunctions
 		pw.addInfoField("MinimumKVIrcVersion",info.szMinVersion);
 		pw.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
-		QPixmap pix(info.szIcon);
-		if(!pix.isNull())
+		if(!info.szImage.isEmpty())
 		{
+			QPixmap pix(info.szImage);
+			if(pix.isNull())
+			{
+				szError = __tr2qs_ctx("Failed to load the image at %1","addon").arg(info.szImage);
+				return false;
+			}
+
 			QByteArray * pba = new QByteArray();
 			QBuffer bufferz(pba,0);
 	

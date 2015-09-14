@@ -822,7 +822,7 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	@short:
 		Creates a kva package containing an addon
 	@syntax:
-		addon.pack <package_path> <addon_name> <addon_version> <description> <author> <min_kvirc_version> <icon> <addon_path>
+		addon.pack <package_path> <addon_name> <addon_version> <description> <author> <min_kvirc_version> <image> <addon_path>
 	@description:
 		Creates a *.kva package containing a KVIrc addon.[br]
 		<package_path> is the absolute path and file name of the package that should be saved.[br]
@@ -832,8 +832,8 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 		<author> is the name of the person that is creating the addon.
 		<min_kvirc_version> is the minimum kvirc version that this addon supports. Pass an empty string if you want
 		this to become the current kvirc version.
-		<icon> is the path of an icon to be used as rappresentative image of the addon. Pass an empty string if you
-		don't want an icon to be stored in the package.
+		<image> is the path of an image to be used in the installation dialog. Pass an empty string if you
+		don't want an image to be stored in the package.
 		<addon_path> is a path to a directory containing an addon. It should contain an install.kvs file
 		that calls [cmd]addon.register[/cmd] and then installs all the addon aliases, events and files (via [cmd]addon.installfiles[/cmd].
 */
@@ -848,7 +848,7 @@ static bool addon_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("description",KVS_PT_STRING,0,info.szDescription)
 		KVSM_PARAMETER("author",KVS_PT_NONEMPTYSTRING,0,info.szAuthor)
 		KVSM_PARAMETER("min_kvirc_version",KVS_PT_STRING,0,info.szMinVersion)
-		KVSM_PARAMETER("addon_icon",KVS_PT_STRING,0,info.szIcon)
+		KVSM_PARAMETER("image",KVS_PT_STRING,0,info.szImage)
 		KVSM_PARAMETER("addon_path",KVS_PT_NONEMPTYSTRING,0,info.szDirPath)
 	KVSM_PARAMETERS_END(c)
 

@@ -163,9 +163,9 @@ public:
 	~PackAddonFileSelectionWidget();
 protected:
 	KviDirectorySelector * m_pDirPathSelector;
-	KviFileSelector      * m_pPackageIconEdit;
+	KviFileSelector      * m_pPackageImageEdit;
 	QString                m_szDirPath;
-	QString                m_szPackageIcon;
+	QString                m_szPackageImage;
 };
 
 /**
