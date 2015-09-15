@@ -93,6 +93,7 @@ public:
 	* \return bool
 	*/
 	bool unpack(const QString & szLocalFileName, const QString & szUnpackPath, kvi_u32_t uUnpackFlags = 0);
+
 private:
 	/**
 	* \brief Unpack the KVIrc package file

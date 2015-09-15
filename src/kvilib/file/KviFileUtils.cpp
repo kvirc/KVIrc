@@ -477,4 +477,35 @@ namespace KviFileUtils
 			}
 		}
 	}
+
+	static QStringList getFileListingInternal(const QString &szPath,const QString &szPrefix)
+	{
+		//qDebug("Scan %s",szPath.toUtf8().data());
+	
+		QStringList sl;
+	
+		QDir d(szPath);
+		
+		QFileInfoList fl = d.entryInfoList(QStringList(),QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot,QDir::Name);
+		
+		Q_FOREACH(QFileInfo inf,fl)
+		{
+			QString szName = szPrefix.isEmpty() ? inf.fileName() : QString("%1" KVI_PATH_SEPARATOR "%2").arg(szPrefix).arg(inf.fileName());
+			if(inf.isDir())
+			{
+				QStringList sub = getFileListingInternal(inf.canonicalFilePath(),szName);
+				sl.append(sub);
+			} else {
+				sl.append(szName);
+			}
+		}
+
+		return sl;
+	}
+
+	QStringList getFileListing(const QString &szPath)
+	{
+		return getFileListingInternal(szPath,QString());
+	}
+
 }

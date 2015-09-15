@@ -303,6 +303,12 @@ namespace KviFileUtils
 	* \return void
 	*/
 	KVILIB_API void cleanFileName(QString & szPath);
+	
+	/**
+	* Build a recursive file listing
+	*/
+	KVILIB_API QStringList getFileListing(const QString &szPath);
+	
 }
 
 #endif //_KVI_FILEUTILS_H
