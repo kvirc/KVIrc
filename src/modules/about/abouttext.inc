@@ -8,8 +8,8 @@ static const char * g_szAboutText = "" \
 "This is a partial list of the people that have " \
 "contributed in some way to the KVIrc project.<br><br>" \
 "Honor and glory to:<br>" \
-"</h4><br><br>" \
-"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"</h4>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Core developers</b></font>" \
 "</td></tr>" \
@@ -370,6 +370,22 @@ static const char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "Splash screen Artist :)" \
 "</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>universal</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"universal at dot dot dot" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Designer" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"Icon set, themes and graphics for KVIrc v4.3.x" \
+"</i></font></td></tr>" \
 "</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
