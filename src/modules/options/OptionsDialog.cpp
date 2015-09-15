@@ -198,7 +198,7 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 
 	QString szTip = __tr2qs_ctx("<p>This is the search tool for this options dialog.</p>" \
 			"<p>You can enter a search term either in your native " \
-			"language or in english and press the button on the right. " \
+			"language or in English and press the button on the right. " \
 			"The pages that contain some options related to the " \
 			"search term will be highlighted and you will be able " \
 			"to quickly find them.</p><p>Try \"nickname\" for example.</p>","options");

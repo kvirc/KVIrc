@@ -526,7 +526,7 @@ namespace KviKvsCoreFunctions
 			[/p]
 			[p]
 			All of the strings in your script are written in a "primary language".
-			The most common "primary language" is english, but theoretically
+			The most common "primary language" is English, but theoretically
 			it can be any language of your choice.
 			[/p]
 			[p]
@@ -566,7 +566,7 @@ namespace KviKvsCoreFunctions
 			[/p]
 			[p]
 			Translate mytranslation_it.po. The format of the po file is straightforward.
-			There are msgid lines with the original english text and immediately
+			There are msgid lines with the original English text and immediately
 			following msgstr lines that must be filled with the corresponding translation.
 			For example in Italian you would translate:[br]
 			msgid "your default language text"

@@ -1095,7 +1095,7 @@ void KviIrcServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_HELP,
-			__tr2qs("Command syntax %Q: %Q"),&szCommand,&szWText); // Pragma: wheee..... that should be in english :D
+			__tr2qs("Command syntax %Q: %Q"),&szCommand,&szWText); // Pragma: wheee..... that should be in English :D
 	}
 }
 
