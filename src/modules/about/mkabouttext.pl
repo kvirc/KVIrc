@@ -124,7 +124,7 @@ p " <h4>";
 p "This is a partial list of the people that have ";
 p "contributed in some way to the KVIrc project.<br><br>";
 p "Honor and glory to:<br>";
-p " </h4><br><br>";
+p " </h4>";
 
 $i = 0;
 $cnt++;
