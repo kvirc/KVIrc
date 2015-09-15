@@ -433,7 +433,7 @@ namespace ThemeFunctions
 		f.addInfoField("Description",szPackageDescription);
 		// this is the equivalent to an empty date.toString() call, but it's needed
 		// to ensure qt4 will use the default() locale and not the system() one
-		f.addInfoField("Date",QLocale().toString(QDateTime::currentDateTime(),"ddd MMM d hh:mm:ss yyyy"));
+		f.addInfoField("Date",QDateTime::currentDateTime().toString(Qt::ISODate));
 		f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 	
 		if(!out.isNull())

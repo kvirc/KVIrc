@@ -262,9 +262,7 @@ bool SaveThemeDialog::saveTheme()
 	sto.setAuthor(m_pAuthorNameEdit->text());
 	sto.setDescription(m_pThemeDescriptionEdit->toPlainText());
 
-	// this is the equivalent to an empty date.toString() call, but it's needed
-	// to ensure qt4 will use the default() locale and not the system() one
-	sto.setDate(QLocale().toString(QDateTime::currentDateTime(), "ddd MMM d hh:mm:ss yyyy"));
+	sto.setDate(QDateTime::currentDateTime().toString(Qt::ISODate));
 	sto.setVersion(m_pThemeVersionEdit->text());
 	sto.setApplication("KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 

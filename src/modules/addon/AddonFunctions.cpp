@@ -300,7 +300,7 @@ namespace AddonFunctions
 			info.szMinVersion = KVI_VERSION;
 
 		QString szTmp;
-		szTmp = QDateTime::currentDateTime().toString();
+		szTmp = QDateTime::currentDateTime().toString(Qt::ISODate);
 	
 		KviPackageWriter pw;
 		pw.addInfoField("PackageType","AddonPack");
