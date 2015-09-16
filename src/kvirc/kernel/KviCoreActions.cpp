@@ -1059,7 +1059,7 @@ KviGoAwayAction::KviGoAwayAction(QObject * pParent)
 		__tr2qs("Away/Back"),
 		__tr2qs("Allows entering and leaving away state"),
 		KviActionManager::categoryIrc(),
-		"kvi_bigicon_nokeyboard.png",
+		"kvi_bigicon_keyboard.png",
 		KviIconManager::NotAway,
 		KviKvsAction::NeedsContext | KviKvsAction::NeedsConnection,
 		KVI_SHORTCUTS_AWAY
@@ -1091,10 +1091,10 @@ void KviGoAwayAction::activeContextStateChanged()
 		{
 			if(c->connection()->userInfo()->isAway())
 			{
-				p = g_pIconManager->getBigIcon("kvi_bigicon_keyboard.png");
+				p = g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png");
 				txt = m_szBackString;
 			} else {
-				p = g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png");
+				p = g_pIconManager->getBigIcon("kvi_bigicon_keyboard.png");
 				txt = m_szAwayString;
 			}
 		} else {
