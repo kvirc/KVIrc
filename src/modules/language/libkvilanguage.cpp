@@ -48,7 +48,7 @@
 		This command is exported by the "language" module.
 	@examples:
 		[example]
-		%dati = $language.detect("I'm a lord and i speak perfect english.");
+		%dati = $language.detect("I'm a lord and I speak perfect English.");
 		if(%dati{"error"} != "")echo "Language detection failed: " %dati{"error"};
 		%count = %dati{"matchcount"};
 		for(%i=0;%i<%count;%i++)

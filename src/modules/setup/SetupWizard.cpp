@@ -1078,11 +1078,11 @@ void SetupWizard::accept()
 			switch(m_pGenderCombo->currentIndex())
 			{
 				case 1:
-					// this should be in english
+					// this should be in English
 					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Female";
 				break;
 				case 2:
-					// this should be in english
+					// this should be in English
 					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Male";
 				break;
 				default:

@@ -396,7 +396,7 @@
 					[cmd]return[/cmd] 1
 				} else {
 					[cmd]echo[/cmd] I don't know that language ($0)
-					[cmd]echo[/cmd] defaulting to english
+					[cmd]echo[/cmd] defaulting to English
 					[fnc:$this]$$[/fnc]-&gt;%lang = english
 					[cmd]return[/cmd] 0
 				}
@@ -443,7 +443,7 @@
 		The base class name could be also [class]object[/class] in this case, but the [class]object[/class] class has no "sayhello" function defined
 		so it would result in an error.[br][br]
 		In the above example, all the values of [fnc]$this[/fnc]-&gt;%language
-		that are not equal to "italian" are assumed to be "english".
+		that are not equal to "italian" are assumed to be "English".
 		This is not always true, for example, just after the object creation the %language variable field
 		is effectively empty. The above class works correctly in this case, but we might want to have always
 		a coherent state of the field variables, so we need another concept: the class [b]constructor[/b]

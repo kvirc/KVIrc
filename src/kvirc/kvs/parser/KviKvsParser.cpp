@@ -298,7 +298,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		I'll try to explain the language by using examples
 		instead of strict syntactic rules. (Actually I have even
 		tried to write the rules...take a look [doc:syntactic_rules]here[/doc][br][br]
-		And please...forgive me for my "fantastic" english :)
+		And please...forgive me for my "fantastic" English :)
 		[/p]
 		Szymon Stefanek
 */
@@ -1471,7 +1471,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		your help files are written in. The languages dirs should be named
 		with the language code also used for the translation files (like "en", "it"
 		etc...).
-		Please note that english is the default language and KVIrc will
+		Please note that English is the default language and KVIrc will
 		fallback to the "en" subdirectory when no other language is found around...
 		[/p]
 
