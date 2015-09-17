@@ -409,7 +409,12 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"aliaseditor",         // 323
 	"popupeditor",         // 324
 	"dcc",                 // 325
-	"socket"               // 326
+	"socket",              // 326
+	"cake",                // 327
+	"handily",             // 328
+	"thumbdown",           // 329
+	"thumbup",             // 330
+	"facepalm"             // 331
 
 };
 
@@ -933,6 +938,11 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 324: return KviIconManager::PopupEditor;          break;
 		case 325: return KviIconManager::Dcc;                  break;
 		case 326: return KviIconManager::Socket;               break;
+		case 327: return KviIconManager::Cake;                 break;
+		case 328: return KviIconManager::HandIly;              break;
+		case 329: return KviIconManager::ThumbDown;            break;
+		case 330: return KviIconManager::ThumbUp;              break;
+		case 331: return KviIconManager::FacePalm;             break;
 		case   0:
 		case KviIconManager::IconCount:
 		default: return KviIconManager::None;                  break;

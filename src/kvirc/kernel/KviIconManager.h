@@ -492,7 +492,12 @@ public:
 		PopupEditor          = 324,
 		Dcc                  = 325,
 		Socket               = 326,
-		IconCount            = 327
+		Cake                 = 327,
+		HandIly              = 328,
+		ThumbDown            = 329,
+		ThumbUp              = 330,
+		FacePalm             = 331,
+		IconCount            = 332
 	};
 
 	/**
