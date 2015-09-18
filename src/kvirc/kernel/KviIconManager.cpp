@@ -261,7 +261,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"halfdeop",            // 175
 	"invite",              // 176
 	"multimedia",          // 177
-	"look",                // 178
+	"user",                // 178
 	"input",               // 179
 	"messages",            // 180
 	"querytrace",          // 181
@@ -789,7 +789,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 175: return KviIconManager::HalfDeOp;             break;
 		case 176: return KviIconManager::Invite;               break;
 		case 177: return KviIconManager::MultiMedia;           break;
-		case 178: return KviIconManager::Look;                 break;
+		case 178: return KviIconManager::User;                 break;
 		case 179: return KviIconManager::Input;                break;
 		case 180: return KviIconManager::Messages;             break;
 		case 181: return KviIconManager::QueryTrace;           break;

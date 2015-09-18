@@ -343,7 +343,7 @@ public:
 		HalfDeOp             = 175,
 		Invite               = 176,
 		MultiMedia           = 177,
-		Look                 = 178,
+		User                 = 178,
 		Input                = 179,
 		Messages             = 180,
 		QueryTrace           = 181,
