@@ -1,5 +1,4 @@
 # Default popups file
-
 #
 # Here comes a nice part...
 # The popups. KVIrc has a lot of events that merely ask for a popup to be shown :)
@@ -95,9 +94,9 @@ defpopup(dccchat)
 
 	separator
 
-	extpopup(C&TCP,ctcp,51)
+	extpopup(C&TCP,ctcp,162)
 
-	extpopup(&DCC,dcc,77)
+	extpopup(&DCC,dcc,325)
 
 	separator
 
@@ -134,7 +133,7 @@ defpopup(querytextview)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) (!%:multiple)
 	{
 		whois $0 $0
 	}
@@ -143,7 +142,7 @@ defpopup(querytextview)
 
 	popup($tr("&Information","defscript"),317)
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
 			whois $0
 		}
@@ -160,12 +159,12 @@ defpopup(querytextview)
 
 		separator
 
-		item($tr("DNS for","defscript") $0,75)
+		item($tr("DNS for","defscript") $0,91)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") $0,90) (!%:multiple)
+		item($tr("Mask for","defscript") $0,15) (!%:multiple)
 		{
 			echo $mask($0,11)
 		}
@@ -173,9 +172,9 @@ defpopup(querytextview)
 
 	separator
 
-	extpopup(C&TCP,ctcp,51)
+	extpopup(C&TCP,ctcp,162)
 
-	extpopup(&DCC,dcc,77)
+	extpopup(&DCC,dcc,325)
 
 	separator
 
@@ -235,7 +234,7 @@ defpopup(ctcp)
 		ctcp $0 PING
 	}
 
-	item(FINGER,53)
+	item(FINGER,268)
 	{
 		ctcp $0 FINGER
 	}
@@ -245,12 +244,12 @@ defpopup(ctcp)
 		ctcp $0 VERSION
 	}
 
-	item(USERINFO,111)
+	item(USERINFO,178)
 	{
 		ctcp $0 USERINFO
 	}
 
-	item(CLIENTINFO,52)
+	item(CLIENTINFO,29)
 	{
 		ctcp $0 CLIENTINFO
 	}
@@ -308,12 +307,12 @@ defpopup(consoletextview)
 			motd
 		}
 
-		item(/INFO,29)
+		item(/INFO,317)
 		{
 			info
 		}
 
-		item(/LUSERS,57)
+		item(/LUSERS,178)
 		{
 			lusers
 		}
@@ -330,12 +329,12 @@ defpopup(consoletextview)
 				stats l
 			}
 
-			item($tr("m (Command Usage)","defscript"))
+			item($tr("m (Command Usage)","defscript"),205)
 			{
 				stats m
 			}
 
-			item($tr("o (Operators)","defscript"))
+			item($tr("o (Operators)","defscript"),213)
 			{
 				stats o
 			}
@@ -366,7 +365,7 @@ defpopup(consoletextview)
 			time
 		}
 
-		item(/ADMIN,29)
+		item(/ADMIN,261)
 		{
 			admin
 		}
@@ -603,7 +602,7 @@ defpopup(defaulttextview)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),75) (!%:multiple)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple)
 	{
 		whois $0 $0
 	}
@@ -612,7 +611,7 @@ defpopup(defaulttextview)
 
 	popup($tr("&Information","defscript"),317)
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),$0),75)
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
 			whois $0
 		}
@@ -629,7 +628,7 @@ defpopup(defaulttextview)
 
 		separator
 
-		item(DNS $0,75)
+		item(DNS $0,91)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
@@ -644,9 +643,9 @@ defpopup(defaulttextview)
 
 	separator
 
-	extpopup(C&TCP,ctcp,51)
+	extpopup(C&TCP,ctcp,162)
 
-	extpopup(&DCC,dcc,77)
+	extpopup(&DCC,dcc,325)
 
 	separator
 
@@ -738,22 +737,22 @@ defpopup(dcc)
 
 	separator
 
-	item($tr("Send to","defscript") $0,79)
+	item($tr("Send to","defscript") $0,78)
 	{
 		dcc.send $0
 	}
 
-	item($tr("Secure send to","defscript") $0,79)
+	item($tr("Secure send to","defscript") $0,78)
 	{
 		dcc.send -s $0
 	}
 
-	item($tr("Reverse Send to","defscript") $0,79)
+	item($tr("Reverse Send to","defscript") $0,78)
 	{
 		dcc.rsend -z $0
 	}
 
-	item($tr("Secure Reverse Send to","defscript") $0,79)
+	item($tr("Secure Reverse Send to","defscript") $0,78)
 	{
 		dcc.rsend -z -s $0
 	}
@@ -861,7 +860,7 @@ defpopup(channeltextview)
 
 	separator
 
-	extpopup(C&TCP,ctcp,51)
+	extpopup(C&TCP,ctcp,162)
 
 	separator
 
@@ -1232,12 +1231,12 @@ defpopup(registration)
 
 	label(%:labelText)
 
-	item($tr("Register...","defscript")) (!%:regName)
+	item($tr("Register...","defscript"),113) (!%:regName)
 	{
 		reguser.wizard $mask($0)
 	}
 
-	popup($tr("Quick Registration","defscript"),113) (!%:regName)
+	popup($tr("Quick Registration","defscript"),254) (!%:regName)
 	{
 		item($tr("Register as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
@@ -1270,7 +1269,7 @@ defpopup(registration)
 		}
 	}
 
-	item($tr("Edit Registration...","defscript"),113) (%:regName)
+	item($tr("Edit Registration...","defscript")) (%:regName)
 	{
 		reguser.edit "%:regName"
 	}
@@ -1365,7 +1364,7 @@ defpopup(channel)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),75)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),88)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -1375,7 +1374,7 @@ defpopup(channel)
 
 	popup($tr("&Information","defscript"),317)
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),75)
+		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),88)
 		{
 			whois $0
 		}
@@ -1392,12 +1391,12 @@ defpopup(channel)
 
 		separator
 
-		item($tr("DNS for","defscript") %:visible,75)
+		item($tr("DNS for","defscript") %:visible,91)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") %:visible,90) (!%:multiple)
+		item($tr("Mask for","defscript") %:visible,15) (!%:multiple)
 		{
 			echo $mask($0,11)
 		}
@@ -1518,9 +1517,9 @@ defpopup(channel)
 
 	separator
 
-	extpopup(C&TCP,ctcp,51)
+	extpopup(C&TCP,ctcp,162)
 
-	extpopup(&DCC,dcc,77) (!%:multiple)
+	extpopup(&DCC,dcc,325) (!%:multiple)
 
 	separator
 
@@ -1535,3 +1534,4 @@ defpopup(channel)
 		avatar.notify $0
 	}
 }
+
