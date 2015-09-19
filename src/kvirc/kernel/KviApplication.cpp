@@ -1280,7 +1280,14 @@ KviPendingAvatarChange * KviApplication::findPendingAvatarChange(KviConsoleWindo
 	return 0;
 }
 
-void KviApplication::fileDownloadTerminated(bool bSuccess, const QString & szRemoteUrl, const QString & szLocalFileName, const QString & szNick, const QString & szError, bool bQuiet)
+void KviApplication::fileDownloadTerminated(
+		bool bSuccess,
+		const QString & szRemoteUrl,
+		const QString & szLocalFileName,
+		const QString & szNick,
+		const QString & szError,
+		bool bQuiet
+	)
 {
 	KviPendingAvatarChange * pAvatar;
 
@@ -1333,7 +1340,14 @@ void KviApplication::fileDownloadTerminated(bool bSuccess, const QString & szRem
 	{
 		if(windowExists(pAvatar->pConsole))
 		{
-			pAvatar->pConsole->setAvatar(pAvatar->szNick,pAvatar->szUser,pAvatar->szHost,szLocalFileName,KviQString::equalCIN("http://",szRemoteUrl,7) ? szRemoteUrl : QString());
+			pAvatar->pConsole->setAvatar(
+					pAvatar->szNick,
+					pAvatar->szUser,
+					pAvatar->szHost,
+					szLocalFileName,
+					(KviQString::equalCIN("http://",szRemoteUrl,7) || KviQString::equalCIN("https://",szRemoteUrl,8)) ?
+						szRemoteUrl : QString()
+				);
 		}
 	} else {
 		if((!_OUTPUT_MUTE) && (!bQuiet))

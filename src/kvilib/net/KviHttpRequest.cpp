@@ -69,6 +69,9 @@ KviHttpRequest::KviHttpRequest()
 	m_pPrivateData = 0;
 	m_bHeaderProcessed = false;
 	m_uConnectionTimeout = 60;
+	m_bFollowRedirects = true;
+	m_uRedirectCount = 0;
+	m_uMaximumRedirectCount = 2;
 
 	resetStatus();
 	resetData();
@@ -132,12 +135,14 @@ void KviHttpRequest::resetData()
 	m_eProcessingType = WholeFile;
 	m_eExistingFileAction = RenameIncoming;
 	m_url = QString("");
+	m_connectionUrl = QString("");
 	m_uMaxContentLength = 0;
 	m_uContentOffset = 0;
 	m_bChunkedTransferEncoding = false;
 	m_bGzip = false;
 	m_bIgnoreRemainingData = false;
 	m_uRemainingChunkSize = 0;
+	m_uRedirectCount = 0;
 }
 
 void KviHttpRequest::reset()
@@ -182,19 +187,19 @@ bool KviHttpRequest::start()
 		}
 	}
 
-	if(m_url.host().isEmpty())
+	if(m_connectionUrl.host().isEmpty())
 	{
 		resetInternalStatus();
 		m_szLastError = __tr2qs("Invalid URL: Missing hostname");
 		return false;
 	}
 
-	m_p->bIsSSL = KviQString::equalCI(m_url.protocol(),"https");
+	m_p->bIsSSL = KviQString::equalCI(m_connectionUrl.protocol(),"https");
 
-	if(!KviQString::equalCI(m_url.protocol(),"http") && !m_p->bIsSSL)
+	if(!KviQString::equalCI(m_connectionUrl.protocol(),"http") && !m_p->bIsSSL)
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_url.protocol());
+		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_connectionUrl.protocol());
 		return false;
 	}
 
@@ -292,8 +297,8 @@ void KviHttpRequest::slotSocketConnected()
 			"User-Agent: KVIrc-http-slave/1.0.0\r\n" \
 			"Accept: */*\r\n",
 			szMethod.ptr(),
-			m_url.path().toUtf8().data(),
-			m_url.host().toUtf8().data()
+			m_connectionUrl.path().toUtf8().data(),
+			m_connectionUrl.host().toUtf8().data()
 		);
 
 	if(m_uContentOffset > 0)
@@ -395,13 +400,13 @@ void KviHttpRequest::slotConnectionTimedOut()
 
 void KviHttpRequest::slotSocketHostResolved()
 {
-	emit contactingHost(QString::fromLatin1("%1:%2").arg(m_url.host()).arg(m_p->uPort));
-	emit status(__tr2qs("Contacting host %1 on port %2").arg(m_url.host()).arg(m_p->uPort));
+	emit contactingHost(QString::fromLatin1("%1:%2").arg(m_connectionUrl.host()).arg(m_p->uPort));
+	emit status(__tr2qs("Contacting host %1 on port %2").arg(m_connectionUrl.host()).arg(m_p->uPort));
 }
 
 bool KviHttpRequest::doConnect()
 {
-	m_p->uPort = m_url.port();
+	m_p->uPort = m_connectionUrl.port();
 	if(m_p->uPort == 0)
 		m_p->uPort = m_p->bIsSSL ? 443 : 80;
 
@@ -418,18 +423,18 @@ bool KviHttpRequest::doConnect()
 	QObject::connect(m_p->pSocket,SIGNAL(readyRead()),this,SLOT(slotSocketReadDataReady()));
 	QObject::connect(m_p->pSocket,SIGNAL(hostFound()),this,SLOT(slotSocketHostResolved()));
 
-	emit resolvingHost(m_url.host());
+	emit resolvingHost(m_connectionUrl.host());
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_p->bIsSSL)
 	{
 		static_cast<QSslSocket *>(m_p->pSocket)->setProtocol(QSsl::AnyProtocol);
-		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_url.host(),m_p->uPort);
+		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_connectionUrl.host(),m_p->uPort);
 	} else {
-		m_p->pSocket->connectToHost(m_url.host(),m_p->uPort);
+		m_p->pSocket->connectToHost(m_connectionUrl.host(),m_p->uPort);
 	}
 #else
-	m_p->pSocket->connectToHost(m_url.host(),m_p->uPort);
+	m_p->pSocket->connectToHost(m_connectionUrl.host(),m_p->uPort);
 #endif
 
 
@@ -448,14 +453,14 @@ bool KviHttpRequest::doConnect()
 	/*
 	m_pThread = new KviHttpRequestThread(
 			this,
-			m_url.host(),
+			m_connectionUrl.host(),
 			m_szIp,
 			uPort,
-			m_url.path(),
+			m_connectionUrl.path(),
 			m_uContentOffset,
 			(m_eProcessingType == HeadersOnly) ? KviHttpRequestThread::Head : (m_szPostData.isEmpty() ? KviHttpRequestThread::Get : KviHttpRequestThread::Post),
 			m_szPostData,
-			m_url.protocol()=="https"
+			m_connectionUrl.protocol()=="https"
 		);
 	*/
 
@@ -615,10 +620,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 		return false;
 	}
 
-	QString tmp = __tr2qs("Received HTTP response: %1").arg(szUniResponse);
-
-	emit status(tmp);
-	emit receivedResponse(szUniResponse);
+	emit status(__tr2qs("Received HTTP response: %1").arg(szUniResponse));
 
 	KviPointerList<KviCString> hlist;
 	hlist.setAutoDelete(true);
@@ -676,8 +678,6 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 		}
 	}
 
-	emit header(&hdr);
-
 	// check the status
 
 	//				case 200: // OK
@@ -723,22 +723,89 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	//				case 504: // Gateway timeout
 	//				case 505: // HTTP Version not supported
 
-	if((uStatus != 200) && (uStatus != 206))
+	if(
+		(uStatus != 200) && // OK
+		(uStatus != 206)    // Partial content
+	)
 	{
-		// this is not "OK" and not "Partial content"
+		// This is not "OK" and not "Partial content"
 		// Error, redirect or something confusing
-
-		// FIXME: Handle 30x codes by re-issuing the request with the new URI ?
-
 		if(m_eProcessingType != HeadersOnly)
 		{
+			switch(uStatus)
+			{
+				case 301: // Moved permanently
+				case 302: // Found
+				case 303: // See Other
+				case 307: // Temporary Redirect
+				{
+					if(!m_bFollowRedirects)
+					{
+						resetInternalStatus();
+						m_szLastError = szResponse.ptr();
+						emit terminated(false);
+						return false;
+					}
+					
+					m_uRedirectCount++;
+					
+					if(m_uRedirectCount > m_uMaximumRedirectCount)
+					{
+						resetInternalStatus();
+						m_szLastError = __tr2qs("Too many redirects");
+						emit terminated(false);
+						return false;
+					}
+					
+					KviCString * location = hdr.find("Location");
+
+					if(!location)
+					{
+						resetInternalStatus();
+						m_szLastError = __tr2qs("Bad redirect");
+						emit terminated(false);
+						return false;
+					}
+					
+					KviUrl url(location->ptr());
+					
+					if(
+							(url.url() == m_connectionUrl.url()) ||
+							(url.url() == m_url.url())
+						)
+					{
+						resetInternalStatus();
+						m_szLastError = __tr2qs("Redirect loop");
+						emit terminated(false);
+						return false;
+					}
+
+					m_connectionUrl = url;
+
+					emit status(__tr2qs("Following Redirect to %1").arg(url.url()));
+
+					if(!start())
+						emit terminated(false);
+
+					return false; // will exit the call stack
+				}
+				break;
+				break;
+				default:
+					// assume error
+					resetInternalStatus();
+					m_szLastError = szResponse.ptr();
+					emit terminated(false);
+					return false;
+				break;
+			}
 			// this is an error then
-			resetInternalStatus();
-			m_szLastError = szResponse.ptr();
-			emit terminated(false);
-			return false;
 		} // else the server will terminate (it was a HEAD request)
 	}
+
+	emit receivedResponse(szUniResponse);
+
+	emit header(&hdr);
 
 	if((m_uMaxContentLength > 0) && (m_uTotalSize > ((unsigned int)m_uMaxContentLength)))
 	{
@@ -784,7 +851,9 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		KviCString szHeader((const char *)(m_p->pBuffer->data()),idx);
 		m_p->pBuffer->remove(idx + 4);
 
-		if(!processHeader(szHeader))return;
+		if(!processHeader(szHeader))
+			return;
+
 		m_bHeaderProcessed = true;
 
 		if(m_eProcessingType == StoreToFile)
@@ -985,7 +1054,7 @@ bool KviHttpRequest::startDnsLookup()
 	m_pDns = new KviDnsResolver();
 	connect(m_pDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(dnsLookupDone(KviDnsResolver *)));
 
-	if(!m_pDns->lookup(m_url.host(),KviDnsResolver::IPv4))
+	if(!m_pDns->lookup(m_connectionUrl.host(),KviDnsResolver::IPv4))
 	{
 		resetInternalStatus();
 		m_szLastError = __tr2qs("Unable to start the DNS lookup");
@@ -993,7 +1062,7 @@ bool KviHttpRequest::startDnsLookup()
 	}
 
 	QString tmp;
-	tmp = QString(__tr2qs("Looking up host %1")).arg(m_url.host());
+	tmp = QString(__tr2qs("Looking up host %1")).arg(m_connectionUrl.host());
 	emit status(tmp); // FIXME
 
 
@@ -1008,7 +1077,7 @@ void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
 		delete m_pDns;
 		m_pDns = 0;
 		QString tmp;
-		tmp = QString(__tr2qs("Host %1 resolved to %2")).arg(m_url.host(),m_szIp);
+		tmp = QString(__tr2qs("Host %1 resolved to %2")).arg(m_connectionUrl.host(),m_szIp);
 		emit status(tmp);
 		haveServerIp();
 	} else {
@@ -1019,3 +1088,4 @@ void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
 	}
 }
 #endif
+

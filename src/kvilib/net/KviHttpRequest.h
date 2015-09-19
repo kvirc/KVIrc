@@ -90,7 +90,7 @@ public:
 
 protected:
 	// data
-	KviUrl                 m_url;
+	KviUrl                 m_url; // the url requested by the user
 	QString                m_szFileName;
 	ProcessingType         m_eProcessingType;
 	ExistingFileAction     m_eExistingFileAction;
@@ -98,23 +98,41 @@ protected:
 	unsigned int           m_uMaxContentLength;
 	unsigned int           m_uContentOffset;
 	QString                m_szPostData;
+	bool                   m_bFollowRedirects;
+	unsigned int           m_uMaximumRedirectCount;
 	// status
 	QString                m_szLastError;
 	unsigned int           m_uTotalSize;
 	unsigned int           m_uReceivedSize;
 	// internal status
+	KviUrl                 m_connectionUrl; // the actual url used in the connection (may change upon redirect)
 	bool                   m_bHeaderProcessed;
 	bool                   m_bChunkedTransferEncoding;
 	bool                   m_bGzip;
 	unsigned int           m_uRemainingChunkSize;
 	bool                   m_bIgnoreRemainingData; // used in chunked transfer after the last chunk has been seen
 	unsigned int           m_uConnectionTimeout; // in seconds, 60 secs by default
-
+	unsigned int           m_uRedirectCount;
 private:
 
 	KviHttpRequestPrivate * m_p;
 
 public:
+
+	bool followRedirects() const
+	{
+		return m_bFollowRedirects;
+	}
+
+	void setFollowRedirects(bool bFollow)
+	{
+		m_bFollowRedirects = bFollow;
+	}
+
+	void setMaximumRedirectCount(unsigned int uCount)
+	{
+		m_uMaximumRedirectCount = uCount;
+	}
 
 	void setConnectionTimeout(unsigned int uConnectionTimeout)
 	{
@@ -136,7 +154,7 @@ public:
 	void reset();
 
 	void setPostData(const QString &szPostData){ m_szPostData = szPostData; };
-	void setUrl(const KviUrl &u){ m_url = u; };
+	void setUrl(const KviUrl &u){ m_url = u; m_connectionUrl = u; };
 	void setProcessingType(ProcessingType t){ m_eProcessingType = t; };
 	void setExistingFileAction(ExistingFileAction a){ m_eExistingFileAction = a; };
 	void setFileName(const QString &szFileName){ m_szFileName = szFileName; };

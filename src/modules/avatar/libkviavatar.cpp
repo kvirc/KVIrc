@@ -237,7 +237,10 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			c->window()->connection()->userInfo()->hostName(),
 			QString());
 	} else {
-		bool bIsUrl = KviQString::equalCIN(szAvatar,"http://",7) && (szAvatar.length() > 7);
+		bool bIsUrl = (
+				(KviQString::equalCIN(szAvatar,"http://",7) && (szAvatar.length() > 7)) ||
+				(KviQString::equalCIN(szAvatar,"https://",7) && (szAvatar.length() > 8))
+			);
 
 		if(bIsUrl)
 		{
@@ -249,7 +252,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 
 			KviQString::escapeKvs(&szAvatar);
 			KviQString::escapeKvs(&szLocalFilePath);
-			QString szCommand = "http.get -w=nm ";
+			QString szCommand = "http.get -w=nm "; // -i=e?
 				szCommand += szAvatar;
 				szCommand += " ";
 				szCommand += szLocalFilePath;
