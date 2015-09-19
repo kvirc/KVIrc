@@ -51,6 +51,7 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 			return 0;
 		}
 		if(w->type() == KviWindow::Channel)return (KviChannelWindow *)w;
+		if(w->type() == KviWindow::DeadChannel)return (KviChannelWindow *)w;
 		if(!bNoWarnings) c->warning(__tr2qs("The specified window (%Q) is not a channel"),&szChan);
 	}
 	return 0;
