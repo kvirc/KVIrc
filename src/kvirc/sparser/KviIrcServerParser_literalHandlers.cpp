@@ -1820,9 +1820,13 @@ void KviIrcServerParser::parseLiteralMode(KviIrcMessage *msg)
 void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannelWindow * chan,KviCString &modefl,KviIrcMessage *msg,int curParam)
 {
 	bool bSet = true;
+
 	// bIsMultiMode: +snt
 	// bIsMultiSingleMode: +ooo
-	bool bIsMultiMode=false, bIsMultiSingleMode=false;
+	bool bIsMultiMode = false;
+	bool bIsMultiSingleMode = false;
+	bool bShowAsCompact = false;
+
 	int iIconForCompactMode = KVI_OUT_CHANMODE;
 	const char * aux = modefl.ptr();
 	QString aParam;
@@ -1848,45 +1852,46 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 	KviIrcMask * auxMask;
 
 	int curParamSave = curParam;
+
 	bool bIsMe;
 
-	if(KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges))
+	/* pre-loop the modes char*, to understand if this is a multi-mode change that needs
+	 * to be grouped or not (see bug #482)
+	 */
+	char cLastMode=' ';
+	int iSingleModes=0,iTotModes=0;
+
+	while(*aux)
 	{
-		/* pre-loop the modes char*, to understand if this is a multi-mode change that needs
-		 * to be grouped or not (see bug #482)
-		 */
-		char cLastMode=' ';
-		int iSingleModes=0,iTotModes=0;
-
-		while(*aux)
+		switch(*aux)
 		{
-			switch(*aux)
-			{
-				case '+':
-				case '-':
-					break;
-				default:
-					if(cLastMode!=*aux)
-					{
-						iSingleModes++;
-						cLastMode=*aux;
-					}
-					iTotModes++;
-					break;
-			}
-			++aux;
+			case '+':
+			case '-':
+				break;
+			default:
+				if(cLastMode != *aux)
+				{
+					iSingleModes++;
+					cLastMode=*aux;
+				}
+				iTotModes++;
+				break;
 		}
-
-		// restore aux
-		aux = modefl.ptr();
-
-		if(iTotModes>1)
-		{
-			bIsMultiMode=true;
-			if(iSingleModes==1)
-				bIsMultiSingleMode=true;
-		}
+		++aux;
 	}
+
+	// restore aux
+	aux = modefl.ptr();
+
+	if(iTotModes > 1)
+	{
+		bIsMultiMode = true;
+		bShowAsCompact = KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges);
+		
+		if(iSingleModes == 1)
+			bIsMultiSingleMode = true;
+	}
+	
 
 	while(*aux)
 	{
@@ -1916,7 +1921,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 					if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnKeyUnset,chan,szNick,szUser,szHost))
 						msg->setHaltOutput();
 				}
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					if(bSet)chan->output(KVI_OUT_KEY,
 						__tr2qs("%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""),
@@ -1925,8 +1930,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						__tr2qs("%Q [%Q@%Q] has unset the channel key"),
 						&szNickBuffer,&szUser,&szHostBuffer);
 				}
+
 				if(bIsMultiSingleMode)
-					iIconForCompactMode=KVI_OUT_KEY;
+					iIconForCompactMode = KVI_OUT_KEY;
 			break;
 			case 'l':
 				if(bSet)aParam = msg->safeParam(curParam++);
@@ -1941,7 +1947,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						msg->setHaltOutput();
 				}
 
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					if(bSet)chan->output(KVI_OUT_LIMIT,
 						__tr2qs("%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"),
@@ -1950,8 +1956,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						__tr2qs("%Q [%Q@%Q] has unset the channel limit"),
 						&szNickBuffer,&szUser,&szHostBuffer);
 				}
+
 				if(bIsMultiSingleMode)
-					iIconForCompactMode=KVI_OUT_LIMIT;
+					iIconForCompactMode = KVI_OUT_LIMIT;
 			break;
 #define CHANUSER_MODE(__modechar,__chanfunc,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modechar: \
@@ -1967,7 +1974,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 					} else { \
 						if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? __evset : __evunset,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput(); \
 					} \
-					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode))) \
+					if(!(msg->haltOutput() || bShowAsCompact)) \
 					{ \
 						chan->output(bSet ? (bIsMe ? __icomeset : __icoset) : (bIsMe ? __icomeunset : __icounset), \
 							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"), \
@@ -1977,7 +1984,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						iIconForCompactMode= (bSet ? (bIsMe ? __icomeset : __icoset) : (bIsMe ? __icomeunset : __icounset)); \
 				} else {\
 					chan->setChannelMode(__modechar,bSet);\
-					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))\
+					if(!(msg->haltOutput() || bShowAsCompact))\
 					{\
 						chan->output(KVI_OUT_CHANMODE,\
 							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),\
@@ -2025,7 +2032,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						} else {
 							if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnQuietBan : KviEvent_OnQuietUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
 						}
-						if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+						if(!(msg->haltOutput() || bShowAsCompact))
 						{
 							chan->output(bSet ? (bIsMe ? KVI_OUT_MEBAN : KVI_OUT_BAN) : (bIsMe ? KVI_OUT_MEUNBAN : KVI_OUT_UNBAN),
 								__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
@@ -2047,7 +2054,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 							} else {
 								if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnChanOwner : KviEvent_OnDeChanOwner,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
 							}
-							if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+							if(!(msg->haltOutput() || bShowAsCompact))
 							{
 								chan->output(bSet ? (bIsMe ? KVI_OUT_MECHANOWNER : KVI_OUT_CHANOWNER) : (bIsMe ? KVI_OUT_MEDECHANOWNER : KVI_OUT_DECHANOWNER),
 									__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"),
@@ -2066,7 +2073,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 							} else {
 								if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnChanAdmin : KviEvent_OnDeChanAdmin,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
 							}
-							if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+							if(!(msg->haltOutput() || bShowAsCompact))
 							{
 								chan->output(bSet ? (bIsMe ? KVI_OUT_MECHANADMIN : KVI_OUT_CHANADMIN) : (bIsMe ? KVI_OUT_MEDECHANADMIN : KVI_OUT_DECHANADMIN),
 									__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"),
@@ -2082,7 +2089,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 					chan->setChannelModeWithParam(*aux,aParam);
 
-					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+					if(!(msg->haltOutput() || bShowAsCompact))
 					{
 						if(aParam.isEmpty())
 						{
@@ -2107,7 +2114,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						chan->setChannelMode(*aux,bSet);
 					}
 
-					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+					if(!(msg->haltOutput() || bShowAsCompact))
 					{
 						chan->output(KVI_OUT_CHANMODE,
 							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
@@ -2135,7 +2142,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 				} else { \
 					if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? __evset : __evunset,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput(); \
 				} \
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode))) \
+				if(!(msg->haltOutput() || bShowAsCompact)) \
 				{ \
 					chan->output(bSet ? (bIsMe ? __icomeset : __icoset) : (bIsMe ? __icomeunset : __icounset), \
 						__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"), \
@@ -2161,7 +2168,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 				chan->setModeInList(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
 
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					if(aParam.isEmpty())
 					{
@@ -2188,7 +2195,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 				chan->setChannelModeWithParam(*aux,aParam);
 
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					if(aParam.isEmpty())
 					{
@@ -2214,7 +2221,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 				// TODO support custom mode prefixes
 				//chan->setChannelModeWithParam(*aux,aParam);
 
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					if(aParam.isEmpty())
 					{
@@ -2239,7 +2246,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 					chan->setChannelMode(*aux,bSet);
 				}
 
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					chan->output(KVI_OUT_CHANMODE,
 						__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
@@ -2267,7 +2274,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 	if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnChannelModeChange,chan,szNick,szUser,szHost,modefl.ptr(),params))
 		msg->setHaltOutput();
 
-	if((KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode) && (!msg->haltOutput()) && (!kvi_strEqualCS(modefl.ptr(),"+")))
+	if(bShowAsCompact && (!msg->haltOutput()) && (!kvi_strEqualCS(modefl.ptr(),"+")))
 	{
 		if(!params.isEmpty())
 		{

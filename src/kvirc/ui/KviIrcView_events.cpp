@@ -179,13 +179,14 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 				case 'v':
 					return; // We can do nothing here... (FIXME: Can't remember why...)
 				break;
-
 				case 'b':
 				case 'I':
 				case 'e':
 				case 'q':
 				case 'f':
 				case 'k':
+					szKvsCommand = QString("mode $chan.name %1%2").arg(cPlusOrMinus.toLatin1()).arg(cFlag.toLatin1());
+				break;
 				default:
 					szKvsCommand = QString("mode $chan.name %1%2 $0").arg(cPlusOrMinus.toLatin1()).arg(cFlag.toLatin1());
 				break;
