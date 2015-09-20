@@ -794,7 +794,6 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,'e',KVI_OUT_BANEXCEPT,__tr2q
 
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfQList,'q',KVI_OUT_BAN,__tr2qs("owner list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfAList,'a',KVI_OUT_BAN,__tr2qs("protected/admin list"))
-PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("spam filter list"))
 
 #define PARSE_NUMERIC_LIST(__funcname,__modechar,__ico,__szWhatQString) \
@@ -828,7 +827,6 @@ PARSE_NUMERIC_LIST(parseNumericExceptList,'e',KVI_OUT_BANEXCEPT,__tr2qs("Ban exc
 
 PARSE_NUMERIC_LIST(parseNumericQList,'q',KVI_OUT_BAN,__tr2qs("Owner listing"));
 PARSE_NUMERIC_LIST(parseNumericAList,'a',KVI_OUT_BAN,__tr2qs("Admin/protected nicks listing"));
-PARSE_NUMERIC_LIST(parseNumericReopList,'R',KVI_OUT_BAN,__tr2qs("Reop masks listing"));
 PARSE_NUMERIC_LIST(parseNumericSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("Spam filter listing"));
 
 void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
@@ -2107,6 +2105,25 @@ void KviIrcServerParser::parseNumericInviting(KviIrcMessage * msg)
 		QString szWho = msg->connection()->decodeText(msg->safeParam(0));
 		QString szTarget = msg->connection()->decodeText(msg->safeParam(1));
 		QString szChan = msg->connection()->decodeText(msg->safeParam(2));
+		KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+		if(chan)
+		{
+			chan->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
+		} else {
+			KviWindow * pOut = (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
+		}
+	}
+}
+
+void KviIrcServerParser::parseNumericInvited(KviIrcMessage * msg)
+{
+	//RPL_INVITED          345
+	if(!msg->haltOutput())
+	{
+		QString szWho = msg->connection()->decodeText(msg->safeParam(2));
+		QString szTarget = msg->connection()->decodeText(msg->safeParam(1));
+		QString szChan = msg->connection()->decodeText(msg->safeParam(0));
 		KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 		if(chan)
 		{
