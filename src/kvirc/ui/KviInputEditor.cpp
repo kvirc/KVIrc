@@ -734,11 +734,16 @@ void KviInputEditor::drawContents(QPainter * p)
 
 	if(m_bCursorOn)
 	{
+		p->setClipping(false);
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorInputCursor));
-		p->drawLine(m_iLastCursorXPosition,iTop,m_iLastCursorXPosition,iBottom);
-	} else {
-		p->setPen(KVI_OPTION_COLOR(KviOption_colorInputForeground));
-	}
+		//p->drawLine(m_iLastCursorXPosition,iTop,m_iLastCursorXPosition,iBottom);
+		p->fillRect(m_iLastCursorXPosition,iTop,2,iBottom - iTop,KVI_OPTION_COLOR(KviOption_colorInputCursor));
+		p->fillRect(m_iLastCursorXPosition-1,iTop,4,2,KVI_OPTION_COLOR(KviOption_colorInputCursor));
+		p->fillRect(m_iLastCursorXPosition-1,iBottom-1,4,2,KVI_OPTION_COLOR(KviOption_colorInputCursor));
+		p->setClipping(true);
+	}// else {
+	//	p->setPen(KVI_OPTION_COLOR(KviOption_colorInputForeground));
+	//}
 }
 
 void KviInputEditor::drawTextBlock(QPainter * pa, int iTop, int iBottom, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected)
