@@ -794,6 +794,7 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,'e',KVI_OUT_BANEXCEPT,__tr2q
 
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfQList,'q',KVI_OUT_BAN,__tr2qs("owner list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfAList,'a',KVI_OUT_BAN,__tr2qs("protected/admin list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("spam filter list"))
 
 #define PARSE_NUMERIC_LIST(__funcname,__modechar,__ico,__szWhatQString) \
@@ -827,6 +828,7 @@ PARSE_NUMERIC_LIST(parseNumericExceptList,'e',KVI_OUT_BANEXCEPT,__tr2qs("Ban exc
 
 PARSE_NUMERIC_LIST(parseNumericQList,'q',KVI_OUT_BAN,__tr2qs("Owner listing"));
 PARSE_NUMERIC_LIST(parseNumericAList,'a',KVI_OUT_BAN,__tr2qs("Admin/protected nicks listing"));
+PARSE_NUMERIC_LIST(parseNumericReopList,'R',KVI_OUT_BAN,__tr2qs("Reop masks listing"));
 PARSE_NUMERIC_LIST(parseNumericSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("Spam filter listing"));
 
 void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
@@ -2133,6 +2135,20 @@ void KviIrcServerParser::parseNumericInvited(KviIrcMessage * msg)
 			pOut->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
 		}
 	}
+}
+
+void KviIrcServerParser::parseNumericEndOfReopListOrInvited(KviIrcMessage * msg)
+{
+	// Determine wether this is inteded for RPL_ENDOFREOPLIST
+	// or RPL_INVITED
+
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+
+	QString version = pServerInfo->software();
+	if(version == "Snircd" || version == "Ircu")
+		parseNumericInvited(msg);
+	else
+		parseNumericEndOfReopList(msg);
 }
 
 void KviIrcServerParser::parseNumericInfo(KviIrcMessage * msg)
