@@ -86,6 +86,7 @@
     - C++ compiler ............ (Required)
     - CMake ................... (Required)  >= 2.8.12.2
     - cmake-curses-gui ........ (Optional)
+    = Doxygen ................. (Optional)
     - pkg-config .............. (Required)
     - git-core ................ (Preferred)
     - Pthreads ................ (Required)
@@ -107,7 +108,7 @@
   For Ubuntu or variant distributions the complete list of dependencies
   and installation command is:
 
-      $ sudo apt-get install build-essential cmake cmake-curses-gui git-core \
+      $ sudo apt-get install build-essential cmake cmake-curses-gui doxygen git-core \
         libenchant-dev libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev \
         libssl-dev libx11-dev libxrender-dev pkg-config python-dev zlib1g-dev
 
