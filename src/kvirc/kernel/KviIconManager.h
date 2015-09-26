@@ -497,7 +497,10 @@ public:
 		ThumbDown            = 329,
 		ThumbUp              = 330,
 		FacePalm             = 331,
-		IconCount            = 332
+		Identity             = 332,
+		NickPopup            = 333,
+		Tools                = 334,
+		IconCount            = 335
 	};
 
 	/**

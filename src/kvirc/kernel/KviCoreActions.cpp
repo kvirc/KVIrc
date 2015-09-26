@@ -129,7 +129,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Allows you to configure nickname, username, avatar etc..."),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_identity.png",
-		KviIconManager::Ident,
+		KviIconManager::Identity,
 		0,
 		KVI_SHORTCUTS_IDENTITY);
 
@@ -338,7 +338,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Opens the KVIrc homepage"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_kvircwww.png",
-		KviIconManager::KVIrc,
+		KviIconManager::HomePage,
 		0,
 		QString());
 
@@ -349,7 +349,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Opens the KVIrc homepage in russian"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_kvircwww.png",
-		KviIconManager::KVIrc,
+		KviIconManager::HomePage,
 		0,
 		QString());
 
@@ -488,7 +488,7 @@ KviIrcContextDisplayAction::KviIrcContextDisplayAction(QObject * pParent)
 	__tr2qs("Shows a small display with IRC context information"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_irccontextdisplay.png",
-	KviIconManager::None,
+	KviIconManager::PopupMenu,
 	NeedsContext | NeedsConnection)
 {
 }
@@ -884,7 +884,7 @@ KviChangeNickAction::KviChangeNickAction(QObject * pParent)
 	__tr2qs("Shows a popup menu that allows quickly changing the nickname"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_nickpopup.png",
-	KviIconManager::Nick,
+	KviIconManager::NickPopup,
 	NeedsConnection | NeedsContext)
 {
 }
@@ -1192,7 +1192,7 @@ KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
 	__tr2qs("Shows a popup menu with some IRC Tools"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_tools.png",
-	KviIconManager::None,
+	KviIconManager::Tools,
 	NeedsConnection | NeedsContext)
 {
 }
@@ -1225,7 +1225,7 @@ KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
 	__tr2qs("Shows a popup menu with some IRC Actions"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_actions.png",
-	KviIconManager::None,
+	KviIconManager::Action,
 	NeedsConnection | NeedsContext)
 {
 }
