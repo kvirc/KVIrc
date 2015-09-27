@@ -1761,13 +1761,19 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			{
 				QColor col(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground));
 
-				QStyleOptionViewItemV4 opt4;
-				opt4.rect= QRect(0,iTheY,width(),pEntry->m_iHeight);
-				opt4.state = opt4.state | QStyle::State_Selected;
-				opt4.showDecorationSelected = true;
-				opt4.palette.setColor(QPalette::Highlight, col);
-				style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, &p, this);
-
+				if(style()->inherits("QWindowsXPStyle"))
+				{
+					// The QWindowsXP style does not honor our colors. It uses the system ones instead.
+					// We can't accept it.
+					p.fillRect(0,iTheY,width(),pEntry->m_iHeight,col);
+				} else {
+					QStyleOptionViewItemV4 opt4;
+					opt4.rect= QRect(0,iTheY,width(),pEntry->m_iHeight);
+					opt4.state = opt4.state | QStyle::State_Selected;
+					opt4.showDecorationSelected = true;
+					opt4.palette.setColor(QPalette::Highlight, col);
+					style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, &p, this);
+				}
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
 			} else if(KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick) && m_pListView->m_pKviWindow->connection())
 			{

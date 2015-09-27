@@ -525,11 +525,18 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	if(treeWidget->currentItem() == item)
 	{
 		//selection colored background
-		QStyleOptionViewItemV4 opt4(option);
-		opt4.state = opt4.state | QStyle::State_Selected;
-		opt4.showDecorationSelected = true;
-		opt4.palette.setColor(QPalette::Highlight, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
-		treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
+		if(treeWidget->style()->inherits("QWindowsXPStyle"))
+		{
+			// The QWindowsXP style does not honor our colors. It uses the system ones instead.
+			// We can't accept it.
+			p->fillRect(option.rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+		} else {
+			QStyleOptionViewItemV4 opt4(option);
+			opt4.state = opt4.state | QStyle::State_Selected;
+			opt4.showDecorationSelected = true;
+			opt4.palette.setColor(QPalette::Highlight,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
+		}
 #ifndef COMPILE_ON_MAC
 	} else {
 		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects) && option.state & QStyle::State_MouseOver)
@@ -538,11 +545,18 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			col.setAlpha(127);
 
-			QStyleOptionViewItemV4 opt4(option);
-			opt4.state = opt4.state | QStyle::State_Selected;
-			opt4.showDecorationSelected = true;
-			opt4.palette.setColor(QPalette::Highlight, col);
-			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
+			if(treeWidget->style()->inherits("QWindowsXPStyle"))
+			{
+				// The QWindowsXP style does not honor our colors. It uses the system ones instead.
+				// We can't accept it.
+				p->fillRect(option.rect,col);
+			} else {
+				QStyleOptionViewItemV4 opt4(option);
+				opt4.state = opt4.state | QStyle::State_Selected;
+				opt4.showDecorationSelected = true;
+				opt4.palette.setColor(QPalette::Highlight, col);
+				treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
+			}
 		}
 #endif
 	}
