@@ -308,7 +308,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 #endif
 		p.fillRect(cr,KVI_OPTION_COLOR(KviOption_colorInputBackground));
 
-		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap();
+		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapInputBackground).pixmap();
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),cr,cr.width(),cr.height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
