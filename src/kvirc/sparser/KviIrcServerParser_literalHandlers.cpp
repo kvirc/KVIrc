@@ -1924,8 +1924,8 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 				if(!(msg->haltOutput() || bShowAsCompact))
 				{
 					if(bSet)chan->output(KVI_OUT_KEY,
-						__tr2qs("%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""),
-						&szNickBuffer,&szUser,&szHostBuffer,&aParam);
+						__tr2qs("%Q [%Q@%Q] has set channel key to \"\r!m-k %Q\r%Q\r\""),
+						&szNickBuffer,&szUser,&szHostBuffer,&aParam,&aParam);
 					else chan->output(KVI_OUT_KEY,
 						__tr2qs("%Q [%Q@%Q] has unset the channel key"),
 						&szNickBuffer,&szUser,&szHostBuffer);
@@ -2035,9 +2035,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 						if(!(msg->haltOutput() || bShowAsCompact))
 						{
 							chan->output(bSet ? (bIsMe ? KVI_OUT_MEBAN : KVI_OUT_BAN) : (bIsMe ? KVI_OUT_MEUNBAN : KVI_OUT_UNBAN),
-								__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+								__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"),
 								&szNickBuffer,&szUser,&szHostBuffer,
-								bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+								bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam,&aParam);
 						}
 						if(bIsMultiSingleMode)
 							iIconForCompactMode= (bSet ? (bIsMe ? KVI_OUT_MEBAN : KVI_OUT_BAN) : (bIsMe ? KVI_OUT_MEUNBAN : KVI_OUT_UNBAN));
@@ -2099,9 +2099,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 								bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
 						} else {
 							chan->output(KVI_OUT_CHANMODE,
-								__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+								__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"),
 								&szNickBuffer,&szUser,&szHostBuffer,
-								bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+								bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam,&aParam);
 						}
 					}
 				} else {
@@ -2145,9 +2145,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 				if(!(msg->haltOutput() || bShowAsCompact)) \
 				{ \
 					chan->output(bSet ? (bIsMe ? __icomeset : __icoset) : (bIsMe ? __icomeunset : __icounset), \
-						__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"), \
+						__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"), \
 						&szNickBuffer,&szUser,&szHostBuffer, \
-						bSet ? '+' : '-',__modefl,bSet ? '-' : '+',__modefl,&aParam); \
+						bSet ? '+' : '-',__modefl,bSet ? '-' : '+',__modefl,&aParam,&aParam); \
 				} \
 				if(bIsMultiSingleMode) \
 					iIconForCompactMode= (bSet ? (bIsMe ? __icomeset : __icoset) : (bIsMe ? __icomeunset : __icounset)); \
@@ -2178,9 +2178,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
 					} else {
 						chan->output(KVI_OUT_CHANMODE,
-							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"),
 							&szNickBuffer,&szUser,&szHostBuffer,
-							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam,&aParam);
 					}
 				}
 
@@ -2205,9 +2205,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
 					} else {
 						chan->output(KVI_OUT_CHANMODE,
-							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"),
 							&szNickBuffer,&szUser,&szHostBuffer,
-							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam,&aParam);
 					}
 				}
 			} else if(msg->connection()->serverInfo()->isSupportedModeFlag(*aux))
@@ -2231,9 +2231,9 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
 					} else {
 						chan->output(KVI_OUT_CHANMODE,
-							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"),
 							&szNickBuffer,&szUser,&szHostBuffer,
-							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam,&aParam);
 					}
 				}
 			} else {

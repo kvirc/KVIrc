@@ -159,8 +159,11 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 			return;
 		}
 		break;
-		case 'm': // m+X / m-X (used to quickly undo mode changes)
+		case 'm': // m+X[ param] / m-X[ param] (used to quickly undo mode changes)
 		{
+			// Syntax is
+			//   m<plus_or_minus><mode_char>[ <parameter>]
+
 			if(szLinkCommandPart.length() < 3)
 				return; // malformed
 			if(m_pKviWindow->type() != KviWindow::Channel)
@@ -168,29 +171,9 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 			if(!(((KviChannelWindow *)m_pKviWindow)->isMeOp()))
 				return; // i'm not op, can't do mode changes
 
-			QChar cPlusOrMinus = szLinkCommandPart[1];
-			if((cPlusOrMinus.unicode() != '+') && (cPlusOrMinus.unicode() != '-'))
-				return; // malformed
+			QString szPart = szLinkCommandPart.mid(1);
 
-			QChar cFlag = szLinkCommandPart[2];
-			switch(cFlag.unicode())
-			{
-				case 'o':
-				case 'v':
-					return; // We can do nothing here... (FIXME: Can't remember why...)
-				break;
-				case 'b':
-				case 'I':
-				case 'e':
-				case 'q':
-				case 'f':
-				case 'k':
-					szKvsCommand = QString("mode $chan.name %1%2").arg(cPlusOrMinus.toLatin1()).arg(cFlag.toLatin1());
-				break;
-				default:
-					szKvsCommand = QString("mode $chan.name %1%2 $0").arg(cPlusOrMinus.toLatin1()).arg(cFlag.toLatin1());
-				break;
-			}
+			szKvsCommand = QString("mode $chan.name %1").arg(szPart);
 		}
 		break;
 		case 'h':
@@ -917,31 +900,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			{
 				if(((KviChannelWindow *)m_pKviWindow)->isMeOp())
 				{
-					QChar plmn = linkCmd[1];
-					if((plmn.unicode() == '+') || (plmn.unicode() == '-'))
-					{
-						tip = __tr2qs("Double-click to set<br>");
-						QChar flag = linkCmd[2];
-						switch(flag.unicode())
-						{
-							case 'o':
-							case 'v':
-								// We can do nothing here...
-								tip = "";
-							break;
-							case 'b':
-							case 'I':
-							case 'e':
-							case 'q':
-							case 'f':
-							case 'k':
-								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c %Q</b>"),&(m_pKviWindow->windowName()),plmn.toLatin1(),flag.toLatin1(),&linkText);
-							break;
-							default:
-								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c</b>"),&(m_pKviWindow->windowName()),plmn.toLatin1(),flag.toLatin1());
-							break;
-						}
-					}
+					QString part = linkCmd.mid(1);
+					KviQString::appendFormatted(tip,QString("<b>mode %Q %Q</b>"),&(m_pKviWindow->windowName()),&part);
 				} else {
 					// I'm not op...no way
 					tip = __tr2qs("You're not an operator: You may not change channel modes");

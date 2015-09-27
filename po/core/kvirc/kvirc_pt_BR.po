@@ -260,8 +260,8 @@ msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
 msgstr "%Q [%Q@%Q] definiu o limite do canal \r!m-l\rpara %Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1922
-msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
-msgstr "%Q [%Q@%Q] definiu a senha o canal para \"\r!m-k\r%Q\r\""
+msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k %Q\r%Q\r\""
+msgstr "%Q [%Q@%Q] definiu a senha o canal para \"\r!m-k %Q\r%Q\r\""
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2277
 msgid "%Q [%Q@%Q] has set channel mode %s"
@@ -273,8 +273,8 @@ msgstr "%Q [%Q@%Q] definiu o modo do canal %s"
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2174
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2201
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2227
-msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"
-msgstr "%Q [%Q@%Q] colocou em modo %c%c \r!m%c%c\r%Q\r"
+msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"
+msgstr "%Q [%Q@%Q] colocou em modo %c%c \r!m%c%c %Q\r%Q\r"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1973
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:2053
