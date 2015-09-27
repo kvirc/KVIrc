@@ -165,7 +165,6 @@ KVIRC_API KviProxyDataBase                        * g_pProxyDataBase            
 KVIRC_API KviColorWindow                          * g_pColorWindow                         = 0;
 KVIRC_API KviTextIconWindow                       * g_pTextIconWindow                      = 0;
 KVIRC_API QMenu                                   * g_pInputPopup                          = 0;
-KVIRC_API QMenu                                   * g_pSpellCheckerPopup                   = 0;
 KVIRC_API QStringList                             * g_pRecentTopicList                     = 0;
 KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
 KVIRC_API KviMediaManager                         * g_pMediaManager                        = 0;
@@ -534,7 +533,6 @@ void KviApplication::setup()
 
 	// and the input popup
 	g_pInputPopup = new QMenu();
-	g_pSpellCheckerPopup = new QMenu();
 
 	// create the server parser
 	g_pServerParser = new KviIrcServerParser();
@@ -696,7 +694,6 @@ KviApplication::~KviApplication()
 	saveInputHistory();
 	KviInputHistory::done();
 	delete g_pInputPopup;
-	delete g_pSpellCheckerPopup;
 	//delete g_pScriptObjectController;
 #ifdef COMPILE_CRYPT_SUPPORT
 	delete g_pCryptEngineManager;

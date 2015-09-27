@@ -77,7 +77,6 @@
 
 // from KviApplication.cpp
 extern QMenu * g_pInputPopup;
-extern QMenu * g_pSpellCheckerPopup;
 extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviColorWindow          * g_pColorWindow;
 
@@ -1140,12 +1139,10 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 	{
 		g_pInputPopup->addSeparator();
 
-		pAction = g_pInputPopup->addAction(
-				__tr2qs("Correct Spelling of '%1'").arg(pCurrentBlock->szText),
-				this,
-				SLOT(showSpellCheckerCorrectionsPopup())
-			);
-		pAction->setEnabled(!m_bReadOnly);
+		fillSpellCheckerCorrectionsPopup();
+		m_SpellCheckerPopup.setTitle(__tr2qs("Correct Spelling of '%1'").arg(pCurrentBlock->szText));
+		m_SpellCheckerPopup.setEnabled(!m_bReadOnly);
+		g_pInputPopup->addMenu(&m_SpellCheckerPopup);
 	} else {
 		pAction = g_pInputPopup->addAction(
 				__tr2qs("Correct Spelling")
@@ -1188,17 +1185,17 @@ KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(
 	return pCurrentBlock;
 }
 
-void KviInputEditor::showSpellCheckerCorrectionsPopup()
+void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 {
-	g_pSpellCheckerPopup->clear();
+	m_SpellCheckerPopup.clear();
 
 	QWidgetAction * pWidgetAction = new QWidgetAction(g_pInputPopup);
-	QLabel * pLabel = new QLabel(g_pSpellCheckerPopup);
+	QLabel * pLabel = new QLabel(&m_SpellCheckerPopup);
 	pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	pLabel->setMargin(5);
 
 	pWidgetAction->setDefaultWidget(pLabel);
-	g_pSpellCheckerPopup->addAction(pWidgetAction);
+	m_SpellCheckerPopup.addAction(pWidgetAction);
 
 
 #ifdef COMPILE_ENCHANT_SUPPORT
@@ -1216,11 +1213,11 @@ void KviInputEditor::showSpellCheckerCorrectionsPopup()
 	{
 		pLabel->setText(__tr2qs("Spelling Checker"));
 	
-		g_pSpellCheckerPopup->addAction(__tr2qs("No Suggestions Available"))->setEnabled(false);
+		m_SpellCheckerPopup.addAction(__tr2qs("No Suggestions Available"))->setEnabled(false);
 	} else {
 
 		pLabel->setText(__tr2qs("Spelling Suggestions for '%1'").arg(pCurrentBlock->szText));
-		g_pSpellCheckerPopup->addAction(pWidgetAction);
+		m_SpellCheckerPopup.addAction(pWidgetAction);
 	
 		KviKvsVariant aRet;
 		KviKvsVariantList params(new KviKvsVariant(pCurrentBlock->szText));
@@ -1245,7 +1242,7 @@ void KviInputEditor::showSpellCheckerCorrectionsPopup()
 			if(szWord.isEmpty())
 				continue;
 
-			g_pSpellCheckerPopup->addAction(szWord,this,SLOT(spellCheckerPopupCorrectionActionTriggered()));
+			m_SpellCheckerPopup.addAction(szWord,this,SLOT(spellCheckerPopupCorrectionActionTriggered()));
 		}
 	}
 
@@ -1253,17 +1250,22 @@ void KviInputEditor::showSpellCheckerCorrectionsPopup()
 
 	pLabel->setText(__tr2qs("Spelling Checker"));
 
-	g_pSpellCheckerPopup->addAction(__tr2qs("Not Supported"))->setEnabled(false);
+	m_SpellCheckerPopup.addAction(__tr2qs("Not Supported"))->setEnabled(false);
 
 #endif
+}
+
+void KviInputEditor::showSpellCheckerCorrectionsPopup()
+{
+	fillSpellCheckerCorrectionsPopup();
 
 	int iXPos = xPositionFromCharIndex(m_iCursorPosition);
 	if(iXPos > 24)
 		iXPos -= 24;
 
-	QSize sh = g_pSpellCheckerPopup->sizeHint();
+	QSize sh = m_SpellCheckerPopup.sizeHint();
 
-	g_pSpellCheckerPopup->popup(mapToGlobal(QPoint(iXPos,-sh.height())));
+	m_SpellCheckerPopup.popup(mapToGlobal(QPoint(iXPos,-sh.height())));
 }
 
 void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()

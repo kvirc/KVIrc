@@ -46,13 +46,13 @@
 #include "KviCString.h"
 #include "KviWindow.h"
 
+#include <QMenu>
 #include <QString>
 #include <QWidget>
 
 class QKeyEvent;
 class QDragEnterEvent;
 class KviUserListView;
-class QMenu;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
 #define KVI_INPUT_XTRAPADDING 1
@@ -168,6 +168,7 @@ protected:
 	KviWindow               * m_pKviWindow;
 	QWidget                 * m_pInputParent;
 	QMenu         * m_pIconMenu;
+	QMenu                     m_SpellCheckerPopup;
 	bool                      m_bReadOnly;
 
 	/**
@@ -972,6 +973,7 @@ protected:
 	bool checkWordSpelling(const QString &szWord);
 	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);
 	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks);
+	void fillSpellCheckerCorrectionsPopup();
 signals:
 	/**
 	* \brief Called when the user press escape
