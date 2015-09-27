@@ -714,7 +714,8 @@ void KviIrcContext::connectionEstabilished()
 
 void KviIrcContext::connectionTerminated()
 {
-	if(!m_pConnection)return; // this may happen in the destructor!
+	if(!m_pConnection)
+		return; // this may happen in the destructor!
 
 	KviIrcServer oldServer(*(connection()->target()->server()));
 
@@ -731,7 +732,15 @@ void KviIrcContext::connectionTerminated()
 
 	// we consider it unexpected when we haven't sent a QUIT message and we're connected
 	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc..)
-	bool bUnexpectedDisconnect = ((!(connection()->stateData()->sentQuit())) && ((m_eState == KviIrcContext::Connected) || (m_eState == KviIrcContext::Connecting) || (m_eState == KviIrcContext::LoggingIn))) || connection()->stateData()->simulateUnexpectedDisconnect();
+	bool bUnexpectedDisconnect = (
+			(!(connection()->stateData()->sentQuit())) &&
+			(
+				(m_eState == KviIrcContext::Connected) ||
+				(m_eState == KviIrcContext::Connecting) ||
+				(m_eState == KviIrcContext::LoggingIn)
+			)
+		) ||
+		connection()->stateData()->simulateUnexpectedDisconnect();
 
 	if(bUnexpectedDisconnect)
 	{
@@ -821,7 +830,8 @@ void KviIrcContext::asynchronousConnect()
 
 void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQuitMsg, bool bSimulateUnexpectedDisconnect)
 {
-	if(!connection())return; // hm ?
+	if(!connection())
+		return; // hm ?
 
 	connection()->stateData()->setSimulateUnexpectedDisconnect(bSimulateUnexpectedDisconnect);
 
@@ -830,7 +840,8 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 		case Connected:
 		{
 			// was connected : send a quit and abort the connection
-			bool bWasSentQuit = true;
+			bool bQuitSentJustNow = false;
+
 			if(!connection()->stateData()->sentQuit())
 			{
 				KVS_TRIGGER_EVENT_0(KviEvent_OnDisconnectRequest,m_pConsole);
@@ -845,31 +856,34 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 				else
 					buffer = szQuit;
 				QByteArray dat = connection()->encodeText(buffer);
-				bWasSentQuit = false;
 				connection()->stateData()->setSentQuit();
 				connection()->sendFmtData("QUIT :%s",dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected
+				bQuitSentJustNow = true;
 			} // else it was already sent anyway
 
-			if(KVI_OPTION_BOOL(KviOption_boolForceBrutalQuit) || bWasSentQuit || bForce)
+			if(KVI_OPTION_BOOL(KviOption_boolForceBrutalQuit) || bForce || (!bQuitSentJustNow))
 			{
-				if(!bWasSentQuit)
+				if(!bQuitSentJustNow)
 				{
 					// idle for some milliseconds in order to allow the quit message to reach
 					// the remote end without breaking the connection
 					KviThread::msleep(100);
 				}
+
 				// and brutally abort the connection (if it still exists!!!)
-				if(connection())connection()->abort();
+				if(connection())
+					connection()->abort();
 			} else {
-				if(!bWasSentQuit)
+				if(bQuitSentJustNow)
 					m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent QUIT, waiting for the server to close the connection..."));
-				// else it was already sent anyway
 			}
 		}
 		break;
 		case Connecting:
 		case LoggingIn:
 			// was waiting for connection or login, just abort it: it will trigger an error anyway
+			// though act as if we sent the quit message, so we'll not treat the disconnection as "unexpected".
+			connection()->stateData()->setSentQuit();
 			connection()->abort();
 		break;
 		default:
