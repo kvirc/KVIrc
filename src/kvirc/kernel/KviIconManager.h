@@ -285,7 +285,7 @@ public:
 		MaxHorizontal        = 117,
 		TileWindows          = 118,
 		Log                  = 119,
-		Spam                 = 120,
+		Remove               = 120,
 		File                 = 121,
 		Icq                  = 122,
 		IcqYellow            = 123,
