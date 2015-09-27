@@ -250,9 +250,5 @@ void KviMdiChild::updateSystemPopup()
 		return ;
 	if(!m_pClient->inherits("KviWindow"))
 		return;
-
-	systemMenu()->clear();
-	//FIXME this is an hack
-	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest, ((KviWindow*) m_pClient));
 }
 
