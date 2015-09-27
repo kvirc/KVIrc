@@ -434,7 +434,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 342 RPL_SUMMONING
 	0,                                               // 343
 	PTM(parseNumericReopList)                      , // 344 RPL_REOPLIST
-	PTM(parseNumericEndOfReopList)                 , // 345 RPL_ENDOFREOPLIST
+	PTM(parseNumericEndOfReopListOrInvited)        , // 345 RPL_ENDOFREOPLIST, RPL_INVITED
 	PTM(parseNumericInviteList)                    , // 346 RPL_INVITELIST
 	PTM(parseNumericEndOfInviteList)               , // 347 RPL_ENDOFINVITELIST
 	PTM(parseNumericExceptList)                    , // 348 RPL_EXCEPTLIST

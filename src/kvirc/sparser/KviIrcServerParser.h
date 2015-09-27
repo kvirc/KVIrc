@@ -157,7 +157,9 @@ private:
 	void parseNumericAList(KviIrcMessage *msg);
 	void parseNumericEndOfAList(KviIrcMessage *msg);
 	void parseNumericReopList(KviIrcMessage *msg);
-	void parseNumericEndOfReopList(KviIrcMessage *msg);
+	void parseNumericEndOfReopList(KviIrcMessage * msg);
+	void parseNumericInvited(KviIrcMessage * msg);
+	void parseNumericEndOfReopListOrInvited(KviIrcMessage *msg);
 	void parseNumericSpamFilterList(KviIrcMessage *msg);
 	void parseNumericEndOfSpamFilterList(KviIrcMessage *msg);
 	void parseNumericWhoReply(KviIrcMessage *msg);

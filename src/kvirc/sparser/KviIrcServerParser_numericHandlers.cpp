@@ -2118,6 +2118,39 @@ void KviIrcServerParser::parseNumericInviting(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericInvited(KviIrcMessage * msg)
+{
+	//RPL_INVITED          345
+	if(!msg->haltOutput())
+	{
+		QString szWho = msg->connection()->decodeText(msg->safeParam(2));
+		QString szTarget = msg->connection()->decodeText(msg->safeParam(1));
+		QString szChan = msg->connection()->decodeText(msg->safeParam(0));
+		KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+		if(chan)
+		{
+			chan->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
+		} else {
+			KviWindow * pOut = (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
+		}
+	}
+}
+
+void KviIrcServerParser::parseNumericEndOfReopListOrInvited(KviIrcMessage * msg)
+{
+	// Determine wether this is inteded for RPL_ENDOFREOPLIST
+	// or RPL_INVITED
+
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+
+	QString version = pServerInfo->software();
+	if(version == "Snircd" || version == "Ircu")
+		parseNumericInvited(msg);
+	else
+		parseNumericEndOfReopList(msg);
+}
+
 void KviIrcServerParser::parseNumericInfo(KviIrcMessage * msg)
 {
 	//RPL_INFO             371
