@@ -168,6 +168,9 @@ void KviTopicWidget::applyOptions()
 	setFont(newFont);
 	if(m_pCompletionBox)
 		m_pCompletionBox->setFont(newFont);
+
+	// reset topic html too (in case colors have been changed)
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic)));
 }
 
 void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
