@@ -150,7 +150,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Get Network Links"),
 		__tr2qs("Shows a window that allows viewing the network links"),
 		KviActionManager::categoryIrc(),
-		"kvi_bigicon_networklinks.png",
+		"kvi_bigicon_links.png",
 		KviIconManager::Links,
 		KviAction::NeedsContext,
 		QString());
@@ -337,7 +337,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("KVIrc WWW"),
 		__tr2qs("Opens the KVIrc homepage"),
 		KviActionManager::categoryGeneric(),
-		"kvi_bigicon_kvircwww.png",
+		"kvi_bigicon_homepage.png",
 		KviIconManager::HomePage,
 		0,
 		QString());
@@ -348,7 +348,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("KVIrc Russian WWW"),
 		__tr2qs("Opens the KVIrc homepage in russian"),
 		KviActionManager::categoryGeneric(),
-		"kvi_bigicon_kvircwww.png",
+		"kvi_bigicon_homepage.png",
 		KviIconManager::HomePage,
 		0,
 		QString());
@@ -462,7 +462,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("New IRC Context"),
 		__tr2qs("Creates a new IRC context console"),
 		KviActionManager::categoryIrc(),
-		"kvi_bigicon_newirccontext.png",
+		"kvi_bigicon_newitem.png",
 		KviIconManager::NewItem,
 		0,
 		KVI_SHORTCUTS_CONTEXT);
@@ -474,7 +474,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Quit KVIrc"),
 		__tr2qs("Quits KVIrc closing all the current connections"),
 		KviActionManager::categoryGeneric(),
-		"kvi_bigicon_quit.png",
+		"kvi_bigicon_quitapp.png",
 		KviIconManager::QuitApp,
 		0,
 		QString());
@@ -1059,8 +1059,8 @@ KviGoAwayAction::KviGoAwayAction(QObject * pParent)
 		__tr2qs("Away/Back"),
 		__tr2qs("Allows entering and leaving away state"),
 		KviActionManager::categoryIrc(),
-		"kvi_bigicon_keyboard.png",
-		KviIconManager::NotAway,
+		"kvi_bigicon_away.png",
+		KviIconManager::Away,
 		KviKvsAction::NeedsContext | KviKvsAction::NeedsConnection,
 		KVI_SHORTCUTS_AWAY
 	)
@@ -1091,10 +1091,10 @@ void KviGoAwayAction::activeContextStateChanged()
 		{
 			if(c->connection()->userInfo()->isAway())
 			{
-				p = g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png");
+				p = g_pIconManager->getBigIcon("kvi_bigicon_away.png");
 				txt = m_szBackString;
 			} else {
-				p = g_pIconManager->getBigIcon("kvi_bigicon_keyboard.png");
+				p = g_pIconManager->getBigIcon("kvi_bigicon_notaway.png");
 				txt = m_szAwayString;
 			}
 		} else {
@@ -1171,7 +1171,7 @@ QAction * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
 
-	QAction * pAction = new QAction(*(g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png")), m_szAwayString, t);
+	QAction * pAction = new QAction(*(g_pIconManager->getBigIcon("kvi_bigicon_away.png")), m_szAwayString, t);
 	pAction->setStatusTip(m_szAwayString);
 	pAction->setObjectName(KVI_COREACTION_AWAYBACK);
 	t->addAction(pAction);

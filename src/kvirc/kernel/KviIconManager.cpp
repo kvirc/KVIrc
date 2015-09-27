@@ -203,7 +203,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"maxhorizontal",       // 117
 	"tilewindows",         // 118
 	"log",                 // 119
-	"spam",                // 120
+	"remove",              // 120
 	"file",                // 121
 	"icq",                 // 122
 	"icqyellow",           // 123
@@ -734,7 +734,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 117: return KviIconManager::MaxHorizontal;        break;
 		case 118: return KviIconManager::TileWindows;          break;
 		case 119: return KviIconManager::Log;                  break;
-		case 120: return KviIconManager::Spam;                 break;
+		case 120: return KviIconManager::Remove;               break;
 		case 121: return KviIconManager::File;                 break;
 		case 122: return KviIconManager::Icq;                  break;
 		case 123: return KviIconManager::IcqYellow;            break;
