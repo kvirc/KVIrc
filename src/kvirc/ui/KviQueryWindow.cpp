@@ -475,6 +475,7 @@ void KviQueryWindow::setAliveQuery()
 void KviQueryWindow::applyOptions()
 {
 	m_pUserListView->applyOptions();
+	m_pLabel->applyOptions();
 	updateLabelText();
 	// this applies options for IrcView and Input and forces the window to relayout
 	KviWindow::applyOptions();
