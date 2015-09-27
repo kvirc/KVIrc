@@ -36,7 +36,7 @@
 #include "KviQString.h"
 #include "KviTalHBox.h"
 #include "KviMainWindow.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 
 #include <QToolTip>
 #include <QPainter>
@@ -201,7 +201,7 @@ void FileTransferWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = g_pFileTransferWindow->mdiParent() ? viewport()->mapTo(g_pMainWindow, rect.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(g_pFileTransferWindow, rect.topLeft());
+		QPoint pnt = g_pFileTransferWindow->isDocked() ? viewport()->mapTo(g_pMainWindow, rect.topLeft()) : viewport()->mapTo(g_pFileTransferWindow, rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

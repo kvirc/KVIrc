@@ -28,7 +28,7 @@
 #include "KviMainWindow.h"
 #include "KviIconManager.h"
 #include "KviLocale.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviModule.h"
 #include "KviOptions.h"
 #include "kvi_socket.h"
@@ -108,7 +108,7 @@ void KviIOGraphWindow::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mdiParent() ? mapTo(g_pMainWindow, rect.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : rect.topLeft();
+		QPoint pnt = isDocked() ? mapTo(g_pMainWindow, rect.topLeft()) : rect.topLeft();
 		p.drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -270,8 +270,6 @@ static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)
 	{
 		g_pIOGraphWindow = new KviIOGraphWindow("IOGraph Window");
 		g_pMainWindow->addWindow(g_pIOGraphWindow,!bCreateMinimized);
-
-		if(bCreateMinimized)g_pIOGraphWindow->minimize();
 		return true;
 	}
 

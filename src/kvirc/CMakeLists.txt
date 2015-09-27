@@ -47,8 +47,6 @@ set(kvirc_SRCS
 	ui/KviIrcView_loghandling.cpp
 	ui/KviIrcView_tools.cpp
 	ui/KviMaskEditor.cpp
-	ui/KviMdiChild.cpp
-	ui/KviMdiManager.cpp
 	ui/KviMenuBar.cpp
 	ui/KviModeEditor.cpp
 	ui/KviModeWidget.cpp
@@ -73,6 +71,7 @@ set(kvirc_SRCS
 	ui/KviUserListView.cpp
 	ui/KviWindow.cpp
 	ui/KviWindowListBase.cpp
+	ui/KviWindowStack.cpp
 	ui/KviTreeWindowList.cpp
 	sparser/KviAntiSpam.cpp
 	sparser/KviIrcMessage.cpp

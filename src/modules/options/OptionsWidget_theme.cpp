@@ -153,23 +153,6 @@ void OptionsWidget_themeTransparency::enableGlobalBackgroundPixmapSelector(bool)
 #endif
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-OptionsWidget_themeMdiArea::OptionsWidget_themeMdiArea(QWidget * parent)
-: KviOptionsWidget(parent)
-{
-	createLayout();
-
-	addColorSelector(0,0,0,0,__tr2qs_ctx("Background","options"),KviOption_colorMdiBackground);
-	addPixmapSelector(0,1,0,1,__tr2qs_ctx("Background Image","options"),KviOption_pixmapMdiBackground);
-
-	layout()->setRowStretch(1,1);
-}
-
-OptionsWidget_themeMdiArea::~OptionsWidget_themeMdiArea()
-{
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

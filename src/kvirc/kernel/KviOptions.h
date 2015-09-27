@@ -223,7 +223,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolVerboseIgnore 128                              /* irc::ignore */
 #define KviOption_boolEnableIgnoreOnNotice 129                       /* irc::ignore */
 #define KviOption_boolNotifyFailedDccHandshakes 130
-#define KviOption_boolAutoTileWindows 131             /* internal ? */
+//#define KviOption_boolAutoTileWindows 131             /* internal ? */
 #define KviOption_boolDrawEmoticons 132                              /* look::interface::features::output */
 #define KviOption_boolIgnoreCtcpPage 133                             /* irc::ctcp::floodprotection */
 #define KviOption_boolShowDialogOnCtcpPage 134
@@ -246,7 +246,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolHighlightOnlyNormalMsgQueryToo 151             /* irc::output::highlight */
 #define KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo 152   /* irc::output::highlight */
 #define KviOption_boolHighlightOnlyAtCostumHighlightLevel 153        /* irc::output::highlight */
-#define KviOption_boolMdiManagerInSdiMode 154                        /* internal */
+//#define KviOption_boolMdiManagerInSdiMode 154                        /* internal */
 #define KviOption_boolDccBrokenBouncerHack 155                       /* dcc */
 #define KviOption_boolExternalMessagesToActiveWindow 156             /* irc::output */
 #define KviOption_boolIgnoreChannelAvatarRequestsWhenNoAvatarSet 157 /* ctcp */
@@ -450,7 +450,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KVI_COLOR_OPTIONS_PREFIX "color"
 #define KVI_COLOR_OPTIONS_PREFIX_LEN 5
 
-#define KviOption_colorMdiBackground 0                                            /* ?? look & feel : gui elements : mdi manager */
+// UNUSED #define KviOption_colorMdiBackground 0                                            /* ?? look & feel : gui elements : mdi manager */
 #define KviOption_colorWindowListNormalText 1                                     /* look & feel::interface look::WindowList::classic WindowList */
 #define KviOption_colorWindowListMinimizedText 2                                  /* look & feel::interface look::WindowList::classic WindowList */
 #define KviOption_colorWindowListHighlight1Text 3                                 /* look & feel::interface look::WindowList::classic WindowList */
@@ -512,7 +512,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KVI_PIXMAP_OPTIONS_PREFIX "pixmap"
 #define KVI_PIXMAP_OPTIONS_PREFIX_LEN 6
 
-#define KviOption_pixmapMdiBackground 0
+// UNUSED #define KviOption_pixmapMdiBackground 0
 #define KviOption_pixmapIrcViewBackground 1                                    /* interface::look::components::ircview */
 #define KviOption_pixmapInputBackground 2                                      /* interface::look::components::input */
 #define KviOption_pixmapUserListViewBackground 3                               /* look & feel::interface look::userlist */

@@ -35,7 +35,7 @@
 #include "KviActionDrawer.h"
 #include "KviActionManager.h"
 #include "KviKvsAction.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviIrcToolBar.h"
 #include "KviLocale.h"
 #include "KviIrcUrl.h"
@@ -416,42 +416,6 @@ void register_core_actions(KviActionManager * m)
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_url.png",
 		KviIconManager::Url,
-		0,
-		QString());
-
-	SLOT_ACTION(
-		KVI_COREACTION_CASCADEWINDOWS,
-		g_pMainWindow->mdiManager(),
-		SLOT(cascadeMaximized()),
-		__tr2qs("Cascade windows"),
-		__tr2qs("Arranges the MDI windows in a maximized-cascade fashion"),
-		KviActionManager::categoryGUI(),
-		"kvi_bigicon_cascadewindows.png",
-		KviIconManager::CascadeWindows,
-		0,
-		QString());
-
-	SLOT_ACTION(
-		KVI_COREACTION_TILEWINDOWS,
-		g_pMainWindow->mdiManager(),
-		SLOT(tile()),
-		__tr2qs("Tile windows"),
-		__tr2qs("Tiles the MDI windows with the currently selected tile method"),
-		KviActionManager::categoryGUI(),
-		"kvi_bigicon_tilewindows.png",
-		KviIconManager::TileWindows,
-		0,
-		QString());
-
-	SLOT_ACTION(
-		KVI_COREACTION_MINIMIZEALLWINDOWS,
-		g_pMainWindow->mdiManager(),
-		SLOT(minimizeAll()),
-		__tr2qs("Minimize all windows"),
-		__tr2qs("Minimized all the currently visible MDI windows"),
-		KviActionManager::categoryGUI(),
-		"kvi_bigicon_minimizeallwindows.png",
-		KviIconManager::Minimize,
 		0,
 		QString());
 

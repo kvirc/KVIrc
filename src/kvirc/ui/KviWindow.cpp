@@ -39,7 +39,6 @@
 #include "KviWindow.h"
 #include "KviMainWindow.h"
 #include "KviWindowListBase.h"
-#include "KviMdiChild.h"
 #include "KviLocale.h"
 #include "KviIrcView.h"
 #include "KviMemory.h"
@@ -178,7 +177,7 @@ void KviWindow::reloadImages()
 
 bool KviWindow::hasAttention(AttentionLevel eLevel)
 {
-	if(mdiParent())
+	if(isDocked())
 	{
 		switch(eLevel)
 		{
@@ -203,7 +202,7 @@ bool KviWindow::hasAttention(AttentionLevel eLevel)
 
 void KviWindow::demandAttention()
 {
-	WId windowId = mdiParent() ? g_pMainWindow->winId() : winId();
+	WId windowId = isDocked() ? g_pMainWindow->winId() : winId();
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	FLASHWINFO fwi;
@@ -635,12 +634,8 @@ void KviWindow::updateCaption()
 	bHaltOutput = KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnWindowTitleRequest,this,id(),m_szPlainTextCaption);
 
 	if(!bHaltOutput)
-	{
-		if(mdiParent())
-			mdiParent()->setWindowTitle(m_szPlainTextCaption);
-		else
-			setWindowTitle(m_szPlainTextCaption);
-	}
+		setWindowTitle(m_szPlainTextCaption);
+
 	if(m_pWindowListItem)
 		m_pWindowListItem->captionChanged();
 }
@@ -835,12 +830,13 @@ void KviWindow::delayedAutoRaise()
 
 void KviWindow::autoRaise()
 {
-	if(!mdiParent())
+	if(!isDocked())
 	{
 		raise();
 		activateWindow();
 	} else {
-		mdiParent()->activate();
+		//mdiParent()->activate();
+		// FIXME
 	}
 
 	if(m_pFocusHandler)
@@ -875,18 +871,12 @@ void KviWindow::closeEvent(QCloseEvent * pEvent)
 
 void KviWindow::updateIcon()
 {
-	if(parent())
-	{
-		((KviMdiChild *)parent())->setIcon(*myIconPtr());
-	} else {
-		setWindowIcon(QIcon(*myIconPtr()));
-	}
+	setWindowIcon(QIcon(*myIconPtr()));
 }
 
 void KviWindow::youAreDocked()
 {
 	m_bIsDocked = true;
-	((KviMdiChild *)parent())->setIcon(*myIconPtr());
 	updateCaption();
 }
 
@@ -904,10 +894,11 @@ void KviWindow::youAreUndocked()
 
 void KviWindow::activateSelf()
 {
-	if(mdiParent())
+	if(parentWidget())
 	{
 		// raise and set focus
-		mdiParent()->activate();
+		//((KviWindowStack *)parentWidget())
+		//mdiParent()->activate();
 	} else {
 		raise();
 		setFocus();
@@ -923,7 +914,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 			// focus is still in this window.
 			// just make sure that we're the active one.
 			if(g_pActiveWindow != this)
-				g_pMainWindow->childWindowActivated(this);
+				g_pMainWindow->windowActivated(this);
 			return;
 		}
 	}
@@ -967,7 +958,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	// So we should be already the active window at this point.
 	// If we're not, then fix this.
 	if(g_pActiveWindow != this)
-		g_pMainWindow->childWindowActivated(this);
+		g_pMainWindow->windowActivated(this);
 
 	updateCaption();
 }
@@ -980,7 +971,7 @@ bool KviWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 			// a child got focused
 			m_pLastFocusedChild = (QWidget *)pObject;
 			if(g_pActiveWindow != this)
-				g_pMainWindow->childWindowActivated(this);
+				g_pMainWindow->windowActivated(this);
 			break;
 		case QEvent::Enter:
 			// this is a handler moved here from KviMdiChild::eventFilter
@@ -1126,48 +1117,6 @@ void KviWindow::moveEvent(QMoveEvent * pEvent)
 	updateBackgrounds();
 #endif
 	QWidget::moveEvent(pEvent);
-}
-
-void KviWindow::minimize()
-{
-	if(mdiParent())
-		mdiParent()->minimize();
-	else
-		showMinimized();
-}
-
-void KviWindow::maximize()
-{
-	if(mdiParent())
-		mdiParent()->maximize();
-	else
-		showMaximized();
-	autoRaise();
-}
-
-bool KviWindow::isMinimized()
-{
-	if(mdiParent())
-		return (mdiParent()->state() == KviMdiChild::Minimized);
-	return QWidget::isMinimized();
-}
-
-bool KviWindow::isMaximized()
-{
-	if(mdiParent())
-	{
-		return (mdiParent()->state() == KviMdiChild::Maximized);
-	}
-	return QWidget::isMaximized();
-}
-
-void KviWindow::restore()
-{
-	if(mdiParent())
-		mdiParent()->restore();
-	else
-		showNormal();
-	autoRaise();
 }
 
 void KviWindow::applyOptions()

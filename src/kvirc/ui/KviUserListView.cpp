@@ -40,7 +40,7 @@
 #include "KviUserAction.h"
 #include "KviQString.h"
 #include "KviMainWindow.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviKvsEventTriggers.h"
 #include "KviWindowToolWidget.h"
 #include "KviStringConversion.h"
@@ -1719,7 +1719,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pListView->window()->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pListView->window(), r.topLeft());
+		QPoint pnt = m_pListView->window()->isDocked() ? mapTo(g_pMainWindow, r.topLeft()) : mapTo(m_pListView->window(), r.topLeft());
 		p.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

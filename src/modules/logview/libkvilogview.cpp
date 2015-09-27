@@ -67,8 +67,6 @@ static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	{
 		g_pLogViewWindow = new LogViewWindow();
 		g_pMainWindow->addWindow(g_pLogViewWindow,!bCreateMinimized);
-		if(bCreateMinimized)
-			g_pLogViewWindow->minimize();
 		return true;
 	}
 

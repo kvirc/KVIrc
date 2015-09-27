@@ -38,7 +38,6 @@
 #include "KviModuleManager.h"
 #include "KviMemory.h"
 #include "KviMemory.h"
-#include "KviMdiChild.h"
 #include "KviChannelWindow.h"
 #include "KviPointerHashTable.h"
 
@@ -219,96 +218,6 @@ static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
 }
 
 /*
-	@doc: window.maximize
-	@type:
-		command
-	@title:
-		window.maximize
-	@short:
-		Maximizes a window
-	@syntax:
-		window.maximize [-q] [window_id]
-	@description:
-		Maximizes the window specified by window_id. If window_id is missing then
-		the current window is maximized. If the specified window was already maximized then
-		no operation is performed. If the specified window
-		does not exist a warning is printed unless the -q switch is used.
-	@seealso:
-		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd], [fnc]$window.isMaxmimized[/fnc],
-		[fnc]$window.isMinimized[/fnc]
-*/
-
-static bool window_kvs_cmd_maximize(KviKvsModuleCommandCall * c)
-{
-	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->maximize();
-	}
-	return true;
-}
-
-/*
-	@doc: window.minimize
-	@type:
-		command
-	@title:
-		window.minimize
-	@short:
-		Minimizes a window
-	@syntax:
-		window.minimize [-q] [window_id]
-	@description:
-		Minimizes the window specified by window_id. If window_id is missing then
-		the current window is minimized. If the specified window was already minimized then
-		no operation is performed. If the specified window
-		does not exist a warning is printed unless the -q switch is used.
-	@seealso:
-		[cmd]window.maximize[/cmd], [cmd]window.restore[/cmd], [fnc]$window.isMaxmimized[/fnc],
-		[fnc]$window.isMinimized[/fnc]
-*/
-
-static bool window_kvs_cmd_minimize(KviKvsModuleCommandCall * c)
-{
-	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->minimize();
-	}
-	return true;
-}
-
-/*
-	@doc: window.restore
-	@type:
-		command
-	@title:
-		window.restore
-	@short:
-		Restores a window
-	@syntax:
-		window.restore [-q] [window_id]
-	@description:
-		Restores the window specified by window_id. If window_id is missing then
-		the current window is restored. If the specified window was already restored then
-		no operation is performed. If the specified window
-		does not exist a warning is printed unless the -q switch is used.
-	@seealso:
-		[cmd]window.maximize[/cmd], [cmd]window.minimize[/cmd], [fnc]$window.isMaxmimized[/fnc],
-		[fnc]$window.isMinimized[/fnc]
-*/
-
-static bool window_kvs_cmd_restore(KviKvsModuleCommandCall * c)
-{
-	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->restore();
-	}
-	return true;
-}
-
-/*
 	@doc: window.activate
 	@type:
 		command
@@ -371,36 +280,6 @@ static bool window_kvs_cmd_demandAttention(KviKvsModuleCommandCall * c)
 	if(pWnd)
 	{
 		pWnd->demandAttention();
-	}
-	return true;
-}
-
-/*
-	@doc: window.isMaximized
-	@type:
-		function
-	@title:
-		$window.isMaximized
-	@short:
-		Checks if a window is currently maximized
-	@syntax:
-		$window.isMaximized
-		$window.isMaximized(<window_id>)
-	@description:
-		Returns 1 if the window specified by <window_id> is currently maximized and 0 otherwise.
-		The form with no parameters works on the current window. If the specified window
-		doesn't exist then 0 is returned.
-	@seealso:
-		[fnc]$window.isMinimized[/fnc], [cmd]window.maximize[/cmd],
-		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd]
-*/
-
-static bool window_kvs_fnc_isMaximized(KviKvsModuleFunctionCall * c)
-{
-	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setBoolean(pWnd->isMaximized() ? true : false);
 	}
 	return true;
 }
@@ -503,40 +382,11 @@ static bool window_kvs_fnc_isDocked(KviKvsModuleFunctionCall * c)
 	GET_KVS_FNC_WINDOW_ID
 	if(pWnd)
 	{
-		c->returnValue()->setBoolean(pWnd->mdiParent() ? true : false);
+		c->returnValue()->setBoolean(pWnd->parentWidget() ? true : false);
 	}
 	return true;
 }
 
-/*
-	@doc: window.isMinimized
-	@type:
-		function
-	@title:
-		$window.isMinimized
-	@short:
-		Checks if a window is currently minimized
-	@syntax:
-		$window.isMinimized
-		$window.isMinimized(<window_id>)
-	@description:
-		Returns 1 if the window specified by <window_id> is currently minimized and 0 otherwise.
-		The form with no parameters works on the current window. If the specified window
-		doesn't exist then 0 is returned.
-	@seealso:
-		[fnc]$window.isMaximized[/fnc], [cmd]window.maximize[/cmd],
-		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd]
-*/
-
-static bool window_kvs_fnc_isMinimized(KviKvsModuleFunctionCall * c)
-{
-	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setBoolean(pWnd->isMinimized() ? true : false);
-	}
-	return true;
-}
 
 /*
 	@doc: window.hasInput
@@ -1179,8 +1029,6 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		iFlags);
 
 	g_pMainWindow->addWindow(pWnd,!szFlags.contains('m'));
-	if(szFlags.contains('m'))
-		pWnd->minimize();
 
 	c->returnValue()->setInteger(QString(pWnd->id()).toUInt());
 	return true;
@@ -1230,11 +1078,7 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 	} else {
 		//store the window title (needed for functions that search windows by their captions)
 		((KviWindow *)pWnd)->setFixedCaption(szPlain);
-
-		if(((KviWindow *)pWnd)->mdiParent())
-			((KviWindow *)pWnd)->mdiParent()->setWindowTitle(szPlain);
-		else
-			((KviWindow *)pWnd)->setWindowTitle(szPlain);
+		((KviWindow *)pWnd)->setWindowTitle(szPlain);
 	}
 	return true;
 }
@@ -1636,6 +1480,17 @@ static bool window_kvs_fnc_cryptEngine(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+static bool window_kvs_fnc_fake(KviKvsModuleFunctionCall * c)
+{
+	return true;
+}
+
+static bool window_kvs_cmd_fake(KviKvsModuleCommandCall * c)
+{
+	qDebug("This command was removed due to structural interface changes");
+	return true;
+}
+
 static bool window_module_init(KviModule *m)
 {
 	g_pUserWindowList = new KviPointerList<UserWindow>();
@@ -1648,8 +1503,8 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_FUNCTION(m,"hasUserFocus",window_kvs_fnc_hasUserFocus);
 	KVSM_REGISTER_FUNCTION(m,"hasOutput",window_kvs_fnc_hasOutput);
 	KVSM_REGISTER_FUNCTION(m,"isDocked",window_kvs_fnc_isDocked);
-	KVSM_REGISTER_FUNCTION(m,"isMinimized",window_kvs_fnc_isMinimized);
-	KVSM_REGISTER_FUNCTION(m,"isMaximized",window_kvs_fnc_isMaximized);
+	KVSM_REGISTER_FUNCTION(m,"isMinimized",window_kvs_fnc_fake); // compat only
+	KVSM_REGISTER_FUNCTION(m,"isMaximized",window_kvs_fnc_fake); // compat only
 	KVSM_REGISTER_FUNCTION(m,"caption",window_kvs_fnc_caption);
 	KVSM_REGISTER_FUNCTION(m,"type",window_kvs_fnc_type);
 	KVSM_REGISTER_FUNCTION(m,"exists",window_kvs_fnc_exists);
@@ -1665,9 +1520,9 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearOutput",window_kvs_cmd_clearOutput);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dock",window_kvs_cmd_dock);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"undock",window_kvs_cmd_undock);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"maximize",window_kvs_cmd_maximize);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"minimize",window_kvs_cmd_minimize);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"restore",window_kvs_cmd_restore);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"minimize",window_kvs_cmd_fake);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"maximize",window_kvs_cmd_fake);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"restore",window_kvs_cmd_fake);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"activate",window_kvs_cmd_activate);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"demandAttention",window_kvs_cmd_demandAttention);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"listtypes",window_kvs_cmd_listtypes);

@@ -38,8 +38,7 @@
 #include "KviPointerList.h"
 
 class KviMenuBar;
-class KviMdiChild;
-class KviMdiManager;
+class KviWindowStack;
 class KviWindow;
 class KviConsoleWindow;
 class KviWindowListBase;
@@ -67,7 +66,7 @@ class KVIRC_API KviMainWindow : public KviTalMainWindow //, public KviIrcContext
 	friend class KviApplication;
 	friend class KviIrcServerParser;
 	friend class KviMexToolBar;
-	friend class KviMdiManager;
+	friend class KviWindowStack;
 	friend class KviIrcContext;
 	friend class KviIrcConnection;
 	friend class KviLagMeter;
@@ -81,7 +80,7 @@ protected:
 	// subwindows
 	QSplitter                             * m_pSplitter;                     // the frame is splitted vertically and thus can host widgets
 	KviMenuBar                            * m_pMenuBar;                      // the main menu bar
-	KviMdiManager                         * m_pMdi;                          // the mdi manager widget (child of the splitter)
+	KviWindowStack                         * m_pWindowStack;                          // the mdi manager widget (child of the splitter)
 	KviPointerList<KviMexToolBar>         * m_pModuleExtensionToolBarList;   // the module extension toolbars
 	KviWindowListBase                     * m_pWindowList;                   // the WindowList
 	KviStatusBar                          * m_pStatusBar;
@@ -93,7 +92,7 @@ protected:
 	KviPointerList<QShortcut>             * m_pAccellerators;                // global application accellerators
 public:
 	// the mdi manager: handles mdi children
-	KviMdiManager * mdiManager(){ return m_pMdi; };
+	KviWindowStack * windowStack(){ return m_pWindowStack; };
 	// the splitter is the central widget for this frame
 	QSplitter * splitter(){ return m_pSplitter; };
 	// KviWindowListBase is the base class for KviTreeWindowList and the KviClassicWindowList
@@ -168,12 +167,12 @@ protected:
 	void createWindowList();
 	void recreateWindowList();
 
-	KviMdiChild * dockWindow(KviWindow *wnd);
+	void dockWindow(KviWindow *wnd);
 	void undockWindow(KviWindow *wnd);
 
 	// called by KviWindow
 	void childWindowCloseRequest(KviWindow *wnd);
-	void childWindowActivated(KviWindow *wnd, bool bForce = false);
+	void windowActivated(KviWindow *wnd, bool bForce = false);
 
 	void childContextStateChange(KviIrcContext * c);
 	void childConnectionNickNameChange(KviIrcConnection * c);
@@ -201,9 +200,6 @@ protected slots:
 	void switchToNextWindowInContext();
 	void switchToPrevWindowInContext();
 
-	void maximizeWindow();
-	void minimizeWindow();
-
 	void accelActivated();
     void toolbarsPopupSelected(QAction *pAction);
 	void iconSizePopupSelected(QAction * pAction);
@@ -218,7 +214,6 @@ signals:
 	void activeConnectionServerInfoChanged();
 	void activeConnectionLagChanged();
 	void activeWindowSelectionStateChanged(bool bGotSelectionNow);
-	void signalMaximizeMdiChildWindow(KviMdiChild * lpC);
 protected:
 	void applyOptions();
 private:

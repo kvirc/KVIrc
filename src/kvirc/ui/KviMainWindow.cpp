@@ -30,8 +30,7 @@
 #include "kvi_settings.h"
 #include "KviMainWindow.h"
 #include "KviMenuBar.h"
-#include "KviMdiManager.h"
-#include "KviMdiChild.h"
+#include "KviWindowStack.h"
 #include "KviIconManager.h"
 #include "KviWindow.h"
 #include "KviWindowListBase.h"
@@ -107,6 +106,7 @@ KviMainWindow::KviMainWindow()
 	// We try to avois this as much as possible, since it forces the use of the low-res 16x16 icon
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)));
 #endif
+
 	m_pWinList  = new KviPointerList<KviWindow>;
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 	m_pWinList->setAutoDelete(false);
@@ -127,9 +127,9 @@ KviMainWindow::KviMainWindow()
 	setIconSize(KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
 	setButtonStyle(KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle));
 
-	m_pMdi      = new KviMdiManager(m_pSplitter,"mdi_manager");
+	m_pWindowStack      = new KviWindowStack(m_pSplitter,"mdi_manager");
 
-	// This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
+	// This theoretically had to exists before KviWindowStack (that uses enterSdiMode)
     m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
@@ -183,7 +183,6 @@ KviMainWindow::~KviMainWindow()
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(),pos().y(),
 			size().width(),size().height());
 
-	KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode) = m_pMdi->isInSDIMode();
 	KVI_OPTION_BOOL(KviOption_boolStatusBarVisible) = m_pStatusBar ? true : false;
 
 	KviCustomToolBarManager::instance()->storeVisibilityState();
@@ -294,8 +293,6 @@ void KviMainWindow::installAccelerators()
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_CONTEXT,this,SLOT(switchToNextWindowInContext()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT,this,SLOT(switchToPrevHighlightedWindow()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT,this,SLOT(switchToNextHighlightedWindow()),0,Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_MAXIMIZE,this,SLOT(maximizeWindow()),0,Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_MINIMIZE,this,SLOT(minimizeWindow()),0,Qt::ApplicationShortcut));
 
 	static int accel_table[] = {
 		Qt::Key_1 + Qt::ControlModifier,       // script accels...
@@ -409,20 +406,6 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 
 	g_pWinPropertiesConfig->writeEntry("IsDocked",wnd->isDocked());
 
-	if (wnd->isDocked() && wnd->mdiParent())
-	{
-		// qt4's mdi implementation allows only 1 mdichild to be maximized..
-		// so this is useless unless we want to handle the "currently maximized window" => the active window
-		g_pWinPropertiesConfig->writeEntry("IsMaximized",false);
-		if(wnd->mdiParent()->isMaximized())
-			g_pWinPropertiesConfig->writeEntry("WinRect",wnd->mdiParent()->normalGeometry());
-		else
-			g_pWinPropertiesConfig->writeEntry("WinRect",wnd->mdiParent()->frameGeometry());
-	} else {
-		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->isMaximized());
-		g_pWinPropertiesConfig->writeEntry("WinRect",wnd->frameGeometry());
-	}
-
 	wnd->saveProperties(g_pWinPropertiesConfig);
 }
 
@@ -452,11 +435,13 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 	// forget it...
 	m_pWinList->removeRef(wnd);
 
+#if 0
 	// hide it
-	if(wnd->mdiParent())
+	if(wnd->parentWidget())
 		wnd->mdiParent()->hide();
 	else
 		wnd->hide();
+#endif
 
 	if(wnd == g_pActiveWindow)
 	{
@@ -471,7 +456,7 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 			{
 				if(wnd != pOther)
 				{
-					childWindowActivated(pOther);
+					windowActivated(pOther);
 					bGotIt = true;
 					break;
 				}
@@ -492,10 +477,10 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 
 	// and shut it down...
 	// KviWindow will call childWindowDestroyed() here
-	if(wnd->mdiParent())
+	if(wnd->isDocked())
 	{
 		//this deletes the wnd, too
-		m_pMdi->destroyChild(wnd->mdiParent());
+		m_pWindowStack->destroyWindow(wnd);
 	} else {
 		delete wnd;
 	}
@@ -535,9 +520,6 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties) && !bDefaultDocking)
 	{
 		bool bDocked    = g_pWinPropertiesConfig->readBoolEntry("IsDocked",true);
-		QRect rect      = g_pWinPropertiesConfig->readRectEntry("WinRect",QRect(10,10,500,380));
-		if(!rect.isValid())
-			rect = QRect(10,10,500,380);
 
 		if(bDocked)
 		{
@@ -545,34 +527,21 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 			// this means that windows that have no specialized config group name
 			// are always cascaded : this is true for consoles, queries (and other windows) but not channels (and some other windows)
 			// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
-			KviMdiChild * lpC = dockWindow(wnd);
-			lpC->setGeometry(rect);
+			dockWindow(wnd);
 			wnd->triggerCreationEvents();
 			if(bShow)
 			{
-				m_pMdi->showAndActivate(lpC);
+				m_pWindowStack->showAndActivate(wnd);
 				// Handle the special case of this top level widget not being the active one.
 				// In this situation the child will not get the focusInEvent
-				// and thus will not call out childWindowActivated() method
+				// and thus will not call out windowActivated() method
 				if(!isActiveWindow())
-					childWindowActivated(wnd);
+					windowActivated(wnd);
 			}
 		} else {
-			bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
-
-			wnd->setGeometry(rect);
 			wnd->triggerCreationEvents();
-
 			if(bShow)
-			{
-				if(bMaximized)
-					wnd->maximize();
-			} else {
-				wnd->setWindowState(wnd->windowState() | Qt::WindowMinimized);
-				if(bMaximized)
-					wnd->setWindowState(wnd->windowState() | Qt::WindowMaximized);
-			}
-			wnd->show();
+				wnd->show();
 			wnd->youAreUndocked();
 			if(bShow)
 			{
@@ -583,20 +552,16 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 
 	} else {
 
-		KviMdiChild * lpC = dockWindow(wnd);
-		// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
-		// Emulate cascading in some way....
-		int offset = (m_pWinList->count() * 10) % 100;
-		lpC->setGeometry(offset, offset, 500, 400);
+		dockWindow(wnd);
 		wnd->triggerCreationEvents();
 		if(bShow)
 		{
-			m_pMdi->showAndActivate(lpC);
+			m_pWindowStack->showAndActivate(wnd);
 			// Handle the special case of this top level widget not being the active one.
 			// In this situation the child will not get the focusInEvent
-			// and thus will not call out childWindowActivated() method
+			// and thus will not call out windowActivated() method
 			if(!isActiveWindow())
-				childWindowActivated(wnd);
+				windowActivated(wnd);
 		}
 	}
 
@@ -609,26 +574,23 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 	}
 }
 
-KviMdiChild * KviMainWindow::dockWindow(KviWindow * wnd)
+void KviMainWindow::dockWindow(KviWindow * wnd)
 {
-	if(wnd->mdiParent())
-		return wnd->mdiParent();
+	if(wnd->parentWidget())
+		return; // already docked
 
-	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
-	lpC->setClient(wnd);
-
+	m_pWindowStack->addWindow(wnd);
 	wnd->youAreDocked();
-	m_pMdi->manageChild(lpC);
-
-	return lpC;
 }
 
 void KviMainWindow::undockWindow(KviWindow *wnd)
 {
-	if(!(wnd->mdiParent()))return;
-	KviMdiChild * lpC = wnd->mdiParent();
-	lpC->unsetClient();
-	m_pMdi->destroyChild(lpC);
+	if(!(wnd->parentWidget()))
+		return;
+
+	m_pWindowStack->removeWidget(wnd);
+	wnd->setParent(NULL);
+
 	wnd->show();
 	wnd->youAreUndocked();
 	wnd->raise();
@@ -705,11 +667,7 @@ void KviMainWindow::childWindowCloseRequest(KviWindow *wnd)
 void KviMainWindow::setActiveWindow(KviWindow *wnd)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
-	if(wnd->isMinimized())
-		wnd->restore();
-	if(wnd->mdiParent())
-		m_pMdi->showAndActivate(wnd->mdiParent());
-	else wnd->delayedAutoRaise();
+	m_pWindowStack->showAndActivate(wnd);
 }
 
 KviIrcConnection * KviMainWindow::activeConnection()
@@ -765,8 +723,11 @@ void KviMainWindow::childConnectionUserModeChange(KviIrcConnection * c)
 	emit activeConnectionUserModeChanged();
 }
 
-void KviMainWindow::childWindowActivated(KviWindow *wnd, bool bForce)
+void KviMainWindow::windowActivated(KviWindow *wnd, bool bForce)
 {
+	if(!wnd)
+		return; // this can happen?
+
 	// ASSERT(m_pWinList->findRef(wnd))
 	// unless we want to bForce the active window to be re-activated
 	if(g_pActiveWindow == wnd && !bForce)
@@ -777,6 +738,9 @@ void KviMainWindow::childWindowActivated(KviWindow *wnd, bool bForce)
 		if(g_pActiveWindow)
 			g_pActiveWindow->lostUserFocus();
 		g_pActiveWindow = wnd;
+		
+		QString szCaption = QString("%1 - %2").arg(wnd->windowTitle()).arg(KVI_DEFAULT_FRAME_CAPTION);
+		setWindowTitle(szCaption);
 	}
 
 	m_pWindowList->setActiveItem(wnd->windowListItem());
@@ -831,7 +795,7 @@ void KviMainWindow::changeEvent(QEvent * e)
 		if(isActiveWindow())
 		{
 			if(g_pActiveWindow)
-				childWindowActivated(g_pActiveWindow, true);
+				windowActivated(g_pActiveWindow, true);
 		} else {
 			if(g_pActiveWindow)
 				g_pActiveWindow->lostUserFocus();
@@ -960,7 +924,8 @@ void KviMainWindow::updatePseudoTransparency()
 			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) & ~Q_WS_EX_LAYERED);
 	}
 	#endif
-	if(g_pShadedParentGlobalDesktopBackground)m_pMdi->viewport()->update();
+	if(g_pShadedParentGlobalDesktopBackground)
+		m_pWindowStack->update();
 
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -982,7 +947,7 @@ void KviMainWindow::moveEvent(QMoveEvent *e)
 
 void KviMainWindow::applyOptions()
 {
-	m_pMdi->update();
+	m_pWindowStack->update();
 
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 		wnd->applyOptions();
@@ -1229,18 +1194,6 @@ void KviMainWindow::recreateWindowList()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Some accelerators
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void KviMainWindow::maximizeWindow(void)
-{
-	if(!g_pActiveWindow)return;
-	if(g_pActiveWindow->isMaximized())g_pActiveWindow->restore();
-	else g_pActiveWindow->maximize();
-}
-
-void KviMainWindow::minimizeWindow(void)
-{
-	if(g_pActiveWindow)g_pActiveWindow->minimize();
-}
 
 void KviMainWindow::switchToPrevWindow(void)
 {

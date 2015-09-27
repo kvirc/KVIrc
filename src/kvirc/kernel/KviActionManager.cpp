@@ -285,7 +285,7 @@ KviAction * KviActionManager::getAction(const QString &szName)
 		// so the dot is at poisition 5 (6th char)
 		// the first requested core action will trigger this
 		// the nice thing is that we will probably already have a frame when
-		// the core actions are registered thus stuff like mdiManager() can be accessed...
+		// the core actions are registered thus stuff like windowStack() can be accessed...
 		if(szName.left(5) == "kvirc")
 		{
 			register_core_actions(this);

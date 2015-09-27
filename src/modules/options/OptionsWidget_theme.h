@@ -70,18 +70,6 @@ protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea KviIconManager::Gui
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea __tr2qs_no_lookup("Workspace")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea __tr2qs_no_lookup("theme,mdi")
-#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea "theme"
-
-class OptionsWidget_themeMdiArea : public KviOptionsWidget
-{
-	Q_OBJECT
-public:
-	OptionsWidget_themeMdiArea(QWidget * parent);
-	~OptionsWidget_themeMdiArea();
-};
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets KviIconManager::Applet
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("ToolBar Applets")

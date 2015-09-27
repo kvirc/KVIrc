@@ -149,7 +149,7 @@ void NotifierWindowTab::mouseDoubleClickEvent(QMouseEvent *)
 
 	g_pNotifierWindow->hideNow();
 
-	if(m_pWnd->mdiParent())
+	if(m_pWnd->isDocked())
 	{
 		g_pMainWindow->raise();
 		g_pMainWindow->setFocus();

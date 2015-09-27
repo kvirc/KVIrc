@@ -29,7 +29,7 @@
 #include "KviMainWindow.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 
 #include <QPainter>
 #include <QStyleOptionFrameV2>
@@ -116,7 +116,7 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 		p->fillRect(r, col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, r.topLeft());
+		QPoint pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, r.topLeft()) : mapTo(m_pKviWindow, r.topLeft());
 		p->drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;

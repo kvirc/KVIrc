@@ -28,7 +28,7 @@
 #include "KviApplication.h"
 #include "KviMainWindow.h"
 #include "KviMenuBar.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviInternalCommand.h"
 #include "KviIconManager.h"
 #include "KviAction.h"
@@ -115,7 +115,7 @@ void UrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = ((KviWindow*)parent())->mdiParent() ? viewport()->mapTo(g_pMainWindow, rect.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : viewport()->mapTo((KviWindow*)parent(), rect.topLeft());
+		QPoint pnt = ((KviWindow*)parent())->isDocked() ? viewport()->mapTo(g_pMainWindow, rect.topLeft()) : viewport()->mapTo((KviWindow*)parent(), rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -270,7 +270,7 @@ void UrlDialog::findtext()
 			KviWindow *wnd = m_pFrm->findWindow(tmp->window.ptr());
 			if (wnd) {
 				if (kvirc_plugin_execute_command(wnd,ft.ptr())) {
-					if (wnd->mdiParent()) m_pFrm->m_pMdi->setTopChild(wnd->mdiParent(),true);
+					if (wnd->mdiParent()) m_pFrm->m_pWindowStack->setTopChild(wnd->mdiParent(),true);
 				}
 			} else kvirc_plugin_warning_box(__tr("Window not found"));
 		}

@@ -439,20 +439,14 @@ defpopup(windowpopup)
 		}
 	}
 
-	item($tr("Minimize","defscript"),3) (!$window.isMinimized())
+	label($window.caption);
+
+	item($tr("Close","defscript"),1)
 	{
-		window.minimize
+		window.close
 	}
 
-	item($tr("Maximize","defscript"),2) (!$window.isMaximized())
-	{
-		window.maximize
-	}
-
-	item($tr("Restore","defscript"),4) ($window.isMinimized() || $window.isMaximized())
-	{
-		window.restore
-	}
+	separator
 
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
@@ -462,13 +456,6 @@ defpopup(windowpopup)
 	item($tr("Undock","defscript"),7) ($window.isDocked())
 	{
 		window.undock
-	}
-
-	separator
-
-	item($tr("Close","defscript"),1)
-	{
-		window.close
 	}
 
 	separator

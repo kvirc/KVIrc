@@ -66,12 +66,12 @@
 		Ptr 23786128: top level object: kvirc_frame, class KviMainWindow, visible, rect = 1678, -3, 1680, 1030
 		>Ptr 23496976: object: qt_rubberband, class QRubberBand
 		>Ptr 23536608: object: main_frame_splitter, class QSplitter
-		>>Ptr 23795232: object: mdi_manager, class KviMdiManager
+		>>Ptr 23795232: object: mdi_manager, class KviWindowStack
 		>>>Ptr 23863200: object: qt_scrollarea_hcontainer, class QWidget
 		>>>>Ptr 23418224: object: , class QScrollBar
 		>>>Ptr 23864832: object: qt_scrollarea_vcontainer, class QWidget
 		>>>>Ptr 22383424: object: , class QScrollBar
-		>>Ptr 25750832: object: mdi_manager, class KviMdiManager
+		>>Ptr 25750832: object: mdi_manager, class KviWindowStack
 		>>>Ptr 26112928: object: , class QWidget
 		>>>>Ptr 45381568: object: , class Oxygen::MdiWindowShadow
 		>>>>Ptr 45952496: object: mdi_child_Azzurra_#kvirc, class KviMdiChild
@@ -128,7 +128,7 @@
 		between children that have the same class. For instance:
 		[/p]
 		[example]
-		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviMdiManager,QWidget::qt_scrollarea_vcontainer,QScrollBar)
+		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,QWidget::qt_scrollarea_vcontainer,QScrollBar)
 		%VerticalScrollBar->$setProperty(invertedAppearance,1);
 		[/example]
 		[p]
@@ -139,7 +139,7 @@
 		The form (3) matches only the name and ignores the class. In our sample tree the following example is equivalent to the previous one.
 		[/p]
 		[example]
-		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviMdiManager,::qt_scrollarea_vcontainer,QScrollBar)
+		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,::qt_scrollarea_vcontainer,QScrollBar)
 		%VerticalScrollBar->$setProperty(invertedAppearance,1);
 		[/example]
 		[p]

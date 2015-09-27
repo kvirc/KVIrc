@@ -108,8 +108,6 @@
 * \def KVI_SHORTCUTS_EDITORS_TESTER Open Script tester
 * \def KVI_SHORTCUTS_EDITORS_TOOLBAR Open "Manage Toolbars" dialog
 *
-* \def KVI_SHORTCUTS_WIN_MAXIMIZE Maximizes current window
-* \def KVI_SHORTCUTS_WIN_MINIMIZE Minimizes current window
 * \def KVI_SHORTCUTS_WIN_NEXT Next window
 * \def KVI_SHORTCUTS_WIN_NEXT_CONTEXT Next window in the same IRC context
 * \def KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Next highlighted window
@@ -172,8 +170,6 @@
 #define KVI_SHORTCUTS_WIN_NEXT_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
 #define KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Qt::AltModifier + Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Qt::AltModifier + Qt::Key_PageDown
-#define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::ControlModifier + Qt::Key_Up
-#define KVI_SHORTCUTS_WIN_MINIMIZE Qt::ControlModifier + Qt::Key_Down
 #define KVI_SHORTCUTS_WIN_PREV_PAGE QKeySequence::MoveToPreviousPage		// Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_PAGE QKeySequence::MoveToNextPage		// Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_PREV_LINE Qt::ShiftModifier + Qt::Key_PageUp

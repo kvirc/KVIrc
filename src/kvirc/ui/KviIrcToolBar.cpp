@@ -40,7 +40,7 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcContext.h"
 #include "KviLagMeter.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviPixmapUtils.h"
 
 #include <QStyle>
@@ -144,7 +144,7 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *)
 		pa.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pMainWindow, rect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset());
+		QPoint pnt = mapTo(g_pMainWindow, rect().topLeft());
 		pa.drawTiledPixmap(rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

@@ -29,12 +29,13 @@
 #include "KviMainWindow.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 
 #include <QPainter>
 #include <QLineEdit>
 #include <QStyleOptionFrameV2>
 #include <QStyleFactory>
+#include <QKeyEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -133,7 +134,7 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 		p->fillRect(contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, contentsRect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
+		QPoint pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, contentsRect().topLeft()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;

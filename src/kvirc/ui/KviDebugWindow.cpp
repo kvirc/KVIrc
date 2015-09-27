@@ -62,8 +62,8 @@ KviDebugWindow * KviDebugWindow::getInstance()
 	if(m_pInstance)return m_pInstance;
 	m_pInstance = new KviDebugWindow();
 	g_pMainWindow->addWindow(m_pInstance,!KVI_OPTION_BOOL(KviOption_boolShowMinimizedDebugWindow));
-	if(KVI_OPTION_BOOL(KviOption_boolShowMinimizedDebugWindow))
-		m_pInstance->minimize();
+	//if(KVI_OPTION_BOOL(KviOption_boolShowMinimizedDebugWindow))
+	//	m_pInstance->minimize();
 	return m_pInstance;
 }
 

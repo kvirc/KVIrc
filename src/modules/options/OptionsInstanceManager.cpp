@@ -400,11 +400,6 @@ KviOptionsWidget * classOptionsWidget_themeTransparency_createInstanceProc(QWidg
 	return new OptionsWidget_themeTransparency(parent);
 }
 
-KviOptionsWidget * classOptionsWidget_themeMdiArea_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_themeMdiArea(parent);
-}
-
 KviOptionsWidget * classOptionsWidget_themeToolBarApplets_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_themeToolBarApplets(parent);
@@ -622,8 +617,6 @@ static const char * g_szName_OptionsWidget_theme = KVI_OPTIONS_WIDGET_NAME_Optio
 static const char * g_szClassName_OptionsWidget_theme = "OptionsWidget_theme";
 static const char * g_szName_OptionsWidget_themeTransparency = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeTransparency;
 static const char * g_szClassName_OptionsWidget_themeTransparency = "OptionsWidget_themeTransparency";
-static const char * g_szName_OptionsWidget_themeMdiArea = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea;
-static const char * g_szClassName_OptionsWidget_themeMdiArea = "OptionsWidget_themeMdiArea";
 static const char * g_szName_OptionsWidget_themeToolBarApplets = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets;
 static const char * g_szClassName_OptionsWidget_themeToolBarApplets = "OptionsWidget_themeToolBarApplets";
 static const char * g_szName_OptionsWidget_tools = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tools;
@@ -3188,42 +3181,6 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classOptionsWidget_themeMdiArea_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_OptionsWidget_themeMdiArea;
-	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeMdiArea
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeMdiArea;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea;
-	#else
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea;
-	#endif
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeMdiArea
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeMdiArea;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeMdiArea
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeMdiArea;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_OptionsWidget_themeMdiArea;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_themeMdiArea,"options");
-	m_pInstanceTree->append(e0);
-	e0->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
 	e0->createProc = &classOptionsWidget_themeToolBarApplets_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_themeToolBarApplets;
@@ -3858,3 +3815,4 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 {
 	return findInstanceEntry(pcName,m_pInstanceTree);
 }
+

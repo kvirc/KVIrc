@@ -65,7 +65,7 @@ static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	{
 		g_pSharedFilesWindow = new SharedFilesWindow();
 		g_pMainWindow->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
-		if(bCreateMinimized)g_pSharedFilesWindow->minimize();
+		//if(bCreateMinimized)g_pSharedFilesWindow->minimize();
 		return true;
 	}
 

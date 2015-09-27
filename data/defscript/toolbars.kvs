@@ -37,7 +37,3 @@ toolbar.additem scripting kvirc.codetester
 toolbar.additem scripting kvirc.separator
 toolbar.additem scripting kvirc.executekvs
 
-toolbar.create winops $tr("Window operations","defscript") $icon("cascadewindows")
-toolbar.additem winops kvirc.cascadewindows
-toolbar.additem winops kvirc.tilewindows
-toolbar.additem winops kvirc.minimizeallwindows

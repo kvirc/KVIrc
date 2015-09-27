@@ -29,11 +29,12 @@
 #include "KviMainWindow.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 
 #include <QPainter>
 #include <QStyleOptionFrameV2>
 #include <QStyleFactory>
+#include <QPaintEvent>
 
 #if (QT_VERSION >= 0x050000)
 	#include <qdrawutil.h> // qDrawShadePanel
@@ -139,7 +140,7 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	{
 		QPoint pnt;
 		if(m_pKviWindow)
-			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, r.topLeft());
+			pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, r.topLeft()) : mapTo(m_pKviWindow, r.topLeft());
 		else
 			pnt = mapToGlobal(event->rect().topLeft());
 		p->drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);

@@ -37,7 +37,7 @@
 #include "KviKvsKernel.h"
 #include "KviKvsArrayCast.h"
 #include "KviLocale.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "KviPixmapUtils.h"
@@ -302,7 +302,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, cr.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, cr.topLeft());
+		QPoint pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, cr.topLeft()) : mapTo(m_pKviWindow, cr.topLeft());
 		p.drawTiledPixmap(cr,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

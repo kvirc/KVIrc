@@ -49,13 +49,13 @@ KviModule * g_pTermModule = 0;
 	@short:
 		Shows a terminal emulator
 	@syntax:
-		term.open [-m]
+		term.open [-d]
 	@switches:
-		!sw: -m | --mdi
-		creates terminal as a MDI window
+		!sw: -d | --dockable
+		creates terminal as a docked window
 	@description:
 		Opens a new terminal window (If the service is available).
-		if the -m switch is present, the created terminal as a MDI window,
+		if the -m switch is present, the created terminal as a dockable kvirc window,
 		otherwise it is a static window.[br]
 		This command is exported by the "term" module.[br]
 		Note: At the time that this module was written, the
@@ -67,7 +67,10 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 #ifdef COMPILE_KDE4_SUPPORT
 	c->module()->lock(); // multiple locks are allowed
-	if(c->hasSwitch('m',"mdi"))
+	if(
+			c->hasSwitch('m',"mdi") || // compat only
+			c->hasSwitch('d',"dockable")
+		)
 	{
 		TermWindow *w = new TermWindow("Terminal emulator");
 		g_pMainWindow->addWindow(w);

@@ -27,7 +27,7 @@
 #include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 #include "KviIconManager.h"
 #include "KviInternalCommand.h"
 #include "kvi_settings.h"
@@ -89,7 +89,7 @@ KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(updateSettingsPopup()));
 	addDefaultItem(__tr2qs("&Settings"),pop);
 
-	addDefaultItem(__tr2qs("&Window"),par->mdiManager()->windowPopup());
+	addDefaultItem(__tr2qs("&Window"),par->windowStack()->windowPopup());
 
 	pop = new QMenu("help",this);
 	setupHelpPopup(pop);

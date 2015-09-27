@@ -339,7 +339,6 @@ void DccBroker::executeChat(DccDialog *box,DccDescriptor * dcc)
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChatWhenAutoAccepted)));
 
 	g_pMainWindow->addWindow(chat,!bMinimized);
-	if(bMinimized)chat->minimize();
 	m_pDccWindowList->append(chat);
 }
 
@@ -390,7 +389,6 @@ void DccBroker::activeVoiceExecute(DccDialog *box,DccDescriptor * dcc)
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted)));
 
 	g_pMainWindow->addWindow(v,!bMinimized);
-	if(bMinimized)v->minimize();
 
 	m_pDccWindowList->append(v);
 }
@@ -407,7 +405,6 @@ void DccBroker::passiveVoiceExecute(DccDescriptor * dcc)
 	//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
 	g_pMainWindow->addWindow(v,!bMinimized);
-	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
 }
 
@@ -460,7 +457,6 @@ void DccBroker::activeVideoExecute(DccDialog *box,DccDescriptor * dcc)
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted)));
 
 	g_pMainWindow->addWindow(v,!bMinimized);
-	if(bMinimized)v->minimize();
 
 	m_pDccWindowList->append(v);
 #else
@@ -482,7 +478,6 @@ void DccBroker::passiveVideoExecute(DccDescriptor * dcc)
 	//#warning "Create minimized dcc video ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
 	g_pMainWindow->addWindow(v,!bMinimized);
-	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
 #else
 void DccBroker::passiveVideoExecute(DccDescriptor *)
@@ -542,7 +537,6 @@ void DccBroker::activeCanvasExecute(DccDialog *box,DccDescriptor * dcc)
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChatWhenAutoAccepted)));
 
 	g_pMainWindow->addWindow(cnv,!bMinimized);
-	if(bMinimized)cnv->minimize();
 
 	m_pDccWindowList->append(cnv);
 #else
@@ -562,7 +556,6 @@ void DccBroker::passiveCanvasExecute(DccDescriptor * dcc)
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
 	g_pMainWindow->addWindow(cnv,!bMinimized);
-	if(bMinimized)cnv->minimize();
 	m_pDccWindowList->append(cnv);
 }
 #endif

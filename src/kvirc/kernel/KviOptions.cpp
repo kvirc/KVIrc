@@ -204,7 +204,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("VerboseIgnore",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("EnableIgnoreOnNotice",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("NotifyFailedDccHandshakes",true,KviOption_sectFlagDcc),
-	BOOL_OPTION("AutoTileWindows",false,KviOption_sectFlagMdi),
+	BOOL_OPTION("Unused00001",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("DrawEmoticons",true,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("IgnoreCtcpPage",false,KviOption_sectFlagCtcp),
 	BOOL_OPTION("ShowDialogOnCtcpPage",true,KviOption_sectFlagCtcp),
@@ -227,7 +227,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("HighlightOnlyNormalMsgQueryToo",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsgNickinChanToo",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyAtCustomHighlightLevel",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("MdiManagerInSdiMode",true,KviOption_sectFlagFrame),
+	BOOL_OPTION("Unused00000",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("DccBrokenBouncerHack",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("ExternalMessagesToActiveWindow",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("IgnoreChannelAvatarRequestsWhenNoAvatarSet",true,KviOption_sectFlagAvatar),
@@ -470,7 +470,7 @@ KviColorOption g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS]=
 
 KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 {
-	COLOR_OPTION("MdiBackground",0,0,0,255,KviOption_sectFlagMdi),
+	COLOR_OPTION("Unused00000",0,0,0,255,KviOption_sectFlagFrame),
 	COLOR_OPTION("WindowListNormalText",0,0,0,255,KviOption_sectFlagWindowList),
 	COLOR_OPTION("WindowListMinimizedText",60,60,60,255,KviOption_sectFlagWindowList),
 	COLOR_OPTION("WindowListHighlight1Text",0,16,144,255,KviOption_sectFlagWindowList),
@@ -553,7 +553,7 @@ KviColorOption g_iccolorOptionsTable[KVI_NUM_ICCOLOR_OPTIONS]=
 
 KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 {
-	PIXMAP_OPTION("MdiBackground",KviOption_sectFlagMdi | KviOption_groupTheme),
+	PIXMAP_OPTION("Unused00000",KviOption_sectFlagFrame | KviOption_groupTheme),
 	PIXMAP_OPTION("IrcViewBackground",KviOption_sectFlagIrcView | KviOption_groupTheme),
 	PIXMAP_OPTION("InputBackground",KviOption_sectFlagInput | KviOption_groupTheme),
 	PIXMAP_OPTION("UserListViewBackground",KviOption_sectFlagUserListView | KviOption_groupTheme),

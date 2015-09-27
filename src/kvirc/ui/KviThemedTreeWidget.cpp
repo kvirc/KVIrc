@@ -29,7 +29,7 @@
 #include "KviMainWindow.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
-#include "KviMdiManager.h"
+#include "KviWindowStack.h"
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -81,7 +81,7 @@ void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 		p->fillRect(viewport()->contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? viewport()->mapTo(g_pMainWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(m_pKviWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft());
+		QPoint pnt = m_pKviWindow->isDocked() ? viewport()->mapTo(g_pMainWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft()) : viewport()->mapTo(m_pKviWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;

@@ -40,12 +40,6 @@
 #include "KviTalSplitter.h"
 #include "KviIconManager.h"
 
-#ifdef COMPILE_ON_WINDOWS
-	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
-	#include "KviMdiChild.h"
-#else
-	class KviMdiChild;
-#endif
 
 #include <QFrame>
 #include <QWidget>
@@ -82,6 +76,7 @@ class KVIRC_API KviWindow : public QWidget
 {
 	friend class KviInput;
 	friend class KviMainWindow;
+	friend class KviWindowStack;
 	friend class KviWindowListItem;
 	friend class KviWindowListButton;
 	friend class KviTreeWindowListItem;
@@ -281,14 +276,6 @@ public:
 	inline KviIrcView * view() const { return m_pIrcView; };
 
 	/**
-	* \brief Returns the mdiParent widget
-	*
-	* May be nulll if the window is undocked
-	* \return KviMdiChild *
-	*/
-	inline KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
-
-	/**
 	* \brief Returns the console that this window belongs to
 	*
 	* May be null for windows that aren't bound to irc contexts
@@ -370,9 +357,8 @@ public:
 	void contextPopup();
 	// Raises the window (after a light delay to prevent focus pingpongs)
 	void delayedAutoRaise();
-	// Window state: might work :D
-	bool isMinimized();
-	bool isMaximized();
+
+
 	// Retrieves the default log file name: this is pre-build
 	void getDefaultLogFileName(QString & szBuffer);
 
@@ -487,9 +473,6 @@ public slots:
 	void dock();
 	void undock();
 	void autoRaise();
-	void maximize();
-	void minimize();
-	void restore();
 	void reloadImages();
 	void savePropertiesAsDefault();
 protected slots:
