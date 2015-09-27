@@ -415,6 +415,9 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"thumbdown",           // 329
 	"thumbup",             // 330
 	"facepalm"             // 331
+	"identity"             // 332
+	"nickpopup"            // 333
+	"tools"                // 334
 
 };
 
@@ -943,6 +946,9 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 329: return KviIconManager::ThumbDown;            break;
 		case 330: return KviIconManager::ThumbUp;              break;
 		case 331: return KviIconManager::FacePalm;             break;
+		case 332: return KviIconManager::Identity;             break;
+		case 333: return KviIconManager::NickPopup;            break;
+		case 334: return KviIconManager::Tools;                break;
 		case   0:
 		case KviIconManager::IconCount:
 		default: return KviIconManager::None;                  break;
