@@ -60,8 +60,8 @@
   If you feel brave try:
 
       $ cd <kvirc_source_directory>
-      $ mkdir release
-      $ cd release
+      $ mkdir build
+      $ cd build
       $ ccmake ..
       $ make
       $ sudo make install
@@ -321,13 +321,13 @@
   without dirtying the sources directory.
 
       $ cd /home/setup
-      $ mkdir release
+      $ mkdir build
 
   In this way you have just created an out-of-source environment which is
   clean at the beginning and can be changed afterwards, as well as a clean
   source directory.
 
-      $ cd release
+      $ cd build
       $ cmake [your options] ..
 
   Note: The two trailing dots are required when you build out-of-source.
@@ -560,8 +560,8 @@
   Again, we encourage the "out-of-source" building: build all files
   without dirtying the sources directory.
 
-      $ mkdir release
-      $ cd release
+      $ mkdir build
+      $ cd build
       $ ccmake ..
 
   Now you're in interactive mode, just follow the instructions on screen
