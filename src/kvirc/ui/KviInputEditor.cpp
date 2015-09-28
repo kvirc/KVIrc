@@ -75,6 +75,10 @@
 	#include <qdrawutil.h> // qDrawShadePanel
 #endif
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <windows.h>
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+
 // from KviApplication.cpp
 extern QMenu * g_pInputPopup;
 extern KviTextIconWindow       * g_pTextIconWindow;
@@ -128,6 +132,12 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
+
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	SystemParametersInfo(SPI_GETCARETWIDTH, 0, &m_iCursorWidth, 0);
+#else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+	m_iCursorWidth = 1;
+#endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	// this should be removed as soon as Qt fixes this bug (>W8)
@@ -736,9 +746,7 @@ void KviInputEditor::drawContents(QPainter * p)
 		p->setClipping(false);
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorInputCursor));
 		//p->drawLine(m_iLastCursorXPosition,iTop,m_iLastCursorXPosition,iBottom);
-		p->fillRect(m_iLastCursorXPosition,iTop,2,iBottom - iTop,KVI_OPTION_COLOR(KviOption_colorInputCursor));
-		p->fillRect(m_iLastCursorXPosition-1,iTop,4,2,KVI_OPTION_COLOR(KviOption_colorInputCursor));
-		p->fillRect(m_iLastCursorXPosition-1,iBottom-1,4,2,KVI_OPTION_COLOR(KviOption_colorInputCursor));
+		p->fillRect(m_iLastCursorXPosition,iTop,m_iCursorWidth,iBottom - iTop,KVI_OPTION_COLOR(KviOption_colorInputCursor));
 		p->setClipping(true);
 	}// else {
 	//	p->setPen(KVI_OPTION_COLOR(KviOption_colorInputForeground));

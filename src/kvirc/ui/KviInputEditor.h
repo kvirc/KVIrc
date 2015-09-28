@@ -120,6 +120,7 @@ protected:
 	int                       m_iSelectionEnd;
 	int                       m_iMaxBufferSize;
 	bool                      m_bSpSlowFlag; // <-- what is this ?
+	int                       m_iCursorWidth;
 
 	// members for supporting input methods
 	QString                   m_szIMText;
