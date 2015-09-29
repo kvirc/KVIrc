@@ -114,8 +114,8 @@ used by Apple when they built the python package.
 
 I suggest an "out-of-source" build:
 
-	# mkdir release
-	# cd release
+	# mkdir build
+	# cd build
 	# cmake ..
 	# make
 	# make install
