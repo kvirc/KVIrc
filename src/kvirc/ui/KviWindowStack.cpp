@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : KviWindowStack.cpp
-//   Creation date : Wed Jun 21 2000 17:28:04 by Szymon Stefanek
+//   Creation date : Mon Sep 28 2015 17:28:04 by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)
