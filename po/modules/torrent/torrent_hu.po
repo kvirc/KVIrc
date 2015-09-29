@@ -1,76 +1,69 @@
-# translation of torrent_hu.po to hungarian
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Ádám Fibinger <vfiber@interware.hu>, 2007, 2008.
-# Adam Fibinger <vfiber[at]gmaildotcom>, 2010.
+# 
+# Translators:
+# Adam Fibinger <vfiber[at]gmaildotcom>, 2010
+# Ádám Fibinger <vfiber@interware.hu>, 2007-2008
 msgid ""
 msgstr ""
-"Project-Id-Version: torrent_hu\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2010-08-20 15:44+0200\n"
-"Last-Translator: Adam Fibinger <vfiber[at]gmaildotcom>\n"
-"Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
-"Language: hu\n"
+"POT-Creation-Date: 2015-09-29 16:23+0200\n"
+"PO-Revision-Date: 2015-08-01 12:03+0000\n"
+"Last-Translator: fiber <vfiber@gmail.com>\n"
+"Language-Team: Hungarian (http://www.transifex.com/kvirc/KVIrc/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
-msgstr ""
-"Egy kezelőfelület a KDE kitűnő KTorrent klienséhez.\n"
-"Letölthető a http://www.ktorrent.org címről.\n"
+msgstr "Egy kezelőfelület a KDE kitűnő KTorrent klienséhez.\nLetölthető a http://www.ktorrent.org címről.\n"
+
+#: src/modules/torrent/libkvitorrent.cpp:62
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr " \"%Q\" tesztelése: %d pont"
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Torrent kliens interfészének kiválasztása: \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:722
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Helytelen kliens interfész: \"%Q\""
-
-#: src/modules/torrent/libkvitorrent.cpp:129
-msgid "Last interface error: "
-msgstr "Utolsó interfész hiba:"
-
-#: src/modules/torrent/StatusBarApplet.cpp:92
-msgid "No client selected!"
-msgstr "Nincs kliens kiválasztva!"
+#: src/modules/torrent/libkvitorrent.cpp:109
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Úgy néz ki nincs torrent kliens telepítve ezen a számítógépen"
 
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Nincs torrent kliens kiválasztva. Próbáld a /torrent.detect parancsot."
 
-#: src/modules/torrent/libkvitorrent.cpp:109
-msgid "Seems that there is no usable torrent client on this machine"
-msgstr "Úgy néz ki nincs torrent kliens telepítve ezen a számítógépen"
-
 #: src/modules/torrent/libkvitorrent.cpp:128
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
-msgstr ""
-"A kiválasztott torrent kliens interfész nem tudta végrehajtani a kért "
-"műveletet"
+msgstr "A kiválasztott torrent kliens interfész nem tudta végrehajtani a kért műveletet"
+
+#: src/modules/torrent/libkvitorrent.cpp:129
+msgid "Last interface error: "
+msgstr "Utolsó interfész hiba:"
+
+#: src/modules/torrent/libkvitorrent.cpp:714
+msgid "Using client interface \"%Q\"."
+msgstr "Kliens interfészének kiválasztása: \"%Q\""
+
+#: src/modules/torrent/libkvitorrent.cpp:722
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Helytelen kliens interfész: \"%Q\""
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
 #: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Torrent Kliens"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr " \"%Q\" tesztelése: %d pont"
-
-#: src/modules/torrent/libkvitorrent.cpp:714
-msgid "Using client interface \"%Q\"."
-msgstr "Kliens interfészének kiválasztása: \"%Q\""
-
-#~ msgid "Index out of range: %d [0-%d]!"
-#~ msgstr "Az index értékhatáron túli: %d [0-%d]!"
+#: src/modules/torrent/StatusBarApplet.cpp:92
+msgid "No client selected!"
+msgstr "Nincs kliens kiválasztva!"

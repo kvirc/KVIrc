@@ -1,108 +1,105 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.3.1\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2012-06-24 21:20+0100\n"
-"Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
-"Language: Esperanto\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 09:50+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Esperanto (http://www.transifex.com/kvirc/KVIrc/language/eo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/about/AboutDialog.cpp:108
-msgid "About"
-msgstr "Pri"
+"Language: eo\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/about/AboutDialog.cpp:79
 msgid "About KVIrc..."
 msgstr "Pri KVirc..."
 
-#: src/modules/about/AboutDialog.cpp:136
-msgid "Architecture"
-msgstr "Arĥitekturo"
-
-#: src/modules/about/AboutDialog.cpp:163
-msgid "Build Command"
-msgstr "Komando por Konstrui"
-
-#: src/modules/about/AboutDialog.cpp:143
-msgid "Build Date"
-msgstr "Dato de Konstruo"
-
-#: src/modules/about/AboutDialog.cpp:167
-msgid "Build Flags"
-msgstr "Flagoj por la Konstruo"
-
-#: src/modules/about/AboutDialog.cpp:141
-msgid "Build Info"
-msgstr "Informo pri la Konstruo"
-
-#: src/modules/about/AboutDialog.cpp:159
-msgid "CPU Name"
-msgstr "Ĉefprocesora Nomo"
-
 #: src/modules/about/AboutDialog.cpp:80
 msgid "Close"
 msgstr "Fermi"
-
-#: src/modules/about/AboutDialog.cpp:176
-msgid "Compiler Flags"
-msgstr "Kompililaj Flagoj"
-
-#: src/modules/about/AboutDialog.cpp:172
-msgid "Compiler Name"
-msgstr "Kompilila Nomo"
-
-#: src/modules/about/AboutDialog.cpp:182
-msgid "Executable Information"
-msgstr "Rulebla Informo"
 
 #: src/modules/about/AboutDialog.cpp:102
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr "Forĝita de la <b>KVIrc Evoluiga Teamo</b>"
 
-#: src/modules/about/AboutDialog.cpp:195
-msgid "Honor && Glory"
-msgstr "Honoro && Gloro"
-
-#: src/modules/about/AboutDialog.cpp:221
-msgid "License"
-msgstr "Permesilo"
-
-#: src/modules/about/AboutDialog.cpp:214
-msgid ""
-"Oops... Can't find the license file...\n"
-"It MUST be included in the distribution...\n"
-"Please report to <pragma at kvirc dot net>"
-msgstr ""
-"Ho Ve...Mi ne povas trovi la permesilan dosieron...\n"
-"Ĝi DEVAS esti inkuzivita en la distribuo...\n"
-"Bonvolu raporti al <pragma ĉe kvirc punkto net>"
-
-#: src/modules/about/AboutDialog.cpp:151
-msgid "Revision Number"
-msgstr "Numero de la Revizio"
+#: src/modules/about/AboutDialog.cpp:108
+msgid "About"
+msgstr "Pri"
 
 #: src/modules/about/AboutDialog.cpp:122
 msgid "Runtime Info"
 msgstr "Rultempa Informo"
 
-#: src/modules/about/AboutDialog.cpp:147
-msgid "Sources Date"
-msgstr "Dato de la Fontoj"
-
-#: src/modules/about/AboutDialog.cpp:124
-#: src/modules/about/AboutDialog.cpp:155
+#: src/modules/about/AboutDialog.cpp:124 src/modules/about/AboutDialog.cpp:155
 msgid "System Name"
 msgstr "Sistema Nomo"
 
 #: src/modules/about/AboutDialog.cpp:132
 msgid "System Version"
 msgstr "Sistema Versio"
+
+#: src/modules/about/AboutDialog.cpp:136
+msgid "Architecture"
+msgstr "Arĥitekturo"
+
+#: src/modules/about/AboutDialog.cpp:141
+msgid "Build Info"
+msgstr "Informo pri la Konstruo"
+
+#: src/modules/about/AboutDialog.cpp:143
+msgid "Build Date"
+msgstr "Dato de Konstruo"
+
+#: src/modules/about/AboutDialog.cpp:147
+msgid "Sources Date"
+msgstr "Dato de la Fontoj"
+
+#: src/modules/about/AboutDialog.cpp:151
+msgid "Revision Number"
+msgstr "Numero de la Revizio"
+
+#: src/modules/about/AboutDialog.cpp:159
+msgid "CPU Name"
+msgstr "Ĉefprocesora Nomo"
+
+#: src/modules/about/AboutDialog.cpp:163
+msgid "Build Command"
+msgstr "Komando por Konstrui"
+
+#: src/modules/about/AboutDialog.cpp:167
+msgid "Build Flags"
+msgstr "Flagoj por la Konstruo"
+
+#: src/modules/about/AboutDialog.cpp:172
+msgid "Compiler Name"
+msgstr "Kompilila Nomo"
+
+#: src/modules/about/AboutDialog.cpp:176
+msgid "Compiler Flags"
+msgstr "Kompililaj Flagoj"
+
+#: src/modules/about/AboutDialog.cpp:182
+msgid "Executable Information"
+msgstr "Rulebla Informo"
+
+#: src/modules/about/AboutDialog.cpp:195
+msgid "Honor && Glory"
+msgstr "Honoro && Gloro"
+
+#: src/modules/about/AboutDialog.cpp:214
+msgid ""
+"Oops... Can't find the license file...\n"
+"It MUST be included in the distribution...\n"
+"Please report to <pragma at kvirc dot net>"
+msgstr "Ho Ve...Mi ne povas trovi la permesilan dosieron...\nĜi DEVAS esti inkuzivita en la distribuo...\nBonvolu raporti al <pragma ĉe kvirc punkto net>"
+
+#: src/modules/about/AboutDialog.cpp:221
+msgid "License"
+msgstr "Permesilo"

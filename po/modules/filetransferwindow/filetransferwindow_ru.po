@@ -1,40 +1,42 @@
-# translation of filetransferwindow_ru.po to russian
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-#
-# Valerius <valeragir@mail.ru>, 2004.
-# Valeriy Girchenko <valeragir@mail.ru>, 2005.
-# root <wizard@opendoor.ru>, 2006.
-# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
-# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011.
+# 
+# Translators:
+# Alexey "DarthGandalf" Sokolov <alexey shift-2 alexeysokolov co cc>, 2011
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
+# root <wizard@opendoor.ru>, 2006
+# Valerius <valeragir@mail.ru>, 2004
+# Valeriy Girchenko <valeragir@mail.ru>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: filetransferwindow_ru\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-06-06 02:00+0700\n"
-"Last-Translator: Alexey \"DarthGandalf\" Sokolov <alexey shift-2 "
-"alexeysokolov co cc>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:01+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/kvirc/KVIrc/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
-msgid "&Clear Terminated"
-msgstr "Очистить &завершённые"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
+msgid "Type"
+msgstr "Тип"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
-msgid "&Copy Path to Clipboard"
-msgstr "&Копировать путь в буфер обмена"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
+msgid "Information"
+msgstr "Информация"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
-msgid "&Delete file"
-msgstr "&Удалить файл"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
+msgid "Progress"
+msgstr "Прогресс"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
+msgid "Size: %1"
+msgstr "Размер: %1"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:450
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:482
@@ -45,86 +47,82 @@ msgstr "&Открыть"
 msgid "&Other..."
 msgstr "&Прочее..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
-msgid "Clear &All"
-msgstr "Очистить &все"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "Clear All Transfers? - KVIrc"
-msgstr "Очистить все передачи? - KVIrc"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
-msgid "Clear all transfers, including any in progress?"
-msgstr "Очистить все передачи, включая не завершённые?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
-msgid "Confirm delete"
-msgstr "Подтвердите удаление"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
-msgid "Delete failed"
-msgstr "Ошибка удаления"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
-msgid "Do you really want to delete the file %1?"
-msgstr "Вы действительно хотите удалить файл %1 ?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
-msgid "Failed to remove the file"
-msgstr "Невозможно удалить файл"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
-msgid "File Transfers"
-msgstr "Передачи файлов"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
-msgid "Information"
-msgstr "Информация"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
-msgid "Local &File"
-msgstr "Локальный &файл"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
-msgid "MS-DOS Prompt at Location"
-msgstr "Открыть командную строку в папке назначения"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "No"
-msgstr "Нет"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
-msgid "OK"
-msgstr "Ок"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
+msgid "Open &With"
+msgstr "Открыть &как"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:475
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:487
 msgid "Open &Location"
 msgstr "Открыть &папку"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
-msgid "Open &With"
-msgstr "Открыть &как"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
-msgid "Progress"
-msgstr "Прогресс"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
-msgid "Size: %1"
-msgstr "Размер: %1"
-
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:476
 msgid "Terminal at Location"
 msgstr "Открыть терминал в папке назначения"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
-msgid "Type"
-msgstr "Тип"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
+msgid "MS-DOS Prompt at Location"
+msgstr "Открыть командную строку в папке назначения"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
+msgid "&Copy Path to Clipboard"
+msgstr "&Копировать путь в буфер обмена"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
+msgid "&Delete file"
+msgstr "&Удалить файл"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
+msgid "Local &File"
+msgstr "Локальный &файл"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
+msgid "&Clear Terminated"
+msgstr "Очистить &завершённые"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
+msgid "Clear &All"
+msgstr "Очистить &все"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
+msgid "Do you really want to delete the file %1?"
+msgstr "Вы действительно хотите удалить файл %1 ?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
+msgid "Confirm delete"
+msgstr "Подтвердите удаление"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:627
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:793
 msgid "Yes"
 msgstr "Да"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "No"
+msgstr "Нет"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
+msgid "Delete failed"
+msgstr "Ошибка удаления"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
+msgid "Failed to remove the file"
+msgstr "Невозможно удалить файл"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
+msgid "OK"
+msgstr "Ок"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
+msgid "Clear all transfers, including any in progress?"
+msgstr "Очистить все передачи, включая не завершённые?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Очистить все передачи? - KVIrc"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
+msgid "File Transfers"
+msgstr "Передачи файлов"

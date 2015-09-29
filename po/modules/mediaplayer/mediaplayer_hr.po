@@ -1,202 +1,44 @@
-# translation of mediaplayer_hr.po to Hrvatski
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# SpeedyGhost <SpeedyGhost@gmail.com>, 2008.
+# 
+# Translators:
+# SpeedyGhost <SpeedyGhost@gmail.com>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: mediaplayer_hr\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2008-01-17 02:20+0100\n"
-"Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
-"Language-Team: Hrvatski <en@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:02+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Croatian (http://www.transifex.com/kvirc/KVIrc/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:470
-#, fuzzy
-msgid ""
-"An interface to Amarok2.\n"
-"Download it from http://amarok.kde.org\n"
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
+msgid "Trying media player interface \"%1\": score %2"
 msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:446
-#, fuzzy
-msgid ""
-"An interface to BMPx.\n"
-"Download it from http://sourceforge.net/projects/beepmp\n"
-msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:585
-#, fuzzy
-msgid ""
-"An interface to Clementine.\n"
-"Download it from http://www.clementine-player.org/\n"
-msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:488
-#, fuzzy
-msgid ""
-"An interface to Qmmp.\n"
-"Download it from http://qmmp.ylsoftware.com\n"
-msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:547
-#, fuzzy
-msgid ""
-"An interface to Totem.\n"
-"Download it from http://projects.gnome.org/totem/\n"
-msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:565
-msgid ""
-"An interface to Vlc.\n"
-"Download it from http://www.videolan.org/\n"
-"You need to manually enable the DBus control\n"
-"interface in the Vlc preferences\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpAmipInterface.cpp:113
-#, fuzzy
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net\n"
-"To use this interface you must install AMIP plug-in for your player."
-msgstr ""
-"Sučelje za AMIP plug-in.\n"
-"Možete ga downloadati sa http://amip.tools-for.net.\n"
-"Za korištenje ovog sučelja morate instalirati AMIP plug-in za vaš player."
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:523
-msgid ""
-"An interface to the Mozilla Songbird media player.\n"
-"Download it from http://www.getsongbird.com.\n"
-"To use it you have to install also the MPRIS addon available at http://"
-"addons.songbirdnest.com/addon/1626.\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
-msgid ""
-"An interface to the Spotify music streaming service.\n"
-"It is only available for certain countries in Europe.\n"
-"You can download it from http://www.spotify.com.\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:506
-#, fuzzy
-msgid ""
-"An interface to the Xmms2 media player.\n"
-"Download it from http://xmms2.org\n"
-msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Sučelje za popularni UNIX audacious media player.\n"
-"Preuzmite ga sa http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
-#, fuzzy
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-"Sučelje za popularni UNIX xmms media player.\n"
-"Preuzmite ga sa http://www.xmms.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:198
-#, fuzzy
-msgid ""
-"An interface to the popular Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-"Sučelje za popularni Winamp media player.\n"
-"Možete ga preuzeti sa http://www.winamp.com.\n"
-"Za korištenje ovog sučelja morate kopirati gen_kvirc.dll plugin, koji se "
-"nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
-"restartati Winamp."
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:320
-#, fuzzy
-msgid ""
-"An interface to the popular audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Sučelje za popularni UNIX audacious media player.\n"
-"Preuzmite ga sa http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:188
-msgid "Can't find a running winamp window"
-msgstr "Ne mogu pronaći pokrenuti winamp prozor"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
-#, fuzzy
-msgid "Can't find symbol %1 in %2"
-msgstr "Ne mogu pronaći znak %1 u %2"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
-#, fuzzy
-msgid "Can't load the player library (%1)"
-msgstr "Ne mogu učitati bazu playera (%1)"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:102
-msgid "Choosing media player interface \"%Q\""
-msgstr "Odabirem media player \"%Q\""
-
-#: src/modules/mediaplayer/MpInterface.cpp:43
-msgid "Function not implemented"
-msgstr "Funkcija nije implementirana"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
-msgid "Last interface error: "
-msgstr "Posljednja greška sucelja:"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:74
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
 
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:102
+msgid "Choosing media player interface \"%Q\""
+msgstr "Odabirem media player \"%Q\""
+
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:105
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Čini se da nema korisnih media playera na ovom računalu"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
-msgid "Spotify is not running"
-msgstr ""
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:571
@@ -212,31 +54,132 @@ msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
 
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
+msgid "Last interface error: "
+msgstr "Posljednja greška sucelja:"
+
+#: src/modules/mediaplayer/MpAmipInterface.cpp:113
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+
+#: src/modules/mediaplayer/MpInterface.cpp:43
+msgid "Function not implemented"
+msgstr "Funkcija nije implementirana"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:320
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:446
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://sourceforge.net/projects/beepmp\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:470
+msgid ""
+"An interface to Amarok2.\n"
+"Download it from http://amarok.kde.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:488
+msgid ""
+"An interface to Qmmp.\n"
+"Download it from http://qmmp.ylsoftware.com\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:506
+msgid ""
+"An interface to the Xmms2 media player.\n"
+"Download it from http://xmms2.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:523
+msgid ""
+"An interface to the Mozilla Songbird media player.\n"
+"Download it from http://www.getsongbird.com.\n"
+"To use it you have to install also the MPRIS addon available at http://addons.songbirdnest.com/addon/1626.\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:547
+msgid ""
+"An interface to Totem.\n"
+"Download it from http://projects.gnome.org/totem/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:565
+msgid ""
+"An interface to Vlc.\n"
+"Download it from http://www.videolan.org/\n"
+"You need to manually enable the DBus control\n"
+"interface in the Vlc preferences\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:585
+msgid ""
+"An interface to Clementine.\n"
+"Download it from http://www.clementine-player.org/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
+msgid "Spotify is not running"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
+msgid ""
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:188
+msgid "Can't find a running winamp window"
+msgstr "Ne mogu pronaći pokrenuti winamp prozor"
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:198
+msgid ""
+"An interface to the popular Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll plugin found in the KVIrc distribution directory to the Winamp plugins folder and restart winamp."
+msgstr ""
+
 #: src/modules/mediaplayer/MpWinampInterface.cpp:320
 #: src/modules/mediaplayer/MpWinampInterface.cpp:354
 msgid ""
-"The winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
+"The winamp plugin has not been installed properly. Check /help "
+"mediaplayer.nowplaying"
+msgstr "Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer.nowplaying"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
 msgstr ""
-"Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
-"nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
-#, fuzzy
-msgid "Trying media player interface \"%1\": score %2"
-msgstr "Pokušavam media player \"%1\": score %2"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr "Sučelje za popularni UNIX audacious media player.\nPreuzmite ga sa http://audacious-media-player.org\n"
 
-#~ msgid "An interface to the AmaroK KDE media player."
-#~ msgstr "Sučelje za Amarok KDE media player"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+msgid "Can't load the player library (%1)"
+msgstr ""
 
-#~ msgid "An interface to the Juk KDE media player."
-#~ msgstr "Sučelje za Juk KDE media player."
-
-#, fuzzy
-#~ msgid ""
-#~ "An interface to the Xmms2 media player.\n"
-#~ "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
-#~ msgstr ""
-#~ "Sučelje za popularni UNIX xmms media player.\n"
-#~ "Preuzmite ga sa http://www.xmms.org\n"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+msgid "Can't find symbol %1 in %2"
+msgstr ""

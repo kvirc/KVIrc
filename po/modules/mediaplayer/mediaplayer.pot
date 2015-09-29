@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,22 +66,15 @@ msgstr ""
 msgid "Last interface error: "
 msgstr ""
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
-msgid "Spotify is not running"
-msgstr ""
-
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
-msgid ""
-"An interface to the Spotify music streaming service.\n"
-"It is only available for certain countries in Europe.\n"
-"You can download it from http://www.spotify.com.\n"
-msgstr ""
-
 #: src/modules/mediaplayer/MpAmipInterface.cpp:113
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
 "To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+
+#: src/modules/mediaplayer/MpInterface.cpp:43
+msgid "Function not implemented"
 msgstr ""
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:320
@@ -142,28 +135,15 @@ msgid ""
 "Download it from http://www.clementine-player.org/\n"
 msgstr ""
 
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
+msgid "Spotify is not running"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
 msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
-msgid "Can't load the player library (%1)"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
-msgid "Can't find symbol %1 in %2"
-msgstr ""
-
-#: src/modules/mediaplayer/MpInterface.cpp:43
-msgid "Function not implemented"
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
 msgstr ""
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:188
@@ -184,4 +164,24 @@ msgstr ""
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+msgid "Can't load the player library (%1)"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+msgid "Can't find symbol %1 in %2"
 msgstr ""

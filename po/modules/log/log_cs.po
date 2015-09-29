@@ -1,217 +1,197 @@
-# Czech translation of Kvirc.
-# Copyright (C) 2004 THE Kvirc'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Kvirc package.
-# Dušan Hokův <dusan@mirc.cz>, 2004.
-# , fuzzy
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dušan Hokův <dusan@mirc.cz>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: Kvirc\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2007-12-05 18:02+0100\n"
-"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
-"Language: cs\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:02+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Czech (http://www.transifex.com/kvirc/KVIrc/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/modules/logview/LogViewWindow.cpp:364
-#, fuzzy
-msgid "%1 on %2"
-msgstr "%1 na %2"
-
-#: src/modules/logview/LogViewWindow.cpp:174
-msgid "Apply filter"
-msgstr "Použít filtr"
-
-#: src/modules/log/libkvilog.cpp:118
-msgid "Can't log to file '%1'"
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:207
+msgid "Window '%1' not found"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:105
-#, fuzzy
-msgid "Cancel"
-msgstr "Kanál"
-
-#: src/modules/logview/LogViewWidget.cpp:69
-msgid "Channel"
-msgstr "Kanál"
-
-#: src/modules/logview/LogViewWindow.cpp:669
-#, fuzzy
-msgid "Channel %1 on %2"
-msgstr "%1 na %2"
-
-#: src/modules/logview/LogViewWindow.cpp:469
-msgid "Confirm current user log deletion"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:485
-msgid "Confirm current user logs deletion"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:81
-msgid "Console"
-msgstr "Konzole"
-
-#: src/modules/logview/LogViewWindow.cpp:672
-msgid "Console on %1"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:143
-msgid "Contents filter"
-msgstr "Filtr obsahu"
-
-#: src/modules/logview/LogViewWidget.cpp:77
-msgid "DCC Chat"
-msgstr "DCC Chat"
-
-#: src/modules/logview/LogViewWindow.cpp:678
-msgid "DCC Chat with %1"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:486
-msgid "Do you really wish to delete all these logs?"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:470
-msgid "Do you really wish to delete this log?"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:595
-msgid "Export Log - KVIrc"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:450
-msgid "Export log file to"
-msgstr ""
-
-#: src/modules/log/libkvilog.cpp:323
-msgid "Failed to export the log '%1'"
-msgstr ""
-
-#: src/modules/log/libkvilog.cpp:313
-msgid "Failed to load logview module, aborting"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:118
-msgid "Filter"
-msgstr "Filtr"
-
-#: src/modules/logview/LogViewWindow.cpp:195
-msgid "HTML archive"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:110
-#, fuzzy
-msgid "Index"
-msgstr "Obsah"
-
-#: src/modules/logview/LogViewWindow.cpp:70
-msgid "Log File"
-msgstr "Soubor logů"
-
-#: src/modules/logview/LogViewWindow.cpp:243
-msgid "Log Viewer"
-msgstr "Prohlížeč logů"
-
-#: src/modules/logview/LogViewWindow.cpp:152
-msgid "Log contents mask:"
-msgstr "Maska logu obsahu:"
-
-#: src/modules/logview/LogViewWindow.cpp:146
-msgid "Log name mask:"
-msgstr "Maska názvu logu:"
-
-#: src/modules/log/libkvilog.cpp:107
-#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
 msgid "Missing window id after the 'w' switch"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:166
-#, fuzzy
-msgid "Only newer than"
-msgstr "Pouze novější než"
-
-#: src/modules/logview/LogViewWindow.cpp:158
-msgid "Only older than"
-msgstr "Pouze starší než"
-
-#: src/modules/logview/LogViewWidget.cpp:85
-msgid "Other"
-msgstr "Ostatní"
-
-#: src/modules/logview/LogViewWindow.cpp:193
-#, fuzzy
-msgid "Plain text file"
-msgstr "Filtr obsahu"
-
-#: src/modules/logview/LogViewWidget.cpp:73
-msgid "Query"
-msgstr "Query"
-
-#: src/modules/logview/LogViewWindow.cpp:675
-msgid "Query with %1 on %2"
-msgstr ""
-
-#: src/modules/logview/LogViewWindow.cpp:448
-#, fuzzy
-msgid "Remove all log files within this folder"
-msgstr "Smazat soubor"
-
-#: src/modules/logview/LogViewWindow.cpp:451
-#, fuzzy
-msgid "Remove log file"
-msgstr "Smazat soubor"
-
-#: src/modules/logview/LogViewWindow.cpp:134
-msgid "Show DCC chat logs"
-msgstr "Zobrazit logy DCC chatu"
-
-#: src/modules/logview/LogViewWindow.cpp:122
-msgid "Show channel logs"
-msgstr "Zobrazit logy kanálu"
-
-#: src/modules/logview/LogViewWindow.cpp:130
-msgid "Show console logs"
-msgstr "Zobrazit logy konzole"
-
-#: src/modules/logview/LogViewWindow.cpp:138
-msgid "Show other logs"
-msgstr "Zobrazit ostatní logy"
-
-#: src/modules/logview/LogViewWindow.cpp:126
-msgid "Show query logs"
-msgstr "Zobrazit query logy"
-
-#: src/modules/logview/LogViewWindow.cpp:681
-msgid "Something on %1"
+#: src/modules/log/libkvilog.cpp:118
+msgid "Can't log to file '%1'"
 msgstr ""
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "This window has no logging capabilities"
 msgstr ""
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:157
-#: src/modules/log/libkvilog.cpp:207
-msgid "Window '%1' not found"
-msgstr ""
-
 #: src/modules/log/libkvilog.cpp:265
 msgid "Window with id '%1' not found, returning empty string"
 msgstr ""
 
-#~ msgid "Abort filtering"
-#~ msgstr "Přerušit filtrování"
+#: src/modules/log/libkvilog.cpp:313
+msgid "Failed to load logview module, aborting"
+msgstr ""
 
-#, fuzzy
-#~ msgid "Browse Log Files"
-#~ msgstr "Prohlížet soubory &logů"
+#: src/modules/log/libkvilog.cpp:323
+msgid "Failed to export the log '%1'"
+msgstr ""
 
-#~ msgid "Filtering files..."
-#~ msgstr "Filtrování souborů..."
+#: src/modules/logview/LogViewWidget.cpp:69
+msgid "Channel"
+msgstr "Kanál"
+
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Query"
+msgstr "Query"
+
+#: src/modules/logview/LogViewWidget.cpp:77
+msgid "DCC Chat"
+msgstr "DCC Chat"
+
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "Console"
+msgstr "Konzole"
+
+#: src/modules/logview/LogViewWidget.cpp:85
+msgid "Other"
+msgstr "Ostatní"
+
+#: src/modules/logview/LogViewWindow.cpp:70
+msgid "Log File"
+msgstr "Soubor logů"
+
+#: src/modules/logview/LogViewWindow.cpp:105
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:110
+msgid "Index"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:118
+msgid "Filter"
+msgstr "Filtr"
+
+#: src/modules/logview/LogViewWindow.cpp:122
+msgid "Show channel logs"
+msgstr "Zobrazit logy kanálu"
+
+#: src/modules/logview/LogViewWindow.cpp:126
+msgid "Show query logs"
+msgstr "Zobrazit query logy"
+
+#: src/modules/logview/LogViewWindow.cpp:130
+msgid "Show console logs"
+msgstr "Zobrazit logy konzole"
+
+#: src/modules/logview/LogViewWindow.cpp:134
+msgid "Show DCC chat logs"
+msgstr "Zobrazit logy DCC chatu"
+
+#: src/modules/logview/LogViewWindow.cpp:138
+msgid "Show other logs"
+msgstr "Zobrazit ostatní logy"
+
+#: src/modules/logview/LogViewWindow.cpp:143
+msgid "Contents filter"
+msgstr "Filtr obsahu"
+
+#: src/modules/logview/LogViewWindow.cpp:146
+msgid "Log name mask:"
+msgstr "Maska názvu logu:"
+
+#: src/modules/logview/LogViewWindow.cpp:152
+msgid "Log contents mask:"
+msgstr "Maska logu obsahu:"
+
+#: src/modules/logview/LogViewWindow.cpp:158
+msgid "Only older than"
+msgstr "Pouze starší než"
+
+#: src/modules/logview/LogViewWindow.cpp:166
+msgid "Only newer than"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:174
+msgid "Apply filter"
+msgstr "Použít filtr"
+
+#: src/modules/logview/LogViewWindow.cpp:193
+msgid "Plain text file"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:195
+msgid "HTML archive"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:243
+msgid "Log Viewer"
+msgstr "Prohlížeč logů"
+
+#: src/modules/logview/LogViewWindow.cpp:364
+msgid "%1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:448
+msgid "Remove all log files within this folder"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:450
+msgid "Export log file to"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:451
+msgid "Remove log file"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:469
+msgid "Confirm current user log deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:470
+msgid "Do you really wish to delete this log?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:485
+msgid "Confirm current user logs deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:486
+msgid "Do you really wish to delete all these logs?"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:597
+msgid "Export Log - KVIrc"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:677
+msgid "Channel %1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:680
+msgid "Console on %1"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:683
+msgid "Query with %1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:686
+msgid "DCC Chat with %1"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:689
+msgid "Something on %1"
+msgstr ""
