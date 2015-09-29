@@ -244,6 +244,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviInspIRCdIrcServerInfo(this, version);
 	else if(version.contains("snircd",Qt::CaseInsensitive))
 		m_pServInfo = new KviSnircdIrcServerInfo(this, version);
+	else if(version.contains("ircd-darenet",Qt::CaseInsensitive))
+		m_pServInfo = new KviDarenetIrcServerInfo(this, version);
 	else if(version.contains("u2",Qt::CaseInsensitive))
 		m_pServInfo = new KviIrcuIrcServerInfo(this, version);
 	else if(version.contains("plexus",Qt::CaseInsensitive))
@@ -252,6 +254,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviCritenIrcServerInfo(this, version);
 	else if(version.contains("nemesis",Qt::CaseInsensitive))
 		m_pServInfo = new KviNemesisIrcServerInfo(this, version);
+	else if(version.contains("oftc",Qt::CaseInsensitive))
+		m_pServInfo = new KviOftcIrcServerInfo(this, version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(this, version);
 }
@@ -500,10 +504,15 @@ const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
+		case 'A': return __tr2qs("Admin password"); break;
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
 		case 'D': return __tr2qs("Delay users join to first message"); break;
-		case 'R': return __tr2qs("Registered"); break;
+		case 'R': return __tr2qs("Registered (staff only)"); break;
+		case 'U': return __tr2qs("User password"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
 		case 'r': return __tr2qs("Only registered nicks can join"); break;
+		case 'z': return __tr2qs("Persistent (staff only)"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
@@ -513,6 +522,7 @@ const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
 	switch(mode)
 	{
 		case 'B': return __tr2qs("Bandwidth Saver"); break;
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
 		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
@@ -523,6 +533,38 @@ const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
 		case 'h': return __tr2qs("Half-operators");break;
 		case 'p': return __tr2qs("Paranoia"); break;
 		case 'q': return __tr2qs("Channel owners"); break;
+		case 'z': return __tr2qs("Persistent (staff only)"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Need SSL connection to join"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
+		case 'D': return __tr2qs("Delay users join to first message"); break;
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'N': return __tr2qs("Block channel notices"); break;
+		case 'R': return __tr2qs("Registered (staff only)"); break;
+		case 'S': return __tr2qs("Strip color codes"); break;
+		case 'T': return __tr2qs("No multi-targets"); break;
+		case 'Z': return __tr2qs("Need SSL connection to join"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
+		case 'r': return __tr2qs("Only registered nicks can join"); break;
+		case 'u': return __tr2qs("Squelch parts/quits"); break;
 		case 'z': return __tr2qs("Persistent (staff only)"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
