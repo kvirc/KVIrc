@@ -1132,6 +1132,23 @@ void KviIrcServerParser::parseChannelHelp(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericNeedSSL(KviIrcMessage *msg)
+{
+	//  480 ERR_SSLONLYCHAN (hybrid forks + others)
+	// :prefix 480 <target> <channel> :<text>
+	if(!msg->haltOutput())
+	{
+		QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
+		KviWindow * pOut = msg->connection()->findChannel(szChan);
+		if(pOut)
+		{
+			pOut->output(KVI_OUT_HELP,__tr2qs("%Q requires SSL to join"),&szChan);
+		} else {
+			pOut = (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_HELP,__tr2qs("%Q requires SSL to join"),&szChan);
+		}
+	}
+}
 
 void KviIrcServerParser::parseCommandEndOfHelp(KviIrcMessage *msg)
 {
@@ -2137,18 +2154,74 @@ void KviIrcServerParser::parseNumericInvited(KviIrcMessage * msg)
 	}
 }
 
-void KviIrcServerParser::parseNumericEndOfReopListOrInvited(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumeric344(KviIrcMessage * msg)
 {
-	// Determine wether this is inteded for RPL_ENDOFREOPLIST
-	// or RPL_INVITED
+	// Determine wether this is inteded for RPL_REOPLIST or
+	// RPL_QUIETLIST
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 
+	QString version = pServerInfo->software();
+	if(version == "Hybrid+Oftc")
+		parseNumericOftcQuietList(msg);
+	else
+		parseNumericReopList(msg);
+}
+
+void KviIrcServerParser::parseNumeric345(KviIrcMessage * msg)
+{
+	// Determine wether this is inteded for RPL_ENDOFREOPLIST,
+	// RPL_QUIETLISTEND, or RPL_INVITED
 	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 
 	QString version = pServerInfo->software();
 	if(version == "Snircd" || version == "Ircu")
 		parseNumericInvited(msg);
+	else if(version == "Hybrid+Oftc")
+		parseNumericOftcEndOfQuietList(msg);
 	else
 		parseNumericEndOfReopList(msg);
+}
+
+void KviIrcServerParser::parseNumeric480(KviIrcMessage * msg)
+{
+	// Determine if this is a generic "cannot join" string or
+	// if it is an SSL requirement. Note that hyrbid forks do
+	// not provide detailed information as they just print
+	// "Cannot join channel (+S)". This gives more of an explanation
+	// for non-versed IRC users.
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+
+	QString version = pServerInfo->software();
+	if(version == "Plexus" || version == "Hybrid+Oftc")
+		parseNumericNeedSSL(msg);
+	else
+		parseNumericCantJoinChannel(msg);
+}
+
+void KviIrcServerParser::parseNumeric728(KviIrcMessage * msg)
+{
+	// Determine wether this is a freenode style quiet or an
+	// oftc style quiet
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+
+	QString version = pServerInfo->software();
+	if(version == "Ircu+Darenet")
+		parseNumericOftcQuietList(msg);
+	else
+		parseNumericQuietList(msg);
+}
+
+void KviIrcServerParser::parseNumeric729(KviIrcMessage * msg)
+{
+	// Determine wether this is a freenode style End of Quiet list
+	// or an oftc style End Of Quiet list
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+
+	QString version = pServerInfo->software();
+	if(version == "Ircu+Darenet")
+		parseNumericOftcEndOfQuietList(msg);
+	else
+		parseNumericEndOfQuietList(msg);
 }
 
 void KviIrcServerParser::parseNumericInfo(KviIrcMessage * msg)
@@ -2499,13 +2572,42 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 		msg->connection()->endInitialCapNegotiation();
 }
 
-void KviIrcServerParser::parseNumeric728(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericOftcQuietList(KviIrcMessage *msg)
+{
+	// 344: RPL_QUIETLIST (oftc)
+	// :prefix 344 target <channel> <banmask> [bansetby] [bansetat]
+	QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
+	// chMode is hard coded here, they do not give us any indication of what
+	// it is in the reply. Another IRCd (u2+ircd-darenet) uses this same format
+	// and uses +q for quiets as well.
+	char chMode = 'q';
+	QString banmask  = msg->connection()->decodeText(msg->safeParam(2));
+	QString bansetby = msg->connection()->decodeText(msg->safeParam(3));
+	QString bansetat;
+	getDateTimeStringFromCharTimeT(bansetat,msg->safeParam(4));
+	if(bansetby.isEmpty())bansetby = __tr2qs("(Unknown)");
+	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+	if(chan && chan->sentListRequest(chMode))
+	{
+		chan->setModeInList(chMode,banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
+		return;
+	}
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_BAN,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
+			&(__tr2qs("mode listing")),&szChan,chMode,&banmask,&bansetby,&bansetat);
+	}
+}
+
+void KviIrcServerParser::parseNumericQuietList(KviIrcMessage *msg)
 {
 	// 728: RPL_QUIETLIST (freenode)
 	// :prefix 728 target <channel> <mode> <banmask> [bansetby] [bansetat]
 	QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
-	// chMode is supposes to be an hardcoded 'q', but they could add other flags in the future
-	char chMode     = msg->connection()->decodeText(msg->safeParam(2)).at(0).toLatin1();
+	// chMode is supposed to be a hardcoded 'q', but they could add other flags in the future
+	char chMode      = msg->connection()->decodeText(msg->safeParam(2)).at(0).toLatin1();
 	QString banmask  = msg->connection()->decodeText(msg->safeParam(3));
 	QString bansetby = msg->connection()->decodeText(msg->safeParam(4));
 	QString bansetat;
@@ -2526,12 +2628,34 @@ void KviIrcServerParser::parseNumeric728(KviIrcMessage *msg)
 	}
 }
 
-void KviIrcServerParser::parseNumeric729(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericOftcEndOfQuietList(KviIrcMessage *msg)
+{
+	// 729: RPL_QUIETLISTEND (oftc)
+	// :prefix 729 target <channel> :End of Channel Quiet List
+	QString szChan  = msg->connection()->decodeText(msg->safeParam(1));
+	// because this is fork specific, we can be assured that the mode will
+	// always be +q
+	char chMode     = 'q';
+	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+	if(chan && chan->sentListRequest(chMode))
+	{
+		chan->setListRequestDone(chMode);
+		return;
+	}
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_BAN,__tr2qs("End of channel \"%c\" %Q for \r!c\r%Q\r"),chMode,&(__tr2qs("mode list")),&szChan);
+	}
+}
+
+void KviIrcServerParser::parseNumericEndOfQuietList(KviIrcMessage *msg)
 {
 	// 729: RPL_QUIETLISTEND (freenode)
 	// :prefix 729 target <channel> <mode> :End of Channel Quiet List
-	QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
-	// chMode is supposes to be an hardcoded 'q', but they could add other flags in the future
+	QString szChan  = msg->connection()->decodeText(msg->safeParam(1));
+	// chMode is supposed to be a hardcoded 'q', but they could add other flags in the future
 	char chMode     = msg->connection()->decodeText(msg->safeParam(2)).at(0).toLatin1();
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 	if(chan && chan->sentListRequest(chMode))

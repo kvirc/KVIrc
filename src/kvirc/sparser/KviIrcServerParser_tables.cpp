@@ -433,8 +433,8 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericInviting)                      , // 341 RPL_INVITING
 	0,                                               // 342 RPL_SUMMONING
 	0,                                               // 343
-	PTM(parseNumericReopList)                      , // 344 RPL_REOPLIST
-	PTM(parseNumericEndOfReopListOrInvited)        , // 345 RPL_ENDOFREOPLIST, RPL_INVITED
+	PTM(parseNumeric344)                           , // 344 RPL_REOPLIST, RPL_QUIETLIST
+	PTM(parseNumeric345)                           , // 345 RPL_ENDOFREOPLIST, RPL_INVITED, RPL_QUIETLISTEND
 	PTM(parseNumericInviteList)                    , // 346 RPL_INVITELIST
 	PTM(parseNumericEndOfInviteList)               , // 347 RPL_ENDOFINVITELIST
 	PTM(parseNumericExceptList)                    , // 348 RPL_EXCEPTLIST
@@ -569,7 +569,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseChannelHelp),                           // 477 RPL_CHANNELHELP
 	0,                                               // 478 ERR_BANLISTFULL
 	0,                                               // 479 ERR_BADCHANNAME, ERR_LINKFAIL
-	0,                                               // 480 ERR_NOULINE, ERR_CANNOTKNOCK
+	PTM(parseNumeric480),                            // 480 ERR_NOULINE, ERR_CANNOTKNOCK, ERR_SSLONLYCHAN
 	0,                                               // 481 ERR_NOPRIVILEGES
 	PTM(otherChannelError),                          // 482 ERR_CHANOPRIVSNEEDED
 	0,                                               // 483 ERR_CANTKILLSERVER

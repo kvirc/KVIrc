@@ -136,8 +136,12 @@ private:
 	void parseNumeric003(KviIrcMessage *msg);
 	void parseNumeric004(KviIrcMessage *msg);
 	void parseNumeric005(KviIrcMessage *msg);
+	void parseNumeric020(KviIrcMessage *msg);
+	void parseNumeric344(KviIrcMessage *msg);
+	void parseNumeric345(KviIrcMessage *msg);
 	void parseNumeric367(KviIrcMessage *msg);
 	void parseNumeric368(KviIrcMessage *msg);
+	void parseNumeric480(KviIrcMessage *msg);
 	void parseNumeric728(KviIrcMessage *msg);
 	void parseNumeric729(KviIrcMessage *msg);
 
@@ -159,7 +163,6 @@ private:
 	void parseNumericReopList(KviIrcMessage *msg);
 	void parseNumericEndOfReopList(KviIrcMessage * msg);
 	void parseNumericInvited(KviIrcMessage * msg);
-	void parseNumericEndOfReopListOrInvited(KviIrcMessage *msg);
 	void parseNumericSpamFilterList(KviIrcMessage *msg);
 	void parseNumericEndOfSpamFilterList(KviIrcMessage *msg);
 	void parseNumericWhoReply(KviIrcMessage *msg);
@@ -197,7 +200,6 @@ private:
 	void parseNumericUserMode(KviIrcMessage * msg);
 	void parseNumericCodePageSet(KviIrcMessage * msg);
 	void parseNumericCodePageScheme(KviIrcMessage * msg);
-	void parseNumeric020(KviIrcMessage *msg);
 	void parseNumericCannotSend(KviIrcMessage *msg);
 	void parseNumericNoSuchChannel(KviIrcMessage *msg);
 	void parseNumericNoSuchServer(KviIrcMessage *msg);
@@ -218,6 +220,11 @@ private:
 	void parseCommandHelp(KviIrcMessage *msg);
 	void parseCommandEndOfHelp(KviIrcMessage *msg);
 	void parseChannelHelp(KviIrcMessage *msg);
+	void parseNumericNeedSSL(KviIrcMessage *msg);
+	void parseNumericOftcQuietList(KviIrcMessage *msg);
+	void parseNumericOftcEndOfQuietList(KviIrcMessage *msg);
+	void parseNumericQuietList(KviIrcMessage *msg);
+	void parseNumericEndOfQuietList(KviIrcMessage *msg);
 
 	void parseLiteralPing(KviIrcMessage *msg);
 	void parseLiteralJoin(KviIrcMessage *msg);

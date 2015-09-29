@@ -179,6 +179,30 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
+class KVIRC_API KviOftcIrcServerInfo : public KviBasicIrcServerInfo
+{
+	//oftc; note: hybrid+oftc is an extension to hybrid
+public:
+	KviOftcIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'R'; };
+	virtual const char * getSoftware() { return "Hybrid+Oftc"; };
+	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
+class KVIRC_API KviDarenetIrcServerInfo : public KviBasicIrcServerInfo
+{
+	//darenet; note: u2+ircd-darenet is an extension to ircu
+public:
+	KviDarenetIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Ircu+Darenet"; };
+	virtual bool getNeedsOpToListModeseI() { return false; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
 class KVIRC_API KviIrcConnectionServerInfo
 {
 	friend class KviConsoleWindow; // for now
