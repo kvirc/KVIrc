@@ -34,7 +34,6 @@
 #include <QPainter>
 #include <QLineEdit>
 #include <QStyleOptionFrameV2>
-#include <QStyleFactory>
 #include <QKeyEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -46,13 +45,6 @@ KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const c
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	// this should be removed as soon as Qt fixes this bug (>W8)
-	QStyle * pWindowsStyle = QStyleFactory::create("plastique");
-	if(pWindowsStyle)
-		setStyle(pWindowsStyle);
-#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 	setAutoFillBackground(true);
 	applyOptions();

@@ -68,7 +68,6 @@
 #endif
 #include <QMenu>
 #include <QWidgetAction>
-#include <QStyleFactory>
 #include <QTextBoundaryFinder>
 
 #if (QT_VERSION >= 0x050000)
@@ -138,13 +137,6 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 #else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 	m_iCursorWidth = 1;
 #endif
-
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	// this should be removed as soon as Qt fixes this bug (>W8)
-	QStyle * pWindowsStyle = QStyleFactory::create("plastique");
-	if(pWindowsStyle)
-		this->setStyle(pWindowsStyle);
-#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
