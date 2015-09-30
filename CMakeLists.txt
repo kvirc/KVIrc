@@ -24,7 +24,7 @@
 ##    COMPILE_*        : Variables that end up in kvi_sysconfig.h and are
 ##                       visible in code (usually #defined to 1 or undefined)
 ##                       Example: COMPILE_IPV6_SUPPORT (set to 1 or unset)
-##                        
+##
 ##    CMAKE_KVIRC_*    : Variables that end up in kvi_sysconfig.h or
 ##                       kvi_sysbuildinfo.h as KVIRC_* and are usually textual
 ##                       Example: CMAKE_KVIRC_MODULES_DIR (a textual path)
@@ -624,7 +624,7 @@ if(WANT_KDE)
 		find_package(ECM 1.0.0 QUIET NO_MODULE)
 		if(DEFINED ECM_VERSION_MAJOR)
 			set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_MODULE_PATH})
-	 
+
 			find_package(KF5 "5.2.0" COMPONENTS
 					CoreAddons      # KAboutData
 					I18n            # KLocalizedString
@@ -633,7 +633,7 @@ if(WANT_KDE)
 					Notifications   # KNotification
 					Service         # KToolInvocation
 				)
-			
+
 			if(KF5_FOUND)
 				set(CMAKE_RESULT_USING_KDE true)
 				#include_directories(${KDE4_INCLUDES})
