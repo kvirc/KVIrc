@@ -33,7 +33,6 @@
 
 #include <QPainter>
 #include <QStyleOptionFrameV2>
-#include <QStyleFactory>
 
 #if (QT_VERSION >= 0x050000)
 	#include <qdrawutil.h> // qDrawShadePanel
@@ -48,12 +47,6 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * n
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	QStyle * pWindowsStyle = QStyleFactory::create("plastique");
-	if(pWindowsStyle)
-		setStyle(pWindowsStyle);
-#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 #if (QT_VERSION < 0x050000)
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
