@@ -233,8 +233,6 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	setQuitOnLastWindowClosed(false);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
-	//workaround for #957
-	QApplication::setEffectEnabled(Qt::UI_FadeMenu, false);
 #endif
 
     //note: the early qApp->style() call leads to a crash on osx
