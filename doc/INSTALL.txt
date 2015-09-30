@@ -451,16 +451,21 @@
     You can thus disable transparency here.
 
   -DWANT_GTKSTYLE= (default: OFF)
-    QGtkStyle is a Qt backend that uses native Gtk widgets. In recent Gtk
+    QGtkStyle is a Qt backend that uses native Gtk widgets. As of Qt5, any
+    new builds using Qt5 will automatically and unchangibly have this option
+    set to ON. The reason is due to a graphical issue in which menus do not
+    appear as well as scroll bars being invisible. We have found this to be
+    the only fix until upstream can be patched. Anything prior to Qt5 has this
+    option defaulted to OFF with the ability to enable it. In recent Gtk
     versions some insane choices are hardcoded and impossible to workaround
     (example: icons can't be shown in menus, label background color is
-    fixed). By default we disable QGtkStyle since it messes up with KVIrc
-    internal theme engine creating issues (like unreadable white
-    text on a white background). Some users wants to use it anyway and
-    sometimes we like to check if Gtk developers quit smoking pot,
-    so this option let you enable the QGtkStyle engine.
-    Please don't report any theme-related bug if you enabled this option:
-    we already know it's broken. It should be fixed upstream in Qt.
+    fixed). By default we disable QGtkStyle in versions below Qt5 since it
+    messes up with KVIrc's internal theme engine creating issues (like unreadable
+    white text on a white background). Some users want to use it anyway and
+    sometimes we like to check if Gtk developers quit smoking pot, so this option
+    lets you enable the QGtkStyle engine. Please don't report any theme-related bug
+    if you enabled this option: we already know it's broken. It should be fixed
+    upstream in Qt.
 
   -DWANT_PERL= (default: ON)
     Enables or disables Perl support.
