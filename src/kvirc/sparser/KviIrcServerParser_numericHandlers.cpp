@@ -2174,7 +2174,7 @@ void KviIrcServerParser::parseNumeric345(KviIrcMessage * msg)
 	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 
 	QString version = pServerInfo->software();
-	if(version == "Snircd" || version == "Ircu")
+	if(version == "Snircd" || version == "Ircu" || version == "Ircu+Darenet")
 		parseNumericInvited(msg);
 	else if(version == "Hybrid+Oftc")
 		parseNumericOftcEndOfQuietList(msg);
