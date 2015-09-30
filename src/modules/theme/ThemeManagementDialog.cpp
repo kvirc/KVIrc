@@ -300,7 +300,7 @@ void ThemeManagementDialog::display(bool bTopLevel)
 void ThemeManagementDialog::cleanup()
 {
 	if(!m_pInstance)return;
-	m_pInstance->deleteLater();
+	delete m_pInstance;
 	m_pInstance = 0;
 }
 
