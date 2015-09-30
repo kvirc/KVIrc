@@ -1522,7 +1522,7 @@ else()
 	message(STATUS "I'm ready to build KVIrc for you: please type 'make' now...")
 endif()
 
-if(COMPILE_ENABLE_GTKSTYLE)
+if(COMPILE_ENABLE_GTKSTYLE AND WANT_QT4)
 	message(STATUS "Warning: you forcibly enabled the GtkStyle engine, which is known to break KVIrc theming.")
 endif()
 
