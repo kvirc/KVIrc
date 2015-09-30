@@ -84,10 +84,10 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &op
 	QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(option.font);
-	doc.setTextWidth(option.rect.width()-LVI_AFTER_ICON);
+	doc.setTextWidth(((QListWidget *)parent())->width()-LVI_AFTER_ICON);
 	int iHeight = doc.documentLayout()->documentSize().toSize().height();
 	if(iHeight < (LVI_ICON_SIZE+(2 * LVI_BORDER)))
 		iHeight = LVI_ICON_SIZE;
 
-	return QSize(((QListWidget *)parent())->viewport()->size().width(), iHeight + (2 * LVI_BORDER));
+	return QSize(((QListWidget *)parent())->minimumWidth(), iHeight + (2 * LVI_BORDER));
 }
