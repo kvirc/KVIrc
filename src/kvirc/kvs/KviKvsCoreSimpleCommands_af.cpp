@@ -901,7 +901,7 @@ namespace KviKvsCoreSimpleCommands
 			if(!o)
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete an inexistant object","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete a non-existent object","kvs"));
 			} else {
 				if(KVSCSC_pSwitches->find('i',"immediate"))
 					o->dieNow();
