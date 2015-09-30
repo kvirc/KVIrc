@@ -1,29 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: notifier_fi\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2007-11-21 18:00+0200\n"
-"Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:23+0200\n"
+"PO-Revision-Date: 2015-08-01 10:02+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/kvirc/KVIrc/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:973
-msgid "1 Hour"
-msgstr "Tunti"
+#: src/modules/notifier/libkvinotifier.cpp:136
+msgid "The specified window does not exist"
+msgstr "Tämä ikkuna ei ole olemassa"
+
+#: src/modules/notifier/libkvinotifier.cpp:150
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Asetettu aikakatkaisu ei ole oikein muotoiltu, oletetaan 0:ksi"
+
+#: src/modules/notifier/libkvinotifier.cpp:153
+msgid "The -t switch expects a timeout in seconds"
+msgstr "-t -kytkin olettaa aikakatkaisun sekunneissa"
+
+#: src/modules/notifier/NotifierWindow.cpp:965
+msgid "Show/Hide input line"
+msgstr ""
+
+#: src/modules/notifier/NotifierWindow.cpp:966
+msgid "Hide"
+msgstr "Piilota"
 
 #: src/modules/notifier/NotifierWindow.cpp:969
 msgid "1 Minute"
 msgstr "Minuutti"
+
+#: src/modules/notifier/NotifierWindow.cpp:970
+msgid "5 Minutes"
+msgstr "Viisi minuuttia"
 
 #: src/modules/notifier/NotifierWindow.cpp:971
 msgid "15 Minutes"
@@ -33,41 +53,21 @@ msgstr "15 minuuttia"
 msgid "30 Minutes"
 msgstr "Puoli tuntia"
 
-#: src/modules/notifier/NotifierWindow.cpp:970
-msgid "5 Minutes"
-msgstr "Viisi minuuttia"
+#: src/modules/notifier/NotifierWindow.cpp:973
+msgid "1 Hour"
+msgstr "Tunti"
 
-#: src/modules/notifier/NotifierWindow.cpp:978
-msgid "Disable"
-msgstr "Ota pois päältä"
-
-#: src/modules/notifier/NotifierWindow.cpp:966
-msgid "Hide"
-msgstr "Piilota"
+#: src/modules/notifier/NotifierWindow.cpp:975
+msgid "Until KVIrc is Restarted"
+msgstr "Kunnes KVIrc aloitetaan uudestaan"
 
 #: src/modules/notifier/NotifierWindow.cpp:976
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Vakituisesti (ellei toisin säädetä)"
 
-#: src/modules/notifier/NotifierWindow.cpp:965
-msgid "Show/Hide input line"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:153
-msgid "The -t switch expects a timeout in seconds"
-msgstr "-t -kytkin olettaa aikakatkaisun sekunneissa"
-
-#: src/modules/notifier/libkvinotifier.cpp:150
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Asetettu aikakatkaisu ei ole oikein muotoiltu, oletetaan 0:ksi"
-
-#: src/modules/notifier/libkvinotifier.cpp:136
-msgid "The specified window does not exist"
-msgstr "Tämä ikkuna ei ole olemassa"
-
-#: src/modules/notifier/NotifierWindow.cpp:975
-msgid "Until KVIrc is Restarted"
-msgstr "Kunnes KVIrc aloitetaan uudestaan"
+#: src/modules/notifier/NotifierWindow.cpp:978
+msgid "Disable"
+msgstr "Ota pois päältä"
 
 #: src/modules/notifier/NotifierWindow.cpp:1053
 msgid "Write text or commands to window"

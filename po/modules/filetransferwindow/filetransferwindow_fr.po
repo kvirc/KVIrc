@@ -1,34 +1,41 @@
-# translation of filetransferwindow_fr.po to Français
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-#
-# Ahinu <ahinu@wanadoo.fr>, 2005.
-# Elephantman <elephantman@europnet.org>, 2008.
+# 
+# Translators:
+# Ahinu <ahinu@wanadoo.fr>, 2005
+# Elephantman <elephantman@europnet.org>, 2008
+# Jocelyn <jocelyn.flament@gmail.com>, 2015
+# Ludovic Bellière <xrogaan@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: filetransferwindow_fr\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2008-03-06 17:52+0100\n"
-"Last-Translator: Elephantman <elephantman@europnet.org>\n"
-"Language-Team: Français <en@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-22 15:42+0000\n"
+"Last-Translator: Jocelyn <jocelyn.flament@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/kvirc/KVIrc/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
-msgid "&Clear Terminated"
-msgstr "&Effacer les Terminés"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
+msgid "Type"
+msgstr "Type"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
-msgid "&Copy Path to Clipboard"
-msgstr "&Copier Chemin dans Presse-papiers"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
+msgid "Information"
+msgstr "Information"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
-msgid "&Delete file"
-msgstr "Su&pprimer Fichier"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
+msgid "Progress"
+msgstr "Progrès"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
+msgid "Size: %1"
+msgstr "Taille : %1"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:450
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:482
@@ -39,91 +46,82 @@ msgstr "&Ouvrir"
 msgid "&Other..."
 msgstr "&Autres..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
-msgid "Clear &All"
-msgstr "Effacer &Tous"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "Clear All Transfers? - KVIrc"
-msgstr "Effacer Tous les Tranferts ? - KVIrc"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
-msgid "Clear all transfers, including any in progress?"
-msgstr "Effacer tous les tranferts, y compris ceux en cours ?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
-msgid "Confirm delete"
-msgstr "Confirmer la suppression"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
-msgid "Delete failed"
-msgstr "La suppression a échoué"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
-#, fuzzy
-msgid "Do you really want to delete the file %1?"
-msgstr "Désirez-vous vraiment effacer le fichier %1 ?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
-msgid "Failed to remove the file"
-msgstr "Impossible de supprimer le fichier"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
-msgid "File Transfers"
-msgstr "Transferts de Fichier"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
-msgid "Information"
-msgstr "Information"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
-msgid "Local &File"
-msgstr "&Fichier Local"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
-msgid "MS-DOS Prompt at Location"
-msgstr "Prompt MS-DOS à l'Adresse"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "No"
-msgstr "Non"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
-msgid "OK"
-msgstr "Valider"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
+msgid "Open &With"
+msgstr "Ou&vrir avec..."
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:475
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:487
 msgid "Open &Location"
 msgstr "Ouvrir A&dresse"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
-msgid "Open &With"
-msgstr "Ou&vrir avec..."
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
-msgid "Progress"
-msgstr "Progrès"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
-msgid "Size: %1"
-msgstr "Taille : %1"
-
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:476
 msgid "Terminal at Location"
 msgstr "Terminal à l'Adresse"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
-msgid "Type"
-msgstr "Type"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
+msgid "MS-DOS Prompt at Location"
+msgstr "Prompt MS-DOS à l'Adresse"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
+msgid "&Copy Path to Clipboard"
+msgstr "&Copier Chemin dans Presse-papiers"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
+msgid "&Delete file"
+msgstr "Su&pprimer Fichier"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
+msgid "Local &File"
+msgstr "&Fichier Local"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
+msgid "&Clear Terminated"
+msgstr "&Retirer les transfers Terminés"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
+msgid "Clear &All"
+msgstr "Retirer &Tous les transfers"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
+msgid "Do you really want to delete the file %1?"
+msgstr "Désirez-vous vraiment supprimer le fichier %1 ?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
+msgid "Confirm delete"
+msgstr "Confirmer la suppression"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:627
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:793
 msgid "Yes"
 msgstr "Oui"
 
-#, fuzzy
-#~ msgid "Manage File &Transfers"
-#~ msgstr "Transferts de Fichier"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "No"
+msgstr "Non"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
+msgid "Delete failed"
+msgstr "La suppression a échoué"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
+msgid "Failed to remove the file"
+msgstr "Impossible de supprimer le fichier"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
+msgid "OK"
+msgstr "Valider"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
+msgid "Clear all transfers, including any in progress?"
+msgstr "Effacer tous les tranferts, y compris ceux en cours ?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Effacer Tous les Tranferts ? - KVIrc"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
+msgid "File Transfers"
+msgstr "Transferts de fichiers"

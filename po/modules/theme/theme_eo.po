@@ -1,420 +1,423 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.3\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2012-07-08 13:35+0100\n"
-"Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
-"Language: eo\n"
+"POT-Creation-Date: 2015-09-29 16:23+0200\n"
+"PO-Revision-Date: 2015-09-29 13:10+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Esperanto (http://www.transifex.com/kvirc/KVIrc/language/eo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eo\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:341
-msgid "&Apply Theme"
-msgstr "&Apliki Etoson"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:339
-msgid "&Remove Theme"
-msgstr "&Forviŝi Etoson"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:213
-#: src/modules/theme/ThemeManagementDialog.cpp:374
-msgid "<b><u>Current Installed Theme:</u> "
-msgstr "<b><u>Nuna Instalita Etoso:</u> "
-
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Acquire Screenshot - KVIrc"
-msgstr "Havigi Ekrankopion - KVIrc"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:358
-#: src/modules/theme/ThemeManagementDialog.cpp:370
-#: src/modules/theme/libkvitheme.cpp:103
-#: src/modules/theme/libkvitheme.cpp:112
-msgid "Apply theme - KVIrc"
-msgstr "Apliki etoson - KVIrc"
-
-#: src/modules/theme/ThemeFunctions.cpp:135
-#: src/modules/theme/ThemeFunctions.cpp:319
-msgid "Author"
-msgstr "Aŭtoro"
-
-#: src/modules/theme/libkvitheme.cpp:221
-msgid "Choose a file to save the screenshot to"
-msgstr "Elekti dosieron por savi la ekrankopion al"
-
-#: src/modules/theme/ThemeFunctions.cpp:136
-#: src/modules/theme/ThemeFunctions.cpp:320
-msgid "Created at"
-msgstr "Kreita je"
-
-#: src/modules/theme/ThemeFunctions.cpp:137
-#: src/modules/theme/ThemeFunctions.cpp:321
-msgid "Created with"
-msgstr "Kreita kun"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:163
-msgid "Delete Selected Themes"
-msgstr "Forviŝi Elektitajn Etosojn"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:392
-msgid "Delete Theme - KVIrc"
-msgstr "Forviŝi Etoson - KVIrc"
-
-#: src/modules/theme/PackThemeDialog.cpp:281
-#: src/modules/theme/SaveThemeDialog.cpp:126
-msgid "Description:"
-msgstr "Priskribo:"
-
-#: src/modules/theme/ThemeFunctions.cpp:278
-msgid "Do Not Install"
-msgstr "Ne Instali"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:393
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr "Ĉu vi vere volas forviŝi etoson \"%Q\" (versio %Q)?"
-
-#: src/modules/theme/ThemeFunctions.cpp:277
-msgid "Do you want to proceed with the installation ?"
-msgstr "Ĉu vi volas daŭri kun la instalado?"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:359
-#: src/modules/theme/libkvitheme.cpp:104
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr "Ĉu vi volas apliki etoson \"%Q\" (versio %Q)?"
-
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-msgid "Download Themes - KVIrc"
-msgstr "Elŝuti Etosojn - KVIrc"
-
-#: src/modules/theme/libkvitheme.cpp:73
+#: src/modules/theme/libkvitheme.cpp:76
 msgid "Error installing theme package: %Q"
 msgstr "Eraro dum instalado de etosa pako: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:236
+#: src/modules/theme/libkvitheme.cpp:132
+msgid "Failed to apply theme: %Q"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:164
+msgid "The theme package '%Q' does not exist"
+msgstr "La etosa pako '%Q' ne ekzistas"
+
+#: src/modules/theme/libkvitheme.cpp:206
+msgid "Choose a file to save the screenshot to"
+msgstr "Elekti dosieron por savi la ekrankopion al"
+
+#: src/modules/theme/libkvitheme.cpp:233
 msgid "Error making screenshot"
 msgstr "Eraro kreante ekrankopion"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:157
-msgid "Export Selected Themes to a Distributable Package"
-msgstr "Eksporti Elektitajn Etosojn al Distribuebla Pako"
+#: src/modules/theme/libkvitheme.cpp:304
+msgid "No themes specified"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:64
-#: src/modules/theme/PackThemeDialog.cpp:369
-#: src/modules/theme/PackThemeDialog.cpp:456
-#: src/modules/theme/PackThemeDialog.cpp:546
-#: src/modules/theme/PackThemeDialog.cpp:561
-#: src/modules/theme/PackThemeDialog.cpp:573
+#: src/modules/theme/libkvitheme.cpp:333
+msgid "Failed to load theme from directory %Q: %Q"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:343
+msgid "No themes specified: refusing to create an empty theme package"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:62
+#: src/modules/theme/PackThemeDialog.cpp:367
+#: src/modules/theme/PackThemeDialog.cpp:453
+#: src/modules/theme/PackThemeDialog.cpp:461
 msgid "Export Theme - KVIrc"
 msgstr "Eksporti Etoson - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:369
-#: src/modules/theme/libkvitheme.cpp:111
-msgid "Failed to apply the specified theme: %1"
-msgstr "Malsukcesis apliki la specifitan etoson: %1"
+#: src/modules/theme/PackThemeDialog.cpp:99
+#: src/modules/theme/SaveThemeDialog.cpp:87
+msgid "Welcome"
+msgstr "Bonvenon"
 
-#: src/modules/theme/PackThemeDialog.cpp:369
-#: src/modules/theme/SaveThemeDialog.cpp:205
-msgid "Failed to load the selected image"
-msgstr "Malsukcesis ŝargi la elektitan bildon"
+#: src/modules/theme/PackThemeDialog.cpp:102
+msgid ""
+"This procedure allows you to export the selected themes to a single package."
+" It is useful when you want to distribute your themes to the public."
+msgstr "Ĉi tiu proceduro permesas vin eksporti la elektitajn etosojn al unuopa pako. Ĝi utilas kiam vi volas distribui viajn etosojn al la publiko."
 
-#: src/modules/theme/PackThemeDialog.cpp:457
-msgid "Failed to load the selected image: please fix it"
-msgstr "Malsukcesis ŝargi la elektitan bildon: bonvolu ripari ĝin"
+#: src/modules/theme/PackThemeDialog.cpp:104
+msgid ""
+"You will be asked to provide a package name, a description and, if you want,"
+" an icon/screenshot."
+msgstr "Vi estos demandata provizi pakan nomon, priskribon kaj, se vi volas, piktogramon/ekrankopion."
 
-#: src/modules/theme/SaveThemeDialog.cpp:299
-msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Malsukcesis ŝargi la elektitan ekrankopion: bonvolu ripari ĝin"
+#: src/modules/theme/PackThemeDialog.cpp:106
+#: src/modules/theme/SaveThemeDialog.cpp:80
+msgid "Hit the \"Next\" button to begin."
+msgstr "Alklaku la \"Sekvanta\" butonon por komenci."
 
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Failed to make screenshot"
-msgstr "Malsukcesis krei ekrankopion"
+#: src/modules/theme/PackThemeDialog.cpp:139
+msgid "Theme Data"
+msgstr "Etosaj Datumoj"
 
-#: src/modules/theme/ThemeFunctions.cpp:295
-msgid "Failed to unpack the selected file: %1"
-msgstr "Malsukcesis malpaki la elektitan dosieron: %1"
+#: src/modules/theme/PackThemeDialog.cpp:140
+msgid ""
+"This is the information list for the themes you're packaging. If it looks OK"
+" press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"themes first."
+msgstr "Ĉi tiu informa listo estas por etosoj kiujn vi enpakigas. Se ĝi aspektas bone alklaku \"Sekvanta\" por daŭrigi, alie alklaku \"Rezigni\" kaj recenzi viajn etosojn unue."
 
-#: src/modules/theme/PackThemeDialog.cpp:392
-msgid "Finally hit the \"Finish\" button to complete the packaging operation."
-msgstr "Finfine alklaku la \"Fini\" butonon kompleti la pakigan operacion."
+#: src/modules/theme/PackThemeDialog.cpp:159
+msgid "Your name here"
+msgstr "Via nomo ĉi tie"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:179
-msgid "Get More Themes..."
-msgstr "Havigi Pliajn Etosojn..."
+#: src/modules/theme/PackThemeDialog.cpp:161
+msgid "Put a package description here..."
+msgstr "Meti pakan priskribon ĉi tie..."
 
-#: src/modules/theme/ThemeFunctions.cpp:226
-msgid "Go Back to Package Data"
-msgstr "Reiri al Pakaj Datumoj"
+#: src/modules/theme/PackThemeDialog.cpp:254
+msgid "Package Information"
+msgstr "Paka Informo"
 
-#: src/modules/theme/PackThemeDialog.cpp:329
+#: src/modules/theme/PackThemeDialog.cpp:255
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr "Ĉi tie vi bezonas provizi informon pri vi (la enpakigulo) kaj mallongan priskribon de la pako kiun vi kreas."
+
+#: src/modules/theme/PackThemeDialog.cpp:261
+msgid "Package Name:"
+msgstr "Paka Nomo:"
+
+#: src/modules/theme/PackThemeDialog.cpp:270
+#: src/modules/theme/SaveThemeDialog.cpp:113
+msgid "Version:"
+msgstr "Versio:"
+
+#: src/modules/theme/PackThemeDialog.cpp:279
+#: src/modules/theme/SaveThemeDialog.cpp:125
+msgid "Description:"
+msgstr "Priskribo:"
+
+#: src/modules/theme/PackThemeDialog.cpp:288
+msgid "Package Author:"
+msgstr "Paka Aŭtoro:"
+
+#: src/modules/theme/PackThemeDialog.cpp:326
+msgid "Icon/Screenshot"
+msgstr "Piktogramo/Ekrankopio"
+
+#: src/modules/theme/PackThemeDialog.cpp:327
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
 "should be not larger than 300x225. If you don't provide an image a simple "
 "default icon will be used at installation stage."
-msgstr ""
-"Ĉi tie vi povas elekti la bildon kiu aperos en la instala dialogo por via "
-"etosa pako. Ĝi povas esti piktogramo, emblemo aŭ ekrankopio kaj ĝi devas "
-"esti ne pli granda ol 300x225. Se vi ne provizas bildon, simpla defaŭlta "
-"piktogramo estos uzata je instala etapo."
+msgstr "Ĉi tie vi povas elekti la bildon kiu aperos en la instala dialogo por via etosa pako. Ĝi povas esti piktogramo, emblemo aŭ ekrankopio kaj ĝi devas esti ne pli granda ol 300x225. Se vi ne provizas bildon, simpla defaŭlta piktogramo estos uzata je instala etapo."
 
-#: src/modules/theme/SaveThemeDialog.cpp:157
-msgid ""
-"Here you can either choose a screenshot image from disk or make one now. The "
-"screenshot will be displayed in the tooltips of the theme management dialog "
-"and will be also visible in the package installation dialog if you will "
-"export the theme to a distributable package."
-msgstr ""
-"Ĉi tie vi povas aŭ elekti ekrankopian bildon de disko aŭ krei unu nun. La "
-"ekrankopio estos montrata kun ŝpruchelpiloj de la etosa administra dialogo "
-"kaj ankaŭ videblos en la paka instala dialogo se vi eksportos la etoson al "
-"distribuebla pako."
+#: src/modules/theme/PackThemeDialog.cpp:367
+#: src/modules/theme/SaveThemeDialog.cpp:222
+msgid "Failed to load the selected image"
+msgstr "Malsukcesis ŝargi la elektitan bildon"
 
-#: src/modules/theme/PackThemeDialog.cpp:381
-msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
-msgstr ""
-"Ĉi tie vi devas elekti la dosiernomon por la etosa pako. Ĝi devus havi *%1 "
-"sufikson."
-
-#: src/modules/theme/SaveThemeDialog.cpp:100
-msgid ""
-"Here you need to provide information about you (the author) and a short "
-"description of the theme you're creating."
-msgstr ""
-"Ĉi tie vi bezonas provizi informon pri vi (la aŭtoro) kaj mallongan "
-"priskribon de la etoso kiun vi kreas."
-
-#: src/modules/theme/PackThemeDialog.cpp:257
-msgid ""
-"Here you need to provide information about you (the packager) and a short "
-"description of the package you're creating."
-msgstr ""
-"Ĉi tie vi bezonas provizi informon pri vi (la enpakigulo) kaj mallongan "
-"priskribon de la pako kiun vi kreas."
-
-#: src/modules/theme/PackThemeDialog.cpp:108
-#: src/modules/theme/SaveThemeDialog.cpp:81
-msgid "Hit the \"Next\" button to begin."
-msgstr "Alklaku la \"Sekvanta\" butonon por komenci."
-
-#: src/modules/theme/PackThemeDialog.cpp:328
-msgid "Icon/Screenshot"
-msgstr "Piktogramo/Ekrankopio"
-
-#: src/modules/theme/ThemeFunctions.cpp:275
-msgid "Install Theme Pack - KVIrc"
-msgstr "Instali Etosan Pakon - KVIrc"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:173
-msgid "Install Theme Package From Disk"
-msgstr "Instali Etosan Pakon De Disko"
-
-#: src/modules/theme/SaveThemeDialog.cpp:173
-msgid "Make Screenshot Now"
-msgstr "Krei Ekrankopion Nun"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:128
-msgid "Manage Themes - KVIrc"
-msgstr "Administri Etosojn - KVIrc"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:411
-msgid "Open Theme - KVIrc"
-msgstr "Malfermi Etoson - KVIrc"
-
-#: src/modules/theme/PackThemeDialog.cpp:290
-msgid "Package Author:"
-msgstr "Paka Aŭtoro:"
-
-#: src/modules/theme/PackThemeDialog.cpp:256
-msgid "Package Information"
-msgstr "Paka Informo"
-
-#: src/modules/theme/PackThemeDialog.cpp:263
-msgid "Package Name:"
-msgstr "Paka Nomo:"
-
-#: src/modules/theme/PackThemeDialog.cpp:380
+#: src/modules/theme/PackThemeDialog.cpp:378
 msgid "Package Path"
 msgstr "Paka Pado"
 
-#: src/modules/theme/PackThemeDialog.cpp:542
-#: src/modules/theme/PackThemeDialog.cpp:557
-msgid "Packaging failed"
-msgstr "Enpakigo malsukcesis"
+#: src/modules/theme/PackThemeDialog.cpp:379
+msgid ""
+"Here you must choose the file name for the theme package. It should have a "
+"*%1 extension."
+msgstr "Ĉi tie vi devas elekti la dosiernomon por la etosa pako. Ĝi devus havi *%1 sufikson."
 
-#: src/modules/theme/PackThemeDialog.cpp:163
-msgid "Put a package description here..."
-msgstr "Meti pakan priskribon ĉi tie..."
+#: src/modules/theme/PackThemeDialog.cpp:390
+msgid "Finally hit the \"Finish\" button to complete the packaging operation."
+msgstr "Finfine alklaku la \"Fini\" butonon kompleti la pakigan operacion."
 
-#: src/modules/theme/SaveThemeDialog.cpp:64
-#: src/modules/theme/SaveThemeDialog.cpp:205
-#: src/modules/theme/SaveThemeDialog.cpp:240
+#: src/modules/theme/SaveThemeDialog.cpp:63
+#: src/modules/theme/SaveThemeDialog.cpp:222
+#: src/modules/theme/SaveThemeDialog.cpp:257
 #: src/modules/theme/SaveThemeDialog.cpp:279
-#: src/modules/theme/SaveThemeDialog.cpp:289
-#: src/modules/theme/SaveThemeDialog.cpp:299
+#: src/modules/theme/SaveThemeDialog.cpp:288
+#: src/modules/theme/SaveThemeDialog.cpp:298
 msgid "Save Current Theme - KVIrc"
 msgstr "Savi Nunan Etoson - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:146
-msgid "Save Current Theme..."
-msgstr "Savi Nunan Etoson..."
-
-#: src/modules/theme/SaveThemeDialog.cpp:308
-msgid "Save Theme - KVIrc"
-msgstr "Savi Etoson - KVIrc"
-
-#: src/modules/theme/SaveThemeDialog.cpp:180
-msgid "Screenshot"
-msgstr "Ekrankopio"
-
-#: src/modules/theme/ThemeFunctions.cpp:237
-msgid "Show Details"
-msgstr "Montri Detalojn"
-
-#: src/modules/theme/ThemeFunctions.cpp:323
-msgid "Subdirectory"
-msgstr "Subdosierujo"
-
-#: src/modules/theme/ThemeFunctions.cpp:69
-msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "La elektita dosiero ŝajnas ne esti valida KVIrc pako: %1"
-
-#: src/modules/theme/ThemeFunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "La elektita dosiero ŝajnas ne esti valida KVIrc etosa pako"
-
-#: src/modules/theme/libkvitheme.cpp:118
-#: src/modules/theme/libkvitheme.cpp:157
-msgid "The theme package '%Q' does not exist"
-msgstr "La etosa pako '%Q' ne ekzistas"
-
-#: src/modules/theme/SaveThemeDialog.cpp:134
-msgid "Theme Author:"
-msgstr "Etosa Aŭtoro:"
-
-#: src/modules/theme/PackThemeDialog.cpp:141
-msgid "Theme Data"
-msgstr "Etosaj Datumoj"
-
-#: src/modules/theme/ThemeFunctions.cpp:322
-msgid "Theme Engine Version"
-msgstr "Etosa Maŝina Versio"
-
-#: src/modules/theme/SaveThemeDialog.cpp:145
-msgid "Theme Information"
-msgstr "Etosa Informo"
-
-#: src/modules/theme/SaveThemeDialog.cpp:106
-msgid "Theme Name:"
-msgstr "Etosa Nomo:"
-
-#: src/modules/theme/SaveThemeDialog.cpp:306
-msgid "Theme saved successfully to %1"
-msgstr "Etoso savita sukcese al %1"
-
-#: src/modules/theme/PackThemeDialog.cpp:142
-msgid ""
-"This is the information list for the themes you're packaging. If it looks OK "
-"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
-"themes first."
-msgstr ""
-"Ĉi tiu informa listo estas por etosoj kiujn vi enpakigas. Se ĝi aspektas "
-"bone alklaku \"Sekvanta\" por daŭrigi, alie alklaku \"Rezigni\" kaj recenzi "
-"viajn etosojn unue."
-
-#: src/modules/theme/PackThemeDialog.cpp:104
-msgid ""
-"This procedure allows you to export the selected themes to a single package. "
-"It is useful when you want to distribute your themes to the public."
-msgstr ""
-"Ĉi tiu proceduro permesas vin eksporti la elektitajn etosojn al unuopa pako. "
-"Ĝi utilas kiam vi volas distribui viajn etosojn al la publiko."
-
-#: src/modules/theme/SaveThemeDialog.cpp:77
+#: src/modules/theme/SaveThemeDialog.cpp:76
 msgid ""
 "This procedure allows you to save the current theme settings to a single "
 "directory. It is useful if you want to apply other themes or play with the "
 "theme settings and later come back to this theme with a single click. It "
 "will also allow you to manually modify the theme settings and later export "
 "them to a distributable package."
+msgstr "Ĉi tiu proceduro permesas vin savi la nunajn etosajn agordojn al ununura dosierujo. Ĝi utilas se vi volas apliki aliajn etosojn aŭ ludi kun la etosaj agordoj kaj pli malfrue reveni al ĉi tiu etoso kun ununura alklako. Ankaŭ ĝi permesos vin permane modifi la etosajn agordojn kaj pli malfrue eksporti ilin al distribuebla pako."
+
+#: src/modules/theme/SaveThemeDialog.cpp:78
+msgid ""
+"You will be asked to provide a theme name, a description and, if you want, a"
+" screenshot."
+msgstr "Vi estos demandata provizi etosan nomon, priskribon kaj, se vi volas, ekrankopion."
+
+#: src/modules/theme/SaveThemeDialog.cpp:99
+msgid ""
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
+msgstr "Ĉi tie vi bezonas provizi informon pri vi (la aŭtoro) kaj mallongan priskribon de la etoso kiun vi kreas."
+
+#: src/modules/theme/SaveThemeDialog.cpp:105
+msgid "Theme Name:"
+msgstr "Etosa Nomo:"
+
+#: src/modules/theme/SaveThemeDialog.cpp:133
+msgid "Theme Author:"
+msgstr "Etosa Aŭtoro:"
+
+#: src/modules/theme/SaveThemeDialog.cpp:144
+msgid "Theme Information"
+msgstr "Etosa Informo"
+
+#: src/modules/theme/SaveThemeDialog.cpp:155
+msgid "Save icons"
 msgstr ""
-"Ĉi tiu proceduro permesas vin savi la nunajn etosajn agordojn al ununura "
-"dosierujo. Ĝi utilas se vi volas apliki aliajn etosojn aŭ ludi kun la etosaj "
-"agordoj kaj pli malfrue reveni al ĉi tiu etoso kun ununura alklako. Ankaŭ ĝi "
-"permesos vin permane modifi la etosajn agordojn kaj pli malfrue eksporti "
-"ilin al distribuebla pako."
+
+#: src/modules/theme/SaveThemeDialog.cpp:161
+msgid "Options"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:173
+msgid ""
+"Here you can either choose a screenshot image from disk or make one now. The"
+" screenshot will be displayed in the tooltips of the theme management dialog"
+" and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
+msgstr "Ĉi tie vi povas aŭ elekti ekrankopian bildon de disko aŭ krei unu nun. La ekrankopio estos montrata kun ŝpruchelpiloj de la etosa administra dialogo kaj ankaŭ videblos en la paka instala dialogo se vi eksportos la etoson al distribuebla pako."
+
+#: src/modules/theme/SaveThemeDialog.cpp:189
+msgid "Make Screenshot Now"
+msgstr "Krei Ekrankopion Nun"
+
+#: src/modules/theme/SaveThemeDialog.cpp:196
+msgid "Screenshot"
+msgstr "Ekrankopio"
+
+#: src/modules/theme/SaveThemeDialog.cpp:241
+msgid "Acquire Screenshot - KVIrc"
+msgstr "Havigi Ekrankopion - KVIrc"
+
+#: src/modules/theme/SaveThemeDialog.cpp:241
+msgid "Failed to make screenshot"
+msgstr "Malsukcesis krei ekrankopion"
+
+#: src/modules/theme/SaveThemeDialog.cpp:257
+msgid "You must choose a theme name!"
+msgstr "Vi devas elekti etosan nomon!"
 
 #: src/modules/theme/SaveThemeDialog.cpp:279
 msgid "Unable to create theme directory."
 msgstr "Ne povas krei etosan dosierujon."
 
-#: src/modules/theme/SaveThemeDialog.cpp:288
+#: src/modules/theme/SaveThemeDialog.cpp:287
 msgid "Unable to save theme: %1"
 msgstr "Ne povas savi etoson: %1"
 
-#: src/modules/theme/PackThemeDialog.cpp:272
-#: src/modules/theme/SaveThemeDialog.cpp:114
-msgid "Version:"
-msgstr "Versio:"
+#: src/modules/theme/SaveThemeDialog.cpp:298
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr "Malsukcesis ŝargi la elektitan ekrankopion: bonvolu ripari ĝin"
 
-#: src/modules/theme/ThemeFunctions.cpp:233
-msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
-msgstr ""
-"Averto: Io de la etoso enhavata en ĉi tiu pako povus esti aŭ difektita aŭ "
-"nekonforma kun ĉi tiu versio de KVIrc"
+#: src/modules/theme/SaveThemeDialog.cpp:305
+msgid "Theme saved successfully to %1"
+msgstr "Etoso savita sukcese al %1"
 
-#: src/modules/theme/ThemeFunctions.cpp:217
+#: src/modules/theme/SaveThemeDialog.cpp:307
+msgid "Save Theme - KVIrc"
+msgstr "Savi Etoson - KVIrc"
+
+#: src/modules/theme/ThemeFunctions.cpp:54
+msgid "The selected file does not seem to be a valid KVIrc theme package"
+msgstr "La elektita dosiero ŝajnas ne esti valida KVIrc etosa pako"
+
+#: src/modules/theme/ThemeFunctions.cpp:76
+msgid "The selected file does not seem to be a valid KVIrc package: %1"
+msgstr "La elektita dosiero ŝajnas ne esti valida KVIrc pako: %1"
+
+#: src/modules/theme/ThemeFunctions.cpp:134
+#: src/modules/theme/ThemeFunctions.cpp:318
+msgid "Author"
+msgstr "Aŭtoro"
+
+#: src/modules/theme/ThemeFunctions.cpp:135
+#: src/modules/theme/ThemeFunctions.cpp:319
+msgid "Created at"
+msgstr "Kreita je"
+
+#: src/modules/theme/ThemeFunctions.cpp:136
+#: src/modules/theme/ThemeFunctions.cpp:320
+msgid "Created with"
+msgstr "Kreita kun"
+
+#: src/modules/theme/ThemeFunctions.cpp:216
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Averto: La etoso povus esti nekonforma kun ĉi tiu versio de KVIrc"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
-#: src/modules/theme/SaveThemeDialog.cpp:88
-msgid "Welcome"
-msgstr "Bonvenon"
+#: src/modules/theme/ThemeFunctions.cpp:225
+msgid "Go Back to Package Data"
+msgstr "Reiri al Pakaj Datumoj"
 
-#: src/modules/theme/ThemeFunctions.cpp:279
-msgid "Yes, Proceed"
-msgstr "Jes, Daŭri"
-
-#: src/modules/theme/SaveThemeDialog.cpp:240
-msgid "You must choose a theme name!"
-msgstr "Vi devas elekti etosan nomon!"
-
-#: src/modules/theme/PackThemeDialog.cpp:106
+#: src/modules/theme/ThemeFunctions.cpp:232
 msgid ""
-"You will be asked to provide a package name, a description and, if you want, "
-"an icon/screenshot."
-msgstr ""
-"Vi estos demandata provizi pakan nomon, priskribon kaj, se vi volas, "
-"piktogramon/ekrankopion."
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
+msgstr "Averto: Io de la etoso enhavata en ĉi tiu pako povus esti aŭ difektita aŭ nekonforma kun ĉi tiu versio de KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:79
-msgid ""
-"You will be asked to provide a theme name, a description and, if you want, a "
-"screenshot."
-msgstr ""
-"Vi estos demandata provizi etosan nomon, priskribon kaj, se vi volas, "
-"ekrankopion."
+#: src/modules/theme/ThemeFunctions.cpp:236
+msgid "Show Details"
+msgstr "Montri Detalojn"
 
-#: src/modules/theme/ThemeFunctions.cpp:276
+#: src/modules/theme/ThemeFunctions.cpp:274
+msgid "Install Theme Pack - KVIrc"
+msgstr "Instali Etosan Pakon - KVIrc"
+
+#: src/modules/theme/ThemeFunctions.cpp:275
 msgid "You're about to install the following theme package"
 msgstr "Vi estas instalonta la sekvantan etosan pakon"
 
-#: src/modules/theme/PackThemeDialog.cpp:161
-msgid "Your name here"
-msgstr "Via nomo ĉi tie"
+#: src/modules/theme/ThemeFunctions.cpp:276
+msgid "Do you want to proceed with the installation ?"
+msgstr "Ĉu vi volas daŭri kun la instalado?"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:99
+#: src/modules/theme/ThemeFunctions.cpp:277
+msgid "Do Not Install"
+msgstr "Ne Instali"
+
+#: src/modules/theme/ThemeFunctions.cpp:278
+msgid "Yes, Proceed"
+msgstr "Jes, Daŭri"
+
+#: src/modules/theme/ThemeFunctions.cpp:294
+msgid "Failed to unpack the selected file: %1"
+msgstr "Malsukcesis malpaki la elektitan dosieron: %1"
+
+#: src/modules/theme/ThemeFunctions.cpp:321
+msgid "Theme Engine Version"
+msgstr "Etosa Maŝina Versio"
+
+#: src/modules/theme/ThemeFunctions.cpp:322
+msgid "Subdirectory"
+msgstr "Subdosierujo"
+
+#: src/modules/theme/ThemeFunctions.cpp:399
+msgid "Invalid empty package path"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:405
+msgid "Invalid empty package name"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:416
+msgid "Failed to load the selected image: please fix it"
+msgstr "Malsukcesis ŝargi la elektitan bildon: bonvolu ripari ĝin"
+
+#: src/modules/theme/ThemeFunctions.cpp:459
+msgid "Invalid theme name"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:464
+msgid "Invalid theme version"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:502
+#: src/modules/theme/ThemeFunctions.cpp:513
+msgid "Packaging failed"
+msgstr "Enpakigo malsukcesis"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:95
 msgid "by"
 msgstr "de"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:124
+msgid "Manage Themes - KVIrc"
+msgstr "Administri Etosojn - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:142
+msgid "Save Current Theme..."
+msgstr "Savi Nunan Etoson..."
+
+#: src/modules/theme/ThemeManagementDialog.cpp:153
+msgid "Export Selected Themes to a Distributable Package"
+msgstr "Eksporti Elektitajn Etosojn al Distribuebla Pako"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:159
+msgid "Delete Selected Themes"
+msgstr "Forviŝi Elektitajn Etosojn"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:169
+msgid "Install Theme Package From Disk"
+msgstr "Instali Etosan Pakon De Disko"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:175
+msgid "Get More Themes..."
+msgstr "Havigi Pliajn Etosojn..."
+
+#: src/modules/theme/ThemeManagementDialog.cpp:209
+#: src/modules/theme/ThemeManagementDialog.cpp:372
+msgid "<b><u>Current Installed Theme:</u> "
+msgstr "<b><u>Nuna Instalita Etoso:</u> "
+
+#: src/modules/theme/ThemeManagementDialog.cpp:334
+msgid "&Remove Theme"
+msgstr "&Forviŝi Etoson"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:336
+msgid "&Apply Theme"
+msgstr "&Apliki Etoson"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:354
+#: src/modules/theme/ThemeManagementDialog.cpp:367
+msgid "Apply theme - KVIrc"
+msgstr "Apliki etoson - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:355
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr "Ĉu vi volas apliki etoson \"%Q\" (versio %Q)?"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:366
+msgid "Failed to apply the specified theme: %1"
+msgstr "Malsukcesis apliki la specifitan etoson: %1"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:389
+msgid "Delete Theme - KVIrc"
+msgstr "Forviŝi Etoson - KVIrc"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:390
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr "Ĉu vi vere volas forviŝi etoson \"%Q\" (versio %Q)?"
+
+#: src/modules/theme/ThemeManagementDialog.cpp:409
+msgid "Open Theme - KVIrc"
+msgstr "Malfermi Etoson - KVIrc"
+
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
+msgid "Download Themes - KVIrc"
+msgstr "Elŝuti Etosojn - KVIrc"

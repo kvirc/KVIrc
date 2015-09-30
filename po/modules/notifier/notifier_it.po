@@ -1,36 +1,52 @@
-# translation of notifier_it.po to
-# translation of notifier_it.po
-# KVIrc Notifier module Italian translation file
-# Italian translation file for KVIrc 4.0
-# Copyright (C) Szymon Stefanek
-# This file is distributed under the same license as the KVIrc package.
-#
-# Szymon Stefanek <pragma at kvirc dot net>, 2004.
-# Etherea <cle at virg0 dot org>, 2006.
-# Elvio Basello <hellvis69 at netsons dot org>, 2006-2009.
-# HelLViS69, 2009.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Etherea <cle at virg0 dot org>, 2006
+# HelLViS69, 2009
+# Szymon Stefanek <pragma at kvirc dot net>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: notifier_it\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2009-12-30 15:58+0100\n"
-"Last-Translator: HelLViS69\n"
-"Language-Team: Italian <kde-i18n-it@kde.org>\n"
-"Language: it\n"
+"POT-Creation-Date: 2015-09-29 16:23+0200\n"
+"PO-Revision-Date: 2015-08-01 10:02+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/kvirc/KVIrc/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:973
-msgid "1 Hour"
-msgstr "1 ora"
+#: src/modules/notifier/libkvinotifier.cpp:136
+msgid "The specified window does not exist"
+msgstr "La finestra specificata non esiste"
+
+#: src/modules/notifier/libkvinotifier.cpp:150
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Il timeout specificato non è valido, assumo 0"
+
+#: src/modules/notifier/libkvinotifier.cpp:153
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Lo switch -t necessita di un timeout in secondi"
+
+#: src/modules/notifier/NotifierWindow.cpp:965
+msgid "Show/Hide input line"
+msgstr "Mostra/Nascondi l'inserimento del testo"
+
+#: src/modules/notifier/NotifierWindow.cpp:966
+msgid "Hide"
+msgstr "Nascondi"
 
 #: src/modules/notifier/NotifierWindow.cpp:969
 msgid "1 Minute"
 msgstr "1 minuto"
+
+#: src/modules/notifier/NotifierWindow.cpp:970
+msgid "5 Minutes"
+msgstr "5 minuti"
 
 #: src/modules/notifier/NotifierWindow.cpp:971
 msgid "15 Minutes"
@@ -40,45 +56,22 @@ msgstr "15 minuti"
 msgid "30 Minutes"
 msgstr "30 minuti"
 
-#: src/modules/notifier/NotifierWindow.cpp:970
-msgid "5 Minutes"
-msgstr "5 minuti"
-
-#: src/modules/notifier/NotifierWindow.cpp:978
-msgid "Disable"
-msgstr "Disabilita"
-
-#: src/modules/notifier/NotifierWindow.cpp:966
-msgid "Hide"
-msgstr "Nascondi"
-
-#: src/modules/notifier/NotifierWindow.cpp:976
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Permanentemente (Finché non sia Abilitato)"
-
-#: src/modules/notifier/NotifierWindow.cpp:965
-msgid "Show/Hide input line"
-msgstr "Mostra/Nascondi l'inserimento del testo"
-
-#: src/modules/notifier/libkvinotifier.cpp:153
-msgid "The -t switch expects a timeout in seconds"
-msgstr "Lo switch -t necessita di un timeout in secondi"
-
-#: src/modules/notifier/libkvinotifier.cpp:150
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Il timeout specificato non è valido, assumo 0"
-
-#: src/modules/notifier/libkvinotifier.cpp:136
-msgid "The specified window does not exist"
-msgstr "La finestra specificata non esiste"
+#: src/modules/notifier/NotifierWindow.cpp:973
+msgid "1 Hour"
+msgstr "1 ora"
 
 #: src/modules/notifier/NotifierWindow.cpp:975
 msgid "Until KVIrc is Restarted"
 msgstr "Fino al prossimo riavvio di KVIrc"
 
+#: src/modules/notifier/NotifierWindow.cpp:976
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Permanentemente (Finché non sia Abilitato)"
+
+#: src/modules/notifier/NotifierWindow.cpp:978
+msgid "Disable"
+msgstr "Disabilita"
+
 #: src/modules/notifier/NotifierWindow.cpp:1053
 msgid "Write text or commands to window"
 msgstr "Spedisci testo o comandi alla finestra"
-
-#~ msgid "Close tab"
-#~ msgstr "Chiudi tab"

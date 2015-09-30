@@ -1,88 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Igor Paliychuk <mansonigor@gmail.com>, 2012.
+# 
+# Translators:
+# igorko <mansonigor@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2012-04-11 10:10+0300\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: uk\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:05+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/kvirc/KVIrc/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.1\n"
-
-#: src/modules/serverdb/libkviserverdb.cpp:833
-msgid "The network specified already exists"
-msgstr "Вказана мережа вже існує"
-
-#: src/modules/proxydb/libkviproxydb.cpp:453
-msgid "The specified IP is not valid"
-msgstr "Вказаний IP некоректний"
-
-#: src/modules/serverdb/libkviserverdb.cpp:233
-#: src/modules/serverdb/libkviserverdb.cpp:274
-#: src/modules/serverdb/libkviserverdb.cpp:910
-#: src/modules/serverdb/libkviserverdb.cpp:967
-#: src/modules/serverdb/libkviserverdb.cpp:1003
-msgid "The specified network does not exist"
-msgstr "Вказана мережа не існує"
-
-#: src/modules/proxydb/libkviproxydb.cpp:311
-#: src/modules/proxydb/libkviproxydb.cpp:577
-msgid "The specified protocol does not exist"
-msgstr "Вказаний протокол не існує"
-
-#: src/modules/proxydb/libkviproxydb.cpp:285
-msgid "The specified proxy already exists"
-msgstr "Вказаний проксі вже існує"
-
-#: src/modules/proxydb/libkviproxydb.cpp:71
-#: src/modules/proxydb/libkviproxydb.cpp:114
-#: src/modules/proxydb/libkviproxydb.cpp:374
-#: src/modules/proxydb/libkviproxydb.cpp:445
-#: src/modules/proxydb/libkviproxydb.cpp:508
-#: src/modules/proxydb/libkviproxydb.cpp:569
-#: src/modules/proxydb/libkviproxydb.cpp:613
-msgid "The specified proxy does not exist"
-msgstr "Вказаний проксі не існує"
-
-#: src/modules/serverdb/libkviserverdb.cpp:921
-msgid "The specified server already exists"
-msgstr "Вказаний сервер вже існує"
-
-#: src/modules/serverdb/libkviserverdb.cpp:281
-#: src/modules/serverdb/libkviserverdb.cpp:1011
-msgid "The specified server does not exist"
-msgstr "Вказаний сервер не існує"
-
-#: src/modules/proxydb/libkviproxydb.cpp:434
-msgid "You must provide the IP as parameter"
-msgstr "Ви повинні вказати IP як параметр"
-
-#: src/modules/serverdb/libkviserverdb.cpp:125
-#: src/modules/serverdb/libkviserverdb.cpp:226
-#: src/modules/serverdb/libkviserverdb.cpp:261
-#: src/modules/serverdb/libkviserverdb.cpp:825
-#: src/modules/serverdb/libkviserverdb.cpp:896
-#: src/modules/serverdb/libkviserverdb.cpp:959
-#: src/modules/serverdb/libkviserverdb.cpp:989
-msgid "You must provide the network name as parameter"
-msgstr "Ви повинні вказати назву мережі як параметр"
-
-#: src/modules/proxydb/libkviproxydb.cpp:363
-msgid "You must provide the port number as parameter"
-msgstr "Ви повинні вказати номер порту як параметр"
-
-#: src/modules/proxydb/libkviproxydb.cpp:558
-msgid "You must provide the protocol as parameter"
-msgstr "Ви повинні вказати протокол як параметр"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/proxydb/libkviproxydb.cpp:61
 #: src/modules/proxydb/libkviproxydb.cpp:104
@@ -94,9 +28,58 @@ msgstr "Ви повинні вказати протокол як парамет�
 msgid "You must provide the proxy hostname as parameter"
 msgstr "Ви повинні вказати ім'я хосту проксі як параметр"
 
+#: src/modules/proxydb/libkviproxydb.cpp:71
+#: src/modules/proxydb/libkviproxydb.cpp:114
+#: src/modules/proxydb/libkviproxydb.cpp:374
+#: src/modules/proxydb/libkviproxydb.cpp:445
+#: src/modules/proxydb/libkviproxydb.cpp:508
+#: src/modules/proxydb/libkviproxydb.cpp:569
+#: src/modules/proxydb/libkviproxydb.cpp:613
+msgid "The specified proxy does not exist"
+msgstr "Вказаний проксі не існує"
+
 #: src/modules/proxydb/libkviproxydb.cpp:274
 msgid "You must provide the proxy name as parameter"
 msgstr "Ви повинні вказати ім'я проксі як параметр"
+
+#: src/modules/proxydb/libkviproxydb.cpp:285
+msgid "The specified proxy already exists"
+msgstr "Вказаний проксі вже існує"
+
+#: src/modules/proxydb/libkviproxydb.cpp:311
+#: src/modules/proxydb/libkviproxydb.cpp:577
+msgid "The specified protocol does not exist"
+msgstr "Вказаний протокол не існує"
+
+#: src/modules/proxydb/libkviproxydb.cpp:363
+msgid "You must provide the port number as parameter"
+msgstr "Ви повинні вказати номер порту як параметр"
+
+#: src/modules/proxydb/libkviproxydb.cpp:434
+msgid "You must provide the IP as parameter"
+msgstr "Ви повинні вказати IP як параметр"
+
+#: src/modules/proxydb/libkviproxydb.cpp:453
+msgid "The specified IP is not valid"
+msgstr "Вказаний IP некоректний"
+
+#: src/modules/proxydb/libkviproxydb.cpp:558
+msgid "You must provide the protocol as parameter"
+msgstr "Ви повинні вказати протокол як параметр"
+
+#: src/modules/proxydb/libkviproxydb.cpp:602
+msgid "You must provide the value as parameter"
+msgstr "Ви повинні вказати значення як параметр"
+
+#: src/modules/serverdb/libkviserverdb.cpp:125
+#: src/modules/serverdb/libkviserverdb.cpp:226
+#: src/modules/serverdb/libkviserverdb.cpp:261
+#: src/modules/serverdb/libkviserverdb.cpp:825
+#: src/modules/serverdb/libkviserverdb.cpp:896
+#: src/modules/serverdb/libkviserverdb.cpp:959
+#: src/modules/serverdb/libkviserverdb.cpp:989
+msgid "You must provide the network name as parameter"
+msgstr "Ви повинні вказати назву мережі як параметр"
 
 #: src/modules/serverdb/libkviserverdb.cpp:168
 #: src/modules/serverdb/libkviserverdb.cpp:267
@@ -105,6 +88,23 @@ msgstr "Ви повинні вказати ім'я проксі як парам�
 msgid "You must provide the server name as parameter"
 msgstr "Ви повинні вказати ім'я сервера як параметр"
 
-#: src/modules/proxydb/libkviproxydb.cpp:602
-msgid "You must provide the value as parameter"
-msgstr "Ви повинні вказати значення як параметр"
+#: src/modules/serverdb/libkviserverdb.cpp:233
+#: src/modules/serverdb/libkviserverdb.cpp:274
+#: src/modules/serverdb/libkviserverdb.cpp:910
+#: src/modules/serverdb/libkviserverdb.cpp:967
+#: src/modules/serverdb/libkviserverdb.cpp:1003
+msgid "The specified network does not exist"
+msgstr "Вказана мережа не існує"
+
+#: src/modules/serverdb/libkviserverdb.cpp:281
+#: src/modules/serverdb/libkviserverdb.cpp:1011
+msgid "The specified server does not exist"
+msgstr "Вказаний сервер не існує"
+
+#: src/modules/serverdb/libkviserverdb.cpp:833
+msgid "The network specified already exists"
+msgstr "Вказана мережа вже існує"
+
+#: src/modules/serverdb/libkviserverdb.cpp:921
+msgid "The specified server already exists"
+msgstr "Вказаний сервер вже існує"

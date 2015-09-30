@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,26 @@ msgstr ""
 
 #: src/modules/log/libkvilog.cpp:323
 msgid "Failed to export the log '%1'"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:69
+msgid "Channel"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Query"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:77
+msgid "DCC Chat"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "Console"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:85
+msgid "Other"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:70
@@ -153,46 +173,26 @@ msgstr ""
 msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:595
+#: src/modules/logview/LogViewWindow.cpp:597
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:669
+#: src/modules/logview/LogViewWindow.cpp:677
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:672
+#: src/modules/logview/LogViewWindow.cpp:680
 msgid "Console on %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:675
+#: src/modules/logview/LogViewWindow.cpp:683
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:678
+#: src/modules/logview/LogViewWindow.cpp:686
 msgid "DCC Chat with %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:681
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Something on %1"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:69
-msgid "Channel"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:73
-msgid "Query"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:77
-msgid "DCC Chat"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:81
-msgid "Console"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:85
-msgid "Other"
 msgstr ""

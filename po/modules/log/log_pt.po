@@ -1,219 +1,198 @@
-# Translation of KVIrc logview messages to Portuguese
-# Copyright (C) 2010 the KVIrc's copyright holder
-# This file is distributed under the same license as the KVirc package.
-#
-# Zé <ze@mandriva.org>, 2004, 2006, 2007, 2011.
-# Zé <mmodem00@gmail.com>, 2011, 2012.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Zé <mmodem00@gmail.com>, 2011-2012
+# Zé <ze@mandriva.org>, 2004,2006-2007,2011
 msgid ""
 msgstr ""
-"Project-Id-Version: kvirc_logview \n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2012-11-18 03:45+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
-"Language: pt\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:01+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.com/kvirc/KVIrc/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/logview/LogViewWindow.cpp:364
-msgid "%1 on %2"
-msgstr "%1 em %2"
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:157
+#: src/modules/log/libkvilog.cpp:207
+msgid "Window '%1' not found"
+msgstr "Janela '%1' não encontrada"
 
-#: src/modules/logview/LogViewWindow.cpp:174
-msgid "Apply filter"
-msgstr "Aplicar filtro"
+#: src/modules/log/libkvilog.cpp:107 src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:211
+msgid "Missing window id after the 'w' switch"
+msgstr "Falta o id da janela depois da opção 'w'"
 
 #: src/modules/log/libkvilog.cpp:118
 msgid "Can't log to file '%1'"
 msgstr "Não é possível gravar o registo '%1'"
 
-#: src/modules/logview/LogViewWindow.cpp:105
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/modules/logview/LogViewWidget.cpp:69
-msgid "Channel"
-msgstr "Canal"
-
-#: src/modules/logview/LogViewWindow.cpp:669
-msgid "Channel %1 on %2"
-msgstr "Canal %1 em %2"
-
-#: src/modules/logview/LogViewWindow.cpp:469
-msgid "Confirm current user log deletion"
-msgstr "Confirmar remoção do registo do utilizador actual"
-
-#: src/modules/logview/LogViewWindow.cpp:485
-msgid "Confirm current user logs deletion"
-msgstr "Confirmar remoção dos registos do utilizador actual"
-
-#: src/modules/logview/LogViewWidget.cpp:81
-msgid "Console"
-msgstr "Consola"
-
-#: src/modules/logview/LogViewWindow.cpp:672
-msgid "Console on %1"
-msgstr "Consola em %1"
-
-#: src/modules/logview/LogViewWindow.cpp:143
-msgid "Contents filter"
-msgstr "Filtro de conteúdos"
-
-#: src/modules/logview/LogViewWidget.cpp:77
-msgid "DCC Chat"
-msgstr "Conversa DCC"
-
-#: src/modules/logview/LogViewWindow.cpp:678
-msgid "DCC Chat with %1"
-msgstr "Conversa DCC com %1"
-
-#: src/modules/logview/LogViewWindow.cpp:486
-msgid "Do you really wish to delete all these logs?"
-msgstr "Deseja realmente apagar todos estes registos?"
-
-#: src/modules/logview/LogViewWindow.cpp:470
-msgid "Do you really wish to delete this log?"
-msgstr "Deseja realmente apagar este registo?"
-
-#: src/modules/logview/LogViewWindow.cpp:595
-msgid "Export Log - KVIrc"
-msgstr "Exportar Registo - KVIrc"
-
-#: src/modules/logview/LogViewWindow.cpp:450
-msgid "Export log file to"
-msgstr "Exportar registo para"
-
-#: src/modules/log/libkvilog.cpp:323
-msgid "Failed to export the log '%1'"
-msgstr "Falha ao exportar o registo '%1'"
-
-#: src/modules/log/libkvilog.cpp:313
-msgid "Failed to load logview module, aborting"
-msgstr "Falha ao carregar o módulo logview, a abortar"
-
-#: src/modules/logview/LogViewWindow.cpp:118
-msgid "Filter"
-msgstr "Filtro"
-
-#: src/modules/logview/LogViewWindow.cpp:195
-msgid "HTML archive"
-msgstr "Ficheiro HTML"
-
-#: src/modules/logview/LogViewWindow.cpp:110
-msgid "Index"
-msgstr "Índice"
-
-#: src/modules/logview/LogViewWindow.cpp:70
-msgid "Log File"
-msgstr "Ficheiro de Registo"
-
-#: src/modules/logview/LogViewWindow.cpp:243
-msgid "Log Viewer"
-msgstr "Visualizador de Registos"
-
-#: src/modules/logview/LogViewWindow.cpp:152
-msgid "Log contents mask:"
-msgstr "Filtro de conteúdos:"
-
-#: src/modules/logview/LogViewWindow.cpp:146
-msgid "Log name mask:"
-msgstr "Filtro de nomes:"
-
-#: src/modules/log/libkvilog.cpp:107
-#: src/modules/log/libkvilog.cpp:161
-#: src/modules/log/libkvilog.cpp:211
-msgid "Missing window id after the 'w' switch"
-msgstr "Falta o id da janela depois da opção 'w'"
-
-#: src/modules/logview/LogViewWindow.cpp:166
-msgid "Only newer than"
-msgstr "Apenas mais recente que"
-
-#: src/modules/logview/LogViewWindow.cpp:158
-msgid "Only older than"
-msgstr "Apenas mais antigo que"
-
-#: src/modules/logview/LogViewWidget.cpp:85
-msgid "Other"
-msgstr "Outro"
-
-#: src/modules/logview/LogViewWindow.cpp:193
-#, fuzzy
-msgid "Plain text file"
-msgstr "ficheiro de texto"
-
-#: src/modules/logview/LogViewWidget.cpp:73
-msgid "Query"
-msgstr "Consulta"
-
-#: src/modules/logview/LogViewWindow.cpp:675
-msgid "Query with %1 on %2"
-msgstr "Consulta com %1 em %2"
-
-#: src/modules/logview/LogViewWindow.cpp:448
-msgid "Remove all log files within this folder"
-msgstr "Remover todos os registos dentro desta pasta"
-
-#: src/modules/logview/LogViewWindow.cpp:451
-msgid "Remove log file"
-msgstr "Remover o registo"
-
-#: src/modules/logview/LogViewWindow.cpp:134
-msgid "Show DCC chat logs"
-msgstr "Mostrar registos de conversas DCC"
-
-#: src/modules/logview/LogViewWindow.cpp:122
-msgid "Show channel logs"
-msgstr "Mostrar registos de canais"
-
-#: src/modules/logview/LogViewWindow.cpp:130
-msgid "Show console logs"
-msgstr "Mostrar registos de consola"
-
-#: src/modules/logview/LogViewWindow.cpp:138
-msgid "Show other logs"
-msgstr "Mostrar outros registos"
-
-#: src/modules/logview/LogViewWindow.cpp:126
-msgid "Show query logs"
-msgstr "Mostrar registos de consultas"
-
-#: src/modules/logview/LogViewWindow.cpp:681
-msgid "Something on %1"
-msgstr "Alguma coisa em %1"
-
 #: src/modules/log/libkvilog.cpp:120
 msgid "This window has no logging capabilities"
 msgstr "Esta janela não tem capacidade de registar"
-
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:157
-#: src/modules/log/libkvilog.cpp:207
-msgid "Window '%1' not found"
-msgstr "Janela '%1' não encontrada"
 
 #: src/modules/log/libkvilog.cpp:265
 msgid "Window with id '%1' not found, returning empty string"
 msgstr "Janela com id '%1' não encontrada, a retornar 'string' vazia"
 
-#~ msgid "Abort filtering"
-#~ msgstr "Abortar filtragem"
+#: src/modules/log/libkvilog.cpp:313
+msgid "Failed to load logview module, aborting"
+msgstr "Falha ao carregar o módulo logview, a abortar"
 
-#~ msgid "Browse Log Files"
-#~ msgstr "Procurar Ficheiros de Registo"
+#: src/modules/log/libkvilog.cpp:323
+msgid "Failed to export the log '%1'"
+msgstr "Falha ao exportar o registo '%1'"
 
-#~ msgid "File '%1' already exists. Do you want to overwrite it?"
-#~ msgstr "O ficheiro '%1' já existe. Deseja substituí-lo?"
+#: src/modules/logview/LogViewWidget.cpp:69
+msgid "Channel"
+msgstr "Canal"
 
-#~ msgid "Filtering files..."
-#~ msgstr "A filtrar ficheiros..."
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Query"
+msgstr "Consulta"
 
-#~ msgid "Ops.. internal error"
-#~ msgstr "Ups.... erro interno"
+#: src/modules/logview/LogViewWidget.cpp:77
+msgid "DCC Chat"
+msgstr "Conversa DCC"
 
-#~ msgid "Remove all these channel/query log files"
-#~ msgstr "Remover todos estes registos de canais/consultas"
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "Console"
+msgstr "Consola"
+
+#: src/modules/logview/LogViewWidget.cpp:85
+msgid "Other"
+msgstr "Outro"
+
+#: src/modules/logview/LogViewWindow.cpp:70
+msgid "Log File"
+msgstr "Ficheiro de Registo"
+
+#: src/modules/logview/LogViewWindow.cpp:105
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/modules/logview/LogViewWindow.cpp:110
+msgid "Index"
+msgstr "Índice"
+
+#: src/modules/logview/LogViewWindow.cpp:118
+msgid "Filter"
+msgstr "Filtro"
+
+#: src/modules/logview/LogViewWindow.cpp:122
+msgid "Show channel logs"
+msgstr "Mostrar registos de canais"
+
+#: src/modules/logview/LogViewWindow.cpp:126
+msgid "Show query logs"
+msgstr "Mostrar registos de consultas"
+
+#: src/modules/logview/LogViewWindow.cpp:130
+msgid "Show console logs"
+msgstr "Mostrar registos de consola"
+
+#: src/modules/logview/LogViewWindow.cpp:134
+msgid "Show DCC chat logs"
+msgstr "Mostrar registos de conversas DCC"
+
+#: src/modules/logview/LogViewWindow.cpp:138
+msgid "Show other logs"
+msgstr "Mostrar outros registos"
+
+#: src/modules/logview/LogViewWindow.cpp:143
+msgid "Contents filter"
+msgstr "Filtro de conteúdos"
+
+#: src/modules/logview/LogViewWindow.cpp:146
+msgid "Log name mask:"
+msgstr "Filtro de nomes:"
+
+#: src/modules/logview/LogViewWindow.cpp:152
+msgid "Log contents mask:"
+msgstr "Filtro de conteúdos:"
+
+#: src/modules/logview/LogViewWindow.cpp:158
+msgid "Only older than"
+msgstr "Apenas mais antigo que"
+
+#: src/modules/logview/LogViewWindow.cpp:166
+msgid "Only newer than"
+msgstr "Apenas mais recente que"
+
+#: src/modules/logview/LogViewWindow.cpp:174
+msgid "Apply filter"
+msgstr "Aplicar filtro"
+
+#: src/modules/logview/LogViewWindow.cpp:193
+msgid "Plain text file"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:195
+msgid "HTML archive"
+msgstr "Ficheiro HTML"
+
+#: src/modules/logview/LogViewWindow.cpp:243
+msgid "Log Viewer"
+msgstr "Visualizador de Registos"
+
+#: src/modules/logview/LogViewWindow.cpp:364
+msgid "%1 on %2"
+msgstr "%1 em %2"
+
+#: src/modules/logview/LogViewWindow.cpp:448
+msgid "Remove all log files within this folder"
+msgstr "Remover todos os registos dentro desta pasta"
+
+#: src/modules/logview/LogViewWindow.cpp:450
+msgid "Export log file to"
+msgstr "Exportar registo para"
+
+#: src/modules/logview/LogViewWindow.cpp:451
+msgid "Remove log file"
+msgstr "Remover o registo"
+
+#: src/modules/logview/LogViewWindow.cpp:469
+msgid "Confirm current user log deletion"
+msgstr "Confirmar remoção do registo do utilizador actual"
+
+#: src/modules/logview/LogViewWindow.cpp:470
+msgid "Do you really wish to delete this log?"
+msgstr "Deseja realmente apagar este registo?"
+
+#: src/modules/logview/LogViewWindow.cpp:485
+msgid "Confirm current user logs deletion"
+msgstr "Confirmar remoção dos registos do utilizador actual"
+
+#: src/modules/logview/LogViewWindow.cpp:486
+msgid "Do you really wish to delete all these logs?"
+msgstr "Deseja realmente apagar todos estes registos?"
+
+#: src/modules/logview/LogViewWindow.cpp:597
+msgid "Export Log - KVIrc"
+msgstr "Exportar Registo - KVIrc"
+
+#: src/modules/logview/LogViewWindow.cpp:677
+msgid "Channel %1 on %2"
+msgstr "Canal %1 em %2"
+
+#: src/modules/logview/LogViewWindow.cpp:680
+msgid "Console on %1"
+msgstr "Consola em %1"
+
+#: src/modules/logview/LogViewWindow.cpp:683
+msgid "Query with %1 on %2"
+msgstr "Consulta com %1 em %2"
+
+#: src/modules/logview/LogViewWindow.cpp:686
+msgid "DCC Chat with %1"
+msgstr "Conversa DCC com %1"
+
+#: src/modules/logview/LogViewWindow.cpp:689
+msgid "Something on %1"
+msgstr "Alguma coisa em %1"

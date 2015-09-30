@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-09-29 16:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,164 +113,164 @@ msgstr ""
 msgid "Total: %d matching users (of %d in the database)"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:78
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:77
 msgid "Property Editor"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:91
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:90
 msgid "Property"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:92
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:91
 msgid "Value"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:102
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:101
 msgid "&New"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:106
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:105
 msgid "&Remove"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:113
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:257
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
 #: src/modules/reguser/RegisteredUsersDialog.cpp:299
 msgid "&OK"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:117
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:261
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:468
 #: src/modules/reguser/RegisteredUsersDialog.cpp:304
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:212
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:211
 msgid "Mask Editor"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:216
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:215
 msgid ""
 "Insert a mask for this user.<br>It can contain the wildcard characters '*' "
 "and '?'."
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:226
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:225
 msgid ""
 "<center>This is the <b>nickname</b> that will match this user, default value "
 "is the registered name.</center>"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:235
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:234
 msgid ""
 "<center>This is the <b>username</b> that will match this user. <b>*</b> will "
 "match any username.</center>"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:244
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:243
 msgid ""
 "<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
 "match any hostname.</center>"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:320
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:319
 msgid "Registered User Entry"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:326
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:325
 msgid "Name:"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:331
 #: src/modules/reguser/RegisteredUsersDialog.cpp:136
 msgid "Comment:"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:342
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:341
 msgid "Masks:"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:354
 #: src/modules/reguser/RegisteredUsersDialog.cpp:248
 msgid "&Add..."
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:358
 #: src/modules/reguser/RegisteredUsersDialog.cpp:258
 msgid "Re&move"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:364
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:363
 msgid "&Edit"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:372
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:371
 msgid "Identity"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:378
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:377
 msgid "Notify when user is online"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:381
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:380
 msgid "Notify nicknames:"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:384
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:383
 msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:409
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:408
 msgid "Avatar"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:416
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:415
 msgid "Use custom color in userlist"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:424
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:423
 msgid "All Properties..."
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:431
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:430
 msgid "Properties"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:437
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:436
 msgid "Enable ignore for this user"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:439
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:438
 msgid "Ignore features"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:446
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:445
 msgid "Ignore query messages"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:449
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:448
 msgid "Ignore channel messages"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:452
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:451
 msgid "Ignore notice messages"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:455
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:454
 msgid "Ignore CTCP messages"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:458
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:457
 msgid "Ignore invites"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:461
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:460
 msgid "Ignore DCCs"
 msgstr ""
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:467
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:466
 msgid "Ignore"
 msgstr ""
 

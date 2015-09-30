@@ -1,73 +1,68 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Erkan <bravehearterkan@hotmail.com>, 2010
-#
+# 
+# Translators:
+# xyzzy <bravehearterkan@hotmail.com>, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: kvirc_tr\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-01-26 23:56+0200\n"
-"Last-Translator: \n"
-"Language-Team: Turkish\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:23+0200\n"
+"PO-Revision-Date: 2015-08-01 10:06+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/kvirc/KVIrc/language/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-Language: Turkish\n"
-"X-Poedit-Country: TURKEY\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
+msgstr "KDE için güzel bir KTorrent istemci arayüzü.\nİndirmek için http://www.ktorrent.org\n"
+
+#: src/modules/torrent/libkvitorrent.cpp:62
+msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr ""
-"KDE için güzel bir KTorrent istemci arayüzü.\n"
-"İndirmek için http://www.ktorrent.org\n"
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Torrent istemcisi arayüz seçimi \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:722
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Geçersiz istemci arayüzü \"%Q\"!"
-
-#: src/modules/torrent/libkvitorrent.cpp:129
-msgid "Last interface error: "
-msgstr "Son arabirimi hatası:"
-
-#: src/modules/torrent/StatusBarApplet.cpp:92
-msgid "No client selected!"
-msgstr "Hiçbir istemci seçilmemiş!"
+#: src/modules/torrent/libkvitorrent.cpp:109
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Hiç kullanışlı torrent istemcisi bu makinede görünmüyor."
 
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Hiçbir torrent istemcisi arayüzü seçmedik. Deneyiniz; /torrent.detect"
 
-#: src/modules/torrent/libkvitorrent.cpp:109
-msgid "Seems that there is no usable torrent client on this machine"
-msgstr "Hiç kullanışlı torrent istemcisi bu makinede görünmüyor."
-
 #: src/modules/torrent/libkvitorrent.cpp:128
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
-msgstr ""
-"Seçilen torrent istemci arayüzü istenen fonksiyonu gerçekleştirmede başarısız"
+msgstr "Seçilen torrent istemci arayüzü istenen fonksiyonu gerçekleştirmede başarısız"
+
+#: src/modules/torrent/libkvitorrent.cpp:129
+msgid "Last interface error: "
+msgstr "Son arabirimi hatası:"
+
+#: src/modules/torrent/libkvitorrent.cpp:714
+msgid "Using client interface \"%Q\"."
+msgstr "Kullanılan istemci arayüzü \"%Q\"."
+
+#: src/modules/torrent/libkvitorrent.cpp:722
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Geçersiz istemci arayüzü \"%Q\"!"
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
 #: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Torrent İstemci"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr ""
-
-#: src/modules/torrent/libkvitorrent.cpp:714
-msgid "Using client interface \"%Q\"."
-msgstr "Kullanılan istemci arayüzü \"%Q\"."
+#: src/modules/torrent/StatusBarApplet.cpp:92
+msgid "No client selected!"
+msgstr "Hiçbir istemci seçilmemiş!"

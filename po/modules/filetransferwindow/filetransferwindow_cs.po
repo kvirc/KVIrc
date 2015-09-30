@@ -1,33 +1,38 @@
-# Czech translation of Kvirc-3.0.
-# Copyright (C) 2004 THE Kvirc-3.0'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Kvirc-3.0 package.
-# Dušan Hokův <dusan@mirc.cz>, 2004.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dušan Hokův <dusan@mirc.cz>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: Kvirc-3.0\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2007-12-05 17:57+0100\n"
-"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
-"Language: cs\n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:01+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Czech (http://www.transifex.com/kvirc/KVIrc/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
-msgid "&Clear Terminated"
-msgstr "&Smazat přerušené"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
+msgid "Type"
+msgstr "Typ"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
-msgid "&Copy Path to Clipboard"
-msgstr "&Kopírovat cestu do schránky"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
+msgid "Information"
+msgstr "Informace"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
-msgid "&Delete file"
-msgstr "&Smazat soubor"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
+msgid "Progress"
+msgstr "Průběh"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
+msgid "Size: %1"
+msgstr "Velikost: %1"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:450
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:482
@@ -38,94 +43,82 @@ msgstr "&Otevřít"
 msgid "&Other..."
 msgstr "&Ostatní..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
-msgid "Clear &All"
-msgstr "Smazat &Vše"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "Clear All Transfers? - KVIrc"
-msgstr "Smazat všechny přenosy: - KVIrc"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
-msgid "Clear all transfers, including any in progress?"
-msgstr "Smazat všechny přenosy, včetně probíhajících?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
-msgid "Confirm delete"
-msgstr "Potvrdit smazání"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
-msgid "Delete failed"
-msgstr "Smazání selhalo"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
-#, fuzzy
-msgid "Do you really want to delete the file %1?"
-msgstr "Opravdu chcete smazat soubor %1?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
-msgid "Failed to remove the file"
-msgstr "Selhalo smazání souboru"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
-msgid "File Transfers"
-msgstr "Souborové přenosy"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
-msgid "Information"
-msgstr "Informace"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
-msgid "Local &File"
-msgstr "Lokální &Soubor"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
-msgid "MS-DOS Prompt at Location"
-msgstr "MS-DOS Prompt na umístění"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "No"
-msgstr "Ne"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
-msgid "OK"
-msgstr "OK"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
+msgid "Open &With"
+msgstr "Otevřít &Pomocí"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:475
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:487
 msgid "Open &Location"
 msgstr "Otevřít &Umístění"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
-msgid "Open &With"
-msgstr "Otevřít &Pomocí"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
-msgid "Progress"
-msgstr "Průběh"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
-msgid "Size: %1"
-msgstr "Velikost: %1"
-
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:476
 msgid "Terminal at Location"
 msgstr "Terminál v Umístění"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
-msgid "Type"
-msgstr "Typ"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
+msgid "MS-DOS Prompt at Location"
+msgstr "MS-DOS Prompt na umístění"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
+msgid "&Copy Path to Clipboard"
+msgstr "&Kopírovat cestu do schránky"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
+msgid "&Delete file"
+msgstr "&Smazat soubor"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
+msgid "Local &File"
+msgstr "Lokální &Soubor"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
+msgid "&Clear Terminated"
+msgstr "&Smazat přerušené"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
+msgid "Clear &All"
+msgstr "Smazat &Vše"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
+msgid "Do you really want to delete the file %1?"
+msgstr ""
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
+msgid "Confirm delete"
+msgstr "Potvrdit smazání"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:627
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:793
 msgid "Yes"
 msgstr "Ano"
 
-#~ msgid "&Default Application"
-#~ msgstr "&Výchozí aplikace"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "No"
+msgstr "Ne"
 
-#, fuzzy
-#~ msgid "Manage File &Transfers"
-#~ msgstr "Souborové přenosy"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
+msgid "Delete failed"
+msgstr "Smazání selhalo"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
+msgid "Failed to remove the file"
+msgstr "Selhalo smazání souboru"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
+msgid "OK"
+msgstr "OK"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
+msgid "Clear all transfers, including any in progress?"
+msgstr "Smazat všechny přenosy, včetně probíhajících?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Smazat všechny přenosy: - KVIrc"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
+msgid "File Transfers"
+msgstr "Souborové přenosy"

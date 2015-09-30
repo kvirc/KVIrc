@@ -1,210 +1,46 @@
-# translation of mediaplayer_ru.po to russian
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-#
-# Valerius <valeragir@mail.ru>, 2005.
-# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
-# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
+# 
+# Translators:
+# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
+# Valerius <valeragir@mail.ru>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: mediaplayer_ru\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2010-12-13 01:54+0600\n"
-"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
-"org>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:02+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/kvirc/KVIrc/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:470
-msgid ""
-"An interface to Amarok2.\n"
-"Download it from http://amarok.kde.org\n"
-msgstr ""
-"Интерфейс к Amarok2.\n"
-"Вы можете загрузить его с http://amarok.kde.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:446
-msgid ""
-"An interface to BMPx.\n"
-"Download it from http://sourceforge.net/projects/beepmp\n"
-msgstr ""
-"Интерфейс к BMPx.\n"
-"Вы можете загрузить его с http://sourceforge.net/projects/beepmp\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:585
-#, fuzzy
-msgid ""
-"An interface to Clementine.\n"
-"Download it from http://www.clementine-player.org/\n"
-msgstr ""
-"Интерфейс к Amarok2.\n"
-"Вы можете загрузить его с http://amarok.kde.org\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:488
-msgid ""
-"An interface to Qmmp.\n"
-"Download it from http://qmmp.ylsoftware.com\n"
-msgstr ""
-"Интерфейс к Qmmp.\n"
-"Вы можете загрузить его с http://qmmp.ylsoftware.com\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:547
-msgid ""
-"An interface to Totem.\n"
-"Download it from http://projects.gnome.org/totem/\n"
-msgstr ""
-"Интерфейс к Totem.\n"
-"Вы можете загрузить его с http://projects.gnome.org/totem/\n"
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:565
-msgid ""
-"An interface to Vlc.\n"
-"Download it from http://www.videolan.org/\n"
-"You need to manually enable the DBus control\n"
-"interface in the Vlc preferences\n"
-msgstr ""
-"Интерфейс к VLC.\n"
-"Вы можете загрузить его с http://www.videolan.org/\n"
-"Необходимо вручную включить управление через DBus\n"
-"в настройках VLC\n"
-
-#: src/modules/mediaplayer/MpAmipInterface.cpp:113
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net\n"
-"To use this interface you must install AMIP plug-in for your player."
-msgstr ""
-"Интерфейс к плагину AMIP.\n"
-"Вы можете загрузить его с http://amip.tools-for.net\n"
-"Для использования этого интерфейса вы должны установить плагин AMIP для "
-"вашего проигрывателя."
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:523
-msgid ""
-"An interface to the Mozilla Songbird media player.\n"
-"Download it from http://www.getsongbird.com.\n"
-"To use it you have to install also the MPRIS addon available at http://"
-"addons.songbirdnest.com/addon/1626.\n"
-msgstr ""
-"Интерфейс к медиапрогрывателю Mozilla Songbird.\n"
-"Вы можете загрузить его с http://www.getsongbird.com.\n"
-"Для использования вам также придётся установить дополнение MPRIS доступное "
-"по адресу http://addons.songbirdnest.com/addon/1626.\n"
-
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
-msgid ""
-"An interface to the Spotify music streaming service.\n"
-"It is only available for certain countries in Europe.\n"
-"You can download it from http://www.spotify.com.\n"
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
+msgid "Trying media player interface \"%1\": score %2"
 msgstr ""
 
-#: src/modules/mediaplayer/MpMprisInterface.cpp:506
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:74
 msgid ""
-"An interface to the Xmms2 media player.\n"
-"Download it from http://xmms2.org\n"
-msgstr ""
-"Интерфейс к медиаплееру Xmms2.\n"
-"Вы можете загрузить его с http://xmms2.org\n"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру audacious.\n"
-"Вы можете загрузить его с http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://legacy.xmms2.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:198
-#, fuzzy
-msgid ""
-"An interface to the popular Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-"Интерфейс к популярному медиаплееру Winamp.\n"
-"Вы можете загрузить его с http://www.winamp.com.\n"
-"Чтобы использовать все возможности этого интерфейса, Вы должны скопировать "
-"плагин gen_kvirc.dll, который можно найти в папке с дистрибутивом KVIrc в "
-"папку плагинов Winamp и перезапустить Winamp."
-
-#: src/modules/mediaplayer/MpMprisInterface.cpp:320
-msgid ""
-"An interface to the popular audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру audacious.\n"
-"Вы можете загрузить его с http://audacious-media-player.org\n"
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:188
-msgid "Can't find a running winamp window"
-msgstr "Не могу найти запущенное окно winamp"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
-#, fuzzy
-msgid "Can't find symbol %1 in %2"
-msgstr "Не найден символ %1 в %2"
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
-#, fuzzy
-msgid "Can't load the player library (%1)"
-msgstr "Не могу загрузить библиотеку проигрывателя (%1)"
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Не уверен в результате, подождите секундочку, более агрессивный способ обнаружения"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
 msgstr "Выбран интерфейс медиаплеера \"%Q\""
 
-#: src/modules/mediaplayer/MpInterface.cpp:43
-msgid "Function not implemented"
-msgstr "Функция не реализована"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
-msgid "Last interface error: "
-msgstr "Последняя ошибка интерфейса:"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Интерфейс медиаплеера не выбран. Попробуйте /mediaplayer.detect"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"Не уверен в результате, подождите секундочку, более агрессивный способ "
-"обнаружения"
-
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:105
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Кажется на этой машине нет подходящих медиаплееров"
 
-#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
-msgid "Spotify is not running"
-msgstr ""
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:115
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Интерфейс медиаплеера не выбран. Попробуйте /mediaplayer.detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:571
@@ -220,24 +56,132 @@ msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Выбранный интерфейс медиаплеера не смог выполнить требуемую функцию"
 
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1557
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1600
+msgid "Last interface error: "
+msgstr "Последняя ошибка интерфейса:"
+
+#: src/modules/mediaplayer/MpAmipInterface.cpp:113
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr "Интерфейс к плагину AMIP.\nВы можете загрузить его с http://amip.tools-for.net\nДля использования этого интерфейса вы должны установить плагин AMIP для вашего проигрывателя."
+
+#: src/modules/mediaplayer/MpInterface.cpp:43
+msgid "Function not implemented"
+msgstr "Функция не реализована"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:320
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr "Интерфейс к популярному в UNIX медиаплееру audacious.\nВы можете загрузить его с http://audacious-media-player.org\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:446
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://sourceforge.net/projects/beepmp\n"
+msgstr "Интерфейс к BMPx.\nВы можете загрузить его с http://sourceforge.net/projects/beepmp\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:470
+msgid ""
+"An interface to Amarok2.\n"
+"Download it from http://amarok.kde.org\n"
+msgstr "Интерфейс к Amarok2.\nВы можете загрузить его с http://amarok.kde.org\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:488
+msgid ""
+"An interface to Qmmp.\n"
+"Download it from http://qmmp.ylsoftware.com\n"
+msgstr "Интерфейс к Qmmp.\nВы можете загрузить его с http://qmmp.ylsoftware.com\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:506
+msgid ""
+"An interface to the Xmms2 media player.\n"
+"Download it from http://xmms2.org\n"
+msgstr "Интерфейс к медиаплееру Xmms2.\nВы можете загрузить его с http://xmms2.org\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:523
+msgid ""
+"An interface to the Mozilla Songbird media player.\n"
+"Download it from http://www.getsongbird.com.\n"
+"To use it you have to install also the MPRIS addon available at http://addons.songbirdnest.com/addon/1626.\n"
+msgstr "Интерфейс к медиапрогрывателю Mozilla Songbird.\nВы можете загрузить его с http://www.getsongbird.com.\nДля использования вам также придётся установить дополнение MPRIS доступное по адресу http://addons.songbirdnest.com/addon/1626.\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:547
+msgid ""
+"An interface to Totem.\n"
+"Download it from http://projects.gnome.org/totem/\n"
+msgstr "Интерфейс к Totem.\nВы можете загрузить его с http://projects.gnome.org/totem/\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:565
+msgid ""
+"An interface to Vlc.\n"
+"Download it from http://www.videolan.org/\n"
+"You need to manually enable the DBus control\n"
+"interface in the Vlc preferences\n"
+msgstr "Интерфейс к VLC.\nВы можете загрузить его с http://www.videolan.org/\nНеобходимо вручную включить управление через DBus\nв настройках VLC\n"
+
+#: src/modules/mediaplayer/MpMprisInterface.cpp:585
+msgid ""
+"An interface to Clementine.\n"
+"Download it from http://www.clementine-player.org/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:41
+msgid "Spotify is not running"
+msgstr ""
+
+#: src/modules/mediaplayer/MpSpotifyInterface.cpp:50
+msgid ""
+"An interface to the Spotify music streaming service.\n"
+"It is only available for certain countries in Europe.\n"
+"You can download it from http://www.spotify.com.\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:188
+msgid "Can't find a running winamp window"
+msgstr "Не могу найти запущенное окно winamp"
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:198
+msgid ""
+"An interface to the popular Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll plugin found in the KVIrc distribution directory to the Winamp plugins folder and restart winamp."
+msgstr ""
+
 #: src/modules/mediaplayer/MpWinampInterface.cpp:320
 #: src/modules/mediaplayer/MpWinampInterface.cpp:354
 msgid ""
-"The winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
+"The winamp plugin has not been installed properly. Check /help "
+"mediaplayer.nowplaying"
+msgstr "Плагин для winamp не был установлен должным образом. Проверьте /help mediaplayer. nowplaying"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr "Интерфейс к популярному в UNIX медиаплееру xmms.\nВы можете загрузить его с http://legacy.xmms2.org\n"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr "Интерфейс к популярному в UNIX медиаплееру audacious.\nВы можете загрузить его с http://audacious-media-player.org\n"
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+msgid "Can't load the player library (%1)"
 msgstr ""
-"Плагин для winamp не был установлен должным образом. Проверьте /help "
-"mediaplayer. nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:66
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:92
-#, fuzzy
-msgid "Trying media player interface \"%1\": score %2"
-msgstr "Ищу интерфейс медиаплеера \"%1\": score %2"
-
-#~ msgid ""
-#~ "An interface to the Xmms2 media player.\n"
-#~ "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
-#~ msgstr ""
-#~ "Интерфейс к медиаплееру Xmms2.\n"
-#~ "Вы можете загрузить его с http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+msgid "Can't find symbol %1 in %2"
+msgstr ""

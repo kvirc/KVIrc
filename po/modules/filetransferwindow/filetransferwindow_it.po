@@ -1,39 +1,39 @@
-# translation of filetransferwindow_it.po to
-# translation of filetransferwindow_it.po
-# KVIrc FileTransferWindow module Italian translation file
-# Italian translation file for KVIrc 4.0
-# Copyright (C) Szymon Stefanek
-# This file is distributed under the same license as the KVIrc package.
-#
-# Etherea <cle at virg0 dot org>, 2006.
-# Elvio Basello <hellvis69 at netsons dot org>, 2005-2009.
-# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2011.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2011
+# Etherea <cle at virg0 dot org>, 2006
 msgid ""
 msgstr ""
-"Project-Id-Version: filetransferwindow_it\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-01-10 19:21+0100\n"
-"Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
-"Language-Team: Italian <kde-i18n-it@kde.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-09-29 16:24+0200\n"
+"PO-Revision-Date: 2015-08-01 10:01+0000\n"
+"Last-Translator: Fabio <ctrlaltca@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/kvirc/KVIrc/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
-msgid "&Clear Terminated"
-msgstr "Elimina Terminate"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
+msgid "Type"
+msgstr "Tipo"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
-msgid "&Copy Path to Clipboard"
-msgstr "&Copia Percorso negli Appunti"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
+msgid "Information"
+msgstr "Informazioni"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
-msgid "&Delete file"
-msgstr "&Elimina file"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
+msgid "Progress"
+msgstr "Progresso"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
+msgid "Size: %1"
+msgstr "Dimensione: %1"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:450
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:482
@@ -44,92 +44,82 @@ msgstr "&Apri"
 msgid "&Other..."
 msgstr "Al&tro..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
-msgid "Clear &All"
-msgstr "Elimina &Tutte"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "Clear All Transfers? - KVIrc"
-msgstr "Elimina Tutti i Trasferimenti? - KVIrc"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
-msgid "Clear all transfers, including any in progress?"
-msgstr "Eliminare tutti i trasferimenti, compresi quelli attivi?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
-msgid "Confirm delete"
-msgstr "Conferma eliminazione"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
-msgid "Delete failed"
-msgstr "Eliminazione fallita"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
-msgid "Do you really want to delete the file %1?"
-msgstr "Vuoi veramente eliminare il file %1?"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
-msgid "Failed to remove the file"
-msgstr "Eliminazione del file fallita"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
-msgid "File Transfers"
-msgstr "Trasferimenti File"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
-msgid "Information"
-msgstr "Informazioni"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
-msgid "Local &File"
-msgstr "File &Locale"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
-msgid "MS-DOS Prompt at Location"
-msgstr "Terminale MS-DOS nella Locazione"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "No"
-msgstr "No"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
-msgid "OK"
-msgstr "OK"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
+msgid "Open &With"
+msgstr "Apri &Con"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:475
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:487
 msgid "Open &Location"
 msgstr "Apri &Locazione"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
-msgid "Open &With"
-msgstr "Apri &Con"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
-msgid "Progress"
-msgstr "Progresso"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
-msgid "Size: %1"
-msgstr "Dimensione: %1"
-
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:476
 msgid "Terminal at Location"
 msgstr "Terminale nella Locazione"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
-msgid "Type"
-msgstr "Tipo"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
+msgid "MS-DOS Prompt at Location"
+msgstr "Terminale MS-DOS nella Locazione"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
+msgid "&Copy Path to Clipboard"
+msgstr "&Copia Percorso negli Appunti"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
+msgid "&Delete file"
+msgstr "&Elimina file"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
+msgid "Local &File"
+msgstr "File &Locale"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
+msgid "&Clear Terminated"
+msgstr "Elimina Terminate"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
+msgid "Clear &All"
+msgstr "Elimina &Tutte"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
+msgid "Do you really want to delete the file %1?"
+msgstr "Vuoi veramente eliminare il file %1?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
+msgid "Confirm delete"
+msgstr "Conferma eliminazione"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:627
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:793
 msgid "Yes"
 msgstr "Si"
 
-#~ msgid "Manage File &Transfers"
-#~ msgstr "Gestisci Trasferimenti File"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "No"
+msgstr "No"
 
-#~ msgid "Ops.. internal error"
-#~ msgstr "Ops.. errore interno"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
+msgid "Delete failed"
+msgstr "Eliminazione fallita"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
+msgid "Failed to remove the file"
+msgstr "Eliminazione del file fallita"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
+msgid "OK"
+msgstr "OK"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
+msgid "Clear all transfers, including any in progress?"
+msgstr "Eliminare tutti i trasferimenti, compresi quelli attivi?"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Elimina Tutti i Trasferimenti? - KVIrc"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
+msgid "File Transfers"
+msgstr "Trasferimenti File"
