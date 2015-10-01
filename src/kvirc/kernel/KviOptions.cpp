@@ -333,7 +333,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ShowDialogOnChannelCtcpPage",false,KviOption_sectFlagCtcp),
 	BOOL_OPTION("PopupNotifierOnNewNotices",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("UserListViewUseAwayColor",true,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
-	BOOL_OPTION("ShowUserFlagForChannelsInWindowList",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui)
+	BOOL_OPTION("ShowUserFlagForChannelsInWindowList",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
+	BOOL_OPTION("EnableCustomCursorWidth",false,KviOption_resetUpdateGui)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -669,7 +670,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("OnJoinRequestsDelay",1,KviOption_sectFlagConnection), // FIXME: Wouldn't this be nicer in msecs defaulting to 100-200 ?
 	UINT_OPTION("ToolBarIconSize",22,KviOption_groupTheme | KviOption_resetReloadImages),
 	UINT_OPTION("ToolBarButtonStyle",0,KviOption_groupTheme ), // 0 = Qt::ToolButtonIconOnly
-	UINT_OPTION("MaximumBlowFishKeySize",56,KviOption_sectFlagNone)
+	UINT_OPTION("MaximumBlowFishKeySize",56,KviOption_sectFlagNone),
+	UINT_OPTION("CustomCursorWidth",1,KviOption_resetUpdateGui)
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

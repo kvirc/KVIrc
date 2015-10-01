@@ -353,8 +353,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPopupNotifierOnNewNotices 258                      /* query */
 #define KviOption_boolUserListViewUseAwayColor 259                       /* userlist */
 #define KviOption_boolShowUserFlagForChannelsInWindowList 260
+#define KviOption_boolEnableCustomCursorWidth 261                          /* interface */
 
-#define KVI_NUM_BOOL_OPTIONS 261
+#define KVI_NUM_BOOL_OPTIONS 262
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
@@ -547,7 +548,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintOutgoingTrafficLimitUSeconds 13                /* connection::transport */
 #define KviOption_uintNotifyListIsOnDelayTimeInSecs 14               /* notify */
 #define KviOption_uintNotifyListUserhostDelayTimeInSecs 15           /* notify */
-#define KviOption_uintTreeWindowListMinimumWidth 16           /* ?? interface::general ?? */
+#define KviOption_uintTreeWindowListMinimumWidth 16                  /* ?? interface::general ?? */
 #define KviOption_uintAvatarOfferTimeoutInSecs 17                    /* irc::ctcp::avatar */
 #define KviOption_uintIrcViewMaxBufferSize 18                        /* interface::features::components::ircview */
 #define KviOption_uintIrcViewToolTipTimeoutInMsec 19                 /* interface::features::components::ircview */
@@ -618,8 +619,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintToolBarIconSize 79
 #define KviOption_uintToolBarButtonStyle 80
 #define KviOption_uintMaximumBlowFishKeySize 81
+#define KviOption_uintCustomCursorWidth 82                             /* Interface */
 
-#define KVI_NUM_UINT_OPTIONS 82
+#define KVI_NUM_UINT_OPTIONS 83
 
 namespace KviIdentdOutputMode {
 	enum Mode {
