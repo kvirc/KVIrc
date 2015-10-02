@@ -137,6 +137,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 	pDialog->setWindowTitle(szCaption);
 	// 190
 	pDialog->setFileMode(KviTalFileDialog::AnyFile);
+	pDialog->setAcceptMode(QFileDialog::AcceptSave);
 	//pDialog->setShowHiddenFiles(showHidden);
 #ifdef COMPILE_KDE4_SUPPORT
 	pDialog->setKeepLocation(true);
