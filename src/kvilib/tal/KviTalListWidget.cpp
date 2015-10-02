@@ -35,10 +35,37 @@ KviTalListWidget::KviTalListWidget(QWidget * pParent,QString name,Qt::WindowType
 {
 	setObjectName(name);
 	setWindowFlags(f);
+	
+	//setUniformItemSizes(true);
+	//setResizeMode(QListWidget::Adjust);
+	//setWordWrap(true);
+	viewport()->installEventFilter(this);
 }
+
+bool KviTalListWidget::eventFilter(QObject *o,QEvent * e)
+{
+	if(e->type() == QEvent::Resize)
+	{
+		// A veeeery ugly hack.
+		// This is the only reliable way I have found to perform a full
+		// relayout on the items.
+		// The Qt ItemView framework is so complicated that it's almost unusable.
+		// We had the same functionality in Qt3 with 1/10 of the code.
+		if(model())
+		{
+			// And this does not even work when the items should shrink...
+			// ...but well, that's the best we can do.
+			emit model()->layoutChanged();
+			// The model is hidden so we can't make these public.
+			//model()->beginResetModel();
+			//model()->endResetModel();
+		}
+	}
+	return QListWidget::eventFilter(o,e);
+}
+
 bool KviTalListWidget::event(QEvent * e)
 {
-
 	if (e->type() == QEvent::ToolTip)
 	{
 	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);

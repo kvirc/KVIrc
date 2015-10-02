@@ -182,6 +182,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	m_pListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_pItemDelegate = new KviTalIconAndRichTextItemDelegate(m_pListWidget);
 	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
+	m_pItemDelegate->setMinimumSize(QSize(300,60));
 	m_pListWidget->setItemDelegate(m_pItemDelegate);
 	m_pListWidget->setMinimumHeight(400);
 	m_pListWidget->setMinimumWidth(420);

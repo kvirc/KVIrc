@@ -45,6 +45,7 @@ public:
 
 protected:
 	virtual bool event(QEvent * e);
+	virtual bool eventFilter(QObject *o,QEvent * e);
 signals:
 	void tipRequest(QListWidgetItem *,const QPoint &);
 

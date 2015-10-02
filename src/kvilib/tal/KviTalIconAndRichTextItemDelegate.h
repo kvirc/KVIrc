@@ -66,7 +66,17 @@ public:
 protected:
 	QAbstractItemView * m_pParent;
 	QPixmap           * m_pDefaultPix;
+	QSize               m_oMinimumSize;
 public:
+	/**
+	* \brief Set the absolute minimum size of the items. Should be set in the view constructor as
+	* QListWidget caches the size hints and works really hard to keep them unchanged.
+	*/
+	void setMinimumSize(const QSize &s)
+	{
+		m_oMinimumSize = s;
+	}
+
 	/**
 	* \brief Returns the size hint for the view
 	* \param option The style options for the item

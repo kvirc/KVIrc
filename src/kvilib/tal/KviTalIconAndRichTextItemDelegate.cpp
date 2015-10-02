@@ -30,7 +30,7 @@
 #include <QAbstractTextDocumentLayout>
 
 KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget)
-: QStyledItemDelegate(pWidget), m_pParent(pWidget), m_pDefaultPix(0)
+: QStyledItemDelegate(pWidget), m_pParent(pWidget), m_pDefaultPix(0), m_oMinimumSize(0,0)
 {
 }
 
@@ -72,7 +72,7 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 	doc.setHtml(szText);
 	doc.setDefaultFont(opt.font);
 	pPainter->translate(opt.rect.x()+LVI_AFTER_ICON,opt.rect.y()+LVI_BORDER);
-	doc.setTextWidth(opt.rect.width()-LVI_AFTER_ICON);
+	doc.setTextWidth(opt.rect.width()-LVI_AFTER_ICON-LVI_BORDER);
 	QRect cliprect = QRect(QPoint(0,0),QSize(opt.rect.width()-LVI_AFTER_ICON,opt.rect.height()));
 	doc.drawContents(pPainter,cliprect);
 	pPainter->restore();
@@ -84,10 +84,20 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &op
 	QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(option.font);
-	doc.setTextWidth(((QListWidget *)parent())->width()-LVI_AFTER_ICON);
+	doc.setTextWidth(((QListWidget *)parent())->viewport()->width()-LVI_AFTER_ICON-LVI_BORDER);
 	int iHeight = doc.documentLayout()->documentSize().toSize().height();
 	if(iHeight < (LVI_ICON_SIZE+(2 * LVI_BORDER)))
 		iHeight = LVI_ICON_SIZE;
 
-	return QSize(((QListWidget *)parent())->minimumWidth(), iHeight + (2 * LVI_BORDER));
+	//qDebug("Size hint (%d,%d)",((QListWidget *)parent())->minimumWidth(), iHeight + (2 * LVI_BORDER));
+	
+	int w = ((QListWidget *)parent())->minimumWidth();
+	if(w < m_oMinimumSize.width())
+		w = m_oMinimumSize.width();
+	int h = iHeight + (2 * LVI_BORDER);
+	if(h < m_oMinimumSize.height())
+		h = m_oMinimumSize.height();
+
+	return QSize(w,h);
 }
+
