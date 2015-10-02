@@ -132,12 +132,6 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	SystemParametersInfo(SPI_GETCARETWIDTH, 0, &m_iCursorWidth, 0);
-#else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
-	m_iCursorWidth = KVI_OPTION_UINT(KviOption_uintCustomCursorWidth);
-#endif
-
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
 	setAutoFillBackground(false);
@@ -191,8 +185,18 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 	newFont.setKerning(false);
 	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	setFont(newFont);
+
 	//set cursor custom width
-	m_iCursorWidth = KVI_OPTION_UINT(KviOption_uintCustomCursorWidth);
+	if (KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth))
+	{
+		m_iCursorWidth = KVI_OPTION_UINT(KviOption_uintCustomCursorWidth);
+	} else {
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		SystemParametersInfo(SPI_GETCARETWIDTH, 0, &m_iCursorWidth, 0);
+#else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+		m_iCursorWidth = 1;
+#endif
+	}
 
 	if(bRefreshCachedMetrics)
 	{
