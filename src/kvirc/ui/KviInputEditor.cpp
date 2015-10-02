@@ -117,7 +117,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_bTextDisplayBufferDirty = true;
 
 	m_bCursorOn            = false;                         //Cursor state
-	m_iCursorTimer         = 0;                             //Timer that iverts the cursor state
+	m_iCursorTimer         = 0;                             //Timer that inverts the cursor state
 	m_iDragTimer           = 0;                             //Timer for drag selection updates
 	m_iLastCursorXPosition = 0;                             //Calculated in paintEvent
 	m_iSelectionAnchorChar = -1;                            //Character clicked at the beginning of the selection process
@@ -131,12 +131,6 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
-
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	SystemParametersInfo(SPI_GETCARETWIDTH, 0, &m_iCursorWidth, 0);
-#else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
-	m_iCursorWidth = 1;
-#endif
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -191,6 +185,18 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 	newFont.setKerning(false);
 	newFont.setStyleStrategy(QFont::StyleStrategy(newFont.styleStrategy() | QFont::ForceIntegerMetrics));
 	setFont(newFont);
+
+	//set cursor custom width
+	if (KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth))
+	{
+		m_iCursorWidth = KVI_OPTION_UINT(KviOption_uintCustomCursorWidth);
+	} else {
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		SystemParametersInfo(SPI_GETCARETWIDTH, 0, &m_iCursorWidth, 0);
+#else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+		m_iCursorWidth = 1;
+#endif
+	}
 
 	if(bRefreshCachedMetrics)
 	{

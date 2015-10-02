@@ -155,7 +155,12 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 
 	addStringSelector(g,__tr2qs_ctx("Nick completion postfix string","options"),KviOption_stringNickCompletionPostfix);
 	addBoolSelector(g,__tr2qs_ctx("Use the completion postfix string for the first word only","options"),KviOption_boolUseNickCompletionPostfixForFirstWordOnly);
-	addRowSpacer(0,6,0,6);
+
+	KviBoolSelector *d = addBoolSelector(0,6,0,6,__tr2qs_ctx("Use a custom cursor width","options"),KviOption_boolEnableCustomCursorWidth);
+	KviUIntSelector *f = addUIntSelector(0,7,0,7,__tr2qs_ctx("Custom cursor width:","options"),KviOption_uintCustomCursorWidth,1,24,8,KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth));
+	f->setSuffix(__tr2qs_ctx(" px","options"));
+	connect(d,SIGNAL(toggled(bool)),f,SLOT(setEnabled(bool)));
+	addRowSpacer(0,8,0,8);
 }
 
 OptionsWidget_inputFeatures::~OptionsWidget_inputFeatures()
