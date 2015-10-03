@@ -1,0 +1,178 @@
+-------------------------------------------------------------------------------
+KVIrc4 win64 compiling howto                                          by Cizzle
+ based on wodim's guide at https://thacid.wordpress.com/2010/10/18/compiling-kvirc-64-bits-from-svn-using-visual-studio-2008/
+ and DarthGandalf's appveyor buildinstructions
+-------------------------------------------------------------------------------
+
+This paper describes how to successfully compile a working copy of KVIrc 4.3.x
+under Microsoft Windows operating systems. For own compilations we assume a
+root-directory C:\kvirccomp\ being used.
+
+-------------------------------------------------------------------------------
+Prerequisites
+-------------------------------------------------------------------------------
+
+- A 64-bit Microsoft Windows operating system.
+	Should work at least on 7
+
+- Microsoft Visual Studio 2013 (Community Edition).
+	Get it from https://www.visualstudio.com/nl-nl/products/visual-studio-community-vs
+	Install in default location with default options, though you can slim it down a lot if wanted.
+
+- CMake.
+	Get it from http://www.cmake.org/download/
+	Install in default location with default options and choose "Add CMake to command path for all users".
+
+- GIT client. 
+	Get one from https://git-for-windows.github.io/
+	Git bash should be enough.
+
+- Qt.
+	Get it from https://www.qt.io/download-open-source/
+	Version 5 should work.
+	Get the online installer and be sure to mark MSVS 2013 64bit version.
+	Install in default location with default options.
+
+- Perl.
+	Get it from http://www.activestate.com/activeperl/downloads
+	Get the 64-bit version, use 5.20.x (newer versions don't have dmake yet in the repo).
+	Install in default location with default options.
+	
+	If you want scripting support, you will also have to do this:
+	Go to C:\Perl64\lib\CORE, make the file config.h not read-only and open it for editing.
+	Find the line that starts with "#define PERL_STATIC_INLINE" and put "/*" in front of it (so it's commented).
+	And of course save the file.
+	
+	Some perl releases miss dmake at install time; if you get a strange error at compilation
+	time, run the following command from cmdline: ppm install dmake
+
+- zlib.
+	Get it from http://zlib.net/
+	Get the source as we need to compile it ourselves (until a 64bit dll is provided).
+	Compiling (replace versions with what you have):
+		Unpack in C:\kvirccomp\; then open a VS x64 Native CMD Prompt and run:
+			cd C:\kvirccomp\zlib-1.2.8
+			"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x64
+			nmake -f win32/Makefile.msc AS=ml64 LOC="-DASMV -DASMINF -I." OBJA="inffasx64.obj gvmat64.obj inffas8664.obj"
+
+- OpenSSL.
+	Get it from http://www.openssl.org/source/ to compile yourself
+	or get the non-Light Win64 package from http://slproweb.com/products/Win32OpenSSL.html
+	Compiling (replace versions with what you have):
+		Unpack in C:\kvirccomp\; then open a VS x64 Native CMD Prompt and run:
+			perl Configure VC-WIN64A
+			ms\do_win64a
+			nmake -f ms\ntdll.mak
+			cd out32dll
+			..\ms\test
+		All of the tests should run flawlessly.
+
+		Then run the following as a batch-script in the ${OPENSSL_INCLUDE_DIR}/openssl/:
+			@echo off
+			setlocal enabledelayedexpansion
+			for %%f in (*.h) do (
+			 set /P linkn= < %%f
+			 set linkn=!linkn:/=\!
+			 ren %%f %%f.ori
+			 copy !linkn! %%f
+			)
+
+- Python.
+	Optional for scripting purposes
+	Get it from http://www.activestate.com/activepython/downloads/
+	Get the 64-bit 2.x version as 3.x is not backwards compatible and supported by now.
+	Install in default location with default options.
+
+- Enchant.
+	Optional for spellchecking support
+	Get it from https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
+	Unpack in C:\kvirccomp and edit enchant-inst\include\enchant\enchant.h adding under line "#include <sys/types.h>" (l35):
+		#include <BaseTsd.h>
+		typedef SSIZE_T ssize_t;
+	and edit enchant-inst\include\glib-2.0\glibconfig.h adding under lines "#define G_CAN_INLINE	1; #endif" (l120):
+		#undef G_CAN_INLINE
+	You can get dictionaries from http://extensions.libreoffice.org/extension-center/
+
+- Phonon4Qt5.
+	Optional audio backend
+	Get it from https://projects.kde.org/projects/kdesupport/phonon/phonon/repository
+	We need to compile this ourselves, but we first need the extra-cmake-modules:
+	Get this from https://projects.kde.org/projects/kdesupport/extra-cmake-modules/repository
+		Unpack ECM in C:\kvirccomp\, then open a VS x64 Native CMD Prompt and run:
+			md build
+			cd build
+			cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=C:\Qt\5.4\msvc2013_64
+			nmake install
+		Then unpack phonon in C:\kvirccomp\, and in a VS x64 Native CMD Prompt run:
+			md build
+			cd build
+			cmake .. -G "NMake Makefiles" -DPHONON_BUILD_PHONON4QT5=ON -DCMAKE_INSTALL_PREFIX=C:\Qt\5.4\msvc2013_64 -DCMAKE_PREFIX_PATH=C:\Qt\5.4\msvc2013_64 -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON -Wno-dev
+			nmake
+			nmake install
+			
+- GNU GetText for Win32.
+	Required if you're building a redistributable package,
+	needed to translate KVIrc interface into your own language.
+	Get it from http://gnuwin32.sourceforge.net/packages/gettext.htm
+	Install in default location with default options.
+
+- GNU Sed for Win32.
+	Optional for translation file cleanup
+	Get it from http://gnuwin32.sourceforge.net/packages/sed.htm
+	Install in default location with default options.
+
+-------------------------------------------------------------------------------
+Compilation
+-------------------------------------------------------------------------------
+
+- Get the KVIrc source code
+	Using GIT bash:
+	 cd /c/kvirccomp/
+	 git clone https://github.com/kvirc/kvirc.git
+
+- Compile KVIrc
+	Open a Visual Studio x64 Native command prompt. Before starting, we have to set some environment variables.
+	Replace with your respective versions and install paths. The Perl and Python paths might already be set.
+	 set PATH=%PATH%;C:\kvirccomp\zlib-1.2.8;C:\Qt\5.4\msvc2013_64\bin;C:\Perl64\bin;C:\Perl64\site\bin;C:\Python27;C:\Program Files (x86)\GnuWin32\bin
+	 set CMAKE_INCLUDE_PATH=%CMAKE_INCLUDE_PATH%;C:\kvirccomp\openssl-1.0.2d\include;C:\kvirccomp\zlib-1.2.8
+	 set CMAKE_LIBRARY_PATH=%CMAKE_LIBRARY_PATH%;C:\kvirccomp\openssl-1.0.2d\out32dll;C:\kvirccomp\zlib-1.2.8;C:\Qt\5.4\msvc2013_64\lib
+
+	If you compiled OpenSSL yourself and want to use this during compilation,
+	and have the package from SLProWeb installed in it's default location,
+	you need to rename the SLProWeb installationpath first.
+	CMake will look at those default paths first.
+
+	Next, go to the KVIrc source dir and create a build directory and its Makefiles using cmake and compile.
+	We use the "release" build-type as "debug" seems to have incompatibilities between /O2 and /RTC usage
+	If you want spellchecking support, add these flags to the cmake command:
+		"-DEnchant_FOUND=1 -DEnchant_INCLUDE_DIRS=c:\kvirccomp\enchant-inst\include\enchant;c:\kvirccomp\enchant-inst\include\glib-2.0 -DEnchant_LDFLAGS=c:\kvirccomp\enchant-inst\lib\libenchant.dll.a"
+	If you don't want Perl scripting support, add this flag to the cmake command:
+		"-DWANT_PERL=0"
+	If you don't want the Phonon audio backend and want to ignore the warning, add this flag to the cmake command:
+		"-DWANT_PHONON=0"
+	 cd C:\kvirccomp\KVIrc
+	 md build
+	 cd build
+	 cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=release -DWANT_KDE=0
+	 nmake
+	 nmake install
+ 
+	Your binaries are now located at C:\kvirccomp\kvirc\build\release.
+	But you can’t start kvirc.exe as there're some libraries missing.
+	You can either copy these to the system dir, add their locations to %PATH% or copy them to the KVIrc-release dir.
+	The latter is preferred for portability reasons.
+	 robocopy C:\Qt\5.4\msvc2013_64\bin C:\kvirccomp\kvirc\build\release\ Qt5Network.dll Qt5Core.dll Qt5Widgets.dll Qt5Gui.dll Qt5WebKitWidgets.dll Qt5WebKit.dll Qt5Sensors.dll Qt5Positioning.dll Qt5Quick.dll Qt5Qml.dll Qt5Multimedia.dll Qt5WebChannel.dll Qt5Sql.dll Qt5MultimediaWidgets.dll Qt5OpenGL.dll Qt5PrintSupport.dll Qt5WinExtras.dll icuin53.dll icuuc53.dll icudt53.dll
+	 robocopy C:\kvirccomp\openssl-1.0.2d\out32dll C:\kvirccomp\kvirc\build\release\ libeay32.dll ssleay32.dll
+	 copy C:\kvirccomp\zlib-1.2.8\zlib1.dll C:\kvirccomp\kvirc\build\release\
+	 copy C:\Perl64\bin\perl520.dll C:\kvirccomp\kvirc\build\release\
+	Optionally copy:
+	 copy C:\Windows\System32\python27.dll C:\kvirccomp\kvirc\build\release\
+
+- Add extra plugins
+	Qt provides extra plugins which can be used, these have to be placed in a subdirectory named "qt-plugins".
+	Currently KVIrc can use these types of plugins:
+		qt4: codecs, iconengines, imageformats, phonon_backend, sqldrivers
+		qt5: audio, iconengines, imageformats, mediaservice, platforms, sqldrivers
+	Create a subdirectory and name it with the type name of the plugins you'll place inside it;
+    You can find them inside C:\Qt\5.4\msvc2013_64\plugins\.
+	Choose the dlls without a "d" at the end of the filename: qjpeg.dll and not qjpegd.dll.
