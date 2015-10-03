@@ -152,13 +152,27 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pPage = new QWidget(this);
 	pLayout = new QGridLayout(pPage);
 
-	m_pSaveIconsCheckBox = new QCheckBox(__tr2qs_ctx("Save icons","theme"),this);
-	m_pSaveIconsCheckBox->setChecked(true);
+	m_pSaveIconsCheckBox = new QCheckBox(__tr2qs_ctx("Save icons and images with theme","theme"),this);
 
+	// Temporarily disable this option due to issue #1643
+	// We can re-enable it later, however at this current point in time
+	// it does not work at all and will just create confusion. (and more
+	// duplicate tickets)
+	m_pSaveIconsCheckBox->setDisabled(true);
+	m_pSaveIconsCheckBox->setChecked(false);
+
+	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
+	QString ozText = "<p>";
+	ozText += __tr2qs_ctx("A bug prevents this option from working, it has been disabled and you cannot save any icons with your theme in meanwhile. Press \"Next\" to continue.","theme");
+	ozText += "<p>";
+
+	pLabel->setText(ozText);
+	pLayout->addWidget(pLabel,2,0);
 	pLayout->addWidget(m_pSaveIconsCheckBox,0,0);
 	pLayout->setRowStretch(1,1);
 
-	addPage(pPage,__tr2qs_ctx("Options","theme"));
+	addPage(pPage,__tr2qs_ctx("Theme Options","theme"));
 	setBackEnabled(pPage,true);
 	setNextEnabled(pPage,true);
 	setHelpEnabled(pPage,false);
