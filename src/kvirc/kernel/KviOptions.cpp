@@ -1124,6 +1124,7 @@ namespace KviTheme
 	
 					if(!KviFileUtils::copyFile(p->path(),szPixPath))
 					{
+						qDebug("Failed to copy file %s into %s",p->path().toUtf8().data(),szPixPath.toUtf8().data());
 						options.setLastError(__tr2qs("Failed to save one of the theme images"));
 						return false;
 					}
@@ -1153,6 +1154,7 @@ namespace KviTheme
 	
 				if(!pix->save(szPixPath,"PNG",90))
 				{
+					qDebug("Failed to save small icon %d into %s",j,szPixPath.toUtf8().data());
 					options.setLastError(__tr2qs("Failed to save one of the theme images"));
 					return false;
 				}

@@ -414,9 +414,9 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"handily",             // 328
 	"thumbdown",           // 329
 	"thumbup",             // 330
-	"facepalm"             // 331
-	"identity"             // 332
-	"nickpopup"            // 333
+	"facepalm",            // 331
+	"identity",            // 332
+	"nickpopup",           // 333
 	"tools"                // 334
 
 };
