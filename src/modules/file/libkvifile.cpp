@@ -79,7 +79,7 @@
 		Makes a copy of the <source> file as <destination>.[br]
 		If the [-o] switch is used, the <destination> file is overwritten, if already exists.[br]
 		With no [-o] switch, this command does not overwrite files.[br]
-		The destination path must be already existing: if you want to ensure this, use [fnc]$file.mkdir[/fnc] first.[br]
+		The destination path must be already existing: if you want to ensure this, use [cmd]file.mkdir[/cmd] first.[br]
 		The paths (<source> and <destination>) are adjusted according to the system that KVIrc
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
@@ -356,7 +356,12 @@ static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 	@short:
 		Creates a directory
 	@syntax:
-		file.mkdir <directory:string>
+		file.mkdir [-q] [-e] <directory:string>
+	@switches:
+		!sw: -q | --quiet
+		Don't complain if the directory cannot be made
+		!sw: -e | --error
+		Fail completly if the directory cannot be made (will stop execution of the script)
 	@description:
 		Creates the <directory>.[br]
 		The path is adjusted according to the system that KVIrc
@@ -373,8 +378,12 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	KviFileUtils::adjustFilePath(szDir);
 	if(!KviFileUtils::makeDir(szDir))
-		c->warning(__tr2qs("Failed to make the directory '%Q'"),&szDir);
-	return true;
+	{
+		if(!c->switches()->find('q',"quiet"))
+			c->warning(__tr2qs("Failed to make the directory '%Q'"),&szDir);
+		
+	}
+	return !c->switches()->find('e',"error");
 }
 
 /*
