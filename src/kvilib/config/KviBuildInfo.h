@@ -54,7 +54,7 @@ namespace KviBuildInfo
 	extern KVILIB_API QString buildDate();
 
 	/**
-	* \brief Returns the date tag applied to the currently compiled SVN sources.
+	* \brief Returns the date tag applied to the currently compiled Git sources.
 	* \return QString
 	*/
 	extern KVILIB_API QString buildSourcesDate();
@@ -122,7 +122,7 @@ namespace KviBuildInfo
 	extern KVILIB_API QString buildCompilerFlags();
 
 	/**
-	* \brief Returns the SVN revision number of the local repository
+	* \brief Returns the Git revision number of the local repository
 	* \return QString
 	*/
 	extern KVILIB_API QString buildRevision();

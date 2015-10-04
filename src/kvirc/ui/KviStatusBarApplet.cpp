@@ -786,7 +786,7 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 
 	if(m_bUpdateRevision)
 	{
-		szUrl = "https://svn.kvirc.de/kvirc/changeset/"; // this needs a git URL probably to releases or something else.
+		szUrl = "https://github.com/kvirc/KVIrc/releases/";
 		szUrl += m_szNewVersion;
 	} else {
 		QString szSystem = KviBuildInfo::buildSystemName();

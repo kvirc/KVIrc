@@ -198,7 +198,7 @@ LogViewWindow::LogViewWindow()
 	//m_pExportLogPopup->addAction(__tr2qs_ctx("database file","log"));
 
 	// 18.11.14: Originally this hooked activated, but Qt4 kept sending bullshit IDs here
-	// https://svn.kvirc.de/kvirc/ticket/934#comment:9
+	// https://github.com/kvirc/KVIrc/issues/934#issuecomment-124933890
 	connect(m_pExportLogPopup,SIGNAL(triggered(QAction*)),this,SLOT(exportLog(QAction*)));
 
 	m_pTimer = new QTimer(this);

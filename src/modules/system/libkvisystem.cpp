@@ -740,7 +740,7 @@ static bool system_kvs_fnc_plugin_call(KviKvsModuleFunctionCall *c)
 			system.runcmd "ping $0"
 		[/example]
 */
-// implements https://svn.kvirc.de/kvirc/ticket/459
+// implements https://github.com/kvirc/KVIrc/issues/459
 static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 {
 	QString szCommand;

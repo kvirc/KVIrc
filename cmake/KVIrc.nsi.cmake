@@ -16,7 +16,7 @@ Name "@NICENAME@"
 !define URL_UPDATE 'http://www.kvirc.net/'
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
-; Svn release, eg: KVIrc-4.0.0-rc3-git-4423-5ac91f3.exe
+; Git release, eg: KVIrc-4.0.0-rc3-git-4423-5ac91f3.exe
 OutFile KVIrc-${VERSION}-dev-${GIT_VERSION}.exe
 ; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
