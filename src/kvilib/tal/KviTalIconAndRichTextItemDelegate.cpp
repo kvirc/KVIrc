@@ -29,8 +29,12 @@
 #include <QApplication>
 #include <QAbstractTextDocumentLayout>
 
+
+#define LVI_AFTER_ICON (LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING)
+
+
 KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget)
-: QStyledItemDelegate(pWidget), m_pParent(pWidget), m_pDefaultPix(0), m_oMinimumSize(0,0)
+: QStyledItemDelegate(pWidget), m_pParent(pWidget), m_oMinimumSize(0,0), m_oIconSize(LVI_ICON_SIZE,LVI_ICON_SIZE)
 {
 }
 
@@ -53,27 +57,42 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 	QVariant value = index.data(Qt::DecorationRole);
 
 	QIcon ico;
+
+	QPixmap pix;
+
 	if(value.canConvert<QIcon>())
 	{
 		ico = QIcon(value.value<QIcon>());
-		if(ico.isNull())
-		{
-			if(m_pDefaultPix)
-				pPainter->drawPixmap(opt.rect.x()+LVI_BORDER,opt.rect.y()+LVI_BORDER,*m_pDefaultPix);
-		} else {
-			pPainter->drawPixmap(opt.rect.x()+LVI_BORDER,opt.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
-		}
+		if(!ico.isNull())
+			pix = ico.pixmap(m_oIconSize);
+		else
+			pix = m_oDefaultPix;
 	} else {
-		if(m_pDefaultPix)
-			pPainter->drawPixmap(opt.rect.x()+LVI_BORDER,opt.rect.y()+LVI_BORDER,*m_pDefaultPix);
+		pix = m_oDefaultPix;
+	}
+
+	if(!pix.isNull())
+	{
+		int x = opt.rect.x()+LVI_BORDER;
+		int y = opt.rect.y()+LVI_BORDER;
+		int w = m_oIconSize.width();
+	
+		pPainter->drawPixmap(
+				x + ((w - pix.width()) / 2),
+				y,
+				pix
+			);
 	}
 
 	QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(opt.font);
-	pPainter->translate(opt.rect.x()+LVI_AFTER_ICON,opt.rect.y()+LVI_BORDER);
-	doc.setTextWidth(opt.rect.width()-LVI_AFTER_ICON-LVI_BORDER);
-	QRect cliprect = QRect(QPoint(0,0),QSize(opt.rect.width()-LVI_AFTER_ICON,opt.rect.height()));
+
+	int iIconAndSpace = LVI_BORDER + m_oIconSize.width() + LVI_SPACING;
+	
+	pPainter->translate(opt.rect.x() + iIconAndSpace,opt.rect.y()+LVI_BORDER);
+	doc.setTextWidth(opt.rect.width() - iIconAndSpace - LVI_BORDER);
+	QRect cliprect = QRect(QPoint(0,0),QSize(opt.rect.width()-iIconAndSpace,opt.rect.height()));
 	doc.drawContents(pPainter,cliprect);
 	pPainter->restore();
 }
@@ -86,15 +105,20 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &op
 	doc.setDefaultFont(option.font);
 	doc.setTextWidth(((QListWidget *)parent())->viewport()->width()-LVI_AFTER_ICON-LVI_BORDER);
 	int iHeight = doc.documentLayout()->documentSize().toSize().height();
-	if(iHeight < (LVI_ICON_SIZE+(2 * LVI_BORDER)))
-		iHeight = LVI_ICON_SIZE;
 
 	//qDebug("Size hint (%d,%d)",((QListWidget *)parent())->minimumWidth(), iHeight + (2 * LVI_BORDER));
+
+	int iIconWidth = m_oIconSize.width() + (2 * LVI_BORDER);
+	int iIconHeight = m_oIconSize.height() + (2 * LVI_BORDER);
 	
 	int w = ((QListWidget *)parent())->minimumWidth();
+	if(w < iIconWidth)
+		w = iIconWidth;
 	if(w < m_oMinimumSize.width())
 		w = m_oMinimumSize.width();
 	int h = iHeight + (2 * LVI_BORDER);
+	if(h < iIconHeight)
+		h = iIconHeight;
 	if(h < m_oMinimumSize.height())
 		h = m_oMinimumSize.height();
 

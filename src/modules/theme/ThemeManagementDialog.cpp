@@ -181,11 +181,12 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	m_pListWidget = new KviTalListWidget(this);
 	m_pListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_pItemDelegate = new KviTalIconAndRichTextItemDelegate(m_pListWidget);
-	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
-	m_pItemDelegate->setMinimumSize(QSize(300,60));
+	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))->scaled(200,180,Qt::KeepAspectRatio)); // FIXME!
+	m_pItemDelegate->setMinimumSize(QSize(400,60));
+	m_pItemDelegate->setIconSize(QSize(200,180));
 	m_pListWidget->setItemDelegate(m_pItemDelegate);
 	m_pListWidget->setMinimumHeight(400);
-	m_pListWidget->setMinimumWidth(420);
+	m_pListWidget->setMinimumWidth(520);
 
 	m_pListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListWidget->setSortingEnabled(true);
@@ -213,7 +214,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 
 	pSep = new QFrame(this);
 	pSep->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-	pSep->setMinimumWidth(300);
+	pSep->setMinimumWidth(400);
 
 //	g->addWidget(pSep,3,0);
 	pVBox->addWidget(pSep);
@@ -477,7 +478,7 @@ void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 
 			QPixmap pixmap=inf->smallScreenshot();
 			if(!pixmap.isNull())
-				it->setIcon(pixmap.scaled(32,32));
+				it->setIcon(pixmap.scaled(200,180,Qt::KeepAspectRatio));
 		} else {
 			delete inf;
 		}
