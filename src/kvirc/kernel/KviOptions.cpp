@@ -334,7 +334,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PopupNotifierOnNewNotices",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("UserListViewUseAwayColor",true,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
 	BOOL_OPTION("ShowUserFlagForChannelsInWindowList",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
-	BOOL_OPTION("EnableCustomCursorWidth",false,KviOption_resetUpdateGui)
+	BOOL_OPTION("EnableCustomCursorWidth",false,KviOption_sectFlagGui | KviOption_resetUpdateGui)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
