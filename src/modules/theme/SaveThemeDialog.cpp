@@ -196,8 +196,8 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	addPage(pPage,__tr2qs_ctx("Screenshot","theme"));
 	setBackEnabled(pPage,true);
 	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,true);
-	setFinishEnabled(pPage,true);
+	setNextEnabled(pPage,false); // a screenshot should be ALWAYS provided.
+	setFinishEnabled(pPage,false); // a screenshot should be ALWAYS provided.
 
 }
 
@@ -216,6 +216,8 @@ void SaveThemeDialog::imageSelectionChanged(const QString &szImagePath)
 		else
 			out = QPixmap::fromImage(pix);
 		m_pImageLabel->setPixmap(out);
+		setNextEnabled(m_pImageSelectionPage,true);
+		setFinishEnabled(m_pImageSelectionPage,true);
 		return;
 	}
 
@@ -224,6 +226,8 @@ void SaveThemeDialog::imageSelectionChanged(const QString &szImagePath)
 
 	m_pImageSelector->setSelection("");
 	m_pImageLabel->setPixmap(QPixmap());
+	setNextEnabled(m_pImageSelectionPage,false);
+	setFinishEnabled(m_pImageSelectionPage,false);
 }
 
 void SaveThemeDialog::accept()
