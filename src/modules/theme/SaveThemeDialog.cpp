@@ -152,13 +152,23 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pPage = new QWidget(this);
 	pLayout = new QGridLayout(pPage);
 
-	m_pSaveIconsCheckBox = new QCheckBox(__tr2qs_ctx("Save icons","theme"),this);
+	m_pSaveIconsCheckBox = new QCheckBox(__tr2qs_ctx("Save icons and images with theme","theme"),this);
 	m_pSaveIconsCheckBox->setChecked(true);
 
-	pLayout->addWidget(m_pSaveIconsCheckBox,0,0);
-	pLayout->setRowStretch(1,1);
+	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
+	QString ozText = "<p>";
+	ozText += __tr2qs_ctx("To use the default and latest icon/image set automatically, uncheck this option.<br><br>To replace specific icons/images in your theme, include only those you wish to replace.","theme");
+	ozText += "</p><p>";;
+	ozText += __tr2qs_ctx("Hit the <b>\"Next\"</b> button to continue.","theme");
+	ozText += "<p>";
 
-	addPage(pPage,__tr2qs_ctx("Options","theme"));
+	pLayout->addWidget(m_pSaveIconsCheckBox,0,0);  
+	pLabel->setText(ozText);
+	pLayout->addWidget(pLabel,1,0);
+	pLayout->setRowStretch(2,1);
+
+	addPage(pPage,__tr2qs_ctx("Theme options","theme"));
 	setBackEnabled(pPage,true);
 	setNextEnabled(pPage,true);
 	setHelpEnabled(pPage,false);
