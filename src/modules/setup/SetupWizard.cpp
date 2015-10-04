@@ -1115,7 +1115,7 @@ void SetupWizard::accept()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(m_pDirMakePortable->isChecked())
 	{
-		KviFileUtils::writeFile(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable","true");
+		KviFileUtils::writeFile(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable",QString("true"));
                 g_pApp->m_bPortable=true;
 	} else {
 #endif
