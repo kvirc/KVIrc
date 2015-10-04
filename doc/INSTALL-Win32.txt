@@ -160,17 +160,16 @@ Prerequisites
 
 - Git for windows
 
-  [Git; is needed for cmake to automatically set the correct
-  revision number in KVIrc build; can be overridden (see below)]
+  [Git;  needed for cmake to automatically set the correct
+  revision number in KVIrc build; can be overridden (see below).
+  Also required to obtain the latest source code revisions of KVIrc]
 
-  Any version will work; Recently the subversion guys went nuts and despite
-  an official download page exists http://subversion.apache.org/packages.html
-  it requires you to download from a third party website. Those websites will
-  push you to download their "better" subversion client or needs registration.
+  Git can be obtained via https://git-scm.com/download/win. Git is also
+  included within MinGW which may be obtained here http://www.mingw.org/
 
-  If you don't want to install subversion cli because you are already using
-  another subversion tool (like TortoiseSvn), you can just force the correct
-  Git revision passing to cmake the -DMANUAL_REVISION=xxxx parameter.
+  If you don't want to install the Git cli or Gui, you can just force
+  the correct Git revision by passing the -DMANUAL_REVISION=xxxx
+  parameter to cmake.
 
 - Nullsoft scriptable install system (NSIS)
 
@@ -203,7 +202,7 @@ Further recommended download if you plan to develop KVIrc:
 Compilation
 -------------------------------------------------------------------------------
 
-Download KVIrc sources from KVIrc's website, a mirror or using svn (see
+Download KVIrc sources from KVIrc's website, a mirror or using Git (see
 instructions on KVIrc website about how to do that). From now on I'll assume
 that you have saved the sources in C:\KVIrc
 
