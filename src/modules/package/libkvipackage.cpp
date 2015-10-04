@@ -167,9 +167,61 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 }
 
 
+/*
+	@doc: package.extractfield
+	@type:
+		command
+	@title:
+		package.extractfield
+	@short:
+		Extract a package binary field and save it to a file.
+	@syntax:
+		package.extractfield <package_path> <field_id> <target_file_name>
+	@description:
+		Extracs a package binary metadata field and saves it to the specified file.
+		This is useful to extract images from the packages.
+*/
+static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
+{
+	QString szPackagePath,szFieldId,szTargetFileName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,szPackagePath)
+		KVSM_PARAMETER("field_id",KVS_PT_NONEMPTYSTRING,0,szFieldId)
+		KVSM_PARAMETER("target_file_name",KVS_PT_NONEMPTYSTRING,0,szTargetFileName)
+	KVSM_PARAMETERS_END(c)
+
+	KviPackageReader r;
+
+	// Unpack addon package into the random tmp dir
+	if(!r.readHeader(szPackagePath))
+	{
+		c->warning(__tr2qs_ctx("Failed to load package file: %1","package").arg(r.lastError()));
+		return true;
+	}
+
+	QByteArray * pField = r.binaryInfoFields()->find(szFieldId);
+
+	if(!pField)
+	{
+		c->warning(__tr2qs_ctx("Package does not contain binary field %1","package").arg(szFieldId));
+		return true;
+	}
+
+	if(!KviFileUtils::writeFile(szTargetFileName,*pField,false))
+	{
+		c->warning(__tr2qs_ctx("Failed to save file %1","package").arg(szTargetFileName));
+		return true;
+	}
+
+	return true;
+}
+
+
 static bool package_module_init(KviModule *m)
 {
 	KVSM_REGISTER_FUNCTION(m,"info",package_kvs_fnc_info);
+
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"extractField",package_kvs_cmd_extractField);
 	return true;
 }
 

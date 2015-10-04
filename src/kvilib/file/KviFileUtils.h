@@ -129,6 +129,15 @@ namespace KviFileUtils
 	/**
 	* \brief Writes a complete file (UTF-8 version)
 	* \param szPath The path to the file
+	* \param oData The data to write
+	* \param bAppend If we want to append data or overwrite
+	* \return bool
+	*/
+	KVILIB_API bool writeFile(const QString & szPath, const QByteArray & oData, bool bAppend = false);
+
+	/**
+	* \brief Writes a complete file (UTF-8 version)
+	* \param szPath The path to the file
 	* \param szData The data to write
 	* \param bAppend If we want to append data or overwrite
 	* \return bool

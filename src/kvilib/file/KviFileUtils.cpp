@@ -284,6 +284,18 @@ namespace KviFileUtils
 		return true;
 	}
 
+	bool writeFile(const QString & szPath, const QByteArray & oData, bool bAppend)
+	{
+		KviFile f(szPath);
+		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
+			return false;
+		if(oData.length() < 1)
+			return true;
+		if(f.write(oData.data(),oData.length()) != ((unsigned int)(oData.length())))
+			return false;
+		return true;
+	}
+
 	bool writeFile(const QString & szPath, const QString & szData, bool bAppend)
 	{
 		KviFile f(szPath);

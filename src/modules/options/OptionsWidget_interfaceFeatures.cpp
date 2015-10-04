@@ -78,7 +78,7 @@ void OptionsWidget_interfaceFeatures::commit()
 	if(m_pDisableSplash->isChecked())
 	{
 		if(!KviFileUtils::fileExists(szSplashDisableFile))
-			KviFileUtils::writeFile(szSplashDisableFile,"");
+			KviFileUtils::writeFile(szSplashDisableFile,QString());
 	} else {
 		if(KviFileUtils::fileExists(szSplashDisableFile))
 			KviFileUtils::removeFile(szSplashDisableFile);
