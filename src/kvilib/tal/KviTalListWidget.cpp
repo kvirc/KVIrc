@@ -54,8 +54,10 @@ bool KviTalListWidget::eventFilter(QObject *o,QEvent * e)
 		if(model())
 		{
 			// And this does not even work when the items should shrink...
-			// ...but well, that's the best we can do.
+			// ...but well, that's the best we can do (but only under Qt5, as with Qt4 this is even protected).
+#if QT_VERSION >= 0x050000
 			emit model()->layoutChanged();
+#endif
 			// The model is hidden so we can't make these public.
 			//model()->beginResetModel();
 			//model()->endResetModel();
