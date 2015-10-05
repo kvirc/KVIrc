@@ -145,7 +145,7 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 	mergeTip(b,
 		__tr2qs_ctx("<center>KVIrc sends out a channel /WHO message every now and then to keep " \
 			"the channel away list in sync. Use this option to disable this feature (and to save " \
-			"your IRC bandwidth. If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.</center>","options"));
+			"your IRC bandwidth). If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.</center>","options"));
 
 	addRowSpacer(0,5,4,5);
 }
