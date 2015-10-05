@@ -594,7 +594,7 @@ sub extract_keyterms
 				}
 			}
 
-			# Ok...we have a document in $parts
+			# OK... We have a document in $parts
 			make_single_line($parts{'short'});
 			make_single_token($parts{'title'});
 			make_single_token($parts{'type'});
@@ -1009,7 +1009,7 @@ sub process_file
 				}
 			}
 
-			# Ok...we have a document in $parts
+			# OK... We have a document in $parts
 			# Process the title
 			if($parts{'title'} eq "")
 			{
@@ -1521,14 +1521,14 @@ sub generate_indexes
 # MAIN
 #################################################################################################
 
-# Force flusing of STDOUT
+# Force flushing of STDOUT
 $|=1;
 
 # print "--\n";
 # print "-- Generating documentation, this may take a while :)\n";
 # print "--\n";
 # print "-- Extracting keyterms\n";
-# Extract the keywords to generate the crossreferences
+# Extract the keywords to generate the cross-references
 $i = 0;
 $g_numFilesToProcess = @g_filesToProcess;
 
@@ -1549,7 +1549,7 @@ print "[ 40%] Generating documentation: Extracting keyterms (pass 1 of 3)\n";
 $g_files=$i - 1;
 
 # print "\n";
-# print "-- Extracting documents and generating crossreferences\n";
+# print "-- Extracting documents and generating cross-references\n";
 
 # Sort them
 @g_keytermsSorted = sort {length($b) <=> length($a)} keys(%g_keyterms);
