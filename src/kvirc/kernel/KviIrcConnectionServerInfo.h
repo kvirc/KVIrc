@@ -60,6 +60,17 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
+class KVIRC_API KviUnreal32IrcServerInfo : public KviUnrealIrcServerInfo
+{
+	// This is a continuation on to Unreal, so use its predecessor
+	// as a base class.
+public:
+	KviUnreal32IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviUnrealIrcServerInfo(pParent, version) {;};
+	virtual const char * getSoftware() { return "Unreal32"; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
 class KVIRC_API KviCritenIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//abjects

@@ -230,7 +230,9 @@ kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
 void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 {
 	if(m_pServInfo) delete m_pServInfo;
-	if(version.contains("unreal",Qt::CaseInsensitive))
+	if(version.contains("unreal3.2",Qt::CaseInsensitive))
+		m_pServInfo = new KviUnreal32IrcServerInfo(this, version);
+	else if(version.contains("unreal",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnrealIrcServerInfo(this, version);
 	else if(version.contains("bahamut",Qt::CaseInsensitive))
 		m_pServInfo = new KviBahamutIrcServerInfo(this, version);
@@ -345,6 +347,19 @@ const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'M': return __tr2qs("Need auth to speak"); break;
+		case 'S': return __tr2qs("Strip colors"); break;
+		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'V': return __tr2qs("No invites"); break;
+		case 'Z': return __tr2qs("All clients are using SSL (server only)"); break;
+	}
+	return KviUnrealIrcServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
