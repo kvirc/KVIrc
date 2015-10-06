@@ -141,7 +141,7 @@ void KviDnsResolver::slotHostLookupTerminated(const QHostInfo &oHostInfo)
 				m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
 			break;
 			default:
-				KVI_ASSERT_MSG(false,"Invalid dns query type!");
+				KVI_ASSERT_MSG(false,"Invalid DNS query type!");
 				m_pPrivateData->eState = Failure;
 				m_pPrivateData->eError = KviError::InternalError;
 				m_pPrivateData->szError = __tr2qs("Internal error: unhandled DNS query type");

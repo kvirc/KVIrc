@@ -79,7 +79,7 @@ static bool toolbar_kvs_cmd_create(KviKvsModuleCommandCall * c)
 
 /*	if(!c->getParameterCode(1,szLabel))
 	{
-		c->error(__tr2qs("Internal error: call a head-shrinker"));
+		c->error(__tr2qs("Internal error: Call a head-shrinker"));
 		return false;
 	}
 */

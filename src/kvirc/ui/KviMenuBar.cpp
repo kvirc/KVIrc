@@ -115,10 +115,10 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_HELPINDEX,help)
 
-	QAction *pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Help)),__tr2qs("&Help Browser (Panel)"));
+	QAction *pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Help)),__tr2qs("&Help browser (Panel)"));
 	pAction->setData(KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
 
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)),__tr2qs("&Tip of the Day"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)),__tr2qs("&Tip of the day"));
 	pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->addSeparator();
 
@@ -127,39 +127,39 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 	pAction->setMenuRole(QAction::AboutRole);
 
 	help->addSeparator();
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Home&page"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc home&page"));
 	pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"ru",2))
 	{
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Russian Home&page"));
+		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Russian home&page"));
 		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
 	{
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc French Home&page"));
+		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc French home&page"));
 		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
 	}
 	help->addSeparator();
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Message)),__tr2qs("Subscribe to the Mailing List"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Message)),__tr2qs("Subscribe to the mailing list"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Bug)),__tr2qs("Report a Bug / Propose Improvements"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->addSeparator();
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on Freenode"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc international channel on freenode"));
 	pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_ON_FREENODE);
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"it",2))
 	{
 		// join #kvirc.net on azzurra
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
+		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc Italian channel on AzzurraNet"));
 		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_IT_ON_AZZURRA);
 	}
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
 	{
 		// join #kvirc-fr on freenode
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on Freenode"));
+		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French channel on freenode"));
 		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_FREENODE);
 		// join #kvirc on europnet
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on EuropNet"));
+		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French channel on EuropNet"));
 		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_EUROPNET);
 	}
 }
@@ -194,7 +194,7 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 	QAction *pAction = opt->addAction(__tr2qs("Toolbars"));
 	pAction->setMenu(m_pToolbarsPopup);
 
-	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
+	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show status bar"),m_pFrm,SLOT(toggleStatusBar()));
 	m_pStatusBarAction->setCheckable(true);
 
 	opt->addSeparator();
@@ -236,7 +236,7 @@ void KviMenuBar::setupScriptingPopup(QMenu *pop)
 	ACTION_POPUP_ITEM(KVI_COREACTION_EXECUTEKVS,script)
 
 	script->addSeparator();
-	script->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Warning)),__tr2qs("Restore &Default Script..."),g_pApp,SLOT(restoreDefaultScript()));
+	script->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Warning)),__tr2qs("Restore &default script..."),g_pApp,SLOT(restoreDefaultScript()));
 }
 
 void KviMenuBar::updateMainPopup()
@@ -254,7 +254,7 @@ void KviMenuBar::setupMainPopup(QMenu *pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT,main)
 
-	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"));
+	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &connection to"));
 	pAction->setMenu(m_pRecentServersPopup);
 
 	m_pDisconnectAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),this,SLOT(actionTriggered(bool)));
@@ -379,9 +379,9 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
 	ACTION_POPUP_ITEM(KVI_COREACTION_SCREENSHOT,m)
 
 	// moved the old tools here
-	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
+	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)),__tr2qs("Show &icon table"),g_pIconManager,SLOT(showIconWidget()));
 #ifdef COMPILE_KDE4_SUPPORT
-	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &Terminal"),this,SLOT(actionTriggered(bool)));
+	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &terminal"),this,SLOT(actionTriggered(bool)));
 	pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 

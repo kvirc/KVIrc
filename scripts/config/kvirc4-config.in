@@ -89,7 +89,7 @@ print_syntax()
 	echo "Syntax : kvirc-config [OPTIONS]"
 	echo "  options:"
 	echo "    --version         : KVIrc version"
-	echo "    --prefix          : Intallation prefix"
+	echo "    --prefix          : Installation prefix"
 	echo "    --include_dir     : KVIrc include directory (where headers are stored)"
 	echo "    --exec_prefix     : Binaries installation prefix"
 	echo "    --rpath_flags     : Rpath flags used in the KVIrc compilation"

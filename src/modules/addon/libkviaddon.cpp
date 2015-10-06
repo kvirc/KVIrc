@@ -526,7 +526,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 
 	if(!(c->getParameterCode(2,rd.szVisibleNameScript) && c->getParameterCode(3,rd.szDescriptionScript)))
 	{
-		c->error(__tr2qs_ctx("Internal error: call a head-shrinker","addon"));
+		c->error(__tr2qs_ctx("Internal error: Call a head-shrinker","addon"));
 		return false;
 	}
 

@@ -203,19 +203,19 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
-		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"If you choose \"Use system encoding\" then the encoding will be set to the systemwide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//text encoding
 
-	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Text encoding:","options"),tab);
 	gl->addWidget(l,2,0);
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pTextEncodingEditor,2,1);
 	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used as the default for text messages." \
-		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"If you choose \"Use system encoding\" then the encoding will be set to the systemwide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//common between server encoding and text encoding
@@ -224,8 +224,8 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	int srvcurrent = 0, txtcurrent=0;
 	KviLocale::EncodingDescription * d = KviLocale::instance()->encodingDescription(i);
 	QString tmp;
-	m_pEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
-	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
+	m_pEncodingEditor->addItem(__tr2qs_ctx("Use system encoding","options"));
+	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use system encoding","options"));
 	while(d->pcName)
 	{
 		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
@@ -764,7 +764,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	//text encoding
 
-	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Text encoding:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
@@ -915,7 +915,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pCapLayout->addWidget(m_pEnableCAPCheck,0,0);
 
 	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
-		"support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>","options"));
+		"support. Obviously, this server must have support for this, too. Disable this for IRC bouncers.</center>","options"));
 	m_pEnableCAPCheck->setChecked(s->enabledCAP());
 
 
@@ -926,18 +926,18 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Authenticate via SASL extension","options"),pSASLGroup);
 	pSASLLayout->addWidget(m_pEnableSASLCheck,0,0,1,2);
-	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol " \
-		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
+	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication protocol " \
+		"If you enable the proper global option in the Connection/SSL tab and fill the SASL Nickname and SASL Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
-	l = new QLabel(__tr2qs_ctx("Sasl Nickname:","options"),pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL nickname:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,1,0);
 	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
 	m_pSaslNickEditor->setText(s->saslNick());
 	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
 	pSASLLayout->addWidget(m_pSaslNickEditor,1,1);
 
-	l = new QLabel(__tr2qs_ctx("Sasl Password:","options"),pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL password:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,2,0);
 	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
 	m_pSaslPassEditor->setText(s->saslPass());
@@ -1364,7 +1364,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pImportButton->setMenu(m_pImportPopup);
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
 
-	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
+	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import list","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
@@ -1826,7 +1826,7 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	//	m_pContextPopup->addAction(__c2q(__tr("Merge list from server.ini","options")),this,SLOT(importFromIni()));
 	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
     m_pContextPopup->addSeparator();
-    m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
+    m_pContextPopup->addAction(__tr2qs_ctx("Import list","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
 }
 

@@ -127,7 +127,7 @@ void UrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 
 	delete p;
 
-	//call paint on all childrens
+	//call paint on all children
 	QTreeWidget::paintEvent(event);
 }
 
@@ -140,7 +140,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 
 	m_pUrlList = new UrlDialogTreeWidget(this);
 
-	m_pMenuBar = new KviTalMenuBar(this,"url menu");
+	m_pMenuBar = new KviTalMenuBar(this,"URL menu");
 	//m_pUrlList = new KviListView(this,"list");
 	KviConfigurationFile cfg(szConfigPath,KviConfigurationFile::Read);
 /*
@@ -306,7 +306,7 @@ void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 			m_pListPopup->addAction(w->plainTextCaption());
 		}
 	}
-    p.addAction(__tr2qs("&Say to Window"))->setMenu(m_pListPopup);
+    p.addAction(__tr2qs("&Say to window"))->setMenu(m_pListPopup);
 	connect(m_pListPopup,SIGNAL(triggered(QAction *)), this, SLOT(sayToWin(QAction *)));
 	p.exec(point);
 }
@@ -396,7 +396,7 @@ UrlDialog::~UrlDialog()
 ConfigDialog::ConfigDialog()
 :QDialog()
 {
-	setWindowTitle(__tr2qs("URL Module Configuration"));
+	setWindowTitle(__tr2qs("URL module configuration"));
 
 	QGridLayout *g = new QGridLayout(this);
 
@@ -497,7 +497,7 @@ BanFrame::BanFrame(QWidget *parent, const char *name, bool banEnabled)
 	m_pAddBtn->setEnabled(m_pEnable->isChecked());
 	g->addWidget(m_pAddBtn,2,0);
 
-	m_pRemoveBtn = new QPushButton(__tr2qs("&Remove Selected"),this);
+	m_pRemoveBtn = new QPushButton(__tr2qs("&Remove selected"),this);
 	m_pRemoveBtn->setObjectName("remove");
 	connect(m_pRemoveBtn,SIGNAL(clicked()),this,SLOT(removeBan()));
 	m_pRemoveBtn->setEnabled(m_pEnable->isChecked());
@@ -514,7 +514,7 @@ void BanFrame::enableClicked()
 void BanFrame::addBan()
 {
 	bool ok = false;
-	QString *pText = new QString(QInputDialog::getText(this, __tr2qs("URL Ban List"),__tr2qs("Add"),QLineEdit::Normal,QString(),&ok));
+	QString *pText = new QString(QInputDialog::getText(this, __tr2qs("URL ban list"),__tr2qs("Add"),QLineEdit::Normal,QString(),&ok));
 	if (ok && !pText->isEmpty()) {
 		g_pBanList->append(pText);
 		m_pBanList->addItem(*pText);
@@ -667,27 +667,27 @@ void loadBanList()
 
 
 /*
- 	@doc: url.list
+ 	@doc: URL.list
 	@type:
 		command
 	@title:
-		url.list
+		URL.list
 	@short:
-		Opens url list
+		Opens URL list
 	@syntax:
-		url.list
+		URL.list
 	@description:
-		This command opens a window containing the urls' list.
+		This command opens a window containing the URLs' list.
 		In the list there is other information:[br]
-		[U]Window[/U] : window where the url has been shown last[br]
-		[U]Count[/U] : number of urls shown[br]
-		[U]Timestamp[/U] : date/time when the url has been shown first[br]
-		Clicking right on the url column of the list a menu will popup, through it
-		you can remove the selected item, find the url in the window it appeared last, and
-		say it to: [I]@Console, Channels, Querys, DCC Chats[/I] and [I]User windows[/I].[br]
+		[U]Window[/U] : window where the URL has been shown last[br]
+		[U]Count[/U] : number of URLs shown[br]
+		[U]Timestamp[/U] : date/time when the URL has been shown first[br]
+		Clicking right on the URL column of the list a menu will popup, through it
+		you can remove the selected item, find the URL in the window it appeared last, and
+		say it to: [I]@Console, Channels, Queries, DCC Chats[/I] and [I]User windows[/I].[br]
 		The list is saved to file when you click on the menu item or when you unload the plugin
 		on condition that you have checked the relative checkbox in configuration dialog.[br]
-		You can also open the url in your web browser double clicking on it in the url list window.[br][br]
+		You can also open the URL in your web browser double clicking on it in the URL list window.[br][br]
 
   */
 
@@ -722,24 +722,24 @@ UrlDlgList *findFrame()
 }
 
 /*
- 	@doc: url.config
+ 	@doc: URL.config
 	@type:
 		command
 	@title:
-		url.config
+		URL.config
 	@short:
 		Loads URL list module
 	@syntax:
-		url.config
+		URL.config
 	@description:
 		This command opens a configuration window where it is possible
 		to setup plugin's parameters. You can also open this window by
-		using popup menu in the url list window<BR><BR>
+		using popup menu in the URL list window<BR><BR>
 		<H3>Configure dialog options:</H3>
 		There is also a ban list widget, which allows to have a list of words that plugin mustn't catch.<BR><BR>
 		<I>E.g.<BR>
 		<blockquote>if the word "ftp" is inserted in the ban list and if in a window there is an output like "ftp.kvirc.net",
-		the url will not be catched.</blockquote></I>
+		the URL will not be caught.</blockquote></I>
 		<HR>
 */
 
@@ -749,7 +749,7 @@ static bool url_kvs_cmd_config(KviKvsModuleCommandCall *)
 	return true;
 }
 
-int check_url(KviWindow *w,const QString &szUrl) // return 0 if no occurence of the url were found
+int check_url(KviWindow *w,const QString &szUrl) // return 0 if no occurrence of the URL were found
 {
 	int tmp = 0;
 
@@ -823,17 +823,17 @@ bool urllist_module_event_onUrl(KviKvsModuleEventCall * c)
 }
 
 
-/*	@doc: url.load
+/*	@doc: URL.load
 	@type:
 		command
 	@title:
-		url.load
+		URL.load
 	@short:
 		Loads URL list module
 	@syntax:
-		url.load
+		URL.load
 	@description:
-		Loads the URL list module which keeps track of all urls shown in kvirc windows.
+		Loads the URL list module which keeps track of all URLs shown in kvirc windows.
 */
 
 
@@ -897,27 +897,27 @@ void url_module_config()
 }
 
 /*
-	@doc: url
+	@doc: URL
 	@type:
 		module
 	@short:
-		The URL list module: keeps track of all urls shown in kvirc windows
+		The URL list module: keeps track of all URLs shown in kvirc windows
 	@title:
 		The URL list module
 	@body:
-		This plugin keeps track of all urls shown in kvirc windows.
+		This plugin keeps track of all URLs shown in kvirc windows.
 		<H3>Exported commands:</H3>
-		<B>/url.list</B> : this command opens a window containing the urls' list.
+		<B>/URL.list</B> : this command opens a window containing the URLs' list.
 		In the list there is other information:<BR>
-		<U>Window</U> : window where the url has been shown last<BR>
-		<U>Count</U> : number of urls shown<BR>
-		<U>Timestamp</U> : date/time when the url has been shown first<BR>
-		Clicking right on the url column of the list a menu will popup, through it
-		you can remove the selected item, find the url in the window it appeared last, and
-		say it to: <I>@Console, Channels, Querys, DCC Chats</I> and <I>User windows</I>.<BR>
+		<U>Window</U> : window where the URL has been shown last<BR>
+		<U>Count</U> : number of URLs shown<BR>
+		<U>Timestamp</U> : date/time when the URL has been shown first<BR>
+		Clicking right on the URL column of the list a menu will popup, through it
+		you can remove the selected item, find the URL in the window it appeared last, and
+		say it to: <I>@Console, Channels, Queries, DCC Chats</I> and <I>User windows</I>.<BR>
 		The list is saved to file when you click on the menu item or when you unload the plugin
 		on condition that you have checked the relative checkbox in configuration dialog.<BR>
-		You can also open the url in your web browser double clicking on it in the url list window.<BR><BR>
+		You can also open the URL in your web browser double clicking on it in the URL list window.<BR><BR>
 
 		Mail me if you have any suggestion or you want to notice a bug.<BR>
 		<B>Andrea 'YaP' Parrella</B> &lt;anandrea@iname.com&gt;<BR><BR>
@@ -931,7 +931,7 @@ KVIRC_MODULE(
 	"URL",
 	"4.0.0",
 	"Copyright (C) 2002 Andrea Parrella <yap@yapsoft.it>",
-	"url list module for KVIrc",
+	"URL list module for KVIrc",
 	url_module_init,
 	url_module_can_unload,
 	0,

@@ -44,10 +44,10 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		Rappresents a dialog object. The class is really
+		Represents a dialog object. The class is really
 		similar to the widget class, it has only a couple of minor differences.
 		A dialog is always a top-level widget, but if it has a parent, its default
-		location is centered on top of the parent. It will also share the parent's windowlist entry.
+		location is centered on top of the parent. It will also share the parent's window list entry.
 		!fn; setModal (<boolean>)
 		If you call $setModal(1) then the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.

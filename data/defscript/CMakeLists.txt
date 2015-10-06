@@ -6,7 +6,7 @@ if(UNIX)
 	if(APPLE)
 		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/defscript/)
 	else()
-		# Assume linux
+		# Assume Linux
 		install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/defscript/)
 	endif()
 elseif(WIN32)

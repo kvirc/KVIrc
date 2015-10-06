@@ -735,7 +735,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 	if(!pSocket->usingSSL())
 	{
-		c->warning(__tr2qs("Unable to get SSL information: the IRC Connection is not using SSL"));
+		c->warning(__tr2qs("Unable to get SSL information: The IRC Connection is not using SSL"));
 		c->returnValue()->setString("");
 		return true;
 	}
@@ -760,7 +760,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	if(KviSSLMaster::getSSLCertInfo(pCert, szQuery, szParam1, c->returnValue()))
 		return true;
 
-	c->warning(__tr2qs("Unable to get SSL information: query not recognized"));
+	c->warning(__tr2qs("Unable to get SSL information: Query not recognized"));
 	c->returnValue()->setString("");
 
 	return true;

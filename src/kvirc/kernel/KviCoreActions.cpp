@@ -92,7 +92,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_SERVEROPTIONS,
 		"options.edit -t OptionsWidget_servers",
-		__tr2qs("Configure Servers..."),
+		__tr2qs("Configure servers..."),
 		__tr2qs("Allows you to configure the servers and eventually to connect to them"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_servers.png",
@@ -103,7 +103,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGEADDONS,
 		"addon.dialog -t",
-		__tr2qs("Manage Addons..."),
+		__tr2qs("Manage addons..."),
 		__tr2qs("Allows you to manage the script-based addons"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_addons.png",
@@ -114,7 +114,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_EDITREGUSERS,
 		"reguser.edit -t",
-		__tr2qs("Configure Registered Users..."),
+		__tr2qs("Configure registered users..."),
 		__tr2qs("Shows a dialog that allows editing the registered user entries"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_regusers.png",
@@ -125,7 +125,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_IDENTITYOPTIONS,
 		"options.edit -t OptionsWidget_identity",
-		__tr2qs("Configure Identity..."),
+		__tr2qs("Configure identity..."),
 		__tr2qs("Allows you to configure nickname, username, avatar etc..."),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_identity.png",
@@ -136,7 +136,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_SOCKETSPY,
 		"socketspy.open",
-		__tr2qs("Show SocketSpy"),
+		__tr2qs("Show socket spy"),
 		__tr2qs("Shows a window that allows monitoring the socket traffic"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_socketspy.png",
@@ -147,7 +147,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_NETWORKLINKS,
 		"links.open",
-		__tr2qs("Get Network Links"),
+		__tr2qs("Get network links"),
 		__tr2qs("Shows a window that allows viewing the network links"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_links.png",
@@ -158,7 +158,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_CHANNELLIST,
 		"list.open",
-		__tr2qs("Get Channel List"),
+		__tr2qs("Get channel list"),
 		__tr2qs("Shows a window that allows listing the network channels"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_channellist.png",
@@ -180,7 +180,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_THEMEOPTIONS,
 		"options.dialog -t theme",
-		__tr2qs("Configure Theme..."),
+		__tr2qs("Configure theme..."),
 		__tr2qs("Shows the theme options dialog"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_themeoptions.png",
@@ -191,7 +191,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGETHEMES,
 		"theme.dialog -t",
-		__tr2qs("Manage Themes..."),
+		__tr2qs("Manage themes..."),
 		__tr2qs("Allows you to manage the themes"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_theme.png",
@@ -202,7 +202,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_TOOLBAREDITOR,
 		"toolbareditor.open -t",
-		__tr2qs("Customize Toolbars..."),
+		__tr2qs("Customize toolbars..."),
 		__tr2qs("Shows a window that allows editing script toolbars"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_toolbareditor.png",
@@ -213,7 +213,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_JOINCHANNELS,
 		"channelsjoin.open",
-		__tr2qs("Join Channels..."),
+		__tr2qs("Join channels..."),
 		__tr2qs("Shows a dialog that allows you join channels"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_channels.png",
@@ -224,7 +224,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_ACTIONEDITOR,
 		"actioneditor.open",
-		__tr2qs("Edit Actions..."),
+		__tr2qs("Edit actions..."),
 		__tr2qs("Shows a window that allows editing actions"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_actioneditor.png",
@@ -235,7 +235,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_ALIASEDITOR,
 		"aliaseditor.open",
-		__tr2qs("Edit Aliases..."),
+		__tr2qs("Edit aliases..."),
 		__tr2qs("Shows a window that allows editing aliases"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_aliaseditor.png",
@@ -246,7 +246,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_CLASSEDITOR,
 		"classeditor.open",
-		__tr2qs("Edit Classes..."),
+		__tr2qs("Edit classes..."),
 		__tr2qs("Shows a window that allows editing classes"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_classeditor.png",
@@ -257,7 +257,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_EVENTEDITOR,
 		"eventeditor.open",
-		__tr2qs("Edit Events..."),
+		__tr2qs("Edit events..."),
 		__tr2qs("Shows a window that allows editing script events"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_eventeditor.png",
@@ -268,7 +268,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_POPUPEDITOR,
 		"popupeditor.open",
-		__tr2qs("Edit Popups..."),
+		__tr2qs("Edit popups..."),
 		__tr2qs("Shows a window that allows editing popup menus"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_popupeditor.png",
@@ -279,8 +279,8 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_RAWEDITOR,
 		"raweditor.open",
-		__tr2qs("Edit Raw Events..."),
-		__tr2qs("Shows a window that allows editing raw scripting events"),
+		__tr2qs("Edit RAW events..."),
+		__tr2qs("Shows a window that allows editing RAW scripting events"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_raweditor.png",
 		KviIconManager::RawEventEditor,
@@ -290,7 +290,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_CODETESTER,
 		"codetester.open",
-		__tr2qs("Script Tester"),
+		__tr2qs("Script tester"),
 		__tr2qs("Creates an embedded editor for long scripts"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_codetester.png",
@@ -301,7 +301,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_EXECUTEKVS,
 		"dialog.file(open,$tr(\"Select a Script File\")){ if(!$str.isEmpty($0))parse $0; }",
-		__tr2qs("Execute Script..."),
+		__tr2qs("Execute script..."),
 		__tr2qs("Allows executing a KVS script from file"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_folder.png",
@@ -312,7 +312,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_HELPINDEX,
 		"help -m",
-		__tr2qs("Help Index"),
+		__tr2qs("Help index"),
 		__tr2qs("Shows the documentation index"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_help.png",
@@ -323,7 +323,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_KVIRCMAILINGLIST,
 		"openurl http://www.kvirc.net/?id=mailinglist",
-		__tr2qs("Subscribe to the Mailing List"),
+		__tr2qs("Subscribe to the mailing list"),
 		__tr2qs("Allows subscribing to the KVIrc mailing list"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_mailinglist.png",
@@ -346,7 +346,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_KVIRCRUHOMEPAGE,
 		"openurl http://www.kvirc.ru",
 		__tr2qs("KVIrc Russian WWW"),
-		__tr2qs("Opens the KVIrc homepage in russian"),
+		__tr2qs("Opens the KVIrc homepage in Russian"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_homepage.png",
 		KviIconManager::HomePage,
@@ -356,8 +356,8 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_SCREENSHOT,
 		"theme.screenshot",
-		__tr2qs("Acquire Screenshot"),
-		__tr2qs("Acquires a Screenshot of the KVIrc main window"),
+		__tr2qs("Acquire screenshot"),
+		__tr2qs("Acquires a screenshot of the KVIrc main window"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_screenshot.png",
 		KviIconManager::ScreenShot,
@@ -367,7 +367,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_FILETRANSFER,
 		"filetransferwindow.open",
-		__tr2qs("Manage File &Transfers"),
+		__tr2qs("Manage file &transfers"),
 		__tr2qs("Shows a window that lists file transfers"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_filetransfer.png",
@@ -378,7 +378,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_IOGRAPH,
 		"iograph.open",
-		__tr2qs("Show I/O &Traffic graph"),
+		__tr2qs("Show I/O &traffic graph"),
 		__tr2qs("Shows a graph representing I/O bandwidth traffic"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_sysmonitor.png",
@@ -389,7 +389,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_LOGVIEWER,
 		"logview.open",
-		__tr2qs("Browse Log Files"),
+		__tr2qs("Browse log files"),
 		__tr2qs("Shows a window that lists and filter log files"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_log.png",
@@ -400,7 +400,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_SHAREDFILES,
 		"sharedfileswindow.open",
-		__tr2qs("Manage S&hared Files"),
+		__tr2qs("Manage &shared files"),
 		__tr2qs("Shows a window that list shared files"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_sharedfiles.png",
@@ -412,7 +412,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_URLLIST,
 		"url.list",
 		__tr2qs("View URL list"),
-		__tr2qs("Shows a window that list catched urls"),
+		__tr2qs("Shows a window that lists caught URLs"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_url.png",
 		KviIconManager::Url,
@@ -423,7 +423,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_NEWIRCCONTEXT,
 		g_pMainWindow,
 		SLOT(newConsole()),
-		__tr2qs("New IRC Context"),
+		__tr2qs("New IRC context"),
 		__tr2qs("Creates a new IRC context console"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_newitem.png",
@@ -448,7 +448,7 @@ void register_core_actions(KviActionManager * m)
 KviIrcContextDisplayAction::KviIrcContextDisplayAction(QObject * pParent)
 : KviAction(pParent,
 	QString(KVI_COREACTION_IRCCONTEXTDISPLAY),
-	__tr2qs("IRC Context Display"),
+	__tr2qs("IRC context display"),
 	__tr2qs("Shows a small display with IRC context information"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_irccontextdisplay.png",
@@ -636,7 +636,7 @@ void KviConnectAction::setup()
 {
 	KviAction::setup();
 	m_szConnectString = __tr2qs("Connect");
-	m_szAbortConnectionString = __tr2qs("Abort Connection");
+	m_szAbortConnectionString = __tr2qs("Abort connection");
 	m_szDisconnectString = __tr2qs("Disconnect");
 }
 
@@ -789,7 +789,7 @@ KviJoinChannelAction::KviJoinChannelAction(QObject * pParent)
 : KviSubmenuAction(pParent,
 	QString(KVI_COREACTION_CHANNELMENU),
 	QString("channelsjoin.open"),
-	__tr2qs("Join Channel"),
+	__tr2qs("Join channel"),
 	__tr2qs("Shows a popup menu that allows quickly selecting a channel to join"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_channelspopup.png",
@@ -808,7 +808,7 @@ void KviJoinChannelAction::popupAboutToShow()
     m_pPopup->addSeparator();
 	m_pPopup->addAction(*(smallIcon()),__tr2qs("Other..."));
     m_pPopup->addSeparator();
-	m_pPopup->addAction(__tr2qs("Clear Recent Channels List"));
+	m_pPopup->addAction(__tr2qs("Clear recent channels list"));
 }
 
 void KviJoinChannelAction::popupActivated(QAction *pAction)
@@ -823,7 +823,7 @@ void KviJoinChannelAction::popupActivated(QAction *pAction)
 		if(szItemText == __tr2qs("Other..."))
 		{
 			szText = "channelsjoin.open";
-		} else if(szItemText == __tr2qs("Clear Recent Channels List"))
+		} else if(szItemText == __tr2qs("Clear recent channels list"))
 		{
 			szText = "option stringlistRecentChannels";
 		} else {
@@ -840,11 +840,11 @@ KviChangeNickAction::KviChangeNickAction(QObject * pParent)
 : KviSubmenuAction(
 	pParent,
 	QString(KVI_COREACTION_NICKNAMEMENU),
-	QString("dialog.textinput(\"" + __tr2qs("Change Nickname") + "\",\"" +
+	QString("dialog.textinput(\"" + __tr2qs("Change nickname") + "\",\"" +
 			__tr2qs("Please enter the new nickname") + "\",\"" +
 			__tr2qs("OK") + "\",\"" +
 			__tr2qs("Cancel") + "\"){ if($0 == 0 && $1 != \"\")nick $1; }"),
-	__tr2qs("Change Nickname"),
+	__tr2qs("Change nickname"),
 	__tr2qs("Shows a popup menu that allows quickly changing the nickname"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_nickpopup.png",
@@ -864,7 +864,7 @@ void KviChangeNickAction::popupAboutToShow()
 	m_pPopup->addAction(*(smallIcon()),__tr2qs("Other..."));
 
     m_pPopup->addSeparator();
-	m_pPopup->addAction(*(smallIcon()),__tr2qs("Clear Recent Nicks List"));
+	m_pPopup->addAction(*(smallIcon()),__tr2qs("Clear recent nicks list"));
 }
 
 void KviChangeNickAction::popupActivated(QAction *pAction)
@@ -879,7 +879,7 @@ void KviChangeNickAction::popupActivated(QAction *pAction)
 		if(__tr2qs("Other...") == text)
 		{
 			activate();
-		} else if(__tr2qs("Clear Recent Nicks List") == text)
+		} else if(__tr2qs("Clear recent nicks list") == text)
 		{
 			KviKvsScript::run("option stringlistRecentNicknames",c);
 		} else {
@@ -896,7 +896,7 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_SERVERMENU),
 	QString("options.edit OptionsWidget_servers"),
-	__tr2qs("Connect To"),
+	__tr2qs("Connect to"),
 	__tr2qs("Shows a popup menu that allows quickly connecting to a server"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_server.png",
@@ -911,7 +911,7 @@ void KviConnectToServerAction::popupAboutToShow()
     m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs("Other..."));
     m_pPopup->addSeparator();
-	m_pPopup->addAction(__tr2qs("Clear Recent Servers List"));
+	m_pPopup->addAction(__tr2qs("Clear recent servers list"));
 }
 
 void KviConnectToServerAction::popupActivated(QAction *pAction)
@@ -945,7 +945,7 @@ KviChangeUserModeAction::KviChangeUserModeAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_USERMODEMENU),
 	QString(""),
-	__tr2qs("User Mode"),
+	__tr2qs("User mode"),
 	__tr2qs("Shows a popup menu that allows quickly changing user modes"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_usermode.png",
@@ -966,7 +966,7 @@ void KviChangeUserModeAction::popupAboutToShow()
     pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::WallOps)),__tr2qs("Wallops (+w)"));
     pAction->setCheckable(true);
     pAction->setChecked(c->connection()->userInfo()->hasUserMode('w'));
-    pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerNotice)),__tr2qs("Server Notices (+s)"));
+    pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerNotice)),__tr2qs("Server notices (+s)"));
     pAction->setCheckable(true);
     pAction->setChecked(c->connection()->userInfo()->hasUserMode('s'));
     pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Invisible)),__tr2qs("Invisible (+i)"));
@@ -1091,8 +1091,8 @@ void KviGoAwayAction::activeContextStateChanged()
 void KviGoAwayAction::setup()
 {
 	KviKvsAction::setup();
-	m_szAwayString = __tr2qs("Enter Away Mode");
-	m_szBackString = __tr2qs("Leave Away Mode");
+	m_szAwayString = __tr2qs("Enter away mode");
+	m_szBackString = __tr2qs("Leave away mode");
 	connect(g_pMainWindow,SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(activeContextStateChanged()));
 }
 
@@ -1152,7 +1152,7 @@ KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_IRCTOOLS),
 	QString(""),
-	__tr2qs("Irc Tools"),
+	__tr2qs("IRC tools"),
 	__tr2qs("Shows a popup menu with some IRC Tools"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_tools.png",
@@ -1185,7 +1185,7 @@ KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_IRCACTIONS),
 	QString(""),
-	__tr2qs("Irc Actions"),
+	__tr2qs("IRC Actions"),
 	__tr2qs("Shows a popup menu with some IRC Actions"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_actions.png",

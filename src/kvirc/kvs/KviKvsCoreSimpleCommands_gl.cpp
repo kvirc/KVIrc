@@ -641,10 +641,10 @@ namespace KviKvsCoreSimpleCommands
 					szLifetime = __tr2qs_ctx("Persistent","kvs");
 				break;
 				case KviKvsTimer::WindowLifetime:
-					szLifetime = __tr2qs_ctx("Window Lifetime","kvs");
+					szLifetime = __tr2qs_ctx("Window lifetime","kvs");
 				break;
 				case KviKvsTimer::SingleShot:
-					szLifetime = __tr2qs_ctx("Single Shot","kvs");
+					szLifetime = __tr2qs_ctx("Single shot","kvs");
 				break;
 				default:
 					szLifetime = __tr2qs_ctx("Unknown","kvs");

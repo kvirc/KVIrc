@@ -307,7 +307,7 @@ alias(awayall)
 
 # notify: this is a bit more complex
 # We want to add an user to the notify list with a single command
-# The notify lists are handled thru the registered users database
+# The notify lists are handled through the registered users database
 alias(notify)
 {
 	# This one adds a registered users database entry
@@ -338,7 +338,7 @@ alias(notify)
 
 	%oldNicks = $reguser.property($0,notify)
 
-	# It would be a good idea to check if the nikckname is already in the %oldNicks list
+	# It would be a good idea to check if the nickname is already in the %oldNicks list
 	# but this is left as exercise for the reader.
 
 	%oldNicks << $0
@@ -390,7 +390,7 @@ alias(ignore)
 	}
 }
 
-# Dcc...people commonly use "dcc send" instead of "dcc.send"
+# DCC... people commonly use "dcc send" instead of "dcc.send"
 alias(dcc)
 {
 	switch($0)
@@ -423,7 +423,7 @@ alias(dcc)
 }
 
 #
-# return a string with the name of the curerent usermode
+# return a string with the name of the current usermode
 #
 alias(usermodename)
 {

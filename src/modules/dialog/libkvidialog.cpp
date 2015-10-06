@@ -468,7 +468,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 	@examples:
 		[example]
 		[comment]# We need a single line "reason"[/comment]
-		dialog.textinput -d="Working !" (Away,<center>Please enter the <h1>away message</h1></center>,"Ok","Cancel")
+		dialog.textinput -d="Working!" (Away,<center>Please enter the <h1>away message</h1></center>,"Ok","Cancel")
 		{
 			switch($0)
 			{

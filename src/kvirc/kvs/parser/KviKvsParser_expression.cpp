@@ -113,7 +113,7 @@ KviKvsTreeNodeExpressionBinaryOperator * KviKvsParser::parseExpressionBinaryOper
 				KVSP_skipChar;
 				return new KviKvsTreeNodeExpressionBinaryOperatorEqualTo(KVSP_curCharPointer);
 			} else {
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unknown binary operator '=%q': did you mean '==' ?","kvs"),KVSP_curCharPointer);
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unknown binary operator '=%q': did you mean '=='?","kvs"),KVSP_curCharPointer);
 			}
 		break;
 		case '!':

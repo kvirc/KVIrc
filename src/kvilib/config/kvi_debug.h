@@ -77,7 +77,7 @@
 	// The following two macros are used to create unique variable names
 	// by the means of the __LINE__ builtin macro.
 	// The ## token paste operator must be called inside a macro and must
-	// preceede a macro parameter. This is why we can't use directly
+	// precede a macro parameter. This is why we can't use directly
 	//
 	// #define UNIQUEVARIABLE int name ## __LINE__
 	//

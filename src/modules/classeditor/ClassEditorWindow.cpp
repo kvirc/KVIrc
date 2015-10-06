@@ -540,7 +540,7 @@ void ClassEditorWidget::renameFunction()
 			QMessageBox::information(this,
 			__tr2qs_ctx("Function already exists","editor"),
 			__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-			__tr2qs_ctx("Ok, Let me try again...","editor"));
+			__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pClassEditorModule->unlock();
 			return;
 		}
@@ -602,7 +602,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		QMessageBox::information(this,
 			__tr2qs_ctx("Class already exists","editor"),
 			__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-			__tr2qs_ctx("Ok, Let me try again...","editor"));
+			__tr2qs_ctx("OK, Let me try again...","editor"));
 		g_pClassEditorModule->unlock();
 		return;
 	}
@@ -612,7 +612,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		QMessageBox::information(this,
 			__tr2qs_ctx("Bad Namespace Name","editor"),
 			__tr2qs_ctx("Found an empty namespace in namespace name","editor"),
-			__tr2qs_ctx("Ok, Let me try again...","editor"));
+			__tr2qs_ctx("OK, Let me try again...","editor"));
 		g_pClassEditorModule->unlock();
 		szNewName = "";
 		continue;
@@ -686,12 +686,12 @@ void ClassEditorWidget::renameNamespace(ClassEditorTreeWidgetItem * pOldNamespac
 			QMessageBox::information(this,
 				__tr2qs_ctx("Name already exists as Class name","editor"),
 				__tr2qs_ctx("This name is already in use as Class name. Please choose another one.","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 		} else {
 			QMessageBox::information(this,
 			__tr2qs_ctx("Namespace already exists","editor"),
 			__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-			__tr2qs_ctx("Ok, Let me try again...","editor"));
+			__tr2qs_ctx("OK, Let me try again...","editor"));
 		}
 		g_pClassEditorModule->unlock();
 		return;
@@ -1116,7 +1116,7 @@ void ClassEditorWidget::exportSelectionInSinglesFiles(KviPointerList<ClassEditor
 
 	if(!KviFileDialog::askForDirectoryName(
 			m_szDir,
-			__tr2qs_ctx("Choose a Directory - KVIrc","editor"),
+			__tr2qs_ctx("Choose a directory - KVIrc","editor"),
 			m_szDir,
 			QString(),
 			false,
@@ -1521,7 +1521,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Missing Namespace Name","editor"),
 				__tr2qs_ctx("You must specify a valid name for the namespace","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pClassEditorModule->unlock();
 			continue;
 		}
@@ -1534,7 +1534,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Namespace Name","editor"),
 				__tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pClassEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1547,8 +1547,8 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			g_pClassEditorModule->lock();
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Namespace Name","editor"),
-				__tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name>?","editor"),
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pClassEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1559,7 +1559,7 @@ bool ClassEditorWidget::askForNamespaceName(const QString & szAction, const QStr
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Namespace Name","editor"),
 				__tr2qs_ctx("Found an empty namespace in namespace name","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pClassEditorModule->unlock();
 			szNewName = "";
 			continue;

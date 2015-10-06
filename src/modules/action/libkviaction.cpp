@@ -289,7 +289,7 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 
 		!sw: -l | --enable-at-login
 		Specifies that the action needs to be enabled at login time, that is
-		when a link to the server has been estabilished but the login
+		when a link to the server has been established but the login
 		operations haven't been carried out yet (and thus there is no real IRC connection).
 		This switch requires -c to work.
 
@@ -306,7 +306,7 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 
 		!sw: -t=<category> | --category=<category>
 		Causes the action to belong to the specified category.
-		<category> can be one of "irc","scripting","settings","gui","channel","tools" and "generic".
+		<category> can be one of "IRC","scripting","settings","gui","channel","tools" and "generic".
 		If this switch is omitted the "generic" category is automatically assumed.
 		The actions failing in the "tools" category will appear in the "Tools" KVIrc menu too.
 
@@ -321,7 +321,7 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		[/p]
 		[p]
 		Each action has an unique <name> that must not collide with any core action
-		(i.e. don't use the "kvirc." prefix).
+		(i.e. don't use the "KVIrc." prefix).
 		At any time you can check [cmd]action.list[/cmd] to verify that no core action
 		is already using your <name>. If the <name> was already used for a script action
 		then this action is simply replaced by the new one.
@@ -350,7 +350,7 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		[p]
 		<action body> is the callback code snippet that will be triggered when this action is activated
 		either by the means of [cmd]action.trigger[/cmd], a toolbar button or a menu item selection.
-		An empty <action body> causes this command to behave like [cmd]action.destoy[/cmd] <name>.
+		An empty <action body> causes this command to behave like [cmd]action.destroy[/cmd] <name>.
 		[/p]
 	@seealso:
 		[cmd]action.destroy[/cmd], [cmd]action.trigger[/cmd]
@@ -374,7 +374,7 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 
 	if(!(c->getParameterCode(1,szVisibleText) && c->getParameterCode(2,szDescription)))
 	{
-		c->error(__tr2qs("Internal error: call a head-shrinker"));
+		c->error(__tr2qs("Internal error: Call a head-shrinker"));
 		return false;
 	}
 

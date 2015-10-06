@@ -96,7 +96,7 @@ namespace KviKvsCoreSimpleCommands
 		if(KVSCSC_pSwitches->find('x',"allow-exec"))
 		{
 			// allow execution of commands
-			if(!KviUserInput::parse(szText,KVSCSC_pWindow,__tr2qs_ctx("say: injected commandline","kvs")))
+			if(!KviUserInput::parse(szText,KVSCSC_pWindow,__tr2qs_ctx("say: Injected commandline","kvs")))
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
 					KVSCSC_pContext->warning(__tr2qs_ctx("Say parse error: Broken command","kvs"));
@@ -409,7 +409,7 @@ namespace KviKvsCoreSimpleCommands
 				idx = iIdx;
 			else {
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("Invalid index specified: ignored","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("Invalid index specified: Ignored","kvs"));
 			}
 		}
 		g_pMainWindow->mainMenuBar()->removeMenu(szVisibleText);
@@ -847,7 +847,7 @@ namespace KviKvsCoreSimpleCommands
 			[example]
 			# Unban people on the current channel (say #kvirc)
 			unban Maxim,Gizmo!*@*,*!root@*
-			# Do the same but from another window belongin to this IRC context
+			# Do the same but from another window belonging to this IRC context
 			unban -r=[fnc]$channel[/fnc](#kvirc) Maxim,Gizmo!*@*,*!root@*
 			# Do the same from any window
 			unban -r=[fnc]$channel[/fnc](#kvirc,[fnc]$context[/fnc](irc.myirc.net,Pragma)) Maxim,Gizmo!*@*,*!root*@*
@@ -1057,7 +1057,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Requests user information
 		@description:
-			Requests information about an irc user specified by <nickname>.[br]
+			Requests information about an IRC user specified by <nickname>.[br]
 			If [server] is specified, the request is directed to that one. [server]
 			may be a nickname so that the request is redirected to the server that
 			the user with that nickname is connected to.[br]

@@ -201,7 +201,7 @@ void AvatarDownloadDialog::downloadTerminated(bool bSuccess)
 AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInitialPath)
 : QDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
+	setWindowTitle(__tr2qs_ctx("Choose avatar - KVIrc","options"));
 
 	QGridLayout * g = new QGridLayout(this);
 

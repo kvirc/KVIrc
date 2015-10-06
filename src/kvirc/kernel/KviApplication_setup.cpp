@@ -149,7 +149,7 @@ bool KviApplication::checkFileAssociations()
 		free(pcBuffer);
 		return false;
 	} else {
-		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS Script").toLocal8Bit().data(),pcBuffer))
+		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS script").toLocal8Bit().data(),pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -189,7 +189,7 @@ bool KviApplication::checkFileAssociations()
 		free(pcBuffer);
 		return false;
 	} else {
-		if(!kvi_strEqualCI(__tr2qs("Run KVS Script").toLocal8Bit().data(),pcBuffer))
+		if(!kvi_strEqualCI(__tr2qs("Run KVS script").toLocal8Bit().data(),pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -327,7 +327,7 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 		free(pcBuffer);
 		return false;
 	} else {
-		if(!kvi_strEqualCI(__tr2qs("URL:IRC Protocol").toLocal8Bit().data(),pcBuffer))
+		if(!kvi_strEqualCI(__tr2qs("URL:IRC protocol").toLocal8Bit().data(),pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -430,7 +430,7 @@ void KviApplication::setupUriAssociations(const char * pcProto)
 	SHDeleteKey(HKEY_CLASSES_ROOT,szKey);
 
 	err = RegCreateKeyEx(HKEY_CLASSES_ROOT,szKey,0,0,0,KEY_WRITE,0,&hKey,0);
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"URL:IRC Protocol",16);
+	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"URL:IRC protocol",16);
 	RegSetValueEx(hKey,"URL Protocol",0,REG_SZ,(LPBYTE)"",0);
 
 	szKey = szStoredKey + "\\DefaultIcon";
@@ -470,7 +470,7 @@ void KviApplication::setupFileAssociations()
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcScript");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("KVIrc KVS Script").toLocal8Bit();
+	tmp = __tr2qs("KVIrc KVS script").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -478,7 +478,7 @@ void KviApplication::setupFileAssociations()
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("Run KVS Script").toLocal8Bit();
+	tmp = __tr2qs("Run KVS script").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -493,7 +493,7 @@ void KviApplication::setupFileAssociations()
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcConfig");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("KVIrc Configuration File").toLocal8Bit();
+	tmp = __tr2qs("KVIrc configuration file").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -508,7 +508,7 @@ void KviApplication::setupFileAssociations()
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcTheme");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("KVIrc Theme Package").toLocal8Bit();
+	tmp = __tr2qs("KVIrc theme package").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -516,7 +516,7 @@ void KviApplication::setupFileAssociations()
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("Install Theme Package").toLocal8Bit();
+	tmp = __tr2qs("Install theme package").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -531,7 +531,7 @@ void KviApplication::setupFileAssociations()
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcAddon");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("KVIrc Addon Package").toLocal8Bit();
+	tmp = __tr2qs("KVIrc addon package").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -539,7 +539,7 @@ void KviApplication::setupFileAssociations()
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp = __tr2qs("Install Package").toLocal8Bit();
+	tmp = __tr2qs("Install package").toLocal8Bit();
 	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -751,7 +751,7 @@ void KviApplication::setupBegin()
 	bool (*sfunc)() = (bool(*)())g_pSetupLibrary->resolve("setup_begin");
 	if(!sfunc)
 	{
-		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
+		KviMessageBox::warning(__tr2qs("Ops... It looks like you have a broken distribution.\n" \
 			"The setup module does not export the \"setup_begin\" function.\n" \
 			"Aborting!"));
 #if defined(COMPILE_ON_WINDOWS)
@@ -793,7 +793,7 @@ void KviApplication::setupFinish()
 	void (*sfunc)() = (void(*)())g_pSetupLibrary->resolve("setup_finish");
 	if(!sfunc)
 	{
-		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
+		KviMessageBox::warning(__tr2qs("Ops... It looks like you have a broken distribution.\n" \
 			"The setup module does not export the \"setup_finish\" function.\n" \
 			"Trying to continue anyway..."));
 	}

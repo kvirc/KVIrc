@@ -42,7 +42,7 @@ KviKvsTreeNodeArrayElement::~KviKvsTreeNodeArrayElement()
 
 void KviKvsTreeNodeArrayElement::contextDescription(QString & szBuffer)
 {
-	szBuffer = "Array Element Evaluation";
+	szBuffer = "Array element evaluation";
 }
 
 void KviKvsTreeNodeArrayElement::dump(const char * prefix)
@@ -96,7 +96,7 @@ bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o,
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the [] subscript didn't evaluate to an array: automatic conversion from %Q supplied","kvs"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the [] subscript didn't evaluate to an array: Automatic conversion from %Q supplied","kvs"),&szType);
 		}
 		pBuffer->setNothing();
 		return true;
@@ -134,7 +134,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 		{
 			QString szType;
 			result->result()->getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the [] subscript didn't evaluate to an array: automatic conversion from type '%Q' supplied","kvs"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the [] subscript didn't evaluate to an array: Automatic conversion from type '%Q' supplied","kvs"),&szType);
 		}
 		result->result()->setArray(new KviKvsArray());
 	}

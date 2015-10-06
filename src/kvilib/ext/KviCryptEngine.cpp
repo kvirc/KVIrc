@@ -129,7 +129,7 @@
 		Well, there is no protocol actually, only the existing implementations, that
 		can be accessed by anyone that want to reproduce them. There are only some
 		points relating to the crypting engines that need to be cleared:[br]
-		The crypted text must be suitable to be sent thru an IRC connection;
+		The crypted text must be suitable to be sent through an IRC connection;
 		this means that some characters can not appear in the crypted text (e.g. CR,LF,NULL....).
 		KVIrc solves it in a simple way: the crypted binary data is encoded,
 		either as hexadecimal numeric string or in base64.[br]

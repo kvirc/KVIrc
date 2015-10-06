@@ -44,7 +44,7 @@ KviKvsTreeNodeModuleSimpleCommand::~KviKvsTreeNodeModuleSimpleCommand()
 
 void KviKvsTreeNodeModuleSimpleCommand::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Module Callback Command \"";
+	szBuffer = "Module callback command \"";
 	szBuffer += m_szModuleName;
 	szBuffer += ".";
 	szBuffer += m_szCmdName;
@@ -64,7 +64,7 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs_ctx("Module command call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
+		c->error(this,__tr2qs_ctx("Module command call failed: Can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
 		return false;
 	}
 
@@ -76,7 +76,7 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 		{
 			c->error(this,__tr2qs_ctx("Module command call failed, however the module '%Q' exports a callback command named '%Q' - possibly missing brackets in a callback command?","kvs"),&m_szModuleName,&m_szCmdName);
 		} else {
-			c->error(this,__tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
+			c->error(this,__tr2qs_ctx("Module command call failed: The module '%Q' doesn't export a command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
 		}
 		return false;
 	}

@@ -68,7 +68,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	l->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Mode)));
 	g->addWidget(l,0,0);
 
-	l = new QLabel(__tr2qs("Channel Modes"),pBackground);
+	l = new QLabel(__tr2qs("Channel modes"),pBackground);
 
 	g->addWidget(l,0,1,1,1);
 

@@ -1123,7 +1123,7 @@ KviKvsTreeNodeOperationStringTransliteration::~KviKvsTreeNodeOperationStringTran
 
 void KviKvsTreeNodeOperationStringTransliteration::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Binding Operator tr///";
+	szBuffer = "Binding operator tr///";
 }
 
 
@@ -1186,7 +1186,7 @@ KviKvsTreeNodeOperationStringSubstitution::~KviKvsTreeNodeOperationStringSubstit
 
 void KviKvsTreeNodeOperationStringSubstitution::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Binding Operator s///";
+	szBuffer = "Binding operator s///";
 }
 
 
@@ -1237,7 +1237,7 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 			int len = re.matchedLength();
 			if(len == 0)
 			{
-				c->warning(this,__tr2qs_ctx("The regular expression matched a zero-length substring: this is not valid in the s/// operator, skipping","kvs"));
+				c->warning(this,__tr2qs_ctx("The regular expression matched a zero-length substring: This is not valid in the s/// operator, skipping","kvs"));
 				goto end_of_this_stuff;
 			}
 			str.remove(idx,len);

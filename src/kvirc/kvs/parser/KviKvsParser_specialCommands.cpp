@@ -149,7 +149,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 	skipSpaces();
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the break command: ignored","kvs"));
+		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the break command: Ignored","kvs"));
 	}
 
 	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
@@ -177,7 +177,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandContinue()
 	skipSpaces();
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the continue command: ignored","kvs"));
+		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the continue command: Ignored","kvs"));
 	}
 
 	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
@@ -202,7 +202,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 		@description:
 			Unsets the specified list of comma separated variables.
 			It is equivalent to assigning the default empty value
-			to each variable on its own: just does it all at aonce.
+			to each variable on its own: just does it all at once.
 			Note that KVIrc automatically frees the local variable memory
 			when they go out of scope and the global variable memory
 			when KVIrc terminates.
@@ -272,9 +272,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 		@description:
 			Declares a list of global variables.
 			Once a variable has been declared as global
-			it refers to the global kvirc instance for the scope of the script.
+			it refers to the global KVIrc instance for the scope of the script.
 			Global variables are shared between scripts and keep their
-			value until they are explicitly unset or kvirc quits.
+			value until they are explicitly unset or KVIrc quits.
 			This command can be used to override the default behaviour of
 			declaring global variables by starting them with an uppercase letter
 			and declaring local variables by starting them with a lowercase one.
@@ -366,13 +366,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			It's rather dangerous to use this command inside an object
 			function handler: if the class definition <class> was already
 			existing and it is a parent of the object's class, you might
-			end up executing "inexistant" code.[br]
+			end up executing "inexistent" code.[br]
 			As a thumb rule, use this command only outside object function handlers.[br]
 			[br][br]
 			Only for the curious: implementing protected and private access
 			list on members would have a considerable runtime overhead because
 			of the strange nature of the KVS language. Object member calls
-			are resolved completly at runtime (and that permits a lot of funny tricks
+			are resolved completely at runtime (and that permits a lot of funny tricks
 			like [cmd]privateimpl[/cmd]) but unfortunately this also forces us
 			to check access lists at runtime. Ok, this would be a relatively small footprint for the "private"
 			keyword where we need to run UP the called object inheritance hierarchy
@@ -772,7 +772,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 			if(KVSP_curCharUnicode != while_chars[j])
 			{
 				if(KVSP_curCharIsEndOfBuffer)
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of command after the 'do' command block: expected 'while' keyword","kvs"));
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of command after the 'do' command block: Expected 'while' keyword","kvs"));
 				else
 					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'while' keyword was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 				if(i)delete i;
@@ -810,7 +810,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Garbage string after the expression in 'do' command: ignored","kvs"));
+		warning(KVSP_curCharPointer,__tr2qs_ctx("Garbage string after the expression in 'do' command: Ignored","kvs"));
 		while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
 	}
 
@@ -878,7 +878,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 
 	if(KVSP_curCharUnicode == 0)
 	{
-		warning(pBegin,__tr2qs_ctx("The last if command in the buffer has no conditional instructions: it's senseless","kvs"));
+		warning(pBegin,__tr2qs_ctx("The last if command in the buffer has no conditional instructions: It's senseless","kvs"));
 		warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script while looking for the instruction block of the if command","kvs"));
 	}
 
@@ -1150,7 +1150,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 
 		if((!i1) && (!e) && (!i2))
 		{
-			error(pForBegin,__tr2qs_ctx("Empty infinite 'for' loop: fix the script","kvs"));
+			error(pForBegin,__tr2qs_ctx("Empty infinite 'for' loop: Fix the script","kvs"));
 			if(i1)delete i1;
 			if(e)delete e;
 			if(i2)delete i2;
@@ -1324,7 +1324,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			Please note that <command> must be either a single instruction or an instruction block [b]enclosed in braces[/b].
 			During or after <command> execution, if a [cmd]break[/cmd] statement is encountered the execution of the switch
 			is terminated, otherwise the next label is evaluated.[br]
-			If the -p (--passthrough) option is enabled, than the switch command will execute all the istructions blocks
+			If the -p (--passthrough) option is enabled, than the switch command will execute all the instructions blocks
 			until a [cmd]break[/cmd] statement is found.[br]
 			[b]match(<value>)[:]<command>[/b][br]
 			The <value> is expected to be a wildcard expression (wildcard characters being '*' and '?')
@@ -1355,7 +1355,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				break;
 			}
 			[/example]
-			[comment]# A complexier example: change the 1 in 2 or 3[/comment]
+			[comment]# A complexer example: change the 1 in 2 or 3[/comment]
 			[example]
 			%tmp = 1
 			switch(%tmp)
@@ -1397,7 +1397,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				case(%tmp)
 				{
 					# do not break here
-					echo "Yeah.. it's stupid.. \%tmp == \%tmp :D"
+					echo "Yeah.. It's stupid.. \%tmp == \%tmp :D"
 				}
 				match("*TEST"):
 					echo "Matched *TEST"
@@ -1577,7 +1577,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 
 	if(pSwitch->isEmpty())
 	{
-		error(pBegin,__tr2qs_ctx("Senseless empty switch command: fix the script","kvs"));
+		error(pBegin,__tr2qs_ctx("Senseless empty switch command: Fix the script","kvs"));
 		delete pSwitch;
 		return 0;
 	}
@@ -1715,9 +1715,9 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				}
 				// empty instruction
 				if(bPrologue)
-					warning(pBegin,__tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?","kvs"));
+					warning(pBegin,__tr2qs_ctx("Found empty prologue block: Maybe you need to fix the script?","kvs"));
 				else
-					warning(pBegin,__tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?","kvs"));
+					warning(pBegin,__tr2qs_ctx("Found empty epilogue block: Maybe you need to fix the script?","kvs"));
 			}
 			int iLen = KVSP_curCharPointer - pBegin;
 			if(iLen > 0)
@@ -1831,7 +1831,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 					return 0;
 				}
 				// empty instruction
-				warning(pBegin,__tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?","kvs"));
+				warning(pBegin,__tr2qs_ctx("Found empty instruction for popup item: Maybe you need to fix the script?","kvs"));
 			}
 			int iLen = KVSP_curCharPointer - pBegin;
 			if(iLen > 0)

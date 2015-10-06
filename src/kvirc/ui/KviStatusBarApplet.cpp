@@ -159,7 +159,7 @@ void KviStatusBarAwayIndicator::toggleContext()
 
 void KviStatusBarAwayIndicator::fillContextPopup(QMenu * p)
 {
-    QAction *pAction = p->addAction(__tr2qs("Apply to all IRC Contexts"),this,SLOT(toggleContext()));
+    QAction *pAction = p->addAction(__tr2qs("Apply to all IRC contexts"),this,SLOT(toggleContext()));
     pAction->setCheckable(true),
     pAction->setChecked(m_bAwayOnAllContexts);
 }
@@ -187,7 +187,7 @@ KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar, KviStatus
 void KviStatusBarAwayIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Away Indicator"),"awayindicator",CreateStatusBarAwayIndicator,"",*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
+		__tr2qs("Away indicator"),"awayindicator",CreateStatusBarAwayIndicator,"",*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 	pBar->registerAppletDescriptor(d);
 }
 

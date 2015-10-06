@@ -43,7 +43,7 @@ KviKvsTreeNodeModuleFunctionCall::~KviKvsTreeNodeModuleFunctionCall()
 
 void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Module Function Call \"";
+	szBuffer = "Module function call \"";
 	szBuffer += m_szModuleName;
 	szBuffer += ".";
 	szBuffer += m_szFunctionName;
@@ -64,14 +64,14 @@ bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs_ctx("Module function call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
+		c->error(this,__tr2qs_ctx("Module function call failed: Can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
 		return false;
 	}
 
 	KviKvsModuleFunctionExecRoutine * proc = m->kvsFindFunction(m_szFunctionName);
 	if(!proc)
 	{
-		c->error(this,__tr2qs_ctx("Module function call failed: the module '%Q' doesn't export a function named '%Q'","kvs"),&m_szModuleName,&m_szFunctionName);
+		c->error(this,__tr2qs_ctx("Module function call failed: The module '%Q' doesn't export a function named '%Q'","kvs"),&m_szModuleName,&m_szFunctionName);
 		return false;
 	}
 
