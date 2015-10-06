@@ -44,6 +44,7 @@
 #include "KviTalVBox.h"
 #include "KviTalHBox.h"
 #include "KviTalGroupBox.h"
+#include "KviOptions.h"
 
 #include <QScrollBar>
 #include <QLayout>
@@ -57,6 +58,10 @@
 #include <QMenu>
 #include <QListWidget>
 #include <QPainter>
+
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <windows.h>
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 extern KVIRC_API KviModuleManager                    * g_pModuleManager;
 extern KviPointerList<ScriptEditorImplementation> * g_pScriptEditorWindowList;
@@ -305,6 +310,18 @@ void ScriptEditorWidget::updateOptions()
 	p = ((ScriptEditorImplementation*)m_pParent)->findLineEdit()->palette();
 	p.setColor(foregroundRole(),g_clrFind);
 	((ScriptEditorImplementation*)m_pParent)->findLineEdit()->setPalette(p);
+
+	//set cursor custom width
+	if (KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth))
+	{
+		setCursorWidth(KVI_OPTION_UINT(KviOption_uintCustomCursorWidth));
+	} else {
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		int iCursorWidth = 1;
+		SystemParametersInfo(SPI_GETCARETWIDTH, 0, &iCursorWidth, 0);
+		setCursorWidth(iCursorWidth);
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+	}
 }
 
 void ScriptEditorWidget::keyPressEvent(QKeyEvent * e)
