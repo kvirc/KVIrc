@@ -234,6 +234,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviUnreal32IrcServerInfo(this, version);
 	else if(version.contains("unreal",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnrealIrcServerInfo(this, version);
+	else if(version.contains("hybrid",Qt::CaseInsensitive))
+		m_pServInfo = new KviHybridServerInfo(this, version);
 	else if(version.contains("bahamut",Qt::CaseInsensitive))
 		m_pServInfo = new KviBahamutIrcServerInfo(this, version);
 	else if(version.contains("hyperion",Qt::CaseInsensitive))
@@ -360,6 +362,22 @@ const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
 		case 'Z': return __tr2qs("All clients are using SSL (server only)"); break;
 	}
 	return KviUnrealIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
+		case 'M': return __tr2qs("Need auth to speak"); break;
+		case 'O': return __tr2qs("IRC-Op only channel"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Need SSL connection to join"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+		case 'h': return __tr2qs("Half-operators"); break;
+		case 'r': return __tr2qs("Registered"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)

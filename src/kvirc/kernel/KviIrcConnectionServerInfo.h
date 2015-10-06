@@ -71,6 +71,18 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
+class KVIRC_API KviHybridServerInfo : public KviBasicIrcServerInfo
+{
+	// This is a major IRCd that most modern forks are based off of
+public:
+	KviHybridServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Hybrid"; };
+	virtual bool getNeedsOpToListModeseI() { return false; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
 class KVIRC_API KviCritenIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//abjects
