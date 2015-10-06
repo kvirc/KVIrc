@@ -104,6 +104,7 @@ void KviIrcServerParser::parseLiteralPing(KviIrcMessage *msg)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
 // PONG
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -557,7 +558,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 
 	if(!chan){
-		// Ooops, desync with the server.
+		// Oops, desync with the server.
 		UNRECOGNIZED_MESSAGE(msg,__tr("Received a kick message for an unknown channel, possible desync"));
 		return;
 	}
@@ -566,7 +567,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 
 	if(IS_ME(msg,victim))
 	{
-		// ops...I have been kicked
+		// Oops...I have been kicked
 
 		if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnMeKick,chan,
 				szNick,szUser,szHost,szKickMsg))
@@ -1807,7 +1808,7 @@ void KviIrcServerParser::parseLiteralMode(KviIrcMessage *msg)
 		KviChannelWindow * chan = msg->connection()->findChannel(szTarget);
 
 		if(!chan){
-			// Ooops, desync with the server.
+			// Oops, desync with the server.
 			UNRECOGNIZED_MESSAGE(msg,__tr("Received a mode change for an unknown channel, possible desync"));
 			return;
 		}

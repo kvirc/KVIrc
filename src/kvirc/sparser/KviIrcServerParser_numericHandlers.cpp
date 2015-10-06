@@ -988,7 +988,7 @@ void KviIrcServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 
 void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 {
-	// ops...not logged in yet...
+	// Oops...not logged in yet...
 
 	QString szChoiceDescriptionBuffer;
 
@@ -1690,15 +1690,8 @@ void KviIrcServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
 			KviKvsVariantList vl;
 			vl.setAutoDelete(true);
 			vl.append(new KviKvsVariant(i->szNick));
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
-			vl.append(new KviKvsVariant());
+			for(unsigned int ii = 0;ii < 9;ii++)
+				vl.append(new KviKvsVariant());
 			vl.append(new KviKvsVariant(*(i->pMagic)));
 			i->pCallback->run(i->pWindow,&vl,0,KviKvsScript::PreserveParams);
 			msg->connection()->asyncWhoisData()->remove(i);
@@ -1876,7 +1869,7 @@ void KviIrcServerParser::parseNumericList(KviIrcMessage *msg)
 		// module loaded
 		msg->console()->context()->listWindow()->processData(msg);
 	} else {
-		// ops...can't load the module...
+		// Oops...can't load the module...
 		QString szList = msg->connection()->decodeText(msg->allParams());
 		msg->console()->output(KVI_OUT_LIST,__tr2qs("List: %Q"),&szList);
 	}
@@ -1912,7 +1905,7 @@ void KviIrcServerParser::parseNumericLinks(KviIrcMessage *msg)
 		// module loaded
 		msg->console()->context()->linksWindow()->processData(msg);
 	} else {
-		// ops...can't load the module... or the event halted the window creation
+		// Oops...can't load the module... or the event halted the window creation
 		if(!msg->haltOutput())
 		{
 			QString szList = msg->connection()->decodeText(msg->allParams());
@@ -2281,15 +2274,8 @@ void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 		KviKvsVariantList vl;
 		vl.setAutoDelete(true);
 		vl.append(new KviKvsVariant(i->szNick));
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
-		vl.append(new KviKvsVariant());
+		for(unsigned int ii = 0;ii < 9;ii++)
+			vl.append(new KviKvsVariant());
 		vl.append(new KviKvsVariant(*(i->pMagic)));
 		i->pCallback->run(i->pWindow,&vl,0,KviKvsScript::PreserveParams);
 		msg->connection()->asyncWhoisData()->remove(i);
