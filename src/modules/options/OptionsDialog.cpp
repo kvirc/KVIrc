@@ -143,8 +143,6 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 				"</tr>" \
 				"<tr>" \
 					"<td valign=\"bottom\">" \
-						"<br>" \
-						"<br>" \
 						"<p>" \
 							"%2" \
 						"</p>" \
