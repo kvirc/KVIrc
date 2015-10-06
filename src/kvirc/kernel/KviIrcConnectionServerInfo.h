@@ -166,18 +166,6 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviSnircdIrcServerInfo : public KviBasicIrcServerInfo
-{
-	//quakenet; note: snird is an extension to ircu
-public:
-	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
-	virtual char getRegisterModeChar() { return 0; };
-	virtual const char * getSoftware() { return "Snircd"; };
-	virtual bool getNeedsOpToListModeseI() { return false; }; //modes eI doesn't exists
-	virtual const QString & getChannelModeDescription(char mode);
-};
-
 class KVIRC_API KviIrcuIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//undernet
@@ -187,6 +175,16 @@ public:
 	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Ircu"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
+class KVIRC_API KviSnircdIrcServerInfo : public KviIrcuIrcServerInfo
+{
+	//quakenet; note: snird is an extension to ircu
+public:
+	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviIrcuIrcServerInfo(pParent, version) {;};
+	virtual const char * getSoftware() { return "Snircd"; };
 	virtual const QString & getChannelModeDescription(char mode);
 };
 

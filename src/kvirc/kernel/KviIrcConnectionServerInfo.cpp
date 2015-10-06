@@ -515,24 +515,6 @@ const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode)
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
-		case 'D': return __tr2qs("Delay users join to first message"); break;
-		case 'M': return __tr2qs("Moderate non auth users"); break;
-		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'R': return __tr2qs("Registered"); break;
-		case 'T': return __tr2qs("No multitarget messages"); break;
-		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
-		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
-		case 'r': return __tr2qs("Only registered nicks can join"); break;
-		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
-	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
 const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
@@ -548,6 +530,18 @@ const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
 		case 'z': return __tr2qs("Persistent (staff only)"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'T': return __tr2qs("No multitarget messages"); break;
+		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
+	}
+	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
