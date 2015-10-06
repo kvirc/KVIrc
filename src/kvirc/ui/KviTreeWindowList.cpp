@@ -275,7 +275,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 		{
 			QMenu* pPopup=new QMenu();
 			pPopup->addAction(__tr2qs("Sort"),this,SLOT(sort()));
-			pPopup->addAction(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
+			pPopup->addAction(__tr2qs("Reverse sort"),this,SLOT(reverseSort()));
 			pPopup->popup(QCursor::pos());
 		}
 	}

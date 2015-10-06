@@ -192,7 +192,7 @@ namespace AddonFunctions
 
 		hd.szCaption = __tr2qs_ctx("Install Addon Pack - KVIrc","addon");
 		hd.szUpperLabelText = beginCenter + __tr2qs_ctx("You're about to install the following addon package","addon") + endCenter;
-		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation ?","addon") + endCenter;
+		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation?","addon") + endCenter;
 		hd.szButton1Text = __tr2qs_ctx("Do Not Install","addon");
 		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed","addon");
 		hd.iDefaultButton = 2;

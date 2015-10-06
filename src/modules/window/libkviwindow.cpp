@@ -1004,7 +1004,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QPixmap *pPix=g_pIconManager->getImage(szIcon);
 	if(!pPix){
 
-	    c->warning(__tr2qs("The specified Icon does not exist: switching to 'none'"));
+	    c->warning(__tr2qs("The specified icon does not exist: Switching to 'none'"));
 	    szIcon.prepend("$icon(");
 	    szIcon.append(")");
 	}
@@ -1018,7 +1018,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		pConsole = g_pApp->findConsole(uCtx);
 		if(!pConsole && !szFlags.contains('q'))
 		{
-			c->warning(__tr2qs("The specified IRC context is not valid: creating a context free window"));
+			c->warning(__tr2qs("The specified IRC context is not valid: Creating a context free window"));
 		}
 	}
 
@@ -1248,7 +1248,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 			return true;
 			}
 		if(!ob->inherits("KviScriptPixmapObject")){
-			c->warning(__tr("Pixmap objects required !"));
+			c->warning(__tr("Pixmap objects required!"));
 			return true;
 		}
 		QVariant pix1= ob->property("pixmap");
@@ -1409,7 +1409,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 		if(szEncryptKey.isEmpty() || szDecryptKey.isEmpty())
 		{
 			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("No encrypt key specified: can't allocate engine"));
+				c->warning(__tr2qs("No encryption key specified: Can't allocate engine"));
 			return true;
 		}
 

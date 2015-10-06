@@ -1105,36 +1105,36 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 	pAction->setEnabled(hasSelection());
 	pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
 	pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
-	pAction = g_pInputPopup->addAction(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste slowly"),this,SLOT(pasteSlow()));
 	if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
 	    pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
 	else
 	    pAction->setEnabled(false);
-	pAction = g_pInputPopup->addAction(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste &file") + ACCEL_KEY(L),this,SLOT(pasteFile()));
 	if((iType != KviWindow::Channel) && (iType != KviWindow::Query) && (iType != KviWindow::DccChat))
 	    pAction->setEnabled(false);
 	else
 	    pAction->setEnabled(!m_bReadOnly);
 
 	if(m_bSpSlowFlag)
-	    pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
+	    pAction = g_pInputPopup->addAction(__tr2qs("Stop paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
 
 	g_pInputPopup->addSeparator();
 
 	pAction = g_pInputPopup->addAction(__tr2qs("Clear"),this,SLOT(clear()));
 	pAction->setEnabled(!m_szTextBuffer.isEmpty() && !m_bReadOnly);
 	g_pInputPopup->addSeparator();
-	pAction = g_pInputPopup->addAction(__tr2qs("Select All"),this,SLOT(selectAll()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Select all"),this,SLOT(selectAll()));
 	pAction->setEnabled((!m_szTextBuffer.isEmpty()));
 
 	g_pInputPopup->addSeparator();
 
-	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),this,SLOT(popupTextIconWindow()));
+	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert icon"),this,SLOT(popupTextIconWindow()));
 	pAction->setEnabled(!m_bReadOnly);
 	
 
 #ifdef COMPILE_ENCHANT_SUPPORT
-	// check if the cursor is in a spellcheckable block
+	// check if the cursor is in a spell-checkable block
 
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);

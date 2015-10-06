@@ -189,7 +189,7 @@
 	{
 		switch(errCode)
 		{
-			case RIJNDAEL_SUCCESS: setLastError(__tr2qs("Error 0: Success ?")); break;
+			case RIJNDAEL_SUCCESS: setLastError(__tr2qs("Error 0: Success?")); break;
 			case RIJNDAEL_UNSUPPORTED_MODE: setLastError(__tr2qs("Unsupported crypt mode")); break;
 			case RIJNDAEL_UNSUPPORTED_DIRECTION: setLastError(__tr2qs("Unsupported direction")); break;
 			case RIJNDAEL_UNSUPPORTED_KEY_LENGTH: setLastError(__tr2qs("Unsupported key length")); break;
@@ -205,7 +205,7 @@
 	{
 		if(!m_pEncryptCipher)
 		{
-			setLastError(__tr2qs("Ops...encrypt cipher not initialized"));
+			setLastError(__tr2qs("Ops... Encryption cipher not initialized"));
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
@@ -258,7 +258,7 @@
 	{
 		if(!m_pDecryptCipher)
 		{
-			setLastError(__tr2qs("Ops...decrypt cipher not initialized"));
+			setLastError(__tr2qs("Ops... Decryption cipher not initialized"));
 			return KviCryptEngine::DecryptError;
 		}
 
@@ -325,7 +325,7 @@
 		*len = hex.hexToBuffer(&tmpBuf,false);
 		if(*len < 0)
 		{
-			setLastError(__tr2qs("The message is not a hexadecimal string: this is not my stuff"));
+			setLastError(__tr2qs("The message is not a hexadecimal string: This is not my stuff"));
 			return false;
 		} else {
 			if(len > 0)
@@ -351,7 +351,7 @@
 		*len = base64.base64ToBuffer(&tmpBuf,false);
 		if(*len < 0)
 		{
-			setLastError(__tr2qs("The message is not a base64 string: this is not my stuff"));
+			setLastError(__tr2qs("The message is not a base64 string: This is not my stuff"));
 			return false;
 		} else {
 			if(len > 0)
@@ -625,7 +625,7 @@
 		int len = encoded.base64ToBuffer(&tmpBuf,false);
 		if(len < 0)
 		{
-			setLastError(__tr2qs("The message is not a base64 string: this is not my stuff"));
+			setLastError(__tr2qs("The message is not a base64 string: This is not my stuff"));
 			return false;
 		}
 		if((len < 8) || (len % 8))

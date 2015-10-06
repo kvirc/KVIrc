@@ -1276,13 +1276,13 @@ KVSO_CLASS_FUNCTION(widget,setForegroundColor)
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
-							c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+							c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 							return true;
 						}
 					}
 				}
 				else {
-					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+					c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 					return true;
 				}
 				QPalette p = widget()->palette();
@@ -1358,13 +1358,13 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
-							c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+							c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 							return true;
 						}
 					}
 				}
 				else {
-					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+					c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 					return true;
 				}
 				QPalette p = widget()->palette();

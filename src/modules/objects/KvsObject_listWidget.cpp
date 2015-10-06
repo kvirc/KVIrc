@@ -352,7 +352,7 @@ KVSO_CLASS_FUNCTION(listWidget,setIcon)
 		pix=g_pIconManager->getImage(szPix);
 		if(!pix)
 		{
-			c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
+			c->warning(__tr2qs_ctx("Error occurred: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
 			return true;
 		}
 	}

@@ -45,14 +45,14 @@ extern KVIRC_API KviNickServRuleSet * g_pNickServRuleSet;
 NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 : QDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("NickServ Authentication Rule","options"));
+	setWindowTitle(__tr2qs_ctx("NickServ authentication rule","options"));
 
 	QString html_center_begin = "<center>";
 	QString html_center_end = "</center>";
 
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 
-	QLabel * l = new QLabel(__tr2qs_ctx("Registered NickName","options"),this);
+	QLabel * l = new QLabel(__tr2qs_ctx("Registered nickName","options"),this);
 	gl->addWidget(l,0,0);
 
 	m_pRegisteredNickEdit = new QLineEdit(this);
@@ -60,7 +60,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(m_pRegisteredNickEdit,0,1,1,3);
 //	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
 
-	l = new QLabel(__tr2qs_ctx("NickServ Mask","options"),this);
+	l = new QLabel(__tr2qs_ctx("NickServ mask","options"),this);
 	gl->addWidget(l,1,0);
 
 	m_pNickServMaskEdit = new QLineEdit(this);
@@ -73,7 +73,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(m_pNickServMaskEdit,1,1,1,3);
 //	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
 
-	l = new QLabel(__tr2qs_ctx("Message Regexp","options"),this);
+	l = new QLabel(__tr2qs_ctx("Message regexp","options"),this);
 	gl->addWidget(l,2,0);
 
 	m_pMessageRegexpEdit = new QLineEdit(this);
@@ -150,18 +150,18 @@ bool NickServRuleEditor::validate()
 {
 	QString s = m_pRegisteredNickEdit->text();
 
-	QString m = __tr2qs_ctx("Invalid NickServ Rule","options");
+	QString m = __tr2qs_ctx("Invalid NickServ rule","options");
 	QString o = __tr2qs_ctx("OK","options");
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't be empty!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The nickname field can't be empty!","options"),o);
 		return false;
 	}
 
 	if(s.indexOf(QChar(' ')) != -1)
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't contain spaces!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The nickname field can't contain spaces!","options"),o);
 		return false;
 	}
 
@@ -177,7 +177,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Message Regexp can't be empty!<br>You must put at least * there.","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The message regexp can't be empty!<br>You must put at least * there.","options"),o);
 		return false;
 	}
 
@@ -185,7 +185,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Identify Command can't be empty!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The identify command can't be empty!","options"),o);
 		return false;
 	}
 
@@ -229,7 +229,7 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 	KviNickServRuleSet * rs = g_pNickServRuleSet;
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 
-	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
+	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ identification","options"),this);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
 //	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 	KviTalToolTip::add(m_pNickServCheck,__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
@@ -242,9 +242,9 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 
 	columnLabels.append(__tr2qs_ctx("Nickname","options"));
 	columnLabels.append(__tr2qs_ctx("Server mask","options"));
-	columnLabels.append(__tr2qs_ctx("NickServ Mask","options"));
-	columnLabels.append(__tr2qs_ctx("NickServ Request Mask","options"));
-	columnLabels.append(__tr2qs_ctx("Identify Command","options"));
+	columnLabels.append(__tr2qs_ctx("NickServ mask","options"));
+	columnLabels.append(__tr2qs_ctx("NickServ request mask","options"));
+	columnLabels.append(__tr2qs_ctx("Identify command","options"));
 	m_pNickServTreeWidget->setHeaderLabels(columnLabels);
 	connect(m_pNickServTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableNickServControls()));
 
@@ -261,15 +261,15 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 			"created in the \"Advanced...\" network options (accessible from the servers dialog)."
 			"</center>","options"));
 
-	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add Rule","options"),this);
+	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add rule","options"),this);
 	connect(m_pAddRuleButton,SIGNAL(clicked()),this,SLOT(addNickServRule()));
 	gl->addWidget(m_pAddRuleButton,2,0);
 
-	m_pEditRuleButton = new QPushButton(__tr2qs_ctx("Edit Rule","options"),this);
+	m_pEditRuleButton = new QPushButton(__tr2qs_ctx("Edit rule","options"),this);
 	connect(m_pEditRuleButton,SIGNAL(clicked()),this,SLOT(editNickServRule()));
 	gl->addWidget(m_pEditRuleButton,2,1);
 
-	m_pDelRuleButton = new QPushButton(__tr2qs_ctx("Delete Rule","options"),this);
+	m_pDelRuleButton = new QPushButton(__tr2qs_ctx("Delete rule","options"),this);
 	connect(m_pDelRuleButton,SIGNAL(clicked()),this,SLOT(delNickServRule()));
 	gl->addWidget(m_pDelRuleButton,2,2);
 

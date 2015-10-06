@@ -167,7 +167,7 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("Nothing is happening..."),
 	__tr("Just idling..."),
 	__tr("Dum de dum de dum..."),
-	__tr("Hey man... do something!"),
+	__tr("Hey man... Do something!"),
 	__tr("Umpf!"),
 	__tr("Silence speaking"),
 	__tr("Are ya here?"),
@@ -175,9 +175,9 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("Everything is all right"),
 	__tr("idle()"),
 	__tr("It's so cold here..."),
-	__tr("Do not disturb... watching TV"),
+	__tr("Do not disturb... Watching TV"),
 	__tr("Just vegetating"),
-	__tr("Hey... are ya sure that your network is up?"),
+	__tr("Hey... Are ya sure that your network is up?"),
 	__tr("Seems like the world has stopped spinning"),
 	__tr("This silence is freaking me out!"),
 	__tr("Mieeeeeowww!"),
@@ -299,7 +299,7 @@ void KviTrayIconWidget::doAway(bool)
 
 void KviTrayIconWidget::fillContextPopup()
 {
-	m_pToggleFrame->setText(g_pMainWindow->isVisible() ? __tr2qs("Hide Window") : __tr2qs("Show Window"));
+	m_pToggleFrame->setText(g_pMainWindow->isVisible() ? __tr2qs("Hide window") : __tr2qs("Show window"));
 	if(g_pApp->topmostConnectedConsole())
 	{
 		m_pAwayMenuId->setVisible(true);

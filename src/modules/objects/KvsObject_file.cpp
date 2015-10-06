@@ -334,7 +334,7 @@ KVSO_CLASS_FUNCTION(file,putch)
 	KVSO_PARAMETERS_END(c)
 	if (szChar.length()>1)c->warning(__tr2qs_ctx("Argument too long, using only first char","objects"));
 	const char *ch=szChar.toUtf8().data();
-	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs_ctx("Write error occured!","objects"));
+	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs_ctx("Write error occurred!","objects"));
 	return true;
 }
 
@@ -343,7 +343,7 @@ KVSO_CLASS_FUNCTION(file,getch)
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	char ch;
-	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occured!","objects"));	// c->error ?
+	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occurred!","objects"));	// c->error ?
 	QString szChar = QChar(ch);
 	c->returnValue()->setString(szChar);
 	return true;
@@ -354,7 +354,7 @@ KVSO_CLASS_FUNCTION(file,readByte)
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	char ch;
-	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occured!","objects"));	// c->error ?
+	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occurred!","objects"));	// c->error ?
 	//QString szChar = QChar(ch);
 	c->returnValue()->setInteger((kvs_int_t) ch);
 	return true;

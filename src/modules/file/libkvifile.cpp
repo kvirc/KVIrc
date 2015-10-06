@@ -79,9 +79,13 @@
 		Makes a copy of the <source> file as <destination>.[br]
 		If the [-o] switch is used, the <destination> file is overwritten, if already exists.[br]
 		With no [-o] switch, this command does not overwrite files.[br]
+<<<<<<< HEAD
 		The destination path must be already existing: if you want to ensure this, use [cmd]file.mkdir[/cmd] first.[br]
+=======
+		The destination path must be already existing: If you want to ensure this, use [fnc]$file.mkdir[/fnc] first.[br]
+>>>>>>> Various fixes: Grammar, typos, capitalization and syntax
 		The paths (<source> and <destination>) are adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: It *should* be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
 	@seealso:
 		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
@@ -97,7 +101,7 @@ static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
 	KviFileUtils::adjustFilePath(szDst);
 	if(KviFileUtils::fileExists(szDst) && !c->switches()->find('o',"overwrite"))
 	{
-		c->warning(__tr2qs("Destination file exists: no copy made"));
+		c->warning(__tr2qs("Destination file exists: No copy made"));
 		return true;
 	}
 	if(!KviFileUtils::copyFile(szSrc,szDst))
@@ -1529,7 +1533,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	{
 		qAlgo = QCryptographicHash::Md5;
 	} else {
-		c->warning(__tr2qs("KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports only MD4, MD5 and SHA1."));
+		c->warning(__tr2qs("KVIrc is compiled without Crypto++ or SSL support. $file.digest supports only MD4, MD5 and SHA1."));
 		return true;
 	}
 

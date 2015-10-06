@@ -119,7 +119,7 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 	m_pButtonBox->setStretchFactor(m_pAddressEdit,1);
 	m_pButtonBox->setObjectName( QLatin1String( "kvi_window_button_box" ) );
 
-	KviTalToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URI"));
+	KviTalToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URL"));
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(m_pAddressEdit,SIGNAL(returnPressed(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
@@ -135,10 +135,10 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 	// FIXME: #warning "Button to show/hide the notifyListView (NOT DELETE RE_CREATE!)"
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify List"),buttonContainer(),true);
+	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify list"),buttonContainer(),true);
 	connect(m_pNotifyViewButton,SIGNAL(clicked()),this,SLOT(toggleNotifyView()));
 
-	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify List"),"notify_list_view");
+	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify list"),"notify_list_view");
 
 	m_pInput   = new KviInput(this,m_pNotifyListView);
 
@@ -346,7 +346,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	if(e->isAway())
 	{
 		buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
-		buffer += __tr2qs("Probably Away");
+		buffer += __tr2qs("Probably away");
 		buffer += "</font></td></tr>";
 	}
 }

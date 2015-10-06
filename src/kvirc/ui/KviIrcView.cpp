@@ -39,7 +39,7 @@
 // 23 Nov 1999,
 //      Well, not so bad...I seem to still remember how it works
 //      So just for fun, complicated the things a little bit more.
-//      Added precaclucaltion of the text blocks and word wrapping
+//      Added pre-calculation of the text blocks and word wrapping
 //      and a fast scrolling mode (3 lines at once) for consecutive
 //      appendText() calls.
 //      Now the code becomes really not understandable...:)
@@ -1119,7 +1119,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	bool bLineMarkPainted = !KVI_OPTION_BOOL(KviOption_boolTrackLastReadTextViewLine);
 	int iLinesPerPage = 0;
 
-	// And loop thru lines until we not run over the upper bound of the view
+	// And loop through lines until we not run over the upper bound of the view
 	while((curBottomCoord >= KVI_IRCVIEW_VERTICAL_BORDER) && pCurTextLine)
 	{
 		//Paint pCurTextLine
@@ -2081,17 +2081,17 @@ void KviIrcView::showToolsPopup()
 	{
 		m_pToolsPopup = new QMenu(this);
 
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Toggle Search"),this,SLOT(toggleToolWidget()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Toggle search"),this,SLOT(toggleToolWidget()));
 
 		m_pToolsPopup->addSeparator();
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
-		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
-		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
-		m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom in"),this,SLOT(increaseFontSize()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom out"),this,SLOT(decreaseFontSize()));
+		m_pToolsPopup->addAction(__tr2qs("Choose temporary font..."),this,SLOT(chooseFont()));
+		m_pToolsPopup->addAction(__tr2qs("Choose temporary background..."),this,SLOT(chooseBackground()));
+		m_pToolsPopup->addAction(__tr2qs("Reset temporary background"),this,SLOT(resetBackground()));
 		//		pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
 		m_pToolsPopup->addSeparator();
-		m_pToolsPopup->addAction(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
+		m_pToolsPopup->addAction(__tr2qs("Clear buffer"),this,SLOT(clearBuffer()));
 	}
 	QSize s = m_pToolsPopup->sizeHint();
 
@@ -2125,9 +2125,9 @@ void KviIrcView::chooseFont()
 #ifdef COMPILE_ON_MAC
 	// The native font dialog makes Qt 4.6 go into a strange modal infinite loop (the font dialog is never properly closed).
 	// FIXME: Re-check it with future releases of Qt.
-	QFont f = QFontDialog::getFont(&bOk,font(),this,__tr("Choose Font"),QFontDialog::DontUseNativeDialog);
+	QFont f = QFontDialog::getFont(&bOk,font(),this,__tr("Choose font"),QFontDialog::DontUseNativeDialog);
 #else //!COMPILE_ON_MAC
-	QFont f = QFontDialog::getFont(&bOk,font(),this,__tr("Choose Font"));
+	QFont f = QFontDialog::getFont(&bOk,font(),this,__tr("Choose font"));
 #endif //!COMPILE_ON_MAC
 	if(!bOk)return;
 	setFont(f);
@@ -2155,7 +2155,7 @@ void KviIrcView::chooseBackground()
 	QPixmap p(f);
 	if(p.isNull())
 	{
-		QMessageBox::information(this,__tr2qs("Invalid image"),__tr2qs("Failed to load the selected image"),__tr2qs("Ok"));
+		QMessageBox::information(this,__tr2qs("Invalid image"),__tr2qs("Failed to load the selected image"),__tr2qs("OK"));
 		return;
 	}
 
@@ -2253,7 +2253,7 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	//Make sure that we have enough space to paint something...
 	if(maxLineWidth < m_iMinimumPaintWidth)return; // ugh
-	//And loop thru lines until we not run over the upper bound of the view
+	//And loop through lines until we not run over the upper bound of the view
 	KviIrcViewLine * pLine = m_pCurLine;
 	KviIrcViewLine * pCurLine = m_pCurLine;
 	while(pLine)

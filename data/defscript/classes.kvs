@@ -27,7 +27,7 @@ class(installer,object)
 
 		if($2 == "")
 		{
-			echo $tr("[Installer] Error: the third argument of copyFiles must be a destination directory","defscript")
+			echo $tr("[Installer] Error! the third argument of copyFiles must be a destination directory","defscript")
 			halt
 		}
 

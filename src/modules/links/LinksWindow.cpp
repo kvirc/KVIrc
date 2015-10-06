@@ -61,7 +61,7 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pRequestButton->setIconSize(QSize(16,16));
 	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Links)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestLinks()));
-	m_pRequestButton->setToolTip(__tr2qs("Request Links"));
+	m_pRequestButton->setToolTip(__tr2qs("Request links"));
 
 	QLabel * l = new QLabel(box);
 	box->setStretchFactor(l,1);
@@ -296,7 +296,7 @@ void LinksWindow::endOfLinks()
 		output(KVI_OUT_LINKS,__tr2qs("Average hops: ~%d.%d"),avgHops / 100,avgHops % 100);
 	} else {
 		m_szRootServer = __tr2qs("(Unknown)");
-		outputNoFmt(KVI_OUT_LINKS,__tr2qs("Incomplete LINKS result, no stats available"));
+		outputNoFmt(KVI_OUT_LINKS,__tr2qs("Incomplete links result, no stats available"));
 	}
 	outputNoFmt(KVI_OUT_LINKS,"======================");
 

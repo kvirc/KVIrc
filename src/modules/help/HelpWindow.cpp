@@ -69,7 +69,7 @@ HelpWindow::HelpWindow(const char * name)
 	m_pBottomLayout->setVisible(false);
 
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("HelpIndex"));
+	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("Help index"));
 
 	KviTalHBox* pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);
@@ -215,7 +215,7 @@ void HelpWindow::startSearch()
 				s = s.toLower();
 				s = s.simplified();
 				if ( s.contains( '*' ) ) {
-				QMessageBox::warning( this, tr( "Full Text Search" ),
+				QMessageBox::warning( this, tr( "Full text search" ),
 					tr( "Using a wildcard within phrases is not allowed." ) );
 				return;
 				}
@@ -224,7 +224,7 @@ void HelpWindow::startSearch()
 				beg = str.indexOf( '\"', end + 1);
 			}
 		} else {
-			QMessageBox::warning( this, tr( "Full Text Search" ),
+			QMessageBox::warning( this, tr( "Full text search" ),
 				tr( "The closing quotation mark is missing." ) );
 			return;
 		}
@@ -332,7 +332,7 @@ void HelpWindow::resizeEvent(QResizeEvent *)
 
 void HelpWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs("Help Browser");
+	m_szPlainTextCaption = __tr2qs("Help browser");
 }
 
 

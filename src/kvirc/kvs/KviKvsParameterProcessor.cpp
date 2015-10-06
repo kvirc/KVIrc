@@ -219,7 +219,7 @@ namespace KviKvsParameterProcessor
 					}
 					if(((QString *)(pFmtArray->pContainer))->isEmpty())
 					{
-						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": Found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
 						pContext->error(szError);
 						return false;
 					}
@@ -265,7 +265,7 @@ namespace KviKvsParameterProcessor
 					*((QByteArray *)(pFmtArray->pContainer)) = tmp.toUtf8();
 					if(((QByteArray *)(pFmtArray->pContainer))->isEmpty())
 					{
-						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": Found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
 						pContext->error(szError);
 						return false;
 					}
@@ -289,7 +289,7 @@ namespace KviKvsParameterProcessor
 					}
 					if(iTmp < 0)
 					{
-						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found signed integer \"%2\" where type 'unsigned integer' was expected","kvs")).arg(pFmtArray->szName).arg(iTmp);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": Found signed integer \"%2\" where type 'unsigned integer' was expected","kvs")).arg(pFmtArray->szName).arg(iTmp);
 						pContext->error(szError);
 						return false;
 					}
@@ -342,7 +342,7 @@ namespace KviKvsParameterProcessor
 					// ignore
 				break;
 				default:
-					qDebug("Internal error in KviKvsParameterProcessor::processAsParameters(): unknown parameter type %d",pFmtArray->uType);
+					qDebug("Internal error in KviKvsParameterProcessor::processAsParameters(): Unknown parameter type %d",pFmtArray->uType);
 					return false;
 				break;
 			}

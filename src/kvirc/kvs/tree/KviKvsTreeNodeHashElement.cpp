@@ -43,7 +43,7 @@ KviKvsTreeNodeHashElement::~KviKvsTreeNodeHashElement()
 
 void KviKvsTreeNodeHashElement::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Hash Element Evaluation";
+	szBuffer = "Hash element evaluation";
 }
 
 void KviKvsTreeNodeHashElement::dump(const char * prefix)
@@ -66,7 +66,7 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 
 	if(szKey.isEmpty())
 	{
-		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: fix the script","kvs"));
+		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: Fix the script","kvs"));
 		pBuffer->setNothing();
 		return true;
 	}
@@ -85,7 +85,7 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from type '%Q' supplied","kvs"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: Automatic conversion from type '%Q' supplied","kvs"),&szType);
 		}
 		pBuffer->setNothing();
 		return true;
@@ -112,7 +112,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 
 	if(szKey.isEmpty())
 	{
-		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: fix the script","kvs"));
+		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: Fix the script","kvs"));
 	}
 
 	KviKvsRWEvaluationResult * result;
@@ -123,12 +123,12 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 	if(!result->result()->isHash())
 	{
 		// convert to hash in some way
-//#warning "Supply a *real* conversion from other types to array ?"
+    //#warning "Supply a *real* conversion from other types to array ?"
 		if(!result->result()->isNothing())
 		{
 			QString szType;
 			result->result()->getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from %Q supplied","kvs"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: Automatic conversion from %Q supplied","kvs"),&szType);
 		}
 		result->result()->setHash(new KviKvsHash());
 	}

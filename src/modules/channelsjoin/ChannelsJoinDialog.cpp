@@ -60,7 +60,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 : QDialog(g_pMainWindow)
 {
 	setObjectName(name);
-	setWindowTitle(__tr2qs("Join Channels"));
+	setWindowTitle(__tr2qs("Join channels"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 
 	m_pConsole = 0;
@@ -108,7 +108,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	// Join on return pressed
 	connect(m_pRegButton,SIGNAL(clicked()),this,SLOT(regClicked()));
 
-	m_pClearButton = new QPushButton(__tr2qs("Clear Recent"),hb);
+	m_pClearButton = new QPushButton(__tr2qs("Clear recent"),hb);
 	connect(m_pClearButton,SIGNAL(clicked()),this,SLOT(clearClicked()));
 
 	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show this window after connecting"),this);
@@ -173,7 +173,7 @@ void ChannelsJoinDialog::fillListView()
 	// Registered channels go first
 
 	QTreeWidgetItem * par = new QTreeWidgetItem(m_pTreeWidget, HeaderItem);
-	par->setText(0,__tr2qs("Registered Channels"));
+	par->setText(0,__tr2qs("Registered channels"));
 	par->setExpanded(true);
 
 	QHash<QString,KviRegisteredChannelList *> * d = g_pRegisteredChannelDataBase->channelDict();
@@ -190,7 +190,7 @@ void ChannelsJoinDialog::fillListView()
 	par->sortChildren(0, Qt::AscendingOrder);
 
 	par = new QTreeWidgetItem(m_pTreeWidget, HeaderItem);
-	par->setText(0,__tr2qs("Recent Channels"));
+	par->setText(0,__tr2qs("Recent channels"));
 	par->setExpanded(true);
 
 	QTreeWidgetItem * chld;
@@ -209,7 +209,7 @@ void ChannelsJoinDialog::fillListView()
 				bGotChanOnCurrentNetwork = true;
 
 				hdr = new QTreeWidgetItem(par, HeaderItem);
-				hdr->setText(0,__tr2qs("Current Network"));
+				hdr->setText(0,__tr2qs("Current network"));
 				hdr->setExpanded(true);
 
 				for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
@@ -228,7 +228,7 @@ void ChannelsJoinDialog::fillListView()
 		return;
 
 	hdr = new QTreeWidgetItem(par, HeaderItem);
-	hdr->setText(0,__tr2qs("All Networks"));
+	hdr->setText(0,__tr2qs("All networks"));
 
 	if(!bGotChanOnCurrentNetwork)
 		hdr->setExpanded(true); // expand this one instead

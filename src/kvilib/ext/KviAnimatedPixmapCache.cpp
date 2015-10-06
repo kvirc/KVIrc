@@ -183,10 +183,10 @@ void KviAnimatedPixmapCache::timeoutEvent()
 {
 	/*
 	* We are adding 15msecs to the current time. This MAY lead to the situation,
-	* when the current frame will be painted a bit earlier, then i should.
-	* But we are just playing animated gifs, not a HDTV video. So it should be ok.
+	* when the current frame will be painted a bit earlier, then I should.
+	* But we are just playing animated gifs, not a HDTV video. So it should be OK.
 	*
-	* But it makes good speedup if there will be event, sceduled in such order:
+	* But it makes good speedup if there will be event, scheduled in such order:
 	* 1 event  at time X
 	* 3 events at time X+2msec
 	* 2 events at time X+6msec

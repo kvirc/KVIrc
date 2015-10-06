@@ -75,7 +75,7 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	// then the users will tend to write the links without the special encoding. ed2k links also use the | character
 	// and it's common for the file names to appear partially unencoded.
 
-	// There is also a very common case of urls being enclosed inside parentheses: (http://url.here).
+	// There is also a very common case of URLs being enclosed inside parentheses: (http://url.here).
 	// In this case the rightmost ')' is shouldn't be included in the url. On the other hand there are many links that
 	// actually contain the ')' character and have it exactly at the end. Wikipedia, for instance, has a lot of such links.
 
@@ -300,11 +300,11 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 /*
  * Some additional description for the profanes: we want a fast way to check the presence of "active objects we have to process" in lines of text;
- * such objects can be: EOF, urls, mirc control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
+ * such objects can be: EOF, URLs, mIRC control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
  * This jump table is an array[256] containing label addresses (imagine them as functions). So something like "goto array[4];" is valid construct
- * in C, that equivals to a function call to a function that starts on that label's line of code.
- * Imagine to parse the input line one character at once and match it (as a switch can do) agains this big array. Every 1-byte character corresponds
- * to an ascii integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corrispective label address.
+ * in C, that equivalent to a function call to a function that starts on that label's line of code.
+ * Imagine to parse the input line one character at once and match it (as a switch can do) against this big array. Every 1-byte character corresponds
+ * to an ascii integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corresponding label address.
  * Example, if we find a "H" (72) we'll "goto char_to_check_jump_table[72]", aka "goto check_http_url".
  * There exists two different versions of this tricky code, we switch them depending on the compiler abilities to accept our bad code :)
  */

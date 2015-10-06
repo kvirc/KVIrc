@@ -44,12 +44,12 @@ Idle* g_pIdle;
 	if(!c->parameterList()->count()) \
 	{ \
 		if(c->window()->console()) wnd = c->window()->console(); \
-			else c->warning(__tr2qs("This window has no associated irc context")); \
+			else c->warning(__tr2qs("This window has no associated IRC context")); \
 	} \
 	else \
 	{ \
 		wnd = g_pApp->findConsole(uiWnd); \
-		if(!wnd)c->warning(__tr2qs("No such irc context (%d)"),uiWnd); \
+		if(!wnd)c->warning(__tr2qs("No such IRC context (%d)"),uiWnd); \
 	}
 /*
 	@doc: my.nick
@@ -62,8 +62,8 @@ Idle* g_pIdle;
 	@syntax:
 		<string> $my.nick([irc_context_id:uint])
 	@description:
-		Returns the nickname of the current irc context.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns the nickname of the current IRC context.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 		Note that this function is different from [fnc]$me[/fnc] that will work also in a DCC CHAT.[br]

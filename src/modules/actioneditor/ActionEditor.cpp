@@ -195,7 +195,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 	m_pNeedsContextCheck = new QCheckBox(__tr2qs_ctx("Needs IRC Context","editor"),tab);
 	connect(m_pNeedsContextCheck,SIGNAL(toggled(bool)),this,SLOT(needsContextCheckToggled(bool)));
 	m_pNeedsContextCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
-		"the active window belongs to an irc context","editor"));
+		"the active window belongs to an IRC context","editor"));
 	gl->addWidget(m_pNeedsContextCheck,0,0,1,4);
 
 
@@ -216,7 +216,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 
 	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs_ctx("Enable at Login","editor"),tab);
 	m_pEnableAtLoginCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled also during " \
-		"the login operations (so when the logical IRC connection hasn't been estabilished yet)","editor"));
+		"the login operations (so when the logical IRC connection hasn't been established yet)","editor"));
 	gl->addWidget(m_pEnableAtLoginCheck,2,2,1,2);
 
 	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs_ctx("Enable Only in Specified Windows","editor"),tab);
@@ -261,7 +261,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par,ActionEditor * ed)
 
 	m_pWindowDccChatCheck = new QCheckBox(__tr2qs_ctx("Enable in DCC Chat Windows","editor"),tab);
 	m_pWindowDccChatCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
-		"the active window is a dcc chat","editor"));
+		"the active window is a DCC chat","editor"));
 	gl->addWidget(m_pWindowDccChatCheck,10,1,1,2);
 
 	l = new QLabel(tab);

@@ -67,7 +67,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 
 	m_pConnection = c;
 
-	setWindowTitle(__tr2qs("Choose Avatar - KVIrc"));
+	setWindowTitle(__tr2qs("Choose avatar - KVIrc"));
 
 	QGridLayout * g = new QGridLayout(this);
 	QString msg = "<center>";
@@ -149,7 +149,7 @@ void KviAsyncAvatarSelectionDialog::chooseFileClicked()
 	if(
 		KviFileDialog::askForOpenFileName(
 				tmp,
-				__tr2qs("Choose an Image File - KVIrc"),
+				__tr2qs("Choose an image file - KVIrc"),
 				QString(),
 				QString(),
 				false,
@@ -222,7 +222,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
+		c->warning(__tr2qs("Internal error: Am I not in the user database?"));
 		return true;
 	}
 
@@ -269,7 +269,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs("Can't set the current avatar to '%Q': can't load the image"),&szAvatar);
+			c->warning(__tr2qs("Can't set the current avatar to '%Q': Can't load the image"),&szAvatar);
 			return true;
 		}
 	}
@@ -303,7 +303,7 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
+		c->warning(__tr2qs("Internal error: Am I not in the user database?"));
 		return true;
 	}
 
@@ -336,7 +336,7 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 		See the [doc:ctcp_avatar]avatar protocol documentation[/doc] for the
 		description of the protocol.[br]
 		This has the effect to notify your avatar image to the <target>.[br]
-		The CTCP is sent thru a NOTICE and the current avatar image
+		The CTCP is sent through a NOTICE and the current avatar image
 		is added to the public offer list for <timeout> seconds (or a default timeout if the -t switch is not used).[br]
 		If the -q switch is specified, the command executes in quet mode and
 		prints nothing in the current window.[br]
@@ -378,7 +378,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
+		c->warning(__tr2qs("Internal error: Am I not in the user database?"));
 		return true;
 	}
 
@@ -415,7 +415,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 			{
 				// Don't delete o...it has been already deleted by g_pFileTrader
 				if(!c->switches()->find('q',"quiet"))
-					c->warning(__tr2qs("Can't add a file offer for file %Q (huh ? file not readable ?)"),&absPath);
+					c->warning(__tr2qs("Can't add a file offer for file %Q (huh? file not readable?)"),&absPath);
 				return true;
 			}
 

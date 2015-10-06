@@ -685,7 +685,7 @@ void KviIrcSocket::proxyLoginHttp()
 {
 	// Well..this is just plain and easy: connect to the proxy machine
 	// and say "CONNECT <irc.server>:<port> HTTP/<version>\n\n"
-	// if it requires auth then say Proxy-Authorization: Basic user:passwd
+	// if it requires AUTH then say Proxy-Authorization: Basic user:passwd
 	// Then expect a server reply header (2 newlines)
 	// HTTP 200 = Success
 	// HTTP Anything else = Failure
@@ -832,19 +832,19 @@ void KviIrcSocket::proxyLoginV5()
 
 	if(!(m_pProxy->hasUser() || m_pProxy->hasPass()))
 	{
-		// no auth needed.
+		// no AUTH needed.
 		cBufToSend[1] = (unsigned char)1; //select one method
-		cBufToSend[2] = (unsigned char)0; //select method 0 : no auth
+		cBufToSend[2] = (unsigned char)0; //select method 0 : no AUTH
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("We can accept auth method 0 (no auth)"));
+			outputProxyMessage(__tr2qs("We can accept AUTH method 0 (no AUTH)"));
 	} else {
 		// we can provide a password and username if needed...
 		cBufToSend[1] = (unsigned char)2; //select from two methods
 		cBufToSend[2] = (unsigned char)0; //method 0 or
-		cBufToSend[3] = (unsigned char)2; //method 2 username/pass auth
+		cBufToSend[3] = (unsigned char)2; //method 2 username/pass AUTH
 		iSendLen = 4;
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("We can accept auth method 0 (no auth) or 2 (user/pass)"));
+			outputProxyMessage(__tr2qs("We can accept AUTH method 0 (no AUTH) or 2 (user/pass)"));
 	}
 
 	// notify the user before sending...since we may get disconnected
@@ -1038,7 +1038,7 @@ void KviIrcSocket::proxyHandleV5AuthReply(unsigned char cReply)
 	if(cReply == 0)
 	{
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: auth OK: access granted"));
+			outputProxyMessage(__tr2qs("Proxy response: AUTH OK: Access granted"));
 		proxySendTargetDataV5();
 		return;
 	}
@@ -1073,7 +1073,7 @@ void KviIrcSocket::proxyHandleV5MethodReply(unsigned char cReply)
 	if(cReply == 0)
 	{
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: Auth method OK: using method 0 (no auth)"));
+			outputProxyMessage(__tr2qs("Proxy response: AUTH method OK: Using method 0 (no AUTH)"));
 		proxySendTargetDataV5();
 		return;
 	}
@@ -1081,7 +1081,7 @@ void KviIrcSocket::proxyHandleV5MethodReply(unsigned char cReply)
 	if(cReply == 2)
 	{
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: Auth method OK: using method 2 (user/pass)"));
+			outputProxyMessage(__tr2qs("Proxy response: AUTH method OK: using method 2 (user/pass)"));
 		proxyAuthUserPassV5();
 		return;
 	}
@@ -1138,7 +1138,7 @@ void KviIrcSocket::proxyHandleV5FinalReply(unsigned char cReply)
 	{
 		// Request granted
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: target data OK: request granted"));
+			outputProxyMessage(__tr2qs("Proxy response: Target data OK: Request granted"));
 		connectedToIrcServer();
 	} else {
 		//Request rejected
@@ -1179,7 +1179,7 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char cReply)
 	//
 	//        90: request granted
 	//        91: request rejected or failed
-	//        92: request rejected becasue SOCKS server cannot connect to
+	//        92: request rejected because SOCKS server cannot connect to
 	//            identd on the client
 	//        93: request rejected because the client program and identd
 	//            report different user-ids
@@ -1195,7 +1195,7 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char cReply)
 	{
 		// Request granted
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: target data OK: request granted"));
+			outputProxyMessage(__tr2qs("Proxy response: Target data OK: Request granted"));
 		connectedToIrcServer();
 	} else {
 		//Request rejected
@@ -1873,7 +1873,7 @@ void KviIrcSocket::flushSendQueue()
 
 					m_uSentBytes += iResult;
 					if(_OUTPUT_VERBOSE)
-						outputSocketWarning(__tr2qs("Partial socket write: packet broken into smaller pieces."));
+						outputSocketWarning(__tr2qs("Partial socket write: Packet broken into smaller pieces."));
 #ifndef COMPILE_SSL_SUPPORT
 				}
 #endif // COMPILE_SSL_SUPPORT
@@ -1893,7 +1893,7 @@ handle_system_error:
 			{
 				// Transient error...partial send as before...
 				if(_OUTPUT_VERBOSE)
-					outputSocketWarning(__tr2qs("Partial socket write: packet broken into smaller pieces."));
+					outputSocketWarning(__tr2qs("Partial socket write: Packet broken into smaller pieces."));
 				// Async continue...
 				m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
 				return;

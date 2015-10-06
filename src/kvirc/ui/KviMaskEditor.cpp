@@ -84,7 +84,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	m_pEdit=new QLineEdit(szMask,this);
 	g->addWidget(m_pEdit,1,0,1,4);
 
-	m_pOkButton= new QPushButton(__tr2qs("Ok"),this);
+	m_pOkButton= new QPushButton(__tr2qs("OK"),this);
 	connect(m_pOkButton,SIGNAL(clicked()), this, SLOT(accept()));
 	g->addWidget(m_pOkButton,2,1);
 	m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));

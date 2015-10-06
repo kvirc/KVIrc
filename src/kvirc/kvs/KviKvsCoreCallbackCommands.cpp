@@ -77,14 +77,14 @@ namespace KviKvsCoreCallbackCommands
 			$0 contains the query string (<dnsquery> in fact)[br]
 			$1 contains the value 1 if the query was succesfull.[br]
 			In that case the remaining parameters are set as follows:[br]
-			$2 contains the first ip address associated to the <dnsquery>[br]
+			$2 contains the first IP address associated to the <dnsquery>[br]
 			$3 contains the hostname associated to the <dnsquery>[br]
 			$4 contains the eventual <magicdata> passed.[br]
 			If $1 contains the value 0 then the query has failed and[br]
 			$2 contains an error message explaining the failure.[br]
 			$3 is empty[br]
 			$4 contains the eventual <magicdata> passed.[br]
-			Please note that if the dns query fails to even start for some
+			Please note that if the DNS query fails to even start for some
 			reason then your callback MAY be called even before ahost() returns.[br]
 		@switches:
 			!sw: -i
@@ -180,7 +180,7 @@ namespace KviKvsCoreCallbackCommands
 			The implementation code can be either a single KVS instruction
 			or an instruction block (instruction list enclosed in braces).[br]
 			If the alias already exists, it is replaced with the new implementation.[br]
-			If the <implementation> is empty (eg. "{}" or just a ";")
+			If the <implementation> is empty (e.g. "{}" or just a ";")
 			the alias <alias_name> is removed.
 			If the "remove" form is used but the specified <alias_name> does not exist
 			in the alias store then a warning is printed unless
@@ -224,7 +224,7 @@ namespace KviKvsCoreCallbackCommands
 		@type:
 			command
 		@short:
-			A synomim for alias
+			A synonym for alias
 		@syntax:
 			function [-q] (<function_name>) <implementation>
 			function [-q] (<function_name>){}
@@ -232,7 +232,7 @@ namespace KviKvsCoreCallbackCommands
 			!sw: -q | --quiet
 			Causes the command to run quietly
 		@description:
-			This command is a synonim for [cmd]alias[/cmd].
+			This command is a synonym for [cmd]alias[/cmd].
 		@seealso:
 			[doc:kvs_aliasesandfunctions]Aliases and functions[/doc]
 	*/
@@ -264,7 +264,7 @@ namespace KviKvsCoreCallbackCommands
 		tmp.replace("::","@"); // @ is not allowed by the rule above
 		if(tmp.indexOf(":") != -1)
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name>?","kvs"));
 			return false;
 		}
 
@@ -343,10 +343,10 @@ namespace KviKvsCoreCallbackCommands
 			$7 = channels (may be empty)[br]
 			$8 = server that provided the information[br]
 			$9 = away message (empty if user hasn't set an away message)[br]
-			$10 = magic string evaluated at awhois call (may be empty)[br]
+			$10 = magic string evaluated at a WHOIS call (may be empty)[br]
 			$11 = account the user is logged into (may be empty)[br]
 			$12 = additional, server-specific info (may be empty)[br]
-			If the -i switch is specified, the whois message is sent to the server
+			If the -i switch is specified, the WHOIS message is sent to the server
 			that the <nickname> user is connected to; in this way you will probably
 			get the idle time of the user too.[br]
 			If the server replies with a "No such nick/channel error message" the
@@ -423,7 +423,7 @@ namespace KviKvsCoreCallbackCommands
 			The button is added to the current window; if you want to add it to a different
 			window, use the [doc:command_rebinding]standard -r command rebinding[/doc] switch.[br]
 			The <callback_code> will be executed as reaction to a button press; the
-			code execution will be bound to the window that the button is attacched to.[br]
+			code execution will be bound to the window that the button is attached to.[br]
 			If a button with <name> already exists in the current window, its parameters are changed
 			according to the passed values (<image_id>, <label_text> and <callback_code>).[br]
 			[br]
@@ -955,7 +955,7 @@ namespace KviKvsCoreCallbackCommands
 		{
 			if(!(pPing->asInteger(iPingTime) && iPingTime > 0))
 			{
-				KVSCCC_pContext->warning(__tr2qs_ctx("The specified ping time is invalid: assuming zero (no ping)","kvs"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified ping time is invalid: Assuming zero (no ping)","kvs"));
 				iPingTime = 0;
 			}
 		}
@@ -965,7 +965,7 @@ namespace KviKvsCoreCallbackCommands
 		{
 			if(!(pKill->asInteger(iMaxRunTime) && iMaxRunTime > 0))
 			{
-				KVSCCC_pContext->warning(__tr2qs_ctx("The specified maximum run time is invalid: assuming zero (infinite)","kvs"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified maximum run time is invalid: Assuming zero (infinite)","kvs"));
 				iMaxRunTime = 0;
 			}
 		}
@@ -1070,13 +1070,13 @@ namespace KviKvsCoreCallbackCommands
 			this command is being parsed. This means that the identifiers that you put
 			inside <callback_command> will NOT have the current values.[/b]
 			The values will be assigned at timer "shot" time.[br]
-			This is a common scripters error and problem: if it is not clear, look at the examples below.[br]
+			This is a common scripters error and problem: If it is not clear, look at the examples below.[br]
 			The timer is bound to the window in that this command is executed in.[br]
 			If the window gets destroyed, the timer is stopped; unless the -p switch is used.[br]
 			The -p switch causes the timer to be persistent across the application and exists until
 			the last window has been closed: it is basically rebound to another (random) window when the
 			original window is destroyed.[br]
-			The -s switch cuases this timer to trigger only once: it will be automatically destroyed after that.[br]
+			The -s switch causes this timer to trigger only once: it will be automatically destroyed after that.[br]
 			The time has an associated set of [doc:data_structures]extended scope variables[/doc]:
 			the variables that begin with "%:" have their life extended to the whole "life" of the timer.[br]
 			Using a very low delay is a common method to perform some background processing: you
@@ -1190,7 +1190,7 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!KviKvsTimerManager::instance()->addTimer(szName,lt,KVSCCC_pContext->window(),iDelay,new KviKvsScript(*KVSCCC_pCallback),l))
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Unable to add the timer: insufficient system resources","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Unable to add the timer: Insufficient system resources","kvs"));
 			return false;
 		}
 

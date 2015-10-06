@@ -142,12 +142,12 @@
 
 
 /**
-* \def KVI_VERSION Defines the current kvirc version
-* \def KVIRC_VERSION_BRANCH Defines the kvirc version of the current branch
-* \def KVI_RELEASE_NAME Defines the codename for the current kvirc release
+* \def KVI_VERSION Defines the current KVIrc version
+* \def KVIRC_VERSION_BRANCH Defines the KVIrc version of the current branch
+* \def KVI_RELEASE_NAME Defines the codename for the current KVIrc release
 * \def _GNU_SOURCE Enables _GNU_SOURCE features
 * \def KVI_PTR2MEMBER Cross-platform macro that returns a member from its pointer
-* \def KVI_DEPRECATED Prefix for deprecated objects inside kvirc code (currently unused)
+* \def KVI_DEPRECATED Prefix for deprecated objects inside KVIrc code (currently unused)
 * \def BIG_ENDIAN_MACHINE_BYTE_ORDER If defined, the current target processor is big endian, little endian otherwise
 */
 

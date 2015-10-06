@@ -221,7 +221,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		)
 		{
 			QString szWinId = c->window()->id();
-			c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
+			c->warning(__tr2qs("The specified window (%Q) is not a Channel/Query/DCC"),&szWinId);
 			return false;
 		} else {
 			while( (item = it.current()) != 0)
@@ -283,7 +283,7 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	@title:
 		spaste.setdelay
 	@short:
-		Sets the delay time in miliseconds for the spaste module command delay
+		Sets the delay time in milliseconds for the spaste module command delay
 	@syntax:
 		spaste.setdelay <time_in_msecs:integer>
 	@description:
@@ -332,8 +332,8 @@ static bool spaste_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"SPaste",                                                 // module name
-	"4.0.0",                                                // module version
+	"SPaste",                                     // module name
+	"4.0.0",                                      // module version
 	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
 	"Delayed paste commands",
 	spaste_module_init,

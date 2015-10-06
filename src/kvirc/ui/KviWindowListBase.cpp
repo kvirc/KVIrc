@@ -65,10 +65,10 @@ extern QPixmap * g_pActivityMeterPixmap;
 //
 
 KviWindowListBase::KviWindowListBase()
-: QDockWidget(__tr2qs("Window List"),g_pMainWindow), m_pTitleWidget(0)
+: QDockWidget(__tr2qs("Window list"),g_pMainWindow), m_pTitleWidget(0)
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
-	setObjectName(__tr2qs("windowlist"));
+	setObjectName(__tr2qs("window list"));
 	setFeatures(QDockWidget::DockWidgetMovable);
 
 	m_pActivityMeterTimer = new QTimer();
@@ -98,7 +98,7 @@ void KviWindowListBase::getTextForConsole(QString &szText,KviConsoleWindow * pCo
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolShowNetworkNameForConsoleWindowListEntry))
 		{
-			// FIXME: Should never show "Standalone Servers" or "orphan_servers".
+			// FIXME: Should never show "Standalone servers" or "orphan_servers".
 			//        It would also be nice to have a number appended to
 			//        multiple entries with the same server name...but this costs too much.
 			szText = pConsole->connection()->currentNetworkName();
@@ -181,7 +181,7 @@ void KviWindowListBase::applyOptions()
 		m_pTitleWidget = new QLabel();
 		setTitleBarWidget( m_pTitleWidget );
 
-		((QLabel*)m_pTitleWidget)->setText(__tr2qs("Window List"));
+		((QLabel*)m_pTitleWidget)->setText(__tr2qs("Window list"));
 		((QLabel*)m_pTitleWidget)->setMargin(2);
 		((QLabel*)m_pTitleWidget)->setIndent(4);
 	} else {

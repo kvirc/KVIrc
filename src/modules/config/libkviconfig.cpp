@@ -542,7 +542,7 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 			// we force a save here
 			if(!cfg->sync())
 				if(!c->hasSwitch('q',"quiet"))
-					c->warning(__tr2qs("An error has occured while trying to save the config file with id '%Q'"),&szId);
+					c->warning(__tr2qs("An error has occurred while trying to save the config file with id '%Q'"),&szId);
 		}
 		g_pConfigDict->remove(szId);
 	} else {
@@ -590,7 +590,7 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 			c->warning(__tr2qs("The config file with id '%Q' is read only"),&szId);
 		else
 			if(!cfg->sync())
-				c->warning(__tr2qs("An error has occured while trying to save the config file with id '%Q'"),&szId);
+				c->warning(__tr2qs("An error has occurred while trying to save the config file with id '%Q'"),&szId);
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}

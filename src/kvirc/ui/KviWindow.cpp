@@ -378,7 +378,7 @@ void KviWindow::createTextEncodingButton(QWidget * pPar)
 {
 	if(m_pTextEncodingButton)
 		delete m_pTextEncodingButton;
-	m_pTextEncodingButton = createToolButton(pPar,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text Encoding"),false);
+	m_pTextEncodingButton = createToolButton(pPar,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text encoding"),false);
 	connect(m_pTextEncodingButton,SIGNAL(clicked()),this,SLOT(textEncodingButtonClicked()));
 }
 
@@ -470,7 +470,7 @@ void KviWindow::cryptControllerFinished()
 void KviWindow::cryptSessionInfoDestroyed()
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	output(KVI_OUT_SYSTEMERROR,__tr2qs("Ops...I've accidentally lost the crypting engine..."));
+	output(KVI_OUT_SYSTEMERROR,__tr2qs("Ops... I've accidentally lost the crypting engine..."));
 	m_pCryptSessionInfo->m_pEngine = 0;
 	delete m_pCryptSessionInfo;
 	m_pCryptSessionInfo = 0;
@@ -653,7 +653,7 @@ void KviWindow::createSystemTextEncodingPopup()
 
 		//default action
 		QTextCodec * pCodec = defaultTextCodec();
-		QString szTmp = __tr2qs("Use Default Encoding");
+		QString szTmp = __tr2qs("Use default encoding");
 		if(pCodec)
 		{
 			szTmp += " (";
@@ -734,7 +734,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	} else {
 		//default action: refresh the name
 		QTextCodec * pCodec = defaultTextCodec();
-		QString szTmp = __tr2qs("Use Default Encoding");
+		QString szTmp = __tr2qs("Use default encoding");
 		if(pCodec)
 		{
 			szTmp += " (";

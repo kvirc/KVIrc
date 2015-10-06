@@ -315,15 +315,15 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 			{
 				// hum.. not our tag
 
-				// FIXME: As segnaled by PRAEDO, ezbounce seems to send a fourth parameter in response to /quote ezb log
+				// FIXME: As signalled by PRAEDO, ezbounce seems to send a fourth parameter in response to /quote ezb log
 				// Pragma: That's a bug in ezbounce, it sends the filesize of the log as a DCC CHAT parameter...
 				//         The author probably copied and pasted the CTCP line from DCC SEND and forgot to remove the filesize.
-				//         We *could* add an option to ignore the last parameter and treat it as a standard dcc chat
+				//         We *could* add an option to ignore the last parameter and treat it as a standard DCC chat
 				//         request, but since we don't encourage bugs, we don't do it :D
 				//         Mail me at pragma at kvirc dot net if you really think it's necessary.
 				dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 					__tr2qs_ctx("The above request is broken: it looks like a zero port tag acknowledge but I have either never seen this tag or it was sent more than 120 seconds ago","dcc"));
-				dcc_module_request_error(dcc,__tr2qs_ctx("It seems that I haven't requested this dcc chat","dcc"));
+				dcc_module_request_error(dcc,__tr2qs_ctx("It seems that I haven't requested this DCC chat","dcc"));
 				delete d;
 				return;
 			} else {
@@ -335,7 +335,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 		}
 	} else {
 		d->bAutoAccept       = KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccChat);
-		d->bActive           = true; // we have to connct (standard active chat)
+		d->bActive           = true; // we have to connect (standard active chat)
 	}
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -419,7 +419,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		} else {
 			// this should never happen since we always add
 			// a zero port tag for out outgoing requests
-			// but well... maybe the user did something behing our back...
+			// but well... maybe the user did something behind our back...
 			dcc->szParam4 = "0"; // no resume possible in this case
 		}
 

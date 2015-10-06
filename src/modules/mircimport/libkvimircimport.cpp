@@ -141,7 +141,7 @@ void KviMircServersIniImport::die()
 KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f)
 : KviTalWizard(0)
 {
-	QString capt = __tr2qs("Remote mIRC servers.ini Import Wizard");
+	QString capt = __tr2qs("Remote mIRC servers.ini - Import wizard");
 	setWindowTitle(capt);
 
 	setModal(true);
@@ -166,7 +166,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	m_pUrlEdit = new QLineEdit(vb);
 	m_pUrlEdit->setText(KVI_WWWMIRCCOUK_SERVERSINI);
 
-	addPage(vb,__tr2qs("URL Selection"));
+	addPage(vb,__tr2qs("URL selection"));
 
 	vb = new KviTalVBox(this);
 
@@ -176,7 +176,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	m_pOutput = new QLabel(vb);
 	m_pOutput->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
 
-	addPage(vb,__tr2qs("List Download"));
+	addPage(vb,__tr2qs("List download"));
 
 	setBackEnabled(vb,false);
 	setNextEnabled(vb,false);
@@ -240,7 +240,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 	if(!m_pRequest)return;
 	if(bSuccess)
 	{
-		m_pOutput->setText(__tr2qs("File downloaded: processing ..."));
+		m_pOutput->setText(__tr2qs("File downloaded: Processing ..."));
 		m_pOutput->repaint();
 
 		int iCount = m_pFilter->doImport(m_szTmpFileName);

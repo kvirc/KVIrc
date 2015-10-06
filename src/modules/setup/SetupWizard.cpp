@@ -134,7 +134,7 @@ SetupPage::~SetupPage()
 SetupWizard::SetupWizard()
 : KviTalWizard(0)
 {
-	setWindowTitle(__tr2qs("KVIrc Setup"));
+	setWindowTitle(__tr2qs("KVIrc setup"));
 
 	setWindowModality(Qt::NonModal); // non modal, otherwise the dialogs we show will not be usable
 
@@ -196,7 +196,7 @@ SetupWizard::SetupWizard()
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApplication::License,"COPYING");
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
-		szLicense = __tr("Oops... can't find the license file.\n" \
+		szLicense = __tr("Oops... Can't find the license file.\n" \
 			"It MUST be included in the distribution...\n" \
 			"Please report to <pragma at kvirc dot net>");
 	}
@@ -204,7 +204,7 @@ SetupWizard::SetupWizard()
 
 	m_pLicense->m_pVBox->setStretchFactor(ed,1);
 
-	addPage(m_pLicense,__tr2qs("Dreaded License Agreement"));
+	addPage(m_pLicense,__tr2qs("Dreaded license agreement"));
 
 	setHelpEnabled(m_pLicense,false);
 #else
@@ -305,7 +305,7 @@ SetupWizard::SetupWizard()
 
 	//m_pDirectory->m_pVBox->setStretchFactor(m_pDirectory->m_pTextLabel,1);
 
-	addPage(m_pDirectory,__tr2qs("Application Folders"));
+	addPage(m_pDirectory,__tr2qs("Application folders"));
 	setHelpEnabled(m_pDirectory,false);
 
 	connect(m_pDataPathEdit,SIGNAL(textChanged ( const QString & )),this,SLOT(newDataTextChanged ( const QString & )));
@@ -316,7 +316,7 @@ SetupWizard::SetupWizard()
 
 	m_pIdentity = new SetupPage(this);
 
-	m_pIdentity->m_pTextLabel->setText(__tr2qs("Please choose a Nickname.<br><br>" \
+	m_pIdentity->m_pTextLabel->setText(__tr2qs("Please choose a nickname.<br><br>" \
 		"Your nickname is the name that other IRC users will know you by. " \
 		"It can't contain spaces or punctuation. Some IRC networks will shorten your nickname if it is more than 32 characters " \
 		"long.<br><br>"
@@ -445,7 +445,7 @@ SetupWizard::SetupWizard()
 	pPixmapLabelHiRes->setMargin(0);
 	pThemeGrid->addWidget(pPixmapLabelHiRes, 1,1);
 
-	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),m_pThemeButtonGroup);
+	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeHiRes, 2,1);
 
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApplication::Pics,"kvi_setup_theme_lowres.png");
@@ -464,14 +464,14 @@ SetupWizard::SetupWizard()
 	pPixmapLabelLowRes->setMargin(0);
 	pThemeGrid->addWidget(pPixmapLabelLowRes, 1,2);
 
-	m_pThemeLoRes = new QRadioButton(__tr2qs("&Minimalist Theme"),m_pThemeButtonGroup);
+	m_pThemeLoRes = new QRadioButton(__tr2qs("&Minimalist theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeLoRes, 2,2);
 	m_pThemeNone = new QRadioButton(__tr2qs("&Don't apply any theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeNone, 3,1);
 
 	m_pThemeHiRes->setChecked(true);
 
-	addPage(m_pTheme,__tr2qs("Default Theme"));
+	addPage(m_pTheme,__tr2qs("Default theme"));
 
 	setHelpEnabled(m_pTheme,false);
 
@@ -491,7 +491,7 @@ SetupWizard::SetupWizard()
 
 	m_pDesktopIntegration->m_pTextLabel->setText(szText);
 
-	addPage(m_pDesktopIntegration,__tr2qs("Desktop Integration"));
+	addPage(m_pDesktopIntegration,__tr2qs("Desktop integration"));
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
@@ -713,7 +713,7 @@ void SetupWizard::chooseOldDataPath()
 	// FIXME: We'd like to show hidden directories here ($HOME/.kvirc is hidden)...
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
 			m_pDataPathEdit->text(),
-			__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),
+			__tr2qs("Choose an old configuration folder - KVIrc setup"),
 			this
 		);
 
@@ -748,7 +748,7 @@ void SetupWizard::chooseDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
 			m_pDataPathEdit->text(),
-			__tr2qs("Choose a Configuration Folder - KVIrc Setup"),
+			__tr2qs("Choose a configuration folder - KVIrc setup"),
 			this
 		);
 	KviFileUtils::adjustFilePath(szBuffer);
@@ -763,7 +763,7 @@ void SetupWizard::chooseIncomingPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
 			m_pIncomingPathEdit->text(),
-			__tr2qs("Choose a Download Folder - KVIrc Setup"),
+			__tr2qs("Choose a download folder - KVIrc setup"),
 			this
 		);
 	KviFileUtils::adjustFilePath(szBuffer);
@@ -934,7 +934,7 @@ void SetupWizard::setUrlHandlers()
 
 void SetupWizard::reject()
 {
-	if(QMessageBox::warning(this,__tr2qs("Abort Setup - KVIrc Setup"),
+	if(QMessageBox::warning(this,__tr2qs("Abort setup - KVIrc setup"),
 		__tr2qs("You have chosen to abort the setup.<br>KVIrc cannot run until you complete this procedure.<br><br>Do you really wish to abort?"),
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return;
 

@@ -843,7 +843,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			if(m_p->pBuffer->size() > 4096)
 			{
 				resetInternalStatus();
-				m_szLastError = __tr2qs("Header too long: exceeded 4096 bytes");
+				m_szLastError = __tr2qs("Header too long: Exceeded 4096 bytes");
 				emit terminated(false);
 			}
 			return;
@@ -984,7 +984,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						if(!bOk)
 						{
 							resetInternalStatus();
-							m_szLastError = __tr2qs("Protocol error: invalid chunk size");
+							m_szLastError = __tr2qs("Protocol error: Invalid chunk size");
 							emit terminated(false);
 							return;
 						}
@@ -1004,7 +1004,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 					if(m_p->pBuffer->size() > 4096)
 					{
 						resetInternalStatus();
-						m_szLastError = __tr2qs("Chunk header too long: exceeded 4096 bytes");
+						m_szLastError = __tr2qs("Chunk header too long: Exceeded 4096 bytes");
 						emit terminated(false);
 						return;
 					}

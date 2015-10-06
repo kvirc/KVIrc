@@ -94,7 +94,7 @@ void KviIrcLink::linkFilterDestroyed()
 {
 	m_pLinkFilter = 0;
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-		__tr2qs("Ops... for some reason the link filter object has been destroyed"));
+		__tr2qs("Ops... For some reason the link filter object has been destroyed"));
 }
 
 void KviIrcLink::destroySocket()
@@ -420,7 +420,7 @@ void KviIrcLink::socketStateChange()
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent target host data, waiting for acknowledgement"));
 		break;
 		case KviIrcSocket::ProxySelectAuthMethodV5:
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent auth method request, waiting for acknowledgement"));
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent AUTH method request, waiting for acknowledgement"));
 		break;
 		case KviIrcSocket::ProxyUserPassV5:
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent username and password, waiting for acknowledgement"));

@@ -29,7 +29,7 @@
 
 #include "KvsObject_widget.h"
 
-//#warning "Signals !"
+//#warning "Signals!"
 #include <QCompleter>
 #include "object_macros.h"
 

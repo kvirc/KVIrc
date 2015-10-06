@@ -135,26 +135,26 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 		m_pFilterItems[i] = new KviIrcMessageCheckListItem(m_pFilterView,this,i);
 	}
 
-	pButton = new QPushButton(__tr2qs("Set &All"),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("Set &all"),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterEnableAll()));
 	pOptionsLayout->addWidget(pButton,6,0);
 
-	pButton = new QPushButton(__tr2qs("Set &None"),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("Set &none"),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterEnableNone()));
 	pOptionsLayout->addWidget(pButton,6,1);
 
-	pButton = new QPushButton(__tr2qs("&Load From..."),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("&Load from..."),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterLoad()));
 	pOptionsLayout->addWidget(pButton,7,0);
 
-	pButton = new QPushButton(__tr2qs("&Save As..."),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("&Save as..."),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterSave()));
 	pOptionsLayout->addWidget(pButton,7,1);
 
 	pLabel = new QLabel(__tr2qs("Pattern:"),m_pOptionsWidget);
 	pOptionsLayout->addWidget(pLabel,8,0);
 	m_pSearchMode = new QComboBox(m_pOptionsWidget);
-    m_pSearchMode->insertItem(PlainText, __tr2qs("Plain Text"));
+    m_pSearchMode->insertItem(PlainText, __tr2qs("Plain text"));
     m_pSearchMode->insertItem(Wildcards, __tr2qs("Wildcards"));
     m_pSearchMode->insertItem(RegExp, __tr2qs("RegExp"));
 	pOptionsLayout->addWidget(m_pSearchMode,8,1);
@@ -216,7 +216,7 @@ void KviIrcViewToolWidget::filterLoad()
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::Filters);
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a Filter File"),szInit,QString(),false,true,this))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a filter file"),szInit,QString(),false,true,this))
 	{
 		QFile f(szFile);
 		if(f.open(QIODevice::ReadOnly))
@@ -241,7 +241,7 @@ void KviIrcViewToolWidget::filterSave()
 	QString szFile;
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::Filters,"filter.kvf");
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Select a Name for the Filter File"),szInit,QString(),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Select a name for the filter file"),szInit,QString(),false,false,true,this))
 	{
 		QFile f(szFile);
 		if(f.open(QIODevice::WriteOnly))

@@ -70,7 +70,7 @@ void KviIOGraphWindow::resizeEvent(QResizeEvent *)
 
 void KviIOGraphWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs("I/O Traffic Graph");
+	m_szPlainTextCaption = __tr2qs("I/O traffic graph");
 }
 
 void KviIOGraphWindow::die()

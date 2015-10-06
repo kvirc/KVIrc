@@ -389,7 +389,7 @@ void KviStatusBar::contextPopupAboutToShow()
         connect(m_pAppletsPopup,SIGNAL(triggered(QAction *)),this,SLOT(appletsPopupActivated(QAction *)));
 	}
 
-    QAction *pAction = m_pContextPopup->addAction(__tr2qs("Add Applet"));
+    QAction *pAction = m_pContextPopup->addAction(__tr2qs("Add applet"));
     pAction->setMenu(m_pAppletsPopup);
 }
 
@@ -584,7 +584,7 @@ void KviStatusBar::mouseDoubleClickEvent(QMouseEvent *)
 	szText += ": ";
 	szText += c->connection()->userInfo()->localHostIp();
 	szText += "\n";
-	szText += __tr2qs("User Modes");
+	szText += __tr2qs("User modes");
 	szText += ": ";
 	szText += szUserModes;
 	szText += "\n";

@@ -111,9 +111,9 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
         QAction *pAction = g_pToolBarContextPopup->addAction(__tr2qs("Toolbars"));
         pAction->setMenu(g_pToolBarWindowsPopup);
-        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Icon Size"));
+        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Icon size"));
         pAction->setMenu(g_pToolBarIconSizesPopup);
-        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Button Style"));
+        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Button style"));
         pAction->setMenu(g_pToolBarButtonStylePopup);
 
 		// fill toolbars menu

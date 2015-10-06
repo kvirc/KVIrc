@@ -1110,7 +1110,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
 			{
 				QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
-				console->output(KVI_OUT_IGNORE,msg->serverTime(),__tr2qs("Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+				console->output(KVI_OUT_IGNORE,msg->serverTime(),__tr2qs("Ignoring NOTICE from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
 			}
 			return;
 		}
@@ -1169,7 +1169,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			console->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("NickServ requests authentication, executing scheduled command"));
 			if(!KviKvsScript::run(rule->identifyCommand(),console))
 			{
-				console->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("The scheduled NickServ identification command appears to be broken, please change the setting"));
+				console->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("The scheduled nickServ identification command appears to be broken, please change the setting"));
 			}
 			return;
 		}
@@ -1708,7 +1708,7 @@ void KviIrcServerParser::parseLiteralInvite(KviIrcMessage *msg)
 		{
 			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolInvitesToActiveWindow) ?
 				msg->console()->activeWindow() : (KviWindow *)(msg->console());
-			QString szAction = KVI_OPTION_BOOL(KviOption_boolAutoJoinOnInvite) ? __tr2qs("autojoining") : __tr2qs("double-click the channel name to join");
+			QString szAction = KVI_OPTION_BOOL(KviOption_boolAutoJoinOnInvite) ? __tr2qs("auto joining") : __tr2qs("double-click the channel name to join");
 			pOut->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] invites you to channel \r!c\r%Q\r (%Q)"),
 				&szNick,&szUser,&szHost,&szChannel,&szAction);
 		}

@@ -42,7 +42,7 @@ KviDebugWindow * KviDebugWindow::m_pInstance = 0;
 
 
 KviDebugWindow::KviDebugWindow()
-: KviWindow(KviWindow::Debug,__tr2qs("Debug Messages"),0)
+: KviWindow(KviWindow::Debug,__tr2qs("Debug messages"),0)
 {
 	m_pInstance = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);

@@ -352,7 +352,7 @@ void KviPixmapSelector::choosePixmap()
 	if(
 		KviFileDialog::askForOpenFileName(
 			tmp,
-			__tr2qs("Choose an Image File - KVIrc"),
+			__tr2qs("Choose an image file - KVIrc"),
 			QString(),
 			QString(),
 			false,
@@ -470,7 +470,7 @@ void KviFileSelector::select()
  		if(
 			KviFileDialog::askForSaveFileName(
 				tmp,
-				__tr2qs("Choose a File - KVIrc"),
+				__tr2qs("Choose a file - KVIrc"),
 				tmp,
 				m_szFilter,
 				true,
@@ -487,7 +487,7 @@ void KviFileSelector::select()
  		if(
 			KviFileDialog::askForOpenFileName(
 				tmp,
-				__tr2qs("Choose a File - KVIrc"),
+				__tr2qs("Choose a file - KVIrc"),
 				tmp,
 				m_szFilter,
 				true,
@@ -514,7 +514,7 @@ void KviDirectorySelector::select()
 	if(
 		KviFileDialog::askForDirectoryName(
 				szTmp,
-				__tr2qs("Choose a Directory - KVIrc"),
+				__tr2qs("Choose a directory - KVIrc"),
 				QString(),
 				QString(),
 				false,
@@ -658,7 +658,7 @@ void KviColorSelector::forceColor(QColor clr)
 
 void KviColorSelector::changeClicked()
 {
-	QColor tmp = QColorDialog::getColor(m_memColor,0,__tr2qs("Choose Color"),QColorDialog::ShowAlphaChannel);
+	QColor tmp = QColorDialog::getColor(m_memColor,0,__tr2qs("Choose color"),QColorDialog::ShowAlphaChannel);
 	if(tmp.isValid())setButtonPalette(&tmp);
 }
 
@@ -726,7 +726,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 {
 	m_pLabel = new QLabel(txt,this);
 
-	m_pButton = new QPushButton(__tr2qs("Sample Text"),this);
+	m_pButton = new QPushButton(__tr2qs("Sample text"),this);
 	// m_pButton->setMinimumWidth(150);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(buttonClicked()));
 

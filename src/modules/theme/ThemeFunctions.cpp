@@ -273,7 +273,7 @@ namespace ThemeFunctions
 
 		hd.szCaption = __tr2qs_ctx("Install Theme Pack - KVIrc","theme");
 		hd.szUpperLabelText = beginCenter + __tr2qs_ctx("You're about to install the following theme package","theme") + endCenter;
-		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation ?","theme") + endCenter;
+		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation?","theme") + endCenter;
 		hd.szButton1Text = __tr2qs_ctx("Do Not Install","theme");
 		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed","theme");
 		hd.iDefaultButton = 2;

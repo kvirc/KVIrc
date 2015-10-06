@@ -263,7 +263,7 @@ void CustomToolBarPropertiesDialog::okClicked()
 			if(QMessageBox::information(this,__tr2qs_ctx("Duplicate ToolBar Id","editor"),
 				__tr2qs_ctx("The specified ToolBar Id already exists.<br>" \
 					"Would you like KVIrc to assign it automatically (so it doesn't "
-					"collide with any other toolbar) or you prefer to do it manually ?","editor"),
+					"collide with any other toolbar) or you prefer to do it manually?","editor"),
 				__tr2qs_ctx("Manually","editor"),__tr2qs_ctx("Automatically","editor")) == 0)return;
 			m_szId = KviCustomToolBarManager::instance()->idForNewToolBar(m_szLabel);
 		}
@@ -379,7 +379,7 @@ void CustomizeToolBarsDialog::deleteToolBar()
 	if(!t)return;
 	if(QMessageBox::question(this,
 			__tr2qs_ctx("Confirm ToolBar Deletion","editor"),
-			__tr2qs_ctx("Do you really want to delete toolbar \"%1\" ?","editor").arg(t->windowTitle()),
+			__tr2qs_ctx("Do you really want to delete toolbar \"%1\"?","editor").arg(t->windowTitle()),
 			QMessageBox::Yes | QMessageBox::No,
 			QMessageBox::No) != QMessageBox::Yes)return;
 	KviCustomToolBarManager::instance()->destroyDescriptor(t->descriptor()->id());
@@ -403,7 +403,7 @@ void CustomizeToolBarsDialog::exportToolBar()
 
 	int ret = QMessageBox::question(this,
 			__tr2qs_ctx("ToolBar Export","editor"),
-			__tr2qs_ctx("Do you want the associated actions to be exported with the toolbar ?","editor"),
+			__tr2qs_ctx("Do you want the associated actions to be exported with the toolbar?","editor"),
 			__tr2qs_ctx("Yes","editor"),
 			__tr2qs_ctx("No","editor"),
 			__tr2qs_ctx("Cancel","editor"));

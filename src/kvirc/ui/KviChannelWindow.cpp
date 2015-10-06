@@ -143,11 +143,11 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 
 
 	// and the related buttons
-	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView,KviIconManager::ShowDoubleView,__tr2qs("Split View"),buttonContainer(),false);
+	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView,KviIconManager::ShowDoubleView,__tr2qs("Split view"),buttonContainer(),false);
 	m_pDoubleViewButton->setObjectName("double_view_button");
 	connect(m_pDoubleViewButton,SIGNAL(clicked()),this,SLOT(toggleDoubleView()));
 
-	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("User List"),buttonContainer(),true);
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("User list"),buttonContainer(),true);
 	m_pListViewButton->setObjectName("list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
@@ -215,7 +215,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 		}
 	}
 
-	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide,KviIconManager::ChanMode,__tr2qs("Mode Editor"),buttonContainer(),false);
+	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide,KviIconManager::ChanMode,__tr2qs("Mode editor"),buttonContainer(),false);
 	m_pModeEditorButton->setObjectName("mode_editor_button");
 	connect(m_pModeEditorButton,SIGNAL(clicked()),this,SLOT(toggleModeEditor()));
 	m_pModeEditor = 0;
@@ -235,7 +235,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
-	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,KVI_CHANNEL_AVERAGE_USERS,__tr2qs("User List"),"user_list_view");
+	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,KVI_CHANNEL_AVERAGE_USERS,__tr2qs("User list"),"user_list_view");
 	//m_pEditorsContainer->addWidget(m_pUserListView);
 	//m_pEditorsContainer->raiseWidget(m_pUserListView);
 	// And finally the input line on the bottom
@@ -989,7 +989,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 		szNum.setNum(s.uIrcOp);
 		szBuffer += szNum;
 		szBuffer += szHtmlBoldEnd;
-		szBuffer += (s.uIrcOp == 1 ? __tr2qs("irc operator") : __tr2qs("irc operators"));
+		szBuffer += (s.uIrcOp == 1 ? __tr2qs("IRC operator") : __tr2qs("IRC operators"));
 		szBuffer += p10;
 	}
 

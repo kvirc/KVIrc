@@ -32,7 +32,7 @@ class QRadioButton;
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL handlers")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_urlHandlers OptionsWidget_general
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers 70000
-#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_urlHandlers __tr2qs_no_lookup("url,programs")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL,programs")
 
 class OptionsWidget_urlHandlers : public KviOptionsWidget
 {

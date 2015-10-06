@@ -272,7 +272,7 @@ void AddonManagementDialog::uninstallScript()
 	if(!it)return;
 
 	QString txt = "<p>";
-	txt += __tr2qs_ctx("Do you really want to uninstall the addon \"%1\" ?","addon").arg(it->addon()->visibleName());
+	txt += __tr2qs_ctx("Do you really want to uninstall the addon \"%1\"?","addon").arg(it->addon()->visibleName());
 	txt += "</p>";
 
 	if(QMessageBox::question(
