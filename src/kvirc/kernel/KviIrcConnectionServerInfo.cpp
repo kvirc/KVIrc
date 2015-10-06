@@ -571,23 +571,14 @@ const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'A': return __tr2qs("Admin password"); break;
-		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
-		case 'D': return __tr2qs("Delay users join to first message"); break;
 		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'N': return __tr2qs("Block channel notices"); break;
-		case 'R': return __tr2qs("Registered (staff only)"); break;
 		case 'S': return __tr2qs("Strip color codes"); break;
 		case 'T': return __tr2qs("No multi-targets"); break;
-		case 'U': return __tr2qs("User password"); break;
 		case 'Z': return __tr2qs("Need SSL connection to join"); break;
-		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
-		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
 		case 'h': return __tr2qs("Half-operators"); break;
 		case 'q': return __tr2qs("Quiet"); break;
-		case 'r': return __tr2qs("Only registered nicks can join"); break;
 		case 'u': return __tr2qs("Squelch parts/quits"); break;
-		case 'z': return __tr2qs("Persistent (staff only)"); break;
 	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
 }

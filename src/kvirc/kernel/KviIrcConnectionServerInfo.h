@@ -202,12 +202,12 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviDarenetIrcServerInfo : public KviBasicIrcServerInfo
+class KVIRC_API KviDarenetIrcServerInfo : public KviIrcuIrcServerInfo
 {
 	//darenet; note: u2+ircd-darenet is an extension to ircu
 public:
 	KviDarenetIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+		:KviIrcuIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Ircu+Darenet"; };
 	virtual bool getNeedsOpToListModeseI() { return false; };
