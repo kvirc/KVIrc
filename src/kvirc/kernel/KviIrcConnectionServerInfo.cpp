@@ -279,7 +279,6 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-// 		case '7': return __tr2qs("Only 7-bit letters in nicknames allowed"); break;
 		case 'I': return __tr2qs("Invite Exceptions"); break;
 		case 'R': return __tr2qs("Reop Masks"); break;
 		case 'a': return __tr2qs("Anonymous messages"); break;
@@ -296,9 +295,7 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 		case 'r': return __tr2qs("Reop"); break;
 		case 's': return __tr2qs("Secret"); break;
 		case 't': return __tr2qs("Topic change restricted"); break;
-// 		case 'u': return __tr2qs("User-operators"); break;
 		case 'v': return __tr2qs("Voiced users"); break;
-// 		case 'x': return __tr2qs("Impossible to use both 7-bit and 8-bit letters in nicknames"); break;
 	}
 	return KviQString::Empty;
 }
