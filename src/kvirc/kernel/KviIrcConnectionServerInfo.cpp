@@ -234,8 +234,6 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviUnreal32IrcServerInfo(this, version);
 	else if(version.contains("unreal",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnrealIrcServerInfo(this, version);
-	else if(version.contains("hybrid",Qt::CaseInsensitive))
-		m_pServInfo = new KviHybridServerInfo(this, version);
 	else if(version.contains("bahamut",Qt::CaseInsensitive))
 		m_pServInfo = new KviBahamutIrcServerInfo(this, version);
 	else if(version.contains("hyperion",Qt::CaseInsensitive))
@@ -260,6 +258,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviNemesisIrcServerInfo(this, version);
 	else if(version.contains("oftc",Qt::CaseInsensitive))
 		m_pServInfo = new KviOftcIrcServerInfo(this, version);
+	else if(version.contains("hybrid",Qt::CaseInsensitive))
+		m_pServInfo = new KviHybridServerInfo(this, version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(this, version);
 }
@@ -355,7 +355,7 @@ const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'M': return __tr2qs("Need auth to speak"); break;
+		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
 		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
 		case 'V': return __tr2qs("No invites"); break;
@@ -369,7 +369,7 @@ const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
 	switch(mode)
 	{
 		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
-		case 'M': return __tr2qs("Need auth to speak"); break;
+		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Need SSL connection to join"); break;
@@ -381,22 +381,6 @@ const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
 }
 
 const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'A': return __tr2qs("Server/Network/Tech Admin only channel"); break;
-		case 'K': return __tr2qs("Forbid /KNOCK"); break;
-		case 'M': return __tr2qs("Need auth to speak and change nick"); break;
-		case 'N': return __tr2qs("No invites"); break;
-		case 'O': return __tr2qs("IRC-Op only channel"); break;
-		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Need SSL connection to join"); break;
-		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
-	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviNemesisIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
@@ -549,34 +533,23 @@ const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
 	switch(mode)
 	{
 		case 'B': return __tr2qs("Bandwidth Saver"); break;
-		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
-		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'O': return __tr2qs("IRC-Op only channel"); break;
-		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Need SSL connection to join"); break;
 		case 'a': return __tr2qs("Protected/admin nicks"); break;
-		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
-		case 'h': return __tr2qs("Half-operators"); break;
 		case 'p': return __tr2qs("Paranoia"); break;
 		case 'q': return __tr2qs("Channel owners"); break;
 		case 'z': return __tr2qs("Persistent (staff only)"); break;
 	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'M': return __tr2qs("Moderate non auth users"); break;
-		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Need SSL connection to join"); break;
-		case 'h': return __tr2qs("Half-operators"); break;
 		case 'q': return __tr2qs("Quiet"); break;
 		case 'z': return __tr2qs("Reduced moderation for ops"); break;
 	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
