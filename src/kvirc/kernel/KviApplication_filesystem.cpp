@@ -96,7 +96,7 @@ void KviApplication::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,con
 		case Tmp           : qDebug("WARNING Global tmp directory requested!");                         break;
 		case Themes        : szData.append("themes");                                                  break;
 		case Classes       : szData.append("classes");                                                 break;
-		case SmallIcons    : szData.append("pics"KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);      break;
+		case SmallIcons    : szData.append("pics" KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);      break;
 	}
 
 	if(!appendFile.isEmpty())
@@ -119,8 +119,8 @@ void KviApplication::getLocalKvircDirectory(QString &szData,KvircSubdir dir,cons
 		case Pics          : szData.append("pics");                                              break;
 		case EasyPlugins   : szData.append("easyplugins");                                       break;
 		case Config        : szData.append("config");                                            break;
-		case ConfigPlugins : szData.append("config"KVI_PATH_SEPARATOR"modules");                 break;
-		case ConfigScripts : szData.append("config"KVI_PATH_SEPARATOR"scripts");                 break;
+		case ConfigPlugins : szData.append("config" KVI_PATH_SEPARATOR "modules");               break;
+		case ConfigScripts : szData.append("config" KVI_PATH_SEPARATOR "scripts");               break;
 		case Log           :
 			szData = KVI_OPTION_STRING(KviOption_stringLogsPath);
 			// we should take special care here
@@ -176,7 +176,7 @@ void KviApplication::getLocalKvircDirectory(QString &szData,KvircSubdir dir,cons
 				}
 			}
 		break;
-		case HelpEN        : szData.append("help"KVI_PATH_SEPARATOR"en");                        break;
+		case HelpEN        : szData.append("help" KVI_PATH_SEPARATOR "en");                      break;
 		case HelpNoIntl    : szData.append("help");                                              break;
 		case Audio         : szData.append("audio");                                             break;
 		case Scripts       : szData.append("scripts");                                           break;
@@ -193,7 +193,7 @@ void KviApplication::getLocalKvircDirectory(QString &szData,KvircSubdir dir,cons
 		case Themes        : szData.append("themes");                                            break;
 		case DefScript     : szData.append("defscript");  /* should never happen! */             break;
 		case Classes       : szData.append("classes");                                           break;
-		case SmallIcons    : szData.append("pics"KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY); break;
+		case SmallIcons    : szData.append("pics" KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY); break;
 	}
 	if(bCreateIfNeeded)KviFileUtils::makeDir(szData);
 

@@ -48,7 +48,7 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 
 #define BUFSIZE 1024
 
-// stolen from WinNT.h (last updated from 8.1 SDK)
+// stolen from WinNT.h (last updated from 10.0.10240.0 SDK)
 //
 // Product types
 // This list grows with each OS release.
@@ -165,8 +165,28 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 #define PRODUCT_EMBEDDED_INDUSTRY_E_EVAL            0x0000006A
 #define PRODUCT_EMBEDDED_EVAL                       0x0000006B
 #define PRODUCT_EMBEDDED_E_EVAL                     0x0000006C
-#define PRODUCT_CORE_SERVER                         0x0000006D
+#define PRODUCT_NANO_SERVER                         0x0000006D
 #define PRODUCT_CLOUD_STORAGE_SERVER                0x0000006E
+#define PRODUCT_CORE_CONNECTED                      0x0000006F
+#define PRODUCT_PROFESSIONAL_STUDENT                0x00000070
+#define PRODUCT_CORE_CONNECTED_N                    0x00000071
+#define PRODUCT_PROFESSIONAL_STUDENT_N              0x00000072
+#define PRODUCT_CORE_CONNECTED_SINGLELANGUAGE       0x00000073
+#define PRODUCT_CORE_CONNECTED_COUNTRYSPECIFIC      0x00000074
+#define PRODUCT_CONNECTED_CAR                       0x00000075
+#define PRODUCT_INDUSTRY_HANDHELD                   0x00000076
+#define PRODUCT_PPI_PRO                             0x00000077
+#define PRODUCT_ARM64_SERVER                        0x00000078
+#define PRODUCT_EDUCATION                           0x00000079
+#define PRODUCT_EDUCATION_N                         0x0000007A
+#define PRODUCT_IOTUAP                              0x0000007B
+#define PRODUCT_CLOUD_HOST_INFRASTRUCTURE_SERVER    0x0000007C
+#define PRODUCT_ENTERPRISE_S                        0x0000007D
+#define PRODUCT_ENTERPRISE_S_N                      0x0000007E
+#define PRODUCT_PROFESSIONAL_S                      0x0000007F
+#define PRODUCT_PROFESSIONAL_S_N                    0x00000080
+#define PRODUCT_ENTERPRISE_S_EVALUATION             0x00000081
+#define PRODUCT_ENTERPRISE_S_N_EVALUATION           0x00000082
 
 #define PRODUCT_UNLICENSED                          0xABCDABCD
 
@@ -209,6 +229,13 @@ static QString queryWinInfo(QueryInfo info)
 	case VER_PLATFORM_WIN32_NT:
 
 		// Test for the specific product.
+		if ( osvi.dwMajorVersion == 10 && osvi.dwMinorVersion == 0 )
+		{
+			if( osvi.wProductType == VER_NT_WORKSTATION )
+				szVersion+= "Windows 10 ";
+			else szVersion+="Windows Server 2016";
+		}
+
 		if ( osvi.dwMajorVersion == 6 && osvi.dwMinorVersion == 3 )
 		{
 			if( osvi.wProductType == VER_NT_WORKSTATION )

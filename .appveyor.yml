@@ -119,7 +119,7 @@ build_script:
     - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
-        windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
         # qt-plugins/platforms/qwindows.dll is needed during QApplication's constructor, but kvirc adds qt-plugins/ to library paths only in KviApplication::setup()
         # applicationDirPath() isn't available before QCoreApplication's constructor.
         # Alternatively, kvirc could detect its own directory without help of Qt.
