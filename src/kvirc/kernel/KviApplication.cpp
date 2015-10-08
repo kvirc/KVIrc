@@ -1069,11 +1069,11 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 		switch(
 			QMessageBox::question(0,__tr2qs("Update default scripts"),
 				__tr2qs("<b>Hi!</b><br><br>" \
-					"<b>It seems that you have just upgraded KVirc from a previous version.</b><br><br>" \
+					"<b>It seems that you have just upgraded KVIrc from a previous version.</b><br><br>" \
 					"The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>" \
 					"You may want to avoid this update if you plan to revert to a previous KVIrc version soon," \
 					"or if you have created a lot of custom scripts and want to stay safe and avoid any deletion or overwrite.<br>" \
-					"If you want to update the default scripts, i can restore the new default script for you.<br>" \
+					"If you want to update the default scripts, I can restore the new default script for you.<br>" \
 					"<b>Do you want the default script to be restored?</b><br><br>"),
 				__tr2qs("No and Don't Ask Me Again"),__tr2qs("No"),__tr2qs("Yes"),1,1)
 		)

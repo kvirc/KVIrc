@@ -1090,7 +1090,7 @@ static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
 		[example]
 			[comment]# Get the nickname list[/comment]
 			%test[] = $chan.users
-			[comment]# And loop thru the items[/comment]
+			[comment]# And loop through the items[/comment]
 			%i = 0
 			[comment]# %test[]# returns the number of elements in the array[/comment]
 			%count = %test[]#

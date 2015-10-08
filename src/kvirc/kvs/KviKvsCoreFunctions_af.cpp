@@ -647,14 +647,14 @@ namespace KviKvsCoreFunctions
 		@title:
 			$char
 		@short:
-			Returns a character specified by unicode
+			Returns a character specified by Unicode
 		@syntax:
 			<string> $char(<unicode_value:integer>)
 		@description:
-			Returns a character corresponding to the UNICODE code <unicode_value>.[br]
-			This function can not return NUL character (UNICODE 0). Basically
+			Returns a character corresponding to the Unicode code <unicode_value>.[br]
+			This function can not return NUL character (Unicode 0). Basically
 			you should never need it: if you do, drop me a mail.[br]
-			If the <unicode_code> is not a valid UNICODE code (or is 0), this function returns
+			If the <unicode_code> is not a valid Unicode code (or is 0), this function returns
 			an empty string.[br]
 		@seealso:
 			[fnc]$cr[/fnc], [fnc]$lf[/fnc], [fnc]$unicode[/fnc]
@@ -1168,7 +1168,7 @@ namespace KviKvsCoreFunctions
 			<string> $escape(<text:string>)
 		@description:
 			In KVS some characters in a string have special meanings: % marks the start of a variable name, $ the start of a function name, etc..[br]
-			Sometimes you could need to escape them using a \ character to avoid kvirc from interpreting the special meaning of these characters:
+			Sometimes you could need to escape them using a \ character to avoid KVIrc from interpreting the special meaning of these characters:
 			this function will to the dirty job for you, returning a correctly kvs-escaped version of the string passed as a parameter.[br]
 		@seealso:
 			[cmd]eval[/cmd]
@@ -1242,7 +1242,7 @@ namespace KviKvsCoreFunctions
 			<array> $features()
 			<boolean> $features(<test_feature:string>)
 		@description:
-			The parameterless form returns an array of feature descripton strings that this KVIrc executable supports.[br]
+			The parameterless form returns an array of feature description strings that this KVIrc executable supports.[br]
 			This function is useful when some part of your script depends on
 			an optional KVIrc feature (like SSL support or IPV6 support).[br]
 			The returned value may be assigned to a dictionary too: it will be used to simulate an array.[br]
@@ -1501,7 +1501,7 @@ namespace KviKvsCoreFunctions
 			to prevent the evaluation.[br]
 			You might also take a look at [doc:escape_sequences]the escape sequences documentation[/doc]
 			to learn more about how the links are implemented and how to create more powerful links (add
-			right and middle button actions, use predefined kvirc links etc...). Also take a look at [fnc]$link[/fnc]
+			right and middle button actions, use predefined KVIrc links etc...). Also take a look at [fnc]$link[/fnc]
 			which has related functionality.
 		@seealso:
 			[cmd]echo[/cmd], [doc:escape_sequences]the escape sequences documentation[/doc], [fnc]$link[/fnc]

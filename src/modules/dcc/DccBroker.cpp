@@ -781,7 +781,7 @@ void DccBroker::renameOverwriteResume(DccDialog *box,DccDescriptor * dcc)
 							"and is larger than the offered one.<br>" \
 							"Do you wish to<br>" \
 							"<b>auto-rename</b> the new file, or<br>" \
-							"<b>overwrite</b> the existing file ?" \
+							"<b>overwrite</b> the existing file?" \
 						,"dcc" \
 					).arg(dcc->szLocalFileName);
 			}

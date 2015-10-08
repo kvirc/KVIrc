@@ -66,7 +66,7 @@
 		obtain a descriptive error message.
 
 		!fn: <string> $lastError()
-		Returns the last error occured inside the parser.
+		Returns the last error occurred inside the parser.
 		You will typically call this function when $parse() above returns $false.
 
 		!fn: <boolean> $onDocumentStart()

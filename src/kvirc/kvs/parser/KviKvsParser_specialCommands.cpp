@@ -202,7 +202,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 		@description:
 			Unsets the specified list of comma separated variables.
 			It is equivalent to assigning the default empty value
-			to each variable on its own: just does it all at aonce.
+			to each variable on its own: just does it all at once.
 			Note that KVIrc automatically frees the local variable memory
 			when they go out of scope and the global variable memory
 			when KVIrc terminates.
@@ -272,9 +272,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 		@description:
 			Declares a list of global variables.
 			Once a variable has been declared as global
-			it refers to the global kvirc instance for the scope of the script.
+			it refers to the global KVIrc instance for the scope of the script.
 			Global variables are shared between scripts and keep their
-			value until they are explicitly unset or kvirc quits.
+			value until they are explicitly unset or KVIrc quits.
 			This command can be used to override the default behaviour of
 			declaring global variables by starting them with an uppercase letter
 			and declaring local variables by starting them with a lowercase one.
@@ -351,7 +351,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			from [class:object]object[/class].[br]
 			Note:[br]
 			The keywords "function" and "event" that were used in KVIrc versions
-			previous to 3.0.0 have been removed since "useless".[br]
+			previous to 3.0.0 have been removed since they are "useless".[br]
 			The function keyword, however, is still permitted.
 			The keyword "internal" is useful when you want to hide
 			certain function from the outside world. An internal function
@@ -366,15 +366,15 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			It's rather dangerous to use this command inside an object
 			function handler: if the class definition <class> was already
 			existing and it is a parent of the object's class, you might
-			end up executing "inexistant" code.[br]
+			end up executing "inexistent" code.[br]
 			As a thumb rule, use this command only outside object function handlers.[br]
 			[br][br]
 			Only for the curious: implementing protected and private access
 			list on members would have a considerable runtime overhead because
 			of the strange nature of the KVS language. Object member calls
-			are resolved completly at runtime (and that permits a lot of funny tricks
+			are resolved completely at runtime (and that permits a lot of funny tricks
 			like [cmd]privateimpl[/cmd]) but unfortunately this also forces us
-			to check access lists at runtime. Ok, this would be a relatively small footprint for the "private"
+			to check access lists at runtime. OK, this would be a relatively small footprint for the "private"
 			keyword where we need to run UP the called object inheritance hierarchy
 			but would have a significant performance footprint for the "protected"
 			keyword where we would need to traverse the WHOLE inheritance tree of the called and calling
@@ -393,7 +393,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 					destructor
 					{
-						[cmd]echo[/cmd] Ops...being destroyed
+						[cmd]echo[/cmd] Ooops... being destroyed
 					}
 
 					sayHello(this function expects no parameters)
@@ -1324,7 +1324,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			Please note that <command> must be either a single instruction or an instruction block [b]enclosed in braces[/b].
 			During or after <command> execution, if a [cmd]break[/cmd] statement is encountered the execution of the switch
 			is terminated, otherwise the next label is evaluated.[br]
-			If the -p (--passthrough) option is enabled, than the switch command will execute all the istructions blocks
+			If the -p (--passthrough) option is enabled, than the switch command will execute all the instructions blocks
 			until a [cmd]break[/cmd] statement is found.[br]
 			[b]match(<value>)[:]<command>[/b][br]
 			The <value> is expected to be a wildcard expression (wildcard characters being '*' and '?')
@@ -1355,7 +1355,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				break;
 			}
 			[/example]
-			[comment]# A complexier example: change the 1 in 2 or 3[/comment]
+			[comment]# A complexer example: change the 1 in 2 or 3[/comment]
 			[example]
 			%tmp = 1
 			switch(%tmp)
@@ -1397,7 +1397,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				case(%tmp)
 				{
 					# do not break here
-					echo "Yeah.. it's stupid.. \%tmp == \%tmp :D"
+					echo "Yeah... It's stupid... \%tmp == \%tmp :D"
 				}
 				match("*TEST"):
 					echo "Matched *TEST"
