@@ -47,10 +47,10 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 
 	if(m_szBasicTipStart.isEmpty())
 	{
-		m_szBasicTipStart = "<center><font color=\"#a0a0a0\">";
+		m_szBasicTipStart = "<center><p style=\"white-space:pre;color:#a0a0a0\">";
 		m_szBasicTipStart += __tr2qs("This option is also available as");
-		m_szBasicTipStart += "<br><nobr>/option <b> ";
-		m_szBasicTipEnd = "</b></nobr></font></center>";
+		m_szBasicTipStart += ":<br>/option <b>";
+		m_szBasicTipEnd = "</b></p></center>";
 
 	}
 	// FIXME: The bSunken value is ignored!
