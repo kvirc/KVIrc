@@ -183,7 +183,7 @@ void KviAsyncAvatarSelectionDialog::closeEvent(QCloseEvent * e)
 		avatar.set [avatar:string]
 	@description:
 		Sets your avatar in the current connection to <avatar>.
-		<avatar> may be a local filename or a http url.[br]
+		<avatar> may be a local filename or a http URL.[br]
 		If avatar is an empty string then an asynchronous dialog
 		will be opened that will allow choosing an avatar.[br]
 		Note that this command does NOT notify the avatar to
@@ -222,7 +222,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
+		c->warning(__tr2qs("Internal error: am I not in the user database?"));
 		return true;
 	}
 
@@ -303,7 +303,7 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
+		c->warning(__tr2qs("Internal error: am I not in the user database?"));
 		return true;
 	}
 
@@ -336,11 +336,11 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 		See the [doc:ctcp_avatar]avatar protocol documentation[/doc] for the
 		description of the protocol.[br]
 		This has the effect to notify your avatar image to the <target>.[br]
-		The CTCP is sent thru a NOTICE and the current avatar image
+		The CTCP is sent through a NOTICE and the current avatar image
 		is added to the public offer list for <timeout> seconds (or a default timeout if the -t switch is not used).[br]
-		If the -q switch is specified, the command executes in quet mode and
+		If the -q switch is specified, the command executes in quiet mode and
 		prints nothing in the current window.[br]
-		If you don't have an avatar set, the ctcp will unset the previous avatar
+		If you don't have an avatar set, the CTCP will unset the previous avatar
 		on the target side.[br]
 		[b]Warning:[/b] The implementation of the avatar protocol is actually
 		restricted to KVIrc clients only. In the future other clients may implement it.[br]
@@ -378,7 +378,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
+		c->warning(__tr2qs("Internal error: am I not in the user database?"));
 		return true;
 	}
 
@@ -415,7 +415,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 			{
 				// Don't delete o...it has been already deleted by g_pFileTrader
 				if(!c->switches()->find('q',"quiet"))
-					c->warning(__tr2qs("Can't add a file offer for file %Q (huh ? file not readable ?)"),&absPath);
+					c->warning(__tr2qs("Can't add a file offer for file %Q (huh? file not readable?)"),&absPath);
 				return true;
 			}
 

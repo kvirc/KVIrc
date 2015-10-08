@@ -129,7 +129,7 @@ namespace KviUserInput
 							return;
 						}
 					}
-					pWindow->output(KVI_OUT_PARSERERROR,__tr2qs("You are not connected to a server"));
+					pWindow->output(KVI_OUT_PARSERERROR,__tr2qs("You're not connected to a server"));
 				break;
 				case KviWindow::Channel:
 				case KviWindow::Query:

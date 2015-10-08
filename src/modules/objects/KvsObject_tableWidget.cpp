@@ -347,17 +347,17 @@ KVSO_CLASS_FUNCTION(tableWidget,setForeground)
 					color.setNamedColor(szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette
+						// isn't a color name: lets try with an hex triplet
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
-							c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+							c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 							return true;
 						}
 					}
 				}
 				else {
-					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
+					c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 					return true;
 				}
 				QBrush brush(color);
@@ -499,7 +499,7 @@ KVSO_CLASS_FUNCTION(tableWidget,setIcon)
 			pix=g_pIconManager->getImage(szPix);
 			if(!pix)
 			{
-				c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
+				c->warning(__tr2qs_ctx("Error occurred: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
 				return true;
 			}
 	}
