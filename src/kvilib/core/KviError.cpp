@@ -70,20 +70,20 @@ const char * g_errorTable[KviError::ErrorCount]=
 	__tr_no_lookup("Unexpected character"),                                     // 020: unexpectedCharacter
 	__tr_no_lookup("Unknown operator"),                                         // 021: unknownOperator
 	__tr_no_lookup("No host to resolve"),                                       // 022
-	__tr_no_lookup("(DNS Internal) Unsupported address family"),                // 023
+	__tr_no_lookup("(DNS internal) Unsupported address family"),                // 023
 	__tr_no_lookup("Valid name but the host has no IP address"),                // 024
-	__tr_no_lookup("Unrecoverable nameserver error (crashed ?)"),               // 025
-	__tr_no_lookup("Dns temporaneous fault (try again)"),                       // 026
-	__tr_no_lookup("(DNS Internal) Bad flags"),                                 // 027
-	__tr_no_lookup("(DNS Internal) Out of memory"),                             // 028
-	__tr_no_lookup("(DNS Internal) Service not supported"),                     // 029
+	__tr_no_lookup("Unrecoverable nameserver error (crashed?)"),                // 025
+	__tr_no_lookup("DNS temporary fault (try again)"),                          // 026
+	__tr_no_lookup("(DNS internal) Bad flags"),                                 // 027
+	__tr_no_lookup("(DNS internal) Out of memory"),                             // 028
+	__tr_no_lookup("(DNS internal) Service not supported"),                     // 029
 	__tr_no_lookup("Unknown node (host not found)"),                            // 030
-	__tr_no_lookup("(DNS Internal) Unsupported socket type"),                   // 031
-	__tr_no_lookup("Dns query failed"),                                         // 032
-	__tr_no_lookup("This KVIrc executable has no IPV6 support"),                // 033
+	__tr_no_lookup("(DNS internal) Unsupported socket type"),                   // 031
+	__tr_no_lookup("DNS query failed"),                                         // 032
+	__tr_no_lookup("This KVIrc executable has no IPv6 support"),                // 033
 	__tr_no_lookup("Host not found"),                                           // 034
-	__tr_no_lookup("(DNS Internal) IPC failure (slave data corrupted)"),        // 035
-	__tr_no_lookup("Another connection in progress"),                           // 036
+	__tr_no_lookup("(DNS internal) IPC failure (slave data corrupted)"),        // 035
+	__tr_no_lookup("Another connection is in progress"),                        // 036
 	__tr_no_lookup("Invalid IP address"),                                       // 037
 	__tr_no_lookup("Socket creation failed"),                                   // 038
 	__tr_no_lookup("Failed to put the socket in non blocking mode"),            // 039
@@ -96,8 +96,8 @@ const char * g_errorTable[KviError::ErrorCount]=
 	__tr_no_lookup("Broken pipe"),                                              // 046
 	__tr_no_lookup("Invalid proxy address"),                                    // 047
 	__tr_no_lookup("Remote end has closed the connection"),                     // 048
-	__tr_no_lookup("Invalid irc context id"),                                   // 049
-	__tr_no_lookup("Error in loading module"),                                  // 050
+	__tr_no_lookup("Invalid IRC context id"),                                   // 049
+	__tr_no_lookup("Error loading module"),                                     // 050
 	__tr_no_lookup("No such module command"),                                   // 051
 	__tr_no_lookup("No such module function"),                                  // 052
 	__tr_no_lookup("Left operand is not a dictionary reference"),               // 053
@@ -117,10 +117,10 @@ const char * g_errorTable[KviError::ErrorCount]=
 	__tr_no_lookup("The SOCKSv4 protocol lacks IPv6 support"),                  // 067
 	__tr_no_lookup("Unrecognized proxy reply"),                                 // 068
 	__tr_no_lookup("Proxy response: auth failed: access denied"),
-	__tr_no_lookup("Proxy response: No acceptable auth method: request rejected"),
+	__tr_no_lookup("Proxy response: no acceptable auth method: request rejected"),
 	__tr_no_lookup("Proxy response: request failed"),
-	__tr_no_lookup("Proxy response: ident failed"),
-	__tr_no_lookup("Proxy response: ident not matching"),
+	__tr_no_lookup("Proxy response: Ident failed"),
+	__tr_no_lookup("Proxy response: Ident not matching"),
 	__tr_no_lookup("Proxy response: general SOCKS failure"),
 	__tr_no_lookup("Proxy response: connection not allowed"),
 	__tr_no_lookup("Proxy response: network unreachable"),
@@ -149,7 +149,7 @@ const char * g_errorTable[KviError::ErrorCount]=
 	__tr_no_lookup("Unexpected characters in array index"),
 	__tr_no_lookup("Unexpected end in expression"),
 	__tr_no_lookup("Unexpected end in array index"),
-	__tr_no_lookup("Connection thru HTTP proxy failed"),
+	__tr_no_lookup("Connection through HTTP proxy failed"),
 	__tr_no_lookup("Case, match, regexp, default or break keyword expected"),
 	__tr_no_lookup("Access denied"),
 	__tr_no_lookup("Address already in use"),

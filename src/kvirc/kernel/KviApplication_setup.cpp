@@ -3,7 +3,7 @@
 //   File : KviApplication_setup.cpp
 //   Creation date : Fri Apr 2 1999 02:38:05 by Szymon Stefanek
 //
-//   This file is part of the Kvirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -42,7 +42,7 @@
 	#include <shlwapi.h>
 #else
 	#include <stdlib.h> // for getenv()
-	#include <unistd.h> // for symlink() <-- unused ?
+	#include <unistd.h> // for symlink() <-- unused?
 
 	#ifdef COMPILE_KDE_SUPPORT
 		#include <kconfig.h>
@@ -60,8 +60,8 @@ static QLibrary * g_pSetupLibrary = 0;
 
 //
 // Things launched at startup:
-// - Attempt to find the global Kvirc directory
-// - Attempt to find the local Kvirc directory
+// - Attempt to find the global KVIrc directory
+// - Attempt to find the local KVIrc directory
 //   and if it is not found, ask the user to choose one
 //
 
@@ -567,7 +567,7 @@ void KviApplication::findGlobalKvircDirectory()
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))
 		return;
 
-	KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 		"I have tried %Q, but it seemed to fail\n" \
 		"Trying to run anyway...\n",&m_szGlobalKvircDir);
 #else
@@ -590,13 +590,13 @@ void KviApplication::findGlobalKvircDirectory()
 	// AND THE LOCALE IS NOT INITIALIZED AT ALL
 
 	#ifdef COMPILE_KDE_SUPPORT
-		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 			"The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"\
-			"Are you sure that 'make install' worked correctly ?\n"\
+			"Are you sure that 'make install' worked correctly?\n"\
 			"Please make sure that you have the read permission to that directory\n"\
 			"and you have set KDEDIR correctly. You may also try to rerun 'make install'.\n"\
-			"A detailed explaination of the Kvirc directory system is in the INSTALL document\n"\
-			"shipped with the kvirc source dirstribution.\n"\
+			"A detailed explanation of the KVIrc directory system is in the INSTALL document\n"\
+			"shipped with the KVIrc source distribution.\n"\
 			"Trying to run anyway...");
 	#elif defined(COMPILE_ON_MAC)
 		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
@@ -607,11 +607,11 @@ void KviApplication::findGlobalKvircDirectory()
 	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(COMPILE_ON_MAC)
 		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 			"The usual path for this directory is /usr/local/share/kvirc.\n"\
-			"Are you sure that 'make install' worked correctly ?\n"\
+			"Are you sure that 'make install' worked correctly?\n"\
 			"Please make sure that you have the read permission to that directory.\n"\
 			"You may also need to rerun 'make install'.\n"\
-			"A detailed explaination of the KVIrc directory system is in the INSTALL document\n"\
-			"shipped with the kvirc source dirstribution.\n"\
+			"A detailed explanation of the KVIrc directory system is in the INSTALL document\n"\
+			"shipped with the KVIrc source distribution.\n"\
 			"Trying to run anyway...\n");
 	#endif //!COMPILE_ON_MAC
 #endif
@@ -693,7 +693,7 @@ void KviApplication::loadDirectories()
 	szLocalePath.append("locale");
 	szLocalePath.append(KVI_PATH_SEPARATOR);
 
-	//__debug_1arg("Global Kvirc directory is %s",m_szGlobalKvircDir.ptr());
+	//__debug_1arg("Global KVIrc directory is %s",m_szGlobalKvircDir.ptr());
 	// Now look for the local (writable) one
 	m_bFirstTimeRun = !findLocalKvircDirectory();
 
@@ -736,7 +736,7 @@ void KviApplication::setupBegin()
 	g_pSetupLibrary = new QLibrary(szSetupLib);
 	if(!g_pSetupLibrary->load())
 	{
-		KviMessageBox::warning(__tr2qs("Ops...it looks like I can't load modules on this sytem.\n" \
+		KviMessageBox::warning(__tr2qs("Oops! It looks like I can't load modules on this system.\n" \
 			"I have been looking for the %s library but I haven't been able to load it\n" \
 			"due to the following error: \"%s\"\nAborting."),szSetupLib.toUtf8().data(),g_pSetupLibrary->errorString().toUtf8().data());
 #if defined(COMPILE_ON_WINDOWS)
@@ -751,7 +751,7 @@ void KviApplication::setupBegin()
 	bool (*sfunc)() = (bool(*)())g_pSetupLibrary->resolve("setup_begin");
 	if(!sfunc)
 	{
-		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
+		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n" \
 			"The setup module does not export the \"setup_begin\" function.\n" \
 			"Aborting!"));
 #if defined(COMPILE_ON_WINDOWS)
@@ -786,14 +786,14 @@ void KviApplication::setupFinish()
 {
 	if(!g_pSetupLibrary)
 	{
-		qDebug("Oops... lost the setup library ?");
+		qDebug("Oops! Lost the setup library?");
 		return;
 	}
 
 	void (*sfunc)() = (void(*)())g_pSetupLibrary->resolve("setup_finish");
 	if(!sfunc)
 	{
-		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
+		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n" \
 			"The setup module does not export the \"setup_finish\" function.\n" \
 			"Trying to continue anyway..."));
 	}

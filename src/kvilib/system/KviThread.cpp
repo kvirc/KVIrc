@@ -169,7 +169,7 @@ void KviThreadManager::globalDestroy()
 KviThreadManager::KviThreadManager()
 : QObject()
 {
-	if(g_pThreadManager)qDebug("Hey...what are ya doing ?");
+	if(g_pThreadManager)qDebug("Hey... what are ya doing?");
 
 	m_pMutex = new KviMutex();
 	m_pThreadList = new KviPointerList<KviThread>;
@@ -186,17 +186,17 @@ KviThreadManager::KviThreadManager()
 
 	if(pipe(m_fd) != 0)
 	{
-		qDebug("Ops...thread manager pipe creation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
+		qDebug("Oops! Thread manager pipe creation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_SLAVE],F_SETFL,O_NONBLOCK) == -1)
 	{
-		qDebug("Ops...thread manager slave pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
+		qDebug("Oops! Thread manager slave pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],F_SETFL,O_NONBLOCK) == -1)
 	{
-		qDebug("Ops...thread manager master pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
+		qDebug("Oops! Thread manager master pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
 	}
 
 	m_pSn = new QSocketNotifier(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],QSocketNotifier::Read);
@@ -346,7 +346,7 @@ void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 		{
 			// ops.. failed to write down the event..
 			// this is quite irritating now...
-			qDebug("Ops.. failed to write down the trigger");
+			qDebug("Oops! Failed to write down the trigger");
 			// FIXME: maybe a single shot timer ?
 		} else {
 			m_iTriggerCount++;
@@ -418,7 +418,7 @@ void KviThreadManager::threadLeftWaitState()
 	m_iWaitingThreads--;
 	if(m_iWaitingThreads < 0)
 	{
-		qDebug("Ops.. got a negative number of waiting threads ?");
+		qDebug("Oops! Do I have a negative number of waiting threads?");
 		m_iWaitingThreads = 0;
 	}
 	m_pMutex->unlock();

@@ -370,7 +370,7 @@ KviDnsResolver::~KviDnsResolver()
 	if(m_pSlaveThread)
 	{
 		if(!m_pSlaveThread->wait(30000))
-			qDebug("Failed to wait for the slave dns thread: we're probably going to crash!");
+			qDebug("Failed to wait for the slave DNS thread: we're probably going to crash!");
 		delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
 	}
 

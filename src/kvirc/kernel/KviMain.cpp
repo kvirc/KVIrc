@@ -94,7 +94,7 @@ int parseArgs(ParseArgs * a)
 			szMessage += KviBuildInfo::buildDate();
 			szMessage += "\n";
 
-			KviQString::appendFormatted(szMessage,"Home page: http://www.kvirc.net/\n");
+			KviQString::appendFormatted(szMessage,"Homepage: http://www.kvirc.net/\n");
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
@@ -257,7 +257,7 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				qDebug("Option --external requires n irc:// url");
+				qDebug("Option --external requires an irc:// URL");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];

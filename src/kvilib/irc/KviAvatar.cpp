@@ -51,17 +51,17 @@
 		The user that wants to offer a digital representation of himself
 		will be called "source user". The ones that will receive the notification
 		will be called "target users".
-		Every irc user can be either a source user or target user.
+		Every IRC user can be either a source user or target user.
 		[big]The idea[/big]
-		Every irc user has a client-side property called AVATAR. Let's say that there
+		Every IRC user has a client-side property called AVATAR. Let's say that there
 		are two users: A and B.[br]
 		When user A wants to see the B's avatar he simply sends a CTCP AVATAR request
-		to B (the request is sent through a PRIVMSG irc command).[br]
-		User B replies with a CTCP AVATAR notification (sent through a NOTICE irc command)
-		with the name or url of his avatar.[br]
+		to B (the request is sent through a PRIVMSG IRC command).[br]
+		User B replies with a CTCP AVATAR notification (sent through a NOTICE IRC command)
+		with the name or URL of his avatar.[br]
 		The actual syntax for the notification is:[br]
 		[b]AVATAR <avatar_file> [<filesize>][/b]
-		The <avatar_file> may be either the name of a B's local image file or an url
+		The <avatar_file> may be either the name of a B's local image file or a URL
 		pointing to an image on some web server.[br]
 		The optional <filesize> parameter is sent only if <avatar_file> is
 		stored on the B's machine and there will be more info on that later.[br]
@@ -70,15 +70,15 @@
 		If the file can be found
 		and loaded then it is simply displayed in some way near the B's nickname
 		otherwise A must download the avatar from some place.
-		If the <avatar_file> contains a leading url prefix (http://) then
-		A fetches the image from the specified url and after that displays
+		If the <avatar_file> contains a leading URL prefix (http://) then
+		A fetches the image from the specified URL and after that displays
 		it near the B's nickname. If the <avatar_file> does not contain the
-		leading url prefix then it is assumed that B offers this file for
+		leading URL prefix then it is assumed that B offers this file for
 		downloading via DCC from his machine. In this case A may also avoid
 		requesting the file if the <filesize> is too large and the transfer
 		would occupy too much bandwidth (for example).
 		The DCC download is initiated by issuing a DCC GET <avatar_file> request to B.
-		B may then reply with a standard DCC SEND or a DCC RSEND (kvirc's extension).[br]
+		B may then reply with a standard DCC SEND or a DCC RSEND (KVIrc's extension).[br]
 		The implementation of the DCC GET protocol is defined by other documents here around :).[br]
 		[br]
 		The CTCP AVATAR messages can be sent to a single user, a set of users or a channel:
@@ -90,7 +90,7 @@
 		since it allows good compression rates without compromising the image quality.
 		Other formats may be accepted as well (Theoretically this protocol could be
 		extended to allow movies or 3D images).
-		The "preferred" image size may grow with time, as the network transmission speed grows.
+		The preferred image size may grow with time, as the network transmission speed grows.
 */
 
 KviAvatar::KviAvatar(

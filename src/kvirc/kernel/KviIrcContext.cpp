@@ -464,7 +464,7 @@ void KviIrcContext::connectToCurrentServer()
 		{
 			// !m_pAsynchronousConnectionData->szServer.isEmpty()
 			// ok, have a server to look for in the db
-			// FIXME: this is a bit ugly... could it be managed in some completly different and nicer way ?
+			// FIXME: this is a bit ugly... could it be managed in some completely different and nicer way ?
 			KviIrcServerDefinition d;
 			d.szServer = m_pAsynchronousConnectionData->szServer;
 			d.bPortIsValid = m_pAsynchronousConnectionData->bPortIsOk;
@@ -484,7 +484,7 @@ void KviIrcContext::connectToCurrentServer()
 				destroyAsynchronousConnectionData();
 				return;
 			}
-		} // else we just connect to the globally selected irc server in the options dialog
+		} // else we just connect to the globally selected IRC server in the options dialog
 	}
 
 	KviIrcNetwork * net = g_pServerDataBase->currentNetwork();
@@ -505,7 +505,7 @@ void KviIrcContext::connectToCurrentServer()
 	if(!net)
 	{
 		// BUG
-		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Ooops.. you've hit a bug in the servers database... I have found a server but not a network..."));
+		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Oops! You've hit a bug in the servers database... I have found a server but not a network..."));
 		destroyAsynchronousConnectionData();
 		return;
 	}
@@ -705,7 +705,7 @@ void KviIrcContext::connectionEstabilished()
 			connection()->target()->server()->port());
 	}
 
-	// Add to recent server list (build the url of type irc[6]://<server>:<port>
+	// Add to recent server list (build the URL of type irc[6]://<server>:<port>
 	QString url;
 	KviIrcUrl::join(url,connection()->target()->server());
 	g_pApp->addRecentServer(url);
@@ -734,7 +734,7 @@ void KviIrcContext::connectionTerminated()
 	connection()->requestQueue()->clearAll();
 
 	// we consider it unexpected when we haven't sent a QUIT message and we're connected
-	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc..)
+	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc.)
 	bool bUnexpectedDisconnect = (
 			(!(connection()->stateData()->sentQuit())) &&
 			(

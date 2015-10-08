@@ -94,7 +94,7 @@ void KviIrcLink::linkFilterDestroyed()
 {
 	m_pLinkFilter = 0;
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-		__tr2qs("Ops... for some reason the link filter object has been destroyed"));
+		__tr2qs("Oops! For some reason the link filter object has been destroyed"));
 }
 
 void KviIrcLink::destroySocket()
@@ -135,7 +135,7 @@ void KviIrcLink::createSocket(const QString & szLinkFilterName)
 	{
 		connect(m_pLinkFilter,SIGNAL(destroyed()),this,SLOT(linkFilterDestroyed()));
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			__tr2qs("Using filtered IRC protocol: Link filter is \"%Q\""),&szLinkFilterName);
+			__tr2qs("Using filtered IRC protocol: link filter is \"%Q\""),&szLinkFilterName);
 		return;
 	}
 
@@ -178,7 +178,7 @@ void KviIrcLink::resolverTerminated()
 {
 	if(!m_pResolver)
 	{
-		qDebug("Oops... resoverTerminated() triggered without a resolver ?");
+		qDebug("Oops! The resolverTerminated() was triggered without a resolver");
 		return;
 	}
 
@@ -257,15 +257,15 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			m_uReadPackets++;
 
 			// FIXME: actually it can happen that the socket gets disconnected
-			// in a incomingMessage() call.
-			// The problem might be that some other parts of kvirc assume
-			// that the irc context still exists after a failed write to the socket
+			// in an incomingMessage() call.
+			// The problem might be that some other parts of KVIrc assume
+			// that the IRC context still exists after a failed write to the socket
 			// (some parts don't even check the return value!)
 			// If the problem presents itself again then the solution is:
 			//   disable queue flushing for the "incomingMessage" call
 			//   and just call queue_insertMessage()
 			//   then after the call terminates flush the queue (eventually detecting
-			//   the disconnect and thus destroying the irc context).
+			//   the disconnect and thus destroying the IRC context).
 			// For now we try to rely on the remaining parts to handle correctly
 			// such conditions. Let's see...
 			if(*cMessageBuffer != 0)
@@ -312,10 +312,10 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			m_pReadBuffer =(char *)KviMemory::allocate(m_uReadBufferLen);
 			KviMemory::move(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);
 		}
-		//The m_pReadBuffer contains at max 1 irc message...
+		//The m_pReadBuffer contains at max 1 IRC message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510) qDebug("WARNING: Receiving an invalid irc message from server.");
+		if(m_uReadBufferLen > 510) qDebug("WARNING: receiving an invalid IRC message from server.");
 	}
 	KviMemory::free(cMessageBuffer);
 }
@@ -386,7 +386,7 @@ void KviIrcLink::socketStateChange()
 					m_pConnection->linkTerminated();
 				break;
 				default: // currently can be only Idle
-					qDebug("Ooops... got a KviIrcSocket::Idle state change when KviIrcLink::m_eState was Idle");
+					qDebug("Oops! Received a KviIrcSocket::Idle state change when KviIrcLink::m_eState was idle");
 				break;
 			}
 		}

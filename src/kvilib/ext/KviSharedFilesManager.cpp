@@ -66,14 +66,14 @@
 		use an additional "size" parameter in the DCC GET request.[br]
 		[big]Security issues[/big]
 		This is a nice but unsecure method of sharing files.[br]
-		The user mask is a good protection but you have to use it properly!.[br]
+		The user mask is a good protection but you have to use it properly![br]
 		Setting the user mask to Nick!*@* can be easily exploited (just by making an user disconnect
 		in one of the well known ways and then by using his nickname).[br]
 		On the other side, the remote end must know exactly the visible name of the offer to request
-		and noone but you will tell him that name.[br]
+		and no one but you will tell him that name.[br]
 		In sum:[br]
 		Don't share any really important files: this *might* be like putting it on your webpage :D[br]
-		Please don't send complains if someone stoles your /etc/passwd : it is because you have permitted that.[br]
+		Please don't send complaints if someone steals your /etc/passwd : it is because you have permitted that.[br]
 */
 
 

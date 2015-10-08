@@ -269,7 +269,7 @@ void KviIrcSocket::raiseError(KviError::Code eError)
 
 KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, const char * pcBindAddress)
 {
-	// Attempts to estabilish an IRC connection
+	// Attempts to establish an IRC connection
 	// to the server specified by *srv.
 	// Uses the proxy *prx if not 0
 	if(m_state != Idle)
@@ -325,7 +325,7 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 
 	if(bNeedServerIp)
 	{
-		// check the irc host ip
+		// check the IRC host IP
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pIrcServer->isIPv6())
 		{
@@ -392,12 +392,12 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 
 	if(!kvi_socket_connect(m_sock,sa.socketAddress(),((int)(sa.addressLength()))))
 	{
-		// ops...
+		// Oops!
 		int iErr = kvi_socket_error();
 
 		if(!kvi_socket_recoverableConnectError(iErr))
 		{
-			// Ops...
+			// Oops!
 			int iSockError = iErr;
 			if(iSockError == 0)
 			{
@@ -476,7 +476,7 @@ void KviIrcSocket::writeNotifierFired(int)
 	delete m_pWsn;
 	m_pWsn = 0;
 
-	//Succesfully connected...
+	//Successfully connected...
 	connectionEstabilished();
 }
 
@@ -1073,7 +1073,7 @@ void KviIrcSocket::proxyHandleV5MethodReply(unsigned char cReply)
 	if(cReply == 0)
 	{
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: Auth method OK: using method 0 (no auth)"));
+			outputProxyMessage(__tr2qs("Proxy response: auth method OK: using method 0 (no auth)"));
 		proxySendTargetDataV5();
 		return;
 	}
@@ -1081,7 +1081,7 @@ void KviIrcSocket::proxyHandleV5MethodReply(unsigned char cReply)
 	if(cReply == 2)
 	{
 		if(_OUTPUT_VERBOSE)
-			outputProxyMessage(__tr2qs("Proxy response: Auth method OK: using method 2 (user/pass)"));
+			outputProxyMessage(__tr2qs("Proxy response: auth method OK: using method 2 (user/pass)"));
 		proxyAuthUserPassV5();
 		return;
 	}
@@ -1179,7 +1179,7 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char cReply)
 	//
 	//        90: request granted
 	//        91: request rejected or failed
-	//        92: request rejected becasue SOCKS server cannot connect to
+	//        92: request rejected because SOCKS server cannot connect to
 	//            identd on the client
 	//        93: request rejected because the client program and identd
 	//            report different user-ids
@@ -1336,7 +1336,7 @@ void KviIrcSocket::doSSLHandshake(int)
 
 	if(!m_pSSL)
 	{
-		qDebug("Ops... Have I lost the SSL class ?");
+		qDebug("Oops! Have I lost the SSL class?");
 		reset();
 		return; // ops ?
 	}
@@ -1393,7 +1393,7 @@ void KviIrcSocket::doSSLHandshake(int)
 	}
 
 #else //COMPILE_SSL_SUPPORT
-	qDebug("Ops.. SSL handshake without SSL support! Aborting!");
+	qDebug("Oops! SSL handshake without SSL support. Aborting!");
 	exit(-1);
 #endif //COMPILE_SSL_SUPPORT
 }
@@ -1410,7 +1410,7 @@ void KviIrcSocket::linkUp()
 	if(m_sock == KVI_INVALID_SOCKET)
 		return; // ops...disconnected in setState() ????
 
-	// ok.. it seems that we're really up and running now!
+	// OK.. it seems that we're really up and running now!
 	if(m_pWsn)
 	{
 		delete m_pWsn;
@@ -1568,15 +1568,15 @@ void KviIrcSocket::processData(char * buffer,int)
 			m_uReadPackets++;
 
 			// FIXME: actually it can happen that the socket gets disconnected
-			// in a incomingMessage() call.
-			// The problem might be that some other parts of kvirc assume
-			// that the irc context still exists after a failed write to the socket
+			// in an incomingMessage() call.
+			// The problem might be that some other parts of KVIrc assume
+			// that the IRC context still exists after a failed write to the socket
 			// (some parts don't even check the return value!)
 			// If the problem presents itself again then the solution is:
 			//   disable queue flushing for the "incomingMessage" call
 			//   and just call queue_insertMessage()
 			//   then after the call terminates flush the queue (eventually detecting
-			//   the disconnect and thus destroying the irc context).
+			//   the disconnect and thus destroying the IRC context).
 			// For now we try to rely on the remaining parts to handle correctly
 			// such conditions. Let's see...
 
@@ -1764,7 +1764,7 @@ void KviIrcSocket::flushSendQueue()
 	if(m_pFlushTimer->isActive())
 		m_pFlushTimer->stop();
 
-	// Ok...have something to send...
+	// OK...have something to send...
 	KVI_ASSERT(m_state != Idle);
 
 	struct timeval curTime;
@@ -1799,7 +1799,7 @@ void KviIrcSocket::flushSendQueue()
 #endif
 		if(iResult == (int)m_pSendQueueHead->pData->size())
 		{
-			// Succesfull send...remove this data buffer
+			// Successful send...remove this data buffer
 			m_uSentPackets++;
 			m_uSentBytes += iResult;
 			//if(m_pConsole->hasMonitors())outgoingMessageNotifyMonitors((char *)(m_pSendQueueHead->pData->data()),result);

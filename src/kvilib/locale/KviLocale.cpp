@@ -267,10 +267,10 @@ public:
 			g_pUtf8TextCodec = QTextCodec::codecForName("UTF-8");
 			if(!g_pUtf8TextCodec)
 			{
-				qDebug("Can't find the global utf8 text codec!");
+				qDebug("Can't find the global UTF-8 text codec!");
 				g_pUtf8TextCodec = QTextCodec::codecForLocale(); // try anything else...
 				if(!g_pUtf8TextCodec)
-					qDebug("Aargh.. got no UTF-8 text codec: we're in trouble.");
+					qDebug("Argh! Have no UTF-8 text codec: we're in trouble.");
 			}
 		}
 
