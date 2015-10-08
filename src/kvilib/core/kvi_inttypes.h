@@ -79,7 +79,7 @@
 		typedef long int kvi_i32_t;
 		typedef unsigned long int kvi_u32_t;
 	#else
-		#error "Can't find a 32 bit integral type on this system"
+		#error "Can't find a 32-bit integral type on this system"
 		#error "Please report to pragma at kvirc dot net"
 	#endif
 
@@ -92,7 +92,7 @@
 		typedef int kvi_i16_t;
 		typedef long int kvi_u16_t;
 	#else
-		#error "Can't find a 16 bit integral type on this system"
+		#error "Can't find a 16-bit integral type on this system"
 		#error "Please report to pragma at kvirc dot net"
 	#endif
 

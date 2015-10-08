@@ -39,7 +39,7 @@
 #define VER_COMPANYNAME_STR		"KVIrc Development Team"
 #define VER_FILEDESCRIPTION_STR		"KVIrc"
 #define VER_INTERNALNAME_STR		"KVIrc"
-#define VER_LEGALCOPYRIGHT_STR		"Copyright © 2015"
+#define VER_LEGALCOPYRIGHT_STR		"Copyright Â© 2015"
 #define VER_ORIGINALFILENAME_STR	"kvirc.exe"
 #define VER_PRODUCTNAME_STR		"K Visual IRC Client"
 

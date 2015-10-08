@@ -93,7 +93,7 @@ class KviCString;
 		//
 		// Encrypts utf8 plainText and returns the encrypted
 		// data in outBuffer. The encrypted data must be
-		// suitable for sending thru an IRC (eventually DCC
+		// suitable for sending through an IRC (eventually DCC
 		// that is less restrictive) connection and must be utf8 encoded: so
 		// no NULL, CR and LF in the output.
 		// 0x01 should be also avoided since
