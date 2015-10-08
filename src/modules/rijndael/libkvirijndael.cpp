@@ -205,7 +205,7 @@
 	{
 		if(!m_pEncryptCipher)
 		{
-			setLastError(__tr2qs("Ooops... Encryption cipher not initialized"));
+			setLastError(__tr2qs("Oops... Encryption cipher not initialized"));
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
@@ -258,7 +258,7 @@
 	{
 		if(!m_pDecryptCipher)
 		{
-			setLastError(__tr2qs("Ooops... Decryption cipher not initialized"));
+			setLastError(__tr2qs("Oops... Decryption cipher not initialized"));
 			return KviCryptEngine::DecryptError;
 		}
 

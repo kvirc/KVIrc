@@ -470,7 +470,7 @@ void KviWindow::cryptControllerFinished()
 void KviWindow::cryptSessionInfoDestroyed()
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	output(KVI_OUT_SYSTEMERROR,__tr2qs("Ooops... I've accidentally lost the crypting engine."));
+	output(KVI_OUT_SYSTEMERROR,__tr2qs("Oops... I've accidentally lost the crypting engine."));
 	m_pCryptSessionInfo->m_pEngine = 0;
 	delete m_pCryptSessionInfo;
 	m_pCryptSessionInfo = 0;

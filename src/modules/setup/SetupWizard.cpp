@@ -196,7 +196,7 @@ SetupWizard::SetupWizard()
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApplication::License,"COPYING");
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
-		szLicense = __tr("Ooops... Can't find the license file.\n" \
+		szLicense = __tr("Oops... Can't find the license file.\n" \
 			"It MUST be included in the distribution...\n" \
 			"Please report to <pragma at kvirc dot net>");
 	}

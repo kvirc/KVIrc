@@ -834,7 +834,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%anothersum = $sum3(12,%somevalue,%anothervalue)
 			...
 		[/example]
-		Ooops... I've used some variables without actually explaining them, hehe... please forgive me and read on.
+		Oops... I've used some variables without actually explaining them, hehe... please forgive me and read on.
 		This example is again really simple, but you might have more complex function-aliases.
 		The function-aliases are also normal aliases... you can use it as a command:
 		[example]
@@ -1237,7 +1237,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%anothersum = $sum3(12,%somevalue,%anothervalue)
 			...
 		[/example]
-		Ooops... I've used some variables without actually explaining them, hehe... please forgive me and read on.
+		Oops... I've used some variables without actually explaining them, hehe... please forgive me and read on.
 		This example is again really simple, but you might have complexer function-aliases.
 		The function-aliases are also normal aliases... you can use it as a command:
 		[example]
