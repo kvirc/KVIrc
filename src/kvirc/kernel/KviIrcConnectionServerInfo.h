@@ -60,6 +60,29 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
+class KVIRC_API KviUnreal32IrcServerInfo : public KviUnrealIrcServerInfo
+{
+	// This is a continuation on to Unreal, so use its predecessor
+	// as a base class.
+public:
+	KviUnreal32IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviUnrealIrcServerInfo(pParent, version) {;};
+	virtual const char * getSoftware() { return "Unreal32"; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
+class KVIRC_API KviHybridServerInfo : public KviBasicIrcServerInfo
+{
+	// This is a major IRCd that most modern forks are based off of
+public:
+	KviHybridServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Hybrid"; };
+	virtual bool getNeedsOpToListModeseI() { return false; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
 class KVIRC_API KviCritenIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//abjects
@@ -72,16 +95,13 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviNemesisIrcServerInfo : public KviBasicIrcServerInfo
+class KVIRC_API KviNemesisIrcServerInfo : public KviCritenIrcServerInfo
 {
 	//criten
 public:
 	KviNemesisIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
-	virtual char getRegisterModeChar() { return 'r'; };
+		:KviCritenIrcServerInfo(pParent, version) {;};
 	virtual const char * getSoftware() { return "Nemesis"; };
-	virtual bool getNeedsOpToListModeseI() { return true; };
-	virtual const QString & getChannelModeDescription(char mode);
 };
 
 class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
@@ -143,18 +163,6 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviSnircdIrcServerInfo : public KviBasicIrcServerInfo
-{
-	//quakenet; note: snird is an extension to ircu
-public:
-	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
-	virtual char getRegisterModeChar() { return 0; };
-	virtual const char * getSoftware() { return "Snircd"; };
-	virtual bool getNeedsOpToListModeseI() { return false; }; //modes eI doesn't exists
-	virtual const QString & getChannelModeDescription(char mode);
-};
-
 class KVIRC_API KviIrcuIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//undernet
@@ -167,36 +175,45 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviPlexusIrcServerInfo : public KviBasicIrcServerInfo
+class KVIRC_API KviSnircdIrcServerInfo : public KviIrcuIrcServerInfo
+{
+	//quakenet; note: snird is an extension to ircu
+public:
+	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviIrcuIrcServerInfo(pParent, version) {;};
+	virtual const char * getSoftware() { return "Snircd"; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
+class KVIRC_API KviPlexusIrcServerInfo : public KviHybridServerInfo
 {
 	//rizon; note: plexus is an extension to hybrid
 public:
 	KviPlexusIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
-	virtual char getRegisterModeChar() { return 'r'; };
+		:KviHybridServerInfo(pParent, version) {;};
 	virtual const char * getSoftware() { return "Plexus"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviOftcIrcServerInfo : public KviBasicIrcServerInfo
+class KVIRC_API KviOftcIrcServerInfo : public KviHybridServerInfo
 {
 	//oftc; note: hybrid+oftc is an extension to hybrid
 public:
 	KviOftcIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+		:KviHybridServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'R'; };
 	virtual const char * getSoftware() { return "Hybrid+Oftc"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
 	virtual const QString & getChannelModeDescription(char mode);
 };
 
-class KVIRC_API KviDarenetIrcServerInfo : public KviBasicIrcServerInfo
+class KVIRC_API KviDarenetIrcServerInfo : public KviIrcuIrcServerInfo
 {
 	//darenet; note: u2+ircd-darenet is an extension to ircu
 public:
 	KviDarenetIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+		:KviIrcuIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Ircu+Darenet"; };
 	virtual bool getNeedsOpToListModeseI() { return false; };
