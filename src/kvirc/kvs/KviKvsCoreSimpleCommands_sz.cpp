@@ -68,7 +68,7 @@ namespace KviKvsCoreSimpleCommands
 			then the command is rebound to the window specified by <window_id>.
 			The main difference is that the variables and identifiers in <text>
 			are always parsed (when typing this happen only if the text is a command).[br]
-			The switch -x will make say evaluate and execute arbitary commands, too:
+			The switch -x will make say evaluate and execute arbitrary commands, too:
 			if <text> begins with a slash then it will be treated as a command
 			to be evaluated and executed (after parsing the identifiers etc.).[br]
 			If this happens, the executed command will not be send to the active channel.[br]
@@ -78,7 +78,7 @@ namespace KviKvsCoreSimpleCommands
 			will just print "foo".[br]
 			Please note that using /say -x with a <text> that isn't a constant
 			in the script but comes from some unidentified external source (e.g. the network)
-			is a potential security flaw as it enables anyone to execute arbitary commands:
+			is a potential security flaw as it enables anyone to execute arbitrary commands:
 			don't ever do it.[br]
 			When the -x switch is not used, the text is never interpreted as a command.
 			-q causes the command to run quietly.[br]
@@ -96,7 +96,7 @@ namespace KviKvsCoreSimpleCommands
 		if(KVSCSC_pSwitches->find('x',"allow-exec"))
 		{
 			// allow execution of commands
-			if(!KviUserInput::parse(szText,KVSCSC_pWindow,__tr2qs_ctx("say: injected commandline","kvs")))
+			if(!KviUserInput::parse(szText,KVSCSC_pWindow,__tr2qs_ctx("Say: injected commandline","kvs")))
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
 					KVSCSC_pContext->warning(__tr2qs_ctx("Say parse error: Broken command","kvs"));
@@ -183,14 +183,14 @@ namespace KviKvsCoreSimpleCommands
 			[br]
 			If <server> is in the form "id:<some_string>" then <some_string>
 			is interpreted as the server's internal id (specified in the options dialog).
-			This is useful when you need to force kvirc to choose between multiple
+			This is useful when you need to force KVIrc to choose between multiple
 			server entries with the same hostname and port stored in the database.[br]
 			Please note that this form causes most of the switches to have no effect
 			since the entry in the database will override them. If no server
 			entry with the specified identifier is found then an error will be generated
 			and the connection attempt will stop.
 			[br]
-			If <server> doesn't seem to be a valid ip address or hostname (i.e. it contains no dots)
+			If <server> doesn't seem to be a valid IP address or hostname (i.e. it contains no dots)
 			and it doesn't look to be in the form "id:<some_string>" then
 			it is assumed to be a network name and if such a network is found
 			in the server list then the best server for that network is contacted.
@@ -847,7 +847,7 @@ namespace KviKvsCoreSimpleCommands
 			[example]
 			# Unban people on the current channel (say #kvirc)
 			unban Maxim,Gizmo!*@*,*!root@*
-			# Do the same but from another window belongin to this IRC context
+			# Do the same but from another window belonging to this IRC context
 			unban -r=[fnc]$channel[/fnc](#kvirc) Maxim,Gizmo!*@*,*!root@*
 			# Do the same from any window
 			unban -r=[fnc]$channel[/fnc](#kvirc,[fnc]$context[/fnc](irc.myirc.net,Pragma)) Maxim,Gizmo!*@*,*!root*@*
@@ -1057,7 +1057,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Requests user information
 		@description:
-			Requests information about an irc user specified by <nickname>.[br]
+			Requests information about an IRC user specified by <nickname>.[br]
 			If [server] is specified, the request is directed to that one. [server]
 			may be a nickname so that the request is redirected to the server that
 			the user with that nickname is connected to.[br]

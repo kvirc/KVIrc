@@ -840,11 +840,11 @@ static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.stripcolors
 	@short:
-		Returns a mirc color codes stripped string
+		Returns a mIRC color codes stripped string
 	@syntax:
 		<string> $str.stripcolors(<string:string>)
 	@description:
-		Removes all mirc color codes from a string, including also bold, underline, reverse,
+		Removes all mIRC color codes from a string, including also bold, underline, reverse,
 		icon, crypting and ctcp control codes.
 */
 static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
@@ -1418,7 +1418,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	{
 		qAlgo = QCryptographicHash::Md5;
 	} else {
-		c->warning(__tr2qs("KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports only MD4, MD5 and SHA1."));
+		c->warning(__tr2qs("KVIrc is compiled without Crypto++ or SSL support. $str.digest supports only MD4, MD5 and SHA1."));
 		return true;
 	}
 
@@ -2224,7 +2224,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 
 		if(!pKey)
 		{
-			c->warning(__tr2qs("Can not read private key while trying to use the default private key certificate %s"),KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
+			c->warning(__tr2qs("Can't read private key while trying to use the default private key certificate %s"),KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2237,7 +2237,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 
 		if(!pKey)
 		{
-			c->warning(__tr2qs("Can not read private key while trying to use the provided certificate (wrong password?)"));
+			c->warning(__tr2qs("Can't read private key while trying to use the provided certificate (wrong password?)"));
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2256,7 +2256,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setString(szSign.toBase64().data());
 		return true;
 	}
-	c->warning(__tr2qs("An error occured while signing the message."));
+	c->warning(__tr2qs("An error occurred while signing the message."));
 	c->returnValue()->setString("");
 	return true;
 
@@ -2278,7 +2278,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<bool> $str.evpVerify(<message:string>,<signature:string>[,<certificate:string>[,<password:string>]])
 	@description:
-		This function verifies the signature for a message against a publick key contained in a certificate.[br]
+		This function verifies the signature for a message against a public key contained in a certificate.[br]
 		The signature has to be base64-encoded, as the one returned by [fnc]$str.evpSign[/fnc].[br]
 		If the <certificate> parameter is omitted, the public key certificate specified in the
 		kvirc options will be used.[br]
@@ -2365,7 +2365,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 
 		if(!pKey)
 		{
-			c->warning(__tr2qs("Can not read public key while trying to use the default public key certificate %s"),KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
+			c->warning(__tr2qs("Can't read public key while trying to use the default public key certificate %s"),KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2386,7 +2386,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 
 		if(!pKey)
 		{
-			c->warning(__tr2qs("Can not read public key from the provided certificate."));
+			c->warning(__tr2qs("Can't read public key from the provided certificate."));
 			c->returnValue()->setBoolean(false);
 			return true;
 		}
@@ -2406,7 +2406,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 			c->returnValue()->setBoolean(true);
 			return true;
 		default:
-			c->warning(__tr2qs("An error occured during signature verification."));
+			c->warning(__tr2qs("An error occurred during signature verification."));
 			c->returnValue()->setBoolean(false);
 			return true;
 	}

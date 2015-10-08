@@ -59,12 +59,12 @@ KviActionManager::KviActionManager()
 	__var = new KviActionCategory(__name,__vname,__descr); \
 	m_pCategories->replace(__name,__var)
 
-	CATEGORY(m_pCategoryIrc,"irc",__tr2qs("IRC"),__tr2qs("IRC Context related actions"));
+	CATEGORY(m_pCategoryIrc,"irc",__tr2qs("IRC"),__tr2qs("IRC context related actions"));
 	CATEGORY(m_pCategoryGeneric,"generic",__tr2qs("Generic"),__tr2qs("Generic actions"));
 	CATEGORY(m_pCategorySettings,"settings",__tr2qs("Settings"),__tr2qs("Actions related to settings"));
 	CATEGORY(m_pCategoryScripting,"scripting",__tr2qs("Scripting"),__tr2qs("Scripting related actions"));
 	CATEGORY(m_pCategoryGUI,"gui",__tr2qs("GUI"),__tr2qs("Actions related to the Graphic User Interface"));
-	CATEGORY(m_pCategoryChannel,"channel",__tr2qs("Channel"),__tr2qs("IRC Channel related actions"));
+	CATEGORY(m_pCategoryChannel,"channel",__tr2qs("Channel"),__tr2qs("IRC channel related actions"));
 	CATEGORY(m_pCategoryTools,"tools",__tr2qs("Tools"),__tr2qs("Actions that will appear in the \"Tools\" menu"));
 
 	m_bCustomizingToolBars = false;
@@ -282,7 +282,7 @@ KviAction * KviActionManager::getAction(const QString &szName)
 	if((idx == 5) && (!m_bCoreActionsRegistered))
 	{
 		// the core actions are all like kvirc.name
-		// so the dot is at poisition 5 (6th char)
+		// so the dot is at position 5 (6th char)
 		// the first requested core action will trigger this
 		// the nice thing is that we will probably already have a frame when
 		// the core actions are registered thus stuff like windowStack() can be accessed...

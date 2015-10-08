@@ -242,7 +242,7 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 								{
 									int nRet = QMessageBox::question(
 										this,
-										__tr2qs("Confirm Multiline Message"),
+										__tr2qs("Confirm Multi-line Message"),
 										__tr2qs("You're about to send a message with %1 lines of text.<br><br>" \
 											"There is nothing wrong with it, this warning is<br>" \
 											"here to prevent you from accidentally sending<br>" \

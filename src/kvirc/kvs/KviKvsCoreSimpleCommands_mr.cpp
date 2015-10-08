@@ -68,10 +68,10 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Sends a CTCP ACTION
 		@description:
-			Sends a CTCP ACTION to the current channel, query or dcc chat.[br]
+			Sends a CTCP ACTION to the current channel, query or DCC chat.[br]
 			If you execute it in any other window type, you will get an error.[br]
 			If you want to use this command in a window that is not a channel
-			query or dcc chat, you may use the [doc:command_rebinding]standard -r switch[/doc].
+			query or DCC chat, you may use the [doc:command_rebinding]standard -r switch[/doc].
 		@examples:
 			[example]
 			me is Hungry!
@@ -115,9 +115,9 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			mode <target> <modeflags> [mode parameters]
 		@short:
-			Sends a MODE irc message
+			Sends a MODE IRC message
 		@description:
-			Sends a MODE irc message to the server of the current IRC context.[br]
+			Sends a MODE IRC message to the server of the current IRC context.[br]
 			The parameters are not modified in any way by KVIrc: so
 			you should use the RFC1459 syntax.[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
@@ -335,12 +335,12 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			openurl <url:string>
 		@short:
-			Opens an url
+			Opens an URL
 		@description:
 			Opens the specified <url> with an appropriate handler.<br>
-			The handlers for the supported url types are specified in the options dialog.<br>
-			Each handler is a kvirc commandline that the url will be passed to as the first parameter ($0).<br>
-			The supported url types are:<br>
+			The handlers for the supported URL types are specified in the options dialog.<br>
+			Each handler is a kvirc commandline that the URL will be passed to as the first parameter ($0).<br>
+			The supported URL types are:<br>
 			HTTP: http://&lt;url&gt; or sth that begins with "www." <br>
 			HTTPS: https://&lt;url&gt;<br>
 			FILE: file://&lt;url&gt;<br>
@@ -392,7 +392,7 @@ namespace KviKvsCoreSimpleCommands
 		{
 			if(KviIrcUrl::run(szUrl,KviIrcUrl::TryEveryContext | KviIrcUrl::DoNotPartChans,KVSCSC_pContext->console()) & KviIrcUrl::InvalidProtocol)
 			{
-				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid IRC url (%Q)","kvs"),&szUrl);
+				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid IRC URL (%Q)","kvs"),&szUrl);
 			}
 			return true;
 		} else if(KviQString::equalCIN(szUrl,"mailto",6))
@@ -438,7 +438,7 @@ namespace KviKvsCoreSimpleCommands
 					                 DLLs required to run this application was corrupt.
 					  21             Application requires Microsoft Windows 32-bit extensions.
 				*/
-				KVSCSC_pContext->warning(__tr2qs_ctx("The system handler for the url failed to execute: system error is %1","kvs").arg(iRet));
+				KVSCSC_pContext->warning(__tr2qs_ctx("The system handler for the URL failed to execute: system error is %1","kvs").arg(iRet));
 			}
 		} else {
 #endif
@@ -453,9 +453,9 @@ namespace KviKvsCoreSimpleCommands
 				KviKvsScript script(szName,szCommand);
 
 				if(!script.run(KVSCSC_pWindow,&vList,0,KviKvsScript::PreserveParams))
-					KVSCSC_pContext->warning(__tr2qs_ctx("The commandline for this url type seems to be broken (%Q)","kvs"),&szUrl);
+					KVSCSC_pContext->warning(__tr2qs_ctx("The commandline for this URL type seems to be broken (%Q)","kvs"),&szUrl);
 
-			} else KVSCSC_pContext->warning(__tr2qs_ctx("No commandline specified for this type of url (%Q)","kvs"),&szUrl);
+			} else KVSCSC_pContext->warning(__tr2qs_ctx("No commandline specified for this type of URL (%Q)","kvs"),&szUrl);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		}
 #endif
@@ -514,27 +514,27 @@ namespace KviKvsCoreSimpleCommands
 			[b]MessageType[/b]: <optValue> is a comma separated list of message type properties:
 				<icon>,<foreground>,<background>,<logBoolean>,<level>: <icon> is the index of the internal
 				small icon that has to be shown with the message type, <foreground> is an integer
-				indicating the mirc color to be used for the message type text (0-15),
+				indicating the mIRC color to be used for the message type text (0-15),
 				<background> is similar to foreground and accepts also the value of 100 that means transparent.
-				<logBoolean> is a boolean value (0/1) that indicates wheter this message type has to be logged or not.
+				<logBoolean> is a boolean value (0/1) that indicates whether this message type has to be logged or not.
 				<level> is the message level (actually from 0 to 5).[br]
 			[b]Rectangle[/b]: <optValue> is a comma separated list of integer values that indicate <x>,<y>,<width> and <height>.[br]
 			[b]Pixmap[/b]: <optValue> must be an ABSOLUTE path of the image that you want to load.[br]
 			[b]Int[/b]: <optValue> must be an integer.[br]
 			[b]Uint[/b]: <optValue> must be an UNSIGNED positive integer.[br]
 			Almost all the options available in the option dialog can be set by this command.[br]
-			Some GUI options might require a KVIrc restart to work properly (altough I've tried to avoid that when possible).
+			Some GUI options might require a KVIrc restart to work properly (although I've tried to avoid that when possible).
 		@examples:
 			[example]
 				[comment]# List available options[/comment]
 				option
-				[comment]# Set the mdi mananger background image[/comment]
+				[comment]# Set the mdi manager background image[/comment]
 				option pixmapMdiBackground /home/pragma/myback1.png
 				[comment]# Set the frame caption text[/comment]
 				option stringFrameCaption KVIrc rulez!
 				[comment]# Enable verbose mode[/comment]
 				option boolBeVerbose 1
-				[comment]# Set the irc view font[/comment]
+				[comment]# Set the IRC view font[/comment]
 				option fontIrcView helvetica,24,5,1,50
 			[/example]
 		@seealso:
@@ -557,7 +557,7 @@ namespace KviKvsCoreSimpleCommands
 			// list available options
 			g_pApp->listAvailableOptions(KVSCSC_pWindow);
 		} else {
-			if(!g_pApp->setOptionValue(szName,szValue))KVSCSC_pContext->warning(__tr2qs_ctx("Option setting error: Unknown option or invalid value for option type","kvs"));
+			if(!g_pApp->setOptionValue(szName,szValue))KVSCSC_pContext->warning(__tr2qs_ctx("Option setting error: unknown option or invalid value for option type","kvs"));
 		}
 
 		return true;
@@ -630,7 +630,7 @@ namespace KviKvsCoreSimpleCommands
 			[/example]
 			[example]
 				[comment]# Here we are assuming that fetchdata.kvs returns a string[/comment]
-				[comment]# We evaluate the return value thru ${} and echo it[/comment]
+				[comment]# We evaluate the return value through ${} and echo it[/comment]
 				echo ${ parse -r /home/pragma/fetchdata.kvs; };
 			[/example]
 	*/
@@ -1000,7 +1000,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Opens a query window for each user specified in <nickname list>
 			which is a [b]comma separated[/b] list of nicknames.[br]
-			If [text] is speficied, it is sent to the
+			If [text] is specified, it is sent to the
 			query window just as it would have been written in the query itself.
 			If a query with one of the specified targets already exists,
 			it is simply focused and the [text] is sent to the target.[br]
@@ -1084,7 +1084,7 @@ namespace KviKvsCoreSimpleCommands
 			quit [-f] [-u] [quit-message:string]
 		quit -q
 		@short:
-			Terminates the current IRC connection or the entier application
+			Terminates the current IRC connection or the entire application
 		@switches:
 			!sw: -q | --quit
 			Terminates this KVIrc application instance
@@ -1162,7 +1162,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Raises the KVIrc frame window
 		@description:
-			Raises and activates the KVIrc frame window....assuming that your window manager supports it.[br]
+			Raises and activates the KVIrc frame window, assuming that your window manager supports it.[br]
 	*/
 
 	KVSCSC(raise)
@@ -1204,7 +1204,7 @@ namespace KviKvsCoreSimpleCommands
 			[example]
 			[comment]# Send a private message "by hand"[/comment]
 			raw PRIVMSG Pragma :hello!
-			[comment]# Send a private message thru another connection[/comment]
+			[comment]# Send a private message through another connection[/comment]
 			raw -r=[fnc]$console[/fnc]([fnc]$ic[/fnc](irc.otherserver.com,othernick)) PRIVMSG Pragma :heya on this side!
 			[/example]
 	*/
@@ -1255,7 +1255,7 @@ namespace KviKvsCoreSimpleCommands
 			[comment]# Try this example in a channel or query window[/comment][br]
 			[comment]# Remember the current window id[/comment][br]
 			%winid = $window[br]
-			[comment]# Rebind to the console of the current irc context[/comment][br]
+			[comment]# Rebind to the console of the current IRC context[/comment][br]
 			rebind $console[br]
 			echo "Hello from the console :)"[br]
 			echo "Hello again.. still in the console"[br]
@@ -1297,7 +1297,7 @@ namespace KviKvsCoreSimpleCommands
 			and stops the execution.[br]
 			This is more or less equivalent to calling [cmd]setreturn[/cmd] <string>
 			and then [cmd]halt[/cmd], but has no additional semantics in events.[br]
-			Starting from version 3.0.0 of kvirc you can also return
+			Starting from version 3.0.0 of KVIrc you can also return
 			arrays and hashes just like any other variable types.
 		@examples:
 			return $array(item1,item2,3213,itemX);

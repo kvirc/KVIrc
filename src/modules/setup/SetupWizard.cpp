@@ -196,7 +196,7 @@ SetupWizard::SetupWizard()
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApplication::License,"COPYING");
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
-		szLicense = __tr("Oops... can't find the license file.\n" \
+		szLicense = __tr("Ooops... Can't find the license file.\n" \
 			"It MUST be included in the distribution...\n" \
 			"Please report to <pragma at kvirc dot net>");
 	}
@@ -316,7 +316,7 @@ SetupWizard::SetupWizard()
 
 	m_pIdentity = new SetupPage(this);
 
-	m_pIdentity->m_pTextLabel->setText(__tr2qs("Please choose a Nickname.<br><br>" \
+	m_pIdentity->m_pTextLabel->setText(__tr2qs("Please choose a nickname.<br><br>" \
 		"Your nickname is the name that other IRC users will know you by. " \
 		"It can't contain spaces or punctuation. Some IRC networks will shorten your nickname if it is more than 32 characters " \
 		"long.<br><br>"
@@ -494,7 +494,7 @@ SetupWizard::SetupWizard()
 	addPage(m_pDesktopIntegration,__tr2qs("Desktop Integration"));
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
+	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc the default IRC client"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateUrlHandlers->setChecked(true);
 #endif
 #ifdef COMPILE_KDE_SUPPORT

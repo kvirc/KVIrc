@@ -119,7 +119,7 @@ void LinksWindow::requestLinks()
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent links request, waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot request links: No active connection"));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot request links: no active connection"));
 	}
 }
 
@@ -132,7 +132,7 @@ void LinksWindow::connectionStateChange()
 		QString szTmp = QString(__tr2qs("Connected to %1 (%2)")).arg(m_pConsole->connection()->currentServerName(),m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
-		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: Not connected to a server"));
+		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: not connected to a server"));
 	}
 }
 
@@ -296,7 +296,7 @@ void LinksWindow::endOfLinks()
 		output(KVI_OUT_LINKS,__tr2qs("Average hops: ~%d.%d"),avgHops / 100,avgHops % 100);
 	} else {
 		m_szRootServer = __tr2qs("(Unknown)");
-		outputNoFmt(KVI_OUT_LINKS,__tr2qs("Incomplete LINKS result, no stats available"));
+		outputNoFmt(KVI_OUT_LINKS,__tr2qs("Incomplete links result, no stats available"));
 	}
 	outputNoFmt(KVI_OUT_LINKS,"======================");
 

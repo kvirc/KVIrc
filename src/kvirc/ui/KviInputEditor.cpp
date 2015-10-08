@@ -1105,7 +1105,7 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 	pAction->setEnabled(hasSelection());
 	pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
 	pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
-	pAction = g_pInputPopup->addAction(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste Slowly"),this,SLOT(pasteSlow()));
 	if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
 	    pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
 	else
@@ -1134,7 +1134,7 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 	
 
 #ifdef COMPILE_ENCHANT_SUPPORT
-	// check if the cursor is in a spellcheckable block
+	// check if the cursor is in a spell-checkable block
 
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);

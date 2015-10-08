@@ -44,15 +44,15 @@ KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
 	@syntax:
 		links.open
 	@description:
-		Opens a "links" window attacched to the current irc context.[br]
+		Opens a "links" window attached to the current IRC context.[br]
 		The links window handles the RPL_LINKS server replies and shows
-		them in a Tree-View form: this is useful in vizualizing the
+		them in a Tree-View form: this is useful in visualizing the
 		current network connections.[br]
 		Please note that the total number of links received (and the
 		total count of servers displayed when all the links have been received)
-		may actually be less than the real number of irc servers in the network.
+		may actually be less than the real number of IRC servers in the network.
 		Servers that contain a wildcard in their name often act as gateways (hubs)
-		for a "local irc network"; if you're requesting links from a server that is
+		for a "local IRC network"; if you're requesting links from a server that is
 		external to the gateway, the servers internal to the network "behind the gateway"
 		will not be shown; in the extreme case you will see the gateway as leaf node (and it isn't).
 		To see the internal network server tree you might request LINKS from the gateway server.[br]
@@ -69,7 +69,7 @@ static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		LinksWindow *w = new LinksWindow(c->window()->console());
 		g_pMainWindow->addWindow(w);
 	} else {
-		c->warning(__tr2qs("Links window alread open for this IRC context"));
+		c->warning(__tr2qs("Links window already open for this IRC context"));
 	}
 
 	return true;
@@ -101,7 +101,7 @@ static bool links_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Links",                                             // module name
+	"Links",                                                // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Links window extension",
