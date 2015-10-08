@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=KVIrc
 GenericName=IRC Client
-GenericName[de]=IRC-Client
+GenericName[de]=IRC Client
 GenericName[pl]=Klient IRC
 GenericName[pt]=Cliente IRC
 GenericName[tr]=IRC İstemcisi

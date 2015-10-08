@@ -45,7 +45,7 @@ for i in $*; do
 				DOMD5SUM="yes"
 			;;
 		--*)
-			echo "ERROR: Unrecognized option $i"
+			echo "ERROR! Unrecognized option $i"
 			usage
 			exit
 			;;
@@ -60,19 +60,19 @@ for i in $*; do
 done
 
 if [ -z "$SOURCETREEDIR" ]; then
-	echo "ERROR: Source tree directory missing"
+	echo "ERROR! Source tree directory missing"
 	usage
 	exit
 fi
 
 if [ -z "$KVIRCVERSION" ]; then
-	echo "ERROR: KVIrc version missing"
+	echo "ERROR! KVIrc version missing"
 	usage
 	exit
 fi
 
 if [ ! -d $SOURCETREEDIR ]; then
-	echo "ERROR: The source tree parameter doesn't identify a directory"
+	echo "ERROR! The source tree parameter doesn't identify a directory"
 	usage
 	exit
 fi
@@ -172,5 +172,5 @@ fi
 #################################################################################################
 # Done :)
 
-echo "Done. Have a nice day :)"
+echo "Done. Have a nice day. :)"
 

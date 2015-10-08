@@ -16,9 +16,9 @@ Name "@NICENAME@"
 !define URL_UPDATE 'http://www.kvirc.net/'
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
-; Git release, eg: KVIrc-4.0.0-rc3-git-4423-5ac91f3.exe
+; Git release, e.g. KVIrc-4.3.2-dev-git-5465-ge352609.exe
 OutFile KVIrc-${VERSION}-dev-${GIT_VERSION}.exe
-; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
+; Stable version, e.g. KVIrc-4.2.0-Equilibrium.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
 SetCompressor /SOLID lzma
@@ -57,7 +57,7 @@ Var LocalDir
 ReserveFile "${NSISDIR}\Plugins\UserInfo.dll"
 
 !insertmacro MUI_LANGUAGE "English"
-LangString UnLocalDataDescr ${LANG_ENGLISH} "This will delete your settings, themes, logs. Keep it unchecked if you plan to reinstall KVIrc later."
+LangString UnLocalDataDescr ${LANG_ENGLISH} "This will delete your settings, themes and logs. Keep it unchecked if you plan to reinstall KVIrc later."
 LangString UnLocalData ${LANG_ENGLISH} "Settings"
 LangString UnGeneralFiles ${LANG_ENGLISH} "Program files"
 LangString ProgramDescription ${LANG_ENGLISH} "Visual IRC client"
@@ -192,7 +192,7 @@ continue:
 
 
     SetShellVarContext all
-    ; Remove old installer, check for 32 bit first, we don't want both installed
+    ; Remove old installer, check for 32-bit first, we don't want both installed
     ${If} ${RunningX64}
         SetRegView 32
         ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"

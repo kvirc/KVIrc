@@ -54,7 +54,7 @@ for afile in $*; do
 		if grep "$SEARCH" $afile; then
 			echo "Ops.. maybe it didn't work..."
 		else
-			echo "Ok, it worked."
+			echo "OK, it worked."
 		fi
 	fi
 
