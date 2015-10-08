@@ -115,7 +115,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	m_pTagsEncodingCombo->setCurrentIndex(iMatch);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Winamp messages ecoding","options"),true);
+	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Winamp messages encoding","options"),true);
 
 	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of winamp messages.","options"));
 
