@@ -420,6 +420,8 @@ public:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers
 	inline void setFixedCaption(const QString & szCaption){ m_szPlainTextCaption = szCaption; };
+
+	void setWindowTitle(QString & szTitle);
 protected:
 	// Loading and saving of properties
 	// Protected: only KviMainWindow can call these

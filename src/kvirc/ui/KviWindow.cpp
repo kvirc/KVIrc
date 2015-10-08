@@ -640,6 +640,12 @@ void KviWindow::updateCaption()
 		m_pWindowListItem->captionChanged();
 }
 
+void KviWindow::setWindowTitle(QString & szTitle)
+{
+	QWidget::setWindowTitle(szTitle);
+	g_pMainWindow->updateWindowTitle(this);
+}
+
 void KviWindow::createSystemTextEncodingPopup()
 {
 	if(!g_pMdiWindowSystemTextEncodingPopup)
