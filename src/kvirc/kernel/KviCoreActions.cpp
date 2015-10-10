@@ -960,18 +960,25 @@ void KviChangeUserModeAction::popupAboutToShow()
 	if(!c)return;
 
 	m_pPopup->clear();
-    QAction *pAction;
+	QAction *pAction;
 	QString szModes = g_pActiveWindow->connection()->serverInfo()->supportedUserModes();
 
-    pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::WallOps)),__tr2qs("Wallops (+w)"));
-    pAction->setCheckable(true);
-    pAction->setChecked(c->connection()->userInfo()->hasUserMode('w'));
-    pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerNotice)),__tr2qs("Server Notices (+s)"));
-    pAction->setCheckable(true);
-    pAction->setChecked(c->connection()->userInfo()->hasUserMode('s'));
-    pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Invisible)),__tr2qs("Invisible (+i)"));
-    pAction->setCheckable(true);
-    pAction->setChecked(c->connection()->userInfo()->hasUserMode('i'));
+	pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::WallOps)),__tr2qs("w: Wallops"));
+	pAction->setCheckable(true);
+	pAction->setChecked(c->connection()->userInfo()->hasUserMode('w'));
+
+	if(szModes.contains('s'))
+	{
+		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerNotice)),__tr2qs("s: Server Notices"));
+		pAction->setCheckable(true);
+		// Only if the IRCd allows us
+		pAction->setEnabled(c->connection()->serverInfo()->getNeedsOperToSetS() ? c->connection()->userInfo()->hasUserMode('o') : 1);
+		pAction->setChecked(c->connection()->userInfo()->hasUserMode('s'));
+	}
+
+	pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Invisible)),__tr2qs("i: Invisible"));
+	pAction->setCheckable(true);
+	pAction->setChecked(c->connection()->userInfo()->hasUserMode('i'));
 
 	szModes.replace("w","");
 	szModes.replace("s","");
@@ -980,9 +987,25 @@ void KviChangeUserModeAction::popupAboutToShow()
 	{
 		QChar ccc = szModes[0];
 		szModes.remove(0,1);
-        pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Mode)),QString("+%1 Mode").arg(ccc));
-        pAction->setCheckable(true);
-        pAction->setChecked(c->connection()->userInfo()->hasUserMode(ccc.toLatin1()));
+		QString modeDesc = c->connection()->serverInfo()->getUserModeDescription(ccc);
+		QChar requiredMode = c->connection()->serverInfo()->getUserModeRequirement(ccc);
+		bool canCheck = true;
+
+		// See if the usermode is even settable by the user
+		if(requiredMode != 0)
+		{
+			// Untouchable
+			if(requiredMode == 1)
+				canCheck = false;
+			else
+				canCheck = c->connection()->userInfo()->hasUserMode(requiredMode.toLatin1());
+		}
+
+		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Mode)),
+		                     !modeDesc.isEmpty() ? modeDesc : QString("%1: Mode").arg(ccc));
+		pAction->setEnabled(canCheck);
+		pAction->setCheckable(true);
+		pAction->setChecked(c->connection()->userInfo()->hasUserMode(ccc.toLatin1()));
 	}
 }
 
@@ -991,26 +1014,18 @@ void KviChangeUserModeAction::popupActivated(QAction *pAction)
 	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
-    QString text = pAction->text();
+	QString text = pAction->text();
 	if(!c->isConnected())return;
-	if(!text.isEmpty())
+	if(!text.isEmpty() && text[0].isLetter())
 	{
-		int idx = text.indexOf('+');
-		if(idx != -1)
-		{
-			idx++;
-			if(idx < text.length())
-			{
-				QChar m = text[idx];
-				QString szNick = c->connection()->userInfo()->nickName();
-				KviQString::escapeKvs(&szNick);
-				QString command = "mode ";
-				command.append(szNick);
-				command.append(c->connection()->userInfo()->hasUserMode(m) ? " -" : " +");
-				command.append(m);
-				KviKvsScript::run(command,c);
-			}
-		}
+		QChar m = text[0];
+		QString szNick = c->connection()->userInfo()->nickName();
+		KviQString::escapeKvs(&szNick);
+		QString command = "mode ";
+		command.append(szNick);
+		command.append(c->connection()->userInfo()->hasUserMode(m) ? " -" : " +");
+		command.append(m);
+		KviKvsScript::run(command,c);
 	}
 }
 
