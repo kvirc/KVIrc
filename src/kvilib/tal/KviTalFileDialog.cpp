@@ -78,6 +78,7 @@ void KviTalFileDialog::setFileMode(FileMode m)
 #else //!defined(COMPILE_KDE4_SUPPORT)
 		case AnyFile:
 			QFileDialog::setFileMode(QFileDialog::AnyFile);
+			setAcceptMode(QFileDialog::AcceptSave);
 		break;
 		case ExistingFile:
 			QFileDialog::setFileMode(QFileDialog::ExistingFile);
@@ -93,6 +94,7 @@ void KviTalFileDialog::setFileMode(FileMode m)
 		break;
 		default:
 			QFileDialog::setFileMode(QFileDialog::AnyFile);
+			setAcceptMode(QFileDialog::AcceptSave);
 		break;
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 	}
