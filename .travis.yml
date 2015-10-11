@@ -1,9 +1,14 @@
 language: cpp
-os:
-    - linux
-    - osx
-compiler:
-    - gcc  # on osx it's actually clang
+matrix:
+    include:
+        - os: linux
+          env: WANT_KDE=NO
+          compiler: gcc
+        - os: linux
+          env: WANT_KDE=YES
+          compiler: gcc
+        - os: osx
+          compiler: clang
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat /proc/cpuinfo /proc/meminfo; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then lsb_release -a; fi
@@ -12,6 +17,7 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep mem; fi
     - pwd
 install:
+    - CMAKE_ARGS=""
     - |
         if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
           # want cmake newer than in ubuntu 12.04
@@ -20,6 +26,11 @@ install:
           sudo apt-get install cmake cmake-data
 
           sudo apt-get install libperl-dev libenchant-dev
+
+          CMAKE_ARGS="$CMAKE_ARGS -DWANT_KDE=$WANT_KDE"
+          if [[ "$WANT_KDE" == "YES" ]]; then
+            sudo apt-get install kdelibs5-dev
+          fi
         fi
     - |
         if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -29,7 +40,7 @@ install:
 script:
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake $CMAKE_ARGS ..
     - make -j3
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo make install; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make install; fi
