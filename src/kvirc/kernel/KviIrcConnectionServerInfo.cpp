@@ -602,16 +602,44 @@ const QString & KviHyperionIrcServerInfo::getUserModeDescription(QChar mode)
 // UMODE Requirements
 ////////////////
 
+// Cases returning themselves (case 'o': return 'o';) are modes
+// that can be obtained by IRCd commands (/OPER) yet can be removed
+// by the user. e.g. you can obtain usermode +o by running /OPER
+// yet can remove it (de-oper) if you have it.
+//
+// Cases returning a mode different from their case are modes that
+// are dependent on the modes being returned. For example, the function
+// receives 'y' which could be, for example, routing requests. We would
+// return 'o', as 'y' requires operator privileges and the operator mode
+// is 'o'. We are then basically saying that 'y' requires 'o', so return
+// 'o' for further parsing. If they do not, then we know they are not an
+// IRC Operator and are not allowed to set mode 'y'.
+//
+// Cases returning a 1 mean that the mode cannot be set by the user in
+// any way, shape, or form. It is strictly IRCd set and can not be set
+// or unset by the user. An example of this is 'S' for 'Connected over
+// SSL'. This is determined at connection time and set by the IRCd if
+// you are using SSL. There is no way to magically switch to SSL after
+// you've made the connection. Thus, the mode can never be set or unset
+// by the user.
+//
+// Cases returning a 0 are free to set by the user without restrictions.
 QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode)
 {
 	switch(mode.unicode())
 	{
+		// These cases are for modes that can be obtained by IRCd
+		// commands (/OPER) and in no other way. However, they can
+		// be unset if the user has these modes. (i.e. de-opering)
 		case 'O': return 'O'; case 'a': return 'a';
 
+		// These modes require operator privileges to set. We return
+		// 'o' to see if the user is an oper.
 		case 'c': case 'd': case 'f': case 'k':
 		case 'n': case 'o': case 's': case 'y':
 		case 'z': return 'o';
 	}
+	// No restriction, mode is free to set.
 	return 0;
 }
 
@@ -624,13 +652,17 @@ QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'a': return 'a'; case 'r': return 'r';
 		case 't': return 't';
 
+		// Modes that cannot be set by the user
 		case 'S': case 'V': case 'x': case 'z':
 		return 1;
 
+		// Modes requiring oper (o)
 		case 'F': case 'H': case 'W': case 'f':
 		case 'g': case 'h': case 'o': case 's':
 		case 'v': case 'w': return 'o';
 
+		// 'q': Only U:Lines can kick you (Services Admins Only)
+		// Requires 'a': Services Admin
 		case 'q': return 'a';
 	}
 	return 0;
