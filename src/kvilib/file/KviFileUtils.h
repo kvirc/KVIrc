@@ -51,7 +51,7 @@
 #endif
 
 // #warning "Add kvi_trashFile(const char * path) ? - is it needed in the whole app"
-// #warning "or should it be availible only for dirbrowser module ?"
+// #warning "or should it be available only for dirbrowser module?"
 /**
 * \namespace KviFileUtils
 * \brief A namespace to handle file utilities functions

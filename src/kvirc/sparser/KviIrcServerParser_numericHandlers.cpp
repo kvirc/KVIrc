@@ -1885,7 +1885,7 @@ void KviIrcServerParser::parseNumericListEnd(KviIrcMessage *msg)
 	{
 		msg->console()->context()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA);
 	} else {
-		msg->console()->output(KVI_OUT_LIST,__tr2qs("End of LIST"));
+		msg->console()->output(KVI_OUT_LIST,__tr2qs("End of list"));
 	}
 
 }
@@ -1924,7 +1924,7 @@ void KviIrcServerParser::parseNumericEndOfLinks(KviIrcMessage *msg)
 	} else {
 		if(!msg->haltOutput())
 		{
-			msg->console()->output(KVI_OUT_LINKS,__tr2qs("End of LINKS"));
+			msg->console()->output(KVI_OUT_LINKS,__tr2qs("End of links"));
 		}
 	}
 }
@@ -2311,10 +2311,10 @@ void KviIrcServerParser::parseNumericCannotSendColor(KviIrcMessage * msg)
 		KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 		if(chan)
 		{
-			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send to channel: %Q"),&szInfo);
+			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send to channel: %Q"),&szInfo);
 		} else {
 			KviWindow * pOut = (KviWindow *)(msg->console());
-			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send text to channel %Q: %Q"),&szChan,&szInfo);
+			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send text to channel %Q: %Q"),&szChan,&szInfo);
 		}
 	}
 }
@@ -2329,10 +2329,10 @@ void KviIrcServerParser::parseNumericCannotSend(KviIrcMessage * msg)
 		KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 		if(chan)
 		{
-			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send to channel"));
+			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send to channel"));
 		} else {
 			KviWindow * pOut = (KviWindow *)(msg->console());
-			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send text to channel %Q"),&szChan);
+			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send text to channel %Q"),&szChan);
 		}
 	}
 }
@@ -2551,7 +2551,7 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szParam=msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL Authentication error: %Q"),&szParam);
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL authentication error: %Q"),&szParam);
 	}
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())

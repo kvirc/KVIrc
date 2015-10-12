@@ -738,7 +738,7 @@ void KviKvsPopupMenu::addExtPopup(const QString &szItemName,const QString &szPop
 void KviKvsPopupMenu::addItemInternal(KviKvsPopupMenuItem * it)
 {
 	if(isHardLocked())
-		qDebug("Ooops... KviKvsPopupMenu is locked in ::addItem()");
+		qDebug("Oops... KviKvsPopupMenu is locked in ::addItem()");
 	m_pItemList->append(it);
 }
 
@@ -820,7 +820,7 @@ void KviKvsPopupMenu::setupMenuContents()
 			if(m_bSetupDone)return;
 			// we have been called by doPopup
 			// the menu contents have been already cleared
-			if(m_pTopLevelData)qDebug("Ops.. something got messed in KviKvsPopupMenu activation system");
+			if(m_pTopLevelData)qDebug("Oops... Something got messed in KviKvsPopupMenu activation system");
 			// Swap the top level data from temporary to the permanent
 			m_pTopLevelData = m_pTempTopLevelData;
 			m_pTempTopLevelData = 0;
@@ -838,7 +838,7 @@ void KviKvsPopupMenu::setupMenuContents()
 	KviKvsPopupMenuTopLevelData * d = topLevelData();
 	if(!d)
 	{
-		qDebug("Ops...menu contents changed behind my back!");
+		qDebug("Oops... Menu contents changed behind my back!");
 		return;
 	}
 
@@ -933,9 +933,9 @@ void KviKvsPopupMenu::itemClicked(QAction *pAction)
 				// FIXME: should we print somethng if run() returns false ?
 				lock(KviKvsPopupMenuTopLevelData::Unlocked);
 			}
-		} else qDebug("oops....clicked something that is not an item at position %d",param);
+		} else qDebug("Oops... Clicked something that is not an item at position %d",param);
 		// FIXME: #warning "Maybe tell that the window has changed"
-	} else qDebug("oops....no menu item at position %d",param);
+	} else qDebug("Oops... No menu item at position %d",param);
 }
 
 

@@ -682,7 +682,7 @@ void KviIrcContext::connectionEstabilished()
 {
 	//qDebug("context::connectionEstabilished");
 	//
-	// The connection has been estabilished, the
+	// The connection has been established, the
 	// KviIrcConnection will attempt to login now
 	//
 	m_uConnectAttemptCount = 1;

@@ -1731,9 +1731,9 @@ bool KviKvsObject::callFunction(
 	if(!h)
 	{
 		if(classOverride.isEmpty())
-			pContext->error(__tr2qs_ctx("Cannot find object function $%Q for object named '%Q' of class '%Q'","kvs"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Can't find object function $%Q for object named '%Q' of class '%Q'","kvs"),&fncName,&m_szName,&(getClass()->name()));
 		else
-			pContext->error(__tr2qs_ctx("Cannot find object function $%Q::%Q for object named '%Q' of class '%Q'","kvs"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Can't find object function $%Q::%Q for object named '%Q' of class '%Q'","kvs"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
 		return false;
 	}
 
@@ -1741,7 +1741,7 @@ bool KviKvsObject::callFunction(
 	{
 		if(pCaller != this)
 		{
-			pContext->error(__tr2qs_ctx("Cannot call internal object function $%Q (for object named '%Q' of class '%Q') from this context","kvs"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Can't call internal object function $%Q (for object named '%Q' of class '%Q') from this context","kvs"),&fncName,&m_szName,&(getClass()->name()));
 			return false;
 		}
 	}

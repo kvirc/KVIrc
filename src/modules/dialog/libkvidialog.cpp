@@ -170,7 +170,7 @@ void KviKvsCallbackMessageBox::done(int code)
 	@examples:
 		[example]
 		[comment]# Just a warning dialog[/comment]
-		dialog.message("Warning","You're being <b>warned</b>",warning,"Ok"){ echo The user clicked OK; }
+		dialog.message("Warning","You're being <b>warned</b>",warning,"OK"){ echo The user clicked OK; }
 		[comment]# A question[/comment]
 		dialog.message("And now ?","What do you want to do ?",information,"Go home","Watch TV","Scream")
 		{
@@ -468,7 +468,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 	@examples:
 		[example]
 		[comment]# We need a single line "reason"[/comment]
-		dialog.textinput -d="Working !" (Away,<center>Please enter the <h1>away message</h1></center>,"Ok","Cancel")
+		dialog.textinput -d="Working!" (Away,<center>Please enter the <h1>away message</h1></center>,"OK","Cancel")
 		{
 			switch($0)
 			{

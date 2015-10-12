@@ -63,7 +63,7 @@ void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * pt
 
 static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 {
-	// p here points somewhere inside an url.
+	// p here points somewhere inside an URL.
 
 	// Now the question is what characters are and which aren't allowed inside an URL.
 
@@ -75,8 +75,8 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	// then the users will tend to write the links without the special encoding. ed2k links also use the | character
 	// and it's common for the file names to appear partially unencoded.
 
-	// There is also a very common case of urls being enclosed inside parentheses: (http://url.here).
-	// In this case the rightmost ')' is shouldn't be included in the url. On the other hand there are many links that
+	// There is also a very common case of URLs being enclosed inside parentheses: (http://url.here).
+	// In this case the rightmost ')' is shouldn't be included in the URL. On the other hand there are many links that
 	// actually contain the ')' character and have it exactly at the end. Wikipedia, for instance, has a lot of such links.
 
 	// So in the end, we just can't have an algorithm that pleases everybody. If we follow exactly the RFC1738
@@ -94,7 +94,7 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 			return p; // no spaces and control characters below 32
 
 		if((*p == '{') || (*p == '}') || (*p == '<') || (*p == '>') || (*p == '"')) // || (*p == '\''))
-			return p; // never valid inside an url
+			return p; // never valid inside an URL
 
 		if(*p == '[')
 		{
@@ -265,7 +265,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 /*
  * Profane description: this adds a block of text of known length to a already created chunk inside this line.
- * text is hidden (eg: we want to display an emoticon instead of the ":)" text, so we insert it hidden)
+ * text is hidden (e.g. we want to display an emoticon instead of the ":)" text, so we insert it hidden)
  */
 
 #define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr,__data_len) \
@@ -300,18 +300,18 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 /*
  * Some additional description for the profanes: we want a fast way to check the presence of "active objects we have to process" in lines of text;
- * such objects can be: EOF, urls, mirc control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
+ * such objects can be: EOF, URLs, mIRC control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
  * This jump table is an array[256] containing label addresses (imagine them as functions). So something like "goto array[4];" is valid construct
- * in C, that equivals to a function call to a function that starts on that label's line of code.
- * Imagine to parse the input line one character at once and match it (as a switch can do) agains this big array. Every 1-byte character corresponds
- * to an ascii integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corrispective label address.
+ * in C, that is equivalent to a function call to a function that starts on that label's line of code.
+ * Imagine to parse the input line one character at once and match it (as a switch can do) against this big array. Every 1-byte character corresponds
+ * to an ASCII integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corresponding label address.
  * Example, if we find a "H" (72) we'll "goto char_to_check_jump_table[72]", aka "goto check_http_url".
  * There exists two different versions of this tricky code, we switch them depending on the compiler abilities to accept our bad code :)
  */
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 
-	// Herezy :)
+	// Heresy :)
 
 	// This is not only usage of the *Evil Goto(tm)*
 	// This is also a *rather unclear* use of the *Really Evil Goto(tm)*
@@ -503,7 +503,7 @@ check_char_loop:
 
 /*
  * Profane description:
- * Here the two different approches to the jump table ends. Following there's the list of all the possible
+ * Here the two different approaches to the jump table ends. Following there's the list of all the possible
  * codes found. The "check table" approach needs an additional switch to discriminate between different control codes,
  * while the "jump table" approach directly jumps to the right case.
  */
@@ -740,15 +740,15 @@ check_http_url:
 	{
 		/*
 		 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
-		 * "http://" tag, it takes us more cpu time)
+		 * "http://" tag, it takes us more CPU time)
 		 */
 
 		//
 		if((*p == 't') || (*p == 'T'))
 		{
 			/*
-			 * Profane description: we found it! now there's an high probability we're in front of an http url. Relax, rewind the last
-			 * character and try to match the complete url protocol tag
+			 * Profane description: we found it! now there's an high probability we're in front of an http URL. Relax, rewind the last
+			 * character and try to match the complete URL protocol tag
 	 		 */
 			p--;
 
@@ -979,22 +979,22 @@ check_spotify_url:
 
 
 got_url:
-	//Url highlighting block
+	//URL highlighting block
 
 	/*
-	 * Profane description: we just found a tag that we suppose to be the start of a url.
-	 * p is the address of the start of our text buffer, partLen the length of the tag (eg. http:// = 7)
+	 * Profane description: we just found a tag that we suppose to be the start of a URL.
+	 * p is the address of the start of our text buffer, partLen the length of the tag (e.g. http:// = 7)
 	 * We want to check if it's valid and highlight it creating an ad-hoc chunk for it in this line.
-	 * The ascii value of the first character after the tag have to be >= 47, or we assume it as invalid
+	 * The ASCII value of the first character after the tag have to be >= 47, or we assume it as invalid
 	 */
 
 	if(*(p + partLen) < 47)
 	{
-		//invalid: append all the text up to the end of the false url tag
+		//invalid: append all the text up to the end of the false URL tag
 		p+=partLen;
 		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
 	} else {
-		//valid: append all the text before the start of the url tag
+		//valid: append all the text before the start of the URL tag
 		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
 		//create a new chunk
 		NEW_LINE_CHUNK(KviControlCodes::Escape)
@@ -1002,7 +1002,7 @@ got_url:
 
 		//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
 
-		//write into null-terminated char* szPayload an 'u' that means that this chunk represents an url
+		//write into null-terminated char* szPayload an 'u' that means that this chunk represents an URL
 		line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(2 * sizeof(kvi_wchar_t));
 		line_ptr->pChunks[iCurChunk].szPayload[0] = 'u';
 		line_ptr->pChunks[iCurChunk].szPayload[1] = 0x0;
@@ -1021,7 +1021,7 @@ got_url:
 			KVS_TRIGGER_EVENT_1(KviEvent_OnURL,m_pKviWindow,tmp);
 		}
 
-		//add all the text till the end of the url, then create a new "clean" chunk for the next cycle loop
+		//add all the text till the end of the URL, then create a new "clean" chunk for the next cycle loop
 		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
 		NEW_LINE_CHUNK(KviControlCodes::UnEscape)
 
@@ -1098,10 +1098,10 @@ check_emoticon_char:
 				}
 				if(!*p || (*p == ' '))
 				{
-					// ok! this is an emoticon (sequence) !
+					// OK! this is an emoticon (sequence) !
 					// We lookup simplified versions of the emoticons...
 
-					// FIXME: this sould become UNICODE!!!
+					// FIXME: this should become UNICODE!!!
 					QString lookupstring;
 					kvi_wchar_t ng[3];
 					ng[0] = *begin;
@@ -1186,7 +1186,7 @@ void KviIrcView::reapplyMessageColors()
 	KviIrcViewLine * pLine = m_pFirstLine;
 	while(pLine)
 	{
-		pLine->iMaxLineWidth = -1; // force recompuation of blocks
+		pLine->iMaxLineWidth = -1; // force recomputation of blocks
 
 		if(pLine->uChunkCount > 0) // always true?
 		{

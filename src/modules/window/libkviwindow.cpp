@@ -1004,7 +1004,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QPixmap *pPix=g_pIconManager->getImage(szIcon);
 	if(!pPix){
 
-	    c->warning(__tr2qs("The specified Icon does not exist: switching to 'none'"));
+	    c->warning(__tr2qs("The specified icon does not exist: switching to 'none'"));
 	    szIcon.prepend("$icon(");
 	    szIcon.append(")");
 	}
@@ -1248,7 +1248,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 			return true;
 			}
 		if(!ob->inherits("KviScriptPixmapObject")){
-			c->warning(__tr("Pixmap objects required !"));
+			c->warning(__tr("Pixmap objects required!"));
 			return true;
 		}
 		QVariant pix1= ob->property("pixmap");

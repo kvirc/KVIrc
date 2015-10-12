@@ -157,7 +157,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	g->addWidget(b,3,1);
 
-	b = new QPushButton(__tr2qs("Ok"),this);
+	b = new QPushButton(__tr2qs("OK"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 	g->addWidget(b,3,2);
 

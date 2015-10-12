@@ -202,9 +202,9 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 	}
 
 	if(r->location().isEmpty())
-		pOutput->output(out,__tr2qs_ctx("[KVS]   in script context \"%Q\"","kvs"),&(r->context()));
+		pOutput->output(out,__tr2qs_ctx("[KVS]   In script context \"%Q\"","kvs"),&(r->context()));
 	else
-		pOutput->output(out,__tr2qs_ctx("[KVS]   in script context \"%Q\", %Q","kvs"),&(r->context()),&(r->location()));
+		pOutput->output(out,__tr2qs_ctx("[KVS]   In script context \"%Q\", %Q","kvs"),&(r->context()),&(r->location()));
 
 	if(pOutput == KviDebugWindow::instance())
 	{

@@ -103,7 +103,7 @@
 
 		return true;
 	#else
-		qDebug("%s",__tr2qs("FiSH has been compiled without ssl support, unable to proceed").toUtf8().data());
+		qDebug("%s",__tr2qs("FiSH has been compiled without SSL support, unable to proceed").toUtf8().data());
 		return false;
 	#endif
 	}
@@ -140,7 +140,7 @@
 		if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
 		{
 			#if !defined(COMPILE_SSL_SUPPORT)
-				c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
+				c->warning(__tr2qs("FiSH has been compiled without SSL support, unable to proceed"));
 				return false;
 			#endif
 			return false;
@@ -217,7 +217,7 @@
 		BIGNUM *bn = BN_bin2bn((unsigned char *) szHisPubKey.data(), szHisPubKey.size(),NULL);
 		if(-1 == (secretLen = DH_compute_key(secret, bn, g_fish_dh)))
 		{
-			c->warning(__tr2qs("FiSH: error verificating peer public key (size=%1)").arg(szHisPubKey.size()));
+			c->warning(__tr2qs("FiSH: error verifying peer public key (size=%1)").arg(szHisPubKey.size()));
 			return false;
 		}
 		BN_zero(bn);
@@ -234,7 +234,7 @@
 
 		KviMemory::free(hashedSecret);
 		#else
-			c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
+			c->warning(__tr2qs("FiSH has been compiled without SSL support, unable to proceed"));
 			return false;
 		#endif
 

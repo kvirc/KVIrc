@@ -1,7 +1,7 @@
 # Default toolbars file
 
 toolbar.create irccontext $tr("IRC Context","defscript") $icon("irc4")
-# toolbar.additem irccontext kvirc.irccontextdisplay - info dublicated with te status line
+# toolbar.additem irccontext kvirc.irccontextdisplay - info duplicated with the status line
 toolbar.additem irccontext kvirc.connect
 toolbar.additem irccontext kvirc.servermenu
 toolbar.additem irccontext kvirc.newirccontext

@@ -167,7 +167,7 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("Nothing is happening..."),
 	__tr("Just idling..."),
 	__tr("Dum de dum de dum..."),
-	__tr("Hey man... do something!"),
+	__tr("Hey man... Do something!"),
 	__tr("Umpf!"),
 	__tr("Silence speaking"),
 	__tr("Are ya here?"),
@@ -175,9 +175,9 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("Everything is all right"),
 	__tr("idle()"),
 	__tr("It's so cold here..."),
-	__tr("Do not disturb... watching TV"),
+	__tr("Do not disturb... Watching TV"),
 	__tr("Just vegetating"),
-	__tr("Hey... are ya sure that your network is up?"),
+	__tr("Hey... Are ya sure that your network is up?"),
 	__tr("Seems like the world has stopped spinning"),
 	__tr("This silence is freaking me out!"),
 	__tr("Mieeeeeowww!"),
@@ -583,16 +583,16 @@ void KviTrayIconWidget::updateIcon()
 	@description:
 		Shows the tray icon (sometimes called dock widget).[br]
 		The tray icon is a small widget that docks in the window manager panel.[br]
-		It shows a small kvirc icon and eventually displays four squares
+		It shows a small KVIrc icon and eventually displays four squares
 		that cover this icon: the bottom left square appears when there is some new
 		text in any console window, the square becomes red if the text is highlighted.[br]
 		The bottom right square appears when there is some new text in any channel window,
 		and it becomes red when the text is highlighted.[br] The upper right square refers to
-		query windows and the upper left one to any other kind of window (dcc, links...).[br]
+		query windows and the upper left one to any other kind of window (DCC, links...).[br]
 		If you move the mouse over the tray icon a tooltip will show you the last lines
 		of the "new" text in all these windows.[br]
 		This is useful when you keep the main KVIrc window minimized and you're working on something else:
-		if the tray icon shows nothing but the kvirc icon, nothing is happening in the main KVIrc window.
+		if the tray icon shows nothing but the KVIrc icon, nothing is happening in the main KVIrc window.
 		If the tray icon shows one or more white (or red) squares, you can move the mouse over
 		and check what's happened exactly and eventually bring up the main KVIrc window by clicking on the icon.[br]
 	@seealso:

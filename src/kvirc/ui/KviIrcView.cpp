@@ -39,14 +39,14 @@
 // 23 Nov 1999,
 //      Well, not so bad...I seem to still remember how it works
 //      So just for fun, complicated the things a little bit more.
-//      Added precaclucaltion of the text blocks and word wrapping
+//      Added pre-calculation of the text blocks and word wrapping
 //      and a fast scrolling mode (3 lines at once) for consecutive
 //      appendText() calls.
 //      Now the code becomes really not understandable...:)
 
 // 29 Jun 2000 21:02,
 //      Here we go again... I have to adjust this stuff for 3.0.0
-//      Will I make this thingie work ?
+//      Will I make this thingie work?
 // 01 Jul 2000 04:20 (AM!),
 //      Yes....I got it to work just now
 //      and YES, complicated the things yet more.
@@ -197,7 +197,7 @@
 //
 //  <cr>!<escape_command><cr><visible parameters<cr>
 //
-//  <escape_command> ::= u        <--- url link
+//  <escape_command> ::= u        <--- URL link
 //  <escape_command> ::= n        <--- nick link
 //  <escape_command> ::= s        <--- server link
 //  <escape_command> ::= h        <--- host link
@@ -375,7 +375,7 @@ KviIrcView::~KviIrcView()
 	if(m_pToolWidget)
 		delete m_pToolWidget;
 
-	// don't forget the bacgkround pixmap!
+	// don't forget the background pixmap!
 	if(m_pPrivateBackgroundPixmap)
 		delete m_pPrivateBackgroundPixmap;
 
@@ -445,7 +445,7 @@ void KviIrcView::applyOptions()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// The IrcView : DnD   //2005.Resurection by Grifisx & Noldor
+// The IrcView : DnD   //2005.Resurrection by Grifisx & Noldor
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1119,7 +1119,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	bool bLineMarkPainted = !KVI_OPTION_BOOL(KviOption_boolTrackLastReadTextViewLine);
 	int iLinesPerPage = 0;
 
-	// And loop thru lines until we not run over the upper bound of the view
+	// And loop through lines until we not run over the upper bound of the view
 	while((curBottomCoord >= KVI_IRCVIEW_VERTICAL_BORDER) && pCurTextLine)
 	{
 		//Paint pCurTextLine
@@ -1258,7 +1258,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 // A couple of macros that could work well as functions...
 // but since there are really many params to be passed
 // and push & pop calls take clock cycles
-// my paranoic mind decided to go for the macro way.
+// my paranoid mind decided to go for the macro way.
 // This is NOT good programming
 //
 
@@ -1437,7 +1437,7 @@ no_selection_paint:
 						// recover it by displaying the "question mark" icon
 						daIcon = g_pIconManager->getSmallIcon(KviIconManager::Help); // must be there, eventually null pixmap :D
 					}
-					int moredown = 1; //used to center imager vertically (pixels which the image is moved more down)
+					int moredown = 1; //used to center image vertically (pixels which the image is moved more down)
 					moredown += ((m_iFontLineSpacing - daIcon->height()) / 2);
 					pa.drawPixmap(curLeftCoord + m_iIconSideSpacing,imageYPos + moredown,*(daIcon));
 
@@ -1738,7 +1738,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 					curLineWidth+=IRCVIEW_WCHARWIDTH(*p);
 					uLoopedChars++;
 				} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
-				// Now overrunned, go back 1 char (if we ran over at least 2 chars)
+				// Now overrun, go back 1 char (if we ran over at least 2 chars)
 				if(uLoopedChars>1)
 				{
 					p--;
@@ -1794,7 +1794,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int bufIndex)
 	if(!m_pSelectionInitLine || !m_pSelectionEndLine)
 		return false;
 
-	//check if selection is bottom to top or viceversa
+	//check if selection is bottom to top or vice-versa
 	KviIrcViewLine *init, *end;
 	if(m_pSelectionInitLine->uIndex <= m_pSelectionEndLine->uIndex)
 	{
@@ -2155,7 +2155,7 @@ void KviIrcView::chooseBackground()
 	QPixmap p(f);
 	if(p.isNull())
 	{
-		QMessageBox::information(this,__tr2qs("Invalid image"),__tr2qs("Failed to load the selected image"),__tr2qs("Ok"));
+		QMessageBox::information(this,__tr2qs("Invalid image"),__tr2qs("Failed to load the selected image"),__tr2qs("OK"));
 		return;
 	}
 
@@ -2253,7 +2253,7 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	//Make sure that we have enough space to paint something...
 	if(maxLineWidth < m_iMinimumPaintWidth)return; // ugh
-	//And loop thru lines until we not run over the upper bound of the view
+	//And loop through lines until we not run over the upper bound of the view
 	KviIrcViewLine * pLine = m_pCurLine;
 	KviIrcViewLine * pCurLine = m_pCurLine;
 	while(pLine)

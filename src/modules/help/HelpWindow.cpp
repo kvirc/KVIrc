@@ -69,7 +69,7 @@ HelpWindow::HelpWindow(const char * name)
 	m_pBottomLayout->setVisible(false);
 
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("HelpIndex"));
+	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("Help Index"));
 
 	KviTalHBox* pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);

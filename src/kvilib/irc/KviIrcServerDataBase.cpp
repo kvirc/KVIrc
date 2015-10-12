@@ -163,7 +163,7 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QStr
 		KviIrcNetwork * pNet = m_pRecords->find(szNet);
 		if(pNet)
 			return makeCurrentBestServerInNetwork(szNet,pNet,szError);
-		szError = __tr2qs("The server specification seems to be in the net:<string> but the network couln't be found in the database");
+		szError = __tr2qs("The server specification seems to be in the net:<string> but the network couldn't be found in the database");
 		return false;
 	}
 
@@ -185,7 +185,7 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QStr
 			}
 			++it;
 		}
-		szError = __tr2qs("The server specification seems to be in the id:<string> form but the identifier coulnd't be found in the database");
+		szError = __tr2qs("The server specification seems to be in the id:<string> form but the identifier couldn't be found in the database");
 		return false;
 	}
 

@@ -43,7 +43,7 @@
 
 #if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 	#ifndef COMPILE_NO_X_BELL
-		#include "KviXlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
+		#include "KviXlib.h"  // XBell : THIS SHOULD BE INCLUDED AS LAST!
 		#include <unistd.h>   // for usleep();
 
 		#include <QX11Info>
@@ -309,7 +309,7 @@ namespace KviKvsCoreSimpleCommands
 			On Windows, the bell is always synchronous and it is not
 			event granted that the bell will be a bell at all... you might
 			get the system default sound instead...
-			On some security-enchanced Windows variants (2008 Server, Seven and possibly
+			On some security-enhanced Windows variants (2008 Server, Seven and possibly
 			some 64-bit Vista builds) the access to the PC speaker
 			may be silently denied so don't be surprised too much if you don't hear any
 			sound at all on such systems...[br][br]
@@ -709,7 +709,7 @@ namespace KviKvsCoreSimpleCommands
 			If the -s switch is used then the output is sent to the system console instead.
 			If the -c switch is used then the script's context name will be prepended to the output.
 			This is useful if you need to debug destructors of objects
-			or events that are triggered at kvirc shutdown.
+			or events that are triggered at KVIrc shutdown.
 		@seealso:
 	*/
 
@@ -866,7 +866,7 @@ namespace KviKvsCoreSimpleCommands
 			so, if use the -i switch, test your script 10 times before releasing it.
 			The -q switch causes the command to run a bit more silently: it still
 			complains if the parameter passed is not an object reference, but
-			it fails silently if the reference just points to an inexistant object (or is null).
+			it fails silently if the reference just points to an inexistent object (or is null).
 		@examples:
 			[example]
 			[/example]
@@ -1101,7 +1101,7 @@ namespace KviKvsCoreSimpleCommands
 			If the -d switch is used then the output is sent to a special
 			window called "Debug" (the window is created if not existing yet).
 			This is useful for script debugging purposes (you get the output
-			in Debug regardless of the window that the executed command is attacched to).
+			in Debug regardless of the window that the executed command is attached to).
 			The KVIrc view widgets support clickable links that can be realized by using special [doc:escape_sequences]escape sequences[/doc].[br]
 			The 'n' switch disables timestamping so you can output your own timestamp
 			or not timestamp at all.[br]
@@ -1131,7 +1131,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				QString szWnd;
 				v->asString(szWnd);
-				//#warning "FIXME: the window database is not unicode! (we even could keep integer window id's at this point!)"
+				//#warning "FIXME: the window database is not Unicode! (we even could keep integer window id's at this point!)"
 				pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 				if(!pWnd)
 				{
@@ -1144,7 +1144,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				if(!v->asInteger(iMsgType))
 				{
-					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the i switch did not evaluate to a number: using default","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -i switch did not evaluate to a number: using default","kvs"));
 					iMsgType = KVI_OUT_NONE;
 				} else {
 					iMsgType = iMsgType % KVI_NUM_MSGTYPE_OPTIONS;

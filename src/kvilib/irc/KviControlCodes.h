@@ -49,7 +49,7 @@
 
 
 // ASCII Stuff: the following defines are meant to be escape sequences
-//              that can go thru an IRC connection
+//              that can go through an IRC connection
 
 // The following table is a 30-minute analysis of the escape characters commonly used over the IRC protocol...
 // created when looking for a good placement for the CRYPT escape char in KVirc.

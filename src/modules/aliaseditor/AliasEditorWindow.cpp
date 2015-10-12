@@ -442,7 +442,7 @@ void AliasEditorWidget::renameItem()
 			QMessageBox::information(this,
 				__tr2qs_ctx("Alias already exists","editor"),
 				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			return;
 		}
@@ -454,7 +454,7 @@ void AliasEditorWidget::renameItem()
 			QMessageBox::information(this,
 				__tr2qs_ctx("Namespace already exists","editor"),
 				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			return;
 		}
@@ -599,7 +599,7 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
-			__tr2qs_ctx("Find In Aliases...","editor"),
+			__tr2qs_ctx("Find in Aliases...","editor"),
             this,SLOT(slotFind()))
             ->setEnabled(bHasItems);
 
@@ -634,7 +634,7 @@ void AliasEditorWidget::slotFind()
 	bool bOk;
 
 	QString szSearch = QInputDialog::getText(this,
-		__tr2qs_ctx("Find In Aliases","editor"),
+		__tr2qs_ctx("Find in Aliases","editor"),
 		__tr2qs_ctx("Please enter the text to be searched for. The matching aliases will be highlighted.","editor"),
 		QLineEdit::Normal,
 		"",
@@ -1004,7 +1004,7 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Missing Alias Name","editor"),
 				__tr2qs_ctx("You must specify a valid name for the alias","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			continue;
 		}
@@ -1017,7 +1017,7 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Alias Name","editor"),
 				__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1030,8 +1030,8 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Alias Name","editor"),
-				__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name>?","editor"),
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1042,7 +1042,7 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Alias Name","editor"),
 				__tr2qs_ctx("Found an empty namespace in alias name","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1072,7 +1072,7 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Missing Namespace Name","editor"),
 				__tr2qs_ctx("You must specify a valid name for the namespace","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			continue;
 		}
@@ -1085,7 +1085,7 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Namespace Name","editor"),
 				__tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1098,8 +1098,8 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Namespace Name","editor"),
-				__tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name>?","editor"),
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1110,7 +1110,7 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 			QMessageBox::information(this,
 				__tr2qs_ctx("Bad Namespace Name","editor"),
 				__tr2qs_ctx("Found an empty namespace in namespace name","editor"),
-				__tr2qs_ctx("Ok, Let me try again...","editor"));
+				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;

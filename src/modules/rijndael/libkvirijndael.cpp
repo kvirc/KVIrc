@@ -45,7 +45,7 @@
 		The rijndael module
 	@body:
 		The rijndael module exports six [doc:crypt_engines]cryptographic engines[/doc] based
-		on the Advanced Encryptiong Standard algorithm called Rijndael. Rijndael was
+		on the Advanced Encryption Standard algorithm called Rijndael. Rijndael was
 		originally written by Joan Daemen and Vincent Rijmen. The original Rijndael
 		description is available at http://www.esat.kuleuven.ac.be/~rijmen/rijndael/.[br]
 		It is a private key block cipher that has been designed to replace
@@ -189,7 +189,7 @@
 	{
 		switch(errCode)
 		{
-			case RIJNDAEL_SUCCESS: setLastError(__tr2qs("Error 0: Success ?")); break;
+			case RIJNDAEL_SUCCESS: setLastError(__tr2qs("Error 0: success?")); break;
 			case RIJNDAEL_UNSUPPORTED_MODE: setLastError(__tr2qs("Unsupported crypt mode")); break;
 			case RIJNDAEL_UNSUPPORTED_DIRECTION: setLastError(__tr2qs("Unsupported direction")); break;
 			case RIJNDAEL_UNSUPPORTED_KEY_LENGTH: setLastError(__tr2qs("Unsupported key length")); break;
@@ -205,7 +205,7 @@
 	{
 		if(!m_pEncryptCipher)
 		{
-			setLastError(__tr2qs("Ops...encrypt cipher not initialized"));
+			setLastError(__tr2qs("Oops... Encryption cipher not initialized"));
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
@@ -258,7 +258,7 @@
 	{
 		if(!m_pDecryptCipher)
 		{
-			setLastError(__tr2qs("Ops...decrypt cipher not initialized"));
+			setLastError(__tr2qs("Oops... Decryption cipher not initialized"));
 			return KviCryptEngine::DecryptError;
 		}
 
@@ -616,7 +616,7 @@
 	{
 		if(*(encoded.ptr()) != '*')
 		{
-			qDebug("WARNING: Specified a CBC key but the incoming message doesn't seem to be a CBC one");
+			qDebug("WARNING: specified a CBC key but the incoming message doesn't seem to be a CBC one");
 			return doDecryptECB(encoded,plain);
 		}
 		encoded.cutLeft(1);
@@ -667,10 +667,10 @@ static bool rijndael_module_init(KviModule * m)
 	g_pEngineList->setAutoDelete(false);
 
 	QString szFormat = __tr2qs("Cryptographic engine based on the Advanced Encryption Standard (AES) algorithm called Rijndael. " \
-		"<br/>The text is first encrypted with rijndael and then converted to %1 notation. " \
+		"<br/>The text is first encrypted with Rijndael and then converted to %1 notation. " \
 		"The keys used are %2 bit long and will be padded with zeros if you provide shorter ones. " \
 		"If only one key is provided, this engine will use it for both encrypting and decrypting. " \
-		"See the rijndael module documentation for more info on the algorithm used. " \
+		"See the Rijndael module documentation for more info on the algorithm used. " \
 		"<br/>This engine works in CBC mode by default: other modes are considered INSECURE and should be avoided. " \
 		"The old pseudo-CBC mode used in KVIrc &lt; 4.2 is still available prefixing your key(s) with \"old:\"; " \
 		"if you want to use ECB mode you must prefix your key(s) with \"ecb:\".");

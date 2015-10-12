@@ -989,7 +989,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 		szNum.setNum(s.uIrcOp);
 		szBuffer += szNum;
 		szBuffer += szHtmlBoldEnd;
-		szBuffer += (s.uIrcOp == 1 ? __tr2qs("irc operator") : __tr2qs("irc operators"));
+		szBuffer += (s.uIrcOp == 1 ? __tr2qs("IRC operator") : __tr2qs("IRC operators"));
 		szBuffer += p10;
 	}
 

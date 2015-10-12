@@ -800,7 +800,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	iRow++;
 
-	l = new QLabel(__tr2qs_ctx("Proxy server:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Proxy Server:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,iRow,1);
@@ -915,7 +915,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pCapLayout->addWidget(m_pEnableCAPCheck,0,0);
 
 	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
-		"support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>","options"));
+		"support. Obviously, this server must have support for this, too. Disable this for IRC bouncers.</center>","options"));
 	m_pEnableCAPCheck->setChecked(s->enabledCAP());
 
 
@@ -926,18 +926,18 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Authenticate via SASL extension","options"),pSASLGroup);
 	pSASLLayout->addWidget(m_pEnableSASLCheck,0,0,1,2);
-	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol " \
-		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
+	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication protocol " \
+		"If you enable the proper global option in the Connection/SSL tab and fill the SASL Nickname and SASL Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
-	l = new QLabel(__tr2qs_ctx("Sasl Nickname:","options"),pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL Nickname:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,1,0);
 	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
 	m_pSaslNickEditor->setText(s->saslNick());
 	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
 	pSASLLayout->addWidget(m_pSaslNickEditor,1,1);
 
-	l = new QLabel(__tr2qs_ctx("Sasl Password:","options"),pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL Password:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,2,0);
 	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
 	m_pSaslPassEditor->setText(s->saslPass());
@@ -950,7 +950,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	iRow++;
 
 
-	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Link Filter:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pLinkFilterEditor = new QComboBox(tab);
 	m_pLinkFilterEditor->setEditable(true);

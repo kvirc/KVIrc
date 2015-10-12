@@ -155,7 +155,7 @@ bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
 		{
-			// dropping ack when no serious ssl error occured
+			// dropping ack when no serious ssl error occurred
 			switch(m_pSSL->getProtocolError(iRet))
 			{
 				case KviSSL::ZeroReturn:
