@@ -982,7 +982,7 @@ const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
 		case 'r': return __tr2qs("Need auth to join channel"); break;
 		case 'z': return __tr2qs("Reduced moderation for ops"); break;
 	}
-	return KviIrcdSevenIrcServerInfo::getChannelModeDescription(mode);
+	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviBahamutIrcServerInfo::getChannelModeDescription(char mode)
