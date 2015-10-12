@@ -153,6 +153,8 @@ public:
 	void setButtonStyle(unsigned int uStyle);
 	// allows scripts and actions to override builtin accellerators, avoiding ambiguous events
 	void freeAccelleratorKeySequence(QString & key);
+	// called by children windows when they have updated their titles.
+	void updateWindowTitle(KviWindow *wnd);
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);

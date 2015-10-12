@@ -738,10 +738,9 @@ void KviMainWindow::windowActivated(KviWindow *wnd, bool bForce)
 		if(g_pActiveWindow)
 			g_pActiveWindow->lostUserFocus();
 		g_pActiveWindow = wnd;
-		
-		QString szCaption = QString("%1 - %2").arg(wnd->windowTitle()).arg(KVI_DEFAULT_FRAME_CAPTION);
-		setWindowTitle(szCaption);
 	}
+
+	updateWindowTitle(wnd);
 
 	m_pWindowList->setActiveItem(wnd->windowListItem());
 
@@ -1106,6 +1105,14 @@ bool KviMainWindow::focusNextPrevChild(bool next)
 		}
 	}
 	return KviTalMainWindow::focusNextPrevChild(next);
+}
+
+void KviMainWindow::updateWindowTitle(KviWindow *wnd)
+{
+	if(g_pActiveWindow == wnd) {
+		QString szCaption = QString("%1 - %2").arg(wnd->windowTitle()).arg(KVI_DEFAULT_FRAME_CAPTION);
+		setWindowTitle(szCaption);
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
