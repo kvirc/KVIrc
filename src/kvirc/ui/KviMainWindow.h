@@ -201,6 +201,7 @@ protected slots:
 	void switchToPrevHighlightedWindow();
 	void switchToNextWindowInContext();
 	void switchToPrevWindowInContext();
+	void closeActiveWindow();
 
 	void accelActivated();
     void toolbarsPopupSelected(QAction *pAction);

@@ -293,6 +293,7 @@ void KviMainWindow::installAccelerators()
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_CONTEXT,this,SLOT(switchToNextWindowInContext()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT,this,SLOT(switchToPrevHighlightedWindow()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT,this,SLOT(switchToNextHighlightedWindow()),0,Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_CLOSE,this,SLOT(closeActiveWindow()),0,Qt::ApplicationShortcut));
 
 	static int accel_table[] = {
 		Qt::Key_1 + Qt::ControlModifier,       // script accels...
@@ -407,6 +408,15 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 	g_pWinPropertiesConfig->writeEntry("IsDocked",wnd->isDocked());
 
 	wnd->saveProperties(g_pWinPropertiesConfig);
+}
+
+void KviMainWindow::closeActiveWindow()
+{
+	if(!g_pActiveWindow)
+		return;
+	// Don't directly call closeWindow(g_pActiveWindow)
+	// as it won't handle last console closing.
+	g_pActiveWindow->delayedClose();
 }
 
 void KviMainWindow::closeWindow(KviWindow *wnd)

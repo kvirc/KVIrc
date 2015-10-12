@@ -142,7 +142,7 @@
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_INPUT_UNDERLINE QKeySequence::Underline			// Ctrl+U
 #define KVI_SHORTCUTS_INPUT_PASTE QKeySequence::Paste				// Ctrl+V
-//Ctrl+W: No need to implement this since it's hardcoded in Qt's MDI (it should be QKeySequence::Close)
+#define KVI_SHORTCUTS_WIN_CLOSE "Ctrl+W" // QKeySequence::Close seems to be problematic
 #define KVI_SHORTCUTS_INPUT_CUT QKeySequence::Cut				// Ctrl+X
 #define KVI_SHORTCUTS_INPUT_COMMANDLINE "Ctrl+Y"
 #define KVI_SHORTCUTS_INPUT_UNDO QKeySequence::Undo				// Ctrl+Z
