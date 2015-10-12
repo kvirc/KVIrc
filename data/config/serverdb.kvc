@@ -530,6 +530,16 @@ NServers=1
 NServers=1
 Description=The%20Biggest%20Belarus%20Network
 Encoding=CP-1251
+[IRCHighWay]
+0_Hostname=irc.irchighway.net
+0_Description=Random%20Server%20-%20Port%206660
+0_Port=6660
+1_Hostname=irc.irchighway.net
+1_Description=Random%20Server%20-%20SSL%20Port%209999
+1_Port=9999
+1_SSL=true
+NServers=2
+Description=Your%20IRC%20Superhighway
 [IRC-Hispano]
 0_Hostname=irc.irc-hispano.org
 0_Description=IRC-Hispano:%20Random%20server
