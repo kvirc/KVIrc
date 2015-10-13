@@ -923,6 +923,10 @@ const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
+		case 'B': return __tr2qs("No multitarget messages"); break;
+		case 'E': return __tr2qs("Forbid ACTIONs from non-ops"); break;
+		case 'F': return __tr2qs("Trusted filter (staff only)"); break;
+		case 'H': return __tr2qs("Help Operator and above only channel (staff only)"); break;
 		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
 		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
