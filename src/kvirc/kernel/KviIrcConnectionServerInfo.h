@@ -76,6 +76,15 @@ public:
 	virtual const char * getSoftware() { return "Unreal32"; };
 };
 
+class KVIRC_API KviUnreal40IrcServerInfo : public KviUnreal32IrcServerInfo
+{
+public:
+	KviUnreal40IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviUnreal32IrcServerInfo(pParent, version) {;};
+	virtual const QString & getChannelModeDescription(char mode);
+	virtual const char * getSoftware() { return "Unreal40"; };
+};
+
 class KVIRC_API KviHybridServerInfo : public KviBasicIrcServerInfo
 {
 	// This is a major IRCd that most modern forks are based off of

@@ -229,7 +229,9 @@ kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
 void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 {
 	if(m_pServInfo) delete m_pServInfo;
-	if(version.contains("unreal3.2",Qt::CaseInsensitive))
+	if (version.contains("unrealircd-4",Qt::CaseInsensitive))
+		m_pServInfo = new KviUnreal40IrcServerInfo(this, version);
+	else if(version.contains("unreal3.2",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnreal32IrcServerInfo(this, version);
 	else if(version.contains("unreal",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnrealIrcServerInfo(this, version);
@@ -928,6 +930,17 @@ const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
 		case 'Z': return __tr2qs("All clients are using SSL (server only)"); break;
 	}
 	return KviUnrealIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviUnreal40IrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'D': return __tr2qs("Delay users join to first message"); break;
+		case 'P': return __tr2qs("Persistent (staff only)"); break;
+		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
+	}
+	return KviUnreal32IrcServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
