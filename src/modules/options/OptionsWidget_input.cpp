@@ -146,7 +146,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Commandline in user-friendly mode by default","options"),KviOption_boolCommandlineInUserFriendlyModeByDefault);
 	addUIntSelector(0,4,0,4,__tr2qs_ctx("Expand tabulations in input using this amount of spaces:","options"),KviOption_uintSpacesToExpandTabulationInput,1,24,8,true);
 
-	KviTalGroupBox * g = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Nick completion","options"));
+	KviTalGroupBox * g = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Nick Completion","options"));
 	KviBoolSelector * b, *c;
 	b = addBoolSelector(g,__tr2qs_ctx("Use bash-like nick completion","options"),KviOption_boolBashLikeNickCompletion,!KVI_OPTION_BOOL(KviOption_boolZshLikeNickCompletion));
 	c = addBoolSelector(g,__tr2qs_ctx("Use zsh-like nick completion","options"),KviOption_boolZshLikeNickCompletion,!KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion));

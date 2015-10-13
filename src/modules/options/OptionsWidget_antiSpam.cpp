@@ -36,14 +36,14 @@ OptionsWidget_antispam::OptionsWidget_antispam(QWidget * parent)
 	setObjectName("antispam_options_widget");
 	createLayout();
 
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Anti-spam For","options"));
+	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Anti-spam for","options"));
 	m_b1 = addBoolSelector(g,__tr2qs_ctx("Private messages","options"),KviOption_boolUseAntiSpamOnPrivmsg);
 	connect(m_b1,SIGNAL(toggled(bool)),this,SLOT(reenableStuff(bool)));
 	m_b2 = addBoolSelector(g,__tr2qs_ctx("Private notices","options"),KviOption_boolUseAntiSpamOnNotice);
 	connect(m_b2,SIGNAL(toggled(bool)),this,SLOT(reenableStuff(bool)));
 
 	m_b3 = addBoolSelector(0,1,0,1,__tr2qs_ctx("Silent anti-spam (no warnings)","options"),KviOption_boolSilentAntiSpam);
-	m_sl = addStringListSelector(0,2,0,2,__tr2qs_ctx("Words considered spam:","options"),KviOption_stringlistSpamWords);
+	m_sl = addStringListSelector(0,2,0,2,__tr2qs_ctx("Words Considered Spam:","options"),KviOption_stringlistSpamWords);
 
 	reenableStuff(true);
 

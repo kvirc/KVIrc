@@ -173,13 +173,13 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #endif //!COMPILE_IPV6_SUPPORT
 
-	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick Random IP Address for Round-Robin Servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
+	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick random IP address for Round-robin servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
 	mergeTip(b,__tr2qs_ctx("<center>This option will cause the KVIrc networking stack to pick up " \
 		"a random entry when multiple IP address are retrieved for a server " \
-		"dns lookup. This is harmless and can fix some problems with caching " \
-		"dns servers that do not properly rotate the records as the authoritative " \
+		"DNS lookup. This is harmless and can fix some problems with caching " \
+		"DNS servers that do not properly rotate the records as the authoritative " \
 		"ones would do. On the other hand, you might want to disable it if " \
-		"you want to rely on the dns server to provide the best choice.</center>","options"));
+		"you want to rely on the DNS server to provide the best choice.</center>","options"));
 
 	addRowSpacer(0,5,0,5);
 }
@@ -196,20 +196,20 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 	createLayout();
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service","options"),KviOption_boolUseIdentService);
+	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable Ident service","options"),KviOption_boolUseIdentService);
 #else
-	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
+	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable Ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
 #endif
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),this,SLOT(enableIpv4InIpv6(bool)));
 
-	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Output verbosity","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Output Verbosity","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
-	addLabel(gbox,__tr2qs_ctx("Output identd messages to:","options"));
+	addLabel(gbox,__tr2qs_ctx("Output Ident service messages to:","options"));
 
 	m_pActiveRadio = new QRadioButton(__tr2qs_ctx("Active window","options"),gbox);
 	m_pConsoleRadio = new QRadioButton(__tr2qs_ctx("Console","options"),gbox);
-	m_pQuietRadio = new QRadioButton(__tr2qs_ctx("Do not show any identd messages","options"),gbox);
+	m_pQuietRadio = new QRadioButton(__tr2qs_ctx("Do not show any Ident service messages","options"),gbox);
 
 	switch(KVI_OPTION_UINT(KviOption_uintIdentdOutputMode))
 	{
@@ -226,7 +226,7 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 
 	gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 
-	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
+	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable Ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 
 	KviStringSelector * s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),
@@ -256,16 +256,16 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 	addLabel(0,4,0,4,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			__tr2qs_ctx("<p><b>Warning:</b><br>" \
-			"This is a <b>non RFC 1413 compliant</b> ident daemon that implements " \
+			"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements " \
 			"only a limited subset of the Identification Protocol specifications. If it is possible, install a " \
-			"real ident daemon.</p>","options")
+			"real Ident daemon.</p>","options")
 #else
 			__tr2qs_ctx("<p><b>Warning:</b><br>" \
-			"This is a <b>non RFC 1413 compliant</b> ident daemon that implements " \
-			"only a limited subset of the Identification Protocol specifications.<br>" \
+			"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements " \
+			"only a limited subset of the <b>Identification Protocol</b> specifications.<br>" \
 			"On UNIX, you may also need root privileges to bind to the auth port (113).<br>" \
-			"It is <b>highly recommended</b> that a <b>real</b> system-wide ident daemon be used instead, "\
-			"or none at all if ident is not required.</p>","options")
+			"It is <b>highly recommended</b> that a <b>real</b> system-wide Ident daemon be used instead, "\
+			"or none at all if Ident is not required.</p>","options")
 #endif
 	);
 

@@ -91,7 +91,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 
 	m_pMediaTestButton->setEnabled(false);
 
-	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("ID3 tags' encoding","options"),true);
+	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("ID3 tags encoding","options"),true);
 
 	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of mp3 tags.","options"));
 
@@ -180,7 +180,7 @@ void OptionsWidget_soundGeneral::soundTest()
 
 	if(!g_pApp->findAudioFile(szFileName,QString::fromUtf8("jingle.wav")))
 	{
-		qDebug("Can't find the jingle.wav file: was it shipped with your kvirc installation?");
+		qDebug("Can't find the jingle.wav file: was it shipped with your KVIrc installation?");
 		return;
 	}
 
@@ -333,7 +333,7 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 {
 	setObjectName("sound_options_widget");
 	createLayout();
-	addLabel(0,0,0,0,__tr2qs_ctx("New Query opened","options"));
+	addLabel(0,0,0,0,__tr2qs_ctx("New query opened","options"));
 	addSoundSelector(1,0,1,0,"",KviOption_stringOnNewQueryOpenedSound);
 
 	addLabel(0,1,0,1,__tr2qs_ctx("New message in inactive query","options"));
@@ -342,7 +342,7 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 	addLabel(0,2,0,2,__tr2qs_ctx("Highlighted message in inactive window","options"));
 	addSoundSelector(1,2,1,2,"",KviOption_stringOnHighlightedMessageSound);
 
-	addLabel(0,3,0,3,__tr2qs_ctx("Me have been kicked","options"));
+	addLabel(0,3,0,3,__tr2qs_ctx("On me was kicked","options"));
 	addSoundSelector(1,3,1,3,"",KviOption_stringOnMeKickedSound);
 
 	addRowSpacer(0,4,1,4);

@@ -66,10 +66,10 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 
 	m_pDatetimeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat));
 
-	KviTalGroupBox * pGroup = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Show in active window","options"));
+	KviTalGroupBox * pGroup = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Show in Active Window","options"));
 	addBoolSelector(pGroup,__tr2qs_ctx("External messages","options"),KviOption_boolExternalMessagesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("External CTCP replies","options"),KviOption_boolCtcpRepliesToActiveWindow);
-	addBoolSelector(pGroup,__tr2qs_ctx("Whois replies","options"),KviOption_boolWhoisRepliesToActiveWindow);
+	addBoolSelector(pGroup,__tr2qs_ctx("WHOIS replies","options"),KviOption_boolWhoisRepliesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("ChanServ and NickServ notices","options"),KviOption_boolServicesNoticesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("Invite messages","options"),KviOption_boolInvitesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("Server replies","options"),KviOption_boolServerRepliesToActiveWindow);

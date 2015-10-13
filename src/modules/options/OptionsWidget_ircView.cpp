@@ -159,7 +159,7 @@ OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 	s->setSuffix(__tr2qs_ctx(" msec","options"));
 	addBoolSelector(0,12,0,12,__tr2qs_ctx("Enable animated smiles","options"),KviOption_boolEnableAnimatedSmiles);
 
-	KviTalGroupBox * pGroup = addGroupBox(0,13,0,13,Qt::Horizontal,__tr2qs_ctx("Enable tooltips for:","options"));
+	KviTalGroupBox * pGroup = addGroupBox(0,13,0,13,Qt::Horizontal,__tr2qs_ctx("Enable Tooltips for","options"));
 	addBoolSelector(pGroup,__tr2qs_ctx("URL links","options"),KviOption_boolEnableUrlLinkToolTip);
 	addBoolSelector(pGroup,__tr2qs_ctx("Host links","options"),KviOption_boolEnableHostLinkToolTip);
 	addBoolSelector(pGroup,__tr2qs_ctx("Server links","options"),KviOption_boolEnableServerLinkToolTip);
