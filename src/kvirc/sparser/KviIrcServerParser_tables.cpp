@@ -485,7 +485,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 393 RPL_USERS
 	0,                                               // 394 RPL_ENDOFUSERS
 	0,                                               // 395 RPL_NOUSERS
-	0,                                               // 396 RPL_HOSTHIDDEN, RPL_YOURDISPLAYEDHOST
+	PTM(parseNumericHiddenHost),                     // 396 RPL_HOSTHIDDEN, RPL_YOURDISPLAYEDHOST
 	0,                                               // 397
 	0,                                               // 398
 	0,                                               // 399
