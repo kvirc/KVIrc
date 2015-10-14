@@ -235,6 +235,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviUnreal32IrcServerInfo(this, version);
 	else if(version.contains("unreal",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnrealIrcServerInfo(this, version);
+	else if(version.contains("charybdis",Qt::CaseInsensitive))
+		m_pServInfo = new KviCharybdisServerInfo(this, version);
 	else if(version.contains("bahamut",Qt::CaseInsensitive))
 		m_pServInfo = new KviBahamutIrcServerInfo(this, version);
 	else if(version.contains("hyperion",Qt::CaseInsensitive))
@@ -301,6 +303,108 @@ const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviQString::Empty;
 }
 
+const QString & KviHybridServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'D': return __tr2qs("D: Deaf"); break;
+		case 'F': return __tr2qs("F: Recipient for far connect/quit notices"); break;
+		case 'G': return __tr2qs("G: Only accept private messages from users in common channels"); break;
+		case 'H': return __tr2qs("H: Hide oper status"); break;
+		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
+		case 'S': return __tr2qs("S: Connected over SSL"); break;
+		case 'W': return __tr2qs("W: Connected over WEBIRC"); break;
+		case 'a': return __tr2qs("a: Server administrator"); break;
+		case 'b': return __tr2qs("b: Recipient for bot/join flood warnings"); break;
+		case 'e': return __tr2qs("e: Recipient for server introduction and split notices"); break;
+		case 'f': return __tr2qs("f: Recipient for full I-Line notices"); break;
+		case 'g': return __tr2qs("g: Only allow accepted clients to message you"); break;
+		case 'j': return __tr2qs("j: Recipient for rejected client notices"); break;
+		case 'l': return __tr2qs("l: Recipient for LOCOPS"); break;
+		case 'p': return __tr2qs("p: Channels hidden from WHOIS"); break;
+		case 'q': return __tr2qs("q: Idle time hidden from WHOIS"); break;
+		case 'r': return __tr2qs("r: Registered"); break;
+		case 'u': return __tr2qs("u: Recipient for unauthorized client notices"); break;
+		case 'x': return __tr2qs("x: Host hidden"); break;
+		case 'y': return __tr2qs("y: Can see stats/links/admin requests"); break;
+	}
+	return KviBasicIrcServerInfo::getUserModeDescription(mode);
+}
+
+const QString & KviIrcdRatboxIrcServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'C': return __tr2qs("C: Prevent CTCPs"); break;
+		case 'D': return __tr2qs("D: Deaf"); break;
+		case 'Z': return __tr2qs("Z: Recipient for oper spy notices"); break;
+		case 'a': return __tr2qs("a: Server administrator"); break;
+		case 'b': return __tr2qs("b: Recipient for bot/join flood warnings"); break;
+		case 'f': return __tr2qs("f: Recipient for full I-Line notices"); break;
+		case 'g': return __tr2qs("g: Only allow accepted clients to message you"); break;
+		case 'l': return __tr2qs("l: Recipient for LOCOPS"); break;
+		case 'r': return __tr2qs("r: Recipient for rejected client notices"); break;
+		case 'u': return __tr2qs("u: Recipient for unauthorised client notices"); break;
+		case 'x': return __tr2qs("x: Recipient for remote server connection and split notices"); break;
+		case 'z': return __tr2qs("z: Recipient for OPERWALL messages"); break;
+	}
+	return KviHybridServerInfo::getUserModeDescription(mode);
+}
+
+const QString & KviCharybdisServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'Q': return __tr2qs("Q: Prevents you from being affected by channel forwarding"); break;
+		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
+		case 'S': return __tr2qs("S: Network service"); break;
+		case 'Z': return __tr2qs("Z: Connected over SSL"); break;
+		case 'h': return __tr2qs("h: Host hidden"); break;
+		case 'p': return __tr2qs("p: Enable oper overrides"); break;
+		case 'x': return __tr2qs("x: Host hidden"); break;
+	}
+	return KviIrcdRatboxIrcServerInfo::getUserModeDescription(mode);
+}
+
+const QString & KviIrcdSevenIrcServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'O': return __tr2qs("O: IRC Help Operator"); break;
+		case 'h': return __tr2qs("h: Marks you as a helper in /stats p"); break;
+	}
+	return KviCharybdisServerInfo::getUserModeDescription(mode);
+}
+
+const QString & KviPlexusIrcServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'C': return __tr2qs("C: Prevent CTCPs"); break;
+		case 'N': return __tr2qs("N: Network administrator"); break;
+		case 'U': return __tr2qs("U: Network service"); break;
+		case 'X': return __tr2qs("X: Recipient for new server introduction and split messages"); break;
+		case 'w': return __tr2qs("w: Recipient for server WALLOPS"); break;
+		case 'z': return __tr2qs("z: Recipient for oper WALLOPS"); break;
+		case 'y': return __tr2qs("y: Recipient for notices on WHOIS"); break;
+		case 'a': return __tr2qs("a: Server administrator"); break;
+		case 'q': return __tr2qs("q: Services administrator, can use SQUIT"); break;
+	}
+	return KviHybridServerInfo::getUserModeDescription(mode);
+}
+
+const QString & KviOftcIrcServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'C': return __tr2qs("C: Recipient for far connect/quit notices"); break;
+		case 'P': return __tr2qs("P: Network service"); break;
+		case 'w': return __tr2qs("w: Recipient for server WALLOPS"); break;
+		case 'z': return __tr2qs("z: Recipient for oper WALLOPS"); break;
+	}
+	return KviHybridServerInfo::getUserModeDescription(mode);
+}
+
 const QString & KviIrcuIrcServerInfo::getUserModeDescription(QChar mode)
 {
 	switch(mode.unicode())
@@ -343,106 +447,6 @@ const QString & KviDarenetIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviIrcuIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviHybridServerInfo::getUserModeDescription(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'D': return __tr2qs("D: Deaf"); break;
-		case 'F': return __tr2qs("F: Recipient for far connect/quit notices"); break;
-		case 'G': return __tr2qs("G: Only accept private messages from users in common channels"); break;
-		case 'H': return __tr2qs("H: Hide oper status"); break;
-		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
-		case 'S': return __tr2qs("S: Connected over SSL"); break;
-		case 'W': return __tr2qs("W: Connected over WEBIRC"); break;
-		case 'a': return __tr2qs("a: Server administrator"); break;
-		case 'b': return __tr2qs("b: Recipient for bot/join flood warnings"); break;
-		case 'e': return __tr2qs("e: Recipient for server introduction and split notices"); break;
-		case 'f': return __tr2qs("f: Recipient for full I-Line notices"); break;
-		case 'g': return __tr2qs("g: Only allow accepted clients to message you"); break;
-		case 'j': return __tr2qs("j: Recipient for rejected client notices"); break;
-		case 'l': return __tr2qs("l: Recipient for LOCOPS"); break;
-		case 'p': return __tr2qs("p: Channels hidden from WHOIS"); break;
-		case 'q': return __tr2qs("q: Idle time hidden from WHOIS"); break;
-		case 'r': return __tr2qs("r: Registered"); break;
-		case 'u': return __tr2qs("u: Recipient for unauthorized client notices"); break;
-		case 'x': return __tr2qs("x: Host hidden"); break;
-		case 'y': return __tr2qs("y: Can see stats/links/admin requests"); break;
-	}
-	return KviBasicIrcServerInfo::getUserModeDescription(mode);
-}
-
-const QString & KviIrcdSevenIrcServerInfo::getUserModeDescription(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'O': return __tr2qs("O: IRC Help Operator"); break;
-		case 'Q': return __tr2qs("Q: Prevents you from being affected by channel forwarding"); break;
-		case 'S': return __tr2qs("S: Network service"); break;
-		case 'Z': return __tr2qs("Z: Connected over SSL"); break;
-		case 'h': return __tr2qs("h: Marks you as a helper in /stats p"); break;
-		case 'p': return __tr2qs("p: Enable oper overrides"); break;
-	}
-	return KviHybridServerInfo::getUserModeDescription(mode);
-}
-
-const QString & KviPlexusIrcServerInfo::getUserModeDescription(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'C': return __tr2qs("C: Prevent CTCPs"); break;
-		case 'N': return __tr2qs("N: Network administrator"); break;
-		case 'U': return __tr2qs("U: Network service"); break;
-		case 'X': return __tr2qs("X: Recipient for new server introduction and split messages"); break;
-		case 'w': return __tr2qs("w: Recipient for server WALLOPS"); break;
-		case 'z': return __tr2qs("z: Recipient for oper WALLOPS"); break;
-		case 'y': return __tr2qs("y: Recipient for notices on WHOIS"); break;
-		case 'a': return __tr2qs("a: Server administrator"); break;
-		case 'q': return __tr2qs("q: Services administrator, can use SQUIT"); break;
-	}
-	return KviHybridServerInfo::getUserModeDescription(mode);
-}
-
-const QString & KviOftcIrcServerInfo::getUserModeDescription(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'C': return __tr2qs("C: Recipient for far connect/quit notices"); break;
-		case 'P': return __tr2qs("P: Network service"); break;
-		case 'w': return __tr2qs("w: Recipient for server WALLOPS"); break;
-		case 'z': return __tr2qs("z: Recipient for oper WALLOPS"); break;
-	}
-	return KviHybridServerInfo::getUserModeDescription(mode);
-}
-
-const QString & KviBahamutIrcServerInfo::getUserModeDescription(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'A': return __tr2qs("A: Server administrator"); break;
-		case 'C': return __tr2qs("C: Only accept private messages from users in common channels"); break;
-		case 'F': return __tr2qs("F: Can bypass the IRCd's recvq throttling"); break;
-		case 'I': return __tr2qs("I: Hide oper status"); break;
-		case 'K': return __tr2qs("K: Can see U:lined kill messages"); break;
-		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
-		case 'S': return __tr2qs("S: Connected over SSL"); break;
-		case 'X': return __tr2qs("X: Squelch without notice"); break;
-		case 'a': return __tr2qs("a: Services administrator"); break;
-		case 'b': return __tr2qs("b: Can see CHATOPS notices"); break;
-		case 'e': return __tr2qs("e: Recipient for blocked DCC notices"); break;
-		case 'f': return __tr2qs("f: Recipient for flood warnings"); break;
-		case 'g': return __tr2qs("g: Recipient for GLOBOPS notices"); break;
-		case 'h': return __tr2qs("h: Available for help (helpop)"); break;
-		case 'j': return __tr2qs("j: Recipient for rejected client notices"); break;
-		case 'm': return __tr2qs("m: Recipient for spambot notices"); break;
-		case 'n': return __tr2qs("n: Recipient for routing notices"); break;
-		case 'r': return __tr2qs("r: Registered"); break;
-		case 's': return __tr2qs("s: Recipient for server KILL messages"); break;
-		case 'x': return __tr2qs("x: Squelch with notice"); break;
-		case 'y': return __tr2qs("y: Can see certain information requests (e.g. /stats)"); break;
-	}
-	return KviBasicIrcServerInfo::getUserModeDescription(mode);
-}
-
 const QString & KviUnreal32IrcServerInfo::getUserModeDescription(QChar mode)
 {
 	switch(mode.unicode())
@@ -475,29 +479,6 @@ const QString & KviUnreal32IrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'c': return __tr2qs("c: Prevent CTCPs"); break;
-		case 'd': return __tr2qs("d: Deaf"); break;
-		case 'g': return __tr2qs("g: Server side ignore"); break;
-		case 'h': return __tr2qs("h: Available for help (helpop)"); break;
-		case 'k': return __tr2qs("k: Network service"); break;
-		case 'r': return __tr2qs("r: Registered"); break;
-		case 'x': return __tr2qs("x: Host hidden"); break;
-		case 'B': return __tr2qs("B: Marks as being a bot"); break;
-		case 'G': return __tr2qs("G: Censor bad words"); break;
-		case 'H': return __tr2qs("H: Hide oper status"); break;
-		case 'I': return __tr2qs("I: Channels hidden from WHOIS"); break;
-		case 'Q': return __tr2qs("Q: Marks an IRC operator as invisible from user lists"); break;
-		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
-		case 'S': return __tr2qs("S: Strip colors out of private messages"); break;
-		case 'W': return __tr2qs("W: Recipient for notices on WHOIS"); break;
-	}
-	return KviBasicIrcServerInfo::getUserModeDescription(mode);
-}
-
 const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode)
 {
 	switch(mode.unicode())
@@ -523,22 +504,31 @@ const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-const QString & KviIrcdRatboxIrcServerInfo::getUserModeDescription(QChar mode)
+const QString & KviBahamutIrcServerInfo::getUserModeDescription(QChar mode)
 {
 	switch(mode.unicode())
 	{
-		case 'C': return __tr2qs("C: Prevent CTCPs"); break;
-		case 'D': return __tr2qs("D: Deaf"); break;
-		case 'Z': return __tr2qs("Z: Recipient for oper spy notices"); break;
-		case 'a': return __tr2qs("a: Server administrator"); break;
-		case 'b': return __tr2qs("b: Recipient for bot/join flood warnings"); break;
-		case 'f': return __tr2qs("f: Recipient for full I-Line notices"); break;
-		case 'g': return __tr2qs("g: Only allow accepted clients to message you"); break;
-		case 'l': return __tr2qs("l: Recipient for LOCOPS"); break;
-		case 'r': return __tr2qs("r: Recipient for rejected client notices"); break;
-		case 'u': return __tr2qs("u: Recipient for unauthorised client notices"); break;
-		case 'x': return __tr2qs("x: Recipient for remote server connection and split notices"); break;
-		case 'z': return __tr2qs("z: Recipient for OPERWALL messages"); break;
+		case 'A': return __tr2qs("A: Server administrator"); break;
+		case 'C': return __tr2qs("C: Only accept private messages from users in common channels"); break;
+		case 'F': return __tr2qs("F: Can bypass the IRCd's recvq throttling"); break;
+		case 'I': return __tr2qs("I: Hide oper status"); break;
+		case 'K': return __tr2qs("K: Can see U:lined kill messages"); break;
+		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
+		case 'S': return __tr2qs("S: Connected over SSL"); break;
+		case 'X': return __tr2qs("X: Squelch without notice"); break;
+		case 'a': return __tr2qs("a: Services administrator"); break;
+		case 'b': return __tr2qs("b: Can see CHATOPS notices"); break;
+		case 'e': return __tr2qs("e: Recipient for blocked DCC notices"); break;
+		case 'f': return __tr2qs("f: Recipient for flood warnings"); break;
+		case 'g': return __tr2qs("g: Recipient for GLOBOPS notices"); break;
+		case 'h': return __tr2qs("h: Available for help (helpop)"); break;
+		case 'j': return __tr2qs("j: Recipient for rejected client notices"); break;
+		case 'm': return __tr2qs("m: Recipient for spambot notices"); break;
+		case 'n': return __tr2qs("n: Recipient for routing notices"); break;
+		case 'r': return __tr2qs("r: Registered"); break;
+		case 's': return __tr2qs("s: Recipient for server KILL messages"); break;
+		case 'x': return __tr2qs("x: Squelch with notice"); break;
+		case 'y': return __tr2qs("y: Can see certain information requests (e.g. /stats)"); break;
 	}
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
@@ -600,6 +590,29 @@ const QString & KviHyperionIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
+const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'c': return __tr2qs("c: Prevent CTCPs"); break;
+		case 'd': return __tr2qs("d: Deaf"); break;
+		case 'g': return __tr2qs("g: Server side ignore"); break;
+		case 'h': return __tr2qs("h: Available for help (helpop)"); break;
+		case 'k': return __tr2qs("k: Network service"); break;
+		case 'r': return __tr2qs("r: Registered"); break;
+		case 'x': return __tr2qs("x: Host hidden"); break;
+		case 'B': return __tr2qs("B: Marks as being a bot"); break;
+		case 'G': return __tr2qs("G: Censor bad words"); break;
+		case 'H': return __tr2qs("H: Hide oper status"); break;
+		case 'I': return __tr2qs("I: Channels hidden from WHOIS"); break;
+		case 'Q': return __tr2qs("Q: Marks an IRC operator as invisible from user lists"); break;
+		case 'R': return __tr2qs("R: Only receive private messages from registered nicks"); break;
+		case 'S': return __tr2qs("S: Strip colors out of private messages"); break;
+		case 'W': return __tr2qs("W: Recipient for notices on WHOIS"); break;
+	}
+	return KviBasicIrcServerInfo::getUserModeDescription(mode);
+}
+
 ////////////////
 // UMODE Requirements
 ////////////////
@@ -645,6 +658,143 @@ QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode)
 	return 0;
 }
 
+QChar KviHybridServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'a': return 'a';
+
+		case 'S': case 'W': case 'r': case 'x':
+		return 1;
+
+		case 'F': case 'H': case 'c': case 'd':
+		case 'e': case 'f': case 'j': case 'k':
+		case 'l': case 'n': case 'o': case 's':
+		case 'u': case 'y': return 'o';
+	}
+	return 0;
+}
+
+QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'a': return 'a';
+
+		case 'Z': case 'b': case 'c': case 'd':
+		case 'f': case 'k': case 'l': case 'n':
+		case 'o': case 'r': case 'u': case 'x':
+		case 'y': case 'z': return 'o';
+	}
+	return 0;
+}
+
+QChar KviCharybdisServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'a': return 'a';
+
+		case 'S': case 'Z': return 1;
+
+		case 'l': case 'o': case 'p': case 's':
+		case 'z': return 'o';
+	}
+	return 0;
+}
+
+QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'O': return 'O'; case 'a': return 'a';
+
+		case 'S': case 'Z': return 1;
+
+		case 'h': case 'l': case 'o': case 'p':
+		case 'z': return 'o';
+	}
+	return 0;
+}
+
+QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'N': return 'N'; case 'a': return 'a';
+		case 'q': return 'q';
+
+		case 'S': case 'U': case 'W': case 'r':
+		return 1;
+
+		case 'F': case 'X': case 'b': case 'c':
+		case 'd': case 'f': case 'j': case 'k':
+		case 'l': case 'n': case 'o': case 'u':
+		case 'y': case 'z': return 'o';
+	}
+	return 0;
+}
+
+QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'a': return 'a';
+
+		case 'P': case 'S': return 1;
+
+		case 'C': case 'b': case 'c': case 'd':
+		case 'f': case 'k': case 'l': case 'n':
+		case 'o': case 'r': case 'u': case 'y':
+		case 'x': case 'z': return 'o';
+	}
+	return 0;
+}
+
+QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'O': return 'O';
+
+		case 'k': case 'r': case 'x': return 1;
+
+		case 'I': case 'g': case 'n': case 'o':
+		return 'o';
+	}
+	return 0;
+}
+
+QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'O': return 'O';
+
+		case 'k': case 'r': case 'x': return 1;
+
+		case 'I': case 'P': case 'X': case 'g':
+		case 'n': case 'o': return 'o';
+	}
+	return 0;
+}
+
+QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'N': return 'N'; case 'O': return 'O';
+		case 'a': return 'a';
+
+		case 'k': case 'x': return 1;
+
+		case 'F': case 'H': case 'I': case 'P':
+		case 'X': case 'g': case 'n': case 'o':
+		case 'z': return 'o';
+	}
+	return 0;
+}
+
 QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 {
 	switch(mode.unicode())
@@ -666,23 +816,6 @@ QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 		// 'q': Only U:Lines can kick you (Services Admins Only)
 		// Requires 'a': Services Admin
 		case 'q': return 'a';
-	}
-	return 0;
-}
-
-QChar KviHybridServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'a': return 'a';
-
-		case 'S': case 'W': case 'r': case 'x':
-		return 1;
-
-		case 'F': case 'H': case 'c': case 'd':
-		case 'e': case 'f': case 'j': case 'k':
-		case 'l': case 'n': case 'o': case 's':
-		case 'u': case 'y': return 'o';
 	}
 	return 0;
 }
@@ -745,34 +878,6 @@ QChar KviHyperionIrcServerInfo::getUserModeRequirement(QChar mode)
 	return 0;
 }
 
-QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'O': return 'O'; case 'a': return 'a';
-
-		case 'S': case 'Z': return 1;
-
-		case 'h': case 'l': case 'o': case 'p':
-		case 'z': return 'o';
-	}
-	return 0;
-}
-
-QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'a': return 'a';
-
-		case 'Z': case 'b': case 'c': case 'd':
-		case 'f': case 'k': case 'l': case 'n':
-		case 'o': case 'r': case 'u': case 'x':
-		case 'y': case 'z': return 'o';
-	}
-	return 0;
-}
-
 QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode)
 {
 	switch(mode.unicode())
@@ -781,84 +886,6 @@ QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode)
 
 		case 'H': case 'Q': case 'W': case 'h':
 		case 'o': return 'o';
-	}
-	return 0;
-}
-
-QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'O': return 'O';
-
-		case 'k': case 'r': case 'x': return 1;
-
-		case 'I': case 'g': case 'n': case 'o':
-		return 'o';
-	}
-	return 0;
-}
-
-QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'O': return 'O';
-
-		case 'k': case 'r': case 'x': return 1;
-
-		case 'I': case 'P': case 'X': case 'g':
-		case 'n': case 'o': return 'o';
-	}
-	return 0;
-}
-
-QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'N': return 'N'; case 'a': return 'a';
-		case 'q': return 'q';
-
-		case 'S': case 'U': case 'W': case 'r':
-		return 1;
-
-		case 'F': case 'X': case 'b': case 'c':
-		case 'd': case 'f': case 'j': case 'k':
-		case 'l': case 'n': case 'o': case 'u':
-		case 'y': case 'z': return 'o';
-	}
-	return 0;
-}
-
-QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'a': return 'a';
-
-		case 'P': case 'S': return 1;
-
-		case 'C': case 'b': case 'c': case 'd':
-		case 'f': case 'k': case 'l': case 'n':
-		case 'o': case 'r': case 'u': case 'y':
-		case 'x': case 'z': return 'o';
-	}
-	return 0;
-}
-
-QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode)
-{
-	switch(mode.unicode())
-	{
-		case 'N': return 'N'; case 'O': return 'O';
-		case 'a': return 'a';
-
-		case 'k': case 'x': return 1;
-
-		case 'F': case 'H': case 'I': case 'P':
-		case 'X': case 'g': case 'n': case 'o':
-		case 'z': return 'o';
 	}
 	return 0;
 }
@@ -890,6 +917,134 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 		case 'v': return __tr2qs("Voiced users"); break;
 	}
 	return KviQString::Empty;
+}
+
+const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'O': return __tr2qs("IRC-Op only channel"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Need SSL connection to join"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+		case 'h': return __tr2qs("Half-operators"); break;
+		case 'r': return __tr2qs("Registered"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		// not present of efnet, but supported by ratbox
+		case 'r': return __tr2qs("Only registered nicks can join"); break;
+	}
+	return KviHybridServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'A': return __tr2qs("Server administrator only channel"); break;
+		case 'F': return __tr2qs("Free target"); break;
+		case 'L': return __tr2qs("Large ban/exempt/invex lists (staff only)"); break;
+		case 'P': return __tr2qs("Persistent (staff only)"); break;
+		case 'Q': return __tr2qs("Block forwarded users"); break;
+		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'f': return __tr2qs("Forward to another channel on uninvited"); break;
+		case 'g': return __tr2qs("Allow anybody to invite"); break;
+		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
+		case 'r': return __tr2qs("Need auth to join channel"); break;
+		case 'z': return __tr2qs("Reduced moderation for ops"); break;
+	}
+	return KviIrcdRatboxIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'F': return __tr2qs("Enable forwarding"); break;
+		case 'M': return __tr2qs("Disallow kicking opers (staff only)"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Strip colors"); break;
+		case 'p': return __tr2qs("Paranoid (disable KNOCK)"); break;
+		case 'q': return __tr2qs("Quiet Ban Editor"); break;
+	}
+	return KviCharybdisServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'B': return __tr2qs("Bandwidth Saver"); break;
+		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'a': return __tr2qs("Protected/administrator nicks"); break;
+		case 'p': return __tr2qs("Paranoia"); break;
+		case 'q': return __tr2qs("Channel owners"); break;
+		case 'z': return __tr2qs("Persistent (staff only)"); break;
+	}
+	return KviHybridServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'q': return __tr2qs("Quiet"); break;
+		case 'z': return __tr2qs("Reduced moderation for ops"); break;
+	}
+	return KviHybridServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'A': return __tr2qs("Admin password"); break;
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
+		case 'D': return __tr2qs("Delay users join to first message"); break;
+		case 'R': return __tr2qs("Registered (staff only)"); break;
+		case 'U': return __tr2qs("User password"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
+		case 'r': return __tr2qs("Only registered nicks can join"); break;
+		case 'z': return __tr2qs("Persistent (staff only)"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'T': return __tr2qs("No multitarget messages"); break;
+		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
+	}
+	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'N': return __tr2qs("Block channel notices"); break;
+		case 'S': return __tr2qs("Strip color codes"); break;
+		case 'T': return __tr2qs("No multi-targets"); break;
+		case 'Z': return __tr2qs("Need SSL connection to join"); break;
+		case 'h': return __tr2qs("Half-operators"); break;
+		case 'q': return __tr2qs("Quiet"); break;
+		case 'u': return __tr2qs("Squelch parts/quits"); break;
+	}
+	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
@@ -947,22 +1102,6 @@ const QString & KviUnreal40IrcServerInfo::getChannelModeDescription(char mode)
 	return KviUnreal32IrcServerInfo::getChannelModeDescription(mode);
 }
 
-const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
-		case 'M': return __tr2qs("Moderate non auth users"); break;
-		case 'O': return __tr2qs("IRC-Op only channel"); break;
-		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Need SSL connection to join"); break;
-		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
-		case 'h': return __tr2qs("Half-operators"); break;
-		case 'r': return __tr2qs("Registered"); break;
-	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
 const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
@@ -977,29 +1116,6 @@ const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
 		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'F': return __tr2qs("Enable forwarding"); break;
-		case 'L': return __tr2qs("Large ban/exempt/invex lists (staff only)"); break;
-		case 'M': return __tr2qs("Disallow kicking opers (staff only)"); break;
-		case 'P': return __tr2qs("Persistent (staff only)"); break;
-		case 'Q': return __tr2qs("Block forwarded users"); break;
-		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Strip colors"); break;
-		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'f': return __tr2qs("Forward to another channel on uninvited"); break;
-		case 'g': return __tr2qs("Allow anybody to invite"); break;
-		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
-		case 'p': return __tr2qs("Paranoid (disable KNOCK)"); break;
-		case 'q': return __tr2qs("Quiet Ban Editor"); break;
-		case 'r': return __tr2qs("Need auth to join channel"); break;
-		case 'z': return __tr2qs("Reduced moderation for ops"); break;
-	}
-	return KviHybridServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviBahamutIrcServerInfo::getChannelModeDescription(char mode)
@@ -1067,84 +1183,4 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		// not present of efnet, but supported by ratbox
-		case 'r': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Need SSL connection to join"); break;
-	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'A': return __tr2qs("Admin password"); break;
-		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
-		case 'D': return __tr2qs("Delay users join to first message"); break;
-		case 'R': return __tr2qs("Registered (staff only)"); break;
-		case 'U': return __tr2qs("User password"); break;
-		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
-		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
-		case 'r': return __tr2qs("Only registered nicks can join"); break;
-		case 'z': return __tr2qs("Persistent (staff only)"); break;
-	}
-	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'M': return __tr2qs("Moderate non auth users"); break;
-		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'T': return __tr2qs("No multitarget messages"); break;
-		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
-	}
-	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'B': return __tr2qs("Bandwidth Saver"); break;
-		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'a': return __tr2qs("Protected/administrator nicks"); break;
-		case 'p': return __tr2qs("Paranoia"); break;
-		case 'q': return __tr2qs("Channel owners"); break;
-		case 'z': return __tr2qs("Persistent (staff only)"); break;
-	}
-	return KviHybridServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviOftcIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'q': return __tr2qs("Quiet"); break;
-		case 'z': return __tr2qs("Reduced moderation for ops"); break;
-	}
-	return KviHybridServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviDarenetIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'M': return __tr2qs("Moderate non auth users"); break;
-		case 'N': return __tr2qs("Block channel notices"); break;
-		case 'S': return __tr2qs("Strip color codes"); break;
-		case 'T': return __tr2qs("No multi-targets"); break;
-		case 'Z': return __tr2qs("Need SSL connection to join"); break;
-		case 'h': return __tr2qs("Half-operators"); break;
-		case 'q': return __tr2qs("Quiet"); break;
-		case 'u': return __tr2qs("Squelch parts/quits"); break;
-	}
-	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
 }
