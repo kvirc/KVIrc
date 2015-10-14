@@ -93,7 +93,7 @@ public:
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Charybdis"; };
-	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual bool getNeedsOperToSetS() { return true; };
 };
 
 class KVIRC_API KviIrcdSevenIrcServerInfo : public KviCharybdisServerInfo
@@ -107,8 +107,6 @@ public:
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Ircd-seven"; };
-	virtual bool getNeedsOpToListModeseI() { return true; };
-	virtual bool getNeedsOperToSetS() { return true; };
 };
 
 class KVIRC_API KviPlexusIrcServerInfo : public KviHybridServerInfo
