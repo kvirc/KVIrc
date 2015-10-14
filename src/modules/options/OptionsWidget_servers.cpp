@@ -1012,6 +1012,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	l = new QLabel(__tr2qs_ctx("NickServ settings are available only for the whole IRC network, not for specific servers.\n" \
 		"To open network settings choose a network (with a globe) in list of networks and servers and click Advanced.","options"),tab);
 	gl->addWidget(l,iRow,0);
+	gl->setRowStretch(1,1);
 
 	tw->addTab(tab,__tr2qs_ctx("NickServ","options"));
 
