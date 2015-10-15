@@ -1003,7 +1003,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 		}
 
 		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(isSet ? KviIconManager::ChanMode : KviIconManager::UnsetMode)),
-		                     !modeDesc.isEmpty() ? modeDesc : QString("%1: Mode").arg(ccc));
+		                     !modeDesc.isEmpty() ? modeDesc : QString("%1: Unknown").arg(ccc));
 		pAction->setEnabled(canCheck);
 		pAction->setCheckable(true);
 		pAction->setChecked(isSet);

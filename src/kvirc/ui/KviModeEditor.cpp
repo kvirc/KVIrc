@@ -80,6 +80,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	QLineEdit * pLineEdit = 0;
 	int iRow = 1;
 	QString szTmp;
+	QString cDesc;
 	char cMode = 0;
 
 	//NOTE: this is a fallback is for some reason we don't have a serverInfo() struct available fot this connection
@@ -160,7 +161,9 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		szTmp = QString("%1: %2").arg(cMode).arg(*(getModeDescription(cMode)));
+		cDesc = *(getModeDescription(cMode));
+
+		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Uknown");
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
@@ -185,7 +188,9 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		szTmp = QString("%1: %2").arg(cMode).arg(*(getModeDescription(cMode)));
+		cDesc = *(getModeDescription(cMode));
+
+		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Uknown");
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		iRow++;
