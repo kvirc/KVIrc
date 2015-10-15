@@ -809,9 +809,9 @@ QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 		return 1;
 
 		// Modes requiring oper (o)
-		case 'F': case 'H': case 'W': case 'f':
-		case 'g': case 'h': case 'o': case 's':
-		case 'v': case 'w': return 'o';
+		case 'F': case 'H': case 'I': case 'W':
+		case 'f': case 'g': case 'h': case 'o':
+		case 's': case 'v': case 'w': return 'o';
 
 		// 'q': Only U:Lines can kick you (Services Admins Only)
 		// Requires 'a': Services Admin
