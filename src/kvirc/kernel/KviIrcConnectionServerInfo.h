@@ -66,7 +66,6 @@ public:
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Hybrid"; };
-	virtual bool getNeedsOpToListModeseI() { return false; };
 };
 
 class KVIRC_API KviIrcdRatboxIrcServerInfo : public KviHybridServerInfo
@@ -91,7 +90,6 @@ public:
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
-	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Charybdis"; };
 	virtual bool getNeedsOperToSetS() { return true; };
 };
