@@ -990,6 +990,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 		QString modeDesc = c->connection()->serverInfo()->getUserModeDescription(ccc);
 		QChar requiredMode = c->connection()->serverInfo()->getUserModeRequirement(ccc);
 		bool canCheck = true;
+		bool isSet = c->connection()->userInfo()->hasUserMode(ccc.toLatin1());
 
 		// See if the usermode is even settable by the user
 		if(requiredMode != 0)
@@ -1001,11 +1002,11 @@ void KviChangeUserModeAction::popupAboutToShow()
 				canCheck = c->connection()->userInfo()->hasUserMode(requiredMode.toLatin1());
 		}
 
-		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Mode)),
+		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(isSet ? KviIconManager::ChanMode : KviIconManager::UnsetMode)),
 		                     !modeDesc.isEmpty() ? modeDesc : QString("%1: Mode").arg(ccc));
 		pAction->setEnabled(canCheck);
 		pAction->setCheckable(true);
-		pAction->setChecked(c->connection()->userInfo()->hasUserMode(ccc.toLatin1()));
+		pAction->setChecked(isSet);
 	}
 }
 

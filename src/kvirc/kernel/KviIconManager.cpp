@@ -198,7 +198,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"links",               // 112
 	"regusers",            // 113
 	"dockwidget",          // 114
-	"cascadewindows",      // 115
+	"unsetmode",           // 115
 	"maxvertical",         // 116
 	"maxhorizontal",       // 117
 	"tilewindows",         // 118
@@ -729,7 +729,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 112: return KviIconManager::Links;                break;
 		case 113: return KviIconManager::RegUsers;             break;
 		case 114: return KviIconManager::TrayIcon;             break;
-		case 115: return KviIconManager::CascadeWindows;       break;
+		case 115: return KviIconManager::UnsetMode;            break;
 		case 116: return KviIconManager::MaxVertical;          break;
 		case 117: return KviIconManager::MaxHorizontal;        break;
 		case 118: return KviIconManager::TileWindows;          break;

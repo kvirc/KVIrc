@@ -280,7 +280,7 @@ public:
 		Links                = 112,
 		RegUsers             = 113,
 		TrayIcon             = 114,
-		CascadeWindows       = 115,
+		UnsetMode            = 115,
 		MaxVertical          = 116,
 		MaxHorizontal        = 117,
 		TileWindows          = 118,
