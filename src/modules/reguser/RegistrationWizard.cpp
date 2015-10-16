@@ -88,12 +88,16 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 	m_pLabel1->setText(__tr2qs_ctx("<p>Welcome to the user registration wizard.<br>This process allows you to add an IRC user to the database and set properties for that user. KVIrc will be (hopefully) able to recognize the user, add him to the notify list, and display the associated avatar.<br><br>First of all, you must insert an <b>entry name or real name</b> for the user you're going to register. The name will be used to identify the database entry and has no specific requirements, it can be a given name, nickname, or just some text to remind you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n</p>","register"));
 	m_pLabel1->setWordWrap(true);
 
-	m_pPage1Layout->addWidget(m_pLabel1,0,0);
+	m_pPage1Layout->addWidget(m_pLabel1,0,0,1,2);
 
 	m_pEditRealName = new QLineEdit(m_pPage1);
 	//m_pEditRealName->setAlignment(int(QLineEdit::AlignHCenter));
 
-	m_pPage1Layout->addWidget(m_pEditRealName,1,0);
+	m_pPage1Layout->addWidget(m_pEditRealName,3,1);
+
+	m_pEntryNameLabel = new QLabel(m_pPage1);
+	m_pEntryNameLabel->setText(__tr2qs_ctx("Entry name:","register"));
+	m_pPage1Layout->addWidget(m_pEntryNameLabel,3,0);
 	m_pPage1Layout->setRowStretch(1,1);
 
 	addPage( m_pPage1,__tr2qs_ctx("Step 1: Entry Name","register"));
@@ -105,7 +109,7 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 	// PAGE 2
 
 	m_pPage2 = new QWidget(this);
-	m_pPage2Layout = new QGridLayout( m_pPage2 );
+	m_pPage2Layout = new QGridLayout(m_pPage2);
 	m_pPage2Layout->setSpacing(4);
 	m_pPage2Layout->setMargin(8);
 
