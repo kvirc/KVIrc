@@ -2259,6 +2259,22 @@ void KviIrcServerParser::parseNumericTime(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericHiddenHost(KviIrcMessage * msg)
+{
+	//RPL_HOSTHIDDEN       396
+	//<prefix> 396 target <[user@]host> :<message>
+	QString pref      = msg->connection()->decodeText(msg->safePrefix());
+	QString szHost    = msg->connection()->decodeText(msg->safeParam(1));
+	QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_SERVERNOTICE,msg->serverTime(),"[\r!s\r%Q\r]: %Q %Q",&pref,&szHost,&szMsgText);
+	}
+}
+
 void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 {
 	//ERR_NOSUCHSERVER     402

@@ -204,6 +204,7 @@ private:
 	void parseNumericNoSuchChannel(KviIrcMessage *msg);
 	void parseNumericNoSuchServer(KviIrcMessage *msg);
 	void parseNumericTime(KviIrcMessage *msg);
+	void parseNumericHiddenHost(KviIrcMessage *msg);
 	void parseNumericInfoEnd(KviIrcMessage *msg);
 	void parseNumericInfoStart(KviIrcMessage *msg);
 	void parseNumericInfo(KviIrcMessage *msg);
