@@ -94,7 +94,8 @@ typedef void (KviIrcServerParser::*ctcpParseProc)(KviCtcpMessage *);
 typedef struct _KviCtcpMessageParseStruct
 {
 	const char       * msgName;
-	ctcpParseProc      proc;
+	ctcpParseProc      req;
+	ctcpParseProc      rpl;
 	int                iFlags;
 } KviCtcpMessageParseStruct;
 
@@ -123,11 +124,10 @@ public:
 private:
 	static messageParseProc             m_numericParseProcTable[1000];
 	static KviLiteralMessageParseStruct m_literalParseProcTable[];
-	static KviCtcpMessageParseStruct    m_ctcpRequestParseProcTable[];
-	static KviCtcpMessageParseStruct    m_ctcpReplyParseProcTable[];
-	KviCString                              m_szLastParserError;
+	static KviCtcpMessageParseStruct    m_ctcpParseProcTable[];
+	KviCString                          m_szLastParserError;
 
-//	KviCString                              m_szNoAwayNick; //<-- moved to KviConsoleWindow.h in KviConnectionInfo
+//	KviCString                          m_szNoAwayNick; //<-- moved to KviConsoleWindow.h in KviConnectionInfo
 public:
 	void parseMessage(const char * message,KviIrcConnection *pConnection);
 private:

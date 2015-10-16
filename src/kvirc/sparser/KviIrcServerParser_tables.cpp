@@ -49,43 +49,30 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 	{ 0              , 0                             }
 };
 
-// FIXME: #warning "Merge these two tables into one"
-KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpRequestParseProcTable[]=
+#define REQ(__f) parseCtcpRequest##__f
+#define RPL(__f) parseCtcpReply##__f
+
+KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[]=
 {
-	{ "ACTION"     , PTM(parseCtcpRequestAction)     , 0 },
-	{ "AVATAR"     , PTM(parseCtcpRequestAvatar)     , 0 },
-	{ "CLIENTINFO" , PTM(parseCtcpRequestClientinfo) , 0 },
-	{ "DCC"        , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "FINGER"     , PTM(parseCtcpRequestFinger)     , 0 },
-	{ "PAGE"       , PTM(parseCtcpRequestPage)       , 0 },
-	{ "PING"       , PTM(parseCtcpRequestPing)       , 0 },
-	{ "SOURCE"     , PTM(parseCtcpRequestSource)     , 0 },
-	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "TIME"       , PTM(parseCtcpRequestTime)       , 0 },
-	{ "USERINFO"   , PTM(parseCtcpRequestUserinfo)   , 0 },
-	{ "VERSION"    , PTM(parseCtcpRequestVersion)    , 0 },
-	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ 0            , 0                               , 0 }
+	{ "ACTION"     , PTM(REQ(Action))     , PTM(REQ(Action))   , 0 },
+	{ "AVATAR"     , PTM(REQ(Avatar))     , PTM(RPL(Avatar))   , 0 },
+	{ "CLIENTINFO" , PTM(REQ(Clientinfo)) , PTM(RPL(Generic))  , 0 },
+	{ "DCC"        , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
+	{ "FINGER"     , PTM(REQ(Finger))     , PTM(RPL(Generic))  , 0 },
+	{ "LAGCHECK"   , 0                    , PTM(RPL(Lagcheck)) , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
+	{ "PAGE"       , PTM(REQ(Page))       , PTM(RPL(Generic))  , 0 },
+	{ "PING"       , PTM(REQ(Ping))       , PTM(RPL(Ping))     , 0 },
+	{ "SOURCE"     , PTM(REQ(Source))     , PTM(RPL(Generic))  , 0 },
+	{ "TDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
+	{ "TIME"       , PTM(REQ(Time))       , PTM(RPL(Generic))  , 0 },
+	{ "USERINFO"   , PTM(REQ(Userinfo))   , PTM(RPL(Userinfo)) , 0 },
+	{ "VERSION"    , PTM(REQ(Version))    , PTM(RPL(Generic))  , 0 },
+	{ "XDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
+	{ 0            , 0                    , 0                  , 0 }
 };
 
-KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpReplyParseProcTable[]=
-{
-	{ "ACTION"     , PTM(parseCtcpRequestAction)     , 0 },
-	{ "AVATAR"     , PTM(parseCtcpReplyAvatar)       , 0 },
-	{ "CLIENTINFO" , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "DCC"        , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "FINGER"     , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "LAGCHECK"   , PTM(parseCtcpReplyLagcheck)     , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
-	{ "PAGE"       , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "PING"       , PTM(parseCtcpReplyPing)         , 0 },
-	{ "SOURCE"     , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "TIME"       , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "USERINFO"   , PTM(parseCtcpReplyUserinfo)     , 0 },
-	{ "VERSION"    , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ 0            , 0                               , 0 }
-};
+#undef REQ
+#undef RPL
 
 messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 {

@@ -845,11 +845,12 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 		}
 	}
 
-	for(int i=0;m_ctcpRequestParseProcTable[i].msgName;i++)
+	for(int i=0;m_ctcpParseProcTable[i].msgName;i++)
 	{
-		if(KviQString::equalCS(KviQString::upperISO88591(msg->szTag),m_ctcpRequestParseProcTable[i].msgName))
+		if(KviQString::equalCS(KviQString::upperISO88591(msg->szTag),m_ctcpParseProcTable[i].msgName)
+			&& m_ctcpParseProcTable[i].req)
 		{
-			if(!(m_ctcpReplyParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
+			if(!(m_ctcpParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
 			{
 				QString szData = msg->msg->connection()->decodeText(msg->pData);
 				if(
@@ -866,7 +867,7 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 					)
 					return;
 			}
-			(this->*(m_ctcpRequestParseProcTable[i].proc))(msg);
+			(this->*(m_ctcpParseProcTable[i].req))(msg);
 			return;
 		}
 	}
@@ -896,18 +897,19 @@ void KviIrcServerParser::parseCtcpReply(KviCtcpMessage *msg)
 {
 	msg->pData = extractCtcpParameter(msg->pData,msg->szTag);
 
-	for(int i=0;m_ctcpReplyParseProcTable[i].msgName;i++)
+	for(int i=0;m_ctcpParseProcTable[i].msgName;i++)
 	{
-		if(KviQString::equalCS(KviQString::upperISO88591(msg->szTag),m_ctcpReplyParseProcTable[i].msgName))
+		if(KviQString::equalCS(KviQString::upperISO88591(msg->szTag),m_ctcpParseProcTable[i].msgName)
+			&& m_ctcpParseProcTable[i].rpl)
 		{
-			if(!(m_ctcpReplyParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
+			if(!(m_ctcpParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
 			{
 				QString szData = msg->msg->connection()->decodeText(msg->pData);
 				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPReply, \
 					msg->msg->console(),msg->pSource->nick(),msg->pSource->user(), \
 					msg->pSource->host(),msg->szTarget,msg->szTag,szData))return;
 			}
-			(this->*(m_ctcpReplyParseProcTable[i].proc))(msg);
+			(this->*(m_ctcpParseProcTable[i].rpl))(msg);
 			return;
 		}
 	}
