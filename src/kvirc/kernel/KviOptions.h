@@ -620,8 +620,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintToolBarButtonStyle 80
 #define KviOption_uintMaximumBlowFishKeySize 81
 #define KviOption_uintCustomCursorWidth 82                             /* Interface */
+#define KviOption_uintMeKickLocation 83
 
-#define KVI_NUM_UINT_OPTIONS 83
+#define KVI_NUM_UINT_OPTIONS 84
 
 namespace KviIdentdOutputMode {
 	enum Mode {

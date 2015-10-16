@@ -58,6 +58,10 @@ class OptionsWidget_channelGeneral : public KviOptionsWidget
 public:
 	OptionsWidget_channelGeneral(QWidget * parent);
 	~OptionsWidget_channelGeneral();
+public:
+	virtual void commit();
+protected:
+	QComboBox * m_pKickNoticeLocation;
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced KviIconManager::Gui

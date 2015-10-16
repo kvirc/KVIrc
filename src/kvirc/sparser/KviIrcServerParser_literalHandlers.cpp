@@ -578,6 +578,9 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 
 		QString szPass = chan->hasChannelMode('k') ? chan->channelModeParam('k') : "";
 
+#define ME_KICK_OUT_PARAMS KVI_OUT_MEKICK, __tr2qs("You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"), \
+		&szChan,&szNick,&szUser,&szHost,&szKickMsg
+
 		if(KVI_OPTION_BOOL(KviOption_boolKeepChannelOpenOnKick))
 		{
 			chan->userAction(szNick,szUser,szHost,KVI_USERACTION_KICK);
@@ -586,22 +589,31 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 
 			if(!msg->haltOutput())
 			{
-				// FIXME: #warning "OPTION FOR THIS TO GO TO THE CONSOLE!"
-				chan->output(KVI_OUT_MEKICK,
-					__tr2qs("You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),
-					&szChan,&szNick,&szUser,&szHost,&szKickMsg);
+				switch(KVI_OPTION_UINT(KviOption_uintMeKickLocation))
+				{
+					case 0: chan->output(ME_KICK_OUT_PARAMS); break;
+					case 1: console->activeWindow()->output(ME_KICK_OUT_PARAMS); break;
+					case 2: console->output(ME_KICK_OUT_PARAMS); break;
+					default: chan->output(ME_KICK_OUT_PARAMS); break;
+				}
 			}
 		} else {
 			g_pMainWindow->closeWindow(chan); // <-- deleted path
 
 			if(!msg->haltOutput())
 			{
-				// FIXME: #warning "This could go also to the active window!"
-				console->output(KVI_OUT_MEKICK,
-					__tr2qs("You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),
-					&szChan,&szNick,&szUser,&szHost,&szKickMsg);
+				switch(KVI_OPTION_UINT(KviOption_uintMeKickLocation))
+				{
+					case 0: console->output(ME_KICK_OUT_PARAMS); break;
+					case 1: console->activeWindow()->output(ME_KICK_OUT_PARAMS); break;
+					case 2: console->output(ME_KICK_OUT_PARAMS); break;
+					default: console->output(ME_KICK_OUT_PARAMS); break;
+				}
 			}
 		}
+
+#undef ME_KICK_OUT_PARAMS
+
 		if(KVI_OPTION_BOOL(KviOption_boolRejoinChannelOnKick))
 		{
 			if(_OUTPUT_VERBOSE)
