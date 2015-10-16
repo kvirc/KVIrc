@@ -242,7 +242,8 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage *msg)
 		// we should disable disconnection detection during the parsing of a single
 		// message in KviIrcSocket. See the comment in KviIrcSocket::processData() for more info.
 
-		// FIXME: #warning "IF VERBOSE SAY THAT WE'RE REQUESTING MODES & BAN LIST" (Synching channel)
+		if(_OUTPUT_VERBOSE)
+			console->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Requesting modes and ban list for \r!c\r%Q\r..."),&channel);
 		msg->connection()->requestQueue()->enqueueChannel(chan);
 
 	} else {
