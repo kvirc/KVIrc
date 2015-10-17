@@ -66,7 +66,7 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 	addLabel(g,__tr2qs_ctx("Send kick message to:","options"));
 
 	m_pKickNoticeLocation = new QComboBox(g);
-	m_pKickNoticeLocation->insertItem(0,__tr2qs_ctx("Channel kicked from","options"));
+	m_pKickNoticeLocation->insertItem(0,__tr2qs_ctx("Channel you were kicked from","options"));
 	m_pKickNoticeLocation->insertItem(1,__tr2qs_ctx("Active window","options"));
 	m_pKickNoticeLocation->insertItem(2,__tr2qs_ctx("Console","options"));
 
