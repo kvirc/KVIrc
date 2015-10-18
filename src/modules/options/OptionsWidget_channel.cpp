@@ -63,6 +63,17 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 			"It might be a good idea to also enable the " \
 			"\"Rejoin channel\" option.</center>","options"));
 
+	addLabel(g,__tr2qs_ctx("Send kick message to:","options"));
+
+	m_pKickNoticeLocation = new QComboBox(g);
+	m_pKickNoticeLocation->insertItem(0,__tr2qs_ctx("Channel you were kicked from","options"));
+	m_pKickNoticeLocation->insertItem(1,__tr2qs_ctx("Active window","options"));
+	m_pKickNoticeLocation->insertItem(2,__tr2qs_ctx("Console","options"));
+
+	if(KVI_OPTION_UINT(KviOption_uintMeKickLocation) > 2)
+		KVI_OPTION_UINT(KviOption_uintMeKickLocation) = 0;
+	m_pKickNoticeLocation->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintMeKickLocation));
+
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnPart);
@@ -161,4 +172,9 @@ void OptionsWidget_channelAdvanced::commit()
 	KviOptionsWidget::commit();
 }
 
-
+void OptionsWidget_channelGeneral::commit()
+{
+	KVI_OPTION_UINT(KviOption_uintMeKickLocation)=m_pKickNoticeLocation->currentIndex();
+	if((KVI_OPTION_UINT(KviOption_uintMeKickLocation)>2)) KVI_OPTION_UINT(KviOption_uintMeKickLocation)=0;
+	KviOptionsWidget::commit();
+}
