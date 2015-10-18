@@ -166,4 +166,3 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 OptionsWidget_inputFeatures::~OptionsWidget_inputFeatures()
 {
 }
-

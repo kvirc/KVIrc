@@ -272,4 +272,3 @@ void OptionsWidget_notifier::toggleNotifierProtocol(bool)
 #endif
 }
 #endif // COMPILE_KDE_SUPPORT
-

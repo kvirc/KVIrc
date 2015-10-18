@@ -180,6 +180,3 @@ void KviTextIconWindow::cellSelected(int row, int column)
 	}
 	doHide();
 }
-
-
-

@@ -2097,4 +2097,3 @@ void KvsObject_painter::setInternalPainter(QPainter *p)
 	m_pPainter=p;
 	bDonotdeleteinternalqpainter=true;
 }
-

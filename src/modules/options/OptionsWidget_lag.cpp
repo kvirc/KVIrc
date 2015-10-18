@@ -73,5 +73,3 @@ OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
 OptionsWidget_lag::~OptionsWidget_lag()
 {
 }
-
-

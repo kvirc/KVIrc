@@ -146,5 +146,3 @@ KVSO_CLASS_FUNCTION(progressBar,percentageVisible)
 	c->returnValue()->setBoolean(((QProgressBar *)widget())->isTextVisible());
 	return true;
 }
-
-

@@ -381,7 +381,7 @@ namespace ThemeFunctions
 			g_pMainWindow->showNormal();
 		return bResult;
 	}
-	
+
 
 	bool packageThemes(
 			const QString &szPackagePath,
@@ -416,15 +416,15 @@ namespace ThemeFunctions
 				szError = __tr2qs_ctx("Failed to load the selected image: please fix it","theme");
 				return false;
 			}
-	
+
 			if((pix.width() > 300) || (pix.height() > 225))
 				out = out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
 			else
 				out=out.fromImage(pix);
 		}
-	
+
 		KviPackageWriter f;
-	
+
 		f.addInfoField("PackageType","ThemePack");
 		f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
 		f.addInfoField("Name",szPackageName);
@@ -435,7 +435,7 @@ namespace ThemeFunctions
 		// to ensure qt4 will use the default() locale and not the system() one
 		f.addInfoField("Date",QDateTime::currentDateTime().toString(Qt::ISODate));
 		f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
-	
+
 		if(!out.isNull())
 		{
 			QByteArray * pba = new QByteArray();
@@ -445,12 +445,12 @@ namespace ThemeFunctions
 			buffer.close();
 			f.addInfoField("Image",pba); // cool :) [no disk access needed]
 		}
-	
+
 		QString szTmp;
-	
+
 		szTmp.setNum(lThemeInfoList.count());
 		f.addInfoField("ThemeCount",szTmp);
-	
+
 		int iIdx = 0;
 		for(KviThemeInfo * pInfo = lThemeInfoList.first();pInfo;pInfo = lThemeInfoList.next())
 		{
@@ -464,10 +464,10 @@ namespace ThemeFunctions
 				szError = __tr2qs_ctx("Invalid theme version","theme");
 				return false;
 			}
-		
+
 			QString szSubdir = pInfo->name() + QString("-") + pInfo->version();
 			szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"),"_");
-		
+
 			szTmp = QString("Theme%1Name").arg(iIdx);
 			f.addInfoField(szTmp,pInfo->name());
 			szTmp = QString("Theme%1Version").arg(iIdx);
@@ -489,7 +489,7 @@ namespace ThemeFunctions
 			{
 				szTmp = QString("Theme%1Screenshot").arg(iIdx);
 				QByteArray * pba = new QByteArray();
-	
+
 				QBuffer bufferz(pba,0);
 				bufferz.open(QIODevice::WriteOnly);
 				pixScreenshot.save(&bufferz,"PNG");
@@ -504,10 +504,10 @@ namespace ThemeFunctions
 				szError += f.lastError();
 				return false;
 			}
-	
+
 			iIdx++;
 		}
-	
+
 		if(!f.pack(szPackagePath))
 		{
 			szError = __tr2qs_ctx("Packaging failed","theme");
@@ -515,8 +515,7 @@ namespace ThemeFunctions
 			szError += f.lastError();
 			return false;
 		}
-	
+
 		return true;
 	}
 }
-

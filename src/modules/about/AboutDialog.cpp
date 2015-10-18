@@ -239,5 +239,3 @@ void AboutDialog::closeButtonPressed()
 {
 	delete this;
 }
-
-

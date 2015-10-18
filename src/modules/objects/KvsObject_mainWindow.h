@@ -43,4 +43,3 @@ protected:
 
 
 #endif	//!_CLASS_MAINWINDOW_H_
-

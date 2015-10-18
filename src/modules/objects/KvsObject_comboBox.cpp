@@ -358,6 +358,3 @@ void KvsObject_comboBox::slotActivated(int i)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i));
 	callFunction(this,"activatedEvent",&params);
 }
-
-
-

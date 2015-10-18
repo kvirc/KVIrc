@@ -255,4 +255,3 @@ void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 
 	delete pClass;
 }
-

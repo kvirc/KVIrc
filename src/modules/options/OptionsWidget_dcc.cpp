@@ -366,4 +366,3 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget *p):KviOptionsWidget(p)
 OptionsWidget_dccVoice::~OptionsWidget_dccVoice()
 {
 }
-

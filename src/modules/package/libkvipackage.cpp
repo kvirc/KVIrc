@@ -88,7 +88,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsHash * pHash = new KviKvsHash();
-	
+
 	c->returnValue()->setHash(pHash);
 
 	// Create a random extraction dir
@@ -118,17 +118,17 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	}
 
 	KviKvsHash * pInfoHash = new KviKvsHash();
-	
+
 	pHash->set("info",new KviKvsVariant(pInfoHash));
-	
+
 	QFileInfo inf(szPath);
-	
+
 	pInfoHash->set("path",new KviKvsVariant(szPath));
 	pInfoHash->set("name",new KviKvsVariant(inf.fileName()));
 	pInfoHash->set("size",new KviKvsVariant((kvs_int_t)inf.size()));
 
 	KviKvsHash * pMetadataHash = new KviKvsHash();
-	
+
 	pHash->set("metadata",new KviKvsVariant(pMetadataHash));
 
 	KviPointerHashTable<QString,QString> * pInfoFields1 = r.stringInfoFields();
@@ -143,7 +143,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 
 	KviPointerHashTable<QString,QByteArray> * pInfoFields2 = r.binaryInfoFields();
 	KviPointerHashTableIterator<QString,QByteArray> it2(*pInfoFields2);
-	
+
 	while(it2.current())
 	{
 		pMetadataHash->set(it2.currentKey(),new KviKvsVariant(QString("<binary data, %1 bytes>").arg(it2.current()->size())));
@@ -151,7 +151,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	}
 
 	KviKvsArray * pFilesArray = new KviKvsArray();
-	
+
 	pHash->set("files",new KviKvsVariant(pFilesArray));
 
 	QStringList sl = KviFileUtils::getFileListing(szUnpackPath);

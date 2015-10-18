@@ -268,4 +268,3 @@ void KviWebPackageManagementDialog::showEvent(QShowEvent *)
 }
 
 #endif //COMPILE_WEBKIT_SUPPORT
-

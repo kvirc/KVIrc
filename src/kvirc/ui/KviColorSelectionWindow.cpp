@@ -129,4 +129,3 @@ void KviColorWindow::timerEvent(QTimerEvent *)
 		killTimer(m_iTimerId);
 	hide();
 }
-

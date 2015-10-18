@@ -334,5 +334,3 @@ void HelpWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs("Help Browser");
 }
-
-

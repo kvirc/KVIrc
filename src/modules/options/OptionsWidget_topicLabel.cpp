@@ -44,4 +44,3 @@ OptionsWidget_topicLabel::OptionsWidget_topicLabel(QWidget *p):KviOptionsWidget(
 OptionsWidget_topicLabel::~OptionsWidget_topicLabel()
 {
 }
-

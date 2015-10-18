@@ -207,5 +207,3 @@ void KvsObject_dateTimeEdit::slotDateChanged(const QDate &)
 	KviKvsVariantList *params=0;
 	callFunction(this,"dateChangedEvent",params);
 }
-
-

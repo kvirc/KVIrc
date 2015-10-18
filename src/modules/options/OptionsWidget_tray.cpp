@@ -105,5 +105,3 @@ void OptionsWidget_tray::setEnabled(bool)
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 	}
 }
-
-

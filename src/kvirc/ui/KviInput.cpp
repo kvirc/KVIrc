@@ -494,4 +494,3 @@ void KviInput::toggleMultiLine()
 		Experiment with that too :)
 		[/p]
 */
-

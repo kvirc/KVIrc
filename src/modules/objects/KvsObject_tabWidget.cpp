@@ -473,4 +473,3 @@ void KvsObject_tabWidget::slotTabCloseRequest(int iIndex)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iIndex));
 	callFunction(this,"tabCloseRequestEvent",&params);
 }
-

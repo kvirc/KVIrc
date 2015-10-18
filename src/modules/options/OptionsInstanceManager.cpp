@@ -3815,4 +3815,3 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 {
 	return findInstanceEntry(pcName,m_pInstanceTree);
 }
-

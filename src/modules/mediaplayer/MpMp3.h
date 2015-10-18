@@ -132,4 +132,3 @@ char *unpad(char *string);
 int get_first_header(mp3info *mp3,long startpos);
 //void tagedit_curs(char *filename, int filenum, int fileoutof, id3tag *tag);
 const char * get_typegenre(int idx);
-

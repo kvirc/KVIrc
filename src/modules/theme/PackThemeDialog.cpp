@@ -465,4 +465,3 @@ bool PackThemeDialog::packTheme()
 
 	return true;
 }
-

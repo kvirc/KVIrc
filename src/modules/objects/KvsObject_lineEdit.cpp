@@ -532,7 +532,3 @@ void KvsObject_lineEdit::slottextChanged(const QString &text)
 	KviKvsVariantList params(new KviKvsVariant(text));
 	callFunction(this,"textChangedEvent",&params);
 }
-
-
-
-

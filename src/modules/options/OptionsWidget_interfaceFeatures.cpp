@@ -85,4 +85,3 @@ void OptionsWidget_interfaceFeatures::commit()
 	}
 
 }
-

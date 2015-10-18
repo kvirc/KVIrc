@@ -81,4 +81,3 @@ KviWindowScriptButton::KviWindowScriptButton(QWidget * p,KviWindow * wnd,const c
 KviWindowScriptButton::~KviWindowScriptButton()
 {
 }
-

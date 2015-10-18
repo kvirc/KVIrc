@@ -468,7 +468,7 @@ void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 	for(int i=0;i<slThemes.count();i++)
 	{
 		//qDebug("Installed theme %s builtin %d",slThemes.at(i).toUtf8().data(),bBuiltin);
-	
+
 		KviThemeInfo * inf = new KviThemeInfo();
 		if(inf->load(slThemes.at(i),bBuiltin ? KviThemeInfo::Builtin : KviThemeInfo::User))
 		{
@@ -556,4 +556,3 @@ void ThemeManagementDialog::tipRequest(QListWidgetItem *,const QPoint &)
 //	pTip->tip(m_pListWidget->visualItemRect(it),szThemeDescription);
 */
 }
-

@@ -346,5 +346,3 @@ void KviTextIconManager::save(const QString & szFileName)
 		++it;
 	}
 }
-
-

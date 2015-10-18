@@ -249,5 +249,3 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 OptionsWidget_userListFeatures::~OptionsWidget_userListFeatures()
 {
 }
-
-

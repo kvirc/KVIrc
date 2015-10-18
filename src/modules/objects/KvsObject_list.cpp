@@ -339,4 +339,3 @@ KVSO_CLASS_FUNCTION(list,count)
 	c->returnValue()->setInteger(m_pDataList->count());
 	return true;
 }
-

@@ -67,4 +67,3 @@ KviKvsHashElement::~KviKvsHashElement()
 	if(m_pParent)
 		delete m_pParent;
 }
-

@@ -9,4 +9,3 @@ set(kvilogview_SRCS
 
 set(kvi_module_name kvilogview)
 include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
-

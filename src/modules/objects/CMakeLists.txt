@@ -64,7 +64,7 @@ if(CMAKE_RESULT_USING_QT5)
 		qtftp/qftp.cpp
 		qtftp/qurlinfo.cpp
 	)
-	
+
 	include_directories(qthttp/)
 	include_directories(qtftp/)
 endif()
@@ -72,4 +72,3 @@ endif()
 set(kvi_module_name kviobjects)
 
 include(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
-

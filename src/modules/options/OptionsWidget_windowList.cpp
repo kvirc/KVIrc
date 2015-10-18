@@ -264,4 +264,3 @@ OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * paren
 OptionsWidget_windowListClassic::~OptionsWidget_windowListClassic()
 {
 }
-

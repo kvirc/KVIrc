@@ -148,5 +148,3 @@ KVSO_CLASS_FUNCTION(textBrowser,linkClickedEvent)
 	emitSignal("linkClicked",c,c->params());
 	return true;
 }
-
-

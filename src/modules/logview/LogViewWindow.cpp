@@ -832,5 +832,3 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 	// Close file descriptors
 	log.close();
 }
-
-

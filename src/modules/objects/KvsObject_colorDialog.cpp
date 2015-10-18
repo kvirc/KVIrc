@@ -229,6 +229,3 @@ void KvsObject_colorDialog::slotColorSelected(const QColor &col)
 	KviKvsVariantList params(new KviKvsVariant(pHash));
 	callFunction(this,"colorSelectedEvent",&params);
 }
-
-
-

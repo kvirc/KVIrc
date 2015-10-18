@@ -467,4 +467,3 @@ void RegistrationWizard::notifyCheckToggled(bool)
 	QString dummy;
 	notifyNickChanged(dummy);
 }
-

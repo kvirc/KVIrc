@@ -381,7 +381,6 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 	{
 		if(!c->switches()->find('q',"quiet"))
 			c->warning(__tr2qs("Failed to make the directory '%Q'"),&szDir);
-		
 	}
 	return !c->switches()->find('e',"error");
 }

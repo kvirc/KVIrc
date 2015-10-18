@@ -121,4 +121,3 @@ void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)
 {
 	emit doubleClicked();
 }
-

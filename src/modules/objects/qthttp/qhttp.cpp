@@ -2155,7 +2155,7 @@ int QHttp::setUser(const QString &userName, const QString &password)
     proxying, such as SOCKS5, use QNetworkProxy instead.
 
     \note setProxy() has to be called before setHost() for it to take effect.
-    If setProxy() is called after setHost(), then it will not apply until after 
+    If setProxy() is called after setHost(), then it will not apply until after
     setHost() is called again.
 
     \sa QFtp::setProxy()
@@ -2853,7 +2853,7 @@ void QHttpPrivate::_q_slotReadyRead()
         if (response.statusCode() == 100 && pendingPost) {
             // if we have pending POST, start sending data otherwise ignore
             post100ContinueTimer.stop();
-            QMetaObject::invokeMethod(q, "_q_continuePost", Qt::QueuedConnection); 
+            QMetaObject::invokeMethod(q, "_q_continuePost", Qt::QueuedConnection);
             return;
         }
 

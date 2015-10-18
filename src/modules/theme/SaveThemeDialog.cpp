@@ -163,7 +163,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	ozText += __tr2qs_ctx("Hit the <b>\"Next\"</b> button to continue.","theme");
 	ozText += "<p>";
 
-	pLayout->addWidget(m_pSaveIconsCheckBox,0,0);  
+	pLayout->addWidget(m_pSaveIconsCheckBox,0,0);
 	pLabel->setText(ozText);
 	pLayout->addWidget(pLabel,1,0);
 	pLayout->setRowStretch(2,1);
@@ -323,4 +323,3 @@ bool SaveThemeDialog::saveTheme()
 
 	return true;
 }
-

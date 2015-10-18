@@ -24,5 +24,3 @@ elseif(WIN32)
 	install(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/64x64/apps/)
 	install(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/64x64/mimetypes/)
 endif()
-
-

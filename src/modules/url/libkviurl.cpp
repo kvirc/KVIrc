@@ -938,4 +938,3 @@ KVIRC_MODULE(
 	url_module_cleanup,
 	0
 )
-

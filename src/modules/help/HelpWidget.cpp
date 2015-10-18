@@ -254,4 +254,3 @@ QSize HelpWidget::sizeHint() const
 	QSize s(wdth,m_pTextBrowser->sizeHint().height() + m_pToolBar->sizeHint().height());
 	return s;
 }
-

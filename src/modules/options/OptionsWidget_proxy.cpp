@@ -359,4 +359,3 @@ void OptionsWidget_proxy::removeCurrent()
 		}
 	}
 }
-

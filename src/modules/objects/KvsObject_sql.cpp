@@ -483,5 +483,3 @@ KVSO_CLASS_FUNCTION(sql,lastError)
 	c->returnValue()->setString(szError);
 	return true;
 }
-
-

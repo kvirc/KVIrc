@@ -339,5 +339,3 @@ void KvsObject_toolButton::slotClicked()
 	KviKvsVariantList *params=0;
 	callFunction(this,"clickEvent",params);
 }
-
-

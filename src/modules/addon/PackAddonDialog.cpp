@@ -458,4 +458,3 @@ void PackAddonSummaryFilesWidget::showEvent(QShowEvent *)
 
 	m_pFiles->setPlainText(list.join("\n"));
 }
-

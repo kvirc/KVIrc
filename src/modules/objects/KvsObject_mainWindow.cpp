@@ -98,4 +98,3 @@ KVSO_CLASS_FUNCTION(mainWindow,setCentralWidget)
 	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
 	return true;
 }
-

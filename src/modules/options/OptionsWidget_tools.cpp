@@ -46,4 +46,3 @@ OptionsWidget_tools::OptionsWidget_tools(QWidget * parent)
 OptionsWidget_tools::~OptionsWidget_tools()
 {
 }
-

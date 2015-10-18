@@ -84,4 +84,3 @@ bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c
 
 	return (*proc)(&call);
 }
-

@@ -268,29 +268,29 @@ namespace AddonFunctions
 
 		return szDirName;
 	}
-	
+
 	bool checkDirTree(const QString &szDirPath,QString * pszError)
 	{
 		if(pszError)
 			*pszError = "";
-	
+
 		QDir addon(szDirPath);
 		if(!addon.exists())
 		{
 			*pszError = __tr2qs_ctx("The selected directory does not exist.","addon");
 			return false;
 		}
-	
+
 		QFileInfo init(szDirPath + "/install.kvs");
 		if(!init.exists())
 		{
 			*pszError = __tr2qs_ctx("The initialization script (install.kvs) does not exist.","addon");
 			return false;
 		}
-	
+
 		return true;
 	}
-	
+
 	bool pack(AddonInfo &info,QString &szError)
 	{
 		if(!checkDirTree(info.szDirPath,&szError))
@@ -301,7 +301,7 @@ namespace AddonFunctions
 
 		QString szTmp;
 		szTmp = QDateTime::currentDateTime().toString(Qt::ISODate);
-	
+
 		KviPackageWriter pw;
 		pw.addInfoField("PackageType","AddonPack");
 		pw.addInfoField("AddonPackVersion",KVI_CURRENT_ADDONS_ENGINE_VERSION);
@@ -324,26 +324,26 @@ namespace AddonFunctions
 
 			QByteArray * pba = new QByteArray();
 			QBuffer bufferz(pba,0);
-	
+
 			bufferz.open(QIODevice::WriteOnly);
 			pix.save(&bufferz,"PNG");
 			bufferz.close();
 			pw.addInfoField("Image",pba);
 		}
-	
+
 		QDir dir(info.szDirPath);
 		QFileInfoList ls = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::Readable | QDir::NoSymLinks | QDir::NoDotAndDotDot);
-	
+
 		if(ls.isEmpty())
 		{
 			szError = __tr2qs_ctx("The package file list is empty","addon");
 			return false;
 		}
-	
+
 		for(QFileInfoList::Iterator it = ls.begin();it != ls.end();++it)
 		{
 			const QFileInfo &inf = *it;
-	
+
 			if(inf.isDir())
 			{
 				if(!pw.addDirectory(inf.absoluteFilePath(),QString("%1/").arg(inf.fileName())))
@@ -351,10 +351,10 @@ namespace AddonFunctions
 					szError = pw.lastError();
 					return false;
 				}
-	
+
 				continue;
 			}
-	
+
 			// must be a file
 			if(!pw.addFile(inf.absoluteFilePath(),inf.fileName()))
 			{
@@ -362,15 +362,15 @@ namespace AddonFunctions
 				return false;
 			}
 		}
-	
-	
+
+
 		// Create the addon package
 		if(info.szSavePath.isEmpty())
 		{
 			szError = __tr2qs_ctx("Save path is empty","addon");
 			return false;
 		}
-	
+
 		if(!pw.pack(info.szSavePath))
 		{
 			szError = pw.lastError();
@@ -379,5 +379,5 @@ namespace AddonFunctions
 
 		return true;
 	}
-	
+
 }

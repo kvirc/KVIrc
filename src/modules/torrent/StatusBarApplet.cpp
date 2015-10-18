@@ -92,5 +92,3 @@ void StatusBarApplet::update()
 		setText(__tr2qs_ctx("No client selected!", "torrent"));
 	}
 }
-
-

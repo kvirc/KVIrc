@@ -259,4 +259,3 @@ void OptionsWidget_mediaTypes::commit()
 	}
 	g_pMediaManager->unlock();
 }
-

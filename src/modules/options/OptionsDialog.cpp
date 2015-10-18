@@ -268,7 +268,7 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 	}
 
 	new QShortcut(Qt::Key_Escape,this,SLOT(close()));
-	
+
 	if(bModal)
 		setWindowModality(par ? Qt::WindowModal : Qt::ApplicationModal);
 }

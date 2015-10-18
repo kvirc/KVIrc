@@ -261,7 +261,7 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 				pContext->warning(__tr2qs_ctx("The '!Parent' specifier can't be used as first in the search path","objects"));
 				return false;
 			}
-			
+
 			int iLevels = 1;
 			if(!szName.isEmpty())
 			{
@@ -277,7 +277,7 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 			while(iLevels > 0)
 			{
 				pWidget = pWidget->parentWidget();
-	
+
 				if(!pWidget)
 				{
 					pContext->warning(__tr2qs_ctx("The '!Parent' specifier was applied to a widget that has no parent","objects"));
@@ -340,7 +340,7 @@ QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString &szClass,con
 				return w;
 		}
 	}
-	
+
 	return NULL;
 }
 

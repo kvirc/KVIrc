@@ -136,4 +136,3 @@ void KviScriptEditor::destroyInstance(KviScriptEditor * e)
 
 	editorModuleDestroyScriptEditor(e);
 }
-

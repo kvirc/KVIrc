@@ -83,4 +83,3 @@ protected slots:
 };
 
 #endif //__OPTIONS_INSTANCES_H__
-

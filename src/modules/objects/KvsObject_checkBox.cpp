@@ -129,6 +129,3 @@ void KvsObject_checkBox::toggled(bool b)
 	KviKvsVariantList params(new KviKvsVariant(b));
 	callFunction(this,"toggleEvent",&params);
 }
-
-
-

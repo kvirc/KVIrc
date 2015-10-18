@@ -891,6 +891,3 @@ QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QM
 	}
 	return QItemDelegate::sizeHint(option,index);
 }
-
-
-

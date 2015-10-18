@@ -307,7 +307,7 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 
 	kvs_uint_t s = pArray->size();
 	QStringList lThemeList;
-	
+
 	for(kvs_uint_t i=0;i<s;i++)
 	{
 		KviKvsVariant * v = pArray->at(i);

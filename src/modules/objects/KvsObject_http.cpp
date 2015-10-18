@@ -563,4 +563,3 @@ bool KvsObject_http::functionSslErrorsEvent(KviKvsObjectFunctionCall *c)
 	return true;
 }
 #endif
-

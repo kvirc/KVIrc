@@ -673,5 +673,3 @@ void KvsObject_listWidget::slotItemChanged(QListWidgetItem *item)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QListWidget *)widget())->row(item)));
 	callFunction(this,"itemChangedEvent",0,&params);
 }
-
-

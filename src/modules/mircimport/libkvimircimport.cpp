@@ -376,4 +376,3 @@ KVIRC_MODULE(
 	mircimport_module_cleanup,
 	0
 )
-

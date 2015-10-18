@@ -365,4 +365,3 @@ void OptionsWidget_nickServ::commit()
 	}
 	KviOptionsWidget::commit();
 }
-

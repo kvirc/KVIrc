@@ -105,4 +105,3 @@ void OptionsWidget_ircOutput::commit()
 
 	KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat) = m_pDatetimeCombo->currentIndex();
 }
-

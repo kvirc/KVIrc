@@ -294,4 +294,3 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 	if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
 		qDebug("WARNING : Can not write to the log file.");
 }
-

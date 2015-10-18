@@ -40,4 +40,3 @@ protected:
 };
 
 #endif // !_CLASS_DIALOG_H_
-

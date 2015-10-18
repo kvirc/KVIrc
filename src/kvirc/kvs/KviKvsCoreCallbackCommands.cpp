@@ -291,13 +291,13 @@ namespace KviKvsCoreCallbackCommands
 				}
 			}
 		} else {
-		
+
 			if(tmp.endsWith("@"))
 			{
 				KVSCCC_pContext->error(__tr2qs_ctx("Found an empty alias name within a namespace","kvs"));
 				return false;
 			}
-		
+
 			KviKvsScript * pScript = new KviKvsScript(*KVSCCC_pCallback);
 			pScript->setName(szName);
 			KviKvsAliasManager::instance()->add(szName,pScript);

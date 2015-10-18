@@ -352,4 +352,3 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 OptionsWidget_sounds::~OptionsWidget_sounds()
 {
 }
-

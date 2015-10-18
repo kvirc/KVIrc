@@ -621,4 +621,3 @@ KVIRC_MODULE(
 	ident_module_cleanup,
 	0
 )
-

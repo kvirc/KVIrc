@@ -1009,5 +1009,3 @@ void IdentityProfileEditor::toggleButton(const QString & szText)
 
 	m_pBtnOk->setEnabled(bEnabled);
 }
-
-

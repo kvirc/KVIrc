@@ -160,5 +160,3 @@ void OptionsWidget_channelAdvanced::commit()
 	if((KVI_OPTION_UINT(KviOption_uintDefaultBanType)>26)) KVI_OPTION_UINT(KviOption_uintDefaultBanType)=7;
 	KviOptionsWidget::commit();
 }
-
-

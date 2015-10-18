@@ -654,4 +654,3 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 		}
 	}
 }
-

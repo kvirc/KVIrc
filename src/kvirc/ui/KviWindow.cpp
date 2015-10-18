@@ -1391,4 +1391,3 @@ KviIrcContext * KviWindow::context()
 	}
 	return 0;
 }
-

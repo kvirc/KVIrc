@@ -150,7 +150,7 @@ bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 	{
 		if(bTolerateErrors)
 			return true; // ignore at all
-	
+
 		// Reported error. If it's EAGAIN or EINTR then no data has been sent.
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
@@ -407,14 +407,14 @@ void DccRecvThread::run()
 							}
 						} else {
 							// Must send the ack... the peer must close the connection
-							
+
 							// We tollerate ack errors if we're in the last 90% of the file.
 							// It might be that we're slow with receiving data but the server
 							// has already closed the connection (buggy server though).
-							
+
 							bool bTolerateErrors = (m_pOpt->uTotalFileSize > 0) &&
 								(((quint64)m_pFile->pos()) >= (m_pOpt->uTotalFileSize - (m_pOpt->uTotalFileSize / 10)));
-							
+
 							if(!sendAck(m_pFile->pos(),bTolerateErrors))
 								break;
 						}

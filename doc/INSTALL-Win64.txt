@@ -37,12 +37,12 @@ Prerequisites
 	Get it from http://www.activestate.com/activeperl/downloads
 	Get the 64-bit version, use 5.20.x (newer versions don't have dmake yet in the repo).
 	Install in default location with default options.
-	
+
 	If you want scripting support, you will also have to do this:
 	Go to C:\Perl64\lib\CORE, make the file config.h not read-only and open it for editing.
 	Find the line that starts with "#define PERL_STATIC_INLINE" and put "/*" in front of it (so it's commented).
 	And of course save the file.
-	
+
 	Some perl releases miss dmake at install time; if you get a strange error at compilation
 	time, run the following command from cmdline: ppm install dmake
 
@@ -109,7 +109,7 @@ Prerequisites
 			cmake .. -G "NMake Makefiles" -DPHONON_BUILD_PHONON4QT5=ON -DCMAKE_INSTALL_PREFIX=C:\Qt\5.4\msvc2013_64 -DCMAKE_PREFIX_PATH=C:\Qt\5.4\msvc2013_64 -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON -Wno-dev
 			nmake
 			nmake install
-			
+
 - GNU GetText for Win32.
 	Required if you're building a redistributable package,
 	needed to translate KVIrc interface into your own language.
@@ -156,7 +156,7 @@ Compilation
 	 cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=release -DWANT_KDE=0
 	 nmake
 	 nmake install
- 
+
 	Your binaries are now located at C:\kvirccomp\kvirc\build\release.
 	But you can’t start kvirc.exe as there're some libraries missing.
 	You can either copy these to the system dir, add their locations to %PATH% or copy them to the KVIrc-release dir.

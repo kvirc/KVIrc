@@ -68,4 +68,3 @@ void OptionsWidget_away::enableAwayMessage(bool)
 {
 	m_pAwayMessage->setEnabled(m_pEnableAwayMessage->isChecked());
 }
-

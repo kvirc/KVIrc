@@ -783,5 +783,3 @@ bool KvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall *)
 		((QTextEdit *)widget())->selectAll();
 	return true;
 }
-
-

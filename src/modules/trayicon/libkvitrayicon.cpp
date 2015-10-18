@@ -751,5 +751,3 @@ KVIRC_MODULE(
 	trayicon_module_cleanup,
 	0
 )
-
-

@@ -133,4 +133,3 @@ void SlowPasteController::pasteClipboard(void)
 		m_pWindow->ownMessage(line);
 	}
 }
-

@@ -350,4 +350,3 @@ void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 		}
 	}
 }
-

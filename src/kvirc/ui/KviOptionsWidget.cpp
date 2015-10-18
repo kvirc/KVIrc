@@ -788,4 +788,3 @@ void KviOptionsWidget::commit()
 
 //	emit wantToSwitchToAdvancedPage(this);
 //}
-

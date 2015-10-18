@@ -69,6 +69,3 @@ OptionsWidget_logging::OptionsWidget_logging(QWidget * parent)
 OptionsWidget_logging::~OptionsWidget_logging()
 {
 }
-
-
-

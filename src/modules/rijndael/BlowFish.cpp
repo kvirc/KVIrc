@@ -380,7 +380,7 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 	for(j=0; j<4; j++)
 		for(int k=0; k<256; )
 			Encrypt(block), m_auiS[j][k++] = block.m_uil, m_auiS[j][k++] = block.m_uir;
-	
+
 	delete [] aucLocalKey;
 }
 

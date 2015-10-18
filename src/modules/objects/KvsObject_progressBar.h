@@ -48,4 +48,3 @@ protected:
 
 
 #endif	//!_CLASS_PROGRESSBAR_H_
-
