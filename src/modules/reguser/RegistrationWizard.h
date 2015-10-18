@@ -54,6 +54,7 @@ public:
 
 	QWidget* m_pPage1;
 	QLabel* m_pLabel1;
+	QLabel* m_pEntryNameLabel;
 	QLineEdit* m_pEditRealName;
 	QWidget* m_pPage2;
 	QLabel* m_pLabel2;
