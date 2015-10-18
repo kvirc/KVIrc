@@ -35,7 +35,7 @@ namespace KviSASL
 	{
 		if(szIn=="+")
 		{
-			int answerLen = 3 + (2 * baNick.size()) + baPass.size();
+			int answerLen = 2 + (2 * baNick.size()) + baPass.size();
 			char * answer = (char *) KviMemory::allocate(answerLen);
 			char * answer2 = answer;
 
@@ -50,9 +50,6 @@ namespace KviSASL
 			answer++;
 
 			memcpy(answer, baPass.data(), baPass.size());
-			answer+=baPass.size();
-			memset(answer, 0, 1);
-			answer++;
 
 			szOut.bufferToBase64(answer2,answerLen);
 			KviMemory::free(answer2);
