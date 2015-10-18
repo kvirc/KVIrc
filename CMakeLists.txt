@@ -547,6 +547,10 @@ if(CMAKE_RESULT_USING_QT5)
 			include_directories(${Qt5X11Extras_INCLUDE_DIRS})
 		endif()
 	endif()
+
+    get_target_property(QT_LIBRARY_DIR Qt5::Core LOCATION)
+    get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
+	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
 else()
 	# Qt 4
 	set(QT_USE_QTSQL true)
