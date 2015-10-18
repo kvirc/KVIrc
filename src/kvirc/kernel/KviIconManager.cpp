@@ -1328,4 +1328,3 @@ void KviIconManager::cacheCleanup()
 	if(m_pCachedImages->isEmpty())m_pCleanupTimer->stop();
 }
 */
-

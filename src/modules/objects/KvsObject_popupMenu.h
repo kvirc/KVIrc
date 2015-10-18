@@ -61,4 +61,3 @@ protected slots:
 };
 
 #endif	// !_CLASS_POPUPMENU_H_
-

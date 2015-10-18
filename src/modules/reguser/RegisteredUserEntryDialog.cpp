@@ -791,4 +791,3 @@ void RegisteredUserEntryDialog::editAllPropertiesClicked()
 	}
 
 }
-

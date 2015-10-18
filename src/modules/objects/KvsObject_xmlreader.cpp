@@ -369,5 +369,3 @@ KVSO_CLASS_FUNCTION(xmlReader,lastError)
 	c->returnValue()->setString(m_szLastError);
 	return true;
 }
-
-

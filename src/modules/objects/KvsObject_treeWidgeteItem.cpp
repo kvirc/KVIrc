@@ -427,4 +427,3 @@ KVSO_CLASS_FUNCTION(treeWidgetItem,setPixmap)
 	m_pTreeWidgetItem->setIcon(uCol,QIcon(*pix));
 	return true;
 }
-

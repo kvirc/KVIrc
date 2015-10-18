@@ -420,5 +420,3 @@ KVSO_CLASS_FUNCTION(popupMenu,activatedEvent)
 	emitSignal("activated",c,c->params());
 	return true;
 }
-
-

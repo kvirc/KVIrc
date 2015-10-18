@@ -97,4 +97,3 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 
 	return (*proc)(&call);
 }
-

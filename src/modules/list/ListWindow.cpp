@@ -618,4 +618,3 @@ void ListWindow::applyOptions()
 	m_pInfoLabel->applyOptions();
 	KviWindow::applyOptions();
 }
-

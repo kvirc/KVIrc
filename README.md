@@ -41,6 +41,6 @@ Compiling KVIrc on your Linux platform is now easier than ever, and the best way
 
 #### Licensing
 
-- [GPLv2](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)  
-- [GPLv3](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)  
+- [GPLv2](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)
+- [GPLv3](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)
 - [OpenSSL](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)

@@ -778,7 +778,7 @@ void KviMainWindow::changeEvent(QEvent * e)
 			e->spontaneous()
 		)
 	{
-		
+
 		if(!trayIcon())
 		{
 			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
@@ -1309,4 +1309,3 @@ void KviMainWindow::setButtonStyle(unsigned int uStyle)
 		}
 	}
 }
-

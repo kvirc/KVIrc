@@ -311,4 +311,3 @@ void OptionsWidget_textIcons::commit()
 		}
 	}
 }
-

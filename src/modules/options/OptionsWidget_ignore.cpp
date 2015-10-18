@@ -58,6 +58,3 @@ void OptionsWidget_ignore::enableVerbose(bool)
 {
 	m_pVerboseIgnore->setEnabled(m_pIgnorePrivmsg->isChecked() || m_pIgnoreNotice->isChecked());
 }
-
-
-

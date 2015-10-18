@@ -38,5 +38,3 @@ KviAsyncWhoisInfo::~KviAsyncWhoisInfo()
 	if(pCallback)delete pCallback;
 	if(pMagic)delete pMagic;
 }
-
-

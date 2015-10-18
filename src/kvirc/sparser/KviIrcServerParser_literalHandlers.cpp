@@ -1889,11 +1889,11 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 	{
 		bIsMultiMode = true;
 		bShowAsCompact = KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges);
-		
+
 		if(iSingleModes == 1)
 			bIsMultiSingleMode = true;
 	}
-	
+
 
 	while(*aux)
 	{

@@ -193,4 +193,3 @@ void KviKvsModuleInterface::getAllFunctionsCommandsModule(QStringList *list,QStr
 		++it2;
 	}
 }
-

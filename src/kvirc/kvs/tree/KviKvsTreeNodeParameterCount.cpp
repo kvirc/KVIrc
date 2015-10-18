@@ -55,4 +55,3 @@ bool KviKvsTreeNodeParameterCount::evaluateReadOnly(KviKvsRunTimeContext * c,Kvi
 	pBuffer->setInteger(c->parameterList()->count());
 	return true;
 }
-

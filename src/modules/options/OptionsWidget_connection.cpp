@@ -304,4 +304,3 @@ OptionsWidget_connectionAdvanced::OptionsWidget_connectionAdvanced(QWidget * par
 OptionsWidget_connectionAdvanced::~OptionsWidget_connectionAdvanced()
 {
 }
-

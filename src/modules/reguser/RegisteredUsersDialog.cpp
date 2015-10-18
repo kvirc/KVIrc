@@ -929,5 +929,3 @@ succesfull_import:
 	f.close();
 	fillList();
 }
-
-

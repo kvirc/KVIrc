@@ -141,4 +141,3 @@ void KviThemedComboBox::keyPressEvent(QKeyEvent *e)
 
 	QComboBox::keyPressEvent(e);
 }
-

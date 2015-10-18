@@ -43,4 +43,3 @@ protected:
 
 };
 #endif	//!_CLASS_GROUPBOX_H_
-

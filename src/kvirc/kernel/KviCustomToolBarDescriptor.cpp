@@ -220,4 +220,3 @@ void KviCustomToolBarDescriptor::save(KviConfigurationFile * cfg)
 		i++;
 	}
 }
-

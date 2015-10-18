@@ -114,6 +114,3 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 OptionsWidget_query::~OptionsWidget_query()
 {
 }
-
-
-

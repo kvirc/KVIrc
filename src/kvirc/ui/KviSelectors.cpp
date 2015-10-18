@@ -972,4 +972,3 @@ void KviChannelListSelector::removeClicked()
 	lst.setAutoDelete(true);
 	lst.clear();
 }
-

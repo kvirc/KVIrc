@@ -59,5 +59,3 @@ void OptionsWidget_antispam::reenableStuff(bool)
 	m_b3->setEnabled(m_b1->isChecked() || m_b2->isChecked());
 	m_sl->setEnabled(m_b1->isChecked() || m_b2->isChecked());
 }
-
-

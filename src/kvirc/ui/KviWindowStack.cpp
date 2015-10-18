@@ -144,7 +144,7 @@ void KviWindowStack::fillWindowPopup()
 	QString szCaption;
 
 	KviWindow * pWnd;
-	
+
 	QAction * pAction;
 
 	int idx = 0;
@@ -201,11 +201,11 @@ void KviWindowStack::menuActivated(QAction *pAction)
 
 	if(id > count())
 		return;
-	
+
 	QWidget * w = widget(id);
 	if(!w)
 		return;
-	
+
 	if(!w->inherits("KviWindow"))
 		return;
 

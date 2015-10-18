@@ -706,5 +706,3 @@ void KvsObject_pixmap::frameChanged()
 	KviKvsVariantList *params=0;
 	callFunction(this,"frameChangedEvent",params);
 }
-
-

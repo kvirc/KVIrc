@@ -326,7 +326,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 #if (QT_VERSION >= 0x050000)
 	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
 	qDrawShadePanel(&p,0,0,width(),height(),palette(),true,1,NULL);
-	
+
 	QRect r(1,1,width()-1,height()-1);
 #else
 	QStyleOptionFrameV2 option;
@@ -377,11 +377,11 @@ bool KviInputEditor::checkWordSpelling(const QString &szWord)
 			return true;
 		}
 	}
-	
+
 	KviKvsVariant bCorrect;
 	KviKvsVariantList params(new KviKvsVariant(szWord));
 	KviKvsScript::evaluate("$spellchecker.check($0)", NULL, &params, &bCorrect);
-	
+
 	return bCorrect.asBoolean();
 #else
 	return true; // assume correct
@@ -404,7 +404,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 #ifdef COMPILE_ENCHANT_SUPPORT
 	if(szText.isEmpty())
 		return;
-	
+
 	const QChar * const pBufferBegin = szText.unicode();
 	const QChar * p = pBufferBegin;
 	const QChar * e = pBufferBegin + szText.length();
@@ -416,7 +416,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 			break;
 		p++;
 	}
-	
+
 	if(p > pBufferBegin)
 		ADD_SPELLCHECKER_BLOCK(QString(pBufferBegin,p-pBufferBegin),0,false,false);
 
@@ -424,7 +424,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 	if((p < e) && (p->unicode() == '/'))
 	{
 		const QChar * pCommandBlockBegin = p;
-	
+
 		// a command.
 		p++;
 		// skip spaces
@@ -434,9 +434,9 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 				break;
 			p++;
 		}
-		
+
 		const QChar * pCommandWordBegin = p;
-		
+
 		// skip command word
 		while(p < e)
 		{
@@ -444,11 +444,11 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 				break;
 			p++;
 		}
-		
+
 		if(p > pCommandWordBegin)
 		{
 			QString szCommand = QString(pCommandWordBegin,p - pCommandWordBegin).toLower();
-			
+
 			// common commands that may be spellcheckable
 			static QString szMe("me");
 			static QString szMsg("msg");
@@ -468,7 +468,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 				ADD_SPELLCHECKER_BLOCK(szText,0,false,false);
 				return;
 			}
-			
+
 		}
 
 		ADD_SPELLCHECKER_BLOCK(QString(pCommandBlockBegin,p-pCommandBlockBegin),pCommandBlockBegin - pBufferBegin,false,false);
@@ -536,7 +536,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 
 		p++;
 	}
-	
+
 	if(pWordBegin)
 	{
 		// last word to spellcheck
@@ -554,12 +554,12 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 QString KviInputEditor::checkSpelling(const QString &szText)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
-	
+
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
 	splitTextIntoSpellCheckerBlocks(szText,lBuffer);
-	
+
 	QString szResult;
-	
+
 	for(KviInputEditorSpellCheckerBlock * pBlock = lBuffer.first();pBlock;pBlock = lBuffer.next())
 	{
 		if(pBlock->bSpellCheckable && (!pBlock->bCorrect))
@@ -571,7 +571,7 @@ QString KviInputEditor::checkSpelling(const QString &szText)
 			szResult.append(pBlock->szText);
 		}
 	}
-	
+
 	return szResult;
 #else
 	return szText;
@@ -591,7 +591,7 @@ void KviInputEditor::drawContents(QPainter * p)
 	m_bCurBold       = false;
 	m_bCurUnderline  = false;
 	m_bCurSpellingMistake = false;
-	
+
 	if(m_bTextDisplayBufferDirty)
 	{
 #ifdef COMPILE_ENCHANT_SUPPORT
@@ -1131,7 +1131,7 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 
 	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),this,SLOT(popupTextIconWindow()));
 	pAction->setEnabled(!m_bReadOnly);
-	
+
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spell-checkable block
@@ -1178,7 +1178,7 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks)
 {
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
-	
+
 	for(KviInputEditorSpellCheckerBlock * pBlock = lBlocks.first();pBlock;pBlock = lBlocks.next())
 	{
 		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
@@ -1218,30 +1218,30 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 	if(!pCurrentBlock->bSpellCheckable)
 	{
 		pLabel->setText(__tr2qs("Spelling Checker"));
-	
+
 		m_SpellCheckerPopup.addAction(__tr2qs("No Suggestions Available"))->setEnabled(false);
 	} else {
 
 		pLabel->setText(__tr2qs("Spelling Suggestions for '%1'").arg(pCurrentBlock->szText));
 		m_SpellCheckerPopup.addAction(pWidgetAction);
-	
+
 		KviKvsVariant aRet;
 		KviKvsVariantList params(new KviKvsVariant(pCurrentBlock->szText));
 		KviKvsScript::evaluate("$spellchecker.suggestions($0)", NULL, &params, &aRet);
-	
+
 		KviKvsArrayCast aCast;
 		aRet.castToArray(&aCast);
 
 		KviKvsArray * pArray = aCast.array();
 
 		int s = pArray->size();
-		
+
 		for(int i=0;i<s;i++)
 		{
 			KviKvsVariant * v = pArray->at(i);
 			if(!v)
 				continue;
-			
+
 			QString szWord;
 			v->asString(szWord);
 
@@ -1281,7 +1281,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 		return;
 	if(!pSender->inherits("QAction"))
 		return;
-	
+
 	QAction * pAction = (QAction *)pSender;
 	QString szWord = pAction->text();
 
@@ -1295,7 +1295,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 
 	if(!pCurrentBlock)
 		return; // doh?
-		
+
 	m_iSelectionBegin = pCurrentBlock->iStart;
 	m_iSelectionEnd = pCurrentBlock->iStart + pCurrentBlock->iLength - 1;
 
@@ -3086,4 +3086,3 @@ void KviInputEditor::dummy()
 {
 	// this function does nothing. check the header file for explanation
 }
-

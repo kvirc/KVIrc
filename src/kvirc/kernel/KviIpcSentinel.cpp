@@ -69,7 +69,7 @@
 		static Atom kvi_atom_ipc_remote_message;
 		static KviCString kvi_sentinel_id;
 		static bool g_bIpcAtomsLoaded = false;
-		
+
 		static kvi_u64_t g_uLocalInstanceId = 0;
 
 		static void kvi_ipcLoadAtoms()
@@ -88,18 +88,18 @@
 		{
 			if(!command)
 				return;
-			
+
 			int len = kvi_strLen(command) + 1;
-			
+
 			char * buffer = (char *)::malloc(len + 8);
-			
+
 			*((kvi_u64_t *)buffer) = g_uLocalInstanceId;
-			
+
 			::memcpy(buffer+8,command,len);
-			
+
 			XChangeProperty(kvi_ipc_get_xdisplay(),w,kvi_atom_ipc_remote_command,
 				XA_STRING,8,PropModeReplace,(const unsigned char *)buffer,len+8);
-				
+
 			::free(buffer);
 		}
 
@@ -273,7 +273,7 @@
 
 #else
 	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
-	
+
 		bool KviIpcSentinel::x11GetRemoteMessage()
 		{
 			Atom type;
@@ -281,7 +281,7 @@
 			unsigned long nItems,after;
 			unsigned char * data = 0;
 			KviCString szData;
-			
+
 			if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,false,XA_STRING,
 				&type,&format,&nItems,&after,&data) == Success)
 			{
@@ -293,17 +293,17 @@
 					XFree((char *)data);
 				}
 			}
-			
+
 			if(szData.isEmpty())
 				return false; // no command, or our own command
-				
+
 			kvi_ipcSetRemoteCommand(winId(),"");
 
 			if(g_pApp)
 				g_pApp->ipcMessage(szData.ptr());
 			return true;
 		}
-	
+
 		bool KviIpcSentinel::x11Event(XEvent *e)
 		{
 			if(e->type == ClientMessage)
@@ -344,7 +344,7 @@
 					kvi_u32_t atom;
 					// .. other stuff follows, but we don't care
 				} fake_xcb_property_notify_event_t;
-	
+
 				#define FAKE_XCB_PROPERTY_NOTIFY 28
 
 			}

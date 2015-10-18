@@ -435,9 +435,9 @@ void KviIrcView::applyOptions()
 
 	if(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs))
 		m_iFlushTimer = startTimer(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)*60*1000);
-		
+
 	// Will do nothing if the view is still empty (i.e. called from the constructor)
-	reapplyMessageColors(); 
+	reapplyMessageColors();
 
 	setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
 }
@@ -773,7 +773,7 @@ bool KviIrcView::messageShouldGoToMessageView(int iMsgType)
 			// fall down
 		break;
 	}
-	
+
 	return false;
 }
 
@@ -2817,4 +2817,3 @@ void KviIrcView::scrollToMarker()
 		ensureLineVisible(pLine);
 	}
 }
-

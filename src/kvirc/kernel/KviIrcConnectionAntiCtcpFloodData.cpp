@@ -35,4 +35,3 @@ KviIrcConnectionAntiCtcpFloodData::KviIrcConnectionAntiCtcpFloodData()
 KviIrcConnectionAntiCtcpFloodData::~KviIrcConnectionAntiCtcpFloodData()
 {
 }
-

@@ -174,5 +174,3 @@ KVSO_CLASS_FUNCTION(dockWindow,dock)
 	else c->warning(__tr2qs_ctx("Invalid dock area specified","objects"));
 	return true;
 }
-
-

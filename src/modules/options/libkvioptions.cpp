@@ -305,7 +305,7 @@ static bool options_kvs_cmd_close(KviKvsModuleCommandCall * c)
 		d->close();
 		return true;
 	}
-	
+
 	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szGroup.toUtf8().data());
 	if(!e)
 		return true;
@@ -318,7 +318,7 @@ static bool options_kvs_cmd_close(KviKvsModuleCommandCall * c)
 		return true; // hm?
 
 	w->deleteLater();
-	
+
 	return true;
 }
 

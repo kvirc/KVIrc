@@ -144,4 +144,3 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 		}
 	}
 }
-

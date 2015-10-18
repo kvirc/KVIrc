@@ -227,4 +227,3 @@ QString* KviIrcMessage::messageTagPtr(const QString& szTag) {
 	if (i == m_ParsedMessageTags.end()) return NULL;
 	return &*i;
 }
-

@@ -80,5 +80,3 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 OptionsWidget_ctcp::~OptionsWidget_ctcp()
 {
 }
-
-

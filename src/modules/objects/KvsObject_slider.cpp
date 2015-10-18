@@ -293,6 +293,3 @@ void KvsObject_slider::valueChanged(int value)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)value));
 	callFunction(this,"valueChangedEvent",&params);
 }
-
-
-

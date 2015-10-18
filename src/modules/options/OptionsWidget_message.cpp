@@ -188,9 +188,9 @@ OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
 	addRowSpacer(0,5,3,5);
 
 	layout()->setRowStretch(5,1);
-	
+
 	QPushButton * pReset = addPushButton(3,6,3,6,__tr2qs_ctx("Reset to Default","options"));
-	
+
 	QObject::connect(pReset,SIGNAL(clicked()),this,SLOT(resetToDefaults()));
 }
 
@@ -678,4 +678,3 @@ void OptionsWidget_messageColors::load()
 		}
 	}
 }
-

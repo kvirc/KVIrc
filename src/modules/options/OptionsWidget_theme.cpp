@@ -180,5 +180,3 @@ OptionsWidget_themeToolBarApplets::OptionsWidget_themeToolBarApplets(QWidget * p
 OptionsWidget_themeToolBarApplets::~OptionsWidget_themeToolBarApplets()
 {
 }
-
-

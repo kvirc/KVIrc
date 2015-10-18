@@ -1727,7 +1727,7 @@ void KviIrcConnection::joinChannels(const QList< QPair< QString,QString > > &lCh
 
 	// Sort the list so the channels with passwords come first
 	QList< QPair< QString,QString> > lSorted;
-	
+
 	QPair<QString,QString> oChanAndPass;
 	Q_FOREACH(oChanAndPass,lChannelsAndPasses)
 	{
@@ -1744,11 +1744,11 @@ void KviIrcConnection::joinChannels(const QList< QPair< QString,QString > > &lCh
 	while(lSorted.count() > 0)
 	{
 		QPair<QString,QString> oChanAndPass = lSorted.takeFirst();
-		
+
 		if(!szChans.isEmpty())
 			szChans.append(',');
 		szChans.append(oChanAndPass.first);
-		
+
 		if(!oChanAndPass.second.isEmpty())
 		{
 			if(!szPasses.isEmpty())
@@ -1923,7 +1923,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	if(bJoinStdChannels)
 	{
 		QList< QPair< QString,QString > > lChansAndPass;
-	
+
 		if(target()->network()->autoJoinChannelList())
 		{
 			if(_OUTPUT_VERBOSE)

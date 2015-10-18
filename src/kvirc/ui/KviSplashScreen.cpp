@@ -191,4 +191,3 @@ void KviSplashScreen::fadeTimerShot()
 		}
 	}
 }
-

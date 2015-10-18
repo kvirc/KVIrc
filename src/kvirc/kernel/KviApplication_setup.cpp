@@ -854,4 +854,3 @@ void KviApplication::saveKvircDirectory()
 	cfgx.writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
 	cfgx.writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
 }
-

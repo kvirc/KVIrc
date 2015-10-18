@@ -114,5 +114,3 @@ OptionsWidget_avatar::OptionsWidget_avatar(QWidget * parent)
 OptionsWidget_avatar::~OptionsWidget_avatar()
 {
 }
-
-

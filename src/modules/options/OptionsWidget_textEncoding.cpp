@@ -176,7 +176,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 			itemDesc->setFlags(itemDesc->flags() & ~Qt::ItemIsEditable);
 			m_pSpellCheckerDictionaries->setItem(row,1,itemDesc);
 		}
-		
+
 		m_pSpellCheckerDictionaries->resizeColumnsToContents();
 		m_pSpellCheckerDictionaries->resizeRowsToContents();
 	}
@@ -236,4 +236,3 @@ void OptionsWidget_textEncoding::commit()
 	KviKvsScript::run("spellchecker.reloadDictionaries", NULL);
 #endif
 }
-

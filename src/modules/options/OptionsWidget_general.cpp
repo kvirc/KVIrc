@@ -47,5 +47,3 @@ OptionsWidget_general::OptionsWidget_general(QWidget * parent)
 OptionsWidget_general::~OptionsWidget_general()
 {
 }
-
-

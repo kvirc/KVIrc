@@ -858,5 +858,3 @@ QByteArray KviQueryWindow::loadLogFile(const QString & szFileName, bool bGzip)
 
 	return data;
 }
-
-

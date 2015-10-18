@@ -336,5 +336,3 @@ KVSO_CLASS_FUNCTION(ftp,stateChangedEvent)
 	emitSignal("stateChanged",c,c->params());
 	return true;
 }
-
-

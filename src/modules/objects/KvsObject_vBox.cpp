@@ -207,4 +207,3 @@ KVSO_CLASS_FUNCTION(vBox,setAlignment)
 	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }
-

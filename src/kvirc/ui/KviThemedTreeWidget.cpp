@@ -88,4 +88,3 @@ void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 #endif
 	QTreeWidget::paintEvent(e);
 }
-

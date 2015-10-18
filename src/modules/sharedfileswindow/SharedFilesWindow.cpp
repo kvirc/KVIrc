@@ -730,5 +730,3 @@ void SharedFilesWindow::die()
 //	m_pIrcView->setTimestamp(p->timestamp);
 //	m_pIrcView->setShowImages(p->imagesVisible);
 //}
-
-

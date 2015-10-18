@@ -2111,4 +2111,3 @@ void OptionsWidget_servers::detailsClicked()
 		m_pNetworkDetailsDialog = 0;
 	}
 }
-

@@ -171,5 +171,3 @@ KVSO_CLASS_FUNCTION(window,setCentralWidget)
 	((KviKvsScriptWindowWindow *)widget())->setCentralWidget((KvsObject_widget *)ob,((KvsObject_widget *)ob)->widget());
 	return true;
 }
-
-

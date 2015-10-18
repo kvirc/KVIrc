@@ -468,4 +468,3 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 
 EOF
 #################################################################################
-

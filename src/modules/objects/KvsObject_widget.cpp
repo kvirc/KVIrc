@@ -2036,6 +2036,3 @@ KVSO_CLASS_FUNCTION(widget,grab)
 	c->returnValue()->setHObject(pObject->handle());
 	return true;
 }
-
-
-

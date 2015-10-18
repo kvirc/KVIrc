@@ -67,4 +67,3 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvs
 			m_szIdentifier
 		);
 }
-

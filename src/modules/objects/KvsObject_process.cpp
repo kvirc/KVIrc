@@ -316,5 +316,3 @@ void KvsObject_process::slotReadStderr()
 	KviKvsVariantList *params=0;
 	callFunction(this,"readyReadStderrEvent",params);
 }
-
-

@@ -108,4 +108,3 @@ void SocketSpyWindow::applyOptions()
 	m_pIrcView->applyOptions();
 	KviWindow::applyOptions();
 }
-

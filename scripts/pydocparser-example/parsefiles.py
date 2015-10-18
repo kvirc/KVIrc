@@ -86,4 +86,3 @@ for filename in filelist:
 			outfile.write("</div><br>\n")
 
 outfile.close()
-

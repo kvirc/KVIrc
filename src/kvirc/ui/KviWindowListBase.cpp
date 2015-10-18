@@ -793,5 +793,3 @@ bool KviClassicWindowList::setIterationPointer(KviWindowListItem * it)
 {
 	return (m_pButtonList->findRef((const KviWindowListButton *)it) != -1);
 }
-
-

@@ -72,13 +72,13 @@ bool KviKvsAliasManager::removeNamespace(const QString & szName)
 			lKill.append(it.current()->name());
 		it.moveNext();
 	}
-	
+
 	if(lKill.isEmpty())
 		return false;
-	
+
 	Q_FOREACH(QString szKill,lKill)
 		remove(szKill);
-	
+
 	return true;
 }
 

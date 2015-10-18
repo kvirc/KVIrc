@@ -215,4 +215,3 @@ void OptionsWidget_ircViewMarker::commit()
 	KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle)=m_pMarkerStyle->currentIndex();
 	KviOptionsWidget::commit();
 }
-

@@ -87,5 +87,3 @@ KVSO_CLASS_FUNCTION(dialog,setModal)
 	((QDialog *)widget())->setModal(bEnabled);
 	return true;
 }
-
-

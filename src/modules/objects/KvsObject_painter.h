@@ -129,6 +129,3 @@ private:
 	KviKvsObject * m_pDeviceObject;
 };
 #endif	// !_CLASS_PAINTER_H_
-
-
-

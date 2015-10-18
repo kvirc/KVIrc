@@ -668,4 +668,3 @@ QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem &, con
 		) iHeight = 20;
 	return QSize(treeWidget->viewport()->size().width(), iHeight);
 }
-

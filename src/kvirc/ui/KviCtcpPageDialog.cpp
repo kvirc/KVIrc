@@ -138,4 +138,3 @@ void KviCtcpPageDialog::showEvent(QShowEvent *e)
 	QWidget::showEvent(e);
 	center();
 }
-

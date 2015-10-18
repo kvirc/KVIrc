@@ -931,7 +931,7 @@ private slots:
 	* \return void
 	*/
 	void zoomDefault();
-	
+
 	/**
 	* Shows the text icon window at cursor position
 	*/

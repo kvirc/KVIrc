@@ -252,7 +252,7 @@ QString MpAmipInterface::mrl()
 	} else {
 		szRet = szFn;
 	}
-	
+
 	if(!szRet.startsWith("http://", Qt::CaseInsensitive))
 		szRet.prepend("file://");
 

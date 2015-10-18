@@ -379,5 +379,3 @@ void KviKvsMdmWizard::slotBackClicked()
 KviKvsMdmWizard::~KviKvsMdmWizard()
 {
 }
-
-

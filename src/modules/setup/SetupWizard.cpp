@@ -1125,4 +1125,3 @@ void SetupWizard::accept()
 #endif
 	KviTalWizard::accept();
 }
-

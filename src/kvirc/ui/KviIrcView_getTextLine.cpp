@@ -1192,7 +1192,7 @@ void KviIrcView::reapplyMessageColors()
 		{
 			unsigned char oldBack = pLine->pChunks[0].colors.back;
 			unsigned char oldFore = pLine->pChunks[0].colors.fore;
-		
+
 			for(unsigned int u=0;u<pLine->uChunkCount;u++)
 			{
 				if((pLine->pChunks[u].colors.back == oldBack) && (pLine->pChunks[u].colors.fore == oldFore))
@@ -1202,7 +1202,7 @@ void KviIrcView::reapplyMessageColors()
 				}
 			}
 		}
-	
+
 		pLine = pLine->pNext;
 	}
 }

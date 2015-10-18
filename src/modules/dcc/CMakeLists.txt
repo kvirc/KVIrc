@@ -43,4 +43,3 @@ if(UNIX)
 elseif(WIN32)
 	install(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/pics/)
 endif()
-

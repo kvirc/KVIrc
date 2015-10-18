@@ -34,4 +34,3 @@ KviIrcConnectionNetsplitDetectorData::KviIrcConnectionNetsplitDetectorData()
 KviIrcConnectionNetsplitDetectorData::~KviIrcConnectionNetsplitDetectorData()
 {
 }
-

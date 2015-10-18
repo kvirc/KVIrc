@@ -111,6 +111,3 @@ KVSO_CLASS_FUNCTION(toolBar,clear)
 	((QToolBar *)object())->clear();
 	return true;
 }
-
-
-

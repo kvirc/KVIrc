@@ -142,4 +142,3 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 
 	QLineEdit::paintEvent(event);
 }
-

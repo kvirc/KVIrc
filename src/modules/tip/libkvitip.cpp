@@ -287,4 +287,3 @@ KVIRC_MODULE(
 	tip_module_cleanup,
 	0
 )
-

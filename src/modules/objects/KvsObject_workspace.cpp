@@ -333,4 +333,3 @@ KVSO_CLASS_FUNCTION(workspace,setscrollBarsEnabled)
 	}
 	return true;
 }
-

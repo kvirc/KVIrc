@@ -88,4 +88,3 @@ if(open(THEFILE,">$name"))
 } else {
 	print "No way to open the file $name\n";
 }
-

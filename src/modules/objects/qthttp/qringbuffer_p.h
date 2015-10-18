@@ -373,7 +373,7 @@ public:
             --tailBuffer;
         }
         bufferSize -= qba.length();
-        return qba;        
+        return qba;
     }
 
     // append a new buffer to the end

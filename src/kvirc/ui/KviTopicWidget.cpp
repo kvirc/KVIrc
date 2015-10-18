@@ -700,4 +700,3 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 			break;
 	}
 }
-

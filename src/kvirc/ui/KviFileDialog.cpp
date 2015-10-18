@@ -254,4 +254,3 @@ bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & 
 	delete pDialog;
 	return false;
 }
-

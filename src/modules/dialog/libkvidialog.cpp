@@ -930,4 +930,3 @@ KVIRC_MODULE(
 	dialog_module_cleanup,
 	0
 )
-

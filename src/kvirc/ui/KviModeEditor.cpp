@@ -440,4 +440,3 @@ inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
 		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);
 	return false;
 }
-

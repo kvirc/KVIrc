@@ -1527,4 +1527,3 @@ if(COMPILE_ENABLE_GTKSTYLE AND WANT_QT4)
 endif()
 
 message(STATUS " ")
-

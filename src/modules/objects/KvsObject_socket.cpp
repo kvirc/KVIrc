@@ -746,4 +746,3 @@ KVSO_CLASS_FUNCTION(socket,stateChangedEvent)
 	emitSignal("stateChanged",c,c->params());
 	return true;
 }
-

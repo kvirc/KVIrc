@@ -160,5 +160,3 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 	g_pToolBarContextPopup->popup(QCursor::pos());
 }
-
-

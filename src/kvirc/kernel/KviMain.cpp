@@ -376,7 +376,7 @@ int main(int argc, char ** argv)
 				"http://www.kvirc.net", // homepage
 				"https://github.com/kvirc/KVIrc/issues" // bug address (FIXME: this would be an E-MAIL address...)
 			);
-	
+
 		//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
 		// (eg: kdebase/workspace/kwin/killer/killer.cpp)
 		KCmdLineArgs::init(1, &argv[0], pAboutData);
@@ -392,7 +392,7 @@ int main(int argc, char ** argv)
 				"???", // *some other text* ????
 				"http://www.kvirc.net", // homepage
 				"https://github.com/kvirc/KVIrc/issues" // bug address (FIXME: this would be an E-MAIL address...)
-			);	
+			);
 	#endif //!COMPILE_KDE4_SUPPORT
 #endif
 

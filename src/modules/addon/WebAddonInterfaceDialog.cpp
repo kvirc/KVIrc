@@ -72,4 +72,3 @@ bool WebAddonInterfaceDialog::packageIsInstalled(const QString &szId,const QStri
 
 
 #endif //COMPILE_WEBKIT_SUPPORT
-

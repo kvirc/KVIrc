@@ -82,5 +82,3 @@ OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
 OptionsWidget_ircAdvanced::~OptionsWidget_ircAdvanced()
 {
 }
-
-

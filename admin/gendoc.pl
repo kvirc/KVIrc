@@ -784,7 +784,7 @@ sub process_kvs_syntax
 sub process_body_line
 {
 	my($bInExample);
-	
+
 	$bInExample = $_[1];
 
 	# Kill plain text tags
@@ -964,7 +964,7 @@ sub process_file
 								# If we have the initial tabblock , remove it from the line (remove indentation)
 								$_ =~ s/^$tabblock//g;
 							}
-							
+
 							# Process example code blocks
 							if($iExampleState eq 0)
 							{
@@ -1001,7 +1001,7 @@ sub process_file
 							}
 
 							process_body_line($_,$iExampleState);
-							
+
 
 							$partbody="$partbody$_";
 						}
@@ -1075,7 +1075,7 @@ sub process_file
 			#{
 			#	substitute_keyterms($parts{'switches'},"$docfilename$g_fileextension");
 			#}
-			
+
 			use File::Path;
 			mkpath("$g_directory");
 			if(open(DOCFILE,">$g_directory/$docfilename$g_fileextension"))
@@ -1097,7 +1097,7 @@ sub process_file
 						print_entry("Usage","<div class='syntax-text'>$parts{'usage'}</div>");
 					}
 				}
-				
+
 				if($parts{'parameters'} ne "")
 				{
 					print_entry("Parameters","<font color=\"$g_syntaxcolor\"><pre><code>$parts{'parameters'}</code></pre></font>");

@@ -129,4 +129,3 @@ void Idle::doCheck()
 {
 	secondsIdle(secondsIdle());
 }
-

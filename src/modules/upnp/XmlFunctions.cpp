@@ -124,4 +124,3 @@ QString XmlFunctions::getSource( const QDomNode &node, int indent )
   node.save( textStream, indent );
   return source;
 }
-

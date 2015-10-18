@@ -1273,7 +1273,7 @@ namespace KviKvsCoreSimpleCommands
 			} else KVSCSC_pContext->warning(__tr2qs_ctx("Invalid color-set specification, using default","kvs"));
 		} else {
 			bool bIsMe = pWnd->connection() && KviQString::equalCI(pWnd->connection()->currentNickName(),szNick);
-		
+
 			switch(pWnd->type())
 			{
 				case KviWindow::Channel:

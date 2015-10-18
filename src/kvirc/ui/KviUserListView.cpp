@@ -2478,4 +2478,3 @@ void KviUserListViewArea::wheelEvent(QWheelEvent * e)
 	g_pApp->sendEvent(m_pScrollBar,e);
 	bHere = false;
 }
-
