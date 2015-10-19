@@ -599,7 +599,7 @@ void KviConnectAction::activeContextStateChanged()
 				p = g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED);
 				txt = m_szConnectString;
 			break;
-			case KviIrcContext::PendingRecon:
+			case KviIrcContext::PendingReconnection:
 			case KviIrcContext::Connecting:
 			case KviIrcContext::LoggingIn:
 				p = g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTING);
@@ -663,7 +663,7 @@ bool KviConnectAction::addToPopupMenu(QMenu *p)
 				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
 				p->addAction(t,this,SLOT(activate()));
 			break;
-			case KviIrcContext::PendingRecon:
+			case KviIrcContext::PendingReconnection:
 			case KviIrcContext::Connecting:
 			case KviIrcContext::LoggingIn:
 				t = m_szAbortConnectionString;

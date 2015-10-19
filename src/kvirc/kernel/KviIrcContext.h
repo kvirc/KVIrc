@@ -74,7 +74,7 @@ public:
 	enum State
 	{
 		Idle,         // connection() == 0
-		PendingRecon, // connection() == 0
+		PendingReconnection, // connection() == 0
 		Connecting,   // connection() != 0
 		LoggingIn,    // connection() != 0
 		Connected     // connection() != 0

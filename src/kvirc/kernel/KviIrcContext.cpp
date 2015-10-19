@@ -346,7 +346,7 @@ void KviIrcContext::setState(State eState)
 
 	emit stateChanged();
 
-	if(eState == KviIrcContext::Idle || eState == KviIrcContext::PendingRecon)destroyConnection();
+	if(eState == KviIrcContext::Idle || eState == KviIrcContext::PendingReconnection)destroyConnection();
 
 	m_pConsole->updateCaption();
 }
@@ -383,7 +383,7 @@ void KviIrcContext::connectButtonClicked()
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 				__tr2qs("Reconnect attempt aborted"));
 
-			if(m_eState == KviIrcContext::PendingRecon)
+			if(m_eState == KviIrcContext::PendingReconnection)
 				setState(Idle);
 
 			return;
@@ -652,7 +652,7 @@ void KviIrcContext::connectionFailed(int iError)
 			setAsynchronousConnectionData(d);
 			beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
 
-			setState(PendingRecon); // destroy the actual connection
+			setState(PendingReconnection); // destroy the actual connection
 
 			return;
 		} else {
@@ -785,7 +785,7 @@ void KviIrcContext::connectionTerminated()
 
 	if(bUnexpectedDisconnect && KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect))
 	{
-		setState(PendingRecon);
+		setState(PendingReconnection);
 
 		//m_uConnectAttemptCount = 1;
 		if(!_OUTPUT_MUTE)
@@ -884,7 +884,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 			}
 		}
 		break;
-		case PendingRecon:
+		case PendingReconnection:
 		case Connecting:
 		case LoggingIn:
 			// was waiting for connection or login, just abort it: it will trigger an error anyway

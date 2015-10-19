@@ -1119,7 +1119,7 @@ void KviConsoleWindow::fillStatusString()
 		case KviIrcContext::Idle:
 			m_szStatusString = __tr2qs("No connection");
 		break;
-		case KviIrcContext::PendingRecon:
+		case KviIrcContext::PendingReconnection:
 			m_szStatusString = __tr2qs("Waiting to reconnect...");
 		break;
 		case KviIrcContext::Connecting:
