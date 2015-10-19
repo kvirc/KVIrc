@@ -241,6 +241,15 @@ public:
 	virtual const char * getSoftware() { return "Nemesis"; };
 };
 
+class KVIRC_API KviNemesis20IrcServerInfo : public KviUnreal32IrcServerInfo
+{
+public:
+	KviNemesis20IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviUnreal32IrcServerInfo(pParent, version) {;};
+	virtual const char * getSoftware() { return "Nemesis2.0"; };
+	virtual bool getNeedsOperToSetS() { return false; };
+};
+
 class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
 {
 	// dalnet, azzurranet

@@ -257,6 +257,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviPlexusIrcServerInfo(this, version);
 	else if(version.contains("criten",Qt::CaseInsensitive))
 		m_pServInfo = new KviCritenIrcServerInfo(this, version);
+	else if(version.contains("nemesis2.0",Qt::CaseInsensitive))
+		m_pServInfo = new KviNemesis20IrcServerInfo(this, version);
 	else if(version.contains("nemesis",Qt::CaseInsensitive))
 		m_pServInfo = new KviNemesisIrcServerInfo(this, version);
 	else if(version.contains("oftc",Qt::CaseInsensitive))
