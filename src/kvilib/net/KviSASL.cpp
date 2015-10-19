@@ -59,4 +59,4 @@ namespace KviSASL
 		return false;
 	}
 
-};
+}
