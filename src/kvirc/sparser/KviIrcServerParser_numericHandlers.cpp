@@ -1049,6 +1049,27 @@ void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericForward(KviIrcMessage *msg)
+{
+	// 470: ERR_LINKCHANNEL
+	// :prefix 470 target <oldchan> <newchan> :Forwarding to another channel
+	QString pref      = msg->connection()->decodeText(msg->safePrefix());
+	QString szOldChan = msg->connection()->decodeText(msg->safeParam(1));
+	QString szNewChan = msg->connection()->decodeText(msg->safeParam(2));
+
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		// This technically isn't a notice, yet it is fairly useful information.
+		// The server gives us good data with a pretty unusable description. So
+		// what we are doing is concatenating the generic server notice prefix
+		// with a more useful message so gettext can parse our final output easier.
+		pOut->output(KVI_OUT_SERVERNOTICE,msg->serverTime(),
+			"[\r!s\r%Q\r]: "+__tr2qs("You are being forwarded from %Q to %Q"),&pref,&szOldChan,&szNewChan);
+	}
+}
+
 void KviIrcServerParser::parseNumericCantJoinChannel(KviIrcMessage *msg)
 {
 	// 471: ERR_CHANNELISFULL [I,E,U,D]

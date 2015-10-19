@@ -546,7 +546,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(otherChannelError),                          // 467 ERR_KEYSET
 	0,                                               // 468 ERR_ONLYSERVERSCANCHANGE
 	0,                                               // 469 ERR_LINKSET
-	0,                                               // 470 ERR_LINKCHANNEL, ERR_KICKEDFROMCHAN
+	PTM(parseNumericForward),                        // 470 ERR_LINKCHANNEL, ERR_KICKEDFROMCHAN
 	PTM(parseNumericCantJoinChannel)               , // 471 ERR_CHANNELISFULL
 	PTM(otherChannelError),                          // 472 ERR_UNKNOWNMODE
 	PTM(parseNumericCantJoinChannel)               , // 473 ERR_INVITEONLYCHAN
