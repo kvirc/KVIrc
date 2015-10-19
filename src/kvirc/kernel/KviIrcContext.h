@@ -74,12 +74,13 @@ public:
 	enum State
 	{
 		Idle,         // connection() == 0
+		PendingRecon, // connection() == 0
 		Connecting,   // connection() != 0
 		LoggingIn,    // connection() != 0
 		Connected     // connection() != 0
 	};
 protected:
-	KviConsoleWindow                       * m_pConsole;             // shallow, never null
+	KviConsoleWindow                 * m_pConsole;             // shallow, never null
 	KviIrcConnection                 * m_pConnection;
 
 	unsigned int                       m_uId;                  // this irc context id

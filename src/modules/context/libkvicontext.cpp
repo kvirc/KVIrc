@@ -434,6 +434,9 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 			case KviIrcContext::Idle:
 				c->returnValue()->setString(QString("idle"));
 			break;
+			case KviIrcContext::PendingRecon:
+				c->returnValue()->setString(QString("pending"));
+			break;
 			case KviIrcContext::Connecting:
 				c->returnValue()->setString(QString("connecting"));
 			break;

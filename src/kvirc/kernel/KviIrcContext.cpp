@@ -346,7 +346,7 @@ void KviIrcContext::setState(State eState)
 
 	emit stateChanged();
 
-	if(eState == KviIrcContext::Idle)destroyConnection();
+	if(eState == KviIrcContext::Idle || eState == KviIrcContext::PendingRecon)destroyConnection();
 
 	m_pConsole->updateCaption();
 }
@@ -382,6 +382,9 @@ void KviIrcContext::connectButtonClicked()
 
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 				__tr2qs("Reconnect attempt aborted"));
+
+			if(m_eState == KviIrcContext::PendingRecon)
+				setState(Idle);
 
 			return;
 		}
@@ -649,7 +652,7 @@ void KviIrcContext::connectionFailed(int iError)
 			setAsynchronousConnectionData(d);
 			beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
 
-			setState(Idle); // destroy the actual connection
+			setState(PendingRecon); // destroy the actual connection
 
 			return;
 		} else {
@@ -766,8 +769,6 @@ void KviIrcContext::connectionTerminated()
 			connection()->keepQueriesOpenAfterDisconnect();
 	}
 
-	setState(Idle);
-
 	bool bStopOutput = false;
 
 	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionTerminated,m_pConsole);
@@ -784,6 +785,8 @@ void KviIrcContext::connectionTerminated()
 
 	if(bUnexpectedDisconnect && KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect))
 	{
+		setState(PendingRecon);
+
 		//m_uConnectAttemptCount = 1;
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
@@ -803,6 +806,8 @@ void KviIrcContext::connectionTerminated()
 		setAsynchronousConnectionData(d);
 
 		beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
+	} else {
+		setState(Idle);
 	}
 }
 
@@ -879,6 +884,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 			}
 		}
 		break;
+		case PendingRecon:
 		case Connecting:
 		case LoggingIn:
 			// was waiting for connection or login, just abort it: it will trigger an error anyway
@@ -907,4 +913,3 @@ void KviIrcContext::timerEvent(QTimerEvent * e)
 	if(m_pConnection)
 		m_pConnection->heartbeat(tNow);
 }
-
