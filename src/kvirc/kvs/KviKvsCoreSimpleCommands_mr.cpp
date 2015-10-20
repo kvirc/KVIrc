@@ -58,6 +58,26 @@ namespace KviKvsCoreSimpleCommands
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
+		@doc: map
+		@type:
+			command
+		@title:
+			map
+		@syntax:
+			map
+		@short:
+			Displays a map of connected servers
+		@description:
+			Displays a graphical map of servers along with the current number of users on each server.[br]
+			Some IRCds will also display information such as lag, recent splits, and SID.[br]
+		@seealso:
+			[cmd]links[/cmd]
+	*/
+	// RFC2812 wrapper
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 		@doc: me
 		@type:
 			command

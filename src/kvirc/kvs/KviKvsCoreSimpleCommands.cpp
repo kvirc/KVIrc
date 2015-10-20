@@ -93,6 +93,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("listtimers",listtimers)
 		_REGCMD("lusers",rfc2812wrapper)
 		// m_r
+		_REGCMD("map",rfc2812wrapper) // Technically not RFC
 		_REGCMD("me",me)
 		_REGCMD("mode",mode)
 		_REGCMD("motd",rfc2812wrapper)

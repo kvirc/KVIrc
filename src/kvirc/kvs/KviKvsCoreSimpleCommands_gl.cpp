@@ -575,6 +575,8 @@ namespace KviKvsCoreSimpleCommands
 			List server links.[br]
 			The syntax of the parameters of this command is different on many servers.[br]
 			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+		@seealso:
+			[cmd]map[/cmd]
 	*/
 	// RFC2821 wrapper
 
