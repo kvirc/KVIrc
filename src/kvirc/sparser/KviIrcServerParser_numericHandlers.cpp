@@ -1090,6 +1090,18 @@ void KviIrcServerParser::parseNumericCantJoinChannel(KviIrcMessage *msg)
 
 // Keep the source ordered: this should be named "parseOtherChannelError"
 
+void KviIrcServerParser::parseNumericNoPrivs(KviIrcMessage *msg)
+{
+	// 481: ERR_NOPRIVILEGES
+	// :prefix 481 <target> :Permission Denied - You're not an IRC operator
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_GENERICERROR,szText);
+	}
+}
+
 void KviIrcServerParser::otherChannelError(KviIrcMessage *msg)
 {
 	// 482: ERR_CHANOPRIVSNEEDED

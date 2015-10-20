@@ -217,6 +217,7 @@ private:
 	void parseNumericCannotSendColor(KviIrcMessage *msg);
 	void parseNumericEndOfStats(KviIrcMessage *msg);
 	void parseNumericForward(KviIrcMessage *msg);
+	void parseNumericNoPrivs(KviIrcMessage *msg);
 	void otherChannelError(KviIrcMessage *msg);
 	void parseCommandSyntaxHelp(KviIrcMessage *msg);
 	void parseCommandHelp(KviIrcMessage *msg);

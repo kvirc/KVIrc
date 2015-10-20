@@ -557,7 +557,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 478 ERR_BANLISTFULL
 	0,                                               // 479 ERR_BADCHANNAME, ERR_LINKFAIL
 	PTM(parseNumeric480),                            // 480 ERR_NOULINE, ERR_CANNOTKNOCK, ERR_SSLONLYCHAN
-	0,                                               // 481 ERR_NOPRIVILEGES
+	PTM(parseNumericNoPrivs),                        // 481 ERR_NOPRIVILEGES
 	PTM(otherChannelError),                          // 482 ERR_CHANOPRIVSNEEDED
 	0,                                               // 483 ERR_CANTKILLSERVER
 	0,                                               // 484 ERR_RESTRICTED, ERR_ISCHANSERVICE, ERR_DESYNC, ERR_ATTACKDENY
