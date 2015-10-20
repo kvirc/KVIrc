@@ -346,7 +346,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_KVIRCRUHOMEPAGE,
 		"openurl http://www.kvirc.ru",
 		__tr2qs("KVIrc Russian WWW"),
-		__tr2qs("Opens the KVIrc homepage in russian"),
+		__tr2qs("Opens the KVIrc homepage in Russian"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_homepage.png",
 		KviIconManager::HomePage,
@@ -357,7 +357,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_SCREENSHOT,
 		"theme.screenshot",
 		__tr2qs("Acquire Screenshot"),
-		__tr2qs("Acquires a Screenshot of the KVIrc main window"),
+		__tr2qs("Acquires a screenshot of the KVIrc main window"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_screenshot.png",
 		KviIconManager::ScreenShot,
@@ -378,7 +378,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_IOGRAPH,
 		"iograph.open",
-		__tr2qs("Show I/O &Traffic graph"),
+		__tr2qs("Show I/O &Traffic Graph"),
 		__tr2qs("Shows a graph representing I/O bandwidth traffic"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_sysmonitor.png",
@@ -412,7 +412,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_URLLIST,
 		"url.list",
 		__tr2qs("View URL list"),
-		__tr2qs("Shows a window that list catched urls"),
+		__tr2qs("Shows a window that lists caught urls"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_url.png",
 		KviIconManager::Url,
@@ -522,8 +522,6 @@ void KviIrcContextDisplayAction::setEnabled(bool)
 {
 	// does nothing here : always enabled!
 }
-
-
 
 
 KviSeparatorAction::KviSeparatorAction(QObject * pParent)
@@ -808,9 +806,9 @@ void KviJoinChannelAction::popupAboutToShow()
 	g_pApp->fillRecentChannelsPopup(m_pPopup,c);
 
     m_pPopup->addSeparator();
-	m_pPopup->addAction(*(smallIcon()),__tr2qs("Other..."));
+	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Other..."));
     m_pPopup->addSeparator();
-	m_pPopup->addAction(__tr2qs("Clear Recent Channels List"));
+	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Channels List"));
 }
 
 void KviJoinChannelAction::popupActivated(QAction *pAction)
@@ -863,10 +861,10 @@ void KviChangeNickAction::popupAboutToShow()
 	g_pApp->fillRecentNicknamesPopup(m_pPopup,c);
 
     m_pPopup->addSeparator();
-	m_pPopup->addAction(*(smallIcon()),__tr2qs("Other..."));
+	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NickPopup)),__tr2qs("Other..."));
 
     m_pPopup->addSeparator();
-	m_pPopup->addAction(*(smallIcon()),__tr2qs("Clear Recent Nicks List"));
+	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Nicks List"));
 }
 
 void KviChangeNickAction::popupActivated(QAction *pAction)
@@ -913,7 +911,7 @@ void KviConnectToServerAction::popupAboutToShow()
     m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs("Other..."));
     m_pPopup->addSeparator();
-	m_pPopup->addAction(__tr2qs("Clear Recent Servers List"));
+	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Servers List"));
 }
 
 void KviConnectToServerAction::popupActivated(QAction *pAction)
@@ -1171,7 +1169,7 @@ KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
 	QString(KVI_COREACTION_IRCTOOLS),
 	QString(""),
 	__tr2qs("Irc Tools"),
-	__tr2qs("Shows a popup menu with some IRC Tools"),
+	__tr2qs("Shows a popup menu with some IRC tools"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_tools.png",
 	KviIconManager::Tools,
@@ -1204,7 +1202,7 @@ KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
 	QString(KVI_COREACTION_IRCACTIONS),
 	QString(""),
 	__tr2qs("Irc Actions"),
-	__tr2qs("Shows a popup menu with some IRC Actions"),
+	__tr2qs("Shows a popup menu with some IRC actions"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_actions.png",
 	KviIconManager::Action,
