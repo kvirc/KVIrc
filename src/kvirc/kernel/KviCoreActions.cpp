@@ -963,7 +963,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 	QAction *pAction;
 	QString szModes = g_pActiveWindow->connection()->serverInfo()->supportedUserModes();
 
-	pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::WallOps)),__tr2qs("w: Wallops"));
+	pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::WallOps)),__tr2qs("w: WALLOPS"));
 	pAction->setCheckable(true);
 	pAction->setChecked(c->connection()->userInfo()->hasUserMode('w'));
 
@@ -1168,7 +1168,7 @@ KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_IRCTOOLS),
 	QString(""),
-	__tr2qs("Irc Tools"),
+	__tr2qs("IRC Tools"),
 	__tr2qs("Shows a popup menu with some IRC tools"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_tools.png",
@@ -1201,7 +1201,7 @@ KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_IRCACTIONS),
 	QString(""),
-	__tr2qs("Irc Actions"),
+	__tr2qs("IRC Actions"),
 	__tr2qs("Shows a popup menu with some IRC actions"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_actions.png",
