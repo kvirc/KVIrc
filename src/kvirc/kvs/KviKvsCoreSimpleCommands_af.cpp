@@ -75,9 +75,9 @@ namespace KviKvsCoreSimpleCommands
 			Requests the admin info from a server
 		@description:
 			Requests admin information from the specified server or the current server if no [target server] is specified.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -627,9 +627,9 @@ namespace KviKvsCoreSimpleCommands
 			This is a not-widely implemented extension
 			that allows the user to set the codepage mapping
 			on server.
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 

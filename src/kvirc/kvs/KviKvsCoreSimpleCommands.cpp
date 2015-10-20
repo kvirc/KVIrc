@@ -236,16 +236,16 @@ namespace KviKvsCoreSimpleCommands
 	}
 
 	/*
-		@doc: rfc2821wrappers
+		@doc: rfc2812wrappers
 		@title:
-			RFC2821 Wrappers
+			RFC2812 Wrappers
 		@type:
 			generic
 		@short:
-			Wrappers for rfc2821 commands
+			Wrappers for rfc2812 commands
 		@body:
 			Some less used KVIrc commands are implemented as simple wrappers
-			around the standard [doc]rfc2821[/doc] commands.[br]
+			around the standard [doc]rfc2812[/doc] commands.[br]
 			For example, the /[cmd:oper]OPER[/cmd] command will be used only by server operators
 			and probably only once per connection.[br]
 			These commands should only be needed by experienced IRC users.

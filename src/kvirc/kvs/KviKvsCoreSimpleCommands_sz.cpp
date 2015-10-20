@@ -334,7 +334,7 @@ namespace KviKvsCoreSimpleCommands
 			Registers a new service
 		@description:
 			Registers a new IRC service: this is for IRC operators only.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 			WARNING: the <info> parameter may contain spaces: in that case you MUST add the leading ':' character.[br]
 	*/
 	// RFC2921 wrapper
@@ -483,9 +483,9 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Requests the sockets information from the specified server or the current server if no [remote server] is specified.[br]
 			The reply can be filtered by <server mask>.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -557,11 +557,11 @@ namespace KviKvsCoreSimpleCommands
 			Disconnects a server socket (ircops only)
 		@description:
 			Disconnects a server socket: this is for IRC operators only.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 			WARNING: the <comment> parameter may contain spaces: in that case you MUST add the leading ':' character
 			before.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -615,9 +615,9 @@ namespace KviKvsCoreSimpleCommands
 			Requests the stats information from the specified server or the current server if no [target server] is specified.[br]
 			The query parameter is usually a letter indicating the type of the query requested: some query letters
 			are defined by [doc]rfc2812[/doc] and some others are server implementation dependant.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -633,9 +633,9 @@ namespace KviKvsCoreSimpleCommands
 			Requests the current local time info from a server
 		@description:
 			Requests time information from the specified server or the current server if no [target server] is specified.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -712,9 +712,9 @@ namespace KviKvsCoreSimpleCommands
 			Requests trace information about a specified machine in the network
 		@description:
 			Requests trace information about a specified machine in the network.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -911,9 +911,9 @@ namespace KviKvsCoreSimpleCommands
 			Requests the version of a server
 		@description:
 			Requests the version information from the specified server or the current server if no [target server] is specified.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
-	// RFC2821 wrapper
+	// RFC2812 wrapper
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
