@@ -792,9 +792,9 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 713 ERR_CHANOPEN
 	0,                                               // 714 ERR_KNOCKONCHAN
 	0,                                               // 715 ERR_KNOCKDISABLED
-	0,                                               // 716 RPL_TARGUMODEG
-	0,                                               // 717 RPL_TARGNOTIFY
-	PTM(parseNumericUmodeGMsg),                      // 718 RPL_UMODEGMSG
+	PTM(parseNumericNotifyGeneric),                  // 716 RPL_TARGUMODEG
+	PTM(parseNumericNotifyGeneric),                  // 717 RPL_TARGNOTIFY
+	PTM(parseNumericYouHaveCallerID),                // 718 RPL_UMODEGMSG
 	0,                                               // 719
 	0,                                               // 720 RPL_OMOTDSTART
 	0,                                               // 721 RPL_OMOTD

@@ -218,7 +218,8 @@ private:
 	void parseNumericEndOfStats(KviIrcMessage *msg);
 	void parseNumericForward(KviIrcMessage *msg);
 	void parseNumericNoPrivs(KviIrcMessage *msg);
-	void parseNumericUmodeGMsg(KviIrcMessage *msg);
+	void parseNumericNotifyGeneric(KviIrcMessage * msg);
+	void parseNumericYouHaveCallerID(KviIrcMessage * msg);
 	void otherChannelError(KviIrcMessage *msg);
 	void parseCommandSyntaxHelp(KviIrcMessage *msg);
 	void parseCommandHelp(KviIrcMessage *msg);

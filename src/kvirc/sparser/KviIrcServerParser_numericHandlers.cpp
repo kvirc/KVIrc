@@ -1145,19 +1145,45 @@ void KviIrcServerParser::parseCommandHelp(KviIrcMessage *msg)
 	}
 }
 
-void KviIrcServerParser::parseNumericUmodeGMsg(KviIrcMessage * msg)
+
+void KviIrcServerParser::parseNumericNotifyGeneric(KviIrcMessage * msg)
+{
+	// 716 RPL_TARGUMODEG
+	// 717 RPL_TARGNOTIFY
+	// :prefix 71? target <nick> :has been informed that you messaged them.
+	if(!msg->haltOutput())
+	{
+		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+
+		// Send this to the active query, since if they are trying to message this
+		// user then it should appear directly within the window. Otherwise, just
+		// send it to console.
+		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNick));
+
+		if(!pOut)
+			pOut = (KviWindow *)(msg->console());
+
+		pOut->output(KVI_OUT_HELP,"%Q %Q",&szNick,&szText);
+	}
+}
+
+void KviIrcServerParser::parseNumericYouHaveCallerID(KviIrcMessage * msg)
 {
 	// 718 RPL_UMODEGMSG
 	// IRC is one of the most inconsistent enigmas on the face of the earth.
 	// :prefix 718 <target> <remote nick[ [user@host]]> :is messaging you, and you are umode +g or +G.
 	if(!msg->haltOutput())
 	{
-		KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
-
-		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szRemoteUser = msg->connection()->decodeText(msg->safeParam(1));
 		QString szRemoteHost = msg->connection()->decodeText(msg->safeParam(2));
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+
+		// This would be ironic if it hit, but you never know...
+		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szRemoteUser));
+
+		if(!pOut)
+			pOut = (KviWindow *)(msg->console());
 
 		// Because some IRCds return the host jammed together with the nick in an awkward way, making one
 		// less paramter returned in RPL_UMODEGMSG.
