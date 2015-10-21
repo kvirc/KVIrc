@@ -255,7 +255,8 @@
 #define RPL_USERS            393 /* [I,E,D] */
 #define RPL_ENDOFUSERS       394 /* [I,E,D] */
 #define RPL_NOUSERS          395 /* [I,E,D] */
-//      RPL_?????????    396-399
+#define RPL_HOSTHIDDEN       396
+//      RPL_?????????    397-399
 
 // = 400-599 ====================================================================================//
 //
@@ -322,7 +323,8 @@
 #define ERR_KEYSET           467 /* "%s :Channel key already set" [I,E,U,D] */
 #define ERR_INVALIDUSERNAME  468 /* ??? [U,?] */
 //#define ERR_ONLYSERVERSCANCHANGE 468 /* ??? [D] */
-//      ERR_???????????  469-470
+//      ERR_???????????  469
+#define ERR_LINKCHANNEL      470 /* "%s :Forwarding to another channel" */
 #define ERR_CHANNELISFULL    471 /* "%s :Cannot join channel (+l)" [I,E,U,D]                       # */
 #define ERR_UNKNOWNMODE      472 /* "%c :is unknown mode char to me"  [I,E,U,D] */
 #define ERR_INVITEONLYCHAN   473 /* "%s :Cannot join channel (+i)" [I,E,U,D]                       # */
@@ -372,6 +374,7 @@
 // WeNet codepage extension
 #define RPL_CODEPAGESET      700 /* :irc.wenet.ru 700 Pragma CP1251 :is now your translation scheme # */
 #define RPL_WHOISSCHEME      703 /* :interdacom.vgd.wenet.ru 703 Alexey Begemot KOI8-R :translation scheme */
+#define RPL_UMODEGMSG        718 /* :graviton.oftc.net 718 BlindSight BlindSight2[ [~kvirc64@host]] :is messaging you, and you are umode +g or +G. */
 // Quiet ban listing (freenode)
 #define RPL_QUIETLIST        728 /* :sendak.freenode.net 728 CtrlAltCa #kde q *!*@* sendak.freenode.net 1436979239 */
 #define RPL_QUIETLISTEND     729 /* :sendak.freenode.net 729 CtrlAltCa #kde q :End of Channel Quiet List */
