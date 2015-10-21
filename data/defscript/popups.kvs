@@ -254,7 +254,7 @@ defpopup(ctcp)
 		ctcp $0 CLIENTINFO
 	}
 
-	item(SOURCE,14)
+	item(SOURCE,55)
 	{
 		ctcp $0 SOURCE
 	}
@@ -319,7 +319,7 @@ defpopup(consoletextview)
 
 		popup(/STATS,205)
 		{
-			item(d "(Debug/DNS?)")
+			item($tr("d (Debug/DNS?)","defscript"))
 			{
 				stats d
 			}
@@ -329,22 +329,22 @@ defpopup(consoletextview)
 				stats l
 			}
 
-			item($tr("m (Command Usage)","defscript"),205)
+			item($tr("m (Command Usage)","defscript"))
 			{
 				stats m
 			}
 
-			item($tr("o (Operators)","defscript"),213)
+			item($tr("o (Operators)","defscript"))
 			{
 				stats o
 			}
 
-			item($tr("t (Connection stats?)","defscript"),205)
+			item($tr("t (Connection stats?)","defscript"))
 			{
 				stats t
 			}
 
-			item($tr("u (Uptime)","defscript"),93)
+			item($tr("u (Uptime)","defscript"))
 			{
 				stats u
 			}
@@ -354,7 +354,7 @@ defpopup(consoletextview)
 				stats y
 			}
 
-			item($tr("z (Debug Stats?)","defscript"),11)
+			item($tr("z (Debug Stats?)","defscript"))
 			{
 				stats z
 			}
@@ -439,15 +439,6 @@ defpopup(windowpopup)
 		}
 	}
 
-	label($window.caption);
-
-	item($tr("Close","defscript"),1)
-	{
-		window.close
-	}
-
-	separator
-
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
@@ -456,6 +447,30 @@ defpopup(windowpopup)
 	item($tr("Undock","defscript"),7) ($window.isDocked())
 	{
 		window.undock
+	}
+
+	separator
+
+	item($tr("Minimize","defscript"),3) (!$window.isMinimized())
+	{
+		window.minimize
+	}
+
+	item($tr("Maximize","defscript"),2) (!$window.isMaximized())
+	{
+		window.maximize
+	}
+
+	item($tr("Restore","defscript"),4) ($window.isMinimized() || $window.isMaximized())
+	{
+		window.restore
+	}
+
+	separator
+
+	item($tr("Close","defscript"),1)
+	{
+		window.close
 	}
 
 	separator
@@ -992,7 +1007,7 @@ defpopup(ignore)
 		reguser.setIgnoreEnabled %:regName 1;
 	}
 
-	popup($tr("Ignore as...","defscript"),195) (!%:inIgnoreList)
+	popup($tr("Ignore as...","defscript"),69) (!%:inIgnoreList)
 	{
 		item($tr("Ignore as","defscript") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
 		{
@@ -1184,7 +1199,7 @@ defpopup(ignore)
 		}
 	}
 
-	item($tr("Unignore","defscript"),196) (%:inIgnoreList)
+	item($tr("Unignore","defscript"),68) (%:inIgnoreList)
 	{
 		reguser.setIgnoreEnabled %:regName 0;
 	}
@@ -1459,12 +1474,12 @@ defpopup(channel)
 			}
 		}
 
-		item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",67) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
+		item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",110) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
 		{
 			ban $mask($0,$option(uintDefaultBanType))
 		}
 
-		item(%:itemBanName %:visible "("%:itemBanNick!*@*")",67) (%:bCanKB)
+		item(%:itemBanName %:visible "("%:itemBanNick!*@*")",110) (%:bCanKB)
 		{
 			ban $0
 		}
