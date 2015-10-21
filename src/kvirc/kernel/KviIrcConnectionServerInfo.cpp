@@ -1174,13 +1174,15 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
 		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'X': return __tr2qs("Channel Exemptions"); break;
 		case 'a': return __tr2qs("Protected/administrator nicks"); break;
 		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'f': return __tr2qs("Kick/[*]ban on message flood ([*]<num>:<secs>)"); break;
-		case 'g': return __tr2qs("Block message matching"); break;
+		case 'g': return __tr2qs("Spam filter"); break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
 		case 'q': return __tr2qs("Channel owners"); break;
 		case 'u': return __tr2qs("Auditorium: /NAMES and /WHO show only ops"); break;
+		case 'w': return __tr2qs("Channel Access"); break;
 		case 'y': return __tr2qs("Channel IRC op"); break;
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
 	}

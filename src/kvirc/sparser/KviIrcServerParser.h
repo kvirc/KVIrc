@@ -162,6 +162,10 @@ private:
 	void parseNumericEndOfAList(KviIrcMessage *msg);
 	void parseNumericReopList(KviIrcMessage *msg);
 	void parseNumericEndOfReopList(KviIrcMessage * msg);
+	void parseNumericChanAccessList(KviIrcMessage * msg);
+	void parseNumericEndOfChanAccessList(KviIrcMessage * msg);
+	void parseNumericExemptChanOpList(KviIrcMessage * msg);
+	void parseNumericEndOfExemptChanOpList(KviIrcMessage * msg);
 	void parseNumericInvited(KviIrcMessage * msg);
 	void parseNumericSpamFilterList(KviIrcMessage *msg);
 	void parseNumericEndOfSpamFilterList(KviIrcMessage *msg);

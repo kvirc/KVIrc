@@ -796,6 +796,8 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfQList,'q',KVI_OUT_BAN,__tr2qs("owner li
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfAList,'a',KVI_OUT_BAN,__tr2qs("protected/admin list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("spam filter list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfChanAccessList,'w',KVI_OUT_INVITEEXCEPT,__tr2qs("channel access list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExemptChanOpList,'X',KVI_OUT_INVITEEXCEPT,__tr2qs("channel exemptions list"))
 
 #define PARSE_NUMERIC_LIST(__funcname,__modechar,__ico,__szWhatQString) \
 	void KviIrcServerParser::__funcname(KviIrcMessage *msg) \
@@ -830,6 +832,8 @@ PARSE_NUMERIC_LIST(parseNumericQList,'q',KVI_OUT_BAN,__tr2qs("Owner listing"));
 PARSE_NUMERIC_LIST(parseNumericAList,'a',KVI_OUT_BAN,__tr2qs("Admin/protected nicks listing"));
 PARSE_NUMERIC_LIST(parseNumericReopList,'R',KVI_OUT_BAN,__tr2qs("Reop masks listing"));
 PARSE_NUMERIC_LIST(parseNumericSpamFilterList,'g',KVI_OUT_BAN,__tr2qs("Spam filter listing"));
+PARSE_NUMERIC_LIST(parseNumericChanAccessList,'w',KVI_OUT_INVITEEXCEPT,__tr2qs("Channel access listing"));
+PARSE_NUMERIC_LIST(parseNumericExemptChanOpList,'X',KVI_OUT_INVITEEXCEPT,__tr2qs("Channel exemptions listing"));
 
 void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 {

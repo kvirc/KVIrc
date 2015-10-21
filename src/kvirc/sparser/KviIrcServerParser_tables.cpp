@@ -491,7 +491,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 412 ERR_NOTEXTTOSEND
 	0,                                               // 413 ERR_NOTOPLEVEL
 	0,                                               // 414 ERR_WILDTOPLEVEL
-	0,                                               // 415 ERR_BADMASK
+	PTM(otherChannelError),                          // 415 ERR_BADMASK
 	0,                                               // 416 ERR_TOOMANYMATCHES, ERR_QUERYTOOLONG
 	0,                                               // 417
 	0,                                               // 418
@@ -986,8 +986,8 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericSaslFail),                       // 907 RPL_SASLALREADYAUTH
 	PTM(parseNumericSaslFail),                       // 908 RPL_SASLMECHS
 	0,                                               // 909
-	0,                                               // 910
-	0,                                               // 911
+	PTM(parseNumericChanAccessList),                 // 910 RPL_CHANACCESS
+	PTM(parseNumericEndOfChanAccessList),            // 911 RPL_ENDOFCHANACCESS
 	0,                                               // 912
 	0,                                               // 913
 	0,                                               // 914
@@ -1011,11 +1011,11 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 932
 	0,                                               // 933
 	0,                                               // 934
-	0,                                               // 935
+	PTM(otherChannelError),                          // 935 RPL_WORDFILTERTOOLONG
 	0,                                               // 936 RPL_WORDFILTERED
-	0,                                               // 937
-	0,                                               // 938
-	0,                                               // 939
+	PTM(otherChannelError),                          // 937 RPL_WORDALREADYEXISTS
+	PTM(otherChannelError),                          // 938 RPL_NOSUCHWORDFILTER
+	PTM(otherChannelError),                          // 939 RPL_WORDFILTERFULL
 	PTM(parseNumericEndOfSpamFilterList),            // 940 RPL_SPAMFILTERLIST
 	PTM(parseNumericSpamFilterList),                 // 941 RPL_ENDOFSPAMFILTERLIST
 	0,                                               // 942
@@ -1029,8 +1029,8 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 950
 	0,                                               // 951
 	0,                                               // 952
-	0,                                               // 953
-	0,                                               // 954
+	PTM(parseNumericEndOfExemptChanOpList),          // 953 RPL_ENDOFEXEMPTCHANOPLIST
+	PTM(parseNumericExemptChanOpList),               // 954 RPL_EXEMPTCHANOPLIST
 	0,                                               // 955
 	0,                                               // 956
 	0,                                               // 957
