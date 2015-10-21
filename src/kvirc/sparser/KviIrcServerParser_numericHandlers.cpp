@@ -1145,6 +1145,29 @@ void KviIrcServerParser::parseCommandHelp(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericUmodeGMsg(KviIrcMessage * msg)
+{
+	// 718 RPL_UMODEGMSG
+	// IRC is one of the most inconsistent enigmas on the face of the earth.
+	// :prefix 718 <target> <remote nick[ [user@host]]> :is messaging you, and you are umode +g or +G.
+	if(!msg->haltOutput())
+	{
+		KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		QString szRemoteUser = msg->connection()->decodeText(msg->safeParam(1));
+		QString szRemoteHost = msg->connection()->decodeText(msg->safeParam(2));
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+
+		// Because some IRCds return the host jammed together with the nick in an awkward way, making one
+		// less paramter returned in RPL_UMODEGMSG.
+		if(szRemoteHost == szText)
+			pOut->output(KVI_OUT_HELP,"%Q %Q",&szRemoteUser,&szText);
+		else
+			pOut->output(KVI_OUT_HELP,"%Q!%Q %Q",&szRemoteUser,&szRemoteHost, &szText);
+	}
+}
+
 void KviIrcServerParser::parseChannelHelp(KviIrcMessage *msg)
 {
 	// 477 RPL_CHANNELHELP (freenode)
