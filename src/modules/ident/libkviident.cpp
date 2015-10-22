@@ -116,12 +116,12 @@ bool KviIdentSentinel::event(QEvent *e)
 		} else if(((KviThreadEvent *)e)->id() == KVI_IDENT_THREAD_EVENT_EXITING)
 		{
 			if(_OUTPUT_VERBOSE)
-				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (spontaneous action)"));
+				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down Ident service (spontaneous action)"));
 			stopIdentService();
 		} else if(((KviThreadEvent *)e)->id() == KVI_IDENT_THREAD_EVENT_EXITING_ON_REQUEST)
 		{
 			if(_OUTPUT_VERBOSE)
-				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (requested action)"));
+				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down Ident service (requested action)"));
 		}
 
 		return true;
@@ -221,31 +221,31 @@ void KviIdentDaemon::run()
 
 	if(m_sock == KVI_INVALID_SOCKET)
 	{
-		postMessage(__tr("Can't start the ident service : socket() failed"),0);
+		postMessage(__tr("Can't start the Ident service : socket() failed"),0);
 		goto exit_thread;
 	}
 
 	if(!kvi_socket_setNonBlocking(m_sock))
 	{
-		postMessage(__tr("Can't start the ident service : async setting failed"),0);
+		postMessage(__tr("Can't start the Ident service : async setting failed"),0);
 		goto exit_thread;
 	}
 
 	if(!sa.socketAddress())
 	{
-		postMessage(__tr("Can't enable the ident service : can't setup the listen address"),0);
+		postMessage(__tr("Can't enable the Ident service : can't setup the listen address"),0);
 		goto exit_thread;
 	}
 
 	if(!kvi_socket_bind(m_sock,sa.socketAddress(),((int)(sa.addressLength()))))
 	{
-		postMessage(__tr("Can't start the ident service : bind() failed"),0);
+		postMessage(__tr("Can't start the Ident service : bind() failed"),0);
 		goto exit_thread;
 	}
 
 	if(!kvi_socket_listen(m_sock,128))
 	{
-		postMessage(__tr("Can't start the ident service : listen() failed"),0);
+		postMessage(__tr("Can't start the Ident service : listen() failed"),0);
 		goto exit_thread;
 	}
 
@@ -259,13 +259,13 @@ void KviIdentDaemon::run()
 
 		if(m_sock6 == KVI_INVALID_SOCKET)
 		{
-			postMessage(__tr("Can't start the ident service on IPv6 : socket() failed"),0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : socket() failed"),0);
 			goto ipv6_failure;
 		}
 
 		if(!kvi_socket_setNonBlocking(m_sock6))
 		{
-			postMessage(__tr("Can't start the ident service on IPv6 : async setting failed"),0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : async setting failed"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -281,12 +281,12 @@ void KviIdentDaemon::run()
 		if(!kvi_socket_setsockopt(m_sock6,KVI_IPPROTO_IPV6,KVI_IPV6_PROTECTION_LEVEL,(const void*)&iPlu, sizeof(iPlu)))
 		{
 			//this is not a fatal error
-			postMessage(__tr("Can't set the IPv6 ident service protection level to unrestricted: the ident service won't be exposed to the internet"),0);
+			postMessage(__tr("Can't set the IPv6 Ident service protection level to unrestricted: the Ident service won't be exposed to the internet"),0);
 		}
 		#endif
 		if(!sa6.socketAddress())
 		{
-			postMessage(__tr("Can't enable the ident service on IPv6 : can't setup the listen address"),0);
+			postMessage(__tr("Can't enable the Ident service on IPv6 : can't setup the listen address"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -294,7 +294,7 @@ void KviIdentDaemon::run()
 
 		if(!kvi_socket_bind(m_sock6,sa6.socketAddress(),((int)(sa6.addressLength()))))
 		{
-			postMessage(__tr("Can't start the ident service on IPv6 : bind() failed"),0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : bind() failed"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -303,7 +303,7 @@ void KviIdentDaemon::run()
 
 		if(!kvi_socket_listen(m_sock6,128))
 		{
-			postMessage(__tr("Can't start the ident service on IPv6 : listen() failed"),0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : listen() failed"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -319,15 +319,15 @@ ipv6_failure:
 	{
 		if(m_sock6 != KVI_INVALID_SOCKET) {
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting identd service (IPv4/v6 on separate namespaces)"),0);
+				postMessage(__tr("Starting Ident service (IPv4/v6 on separate namespaces)"),0);
 		} else {
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting identd service (IPv4/v6 in IPv6 namespace)"),0);
+				postMessage(__tr("Starting Ident service (IPv4/v6 in IPv6 namespace)"),0);
 		}
 
 	} else {
 		if(_OUTPUT_PARANOIC)
-			postMessage(__tr("Starting identd service (IPv4)"),0);
+			postMessage(__tr("Starting Ident service (IPv4)"),0);
 	}
 #else //!COMPILE_IPV6_SUPPORT
 	if(_OUTPUT_PARANOIC)
@@ -400,7 +400,7 @@ ipv6_failure:
 						if(!satmp.getStringAddress(szHost))szHost = "unknown";
 						KviIdentRequest * r = new KviIdentRequest(t,szHost.toUtf8().data(),satmp.port());
 						m_pRequestList->append(r);
-						postMessage(__tr("Identd accepting connection"),r);
+						postMessage(__tr("Ident service accepting connection"),r);
 					}
 				}
 			}
@@ -420,7 +420,7 @@ ipv6_failure:
 						if(!satmp.getStringAddress(szHost))szHost = "unknown";
 						KviIdentRequest * r = new KviIdentRequest(t,szHost.toUtf8().data(),satmp.port());
 						m_pRequestList->append(r);
-						postMessage(__tr("Identd accepting connection"),r);
+						postMessage(__tr("Ident service accepting connection"),r);
 					}
 				}
 			}
@@ -443,12 +443,12 @@ ipv6_failure:
 							int err = kvi_socket_error();
 							if(!kvi_socket_recoverableConnectError(err))
 							{
-								postMessage(__tr("Identd socket error : dropping connection"),r);
+								postMessage(__tr("Ident service socket error : dropping connection"),r);
 								dying.append(r);
 							}
 						} else {
 							// connection closed
-							postMessage(__tr("Identd connection closed by remote host"),r);
+							postMessage(__tr("Ident service connection closed by remote host"),r);
 							dying.append(r);
 						}
 					}
@@ -469,7 +469,7 @@ ipv6_failure:
 
 					if(szReq.hasData())
 					{
-						postMessage(__tr("Identd processing request"),r,szReq.ptr());
+						postMessage(__tr("Ident service processing request"),r,szReq.ptr());
 
 						if(kvi_strEqualCI("VERSION",szReq.ptr()))
 						{
@@ -547,14 +547,14 @@ exit_thread:
 	@title:
 		ident.start
 	@short:
-		Starts the builtin ident service
+		Starts the builtin Ident service
 	@syntax:
 		ident.start
 	@description:
-		Starts the builtin ident service.[br]
-		WARNING: the kvirc ident service is just a partial implementation
+		Starts the builtin Ident service.[br]
+		WARNING: the KVIrc Ident service is just a partial implementation
 		of the RFC specifications. You should use is ONLY if you can't get
-		any other ident daemon running on your machine.[br]
+		any other Ident daemon running on your machine.[br]
 */
 
 static bool ident_kvs_cmd_start(KviKvsModuleCommandCall *)
@@ -572,11 +572,11 @@ static bool ident_kvs_cmd_start(KviKvsModuleCommandCall *)
 	@title:
 		ident.stop
 	@short:
-		Stops the ident service
+		Stops the Ident service
 	@syntax:
 		ident.stop
 	@description:
-		Stops the ident service
+		Stops the Ident service
 	@seealso:
 		[cmd]ident.start[/cmd]
 */
@@ -611,7 +611,7 @@ static bool ident_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Ident",                                              // module name
+	"Ident",                                                // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Ident service",

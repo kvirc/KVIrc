@@ -190,7 +190,7 @@ bool KviHttpRequest::start()
 	if(m_connectionUrl.host().isEmpty())
 	{
 		resetInternalStatus();
-		m_szLastError = __tr2qs("Invalid URL: Missing hostname");
+		m_szLastError = __tr2qs("Invalid URL: missing hostname");
 		return false;
 	}
 
@@ -235,7 +235,7 @@ void KviHttpRequest::slotSocketDisconnected()
 			emit binaryData(*m_p->pBuffer);
 		break;
 		case Blocks:
-			// an unprocessed block ?.. should never happend.. but well :D
+			// an unprocessed block ?.. should never happened.. but well :D
 			if(m_p->pBuffer->size() > 0)
 				emit binaryData(*m_p->pBuffer);
 		break;

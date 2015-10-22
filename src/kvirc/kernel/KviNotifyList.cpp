@@ -67,7 +67,7 @@
 		entry.[br]
 		The property is called "notify", and you have to set it to the nickname
 		that you want to look for.[br]
-		So for example, assume to register a frend of yours like Szymon:[br]
+		So for example, assume to register a friend of yours like Szymon:[br]
 		[example]
 			[cmd:reguser.add]reguser.add[/cmd] Szymon
 			[cmd:reguser.addmask]reguser.addmask[/cmd] Szymon Pragma!*@*.it
@@ -91,7 +91,7 @@
 		The "stupid ISON method" will assume that Szymon is online if any user with nickname
 		Pragma (or [Pragma] in the second example) gets online; this means that also Pragma!someuser@somehost.com will be
 		assumed to be "Szymon" and will be shown in the notify list.[br]
-		This might be a false assumption (since somehod.com does not even match *.it),
+		This might be a false assumption (since somehost.com does not even match *.it),
 		but it is the best result that the "stupid ISON method" can achieve.[br]
 		The "intelligent ISON method" will also check the Pragma's username and hostname
 		and match it in the registered masks; so in the example above, you will be notified if

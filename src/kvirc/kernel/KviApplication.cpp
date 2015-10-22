@@ -946,7 +946,7 @@ Let's see the scheme to understand which is choosen:
 			if(reply.type() == QDBusMessage::ErrorMessage)
 			{
 				QDBusError err = reply;
-				qDebug("DBus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
+				qDebug("D-Bus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
 			}
 		} else {
 #endif // COMPILE_DBUS_SUPPORT
@@ -1134,7 +1134,7 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 
 	switch(
 		QMessageBox::question(0,__tr2qs("Installation problems?"),
-			__tr2qs("<b>Ooops...</b><br><br>" \
+			__tr2qs("<b>Oops...</b><br><br>" \
 				"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
 				"I might be wrong, but you seem to miss some of the features that the default KVIrc script provides." \
 				"This may happen because you have upgraded to an unstable Git version, " \
@@ -1347,7 +1347,7 @@ void KviApplication::fileDownloadTerminated(
 	} else {
 		if((!_OUTPUT_MUTE) && (!bQuiet))
 		{
-			pAvatar->pConsole->output(KVI_OUT_AVATAR,__tr2qs("Avatar download failed for %Q!%Q@%Q and url %Q: %Q"),
+			pAvatar->pConsole->output(KVI_OUT_AVATAR,__tr2qs("Avatar download failed for %Q!%Q@%Q and URL %Q: %Q"),
 				&(pAvatar->szNick),&(pAvatar->szUser),&(pAvatar->szHost),&(szRemoteUrl),&(szError));
 		}
 	}

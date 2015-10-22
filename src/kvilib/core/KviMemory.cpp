@@ -113,7 +113,7 @@ namespace KviMemory
 			}
 			e = e->next;
 		}
-		fprintf(stderr,"Attempt to realloc an inexistant pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
+		fprintf(stderr,"Attempt to realloc a non-existent pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
 		return realloc(ptr,size);
 	}
 
@@ -142,7 +142,7 @@ namespace KviMemory
 			}
 			e = e->next;
 		}
-		fprintf(stderr,"Attempt to free an inexistant pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
+		fprintf(stderr,"Attempt to free a non-existent pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
 	}
 
 	void kvi_memory_profile() __attribute__((destructor));
@@ -192,7 +192,7 @@ namespace KviMemory
 	void outOfMemory()
 	{
 		//What a cool message :)
-		fprintf(stderr,"Virtual memory exhausted in malloc call....bye!\n");
+		fprintf(stderr,"Virtual memory exhausted in malloc call... bye!\n");
 		exit(-1);
 	}
 

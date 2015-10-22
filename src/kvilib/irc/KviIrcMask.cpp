@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_ircuser.cpp
+//   File : KviIrcMask.cpp
 //   Creation date : Fri Jan 8 1999 20:56:07 by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
@@ -29,40 +29,40 @@
 /*
 	@doc: irc_masks
 	@title:
-		Irc masks
+		IRC masks
 	@type:
 		generic
 	@short:
-		Decription of the standard IRC masks
+		Description of the standard IRC masks
 	@keyterms:
 		irc masks, nickname, username, hostname, wildcard
 	@body:
 		[big]Simple masks[/big][br]
-		An irc mask is a string in a special format that identifies an user on irc.[br]
+		An IRC mask is a string in a special format that identifies an user on IRC.[br]
 		The standard basic format is:[br]
 		[b]<nick>!<username>@<host>[/b][br]
 		The <nick> part contains the nickname with that the user is widely known across the network.[br]
-		The nickname format is generally restricted by the irc network rules: usually it has a maximum
+		The nickname format is generally restricted by the IRC network rules: usually it has a maximum
 		length (9 on actual IrcNet servers for example), and can contain only a defined set of characters.
 		Just as example, the character '!' obviously can't be included in a nickname.[br]
 		The <username> part is the machine username of the remote user: this is usually
-		retrieved by the irc server at connect time by contacting the ident service on the user's machine.
+		retrieved by the IRC server at connect time by contacting the Ident service on the user's machine.
 		Some IRC servers allow specifying this username inside the login messages and do not connect
-		to the ident service at all.[br]
-		The <username> often has a special prefix character added by the irc server:[br]
+		to the Ident service at all.[br]
+		The <username> often has a special prefix character added by the IRC server:[br]
 		this is rather server specific protocol, but the prefixes are somewhat standardized and
 		the common meanings of them are:[br]
-		noprefix: I line with ident[br]
-		^: I line with OTHER type ident[br]
-		~: I line, no ident[br]
-		+: i line with ident[br]
-		=: i line with OTHER type ident[br]
-		-: i line, no ident[br]
+		noprefix: I line with Ident[br]
+		^: I line with OTHER type Ident[br]
+		~: I line, no Ident[br]
+		+: i line with Ident[br]
+		=: i line with OTHER type Ident[br]
+		-: i line, no Ident[br]
 		So finally you can find <username> strings like "~pragma" or "^pragma", where "pragma"
 		is the system username of the irc-user and ~ and ^ are prefixes.[br]
 		The <host> part is the hostname of the remote user.[br]
 		In most cases it is the human-readable format of the host name, but sometimes
-		it happens to be an IP-address (when the host has no reverse dns entry).[br]
+		it happens to be an IP-address (when the host has no reverse DNS entry).[br]
 		The IP address can be either in IPV4 format or in IPV6 format.[br]
 		Some (weird from my point of view) servers hide certain parts of the IP address to
 		prevent attacks to the user's machine.[br]

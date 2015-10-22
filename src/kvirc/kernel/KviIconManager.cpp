@@ -48,7 +48,7 @@
 	@title:
 		The image identifier
 	@keyterms:
-		image identifier, using builtin images, how kvirc locates image files
+		image identifier, using builtin images, how KVIrc locates image files
 	@type:
 		language
 	@short:
@@ -57,7 +57,7 @@
 		Some KVIrc commands and functions accept
 		the <image_id> as a parameter.
 		The <image_id> indicates an image to be displayed
-		by some gui element. Since KVIrc has a set of
+		by some GUI element. Since KVIrc has a set of
 		builtin icons, we want the user to be able to use it :).[br]
 		The <image_id> can be either a signed integer number
 		or a filename.[br]
@@ -1206,11 +1206,11 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 			return 0;
 		if(KviQString::equalCIN("http://",szName,7))
 		{
-			// it's an url, cache it locally
+			// it's a URL, cache it locally
 			szN = szName;
 			urlToCachedFileName(szN);
 			g_pApp->getLocalKvircDirectory(szP,KviApplication::Avatars,szN);
-			szN = szName; // keep the remote url as name
+			szN = szName; // keep the remote URL as name
 		} else {
 			//locally cached avatar, called only by its szName
 			szN = KviFileUtils::extractFileName(szName);

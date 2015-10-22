@@ -203,7 +203,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 
 	if(iStringsNum >= 9972)
 	{
-		qDebug("Number of strings too big...sure that it is a KVIrc catalog file ?");
+		qDebug("Number of strings too big... sure that it is a KVIrc catalog file?");
 		iStringsNum = 9972;
 	}
 
@@ -259,9 +259,9 @@ bool KviMessageCatalogue::load(const QString & szName)
 	for(int i = 0; i < iStringsNum; i++)
 	{
 		// FIXME: "Check for NULL inside strings here ?"
-		//qDebug("original seems to be at %u and %u byttes long",KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].offset),
+		//qDebug("original seems to be at %u and %u bytes long",KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].offset),
 		//	KVI_SWAP_IF_NEEDED(bMustSwap,pOrigDescriptor[i].length));
-		//qDebug("translated seems to be at %u and %u byttes long",KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].offset),
+		//qDebug("translated seems to be at %u and %u bytes long",KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].offset),
 		//	KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].length));
 
 		KviTranslationEntry * e = new KviTranslationEntry(
@@ -311,7 +311,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 	if(!m_pTextCodec)
 	{
 		qDebug("The message catalogue does not have a \"charset\" header");
-		qDebug("Assuming utf8"); // FIXME: or codecForLocale() ?
+		qDebug("Assuming UTF-8"); // FIXME: or codecForLocale() ?
 		m_pTextCodec = QTextCodec::codecForName("UTF-8");
 	}
 
@@ -336,7 +336,7 @@ const QString & KviMessageCatalogue::translateToQString(const char * pcText)
 		pAux->m_pTranslation = new QString(m_pTextCodec->toUnicode(pAux->m_szEncodedTranslation.ptr()));
 		return *(pAux->m_pTranslation);
 	}
-	// no translation is available: let's avoid continous string decoding
+	// no translation is available: let's avoid continuous string decoding
 	pAux = new KviTranslationEntry(pcText);
 	m_pMessages->insert(pAux->m_szKey.ptr(),pAux);
 	pAux->m_pTranslation = new QString(m_pTextCodec->toUnicode(pAux->m_szEncodedTranslation.ptr()));

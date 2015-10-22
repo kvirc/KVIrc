@@ -50,7 +50,7 @@
 		where <left_operand> and [right_operand] depend on the <operator>.[br]
 		Some operators have no [right_operand] and these are called [b]unary operators[/b]:
 		they operate directly on <left_operand>.[br]
-		Some operators, like arithmetic ones, are tipically used inside the special function
+		Some operators, like arithmetic ones, are typically used inside the special function
 		[b]$(<expression>)[/b], called the "[doc:expressioneval]Expression evaluation identifier[/doc]";
 		This special function returns the result of the evaluation of the <expression>.
 		In previous versions of KVIrc this function was called $calc().[br]
@@ -165,7 +165,7 @@ end_of_the_param:
 		[br][br]
 		<target> must be a variable, <source> can be any parameter.[br]
 		If the <target> variable doesn't exist, it is created.
-		If it already exists, it is eventually converted to the type of <souce> (scalar, hash or array).[br]
+		If it already exists, it is eventually converted to the type of <source> (scalar, hash or array).[br]
 		If <source> evaluates to an empty value then the <target> variable is unset.
 	@examples:
 		[example]
@@ -194,7 +194,7 @@ end_of_the_param:
 		[cmd]echo[/cmd] %y
 		[comment]# This is equivalent to the above[/comment]
 		%y = ""
-		[comment]# This is equivalent too, if $function evalutates to an empty string[/comment]
+		[comment]# This is equivalent too, if $function evaluates to an empty string[/comment]
 		%y = $function()
 		[comment]# Assigning a variable string to a hash entry[/comment]
 		%Dict{key} = [fnc]$system.osname[/fnc]\ian
@@ -444,7 +444,7 @@ end_of_the_param:
 	@body:
 		This operator is a really ugly, poor and clueless attempt to reach at least 1% of the
 		power of the perl =~ operator :D[br]
-		It allows some complex string operations to be performed efficently by operating directly
+		It allows some complex string operations to be performed efficiently by operating directly
 		on the left operand (in fact this is a lot faster in KVIrc since at least one step of parsing is skipped).[br]
 		Its basic syntax is:[br]
 		[br][b]<left_operand> =~ <operation>[parameters][/b][br][br]
@@ -467,7 +467,7 @@ end_of_the_param:
 		The complete syntax with parameters is:[br]
 		[br][b]<left_operand> =~ s/<search pattern>/<replacement pattern>/[flags][/b][br][br]
 		where <search pattern> is an extended regular expression to be matched in the <left_operand>
-		and <replacement string> is a special pattern that will replace any occurence found.[br]
+		and <replacement string> is a special pattern that will replace any occurrence found.[br]
 		<search pattern> may contain parentheses to capture parts of the matched text.
 		<replacement string> can contain the escape sequences \\N where N is a number between 1 and 9
 		to be replaced by the captured text.[br]
@@ -476,7 +476,7 @@ end_of_the_param:
 		That's also why we use \\N and not \N.[br]
 		\\0 is a special escape that will be replaced by the entire match (is always valid!).[br]
 		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
-		'g' causes the search to be global and not stop after the first occurence of <search pattern>.[br]
+		'g' causes the search to be global and not stop after the first occurrence of <search pattern>.[br]
 		'i' causes the search to be case insensitive.[br]
 		'm' causes the search to be case minimal (non-greedy).[br]
 		'w' causes the search pattern to be interpreted as a simple wildcard regular expression.
@@ -497,7 +497,7 @@ end_of_the_param:
 			[cmd]echo[/cmd] %a
 			%a << rox
 			[cmd]echo[/cmd] %a
-			%a <, but linux is better!
+			%a <, but Linux is better!
 			[cmd]echo[/cmd] %a
 		[/example]
 	@seealso:

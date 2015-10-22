@@ -751,13 +751,13 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("SocketWarning",__tr_no_lookup("Socket warning"),KviIconManager::SocketWarning,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION_SPEC("SocketError",__tr_no_lookup("Socket error"),KviIconManager::SocketError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION_SPEC("SystemError",__tr_no_lookup("System error"),KviIconManager::SystemError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION("Raw",__tr_no_lookup("Raw data to server"),KviIconManager::Raw,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("Raw",__tr_no_lookup("RAW data to server"),KviIconManager::Raw,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("Connection",__tr_no_lookup("Connection status"),KviIconManager::World,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("SystemWarning",__tr_no_lookup("System warning"),KviIconManager::SystemWarning,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("SystemMessage",__tr_no_lookup("System message"),KviIconManager::SystemMessage,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("UnhandledReply",__tr_no_lookup("Unhandled server reply"),KviIconManager::UnHandled,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("ServerInfo",__tr_no_lookup("Server information"),KviIconManager::ServerInfo,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION("Motd",__tr_no_lookup("Server Message of the Day"),KviIconManager::Motd,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("Motd",__tr_no_lookup("Server message of the day"),KviIconManager::Motd,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("ServerPing",__tr_no_lookup("Server ping"),KviIconManager::ServerPing,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("Join",__tr_no_lookup("Join message"),KviIconManager::Join,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("Part",__tr_no_lookup("Part message"),KviIconManager::Part,KVI_MSGTYPE_LEVEL_1),
@@ -796,11 +796,11 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("DccMsg",__tr_no_lookup("DCC message"),KviIconManager::DccMsg,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("DccError",__tr_no_lookup("DCC error"),KviIconManager::DccError,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("NicknameProblem",__tr_no_lookup("Nickname problem"),KviIconManager::NickNameProblem,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION("WhoisUser",__tr_no_lookup("Whois user reply"),KviIconManager::WhoisUser,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION("WhoisChannels",__tr_no_lookup("Whois channels reply"),KviIconManager::WhoisChannels,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION("WhoisIdle",__tr_no_lookup("Whois idle reply"),KviIconManager::WhoisIdle,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION("WhoisServer",__tr_no_lookup("Whois server reply"),KviIconManager::WhoisServer,KVI_MSGTYPE_LEVEL_3),
-	MSGTYPE_OPTION("WhoisOther",__tr_no_lookup("Whois other reply"),KviIconManager::WhoisOther,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("WhoisUser",__tr_no_lookup("WHOIS user reply"),KviIconManager::WhoisUser,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("WhoisChannels",__tr_no_lookup("WHOIS channels reply"),KviIconManager::WhoisChannels,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("WhoisIdle",__tr_no_lookup("WHOIS idle reply"),KviIconManager::WhoisIdle,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("WhoisServer",__tr_no_lookup("WHOIS server reply"),KviIconManager::WhoisServer,KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("WhoisOther",__tr_no_lookup("WHOIS other reply"),KviIconManager::WhoisOther,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("CreationTime",__tr_no_lookup("Channel creation time reply"),KviIconManager::Time,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("NotifyOnLine",__tr_no_lookup("Notify list joins"),KviIconManager::NotifyOnLine,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("NotifyOffLine",__tr_no_lookup("Notify list leaves"),KviIconManager::NotifyOffLine,KVI_MSGTYPE_LEVEL_3),
@@ -874,7 +874,7 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("MeChanUnOwner",__tr_no_lookup("Own chan owner status unset"),KviIconManager::MeChanUnOwner,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION_SPEC("ServerError",__tr_no_lookup("Server error"),KviIconManager::ServerError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION_SPEC("Help",__tr_no_lookup("Help"),KviIconManager::Help,KviControlCodes::DarkGreen,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION("TextEncoding",__tr_no_lookup("Text Encoding Server message"),KviIconManager::TextEncoding,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("TextEncoding",__tr_no_lookup("Text encoding server message"),KviIconManager::TextEncoding,KVI_MSGTYPE_LEVEL_1),
 	// TODO: add icon and check what level means
 	// Pragma: the message level is a warning level that is rendered in the WindowList
 	//         messages with higher level are rendered with more visible color (i.e. red)
@@ -1280,7 +1280,7 @@ void KviApplication::listAvailableOptions(KviWindow *wnd)
 	LIST_OPTIONS(__tr("String options (string value)"),KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
 	LIST_OPTIONS(__tr("Color options (#RRGGBB)"),KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable)
 	LIST_OPTIONS(__tr("Mirccolor options (#RRGGBB)"),KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable)
-	LIST_OPTIONS(__tr("Irc context color options (#RRGGBB)"),KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable)
+	LIST_OPTIONS(__tr("IRC context color options (#RRGGBB)"),KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable)
 	LIST_OPTIONS(__tr("Pixmap options (image path)"),KVI_NUM_PIXMAP_OPTIONS,g_pixmapOptionsTable)
 	LIST_OPTIONS(__tr("Unsigned integer options (unsigned integer constant)"),KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
 	LIST_OPTIONS(__tr("Font options (family,pointsize,style,charset,weight,flags (biusf))"),KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)

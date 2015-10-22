@@ -43,7 +43,7 @@
 		user properties, notify property, avatar property
 	@body:
 		[big]Introduction[/big][br]
-		The "registered user database" is basically a set of users with associated
+		The registered user database is basically a set of users with associated
 		[doc:irc_masks]irc-masks[/doc] and properties.[br]
 		It is used to recognize users on IRC and associate properties to them.[br]
 		This works more or less like the IRC ban list, K-Line list, or invite list.[br]
@@ -53,7 +53,7 @@
 		or any other string (even with spaces). The name is an "internal identifier" for the user entry:
 		each name maps to a single entry and each entry has a single name.[br]
 		Each entry has a set of registration [doc:irc_masks]irc-masks[/doc]: these masks
-		are used to recognize the user on irc.[br]
+		are used to recognize the user on IRC.[br]
 		[br]
 		[big]Registration masks[/big][br]
 		The masks have the common IRC mask format: [b]<nick>!<user>@<host>[/b][br]
@@ -71,7 +71,7 @@
 		For this reason putting wildcards in nicknames could become a problem
 		if not used carefully (but may also be used to achieve interesting tricks).[br]
 		If you don't use wildcards in nicknames you are sure that
-		in a single irc connection, a mask will always refer to a single user.[br]
+		in a single IRC connection, a mask will always refer to a single user.[br]
 		You will commonly use the following format:[br]
 		<nick>!*<username>@*.<host>.<top>[br]
 		or[br]
@@ -79,7 +79,7 @@
 		In this way you can be 95% sure that the mask will really match the correct user.[br]
 		[br]
 		[big]Example of registration and lookups[/big]
-		Assume that you want to registere a friend of yours: Derek Riggs.[br]
+		Assume that you want to register a friend of yours: Derek Riggs.[br]
 		Derek often uses "Eddie" as his nickname
 		"stranger" as username and has a dial-up connection that makes his IP address appear as
 		<variable-number>.somewhere.in.time.org.[br]
@@ -94,16 +94,16 @@
 		On the other hand, if you dislike the users with the nickname Eddie that come from .org
 		and you're implementing an auto-kick system, the correct mask to register is "Eddie!*@*.org".[br]
 		[br]
-		KVirc ties to be smart, and always find the most correct match for an user:
+		KVIrc tries to be smart, and always find the most correct match for an user:
 		If you have two masks registered: Pragma!*xor@*.myisp.it and *!*@*.myisp.it,
-		kvirc will match Pragma!~xor@233-dyn.myisp.it with the first one even if the second
-		one matches too; the firs one is a best match.[br]
+		KVIrc will match Pragma!~xor@233-dyn.myisp.it with the first one even if the second
+		one matches too; the first one is a best match.[br]
 		[br]
 		[big]Properties[/big][br]
 		A registered user has an (eventually empty) set of properties
 		defined by name/value pairs. (In versions prior to 3.0.0 flags were used instead,
 		but revealed to be insufficient).[br]
-		KVirc recognizes some of these proprietes and associates semantic actions to it; other properties
+		KVIrc recognizes some of these properties and associates semantic actions to it; other properties
 		are left for scripting extension. Property names are case insensitive.[br]
 		One of the recognized properties is the "[doc:notify_list]notify[/doc]" property.
 		When an user is found to have this property set to a special value
@@ -238,7 +238,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 			l->setAutoDelete(true);
 			if(!u->addMask(mask))
 			{
-				qDebug(" Ops...got an incoherent regusers action...recovered ?");
+				qDebug(" Oops! Received an incoherent regusers action, recovered?");
 				delete l;
 				l = 0;
 			} else {
@@ -251,7 +251,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 	// Ok...add it
 	if(!u->addMask(mask))
 	{
-		qDebug("ops...got an incoherent regusers action...recovered ?");
+		qDebug("Oops! Received an incoherent regusers action, recovered?");
 		return 0; // ops...already there ?
 	}
 	append_mask_to_list(l,u,mask);
@@ -311,7 +311,7 @@ bool KviRegisteredUserDataBase::removeUser(const QString & name)
 	while(KviIrcMask * mask = u->maskList()->first())
 	{
 		if(!removeMaskByPointer(mask))
-			qDebug("Ops... removeMaskByPointer(%s) failed ?",name.toUtf8().data());
+			qDebug("Oops! removeMaskByPointer(%s) has failed",name.toUtf8().data());
 	}
 	emit(userRemoved(name));
 	m_pUserDict->remove(name);

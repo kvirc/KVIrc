@@ -221,10 +221,10 @@
 	@short:
 		The list of the common keyboard shortcuts
 	@body:
-		This list contains the key sequences associated to some common actions (like selecting text, etc). Since KVIrc 4.2 the shortcuts are dinamic:
+		This list contains the key sequences associated to some common actions (e.g. selecting text). Since KVIrc 4.2 the shortcuts are dynamic:
 		[ul]
 		[li]more shortcuts can trigger the same actions: Cut is both Ctrl+X and Shift+Del[/li]
-		[li]shortcuts can be adapted to the os: Help is F1 under Windows and Linux, Ctrl+? on Mac OSX[/li]
+		[li]shortcuts can be adapted to the OS: Help is F1 under Windows and Linux, Ctrl+? on Mac OSX[/li]
 		[/ul]
 		A full list of available combinations is available at the [anchorlink:http://doc.qt.nokia.com/latest/qkeysequence.html#standard-shortcuts] Qt documentation[/anchorlink]
 		[br]
@@ -300,7 +300,7 @@
 		[b]Ctrl+Backspace:[/b] Delete last word[br]
 		[b]Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)[br]
 		[b]F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)[br]
-		[b]Ctrl+B:[/b] nsert the 'bold' mIRC text control character[br]
+		[b]Ctrl+B:[/b] Insert the 'bold' mIRC text control character[br]
 		[b]Ctrl+K:[/b] Insert the 'color' mIRC text control character[br]
 		[b]Ctrl+R:[/b] Insert the 'reverse' mIRC text control character[br]
 		[b]Ctrl+U:[/b] Insert the 'underline' mIRC text control character[br]
@@ -317,7 +317,7 @@
 		[b]RightArrow:[/b] Move the cursor to the right[br]
 		[b]Shift+LeftArrow:[/b] Move the selection to the left[br]
 		[b]Shift+RightArrow:[/b] Move the selection to the right[br]
-		[b]Alt+Enter:[/b] Show/hide the multiline editor[br]
+		[b]Alt+Enter:[/b] Show/hide the multi-line editor[br]
 		[b]Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 		[b]Shift+Enter:[/b] Send message as a kvs command[br]
 		[b]Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
