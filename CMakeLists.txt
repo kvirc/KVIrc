@@ -61,9 +61,9 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 # Some vars
 set(PACKAGE "kvirc")
 set(NICENAME "KVIrc")
-set(VERSION_MAJOR "4")
-set(VERSION_BRANCH "4.3")
-set(VERSION_RELEASE "4.3.2")
+set(VERSION_MAJOR "5")
+set(VERSION_BRANCH "5.0")
+set(VERSION_RELEASE "5.0.0")
 set(VERSION_CODENAME "Aria")
 # REMINDER: "Quasar" is a new candidate name.
 
