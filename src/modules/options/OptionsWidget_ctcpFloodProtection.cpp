@@ -47,11 +47,11 @@
 		Basically, the attackers (usually there is more than one offending client) sends a stream
 		of CTCP requests to the victim's client, and the client attempts to respond to all requests
 		by sending a stream of replies to the server, which causes the server to disconnect the user
-		due to "excess flood" for sending too many messages before the server can process them.[br]
+		due to excess flood for sending too many messages before the server can process them.[br]
 		Many user defined scripts choose to completely ignore all the CTCP requests in order to prevent such attacks.[br]
 		KVIrc offers an alternative method that allows you to take advantage of the CTCP protocol
 		and at the same time prevent the flood attacks.[br]
-		The method is really simple: The client will only respond to a limited number of CTCP requests within a
+		The method is really simple: the client will only respond to a limited number of CTCP requests within a
 		specified time interval.[br]
 		The "Use flood protection" option enables this protection method.[br]
 		In the "Allowed up to" field you should enter the maximum number of CTCP requests that KVIrc should
@@ -93,7 +93,7 @@ OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * p
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	KviTalGroupBox * g = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Ignored Ctcp Requests","options"));
+	KviTalGroupBox * g = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Ignored CTCP Requests","options"));
 	addBoolSelector(g,__tr2qs_ctx("PING","options"),KviOption_boolIgnoreCtcpPing);
 	addBoolSelector(g,__tr2qs_ctx("FINGER","options"),KviOption_boolIgnoreCtcpFinger);
 	addBoolSelector(g,__tr2qs_ctx("CLIENTINFO","options"),KviOption_boolIgnoreCtcpClientinfo);

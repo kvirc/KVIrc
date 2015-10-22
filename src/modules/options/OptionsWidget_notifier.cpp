@@ -172,9 +172,9 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 #endif // COMPILE_KDE_SUPPORT
 
 #ifdef COMPILE_DBUS_SUPPORT
-	m_pDBusNotifier = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the DBus-based notifiers","options"),KviOption_boolUseDBusNotifier);
+	m_pDBusNotifier = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the D-Bus-based notifiers","options"),KviOption_boolUseDBusNotifier);
 	szTip = "<center>";
-	szTip += __tr2qs_ctx("This option uses the DBus-based notifier instead of " \
+	szTip += __tr2qs_ctx("This option uses the D-Bus-based notifier instead of " \
 		"KVIrc one.<br>" \
 		"This is cool if you want to better integrate KVIrc inside your " \
 		"desktop environment. " \
@@ -227,7 +227,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	iRow++;
 
-	KviTalGroupBox * g = addGroupBox(0,iRow,0,iRow,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
+	KviTalGroupBox * g = addGroupBox(0,iRow,0,iRow,Qt::Horizontal,__tr2qs_ctx("Advanced Configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
 	connect(b,

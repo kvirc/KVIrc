@@ -36,8 +36,7 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 
 	createLayout();
 
-	addLabel(0,0,0,0,__tr2qs_ctx("<center><b>Settings for CTCP.</b></center>"\
-		"<p>The <b>Client-To-Client Protocol</b> (CTCP) " \
+	addLabel(0,0,0,0,__tr2qs_ctx("<p>The <b>Client-To-Client Protocol</b> (CTCP) " \
 		"is used to transmit special control messages over an IRC connection. " \
 		"These messages can request information from clients or negotiate file transfers." \
 		"<br><br></p>","options"));
@@ -70,7 +69,7 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 	addBoolSelector(gs,__tr2qs_ctx("Show the CTCP replies in the active window","options"),KviOption_boolCtcpRepliesToActiveWindow);
 
 	addBoolSelector(gs,__tr2qs_ctx("Show dialog for CTCP page requests","options"),KviOption_boolShowDialogOnCtcpPage);
-	addBoolSelector(gs,__tr2qs_ctx("Show dialog for Channel CTCP page requests","options"),KviOption_boolShowDialogOnChannelCtcpPage);
+	addBoolSelector(gs,__tr2qs_ctx("Show dialog for channel CTCP page requests","options"),KviOption_boolShowDialogOnChannelCtcpPage);
 
 	addRowSpacer(0,3,0,3);
 

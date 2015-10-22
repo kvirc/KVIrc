@@ -57,7 +57,7 @@ OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
 				KviOption_boolPopupNotifierOnNotifyOnLine,KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),
 		SLOT(setEnabled(bool)));
 
-	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
+	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Advanced Configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
 	connect(b,

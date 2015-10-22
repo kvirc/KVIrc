@@ -46,7 +46,7 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 	setObjectName("urlhandlers_options_widget");
 	createLayout();
 
-	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Mouse handler","options"));
+	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Mouse Handler","options"));
 
 	addLabel(gbox,__tr2qs_ctx("How many click to open links?","options"));
 
@@ -63,7 +63,7 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 			break;
 	}
 
-	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Protocol handler","options"));
+	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Protocol Handler","options"));
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Use system URL handlers","options"),KviOption_boolUseSystemUrlHandlers);

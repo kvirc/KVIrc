@@ -94,7 +94,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 
 	grid->addWidget(m_pForcedLocaleCombo,0,1);
 
-	grid->addWidget(addLabel(gbox,__tr2qs_ctx("<b>Note:</b> You need to restart KVirc to apply a language changing","options")),1,0,1,2);
+	grid->addWidget(addLabel(gbox,__tr2qs_ctx("<b>Note:</b> You need to restart KVIrc to apply a language changing","options")),1,0,1,2);
 
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection","options"));
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en","options"));
@@ -136,7 +136,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	{
-		gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Spell checker dictionaries","options"));
+		gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Spell Checker Dictionaries","options"));
 
 		KviKvsVariant availableDictionaries;
 		KviKvsScript::evaluate("$spellchecker.availableDictionaries", NULL, NULL, &availableDictionaries);

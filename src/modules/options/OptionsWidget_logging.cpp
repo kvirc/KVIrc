@@ -40,7 +40,7 @@ OptionsWidget_logging::OptionsWidget_logging(QWidget * parent)
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Automatically Log","options"));
 	addBoolSelector(g,__tr2qs_ctx("Query windows","options"),KviOption_boolAutoLogQueries);
 	addBoolSelector(g,__tr2qs_ctx("Channel windows","options"),KviOption_boolAutoLogChannels);
-	addBoolSelector(g,__tr2qs_ctx("DCC Chat windows","options"),KviOption_boolAutoLogDccChat);
+	addBoolSelector(g,__tr2qs_ctx("DCC chat windows","options"),KviOption_boolAutoLogDccChat);
 	addBoolSelector(g,__tr2qs_ctx("Console windows","options"),KviOption_boolAutoLogConsole);
 
 	QWidget * w = addDirectorySelector(0,1,0,1,__tr2qs_ctx("Save logs to folder:","options"),KviOption_stringLogsPath);

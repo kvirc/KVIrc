@@ -96,7 +96,7 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("Cancel","options"),h);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
 
-	pb = new QPushButton(__tr2qs_ctx("Ok","options"),h);
+	pb = new QPushButton(__tr2qs_ctx("OK","options"),h);
 	pb->setDefault(true);
 	connect(pb,SIGNAL(clicked()),this,SLOT(accept()));
 
@@ -655,7 +655,7 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("User Mode","options"));
 	m_pISelector = addBoolSelector(gbox,__tr2qs_ctx("Invisible (+i)","options"),&m_bI);
 	m_pSSelector = addBoolSelector(gbox,__tr2qs_ctx("Server notices (+s)","options"),&m_bS);
-	m_pWSelector = addBoolSelector(gbox,__tr2qs_ctx("Wallops (+w)","options"),&m_bW);
+	m_pWSelector = addBoolSelector(gbox,__tr2qs_ctx("WALLOPS (+w)","options"),&m_bW);
 
 	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Default Messages","options"));
 
