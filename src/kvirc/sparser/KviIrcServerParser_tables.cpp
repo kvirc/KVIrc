@@ -457,7 +457,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericWhoisOther)                    , // 378 RPL_WHOISHOST, RPL_BANEXPIRED
 	0,                                               // 379 RPL_KICKLINKED, RPL_WHOISMODES, RPL_WHOWASIP
 	0,                                               // 380 RPL_BANLINKED, RPL_YOURHELPER
-	0,                                               // 381 RPL_YOUREOPER
+	PTM(parseNumericYoureOper),                      // 381 RPL_YOUREOPER
 	0,                                               // 382 RPL_REHASHING
 	0,                                               // 383 RPL_YOURESERVICE
 	0,                                               // 384 RPL_MYPORTIS

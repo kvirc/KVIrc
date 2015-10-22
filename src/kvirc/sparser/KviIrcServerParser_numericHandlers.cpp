@@ -2527,6 +2527,19 @@ void KviIrcServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericYoureOper(KviIrcMessage * msg)
+{
+	// 381: RPL_YOUREOPER
+	// :prefix 381 <target> :You are now an IRC Operator
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_HELP,"%Q on server %Q",&szText, &szPrefix);
+	}
+}
+
 // STARTTLS support
 void KviIrcServerParser::parseNumericStartTls(KviIrcMessage * msg)
 {
