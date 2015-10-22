@@ -104,8 +104,8 @@ EventEditor::EventEditor(QWidget * par)
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
 	KviTalVBox * box = new KviTalVBox(spl);
-	spl->setStretchFactor (0,20);
-	spl->setStretchFactor (1,80);
+	spl->setStretchFactor (1,20);
+	spl->setStretchFactor (2,80);
 
 	box->setSpacing(0);
 	box->setMargin(0);
