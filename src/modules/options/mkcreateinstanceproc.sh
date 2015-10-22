@@ -242,7 +242,7 @@ printclass()
 	echo "$3	#endif" >> $TARGET
 
 	echo "$3	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_$2" >> $TARGET
-	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2\",\"KVI_OPTIONS_WIDGET_KEYWORDS_$2;" >> $TARGET
+	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2 \",\" KVI_OPTIONS_WIDGET_KEYWORDS_$2;" >> $TARGET
 	echo "$3	#else" >> $TARGET
 	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2;" >> $TARGET
 	echo "$3	#endif" >> $TARGET

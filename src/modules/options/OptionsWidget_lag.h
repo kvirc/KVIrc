@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : OptionsWidget_lag.h
-//   Creation date : Wed Cct 16 10:45:54 CEST 2002 by Juanjo ¡lvarez (juanjux@yahoo.es)
+//   Creation date : Wed Cct 16 10:45:54 CEST 2002 by Juanjo √Ålvarez (juanjux@yahoo.es)
 //
 //   This file is part of the KVIrc irc client distribution
-//   Copyright (C) 2002 Juanjo ¡lvarez
+//   Copyright (C) 2002 Juanjo √Ålvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

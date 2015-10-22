@@ -674,7 +674,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->iPriority = 0;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connection
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connection","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connection;
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connection "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connection;
 	#else
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connection;
 	#endif
@@ -713,7 +713,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionAdvanced
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionAdvanced;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionAdvanced;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced;
 		#endif
@@ -752,7 +752,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSsl
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSsl;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSsl;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl;
 			#endif
@@ -788,7 +788,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSocket
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSocket;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSocket;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket;
 			#endif
@@ -824,7 +824,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identService
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identService;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identService;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService;
 			#endif
@@ -896,7 +896,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->iPriority = 0;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dcc
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dcc","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dcc;
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dcc "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dcc;
 	#else
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dcc;
 	#endif
@@ -934,7 +934,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccGeneral
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccGeneral","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccGeneral;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccGeneral "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccGeneral;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccGeneral;
 		#endif
@@ -970,7 +970,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccAdvanced
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccAdvanced","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccAdvanced;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccAdvanced;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccAdvanced;
 		#endif
@@ -1006,7 +1006,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSend
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSend","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSend;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSend "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSend;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSend;
 		#endif
@@ -1044,7 +1044,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendGeneral
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendGeneral;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendGeneral;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral;
 			#endif
@@ -1080,7 +1080,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendAdvanced
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendAdvanced","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendAdvanced;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendAdvanced;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendAdvanced;
 			#endif
@@ -1116,7 +1116,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccChat
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccChat","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccChat;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccChat "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccChat;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccChat;
 		#endif
@@ -1152,7 +1152,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccVoice
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccVoice","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccVoice;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccVoice "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccVoice;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccVoice;
 		#endif
@@ -1188,7 +1188,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->iPriority = 0;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_general
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_general;
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_general;
 	#else
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general;
 	#endif
@@ -1262,7 +1262,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sound
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sound","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sound;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sound "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sound;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sound;
 		#endif
@@ -1480,7 +1480,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->iPriority = 0;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identity
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identity;
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identity;
 	#else
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity;
 	#endif
@@ -1518,7 +1518,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityGeneralOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget","KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityGeneralOptionsWidget;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget "," KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityGeneralOptionsWidget;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget;
 		#endif
@@ -1554,7 +1554,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAvatar
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAvatar;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAvatar;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar;
 		#endif
@@ -1590,7 +1590,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAdvanced
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAdvanced;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAdvanced;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced;
 		#endif
@@ -1626,7 +1626,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityProfile
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityProfile;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityProfile;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile;
 		#endif
@@ -1698,7 +1698,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->iPriority = 0;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_interfaceFeatures
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_interfaceFeatures","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_interfaceFeatures;
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_interfaceFeatures "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_interfaceFeatures;
 	#else
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_interfaceFeatures;
 	#endif
@@ -1736,7 +1736,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputFeatures
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputFeatures","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputFeatures;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputFeatures "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputFeatures;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputFeatures;
 		#endif
@@ -1844,7 +1844,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->iPriority = 0;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_irc
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_irc","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_irc;
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_irc "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_irc;
 	#else
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_irc;
 	#endif
@@ -1882,7 +1882,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channel
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channel;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channel;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel;
 		#endif
@@ -1920,7 +1920,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelGeneral
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelGeneral;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelGeneral;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral;
 			#endif
@@ -1956,7 +1956,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelAdvanced
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelAdvanced;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelAdvanced;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced;
 			#endif
@@ -1992,7 +1992,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircGeneral
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircGeneral","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircGeneral;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircGeneral "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircGeneral;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircGeneral;
 		#endif
@@ -2028,7 +2028,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircAdvanced
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircAdvanced","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircAdvanced;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircAdvanced;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircAdvanced;
 		#endif
@@ -2138,7 +2138,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_antispam
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_antispam","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_antispam;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_antispam "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_antispam;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_antispam;
 			#endif
@@ -2174,7 +2174,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcpFloodProtection
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcpFloodProtection","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcpFloodProtection;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcpFloodProtection "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcpFloodProtection;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcpFloodProtection;
 			#endif
@@ -2282,7 +2282,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tools
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tools","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tools;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tools "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tools;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tools;
 		#endif
@@ -2320,7 +2320,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alertsAndHighlighting
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alertsAndHighlighting","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alertsAndHighlighting;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alertsAndHighlighting "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alertsAndHighlighting;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alertsAndHighlighting;
 			#endif
@@ -2359,7 +2359,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 				e3->iPriority = 0;
 				#endif
 				#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_highlighting
-				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_highlighting;
+				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_highlighting;
 				#else
 				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting;
 				#endif
@@ -2395,7 +2395,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 				e3->iPriority = 0;
 				#endif
 				#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alerts
-				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alerts","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alerts;
+				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alerts "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alerts;
 				#else
 				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alerts;
 				#endif
@@ -2431,7 +2431,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatar
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatar;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatar;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar;
 			#endif
@@ -2467,7 +2467,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_away
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_away;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_away;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away;
 			#endif
@@ -2503,7 +2503,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcp
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcp","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcp;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcp "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcp;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcp;
 			#endif
@@ -2793,7 +2793,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewFeatures
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewFeatures","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewFeatures;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewFeatures "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewFeatures;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewFeatures;
 		#endif
@@ -2829,7 +2829,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->iPriority = 0;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewMarker
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewMarker","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewMarker;
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewMarker "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewMarker;
 		#else
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewMarker;
 		#endif
@@ -3521,7 +3521,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeForeground
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeForeground;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeForeground;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground;
 			#endif
@@ -3557,7 +3557,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeBackground
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeBackground;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeBackground;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground;
 			#endif
@@ -3593,7 +3593,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->iPriority = 0;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeFeatures
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeFeatures","KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeFeatures;
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeFeatures "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeFeatures;
 			#else
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeFeatures;
 			#endif

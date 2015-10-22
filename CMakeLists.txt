@@ -68,8 +68,11 @@ set(VERSION_CODENAME "Aria")
 # REMINDER: "Quasar" is a new candidate name.
 
 string(REGEX MATCH "[0-9]+$" VERSION_MINOR ${VERSION_BRANCH})
+string(REGEX MATCH "[0-9]+$" VERSION_MICRO ${VERSION_RELEASE})
 
 set(CMAKE_KVIRC_VERSION_MAJOR ${VERSION_MAJOR})
+set(CMAKE_KVIRC_VERSION_MINOR ${VERSION_MINOR})
+set(CMAKE_KVIRC_VERSION_MICRO ${VERSION_MICRO})
 set(CMAKE_KVIRC_VERSION_BRANCH ${VERSION_BRANCH})
 set(CMAKE_KVIRC_VERSION_RELEASE ${VERSION_RELEASE})
 set(CMAKE_KVIRC_VERSION_CODENAME ${VERSION_CODENAME})
@@ -1363,6 +1366,9 @@ endif()
 
 configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysbuildinfo.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysbuildinfo.h)
 
+if(WIN32)
+configure_file(${PROJECT_SOURCE_DIR}/cmake/version.h.cmake ${PROJECT_SOURCE_DIR}/data/resources_win32/version.h)
+endif()
 
 include_directories(${PROJECT_BINARY_DIR})
 
