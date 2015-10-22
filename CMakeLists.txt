@@ -1367,7 +1367,7 @@ endif()
 configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysbuildinfo.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysbuildinfo.h)
 
 if(WIN32)
-configure_file(${PROJECT_SOURCE_DIR}/cmake/version.h.cmake ${PROJECT_SOURCE_DIR}/data/resources_win32/version.h)
+  configure_file(${PROJECT_SOURCE_DIR}/cmake/version.h.cmake ${PROJECT_SOURCE_DIR}/data/resources_win32/version.h)
 endif()
 
 include_directories(${PROJECT_BINARY_DIR})
