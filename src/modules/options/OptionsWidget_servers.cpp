@@ -1404,11 +1404,11 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 		QPalette pal(QColor(0,0,128));
 
-		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,0,220));
+		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,135,0));
 		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
 
-		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(98,98,180));
-		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(128,128,245));
+		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(100,100,100));
+		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(180,180,180));
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) || defined(COMPILE_ON_MAC)
 		// Kill the WindowXP/Mac style which does not honor palette
