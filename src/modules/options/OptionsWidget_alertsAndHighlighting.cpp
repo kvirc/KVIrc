@@ -53,7 +53,7 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable word highlighting","options"),KviOption_boolUseWordHighlighting);
-	KviStringListSelector * sl = addStringListSelector(0,1,0,1,__tr2qs_ctx("Words to highlight:","options"),KviOption_stringlistHighlightWords,KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting));
+	KviStringListSelector * sl = addStringListSelector(0,1,0,1,__tr2qs_ctx("Words to Highlight","options"),KviOption_stringlistHighlightWords,KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting));
 
 	connect(b,SIGNAL(toggled(bool)),sl,SLOT(setEnabled(bool)));
 
