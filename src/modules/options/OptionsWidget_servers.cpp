@@ -1490,7 +1490,7 @@ void OptionsWidget_servers::recentServersPopupAboutToShow()
 	g_pApp->fillRecentServersPopup(m_pRecentPopup);
 
     m_pRecentPopup->addSeparator();
-	m_pRecentPopup->addAction(__tr2qs("Clear Recent Servers List"));
+	m_pRecentPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Servers List"));
 }
 
 void OptionsWidget_servers::recentServersPopupClicked(QAction *pAction)
