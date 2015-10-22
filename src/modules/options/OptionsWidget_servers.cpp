@@ -171,7 +171,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
 		"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Alt.Nickname:","options"),gbox);
+	l = new QLabel(__tr2qs_ctx("Alt.nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,3,0);
 
 	m_pAlternativeNickEditor = new QLineEdit(gbox);
@@ -196,7 +196,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	//server encoding
 
-	l = new QLabel(__tr2qs_ctx("Server Encoding:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Server encoding:","options"),tab);
 	gl->addWidget(l,1,0);
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
@@ -208,7 +208,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	//text encoding
 
-	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Text encoding:","options"),tab);
 	gl->addWidget(l,2,0);
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
@@ -266,7 +266,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	if(n->autoJoinChannelList())
 		m_lstChannels = *(n->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
-		__tr2qs_ctx("Channels to join automatically upon connect:","options"),&m_lstChannels,true);
+		__tr2qs_ctx("Channels to Join Automatically Upon Connect","options"),&m_lstChannels,true);
 
 	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to a server in this network has been established. To add a channel, type its name in the " \
@@ -590,7 +590,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
 		"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Alt.Nickname:","options"),gbox);
+	l = new QLabel(__tr2qs_ctx("Alt.nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,3,0);
 
 	m_pAlternativeNickEditor = new QLineEdit(gbox);
@@ -635,7 +635,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pSMode->setEnabled(bHasUmode);
 	m_pSMode->setChecked(bHasUmode ? bool(s->initUMode().contains('s',Qt::CaseInsensitive)) : bool(szDefUMode.contains('s',Qt::CaseInsensitive)));
 
-	m_pWMode = new QCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
+	m_pWMode = new QCheckBox(__tr2qs_ctx("WALLOPS (+w)","options"),gbox);
 	m_pWMode->setEnabled(bHasUmode);
 	m_pWMode->setChecked(bHasUmode ? bool(s->initUMode().contains('w',Qt::CaseInsensitive)) : bool(szDefUMode.contains('w',Qt::CaseInsensitive)));
 
@@ -750,7 +750,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	//server encoding
 
-	l = new QLabel(__tr2qs_ctx("Protocol Encoding:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Protocol encoding:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
@@ -764,7 +764,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	//text encoding
 
-	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Text encoding:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
@@ -800,7 +800,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	iRow++;
 
-	l = new QLabel(__tr2qs_ctx("Proxy Server:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Proxy server:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,iRow,1);
@@ -809,7 +809,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
-	m_pProxyEditor->addItem(__tr2qs_ctx("Direct connection","options"));
+	m_pProxyEditor->addItem(__tr2qs_ctx("Direct Connection","options"));
 
 	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
@@ -839,7 +839,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	if(s->autoJoinChannelList())
 		m_lstChannels = *(s->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
-		__tr2qs_ctx("Channels to join automatically upon connect:","options"),&m_lstChannels,true);
+		__tr2qs_ctx("Channels to Join Automatically Upon Connect","options"),&m_lstChannels,true);
 	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to this server has been established. To add a channel, type its name in the " \
 		"text input below and click \"<b>Add</b>\".</center>","options"));
@@ -930,14 +930,14 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"If you enable the proper global option in the Connection/SSL tab and fill the SASL Nickname and SASL Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
-	l = new QLabel(__tr2qs_ctx("SASL Nickname:","options"),pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL nickname:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,1,0);
 	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
 	m_pSaslNickEditor->setText(s->saslNick());
 	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
 	pSASLLayout->addWidget(m_pSaslNickEditor,1,1);
 
-	l = new QLabel(__tr2qs_ctx("SASL Password:","options"),pSASLGroup);
+	l = new QLabel(__tr2qs_ctx("SASL password:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,2,0);
 	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
 	m_pSaslPassEditor->setText(s->saslPass());
@@ -950,7 +950,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	iRow++;
 
 
-	l = new QLabel(__tr2qs_ctx("Link Filter:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pLinkFilterEditor = new QComboBox(tab);
 	m_pLinkFilterEditor->setEditable(true);
@@ -1441,7 +1441,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 			// (or we'll get a crash at commit() time...).
 			QObject::connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
 
-			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
+			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the servers dialog will appear every time you start KVIrc</center>","options"));
 		}
 
 		new QShortcut(Qt::Key_Escape, parent, SLOT(close()));

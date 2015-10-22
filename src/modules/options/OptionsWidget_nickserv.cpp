@@ -52,7 +52,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 
-	QLabel * l = new QLabel(__tr2qs_ctx("Registered NickName","options"),this);
+	QLabel * l = new QLabel(__tr2qs_ctx("Registered nickname","options"),this);
 	gl->addWidget(l,0,0);
 
 	m_pRegisteredNickEdit = new QLineEdit(this);
@@ -60,7 +60,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(m_pRegisteredNickEdit,0,1,1,3);
 //	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
 
-	l = new QLabel(__tr2qs_ctx("NickServ Mask","options"),this);
+	l = new QLabel(__tr2qs_ctx("NickServ mask","options"),this);
 	gl->addWidget(l,1,0);
 
 	m_pNickServMaskEdit = new QLineEdit(this);
@@ -73,7 +73,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(m_pNickServMaskEdit,1,1,1,3);
 //	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
 
-	l = new QLabel(__tr2qs_ctx("Message Regexp","options"),this);
+	l = new QLabel(__tr2qs_ctx("Message regexp","options"),this);
 	gl->addWidget(l,2,0);
 
 	m_pMessageRegexpEdit = new QLineEdit(this);
@@ -86,7 +86,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 			"The message is usually something like \"To identify yourself please use /ns IDENTIFY password\" " \
 			"and it is sent when the NickServ wants you to authenticate yourself. " \
 			"You can use the * and ? wildcards.","options") + html_center_end);
-	l = new QLabel(__tr2qs_ctx("Identify Command","options"),this);
+	l = new QLabel(__tr2qs_ctx("Identify command","options"),this);
 	gl->addWidget(l,3,0);
 
 	m_pIdentifyCommandEdit = new QLineEdit(this);
@@ -155,13 +155,13 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't be empty!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The nickname field can't be empty!","options"),o);
 		return false;
 	}
 
 	if(s.indexOf(QChar(' ')) != -1)
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't contain spaces!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The nickname field can't contain spaces!","options"),o);
 		return false;
 	}
 
@@ -177,7 +177,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Message Regexp can't be empty!<br>You must put at least * there.","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The message regexp can't be empty!<br>You must put at least * there.","options"),o);
 		return false;
 	}
 
@@ -185,7 +185,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The Identify Command can't be empty!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The identify command can't be empty!","options"),o);
 		return false;
 	}
 
@@ -241,7 +241,7 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 	QStringList columnLabels;
 
 	columnLabels.append(__tr2qs_ctx("Nickname","options"));
-	columnLabels.append(__tr2qs_ctx("Server mask","options"));
+	columnLabels.append(__tr2qs_ctx("Server Mask","options"));
 	columnLabels.append(__tr2qs_ctx("NickServ Mask","options"));
 	columnLabels.append(__tr2qs_ctx("NickServ Request Mask","options"));
 	columnLabels.append(__tr2qs_ctx("Identify Command","options"));

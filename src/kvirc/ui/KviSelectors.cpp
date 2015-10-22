@@ -883,8 +883,8 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 	m_pTreeWidget->setRootIsDecorated(false);
 	m_pTreeWidget->setColumnCount(2);
 	QStringList columnLabels;
-	columnLabels.append(__tr2qs("Channel name"));
-	columnLabels.append(__tr2qs("Channel password"));
+	columnLabels.append(__tr2qs("Channel Name"));
+	columnLabels.append(__tr2qs("Channel Password"));
 	m_pTreeWidget->setHeaderLabels(columnLabels);
 	KviTalHBox* pEditsHBox = new KviTalHBox(this);
 
