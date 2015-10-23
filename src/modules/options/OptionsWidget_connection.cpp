@@ -150,7 +150,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	createLayout();
 	KviUIntSelector * u;
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Timeout Values","options"),this);
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Timeout Values","options"));
 	u = addUIntSelector(g,__tr2qs_ctx("Connect timeout:","options"),KviOption_uintIrcSocketTimeout,5,6000,60);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	u = addUIntSelector(g,__tr2qs_ctx("Outgoing data queue flush timeout:","options"),KviOption_uintSocketQueueFlushTimeout,100,2000,500);
