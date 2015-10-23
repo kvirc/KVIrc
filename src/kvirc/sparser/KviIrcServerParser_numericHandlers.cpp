@@ -1035,6 +1035,18 @@ void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 	msg->connection()->sendFmtData("NICK %s",d.data());
 }
 
+void KviIrcServerParser::parseNumericUnknownCommand(KviIrcMessage * msg)
+{
+	// 421: ERR_UNKNOWNCOMMAND
+	// :prefix 421 <target> <command> :Unknown command
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = msg->console()->activeWindow();
+		QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
+		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("%Q is an unknown server command"),&szCmd);
+	}
+}
+
 void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 {
 	// 437: ERR_UNAVAILRESOURCE [I]

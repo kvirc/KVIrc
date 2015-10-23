@@ -226,6 +226,7 @@ private:
 	void parseNumericNotifyGeneric(KviIrcMessage * msg);
 	void parseNumericYouHaveCallerID(KviIrcMessage * msg);
 	void otherChannelError(KviIrcMessage *msg);
+	void parseNumericUnknownCommand(KviIrcMessage * msg);
 	void parseCommandSyntaxHelp(KviIrcMessage *msg);
 	void parseCommandHelp(KviIrcMessage *msg);
 	void parseCommandEndOfHelp(KviIrcMessage *msg);
