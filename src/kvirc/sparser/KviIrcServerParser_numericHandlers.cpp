@@ -1134,6 +1134,34 @@ void KviIrcServerParser::otherChannelError(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumeric486(KviIrcMessage * msg)
+{
+	// 486 ERR_NONONREG
+	// :prefix 486 <target> <remotenick> :You must identify to a registered nick to private message that person
+
+	// Unreal 3.2 (ERR_HTMDISABLED)
+	// :prefix 486 <target> :CMD is currently disabled, please try again later.
+	if(!msg->haltOutput())
+	{
+		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+		QString version = pServerInfo->software();
+
+		// HTM disables the command, so send the message to their active window
+		if(version == "Unreal32")
+		{
+			KviWindow * pOut = (KviWindow *)(msg->console()->activeWindow());
+			pOut->output(KVI_OUT_GENERICERROR,szText);
+		} else {
+			// We're trying to message them, so send it to the query window
+			KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNick));
+			if(!pOut)pOut = (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_HELP,szText);
+		}
+	}
+}
+
 void KviIrcServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
 {
 	// 704 RPL_COMMANDSYNTAX

@@ -562,7 +562,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 483 ERR_CANTKILLSERVER
 	0,                                               // 484 ERR_RESTRICTED, ERR_ISCHANSERVICE, ERR_DESYNC, ERR_ATTACKDENY
 	0,                                               // 485 ERR_UNIQOPRIVSNEEDED, ERR_KILLDENY, ERR_CANTKICKADMIN, ERR_ISREALSERVICE
-	0,                                               // 486 ERR_NONONREG, ERR_HTMDISABLED, ERR_ACCOUNTONLY
+	PTM(parseNumeric486),                            // 486 ERR_NONONREG, ERR_HTMDISABLED, ERR_ACCOUNTONLY
 	0,                                               // 487 ERR_CHANTOORECENT, ERR_MSGSERVICES
 	0,                                               // 488 ERR_TSLESSCHAN
 	0,                                               // 489 ERR_VOICENEEDED, ERR_SECUREONLYCHAN
