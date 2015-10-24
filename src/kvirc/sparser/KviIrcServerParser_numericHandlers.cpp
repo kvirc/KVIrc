@@ -2552,6 +2552,18 @@ void KviIrcServerParser::parseNumericYoureOper(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericPasswordIncorrect(KviIrcMessage * msg)
+{
+	// 464: ERR_PASSWDMISMATCH
+	// :prefix 464 <target> :Password Incorrect
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = msg->console()->activeWindow();
+		QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
+		pOut->output(KVI_OUT_GENERICERROR,szCmd);
+	}
+}
+
 // STARTTLS support
 void KviIrcServerParser::parseNumericStartTls(KviIrcMessage * msg)
 {

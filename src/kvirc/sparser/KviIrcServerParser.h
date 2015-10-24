@@ -213,6 +213,7 @@ private:
 	void parseNumericInfoStart(KviIrcMessage *msg);
 	void parseNumericInfo(KviIrcMessage *msg);
 	void parseNumericYoureOper(KviIrcMessage * msg);
+	void parseNumericPasswordIncorrect(KviIrcMessage * msg);
 	void parseNumericInviting(KviIrcMessage *msg);
 	void parseNumericCommandSyntax(KviIrcMessage *msg);
 	void parseNumericServerAdminInfoAdminContact(KviIrcMessage *msg);
