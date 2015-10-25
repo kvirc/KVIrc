@@ -46,6 +46,7 @@ extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include <QShortcut>
+#include <QAction>
 
 #define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
 
@@ -101,8 +102,13 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 
 	m_pToolBar->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX), __tr2qs("Show index"), this, SLOT(showIndex()));
 
-	m_pToolBar->addAction(m_pTextBrowser->pageAction(QWebPage::Back));
-	m_pToolBar->addAction(m_pTextBrowser->pageAction(QWebPage::Forward));
+	QAction *pAction;
+	pAction = m_pTextBrowser->pageAction(QWebPage::Back);
+	pAction->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK));
+	m_pToolBar->addAction(pAction);
+	pAction = m_pTextBrowser->pageAction(QWebPage::Forward);
+	pAction->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD));
+	m_pToolBar->addAction(pAction);
 
 	m_pToolBar->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)), __tr2qs("Zoom in"), this, SLOT(slotZoomIn()));
 	m_pToolBar->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)), __tr2qs("Zoom out"), this, SLOT(slotZoomOut()));
