@@ -13,8 +13,5 @@ LangString StartMenuSection ${LANG_BELARUSIAN} "Меню Пуск"
 LangString StartMenuSectionDescr ${LANG_BELARUSIAN} "Стварыць спасылку ў меню Пуск"
 LangString WinampSection ${LANG_BELARUSIAN} "Плагін для Winamp"
 LangString WinampSectionDescr ${LANG_BELARUSIAN} "Усталяваць плагін для Winamp"
-LangString AutostartSection ${LANG_BELARUSIAN} "Аўтазапуск"
-LangString AutostartSectionDescr ${LANG_BELARUSIAN} "Запускаць праграму пры ўваходзе ў сістэму"
 LangString MsgUninstallOldInstaller ${LANG_BELARUSIAN} "Неабходна дэінсталяваць папярэднюю версію KVIrc."
 LangString KVIrcIsRunning ${LANG_BELARUSIAN} "Выяўлена працуючая копія KVIrc. Завершыце працу KVIrc і паспрабуйце зноў."
-

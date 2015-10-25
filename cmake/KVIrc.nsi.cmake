@@ -69,8 +69,6 @@ LangString KVIrc ${LANG_ENGLISH} "KVIrc (required)"
 LangString KVIrcDescr ${LANG_ENGLISH} "KVIrc program files"
 LangString StartMenuSection ${LANG_ENGLISH} "Start menu"
 LangString StartMenuSectionDescr ${LANG_ENGLISH} "Create start menu icon"
-LangString AutostartSection ${LANG_ENGLISH} "Autostart"
-LangString AutostartSectionDescr ${LANG_ENGLISH} "Start program when user login"
 LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc must be uninstalled."
 LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently running. Exit KVIrc and then try again."
 LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
@@ -141,11 +139,6 @@ Section $(TraySection) TraySection_IDX
   CreateShortCut "$QUICKLAUNCH\KVIrc.lnk" "$INSTDIR\@KVIRC_BINARYNAME@.exe" "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" 0 "" "" $(ProgramDescription)
 SectionEnd
 
-Section /o $(AutostartSection) AutostartSection_IDX
-  Call RemoveAutostart
-  Call AddAutostart
-SectionEnd
-
 Section $(WinampSection) WinampSection_IDX
   ReadRegStr $R0 HKCU Software\Winamp ""
   IfFileExists "$R0\winamp.exe" 0 +2
@@ -164,8 +157,6 @@ SectionEnd
         $(DesktopSectionDescr)
 !insertmacro MUI_DESCRIPTION_TEXT ${TraySection_IDX} \
         $(TraySectionDescr)
-!insertmacro MUI_DESCRIPTION_TEXT ${AutostartSection_IDX} \
-        $(AutostartSectionDescr)
 !insertmacro MUI_DESCRIPTION_TEXT ${WinampSection_IDX} \
         $(WinampSectionDescr)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
@@ -238,9 +229,6 @@ Section !un.$(UnGeneralFiles)
     DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
     DeleteRegKey HKLM SOFTWARE\KVIrc
 
-    ; Remove autostart entry
-    Call un.RemoveAutostart
-
     ; Remove shortcuts, if any
     Delete "$SMPROGRAMS\KVIrc\*.*"
     RMDir "$SMPROGRAMS\KVIrc"
@@ -304,32 +292,6 @@ FunctionEnd
 
 ;--------------------------------
 ; Functions
-
-Function AddAutostart
-  Call CheckUserInstallRights
-  Pop $R0
-  ${If} $R0 == "HKLM"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "KVIrc" "$INSTDIR\@KVIRC_BINARYNAME@.exe"
-  ${ElseIf} $R0 == "HKCU"
-    WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "KVIrc" "$INSTDIR\@KVIRC_BINARYNAME@.exe"
-  ${EndIf}
-FunctionEnd
-
-Function RemoveAutostart
-  Call RemoveAutostartShortcuts
-
-  ; Remove registry keys
-  DeleteRegValue HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "KVIrc"
-  DeleteRegValue HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "KVIrc"
-FunctionEnd
-
-Function un.RemoveAutostart
-  Call un.RemoveAutostartShortcuts
-
-  ; Remove registry keys
-  DeleteRegValue HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "KVIrc"
-  DeleteRegValue HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Run" "KVIrc"
-FunctionEnd
 
 Function RemoveAutostartShortcuts
   ; Remove user created sturtup shortcuts
