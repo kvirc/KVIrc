@@ -84,6 +84,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("info",rfc2812wrapper)
 		_REGCMD("inject",inject)
 		_REGCMD("invite",rfc2812wrapper)
+		_REGCMD("ison",rfc2812wrapper)
 		_REGCMD("join",join)
 		_REGCMD("kick",kick)
 		_REGCMD("killtimer",killtimer)

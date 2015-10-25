@@ -356,6 +356,24 @@ namespace KviKvsCoreSimpleCommands
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
+		@doc: ison
+		@type:
+			command
+		@title:
+			ison
+		@syntax:
+			ison <nickname>
+		@short:
+			Checks if a user is online
+		@description:
+			Checks to see if the specified nickname is currently connected to the network.[br]
+			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+	*/
+	// RFC2812 wrapper
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 		@doc: join
 		@type:
 			command
