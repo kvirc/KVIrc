@@ -183,7 +183,7 @@ namespace KviKvsCoreSimpleCommands
 			Requests the Message of the day
 		@description:
 			Requests the Message of the day from the specified server or the current server if no [target server] is specified.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RCF2812 wrapper
 
@@ -498,7 +498,7 @@ namespace KviKvsCoreSimpleCommands
 			Requests IRC operator status
 		@description:
 			Requests IRC operator status.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
 
@@ -844,7 +844,7 @@ namespace KviKvsCoreSimpleCommands
 			Sends a password to the server
 		@description:
 			Sends a password to the server: usually KVIrc takes care of it, but well.. this is useful with bouncers.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
 

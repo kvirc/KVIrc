@@ -252,7 +252,7 @@ namespace KviKvsCoreSimpleCommands
 			Requests the server daemon info from a server
 		@description:
 			Requests server daemon information from the specified server or the current server if no [target server] is specified.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
 
@@ -346,10 +346,10 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			invite <nickname> <channel>
 		@short:
-			Invites an user to a channel
+			Invites a user to a channel
 		@description:
 			Invites the specified user to the <channel>.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RCF2812 wrapper
 
@@ -367,7 +367,7 @@ namespace KviKvsCoreSimpleCommands
 			Checks if a user is online
 		@description:
 			Checks to see if the specified nickname is currently connected to the network.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
 
@@ -455,7 +455,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			kick <user:string> [reason:string]
 		@short:
-			Kicks an user from a channel
+			Kicks a user from a channel
 		@description:
 			Kicks the specified <user> from the current channel.[br]
 			This command is a simple wrapper over the IRC KICK command.
@@ -592,7 +592,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			List server links.[br]
 			The syntax of the parameters of this command is different on many servers.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 		@seealso:
 			[cmd]map[/cmd]
 	*/
@@ -613,7 +613,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			List channels.[br]
 			The syntax of the parameters of this command is different on many servers.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
 
@@ -708,7 +708,7 @@ namespace KviKvsCoreSimpleCommands
 			concern the part of the network formed by the servers matching the
 			mask.[br]Finally, if the <target> parameter is specified, the request
 			is forwarded to that server which will generate the reply.[br]
-			This command is a [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
+			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
 };
