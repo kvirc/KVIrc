@@ -1923,15 +1923,13 @@ void KviIrcServerParser::parseNumericIsOn(KviIrcMessage *msg)
 	}
 	// not handled...output it
 
-	// FIXME: #warning "OUTPUT IT! (In a suitable way)"
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		KviWindow * pOut = msg->console()->activeWindow();
 		QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
-		QString szAllParms = msg->connection()->decodeText(msg->allParams());
-		pOut->output(KVI_OUT_UNHANDLED,
-			"[%Q][%s] %Q",&szPrefix,msg->command(),&szAllParms);
+		QString szUser   = msg->connection()->decodeText(msg->safeTrailing());
+		QString szOutput = szUser.isEmpty() ? "That user is not online" : szUser+"is online";
+		pOut->output(KVI_OUT_HELP,szOutput);
 	}
 }
 
