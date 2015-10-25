@@ -194,8 +194,8 @@ void OptionsWidget_textEncoding::commit()
 	int idx = m_pTextEncodingCombo->currentIndex();
 	if(idx <= 0)
 	{
-		// guess from locale
-		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = "";
+		// Default to UTF-8
+		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = "UTF-8";
 	} else {
 		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = m_pTextEncodingCombo->itemText(idx);
 	}
@@ -203,8 +203,8 @@ void OptionsWidget_textEncoding::commit()
 	idx = m_pSrvEncodingCombo->currentIndex();
 	if(idx <= 0)
 	{
-		// guess from locale
-		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = "";
+		// Default to UTF-8
+		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = "UTF-8";
 	} else {
 		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = m_pSrvEncodingCombo->itemText(idx);
 	}
