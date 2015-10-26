@@ -116,7 +116,7 @@ namespace KviKvsCoreSimpleCommands
 			the document is searched in the KVIrc documentation directory.[br]
 			If no document has been found using absolute and relative paths,
 			the first document matching [document] in the help search database
-			is shown. Otherway, an error page is displayed.[br/]
+			is shown. Otherwise, an error page is displayed.[br/]
 			The help browser has limited html browsing capabilities: you can
 			use it to view simple html files on your filesystem.[br]
 			This command is an alias for the [cmd]help.open[cmd] command exported
@@ -185,7 +185,7 @@ namespace KviKvsCoreSimpleCommands
 			The -i switch causes the command to execute
 			in IPv6 mode (and lookup ONLY IPv6 hosts!).[br]
 			The -a switch causes the command to run in "unspecified" mode
-			and return any available address: IPv4 or Ipv6.[br]
+			and return any available address: IPv4 or IPv6.[br]
 			This command also performs reverse lookups (if you pass an IP address as <hostname>).[br]
 		@examples:
 			[example]

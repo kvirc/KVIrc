@@ -322,7 +322,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			is detected to be ON-Line.[br]
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
-			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick is on irc" output,
+			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick is on IRC" output,
 			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
@@ -348,7 +348,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			has just left IRC.[br]
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
-			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick has left irc" output,
+			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick has left IRC" output,
 			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
@@ -735,21 +735,21 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			A http.get command has terminated execution
 		@parameters:
 			$0 = status
-			$1 = remote url
+			$1 = remote URL
 			$2 = local file
 			$3 = magic identifier
 		@window:
 			Console
 		@description:
 			Triggered when a [cmd]http.get[/cmd] file download has terminated execution.
-			If the transfer has been succesfull then $0 will contain the value 1 (true),
-			otherwise will contain the value 0. $1 contains the remote url and $2 the local
+			If the transfer has been successful then $0 will contain the value 1 (true),
+			otherwise will contain the value 0. $1 contains the remote URL and $2 the local
 			path on disk of the saved file. $3 contains the magic identifier passed to
 			the http.get command by the means of the -i switch.
 	*/
 	EVENT("OnHTTPGetTerminated", \
 		"$0 = status\n" \
-		"$1 = remote url\n" \
+		"$1 = remote URL\n" \
 		"$2 = local file\n" \
 		"$3 = magic identifier"),
 
@@ -932,10 +932,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has right clicked on an URL link in
 			the text view. The double click link action is builtin and it causes KVIrc
-			to open the URL with a browser (tipically your OS default browser).[br]
+			to open the URL with a browser (typically your OS default browser).[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the URL, like bookmarking in some way or opening
 			with a specific browser.[br]
@@ -962,7 +962,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has right clicked on an server name link in
 			the text view. The double click link action is builtin and it causes KVIrc
 			to query the MOTD of the server.[br]
@@ -994,13 +994,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has right clicked on an channel link in
 			the text view. The double click link action is builtin and it causes KVIrc
 			to join the channel (unless the user is already on).[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the channel name like bookmarking, joining with a password,
-			performing a [cmd]who[/cmd] etc...
+			performing a [cmd]who[/cmd] etc..
 	*/
 	EVENT("OnChannelLinkPopupRequest", \
 		"$0 = actual name\n" \
@@ -1024,11 +1024,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has right clicked on an "unknown" nickname link in
 			the text view.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
-			that can be performed with the nickname like querying, sending a file by dcc or opening a dcc.chat.
+			that can be performed with the nickname like querying, sending a file by DCC or opening a dcc.chat.
 			Please note that NOT ALL the nickname links will receive this event.[br]
 			The nickname links that appear in the text view of the channel that they are actually in
 			are handled by the [event:onchannelnickpopuprequest]OnChannelNickPopupRequest[/event] event.[br]
@@ -1057,12 +1057,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has right clicked on a set of nicknames in
 			the query target list.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
-			that can be performed with the nickname like sending a file by dcc, opening a dcc.chat or
-			performing a whois.[br]
+			that can be performed with the nickname like sending a file by DCC, opening a dcc.chat or
+			performing a WHOIS.[br]
 	*/
 	EVENT("OnQueryNickPopupRequest", \
 		"$0 = actual name\n" \
@@ -1111,7 +1111,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when an user has right clicked on a list of nicknames in
 			the notify list (console window).[br]
 			This is a good place to show a [cmd]popup[/cmd] with some actions that can be performed
-			on the nicknames like querying, performing a whois lookup or sth similar.[br]
+			on the nicknames like querying, performing a WHOIS lookup or something similar.[br]
 	*/
 	EVENT("OnNotifyListPopupRequest", \
 		"$0 = nickname list"),
@@ -1476,8 +1476,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Console
 		@description:
 			Triggered when the local user leaves the AWAY state.[br]
-			The $0 parameter contains the [b]unix time[/b] of the away status start.[br]
-			You can obtain the current [b]unix time[/b] from the function [fnc]$unixtime[/fnc].[br]
+			The $0 parameter contains the [b]UNIX time[/b] of the away status start.[br]
+			You can obtain the current [b]UNIX time[/b] from the function [fnc]$unixtime[/fnc].[br]
 			Calling 'halt' in this event disables the server "You are no longer marked as being away" message.[br]
 		@seealso:
 			[event:onmeaway]OnMeAway[/event]
@@ -1765,7 +1765,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			channel
 		@description:
 			Triggered when a channel mode has been changed, AFTER all the mode specific events
-			were triggered. $3 contains the unparsed mode flags (-o+b...) and $4 contains
+			were triggered. $3 contains the unparsed mode flags (-o+b) and $4 contains
 			the unparsed mode parameter string (you need to split it!).
 	*/
 	EVENT("OnChannelModeChange", \
@@ -1890,7 +1890,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Channel
 		@description:
-			Triggered when someone has set a -b flag that matches your mask (debans you) in the channel.[br]
+			Triggered when someone has set a -b flag that matches your mask (unbans you) in the channel.[br]
 		@seealso:
 			[event:onmeban]OnMeBan[/event]
 	*/
@@ -2400,7 +2400,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Channels window
 		@description:
-			Triggered when someone sets a +a (has made Channel Administrator) flag on a user of the active channel.
+			Triggered when someone sets a +a (has made Channel administrator) flag on a user of the active channel.
 		@seealso:
 			[event:ondechanadmin]OnDeChanAdmin[/event]
 	*/
@@ -2475,7 +2475,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Channels window
 		@description:
-			Triggered when someone sets a -a (has removed channel admin status) flag on the local user in the active channel.
+			Triggered when someone sets a -a (has removed channel administrator status) flag on the local user in the active channel.
 		@seealso:
 			[event:onmeop]OnMeOp[/event]
 	*/
@@ -3140,13 +3140,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = source user
 			$2 = source host
 			$3 = target
-			$4 = ctcp type
-			$5- = ctcp parameters
+			$4 = CTCP type
+			$5- = CTCP parameters
 		@window:
 			Console window
 		@description:
 			A CTCP request has been received.[br]
-			If you call [cmd]halt[/cmd] in this event, you will stop the further processing of the CTCP (thus, you can disable some of the KVIrc features).[br]
+			If you call [cmd]halt[/cmd] in this event, you will stop the further processing of the CTCP, thus, you can disable some of the KVIrc features.[br]
 			Be careful when using this.
 		@seealso:
 			[event:onctcpreply]OnCTCPReply[/event]
@@ -3156,8 +3156,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source user\n" \
 		"$2 = source host\n" \
 		"$3 = target\n" \
-		"$4 = ctcp type\n" \
-		"$5- = ctcp parameters"),
+		"$4 = CTCP type\n" \
+		"$5- = CTCP parameters"),
 
 	/*
 		@doc: onctcpreply
@@ -3172,13 +3172,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = source user
 			$2 = source host
 			$3 = target
-			$4 = ctcp type
-			$5- = ctcp parameters
+			$4 = CTCP type
+			$5- = CTCP parameters
 		@window:
 			Console window
 		@description:
 			A CTCP reply has been received.[br]
-			If you call [cmd]halt[/cmd] in this event, you will stop the further processing of the CTCP reply (thus, you can disable some of the KVIrc features).[br]
+			If you call [cmd]halt[/cmd] in this event, you will stop the further processing of the CTCP reply, thus, you can disable some of the KVIrc features.[br]
 			Be careful when using this.
 		@seealso:
 			[event:onctcpreply]OnCTCPReply[/event]
@@ -3188,8 +3188,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source user\n" \
 		"$2 = source host\n" \
 		"$3 = target\n" \
-		"$4 = ctcp type\n" \
-		"$5- = ctcp parameters"),
+		"$4 = CTCP type\n" \
+		"$5- = CTCP parameters"),
 
 	/*
 		@doc: onctcpflood
@@ -3204,8 +3204,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = source username
 			$2 = source hostname
 			$3 = target
-			$4 = ctcp type
-			$5- = ctcp parameters
+			$4 = CTCP type
+			$5- = CTCP parameters
 		@window:
 			Console window
 		@description:
@@ -3219,8 +3219,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
 		"$3 = target\n" \
-		"$4 = ctcp type\n" \
-		"$5- = ctcp parameters"),
+		"$4 = CTCP type\n" \
+		"$5- = CTCP parameters"),
 
 	/*
 		@doc: ondccsessioncreated
@@ -3629,7 +3629,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@short:
 			Triggered when user clicks on any URL link in any window
 		@parameters:
-			$0 = url
+			$0 = URL
 		@window:
 			any
 		@description:
@@ -3637,7 +3637,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			It will be triggered only at the left mouse button click
 	*/
 	EVENT("OnURLLinkClick", \
-		"$0 = url"),
+		"$0 = URL"),
 
 	/*
 		@doc: OnChannelLinkClick
@@ -3694,9 +3694,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user).
-			Command name is set if the visible name differs with the actual link target (probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target  (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has double clicked on a text view and has not hit any link.[br]
-			I have no idea what you can do in this event....maybe some sort of channel-central dialog? :)
+			I have no idea what you can do in this event, maybe some sort of channel-central dialog? :)
 	*/
 	EVENT("OnTextViewDoubleClicked",""),
 
@@ -3717,7 +3717,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has double clicked on a nickname link.[br]
 			You should use this event to perform some significant action associated with the double click.[br]
 			A good example might be a [cmd]whois[/cmd] or a [cmq]query[/cmd] call.[br]
@@ -3767,11 +3767,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
 			This event is triggered when an user has double clicked on a nickname in
 			the query target list.[br]
 			You should use this event to do some significant action associated with the double click.[br]
-			A good example might be a [cmd]whois[/cmd] query or a [cmd]dcc.chat[/cmd]
+			A good example might be a [cmd]WHOIS[/cmd] query or a [cmd]dcc.chat[/cmd]
 	*/
 	EVENT("OnQueryNickDefaultActionRequest", \
 		"$0 = actual name\n" \
@@ -3814,7 +3814,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Any window
 		@description:
 			This event is triggered when the user paste some text on the input bar.[br]
-			You can check the text, insert any other text and halt the orginal from being inserted in the input bar.[br]
+			You can check the text, insert any other text and halt the original from being inserted in the input bar.[br]
 			Note that the text can contains binary data, end-of-line or other characters that could need a special treatment then parsed.
 		@seealso:
 			[cmd]window.insertInInputText[cmd]
@@ -3872,7 +3872,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Console window
 		@description:
 			A NOTICE directed to a special target has been received.
-			A special target is actually anything that kvirc couldn't
+			A special target is actually anything that KVIrc couldn't
 			recognize: not the local user nor a channel.
 		@seealso:
 			[event:onservernotice]OnServerNotice[/event]
@@ -3978,7 +3978,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Channel
 		@description:
-			Triggered when someone has set a -q flag that matches your mask (quiet debans you) in the channel.[br]
+			Triggered when someone has set a -q flag that matches your mask (quiet unbans you) in the channel.[br]
 		@seealso:
 			[event:onmequietban]OnMeQuietBan[/event]
 	*/

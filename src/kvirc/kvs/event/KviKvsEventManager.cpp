@@ -44,7 +44,7 @@
 	@short:
 		Events: user reactions
 	@body:
-		KVIrc triggers an event when a particular situation occurs (hehe :D).[br]
+		KVIrc triggers an event when a particular situation occurs.[br]
 		You can define a set of event handlers for each event type.[br]
 		An event handler is a snippet of user-defined code that gets executed when the event is triggered.[br]
 		Event handlers can be created or destroyed by using the scriptcenter (graphic interface)
@@ -63,7 +63,7 @@
 		Now try to connect to a server and you'll see that it joins automatically the three channels!.[br]
 		You might also want to do some other actions just after the connection has been established,
 		for example you might want to look immediately for a friend of yours by issuing a [cmd]whois[/cmd]
-		to the server (well.. you could use the notify list for that, but well, this is an example).[br]
+		to the server (you could use the notify list for that).[br]
 		You can add the [cmd]whois[/cmd] request to the handler above or just create a new one:[br]
 		[example]
 		[cmd]event[/cmd](OnIRC,lookforfred)
@@ -72,7 +72,7 @@
 			[cmd]whois[/cmd] fred
 		}
 		[/example]
-		(An even nicer idea would be to use the [cmd]awhois[/cmd] command...but that's left to the reader as exercise.[br]
+		(An even nicer idea would be to use the [cmd]awhois[/cmd] command, but that's left to the reader as an exercise.[br]
 		To remove an event handler you still use the [cmd]event[/cmd] command, but with an empty code block:[br]
 		[example]
 		[cmd]event[/cmd](OnIRC,lookforfred){}[br]
@@ -105,7 +105,7 @@ void KviKvsEventManager::init()
 {
 	if(KviKvsEventManager::instance())
 	{
-		qDebug("WARNING: Trying to create KviKvsEventManager twice!");
+		qDebug("WARNING: trying to create KviKvsEventManager twice!");
 		return;
 	}
 	(void) new KviKvsEventManager();
@@ -115,7 +115,7 @@ void KviKvsEventManager::done()
 {
 	if(!KviKvsEventManager::instance())
 	{
-		qDebug("WARNING: Trying to destroy the KviKvsEventManager twice!");
+		qDebug("WARNING: trying to destroy the KviKvsEventManager twice!");
 		return;
 	}
 	delete KviKvsEventManager::instance();

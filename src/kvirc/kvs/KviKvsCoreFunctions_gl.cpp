@@ -152,7 +152,7 @@ KVSCF(gender)
 		@syntax:
 			<hash> $hash([<key:string>,<value:variant>,[<key:string>,<value:variant>]],...)
 		@description:
-			Returns a hash with the specified items. Each <value> is indexed by the preceeding <key>.
+			Returns a hash with the specified items. Each <value> is indexed by the preceding <key>.
 			This is just an explicit way of creating a hash with a defined set of items,
 			useful for increasing readability.
 		@examples:
@@ -245,7 +245,7 @@ KVSCF(gender)
 			The hostname is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 			The hostname is generally known if the user is on a channel with you
 			or has an open query with you.[br]
-			Detailed explaination:[br]
+			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
 			and queries.[br] The other IRC users are NOT in the database:
@@ -330,7 +330,7 @@ KVSCF(gender)
 		@syntax:
 			<float> $hptimestamp
 		@description:
-			Returns a high precision timestamp as a floaint point value.
+			Returns a high precision timestamp as a floating point value.
 			The timestamp represents the number of seconds elapsed since
 			a certain moment in the past. The number of seconds
 			contains a "high precision" fractional part. The "certain moment" definition
@@ -1096,11 +1096,11 @@ KVSCF(gender)
 				[li]nick	link to a nickname[/li]
 				[li]channel	link to a channel name[/li]
 				[li]host	link to an host[/li]
-				[li]url		(default) link to an url[/li]
+				[li]URL		(default) link to an URL[/li]
 			[/ul]
 			Please note that the text you get as the output is valid only
 			when interpreted locally. Sending this text to the server you can
-			get unpredictable results, depending on the irc client other people
+			get unpredictable results, depending on the IRC client other people
 			is using.
 			The returned string format is described by [doc:escape_sequences]the escape sequences documentation[/doc]
 			and you might also take a look at [fnc]$fmtlink[/fnc] which has related functionality.

@@ -195,7 +195,7 @@ void KviKvsObjectController::flushUserClasses()
 				if(c->save(szPath))
 					c->clearDirtyFlag();
 				else
-					qDebug("Oops.. failed to save the object class %s",c->name().toLatin1().data());
+					qDebug("Oops! Failed to save the object class %s",c->name().toLatin1().data());
 			}
 		}
 		++it;
@@ -211,7 +211,7 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString &szClass,b
 		KviModule * pModule = g_pModuleManager->getModule("objects");
 		if(!pModule)
 		{
-			qDebug("ops...something wrong with the libkviobjects module!");
+			qDebug("Oops! something wrong with the libkviobjects module!");
 			return 0;
 		} else pC = m_pClassDict->find(szClass);
 		if(!pC)

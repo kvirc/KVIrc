@@ -265,7 +265,7 @@ void KviKvsScriptAddonManager::init()
 {
 	if(KviKvsScriptAddonManager::instance())
 	{
-		qDebug("WARNING: Trying to create the KviKvsScriptAddonManager twice!");
+		qDebug("WARNING: trying to create the KviKvsScriptAddonManager twice!");
 		return;
 	}
 	(void)new KviKvsScriptAddonManager();
@@ -275,7 +275,7 @@ void KviKvsScriptAddonManager::done()
 {
 	if(!KviKvsScriptAddonManager::instance())
 	{
-		qDebug("WARNING: Trying to destroy the KviKvsScriptAddonManager twice!");
+		qDebug("WARNING: trying to destroy the KviKvsScriptAddonManager twice!");
 		return;
 	}
 	delete KviKvsScriptAddonManager::instance();

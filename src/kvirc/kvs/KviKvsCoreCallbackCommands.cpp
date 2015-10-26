@@ -99,7 +99,7 @@ namespace KviKvsCoreCallbackCommands
 				[cmd]echo[/cmd] "Lookup: "$0;
 				if($1)
 				{
-					[cmd]echo[/cmd] "Ip address: "$2;
+					[cmd]echo[/cmd] "IP address: "$2;
 					[cmd]echo[/cmd] "Hostname: "$3;
 				} else {
 					[cmd]echo[/cmd] "Error: $2";
@@ -111,7 +111,7 @@ namespace KviKvsCoreCallbackCommands
 				[cmd]echo[/cmd] "Magic: $3";
 				if($1)
 				{
-					[cmd]echo[/cmd] "Ip address: "$2;
+					[cmd]echo[/cmd] "IP address: "$2;
 					[cmd]echo[/cmd] "Hostname: "$3;
 				} else {
 					[cmd]echo[/cmd] "Error: $2";
@@ -123,7 +123,7 @@ namespace KviKvsCoreCallbackCommands
 				[cmd]echo[/cmd] "Magic: $3";
 				if($1)
 				{
-					[cmd]echo[/cmd] "Ip address: "$2;
+					[cmd]echo[/cmd] "IP address: "$2;
 					[cmd]echo[/cmd] "Hostname: "$3;
 				} else {
 					[cmd]echo[/cmd] "Error: $2";
@@ -573,7 +573,7 @@ namespace KviKvsCoreCallbackCommands
 				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName))
 				{
 					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for raw numeric event '%d'","kvs"),&szHandlerName,iNumber);
+						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'","kvs"),&szHandlerName,iNumber);
 				}
 			} else {
 				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName))
@@ -729,7 +729,7 @@ namespace KviKvsCoreCallbackCommands
 			With the -b switch the events stdout and stderr are triggered once even if the process
 			emits no output.
 			The -s=<interpreter> switch may be used to specify the path of the command interpreter
-			that is "sh -c" by default on unix machines and "cmd.exe /c" on windows.
+			that is "sh -c" by default on UNIX machines and "cmd.exe /c" on Windows.
 			The interpreter executable is searched on the system PATH.
 			If the process can't be started then a warning message is printed in the current window
 			unless the -q (quiet) flag is used.[br]
@@ -753,7 +753,7 @@ namespace KviKvsCoreCallbackCommands
 			exec -k=20000 -p=1000 -t ("cat")
 			{
 				if($0 == "ping")echo "[event:$0] Please wait while doing a huge computation ..."
-				else if($0 == "terminated")echo "[event:$0] Ok, done :)"
+				else if($0 == "terminated")echo "[event:$0] OK, done :)"
 			}
 			[comment]# Do the same but this time use the extended scope vars[/comment]
 			[comment]# Use also a nicer syntax[/comment]
@@ -775,7 +775,7 @@ namespace KviKvsCoreCallbackCommands
 					break;
 					case("terminated"):
 					{
-						echo "Ok, done :)"
+						echo "OK, done :)"
 					}
 					break;
 				}

@@ -190,7 +190,7 @@ void KviKvsTimerManager::timerEvent(QTimerEvent *e)
 	{
 		if(!m_pKilledTimerList)
 		{
-			qDebug("ops.. assassing timer with no victims ?");
+			qDebug("Oops! Assassinating timer with no victims?");
 		} else {
 			m_pKilledTimerList->clear();
 		}
@@ -202,7 +202,7 @@ void KviKvsTimerManager::timerEvent(QTimerEvent *e)
 	KviKvsTimer * t = m_pTimerDictById->find(iId);
 	if(!t)
 	{
-		qDebug("Internal error: got an nonexistant timer event");
+		qDebug("Internal error: received a non existent timer event");
 		return; // HUH ?
 	}
 

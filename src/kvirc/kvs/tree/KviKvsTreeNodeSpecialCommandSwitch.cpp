@@ -70,7 +70,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelCase::~KviKvsTreeNodeSpecialCommandSwitch
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelCase::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Label \"case\" For Special Command \"switch\"";
+	szBuffer = "Label \"case\" for Special Command \"switch\"";
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelCase::dump(const char * prefix)
@@ -111,7 +111,7 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext *
 				}
 			}
 		} else {
-			// string comparision, case insensitive
+			// string comparison, case insensitive
 			QString reg;
 			v.asString(reg);
 
@@ -148,7 +148,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelMatch::~KviKvsTreeNodeSpecialCommandSwitc
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Label \"match\" For Special Command \"switch\"";
+	szBuffer = "Label \"match\" for Special Command \"switch\"";
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::dump(const char * prefix)
@@ -204,7 +204,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::~KviKvsTreeNodeSpecialCommandSwit
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Label \"regexp\" For Special Command \"switch\"";
+	szBuffer = "Label \"regexp\" for Special Command \"switch\"";
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::dump(const char * prefix)
@@ -260,7 +260,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelDefault::~KviKvsTreeNodeSpecialCommandSwi
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Label \"default\" For Special Command \"switch\"";
+	szBuffer = "Label \"default\" for Special Command \"switch\"";
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
