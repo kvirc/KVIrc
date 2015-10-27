@@ -1404,12 +1404,18 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 		QPalette pal(QColor(0,0,0));
 
+		/* QPalette::active defines the colors of the button/text when the KVIrc window has focus
+		   Keep button/text color in a specturm that indicates a connect action is possible */
 		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,135,0));
 		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
 
-		pal.setColor(QPalette::Inactive,QPalette::Button,QColor(0,135,0));
-		pal.setColor(QPalette::Inactive,QPalette::ButtonText,QColor(0,0,0));
+		/* QPalette::Inactive defines the colors of the button/text when the KVIrc window looses focus
+		   Keep button/text color the same as QPalette::Active but use different shades */
+		pal.setColor(QPalette::Inactive,QPalette::Button,QColor(50,135,50));
+		pal.setColor(QPalette::Inactive,QPalette::ButtonText,QColor(225,225,225));
 
+		/* QPalette::Disabled defines the colors of the button/text when for instance network is selected
+		   Keep button/text color in a specturm that indicates no possible action is possible */
 		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(100,100,100));
 		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(180,180,180));
 
