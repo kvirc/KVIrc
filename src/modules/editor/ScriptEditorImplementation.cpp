@@ -859,7 +859,7 @@ void ScriptEditorImplementation::loadOptions()
 	g_pEditorModulePointer->getDefaultConfigFileName(szTmp);
 
 	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);
-	g_clrBackground = cfg.readColorEntry("Background",QColor(0,0,0));;
+	g_clrBackground = cfg.readColorEntry("Background",QColor(0,0,0));
 	g_clrNormalText = cfg.readColorEntry("NormalText",QColor(100,255,0));
 	g_clrBracket = cfg.readColorEntry("Bracket",QColor(255,0,0));
 	g_clrComment = cfg.readColorEntry("Comment",QColor(0,120,0));
@@ -905,7 +905,7 @@ void ScriptEditorImplementation::saveOptions()
 	g_pEditorModulePointer->getDefaultConfigFileName(szTmp);
 
 	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Write);
-	cfg.writeEntry("Background",g_clrBackground);;
+	cfg.writeEntry("Background",g_clrBackground);
 	cfg.writeEntry("NormalText",g_clrNormalText);
 	cfg.writeEntry("Bracket",g_clrBracket);
 	cfg.writeEntry("Comment",g_clrComment);

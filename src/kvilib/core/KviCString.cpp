@@ -2820,7 +2820,7 @@ int KviCString::findFirstIdx(const char *str,bool caseS) const
 	// code to QString and use QString::findRev().
 	// We must throw away KviCString at all in this case...
 
-	// return QString(m_ptr).find(QString(str),0,caseS);;
+	// return QString(m_ptr).find(QString(str),0,caseS);
 
 	// Both this KviCString and the const char * str are assumed
 	// to be in the proper (and same) encoding.

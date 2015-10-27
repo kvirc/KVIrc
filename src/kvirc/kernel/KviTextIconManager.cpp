@@ -190,7 +190,7 @@ void KviTextIconManager::load()
 	{
 		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 		szPath += KVI_PATH_SEPARATOR_CHAR;
-		szPath += KVI_CONFIGFILE_TEXTICONS;;
+		szPath += KVI_CONFIGFILE_TEXTICONS;
 		if(QFile::exists(szPath))
 			bCheckUserDefinedTheme=true;
 		else

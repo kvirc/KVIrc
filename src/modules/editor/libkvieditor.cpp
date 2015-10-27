@@ -53,7 +53,7 @@ static bool editor_module_cleanup(KviModule *)
 
 	while(g_pScriptEditorWindowList->first())
 	{
-		QObject * w = g_pScriptEditorWindowList->first()->parent();;
+		QObject * w = g_pScriptEditorWindowList->first()->parent();
 		while(w)
 		{
 			//qDebug("%s %s %i %s",__FILE__,__FUNCTION__,__LINE__,w->className());

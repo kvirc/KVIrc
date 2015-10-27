@@ -159,7 +159,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLabel->setWordWrap(true);
 	QString ozText = "<p>";
 	ozText += __tr2qs_ctx("To use the default and latest icon/image set automatically, uncheck this option.<br><br>To replace specific icons/images in your theme, include only those you wish to replace.","theme");
-	ozText += "</p><p>";;
+	ozText += "</p><p>";
 	ozText += __tr2qs_ctx("Hit the <b>\"Next\"</b> button to continue.","theme");
 	ozText += "<p>";
 

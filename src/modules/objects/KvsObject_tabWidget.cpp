@@ -180,7 +180,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_tabWidget)
 
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_tabWidget)
-tabsList.clear();;
+tabsList.clear();
 KVSO_END_DESTRUCTOR(KvsObject_tabWidget)
 
 bool KvsObject_tabWidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
