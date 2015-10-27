@@ -1,7 +1,5 @@
 ###############################################################################
-##
 ## KVIrc CMake global configuration file.
-##
 ###############################################################################
 ##
 ## Conventions for variables:
@@ -185,10 +183,9 @@ endif()
 list(APPEND CMAKE_KVIRC_BUILD_FLAGS CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX})
 
 ###############################################################################
-#
 # Release type
-#
 ###############################################################################
+
 option(WANT_ENV_FLAGS "Don't try to set CMAKE_C(XX)_FLAGS; instead, use the ones from environment variables" OFF)
 
 option(WANT_DEBUG "Compile debug symbols" OFF)
@@ -285,9 +282,7 @@ else()
 endif()
 
 ###############################################################################
-#
 # Verbose Makefile
-#
 ###############################################################################
 
 option(WANT_VERBOSE "Generate verbose Makefiles" OFF)
@@ -301,9 +296,7 @@ endif()
 
 
 ###############################################################################
-#
-# Version compatibility switch: appends VERSION_MAJOR to kvirc and kvilib
-#
+# Version compatibility switch: appends VERSION_MAJOR to KVIrc and kvilib
 ###############################################################################
 
 option(WANT_COEXISTENCE "Append version to binaries to maintain compatibility with older versions" OFF)
@@ -318,9 +311,7 @@ else()
 endif()
 
 ###############################################################################
-#
-# Module install path: kvirc needs to know where they are installed
-#
+# Module install path: KVIrc needs to know where they are installed
 ###############################################################################
 
 if(UNIX)
@@ -338,9 +329,7 @@ elseif(WIN32)
 endif()
 
 ###############################################################################
-#
 # System checks
-#
 ###############################################################################
 
 include(CheckTypeSize)
@@ -367,10 +356,8 @@ else()
 endif()
 
 ###############################################################################
-#
 # Library and tool checks, in order. First the required ones
 # in order of dependency, then the optional ones.
-#
 ###############################################################################
 
 # ignore sigalarm
@@ -794,7 +781,7 @@ if(WIN32)
 endif()
 
 ############################################################################
-# Check for MacOS X universal binary
+# Check for OS X universal binary
 ############################################################################
 
 if(APPLE)
@@ -881,7 +868,7 @@ else()
 endif()
 
 ############################################################################
-# Do we want pseudo-transparency ?
+# Do we want pseudo-transparency?
 ############################################################################
 
 option(WANT_TRANSPARENCY "Compile Transparency Support" ON)
@@ -949,6 +936,7 @@ endif()
 ############################################################################
 # Enchant (spell checker) support
 ############################################################################
+
 option(WANT_SPELLCHECKER "Compile Spell-Checker Support" ON)
 if(WANT_SPELLCHECKER)
 	find_package(PkgConfig)
@@ -968,6 +956,7 @@ endif()
 ############################################################################
 # IPC (inter-process communication) support
 ############################################################################
+
 option(WANT_IPC "Compile Inter-Process Communication Support" ON)
 if(WANT_IPC)
 	set(CMAKE_STATUS_IPC_SUPPORT "Yes")
@@ -1003,6 +992,7 @@ endif()
 ############################################################################
 # SetEnv/PutEnv support
 ############################################################################
+
 CHECK_FUNCTION_EXISTS("setenv" HAVE_SETENV_EXISTS)
 # what systems lack this!?
 if(HAVE_SETENV_EXISTS)
@@ -1018,6 +1008,7 @@ endif()
 ############################################################################
 # GSM support
 ############################################################################
+
 option(WANT_GSM "Compile GSM Support" ON)
 if(WANT_GSM)
 	set(COMPILE_USE_GSM 1)
@@ -1041,6 +1032,7 @@ endif()
 ############################################################################
 # DCC voice support
 ############################################################################
+
 CHECK_INCLUDE_FILE(linux/soundcard.h CMAKE_HAVE_LINUX_SOUNDCARD_H)
 CHECK_INCLUDE_FILE(sys/soundcard.h CMAKE_HAVE_SYS_SOUNDCARD_H)
 CHECK_INCLUDE_FILE(soundcard.h CMAKE_HAVE_SOUNDCARD_H)
@@ -1066,8 +1058,9 @@ else()
 endif()
 
 ############################################################################
-# Dcc video support + extended webcam support (LibV4L2)
+# DCC video support + extended webcam support (LibV4L2)
 ############################################################################
+
 option(WANT_DCC_VIDEO "Compile DCC Video Support" OFF)
 
 if(WANT_DCC_VIDEO AND CMAKE_RESULT_USING_QT5)
@@ -1090,6 +1083,7 @@ endif()
 ############################################################################
 # Ogg/Vorbis and Ogg/Theora support
 ############################################################################
+
 option(WANT_OGG_THEORA "Compile Ogg/Vorbis+Theora Support" OFF)
 
 if(WANT_OGG_THEORA)
@@ -1110,6 +1104,7 @@ endif()
 ############################################################################
 # Memory profiling support
 ############################################################################
+
 option(WANT_MEMORY_PROFILE "Compile Memory Profiling Support" OFF)
 if(WANT_MEMORY_PROFILE)
 	set(COMPILE_MEMORY_PROFILE 1)
@@ -1121,6 +1116,7 @@ endif()
 ############################################################################
 # Memory checks support
 ############################################################################
+
 option(WANT_MEMORY_CHECKS "Compile Memory Checking Support" OFF)
 if(WANT_MEMORY_CHECKS)
 	set(COMPILE_MEMORY_CHECKS 1)
@@ -1132,6 +1128,7 @@ endif()
 ############################################################################
 # Platform Specific checks
 ############################################################################
+
 if(WIN32)
 	add_definitions(-D_WIN32_WINNT=0x501 -DWINVER=0x501 -DWIN32_LEAN_AND_MEAN)
 endif()
@@ -1160,6 +1157,7 @@ endif()
 ############################################################################
 # Very important checks
 ############################################################################
+
 option(WANT_PIZZA "Pizza for everyone" OFF)
 if(WANT_PIZZA)
 	message(STATUS "Checking for mozzarella...")
@@ -1192,10 +1190,9 @@ if(WANT_GTKSTYLE)
 endif()
 
 ###############################################################################
-#
 # Translation (GetText) checks
-#
 ###############################################################################
+
 option(WANT_GETTEXT "Whether to use GetText to generate translations" ON)
 if(WANT_GETTEXT)
 	find_program(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
@@ -1250,19 +1247,17 @@ else()
 	set(CMAKE_STATUS_GETTEXT_SUPPORT "No")
 endif()
 
-# Search for subdirectories; under osx, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
+# Search for subdirectories; under OS X, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
 subdirs(data doc po scripts src)
 
 #install additional resources for win32
 if(WIN32)
 	add_subdirectory(win32build)
 endif()
-###############################################################################
-#
-# The API documentation target
-#
-###############################################################################
 
+###############################################################################
+# The API documentation target
+###############################################################################
 
 option(WANT_DOXYGEN "Whether to use Doxygen to generate documentation" ON)
 if(WANT_DOXYGEN)
@@ -1288,9 +1283,7 @@ else()
 endif()
 
 ###############################################################################
-#
-# The User documentation target (kvirc internal help)
-#
+# The User documentation target (KVIrc internal help)
 ###############################################################################
 
 #currently WIP
@@ -1302,9 +1295,7 @@ endif()
 #endif()
 
 ###############################################################################
-#
 # We want the "distclean" target
-#
 ###############################################################################
 
 if(UNIX)
@@ -1341,7 +1332,7 @@ endif()
 ###############################################################################
 
 # System configuration is now split into 2 files
-# kvi_sysconfig.h contains the "saveable" configuration: stuff that
+# kvi_sysconfig.h contains the "savable" configuration: stuff that
 # may be preserved between multiple cmake runs (and thus may save compilation time)
 # kvi_sysbuildinfo.h contains the configuration that changes at every
 # cmake run and must be recompiled every time. Extra care is taken
@@ -1409,6 +1400,7 @@ mark_as_advanced(FORCE EXECUTABLE_OUTPUT_PATH)
 ###############################################################################
 
 list(APPEND LIBS "${ADDITIONAL_LINK_FLAGS}")
+
 ###############################################################################
 # FINAL OUTPUT
 ###############################################################################
@@ -1418,7 +1410,7 @@ if(UNIX)
 	if(APPLE)
 		set(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/)
 	else()
-		# Assume linux
+		# Assume Linux
 		set(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/bin/)
 	endif()
 elseif(WIN32)
@@ -1430,7 +1422,7 @@ if(UNIX)
 	if(APPLE)
 		set(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/)
 	else()
-		# Assume linux
+		# Assume Linux
 		set(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/)
 	endif()
 elseif(WIN32)
@@ -1452,7 +1444,7 @@ endif()
 # Man path
 if(UNIX)
 	if(APPLE)
-		# does MacOS X use man pages? <= yes!
+		# does OS X use man pages? <= yes!
 	else()
 		# Assume GNU/Linux
 		set(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)
