@@ -9,7 +9,7 @@ static const char * g_szAboutText = "" \
 "contributed in some way to the KVIrc project.<br><br>" \
 "Honor and glory to:<br>" \
 "</h4>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Core developers</b></font>" \
 "</td></tr>" \
@@ -121,7 +121,7 @@ static const char * g_szAboutText = "" \
 "Bugfixing, coding, mingw32 port, user support" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"Can i haz KVIrc?\"" \
+"\"Can I haz KVIrc?\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -151,7 +151,7 @@ static const char * g_szAboutText = "" \
 "Bugfixing, cmake, kde4, other new stuff" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"I'm not sure how i did it, but it works\"" \
+"\"I'm not sure how I did it, but it works\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -196,6 +196,25 @@ static const char * g_szAboutText = "" \
 "\"view on some things, which is - apart from bugs reported to\"" \
 "<br>" \
 "\"Debian - the main force driving me to improve KVIrc.\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Matt Ullman</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"BlindSight" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"matt at airraidsirens dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Development and bug fixing" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"Codes with his paws.\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -373,18 +392,17 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>universal</b></font>" \
+"<font color=\"#000000\" size=\"+2\"><b>un1versal</b></font>" \
 "</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"universal at dot dot dot" \
-"]" \
-"</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"Designer" \
+"Design, Spellchecking, bug-hunting and minor development." \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"Icon set, themes and graphics for KVIrc v4.3.x" \
+"\"Icon set, themes and graphics for KVIrc v4.3.x\"" \
+"<br>" \
+"\"Kudos to all the KVIrc translators.\"" \
+"<br>" \
+"\"Translating gibberish is never easy. :D\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -627,7 +645,7 @@ static const char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"This free project is better that shareware\"" \
 "<br>" \
-"\"mIrc for windows even in alpha stage\"" \
+"\"mIRC for windows even in alpha stage\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -696,7 +714,7 @@ static const char * g_szAboutText = "" \
 "The KDE man! Making sure that KVirc has a reason to have a K in the beginning" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"Could I please make KVirc a pure KDE application today?? Pleeease...\"" \
+"\"Could I please make KVIrc a pure KDE application today?? Pleeease...\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -757,7 +775,7 @@ static const char * g_szAboutText = "" \
 "<br>" \
 "\"&lt;oehansen&gt; I must admit, I'm getting confused :-)\"" \
 "<br>" \
-"\"&lt;Pragma&gt; Me too , at this point :)\"" \
+"\"&lt;Pragma&gt; Me too, at this point :)\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -835,7 +853,7 @@ static const char * g_szAboutText = "" \
 "Italian translation, bug hunting, moral support :))))" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"KVirc ? Ah! Il dinosauro...\"" \
+"\"KVIrc ? Ah! Il dinosauro...\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
