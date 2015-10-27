@@ -171,6 +171,7 @@ protected:
 	QMenu         * m_pIconMenu;
 	QMenu                     m_SpellCheckerPopup;
 	bool                      m_bReadOnly;
+	bool                      m_bIsSpellcheckKey;
 
 	/**
 	* \class EditCommand

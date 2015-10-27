@@ -128,6 +128,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pHistory             = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly            = false;
+	m_bIsSpellcheckKey     = false;
 
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
@@ -599,8 +600,16 @@ void KviInputEditor::drawContents(QPainter * p)
 #else
 		m_szTextDisplayBuffer = m_szTextBuffer;
 #endif
-		m_bTextDisplayBufferDirty = false;
+		/* Draw blank buffers if it's a nick restoration and not spell check! */
+		if(m_bLastCompletionFinished && !m_bIsSpellcheckKey)
+			m_bTextDisplayBufferDirty = false;
 	}
+
+	// We don't need to know anymore, so set it to false. We use this as a way to
+	// determine if the spell check key was pressed. If it wasn't then we are good
+	// to draw a blank buffer. There are probably better, more efficient and complex
+	// ways to solve this problem but this seems to be the simplest solution.
+	m_bIsSpellcheckKey = false;
 
 	int iTop          = KVI_INPUT_XTRAPADDING;
 	int iBottom       = rect.height() - KVI_INPUT_XTRAPADDING;
@@ -1263,6 +1272,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 
 void KviInputEditor::showSpellCheckerCorrectionsPopup()
 {
+	m_bIsSpellcheckKey = true;
 	fillSpellCheckerCorrectionsPopup();
 
 	int iXPos = xPositionFromCharIndex(m_iCursorPosition);
