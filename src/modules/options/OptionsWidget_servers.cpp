@@ -1402,10 +1402,13 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		addWidgetToLayout(m_pConnectCurrent,0,3,3,3);
 		connect(m_pConnectCurrent,SIGNAL(clicked()),this,SLOT(connectCurrentClicked()));
 
-		QPalette pal(QColor(0,0,128));
+		QPalette pal(QColor(0,0,0));
 
 		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,135,0));
 		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
+
+		pal.setColor(QPalette::Inactive,QPalette::Button,QColor(0,135,0));
+		pal.setColor(QPalette::Inactive,QPalette::ButtonText,QColor(0,0,0));
 
 		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(100,100,100));
 		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(180,180,180));
