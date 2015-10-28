@@ -993,10 +993,10 @@ void KviChangeUserModeAction::popupAboutToShow()
 		bool isSet = c->connection()->userInfo()->hasUserMode(ccc.toLatin1());
 
 		// See if the usermode is even settable by the user
-		if(requiredMode != 0)
+		if(!requiredMode.isNull())
 		{
 			// Untouchable
-			if(requiredMode == 1)
+			if(requiredMode == '!')
 				canCheck = false;
 			else
 				canCheck = c->connection()->userInfo()->hasUserMode(requiredMode.toLatin1());

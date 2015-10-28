@@ -632,7 +632,7 @@ const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
 // 'o' for further parsing. If they do not, then we know they are not an
 // IRC Operator and are not allowed to set mode 'y'.
 //
-// Cases returning a 1 mean that the mode cannot be set by the user in
+// Cases returning a ! mean that the mode cannot be set by the user in
 // any way, shape, or form. It is strictly IRCd set and can not be set
 // or unset by the user. An example of this is 'S' for 'Connected over
 // SSL'. This is determined at connection time and set by the IRCd if
@@ -640,7 +640,7 @@ const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
 // you've made the connection. Thus, the mode can never be set or unset
 // by the user.
 //
-// Cases returning a 0 are free to set by the user without restrictions.
+// Cases returning QChar::Null are free to set by the user without restrictions.
 QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode)
 {
 	switch(mode.unicode())
@@ -657,7 +657,7 @@ QChar KviBasicIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'z': return 'o';
 	}
 	// No restriction, mode is free to set.
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviHybridServerInfo::getUserModeRequirement(QChar mode)
@@ -667,14 +667,14 @@ QChar KviHybridServerInfo::getUserModeRequirement(QChar mode)
 		case 'a': return 'a';
 
 		case 'S': case 'W': case 'r': case 'x':
-		return 1;
+		return '!';
 
 		case 'F': case 'H': case 'c': case 'd':
 		case 'e': case 'f': case 'j': case 'k':
 		case 'l': case 'n': case 'o': case 's':
 		case 'u': case 'y': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -688,7 +688,7 @@ QChar KviIrcdRatboxIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'o': case 'r': case 'u': case 'x':
 		case 'y': case 'z': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviCharybdisServerInfo::getUserModeRequirement(QChar mode)
@@ -697,12 +697,12 @@ QChar KviCharybdisServerInfo::getUserModeRequirement(QChar mode)
 	{
 		case 'a': return 'a';
 
-		case 'S': case 'Z': return 1;
+		case 'S': case 'Z': return '!';
 
 		case 'l': case 'o': case 'p': case 's':
 		case 'z': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -711,12 +711,12 @@ QChar KviIrcdSevenIrcServerInfo::getUserModeRequirement(QChar mode)
 	{
 		case 'O': return 'O'; case 'a': return 'a';
 
-		case 'S': case 'Z': return 1;
+		case 'S': case 'Z': return '!';
 
 		case 'h': case 'l': case 'o': case 'p':
 		case 'z': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -727,14 +727,14 @@ QChar KviPlexusIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'q': return 'q';
 
 		case 'S': case 'U': case 'W': case 'r':
-		return 1;
+		return '!';
 
 		case 'F': case 'X': case 'b': case 'c':
 		case 'd': case 'f': case 'j': case 'k':
 		case 'l': case 'n': case 'o': case 'u':
 		case 'y': case 'z': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -743,14 +743,14 @@ QChar KviOftcIrcServerInfo::getUserModeRequirement(QChar mode)
 	{
 		case 'a': return 'a';
 
-		case 'P': case 'S': return 1;
+		case 'P': case 'S': return '!';
 
 		case 'C': case 'b': case 'c': case 'd':
 		case 'f': case 'k': case 'l': case 'n':
 		case 'o': case 'r': case 'u': case 'y':
 		case 'x': case 'z': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -759,12 +759,12 @@ QChar KviIrcuIrcServerInfo::getUserModeRequirement(QChar mode)
 	{
 		case 'O': return 'O';
 
-		case 'k': case 'r': case 'x': return 1;
+		case 'k': case 'r': case 'x': return '!';
 
 		case 'I': case 'g': case 'n': case 'o':
 		return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -773,12 +773,12 @@ QChar KviSnircdIrcServerInfo::getUserModeRequirement(QChar mode)
 	{
 		case 'O': return 'O';
 
-		case 'k': case 'r': case 'x': return 1;
+		case 'k': case 'r': case 'x': return '!';
 
 		case 'I': case 'P': case 'X': case 'g':
 		case 'n': case 'o': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -788,13 +788,13 @@ QChar KviDarenetIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'N': return 'N'; case 'O': return 'O';
 		case 'a': return 'a';
 
-		case 'k': case 'x': return 1;
+		case 'k': case 'x': return '!';
 
 		case 'F': case 'H': case 'I': case 'P':
 		case 'X': case 'g': case 'n': case 'o':
 		case 'z': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
@@ -808,7 +808,7 @@ QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 
 		// Modes that cannot be set by the user
 		case 'S': case 'V': case 'x': case 'z':
-		return 1;
+		return '!';
 
 		// Modes requiring oper (o)
 		case 'F': case 'H': case 'I': case 'W':
@@ -819,7 +819,7 @@ QChar KviUnreal32IrcServerInfo::getUserModeRequirement(QChar mode)
 		// Requires 'a': Services Admin
 		case 'q': return 'a';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviCritenIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -829,14 +829,14 @@ QChar KviCritenIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'O': return 'O';
 
 		case 'P': case 'S': case 'Z': case 'a':
-		case 'r': case 'x': return 1;
+		case 'r': case 'x': return '!';
 
 		case 'c': case 'C': case 'd': case 'e':
 		case 'f': case 'F': case 'g': case 'm':
 		case 'n': case 'p': case 'W': case 'y':
 		case 'h': case 'o': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviBahamutIrcServerInfo::getUserModeRequirement(QChar mode)
@@ -846,7 +846,7 @@ QChar KviBahamutIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'A': return 'A'; case 'O': return 'O';
 
 		case 'S': case 'W': case 'X': case 'a':
-		case 'r': case 'w': case 'x': return 1;
+		case 'r': case 'w': case 'x': return '!';
 
 		case 'F': case 'I': case 'K': case 'b':
 		case 'c': case 'd': case 'e': case 'f':
@@ -854,14 +854,14 @@ QChar KviBahamutIrcServerInfo::getUserModeRequirement(QChar mode)
 		case 'm': case 'n': case 'o': case 'y':
 		return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviHyperionIrcServerInfo::getUserModeRequirement(QChar mode)
 {
 	switch(mode.unicode())
 	{
-		case 'e': return 1;
+		case 'e': return '!';
 
 		case 'A': case 'B': case 'D': case 'F':
 		case 'G': case 'K': case 'L': case 'M':
@@ -877,19 +877,19 @@ QChar KviHyperionIrcServerInfo::getUserModeRequirement(QChar mode)
 		case '5': case '9': case '*': case '@':
 		return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode)
 {
 	switch(mode.unicode())
 	{
-		case 'k': case 'r': case 'x': return 1;
+		case 'k': case 'r': case 'x': return '!';
 
 		case 'H': case 'Q': case 'W': case 'h':
 		case 'o': return 'o';
 	}
-	return 0;
+	return QChar::Null;
 }
 
 ////////////////

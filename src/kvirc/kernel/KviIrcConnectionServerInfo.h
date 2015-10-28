@@ -354,9 +354,9 @@ public:
 	const QString & getChannelModeDescription(char mode) { return m_pServInfo->getChannelModeDescription(mode); };
 	const QString & getUserModeDescription(QChar mode) { return m_pServInfo->getUserModeDescription(mode); };
 
-	// Returning 1 means the mode can never be set by the user. Returning 0 means the mode is free to set.
-	// Returning a QChar means the mode has another mode dependency (the char we're returning)
-	QChar getUserModeRequirement(QChar mode) { return m_pServInfo ? m_pServInfo->getUserModeRequirement(mode) : 0; };
+	// Returning ! means the mode can never be set by the user. Returning QChar::Null means the mode is free to set.
+	// Returning a QChar means the mode has another mode dependency (the QChar we're returning)
+	QChar getUserModeRequirement(QChar mode) { return m_pServInfo ? m_pServInfo->getUserModeRequirement(mode) : QChar::Null; };
 
 	bool isSupportedChannelType(QChar c);
 	bool isSupportedModePrefix(QChar c);
