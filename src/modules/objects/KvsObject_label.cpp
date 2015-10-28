@@ -3,7 +3,7 @@
 //   File : KvsObject_label.cpp
 //   Creation date : Mon Sep 18 14:21:48 CEST 2000 by Krzysztof Godlewski
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2014 OmegaPhil (OmegaPhil@startmail.com)

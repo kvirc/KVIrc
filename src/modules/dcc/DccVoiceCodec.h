@@ -5,7 +5,7 @@
 //   File : DccVoiceCodec.h
 //   Creation date : Sun Aug 26 04:19:34 2001 GMT by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

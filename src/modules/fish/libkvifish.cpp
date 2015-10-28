@@ -3,7 +3,7 @@
 //   File : libkvifish.cpp
 //   Creation date : Sun Jan 30 2011 12:11:41 CEST by Fabio Bas
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2011 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

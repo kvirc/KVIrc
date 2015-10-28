@@ -3,7 +3,7 @@
 //   File : libkvilog.cpp
 //   Creation date : Sat Jan 06 2001 13:28:02 CEST by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //

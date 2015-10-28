@@ -5,7 +5,7 @@
 //   File : KvsObject_dateTimeEdit.h
 //   Creation date : Wed 30 Gen 2009 09:30:05 CEST by Carbone Alessandro
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2009 Carbone Alessandro (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

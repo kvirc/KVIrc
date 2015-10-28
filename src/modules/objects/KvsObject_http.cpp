@@ -3,7 +3,7 @@
 //   File : KvsObject_http.cpp
 //   Creation date : Fry Sep 5 18:13:45 2008 GMT by Carbone Alesssandro
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2009 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

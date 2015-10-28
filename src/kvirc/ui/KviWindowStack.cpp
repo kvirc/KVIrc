@@ -3,7 +3,7 @@
 //   File : KviWindowStack.cpp
 //   Creation date : Mon Sep 28 2015 17:28:04 by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 TheXception (kvirc at thexception dot net)
 //

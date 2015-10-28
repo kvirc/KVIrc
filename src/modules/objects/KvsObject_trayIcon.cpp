@@ -3,7 +3,7 @@
 //   File : KvsObject_trayIcon.cpp
 //   Creation date : Wed Ago 25 17:28:45 2010 GMT by Carbone Alesssandro
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2009 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

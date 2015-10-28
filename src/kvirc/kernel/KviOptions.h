@@ -6,7 +6,7 @@
 //   File : KviOptions.h
 //   Creation date : Tue Jun 20 2000 12:42:07 by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2014 OmegaPhil (OmegaPhil at startmail dot com)
 //

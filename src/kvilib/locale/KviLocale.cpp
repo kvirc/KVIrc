@@ -3,7 +3,7 @@
 //   File : KviLocale.cpp
 //   Creation date : Fri Mar 19 1999 19:08:41 by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2011 Elvio Basello (hellvis69 at gmail dot com)
 //

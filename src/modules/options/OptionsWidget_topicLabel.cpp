@@ -3,7 +3,7 @@
 //   File : OptionsWidget_topicLabel.cpp
 //   Creation date : Mon Sep 24 02:44:55 CEST 2001 by Krzysztof Godlewski
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001 Krzysztof Godlewski
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

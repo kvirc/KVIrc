@@ -3,7 +3,7 @@
 //   File : KvsObject_colorDialog.cpp
 //   Creation date : Wed 27 Apr 2011 15:42:05 CEST by Alessandro Carbone
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2011 Alessandro Carbone (elfonol at gmail dot com)
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

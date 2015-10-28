@@ -5,7 +5,7 @@
 //   File : KviHtmlGenerator.h
 //   Creation date : Mon 04 Jan 2010 22:09:18 by Fabio Bas
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2010 Fabio Bas < ctrlaltca at gmail dot com >
 //   Copyright (C) 2012 Elvio Basello < hellvis69 at gmail dot com >
 //

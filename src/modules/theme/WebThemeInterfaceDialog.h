@@ -5,7 +5,7 @@
 //   File : WebThemeInterfaceDialog.h
 //   Creation date : Mon Mar 14 2011 15:10:20 by Alessandro Carbone
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2011 Alessandro Carbone(elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

@@ -5,7 +5,7 @@
 //   File : OptionsWidget_ignore.h
 //   Creation date : Thu Feb 12 15:11:30 2002 GMT by Juanjo Álvarez
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2002 Juanjo Álvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

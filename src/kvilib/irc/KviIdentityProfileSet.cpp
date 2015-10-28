@@ -3,7 +3,7 @@
 //   File : KviIdentityProfileSet.cpp
 //   Creation date : Thu Dec 30 2010 15:54:48 by Elvio Basello
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2010 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

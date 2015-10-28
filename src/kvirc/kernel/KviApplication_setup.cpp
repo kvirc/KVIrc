@@ -3,7 +3,7 @@
 //   File : KviApplication_setup.cpp
 //   Creation date : Fri Apr 2 1999 02:38:05 by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

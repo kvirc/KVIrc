@@ -5,7 +5,7 @@
 //   File : ClassEditorWindow.h
 //   Creation date : Mon Feb 15 2010 14:35:55 CEST by Carbone Alessandro
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2010 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

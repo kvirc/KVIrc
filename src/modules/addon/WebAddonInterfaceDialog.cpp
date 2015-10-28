@@ -3,7 +3,7 @@
 //   File : WebAddonInterfaceDialog.cpp
 //   Creation date : Fri 25 Mar 2011 01:01:12 by Szymon Tomasz Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2011 Szymon Tomasz Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or

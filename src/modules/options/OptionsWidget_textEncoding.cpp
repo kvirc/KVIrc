@@ -3,7 +3,7 @@
 //   File : OptionsWidget_textEncoding.cpp
 //   Creation date : Sat Aug 11 2001 03:29:52 CEST by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

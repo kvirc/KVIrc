@@ -6,7 +6,7 @@
 //   Creation date : Wed Mar 9 23:45:48 CEST 2011
 //   by Alessandro Carbone(Noldor)
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2011 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

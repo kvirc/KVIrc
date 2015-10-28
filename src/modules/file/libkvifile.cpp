@@ -3,7 +3,7 @@
 //   File : libkvifile.cpp
 //   Creation date : Fri Nov  9 03:27:59 2001 GMT by Szymon Stefanek
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2012 Elvio Basello (hellvis69 at gmail dot com)
 //
