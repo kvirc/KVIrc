@@ -166,6 +166,8 @@
 #define KVI_SHORTCUTS_INPUT_REDO QKeySequence::Redo				// Ctrl+Shift+Z
 #define KVI_SHORTCUTS_WIN_PREV Qt::AltModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT Qt::AltModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_WIN_NEXT_TAB Qt::ControlModifier + Qt::Key_Tab      // Ctrl+Tab
+#define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::Key_Backtab  // Ctrl+Shift+Tab
 #define KVI_SHORTCUTS_WIN_PREV_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
 #define KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Qt::AltModifier + Qt::Key_PageUp

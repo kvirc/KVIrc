@@ -294,6 +294,8 @@ void KviMainWindow::installAccelerators()
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT,this,SLOT(switchToPrevHighlightedWindow()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT,this,SLOT(switchToNextHighlightedWindow()),0,Qt::ApplicationShortcut));
 	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_CLOSE,this,SLOT(closeActiveWindow()),0,Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_TAB,this,SLOT(switchToPrevWindow()),0,Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_TAB,this,SLOT(switchToNextWindow()),0,Qt::ApplicationShortcut));
 
 	static int accel_table[] = {
 		Qt::Key_1 + Qt::ControlModifier,       // script accels...
