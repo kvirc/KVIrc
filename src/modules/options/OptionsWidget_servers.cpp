@@ -895,7 +895,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(m_pEnableSTARTTLSCheck,iRow,0,1,2);
 	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
 		"protocol. If you enable the Extended Capabilities below then the TLS protocol support will be detected by using " \
-		"a CAP LS command. Without Extended Capabilities the STARTTLS command will be forcibly sent at the beginning of the " \
+		"a CAP LS command. Without \"Extended Capabilities\" the STARTTLS command will be forcibly sent at the beginning of the " \
 		"connection.</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
 	m_pEnableSTARTTLSCheck->setEnabled(false);
@@ -915,7 +915,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pCapLayout->addWidget(m_pEnableCAPCheck,0,0);
 
 	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
-		"support. Obviously, this server must have support for this, too. Disable this for IRC bouncers.</center>","options"));
+		"support. Obviously, this server must have support for this too. Disable this for IRC bouncers.</center>","options"));
 	m_pEnableCAPCheck->setChecked(s->enabledCAP());
 
 
@@ -927,7 +927,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Authenticate via SASL extension","options"),pSASLGroup);
 	pSASLLayout->addWidget(m_pEnableSASLCheck,0,0,1,2);
 	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication protocol " \
-		"If you enable the proper global option in the Connection/SSL tab and fill the SASL Nickname and SASL Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
+		"If you enable the proper global option in the Connection/SSL tab and fill the SASL nickname and SASL password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
 	l = new QLabel(__tr2qs_ctx("SASL nickname:","options"),pSASLGroup);
