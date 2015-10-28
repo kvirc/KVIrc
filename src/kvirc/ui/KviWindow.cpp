@@ -837,13 +837,9 @@ void KviWindow::delayedAutoRaise()
 void KviWindow::autoRaise()
 {
 	if(!isDocked())
-	{
 		raise();
-		activateWindow();
-	} else {
-		//mdiParent()->activate();
-		// FIXME
-	}
+
+	g_pMainWindow->setActiveWindow(this);
 
 	if(m_pFocusHandler)
 		m_pFocusHandler->setFocus();
