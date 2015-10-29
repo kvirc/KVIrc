@@ -414,8 +414,6 @@ public:
 	// This should die, probably
 	void listWindowTypes();
 
-	void activateSelf();
-
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers

@@ -57,4 +57,3 @@ void KviIrcConnectionTarget::clearProxy()
 	delete m_pProxy;
 	m_pProxy = 0;
 }
-

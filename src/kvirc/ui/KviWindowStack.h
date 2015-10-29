@@ -91,12 +91,6 @@ public:
 	inline QMenu * windowPopup() { return m_pWindowPopup; };
 
 	/**
-	* \brief Move the focus the the previous active window
-	* \return void
-	*/
-	void focusPreviousTopChild(KviWindow * pExcludeThis = NULL);
-
-	/**
 	* \brief Remove and delete the subwindow
 	* \param pWnd The KviWindow which will be destroyed.
  	* \return void
