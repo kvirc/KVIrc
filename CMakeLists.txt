@@ -111,12 +111,27 @@ if(MANUAL_REVISION_UNSET)
 				RESULT_VARIABLE res_var
 				OUTPUT_VARIABLE GIT_COMMIT_ID
 			)
+			execute_process(
+				COMMAND ${GIT_EXECUTABLE} show -s --format=%cd --date=short
+				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+				RESULT_VARIABLE res_date
+				OUTPUT_VARIABLE GIT_COMMIT_DATE
+			)
 			if(${res_var} EQUAL 0)
 				string(REPLACE "\n" "" GIT_COMMIT_ID "${GIT_COMMIT_ID}")
 				set(CMAKE_KVIRC_BUILD_REVISION ${GIT_COMMIT_ID})
 				message(STATUS "Current revision is ${CMAKE_KVIRC_BUILD_REVISION}")
 			else()
 				message( STATUS "Git failed (not a repo, or no tags). Build will not contain git revision info." )
+			endif()
+			if(${res_date} EQUAL 0)
+				string(REPLACE "\n" "" GIT_COMMIT_DATE "${GIT_COMMIT_DATE}")
+				string(REPLACE "-" "" GIT_COMMIT_DATE "${GIT_COMMIT_DATE}")
+				set(CMAKE_KVIRC_SOURCES_DATE ${GIT_COMMIT_DATE})
+				set(CMAKE_KVIRC_SOURCES_DATE_HEX 0x${GIT_COMMIT_DATE})
+				message(STATUS "Using sources date from ${CMAKE_KVIRC_SOURCES_DATE}")
+			else()
+				message(STATUS "Git failed (not a repo, or no tags). Build will not contain git date info.")
 			endif()
 		else()
 			message( STATUS "Git not found. Build will not contain git revision info." )
@@ -1514,6 +1529,7 @@ message(STATUS "Build Date                     : ${CMAKE_KVIRC_BUILD_DATE}")
 message(STATUS "Build Version                  : ${CMAKE_KVIRC_VERSION_RELEASE}")
 message(STATUS "Build Codename                 : ${CMAKE_KVIRC_VERSION_CODENAME}")
 message(STATUS "Build Revision                 : ${CMAKE_KVIRC_BUILD_REVISION}")
+message(STATUS "Sources Date                   : ${CMAKE_KVIRC_SOURCES_DATE}")
 
 message(STATUS " ")
 if(MSVC)
