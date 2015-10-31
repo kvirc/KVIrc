@@ -100,41 +100,6 @@ void KviWindowStack::destroyWindow(KviWindow *pWnd)
 	delete pWnd;
 }
 
-void KviWindowStack::focusPreviousTopChild(KviWindow * pExcludeThis)
-{
-	/*
-	KviWindow * pWnd = NULL;
-
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-	QListIterator<QMdiSubWindow*> wl(tmp);
-	wl.toBack();
-
-	while(wl.hasPrevious())
-	{
-		QMdiSubWindow * pSubWindow = wl.previous();
-
-		if(!pSubWindow->inherits("KviWindow"))
-			continue;
-
-		pWnd = static_cast<KviWindow *>(pSubWindow);
-
-		if(pWnd == pExcludeThis)
-			continue;
-
-		if(!pWnd->isVisible())
-			continue;
-
-		if(pWnd->state() != KviWindow::Minimized)
-			break;
-	}
-
-	if(!pWnd)
-		return;
-
-	showAndActivate(pWnd);
-	*/
-}
-
 void KviWindowStack::fillWindowPopup()
 {
 	m_pWindowPopup->clear();
@@ -211,42 +176,3 @@ void KviWindowStack::menuActivated(QAction *pAction)
 
 	showAndActivate((KviWindow *)w);
 }
-
-
-
-/*
-bool KviWindowStack::eventFilter(QObject *obj, QEvent *event)
-{
-	if(
-		(
-			(event->type() == QEvent::KeyPress) ||
-			(event->type() == QEvent::KeyRelease)
-		) &&
-		m_bInSDIMode
-	)
-	{
-		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-		if (	(keyEvent->modifiers() & Qt::MetaModifier) ||
-			(keyEvent->modifiers() & Qt::ControlModifier)
-		)
-		{
-			// While in sdi mode, avoid qt4's internal window switching
-			if(keyEvent->key() == Qt::Key_Tab)
-			{
-				if(event->type() == QEvent::KeyRelease) g_pMainWindow->switchToNextWindow();
-				return true;
-			}
-			if(keyEvent->key() == Qt::Key_Backtab)
-			{
-				if(event->type() == QEvent::KeyRelease) g_pMainWindow->switchToPrevWindow();
-				return true;
-			}
-		}
-	} else {
-		if(	event->type() == QEvent::ApplicationActivate ||
-			event->type() == QEvent::ApplicationDeactivate
-		) return true;
-	}
-	return QMdiArea::eventFilter(obj, event);
-}
-*/

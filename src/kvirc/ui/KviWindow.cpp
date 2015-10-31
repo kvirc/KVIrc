@@ -894,19 +894,6 @@ void KviWindow::youAreUndocked()
 #undef FocusIn
 #endif
 
-void KviWindow::activateSelf()
-{
-	if(parentWidget())
-	{
-		// raise and set focus
-		//((KviWindowStack *)parentWidget())
-		//mdiParent()->activate();
-	} else {
-		raise();
-		setFocus();
-	}
-}
-
 void KviWindow::focusInEvent(QFocusEvent *)
 {
 	if(m_pLastFocusedChild)
