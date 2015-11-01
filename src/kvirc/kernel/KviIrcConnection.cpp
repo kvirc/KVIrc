@@ -665,7 +665,7 @@ void KviIrcConnection::closeAllChannels()
 	while(m_pChannelList->first())
 	{
 		m_pChannelList->first()->close();
-		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
 	}
 }
 
