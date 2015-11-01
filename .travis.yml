@@ -15,6 +15,8 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sw_vers; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep cpu; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep mem; fi
+    - if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-github.ssh.enc -out ~/kvirc-github-key -d; fi
+    - export encrypted_da8de0aafbfc_key=no
     - pwd
 install:
     - CMAKE_ARGS=""
@@ -45,4 +47,21 @@ script:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo make install; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make install; fi
     - ls -l
+after_success:
+    - test -r .travis_after_all.py && python .travis_after_all.py || echo No .travis_after_all.py found
+    - test -r .to_export_back && echo $(cat .to_export_back) || echo No .to_export_back found
+    - export DUMMY_VAR=dummy-value $(cat .to_export_back)
+    - |
+          if [ "$BUILD_LEADER" == "YES" ] && [ "$BUILD_AGGREGATE_STATUS" == "others_succeeded" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+              echo "All builds passed!"
+              mkdir -p ~/.ssh
+              chmod 0600 ~/kvirc-github-key
+              cp .travis.ssh ~/.ssh/config
+              git config --global user.email "kvirc-travis@users.noreply.github.com"
+              git config --global user.name "kvirc-travis"
+              ./.travis-coverity-scan.py
+          else
+              echo "Not leader"
+          fi
+
 # TODO: build .dmg on osx and upload it
