@@ -33,6 +33,9 @@ install:
           if [[ "$WANT_KDE" == "YES" ]]; then
             sudo apt-get install kdelibs5-dev
           fi
+
+          # for ./.travis-coverity-scan.py
+          sudo apt-get install python3-yaml
         fi
     - |
         if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
