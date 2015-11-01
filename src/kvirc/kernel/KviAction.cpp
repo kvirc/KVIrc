@@ -30,6 +30,7 @@
 #include "KviWindow.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
+#include "KviOptions.h"
 
 #include <QAction>
 #include <QMenu>
@@ -255,8 +256,13 @@ void KviAction::reloadImages()
 	if(pSmallPix)
 		icon.addPixmap(*pSmallPix);
 
+	bool bIconVisibleInMenu = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
+
 	for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
+	{
 		pAction->setIcon(icon);
+		pAction->setIconVisibleInMenu(bIconVisibleInMenu);
+	}
 }
 
 void KviAction::activeWindowChanged()

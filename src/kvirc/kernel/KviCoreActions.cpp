@@ -44,6 +44,7 @@
 #include "KviCoreActionNames.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviKvsScript.h"
+#include "KviOptions.h"
 
 #include <QObject>
 #include <QMenu>
@@ -586,6 +587,7 @@ void KviConnectAction::activeContextStateChanged()
 	KviPointerList<QAction> * bl = actionList();
 	if(!bl)return;
 
+	bool bIconVisibleInMenu = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
 	QPixmap * p;
 	QString txt;
 	KviIrcContext * c = g_pMainWindow->activeContext();
@@ -622,11 +624,13 @@ void KviConnectAction::activeContextStateChanged()
 			if(!b->isEnabled())b->setEnabled(true);
 			b->setIcon(QIcon(*p));
 			b->setText(txt);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 	} else {
 		for(QAction * b = bl->first();b;b = bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 	}
 }
@@ -1062,6 +1066,7 @@ void KviGoAwayAction::activeContextStateChanged()
 	KviPointerList<QAction> * bl = actionList();
 	if(!bl)return;
 
+	bool bIconVisibleInMenu = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
 	QPixmap * p;
 	QString txt;
 	KviIrcContext * c = g_pMainWindow->activeContext();
@@ -1091,6 +1096,7 @@ void KviGoAwayAction::activeContextStateChanged()
 			if(!b->isEnabled())b->setEnabled(true);
 			b->setIcon(QIcon(*p));
 			b->setText(txt);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 		m_uInternalFlags |= KviAction::Enabled;
 		setEnabled(true);
@@ -1098,6 +1104,7 @@ void KviGoAwayAction::activeContextStateChanged()
 		for(QAction * b = bl->first();b;b = bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 		m_uInternalFlags &= ~KviAction::Enabled;
 		setEnabled(true);
