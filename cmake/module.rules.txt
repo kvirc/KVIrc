@@ -9,6 +9,9 @@ endif()
 
 add_library(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
 
+# Enable C++11
+target_compile_features(${kvi_module_name} PRIVATE cxx_range_for)
+
 target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 
 if(Qt5Widgets_FOUND)

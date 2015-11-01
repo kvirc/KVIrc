@@ -130,6 +130,10 @@ endif()
 add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
 
+# Enable C++11
+target_compile_features(${KVILIB_BINARYNAME} PRIVATE cxx_range_for)
+
+
 if(Qt5Widgets_FOUND)
 	qt5_use_modules(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
 endif()

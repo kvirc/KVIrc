@@ -269,6 +269,9 @@ endif()
 
 target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
+# Enable C++11
+target_compile_features(${KVIRC_BINARYNAME} PRIVATE cxx_range_for)
+
 if(Qt5Widgets_FOUND)
 	qt5_use_modules(${KVIRC_BINARYNAME} ${qt5_kvirc_modules})
 endif()
