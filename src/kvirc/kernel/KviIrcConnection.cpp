@@ -674,7 +674,7 @@ void KviIrcConnection::closeAllQueries()
 	while(m_pQueryList->first())
 	{
 		m_pQueryList->first()->close();
-		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
 	}
 }
 
