@@ -1,5 +1,5 @@
-[![Travis Build Status](https://travis-ci.org/kvirc/KVIrc.svg?branch=master)](https://travis-ci.org/kvirc/KVIrc)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/j6tjel0eaeyixcbn/branch/master?svg=true)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
+[![Travis Build Status](https://img.shields.io/travis/kvirc/KVIrc/master.svg?label=linux%2Fosx)](https://travis-ci.org/kvirc/KVIrc)
+[![AppVeyor Build status](https://img.shields.io/appveyor/ci/DarthGandalf/KVIrc/master.svg?label=windows)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
 
 ![KVIrc logo](https://raw.githubusercontent.com/kvirc/KVIrc/master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!")
 
