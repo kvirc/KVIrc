@@ -12,10 +12,9 @@ addons:
       description: "Build submitted via Travis CI"
     notification_email: alexey+kvirccoverity@asokolov.org
     build_command_prepend: "mkdir build; cd build; cmake ..; cd .."
-    build_command: "cd bulid; make; cd .."
+    build_command: "make -C build -j 3"
     branch_pattern: coverity_scan
 
 script:
   - /bin/true
 sudo: required
-dist: trusty
