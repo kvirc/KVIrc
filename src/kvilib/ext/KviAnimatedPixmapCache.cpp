@@ -255,10 +255,9 @@ void KviAnimatedPixmapCache::internalNotifyDelete(
 		{
 			i = m_timerData.erase(i);
 		} else {
-			i++;
+			++i;
 		}
 	}
 
 	m_timerMutex.unlock();
 }
-
