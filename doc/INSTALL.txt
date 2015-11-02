@@ -10,7 +10,7 @@
    6. Configuring KVIrc
    7. Interactive CMake KVIrc configuration
    8. Compiling KVIrc
-   9. Compiling on Mac OS X
+   9. Compiling on OS X
   10. Compiling on Win32
   11. Creating a KVIrc package
 
@@ -84,7 +84,7 @@
   In order to compile KVIrc you will need:
 
     - C++ compiler ............ (Required)
-    - CMake ................... (Required)  >= 2.8.12.2
+    - CMake ................... (Required)  >= 3.1.0
     - cmake-curses-gui ........ (Optional)
     - Doxygen ................. (Optional)
     - pkg-config .............. (Required)
@@ -104,6 +104,10 @@
     - Perl .................... (Preferred) >= 5.004 (5.10 recommended)
 
   For further information on these libraries read 4. Configuring the environment
+
+  For cmake 3.1.0 run:
+
+      & sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 
   For Ubuntu or variant distributions the complete list of dependencies
   and installation command is:
@@ -616,17 +620,17 @@
   in /etc/ld.so.conf.
 
 -------------------------------------------------------------------------------
-  8. Compiling on MacOS X
+  8. Compiling on OS X
 -------------------------------------------------------------------------------
 
-  There is a detailed compilation and installation HOWTO for MacOS X systems
+  There is a detailed compilation and installation HOW-TO for OS X systems
   located in the doc directory. It's named INSTALL-MacOS.txt.
 
 -------------------------------------------------------------------------------
   9. Compiling on Windows
 -------------------------------------------------------------------------------
 
-  There is a detailed compilation and installation HOWTO for Win32 and Win64 systems
+  There is a detailed compilation and installation HOW-TO for Win32 and Win64 systems
   located in the doc directory. They're named INSTALL-Win32.txt and INSTALL-Win64.txt.
 
 -------------------------------------------------------------------------------
