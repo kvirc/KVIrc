@@ -1371,7 +1371,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
 	m_pFavoriteServerButton = new QToolButton(vbox);
-	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
+	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
 	m_pFavoriteServerButton->setAutoRaise(true);
 	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
 	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite Server","options"));
