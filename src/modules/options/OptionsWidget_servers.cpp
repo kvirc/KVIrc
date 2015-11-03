@@ -945,10 +945,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pSASLLayout->addWidget(m_pSaslPassEditor,2,1);
 
 	pSASLGroup->setEnabled(s->enabledCAP());
-	QObject::connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),pSASLGroup,SLOT(setEnabled(bool)));
+	connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),pSASLGroup,SLOT(setEnabled(bool)));
 
 	iRow++;
-
 
 	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
 	gl->addWidget(l,iRow,0);
@@ -998,7 +997,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
 		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
-
 
 	iRow++;
 
@@ -1460,11 +1458,11 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 			pContainer->setNextToLeft(m_pShowFavoritesOnly);
 			// This selector can be destroyed upon reparenting: make sure it's removed from the selector list
 			// (or we'll get a crash at commit() time...).
-			QObject::connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
+			connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
 			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the servers dialog will appear every time you start KVIrc</center>","options"));
 
-			QObject::connect(m_pShowFavoritesOnly,SIGNAL(destroyed()),this,SLOT(slotSetShowFavoritesOnly()));
-			QObject::connect(m_pShowFavoritesOnly,SIGNAL(toggled(bool)),this,SLOT(updateFavoritesFilter(bool)));
+			connect(m_pShowFavoritesOnly,SIGNAL(destroyed()),this,SLOT(slotSetShowFavoritesOnly()));
+			connect(m_pShowFavoritesOnly,SIGNAL(toggled(bool)),this,SLOT(updateFavoritesFilter(bool))); // Sets the server to a favorite
 			KviTalToolTip::add(m_pShowFavoritesOnly,__tr2qs_ctx("<center>If this option is enabled, only servers you have favorited will be displayed</center>","options"));
 		}
 
@@ -1646,7 +1644,8 @@ void OptionsWidget_servers::fillServerList()
 
 		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{
-			srv = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KviIconManager::Server)),s);
+			unsigned icon = s->favorite() ? KviIconManager::ServerFavorite : KviIconManager::Server;
+			srv = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(icon)),s);
 			if((s == r->currentServer()) && bCurrent)
 			{
 				srv->setSelected(true);
@@ -1845,7 +1844,6 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 {
 	QTreeWidgetItem *it = static_cast<QTreeWidgetItem *>(m_pTreeWidget->itemAt(pnt));
 	bool bServer = (it && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData);
-	bool bFavorite = (bServer && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData->favorite());
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
     m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
@@ -1865,7 +1863,7 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
     m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),__tr2qs_ctx("Favorite Server","options"),this,SLOT(favoriteServer()));
 	m_pContextPopup->setEnabled(bServer);
 }
 
@@ -2021,6 +2019,9 @@ void OptionsWidget_servers::favoriteServer()
 			m_pLastEditedItem->m_pServerData->setFavorite(false);
 		else
 			m_pLastEditedItem->m_pServerData->setFavorite(true);
+
+		unsigned icon = m_pLastEditedItem->m_pServerData->favorite() ? KviIconManager::ServerFavorite : KviIconManager::Server;
+		m_pLastEditedItem->setIcon(0,*(g_pIconManager->getSmallIcon(icon)));
 	}
 }
 
