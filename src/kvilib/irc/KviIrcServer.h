@@ -486,7 +486,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::IPv6;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::IPv6);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::IPv6);
 	};
 
 	/**
@@ -499,7 +499,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::SSL;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::SSL);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::SSL);
 	};
 
 	/**
@@ -512,7 +512,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::STARTTLS;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::STARTTLS);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::STARTTLS);
 	};
 
 	/**
@@ -525,7 +525,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::CAP;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::CAP);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::CAP);
 	};
 
 	/**
@@ -538,7 +538,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::SASL;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::SASL);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::SASL);
 	};
 
 	/**
@@ -551,7 +551,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::CacheIP;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::CacheIP);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::CacheIP);
 	};
 
 	/**
@@ -600,7 +600,7 @@ public:
 		if(bSet)
 			m_uFlags |= KviIrcServer::FAVORITE;
 		else
-			m_uFlags &= ((unsigned short)~KviIrcServer::FAVORITE);
+			m_uFlags &= static_cast<unsigned short>(~KviIrcServer::FAVORITE);
 	};
 
 	/**
