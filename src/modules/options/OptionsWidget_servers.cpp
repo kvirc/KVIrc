@@ -1367,6 +1367,15 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
 
+	f = new QFrame(vbox);
+	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
+
+	m_pFavoriteServerButton = new QToolButton(vbox);
+	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
+	m_pFavoriteServerButton->setAutoRaise(true);
+	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
+	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite Server","options"));
+
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
 
@@ -1394,6 +1403,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
 	m_pShowThisDialogAtStartupSelector = NULL;
+	m_pShowFavoritesOnly = NULL;
 
 	// The "Show this dialog at startup" option is shown only when the server options widget is shown as standalone dialog
 	if(parent->inherits("OptionsWidgetContainer"))
@@ -1446,11 +1456,16 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		{
 			m_pShowThisDialogAtStartupSelector = addBoolSelector(pContainer,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
 			pContainer->setLeftCornerWidget(m_pShowThisDialogAtStartupSelector);
+			m_pShowFavoritesOnly = addBoolSelector(pContainer,__tr2qs_ctx("Only display favorite servers","options"),KviOption_boolShowFavoriteServersOnly);
+			pContainer->setNextToLeft(m_pShowFavoritesOnly);
 			// This selector can be destroyed upon reparenting: make sure it's removed from the selector list
 			// (or we'll get a crash at commit() time...).
 			QObject::connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
-
 			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the servers dialog will appear every time you start KVIrc</center>","options"));
+
+			QObject::connect(m_pShowFavoritesOnly,SIGNAL(destroyed()),this,SLOT(slotSetShowFavoritesOnly()));
+			QObject::connect(m_pShowFavoritesOnly,SIGNAL(toggled(bool)),this,SLOT(updateFavoritesFilter(bool)));
+			KviTalToolTip::add(m_pShowFavoritesOnly,__tr2qs_ctx("<center>If this option is enabled, only servers you have favorited will be displayed</center>","options"));
 		}
 
 		new QShortcut(Qt::Key_Escape, parent, SLOT(close()));
@@ -1463,6 +1478,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pClipboard = 0;
 
 	fillServerList();
+	updateFavoritesFilter(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
 
 	layout()->setRowStretch(1,1);
 	layout()->setColumnStretch(1,1);
@@ -1492,6 +1508,14 @@ void OptionsWidget_servers::slotShowThisDialogAtStartupSelectorDestroyed()
 
 	removeSelector(m_pShowThisDialogAtStartupSelector);
 	m_pShowThisDialogAtStartupSelector = NULL;
+}
+
+void OptionsWidget_servers::slotSetShowFavoritesOnly()
+{
+	KVI_ASSERT(m_pShowFavoritesOnly);
+
+	removeSelector(m_pShowFavoritesOnly);
+	m_pShowFavoritesOnly = NULL;
 }
 
 void OptionsWidget_servers::recentServersPopupAboutToShow()
@@ -1661,6 +1685,7 @@ void OptionsWidget_servers::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetIt
 
 		m_pRemoveButton->setEnabled(true);
 		m_pCopyServerButton->setEnabled(m_pLastEditedItem->m_pServerData);
+		m_pFavoriteServerButton->setEnabled(m_pLastEditedItem->m_pServerData);
 
 		if(m_pLastEditedItem->m_pServerData)
 		{
@@ -1673,6 +1698,7 @@ void OptionsWidget_servers::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetIt
 	} else {
 		m_pRemoveButton->setEnabled(false);
 		m_pCopyServerButton->setEnabled(true);
+		m_pFavoriteServerButton->setEnabled(true);
 
 		if(m_pConnectCurrent)
 			m_pConnectCurrent->setEnabled(false);
@@ -1817,8 +1843,9 @@ void OptionsWidget_servers::commit()
 
 void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 {
-	QTreeWidgetItem *it=(QTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
-	bool bServer = (it && ((IrcServerOptionsTreeWidgetItem *)it)->m_pServerData);
+	QTreeWidgetItem *it = static_cast<QTreeWidgetItem *>(m_pTreeWidget->itemAt(pnt));
+	bool bServer = (it && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData);
+	bool bFavorite = (bServer && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData->favorite());
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
     m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
@@ -1833,11 +1860,13 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
         ->setEnabled(m_pClipboard);
 
     m_pContextPopup->addSeparator();
-	//	m_pContextPopup->addAction(__c2q(__tr("Merge list from server.ini","options")),this,SLOT(importFromIni()));
 	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
     m_pContextPopup->addSeparator();
     m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
+	m_pContextPopup->addSeparator();
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
+	m_pContextPopup->setEnabled(bServer);
 }
 
 void OptionsWidget_servers::importPopupAboutToShow()
@@ -1981,6 +2010,43 @@ void OptionsWidget_servers::newServer()
 		it->setSelected(true);
 		m_pTreeWidget->setCurrentItem(it);
 		m_pTreeWidget->scrollToItem(it);
+	}
+}
+
+void OptionsWidget_servers::favoriteServer()
+{
+	if(m_pLastEditedItem)
+	{
+		if(m_pLastEditedItem->m_pServerData->favorite())
+			m_pLastEditedItem->m_pServerData->setFavorite(false);
+		else
+			m_pLastEditedItem->m_pServerData->setFavorite(true);
+	}
+}
+
+void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
+{
+	IrcServerOptionsTreeWidgetItem * network;
+	for(unsigned i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
+	{
+		network = static_cast<IrcServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(i));
+		uint uServers = 0;
+
+		IrcServerOptionsTreeWidgetItem * ch;
+		for (int j = 0; j < network->childCount(); j++)
+		{
+			bool bHidden = bSet ? true : false;
+			ch = static_cast<IrcServerOptionsTreeWidgetItem *>(network->child(j));
+			if(ch->m_pServerData && bSet)
+			{
+				if(ch->m_pServerData->favorite())
+					bHidden = false;
+			}
+			if(!bHidden)
+				uServers++;
+			ch->setHidden(bHidden);
+		}
+		network->setHidden(!uServers);
 	}
 }
 

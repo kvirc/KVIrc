@@ -61,7 +61,8 @@ public:
 		SSL      =  4,   /**< SSL support */
 		STARTTLS =  8,   /**< STARTTLS support */
 		SASL     = 16,   /**< SASL support */
-		CAP      = 32    /**< CAP support */
+		CAP      = 32,   /**< CAP support */
+		FAVORITE = 64    /**< Favorite Server */
 	};
 
 	/**
@@ -588,6 +589,25 @@ public:
 	* \return void
 	*/
 	void operator=(const KviIrcServer & serv);
+
+	/**
+	* \brief Sets the server to a favorite
+	* \param bSet wether the server is a favorite or not
+	* \return void
+	*/
+	inline void setFavorite(bool bSet)
+	{
+		if(bSet)
+			m_uFlags |= KviIrcServer::FAVORITE;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::FAVORITE);
+	};
+
+	/**
+	* \brief Returns if the server is a favorite
+	* \return bool
+	*/
+	inline bool favorite() const { return (m_uFlags & KviIrcServer::FAVORITE); };
 };
 
 #endif //_KVI_IRCSERVER_H_

@@ -96,7 +96,7 @@ protected:
 
 	QCheckBox             * m_pAutoConnectCheck;
 
-	QTreeWidget        * m_pNickServTreeWidget;
+	QTreeWidget           * m_pNickServTreeWidget;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
@@ -182,9 +182,9 @@ protected:
 	QLabel                       * m_pFilterLabel;
 	QLineEdit                    * m_pFilterEdit;
 	QPushButton                  * m_pDetailsButton;
-    QMenu              * m_pRecentPopup;
-    QMenu              * m_pContextPopup;
-    QMenu              * m_pImportPopup;
+	QMenu                        * m_pRecentPopup;
+	QMenu                        * m_pContextPopup;
+	QMenu                        * m_pImportPopup;
 	KviIrcServer                 * m_pClipboard;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
@@ -193,13 +193,16 @@ protected:
 	IrcNetworkDetailsWidget      * m_pNetworkDetailsDialog;
 	KviMexServerImport           * m_pImportFilter;
 	KviBoolSelector              * m_pShowThisDialogAtStartupSelector;
+	KviBoolSelector              * m_pShowFavoritesOnly;
 
 	QToolButton                  * m_pNewServerButton;
 	QToolButton                  * m_pNewNetworkButton;
 	QToolButton                  * m_pRemoveButton;
+	QToolButton                  * m_pFavoriteServer;
 	QToolButton                  * m_pCopyServerButton;
 	QToolButton                  * m_pPasteServerButton;
 	QToolButton                  * m_pImportButton;
+	QToolButton                  * m_pFavoriteServerButton;
 private:
 	void fillServerList();
 	void saveLastItem();
@@ -215,6 +218,9 @@ protected slots:
 	void newNetwork();
 	void removeCurrent();
 	void newServer();
+	void slotSetShowFavoritesOnly();
+	void updateFavoritesFilter(bool bSet);
+	void favoriteServer();
 	void copyServer();
 	void pasteServer();
 	void clearList();
