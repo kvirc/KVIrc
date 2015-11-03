@@ -283,7 +283,7 @@ public:
 		UnsetMode            = 115,
 		MaxVertical          = 116,
 		MaxHorizontal        = 117,
-		TileWindows          = 118,
+		ServerFavorite       = 118,
 		Log                  = 119,
 		Remove               = 120,
 		File                 = 121,
