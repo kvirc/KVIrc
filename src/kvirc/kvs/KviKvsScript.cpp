@@ -76,7 +76,7 @@ KviKvsScript::~KviKvsScript()
 {
 	if(m_pData->m_uRefs < 2)
 	{
-		if(m_pData->m_uLock)qDebug("WARNING: Destroying a locked KviKvsScript");
+		if(m_pData->m_uLock)qDebug("WARNING: destroying a locked KviKvsScript");
 		if(m_pData->m_pTree)delete m_pData->m_pTree;
 		delete m_pData;
 	} else {
@@ -240,7 +240,7 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 			if(m_pData->m_uLock)
 			{
 				// ops... someone is locked in THIS script object
-				qDebug("WARNING: Trying to reparse a locked KviKvsScript!");
+				qDebug("WARNING: trying to reparse a locked KviKvsScript!");
 				return false;
 			}
 			if(m_pData->m_pTree)

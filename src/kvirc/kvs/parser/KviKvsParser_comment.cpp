@@ -56,8 +56,8 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 						switch(KVSP_curCharUnicode)
 						{
 							case 0:
-								warning(pBegin,__tr2qs_ctx("Unterminated c-style multiline comment","kvs"));
-								error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in multiline comment","kvs"));
+								warning(pBegin,__tr2qs_ctx("Unterminated c-style multi-line comment","kvs"));
+								error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in multi-line comment","kvs"));
 								return 0;
 							break;
 							case '*':

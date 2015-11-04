@@ -638,7 +638,7 @@ namespace KviKvsCoreSimpleCommands
 		@type:
 			command
 		@title:
-			ctcp
+			CTCP
 		@syntax:
 			ctcp [-n] <target:string> <ctcp_data:string>
 		@short:
@@ -646,8 +646,8 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Sends a CTCP message to the specified <target>.[br]
 			The target may be a nickname, a channel, or a comma separated list of nicknames.[br]
-			The <ctcp_data> is a string containing the ctcp type followed by the ctcp parameters.[br]
-			For more info take a look at the [doc:ctcp_handling]ctcp protocol implementation notes[/doc].[br]
+			The <ctcp_data> is a string containing the CTCP type followed by the CTCP parameters.[br]
+			For more info take a look at the [doc:ctcp_handling]CTCP protocol implementation notes[/doc].[br]
 			The CTCP message will be a request (sent through a PRIVMSG) unless the -n switch
 			specified: in that case it will be a reply (sent through a NOTICE).[br]
 			If <ctcp_data> is the single string "ping" then a trailing time string argument
@@ -1135,7 +1135,7 @@ namespace KviKvsCoreSimpleCommands
 				pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 				if(!pWnd)
 				{
-					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -w switch did not evaluate to a valid window id: using default","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -w switch did not evaluate to a valid window ID: using default","kvs"));
 					pWnd = KVSCSC_pContext->window();
 				}
 			}
@@ -1195,7 +1195,7 @@ namespace KviKvsCoreSimpleCommands
 			Outputs a <text> to the current window in the privmsg format.[br]
 			The <nick> <user> and <host> parameters are formatted
 			as specified by the user preferences (for example
-			the nick may use smart colorisation).
+			the nick may use smart colorization).
 			If you don't know the username and host then just use '*' for
 			that parameters.
 			The message will also get the highlighting rules applied.
@@ -1511,7 +1511,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName))
 					if(!KVSCSC_pSwitches->find('q',"quiet"))
-						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for raw numeric event '%d'","kvs"),&szHandlerName,iNumber);
+						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'","kvs"),&szHandlerName,iNumber);
 			} else {
 				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName))
 					if(!KVSCSC_pSwitches->find('q',"quiet"))
@@ -1524,7 +1524,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				if(!KviKvsEventManager::instance()->enableScriptRawHandler(iNumber,szHandlerName,KVSCSC_pSwitches->find('e',"enable")))
 					if(!KVSCSC_pSwitches->find('q',"quiet"))
-						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for raw numeric event '%d'","kvs"),&szHandlerName,iNumber);
+						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'","kvs"),&szHandlerName,iNumber);
 			} else {
 				if(!KviKvsEventManager::instance()->enableScriptAppHandler(iNumber,szHandlerName,KVSCSC_pSwitches->find('e',"enable")))
 					if(!KVSCSC_pSwitches->find('q',"quiet"))

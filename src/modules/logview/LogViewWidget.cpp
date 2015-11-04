@@ -81,7 +81,7 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType
 			szText = __tr2qs_ctx("Console","log");
 		break;
 		default:
-			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Help));
+			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Log));
 			szText = __tr2qs_ctx("Other","log");
 	}
 

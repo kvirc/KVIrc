@@ -287,8 +287,8 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 		c->error(__tr2qs_ctx("The pixmap is null","objects"));
 		return false;
 	} else if(m_currentType==Pixmap) {
-		if(m_pImage)
-			delete m_pImage;
+		delete m_pImage;
+		m_pImage = new QImage();
 		*m_pImage = m_pPixmap->toImage();
 		delete m_pPixmap;
 	}
@@ -317,9 +317,8 @@ KVSO_CLASS_FUNCTION(pixmap,pixel)
 	} else if(m_currentType==Pixmap) {
 // 		qDebug("mpimage %i",m_pImage);
 // 		qDebug("pixmap %i %i",m_pPixmap->width(),m_pPixmap->height());
-		if(m_pImage)
-			delete m_pImage;
-		else m_pImage = new QImage();
+		delete m_pImage;
+		m_pImage = new QImage();
 		*m_pImage = m_pPixmap->toImage();
 		delete m_pPixmap;
 		m_pPixmap = 0;

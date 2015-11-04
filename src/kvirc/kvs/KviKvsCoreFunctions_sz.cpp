@@ -639,7 +639,7 @@ namespace KviKvsCoreFunctions
 		@title:
 			$tr
 		@short:
-			Translates an english string to the current language
+			Translates an English string to the current language
 		@syntax:
 			<string> $tr(<default_language_string:string>[,<catalogue:string>])
 		@description:
@@ -648,11 +648,11 @@ namespace KviKvsCoreFunctions
 			KVIrc translation file if <catalogue> is omitted.[br]
 			If no translation is found then <english_string> is returned.[br]
 			<default_language_string> is a string in your script default
-			language (which should probably be english since it is the
-			most common language spoken by the translators...).[br]
+			language (which should probably be English since it is the
+			most common language spoken by the translators).[br]
 			If the <catalogue> is not loaded yet, KVIrc will attempt to load it,
 			but only the first time that the catalogue is accessed (i.e. a load
-			failure will cause the catalogue to be ignored completly until [cmd]trunload[/cmd]
+			failure will cause the catalogue to be ignored completely until [cmd]trunload[/cmd]
 			is explicitly used.[br]
 			KVIrc will search the catalogue only in [fnc]$file.localdir[/fnc]/locale/
 			and in [fnc]$file.globaldir[/fnc]/locale/. If your catalogues are

@@ -2283,5 +2283,3 @@ void KviApplication::timerEvent(QTimerEvent * e)
 #ifdef Bool
 	#undef Bool
 #endif
-
-

@@ -94,7 +94,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
 
 	tb = new QToolButton(vbox);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Cut))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	//tb->setEnabled(false);
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
@@ -324,7 +324,7 @@ void OptionsWidget_proxy::customContextMenuRequested(const QPoint &pos)
 	QTreeWidgetItem *it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
     m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent()))
+    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent()))
             ->setEnabled(it);
 	m_pContextPopup->popup(QCursor::pos());
 }

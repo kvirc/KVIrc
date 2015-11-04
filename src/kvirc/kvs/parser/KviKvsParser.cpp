@@ -356,7 +356,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		directly in the command input window.
 		You must remember that the command input window needs
 		a leading slash ('/') character to recognize a script.
-		The command input window can also be put in multiline mode by clicking
+		The command input window can also be put in multi-line mode by clicking
 		on the button on the right.
 		Another alternative for testing scripts is the code tester window.
 		You can access it by selecting "New code tester" from the Scripting menu
@@ -462,7 +462,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The first example will print out with spaces simplified but the second not.
 		The quotes are also a nice trick to embed spaces into a single parameter that
-		would be obviously splitted in two or more.
+		would be obviously split in two or more.
 		[example]
 			[cmd]echo[/cmd] Parameter1 Parameter2 "Parameter  3 ( with spaces )" Parameter4
 		[/example]
@@ -622,7 +622,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		while most text/code editors usually come with 8 characters as default.
 		[/p]
 
-		[big]And now ?[/big]
+		[big]And now?[/big]
 		[p]
 		You're now ready to really start experimenting with KVS. You can take
 		a look at the [doc:commands]command index[/doc] and start trying to use them
@@ -823,7 +823,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		This will add the alias "sum3" and make it available both as a command and a function.
 		The "return" command sets the return value of a sequence of commands
-		(an alias is a sequence of commands...remember ?) and terminates the execution (by returning
+		(an alias is a sequence of commands...remember?) and terminates the execution (by returning
 		the control to the caller).
 		So return $($0 + $1 + $2); will set the return value of the alias to the value
 		computed by $($0 + $1 + $2), which is the sum of the first three parameters passed.
@@ -834,7 +834,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%anothersum = $sum3(12,%somevalue,%anothervalue)
 			...
 		[/example]
-		Oops... I've used some variables without actually explaining them, hehe... please forgive me and read on.
+		Oops! I've used some variables without actually explaining them, please forgive me and read on.
 		This example is again really simple, but you might have more complex function-aliases.
 		The function-aliases are also normal aliases... you can use it as a command:
 		[example]
@@ -902,7 +902,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		to the windows specified by <window_id>. It is useful to launch commands
 		in windows that are not the current one. For example, you might want to
 		say something in a specific channel while processing an event bound to
-		a console, or say something in all the channels bound to the current irc context.
+		a console, or say something in all the channels bound to the current IRC context.
 		The examples below will make everything clear.
 	@examples:
 		[example]
@@ -1215,7 +1215,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Aliases are the way of writing the common tasks: they are equivalent to the "procedures"
 		or "functions" in many high-level programming languages.
 		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above:
-		it might be commonly called from complexer scripts or other aliases in case that a
+		it might be commonly called from more complex scripts or other aliases in case that a
 		kick & ban action is needed.
 		[/p]
 		[p]
@@ -1226,7 +1226,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		This will add the alias "sum3" and make it available both as a command and a function.
 		The "return" command sets the return value of a sequence of commands
-		(an alias is a sequence of commands...remember ?) and terminates the execution (by returning
+		(an alias is a sequence of commands...remember?) and terminates the execution (by returning
 		the control to the caller).
 		So return $($0 + $1 + $2); will set the return value of the alias to the value
 		computed by $($0 + $1 + $2) that actually is the sum of the first three parameters passed.
@@ -1237,8 +1237,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%anothersum = $sum3(12,%somevalue,%anothervalue)
 			...
 		[/example]
-		Oops... I've used some variables without actually explaining them, hehe... please forgive me and read on.
-		This example is again really simple, but you might have complexer function-aliases.
+		Oops! I've used some variables without actually explaining them, hehe... please forgive me and read on.
+		This example is again really simple, but you might have more complex function-aliases.
 		The function-aliases are also normal aliases... you can use it as a command:
 		[example]
 			/sum3 1 2 3
@@ -1404,7 +1404,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 		[p]
 		Hint: Remember that your addon is going to be installed on different platforms
-		(at least linux, macosx and windows based).
+		(at least Linux, OS X and Windows based).
 		The poor windows' notepad has serious problems with reading text
 		files that contain only linefeeds as line separators. Keep it in mind...
 		[/p]
@@ -1550,7 +1550,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 		[p]
 		The help callback will be invoked by KVIrc when the user will ask help for your addon (mainly
-		from the addon management dialog, but not necessairly). It should call [cmd]help.open[/cmd]
+		from the addon management dialog, but not necessarily). It should call [cmd]help.open[/cmd]
 		with the name of your documentation index html file (it should be relative
 		to the help language directory: help.open myaddon/index.html will automatically
 		lookup the right language). If you provide no help callback, the buttons
@@ -1560,7 +1560,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		The configuration callback will be invoked when the user will try to configure
 		your addon from the addon management dialog. This callback is useful
-		mainly for complexier graphical scripts that can show up a dialog
+		mainly for more complex graphical scripts that can show up a dialog
 		that allows configuring all of the addon features. To use this callback
 		you will probably need some object scripting.
 		[/p]
@@ -2241,7 +2241,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		As stated above variables start their existence when you assign something to them.
 		After a variable has been created it persists until it goes out of his scope (remember
-		about local and global variables ?) or you explicitly destroy it. You will usually
+		about local and global variables?) or you explicitly destroy it. You will usually
 		not care about it and just leave the KVS engine to do his cleaning job but it's still worth
 		knowing that you actually can force KVIrc to free the memory used by a variable.
 		[/p]
@@ -3365,7 +3365,7 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 			case 0:
 				delete l;
 				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character ?)","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
 				return 0;
 			break;
 			case '\n':
@@ -3384,7 +3384,7 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 					switch(KVSP_curCharUnicode)
 					{
 						case 0:
-							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character ?)","kvs"));
+							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
 						break;
 						case '\n':
 							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
@@ -3474,7 +3474,7 @@ KviKvsTreeNodeData * KviKvsParser::parseHashKey()
 			case 0:
 				delete l;
 				warning(pBegin,__tr2qs_ctx("Unterminated hash key","kvs"));
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in hash key (missing '}' character ?)","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in hash key (missing '}' character?)","kvs"));
 				return 0;
 			break;
 			case '\r':
@@ -3760,7 +3760,7 @@ KviKvsTreeNodeData * KviKvsParser::parseStringParameter()
 			case 0:
 				delete l;
 				warning(pBegin,__tr2qs_ctx("Unterminated string constant","kvs"));
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in string constant (missing \" character ?)","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in string constant (missing \" character?)","kvs"));
 				return 0;
 			break;
 			case '\r':

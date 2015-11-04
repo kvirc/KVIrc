@@ -1355,7 +1355,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				break;
 			}
 			[/example]
-			[comment]# A complexer example: change the 1 in 2 or 3[/comment]
+			[comment]# A more complex example: change the 1 in 2 or 3[/comment]
 			[example]
 			%tmp = 1
 			switch(%tmp)

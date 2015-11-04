@@ -201,7 +201,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"unsetmode",           // 115
 	"maxvertical",         // 116
 	"maxhorizontal",       // 117
-	"tilewindows",         // 118
+	"serverfavorite",      // 118
 	"log",                 // 119
 	"remove",              // 120
 	"file",                // 121
@@ -732,7 +732,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 115: return KviIconManager::UnsetMode;            break;
 		case 116: return KviIconManager::MaxVertical;          break;
 		case 117: return KviIconManager::MaxHorizontal;        break;
-		case 118: return KviIconManager::TileWindows;          break;
+		case 118: return KviIconManager::ServerFavorite;       break;
 		case 119: return KviIconManager::Log;                  break;
 		case 120: return KviIconManager::Remove;               break;
 		case 121: return KviIconManager::File;                 break;

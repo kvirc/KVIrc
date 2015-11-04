@@ -93,8 +93,8 @@ namespace KviKvsCoreFunctions
 			For example, if the hostname is missing, the mask type 3 or 4 may be reduced to type 5.[br]
 			If the user with <nickname> is not found in the current IRC context user database,
 			an empty string is returned.[br]
-			The masks 22-26 are the smart versions of the masks 17-21 that try take care of masked ip addresses
-			in the form xxx.xxx.INVALID-TOP-MASK. If a masked ip address is found then
+			The masks 22-26 are the smart versions of the masks 17-21 that try take care of masked IP addresses
+			in the form xxx.xxx.INVALID-TOP-MASK. If a masked IP address is found then
 			the XXX.XXX.* or XXX.* host mask is returned instead of the (wrong) *.INVALID-TOP-MASK
 		@examples:
 		@seealso:

@@ -189,7 +189,7 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 		break;
 		case KviKvsReport::ParserError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Compilation Error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Compilation error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
 		break;
 		case KviKvsReport::RunTimeWarning:
 			out = KVI_OUT_PARSERWARNING;
@@ -197,7 +197,7 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 		break;
 		case KviKvsReport::RunTimeError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Runtime Error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Runtime error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
 		break;
 	}
 

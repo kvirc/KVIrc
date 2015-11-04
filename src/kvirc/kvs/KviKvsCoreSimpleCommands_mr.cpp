@@ -528,7 +528,7 @@ namespace KviKvsCoreSimpleCommands
 				("arial", "helvetica" etc..), <pointsize> is more or less the indicator of the size of the font
 				(try sth like 12,14), <style> is an integer that indicates the font style (fixed for example),
 				<charset> is an integer that indicates the charset of the font (maybe one day I'll document it better),
-				<weight> indicates the (ehm) weight of the font (50,100,150...matches Bold,DemiBold etc..),
+				<weight> indicates the (em) weight of the font (50,100,150...matches Bold,DemiBold etc..),
 				<flags> is a combination of 'b','i','u','s,' and 'f' that match respectively bold,italic
 				underline,strikeout and fixed.[br]
 			[b]MessageType[/b]: <optValue> is a comma separated list of message type properties:
@@ -1161,7 +1161,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			quote [-q] <raw command:string>
 		@short:
-			Builtin alias for raw
+			Builtin alias for RAW
 		@switches:
 			!sw: -q | --quiet
 			Be quiet: do echo the raw data.
@@ -1214,9 +1214,9 @@ namespace KviKvsCoreSimpleCommands
 			Sends raw data to the server
 		@switches:
 			!sw: -q | --quiet
-			Be quiet: do echo the raw data.
+			Be quiet: do echo the RAW data.
 		@description:
-			Sends a raw data string to the server of the current [b]IRC context[/b].[br]
+			Sends a RAW data string to the server of the current [b]IRC context[/b].[br]
 			If the -q switch (quiet) is specified, no output is printed.
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
 			This command is equivalent to [cmd]quote[/cmd].

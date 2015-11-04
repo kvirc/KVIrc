@@ -53,7 +53,7 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 	m_pDisableSplash->setChecked(bDisableSplash);
 
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable visual effects","options"),KviOption_boolEnableVisualEffects);
-	addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide Channel window tool buttons by default","options"),KviOption_boolHideWindowToolButtons);
+	addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide channel window tool buttons by default","options"),KviOption_boolHideWindowToolButtons);
 
 	KviTalGroupBox * g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
 	addBoolSelector(g,__tr2qs_ctx("Preferences","options"),KviOption_boolShowGeneralOptionsDialogAsToplevel);

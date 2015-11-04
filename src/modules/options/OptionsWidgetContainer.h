@@ -44,6 +44,7 @@ protected:
 public:
 	void setup(KviOptionsWidget * w);
 	void setLeftCornerWidget(QWidget * pWidget);
+	void setNextToLeft(QWidget * pWidget);
 protected:
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void showEvent(QShowEvent *e);

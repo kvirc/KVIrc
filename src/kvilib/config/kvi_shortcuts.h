@@ -167,7 +167,11 @@
 #define KVI_SHORTCUTS_WIN_PREV Qt::AltModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT Qt::AltModifier + Qt::Key_Down
 #define KVI_SHORTCUTS_WIN_NEXT_TAB Qt::ControlModifier + Qt::Key_Tab      // Ctrl+Tab
-#define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::Key_Backtab  // Ctrl+Shift+Tab
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+# define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::ShiftModifier + Qt::Key_Tab  // Ctrl+Shift+Tab
+#else
+# define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::Key_Backtab  // Ctrl+Shift+Tab
+#endif
 #define KVI_SHORTCUTS_WIN_PREV_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
 #define KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Qt::AltModifier + Qt::Key_PageUp

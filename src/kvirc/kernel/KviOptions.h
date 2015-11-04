@@ -354,8 +354,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUserListViewUseAwayColor 259                       /* userlist */
 #define KviOption_boolShowUserFlagForChannelsInWindowList 260
 #define KviOption_boolEnableCustomCursorWidth 261                          /* interface */
+#define KviOption_boolShowFavoriteServersOnly 262                        /* connection::ircservers */
+#define KviOption_boolRequireControlToCopy 263                           /* interface::ircview */
 
-#define KVI_NUM_BOOL_OPTIONS 262
+#define KVI_NUM_BOOL_OPTIONS 264
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

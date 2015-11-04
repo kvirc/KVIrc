@@ -65,6 +65,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 		[cmd]serverdb.setServerJoinChannels[/cmd]: sets the server autojoin channels list[br]
 		[br]
 		It provides the following set of functions:[br]
+		[fnc]$serverdb.favorite[/fnc]: returns if the server is favorited or not[br]
 		[fnc]$serverdb.cacheIp[/fnc]: returns the cache-ip status for a server[br]
 		[fnc]$serverdb.networkConnectCommand[/fnc]: returns the "on connect" script for a network[br]
 		[fnc]$serverdb.networkDescription[/fnc]: returns the description for a network[br]
@@ -754,6 +755,21 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL,useSSL,setBoolean)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp,cacheIp,setBoolean)
 
 /*
+	@doc: serverdb.favorite
+	@type:
+		function
+	@title:
+		$serverdb.favorite
+	@short:
+		Returns if the server is favorited
+	@syntax:
+		<bool> $serverdb.favorite(<network:string>,<server:string>)
+	@description:
+		Returns true if KVIrc has the server set to a favorite, false otherwise
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverFavorite,favorite,setBoolean)
+
+/*
 	@doc: serverdb.serverJoinChannels
 	@type:
 		function
@@ -860,6 +876,9 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 		!sw: -c | --cache-ip
 		Caches the server IP at first connect to save bandwitch for future connects.[br]
 
+		!sw: -f | --favorite
+		Sets the server as a favorite.[br]
+
 		!sw: -i | --ipv6
 		Use IPv6 socket to connect to the server.[br]
 
@@ -924,6 +943,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 
 	if(c->switches()->find('a',"autoconnect")) pServer->setAutoConnect(true);
 	if(c->switches()->find('c',"cache-ip")) pServer->setCacheIp(true);
+	if(c->switches()->find('f',"favorite")) pServer->setFavorite(true);
 	if(c->switches()->find('i',"ipv6")) pServer->setIPv6(true);
 	if(c->switches()->find('s',"ssl")) pServer->setUseSSL(true);
 
@@ -1471,6 +1491,7 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"updateList",serverdb_kvs_cmd_updateList);
 	*/
 
+	KVSM_REGISTER_FUNCTION(m,"favorite",serverdb_kvs_fnc_serverFavorite);
 	KVSM_REGISTER_FUNCTION(m,"cacheIp",serverdb_kvs_fnc_serverCacheIp);
 	KVSM_REGISTER_FUNCTION(m,"networkConnectCommand",serverdb_kvs_fnc_networkConnectCommand);
 	KVSM_REGISTER_FUNCTION(m,"networkDescription",serverdb_kvs_fnc_networkDescription);

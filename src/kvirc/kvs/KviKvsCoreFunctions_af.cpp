@@ -175,7 +175,7 @@ namespace KviKvsCoreFunctions
 			Encodes an ASCII string to its base64 encoded representation
 			Please note that since KVS is UNICODE based, this function
 			will first encode the string in UTF8 and then base64-encode.
-			This means that it is substantially only 7bit safe (ASCII codes below 128).
+			This means that it is substantially only 7-bit safe (ASCII codes below 128).
 		@examples:
 			[cmd]echo[/cmd] $asciiToBase64("Hello!")
 		@seealso:

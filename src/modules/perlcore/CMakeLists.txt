@@ -12,6 +12,11 @@ if(COMPILE_PERL_SUPPORT)
 		OUTPUT_VARIABLE PERL_COMPILE_FLAGS
 	)
 
+if(APPLE)
+	# OS X has too old perl 5.16 which is incompatible with C++11
+	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-reserved-user-defined-literal")
+endif()
+
 	#remove new line characters
 	string(REGEX REPLACE "(\r?\n)+$" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
 	#remove leading and trailing spaces (string strip)

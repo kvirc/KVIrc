@@ -171,7 +171,7 @@ LogViewWindow::LogViewWindow()
 	pLayout->addWidget(m_pToDateEdit,9,1);
 	connect(m_pEnableToFilter,SIGNAL(toggled(bool)),m_pToDateEdit,SLOT(setEnabled(bool)));
 
-	m_pFilterButton = new QPushButton(__tr2qs_ctx("Apply filter","log"),m_pSearchTab);
+	m_pFilterButton = new QPushButton(__tr2qs_ctx("Apply Filter","log"),m_pSearchTab);
 	pLayout->addWidget(m_pFilterButton,10,1);
 	connect(m_pFilterButton,SIGNAL(clicked()),this,SLOT(applyFilter()));
 
