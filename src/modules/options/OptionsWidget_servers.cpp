@@ -1333,7 +1333,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
 
 	m_pRemoveButton = new QToolButton(vbox);
-	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Cut))));
+	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
