@@ -888,7 +888,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(deleteCKEYWORDWORKAROUND)
 	{
-		kvs_hobject_t hObject;
+		kvs_hobject_t hObject = (kvs_hobject_t)0;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("objectHandle",KVS_PT_HOBJECT,0,hObject)
 		KVSCSC_PARAMETERS_END

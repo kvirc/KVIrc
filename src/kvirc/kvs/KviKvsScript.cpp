@@ -343,7 +343,5 @@ int KviKvsScript::execute(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsV
 		delete pParams;
 	if(bDeleteRetVal)
 		delete pRetVal;
-	pParams = 0;
-	pRetVal = 0;
 	return iRunStatus;
 }
