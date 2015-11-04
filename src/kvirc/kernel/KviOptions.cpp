@@ -400,7 +400,7 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("IconThemeSubdir","",KviOption_sectFlagUser | KviOption_groupTheme | KviOption_resetReloadImages | KviOption_encodePath),
 	STRING_OPTION("IncomingPath","",KviOption_sectFlagUser | KviOption_encodePath),
 	STRING_OPTION("MyAvatar","",KviOption_sectFlagUser),
-	STRING_OPTION("DefaultTextEncoding","",KviOption_sectFlagFrame),
+	STRING_OPTION("DefaultTextEncoding","UTF-8",KviOption_sectFlagFrame),
 	STRING_OPTION("WinampTextEncoding","",KviOption_sectFlagFrame),
 	STRING_OPTION("Mp3TagsEncoding","",KviOption_sectFlagFrame),
 	STRING_OPTION("CtcpUserInfoAge","",KviOption_sectFlagUser),
@@ -414,7 +414,7 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("OnQueryMessageSound","",KviOption_sectFlagFrame),
 	STRING_OPTION("IrcViewTimestampFormat","[hh:mm:ss]",KviOption_sectFlagIrcView),
 	STRING_OPTION("PreferredTorrentClient","auto",KviOption_sectFlagFrame),
-	STRING_OPTION("DefaultSrvEncoding","",KviOption_sectFlagFrame),
+	STRING_OPTION("DefaultSrvEncoding","UTF-8",KviOption_sectFlagFrame),
 	STRING_OPTION("LogsPath","",KviOption_sectFlagUser | KviOption_encodePath),
 	STRING_OPTION("LogsDynamicPath","",KviOption_sectFlagUser | KviOption_encodePath),
 	STRING_OPTION("LogsExportPath","",KviOption_sectFlagUser | KviOption_encodePath)
