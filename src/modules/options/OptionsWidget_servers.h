@@ -203,6 +203,7 @@ protected:
 	QToolButton                  * m_pPasteServerButton;
 	QToolButton                  * m_pImportButton;
 	QToolButton                  * m_pFavoriteServerButton;
+	bool                           m_bShowingFavoritesOnly;
 private:
 	void fillServerList();
 	void saveLastItem();

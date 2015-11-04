@@ -1475,6 +1475,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	m_pClipboard = 0;
 
+	m_bShowingFavoritesOnly = KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly);
+
 	fillServerList();
 	updateFavoritesFilter(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
 
@@ -1844,6 +1846,7 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 {
 	QTreeWidgetItem *it = static_cast<QTreeWidgetItem *>(m_pTreeWidget->itemAt(pnt));
 	bool bServer = (it && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData);
+	bool bFavorite = (bServer && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData->favorite());
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
@@ -1863,7 +1866,8 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),__tr2qs_ctx("Favorite Server","options"),this,SLOT(favoriteServer()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
+		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
 	m_pContextPopup->setEnabled(bServer);
 }
 
@@ -2022,11 +2026,15 @@ void OptionsWidget_servers::favoriteServer()
 
 		unsigned icon = m_pLastEditedItem->m_pServerData->favorite() ? KviIconManager::ServerFavorite : KviIconManager::Server;
 		m_pLastEditedItem->setIcon(0,*(g_pIconManager->getSmallIcon(icon)));
+
+		if(m_bShowingFavoritesOnly)
+			updateFavoritesFilter(true);
 	}
 }
 
 void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
 {
+	m_bShowingFavoritesOnly = bSet;
 	IrcServerOptionsTreeWidgetItem * network;
 	for(unsigned i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
