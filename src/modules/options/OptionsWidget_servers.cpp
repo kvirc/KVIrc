@@ -229,8 +229,8 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	while(d->pcName)
 	{
 		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
-        m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
-        m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
+		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
+		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->pcName,n->encoding()))
 			srvcurrent = i + 1;
 		if(KviQString::equalCI(d->pcName,n->textEncoding()))
@@ -785,8 +785,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	while(d->pcName)
 	{
 		tmp = QString("%1 (%2)").arg(d->pcName,d->pcDescription);
-        m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
-        m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
+		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
+		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->pcName,s->encoding()))
 			srvcurrent = i + 1;
 		if(KviQString::equalCI(d->pcName,s->textEncoding()))
@@ -814,7 +814,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
-        m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostName()).arg(p->port()));
+		m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostName()).arg(p->port()));
 	}
 	if(m_pProxyEditor->count() > (s->proxy()+2))
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
@@ -1266,11 +1266,11 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	createLayout();
 
-    m_pContextPopup = new QMenu(this);
-    m_pImportPopup = new QMenu(this);
+	m_pContextPopup = new QMenu(this);
+	m_pImportPopup = new QMenu(this);
 
 	connect(m_pImportPopup,SIGNAL(aboutToShow()),this,SLOT(importPopupAboutToShow()));
-    connect(m_pImportPopup,SIGNAL(triggered(QAction *)),this,SLOT(importPopupActivated(QAction *)));
+	connect(m_pImportPopup,SIGNAL(triggered(QAction *)),this,SLOT(importPopupActivated(QAction *)));
 
 	m_pServerDetailsDialog = 0;
 	m_pNetworkDetailsDialog = 0;
@@ -1294,7 +1294,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pTreeWidget->setColumnWidth(1,250);
 
 	m_pTreeWidget->setSortingEnabled(true);
-        m_pTreeWidget->sortByColumn(0,Qt::AscendingOrder);
+	m_pTreeWidget->sortByColumn(0,Qt::AscendingOrder);
 	m_pTreeWidget->setHeaderLabels(columLabels);
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
@@ -1388,9 +1388,9 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pDetailsButton,SIGNAL(clicked()),this,SLOT(detailsClicked()));
 	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
 
-    m_pRecentPopup = new QMenu(gbox);
+	m_pRecentPopup = new QMenu(gbox);
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
-    connect(m_pRecentPopup,SIGNAL(triggered(QAction *)),this,SLOT(recentServersPopupClicked(QAction *)));
+	connect(m_pRecentPopup,SIGNAL(triggered(QAction *)),this,SLOT(recentServersPopupClicked(QAction *)));
 
 	QToolButton * tb = new QToolButton(gbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
@@ -1520,7 +1520,7 @@ void OptionsWidget_servers::recentServersPopupAboutToShow()
 {
 	g_pApp->fillRecentServersPopup(m_pRecentPopup);
 
-    m_pRecentPopup->addSeparator();
+	m_pRecentPopup->addSeparator();
 	m_pRecentPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Servers List"));
 }
 
@@ -1533,7 +1533,7 @@ void OptionsWidget_servers::recentServersPopupClicked(QAction *pAction)
 	if(!c)
 		return;
 
-    QString szItemText = pAction->text();
+	QString szItemText = pAction->text();
 	szItemText.remove(QChar('&'));
 	if(szItemText.isEmpty())
 		return;
@@ -1846,21 +1846,21 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	bool bServer = (it && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData);
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
-        ->setEnabled(!bServer);
-    m_pContextPopup->addSeparator();
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
-        ->setEnabled(bServer);
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
-    m_pContextPopup->setEnabled(bServer);
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
-        ->setEnabled(m_pClipboard);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
+	    ->setEnabled(!bServer);
+	m_pContextPopup->addSeparator();
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
+	    ->setEnabled(bServer);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
+	m_pContextPopup->setEnabled(bServer);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
+	    ->setEnabled(m_pClipboard);
 
-    m_pContextPopup->addSeparator();
+	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
-    m_pContextPopup->addSeparator();
-    m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
+	m_pContextPopup->addSeparator();
+	m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),__tr2qs_ctx("Favorite Server","options"),this,SLOT(favoriteServer()));
@@ -1876,7 +1876,7 @@ void OptionsWidget_servers::importPopupAboutToShow()
 
 	if(!l)return;
 
-    QAction *pAction;
+	QAction *pAction;
 
 	for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
 	{
@@ -1911,10 +1911,10 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 		m_pImportFilter = 0;
 	}
 
-    bool bOk=false;
-    int id = pAction->data().toInt(&bOk);
-    if(!bOk)
-        return;
+	bool bOk=false;
+	int id = pAction->data().toInt(&bOk);
+	if(!bOk)
+	    return;
 
 	m_pImportFilter = (KviMexServerImport *)KviModuleExtensionManager::instance()->allocateExtension("serverimport",id,0);
 
