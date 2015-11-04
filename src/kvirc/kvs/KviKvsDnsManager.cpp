@@ -77,7 +77,7 @@ void KviKvsDnsManager::init()
 {
 	if(KviKvsDnsManager::m_pInstance)
 	{
-		qDebug("Trying to double init() the dns manager!");
+		qDebug("Trying to double init() the DNS manager!");
 		return;
 	}
 	KviKvsDnsManager::m_pInstance = new KviKvsDnsManager();
@@ -87,7 +87,7 @@ void KviKvsDnsManager::done()
 {
 	if(!KviKvsDnsManager::m_pInstance)
 	{
-		qDebug("Trying to call done() on a non existing dns manager!");
+		qDebug("Trying to call done() on a non existing DNS manager!");
 		return;
 	}
 	delete KviKvsDnsManager::m_pInstance;

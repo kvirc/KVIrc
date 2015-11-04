@@ -208,7 +208,7 @@
 		Any object class (be patient... I'll explain classes in a while) identifier can be stored in any KVIrc variable:
 		it is not possible to find out the object features by "examining" its identifier.
 		This may make the usage of objects a bit "unclear";
-		Howewer, with some experience you will be able to use the objects in a very powerful way.
+		However, with some experience you will be able to use the objects in a very powerful way.
 		The type-safety can be also simulated by a careful usage of object names;
 		in the above example, the %myobj object was created with the "userDescription" name.
 		The storetofile alias could check the passed object's name and refuse to work
@@ -280,7 +280,7 @@
 		In the parent destructor the children have been counted and listed.[br]
 		Then the parent object is destroyed causing to:[br]
 		- trigger the parent destructor.[br]
-		- destroy all the children (and conseguently trigger all the "individual" destructors).[br][br]
+		- destroy all the children (and consequently trigger all the "individual" destructors).[br][br]
 
 		Not all the object functions must return a value:
 		If a function does not return a meaningful value, or you just want to ignore it, you can call it in the following way:[br]
@@ -326,7 +326,7 @@
 			function ipnumber()
 			{
 				find the nearest DNS server
-				make the dns call
+				make the DNS call
 				wait for the response
 				decode the response
 			}
@@ -618,7 +618,7 @@
 		Int, UInt, Bool and enumeration types.[br]
 		For example, the widget's x coordinate can be retrieved by using the [classfnc]$x[/classfnc]()
 		function or by calling $property(x).[br]
-		There are many properties that are available ony through the [classfnc]$property[/classfnc]() call:[br]
+		There are many properties that are available only through the [classfnc]$property[/classfnc]() call:[br]
 		For example, you can find out if the widget accepts drops by calling [classfnc]$property[/classfnc](acceptDrops).[br]
 		This function will be mainly useful in the [class]wrapper[/class] class.
 		!fn: $setProperty(<Qt property>,<property value>)

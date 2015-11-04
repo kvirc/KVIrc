@@ -46,7 +46,7 @@ void KviKvsAliasManager::init()
 {
 	if(KviKvsAliasManager::instance())
 	{
-		qDebug("WARNING: Trying to create the KviKvsAliasManager twice!");
+		qDebug("WARNING: trying to create the KviKvsAliasManager twice!");
 		return;
 	}
 	(void)new KviKvsAliasManager();
@@ -56,7 +56,7 @@ void KviKvsAliasManager::done()
 {
 	if(!KviKvsAliasManager::instance())
 	{
-		qDebug("WARNING: Trying to destroy the KviKvsAliasManager twice!");
+		qDebug("WARNING: trying to destroy the KviKvsAliasManager twice!");
 		return;
 	}
 	delete KviKvsAliasManager::instance();

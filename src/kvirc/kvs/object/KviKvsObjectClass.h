@@ -93,9 +93,9 @@ public:
 
 	// registers an empty handler that returns "nothing"
 	void registerStandardNothingReturnFunctionHandler(const QString & szFunc);
-	// retisters an empty handler that returns $true
+	// registers an empty handler that returns $true
 	void registerStandardTrueReturnFunctionHandler(const QString & szFunc);
-	// retisters an empty handler that returns $false
+	// registers an empty handler that returns $false
 	void registerStandardFalseReturnFunctionHandler(const QString & szFunc);
 
 	KviKvsObjectFunctionHandler * lookupFunctionHandler(const QString & szFunc){ return m_pFunctionHandlers->find(szFunc); };

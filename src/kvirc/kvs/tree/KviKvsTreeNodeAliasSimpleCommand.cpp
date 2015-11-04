@@ -99,7 +99,7 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 			c->window()->output(KVI_OUT_RAW,__tr2qs_ctx("[RAW]: %Q","kvs"),&szAll);
 			return true;
 no_way_to_send_as_raw:
-			c->warning(this,__tr2qs_ctx("Failed to send an unknown command as /raw","kvs"));
+			c->warning(this,__tr2qs_ctx("Failed to send an unknown command as /RAW","kvs"));
 			c->error(this,__tr2qs_ctx("Call to undefined command '%Q'","kvs"),&m_szCmdName);
 			return false;
 		} else {

@@ -984,7 +984,7 @@ namespace KviKvsCoreSimpleCommands
 		@type:
 			command
 		@title:
-			who
+			WHO
 		@syntax:
 			who <filter>
 		@short:
@@ -998,7 +998,7 @@ namespace KviKvsCoreSimpleCommands
 			a much more complex syntax: <mask1> <options> [<mask2>].
 			<mask1> is a comma separated list of filters that can contain wildcards (* and ?),
 			<options> is a set of characters specifying what <mask1> is matching (nicknames, channel
-			names, user names, real names, ip addresses etc) and what kind of informations should be returned.
+			names, user names, real names, IP addresses etc) and what kind of informations should be returned.
 			Look for the extended WHOX syntax on your favorite search engine.[br]
 			If no parameter is specified at all, it requests a WHO information about the current
 			channel.[br]
@@ -1107,7 +1107,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Requests user information
 		@description:
-			Requests information about an irc user specified by <nickname>.[br]
+			Requests information about an IRC user specified by <nickname>.[br]
 			Whowas requests "history" records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
 		@examples:
