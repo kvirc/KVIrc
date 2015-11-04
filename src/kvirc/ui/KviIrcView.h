@@ -125,6 +125,7 @@ private:
 
 	bool                        m_bMouseIsDown;
 	bool                        m_bShiftPressed;
+	bool                        m_bCtrlPressed;
 
 	bool                        m_bSkipScrollBarRepaint;
 	int                         m_iMouseTimer;

@@ -277,6 +277,7 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 	m_bMouseIsDown = true;
 
 	m_bShiftPressed = (e->modifiers() & Qt::ShiftModifier);
+	m_bCtrlPressed = (e->modifiers() & Qt::ControlModifier);
 
 	if(m_iMouseTimer) // clicked at least twice within the doubleClickInterval(): this is a double click then...
 	{
@@ -496,6 +497,8 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 		QString szSelectionText;
 		while(tempLine)
 		{
+			if(KVI_OPTION_BOOL(KviOption_boolRequireControlToCopy) && !m_bCtrlPressed)
+				break;
 			if(tempLine->uIndex == init->uIndex)
 			{
 				if(tempLine->uIndex == end->uIndex)
@@ -637,6 +640,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 	{
 		m_bMouseIsDown = false;
 		m_bShiftPressed = false;
+		m_bCtrlPressed = false;
 		// Insert the lines blocked while selecting
 		while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
 		{
