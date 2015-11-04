@@ -976,7 +976,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerNotice)),__tr2qs("s: Server Notices"));
 		pAction->setCheckable(true);
 		// Only if the IRCd allows us
-		pAction->setEnabled(c->connection()->serverInfo()->getNeedsOperToSetS() ? c->connection()->userInfo()->hasUserMode('o') : 1);
+		pAction->setEnabled(c->connection()->serverInfo()->getNeedsOperToSetS() ? c->connection()->userInfo()->hasUserMode('o') : true);
 		pAction->setChecked(c->connection()->userInfo()->hasUserMode('s'));
 	}
 

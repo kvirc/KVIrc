@@ -68,6 +68,13 @@ void OptionsWidgetContainer::setLeftCornerWidget(QWidget * pWidget)
 	m_pLayout->addWidget(pWidget,1,0);
 }
 
+void OptionsWidgetContainer::setNextToLeft(QWidget * pWidget)
+{
+	if(!pWidget)
+		return;
+	m_pLayout->addWidget(pWidget,2,0);
+}
+
 void OptionsWidgetContainer::optionsWidgetDestroyed()
 {
 	m_pOptionsWidget = NULL;

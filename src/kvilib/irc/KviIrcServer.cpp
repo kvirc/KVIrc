@@ -125,7 +125,7 @@ void KviIrcServer::operator=(const KviIrcServer & serv)
 	m_szLinkFilter       = serv.m_szLinkFilter;
 	m_szId               = serv.m_szId;
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
-	m_iProxy	     = serv.m_iProxy;
+	m_iProxy             = serv.m_iProxy;
 	m_bAutoConnect       = serv.m_bAutoConnect;
 	m_szSaslNick         = serv.m_szSaslNick;
 	m_szSaslPass         = serv.m_szSaslPass;
@@ -287,6 +287,8 @@ bool KviIrcServer::load(KviConfigurationFile * pCfg, const QString & szPrefix)
 	setProxy(pCfg->readIntEntry(szTmp,-2));
 	szTmp = QString("%1UserIdentityId").arg(szPrefix);
 	m_szUserIdentityId = pCfg->readEntry(szTmp);
+	szTmp = QString("%1Favorite").arg(szPrefix);
+	setFavorite(pCfg->readBoolEntry(szTmp,false));
 	return true;
 }
 
@@ -426,5 +428,10 @@ void KviIrcServer::save(KviConfigurationFile * pCfg, const QString & szPrefix)
 	{
 		szTmp = QString("%1UserIdentityId").arg(szPrefix);
 		pCfg->writeEntry(szTmp,m_szUserIdentityId);
+	}
+	if(favorite())
+	{
+		szTmp = QString("%1Favorite").arg(szPrefix);
+		pCfg->writeEntry(szTmp,favorite());
 	}
 }
