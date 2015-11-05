@@ -702,7 +702,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 		"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
 		"Advanced: you can also use this option to force a certain server name to resolve " \
-		"to a fixed ip address when either the dns for that server is temporairly " \
+		"to a fixed IP address when either the DNS for that server is temporarily " \
 		"unreachable or you want to avoid the round-robin lookups.</center>","options"));
 	m_pCacheIpCheck->setChecked(s->cacheIp());
 
@@ -1324,11 +1324,20 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
 	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
 
+	QFrame * f = new QFrame(vbox);
+	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
+
 	m_pNewServerButton = new QToolButton(vbox);
 	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
 	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
+
+	m_pFavoriteServerButton = new QToolButton(vbox);
+	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
+	m_pFavoriteServerButton->setAutoRaise(true);
+	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
+	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite/Unfavorite Server","options"));
 
 	m_pRemoveButton = new QToolButton(vbox);
 	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
@@ -1336,9 +1345,6 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
 	KviTalToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove Network/Server","options"));
-
-	QFrame * f = new QFrame(vbox);
-	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
 	m_pCopyServerButton = new QToolButton(vbox);
 	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Copy))));
@@ -1364,15 +1370,6 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
 
 	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
-
-	f = new QFrame(vbox);
-	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-
-	m_pFavoriteServerButton = new QToolButton(vbox);
-	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
-	m_pFavoriteServerButton->setAutoRaise(true);
-	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
-	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite Server","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
@@ -1413,7 +1410,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		QPalette pal(QColor(0,0,0));
 
 		/* QPalette::active defines the colors of the button/text when the KVIrc window has focus
-		   Keep button/text color in a specturm that indicates a connect action is possible */
+		   Keep button/text color in a spectrum that indicates a connect action is possible */
 		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,135,0));
 		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
 
@@ -1423,7 +1420,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		pal.setColor(QPalette::Inactive,QPalette::ButtonText,QColor(225,225,225));
 
 		/* QPalette::Disabled defines the colors of the button/text when for instance network is selected
-		   Keep button/text color in a specturm that indicates no possible action is possible */
+		   Keep button/text color in a spectrum that indicates no possible action is possible */
 		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(100,100,100));
 		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(180,180,180));
 
@@ -1849,26 +1846,24 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	bool bFavorite = (bServer && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData->favorite());
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
 	    ->setEnabled(!bServer);
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
+		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
+	m_pContextPopup->setEnabled(bServer);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
 	    ->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
 	m_pContextPopup->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
 	    ->setEnabled(m_pClipboard);
-
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->popup(QCursor::pos());
-	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
-		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
-	m_pContextPopup->setEnabled(bServer);
 }
 
 void OptionsWidget_servers::importPopupAboutToShow()
@@ -1904,7 +1899,7 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 		// ops.. internal error: I thought to have a module capable of importing servers
 		// but actually it's not the case.. something weird happened (in the best case
 		// the user has just unloaded the module and removed it from disk ?)
-		KviMessageBox::warning(__tr2qs_ctx("Oops... something weird happened:<br>Can't find any module capable of importing servers.","options"));
+		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find any module capable of importing servers.","options"));
 		return;
 	}
 
@@ -1924,7 +1919,7 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 
 	if(!m_pImportFilter)
 	{
-		KviMessageBox::warning(__tr2qs_ctx("Oops... something weird happened:<br>Can't find the module that was capable of this import action. :(","options"));
+		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find the module that was capable of this import action. :(","options"));
 		return;
 	}
 
@@ -2089,7 +2084,7 @@ void OptionsWidget_servers::pasteServer()
 			IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,
 							*(g_pIconManager->getSmallIcon(KviIconManager::Server)),m_pClipboard);
 
-			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessairly unique...
+			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessarily unique...
 
 			net->setExpanded(true);
 
