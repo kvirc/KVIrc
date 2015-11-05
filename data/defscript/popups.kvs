@@ -451,23 +451,6 @@ defpopup(windowpopup)
 
 	separator
 
-	item($tr("Minimize","defscript"),3) (!$window.isMinimized())
-	{
-		window.minimize
-	}
-
-	item($tr("Maximize","defscript"),2) (!$window.isMaximized())
-	{
-		window.maximize
-	}
-
-	item($tr("Restore","defscript"),4) ($window.isMinimized() || $window.isMaximized())
-	{
-		window.restore
-	}
-
-	separator
-
 	item($tr("Close","defscript"),1)
 	{
 		window.close
