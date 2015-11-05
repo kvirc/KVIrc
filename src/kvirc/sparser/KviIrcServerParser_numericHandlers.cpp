@@ -1047,6 +1047,21 @@ void KviIrcServerParser::parseNumericUnknownCommand(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericBanOnChan(KviIrcMessage *msg)
+{
+	// 435: ERR_BANONCHAN
+	// :prefix 435 <target> <newnick> <channel> :Cannot change nickname while banned on channel
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findChannel(msg->safeParam(2)));
+		if(!pOut)pOut = static_cast<KviWindow *>(msg->console());
+		QString szChannel = msg->connection()->decodeText(msg->safeParam(2));
+		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_JOINERROR,
+			"\r!c\r%Q\r: %Q",&szChannel,&szWText);
+	}
+}
+
 void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 {
 	// 437: ERR_UNAVAILRESOURCE [I]

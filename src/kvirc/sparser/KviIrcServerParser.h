@@ -189,6 +189,7 @@ private:
 	void parseNumericChanUrl(KviIrcMessage *msg);
 	void parseNumericCreationTime(KviIrcMessage *msg);
 	void parseNumericIsOn(KviIrcMessage *msg);
+	void parseNumericBanOnChan(KviIrcMessage *msg);
 	void parseNumericUnavailResource(KviIrcMessage *msg);
 	void parseNumericLinks(KviIrcMessage *msg);
 	void parseNumericEndOfLinks(KviIrcMessage *msg);

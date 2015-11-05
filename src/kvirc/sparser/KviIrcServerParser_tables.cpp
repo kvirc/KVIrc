@@ -511,7 +511,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericNicknameProblem)               , // 432 ERR_ERRONEUSNICKNAME
 	PTM(parseNumericNicknameProblem)               , // 433 ERR_NICKNAMEINUSE
 	0,                                               // 434 ERR_SERVICENAMEINUSE, ERR_NORULES
-	0,                                               // 435 ERR_SERVICECONFUSED, ERR_BANONCHAN
+	PTM(parseNumericBanOnChan),                      // 435 ERR_SERVICECONFUSED, ERR_BANONCHAN
 	0,                                               // 436 ERR_NICKCOLLISION
 	PTM(parseNumericUnavailResource)               , // 437 ERR_UNAVAILRESOURCE, ERR_BANNICKCHANGE
 	0,                                               // 438 ERR_NICKTOOFAST, ERR_DEAD
