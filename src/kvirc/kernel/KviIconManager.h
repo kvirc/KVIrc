@@ -167,9 +167,9 @@ public:
 	enum SmallIcon {
 		None                 =   0,
 		Close                =   1,
-		Maximize             =   2,
-		Minimize             =   3,
-		Restore              =   4,
+		Maximize             =   2, //No longer used, do not remove entry, just reuse entry for new icons.
+		Minimize             =   3, //No longer used, do not remove entry, just reuse entry for new icons.
+		Restore              =   4, //No longer used, do not remove entry, just reuse entry for new icons.
 		DefaultIcon          =   5,
 		Dock                 =   6,
 		UnDock               =   7,
@@ -281,8 +281,8 @@ public:
 		RegUsers             = 113,
 		TrayIcon             = 114,
 		UnsetMode            = 115,
-		MaxVertical          = 116,
-		MaxHorizontal        = 117,
+		MaxVertical          = 116, //No longer used, do not remove entry, just reuse entry for new icons.
+		MaxHorizontal        = 117, //No longer used, do not remove entry, just reuse entry for new icons.
 		ServerFavorite       = 118,
 		Log                  = 119,
 		Remove               = 120,
@@ -334,7 +334,7 @@ public:
 		DccVoice             = 166,
 		Play                 = 167,
 		Record               = 168,
-		AutoTileWindows      = 169,
+		AutoTileWindows      = 169, //No longer used, do not remove entry, just reuse entry for new icons.
 		Away                 = 170,
 		Ident                = 171,
 		HomePage             = 172,
