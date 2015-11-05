@@ -702,7 +702,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 		"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
 		"Advanced: you can also use this option to force a certain server name to resolve " \
-		"to a fixed ip address when either the dns for that server is temporairly " \
+		"to a fixed IP address when either the DNS for that server is temporarily " \
 		"unreachable or you want to avoid the round-robin lookups.</center>","options"));
 	m_pCacheIpCheck->setChecked(s->cacheIp());
 
@@ -1410,7 +1410,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		QPalette pal(QColor(0,0,0));
 
 		/* QPalette::active defines the colors of the button/text when the KVIrc window has focus
-		   Keep button/text color in a specturm that indicates a connect action is possible */
+		   Keep button/text color in a spectrum that indicates a connect action is possible */
 		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,135,0));
 		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
 
@@ -1420,7 +1420,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		pal.setColor(QPalette::Inactive,QPalette::ButtonText,QColor(225,225,225));
 
 		/* QPalette::Disabled defines the colors of the button/text when for instance network is selected
-		   Keep button/text color in a specturm that indicates no possible action is possible */
+		   Keep button/text color in a spectrum that indicates no possible action is possible */
 		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(100,100,100));
 		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(180,180,180));
 
@@ -1899,7 +1899,7 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 		// ops.. internal error: I thought to have a module capable of importing servers
 		// but actually it's not the case.. something weird happened (in the best case
 		// the user has just unloaded the module and removed it from disk ?)
-		KviMessageBox::warning(__tr2qs_ctx("Oops... something weird happened:<br>Can't find any module capable of importing servers.","options"));
+		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find any module capable of importing servers.","options"));
 		return;
 	}
 
@@ -1919,7 +1919,7 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 
 	if(!m_pImportFilter)
 	{
-		KviMessageBox::warning(__tr2qs_ctx("Oops... something weird happened:<br>Can't find the module that was capable of this import action. :(","options"));
+		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find the module that was capable of this import action. :(","options"));
 		return;
 	}
 
@@ -2084,7 +2084,7 @@ void OptionsWidget_servers::pasteServer()
 			IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,
 							*(g_pIconManager->getSmallIcon(KviIconManager::Server)),m_pClipboard);
 
-			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessairly unique...
+			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessarily unique...
 
 			net->setExpanded(true);
 
