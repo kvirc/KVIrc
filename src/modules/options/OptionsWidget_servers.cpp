@@ -1369,7 +1369,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pImportButton->setMenu(m_pImportPopup);
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
 
-	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
+	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import Server List","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
@@ -1860,9 +1860,9 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
 	    ->setEnabled(m_pClipboard);
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),__tr2qs_ctx("Import Server List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Clear Server List","options"),this,SLOT(clearList()));
 	m_pContextPopup->popup(QCursor::pos());
 }
 
