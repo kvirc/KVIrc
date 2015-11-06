@@ -309,7 +309,6 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
-
 	// nick serv rules
 
 	tab = new QWidget(tw);
@@ -349,7 +348,6 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add Rule","options"),tab);
 	connect(m_pAddRuleButton,SIGNAL(clicked()),this,SLOT(addNickServRule()));
 	gl->addWidget(m_pAddRuleButton,2,0);
-
 
 	m_pEditRuleButton = new QPushButton(__tr2qs_ctx("Edit Rule","options"),tab);
 	connect(m_pEditRuleButton,SIGNAL(clicked()),this,SLOT(editNickServRule()));
@@ -615,7 +613,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 
-
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 
@@ -707,15 +704,12 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pCacheIpCheck->setChecked(s->cacheIp());
 
 
-
-
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 
 	pCheckBoxLayout->addWidget(m_pUseAutoConnect,0,1);
 
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
-
 
 
 	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
@@ -732,8 +726,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
 
-
-
 	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	pCheckBoxLayout->addWidget(m_pUseSSLCheck,1,1);
 
@@ -746,7 +738,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 
 	iRow++;
-
 
 	//server encoding
 
@@ -805,8 +796,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,iRow,1);
 	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
-		"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
-		"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
+		"If this field is set in \"Default\" KVIrc will use global proxy settings, if it is set in \"Direct connection\" " \
+		"KVIrc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
 	m_pProxyEditor->addItem(__tr2qs_ctx("Direct Connection","options"));
@@ -820,8 +811,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
 
 	iRow++;
-
-
 
 
 	l = new QLabel("",tab);
@@ -881,10 +870,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
-
-
 	// Advanced tab
-
 
 	tab = new QWidget(tw);
 	gl = new QGridLayout(tab);
@@ -1896,9 +1882,9 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 
 	if(!l)
 	{
-		// ops.. internal error: I thought to have a module capable of importing servers
+		// Oops! Internal error: I thought to have a module capable of importing servers
 		// but actually it's not the case.. something weird happened (in the best case
-		// the user has just unloaded the module and removed it from disk ?)
+		// the user has just unloaded the module and removed it from disk?)
 		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find any module capable of importing servers.","options"));
 		return;
 	}
