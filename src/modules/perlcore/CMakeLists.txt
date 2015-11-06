@@ -12,15 +12,13 @@ if(COMPILE_PERL_SUPPORT)
 		OUTPUT_VARIABLE PERL_COMPILE_FLAGS
 	)
 
-if(UNIX)
-	if(CMAKE_COMPILER_IS_GNUCXX)
-		# GCC whines because perl isn't extremely C++11 compliant. Test for GCC
-		# first incase an OS X machine is using GCC over Clang to compile.
-		set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-literal-suffix")
-	elseif(APPLE)
-		# OS X has too old perl 5.16 which is incompatible with C++11
-		set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-reserved-user-defined-literal")
-	endif()
+if(CMAKE_COMPILER_IS_GNUCXX)
+	# GCC whines because perl isn't extremely C++11 compliant
+	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-literal-suffix")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+	# If the perl version is too old, clang will throw errors due to C++11
+	# incompatiblities
+	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-reserved-user-defined-literal")
 endif()
 
 	#remove new line characters
