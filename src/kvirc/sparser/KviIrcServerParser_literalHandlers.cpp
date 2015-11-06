@@ -1426,6 +1426,21 @@ output_to_query_window:
 			//SERVER NOTICE DIRECTED TO A CHANNEL (EG. &servers, &kills on ircd)
 			// FIXME: "Dedicated window for server notices ?"
 
+			KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+			QString version = pServerInfo->software();
+
+			// OFTC replaced RPL_HOSTHIDDEN with a server notice
+			if(version == "Hybrid+Oftc")
+			{
+				QStringList parts = szMsgText.split(" ", QString::SkipEmptyParts);
+				if(parts.count() == 3)
+				{
+					if(parts[0] == "Activating" && parts[1] == "Cloak:")
+						if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeHostChange,msg->console(),szNick,parts[2]))
+							msg->setHaltOutput();
+				}
+			}
+
 			if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnServerNotice,console,szNick,szMsgText))
 				msg->setHaltOutput();
 

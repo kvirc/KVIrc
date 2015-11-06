@@ -4002,8 +4002,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Console
 		@description:
-			Triggered when your visible hostname has been changed. The source could either be services or the IRCd.[br]
-			Note that not all IRC Network support this event, however, major IRC networks including Freenode do.
+			Triggered when your visible hostname has been changed. The source could either be services or the IRCd.
 	*/
 	EVENT("OnMeHostChange", \
 		"$0 = source server\n" \
