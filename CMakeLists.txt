@@ -36,22 +36,8 @@
 # Name of the project
 project(kvirc)
 
-# Set conventional loops
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
-
 # Minimum cmake version
 cmake_minimum_required(VERSION 3.1.0)
-
-# CMake policy: Automatically link Qt executables to qtmain.lib target on Windows
-if(POLICY CMP0020)
-	cmake_policy(SET CMP0020 NEW)
-endif()
-
-# CMake policy: Ignore COMPILE_DEFINITIONS_<Config> properties.
-# FIXME: We don't actually use this at all?
-if(POLICY CMP0043)
-	cmake_policy(SET CMP0043 NEW)
-endif()
 
 # Check modules first in local dir
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -599,11 +585,6 @@ else()
 		endif()
 	else()
 		set(CMAKE_STATUS_QTSVG_SUPPORT "No")
-	endif()
-
-	# qtmain for non-debug MSVC (/subsystem:windows), MinGW can live without it.
-	if(MSVC AND NOT WANT_DEBUG)
-		set(QT_USE_QTMAIN true)
 	endif()
 
 	# Qt4 has QX11Info
@@ -1377,7 +1358,7 @@ endif()
 configure_file(${PROJECT_SOURCE_DIR}/cmake/kvi_sysbuildinfo.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysbuildinfo.h)
 
 if(WIN32)
-  configure_file(${PROJECT_SOURCE_DIR}/cmake/version.h.cmake ${PROJECT_SOURCE_DIR}/data/resources_win32/version.h)
+	configure_file(${PROJECT_SOURCE_DIR}/cmake/version.h.cmake ${PROJECT_SOURCE_DIR}/data/resources_win32/version.h)
 endif()
 
 include_directories(${PROJECT_BINARY_DIR})

@@ -131,7 +131,8 @@ add_library(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
 
 # Enable C++11
-target_compile_features(${KVILIB_BINARYNAME} PRIVATE cxx_range_for)
+set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 
 if(Qt5Widgets_FOUND)
