@@ -162,13 +162,9 @@
 			cpd.cbData = strlen(message)+1;
 			cpd.dwData = KVI_WINDOWS_IPC_MESSAGE;
 			cpd.lpData = (void *)message;
-			DWORD dwResult;
+			DWORD_PTR dwResult;
 
-#if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
-			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,(PDWORD_PTR)&dwResult))
-#else
 			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult))
-#endif
 			{
 				qDebug("Failed to send IPC message: error code 0x%x",::GetLastError());
 			}

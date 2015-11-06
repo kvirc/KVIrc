@@ -422,7 +422,7 @@ namespace KviKvsCoreSimpleCommands
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-			int iRet = (int)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),NULL, NULL, SW_SHOWNORMAL);
+			intptr_t iRet = (intptr_t)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),NULL, NULL, SW_SHOWNORMAL);
 			if(iRet <= 32)
 			{
 				// FIXME: Write a better error message

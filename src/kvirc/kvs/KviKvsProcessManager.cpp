@@ -298,7 +298,7 @@ void KviKvsProcessAsyncOperation::processStarted()
 	if(m_bDeletePending)return;
 
 	QString szPid;
-	szPid.setNum((int)(m_pProcess->pid()));
+	szPid.setNum((intptr_t)(m_pProcess->pid()));
 	if(trigger(EventStarted,szPid))
 	{
 		triggerSelfDelete();

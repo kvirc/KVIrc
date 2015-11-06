@@ -127,7 +127,7 @@ LRESULT CALLBACK WndProc(HWND hwnd,UINT message,WPARAM wParam,LPARAM lParam)
 int init()
 {
 	lpWndProcOld = (void *) GetWindowLong(plugin.hwndParent,GWLP_WNDPROC);
-	SetWindowLongPtr(plugin.hwndParent,GWLP_WNDPROC,(long)WndProc);
+	SetWindowLongPtr(plugin.hwndParent,GWLP_WNDPROC,(intptr_t)WndProc);
 	return 0;
 }
 
