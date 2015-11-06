@@ -2136,6 +2136,17 @@ IrcServerOptionsTreeWidgetItem * OptionsWidget_servers::findNetItem(const QStrin
 
 void OptionsWidget_servers::clearList()
 {
+	QString txt = "<p>";
+	txt += __tr2qs_ctx("If you click <b>Yes</b>, all of your saved networks, servers, settings, and passwords will be lost. "
+		"Would you like to continue?","options");
+	txt += "</p>";
+
+	if(QMessageBox::question(
+		this,
+		__tr2qs_ctx("Confirm clearing server list","options"),
+		txt, __tr2qs_ctx("Yes","options"), __tr2qs_ctx("No","options"),0,1
+		) != 0) return;
+
 	m_pTreeWidget->clear();
 	m_pLastEditedItem = 0;
 	currentItemChanged(0,0);
