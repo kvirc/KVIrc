@@ -95,7 +95,7 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pSoundSystemDict = new KviPointerHashTable<QString,KviSoundPlayerEntry>(17,false);
 	m_pSoundSystemDict->setAutoDelete(true);
 
-#ifdef COMPILE_PHONON_SUPPORT
+#if defined(COMPILE_PHONON_SUPPORT) && (QT_VERSION < 0x050000)
 	m_pSoundSystemDict->insert("phonon",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon),KVI_PTR2MEMBER(KviSoundPlayer::cleanupPhonon)));
 #endif //!COMPILE_PHONON_SUPPORT
 
@@ -254,7 +254,7 @@ void KviSoundPlayer::detectSoundSystem()
 #endif
 }
 
-#ifdef COMPILE_PHONON_SUPPORT
+#if defined(COMPILE_PHONON_SUPPORT) && (QT_VERSION < 0x050000)
 bool KviSoundPlayer::playPhonon(const QString &szFileName)
 {
 	if(isMuted())
