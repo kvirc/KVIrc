@@ -906,31 +906,31 @@ void KviKvsVariant::dump(const char * pcPrefix) const
 {
 	if(!m_pData)
 	{
-		qDebug("%s Nothing [this=0x" PRIxPTR "]",pcPrefix,(uintptr_t)this);
+		qDebug("%s Nothing [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)this);
 		return;
 	}
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::String:
-			qDebug("%s String(%s) [this=0x" PRIxPTR "]",pcPrefix,m_pData->m_u.pString->toUtf8().data(),(uintptr_t)this);
+			qDebug("%s String(%s) [this=0x%" PRIxPTR "]",pcPrefix,m_pData->m_u.pString->toUtf8().data(),(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Array:
-			qDebug("%s Array(ptr=0x" PRIxPTR ") [this=0x" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pArray,(uintptr_t)this);
+			qDebug("%s Array(ptr=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pArray,(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Hash:
-			qDebug("%s Hash(ptr=0x" PRIxPTR ",dict=0x" PRIxPTR ") [this=0x" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pHash,(uintptr_t)m_pData->m_u.pHash->dict(),(uintptr_t)this);
+			qDebug("%s Hash(ptr=0x%" PRIxPTR ",dict=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pHash,(uintptr_t)m_pData->m_u.pHash->dict(),(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Integer:
-			qDebug("%s Integer(%d) [this=0x" PRIxPTR "]",pcPrefix,(int) m_pData->m_u.iInt,(uintptr_t)this);
+			qDebug("%s Integer(%d) [this=0x%" PRIxPTR "]",pcPrefix,(int) m_pData->m_u.iInt,(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Real:
-			qDebug("%s Real(%f) [this=0x" PRIxPTR "]",pcPrefix,*(m_pData->m_u.pReal),(uintptr_t)this);
+			qDebug("%s Real(%f) [this=0x%" PRIxPTR "]",pcPrefix,*(m_pData->m_u.pReal),(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Boolean:
-			qDebug("%s Boolean(%s) [this=0x" PRIxPTR "]",pcPrefix,m_pData->m_u.bBoolean ? "true" : "false",(uintptr_t)this);
+			qDebug("%s Boolean(%s) [this=0x%" PRIxPTR "]",pcPrefix,m_pData->m_u.bBoolean ? "true" : "false",(uintptr_t)this);
 		break;
 		case KviKvsVariantData::HObject:
-			qDebug("%s HObject(" PRIxPTR ") [this=0x" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.hObject,(uintptr_t)this);
+			qDebug("%s HObject(%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.hObject,(uintptr_t)this);
 		break;
 		default: /* make gcc happy */ break;
 	}
