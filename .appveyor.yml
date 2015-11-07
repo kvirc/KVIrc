@@ -18,6 +18,9 @@ environment:
           target_arch: x86_64
           enchant_url: https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
           qt_ver: 5.5\msvc2013_64
+          MSYSTEM: MINGW64
+          mingw_fourple: mingw64/mingw-w64-x86_64
+          mingw_root: c:/msys64/mingw64
         - ssl_arch: Win32
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
@@ -25,6 +28,9 @@ environment:
           target_arch: x86
           enchant_url: https://ci.appveyor.com/api/buildjobs/ni6n19rijuxt2i6r/artifacts/enchant.7z
           qt_ver: 5.5\msvc2013
+          MSYSTEM: MINGW32
+          mingw_fourple: mingw32/mingw-w64-i686
+          mingw_root: c:/msys64/mingw32
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -72,14 +78,8 @@ install:
             choco install jom
         }
     - ps: |
-        if (Test-Path c:\enchant.7z) {
-            echo "using enchant from cache"
-        } else {
-            Invoke-WebRequest $env:enchant_url -OutFile c:\enchant.7z
-        }
-    - c:\cygwin\bin\bash -lc "cd /cygdrive/c; 7z x -y enchant.7z"
-    - c:\cygwin\bin\ls -l /cygdrive/c/enchant-inst
-    - c:\cygwin\bin\sh -lc "cd /cygdrive/c/enchant-inst/include; patch -p1 < $APPVEYOR_BUILD_FOLDER/.appveyor.ench"
+        c:\msys64\usr\bin\pacman -Q
+        c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
     - c:\cygwin\bin\sh -lc "mkdir -p /cygdrive/c/spellcheck-dicts; cd /cygdrive/c/spellcheck-dicts; mkdir -p zip unzip ru"
     - ps: |
         if (Test-Path "c:/spellcheck-dicts/zip/ru.zip") { # LGPL
@@ -113,7 +113,7 @@ build_script:
         $gettext = c:\cygwin\bin\dirname $gettext
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-inst/include/enchant;c:/enchant-inst/include/glib-2.0" "-DEnchant_LDFLAGS=c:/enchant-inst/lib/libenchant.dll.a" "-DWANT_KDE=NO"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
@@ -124,11 +124,6 @@ build_script:
     - ps: |
         $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
         c:\cygwin\bin\cp "-v" "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
-        c:\cygwin\bin\sh -c '/bin/cp -v /cygdrive/c/enchant-inst/bin/*.dll release/'
-        c:\cygwin\bin\cp "-v" /cygdrive/c/enchant-inst/COPYING.glib release/license/
-        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
-        c:\cygwin\bin\sh -c '/bin/cp -v /cygdrive/c/enchant-inst/lib/enchant/libenchant_myspell.dll release/lib/enchant/'
-        c:\cygwin\bin\cp -v /cygdrive/c/enchant-inst/share/enchant/enchant.ordering release/share/enchant/
         c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/myspell/dicts/ru_RU_yo.aff
         c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/myspell/dicts/ru_RU_yo.dic
         c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/myspell/dicts/
