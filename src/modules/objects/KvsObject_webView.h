@@ -39,7 +39,6 @@
 class KvsObject_webView;
 class KviKvsWebView :  public QWebView
 {
-	Q_OBJECT
 public:
 	KviKvsWebView(QWidget * par,const char * name,KvsObject_webView *);
 	//void accept();
@@ -60,7 +59,6 @@ protected:
 
 class KvsObject_webView : public KviKvsObject
 {
-	Q_OBJECT
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_webView)
 protected:
@@ -156,7 +154,6 @@ protected slots:
 
 class KviKvsDownloadHandler : public QObject
 {
-	Q_OBJECT
 public:
 	KviKvsDownloadHandler(KvsObject_webView * pParent, QFile * pFile, QNetworkReply * pNetReply, int iId);
 

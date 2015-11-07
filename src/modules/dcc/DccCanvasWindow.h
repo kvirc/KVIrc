@@ -41,7 +41,6 @@
 
 	class DccCanvasWindow : public DccWindow
 	{
-		Q_OBJECT
 	public:
 		DccCanvasWindow(DccDescriptor * dcc,const char * name);
 		~DccCanvasWindow();

@@ -34,7 +34,6 @@
 
 class WebThemeInterfaceDialog : public KviWebPackageManagementDialog
 {
-	Q_OBJECT
 public:
 	WebThemeInterfaceDialog(QWidget *par=0);
 	~WebThemeInterfaceDialog();

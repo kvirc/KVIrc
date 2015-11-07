@@ -36,8 +36,6 @@
 
 	class KTorrentDbusInterface : public TorrentInterface
 	{
-		Q_OBJECT
-
 	public:
 		KTorrentDbusInterface();
 		virtual ~KTorrentDbusInterface();

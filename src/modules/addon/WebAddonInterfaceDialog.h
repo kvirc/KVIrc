@@ -39,8 +39,6 @@
 ///
 class WebAddonInterfaceDialog : public KviWebPackageManagementDialog
 {
-	Q_OBJECT
-
 public:
 
 	///

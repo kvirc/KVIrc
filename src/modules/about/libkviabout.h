@@ -36,7 +36,6 @@ class KviDlgAbout;
 
 class KviAboutLabel : public QLabel
 {
-	Q_OBJECT
 public:
 	KviAboutLabel(KviDlgAbout * par);
 	~KviAboutLabel();
@@ -52,7 +51,6 @@ public:
 
 class KviDlgAbout : public QDialog
 {
-	Q_OBJECT
 public:
 	KviDlgAbout();
 	~KviDlgAbout();
@@ -73,7 +71,6 @@ public:
 
 class KviDlgBuildInfo : public QDialog
 {
-	Q_OBJECT
 public:
 	KviDlgBuildInfo();
 	~KviDlgBuildInfo();

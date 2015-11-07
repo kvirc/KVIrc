@@ -189,7 +189,6 @@
 
 	class KviCanvasView : public QCanvasView
 	{
-		Q_OBJECT
 	public:
 		KviCanvasView(QCanvas * c,DccCanvasWidget * cw,QWidget * par);
 		~KviCanvasView();
@@ -267,7 +266,6 @@
 
 	class KviCanvasItemPropertiesWidget : public QTable
 	{
-		Q_OBJECT
 	public:
 		KviCanvasItemPropertiesWidget(QWidget * par);
 		~KviCanvasItemPropertiesWidget();
@@ -283,7 +281,6 @@
 	class DccCanvasWidget : public QWidget
 	{
 		friend class KviCanvasView;
-		Q_OBJECT
 	public:
 		DccCanvasWidget(QWidget * par);
 		~DccCanvasWidget();
