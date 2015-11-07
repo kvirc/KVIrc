@@ -129,6 +129,7 @@ build_script:
     - ps: |
         $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
         c:\cygwin\bin\cp "-v" "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
+        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
         c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/myspell/dicts/ru_RU_yo.aff
         c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/myspell/dicts/ru_RU_yo.dic
         c:\cygwin\bin\cp -v /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/myspell/dicts/
