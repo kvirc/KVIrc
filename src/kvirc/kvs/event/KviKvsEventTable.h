@@ -104,6 +104,7 @@
 #define KviEvent_OnHTTPGetTerminated         28
 #define KviEvent_OnUnhandledLiteral          29
 #define KviEvent_OnOutboundTraffic           30
+#define KviEvent_OnMeHostChange              153
 
 // Popups
 /**
@@ -377,6 +378,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 153
+#define KVI_KVS_NUM_APP_EVENTS 154
 
 #endif //_KVI_KVS_EVENTTABLE_H_

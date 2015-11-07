@@ -2406,6 +2406,9 @@ void KviIrcServerParser::parseNumericHiddenHost(KviIrcMessage * msg)
 	QString szHost    = msg->connection()->decodeText(msg->safeParam(1));
 	QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeHostChange,msg->console(),pref,szHost))
+		msg->setHaltOutput();
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?

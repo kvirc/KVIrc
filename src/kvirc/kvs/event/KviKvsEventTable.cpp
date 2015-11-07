@@ -3986,6 +3986,25 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nick\n"
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
-		"$3 = ban mask")
+		"$3 = ban mask"),
 
+	/*
+		@doc: onmehostchange
+		@type:
+			event
+		@title:
+			OnMeHostChange
+		@short:
+			Local user's visible host is changed
+		@parameters:
+			$0 = source server
+			$1 = new host
+		@window:
+			Console
+		@description:
+			Triggered when your visible hostname has been changed. The source could either be services or the IRCd.
+	*/
+	EVENT("OnMeHostChange", \
+		"$0 = source server\n" \
+		"$1 = new host\n")
 };
