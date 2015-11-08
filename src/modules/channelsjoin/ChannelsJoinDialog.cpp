@@ -75,14 +75,14 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	//connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
 
 
-	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Channel" ),this);
+	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Channel"),this);
 	QString szMsg = __tr2qs("Name");
 	szMsg.append(":");
 
 	new QLabel(szMsg,m_pGroupBox);
 
 	m_pChannelEdit = new QLineEdit(m_pGroupBox);
-	connect(m_pChannelEdit,SIGNAL(returnPressed()), this, SLOT(editReturnPressed()));
+	connect(m_pChannelEdit,SIGNAL(returnPressed()),this,SLOT(editReturnPressed()));
 	connect(m_pChannelEdit,SIGNAL(textChanged(const QString &)),this,SLOT(editTextChanged(const QString &)));
 
 	szMsg = __tr2qs("Password");
@@ -97,7 +97,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	KviTalHBox * hb = new KviTalHBox(this);
 	hb->setSpacing(4);
 
-	g->addWidget(hb,2,0,1,2,Qt::AlignHCenter);
+	g->addWidget(hb,2,0,1,2);
 
 	m_pJoinButton = new QPushButton(__tr2qs("&Join"),hb);
 	// Join on return pressed
@@ -119,7 +119,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	QPushButton * cancelButton = new QPushButton(__tr2qs("Close"),this);
 	connect(cancelButton,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 
-	g->addWidget(cancelButton,3,1);
+	g->addWidget(cancelButton,3,1,Qt::AlignRight);
 
 /*
 	KviTalHBox * hb = new KviTalHBox(this);
