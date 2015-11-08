@@ -9,14 +9,12 @@ cache:
     - c:\spellcheck-dicts
     - c:\ProgramData\chocolatey
 environment:
-    # libenchant is built at https://ci.appveyor.com/project/DarthGandalf/enchant/build/0.0.0.0.1-branch-mingw-build-23
     matrix:
         - ssl_arch: Win64
           nuget_arch: x64
           vc_arch: amd64
           choco_arch:
           target_arch: x86_64
-          enchant_url: https://ci.appveyor.com/api/buildjobs/kf2efxpaes6uugwg/artifacts/enchant.7z
           qt_ver: 5.5\msvc2013_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
@@ -27,7 +25,6 @@ environment:
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
           target_arch: x86
-          enchant_url: https://ci.appveyor.com/api/buildjobs/ni6n19rijuxt2i6r/artifacts/enchant.7z
           qt_ver: 5.5\msvc2013
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
