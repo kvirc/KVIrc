@@ -980,10 +980,7 @@ if(HAVE_INET_ATON_EXISTS)
 endif()
 
 # Check GET_INTERFACE_ADDRESS support
-find_path(GET_INTERFACE_ADDRESS_INCLUDE_DIR net/if.h)
-if(GET_INTERFACE_ADDRESS_INCLUDE_DIR)
-	set(COMPILE_GET_INTERFACE_ADDRESS 1)
-endif()
+CHECK_INCLUDE_FILES("sys/ioctl.h net/if.h" COMPILE_GET_INTERFACE_ADDRESS)
 
 ############################################################################
 # SetEnv/PutEnv support
