@@ -578,7 +578,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 499 ERR_CHANOWNPRIVNEEDED
 	0,                                               // 500
 	0,                                               // 501 ERR_UMODEUNKNOWNFLAG, ERR_UNKNOWNSNOMASK
-	0,                                               // 502 ERR_USERSDONTMATCH
+	PTM(parseNumericUsersDontMatch),                 // 502 ERR_USERSDONTMATCH
 	0,                                               // 503 ERR_GHOSTEDCLIENT
 	0,                                               // 504 ERR_USERNOTONSERV
 	0,                                               // 505

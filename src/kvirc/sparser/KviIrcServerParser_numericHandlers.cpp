@@ -2159,6 +2159,18 @@ void KviIrcServerParser::parseNumericAway(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericUsersDontMatch(KviIrcMessage *msg)
+{
+	// 502: ERR_USERSDONTMATCH
+	// :prefix 502 <target> :Can't change mode for other users
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut  = msg->console()->activeWindow();
+		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_GENERICERROR,szMsgText);
+	}
+}
+
 void KviIrcServerParser::parseNumericWatch(KviIrcMessage *msg)
 {
 	// 600: RPL_LOGON

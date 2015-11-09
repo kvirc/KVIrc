@@ -198,6 +198,7 @@ private:
 	void parseLoginNicknameProblem(KviIrcMessage *msg);
 	void parseNumericBackFromAway(KviIrcMessage *);
 	void parseNumericAway(KviIrcMessage *);
+	void parseNumericUsersDontMatch(KviIrcMessage *msg);
 	void parseNumericWatch(KviIrcMessage *msg);
 	void parseNumericList(KviIrcMessage *msg);
 	void parseNumericListStart(KviIrcMessage *msg);
