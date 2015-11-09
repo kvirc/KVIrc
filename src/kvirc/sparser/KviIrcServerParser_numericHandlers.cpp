@@ -2596,6 +2596,18 @@ void KviIrcServerParser::parseNumericYoureOper(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericAlreadyRegistered(KviIrcMessage * msg)
+{
+	// 462: ERR_ALREADYREGISTERED
+	// :prefix 462 <target> :You may not reregister
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = static_cast<KviWindow*>(msg->console());
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_GENERICERROR,szText);
+	}
+}
+
 void KviIrcServerParser::parseNumericPasswordIncorrect(KviIrcMessage * msg)
 {
 	// 464: ERR_PASSWDMISMATCH
