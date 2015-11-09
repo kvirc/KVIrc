@@ -36,6 +36,16 @@ if(MSVC)
 	# breaks with -nodefaultlib
 	string(REPLACE " -nodefaultlib" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 endif()
+
+if(APPLE)
+	# ldopts contains all archs supported by the current platform, but we
+	# only want those we specified in CMAKE_OSX_ARCHITECTURES.
+	string(REGEX REPLACE "-arch [-a-zA-Z0-9_]*" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
+	foreach (arch ${CMAKE_OSX_ARCHITECTURES})
+		set(PERL_LINK_FLAGS " -arch ${arch} ${PERL_LINK_FLAGS}")
+	endforeach(arch)
+endif()
+
 	# Remove new line characters
 	string(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 	# Remove leading and trailing spaces (string strip)
