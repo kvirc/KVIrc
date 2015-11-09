@@ -2704,10 +2704,17 @@ void KviIrcServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
-		QString szParam=msg->connection()->decodeText(msg->safeParam(2));
+		KviWindow * pOut = static_cast<KviWindow*>(msg->console());
+		QString szParam = msg->connection()->decodeText(msg->safeParam(2));
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("Authenticated as %Q"),&szParam);
 	}
+
+	// This is the InspIRCd version of "You are now logged in as <nick>", but from
+	// services only. i.e. not SASL.
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+	QString version = pServerInfo->software();
+	if(version == "InspIRCd")
+		return;
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
 		msg->connection()->endInitialCapNegotiation();
