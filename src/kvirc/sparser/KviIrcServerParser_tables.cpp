@@ -118,7 +118,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 039
 	0,                                               // 040
 	0,                                               // 041
-	0,                                               // 042 RPL_YOURID
+	PTM(parseNumericYourUID),                        // 042 RPL_YOURID
 	0,                                               // 043 RPL_SAVENICK
 	0,                                               // 044
 	0,                                               // 045

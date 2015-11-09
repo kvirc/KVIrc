@@ -146,6 +146,7 @@ private:
 	void parseNumeric729(KviIrcMessage *msg);
 	void parseNumeric486(KviIrcMessage * msg);
 
+	void parseNumericYourUID(KviIrcMessage *msg);
 	void parseNumericMotd(KviIrcMessage *msg);
 	void parseNumericNames(KviIrcMessage *msg);
 	void parseNumericEndOfNames(KviIrcMessage *msg);

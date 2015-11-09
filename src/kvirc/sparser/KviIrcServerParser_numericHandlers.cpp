@@ -382,6 +382,19 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 	// }
 }
 
+void KviIrcServerParser::parseNumericYourUID(KviIrcMessage *msg)
+{
+	// 042: RPL_YOURID
+	// :prefix 042 <target> <UID> :your unique ID
+	if(!msg->haltOutput())
+	{
+		QString szUID = msg->connection()->decodeText(msg->safeParam(1));
+
+		// Not important to us, just pass it off as server info.
+		msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("%Q is your unique ID"),&szUID);
+	}
+}
+
 void KviIrcServerParser::parseNumericMotd(KviIrcMessage *msg)
 {
 	// 372: RPL_MOTD [I,E,U,D]
