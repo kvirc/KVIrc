@@ -87,7 +87,8 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 
 	szMsg = __tr2qs("Password");
 	szMsg.append(":");
-	QLabel(szMsg,m_pGroupBox);
+
+	new QLabel(szMsg,m_pGroupBox);
 
 	m_pPass = new QLineEdit(m_pGroupBox);
 	m_pPass->setEchoMode(QLineEdit::Password);
