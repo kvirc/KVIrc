@@ -179,6 +179,7 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSortingEnabled(false);
 	m_pTreeWidget->setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
+	m_pTreeWidget->setCurrentItem(NULL);
 
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 
