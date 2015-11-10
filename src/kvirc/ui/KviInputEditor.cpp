@@ -1720,7 +1720,10 @@ void KviInputEditor::focusOutEvent(QFocusEvent *)
 
 void KviInputEditor::internalCursorRight(bool bShift)
 {
-	if(m_iCursorPosition >= ((int)(m_szTextBuffer.length()))) return;
+	if(m_iCursorPosition >= ((int)(m_szTextBuffer.length()))) {
+		selectOneChar(-1);
+		return;
+	}
 	moveRightFirstVisibleCharToShowCursor();
 	//Grow the selection if needed
 	if(bShift)
@@ -1731,13 +1734,22 @@ void KviInputEditor::internalCursorRight(bool bShift)
 			else if(m_iSelectionBegin == m_iCursorPosition)m_iSelectionBegin++;
 			else selectOneChar(m_iCursorPosition);
 		} else selectOneChar(m_iCursorPosition);
-	} else selectOneChar(-1);
-	m_iCursorPosition++;
+		m_iCursorPosition++;
+	} else {
+		if((m_iSelectionBegin > -1) && (m_iSelectionEnd > -1))
+			m_iCursorPosition = m_iSelectionEnd + 1;
+		else
+			m_iCursorPosition++;
+		selectOneChar(-1);
+	}
 }
 
 void KviInputEditor::internalCursorLeft(bool bShift)
 {
-	if(m_iCursorPosition <= 0) return;
+	if(m_iCursorPosition <= 0) {
+		selectOneChar(-1);
+		return;
+	}
 
 	if(bShift)
 	{
@@ -1749,9 +1761,15 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 				m_iSelectionEnd--;
 			else selectOneChar(m_iCursorPosition - 1);
 		} else selectOneChar(m_iCursorPosition - 1);
-	} else selectOneChar(-1);
+		m_iCursorPosition--;
+	} else {
+		if((m_iSelectionBegin > -1) && (m_iSelectionEnd > -1))
+			m_iCursorPosition = m_iSelectionBegin;
+		else
+			m_iCursorPosition--;
+		selectOneChar(-1);
+	}
 
-	m_iCursorPosition--;
 	if(m_iFirstVisibleChar > m_iCursorPosition) m_iFirstVisibleChar--;
 }
 
@@ -2567,11 +2585,8 @@ void KviInputEditor::previousChar()
 
 void KviInputEditor::nextChar()
 {
-	if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
-	{
-		internalCursorRight(false);
-		repaintWithCursorOn();
-	}
+	internalCursorRight(false);
+	repaintWithCursorOn();
 }
 
 void KviInputEditor::previousCharSelection()
