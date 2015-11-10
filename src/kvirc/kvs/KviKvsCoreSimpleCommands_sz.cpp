@@ -984,7 +984,7 @@ namespace KviKvsCoreSimpleCommands
 		@type:
 			command
 		@title:
-			WHO
+			who
 		@syntax:
 			who <filter>
 		@short:
