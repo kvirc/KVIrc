@@ -75,13 +75,11 @@ KviToolBar::~KviToolBar()
 	}
 }
 
-#define VALID_ICONSIZES_NUM 4
+#define VALID_ICONSIZES_NUM 2
 static KviToolBar::IconSizes valid_iconsizes[VALID_ICONSIZES_NUM] =
 {
 	{ 16, "Small (16x16)"  },
-	{ 22, "Medium (22x22)" },
 	{ 32, "Large (32x32)"  },
-	{ 48, "Huge (48x48)"   }
 };
 
 #define VALID_BUTTONSTYLES_NUM 5
