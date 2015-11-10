@@ -498,7 +498,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 419 ERR_LENGTHTRUNCATED
 	0,                                               // 420
 	PTM(parseNumericUnknownCommand),                 // 421 ERR_UNKNOWNCOMMAND
-	0,                                               // 422 ERR_NOMOTD
+	PTM(parseNumericMotdMissing),                    // 422 ERR_NOMOTD
 	0,                                               // 423 ERR_NOADMININFO
 	0,                                               // 424 ERR_FILEERROR
 	0,                                               // 425 ERR_NOOPERMOTD

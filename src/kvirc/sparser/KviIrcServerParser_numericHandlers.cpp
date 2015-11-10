@@ -1060,6 +1060,17 @@ void KviIrcServerParser::parseNumericUnknownCommand(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericMotdMissing(KviIrcMessage *msg)
+{
+	// 422: ERR_NOMOTD
+	// :prefix 422 <target> :- MOTD file not found!  Please contact your IRC administrator.
+	if(!msg->haltOutput())
+	{
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		msg->console()->output(KVI_OUT_GENERICERROR,szText);
+	}
+}
+
 void KviIrcServerParser::parseNumericBanOnChan(KviIrcMessage *msg)
 {
 	// 435: ERR_BANONCHAN
