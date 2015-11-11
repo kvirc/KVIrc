@@ -79,10 +79,15 @@ static QColor g_clrFind(255,0,0);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Courier New"
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE 8
+#elif defined(COMPILE_ON_MAC)
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Monaco"
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE 10
 #else
 	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Monospace"
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE 8
 #endif
-static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT,8);
+static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT,KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE);
 
 static bool bSemaphore=false;
 static bool bCompleterReady=false;
@@ -868,7 +873,7 @@ void ScriptEditorImplementation::loadOptions()
 	g_clrVariable = cfg.readColorEntry("Variable",QColor(200,200,200));
 	g_clrPunctuation = cfg.readColorEntry("Punctuation",QColor(180,180,0));
 	g_clrFind = cfg.readColorEntry("Find",QColor(255,0,0));
-	g_fntNormal = cfg.readFontEntry("Font",QFont(KVI_SCRIPTEDITOR_DEFAULT_FONT,8));
+	g_fntNormal = cfg.readFontEntry("Font",QFont(KVI_SCRIPTEDITOR_DEFAULT_FONT,KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE));
 }
 
 bool ScriptEditorImplementation::isModified()
