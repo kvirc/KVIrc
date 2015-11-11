@@ -93,12 +93,14 @@ KviTrayIconWidget::KviTrayIconWidget()
 	m_pTip = new KviDynamicToolTip(g_pMainWindow,"dock_tooltip");
     m_pAwayPopup = new QMenu(0);
 
+#ifndef COMPILE_ON_MAC
 	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 	QWidgetAction * pAction = new QWidgetAction(this);
 	pAction->setDefaultWidget(m_pTitleLabel);
 	m_pContextPopup->addAction(pAction);
+#endif
 
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
@@ -134,7 +136,9 @@ KviTrayIconWidget::~KviTrayIconWidget()
 	g_pTrayIcon=0;
 	g_pMainWindow->setTrayIcon(0);
 	delete m_pAwayPopup;
+#ifndef COMPILE_ON_MAC
 	delete m_pTitleLabel;
+#endif
 	delete m_pTip;
 	delete m_pFlashingTimer;
 	delete m_pContextPopup;

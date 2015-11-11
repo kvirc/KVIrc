@@ -49,7 +49,9 @@ protected:
 	KviDynamicToolTip * m_pTip;
 	QMenu * m_pContextPopup;
 	QMenu * m_pAwayPopup;
+#ifndef COMPILE_ON_MAC
 	QLabel * m_pTitleLabel;
+#endif
 
 	QAction* m_pToggleFrame;
 	QAction* m_pAwayMenuId;
