@@ -258,7 +258,11 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("EnableAwayListUpdates",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowAvatarsInUserlist",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserListStatisticLabel",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+#ifdef COMPILE_ON_MAC
+	BOOL_OPTION("ShowIconsInPopupMenus",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages),
+#else
 	BOOL_OPTION("ShowIconsInPopupMenus",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages),
+#endif
 	BOOL_OPTION("ScriptErrorsToDebugWindow",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowMinimizedDebugWindow",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowExtendedInfoInQueryLabel",true,KviOption_resetUpdateGui),
@@ -1192,6 +1196,7 @@ namespace KviTheme
 
 		int i;
 		int iResetFlags = 0;
+		bool bWerePopupMenuIconsEnabled = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
 
 		#undef READ_OPTIONS
 
@@ -1231,6 +1236,16 @@ namespace KviTheme
 
 		#undef READ_OPTIONS
 		#undef READ_ALL_OPTIONS
+
+		#ifdef COMPILE_ON_MAC
+			/* disregard what the theme says and apply no icons on menus if they
+			   weren't enabled before */
+			if (!bWerePopupMenuIconsEnabled)
+			{
+				KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus) = false;
+				g_boolOptionsTable[KviOption_boolShowIconsInPopupMenus].option = false;
+			}
+		#endif
 
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
 
