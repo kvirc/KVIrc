@@ -315,15 +315,14 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 		m_pInputEditor->hide();
 
 		m_pHelpLabel = new QLabel();
-		m_pHelpLabel->setIndent(5); // we only want a left margin here
+		m_pHelpLabel->setContentsMargins(15,5,0,0);
 
+		QString tmpHelpLabel = __tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor");
 #ifdef COMPILE_ON_MAC
-		QString tmpHelpLabel =__tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor");
-		tmpHelpLabel.replace(QString("Ctrl"), QString("⌘"));
-		m_pHelpLabel->setText(tmpHelpLabel);
-#else
-		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor"));
+		tmpHelpLabel.replace(QString("<Ctrl+Return>;"), QString("⌘↩"));
+		tmpHelpLabel.replace(QString("<Alt+Return>;"), QString("⌥↩"));
 #endif
+		m_pHelpLabel->setText(tmpHelpLabel);
 		m_pLayout->addWidget(m_pHelpLabel,0,0,1,1);
 
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
