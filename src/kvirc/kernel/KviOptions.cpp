@@ -1196,7 +1196,9 @@ namespace KviTheme
 
 		int i;
 		int iResetFlags = 0;
-		bool bWerePopupMenuIconsEnabled = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
+		#ifdef COMPILE_ON_MAC
+			bool bWerePopupMenuIconsEnabled = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
+		#endif
 
 		#undef READ_OPTIONS
 
