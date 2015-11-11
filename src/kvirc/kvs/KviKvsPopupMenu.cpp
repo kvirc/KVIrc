@@ -327,8 +327,13 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	//QPalette p;
 	//m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 
+#ifdef COMPILE_ON_MAC
+	m_pLabel->setIndent(16);
+	m_pLabel->setMargin(2);
+#else
 	m_pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pLabel->setMargin(5);
+#endif
 
 	if(pPix)m_pLabel->setPixmap(*pPix);
 	QWidgetAction *pAction = new QWidgetAction(pMenu);
