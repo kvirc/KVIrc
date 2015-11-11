@@ -82,7 +82,7 @@
 		pFrame->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 		pLayout->addWidget(pFrame,1,0,1,4);
 
-		m_pEnableCheck = new QCheckBox(__tr2qs("Use the crypt engine"),this);
+		m_pEnableCheck = new QCheckBox(__tr2qs("Use the encryption engine"),this);
 		pLayout->addWidget(m_pEnableCheck,2,0,1,4);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
@@ -242,7 +242,7 @@
 
 		m_pEnableCheck->setEnabled(false);
 		enableWidgets(false);
-		m_pDescriptionLabel->setText(__tr2qs("Sorry, no crypt engines available"));
+		m_pDescriptionLabel->setText(__tr2qs("Sorry, no encryption engines available"));
 		m_pDescriptionLabel->setEnabled(true); // we want this text to be visible.
 		m_pOkButton->setEnabled(false);
 	}
@@ -262,7 +262,7 @@
 					m_pSessionInfo->m_pEngine = g_pCryptEngineManager->allocateEngine(m_pLastItem->m_szName.toUtf8().data());
 					if(!m_pSessionInfo->m_pEngine)
 					{
-						m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't create an engine instance: crypting disabled"));
+						m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: can't create an engine instance: encryption disabled"));
 						delete m_pSessionInfo;
 						m_pSessionInfo = 0;
 					} else {
@@ -273,7 +273,7 @@
 							g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->m_pEngine);
 							delete m_pSessionInfo;
 							m_pSessionInfo = 0;
-							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't initialize the engine :%s"),szErrStr.toUtf8().data());
+							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: can't initialize the engine :%s"),szErrStr.toUtf8().data());
 						} else {
 							// ok, engine ready and waiting...
 							m_pSessionInfo->m_szEngineName = m_pLastItem->m_szName;
@@ -281,7 +281,7 @@
 							m_pSessionInfo->m_bDoDecrypt = m_pEnableDecrypt->isChecked();
 						}
 					}
-				} else m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: You have to enable encryption and/or decryption for the engine to work"));
+				} else m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: you have to enable encryption and/or decryption for the engine to work"));
 			}
 		}
 		emit done();

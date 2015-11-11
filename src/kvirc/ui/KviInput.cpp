@@ -449,7 +449,7 @@ void KviInput::toggleMultiLine()
 		[p]
 		The idea is simple: anything that starts with a slash (/) character
 		is interpreted as a command. Anything else is plain text that is
-		sent to the target of the window (channel, query, dcc chat etc..).
+		sent to the target of the window (channel, query, DCC chat etc..).
 		[/p]
 		[big]The two operating modes[/big]
 		[p]

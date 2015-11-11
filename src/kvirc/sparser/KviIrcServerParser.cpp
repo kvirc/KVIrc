@@ -130,7 +130,7 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 			if(msg.unrecognized())
 			{
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-					__tr2qs("[Server parser]: Encountered problems while parsing the following message:"));
+					__tr2qs("[Server parser]: encountered problems while parsing the following message:"));
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
 					__tr2qs("[Server parser]: [%s][%s] %Q"),msg.prefix(),msg.command(),&szWText);
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,

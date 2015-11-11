@@ -819,7 +819,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += "</b><br>";
 		szRet += __tr2qs("You didn't check yet.\nShould I check it?");
 		szRet += "<br>";
-		szRet += __tr2qs("Double click to check");
+		szRet += __tr2qs("Double-click to check");
 	} else if(m_bCheckFailed)
 	{
 		szRet += __tr2qs("Update failed");
@@ -827,15 +827,15 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += __tr2qs("The remote server replied with ");
 		szRet += m_szHttpResponse;
 		szRet += "<br>";
-		szRet += __tr2qs("Double click to retry");
+		szRet += __tr2qs("Double-click to retry");
 	} else if(!m_bUpdateStatus){
 		szRet += __tr2qs("No updates found");
 		szRet += "</b><br>";
-		szRet += __tr2qs("Double click to retry");
+		szRet += __tr2qs("Double-click to retry");
 	} else if(m_bUpdateStatus){
 		szRet += __tr2qs("New updates found");
 		szRet += "</b><br>";
-		szRet += __tr2qs("Double click to get the latest version");
+		szRet += __tr2qs("Double-click to get the latest version");
 	}
 	szRet += "</center>";
 	return szRet;

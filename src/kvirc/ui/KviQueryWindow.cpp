@@ -568,7 +568,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					{
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
 							&szBuffer,&szEngineError);
 					}
 					break;
@@ -841,7 +841,7 @@ QByteArray KviQueryWindow::loadLogFile(const QString & szFileName, bool bGzip)
 
 			gzclose(logFile);
 		} else {
-			qDebug("Cannot open compressed file %s",szFileName.toUtf8().data());
+			qDebug("Can't open compressed file %s",szFileName.toUtf8().data());
 		}
 
 	} else {

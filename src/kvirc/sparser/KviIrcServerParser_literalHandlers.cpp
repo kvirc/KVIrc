@@ -841,7 +841,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						{
 							QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 							console->output(KVI_OUT_SPAM,msg->serverTime(),
-								__tr2qs("Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"),
+								__tr2qs("Spam PRIVMSG from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"),
 								&szNick,&szUser,&szHost,&szMsg,spamWord.ptr());
 						}
 						return;
