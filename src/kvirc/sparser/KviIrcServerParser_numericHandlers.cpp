@@ -382,6 +382,20 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 	// }
 }
 
+void KviIrcServerParser::parseNumericSnomask(KviIrcMessage *msg)
+{
+	// 008: RPL_SNOMASK
+	// :prefix 008 <target> <snomask>
+	parseUserMode(msg,msg->safeParam(1));
+
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_MODE,__tr2qs("Your snomask is %s"),msg->safeParam(1));
+	}
+}
+
 void KviIrcServerParser::parseNumericYourUID(KviIrcMessage *msg)
 {
 	// 042: RPL_YOURID

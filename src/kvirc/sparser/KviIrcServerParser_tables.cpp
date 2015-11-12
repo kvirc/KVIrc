@@ -84,7 +84,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumeric005)                           , // 005 RPL_BOUNCE, RPL_PROTOCTL, RPL_ISUPPORT
 	0,                                               // 006 RPL_MAP
 	0,                                               // 007 RPL_MAPEND
-	0,                                               // 008 RPL_SNOMASK
+	PTM(parseNumericSnomask),                        // 008 RPL_SNOMASK
 	0,                                               // 009 RPL_STATMEMTOT
 	0,                                               // 010 RPL_BOUNCE, RPL_REDIR, RPL_STATMEM
 	0,                                               // 011
