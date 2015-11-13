@@ -535,6 +535,8 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 			iIgnoreFlags |= KviRegisteredUser::Invite;
 		if(c->hasSwitch('d',"dcc"))
 			iIgnoreFlags |= KviRegisteredUser::Dcc;
+		if(c->hasSwitch('h',"highlight"))
+			iIgnoreFlags |= KviRegisteredUser::Highlight;
 		u->setIgnoreFlags(iIgnoreFlags);
 	}
 	return true;

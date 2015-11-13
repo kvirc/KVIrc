@@ -42,7 +42,8 @@ public:
 		Notice=4,
 		Ctcp=8,
 		Invite=16,
-		Dcc=32
+		Dcc=32,
+		Highlight=64
 	};
 
 	KviRegisteredUser(const QString & szName);
