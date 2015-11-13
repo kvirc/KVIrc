@@ -460,6 +460,9 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 	m_pIgnoreDcc = new QCheckBox(__tr2qs_ctx("Ignore DCCs","register"),gb);
 	layout->addWidget(m_pIgnoreDcc);
 
+	m_pIgnoreHighlight = new QCheckBox(__tr2qs_ctx("Ignore highlights","register"),gb);
+	layout->addWidget(m_pIgnoreHighlight);
+
 	QWidget *w = new QWidget(vb);
 	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
 
@@ -512,6 +515,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 		m_pIgnoreCtcp->setChecked(r->ignoreFlags() & KviRegisteredUser::Ctcp);
 		m_pIgnoreInvite->setChecked(r->ignoreFlags() & KviRegisteredUser::Invite);
 		m_pIgnoreDcc->setChecked(r->ignoreFlags() & KviRegisteredUser::Dcc);
+		m_pIgnoreHighlight->setChecked(r->ignoreFlags() & KviRegisteredUser::Highlight);
 	} else {
 		// default values
 		if(!m_pIgnoreEnabled->isChecked())
@@ -683,6 +687,8 @@ void RegisteredUserEntryDialog::okClicked()
 		iIgnoreFlags |= KviRegisteredUser::Invite;
 	if(m_pIgnoreDcc->isChecked())
 		iIgnoreFlags |= KviRegisteredUser::Dcc;
+	if(m_pIgnoreHighlight->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Highlight;
 
 	u->setIgnoreFlags(iIgnoreFlags);
 	accept();

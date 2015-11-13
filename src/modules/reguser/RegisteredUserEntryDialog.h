@@ -125,6 +125,7 @@ protected:
 	QCheckBox          * m_pIgnoreCtcp;
 	QCheckBox          * m_pIgnoreInvite;
 	QCheckBox          * m_pIgnoreDcc;
+	QCheckBox          * m_pIgnoreHighlight;
 
 	virtual void closeEvent(QCloseEvent *);
 protected slots:

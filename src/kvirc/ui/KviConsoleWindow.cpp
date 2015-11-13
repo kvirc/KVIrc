@@ -551,6 +551,12 @@ void KviConsoleWindow::closeEvent(QCloseEvent *e)
 // internal helper for applyHighlighting
 int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QString & szNick, const QString & szUser, const QString & szHost, const QString & szMsg, const QString & szTrigger)
 {
+	KviRegisteredUser * u = connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
+	if(u)
+	{
+		if(u->isIgnoreEnabledFor(KviRegisteredUser::Highlight))
+			return iType;
+	}
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd && !pWnd->hasAttention())
 		KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
 
