@@ -119,7 +119,7 @@ namespace KviKvsCoreSimpleCommands
 			is shown. Otherwise, an error page is displayed.[br/]
 			The help browser has limited html browsing capabilities: you can
 			use it to view simple html files on your filesystem.[br]
-			This command is an alias for the [cmd]help.open[cmd] command exported
+			This command is an alias for the [cmd]help.open[/cmd] command exported
 			by the "help" module.
 		@switches:
 			!sw: -m | --mdi
