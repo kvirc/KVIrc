@@ -474,7 +474,7 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 	@short:
 		Sets ignore flags for registered user
 	@syntax:
-		reguser.setIgnoreFlags [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-q] <name:string>
+		reguser.setIgnoreFlags [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-h|--highlight] [-q] <name:string>
 	@switches:
 		!sw: -q | --quiet
 		Don't warn if the specified user doesn't exist. Just continue silently.
@@ -490,6 +490,8 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 		Sets ignore for invites
 		!sw: -d | --dcc
 		Sets ignore for DCC's
+		!sw: -h | --highlight
+		Sets ignore for highlights
 
 	@description:
 		Sets ignore flags for registered user
