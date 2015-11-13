@@ -537,7 +537,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 458 ERR_ACCEPTNOT
 	0,                                               // 459 ERR_NOHIDING
 	0,                                               // 460 ERR_NOTFORHALFOPS
-	0,                                               // 461 ERR_NEEDMOREPARAMS
+	PTM(parseNumericNotEnoughParams),                // 461 ERR_NEEDMOREPARAMS
 	PTM(parseNumericAlreadyRegistered),              // 462 ERR_ALREADYREGISTERED
 	0,                                               // 463 ERR_NOPERMFORHOST
 	PTM(parseNumericPasswordIncorrect),              // 464 ERR_PASSWDMISMATCH

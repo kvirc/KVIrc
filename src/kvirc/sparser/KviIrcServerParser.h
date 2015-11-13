@@ -218,6 +218,7 @@ private:
 	void parseNumericInfoStart(KviIrcMessage *msg);
 	void parseNumericInfo(KviIrcMessage *msg);
 	void parseNumericYoureOper(KviIrcMessage * msg);
+	void parseNumericNotEnoughParams(KviIrcMessage *msg);
 	void parseNumericAlreadyRegistered(KviIrcMessage * msg);
 	void parseNumericPasswordIncorrect(KviIrcMessage * msg);
 	void parseNumericInviting(KviIrcMessage *msg);

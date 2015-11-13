@@ -2646,6 +2646,18 @@ void KviIrcServerParser::parseNumericYoureOper(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericNotEnoughParams(KviIrcMessage *msg)
+{
+	// 461: ERR_NEEDMOREPARAMS
+	// :prefix 461 <target> <param> :Not enough parameters
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = msg->console()->activeWindow();
+		QString szParam = msg->connection()->decodeText(msg->safeParam(1));
+		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("%Q requires more parameters"),&szParam);
+	}
+}
+
 void KviIrcServerParser::parseNumericAlreadyRegistered(KviIrcMessage * msg)
 {
 	// 462: ERR_ALREADYREGISTERED
