@@ -63,7 +63,7 @@ protected:
 public:
 	int  ignoreFlags(){ return m_iIgnoreFlags; };
 	void setIgnoreFlags(int iFlags){ m_iIgnoreFlags = iFlags; };
-	bool ignoreEnagled(){ return m_bIgnoreEnabled; };
+	bool ignoreEnabled(){ return m_bIgnoreEnabled; };
 	void setIgnoreEnabled(bool bEnabled){ m_bIgnoreEnabled = bEnabled; };
 	bool isIgnoreEnabledFor(IgnoreFlags flag);
 

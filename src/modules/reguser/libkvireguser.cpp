@@ -637,7 +637,7 @@ static bool reguser_kvs_fnc_isIgnoreEnabled(KviKvsModuleFunctionCall * c)
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
-		c->returnValue()->setBoolean(u->ignoreEnagled());
+		c->returnValue()->setBoolean(u->ignoreEnabled());
 
 	}
 	return true;

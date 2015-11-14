@@ -523,7 +523,7 @@ void KviRegisteredUserDataBase::save(const QString & szFilename)
 	{
 		cfg.setGroup(it.current()->name());
 		// Write properties
-		cfg.writeEntry("IgnoreEnabled",it.current()->ignoreEnagled());
+		cfg.writeEntry("IgnoreEnabled",it.current()->ignoreEnabled());
 		cfg.writeEntry("IgnoreFlags",it.current()->ignoreFlags());
 		if(it.current()->propertyDict())
 		{

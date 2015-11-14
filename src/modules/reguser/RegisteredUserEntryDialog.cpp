@@ -505,9 +505,9 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 			}
 		}
 
-		m_pIgnoreEnabled->setChecked(r->ignoreEnagled());
+		m_pIgnoreEnabled->setChecked(r->ignoreEnabled());
 
-		gb->setEnabled(r->ignoreEnagled());
+		gb->setEnabled(r->ignoreEnabled());
 
 		m_pIgnoreQuery->setChecked(r->ignoreFlags() & KviRegisteredUser::Query);
 		m_pIgnoreChannel->setChecked(r->ignoreFlags() & KviRegisteredUser::Channel);
