@@ -435,7 +435,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 
 	m_pIgnoreEnabled = new QCheckBox(__tr2qs_ctx("Enable ignore for this user","register"),vb);
 
-	QGroupBox * gb = new QGroupBox(__tr2qs_ctx("Ignore features","register"),vb);
+	QGroupBox * gb = new QGroupBox(__tr2qs_ctx("Ignore Features","register"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
 
 	QVBoxLayout * layout = new QVBoxLayout(gb);
