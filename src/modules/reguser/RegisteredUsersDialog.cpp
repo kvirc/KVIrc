@@ -190,7 +190,7 @@ void RegisteredUsersDialogItemDelegate::paint( QPainter * p, const QStyleOptionV
 					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KviIconManager::NotifyOnLine)));
 				else
 					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KviIconManager::NotifyOffLine)));
-				if(it->user()->ignoreEnagled())
+				if(it->user()->ignoreEnabled())
 					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KviIconManager::Ignore)));
 			}
 		}
