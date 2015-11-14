@@ -5,31 +5,45 @@ cache:
     - 'c:\Program Files (x86)\NSIS'
     - c:\deps
     - c:\Strawberry
-    - c:\enchant.7z
     - c:\spellcheck-dicts
     - c:\ProgramData\chocolatey
+    - c:\msys-download-cache
 environment:
     matrix:
-        - ssl_arch: Win64
-          nuget_arch: x64
-          vc_arch: amd64
-          choco_arch:
+        #- build_with: msvc
+          #target_arch: x86_64
+          #ssl_arch: Win64
+          #nuget_arch: x64
+          #vc_arch: amd64
+          #choco_arch:
+          #qt_ver: 5.5\msvc2013_64
+          #mingw_fourple: mingw64/mingw-w64-x86_64
+          #mingw_root: c:/msys64/mingw64
+          #mingw_libgcc: libgcc_s_seh-1.dll
+
+        #- build_with: msvc
+          #target_arch: x86
+          #ssl_arch: Win32
+          #nuget_arch: Win32
+          #vc_arch: amd64_x86  # cross-compile from amd64 to x86. 32 bit compiler works too, but there's no reason to use it.
+          #choco_arch: --x86
+          #qt_ver: 5.5\msvc2013
+          #mingw_fourple: mingw32/mingw-w64-i686
+          #mingw_root: c:/msys64/mingw32
+          #mingw_libgcc: libgcc_s_dw2-1.dll
+
+        - build_with: mingw
           target_arch: x86_64
-          qt_ver: 5.5\msvc2013_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
-          mingw_libgcc: libgcc_s_seh-1.dll
-        - ssl_arch: Win32
-          nuget_arch: Win32
-          vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          choco_arch: --x86
+
+        - build_with: mingw
           target_arch: x86
-          qt_ver: 5.5\msvc2013
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
-          mingw_libgcc: libgcc_s_dw2-1.dll
+
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -42,45 +56,65 @@ install:
     - c:\cygwin\bin\ls -l /cygdrive/c/Libraries
     - c:\cygwin\bin\ls -l /cygdrive/c/ProgramData
     - c:\cygwin\bin\env
-    - nuget install zlib -OutputDirectory c:\deps
-    - nuget install Gettext.Tools -OutputDirectory c:\deps
-    - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-        if (Test-Path "c:\OpenSSL-$env:ssl_arch") {
+        if ($env:build_with -eq "msvc") {
+          nuget install zlib -OutputDirectory c:\deps
+          nuget install Gettext.Tools -OutputDirectory c:\deps
+          c:\cygwin\bin\find /cygdrive/c/deps -type f
+        }
+    - ps: |
+        if ($env:build_with -eq "msvc") {
+          if (Test-Path "c:\OpenSSL-$env:ssl_arch") {
             echo "using openssl from cache"
-        } else {
+          } else {
             echo "downloading openssl"
             Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2d.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
+          }
+          c:\cygwin\bin\find "/cygdrive/c/OpenSSL-$env:ssl_arch" -type f
         }
-    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-%ssl_arch% "-type" f
     - ps: |
+        # NSIS is required for both msvc and mingw
         if (Test-Path "c:/Program Files (x86)/NSIS/makensis.exe") {
-            echo "using nsis from cache"
+          echo "using nsis from cache"
         } else {
-            choco install nsis -y
+          choco install nsis -y
         }
     - ps: |
-        if (Test-Path "c:/Strawberry/kvirc_workaround") {
+        if ($env:build_with -eq "msvc") {
+          if (Test-Path "c:/Strawberry/kvirc_workaround") {
             echo "using perl from cache"
-        } else {
+          } else {
             choco install strawberryperl -y $env:choco_arch
             # Strawberry perl doesn't support MSVC, but we force the support.
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
+          }
         }
     - ps: |
-        if (Test-Path "c:/ProgramData/chocolatey/bin/jom.exe") {
+        if ($env:build_with -eq "msvc") {
+          if (Test-Path "c:/ProgramData/chocolatey/bin/jom.exe") {
             echo "using jom from cache"
-        } else {
-            choco install jom
+          } else {
+            choco install jom -y
+          }
         }
     - ps: |
         c:\msys64\usr\bin\pacman -Q
+        c:\msys64\usr\bin\mkdir -p /c/msys-download-cache
+        c:\msys64\usr\bin\perl -p -i -E 's|.*CacheDir.*|CacheDir = /c/msys-download-cache/|' /etc/pacman.conf
         c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
-        c:\cygwin\bin\sh -lc 'mkdir -p /cygdrive/c/enchant-headers; cp -vp $mingw_root/lib/glib-2.0/include/glibconfig.h $mingw_root/include/enchant/enchant.h /cygdrive/c/enchant-headers/'
-        c:\cygwin\bin\sh -lc 'cd /cygdrive/c/enchant-headers; patch -p2 < $APPVEYOR_BUILD_FOLDER/.appveyor.ench'
+        c:\msys64\usr\bin\sh -lc 'ls -l /c/msys-download-cache || true'
+    - ps: |
+        if ($env:build_with -eq "msvc") {
+          c:\cygwin\bin\sh -lc 'mkdir -p /cygdrive/c/enchant-headers; cp -vp $mingw_root/lib/glib-2.0/include/glibconfig.h $mingw_root/include/enchant/enchant.h /cygdrive/c/enchant-headers/'
+          c:\cygwin\bin\sh -lc 'cd /cygdrive/c/enchant-headers; patch -p2 < $APPVEYOR_BUILD_FOLDER/.appveyor.ench'
+        }
+    - ps: |
+        if ($env:build_with -eq "mingw") {
+          c:\msys64\usr\bin\sh -lc 'pacman -S --noconfirm $mingw_fourple-qt5 $mingw_fourple-perl'
+        }
     - c:\cygwin\bin\sh -lc "mkdir -p /cygdrive/c/spellcheck-dicts; cd /cygdrive/c/spellcheck-dicts; mkdir -p zip unzip ru"
     - ps: |
         if (Test-Path "c:/spellcheck-dicts/zip/ru.zip") { # LGPL
@@ -100,45 +134,79 @@ install:
         }
     - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
 build_script:
+    - ps: |
+        if ($env:build_with -eq "msvc") {
+          # http://stackoverflow.com/questions/2124753/how-i-can-use-powershell-with-the-visual-studio-command-prompt
+          pushd 'c:\Program Files (x86)\Microsoft Visual Studio 12.0\VC'
+          cmd /c "vcvarsall.bat $env:vc_arch && set" | foreach {
+            if ($_ -match "=") {
+              $v = $_.split("=")
+              set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
+            }
+          }
+          popd
+        }
+    - path
     - mkdir build
     - cd build
-    - '"c:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/vcvarsall" %vc_arch%'
-    - path
     - ps: |
-        $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
-        $zlibinc = c:\cygwin\bin\dirname $zlibinc
-        $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
-        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.lib"
-        $zliblib = c:\cygwin\bin\cygpath -m $zliblib
-        $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
-        $gettext = c:\cygwin\bin\dirname $gettext
-        $gettext = c:\cygwin\bin\cygpath -m $gettext
-        $env:Path += ";" + $gettext
-        c:\cygwin\bin\find $env:ChocolateyInstall
-        # chocolatey broke jom, here's workaround (see https://github.com/jcfr/qt-easy-build/commit/6366f4275562bdaf4f686838600f46894579c41e)
-        $env:Path = $env:ChocolateyInstall + "/lib/jom/content;" + $env:Path
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO"
+        if ($env:build_with -eq "msvc") {
+          $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
+          $zlibinc = c:\cygwin\bin\dirname $zlibinc
+          $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
+          $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.lib"
+          $zliblib = c:\cygwin\bin\cygpath -m $zliblib
+          $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
+          $gettext = c:\cygwin\bin\dirname $gettext
+          $gettext = c:\cygwin\bin\cygpath -m $gettext
+          $env:Path += ";" + $gettext
+          c:\cygwin\bin\find $env:ChocolateyInstall
+          # chocolatey broke jom, here's workaround (see https://github.com/jcfr/qt-easy-build/commit/6366f4275562bdaf4f686838600f46894579c41e)
+          $env:Path = $env:ChocolateyInstall + "/lib/jom/content;" + $env:Path
+          cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO"
+        }
+        if ($env:build_with -eq "mingw") {
+          c:\msys64\usr\bin\sh -lc 'cd $APPVEYOR_BUILD_FOLDER/build; cmake .. -GMSYS\\ Makefiles -DCMAKE_BUILD_TYPE=Release -DWANT_PHONON=NO -DWANT_KDE=NO 2>&1'
+        }
     - ps: Push-AppveyorArtifact CMakeCache.txt
-    - jom install VERBOSE=1
+    - ps: |
+        if ($env:build_with -eq "msvc") {
+          jom install "VERBOSE=1"
+        }
+        if ($env:build_with -eq "mingw") {
+          # the following line contains a workaround for "make: INTERNAL: Exiting with 1 jobserver tokens available; should be 2!" which often happens on windows with -j2
+          c:\msys64\usr\bin\sh -lc 'cd $APPVEYOR_BUILD_FOLDER/build; make -j2 VERBOSE=1 2>&1; make install VERBOSE=1 2>&1'
+        }
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $env:Path += ";c:/Qt/$env:qt_ver/bin"
-        windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        if ($env:build_with -eq "msvc") {
+          $env:Path += ";c:/Qt/$env:qt_ver/bin"
+          windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        }
+        if ($env:build_with -eq "mingw") {
+          # https://github.com/Alexpux/MINGW-packages/issues/221
+          c:\msys64\usr\bin\sh -lc 'for x in $mingw_root/bin/libicudt*; do cp -pv $x `echo $x | sed s/libicu/icu/`; done'
+          c:\msys64\usr\bin\sh -lc 'cd $APPVEYOR_BUILD_FOLDER/build; windeployqt -xml --release --dir release/qt-plugins --libdir release/ release/kvirc.exe'
+        }
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
-        c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libintl-8.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libwinpthread-1.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.3-0.dll release/
-        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
-        c:\cygwin\bin\touch release/share/locale
+        if ($env:build_with -eq "msvc") {
+          $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
+          c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libintl-8.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libwinpthread-1.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
+          c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.3-0.dll release/
+        }
+        if ($env:build_with -eq "mingw") {
+          c:\cygwin\bin\sh -c 'rm -vf release/*icudt*.dll'
+        }
+        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/ release/share/locale/
         c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
         c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant/libenchant_myspell.dll release/lib/enchant/
         c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/myspell/dicts/ru_RU_yo.aff
@@ -153,14 +221,14 @@ build_script:
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - c:\cygwin\bin\ls -l
     - ps: |
-        $exe = dir -name *.exe
-        $new_name = $exe.Replace(".exe", "-$env:target_arch.exe")
-        Push-AppveyorArtifact $exe -FileName $new_name
-        $cmake_name = $exe.Replace(".exe", "-$env:target_arch.cmake.txt")
-        Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name
-        $json = New-Object PSObject
-        (New-Object PSObject | Add-Member -PassThru NoteProperty bin $new_name | Add-Member -PassThru NoteProperty cmake $cmake_name | Add-Member -PassThru NoteProperty commit $env:APPVEYOR_REPO_COMMIT) | ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch" -Encoding ASCII
-        Push-AppveyorArtifact "latest-$env:target_arch"
+          $exe = dir -name *.exe
+          $new_name = $exe.Replace(".exe", "-$env:build_with-$env:target_arch.exe")
+          Push-AppveyorArtifact $exe -FileName $new_name
+          $cmake_name = $exe.Replace(".exe", "-$env:build_with-$env:target_arch.cmake.txt")
+          Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name
+          $json = New-Object PSObject
+          (New-Object PSObject | Add-Member -PassThru NoteProperty bin $new_name | Add-Member -PassThru NoteProperty cmake $cmake_name | Add-Member -PassThru NoteProperty commit $env:APPVEYOR_REPO_COMMIT) | ConvertTo-JSON | Out-File -FilePath "latest-$env:build_with-$env:target_arch" -Encoding ASCII
+          Push-AppveyorArtifact "latest-$env:build_with-$env:target_arch"
 test: off
 # Upload installer to kvirc.d00p.de
 deploy:
