@@ -43,7 +43,6 @@
 #include "KviPackageReader.h"
 #include "KviFileDialog.h"
 #include "KviDynamicToolTip.h"
-#include "KviIconManager.h"
 #include "KviMessageBox.h"
 #include "KviTalListWidget.h"
 #include "kvi_fileextensions.h"
