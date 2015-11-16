@@ -90,7 +90,7 @@ ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo *
 
 	if(!pInfo->author().isEmpty())
 	{
-		szText += " <font color=\"#a0a0a0\"> ";
+		szText += " <font color=\"#636363\"> ";
 		szText += __tr2qs_ctx("by","theme");
 		szText += " ";
 		szText += pInfo->author();
@@ -180,9 +180,9 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	m_pListWidget = new KviTalListWidget(this);
 	m_pListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_pItemDelegate = new KviTalIconAndRichTextItemDelegate(m_pListWidget);
-	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))->scaled(200,180,Qt::KeepAspectRatio)); // FIXME!
-	m_pItemDelegate->setMinimumSize(QSize(400,60));
-	m_pItemDelegate->setIconSize(QSize(200,180));
+	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))->scaled(64,64,Qt::KeepAspectRatio)); // FIXME!
+	m_pItemDelegate->setMinimumSize(QSize(64,64));
+	m_pItemDelegate->setIconSize(QSize(64,64));
 	m_pListWidget->setItemDelegate(m_pItemDelegate);
 	m_pListWidget->setMinimumHeight(400);
 	m_pListWidget->setMinimumWidth(520);
@@ -352,7 +352,7 @@ void ThemeManagementDialog::applyCurrentTheme()
 	if(!it)
 		return;
 
-	if(!KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
+	if(!KviMessageBox::yesNo(__tr2qs_ctx("Apply Theme - KVIrc","theme"),
 		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?","theme"),
 		&(it->themeInfo()->name()),&(it->themeInfo()->version())))
 		return;
@@ -365,13 +365,13 @@ void ThemeManagementDialog::applyCurrentTheme()
 	{
 		QString szErr = out.lastError();
 		QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
-		QMessageBox::critical(this,__tr2qs_ctx("Apply theme - KVIrc","theme"),szMsg,
+		QMessageBox::critical(this,__tr2qs_ctx("Apply Theme - KVIrc","theme"),szMsg,
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
 
 	m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ","theme")+KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)+"</b>");
-	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
+	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))->scaled(64,64,Qt::KeepAspectRatio));
 }
 
 void ThemeManagementDialog::deleteTheme()
@@ -477,7 +477,7 @@ void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 
 			QPixmap pixmap=inf->smallScreenshot();
 			if(!pixmap.isNull())
-				it->setIcon(pixmap.scaled(200,180,Qt::KeepAspectRatio));
+				it->setIcon(pixmap.scaled(300,280,Qt::KeepAspectRatio));
 		} else {
 			delete inf;
 		}
