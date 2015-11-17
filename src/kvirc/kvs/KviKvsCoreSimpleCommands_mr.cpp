@@ -357,16 +357,16 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Opens an URL
 		@description:
-			Opens the specified <url> with an appropriate handler.<br>
-			The handlers for the supported URL types are specified in the options dialog.<br>
-			Each handler is a kvirc commandline that the URL will be passed to as the first parameter ($0).<br>
-			The supported URL types are:<br>
-			HTTP: http://&lt;url&gt; or sth that begins with "www." <br>
-			HTTPS: https://&lt;url&gt;<br>
-			FILE: file://&lt;url&gt;<br>
-			IRC: irc[s][6]://<server>[:<port>][/<channel>[?<pass>]] (Handled internally)<br>
-			FTP: ftp://<url> or sth that begins with "ftp."<br>
-			MAIL: mailto:<mailaddress><br>
+			Opens the specified <url> with an appropriate handler.[br]
+			The handlers for the supported URL types are specified in the options dialog.[br]
+			Each handler is a KVIrc commandline that the URL will be passed to as the first parameter ($0).[br]
+			The supported URL types are:[br]
+			[b]HTTP[/b]: http://&lt;url&gt; or sth that begins with "www." [br]
+			[b]HTTPS[/b]: https://&lt;url&gt;[br]
+			[b]FILE[/b]: file://&lt;url&gt;[br]
+			[b]IRC[/b]: irc[s][6]://<server>[:<port>][/<channel>[?<pass>]] (Handled internally)[br]
+			[b]FTP[/b]: ftp://<url> or sth that begins with "ftp."[br]
+			[b]MAIL[/b]: mailto:<mailaddress>[br]
 		@examples:
 			[example]
 				openurl http://www.kvirc.net
