@@ -205,6 +205,8 @@ void OptionsWidget_textIcons::chooseFromFile()
 			g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 			szCurrentThemePath+= KVI_PATH_SEPARATOR_CHAR;
 			qDebug("copy source %s - dest %s",szFile.toUtf8().data(),szCurrentThemePath.toUtf8().data());
+			if (!KviFileUtils::directoryExists(szCurrentThemePath+szFileName))
+				KviFileUtils::makeDir(szCurrentThemePath);
 			KviFileUtils::copyFile(szFile,szCurrentThemePath+szFileName);
 			m_pCurrentItem->icon()->setFilename(szFileName);
 			qDebug("set Icon");
