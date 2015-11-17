@@ -2750,9 +2750,11 @@ void KviInputEditor::popupTextIconWindow()
 
 void KviInputEditor::insertIconCode(const QString &szCode)
 {
-	if((m_iCursorPosition > 0) && (m_iCursorPosition <= m_szTextBuffer.length()))
+	if(m_iCursorPosition == 0) {
+		insertChar(KviControlCodes::Icon);
+	} else
 	{
-		QChar c = m_szTextBuffer[m_iCursorPosition];
+		QChar c = m_szTextBuffer[m_iCursorPosition - 1];
 		if(c.unicode() != KviControlCodes::Icon)
 			insertChar(KviControlCodes::Icon);
 	}
