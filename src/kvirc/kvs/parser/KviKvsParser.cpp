@@ -506,14 +506,14 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[i]This text will be printed on a single line[/i][br]
 		Another example:[br]
 		[example]
-			[cmd]echo[/cmd] "The new kvirc &nbsp; &nbsp; &nbsp \
+			[cmd]echo[/cmd] "The new KVIrc &nbsp; &nbsp; &nbsp \
             &nbsp; &nbsp; IS OUT!"
 			[cmd]echo[/cmd] Check it out at http://www.kvi\
             &nbsp; &nbsp; rc.net!
 		[/example]
 		This will be printed as:[br][br]
 		[i]
-		The new kvirc &nbsp; &nbsp; &nbsp; IS OUT![br]
+		The new KVIrc &nbsp; &nbsp; &nbsp; IS OUT![br]
 		Check it out at http://www.kvirc.net!
 		[/i][br]
 		Finally, you can escape an escape character to include it literally in a parameter (and

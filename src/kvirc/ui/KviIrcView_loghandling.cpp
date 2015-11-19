@@ -84,7 +84,7 @@ void KviIrcView::stopLogging()
 					gzclose(file);
 					m_pLogFile->remove();
 				} else {
-					qDebug("Cannot open compressed stream");
+					qDebug("Can't open compressed stream");
 				}
 			}
 		}
@@ -132,7 +132,7 @@ void KviIrcView::flushLog()
 					gzclose(file);
 					m_pLogFile->remove();
 				} else {
-					qDebug("Cannot open compressed stream");
+					qDebug("Can't open compressed stream");
 				}
 			}
 			m_pLogFile->open(QIODevice::Append|QIODevice::WriteOnly);
@@ -262,7 +262,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		tmp = szMessageType.toUtf8();
 
 		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
-			qDebug("WARNING : Can not write to the log file.");
+			qDebug("WARNING: can't write to the log file.");
 	}
 
 	if(bPrependDate)
@@ -285,12 +285,12 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		tmp = szDate.toUtf8();
 
 		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
-			qDebug("WARNING : Can not write to the log file.");
+			qDebug("WARNING: can't write to the log file.");
 	}
 
 	tmp = szBuffer.toUtf8();
 	tmp.append('\n');
 
 	if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
-		qDebug("WARNING : Can not write to the log file.");
+		qDebug("WARNING: can't write to the log file.");
 }

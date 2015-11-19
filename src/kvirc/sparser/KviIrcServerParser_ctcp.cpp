@@ -96,7 +96,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		The PRIVMSG is used for CTCP REQUESTS, the NOTICE for CTCP REPLIES.
 		The NOTICE form should never generate an automatic reply.[br]
 		The two delimiters were used to begin and terminate the
-		CTCP message; The origial protocol allowed more than one CTCP
+		CTCP message; The original protocol allowed more than one CTCP
 		message inside a single IRC message. [b]Nobody sends more than
 		one message at once, no client can recognize it (since it
 		complicates the message parsing), it could be even dangerous (see below)[/b].
@@ -113,7 +113,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		should be allowed and theoretically the trailing <0x01> delimiter can be optional.[br]
 		[big]How to extract the CTCP message[/big][br]
 		The IRC messages do not allow the following characters to be sent:[br]
-		<NUL> (Ascii character 0), <CR> (Carriage return), <LF> (Line feed).[br]
+		<NUL> (ASCII character 0), <CR> (Carriage return), <LF> (Line feed).[br]
 		So finally we have four characters that [b]cannot appear literally into a
 		CTCP message[/b]: <NUL>,<CR>,<LF>,<0x01>.[br]
 		To extract a <ctcp_message> from an IRC PRIVMSG or NOTICE command you
@@ -150,10 +150,10 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		Let's use the most intuitive method, adopted all around the world:[br]
 		The backslash character ('\') as escape.[br]
 		An escape sequence is formed by the backslash character and a number
-		of following ascii characters. We define the following two types of escape sequences:[br]
+		of following ASCII characters. We define the following two types of escape sequences:[br]
 		[b]'\XXX'[/b] (where XXX is an [b]octal number[/b] formed by three digits)
-		that indicates the ascii character with code that corresponds to the number.[br]
-		[b]'\C'[/b] (where C is a [b]CTCP valid ascii non digit character[/b]) that corresponds
+		that indicates the ASCII character with code that corresponds to the number.[br]
+		[b]'\C'[/b] (where C is a [b]CTCP valid ASCII non digit character[/b]) that corresponds
 		literally to the character C discarding any other semantic that might be associated
 		with it (This will become clear later).
 		I've chosen the octal representation just to follow a bit the old specification:
@@ -165,7 +165,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		A CTCP message is made of [b]space separated parameters[/b].[br]
 		The natural way of separating parameters is to use the space character.
 		We define a "token" as a sequence of valid CTCP characters not including literal space.
-		A <ctcp parameter> is usally a token, but not always;
+		A <ctcp parameter> is usually a token, but not always;
 		filenames can contain spaces inside names (and it happens very often!).
 		So one of the parameters of CTCP DCC is not a space separated token.
 		How do we handle it? Again a standard is missing. Some clients simply change
@@ -183,7 +183,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 		[big]A CTCP parameter extracting example[/big][br]
 		A trivial example of a C "CTCP parameter extracting routine" follows.[br]
-		An IRC message is made of up to 510 useable characters.
+		An IRC message is made of up to 510 usable characters.
 		When a CTCP is sent there is a PRIVMSG or NOTICE token that uses at least 6 characters,
 		at least two spaces and a target token (that can not be empty, so it is at least one character)
 		and finally one <0x01> escape character. This gives 500 characters as maximum size
@@ -278,10 +278,10 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[big]CTCP parameter semantics[/big][br]
 		The first <ctcp parameter> of a <ctcp message> is the <ctcp tag>: it defines
 		the semantic of the rest of the message.[br]
-		Altough it is a convention to specify the <ctcp tag> as uppercase letters,
+		Although it is a convention to specify the <ctcp tag> as uppercase letters,
 		and the original specification says that the whole <ctcp message> is
 		case sensitive, I'd prefer to follow the IRC message semantic (just to
-		have less "special cases") and treat the whole mssage as [b]case insensitive[/b].[br]
+		have less "special cases") and treat the whole message as [b]case insensitive[/b].[br]
 		The remaining tokens depend on the <ctcp tag>. A description of known <ctcp tags>
 		and thus <ctcp messages> follows.[br]
 
@@ -290,7 +290,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		The PING request is used to check the round trip time from one client to another.
 		The receiving client should reply with exactly the same message but sent
 		through a NOTICE instead of a PRIVMSG. The <data> usually contains an unsigned
-		integer but not necessairly; it is not even mandatory for <data> to be a single token.
+		integer but not necessarily; it is not even mandatory for <data> to be a single token.
 		The receiver should ignore the semantic of <data>.[br]
 		The reply is intended to be processed by IRC clients.
 
@@ -371,7 +371,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[big]DCC[/big][br]
 		[b]Syntax: <0x01>DCC <type> <type dependant parameters><0x01>[/b][br]
 		The DCC tag is used to initiate a Direct Client Connection.
-		The known dcc types are:[br]
+		The known DCC types are:[br]
 		CHAT[br]
 		SEND[br]
 		TSEND[br]
@@ -1793,7 +1793,7 @@ void KviIrcServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 		if(!m)
 		{
 			msg->msg->console()->output(KVI_OUT_DCCERROR,
-				__tr2qs("Unable to process the above request: Cannot load DCC module (%Q)"),&(g_pModuleManager->lastError()));
+				__tr2qs("Unable to process the above request: cannot load DCC module (%Q)"),&(g_pModuleManager->lastError()));
 		} else {
 			dccModuleCtcpDccParseRoutine proc = (dccModuleCtcpDccParseRoutine)m->getSymbol("dccModuleCtcpDccParseRoutine");
 			if(!proc)

@@ -202,7 +202,7 @@ void KviStatusBar::load()
 			if(pApplet)
 				pApplet->loadState(prefix.ptr(),&cfg);
 			else
-				qDebug("warning: failed to create applet %s (preload: %s)!",
+				qDebug("WARNING: failed to create applet %s (preload: %s)!",
 					szInternalName.toUtf8().data(), szPreloadModule.toUtf8().data());
 		}
 	}

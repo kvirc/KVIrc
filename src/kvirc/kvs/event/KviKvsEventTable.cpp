@@ -3794,7 +3794,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when a KVIrc MDI or undocked window is in need of a window title change.[br]
 			You can set a customized window title and halt the default title from being set.[br]
 		@seealso:
-			[cmd]window.setWindowTitle[cmd]
+			[cmd]window.setWindowTitle[/cmd]
 	*/
 	EVENT("OnWindowTitleRequest", \
 		"$0 = window id\n" \
@@ -3817,7 +3817,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			You can check the text, insert any other text and halt the original from being inserted in the input bar.[br]
 			Note that the text can contains binary data, end-of-line or other characters that could need a special treatment then parsed.
 		@seealso:
-			[cmd]window.insertInInputText[cmd]
+			[cmd]window.insertInInputText[/cmd]
 	*/
 	EVENT("OnInputBarPaste", \
 		"$0 = window id\n" \

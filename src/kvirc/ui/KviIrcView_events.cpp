@@ -908,7 +908,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					KviQString::appendFormatted(tip,QString("<b>mode %Q %Q</b>"),&(m_pKviWindow->windowName()),&part);
 				} else {
 					// I'm not op...no way
-					tip = __tr2qs("You're not an operator: You may not change channel modes");
+					tip = __tr2qs("You're not an operator: you may not change channel modes");
 				}
 			}
 		}

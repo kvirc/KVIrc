@@ -309,7 +309,7 @@ static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.delmask[/cmd],
 		[fnc]$reguser.list[/fnc],

@@ -990,7 +990,7 @@ int KviInputEditor::runUpToTheFirstVisibleChar()
 				}
 				break;
 				case 0:
-					qDebug("KviInputEditor::Encountered invisible end of the string!");
+					qDebug("KviInputEditor: encountered invisible end of the string!");
 					exit(0);
 				break;
 			}

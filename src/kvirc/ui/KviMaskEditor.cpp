@@ -74,7 +74,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	setModal(1);
 	m_szOldMask=szMask;
 
-	setWindowTitle(__tr2qs("Mask editor - KVirc"));
+	setWindowTitle(__tr2qs("Mask Editor - KVirc"));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -177,7 +177,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	m_pSearch = new QLineEdit(hb);
 	connect(m_pSearch,SIGNAL(textChanged ( const QString & ) ),this,SLOT(searchTextChanged ( const QString & )));
 
-	l = new QLabel(__tr2qs("Use doubleclick to edit item"),this);
+	l = new QLabel(__tr2qs("Use double-click to edit item"),this);
 	g->addWidget(l,1,1);
 	g->addWidget(l,2,0,1,2);
 

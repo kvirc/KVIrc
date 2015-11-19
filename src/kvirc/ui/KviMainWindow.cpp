@@ -401,7 +401,7 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 		}
 
 		if(!minKey.isEmpty())g_pWinPropertiesConfig->clearGroup(minKey);
-		else qDebug("Oops...no minimum key found!");
+		else qDebug("Oops! No minimum key found.");
 	}
 
 	// The following line should NOT be needed...but just to be sure...
