@@ -1118,6 +1118,20 @@ void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericUserInChan(KviIrcMessage *msg)
+{
+	// 443: ERR_USERONCHANNEL
+	// :prefix 443 <target> <nick> <channel> :is already on channel
+	if(!msg->haltOutput())
+	{
+		KviWindow *pOut = static_cast<KviWindow*>(msg->connection()->findChannel(msg->safeParam(2)));
+		if(!pOut)pOut = static_cast<KviWindow*>(msg->console()); // This would be interesting...
+		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+		QString szChan = msg->connection()->decodeText(msg->safeParam(2));
+		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("%Q is already in %Q"),&szNick,&szChan);
+	}
+}
+
 void KviIrcServerParser::parseNumericForward(KviIrcMessage *msg)
 {
 	// 470: ERR_LINKCHANNEL

@@ -519,7 +519,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 440 ERR_SERVICESDOWN
 	0,                                               // 441 ERR_USERNOTINCHANNEL
 	0,                                               // 442 ERR_NOTONCHANNEL
-	0,                                               // 443 ERR_USERONCHANNEL
+	PTM(parseNumericUserInChan),                     // 443 ERR_USERONCHANNEL
 	0,                                               // 444 ERR_NOLOGIN
 	0,                                               // 445 ERR_SUMMONDISABLED
 	0,                                               // 446 ERR_USERSDISABLED

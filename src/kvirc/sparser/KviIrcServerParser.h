@@ -193,6 +193,7 @@ private:
 	void parseNumericIsOn(KviIrcMessage *msg);
 	void parseNumericBanOnChan(KviIrcMessage *msg);
 	void parseNumericUnavailResource(KviIrcMessage *msg);
+	void parseNumericUserInChan(KviIrcMessage *msg);
 	void parseNumericLinks(KviIrcMessage *msg);
 	void parseNumericEndOfLinks(KviIrcMessage *msg);
 	void parseNumericUserhost(KviIrcMessage *msg);
