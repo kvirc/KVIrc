@@ -1136,14 +1136,13 @@ void KviIrcServerParser::parseNumericForward(KviIrcMessage *msg)
 {
 	// 470: ERR_LINKCHANNEL
 	// :prefix 470 target <oldchan> <newchan> :Forwarding to another channel
-	QString pref      = msg->connection()->decodeText(msg->safePrefix());
-	QString szOldChan = msg->connection()->decodeText(msg->safeParam(1));
-	QString szNewChan = msg->connection()->decodeText(msg->safeParam(2));
-
 	if(!msg->haltOutput())
 	{
+		QString pref      = msg->connection()->decodeText(msg->safePrefix());
+		QString szOldChan = msg->connection()->decodeText(msg->safeParam(1));
+		QString szNewChan = msg->connection()->decodeText(msg->safeParam(2));
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow*>(msg->console());
 		// This technically isn't a notice, yet it is fairly useful information.
 		// The server gives us good data with a pretty unusable description. So
 		// what we are doing is concatenating the generic server notice prefix
