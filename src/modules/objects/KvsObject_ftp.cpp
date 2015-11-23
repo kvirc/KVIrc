@@ -56,18 +56,19 @@
 	@description:
 		This class provides a standard FTP functionality.[br]
 	@functions:
-                !fn:$dataAvailableEvent(<data_length>)
-		This function is called when some data is available to be read: the <data_length> parameter specifies
-		the length of the available data in bytes.[br]
+		!fn:$dataAvailableEvent(<data_length>)
+		This function is called when some data is available to be read.[br]
+		The <data_length> parameter specifies the length of the available data in bytes.[br]
 		You can use one of the $read* functions to obtain the data.
-                !fn: <id:integer> $connect(<host:string>,<remote_port:integer>)
-		Connects to the FTP server host using port port.The command is scheduled, and its execution is performed asynchronously.
-		The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
+		!fn: <id:integer> $connect(<host:string>,<remote_port:integer>)
+		Connects to the FTP server host using port port.[br]
+		The command is scheduled, and its execution is performed asynchronously.[br]
+		The function returns a unique identifier which is passed by [b]commandStarted()[/b] and [b]commandFinished()[/b].
 		!fn:$abort()
 		Aborts the current command and deletes all scheduled commands.
 		!fn:<id:integer> $login(<user:string>,<pass:string>)
-		Logs in to the FTP server with the username user and the password <pass>.
-		The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
+		Logs in to the FTP server with the username user and the password <pass>.[br]
+		The function returns a unique identifier which is passed by [b]commandStarted()[/b] and [b]commandFinished()[/b].
 		!fn:<id:integer> $get(<remotefile:string>,<localfile:string>)
 		Downloads the <remotefile> file from the server.
 		!fn:<id:integer> $put(<localfile:string>,<remotefile:string>)
@@ -75,16 +76,16 @@
 		!fn:<id:integer> $cd(<remotedir:string>)
 		Changes the working directory of the server to <remotedir>.
 		!fn:<id:integer> $list()
-		Lists the contents of directory dir on the FTP server.
+		Lists the contents of the directory on the FTP server.
 		!fn: $commandFinishedEvent(<id:integer>,<error:boolean>)
-		Called by KVIrc when the ftp command identified by id has finished.
-		error is true if an error occurred during the processing; otherwise error is false.
-		The default implementation emits the [classfnc]$commandFinished[/classfnc]() signal.
+		Called by KVIrc when the FTP command identified by id has finished.[br]
+		Error is true if an error occurred during the processing; otherwise error is false.[br]
+		The default implementation emits the [classfnc]$commandFinished[/classfnc]() signal.[br]
 		!fn: $listInfoEvent(<dir_entry_name:string>)
-		This event is triggered for each directory entry found by [classfnc]$list[/classfnc]() command.
+		This event is triggered for each directory entry found by [classfnc]$list[/classfnc]() command.[br]
 		The default implementation emits the [classfnc]$listInfo[/classfnc]() signal.
 		!fn: $dataTransferProgressEvent(<done:integer>,<total:integer>)
-		This event is triggered in response to a  [classfnc]get[/classfnc]() or  [classfnc]put[/classfnc]() request to indicate the current progress of the download or upload.
+		This event is triggered in response to a [b]get()[/b] or [b]put()[/b] request to indicate the current progress of the download or upload.[br]
 		The default implementation emits the [classfnc]$dataTransferProgress[/classfnc]() signal.
 	@signals:
 		!sg: $commandFinished(<id:integer>,<szCommand:string>,<error:boolean>)

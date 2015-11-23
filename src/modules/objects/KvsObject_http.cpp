@@ -88,16 +88,16 @@
 	@functions:
 		!fn: <id:integer>$get(<remote_path:string>,[<local_file: string>])
 		Sends a get request for path to the server set by [classfnc]$setHost[/classfnc].
-		If local_file is not specified readyRead() signal is emitted every time new content data is available to read.
+		If local_file is not specified [b]readyRead()[/b] signal is emitted every time new content data is available to read.
 		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>
 		Sends a post request for path to the server set by [classfnc]$setHost[/classfnc].
-		If local_file is not specified readyRead() signal is emitted every time new content data is available to read.
+		If local_file is not specified [b]readyRead()[/b] signal is emitted every time new content data is available to read.
 		!fn: $abort()
 		Aborts the current request and deletes all scheduled requests.
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
 		Sets the HTTP server that is used for requests to hostName on port port.
 		The function does not block: the request is scheduled, and its execution is performed asynchronously.
-		The function returns a unique identifier which is passed by [classfnc]requestStartedEvent()[/classfnc] and [classfnc]requestFinishedEvent()[/classfnc].
+		The function returns a unique identifier which is passed by [b]requestStartedEvent()[/b] and [b]requestFinishedEvent()[/b].
 		When the request is started the requestStarted() signal is emitted. When it is finished the requestFinished() signal is emitted.
 		!fn: <id:integer>$currentId()
 		Returns the identifier of the HTTP request being executed or 0 if there is no request being executed.
@@ -129,12 +129,12 @@
 		!fn: $stateChangedEvent(<connection_state:string>)
 		This event is triggered by the framework when the state of the connection changes.
 		!fn: $readyReadEvent(<response:string>)
-		This event is triggered by the framework when there is new data read and there is not file specified in [classfnc]get[/classfunc] or [classfnc]post[/classfunc].
-		You can call [classfnc]readAll[/classfnc] to reads all the bytes from the response data.
+		This event is triggered by the framework when there is new data read and there is not file specified in [b]get[/b] or [b]post[/b].
+		You can call [b]readAll[/b] to reads all the bytes from the response data.
 		!fn: $sslErrorsEvent(<sslerrors:string>)
 		Returns the list of errors that occurred during the SSL handshake.
-		Unless you call ignoreSslErrors() from within a slot connected to the signal emited by this event,
-		the framwork will tear down the connection immediately after emitting the signal.
+		Unless you call ignoreSslErrors() from within a slot connected to the signal emitted by this event,
+		the framework will tear down the connection immediately after emitting the signal.
 	@signals:
 		!sg: $requestStarted()
 		This signal is emitted by the default implementation of [classfnc]$requestStartedEvent[/classfnc].
