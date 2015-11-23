@@ -208,7 +208,7 @@ sub print_header
 	print $g_filehandle " border-top-left-radius: 3px;\n";
 	print $g_filehandle " border-top-right-radius: 3px;\n";
 	print $g_filehandle " background-color: #F2DFB1;\n";
-	print $g_filehandle " background: linear-gradient(#CBE4F2,#4E8ABF);\n";
+	#print $g_filehandle " background: linear-gradient(#CBE4F2,#4E8ABF);\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".title-text {\n";
