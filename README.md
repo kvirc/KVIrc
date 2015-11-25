@@ -12,7 +12,7 @@ This is the Github development and bug tracker home for the KVIrc project.
 
 #### Getting involved
 
-- [Contributing](http://www.kvirc.net/?id=contribute)
+- [Contributing](https://github.com/kvirc/KVIrc/wiki/Getting-involved-and-contributing)
 
 #### Help & Support
 
@@ -27,7 +27,7 @@ This is the Github development and bug tracker home for the KVIrc project.
 
 ---
 Try one of our fresh off-the-press nightly development 32-bit or 64-bit builds for Windows, Ubuntu and Debian.
-#### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrc-source-or-binaries#source-downloads-master)
+#### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrc's-nightly-source-or-binaries)
 
 We're also looking for volunteer packagers and maintainers to other distributions that can help us extend KVIrc's availability to other OS's.
 
