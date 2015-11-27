@@ -715,4 +715,9 @@ namespace KviOsInfo
 		else
 			return KviQString::Empty;
 	}
+
+	QString qtVersion()
+	{
+		return QString(qVersion());
+	}
 }

@@ -126,6 +126,12 @@ namespace KviBuildInfo
 	* \return QString
 	*/
 	extern KVILIB_API QString buildRevision();
+
+	/**
+	* \brief Returns the Qt version used to build the KVIrc executable.
+	* \return QString
+	*/
+	extern KVILIB_API QString qtVersion();
 }
 
 #endif //!_KVI_BUILDINFO_H_

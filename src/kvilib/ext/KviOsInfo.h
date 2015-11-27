@@ -38,6 +38,7 @@ namespace KviOsInfo
 	extern KVILIB_API QString machine();
 	extern KVILIB_API QString nodename();
 	extern KVILIB_API QString hostname();
+	extern KVILIB_API QString qtVersion();
 }
 
 #endif //!_KVI_OSINFO_H_

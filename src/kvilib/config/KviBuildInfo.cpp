@@ -97,4 +97,9 @@ namespace KviBuildInfo
 		#endif
 		return rev;
 	}
+
+	QString qtVersion()
+	{
+		return QString(QT_VERSION_STR);
+	}
 }
