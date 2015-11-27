@@ -447,7 +447,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		When an addon with a greater or equal version is installed over
 		an addon with a lower version, the lower one gets uninstalled first.
 		Installing a lower version over a greater one is not possible, unless
-		the lower versioned one is uninstalled first.
+		the lower version one is uninstalled first.
 		[/p]
 		[p]
 		<description> is another, possibly translated, string that will
@@ -457,7 +457,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		<minkvircversion> is the minimum KVIrc version required for the
 		addon to run. If the version of the running KVIrc executable
 		is lower than the requested one then the command will abort with an error.
-		If you want to completly ignore the KVIrc versioning (don't do it),
+		If you want to completely ignore the KVIrc versioning (don't do it),
 		use "0.0.0" here. If you need fine tuning on cvs features you may add also
 		the sources date tag at the end of the required version string (e.g 3.2.1.20060303).
 		[/p]
@@ -470,7 +470,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		The <uninstall_callback> is a snippet of code that should
 		wipe out the addon from the system. It is ALWAYS a good practice
 		to write a complete uninstallation procedure (think that YOU like
-		to be able to completly uninstall a program that you don't use anymore).
+		to be able to completely uninstall a program that you don't use anymore).
 		The <uninstall_callback> will be called by KVIrc when the addon
 		uninstallation is requested, either explicitly by using the GUI or the
 		command [cmd]addon.uninstall[/cmd], or implicitly by installing
@@ -479,7 +479,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		[p]
 		If the user security rules don't allow your addon to be installed
 		or a higher version of a addon with the same name already exists
-		the command will fail with an error (aborting your whole intallation addon).
+		the command will fail with an error (aborting your whole installation addon).
 		If you don't want to fail with an error but handle it gracefully instead
 		then you should use [fnc]$addon.exists()[/fnc] to check if a
 		addon with the same name and a greater version already exists.
@@ -603,12 +603,12 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 	@switches:
 		!sw: -q | --quiet
 			Makes the command run quietly
-		!sw: -s | --skip-inexistant
-			Skip inexistant entries in the [files] list
+		!sw: -s | --skip-nonexistent
+			Skip nonexistent entries in the [files] list
 	@description:
 		Installs the [files] for the addon identified by the specified <id>.
 		The files will be automatically removed when the addon is uninstalled.
-		<target> is the target path inside the local kvirc directory. The following
+		<target> is the target path inside the local KVIrc directory. The following
 		standard paths should be used:[br]
 		[ul]
 		[li]"pics" for image files.[/li]
@@ -617,9 +617,9 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		[li]"config" for configuration files.[/li]
 		[li]"help/<language>" for help files.[/li]
 		[/ul]
-		Other target paths are allowed and subdirectories are supported (eg. "pics/myaddon").
+		Other target paths are allowed and subdirectories are supported (e.g. "pics/myaddon").
 		[files] is a list of filenames or directory names.
-		Each file will be copied to the specified target path in the local kvirc directory.
+		Each file will be copied to the specified target path in the local KVIrc directory.
 		Filenames can contain wildcard characters in the last component.
 	@seealso:
 		[cmd]addon.register[/cmd]
@@ -640,7 +640,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 
 	bool bQuiet = c->switches()->find('q',"quiet");
 	// we had a typo here, support the old switch name for backward scripts compatibility
-	bool bSkipInexistant = c->switches()->find('i',"skip-inexistant") || c->switches()->find('i',"skip-inexisting");
+	bool bSkipNonExistent = c->switches()->find('i',"skip-nonexistent") || c->switches()->find('i',"skip-nonexisting");
 
 	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(!a)
@@ -687,10 +687,10 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 			QDir dir(szPath);
 			if(!dir.exists())
 			{
-				if(!bSkipInexistant)
+				if(!bSkipNonExistent)
 					return c->error(__tr2qs_ctx("The directory '%1' doesn't exist","addon").arg(szPath));
 				if(!bQuiet)
-					c->warning(__tr2qs_ctx("Skipping inexistant entry '%1'","addon").arg(szEntry));
+					c->warning(__tr2qs_ctx("Skipping non-existent entry '%1'","addon").arg(szEntry));
 				continue;
 			}
 
@@ -710,16 +710,16 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 		QFileInfo inf(szEntry);
 		if(!inf.exists())
 		{
-			if(!bSkipInexistant)
+			if(!bSkipNonExistent)
 				return c->error(__tr2qs_ctx("The file '%1' doesn't exist","addon").arg(szEntry));
 			if(!bQuiet)
-				c->warning(__tr2qs_ctx("Skipping inexistant entry '%1'","addon").arg(szEntry));
+				c->warning(__tr2qs_ctx("Skipping non-existent entry '%1'","addon").arg(szEntry));
 			continue;
 		}
 
 		if(!inf.isFile())
 		{
-			if(!bSkipInexistant)
+			if(!bSkipNonExistent)
 				return c->error(__tr2qs_ctx("The entry '%1' is not a file","addon").arg(szEntry));
 			if(!bQuiet)
 				c->warning(__tr2qs_ctx("Skipping invalid entry '%1'","addon").arg(szEntry));
@@ -740,7 +740,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 		QFileInfo inf(*it);
 		if(!inf.exists())
 		{
-			qDebug("ERROR: File %s doesn't exist, but it should...",inf.fileName().toUtf8().data());
+			qDebug("ERROR: file %s doesn't exist, but it should...",inf.fileName().toUtf8().data());
 			continue; // bleah.. should never happen
 		}
 
@@ -830,12 +830,12 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 		<addon_version> is the version of the addon in the form X.Y.Z.[br]
 		<description> is a textual description of the addon.
 		<author> is the name of the person that is creating the addon.
-		<min_kvirc_version> is the minimum kvirc version that this addon supports. Pass an empty string if you want
-		this to become the current kvirc version.
+		<min_kvirc_version> is the minimum KVIrc version that this addon supports. Pass an empty string if you want
+		this to become the current KVIrc version.
 		<image> is the path of an image to be used in the installation dialog. Pass an empty string if you
 		don't want an image to be stored in the package.
 		<addon_path> is a path to a directory containing an addon. It should contain an install.kvs file
-		that calls [cmd]addon.register[/cmd] and then installs all the addon aliases, events and files (via [cmd]addon.installfiles[/cmd].
+		that calls [cmd]addon.register[/cmd] and then installs all the addon aliases, events and files via [cmd]addon.installfiles[/cmd].
 */
 static bool addon_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 {
@@ -908,8 +908,8 @@ static bool addon_module_can_unload(KviModule *)
 
 
 KVIRC_MODULE(
-	"Addon",                                                      // module name
-	"4.0.0",                                                        // module version
+	"Addon",                                                                    // module name
+	"4.0.0",                                                                    // module version
 	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)\n" \
 	"              2008 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
 	"Addon management functions for the KVS engine",
