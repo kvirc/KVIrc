@@ -684,8 +684,8 @@ void ClassEditorWidget::renameNamespace(ClassEditorTreeWidgetItem * pOldNamespac
 		if(pNewItem->isClass())
 		{
 			QMessageBox::information(this,
-				__tr2qs_ctx("Name already exists as Class name","editor"),
-				__tr2qs_ctx("This name is already in use as Class name. Please choose another one.","editor"),
+				__tr2qs_ctx("Name already exists as class name","editor"),
+				__tr2qs_ctx("This name is already in use as class name. Please choose another one.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 		} else {
 			QMessageBox::information(this,
@@ -926,7 +926,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-		__tr2qs_ctx("Export Selected in singles files...","editor"),
+		__tr2qs_ctx("Export Selected in Singles Files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
     pAction->setEnabled(bHasSelected);
@@ -941,7 +941,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
-			__tr2qs_ctx("Find In Classes...","editor"),
+			__tr2qs_ctx("Find in Classes...","editor"),
 			this,SLOT(slotFind()));
     pAction->setEnabled(bHasItems);
 
