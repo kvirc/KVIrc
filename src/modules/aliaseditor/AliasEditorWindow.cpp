@@ -940,7 +940,7 @@ bool AliasEditorWidget::removeItem(AliasEditorTreeWidgetItem *it,bool * pbYesToA
 		else {
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the namespace \"%1\"?","editor")).arg(szName);
 			szMsg += "<br>";
-			szMsg += __tr2qs_ctx("Please note that all the children items will be deleted too.","editor");
+			szMsg += __tr2qs_ctx("Please note that all the child items will be deleted too.","editor");
 		}
 
 		g_pAliasEditorModule->lock();
