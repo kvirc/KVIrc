@@ -123,7 +123,7 @@ void DccDescriptor::triggerCreationEvent()
 {
 	if(m_bCreationEventTriggered)
 	{
-		qDebug("Ops.. trying to trigger OnDccSessionCreated twice");
+		qDebug("Oops! Trying to trigger OnDccSessionCreated twice");
 		return;
 	}
 	m_bCreationEventTriggered = true;
