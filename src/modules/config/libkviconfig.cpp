@@ -48,12 +48,12 @@ static int g_iNextConfigId = 0;
 		If the file already exists, its contents
 		are parsed and available for extracting by the [fnc]$config.read[/fnc]() function.[br]
 		<filename> may be an absolute path or a relative path: if a relative path is used,
-		KVIrc will complete it with a local kvirc directory suitable for writing script config files.[br]
+		KVIrc will complete it with a local KVIrc directory suitable for writing script config files.[br]
 		If the config file doesn't exist, it is opened as empty config file.[br]
 		Flags can contain a combination of letters 'r' and 'w'.[br]
 		If only 'r' is specified, the config file is opened in "read-only" mode: no changes will be written to disk.[br]
 		If only 'w' is specified, the config file is opened in "write-only" mode: the contents of the file on disk
-		are not readed.[br]
+		are not read.[br]
 		If <flags> are not specified then 'rw' is assumed.[br]
 		The function returns an identifier for the open config file. This identifier
 		is a mandatory parameter in all the other config.* functions and commands.[br]
@@ -264,11 +264,11 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	@title:
 		$config.readonly
 	@short:
-		Checks wheter a config file is opened in readonly mode
+		Checks whether a config file is opened in read-only mode
 	@syntax:
 		$config.readonly(<id>)
 	@description:
-		Returns 1 if the config file identified by <id> is opened in readonly mode,
+		Returns 1 if the config file identified by <id> is opened in read-only mode,
 		0 otherwise.[br]
 		<id> must be a valid config identifier returned by [fnc]$config.open[/fnc]()
 		If <id> does not identify an open config file, a warning is printed and 0 is returned.[br]
@@ -338,7 +338,7 @@ static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
 	@title:
 		$config.hassection
 	@short:
-		Checks wheter a section is present in a config file
+		Checks whether a section is present in a config file
 	@syntax:
 		$config.hassection(<id>,<section_name>)
 	@description:
@@ -587,7 +587,7 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 	if(cfg)
 	{
 		if(cfg->readOnly())
-			c->warning(__tr2qs("The config file with id '%Q' is read only"),&szId);
+			c->warning(__tr2qs("The config file with id '%Q' is read-only"),&szId);
 		else
 			if(!cfg->sync())
 				c->warning(__tr2qs("An error has occurred while trying to save the config file with id '%Q'"),&szId);
