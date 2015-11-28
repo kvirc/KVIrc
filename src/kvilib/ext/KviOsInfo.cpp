@@ -718,6 +718,6 @@ namespace KviOsInfo
 
 	QString qtVersion()
 	{
-		return QString(qVersion());
+		return QString(qtVersion());
 	}
 }
