@@ -16,14 +16,13 @@ This is the Github development and bug tracker home for the KVIrc project.
 
 #### Help & Support
 
-- [KVIrc - wiki FAQ](https://github.com/kvirc/KVIrc/wiki/FAQ)
-- [KVIrc - Project FAQ](https://github.com/kvirc/KVIrc/blob/master/doc/FAQ)
+- [KVIrc - Wiki - Homepage](https://github.com/kvirc/KVIrc/wiki/home)
 - [KVIrc manual](http://www.kvirc.net/doc)
 - [KVIrc API](http://www.kvirc.net/api)
+- [How to submit a bug report](https://github.com/kvirc/KVIrc/wiki/Submitting-a-bug-report)
 - [Open a bug report or make a suggestion](https://github.com/kvirc/KVIrc/issues)
-- [#KVIrc](https://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
+- Talk to us [Join #KVIrc](https://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
 - [KVIrc - Community forums](http://www.kvirc.ru/forum/)
-- [Further information](https://github.com/kvirc/KVIrc/tree/master/doc)
 
 ---
 Try one of our fresh off-the-press nightly development 32-bit or 64-bit builds for Windows, Ubuntu and Debian.
