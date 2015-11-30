@@ -623,7 +623,7 @@ void FileTransferWindow::deleteLocalFile()
 	QString szName = pTransfer->localFileName();
 	QString szTmp = QString(__tr2qs_ctx("Do you really want to delete the file %1?","filetransferwindow")).arg(szName);
 
-	if(QMessageBox::warning(this,__tr2qs_ctx("Confirm delete","filetransferwindow"),
+	if(QMessageBox::warning(this,__tr2qs_ctx("Confirm Delete","filetransferwindow"),
 			szTmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
 		return;
 
