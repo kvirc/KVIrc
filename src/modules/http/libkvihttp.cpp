@@ -38,7 +38,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 {
 	if(szUrl.isEmpty())
 	{
-		c->warning(__tr2qs_ctx("No url specified","http"));
+		c->warning(__tr2qs_ctx("No URL specified","http"));
 		return true;
 	}
 
@@ -60,7 +60,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		} else {
 			if(!KviFileDialog::askForSaveFileName(
 					szFileName,
-					__tr2qs_ctx("Choose a save file name","http"),
+					__tr2qs_ctx("Choose a filename to save","http"),
 					QString(),
 					QString(),
 					false,
@@ -182,12 +182,12 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		The event OnHTTPGetTerminated is triggered upon the download completion (both
 		in case of success or failure). If you want a callback command to be triggered
 		instead please use [cmd]http.asyncGet[/cmd].
-		If the url contains a https:// prefix then a SSL connection will be used.
+		If the URL contains a https:// prefix then a SSL connection will be used.
 	@switches:
 		!sw: -a=<auto_file_name> | --auto-file-name=<auto_file_name>
-		Don't show the savefile dialog but determine automatically a file name.
+		Don't show the save file dialog but determine automatically a file name.
 		The file is put in the KVIrc incoming directory and the file name
-		is the processed url.[br]
+		is the processed URL.[br]
 
 		!sw: -e=<existing_file_action> | --existing-file-action=<existing_file_action>
 		Specifies the action to be taken when the local file already exists.[br]
@@ -204,7 +204,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		This is mainly to prevent you from automatically downloading 300 MiB files
 		and to prevent DOS attacks from malicious servers that do not report the Content-length header.[br]
 		If the Content-length header is reported by the server then the transfer is aborted
-		if the length exceedes <max_content_length>.[br]
+		if the length exceeds <max_content_length>.[br]
 		If the Content-length header is missing then the transfer is interrupted when
 		the received data length exceeds <max_content_length>.[br]
 		-m=0 means "accept any content length" (which is the default).[br]
@@ -233,10 +233,10 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		!sw: -w=<flags> | --winctrl
 		This switch controls the creation and visualization of the transfer window.
 		<flags> can be any combination of 'm','n' and 'h'.
-		The flag 'h' causes the window to not be created. The transfer will simply run in background.
+		The 'h' flag causes the window to not be created. The transfer will simply run in background.
 		Note that with 'h' the user has no possibility to interact with the transfer.
-		The flag 'm' causes the transfer window to be created as "minimized". 'm' does nothing
-		if the window alread exists. The flag 'n' causes the window to be NOT activated (brought to top).
+		The 'm' flag causes the transfer window to be created as "minimized". 'm' does nothing
+		if the window already exists. The 'n' flag causes the window to be NOT activated (brought to top).
 
 		!sw: -i=<magic identifier> | --identifier=<magic identifier>
 		This identifier is passed as $3 parameter to the [event:OnHTTPGetTerminated]OnHTTPGetTerminated[/event]
@@ -251,7 +251,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		Do not notify download completion in the notifier window nor in the console.
 
 		!sw: -y | --no-output
-		Supress any output in the file transfer window. This will effectively disable
+		Suppress any output in the file transfer window. This will effectively disable
 		the file transfer window highlighting (so the user will not be alerted by a failed
 		download unless he's really watching the window). This is useful when you're notifying
 		failures in some other way...
@@ -296,7 +296,7 @@ static bool http_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		The only difference is that asyncGet triggers the <callback command> upon completion
 		instead of the global OnHTTPGetTerminated event.
 		The parameters passed to the callback are exactly the same.
-		If the url contains a https:// prefix then a SSL connection will be used.
+		If the URL contains a https:// prefix then a SSL connection will be used.
 	@seealso:
 		[cmd]http.get[/cmd]
 */
