@@ -162,7 +162,7 @@ void LogFile::getText(QString & szText)
 			gzclose(file);
 			szText = QString::fromUtf8(data);
 		} else {
-			qDebug("Cannot open compressed file %s",szLogName.toLocal8Bit().data());
+			qDebug("Can't open compressed file %s",szLogName.toLocal8Bit().data());
 		}
 	} else {
 #endif
