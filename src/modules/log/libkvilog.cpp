@@ -51,7 +51,7 @@
 		[cmd]log.start[/cmd], [cmd]log.stop[/cmd], [cmd]log.flush[/cmd],
 		[fnc]$log.file[/fnc]().[br]
 		NOTE:[br]
-		If you want to AUTOENABLE logging in certain types of windows
+		If you want to [b]auto enable[/b] logging in certain types of windows
 		you have to use the [cmd]option[/cmd] command.[br]
 		For example, [b]option boolAutoLogQueries 1[/b] enables logging in all the newly created
 		query windows.
@@ -76,8 +76,8 @@
 		filename is used.[br]
 		If the -p switch is used, all the already existing contents of the window are
 		stored to the log file before starting the log action.[br]
-		Please note that some windows do not have logging capabilities...this command
-		will print a warning in that case.[br]
+		Please note that some windows do not have logging capabilities...[br]
+		This command will print a warning in that case.[br]
 	@seealso:
 		[fnc]$window[/fnc],
 		[cmd]log.stop[/cmd],
@@ -183,8 +183,8 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 	@description:
 		Flushes the log file the current window or in the window specified by the -w switch.[br]
 		If logging is not enabled in the specified window, this command does nothing.[br]
-		If this command is never used, the log file is flushed at regulear file-size intervals,
-		depending on the underlying IO subsystem. This is usually 4KiB.[br]
+		If this command is never used, the log file is flushed at regular file-size intervals,
+		depending on the underlying I/O subsystem. This is usually 4KiB.[br]
 		The "block flushing" is used to achieve a fast I/O on files, but may cause
 		the last data block to be lost in case of a program crash.[br]
 	@seealso:
