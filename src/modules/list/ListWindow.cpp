@@ -296,10 +296,10 @@ void ListWindow::requestList()
 			m_pConsole->connection()->sendFmtData("list %s",m_pConsole->connection()->encodeText(parms.ptr()).data());
 		}
 
-		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request, waiting for reply..."));
+		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request: waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot request list: No active connection"));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Can't request list: no active connection"));
 	}
 }
 
@@ -310,7 +310,7 @@ void ListWindow::stoplistdownload()
 		m_pConsole->connection()->sendFmtData("list stoplistdownloadnow");
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Stopping the list download...")); //G&N mar 2005
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot stop list download, no active connection."));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Can't stop list download: no active connection."));
 	}
 }
 
@@ -325,7 +325,7 @@ void ListWindow::connectionStateChange()
 			m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
-		m_pInfoLabel->setText(__tr2qs("List cannot be requested: Not connected to a server"));
+		m_pInfoLabel->setText(__tr2qs("List cannot be requested: not connected to a server"));
 	}
 }
 
@@ -389,7 +389,7 @@ void ListWindow::exportList()
 		szFile = __tr2qs("Channel list");
 	}
 
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose Filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
 	{
 		if(QFileInfo(szFile).completeSuffix() != "kvc")
 			szFile.append(".kvc");
@@ -413,7 +413,7 @@ void ListWindow::importList()
 {
 	QString szFile;
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose Filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
 	{
 
 		m_pItemList->setAutoDelete(true);
