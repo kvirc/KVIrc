@@ -3,6 +3,7 @@
 //   File : libkvilinks.cpp
 //   Creation date : Thu Dec 21 2000 12:39:12 CEST by Szymon Stefanek
 //
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -40,11 +41,11 @@ KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
 	@title:
 		links.open
 	@short:
-		Opens a Links window
+		Opens a links window
 	@syntax:
 		links.open
 	@description:
-		Opens a "links" window attached to the current IRC context.[br]
+		Opens a links window attached to the current IRC context.[br]
 		The links window handles the RPL_LINKS server replies and shows
 		them in a Tree-View form: this is useful in visualizing the
 		current network connections.[br]
@@ -55,7 +56,7 @@ KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
 		for a "local IRC network"; if you're requesting links from a server that is
 		external to the gateway, the servers internal to the network "behind the gateway"
 		will not be shown; in the extreme case you will see the gateway as leaf node (and it isn't).
-		To see the internal network server tree you might request LINKS from the gateway server.[br]
+		To see the internal network server tree you might request links from the gateway server.[br]
 */
 
 static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
