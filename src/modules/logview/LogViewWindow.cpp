@@ -466,7 +466,7 @@ void LogViewWindow::deleteCurrent()
 		{
 			if(QMessageBox::question(
 				this,
-				__tr2qs_ctx("Confirm current user log deletion","log"),
+				__tr2qs_ctx("Confirm Current User Log Deletion","log"),
 				__tr2qs_ctx("Do you really wish to delete this log?","log"),
 				__tr2qs("Yes"),__tr2qs("No"),0,1) != 0)
 				return;
@@ -482,7 +482,7 @@ void LogViewWindow::deleteCurrent()
 
 	if(QMessageBox::question(
 		this,
-		__tr2qs_ctx("Confirm current user logs deletion","log"),
+		__tr2qs_ctx("Confirm Current User Logs Deletion","log"),
 		__tr2qs_ctx("Do you really wish to delete all these logs?","log"),
 		__tr2qs("Yes"),__tr2qs("No"),0,1) != 0)
 		return;
