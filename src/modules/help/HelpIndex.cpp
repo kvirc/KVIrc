@@ -210,7 +210,7 @@ void HelpIndex::parseDocument( const QString &filename, int docNum )
 {
     QFile file( filename );
     if ( !file.open(QFile::ReadOnly) ) {
-        qWarning( "can not open file %s", qPrintable(filename) );
+        qWarning( "Can't open file %s", qPrintable(filename) );
         return;
     }
 
@@ -395,7 +395,7 @@ QString HelpIndex::getDocumentTitle( const QString &fullFileName )
 
     QFile file( fileName );
     if ( !file.open( QFile::ReadOnly ) ) {
-        qWarning( "cannot open file %s", qPrintable(fileName) );
+        qWarning( "Can't open file %s", qPrintable(fileName) );
         return fileName;
     }
     QTextStream s( &file );
@@ -525,7 +525,7 @@ bool HelpIndex::searchForPattern( const QStringList &patterns, const QStringList
     QString fName = url.toLocalFile();
     QFile file( fName );
     if ( !file.open( QFile::ReadOnly ) ) {
-        qWarning( "cannot open file %s", qPrintable(fName) );
+        qWarning( "Can't open file %s", qPrintable(fName) );
         return false;
     }
 
