@@ -1,7 +1,15 @@
 #/bin/sh
 
-export DEBFULLNAME="Alexander Pozdnyakov"
-export DEBEMAIL="almipo@mail.ru"
+test -z "$DEBFULLNAME" && export DEBFULLNAME="Alexander Pozdnyakov"
+test -z "$DEBEMAIL" && export DEBEMAIL="almipo@mail.ru"
+bin_debuild=$(which debuild 2>/dev/null)
+
+
+if [ ! -x "$bin_debuild" ]
+then
+    echo "Please install debuild (package devscripts)."
+    exit 1
+fi
 
 DIR=$(pwd)
 BUILDDIR="${DIR}/build"
