@@ -1,0 +1,6 @@
+version=3
+
+opts=pasv \
+  ftp://ftp.kvirc.de/pub/kvirc/([\d\.]+)/source/kvirc-([\d\.]+)\.tar\.bz2 \
+  debian git-import-orig
+

@@ -128,6 +128,8 @@ if(MANUAL_REVISION_UNSET)
 else()
 	# Manually forced revision number
 	set(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
+	set(CMAKE_KVIRC_SOURCES_DATE ${MANUAL_SOURCES_DATE})
+	set(CMAKE_KVIRC_SOURCES_DATE_HEX 0x${MANUAL_SOURCES_DATE})
 	message(STATUS "Current revision has been manually set to ${MANUAL_REVISION}")
 endif()
 
