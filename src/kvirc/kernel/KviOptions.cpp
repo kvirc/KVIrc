@@ -340,7 +340,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ShowUserFlagForChannelsInWindowList",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
 	BOOL_OPTION("EnableCustomCursorWidth",false,KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("ShowFavoriteServersOnly",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("RequireControlToCopy",false,KviOption_sectFlagIrcView)
+	BOOL_OPTION("RequireControlToCopy",false,KviOption_sectFlagIrcView),
+	BOOL_OPTION("Send64BitAckInDccRecv",false,KviOption_sectFlagDcc)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
