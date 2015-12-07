@@ -81,7 +81,7 @@
 		With no [-o] switch, this command does not overwrite files.[br]
 		The destination path must already exist: if you want to ensure this, use [cmd]file.mkdir[/cmd] first.[br]
 		The paths (<source> and <destination>) are adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it [i]should[i/] be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
 	@seealso:
 		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
@@ -189,17 +189,16 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 		!sw: -a | --append
 		If the file already exists, append the data instead of overwriting the original contents.
 		!sw: -l | --local-8-bit
-		Causes the file to be written in the local 8 bit character set instead of the
-		default utf8.
+		Causes the file to be written in the local 8-bit character set instead of the default UTF-8.
 	@description:
 		Writes <data> (which is a string of characters) to the file <filename>.[br]
-		It does NOT append a traling LF character: if you want it you must explicitly specify it in the <data> parameter.[br]
+		It does NOT append a trailing LF character: if you want it you must explicitly specify it in the <data> parameter.[br]
 		-a causes the command to append the <data> to the file instead of overwriting the entire file.[br]
 		The path is adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
-		The file is saved in utf8 unless the -l switch is specified (in that case the local 8 bit encoding is used).
-		Please note that utf8 is the only character set that preserves ALL the possible characters
+		The file is saved in UTF-8 unless the -l switch is specified (in that case the local 8-bit encoding is used).
+		Please note that UTF-8 is the only character set that preserves ALL the possible characters
 		with the exception of the null terminator. If you want to write binary data
 		take a look at [fnc]$file.writeBytes[/cmd] instead.
 	@seealso:
@@ -244,10 +243,10 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 	@description:
 		Writes <dataArray> (which must be an array) to the file <filename>.[br]
 		The array should either contain integers between 0 and 255, which will be written as bytes,
-		or strings, which will be written in utf8 encoding.
+		or strings, which will be written in UTF-8 encoding.
 		-a causes the command to append the <data> to the file instead of overwriting the entire file.[br]
 		The path is adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
 	@examples:
 		[example]
@@ -321,7 +320,7 @@ static bool file_kvs_cmd_writeBytes(KviKvsModuleCommandCall * c)
 		This command can also rename directories.[br]
 		If the <newname> file already exists, this command fails.[br]
 		The paths (<oldname> and <newname>) are adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed.Just use UNIX style paths for them.[br]
 	@seealso:
 		[cmd]file.copy[/cmd], [fnc]$file.exists[/fnc]
@@ -361,11 +360,11 @@ static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 		!sw: -q | --quiet
 		Don't complain if the directory cannot be made
 		!sw: -e | --error
-		Fail completly if the directory cannot be made (will stop execution of the script)
+		Fail completely if the directory cannot be made (will stop execution of the script)
 	@description:
 		Creates the <directory>.[br]
 		The path is adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed. Just use an UNIX style path.[br]
 	@seealso:
 		[fnc]$file.exists[/fnc]
@@ -404,7 +403,7 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 		Removes the file <name>.[br]
 		-q suppresses any warning message (about non existing file, for example).[br]
 		The path is adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed. Just use an UNIX style path.[br]
 	@seealso:
 		[fnc]$file.exists[/fnc]
@@ -444,7 +443,7 @@ static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		The directory must be empty for this command to success.[br]
 		-q suppresses any warning message (about non existing directory, for example).[br]
 		The path is adjusted according to the system that KVIrc
-		is running on so you don't have to bother about portability: it *should* be automatically
+		is running on so you don't have to bother about portability: it [i]should[/i] be automatically
 		guaranteed. Just use an UNIX style path.[br]
 	@seealso:
 		[fnc]$file.exists[/fnc]
@@ -477,12 +476,12 @@ static bool file_kvs_cmd_rmdir(KviKvsModuleCommandCall * c)
 		<boolean> $file.exists(<file or directory path:string>)
 	@description:
 		Returns true if the specified file or directory exists.[br]
-		The path should be given in UNIX-style and is adjusted according to the system that KVIrc is running on.[br]
+		The path should be given in UNIX style and is adjusted according to the system that KVIrc is running on.[br]
 	@examples:
 		[example]
 			# Windows
 			echo $file.exists(c:/windows/notepad.exe);
-			# Linux, other unixes
+			# Linux, other UNIX's
 			echo $file.exists(/etc/passwd);
 		[/example]
 */
@@ -511,7 +510,7 @@ static bool file_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns "f" if the <filename> points to a real file, "d" if <filename>
 		is the name of a directory or "l" if it is a symbolic link.[br]
-		The <filename> should be an unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
+		The <filename> should be an UNIX style file path and is adjusted according to the system that KVIrc is running on.[br]
 */
 static bool file_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 {
@@ -543,7 +542,7 @@ static bool file_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the size of the file pointed by <filename>.[br]
 		If the file does not exist, this function returns 0.[br]
-		The <filename> should be an unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
+		The <filename> should be an UNIX style file path and is adjusted according to the system that KVIrc is running on.[br]
 */
 static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 {
@@ -621,11 +620,11 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 		Returns the <filename> adjusted to match the current operating
 		system file path conventions.[br] This means that on UNIX, a path like "C:\folder\file.mp3"
 		will be returned as "/folder/file.mp3" and vice-versa.[br]
-		There is a minor problem with unix paths converted to the windows system: unix
-		has no "drive" concept thus the unix paths do not contain a drive. KVIrc will
+		There is a minor problem with UNIX paths converted to the windows system: UNIX
+		has no "drive" concept thus the UNIX paths do not contain a drive. KVIrc will
 		always map the paths to the "default" C: drive.[br]
 		This is a good reason to avoid using absolute hard-coded paths :).[br]
-		Please note that you DON'T NEED to call this function on paths that you
+		Please note that you [b]don't need[/b] to call this function on paths that you
 		pass to the other file.* functions: they are adjusted automatically.[br]
 	@seealso:
 		[fnc]$file.ps[/fnc]
@@ -675,7 +674,7 @@ static bool file_kvs_fnc_ps(KviKvsModuleFunctionCall * c)
 		<array> $file.ls(<directory:string>,[<flags:string>[,<namefilter:string>]])
 	@description:
 		Returns the listing of the specified directory as an array.[br]
-		The <directory> should be a unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
+		The <directory> should be a UNIX style file path and is adjusted according to the system that KVIrc is running on.[br]
 		<flags> may be a combination of the following characters:[br]
 		d: list directories[br]
 		f: list files[br]
@@ -789,13 +788,13 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		bigger than 1 MiB then you MUST specify the <size>).[br]
 		If you want read binary data (with null bytes inside) then take a look at [fnc]$file.readBytes[/fnc].
 		WARNING: always check the file size before attempting to read a whole file...
-		reading a CDROM iso image may sit down your system :) (and will probably crash while
+		reading a CDROM ISO image may sit down your system :) (and will probably crash while
 		allocating memory, before attempting to read anything)[br]
-		An empty string is returned if a serious error occures.[br]
+		An empty string is returned if a serious error occurs.[br]
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]
 		Flags are actually limited to the single letter 'l'. By default the file
-		is decoded from the utf8 characters set. If 'l' is present the the file
-		is decoded by using the local 8 bit character set instead.
+		is decoded from the UTF-8 characters set. If 'l' is present the the file
+		is decoded by using the local 8-bit character set instead.
 	@examples:
 		[example]
 			echo $file.read(/proc/cpuinfo)
@@ -882,10 +881,10 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		the whole file up to the 1 MiB limit (so if you want to read a file that is
 		bigger than 1 MiB then you MUST specify the <size>).[br]
 		If you want simple text data then take a look at [fnc]$file.read[/fnc].
-		WARNING: always check the file size before attemting to read a whole file...
-		reading a CDROM iso image may sit down your system :) (and will probably crash while
+		WARNING: always check the file size before attempting to read a whole file...
+		reading a CDROM ISO image may sit down your system :) (and will probably crash while
 		allocating memory, before attempting to read anything)[br]
-		An empty array (or just "nothing") is returned if a serious error occures.[br]
+		An empty array (or just "nothing") is returned if a serious error occurs.[br]
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]
 	@examples:
 		[example]
@@ -979,8 +978,8 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 		otherwise the entire file is returned.
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]
 		Flags are actually limited to the single letter 'l'. By default the file
-		is decoded from the utf-8 character set, however if 'l' is present then the file
-		is decoded by the local 8 bit character set instead.
+		is decoded from the UTF-8 character set, however if 'l' is present then the file
+		is decoded by the local 8-bit character set instead.
 		WARNING: Always check the size of the file you're going to read - it is not
 		a good idea attempting to read a 700 MiB binary file with this function since
 		it will probably hang your system and exhaust your virtual memory.
@@ -1073,8 +1072,8 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 		file.writeLines [-l] [-a] [-c] <filename:string> <lines:array>
 	@switches:
 		!sw: -l | --local-8-bit
-		Causes the lines to be saved in local 8 bit character set instead
-		of the default unicode encoding.
+		Causes the lines to be saved in local 8-bit character set instead
+		of the default Unicode encoding.
 		!sw: -a | --append
 		If the file already exists, then the lines are appended to the end
 		instead of overwriting the file.
@@ -1094,7 +1093,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 		The lines are separated by a single linefeed character (see also [fnc]$lf[/fnc])
 		unless the -c or -n switches are used. If the file already exists then it is
 		overwritten with the new data unless the -a switch is used.
-		The lines array is encoded in the ut8 character set unless the -l switch is used.
+		The lines array is encoded in the UTF-8 character set unless the -l switch is used.
 	@seealso:
 		[fnc]$file.readLines[/fnc]
 */
@@ -1169,7 +1168,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		If <relative_path> is passed, then it is appended to the directory path to
 		form a complete filepath.[br]
 		The path is adjusted to contain single separators suitable for the platform
-		that KVIrc is atually running on (thus you do not need to care about path
+		that KVIrc is actually running on (thus you do not need to care about path
 		separators in the <relative_path>, KVIrc will adjust them).[br]
 	@examples:
 		[example]
@@ -1204,10 +1203,10 @@ static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
 		<string> $file.homedir([relative_path:string])
 	@description:
 		Returns the user's HOME directory path.[br]
-		If <relative_path> is passed, then it is appendedto the directory path to
+		If <relative_path> is passed, then it is appended to the directory path to
 		form a complete filepath.[br]
 		The path is adjusted to contain single separators suitable for the platform
-		that KVIrc is atually running on (thus you do not need to care about path
+		that KVIrc is actually running on (thus you do not need to care about path
 		separators in the <relative_path>, KVIrc will adjust them).[br]
 */
 static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
@@ -1242,7 +1241,7 @@ static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
 		If <relative_path> is passed, then it is appended at the end of the directory
 		to form a complete filepath.[br]
 		The path is adjusted to contain single separators suitable for the platform
-		that KVIrc is atually running on (thus you not need to care about path
+		that KVIrc is actually running on (thus you not need to care about path
 		separators in the <relative_path>, KVIrc will adjust them).[br]
 */
 static bool file_kvs_fnc_rootdir(KviKvsModuleFunctionCall * c)
@@ -1314,7 +1313,7 @@ static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 		If <relative_path> is passed, then it is appended to the directory path to
 		form a complete filepath.[br]
 		The path is adjusted to contain single separators suitable for the platform
-		that KVIrc is atually running on (thus you do not need to care about path
+		that KVIrc is actually running on (thus you do not need to care about path
 		separators in the <relative_path>, KVIrc will adjust them).[br]
 	@examples:
 		[example]
@@ -1561,7 +1560,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		[example]
 			# Windows
 			echo $file.time(c:/file.txt);
-			# Linux, other unixes
+			# Linux, other UNIX's
 			echo $file.time(/etc/passwd,a);
 		[/example]
 */

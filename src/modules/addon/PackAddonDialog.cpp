@@ -85,7 +85,7 @@ PackAddonDialog::PackAddonDialog(QWidget * pParent)
 
 	QLabel * pLabel = new QLabel(pPage);
 	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public.","addon"));
+	pLabel->setText(__tr2qs_ctx("This procedure allows you to export the selected addon to a single package.<br>It is useful when you want to distribute your addon to the public.","addon"));
 	pLayout->addWidget(pLabel);
 
 	pLabel = new QLabel(pPage);
@@ -214,7 +214,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pPackageNameEdit = new QLineEdit(this);
-	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed, like MyAddon","addon"));
+	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed in filename","addon"));
 	pLabel->setBuddy(m_pPackageNameEdit);
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
 
@@ -263,7 +263,7 @@ PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pPa
 {
 	setObjectName("addon_package_file_page");
 	setTitle(__tr2qs_ctx("Package Files","addon"));
-	setSubTitle(__tr2qs_ctx("Here you need to select the directory where the addon files are.","addon"));
+	setSubTitle(__tr2qs_ctx("Here you need to select the directory where the addon files to be packed are located.","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
@@ -290,7 +290,7 @@ PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pPa
 {
 	setObjectName("addon_package_save_page");
 	setTitle(__tr2qs_ctx("Save Package","addon"));
-	setSubTitle(__tr2qs_ctx("Here you need to provide the path where to save the addon package","addon"));
+	setSubTitle(__tr2qs_ctx("Here you need to provide the path where to save the created addon package","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
@@ -335,7 +335,7 @@ PackAddonSummaryInfoWidget::PackAddonSummaryInfoWidget(PackAddonDialog * pParent
 {
 	setObjectName("addon_package_summary_info_page");
 	setTitle(__tr2qs_ctx("Final Information","addon"));
-	setSubTitle(__tr2qs_ctx("Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
+	setSubTitle(__tr2qs_ctx("Here are the details you provided. If this information is correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 	m_pLabelInfo = new QLabel(this);
@@ -407,7 +407,7 @@ PackAddonSummaryFilesWidget::PackAddonSummaryFilesWidget(PackAddonDialog * pPare
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Here there are the files I found in the directories you provided.\nIf these and the information showed in the previous page are correct, hit the \"Finish\" button to complete\nthe packaging operations.","addon"));
+	pLabel->setText(__tr2qs_ctx("Here are the files found in the directories you provided.\nIf the files listed below are correct, hit the \"Finish\" button to complete the packaging operation.","addon"));
 	pLayout->addWidget(pLabel);
 
 	m_pFiles = new QTextEdit(this);

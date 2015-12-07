@@ -588,7 +588,7 @@ void KviKvsCallbackFileDialog::done(int code)
 			<callback_command>
 		}
 	@description:
-		Shows an openfile dialog box with the specified <caption>, <initial_selection>, and <file_filter>.[br]
+		Shows an open file dialog box with the specified <caption>, <initial_selection>, and <file_filter>.[br]
 		<mode> can be "open", "openm", "save" or "dir":[br]
 		"open" causes the dialog to return an existing file[br]
 		"openm" is similar to open but allows returning multiple files as a comma separated list[br]
@@ -786,7 +786,7 @@ static bool dialog_kvs_cmd_image(KviKvsModuleCallbackCommandCall * c)
 		$dialog.yesno(<caption:string>,<szText:string>)
 	@description:
 		Shows a simple yes/no dialog. Returns 1 if user clicks "Yes" and 0 if (s)he clicks "No".
-		Please note that this dialog is BLOCKING: it blocks execution of the script
+		Please note that this dialog is [b]blocking[/b]: it blocks execution of the script
 		until the user has selected either YES or NO.
 	@examples:
 	@seealso:
@@ -858,15 +858,15 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 	@type:
 		generic
 	@title:
-		Why there are no blocking dialogs in KVIrc ?
+		Why are there no blocking dialogs in KVIrc?
 	@short:
-		Tecnical answer
+		Technical answer
 	@description:
-		Why there are no blocking dialogs in KVIrc ?[br]
+		Why are there no blocking dialogs in KVIrc?[br]
 		The answer is simple: because they're more confusing and tricky than it seems.[br]
 		Blocking the entire program control flow while showing a dialog is
 		rather a bad idea since we have to deal with external entities (servers and other users)
-		that are NOT blocked. This means that the blocking dialogs must block only the
+		that are [b]not[/b] blocked. This means that the blocking dialogs must block only the
 		script control-flow but let the rest of the application running.
 		Such blocking dialogs actually seem to simplify scripting because
 		the programmer "feels" that the control is always left in the script snippet that he is writing.
@@ -880,7 +880,7 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		[/example]
 		Where $? stands for a blocking input dialog that asks the user for some text.[br]
 		When the input dialog returns the window that the echo was directed to no longer
-		exists and you have no way to stop the echo! (Well...I could add extra code
+		exists and you have no way to stop the echo! (Well... I could add extra code
 		in the executable to handle all these situations but that would be really too expensive).[br]
 		With object scripting this is actually dangerous: you might use a blocking dialog
 		in an object signal handler and when returning discover that this object has been deleted!

@@ -229,7 +229,7 @@ void LinksWindow::endOfLinks()
 			it = insertLink(l);
 			if(!it)
 			{
-				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
+				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
 					l->parent.ptr(),l->host.ptr(),l->hops,l->description.ptr());
 				brokenLinks++;
 				QString szTmp = QString(__tr2qs("%1: Parent link %2")).arg(l->description.ptr(),l->parent.ptr());
@@ -241,7 +241,7 @@ void LinksWindow::endOfLinks()
 					it->setText(1,QString(tmp2.ptr()));
 					it->setText(2,szTmp);
 				} else {
-					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
+					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: no root link was sent by the server, the stats may be invalid."));
 					it = new QTreeWidgetItem(m_pListView);
 					it->setText(0,QString(l->host.ptr()));
 					it->setText(1,QString(tmp2.ptr()));

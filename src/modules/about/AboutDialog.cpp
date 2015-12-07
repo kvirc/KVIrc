@@ -219,7 +219,7 @@ AboutDialog::AboutDialog()
 
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
-		szLicense = __tr2qs_ctx("Oops... Can't find the license file...\n" \
+		szLicense = __tr2qs_ctx("Oops! Can't find the license file.\n" \
 			"It MUST be included in the distribution...\n" \
 			"Please report to <pragma at kvirc dot net>","about");
 	}

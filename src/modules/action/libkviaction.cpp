@@ -137,8 +137,8 @@ static bool action_kvs_cmd_trigger(KviKvsModuleCommandCall * c)
 		otherwise all the toolbar buttons and menu items belonging to this
 		action will get enabled.[br]
 		Since [cmd]action.create[/cmd] command allows specifying contexts
-		for actions and the action engine is able to enable/disable the actions
-		automatically on certain events you will probably never need to use this command.
+		for actions and the action engine is able to enable / disable the actions
+		automatically on certain events you will probably never need to use this command.[br]
 		If the -q switch is specified the command runs in quiet mode and
 		does not print warnings if the action is not defined.
 	@seealso:
@@ -356,7 +356,6 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		[cmd]action.destroy[/cmd], [cmd]action.trigger[/cmd]
 	@examples:
 		[example]
-
 		[/example]
 */
 
@@ -522,7 +521,7 @@ static bool action_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"action",                                                      // module name
+	"action",                                                       // module name
 	"4.0.0",                                                        // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Interface to the system actions",

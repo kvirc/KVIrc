@@ -3,7 +3,7 @@
 //   File : libkvichan.cpp
 //   Creation date : Sun Feb 02 2002 05:27:11 GMT by Szymon Stefanek
 //
-//   This chan is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2002 Szymon Stefanek (pragma@kvirc.net)
 //   Copyright (C) 2002 Juanjo Alvarez  (juanjux@yahoo.es)
 //   Copyright (C) 2004-2010 Szymon Stefanek (pragma@kvirc.net)
@@ -175,7 +175,7 @@ static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 		The topic is returned as it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get an empty string (the topic is not yet known).[br]
-		This function works also on dead channels altough the topic returned is the last
+		This function works also on dead channels although the topic returned is the last
 		topic seen while the channel wasn't dead.[br]
 */
 static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
@@ -208,7 +208,7 @@ static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
 		The topic author nickname is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get an empty string (the topic is not yet known).[br]
-		This function works also on dead channels altough the information returned is the last
+		This function works also on dead channels although the information returned is the last
 		information seen while the channel wasn't dead.[br]
 */
 static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
@@ -241,7 +241,7 @@ static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
 		The topic set time is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get an empty string (the topic is not yet known).[br]
-		This function works also on dead channels altough the information returned is the last
+		This function works also on dead channels although the information returned is the last
 		information seen while the channel wasn't dead.[br]
 */
 static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
@@ -1420,7 +1420,7 @@ static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.matchban
 	@short:
-		Matches a mask agains the channel ban list
+		Matches a mask against the channel ban list
 	@syntax:
 		<string> $chan.matchban([window_id],<complete_mask>)
 	@description:
@@ -1473,7 +1473,7 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.matchbanexception
 	@short:
-		Matches a mask agains the channel ban exception list
+		Matches a mask against the channel ban exception list
 	@syntax:
 		<string> $chan.matchbanexception([window_id],<complete_mask>)
 	@description:
@@ -1526,7 +1526,7 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.matchinvite
 	@short:
-		Matches a mask agains the channel invite list
+		Matches a mask against the channel invite list
 	@syntax:
 		<string> $chan.matchinvite([window_id:string],<complete_mask>)
 	@description:
@@ -1579,7 +1579,7 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.matchqban
 	@short:
-		Matches a mask agains the channel ban list searcing for +q bans (aka mute bans)
+		Matches a mask against the channel ban list searching for +q bans (aka mute bans)
 	@syntax:
 		<string> $chan.matchqban([window_id],<complete_mask>)
 	@description:
@@ -1639,15 +1639,15 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.matchmask
 	@short:
-		Matches a mask agains the channel list for a specific mode
+		Matches a mask against the channel list for a specific mode
 	@syntax:
 		<string> $chan.matchmask(<mode:char>,<complete_mask:string>[,window_id])
 	@description:
-		Matches the provided <complete_mask> agains the mask list for channel mode <mode> on the channel identified by [window_id].[br]
+		Matches the provided <complete_mask> against the mask list for channel mode <mode> on the channel identified by [window_id].[br]
 		If no mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		Please note that some irc servers use channel list modes not only to store masks, but also for other data such
+		Please note that some IRC servers use channel list modes not only to store masks, but also for other data such
 		as nicknames. This function should be able to match them as long as they are strings.[br]
 */
 static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
@@ -1740,7 +1740,7 @@ static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<integer> $chan.userJoinTime(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns the unix time at which the user specified by <nickname> has joined the channel specified by <window_id>.[br]
+		Returns the UNIX time at which the user specified by <nickname> has joined the channel specified by <window_id>.[br]
 		If <window_id> is not passed, the current window is used.[br]
 		If the specified window is not a channel, a warning is printed and '0' is returned.[br]
 		'0' is also returned when the user's join time is unknown: this is true
@@ -1775,7 +1775,7 @@ static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<integer> $chan.userLastActionTime(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns the unix time at which the user specified by <nickname> has performed
+		Returns the UNIX time at which the user specified by <nickname> has performed
 		some kind of action on the channel specified by <window_id>.[br]
 		If <window_id> is not passed, the current window is used.[br]
 		If the specified window is not a channel, a warning is printed and '0' is returned.[br]

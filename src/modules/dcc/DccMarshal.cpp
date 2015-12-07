@@ -578,7 +578,7 @@ void DccMarshal::doSSLHandshake(int)
 
 	if(!m_pSSL)
 	{
-		qDebug("Ops... I've lost the SSL class ?");
+		qDebug("Oops! I've lost the SSL class?");
 		reset();
 		emit error(KviError::InternalError);
 		return; // ops ?
@@ -636,7 +636,7 @@ void DccMarshal::doSSLHandshake(int)
 		break;
 	}
 #else  //!COMPILE_SSL_SUPPORT
-	qDebug("Ops.. ssl handshake without ssl support!...aborting!");
+	qDebug("Oops! SSL handshake without SSL support! Aborting!");
 	exit(-1);
 #endif //!COMPILE_SSL_SUPPORT
 }

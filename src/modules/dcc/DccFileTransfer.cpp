@@ -42,7 +42,6 @@
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviThread.h"
 #include "KviIrcSocket.h"
 #include "KviMediaManager.h"
@@ -366,8 +365,8 @@ void DccRecvThread::run()
 						// Readed something useful...write back
 						if(((uint)(readLen + m_pFile->pos())) > m_pOpt->uTotalFileSize)
 						{
-							postMessageEvent(__tr_no_lookup_ctx("WARNING: The peer is sending garbage data past the end of the file","dcc"));
-							postMessageEvent(__tr_no_lookup_ctx("WARNING: Ignoring data past the declared end of file and closing the connection","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: the peer is sending garbage data past the end of the file","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: ignoring data past the declared end of file and closing the connection","dcc"));
 
 							readLen = m_pOpt->uTotalFileSize - m_pFile->pos();
 							if(readLen > 0)
@@ -408,7 +407,7 @@ void DccRecvThread::run()
 						} else {
 							// Must send the ack... the peer must close the connection
 
-							// We tollerate ack errors if we're in the last 90% of the file.
+							// We tolerate ack errors if we're in the last 90% of the file.
 							// It might be that we're slow with receiving data but the server
 							// has already closed the connection (buggy server though).
 
@@ -445,7 +444,7 @@ void DccRecvThread::run()
 							switch(m_pSSL->getProtocolError(readLen))
 							{
 								case KviSSL::ZeroReturn:
-									//check eagain not necessary a connection closure!
+									//check again not necessary a connection closure!
 									//if (!handleInvalidSocketRead(readLen)
 									// break;
 									readLen = 0;
@@ -923,7 +922,7 @@ void DccSendThread::run()
 
 								} else {
 									KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
-									e->setData(new KviCString(__tr2qs_ctx("WARNING: Received data in a DCC TSEND, there should be no acknowledges","dcc")));
+									e->setData(new KviCString(__tr2qs_ctx("WARNING: received data in a DCC TSEND, there should be no acknowledges","dcc")));
 									postEvent(parent(),e);
 								}
 							}
@@ -2245,7 +2244,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 			if(_OUTPUT_VERBOSE)
 				outputAndLog(
 						KVI_OUT_DCCMSG,
-						__tr2qs_ctx("Invalid RESUME request: Invalid file name (got '%1' but should be '%2')","dcc")
+						__tr2qs_ctx("Invalid RESUME request: invalid file name (got '%1' but should be '%2')","dcc")
 								.arg(filename)
 								.arg(m_pDescriptor->szFileName)
 					);
@@ -2268,7 +2267,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 
 	if(iLocalFileSize <= filePos)
 	{
-		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: Position %1 is larger than file size","dcc").arg(filePos));
+		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: position %1 is larger than file size","dcc").arg(filePos));
 		return false;
 	}
 
@@ -2310,7 +2309,7 @@ DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent
 	m_pTransfer = t;
 	int iVal = m_pTransfer->bandwidthLimit();
 
-	QString szText = __tr2qs_ctx("Configure bandwidth for DCC transfer %1","dcc").arg(t->id());
+	QString szText = __tr2qs_ctx("Configure Bandwidth for DCC Transfer %1","dcc").arg(t->id());
 	setWindowTitle(szText);
 
 	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to","dcc") : __tr2qs_ctx("Limit download bandwidth to","dcc");

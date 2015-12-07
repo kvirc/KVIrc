@@ -2,7 +2,7 @@
 #define _KVI_DIALOG_H_
 //=============================================================================
 //
-//   File : libkvidialog.cpp
+//   File : libkvidialog.h
 //   Creation date : Sat Sep 15 2001 01:13:25 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

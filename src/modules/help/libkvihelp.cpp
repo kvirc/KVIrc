@@ -59,9 +59,9 @@ KviPointerList<HelpWindow> * g_pHelpWindowList = 0;
 		the document is searched in the KVIrc documentation directory.[br]
 		If no document has been found using absolute and relative paths,
 		the first document matching [document] in the help search database
-		is shown. Otherway, an error page is displayed.
-		The help browser has limited html browsing capabilities: you can
-		use it to view simple html files on your filesystem.[br]
+		is shown. Otherwise, an error page is displayed.
+		The help browser has limited HTML browsing capabilities: you can
+		use it to view simple HTML files on your filesystem.[br]
 		This command is exported by the "help" module.
 	@switches:
 		!sw: -m | --mdi

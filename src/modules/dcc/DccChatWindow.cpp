@@ -42,7 +42,6 @@
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviThread.h"
 #include "KviIrcSocket.h"
 #include "kvi_settings.h"
@@ -294,7 +293,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 {
 	if(!m_pSlaveThread)
 	{
-		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Can't send data: no active connection","dcc"));
 		return;
 	}
 
@@ -340,7 +339,7 @@ void DccChatWindow::ownMessage(const QString &text, bool bUserFeedback)
 					{
 						QString szErr = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs_ctx("The crypto engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
+							__tr2qs_ctx("The encryption engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
 							&text,&szErr);
 					}
 					break;
@@ -398,7 +397,7 @@ void DccChatWindow::ownAction(const QString &text)
 		m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
 	} else {
-		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: no active connection","dcc"));
 	}
 }
 
@@ -473,7 +472,7 @@ bool DccChatWindow::event(QEvent *e)
 								{
 									QString szErr = cinf->m_pEngine->lastError();
 									output(KVI_OUT_SYSTEMERROR,
-										__tr2qs_ctx("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q","dcc"),
+										__tr2qs_ctx("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q","dcc"),
 										&szErr);
 								}
 								break;

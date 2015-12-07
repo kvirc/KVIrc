@@ -262,7 +262,7 @@ void ScriptEditorWidget::insertCompletion(const QString & szCompletion)
 void ScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
 	QMenu * pMenu = createStandardContextMenu();
-	pMenu->addAction(__tr2qs_ctx("Context sensitive help","editor"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
+	pMenu->addAction(__tr2qs_ctx("Context Sensitive Help","editor"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
 	pMenu->addAction(__tr2qs_ctx("&Replace","editor"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
 	pMenu->exec(e->globalPos());
 	delete pMenu;
@@ -1085,7 +1085,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 
 	QLabel * m_pFindLabel = new QLabel(this);
 	m_pFindLabel->setObjectName("findlabel");
-	m_pFindLabel->setText(__tr2qs_ctx("Word to Find","editor"));
+	m_pFindLabel->setText(__tr2qs_ctx("Word to find","editor"));
 	pLayout->addWidget(m_pFindLabel,0,0);
 
 	m_pFindLineEdit = new QLineEdit(this);

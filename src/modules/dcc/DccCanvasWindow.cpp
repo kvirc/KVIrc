@@ -45,7 +45,6 @@
 	#include "KviConsoleWindow.h"
 	#include "KviMainWindow.h"
 	#include "KviMemory.h"
-	#include "KviMemory.h"
 	#include "KviThread.h"
 	#include "KviIrcSocket.h"
 	#include "kvi_settings.h"
@@ -276,7 +275,7 @@
 	void DccCanvasWindow::handleMarshalError(int err)
 	{
 		QString sss = KviError::getDescription(err);
-		output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&sss);
+		output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC failed: %Q","dcc"),&sss);
 	}
 
 	void DccCanvasWindow::connected()
