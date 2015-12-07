@@ -4,7 +4,7 @@
 #
 # Generator for OptionsInstanceManager.h and OptionsInstanceManager.cpp
 #
-# This file is part of the KVirc irc client distribution
+# This file is part of the KVirc IRC client distribution
 # Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 #
 #################################################################################
@@ -22,7 +22,7 @@ cat >> OptionsInstanceManager.h <<EOF
 //
 //   File : OptionsInstanceManager.h
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVirc IRC client distribution
 //   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -116,7 +116,7 @@ cat >> OptionsInstanceManager.cpp <<EOF
 //
 //   File : OptionsInstanceManager.cpp
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVirc IRC client distribution
 //   Copyright (C) 2001-2008 Szymon Stefanek (stefanek@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
