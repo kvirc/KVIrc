@@ -122,11 +122,10 @@
 
   Additionally if you are compiling KVIRC with Qt5.x install:
 
-      $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev \
-        libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev \
+      $ sudo apt-get install libqt5svg5-dev libqt5webkit5-dev \
         libqt5x11extras5-dev qtbase5-dev qtmultimedia5-dev
 
-  Note: You can install QT5.x and QT4.x libraries side by side.
+  Note: You can install Qt5.x and Qt4.x libraries side by side.
   You may want to only install a preferred Qt version instead of both at same time.
   Then to try a different Qt version, uninstall one before installing the other, e.g.
 
@@ -172,17 +171,6 @@
 
   If you want to compile the KDE integration support, you obviously need KDE.
   The kdelibs package should suffice.
-
-  So before running CMake make sure that the environment variable $KDEDIR
-  points to the right location.
-
-  You might eventually set it with the command:
-
-      $ export KDEDIR="your KDE dir"
-
-  Where KDE is for e.g. installed in /usr use:
-
-      $ export KDEDIR=/usr
 
   Note: Compiling with KDE4 support enabled will force KVIrc to
   link against the Qt4 version that KDE4 is using. This may lead to problems
