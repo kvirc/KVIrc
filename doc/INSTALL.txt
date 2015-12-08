@@ -122,7 +122,9 @@
 
   Additionally if you are compiling KVIRC with Qt5.x install:
 
-      $ sudo apt-get install libqt5svg5-dev libqt5webkit5-dev \
+      $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev \
+        libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev \
+        phonon4qt5-backend-gstreamer libqt5svg5-dev libqt5webkit5-dev \
         libqt5x11extras5-dev qtbase5-dev qtmultimedia5-dev
 
   Note: You can install Qt5.x and Qt4.x libraries side by side.
