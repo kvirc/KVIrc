@@ -725,7 +725,7 @@ defpopup(dcc)
 		dcc.send $0
 	}
 
-	item($tr("Secure send to","defscript") $0,78)
+	item($tr("Secure Send to","defscript") $0,78)
 	{
 		dcc.send -s $0
 	}
@@ -1472,7 +1472,7 @@ defpopup(channel)
 			kb $0
 		}
 
-		item($tr("Kick/Ban","defscript") %:visible $tr("With...","defscript"),110) (%:bCanKB)
+		item($tr("Kick/Ban","defscript") %:visible $tr("with...","defscript"),110) (%:bCanKB)
 		{
 			dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason","defscript"),$tr("Enter a kick/ban reason","defscript"),$tr("&Kick/Ban","defscript"),$tr("Cancel","defscript"),,$0)
 			{
@@ -1485,7 +1485,7 @@ defpopup(channel)
 
 		separator
 
-		item($tr("Configure ban mask...","defscript"),20)
+		item($tr("Configure Ban Mask...","defscript"),20)
 		{
 			options.edit OptionsWidget_channelAdvanced
 		}
