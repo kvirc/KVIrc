@@ -3,8 +3,8 @@
 //=============================================================================
 //
 //   File : KvsObject_lcd.h
-//   Creation date : Mon Gen 27 14:30:48 CEST 2005 by Tonino Imbesi(Grifisx)
-//         and Alessandro Carbone(Noldor)
+//   Creation date : Mon Gen 27 14:30:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2005 Alessandro Carbone (elfonol at gmail dot com)

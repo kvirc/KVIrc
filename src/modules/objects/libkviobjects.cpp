@@ -629,7 +629,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	@type:
 		function
 	@title:
-			$objects.dump
+		$objects.dump
 	@keyterms:
 		dump objects
 	@short:

@@ -73,8 +73,8 @@ static const int mode_cod[] =  {
 		!fn: $setEchoMode(<echo_mode:string>)
 		Sets the line edit's echo mode. Possible value are:[br]
 		-Normal: display chars as they entered[br]
-		-Noecho : do not display anything[br]
-		-Password : display asterisks instead of the characters actually entered[br]
+		-Noecho: do not display anything[br]
+		-Password: display asterisks instead of the characters actually entered[br]
 		See also [classfnc]$echoMode[/classfnc]().
 		!fn: <string> $echoMode()
 		Return the line edit's echo mode.
@@ -129,37 +129,38 @@ static const int mode_cod[] =  {
 		!fn: $setDragEnabled(<bEnabled:bool>)
 		With this property user can drag text in the lineedit.
 		!fn: $setReadOnly(<bReadonly:boolean>)
-		Sets the lineedit to read only mode.
+		Sets the lineedit to read-only mode.
 		!fn: $setInputMask(<mask:string>)
 		Sets the validation input mask to inputMask.[br]
-		Example:[br]
-		[br]
+		[b]Example:[/b][br]
+		[example]
 		%ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
 		%ledit_example->$setInputMask( "000.000.000.000;_" );[br]
-		%ledit_example->Ip Number Mask.[br]
-		%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );[br]
-		[br]
+		%ledit_example->IP Number Mask.[br]
+		%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );
+		[/example]
 		The mask format understands these mask characters:[br]
-		Character		Meaning[br]
-		A			ASCII alphabetic character required. A-Z, a-z.[br]
-		a			ASCII alphabetic character permitted but not required.[br]
-		N			ASCII alphanumeric character required. A-Z, a-z, 0-9.[br]
-		n			ASCII alphanumeric character permitted but not required.[br]
-		X			Any character required.[br]
-		x			Any character permitted but not required.[br]
-		9			ASCII digit required. 0-9.[br]
-		0			ASCII digit permitted but not required.[br]
-		D			ASCII digit required. 1-9.[br]
-		d			ASCII digit permitted but not required.[br]
-		#			ASCII digit or plus/minus sign permitted but not required.[br]
-		>			All following alphabetic characters are uppercased.[br]
-		<			All following alphabetic characters are lowercased.[br]
-		!			Switch off case conversion.[br]
-		\			Use \ to escape the special characters listed above to use them as separators.[br]
-		[br]
+		[example]
+		[b][comment]Character	Meaning[/comment][/b][br]
+		A	-	ASCII alphabetic character required. A-Z, a-z.[br]
+		a	-	ASCII alphabetic character permitted but not required.[br]
+		N	-	ASCII alphanumeric character required. A-Z, a-z, 0-9.[br]
+		n	-	ASCII alphanumeric character permitted but not required.[br]
+		X	-	Any character required.[br]
+		x	-	Any character permitted but not required.[br]
+		9	-	ASCII digit required. 0-9.[br]
+		0	-	ASCII digit permitted but not required.[br]
+		D	-	ASCII digit required. 1-9.[br]
+		d	-	ASCII digit permitted but not required.[br]
+		#	-	ASCII digit or plus/minus sign permitted but not required.[br]
+		>	-	All following alphabetic characters are uppercased.[br]
+		<	-	All following alphabetic characters are lowercased.[br]
+		!	-	Switch off case conversion.[br]
+		\	-	Use \ to escape the special characters listed above to use them as separators.
+		[/example]
 		The mask consists of a string of mask characters and separators, optionally[br]
-		followed by a semi-colon and the character used for blanks: the blank characters [br]
-		are always removed from the text after editing. The default blank character is space. [br]
+		followed by a semi-colon and the character used for blanks: the blank characters[br]
+		are always removed from the text after editing. The default blank character is space.[br]
 		!fn: $returnPressedEvent()
 		This function is called by the framework when the enter key is pressed.
 		!fn: $lostFocusEvent()
@@ -185,7 +186,6 @@ static const int mode_cod[] =  {
 		This signal is emitted by the default implementation of [classfnc]$lostFocusEvent[/classfnc]().
 		!sg: $textChanged()
 		This signal is emitted by the default implementation of [classfnc]$textChangedEvent[/classfnc]().
-
 */
 
 
@@ -307,7 +307,7 @@ KVSO_CLASS_FUNCTION(lineEdit,setFrame)
 	CHECK_INTERNAL_POINTER(widget())
 	bool bFrame;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bframe",KVS_PT_BOOL,0,bFrame)
+		KVSO_PARAMETER("bFrame",KVS_PT_BOOL,0,bFrame)
 	KVSO_PARAMETERS_END(c)
 	((QLineEdit *)widget())->setFrame(bFrame);
 	return true;
@@ -465,7 +465,7 @@ KVSO_CLASS_FUNCTION(lineEdit,setCompleter)
 	if(KviQString::equalCI(szMode,"InlineCompletion")) mode=QCompleter::InlineCompletion;
 	else if(KviQString::equalCI(szMode,"UnfilteredPopupCompletion")) mode=QCompleter::UnfilteredPopupCompletion;
 	else if(!KviQString::equalCI(szMode,"PopupCompletion"))
-		c->warning(__tr2qs_ctx("Unkonwn '%Q' completition mode, switching to default popupCompletition","objects"),&szMode);
+		c->warning(__tr2qs_ctx("Unknown '%Q' completion mode, switching to default PopupCompletion","objects"),&szMode);
 	m_pCompleter->setCompletionMode(mode);
 	((QLineEdit *)widget())->setCompleter(m_pCompleter);
 	return true;

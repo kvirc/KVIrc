@@ -48,8 +48,8 @@
 	@description:
 		This object organizes buttons in a group.
 	@functions:
-                !fn: <id:integer> $addButton(<checkbutton or radiobutton:object>)
-                Adds the given button to the button group and returns an unique identifier.
+		!fn: <id:integer> $addButton(<checkbutton or radiobutton:object>)
+		Adds the given button to the button group and returns an unique identifier.
 		!fn: <object> $checkedButton()
 		Returns the button group's checked button, or 0 if no buttons are checked.
 */

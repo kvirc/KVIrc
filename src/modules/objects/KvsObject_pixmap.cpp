@@ -50,36 +50,36 @@
 	@description:
 		The pixmap class is an off-screen, pixel-based paint device.
 	@functions:
-		!fn: $fill(<colorname, rgb or hsv array value or [<red>,<green>,<blue>][<hue>,<saturation>,<value>],[opacity],[system color:RGB or HSV])
+		!fn: $fill(<colorname, RGB or HSV array value or [<red>, <green>, <blue>][<hue>, <saturation>, <value>], [opacity], [system color:RGB or HSV])
 		Fills the pixmap with color and opacity.[br]
 		!fn: $resize(<width:integer>,<height:integer>)
 		Resizes the pixmap to w width and h height. Set wh or hg to 0, to have a null pixmap.
-			!fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>])
-			Scales the pixmap or the animation by sx horizontally and sy vertically.
+		!fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>])
+		Scales the pixmap or the animation by sx horizontally and sy vertically.
 		Aspect_ratio values:
 		- IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.
 		- KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.
 		- KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.
 			Default value is KeepAspectRatio.
-			!fn: $load(<file_name:string>)
-			Load a pixmap from the file <file_name>.
-			!fn: $save(<file_name:string>)
-			Save the pixmap or the current animation frame to the file <file_name>.
-			!fn: $loadAnimation(<file_name:string>)
-			Load an animation from the file <file_name> and start it.
-			!fn: $startAnimation()
-			Start the animation.
-			!fn: $stopAnimation()
-			Stop the animation.
+		!fn: $load(<file_name:string>)
+		Load a pixmap from the file <file_name>.
+		!fn: $save(<file_name:string>)
+		Save the pixmap or the current animation frame to the file <file_name>.
+		!fn: $loadAnimation(<file_name:string>)
+		Load an animation from the file <file_name> and start it.
+		!fn: $startAnimation()
+		Start the animation.
+		!fn: $stopAnimation()
+		Stop the animation.
 		!fn: <integer> $height()
-			Return the height of the pixmap or of the animation.
+		Return the height of the pixmap or of the animation.
 		!fn: <integer> $width()
-			Return the width of the pixmap or of the animation.
-			!fn: $frameChangedEvent()
-			This event is triggered by KVIrc when the current animation frame changes.
-		@signals:
-			!sg: $frameChanged()
-			This signal is emitted by the default implementation of [classfnc]$frameChangedEvent[/classfnc]().[br]
+		Return the width of the pixmap or of the animation.
+		!fn: $frameChangedEvent()
+		This event is triggered by KVIrc when the current animation frame changes.
+	@signals:
+		!sg: $frameChanged()
+		This signal is emitted by the default implementation of [classfnc]$frameChangedEvent[/classfnc]().[br]
 
 */
 
@@ -158,12 +158,12 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 	} else {
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 			return true;
 		}
 		if (c->paramCount()<5)
@@ -262,12 +262,12 @@ KVSO_CLASS_FUNCTION(pixmap,setPixel)
 	} else {
 		if(c->paramCount()<5)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 			return true;
 		}
 		if (c->paramCount()<7)
@@ -404,7 +404,7 @@ KVSO_CLASS_FUNCTION(pixmap,mirrored)
 
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bHorizontal",KVS_PT_BOOLEAN,0,bHorizontal)
-	        KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
+	        KVSO_PARAMETER("bVertical",KVS_PT_BOOLEAN,0,bVertical)
 	KVSO_PARAMETERS_END(c)
 	if(m_currentType==Pixmap)
 	{
