@@ -1818,7 +1818,11 @@ void KviIrcServerParser::parseLiteralMode(KviIrcMessage *msg)
 	{
 		parseUserMode(msg,modefl.ptr());
 		if(!msg->haltOutput())
-			msg->console()->output(KVI_OUT_MODE,__tr2qs("You have set user mode %s"),modefl.ptr());
+		{
+			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+				msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_MODE,__tr2qs("You have set user mode %s"),modefl.ptr());
+		}
 	} else {
 		// a channel mode
 		KviChannelWindow * chan = msg->connection()->findChannel(szTarget);
