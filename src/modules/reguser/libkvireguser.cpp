@@ -562,6 +562,7 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 		n - notice ignore[br]
 		d - dcc ignore[br]
 		i - invite ignore[br]
+		h - highlight ignore[br]
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
@@ -597,6 +598,8 @@ static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
 			szFlags+='i';
 		if(u->ignoreFlags() & KviRegisteredUser::Dcc)
 			szFlags+='d';
+		if(u->ignoreFlags() & KviRegisteredUser::Highlight)
+			szFlags+='h';
 		c->returnValue()->setString(szFlags);
 
 	}
