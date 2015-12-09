@@ -213,7 +213,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pRequestButton = new QToolButton(pBox);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
-	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::List))));
+	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Update))));
 	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 
