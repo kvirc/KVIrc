@@ -68,6 +68,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QTimer>
+#include <QtEndian>
 
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS 3000
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS 3
@@ -112,22 +113,29 @@ DccRecvThread::~DccRecvThread()
 	delete m_pTimeInterval;
 }
 
-bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
+bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 {
-	quint32 size = htonl(filePos & 0xffffffff);
+	quint32 ack32 = htonl(filePos & 0xffffffff);
+	quint64 ack64 = qToBigEndian(filePos);
+
+	char * ack = (char*) &ack32;
+	int ackSize = 4;
+
+	if(bUse64BitAck)
+	{
+		ackSize = 8;
+		ack = (char*) &ack64;
+	}
+
 	int iRet=0;
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
-	{
-		iRet = m_pSSL->write((char*)(&size),4);
-	} else {
+		iRet = m_pSSL->write(ack,ackSize);
+	else
 #endif //COMPILE_SSL_SUPPORT
-		iRet = kvi_socket_send(m_fd,(void *)(&size),4);
-#ifdef COMPILE_SSL_SUPPORT
-	}
-#endif //COMPILE_SSL_SUPPORT
+		iRet = kvi_socket_send(m_fd,(void *)(ack),ackSize);
 
-	if(iRet == 4)
+	if(iRet == ackSize)
 		return true; // everything sent
 
 	// When downloading from a fast server using send-ahead via an asymmetric link (such as the
@@ -147,9 +155,6 @@ bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 
 	if(iRet < 0)
 	{
-		if(bTolerateErrors)
-			return true; // ignore at all
-
 		// Reported error. If it's EAGAIN or EINTR then no data has been sent.
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
@@ -196,24 +201,17 @@ bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 	// This will probably throttle the bandwidth usage a bit too.
 	msleep(10);
 
-	int iMissingPart = 4 - iRet;
+	int iMissingPart = ackSize - iRet;
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
-	{
-		iRet = m_pSSL->write(((char*)(&size)) + iRet,iMissingPart);
-	} else {
+		iRet = m_pSSL->write(ack + iRet,iMissingPart);
+	else
 #endif //COMPILE_SSL_SUPPORT
-		iRet = kvi_socket_send(m_fd,(void *)(((char *)(&size)) + iRet),iMissingPart);
-#ifdef COMPILE_SSL_SUPPORT
-	}
-#endif //COMPILE_SSL_SUPPORT
+		iRet = kvi_socket_send(m_fd,(void *)(ack + iRet),iMissingPart);
 
 	if(iRet != iMissingPart)
 	{
-		if(bTolerateErrors)
-			return true; // ignore at all
-
 		// Crap.. couldn't send the missing part of the ack :/
 		postErrorEvent(KviError::AcknowledgeError);
 		return false;
@@ -290,6 +288,8 @@ void DccRecvThread::run()
 
 	m_pFile = new QFile(QString::fromUtf8(m_pOpt->szFileName.ptr()));
 
+	bool bSend64BitAck = m_pOpt->bSend64BitAck && (m_pOpt->uTotalFileSize >> 32);
+
 	if(m_pOpt->bResume)
 	{
 		if(!m_pFile->open(QIODevice::WriteOnly | QIODevice::Append))
@@ -307,7 +307,7 @@ void DccRecvThread::run()
 
 	if(m_pOpt->bSendZeroAck && (!m_pOpt->bNoAcks))
 	{
-		if(!sendAck(m_pFile->pos(),false))
+		if(!sendAck(m_pFile->pos(),bSend64BitAck))
 			goto exit_dcc;
 	}
 
@@ -407,14 +407,7 @@ void DccRecvThread::run()
 						} else {
 							// Must send the ack... the peer must close the connection
 
-							// We tolerate ack errors if we're in the last 90% of the file.
-							// It might be that we're slow with receiving data but the server
-							// has already closed the connection (buggy server though).
-
-							bool bTolerateErrors = (m_pOpt->uTotalFileSize > 0) &&
-								(((quint64)m_pFile->pos()) >= (m_pOpt->uTotalFileSize - (m_pOpt->uTotalFileSize / 10)));
-
-							if(!sendAck(m_pFile->pos(),bTolerateErrors))
+							if(!sendAck(m_pFile->pos(),bSend64BitAck))
 								break;
 						}
 
@@ -2119,6 +2112,7 @@ void DccFileTransfer::connected()
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
 		o->bIsTdcc         = m_pDescriptor->bIsTdcc;
 		o->bSendZeroAck    = KVI_OPTION_BOOL(KviOption_boolSendZeroAckInDccRecv);
+		o->bSend64BitAck   = KVI_OPTION_BOOL(KviOption_boolSend64BitAckInDccRecv);
 		o->bNoAcks         = m_pDescriptor->bNoAcks;
 		o->uMaxBandwidth   = m_uMaxBandwidth;
 		m_pSlaveRecvThread = new DccRecvThread(this,m_pMarshal->releaseSocket(),o);
