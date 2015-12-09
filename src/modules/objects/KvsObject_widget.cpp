@@ -193,10 +193,10 @@ const char * const widgettypes_tbl[] = {
 		All the other widget-type classes inherit from this one.
 	@functions:
 		!fn: $show()
-		Shows this widget and the children.
+		Shows this widget and the child items.
 		See also [classfnc]$hide[/classfnc]() and [classfnc]$isVisible[/classfnc].
 		!fn: $hide()
-		Hides this widget (and conseguently all the children).
+		Hides this widget (and conseguently all the child items).
 		See also [classfnc]$show[/classfnc]() and [classfnc]$isVisible[/classfnc].
 		!fn: $repaint()
 		Repaints the widget directly by calling [classfnc]$paintEvent[/classfnc]() immediately.
@@ -590,7 +590,7 @@ const char * const widgettypes_tbl[] = {
 // ... now that I think about it, it
 // may happen that widget() will be zero here too:
 // If the Qt "physical" widget gets destroyed
-// by some external factor (for example when children
+// by some external factor (for example when child
 // of a wrapper widget destroyed by KVIrc).
 //
 // as a convention:

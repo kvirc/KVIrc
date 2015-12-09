@@ -109,12 +109,12 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Time)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
 	}
 
 	m_pIconButton = new QToolButton(m_pButtonContainer);
@@ -124,7 +124,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)));
 	m_pIconButton->setIcon(is3);
-	KviTalToolTip::add(m_pIconButton,__tr2qs("Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
+	KviTalToolTip::add(m_pIconButton,__tr2qs("Show icons popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
 	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer);
@@ -150,7 +150,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::IrcView)),QIcon::Normal,QIcon::On);
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),QIcon::Normal,QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
-	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Return&gt;");
+	QString szTip = __tr2qs("Multi-line editor<br>&lt;Alt+Return&gt;");
 	KviTalToolTip::add(m_pMultiEditorButton,szTip);
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multiLineEditorButtonToggled(bool)));
@@ -403,13 +403,13 @@ void KviInput::applyOptions()
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Time)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
 		m_pHistoryButton->disconnect(SIGNAL(clicked()));
 	}
 
@@ -461,7 +461,7 @@ void KviInput::toggleMultiLine()
 		work just like in any other script editor. This means that anything that
 		starts with a $ is a function call, anything that starts with a % is a variable,
 		the dash characters after command names are interpreted as switches and ; is the
-		command separator. This in turn does NOT allow you to type "/me is happy ;)"
+		command separator. This in turn does [b]not[/b] allow you to type "/me is happy ;)"
 		because ; is the command separator and ) will be interpreted as the beginning
 		of the next command. In KVS mode you obviously have to escape the ; character
 		by typing "/me is happy \;)". The user friendly mode is good for everyday chatting

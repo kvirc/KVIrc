@@ -66,11 +66,11 @@
 		[big]Basic concepts[/big]
 
 		Objects are arranged in tree structures.
-		Each object that you create is either toplevel object or a children
+		Each object that you create is either toplevel object or a child
 		of another object. A toplevel object is a parentless one.
-		Obviously all objects can have children objects.[br][br]
+		Obviously all objects can have child objects.[br][br]
 
-		When an object is destroyed, all its children are also destroyed.
+		When an object is destroyed, all its child objects are also destroyed.
 		The toplevel objects are automatically destroyed when KVIrc quits.
 		The objects are global to the entire application (this is different
 		from previous KVIrc releases where the objects were local
@@ -84,7 +84,7 @@
 
 		Each object is identified by an [b]OPAQUE UNIQUE ID[/b].
 		The ID is assigned by KVIrc and can be held in any variable.
-		You can think the object id as a "handle for the object" or the object's pointer.
+		You can think the object ID as a "handle for the object" or the object's pointer.
 		Any action performed on the object will require its ID.[br][br]
 
 		[big]Creation and destruction[/big]
@@ -99,7 +99,7 @@
 		[/example]
 		[fnc]$new[/fnc]() returns the ID of the newly created object, or
 		the STRING "0" if the object creation fails
-		(it is a string because the object id's are generally strings, and 0 is an "invalid object id").
+		(it is a string because the object ID's are generally strings, and 0 is an "invalid object ID").
 		In well written scripts it is not common that the object creation fails, anyway
 		you can check if the creation has failed in the following way:[br]
 		[example]
@@ -110,7 +110,7 @@
 		[example]
 			[cmd]if[/cmd](%myobject == %anotherobject)[cmd]echo[/cmd] "This is the same object!";
 		[/example]
-		The parent object id is optional, if not specified it is assumed to be 0.
+		The parent object ID is optional, if not specified it is assumed to be 0.
 		The object name is optional, but it may help you later in finding the object.[br][br]
 
 		To destroy an object use the [cmd]delete[/cmd] command. (In previous versions
@@ -118,7 +118,7 @@
 		[example]
 			[cmd]delete[/cmd] %myobject
 		[/example]
-		If the destroyed object has children objects, these are destroyed too.[br][br]
+		If the destroyed object has child objects, these are destroyed too.[br][br]
 
 		[big]Fields: objects as pseudo-structures[/big]
 
@@ -229,14 +229,14 @@
 		[/example]
 		Another cool function exported by the [class:object]object[/class] class is the
 		[classfnc:object]$children[/classfnc]() function.
-		It returns a comma separated list of children identifiers.[br]
+		It returns a comma separated list of child identifiers.[br]
 		[example]
 			%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
 			%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child1)
 			%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child2)
 			%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child3)
-			[cmd]echo[/cmd] The object's children list is: %tmp-&gt;[classfnc:object]$children[/classfnc]()
-			# Destroy the object and the children
+			[cmd]echo[/cmd] The object's child list is: %tmp-&gt;[classfnc:object]$children[/classfnc]()
+			# Destroy the object and the child
 			[cmd]delete[/cmd] %tmp
 		[/example]
 		There are two special functions for each objects: the "constructor" and the "destructor".
@@ -267,20 +267,20 @@
 					[cmd]echo[/cmd] Children : %t-&gt;[classfnc:object]$name[/classfnc]() with class %t-&gt;[classfnc:object]$class[/classfnc]()
 					%count++
 				}
-				[cmd]echo[/cmd] Just before destroying my %count children.
+				[cmd]echo[/cmd] Just before destroying my %count child items.
 			}
-			# Destroy the object and the children
+			[comment]//Destroy the object and it's child items[/comment]
 			[cmd]delete[/cmd] %tmp
 		[/example]
 
 		In the example above four objects have been created.
-		A "parent" object named "myobject", and three children objects.
+		A "parent" object named "myobject", and three child objects.
 		The destructor has been reimplemented for each child object,
 		to make it "say" its name (Please note the usage of [fnc]$this[/fnc]).
-		In the parent destructor the children have been counted and listed.[br]
+		In the parent destructor the child objects have been counted and listed.[br]
 		Then the parent object is destroyed causing to:[br]
 		- trigger the parent destructor.[br]
-		- destroy all the children (and consequently trigger all the "individual" destructors).[br][br]
+		- destroy all the child items (and consequently trigger all the [i]individual[/i] destructors).[br][br]
 
 		Not all the object functions must return a value:
 		If a function does not return a meaningful value, or you just want to ignore it, you can call it in the following way:[br]
@@ -430,7 +430,7 @@
 		"To override" means "to reimplement": if you call %object-&gt;$sayhello() and %object
 		contains the ID of an instance of class "localizedhelloworld", the new implementation of that function will be called (executed).
 		The inherited sayhello was able to say "hello world" only in English, so we can still use it in the new implementation
-		without rewriting its contents. So if the language set is "not Italian" we assume that it is English and
+		without rewriting its contents. So if the language set is not Italian we assume that it is English and
 		call the [b]base class implementation[/b].[br]
 		[example]
 			[fnc]$this[/fnc]-&gt;$helloworld:sayhello()
@@ -439,11 +439,11 @@
 			[comment]# and to $$-&gt;$helloworld::sayhello()[/comment]
 		[/example]
 		otherwise the language is Italian and we say "hello" in Italian :).
-		So, to call a base class implementation of a function we "prepend" the base class name before the function name in the call.
+		So, to call a base class implementation of a function we prepend the base class name before the function name in the call.
 		The base class name could be also [class]object[/class] in this case, but the [class]object[/class] class has no "sayhello" function defined
 		so it would result in an error.[br][br]
 		In the above example, all the values of [fnc]$this[/fnc]-&gt;%language
-		that are not equal to "italian" are assumed to be "English".
+		that are not equal to Italian are assumed to be English.
 		This is not always true, for example, just after the object creation the %language variable field
 		is effectively empty. The above class works correctly in this case, but we might want to have always
 		a coherent state of the field variables, so we need another concept: the class [b]constructor[/b]
@@ -490,7 +490,7 @@
 		In derived classes you can override the constructor to setup your object's state.[br]
 		You should [b]always call the base class constructor[/b] in your overridden one, to setup
 		the base class state, and propagate its return value (eventually modified if the base class
-		constructor is succesfull but your derived class initialization fails).[br]
+		constructor is successful but your derived class initialization fails).[br]
 		This very basic example will illustrate how to do this (please read the paragraph about inheriting classes
 		above first):[br]
 		[example]
@@ -579,7 +579,7 @@
 		See also [classfnc]$startTimer[/classfnc]()
 		and [classfnc]$killTimer[/classfnc]().
 		!fn: $startTimer(<timeout>)
-		Starts a builtin timer for this object and returns its timer id
+		Starts a builtin timer for this object and returns its timer ID
 		as a string or '-1' if <timeout> was invalid.
 		The [classfnc]$timerEvent[/classfnc]() handler function
 		will be called every <timeout> milliseconds until the timer is stopped by $killTimer().
@@ -591,8 +591,7 @@
 		Returns the first child that matches <class> and <name>.
 		If <class> is an empty string, any class matches,
 		if <name> is an empty string, any name matches.
-		This function traverses the entire tree of children
-		but is NOT recursive.
+		This function traverses the entire child tree but is [b]not[/b] recursive.
 		!fn: $childCount()
 		Returns the number of child objects
 		!fn: $emit(<signal_name>[,parameters])

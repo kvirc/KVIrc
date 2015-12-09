@@ -85,7 +85,7 @@ const char * const itemflags_tbl[] = {
 		Returs the text of the specified column.
 		!fn: $setPixmap(<column:integer>,<pixmap:hobject or imageID>)
 		Sets the pixmap in column column to pm, if pm is non-null and different from the current pixmap, and if column is non-negative.
-		Pixmap can be a KVIrc imageid, an image file or a [class]pixmap[/class] object.
+		Pixmap can be a KVIrc image ID, an image file or a [class]pixmap[/class] object.
 		!fn: $setItemEditable(<bEnabled:boolean>)
 		If bEnabled is true (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.
 		!fn: $isItemEditable()
@@ -95,14 +95,14 @@ const char * const itemflags_tbl[] = {
 		!fn: $isEnabled()
 		Returns $true if this item is enabled and $false otherwise.
 		!fn: $setOpen(<bOpen:boolean>)
-		Opens or closes the item to show its children items.
+		Opens or closes the item to show its child items.
 		!fn: $isOpen()
 		Returns the open state of this item
 		!fn: $setCheckable(<bCheckable:boolean>)
 		Makes this item checkable or not. This function should be called immediately
 		after the item creation: changing this property later at runtime may have
 		strange results (like the item being moved inside the list, text disappearing,
-		hidden children etc... don't do it :D ).
+		hidden child items etc... don't do it :D ).
 		!fn: $isCheckable()
 		Returns $true if this item is checkable and $false otherwise
 		!fn: $setChecked(<bChecked:boolean>)
@@ -166,7 +166,7 @@ bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 {
 	if (!parentObject())
 	{
-		pContext->error(__tr2qs_ctx("The listviewitem cannot be parentless","objects"));
+		pContext->error(__tr2qs_ctx("The listviewitem can't be parentless","objects"));
 		return false;
 	}
 	if(parentObject()->inheritsClass("listviewitem"))

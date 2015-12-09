@@ -131,7 +131,7 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 					"you have deactivated the anti-flood system: in this case turning off this option " \
 					"might help if you often get attacked by CTCP floods.</center>","options"));
 
-	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Maximum number of DCC sessions","options"),KviOption_uintMaxDccSlots,0,1000,64);
+	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Maximum number of DCC sessions:","options"),KviOption_uintMaxDccSlots,0,1000,64);
 	mergeTip(u,__tr2qs_ctx("<center>This is the maximum number of concurrent DCC sessions " \
 					"and it includes all the DCC types (send, chat, recv...). " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
@@ -243,19 +243,19 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Limits","options"));
 
 	KviTalHBox * hb = new KviTalHBox(g);
-	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to","options"),KviOption_boolLimitDccSendSpeed);
+	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to:","options"),KviOption_boolLimitDccSendSpeed);
 	KviUIntSelector * u = addUIntSelector(hb,"",KviOption_uintMaxDccSendSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	hb = new KviTalHBox(g);
-	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to","options"),KviOption_boolLimitDccRecvSpeed);
+	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to:","options"),KviOption_boolLimitDccRecvSpeed);
 	u = addUIntSelector(hb,"",KviOption_uintMaxDccRecvSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 
-	u = addUIntSelector(g,__tr2qs_ctx("Maximum number of DCC transfers","options"),KviOption_uintMaxDccSendTransfers,0,1000,10);
+	u = addUIntSelector(g,__tr2qs_ctx("Maximum number of DCC transfers:","options"),KviOption_uintMaxDccSendTransfers,0,1000,10);
 	mergeTip(u,__tr2qs_ctx("<center>This is the maximum number of concurrent DCC transfers. " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
 
@@ -269,7 +269,7 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 
 	hb = new KviTalHBox(g);
 
-	b = addBoolSelector(hb,__tr2qs_ctx("Force idle step","options"),KviOption_boolDccSendForceIdleStep);
+	b = addBoolSelector(hb,__tr2qs_ctx("Force idle step:","options"),KviOption_boolDccSendForceIdleStep);
 	mergeTip(b,
 		__tr2qs_ctx("<center>Enable this option when the DCC file transfers " \
 				"tend to block your computer by consuming too much CPU time. " \

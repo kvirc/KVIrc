@@ -231,7 +231,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		$log.file(<window id>)
 	@description:
 		The form with the <window id> parameter returns the log file name
-		of the window that has the specified id. If logging is not enabled
+		of the window that has the specified ID. If logging is not enabled
 		in the specified window, this function returns an empty string.[br]
 		The form without parameters returns the log file name of the current window,
 		thus it is equivalent to calling $log.file([fnc]$window[/fnc])

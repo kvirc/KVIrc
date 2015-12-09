@@ -828,7 +828,7 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	{
 		delete pPopupParams;
 		pPopupParams = 0;
-		c->error(__tr2qs_ctx("A popup menu cannot be popped up twice","kvs"));
+		c->error(__tr2qs_ctx("A popup menu can't be popped up twice","kvs"));
 		return false;
 	}
 

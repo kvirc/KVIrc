@@ -397,7 +397,7 @@ void DccChatWindow::ownAction(const QString &text)
 		m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
 	} else {
-		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: no active connection","dcc"));
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Can't send data: no active connection","dcc"));
 	}
 }
 

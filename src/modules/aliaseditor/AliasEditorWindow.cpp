@@ -585,7 +585,7 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-			__tr2qs_ctx("Export Selected in singles files...","editor"),
+			__tr2qs_ctx("Export Selected in Single Files...","editor"),
             this,SLOT(exportSelectedSepFiles()))
             ->setEnabled(bHasSelected);
 

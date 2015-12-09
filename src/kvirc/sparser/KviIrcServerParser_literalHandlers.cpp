@@ -682,7 +682,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 					{ \
 						QString szEngineError = cinf->m_pEngine->lastError(); \
 						_target->output(KVI_OUT_SYSTEMERROR, \
-							__tr2qs("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q"), \
+							__tr2qs("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q"), \
 							&szEngineError); \
 						_retptr = _txt + 1; _retmsgtype=_type; \
 					} \

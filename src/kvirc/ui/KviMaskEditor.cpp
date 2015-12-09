@@ -139,7 +139,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	if(pServerInfo)
 		szDescription = pServerInfo->getChannelModeDescription(cMode);
 	if(szDescription.isEmpty())
-		szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+		szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 	switch(cMode)
 	{
 		case 'b':

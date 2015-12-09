@@ -65,7 +65,7 @@ const int align_cod[] = {
 	@description:
 		This widget can be used to display a groupbox.
 		It will be usually a parent for other child controls.
-		You can either use a child layout to manage the children geometries
+		You can either use a child layout to manage the child geometries
 		or use $setColumnLayout to manage the layout automatically.
 	@functions:
 		!fn: $setTitle(<text:String>)

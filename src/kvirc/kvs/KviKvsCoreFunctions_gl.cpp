@@ -66,8 +66,8 @@ namespace KviKvsCoreFunctions
 		Detailed explaination:[br]
 		KVIrc has an internal database of users that are currently
 		visible by *this client*: this includes users on open channels
-		and queries.[br] The other IRC users are NOT in the database:
-		this means that KVIrc knows NOTHING about them and can't return
+		and queries.[br] The other IRC users are [b]not[/b] in the database:
+		this means that KVIrc knows [b]nothing[/b] about them and can't return
 		any information immediately. In this case this function will return
 		an EMPTY string.[br]
 		If a user is in the database, at least his nickname is known.[br]
@@ -248,7 +248,7 @@ KVSCF(gender)
 			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
-			and queries.[br] The other IRC users are NOT in the database:
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]
@@ -559,7 +559,7 @@ KVSCF(gender)
 			Detailed explaination:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
-			and queries.[br] The other IRC users are NOT in the database:
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]

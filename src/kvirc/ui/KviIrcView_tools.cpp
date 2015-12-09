@@ -143,11 +143,11 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterEnableNone()));
 	pOptionsLayout->addWidget(pButton,6,1);
 
-	pButton = new QPushButton(__tr2qs("&Load From..."),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("&Load from..."),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterLoad()));
 	pOptionsLayout->addWidget(pButton,7,0);
 
-	pButton = new QPushButton(__tr2qs("&Save As..."),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("&Save as..."),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterSave()));
 	pOptionsLayout->addWidget(pButton,7,1);
 

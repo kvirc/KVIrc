@@ -237,7 +237,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 	@description:
 		Returns the current value of the system clipboard.
 		Please note that there are systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as the clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as the clipboard.
 		See [fnc]$system.selection[/fnc]().
 	@seealso:
 		[fnc]$system.selection[/fnc],
@@ -267,7 +267,7 @@ static bool system_kvs_fnc_clipboard(KviKvsModuleFunctionCall *c)
 	@description:
 		Sets the system clipboard contents to the string <data>.
 		Please note that there are systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as the clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as the clipboard.
 		See [fnc]$system.selection[/fnc]().
 	@seealso:
 		[fnc]$system.selection[/fnc],
@@ -301,7 +301,7 @@ static bool system_kvs_cmd_setClipboard(KviKvsModuleCommandCall * c)
 	@description:
 		Sets the system selection contents to the string <data>.
 		Please note that this command will work only on systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as the clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as the clipboard.
 	@seealso:
 		[fnc]$system.selection[/fnc],
 		[fnc]$system.clipboard[/fnc],
@@ -333,7 +333,7 @@ static bool system_kvs_cmd_setSelection(KviKvsModuleCommandCall * c)
 	@description:
 		Returns the current value of the system selection.
 		This function will work only on systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as clipboard.
 		On other systems this function will always return an empty string.
 		See [fnc]$system.clipboard[/fnc]().
 	@seealso:

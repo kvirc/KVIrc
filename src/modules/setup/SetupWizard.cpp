@@ -935,7 +935,7 @@ void SetupWizard::setUrlHandlers()
 void SetupWizard::reject()
 {
 	if(QMessageBox::warning(this,__tr2qs("Abort Setup - KVIrc Setup"),
-		__tr2qs("You have chosen to abort the setup.<br>KVIrc cannot run until you complete this procedure.<br><br>Do you really wish to abort?"),
+		__tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return;
 
 	KviTalWizard::reject();
@@ -966,7 +966,7 @@ void SetupWizard::accept()
 		{
 			if(!KviFileUtils::makeDir(szDir))
 			{
-				KviMessageBox::warning(__tr("Cannot create directory %s.\n" \
+				KviMessageBox::warning(__tr("Can't create directory %s.\n" \
 					"You may not have write permission " \
 					"for that path. Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);
@@ -997,7 +997,7 @@ void SetupWizard::accept()
 		{
 			if(!KviFileUtils::makeDir(szDir))
 			{
-				KviMessageBox::warning(__tr("Cannot create directory %s.\n" \
+				KviMessageBox::warning(__tr("Can't create directory %s.\n" \
 					"You may not have write permission " \
 					"for that path. Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);

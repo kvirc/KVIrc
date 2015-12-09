@@ -31,7 +31,7 @@ KviKvsTreeNodeCompositeData::KviKvsTreeNodeCompositeData(const QChar * pLocation
 : KviKvsTreeNodeData(pLocation)
 {
 #ifdef DEBUGME
-	if(pSubData->count() < 2) qDebug("KviKvsTreeNodeCompositeData constructor called with less than two children!");
+	if(pSubData->count() < 2) qDebug("KviKvsTreeNodeCompositeData constructor called with less than two child items!");
 #endif
 	m_pSubData = pSubData;
 	m_pSubData->setAutoDelete(true);

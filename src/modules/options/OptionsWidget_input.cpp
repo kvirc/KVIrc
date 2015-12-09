@@ -142,7 +142,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Warp cursor at the end of line when browsing history","options"),KviOption_boolInputHistoryCursorAtEnd);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Enable the input history logging","options"),KviOption_boolEnableInputHistory); //G&N 2005
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Hide input toolbuttons by default","options"),KviOption_boolHideInputToolButtons);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Hide input tool buttons by default","options"),KviOption_boolHideInputToolButtons);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Commandline in user-friendly mode by default","options"),KviOption_boolCommandlineInUserFriendlyModeByDefault);
 	addUIntSelector(0,4,0,4,__tr2qs_ctx("Expand tabulations in input using this amount of spaces:","options"),KviOption_uintSpacesToExpandTabulationInput,1,24,8,true);
 
@@ -153,7 +153,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),c,SLOT(setDisabled(bool)));
 	connect(c,SIGNAL(toggled(bool)),b,SLOT(setDisabled(bool)));
 
-	addStringSelector(g,__tr2qs_ctx("Nick completion postfix string","options"),KviOption_stringNickCompletionPostfix);
+	addStringSelector(g,__tr2qs_ctx("Nick completion postfix string:","options"),KviOption_stringNickCompletionPostfix);
 	addBoolSelector(g,__tr2qs_ctx("Use the completion postfix string for the first word only","options"),KviOption_boolUseNickCompletionPostfixForFirstWordOnly);
 
 	KviBoolSelector *d = addBoolSelector(0,6,0,6,__tr2qs_ctx("Use a custom cursor width","options"),KviOption_boolEnableCustomCursorWidth);

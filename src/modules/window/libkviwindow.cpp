@@ -232,7 +232,7 @@ static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
 		the current window is activated. If the specified window
 		does not exist a warning is printed unless the -q switch is used.
 		Please note that if the window is currently docked to a frame then this
-		command will NOT raise the frame window. If you're interested in
+		command will [b]not[/b] raise the frame window. If you're interested in
 		the user's attention then you might be interested in [cmd]window.demandAttention[/cmd].
 	@seealso:
 		[cmd]window.demandAttention[/cmd]
@@ -747,7 +747,7 @@ static bool window_kvs_cmd_listtypes(KviKvsModuleCommandCall * c)
 	@syntax:
 		$window.list(<type>[,<irc_context_id>])
 	@description:
-		Returns an array of window identifiers with a speficied type and eventually belonging to a specified
+		Returns an array of window identifiers with a specified type and eventually belonging to a specified
 		irc context.[br]
 		<type> is a window type such as 'query' or 'channel'.[br]
 		See [cmd]window.listtypes[/cmd] for a list of available window types in this KVIrc release.[br]
@@ -972,9 +972,9 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		to any context) and will exist until it is closed by the GUI, by a [cmd]window.close[/cmd]
 		call or until KVIrc terminates. When <irc_context> is given but is not valid
 		then a warning is printed (unless the q flag is used) and the created window is context free.[br]
-		You will generally use the [fnc]$context[/fnc] function to retrieve the current IRC context id.[br]
+		You will generally use the [fnc]$context[/fnc] function to retrieve the current IRC context ID.[br]
 		[br]
-		<icon> is intepreted as the index of the internal icon to be used
+		<icon> is interpreted as the index of the internal icon to be used
 		for the window. If <icon> is omitted then a default icon is used.[br]
 	@examples:
 		[example]
@@ -1282,7 +1282,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 		window.savePropertiesAsDefault [window_id]
 	@description:
 		Saves the window properties of the specified window as default for every window
-		of the same type (eg: all queries, all channels, ..).
+		of the same type (e.g. all queries, all channels, ..).
 		If window_id is missing then the current window properties are used.
 */
 
@@ -1358,7 +1358,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 		then any current encryption engine is removed (i.e. encrypting is disabled).
 		The must be both expressed in hexadecimal notation and are internally transformed in bytes.
 		If only the encrypt key is specified then it will be used for both encrypting and
-		decrypting. This command works only if crypt support is compiled in.
+		decrypting. This command works only if cryptography support is compiled in.
 	@examples:
 		[example]
 		[comment]# This is a really lame example :D[/comment]
@@ -1434,11 +1434,11 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 				if(szError.isEmpty())szError = __tr2qs("Unknown engine error");
 				g_pCryptEngineManager->deallocateEngine(e);
 				if(!c->hasSwitch('q',"quiet"))
-					c->warning(__tr2qs("Failed to initialize the specified crypt engine: %Q"),&szError);
+					c->warning(__tr2qs("Failed to initialize the specified encryption engine: %Q"),&szError);
 			}
 		} else {
 			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("The crypt engine \"%Q\" doesn't exist"),&szEngine);
+				c->warning(__tr2qs("The encryption engine \"%Q\" doesn't exist"),&szEngine);
 		}
 	}
 #else
@@ -1455,11 +1455,11 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	@title:
 		$window.cryptEngine
 	@short:
-		Returns the name of the crypt engine currently set in a window
+		Returns the name of the encryption engine currently set in a window
 	@syntax:
 		$window.cryptEngine(<window_id:integer>)
 	@description:
-		Returns the name of the crypt engine set in the current window.
+		Returns the name of the encryption engine set in the current window.
 		If no current engine is set then empty string is returned.
 	@seealso:
 		[cmd]window.setCryptEngine[/cmd]

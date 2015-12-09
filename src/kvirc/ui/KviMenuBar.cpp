@@ -254,7 +254,7 @@ void KviMenuBar::setupMainPopup(QMenu *pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT,main)
 
-	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"));
+	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection to"));
 	pAction->setMenu(m_pRecentServersPopup);
 
 	m_pDisconnectAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),this,SLOT(actionTriggered(bool)));

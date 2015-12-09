@@ -58,33 +58,33 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 {
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Nickname alternatives","options"));
+	setWindowTitle(__tr2qs_ctx("Nickname Alternatives","options"));
 
 	QLabel * l = new QLabel(this);
-	l->setText(__tr2qs_ctx("<center>Here you can choose up to three nicknames " \
+	l->setText(__tr2qs_ctx("Here you can choose up to three nicknames " \
 		"alternative to the primary one. KVIrc will use the alternatives " \
 		"if the primary nick is already used by someone else on a particular " \
-		"IRC network.</center>","options"));
+		"IRC network.","options"));
 	l->setWordWrap(true);
 
 	g->addWidget(l,0,0,1,3);
 
 	l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Alt. Nickname 1:","options"));
+	l->setText(__tr2qs_ctx("Alt. nickname 1:","options"));
 	g->addWidget(l,1,0);
 	m_pNickEdit1 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit1,1,1,1,2);
 	m_pNickEdit1->setText(n1);
 
 	l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Alt. Nickname 2:","options"));
+	l->setText(__tr2qs_ctx("Alt. nickname 2:","options"));
 	g->addWidget(l,2,0);
 	m_pNickEdit2 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit2,2,1,1,2);
 	m_pNickEdit2->setText(n2);
 
 	l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Alt. Nickname 3:","options"));
+	l->setText(__tr2qs_ctx("Alt. nickname 3:","options"));
 	g->addWidget(l,3,0);
 	m_pNickEdit3 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit3,3,1,1,2);
@@ -205,13 +205,13 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 
 	QGridLayout * g = new QGridLayout(this);
 
-	QString msg = "<center>";
+	QString msg = "<left>";
 	msg += __tr2qs_ctx("Please select an avatar image. " \
 				"The full path to a local file or an image on the Web can be used.<br>" \
 				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
 				"button to browse local folders.<br>" \
 				"The full URL for an image (including <b>http://</b>) can be entered manually.","options");
-	msg += "</center><br>";
+	msg += "</left><br>";
 
 	QLabel * l = new QLabel(msg,this);
 	l->setMinimumWidth(250);
@@ -887,16 +887,16 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	setObjectName("identity_profile_editor");
 	setWindowTitle(__tr2qs_ctx("Profile Editor - KVIrc","options"));
 
-	m_szName = __tr2qs_ctx("Profile Name","options");
-	m_szNetwork = __tr2qs_ctx("MyNetwork","options");
-	m_szNick = __tr2qs_ctx("MyNick","options");
-	m_szAltNick = __tr2qs_ctx("MyNick2","options");
-	m_szUserName = __tr2qs_ctx("MyUserName","options");
-	m_szRealName = __tr2qs_ctx("MyRealName","options");
+	m_szName = __tr2qs_ctx("Profile name","options");
+	m_szNetwork = __tr2qs_ctx("My network","options");
+	m_szNick = __tr2qs_ctx("My nickname","options");
+	m_szAltNick = __tr2qs_ctx("My nickname 2","options");
+	m_szUserName = __tr2qs_ctx("My username","options");
+	m_szRealName = __tr2qs_ctx("My real name","options");
 
 	QGridLayout * pLayout = new QGridLayout(this);
 
-	QLabel * pLabel = new QLabel(__tr2qs_ctx("Profile Name:","options"),this);
+	QLabel * pLabel = new QLabel(__tr2qs_ctx("Profile name:","options"),this);
 	pLayout->addWidget(pLabel,0,0);
 
 	m_pNameEdit = new QLineEdit(this);
@@ -904,7 +904,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->addWidget(m_pNameEdit,0,1,1,2);
 	connect(m_pNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
-	pLabel = new QLabel(__tr2qs_ctx("Network Name:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Network name:","options"),this);
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pNetworkEdit = new QLineEdit(this);
@@ -920,7 +920,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->addWidget(m_pNickEdit,2,1,1,2);
 	connect(m_pNickEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
-	pLabel = new QLabel(__tr2qs_ctx("Alternative Nickname:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Alternative nickname:","options"),this);
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pAltNickEdit = new QLineEdit(this);
@@ -936,11 +936,11 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->addWidget(m_pUserNameEdit,4,1,1,2);
 	connect(m_pUserNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
-	pLabel = new QLabel(__tr2qs_ctx("Realname:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Real name:","options"),this);
 	pLayout->addWidget(pLabel,5,0);
 
 	m_pRealNameEdit = new QLineEdit(this);
-	KviTalToolTip::add(m_pRealNameEdit,__tr2qs_ctx("Put here the realname you want to use","options"));
+	KviTalToolTip::add(m_pRealNameEdit,__tr2qs_ctx("Put here the real name you want to use","options"));
 	pLayout->addWidget(m_pRealNameEdit,5,1,1,2);
 	connect(m_pRealNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 

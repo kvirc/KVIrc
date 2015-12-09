@@ -90,7 +90,7 @@ const char * const itemflags_tbl[] = {
 		"none" : no items can be selected[br]
 		The default mode is "single"
 		!fn: $setFlag(<idx:integer>,<flag1:string>, <flag2:string>, ...)
-		Sets the flags for the item at index idz to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.[br]
+		Sets the flags for the item at index idx to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.[br]
 		Supported flags are:
 		[exmaple]
 		[br]- noitemflag : no flag sets;
@@ -143,7 +143,7 @@ const char * const itemflags_tbl[] = {
 		!fn: $currentItemChangedEvent()
 		This function is called by KVIrc when the current item changes.
 		!fn: $itemChangedEvent()
-		This function is called by KVIrc when the current data item changes (i.e. the user check a ckeckable item) .
+		This function is called by KVIrc when the current data item changes (i.e. the user check a checkable item) .
 	@signals:
 		!sg: <string> $currentItemChanged()
 		This signal is emitted by the default implementation of [classfnc]$currentItemChangedEvent[/classfnc]().[br]

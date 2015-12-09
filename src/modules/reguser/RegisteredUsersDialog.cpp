@@ -283,7 +283,7 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)));
 
 
-	m_pImportButton = new QPushButton(__tr2qs_ctx("Import From...","register"),vbox);
+	m_pImportButton = new QPushButton(__tr2qs_ctx("Import from...","register"),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
 	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
 	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)));

@@ -346,7 +346,7 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 		by the server itself. Some servers report a bogus value for this field.
 		You should take a look at [fnc]$context.serverIpAddress[/fnc] if you want a value that
 		can be used to really reconnect to this server. If you want a value
-		to manipulate the server entry via the serverdb functions then
+		to manipulate the server entry via the serverDB functions then
 		you probably need [fnc]$context.serverdbServerHostName[/fnc].
 */
 

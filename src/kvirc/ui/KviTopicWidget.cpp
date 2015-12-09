@@ -474,14 +474,14 @@ void KviTopicWidget::switchMode()
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pAccept->setEnabled(bCanEdit);
 		m_pAccept->show();
-		KviTalToolTip::add(m_pAccept,__tr2qs("Commit Changes"));
+		KviTalToolTip::add(m_pAccept,__tr2qs("Commit changes"));
 		connect(m_pAccept,SIGNAL(clicked()),this,SLOT(acceptClicked()));
 
 		m_pDiscard = new QPushButton(this);
 		m_pDiscard->setObjectName("topicw_discardbutton");
 		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard))));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
-		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
+		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard changes"));
 		m_pDiscard->show();
 		connect(m_pDiscard,SIGNAL(clicked()),this,SLOT(discardClicked()));
 

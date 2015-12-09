@@ -625,7 +625,7 @@ namespace KviKvsCoreCallbackCommands
 			!sw: -x | --trigger-startup
 				Trigger the startup event
 			!sw: -n | --no-stdout
-				Do NOT trigger any stdout events
+				Do [b]not[/b] trigger any stdout events
 			!sw: -e | --trigger-stderr
 				Trigger stderr events
 			!sw: -b | --output-block
@@ -640,7 +640,7 @@ namespace KviKvsCoreCallbackCommands
 				Trigger <callback command> with "ping" events every <timeout> milliseconds.
 			!sw: -w | --bind-to-window
 				Kill the process if the current window is closed. In this case the
-				termination event is NOT triggered (since the parent window has been lost).
+				termination event is [b]not[/b] triggered (since the parent window has been lost).
 				If this switch is not used then the process is rebound to
 				the active console window and continues running.
 			!sw: -s=<interpreter command> | --shell=<interpreter command>
@@ -699,7 +699,7 @@ namespace KviKvsCoreCallbackCommands
 			[br]
 			[b]Stderr data event[/b][br]
 			The stderr data event is similar to the stdout one but there are three differences.
-			The first one is that the stderr event is NOT triggered by default: you must
+			The first one is that the stderr event is [b]not[/b] triggered by default: you must
 			use the -e switch to enable it. The second difference is that $0
 			contains "stderr" instead of "stdout". The last difference is that $1 contains data
 			coming from the slave process stderr stream.[br]
@@ -709,7 +709,7 @@ namespace KviKvsCoreCallbackCommands
 			execution. You must use the -t switch to enable it since it is
 			disabled by default. $0 contains the string "terminated". $1 contains the process exit
 			status value. (Note that if the process has crashed or has been terminated
-			by an external singnal then this value will be 0).[br]
+			by an external signal then this value will be 0).[br]
 			[br]
 			[b]Ping event[/b][br]
 			The ping event is triggered only if the -p=<timeout> switch is passed.[br]
@@ -1066,9 +1066,9 @@ namespace KviKvsCoreCallbackCommands
 			The timer periodically calls the specified <callback_command> code passing the
 			eventual <callback_param> strings as positional parameters.[br]
 			If a timer with the same name already exists, it is replaced by this one.[br]
-			[b]The <callback_command> is evaluated at timer "shot" time and NOT while
+			[b]The <callback_command> is evaluated at timer "shot" time and [b]not[/b] while
 			this command is being parsed. This means that the identifiers that you put
-			inside <callback_command> will NOT have the current values.[/b]
+			inside <callback_command> will [b]not[/b] have the current values.[/b]
 			The values will be assigned at timer "shot" time.[br]
 			This is a common scripters error and problem: if it is not clear, look at the examples below.[br]
 			The timer is bound to the window in that this command is executed in.[br]

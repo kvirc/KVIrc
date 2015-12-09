@@ -492,7 +492,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("&Copy Path to Clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
 
-                pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete file","filetransferwindow"),this,SLOT(deleteLocalFile()));
+                pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete File","filetransferwindow"),this,SLOT(deleteLocalFile()));
                 pAction->setEnabled(i->transfer()->terminated());
                 pAction = m_pContextPopup->addAction(__tr2qs_ctx("Local &File","filetransferwindow"));
                 pAction->setMenu(m_pLocalFilePopup);

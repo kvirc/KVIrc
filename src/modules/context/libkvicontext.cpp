@@ -146,7 +146,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		The returned network name is the one that has been specified
 		in the server database and may not correspond to the real network
 		name. However, this is the network name you want to use if
-		you want to manipulate the serverdb entries related to the current
+		you want to manipulate the serverDB entries related to the current
 		connection.
 	@seealso:
 		[fnc]$context.serverHostName[/fnc]
@@ -180,7 +180,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		by the server itself. Some servers report a bogus value for this field.
 		You should take a look at [fnc]$context.serverIpAddress[/fnc] if you want a value that
 		can be used to really reconnect to this server. If you want a value
-		to manipulate the server entry via the serverdb functions then
+		to manipulate the server entry via the serverDB functions then
 		you probably need [fnc]$context.serverdbServerHostName[/fnc].
 	@seealso:
 		[fnc]$context.serverdbServerHostName[/fnc]
@@ -215,7 +215,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		The returned server name is the one that has been specified
 		in the server database and may refer to a round-robin DNS entry.
 		However, this is the server name you want to use if you want to manipulate
-		the serverdb entries related to the current connection.
+		the serverDB entries related to the current connection.
 	@seealso:
 		[fnc]$context.serverHostName[/fnc],
 		[fnc]$context.serverPort[/fnc],
@@ -617,11 +617,11 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 	@title:
 		$context.getSSLCertInfo
 	@short:
-		Returns the requested information about certificates used in an ssl-enabled IRC session
+		Returns the requested information about certificates used in an SSL enabled IRC session
 	@syntax:
 		$context.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<context_id:integer>[,<param1:string>]]])
 	@description:
-		Returns the requested information about certificates used in an ssl-enabled IRC session.[br]
+		Returns the requested information about certificates used in an SSL enabled IRC session.[br]
 		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
 		to query the information from; if omitted, it defaults to "remote".[br]
 		If <context_id> is omitted then the IRC context associated with the current window is assumed.[br]
@@ -655,15 +655,15 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 		[li]fingerprintDigestStr[/li]
 		[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
 		[/ul]
-		@examples:
-			[example]
-				[comment]# get a sha256 fingerprint of remote peer's certificate[/comment]
-				$context.getSSLCertInfo(fingerprintContents,remote,$context,sha256)
-			[/example]
-		@seealso:
-			[fnc]$certificate[/fnc]
-			[fnc]$str.evpSign[/fnc]
-			[fnc]$str.evpVerify[/fnc]
+	@examples:
+		[example]
+			[comment]# get a sha256 fingerprint of remote peer's certificate[/comment]
+			$context.getSSLCertInfo(fingerprintContents,remote,$context,sha256)
+		[/example]
+	@seealso:
+		[fnc]$certificate[/fnc]
+		[fnc]$str.evpSign[/fnc]
+		[fnc]$str.evpVerify[/fnc]
 */
 
 static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)

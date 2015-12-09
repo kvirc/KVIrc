@@ -39,9 +39,9 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 	@short:
 		Interface to the servers database
 	@title:
-		The serverdb module
+		The serverDB module
 	@body:
-		The serverdb module is the scripting interface to the servers and networks database.[br]
+		The serverDB module is the scripting interface to the servers and networks database.[br]
 		It provides the following set of commands:[br]
 		[cmd]serverdb.addNetwork[/cmd]: adds a network entry to the database[br]
 		[cmd]serverdb.addServer[/cmd]: adds a server entry to the database[br]
@@ -335,11 +335,11 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
 	@title:
 		$serverdb.networkRealName
 	@short:
-		Returns the realname
+		Returns the real name
 	@syntax:
 		<string> $serverdb.networkRealName(<network:string>)
 	@description:
-		Returns the realname set for the network <network> if set
+		Returns the real name set for the network <network> if set
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -523,11 +523,11 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
 	@title:
 		$serverdb.serverRealName
 	@short:
-		Returns the realname
+		Returns the real name
 	@syntax:
 		<string> $serverdb.serverRealName(<network:string>,<server:string>)
 	@description:
-		Returns the realname set for the server <server> of the network <network> if set
+		Returns the real name set for the server <server> of the network <network> if set
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -823,7 +823,7 @@ END_SERVERDB_GET_SERVER_PROPERTY
 		Autoconnect this network at KVIrc start.
 	@examples:
 		[example]
-		if(![fnc]$serverdb.networkExists[/fnc](Freenode)) serverdb.addNetwork -q Freenode
+		if(![fnc]$serverdb.networkExists[/fnc](freenode)) serverdb.addNetwork -q freenode
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1094,17 +1094,17 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName,setUserName)
 	@title:
 		serverdb.setNetworkRealName
 	@short:
-		Sets the realname
+		Sets the realn ame
 	@syntax:
 		serverdb.setNetworkRealName [switches] <name:string> <realname:string>
 	@description:
-		Sets the realname <realname> for the specified network <name>.
+		Sets the real name <realname> for the specified network <name>.
 	@switches:
 		!sw: -q | --quiet
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the realname KVIrc 4.0 for the freenode network[/comment][br]
+		[comment]Quietly sets the real name KVIrc 4.0 for the freenode network[/comment][br]
 		serverdb.setNetworkRealName -q freenode KVIrc 4.0
 		[/example]
 	@seealso:
@@ -1318,17 +1318,17 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName,setUserName)
 	@title:
 		serverdb.setServerRealName
 	@short:
-		Sets the realname
+		Sets the real name
 	@syntax:
 		serverdb.setServerRealName [switches] <network:string> <server:string> <realname:string>
 	@description:
-		Sets the realname <realname> for the specified server <server> in the network <network>.
+		Sets the real name <realname> for the specified server <server> in the network <network>.
 	@switches:
 		!sw: -q | --quiet
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the realname KVIrc 4.0 for the freenode server[/comment][br]
+		[comment]Quietly sets the real name KVIrc 4.0 for the freenode server[/comment][br]
 		serverdb.setServerRealName -q irc.freenode.net KVIrc 4.0
 		[/example]
 	@seealso:
@@ -1560,7 +1560,7 @@ KVIRC_MODULE(
 	"ServerDB",                                              // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-	"IRC server DB related functions",
+	"IRC serverDB related functions",
 	serverdb_module_init,
 	serverdb_module_can_unload,
 	0,

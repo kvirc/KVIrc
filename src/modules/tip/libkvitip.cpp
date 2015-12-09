@@ -95,7 +95,7 @@ TipWindow::TipWindow()
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)));
 
-	setWindowTitle(__tr2qs("Did you know..."));
+	setWindowTitle(__tr2qs("Did You Know..."));
 
 	QGridLayout *layout = new QGridLayout(this);
 	layout->addWidget(m_pTipFrame,0,0,1,5);

@@ -134,7 +134,7 @@ const char * const sockerrors_tbl[] = {
 		in IPv6 mode. If <interface> is an empty string and <force_ipv6> is 1 the socket listens
 		on "any ipv6 interface".[br]
 		This function returns '1' in case of success and '0' in case of failure.[br]
-		On some systems listening in the IPv6 namespace allows to accept also IPV4 connections (this includes
+		On some systems listening in the IPv6 namespace allows to accept also IPv4 connections (this includes
 		Linux but not windows afaik).[br]
 		When an incoming connection will arrive, $incomingConnectionEvent() will be called.
 

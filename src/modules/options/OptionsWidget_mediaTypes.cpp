@@ -123,7 +123,7 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 	mergeTip(m_pRemoteExecCommandline,__tr2qs_ctx("<center>This field contains the command to execute when automatically opening a received file.<br>" \
 		"<tt>$0</tt> is used in place of the filename</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Icon","options"),this);
+	l = new QLabel(__tr2qs_ctx("Icon:","options"),this);
 	layout()->addWidget(l,8,0);
 	m_pIcon = new QLineEdit(this);
 	layout()->addWidget(m_pIcon,8,1,1,2);

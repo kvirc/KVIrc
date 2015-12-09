@@ -1017,7 +1017,7 @@ QTextCodec * KviApplication::defaultTextCodec()
 		return pCodec;
 	pCodec = KviLocale::instance()->codecForName("UTF-8");
 	if(!pCodec)
-		qDebug("KviApplication::defaultTextCodec(): cannot find a suitable text codec for locale :/");
+		qDebug("KviApplication::defaultTextCodec(): can't find a suitable text codec for locale :/");
 	return pCodec;
 }
 
@@ -1035,7 +1035,7 @@ QTextCodec * KviApplication::defaultSrvCodec()
 		return pCodec;
 	pCodec = KviLocale::instance()->codecForName("UTF-8");
 	if(!pCodec)
-		qDebug("KviApplication::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
+		qDebug("KviApplication::defaultSrcCodec(): can't find a suitable text codec for locale :/");
 	return pCodec;
 }
 

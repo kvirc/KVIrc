@@ -731,7 +731,7 @@ KVIRC_MODULE(
 	"ProxyDB",                                              // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-	"IRC proxy server DB related functions",
+	"IRC proxy serverDB related functions",
 	proxydb_module_init,
 	proxydb_module_can_unload,
 	0,

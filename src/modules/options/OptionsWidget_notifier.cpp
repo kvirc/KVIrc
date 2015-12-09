@@ -232,21 +232,21 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	connect(b,
 		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Default auto hiding time for messages (0 to disable)","options"),
+		addUIntSelector(g,__tr2qs_ctx("Default auto hiding time for messages (0 to disable):","options"),
 				KviOption_uintNotifierAutoHideTime,
 				0,86400,30,KVI_OPTION_BOOL(KviOption_boolEnableNotifier)),
 		SLOT(setEnabled(bool)));
 
 	connect(b2,
 		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while active (mouseover)","options"),
+		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while active (mouseover):","options"),
 				KviOption_uintNotifierActiveTransparency,
 				0,100,90,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
 		SLOT(setEnabled(bool)));
 
 	connect(b2,
 		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while inactive","options"),
+		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while inactive:","options"),
 				KviOption_uintNotifierInactiveTransparency,
 				0,100,40,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
 		SLOT(setEnabled(bool)));

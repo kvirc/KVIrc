@@ -142,7 +142,7 @@ OptionsWidget_timestamp::OptionsWidget_timestamp(QWidget * pParent)
 	KviTalHBox *hb = new KviTalHBox(this);
 	addWidgetToLayout(hb,0,2,0,2);
 
-	m_pSpecialTimestampColorSelector = addBoolSelector(hb,__tr2qs_ctx("Use special color for timestamps","options"),KviOption_boolUseSpecialColorForTimestamp,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
+	m_pSpecialTimestampColorSelector = addBoolSelector(hb,__tr2qs_ctx("Use special color for timestamps:","options"),KviOption_boolUseSpecialColorForTimestamp,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
 	connect(m_pSpecialTimestampColorSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),m_pSpecialTimestampColorSelector,SLOT(setEnabled(bool)));
 
@@ -431,9 +431,9 @@ OptionsWidget_messageColors::OptionsWidget_messageColors(QWidget * parent)
 
 	KviTalHBox * h = new KviTalHBox(this);
 	addWidgetToLayout(h,0,1,3,1);
-	QPushButton * b = new QPushButton(__tr2qs_ctx("Load From...","options"),h);
+	QPushButton * b = new QPushButton(__tr2qs_ctx("Load from...","options"),h);
 	connect(b,SIGNAL(clicked()),this,SLOT(load()));
-	b = new QPushButton(__tr2qs_ctx("Save As...","options"),h);
+	b = new QPushButton(__tr2qs_ctx("Save as...","options"),h);
 	connect(b,SIGNAL(clicked()),this,SLOT(save()));
 
 

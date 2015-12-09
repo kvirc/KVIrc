@@ -145,7 +145,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			This event is triggered in the first console of a new frame window.
 			A frame window is the toplevel window that contains the consoles
-			and the other MDI children windows.
+			and the other MDI child windows.
 		@seealso:
 			[event:onframewindowdestroyed]OnFrameWindowDestroyed[/event]
 	*/
@@ -475,13 +475,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			window and presses return.
 			Calling [cmd]halt[/cmd] will stop the automatic text processing
 			and the result depends on the window the text is typed in.
-			In channel/query and console windows the text will NOT be sent to
+			In channel/query and console windows the text will [b]not[/b] be sent to
 			the IRC server. This event might be useful for performing
 			substitutions in the text sent to the server. If you stop the
 			text processing in a channel or query window then the local
 			echo of the message will be omitted too. You might want to
 			realize the echo by the means of the [cmd]echoprivmsg[/cmd] command.
-			This event is NOT triggered when the user enters a command
+			This event is [b]not[/b] triggered when the user enters a command
 			in the input window.
 		@seealso:
 			[cmd]echoprivmsg[/cmd]
@@ -968,7 +968,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			to query the MOTD of the server.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the server name, like querying stats or links.[br]
-			Please note that the server name is generally NOT a hostname: some parts of
+			Please note that the server name is generally [b]not[/b] a hostname: some parts of
 			it are often hidden. The name of the server is generally valid only within
 			the IRC network that you are connected to.[br]
 	*/
@@ -1029,7 +1029,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			the text view.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the nickname like querying, sending a file by DCC or opening a dcc.chat.
-			Please note that NOT ALL the nickname links will receive this event.[br]
+			Please note that [b]not all[/b] the nickname links will receive this event.[br]
 			The nickname links that appear in the text view of the channel that they are actually in
 			are handled by the [event:onchannelnickpopuprequest]OnChannelNickPopupRequest[/event] event.[br]
 			The nickname links that appear in the text view of the query in that they are a remote end
@@ -1317,7 +1317,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Query window or console
 		@description:
 			Triggered when a private notice is received.[br]
-			If you call [cmd]halt[/cmd] in this event, the message output will be stopped and if the message was going to cause a query window creation, the window will NOT be created.
+			If you call [cmd]halt[/cmd] in this event, the message output will be stopped and if the message was going to cause a query window creation, the window will [b]not[/b] be created.
 			$4 will be 1 if the message is encrypted and 0 otherwise.
 		@seealso:
 			[event:onchannelmessage]OnChannelMessage[/event]
@@ -3115,7 +3115,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when user issues a CTCP ACTION.[br]
 			(The CTCP ACTION is usually triggered by the /me command).[br]
 			Warning: don't use a /me inside this event handler, or you'll get an infinite recursion.
-			If you need to halt the action (eg. to do some text substitution), follow the example code.
+			If you need to halt the action (e.g. to do some text substitution), follow the example code.
 		@examples:
 			[example]
 				ctcp $1 action "this text was changed in scripting, old one was $0";
@@ -3721,7 +3721,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when an user has double clicked on a nickname link.[br]
 			You should use this event to perform some significant action associated with the double click.[br]
 			A good example might be a [cmd]whois[/cmd] or a [cmq]query[/cmd] call.[br]
-			Please note that NOT ALL nickname links will cause this event to be triggered: some nickname
+			Please note that [b]not all[/b] nickname links will cause this event to be triggered: some nickname
 			links default actions are actually handled by the
 			[event:onquerynickdefaultactionrequest]OnQueryNickDefaultActionRequest[/event] and
 			[event:onchannelnickdefatulactionrequest]OnChannelNickDefaultActionRequest[/event] events.[br]

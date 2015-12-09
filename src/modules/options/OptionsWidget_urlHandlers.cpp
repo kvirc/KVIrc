@@ -48,10 +48,10 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Mouse Handler","options"));
 
-	addLabel(gbox,__tr2qs_ctx("How many click to open links?","options"));
+	addLabel(gbox,__tr2qs_ctx("How many clicks to open links?","options"));
 
-	m_pClickRadio = new QRadioButton(__tr2qs_ctx("Single click","options"),gbox);
-	m_pDoubleClickRadio = new QRadioButton(__tr2qs_ctx("Double click","options"),gbox);
+	m_pClickRadio = new QRadioButton(__tr2qs_ctx("Single-click","options"),gbox);
+	m_pDoubleClickRadio = new QRadioButton(__tr2qs_ctx("Double-click","options"),gbox);
 
 	switch(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum))
 	{

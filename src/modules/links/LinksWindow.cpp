@@ -59,9 +59,9 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pRequestButton = new QToolButton(box);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
-	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Links)));
+	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Update)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestLinks()));
-	m_pRequestButton->setToolTip(__tr2qs("Request Links"));
+	m_pRequestButton->setToolTip(__tr2qs("Request links"));
 
 	QLabel * l = new QLabel(box);
 	box->setStretchFactor(l,1);
@@ -119,7 +119,7 @@ void LinksWindow::requestLinks()
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent links request, waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot request links: no active connection"));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Can't request links: no active connection"));
 	}
 }
 
@@ -132,7 +132,7 @@ void LinksWindow::connectionStateChange()
 		QString szTmp = QString(__tr2qs("Connected to %1 (%2)")).arg(m_pConsole->connection()->currentServerName(),m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
-		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: not connected to a server"));
+		m_pInfoLabel->setText(__tr2qs("Links can't be requested: not connected to a server"));
 	}
 }
 

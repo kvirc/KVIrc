@@ -53,7 +53,7 @@ OptionsWidget_logging::OptionsWidget_logging(QWidget * parent)
 
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Strip message type numbers in logs","options"),KviOption_boolStripMsgTypeInLogs);
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Strip colors in logs","options"),KviOption_boolStripControlCodesInLogs);
-	KviUIntSelector* us = addUIntSelector(0,5,0,5,__tr2qs_ctx("Auto flush logs every","options"),KviOption_uintAutoFlushLogs,0,99999,0);
+	KviUIntSelector* us = addUIntSelector(0,5,0,5,__tr2qs_ctx("Auto flush logs every:","options"),KviOption_uintAutoFlushLogs,0,99999,0);
 	us->setSuffix(__tr2qs_ctx(" min","options"));
 	mergeTip(us,
 		__tr2qs_ctx("<center>Save logs with the current interval<br>" \

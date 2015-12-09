@@ -828,7 +828,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	if(s->autoJoinChannelList())
 		m_lstChannels = *(s->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
-		__tr2qs_ctx("Channels to Join Automatically Upon Connect","options"),&m_lstChannels,true);
+		__tr2qs_ctx("Channels to Join Automatically upon Connect","options"),&m_lstChannels,true);
 	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to this server has been established. To add a channel, type its name in the " \
 		"text input below and click \"<b>Add</b>\".</center>","options"));
@@ -973,7 +973,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	iRow++;
 
-	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("ID:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pIdEditor = new QLineEdit(tab);
 	if(s->id().isEmpty())s->generateUniqueId();
@@ -1308,7 +1308,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
-	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
+	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New network","options"));
 
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
@@ -1317,34 +1317,34 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
-	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
+	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New nerver","options"));
 
 	m_pFavoriteServerButton = new QToolButton(vbox);
 	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
 	m_pFavoriteServerButton->setAutoRaise(true);
 	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
-	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite/Unfavorite Server","options"));
+	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite/Unfavorite server","options"));
 
 	m_pRemoveButton = new QToolButton(vbox);
 	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
-	KviTalToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove Network/Server","options"));
+	KviTalToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove network/server","options"));
 
 	m_pCopyServerButton = new QToolButton(vbox);
 	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Copy))));
 	m_pCopyServerButton->setEnabled(false);
 	m_pCopyServerButton->setAutoRaise(true);
 	connect(m_pCopyServerButton,SIGNAL(clicked()),this,SLOT(copyServer()));
-	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
+	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy server","options"));
 
 	m_pPasteServerButton = new QToolButton(vbox);
 	m_pPasteServerButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)));
 	m_pPasteServerButton->setEnabled(false);
 	m_pPasteServerButton->setAutoRaise(true);
 	connect(m_pPasteServerButton,SIGNAL(clicked()),this,SLOT(pasteServer()));
-	KviTalToolTip::add(m_pPasteServerButton,__tr2qs_ctx("Paste Server","options"));
+	KviTalToolTip::add(m_pPasteServerButton,__tr2qs_ctx("Paste server","options"));
 
 	f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
@@ -1355,7 +1355,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pImportButton->setMenu(m_pImportPopup);
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
 
-	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import Server List","options"));
+	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import server list","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);

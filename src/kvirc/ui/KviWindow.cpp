@@ -368,7 +368,7 @@ QToolButton * KviWindow::createToolButton(QWidget * pPar, const char * pcName, K
 void KviWindow::createCryptControllerButton(QWidget *)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	m_pCryptControllerButton = new KviWindowToolPageButton(KviIconManager::UnLockedOff,KviIconManager::UnLocked,__tr2qs("Crypting"),buttonContainer(),false);
+	m_pCryptControllerButton = new KviWindowToolPageButton(KviIconManager::UnLockedOff,KviIconManager::UnLocked,__tr2qs("Encryption"),buttonContainer(),false);
 	m_pCryptControllerButton->setObjectName("crypt_controller_button");
 	connect(m_pCryptControllerButton,SIGNAL(clicked()),this,SLOT(toggleCryptController()));
 #endif // COMPILE_CRYPT_SUPPORT
@@ -378,7 +378,7 @@ void KviWindow::createTextEncodingButton(QWidget * pPar)
 {
 	if(m_pTextEncodingButton)
 		delete m_pTextEncodingButton;
-	m_pTextEncodingButton = createToolButton(pPar,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text Encoding"),false);
+	m_pTextEncodingButton = createToolButton(pPar,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text encoding"),false);
 	connect(m_pTextEncodingButton,SIGNAL(clicked()),this,SLOT(textEncodingButtonClicked()));
 }
 
@@ -470,7 +470,7 @@ void KviWindow::cryptControllerFinished()
 void KviWindow::cryptSessionInfoDestroyed()
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	output(KVI_OUT_SYSTEMERROR,__tr2qs("Oops... I've accidentally lost the crypting engine."));
+	output(KVI_OUT_SYSTEMERROR,__tr2qs("Oops! I've accidentally lost the encryption engine."));
 	m_pCryptSessionInfo->m_pEngine = 0;
 	delete m_pCryptSessionInfo;
 	m_pCryptSessionInfo = 0;

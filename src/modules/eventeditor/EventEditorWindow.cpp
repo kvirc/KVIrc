@@ -100,7 +100,7 @@ EventEditor::EventEditor(QWidget * par)
 
 	m_pTreeWidget = new EventEditorTreeWidget(vbox);
 
-	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All To...","editor"),vbox);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All to...","editor"),vbox);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
 	KviTalVBox * box = new KviTalVBox(spl);

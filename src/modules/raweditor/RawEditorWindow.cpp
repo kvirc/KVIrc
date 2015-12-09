@@ -521,7 +521,7 @@ QPixmap * RawEditorWindow::myIconPtr()
 
 void RawEditorWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs_ctx("Raw Editor","editor");
+	m_szPlainTextCaption = __tr2qs_ctx("RAW Editor","editor");
 }
 
 void RawEditorWindow::getConfigGroupName(QString &szName)

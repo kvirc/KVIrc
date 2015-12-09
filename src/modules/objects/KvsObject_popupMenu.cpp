@@ -65,17 +65,17 @@
 		If called without paramaters show the popup menu at the current pointer position.[br]
 		With the optional parameters show the popup menu at the coordinate x,y widget parameter relative.
 		!fn: $removeItem(<popup_id:Uinteger>)
-		Removes the menu item that has the identifier id.
+		Removes the menu item that has the identifier ID.
 		!fn: $removeItemAt(<index:uinteger>)
 		Removes the menu item at position index.
 		!fn: $insertSeparator(<index:uinteger>)
 		Inserts a separator at position index.[br]
 		If the index is negative the separator becomes the last menu item.
 		!fn: $activatedEvent(<popup_id:uinteger>)
-		This function is called when a menu item and return the the item id.[br]
+		This function is called when a menu item and return the the item ID.[br]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
 		!fn: $highligthtedEvent(<popup_id:uinteger>)
-		This function is called when a menu item is highlighted (hovered) and return the item id.[br]
+		This function is called when a menu item is highlighted (hovered) and return the item ID.[br]
 		The default implementation emits the [classfnc]$highlighted[/classfnc]() signal.
 	@signals:
 		!sg: $activated()
