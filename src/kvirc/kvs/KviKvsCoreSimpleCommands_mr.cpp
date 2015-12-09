@@ -1211,7 +1211,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			raw [-q] <raw command:string>
 		@short:
-			Sends raw data to the server
+			Sends RAW data to the server
 		@switches:
 			!sw: -q | --quiet
 			Be quiet: do echo the RAW data.

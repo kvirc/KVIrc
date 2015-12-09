@@ -107,9 +107,9 @@ KVSO_CLASS_FUNCTION(memoryBuffer,loadFromFile)
 			f.read(m_pBuffer->data(),f.size());
 			f.close();
 		}
-		else qDebug("Error in load file!");
+		else qDebug("Error in loaded file!");
 	}
-	else c->warning(__tr2qs_ctx("The file '%Q' does not exist","objects"),&szFileName);
+	else c->warning(__tr2qs_ctx("The file '%Q' doesn't exist","objects"),&szFileName);
 	return true;
 }
 KVSO_CLASS_FUNCTION(memoryBuffer,size)
@@ -150,7 +150,7 @@ KVSO_CLASS_FUNCTION(memoryBuffer,saveToFile)
 	}
 	else
 	{
-		c->warning(__tr2qs_ctx("Cannot open file '%Q' for writing","objects"),&szFileName);
+		c->warning(__tr2qs_ctx("Can't open file '%Q' for writing","objects"),&szFileName);
 	}
 	return true;
 }

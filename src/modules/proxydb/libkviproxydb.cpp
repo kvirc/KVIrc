@@ -68,7 +68,7 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(!pRecord)
 	{
-		c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -111,7 +111,7 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true); \
 		if(!pRecord) \
 		{ \
-			c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb")); \
 			return false; \
 		} \
 		\
@@ -144,11 +144,11 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname,hostName,setString)
 	@title:
 		$proxydb.ip
 	@short:
-		Returns the ip
+		Returns the IP
 	@synthax:
 		<string> $proxydb.ip(<string:proxy>)
 	@description:
-		Returns the ip of the proxy <proxy>
+		Returns the IP of the proxy <proxy>
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -308,7 +308,7 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 		else if(tmp == "Socks5") pProxy->setProtocol(KviProxy::Socks5);
 		else if(tmp == "Http") pProxy->setProtocol(KviProxy::Http);
 		else {
-			c->error(__tr2qs_ctx("The specified protocol does not exist","serverdb"));
+			c->error(__tr2qs_ctx("The specified protocol doesn't exist","serverdb"));
 			return false;
 		}
 	}
@@ -371,7 +371,7 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
-		c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -390,11 +390,11 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 	@title:
 		proxydb.setIp
 	@short:
-		Sets the ip for a proxy
+		Sets the IP for a proxy
 	@syntax:
 		proxydb.setIp [switches] <string:proxy> <string:ip>
 	@description:
-		Sets the ip <ip> for the proxy <proxy>
+		Sets the IP <ip> for the proxy <proxy>
 	@switches:
 		!sw: -q | --quiet
 		Do not print errors if the proxy already exist.[br]
@@ -442,7 +442,7 @@ static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
-		c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -505,7 +505,7 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
-		c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -566,7 +566,7 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
-		c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -574,7 +574,7 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 	else if(szProtocol == "Socks5") pProxy->setProtocol(KviProxy::Socks5);
 	else if(szProtocol == "Http") pProxy->setProtocol(KviProxy::Http);
 	else {
-		c->error(__tr2qs_ctx("The specified protocol does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified protocol doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -610,7 +610,7 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 		if(!pRecord) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified proxy does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb")); \
 			return false; \
 		} \
 		\

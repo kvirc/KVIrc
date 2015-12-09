@@ -389,7 +389,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox,__tr2qs_ctx("Location:","options"),KviOption_stringCtcpUserInfoLocation);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can describe here your approximate physical location. " \
-				"Something like \"Region, Country\" will be ok. Please note that this information will be viewable " \
+				"Something like \"Region, Country\" will be OK. Please note that this information will be viewable " \
 				"by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Languages:","options"),KviOption_stringCtcpUserInfoLanguages);
@@ -400,7 +400,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox,__tr2qs_ctx("Other:","options"),KviOption_stringCtcpUserInfoOther);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here some additional personal data. " \
-				"It might be a funny quote or your homepage url... " \
+				"It might be a funny quote or your homepage URL... " \
 				"Please note that this information will be viewable " \
 				"by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers).","options") + szTrailing);
 

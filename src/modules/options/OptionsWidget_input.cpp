@@ -35,15 +35,15 @@ OptionsWidget_inputLook::OptionsWidget_inputLook(QWidget * parent)
 	setObjectName("inputlook_options_widget");
 	createLayout();
 
-	addFontSelector(0,0,1,0,__tr2qs_ctx("Font","options"),KviOption_fontInput);
-	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color","options"),KviOption_colorInputBackground);
-	addColorSelector(0,2,1,2,__tr2qs_ctx("Foreground color","options"),KviOption_colorInputForeground);
-	addColorSelector(0,3,1,3,__tr2qs_ctx("Selection background color","options"),KviOption_colorInputSelectionBackground);
-	addColorSelector(0,4,1,4,__tr2qs_ctx("Selection foreground color","options"),KviOption_colorInputSelectionForeground);
-	addColorSelector(0,5,1,5,__tr2qs_ctx("Control char color","options"),KviOption_colorInputControl);
-	addColorSelector(0,6,1,6,__tr2qs_ctx("Cursor color","options"),KviOption_colorInputCursor);
+	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontInput);
+	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color:","options"),KviOption_colorInputBackground);
+	addColorSelector(0,2,1,2,__tr2qs_ctx("Foreground color:","options"),KviOption_colorInputForeground);
+	addColorSelector(0,3,1,3,__tr2qs_ctx("Selection background color:","options"),KviOption_colorInputSelectionBackground);
+	addColorSelector(0,4,1,4,__tr2qs_ctx("Selection foreground color:","options"),KviOption_colorInputSelectionForeground);
+	addColorSelector(0,5,1,5,__tr2qs_ctx("Control char color","options:"),KviOption_colorInputControl);
+	addColorSelector(0,6,1,6,__tr2qs_ctx("Cursor color:","options"),KviOption_colorInputCursor);
 
-	addPixmapSelector(0,7,1,7,__tr2qs_ctx("Background image","options"),KviOption_pixmapInputBackground);
+	addPixmapSelector(0,7,1,7,__tr2qs_ctx("Background image:","options"),KviOption_pixmapInputBackground);
 
 	addLabel(0,8,0,8,__tr2qs_ctx("Horizontal align:","options"));
 	m_pHorizontalAlign=new QComboBox(this);

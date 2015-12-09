@@ -119,7 +119,7 @@
 		This event is triggered by KVIrc when he HTTP header of a server response is available.
 		The response is passed ad string.
 		!fn: $doneEvent(<error:boolean>)
-		This event is triggered when the last pending request has finished; (it is emitted after the last request's requestFinished() signal).
+		This event is triggered when the last pending request has finished; (it is emitted after the last requests requestFinished() signal).
 		!fn: $dataReadProgressEvent(<done:integer>,<total:integer>)
 		This event is triggered when reads data from a HTTP server.
 		<done> is the amount of data has already arrived and <total> is the total amount of data.
@@ -233,7 +233,7 @@ bool  KvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 	QUrl url(szHost);
 	if (!url.isValid())
 	{
-		c->warning(__tr2qs_ctx("Host '%Q' is not a valid url","objects"),&szHost);
+		c->warning(__tr2qs_ctx("Host '%Q' is not a valid URL","objects"),&szHost);
 		return true;
 	}
 	if (!szHost.isEmpty() && url.host().isEmpty()) url.setHost(szHost);
@@ -477,7 +477,7 @@ void KvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader &r)
 {
 	QString szResponse;
 	switch (r.statusCode()) {
-		case 200:	szResponse="Ok"  ;break;
+		case 200:	szResponse="OK"  ;break;
 		case 301:	szResponse="Moved Permanently" ;break;
 		case 302:	szResponse="Found" ;break;
 		case 303:	szResponse="See Other" ;break;
@@ -499,7 +499,7 @@ void KvsObject_http::slotReadyRead(const QHttpResponseHeader &r)
 {
 	QString szResponse;
 	switch (r.statusCode()) {
-		case 200:	szResponse="Ok"  ;break;
+		case 200:	szResponse="OK"  ;break;
 		case 301:	szResponse="Moved Permanently" ;break;
 		case 302:	szResponse="Found" ;break;
 		case 303:	szResponse="See Other" ;break;

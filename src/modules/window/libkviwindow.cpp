@@ -74,7 +74,7 @@ KviPointerList<UserWindow> * g_pUserWindowList = 0;
 		if(!pWnd) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data()); \
+				c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data()); \
 			return true; \
 		} \
 	}
@@ -267,7 +267,7 @@ static bool window_kvs_cmd_activate(KviKvsModuleCommandCall * c)
 		system taskbar entry will be flashed.
 		Please note that this command is highly system dependant:
 		on systems that do not have a system taskbar or there
-		is no way to flash an etry this command will do nothing.
+		is no way to flash an entry this command will do nothing.
 		At the time of writing this command works flawlessly on
 		Windows and in KDE compilations.
 	@seealso:
@@ -464,9 +464,9 @@ static bool window_kvs_fnc_hasUserFocus(KviKvsModuleFunctionCall * c)
 		$window.console
 		$window.console(<window_id>)
 	@description:
-		Returns the id of the console window that the window specified by window_id is attached to.
+		Returns the ID of the console window that the window specified by window_id is attached to.
 		The console is the main (and only) console of the IRC context. If window_id is missing then
-		the current window is used. If this window does not belong to an irc context (and thus has
+		the current window is used. If this window does not belong to an IRC context (and thus has
 		no attached console) then 0 is returned.
 	@seealso:
 */
@@ -577,7 +577,7 @@ static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
 		if(!pWnd)
 		{
 			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+				c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
 			return true;
 		}
 	}
@@ -603,9 +603,9 @@ static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
 	@description:
 		Every window has a current alert level; it corresponds to an highlight color of that window in the window list.
 		There are 6 defined levels, they start from 0 (normal) to 5 (max alarm level). The classic window list and the tree window list use different colors to represent these levels. Classic task bar uses options:
-		[ul][li]colorWindowListNormalText : normale state[/li][li]colorWindowListHighlight1Text : highlight state 1[/li][li]...[/li][li]colorWindowListHighlight5Text : highlight state 5[/li][/ul]
+		[ul][li]colorWindowListNormalText : normal state[/li][li]colorWindowListHighlight1Text : highlight state 1[/li][li]...[/li][li]colorWindowListHighlight5Text : highlight state 5[/li][/ul]
 		While the tree window list uses options:
-		[ul][li]colorTreeWindowListForeground : normale state[/li][li]colorTreeWindowListHighlight1Foreground : highlight state 1[/li][li]...[/li][li]colorTreeWindowListHighlight5Foreground : highlight state 5[/li][/ul]
+		[ul][li]colorTreeWindowListForeground : normal state[/li][li]colorTreeWindowListHighlight1Foreground : highlight state 1[/li][li]...[/li][li]colorTreeWindowListHighlight5Foreground : highlight state 5[/li][/ul]
 		You can use [fnc]$option[/fnc] to read these options and the [cmd]option[/cmd] command to set them.
 	@seealso:
 		[fnc]$window.activityTemperature[/fnc]
@@ -642,7 +642,7 @@ static bool window_kvs_fnc_highlightLevel(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the type of the window with <window_id>.[br]
 		The form with no parameters returns the type of the current window.[br]
-		If the window with the specified id does not exist, an empty string is returned.[br]
+		If the window with the specified ID does not exist, an empty string is returned.[br]
 	@seealso:
 */
 
@@ -670,7 +670,7 @@ static bool window_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the IRC context of the window with the specified <window_id>.[br]
 		The form with no parameters returns the IRC context of the current window.[br]
-		If the window with the specified id does not exist, an empty string is returned.[br]
+		If the window with the specified ID does not exist, an empty string is returned.[br]
 	@seealso:
 */
 
@@ -698,7 +698,7 @@ static bool window_kvs_fnc_context(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the caption of the window with <window_id>.[br]
 		The form with no parameters returns the caption of the current window.[br]
-		If the window with the specified id does not exist, an empty string is returned.[br]
+		If the window with the specified ID does not exist, an empty string is returned.[br]
 	@seealso:
 */
 
@@ -752,31 +752,31 @@ static bool window_kvs_cmd_listtypes(KviKvsModuleCommandCall * c)
 		<type> is a window type such as 'query' or 'channel'.[br]
 		See [cmd]window.listtypes[/cmd] for a list of available window types in this KVIrc release.[br]
 		If <type> is the special word 'all', all the window types are listed.[br]
-		<irc_context_id> specifies the irc context in which the windows are searched.[br]
+		<irc_context_id> specifies the IRC context in which the windows are searched.[br]
 		If no <irc_context_id> is specified, the current one is used.[br]
-		If <irc_context_id> is the special word 'all', all the irc context are searched.[br]
+		If <irc_context_id> is the special word 'all', all the IRC context are searched.[br]
 		If <irc_context_id> is the special word 'none' then only windows not belonging to any
 		irc context are listed.[br]
 		The special word 'any' used as <irc_context_id> merges the effects of 'all' and 'none'
-		by searching all the irc contexts AND the windows not belonging to any irc context.[br]
-		The windows that do not belong to any irc context (such as DCC windows), must be searched
+		by searching all the IRC contexts AND the windows not belonging to any IRC context.[br]
+		The windows that do not belong to any IRC context (such as DCC windows), must be searched
 		by using 'none' or 'any' as <irc_context_id>.
 	@examples:
 		[example]
-			[comment]# List all the queries of the current irc context[/comment]
+			[comment]# List all the queries of the current IRC context[/comment]
 			[cmd]echo[/cmd] $window.list(query)
 			[comment]# Equivalent to the above[/comment]
 			[cmd]echo[/cmd] $window.list(query,[fnc]$ic[/fnc])
-			[comment]# List all the channels in all the irc contexts[/comment]
+			[comment]# List all the channels in all the IRC contexts[/comment]
 			[cmd]echo[/cmd] $window.list(channel,all)
-			[comment]# List all the windows in the current irc context[/comment]
+			[comment]# List all the windows in the current IRC context[/comment]
 			[cmd]echo[/cmd] $window.list(all)
-			[comment]# List all the windows in all irc contexts[/comment]
+			[comment]# List all the windows in all IRC contexts[/comment]
 			[cmd]echo[/cmd] $window.list(all,all)
-			[comment]# List all the DCC Send windows: They don't belong to any irc context[/comment]
+			[comment]# List all the DCC Send windows: They don't belong to any IRC context[/comment]
 			[cmd]echo[/cmd] $window.list(dcctransfer,none)
 			[comment]# List all the user windows created with $window.open[/comment]
-			[comment]# They may either belong to an irc context or not[/comment]
+			[comment]# They may either belong to an IRC context or not[/comment]
 			[cmd]echo[/cmd] $window.list(userwnd,any)
 			[comment]# Ok, let's use it[/comment]
 			[comment]# A nice alias that allows iterating commands through all the consoles[/comment]
@@ -905,7 +905,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			uId = szContext.toUInt(&bOk);
 			if(!bOk)
 			{
-				c->warning(__tr2qs("Invalid IRC context id '%Q'"),&szContext);
+				c->warning(__tr2qs("Invalid IRC context ID '%Q'"),&szContext);
 				return true;
 			}
 		} else {
@@ -966,7 +966,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		[b]q[/b]: Don't print warning messages during the creation.[br]
 		If <caption> is given then the new window will have it as the initial plain text <caption>.
 		You can change the caption later by calling [cmd]window.setWindowTitle[/cmd].[br]
-		If <irc_context> is given then the new window is bound to the specified irc context
+		If <irc_context> is given then the new window is bound to the specified IRC context
 		and will be destroyed when the attached console closes.
 		If <irc_context> is omitted or is 0 then the window will be context free (not bound
 		to any context) and will exist until it is closed by the GUI, by a [cmd]window.close[/cmd]
@@ -1004,7 +1004,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QPixmap *pPix=g_pIconManager->getImage(szIcon);
 	if(!pPix){
 
-	    c->warning(__tr2qs("The specified icon does not exist: switching to 'none'"));
+	    c->warning(__tr2qs("The specified icon doesn't exist: switching to 'none'"));
 	    szIcon.prepend("$icon(");
 	    szIcon.append(")");
 	}
@@ -1068,7 +1068,7 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
 		return true;
 	}
 
@@ -1116,7 +1116,7 @@ static bool window_kvs_cmd_setInputText(KviKvsModuleCommandCall * c)
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
 		return true;
 	}
 	if(pWnd->input())
@@ -1161,7 +1161,7 @@ static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
 		return true;
 	}
 	if(pWnd->input())
@@ -1234,7 +1234,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
 		return true;
 	}
 
@@ -1310,7 +1310,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 		KviMemory::move(encKey,tmpKey,encKeyLen);
 		KviCString::freeBuffer(tmpKey);
 	} else {
-		szError = __tr2qs("The encrypt key wasn't a valid hexadecimal string");
+		szError = __tr2qs("The encryption key wasn't a valid hexadecimal string");
 		return false;
 	}
 
@@ -1324,7 +1324,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 		KviMemory::move(decKey,tmpKey,decKeyLen);
 		KviCString::freeBuffer(tmpKey);
 	} else {
-		szError = __tr2qs("The decrypt key wasn't a valid hexadecimal string");
+		szError = __tr2qs("The decryption key wasn't a valid hexadecimal string");
 		return false;
 	}
 	bool bRet = eng->init(encKey,encKeyLen,decKey,decKeyLen);
@@ -1355,7 +1355,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 		Disables decryption
 	@description:
 		Sets the specified [doc:crypt_engines]cryptographic engine[/doc] for the window. If <enginename> is empty
-		then any current crypting engine is removed (i.e. crypting is disabled).
+		then any current encryption engine is removed (i.e. encrypting is disabled).
 		The must be both expressed in hexadecimal notation and are internally transformed in bytes.
 		If only the encrypt key is specified then it will be used for both encrypting and
 		decrypting. This command works only if crypt support is compiled in.
@@ -1393,7 +1393,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
 		return true;
 	}
 	if(c->hasSwitch('n',"onlydecrypt") && c->hasSwitch('m',"onlyencrypt"))
@@ -1409,7 +1409,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 		if(szEncryptKey.isEmpty() || szDecryptKey.isEmpty())
 		{
 			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("No encrypt key specified: can't allocate engine"));
+				c->warning(__tr2qs("No encryption key specified: can't allocate engine"));
 			return true;
 		}
 
@@ -1438,7 +1438,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 			}
 		} else {
 			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("The crypt engine \"%Q\" does not exist"),&szEngine);
+				c->warning(__tr2qs("The crypt engine \"%Q\" doesn't exist"),&szEngine);
 		}
 	}
 #else

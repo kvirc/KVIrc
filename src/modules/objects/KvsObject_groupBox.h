@@ -2,7 +2,7 @@
 #define _CLASS_GROUPBOX_H_
 //=============================================================================
 //
-//   File : KvsObject_groupBox.cpp
+//   File : KvsObject_groupBox.h
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //

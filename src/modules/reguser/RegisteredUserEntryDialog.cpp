@@ -405,7 +405,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 	}
 	if(!m_pAvatar)m_pAvatar = new KviPixmap();
 
-	m_pAvatarSelector = new KviPixmapSelector(p2,__tr2qs_ctx("Avatar","register"),m_pAvatar,true);
+	m_pAvatarSelector = new KviPixmapSelector(p2,__tr2qs_ctx("Avatar:","register"),m_pAvatar,true);
 	g->addWidget(m_pAvatarSelector,3,0,1,3);
 
 	f = new QFrame(p2);
@@ -615,7 +615,7 @@ void RegisteredUserEntryDialog::okClicked()
 	{
 		// ops... no way
 		// FIXME: spit an error message ?
-		qDebug("Ops.. something wrong with the regusers db");
+		qDebug("Oops! Something wrong with the regusers DB");
 		accept();
 		return;
 	}

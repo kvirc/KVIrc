@@ -581,7 +581,7 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 	QDir d(szDir);
 	if(!d.exists())
 	{
-		c->warning(__tr2qs("The specified directory does not exist '%Q'"),&szDir);
+		c->warning(__tr2qs("The specified directory doesn't exist '%Q'"),&szDir);
 		return true;
 	}
 
@@ -718,7 +718,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 	QDir d(szDir);
 	if(!d.exists())
 	{
-		c->warning(__tr2qs("The specified directory does not exist '%Q'"),&szDir);
+		c->warning(__tr2qs("The specified directory doesn't exist '%Q'"),&szDir);
 		return true;
 	}
 

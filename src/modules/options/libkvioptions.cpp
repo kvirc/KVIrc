@@ -58,7 +58,7 @@ extern int g_iOptionWidgetInstances;
 	@description:
 		Saves the options to disk; this includes aliases, popups,
 		events and all user preferences. You shouldn't need to
-		call this as KVIrc *should* save the relevant part of
+		call this as KVIrc [i]should[/i] save the relevant part of
 		configuration when it's changed. However you might want it
 		in a debugging session or when testing an unstable version
 		where crashes are possible.
@@ -79,15 +79,15 @@ static bool options_kvs_cmd_save(KviKvsModuleCommandCall *)
 	@title:
 		options.dialog
 	@short:
-		Shows the "options dialog"
+		Shows the preferences dialog
 	@syntax:
 		options.dialog [-t] [options_group]
 	@description:
-		Shows the KVIrc options dialog for the specified options group.
+		Shows the KVIrc preferences dialog and the specified options group.
 		If the [-t] switch is used, the dialog is opened as toplevel window,
-		otherwise it is opened as part of the current frame window.[br]
-		Valid values for [options_group] are "general" and "theme".
-		If [options_group] is omitted, the option group "general" is assumed.
+		otherwise it is opened as part of the current frame window.[br][br]
+		Valid values for [options_group] are [b]general[/b] and [b]theme[/b].
+		If [options_group] is omitted, the option group [i]general[/i] is assumed.
 		This command is exported by the "options" module.
 	@seealso:
 		[fnc]$options.isDialog[/fnc]
@@ -194,7 +194,7 @@ static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 	@description:
 		Shows an options page as toplevel dialog.
 		The available option pages can be listed by using [cmd]options.pages[/cmd].
-		If the -n switch is used then dialog will appear as NON modal (will not block input).
+		If the -n switch is used then dialog will appear as [b]non[/b] modal (will not block input).
 	@seealso:
 */
 
@@ -256,9 +256,9 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		<boolean> $options.isdialog([options_group:string])
 	@description:
 		Returns '1' if the options dialog for the specified options_group is open, '0' otherwise.[br]
-		If [options_group] is omitted then the group "general" is assumed.
-		At the moment of writing the valid [options_group] values are "general" and "theme".
-		This command is exported by the "options" module.
+		If [options_group] is omitted then the group [i]general[/i] is assumed.
+		At the moment of writing the valid [options_group] values are [b]general[/b] and [b]theme[/b].
+		This command is exported by the [i]options[/i] module.
 	@seealso:
 		[cmd]options.dialog[/cmd]
 */
@@ -288,8 +288,8 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 	@description:
 		Closes the KVIrc options dialog for the specified options group
 		or containing the specified options page.
-		If [options_group] is omitted, the option group "general" is assumed.
-		This command is exported by the "options" module.
+		If [options_group] is omitted, the option group [i]general[/i] is assumed.
+		This command is exported by the [i]options[/i] module.
 	@seealso:
 		[fnc]$options.isDialog[/fnc]
 */

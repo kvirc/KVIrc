@@ -462,7 +462,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	m_pPopup->setEnabled(false);
 	pAdvLayout->addWidget(m_pPopup,4,1);
 
-	m_pRaw = new QCheckBox(__tr2qs("Raw Events"),m_pAdvanced);
+	m_pRaw = new QCheckBox(__tr2qs("RAW Events"),m_pAdvanced);
 	m_pRaw->setChecked(true);
 	m_pRaw->setEnabled(false);
 	pAdvLayout->addWidget(m_pRaw,5,0);

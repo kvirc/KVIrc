@@ -40,13 +40,13 @@ UPnP::Manager* g_pManager = 0;
 	@title:
 		$upnp.getExternalIpAddress
 	@short:
-		Return the external ip address using UPnP
+		Return the external IP address using UPnP
 	@syntax:
 		<string> $upnp.getExternalIpAddress()
 	@description:
-		During the loading of the UPnP module (and during a [cmd]upnp.refresh[/cmd]), KVIrc searches the gateway of your local network. If a gateway is found, KVIrc requests it the external Ip address associated to the router and caches it.[br]
+		During the loading of the UPnP module (and during a [cmd]upnp.refresh[/cmd]), KVIrc searches the gateway of your local network. If a gateway is found, KVIrc requests it the external IP address associated to the router and caches it.[br]
 		Using this function you can get this cached value.[br]
-		Take care that if no gateway have been found or it returned no external Ip address (this can happens if its upstream  (wan) link is not connected), this function returns an empty string.[br]
+		Take care that if no gateway have been found or it returned no external IP address (this can happens if its upstream  (WAN) link is not connected), this function returns an empty string.[br]
 		It's better to check is a gateway has been found using [fnc]$upnp.isGatewayAvailable[/fnc] before using this function.
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc]
@@ -73,7 +73,7 @@ static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 		<bool> $upnp.isGatewayAvailable()
 	@description:
 		Returns if a UPnP-capable gateway has been found on the local network.[br]
-		If this function returns false (0), no other command or function from the upnp module will work.
+		If this function returns false (0), no other command or function from the UPnP module will work.
 */
 static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 {
@@ -101,7 +101,7 @@ static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 		interface.[br]
 	@description:
 		Makes a request to the gateway of the local network using UPnP; the request asks the gateway to add an entry in its port mapping table.[br]
-		If the gateway accepts the request, it will forward packets received on <port> on its external (wan) ip address to the host KVIrc is running at, on the same <port>.
+		If the gateway accepts the request, it will forward packets received on <port> on its external (WAN) IP address to the host KVIrc is running at, on the same <port>.
 		Depending on vendors, this is called with different names: Port forwarding, SUA, Virtual Server, PAT, ...
 		It's better to check is a gateway has been found using [fnc]$upnp.isGatewayAvailable[/fnc] before using this function.
 	@seealso:
@@ -170,7 +170,7 @@ static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 		upnp.refresh
 	@description:
 		Rescan the local network for a gateway using UPnP.[br]
-		This command is automatically executed when KVIrc loads the upnp module.
+		This command is automatically executed when KVIrc loads the UPnP module.
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc]
 */

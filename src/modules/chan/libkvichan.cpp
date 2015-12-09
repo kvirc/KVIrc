@@ -47,7 +47,7 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 		KviWindow * w = g_pApp->findWindow(szChan);
 		if(!w)
 		{
-			if(!bNoWarnings) c->warning(__tr2qs("Can't find the window with id '%Q'"),&szChan);
+			if(!bNoWarnings) c->warning(__tr2qs("Can't find the window with ID '%Q'"),&szChan);
 			return 0;
 		}
 		if(w->type() == KviWindow::Channel)return (KviChannelWindow *)w;
@@ -1280,7 +1280,7 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<array> $chan.banexceptionlist([window_id])
 	@description:
-		Returns an array of ban exception masks set ont the channel identified by [window_id].[br]
+		Returns an array of ban exception masks set on the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
 	@seealso:
@@ -1327,7 +1327,7 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<array> $chan.banexceptionlist([window_id])
 	@description:
-		Returns an array of invite masks set ont the channel identified by [window_id].[br]
+		Returns an array of invite masks set on the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
 	@seealso:

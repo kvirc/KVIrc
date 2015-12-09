@@ -118,7 +118,7 @@ void SsdpConnection::slotDataReceived()
 // Send a broadcast to detect all devices
 void SsdpConnection::queryDevices(int bindPort)
 {
-	qDebug() << "UPnP::SsdpConnection: Sending broadcast packet." << endl;
+	qDebug() << "UPnP::SsdpConnection: sending broadcast packet." << endl;
 
 	// Send a packet to a broadcast address
 	QHostAddress address("239.255.255.250");
@@ -134,7 +134,7 @@ void SsdpConnection::queryDevices(int bindPort)
 	bool success = m_pSocket->bind(bindPort);
 	if(! success)
 	{
-		qDebug() << "UPnP::SsdpConnection: Failed to bind to port " << bindPort << "." << endl;
+		qDebug() << "UPnP::SsdpConnection: failed to bind to port " << bindPort << "." << endl;
 	}
 
 	// Send the data
@@ -143,7 +143,7 @@ void SsdpConnection::queryDevices(int bindPort)
 
 	if(bytesWritten == -1)
 	{
-		qDebug() << "UPnP::SsdpConnection: Failed to send the UPnP broadcast packet." << endl;
+		qDebug() << "UPnP::SsdpConnection: failed to send the UPnP broadcast packet." << endl;
 	}
 }
 

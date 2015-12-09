@@ -280,8 +280,8 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_RAWEDITOR,
 		"raweditor.open",
-		__tr2qs("Edit Raw Events..."),
-		__tr2qs("Shows a window that allows editing raw scripting events"),
+		__tr2qs("Edit RAW Events..."),
+		__tr2qs("Shows a window that allows editing RAW scripting events"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_raweditor.png",
 		KviIconManager::RawEventEditor,

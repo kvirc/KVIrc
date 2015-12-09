@@ -104,7 +104,7 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -158,7 +158,7 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -208,7 +208,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -262,7 +262,7 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 		pWnd = g_pApp->findWindow(szWindow);
 		if(!pWnd)
 		{
-			c->warning(__tr2qs_ctx("Window with id '%1' not found, returning empty string","log").arg(szWindow));
+			c->warning(__tr2qs_ctx("Window with ID '%1' not found, returning empty string","log").arg(szWindow));
 			return true;
 		}
 	}

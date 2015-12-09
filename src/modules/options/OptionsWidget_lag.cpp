@@ -46,7 +46,7 @@ OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
 	mergeTip(pInterval,
 		__tr2qs_ctx("<center>This option allows you to set the lag meter heartbeat interval.<br>" \
 			"The lower the heartbeat interval the higher will be the accuracy of the lag check " \
-			"but also higher cpu usage and data traffic to the server.<br>" \
+			"but also higher CPU usage and data traffic to the server.<br>" \
 			"Please note that this is NOT the interval between pings sent to the server: " \
 			"the pings (if any) will be sent really less often. " \
 			"5000 is a reasonable value.</center>","options"));

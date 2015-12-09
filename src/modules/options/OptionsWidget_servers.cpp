@@ -203,7 +203,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
-		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//text encoding
@@ -215,7 +215,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pTextEncodingEditor,2,1);
 	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used as the default for text messages." \
-		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//common between server encoding and text encoding
@@ -980,7 +980,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pIdEditor->setText(s->id());
 	gl->addWidget(m_pIdEditor,iRow,1);
 
-	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
+	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique ID for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
 		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
 

@@ -2,7 +2,7 @@
 #define _CLASS_TOOLBUTTON_H_
 //=============================================================================
 //
-//   File : KvsObject_toolButton.cpp
+//   File : KvsObject_toolButton.h
 //   Creation date : Fri Mar 18 14:30:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //

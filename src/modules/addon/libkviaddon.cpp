@@ -197,7 +197,7 @@ static bool addon_kvs_cmd_uninstall(KviKvsModuleCommandCall * c)
 		KviKvsScriptAddonManager::instance()->unregisterAddon(szName,c->window(),!c->switches()->find('n',"no-callback"));
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -243,7 +243,7 @@ static bool addon_kvs_cmd_configure(KviKvsModuleCommandCall * c)
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -290,7 +290,7 @@ static bool addon_kvs_cmd_help(KviKvsModuleCommandCall * c)
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -336,7 +336,7 @@ static bool addon_kvs_cmd_setconfigurecallback(KviKvsModuleCallbackCommandCall *
 		a->setConfigureCallback(c->callback()->code());
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -383,7 +383,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		a->setHelpCallback(c->callback()->code());
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -646,7 +646,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 	if(!a)
 	{
 		if(!bQuiet)
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 		return true;
 	}
 

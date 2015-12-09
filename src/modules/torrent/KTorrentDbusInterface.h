@@ -6,7 +6,7 @@
 //   DBus interface for KTorrent client.
 //
 //   File : KTorrentDbusInterface.h
-//   Creation date : Mod Nov 17 13:46:00 2008 GMT by Fabio Bas
+//   Creation date : Mon Nov 17 13:46:00 2008 GMT by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)

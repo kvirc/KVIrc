@@ -136,12 +136,12 @@ KVSO_CLASS_FUNCTION(colorDialog,setCurrentColor)
 	{
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<4)

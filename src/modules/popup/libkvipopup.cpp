@@ -49,7 +49,7 @@
 	if(!pPopup) \
 	{ \
 		if(!c->hasSwitch('q',"quiet")) \
-			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName); \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szPopupName); \
 		return true; \
 	} \
 	if(pPopup->LOCKING_CHECK()) \
@@ -74,7 +74,7 @@
 		if(!pPopup) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szTargetPopupName); \
+				c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szTargetPopupName); \
 			return true; \
 		} \
 		if(pPopup->LOCKING_CHECK()) \
@@ -105,7 +105,7 @@
 	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName); \
 	if(!pPopup) \
 	{ \
-		c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName); \
+		c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szPopupName); \
 		return true; \
 	} \
 	while(!szSubPopupName.isEmpty()) \
@@ -123,7 +123,7 @@
 		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
 		if(!pPopup) \
 		{ \
-			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szTargetPopupName); \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szTargetPopupName); \
 			return true; \
 		} \
 	}
@@ -151,7 +151,7 @@
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
 		If this item gets clicked, the code inside <command> will be executed.
@@ -202,7 +202,7 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 		Adds a menu prologue to an already existing popup or nested popup named <popupname>. If you
 		want to add an item to a nested popup, use the form "popup.addItem", for example,
 		"channeltextview.myNestedItem".[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		<command> will be executed just before the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
 		Please note that some instructions are not allowed here, You can't delete the prologue's parent
@@ -251,7 +251,7 @@ static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 		Adds a menu epilogue to an already existing popup or nested popup named <popupname>. If you
 		want to add an item to a nested popup, use the form "popup.addItem", for example,
 		"channeltextview.myNestedItem".[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		<command> will be executed just after the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
 		Please note that some instructions are not allowed here, You can't delete the prologue's parent
@@ -300,7 +300,7 @@ static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
 		If this item is hovered over, the nested popup <external_popup> will be shown.
@@ -349,7 +349,7 @@ static bool popup_kvs_cmd_addExtPopup(KviKvsModuleCommandCall * c)
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
 	@seealso:
@@ -395,7 +395,7 @@ static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
 		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
 		If this item is hovered over, the nested popup will be shown.
@@ -440,7 +440,7 @@ static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
 		"popup.addItem", for example, "channeltextview.myNestedItem". The separator is not selectable
 		or clickable.[br]
-		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<item_id> is the optional item ID - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
 	@seealso:
@@ -571,7 +571,7 @@ static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	if(!pPopup)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName);
+			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szPopupName);
 		return true;
 	}
 	if(pPopup->isSoftLocked())
@@ -627,7 +627,7 @@ static bool popup_kvs_cmd_delItem(KviKvsModuleCommandCall * c)
 	if(!pPopup->removeItemByName(szItemId,c->hasSwitch('d',"deep")))
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("The menu item with id \"%Q\" does not exist in popup \"%Q\"","kvs"),&szItemId,&szPopupName);
+			c->warning(__tr2qs_ctx("The menu item with ID \"%Q\" doesn't exist in popup \"%Q\"","kvs"),&szItemId,&szPopupName);
 	}
 
 	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
@@ -731,9 +731,9 @@ static bool popup_kvs_fnc_isEmpty(KviKvsModuleFunctionCall * c)
 	@syntax:
 		$popup.currentItemId()
 	@short:
-		Returns the popup item id that owns the executing code
+		Returns the popup item ID that owns the executing code
 	@description:
-		When called inside a popup item's callback, this function returns the id of the popup item.
+		When called inside a popup item's callback, this function returns the ID of the popup item.
 		Outside of callback code, $null is returned.
 	@examples:
 		[example]

@@ -112,7 +112,7 @@ static bool action_kvs_cmd_trigger(KviKvsModuleCommandCall * c)
 				c->warning(__tr2qs("The action \"%1\" is disabled").arg(szName));
 		}
 	} else {
-		c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+		c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -158,7 +158,7 @@ static bool action_kvs_cmd_enable(KviKvsModuleCommandCall * c)
 		if(!a->isEnabled())a->setEnabled(true);
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -206,7 +206,7 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 		if(a->isEnabled())a->setEnabled(false);
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -256,7 +256,7 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;

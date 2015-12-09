@@ -81,8 +81,8 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 		[fnc]$serverdb.serverDescription[/fnc]: returns the description for a server[br]
 		[fnc]$serverdb.serverEncoding[/fnc]: returns the encoding for a server[br]
 		[fnc]$serverdb.serverTextEncoding[/fnc]: returns the text encoding for a server[br]
-		[fnc]$serverdb.serverId[/fnc]: returns the unique id for a server[br]
-		[fnc]$serverdb.serverIp[/fnc]: returns the ip for a server[br]
+		[fnc]$serverdb.serverId[/fnc]: returns the unique ID for a server[br]
+		[fnc]$serverdb.serverIp[/fnc]: returns the IP for a server[br]
 		[fnc]$serverdb.serverLoginCommand[/fnc]: returns the "on login" script for a server[br]
 		[fnc]$serverdb.serverNickName[/fnc]: returns the specific nickname for a server[br]
 		[fnc]$serverdb.serverPassword[/fnc]: returns the password for a server[br]
@@ -92,7 +92,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 		[fnc]$serverdb.serverJoinChannels[/fnc]: returns the list of autojoin channels for a server[br]
 		[fnc]$serverdb.isAutoConnect[/fnc]: returns the autoconnect status for a server[br]
 		[fnc]$serverdb.isIPv6[/fnc]: returns the ipv6 status for a server[br]
-		[fnc]$serverdb.isSSL[/fnc]: returns the ssl status for a server[br]
+		[fnc]$serverdb.isSSL[/fnc]: returns the SSL status for a server[br]
 		[fnc]$serverdb.networkExists[/fnc]: checks if a network exists[br]
 		[fnc]$serverdb.serverExists[/fnc]: checks if a server exists[br]
 */
@@ -109,7 +109,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 		<bool> $serverdb.networkExists(<network_name:string>)
 	@description:
 		Checks if the network already exists in the DB.[br]
-		It returns 1 if the network exixts, 0 otherwise.
+		It returns 1 if the network exists, 0 otherwise.
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -151,7 +151,7 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 	@description:
 		Checks if the server already exists for a network in the DB.[br]
 		If no network name is provided, the check is made globally.[br]
-		It returns 1 if the server exixts, 0 otherwise
+		It returns 1 if the server exists, 0 otherwise
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -231,7 +231,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
 		if(!pNetwork) \
 		{ \
-			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
 			return false; \
 		}
 
@@ -272,14 +272,14 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
 		if(!pRecord) \
 		{ \
-			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
 			return false; \
 		} \
 		\
 		KviIrcServer * pServer = pRecord->findServer(szServName); \
 		if(!pServer) \
 		{ \
-			c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified server doesn't exist","serverdb")); \
 			return false; \
 		}
 
@@ -748,7 +748,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL,useSSL,setBoolean)
 	@syntax:
 		<bool> $serverdb.cacheIp(<network:string>,<server:string>)
 	@description:
-		Returns true if KVIrc is set to cache the ip of the server <server> of the network <network>, false otherwise
+		Returns true if KVIrc is set to cache the IP of the server <server> of the network <network>, false otherwise
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -817,7 +817,7 @@ END_SERVERDB_GET_SERVER_PROPERTY
 		serverdb.addNetwork <string:network name>
 	@description:
 		Adds the specified network <network name> to the DB.[br]
-		If the network already exixts, an error is printed unless the -q switch is used.
+		If the network already exists, an error is printed unless the -q switch is used.
 	@switches:
 		!sw: -a | --autoconnect
 		Autoconnect this network at KVIrc start.
@@ -874,7 +874,7 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 		Autoconnect this server at KVIrc start.[br]
 
 		!sw: -c | --cache-ip
-		Caches the server IP at first connect to save bandwitch for future connects.[br]
+		Caches the server IP at first connect to save bandwidth for future connects.[br]
 
 		!sw: -f | --favorite
 		Sets the server as a favorite.[br]
@@ -926,7 +926,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	if(!pRecord)
 	{
 		// FIXME: default to orphan servers
-		c->error(__tr2qs_ctx("The specified network does not exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb"));
 		return false;
 	}
 
@@ -984,7 +984,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		if(!pNetwork) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
 			return false; \
 		} \
 		\
@@ -1020,7 +1020,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		if(!pRecord) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
 			return false; \
 		} \
 		\
@@ -1028,7 +1028,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		if(!pServer) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified server doesn't exist","serverdb")); \
 			return false; \
 		} \
 		\
@@ -1054,8 +1054,8 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the nickname HelLViS69 for the Freenode network[/comment][br]
-		serverdb.setNetworkNickName -q Freenode HelLViS69
+		[comment]Quietly sets the nickname HelLViS69 for the freenode network[/comment][br]
+		serverdb.setNetworkNickName -q freenode HelLViS69
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1079,8 +1079,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName,setNickName)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the username kvirc for the Freenode network[/comment][br]
-		serverdb.setNetworkUserName -q Freenode kvirc
+		[comment]Quietly sets the username kvirc for the freenode network[/comment][br]
+		serverdb.setNetworkUserName -q freenode kvirc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1104,8 +1104,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName,setUserName)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the realname KVIrc 4.0 for the Freenode network[/comment][br]
-		serverdb.setNetworkRealName -q Freenode KVIrc 4.0
+		[comment]Quietly sets the realname KVIrc 4.0 for the freenode network[/comment][br]
+		serverdb.setNetworkRealName -q freenode KVIrc 4.0
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1130,8 +1130,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName,setRealName)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the encoding UTF-8 for the Freenode network[/comment][br]
-		serverdb.setNetworkEncoding -q Freenode UTF-8
+		[comment]Quietly sets the encoding UTF-8 for the freenode network[/comment][br]
+		serverdb.setNetworkEncoding -q freenode UTF-8
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1155,8 +1155,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding,setEncoding)
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the text encoding UTF-8 for the Freenode network[/comment][br]
-		serverdb.setNetworkTextEncoding -q Freenode UTF-8
+		[comment]Quietly sets the text encoding UTF-8 for the freenode network[/comment][br]
+		serverdb.setNetworkTextEncoding -q freenode UTF-8
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1180,8 +1180,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding,setTextEnc
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the description for the Freenode network[/comment][br]
-		serverdb.setNetworkDescription -q Freenode The FOSS Network
+		[comment]Quietly sets the description for the freenode network[/comment][br]
+		serverdb.setNetworkDescription -q freenode The FOSS Network
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1205,8 +1205,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription,setDescript
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the connect command for the Freenode network[/comment][br]
-		serverdb.setNetworkConnectCommand -q Freenode ns identify HelLViS69 foobar
+		[comment]Quietly sets the connect command for the freenode network[/comment][br]
+		serverdb.setNetworkConnectCommand -q freenode ns identify HelLViS69 foobar
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1230,8 +1230,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand,setOnCon
 		Do not print errors if the network already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the login command for the Freenode network[/comment][br]
-		serverdb.setNetworkLoginCommand -q Freenode join #KVIrc
+		[comment]Quietly sets the login command for the freenode network[/comment][br]
+		serverdb.setNetworkLoginCommand -q freenode join #KVIrc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1254,7 +1254,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand,setOnLogin
 	@examples:
 		[example]
 		[comment]Set two autojoin channels for freenode[/comment][br]
-		serverdb.setNetworkJoinChannels Freenode #kvirc:,#secretchan:password
+		serverdb.setNetworkJoinChannels freenode #kvirc:,#secretchan:password
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -1278,7 +1278,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels,setAutoJoi
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the nickname HelLViS69 for the Freenode network[/comment][br]
+		[comment]Quietly sets the nickname HelLViS69 for the freenode network[/comment][br]
 		serverdb.setServerNickName -q irc.freenode.net HelLViS69
 		[/example]
 	@seealso:
@@ -1303,7 +1303,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName,setNickName)
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the username kvirc for the Freenode server[/comment][br]
+		[comment]Quietly sets the username kvirc for the freenode server[/comment][br]
 		serverdb.setServerUserName -q irc.freenode.net kvirc
 		[/example]
 	@seealso:
@@ -1328,7 +1328,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName,setUserName)
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the realname KVIrc 4.0 for the Freenode server[/comment][br]
+		[comment]Quietly sets the realname KVIrc 4.0 for the freenode server[/comment][br]
 		serverdb.setServerRealName -q irc.freenode.net KVIrc 4.0
 		[/example]
 	@seealso:
@@ -1404,7 +1404,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding,setTextEncod
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the description for the Freenode server[/comment][br]
+		[comment]Quietly sets the description for the freenode server[/comment][br]
 		serverdb.setServerDescription -q irc.freenode.net The FOSS Network
 		[/example]
 	@seealso:
@@ -1429,7 +1429,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription,setDescriptio
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the connect command for the Freenode server[/comment][br]
+		[comment]Quietly sets the connect command for the freenode server[/comment][br]
 		serverdb.setServerConnectCommand -q irc.freenode.net ns identify HelLViS69 foobar
 		[/example]
 	@seealso:
@@ -1454,7 +1454,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand,setOnConne
 		Do not print errors if the server already exists.
 	@examples:
 		[example]
-		[comment]Quietly sets the login command for the Freenode server[/comment][br]
+		[comment]Quietly sets the login command for the freenode server[/comment][br]
 		serverdb.setServerLoginCommand -q irc.freenode.net join #KVIrc
 		[/example]
 	@seealso:

@@ -35,7 +35,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviXmmsInterface,
 	"xmms",
 	__tr2qs_ctx(
-		"An interface to the popular UNIX xmms media player.\n" \
+		"An interface for the popular UNIX XMMS media player.\n" \
 		"Download it from http://legacy.xmms2.org\n"
 		,
 		"mediaplayer"
@@ -46,7 +46,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviAudaciousClassicInterface,
 	"audacious classic",
 	__tr2qs_ctx(
-		"An interface to the popular UNIX audacious media player.\n" \
+		"An interface for the popular UNIX Audacious media player.\n" \
 		"Download it from http://audacious-media-player.org\n"
 		,
 		"mediaplayer"

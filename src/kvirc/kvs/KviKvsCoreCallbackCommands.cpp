@@ -530,7 +530,7 @@ namespace KviKvsCoreCallbackCommands
 			the handler <handler_name> is removed from the handler
 			list instead of being added.[br]
 			The <event_name> may be one of the kvirc-builtin event names
-			or a numeric code (from 0 to 999) of a raw server message.[br]
+			or a numeric code (from 0 to 999) of a RAW server message.[br]
 			If the -q switch is specified then the command runs in quiet mode.
 		@seealso:
 			[cmd]eventctl[/cmd]

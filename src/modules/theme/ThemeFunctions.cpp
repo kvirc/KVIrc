@@ -51,7 +51,7 @@ namespace ThemeFunctions
 
 	static bool notAValidThemePackage(QString &szError)
 	{
-		szError = __tr2qs_ctx("The selected file does not seem to be a valid KVIrc theme package","theme");
+		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc theme package","theme");
 		return false;
 	}
 
@@ -71,9 +71,9 @@ namespace ThemeFunctions
 
 		if(!r.readHeader(szThemePackageFileName))
 		{
-			qDebug("The selected file does not seem to be a valid KVIrc package");
+			qDebug("The selected file doesn't seem to be a valid KVIrc package");
 			QString szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %1","theme")).arg(szErr);
+			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1","theme")).arg(szErr);
 			return false;
 		}
 

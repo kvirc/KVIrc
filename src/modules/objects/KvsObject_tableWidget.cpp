@@ -102,7 +102,7 @@ const char * const itemflags_tbl[] = {
 		!fn: $hideVerticalHeader()
 		Hides the vertical header.
 		!fn: $setRowCount(<integer>)
-		Sets  the number of rows in the table.
+		Sets the number of rows in the table.
 		!fn: <integer> $rowCount()
 		Returns the number of rows in the table.
 		!fn: <integer> $currentRow()
@@ -117,9 +117,9 @@ const char * const itemflags_tbl[] = {
 		!fn: $removeColumn(<column:uinteger>)
 		Remove the column at <column> and all its items from the table.
 		!fn: $setColumnCount(<uinteger>)
-		Sets  the number of columns in the table.
+		Sets the number of columns in the table.
 		!fn: <integer> $columnCount()
-		Returns  the number of columns in the table.
+		Returns the number of columns in the table.
 		!fn: <integer> $currentRow()
 		Returns the current column.
 		Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc]
@@ -135,6 +135,7 @@ const char * const itemflags_tbl[] = {
 		Sets the flags for the cell pointed by row and col to the given flags.
 		These determine whether the cell can be selected or modified.
 		Supported flags are:
+		[pre]
 		[br]- noitemflag : no flag sets;
 		[br]- selectable : cell is selecatble;
 		[br]- editable : cell is editable;
@@ -143,6 +144,7 @@ const char * const itemflags_tbl[] = {
 		[br]- userCheckable : cell is checkable;
 		[br]- enabled :cell is enabled;
 		[br]- tristate : cell is checkable with three separate states.
+		[/pre]
 		!fn: $setCellWidget(<row:uint>,<column:uint>,<widget:hobject>)
 		Sets the given widget to be displayed in the cell in the given row and column, passing the ownership of the widget to the table.
 		!fn: $setIcon(<row:uint>,<column:uint>,<icon:imageid or hobject>)

@@ -178,7 +178,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	@syntax:
 		package.extractfield <package_path> <field_id> <target_file_name>
 	@description:
-		Extracs a package binary metadata field and saves it to the specified file.
+		Extracts a package binary metadata field and saves it to the specified file.
 		This is useful to extract images from the packages.
 */
 static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
@@ -203,7 +203,7 @@ static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
 
 	if(!pField)
 	{
-		c->warning(__tr2qs_ctx("Package does not contain binary field %1","package").arg(szFieldId));
+		c->warning(__tr2qs_ctx("Package doesn't contain binary field %1","package").arg(szFieldId));
 		return true;
 	}
 

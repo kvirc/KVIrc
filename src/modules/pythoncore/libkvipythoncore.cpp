@@ -126,7 +126,7 @@ bool KviPythonInterpreter::execute(
 {
 	if(!m_pThreadState)
 	{
-		szError = __tr2qs_ctx("Internal error: python interpreter not initialized","python");
+		szError = __tr2qs_ctx("Internal error: Python interpreter not initialized","python");
 		return false;
 	}
 

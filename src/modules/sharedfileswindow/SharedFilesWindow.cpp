@@ -133,7 +133,7 @@ void SharedFileEditDialog::browse()
 {
 	QString szBuf;
 	QString szTxt = m_pFilePathEdit->text();
-	if(!KviFileDialog::askForOpenFileName(szBuf,__tr2qs("Choose the file to share"),szTxt,QString(),false,true,this))return;
+	if(!KviFileDialog::askForOpenFileName(szBuf,__tr2qs("Choose the File to Share"),szTxt,QString(),false,true,this))return;
 	m_pFilePathEdit->setText(szBuf);
 }
 
@@ -156,16 +156,16 @@ void SharedFileEditDialog::okClicked()
 	bool bExpires = m_pExpireCheckBox->isChecked();
 	if(bExpires && (dt <= QDateTime::currentDateTime()))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Invalid expire time","sharedfileswindow"),
-			__tr2qs_ctx("The expire date/time is in the past: please either remove the \"expires\"" \
-					"check mark or specify a expire date/time in the future","sharedfileswindow"),
+		QMessageBox::warning(this,__tr2qs_ctx("Invalid Expiry Time","sharedfileswindow"),
+			__tr2qs_ctx("The expiry date/time is in the past: please either remove the \"Expires at\"" \
+					"check mark or specify a expiry date/time in the future","sharedfileswindow"),
 					__tr2qs_ctx("OK","sharedfileswindow"));
 		return;
 	}
 
 	if(szName.isEmpty())
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Invalid share name","sharedfileswindow"),
+		QMessageBox::warning(this,__tr2qs_ctx("Invalid Share Name","sharedfileswindow"),
 			__tr2qs_ctx("The share name can't be empty, please correct it","sharedfileswindow"),
 			__tr2qs_ctx("OK","sharedfileswindow"));
 		return;

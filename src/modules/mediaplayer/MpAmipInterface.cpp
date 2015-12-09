@@ -110,10 +110,10 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpAmipInterface,
 	"amip",
 	__tr2qs_ctx(
-		"An interface to the AMIP plug-in.\n" \
+		"An interface for the AMIP plugin.\n" \
 		"You can download it from http://amip.tools-for.net\n" \
 		"To use this interface you must " \
-		"install AMIP plug-in for your player."
+		"install AMIP plugin for your player."
 		,
 		"mediaplayer"
 	)

@@ -80,12 +80,12 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 	b = addBoolSelector(0,4,1,4, __tr2qs_ctx("Popup notifier on new query message","options"),KviOption_boolPopupNotifierOnNewQueryMessages);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
-			"in the low right corner of the screen when a new message is received " \
+			"in the lower right corner of the screen when a new message is received " \
 			"and the KVIrc window is not active.</center>","options"));
 	b = addBoolSelector(0,5,1,5, __tr2qs_ctx("Popup notifier on new notice","options"),KviOption_boolPopupNotifierOnNewNotices);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
-			"in the low right corner of the screen when a new notice is received " \
+			"in the lower right corner of the screen when a new notice is received " \
 			"and the KVIrc window is not active.</center>","options"));
 	b = addBoolSelector(0,6,1,6, __tr2qs_ctx("Show information about query target at the top of the query","options"),KviOption_boolShowExtendedInfoInQueryLabel);
 	mergeTip(b,

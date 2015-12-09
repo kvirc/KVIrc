@@ -997,7 +997,7 @@ bool QFtpPI::startNextCmd()
 
 #if defined(QFTPPI_DEBUG)
     if (state != Idle)
-        qDebug("QFtpPI startNextCmd: Internal error! QFtpPI called in non-Idle state %d", state);
+        qDebug("QFtpPI startNextCmd: internal error! QFtpPI called in non-idle state %d", state);
 #endif
     if (pendingCommands.isEmpty()) {
         currentCmd.clear();

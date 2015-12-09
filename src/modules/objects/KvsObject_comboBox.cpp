@@ -71,7 +71,7 @@
 		!fn: $setEditable(<bflag:boolean>)
 		Make the input field editable, if <bflag>. Otherwise the
 		user may only choose one of the items in the combo box.[br]
-		If the parameter is ommited, it is assumed to be false.
+		If the parameter is omitted, it is assumed to be false.
 		!fn: <boolean> $editable()
 		Returns whether the combobox is editable or not.
 		!fn: $setEditText(<text:string>,[<quiet:bool>])
@@ -328,7 +328,7 @@ KVSO_CLASS_FUNCTION(comboBox,setInsertionPolicy)
 			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAfterCurrent);
 	else if(KviQString::equalCI(szPolicy,"BeforeCurrent"))
 			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertBeforeCurrent);
-	else c->warning(__tr2qs_ctx("Invalid insertion Policy '%Q'","objects"),&szPolicy);
+	else c->warning(__tr2qs_ctx("Invalid insertion policy '%Q'","objects"),&szPolicy);
 	return true;
 }
 

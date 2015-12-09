@@ -45,7 +45,7 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		This widget provides a datetimeedit.
+		This widget provides a datetimeedit class.
 	@functions:
 		!fn: $setDate(<text:string>,<format:string>)
 		Sets the date of the widget using the format <format>. Possible values for format are:
@@ -62,7 +62,7 @@
 		!fn: <string> $date(<format:string>)
 		Returns the widget date according to format.
 		!fn: $setTime(<text:string>,<format:string>)
-		Sets the date of the widget using the format <format>. Possibile values for format are:
+		Sets the date of the widget using the format <format>. Possible values for format are:
 		[br]h the hour without a leading zero
 		[br]hh the hour with a leading zero
 		[br]m the minute without a leading zero

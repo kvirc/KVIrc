@@ -381,7 +381,7 @@ static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<real> $math.e()
 	@description:
-		Returns the value of the euler constant e.
+		Returns the value of the Euler constant e.
 */
 
 

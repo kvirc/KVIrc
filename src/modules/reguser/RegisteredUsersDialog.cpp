@@ -271,12 +271,12 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
-	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select all","register"),vbox);
+	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select All","register"),vbox);
 	connect(m_pSelectAllButton,SIGNAL(clicked()),this,SLOT(selectAllClicked()));
 	m_pSelectAllButton->setToolTip(__tr2qs_ctx("Select all the entries","register"));
 	m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)));
 
-	m_pExportButton = new QPushButton(__tr2qs_ctx("Export To...","register"),vbox);
+	m_pExportButton = new QPushButton(__tr2qs_ctx("Export to...","register"),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
 	m_pExportButton->setToolTip(__tr2qs_ctx("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button.","register"));
@@ -480,7 +480,7 @@ void RegisteredUsersDialog::rightButtonPressed ( QTreeWidgetItem * pItem, QPoint
             connect(groups,SIGNAL(triggered(QAction *)),this,SLOT(moveToGroupMenuClicked(QAction *)));
 
             QMenu *mainPopup = new QMenu;
-            mainPopup->addAction(__tr2qs_ctx("Move to group","register"))->setMenu(groups);
+            mainPopup->addAction(__tr2qs_ctx("Move to Group","register"))->setMenu(groups);
 			mainPopup->exec(pnt);
 		}
 	}
@@ -807,7 +807,7 @@ void RegisteredUsersDialog::exportClicked()
 
 
 write_error:
-	KviMessageBox::warning(__tr2qs_ctx("Can't export the registered users database: Write error.","register"));
+	KviMessageBox::warning(__tr2qs_ctx("Can't export the registered users database: write error.","register"));
 	f.close();
 	return;
 
@@ -893,7 +893,7 @@ void RegisteredUsersDialog::importClicked()
 			img=io.read();
 //			if(io.read())goto read_error;
 
-			if(img.isNull())qDebug("Ops.. readed a null image ?");
+			if(img.isNull())qDebug("Oops! Read a null image?");
 
 			QString fName = u->name();
 			KviFileUtils::adjustFilePath(fName);
@@ -920,7 +920,7 @@ void RegisteredUsersDialog::importClicked()
 
 
 read_error:
-	KviMessageBox::warning(__tr2qs_ctx("Can't import the registered users database: Read error.","register"));
+	KviMessageBox::warning(__tr2qs_ctx("Can't import the registered users database: read error.","register"));
 	f.close();
 	return;
 

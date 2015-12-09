@@ -33,10 +33,10 @@ OptionsWidget_topicLabel::OptionsWidget_topicLabel(QWidget *p):KviOptionsWidget(
 {
 	createLayout();
 
-	addFontSelector(0, 0, 0, 0, __tr2qs_ctx("Font","options"), KviOption_fontLabel);
-	addColorSelector(0, 1, 0, 1, __tr2qs_ctx("Foreground color","options"), KviOption_colorLabelForeground);
-	addColorSelector(0, 2, 0, 2, __tr2qs_ctx("Background color","options"), KviOption_colorLabelBackground);
-	addPixmapSelector(0, 3, 0, 3, __tr2qs_ctx("Background image","options"), KviOption_pixmapLabelBackground);
+	addFontSelector(0, 0, 0, 0, __tr2qs_ctx("Font:","options"), KviOption_fontLabel);
+	addColorSelector(0, 1, 0, 1, __tr2qs_ctx("Foreground color:","options"), KviOption_colorLabelForeground);
+	addColorSelector(0, 2, 0, 2, __tr2qs_ctx("Background color:","options"), KviOption_colorLabelBackground);
+	addPixmapSelector(0, 3, 0, 3, __tr2qs_ctx("Background image:","options"), KviOption_pixmapLabelBackground);
 
 	layout()->setRowStretch(3, 1);
 }

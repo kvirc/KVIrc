@@ -44,7 +44,7 @@
 		{ \
 			if(!_c->switches()->find('q',"quiet")) \
 			{ \
-				_c->warning(__tr2qs_ctx("The perlcore module can't be loaded: perl support not available","perl")); \
+				_c->warning(__tr2qs_ctx("The perlcore module can't be loaded: Perl support not available","perl")); \
 				_c->warning(__tr2qs_ctx("To see more details about loading failure try /perlcore.load","perl")); \
 				return true; \
 			} \
@@ -58,7 +58,7 @@
 #else // !COMPILE_PERL_SUPPORT
 	#define KVS_CHECK_MODULE_STATE(_m,_c) \
 		if(!_c->switches()->find('q',"quiet")) \
-			_c->warning(__tr2qs_ctx("This KVIrc executable has been compiled without perl scripting support","perl")); \
+			_c->warning(__tr2qs_ctx("This KVIrc executable has been compiled without Perl scripting support","perl")); \
 		return true;
 #endif // !COMPILE_PERL_SUPPORT
 
@@ -67,20 +67,20 @@
 	@type:
 		language
 	@title:
-		Using perl from KVS and vice-versa.
+		Using Perl from KVS and vice-versa.
 	@short:
-		How to use perl from KVS and KVS from perl.
+		How to use Perl from KVS and KVS from Perl.
 	@body:
 		[big]Introduction[/big][br]
-		Starting from version 3.0.2 you can include perl code snippets
-		in KVS code and you can use KVS commands from within perl.
-		This feature is present only if a working perl installation
+		Starting from version 3.0.2 you can include Perl code snippets
+		in KVS code and you can use KVS commands from within Perl.
+		This feature is present only if a working Perl installation
 		has been found at build time.[br]
 		[br]
 
-		[big]Using perl from KVS[/big][br]
-		Using perl from KVIrc is really easy - just enclose
-		your perl code snippet inside [cmd]perl.begin[/cmd] and [cmd]perl.end[/cmd].
+		[big]Using Perl from KVS[/big][br]
+		Using Perl from KVIrc is really easy - just enclose
+		your Perl code snippet inside [cmd]perl.begin[/cmd] and [cmd]perl.end[/cmd].
 		[example]
 		[cmd]perl.begin[/cmd]
 		&lt;perl code goes here&gt;
@@ -94,21 +94,21 @@
 		close(MYFILE);
 		[cmd]perl.end[/cmd]
 		[/example]
-		A perl code snippet can appear anywhere a KVS code snippet can
+		A Perl code snippet can appear anywhere a KVS code snippet can
 		with the only restriction that it must be enclosed in [cmd]perl.begin[/cmd]
-		and [cmd]perl.end[/cmd]. This means that you can write perl code
+		and [cmd]perl.end[/cmd]. This means that you can write Perl code
 		in the commandline, in the aliases, the event handlers, popups...anywhere.[br]
 		If you have already encountered KVIrc's [cmd]eval[/cmd] command
-		then you probably also know how to execute a perl code snippet from a file :)[br]
+		then you probably also know how to execute a Perl code snippet from a file :)[br]
 		[br]
 
-		[big]Using KVS from perl[/big][br]
-		KVIrc exports several commands to the perl namespace
-		that allow you to invoke KVIrc's functions from inside the perl code snippet.[br]
+		[big]Using KVS from Perl[/big][br]
+		KVIrc exports several commands to the Perl namespace
+		that allow you to invoke KVIrc's functions from inside the Perl code snippet.[br]
 		The nicest example is KVIrc::echo():
 		[example]
 		[cmd]perl.begin[/cmd]
-		KVIrc::echo("Hello KVIrc world from perl!");
+		KVIrc::echo("Hello KVIrc world from Perl!");
 		[cmd]perl.end[/cmd]
 		[/example]
 		KVIrc::echo() is the counterpart of the [cmd]echo[/cmd].
@@ -121,21 +121,21 @@
 		[br]
 
 		[big]Perl execution contexts[/big][br]
-		The perl code snippets are executed by a perl interpreter - each
+		The Perl code snippets are executed by a Perl interpreter - each
 		interpreter has its own context and thus its own variables,
 		own function namespace etc.[br]
 		[br]
 		In the example above, KVIrc creates an interpreter when [cmd]perl.begin[/cmd]
 		is invoked and destroys it at [cmd]perl.end[/cmd] parsing time.
-		In fact, KVIrc can mantain multiple persistent interpreters that will
+		In fact, KVIrc can maintain multiple persistent interpreters that will
 		allow you to preserve your context across [cmd]perl.begin[/cmd] invocations.[br]
 		[br]
-		You can invoke a specific perl context by passing it as parameter to the [cmd]perl.begin[/cmd]
+		You can invoke a specific Perl context by passing it as parameter to the [cmd]perl.begin[/cmd]
 		command:[br]
 		[example]
 		[cmd]perl.begin("mycontext")[/cmd]
 		$myvariable = "mycontext";
-		KVIrc::echo("This perl code is executed from ".$myvariable);
+		KVIrc::echo("This Perl code is executed from ".$myvariable);
 		[cmd]perl.end[/cmd]
 		[/example]
 		The nice thing is that at a later time you can invoke this context again
@@ -145,8 +145,8 @@
 		KVIrc::echo("myvariable is still equal to ".$myvariable);
 		[cmd]perl.end[/cmd]
 		[/example]
-		The first time you invoke a named perl context it is automatically created and
-		it persists until KVIrc terminates or the perl context is explicitly destroyed
+		The first time you invoke a named Perl context it is automatically created and
+		it persists until KVIrc terminates or the Perl context is explicitly destroyed
 		by [cmd]perl.destroy[/cmd].[br]
 		[br]
 		There is a third possibility to destroy a context - when the
@@ -154,32 +154,32 @@
 		is however a rare case and should be treated just like a KVIrc restart (the
 		user probably WANTS the contexts to be reinitialized).[br]
 		[br]
-		The nice thing is that not only will your variables be preserved, any perl
+		The nice thing is that not only will your variables be preserved, any Perl
 		function or class you declare in a context will persist.
-		It's just like executing a long perl script file with pauses inside.[br]
+		It's just like executing a long Perl script file with pauses inside.[br]
 		[br]
-		If you omit the perl context name in the [cmd]perl.begin[/cmd] command
+		If you omit the Perl context name in the [cmd]perl.begin[/cmd] command
 		(or if you use an empty string in its place)
 		then KVIrc will create a temporary context for the snippet execution
 		and will destroy it immediately after [cmd]perl.end[/cmd] has been called.[br]
 		[br]
-		The major side effect of keeping persistent perl contexts is that
-		perl's symbol table will grow, and if not used carefully, the interpreter
+		The major side effect of keeping persistent Perl contexts is that
+		Perl's symbol table will grow, and if not used carefully, the interpreter
 		may become a memory hog. So if you're going to use persistent contexts,
 		either try to keep the symbol table clean or explicitly call [cmd]perl.destroy[/cmd]
 		once in a while to recreate the interpreter.[br]
-		If you just execute occasional perl code snippets and don't need to keep
+		If you just execute occasional Perl code snippets and don't need to keep
 		persistent variables, then just use the nameless temporary context provided
 		by [cmd]perl.begin[/cmd]("").[br]
 		[br]
 
-		[big]Passing parameters to the perl script[/big][br]
+		[big]Passing parameters to the Perl script[/big][br]
 		The easiest way to pass parameters to the perl code snippet
 		is to put them as [cmd]perl.begin[/cmd] arguments.
 		In fact the complete syntax of [cmd]perl.begin[/cmd] is:[br]
 		[b]perl.begin(&lt;perl context&gt;,&lt;arg0&gt;,&lt;arg1&gt;,...)[/b][br]
 		Where the &lt;arg0&gt;,&lt;arg1&gt;...&lt;argN&gt; parameters
-		are passed to the perl context as elements of the $_[] array.[br]
+		are passed to the Perl context as elements of the $_[] array.[br]
 		[example]
 		[cmd]perl.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
 		for($i=0;$i<5;$i++)
@@ -188,7 +188,7 @@
 		[/example]
 		[br]
 
-		[big]Accessing the KVIrc scripting context from perl[/big][br]
+		[big]Accessing the KVIrc scripting context from Perl[/big][br]
 		KVIrc exposes the following functions that manipulate
 		variables of the KVIrc's current KVS execution context:[br]
 		&nbsp; &nbsp; [b]KVIrc::getLocal(&lt;x&gt;)[/b][br]
@@ -217,8 +217,8 @@
 		[/example]
 		[br]
 
-		[big]Executing arbitrary KVIrc commands from perl[/big][br]
-		You can execute arbitrary KVS commands from perl by means of:[br]
+		[big]Executing arbitrary KVIrc commands from Perl[/big][br]
+		You can execute arbitrary KVS commands from Perl by means of:[br]
 		&nbsp; &nbsp; [b]KVIrc::eval(&lt;code&gt;)[/b][br]
 		This function behaves exactly like the ${ &lt;code&gt; } KVS construct -
 		it executes &lt;code&gt; in a child context and returns its evaluation result.[br]
@@ -232,7 +232,7 @@
 		[cmd]perl.end[/cmd]
 		[/example]
 		You can "eval" compound command sequences and variable ones.[br]
-		Remember that the perl code snippet is evaluated in a child KVS context
+		Remember that the Perl code snippet is evaluated in a child KVS context
 		and thus the local variables are NOT visible!
 		The following code snippets may easily fool you:[br]
 		[example]
@@ -251,13 +251,13 @@
 		[cmd]perl.end[/cmd]
 		[/example]
 		Note also that you must either escape the $ at the beginning of KVIrc identifiers
-		or use single quotes to prevent perl from interpreting the $ as the beginning of a variable.
+		or use single quotes to prevent Perl from interpreting the $ as the beginning of a variable.
 		[example]
-		[comment]# This will not work as expected[/comment]
+		[comment]// This will not work as expected[/comment]
 		[cmd]perl.begin[/cmd]
 		KVIrc::echo(KVIrc::eval("return $window.caption"));
 		[cmd]perl.end[/cmd]
-		[comment]# But these will do[/comment]
+		[comment]// But these will do[/comment]
 		[cmd]perl.begin[/cmd]
 		KVIrc::echo(KVIrc::eval("return \$window.caption"));
 		KVIrc::echo(KVIrc::eval('return $window.caption'));
@@ -266,7 +266,7 @@
 
 		[big]A shortcut for KVIrc::eval("/say...")[/big][br]
 		Since KVIrc::eval("/say...") is a common calling pattern, say has been added
-		to the KVIrc perl namespace. You can now call
+		to the KVIrc Perl namespace. You can now call
 		[example]
 		KVIrc::say("Hi all!");
 		[/example]
@@ -280,9 +280,9 @@
 		[br]
 
 		[big]Perl script return values[/big][br]
-		The [cmd]perl.begin[/cmd] command propagates the perl code return
+		The [cmd]perl.begin[/cmd] command propagates the Perl code return
 		value to the KVIrc context (just like a [cmd]setreturn[/cmd]() would do)
-		- this makes it easier to create an alias that executes a perl script and
+		- this makes it easier to create an alias that executes a Perl script and
 		returns its result.[br]
 		[br]
 		Without this automatic propagation, you would be forced to play with variables:
@@ -294,7 +294,7 @@
 		[/ul]
 		[br]
 
-		[big]Executing perl scripts from files[/big][br]
+		[big]Executing Perl scripts from files[/big][br]
 		[example]
 		[cmd]alias[/cmd](perlexec)
 		{
@@ -304,15 +304,15 @@
 			eval %tmp;
 		}
 		perlexec "/home/pragma/myperlscript.pl" "param1" "param2" "param3"
-		[comment]# or even[/comment]
+		[comment]// or even[/comment]
 		[cmd]echo[/cmd] $perlexec("/home/pragma/computeprimelargerthan.pl","10000")
 		[/example]
 		[br]
 
 		[big]Other tricks[/big][br]
-		An interesting feature of persistent perl contexts is that you can prepare a
+		An interesting feature of persistent Perl contexts is that you can prepare a
 		context for later fast execution.[br]
-		The idea is to declare all perl functions in a single perl code snippet
+		The idea is to declare all Perl functions in a single Perl code snippet
 		then call single functions when fast execution is needed.[br]
 		For example you might parse the following snippet at KVIrc's startup:[br]
 		[example]
@@ -336,18 +336,18 @@
 		[br]
 
 		[big]Curiosity[/big][br]
-		The perl support in KVIrc is implemented as a master-slave module pair.
+		The Perl support in KVIrc is implemented as a master-slave module pair.
 		The perl.* module is the master while perlcore is the slave.
-		When perl support isn't compiled in, the perl.* commands
+		When Perl support isn't compiled in, the perl.* commands
 		print some warnings and exit gracefully while the perlcore module
-		refuses to be loaded. When perl support is compiled in but
+		refuses to be loaded. When Perl support is compiled in but
 		for some reason the libperl.so can't be found or loaded, perlcore fails
-		the dynamic loading stage, however perl.* only fails gracefully with warning
-		messages. This trick allows scripters to check for perl
-		support with [fnc]perl.isAvailable[/fnc] and to embed perl code snippets
+		the dynamic loading stage, however Perl.* only fails gracefully with warning
+		messages. This trick allows scripters to check for Perl
+		support with [fnc]perl.isAvailable[/fnc] and to embed Perl code snippets
 		in KVS even if the support is missing - the snippets will be just skipped.[br]
 		[br]
-		Happy perl hacking :)[br]
+		Happy Perl hacking :)[br]
 */
 
 /*
@@ -357,9 +357,9 @@
 	@title:
 		perl.begin
 	@keyterms:
-		Including perl code snippets in KVS
+		Including Perl code snippets in KVS
 	@short:
-		Starts a perl code snippet
+		Starts a Perl code snippet
 	@syntax:
 		perl.begin [-n] [-q] [(<perl_context>[,<arg0>[,<arg1>[...]]])]
 		<perl code>
@@ -368,43 +368,43 @@
 		!sw: -q | --quiet
 		Prevents the command from printing any warnings.
 		!sw: -n | --no-return
-		Prevents the perl script return value to be propagated
+		Prevents the Perl script return value to be propagated
 		to the current context.
 		!sw: -f | --fail-on-error
-		Treat perl errors as KVS errors and abort execution of the
+		Treat Perl errors as KVS errors and abort execution of the
 		current script. Incompatible with -q
 	@description:
-		Indicates the beginning of a snippet of perl code.
+		Indicates the beginning of a snippet of Perl code.
 		The whole code part between perl.begin and perl.end
-		is executed in a perl interpreter.
+		is executed in a Perl interpreter.
 		If perl.end is omitted then it is implicitly assumed
 		that the code from perl.begin to the end of the command
-		buffer is perl.[br]
-		Each perl code execution is bound to a
-		perl context (that is in fact a particular instance
-		of a perl interpreter). If <perl_context> is not specified
-		or it is an empty string then temporary perl interpreter is created
+		buffer is Perl.[br]
+		Each Perl code execution is bound to a
+		Perl context (that is in fact a particular instance
+		of a Perl interpreter). If <perl_context> is not specified
+		or it is an empty string then temporary Perl interpreter is created
 		and destroyed just after the code snippet has terminated execution.
-		If <perl_context> is specified then a perl interpreter
+		If <perl_context> is specified then a Perl interpreter
 		keyed to that context is used: if it was already existing
 		then it is reused otherwise it is created.
 		Any <perl_context> is persistent: it mantains the function
-		declarations and perl variable states until explicitly
+		declarations and Perl variable states until explicitly
 		destroyed with [cmd]perl.destroy[/cmd] (or the perlcore
 		module is forcibly unloaded).[br]
 		The <arg0>,<arg1>,... arguments, if present, are passed
-		to the perl code snippet in the @_ array (accessible as $_[0],$_[1]...).[br]
-		The return value of the perl code is propagated to the current
+		to the Perl code snippet in the @_ array (accessible as $_[0],$_[1]...).[br]
+		The return value of the Perl code is propagated to the current
 		context (just like [cmd]setreturn[/cmd] was called on it) unless
 		the -n switch is used.[br]
 		The -q switch prevents from the command from printing any
 		warning.[br]
-		See the [doc:perl_and_kvs]perl scripting documentation[/doc]
+		See the [doc:perl_and_kvs]Perl scripting documentation[/doc]
 		for more information.
 	@examples:
 		[example]
 			perl.begin
-			KVIrc::eval("echo \"Hello World from perl!\"");
+			KVIrc::eval("echo \"Hello World from Perl!\"");
 			perl.end
 		[/example]
 	@seealso:
@@ -417,13 +417,13 @@
 	@title:
 		perl.end
 	@short:
-		Ends a perl code snippet
+		Ends a Perl code snippet
 	@syntax:
 		perl.begin[(<perl_context>)]
 		<perl code>
 		perl.end
 	@description:
-		Ends a perl code snippet. See [cmd]perl.begin[/cmd].
+		Ends a Perl code snippet. See [cmd]perl.begin[/cmd].
 	@seealso:
 		[cmd]perl.begin[/cmd]
 */
@@ -462,7 +462,7 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_EXECUTE,&ex))
 	{
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the perl support","perl"));
+			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the Perl support","perl"));
 		return true;
 	}
 
@@ -504,11 +504,11 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	@title:
 		perl.destroy
 	@short:
-		Destroys a perl execution context
+		Destroys a Perl execution context
 	@syntax:
 		perl.destroy [-q] <context_name:string>
 	@description:
-		Destroys the perl execution context <context_name>.
+		Destroys the Perl execution context <context_name>.
 		If the context does not exist then a warning is printed unless the
 		-q switch is used.[br]
 		The destruction will clear any state associated with the context
@@ -536,7 +536,7 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_DESTROY,&ex))
 	{
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the perl support","perl"));
+			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the Perl support","perl"));
 	}
 #endif //COMPILE_PERL_SUPPORT
 
@@ -551,11 +551,11 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	@title:
 		$perl.isAvailable
 	@short:
-		Check if perl scripting support is available
+		Check if Perl scripting support is available
 	@syntax:
 		$perl.isAvailable
 	@description:
-		Returns 1 if the perl scripting support is available and 0 otherwise.
+		Returns 1 if the Perl scripting support is available and 0 otherwise.
 */
 
 static bool perl_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)

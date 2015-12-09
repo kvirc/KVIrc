@@ -39,11 +39,11 @@ RawEditorWindow * g_pRawEditorWindow = 0;
 	@title:
 		raweditor.open
 	@short:
-		Shows the raw events editor
+		Shows the RAW events editor
 	@syntax:
 		toolbareditor.open
 	@description:
-		Opens the script raw events editor dialog.
+		Opens the script RAW events editor dialog.
 */
 
 static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall *)
@@ -81,7 +81,7 @@ KVIRC_MODULE(
 	"RawEditor",                                                 // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Editor for the script raw events",
+	"Editor for the script RAW events",
 	raweditor_module_init,
 	raweditor_module_can_unload,
 	0,

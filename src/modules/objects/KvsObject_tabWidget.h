@@ -2,7 +2,7 @@
 #define _CLASS_TABWIDGET_H_
 //=============================================================================
 //
-//   File : KvsObject_tabWidget.cpp
+//   File : KvsObject_tabWidget.h
 //   Creation date : Fri Mar 18 14:30:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //

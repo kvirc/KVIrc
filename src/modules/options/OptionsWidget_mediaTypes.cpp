@@ -226,7 +226,7 @@ void OptionsWidget_mediaTypes::currentItemChanged(QTreeWidgetItem *it,QTreeWidge
 void OptionsWidget_mediaTypes::newMediaType()
 {
 	KviMediaType empty;
-	empty.szDescription = __tr2qs_ctx("New Media Type","options");
+	empty.szDescription = __tr2qs_ctx("New media type","options");
 	MediaTypeTreeWidgetItem * it = new MediaTypeTreeWidgetItem(m_pTreeWidget,&empty);
 	m_pTreeWidget->setCurrentItem(it);
 	it->setSelected(true);

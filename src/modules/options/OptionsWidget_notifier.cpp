@@ -35,13 +35,13 @@ OptionsWidget_notifierLook::OptionsWidget_notifierLook(QWidget * parent)
 	setObjectName("notifierlook_options_widget");
 	createLayout();
 
-	addFontSelector(0,0,1,0,__tr2qs_ctx("Font","options"),KviOption_fontNotifier);
-	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color","options"),KviOption_colorNotifierBackground);
-	addColorSelector(0,2,1,2,__tr2qs_ctx("Foreground color","options"),KviOption_colorNotifierForeground);
-	addFontSelector(0,3,1,3,__tr2qs_ctx("Title Font","options"),KviOption_fontNotifierTitle);
-	addColorSelector(0,4,1,4,__tr2qs_ctx("Title Foreground color","options"),KviOption_colorNotifierTitleForeground);
+	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontNotifier);
+	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color:","options"),KviOption_colorNotifierBackground);
+	addColorSelector(0,2,1,2,__tr2qs_ctx("Foreground color:","options"),KviOption_colorNotifierForeground);
+	addFontSelector(0,3,1,3,__tr2qs_ctx("Title font:","options"),KviOption_fontNotifierTitle);
+	addColorSelector(0,4,1,4,__tr2qs_ctx("Title foreground color:","options"),KviOption_colorNotifierTitleForeground);
 
-	addPixmapSelector(0,5,1,5,__tr2qs_ctx("Background image","options"),KviOption_pixmapNotifierBackground);
+	addPixmapSelector(0,5,1,5,__tr2qs_ctx("Background image:","options"),KviOption_pixmapNotifierBackground);
 
 	addLabel(0,6,0,6,__tr2qs_ctx("Horizontal align:","options"));
 	m_pHorizontalAlign=new QComboBox(this);

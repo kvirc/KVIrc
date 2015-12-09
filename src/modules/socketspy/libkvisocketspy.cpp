@@ -45,8 +45,8 @@ KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
 		socketspy.open
 	@description:
 		Creates a new socketspy window. A SocketSpy window
-		monitors the incoming and outgoing raw data on the
-		irc socket of the current irc context.
+		monitors the incoming and outgoing RAW data on the
+		IRC socket of the current IRC context.
 */
 
 static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
@@ -84,7 +84,7 @@ KVIRC_MODULE(
 	"SocketSpy",                                             // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"SocketSpy irc socket traffic monitor",
+	"SocketSpy IRC socket traffic monitor",
 	socketspy_module_init,
 	socketspy_module_can_unload,
 	0,

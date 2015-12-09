@@ -771,7 +771,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			An unhandled/unrecognized literal server message has been received.[br]
 			The KVIrc core code hasn't been able to recognize it nor handle it in any way.[br]
 			If you call [cmd]halt[/cmd] you will stop the standard or warning message output.[br]
-			For server numerics there is no "unhandled" event, you should use the raw numeric events to handle them.[br]
+			For server numerics there is no "unhandled" event, you should use the RAW numeric events to handle them.[br]
 		@seealso:
 	*/
 	EVENT("OnUnhandledLiteral", \

@@ -258,7 +258,7 @@
 				g_pCryptEngineManager->deallocateEngine(e);
 			}
 		} else {
-			c->warning(__tr2qs("The Mircryption encryption engine does not exist"));
+			c->warning(__tr2qs("The Mircryption encryption engine doesn't exist"));
 		}
 
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: key for %1 successfully set!").arg(szNick));
