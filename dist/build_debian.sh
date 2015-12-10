@@ -42,4 +42,4 @@ dch -a "Branch: $branch"
 dch -a "Commit: $commit"
 dch -a "Date: $datct"
 
-debuild
+debuild -us -uc --no-lintian
