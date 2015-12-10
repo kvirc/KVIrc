@@ -317,7 +317,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpAudaciousInterface,
 	"audacious",
 	__tr2qs_ctx(
-		"An interface for the popular Audacious media player.\n" \
+		"An interface for the Audacious media player.\n" \
 		"Download it from http://audacious-media-player.org\n"
 		,
 		"mediaplayer"

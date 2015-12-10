@@ -40,7 +40,7 @@ OptionsWidget_inputLook::OptionsWidget_inputLook(QWidget * parent)
 	addColorSelector(0,2,1,2,__tr2qs_ctx("Foreground color:","options"),KviOption_colorInputForeground);
 	addColorSelector(0,3,1,3,__tr2qs_ctx("Selection background color:","options"),KviOption_colorInputSelectionBackground);
 	addColorSelector(0,4,1,4,__tr2qs_ctx("Selection foreground color:","options"),KviOption_colorInputSelectionForeground);
-	addColorSelector(0,5,1,5,__tr2qs_ctx("Control char color","options:"),KviOption_colorInputControl);
+	addColorSelector(0,5,1,5,__tr2qs_ctx("Control char color:","options"),KviOption_colorInputControl);
 	addColorSelector(0,6,1,6,__tr2qs_ctx("Cursor color:","options"),KviOption_colorInputCursor);
 
 	addPixmapSelector(0,7,1,7,__tr2qs_ctx("Background image:","options"),KviOption_pixmapInputBackground);

@@ -195,7 +195,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviWinampInterface,
 	"winamp",
 	__tr2qs_ctx(
-		"An interface for the popular Winamp media player.\n" \
+		"An interface for the Winamp media player.\n" \
 		"You can download it from http://www.winamp.com.\n" \
 		"To use all the features of this interface you must " \
 		"copy the gen_kvirc.dll plugin found in the KVIrc " \

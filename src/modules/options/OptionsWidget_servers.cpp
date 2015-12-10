@@ -1317,7 +1317,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
-	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New nerver","options"));
+	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New server","options"));
 
 	m_pFavoriteServerButton = new QToolButton(vbox);
 	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
