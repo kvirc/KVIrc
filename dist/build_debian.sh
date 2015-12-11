@@ -29,6 +29,9 @@ branch=$(git branch | grep "\*" | sed 's/\* //g')
 commit=$(git log -1 | grep -i "^commit" | awk '{print $2}')
 datct=$(git log -n 1 --format=%ct)
 
+test -z ${dat} && dat="git-5748-$(git describe --always)" \
+branch="travis_debian" 
+
 tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" . 
 cd ${BUILDDIR}
 xz -9 "${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar"
