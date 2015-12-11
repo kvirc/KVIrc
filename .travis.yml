@@ -49,7 +49,6 @@ install:
               sudo apt-get install -y devscripts debhelper cmake libperl-dev zlib1g-dev libx11-dev libxrender-dev libssl-dev qtbase5-dev  qttools5-dev-tools libqt5x11extras5-dev libphonon4qt5-dev qttools5-dev libqt5svg5-dev qtmultimedia5-dev libqt5webkit5-dev libphonon4qt5experimental-dev pkg-config libxss-dev python-dev libqtwebkit-dev
             fi
         fi
-        fi
     - |
         if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
           brew update
