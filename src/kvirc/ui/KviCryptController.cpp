@@ -72,11 +72,15 @@
 
 		QGridLayout * pLayout = new QGridLayout(this);
 
+		QHBoxLayout * pTitleLayout = new QHBoxLayout(this);
+
 		QLabel * pLabel = new QLabel(this);
 		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Locked)));
-		pLayout->addWidget(pLabel,0,0);
+		pTitleLayout->addWidget(pLabel,0);
 		pLabel = new QLabel(__tr2qs("Cryptography/text transformation"),this);
-		pLayout->addWidget(pLabel,0,1,1,3);
+		pTitleLayout->addWidget(pLabel,1);
+
+		pLayout->addLayout(pTitleLayout,0,0);
 
 		QFrame * pFrame = new QFrame(this);
 		pFrame->setFrameStyle(QFrame::HLine | QFrame::Sunken);
