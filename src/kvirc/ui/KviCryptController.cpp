@@ -94,11 +94,11 @@
 		connect(m_pListBox,SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),this,SLOT(engineHighlighted(QListWidgetItem *, QListWidgetItem *)));
 		pLayout->addWidget(m_pListBox,3,0,6,1);
 
-		m_pDescriptionLabel = new QLabel(this);
-		m_pDescriptionLabel->setWordWrap(true);
-		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-		pLayout->addWidget(m_pDescriptionLabel,3,1,1,3);
+		m_pDescriptionText = new QTextEdit(this);
+		m_pDescriptionText->setReadOnly(true);
+		m_pDescriptionText->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+		m_pDescriptionText->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+		pLayout->addWidget(m_pDescriptionText,3,1,1,3);
 
 		m_pAuthorLabel = new QLabel(this);
 		m_pAuthorLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
@@ -197,7 +197,7 @@
 			szDesc += pEngine->m_szDescription.toUtf8().data();
 			szDesc += "<br><br>";
 			szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
-			m_pDescriptionLabel->setText(szDesc);
+			m_pDescriptionText->setText(szDesc);
 			m_pEnableEncrypt->setEnabled(pEngine->m_iFlags & KviCryptEngine::CanEncrypt);
 			m_pEncryptKeyLabel->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanEncrypt) &&
 				(pEngine->m_iFlags & KviCryptEngine::WantEncryptKey));
@@ -228,7 +228,7 @@
 	{
 		m_pListBox->setEnabled(bEnabled);
 		m_pAuthorLabel->setEnabled(bEnabled && m_pLastItem);
-		m_pDescriptionLabel->setEnabled(bEnabled && m_pLastItem);
+		m_pDescriptionText->setEnabled(bEnabled && m_pLastItem);
 		bool bCanDecrypt = m_pLastItem ? m_pLastItem->m_iFlags & KviCryptEngine::CanDecrypt : false;
 		bool bCanEncrypt = m_pLastItem ? m_pLastItem->m_iFlags & KviCryptEngine::CanEncrypt : false;
 		m_pEnableEncrypt->setEnabled(bEnabled && bCanEncrypt);
@@ -248,8 +248,8 @@
 
 		m_pEnableCheck->setEnabled(false);
 		enableWidgets(false);
-		m_pDescriptionLabel->setText(__tr2qs("Sorry, no encryption engines available"));
-		m_pDescriptionLabel->setEnabled(true); // we want this text to be visible.
+		m_pDescriptionText->setText(__tr2qs("Sorry, no encryption engines available"));
+		m_pDescriptionText->setEnabled(true); // we want this text to be visible.
 		m_pOkButton->setEnabled(false);
 	}
 
