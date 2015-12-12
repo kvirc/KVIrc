@@ -1432,9 +1432,17 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 					query = msg->msg->console()->connection()->createQuery(msg->pSource->nick());
 					query->setTarget(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 				}
+				if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
+					KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+			}
+		} else {
+			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !query->hasAttention())
+			{
+				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
+				KviKvsScript::run("snd.play $0",query,&soundParams);
 			}
 		}
-		pOut = (KviWindow *)query;
+		pOut = static_cast<KviWindow *>(query);
 		if(pOut)szData = pOut->decodeText(szData8.ptr());
 		else szData = msg->msg->connection()->decodeText(szData8.ptr());
 	}
