@@ -295,7 +295,7 @@ void KviMaskEditor::removeClicked()
 
 void KviMaskEditor::addClicked()
 {
-	if(m_pChannel)
+	if(m_pChannel && m_pChannel->connection())
 	{
 		if(m_pChannel->isMeHalfOp() ||
 			m_pChannel->isMeOp() ||
