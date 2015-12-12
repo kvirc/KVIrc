@@ -238,7 +238,9 @@ void KviMaskEditor::updateOpStatus()
 	bool isEnabled=true;
 	if(m_pChannel)
 	{
-		if(!( m_pChannel->isMeHalfOp() ||
+		if(!(m_pChannel->connection()))
+			isEnabled=false;
+		else if(!( m_pChannel->isMeHalfOp() ||
 			m_pChannel->isMeOp() ||
 			m_pChannel->isMeChanOwner() ||
 			m_pChannel->isMeChanAdmin() ||
