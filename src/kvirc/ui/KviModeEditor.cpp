@@ -60,6 +60,9 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	pMasterLayout->addWidget(m_pButton,1,0);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(commit()));
 
+	if(!m_pChannel || !m_pChannel->connection())
+		m_pButton->setText(__tr2qs("Close"));
+
 	QWidget * pBackground = new QWidget(pScrollArea->viewport());
 
 	QGridLayout *g = new QGridLayout(pBackground);
@@ -84,6 +87,10 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	char cMode = 0;
 
 	//NOTE: this is a fallback is for some reason we don't have a serverInfo() struct available fot this connection
+
+	// The connection is dead and the context was destroyed, don't guess on what was there
+	if(!m_pChannel || !m_pChannel->connection())
+		return;
 
 	// first, the basic checkable modes pstnmi
 	QString szModes = "pstnmi";

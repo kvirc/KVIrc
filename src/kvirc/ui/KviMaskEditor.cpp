@@ -214,6 +214,13 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 
 	g->setColumnStretch(1,1);
 
+	if(!m_pChannel->connection())
+	{
+		m_pRemoveMask->setEnabled(false);
+		m_pAddButton->setEnabled(false);
+		return;
+	}
+
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
 
 	updateOpStatus();
