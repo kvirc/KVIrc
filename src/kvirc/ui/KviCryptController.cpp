@@ -129,8 +129,10 @@
 		pLayout->addWidget(m_pDecryptHexKeyCheck,8,3);
 
 		m_pOkButton = new QPushButton(__tr2qs("OK"),this);
-		pLayout->addWidget(m_pOkButton,9,0,1,4);
+		pLayout->addWidget(m_pOkButton,9,2,1,2);
+		m_pOkButton->setMinimumWidth(80);
 		connect(m_pOkButton,SIGNAL(clicked()),this,SLOT(okClicked()));
+		m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 
 		pLayout->setRowStretch(3,1);
 		pLayout->setColumnStretch(2,1);
