@@ -29,7 +29,6 @@
 
 #include <qpixmap.h>
 #include <qimage.h>
-#include <QMatrix>
 #include <KviAnimatedPixmap.h>
 #include "KviCString.h"
 
