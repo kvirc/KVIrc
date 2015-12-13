@@ -43,7 +43,6 @@ protected:
 	QPrinter * m_pPrinter;
 	bool bDonotdeleteinternalqpainter;
 	QPainter * m_pPainter;
-	QMatrix  m_pMatrix;
 	QLinearGradient *m_pGradient;
 	QPainterPath *m_pPainterPath;
 public:
