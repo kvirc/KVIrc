@@ -183,7 +183,7 @@ OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
 				"options"
 			)
 		);
-	l->setAlignment(Qt::AlignCenter);
+	l->setAlignment(Qt::AlignLeft);
 
 	addRowSpacer(0,5,3,5);
 

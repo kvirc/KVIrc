@@ -163,23 +163,28 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 			break;
 	}
 
-	QLabel * l = new QLabel("",this);
-	l->setPixmap(*(g_pIconManager->getSmallIcon(m_eIcon)));
-	g->addWidget(l,0,0);
+	KviTalHBox * pTitleLayout = new KviTalHBox(this);
+	g->addWidget(pTitleLayout,0,0);
 
-	l = new QLabel(szDescription,this);
-	g->addWidget(l,0,1);
+	QLabel * l = new QLabel("",pTitleLayout);
+	l->setPixmap(*(g_pIconManager->getSmallIcon(m_eIcon)));
+
+	l = new QLabel(szDescription,pTitleLayout);
+
+	QFrame * pFrame = new QFrame(this);
+	pFrame->setFrameStyle(QFrame::HLine | QFrame::Sunken);
+	g->addWidget(pFrame,1,0,1,-1);
 
 	KviTalHBox * hb = new KviTalHBox(this);
-	g->addWidget(hb,1,0,1,2);
+	g->addWidget(hb,2,0,1,2);
 
 	new QLabel(__tr2qs("Filter:"),hb);
 	m_pSearch = new QLineEdit(hb);
 	connect(m_pSearch,SIGNAL(textChanged ( const QString & ) ),this,SLOT(searchTextChanged ( const QString & )));
 
 	l = new QLabel(__tr2qs("Use double-click to edit item"),this);
-	g->addWidget(l,1,1);
-	g->addWidget(l,2,0,1,2);
+	g->addWidget(l,2,1);
+	g->addWidget(l,3,0,1,2);
 
 	m_pMaskBox = new QTreeWidget(this);
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
@@ -197,18 +202,18 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	m_pMaskBox->setAllColumnsShowFocus(true);
 	m_pMaskBox->setSortingEnabled(true);
 	connect(m_pMaskBox,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked( QTreeWidgetItem *,int)));
-	g->addWidget(m_pMaskBox,3,0,1,2);
+	g->addWidget(m_pMaskBox,4,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 
 	m_pRemoveMask->setFocusPolicy(Qt::ClickFocus);
 	m_pRemoveMask->setFocusProxy(this);
-	g->addWidget(m_pRemoveMask,4,1);
+	g->addWidget(m_pRemoveMask,5,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
-	g->addWidget(m_pAddButton,4,0);
+	g->addWidget(m_pAddButton,5,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 

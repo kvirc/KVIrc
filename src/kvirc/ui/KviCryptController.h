@@ -40,6 +40,7 @@
 	#include <QLabel>
 	#include <QLineEdit>
 	#include <QCheckBox>
+	#include <QTextEdit>
 
 	class KviWindow;
 
@@ -77,7 +78,7 @@
 		KviTalListWidget     * m_pListBox;
 		QPushButton          * m_pOkButton;
 		QCheckBox            * m_pEnableCheck;
-		QLabel               * m_pDescriptionLabel;
+		QTextEdit            * m_pDescriptionText;
 		QLabel               * m_pAuthorLabel;
 		QCheckBox            * m_pEnableEncrypt;
 		QLabel               * m_pEncryptKeyLabel;
