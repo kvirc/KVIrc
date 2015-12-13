@@ -170,7 +170,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 		cDesc = *(getModeDescription(cMode));
 
-		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Uknown");
+		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Unknown");
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
@@ -197,7 +197,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 		cDesc = *(getModeDescription(cMode));
 
-		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Uknown");
+		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Unknown");
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		iRow++;
