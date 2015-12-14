@@ -334,6 +334,7 @@ public:
 	virtual void commit();
 	QString textForSearch(){return m_pLabel->text();};
 	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
+public slots:
 	virtual void setEnabled(bool bEnabled);
 private slots:
 	void textChanged(const QString &str);
