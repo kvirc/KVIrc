@@ -657,7 +657,8 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 {
 	bool bCursorOverMarker = checkMarkerArea(e->pos());
 
-	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+		&& !(KVI_OPTION_BOOL(KviOption_boolRequireControlToCopy) && !m_bCtrlPressed))
 	{
 		if(m_iSelectTimer == 0)
 			m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);

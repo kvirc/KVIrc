@@ -1341,7 +1341,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 				curFore=KVI_OPTION_MSGTYPE(KVI_OUT_SEARCH).fore();
 			}
 
-			if(m_bMouseIsDown)
+			if(m_bMouseIsDown && !(KVI_OPTION_BOOL(KviOption_boolRequireControlToCopy) && !m_bCtrlPressed))
 			{
 				//Check if the block or a part of it is selected
 				if(checkSelectionBlock(pCurTextLine,i))
