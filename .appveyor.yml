@@ -2,7 +2,7 @@ version: 0.0.0.0.1-branch-{branch}-build-{build}
 cache:
     - c:\OpenSSL-Win32 -> .appveyor.yml
     - c:\OpenSSL-Win64 -> .appveyor.yml
-    - 'c:\Program Files (x86)\NSIS' -> .appveyor.yml
+    - 'c:\Program Files (x86)\NSIS -> .appveyor.yml'
     - c:\deps -> .appveyor.yml
     - c:\Strawberry -> .appveyor.yml
     - c:\enchant.7z -> .appveyor.yml
