@@ -57,7 +57,7 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 #ifdef COMPILE_ON_MAC
 	addBoolSelector(0,6,0,6,__tr2qs_ctx("Require ⌘ to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
 #else
-	addBoolSelector(0,6,0,6,__tr2qs_ctx("Require the Control key to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
+	addBoolSelector(0,6,0,6,__tr2qs_ctx("Require Ctrl to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
 #endif
 
 	KviTalGroupBox * g = addGroupBox(0,7,0,7,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
