@@ -68,7 +68,7 @@ install:
             choco install strawberryperl -y $env:choco_arch
             # Strawberry perl doesn't support MSVC, but we force the support.
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
-            c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
+            c:\cygwin\bin\sh -lc "mkdir -p /cygdrive/c/Strawberry/kvirc_workaround"
         }
     - ps: |
         if (Test-Path "c:/ProgramData/chocolatey/bin/jom.exe") {
