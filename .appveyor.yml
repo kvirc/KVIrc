@@ -65,7 +65,7 @@ install:
         if (Test-Path "c:/Strawberry/kvirc_workaround") {
             echo "using perl from cache"
         } else {
-            choco install strawberryperl -y $env:choco_arch
+            choco install strawberryperl -y --version 5.20.1.1 $env:choco_arch
             # Strawberry perl doesn't support MSVC, but we force the support.
             c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
             c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
