@@ -1,13 +1,13 @@
 version: 0.0.0.0.1-branch-{branch}-build-{build}
 cache:
-    - c:\OpenSSL-Win32
-    - c:\OpenSSL-Win64
-    - 'c:\Program Files (x86)\NSIS'
-    - c:\deps
-    - c:\Strawberry
-    - c:\enchant.7z
-    - c:\spellcheck-dicts
-    - c:\ProgramData\chocolatey
+    - c:\OpenSSL-Win32 -> .appveyor.yml
+    - c:\OpenSSL-Win64 -> .appveyor.yml
+    - 'c:\Program Files (x86)\NSIS' -> .appveyor.yml
+    - c:\deps -> .appveyor.yml
+    - c:\Strawberry -> .appveyor.yml
+    - c:\enchant.7z -> .appveyor.yml
+    - c:\spellcheck-dicts -> .appveyor.yml
+    - c:\ProgramData\chocolatey -> .appveyor.yml
 environment:
     matrix:
         - ssl_arch: Win64
@@ -50,7 +50,7 @@ install:
             echo "using openssl from cache"
         } else {
             echo "downloading openssl"
-            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2d.exe" -OutFile c:\openssl-setup.exe
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2e.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         }
@@ -93,9 +93,9 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_US-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_GB-ize-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.05.18/hunspell-en_GB-ise-2015.05.18.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.08.24/hunspell-en_US-2015.08.24.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.08.24/hunspell-en_GB-ize-2015.08.24.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2015.08.24/hunspell-en_GB-ise-2015.08.24.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
@@ -117,7 +117,7 @@ build_script:
         c:\cygwin\bin\find $env:ChocolateyInstall
         # chocolatey broke jom, here's workaround (see https://github.com/jcfr/qt-easy-build/commit/6366f4275562bdaf4f686838600f46894579c41e)
         $env:Path = $env:ChocolateyInstall + "/lib/jom/content;" + $env:Path
-        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO"
+        cmake .. "-GNMake Makefiles JOM" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - jom install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
