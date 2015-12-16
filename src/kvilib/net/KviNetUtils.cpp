@@ -369,7 +369,7 @@ unsigned int fmt_ip6(char *s,const char ip[16])
 
 		temp = ((unsigned long) (unsigned char) ip[j] << 8) + (unsigned long) (unsigned char) ip[j+1];
 
-		if(temp == 0)
+		if(temp == 0 && compressing != 2)
 		{
 			if(compressing == 0)
 			{
