@@ -289,7 +289,7 @@ void KviWindowListButton::mousePressEvent(QMouseEvent *e)
 			if(g_pActiveWindow != m_pWindow)
 				g_pMainWindow->setActiveWindow(m_pWindow);
 		}
-	} else m_pWindow->contextPopup();
+	}
 }
 
 void KviWindowListButton::contextMenuEvent(QContextMenuEvent *e)
