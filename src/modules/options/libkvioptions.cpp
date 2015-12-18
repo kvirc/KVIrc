@@ -101,6 +101,11 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
 	KVSM_PARAMETERS_END(c)
 	if(szGroup.isEmpty())szGroup = "general";
+	if(szGroup != "general" && szGroup != "theme")
+	{
+		c->warning(__tr2qs_ctx("No such options_group %Q","options"),&szGroup);
+		return true;
+	}
 	OptionsDialog * d = g_pOptionsDialogDict->find(szGroup);
 	if(d)
 	{
