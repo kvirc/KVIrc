@@ -33,11 +33,11 @@
 # GLOBAL DEFS
 ###############################################################################
 
-# Name of the project
-project(kvirc)
-
 # Minimum cmake version
 cmake_minimum_required(VERSION 3.1.0)
+
+# Name of the project
+project(kvirc)
 
 # Check modules first in local dir
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
