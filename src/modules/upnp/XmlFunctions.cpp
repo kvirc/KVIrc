@@ -56,7 +56,7 @@ QDomNode XmlFunctions::getNode( const QDomNode &rootNode, const QString &path )
   }
 
   if( childNode.isNull() ) {
-      qDebug() << "XmlFunctions::getNode() - notice: node '" << pathItems[ i - 1 ] << "'"
+      qDebug() << "XmlFunctions::getNode() - Notice: node '" << pathItems[ i - 1 ] << "'"
                 << " does not exist (root=" << rootNode.nodeName() << " path=" << path << ")." << endl;
   }
 
@@ -106,7 +106,7 @@ QString XmlFunctions::getNodeValue( const QDomNode &rootNode, const QString &pat
   // Added code to avoid more assertion errors, and trace the cause.
   if( rootNode.isNull() )
   {
-    qWarning() << "XmlFunctions::getNodeValue: Attempted to request '" << path << "' on null root node." << endl;
+    qWarning() << "XmlFunctions::getNodeValue: attempted to request '" << path << "' on null root node." << endl;
     return QString();
   }
 

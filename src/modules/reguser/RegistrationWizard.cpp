@@ -193,7 +193,7 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 	m_pPage3Layout->addWidget(f,1,0);
 
 	m_pAvatar = new KviPixmap();
-	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs_ctx("Store an avatar for this user","register"),m_pAvatar,true);
+	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs_ctx("Store an avatar for this user:","register"),m_pAvatar,true);
 	m_pPage3Layout->addWidget(m_pAvatarSelector,2,0);
 	m_pPage3Layout->setRowStretch(2,1);
 

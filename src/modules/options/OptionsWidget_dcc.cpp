@@ -115,7 +115,7 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	mergeTip(b2,__tr2qs_ctx("<center>You can enable this option if you are behind a router that forwards all or a range of ports.<br>" \
 			"KVIrc will try to guess the IP address to use for DCC by looking up the local hostname as seen " \
 			"by the IRC server you're connected to.<br>This method is an exclusive alternative to the \"fixed address\" above.<br>" \
-			"It might guess the correct address automatically if certain conditions are met (e.g. the IRC server does not mask hostnames).</center>","options"));
+			"It might guess the correct address automatically if certain conditions are met (e.g. the IRC server doesn't mask hostnames).</center>","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Use \"broken bouncer hack\" to detect address","options"),KviOption_boolDccBrokenBouncerHack,KVI_OPTION_BOOL(KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable));
 	mergeTip(b,__tr2qs_ctx("<center>When you're behind a dialup router and also tunneling through a psyBNC bouncer, " \
@@ -128,12 +128,12 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	mergeTip(b,__tr2qs_ctx("<center>If you enable this option, when a DCC request from a remote " \
 					"user can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is " \
 					"a nice feature so it is a good idea to leave it on unless for some reason " \
-					"you have deactivated the antiflood system: in this case turning off this option " \
+					"you have deactivated the anti-flood system: in this case turning off this option " \
 					"might help if you often get attacked by CTCP floods.</center>","options"));
 
-	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Maximum number of DCC sessions","options"),KviOption_uintMaxDccSlots,0,1000,64);
+	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Maximum number of DCC sessions:","options"),KviOption_uintMaxDccSlots,0,1000,64);
 	mergeTip(u,__tr2qs_ctx("<center>This is the maximum number of concurrent DCC sessions " \
-					"and it includes all the DCC types (send,chat,recv...). " \
+					"and it includes all the DCC types (send, chat, recv...). " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
 
 	u = addUIntSelector(0,3,1,3,__tr2qs_ctx("DCC socket timeout:","options"),KviOption_uintDccSocketTimeout,10,65536,180);
@@ -243,19 +243,19 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Limits","options"));
 
 	KviTalHBox * hb = new KviTalHBox(g);
-	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to","options"),KviOption_boolLimitDccSendSpeed);
+	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to:","options"),KviOption_boolLimitDccSendSpeed);
 	KviUIntSelector * u = addUIntSelector(hb,"",KviOption_uintMaxDccSendSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	hb = new KviTalHBox(g);
-	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to","options"),KviOption_boolLimitDccRecvSpeed);
+	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to:","options"),KviOption_boolLimitDccRecvSpeed);
 	u = addUIntSelector(hb,"",KviOption_uintMaxDccRecvSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 
-	u = addUIntSelector(g,__tr2qs_ctx("Maximum number of DCC transfers","options"),KviOption_uintMaxDccSendTransfers,0,1000,10);
+	u = addUIntSelector(g,__tr2qs_ctx("Maximum number of DCC transfers:","options"),KviOption_uintMaxDccSendTransfers,0,1000,10);
 	mergeTip(u,__tr2qs_ctx("<center>This is the maximum number of concurrent DCC transfers. " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
 
@@ -269,9 +269,9 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 
 	hb = new KviTalHBox(g);
 
-	b = addBoolSelector(hb,__tr2qs_ctx("Force idle step","options"),KviOption_boolDccSendForceIdleStep);
+	b = addBoolSelector(hb,__tr2qs_ctx("Force idle step:","options"),KviOption_boolDccSendForceIdleStep);
 	mergeTip(b,
-		__tr2qs_ctx("<center>Enable this option when the dcc file transfers " \
+		__tr2qs_ctx("<center>Enable this option when the DCC file transfers " \
 				"tend to block your computer by consuming too much CPU time. " \
 				"When this option is enabled the idle interval below will be " \
 				"forcibly inserted between each sent/received data packet.</center>","options"));

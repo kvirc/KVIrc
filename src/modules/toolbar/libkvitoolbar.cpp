@@ -441,7 +441,7 @@ static bool toolbar_kvs_cmd_removeitem(KviKvsModuleCommandCall * c)
 			if(!d->removeAction(iAction))
 			{
 				if(!c->switches()->find('q',"quiet"))
-					c->warning(__tr2qs("The toolbar does not contain the specified item"));
+					c->warning(__tr2qs("The toolbar doesn't contain the specified item"));
 			}
 		}
 	} else {
@@ -450,7 +450,7 @@ static bool toolbar_kvs_cmd_removeitem(KviKvsModuleCommandCall * c)
 		if(!d->removeAction(szAction))
 		{
 			if(!c->switches()->find('q',"quiet"))
-				c->warning(__tr2qs("The toolbar does not contain the specified item"));
+				c->warning(__tr2qs("The toolbar doesn't contain the specified item"));
 		}
 	}
 

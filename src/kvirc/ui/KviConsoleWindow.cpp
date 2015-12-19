@@ -135,10 +135,10 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 	// FIXME: #warning "Button to show/hide the notifyListView (NOT DELETE RE_CREATE!)"
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify List"),buttonContainer(),true);
+	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify list"),buttonContainer(),true);
 	connect(m_pNotifyViewButton,SIGNAL(clicked()),this,SLOT(toggleNotifyView()));
 
-	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify List"),"notify_list_view");
+	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify list"),"notify_list_view");
 
 	m_pInput   = new KviInput(this,m_pNotifyListView);
 

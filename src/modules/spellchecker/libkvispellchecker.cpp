@@ -110,7 +110,7 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c)
 	@description:
 		This function returns the suggestions for the specified word.
 		If the word seems to be spelled correctly or there are no dictionaries
-		selected then the functon returns an empty array.
+		selected then the function returns an empty array.
 */
 static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
 {

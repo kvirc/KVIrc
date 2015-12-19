@@ -90,7 +90,7 @@ KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szN
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 
-	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Show User List"),buttonContainer(),true);
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Show user list"),buttonContainer(),true);
 	m_pListViewButton->setObjectName("list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
@@ -98,7 +98,7 @@ KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szN
 	createCryptControllerButton(m_pButtonGrid);
 #endif
 
-	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query Targets"),"user_list_view");
+	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query targets"),"user_list_view");
 
 	m_pInput = new KviInput(this,m_pUserListView);
 

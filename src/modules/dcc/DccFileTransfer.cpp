@@ -2306,7 +2306,7 @@ DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent
 	QString szText = __tr2qs_ctx("Configure Bandwidth for DCC Transfer %1","dcc").arg(t->id());
 	setWindowTitle(szText);
 
-	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to","dcc") : __tr2qs_ctx("Limit download bandwidth to","dcc");
+	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to:","dcc") : __tr2qs_ctx("Limit download bandwidth to:","dcc");
 
 	m_pEnableLimitCheck = new QCheckBox(szText,this);
 	g->addWidget(m_pEnableLimitCheck,0,0);

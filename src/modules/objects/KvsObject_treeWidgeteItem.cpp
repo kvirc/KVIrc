@@ -81,62 +81,50 @@ const char * const itemflags_tbl[] = {
 	@functions:
 		!fn: $setText(<column:integer>,<text:string>)
 		Sets the text in column column to text, if column is a valid column number and text is different from the existing text.
-
 		!fn: <string> $text(<column:integer>)
 		Returs the text of the specified column.
-
 		!fn: $setPixmap(<column:integer>,<pixmap:hobject or imageID>)
 		Sets the pixmap in column column to pm, if pm is non-null and different from the current pixmap, and if column is non-negative.
-		Pixmap can be a Kvirc imageid, an image file or a [class]pixmap[/class] object.
-
+		Pixmap can be a KVIrc image ID, an image file or a [class]pixmap[/class] object.
 		!fn: $setItemEditable(<bEnabled:boolean>)
 		If bEnabled is true (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.
-
 		!fn: $isItemEditable()
 		Returns $true if this item is editable and $false otherwise.
-
 		!fn: $setEnabled(<bEnabled:boolean>)
 		Enables or disables the item.
-
 		!fn: $isEnabled()
 		Returns $true if this item is enabled and $false otherwise.
-
 		!fn: $setOpen(<bOpen:boolean>)
-		Opens or closes the item to show its children items.
-
+		Opens or closes the item to show its child items.
 		!fn: $isOpen()
 		Returns the open state of this item
-
 		!fn: $setCheckable(<bCheckable:boolean>)
 		Makes this item checkable or not. This function should be called immediately
 		after the item creation: changing this property later at runtime may have
 		strange results (like the item being moved inside the list, text disappearing,
-		hidden children etc... don't do it :D ).
-
+		hidden child items etc... don't do it :D ).
 		!fn: $isCheckable()
 		Returns $true if this item is checkable and $false otherwise
-
 		!fn: $setChecked(<bChecked:boolean>)
 		Sets this item to be checked or not. [classfnc:listviewitem]$setCheckable[/classfnc]() must
 		have been previously called.
-
 		!fn: $isChecked()
 		Returns the check status of this item. [classfnc:listviewitem]$setCheckable[/classfnc]() must
 		have been previously called.
-
 		!fn: $setFlags(<flag1:string>, <flag2:string>, ...)
-		Sets the flags for the item to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.
+		Sets the flags for the item to the given flags. These determine whether the item can be selected or modified.[br]
+		This is often used to disable an item.
 		Supported flags are:
+		[pre]
 		[br]- noitemflag : no flag sets;
-		[br]- selectable : item is selecatble;
+		[br]- selectable : item is selectable;
 		[br]- editable : item is editable;
 		[br]- dragEnabled : item can dragged;
 		[br]- dropEnabled : item can used as drop target;
 		[br]- userCheckable : item is checkable;
 		[br]- enabled :item is enabled;
 		[br]- tristate : item is checkable with three separate states.
-
-
+		[/pre]
 */
 
 
@@ -178,7 +166,7 @@ bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 {
 	if (!parentObject())
 	{
-		pContext->error(__tr2qs_ctx("The listviewitem cannot be parentless","objects"));
+		pContext->error(__tr2qs_ctx("The listviewitem can't be parentless","objects"));
 		return false;
 	}
 	if(parentObject()->inheritsClass("listviewitem"))

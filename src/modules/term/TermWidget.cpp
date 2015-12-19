@@ -59,7 +59,7 @@
 		if(bIsStandalone)
 		{
 			m_pHBox = new KviTalHBox(this);
-			m_pTitleLabel = new QLabel(__tr2qs("Terminal emulator"),m_pHBox);
+			m_pTitleLabel = new QLabel(__tr2qs("Terminal Emulator"),m_pHBox);
 			m_pTitleLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 			m_pCloseButton = new QPushButton("",m_pHBox);
 			m_pCloseButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Close)));

@@ -444,7 +444,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue","dcc"),dcc->szParam4.ptr());
+				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue","dcc"),dcc->szParam4.ptr());
 		}
 		dcc->szParam4 = __tr2qs_ctx("<unknown size>","dcc");
 	}
@@ -737,7 +737,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue","dcc"),dcc->szParam2.ptr());
+				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue","dcc"),dcc->szParam2.ptr());
 		}
 		dcc->szParam2 = __tr_ctx("<unknown size>","dcc");
 	}
@@ -988,7 +988,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-			__tr2qs_ctx("The above request cannot be accepted: DCC VOICE support not enabled at compilation time ","dcc"));
+			__tr2qs_ctx("The above request can't be accepted: DCC VOICE support not enabled at compilation time ","dcc"));
 		return;
 	}
 #endif
@@ -998,7 +998,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-				__tr2qs_ctx("The above request cannot be accepted: unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
 			return;
 		}
 	}
@@ -1062,7 +1062,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-			__tr2qs_ctx("The above request cannot be accepted: DCC VIDEO support not enabled at compilation time ","dcc"));
+			__tr2qs_ctx("The above request can't be accepted: DCC VIDEO support not enabled at compilation time ","dcc"));
 		return;
 	}
 #else
@@ -1072,7 +1072,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-				__tr2qs_ctx("The above request cannot be accepted: unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
 			return;
 		}
 	}

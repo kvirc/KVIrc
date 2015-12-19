@@ -729,7 +729,7 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 		Returns an array of the entries in the registered users database.[br]
 		If <mask> is specified, only entries matching the <mask>
 		and the entries with no registration masks are listed.[br]
-		Please note that <mask> is a wildcard string that will match
+		Please note that the <mask> is a wildcard string that will match
 		wildcard strings... don't get messed with that :D[br]
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
@@ -816,15 +816,15 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 		KviPointerList<KviIrcMask> * ml = u->maskList();
 		if(u->matches(mask) || (ml->count() == 0))
 		{
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx(" User: %c%Q","register"),KviControlCodes::Bold,&(u->name()));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("User: %c%Q","register"),KviControlCodes::Bold,&(u->name()));
 
 			if(ml->count() == 0)
 			{
-				c->window()->output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("    Warning: this user has no registration masks","register"));
+				c->window()->output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Warning: this user has no registration masks","register"));
 			} else {
 				for(KviIrcMask * m = ml->first();m;m = ml->next())
 				{
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Mask: %Q!%Q@%Q","register"),&(m->nick()),&(m->user()),&(m->host()));
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Mask: %Q!%Q@%Q","register"),&(m->nick()),&(m->user()),&(m->host()));
 				}
 			}
 
@@ -835,10 +835,10 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 				while(pdit.current())
 				{
 					QString key = pdit.currentKey();
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Property: %Q=%Q","register"),&(key),pdit.current());
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Property: %Q=%Q","register"),&(key),pdit.current());
 					++pdit;
 				}
-			} else c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    No properties","register"));
+			} else c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("No properties","register"));
 			count++;
 		}
 		++it;
@@ -1163,7 +1163,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 		reguser.wizard [mask]
 	@description:
 		Allows registering an user with an intuitive and easy to use interface.
-		If [mask] is specified, it is used as inital mask in the dialog.
+		If [mask] is specified, it is used as initial mask in the dialog.
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],

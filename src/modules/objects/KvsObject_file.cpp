@@ -90,7 +90,7 @@ const QIODevice::OpenMode mod_cod[] = {
 		Attempts to open the file in specified mode or modes "sum".
 		Valid modes are:[br]
 		[pre]
-		Raw	  - raw, non-buffered access[br]
+		RAW     - RAW, non-buffered access[br]
 		ReadOnly     - opens the file read-only[br]
 		WriteOnly    - opens the file write-only[br]
 		ReadWrite    - opens the file in read-write mode[br]
@@ -98,7 +98,7 @@ const QIODevice::OpenMode mod_cod[] = {
 		Truncate     - truncates the file[br]
 		[/pre]
 		If you call this function without any parameters, the file is
-		opened in ReadOnly mode.[br]
+		opened in read-only mode.[br]
 		When working with buffered files, data is not written directly
 		to the file at once. You must call [classfnc]$flush[/classfnc]() to force it.[br]
 		See also: [classfnc]$close[/classfnc](),
@@ -110,7 +110,7 @@ const QIODevice::OpenMode mod_cod[] = {
 		See also: [classfnc]$flush[/classfnc]().
 		!fn: $flush()
 		Flushes the file buffer to disk. Calling this after opening the
-		file in 'Raw' mode doesn't make much sense.[br]
+		file in RAW mode doesn't make much sense.[br]
 		See also: [classfnc]$open[/classfnc](),
 		[classfnc]$close[/classfnc]().
 		!fn: <integer> $size()
@@ -445,7 +445,7 @@ KVSO_CLASS_FUNCTION(file,read)
 		if (pVar->isArray())
 			c->returnValue()->setArray(pVar->array());
 		else
-			c->warning(__tr2qs_ctx("The incoming data isn't an array","objects"));
+			c->warning(__tr2qs_ctx("The incoming data is not an array","objects"));
 	}
 	else if(KviQString::equalCI(szType, "Dict"))
 	{
@@ -455,7 +455,7 @@ KVSO_CLASS_FUNCTION(file,read)
 		if (pVar->isHash())
 			c->returnValue()->setHash(pVar->hash());
 		else
-			c->warning(__tr2qs_ctx("The incoming data isn't a Dictionary","objects"));
+			c->warning(__tr2qs_ctx("The incoming data is not a dictionary","objects"));
 	}
 	else if(KviQString::equalCI(szType, "String"))
 	{
@@ -584,7 +584,7 @@ KVSO_CLASS_FUNCTION(file,readHexBlock)
 	CHECK_FILE_IS_OPEN
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
+		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,0,uLen)
 	KVSO_PARAMETERS_END(c)
 	if (uLen>(kvs_uint_t)m_pFile->size()) uLen=m_pFile->size();
 	char * buff = new char[uLen];
@@ -618,7 +618,7 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text_block",KVS_PT_STRING,0,szBlock)
-		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
 	if (szBlock.length()%2)
 	{

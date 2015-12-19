@@ -42,7 +42,7 @@
 		if(!pWnd) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data()); \
+				c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data()); \
 			return true; \
 		} \
 	} \

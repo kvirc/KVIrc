@@ -196,7 +196,7 @@ SetupWizard::SetupWizard()
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApplication::License,"COPYING");
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
-		szLicense = __tr("Oops... Can't find the license file.\n" \
+		szLicense = __tr("Oops! Can't find the license file.\n" \
 			"It MUST be included in the distribution...\n" \
 			"Please report to <pragma at kvirc dot net>");
 	}
@@ -415,8 +415,8 @@ SetupWizard::SetupWizard()
 	m_pTheme = new SetupPage(this);
 	m_pTheme->m_pTextLabel->setText(__tr2qs( \
 		"<p>Here you can choose the default appearance of KVIrc.<br><br>" \
-		"The Fancy Theme uses icons, a transparent background and a lot of colors. " \
-		"The Minimalist Theme is designed for low-color displays " \
+		"The Fancy theme uses icons, a transparent background and a lot of colors. " \
+		"The Minimalist theme is designed for low-color displays " \
 		"or for \"console\" extremists; it's more or less white text on a black background.<br><br>" \
 		"If you had a previous version of KVIrc installed, you can choose to not apply any theme " \
 		"in order to preserve your current visual settings.<br><br>" \
@@ -728,8 +728,8 @@ void SetupWizard::chooseOldDataPath()
 		if(
 			QMessageBox::question(
 				this,
-				__tr2qs("Do not overwrite folder? - KVIrc"),
-				__tr2qs("The folder %1 does not seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
+				__tr2qs("Do Not Overwrite Folder? - KVIrc"),
+				__tr2qs("The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
 					.arg(szBuffer),
 				__tr2qs("&Yes"),
 				__tr2qs("&No"),
@@ -935,7 +935,7 @@ void SetupWizard::setUrlHandlers()
 void SetupWizard::reject()
 {
 	if(QMessageBox::warning(this,__tr2qs("Abort Setup - KVIrc Setup"),
-		__tr2qs("You have chosen to abort the setup.<br>KVIrc cannot run until you complete this procedure.<br><br>Do you really wish to abort?"),
+		__tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return;
 
 	KviTalWizard::reject();
@@ -966,7 +966,7 @@ void SetupWizard::accept()
 		{
 			if(!KviFileUtils::makeDir(szDir))
 			{
-				KviMessageBox::warning(__tr("Cannot create directory %s.\n" \
+				KviMessageBox::warning(__tr("Can't create directory %s.\n" \
 					"You may not have write permission " \
 					"for that path. Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);
@@ -997,7 +997,7 @@ void SetupWizard::accept()
 		{
 			if(!KviFileUtils::makeDir(szDir))
 			{
-				KviMessageBox::warning(__tr("Cannot create directory %s.\n" \
+				KviMessageBox::warning(__tr("Can't create directory %s.\n" \
 					"You may not have write permission " \
 					"for that path. Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);

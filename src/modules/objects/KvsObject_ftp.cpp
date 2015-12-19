@@ -78,7 +78,7 @@
 		!fn:<id:integer> $list()
 		Lists the contents of the directory on the FTP server.
 		!fn: $commandFinishedEvent(<id:integer>,<error:boolean>)
-		Called by KVIrc when the FTP command identified by id has finished.[br]
+		Called by KVIrc when the FTP command identified by ID has finished.[br]
 		Error is true if an error occurred during the processing; otherwise error is false.[br]
 		The default implementation emits the [classfnc]$commandFinished[/classfnc]() signal.[br]
 		!fn: $listInfoEvent(<dir_entry_name:string>)

@@ -66,7 +66,7 @@ static int g_iNextConfigId = 0;
 		[fnc]$config.id[/fnc]() function.[br]
 	@examples:
 		[example]
-		# It is a good idea to store the returned id to a variable :)
+		# It is a good idea to store the returned ID to a variable :)
 		%cfg = $config.open(myscript.kvc)
 		%num = [fnc]$config.read[/fnc](%cfg,Number,0)
 		[cmd]echo[/cmd] Number of entries is %num
@@ -136,12 +136,12 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@title:
 		$config.id
 	@short:
-		Returns the id of an open config file
+		Returns the ID of an open config file
 	@syntax:
 		$config.id(<filename>)
 	@description:
-		Returns the id of an open config file specified by <filename>.[br]
-		(This is the same id that is returned by [fnc]$config.open[/fnc].[br]
+		Returns the ID of an open config file specified by <filename>.[br]
+		(This is the same ID that is returned by [fnc]$config.open[/fnc].[br]
 		If no such file is open, 0 is returned (that is an invalid config identifier).[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
@@ -216,7 +216,7 @@ static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	{
 		c->returnValue()->setString(cfg->readEntry(szKey,szDefault));
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 	return true;
 }
@@ -252,7 +252,7 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	{
 		c->returnValue()->setString(cfg->group());
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 	return true;
 }
@@ -290,7 +290,7 @@ static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 	{
 		c->returnValue()->setBoolean(cfg->readOnly());
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 		c->returnValue()->setInteger(false);
 	}
 	return true;
@@ -365,7 +365,7 @@ static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
 	{
 		c->returnValue()->setBoolean(cfg->hasGroup(szSect));
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 	return true;
 }
@@ -409,7 +409,7 @@ static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
 		}
 		c->returnValue()->setArray(pArray);
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 	return true;
 }
@@ -458,7 +458,7 @@ static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 		}
 		c->returnValue()->setArray(pArray);
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 	return true;
 }
@@ -542,12 +542,12 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 			// we force a save here
 			if(!cfg->sync())
 				if(!c->hasSwitch('q',"quiet"))
-					c->warning(__tr2qs("An error has occurred while trying to save the config file with id '%Q'"),&szId);
+					c->warning(__tr2qs("An error has occurred while trying to save the config file with ID '%Q'"),&szId);
 		}
 		g_pConfigDict->remove(szId);
 	} else {
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+			c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 
 	return true;
@@ -587,12 +587,12 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 	if(cfg)
 	{
 		if(cfg->readOnly())
-			c->warning(__tr2qs("The config file with id '%Q' is read-only"),&szId);
+			c->warning(__tr2qs("The config file with ID '%Q' is read-only"),&szId);
 		else
 			if(!cfg->sync())
-				c->warning(__tr2qs("An error has occurred while trying to save the config file with id '%Q'"),&szId);
+				c->warning(__tr2qs("An error has occurred while trying to save the config file with ID '%Q'"),&szId);
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 
 	return true;
@@ -633,7 +633,7 @@ static bool config_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 	{
 		cfg->clear();
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 
 	return true;
@@ -677,7 +677,7 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 	{
 		cfg->clearGroup(szSect);
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 
 	return true;
@@ -697,7 +697,7 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 		config.write <id> <key> <value>
 	@description:
 		Writes the <key>=<value> pair to the config file identifier by <id>.[br]
-		<id> must be a valid config file id returned by [fnc]$config.open[/fnc]().[br]
+		<id> must be a valid config file ID returned by [fnc]$config.open[/fnc]().[br]
 		<key> and <value> can be any strings.[br]
 		The <key>=<value> pair is written in the current section of the config file.[br]
 		If <key> already exists in the current section of the config, the corresponding value is replaced with <value>.[br]
@@ -730,7 +730,7 @@ static bool config_kvs_cmd_write(KviKvsModuleCommandCall * c)
 		else
 			cfg->clearKey(szKey);
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 
 	return true;
@@ -752,7 +752,7 @@ static bool config_kvs_cmd_write(KviKvsModuleCommandCall * c)
 		Changes the current section of the config file <id> to <section_name>.[br]
 		Sections are effectively namespaces for the keys: each section can contain
 		a set of keys and equal keys in different sections do not collide.[br]
-		<id> must be a valid config file id returned by [fnc]$config.open[/fnc]().[br]
+		<id> must be a valid config file ID returned by [fnc]$config.open[/fnc]().[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
 */
@@ -773,7 +773,7 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 	{
 		cfg->setGroup(szSect);
 	} else {
-		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
+		c->warning(__tr2qs("The config file with ID '%Q' is not open"),&szId);
 	}
 
 	return true;

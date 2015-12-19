@@ -819,7 +819,7 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 
 	QMenu * pop = new QMenu(b);
 	pop->addAction(__tr2qs_ctx("&Open...","editor"),this,SLOT(loadFromFile()));
-	pop->addAction(__tr2qs_ctx("&Save As...","editor"),this,SLOT(saveToFile()));
+	pop->addAction(__tr2qs_ctx("&Save as...","editor"),this,SLOT(saveToFile()));
 	pop->addSeparator();
 	pop->addAction(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
 	b->setMenu(pop);
@@ -830,7 +830,7 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	g->addWidget(m_pFindLineEdit,1,2);
 
 	QLabel * pLab = new QLabel(this);
-	pLab->setText(__tr2qs_ctx("Find","editor"));
+	pLab->setText(__tr2qs_ctx("Find:","editor"));
 	pLab->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 	g->addWidget(pLab,1,1);
 
@@ -1085,7 +1085,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 
 	QLabel * m_pFindLabel = new QLabel(this);
 	m_pFindLabel->setObjectName("findlabel");
-	m_pFindLabel->setText(__tr2qs_ctx("Word to find","editor"));
+	m_pFindLabel->setText(__tr2qs_ctx("Word to find:","editor"));
 	pLayout->addWidget(m_pFindLabel,0,0);
 
 	m_pFindLineEdit = new QLineEdit(this);
@@ -1094,7 +1094,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 
 	QLabel * m_pReplaceLabel = new QLabel(this);
 	m_pReplaceLabel->setObjectName("replacelabel");
-	m_pReplaceLabel->setText(__tr2qs_ctx("Replace with","editor"));
+	m_pReplaceLabel->setText(__tr2qs_ctx("Replace with:","editor"));
 	pLayout->addWidget(m_pReplaceLabel,1,0);
 
 	m_pReplaceLineEdit = new QLineEdit(this);

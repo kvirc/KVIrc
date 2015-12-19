@@ -38,7 +38,7 @@
 
 
 /*
-	@doc:   popupmenu
+	@doc: popupmenu
 	@keyterms:
 		popupmenu object class,
 	@title:
@@ -51,8 +51,8 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		This widget can be used to display a popup menu.Technically, a popup menu consists of a list of menu items.[br]
-		You add items with insertItem(). An item is either a string. In addition, items can have an optional icon drawn on the very left side.[br]
+		This widget can be used to display a popup menu. Technically, a popup menu consists of a list of menu items.[br]
+		You add items with insertItem(). An item can be a string. In addition, items can have an optional icon drawn on the very left side.[br]
 	@functions:
 		!fn: $insertItem(<text:string>,[icon_id:string])
 		Inserts menu items into a popup menu with optional icon and return the popup identifier.
@@ -65,17 +65,17 @@
 		If called without paramaters show the popup menu at the current pointer position.[br]
 		With the optional parameters show the popup menu at the coordinate x,y widget parameter relative.
 		!fn: $removeItem(<popup_id:Uinteger>)
-		Removes the menu item that has the identifier id.
+		Removes the menu item that has the identifier ID.
 		!fn: $removeItemAt(<index:uinteger>)
 		Removes the menu item at position index.
 		!fn: $insertSeparator(<index:uinteger>)
 		Inserts a separator at position index.[br]
 		If the index is negative the separator becomes the last menu item.
 		!fn: $activatedEvent(<popup_id:uinteger>)
-		This function is called when a menu item and return the the item id.[br]
+		This function is called when a menu item and return the the item ID.[br]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
 		!fn: $highligthtedEvent(<popup_id:uinteger>)
-		This function is called when a menu item is highlighted (hovered) and return the item id.[br]
+		This function is called when a menu item is highlighted (hovered) and return the item ID.[br]
 		The default implementation emits the [classfnc]$highlighted[/classfnc]() signal.
 	@signals:
 		!sg: $activated()
@@ -85,42 +85,42 @@
 		[br]
 	@examples:
 		[example]
-		// first we define a class inherited from popupmenu
+		[comment]//First we define a class inherited from popupmenu[/comment]
 		class(menu,popupmenu)
 		{
 			constructor()
 			{
-				// we store the item's id for checkit in activatedEvent
-								@%tile_id=@$insertItem("Tile",118)
-								@%cascade_id=@$insertItem("Cascade",115)
-								@$insertSeparator(3)
-								@%closeactw_id=@$insertItem("Close Active Window",08)
-								@%closeallw_id=@$insertItem("Close All Window",58)
+				[comment]//We store the item's ID for checking in activatedEvent[/comment]
+				@%tile_id=@$insertItem("Tile",118)
+				@%cascade_id=@$insertItem("Cascade",115)
+				@$insertSeparator(3)
+				@%closeactw_id=@$insertItem("Close Active Window",08)
+				@%closeallw_id=@$insertItem("Close All Window",58)
 			}
 			activatedEvent()
 			{
-				// now we emit a signals to the relative to the user choice
+				[comment]//Now we emit a signals to the relative to the user choice[/comment]
 				%id=$0
 				if (%id==@%tile_id) @$emit("tile")
 				else if(%id==@%cascade_id) @$emit("cascade")
 				else if (%id==@%closeactw_id) @$emit("closeactive")
 				else @$emit("closeallwindows")
-				// deleting the popup
+				[comment]//Deleting the popup[/comment]
 				delete $$
 			}
 		}
 		class (ws,widget)[br]
 		{
-			#In the constructor we create everything that belong to the single widget.
+			[comment]In the constructor we create everything that belong to the single widget.[/comment]
 			constructor()
 			{
-				#Here we generate a loop to create our labels inside the widget.
+				[comment]//Here we generate a loop to create our labels inside the widget.[/comment]
 				%lay=$new(layout,$$)
-				// we use a vbox to managing labels in vertical orientation
+				[comment]we use a vbox to managing labels in vertical orientation[/comment]
 				%vb=$new(vbox,$$)
-				// then add the vbox to the main layout
+				[comment]Then add the vbox to the main layout[/comment]
 				%lay->$addWidget(%vb,0,0)
-				// let's create our colorful labels
+				[comment]Let's create our colorful labels[/comment]
 				for(%i=0;%i<15;%i++)
 				{
 					@%label=$new(label,%vb)
@@ -131,7 +131,7 @@
 			}
 			customContextMenuRequestedEvent()
 			{
-				#We create  the popupmenu relative to this widget at runtime.
+				[comment]//We create the popupmenu relative to this widget at runtime.[/comment]
 				%p=$new(menu,$$)
 				objects.connect %p tile @$parent tile
 				objects.connect %p cascade @$parent cascade
@@ -140,27 +140,27 @@
 				%p->$exec($$,$($0+10),$($1+10))
 			}
 		}
-		// we create the workspace widget
+		[comment]//We create the workspace widget[/comment]
 		%Workspace=$new(workspace)
-		// we use as space as we have
+		[comment]//We use as space as we have[/comment]
 		%size[]=%Workspace->$screenResolution()
-		// resize it
+		[comment]//Resize it[/comment]
 		%Workspace->$resize(%size[0],%size[1])
-		// then create 20 subwidget
+		[comment]//Then create 20 subwidget[/comment]
 		for(%i=0;%i<20;%i++)
 		{
 			%w=$new(ws,%Workspace)
-			// let's add avery widget to the workspace
+			[comment]//Let's add every widget to the workspace[/comment]
 			%Workspace->$addSubWindow(%w)
-			// then "shake it" a little bit around :-)
+			[comment]//Then "shake it" a little bit around :-)[/comment]
 			%w->$move($rand($(%size[0]-50)),$rand($(%size[1]-50)))
 		}
-		// reimplement closeEvent to delete all this :-)
+		[comment]//Reimplement closeEvent to delete all this :-)[/comment]
 		privateimpl(%Workspace,closeEvent)
 		{
 			delete $$
 		}
-		#Let's show!
+		[comment]//Let's show![/comment]
 		%Workspace->$show()
 		[/example]
 */

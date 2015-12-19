@@ -621,7 +621,7 @@ namespace KviKvsCoreSimpleCommands
 			If it is a relative path then KVIrc will try to look it up
 			in the path of the calling script (if any) and in the current
 			KVIrc working directory.
-			The file must be utf8-encoded (see below).
+			The file must be UTF-8-encoded (see below).
 			[parameters] is a space separated string of parameters to be
 			passed to the script. The parameter $0 will contain the
 			path of the file being parsed, the other parameters will
@@ -636,14 +636,14 @@ namespace KviKvsCoreSimpleCommands
 			This command has a builtin alias called [cmd]include[/cmd].
 			[br][br]
 			Note that script files, especially the ones that you distribute,
-			MUST be encoded in utf8. Any other encoding (especially the exotic
+			MUST be encoded in UTF-8. Any other encoding (especially the exotic
 			ones like KOI8R or Shift-JIS) may screw things up.
 			The reason for such a constraint is simple: KVIrc has no means
 			of knowing the encoding that one or other scripter uses to
 			edit his files. Unlike other languages (like HTML, for example)
 			there is no "external" metadata that will allow for
 			encoding detection before the data is actually decoded.
-			UTF8 is the right way (tm). Use it.
+			UTF-8 is the right way (tm). Use it.
 		@examples:
 			[example]
 				parse /home/pragma/myscript.kvs
@@ -1211,7 +1211,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			raw [-q] <raw command:string>
 		@short:
-			Sends raw data to the server
+			Sends RAW data to the server
 		@switches:
 			!sw: -q | --quiet
 			Be quiet: do echo the RAW data.
@@ -1273,7 +1273,7 @@ namespace KviKvsCoreSimpleCommands
 			[b]Handle with care.[/b]
 		@examples:
 			[comment]# Try this example in a channel or query window[/comment][br]
-			[comment]# Remember the current window id[/comment][br]
+			[comment]# Remember the current window ID[/comment][br]
 			%winid = $window[br]
 			[comment]# Rebind to the console of the current IRC context[/comment][br]
 			rebind $console[br]
@@ -1295,7 +1295,7 @@ namespace KviKvsCoreSimpleCommands
 		if(pAux)KVSCSC_pContext->setWindow(pAux);
 		else {
 			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pContext->warning(__tr2qs_ctx("Window with id %Q not found: no rebinding performed","kvs"),&szWinId);
+				KVSCSC_pContext->warning(__tr2qs_ctx("Window with ID %Q not found: no rebinding performed","kvs"),&szWinId);
 		}
 		return true;
 	}

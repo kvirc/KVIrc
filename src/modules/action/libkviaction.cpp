@@ -112,7 +112,7 @@ static bool action_kvs_cmd_trigger(KviKvsModuleCommandCall * c)
 				c->warning(__tr2qs("The action \"%1\" is disabled").arg(szName));
 		}
 	} else {
-		c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+		c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -158,7 +158,7 @@ static bool action_kvs_cmd_enable(KviKvsModuleCommandCall * c)
 		if(!a->isEnabled())a->setEnabled(true);
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -206,7 +206,7 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 		if(a->isEnabled())a->setEnabled(false);
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -233,7 +233,7 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 		Please note that you CAN'T destroy core actions, you can destroy
 		only script actions that have been defined by the user (or other scripts).
 	@seealso:
-		# this will trigger a warning and NOT work
+		[comment]This will trigger a warning and [b]not[/b] work[/comment]
 		action.destroy connect
 */
 
@@ -252,11 +252,11 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 			a->suicide();
 		} else {
 			if(!c->switches()->find('q',"quiet"))
-				c->warning(__tr2qs("The action \"%1\" is a core action and cannot be destroyed").arg(szName));
+				c->warning(__tr2qs("The action \"%1\" is a core action and can't be destroyed").arg(szName));
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -416,7 +416,7 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 		if(old->isKviUserActionNeverOverrideThis())
 			old->suicide();
 		else {
-			c->warning(__tr2qs("The action \"%1\" is already defined as core action and cannot be overridden").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" is already defined as core action and can't be overridden").arg(szName));
 			return false;
 		}
 	}

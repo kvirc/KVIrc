@@ -200,7 +200,7 @@ bool KviPerlInterpreter::init()
 		"{\n" \
 		"	my($p,$f,$l,$x);\n" \
 		"	($p,$f,$l) = caller;\n" \
-		"	KVIrc::internalWarning(\"At line \".$l.\" of perl code: \");\n" \
+		"	KVIrc::internalWarning(\"At line \".$l.\" of Perl code: \");\n" \
 		"	KVIrc::internalWarning(join(' ',@_));\n" \
 		"}\n").arg(m_szContextName);
 
@@ -237,7 +237,7 @@ bool KviPerlInterpreter::execute(
 {
 	if(!m_pInterpreter)
 	{
-		szError = __tr2qs_ctx("Internal error: perl interpreter not initialized","perl");
+		szError = __tr2qs_ctx("Internal error: Perl interpreter not initialized","perl");
 		return false;
 	}
 

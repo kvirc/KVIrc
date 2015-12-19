@@ -89,11 +89,11 @@ OptionsWidget_windowListTreeForeground::OptionsWidget_windowListTreeForeground(Q
 
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeWindowListForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorTreeWindowListActiveForeground);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 1:","options"),KviOption_colorTreeWindowListHighlight1Foreground);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 2:","options"),KviOption_colorTreeWindowListHighlight2Foreground);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 3:","options"),KviOption_colorTreeWindowListHighlight3Foreground);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 4:","options"),KviOption_colorTreeWindowListHighlight4Foreground);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 5:","options"),KviOption_colorTreeWindowListHighlight5Foreground);
+	addColorSelector(g,__tr2qs_ctx("Alert level 1:","options"),KviOption_colorTreeWindowListHighlight1Foreground);
+	addColorSelector(g,__tr2qs_ctx("Alert level 2:","options"),KviOption_colorTreeWindowListHighlight2Foreground);
+	addColorSelector(g,__tr2qs_ctx("Alert level 3:","options"),KviOption_colorTreeWindowListHighlight3Foreground);
+	addColorSelector(g,__tr2qs_ctx("Alert level 4:","options"),KviOption_colorTreeWindowListHighlight4Foreground);
+	addColorSelector(g,__tr2qs_ctx("Alert level 5:","options"),KviOption_colorTreeWindowListHighlight5Foreground);
 
 	addColorSelector(0,2,0,2,__tr2qs_ctx("Progress bar color:","options"),KviOption_colorTreeWindowListProgress);
 
@@ -246,11 +246,11 @@ OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * paren
 	KviTalGroupBox *g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorWindowListNormalText);
 	addColorSelector(g,__tr2qs_ctx("Minimized:","options"), KviOption_colorWindowListMinimizedText);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 1:","options"),KviOption_colorWindowListHighlight1Text);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 2:","options"),KviOption_colorWindowListHighlight2Text);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 3:","options"),KviOption_colorWindowListHighlight3Text);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 4:","options"),KviOption_colorWindowListHighlight4Text);
-	addColorSelector(g,__tr2qs_ctx("Alert Level 5:","options"),KviOption_colorWindowListHighlight5Text);
+	addColorSelector(g,__tr2qs_ctx("Alert level 1:","options"),KviOption_colorWindowListHighlight1Text);
+	addColorSelector(g,__tr2qs_ctx("Alert level 2:","options"),KviOption_colorWindowListHighlight2Text);
+	addColorSelector(g,__tr2qs_ctx("Alert level 3:","options"),KviOption_colorWindowListHighlight3Text);
+	addColorSelector(g,__tr2qs_ctx("Alert level 4:","options"),KviOption_colorWindowListHighlight4Text);
+	addColorSelector(g,__tr2qs_ctx("Alert level 5:","options"),KviOption_colorWindowListHighlight5Text);
 	addColorSelector(0,2,0,2,__tr2qs_ctx("Progress bar color:","options"),KviOption_colorWindowListProgressBar);
 	addUIntSelector(0,3,0,3,__tr2qs_ctx("Minimum width of buttons:","options"),KviOption_uintWindowListButtonMinWidth,24,9999,100);
 	//addUIntSelector(0,4,0,4,__tr2qs_ctx("Maximum number of rows:","options"),KviOption_uintWindowListMaximumRows,1,16,2);

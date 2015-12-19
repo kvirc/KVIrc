@@ -135,11 +135,11 @@ OptionsWidget_userListBackground::OptionsWidget_userListBackground(QWidget * par
 
 	addPixmapSelector(0,1,1,1,__tr2qs_ctx("Background image:","options"),KviOption_pixmapUserListViewBackground);
 
-	addLabel(0,2,0,2,__tr2qs_ctx("Horizontal Alignment:","options"));
+	addLabel(0,2,0,2,__tr2qs_ctx("Horizontal alignment:","options"));
 	m_pHorizontalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pHorizontalAlign,1,2,1,2);
 
-	addLabel(0,3,0,3,__tr2qs_ctx("Vertical Alignment:","options"));
+	addLabel(0,3,0,3,__tr2qs_ctx("Vertical alignment:","options"));
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,3,1,3);
 

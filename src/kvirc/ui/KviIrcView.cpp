@@ -2084,7 +2084,7 @@ void KviIrcView::showToolsPopup()
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Toggle Search"),this,SLOT(toggleToolWidget()));
 
 		m_pToolsPopup->addSeparator();
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));  // We let fly "in" as a capitalized preposition.
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
 		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
 		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));

@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : libkvistr.cpp
+//   File : libkvimask.cpp
 //   Creation date : Thu Dec 27 2001 17:13:12 GMT by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -34,7 +34,7 @@
 	@title:
 		$mask.match
 	@short:
-		Matches a mask agains a wildcarded one
+		Matches a mask against a wildcarded one
 	@syntax:
 		<boolean> $mask.match(<wildcard_mask:string>,<fixed_mask:string>)
 	@description:
@@ -148,7 +148,7 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $mask.hasNumericHost(<mask: string>)
 	@description:
-		Returns 1 if the hostname part of the mask is numeric (e.g: unresolved IPv4 or IPv6 address).
+		Returns 1 if the hostname part of the mask is numeric (e.g. unresolved IPv4 or IPv6 address).
 */
 
 

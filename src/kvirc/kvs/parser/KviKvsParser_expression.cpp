@@ -441,7 +441,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 						}
 					}
 				} else {
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (unicode %h) in expression. If it meant to be a string use the quotes.","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (Unicode %h) in expression. If it meant to be a string use the quotes.","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 					delete pDataList;
 					return 0;
 				}

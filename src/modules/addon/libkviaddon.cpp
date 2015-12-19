@@ -143,7 +143,7 @@ static bool addon_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*da);
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%cAddon id %Q, version %Q%c","addon"),KviControlCodes::Bold,&(a->name()),&(a->version()),KviControlCodes::Bold);
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%cAddon ID %Q, version %Q%c","addon"),KviControlCodes::Bold,&(a->name()),&(a->version()),KviControlCodes::Bold);
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Name: %Q","addon"),&(a->visibleName()));
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Description: %Q","addon"),&(a->description()));
 
@@ -197,7 +197,7 @@ static bool addon_kvs_cmd_uninstall(KviKvsModuleCommandCall * c)
 		KviKvsScriptAddonManager::instance()->unregisterAddon(szName,c->window(),!c->switches()->find('n',"no-callback"));
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -243,7 +243,7 @@ static bool addon_kvs_cmd_configure(KviKvsModuleCommandCall * c)
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -290,7 +290,7 @@ static bool addon_kvs_cmd_help(KviKvsModuleCommandCall * c)
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -336,7 +336,7 @@ static bool addon_kvs_cmd_setconfigurecallback(KviKvsModuleCallbackCommandCall *
 		a->setConfigureCallback(c->callback()->code());
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -383,7 +383,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		a->setHelpCallback(c->callback()->code());
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 	}
 
 	return true;
@@ -411,7 +411,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		!sw: -n | --no-uninstall
 			Performs no uninstallation of existing versions of the addon:
 			it simply replaces the registration entry with the new data.
-			Again, do NOT use this switch if not for debugging purposes
+			Again, do [b]not[/b] use this switch if not for debugging purposes
 			and on your own machine.
 		!sw: -q | --quiet
 			Makes the command run quietly
@@ -646,7 +646,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 	if(!a)
 	{
 		if(!bQuiet)
-			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" doesn't exist","addon").arg(szName));
 		return true;
 	}
 

@@ -85,7 +85,7 @@ RawEditorWidget::RawEditorWidget(QWidget * par)
 
 
 	m_pTreeWidget->setColumnCount(1);
-	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Raw Event","editor"));
+	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("RAW Event","editor"));
 
 //	m_pTreeWidget->setMultiSelection(false);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -97,12 +97,12 @@ RawEditorWidget::RawEditorWidget(QWidget * par)
 
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 
-	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All To...","editor"),boxi);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All to...","editor"),boxi);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
 	KviTalVBox * box = new KviTalVBox(spl);
 	m_pNameEditor = new QLineEdit(box);
-	m_pNameEditor->setToolTip(__tr2qs_ctx("Edit the raw event handler name.","editor"));
+	m_pNameEditor->setToolTip(__tr2qs_ctx("Edit the RAW event handler name.","editor"));
 	m_pEditor = KviScriptEditor::createInstance(box);
 
 	m_bOneTimeSetupDone = false;
@@ -165,7 +165,7 @@ void RawEditorWidget::customContextMenuRequested(const QPoint &pos)
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-					__tr2qs_ctx("&Export Handler To...","editor"),
+					__tr2qs_ctx("&Export Handler to...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
 			m_pContextPopup->addAction(
@@ -178,7 +178,7 @@ void RawEditorWidget::customContextMenuRequested(const QPoint &pos)
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::RawEvent)),
-			__tr2qs_ctx("&Add Raw Event...","editor"),
+			__tr2qs_ctx("&Add RAW Event...","editor"),
 			this,SLOT(addRaw()));
         m_pContextPopup->popup(mapToGlobal(QPoint(pos.x()+15,pos.y())));
 }
@@ -218,7 +218,7 @@ void RawEditorWidget::addRaw()
 {
 	bool bOk = false;
 
-	int iIdx = QInputDialog::getInt(this,__tr2qs_ctx("New Raw Event","editor"),__tr2qs_ctx("Enter the numeric code of the message (0-999)","editor"),0,0,999,1,&bOk);
+	int iIdx = QInputDialog::getInt(this,__tr2qs_ctx("New RAW Event","editor"),__tr2qs_ctx("Enter the numeric code of the message (0-999)","editor"),0,0,999,1,&bOk);
 
 	if(!bOk)return;
 
@@ -363,7 +363,7 @@ void RawEditorWidget::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 		m_pNameEditor->setEnabled(false);
 		m_pNameEditor->setText("");
 		m_pEditor->setEnabled(false);
-		QString szTmp = QString(__tr2qs_ctx("\n\nRaw Event:\n%1","editor")).arg(((RawHandlerTreeWidgetItem *)it)->text(0));
+		QString szTmp = QString(__tr2qs_ctx("\n\nRAW Event:\n%1","editor")).arg(((RawHandlerTreeWidgetItem *)it)->text(0));
 		m_pEditor->setText(szTmp);
 	}
 }
@@ -423,7 +423,7 @@ void RawEditorWidget::exportCurrentHandler()
 
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the raw event file.","editor"),__tr2qs_ctx("&OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the RAW event file.","editor"),__tr2qs_ctx("&OK","editor"));
 	}
 }
 
@@ -458,7 +458,7 @@ void RawEditorWidget::exportAllEvents()
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the raw events file.","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the RAW events file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 
@@ -521,7 +521,7 @@ QPixmap * RawEditorWindow::myIconPtr()
 
 void RawEditorWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs_ctx("Raw Editor","editor");
+	m_szPlainTextCaption = __tr2qs_ctx("RAW Editor","editor");
 }
 
 void RawEditorWindow::getConfigGroupName(QString &szName)

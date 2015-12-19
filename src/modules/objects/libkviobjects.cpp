@@ -172,11 +172,11 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 			Suppresses any warning message
 		@description:
 			Removes the definition of the class <class_name>.[br]
-			All the instances of the class are killed (thus children objects are killed too).[br]
+			All the instances of the class are killed (thus child objects are killed too).[br]
 			All the derived class definitions are removed as well.[br]
 			Builtin class definitions cannot be removed and this commands
 			kills only all the instances of that class (derived class definitions
-			and instances in this case are NOT killed).[br]
+			and instances in this case are [b]not[/b] killed).[br]
 		@seealso:
 			[cmd]class[/cmd], [cmd]objects.clear[/cmd], [fnc]$classDefined[/fnc](),
 			[doc:objects]Objects documentation[/doc]
@@ -219,7 +219,7 @@ static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
 			If the -i switch is used, only the object instances are cleared
 			but the class definitions are left unchanged.[br]
 			This command should be used only for debugging & testing purposes
-			and in particular should be NEVER used from inside an object
+			and in particular should be [b]never[/b] used from inside an object
 			function handler (leads to SIGSEGV :).[br]
 		@seealso:
 			[cmd]class[/cmd], [cmd]objects.killclass[/cmd],
@@ -249,7 +249,7 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 			<target_object>'s slot <slot_name>.
 			When one of the two objects is destroyed, the signal/slot
 			connection is automatically removed.[br]
-			WARNING: This command name collides with the [doc:rfc2812]RFC2812[/doc]
+			WARNING: this command name collides with the [doc:rfc2812]RFC2812[/doc]
 			CONNECT IRC Op command: this IRC command is available to operators only
 			and is rather rarely used: you can use it by the means of [doc:raw]raw[/doc].
 		@seealso:
@@ -271,17 +271,17 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs_ctx("Inexistant target object for objects.connect","objects"));
+		c->warning(__tr2qs_ctx("non-existent target object for objects.connect","objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs_ctx("Inexistant source object for objects.connect","objects"));
+		c->warning(__tr2qs_ctx("non-existent source object for objects.connect","objects"));
 		return true;
 	}
 	if(!obSrc->connectSignal(szSignal,obTrg,szSlot))
 	{
-		c->warning(__tr2qs_ctx("Inexistant target slot '%Q' for objects.connect","objects"),&szSlot);
+		c->warning(__tr2qs_ctx("non-existent target slot '%Q' for objects.connect","objects"),&szSlot);
 		return true;
 	}
 	return true;
@@ -298,7 +298,7 @@ static bool objects_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 		@short:
 			Check if an object exists.
 		@syntax:
-			<boolean> $objects.exists(<obejct id:hobject>)
+			<boolean> $objects.exists(<object id:hobject>)
 		@description:
 			Check if an objects exists and return a boolean value.
 		@seealso:
@@ -332,7 +332,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 			of objects of the specified class. <flags> is a
 			string containing modifiers for the function behaviour.[br]
 			If <flags> contains the letter "s" then
-			only unsubclassed instances of the specified
+			only non-subclassed instances of the specified
 			class are returned. This means that if B is
 			a subclass of A then when asked for instances
 			of A without the flag "s" this function will return
@@ -366,7 +366,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	if(!pClass)
 	{
 		if(!szFlags.contains(QChar('q')))
-			c->warning(__tr2qs_ctx("The class '%Q' does not exist","objects"),&szClassName);
+			c->warning(__tr2qs_ctx("The class '%Q' doesn't exist","objects"),&szClassName);
 		return true;
 	}
 	KviPointerHashTable<void *,KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
@@ -423,7 +423,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 	KviKvsObject *ob=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 	if (!ob)
 	{
-		c->warning(__tr2qs_ctx("Object does not exist","objects"));
+		c->warning(__tr2qs_ctx("Object doesn't exist","objects"));
 		return true;
 	}
 	KviPointerHashTableIterator<QString,KviKvsVariant> it(* ob->dataContainer()->dict());
@@ -465,7 +465,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 	if(!pClass)
 	{
-		c->warning(__tr2qs_ctx("The class '%Q' does not exist","objects"),&szClassName);
+		c->warning(__tr2qs_ctx("The class '%Q' doesn't exist","objects"),&szClassName);
 		return true;
 	}
 
@@ -567,7 +567,7 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	obSrcClass = KviKvsKernel::instance()->objectController()->lookupObject(hClass);
 	if(!obSrcClass)
 	{
-		c->warning(__tr2qs_ctx("Inexistant class object for objects.name","objects"));
+		c->warning(__tr2qs_ctx("non-existent class object for objects.name","objects"));
 		return true;
 	}
 
@@ -610,12 +610,12 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs_ctx("Inexistant target object for objects.disconnect","objects"));
+		c->warning(__tr2qs_ctx("non-existent target object for objects.disconnect","objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs_ctx("Inexistant source object for objects.disconnect","objects"));
+		c->warning(__tr2qs_ctx("non-existent source object for objects.disconnect","objects"));
 		return true;
 	}
 	obSrc->disconnectSignal(szSignal,obTrg,szSlot);
@@ -629,15 +629,15 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	@type:
 		function
 	@title:
-			$objects.dump
+		$objects.dump
 	@keyterms:
 		dump objects
 	@short:
-		Dump the kvirc widgets.
+		Dump the KVIrc widgets.
 	@syntax:
 		<array> $objects.dump(<print:boolean>)
 	@description:
-		This function return an array containing a representation of the widgets tree in kvirc;[br]
+		This function return an array containing a representation of the widgets tree in KVIrc;[br]
 		If the <print> flag is enabled, the array will be printed in the current window, too.
 	@examples:
 		[example]

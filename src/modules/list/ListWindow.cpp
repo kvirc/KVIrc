@@ -200,21 +200,21 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pOpenButton->setObjectName("import_list");
 	m_pOpenButton->setIconSize(QSize(16,16));
 	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder))));
-	KviTalToolTip::add(m_pOpenButton,__tr2qs("Import List"));
+	KviTalToolTip::add(m_pOpenButton,__tr2qs("Import list"));
 	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));
 
 	m_pSaveButton = new QToolButton(pBox);
 	m_pSaveButton->setObjectName("export_list");
 	m_pSaveButton->setIconSize(QSize(16,16));
 	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy))));
-	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export List"));
+	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export list"));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
 	m_pRequestButton = new QToolButton(pBox);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
 	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Update))));
-	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
+	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request list"));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 
 	m_pStopListDownloadButton = new QToolButton(pBox);
@@ -325,7 +325,7 @@ void ListWindow::connectionStateChange()
 			m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
-		m_pInfoLabel->setText(__tr2qs("List cannot be requested: not connected to a server"));
+		m_pInfoLabel->setText(__tr2qs("List can't be requested: not connected to a server"));
 	}
 }
 
@@ -360,7 +360,7 @@ void ListWindow::exportList()
 {
 	if(!m_pTreeWidget->topLevelItemCount())
 	{
-		KviMessageBox::warning(__tr2qs("You cannot export an empty list"));
+		KviMessageBox::warning(__tr2qs("You can't export an empty list"));
 		return;
 	}
 

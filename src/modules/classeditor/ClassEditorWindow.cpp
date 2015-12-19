@@ -926,7 +926,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-		__tr2qs_ctx("Export Selected in Singles Files...","editor"),
+		__tr2qs_ctx("Export Selected in Single Files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
     pAction->setEnabled(bHasSelected);
@@ -1374,7 +1374,7 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 		{
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the namespace \"%1\"?","editor")).arg(szName);
 			szMsg += "<br>";
-			szMsg += __tr2qs_ctx("Please note that all the children classes/functions will be deleted too.","editor");
+			szMsg += __tr2qs_ctx("Please note that all the child classes/functions will be deleted too.","editor");
 		} else if(pItem->isMethod())
 		{
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the function \"%1\"?","editor")).arg(szName);

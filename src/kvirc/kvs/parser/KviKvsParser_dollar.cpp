@@ -42,7 +42,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 	if(!KVSP_curCharIsFunctionStart)
 	{
 		if(KVSP_curCharUnicode == 0)warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script after '$' function call prefix","kvs"));
-		else warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (unicode %x) after '$' function call prefix","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		else warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (Unicode %x) after '$' function call prefix","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error after '$' function call prefix. If you want to use a plain '$' in the code you need to escape it","kvs"));
 		return 0;
 	}

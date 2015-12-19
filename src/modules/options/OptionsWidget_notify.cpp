@@ -77,19 +77,19 @@ OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
 		SLOT(setEnabled(bool)));
 	connect(b,
 		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Check interval (in seconds)","options"),
+		addUIntSelector(g,__tr2qs_ctx("Check interval (in seconds):","options"),
 				KviOption_uintNotifyListCheckTimeInSecs,
 				5,3600,180,KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),
 		SLOT(setEnabled(bool)));
 	connect(b,
 		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("ISON delay (in seconds)","options"),
+		addUIntSelector(g,__tr2qs_ctx("ISON delay (in seconds):","options"),
 				KviOption_uintNotifyListIsOnDelayTimeInSecs,
 				5,180,6,KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),
 		SLOT(setEnabled(bool)));
 	connect(b,
 		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("USERHOST delay (in seconds)","options"),
+		addUIntSelector(g,__tr2qs_ctx("USERHOST delay (in seconds):","options"),
 				KviOption_uintNotifyListUserhostDelayTimeInSecs,
 				5,180,6,KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),
 		SLOT(setEnabled(bool)));

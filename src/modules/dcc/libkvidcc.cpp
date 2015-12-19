@@ -2718,11 +2718,11 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.getSSLCertInfo
 	@short:
-		Returns the requested information about certificates used in an ssl-enabled DCC session
+		Returns the requested information about certificates used in an SSL enabled DCC session
 	@syntax:
 		$dcc.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<dcc_id:integer>[,<param1:string>]]])
 	@description:
-		Returns the requested information about certificates used in an ssl-enabled DCC session.[br]
+		Returns the requested information about certificates used in an SSL enabled DCC session.[br]
 		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
 		to query the information from; if omitted, it defaults to "remote".[br]
 		If <dcc_id> is omitted then the DCC Session associated with the current window is assumed.[br]
@@ -2756,16 +2756,16 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[li]fingerprintDigestStr[/li]
 		[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
 		[/ul]
-		@examples:
-			[example]
-				# get a sha256 fingerprint of remote peer's certificate
-				$dcc.getSSLCertInfo(fingerprintContents,remote,$dcc.session,sha256)
-			[/example]
-		@seealso:
-			[fnc]$certificate[/fnc]
-			[fnc]$str.evpSign[/fnc]
-			[fnc]$str.evpVerify[/fnc]
-			[module:dcc]dcc module[/module]
+	@examples:
+		[example]
+			[comment]# get a sha256 fingerprint of remote peer's certificate[/comment]
+			$dcc.getSSLCertInfo(fingerprintContents,remote,$dcc.session,sha256)
+		[/example]
+	@seealso:
+		[fnc]$certificate[/fnc]
+		[fnc]$str.evpSign[/fnc]
+		[fnc]$str.evpVerify[/fnc]
+		[module:dcc]dcc module[/module]
 */
 
 static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
@@ -2979,7 +2979,7 @@ KVIRC_MODULE(
 	"DCC",
 	"4.0.0",
 	"Copyright (C) 2000-2004:\n" \
-	"  Szymon Stefanek (pragma at kvirc dot net)\n",
+	"Szymon Stefanek (pragma at kvirc dot net)\n",
 	"DCC extension for KVIrc\n",
 	dcc_module_init,
 	dcc_module_can_unload,

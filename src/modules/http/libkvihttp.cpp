@@ -236,7 +236,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		The 'h' flag causes the window to not be created. The transfer will simply run in background.
 		Note that with 'h' the user has no possibility to interact with the transfer.
 		The 'm' flag causes the transfer window to be created as "minimized". 'm' does nothing
-		if the window already exists. The 'n' flag causes the window to be NOT activated (brought to top).
+		if the window already exists. The 'n' flag causes the window to be [b]not[/b] activated (brought to top).
 
 		!sw: -i=<magic identifier> | --identifier=<magic identifier>
 		This identifier is passed as $3 parameter to the [event:OnHTTPGetTerminated]OnHTTPGetTerminated[/event]

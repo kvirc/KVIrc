@@ -191,7 +191,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 void OptionsWidget_textIcons::chooseFromFile()
 {
 	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Choose icon filename","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
+	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Choose Icon Filename","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
 	if(!szFile.isEmpty())
 	{
 		if(g_pIconManager->getPixmap(szFile))
@@ -209,7 +209,7 @@ void OptionsWidget_textIcons::chooseFromFile()
 				KviFileUtils::makeDir(szCurrentThemePath);
 			KviFileUtils::copyFile(szFile,szCurrentThemePath+szFileName);
 			m_pCurrentItem->icon()->setFilename(szFileName);
-			qDebug("set Icon");
+			qDebug("Set icon");
 			QPixmap *p=m_pCurrentItem->icon()->pixmap();
 			m_pCurrentItem->setIcon(QIcon(*p));
 			if(m_pCurrentIconButton)

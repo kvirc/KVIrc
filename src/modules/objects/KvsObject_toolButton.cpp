@@ -45,7 +45,7 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		The toolbutton class provides a quick-access button to commands or options, usually used inside a ToolBar.
+		The toolbutton class provides a quick-access button to commands or options, usually used inside a toolBar.
 	@functions:
 		!fn:$setImage(<icon_id:string>)
 		Sets the image for this button.
@@ -58,9 +58,9 @@
 		!fn:$usesTextLabel()
 		Return 1 if the setUsesTextLabel is enabled, otherwise return 0.
 		!fn:$setTextLabel(<text:String>,[tooltip:string])
-		Sets the label of this button to <text> and automatically sets it as a tool tip if <tip> is true.
+		Sets the label of this button to <text> and automatically sets it as a tooltip if <tip> is true.
 		!fn:<string> $textLabel()
-		Returns the label of tthe button.
+		Returns the label of the button.
 		!fn:$setAutoRaise(<bAutoraise:boolean>)
 		Sets whether auto-raising is enabled.
 		!fn:<boolean> $autoRaise()

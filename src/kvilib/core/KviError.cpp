@@ -96,7 +96,7 @@ const char * g_errorTable[KviError::ErrorCount]=
 	__tr_no_lookup("Broken pipe"),                                              // 046
 	__tr_no_lookup("Invalid proxy address"),                                    // 047
 	__tr_no_lookup("Remote end has closed the connection"),                     // 048
-	__tr_no_lookup("Invalid IRC context id"),                                   // 049
+	__tr_no_lookup("Invalid IRC context ID"),                                   // 049
 	__tr_no_lookup("Error loading module"),                                     // 050
 	__tr_no_lookup("No such module command"),                                   // 051
 	__tr_no_lookup("No such module function"),                                  // 052

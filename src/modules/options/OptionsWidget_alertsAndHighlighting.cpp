@@ -74,7 +74,7 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 	m_pHighlightAllOccurencesRadioButton = new QRadioButton(__tr2qs_ctx("Highlight every occurrence of a word inside text","options"),gbox);
 	g->addWidget(m_pHighlightAllOccurencesRadioButton,0,0,1,2);
 	m_pHighlightAllOccurencesRadioButton->setChecked(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting));
-	KviTalToolTip::add(m_pHighlightAllOccurencesRadioButton,__tr2qs_ctx("<center>This selection will cause KVIrc to search for the highlighted words or nicknames inside the whole text. This will also highlight parts of words (eg. if your nickname is Mark then Markus will be highlighted too).</center>","options"));
+	KviTalToolTip::add(m_pHighlightAllOccurencesRadioButton,__tr2qs_ctx("<center>This selection will cause KVIrc to search for the highlighted words or nicknames inside the whole text. This will also highlight parts of words (e.g. if your nickname is Mark then Markus will be highlighted too).</center>","options"));
 
 	m_pHighlightWholeWordsOnlyRadioButton = new QRadioButton(__tr2qs_ctx("Highlight only whole words splitting on space and on:","options"),gbox);
 	g->addWidget(m_pHighlightWholeWordsOnlyRadioButton,1,0,1,1);

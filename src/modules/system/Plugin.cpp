@@ -45,7 +45,8 @@
 		Small plugins which can be called in scripts
 	@body:
 		If you want to know how to call easyplugins please have a look at: $system.call()[br]
-		This part of the documentation handles only the way how to write an easyplugin. An easyplugin is simply a dll/so. You can create one like you normally make such so/dll files. The important thing is that these so/dll-files export some of the following functions.
+		This part of the documentation handles only the way how to write an easyplugin. An easyplugin is simply a dll/so. You can create one like you normally make such so/dll files.[br]
+		The important thing is that these so/dll-files export some of the following functions.
 		[br][br]
 		[b]Exported functions by easyplugin (C/C++-Examples):[/b][br]
 		[br][b]_free function[/b] [i] (needed)[/i][br]
@@ -91,7 +92,8 @@
 
 		[br][b]user function[/b][br]
 		This is the general structure of a user function call.[br]
-		The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer. Have a look at the example for more details.[br]
+		The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer.[br]
+		Have a look at the example for more details.[br]
 		[example]
 		int about(int argc, char * argv[], char ** pBuffer)[br]
 		{[br]
@@ -302,7 +304,7 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 
 	if(r == -1)
 	{
-		c->error(__tr2qs("This plugin does not export the desired function."));
+		c->error(__tr2qs("This plugin doesn't export the desired function."));
 		return true;
 	}
 	if (r > 0)
@@ -318,7 +320,7 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	{
 		if (!plugin->pfree(returnBuffer))
 		{
-			c->warning(__tr2qs("The plugin has no function to free memory. This can result in Memory Leaks!"));
+			c->warning(__tr2qs("The plugin has no function to free memory. This can result in memory leaks!"));
 		}
 	}
 

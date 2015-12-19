@@ -107,8 +107,7 @@ const char * const webattributes_tbl[] = {
 	"PluginsEnabled",
 	"JavascriptCanOpenWindows",
 	"JavascriptCanAccessClipboard",
-	"ZoomTextOnly"
-	,
+	"ZoomTextOnly",
 	"LocalContentCanAccessFileUrls"
 };
 
@@ -189,7 +188,7 @@ const char * const actions_tbl[] = {
 		Provides an embedded web browser using webkit. Page structure can be managed by web element's unique identifiers.
 	@functions:
 		!fn: $load(<url:string>)
-		Sets the current url for the webView and starts loading it
+		Sets the current URL for the webView and starts loading it
 		!fn: $setHtml(<html_code:string>,[<baseurl:string>])
 		Sets the content of the web view to the specified <html_code>.
 		External objects such as stylesheets or images referenced in the HTML document are located relative to <baseurl>.
@@ -207,7 +206,7 @@ const char * const actions_tbl[] = {
 		Returns an array containing the names of the document frames.
 		!fn: appendWebViewActionToMenu(<menu:h_object>,<webview_action:string>,[<icon_identifier>])
 		!fn: <id:integer> $firstChild(<element_id:integer>)
-		Return the identifier of element's first childr.
+		Return the identifier of element's first child.
 		!fn: <array> $findAll(<element_id:integer>,<query:string>)
 		Searches for all the elements named <query> and stores them in an array of element's identifiers.
 		!fn: <id:integer> $findFirst(<element_id:integer>,<query:string>)
@@ -235,11 +234,11 @@ const char * const actions_tbl[] = {
 		Possible value for <style_resolve_strategy> are:
 		[pre]
 		CascadedStyle  - the property's value is determined using the rules defined in the document's stylesheet. This is the default strategy.
-		InlineStyle    - the property's value is determined by element definetion, without respecting CSS rules.
+		InlineStyle    - the property's value is determined by element definition, without respecting CSS rules.
 		ComputedStyle  - the property's value is determined by the style property resolved from the environment.
 		[/pre]
 		!fn: pixmap $makePreview()
-		Returns a 212x142 thumbnail of the current webView contants.
+		Returns a 212x142 thumbnail of the current webView constants.
 		The returned object is an instance of the pixmap class.
 		!fn: string $toPlainText(<element_id>)
 		Returns the string representation of element <element_id>.
@@ -263,7 +262,7 @@ const char * const actions_tbl[] = {
 		[br] DelegateAllLinks: Whenever a link is activated the $linkClickedEvent() is executed.
 		!fn: $linkClickedEvent()
 		This function can be called when the user clicks on a link, depending no the current link delegation policy.
-		The argument of the function is the url that has been clicked.[br]
+		The argument of the function is the URL that has been clicked.[br]
 		The default implementation emits the [classfnc:webview]$linkClicked[/classfnc]() signal.
 		!fn: $loadStartedEvent()
 		This function is called when the load of the page has started.
@@ -278,36 +277,30 @@ const char * const actions_tbl[] = {
 		The default implementation emits the [classfnc:webview]$loadFinished[/classfnc]() signal.
 		!fn: $downloadRequestEvent()
 		This function is called when the user tries to download a file.
-		The argument of the function is the url of the file.[br]
+		The argument of the function is the URL of the file.[br]
 		You should return a valid path in the filesystem where to save the file.[br]
 		The default implementation emits the [classfnc:webview]$downloadRequest[/classfnc]() signal.
 		!fn: $downloadProgressEvent()
 		This function can be called during the download of a file.
-		Three integer arguments are passed to this function: the number of downloaded bytes, the download id, the size of the remove file (if known).
+		Three integer arguments are passed to this function: the number of downloaded bytes, the download ID, the size of the remove file (if known).
 		The default implementation emits the [classfnc:webview]$downloadProgress[/classfnc]() signal.
 		!fn: $downloadCompletedEvent()
 		This function can be called when a file download finishes.
-		The argument of the function is the an integer value containing the download id.
+		The argument of the function is the an integer value containing the download ID.
 		The default implementation emits the [classfnc:webview]$downloadCompleted[/classfnc]() signal.
 	@signals:
 		!sg: linkClicked()
 		This signal is emitted by the default implementation of [classfnc:webview]linkClickedEvent[/classfnc]().
-
 		!sg: loadStarted()
 		This signal is emitted by the default implementation of [classfnc:webview]loadStartedEvent[/classfnc]().
-
 		!sg: loadProgress()
 		This signal is emitted by the default implementation of [classfnc:webview]loadProgressEvent[/classfnc]().
-
 		!sg: loadFinished()
 		This signal is emitted by the default implementation of [classfnc:webview]loadFinishedEvent[/classfnc]().
-
 		!sg: downloadRequest()
 		This signal is emitted by the default implementation of [classfnc:webview]downloadRequestEvent[/classfnc]().
-
 		!sg: downloadProgress()
 		This signal is emitted by the default implementation of [classfnc:webview]downloadProgressEvent[/classfnc]().
-
 		!sg: downloadCompleted()
 		This signal is emitted by the default implementation of [classfnc:webview]downloadCompletedEvent[/classfnc]().
 */
@@ -541,7 +534,7 @@ KVSO_CLASS_FUNCTION(webView,findAll)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	QWebElementCollection elementCollection=element.findAll(szQuery);
@@ -596,7 +589,7 @@ KVSO_CLASS_FUNCTION(webView,findFirst)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	QWebElement tempElement=element.findFirst(szQuery);
@@ -619,7 +612,7 @@ KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.removeFromDocument();
@@ -634,7 +627,7 @@ KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.removeFromDocument();
@@ -654,7 +647,7 @@ KVSO_CLASS_FUNCTION(webView,appendInside)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.appendInside(szCode);
@@ -672,7 +665,7 @@ KVSO_CLASS_FUNCTION(webView,appendOutside)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.appendOutside(szCode);
@@ -688,7 +681,7 @@ KVSO_CLASS_FUNCTION(webView,nextSibling)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	QWebElement tempElement=element.nextSibling();
@@ -725,7 +718,7 @@ KVSO_CLASS_FUNCTION(webView,elementTagName)
 	if (element.isNull())
 	{
 	//	qDebug("isnull ad index %i",iEleId);
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	c->returnValue()->setString(element.tagName());
@@ -745,7 +738,7 @@ KVSO_CLASS_FUNCTION(webView,setElementAttribute)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.setAttribute(szName,szValue);
@@ -764,7 +757,7 @@ KVSO_CLASS_FUNCTION(webView,removeClass)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.removeClass(szClassName);
@@ -782,7 +775,7 @@ KVSO_CLASS_FUNCTION(webView,addClass)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.addClass(szClassName);
@@ -856,7 +849,7 @@ KVSO_CLASS_FUNCTION(webView,elementAttribute)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 
@@ -882,7 +875,7 @@ KVSO_CLASS_FUNCTION(webView,elementAttributeNames)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	szAttributeNames=element.attributeNames().join(",");
@@ -899,7 +892,7 @@ KVSO_CLASS_FUNCTION(webView,classes)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	QString szClasses;
@@ -918,7 +911,7 @@ KVSO_CLASS_FUNCTION(webView,toPlainText)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	c->returnValue()->setString(element.toPlainText());
@@ -936,7 +929,7 @@ KVSO_CLASS_FUNCTION(webView,setPlainText)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.setPlainText(szText);
@@ -954,7 +947,7 @@ KVSO_CLASS_FUNCTION(webView,firstChild)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 
@@ -978,7 +971,7 @@ KVSO_CLASS_FUNCTION(webView,lastChild)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 
@@ -1002,7 +995,7 @@ KVSO_CLASS_FUNCTION(webView,parentElement)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 
@@ -1031,7 +1024,7 @@ KVSO_CLASS_FUNCTION(webView,styleProperty)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	QWebElement::StyleResolveStrategy styleStrategy=QWebElement::CascadedStyle;
@@ -1061,7 +1054,7 @@ KVSO_CLASS_FUNCTION(webView,setStyleProperty)
 	QWebElement element=getElement(iEleId);
 	if (element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with id %d does not exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
 		return true;
 	}
 	element.setStyleProperty(szProperty,szValue);

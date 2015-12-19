@@ -47,20 +47,22 @@
 		!WARNING AT LAST YOU HAVE TO CLOSE THE PROCESS!
 	@functions:
 		!fn: $addArgument(<process-name:string>)
-		With this command you give the process name (or more arguments) for comunication.
-		Es: see the next example.
+		With this command you give the process name (or more arguments) for communication.
+		See the next example.
 		!fn: $startProcess()
 		Tries to run the process.[br]
-		Es: [br]
+		[b]e.g.[/b]
+		[example]
 		%process=$new(process);[br]
 		%process->$addArg("cmd.exe");[br]
 		%process->$start();[br]
+		[/example]
 		!fn: <string> $readStdout()
 		Reads the data that the process has written to standard output.
 		!fn: <string> $readStderr()
 		Reads the data that the process has written to standard error.
-		Es:[br]
-		-------------------Start:[br]
+		[b]e.g.[/b]
+		[example]
 		class (test,object)[br]
 		{[br]
 			slotReadStdout()[br]
@@ -82,7 +84,7 @@
 		%A->$setGeometry(100,100,400,300)[br]
 		%layoutA=$new(layout,%A)[br]
 		%Ainput=$new(lineedit,%A)[br]
-		#%Aoutput=$new(textedit,%A)// coming soon in the new texteditor class[br]
+		#%Aoutput=$new(textedit,%A) [comment]//coming soon in the new texteditor class[/commnet][br]
 		%Aoutput=$new(label,%A)[br]
 		%bclosekill=$new(button,%A)[br]
 		%bclosekill->$settext("&CloseKill ")[br]
@@ -125,32 +127,33 @@
 			delete %A;[br]
 		}[br]
 		%A->$show();[br]
-		--------------------End.[br]
+		[/example]
 		!fn: $writeToStdin(<command:string>)
-		Whit this command you send a command to the process:
+		With this command you send a command to the process:
 		!fn: $closekill()
 		This tries to terminate the process the nice way.[br]
 		If the process is still running after 5 seconds, it terminates the process the hard way.[br]
 		(I think that this is the better way.)[br]
-		Es:
+		[b]e.g.[/b]
+		[pre]
 		%Process->close_kill();
+		[/pre]
 		!fn: $kill()
-		Kill the process in hard way.(Bad Idea)
+		Kill the process the hard way (Bad Idea).
 		!fn: $tryTerminate()
-		Tries to terminate the process.(It could be well but...)
+		Tries to terminate the process (It could end well, but...).
 		!fn: $closeStdin()
-		Close the standard Input.
+		Close the standard input.
 		!fn: <boolean> $isRunning()
 		Return 1 if the process is running, else return 0.
 		!fn: <boolean> $normalExit()
 		Returns true if the process has exited normally; otherwise returns false.
 		!fn: $readyReadStdoutEvent()
-		This function is invoched by the process when there are new datas.[br]
+		This function is invoked by the process when there is new data.[br]
 		The default implementation emits the [classfnc]$readyReadStdout[/classfnc]() signal.
 		!fn: $readyReadStderrEvent()
-		This function is invoched by the process when there are new error messages.[br]
+		This function is invoked by the process when there are new error messages.[br]
 		The default implementation emits the [classfnc]$readyReadStderr[/classfnc]() signal.
-
 	@signals:
 		!sg: $readyReadStdout()
 		This signal is emitted by the default implementation of [classfnc]$readyReadStdoutEvent[/classfnc]().[br]

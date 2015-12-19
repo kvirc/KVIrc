@@ -193,22 +193,22 @@ const char * const widgettypes_tbl[] = {
 		All the other widget-type classes inherit from this one.
 	@functions:
 		!fn: $show()
-		Shows this widget and the children.
+		Shows this widget and the child items.
 		See also [classfnc]$hide[/classfnc]() and [classfnc]$isVisible[/classfnc].
 		!fn: $hide()
-		Hides this widget (and conseguently all the children).
+		Hides this widget (and conseguently all the child items).
 		See also [classfnc]$show[/classfnc]() and [classfnc]$isVisible[/classfnc].
 		!fn: $repaint()
 		Repaints the widget directly by calling [classfnc]$paintEvent[/classfnc]() immediately.
 		!fn: $update([<x:ingeter>,<y:integer>,<width:integer>,<height:integer>])
-		Updates enterily the widget or a rectangle.
+		Updates entirely the widget or a rectangle.
 		This function does not cause an immediate [classfnc]$paintEvent[/classfnc](); instead it schedules a paint event for processing when KVIrc returns to the main event loop.
 		!fn: $x()
 		Returns the x coordinate of the upper-left corner
 		of this widget relative to the parent widget,
 		or to the desktop if this widget is a toplevel one.
 		!fn: $y()
-		Returns the y coordinate of the uspper-left corner
+		Returns the y coordinate of the upper-left corner
 		of this widget relative to the parent widget,
 		or to the desktop if this widget is a toplevel one.
 		!fn: $width()
@@ -218,7 +218,7 @@ const char * const widgettypes_tbl[] = {
 		!fn: $geometry()
 		Returns the widget geometry in this form:[br]
 		x, y, width, height.
-		!fn: $setGeometry(<x_or_array>,[<y>,<width>,<heigth>])
+		!fn: $setGeometry(<x_or_array>,[<y>,<width>,<height>])
 		Sets the geometry of this widget. <x> and <y> are relative
 		to the parent widget or to the desktop (if this widget is
 		a toplevel one). All the parameters are in pixels.
@@ -281,17 +281,17 @@ const char * const widgettypes_tbl[] = {
 		Sets this widget to be the one that receives keyboard events.
 		See also [classfnc]$hasFocus[/classfnc]
 		!fn: $parentWidget()
-		Returns the object id of the parent widget, or '0' if this
+		Returns the object ID of the parent widget, or '0' if this
 		widget is a toplevel one.
 		!fn: $backgroundColor()
 		Returns the background color of this widget in hexadecimal
-		html-like format. For example, for a black bacground you will get
+		HTML-like format. For example, for a black background you will get
 		the string "000000", for a red one, "FF0000", for a white one
 		"FFFFFF". See also [classfnc]$setBackgroundColor[/classfnc]()
-		!fn: $setBackgroundColor(<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red>,[geen:integer],[blue:integer])
+		!fn: $setBackgroundColor(<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red>,[green:integer],[blue:integer])
 		Sets the background color of this widget to <rgb_value>:valid values are:
 		- hex string: must be a string with 6 hexadecimal digits (like the ones used to
-		specify colors in html pages). The first two digits specify
+		specify colors in HTML pages). The first two digits specify
 		the RED component, the third and fourth digit specify the GREEN component
 		and the last two specify the BLUE component.
 		For example "FFFF00" means full red, full green and no blue that gives
@@ -300,10 +300,10 @@ const char * const widgettypes_tbl[] = {
 		- array(red:integer,green:integer,blue:integer)
 		- red:integer,green:integer,blue:integer.
 		See also [classfnc]$foregroundColor[/classfnc].
-		!fn: $setForegroundColor(<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red>,[geen:integer],[blue:integer])
+		!fn: $setForegroundColor(<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red>,[green:integer],[blue:integer])
 		Sets the foreground color of this widget to <rgb_value>:valid values are:
 		- hex string: must be a string with 6 hexadecimal digits (like the ones used to
-		specify colors in html pages). The first two digits specify
+		specify colors in HTML pages). The first two digits specify
 		the RED component, the third and fourth digit specify the GREEN component
 		and the last two specify the BLUE component.
 		For example "FFFF00" means full red, full green and no blue that gives
@@ -314,7 +314,7 @@ const char * const widgettypes_tbl[] = {
 		See also [classfnc]$foregroundColor[/classfnc].
 		!fn: $foregroundColor()
 		Returns the foreground color of this widget in hexadecimal
-		html-like format.
+		HTML-like format.
 		See also [classfnc]$setForegroundColor[/classfnc].
 		!fn: $setMouseTracking(<bool>)
 		Enables or disables the mouse tracking if <bool> is '1' or '0' respectively.
@@ -399,11 +399,11 @@ const char * const widgettypes_tbl[] = {
 		Sets the parent of the widget to parent
 		!fn: $setWindowIcon(<image_id>)
 		Sets the icon for this widget. This is meaningful only for toplevel widgets.
-		See the [doc:image_id]image identifier[/doc] documentation for the explaination
+		See the [doc:image_id]image identifier[/doc] documentation for the explanation
 		of the <image_id> parameter.
 		!fn: $setBackgroundImage(<image_id>)
 		Sets the background image for this widget.
-		See the [doc:image_id]image identifier[/doc] documentation for the explaination
+		See the [doc:image_id]image identifier[/doc] documentation for the explanation
 		of the <image_id> parameter.
 		For some kind of widgets, setting a background pixmap may have no effect or
 		have strange results. Experiment with it.
@@ -474,8 +474,6 @@ const char * const widgettypes_tbl[] = {
 		- = [br]
 		- . [br]
 		- ^ [br]
-
-
 		[/pre]
 		!fn: $mapFromGlobal(<x>,<y>)
 		Translates the global screen coordinate pos to widget coordinates.
@@ -486,11 +484,10 @@ const char * const widgettypes_tbl[] = {
 	   	!fn: integer $globalCursorY()
 		Return the y coordinate of the mo>use pointer global position.
 		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)
-		This event handler is called when a eventualy tip is going to be show.
+		This event handler is called when an eventual tip is going to be show.
 		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
 		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
 		The default implementation does nothing.
-
 		!fn: integer $setAttribute(<string>,<bool_flag>)
 		Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.
 		Valid attributes are:
@@ -573,7 +570,6 @@ const char * const widgettypes_tbl[] = {
 
 			%widget->$show()
 		[/example]
-
 */
 
 
@@ -594,7 +590,7 @@ const char * const widgettypes_tbl[] = {
 // ... now that I think about it, it
 // may happen that widget() will be zero here too:
 // If the Qt "physical" widget gets destroyed
-// by some external factor (for example when children
+// by some external factor (for example when child
 // of a wrapper widget destroyed by KVIrc).
 //
 // as a convention:

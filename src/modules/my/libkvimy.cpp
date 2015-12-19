@@ -162,8 +162,8 @@ static bool my_kvs_fnc_globalIdle(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $my.umode([irc_context_id:uint])
 	@description:
-		Returns the user mode flags of the current irc context.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns the user mode flags of the current IRC context.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
@@ -190,8 +190,8 @@ static bool my_kvs_fnc_umode(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $my.user([irc_context_id:uint])
 	@description:
-		Returns the username of the current irc context.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns the username of the current IRC context.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
@@ -218,8 +218,8 @@ static bool my_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $my.host([irc_context_id:uint])
 	@description:
-		Returns the hostname of the current irc context as known by the IRC server.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns the hostname of the current IRC context as known by the IRC server.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
@@ -243,15 +243,15 @@ static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 	@title:
 		$my.ip
 	@short:
-		Returns the current ip address
+		Returns the current IP address
 	@syntax:
 		<string> $my.ip([irc_context_id:uint])
 	@description:
-		Returns the ip address of the current irc context as known by the IRC server.[br]
-		The ip address is resolved as soon as the hostname is received from the server.
+		Returns the IP address of the current IRC context as known by the IRC server.[br]
+		The IP address is resolved as soon as the hostname is received from the server.
 		If the hostname is masked or there is an error in the DNS lookup then
-		you may get the real local host ip address as determined at connection startup.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		you may get the real local host IP address as determined at connection startup.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
@@ -275,12 +275,12 @@ static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 	@title:
 		$my.serverIsIPV6
 	@short:
-		Returns 1 if the current server connection use IPV6.
+		Returns 1 if the current server connection use IPv6.
 	@syntax:
 		<boolean> $my.serverIsIPV6([irc_context_id:uint])
 	@description:
-		Returns 1 if the server connection use IPV6.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns 1 if the server connection use IPv6.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
@@ -310,7 +310,7 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 		<boolean> $my.serverIsSSL([irc_context_id:uint])
 	@description:
 		Returns 1 if the server connection uses SSL.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
@@ -338,15 +338,15 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $my.server([irc_context_id:uint])
 	@description:
-		Returns the server name of the current irc context.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns the server name of the current IRC context.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 		Please note that this function returns the name of the server as reported
 		by the server itself. Some servers report a bogus value for this field.
 		You should take a look at [fnc]$context.serverIpAddress[/fnc] if you want a value that
 		can be used to really reconnect to this server. If you want a value
-		to manipulate the server entry via the serverdb functions then
+		to manipulate the server entry via the serverDB functions then
 		you probably need [fnc]$context.serverdbServerHostName[/fnc].
 */
 
@@ -372,8 +372,8 @@ static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $my.network([irc_context_id:uint])
 	@description:
-		Returns the network name of the current irc context.[br]
-		If the irc context is not connected then an empty string is returned.[br]
+		Returns the network name of the current IRC context.[br]
+		If the IRC context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */

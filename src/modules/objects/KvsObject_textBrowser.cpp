@@ -42,11 +42,11 @@
 	@type:
 		class
 	@short:
-		Provides a class that can display html pages.
+		Provides a class that can display HTML pages.
 	@inherits:
 		[class]widget[/class]
 	@description:
-		Provides a class that can display html pages with hypertext navigation.
+		Provides a class that can display HTML pages with hypertext navigation.
 	@functions:
 		!fn: $setSource(<file_name:string>)
 		With this you can display the page at szFile location (szFile include the path).

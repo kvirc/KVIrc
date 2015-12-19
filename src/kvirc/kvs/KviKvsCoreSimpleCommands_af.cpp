@@ -847,7 +847,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Schedules for destruction the object designed by <objectHandle>.
 			This command is internally aliased to [cmd]destroy[/cmd].
-			Please note that the object is NOT immediately destroyed:
+			Please note that the object is [b]not[/b] immediately destroyed:
 			it will be destroyed when KVIrc returns to the main event loop,
 			so after the current script code part has been executed.
 			This behaviour makes the object destruction safe in any

@@ -55,7 +55,7 @@ KviModule * g_pTermModule = 0;
 		creates terminal as a docked window
 	@description:
 		Opens a new terminal window (If the service is available).
-		if the -m switch is present, the created terminal as a dockable kvirc window,
+		if the -m switch is present, the created terminal as a dockable KVIrc window,
 		otherwise it is a static window.[br]
 		This command is exported by the "term" module.[br]
 		Note: At the time that this module was written, the

@@ -57,7 +57,7 @@
 		See also [classfnc]$setText[/classfnc]().
 		!fn: $setImage(<image_id_or_pixmap_object>)
 		Sets the icon for this button.
-		See the [doc:image_id]image identifier[/doc] documentation for the explaination	of the <image_id> parameter.
+		See the [doc:image_id]image identifier[/doc] documentation for the explanation	of the <image_id> parameter.
 		!fn: $clickEvent()
 		Called by KVIrc when the mouse button is clicked.
 		The default implementation emits the [classfnc]$clicked[/classfnc]()signal.
@@ -138,7 +138,7 @@ KVSO_CLASS_FUNCTION(button,setImage)
 		if(pObject->inheritsClass("pixmap"))
 			((QPushButton *)widget())->setIcon(QIcon(*((KvsObject_pixmap *)pObject)->getPixmap()));
 		else
-			c->warning(__tr2qs_ctx("Object Pixmap required!","object"));
+			c->warning(__tr2qs_ctx("Object pixmap required!","object"));
 		return true;
 	}
 	QString szIcon;

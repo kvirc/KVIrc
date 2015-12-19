@@ -58,7 +58,7 @@
 		respond to within the interval of time defined in the second field.[br]
 		A strong protection against floods would be replying to 4 requests every 20 seconds.[br]
 		The minimum effective setting is about 3 messages every 6 seconds.[br]
-		Please note that 3 messages every 6 seconds is NOT the same as 10 messages every 20 seconds;
+		Please note that 3 messages every 6 seconds is [b]not[/b] the same as 10 messages every 20 seconds;
 		the first setting would allow 3 requests within one second, but the client would
 		ignore all the requests for the next 5 seconds, the second setting would allow 10 messages within one second
 		and ignore everything for the next 19 seconds. Therefore, 3/6 is a safer setting.[br]

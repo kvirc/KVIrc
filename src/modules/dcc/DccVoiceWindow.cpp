@@ -73,7 +73,7 @@ extern DccBroker * g_pDccBroker;
 				//CAN NOT COMPILE :(
 				#define COMPILE_DISABLE_DCC_VOICE
 				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-					#warning "Cannot find the soundcard.h header; you will NOT be able to use DCC Voice"
+					#warning "Can't find the soundcard.h header; you will NOT be able to use DCC Voice"
 				#endif
 			#endif
 		#endif

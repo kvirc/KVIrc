@@ -39,7 +39,7 @@
 	@type:
 		class
 	@short:
-		A toplevel dialog object
+		A top-level dialog object class.
 	@inherits:
 		[class]object[/class]
 		[class]widget[/class]

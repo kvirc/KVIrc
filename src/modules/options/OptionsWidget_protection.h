@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : OptionsWidget_protection.h
-//   Creation date : Wed Ott 19 16:15:16 2005 GMT by Grifisx & Noldor
+//   Creation date : Wed Oct 19 16:15:16 2005 GMT by Grifisx & Noldor
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)

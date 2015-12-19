@@ -33,7 +33,7 @@
 #include <QLayout>
 
 /*
-	@doc:   dockwindow
+	@doc: dockwindow
 	@title:
 		dockwindow class
 	@type:
@@ -100,7 +100,7 @@ KVSO_CLASS_FUNCTION(dockWindow,addWidget)
 	KviKvsObject * pWidget = KviKvsKernel::instance()->objectController()->lookupObject(hWidget);
 	if(!pWidget)
 	{
-		c->warning(__tr2qs_ctx("Invalid object handle passed as parameter (the object is no longer existing ?)","objects"));
+		c->warning(__tr2qs_ctx("Invalid object handle passed as parameter (the object no longer exists?)","objects"));
 		return true;
 	}
 

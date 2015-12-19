@@ -78,7 +78,7 @@ const char * const itemflags_tbl[] = {
 		In this mode the current item is always one of the selected items.[br]
 		In the "none" mode no items can be selected and the current item
 		may be any item in the list.[br]
-		In most situations you will operate the listwidget in "single" mode
+		In most situations you will operate the listwidget in [i]single[/i] mode
 		(and this is the default mode set at widget creation).
 	@functions:
 		!fn: $setSelectionMode(<selection_mode:string>)
@@ -90,23 +90,25 @@ const char * const itemflags_tbl[] = {
 		"none" : no items can be selected[br]
 		The default mode is "single"
 		!fn: $setFlag(<idx:integer>,<flag1:string>, <flag2:string>, ...)
-		Sets the flags for the item at index idz to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.
+		Sets the flags for the item at index idx to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.[br]
 		Supported flags are:
+		[exmaple]
 		[br]- noitemflag : no flag sets;
-		[br]- selectable : item is selecatble;
+		[br]- selectable : item is selectable;
 		[br]- editable : item is editable;
 		[br]- dragEnabled : item can dragged;
 		[br]- dropEnabled : item can used as drop target;
 		[br]- userCheckable : item is checkable;
 		[br]- enabled :item is enabled;
 		[br]- tristate : item is checkable with three separate states.
+		[/example]
 		!fn: $setChecked(<checkstate:bool>)
 		Sets the eventual item check box 'checked state' to <bool>.
 		!fn: <bool> $isChecked()
 		Returns '1' if the eventual item check box is checked, '0' otherwise.[br]
 		!fn: <string> $selectionMode()
 		Returns the current selection mode
-        !fn: $insertItem(<text:string>, <index:uint>)
+		!fn: $insertItem(<text:string>, <index:uint>)
 		Inserts a text item at position <index>. If index is negative or
 		not specified the item is appended.
 		!fn: $changeItem(<text:string>, <index:uint>)
@@ -141,9 +143,8 @@ const char * const itemflags_tbl[] = {
 		!fn: $currentItemChangedEvent()
 		This function is called by KVIrc when the current item changes.
 		!fn: $itemChangedEvent()
-		This function is called by KVIrc when the current data item changes (i.e. the user check a ckeckable item) .
-
-		@signals:
+		This function is called by KVIrc when the current data item changes (i.e. the user check a checkable item) .
+	@signals:
 		!sg: <string> $currentItemChanged()
 		This signal is emitted by the default implementation of [classfnc]$currentItemChangedEvent[/classfnc]().[br]
 		!sg: <string> $itemChanged()
@@ -156,7 +157,7 @@ const char * const itemflags_tbl[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_listWidget,"listbox","widget")
-    KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertWidgetItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,changeItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,removeItem)
@@ -342,7 +343,7 @@ KVSO_CLASS_FUNCTION(listWidget,setIcon)
 		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
 		if (!obPixmap->inheritsClass("pixmap"))
 		{
-			c->warning(__tr2qs_ctx("Pixmap object or image Id required","objects"));
+			c->warning(__tr2qs_ctx("Pixmap object or image ID required","objects"));
 			return true;
 		}
 		pix=((KvsObject_pixmap *)obPixmap)->getPixmap();
@@ -400,12 +401,12 @@ KVSO_CLASS_FUNCTION(listWidget,setForeground)
 	{
 		if(c->paramCount()<4)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 			return true;
 		}
 		if (c->paramCount()<5) iOpacity=255;
@@ -584,7 +585,7 @@ KVSO_CLASS_FUNCTION(listWidget,setSelected)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
-		KVSO_PARAMETER("benabled",KVS_PT_BOOLEAN,0,bSel)
+		KVSO_PARAMETER("bEnabled",KVS_PT_BOOLEAN,0,bSel)
 	KVSO_PARAMETERS_END(c)
 	((QListWidget *)widget())->item(uIndex)->setSelected(bSel);
 	return true;

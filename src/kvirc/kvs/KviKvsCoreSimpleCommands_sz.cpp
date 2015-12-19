@@ -177,12 +177,12 @@ namespace KviKvsCoreSimpleCommands
 			the currently selected server from the server list is used
 			unless the -l switch is passed: in this case the last server
 			that was used in the IRC context is re-used.
-			If the <server> is a valid IPV6 address, the -i switch is implied.[br]
+			If the <server> is a valid IPv6 address, the -i switch is implied.[br]
 			The <server> is added to the server list (if not already
 			there) and set as current.[br]
 			[br]
 			If <server> is in the form "id:<some_string>" then <some_string>
-			is interpreted as the server's internal id (specified in the options dialog).
+			is interpreted as the server's internal ID (specified in the options dialog).
 			This is useful when you need to force KVIrc to choose between multiple
 			server entries with the same hostname and port stored in the database.[br]
 			Please note that this form causes most of the switches to have no effect
@@ -335,7 +335,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Registers a new IRC service: this is for IRC operators only.[br]
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
-			WARNING: the <info> parameter may contain spaces: in that case you MUST add the leading ':' character.[br]
+			WARNING: the <info> parameter may contain spaces: in that case you [b]must[/b] add the leading ':' character.[br]
 	*/
 	// RFC2921 wrapper
 
@@ -365,7 +365,7 @@ namespace KviKvsCoreSimpleCommands
 			<visible_text> can optionally contain the "&" character to identify
 			the popup menu accelerator.[br]
 			[menu_name], if given, must be a valid name of a popup menu created earlier
-			with [cmd]defpopup[/cmd] (or the Popup editor).[br]
+			with [cmd]defpopup[/cmd] (or the popup editor).[br]
 			If [menu_name] is not given, the popup menu identified by <visible_text> is removed.[br]
 			If the -i switch is used, the new popup menu will be placed to the left of the default
 			menu-bar item specified in the [b]zero based[/b] <index>.[br]
@@ -376,7 +376,7 @@ namespace KviKvsCoreSimpleCommands
 			[cmd]defpopup[/cmd]
 		@examples:
 			[example]
-			setmenu -q -i=2 Test apopup
+			setmenu -q -i=2 Test a popup
 			setmenu Test
 			setmenu ThisDoesNotExist
 			setmenu -q ThisDoesNotExist
@@ -740,7 +740,7 @@ namespace KviKvsCoreSimpleCommands
 			KVIrc looks for the catalogues in <catalogue_dir> (if specified)
 			and in the locale subdirectory of the global and local KVIrc directories.[br]
 			<language> is choose automatically by KVIrc depending on the user's locale.[br]
-			Catalogues MUST be in UTF8 encoding.[br]
+			Catalogues MUST be in UTF-8 encoding.[br]
 			After a translation catalogue has been loaded you can
 			access its strings by the means of [fnc]$tr[/fnc].[br]
 			This function doesn't print any warning unless -v is specified.[br]
@@ -750,7 +750,7 @@ namespace KviKvsCoreSimpleCommands
 			to load catalogues that reside in different directories.[br]
 			[b]NOTE[/b][br]
 			This feature is currently work in progress: the scripting engine
-			is not yet fully unicode and thus some more exotic translations may still suffer...
+			is not yet fully Unicode and thus some more exotic translations may still suffer...
 		@seealso:
 			[fnc]$tr[/fnc], [cmd]trunload[/cmd]
 	*/

@@ -62,17 +62,20 @@
 		Returns current cursor position in "<line:uinteger>, <col:uinteger>" format.
 		!fn: $setReadOnly(<bReadOnly:boolean>)
 		Sets the editor to be read-only if bReadOnly is 1 or
-		removes the read-only status is ReadOnly is 0
+		removes the read-only status if bReadOnly is 0
 		!fn: <boolean> $atBeginning()
-		Returns 1(true) if the cursor is placed at the beginning of the text; otherwise returns 0(false).
+		Returns 1 (true) if the cursor is placed at the beginning of the text; otherwise returns 0 (false).
 		!fn: <boolean> $atEnd()
-		Returns 1(true) if the cursor is placed at the end of the text; otherwise returns 0(false).
+		Returns 1 (true) if the cursor is placed at the end of the text; otherwise returns 0 (false).
 		!fn: $setWordWrap(<wrap_mode:string>)
-		Sets the word wrap mode to mode. Valid Values are:[br]
+		Sets the word wrap mode to mode.[br]
+		Valid Values are:[br]
+		[example]
 		- NoWrap - Do not wrap the text.[br]
 		- WidgetWidth - Wrap the text at the current width of the widget.[br]
 		- FixedPixelWidth - Wrap the text at a fixed number of pixels from the widget's left side.[br]
 		- FixedColumnWidth - Wrap the text at a fixed number of character columns from the widget's left side.
+		[/example]
 		!fn: <string> $wordWrap()
 		Returns the word wrap mode. NoWrap, WidgetWidth, FixedPixelWidth, FixedColumnWidth.
 		!fn: <string> $text()
@@ -102,11 +105,11 @@
 		!fn: $setUnderline(<bUnderline:boolean>)
 		If the bool value is 1 sets the current format to underline; otherwise, if it's 0 sets the current format to no-underline.
 		!fn: <boolean> $italic()
-		Returns 1(true) if the current format is italic; otherwise returns 0(false).
+		Returns 1 (true) if the current format is italic; otherwise returns 0 (false).
 		!fn: <boolean> $bold()
-		Returns 1(true) if the current format is bold; otherwise returns 0(false).
+		Returns 1 (true) if the current format is bold; otherwise returns 0 (false).
 		!fn: <boolean> $underline()
-		Returns 1(true) if the current format is underline; otherwise returns 0(false).
+		Returns 1 (true) if the current format is underline; otherwise returns 0 (false).
 		!fn: $zoomIn(<zoom_range:integer>)
 		Zooms in on the text by making the base font size range points larger.
 		!fn: $zoomOut(<zoom_range:integer>)
@@ -126,13 +129,16 @@
 		!fn: $setText(<txt:string>)
 		Sets the text edit's text to txt.
 		!fn: $setColor(<rgb_value>)
-		Sets the foreground color of this widget to <rgb_value>:valid values are:
-		-hex string: must be a string with 6 hexadecimal digits (like the ones used to
-		 specify colors in html pages). The first two digits specify
-		 the RED component, the third and fourth digit specify the GREEN component
-		 and the last two specify the BLUE component.
-		-array(red:integer,green:integer,blue:integer)
-		-red:integer,green:integer,blue:integer.
+		Sets the foreground color of this widget to <rgb_value>
+		Valid values are:
+		[example]
+		- hex string: must be a string with 6 hexadecimal digits (like the ones used to
+		  specify colors in HTML pages). The first two digits specify
+		  the [b]red[/b] component, the third and fourth digit specify the [b]green[/b] component
+		  and the last two specify the [b]blue[/b] component.
+		- array(red:integer, green:integer, blue:integer)
+		- red:integer, green:integer, blue:integer.
+		[/example]
 		!fn: $setPointSize(<point_size:integer))
 		Sets the point size of the font.
 		!fn: $setLinkUnderline(<bLinkUnderline:boolean>)
@@ -142,25 +148,28 @@
 		!fn: <string> $textFormat()
 		Returns the text format: rich text or plain text.
 		!fn: $loadFile(<path:string>)
-		Load the file specified in the <path>, also html files.
+		Load the file specified in the <path>, also HTML files.
 		!fn: <boolean> $isUndoAvailable ()
-		Returns 1(true) if undo is available; otherwise returns 0(false).
+		Returns 1 (true) if undo is available; otherwise returns 0 (false).
 		!fn: <boolean> $isRedoAvailable ()
-		Returns 1(true) if redo is available; otherwise returns 0(false).
+		Returns 1 (true) if redo is available; otherwise returns 0 (false).
 		!fn: <integer> $lines()
 		Returns the number of lines in the multilineedit.
 		!fn: <integer> $lineOfChar(<paragraph:integer>,<index:integer>)
 		Returns the line number of the line in paragraph par in which the character at position index appears.[br]
 		If there is no such paragraph or no such character at the index position  -1 is returned.
 		!fn: $setModified(<bModified:boolean>)
-		Sets whether the document has been modified by the user. Valid Values are 1(true) or 0(false)
+		Sets whether the document has been modified by the user. Valid Values are 1 (true) or 0 (false)
 		!fn: $setAlignment(<alignment:string>)
-		Sets the alignment of the current paragraph to <alignment>. Valid values are:[br]
-		- Auto - Aligns according to the language.[b
+		Sets the alignment of the current paragraph to <alignment>.
+    Valid values are:
+		[example]
+		- Auto - Aligns according to the language.[br]
 		- Left - Aligns with the left edge.[br]
 		- Right - Aligns with the right edge.[br]
 		- Center - Centers in both dimensions.
 		- Justify - Justify the text.
+		[/example]
 		*/
 
 
@@ -586,7 +595,7 @@ bool KvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 	{
 		if(pColArray->array()->size() < 3)
 		{
-                        c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pColR = pColArray->array()->at(0);
@@ -595,12 +604,12 @@ bool KvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 
 		if(!(pColR && pColG && pColB))
 		{
-                        c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
+			c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
 			return false;
 		}
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
-                        c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
+			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 
@@ -631,12 +640,12 @@ bool KvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 		}
 		if(c->params()->count() < 3)
 		{
-                        c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers","objects"));
+			c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers","objects"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
 		{
-                        c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 	}
@@ -724,14 +733,14 @@ bool KvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_END(c)
 	if ( !QFile::exists(szFile))
 	{
-                c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
 		return true;
 	}
 
 	QFile file( szFile );
 	if ( !file.open( QIODevice::ReadOnly ) )
 	{
-		c->warning(__tr2qs_ctx("I cannot read the file '%Q'.","objects"),&szFile);
+		c->warning(__tr2qs_ctx("I can't read the file '%Q'.","objects"),&szFile);
 		return true;
 	}
 

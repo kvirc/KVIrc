@@ -317,7 +317,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpAudaciousInterface,
 	"audacious",
 	__tr2qs_ctx(
-		"An interface to the popular audacious media player.\n" \
+		"An interface for the Audacious media player.\n" \
 		"Download it from http://audacious-media-player.org\n"
 		,
 		"mediaplayer"
@@ -443,7 +443,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpBmpxInterface,
 	"bmpx",
 	__tr2qs_ctx(
-		"An interface to BMPx.\n" \
+		"An interface for BMPx.\n" \
 		"Download it from http://sourceforge.net/projects/beepmp\n"
 		,
 		"mediaplayer"
@@ -467,7 +467,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpAmarok2Interface,
 	"amarok2",
 	__tr2qs_ctx(
-		"An interface to Amarok2.\n" \
+		"An interface for Amarok2.\n" \
 		"Download it from http://amarok.kde.org\n"
 		,
 		"mediaplayer"
@@ -485,7 +485,7 @@ MP_IMPLEMENT_DESCRIPTOR(
         MpQmmpInterface,
         "Qmmp",
         __tr2qs_ctx(
-                "An interface to Qmmp.\n" \
+                "An interface for Qmmp.\n" \
                 "Download it from http://qmmp.ylsoftware.com\n"
                ,
                 "mediaplayer"
@@ -503,7 +503,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpXmms2Interface,
 	"xmms2",
 	__tr2qs_ctx(
-		"An interface to the Xmms2 media player.\n" \
+		"An interface for the XMMS2 media player.\n" \
 		"Download it from http://xmms2.org\n",
 		"mediaplayer"
 	)
@@ -520,7 +520,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpSongbirdInterface,
 	"songbird",
 	__tr2qs_ctx(
-		"An interface to the Mozilla Songbird media player.\n" \
+		"An interface for the Mozilla Songbird media player.\n" \
 		"Download it from http://www.getsongbird.com.\n" \
 		"To use it you have to install also the MPRIS addon " \
 		"available at http://addons.songbirdnest.com/addon/1626.\n",
@@ -544,7 +544,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpTotemInterface,
 	"totem",
 	__tr2qs_ctx(
-		"An interface to Totem.\n" \
+		"An interface for Totem.\n" \
 		"Download it from http://projects.gnome.org/totem/\n"
 		,
 		"mediaplayer"
@@ -562,10 +562,10 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpVlcInterface,
 	"vlc",
 	__tr2qs_ctx(
-		"An interface to Vlc.\n" \
+		"An interface for VLC.\n" \
 		"Download it from http://www.videolan.org/\n" \
-		"You need to manually enable the DBus control\n" \
-		"interface in the Vlc preferences\n" \
+		"You need to manually enable the D-Bus control\n" \
+		"interface in the VLC preferences\n" \
 		,
 		"mediaplayer"
 	)
@@ -582,7 +582,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	MpClementineInterface,
 	"clementine",
 	__tr2qs_ctx(
-		"An interface to Clementine.\n" \
+		"An interface for Clementine.\n" \
 		"Download it from http://www.clementine-player.org/\n" \
 		,
 		"mediaplayer"

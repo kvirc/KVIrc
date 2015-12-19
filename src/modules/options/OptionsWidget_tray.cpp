@@ -59,11 +59,11 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 
 	m_pLevelsGroup = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Select Message Levels to Notify","options"));
 
-	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for low-priority messages","options"),
+	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for low-priority messages:","options"),
 				KviOption_uintMinTrayLowLevelMessage,
 				1,5,1,true);
 
-	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for high-priority message","options"),
+	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for high-priority message:","options"),
 				KviOption_uintMinTrayHighLevelMessage,
 				1,5,4,true);
 

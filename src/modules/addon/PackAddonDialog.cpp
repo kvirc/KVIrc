@@ -201,7 +201,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Author:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &author:","addon"));
 	pLayout->addWidget(pLabel,0,0);
 
 	m_pPackageAuthorEdit = new QLineEdit(this);
@@ -210,7 +210,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageAuthorEdit,0,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Name:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &name:","addon"));
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pPackageNameEdit = new QLineEdit(this);
@@ -219,7 +219,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Version:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &version:","addon"));
 	pLayout->addWidget(pLabel,2,0);
 
 	m_pPackageVersionEdit = new QLineEdit(this);
@@ -228,7 +228,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageVersionEdit,2,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Description:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &description:","addon"));
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pPackageDescriptionEdit = new QLineEdit(this);
@@ -237,7 +237,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Minimum &KVIrc Version:","addon"));
+	pLabel->setText(__tr2qs_ctx("Minimum &KVIrc version:","addon"));
 	pLayout->addWidget(pLabel,4,0);
 
 	m_pPackageMinVersionEdit = new QLineEdit(this);
@@ -360,35 +360,35 @@ void PackAddonSummaryInfoWidget::initializePage()
 
 	QString szText = __tr2qs_ctx("This is what I will check for:","addon");
 	szText += "<br><br><b>";
-	szText += __tr2qs_ctx("Package Author","addon");
+	szText += __tr2qs_ctx("Package author","addon");
 	szText += ":</b> ";
 	szText += szAuthor;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Package Name","addon");
+	szText += __tr2qs_ctx("Package name","addon");
 	szText += ":</b> ";
 	szText += szName;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Package Version","addon");
+	szText += __tr2qs_ctx("Package version","addon");
 	szText += ":</b> ";
 	szText += szVersion;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Package Description","addon");
+	szText += __tr2qs_ctx("Package description","addon");
 	szText += ":</b> ";
 	szText += szDescription;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Minimum KVIrc Version","addon");
+	szText += __tr2qs_ctx("Minimum KVIrc version","addon");
 	szText += ":</b> ";
 	szText += szMinVersion;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Image File","addon");
+	szText += __tr2qs_ctx("Image file","addon");
 	szText += ":</b> ";
 	szText += szImage;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Source Directory","addon");
+	szText += __tr2qs_ctx("Source directory","addon");
 	szText += ":</b> ";
 	szText += szDirPath;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Save Path","addon");
+	szText += __tr2qs_ctx("Save path","addon");
 	szText += ":</b> ";
 	szText += szSavePath;
 

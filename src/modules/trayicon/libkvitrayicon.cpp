@@ -624,7 +624,7 @@ static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall *)
 	@syntax:
 		trayicon.hide
 	@description:
-		Hides the  tray icon for the current frame window
+		Hides the tray icon for the current frame window
 	@seealso:
 		[cmd]trayicon.show[/cmd]
 */

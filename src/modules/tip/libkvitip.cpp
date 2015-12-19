@@ -95,7 +95,7 @@ TipWindow::TipWindow()
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)));
 
-	setWindowTitle(__tr2qs("Did you know..."));
+	setWindowTitle(__tr2qs("Did You Know..."));
 
 	QGridLayout *layout = new QGridLayout(this);
 	layout->addWidget(m_pTipFrame,0,0,1,5);
@@ -236,11 +236,11 @@ void TipWindow::prevTip()
 	@description:
 		Opens the "did you know..." tip window.<br>
 		If <tip_file_name> is specified, that tip is used instead of
-		the default tips provided with kvirc.<br>
+		the default tips provided with KVIrc.<br>
 		<tip_file_name> must be a file name with no path and must refer to a
 		standard KVIrc configuration file found in the global or local
 		KVIrc plugin configuration directory ($KVIrcDir/config/modules).<br>
-		Once the window has been opened, the next tip avaiable in the config file is shown.<br>
+		Once the window has been opened, the next tip available in the config file is shown.<br>
 		This command works even if the tip window is already opened.<br>
 */
 

@@ -47,7 +47,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviSpotifyInterface,
 	"spotify",
 	__tr2qs_ctx(
-		"An interface to the Spotify music streaming service.\n" \
+		"An interface for the Spotify music streaming service.\n" \
 		"It is only available for certain countries in Europe.\n" \
 		"You can download it from http://www.spotify.com.\n"
 		,

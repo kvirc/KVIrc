@@ -55,7 +55,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 		KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = KVI_VERBOSITY_LEVEL_NORMAL;
 	m_pVerbosityCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
 
-	pLabel = new QLabel(__tr2qs_ctx("Datetime format","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("DateTime format:","options"),this);
 	addWidgetToLayout(pLabel,0,1,0,1);
 
 	m_pDatetimeCombo = new QComboBox(this);

@@ -140,7 +140,7 @@ LogViewWindow::LogViewWindow()
 	pLayout->addWidget(m_pShowOtherCheck,4,0,1,2);
 
 	QLabel * pLabel;
-	pLabel = new QLabel(__tr2qs_ctx("Contents filter","log"),m_pSearchTab);
+	pLabel = new QLabel(__tr2qs_ctx("Contents Filter","log"),m_pSearchTab);
 	pLayout->addWidget(pLabel,5,0,1,2);
 
 	pLabel = new QLabel(__tr2qs_ctx("Log name mask:","log"),m_pSearchTab);
@@ -155,7 +155,7 @@ LogViewWindow::LogViewWindow()
 	pLayout->addWidget(m_pContentsMask,7,1);
 	connect(m_pContentsMask,SIGNAL(returnPressed()),this,SLOT(applyFilter()));
 
-	m_pEnableFromFilter = new QCheckBox(__tr2qs_ctx("Only older than","log"),m_pSearchTab);
+	m_pEnableFromFilter = new QCheckBox(__tr2qs_ctx("Only older than:","log"),m_pSearchTab);
 	m_pFromDateEdit = new QDateEdit(m_pSearchTab);
 	m_pFromDateEdit->setDate(QDate::currentDate());
 	m_pFromDateEdit->setEnabled(false);
@@ -163,7 +163,7 @@ LogViewWindow::LogViewWindow()
 	pLayout->addWidget(m_pFromDateEdit,8,1);
 	connect(m_pEnableFromFilter,SIGNAL(toggled(bool)),m_pFromDateEdit,SLOT(setEnabled(bool)));
 
-	m_pEnableToFilter = new QCheckBox(__tr2qs_ctx("Only newer than","log"),m_pSearchTab);
+	m_pEnableToFilter = new QCheckBox(__tr2qs_ctx("Only newer than:","log"),m_pSearchTab);
 	m_pToDateEdit = new QDateEdit(m_pSearchTab);
 	m_pToDateEdit->setDate(QDate::currentDate());
 	m_pToDateEdit->setEnabled(false);
@@ -445,7 +445,7 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 	if(((LogListViewItem *)pItem)->childCount())
 	{
 		//pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
-		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove all log files within this folder","log"),this,SLOT(deleteCurrent()));
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove All Log Files Within This Folder","log"),this,SLOT(deleteCurrent()));
 	} else {
         pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),__tr2qs_ctx("Export log file to","log"))->setMenu(m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));

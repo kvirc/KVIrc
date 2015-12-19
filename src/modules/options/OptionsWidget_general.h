@@ -27,7 +27,7 @@
 #include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_general KviIconManager::Options
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general __tr2qs_no_lookup("General options")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general __tr2qs_no_lookup("General Options")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_general 40000
 
 class OptionsWidget_general : public KviOptionsWidget

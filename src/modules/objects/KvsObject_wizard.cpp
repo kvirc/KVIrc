@@ -47,42 +47,42 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		A wizard is an input dialog that consists of a sequence of dialog pages.It walks the user through a process step by step.[br]
+		A wizard is an input dialog that consists of a sequence of dialog pages. It walks the user through a process step by step.[br]
 	@functions:
 	!fn: $addPage(<page_widget:object>,<title:string>)
 	Add a page with title.<page_widget> must be a widget's object.
 	!fn: $insertPage(<page_widget>,<title:string>,<index:integer>)
-	Inserts a page at the position <index>. If index is -1, page will appended to the end of the wizard's page sequenze.
+	Inserts a page at the position <index>. If index is -1, page will appended to the end of the wizard's page sequence.
 	!fn: $setTitle(<page>,<title:string>)
 	Sets the title for page page to title text.
 	!fn: $setBackEnabled(<page_widget>,<bEnabled:boolean>)
-	If enable is set to 1, page page has a Back button; otherwise page has no Back button.[br]
+	If enable is set to 1, page page has a [i]back[/i] button; otherwise page has no [i]back[/i] button.[br]
 	By default all pages have this button.
 	!fn: $setNextEnabled(<page_widget>,<bEnabled:boolean>)
-	If enable is set to 1, page page has a Next button; otherwise the Next button on page is disabled.[br]
+	If enable is set to 1, page page has a [i]next[/i] button; otherwise the [i]next[/i] button on page is disabled.[br]
 	By default all pages have this button.
 	!fn: $setFinishEnabled(<page_widget>,<bEnabled:boolean>)
-	If enable is set to 1, page page has a Finish button; otherwise the Finish button on page is disabled.[br]
+	If enable is set to 1, page page has a [i]finish[/i] button; otherwise the [i]finish[/i] button on page is disabled.[br]
 	By default NO pages have this button.
 	!fn: $setHelpEnabled(<page_widget>,<bEnabled:boolean>)
-	If enable is set to 1, page page has a Help button; otherwise the Help button on page is disabled.[br]
+	If enable is set to 1, page page has a Help button; otherwise the [i]help[/i] button on page is disabled.[br]
 	By default all pages have this button.
 	!fn: $setNextBtnText(<text:string>)
-	Set the text for button Next.
+	Set the text for button [i]next[/i].
 	!fn: $setBackBtnText(<text:string>)
-	Set the text for button Back.
+	Set the text for button [i]back[/i].
 	!fn: $setFinishBtnText(<text:string>)
-	Set the text for button Finish.
+	Set the text for button [i]finish[/i].
 	!fn: $setHelpBtnText(<text:string>)
 	Set the text for button Help.
 	!fn: $acceptEvent()
-	This function is called when the user click on the Finish button.
+	This function is called when the user clicks on the [i]finish[/i] button.
 	!fn: $rejectEvent()
-	This function is called when thie user click on the Reject button.
+	This function is called when the user clicks on the [i]reject[/i] button.
 	!fn: $nextClickedEvent()
-	This function is called when the user click on the Next button.
+	This function is called when the user clicks on the [i]next[/i] button.
 	!fn: $backClickedEvent()
-	This function is called when thie user click on the Back button.
+	This function is called when the user clicks on the [i]back[/i] button.
 	@signals:
 	!sg: $nextClicked()
 	This signal is emitted by the default implementation of [classfnc]$nextClickedEvent[/classfnc]().

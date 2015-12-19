@@ -49,7 +49,7 @@ extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 	@description:
 		Registers the <channel> with the specified [netmask].
 		[netmask] can be a full network name or a wildcard string
-		tht will be matched against network names.
+		that will be matched against network names.
 		For example, if you want to register #kvirc on IRCNet
 		you can use regchan.add #kvirc IRCNet.
 		If you want to handle #kvirc on all the IRC networks then

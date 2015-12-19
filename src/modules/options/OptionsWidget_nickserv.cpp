@@ -185,7 +185,7 @@ bool NickServRuleEditor::validate()
 
 	if(s.isEmpty())
 	{
-		QMessageBox::warning(this,m,__tr2qs_ctx("The identify command can't be empty!","options"),o);
+		QMessageBox::warning(this,m,__tr2qs_ctx("The IDENTIFY command can't be empty!","options"),o);
 		return false;
 	}
 

@@ -39,7 +39,7 @@
 		<string>  $texticons.get(<iconName:string>)
 		<integer> $texticons.get(<iconName:string>)
 	@description:
-		if <iconName:string> is setted returns integer icon id or string filename, associated with <iconName:string>[br]
+		if <iconName:string> is setted returns integer icon ID or string filename, associated with <iconName:string>[br]
 		if <iconName:string> isn't set returns hash where keys are the icon names, and values are the icon id's or filenames
 	@seealso:
 		[fnc]$texticons.get[/fnc]
@@ -95,7 +95,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 		texticons.set <iconName:string> <iconId:integer>
 	@description:
 		if command gets only 1 argument it removes <iconName:string> from list of texticons[br]
-		if it gets an integer second parameters, command associates <iconName:string> icon with builin icon, having id <iconId:integer>[br]
+		if it gets an integer second parameters, command associates <iconName:string> icon with builtin icon, having ID <iconId:integer>[br]
 		if it gets a string second parameters, command associates <iconName:string> icon with the filename <iconFile:string>
 	@seealso:
 		[fnc]$texticons.get[/fnc]
@@ -172,7 +172,7 @@ KVIRC_MODULE(
 		of small images without sending the images themselves.[br]
 		The idea is quite simple: the IRC client (and it's user) associates
 		some small images to text strings (called icon tokens) and the strings are sent
-		in place of the images preceeded by a special escape character.[br]
+		in place of the images preceded by a special escape character.[br]
 		The chosen escape character is 29 (hex 0x1d) which corresponds
 		to the ASCII group separator.[br]
 		So for example if a client has the association of the icon token "rose" with a small
@@ -180,7 +180,7 @@ KVIRC_MODULE(
 		"&lt;0x1d&gt;rose" in the message stream to ask the remote parties to
 		display such an icon. If the remote parties don't have this association
 		then they will simply strip the control code and display the string "rose",
-		(eventually showing it in some enchanced way).[br]
+		(eventually showing it in some enhanced way).[br]
 		The icon tokens can't contain spaces
 		so the receiving clients stop the extraction of the icon strings
 		when a space, an icon escape or the message termination is encountered.

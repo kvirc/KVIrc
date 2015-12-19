@@ -51,7 +51,7 @@
 	@functions:
 		!fn: setIcon(<image_id>).
 		Sets the tray icon.
-		See the [doc:image_id]image identifier[/doc] documentation for the explaination of the <image_id> parameter.
+		See the [doc:image_id]image identifier[/doc] documentation for the explanation of the <image_id> parameter.
 		!fn: setTooltip(<tooltip:string>).
 		Sets the tray icon tooltip.
 		!fn: show()
@@ -73,18 +73,18 @@
 		!fn: activatedEvent(<reason:string>)
 		This event is triggered when the user click the tray icon.
 		If you reimplement this function the reason parameter will be passed as $0.
-		Values for reason are:
+		Values for reason are:[br]
+		[pre]
 		[br]- Unknown : Unknown reason.
 		[br]- Context : The context menu for the tray icon was requested.
 		[br]- DoubleClick : The tray icon was double clicked.
 		[br]- Trigger : The tray icon was clicked.
 		[br]- MiddleClick : The tray icon was clicked with the middle mouse button.
+		[/pre]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
 		!fn: messageClickedEvent()
 		This event is triggered when the message displayed using [classfnc]$showMessage[/classfnc]() was clicked by the user.
 		The default implementation emits the [classfnc]$messageClicked[/classfnc]() signal.
-
-
 	@signals:
 		!sg: $activated()
 		This signal is emitted by the default implementation of [classfnc]$activatedEvent[/classfnc].
