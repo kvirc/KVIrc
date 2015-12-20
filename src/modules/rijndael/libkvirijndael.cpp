@@ -42,14 +42,14 @@
 	@short:
 		The Rijndael cryptographic engines
 	@title:
-		The rijndael module
+		The Rijndael module
 	@body:
-		The rijndael module exports six [doc:crypt_engines]cryptographic engines[/doc] based
+		The Rijndael module exports six [doc:crypt_engines]cryptographic engines[/doc] based
 		on the Advanced Encryption Standard algorithm called Rijndael. Rijndael was
 		originally written by Joan Daemen and Vincent Rijmen. The original Rijndael
 		description is available at http://www.esat.kuleuven.ac.be/~rijmen/rijndael/.[br]
 		It is a private key block cipher that has been designed to replace
-		the widely used DES, and it should provide at leas a decent security agains
+		the widely used DES, and it should provide at leas a decent security against
 		common attacks. Theoretically the best attack that one can perform on this cipher
 		is the "brute force" attack that requires a really massive parallel computation:
 		actually out of the possibilities of a common "hacker".[br]
