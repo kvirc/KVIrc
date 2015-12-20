@@ -72,7 +72,7 @@
 
 		QGridLayout * pLayout = new QGridLayout(this);
 
-		QHBoxLayout * pTitleLayout = new QHBoxLayout(this);
+		QHBoxLayout * pTitleLayout = new QHBoxLayout;
 
 		QLabel * pLabel = new QLabel(this);
 		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Locked)));
