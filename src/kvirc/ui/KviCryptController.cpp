@@ -279,7 +279,7 @@
 							g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->m_pEngine);
 							delete m_pSessionInfo;
 							m_pSessionInfo = 0;
-							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: can't initialize the engine :%s"),szErrStr.toUtf8().data());
+							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: can't initialize the engine: %s"),szErrStr.toUtf8().data());
 						} else {
 							// ok, engine ready and waiting...
 							m_pSessionInfo->m_szEngineName = m_pLastItem->m_szName;
