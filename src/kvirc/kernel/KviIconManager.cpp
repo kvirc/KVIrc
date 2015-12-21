@@ -252,7 +252,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"dccvoice",            // 166
 	"play",                // 167
 	"record",              // 168
-	"autotilewindows",     // 169 No longer used, do not remove entry, just reuse entry for new icons.
+	"dtime",               // 169
 	"away",                // 170
 	"ident",               // 171
 	"homepage",            // 172
@@ -783,7 +783,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 166: return KviIconManager::DccVoice;             break;
 		case 167: return KviIconManager::Play;                 break;
 		case 168: return KviIconManager::Record;               break;
-		case 169: return KviIconManager::AutoTileWindows;      break; //No longer used, do not remove entry, just reuse entry for new icons.
+		case 169: return KviIconManager::Dtime;                break;
 		case 170: return KviIconManager::Away;                 break;
 		case 171: return KviIconManager::Ident;                break;
 		case 172: return KviIconManager::HomePage;             break;

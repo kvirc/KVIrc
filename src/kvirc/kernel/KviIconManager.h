@@ -334,7 +334,7 @@ public:
 		DccVoice             = 166,
 		Play                 = 167,
 		Record               = 168,
-		AutoTileWindows      = 169, //No longer used, do not remove entry, just reuse entry for new icons.
+		Dtime                = 169,
 		Away                 = 170,
 		Ident                = 171,
 		HomePage             = 172,
