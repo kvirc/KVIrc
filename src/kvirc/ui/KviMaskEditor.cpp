@@ -156,7 +156,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 			break;
 		case 'q':
 			// this could also be quiet bans..
-			m_eIcon = KviIconManager::ChanOwner;
+			m_eIcon = KviIconManager::Kick;
 			break;
 		default:
 			m_eIcon = KviIconManager::Ban;

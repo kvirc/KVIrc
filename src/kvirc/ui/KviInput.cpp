@@ -107,12 +107,12 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	QIcon is1;
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
 	{
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Time)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::DTime)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
 	}
@@ -401,13 +401,13 @@ void KviInput::applyOptions()
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
 	{
 		QIcon is1;
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Time)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
 		QIcon is1;
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::DTime)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
 		m_pHistoryButton->disconnect(SIGNAL(clicked()));

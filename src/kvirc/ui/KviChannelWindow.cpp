@@ -181,7 +181,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 			char cMode = szListModes.at(i).unicode();
 			QString szDescription = pServerInfo->getChannelModeDescription(cMode);
 			if(szDescription.isEmpty())
-				szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+				szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 			KviIconManager::SmallIcon eIconOn, eIconOff;
 			switch(cMode)
 			{
@@ -199,8 +199,8 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 					break;
 				case 'q':
 					// this could also be quiet bans..
-					eIconOn = KviIconManager::ChanUnOwner;
-					eIconOff = KviIconManager::ChanOwner;
+					eIconOn = KviIconManager::Kick;
+					eIconOff = KviIconManager::KickOff;
 					break;
 				default:
 					eIconOn = KviIconManager::UnBan;
