@@ -1887,7 +1887,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			{
 				if(pEntry->globalData()->isIrcOp())
 				{
-					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::IrcOp);
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::IrcOps);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				} else if(pEntry->globalData()->gender()!=KviIrcUserEntry::Unknown) {
 					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? KviIconManager::SexMale : KviIconManager::SexFemale);
