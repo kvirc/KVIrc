@@ -480,7 +480,7 @@ public:
 		SexMale              = 312,
 		SexFemale            = 313,
 		SexBot               = 314,
-		SexIrcOp             = 315,
+		IrcOp                = 315,
 		MemoServ             = 316,
 		Info                 = 317,
 		Warning              = 318,
