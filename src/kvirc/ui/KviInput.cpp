@@ -112,7 +112,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Dtime)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::DTime)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
 	}

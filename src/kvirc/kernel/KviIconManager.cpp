@@ -783,7 +783,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 166: return KviIconManager::DccVoice;             break;
 		case 167: return KviIconManager::Play;                 break;
 		case 168: return KviIconManager::Record;               break;
-		case 169: return KviIconManager::Dtime;                break;
+		case 169: return KviIconManager::DTime;                break;
 		case 170: return KviIconManager::Away;                 break;
 		case 171: return KviIconManager::Ident;                break;
 		case 172: return KviIconManager::HomePage;             break;

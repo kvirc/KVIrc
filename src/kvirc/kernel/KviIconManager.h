@@ -334,7 +334,7 @@ public:
 		DccVoice             = 166,
 		Play                 = 167,
 		Record               = 168,
-		Dtime                = 169,
+		DTime                = 169,
 		Away                 = 170,
 		Ident                = 171,
 		HomePage             = 172,
