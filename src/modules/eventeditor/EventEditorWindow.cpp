@@ -225,7 +225,7 @@ void EventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-					__tr2qs_ctx("&Export Handler To...","editor"),
+					__tr2qs_ctx("&Export Handler to...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
 			m_pContextPopup->addAction(
