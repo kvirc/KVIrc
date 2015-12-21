@@ -407,7 +407,7 @@ void KviInput::applyOptions()
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	} else {
 		QIcon is1;
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::DTime)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
 		m_pHistoryButton->disconnect(SIGNAL(clicked()));
