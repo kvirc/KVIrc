@@ -85,8 +85,8 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 {
 	"none",                // 0
 	"close",               // 1
-	"maximize",            // 2    No longer used, do not remove entry, just reuse entry for new icons.
-	"minimize",            // 3    No longer used, do not remove entry, just reuse entry for new icons.
+	"history",             // 2
+	"historyoff",          // 3
 	"restore",             // 4    No longer used, do not remove entry, just reuse entry for new icons.
 	"default",             // 5
 	"dock",                // 6
@@ -252,7 +252,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"dccvoice",            // 166
 	"play",                // 167
 	"record",              // 168
-	"dtime",               // 169
+	"kickoff",             // 169
 	"away",                // 170
 	"ident",               // 171
 	"homepage",            // 172
@@ -616,8 +616,8 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 	switch(iIcon)
 	{
 		case   1: return KviIconManager::Close;                break;
-		case   2: return KviIconManager::Maximize;             break; //No longer used, do not remove entry, just reuse entry for new icons.
-		case   3: return KviIconManager::Minimize;             break; //No longer used, do not remove entry, just reuse entry for new icons.
+		case   2: return KviIconManager::History;              break;
+		case   3: return KviIconManager::HistoryOff;           break;
 		case   4: return KviIconManager::Restore;              break; //No longer used, do not remove entry, just reuse entry for new icons.
 		case   5: return KviIconManager::DefaultIcon;          break;
 		case   6: return KviIconManager::Dock;                 break;
@@ -783,7 +783,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 166: return KviIconManager::DccVoice;             break;
 		case 167: return KviIconManager::Play;                 break;
 		case 168: return KviIconManager::Record;               break;
-		case 169: return KviIconManager::DTime;                break;
+		case 169: return KviIconManager::KickOff;              break;
 		case 170: return KviIconManager::Away;                 break;
 		case 171: return KviIconManager::Ident;                break;
 		case 172: return KviIconManager::HomePage;             break;

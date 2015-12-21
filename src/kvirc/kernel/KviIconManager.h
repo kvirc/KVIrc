@@ -167,8 +167,8 @@ public:
 	enum SmallIcon {
 		None                 =   0,
 		Close                =   1,
-		Maximize             =   2, //No longer used, do not remove entry, just reuse entry for new icons.
-		Minimize             =   3, //No longer used, do not remove entry, just reuse entry for new icons.
+		History              =   2,
+		HistoryOff           =   3,
 		Restore              =   4, //No longer used, do not remove entry, just reuse entry for new icons.
 		DefaultIcon          =   5,
 		Dock                 =   6,
@@ -334,7 +334,7 @@ public:
 		DccVoice             = 166,
 		Play                 = 167,
 		Record               = 168,
-		DTime                = 169,
+		KickOff              = 169,
 		Away                 = 170,
 		Ident                = 171,
 		HomePage             = 172,
