@@ -282,7 +282,7 @@ public:
 		TrayIcon             = 114,
 		UnsetMode            = 115,
 		MaxVertical          = 116, //No longer used, do not remove entry, just reuse entry for new icons.
-		MaxHorizontal        = 117, //No longer used, do not remove entry, just reuse entry for new icons.
+		Toolbar              = 117,
 		ServerFavorite       = 118,
 		Log                  = 119,
 		Remove               = 120,
@@ -400,7 +400,7 @@ public:
 		DeadChannel          = 232,
 		DeadQuery            = 233,
 		Sound                = 234,
-		ToolBar              = 235,
+		ToolBarEditor        = 235,
 		TextEncoding         = 236,
 		NewItem              = 237,
 		NewItemByWizard      = 238,

@@ -1043,7 +1043,7 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
         p->addSeparator();
 
 	p->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBar)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBarEditor)),
 			__tr2qs("Customize..."),
 			this,
 			SLOT(customizeToolBars())

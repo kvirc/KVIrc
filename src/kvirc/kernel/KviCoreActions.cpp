@@ -207,7 +207,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing script toolbars"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_toolbareditor.png",
-		KviIconManager::ToolBar,
+		KviIconManager::ToolBarEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_TOOLBAR);
 

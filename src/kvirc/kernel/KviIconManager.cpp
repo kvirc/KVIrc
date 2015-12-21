@@ -200,7 +200,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"dockwidget",          // 114
 	"unsetmode",           // 115
 	"maxvertical",         // 116 No longer used, do not remove entry, just reuse entry for new icons.
-	"maxhorizontal",       // 117 No longer used, do not remove entry, just reuse entry for new icons.
+	"toolbar",             // 117
 	"serverfavorite",      // 118
 	"log",                 // 119
 	"remove",              // 120
@@ -318,7 +318,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"deadchannel",         // 232
 	"deadquery",           // 233
 	"sound",               // 234
-	"toolbar",             // 235
+	"toolbareditor",       // 235
 	"textencoding",        // 236
 	"newitem",             // 237
 	"newitembywizard",     // 238
@@ -731,7 +731,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 114: return KviIconManager::TrayIcon;             break;
 		case 115: return KviIconManager::UnsetMode;            break;
 		case 116: return KviIconManager::MaxVertical;          break; //No longer used, do not remove entry, just reuse entry for new icons.
-		case 117: return KviIconManager::MaxHorizontal;        break; //No longer used, do not remove entry, just reuse entry for new icons.
+		case 117: return KviIconManager::Toolbar;              break;
 		case 118: return KviIconManager::ServerFavorite;       break;
 		case 119: return KviIconManager::Log;                  break;
 		case 120: return KviIconManager::Remove;               break;
@@ -849,7 +849,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 232: return KviIconManager::DeadChannel;          break;
 		case 233: return KviIconManager::DeadQuery;            break;
 		case 234: return KviIconManager::Sound;                break;
-		case 235: return KviIconManager::ToolBar;              break;
+		case 235: return KviIconManager::ToolBarEditor;        break;
 		case 236: return KviIconManager::TextEncoding;         break;
 		case 237: return KviIconManager::NewItem;              break;
 		case 238: return KviIconManager::NewItemByWizard;      break;
