@@ -185,6 +185,8 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 			KviIconManager::SmallIcon eIconOn, eIconOff;
 			switch(cMode)
 			{
+					// must fix on/off icons here eventually once Ive patience to figure it out.
+					// to Un<somethings> is to undo/turn off :p blimey O'reilly.
 				case 'e':
 					eIconOn = KviIconManager::BanUnExcept;
 					eIconOff = KviIconManager::BanExcept;
@@ -199,8 +201,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 					break;
 				case 'q':
 					// this could also be quiet bans..
-					eIconOn = KviIconManager::Kick;
-					eIconOff = KviIconManager::KickOff;
+					// on/off are inverted here on purpose must fix eventually.
+					eIconOn = KviIconManager::KickOff;
+					eIconOff = KviIconManager::Kick;
 					break;
 				default:
 					eIconOn = KviIconManager::UnBan;
