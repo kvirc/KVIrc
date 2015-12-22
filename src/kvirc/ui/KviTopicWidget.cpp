@@ -462,7 +462,7 @@ void KviTopicWidget::switchMode()
 
 		m_pHistory = new QPushButton(this);
 		m_pHistory->setObjectName("topicw_historybutton");
-		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
+		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::History))));
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
 		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
 		m_pHistory->show();
