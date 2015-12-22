@@ -61,8 +61,8 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 	setWindowTitle(__tr2qs_ctx("Nickname Alternatives","options"));
 
 	QLabel * l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Here you can choose up to three nicknames " \
-		"alternative to the primary one. KVIrc will use the alternatives " \
+	l->setText(__tr2qs_ctx("Here you can choose up to three nickname " \
+		"alternatives to the primary one. KVIrc will use the alternatives " \
 		"if the primary nick is already used by someone else on a particular " \
 		"IRC network.","options"));
 	l->setWordWrap(true);
