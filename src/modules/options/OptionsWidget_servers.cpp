@@ -1376,7 +1376,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pRecentPopup,SIGNAL(triggered(QAction *)),this,SLOT(recentServersPopupClicked(QAction *)));
 
 	QToolButton * tb = new QToolButton(gbox);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::History))));
 	tb->setMenu(m_pRecentPopup);
 	tb->setAutoRaise(true);
 	tb->setPopupMode(QToolButton::InstantPopup);
