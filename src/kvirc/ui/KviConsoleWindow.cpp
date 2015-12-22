@@ -1195,7 +1195,8 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 	static QString html_spaceparopen(" (");
 	static QString html_spaceparclosed(")");
 
-	buffer = "<table width=\"100%\">" \
+	//120% to stop KviConsoleWindow::fillStatusString() wrapping the entries—at least in English—
+	buffer = "<table width=\"120%\">" \
 		START_TABLE_BOLD_ROW;
 	buffer += m_szStatusString;
 	buffer += END_TABLE_BOLD_ROW;
