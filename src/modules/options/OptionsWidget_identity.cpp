@@ -210,17 +210,17 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 				"The full path to a local file or an image on the Web can be used.<br>" \
 				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
 				"button to browse local folders.<br>" \
-				"The full URL for an image (including <b>http:// or https://</b>) can be entered manually.","options");
+				"The full URL for an image (including <b>http://</b>) can be entered manually.","options");
 	msg += "</left><br>";
 
 	QLabel * l = new QLabel(msg,this);
 	l->setMinimumWidth(250);
 
-	g->addWidget(l,0,0,1,3);
+	g->addWidget(l,0,0);
 
 	m_pLineEdit = new QLineEdit(this);
 	m_pLineEdit->setText(szInitialPath);
-	m_pLineEdit->setMinimumWidth(180);
+	m_pLineEdit->setMinimumWidth(100);
 
 	g->addWidget(m_pLineEdit,1,0,1,2);
 
@@ -395,7 +395,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox,__tr2qs_ctx("Languages:","options"),KviOption_stringCtcpUserInfoLanguages);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here the short names of the languages you can speak. " \
-				"An example might be \"EN,IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
+				"An example might be \"EN, IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Other:","options"),KviOption_stringCtcpUserInfoOther);
 	sel->setMinimumLabelWidth(120);
@@ -716,9 +716,9 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	labels.append(__tr2qs_ctx("Name","options"));
 	labels.append(__tr2qs_ctx("Network","options"));
 	labels.append(__tr2qs_ctx("Nickname","options"));
-	labels.append(__tr2qs_ctx("Alt. Nick","options"));
+	labels.append(__tr2qs_ctx("Alternate nickname","options"));
 	labels.append(__tr2qs_ctx("Username","options"));
-	labels.append(__tr2qs_ctx("Realname","options"));
+	labels.append(__tr2qs_ctx("Real name","options"));
 	m_pTreeWidget->setHeaderLabels(labels);
 
 	KviTalToolTip::add(m_pTreeWidget, \
@@ -733,7 +733,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 
 	// Buttons box
 	KviTalHBox * pBtnBox = new KviTalHBox(this);
-	pLayout->addWidget(pBtnBox,2,0);
+	pLayout->addWidget(pBtnBox,2,0,1,3);
 
 	m_pBtnAddProfile = new QPushButton(__tr2qs_ctx("Add Profile","options"),pBtnBox);
 	connect(m_pBtnAddProfile,SIGNAL(clicked()),this,SLOT(addProfileEntry()));
@@ -946,7 +946,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 
 	KviTalHBox * pBox = new KviTalHBox(this);
 	pBox->setAlignment(Qt::AlignRight);
-	pLayout->addWidget(pBox,6,0);
+	pLayout->addWidget(pBox,6,1,1,2);
 
 	QPushButton * p = new QPushButton(__tr2qs_ctx("Cancel","options"),pBox);
 	//p->setMinimumWidth(100);
