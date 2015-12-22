@@ -397,8 +397,8 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"function",            // 311
 	"sexmale",             // 312
 	"sexfemale",           // 313
-	"sexbot",              // 314
-	"ircops",              // 315
+	"ircbot",              // 314
+	"alienircop",          // 315
 	"memoserv",            // 316
 	"info",                // 317
 	"warning",             // 318
@@ -928,8 +928,8 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 311: return KviIconManager::Function;             break;
 		case 312: return KviIconManager::SexMale;              break;
 		case 313: return KviIconManager::SexFemale;            break;
-		case 314: return KviIconManager::SexBot;               break;
-		case 315: return KviIconManager::IrcOps;               break;
+		case 314: return KviIconManager::IrcBot;               break;
+		case 315: return KviIconManager::AlienIrcOp;           break;
 		case 316: return KviIconManager::MemoServ;             break;
 		case 317: return KviIconManager::Info;                 break;
 		case 318: return KviIconManager::Warning;              break;
