@@ -210,7 +210,7 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 				"The full path to a local file or an image on the Web can be used.<br>" \
 				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
 				"button to browse local folders.<br>" \
-				"The full URL for an image (including <b>http://</b>) can be entered manually.","options");
+				"The full URL for an image (including <b>http:// or https://</b>) can be entered manually.","options");
 	msg += "</left><br>";
 
 	QLabel * l = new QLabel(msg,this);

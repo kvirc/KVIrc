@@ -75,7 +75,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 		"The full path to a local file or an image on the Web can be used.<br>" \
 		"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
 		"button to browse local folders.<br>" \
-		"The full URL for an image (including <b>http://</b> or  <b>https://</b> ) can be entered manually.");
+		"The full URL for an image (including <b>http://</b> or <b>https://</b>) can be entered manually.");
 	msg += "</center><br>";
 
 	QLabel * l = new QLabel(msg,this);
