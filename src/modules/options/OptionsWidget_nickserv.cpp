@@ -52,7 +52,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 
-	QLabel * l = new QLabel(__tr2qs_ctx("Registered nickname","options"),this);
+	QLabel * l = new QLabel(__tr2qs_ctx("Registered nickname:","options"),this);
 	gl->addWidget(l,0,0);
 
 	m_pRegisteredNickEdit = new QLineEdit(this);
@@ -60,7 +60,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(m_pRegisteredNickEdit,0,1,1,3);
 //	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
 
-	l = new QLabel(__tr2qs_ctx("NickServ mask","options"),this);
+	l = new QLabel(__tr2qs_ctx("NickServ mask:","options"),this);
 	gl->addWidget(l,1,0);
 
 	m_pNickServMaskEdit = new QLineEdit(this);
@@ -73,7 +73,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(m_pNickServMaskEdit,1,1,1,3);
 //	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
 
-	l = new QLabel(__tr2qs_ctx("Message regexp","options"),this);
+	l = new QLabel(__tr2qs_ctx("Message regexp:","options"),this);
 	gl->addWidget(l,2,0);
 
 	m_pMessageRegexpEdit = new QLineEdit(this);
@@ -86,7 +86,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 			"The message is usually something like \"To identify yourself please use /ns IDENTIFY password\" " \
 			"and it is sent when the NickServ wants you to authenticate yourself. " \
 			"You can use the * and ? wildcards.","options") + html_center_end);
-	l = new QLabel(__tr2qs_ctx("Identify command","options"),this);
+	l = new QLabel(__tr2qs_ctx("Identify command:","options"),this);
 	gl->addWidget(l,3,0);
 
 	m_pIdentifyCommandEdit = new QLineEdit(this);
@@ -103,7 +103,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 
 	if(bUseServerMaskField)
 	{
-		l = new QLabel(__tr2qs_ctx("Server mask","options"),this);
+		l = new QLabel(__tr2qs_ctx("Server mask:","options"),this);
 		gl->addWidget(l,4,0);
 
 		m_pServerMaskEdit = new QLineEdit(this);

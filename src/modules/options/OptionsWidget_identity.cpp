@@ -61,8 +61,8 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 	setWindowTitle(__tr2qs_ctx("Nickname Alternatives","options"));
 
 	QLabel * l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Here you can choose up to three nicknames " \
-		"alternative to the primary one. KVIrc will use the alternatives " \
+	l->setText(__tr2qs_ctx("Here you can choose up to three nickname " \
+		"alternatives to the primary one. KVIrc will use the alternatives " \
 		"if the primary nick is already used by someone else on a particular " \
 		"IRC network.","options"));
 	l->setWordWrap(true);
@@ -203,45 +203,49 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 {
 	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
 
-	QGridLayout * g = new QGridLayout(this);
+	QVBoxLayout * layout = new QVBoxLayout(this);
 
-	QString msg = "<left>";
-	msg += __tr2qs_ctx("Please select an avatar image. " \
-				"The full path to a local file or an image on the Web can be used.<br>" \
-				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
-				"button to browse local folders.<br>" \
-				"The full URL for an image (including <b>http://</b>) can be entered manually.","options");
-	msg += "</left><br>";
+	QString msg = __tr2qs_ctx("Please select an avatar image.\n\n" \
+				"The full path to a local file or an image on the Web can be used.\n" \
+				"If you wish to use a local image file, click the \"Browse\" button to select the desired file.\n\n" \
+				"The full URL for an image (including http:// or https://) can also be entered manually.","options");
 
-	QLabel * l = new QLabel(msg,this);
+	QLabel * l = new QLabel(msg);
 	l->setMinimumWidth(250);
+	l->setWordWrap(true);
 
-	g->addWidget(l,0,0,1,3);
+	layout->addWidget(l);
 
-	m_pLineEdit = new QLineEdit(this);
+	m_pLineEdit = new QLineEdit;
 	m_pLineEdit->setText(szInitialPath);
-	m_pLineEdit->setMinimumWidth(180);
 
-	g->addWidget(m_pLineEdit,1,0,1,2);
+	m_pLineEdit->setMinimumWidth(450);
 
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
+	QHBoxLayout * pLineEditLayout = new QHBoxLayout;
+
+	pLineEditLayout->addWidget(m_pLineEdit,1);
+
+	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"));
+	b->setFixedWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
-	g->addWidget(b,1,2);
+	pLineEditLayout->addWidget(b,1);
 
-	KviTalHBox * h = new KviTalHBox(this);
-	h->setSpacing(8);
-	g->addWidget(h,2,1,1,2);
-	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
-	b->setMinimumWidth(80);
+	layout->addLayout(pLineEditLayout);
+
+	QHBoxLayout * h = new QHBoxLayout;
+
+	h->setAlignment(Qt::AlignRight);
+	layout->addLayout(h);
+	b = new QPushButton(__tr2qs_ctx("&OK","options"));
+	b->setFixedWidth(80);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
+	h->addWidget(b);
 
-	b = new QPushButton(__tr2qs_ctx("Cancel","options"),h);
-	b->setMinimumWidth(80);
+	b = new QPushButton(__tr2qs_ctx("Cancel","options"));
+	b->setFixedWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-
-	g->setRowStretch(0,1);
-	g->setColumnStretch(0,1);
+	h->addWidget(b);
 }
 
 AvatarSelectionDialog::~AvatarSelectionDialog()
@@ -395,7 +399,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox,__tr2qs_ctx("Languages:","options"),KviOption_stringCtcpUserInfoLanguages);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here the short names of the languages you can speak. " \
-				"An example might be \"EN,IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
+				"An example might be \"EN, IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Other:","options"),KviOption_stringCtcpUserInfoOther);
 	sel->setMinimumLabelWidth(120);
@@ -716,9 +720,9 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	labels.append(__tr2qs_ctx("Name","options"));
 	labels.append(__tr2qs_ctx("Network","options"));
 	labels.append(__tr2qs_ctx("Nickname","options"));
-	labels.append(__tr2qs_ctx("Alt. Nick","options"));
+	labels.append(__tr2qs_ctx("Alternate nickname","options"));
 	labels.append(__tr2qs_ctx("Username","options"));
-	labels.append(__tr2qs_ctx("Realname","options"));
+	labels.append(__tr2qs_ctx("Real name","options"));
 	m_pTreeWidget->setHeaderLabels(labels);
 
 	KviTalToolTip::add(m_pTreeWidget, \
@@ -733,7 +737,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 
 	// Buttons box
 	KviTalHBox * pBtnBox = new KviTalHBox(this);
-	pLayout->addWidget(pBtnBox,2,0);
+	pLayout->addWidget(pBtnBox,2,0,1,3);
 
 	m_pBtnAddProfile = new QPushButton(__tr2qs_ctx("Add Profile","options"),pBtnBox);
 	connect(m_pBtnAddProfile,SIGNAL(clicked()),this,SLOT(addProfileEntry()));
@@ -946,7 +950,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 
 	KviTalHBox * pBox = new KviTalHBox(this);
 	pBox->setAlignment(Qt::AlignRight);
-	pLayout->addWidget(pBox,6,0);
+	pLayout->addWidget(pBox,6,1,1,2);
 
 	QPushButton * p = new QPushButton(__tr2qs_ctx("Cancel","options"),pBox);
 	//p->setMinimumWidth(100);
