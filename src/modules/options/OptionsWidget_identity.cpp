@@ -203,45 +203,50 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 {
 	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
 
-	QGridLayout * g = new QGridLayout(this);
+	QVBoxLayout * layout = new QVBoxLayout(this);
 
-	QString msg = "<left>";
-	msg += __tr2qs_ctx("Please select an avatar image. " \
-				"The full path to a local file or an image on the Web can be used.<br>" \
-				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
-				"button to browse local folders.<br>" \
-				"The full URL for an image (including <b>http://</b>) can be entered manually.","options");
-	msg += "</left><br>";
+	QString msg = __tr2qs_ctx("Please select an avatar image.\n\n" \
+				"The full path to a local file or an image on the Web can be used. " \
+				"If you wish to use a local image file, click the \"Browse\"" \
+				"button to browse local folders. " \
+				"The full URL for an image (including http:// or https://) can be entered manually.","options");
 
-	QLabel * l = new QLabel(msg,this);
+	QLabel * l = new QLabel(msg);
 	l->setMinimumWidth(250);
+	l->setWordWrap(true);
 
-	g->addWidget(l,0,0);
+	layout->addWidget(l);
 
-	m_pLineEdit = new QLineEdit(this);
+	m_pLineEdit = new QLineEdit;
 	m_pLineEdit->setText(szInitialPath);
-	m_pLineEdit->setMinimumWidth(100);
 
-	g->addWidget(m_pLineEdit,1,0,1,2);
+	m_pLineEdit->setMinimumWidth(300);
 
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
+	QHBoxLayout * pLineEditLayout = new QHBoxLayout;
+
+	pLineEditLayout->addWidget(m_pLineEdit,1);
+
+	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"));
+	b->setFixedWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
-	g->addWidget(b,1,2);
+	pLineEditLayout->addWidget(b,1);
 
-	KviTalHBox * h = new KviTalHBox(this);
-	h->setSpacing(8);
-	g->addWidget(h,2,1,1,2);
-	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
-	b->setMinimumWidth(80);
+	layout->addLayout(pLineEditLayout);
+
+	QHBoxLayout * h = new QHBoxLayout;
+
+	h->setAlignment(Qt::AlignRight);
+	layout->addLayout(h);
+	b = new QPushButton(__tr2qs_ctx("&OK","options"));
+	b->setFixedWidth(80);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
+	h->addWidget(b);
 
-	b = new QPushButton(__tr2qs_ctx("Cancel","options"),h);
-	b->setMinimumWidth(80);
+	b = new QPushButton(__tr2qs_ctx("Cancel","options"));
+	b->setFixedWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-
-	g->setRowStretch(0,1);
-	g->setColumnStretch(0,1);
+	h->addWidget(b);
 }
 
 AvatarSelectionDialog::~AvatarSelectionDialog()
