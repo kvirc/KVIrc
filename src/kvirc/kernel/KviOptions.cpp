@@ -1159,7 +1159,7 @@ namespace KviTheme
 				szPixPath.append(g_pIconManager->getSmallIconName(j));
 				szPixPath.append(".png");
 
-				if(!pix->save(szPixPath,"PNG",90))
+				if(!pix->isNull() && !pix->save(szPixPath,"PNG",90))
 				{
 					qDebug("Failed to save small icon %d into %s",j,szPixPath.toUtf8().data());
 					options.setLastError(__tr2qs("Failed to save one of the theme images"));
