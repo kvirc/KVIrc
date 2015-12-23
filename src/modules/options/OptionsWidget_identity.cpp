@@ -206,9 +206,8 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 	QVBoxLayout * layout = new QVBoxLayout(this);
 
 	QString msg = __tr2qs_ctx("Please select an avatar image.\n\n" \
-				"The full path to a local file or an image on the Web can be used. " \
-				"If you wish to use a local image file, click the \"Browse\"" \
-				"button to browse local folders. " \
+				"The full path to a local file or an image on the Web can be used.\n" \
+				"If you wish to use a local image file, click the \"Browse\" button to browse local folders.\n\n" \
 				"The full URL for an image (including http:// or https://) can be entered manually.","options");
 
 	QLabel * l = new QLabel(msg);
@@ -220,7 +219,7 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 	m_pLineEdit = new QLineEdit;
 	m_pLineEdit->setText(szInitialPath);
 
-	m_pLineEdit->setMinimumWidth(300);
+	m_pLineEdit->setMinimumWidth(450);
 
 	QHBoxLayout * pLineEditLayout = new QHBoxLayout;
 
