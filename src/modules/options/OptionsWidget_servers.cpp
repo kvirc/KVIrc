@@ -266,7 +266,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	if(n->autoJoinChannelList())
 		m_lstChannels = *(n->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
-		__tr2qs_ctx("Channels to Join Automatically Upon Connect","options"),&m_lstChannels,true);
+		__tr2qs_ctx("Channels to Join Automatically upon Connect","options"),&m_lstChannels,true);
 
 	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to a server in this network has been established. To add a channel, type its name in the " \
