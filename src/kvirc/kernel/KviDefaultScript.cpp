@@ -216,7 +216,8 @@ void KviDefaultScriptManager::restoreInternal()
 #define CHECK(__name,__global,__local) \
 	if(KviMiscUtils::compareVersions(__global,__local) == 1) \
 	{ \
-		*pszError = __tr2qs("There's something wrong in your personal data: my '%1' is %2, while yours is %3").arg(__name,__global,__local); \
+		if(pszError) \
+			*pszError = __tr2qs("There's something wrong in your personal data: my '%1' is %2, while yours is %3").arg(__name,__global,__local); \
 		return false; \
 	}
 
@@ -237,7 +238,8 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	if(cfgDate <= userDate)
 	{
 		m_bNoNeedToRestore = true;
-		*pszError = __tr2qs("Your default script is up to date.\nDo you want to restore it anyway?");
+		if(pszError)
+			*pszError = __tr2qs("Your default script is up to date.\nDo you want to restore it anyway?");
 		return true;
 	}
 
