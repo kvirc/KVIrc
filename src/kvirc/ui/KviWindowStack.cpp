@@ -130,10 +130,10 @@ void KviWindowStack::fillWindowPopup()
 		szItem+=". ";
 
 		szCaption = pWnd->windowTitle();
-		if(szCaption.length() > 30)
+		if(szCaption.length() > 60)
 		{
-			QString trail = szCaption.right(12);
-			szCaption.truncate(12);
+			QString trail = szCaption.right(27);
+			szCaption.truncate(27);
 			szCaption+="...";
 			szCaption+=trail;
 		}
