@@ -43,7 +43,7 @@ OptionsWidget_antispam::OptionsWidget_antispam(QWidget * parent)
 	connect(m_b2,SIGNAL(toggled(bool)),this,SLOT(reenableStuff(bool)));
 
 	m_b3 = addBoolSelector(0,1,0,1,__tr2qs_ctx("Silent anti-spam (no warnings)","options"),KviOption_boolSilentAntiSpam);
-	m_sl = addStringListSelector(0,2,0,2,__tr2qs_ctx("Words Considered Spam:","options"),KviOption_stringlistSpamWords);
+	m_sl = addStringListSelector(0,2,0,2,__tr2qs_ctx("Words considered spam:","options"),KviOption_stringlistSpamWords);
 
 	reenableStuff(true);
 

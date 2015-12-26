@@ -317,7 +317,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	KviNickServRuleSet * rs = n->nickServRuleSet();
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 
-	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
+	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ identification","options"),tab);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
 
 	KviTalToolTip::add(m_pNickServCheck,

@@ -38,8 +38,8 @@ OptionsWidget_ignore::OptionsWidget_ignore(QWidget * parent)
 	createLayout();
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Ignore for","options"));
-	m_pIgnorePrivmsg = addBoolSelector(g,__tr2qs_ctx("Private/channel messages","options"),KviOption_boolEnableIgnoreOnPrivMsg);
-	m_pIgnoreNotice  = addBoolSelector(g,__tr2qs_ctx("Private/channel notices","options"),KviOption_boolEnableIgnoreOnNotice);
+	m_pIgnorePrivmsg = addBoolSelector(g,__tr2qs_ctx("Private/Channel messages","options"),KviOption_boolEnableIgnoreOnPrivMsg);
+	m_pIgnoreNotice  = addBoolSelector(g,__tr2qs_ctx("Private/Channel notices","options"),KviOption_boolEnableIgnoreOnNotice);
 
 	connect(m_pIgnorePrivmsg,SIGNAL(toggled(bool)),this,SLOT(enableVerbose(bool)));
 

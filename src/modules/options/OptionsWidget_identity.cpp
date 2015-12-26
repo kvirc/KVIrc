@@ -705,7 +705,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
 	bool bEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
 
-	m_pProfilesCheck = new QCheckBox(__tr2qs_ctx("Enable Network Profiles","options"),this);
+	m_pProfilesCheck = new QCheckBox(__tr2qs_ctx("Enable network profiles","options"),this);
 	KviTalToolTip::add(m_pProfilesCheck,__tr2qs_ctx("This check enables the use of network profiles","options"));
 	m_pProfilesCheck->setChecked(bEnabled);
 	pLayout->addWidget(m_pProfilesCheck,0,0,1,3);
