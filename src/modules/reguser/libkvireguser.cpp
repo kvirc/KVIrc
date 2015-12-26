@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -309,7 +309,7 @@ static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.delmask[/cmd],
 		[fnc]$reguser.list[/fnc],
@@ -474,7 +474,7 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 	@short:
 		Sets ignore flags for registered user
 	@syntax:
-		reguser.setIgnoreFlags [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-q] <name:string>
+		reguser.setIgnoreFlags [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-h|--highlight] [-q] <name:string>
 	@switches:
 		!sw: -q | --quiet
 		Don't warn if the specified user doesn't exist. Just continue silently.
@@ -490,6 +490,8 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 		Sets ignore for invites
 		!sw: -d | --dcc
 		Sets ignore for DCC's
+		!sw: -h | --highlight
+		Sets ignore for highlights
 
 	@description:
 		Sets ignore flags for registered user
@@ -535,6 +537,8 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 			iIgnoreFlags |= KviRegisteredUser::Invite;
 		if(c->hasSwitch('d',"dcc"))
 			iIgnoreFlags |= KviRegisteredUser::Dcc;
+		if(c->hasSwitch('h',"highlight"))
+			iIgnoreFlags |= KviRegisteredUser::Highlight;
 		u->setIgnoreFlags(iIgnoreFlags);
 	}
 	return true;
@@ -558,6 +562,7 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 		n - notice ignore[br]
 		d - dcc ignore[br]
 		i - invite ignore[br]
+		h - highlight ignore[br]
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
@@ -593,6 +598,8 @@ static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
 			szFlags+='i';
 		if(u->ignoreFlags() & KviRegisteredUser::Dcc)
 			szFlags+='d';
+		if(u->ignoreFlags() & KviRegisteredUser::Highlight)
+			szFlags+='h';
 		c->returnValue()->setString(szFlags);
 
 	}
@@ -633,7 +640,7 @@ static bool reguser_kvs_fnc_isIgnoreEnabled(KviKvsModuleFunctionCall * c)
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
-		c->returnValue()->setBoolean(u->ignoreEnagled());
+		c->returnValue()->setBoolean(u->ignoreEnabled());
 
 	}
 	return true;
@@ -722,7 +729,7 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 		Returns an array of the entries in the registered users database.[br]
 		If <mask> is specified, only entries matching the <mask>
 		and the entries with no registration masks are listed.[br]
-		Please note that <mask> is a wildcard string that will match
+		Please note that the <mask> is a wildcard string that will match
 		wildcard strings... don't get messed with that :D[br]
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
@@ -809,15 +816,15 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 		KviPointerList<KviIrcMask> * ml = u->maskList();
 		if(u->matches(mask) || (ml->count() == 0))
 		{
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx(" User: %c%Q","register"),KviControlCodes::Bold,&(u->name()));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("User: %c%Q","register"),KviControlCodes::Bold,&(u->name()));
 
 			if(ml->count() == 0)
 			{
-				c->window()->output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("    Warning: this user has no registration masks","register"));
+				c->window()->output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Warning: this user has no registration masks","register"));
 			} else {
 				for(KviIrcMask * m = ml->first();m;m = ml->next())
 				{
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Mask: %Q!%Q@%Q","register"),&(m->nick()),&(m->user()),&(m->host()));
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Mask: %Q!%Q@%Q","register"),&(m->nick()),&(m->user()),&(m->host()));
 				}
 			}
 
@@ -828,10 +835,10 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 				while(pdit.current())
 				{
 					QString key = pdit.currentKey();
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Property: %Q=%Q","register"),&(key),pdit.current());
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Property: %Q=%Q","register"),&(key),pdit.current());
 					++pdit;
 				}
-			} else c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    No properties","register"));
+			} else c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("No properties","register"));
 			count++;
 		}
 		++it;
@@ -1156,7 +1163,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 		reguser.wizard [mask]
 	@description:
 		Allows registering an user with an intuitive and easy to use interface.
-		If [mask] is specified, it is used as inital mask in the dialog.
+		If [mask] is specified, it is used as initial mask in the dialog.
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],

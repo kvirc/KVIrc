@@ -6,12 +6,12 @@
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
-//   Copyright (C) 2014 OmegaPhil (OmegaPhil@startmail.com)
-//LinkDelegationPolicy
+//   Copyright (C) 2014 OmegaPhil (OmegaPhil at startmail dot com)
+//
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -103,12 +103,12 @@ const int frame_cod[] = {
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		This widget can be used to display a text or an image. It can
-		have different frame styles and text/image alignment.
+		This widget can be used to display a text or an image.[br]
+		It can have different frame styles and text/image alignment.
 	@functions:
 		!fn: $setText(<text:string>)
 		Sets the text to be displayed by the label.
-		The text can contain limited html tags.
+		The text can contain limited HTML tags.
 		See also [classfnc]$text[/classfnc]().
 		!fn: <string> $text()
 		Returns the text currently displayed by the label.
@@ -121,8 +121,8 @@ const int frame_cod[] = {
 		See also [classfnc]$margin[/classfnc]().
 		!fn: <string> $alignment()
 		Returns a string containing alignment flags that are set for
-		this label. The flags are separated by commas. An example output
-		could look like this:[br]
+		this label. The flags are separated by commas.[br]
+		An example output could look like this:[br]
 		[pre]Bottom, Right[/pre][br]
 		See [classfnc]$setAlignment[/classfnc]() for explanation of all
 		alignment flags.
@@ -140,7 +140,7 @@ const int frame_cod[] = {
 		Justify   - Text is spaced apart to cover available room[br]
 		[/pre]
 		It is obvious that you can not set [i]Right[/i]
-		and [i]Left[/i] simoultaneously - this will [b]NOT[/b]
+		and [i]Left[/i] simultaneously - this will [b]not[/b]
 		result in an error message - it will simply not work :)
 		!fn: $clear()
 		Clears the label. Equal to calling [classfnc]$setText[/classfnc]("")
@@ -156,22 +156,21 @@ const int frame_cod[] = {
 		The flags determine the shape or shadow of the
 		label's frame. Valid shape flags are:[br]
 		[pre]
-		NoFrame     - draw no frame. You shouldn't specify a shadow when
+		NoFrame   - Draw no frame. You shouldn't specify a shadow when
 		using this.[br]
-		Box         - draws a rectangular box. Its borders can be
+		Box       - Draws a rectangular box. Its borders can be
 		[i]Raised[/i] or [i]Sunken[/i][br]
-		Panel       - draws a rectangular panel which can be
+		Panel     - Draws a rectangular panel which can be
 		[i]Raised[/i] or [i]Sunken[/i][br]
-		WinPanel    - similar to [i]Panel[/i], but is more in Win95
-		style[br]
-		Hline        - draws a horizontal line that frames nothing (useful as separator)
+		WinPanel  - Similar to [i]Panel[/i], but is more in Win95 style[br]
+		Hline     - Draws a horizontal line that frames nothing (useful as separator)
 		[/pre]
 		Valid shadow flags are:[br]
 		[pre]
-		Plain       - no 3D effect (draws using foreground color)[br]
-		Raised      - makes the label look like it was raised above the
+		Plain     - No 3D effect (draws using foreground color)[br]
+		Raised    - Makes the label look like it was raised above the
 		parent widget[br]
-		Sunken      - makes the label look like it was "pushed" inside
+		Sunken    - Makes the label look like it was [i]pushed[/i] inside
 		the parent widget[br]
 		[/pre]
 		!fn: $setImage(<image_id>)

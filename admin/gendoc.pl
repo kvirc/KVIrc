@@ -11,7 +11,7 @@
 #   This program is FREE software. You can redistribute it and/or
 #   modify it under the terms of the GNU General Public License
 #   as published by the Free Software Foundation; either version 2
-#   of the License, or (at your opinion) any later version.
+#   of the License, or (at your option) any later version.
 #
 #   This program is distributed in the HOPE that it will be USEFUL,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,7 +44,7 @@ $g_bodylinkcolor="#000000";
 $g_tablebgcolor="#B4B4C8";
 $g_internaltablecolor="#D5D5D5";
 $g_classfnctablecolor="#D5D5D5";
-$g_classfncbodytablecolor="#E0E0E0";
+$g_classfncbodytablecolor="#EDEDED";
 $g_bodytablebgcolor="#EAEAEA";
 $g_commentcolor="#207500";
 $g_fileextension=".html";
@@ -196,19 +196,19 @@ sub print_header
 
 	print $g_filehandle "a:hover {\n";
 	print $g_filehandle " text-decoration: underline;\n";
-	print $g_filehandle " color: #1873d2;\n";
+	print $g_filehandle " color: #186CC4;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle "a:active {\n";
 	print $g_filehandle " text-decoration: underline;\n";
-	print $g_filehandle " color: #1873d2;\n";
+	print $g_filehandle " color: #186CC4;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".title-table-cell {\n";
-	print $g_filehandle " border-top-left-radius: 5px;\n";
-	print $g_filehandle " border-top-right-radius: 5px;\n";
-	print $g_filehandle " background-color: #BEBEF0;\n";
-	print $g_filehandle " background: linear-gradient(#B5E1FC,#4E94D2);\n";
+	print $g_filehandle " border-top-left-radius: 3px;\n";
+	print $g_filehandle " border-top-right-radius: 3px;\n";
+	print $g_filehandle " background-color: #F2DFB1;\n";
+	#print $g_filehandle " background: linear-gradient(#CBE4F2,#4E8ABF);\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".title-text {\n";
@@ -216,37 +216,37 @@ sub print_header
 	print $g_filehandle " font-size: 18pt;\n";
 	print $g_filehandle " font-weight: bold;\n";
 	print $g_filehandle " padding-bottom: 3px;\n";
-	print $g_filehandle " color: #ffffff;\n";
-	print $g_filehandle " text-shadow: 2px 2px 2px rgba(88,88,88,1);\n";
+	print $g_filehandle " color: #404040;\n";
+	print $g_filehandle " text-shadow: 0px 2px 0px rgba(247,247,247,1);\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".title-secondary-text {\n";
 	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 11pt;\n";
 	print $g_filehandle " padding-top: 3px;\n";
-	print $g_filehandle " color: #d0d0d0;\n";
-	print $g_filehandle " text-shadow: 1px 1px 1px rgba(88,88,88,1);\n";
+	print $g_filehandle " color: #474747;\n";
+	print $g_filehandle " text-shadow: 0px 2px 0px rgba(247,247,247,1);\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".subtitle-table-cell {\n";
-	print $g_filehandle " background-color: #cccccc;\n";
+	print $g_filehandle " background-color: #D6D6D6;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".subtitle-text {\n";
 	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 11pt;\n";
 	print $g_filehandle " color: #000000;\n";
-	print $g_filehandle " text-shadow: 1px 1px 1px rgba(110,110,110,1);\n";
+	print $g_filehandle " text-shadow: 0px 1px 0px rgba(247,247,247,1);\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".subsubtitle-table-cell {\n";
-	print $g_filehandle " background-color: #dadada;\n";
+	print $g_filehandle " background-color: #E3E3E3;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".subsubtitle-text {\n";
 	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " color: #4e4e4e;\n";
+	print $g_filehandle " color: #474747;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".syntax-text {\n";
@@ -278,11 +278,11 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".example-box a:hover {\n";
-	print $g_filehandle " color: #ff0020;\n";
+	print $g_filehandle " color: #FF2B46;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".example-box a:active {\n";
-	print $g_filehandle " color: #ff0020;\n";
+	print $g_filehandle " color: #FF2B46;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".comment-text {\n";
@@ -298,11 +298,11 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".comment-text a:hover {\n";
-	print $g_filehandle " color: #376A47;\n";
+	print $g_filehandle " color: #35BD58;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".comment-text a:active {\n";
-	print $g_filehandle " color: #376A47;\n";
+	print $g_filehandle " color: #35BD58;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".example-paren {\n";
@@ -347,11 +347,11 @@ sub print_header
 	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
 	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle " color: #670000;\n";
-	print $g_filehandle " background-color: #e0e0e0;\n";
+	print $g_filehandle " background-color: #EDEDED;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".switch-body-table-cell {\n";
-	#print $g_filehandle " background-color: #e0e0e0;\n";
+	#print $g_filehandle " background-color: #EDEDED;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".footer {\n";

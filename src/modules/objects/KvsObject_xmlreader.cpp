@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -38,11 +38,11 @@
 	@type:
 		class
 	@short:
-		A simple xml document parser
+		A simple XML document parser
 	@inherits:
 		[class]object[/class]
 	@description:
-		This class implements a really simple xml document parser.
+		This class implements a really simple XML document parser.
 		You will usually derive your own class from this one and reimplement
 		some of the events that it triggers.
 		You will typically reimplement [classfnc:xmlreader]$onElementStart[/classfnc]()
@@ -64,59 +64,51 @@
 		in the document, user abort etc...).
 		If this function return $false then you can call $lastError() to
 		obtain a descriptive error message.
-
 		!fn: <string> $lastError()
 		Returns the last error occurred inside the parser.
 		You will typically call this function when $parse() above returns $false.
-
 		!fn: <boolean> $onDocumentStart()
 		This function is called when the document parsing starts.
 		You can reimplement it in order to handle this notification.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-
 		!fn: <boolean> $onDocumentEnd()
 		This function is called when the document parsing terminates successfully.
 		You can reimplement it in order to handle this notification.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-
 		!fn: <boolean> $onElementStart(<qualified_name:string>,<attributes:hash>,<namespace:string>,<local_name:string>)
 		This function is called when an element opening tag is encountered.
 		The <qualified_name> of the tag is passed as the first parameter.
 		The <attributes> are passed in the form of a hash with attribute
 		values indexed by their names.
 		When the <qualified_name> contains a namespace then it is also reported
-		in the splitted <namespace> <local_name> pair.
+		in the split <namespace> <local_name> pair.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-
 		!fn: <boolean> $onElementEnd(<qualified_name:string>,<namespace:string>,<local_name:string>)
 		This function is called when an element closing tag is encountered.
 		The <qualified_name> of the tag is passed as the first parameter.
 		When the <qualified_name> contains a namespace then it is also reported
-		in the splitted <namespace> <local_name> pair.
+		in the split <namespace> <local_name> pair.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-
 		!fn: <boolean> $onText($0 = <text:string>)
 		This function is called when a chunk of text is encountered inside the document.
 		The parsed <text> chunk is passed as the first parameter.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-
 		!fn: <boolean> $onWarning(<message:string>)
 		This function is called when the parser generates a recoverable error.
 		The error <message> is passed as the first parameter.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-
 		!fn: <boolean> $onError(<message:string>)
 		This function is called when the parser generates an unrecoverable error.
 		The error <message> is passed as the first parameter.

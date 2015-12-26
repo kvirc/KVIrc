@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -79,24 +79,24 @@ const int align_cod[] = {
 		!fn: $addMultiCellWidget(<widget:object widget>,<start_row:uint>,<end_row:uint>,<start_col:uint>,<end_col:uint>)
 		Adds a widget to this layout spanning multiple grid cells
 		!fn: $setRowStretch(<row:uint>,<stretch:uint>)
-		Sets the stretch value for a particular row of this layout. The <stretch_value>
-		must be a positive integer. The rows with bigger stretch values will take more space
-		in the layout.
-                !fn: $setColumnStretch(<column:uint>,<stretch:uint>)
-		Sets the stretch value for a particular column in this layout. The <stretch_value>
-		must be a positive integer. The rows with bigger stretch values will take more space
-		in the layout.
+		Sets the stretch value for a particular row of this layout.[br]
+		The <stretch_value> must be a positive integer.[br]
+		The rows with bigger stretch values will take more space in the layout.
+		!fn: $setColumnStretch(<column:uint>,<stretch:uint>)
+		Sets the stretch value for a particular column in this layout.[br]
+		The <stretch_value> must be a positive integer.[br]
+		The rows with bigger stretch values will take more space in the layout.
 		!fn: $addRowSpacing(<row:uint>,<spacing:uint>)
 		Sets the minimum height of the specified <row> to <spacing> which must be a positive integer
 		!fn: $addColSpacing(<column:uint>,<spacing:uint>)
-		Sets the minimum width of the specigfied <column> to <spacing> which must be a positive integer
+		Sets the minimum width of the specified <column> to <spacing> which must be a positive integer
 		!fn: $setSpacing(<spacing:uint>)
 		Sets the default spacing of the widgets in pixels
 		!fn: $setMargin(<margin:uint>)
-		Sets the dimension of the layout margin : the distance from the border to the outermost child widget edges.
+		Sets the dimension of the layout margin: the distance from the border to the outermost child widget edges.
 		!fn: $setAlignment(<w:widget>, <flag1:string>, <flag2:string>, ...)
 		Sets the alignment for widget w to flags, given as parameters.
-		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center
+		Valid flags are: Right, Left, Top, Bottom, HCenter, VCenter, Center
 		!fn: $setResizeMode(<resize_mode:string>)
 		Sets the resize mode of the parent widget in relation to this layout.
 		<mode> can be one of:[br]

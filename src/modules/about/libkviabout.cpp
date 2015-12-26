@@ -12,7 +12,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -39,12 +39,20 @@ AboutDialog * g_pAboutDialog = 0;
 	@title:
 		about.kvirc
 	@short:
-		Shows the "about kvirc" dialog
+		Shows the "About KVIrc" dialog
 	@syntax:
 		about.kvirc
 	@description:
-		Shows the KVIrc "about dialog".
 		This command is exported by the "about" module.
+		This command opens a dialog which contains various tabs ranging from important to interesting information.
+		[b]About[/b] tab: shows the current KVIrc base version, release name and splash screen.[/br]
+		[b]Executable Information[/b] tab: contains important system and program information you can [b]copy and paste[/b] into e.g. a bug report or support request.[br]
+		[b]Honor & Glory[/b] tab: contains a non exhaustive list of the people who have contributed to help make KVIrc the IRC client you know and use today.[br]
+		[b]Licence[/b] tab: contains a copy (if present in the KVIrc package) of the license type and details associated with the KVIrc package.
+	@examples:
+		[example]
+		/about.kvirc
+		[/example]
 */
 
 

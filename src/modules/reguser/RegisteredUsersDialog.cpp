@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -190,7 +190,7 @@ void RegisteredUsersDialogItemDelegate::paint( QPainter * p, const QStyleOptionV
 					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KviIconManager::NotifyOnLine)));
 				else
 					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KviIconManager::NotifyOffLine)));
-				if(it->user()->ignoreEnagled())
+				if(it->user()->ignoreEnabled())
 					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KviIconManager::Ignore)));
 			}
 		}
@@ -271,19 +271,19 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
-	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select all","register"),vbox);
+	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select All","register"),vbox);
 	connect(m_pSelectAllButton,SIGNAL(clicked()),this,SLOT(selectAllClicked()));
 	m_pSelectAllButton->setToolTip(__tr2qs_ctx("Select all the entries","register"));
 	m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)));
 
-	m_pExportButton = new QPushButton(__tr2qs_ctx("Export To...","register"),vbox);
+	m_pExportButton = new QPushButton(__tr2qs_ctx("Export to...","register"),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
 	m_pExportButton->setToolTip(__tr2qs_ctx("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button.","register"));
 	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)));
 
 
-	m_pImportButton = new QPushButton(__tr2qs_ctx("Import From...","register"),vbox);
+	m_pImportButton = new QPushButton(__tr2qs_ctx("Import from...","register"),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
 	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
 	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)));
@@ -480,7 +480,7 @@ void RegisteredUsersDialog::rightButtonPressed ( QTreeWidgetItem * pItem, QPoint
             connect(groups,SIGNAL(triggered(QAction *)),this,SLOT(moveToGroupMenuClicked(QAction *)));
 
             QMenu *mainPopup = new QMenu;
-            mainPopup->addAction(__tr2qs_ctx("Move to group","register"))->setMenu(groups);
+            mainPopup->addAction(__tr2qs_ctx("Move to Group","register"))->setMenu(groups);
 			mainPopup->exec(pnt);
 		}
 	}
@@ -807,7 +807,7 @@ void RegisteredUsersDialog::exportClicked()
 
 
 write_error:
-	KviMessageBox::warning(__tr2qs_ctx("Can't export the registered users database: Write error.","register"));
+	KviMessageBox::warning(__tr2qs_ctx("Can't export the registered users database: write error.","register"));
 	f.close();
 	return;
 
@@ -893,7 +893,7 @@ void RegisteredUsersDialog::importClicked()
 			img=io.read();
 //			if(io.read())goto read_error;
 
-			if(img.isNull())qDebug("Ops.. readed a null image ?");
+			if(img.isNull())qDebug("Oops! Read a null image?");
 
 			QString fName = u->name();
 			KviFileUtils::adjustFilePath(fName);
@@ -920,7 +920,7 @@ void RegisteredUsersDialog::importClicked()
 
 
 read_error:
-	KviMessageBox::warning(__tr2qs_ctx("Can't import the registered users database: Read error.","register"));
+	KviMessageBox::warning(__tr2qs_ctx("Can't import the registered users database: read error.","register"));
 	f.close();
 	return;
 

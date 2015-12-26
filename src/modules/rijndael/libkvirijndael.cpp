@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -42,21 +42,21 @@
 	@short:
 		The Rijndael cryptographic engines
 	@title:
-		The rijndael module
+		The Rijndael module
 	@body:
-		The rijndael module exports six [doc:crypt_engines]cryptographic engines[/doc] based
+		The Rijndael module exports six [doc:crypt_engines]cryptographic engines[/doc] based
 		on the Advanced Encryption Standard algorithm called Rijndael. Rijndael was
 		originally written by Joan Daemen and Vincent Rijmen. The original Rijndael
 		description is available at http://www.esat.kuleuven.ac.be/~rijmen/rijndael/.[br]
 		It is a private key block cipher that has been designed to replace
-		the widely used DES, and it should provide at leas a decent security agains
+		the widely used DES, and it should provide at leas a decent security against
 		common attacks. Theoretically the best attack that one can perform on this cipher
 		is the "brute force" attack that requires a really massive parallel computation:
 		actually out of the possibilities of a common "hacker".[br]
 		My implementation allows the usage of 128, 192 and 256 bit keys
 		on 128 bit data blocks. The encrypted binary data buffer is then converted
-		into an ascii-string by using the base64 conversion or hex-digit-string representation.
-		The six engines are the six possible combinations of the key lengths and ascii-string
+		into an ASCII-string by using the base64 conversion or hex-digit-string representation.
+		The six engines are the six possible combinations of the key lengths and ASCII-string
 		conversions.
 */
 
@@ -113,7 +113,7 @@
 				encKeyLen = decKeyLen;
 			} else {
 				// both keys missing
-				setLastError(__tr2qs("Missing both encrypt and decrypt key: at least one is needed"));
+				setLastError(__tr2qs("Missing both encryption and decryption key: at least one is needed"));
 				return false;
 			}
 		}
@@ -190,13 +190,13 @@
 		switch(errCode)
 		{
 			case RIJNDAEL_SUCCESS: setLastError(__tr2qs("Error 0: success?")); break;
-			case RIJNDAEL_UNSUPPORTED_MODE: setLastError(__tr2qs("Unsupported crypt mode")); break;
+			case RIJNDAEL_UNSUPPORTED_MODE: setLastError(__tr2qs("Unsupported encryption mode")); break;
 			case RIJNDAEL_UNSUPPORTED_DIRECTION: setLastError(__tr2qs("Unsupported direction")); break;
 			case RIJNDAEL_UNSUPPORTED_KEY_LENGTH: setLastError(__tr2qs("Unsupported key length")); break;
 			case RIJNDAEL_BAD_KEY: setLastError(__tr2qs("Bad key data")); break;
 			case RIJNDAEL_NOT_INITIALIZED: setLastError(__tr2qs("Engine not initialized")); break;
 			case RIJNDAEL_BAD_DIRECTION: setLastError(__tr2qs("Invalid direction for this engine")); break;
-			case RIJNDAEL_CORRUPTED_DATA: setLastError(__tr2qs("Corrupted message data or invalid decrypt key")); break;
+			case RIJNDAEL_CORRUPTED_DATA: setLastError(__tr2qs("Corrupted message data or invalid decryption key")); break;
 			default: setLastError(__tr2qs("Unknown error")); break;
 		}
 	}
@@ -205,7 +205,7 @@
 	{
 		if(!m_pEncryptCipher)
 		{
-			setLastError(__tr2qs("Oops... Encryption cipher not initialized"));
+			setLastError(__tr2qs("Oops! Encryption cipher not initialized"));
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
@@ -258,7 +258,7 @@
 	{
 		if(!m_pDecryptCipher)
 		{
-			setLastError(__tr2qs("Oops... Decryption cipher not initialized"));
+			setLastError(__tr2qs("Oops! Decryption cipher not initialized"));
 			return KviCryptEngine::DecryptError;
 		}
 
@@ -432,7 +432,7 @@
 				encKeyLen = decKeyLen;
 			} else {
 				// both keys missing
-				setLastError(__tr2qs("Missing both encrypt and decrypt key: at least one is needed"));
+				setLastError(__tr2qs("Missing both encryption and decryption key: at least one is needed"));
 				return false;
 			}
 		}

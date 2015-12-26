@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -130,7 +130,7 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 			if(msg.unrecognized())
 			{
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-					__tr2qs("[Server parser]: Encountered problems while parsing the following message:"));
+					__tr2qs("[Server parser]: encountered problems while parsing the following message:"));
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
 					__tr2qs("[Server parser]: [%s][%s] %Q"),msg.prefix(),msg.command(),&szWText);
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,

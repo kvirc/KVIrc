@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -258,7 +258,11 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("EnableAwayListUpdates",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowAvatarsInUserlist",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserListStatisticLabel",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+#ifdef COMPILE_ON_MAC
+	BOOL_OPTION("ShowIconsInPopupMenus",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages),
+#else
 	BOOL_OPTION("ShowIconsInPopupMenus",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages),
+#endif
 	BOOL_OPTION("ScriptErrorsToDebugWindow",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowMinimizedDebugWindow",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowExtendedInfoInQueryLabel",true,KviOption_resetUpdateGui),
@@ -336,7 +340,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ShowUserFlagForChannelsInWindowList",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
 	BOOL_OPTION("EnableCustomCursorWidth",false,KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("ShowFavoriteServersOnly",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("RequireControlToCopy",false,KviOption_sectFlagIrcView)
+	BOOL_OPTION("RequireControlToCopy",false,KviOption_sectFlagIrcView),
+	BOOL_OPTION("Send64BitAckInDccRecv",false,KviOption_sectFlagDcc)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -1154,7 +1159,7 @@ namespace KviTheme
 				szPixPath.append(g_pIconManager->getSmallIconName(j));
 				szPixPath.append(".png");
 
-				if(!pix->save(szPixPath,"PNG",90))
+				if(!pix->isNull() && !pix->save(szPixPath,"PNG",90))
 				{
 					qDebug("Failed to save small icon %d into %s",j,szPixPath.toUtf8().data());
 					options.setLastError(__tr2qs("Failed to save one of the theme images"));
@@ -1192,6 +1197,9 @@ namespace KviTheme
 
 		int i;
 		int iResetFlags = 0;
+		#ifdef COMPILE_ON_MAC
+			bool bWerePopupMenuIconsEnabled = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
+		#endif
 
 		#undef READ_OPTIONS
 
@@ -1231,6 +1239,16 @@ namespace KviTheme
 
 		#undef READ_OPTIONS
 		#undef READ_ALL_OPTIONS
+
+		#ifdef COMPILE_ON_MAC
+			/* disregard what the theme says and apply no icons on menus if they
+			   weren't enabled before */
+			if (!bWerePopupMenuIconsEnabled)
+			{
+				KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus) = false;
+				g_boolOptionsTable[KviOption_boolShowIconsInPopupMenus].option = false;
+			}
+		#endif
 
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
 

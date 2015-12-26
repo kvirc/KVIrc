@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -84,7 +84,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumeric005)                           , // 005 RPL_BOUNCE, RPL_PROTOCTL, RPL_ISUPPORT
 	0,                                               // 006 RPL_MAP
 	0,                                               // 007 RPL_MAPEND
-	0,                                               // 008 RPL_SNOMASK
+	PTM(parseNumericSnomask),                        // 008 RPL_SNOMASK
 	0,                                               // 009 RPL_STATMEMTOT
 	0,                                               // 010 RPL_BOUNCE, RPL_REDIR, RPL_STATMEM
 	0,                                               // 011
@@ -118,7 +118,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 039
 	0,                                               // 040
 	0,                                               // 041
-	0,                                               // 042 RPL_YOURID
+	PTM(parseNumericYourUID),                        // 042 RPL_YOURID
 	0,                                               // 043 RPL_SAVENICK
 	0,                                               // 044
 	0,                                               // 045
@@ -498,7 +498,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 419 ERR_LENGTHTRUNCATED
 	0,                                               // 420
 	PTM(parseNumericUnknownCommand),                 // 421 ERR_UNKNOWNCOMMAND
-	0,                                               // 422 ERR_NOMOTD
+	PTM(parseNumericMotdMissing),                    // 422 ERR_NOMOTD
 	0,                                               // 423 ERR_NOADMININFO
 	0,                                               // 424 ERR_FILEERROR
 	0,                                               // 425 ERR_NOOPERMOTD
@@ -511,7 +511,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericNicknameProblem)               , // 432 ERR_ERRONEUSNICKNAME
 	PTM(parseNumericNicknameProblem)               , // 433 ERR_NICKNAMEINUSE
 	0,                                               // 434 ERR_SERVICENAMEINUSE, ERR_NORULES
-	0,                                               // 435 ERR_SERVICECONFUSED, ERR_BANONCHAN
+	PTM(parseNumericBanOnChan),                      // 435 ERR_SERVICECONFUSED, ERR_BANONCHAN
 	0,                                               // 436 ERR_NICKCOLLISION
 	PTM(parseNumericUnavailResource)               , // 437 ERR_UNAVAILRESOURCE, ERR_BANNICKCHANGE
 	0,                                               // 438 ERR_NICKTOOFAST, ERR_DEAD
@@ -519,7 +519,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 440 ERR_SERVICESDOWN
 	0,                                               // 441 ERR_USERNOTINCHANNEL
 	0,                                               // 442 ERR_NOTONCHANNEL
-	0,                                               // 443 ERR_USERONCHANNEL
+	PTM(parseNumericUserInChan),                     // 443 ERR_USERONCHANNEL
 	0,                                               // 444 ERR_NOLOGIN
 	0,                                               // 445 ERR_SUMMONDISABLED
 	0,                                               // 446 ERR_USERSDISABLED
@@ -537,8 +537,8 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 458 ERR_ACCEPTNOT
 	0,                                               // 459 ERR_NOHIDING
 	0,                                               // 460 ERR_NOTFORHALFOPS
-	0,                                               // 461 ERR_NEEDMOREPARAMS
-	0,                                               // 462 ERR_ALREADYREGISTERED
+	PTM(parseNumericNotEnoughParams),                // 461 ERR_NEEDMOREPARAMS
+	PTM(parseNumericAlreadyRegistered),              // 462 ERR_ALREADYREGISTERED
 	0,                                               // 463 ERR_NOPERMFORHOST
 	PTM(parseNumericPasswordIncorrect),              // 464 ERR_PASSWDMISMATCH
 	0,                                               // 465 ERR_YOUREBANNEDCREEP
@@ -578,7 +578,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 499 ERR_CHANOWNPRIVNEEDED
 	0,                                               // 500
 	0,                                               // 501 ERR_UMODEUNKNOWNFLAG, ERR_UNKNOWNSNOMASK
-	0,                                               // 502 ERR_USERSDONTMATCH
+	PTM(parseNumericUsersDontMatch),                 // 502 ERR_USERSDONTMATCH
 	0,                                               // 503 ERR_GHOSTEDCLIENT
 	0,                                               // 504 ERR_USERNOTONSERV
 	0,                                               // 505

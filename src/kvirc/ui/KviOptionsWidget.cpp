@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -94,6 +94,8 @@ void KviOptionsWidget::createLayout()
 	m_pLayout = new QGridLayout(this);//,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
 	m_pLayout->setMargin(3);
 	m_pLayout->setSpacing(2);
+	if(g_pApp->style()->metaObject()->className() == QString("QMacStyle"))
+		m_pLayout->setVerticalSpacing(8);
 }
 
 void KviOptionsWidget::createTabbedPage()

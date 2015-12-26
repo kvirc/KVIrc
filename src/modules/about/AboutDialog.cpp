@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -121,7 +121,7 @@ AboutDialog::AboutDialog()
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Runtime Info","about");
 	infoString += ":</b><br>";
-	infoString += __tr2qs_ctx("System Name","about");
+	infoString += __tr2qs_ctx("System name","about");
 	infoString += ": ";
 	infoString += KviOsInfo::name();
 #ifndef COMPILE_ON_MAC
@@ -129,53 +129,61 @@ AboutDialog::AboutDialog()
 	infoString += KviOsInfo::release();
 #endif
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("System Version","about");
+	infoString += __tr2qs_ctx("System version","about");
 	infoString += ": ";
 	infoString += KviOsInfo::version();
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("Architecture","about");
 	infoString += ": ";
 	infoString += KviOsInfo::machine();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Qt version","about");
+	infoString += ": ";
+	infoString += KviOsInfo::qtVersion();
 	infoString += "<br><br>";
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Build Info","about");
 	infoString += ":</b><br>";
-	infoString += __tr2qs_ctx("Build Date","about");
+	infoString += __tr2qs_ctx("Build date","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildDate();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("Sources Date","about");
+	infoString += __tr2qs_ctx("Sources date","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildSourcesDate();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("Revision Number","about");
+	infoString += __tr2qs_ctx("Revision number","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildRevision();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("System Name","about");
+	infoString += __tr2qs_ctx("System name","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildSystem();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("CPU Name","about");
+	infoString += __tr2qs_ctx("CPU name","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildCPU();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("Build Command","about");
+	infoString += __tr2qs_ctx("Build command","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildCommand();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("Build Flags","about");
+	infoString += __tr2qs_ctx("Build flags","about");
 	infoString += ": <br>&nbsp;&nbsp;&nbsp;";
 	QString flags = KviBuildInfo::buildFlags();
 	infoString += flags.replace(QRegExp(";"),"<br>&nbsp;&nbsp;&nbsp;");
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("Compiler Name","about");
+	infoString += __tr2qs_ctx("Compiler name","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildCompiler();
 	infoString += "<br>";
-	infoString += __tr2qs_ctx("Compiler Flags","about");
+	infoString += __tr2qs_ctx("Compiler flags","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildCompilerFlags();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Qt version","about");
+	infoString += ": ";
+	infoString += KviBuildInfo::qtVersion();
 
 	v->setText(infoString);
 
@@ -211,7 +219,7 @@ AboutDialog::AboutDialog()
 
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
-		szLicense = __tr2qs_ctx("Oops... Can't find the license file...\n" \
+		szLicense = __tr2qs_ctx("Oops! Can't find the license file.\n" \
 			"It MUST be included in the distribution...\n" \
 			"Please report to <pragma at kvirc dot net>","about");
 	}

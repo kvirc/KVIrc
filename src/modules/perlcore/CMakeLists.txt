@@ -12,8 +12,12 @@ if(COMPILE_PERL_SUPPORT)
 		OUTPUT_VARIABLE PERL_COMPILE_FLAGS
 	)
 
-if(APPLE)
-	# OS X has too old perl 5.16 which is incompatible with C++11
+if(CMAKE_COMPILER_IS_GNUCXX)
+	# GCC whines because perl isn't extremely C++11 compliant
+	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-literal-suffix")
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+	# If the perl version is too old, clang will throw errors due to C++11
+	# incompatiblities
 	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-reserved-user-defined-literal")
 endif()
 
@@ -32,6 +36,16 @@ if(MSVC)
 	# breaks with -nodefaultlib
 	string(REPLACE " -nodefaultlib" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 endif()
+
+if(APPLE)
+	# ldopts contains all archs supported by the current platform, but we
+	# only want those we specified in CMAKE_OSX_ARCHITECTURES.
+	string(REGEX REPLACE "-arch [-a-zA-Z0-9_]*" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
+	foreach (arch ${CMAKE_OSX_ARCHITECTURES})
+		set(PERL_LINK_FLAGS " -arch ${arch} ${PERL_LINK_FLAGS}")
+	endforeach(arch)
+endif()
+
 	# Remove new line characters
 	string(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 	# Remove leading and trailing spaces (string strip)

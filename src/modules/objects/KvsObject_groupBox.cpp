@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -52,9 +52,9 @@ const int align_cod[] = {
 /*
 	@doc:	groupbox
 	@keyterms:
-		groupbox object class,
+		groupbox, group
 	@title:
-		groupbox class
+		groupbox object class
 	@type:
 		class
 	@short:
@@ -65,21 +65,21 @@ const int align_cod[] = {
 	@description:
 		This widget can be used to display a groupbox.
 		It will be usually a parent for other child controls.
-		You can either use a child layout to manage the children geometries
+		You can either use a child layout to manage the child geometries
 		or use $setColumnLayout to manage the layout automatically.
 	@functions:
 		!fn: $setTitle(<text:String>)
 		Sets the group box title to <text>.
 		!fn: <string> $title()
-		Returns the group box title text.
+		Returns the groupbox title text.
 		!fn: $setFlat(<bflag:boolean>)
 		Sets whether the group box is painted flat. Valid Values are 1 or 0.
 		!fn: <boolean> $isFlat()
-		Returns 1 (true) if the group box is painted flat; otherwise returns 0 (false).
+		Returns 1 (true) if the groupbox is painted flat; otherwise returns 0 (false).
 		!fn: <boolean> $isCheckable()
 		Returns 1 (true) if the group box has a checkbox in its title; otherwise returns 0 (false).
 		!fn: $setCheckable(<bflag:boolean>)
-		Sets whether the group box has a checkbox in its title: Valid values are 1 or 0.
+		Sets whether the groupbox has a checkbox in its title: Valid values are 1 or 0.
 		!fn: $setInsideMargin(<margin:uint>)
 		Sets the the width of the inside margin to m pixels.
 		!fn: <integer> $insideMargin()
@@ -91,47 +91,44 @@ const int align_cod[] = {
 		!fn: $addSpace()
 		Adds an empty cell at the next free position.
 		!fn: <string> $alignment()
-		Returns the alignment of the group box title.
+		Returns the alignment of the groupbox title.
 		!fn: $setAlignment(<alignment:string>)
-		Set the alignment of the groupbox;  Valid values are Left,Right,HCenter.
+		Set the alignment of the groupbox;  Valid values are: Left, Right, HCenter.
 		!fn: $setOrientation<orientation:string>
-		Sets the group box's orientation. Valid values are: Horizontal, Vertical.
+		Sets the groupbox's orientation. Valid values are: Horizontal, Vertical.
 	@examples:
 		[example]
-			//Let's start.
-			//First we'll create the main widget. as a dialog
+			[comment]//First we'll create the main widget. as a dialog[/comment]
 			%widget=$new(dialog)
 			%layout=$new(layout,%widget)
-			//then the groupbox
+			[comment]//Then the groupbox[/comment]
 			%gb=$new(groupbox,%widget)
 			%gb->$setTitle(Login)
 			%gb->$setAlignment("Left")
-			// add the gbox to the main layout
+			[comment]//Add the groupbox to the main layout[/comment]
 			%layout->$addWidget(%gb,0,0)
-			// now we create the user field  (labels + lineedit)
-			// in a horizontal box
+			[comment]//Now we create the user field 
+			(labels + lineedit) in a horizontal box[/comment]
 			%hbox=$new(hbox,%gb)
 			%labeluser=$new(label,%hbox)
 			%labeluser->$settext(User: )
 			%inputuser=$new(lineedit,%hbox)
-			//now we create the pass field  (labels + lineedit).
-			// in a horizontal box
+			[comment]//Now we create the password field 
+			(labels + lineedit) in a horizontal box[/comment]
 			%hbox=$new(hbox,%gb)
 			%labelpass=$new(label,%hbox)
 			%labelpass->$settext(Pass: )
 			%inputpass=$new(lineedit,%hbox)
 			%inputpass->$setechomode("password")
-			// now we create the ok/cancel box buttons
+			[comment]//Now we create the OK/Cancel box buttons[/comment]
 			%hbox=$new(hbox,%gb)
 			%btnok=$new(button,%hbox)
 			%btnok->$settext("OK")
 			%btncancel=$new(button,%hbox)
 			%btncancel->$settext("Cancel")
-
-			//Let's show our nice form
+			[comment]//Let's show our nice form[/comment]
 			%widget->$show()
 		[/example]
-
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_groupBox,"groupbox","widget")
@@ -275,7 +272,7 @@ KVSO_CLASS_FUNCTION(groupBox,addSpace)
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iSpace;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("colums",KVS_PT_UNSIGNEDINTEGER,0,iSpace)
+		KVSO_PARAMETER("columns",KVS_PT_UNSIGNEDINTEGER,0,iSpace)
 	KVSO_PARAMETERS_END(c)
 	(((KviTalGroupBox *)widget())->addSpace(iSpace));
 	return true;

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -75,13 +75,11 @@ KviToolBar::~KviToolBar()
 	}
 }
 
-#define VALID_ICONSIZES_NUM 4
+#define VALID_ICONSIZES_NUM 2
 static KviToolBar::IconSizes valid_iconsizes[VALID_ICONSIZES_NUM] =
 {
 	{ 16, "Small (16x16)"  },
-	{ 22, "Medium (22x22)" },
 	{ 32, "Large (32x32)"  },
-	{ 48, "Huge (48x48)"   }
 };
 
 #define VALID_BUTTONSTYLES_NUM 5

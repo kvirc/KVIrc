@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -72,17 +72,21 @@
 
 		QGridLayout * pLayout = new QGridLayout(this);
 
+		QHBoxLayout * pTitleLayout = new QHBoxLayout;
+
 		QLabel * pLabel = new QLabel(this);
 		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Locked)));
-		pLayout->addWidget(pLabel,0,0);
+		pTitleLayout->addWidget(pLabel,0);
 		pLabel = new QLabel(__tr2qs("Cryptography/text transformation"),this);
-		pLayout->addWidget(pLabel,0,1,1,3);
+		pTitleLayout->addWidget(pLabel,1);
+
+		pLayout->addLayout(pTitleLayout,0,0);
 
 		QFrame * pFrame = new QFrame(this);
 		pFrame->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 		pLayout->addWidget(pFrame,1,0,1,4);
 
-		m_pEnableCheck = new QCheckBox(__tr2qs("Use the crypt engine"),this);
+		m_pEnableCheck = new QCheckBox(__tr2qs("Use the encryption engine"),this);
 		pLayout->addWidget(m_pEnableCheck,2,0,1,4);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
@@ -90,11 +94,11 @@
 		connect(m_pListBox,SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),this,SLOT(engineHighlighted(QListWidgetItem *, QListWidgetItem *)));
 		pLayout->addWidget(m_pListBox,3,0,6,1);
 
-		m_pDescriptionLabel = new QLabel(this);
-		m_pDescriptionLabel->setWordWrap(true);
-		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-		pLayout->addWidget(m_pDescriptionLabel,3,1,1,3);
+		m_pDescriptionText = new QTextEdit(this);
+		m_pDescriptionText->setReadOnly(true);
+		m_pDescriptionText->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+		m_pDescriptionText->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+		pLayout->addWidget(m_pDescriptionText,3,1,1,3);
 
 		m_pAuthorLabel = new QLabel(this);
 		m_pAuthorLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
@@ -125,8 +129,10 @@
 		pLayout->addWidget(m_pDecryptHexKeyCheck,8,3);
 
 		m_pOkButton = new QPushButton(__tr2qs("OK"),this);
-		pLayout->addWidget(m_pOkButton,9,0,1,4);
+		pLayout->addWidget(m_pOkButton,9,2,1,2);
+		m_pOkButton->setMinimumWidth(80);
 		connect(m_pOkButton,SIGNAL(clicked()),this,SLOT(okClicked()));
+		m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 
 		pLayout->setRowStretch(3,1);
 		pLayout->setColumnStretch(2,1);
@@ -191,7 +197,7 @@
 			szDesc += pEngine->m_szDescription.toUtf8().data();
 			szDesc += "<br><br>";
 			szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
-			m_pDescriptionLabel->setText(szDesc);
+			m_pDescriptionText->setText(szDesc);
 			m_pEnableEncrypt->setEnabled(pEngine->m_iFlags & KviCryptEngine::CanEncrypt);
 			m_pEncryptKeyLabel->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanEncrypt) &&
 				(pEngine->m_iFlags & KviCryptEngine::WantEncryptKey));
@@ -222,7 +228,7 @@
 	{
 		m_pListBox->setEnabled(bEnabled);
 		m_pAuthorLabel->setEnabled(bEnabled && m_pLastItem);
-		m_pDescriptionLabel->setEnabled(bEnabled && m_pLastItem);
+		m_pDescriptionText->setEnabled(bEnabled && m_pLastItem);
 		bool bCanDecrypt = m_pLastItem ? m_pLastItem->m_iFlags & KviCryptEngine::CanDecrypt : false;
 		bool bCanEncrypt = m_pLastItem ? m_pLastItem->m_iFlags & KviCryptEngine::CanEncrypt : false;
 		m_pEnableEncrypt->setEnabled(bEnabled && bCanEncrypt);
@@ -242,8 +248,8 @@
 
 		m_pEnableCheck->setEnabled(false);
 		enableWidgets(false);
-		m_pDescriptionLabel->setText(__tr2qs("Sorry, no crypt engines available"));
-		m_pDescriptionLabel->setEnabled(true); // we want this text to be visible.
+		m_pDescriptionText->setText(__tr2qs("Sorry, no encryption engines available"));
+		m_pDescriptionText->setEnabled(true); // we want this text to be visible.
 		m_pOkButton->setEnabled(false);
 	}
 
@@ -262,7 +268,7 @@
 					m_pSessionInfo->m_pEngine = g_pCryptEngineManager->allocateEngine(m_pLastItem->m_szName.toUtf8().data());
 					if(!m_pSessionInfo->m_pEngine)
 					{
-						m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't create an engine instance: crypting disabled"));
+						m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: can't create an engine instance: encryption disabled"));
 						delete m_pSessionInfo;
 						m_pSessionInfo = 0;
 					} else {
@@ -273,7 +279,7 @@
 							g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->m_pEngine);
 							delete m_pSessionInfo;
 							m_pSessionInfo = 0;
-							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't initialize the engine :%s"),szErrStr.toUtf8().data());
+							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: can't initialize the engine: %s"),szErrStr.toUtf8().data());
 						} else {
 							// ok, engine ready and waiting...
 							m_pSessionInfo->m_szEngineName = m_pLastItem->m_szName;
@@ -281,7 +287,7 @@
 							m_pSessionInfo->m_bDoDecrypt = m_pEnableDecrypt->isChecked();
 						}
 					}
-				} else m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: You have to enable encryption and/or decryption for the engine to work"));
+				} else m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Encryption: you have to enable encryption and/or decryption for the engine to work"));
 			}
 		}
 		emit done();

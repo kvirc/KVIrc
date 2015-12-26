@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -462,7 +462,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	m_pPopup->setEnabled(false);
 	pAdvLayout->addWidget(m_pPopup,4,1);
 
-	m_pRaw = new QCheckBox(__tr2qs("Raw Events"),m_pAdvanced);
+	m_pRaw = new QCheckBox(__tr2qs("RAW Events"),m_pAdvanced);
 	m_pRaw->setChecked(true);
 	m_pRaw->setEnabled(false);
 	pAdvLayout->addWidget(m_pRaw,5,0);

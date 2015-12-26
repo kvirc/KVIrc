@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -55,7 +55,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 		KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = KVI_VERBOSITY_LEVEL_NORMAL;
 	m_pVerbosityCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
 
-	pLabel = new QLabel(__tr2qs_ctx("Datetime format","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("DateTime format:","options"),this);
 	addWidgetToLayout(pLabel,0,1,0,1);
 
 	m_pDatetimeCombo = new QComboBox(this);

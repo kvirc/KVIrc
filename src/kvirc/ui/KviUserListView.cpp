@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -1887,16 +1887,16 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			{
 				if(pEntry->globalData()->isIrcOp())
 				{
-					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::SexIrcOp);
-					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::AlienIrcOp);
+					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-16)/2,*pIco);
 				} else if(pEntry->globalData()->gender()!=KviIrcUserEntry::Unknown) {
 					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? KviIconManager::SexMale : KviIconManager::SexFemale);
-					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
+					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-16)/2,*pIco);
 				} else if(pEntry->globalData()->isBot()) {
-					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::SexBot);
-					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::IrcBot);
+					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-16)/2,*pIco);
 				}
-				iTheX +=11;
+				iTheX +=16;
 			}
 
 			if(bShowState)

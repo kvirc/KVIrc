@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -59,9 +59,9 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pRequestButton = new QToolButton(box);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
-	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Links)));
+	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Update)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestLinks()));
-	m_pRequestButton->setToolTip(__tr2qs("Request Links"));
+	m_pRequestButton->setToolTip(__tr2qs("Request links"));
 
 	QLabel * l = new QLabel(box);
 	box->setStretchFactor(l,1);
@@ -119,7 +119,7 @@ void LinksWindow::requestLinks()
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent links request, waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot request links: no active connection"));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Can't request links: no active connection"));
 	}
 }
 
@@ -132,7 +132,7 @@ void LinksWindow::connectionStateChange()
 		QString szTmp = QString(__tr2qs("Connected to %1 (%2)")).arg(m_pConsole->connection()->currentServerName(),m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
-		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: not connected to a server"));
+		m_pInfoLabel->setText(__tr2qs("Links can't be requested: not connected to a server"));
 	}
 }
 
@@ -229,7 +229,7 @@ void LinksWindow::endOfLinks()
 			it = insertLink(l);
 			if(!it)
 			{
-				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
+				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
 					l->parent.ptr(),l->host.ptr(),l->hops,l->description.ptr());
 				brokenLinks++;
 				QString szTmp = QString(__tr2qs("%1: Parent link %2")).arg(l->description.ptr(),l->parent.ptr());
@@ -241,7 +241,7 @@ void LinksWindow::endOfLinks()
 					it->setText(1,QString(tmp2.ptr()));
 					it->setText(2,szTmp);
 				} else {
-					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
+					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: no root link was sent by the server, the stats may be invalid."));
 					it = new QTreeWidgetItem(m_pListView);
 					it->setText(0,QString(l->host.ptr()));
 					it->setText(1,QString(tmp2.ptr()));

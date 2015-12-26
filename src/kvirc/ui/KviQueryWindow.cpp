@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -90,7 +90,7 @@ KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szN
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 
-	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Show User List"),buttonContainer(),true);
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Show user list"),buttonContainer(),true);
 	m_pListViewButton->setObjectName("list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
@@ -98,7 +98,7 @@ KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szN
 	createCryptControllerButton(m_pButtonGrid);
 #endif
 
-	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query Targets"),"user_list_view");
+	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query targets"),"user_list_view");
 
 	m_pInput = new KviInput(this,m_pUserListView);
 
@@ -568,7 +568,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					{
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
 							&szBuffer,&szEngineError);
 					}
 					break;
@@ -841,7 +841,7 @@ QByteArray KviQueryWindow::loadLogFile(const QString & szFileName, bool bGzip)
 
 			gzclose(logFile);
 		} else {
-			qDebug("Cannot open compressed file %s",szFileName.toUtf8().data());
+			qDebug("Can't open compressed file %s",szFileName.toUtf8().data());
 		}
 
 	} else {

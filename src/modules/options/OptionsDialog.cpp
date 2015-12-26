@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -179,6 +179,7 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSortingEnabled(false);
 	m_pTreeWidget->setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
+	m_pTreeWidget->setCurrentItem(NULL);
 
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 

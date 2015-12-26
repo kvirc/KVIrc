@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -219,7 +219,7 @@ void OptionsWidget_textEncoding::commit()
 		g_szPrevSettedLocale=m_pForcedLocaleCombo->itemText(idx);
 		if(!KviFileUtils::writeFile(szLangFile,m_pForcedLocaleCombo->itemText(idx)))
 		{
-			QMessageBox::critical(this,"KVIrc",__tr2qs_ctx("Unable to write language information to","options")+"\n"+szLangFile,__tr2qs_ctx("Ok","options"));
+			QMessageBox::critical(this,"KVIrc",__tr2qs_ctx("Unable to write language information to","options")+"\n"+szLangFile,__tr2qs_ctx("OK","options"));
 		}
 	}
 /*	if(!KviQString::equalCI(m_pForcedLocaleCombo->text(idx),m_szLanguage))

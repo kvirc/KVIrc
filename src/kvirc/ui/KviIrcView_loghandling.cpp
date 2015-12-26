@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -77,14 +77,15 @@ void KviIrcView::stopLogging()
 				bytes=m_pLogFile->readAll();
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
-				gzFile file=gzopen(QFile::encodeName(fi.absoluteFilePath()).data(),"ab9");
+				QString szFname=fi.absolutePath()+QString("/")+fi.completeBaseName();
+				gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(),"ab9");
 				if(file)
 				{
 					gzwrite(file,bytes.data(),bytes.size());
 					gzclose(file);
 					m_pLogFile->remove();
 				} else {
-					qDebug("Cannot open compressed stream");
+					qDebug("Can't open compressed stream");
 				}
 			}
 		}
@@ -132,7 +133,7 @@ void KviIrcView::flushLog()
 					gzclose(file);
 					m_pLogFile->remove();
 				} else {
-					qDebug("Cannot open compressed stream");
+					qDebug("Can't open compressed stream");
 				}
 			}
 			m_pLogFile->open(QIODevice::Append|QIODevice::WriteOnly);
@@ -262,7 +263,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		tmp = szMessageType.toUtf8();
 
 		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
-			qDebug("WARNING : Can not write to the log file.");
+			qDebug("WARNING: can't write to the log file.");
 	}
 
 	if(bPrependDate)
@@ -285,12 +286,12 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		tmp = szDate.toUtf8();
 
 		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
-			qDebug("WARNING : Can not write to the log file.");
+			qDebug("WARNING: can't write to the log file.");
 	}
 
 	tmp = szBuffer.toUtf8();
 	tmp.append('\n');
 
 	if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
-		qDebug("WARNING : Can not write to the log file.");
+		qDebug("WARNING: can't write to the log file.");
 }

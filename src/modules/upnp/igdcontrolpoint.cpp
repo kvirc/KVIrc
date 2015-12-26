@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -52,7 +52,7 @@ IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QStrin
 , m_pRootService(0)
 , m_pWanConnectionService(0)
 {
-	qDebug() << "CREATED UPnP::IgdControlPoint: Created control point"
+	qDebug() << "CREATED UPnP::IgdControlPoint: created control point"
 		<< " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
 
 	qDebug() << "UPnP::IgdControlPoint: querying services..." << endl;
@@ -123,15 +123,15 @@ void IgdControlPoint::slotDeviceQueried(bool error)
 
 			m_bGatewayAvailable = true;
 
-			qDebug() << "UPnP::IgdControlPoint: wan/ipconnection service found, "
-					<< "querying service '" << params.serviceId << "' for external ip address..." << endl;
+			qDebug() << "UPnP::IgdControlPoint: WAN/IP connection service found, "
+					<< "querying service '" << params.serviceId << "' for external IP address..." << endl;
 
 			// Call the service
 			m_pWanConnectionService = new WanConnectionService(params);
 			connect(m_pWanConnectionService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
 			m_pWanConnectionService->queryExternalIpAddress();
 		} else {
-			qDebug() << "UPnP::IgdControlPoint: no ppp/ipconnection service found :(" << endl;
+			qDebug() << "UPnP::IgdControlPoint: no PPP/IP connection service found :(" << endl;
 		}
 	}
 }
@@ -142,10 +142,10 @@ void IgdControlPoint::slotWanQueryFinished(bool error)
 {
 	if(! error)
 	{
-		qDebug() << "IgdControlPoint: UPnP Gateway Device found." << endl;
+		qDebug() << "IgdControlPoint: UPnP gateway device found." << endl;
 	} else {
 		// Just started, the request for the external IP failed. This should succeed, abort portation
-		qDebug() << "Requesting external IP address failed, leaving UPnP Gateway Device untouched." << endl;
+		qDebug() << "Requesting external IP address failed, leaving UPnP gateway device untouched." << endl;
 	}
 }
 

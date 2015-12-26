@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -73,9 +73,9 @@ OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
 		"When this option is disabled, KVIrc will wait for the server " \
 		"to close the connection.<br>" \
 		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Prepend avatar info to realname","options"),KviOption_boolPrependAvatarInfoToRealname);
-	addBoolSelector(0,3,0,3,__tr2qs_ctx("Prepend smart nick color info to realname","options"),KviOption_boolPrependNickColorInfoToRealname);
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to real name","options"),KviOption_boolPrependGenderInfoToRealname);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Prepend avatar info to real name","options"),KviOption_boolPrependAvatarInfoToRealname);
+	addBoolSelector(0,3,0,3,__tr2qs_ctx("Prepend smart nick color info to real name","options"),KviOption_boolPrependNickColorInfoToRealname);
 	addRowSpacer(0,4,0,4);
 }
 

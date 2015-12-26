@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -93,8 +93,6 @@ AddonListViewItem::AddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
 AddonListViewItem::~AddonListViewItem()
 {
 	delete m_pAddon;
-
-
 }
 
 AddonManagementDialog::AddonManagementDialog(QWidget * p)
@@ -122,19 +120,19 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	m_pConfigureButton = new QToolButton(hb);
 	m_pConfigureButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_ADDONS)));
 	m_pConfigureButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pConfigureButton,__tr2qs_ctx("Configure Addon...","addon"));
+	KviTalToolTip::add(m_pConfigureButton,__tr2qs_ctx("Configure addon...","addon"));
 	connect(m_pConfigureButton,SIGNAL(clicked()),this,SLOT(configureScript()));
 
 	m_pHelpButton = new QToolButton(hb);
 	m_pHelpButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_HELP)));
 	m_pHelpButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pHelpButton,__tr2qs_ctx("Show Help","addon"));
+	KviTalToolTip::add(m_pHelpButton,__tr2qs_ctx("Show help","addon"));
 	connect(m_pHelpButton,SIGNAL(clicked()),this,SLOT(showScriptHelp()));
 
 	m_pUninstallButton = new QToolButton(hb);
 	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pUninstallButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Addons","addon"));
+	KviTalToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete selected addon","addon"));
 	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
 
 	sep = new QFrame(hb);
@@ -144,7 +142,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	m_pPackButton = new QToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pPackButton,__tr2qs_ctx("Create an Addon as a Distributable Package","addon"));
+	KviTalToolTip::add(m_pPackButton,__tr2qs_ctx("Create an addon as a distributable package","addon"));
 	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
 
 	sep = new QFrame(hb);
@@ -154,13 +152,13 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	tb->setIconSize(QSize(32,32));
-	KviTalToolTip::add(tb,__tr2qs_ctx("Install Addon Package From Disk","addon"));
+	KviTalToolTip::add(tb,__tr2qs_ctx("Install addon package from disk","addon"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installScript()));
 
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	tb->setIconSize(QSize(32,32));
-	KviTalToolTip::add(tb,__tr2qs_ctx("Get More Addons...","addon"));
+	KviTalToolTip::add(tb,__tr2qs_ctx("Get more addons...","addon"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreScripts()));
 
 	QWidget *w= new QWidget(hb);
@@ -305,7 +303,7 @@ void AddonManagementDialog::installScript()
 
 	if(!KviFileDialog::askForOpenFileName(
 		szFileName,
-		__tr2qs_ctx("Please select the addon installation file","addon"),
+		__tr2qs_ctx("Please Select the Addon Installation File","addon"),
 		QString(),KVI_FILTER_ADDON,false,true,this
 		)) return;
 

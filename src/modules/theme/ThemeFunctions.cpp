@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -51,7 +51,7 @@ namespace ThemeFunctions
 
 	static bool notAValidThemePackage(QString &szError)
 	{
-		szError = __tr2qs_ctx("The selected file does not seem to be a valid KVIrc theme package","theme");
+		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc theme package","theme");
 		return false;
 	}
 
@@ -71,9 +71,9 @@ namespace ThemeFunctions
 
 		if(!r.readHeader(szThemePackageFileName))
 		{
-			qDebug("The selected file does not seem to be a valid KVIrc package");
+			qDebug("The selected file doesn't seem to be a valid KVIrc package");
 			QString szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %1","theme")).arg(szErr);
+			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1","theme")).arg(szErr);
 			return false;
 		}
 
@@ -367,7 +367,11 @@ namespace ThemeFunctions
 		if(bMaximizeFrame)
 			g_pMainWindow->showMaximized();
 
+#if (QT_VERSION >= 0x050000)
+		QPixmap pix = g_pMainWindow->grab();
+#else
 		QPixmap pix = QPixmap::grabWidget(g_pMainWindow);
+#endif
 		bool bResult = true;
 
 		if(pix.isNull())

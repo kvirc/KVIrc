@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -118,7 +118,7 @@ void SsdpConnection::slotDataReceived()
 // Send a broadcast to detect all devices
 void SsdpConnection::queryDevices(int bindPort)
 {
-	qDebug() << "UPnP::SsdpConnection: Sending broadcast packet." << endl;
+	qDebug() << "UPnP::SsdpConnection: sending broadcast packet." << endl;
 
 	// Send a packet to a broadcast address
 	QHostAddress address("239.255.255.250");
@@ -134,7 +134,7 @@ void SsdpConnection::queryDevices(int bindPort)
 	bool success = m_pSocket->bind(bindPort);
 	if(! success)
 	{
-		qDebug() << "UPnP::SsdpConnection: Failed to bind to port " << bindPort << "." << endl;
+		qDebug() << "UPnP::SsdpConnection: failed to bind to port " << bindPort << "." << endl;
 	}
 
 	// Send the data
@@ -143,7 +143,7 @@ void SsdpConnection::queryDevices(int bindPort)
 
 	if(bytesWritten == -1)
 	{
-		qDebug() << "UPnP::SsdpConnection: Failed to send the UPnP broadcast packet." << endl;
+		qDebug() << "UPnP::SsdpConnection: failed to send the UPnP broadcast packet." << endl;
 	}
 }
 

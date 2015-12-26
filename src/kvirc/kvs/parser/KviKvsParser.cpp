@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -107,7 +107,7 @@ void KviKvsParser::report(bool bError,const QChar * pLocation,const QString &szM
 void KviKvsParser::errorBadChar(const QChar * pLocation,char cExpected,const char * szCommandName)
 {
 	if(pLocation->unicode())
-		error(pLocation,__tr2qs_ctx("Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %s\" for the command syntax","kvs"),
+		error(pLocation,__tr2qs_ctx("Found character '%q' (Unicode 0x%x) where '%c' was expected: see \"/help %s\" for the command syntax","kvs"),
 			pLocation,pLocation->unicode(),cExpected,szCommandName);
 	else
 		error(pLocation,__tr2qs_ctx("Found end of input where character '%c' was expected: see \"/help %s\" for the command syntax","kvs"),
@@ -395,7 +395,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Yes, the command terminator is a problem for those that want to use ';)' at the end
 		of IRC commands like [cmd]msg[/cmd]. It is almost unavoidable (read: the cost for
 		avoiding it is too high). Note that using '|' or any other character as command terminator
-		will NOT solve the problem: if the terminator is too difficult to type it will annoy the
+		will [b]not[/b] solve the problem: if the terminator is too difficult to type it will annoy the
 		scripters (and me), if it is too easy then there will be always someone that wants to use it
 		at the end (or in the middle) of a command with the original meaning.
 		The solution is to escape the ';' character:
@@ -506,14 +506,14 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[i]This text will be printed on a single line[/i][br]
 		Another example:[br]
 		[example]
-			[cmd]echo[/cmd] "The new kvirc &nbsp; &nbsp; &nbsp \
+			[cmd]echo[/cmd] "The new KVIrc &nbsp; &nbsp; &nbsp \
             &nbsp; &nbsp; IS OUT!"
 			[cmd]echo[/cmd] Check it out at http://www.kvi\
             &nbsp; &nbsp; rc.net!
 		[/example]
 		This will be printed as:[br][br]
 		[i]
-		The new kvirc &nbsp; &nbsp; &nbsp; IS OUT![br]
+		The new KVIrc &nbsp; &nbsp; &nbsp; IS OUT![br]
 		Check it out at http://www.kvirc.net!
 		[/i][br]
 		Finally, you can escape an escape character to include it literally in a parameter (and
@@ -572,7 +572,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		other than making the code more readable, but command blocks
 		will be useful later (see [cmd]if[/cmd],[cmd]while[/cmd]...).[br]
 		[note]
-		Unlike in C or C++, the braces do NOT automatically define a variable scope
+		Unlike in C or C++, the braces do [b]not[/b] automatically define a variable scope
 		(with few exceptions to this rule ... just to complicate the things a bit more).
 		You will recall this last assertion later, when reading about [doc:data_structures]data structures[/doc].
 		[/note]
@@ -881,7 +881,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The special function [b]${<command sequence>}[/b] evaluates to the
 		return value of the <command sequence>.[br]
-		The special function [b]$$[/b] evaluates to the current object id,
+		The special function [b]$$[/b] evaluates to the current object ID,
 		but it is too early to explain it here...[br]
 */
 
@@ -1312,8 +1312,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		The code above does nothing but registers the "MyAddon" addon.
 		[/p]
 		[p]
-		The first parameter is the internal addon id which can be used to identify
-		your addon inside KVIrc. The id must be unique: two addons that share the same
+		The first parameter is the internal addon ID which can be used to identify
+		your addon inside KVIrc. The ID must be unique: two addons that share the same
 		name cannot be installed. The second parameter is the addon version. It should
 		be expressed in the classic format [major].[minor].[pathlevel] or something
 		really similar (in fact KVIrc just expects the version to be a string composed
@@ -1571,7 +1571,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		They will likely add aliases (maybe in a nice namespace named against your addon),
 		register event handlers, create actions, timers, toolbars and object classes.
 		You should install all of this stuff from your addon source files.
-		Remember that your source files will NOT be parsed every time KVIrc starts up:
+		Remember that your source files will [b]not[/b] be parsed every time KVIrc starts up:
 		your stuff must be registered in KVIrc and be able to startup itself, if needed.
 		Remember that you must clean up [b]everything[/b] in your uninstallation callback.
 		This means that you must remove the aliases, unregister the event handlers,
@@ -1760,7 +1760,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[td]<operation>[/td]
 		[td]<one op operator>[/td]
 		[/tr]
-	    [tr]
+		[tr]
 		[td]<operation>[/td]
 		[td]<two op operator>[<space>]<param string>[/td]
 		[/tr]
@@ -2023,7 +2023,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		Besides the traditional indexed looping method you
 		can also use the [cmd]foreach[/cmd] command to iterate the items of an array.
-		Be aware that [cmd]foreach[/cmd] will NOT iterate over unset items in the
+		Be aware that [cmd]foreach[/cmd] will [b]not[/b] iterate over unset items in the
 		array unless you use the -a switch.
 		[/p]
 
@@ -2309,7 +2309,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[p]
 		will first assign "1st" to the variable "%number" and then execute
-		"echo this is my 1st variable test". The following example will NOT work as expected.
+		"echo this is my 1st variable test". The following example will [b]not[/b] work as expected.
 		[/p]
 		[example]
 			%number = 1; echo this is my %numberst variable test
@@ -2804,7 +2804,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstruction()
 				return parseCommand();
 			} else {
 				// what the heck is this ?
-				error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where an instruction was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+				error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (Unicode %x) where an instruction was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 				return 0;
 			}
 		break;
@@ -2919,7 +2919,7 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 
 				if(KVSP_curCharUnicode == 0)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) after a switch dash","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) after a switch dash","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 				} else {
 					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script after a switch dash","kvs"));
 				}
@@ -3390,7 +3390,7 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
 						break;
 						default:
-							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) in array index: it should be already terminated","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) in array index: it should be already terminated","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 						break;
 					}
 					return 0;

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -91,7 +91,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 
 	m_pMediaTestButton->setEnabled(false);
 
-	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("ID3 tags encoding","options"),true);
+	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("ID3 Tags Encoding","options"),true);
 
 	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of mp3 tags.","options"));
 
@@ -333,16 +333,16 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 {
 	setObjectName("sound_options_widget");
 	createLayout();
-	addLabel(0,0,0,0,__tr2qs_ctx("New query opened","options"));
+	addLabel(0,0,0,0,__tr2qs_ctx("New query opened:","options"));
 	addSoundSelector(1,0,1,0,"",KviOption_stringOnNewQueryOpenedSound);
 
-	addLabel(0,1,0,1,__tr2qs_ctx("New message in inactive query","options"));
+	addLabel(0,1,0,1,__tr2qs_ctx("New message in inactive query:","options"));
 	addSoundSelector(1,1,1,1,"",KviOption_stringOnQueryMessageSound);
 
-	addLabel(0,2,0,2,__tr2qs_ctx("Highlighted message in inactive window","options"));
+	addLabel(0,2,0,2,__tr2qs_ctx("Highlighted message in inactive window:","options"));
 	addSoundSelector(1,2,1,2,"",KviOption_stringOnHighlightedMessageSound);
 
-	addLabel(0,3,0,3,__tr2qs_ctx("On me was kicked","options"));
+	addLabel(0,3,0,3,__tr2qs_ctx("On me was kicked:","options"));
 	addSoundSelector(1,3,1,3,"",KviOption_stringOnMeKickedSound);
 
 	addRowSpacer(0,4,1,4);

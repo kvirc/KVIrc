@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the lists of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -200,21 +200,21 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pOpenButton->setObjectName("import_list");
 	m_pOpenButton->setIconSize(QSize(16,16));
 	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder))));
-	KviTalToolTip::add(m_pOpenButton,__tr2qs("Import List"));
+	KviTalToolTip::add(m_pOpenButton,__tr2qs("Import list"));
 	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));
 
 	m_pSaveButton = new QToolButton(pBox);
 	m_pSaveButton->setObjectName("export_list");
 	m_pSaveButton->setIconSize(QSize(16,16));
 	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy))));
-	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export List"));
+	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export list"));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
 	m_pRequestButton = new QToolButton(pBox);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
-	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::List))));
-	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
+	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Update))));
+	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request list"));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 
 	m_pStopListDownloadButton = new QToolButton(pBox);
@@ -296,10 +296,10 @@ void ListWindow::requestList()
 			m_pConsole->connection()->sendFmtData("list %s",m_pConsole->connection()->encodeText(parms.ptr()).data());
 		}
 
-		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request, waiting for reply..."));
+		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request: waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot request list: No active connection"));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Can't request list: no active connection"));
 	}
 }
 
@@ -310,7 +310,7 @@ void ListWindow::stoplistdownload()
 		m_pConsole->connection()->sendFmtData("list stoplistdownloadnow");
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Stopping the list download...")); //G&N mar 2005
 	} else {
-		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Cannot stop list download, no active connection."));
+		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Can't stop list download: no active connection."));
 	}
 }
 
@@ -325,7 +325,7 @@ void ListWindow::connectionStateChange()
 			m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
-		m_pInfoLabel->setText(__tr2qs("List cannot be requested: Not connected to a server"));
+		m_pInfoLabel->setText(__tr2qs("List can't be requested: not connected to a server"));
 	}
 }
 
@@ -360,7 +360,7 @@ void ListWindow::exportList()
 {
 	if(!m_pTreeWidget->topLevelItemCount())
 	{
-		KviMessageBox::warning(__tr2qs("You cannot export an empty list"));
+		KviMessageBox::warning(__tr2qs("You can't export an empty list"));
 		return;
 	}
 
@@ -389,7 +389,7 @@ void ListWindow::exportList()
 		szFile = __tr2qs("Channel list");
 	}
 
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose Filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
 	{
 		if(QFileInfo(szFile).completeSuffix() != "kvc")
 			szFile.append(".kvc");
@@ -413,7 +413,7 @@ void ListWindow::importList()
 {
 	QString szFile;
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose Filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
 	{
 
 		m_pItemList->setAutoDelete(true);

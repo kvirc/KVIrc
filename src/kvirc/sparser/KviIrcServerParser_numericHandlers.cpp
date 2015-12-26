@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -230,37 +230,37 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 			/* Strings that we don't parse:
 			 * EXCEPTS -> supports channels mode e (ban exception): we already use CHANMODES to handle that
 			 * INVEX -> supports channels mode I (invite exception): we already use CHANMODES to handle that
-			 * MAXCHANNELS -> Maximum number of channels allowed to join. (deprecated by CHANLIMIT, eg: MAXCHANNELS=10)
-			 * CHANLIMIT -> Maximum number of channels allowed to join by channel prefix (eg: CHANLIMIT=#&!+:10)
+			 * MAXCHANNELS -> Maximum number of channels allowed to join. (deprecated by CHANLIMIT, e.g. MAXCHANNELS=10)
+			 * CHANLIMIT -> Maximum number of channels allowed to join by channel prefix (e.g. CHANLIMIT=#&!+:10)
 			 * NICKLEN -> Maximum nickname length
-			 * MAXBANS -> Maximum number of bans per channel (deprecated by MAXLIST, eg: MAXBANS=30)
-			 * MAXLIST -> Maximum number entries in the list per mode (eg: MAXLIST=beI:30)
-			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, eg usage: notice @#channel)
-			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, eg usage: notice +#channel)
-			 * STATUSMSG -> The server supports messaging a particular class of channel users (eg: STATUSMSG=+@)
-			 * CASEMAPPING -> Case mapping used for nick- and channel name comparing (eg: CASEMAPPING=rfc1459)
-			 * ELIST -> search extensions to list modes, like mask search, topic search, creation time search (eg: ELIST=MNUCT)
-			 * KICKLEN -> Maximum kick comment length (eg: KICKLEN=80)
-			 * CHANNELLEN -> Maximum channel name length (eg: CHANNELLEN=50)
-			 * CHIDLEN -> Channel ID length for !channels (deprecated by IDCHAN, 5 by default, eg: CHIDLEN=5)
-			 * IDCHAN -> The ID length for channels with an ID (eg: IDCHAN=!:5)
-			 * SILENCE -> Max entires for the SILENCE command (eg: SILENCE=15)
+			 * MAXBANS -> Maximum number of bans per channel (deprecated by MAXLIST, e.g. MAXBANS=30)
+			 * MAXLIST -> Maximum number entries in the list per mode (e.g. MAXLIST=beI:30)
+			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, e.g. usage: NOTICE @#channel)
+			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, e.g. usage: NOTICE +#channel)
+			 * STATUSMSG -> The server supports messaging a particular class of channel users (e.g. STATUSMSG=+@)
+			 * CASEMAPPING -> Case mapping used for nick- and channel name comparing (e.g. CASEMAPPING=rfc1459)
+			 * ELIST -> search extensions to list modes, like mask search, topic search, creation time search (e.g. ELIST=MNUCT)
+			 * KICKLEN -> Maximum kick comment length (e.g. KICKLEN=80)
+			 * CHANNELLEN -> Maximum channel name length (e.g. CHANNELLEN=50)
+			 * CHIDLEN -> Channel ID length for !channels (deprecated by IDCHAN, 5 by default, e.g. CHIDLEN=5)
+			 * IDCHAN -> The ID length for channels with an ID (e.g. IDCHAN=!:5)
+			 * SILENCE -> Max entires for the SILENCE command (e.g. SILENCE=15)
 			 * PENALTY -> Server gives extra penalty to some commands instead of the normal 2 seconds per message and 1 second for every 120 bytes in a message.
 			 * FNC -> Forced nick change: the server could change the client nickname
-			 * SAFELIST -> The LIST reaply won't killl the client for excess flood.
-			 * AWAYLEN -> Maximum away message length (eg: AWAYLEN=160)
+			 * SAFELIST -> The LIST reply won't kill the client for excess flood.
+			 * AWAYLEN -> Maximum away message length (e.g. AWAYLEN=160)
 			 * NOQUIT -> Server 2 server feature, no need to expose it to clients, but whatever..
 			 * USERIP -> USERIP command supported
-			 * CPRIVMSG -> CPRIVMSG mass-message command exists (eg usage: CPRIVMSG channel nick,nick2,... :text)
-			 * CNOTICE -> CNOTICE mass-notice command exists (eg usage: CNOTICE channel nick,nick2,... :text)
+			 * CPRIVMSG -> CPRIVMSG mass-message command exists (e.g. usage: CPRIVMSG channel nick,nick2,... :text)
+			 * CNOTICE -> CNOTICE mass-notice command exists (e.g. usage: CNOTICE channel nick,nick2,... :text)
 			 * MAXNICKLEN -> Max length of nick for other users (like NICKLEN, but ensures the server won't overflow it for other users)
-			 * MAXTARGETS -> Maximum targets allowed for PRIVMSG and NOTICE commands (eg: MAXTARGETS=4)
+			 * MAXTARGETS -> Maximum targets allowed for PRIVMSG and NOTICE commands (e.g. MAXTARGETS=4)
 			 * KNOCK -> KNOCK command supported
 			 * VCHANS -> Virtual channels support
 			 * WHOX -> The WHO command uses WHOX protocol.
 			 * CALLERID -> The server supports server side ignores via the +g user mode
 			 * ACCEPT -> The server supports server side ignore (deprecated by CALLERID)
-			 * LANGUAGE -> The server supports the LANGUAGE command (experimental, eg: LANGUAGE=2,en,i-klingon)
+			 * LANGUAGE -> The server supports the LANGUAGE command (experimental, e.g. LANGUAGE=2,en,i-klingon)
 			 */
 			if(kvi_strEqualCIN("PREFIX=(",p,8))
 			{
@@ -380,6 +380,31 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 	// 	// RPL_BOUNCE prolly
 	// 	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,msg->safeTrailing());
 	// }
+}
+
+void KviIrcServerParser::parseNumericSnomask(KviIrcMessage *msg)
+{
+	// 008: RPL_SNOMASK
+	// :prefix 008 <target> <snomask>
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_MODE,__tr2qs("You have set snomask %s"),msg->safeParam(1));
+	}
+}
+
+void KviIrcServerParser::parseNumericYourUID(KviIrcMessage *msg)
+{
+	// 042: RPL_YOURID
+	// :prefix 042 <target> <UID> :your unique ID
+	if(!msg->haltOutput())
+	{
+		QString szUID = msg->connection()->decodeText(msg->safeParam(1));
+
+		// Not important to us, just pass it off as server info.
+		msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("%Q is your unique ID"),&szUID);
+	}
 }
 
 void KviIrcServerParser::parseNumericMotd(KviIrcMessage *msg)
@@ -517,7 +542,7 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage *msg)
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		QString szTrailing = trailing ? msg->connection()->decodeText(trailing) : QString("");
-		pOut->output(KVI_OUT_UNHANDLED,__tr2qs("Names for \r!c\r%Q\r: %Q"),&szChan,&szTrailing);
+		pOut->output(KVI_OUT_UNHANDLED,__tr2qs("NAMES for \r!c\r%Q\r: %Q"),&szChan,&szTrailing);
 	}
 }
 
@@ -1047,6 +1072,32 @@ void KviIrcServerParser::parseNumericUnknownCommand(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericMotdMissing(KviIrcMessage *msg)
+{
+	// 422: ERR_NOMOTD
+	// :prefix 422 <target> :- MOTD file not found!  Please contact your IRC administrator.
+	if(!msg->haltOutput())
+	{
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		msg->console()->output(KVI_OUT_GENERICERROR,szText);
+	}
+}
+
+void KviIrcServerParser::parseNumericBanOnChan(KviIrcMessage *msg)
+{
+	// 435: ERR_BANONCHAN
+	// :prefix 435 <target> <newnick> <channel> :Cannot change nickname while banned on channel
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findChannel(msg->safeParam(2)));
+		if(!pOut)pOut = static_cast<KviWindow *>(msg->console());
+		QString szChannel = msg->connection()->decodeText(msg->safeParam(2));
+		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_JOINERROR,
+			"\r!c\r%Q\r: %Q",&szChannel,&szWText);
+	}
+}
+
 void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 {
 	// 437: ERR_UNAVAILRESOURCE [I]
@@ -1065,18 +1116,31 @@ void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericUserInChan(KviIrcMessage *msg)
+{
+	// 443: ERR_USERONCHANNEL
+	// :prefix 443 <target> <nick> <channel> :is already on channel
+	if(!msg->haltOutput())
+	{
+		KviWindow *pOut = static_cast<KviWindow*>(msg->connection()->findChannel(msg->safeParam(2)));
+		if(!pOut)pOut = static_cast<KviWindow*>(msg->console()); // This would be interesting...
+		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+		QString szChan = msg->connection()->decodeText(msg->safeParam(2));
+		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("%Q is already in %Q"),&szNick,&szChan);
+	}
+}
+
 void KviIrcServerParser::parseNumericForward(KviIrcMessage *msg)
 {
 	// 470: ERR_LINKCHANNEL
 	// :prefix 470 target <oldchan> <newchan> :Forwarding to another channel
-	QString pref      = msg->connection()->decodeText(msg->safePrefix());
-	QString szOldChan = msg->connection()->decodeText(msg->safeParam(1));
-	QString szNewChan = msg->connection()->decodeText(msg->safeParam(2));
-
 	if(!msg->haltOutput())
 	{
+		QString pref      = msg->connection()->decodeText(msg->safePrefix());
+		QString szOldChan = msg->connection()->decodeText(msg->safeParam(1));
+		QString szNewChan = msg->connection()->decodeText(msg->safeParam(2));
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow*>(msg->console());
 		// This technically isn't a notice, yet it is fairly useful information.
 		// The server gives us good data with a pretty unusable description. So
 		// what we are doing is concatenating the generic server notice prefix
@@ -2131,6 +2195,18 @@ void KviIrcServerParser::parseNumericAway(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericUsersDontMatch(KviIrcMessage *msg)
+{
+	// 502: ERR_USERSDONTMATCH
+	// :prefix 502 <target> :Can't change mode for other users
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut  = msg->console()->activeWindow();
+		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_GENERICERROR,szMsgText);
+	}
+}
+
 void KviIrcServerParser::parseNumericWatch(KviIrcMessage *msg)
 {
 	// 600: RPL_LOGON
@@ -2391,6 +2467,9 @@ void KviIrcServerParser::parseNumericHiddenHost(KviIrcMessage * msg)
 	QString szHost    = msg->connection()->decodeText(msg->safeParam(1));
 	QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeHostChange,msg->console(),pref,szHost))
+		msg->setHaltOutput();
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
@@ -2578,6 +2657,30 @@ void KviIrcServerParser::parseNumericYoureOper(KviIrcMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericNotEnoughParams(KviIrcMessage *msg)
+{
+	// 461: ERR_NEEDMOREPARAMS
+	// :prefix 461 <target> <param> :Not enough parameters
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = msg->console()->activeWindow();
+		QString szParam = msg->connection()->decodeText(msg->safeParam(1));
+		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("%Q requires more parameters"),&szParam);
+	}
+}
+
+void KviIrcServerParser::parseNumericAlreadyRegistered(KviIrcMessage * msg)
+{
+	// 462: ERR_ALREADYREGISTERED
+	// :prefix 462 <target> :You may not reregister
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = static_cast<KviWindow*>(msg->console());
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_GENERICERROR,szText);
+	}
+}
+
 void KviIrcServerParser::parseNumericPasswordIncorrect(KviIrcMessage * msg)
 {
 	// 464: ERR_PASSWDMISMATCH
@@ -2674,10 +2777,17 @@ void KviIrcServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
-		QString szParam=msg->connection()->decodeText(msg->safeParam(2));
+		KviWindow * pOut = static_cast<KviWindow*>(msg->console());
+		QString szParam = msg->connection()->decodeText(msg->safeParam(2));
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("Authenticated as %Q"),&szParam);
 	}
+
+	// This is the InspIRCd version of "You are now logged in as <nick>", but from
+	// services only. i.e. not SASL.
+	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+	QString version = pServerInfo->software();
+	if(version == "InspIRCd")
+		return;
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
 		msg->connection()->endInitialCapNegotiation();

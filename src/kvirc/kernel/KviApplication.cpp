@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -1017,7 +1017,7 @@ QTextCodec * KviApplication::defaultTextCodec()
 		return pCodec;
 	pCodec = KviLocale::instance()->codecForName("UTF-8");
 	if(!pCodec)
-		qDebug("KviApplication::defaultTextCodec(): cannot find a suitable text codec for locale :/");
+		qDebug("KviApplication::defaultTextCodec(): can't find a suitable text codec for locale :/");
 	return pCodec;
 }
 
@@ -1035,7 +1035,7 @@ QTextCodec * KviApplication::defaultSrvCodec()
 		return pCodec;
 	pCodec = KviLocale::instance()->codecForName("UTF-8");
 	if(!pCodec)
-		qDebug("KviApplication::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
+		qDebug("KviApplication::defaultSrcCodec(): can't find a suitable text codec for locale :/");
 	return pCodec;
 }
 

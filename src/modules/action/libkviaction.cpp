@@ -3,13 +3,13 @@
 //   File : libkviaction.cpp
 //   Creation date : Tue 7 Dec 00:05:59 2002 GMT by Szymon Stefanek
 //
-//   This toolbar is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -112,7 +112,7 @@ static bool action_kvs_cmd_trigger(KviKvsModuleCommandCall * c)
 				c->warning(__tr2qs("The action \"%1\" is disabled").arg(szName));
 		}
 	} else {
-		c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+		c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -137,8 +137,8 @@ static bool action_kvs_cmd_trigger(KviKvsModuleCommandCall * c)
 		otherwise all the toolbar buttons and menu items belonging to this
 		action will get enabled.[br]
 		Since [cmd]action.create[/cmd] command allows specifying contexts
-		for actions and the action engine is able to enable/disable the actions
-		automatically on certain events you will probably never need to use this command.
+		for actions and the action engine is able to enable / disable the actions
+		automatically on certain events you will probably never need to use this command.[br]
 		If the -q switch is specified the command runs in quiet mode and
 		does not print warnings if the action is not defined.
 	@seealso:
@@ -158,7 +158,7 @@ static bool action_kvs_cmd_enable(KviKvsModuleCommandCall * c)
 		if(!a->isEnabled())a->setEnabled(true);
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -206,7 +206,7 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 		if(a->isEnabled())a->setEnabled(false);
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -233,7 +233,7 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 		Please note that you CAN'T destroy core actions, you can destroy
 		only script actions that have been defined by the user (or other scripts).
 	@seealso:
-		# this will trigger a warning and NOT work
+		[comment]This will trigger a warning and [b]not[/b] work[/comment]
 		action.destroy connect
 */
 
@@ -252,11 +252,11 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 			a->suicide();
 		} else {
 			if(!c->switches()->find('q',"quiet"))
-				c->warning(__tr2qs("The action \"%1\" is a core action and cannot be destroyed").arg(szName));
+				c->warning(__tr2qs("The action \"%1\" is a core action and can't be destroyed").arg(szName));
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The action \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" doesn't exist").arg(szName));
 	}
 
 	return true;
@@ -356,7 +356,6 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		[cmd]action.destroy[/cmd], [cmd]action.trigger[/cmd]
 	@examples:
 		[example]
-
 		[/example]
 */
 
@@ -417,7 +416,7 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 		if(old->isKviUserActionNeverOverrideThis())
 			old->suicide();
 		else {
-			c->warning(__tr2qs("The action \"%1\" is already defined as core action and cannot be overridden").arg(szName));
+			c->warning(__tr2qs("The action \"%1\" is already defined as core action and can't be overridden").arg(szName));
 			return false;
 		}
 	}
@@ -522,7 +521,7 @@ static bool action_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"action",                                                      // module name
+	"action",                                                       // module name
 	"4.0.0",                                                        // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Interface to the system actions",

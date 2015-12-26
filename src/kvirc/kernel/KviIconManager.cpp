@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -85,9 +85,9 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 {
 	"none",                // 0
 	"close",               // 1
-	"maximize",            // 2
-	"minimize",            // 3
-	"restore",             // 4
+	"history",             // 2
+	"historyoff",          // 3
+	"restore",             // 4    No longer used, do not remove entry, just reuse entry for new icons.
 	"default",             // 5
 	"dock",                // 6
 	"undock",              // 7
@@ -199,8 +199,8 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"regusers",            // 113
 	"dockwidget",          // 114
 	"unsetmode",           // 115
-	"maxvertical",         // 116
-	"maxhorizontal",       // 117
+	"maxvertical",         // 116 No longer used, do not remove entry, just reuse entry for new icons.
+	"toolbar",             // 117
 	"serverfavorite",      // 118
 	"log",                 // 119
 	"remove",              // 120
@@ -252,7 +252,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"dccvoice",            // 166
 	"play",                // 167
 	"record",              // 168
-	"autotilewindows",     // 169
+	"kickoff",             // 169
 	"away",                // 170
 	"ident",               // 171
 	"homepage",            // 172
@@ -318,7 +318,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"deadchannel",         // 232
 	"deadquery",           // 233
 	"sound",               // 234
-	"toolbar",             // 235
+	"toolbareditor",       // 235
 	"textencoding",        // 236
 	"newitem",             // 237
 	"newitembywizard",     // 238
@@ -397,8 +397,8 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"function",            // 311
 	"sexmale",             // 312
 	"sexfemale",           // 313
-	"sexbot",              // 314
-	"sexircop",            // 315
+	"ircbot",              // 314
+	"alienircop",          // 315
 	"memoserv",            // 316
 	"info",                // 317
 	"warning",             // 318
@@ -616,9 +616,9 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 	switch(iIcon)
 	{
 		case   1: return KviIconManager::Close;                break;
-		case   2: return KviIconManager::Maximize;             break;
-		case   3: return KviIconManager::Minimize;             break;
-		case   4: return KviIconManager::Restore;              break;
+		case   2: return KviIconManager::History;              break;
+		case   3: return KviIconManager::HistoryOff;           break;
+		case   4: return KviIconManager::Restore;              break; //No longer used, do not remove entry, just reuse entry for new icons.
 		case   5: return KviIconManager::DefaultIcon;          break;
 		case   6: return KviIconManager::Dock;                 break;
 		case   7: return KviIconManager::UnDock;               break;
@@ -730,8 +730,8 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 113: return KviIconManager::RegUsers;             break;
 		case 114: return KviIconManager::TrayIcon;             break;
 		case 115: return KviIconManager::UnsetMode;            break;
-		case 116: return KviIconManager::MaxVertical;          break;
-		case 117: return KviIconManager::MaxHorizontal;        break;
+		case 116: return KviIconManager::MaxVertical;          break; //No longer used, do not remove entry, just reuse entry for new icons.
+		case 117: return KviIconManager::Toolbar;              break;
 		case 118: return KviIconManager::ServerFavorite;       break;
 		case 119: return KviIconManager::Log;                  break;
 		case 120: return KviIconManager::Remove;               break;
@@ -783,7 +783,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 166: return KviIconManager::DccVoice;             break;
 		case 167: return KviIconManager::Play;                 break;
 		case 168: return KviIconManager::Record;               break;
-		case 169: return KviIconManager::AutoTileWindows;      break;
+		case 169: return KviIconManager::KickOff;              break;
 		case 170: return KviIconManager::Away;                 break;
 		case 171: return KviIconManager::Ident;                break;
 		case 172: return KviIconManager::HomePage;             break;
@@ -849,7 +849,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 232: return KviIconManager::DeadChannel;          break;
 		case 233: return KviIconManager::DeadQuery;            break;
 		case 234: return KviIconManager::Sound;                break;
-		case 235: return KviIconManager::ToolBar;              break;
+		case 235: return KviIconManager::ToolBarEditor;        break;
 		case 236: return KviIconManager::TextEncoding;         break;
 		case 237: return KviIconManager::NewItem;              break;
 		case 238: return KviIconManager::NewItemByWizard;      break;
@@ -928,8 +928,8 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 311: return KviIconManager::Function;             break;
 		case 312: return KviIconManager::SexMale;              break;
 		case 313: return KviIconManager::SexFemale;            break;
-		case 314: return KviIconManager::SexBot;               break;
-		case 315: return KviIconManager::SexIrcOp;             break;
+		case 314: return KviIconManager::IrcBot;               break;
+		case 315: return KviIconManager::AlienIrcOp;           break;
 		case 316: return KviIconManager::MemoServ;             break;
 		case 317: return KviIconManager::Info;                 break;
 		case 318: return KviIconManager::Warning;              break;

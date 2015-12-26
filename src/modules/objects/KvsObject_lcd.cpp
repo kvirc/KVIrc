@@ -1,8 +1,8 @@
 //=============================================================================
 //
 //   File : KvsObject_lcd.cpp
-//   Creation date : Mon Gen 27 14:30:48 CEST 2005 by Tonino Imbesi(Grifisx)
-//         and Alessandro Carbone(Noldor)
+//   Creation date : Mon Gen 27 14:30:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2005 Alessandro Carbone (elfonol at gmail dot com)
@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,8 +44,8 @@
 	@inherits:
 
 	@description:
-		It can display a number in just about any size. It can display decimal,
-		hexadecimal, octal or binary numbers.
+		It can display a number in just about any size.[br]
+		It can display decimal, hexadecimal, octal or binary numbers.
 	@functions:
 		!fn: $displayStr(<number:string>)
 		Displays the number represented by the string s.
@@ -54,18 +54,18 @@
 		!fn: $displayDouble(<number:double>)
 		Sets the displayed value to number (double).
 		!fn: $setMode(<mode:string>)
-		Sets the current display mode (number base): valid mode are HEX,BIN,OCT,DEC.
+		Sets the current display mode (number base): valid mode are: [b]HEX[/b], [b]BIN[/b], [b]OCT[/b] and [b]DEC[/b].
 		!fn: $setSegmentStyles(<style:string>)
-		Sets the style of the lcdnumber, valid styles are: Outline,Filled,Flat.
+		Sets the style of the lcdnumber, valid styles are: [b]Outline[/b], [b]Filled[/b] and [b]Flat[/b].
 		!fn: $setNumDigits(<number:integer>)
-		Sets the lcd number value.
+		Sets the lcdnumber value.
 		!fn: <boolean> $checkOverflow()
-		Returns true if num is too big to be displayed in its entirety;
-		otherwise returns false.
-		!fn: $setSmallDecimalPoint(<bflag:boolean>)
-		Sets the the decimal point style, valid bool values are 1 or 0.
+		Returns 1 (true) if the number is too big to be displayed in its entirety;
+		otherwise returns 0 (false).
+		!fn: $setSmallDecimalPoint(<bFlag:boolean>)
+		Sets the the decimal point style, valid bool values are 1 (true) or 0 (false).
 		!fn: <boolean> $checkOverflow(<number:integer>)
-		Returns 1 (true) if num is too big to be displayed in its entirety; otherwise returns 0 (false).
+		Returns 1 (true) if the number is too big to be displayed in its entirety; otherwise returns 0 (false).
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_lcd,"lcdnumber","widget")
@@ -177,7 +177,7 @@ KVSO_CLASS_FUNCTION(lcd,setSmallDecimalPoint)
 	CHECK_INTERNAL_POINTER(widget())
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bflag",KVS_PT_BOOLEAN,0,bFlag)
+		KVSO_PARAMETER("bFlag",KVS_PT_BOOLEAN,0,bFlag)
 	KVSO_PARAMETERS_END(c)
 	((QLCDNumber *)widget())->setSmallDecimalPoint(bFlag);
 	return true;

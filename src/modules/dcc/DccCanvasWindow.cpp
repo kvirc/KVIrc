@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,7 +44,6 @@
 	#include "KviNetUtils.h"
 	#include "KviConsoleWindow.h"
 	#include "KviMainWindow.h"
-	#include "KviMemory.h"
 	#include "KviMemory.h"
 	#include "KviThread.h"
 	#include "KviIrcSocket.h"
@@ -276,7 +275,7 @@
 	void DccCanvasWindow::handleMarshalError(int err)
 	{
 		QString sss = KviError::getDescription(err);
-		output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&sss);
+		output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC failed: %Q","dcc"),&sss);
 	}
 
 	void DccCanvasWindow::connected()

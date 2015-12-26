@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -112,12 +112,12 @@ static bool tmphighlight_kvs_cmd_removenick(KviKvsModuleCommandCall * c)
 	@title:
 		tmphighlight.addChannel
 	@short:
-		Adds a channel to the irc context temporary highlight list
+		Adds a channel to the IRC context temporary highlight list
 	@syntax:
 		tmphighlight.addChannel [window_id:integer]
 	@description:
-		This command adds a channel to the irc context temporary highlight list, so that every user message
-		from that channel will be highlighted until you close that irc context. This is useful when you want
+		This command adds a channel to the IRC context temporary highlight list, so that every user message
+		from that channel will be highlighted until you close that IRC context. This is useful when you want
 		to follow every message in a low traffic channel. If you don't specify a channel, the current one
 		is used.
 	@seealso:
@@ -140,7 +140,7 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
-			c->warning(__tr2qs("Unable to find a window with the specified window id"));
+			c->warning(__tr2qs("Unable to find a window with the specified window ID"));
 			return false;
 		}
 	}
@@ -166,11 +166,11 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 	@title:
 		tmphighlight.removeChannel
 	@short:
-		Remove a channel from the irc context temporary highlight list
+		Remove a channel from the IRC context temporary highlight list
 	@syntax:
 		tmphighlight.removeChannel [window_id:integer]
 	@description:
-		This command remove a channel from the irc context temporary highlight list.
+		This command remove a channel from the IRC context temporary highlight list.
 		If you don't specify a channel, the current one is used.
 	@seealso:
 		[fnc]$tmphighlight.addChannel[/fnc]
@@ -192,7 +192,7 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
-			c->warning(__tr2qs("Unable to find a window with the specified window id"));
+			c->warning(__tr2qs("Unable to find a window with the specified window ID"));
 			return false;
 		}
 	}
@@ -254,11 +254,11 @@ static bool tmphighlight_kvs_fnc_isnickhighlighted(KviKvsModuleFunctionCall * c)
 	@title:
 		$tmphighlight.isChannelHighlighted
 	@short:
-		Returns 1 if the channel is highlighted on this irc network, 0 otherwise
+		Returns 1 if the channel is highlighted on this IRC network, 0 otherwise
 	@syntax:
 		<boolean> $tmphighlight.isChannelHighlighted[window_id:integer]
 	@description:
-		This command returns 1 if the channel is highlighted on this irc network, 0 otherwise.
+		This command returns 1 if the channel is highlighted on this IRC network, 0 otherwise.
 	@seealso:
 		[fnc]$tmphighlight.addChannel[/fnc]
 		[fnc]$tmphighlight.removeChannel[/fnc]
@@ -280,7 +280,7 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
-			c->warning(__tr2qs("Unable to find a window with the specified window id"));
+			c->warning(__tr2qs("Unable to find a window with the specified window ID"));
 			return false;
 		}
 	}
@@ -324,7 +324,7 @@ KVIRC_MODULE(
 	"4.0.0",                                      // module version
 	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)" \
 	"(C) 2009 Fabio Bas (ctrlaltca at libero dot it)", // author & (C)
-	"Temporal Highlightining of channel and nicknames",
+	"Temporary highlighting of channels and nicknames",
 	tmphighlight_module_init,
 	tmphighlight_module_can_unload,
 	0,

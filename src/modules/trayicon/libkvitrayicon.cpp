@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -93,12 +93,14 @@ KviTrayIconWidget::KviTrayIconWidget()
 	m_pTip = new KviDynamicToolTip(g_pMainWindow,"dock_tooltip");
     m_pAwayPopup = new QMenu(0);
 
+#ifndef COMPILE_ON_MAC
 	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 	QWidgetAction * pAction = new QWidgetAction(this);
 	pAction->setDefaultWidget(m_pTitleLabel);
 	m_pContextPopup->addAction(pAction);
+#endif
 
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
@@ -134,7 +136,9 @@ KviTrayIconWidget::~KviTrayIconWidget()
 	g_pTrayIcon=0;
 	g_pMainWindow->setTrayIcon(0);
 	delete m_pAwayPopup;
+#ifndef COMPILE_ON_MAC
 	delete m_pTitleLabel;
+#endif
 	delete m_pTip;
 	delete m_pFlashingTimer;
 	delete m_pContextPopup;
@@ -620,7 +624,7 @@ static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall *)
 	@syntax:
 		trayicon.hide
 	@description:
-		Hides the  tray icon for the current frame window
+		Hides the tray icon for the current frame window
 	@seealso:
 		[cmd]trayicon.show[/cmd]
 */

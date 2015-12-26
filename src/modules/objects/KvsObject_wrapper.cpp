@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -51,9 +51,9 @@
 		[class]widget[/class]
 	@description:
 		[p]
-		This class "wraps" existing kvirc widgets and allows using the [class]widget[/class]
+		This class "wraps" existing KVIrc widgets and allows using the [class]widget[/class]
 		class API to manipulate them. You can use it, for example, to set the geometry of the
-		kvirc main window or to apply some crazy graphical changes to the UI.
+		KVIrc main window or to apply some crazy graphical changes to the UI.
 		[/p]
 		[p]
 		The KVIrc Qt widgets are arranged in trees (just as the objects). The difference is that there can be more than one
@@ -98,11 +98,11 @@
 		(5) !Parent::N
 		[/example]
 		[p]
-		The first three forms may be preceeded by the prefix '*' which will tell KVS to perform
+		The first three forms may be preceded by the prefix '*' which will tell KVS to perform
 		a recursive search from this point. Let's see some examples.
 		[/p]
 		[p]
-		The form (1) mathches the first widget with the specified class name. For instance:
+		The form (1) matches the first widget with the specified class name. For instance:
 		[/p]
 		[example]
 		%Frame = $new(wrapper,0,test,KviMainWindow)
@@ -116,7 +116,7 @@
 		%Frame->$setGeometry(20,20,400,400);
 		[/example]
 		[p]
-		If you want to wrap the kvirc status bar you can use a composite path:
+		If you want to wrap the KVIrc status bar you can use a composite path:
 		[/p]
 		[example]
 		%StatusBar = $new(wrapper,0,test,KviMainWindow,KviStatusBar)
@@ -167,7 +167,7 @@
 		%Chan->$setBackgroundColor(80,0,0);
 		[/example]
 		[p]
-		The form (4) allows you to jump directly to a specific kvirc channel/query/console window,
+		The form (4) allows you to jump directly to a specific KVIrc channel/query/console window,
 		without the need of looking it up in the tree.
 		[/p]
 		[example]

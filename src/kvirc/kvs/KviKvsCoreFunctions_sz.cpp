@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -408,12 +408,12 @@ namespace KviKvsCoreFunctions
 			<string> $target(<window id>)
 		@description:
 			The form with the <window id> parameter returns the target
-			of the channel,query or dcc that has the specified ID.
+			of the channel,query or DCC that has the specified ID.
 			The form without parameters returns the target of the current window,
 			thus it is equivalent to calling $target([fnc]$window[/fnc]).
 			For channel windows the target is the channel name,
 			for query windows it is the list of the "queried" users, for the
-			dcc windows it is the remote end of the connection.
+			DCC windows it is the remote end of the connection.
 			The other windows have an empty target.
 		@examples:
 			[example]
@@ -886,14 +886,14 @@ namespace KviKvsCoreFunctions
 		@title:
 			$unicode
 		@short:
-			Returns the UNICODE code of a sets of characters
+			Returns the Unicode code of a sets of characters
 		@syntax:
 			<variant> $unicode(<char:string>)
 		@description:
 			If <char> is composed only of a single character
-			then returns its UNICODE code point as an integer.
+			then returns its Unicode code point as an integer.
 			If <char> is composed of more than one character
-			then an array of UNICODE code points is returned.
+			then an array of Unicode code points is returned.
 		@seealso:
 			[fnc]$cr[/fnc], [fnc]$lf[/fnc], [fnc]$char[/fnc]
 	*/
@@ -998,7 +998,7 @@ namespace KviKvsCoreFunctions
 			Detailed explaination:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
-			and queries.[br] The other IRC users are NOT in the database:
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]
@@ -1129,21 +1129,21 @@ namespace KviKvsCoreFunctions
 		@title:
 			$window
 		@short:
-			Retrieve the id of a specified window.
+			Retrieve the ID of a specified window.
 		@syntax:
 			<string> $window
 			<string> $window([<caption_text:hash>[,<context_id:uint>]])
 		@description:
-			Returns the [b]window id[/b] of the first window that
+			Returns the [b]window ID[/b] of the first window that
 			has the specified <caption text>.[br]
 			If no window matches the specified <caption text>, and invalid
-			window id is returned (0).[br]
-			If no <caption text> is specified, this function returns the id
+			window ID is returned (0).[br]
+			If no <caption text> is specified, this function returns the ID
 			of the current window.[br]
-			<context_id> restricts search in only one irc context.
+			<context_id> restricts search in only one IRC context.
 		@examples:
 			[example]
-				[cmd]echo[/cmd] This is the window with id $window
+				[cmd]echo[/cmd] This is the window with ID $window
 			[/example]
 		@seealso:
 			[fnc]$channel[/fnc],

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -73,7 +73,7 @@ extern DccBroker * g_pDccBroker;
 				//CAN NOT COMPILE :(
 				#define COMPILE_DISABLE_DCC_VOICE
 				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-					#warning "Cannot find the soundcard.h header; you will NOT be able to use DCC Voice"
+					#warning "Can't find the soundcard.h header; you will NOT be able to use DCC Voice"
 				#endif
 			#endif
 		#endif
@@ -166,7 +166,7 @@ bool DccVoiceThread::checkSoundcard()
 	if(!(caps & DSP_CAP_DUPLEX))
 	{
 		m_pOpt->bForceHalfDuplex = true; // the device is half duplex...use it in that way
-		postMessageEvent(__tr2qs_ctx("Half duplex soundcard detected, you will not be able to talk and listen at the same time","dcc").toUtf8().data());
+		postMessageEvent(__tr2qs_ctx("Half-duplex soundcard detected, you will not be able to talk and listen at the same time","dcc").toUtf8().data());
 	}
 
 	if(bOpened)closeSoundcard();
@@ -265,7 +265,7 @@ bool DccVoiceThread::openSoundcardWithDuplexOption(int openMode,int failMode)
 					if(!openSoundcard(openMode))return false;
 					if(!checkSoundcard())
 					{
-						postMessageEvent(__tr2qs_ctx("Ops...failed to test the soundcard capabilities...expect problems...","dcc").toUtf8().data());
+						postMessageEvent(__tr2qs_ctx("Oops! Failed to test the soundcard capabilities, expect problems...","dcc").toUtf8().data());
 					}
 				} // else the test has been done and it is a full duplex card that is just busy
 			}
@@ -899,7 +899,7 @@ QSize DccVoiceWindow::sizeHint() const
 void DccVoiceWindow::handleMarshalError(KviError::Code eError)
 {
 	QString ssss = KviError::getDescription(eError);
-	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&ssss);
+	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC failed: %Q","dcc"),&ssss);
 	m_pTalkButton->setEnabled(false);
 	m_pTalkButton->setChecked(false);
 	m_pRecordingLabel->setEnabled(false);

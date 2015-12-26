@@ -12,7 +12,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -164,7 +164,7 @@ public:
 
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_servers KviIconManager::Server
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_servers __tr2qs_no_lookup("Servers")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_servers __tr2qs_no_lookup("Servers and Configuration")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_servers __tr2qs_no_lookup("connection")
 //#define KVI_OPTIONS_WIDGET_NOPARENT_OptionsWidget_servers OptionsWidget_connection
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_servers 99000
@@ -229,8 +229,8 @@ protected slots:
 	void detailsClicked();
 	void connectCurrentClicked();
 	void recentServersPopupAboutToShow();
-    void recentServersPopupClicked(QAction *pAction);
-    void importPopupActivated(QAction *pAction);
+	void recentServersPopupClicked(QAction *pAction);
+	void importPopupActivated(QAction *pAction);
 	void serverNetworkEditTextEdited(const QString &szNewText);
 	void filterTextEdited(const QString &szNewText);
 public:

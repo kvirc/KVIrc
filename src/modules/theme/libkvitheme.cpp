@@ -3,13 +3,13 @@
 //   File : libkvitheme.cpp
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
-//   This toolbar is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2006-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -94,18 +94,18 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 		!sw: -e | --external
 		<theme> is an absolute directory containing a theme
 		!sw: -b | --builtin
-		<theme> is the name of a builtin theme (a subdirectory of the kvirc global themes directory)
+		<theme> is the name of a builtin theme (a subdirectory of the KVIrc global themes directory)
 		!sw: -u | --user
-		<theme> is the name of an user theme (a subdirectory of the kvirc local themes directory)
+		<theme> is the name of an user theme (a subdirectory of the KVIrc local themes directory)
 	@description:
 		Attempts to apply the global theme specified by <theme>.
 		If the -b switch is present then <theme> is assumed to be a name of
-		a builtin installed theme (a subdirectory of the kvirc global themes directory).
+		a builtin installed theme (a subdirectory of the KVIrc global themes directory).
 		If the -l switch is present then <theme> is assumed to be a name of
-		an user installed theme (a subdirectory of the kvirc local themes directory).
+		an user installed theme (a subdirectory of the KVIrc local themes directory).
 		If the -e switch is present then <theme> is assumed to be an absolute
 		directory containing the theme data.
-		If no switch is present then kvirc tries to determine automatically the
+		If no switch is present then KVIrc tries to determine automatically the
 		type of theme (user, builtin or external).
 */
 static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
@@ -161,7 +161,7 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	KviThemeInfo theme;
 	if(!theme.load(szTheme,KviThemeInfo::Auto))
 	{
-		c->warning(__tr2qs_ctx("The theme package '%Q' does not exist","theme"),&szTheme);
+		c->warning(__tr2qs_ctx("The theme package '%Q' doesn't exist","theme"),&szTheme);
 		return true;
 	}
 
@@ -203,7 +203,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 
 	bool bResult = KviFileDialog::askForSaveFileName(
 			szTmp,
-			__tr2qs_ctx("Choose a file to save the screenshot to","theme"),
+			__tr2qs_ctx("Choose a Filename to Save the Screenshot to","theme"),
 			szFileName,
 			"*.png",
 			false,
@@ -275,8 +275,8 @@ static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 		<package_name> is the visible name of the package (something like "My Theme Set").[br]
 		<package_version> is the version of the package in the form X.Y.Z.[br]
 		<package_description> is a textual description of the package.
-		<package_author> is the name of the person that is creating the package (NOT necessairly the themes contained within).
-		<package_image> is the path of an image to be used as package rappresentative image. If the package is going
+		<package_author> is the name of the person that is creating the package (NOT necessarily the themes contained within).
+		<package_image> is the path of an image to be used as package representative image. If the package is going
 		to contain a single theme you may specify the theme's screenshot here. Pass an empty string if you
 		don't want an image to be stored in the package.
 		<theme> is a either a single path to a directory containing a theme as it's exported by kvirc,

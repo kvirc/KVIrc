@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -43,7 +43,6 @@
 #include "KviPackageReader.h"
 #include "KviFileDialog.h"
 #include "KviDynamicToolTip.h"
-#include "KviIconManager.h"
 #include "KviMessageBox.h"
 #include "KviTalListWidget.h"
 #include "kvi_fileextensions.h"
@@ -139,7 +138,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	pTool = new QToolButton(pHBox);
 	pTool->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
 	pTool->setIconSize(QSize(32,32));
-	pTool->setToolTip(__tr2qs_ctx("Save Current Theme...","theme"));
+	pTool->setToolTip(__tr2qs_ctx("Save current theme...","theme"));
 	connect(pTool,SIGNAL(clicked()),this,SLOT(saveCurrentTheme()));
 
 	pSep = new QFrame(pHBox);
@@ -150,13 +149,13 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	m_pPackThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 
 	m_pPackThemeButton->setIconSize(QSize(32,32));
-	m_pPackThemeButton->setToolTip(__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
+	m_pPackThemeButton->setToolTip(__tr2qs_ctx("Export selected themes to a distributable package","theme"));
 	connect(m_pPackThemeButton,SIGNAL(clicked()),this,SLOT(packTheme()));
 
 	m_pDeleteThemeButton = new QToolButton(pHBox);
 	m_pDeleteThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pDeleteThemeButton->setIconSize(QSize(32,32));
-	m_pDeleteThemeButton->setToolTip(__tr2qs_ctx("Delete Selected Themes","theme"));
+	m_pDeleteThemeButton->setToolTip(__tr2qs_ctx("Delete selected themes","theme"));
 	connect(m_pDeleteThemeButton,SIGNAL(clicked()),this,SLOT(deleteTheme()));
 
 	pSep = new QFrame(pHBox);
@@ -166,13 +165,13 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	pTool = new QToolButton(pHBox);
 	pTool->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	pTool->setIconSize(QSize(32,32));
-	pTool->setToolTip(__tr2qs_ctx("Install Theme Package From Disk","theme"));
+	pTool->setToolTip(__tr2qs_ctx("Install theme package from disk","theme"));
 	connect(pTool,SIGNAL(clicked()),this,SLOT(installFromFile()));
 
 	pTool = new QToolButton(pHBox);
 	pTool->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	pTool->setIconSize(QSize(32,32));
-	pTool->setToolTip(__tr2qs_ctx("Get More Themes...","theme"));
+	pTool->setToolTip(__tr2qs_ctx("Get more themes...","theme"));
 	connect(pTool,SIGNAL(clicked()),this,SLOT(getMoreThemes()));
 
 	QWidget *w= new QWidget(pHBox);

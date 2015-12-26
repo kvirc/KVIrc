@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -96,7 +96,7 @@ const char * g_errorTable[KviError::ErrorCount]=
 	__tr_no_lookup("Broken pipe"),                                              // 046
 	__tr_no_lookup("Invalid proxy address"),                                    // 047
 	__tr_no_lookup("Remote end has closed the connection"),                     // 048
-	__tr_no_lookup("Invalid IRC context id"),                                   // 049
+	__tr_no_lookup("Invalid IRC context ID"),                                   // 049
 	__tr_no_lookup("Error loading module"),                                     // 050
 	__tr_no_lookup("No such module command"),                                   // 051
 	__tr_no_lookup("No such module function"),                                  // 052

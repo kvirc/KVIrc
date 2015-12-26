@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -591,7 +591,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 
 	if(KVSP_curCharUnicode != '/')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (Unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -609,7 +609,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 
 	if(KVSP_curCharUnicode != '/')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (Unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		delete pFirst;
 		return 0;
 	}
@@ -632,7 +632,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 
 	if(KVSP_curCharUnicode != '/')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (Unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		delete pFirst;
 		return 0;
 	}
@@ -936,10 +936,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseVoidFunctionCallOrOperation()
 		// must be followed by the end of a command
 		if(r->isFunctionCall())
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) after a void function call: end of instruction expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) after a void function call: end of instruction expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		} else {
 			warning(pBegin,__tr2qs_ctx("Unexpected (and senseless) read-only data evaluation","kvs"));
-			warning(pBegin,__tr2qs_ctx("Unexpected character '%q' (unicode %x)","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			warning(pBegin,__tr2qs_ctx("Unexpected character '%q' (Unicode %x)","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 			error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: confused by earlier errors: bailing out","kvs"));
 		}
 		delete r;

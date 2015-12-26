@@ -292,7 +292,7 @@
 #define ERR_ERRONEUSNICKNAME 432 /* "%s :Erroneus Nickname"                              [I,E,U,D] # */
 #define ERR_NICKNAMEINUSE    433 /* "%s :Nickname is already in use."                    [I,E,U,D] # */
 #define ERR_SERVICENAMEINUSE 434 /* ??? [I,D] */
-#define ERR_SERVICECONFUSED  435 /* ??? [I,D] */
+#define ERR_BANONCHAN        435 /* "Guest70103 BlindSight ##linux :Cannot change nickname while banned on channel" [I,D] */
 #define ERR_NICKCOLLISION    436 /* "%s :Nickname collision KILL"                        [I,E,U,D] # */
 #define ERR_UNAVAILRESOURCE  437 /* ???                                                        [I] # */
 //#define ERR_BANNICKCHANGE  437 /* ??? duplicate [U,D] */

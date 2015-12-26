@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -74,7 +74,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	setModal(1);
 	m_szOldMask=szMask;
 
-	setWindowTitle(__tr2qs("Mask editor - KVirc"));
+	setWindowTitle(__tr2qs("Mask Editor - KVirc"));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -139,7 +139,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	if(pServerInfo)
 		szDescription = pServerInfo->getChannelModeDescription(cMode);
 	if(szDescription.isEmpty())
-		szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+		szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 	switch(cMode)
 	{
 		case 'b':
@@ -156,30 +156,35 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 			break;
 		case 'q':
 			// this could also be quiet bans..
-			m_eIcon = KviIconManager::ChanOwner;
+			m_eIcon = KviIconManager::Kick;
 			break;
 		default:
 			m_eIcon = KviIconManager::Ban;
 			break;
 	}
 
-	QLabel * l = new QLabel("",this);
-	l->setPixmap(*(g_pIconManager->getSmallIcon(m_eIcon)));
-	g->addWidget(l,0,0);
+	KviTalHBox * pTitleLayout = new KviTalHBox(this);
+	g->addWidget(pTitleLayout,0,0);
 
-	l = new QLabel(szDescription,this);
-	g->addWidget(l,0,1);
+	QLabel * l = new QLabel("",pTitleLayout);
+	l->setPixmap(*(g_pIconManager->getSmallIcon(m_eIcon)));
+
+	l = new QLabel(szDescription,pTitleLayout);
+
+	QFrame * pFrame = new QFrame(this);
+	pFrame->setFrameStyle(QFrame::HLine | QFrame::Sunken);
+	g->addWidget(pFrame,1,0,1,-1);
 
 	KviTalHBox * hb = new KviTalHBox(this);
-	g->addWidget(hb,1,0,1,2);
+	g->addWidget(hb,2,0,1,2);
 
 	new QLabel(__tr2qs("Filter:"),hb);
 	m_pSearch = new QLineEdit(hb);
 	connect(m_pSearch,SIGNAL(textChanged ( const QString & ) ),this,SLOT(searchTextChanged ( const QString & )));
 
-	l = new QLabel(__tr2qs("Use doubleclick to edit item"),this);
-	g->addWidget(l,1,1);
-	g->addWidget(l,2,0,1,2);
+	l = new QLabel(__tr2qs("Use double-click to edit item"),this);
+	g->addWidget(l,2,1);
+	g->addWidget(l,3,0,1,2);
 
 	m_pMaskBox = new QTreeWidget(this);
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
@@ -197,22 +202,29 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	m_pMaskBox->setAllColumnsShowFocus(true);
 	m_pMaskBox->setSortingEnabled(true);
 	connect(m_pMaskBox,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked( QTreeWidgetItem *,int)));
-	g->addWidget(m_pMaskBox,3,0,1,2);
+	g->addWidget(m_pMaskBox,4,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 
 	m_pRemoveMask->setFocusPolicy(Qt::ClickFocus);
 	m_pRemoveMask->setFocusProxy(this);
-	g->addWidget(m_pRemoveMask,4,1);
+	g->addWidget(m_pRemoveMask,5,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
-	g->addWidget(m_pAddButton,4,0);
+	g->addWidget(m_pAddButton,5,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	g->setColumnStretch(1,1);
+
+	if(!m_pChannel->connection())
+	{
+		m_pRemoveMask->setEnabled(false);
+		m_pAddButton->setEnabled(false);
+		return;
+	}
 
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
 
@@ -288,7 +300,7 @@ void KviMaskEditor::removeClicked()
 
 void KviMaskEditor::addClicked()
 {
-	if(m_pChannel)
+	if(m_pChannel && m_pChannel->connection())
 	{
 		if(m_pChannel->isMeHalfOp() ||
 			m_pChannel->isMeOp() ||

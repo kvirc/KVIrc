@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -162,17 +162,17 @@ OptionsWidget_themeToolBarApplets::OptionsWidget_themeToolBarApplets(QWidget * p
 {
 	createLayout();
 
-	addFontSelector(0,0,0,0,__tr2qs_ctx("Font","options"),KviOption_fontIrcToolBarApplet);
+	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontIrcToolBarApplet);
 
-	addColorSelector(0,1,0,1,__tr2qs_ctx("Background","options"),KviOption_colorIrcToolBarAppletBackground);
-	addColorSelector(0,2,0,2,__tr2qs_ctx("Low-Contrast Foreground","options"),KviOption_colorIrcToolBarAppletForegroundLowContrast);
-	addColorSelector(0,3,0,3,__tr2qs_ctx("Mid-Contrast Foreground","options"),KviOption_colorIrcToolBarAppletForegroundMidContrast);
-	addColorSelector(0,4,0,4,__tr2qs_ctx("Active High-Contrast Foreground (Primary)","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastActive1);
-	addColorSelector(0,5,0,5,__tr2qs_ctx("Active High-Contrast Foreground (Secondary)","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastActive2);
-	addColorSelector(0,6,0,6,__tr2qs_ctx("Inactive High-Contrast Foreground (Primary)","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastInactive1);
-	addColorSelector(0,7,0,7,__tr2qs_ctx("Inactive High-Contrast Foreground (Secondary)","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2);
+	addColorSelector(0,1,0,1,__tr2qs_ctx("Background:","options"),KviOption_colorIrcToolBarAppletBackground);
+	addColorSelector(0,2,0,2,__tr2qs_ctx("Low-contrast foreground:","options"),KviOption_colorIrcToolBarAppletForegroundLowContrast);
+	addColorSelector(0,3,0,3,__tr2qs_ctx("Mid-contrast foreground:","options"),KviOption_colorIrcToolBarAppletForegroundMidContrast);
+	addColorSelector(0,4,0,4,__tr2qs_ctx("Active high-contrast foreground (primary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastActive1);
+	addColorSelector(0,5,0,5,__tr2qs_ctx("Active high-contrast foreground (secondary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastActive2);
+	addColorSelector(0,6,0,6,__tr2qs_ctx("Inactive high-contrast foreground (primary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastInactive1);
+	addColorSelector(0,7,0,7,__tr2qs_ctx("Inactive high-contrast foreground (secondary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2);
 
-	addPixmapSelector(0,8,0,8,__tr2qs_ctx("Background Image","options"),KviOption_pixmapIrcToolBarAppletBackground);
+	addPixmapSelector(0,8,0,8,__tr2qs_ctx("Background image:","options"),KviOption_pixmapIrcToolBarAppletBackground);
 
 	layout()->setRowStretch(8,1);
 }

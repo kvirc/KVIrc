@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -71,7 +71,7 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 	if(iBest < 90)
 	{
 		if(pOut)
-			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more agressive detection pass","mediaplayer"));
+			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more aggressive detection pass","mediaplayer"));
 		// no sure player found... try again with a destructive test
 		for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 		{
@@ -230,7 +230,7 @@ MP_KVS_SIMPLE_COMMAND(hide,hide)
 	@description:
 		Show the player interface.[br]
 		When you use this function in your script, remember to reshow mediaplayer's window [br]
-		or quit the mediplayerwindow to the exit.[br]
+		or quit the mediaplayer window to the exit.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -543,9 +543,14 @@ MP_KVS_FUNCTION(playerList)
 		mediaplayer.playMrl <mrl>
 	@description:
 		Plays the media specified by the <mrl> on the currently
-		selected media player interface. <mrl> is a standard Media Resource
-		Locator. Examples of such locators are: 'file:///home/myfile.mp3',
-		'http://streaming.server.top:123', 'dvd:// or dvb://channelname'.
+		selected media player interface. MRL is a standard Media Resource Locator.
+		Examples of such locators are:
+		[example]
+		file:///home/myfile.mp3
+		http://streaming.server.top:123
+		dvd:///dev/dvd
+		dvb://channelname
+		[/example]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -736,15 +741,20 @@ MP_KVS_SIMPLE_COMMAND(mute,mute)
 	@title:
 		$mediaplayer.mrl
 	@short:
-		Returns the mrl of the currently played media
+		Returns the MRL of the currently playing media
 	@syntax:
 		$mediaplayer.mrl()
 	@description:
-		Returns the mrl of the media currently played by the selected media player interface.
-		The mrl is a standard Media Resource Locator.
-		Examples of such locators are: 'file:///home/myfile.mp3',
-		'http://streaming.server.top:123', 'dvd:// or dvb://channelname'.
-		This means that the returned string may NOT refer to a local file:
+		Returns the MRL of the media currently played by the selected media player interface.
+		The MRL is a standard Media Resource Locator.
+		Examples of such locators are: 
+		[example]
+		file:///home/myfile.mp3
+		http://streaming.server.top:123
+		dvd:///dev/dvd
+		dvb://channelname
+		[/example]
+		This means that the returned string may [b]not[/b] refer to a local file:
 		it refers to the local file only if the 'file://' prefix is found ([fnc]$mediaplayer.localFile()[/fnc]
 		checks that for you).
 		The returned string is empty if the player isn't currently playing.[br]
@@ -769,7 +779,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mrl,mrl)
 	@syntax:
 		$mediaplayer.nowPlaying()
 	@description:
-		Returns a description fo the media currently played
+		Returns a description for the media currently played
 		by the selected media player interface. The description
 		will usually contain the title of the media and eventually
 		some additional information like the artist name or album.
@@ -1261,7 +1271,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 	@title:
 		$mediaplayer.getShuffle
 	@short:
-		Return if "Shuffle" is on.
+		Return if "shuffle" is on.
 	@syntax:
 		$mediaplayer.getShuffle()
 	@description:
@@ -1283,11 +1293,11 @@ MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle,getShuffle)
 	@title:
 		$mediaplayer.getEqData
 	@short:
-		Return the Equalizer Value.
+		Return the equalizer value.
 	@syntax:
 		$mediaplayer.getEqData(<item:integer>,<options:string>)
 	@description:
-		Return the value of the Eq <item>.[br]
+		Return the value of the EQ <item>.[br]
 		if 'q' is given as an option, it runs in quiet mode.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
@@ -1333,11 +1343,11 @@ MP_KVS_FUNCTION(getEqData)
 	@title:
 		mediaplayer.setEqData
 	@short:
-		Return the Equalizer Value.
+		Return the equalizer value.
 	@syntax:
 		mediaplayer.setEqData [-q] <item:integer> <value:integer>
 	@description:
-		Set the value of the Eq <item> to <value>.[br]
+		Set the value of the EQ <item> to <value>.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1491,15 +1501,15 @@ MP_KVS_FUNCTION(status)
 		the information about the currently played media (in order to implement the nice /playing
 		scripts). The module has replaced the old mediaplayer module which after
 		years of development had developed some design flaws and needed a complete rewrite.
-		At the moment of writing the supported players are: xmms (unix), audacious (unix), winamp (windows),
-		every player supported by the amip project (windows), every player using the mpris interface
-		(amarok2, juk under kde). You choose the player interface by either setting
+		At the moment of writing the supported players are: XMMS (UNIX), Audacious (UNIX), Winamp (Windows),
+		every player supported by the AMIP project (Windows), every player using the MPRIS D-Bus interface
+		(Amarok2, JuK under KDE). You choose the player interface by either setting
 		the option in the settings dialog, by manually setting [cmd]option[/cmd] stringPreferredMediaPlayer
 		or by running [cmd]mediaplayer.detect[/cmd] that will guess the media player interface for you.[br]
 		If you're going to use the Winamp media player then you must install the "gen_kvirc.dll" plugin
-		(included in the kvirc distribution) as a "general" winamp plugin.
-		This is achieved by simpy copying the file gen_kvirc.dll
-		to the winamp plugins directory and restarting winamp.[br]
+		(included in the KVIrc distribution) as a "general" Winamp plugin.
+		This is achieved by simply copying the file gen_kvirc.dll
+		to the Winamp plugins directory and restarting Winamp.[br]
 		[br]
 		The commands and functions exported by this module serve mainly for two
 		purposes: control the playback and get information about the currently played media.
@@ -1510,7 +1520,7 @@ MP_KVS_FUNCTION(status)
 		[fnc]$mediaplayer.nowplaying()[/fnc] and [fnc]$mediaplayer.mrl()[/fnc].
 		Several other informative function are available as well but they are not
 		granted to work with all the supported media players or media types (e.g.
-		with winamp you can play video files that probably have no album, genre
+		with Winamp you can play video files that probably have no album, genre
 		or sampleRate information...).[br]
 		If you intend to write portable code, you should check the return value
 		of the functions like [fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.title()[/fnc]
@@ -1531,7 +1541,7 @@ MP_KVS_FUNCTION(status)
 	@syntax:
 		mediaplayer.setRepeat [-q] <repeat:bool>
 	@description:
-		Set the Repeat flag to "repeat" (1 for ON, 0 for OFF).[br]
+		Set the repeat flag to "repeat" (1 for ON, 0 for OFF).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -143,11 +143,11 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterEnableNone()));
 	pOptionsLayout->addWidget(pButton,6,1);
 
-	pButton = new QPushButton(__tr2qs("&Load From..."),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("&Load from..."),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterLoad()));
 	pOptionsLayout->addWidget(pButton,7,0);
 
-	pButton = new QPushButton(__tr2qs("&Save As..."),m_pOptionsWidget);
+	pButton = new QPushButton(__tr2qs("&Save as..."),m_pOptionsWidget);
 	connect(pButton,SIGNAL(clicked()),this,SLOT(filterSave()));
 	pOptionsLayout->addWidget(pButton,7,1);
 

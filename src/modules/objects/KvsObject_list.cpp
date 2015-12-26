@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -51,82 +51,64 @@
 	@functions:
 		!fn: <integer> $count()
 		Returns the number of items in the list
-
 		!fn: <boolean> $isEmpty()
 		Returns $true if the list is empty, $false otherwise.
-
 		!fn: $clear()
 		Removes all the items from the list.This is the same as
 		[classfnc:list]$removeAll[/classfnc]().
-
 		!fn: $removeAll()
 		Removes all the items from the list. This is the same as
 		[classfnc:list]$clear[/classfnc]().
-
 		!fn: $append(<item:variant>)
 		Inserts the <item> at the end (tail) of the list.
-
 		!fn: $prepend(<item:variant>)
 		Inserts the <item> at the beginning (head) of the list.
-
 		!fn: $insert(<index:uint>,<item:variant>)
 		Inserts the <item> at zero-based position <index> in the list.
 		If <index> is greater or equal to [classfnc:list]$count[/classfnc]()
 		then the item is simply appended to the end of the list.
-
 		!fn: $add(<index:uint>,<item:variant>)
 		This is exactly the same as [classfnc:list]$insert[/classfnc]().
-
 		!fn: <variant> $item(<index:uint>)
 		Returns the item at zero-based <index>. If <index> is greater
 		or equal to [classfnc:list]$count[/classfnc]() (beyond the end of the list)
 		then [fnc]$nothing[/fnc] is returned.
-
 		!fn: <boolean> $remove(<index:uint>)
 		Removes the item at zero-based <index>. Returns $true
 		if the item was successfully removed and $false otherwise (i.e. <index>
 		pointed beyond the end of the list).
-
 		!fn: <boolean> $removeFirst()
 		Removes the first item from the list. Returns $true
 		if the item was successfully removed (the list was not empty)
 		and $false otherwise.
-
 		!fn: <boolean> $removeLast()
 		Removes the last item from the list. Returns $true
 		if the item was successfully removed (the list was not empty)
 		and $false otherwise.
-
 		!fn: <boolean> $removeCurrent()
 		Removes the current item from the list. Returns $true
 		if the item was successfully removed or $false otherwise.
 		Invalidates any iteration operation.
-
 		!fn: <boolean> $moveFirst()
 		Moves the iterator to the first item in the list and returns
-		$true if the move was succesfull (i.e., the list is not empty)
+		$true if the move was successful (i.e., the list is not empty)
 		and $false otherwise.
-
 		!fn: <boolean> $moveLast()
 		Moves the iterator to the last item in the list and returns
-		$true if the move was succesfull (i.e., the list is not empty)
+		$true if the move was successful (i.e., the list is not empty)
 		and $false otherwise.
-
 		!fn: <boolean> $movePrev()
 		Moves the iterator to the previous item and returns $true
-		if the move was succesfull (i.e., there IS a previous item)
+		if the move was successful (i.e., there IS a previous item)
 		and $false otherwise.
-
 		!fn: <boolean> $moveNext()
 		Moves the iterator to the next item and returns $true
-		if the move was succesfull (i.e., there IS a next item)
+		if the move was successful (i.e., there IS a next item)
 		and $false otherwise.
-
 		!fn: <boolean> $eof()
 		Returns $true if the iterator points to a valid
 		item in the list (and thus [classfnc:list]$current[/classfnc]()
 		would return a valid value) and $false otherwise.
-
 		!fn: <boolean> $current()
 		Returns the item pointed by the current iterator
 		or [fnc]$nothing[/fnc] is the iterator is not valid (points

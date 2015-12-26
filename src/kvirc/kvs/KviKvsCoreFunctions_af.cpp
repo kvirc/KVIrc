@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -149,7 +149,7 @@ namespace KviKvsCoreFunctions
 		@title:
 			$ascii
 		@short:
-			Returns the UNICODE code of a character
+			Returns the Unicode code of a character
 		@syntax:
 			<variant> $ascii(<char:string>)
 		@description:
@@ -173,8 +173,8 @@ namespace KviKvsCoreFunctions
 			$asciiToBase64(<ascii_string>)
 		@description:
 			Encodes an ASCII string to its base64 encoded representation
-			Please note that since KVS is UNICODE based, this function
-			will first encode the string in UTF8 and then base64-encode.
+			Please note that since KVS is Unicode based, this function
+			will first encode the string in UTF-8 and then base64-encode.
 			This means that it is substantially only 7-bit safe (ASCII codes below 128).
 		@examples:
 			[cmd]echo[/cmd] $asciiToBase64("Hello!")
@@ -215,8 +215,8 @@ namespace KviKvsCoreFunctions
 			<string> $asciiToHex(<ascii_string:string>)
 		@description:
 			Encodes an ASCII string to its hex encoded representation.
-			Please note that since KVS is UNICODE based, this function
-			will first encode the string in UTF8 and then hex-encode.
+			Please note that since KVS is Unicode based, this function
+			will first encode the string in UTF-8 and then hex-encode.
 			This means that it is substantially only 7bit safe (ASCII codes below 128).
 		@examples:
 			[cmd]echo[/cmd] $asciiToHex("Hello!")
@@ -1244,7 +1244,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			The parameterless form returns an array of feature description strings that this KVIrc executable supports.[br]
 			This function is useful when some part of your script depends on
-			an optional KVIrc feature (like SSL support or IPV6 support).[br]
+			an optional KVIrc feature (like SSL support or IPv6 support).[br]
 			The returned value may be assigned to a dictionary too: it will be used to simulate an array.[br]
 			The form with the [test_feature] parameter returns true if and only if [test_feature] is available.[br]
 		@examples:
@@ -1383,11 +1383,11 @@ namespace KviKvsCoreFunctions
 		@title:
 			$firstConnectedConsole
 		@short:
-			Returns the window id of the first connected console
+			Returns the window ID of the first connected console
 		@syntax:
 			<uint> $firstConnectedConsole()
 		@description:
-			Returns the window id of the first connected console
+			Returns the window ID of the first connected console
 			or 0 if no console is actually connected.
 	*/
 

@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -51,7 +51,7 @@
 		[cmd]log.start[/cmd], [cmd]log.stop[/cmd], [cmd]log.flush[/cmd],
 		[fnc]$log.file[/fnc]().[br]
 		NOTE:[br]
-		If you want to AUTOENABLE logging in certain types of windows
+		If you want to [b]auto enable[/b] logging in certain types of windows
 		you have to use the [cmd]option[/cmd] command.[br]
 		For example, [b]option boolAutoLogQueries 1[/b] enables logging in all the newly created
 		query windows.
@@ -76,8 +76,8 @@
 		filename is used.[br]
 		If the -p switch is used, all the already existing contents of the window are
 		stored to the log file before starting the log action.[br]
-		Please note that some windows do not have logging capabilities...this command
-		will print a warning in that case.[br]
+		Please note that some windows do not have logging capabilities...[br]
+		This command will print a warning in that case.[br]
 	@seealso:
 		[fnc]$window[/fnc],
 		[cmd]log.stop[/cmd],
@@ -104,7 +104,7 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -158,7 +158,7 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -183,8 +183,8 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 	@description:
 		Flushes the log file the current window or in the window specified by the -w switch.[br]
 		If logging is not enabled in the specified window, this command does nothing.[br]
-		If this command is never used, the log file is flushed at regulear file-size intervals,
-		depending on the underlying IO subsystem. This is usually 4KiB.[br]
+		If this command is never used, the log file is flushed at regular file-size intervals,
+		depending on the underlying I/O subsystem. This is usually 4KiB.[br]
 		The "block flushing" is used to achieve a fast I/O on files, but may cause
 		the last data block to be lost in case of a program crash.[br]
 	@seealso:
@@ -208,7 +208,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 				return true;
 			}
 		} else {
-			c->warning(__tr2qs_ctx("Missing window id after the 'w' switch","log"));
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
 			return true;
 		}
 	}
@@ -231,7 +231,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		$log.file(<window id>)
 	@description:
 		The form with the <window id> parameter returns the log file name
-		of the window that has the specified id. If logging is not enabled
+		of the window that has the specified ID. If logging is not enabled
 		in the specified window, this function returns an empty string.[br]
 		The form without parameters returns the log file name of the current window,
 		thus it is equivalent to calling $log.file([fnc]$window[/fnc])
@@ -262,7 +262,7 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 		pWnd = g_pApp->findWindow(szWindow);
 		if(!pWnd)
 		{
-			c->warning(__tr2qs_ctx("Window with id '%1' not found, returning empty string","log").arg(szWindow));
+			c->warning(__tr2qs_ctx("Window with ID '%1' not found, returning empty string","log").arg(szWindow));
 			return true;
 		}
 	}

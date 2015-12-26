@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -316,7 +316,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap
 	if(m_localPixmap.pixmap())m_pFileNameLabel->setText(m_localPixmap.path());
 	g->addWidget(m_pFileNameLabel,2,0);
 
-	m_pChooseButton = new QPushButton("...",this);
+	m_pChooseButton = new QPushButton("&Browse...",this);
 	g->addWidget(m_pChooseButton,2,1);
 	connect(m_pChooseButton,SIGNAL(clicked()),this,SLOT(choosePixmap()));
 

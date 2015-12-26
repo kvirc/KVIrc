@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -514,7 +514,7 @@ void BanFrame::enableClicked()
 void BanFrame::addBan()
 {
 	bool ok = false;
-	QString *pText = new QString(QInputDialog::getText(this, __tr2qs("URL Ban List"),__tr2qs("Add"),QLineEdit::Normal,QString(),&ok));
+	QString *pText = new QString(QInputDialog::getText(this, __tr2qs("URL Ban List"),__tr2qs("Add a URL to ban"),QLineEdit::Normal,QString(),&ok));
 	if (ok && !pText->isEmpty()) {
 		g_pBanList->append(pText);
 		m_pBanList->addItem(*pText);
@@ -679,16 +679,17 @@ void loadBanList()
 	@description:
 		This command opens a window containing the URLs' list.
 		In the list there is other information:[br]
-		[U]Window[/U] : window where the URL has been shown last[br]
-		[U]Count[/U] : number of URLs shown[br]
-		[U]Timestamp[/U] : date/time when the URL has been shown first[br]
+		[b]Window[/b]: window where the URL has been shown last[br]
+		[b]Count[/b]: number of URLs shown[br]
+		[b]Timestamp[/b]: date/time when the URL has been shown first[br][br]
+		
 		Clicking right on the URL column of the list a menu will popup, through it
 		you can remove the selected item, find the URL in the window it appeared last, and
-		say it to: [I]@Console, Channels, Queries, DCC Chats[/I] and [I]User windows[/I].[br]
+		say it to: [i]@Console, Channels, Queries, DCC Chats[/i] and [i]User windows[/i].[br]
 		The list is saved to file when you click on the menu item or when you unload the plugin
-		on condition that you have checked the relative checkbox in configuration dialog.[br]
-		You can also open the URL in your web browser double clicking on it in the URL list window.[br][br]
-
+		on condition that you have checked the relative checkbox in configuration dialog.[br][br]
+		
+		You can also open the URL in your web browser double clicking on it in the URL list window.
   */
 
 static bool url_kvs_cmd_list(KviKvsModuleCommandCall *)
@@ -733,14 +734,12 @@ UrlDlgList *findFrame()
 		url.config
 	@description:
 		This command opens a configuration window where it is possible
-		to setup plugin's parameters. You can also open this window by
-		using popup menu in the URL list window<BR><BR>
-		<H3>Configure dialog options:</H3>
-		There is also a ban list widget, which allows to have a list of words that plugin mustn't catch.<BR><BR>
-		<I>E.g.<BR>
-		<blockquote>if the word "ftp" is inserted in the ban list and if in a window there is an output like "ftp.kvirc.net",
-		the URL will not be caught.</blockquote></I>
-		<HR>
+		to setup plugin's parameters.[br]
+		You can also open this window by using popup menu in the URL list window[br]
+		[big]Configure dialog options:[/big]
+		There is also a ban list widget, which allows to have a list of words that plugin must not catch.[br][br]
+		[i]e.g. if the word "ftp" is inserted in the ban list and if in a window there is an output like "ftp.kvirc.net",
+		the URL will not be caught.[/i]
 */
 
 static bool url_kvs_cmd_config(KviKvsModuleCommandCall *)
@@ -906,24 +905,26 @@ void url_module_config()
 		The URL list module
 	@body:
 		This plugin keeps track of all URLs shown in KVIrc windows.
-		<H3>Exported commands:</H3>
-		<B>/URL.list</B> : this command opens a window containing the URLs' list.
-		In the list there is other information:<BR>
-		<U>Window</U> : window where the URL has been shown last<BR>
-		<U>Count</U> : number of URLs shown<BR>
-		<U>Timestamp</U> : date/time when the URL has been shown first<BR>
+		[big]Exported commands:[/big]
+		[b]/url.list[/b]: this command opens a window containing the URLs' list.
+		In the list there is other information:[br]
+		[b]Window[/b]: window where the URL has been shown last[br]
+		[b]Count[/b]: number of URLs shown[br]
+		[b]Timestamp[/b]: date/time when the URL has been shown first[br]
+    
 		Clicking right on the URL column of the list a menu will popup, through it
 		you can remove the selected item, find the URL in the window it appeared last, and
-		say it to: <I>@Console, Channels, Queries, DCC Chats</I> and <I>User windows</I>.<BR>
+		say it to: [i]@Console, Channels, Queries, DCC Chats[/i] and [i]User windows[/i].[br]
 		The list is saved to file when you click on the menu item or when you unload the plugin
-		on condition that you have checked the relative checkbox in configuration dialog.<BR>
-		You can also open the URL in your web browser double clicking on it in the URL list window.<BR><BR>
+		on condition that you have checked the relative checkbox in configuration dialog.[br]
+    
+		You can also open the URL in your web browser double clicking on it in the URL list window.[br][br]
 
-		Mail me if you have any suggestion or you want to notice a bug.<BR>
-		<B>Andrea 'YaP' Parrella</B> &lt;anandrea@iname.com&gt;<BR><BR>
-		Thanks to:<BR>
-		<B>Szymon Stefanek</B> and <B>Till Bush</B> for their help.<BR>
-		<B>Ted Podgurski</B> for toolbar's icons.
+		Mail me if you have any suggestion or you want to notice a bug.[br]
+		[b]Andrea 'YaP' Parrella[/b] &lt;anandrea@iname.com&gt;[br][br]
+		Thanks to:[br]
+		[b]Szymon Stefanek[/b] and [b]Till Bush[/b] for their help.[br]
+		[b]Ted Podgurski[/b] for toolbar's icons.
 */
 
 

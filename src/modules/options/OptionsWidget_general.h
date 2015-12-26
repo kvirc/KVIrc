@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -27,7 +27,7 @@
 #include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_general KviIconManager::Options
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general __tr2qs_no_lookup("General options")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general __tr2qs_no_lookup("General Options")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_general 40000
 
 class OptionsWidget_general : public KviOptionsWidget

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -185,7 +185,7 @@ static HWND find_winamp(KviWinampInterface * i)
 	if(!hWnd)
 	{
 		// try to start the process ?
-		i->setLastError(__tr2qs_ctx("Can't find a running winamp window","mediaplayer"));
+		i->setLastError(__tr2qs_ctx("Can't find a running Winamp window","mediaplayer"));
 	}
 	return hWnd;
 }
@@ -195,7 +195,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviWinampInterface,
 	"winamp",
 	__tr2qs_ctx(
-		"An interface to the popular Winamp media player.\n" \
+		"An interface for the Winamp media player.\n" \
 		"You can download it from http://www.winamp.com.\n" \
 		"To use all the features of this interface you must " \
 		"copy the gen_kvirc.dll plugin found in the KVIrc " \
@@ -317,7 +317,7 @@ QString KviWinampInterface::mrl()
 
 		if(ret2 != KVIRC_WM_USER_CHECK_REPLY)
 		{
-			setLastError(__tr2qs_ctx("The winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer"));
+			setLastError(__tr2qs_ctx("The Winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer"));
 			return ret;
 		}
 
@@ -351,7 +351,7 @@ QString KviWinampInterface::nowPlaying()
 		int retpippo = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_CHECK);
 		if(retpippo != KVIRC_WM_USER_CHECK_REPLY)
 		{
-			setLastError(__tr2qs_ctx("The winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer") );
+			setLastError(__tr2qs_ctx("The Winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer") );
 			return ret;
 		}
 

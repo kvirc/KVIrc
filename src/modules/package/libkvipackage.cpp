@@ -3,13 +3,13 @@
 //   File : libkvipackage.cpp
 //   Creation date : Tue 7 Dec 00:05:59 2002 GMT by Szymon Stefanek
 //
-//   This toolbar is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -178,7 +178,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	@syntax:
 		package.extractfield <package_path> <field_id> <target_file_name>
 	@description:
-		Extracs a package binary metadata field and saves it to the specified file.
+		Extracts a package binary metadata field and saves it to the specified file.
 		This is useful to extract images from the packages.
 */
 static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
@@ -203,7 +203,7 @@ static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
 
 	if(!pField)
 	{
-		c->warning(__tr2qs_ctx("Package does not contain binary field %1","package").arg(szFieldId));
+		c->warning(__tr2qs_ctx("Package doesn't contain binary field %1","package").arg(szFieldId));
 		return true;
 	}
 

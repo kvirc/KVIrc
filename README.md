@@ -1,5 +1,6 @@
 [![Travis Build Status](https://img.shields.io/travis/kvirc/KVIrc/master.svg?label=linux%2Fosx)](https://travis-ci.org/kvirc/KVIrc)
 [![AppVeyor Build status](https://img.shields.io/appveyor/ci/DarthGandalf/KVIrc/master.svg?label=windows)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
+[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/6841.svg)](https://scan.coverity.com/projects/kvirc-coverity)
 
 ![KVIrc logo](https://raw.githubusercontent.com/kvirc/KVIrc/master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!")
 
@@ -12,22 +13,21 @@ This is the Github development and bug tracker home for the KVIrc project.
 
 #### Getting involved
 
-- [Contributing](http://www.kvirc.net/?id=contribute)
+- [Contributing](https://github.com/kvirc/KVIrc/wiki/Getting-involved-and-contributing)
 
 #### Help & Support
 
-- [KVIrc - wiki FAQ](https://github.com/kvirc/KVIrc/wiki/FAQ)
-- [KVIrc - Project FAQ](https://github.com/kvirc/KVIrc/blob/master/doc/FAQ)
+- [KVIrc - Wiki - Homepage](https://github.com/kvirc/KVIrc/wiki/home)
 - [KVIrc manual](http://www.kvirc.net/doc)
 - [KVIrc API](http://www.kvirc.net/api)
+- [How to submit a bug report](https://github.com/kvirc/KVIrc/wiki/Submitting-a-bug-report)
 - [Open a bug report or make a suggestion](https://github.com/kvirc/KVIrc/issues)
-- [#KVIrc](https://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
+- Talk to us [Join #KVIrc](https://webchat.freenode.net?nick=kvirc-user&channels=%23kvirc&prompt=1&uio=OT10cnVlde) on freenode.net
 - [KVIrc - Community forums](http://www.kvirc.ru/forum/)
-- [Further information](https://github.com/kvirc/KVIrc/tree/master/doc)
 
 ---
 Try one of our fresh off-the-press nightly development 32-bit or 64-bit builds for Windows, Ubuntu and Debian.
-#### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrc-source-or-binaries#source-downloads-master)
+#### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrc's-nightly-source-or-binaries)
 
 We're also looking for volunteer packagers and maintainers to other distributions that can help us extend KVIrc's availability to other OS's.
 

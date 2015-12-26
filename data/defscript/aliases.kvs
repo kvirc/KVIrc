@@ -360,7 +360,7 @@ alias(ignore)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /ignore [-m|--remove] [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] <nick>"
+		echo "	  /ignore [-m|--remove] [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-h|--highlight] <nick>"
 		halt
 	}
 
@@ -383,9 +383,10 @@ alias(ignore)
 		if($sw(t, ctcp)) %flags = $str.append(%flags," -t")
 		if($sw(i, invite)) %flags = $str.append(%flags," -i")
 		if($sw(d, dcc)) %flags = $str.append(%flags," -d")
+		if($sw(h, highlight)) %flags = $str.append(%flags," -h")
 
 		# if no flag has been passed, enable them all
-		if($isEmpty(%flags)) %flags = " -p -c -n -t -i -d"
+		if($isEmpty(%flags)) %flags = " -p -c -n -t -i -d -h"
 		eval reguser.setIgnoreFlags %flags $escape($0)
 	}
 }

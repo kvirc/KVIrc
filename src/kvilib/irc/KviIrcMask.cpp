@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -63,7 +63,7 @@
 		The <host> part is the hostname of the remote user.[br]
 		In most cases it is the human-readable format of the host name, but sometimes
 		it happens to be an IP-address (when the host has no reverse DNS entry).[br]
-		The IP address can be either in IPV4 format or in IPV6 format.[br]
+		The IP address can be either in IPv4 format or in IPv6 format.[br]
 		Some (weird from my point of view) servers hide certain parts of the IP address to
 		prevent attacks to the user's machine.[br]
 		Here are some examples of full irc-masks:[br]

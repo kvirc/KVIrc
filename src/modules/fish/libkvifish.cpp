@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -148,7 +148,7 @@
 
 		if(szMessage.startsWith("DH1080_INIT ", Qt::CaseSensitive) || szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
 		{
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: Received DH1080 public key from %1, sending mine...").arg(szNick));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: received DH1080 public key from %1, sending mine...").arg(szNick));
 			// fish appends an 'A' to all base64 coded strings
 			if(szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
 				szHisPubKey = szMessage.mid(16).toLatin1();
@@ -258,10 +258,10 @@
 				g_pCryptEngineManager->deallocateEngine(e);
 			}
 		} else {
-			c->warning(__tr2qs("The Mircryption crypt engine does not exist"));
+			c->warning(__tr2qs("The Mircryption encryption engine doesn't exist"));
 		}
 
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: Key for %1 successfully set!").arg(szNick));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: key for %1 successfully set!").arg(szNick));
 		return true;
 	}
 
@@ -284,7 +284,7 @@
 			szTmp.ptr()
 			);
 
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: Sent my DH1080 public key to %1, waiting for reply ...").arg(szTarget));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: sent my DH1080 public key to %1, waiting for reply...").arg(szTarget));
 		return true;
 	}
 #endif //COMPILE_CRYPT_SUPPORT

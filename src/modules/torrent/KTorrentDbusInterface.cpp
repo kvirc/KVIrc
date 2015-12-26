@@ -3,7 +3,7 @@
 //   DBus interface for KTorrent client.
 //
 //   File : KTorrentDbusInterface.h
-//   Creation date : Mod Nov 17 13:46:00 2008 GMT by Fabio Bas
+//   Creation date : Mon Nov 17 13:46:00 2008 GMT by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -37,7 +37,7 @@
 		KTorrentDbusInterface,
 		"ktorrentdbus",
 		__tr2qs_ctx(
-			"An interface to KDE's excellent KTorrent client.\n" \
+			"An interface for KDE's excellent KTorrent client.\n" \
 			"Download it from http://www.ktorrent.org\n",
 			"torrent"
 		)

@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -203,7 +203,7 @@ const char * const brushstyles_tbl[] = {
 
 
 /*
-	@doc:   painter
+	@doc: painter
 	@keyterms:
 		painter object class, line editor, input
 	@title:
@@ -216,39 +216,41 @@ const char * const brushstyles_tbl[] = {
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-
 		With this class you can draw many graphics objects from simple lines to complex shapes like pies and chords.[br]
-		It can also draw aligned text and pixmaps. Normally, it draws in a "natural" coordinate system, but it can also do view and world transformation.[br]
+		It can also draw aligned text and pixmaps. Normally, it draws in a [i]natural[/i] coordinate system, but it can also do view and world transformation.[br]
 		The class need to be implemented into a [classfnc]$paintEvent[/classfnc]();
-		@functions:
+	@functions:
 		!fn: $drawLine(<x1:integer>,<y1_integer>,<x2:integer>,<y2:integer>)
 		Draws a line from (x1, y1) to (x2, y2) and sets the current pen position to (x2, y2).
 		!fn: $begin(<paint_device:object>)
-		Begins painting the paint device <paint_device>: the parameter MUST be a widget or a pixmap.[br]
+		Begins painting the paint device <paint_device>: the parameter [b]must[/b] be a widget or a pixmap.[br]
 		Warning: A paint device can only be painted by one painter at a time.
 		!fn: $beginPdf(<file_name:string>)
-		Begins painting on a file using the pdf format.
-		At present the pdf support is in experimental state.
+		Begins painting on a file using the PDF format.
+		At present the PDF support is in experimental state.
 		!fn: $end()
 		Ends painting. Any resources used while painting are released.
 		!fn: $setPen(<rgb or hsv array value or [<red>,<green>,<blue>][<hue>,<saturation>,<value>],[system color:RGB or HSV)
-		The pen defines the lines or text, color. You can set it with Red,Green,Blue, or H,S,V value[br]
+		The pen defines the lines or text, color. You can set it with Red, Green, Blue, or H, S, V value[br]
 		All parameters are in integer form.
 		!fn: $setPen(<rgb or hsv array value or [<red>,<green>,<blue>][<hue>,<saturation>,<value>],[opacity],[system color:RGB or HSV])
-		The pen defines the lines or text, color. You can set it with Red,Green,Blue, or H,S,V value[br]
+		The pen defines the lines or text, color. You can set it with Red, Green, Blue, or H, S, V value[br]
 		All parameters are in integer form.
 		The HSV system, like RGB, has three components:[br]
+		[pre]
 		* H, for hue, is either 0-359 if the color is chromatic (not gray), or meaningless if it is gray.[br]
 		  It represents degrees on the color wheel familiar to most people. Red is 0 (degrees), green is 120 and blue is 240.[br]
 		* S, for saturation, is 0-255, and the bigger it is, the stronger the color is. Grayish colors have saturation near 0; very strong colors have saturation near 255.[br]
 		* V, for value, is 0-255 and represents lightness or brightness of the color. 0 is black; 255 is as far from black as possible.[br]
-		Examples: RED is H=0, S=255, V=255.[br]
-		Light RED could have H about 0, S about 50-100, and S=255.
+		[/pre]
+		Examples: [b]Red[/b] is H=0, S=255, V=255.[br]
+		Light red could have H about 0, S about 50-100, and S=255.
 		ES: $setPen(00,00,00) for black;[br]
 		Default color mode is RGB;
 		!fn: $setBrush(<rgb or hsv array value or [<red>,<green>,<blue>][<hue>,<saturation>,<value>],[system color:RGB or HSV)
 		Sets the painter's brush to have the specified color.[br]
-		Example:[br]
+		Example:
+		[example]
 		class (wdg,widget)[br]
 		{[br]
 			paintevent()[br]
@@ -261,7 +263,8 @@ const char * const brushstyles_tbl[] = {
 			}[br]
 		}[br]
 		%aa=$new(wdg)[br]
-		%aa->$show()[br]
+		%aa->$show()
+		[/example]
 		!fn: $drawRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws a rectangle with upper left corner at (x, y) and with width w and height h.
 		!fn: $drawRoundRect(<start_angle:integer>,<angle_length:integer>,<width:unsigned integer>,<height:unsigned integer>,<xr:integer>,<y:integer>)
@@ -302,12 +305,12 @@ const char * const brushstyles_tbl[] = {
 		!fn: $setFont(<family:string>,<size:integer>[,<style:enum>,<style:enum>,..])[br]
 		Set the font's family, size and style, valid flag for style are:[br]
 		[pre]
-		italic     [br]
-		bold     [br]
-		underline      [br]
-		overline    [br]
-		strikeout  [br]
-		fixedpitch  [br]
+		italic[br]
+		bold [br]
+		underline [br]
+		overline [br]
+		strikeout [br]
+		fixedpitch [br]
 		[/pre]
 		!fn: $setFontSize(<size:unsigned integer>)[br]
 		Set the current painter font's size.[br]
@@ -330,9 +333,12 @@ const char * const brushstyles_tbl[] = {
 		!fn: $scale(<dh:real>,<dw:real>)
 		Scales the coordinate system by <dh>, <dv>.
 		!fn: $setBackgroundMode(<bgMode:enum>)
-		Sets the background mode of the painter to <bgMode>: valid values are:[br]
+		Sets the background mode of the painter to <bgMode>: 
+		Valid values are:[br]
+		[pre]
 		- Transparent	(that is the default value);[br]
-		- Opaque.[br]
+		- Opaque.
+		[/pre]
 		!fn: $setOpacity(<opacity_factor:real>)
 		Sets the painter opacity that affects all painter operations (drawpixmap, drawtext...). Valid values range are from 0 (total transparency) to 1 (total opacity)[br]
 		You must invoke the [classfnc]$begin[/classfnc] before using it.
@@ -345,7 +351,8 @@ const char * const brushstyles_tbl[] = {
 		!fn: $setSmoothPixmapTransform(<boolean>)
 		Enable/disable smooth bilinear pixmap transformation algorithm (such as bilinear).
 		You must call the [classfnc]$begin[/classfnc] before using it.
-		Example:[br]
+		Example:
+		[example]
 		[br]
 		class (hello,widget)[br]
 		{[br]
@@ -516,7 +523,7 @@ const char * const brushstyles_tbl[] = {
 		%Hello->$setminimumheight(600)[br]
 		%Hello->$move(10,10)[br]
 		%Hello->$show();[br] [br]
-
+		[/example]
 */
 
 // ========================================================================
@@ -967,12 +974,12 @@ KVSO_CLASS_FUNCTION(painter,setBrush)
 	{
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5) iOpacity=255;
@@ -1048,12 +1055,12 @@ KVSO_CLASS_FUNCTION(painter,setPen)
 	{
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5) iOpacity=255;
@@ -1206,7 +1213,7 @@ KVSO_CLASS_FUNCTION(painter,begin)
 			pd=((KvsObject_widget *)pObject)->widget();
 		else
 		{
-			c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
+			c->warning(__tr2qs_ctx("Widget or pixmap required ","objects"));
 			return true;
 		}
 	} else {
@@ -1491,7 +1498,7 @@ KVSO_CLASS_FUNCTION(painter,drawPixmapMirrored)
 		KVSO_PARAMETER("y",KVS_PT_REAL,0,rY)
 		KVSO_PARAMETER("pixmap",KVS_PT_HOBJECT,0,hObject)
 		KVSO_PARAMETER("bHorizontal",KVS_PT_BOOLEAN,0,bHorizontal)
-		KVSO_PARAMETER("bvertical",KVS_PT_BOOLEAN,0,bVertical)
+		KVSO_PARAMETER("bVertical",KVS_PT_BOOLEAN,0,bVertical)
 		KVSO_PARAMETER("start_x",KVS_PT_INT,KVS_PF_OPTIONAL,iX)
 		KVSO_PARAMETER("start_y",KVS_PT_INT,KVS_PF_OPTIONAL,iY)
 		KVSO_PARAMETER("width",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
@@ -1872,12 +1879,12 @@ KVSO_CLASS_FUNCTION(painter,setGradientColor)
 	} else {
 		if(c->paramCount()<4)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette RGB/HSV values required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV values required","objects"));
 			return true;
 		}
 		if ( !var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5)
@@ -1960,12 +1967,12 @@ KVSO_CLASS_FUNCTION(painter,fillRect)
 	} else {
 		if(c->paramCount()<7)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5)

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -240,7 +240,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 	if(!KVSP_curCharIsEndOfCommand)
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'unset' command needs a variable list","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -310,7 +310,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 	if(!KVSP_curCharIsEndOfCommand)
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'global' command needs a list of variables","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -366,7 +366,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			It's rather dangerous to use this command inside an object
 			function handler: if the class definition <class> was already
 			existing and it is a parent of the object's class, you might
-			end up executing "inexistent" code.[br]
+			end up executing "non-existent" code.[br]
 			As a thumb rule, use this command only outside object function handlers.[br]
 			[br][br]
 			Only for the curious: implementing protected and private access
@@ -377,7 +377,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			to check access lists at runtime. OK, this would be a relatively small footprint for the "private"
 			keyword where we need to run UP the called object inheritance hierarchy
 			but would have a significant performance footprint for the "protected"
-			keyword where we would need to traverse the WHOLE inheritance tree of the called and calling
+			keyword where we would need to traverse the [b]whole[/b] inheritance tree of the called and calling
 			objects... "internal" still allows hiding members in a lot of situations
 			and is really fast to verify at runtime: no inheritance tree traversal
 			is needed and only object pointers are compared.
@@ -409,7 +409,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where an open parenthesis was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where an open parenthesis was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -476,7 +476,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 			delete pClass;
 			return 0;
 		}
@@ -504,7 +504,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 				if(KVSP_curCharPointer == pLabelBegin)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 					delete pClass;
 					return 0;
 				}
@@ -531,7 +531,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 				if(KVSP_curCharPointer == pLabelBegin)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 					delete pClass;
 					return 0;
 				}
@@ -662,7 +662,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 	if(KVSP_curCharUnicode != '(')
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The while command needs an expression enclosed in parenthesis","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where an open parenthesis was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where an open parenthesis was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -774,7 +774,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 				if(KVSP_curCharIsEndOfBuffer)
 					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of command after the 'do' command block: expected 'while' keyword","kvs"));
 				else
-					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'while' keyword was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a 'while' keyword was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 				if(i)delete i;
 				return 0;
 			}
@@ -1120,7 +1120,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 
 	if(KVSP_curCharUnicode != ')')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found char %q (unicode %x) while looking for the terminating ')' in 'for' command","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found char %q (Unicode %x) while looking for the terminating ')' in 'for' command","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		if(i1)delete i1;
 		if(e)delete e;
 		if(i2)delete i2;
@@ -1188,19 +1188,19 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 			You can always break from the loop by using the [cmd]break[/cmd] command,
 			or skip to the next item with continue.[br]
 			foreach doesn't iterate over empty scalar variables (i.e. the ones set to [fnc]$nothing[/fnc])
-			unless you use the -a switch. (Note that an array with *some* empty entries is NOT empty so
+			unless you use the -a switch. (Note that an array with *some* empty entries is [b]not[/b] empty so
 			the iteration is in fact done).
 		@examples:
 			[example]
 				foreach(%i,1,2,3,4,5,6,7,8,9)[cmd]echo[/cmd] %i
 				foreach(%chan,[fnc]$window.list[/fnc](channel))[cmd]me[/cmd] -r=%chan This is a test!
-				[comment]# This will work too, and will do the same job[/comment]
+				[comment]// This will work too, and will do the same job[/comment]
 				%windows[] = [fnc]$window.list[/fnc](channel)
 				foreach(%chan,%windows[])[cmd]me[/cmd] -r=%chan This is a test!
-				[comment]# And this too[/comment]
+				[comment]// And this too[/comment]
 				%windows[] = [fnc]$window.list[/fnc](channel)
 				foreach(%key,[fnc]$keys[/fnc](%windows[]))[cmd]me[/cmd] -r=%windows[%key] This is a test!
-				[comment]# Another interesting example[/comment]
+				[comment]// Another interesting example[/comment]
 				[cmd]alias[/cmd](test){ [cmd]return[/cmd] [fnc]$hash[/fnc](1,a,2,b,3,c,4,d); };
 				foreach(%x,[fnc]$keys[/fnc]($test)){ [cmd]echo[/cmd] %x, $test{%x}; }
 			[/example]
@@ -1223,7 +1223,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 	if((KVSP_curCharUnicode != '%') && (KVSP_curCharUnicode != '$') && (KVSP_curCharUnicode != '@'))
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where '%' or '$' was expected: see /help foreach for the command syntax","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (Unicode %x) where '%' or '$' was expected: see /help foreach for the command syntax","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -1396,7 +1396,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 					break;
 				case(%tmp)
 				{
-					# do not break here
+					[comment]//do not break here[/comment]
 					echo "Yeah... It's stupid... \%tmp == \%tmp :D"
 				}
 				match("*TEST"):
@@ -1471,7 +1471,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'case','match','regexp','default' or 'break' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a 'case','match','regexp','default' or 'break' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 			delete pSwitch;
 			return 0;
 		}
@@ -1618,7 +1618,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 			delete pPopup;
 			return 0;
 		}
@@ -1932,7 +1932,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			Merges the new popup contents with the current named popup.
 			If the named popup does not exist, the popup is created.
 		@description:
-			Defines the popup menu <popup_name>. If the -m switch is NOT used
+			Defines the popup menu <popup_name>. If the -m switch is [b]not[/b] used
 			the previous contents of the popups are cleared before updating.[br]
 			The popup is generated 'on the fly' when the [cmd]popup[/cmd] command
 			is called.[br]
@@ -1965,7 +1965,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			then it is automatically generated.
 			Please note that using this command inside the prologue, epilogue
 			or item code of the modified popup menu is forbidden.
-			In other words: self modification of popup menus is NOT allowed.[br]
+			In other words: self modification of popup menus is [b]not[/b] allowed.[br]
 			To remove a popup menu use this command with an empty body:[br]
 			[example]
 				defpopup(test){}

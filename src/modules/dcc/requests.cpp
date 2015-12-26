@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -259,7 +259,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The second parameter is '%s' and should be 'chat', trying to continue","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the second parameter is '%s' and should be 'chat', trying to continue","dcc"),dcc->szParam1.ptr());
 		}
 	}
 
@@ -444,7 +444,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue","dcc"),dcc->szParam4.ptr());
+				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue","dcc"),dcc->szParam4.ptr());
 		}
 		dcc->szParam4 = __tr2qs_ctx("<unknown size>","dcc");
 	}
@@ -454,7 +454,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast('/');
 	}
@@ -464,7 +464,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast("%2F");
 	}
@@ -540,7 +540,7 @@ static void dccModuleParseDccAccept(KviDccRequest *dcc)
 		//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidAccept..."
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError = QString(__tr2qs_ctx("Can't proceed with DCC RECV: Transfer not initiated for file %1 on port %2","dcc")).arg(dcc->szParam1.ptr()).arg(dcc->szParam2.ptr());
+			QString szError = QString(__tr2qs_ctx("Can't proceed with DCC RECV: transfer not initiated for file %1 on port %2","dcc")).arg(dcc->szParam1.ptr()).arg(dcc->szParam2.ptr());
 			dcc_module_request_error(dcc,szError);
 		}
 	}
@@ -576,7 +576,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 		//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidResume..."
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError = QString(__tr2qs_ctx("Can't proceed with DCC SEND: Transfer not initiated for file %1 on port %2, or invalid resume size","dcc")).arg(dcc->szParam1.ptr()).arg(dcc->szParam2.ptr());
+			QString szError = QString(__tr2qs_ctx("Can't proceed with DCC SEND: transfer not initiated for file %1 on port %2, or invalid resume size","dcc")).arg(dcc->szParam1.ptr()).arg(dcc->szParam2.ptr());
 			dcc_module_request_error(dcc,szError);
 		}
 	}
@@ -610,7 +610,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast('/');
 	}
@@ -638,7 +638,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		if(uResumeSize >= o->fileSize())
 		{
 			// senseless request
-			QString szError = QString(__tr2qs_ctx("Invalid RECV request: Position %1 is larger than file size","dcc")).arg(uResumeSize);
+			QString szError = QString(__tr2qs_ctx("Invalid RECV request: position %1 is larger than file size","dcc")).arg(uResumeSize);
 			dcc_module_request_error(dcc,szError);
 			return;
 		}
@@ -737,7 +737,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue","dcc"),dcc->szParam2.ptr());
+				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue","dcc"),dcc->szParam2.ptr());
 		}
 		dcc->szParam2 = __tr_ctx("<unknown size>","dcc");
 	}
@@ -747,7 +747,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast('/');
 	}
@@ -988,7 +988,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-			__tr2qs_ctx("The above request cannot be accepted: DCC VOICE support not enabled at compilation time ","dcc"));
+			__tr2qs_ctx("The above request can't be accepted: DCC VOICE support not enabled at compilation time ","dcc"));
 		return;
 	}
 #endif
@@ -998,7 +998,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-				__tr2qs_ctx("The above request cannot be accepted: Unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
 			return;
 		}
 	}
@@ -1011,7 +1011,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request appears to be broken: Invalid sample-rate '%s', defaulting to 8000","dcc"),dcc->szParam4.ptr());
+				__tr2qs_ctx("The above request appears to be broken: invalid sample-rate '%s', defaulting to 8000","dcc"),dcc->szParam4.ptr());
 		}
 		iSampleRate = 8000;
 	}
@@ -1062,7 +1062,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-			__tr2qs_ctx("The above request cannot be accepted: DCC VIDEO support not enabled at compilation time ","dcc"));
+			__tr2qs_ctx("The above request can't be accepted: DCC VIDEO support not enabled at compilation time ","dcc"));
 		return;
 	}
 #else
@@ -1072,7 +1072,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-				__tr2qs_ctx("The above request cannot be accepted: Unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
 			return;
 		}
 	}

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -207,7 +207,7 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Shows a window that allows editing script toolbars"),
 		KviActionManager::categorySettings(),
 		"kvi_bigicon_toolbareditor.png",
-		KviIconManager::ToolBar,
+		KviIconManager::ToolBarEditor,
 		0,
 		KVI_SHORTCUTS_EDITORS_TOOLBAR);
 
@@ -280,8 +280,8 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_RAWEDITOR,
 		"raweditor.open",
-		__tr2qs("Edit Raw Events..."),
-		__tr2qs("Shows a window that allows editing raw scripting events"),
+		__tr2qs("Edit RAW Events..."),
+		__tr2qs("Shows a window that allows editing RAW scripting events"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_raweditor.png",
 		KviIconManager::RawEventEditor,
@@ -412,8 +412,8 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_URLLIST,
 		"url.list",
-		__tr2qs("View URL list"),
-		__tr2qs("Shows a window that lists caught urls"),
+		__tr2qs("View URL List"),
+		__tr2qs("Shows a window that lists caught URLs"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_url.png",
 		KviIconManager::Url,
@@ -900,7 +900,7 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
 	pParent,
 	QString(KVI_COREACTION_SERVERMENU),
 	QString("options.edit OptionsWidget_servers"),
-	__tr2qs("Connect To"),
+	__tr2qs("Connect to"),
 	__tr2qs("Shows a popup menu that allows quickly connecting to a server"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_server.png",

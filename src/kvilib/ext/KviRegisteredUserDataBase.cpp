@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -523,7 +523,7 @@ void KviRegisteredUserDataBase::save(const QString & szFilename)
 	{
 		cfg.setGroup(it.current()->name());
 		// Write properties
-		cfg.writeEntry("IgnoreEnabled",it.current()->ignoreEnagled());
+		cfg.writeEntry("IgnoreEnabled",it.current()->ignoreEnabled());
 		cfg.writeEntry("IgnoreFlags",it.current()->ignoreFlags());
 		if(it.current()->propertyDict())
 		{

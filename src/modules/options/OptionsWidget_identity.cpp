@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -58,33 +58,33 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 {
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Nickname alternatives","options"));
+	setWindowTitle(__tr2qs_ctx("Nickname Alternatives","options"));
 
 	QLabel * l = new QLabel(this);
-	l->setText(__tr2qs_ctx("<center>Here you can choose up to three nicknames " \
-		"alternative to the primary one. KVIrc will use the alternatives " \
+	l->setText(__tr2qs_ctx("Here you can choose up to three nickname " \
+		"alternatives to the primary one. KVIrc will use the alternatives " \
 		"if the primary nick is already used by someone else on a particular " \
-		"IRC network.</center>","options"));
+		"IRC network.","options"));
 	l->setWordWrap(true);
 
 	g->addWidget(l,0,0,1,3);
 
 	l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Alt. Nickname 1:","options"));
+	l->setText(__tr2qs_ctx("Alt. nickname 1:","options"));
 	g->addWidget(l,1,0);
 	m_pNickEdit1 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit1,1,1,1,2);
 	m_pNickEdit1->setText(n1);
 
 	l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Alt. Nickname 2:","options"));
+	l->setText(__tr2qs_ctx("Alt. nickname 2:","options"));
 	g->addWidget(l,2,0);
 	m_pNickEdit2 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit2,2,1,1,2);
 	m_pNickEdit2->setText(n2);
 
 	l = new QLabel(this);
-	l->setText(__tr2qs_ctx("Alt. Nickname 3:","options"));
+	l->setText(__tr2qs_ctx("Alt. nickname 3:","options"));
 	g->addWidget(l,3,0);
 	m_pNickEdit3 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit3,3,1,1,2);
@@ -203,45 +203,49 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par,const QString &szInit
 {
 	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
 
-	QGridLayout * g = new QGridLayout(this);
+	QVBoxLayout * layout = new QVBoxLayout(this);
 
-	QString msg = "<center>";
-	msg += __tr2qs_ctx("Please select an avatar image. " \
-				"The full path to a local file or an image on the Web can be used.<br>" \
-				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
-				"button to browse local folders.<br>" \
-				"The full URL for an image (including <b>http://</b>) can be entered manually.","options");
-	msg += "</center><br>";
+	QString msg = __tr2qs_ctx("Please select an avatar image.\n\n" \
+				"The full path to a local file or an image on the Web can be used.\n" \
+				"If you wish to use a local image file, click the \"Browse\" button to select the desired file.\n\n" \
+				"The full URL for an image (including http:// or https://) can also be entered manually.","options");
 
-	QLabel * l = new QLabel(msg,this);
+	QLabel * l = new QLabel(msg);
 	l->setMinimumWidth(250);
+	l->setWordWrap(true);
 
-	g->addWidget(l,0,0,1,3);
+	layout->addWidget(l);
 
-	m_pLineEdit = new QLineEdit(this);
+	m_pLineEdit = new QLineEdit;
 	m_pLineEdit->setText(szInitialPath);
-	m_pLineEdit->setMinimumWidth(180);
 
-	g->addWidget(m_pLineEdit,1,0,1,2);
+	m_pLineEdit->setMinimumWidth(450);
 
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
+	QHBoxLayout * pLineEditLayout = new QHBoxLayout;
+
+	pLineEditLayout->addWidget(m_pLineEdit,1);
+
+	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"));
+	b->setFixedWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
-	g->addWidget(b,1,2);
+	pLineEditLayout->addWidget(b,1);
 
-	KviTalHBox * h = new KviTalHBox(this);
-	h->setSpacing(8);
-	g->addWidget(h,2,1,1,2);
-	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
-	b->setMinimumWidth(80);
+	layout->addLayout(pLineEditLayout);
+
+	QHBoxLayout * h = new QHBoxLayout;
+
+	h->setAlignment(Qt::AlignRight);
+	layout->addLayout(h);
+	b = new QPushButton(__tr2qs_ctx("&OK","options"));
+	b->setFixedWidth(80);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
+	h->addWidget(b);
 
-	b = new QPushButton(__tr2qs_ctx("Cancel","options"),h);
-	b->setMinimumWidth(80);
+	b = new QPushButton(__tr2qs_ctx("Cancel","options"));
+	b->setFixedWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-
-	g->setRowStretch(0,1);
-	g->setColumnStretch(0,1);
+	h->addWidget(b);
 }
 
 AvatarSelectionDialog::~AvatarSelectionDialog()
@@ -389,18 +393,18 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox,__tr2qs_ctx("Location:","options"),KviOption_stringCtcpUserInfoLocation);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can describe here your approximate physical location. " \
-				"Something like \"Region, Country\" will be ok. Please note that this information will be viewable " \
+				"Something like \"Region, Country\" will be OK. Please note that this information will be viewable " \
 				"by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Languages:","options"),KviOption_stringCtcpUserInfoLanguages);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here the short names of the languages you can speak. " \
-				"An example might be \"EN,IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
+				"An example might be \"EN, IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Other:","options"),KviOption_stringCtcpUserInfoOther);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here some additional personal data. " \
-				"It might be a funny quote or your homepage url... " \
+				"It might be a funny quote or your homepage URL... " \
 				"Please note that this information will be viewable " \
 				"by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers).","options") + szTrailing);
 
@@ -716,9 +720,9 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	labels.append(__tr2qs_ctx("Name","options"));
 	labels.append(__tr2qs_ctx("Network","options"));
 	labels.append(__tr2qs_ctx("Nickname","options"));
-	labels.append(__tr2qs_ctx("Alt. Nick","options"));
+	labels.append(__tr2qs_ctx("Alternate nickname","options"));
 	labels.append(__tr2qs_ctx("Username","options"));
-	labels.append(__tr2qs_ctx("Realname","options"));
+	labels.append(__tr2qs_ctx("Real name","options"));
 	m_pTreeWidget->setHeaderLabels(labels);
 
 	KviTalToolTip::add(m_pTreeWidget, \
@@ -733,7 +737,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 
 	// Buttons box
 	KviTalHBox * pBtnBox = new KviTalHBox(this);
-	pLayout->addWidget(pBtnBox,2,0);
+	pLayout->addWidget(pBtnBox,2,0,1,3);
 
 	m_pBtnAddProfile = new QPushButton(__tr2qs_ctx("Add Profile","options"),pBtnBox);
 	connect(m_pBtnAddProfile,SIGNAL(clicked()),this,SLOT(addProfileEntry()));
@@ -887,16 +891,16 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	setObjectName("identity_profile_editor");
 	setWindowTitle(__tr2qs_ctx("Profile Editor - KVIrc","options"));
 
-	m_szName = __tr2qs_ctx("Profile Name","options");
-	m_szNetwork = __tr2qs_ctx("MyNetwork","options");
-	m_szNick = __tr2qs_ctx("MyNick","options");
-	m_szAltNick = __tr2qs_ctx("MyNick2","options");
-	m_szUserName = __tr2qs_ctx("MyUserName","options");
-	m_szRealName = __tr2qs_ctx("MyRealName","options");
+	m_szName = __tr2qs_ctx("Profile name","options");
+	m_szNetwork = __tr2qs_ctx("My network","options");
+	m_szNick = __tr2qs_ctx("My nickname","options");
+	m_szAltNick = __tr2qs_ctx("My nickname 2","options");
+	m_szUserName = __tr2qs_ctx("My username","options");
+	m_szRealName = __tr2qs_ctx("My real name","options");
 
 	QGridLayout * pLayout = new QGridLayout(this);
 
-	QLabel * pLabel = new QLabel(__tr2qs_ctx("Profile Name:","options"),this);
+	QLabel * pLabel = new QLabel(__tr2qs_ctx("Profile name:","options"),this);
 	pLayout->addWidget(pLabel,0,0);
 
 	m_pNameEdit = new QLineEdit(this);
@@ -904,7 +908,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->addWidget(m_pNameEdit,0,1,1,2);
 	connect(m_pNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
-	pLabel = new QLabel(__tr2qs_ctx("Network Name:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Network name:","options"),this);
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pNetworkEdit = new QLineEdit(this);
@@ -920,7 +924,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->addWidget(m_pNickEdit,2,1,1,2);
 	connect(m_pNickEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
-	pLabel = new QLabel(__tr2qs_ctx("Alternative Nickname:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Alternative nickname:","options"),this);
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pAltNickEdit = new QLineEdit(this);
@@ -936,17 +940,17 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->addWidget(m_pUserNameEdit,4,1,1,2);
 	connect(m_pUserNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
-	pLabel = new QLabel(__tr2qs_ctx("Realname:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Real name:","options"),this);
 	pLayout->addWidget(pLabel,5,0);
 
 	m_pRealNameEdit = new QLineEdit(this);
-	KviTalToolTip::add(m_pRealNameEdit,__tr2qs_ctx("Put here the realname you want to use","options"));
+	KviTalToolTip::add(m_pRealNameEdit,__tr2qs_ctx("Put here the real name you want to use","options"));
 	pLayout->addWidget(m_pRealNameEdit,5,1,1,2);
 	connect(m_pRealNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
 	KviTalHBox * pBox = new KviTalHBox(this);
 	pBox->setAlignment(Qt::AlignRight);
-	pLayout->addWidget(pBox,6,0);
+	pLayout->addWidget(pBox,6,1,1,2);
 
 	QPushButton * p = new QPushButton(__tr2qs_ctx("Cancel","options"),pBox);
 	//p->setMinimumWidth(100);

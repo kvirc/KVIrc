@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -494,7 +494,7 @@ const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode)
 		case 'Z': return __tr2qs("Z: Services root administrator"); break;
 		case 'a': return __tr2qs("a: Services operator"); break;
 		case 'e': return __tr2qs("e: Recipient for blocked DCC notices"); break;
-		case 'f': return __tr2qs("f: Recipient for exess flood notices"); break;
+		case 'f': return __tr2qs("f: Recipient for excess flood notices"); break;
 		case 'g': return __tr2qs("g: Recipient for GLOBOPS notices"); break;
 		case 'h': return __tr2qs("h: Available for help (helpop)"); break;
 		case 'm': return __tr2qs("m: Recipient for spam warning notices"); break;
@@ -900,11 +900,11 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'I': return __tr2qs("Invite Exceptions"); break;
-		case 'R': return __tr2qs("Reop Masks"); break;
+		case 'I': return __tr2qs("Invite exceptions"); break;
+		case 'R': return __tr2qs("Reop masks"); break;
 		case 'a': return __tr2qs("Anonymous messages"); break;
-		case 'b': return __tr2qs("Ban Masks"); break;
-		case 'e': return __tr2qs("Ban Exceptions"); break;
+		case 'b': return __tr2qs("Ban masks"); break;
+		case 'e': return __tr2qs("Ban exceptions"); break;
 		case 'i': return __tr2qs("Invite only"); break;
 		case 'k': return __tr2qs("Key"); break;
 		case 'l': return __tr2qs("Limited number of users"); break;
@@ -930,6 +930,7 @@ const QString & KviHybridServerInfo::getChannelModeDescription(char mode)
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Need SSL connection to join"); break;
+		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
 		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'h': return __tr2qs("Half-operators"); break;
 		case 'r': return __tr2qs("Registered"); break;
@@ -975,7 +976,7 @@ const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
 		case 'p': return __tr2qs("Paranoid (disable KNOCK)"); break;
-		case 'q': return __tr2qs("Quiet Ban Editor"); break;
+		case 'q': return __tr2qs("Quiet ban editor"); break;
 	}
 	return KviCharybdisServerInfo::getChannelModeDescription(mode);
 }
@@ -1027,7 +1028,7 @@ const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
 	{
 		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'T': return __tr2qs("No multitarget messages"); break;
+		case 'T': return __tr2qs("No multi-target messages"); break;
 		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
 	}
 	return KviIrcuIrcServerInfo::getChannelModeDescription(mode);
@@ -1053,7 +1054,7 @@ const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'A': return __tr2qs("Server/Network/Tech Admin only channel"); break;
+		case 'A': return __tr2qs("Server/Network/Tech admin only channel"); break;
 		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
 		case 'G': return __tr2qs("Censor bad words"); break;
 		case 'K': return __tr2qs("Forbid /KNOCK"); break;
@@ -1080,10 +1081,10 @@ const QString & KviUnreal32IrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'B': return __tr2qs("No multitarget messages"); break;
+		case 'B': return __tr2qs("No multi-target messages"); break;
 		case 'E': return __tr2qs("Forbid ACTIONs from non-ops"); break;
 		case 'F': return __tr2qs("Trusted filter (staff only)"); break;
-		case 'H': return __tr2qs("Help Operator and above only channel (staff only)"); break;
+		case 'H': return __tr2qs("Help operator and above only channel (staff only)"); break;
 		case 'M': return __tr2qs("Moderate non auth users"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
 		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
@@ -1108,7 +1109,7 @@ const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
 {
 	switch(mode)
 	{
-		case 'A': return __tr2qs("Server/Network/Tech Admin only channel"); break;
+		case 'A': return __tr2qs("Server/Network/Tech admin only channel"); break;
 		case 'K': return __tr2qs("Forbid /KNOCK"); break;
 		case 'M': return __tr2qs("Need auth to speak and change nick"); break;
 		case 'N': return __tr2qs("No invites"); break;
@@ -1174,7 +1175,7 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
 		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
-		case 'X': return __tr2qs("Channel Exemptions"); break;
+		case 'X': return __tr2qs("Channel exemptions"); break;
 		case 'a': return __tr2qs("Protected/administrator nicks"); break;
 		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'f': return __tr2qs("Kick/[*]ban on message flood ([*]<num>:<secs>)"); break;
@@ -1182,7 +1183,7 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
 		case 'q': return __tr2qs("Channel owners"); break;
 		case 'u': return __tr2qs("Auditorium: /NAMES and /WHO show only ops"); break;
-		case 'w': return __tr2qs("Channel Access"); break;
+		case 'w': return __tr2qs("Channel access"); break;
 		case 'y': return __tr2qs("Channel IRC op"); break;
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
 	}

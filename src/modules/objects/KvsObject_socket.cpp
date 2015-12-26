@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -92,35 +92,36 @@ const char * const sockerrors_tbl[] = {
 	@type:
 		class
 	@short:
-		A Ipv4/Ipv6 TCP socket
+		A IPv4/IPv6 TCP socket
 	@inherits:
 		[class]object[/class]
 	@description:
 		This class provides a standard TCP/IP socket functionality.[br]
 		It can be used either for connecting to a remote host or to listening for incoming connections.[br]
-		If the KVIrc executable has been compiled with the IPV6 protocol support, this socket also supports it.[br]
+		If the KVIrc executable has been compiled with the IPv6 protocol support, this socket also supports it.[br]
 	@functions:
 		!fn: <integer or string> $status(<asString:boolean>)
 		Returns the status of the socket :[br]
-		0=Unconnected
-		1=HostLookUp
-		2=Connecting[br]
-		3=Connected[br]
-		4=Bound[br]
-		5=Closing[br]
-		6=Listening
-
+		[pre]
+		0 = Unconnected
+		1 = HostLookUp
+		2 = Connecting[br]
+		3 = Connected[br]
+		4 = Bound[br]
+		5 = Closing[br]
+		6 = Listening
+		[/pre]
 		!fn: $connect(<host>,<port>)
 		Attempts a connection to <host> on port <port>.[br]
-		<host> can be a numeric internet address (either Ipv4 or Ipv6 (if supported)) or a hostname.[br]
-		If a hostname is used, a DNS lookup is performed (the socket enters the "dns call" state).[br]
+		<host> can be a numeric internet address (either IPv4 or IPv6 (if supported)) or a hostname.[br]
+		If a hostname is used, a DNS lookup is performed (the socket enters the "DNS call" state).[br]
 		This function returns 1 if the connect attempt can be successfully initiated,
 		0 otherwise.[br] In fact, this function returns 0 only if the supplied <port> parameter
 		is invalid or the socket is in an incoherent state (already connected or listening):
 		for a newly created socket and with a valid <port> number you can safely ignore
 		the return value.[br]
 		Please note that the connection is asynchronous: when this function returns
-		the socket is NOT connected: it has just initiated the connect attempt
+		the socket is [b]not[/b] connected: it has just initiated the connect attempt
 		and you will be notified of the attempt result by an asynchronous event call:
 		in case of failure, $connectFailedEvent() will be called, in case of
 		succes, $connectEvent() will be called.
@@ -129,12 +130,12 @@ const char * const sockerrors_tbl[] = {
 		Attempts to listen on the specified <port> and <interface>.[br]
 		If <port> is not passed it is assumed to be 0, if <interface> is not passed, it is assumed to be
 		"any interface" (INADDR_ANY).[br] Port 0 means that the kernel should choose a "random" port to listen on.[br]
-		If the <interface> is recognized as IPV6 address, and IPV6 is supported, the socket listens
-		in IPV6 mode. If <interface> is an empty string and <force_ipv6> is 1 the socket listens
+		If the <interface> is recognized as IPv6 address, and IPv6 is supported, the socket listens
+		in IPv6 mode. If <interface> is an empty string and <force_ipv6> is 1 the socket listens
 		on "any ipv6 interface".[br]
 		This function returns '1' in case of success and '0' in case of failure.[br]
-		On some systems listening in the IPV6 namespace allows to accept also IPV4 connections (this includes
-		linux but not windows afaik).[br]
+		On some systems listening in the IPv6 namespace allows to accept also IPv4 connections (this includes
+		Linux but not windows afaik).[br]
 		When an incoming connection will arrive, $incomingConnectionEvent() will be called.
 
 		!fn: $connectedEvent()
@@ -146,7 +147,7 @@ const char * const sockerrors_tbl[] = {
 
 		!fn: $incomingConnectionEvent(<socket:h_object>)
 		This function is called when an incoming connection arrives over a socket in listening state.[br]
-		You must return 1 if you to terminad this incoming connectioncall [classfnc:socket]$accept[/classfnc]() passing a newly created socket object
+		You must return 1 if you to terminated this incoming connection call [classfnc:socket]$accept[/classfnc]() passing a newly created socket object
 		to accept and handle the connection.[br] If you don't call [classfnc:socket]$accept[/classfnc]()
 		the incoming connection will be automatically terminated.
 
@@ -170,7 +171,7 @@ const char * const sockerrors_tbl[] = {
 		Reads at most <length> bytes of data from the socket. If <length> is anything "outside" the
 		available data range (<length> < 0 or <length> > available_data_length), this function
 		returns all the available data.[br]
-		By default this function can deal ascii data only: NULL characters are transformed to
+		By default this function can deal ASCII data only: NULL characters are transformed to
 		ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
 
 		!fn: $write(<data, array,files or hobject>[,length])
@@ -189,7 +190,7 @@ const char * const sockerrors_tbl[] = {
 		If there is an active connection, there is a last attempt to flush the pending outgoing data.[br]
 		You don't need to call $close() if you [cmd]delete[/cmd] the socket: KVIrc will
 		reset the socket state automatically and free the memory. But if you want to ensure data delivery
-		after a $write call sequece and just before a [cmd]delete[/cmd], $close() is the only chance to do it.
+		after a $write call sequence and just before a [cmd]delete[/cmd], $close() is the only chance to do it.
 
 		!fn: $remoteIp()
 		Returns the IP address of the remote end of this socket.[br]

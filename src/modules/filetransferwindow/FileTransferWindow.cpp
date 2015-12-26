@@ -7,9 +7,9 @@
 //   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
-//   modify it under the linkss of the GNU General Public License
+//   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -492,7 +492,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("&Copy Path to Clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
 
-                pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete file","filetransferwindow"),this,SLOT(deleteLocalFile()));
+                pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete File","filetransferwindow"),this,SLOT(deleteLocalFile()));
                 pAction->setEnabled(i->transfer()->terminated());
                 pAction = m_pContextPopup->addAction(__tr2qs_ctx("Local &File","filetransferwindow"));
                 pAction->setMenu(m_pLocalFilePopup);
@@ -623,7 +623,7 @@ void FileTransferWindow::deleteLocalFile()
 	QString szName = pTransfer->localFileName();
 	QString szTmp = QString(__tr2qs_ctx("Do you really want to delete the file %1?","filetransferwindow")).arg(szName);
 
-	if(QMessageBox::warning(this,__tr2qs_ctx("Confirm delete","filetransferwindow"),
+	if(QMessageBox::warning(this,__tr2qs_ctx("Confirm Delete","filetransferwindow"),
 			szTmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
 		return;
 

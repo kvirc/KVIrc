@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -73,7 +73,7 @@ Manager::~Manager()
 // Initialize the manager, detect all devices
 void Manager::initialize()
 {
-	qDebug() << "UPnP::Manager: Initiating a broadcast to detect UPnP devices..." << endl;
+	qDebug() << "UPnP::Manager: initiating a broadcast to detect UPnP devices..." << endl;
 
 
 	// Create the SSDP object to detect devices
@@ -144,7 +144,7 @@ void Manager::slotBroadcastTimeout()
 {
 	if(!m_bBroadcastFoundIt)
 	{
-		qDebug() << "UPnP::Manager: Timeout, no broadcast response received!" << endl;
+		qDebug() << "UPnP::Manager: timeout, no broadcast response received!" << endl;
 
 		m_bBroadcastFailed = true;
 	}
@@ -155,7 +155,7 @@ void Manager::slotBroadcastTimeout()
 // A device was discovered by the SSDP broadcast
 void Manager::slotDeviceFound(const QString &hostname, int port, const QString &rootUrl)
 {
-	qDebug() << "UPnP::Manager: Device found, initializing IgdControlPoint to query it." << endl;
+	qDebug() << "UPnP::Manager: device found, initializing IgdControlPoint to query it." << endl;
 
 	// this blocks the action of our timeout timer
 	m_bBroadcastFoundIt = true;

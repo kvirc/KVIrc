@@ -3,13 +3,13 @@
 //   File : libkvimath.cpp
 //   Creation date : Sat Jan 13 14:00:12 2006 GMT by Szymon Stefanek
 //
-//   This math is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2006-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,7 +26,7 @@
 #include "KviModule.h"
 #include "KviCString.h"
 
-#include <math.h>
+#include <cmath>
 
 // Workaround for lost isnan and isinf definitions after
 // inclusion of iostream.h on some MacOS X systems
@@ -58,38 +58,6 @@ static bool __fncname(KviKvsModuleFunctionCall * c) \
 	return true; \
 }
 
-#ifdef COMPILE_ON_WINDOWS
-// we have to test better the results
-inline static double cbrt(double x)
-{
-	if (x > 0.0) return pow(x, 1.0/3.0);
-	else return -pow(-x, 1.0/3.0);
-}
-
-static int isinf (double d) {
-	int expon = 0;
-	double val = frexp (d, &expon);
-	if (expon == 1025) {
-		if (val == 0.5) return 1;
-		else if (val == -0.5) return -1;
-		else return 0;
-	} else {
-		return 0;
-	}
-}
-
-static int isnan (double d) {
-	int expon = 0;
-	double val = frexp (d, &expon);
-	if (expon == 1025) {
-		if (val == 0.5) return 0;
-		else if (val == -0.5) return 0;
-		else return 1;
-	} else {
-		return 0;
-	}
-}
-#endif
 /*
 	@doc: math.sin
 	@type:
@@ -324,7 +292,7 @@ static bool math_kvs_fnc_isnan(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(isnan(dReal));
+	c->returnValue()->setBoolean(std::isnan(dReal));
 	return true;
 }
 
@@ -347,11 +315,7 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
 	KVSM_PARAMETERS_END(c)
-#ifdef COMPILE_ON_WINDOWS
-	c->returnValue()->setBoolean(sinf(dReal));
-#else
-	c->returnValue()->setBoolean(isinf(dReal));
-#endif //COMPILE_ON_WINDOWS
+	c->returnValue()->setBoolean(std::isinf(dReal));
 	return true;
 }
 
@@ -417,7 +381,7 @@ static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<real> $math.e()
 	@description:
-		Returns the value of the euler constant e.
+		Returns the value of the Euler constant e.
 */
 
 

@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -136,12 +136,12 @@ KVSO_CLASS_FUNCTION(colorDialog,setCurrentColor)
 	{
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<4)

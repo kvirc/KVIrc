@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -72,14 +72,15 @@
 		!fn: $activateNextWindow()
 		Activates the next window in the child window chain.
 		!fn: $activatePrevWindow()
-		Activates the prev window in the child window chain.[br]
-
-		|----CLASS EXAMPLE----|[br]
-		|-Start:[br]
-		#Let's start.[br]
-		#We start the main class creation, in the constructor we do the[br]
-		#widget's  showing, to give a particular pop-up[br]
-		#creation  appearance.[br]
+		Activates the previous window in the child window chain.[br]
+	@examples:
+		[example]
+		[comment]
+		//Let's start.
+		//We start the main class creation, in the constructor we do the
+		//widget's showing, to give a particular pop-up
+		//creation appearance.
+		[/comment]
 		class (ws,widget)[br]
 		{[br]
 			constructor[br]
@@ -91,13 +92,14 @@
 				$$->$show()[br]
 			}[br]
 		}[br]
-		#We create the new workspace, and we set a 640x480 size with widget $resize[br]
-		#command.[br]
+		[comment]//We create the new workspace, and we set a 640x480 size with widget $resize command[/comment][br]
 		%Workspace=$new(workspace)[br]
 		%Workspace->$resize(640,480)[br]
-		#Now we make a cycling costruction of the widgets(look at the class),[br]
-		#and give to the widgets a random X and Y coordinates.[br]
-		#It takes few seconds to show the effects, be patient.[br]
+		[comment]
+		//Now we make a cycling construction of the widgets(look at the class),
+		//and give to the widgets a random X and Y coordinates.
+		//It takes few seconds to show the effects, be patient.
+		[/comment]
 		%I=0[br]
 		while (%I<100)[br]
 		{[br]
@@ -106,20 +108,21 @@
 			%Widget=$new(ws,%Workspace)[br]
 			%I++[br]
 		}[br]
-		#Let's show the fireworks! EnJoY![br]
+		[comment]//Let's show the fireworks! EnJoY![/comment]
 		%Workspace->$show()[br]
-		|-Start:[br]
-		|-|EXAMPLE n2:[br]
-		#This is like the first example but it has a particular animation effect.[br]
+		[/example]
+		[example]
+		[b]Example 2:[/b]
+		[comment]//This is like the first example but it has a particular animation effect.[/comment]
 		%Hex[]=$array(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F)[br]
 		class (ws,widget)[br]
 		{[br]
 			constructor[br]
 			{[br]
-			       $$->$setGeometry(%X,%Y,100,100)[br]
-			       $$->%lay=$new(layout,$$)[br]
-			       %i=0[br]
-			       while (%i<10)[br]
+			  $$->$setGeometry(%X,%Y,100,100)[br]
+			  $$->%lay=$new(layout,$$)[br]
+			  %i=0[br]
+			  while (%i<10)[br]
 				{[br]
 					$$->%label=$new(label,$$)[br]
 					$$->%label->$settext("Another class by N\&G")[br]
@@ -138,9 +141,9 @@
 		}[br]
 		%Workspace=$new(workspace)[br]
 		%Workspace->$resize(640,480)[br]
-		%Workspace->$setWindowTitle("Hit the mouse to stop cycling windows....")[br]
+		%Workspace->$setWindowTitle("Hit the mouse to stop cycling windows...")[br]
 		%I=0[br]
-		%Cicle=1[br]
+		%Cycle=1[br]
 		while (%I<20)[br]
 		{[br]
 			%X=$rand(500)[br]
@@ -151,21 +154,20 @@
 		%Workspace->$show[br]
 		timer (cycle,3000)[br]
 		{[br]
-			if (%Cicle==1) %Workspace->$tile()[br]
-			if (%Cicle==2)[br]
+			if (%Cycle==1) %Workspace->$tile()[br]
+			if (%Cycle==2)[br]
 			{[br]
 				%Workspace->$cascade()[br]
-				%Cicle=1[br]
+				%Cycle=1[br]
 				return[br]
 			}[br]
-			%Cicle++[br]
+			%Cycle++[br]
 		}[br]
 		privateimpl(%Workspace,mousepressevent)[br]
 		{[br]
 			if ($istimer(cycle) == 1) killtimer cycle[br]
 		}[br]
-		#-|End.[br]
-
+		[/example]
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_workspace,"workspace","widget")

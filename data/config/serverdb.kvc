@@ -407,9 +407,9 @@ NServers=1
 0_Hostname=irc.forestnet.org
 0_Description=Forestnet:%20Random%20server
 NServers=1
-[Freenode]
+[freenode]
 0_Hostname=irc.freenode.org
-0_Description=Main Freenode router
+0_Description=Main freenode router
 1_Hostname=chat.ap.freenode.net
 1_Description=Main%20Asia-Pacific%20router
 2_Hostname=tolkien.freenode.net
@@ -867,7 +867,7 @@ NServers=1
 0_Description=main%20OFTC.net%20server
 1_Hostname=irc.debian.org
 1_Description=Debian%20IRC%20Server
-NServers=1
+NServers=2
 [Othernet]
 0_Hostname=irc.othernet.org
 0_Description=Othernet:%20Random%20server
@@ -1173,6 +1173,7 @@ NServers=3
 [SpotChat]
 0_Hostname=irc.spotchat.org
 0_Description=SpotChat:%20Random%20server
+NServers=1
 [Snoonet]
 0_Hostname=irc.snoonet.org
 0_Description=Snoonet:%20Random%20server
@@ -1292,7 +1293,7 @@ NServers=1
 0_Hostname=irc.virtualife.com.br
 0_Description=Virtualife:%20Random%20server
 NServers=1
-Description=Brasilian Network
+Description=Brazilian Network
 [Orange/Voila]
 0_Hostname=chat14.x-echo.com
 0_Description=Chat14 server

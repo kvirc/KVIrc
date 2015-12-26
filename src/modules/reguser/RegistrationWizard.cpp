@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -193,7 +193,7 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 	m_pPage3Layout->addWidget(f,1,0);
 
 	m_pAvatar = new KviPixmap();
-	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs_ctx("Store an avatar for this user","register"),m_pAvatar,true);
+	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs_ctx("Store an avatar for this user:","register"),m_pAvatar,true);
 	m_pPage3Layout->addWidget(m_pAvatarSelector,2,0);
 	m_pPage3Layout->setRowStretch(2,1);
 

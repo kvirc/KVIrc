@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -73,9 +73,8 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	QString msg = "<center>";
 	msg += __tr2qs("Please select an avatar image. " \
 		"The full path to a local file or an image on the Web can be used.<br>" \
-		"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
-		"button to browse local folders.<br>" \
-		"The full URL for an image (including <b>http://</b>) can be entered manually.");
+		"If you wish to use a local image file, click the \"<b>Browse</b>\" button to select the desired file.<br>" \
+		"The full URL for an image (including <b>http://</b> or <b>https://</b>) can also be entered manually.");
 	msg += "</center><br>";
 
 	QLabel * l = new QLabel(msg,this);
@@ -183,17 +182,19 @@ void KviAsyncAvatarSelectionDialog::closeEvent(QCloseEvent * e)
 		avatar.set [avatar:string]
 	@description:
 		Sets your avatar in the current connection to <avatar>.
-		<avatar> may be a local filename or a http URL.[br]
+		<avatar> may be a local filename or a HTTP(S) URL.[br]
 		If avatar is an empty string then an asynchronous dialog
 		will be opened that will allow choosing an avatar.[br]
-		Note that this command does NOT notify the avatar to
+		Note that this command does [b]not[/b] notify the avatar to
 		any target: use [cmd]avatar.notify[/cmd] for that purpose.
-		Note also that this will NOT set your default avatar
+		Note also that this will [b]not[/b] set your default avatar
 		option: you must use the options dialog for that.[br]
 	@examples:
 		[example]
 			avatar.set /home/myavatar.png
 			avatar.set http://www.kvirc.net/img/pragma.png
+			[comment]# https:// is also supported since KVIrc 4.3[/comment]
+			avatar.set https://www.kvirc.net/img/pragma.png
 		[/example]
 	@seealso:
 		[cmd]avatar.unset[/cmd]
@@ -290,7 +291,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 		avatar.unset
 	@description:
 		Unsets the local user's avatar.
-		Note also that this will NOT unset your default avatar
+		Note also that this will [b]not[/b] unset your default avatar
 		option: you must use the options dialog for that.[br]
 	@seealso:
 		[cmd]avatar.set[/cmd]

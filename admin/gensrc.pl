@@ -11,7 +11,7 @@
 #   This program is FREE software. You can redistribute it and/or
 #   modify it under the terms of the GNU General Public License
 #   as published by the Free Software Foundation; either version 2
-#   of the License, or (at your opinion) any later version.
+#   of the License, or (at your option) any later version.
 #
 #   This program is distributed in the HOPE that it will be USEFUL,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -59,13 +59,13 @@ if(open(THEFILE,">$name"))
 	print THEFILE "//   File : $name\n";
 	print THEFILE "//   Creation date : $thetime GMT by Szymon Stefanek\n";
 	print THEFILE "//\n";
-	print THEFILE "//   This file is part of the KVirc irc client distribution\n";
+	print THEFILE "//   This file is part of the KVirc IRC client distribution\n";
 	print THEFILE "//   Copyright (C) 2009 Szymon Stefanek (pragma at kvirc dot net)\n";
 	print THEFILE "//\n";
 	print THEFILE "//   This program is FREE software. You can redistribute it and/or\n";
 	print THEFILE "//   modify it under the terms of the GNU General Public License\n";
 	print THEFILE "//   as published by the Free Software Foundation; either version 2\n";
-	print THEFILE "//   of the License, or (at your opinion) any later version.\n";
+	print THEFILE "//   of the License, or (at your option) any later version.\n";
 	print THEFILE "//\n";
 	print THEFILE "//   This program is distributed in the HOPE that it will be USEFUL,\n";
 	print THEFILE "//   but WITHOUT ANY WARRANTY; without even the implied warranty of\n";

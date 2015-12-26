@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -60,6 +60,9 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	pMasterLayout->addWidget(m_pButton,1,0);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(commit()));
 
+	if(!m_pChannel || !m_pChannel->connection())
+		m_pButton->setText(__tr2qs("Close"));
+
 	QWidget * pBackground = new QWidget(pScrollArea->viewport());
 
 	QGridLayout *g = new QGridLayout(pBackground);
@@ -68,7 +71,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	l->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Mode)));
 	g->addWidget(l,0,0);
 
-	l = new QLabel(__tr2qs("Channel Modes"),pBackground);
+	l = new QLabel(__tr2qs("Channel modes"),pBackground);
 
 	g->addWidget(l,0,1,1,1);
 
@@ -84,6 +87,10 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	char cMode = 0;
 
 	//NOTE: this is a fallback is for some reason we don't have a serverInfo() struct available fot this connection
+
+	// The connection is dead and the context was destroyed, don't guess on what was there
+	if(!m_pChannel || !m_pChannel->connection())
+		return;
 
 	// first, the basic checkable modes pstnmi
 	QString szModes = "pstnmi";
@@ -163,7 +170,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 		cDesc = *(getModeDescription(cMode));
 
-		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Uknown");
+		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Unknown");
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
@@ -190,7 +197,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 		cDesc = *(getModeDescription(cMode));
 
-		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Uknown");
+		szTmp = QString("%1: %2").arg(cMode).arg(!cDesc.isEmpty() ? cDesc : "Unknown");
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		iRow++;

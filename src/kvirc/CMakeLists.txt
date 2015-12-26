@@ -270,13 +270,20 @@ endif()
 target_link_libraries(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
 # Enable C++11
-target_compile_features(${KVIRC_BINARYNAME} PRIVATE cxx_range_for)
+set_property(TARGET ${KVIRC_BINARYNAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${KVIRC_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 if(Qt5Widgets_FOUND)
 	qt5_use_modules(${KVIRC_BINARYNAME} ${qt5_kvirc_modules})
 endif()
 
-set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+if(MINGW)
+	# For some reason CMake doesn't do this itself...
+	# In case of MSVC, it does add /implib:kvirc.lib though
+	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--out-implib=libkvirc.dll.a")
+else()
+	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+endif()
 
 if(CMAKE_HOST_SYSTEM MATCHES "FreeBSD")
 	set_target_properties(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS -Wl,-export-dynamic)

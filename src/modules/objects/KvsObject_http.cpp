@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -88,16 +88,16 @@
 	@functions:
 		!fn: <id:integer>$get(<remote_path:string>,[<local_file: string>])
 		Sends a get request for path to the server set by [classfnc]$setHost[/classfnc].
-		If local_file is not specified readyRead() signal is emitted every time new content data is available to read.
+		If local_file is not specified [b]readyRead()[/b] signal is emitted every time new content data is available to read.
 		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>
 		Sends a post request for path to the server set by [classfnc]$setHost[/classfnc].
-		If local_file is not specified readyRead() signal is emitted every time new content data is available to read.
+		If local_file is not specified [b]readyRead()[/b] signal is emitted every time new content data is available to read.
 		!fn: $abort()
 		Aborts the current request and deletes all scheduled requests.
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
 		Sets the HTTP server that is used for requests to hostName on port port.
 		The function does not block: the request is scheduled, and its execution is performed asynchronously.
-		The function returns a unique identifier which is passed by [classfnc]requestStartedEvent()[/classfnc] and [classfnc]requestFinishedEvent()[/classfnc].
+		The function returns a unique identifier which is passed by [b]requestStartedEvent()[/b] and [b]requestFinishedEvent()[/b].
 		When the request is started the requestStarted() signal is emitted. When it is finished the requestFinished() signal is emitted.
 		!fn: <id:integer>$currentId()
 		Returns the identifier of the HTTP request being executed or 0 if there is no request being executed.
@@ -119,7 +119,7 @@
 		This event is triggered by KVIrc when he HTTP header of a server response is available.
 		The response is passed ad string.
 		!fn: $doneEvent(<error:boolean>)
-		This event is triggered when the last pending request has finished; (it is emitted after the last request's requestFinished() signal).
+		This event is triggered when the last pending request has finished; (it is emitted after the last requests requestFinished() signal).
 		!fn: $dataReadProgressEvent(<done:integer>,<total:integer>)
 		This event is triggered when reads data from a HTTP server.
 		<done> is the amount of data has already arrived and <total> is the total amount of data.
@@ -129,12 +129,12 @@
 		!fn: $stateChangedEvent(<connection_state:string>)
 		This event is triggered by the framework when the state of the connection changes.
 		!fn: $readyReadEvent(<response:string>)
-		This event is triggered by the framework when there is new data read and there is not file specified in [classfnc]get[/classfunc] or [classfnc]post[/classfunc].
-		You can call [classfnc]readAll[/classfnc] to reads all the bytes from the response data.
+		This event is triggered by the framework when there is new data read and there is not file specified in [b]get[/b] or [b]post[/b].
+		You can call [b]readAll[/b] to reads all the bytes from the response data.
 		!fn: $sslErrorsEvent(<sslerrors:string>)
 		Returns the list of errors that occurred during the SSL handshake.
-		Unless you call ignoreSslErrors() from within a slot connected to the signal emited by this event,
-		the framwork will tear down the connection immediately after emitting the signal.
+		Unless you call ignoreSslErrors() from within a slot connected to the signal emitted by this event,
+		the framework will tear down the connection immediately after emitting the signal.
 	@signals:
 		!sg: $requestStarted()
 		This signal is emitted by the default implementation of [classfnc]$requestStartedEvent[/classfnc].
@@ -233,7 +233,7 @@ bool  KvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 	QUrl url(szHost);
 	if (!url.isValid())
 	{
-		c->warning(__tr2qs_ctx("Host '%Q' is not a valid url","objects"),&szHost);
+		c->warning(__tr2qs_ctx("Host '%Q' is not a valid URL","objects"),&szHost);
 		return true;
 	}
 	if (!szHost.isEmpty() && url.host().isEmpty()) url.setHost(szHost);
@@ -477,7 +477,7 @@ void KvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader &r)
 {
 	QString szResponse;
 	switch (r.statusCode()) {
-		case 200:	szResponse="Ok"  ;break;
+		case 200:	szResponse="OK"  ;break;
 		case 301:	szResponse="Moved Permanently" ;break;
 		case 302:	szResponse="Found" ;break;
 		case 303:	szResponse="See Other" ;break;
@@ -499,7 +499,7 @@ void KvsObject_http::slotReadyRead(const QHttpResponseHeader &r)
 {
 	QString szResponse;
 	switch (r.statusCode()) {
-		case 200:	szResponse="Ok"  ;break;
+		case 200:	szResponse="OK"  ;break;
 		case 301:	szResponse="Moved Permanently" ;break;
 		case 302:	szResponse="Found" ;break;
 		case 303:	szResponse="See Other" ;break;

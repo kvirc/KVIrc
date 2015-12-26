@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -47,7 +47,7 @@
 		[class]widget[/class]
 	@description:
 		The slider is the classic widget for controlling a bounded value.[br]
-		It lets the user move a slider along a horizontal or vertical groove [br]
+		It lets the user move a slider along a horizontal or vertical groove[br]
 		and translates the slider's position into an integer value within the legal range.[/classfnc]()
 	@functions:
 		!fn: $setOrientation(<orientation:string>)
@@ -91,7 +91,7 @@
 		so it is easy to handle the values from many sliders without reimplementing
 		the [classfnc]$valueChangedEvent[/classfnc]() for every one.[br]
 		Note: If you reimplement this function to catch the slider value, you will have to emit the signal by yourself (if you still need it, obviously).
-		@signals:
+	@signals:
 		!sg: $valueChanged()
 		This signal is emitted by the default implementation of [classfnc]valueChangedEvent[/classfnc]().[br]
 		If you reimplement that function you will have to emit the signal manually (if you still need it).

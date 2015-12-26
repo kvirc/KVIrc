@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -809,9 +809,9 @@ TC_KVS_STRINGRET_INT_FUNCTION(state, state, "torrent_number")
 	@title:
 		The torrent module
 	@body:
-		The torrent module is an interface to torrent clients. It currently supports KTorrent using dbus.[br]
+		The torrent module is an interface to torrent clients. It currently supports KTorrent using D-Bus.[br]
 		It provides the following set of commands:[br]
-		[cmd]torrent.detect[/cmd]: Performs an autodetection of installed torrent clients[br]
+		[cmd]torrent.detect[/cmd]: Performs an auto-detection of installed torrent clients[br]
 		[cmd]torrent.setClient[/cmd]: Sets the torrent client interface[br]
 		[cmd]torrent.start[/cmd]: Starts downloading of a torrent[br]
 		[cmd]torrent.stop[/cmd]: Stops downloading of a torrent[br]

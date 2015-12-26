@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -42,11 +42,11 @@
 	@type:
 		class
 	@short:
-		Provides a class that can display html pages.
+		Provides a class that can display HTML pages.
 	@inherits:
 		[class]widget[/class]
 	@description:
-		Provides a class that can display html pages with hypertext navigation.
+		Provides a class that can display HTML pages with hypertext navigation.
 	@functions:
 		!fn: $setSource(<file_name:string>)
 		With this you can display the page at szFile location (szFile include the path).

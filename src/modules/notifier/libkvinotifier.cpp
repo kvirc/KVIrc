@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -61,7 +61,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 		In that case the message is appended at the end of the
 		message queue and the user will be able to scroll to it
 		by using the proper notifier buttons.[br]
-		The &lt;message&gt; text can contain simple html tags: basically you are
+		The &lt;message&gt; text can contain simple HTML tags: basically you are
 		allowed to use &lt;b&gt; and &lt;i&gt;. The usage of other
 		tags is possible but is discouraged since it tends to
 		mess up the message display. In particular you should avoid
@@ -73,7 +73,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 		!sw: -n | --noanim
 		Do not animate
 		!sw: -w | --windowid
-		Causes the message gets attacched to the specified window and
+		Causes the message gets attached to the specified window and
 		the user is able to type commands in that window after
 		showing up the notifier input. If the "=&lt;window_id&gt;" part
 		is omitted then the current window is used.[br]
@@ -91,7 +91,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 		!sw: -t | --timeout
 		Set the message lifetime to <timeout>
 		Obviously this option has no meaning if the window is not going to be shown.
-		The timeout may be overriddent by new messages but only in the future.
+		The timeout may be overridden by new messages but only in the future.
 		If the timeout expires and is not overridden by any new message
 		then the window will be automatically hidden.
 		A zero timeout disables auto-hiding.
@@ -205,7 +205,7 @@ static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 		Shows the notifier window if it is not already visible
 		If the -n switch is present then the show operation is
 		not animated.[br]
-		The notifier is shown ONLY if it contains some messages.
+		The notifier is shown [b]only[/b] if it contains some messages.
 		[b]Please note that the user can forcibly disable the notifier
 		for a limited period of time (a sort of "don't bug me" option).[/b]
 	@seealso:
@@ -239,12 +239,12 @@ static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		The user can forcibly disable the notifier as a sort of "don't bug me"
 		feature for a limited period of time. When the notifier
 		is disabled the messages sent to it will not be shown.[br]
-		The only method that you (scripter) can use to forcibly
+		The only method that you (the scripter) can use to forcibly
 		re-enable the notifier is to unload the module and
-		reload it...but [b]DON'T do it[/b] :)[br]
+		reload it...but [b]don't do it[/b] :)[br]
 		There is also a global option that allows forcibly disabling
 		the notifier forever, this option could be overridden with [cmd]option[/cmd]
-		instead.. but again [b]DON'T do it[/b] :)[br]
+		instead.. but again [b]don't do it[/b] :)[br]
 
 */
 static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)

@@ -3,13 +3,13 @@
 //   File : libkviclasseditor.cpp
 //   CCreation date : Mon Feb 15 2010 14:35:55 CEST by Carbone Alessandro
 //
-//   This toolbar is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2010 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -58,7 +58,7 @@ Service::Service(const QString &hostname, int port, const QString &informationUr
 , m_iPort(port)
 {
 	m_szInformationUrl = informationUrl;
-	qDebug() << "UPnP::Service: Created information service url='" << m_szInformationUrl << "'." << endl;
+	qDebug() << "UPnP::Service: created information service url='" << m_szInformationUrl << "'." << endl;
 }
 
 
@@ -239,7 +239,7 @@ void Service::slotRequestFinished()
 {
 	QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
 
-	qDebug() << "UPnP::Service: Got HTTP response for request " << endl;
+	qDebug() << "UPnP::Service: received HTTP response for request " << endl;
 
 	if(!reply)
 	{
@@ -289,7 +289,7 @@ void Service::slotRequestFinished()
 			if(cutAt > -1)
 			{
 				baseNamespace.truncate(cutAt);
-				qDebug() << "Device is using " << baseNamespace << " as xml namespace" << endl;
+				qDebug() << "Device is using " << baseNamespace << " as XML namespace" << endl;
 				m_szBaseXmlPrefix = baseNamespace;
 			}
 		}
@@ -297,7 +297,7 @@ void Service::slotRequestFinished()
 		// Determine how to process the data
 		if(xml.namedItem(m_szBaseXmlPrefix + ":Envelope").isNull())
 		{
-			qDebug() << "UPnP::Service: Plain XML detected, calling gotInformationResponse()." << endl;
+			qDebug() << "UPnP::Service: plain XML detected, calling gotInformationResponse()." << endl;
 			// No SOAP envelope found, this is a normal response to callService()
 			gotInformationResponse( xml.lastChild() );
 		} else {
@@ -311,7 +311,7 @@ void Service::slotRequestFinished()
 			{
 				if(resultNode.nodeName().startsWith("m:") || resultNode.nodeName().startsWith("u:"))
 				{
-					qDebug() << "UPnP::Service: SOAP Envelope detected, calling gotActionResponse()." << endl;
+					qDebug() << "UPnP::Service: SOAP envelope detected, calling gotActionResponse()." << endl;
 					// Action success, return SOAP body
 					QMap<QString,QString> resultValues;
 
@@ -329,14 +329,14 @@ void Service::slotRequestFinished()
 					gotActionResponse(resultNode.nodeName().mid(2), resultValues);
 				}
 			} else {
-				qDebug() << "UPnP::Service: SOAP Error detected, calling gotActionResponse()." << endl;
+				qDebug() << "UPnP::Service: SOAP error detected, calling gotActionResponse()." << endl;
 
 				// Action failed
 				gotActionErrorResponse(resultNode);
 			}
 		}
 	} else {
-		qWarning() << "UPnP::Service - XML Parsing failed: " << errorMessage << endl;
+		qWarning() << "UPnP::Service - XML parsing failed: " << errorMessage << endl;
 	}
 
 	// Only emit when bytes>0

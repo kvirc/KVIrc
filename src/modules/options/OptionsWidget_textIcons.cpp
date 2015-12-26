@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -191,7 +191,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 void OptionsWidget_textIcons::chooseFromFile()
 {
 	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Choose icon filename","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
+	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Choose Icon Filename","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
 	if(!szFile.isEmpty())
 	{
 		if(g_pIconManager->getPixmap(szFile))
@@ -205,9 +205,11 @@ void OptionsWidget_textIcons::chooseFromFile()
 			g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 			szCurrentThemePath+= KVI_PATH_SEPARATOR_CHAR;
 			qDebug("copy source %s - dest %s",szFile.toUtf8().data(),szCurrentThemePath.toUtf8().data());
+			if (!KviFileUtils::directoryExists(szCurrentThemePath))
+				KviFileUtils::makeDir(szCurrentThemePath);
 			KviFileUtils::copyFile(szFile,szCurrentThemePath+szFileName);
 			m_pCurrentItem->icon()->setFilename(szFileName);
-			qDebug("set Icon");
+			qDebug("Set icon");
 			QPixmap *p=m_pCurrentItem->icon()->pixmap();
 			m_pCurrentItem->setIcon(QIcon(*p));
 			if(m_pCurrentIconButton)

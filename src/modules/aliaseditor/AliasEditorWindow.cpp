@@ -7,9 +7,9 @@
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
-//   modify it under the linkss of the GNU General Public License
+//   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -585,7 +585,7 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-			__tr2qs_ctx("Export Selected in singles files...","editor"),
+			__tr2qs_ctx("Export Selected in Single Files...","editor"),
             this,SLOT(exportSelectedSepFiles()))
             ->setEnabled(bHasSelected);
 
@@ -940,7 +940,7 @@ bool AliasEditorWidget::removeItem(AliasEditorTreeWidgetItem *it,bool * pbYesToA
 		else {
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the namespace \"%1\"?","editor")).arg(szName);
 			szMsg += "<br>";
-			szMsg += __tr2qs_ctx("Please note that all the children items will be deleted too.","editor");
+			szMsg += __tr2qs_ctx("Please note that all the child items will be deleted too.","editor");
 		}
 
 		g_pAliasEditorModule->lock();

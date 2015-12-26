@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_iograph.cpp
+//   File : libkviiograph.cpp
 //   Creation date : Tue Oct 31 2000 00:14:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -254,10 +254,10 @@ void KviIOGraphWidget::paintEvent(QPaintEvent *)
 	@title:
 		iograph.open
 	@short:
-		Opens the IOGraph chart
+		Opens the I/O Traffic Graph chart
 	@description:
-		Opens the IOGraph chart. It will
-		monitor the Incoming and Outgoing socket traffic.[br]
+		Opens the I/O Traffic Graph chart. It will
+		monitor the [i]Incoming and Outgoing[/i] socket traffic.[br]
 */
 
 static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)

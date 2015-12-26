@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -401,7 +401,7 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 		}
 
 		if(!minKey.isEmpty())g_pWinPropertiesConfig->clearGroup(minKey);
-		else qDebug("Oops...no minimum key found!");
+		else qDebug("Oops! No minimum key found.");
 	}
 
 	// The following line should NOT be needed...but just to be sure...
@@ -1043,7 +1043,7 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
         p->addSeparator();
 
 	p->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBar)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBarEditor)),
 			__tr2qs("Customize..."),
 			this,
 			SLOT(customizeToolBars())

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -51,7 +51,7 @@ namespace AddonFunctions
 {
 	bool notAValidAddonPackage(QString &szError)
 	{
-		szError = __tr2qs_ctx("The selected file does not seem to be a valid KVIrc addon package","addon");
+		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc addon package","addon");
 		return false;
 	}
 
@@ -72,7 +72,7 @@ namespace AddonFunctions
 		if(!r.readHeader(szAddonPackageFileName))
 		{
 			szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %1","addon")).arg(szErr);
+			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1","addon")).arg(szErr);
 			return false;
 		}
 
@@ -241,7 +241,7 @@ namespace AddonFunctions
 		}
 
 		if(!KviFileUtils::deleteDir(szUnpackPath))
-			QMessageBox::warning(NULL,__tr2qs_ctx("Addon Unpack Warning","addon"),__tr2qs_ctx("Failed to delete the directory '%1'","addon").arg(szUnpackPath));
+			QMessageBox::warning(NULL,__tr2qs_ctx("Warning While Unpacking Addon","addon"),__tr2qs_ctx("Failed to delete the directory '%1'","addon").arg(szUnpackPath));
 
 		return true;
 	}
@@ -277,14 +277,14 @@ namespace AddonFunctions
 		QDir addon(szDirPath);
 		if(!addon.exists())
 		{
-			*pszError = __tr2qs_ctx("The selected directory does not exist.","addon");
+			*pszError = __tr2qs_ctx("The selected directory doesn't exist.","addon");
 			return false;
 		}
 
 		QFileInfo init(szDirPath + "/install.kvs");
 		if(!init.exists())
 		{
-			*pszError = __tr2qs_ctx("The initialization script (install.kvs) does not exist.","addon");
+			*pszError = __tr2qs_ctx("The initialization script (install.kvs) doesn't exist.","addon");
 			return false;
 		}
 

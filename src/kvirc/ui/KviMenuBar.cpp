@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -145,7 +145,7 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Bug)),__tr2qs("Report a Bug / Propose Improvements"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->addSeparator();
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on Freenode"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on freenode"));
 	pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_ON_FREENODE);
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"it",2))
 	{
@@ -156,7 +156,7 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
 	{
 		// join #kvirc-fr on freenode
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on Freenode"));
+		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on freenode"));
 		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_FREENODE);
 		// join #kvirc on europnet
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on EuropNet"));
@@ -191,7 +191,7 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 	QMenu * opt = pop ? pop : (QMenu *)sender();
 	opt->clear();
 
-	QAction *pAction = opt->addAction(__tr2qs("Toolbars"));
+	QAction *pAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Toolbar)),__tr2qs("Toolbars"));
 	pAction->setMenu(m_pToolbarsPopup);
 
 	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
@@ -254,7 +254,7 @@ void KviMenuBar::setupMainPopup(QMenu *pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT,main)
 
-	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"));
+	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection to"));
 	pAction->setMenu(m_pRecentServersPopup);
 
 	m_pDisconnectAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),this,SLOT(actionTriggered(bool)));

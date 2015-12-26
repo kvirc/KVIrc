@@ -7,7 +7,7 @@
 //   Copyright (C) 2010 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
-//   modify it under the linkss of the GNU General Public License
+//   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
 //   of the License, or (at your opinion) any later version.
 //
@@ -684,8 +684,8 @@ void ClassEditorWidget::renameNamespace(ClassEditorTreeWidgetItem * pOldNamespac
 		if(pNewItem->isClass())
 		{
 			QMessageBox::information(this,
-				__tr2qs_ctx("Name already exists as Class name","editor"),
-				__tr2qs_ctx("This name is already in use as Class name. Please choose another one.","editor"),
+				__tr2qs_ctx("Name already exists as class name","editor"),
+				__tr2qs_ctx("This name is already in use as class name. Please choose another one.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 		} else {
 			QMessageBox::information(this,
@@ -926,7 +926,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-		__tr2qs_ctx("Export Selected in singles files...","editor"),
+		__tr2qs_ctx("Export Selected in Single Files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
     pAction->setEnabled(bHasSelected);
@@ -941,7 +941,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
-			__tr2qs_ctx("Find In Classes...","editor"),
+			__tr2qs_ctx("Find in Classes...","editor"),
 			this,SLOT(slotFind()));
     pAction->setEnabled(bHasItems);
 
@@ -1374,7 +1374,7 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 		{
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the namespace \"%1\"?","editor")).arg(szName);
 			szMsg += "<br>";
-			szMsg += __tr2qs_ctx("Please note that all the children classes/functions will be deleted too.","editor");
+			szMsg += __tr2qs_ctx("Please note that all the child classes/functions will be deleted too.","editor");
 		} else if(pItem->isMethod())
 		{
 			szMsg = QString(__tr2qs_ctx("Do you really want to remove the function \"%1\"?","editor")).arg(szName);

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -121,7 +121,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsoleWindow *
 					// Try to find the first available IPv4 interface
 					if(!kvi_getLocalHostAddress(szListenIp))
 					{
-						if(c)c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPV4 address","dcc"),
+						if(c)c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPv4 address","dcc"),
 								KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 						return false;
 					}
@@ -139,7 +139,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsoleWindow *
 				if(!KviNetUtils::getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),szListenIp))
 				{
 					KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault) = false;
-					if(c)c->warning(__tr2qs_ctx("Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next dcc will work)","dcc"),
+					if(c)c->warning(__tr2qs_ctx("Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next DCC will work)","dcc"),
 							KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 					return false;
 				}

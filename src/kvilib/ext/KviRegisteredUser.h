@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -42,7 +42,8 @@ public:
 		Notice=4,
 		Ctcp=8,
 		Invite=16,
-		Dcc=32
+		Dcc=32,
+		Highlight=64
 	};
 
 	KviRegisteredUser(const QString & szName);
@@ -62,7 +63,7 @@ protected:
 public:
 	int  ignoreFlags(){ return m_iIgnoreFlags; };
 	void setIgnoreFlags(int iFlags){ m_iIgnoreFlags = iFlags; };
-	bool ignoreEnagled(){ return m_bIgnoreEnabled; };
+	bool ignoreEnabled(){ return m_bIgnoreEnabled; };
 	void setIgnoreEnabled(bool bEnabled){ m_bIgnoreEnabled = bEnabled; };
 	bool isIgnoreEnabledFor(IgnoreFlags flag);
 

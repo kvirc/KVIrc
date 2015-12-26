@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -45,7 +45,7 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		This widget provides a datetimeedit.
+		This widget provides a datetimeedit class.
 	@functions:
 		!fn: $setDate(<text:string>,<format:string>)
 		Sets the date of the widget using the format <format>. Possible values for format are:
@@ -62,7 +62,7 @@
 		!fn: <string> $date(<format:string>)
 		Returns the widget date according to format.
 		!fn: $setTime(<text:string>,<format:string>)
-		Sets the date of the widget using the format <format>. Possibile values for format are:
+		Sets the date of the widget using the format <format>. Possible values for format are:
 		[br]h the hour without a leading zero
 		[br]hh the hour with a leading zero
 		[br]m the minute without a leading zero

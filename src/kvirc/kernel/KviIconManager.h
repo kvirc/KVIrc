@@ -13,7 +13,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -167,9 +167,9 @@ public:
 	enum SmallIcon {
 		None                 =   0,
 		Close                =   1,
-		Maximize             =   2,
-		Minimize             =   3,
-		Restore              =   4,
+		History              =   2,
+		HistoryOff           =   3,
+		Restore              =   4, //No longer used, do not remove entry, just reuse entry for new icons.
 		DefaultIcon          =   5,
 		Dock                 =   6,
 		UnDock               =   7,
@@ -281,8 +281,8 @@ public:
 		RegUsers             = 113,
 		TrayIcon             = 114,
 		UnsetMode            = 115,
-		MaxVertical          = 116,
-		MaxHorizontal        = 117,
+		MaxVertical          = 116, //No longer used, do not remove entry, just reuse entry for new icons.
+		Toolbar              = 117,
 		ServerFavorite       = 118,
 		Log                  = 119,
 		Remove               = 120,
@@ -334,7 +334,7 @@ public:
 		DccVoice             = 166,
 		Play                 = 167,
 		Record               = 168,
-		AutoTileWindows      = 169,
+		KickOff              = 169,
 		Away                 = 170,
 		Ident                = 171,
 		HomePage             = 172,
@@ -400,7 +400,7 @@ public:
 		DeadChannel          = 232,
 		DeadQuery            = 233,
 		Sound                = 234,
-		ToolBar              = 235,
+		ToolBarEditor        = 235,
 		TextEncoding         = 236,
 		NewItem              = 237,
 		NewItemByWizard      = 238,
@@ -479,8 +479,8 @@ public:
 		Function             = 311,
 		SexMale              = 312,
 		SexFemale            = 313,
-		SexBot               = 314,
-		SexIrcOp             = 315,
+		IrcBot               = 314,
+		AlienIrcOp           = 315,
 		MemoServ             = 316,
 		Info                 = 317,
 		Warning              = 318,

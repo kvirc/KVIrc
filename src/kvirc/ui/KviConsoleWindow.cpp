@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -135,10 +135,10 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 	// FIXME: #warning "Button to show/hide the notifyListView (NOT DELETE RE_CREATE!)"
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify List"),buttonContainer(),true);
+	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify list"),buttonContainer(),true);
 	connect(m_pNotifyViewButton,SIGNAL(clicked()),this,SLOT(toggleNotifyView()));
 
-	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify List"),"notify_list_view");
+	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify list"),"notify_list_view");
 
 	m_pInput   = new KviInput(this,m_pNotifyListView);
 
@@ -551,6 +551,12 @@ void KviConsoleWindow::closeEvent(QCloseEvent *e)
 // internal helper for applyHighlighting
 int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QString & szNick, const QString & szUser, const QString & szHost, const QString & szMsg, const QString & szTrigger)
 {
+	KviRegisteredUser * u = connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
+	if(u)
+	{
+		if(u->isIgnoreEnabledFor(KviRegisteredUser::Highlight))
+			return iType;
+	}
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd && !pWnd->hasAttention())
 		KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
 
@@ -1189,7 +1195,8 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 	static QString html_spaceparopen(" (");
 	static QString html_spaceparclosed(")");
 
-	buffer = "<table width=\"100%\">" \
+	//120% to stop KviConsoleWindow::fillStatusString() wrapping the entries—at least in English—
+	buffer = "<table width=\"120%\">" \
 		START_TABLE_BOLD_ROW;
 	buffer += m_szStatusString;
 	buffer += END_TABLE_BOLD_ROW;

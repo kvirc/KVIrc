@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -46,7 +46,7 @@ extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 	@title:
 		sharedfile.add
 	@keyterms:
-		trading files by dcc
+		trading files by DCC
 	@short:
 		Adds a file sharedfile
 	@syntax:
@@ -118,7 +118,7 @@ static bool sharedfile_kvs_cmd_add(KviKvsModuleCommandCall * c)
 
 	if(!g_pSharedFilesManager->addSharedFile(szVisibleName,szFileName,szUserMask,timeout))
 	{
-		c->warning(__tr2qs_ctx("Ops..failed to add the sharedfile...","sharedfileswindow"));
+		c->warning(__tr2qs_ctx("Oops! Failed to add the sharedfile...","sharedfileswindow"));
 	}
 
 	return true;
@@ -132,7 +132,7 @@ static bool sharedfile_kvs_cmd_add(KviKvsModuleCommandCall * c)
 	@title:
 		sharedfile.remove
 	@keyterms:
-		trading files by dcc
+		trading files by DCC
 	@short:
 		Removes a shared file
 	@syntax:
@@ -170,7 +170,7 @@ static bool sharedfile_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	@title:
 		sharedfile.clear
 	@keyterms:
-		trading files by dcc, shared files
+		trading files by DCC, shared files
 	@short:
 		Clears the shared files list
 	@syntax:
@@ -195,7 +195,7 @@ static bool sharedfile_kvs_cmd_clear(KviKvsModuleCommandCall *)
 	@title:
 		sharedfile.list
 	@keyterms:
-		trading files by dcc
+		trading files by DCC
 	@short:
 		Lists the active file sharedfile
 	@syntax:
@@ -218,9 +218,9 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		{
 			c->window()->output(KVI_OUT_NONE,"%c%d. %s",
 				KviControlCodes::Bold,idx + 1,it.currentKey().toUtf8().data());
-			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    File: %s (%u bytes)","sharedfileswindow"),
+			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("File: %s (%u bytes)","sharedfileswindow"),
 				o->absFilePath().toUtf8().data(),o->fileSize());
-			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Mask: %s","sharedfileswindow"),
+			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("Mask: %s","sharedfileswindow"),
 				o->userMask().toUtf8().data());
 			if(o->expireTime() > 0)
 			{
@@ -229,7 +229,7 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 				secs = secs % 3600;
 				int mins = secs / 60;
 				secs = secs % 60;
-				c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Expires in %d hours %d minutes %d seconds","sharedfileswindow"),
+				c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("Expires in %d hours %d minutes %d seconds","sharedfileswindow"),
 					hour,mins,secs);
 			}
 			++idx;

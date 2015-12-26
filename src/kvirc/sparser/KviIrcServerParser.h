@@ -12,7 +12,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -146,6 +146,8 @@ private:
 	void parseNumeric729(KviIrcMessage *msg);
 	void parseNumeric486(KviIrcMessage * msg);
 
+	void parseNumericSnomask(KviIrcMessage *msg);
+	void parseNumericYourUID(KviIrcMessage *msg);
 	void parseNumericMotd(KviIrcMessage *msg);
 	void parseNumericNames(KviIrcMessage *msg);
 	void parseNumericEndOfNames(KviIrcMessage *msg);
@@ -189,13 +191,16 @@ private:
 	void parseNumericChanUrl(KviIrcMessage *msg);
 	void parseNumericCreationTime(KviIrcMessage *msg);
 	void parseNumericIsOn(KviIrcMessage *msg);
+	void parseNumericBanOnChan(KviIrcMessage *msg);
 	void parseNumericUnavailResource(KviIrcMessage *msg);
+	void parseNumericUserInChan(KviIrcMessage *msg);
 	void parseNumericLinks(KviIrcMessage *msg);
 	void parseNumericEndOfLinks(KviIrcMessage *msg);
 	void parseNumericUserhost(KviIrcMessage *msg);
 	void parseLoginNicknameProblem(KviIrcMessage *msg);
 	void parseNumericBackFromAway(KviIrcMessage *);
 	void parseNumericAway(KviIrcMessage *);
+	void parseNumericUsersDontMatch(KviIrcMessage *msg);
 	void parseNumericWatch(KviIrcMessage *msg);
 	void parseNumericList(KviIrcMessage *msg);
 	void parseNumericListStart(KviIrcMessage *msg);
@@ -214,6 +219,8 @@ private:
 	void parseNumericInfoStart(KviIrcMessage *msg);
 	void parseNumericInfo(KviIrcMessage *msg);
 	void parseNumericYoureOper(KviIrcMessage * msg);
+	void parseNumericNotEnoughParams(KviIrcMessage *msg);
+	void parseNumericAlreadyRegistered(KviIrcMessage * msg);
 	void parseNumericPasswordIncorrect(KviIrcMessage * msg);
 	void parseNumericInviting(KviIrcMessage *msg);
 	void parseNumericCommandSyntax(KviIrcMessage *msg);
@@ -229,6 +236,7 @@ private:
 	void parseNumericYouHaveCallerID(KviIrcMessage * msg);
 	void otherChannelError(KviIrcMessage *msg);
 	void parseNumericUnknownCommand(KviIrcMessage * msg);
+	void parseNumericMotdMissing(KviIrcMessage *msg);
 	void parseCommandSyntaxHelp(KviIrcMessage *msg);
 	void parseCommandHelp(KviIrcMessage *msg);
 	void parseCommandEndOfHelp(KviIrcMessage *msg);

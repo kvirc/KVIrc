@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -119,7 +119,7 @@ namespace KviKvsCoreSimpleCommands
 			is shown. Otherwise, an error page is displayed.[br/]
 			The help browser has limited html browsing capabilities: you can
 			use it to view simple html files on your filesystem.[br]
-			This command is an alias for the [cmd]help.open[cmd] command exported
+			This command is an alias for the [cmd]help.open[/cmd] command exported
 			by the "help" module.
 		@switches:
 			!sw: -m | --mdi

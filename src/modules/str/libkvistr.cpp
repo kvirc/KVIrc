@@ -3,14 +3,14 @@
 //   File : libkvistr.cpp
 //   Creation date : Thu Dec 27 2001 17:13:12 GMT by Szymon Stefanek
 //
-//   This str is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -473,8 +473,8 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 		This function search in the string given as the first parameter for the string
 		given as his second parameter, and will return the index where the nth occurrence
 		given as the third parameter is found or -1 if it's not located. It starts
-		counting at 0. If occurence is not specified then the first occurence
-		is searched. WARNING: The occurence number starts from 1! (Yes, that's a bug, but
+		counting at 0. If occurrence is not specified then the first occurrence
+		is searched. WARNING: The occurrence number starts from 1! (Yes, that's a bug, but
 		for backward compatibility it must remain as it is :( ).[br]
 		FIXME: The semantics of this function are totally broken :(
 */

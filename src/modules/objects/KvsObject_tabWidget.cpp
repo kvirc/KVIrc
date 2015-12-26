@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -85,25 +85,25 @@
 		!fn: $setTabsClosable(<enable:bool>)
 		Sets whether close buttons are automatically added to each tab
 		!fn: $currentChangedEvent()
-		This function is invoched when the current tab was changed.[br]
+		This function is invoked when the current tab was changed.[br]
 		The default implementation emits the [classfnc]$currentChange[/classfnc]() signal.
 		!fn: $tabCloseRequestEvent()
-		This function is invoched when when the close button on a tab is clicked.
+		This function is invoked when when the close button on a tab is clicked.
 		The index is the index of the tab that should be removed.[br]
 		The default implementation emits the [classfnc]$tabCloseRequest[/classfnc]() signal.
 		See also [classfnc]$setTabsClosable[/classfnc]().
 	@examples:
 		[example]
-			// First we'll create the main tabWidget.
+			[comment]// First we'll create the main tabWidget.[/comment]
 			%Tabwidget=$new(tabWidget)
 			%Tabwidget->$setToolTip("Example of TabWidget class")
 			%Tabwidget->$setTabPosition(Top)
 			%Tabwidget->$resize(300,200)
-			// Now we'll create the new widgets and put they in to the main tabWidget.
+			[comment]// Now we'll create the new widgets and put they in to the main tabWidget.[/comment]
 			%firsttab=$new(vbox)
 			%secondtab=$new(vbox)
-			// Now we'll create the item to put in to tab's pages.
-			// First tab
+			[comment]// Now we'll create the item to put in to tab's pages.[/comment]
+			[comment]// First tab[/comment]
 			%hbox=$new(hbox,%firsttab)
 			%labelbt=$new(label,%hbox)
 			%labelbt->$settext(Botton Tab)
@@ -114,11 +114,11 @@
 			%buttontb->$settext("To &Botton")
 			%buttontt=$new(button,%hbox)
 			%buttontt->$settext("To &Top")
-			// Now we'll give a layout to all items.
-			// This also allows to use privateimpl without making buttons global variables
-			// Add the page to the main tab.
+			[comment]// Now we'll give a layout to all items.[/comment]
+			[comment]// This also allows to use privateimpl without making buttons global variables[/comment]
+			[comment]// Add the page to the main tab.[/comment]
 			%Tabwidget->$addTab(%firsttab,Top&Button,33)
-			// Implementing the action to do when the user click the buttons.
+			[comment]// Implementing the action to do when the user click the buttons.[/comment]
 			privateimpl(%buttontb,mousepressevent)
 			{
 				%Tabwidget->$setTabPosition(Bottom)
@@ -127,7 +127,7 @@
 			{
 				%Tabwidget->$setTabPosition(Top)
 			}
-			// We do the same work  with the second tab's page.
+			[comment]// We do the same work  with the second tab's page.[/comment]
 			%labelwp=$new(label,%secondtab)
 			%labelwp->$settext("Enjoy the new Class provided by")
 			%labelwp->$setalignment("Center")
@@ -135,7 +135,7 @@
 			%labelgen->$settext(Grifisx \& Noldor)
 			%labelgen->$setalignment("Center")
 			%Tabwidget->$addTab(%secondtab,&About,50)
-			// Let's show our example.
+			[comment]// Let's show our example.[/comment]
 			%Tabwidget->$show()
 		[/example]
 	@signals:

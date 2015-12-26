@@ -1,15 +1,15 @@
 //=============================================================================
 //
-//   File : HttpFileTransfer.h
+//   File : HttpFileTransfer.cpp
 //   Creation date : Tue Apr 22 2003 02:00:12 GMT by Szymon Stefanek
 //
-//   This config is part of the KVIrc irc client distribution
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -366,7 +366,7 @@ unsigned int HttpFileTransfer::runningTransfers()
 
 void HttpFileTransfer::requestSent(const QStringList &requestHeaders)
 {
-	m_szStatusString = __tr2qs_ctx("Request sent, waiting for reply...","http");
+	m_szStatusString = __tr2qs_ctx("Request sent: waiting for reply...","http");
 	displayUpdate();
 
 	KviWindow * out = transferWindow();
@@ -386,7 +386,7 @@ void HttpFileTransfer::requestSent(const QStringList &requestHeaders)
 
 void HttpFileTransfer::connectionEstabilished()
 {
-	m_szStatusString = __tr2qs_ctx("Connection established, sending request","http");
+	m_szStatusString = __tr2qs_ctx("Connection established: sending request","http");
 	displayUpdate();
 }
 
@@ -484,7 +484,7 @@ void HttpFileTransfer::headersReceived(KviPointerHashTable<const char *,KviCStri
 	if(!h)return;
 	KviWindow * out = transferWindow();
 
-	if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: Response headers:","http"),id());
+	if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: response headers:","http"),id());
 	KviPointerHashTableIterator<const char *,KviCString> it(*h);
 	while(KviCString * s = it.current())
 	{

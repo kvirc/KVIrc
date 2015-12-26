@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -143,11 +143,11 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 
 
 	// and the related buttons
-	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView,KviIconManager::ShowDoubleView,__tr2qs("Split View"),buttonContainer(),false);
+	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView,KviIconManager::ShowDoubleView,__tr2qs("Split view"),buttonContainer(),false);
 	m_pDoubleViewButton->setObjectName("double_view_button");
 	connect(m_pDoubleViewButton,SIGNAL(clicked()),this,SLOT(toggleDoubleView()));
 
-	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("User List"),buttonContainer(),true);
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("User list"),buttonContainer(),true);
 	m_pListViewButton->setObjectName("list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
@@ -181,10 +181,12 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 			char cMode = szListModes.at(i).unicode();
 			QString szDescription = pServerInfo->getChannelModeDescription(cMode);
 			if(szDescription.isEmpty())
-				szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+				szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 			KviIconManager::SmallIcon eIconOn, eIconOff;
 			switch(cMode)
 			{
+					// must fix on/off icons here eventually once Ive patience to figure it out.
+					// to Un<somethings> is to undo/turn off :p blimey O'reilly.
 				case 'e':
 					eIconOn = KviIconManager::BanUnExcept;
 					eIconOff = KviIconManager::BanExcept;
@@ -199,8 +201,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 					break;
 				case 'q':
 					// this could also be quiet bans..
-					eIconOn = KviIconManager::ChanUnOwner;
-					eIconOff = KviIconManager::ChanOwner;
+					// on/off are inverted here on purpose must fix eventually.
+					eIconOn = KviIconManager::KickOff;
+					eIconOff = KviIconManager::Kick;
 					break;
 				default:
 					eIconOn = KviIconManager::UnBan;
@@ -215,7 +218,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 		}
 	}
 
-	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide,KviIconManager::ChanMode,__tr2qs("Mode Editor"),buttonContainer(),false);
+	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide,KviIconManager::ChanMode,__tr2qs("Mode editor"),buttonContainer(),false);
 	m_pModeEditorButton->setObjectName("mode_editor_button");
 	connect(m_pModeEditorButton,SIGNAL(clicked()),this,SLOT(toggleModeEditor()));
 	m_pModeEditor = 0;
@@ -235,7 +238,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
-	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,KVI_CHANNEL_AVERAGE_USERS,__tr2qs("User List"),"user_list_view");
+	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,KVI_CHANNEL_AVERAGE_USERS,__tr2qs("User list"),"user_list_view");
 	//m_pEditorsContainer->addWidget(m_pUserListView);
 	//m_pEditorsContainer->raiseWidget(m_pUserListView);
 	// And finally the input line on the bottom
@@ -1238,7 +1241,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					{
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
+							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
 							&szBuffer,&szEngineError);
 					}
 					break;
@@ -1785,7 +1788,7 @@ void KviChannelWindow::topicSelected(const QString & szTopic)
 					default:
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
 							&szTopic,&szEngineError);
 					break;
 				}
@@ -2204,7 +2207,7 @@ QByteArray KviChannelWindow::loadLogFile(const QString & szFileName, bool bGzip)
 
 			gzclose(logFile);
 		} else {
-			qDebug("Cannot open compressed file %s",szFileName.toUtf8().data());
+			qDebug("Can't open compressed file %s",szFileName.toUtf8().data());
 		}
 
 	} else {

@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -70,7 +70,7 @@ PluginManager * g_pPluginManager;
 	@syntax:
 		<string> $system.ostype()
 	@description:
-		Returns the current type of operating system: unix,macosx or windows.[br]
+		Returns the current type of operating system: UNIX, OS X or Windows.[br]
 */
 
 static bool system_kvs_fnc_ostype(KviKvsModuleFunctionCall * c)
@@ -188,17 +188,17 @@ static bool system_kvs_fnc_osnodename(KviKvsModuleFunctionCall *c)
 /*
 	@doc: system.getenv
 	@keyterms:
-		Enviroinement variables
+		Environment variables
 	@type:
 		function
 	@title:
 		$system.getenv
 	@short:
-		Returns the value of an enviroinement variable
+		Returns the value of an environment variable
 	@syntax:
 		<string> $system.getenv(<variable:string>)
 	@description:
-		Returns the value of the enviroinement <variable>.[br]
+		Returns the value of the environment <variable>.[br]
 */
 
 static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
@@ -237,7 +237,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 	@description:
 		Returns the current value of the system clipboard.
 		Please note that there are systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as the clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as the clipboard.
 		See [fnc]$system.selection[/fnc]().
 	@seealso:
 		[fnc]$system.selection[/fnc],
@@ -267,7 +267,7 @@ static bool system_kvs_fnc_clipboard(KviKvsModuleFunctionCall *c)
 	@description:
 		Sets the system clipboard contents to the string <data>.
 		Please note that there are systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as the clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as the clipboard.
 		See [fnc]$system.selection[/fnc]().
 	@seealso:
 		[fnc]$system.selection[/fnc],
@@ -301,7 +301,7 @@ static bool system_kvs_cmd_setClipboard(KviKvsModuleCommandCall * c)
 	@description:
 		Sets the system selection contents to the string <data>.
 		Please note that this command will work only on systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as the clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as the clipboard.
 	@seealso:
 		[fnc]$system.selection[/fnc],
 		[fnc]$system.clipboard[/fnc],
@@ -333,7 +333,7 @@ static bool system_kvs_cmd_setSelection(KviKvsModuleCommandCall * c)
 	@description:
 		Returns the current value of the system selection.
 		This function will work only on systems that have the concept
-		of "selection" (most notably X11) which is NOT the same as clipboard.
+		of "selection" (most notably X11) which is [b]not[/b] the same as clipboard.
 		On other systems this function will always return an empty string.
 		See [fnc]$system.clipboard[/fnc]().
 	@seealso:
@@ -363,8 +363,8 @@ static bool system_kvs_fnc_selection(KviKvsModuleFunctionCall *c)
 		<boolean> $system.checkModule(<module_name:string>)
 	@description:
 		Attempts to load the specified module and returns
-		$true if succesfull and $false otherwise. This can
-		be effectively used to test if a KVIrc exension module
+		$true if successful and $false otherwise. This can
+		be effectively used to test if a KVIrc extension module
 		is present on the system and can be loaded by the
 		KVIrc engine.
 */
@@ -415,11 +415,11 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 	@title:
 		$system.dbus
 	@short:
-		Performs a DBus call
+		Performs a D-Bus call
 	@syntax:
 		<variant> $system.dbus(<service:string>,<path:string>,<interface:string>,<method:string>[,<bus_type:string>[,<parameter1:string>[,<parameter2:string>[,...]]]])
 	@description:
-		This function allows performing simple Dbus calls without executing
+		This function allows performing simple D-Bus calls without executing
 		an external process. This feature is available ONLY under unix:
 		this means that this function is absolutely
 		non portable (don't use it in scripts that you're going to distribute).
@@ -500,7 +500,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 			c->returnValue()->setInteger(0);
 			return true;
 		} else {
-			c->warning(__tr2qs("Invalid DBus interface"));
+			c->warning(__tr2qs("Invalid D-Bus interface"));
 			return false;
 		}
 	}
@@ -519,7 +519,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 
 		if(tmp.isEmpty())
 		{
-			c->warning(__tr2qs("Invalid DBus parameter syntax"));
+			c->warning(__tr2qs("Invalid D-Bus parameter syntax"));
 			return false;
 		}
 
@@ -558,7 +558,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 			}
 			ds << uii;
 		} else {
-			c->warning(__tr2qs("Unsupported DBus parameter type %s"),tmp.ptr());
+			c->warning(__tr2qs("Unsupported D-Bus parameter type %s"),tmp.ptr());
 			return false;
 		}
 	}
@@ -568,7 +568,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 	if (reply.type() == QDBusMessage::ErrorMessage)
 	{
 		QDBusError err = reply;
-		c->warning(__tr2qs("The DBus call returned an error \"%s\": %s"),qPrintable(err.name()), qPrintable(err.message()));
+		c->warning(__tr2qs("The D-Bus call returned an error \"%s\": %s"),qPrintable(err.name()), qPrintable(err.message()));
 		return false;
 	}
 
@@ -609,13 +609,13 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 				c->returnValue()->setString("");
 				break;
 			default:
-				c->warning(__tr2qs("Unsupported DBus call return type %s"),v.typeName());
+				c->warning(__tr2qs("Unsupported D-Bus call return type %s"),v.typeName());
 				break;
 		}
 	}
 
 #else
-		c->warning(__tr2qs("DBus calls are available only under UNIX"));
+		c->warning(__tr2qs("D-Bus calls are available only under UNIX"));
 #endif
 	return true;
 }
@@ -628,13 +628,13 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 	@title:
 		system.setenv
 	@keyterms:
-		Enviroinement variables
+		Environment variables
 	@short:
-		Sets an enviroinement variable
+		Sets an environment variable
 	@syntax:
 		system.setenv <variable:string> [<value:string>]
 	@description:
-		Sets the enviroinement <variable> to the <value> string.[br]
+		Sets the environment <variable> to the <value> string.[br]
 		If <value> is not given, the <variable> is unset.[br]
 	@seealso:
 		[fnc]$system.getenv[/fnc]
@@ -819,9 +819,9 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 	@description:
 		Converts the integer value in network byte order
 		to it's host byte order counterpart.
-		Since the conversion is carried at binary rappresentation
+		Since the conversion is carried at binary representation
 		level you must specify the number of bytes you want
-		the binary rappresentation to have. Valid values are
+		the binary representation to have. Valid values are
 		1 (no conversion), 2 (short), 4 (32 bit int) and 8 (64 bit int).
 		If omitted, bytecount is assumed to be 4.
 */
@@ -875,9 +875,9 @@ static bool system_kvs_fnc_ntohi(KviKvsModuleFunctionCall * c)
 	@description:
 		Converts the integer value in host byte order
 		to it's network byte order counterpart.
-		Since the conversion is carried at binary rappresentation
+		Since the conversion is carried at binary representation
 		level you must specify the number of bytes you want
-		the binary rappresentation to have. Valid values are
+		the binary representation to have. Valid values are
 		1 (no conversion), 2 (short), 4 (32 bit int) and 8 (64 bit int).
 		If omitted, bytecount is assumed to be 4.
 */

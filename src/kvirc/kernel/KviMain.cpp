@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -454,7 +454,7 @@ int main(int argc, char ** argv)
 		{
 			if(szRemoteCommand.isEmpty())
 			{
-				KviCString szTmp(KviCString::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
+				KviCString szTmp(KviCString::Format,"Another KVIrc session is already running on this display and with this user ID.\nUse %s -f if you want to force a new session.",argv[0]);
 				if(a.bShowPopup)
 				{
 					QMessageBox::information(0,"Session - KVIrc",szTmp.ptr(),QMessageBox::Ok);

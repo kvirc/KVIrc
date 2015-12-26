@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -113,7 +113,7 @@ const KviPointerList<PortMapping>& WanConnectionService::getPortMappings() const
 // The control point received a response to callAction()
 void WanConnectionService::gotActionResponse(const QString &responseType, const QMap<QString,QString> &resultValues)
 {
-	qDebug() << "UPnP::WanConnectionService: Parsing action response:"
+	qDebug() << "UPnP::WanConnectionService: parsing action response:"
 		<< " type='" << responseType << "'." << endl;
 
 	// Check the message type
@@ -149,17 +149,17 @@ void WanConnectionService::gotActionResponse(const QString &responseType, const 
 		// Register the mapping
 		m_lPortMappings.append(map);
 
-		qDebug() << "UPnP::WanConnectionService - Got mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
+		qDebug() << "UPnP::WanConnectionService - Received mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
 			<< " to " << map->internalClient << ":" << map->internalPort
 			<< "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
 	}
 	else if(responseType == "AddPortMappingResponse")
 	{
-		qDebug() << "UPnP::WanConnectionService - Got mapping enabled" << endl;
+		qDebug() << "UPnP::WanConnectionService - Received mapping enabled" << endl;
 	}
 	else if(responseType == "DeletePortMappingResponse")
 	{
-		qDebug() << "UPnP::WanConnectionService - Got mapping disabled" << endl;
+		qDebug() << "UPnP::WanConnectionService - Received mapping disabled" << endl;
 	}
 	else
 	{

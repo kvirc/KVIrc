@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -35,7 +35,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviXmmsInterface,
 	"xmms",
 	__tr2qs_ctx(
-		"An interface to the popular UNIX xmms media player.\n" \
+		"An interface for the UNIX XMMS media player.\n" \
 		"Download it from http://legacy.xmms2.org\n"
 		,
 		"mediaplayer"
@@ -46,7 +46,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviAudaciousClassicInterface,
 	"audacious classic",
 	__tr2qs_ctx(
-		"An interface to the popular UNIX audacious media player.\n" \
+		"An interface for the UNIX Audacious media player.\n" \
 		"Download it from http://audacious-media-player.org\n"
 		,
 		"mediaplayer"

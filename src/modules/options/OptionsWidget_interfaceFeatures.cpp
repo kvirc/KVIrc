@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -54,14 +54,19 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable visual effects","options"),KviOption_boolEnableVisualEffects);
 	addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide channel window tool buttons by default","options"),KviOption_boolHideWindowToolButtons);
+#ifdef COMPILE_ON_MAC
+	addBoolSelector(0,6,0,6,__tr2qs_ctx("Require ⌘ to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
+#else
+	addBoolSelector(0,6,0,6,__tr2qs_ctx("Require Ctrl to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
+#endif
 
-	KviTalGroupBox * g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
+	KviTalGroupBox * g = addGroupBox(0,7,0,7,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
 	addBoolSelector(g,__tr2qs_ctx("Preferences","options"),KviOption_boolShowGeneralOptionsDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Registered users","options"),KviOption_boolShowRegisteredUsersDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Identity","options"),KviOption_boolShowIdentityDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Servers","options"),KviOption_boolShowServersConnectDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Join channels","options"),KviOption_boolShowChannelsJoinDialogAsToplevel);
-	addRowSpacer(0,7,0,7);
+	addRowSpacer(0,8,0,8);
 }
 
 OptionsWidget_interfaceFeatures::~OptionsWidget_interfaceFeatures()

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -203,7 +203,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
-		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//text encoding
@@ -215,7 +215,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pTextEncodingEditor,2,1);
 	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used as the default for text messages." \
-		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//common between server encoding and text encoding
@@ -266,7 +266,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	if(n->autoJoinChannelList())
 		m_lstChannels = *(n->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
-		__tr2qs_ctx("Channels to Join Automatically Upon Connect","options"),&m_lstChannels,true);
+		__tr2qs_ctx("Channels to Join Automatically upon Connect","options"),&m_lstChannels,true);
 
 	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to a server in this network has been established. To add a channel, type its name in the " \
@@ -309,7 +309,6 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
-
 	// nick serv rules
 
 	tab = new QWidget(tw);
@@ -349,7 +348,6 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add Rule","options"),tab);
 	connect(m_pAddRuleButton,SIGNAL(clicked()),this,SLOT(addNickServRule()));
 	gl->addWidget(m_pAddRuleButton,2,0);
-
 
 	m_pEditRuleButton = new QPushButton(__tr2qs_ctx("Edit Rule","options"),tab);
 	connect(m_pEditRuleButton,SIGNAL(clicked()),this,SLOT(editNickServRule()));
@@ -615,7 +613,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 
-
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 
@@ -702,11 +699,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 		"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
 		"Advanced: you can also use this option to force a certain server name to resolve " \
-		"to a fixed ip address when either the dns for that server is temporairly " \
+		"to a fixed IP address when either the DNS for that server is temporarily " \
 		"unreachable or you want to avoid the round-robin lookups.</center>","options"));
 	m_pCacheIpCheck->setChecked(s->cacheIp());
-
-
 
 
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
@@ -715,7 +710,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pCheckBoxLayout->addWidget(m_pUseAutoConnect,0,1);
 
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
-
 
 
 	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
@@ -732,8 +726,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
 
-
-
 	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	pCheckBoxLayout->addWidget(m_pUseSSLCheck,1,1);
 
@@ -746,7 +738,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 
 	iRow++;
-
 
 	//server encoding
 
@@ -805,8 +796,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,iRow,1);
 	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
-		"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
-		"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
+		"If this field is set in \"Default\" KVIrc will use global proxy settings, if it is set in \"Direct connection\" " \
+		"KVIrc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
 	m_pProxyEditor->addItem(__tr2qs_ctx("Direct Connection","options"));
@@ -820,8 +811,6 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
 
 	iRow++;
-
-
 
 
 	l = new QLabel("",tab);
@@ -839,7 +828,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	if(s->autoJoinChannelList())
 		m_lstChannels = *(s->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
-		__tr2qs_ctx("Channels to Join Automatically Upon Connect","options"),&m_lstChannels,true);
+		__tr2qs_ctx("Channels to Join Automatically upon Connect","options"),&m_lstChannels,true);
 	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to this server has been established. To add a channel, type its name in the " \
 		"text input below and click \"<b>Add</b>\".</center>","options"));
@@ -881,10 +870,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
-
-
 	// Advanced tab
-
 
 	tab = new QWidget(tw);
 	gl = new QGridLayout(tab);
@@ -987,14 +973,14 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	iRow++;
 
-	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
+	l = new QLabel(__tr2qs_ctx("ID:","options"),tab);
 	gl->addWidget(l,iRow,0);
 	m_pIdEditor = new QLineEdit(tab);
 	if(s->id().isEmpty())s->generateUniqueId();
 	m_pIdEditor->setText(s->id());
 	gl->addWidget(m_pIdEditor,iRow,1);
 
-	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
+	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique ID for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
 		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
 
@@ -1322,37 +1308,43 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
-	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
+	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New network","options"));
+
+	QFrame * f = new QFrame(vbox);
+	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
 	m_pNewServerButton = new QToolButton(vbox);
 	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
-	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
+	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New server","options"));
+
+	m_pFavoriteServerButton = new QToolButton(vbox);
+	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
+	m_pFavoriteServerButton->setAutoRaise(true);
+	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
+	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite/Unfavorite server","options"));
 
 	m_pRemoveButton = new QToolButton(vbox);
 	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
-	KviTalToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove Network/Server","options"));
-
-	QFrame * f = new QFrame(vbox);
-	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
+	KviTalToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove network/server","options"));
 
 	m_pCopyServerButton = new QToolButton(vbox);
 	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Copy))));
 	m_pCopyServerButton->setEnabled(false);
 	m_pCopyServerButton->setAutoRaise(true);
 	connect(m_pCopyServerButton,SIGNAL(clicked()),this,SLOT(copyServer()));
-	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
+	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy server","options"));
 
 	m_pPasteServerButton = new QToolButton(vbox);
 	m_pPasteServerButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)));
 	m_pPasteServerButton->setEnabled(false);
 	m_pPasteServerButton->setAutoRaise(true);
 	connect(m_pPasteServerButton,SIGNAL(clicked()),this,SLOT(pasteServer()));
-	KviTalToolTip::add(m_pPasteServerButton,__tr2qs_ctx("Paste Server","options"));
+	KviTalToolTip::add(m_pPasteServerButton,__tr2qs_ctx("Paste server","options"));
 
 	f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
@@ -1363,16 +1355,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pImportButton->setMenu(m_pImportPopup);
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
 
-	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
-
-	f = new QFrame(vbox);
-	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-
-	m_pFavoriteServerButton = new QToolButton(vbox);
-	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
-	m_pFavoriteServerButton->setAutoRaise(true);
-	connect(m_pFavoriteServerButton,SIGNAL(clicked()),this,SLOT(favoriteServer()));
-	KviTalToolTip::add(m_pFavoriteServerButton,__tr2qs_ctx("Favorite Server","options"));
+	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import server list","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
@@ -1393,7 +1376,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pRecentPopup,SIGNAL(triggered(QAction *)),this,SLOT(recentServersPopupClicked(QAction *)));
 
 	QToolButton * tb = new QToolButton(gbox);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::History))));
 	tb->setMenu(m_pRecentPopup);
 	tb->setAutoRaise(true);
 	tb->setPopupMode(QToolButton::InstantPopup);
@@ -1413,7 +1396,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		QPalette pal(QColor(0,0,0));
 
 		/* QPalette::active defines the colors of the button/text when the KVIrc window has focus
-		   Keep button/text color in a specturm that indicates a connect action is possible */
+		   Keep button/text color in a spectrum that indicates a connect action is possible */
 		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,135,0));
 		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
 
@@ -1423,7 +1406,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		pal.setColor(QPalette::Inactive,QPalette::ButtonText,QColor(225,225,225));
 
 		/* QPalette::Disabled defines the colors of the button/text when for instance network is selected
-		   Keep button/text color in a specturm that indicates no possible action is possible */
+		   Keep button/text color in a spectrum that indicates no possible action is possible */
 		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(100,100,100));
 		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(180,180,180));
 
@@ -1849,26 +1832,24 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	bool bFavorite = (bServer && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData->favorite());
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
 	    ->setEnabled(!bServer);
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
+		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
+	m_pContextPopup->setEnabled(bServer);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
 	    ->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
 	m_pContextPopup->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
 	    ->setEnabled(m_pClipboard);
-
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(__tr2qs_ctx("Clear List","options"),this,SLOT(clearList()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),__tr2qs_ctx("Import Server List","options"))->setMenu(m_pImportPopup);
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(__tr2qs_ctx("Import List","options"))->setMenu(m_pImportPopup);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Clear Server List","options"),this,SLOT(clearList()));
 	m_pContextPopup->popup(QCursor::pos());
-	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
-		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
-	m_pContextPopup->setEnabled(bServer);
 }
 
 void OptionsWidget_servers::importPopupAboutToShow()
@@ -1901,10 +1882,10 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 
 	if(!l)
 	{
-		// ops.. internal error: I thought to have a module capable of importing servers
+		// Oops! Internal error: I thought to have a module capable of importing servers
 		// but actually it's not the case.. something weird happened (in the best case
-		// the user has just unloaded the module and removed it from disk ?)
-		KviMessageBox::warning(__tr2qs_ctx("Oops... something weird happened:<br>Can't find any module capable of importing servers.","options"));
+		// the user has just unloaded the module and removed it from disk?)
+		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find any module capable of importing servers.","options"));
 		return;
 	}
 
@@ -1924,7 +1905,7 @@ void OptionsWidget_servers::importPopupActivated(QAction *pAction)
 
 	if(!m_pImportFilter)
 	{
-		KviMessageBox::warning(__tr2qs_ctx("Oops... something weird happened:<br>Can't find the module that was capable of this import action. :(","options"));
+		KviMessageBox::warning(__tr2qs_ctx("Oops! Something weird happened:<br>Can't find the module that was capable of this import action. :(","options"));
 		return;
 	}
 
@@ -2089,7 +2070,7 @@ void OptionsWidget_servers::pasteServer()
 			IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,
 							*(g_pIconManager->getSmallIcon(KviIconManager::Server)),m_pClipboard);
 
-			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessairly unique...
+			it->m_pServerData->generateUniqueId(); // FIXME: This isn't necessarily unique...
 
 			net->setExpanded(true);
 
@@ -2141,6 +2122,16 @@ IrcServerOptionsTreeWidgetItem * OptionsWidget_servers::findNetItem(const QStrin
 
 void OptionsWidget_servers::clearList()
 {
+	QString txt = "<p>";
+	txt += __tr2qs_ctx("If you click <b>Yes</b>, all of your saved networks, servers, settings, and passwords will be lost.<br>"
+		"Would you like to continue?","options");
+	txt += "</p>";
+
+	if(QMessageBox::question(this,
+		__tr2qs_ctx("Confirm Clear Server List - KVIrc","options"),txt,
+		__tr2qs_ctx("Yes","options"), __tr2qs_ctx("No","options"),0,1
+		) != 0) return;
+
 	m_pTreeWidget->clear();
 	m_pLastEditedItem = 0;
 	currentItemChanged(0,0);

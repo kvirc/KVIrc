@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -47,7 +47,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	KviSpotifyInterface,
 	"spotify",
 	__tr2qs_ctx(
-		"An interface to the Spotify music streaming service.\n" \
+		"An interface for the Spotify music streaming service.\n" \
 		"It is only available for certain countries in Europe.\n" \
 		"You can download it from http://www.spotify.com.\n"
 		,

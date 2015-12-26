@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -209,11 +209,11 @@ namespace KviKvsCoreFunctions
 		@title:
 			$msgtype
 		@short:
-			Returns the id of a message type color set
+			Returns the ID of a message type color set
 		@syntax:
 			$msgtype(<message type color set name>)
 		@description:
-			Returns the id of a message type color set used by the [cmd]echo[/cmd] command.
+			Returns the ID of a message type color set used by the [cmd]echo[/cmd] command.
 			You can take a look at the options dialog section related to the
 			message output to see the list of available message type names.
 		@examples:
@@ -649,7 +649,7 @@ namespace KviKvsCoreFunctions
 			Detailed explaination:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
-			and queries.[br] The other IRC users are NOT in the database:
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]

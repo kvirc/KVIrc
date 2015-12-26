@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -578,7 +578,7 @@ void DccMarshal::doSSLHandshake(int)
 
 	if(!m_pSSL)
 	{
-		qDebug("Ops... I've lost the SSL class ?");
+		qDebug("Oops! I've lost the SSL class?");
 		reset();
 		emit error(KviError::InternalError);
 		return; // ops ?
@@ -636,7 +636,7 @@ void DccMarshal::doSSLHandshake(int)
 		break;
 	}
 #else  //!COMPILE_SSL_SUPPORT
-	qDebug("Ops.. ssl handshake without ssl support!...aborting!");
+	qDebug("Oops! SSL handshake without SSL support! Aborting!");
 	exit(-1);
 #endif //!COMPILE_SSL_SUPPORT
 }

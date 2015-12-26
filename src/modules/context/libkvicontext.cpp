@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -146,7 +146,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		The returned network name is the one that has been specified
 		in the server database and may not correspond to the real network
 		name. However, this is the network name you want to use if
-		you want to manipulate the serverdb entries related to the current
+		you want to manipulate the serverDB entries related to the current
 		connection.
 	@seealso:
 		[fnc]$context.serverHostName[/fnc]
@@ -171,7 +171,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		<string> $context.serverHostName(<irc_context_id:uint>)
 	@description:
 		Returns the host name of the IRC server that was used to perform
-		the connection in the specified irc context.
+		the connection in the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
@@ -180,7 +180,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		by the server itself. Some servers report a bogus value for this field.
 		You should take a look at [fnc]$context.serverIpAddress[/fnc] if you want a value that
 		can be used to really reconnect to this server. If you want a value
-		to manipulate the server entry via the serverdb functions then
+		to manipulate the server entry via the serverDB functions then
 		you probably need [fnc]$context.serverdbServerHostName[/fnc].
 	@seealso:
 		[fnc]$context.serverdbServerHostName[/fnc]
@@ -207,15 +207,15 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		<string> $context.serverdbServerHostName(<irc_context_id:uint>)
 	@description:
 		Returns the host name of the IRC server that was used to perform
-		the connection in the specified irc context.
+		the connection in the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 		The returned server name is the one that has been specified
-		in the server database and may refer to a round-robin dns entry.
+		in the server database and may refer to a round-robin DNS entry.
 		However, this is the server name you want to use if you want to manipulate
-		the serverdb entries related to the current connection.
+		the serverDB entries related to the current connection.
 	@seealso:
 		[fnc]$context.serverHostName[/fnc],
 		[fnc]$context.serverPort[/fnc],
@@ -235,12 +235,12 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@title:
 		$context.serverIpAddress
 	@short:
-		Returns the IRC server ip address of an IRC context
+		Returns the IRC server IP address of an IRC context
 	@syntax:
 		<string> $context.serverIpAddress
 		<string> $context.serverIpAddress(<irc_context_id:uint>)
 	@description:
-		Returns the ip address of the IRC server for the specified irc context.
+		Returns the IP address of the IRC server for the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
@@ -263,12 +263,12 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@title:
 		$context.serverIsIPV6
 	@short:
-		Returns the IPV6 state of an IRC context
+		Returns the IPv6 state of an IRC context
 	@syntax:
 		<string> $context.serverIsIPV6
 		<string> $context.serverIsIPV6(<irc_context_id:uint>)
 	@description:
-		Returns true if the current irc context connection runs over IPV6.
+		Returns true if the current IRC context connection runs over IPv6.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing (that evaluates to false). If the specified IRC context
@@ -297,7 +297,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		<string> $context.serverIsSSL
 		<string> $context.serverIsSSL(<irc_context_id:uint>)
 	@description:
-		Returns true if the current irc context connection runs over SSL.
+		Returns true if the current IRC context connection runs over SSL.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing (that evaluates to false). If the specified IRC context
@@ -321,12 +321,12 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@title:
 		$context.serverSoftware
 	@short:
-		Returns the software running on the irc server, if recognized
+		Returns the software running on the IRC server, if recognized
 	@syntax:
 		<string> $context.serverSoftware
 		<string> $context.serverSoftware(<irc_context_id:uint>)
 	@description:
-		Returns the software running on the irc server, if it has been
+		Returns the software running on the IRC server, if it has been
 		recognized at connection time.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
@@ -356,7 +356,7 @@ STANDARD_SERVERINFO_TARGET_PARAMETER(
 		<string> $context.serverPassword
 		<string> $context.serverPassword(<irc_context_id:uint>)
 	@description:
-		Returns the password used to login to the IRC server for the specified irc context.
+		Returns the password used to login to the IRC server for the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
@@ -385,7 +385,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		<uint> $context.serverPort
 		<uint> $context.serverPort(<irc_context_id:uint>)
 	@description:
-		Returns the port of the IRC server for the specified irc context.
+		Returns the port of the IRC server for the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
@@ -413,7 +413,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		<string> $context.state
 		<string> $context.state(<irc_context_id:uint>)
 	@description:
-		Returns a string describing the state of the specified irc context.
+		Returns a string describing the state of the specified IRC context.
 		The string will be either "idle","connecting","loggingin" or "connected".
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
@@ -475,7 +475,7 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 		Print the names of the currently connected servers
 		[example]
 			foreach(%ic,$context.list)
-				echo "IRC Context" %ic ": " $context.serverHostName(%ic)
+				echo "IRC context" %ic ": " $context.serverHostName(%ic)
 		[/example]
 */
 
@@ -569,7 +569,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		but otherwise you shouldn't need it. This also makes sense
 		only if the "limit outgoing traffic" option is currently set otherwise
 		the data is immediately sent to the server and the queue is usually empty.
-		Be aware that the -a switch MAY CONFUSE KVIRC quite a bit: do not use it unless
+		Be aware that the -a switch [b]may confuse[/b] KVIrc quite a bit: do not use it unless
 		you REALLY know what you're doing.
 */
 static bool context_kvs_cmd_clearQueue(KviKvsModuleCommandCall * c)
@@ -617,17 +617,17 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 	@title:
 		$context.getSSLCertInfo
 	@short:
-		Returns the requested information about certificates used in an ssl-enabled irc session
+		Returns the requested information about certificates used in an SSL enabled IRC session
 	@syntax:
 		$context.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<context_id:integer>[,<param1:string>]]])
 	@description:
-		Returns the requested information about certificates used in an ssl-enabled irc session.[br]
+		Returns the requested information about certificates used in an SSL enabled IRC session.[br]
 		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
 		to query the information from; if omitted, it defaults to "remote".[br]
-		If <context_id> is omitted then the IRC Context associated with the current window is assumed.[br]
-		If <context_id> is not a valid IRC Context identifier (or it is omitted and the current window
-		has no associated IRC Context) then this function prints a warning and returns an empty string.[br]
-		If the IRC Context is not using ssl then this function returns an empty string.[br]
+		If <context_id> is omitted then the IRC context associated with the current window is assumed.[br]
+		If <context_id> is not a valid IRC context identifier (or it is omitted and the current window
+		has no associated IRC context) then this function prints a warning and returns an empty string.[br]
+		If the IRC context is not using SSL then this function returns an empty string.[br]
 		Some queries can accept an optional parameter <param1>.[br]
 		Available query strings are:[br]
 		[ul]
@@ -655,15 +655,15 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 		[li]fingerprintDigestStr[/li]
 		[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
 		[/ul]
-		@examples:
-			[example]
-				# get a sha256 fingerprint of remote peer's certificate
-				$context.getSSLCertInfo(fingerprintContents,remote,$context,sha256)
-			[/example]
-		@seealso:
-			[fnc]$certificate[/fnc]
-			[fnc]$str.evpSign[/fnc]
-			[fnc]$str.evpVerify[/fnc]
+	@examples:
+		[example]
+			[comment]# get a sha256 fingerprint of remote peer's certificate[/comment]
+			$context.getSSLCertInfo(fingerprintContents,remote,$context,sha256)
+		[/example]
+	@seealso:
+		[fnc]$certificate[/fnc]
+		[fnc]$str.evpSign[/fnc]
+		[fnc]$str.evpVerify[/fnc]
 */
 
 static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
@@ -738,7 +738,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 	if(!pSocket->usingSSL())
 	{
-		c->warning(__tr2qs("Unable to get SSL information: the IRC Connection is not using SSL"));
+		c->warning(__tr2qs("Unable to get SSL information: the IRC connection is not using SSL"));
 		c->returnValue()->setString("");
 		return true;
 	}
@@ -746,7 +746,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	KviSSL * pSSL = pSocket->getSSL();
 	if(!pSSL)
 	{
-		c->warning(__tr2qs("Unable to get SSL information: SSL non initialized yet in IRC Connection"));
+		c->warning(__tr2qs("Unable to get SSL information: SSL non initialized yet in IRC connection"));
 		c->returnValue()->setString("");
 		return true;
 	}
@@ -755,7 +755,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 	if(!pCert)
 	{
-		c->warning(__tr2qs("Unable to get SSL information: No peer certificate available"));
+		c->warning(__tr2qs("Unable to get SSL information: no peer certificate available"));
 		c->returnValue()->setString("");
 		return true;
 	}
@@ -803,7 +803,7 @@ KVIRC_MODULE(
 	"context",
 	"4.0.0",
 	"Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)",
-	"Irc Context Related Functions",
+	"IRC Context Related Functions",
 	context_module_init,
 	0,
 	0,

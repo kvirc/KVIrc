@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -53,7 +53,7 @@ class QMenu;
 
 typedef struct _KviDccSendThreadOptions
 {
-	KviCString       szFileName;
+	KviCString   szFileName;
 	quint64      uStartPosition;
 	int          iPacketSize;
 	int          iIdleStepLengthInMSec;
@@ -101,10 +101,11 @@ protected:
 typedef struct _KviDccRecvThreadOptions
 {
 	bool         bResume;
-	KviCString       szFileName;
+	KviCString   szFileName;
 	quint64      uTotalFileSize;
 	int          iIdleStepLengthInMSec;
 	bool         bSendZeroAck;
+	bool         bSend64BitAck;
 	bool         bNoAcks;
 	bool         bIsTdcc;
 	unsigned int uMaxBandwidth;
@@ -127,7 +128,7 @@ protected:
 	// internal
 	unsigned long         m_uStartTime;
 	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth
-	quint64              m_uInstantReceivedBytes;
+	quint64               m_uInstantReceivedBytes;
 	quint64               m_uInstantSpeedInterval;
 	QFile               * m_pFile;
 public:
@@ -143,7 +144,7 @@ public:
 protected:
 	void postMessageEvent(const char * msg);
 	void updateStats();
-	bool sendAck(int filePos,bool bTolerateErrors = false);
+	bool sendAck(qint64 filePos, bool bUse64BitAck = false);
 	virtual void run();
 };
 
@@ -174,13 +175,13 @@ public:
 	DccFileTransfer(DccDescriptor * dcc);
 	~DccFileTransfer();
 private:
-	DccSendThread       * m_pSlaveSendThread;
-	DccRecvThread       * m_pSlaveRecvThread;
-	DccDescriptor       * m_pDescriptor;
-	DccMarshal          * m_pMarshal;
+	DccSendThread          * m_pSlaveSendThread;
+	DccRecvThread          * m_pSlaveRecvThread;
+	DccDescriptor          * m_pDescriptor;
+	DccMarshal             * m_pMarshal;
 
-	KviCString                   m_szTarget;
-	KviCString                   m_szDccType;
+	KviCString               m_szTarget;
+	KviCString               m_szDccType;
 	QString                  m_szTransferIdString;
 
 	QString                  m_szStatusString;

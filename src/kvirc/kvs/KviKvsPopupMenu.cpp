@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -327,8 +327,13 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	//QPalette p;
 	//m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 
+#ifdef COMPILE_ON_MAC
+	m_pLabel->setIndent(16);
+	m_pLabel->setMargin(2);
+#else
 	m_pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pLabel->setMargin(5);
+#endif
 
 	if(pPix)m_pLabel->setPixmap(*pPix);
 	QWidgetAction *pAction = new QWidgetAction(pMenu);

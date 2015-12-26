@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -357,16 +357,16 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Opens an URL
 		@description:
-			Opens the specified <url> with an appropriate handler.<br>
-			The handlers for the supported URL types are specified in the options dialog.<br>
-			Each handler is a kvirc commandline that the URL will be passed to as the first parameter ($0).<br>
-			The supported URL types are:<br>
-			HTTP: http://&lt;url&gt; or sth that begins with "www." <br>
-			HTTPS: https://&lt;url&gt;<br>
-			FILE: file://&lt;url&gt;<br>
-			IRC: irc[s][6]://<server>[:<port>][/<channel>[?<pass>]] (Handled internally)<br>
-			FTP: ftp://<url> or sth that begins with "ftp."<br>
-			MAIL: mailto:<mailaddress><br>
+			Opens the specified <url> with an appropriate handler.[br]
+			The handlers for the supported URL types are specified in the options dialog.[br]
+			Each handler is a KVIrc commandline that the URL will be passed to as the first parameter ($0).[br]
+			The supported URL types are:[br]
+			[b]HTTP[/b]: http://&lt;url&gt; or sth that begins with "www." [br]
+			[b]HTTPS[/b]: https://&lt;url&gt;[br]
+			[b]FILE[/b]: file://&lt;url&gt;[br]
+			[b]IRC[/b]: irc[s][6]://<server>[:<port>][/<channel>[?<pass>]] (Handled internally)[br]
+			[b]FTP[/b]: ftp://<url> or sth that begins with "ftp."[br]
+			[b]MAIL[/b]: mailto:<mailaddress>[br]
 		@examples:
 			[example]
 				openurl http://www.kvirc.net
@@ -422,7 +422,7 @@ namespace KviKvsCoreSimpleCommands
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-			int iRet = (int)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),NULL, NULL, SW_SHOWNORMAL);
+			intptr_t iRet = (intptr_t)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),NULL, NULL, SW_SHOWNORMAL);
 			if(iRet <= 32)
 			{
 				// FIXME: Write a better error message
@@ -621,7 +621,7 @@ namespace KviKvsCoreSimpleCommands
 			If it is a relative path then KVIrc will try to look it up
 			in the path of the calling script (if any) and in the current
 			KVIrc working directory.
-			The file must be utf8-encoded (see below).
+			The file must be UTF-8-encoded (see below).
 			[parameters] is a space separated string of parameters to be
 			passed to the script. The parameter $0 will contain the
 			path of the file being parsed, the other parameters will
@@ -636,14 +636,14 @@ namespace KviKvsCoreSimpleCommands
 			This command has a builtin alias called [cmd]include[/cmd].
 			[br][br]
 			Note that script files, especially the ones that you distribute,
-			MUST be encoded in utf8. Any other encoding (especially the exotic
+			MUST be encoded in UTF-8. Any other encoding (especially the exotic
 			ones like KOI8R or Shift-JIS) may screw things up.
 			The reason for such a constraint is simple: KVIrc has no means
 			of knowing the encoding that one or other scripter uses to
 			edit his files. Unlike other languages (like HTML, for example)
 			there is no "external" metadata that will allow for
 			encoding detection before the data is actually decoded.
-			UTF8 is the right way (tm). Use it.
+			UTF-8 is the right way (tm). Use it.
 		@examples:
 			[example]
 				parse /home/pragma/myscript.kvs
@@ -1211,7 +1211,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			raw [-q] <raw command:string>
 		@short:
-			Sends raw data to the server
+			Sends RAW data to the server
 		@switches:
 			!sw: -q | --quiet
 			Be quiet: do echo the RAW data.
@@ -1273,7 +1273,7 @@ namespace KviKvsCoreSimpleCommands
 			[b]Handle with care.[/b]
 		@examples:
 			[comment]# Try this example in a channel or query window[/comment][br]
-			[comment]# Remember the current window id[/comment][br]
+			[comment]# Remember the current window ID[/comment][br]
 			%winid = $window[br]
 			[comment]# Rebind to the console of the current IRC context[/comment][br]
 			rebind $console[br]
@@ -1295,7 +1295,7 @@ namespace KviKvsCoreSimpleCommands
 		if(pAux)KVSCSC_pContext->setWindow(pAux);
 		else {
 			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pContext->warning(__tr2qs_ctx("Window with id %Q not found: no rebinding performed","kvs"),&szWinId);
+				KVSCSC_pContext->warning(__tr2qs_ctx("Window with ID %Q not found: no rebinding performed","kvs"),&szWinId);
 		}
 		return true;
 	}

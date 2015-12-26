@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -66,8 +66,8 @@ namespace KviKvsCoreFunctions
 		Detailed explaination:[br]
 		KVIrc has an internal database of users that are currently
 		visible by *this client*: this includes users on open channels
-		and queries.[br] The other IRC users are NOT in the database:
-		this means that KVIrc knows NOTHING about them and can't return
+		and queries.[br] The other IRC users are [b]not[/b] in the database:
+		this means that KVIrc knows [b]nothing[/b] about them and can't return
 		any information immediately. In this case this function will return
 		an EMPTY string.[br]
 		If a user is in the database, at least his nickname is known.[br]
@@ -248,7 +248,7 @@ KVSCF(gender)
 			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
-			and queries.[br] The other IRC users are NOT in the database:
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]
@@ -559,7 +559,7 @@ KVSCF(gender)
 			Detailed explaination:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
-			and queries.[br] The other IRC users are NOT in the database:
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]
@@ -890,7 +890,7 @@ KVSCF(gender)
 			<string> $k(<foreground:integer>[,<background:integer>])
 			<string> $k
 		@description:
-			Returns the COLOR mIRC control character (Qt::CTRL+K).[br]
+			Returns the COLOR mIRC control character (CTRL+K).[br]
 			If <foreground> and <background> are passed, a standard mIRC
 			color escape is returned.[br]
 		@seealso:

@@ -7,9 +7,9 @@
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
-//   modify it under the linkss of the GNU General Public License
+//   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -261,7 +261,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 		__tr2qs_ctx("<center><b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>","editor"));
 	g->addWidget(m_pExtNameEditor,5,1,1,2);
 
-	l = new QLabel(__tr2qs_ctx("Item Id:","editor"),this);
+	l = new QLabel(__tr2qs_ctx("Item ID:","editor"),this);
 	l->setMargin(2);
 	g->addWidget(l,6,0);
 
@@ -1042,9 +1042,9 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pTreeWidget->header()->setSortIndicatorShown(true);
 
-	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All To...","editor"),box);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All to...","editor"),box);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAll()));
-	QPushButton * gn = new QPushButton(__tr2qs_ctx("&Export selected To...","editor"),box);
+	QPushButton * gn = new QPushButton(__tr2qs_ctx("&Export Selected to...","editor"),box);
 	connect(gn,SIGNAL(clicked()),this,SLOT(exportSelected()));
 
 	m_pEditor = new SinglePopupEditor(spl);

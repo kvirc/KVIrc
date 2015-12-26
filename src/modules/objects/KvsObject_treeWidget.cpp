@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -55,18 +55,17 @@
 		The items are added by creating children [class]listviewitem[/class] objects: simply allocating them with $new
 		will add the items to the listview and simply deleting them will remove them.
 		Allocating a [class]listviewtitem[/class] item2 as a child of item1 will insert it to the same listview creating
-		a subtree of items spannig from item1. The subtree can be opened or closed by a simple click either
+		a subtree of items spanning from item1. The subtree can be opened or closed by a simple click either
 		on the parent item or on the little plus sign on the side of it (when [classfnc:listview]$setRootIsDecorated[/classfnc]
 		is set to $true. The listview can be in Single, Multi, Extended or NoSelection selection mode.
 		In single selection mode there can be only one selected item at a time and the selected item is also
 		the current item (this mode is the default). In Multi and Extended selection mode there can be multiple selected items
-		and the current item is one of them. The difference between Multi and Extended is in the way
+		and the current item is one of them. The difference between multi and extended is in the way
 		that items can be selected by the mouse actions: experiment with the two modes :).
 		The NoSelection mode has obviously no selection at all.
 	@functions:
 		!fn: $addColumn(<text_label:string>,[<width:integer>])
 		Adds a width pixels wide column with the column header label to the list view.
-
 		!fn: $setSorting(<column:integer>,<sort_order:string>)
 		Sets the list view to be sorted by column in ascending order if sort_order is "ascending" or descending order if it is "descending".
 		!fn: $setSortingEnabled(<bEnabled:boolean>)
@@ -74,86 +73,64 @@
 		In order to avoid performance issues, it is recommended that sorting is enabled after inserting the items into the tree.
 		!fn: $hideListViewHeader()
 		Hide the listview column header.
-
 		!fn: $showListViewHeader()
 		Show the listview column header.
-
 		!fn: <boolean> $isListViewHeaderVisible()
 		Returns '1' if the listview header is currently visible. Otherwise this function returns '0'.
-
 		!fn: $setAllColumnsShowFocus(<bAllColumnsShowFocus:boolean>)
 		When the argument is $true, causes the listview to display the focus and selection
 		by highlighting all the columns of the item. When the argument is $false then
 		only the first column is selected/highlighted.
-
 		!fn: $setSelectionMode(<mode:string>)
 		Sets the selection mode for this listview. <mode> can be one of "Single","NoSelection","Multi" or "Extended".
-
 		!fn: <listviewitem> $selectedItems()
 		Returns the currently selected [class]listviewitem[/class] or $null if no items are selected.
 		This function works only if the list view is in single selection mode.
-
 		!fn: <listviewitem:hobject> $itemAt(<x_global_pos:integer>,<y_global_pos:integer>)
 		Returns the listviewitem object at the x,y globals coordinates or $null if no item at.
-
 		!fn: <listviewitem> $currentItem()
 		Returns the current [class]listviewitem[/class] or $null if no item is current at the moment.
-
 		!fn: <listviewitem> $firstChild()
 		Returns the first child [class]listviewitem[/class] of this listview or $null if there are no items at all.
-
 		!fn: <listviewitem> $topLevelItem(<index:int>)
 		Returns the <index> child [class]listviewitem[/class] of this listview or $null if it does not exist.
-
 		!fn: <int> $topLevelItemCount()
 		Returns the number of top level items of this listview.
-
 		!fn: setAcceptDrops(<benabled:boolean>)
 		If <bEnabled> is true, user can drop files for this listview. The default value is true.
-
 		!fn: $clickEvent(<item:object>)
 		This function is called when the user clicks in the list view.
 		In its argument the [class]listviewitem[/class] object clicked or 0 if the user didn't click on an item.[br]
 		The default implementation emits the [classfnc]$clicked[/classfnc]() signal.
-
 		!fn: $selectionChangedEvent(<item:object>)
 		This event handle whenever the set of selected items has changed.
 		The argument is the newly selected item if the listview is in single selection mode.[br]
-		When the listview is in Multi or Extended selection mode then item is always $null.[br]
+		When the listview is in multi or extended selection mode then item is always $null.[br]
 		The default implementation emits the [classfnc]$selectionChanged[/classfnc]() signal.
-
 		!fn: $currentChangedEvent(<item:object>)
 		This event are called whenever the current item has changed.
 		In its argument is the newly selected item or 0 if the change made no item current.[br]
 		The default implementation emits the [classfnc]$currentChanged[/classfnc]() signal.
-
 		!fn: $itemActivatedEvent(<item:object>)
 		This s signal is emitted when the user activates an item by single- or double-clicking or pressing 'Enter'.[br]
-		In its argument the currrent item.[br]
+		In its argument the current item.[br]
 		The default implementation emits the [classfnc]$itemActivated[/classfnc]() signal.
-
 		!fn: $spacePressedEvent(<item:object>)
 		This function is called by the framework when the space key is pressed.[br]
-		In its arument the currrent item.[br]
+		In its an argument in the current item.[br]
 		The default implementation emits the [classfnc]$spacePressed[/classfnc]() signal.
-
 		!fn: $onItemEvent(<item:object>)
-		This event is called by framwork when the user moves the mouse cursor onto item.
+		This event is called by framework when the user moves the mouse cursor onto item.
 		The default implementation emits the [classfnc]$onItem[/classfnc]() signal.
-
 		!fn: $itemExpandedEvent(<item:object>)
-		This event is called when an item has been expanded, i.e. when the children of item are shown.
+		This event is called when an item has been expanded, i.e. when the child of an item is shown.
 		The default implementation emits the [classfnc]$expanded[/classfnc]() signal.
-
 		!fn: $itemCollapsedEvent(<item:object>)
-		This event is called when an item has been collapsed, i.e. when the children of item are hidden.
+		This event is called when an item has been collapsed, i.e. when the child of an item is hidden.
 		The default implementation emits the [classfnc]$collapsed[/classfnc]() signal.
-
 		!fn: $itemChangedEvent(<item:object>,<col:integer>,<text:string>)
 		This event is called when the item has been renamed in text, e.g. by in in-place renaming, in column col.[br]
 		The default implementation emits the [classfnc]$itemChanged[/classfnc]() signal.
-
-
 	@signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
@@ -175,8 +152,6 @@
 		This signal is emitted by the default implementation of [classfnc]$itemChangedEvent[/classfnc]().
 		!sg: $rightButtonClicked()
 		This signal is emitted by the default implementation of [classfnc]$rightButtonClickedEvent[/classfnc]().
-
-
 */
 
 

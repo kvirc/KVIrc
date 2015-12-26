@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -669,7 +669,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 {
 	if(!m_pSlaveThread)
 	{
-		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Can't send data: no active connection","dcc"));
 		return;
 	}
 
@@ -715,7 +715,7 @@ void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
 					{
 						QString szErr = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs_ctx("The crypto engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
+							__tr2qs_ctx("The encryption engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
 							&text,&szErr);
 					}
 					break;
@@ -772,7 +772,7 @@ void DccVideoWindow::ownAction(const QString &text)
 		m_tmpTextDataOut.append(buf.ptr(), buf.len());
 		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
 	} else {
-		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Can't send data: no active connection","dcc"));
 	}
 }
 
@@ -847,7 +847,7 @@ bool DccVideoWindow::event(QEvent *e)
 								{
 									QString szErr = cinf->m_pEngine->lastError();
 									output(KVI_OUT_SYSTEMERROR,
-										__tr2qs_ctx("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q","dcc"),
+										__tr2qs_ctx("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q","dcc"),
 										&szErr);
 								}
 								break;

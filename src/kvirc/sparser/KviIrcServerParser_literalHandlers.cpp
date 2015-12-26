@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -682,7 +682,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 					{ \
 						QString szEngineError = cinf->m_pEngine->lastError(); \
 						_target->output(KVI_OUT_SYSTEMERROR, \
-							__tr2qs("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q"), \
+							__tr2qs("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q"), \
 							&szEngineError); \
 						_retptr = _txt + 1; _retmsgtype=_type; \
 					} \
@@ -841,7 +841,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						{
 							QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 							console->output(KVI_OUT_SPAM,msg->serverTime(),
-								__tr2qs("Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"),
+								__tr2qs("Spam PRIVMSG from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"),
 								&szNick,&szUser,&szHost,&szMsg,spamWord.ptr());
 						}
 						return;
@@ -1426,6 +1426,21 @@ output_to_query_window:
 			//SERVER NOTICE DIRECTED TO A CHANNEL (EG. &servers, &kills on ircd)
 			// FIXME: "Dedicated window for server notices ?"
 
+			KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
+			QString version = pServerInfo->software();
+
+			// OFTC replaced RPL_HOSTHIDDEN with a server notice
+			if(version == "Hybrid+Oftc")
+			{
+				QStringList parts = szMsgText.split(" ", QString::SkipEmptyParts);
+				if(parts.count() == 3)
+				{
+					if(parts[0] == "Activating" && parts[1] == "Cloak:")
+						if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeHostChange,msg->console(),szNick,parts[2]))
+							msg->setHaltOutput();
+				}
+			}
+
 			if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnServerNotice,console,szNick,szMsgText))
 				msg->setHaltOutput();
 
@@ -1803,7 +1818,11 @@ void KviIrcServerParser::parseLiteralMode(KviIrcMessage *msg)
 	{
 		parseUserMode(msg,modefl.ptr());
 		if(!msg->haltOutput())
-			msg->console()->output(KVI_OUT_MODE,__tr2qs("You have set user mode %s"),modefl.ptr());
+		{
+			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+				msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_MODE,__tr2qs("You have set user mode %s"),modefl.ptr());
+		}
 	} else {
 		// a channel mode
 		KviChannelWindow * chan = msg->connection()->findChannel(szTarget);

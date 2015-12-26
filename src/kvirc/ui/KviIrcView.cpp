@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -1341,7 +1341,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 				curFore=KVI_OPTION_MSGTYPE(KVI_OUT_SEARCH).fore();
 			}
 
-			if(m_bMouseIsDown)
+			if(m_bMouseIsDown && !(KVI_OPTION_BOOL(KviOption_boolRequireControlToCopy) && !m_bCtrlPressed))
 			{
 				//Check if the block or a part of it is selected
 				if(checkSelectionBlock(pCurTextLine,i))
@@ -2084,7 +2084,7 @@ void KviIrcView::showToolsPopup()
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Toggle Search"),this,SLOT(toggleToolWidget()));
 
 		m_pToolsPopup->addSeparator();
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));  // We let fly "in" as a capitalized preposition.
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
 		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
 		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));

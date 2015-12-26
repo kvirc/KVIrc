@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -158,7 +158,7 @@ RootService::~RootService()
 // Recursively add all devices and embedded devices to the deviceServices_ map
 void RootService::addDeviceServices(const QDomNode &device)
 {
-	qDebug() << "UPnP Discovered device " << XmlFunctions::getNodeValue(device, "/UDN") << endl;
+	qDebug() << "UPnP discovered device " << XmlFunctions::getNodeValue(device, "/UDN") << endl;
 
 	if(XmlFunctions::getNodeValue(device, "/deviceType") == InternetGatewayDeviceType)
 	{
@@ -173,7 +173,7 @@ void RootService::addDeviceServices(const QDomNode &device)
 
 		qDebug() << "Model: " << description << endl;
 
-		g_pApp->activeConsole()->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[UPNP]: Found gateway device: %s","upnp"), description.toUtf8().data());
+		g_pApp->activeConsole()->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[UPNP]: found gateway device: %s","upnp"), description.toUtf8().data());
 
 
 	}

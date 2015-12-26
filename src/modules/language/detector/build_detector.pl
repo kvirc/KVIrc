@@ -1,15 +1,16 @@
 #!/usr/bin/perl -w
 #=============================================================================
 #
+#   File : build_detector.pl
 #   Creation date : Fri 25 Dec 20:16:49 2004 GMT by Szymon Stefanek
 #
-#   This file is part of the KVirc irc client distribution
+#   This file is part of the KVirc IRC client distribution
 #   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
 #
 #   This program is FREE software. You can redistribute it and/or
 #   modify it under the terms of the GNU General Public License
 #   as published by the Free Software Foundation; either version 2
-#   of the License, or (at your opinion) any later version.
+#   of the License, or (at your option) any later version.
 #
 #   This program is distributed in the HOPE that it will be USEFUL,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -72,13 +73,13 @@ binmode(OUTPUT);
 print OUTPUT "//=============================================================================\n";
 print OUTPUT "//\n";
 print OUTPUT "//   A Simple statistical language/encoding detector\n";
-print OUTPUT "//   This file is part of the KVirc irc client distribution\n";
+print OUTPUT "//   This file is part of the KVirc IRC client distribution\n";
 print OUTPUT "//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)\n";
 print OUTPUT "//\n";
 print OUTPUT "//   This program is FREE software. You can redistribute it and/or\n";
 print OUTPUT "//   modify it under the terms of the GNU General Public License\n";
 print OUTPUT "//   as published by the Free Software Foundation; either version 2\n";
-print OUTPUT "//   of the License, or (at your opinion) any later version.\n";
+print OUTPUT "//   of the License, or (at your option) any later version.\n";
 print OUTPUT "//\n";
 print OUTPUT "//   This program is distributed in the HOPE that it will be USEFUL,\n";
 print OUTPUT "//   but WITHOUT ANY WARRANTY; without even the implied warranty of\n";

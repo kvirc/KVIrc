@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -405,7 +405,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 	}
 	if(!m_pAvatar)m_pAvatar = new KviPixmap();
 
-	m_pAvatarSelector = new KviPixmapSelector(p2,__tr2qs_ctx("Avatar","register"),m_pAvatar,true);
+	m_pAvatarSelector = new KviPixmapSelector(p2,__tr2qs_ctx("Avatar:","register"),m_pAvatar,true);
 	g->addWidget(m_pAvatarSelector,3,0,1,3);
 
 	f = new QFrame(p2);
@@ -435,7 +435,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 
 	m_pIgnoreEnabled = new QCheckBox(__tr2qs_ctx("Enable ignore for this user","register"),vb);
 
-	QGroupBox * gb = new QGroupBox(__tr2qs_ctx("Ignore features","register"),vb);
+	QGroupBox * gb = new QGroupBox(__tr2qs_ctx("Ignore Features","register"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
 
 	QVBoxLayout * layout = new QVBoxLayout(gb);
@@ -459,6 +459,9 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 
 	m_pIgnoreDcc = new QCheckBox(__tr2qs_ctx("Ignore DCCs","register"),gb);
 	layout->addWidget(m_pIgnoreDcc);
+
+	m_pIgnoreHighlight = new QCheckBox(__tr2qs_ctx("Ignore highlights","register"),gb);
+	layout->addWidget(m_pIgnoreHighlight);
 
 	QWidget *w = new QWidget(vb);
 	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
@@ -502,9 +505,9 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 			}
 		}
 
-		m_pIgnoreEnabled->setChecked(r->ignoreEnagled());
+		m_pIgnoreEnabled->setChecked(r->ignoreEnabled());
 
-		gb->setEnabled(r->ignoreEnagled());
+		gb->setEnabled(r->ignoreEnabled());
 
 		m_pIgnoreQuery->setChecked(r->ignoreFlags() & KviRegisteredUser::Query);
 		m_pIgnoreChannel->setChecked(r->ignoreFlags() & KviRegisteredUser::Channel);
@@ -512,6 +515,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 		m_pIgnoreCtcp->setChecked(r->ignoreFlags() & KviRegisteredUser::Ctcp);
 		m_pIgnoreInvite->setChecked(r->ignoreFlags() & KviRegisteredUser::Invite);
 		m_pIgnoreDcc->setChecked(r->ignoreFlags() & KviRegisteredUser::Dcc);
+		m_pIgnoreHighlight->setChecked(r->ignoreFlags() & KviRegisteredUser::Highlight);
 	} else {
 		// default values
 		if(!m_pIgnoreEnabled->isChecked())
@@ -611,7 +615,7 @@ void RegisteredUserEntryDialog::okClicked()
 	{
 		// ops... no way
 		// FIXME: spit an error message ?
-		qDebug("Ops.. something wrong with the regusers db");
+		qDebug("Oops! Something wrong with the regusers DB");
 		accept();
 		return;
 	}
@@ -683,6 +687,8 @@ void RegisteredUserEntryDialog::okClicked()
 		iIgnoreFlags |= KviRegisteredUser::Invite;
 	if(m_pIgnoreDcc->isChecked())
 		iIgnoreFlags |= KviRegisteredUser::Dcc;
+	if(m_pIgnoreHighlight->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Highlight;
 
 	u->setIgnoreFlags(iIgnoreFlags);
 	accept();

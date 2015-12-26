@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -441,7 +441,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 						}
 					}
 				} else {
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (unicode %h) in expression. If it meant to be a string use the quotes.","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (Unicode %h) in expression. If it meant to be a string use the quotes.","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 					delete pDataList;
 					return 0;
 				}

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -28,6 +28,7 @@
 #include "KviKvsArray.h"
 
 #include <math.h>
+#include <cinttypes>
 
 int KviKvsVariantComparison::compareIntString(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
 {
@@ -862,7 +863,7 @@ void KviKvsVariant::asString(QString & szBuffer) const
 			szBuffer.setNum(m_pData->m_u.bBoolean ? 1 : 0); break;
 		case KviKvsVariantData::HObject:
 			if(m_pData->m_u.hObject)
-				szBuffer = QString("object[%1]").arg((long int)m_pData->m_u.hObject,0,16);
+				szBuffer = QString("object[%1]").arg((uintptr_t)m_pData->m_u.hObject,0,16);
 			else
 				szBuffer = "null-object";
 		break;
@@ -905,31 +906,31 @@ void KviKvsVariant::dump(const char * pcPrefix) const
 {
 	if(!m_pData)
 	{
-		qDebug("%s Nothing [this=0x%lx]",pcPrefix,(long unsigned int)this);
+		qDebug("%s Nothing [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)this);
 		return;
 	}
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::String:
-			qDebug("%s String(%s) [this=0x%lx]",pcPrefix,m_pData->m_u.pString->toUtf8().data(),(long unsigned int)this);
+			qDebug("%s String(%s) [this=0x%" PRIxPTR "]",pcPrefix,m_pData->m_u.pString->toUtf8().data(),(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Array:
-			qDebug("%s Array(ptr=0x%lx) [this=0x%lx]",pcPrefix,(long unsigned int)m_pData->m_u.pArray,(long unsigned int)this);
+			qDebug("%s Array(ptr=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pArray,(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Hash:
-			qDebug("%s Hash(ptr=0x%lx,dict=0x%lx) [this=0x%lx]",pcPrefix,(long unsigned int)m_pData->m_u.pHash,(long unsigned int)m_pData->m_u.pHash->dict(),(long unsigned int)this);
+			qDebug("%s Hash(ptr=0x%" PRIxPTR ",dict=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pHash,(uintptr_t)m_pData->m_u.pHash->dict(),(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Integer:
-			qDebug("%s Integer(%d) [this=0x%lx]",pcPrefix,(int) m_pData->m_u.iInt,(long unsigned int)this);
+			qDebug("%s Integer(%d) [this=0x%" PRIxPTR "]",pcPrefix,(int) m_pData->m_u.iInt,(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Real:
-			qDebug("%s Real(%f) [this=0x%lx]",pcPrefix,*(m_pData->m_u.pReal),(long unsigned int)this);
+			qDebug("%s Real(%f) [this=0x%" PRIxPTR "]",pcPrefix,*(m_pData->m_u.pReal),(uintptr_t)this);
 		break;
 		case KviKvsVariantData::Boolean:
-			qDebug("%s Boolean(%s) [this=0x%lx]",pcPrefix,m_pData->m_u.bBoolean ? "true" : "false",(long unsigned int)this);
+			qDebug("%s Boolean(%s) [this=0x%" PRIxPTR "]",pcPrefix,m_pData->m_u.bBoolean ? "true" : "false",(uintptr_t)this);
 		break;
 		case KviKvsVariantData::HObject:
-			qDebug("%s HObject(%lx) [this=0x%lx]",pcPrefix,(long unsigned int)m_pData->m_u.hObject,(long unsigned int)this);
+			qDebug("%s HObject(%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.hObject,(uintptr_t)this);
 		break;
 		default: /* make gcc happy */ break;
 	}

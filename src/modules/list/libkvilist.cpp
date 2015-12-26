@@ -3,12 +3,13 @@
 //   File : libkvilist.cpp
 //   Creation date : Sun Oct 21 2001 13:29:12 CEST by Szymon Stefanek
 //
+//   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -40,11 +41,11 @@ KviPointerList<ListWindow> * g_pListWindowList = 0;
 	@title:
 		list.open
 	@short:
-		Opens a List window
+		Opens a list window
 	@syntax:
 		list.open
 	@description:
-		Opens the channel list window attacched to the current irc context.[br]
+		Opens the channel list window attached to the current IRC context.[br]
 		The channel list window is opened automatically when a channel list
 		is requested from the server.
 */

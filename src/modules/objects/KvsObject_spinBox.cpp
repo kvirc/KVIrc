@@ -10,7 +10,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -88,12 +88,12 @@
 		Returns the special-value text.
 		See also [classfnc]$setSpecialValueText[/classfnc]()
 		!fn: $valueChangedEvent(<new value:integer>)
-		This function is called by the framework when the spinbox value is changed and return the new slider value as its argument.[br]
+		This function is called by the framework when the spin box value is changed and return the new slider value as its argument.[br]
 		The default implementation emits the [classfnc]$valueChanged[/classfnc]() signal,
-		so it is easy to handle the values from many spinboxes without reimplementing
+		so it is easy to handle the values from many spin boxes without reimplementing
 		the [classfnc]$valueChangedEvent[/classfnc]() for every one.[br]
-		Note: If you reimplement this function to catch the spinbox value, you will have to emit the signal by yourself (if you still need it, obviously).
-		@signals:
+		Note: If you reimplement this function to catch the spin box value, you will have to emit the signal by yourself (if you still need it, obviously).
+	@signals:
 		!sg: $valueChanged()
 		This signal is emitted by the default implementation of [classfnc]valueChangedEvent[/classfnc]().[br]
 		If you reimplement that function you will have to emit the signal manually (if you still need it).

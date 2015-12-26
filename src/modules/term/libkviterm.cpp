@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -55,7 +55,7 @@ KviModule * g_pTermModule = 0;
 		creates terminal as a docked window
 	@description:
 		Opens a new terminal window (If the service is available).
-		if the -m switch is present, the created terminal as a dockable kvirc window,
+		if the -m switch is present, the created terminal as a dockable KVIrc window,
 		otherwise it is a static window.[br]
 		This command is exported by the "term" module.[br]
 		Note: At the time that this module was written, the

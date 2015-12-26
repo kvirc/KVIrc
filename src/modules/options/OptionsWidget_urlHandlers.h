@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,7 +29,7 @@
 class QRadioButton;
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers KviIconManager::Url
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL handlers")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL Handlers")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_urlHandlers OptionsWidget_general
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers 70000
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL,programs")

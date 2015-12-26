@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -847,7 +847,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Schedules for destruction the object designed by <objectHandle>.
 			This command is internally aliased to [cmd]destroy[/cmd].
-			Please note that the object is NOT immediately destroyed:
+			Please note that the object is [b]not[/b] immediately destroyed:
 			it will be destroyed when KVIrc returns to the main event loop,
 			so after the current script code part has been executed.
 			This behaviour makes the object destruction safe in any

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -657,7 +657,8 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 {
 	bool bCursorOverMarker = checkMarkerArea(e->pos());
 
-	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+		&& !(KVI_OPTION_BOOL(KviOption_boolRequireControlToCopy) && !m_bCtrlPressed))
 	{
 		if(m_iSelectTimer == 0)
 			m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
@@ -908,7 +909,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					KviQString::appendFormatted(tip,QString("<b>mode %Q %Q</b>"),&(m_pKviWindow->windowName()),&part);
 				} else {
 					// I'm not op...no way
-					tip = __tr2qs("You're not an operator: You may not change channel modes");
+					tip = __tr2qs("You're not an operator: you may not change channel modes");
 				}
 			}
 		}

@@ -3,8 +3,8 @@
 //=============================================================================
 //
 //   File : KvsObject_lcd.h
-//   Creation date : Mon Gen 27 14:30:48 CEST 2005 by Tonino Imbesi(Grifisx)
-//         and Alessandro Carbone(Noldor)
+//   Creation date : Mon Gen 27 14:30:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2005 Alessandro Carbone (elfonol at gmail dot com)
@@ -12,7 +12,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -42,7 +42,6 @@
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviThread.h"
 #include "KviIrcSocket.h"
 #include "KviMediaManager.h"
@@ -69,6 +68,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QTimer>
+#include <QtEndian>
 
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS 3000
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS 3
@@ -113,22 +113,29 @@ DccRecvThread::~DccRecvThread()
 	delete m_pTimeInterval;
 }
 
-bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
+bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 {
-	quint32 size = htonl(filePos & 0xffffffff);
+	quint32 ack32 = htonl(filePos & 0xffffffff);
+	quint64 ack64 = qToBigEndian(filePos);
+
+	char * ack = (char*) &ack32;
+	int ackSize = 4;
+
+	if(bUse64BitAck)
+	{
+		ackSize = 8;
+		ack = (char*) &ack64;
+	}
+
 	int iRet=0;
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
-	{
-		iRet = m_pSSL->write((char*)(&size),4);
-	} else {
+		iRet = m_pSSL->write(ack,ackSize);
+	else
 #endif //COMPILE_SSL_SUPPORT
-		iRet = kvi_socket_send(m_fd,(void *)(&size),4);
-#ifdef COMPILE_SSL_SUPPORT
-	}
-#endif //COMPILE_SSL_SUPPORT
+		iRet = kvi_socket_send(m_fd,(void *)(ack),ackSize);
 
-	if(iRet == 4)
+	if(iRet == ackSize)
 		return true; // everything sent
 
 	// When downloading from a fast server using send-ahead via an asymmetric link (such as the
@@ -148,9 +155,6 @@ bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 
 	if(iRet < 0)
 	{
-		if(bTolerateErrors)
-			return true; // ignore at all
-
 		// Reported error. If it's EAGAIN or EINTR then no data has been sent.
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
@@ -197,24 +201,17 @@ bool DccRecvThread::sendAck(int filePos,bool bTolerateErrors)
 	// This will probably throttle the bandwidth usage a bit too.
 	msleep(10);
 
-	int iMissingPart = 4 - iRet;
+	int iMissingPart = ackSize - iRet;
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
-	{
-		iRet = m_pSSL->write(((char*)(&size)) + iRet,iMissingPart);
-	} else {
+		iRet = m_pSSL->write(ack + iRet,iMissingPart);
+	else
 #endif //COMPILE_SSL_SUPPORT
-		iRet = kvi_socket_send(m_fd,(void *)(((char *)(&size)) + iRet),iMissingPart);
-#ifdef COMPILE_SSL_SUPPORT
-	}
-#endif //COMPILE_SSL_SUPPORT
+		iRet = kvi_socket_send(m_fd,(void *)(ack + iRet),iMissingPart);
 
 	if(iRet != iMissingPart)
 	{
-		if(bTolerateErrors)
-			return true; // ignore at all
-
 		// Crap.. couldn't send the missing part of the ack :/
 		postErrorEvent(KviError::AcknowledgeError);
 		return false;
@@ -291,6 +288,8 @@ void DccRecvThread::run()
 
 	m_pFile = new QFile(QString::fromUtf8(m_pOpt->szFileName.ptr()));
 
+	bool bSend64BitAck = m_pOpt->bSend64BitAck && (m_pOpt->uTotalFileSize >> 32);
+
 	if(m_pOpt->bResume)
 	{
 		if(!m_pFile->open(QIODevice::WriteOnly | QIODevice::Append))
@@ -308,7 +307,7 @@ void DccRecvThread::run()
 
 	if(m_pOpt->bSendZeroAck && (!m_pOpt->bNoAcks))
 	{
-		if(!sendAck(m_pFile->pos(),false))
+		if(!sendAck(m_pFile->pos(),bSend64BitAck))
 			goto exit_dcc;
 	}
 
@@ -366,8 +365,8 @@ void DccRecvThread::run()
 						// Readed something useful...write back
 						if(((uint)(readLen + m_pFile->pos())) > m_pOpt->uTotalFileSize)
 						{
-							postMessageEvent(__tr_no_lookup_ctx("WARNING: The peer is sending garbage data past the end of the file","dcc"));
-							postMessageEvent(__tr_no_lookup_ctx("WARNING: Ignoring data past the declared end of file and closing the connection","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: the peer is sending garbage data past the end of the file","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: ignoring data past the declared end of file and closing the connection","dcc"));
 
 							readLen = m_pOpt->uTotalFileSize - m_pFile->pos();
 							if(readLen > 0)
@@ -408,14 +407,7 @@ void DccRecvThread::run()
 						} else {
 							// Must send the ack... the peer must close the connection
 
-							// We tollerate ack errors if we're in the last 90% of the file.
-							// It might be that we're slow with receiving data but the server
-							// has already closed the connection (buggy server though).
-
-							bool bTolerateErrors = (m_pOpt->uTotalFileSize > 0) &&
-								(((quint64)m_pFile->pos()) >= (m_pOpt->uTotalFileSize - (m_pOpt->uTotalFileSize / 10)));
-
-							if(!sendAck(m_pFile->pos(),bTolerateErrors))
+							if(!sendAck(m_pFile->pos(),bSend64BitAck))
 								break;
 						}
 
@@ -445,7 +437,7 @@ void DccRecvThread::run()
 							switch(m_pSSL->getProtocolError(readLen))
 							{
 								case KviSSL::ZeroReturn:
-									//check eagain not necessary a connection closure!
+									//check again not necessary a connection closure!
 									//if (!handleInvalidSocketRead(readLen)
 									// break;
 									readLen = 0;
@@ -923,7 +915,7 @@ void DccSendThread::run()
 
 								} else {
 									KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
-									e->setData(new KviCString(__tr2qs_ctx("WARNING: Received data in a DCC TSEND, there should be no acknowledges","dcc")));
+									e->setData(new KviCString(__tr2qs_ctx("WARNING: received data in a DCC TSEND, there should be no acknowledges","dcc")));
 									postEvent(parent(),e);
 								}
 							}
@@ -2120,6 +2112,7 @@ void DccFileTransfer::connected()
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
 		o->bIsTdcc         = m_pDescriptor->bIsTdcc;
 		o->bSendZeroAck    = KVI_OPTION_BOOL(KviOption_boolSendZeroAckInDccRecv);
+		o->bSend64BitAck   = KVI_OPTION_BOOL(KviOption_boolSend64BitAckInDccRecv);
 		o->bNoAcks         = m_pDescriptor->bNoAcks;
 		o->uMaxBandwidth   = m_uMaxBandwidth;
 		m_pSlaveRecvThread = new DccRecvThread(this,m_pMarshal->releaseSocket(),o);
@@ -2245,7 +2238,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 			if(_OUTPUT_VERBOSE)
 				outputAndLog(
 						KVI_OUT_DCCMSG,
-						__tr2qs_ctx("Invalid RESUME request: Invalid file name (got '%1' but should be '%2')","dcc")
+						__tr2qs_ctx("Invalid RESUME request: invalid file name (got '%1' but should be '%2')","dcc")
 								.arg(filename)
 								.arg(m_pDescriptor->szFileName)
 					);
@@ -2268,7 +2261,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 
 	if(iLocalFileSize <= filePos)
 	{
-		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: Position %1 is larger than file size","dcc").arg(filePos));
+		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: position %1 is larger than file size","dcc").arg(filePos));
 		return false;
 	}
 
@@ -2310,10 +2303,10 @@ DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent
 	m_pTransfer = t;
 	int iVal = m_pTransfer->bandwidthLimit();
 
-	QString szText = __tr2qs_ctx("Configure bandwidth for DCC transfer %1","dcc").arg(t->id());
+	QString szText = __tr2qs_ctx("Configure Bandwidth for DCC Transfer %1","dcc").arg(t->id());
 	setWindowTitle(szText);
 
-	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to","dcc") : __tr2qs_ctx("Limit download bandwidth to","dcc");
+	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to:","dcc") : __tr2qs_ctx("Limit download bandwidth to:","dcc");
 
 	m_pEnableLimitCheck = new QCheckBox(szText,this);
 	g->addWidget(m_pEnableLimitCheck,0,0);

@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -462,7 +462,7 @@ void KviTopicWidget::switchMode()
 
 		m_pHistory = new QPushButton(this);
 		m_pHistory->setObjectName("topicw_historybutton");
-		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
+		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::History))));
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
 		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
 		m_pHistory->show();
@@ -474,14 +474,14 @@ void KviTopicWidget::switchMode()
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pAccept->setEnabled(bCanEdit);
 		m_pAccept->show();
-		KviTalToolTip::add(m_pAccept,__tr2qs("Commit Changes"));
+		KviTalToolTip::add(m_pAccept,__tr2qs("Commit changes"));
 		connect(m_pAccept,SIGNAL(clicked()),this,SLOT(acceptClicked()));
 
 		m_pDiscard = new QPushButton(this);
 		m_pDiscard->setObjectName("topicw_discardbutton");
 		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard))));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
-		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
+		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard changes"));
 		m_pDiscard->show();
 		connect(m_pDiscard,SIGNAL(clicked()),this,SLOT(discardClicked()));
 

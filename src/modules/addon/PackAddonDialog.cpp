@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -85,7 +85,7 @@ PackAddonDialog::PackAddonDialog(QWidget * pParent)
 
 	QLabel * pLabel = new QLabel(pPage);
 	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public.","addon"));
+	pLabel->setText(__tr2qs_ctx("This procedure allows you to export the selected addon to a single package.<br>It is useful when you want to distribute your addon to the public.","addon"));
 	pLayout->addWidget(pLabel);
 
 	pLabel = new QLabel(pPage);
@@ -201,7 +201,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Author:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &author:","addon"));
 	pLayout->addWidget(pLabel,0,0);
 
 	m_pPackageAuthorEdit = new QLineEdit(this);
@@ -210,16 +210,16 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageAuthorEdit,0,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Name:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &name:","addon"));
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pPackageNameEdit = new QLineEdit(this);
-	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed, like MyAddon","addon"));
+	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed in filename","addon"));
 	pLabel->setBuddy(m_pPackageNameEdit);
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Version:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &version:","addon"));
 	pLayout->addWidget(pLabel,2,0);
 
 	m_pPackageVersionEdit = new QLineEdit(this);
@@ -228,7 +228,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageVersionEdit,2,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package &Description:","addon"));
+	pLabel->setText(__tr2qs_ctx("Package &description:","addon"));
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pPackageDescriptionEdit = new QLineEdit(this);
@@ -237,7 +237,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Minimum &KVIrc Version:","addon"));
+	pLabel->setText(__tr2qs_ctx("Minimum &KVIrc version:","addon"));
 	pLayout->addWidget(pLabel,4,0);
 
 	m_pPackageMinVersionEdit = new QLineEdit(this);
@@ -263,7 +263,7 @@ PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pPa
 {
 	setObjectName("addon_package_file_page");
 	setTitle(__tr2qs_ctx("Package Files","addon"));
-	setSubTitle(__tr2qs_ctx("Here you need to select the directory where the addon files are.","addon"));
+	setSubTitle(__tr2qs_ctx("Here you need to select the directory where the addon files to be packed are located.","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
@@ -290,7 +290,7 @@ PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pPa
 {
 	setObjectName("addon_package_save_page");
 	setTitle(__tr2qs_ctx("Save Package","addon"));
-	setSubTitle(__tr2qs_ctx("Here you need to provide the path where to save the addon package","addon"));
+	setSubTitle(__tr2qs_ctx("Here you need to provide the path where to save the created addon package","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
@@ -335,7 +335,7 @@ PackAddonSummaryInfoWidget::PackAddonSummaryInfoWidget(PackAddonDialog * pParent
 {
 	setObjectName("addon_package_summary_info_page");
 	setTitle(__tr2qs_ctx("Final Information","addon"));
-	setSubTitle(__tr2qs_ctx("Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
+	setSubTitle(__tr2qs_ctx("Here are the details you provided. If this information is correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 	m_pLabelInfo = new QLabel(this);
@@ -360,35 +360,35 @@ void PackAddonSummaryInfoWidget::initializePage()
 
 	QString szText = __tr2qs_ctx("This is what I will check for:","addon");
 	szText += "<br><br><b>";
-	szText += __tr2qs_ctx("Package Author","addon");
+	szText += __tr2qs_ctx("Package author","addon");
 	szText += ":</b> ";
 	szText += szAuthor;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Package Name","addon");
+	szText += __tr2qs_ctx("Package name","addon");
 	szText += ":</b> ";
 	szText += szName;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Package Version","addon");
+	szText += __tr2qs_ctx("Package version","addon");
 	szText += ":</b> ";
 	szText += szVersion;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Package Description","addon");
+	szText += __tr2qs_ctx("Package description","addon");
 	szText += ":</b> ";
 	szText += szDescription;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Minimum KVIrc Version","addon");
+	szText += __tr2qs_ctx("Minimum KVIrc version","addon");
 	szText += ":</b> ";
 	szText += szMinVersion;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Image File","addon");
+	szText += __tr2qs_ctx("Image file","addon");
 	szText += ":</b> ";
 	szText += szImage;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Source Directory","addon");
+	szText += __tr2qs_ctx("Source directory","addon");
 	szText += ":</b> ";
 	szText += szDirPath;
 	szText += "<br><b>";
-	szText += __tr2qs_ctx("Save Path","addon");
+	szText += __tr2qs_ctx("Save path","addon");
 	szText += ":</b> ";
 	szText += szSavePath;
 
@@ -407,7 +407,7 @@ PackAddonSummaryFilesWidget::PackAddonSummaryFilesWidget(PackAddonDialog * pPare
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Here there are the files I found in the directories you provided.\nIf these and the information showed in the previous page are correct, hit the \"Finish\" button to complete\nthe packaging operations.","addon"));
+	pLabel->setText(__tr2qs_ctx("Here are the files found in the directories you provided.\nIf the files listed below are correct, hit the \"Finish\" button to complete the packaging operation.","addon"));
 	pLayout->addWidget(pLabel);
 
 	m_pFiles = new QTextEdit(this);

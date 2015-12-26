@@ -957,7 +957,7 @@ static const char * g_szAboutText = "" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"Portuguese Brasilian translation" \
+"Portuguese Brazilian translation" \
 "</font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \

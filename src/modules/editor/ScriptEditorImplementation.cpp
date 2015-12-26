@@ -11,7 +11,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -79,10 +79,15 @@ static QColor g_clrFind(255,0,0);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Courier New"
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE 8
+#elif defined(COMPILE_ON_MAC)
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Monaco"
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE 10
 #else
 	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Monospace"
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE 8
 #endif
-static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT,8);
+static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT,KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE);
 
 static bool bSemaphore=false;
 static bool bCompleterReady=false;
@@ -257,7 +262,7 @@ void ScriptEditorWidget::insertCompletion(const QString & szCompletion)
 void ScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
 	QMenu * pMenu = createStandardContextMenu();
-	pMenu->addAction(__tr2qs_ctx("Context sensitive help","editor"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
+	pMenu->addAction(__tr2qs_ctx("Context Sensitive Help","editor"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
 	pMenu->addAction(__tr2qs_ctx("&Replace","editor"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
 	pMenu->exec(e->globalPos());
 	delete pMenu;
@@ -814,7 +819,7 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 
 	QMenu * pop = new QMenu(b);
 	pop->addAction(__tr2qs_ctx("&Open...","editor"),this,SLOT(loadFromFile()));
-	pop->addAction(__tr2qs_ctx("&Save As...","editor"),this,SLOT(saveToFile()));
+	pop->addAction(__tr2qs_ctx("&Save as...","editor"),this,SLOT(saveToFile()));
 	pop->addSeparator();
 	pop->addAction(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
 	b->setMenu(pop);
@@ -825,7 +830,7 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	g->addWidget(m_pFindLineEdit,1,2);
 
 	QLabel * pLab = new QLabel(this);
-	pLab->setText(__tr2qs_ctx("Find","editor"));
+	pLab->setText(__tr2qs_ctx("Find:","editor"));
 	pLab->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 	g->addWidget(pLab,1,1);
 
@@ -868,7 +873,7 @@ void ScriptEditorImplementation::loadOptions()
 	g_clrVariable = cfg.readColorEntry("Variable",QColor(200,200,200));
 	g_clrPunctuation = cfg.readColorEntry("Punctuation",QColor(180,180,0));
 	g_clrFind = cfg.readColorEntry("Find",QColor(255,0,0));
-	g_fntNormal = cfg.readFontEntry("Font",QFont(KVI_SCRIPTEDITOR_DEFAULT_FONT,8));
+	g_fntNormal = cfg.readFontEntry("Font",QFont(KVI_SCRIPTEDITOR_DEFAULT_FONT,KVI_SCRIPTEDITOR_DEFAULT_FONT_SIZE));
 }
 
 bool ScriptEditorImplementation::isModified()
@@ -1080,7 +1085,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 
 	QLabel * m_pFindLabel = new QLabel(this);
 	m_pFindLabel->setObjectName("findlabel");
-	m_pFindLabel->setText(__tr2qs_ctx("Word to Find","editor"));
+	m_pFindLabel->setText(__tr2qs_ctx("Word to find:","editor"));
 	pLayout->addWidget(m_pFindLabel,0,0);
 
 	m_pFindLineEdit = new QLineEdit(this);
@@ -1089,7 +1094,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 
 	QLabel * m_pReplaceLabel = new QLabel(this);
 	m_pReplaceLabel->setObjectName("replacelabel");
-	m_pReplaceLabel->setText(__tr2qs_ctx("Replace with","editor"));
+	m_pReplaceLabel->setText(__tr2qs_ctx("Replace with:","editor"));
 	pLayout->addWidget(m_pReplaceLabel,1,0);
 
 	m_pReplaceLineEdit = new QLineEdit(this);

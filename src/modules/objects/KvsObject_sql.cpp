@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -50,7 +50,7 @@
 		@type:
 			class
 		@short:
-			A sql database interface.
+			A SQL database interface.
 		@inherits:
 			[class]object[/class]
 		@description:
@@ -75,7 +75,7 @@
 			!fn: $closeConnection(<connection_name:string>)
 			Closes the connection <connection_name>.
 			!fn: <size:integer> $queryResultsSize()
-			Returns the query size in rows or -1 if the query is empty or the database driver doesn' support the function.
+			Returns the query size in rows or -1 if the query is empty or the database driver doesn't support the function.
 			!fn: <error:string> $lastError(<more_details:boolean>)
 			Returns last error occurred. Use the more_details flag for more info about the error.
 			!fn: <ok:boolean> $queryExec([<query:string>])
@@ -91,7 +91,7 @@
 			See also [classfnc]$queryExec[/classfnc]and[classfnc]$queryBindValue[/classfnc].
 			!fn: $queryBindValue()
 			Sets the placeholder <placeholder> to be bound to the value <val> in the prepared statement.
-			Note that the placeholder mark (e.g :) must be included when specifing the placeholder name.
+			Note that the placeholder mark (e.g :) must be included when specifying the placeholder name.
 			!fn: <boolean> $queryPrevious()
 			Sets the current query position to the previous resulting record.
 			Returns true if the operation is successful, false otherwise.
@@ -226,7 +226,7 @@ KVSO_CLASS_FUNCTION(sql,features)
 	QStringList connections = QSqlDatabase::connectionNames();
 	if (!connections.contains(szConnectionName))
 	{
-		c->warning(__tr2qs_ctx("Connection %Q does not exist","objects"),&szConnectionName);
+		c->warning(__tr2qs_ctx("Connection %Q doesn't exist","objects"),&szConnectionName);
 		return true;
 	}
 	QSqlDatabase db=QSqlDatabase::database(szConnectionName);
@@ -283,7 +283,7 @@ KVSO_CLASS_FUNCTION(sql,closeConnection)
 	    QStringList connections = QSqlDatabase::connectionNames();
 	    if (!connections.contains(szConnectionName))
 	    {
-		c->warning(__tr2qs_ctx("Connection %Q does not exist","objects"),&szConnectionName);
+		c->warning(__tr2qs_ctx("Connection %Q doesn't exist","objects"),&szConnectionName);
 		return true;
 	    }
 	    if(m_pCurrentSQlQuery)

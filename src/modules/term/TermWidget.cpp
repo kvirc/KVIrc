@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -59,7 +59,7 @@
 		if(bIsStandalone)
 		{
 			m_pHBox = new KviTalHBox(this);
-			m_pTitleLabel = new QLabel(__tr2qs("Terminal emulator"),m_pHBox);
+			m_pTitleLabel = new QLabel(__tr2qs("Terminal Emulator"),m_pHBox);
 			m_pTitleLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 			m_pCloseButton = new QPushButton("",m_pHBox);
 			m_pCloseButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Close)));

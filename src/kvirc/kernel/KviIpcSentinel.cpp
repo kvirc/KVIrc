@@ -9,7 +9,7 @@
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -162,13 +162,9 @@
 			cpd.cbData = strlen(message)+1;
 			cpd.dwData = KVI_WINDOWS_IPC_MESSAGE;
 			cpd.lpData = (void *)message;
-			DWORD dwResult;
+			DWORD_PTR dwResult;
 
-#if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
-			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,(PDWORD_PTR)&dwResult))
-#else
 			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult))
-#endif
 			{
 				qDebug("Failed to send IPC message: error code 0x%x",::GetLastError());
 			}

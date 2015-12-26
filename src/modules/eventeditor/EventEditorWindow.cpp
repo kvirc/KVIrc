@@ -7,9 +7,9 @@
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
-//   modify it under the linkss of the GNU General Public License
+//   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your opinion) any later version.
+//   of the License, or (at your option) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -100,7 +100,7 @@ EventEditor::EventEditor(QWidget * par)
 
 	m_pTreeWidget = new EventEditorTreeWidget(vbox);
 
-	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All To...","editor"),vbox);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All to...","editor"),vbox);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
 	KviTalVBox * box = new KviTalVBox(spl);
@@ -225,7 +225,7 @@ void EventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->addAction(
 					*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
-					__tr2qs_ctx("&Export Handler To...","editor"),
+					__tr2qs_ctx("&Export Handler to...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
 			m_pContextPopup->addAction(
