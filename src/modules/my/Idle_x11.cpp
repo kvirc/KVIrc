@@ -48,15 +48,17 @@
 	class IdlePlatform::Private
 	{
 	public:
-		Private() {}
-
 		XScreenSaverInfo *ss_info;
+
+		Private() {
+			// make coverity happy
+			ss_info = 0;
+		}
 	};
 
 	IdlePlatform::IdlePlatform()
 	{
 		d = new Private;
-		d->ss_info = 0;
 	}
 
 	IdlePlatform::~IdlePlatform()
