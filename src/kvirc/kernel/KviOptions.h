@@ -716,8 +716,8 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define _OUTPUT_QUIET (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_QUIET)
 #define _OUTPUT_MUTE (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_MUTE)
 
-	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(0,0,0); font-weight: bold; color: rgb(200,200,255); text-indent: 5px;\"><nobr>"
-	#define END_TABLE_BOLD_ROW "</nobr></td></tr>"
+	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(0,0,0); font-weight: bold; color: rgb(200,200,255); text-indent: 5px;\">"
+	#define END_TABLE_BOLD_ROW "</td></tr>"
 
 	#define START_TABLE_NORMAL_ROW "<tr><td>"
 
