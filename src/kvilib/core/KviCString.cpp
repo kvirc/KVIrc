@@ -2711,6 +2711,7 @@ KviCString & KviCString::vsprintf(const char *fmt,kvi_va_list list)
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
 	m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len+1);
+	kvi_va_end(save);
 	return (*this);
 }
 
