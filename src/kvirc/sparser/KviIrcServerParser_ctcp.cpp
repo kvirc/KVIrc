@@ -1439,6 +1439,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !query->hasAttention())
 			{
 				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
+				// coverity is wrong here.
 				KviKvsScript::run("snd.play $0",query,&soundParams);
 			}
 		}
