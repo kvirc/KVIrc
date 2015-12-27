@@ -2576,11 +2576,8 @@ void KviInputEditor::toggleMultiLineEditor()
 
 void KviInputEditor::previousChar()
 {
-	if(m_iCursorPosition > 0)
-	{
-		internalCursorLeft(false);
-		repaintWithCursorOn();
-	}
+	internalCursorLeft(false);
+	repaintWithCursorOn();
 }
 
 void KviInputEditor::nextChar()
