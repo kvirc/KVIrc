@@ -209,6 +209,7 @@ protected:
 	QCheckBox * m_pPopup;
 	QCheckBox * m_pRaw;
 	QCheckBox * m_pToolbar;
+	QPushButton * m_pAdvancedButton;
 protected slots:
 	/**
 	* \brief Enables or disables all checkboxes

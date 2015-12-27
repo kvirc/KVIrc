@@ -477,9 +477,9 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	m_pAdvanced->setLayout(pAdvLayout);
 
 	QPixmap * pImage = g_pIconManager->getSmallIcon(150);
-	QPushButton * pAdvanced = new QPushButton(*pImage,__tr2qs("Advanced..."),this);
-	connect(pAdvanced,SIGNAL(clicked()),this,SLOT(advanced()));
-	pLayout->addWidget(pAdvanced,2,0,1,1);
+	m_pAdvancedButton = new QPushButton(*pImage,__tr2qs("Advanced..."),this);
+	connect(m_pAdvancedButton,SIGNAL(clicked()),this,SLOT(advanced()));
+	pLayout->addWidget(m_pAdvancedButton,2,0,1,1);
 
 	pImage = g_pIconManager->getSmallIcon(44);
 	QPushButton * pCancel = new QPushButton(*pImage,__tr2qs("Cancel"),this);
@@ -511,7 +511,8 @@ void KviDefaultScriptDialog::toggleAll(bool)
 
 void KviDefaultScriptDialog::advanced()
 {
-	m_pAdvanced->isVisible() ? m_pAdvanced->hide() : m_pAdvanced->show();
+	m_pAdvanced->show();
+	m_pAdvancedButton->hide();
 }
 
 void KviDefaultScriptDialog::accept()
