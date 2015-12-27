@@ -410,7 +410,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs("You are about to restore the default script.\nAny script changes you have made will be erased if\nrestore \"All\" or \"Clear Custom Scripts\" are selected.\n\nDo you wish to proceed?\n"));
+	pLabel->setText(__tr2qs("You are about to restore the default script.\nAny script changes you have made will be erased if\nrestore \"All\" or \"Clear custom scripts\" are selected.\n\nDo you wish to proceed?\n"));
 	pLayout->addWidget(pLabel,0,0,1,4);
 
 	// Construct the advanced widget
@@ -426,7 +426,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	pAdvLayout->addWidget(m_pAll,0,0);
 	connect(m_pAll,SIGNAL(clicked(bool)),this,SLOT(toggleAll(bool)));
 
-	m_pData = new QCheckBox(__tr2qs("Clear Custom Scripts"),m_pAdvanced);
+	m_pData = new QCheckBox(__tr2qs("Clear custom scripts"),m_pAdvanced);
 	m_pData->setChecked(false);
 	m_pData->setEnabled(true);
 	pAdvLayout->addWidget(m_pData,0,1);
@@ -464,7 +464,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	m_pPopup->setEnabled(false);
 	pAdvLayout->addWidget(m_pPopup,4,1);
 
-	m_pRaw = new QCheckBox(__tr2qs("RAW Events"),m_pAdvanced);
+	m_pRaw = new QCheckBox(__tr2qs("RAW events"),m_pAdvanced);
 	m_pRaw->setChecked(true);
 	m_pRaw->setEnabled(false);
 	pAdvLayout->addWidget(m_pRaw,5,0);
