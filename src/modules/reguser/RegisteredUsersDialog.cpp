@@ -239,34 +239,34 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	vbox->setSpacing(4);
 	g->addWidget(vbox,0,2);
 
-	m_pWizardAddButton = new QPushButton(__tr2qs_ctx("Add (Wizard)...","register"),vbox);
+	m_pWizardAddButton = new QPushButton(__tr2qs_ctx("Add Wizard...","register"),vbox);
 	connect(m_pWizardAddButton,SIGNAL(clicked()),this,SLOT(addWizardClicked()));
 	m_pWizardAddButton->setToolTip(__tr2qs_ctx("Add a registered user by means of a user-friendly wizard.","register"));
-	m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItemByWizard)));
+	//m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItemByWizard)));
 
 
 	m_pAddButton = new QPushButton(__tr2qs_ctx("&Add...","register"),vbox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setToolTip(__tr2qs_ctx("Open the edit dialog to create a new user entry.","register"));
-	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
+	//m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	m_pAddGroupButton = new QPushButton(__tr2qs_ctx("&Add Group...","register"),vbox);
 	connect(m_pAddGroupButton,SIGNAL(clicked()),this,SLOT(addGroupClicked()));
 	m_pAddGroupButton->setToolTip(__tr2qs_ctx("Adds a new group","register"));
-	m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
+	//m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	m_pRemoveButton = new QPushButton(__tr2qs_ctx("Re&move","register"),vbox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setToolTip(__tr2qs_ctx("Remove the currently selected entries.","register"));
-	m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
+	//m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 
 	m_pEditButton = new QPushButton(__tr2qs_ctx("&Edit...","register"),vbox);
 	connect(m_pEditButton,SIGNAL(clicked()),this,SLOT(editClicked()));
 	m_pEditButton->setEnabled(false);
 	m_pEditButton->setToolTip(__tr2qs_ctx("Edit the first selected entry.","register"));
-	m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::EditItem)));
+	//m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::EditItem)));
 
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
@@ -274,19 +274,19 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select All","register"),vbox);
 	connect(m_pSelectAllButton,SIGNAL(clicked()),this,SLOT(selectAllClicked()));
 	m_pSelectAllButton->setToolTip(__tr2qs_ctx("Select all the entries","register"));
-	m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)));
+	//m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)));
 
 	m_pExportButton = new QPushButton(__tr2qs_ctx("Export to...","register"),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
 	m_pExportButton->setToolTip(__tr2qs_ctx("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button.","register"));
-	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)));
+	//m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)));
 
 
 	m_pImportButton = new QPushButton(__tr2qs_ctx("Import from...","register"),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
 	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
-	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)));
+	//m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)));
 
 
 	KviTalHBox * hbox = new KviTalHBox(this);
