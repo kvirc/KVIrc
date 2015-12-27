@@ -463,6 +463,8 @@ void KviConsoleWindow::updateUri()
 		else
 			m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), uri);
 	}
+
+	m_pAddressEdit->lineEdit()->setCursorPosition(0);
 }
 
 void KviConsoleWindow::connectionAttached()
