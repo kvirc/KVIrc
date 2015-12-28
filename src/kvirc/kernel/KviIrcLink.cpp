@@ -225,7 +225,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		return;
 	}
 
-	register char * p = buffer;
+	char * p = buffer;
 	char * cBeginOfCurData = buffer;
 	int iBufLen = 0;
 	char * cMessageBuffer = (char *)KviMemory::allocate(1);

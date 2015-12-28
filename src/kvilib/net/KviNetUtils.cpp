@@ -73,11 +73,11 @@
 
 bool kvi_stringIpToBinaryIp(const char *szIp,struct in_addr *address)
 {
-	register unsigned long val;
-	register int base, n;
-	register char c;
+	unsigned long val;
+	int base, n;
+	char c;
 	unsigned int parts[4];
-	register unsigned int *pp = parts;
+	unsigned int *pp = parts;
 	if(!szIp)return false;
 	c = *szIp;
 	for(;;){
@@ -327,8 +327,8 @@ static int fmt_xlong(char* s,unsigned int i)
 
 static unsigned int i2a(char* dest,unsigned int x)
 {
-	register unsigned int tmp=x;
-	register unsigned int len=0;
+	unsigned int tmp=x;
+	unsigned int len=0;
 
 	if (x>=100) { *dest++=tmp/100+'0'; tmp=tmp%100; ++len; }
 	if (x>=10) { *dest++=tmp/10+'0'; tmp=tmp%10; ++len; }

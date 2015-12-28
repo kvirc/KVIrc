@@ -1176,7 +1176,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 		for(int i=0;i < pCurTextLine->iBlockCount;i++)
 		{
-			register KviIrcViewWrappedBlock * block = &(pCurTextLine->pBlocks[i]);
+			KviIrcViewWrappedBlock * block = &(pCurTextLine->pBlocks[i]);
 
 			// Play with the attributes
 			if(block->pChunk)
@@ -1645,7 +1645,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 	for(;;)
 	{
 		// Calculate the block_width
-		register const QChar * p = unicode + ptr->pBlocks[ptr->iBlockCount].block_start;
+		const QChar * p = unicode + ptr->pBlocks[ptr->iBlockCount].block_start;
 
 		int curBlockLen   = 0;
 		int curBlockWidth = 0;
@@ -1789,7 +1789,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int bufIndex)
 {
 	//Checks if the specified chunk in the specified ircviewline is part of the current selection
 	const QChar * unicode = line->szText.unicode();
-	register const QChar * p = unicode + line->pBlocks[bufIndex].block_start;
+	const QChar * p = unicode + line->pBlocks[bufIndex].block_start;
 
 	if(!m_pSelectionInitLine || !m_pSelectionEndLine)
 		return false;

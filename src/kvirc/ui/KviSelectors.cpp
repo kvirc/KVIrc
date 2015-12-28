@@ -924,7 +924,7 @@ KviChannelListSelector::~KviChannelListSelector()
 void KviChannelListSelector::commit()
 {
 	m_pOption->clear();
-	register KviChanTreeViewItem* pItem;
+	KviChanTreeViewItem* pItem;
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		pItem=(KviChanTreeViewItem*)m_pTreeWidget->topLevelItem(i);

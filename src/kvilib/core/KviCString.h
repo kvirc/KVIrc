@@ -461,7 +461,7 @@ public:
 	//=============================================================================
 
 	// FIXME: Should it be KviCStringExt::contains namespace ?
-	static bool ext_contains(register const char * data,const char * item,bool caseS = true);
+	static bool ext_contains(const char * data,const char * item,bool caseS = true);
 };
 
 // FIXME: the functions below should end in the KviCString namespace ???

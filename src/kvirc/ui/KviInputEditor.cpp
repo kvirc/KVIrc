@@ -947,7 +947,7 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 
 int KviInputEditor::runUpToTheFirstVisibleChar()
 {
-	register int iIdx = 0;
+	int iIdx = 0;
 	int iFirstVisibleCharInDisplay = m_iFirstVisibleChar;
 	while(iIdx < iFirstVisibleCharInDisplay)
 	{

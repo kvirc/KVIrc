@@ -462,7 +462,7 @@ void KviIrcServerParser::encodeCtcpParameter(const char * parametr,QString &resu
 	// subset of rules and places it in the supplied buffer
 	//
 	QByteArray buffer;
-	register const char* param=parametr;
+	const char* param=parametr;
 	if(!param)
 	{
 		if(bSpaceBreaks)
@@ -726,7 +726,7 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * p_msg_ptr,QSt
 	//
 
 	QByteArray buffer;
-	register const char* msg_ptr=p_msg_ptr;
+	const char* msg_ptr=p_msg_ptr;
 	int bInString = 0;
 	if(!msg_ptr) return 0;
 	while(*msg_ptr == ' ')msg_ptr++; // skip leading spaces

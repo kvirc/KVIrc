@@ -59,7 +59,7 @@ WORKING CODE, COMMENTED OUT BECAUSE NOT USED AND GENERATES WARNINGS
 
 #define WVSNPRINTF_BODY \
 \
-	register kvi_wchar_t *p; \
+	kvi_wchar_t *p; \
 	long int argValue; \
 	unsigned long argUValue; \
 \
@@ -200,7 +200,7 @@ bool kvi_qstringEqualCI(const QString &s1,const QString &s2)
 	return false;
 }
 
-bool kvi_matchStringCI(register const char * exp,register const char * str)
+bool kvi_matchStringCI(const char * exp,const char * str)
 {
 	//               a
 	//               .
@@ -260,7 +260,7 @@ check_recovery:
 }
 
 
-bool kvi_matchStringCS(register const char * exp,register const char * str)
+bool kvi_matchStringCS(const char * exp,const char * str)
 {
 	//               a
 	//               .
@@ -321,7 +321,7 @@ check_recovery:
 
 
 
-bool kvi_matchStringWithTerminator(register const char * exp,register const char * str,char terminator,const char ** r1,const char ** r2)
+bool kvi_matchStringWithTerminator(const char * exp,const char * str,char terminator,const char ** r1,const char ** r2)
 {
 #define NOT_AT_END(__str) (*__str && (*__str != terminator))
 
@@ -392,7 +392,7 @@ check_recovery:
 #undef NOT_AT_END
 }
 
-bool kvi_matchWildExpr(register const char *m1,register const char *m2)
+bool kvi_matchWildExpr(const char *m1,const char *m2)
 {
 	//Matches two regular expressions containging wildcards (* and ?)
 
@@ -488,7 +488,7 @@ bool kvi_matchWildExpr(register const char *m1,register const char *m2)
 	WARNING: Don't remove: working code but actually unused in KVIrc
 			Later it might become useful
 
-bool kvi_matchWildExprCS(register const char *m1,register const char *m2)
+bool kvi_matchWildExprCS(const char *m1,const char *m2)
 {
 	if(!(m1 && m2 && (*m1)))return false;
 	const char * savePos1 = 0;
@@ -537,7 +537,7 @@ bool kvi_matchWildExprCS(register const char *m1,register const char *m2)
 }
 */
 
-bool kvi_matchWildExprWithTerminator(register const char *m1,register const char *m2,char terminator,
+bool kvi_matchWildExprWithTerminator(const char *m1,const char *m2,char terminator,
 			const char ** r1,const char ** r2)
 {
 	//Matches two regular expressions containging wildcards
@@ -660,7 +660,7 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 	KVI_ASSERT(buffer);
 	KVI_ASSERT(len > 0); //printing 0 characters is senseless
 
-	register char *p;
+	char *p;
 	char *argString;
 	long argValue;
 	unsigned long argUValue;
@@ -791,7 +791,7 @@ int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTrunc
 	KVI_ASSERT(fmt);
 	KVI_ASSERT(buffer);
 	if( !( buffer && fmt) ) return false;
-	register char *p;
+	char *p;
 	char *argString;
 	long argValue;
 	unsigned long argUValue;
@@ -902,8 +902,8 @@ bool kvi_strEqualCS(const char *str1,const char *str2)
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	if( !( str1 && str2 ) ) return false;
-	register unsigned char *s1 = (unsigned char *)str1;
-	register unsigned char *s2 = (unsigned char *)str2;
+	unsigned char *s1 = (unsigned char *)str1;
+	unsigned char *s2 = (unsigned char *)str2;
 	while(*s1)if(*s1++ != *s2++)return false;
 	return (*s1 == *s2);
 }
@@ -914,8 +914,8 @@ bool kvi_strEqualCSN(const char *str1,const char *str2,int len)
 	KVI_ASSERT(str2);
 	KVI_ASSERT(len >= 0);
 	if( !( str1 && str2 && (len >= 0) ) ) return false;
-	register unsigned char *s1 = (unsigned char *)str1;
-	register unsigned char *s2 = (unsigned char *)str2;
+	unsigned char *s1 = (unsigned char *)str1;
+	unsigned char *s2 = (unsigned char *)str2;
 	while(len-- && *s1)if(*s1++ != *s2++)return false;
 	return (len < 0);
 }
@@ -928,8 +928,8 @@ bool kvi_strEqualCIN(const char *str1,const char *str2,int len)
 	KVI_ASSERT(str2);
 	KVI_ASSERT(len >= 0);
 	if( !( str1 && str2 && (len >= 0) ) ) return false;
-	register unsigned char *s1 = (unsigned char *)str1;
-	register unsigned char *s2 = (unsigned char *)str2;
+	unsigned char *s1 = (unsigned char *)str1;
+	unsigned char *s2 = (unsigned char *)str2;
 	while(len-- && *s1)if(tolower(*s1++) != tolower(*s2++))return false;
 	return (len < 0);
 }
@@ -939,8 +939,8 @@ bool kvi_strEqualCI(const char *str1,const char *str2)
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
-	register unsigned char *s1 = (unsigned char *)str1;
-	register unsigned char *s2 = (unsigned char *)str2;
+	unsigned char *s1 = (unsigned char *)str1;
+	unsigned char *s2 = (unsigned char *)str2;
 	while(*s1)if(tolower(*s1++) != tolower(*s2++))return false;
 	return (*s1 == *s2);
 }
@@ -955,8 +955,8 @@ int kvi_strcmpCI(const char *str1,const char *str2)
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
-	register unsigned char *s1 = (unsigned char *)str1;
-	register unsigned char *s2 = (unsigned char *)str2;
+	unsigned char *s1 = (unsigned char *)str1;
+	unsigned char *s2 = (unsigned char *)str2;
 	int diff;
 	unsigned char rightchar;
 	while(!(diff=(rightchar=tolower(*s1++)) - tolower(*s2++)))if(!rightchar)break;
@@ -973,8 +973,8 @@ int kvi_strcmpCI(const char *str1,const char *str2)
 //	//abcd abce
 //	KVI_ASSERT(str1);
 //	KVI_ASSERT(str2);
-//	register unsigned char *s1 = (unsigned char *)str1;
-//	register unsigned char *s2 = (unsigned char *)str2;
+//	unsigned char *s1 = (unsigned char *)str1;
+//	unsigned char *s2 = (unsigned char *)str2;
 //	int diff;
 //	unsigned char rightchar;
 //	while(len--)
@@ -991,8 +991,8 @@ int kvi_strcmpCS(const char *str1,const char *str2)
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
-	register unsigned char *s1 = (unsigned char *)str1;
-	register unsigned char *s2 = (unsigned char *)str2;
+	unsigned char *s1 = (unsigned char *)str1;
+	unsigned char *s2 = (unsigned char *)str2;
 	int diff;
 	while(!(diff=(*s1)-(*s2++)))if(!*s1++)break;
     return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
@@ -1003,8 +1003,8 @@ int kvi_strMatchRevCS(const char *str1, const char *str2, int index)
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
-	register char *s1=(char *)str1;
-	register char *s2=(char *)str2;
+	char *s1=(char *)str1;
+	char *s2=(char *)str2;
 
 	int curlen=(int)strlen(str1);
 	int diff;
@@ -1145,7 +1145,7 @@ KviCString::KviCString(char c,int fillLen)
 	KVI_ASSERT(fillLen >= 0);
 	m_len = fillLen;
 	m_ptr = (char *)KviMemory::allocate(m_len+1);
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(fillLen--)*p++=c;
 	*p='\0';
 }
@@ -1161,7 +1161,7 @@ KviCString::KviCString(const kvi_wchar_t * unicode)
 	} else {
 		m_len = kvi_wstrlen(unicode);
 		m_ptr = (char *)KviMemory::allocate(m_len + 1);
-		register char * p = m_ptr;
+		char * p = m_ptr;
 		while(*unicode)*p++ = *unicode++;
 		*p = 0;
 	}
@@ -1171,7 +1171,7 @@ KviCString::KviCString(const kvi_wchar_t * unicode,int len)
 {
 	m_len = len;
 	m_ptr = (char *)KviMemory::allocate(m_len + 1);
-	register char * p = m_ptr;
+	char * p = m_ptr;
 	char * end = p + len;
 	while(p != end)
 	{
@@ -1671,7 +1671,7 @@ unsigned char iso88591_toUpper_map[256]=
 
 void KviCString::toUpperISO88591()
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p)
 	{
 		*p=(char)iso88591_toUpper_map[(unsigned char)*p];
@@ -1681,7 +1681,7 @@ void KviCString::toUpperISO88591()
 
 void KviCString::toUpper()
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p)
 	{
 		*p=toupper(*p);
@@ -1727,7 +1727,7 @@ unsigned char iso88591_toLower_map[256]=
 
 void KviCString::toLowerISO88591()
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p)
 	{
 		*p=(char)iso88591_toLower_map[(unsigned char)*p];
@@ -1738,7 +1738,7 @@ void KviCString::toLowerISO88591()
 
 void KviCString::toLower()
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p)
 	{
 		*p=tolower(*p);
@@ -2161,7 +2161,7 @@ KviCString & KviCString::transliterate(const char * szToFind,const char * szRepl
 
 int KviCString::occurences(char c,bool caseS) const
 {
-	register char *p = m_ptr;
+	char *p = m_ptr;
 	int cnt=0;
 	if(caseS){
 		while(*p){
@@ -2181,7 +2181,7 @@ int KviCString::occurences(char c,bool caseS) const
 int KviCString::occurences(const char *str,bool caseS) const
 {
 	KVI_ASSERT(str);
-	register char *p = m_ptr;
+	char *p = m_ptr;
 	int cnt=0;
 	int len = (int)strlen(str);
 	if(caseS){
@@ -2205,7 +2205,7 @@ int KviCString::occurences(const char *str,bool caseS) const
 
 bool KviCString::contains(char c,bool caseS) const
 {
-	register char *p = m_ptr;
+	char *p = m_ptr;
 	if(caseS)
 	{
 		while(*p)
@@ -2227,7 +2227,7 @@ bool KviCString::contains(char c,bool caseS) const
 bool KviCString::contains(const char *str,bool caseS) const
 {
 	KVI_ASSERT(str);
-	register char *p = m_ptr;
+	char *p = m_ptr;
 	int len = (int)strlen(str);
 	if(caseS)
 	{
@@ -2259,8 +2259,8 @@ KviCString & KviCString::setNum(long num)
 	char numberBuffer[30];
 	bool bNegative = false;
 	long tmp;
-	register char *p;
-	register char *pNumBuf = numberBuffer;
+	char *p;
+	char *pNumBuf = numberBuffer;
 
 	// somebody can explain me why 	-(-2147483648) = -2147483648 ? (2^31)
 	// it is like signed char x = 128 ---> 10000000 that is signed -0 (!?)
@@ -2320,8 +2320,8 @@ KviCString & KviCString::setNum(unsigned long num)
 {
 	char numberBuffer[30];
 	unsigned long tmp;
-	register char *p;
-	register char *pNumBuf = numberBuffer;
+	char *p;
+	char *pNumBuf = numberBuffer;
 
 	//write the number in a temporary buffer (at least '0')
 	do {
@@ -2342,7 +2342,7 @@ long long KviCString::toLongLong(bool *bOk) const
 {
 	long long result = 0;
 	if(bOk)*bOk = false;
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	bool bNeg = false;
 	while(isspace(*p))p++; //skip spaces
 	if(*p == '-'){
@@ -2369,7 +2369,7 @@ unsigned long long KviCString::toULongLong(bool *bOk) const
 {
 	unsigned long long result = 0;
 	if(bOk)*bOk = false;
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(isspace(*p))p++; //skip spaces
 	if(isdigit(*p)){                      //point to something interesting ?
 		do{
@@ -2388,7 +2388,7 @@ long KviCString::toLong(bool *bOk) const
 {
 	long result = 0;
 	if(bOk)*bOk = false;
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	bool bNeg = false;
 	while(isspace(*p))p++; //skip spaces
 	if(*p == '-'){
@@ -2415,7 +2415,7 @@ unsigned long KviCString::toULong(bool *bOk) const
 {
 	unsigned long result = 0;
 	if(bOk)*bOk = false;
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(isspace(*p))p++; //skip spaces
 	if(isdigit(*p)){                      //point to something interesting ?
 		do{
@@ -2615,7 +2615,7 @@ KviCString & KviCString::padRight(int iLen, const char c)
 
 KviCString & KviCString::stripLeftWhiteSpace()
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(isspace(*p))p++;
 	m_len -= (p-m_ptr);
 	KviMemory::move(m_ptr,p,m_len+1);
@@ -2626,7 +2626,7 @@ KviCString & KviCString::stripLeftWhiteSpace()
 KviCString & KviCString::stripLeft(char c)
 {
 	KVI_ASSERT(c != '\0');
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p == c)p++;
 	m_len -= (p-m_ptr);
 	KviMemory::move(m_ptr,p,m_len+1);
@@ -2638,7 +2638,7 @@ bool KviCString::getToken(KviCString & str,char sep)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	//skip to the end
 	while(*p && (*p != sep))p++;
 	//0123456789
@@ -2658,7 +2658,7 @@ bool KviCString::getLine(KviCString &str)
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
 	if(m_len == 0)return false;
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	//skip to the end
 	while(*p && (*p != '\n'))p++;
 	//0123456789
@@ -2675,7 +2675,7 @@ bool KviCString::getLine(KviCString &str)
 
 KviCString KviCString::getToken(char sep)
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p && (*p != sep))p++;
 	KviCString ret(m_ptr,p);
 	while(*p && (*p == sep))p++;
@@ -2749,7 +2749,7 @@ KviCString & KviCString::sprintf(const char *fmt,...)
 int KviCString::find(const char *str,int idx,bool caseS) const
 {
 	if(idx >= m_len)return -1;
-	register char *p=m_ptr + idx;
+	char *p=m_ptr + idx;
 	int len = (int)strlen(str);
 	if(caseS){
 		for(;;){
@@ -2774,7 +2774,7 @@ int KviCString::find(const char *str,int idx,bool caseS) const
 int KviCString::find(char c,int idx) const
 {
 	if(idx >= m_len)return -1;
-	register char *p=m_ptr + idx;
+	char *p=m_ptr + idx;
 	while(*p && (*p != c))p++;
 	return (*p ? p-m_ptr : -1);
 }
@@ -2783,7 +2783,7 @@ int KviCString::find(char c,int idx) const
 int KviCString::findRev(const char *str,int idx,bool caseS) const
 {
 	if((m_len + idx) < 0)return -1;
-	register char *p=m_ptr + m_len + idx;
+	char *p=m_ptr + m_len + idx;
 	int len = (int)strlen(str);
 	if(caseS)
 	{
@@ -2809,7 +2809,7 @@ int KviCString::findRev(const char *str,int idx,bool caseS) const
 
 int KviCString::findFirstIdx(char c) const
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(*p && (*p != c))p++;
 	return (*p ? p-m_ptr : -1);
 }
@@ -2832,7 +2832,7 @@ int KviCString::findFirstIdx(const char *str,bool caseS) const
 	// since a single UNICODE char may use one or more bytes...
 
 	KVI_ASSERT(str);
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	int len = (int)strlen(str);
 	if(caseS){
 		for(;;){
@@ -2860,7 +2860,7 @@ int KviCString::findLastIdx(char c) const
 	//Empty string ?
 	if(m_len < 1)return -1;
 	//p points to the last character in the string
-	register char *p=((m_ptr+m_len)-1);
+	char *p=((m_ptr+m_len)-1);
 	//go back until we find a match or we run to the first char in the string.
 	while((*p != c) && (p > m_ptr))p--;
 	//if *p == c --> matched, else we are at the beginning of the string.
@@ -2882,7 +2882,7 @@ int KviCString::findLastIdx(const char *str,bool caseS) const
 	//Too long ?
 	if(m_len < len)return -1;
 	//p points to the last character in the string
-	register char *p=((m_ptr+m_len)-1);
+	char *p=((m_ptr+m_len)-1);
 	if(caseS){
 		for(;;){
 			//go back until we find a character that mathes or we run to the first char.
@@ -2922,8 +2922,8 @@ KviCString & KviCString::trim()
 	//    abcd   0
 	// ^        ^
 	// left   right
-	register char *left=m_ptr;
-	register char *right=m_ptr+m_len-1;
+	char *left=m_ptr;
+	char *right=m_ptr+m_len-1;
 	// skip initial spaces
 	while(isspace(*left))left++;
 	if(*left){
@@ -2949,7 +2949,7 @@ KviCString & KviCString::stripRightWhiteSpace()
 {
 	if(*m_ptr)
 	{
-		register char *right=m_ptr+m_len-1;
+		char *right=m_ptr+m_len-1;
 		const char *start=right;
 		//isspace accepts 0..255 values in MSVC
 		while((right >= m_ptr) && ((unsigned)(*right +1) <= 256) && isspace( *right ))right--;
@@ -2967,7 +2967,7 @@ KviCString & KviCString::stripRight(char c)
 {
 	if(*m_ptr)
 	{
-		register char *right=m_ptr+m_len-1;
+		char *right=m_ptr+m_len-1;
 		const char *start=right;
 		while((right >= m_ptr) && (*right == c))right--;
 		if(right != start)
@@ -2986,8 +2986,8 @@ KviCString & KviCString::stripSpace()
 	//    abcd   0
 	// ^        ^
 	// left   right
-	register char *left=m_ptr;
-	register char *right=m_ptr+m_len-1;
+	char *left=m_ptr;
+	char *right=m_ptr+m_len-1;
 	// skip initial spaces
 	while((*left == ' ') || (*left == '\t'))left++;
 	if(*left){
@@ -3011,7 +3011,7 @@ KviCString & KviCString::stripSpace()
 
 bool KviCString::isNum() const
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(isspace(*p))p++;
 	if(*p=='-')p++;
 	if(!isdigit(*p))return false;
@@ -3022,7 +3022,7 @@ bool KviCString::isNum() const
 
 bool KviCString::isUnsignedNum() const
 {
-	register char *p=m_ptr;
+	char *p=m_ptr;
 	while(isspace(*p))p++;
 	if(!isdigit(*p))return false;
 	while(isdigit(*p))p++;
@@ -3038,7 +3038,7 @@ KviCString & KviCString::emptyString()
 }
 
 
-bool KviCString::ext_contains(register const char * data,const char * item,bool caseS)
+bool KviCString::ext_contains(const char * data,const char * item,bool caseS)
 {
 	if(item && data)
 	{

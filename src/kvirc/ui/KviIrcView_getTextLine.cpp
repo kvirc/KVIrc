@@ -178,7 +178,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	int iCurChunk = 0;
 	int blockLen;
 
-	register const kvi_wchar_t *p = data_ptr;
+	const kvi_wchar_t *p = data_ptr;
 
 	//Alloc the first attribute
 	line_ptr->uChunkCount = 1;
@@ -236,8 +236,8 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		iTextIdx = iTimeStampLength;                     // the rest of the string will begin 11 chars later
 
 		// throw away const: we WANT to set the chars :D
-		register QChar * data_ptr_aux = (QChar *)line_ptr->szText.unicode();
-		register QChar * stamp_ptr_aux = (QChar *)szTimestamp.unicode();
+		QChar * data_ptr_aux = (QChar *)line_ptr->szText.unicode();
+		QChar * stamp_ptr_aux = (QChar *)szTimestamp.unicode();
 
 		//copy the timestamp into line_ptr->szText.unicode()
 		for(int i=0;i<iTimeStampLength;i++)
