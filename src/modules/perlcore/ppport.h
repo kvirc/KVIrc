@@ -4,9 +4,9 @@
 /*
 ----------------------------------------------------------------------
 
-    ppport.h -- Perl/Pollution/Portability Version 3.24
+    ppport.h -- Perl/Pollution/Portability Version 3.32
 
-    Automatically created by Devel::PPPort running under perl 5.020000.
+    Automatically created by Devel::PPPort running under perl 5.022001.
 
     Version 3.x, Copyright (c) 2004-2013, Marcus Holland-Moritz.
 
@@ -23,8 +23,8 @@ SKIP
 if (@ARGV && $ARGV[0] eq '--unstrip') {
   eval { require Devel::PPPort };
   $@ and die "Cannot require Devel::PPPort, please install.\n";
-  if (eval $Devel::PPPort::VERSION < 3.24) {
-    die "ppport.h was originally generated with Devel::PPPort 3.24.\n"
+  if (eval $Devel::PPPort::VERSION < 3.32) {
+    die "ppport.h was originally generated with Devel::PPPort 3.32.\n"
       . "Your Devel::PPPort is only version $Devel::PPPort::VERSION.\n"
       . "Please install a newer version, or --unstrip will not work.\n";
   }
@@ -762,7 +762,11 @@ typedef OP* (CPERLscope(*Perl_check_t)) (pTHX_ OP*);
 #undef isPRINT
 #endif
 #ifdef HAS_QUAD
+#ifdef U64TYPE
 #define WIDEST_UTYPE U64TYPE
+#else
+#define WIDEST_UTYPE Quad_t
+#endif
 #else
 #define WIDEST_UTYPE U32
 #endif
@@ -2279,19 +2283,16 @@ sv_magic(SvMp_sv, obj, how, SvMp_name, SvMp_namlen); \
 #endif
 #if !defined(mg_findext)
 #if defined(NEED_mg_findext)
-static MAGIC * DPPP_(my_mg_findext)(pTHX_ SV * sv, int type, const MGVTBL *vtbl);
+static MAGIC * DPPP_(my_mg_findext)(SV * sv, int type, const MGVTBL *vtbl);
 static
 #else
-extern MAGIC * DPPP_(my_mg_findext)(pTHX_ SV * sv, int type, const MGVTBL *vtbl);
+extern MAGIC * DPPP_(my_mg_findext)(SV * sv, int type, const MGVTBL *vtbl);
 #endif
-#ifdef mg_findext
-#undef mg_findext
-#endif
-#define mg_findext(a,b,c) DPPP_(my_mg_findext)(aTHX_ a,b,c)
+#define mg_findext DPPP_(my_mg_findext)
 #define Perl_mg_findext DPPP_(my_mg_findext)
 #if defined(NEED_mg_findext) || defined(NEED_mg_findext_GLOBAL)
 MAGIC *
-DPPP_(my_mg_findext)(pTHX_ SV * sv, int type, const MGVTBL *vtbl) {
+DPPP_(my_mg_findext)(SV * sv, int type, const MGVTBL *vtbl) {
 if (sv) {
 MAGIC *mg;
 #ifdef AvPAD_NAMELIST
@@ -2426,6 +2427,73 @@ return 0;
 #endif
 #ifndef CopSTASH_eq
 #define CopSTASH_eq(c,hv) (CopSTASH(c) == (hv))
+#endif
+#endif
+#if (PERL_BCDVERSION >= 0x5006000)
+#ifndef caller_cx
+#if defined(NEED_caller_cx) || defined(NEED_caller_cx_GLOBAL)
+static I32
+DPPP_dopoptosub_at(const PERL_CONTEXT *cxstk, I32 startingblock)
+{
+I32 i;
+for (i = startingblock; i >= 0; i--) {
+register const PERL_CONTEXT * const cx = &cxstk[i];
+switch (CxTYPE(cx)) {
+default:
+continue;
+case CXt_EVAL:
+case CXt_SUB:
+case CXt_FORMAT:
+return i;
+}
+}
+return i;
+}
+#endif
+#if defined(NEED_caller_cx)
+static const PERL_CONTEXT * DPPP_(my_caller_cx)(pTHX_ I32 count, const PERL_CONTEXT **dbcxp);
+static
+#else
+extern const PERL_CONTEXT * DPPP_(my_caller_cx)(pTHX_ I32 count, const PERL_CONTEXT **dbcxp);
+#endif
+#ifdef caller_cx
+#undef caller_cx
+#endif
+#define caller_cx(a,b) DPPP_(my_caller_cx)(aTHX_ a,b)
+#define Perl_caller_cx DPPP_(my_caller_cx)
+#if defined(NEED_caller_cx) || defined(NEED_caller_cx_GLOBAL)
+const PERL_CONTEXT *
+DPPP_(my_caller_cx)(pTHX_ I32 count, const PERL_CONTEXT **dbcxp)
+{
+register I32 cxix = DPPP_dopoptosub_at(cxstack, cxstack_ix);
+register const PERL_CONTEXT *cx;
+register const PERL_CONTEXT *ccstack = cxstack;
+const PERL_SI *top_si = PL_curstackinfo;
+for (;;) {
+while (cxix < 0 && top_si->si_type != PERLSI_MAIN) {
+top_si = top_si->si_prev;
+ccstack = top_si->si_cxstack;
+cxix = DPPP_dopoptosub_at(ccstack, top_si->si_cxix);
+}
+if (cxix < 0)
+return NULL;
+if (PL_DBsub && GvCV(PL_DBsub) && cxix >= 0 &&
+ccstack[cxix].blk_sub.cv == GvCV(PL_DBsub))
+count++;
+if (!count--)
+break;
+cxix = DPPP_dopoptosub_at(ccstack, cxix - 1);
+}
+cx = &ccstack[cxix];
+if (dbcxp) *dbcxp = cx;
+if (CxTYPE(cx) == CXt_SUB || CxTYPE(cx) == CXt_FORMAT) {
+const I32 dbcxix = DPPP_dopoptosub_at(ccstack, cxix - 1);
+if (PL_DBsub && GvCV(PL_DBsub) && dbcxix >= 0 && ccstack[dbcxix].blk_sub.cv == GvCV(PL_DBsub))
+cx = &ccstack[dbcxix];
+}
+return cx;
+}
+#endif
 #endif
 #endif
 #ifndef IN_PERL_COMPILETIME
