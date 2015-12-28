@@ -416,7 +416,7 @@ const QString & KviIrcuIrcServerInfo::getUserModeDescription(QChar mode)
 		case 'g': return __tr2qs("g: Recipient for server debug notices"); break;
 		case 'k': return __tr2qs("k: Network service"); break;
 		case 'n': return __tr2qs("n: Channels hidden from WHOIS"); break;
-		case 'r': return __tr2qs("r: Registered)"); break;
+		case 'r': return __tr2qs("r: Registered"); break;
 		case 'x': return __tr2qs("x: Host hidden"); break;
 	}
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
