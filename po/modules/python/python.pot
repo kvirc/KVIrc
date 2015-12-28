@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-12-28 11:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/python/libkvipython.cpp:46
-msgid "The pythoncore module can't be loaded: python support not available"
+#: src/modules/python/libkvipython.cpp:42
+msgid "The pythoncore module can't be loaded: Python support not available"
 msgstr ""
 
-#: src/modules/python/libkvipython.cpp:47
+#: src/modules/python/libkvipython.cpp:43
 msgid "To see more details about loading failure try /pythoncore.load"
 msgstr ""
 
-#: src/modules/python/libkvipython.cpp:60
+#: src/modules/python/libkvipython.cpp:56
 msgid ""
-"This KVIrc executable has been compiled without python scripting support"
+"This KVIrc executable has been compiled without Python scripting support"
 msgstr ""
 
-#: src/modules/python/libkvipython.cpp:431
-#: src/modules/python/libkvipython.cpp:506
+#: src/modules/python/libkvipython.cpp:427
+#: src/modules/python/libkvipython.cpp:502
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
-"the python support"
+"the Python support"
 msgstr ""
 
+#: src/modules/python/libkvipython.cpp:444
 #: src/modules/python/libkvipython.cpp:448
-#: src/modules/python/libkvipython.cpp:452
 msgid "Python execution error:"
 msgstr ""
 
 #: src/modules/pythoncore/libkvipythoncore.cpp:129
-msgid "Internal error: python interpreter not initialized"
+msgid "Internal error: Python interpreter not initialized"
 msgstr ""

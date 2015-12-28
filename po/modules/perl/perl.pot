@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-12-28 11:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/modules/perl/libkviperl.cpp:47
-msgid "The perlcore module can't be loaded: perl support not available"
+msgid "The perlcore module can't be loaded: Perl support not available"
 msgstr ""
 
 #: src/modules/perl/libkviperl.cpp:48
@@ -26,14 +26,14 @@ msgid "To see more details about loading failure try /perlcore.load"
 msgstr ""
 
 #: src/modules/perl/libkviperl.cpp:61
-msgid "This KVIrc executable has been compiled without perl scripting support"
+msgid "This KVIrc executable has been compiled without Perl scripting support"
 msgstr ""
 
 #: src/modules/perl/libkviperl.cpp:465
 #: src/modules/perl/libkviperl.cpp:539
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
-"perl support"
+"Perl support"
 msgstr ""
 
 #: src/modules/perl/libkviperl.cpp:482
@@ -42,5 +42,5 @@ msgid "Perl execution error:"
 msgstr ""
 
 #: src/modules/perlcore/libkviperlcore.cpp:240
-msgid "Internal error: perl interpreter not initialized"
+msgid "Internal error: Perl interpreter not initialized"
 msgstr ""
