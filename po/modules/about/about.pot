@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-12-28 11:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,69 +38,74 @@ msgid "Runtime Info"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:124
-#: src/modules/about/AboutDialog.cpp:155
-msgid "System Name"
+#: src/modules/about/AboutDialog.cpp:159
+msgid "System name"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:132
-msgid "System Version"
+msgid "System version"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:136
 msgid "Architecture"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:141
+#: src/modules/about/AboutDialog.cpp:140
+#: src/modules/about/AboutDialog.cpp:184
+msgid "Qt version"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:145
 msgid "Build Info"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:143
-msgid "Build Date"
-msgstr ""
-
 #: src/modules/about/AboutDialog.cpp:147
-msgid "Sources Date"
+msgid "Build date"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:151
-msgid "Revision Number"
+msgid "Sources date"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:159
-msgid "CPU Name"
+#: src/modules/about/AboutDialog.cpp:155
+msgid "Revision number"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:163
-msgid "Build Command"
+msgid "CPU name"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:167
-msgid "Build Flags"
+msgid "Build command"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:172
-msgid "Compiler Name"
+#: src/modules/about/AboutDialog.cpp:171
+msgid "Build flags"
 msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:176
-msgid "Compiler Flags"
+msgid "Compiler name"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:182
+#: src/modules/about/AboutDialog.cpp:180
+msgid "Compiler flags"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:190
 msgid "Executable Information"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:195
+#: src/modules/about/AboutDialog.cpp:203
 msgid "Honor && Glory"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:214
+#: src/modules/about/AboutDialog.cpp:222
 msgid ""
-"Oops... Can't find the license file...\n"
+"Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:221
+#: src/modules/about/AboutDialog.cpp:229
 msgid "License"
 msgstr ""

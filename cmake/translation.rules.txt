@@ -60,19 +60,19 @@ IF(USE_GETTEXT_TRANSLATIONS)
 		IF(TRANSLATION_KVIRC_CORE)
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting messages for ${_potBasename}"
-				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} --from-code=UTF-8 -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
 		ELSEIF(TRANSLATION_DEFSCRIPT)
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting ctx messages for default script ${_potBasename}"
-				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} --language=C -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} --from-code=UTF-8 --language=C -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
 		ELSE()
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting ctx messages for ${_potBasename}"
-				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_no_lookup -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} --from-code=UTF-8 -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_no_lookup -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
 		ENDIF()
@@ -98,24 +98,45 @@ IF(USE_GETTEXT_TRANSLATIONS)
 			FILE(GLOB_RECURSE FILES_TO_TIDY ${pofiles})
 			FILE(GLOB_RECURSE POTS_TO_TIDY ${_absPotFile})
 			LIST(APPEND FILES_TO_TIDY ${POTS_TO_TIDY})
-			# this is for the messages-tidy-module target
-			FOREACH(curFile ${FILES_TO_TIDY})
-				ADD_CUSTOM_COMMAND(TARGET messages-tidy-${_potBasename}
-				COMMENT "Tidying ${curFile}..."
-				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
-				VERBATIM
-				DEPENDS ${curFile}
-				)
-			ENDFOREACH()
-			#this is for the messages-update-module target
-			FOREACH(curFile ${FILES_TO_TIDY})
-				ADD_CUSTOM_COMMAND(TARGET messages-update-${_potBasename}
-				COMMENT "Tidying ${curFile}..."
-				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
-				VERBATIM
-				DEPENDS ${curFile}
-				)
-			ENDFOREACH()
+			if(APPLE)
+				# this is for the messages-tidy-module target
+				FOREACH(curFile ${FILES_TO_TIDY})
+					ADD_CUSTOM_COMMAND(TARGET messages-tidy-${_potBasename}
+					COMMENT "Tidying ${curFile}..."
+					COMMAND ${SED_EXECUTABLE} -i "" -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
+					VERBATIM
+					DEPENDS ${curFile}
+					)
+				ENDFOREACH()
+				#this is for the messages-update-module target
+				FOREACH(curFile ${FILES_TO_TIDY})
+					ADD_CUSTOM_COMMAND(TARGET messages-update-${_potBasename}
+					COMMENT "Tidying ${curFile}..."
+					COMMAND ${SED_EXECUTABLE} -i "" -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
+					VERBATIM
+					DEPENDS ${curFile}
+					)
+				ENDFOREACH()
+			else()
+				# this is for the messages-tidy-module target
+				FOREACH(curFile ${FILES_TO_TIDY})
+					ADD_CUSTOM_COMMAND(TARGET messages-tidy-${_potBasename}
+					COMMENT "Tidying ${curFile}..."
+					COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
+					VERBATIM
+					DEPENDS ${curFile}
+					)
+				ENDFOREACH()
+				#this is for the messages-update-module target
+				FOREACH(curFile ${FILES_TO_TIDY})
+					ADD_CUSTOM_COMMAND(TARGET messages-update-${_potBasename}
+					COMMENT "Tidying ${curFile}..."
+					COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
+					VERBATIM
+					DEPENDS ${curFile}
+					)
+				ENDFOREACH()
+			endif()
 		ENDIF()
 
 	ENDIF()

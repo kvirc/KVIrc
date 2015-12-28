@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2015-12-28 11:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: src/modules/log/libkvilog.cpp:107
 #: src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:211
-msgid "Missing window id after the 'w' switch"
+msgid "Missing window ID after the 'w' switch"
 msgstr ""
 
 #: src/modules/log/libkvilog.cpp:118
@@ -38,7 +38,7 @@ msgid "This window has no logging capabilities"
 msgstr ""
 
 #: src/modules/log/libkvilog.cpp:265
-msgid "Window with id '%1' not found, returning empty string"
+msgid "Window with ID '%1' not found, returning empty string"
 msgstr ""
 
 #: src/modules/log/libkvilog.cpp:313
@@ -47,6 +47,26 @@ msgstr ""
 
 #: src/modules/log/libkvilog.cpp:323
 msgid "Failed to export the log '%1'"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:69
+msgid "Channel"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Query"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:77
+msgid "DCC Chat"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "Console"
+msgstr ""
+
+#: src/modules/logview/LogViewWidget.cpp:85
+msgid "Other"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:70
@@ -86,7 +106,7 @@ msgid "Show other logs"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:143
-msgid "Contents filter"
+msgid "Contents Filter"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:146
@@ -98,15 +118,15 @@ msgid "Log contents mask:"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:158
-msgid "Only older than"
+msgid "Only older than:"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:166
-msgid "Only newer than"
+msgid "Only newer than:"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:174
-msgid "Apply filter"
+msgid "Apply Filter"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:193
@@ -126,7 +146,7 @@ msgid "%1 on %2"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:448
-msgid "Remove all log files within this folder"
+msgid "Remove All Log Files Within This Folder"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:450
@@ -138,7 +158,7 @@ msgid "Remove log file"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:469
-msgid "Confirm current user log deletion"
+msgid "Confirm Current User Log Deletion"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:470
@@ -146,53 +166,33 @@ msgid "Do you really wish to delete this log?"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:485
-msgid "Confirm current user logs deletion"
+msgid "Confirm Current User Logs Deletion"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:486
 msgid "Do you really wish to delete all these logs?"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:595
+#: src/modules/logview/LogViewWindow.cpp:597
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:669
+#: src/modules/logview/LogViewWindow.cpp:677
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:672
+#: src/modules/logview/LogViewWindow.cpp:680
 msgid "Console on %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:675
+#: src/modules/logview/LogViewWindow.cpp:683
 msgid "Query with %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:678
+#: src/modules/logview/LogViewWindow.cpp:686
 msgid "DCC Chat with %1"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:681
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Something on %1"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:69
-msgid "Channel"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:73
-msgid "Query"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:77
-msgid "DCC Chat"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:81
-msgid "Console"
-msgstr ""
-
-#: src/modules/logview/LogViewWidget.cpp:85
-msgid "Other"
 msgstr ""

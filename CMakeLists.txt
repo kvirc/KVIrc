@@ -1225,14 +1225,25 @@ if(WANT_GETTEXT)
 		file(GLOB_RECURSE FILES_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.po)
 		file(GLOB_RECURSE POTS_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.pot)
 		list(APPEND FILES_TO_TIDY ${POTS_TO_TIDY})
-		foreach(curFile ${FILES_TO_TIDY})
-			add_custom_command(TARGET messages-tidy
-			COMMENT "Tidying ${curFile}..."
-			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
-			VERBATIM
-			DEPENDS ${curFile}
-			)
-		endforeach()
+		if(APPLE)
+			foreach(curFile ${FILES_TO_TIDY})
+				add_custom_command(TARGET messages-tidy
+				COMMENT "Tidying ${curFile}..."
+				COMMAND ${SED_EXECUTABLE} -i "" -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				VERBATIM
+				DEPENDS ${curFile}
+				)
+			endforeach()
+		else()
+			foreach(curFile ${FILES_TO_TIDY})
+				add_custom_command(TARGET messages-tidy
+				COMMENT "Tidying ${curFile}..."
+				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				VERBATIM
+				DEPENDS ${curFile}
+				)
+			endforeach()
+		endif()
 		if(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_XGETTEXT_EXECUTABLE)
 			add_dependencies(messages-update messages-tidy)
 		endif()
