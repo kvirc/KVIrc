@@ -60,7 +60,7 @@ OptionsWidget_logging::OptionsWidget_logging(QWidget * parent)
 			"Set to 0 to disable this feature</center>","options"));
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	addBoolSelector(0,6,0,6,__tr2qs_ctx("Gzip logs","options"),KviOption_boolGzipLogs);
+	addBoolSelector(0,6,0,6,__tr2qs_ctx("Compress logs","options"),KviOption_boolGzipLogs);
 #endif
 
 	addRowSpacer(0,7,0,7);
