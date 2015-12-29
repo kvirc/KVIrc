@@ -370,7 +370,7 @@ void ThemeManagementDialog::applyCurrentTheme()
 		return;
 	}
 
-	m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ","theme")+KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)+"</b>");
+	m_pCurrentInstalledThemeLabel->setText(QString(__tr2qs_ctx("<b><u>Current Installed Theme:</u> %1</b>","theme")).arg(KVI_OPTION_STRING(KviOption_stringIconThemeSubdir)));
 	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))->scaled(64,64,Qt::KeepAspectRatio));
 }
 
