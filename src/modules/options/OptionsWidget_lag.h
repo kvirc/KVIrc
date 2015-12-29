@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : OptionsWidget_lag.h
-//   Creation date : Wed Cct 16 10:45:54 CEST 2002 by Juanjo Álvarez (juanjux@yahoo.es)
+//   Creation date : Wed Oct 16 10:45:54 CEST 2002 by Juanjo Álvarez (juanjux@yahoo.es)
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2002 Juanjo Álvarez
@@ -27,7 +27,7 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_lag KviIconManager::Stats
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_lag KviIconManager::ServerPing
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_lag __tr2qs_no_lookup("Lag")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_lag OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_lag __tr2qs_no_lookup("time,ping")

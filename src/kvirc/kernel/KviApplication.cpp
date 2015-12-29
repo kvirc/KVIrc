@@ -866,7 +866,7 @@ Let's see the scheme to understand which is choosen:
 			break;
 			case KviWindow::SocketSpy: eIcon = KviIconManager::Spy; break;
 			case KviWindow::DccChat: eIcon = KviIconManager::DccMsg; break;
-			case KviWindow::DccTransfer: eIcon = KviIconManager::ServerPing; break;
+			case KviWindow::DccTransfer: eIcon = KviIconManager::Dcc; break;
 			case KviWindow::UserWindow: eIcon = KviIconManager::UserWindow; break;
 			case KviWindow::Debug: eIcon = KviIconManager::Bomb; break;
 			//KviWindow::DeadChannel
