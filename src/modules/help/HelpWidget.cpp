@@ -91,7 +91,7 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	m_pToolBarHighlight->addWidget(m_pFindText);
 	connect(m_pFindText,SIGNAL(textChanged(const QString )),this,SLOT(slotTextChanged(const QString)));
 
-	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Unrecognized), __tr2qs("Reset"), this, SLOT(slotResetFind()));
+	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Discard), __tr2qs("Reset"), this, SLOT(slotResetFind()));
 	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Part), __tr2qs("Find previous"), this, SLOT(slotFindPrev()));
 	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Join), __tr2qs("Find next"), this, SLOT(slotFindNext()));
 

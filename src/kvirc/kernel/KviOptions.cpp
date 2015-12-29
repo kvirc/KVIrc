@@ -788,7 +788,7 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("Deop",__tr_no_lookup("-o mode change"),KviIconManager::DeOp,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Voice",__tr_no_lookup("+v mode change"),KviIconManager::Voice,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Devoice",__tr_no_lookup("-v mode change"),KviIconManager::DeVoice,KVI_MSGTYPE_LEVEL_2),
-	MSGTYPE_OPTION("Mode",__tr_no_lookup("Multiple user mode change"),KviIconManager::Mode,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION("Mode",__tr_no_lookup("Multiple user mode change"),KviIconManager::UserMode,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Key",__tr_no_lookup("Channel key change"),KviIconManager::Key,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Limit",__tr_no_lookup("Channel limit change"),KviIconManager::Limit,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Ban",__tr_no_lookup("+b mode change"),KviIconManager::Ban,KVI_MSGTYPE_LEVEL_2),
