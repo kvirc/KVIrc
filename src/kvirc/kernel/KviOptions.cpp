@@ -788,7 +788,7 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("Deop",__tr_no_lookup("-o mode change"),KviIconManager::DeOp,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Voice",__tr_no_lookup("+v mode change"),KviIconManager::Voice,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Devoice",__tr_no_lookup("-v mode change"),KviIconManager::DeVoice,KVI_MSGTYPE_LEVEL_2),
-	MSGTYPE_OPTION("Mode",__tr_no_lookup("Multiple user mode change"),KviIconManager::UserMode,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION("Mode",__tr_no_lookup("Multiple user mode change"),KviIconManager::Mode,KVI_MSGTYPE_LEVEL_2), //This is a generic icon for both user/chan
 	MSGTYPE_OPTION("Key",__tr_no_lookup("Channel key change"),KviIconManager::Key,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Limit",__tr_no_lookup("Channel limit change"),KviIconManager::Limit,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("Ban",__tr_no_lookup("+b mode change"),KviIconManager::Ban,KVI_MSGTYPE_LEVEL_2),
@@ -797,7 +797,7 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("BanUnexcept",__tr_no_lookup("-e mode change"),KviIconManager::BanUnExcept,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("InviteExcept",__tr_no_lookup("+I mode change"),KviIconManager::InviteExcept,KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("InviteUnexcept",__tr_no_lookup("-I mode change"),KviIconManager::InviteUnExcept,KVI_MSGTYPE_LEVEL_2),
-	MSGTYPE_OPTION("ChanMode",__tr_no_lookup("Multiple channel mode change"),KviIconManager::ChanMode,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION("ChanMode",__tr_no_lookup("Multiple channel mode change"),KviIconManager::Mode,KVI_MSGTYPE_LEVEL_2),  //This is a generic icon for both user/chan
 	MSGTYPE_OPTION("Who",__tr_no_lookup("Who reply"),KviIconManager::Who,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("DccRequest",__tr_no_lookup("DCC request"),KviIconManager::DccRequest,KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("DccMsg",__tr_no_lookup("DCC message"),KviIconManager::DccMsg,KVI_MSGTYPE_LEVEL_2),
