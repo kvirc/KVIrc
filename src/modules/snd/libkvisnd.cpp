@@ -260,7 +260,7 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 	if(isMuted())
 		return true;
 
-	Phonon::MediaSource media(szFileName);
+	Phonon::MediaSource media(QUrl::fromLocalFile(szFileName));
 
 	if(!m_pPhononPlayer)
 		m_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory,media);
