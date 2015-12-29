@@ -953,7 +953,7 @@ KviChangeUserModeAction::KviChangeUserModeAction(QObject * pParent)
 	__tr2qs("Shows a popup menu that allows quickly changing user modes"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_usermode.png",
-	KviIconManager::Mode,
+	KviIconManager::UserMode,
 	NeedsContext | NeedsConnection)
 {
 }

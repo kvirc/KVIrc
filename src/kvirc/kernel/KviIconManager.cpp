@@ -87,7 +87,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"close",               // 1
 	"history",             // 2
 	"historyoff",          // 3
-	"restore",             // 4    No longer used, do not remove entry, just reuse entry for new icons.
+	"usermode",            // 4
 	"default",             // 5
 	"dock",                // 6
 	"undock",              // 7
@@ -618,7 +618,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case   1: return KviIconManager::Close;                break;
 		case   2: return KviIconManager::History;              break;
 		case   3: return KviIconManager::HistoryOff;           break;
-		case   4: return KviIconManager::Restore;              break; //No longer used, do not remove entry, just reuse entry for new icons.
+		case   4: return KviIconManager::UserMode;             break;
 		case   5: return KviIconManager::DefaultIcon;          break;
 		case   6: return KviIconManager::Dock;                 break;
 		case   7: return KviIconManager::UnDock;               break;

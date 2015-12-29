@@ -169,7 +169,7 @@ public:
 		Close                =   1,
 		History              =   2,
 		HistoryOff           =   3,
-		Restore              =   4, //No longer used, do not remove entry, just reuse entry for new icons.
+		UserMode             =   4,
 		DefaultIcon          =   5,
 		Dock                 =   6,
 		UnDock               =   7,
