@@ -194,7 +194,7 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 	QAction *pAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Toolbar)),__tr2qs("Toolbars"));
 	pAction->setMenu(m_pToolbarsPopup);
 
-	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
+	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show Status Bar"),m_pFrm,SLOT(toggleStatusBar()));
 	m_pStatusBarAction->setCheckable(true);
 
 	opt->addSeparator();
