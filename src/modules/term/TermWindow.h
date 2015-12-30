@@ -47,6 +47,19 @@
 	public:
 		virtual QSize sizeHint() const;
 	};
+#else
+	#include <QObject>
+
+	// Dummy, to make moc happy
+	class TermWindow : public QObject
+	{
+		Q_OBJECT
+	public:
+		TermWindow()
+			: QObject()
+		{
+		}
+	};
 #endif
 
 #endif //_KVI_HELPWINDOW_H_

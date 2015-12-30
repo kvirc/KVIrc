@@ -65,6 +65,19 @@
 		void konsoleDestroyed();
 		void autoClose();
 	};
+#else
+	// Dummy, to make moc happy
+	#include <QObject>
+	
+	class TermWidget : public QObject
+	{
+		Q_OBJECT
+	public:
+		TermWidget()
+			: QObject()
+		{
+		}
+	};
 #endif
 
 #endif //_HELPWIDGET_H_
