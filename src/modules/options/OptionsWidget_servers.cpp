@@ -1271,7 +1271,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	addWidgetToLayout(m_pFilterEdit,1,0,1,0);
 
 	m_pShowFavoritesOnlyButton = new QToolButton(this);
-	m_pShowFavoritesOnlyButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Favorite)));
+	m_pShowFavoritesOnlyButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::FavoriteOff)));
 	m_pShowFavoritesOnlyButton->setCheckable(true);
 	m_pShowFavoritesOnlyButton->setChecked(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
 	KviTalToolTip::add(m_pShowFavoritesOnlyButton,__tr2qs_ctx("<center>If this option is enabled, only servers you have favorited will be displayed</center>","options"));
@@ -2034,6 +2034,11 @@ void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
 		}
 		network->setHidden(!uServers);
 	}
+	
+	m_pShowFavoritesOnlyButton->setIcon(
+			*(g_pIconManager->getSmallIcon(bSet ? KviIconManager::Favorite : KviIconManager::FavoriteOff))
+		);
+
 }
 
 void OptionsWidget_servers::copyServer()
