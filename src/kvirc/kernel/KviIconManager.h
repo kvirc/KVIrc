@@ -500,7 +500,8 @@ public:
 		Identity             = 332,
 		NickPopup            = 333,
 		Tools                = 334,
-		IconCount            = 335
+		FavoriteOff          = 335,
+		IconCount            = 336
 	};
 
 	/**

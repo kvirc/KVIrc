@@ -418,6 +418,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"identity",            // 332
 	"nickpopup",           // 333
 	"tools"                // 334
+	"favoriteOff"          // 335
 
 };
 
@@ -949,6 +950,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 332: return KviIconManager::Identity;             break;
 		case 333: return KviIconManager::NickPopup;            break;
 		case 334: return KviIconManager::Tools;                break;
+		case 335: return KviIconManager::FavoriteOff;          break;
 		case   0:
 		case KviIconManager::IconCount:
 		default: return KviIconManager::None;                  break;
