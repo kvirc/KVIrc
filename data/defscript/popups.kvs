@@ -18,7 +18,7 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Stop Highlighting (Local)","defscript"),41) (%:beingHlTmp && !%:beingHl)
+	item($tr("Stop Highlighting (Local)","defscript"),44) (%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.removeNick $0
 	}
@@ -66,7 +66,7 @@ defpopup(highlight)
 		reguser.setproperty $0 highlight 1
 	}
 
-	item($tr("Stop Highlighting","defscript"),41) (%:beingHl)
+	item($tr("Stop Highlighting","defscript"),44) (%:beingHl)
 	{
 		reguser.setproperty $0 highlight 0
 	}
@@ -484,7 +484,7 @@ defpopup(windowpopup)
 		}
 	}
 
-	item($str.printf($tr("Stop Auto-Joining Channel on Server '?s'","defscript"),%:szServer),41) (%:bIsChannel && %:bIsAutoJoinedOnServer)
+	item($str.printf($tr("Stop Auto-Joining Channel on Server '?s'","defscript"),%:szServer),44) (%:bIsChannel && %:bIsAutoJoinedOnServer)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
@@ -497,7 +497,7 @@ defpopup(windowpopup)
 		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
 	}
 
-	item($str.printf($tr("Stop Auto-Joining Channel on Network '?s'","defscript"),%:szNetwork),41) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
+	item($str.printf($tr("Stop Auto-Joining Channel on Network '?s'","defscript"),%:szNetwork),44) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
@@ -672,13 +672,13 @@ defpopup(hostpopup)
 
 	separator
 
-	item($tr("Traceroute to ","defscript")$0,184)
+	item($tr("Traceroute to ","defscript")$0,36)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item($tr("Traceroute6 to ","defscript")$0,184)
+	item($tr("Traceroute6 to ","defscript")$0,36)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert6 $0
@@ -909,7 +909,7 @@ defpopup(logging)
 
 	separator
 
-	item($tr("Stop Logging","defscript"),41) (%:logfile)
+	item($tr("Stop Logging","defscript"),44) (%:logfile)
 	{
 		log.stop
 	}
