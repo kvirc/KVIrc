@@ -34,7 +34,6 @@
 
 	class TermWindow : public KviWindow
 	{
-		Q_OBJECT
 	public:
 		TermWindow(const char * name);
 		~TermWindow();

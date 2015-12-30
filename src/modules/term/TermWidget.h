@@ -38,7 +38,6 @@
 
 	class TermWidget : public QFrame
 	{
-		Q_OBJECT
 		Q_PROPERTY( int KviProperty_ChildFocusOwner READ dummy )
 	public:
 		TermWidget(QWidget * par,bool bIsStandalone = false);

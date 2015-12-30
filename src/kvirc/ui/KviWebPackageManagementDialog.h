@@ -47,8 +47,6 @@ class QUrl;
 ///
 class KVIRC_API KviWebPackageManagementDialog : public QWidget
 {
-	Q_OBJECT
-
 public:
 
 	///
