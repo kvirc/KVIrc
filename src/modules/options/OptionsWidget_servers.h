@@ -204,6 +204,7 @@ protected:
 	QToolButton                  * m_pImportButton;
 	QToolButton                  * m_pFavoriteServerButton;
 	bool                           m_bShowingFavoritesOnly;
+	QToolButton                  * m_pShowFavoritesOnlyButton;
 private:
 	void fillServerList();
 	void saveLastItem();
@@ -219,7 +220,6 @@ protected slots:
 	void newNetwork();
 	void removeCurrent();
 	void newServer();
-	void slotSetShowFavoritesOnly();
 	void updateFavoritesFilter(bool bSet);
 	void favoriteServer();
 	void copyServer();

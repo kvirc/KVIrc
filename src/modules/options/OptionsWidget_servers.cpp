@@ -1270,6 +1270,14 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	KviTalToolTip::add(m_pFilterEdit,__tr2qs_ctx("<center>If you are searching for a specific server or network, you can insert its name to filter the servers in the list</center>","options"));
 	addWidgetToLayout(m_pFilterEdit,1,0,1,0);
 
+	m_pShowFavoritesOnlyButton = new QToolButton(this);
+	m_pShowFavoritesOnlyButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Favorite)));
+	m_pShowFavoritesOnlyButton->setCheckable(true);
+	m_pShowFavoritesOnlyButton->setChecked(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
+	KviTalToolTip::add(m_pShowFavoritesOnlyButton,__tr2qs_ctx("<center>If this option is enabled, only servers you have favorited will be displayed</center>","options"));
+	addWidgetToLayout(m_pShowFavoritesOnlyButton,3,0,3,0);
+	connect(m_pShowFavoritesOnlyButton,SIGNAL(toggled(bool)),this,SLOT(updateFavoritesFilter(bool))); // Sets the server to a favorite
+
 	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,1,1,1);
 	m_pTreeWidget->setColumnCount(2);
@@ -1384,7 +1392,6 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
 	m_pShowThisDialogAtStartupSelector = NULL;
-	m_pShowFavoritesOnly = NULL;
 
 	// The "Show this dialog at startup" option is shown only when the server options widget is shown as standalone dialog
 	if(parent->inherits("OptionsWidgetContainer"))
@@ -1437,16 +1444,10 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		{
 			m_pShowThisDialogAtStartupSelector = addBoolSelector(pContainer,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
 			pContainer->setLeftCornerWidget(m_pShowThisDialogAtStartupSelector);
-			m_pShowFavoritesOnly = addBoolSelector(pContainer,__tr2qs_ctx("Only display favorite servers","options"),KviOption_boolShowFavoriteServersOnly);
-			pContainer->setNextToLeft(m_pShowFavoritesOnly);
 			// This selector can be destroyed upon reparenting: make sure it's removed from the selector list
 			// (or we'll get a crash at commit() time...).
 			connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
 			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the servers dialog will appear every time you start KVIrc</center>","options"));
-
-			connect(m_pShowFavoritesOnly,SIGNAL(destroyed()),this,SLOT(slotSetShowFavoritesOnly()));
-			connect(m_pShowFavoritesOnly,SIGNAL(toggled(bool)),this,SLOT(updateFavoritesFilter(bool))); // Sets the server to a favorite
-			KviTalToolTip::add(m_pShowFavoritesOnly,__tr2qs_ctx("<center>If this option is enabled, only servers you have favorited will be displayed</center>","options"));
 		}
 
 		new QShortcut(Qt::Key_Escape, parent, SLOT(close()));
@@ -1491,14 +1492,6 @@ void OptionsWidget_servers::slotShowThisDialogAtStartupSelectorDestroyed()
 
 	removeSelector(m_pShowThisDialogAtStartupSelector);
 	m_pShowThisDialogAtStartupSelector = NULL;
-}
-
-void OptionsWidget_servers::slotSetShowFavoritesOnly()
-{
-	KVI_ASSERT(m_pShowFavoritesOnly);
-
-	removeSelector(m_pShowFavoritesOnly);
-	m_pShowFavoritesOnly = NULL;
 }
 
 void OptionsWidget_servers::recentServersPopupAboutToShow()
@@ -1818,6 +1811,9 @@ void OptionsWidget_servers::commit()
 		}
 
 	}
+	
+	KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly) = m_pShowFavoritesOnlyButton->isChecked();
+
 
 	KviOptionsWidget::commit();
 
@@ -1998,19 +1994,19 @@ void OptionsWidget_servers::newServer()
 
 void OptionsWidget_servers::favoriteServer()
 {
-	if(m_pLastEditedItem)
-	{
-		if(m_pLastEditedItem->m_pServerData->favorite())
-			m_pLastEditedItem->m_pServerData->setFavorite(false);
-		else
-			m_pLastEditedItem->m_pServerData->setFavorite(true);
+	if(!m_pLastEditedItem)
+		return;
 
-		unsigned icon = m_pLastEditedItem->m_pServerData->favorite() ? KviIconManager::ServerFavorite : KviIconManager::Server;
-		m_pLastEditedItem->setIcon(0,*(g_pIconManager->getSmallIcon(icon)));
+	if(m_pLastEditedItem->m_pServerData->favorite())
+		m_pLastEditedItem->m_pServerData->setFavorite(false);
+	else
+		m_pLastEditedItem->m_pServerData->setFavorite(true);
 
-		if(m_bShowingFavoritesOnly)
-			updateFavoritesFilter(true);
-	}
+	unsigned icon = m_pLastEditedItem->m_pServerData->favorite() ? KviIconManager::ServerFavorite : KviIconManager::Server;
+	m_pLastEditedItem->setIcon(0,*(g_pIconManager->getSmallIcon(icon)));
+
+	if(m_bShowingFavoritesOnly)
+		updateFavoritesFilter(true);
 }
 
 void OptionsWidget_servers::updateFavoritesFilter(bool bSet)
