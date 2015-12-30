@@ -199,7 +199,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"regusers",            // 113
 	"dockwidget",          // 114
 	"unsetmode",           // 115
-	"maxvertical",         // 116 No longer used, do not remove entry, just reuse entry for new icons.
+	"favorite",            // 116
 	"toolbar",             // 117
 	"serverfavorite",      // 118
 	"log",                 // 119
@@ -730,7 +730,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 113: return KviIconManager::RegUsers;             break;
 		case 114: return KviIconManager::TrayIcon;             break;
 		case 115: return KviIconManager::UnsetMode;            break;
-		case 116: return KviIconManager::MaxVertical;          break; //No longer used, do not remove entry, just reuse entry for new icons.
+		case 116: return KviIconManager::Favorite;             break;
 		case 117: return KviIconManager::Toolbar;              break;
 		case 118: return KviIconManager::ServerFavorite;       break;
 		case 119: return KviIconManager::Log;                  break;

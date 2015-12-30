@@ -281,7 +281,7 @@ public:
 		RegUsers             = 113,
 		TrayIcon             = 114,
 		UnsetMode            = 115,
-		MaxVertical          = 116, //No longer used, do not remove entry, just reuse entry for new icons.
+		Favorite             = 116,
 		Toolbar              = 117,
 		ServerFavorite       = 118,
 		Log                  = 119,
