@@ -342,7 +342,7 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 	addLabel(0,2,0,2,__tr2qs_ctx("Highlighted message in inactive window:","options"));
 	addSoundSelector(1,2,1,2,"",KviOption_stringOnHighlightedMessageSound);
 
-	addLabel(0,3,0,3,__tr2qs_ctx("On me was kicked:","options"));
+	addLabel(0,3,0,3,__tr2qs_ctx("When I am kicked:","options"));
 	addSoundSelector(1,3,1,3,"",KviOption_stringOnMeKickedSound);
 
 	addRowSpacer(0,4,1,4);
