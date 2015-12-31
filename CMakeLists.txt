@@ -881,24 +881,25 @@ endif()
 # (note: needed for user documentation generation)
 option(WANT_PERL "Compile Perl Support" ON)
 
-#perl is needed for documentation, too
-find_package(Perl)
-
 if(WANT_PERL)
-	if(PERL_FOUND)
+	find_package(PerlLibs)
+	if(PERLLIBS_FOUND)
 		set(COMPILE_PERL_SUPPORT 1)
-		set(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting+doc")
+		set(CMAKE_STATUS_PERLLIBS_SUPPORT "Yes")
 
 		# Perl compilation / linking flags are handled inside perlcore module
 	else()
-		set(CMAKE_STATUS_PERL_SUPPORT "No")
+		set(CMAKE_STATUS_PERLLIBS_SUPPORT "No")
 	endif()
+endif()
+
+#perl is needed for documentation, too
+find_package(Perl)
+
+if(PERL_FOUND)
+	set(CMAKE_STATUS_PERL_SUPPORT "Yes")
 else()
-	if(PERL_FOUND)
-		set(CMAKE_STATUS_PERL_SUPPORT "Used for doc, but scripting disabled by user")
-	else()
-		set(CMAKE_STATUS_PERL_SUPPORT "No")
-	endif()
+	set(CMAKE_STATUS_PERL_SUPPORT "No")
 endif()
 
 # Check for Python support
@@ -1505,7 +1506,7 @@ message(STATUS "Cryptography:")
 message(STATUS "   Crypt Support And Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
 message(STATUS "   OpenSSL Support             : ${CMAKE_STATUS_SSL_SUPPORT}")
 message(STATUS "Scripting:")
-message(STATUS "   Perl Support                : ${CMAKE_STATUS_PERL_SUPPORT}")
+message(STATUS "   Perl Support                : ${CMAKE_STATUS_PERLLIBS_SUPPORT}")
 message(STATUS "   Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 message(STATUS "DCC features:")
 #message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
@@ -1514,6 +1515,7 @@ message(STATUS "   GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 message(STATUS "   DCC Video Support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
 message(STATUS "   Ogg/Theora Support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")
 message(STATUS "Documentation:")
+message(STATUS "   Perl                        : ${CMAKE_STATUS_PERL_SUPPORT}")
 message(STATUS "   GetText Support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}${GETTEXT_EXTRA_STATUS}")
 message(STATUS "   GetText Messages Tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
 #message(STATUS "   Generate int. help files    : ${CMAKE_STATUS_GEN_USERDOC}")
