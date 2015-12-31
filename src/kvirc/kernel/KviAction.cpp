@@ -497,17 +497,17 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 	QPixmap * pPix = smallIcon();
 	QString szTmp = visibleName();
 
-	if(!m_szKeySequence.isEmpty())
-		szTmp += '\t' + m_szKeySequence;
-
 	QAction *pAction;
 	if(pPix)
         pAction = pMenu->addAction(*pPix,szTmp,this,SLOT(activate()));
 	else
         pAction = pMenu->addAction(szTmp,this,SLOT(activate()));
 
-    // avoid Qt to put this action in the application menu based on its title
-    pAction->setMenuRole(QAction::NoRole);
+	// avoid Qt to put this action in the application menu based on its title
+	pAction->setMenuRole(QAction::NoRole);
+
+	if(!m_szKeySequence.isEmpty())
+		pAction->setShortcut(m_szKeySequence);
 
 	if(!isEnabled())
 		pAction->setEnabled(false);
