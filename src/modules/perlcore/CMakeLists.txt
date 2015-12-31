@@ -32,6 +32,9 @@ endif()
 		OUTPUT_VARIABLE PERL_LINK_FLAGS
 	)
 
+	# Replace -lperl with PERL_LIBRARY
+	string(REGEX REPLACE " -lperl" " ${PERL_LIBRARY} " PERL_LINK_FLAGS ${PERL_LINK_FLAGS})
+
 if(MSVC)
 	# breaks with -nodefaultlib
 	string(REPLACE " -nodefaultlib" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
