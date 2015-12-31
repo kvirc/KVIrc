@@ -654,41 +654,38 @@ bool KviConnectAction::addToPopupMenu(QMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pMainWindow->activeContext();
-    QAction * pAction;
+	QAction * pAction;
 	QString t;
 	if(c)
 	{
 		switch(c->state())
 		{
 			case KviIrcContext::Idle:
-				t = m_szConnectString;
-				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-				p->addAction(t,this,SLOT(activate()));
+				pAction = p->addAction(m_szConnectString,this,SLOT(activate()));
+				if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 			break;
 			case KviIrcContext::PendingReconnection:
 			case KviIrcContext::Connecting:
 			case KviIrcContext::LoggingIn:
-				t = m_szAbortConnectionString;
-				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-				p->addAction(t,this,SLOT(activate()));
+				pAction = p->addAction(m_szAbortConnectionString,this,SLOT(activate()));
+				if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 			break;
 			case KviIrcContext::Connected:
-				t = m_szDisconnectString;
-				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-				p->addAction(t,this,SLOT(activate()));
+				pAction = p->addAction(m_szDisconnectString,this,SLOT(activate()));
+				if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 			break;
 			default:
 				t = m_szConnectString;
-				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-                pAction = p->addAction(t,this,SLOT(activate()));
-                pAction->setEnabled(false);
+				pAction = p->addAction(t,this,SLOT(activate()));
+				pAction->setEnabled(false);
+				if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 			break;
 		}
 	} else {
 		t = m_szConnectString;
-		if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-        pAction = p->addAction(t,this,SLOT(activate()));
-        pAction->setEnabled(false);
+		pAction = p->addAction(t,this,SLOT(activate()));
+		pAction->setEnabled(false);
+		if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 	}
 	return true;
 }
@@ -1123,7 +1120,7 @@ bool KviGoAwayAction::addToPopupMenu(QMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pMainWindow->activeContext();
-    QAction *pAction;
+	QAction *pAction;
 	QString t;
 	if(c)
 	{
@@ -1131,25 +1128,21 @@ bool KviGoAwayAction::addToPopupMenu(QMenu *p)
 		{
 			if(c->connection()->userInfo()->isAway())
 			{
-				t = m_szBackString;
-				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-				p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)),t,this,SLOT(activate()));
+				pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)),m_szBackString,this,SLOT(activate()));
+				if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 			} else {
-				t = m_szAwayString;
-				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-				p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
+				pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),m_szAwayString,this,SLOT(activate()));
+				if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 			}
 		} else {
-			t = m_szAwayString;
-			if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-            pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
-            pAction->setEnabled(false);
+			pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),m_szAwayString,this,SLOT(activate()));
+			pAction->setEnabled(false);
+			if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 		}
 	} else {
-		t = m_szAwayString;
-		if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-        pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
-        pAction->setEnabled(false);
+		pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),m_szAwayString,this,SLOT(activate()));
+		pAction->setEnabled(false);
+		if(!m_szKeySequence.isEmpty())pAction->setShortcut(m_szKeySequence);
 	}
 	return true;
 }
