@@ -2013,6 +2013,12 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 		pEntry = pEntry->m_pNext;
 	}
 
+	p.setPen(palette().dark().color());
+	p.drawLine(0,0,width(),0);
+	p.drawLine(0,0,0,height());
+	p.setPen(palette().light().color());
+	p.drawLine(1,height()-1,width()-1,height()-1);
+	p.drawLine(width()-1,1,width()-1,height());
 }
 
 void KviUserListViewArea::resizeEvent(QResizeEvent *)
