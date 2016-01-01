@@ -3,7 +3,7 @@
 
 //=============================================================================
 //
-//   File : KviOsInfo.h
+//   File : KviRuntimeInfo.h
 //   Creation date : Thu Jan 19 2006 13:50:11 GMT by Alexey Uzhva
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -29,7 +29,7 @@
 
 #include <QString>
 
-namespace KviOsInfo
+namespace KviRuntimeInfo
 {
 	extern KVILIB_API QString type();
 	extern KVILIB_API QString name();

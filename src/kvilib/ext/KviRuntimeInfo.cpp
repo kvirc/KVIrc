@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviOsInfo.cpp
+//   File : KviRuntimeInfo.cpp
 //   Creation date : Thu Jan 19 2006 13:50:11 GMT by Alexey Uzhva
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -23,7 +23,7 @@
 //=============================================================================
 
 
-#include "KviOsInfo.h"
+#include "KviRuntimeInfo.h"
 #include "KviLocale.h"
 #include "KviQString.h"
 
@@ -634,7 +634,7 @@ static QString queryWinInfo(QueryInfo info)
 #endif
 
 
-namespace KviOsInfo
+namespace KviRuntimeInfo
 {
 	QString type()
 	{
