@@ -891,13 +891,6 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	setObjectName("identity_profile_editor");
 	setWindowTitle(__tr2qs_ctx("Profile Editor - KVIrc","options"));
 
-	m_szName = __tr2qs_ctx("Profile name","options");
-	m_szNetwork = __tr2qs_ctx("My network","options");
-	m_szNick = __tr2qs_ctx("My nickname","options");
-	m_szAltNick = __tr2qs_ctx("My nickname 2","options");
-	m_szUserName = __tr2qs_ctx("My username","options");
-	m_szRealName = __tr2qs_ctx("My real name","options");
-
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(__tr2qs_ctx("Profile name:","options"),this);
@@ -906,7 +899,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	m_pNameEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pNameEdit,__tr2qs_ctx("Put here the name of the profile","options"));
 	pLayout->addWidget(m_pNameEdit,0,1,1,2);
-	connect(m_pNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+	connect(m_pNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton()));
 
 	pLabel = new QLabel(__tr2qs_ctx("Network name:","options"),this);
 	pLayout->addWidget(pLabel,1,0);
@@ -914,7 +907,6 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	m_pNetworkEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pNetworkEdit,__tr2qs_ctx("Put here the name of the network","options"));
 	pLayout->addWidget(m_pNetworkEdit,1,1,1,2);
-	connect(m_pNetworkEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
 	pLabel = new QLabel(__tr2qs_ctx("Nickname:","options"),this);
 	pLayout->addWidget(pLabel,2,0);
@@ -922,7 +914,6 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	m_pNickEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pNickEdit,__tr2qs_ctx("Put here the nickname you want to use","options"));
 	pLayout->addWidget(m_pNickEdit,2,1,1,2);
-	connect(m_pNickEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
 	pLabel = new QLabel(__tr2qs_ctx("Alternative nickname:","options"),this);
 	pLayout->addWidget(pLabel,3,0);
@@ -930,7 +921,6 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	m_pAltNickEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pAltNickEdit,__tr2qs_ctx("Put here the alternative nickname you want to use","options"));
 	pLayout->addWidget(m_pAltNickEdit,3,1,1,2);
-	connect(m_pAltNickEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
 	pLabel = new QLabel(__tr2qs_ctx("Username:","options"),this);
 	pLayout->addWidget(pLabel,4,0);
@@ -938,7 +928,6 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	m_pUserNameEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pUserNameEdit,__tr2qs_ctx("Put here the username you want to use","options"));
 	pLayout->addWidget(m_pUserNameEdit,4,1,1,2);
-	connect(m_pUserNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
 	pLabel = new QLabel(__tr2qs_ctx("Real name:","options"),this);
 	pLayout->addWidget(pLabel,5,0);
@@ -946,7 +935,6 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	m_pRealNameEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pRealNameEdit,__tr2qs_ctx("Put here the real name you want to use","options"));
 	pLayout->addWidget(m_pRealNameEdit,5,1,1,2);
-	connect(m_pRealNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
 
 	KviTalHBox * pBox = new KviTalHBox(this);
 	pBox->setAlignment(Qt::AlignRight);
@@ -963,6 +951,8 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	pLayout->setColumnStretch(1,1);
 
 	setMinimumWidth(250);
+
+	toggleButton();
 }
 
 IdentityProfileEditor::~IdentityProfileEditor()
@@ -972,12 +962,12 @@ IdentityProfileEditor::~IdentityProfileEditor()
 bool IdentityProfileEditor::editProfile(KviIdentityProfile * pProfile)
 {
 	// Fill in the fields
-	m_pNameEdit->setText(pProfile->name().isEmpty() ? QString(m_szName) : pProfile->name());
-	m_pNetworkEdit->setText(pProfile->network().isEmpty() ? QString(m_szNetwork) : pProfile->network());
-	m_pNickEdit->setText(pProfile->nick().isEmpty() ? QString(m_szNick) : pProfile->nick());
-	m_pAltNickEdit->setText(pProfile->altNick().isEmpty() ? QString(m_szAltNick) : pProfile->altNick());
-	m_pUserNameEdit->setText(pProfile->userName().isEmpty() ? QString(m_szUserName) : pProfile->userName());
-	m_pRealNameEdit->setText(pProfile->realName().isEmpty() ? QString(m_szRealName) : pProfile->realName());
+	m_pNameEdit->setText(pProfile->name());
+	m_pNetworkEdit->setText(pProfile->network());
+	m_pNickEdit->setText(pProfile->nick());
+	m_pAltNickEdit->setText(pProfile->altNick());
+	m_pUserNameEdit->setText(pProfile->userName());
+	m_pRealNameEdit->setText(pProfile->realName());
 
 	// Ensure data
 	m_pNameEdit->selectAll();
@@ -996,20 +986,7 @@ bool IdentityProfileEditor::editProfile(KviIdentityProfile * pProfile)
 	return true;
 }
 
-void IdentityProfileEditor::toggleButton(const QString & szText)
+void IdentityProfileEditor::toggleButton()
 {
-	bool bEnabled = true;
-
-	if(
-		(m_pNameEdit->text() == m_szName) ||
-		(m_pNetworkEdit->text() == m_szNetwork) ||
-		(m_pNickEdit->text() == m_szNick) ||
-		(m_pAltNickEdit->text() == m_szAltNick) ||
-		(m_pUserNameEdit->text() == m_szUserName) ||
-		(m_pRealNameEdit->text() == m_szRealName) ||
-		(szText.isEmpty())
-	)
-		bEnabled = false;
-
-	m_pBtnOk->setEnabled(bEnabled);
+	m_pBtnOk->setEnabled(!m_pNameEdit->text().isEmpty());
 }

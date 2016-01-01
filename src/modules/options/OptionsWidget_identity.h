@@ -112,12 +112,6 @@ public:
 	IdentityProfileEditor(QWidget * pParent);
 	~IdentityProfileEditor();
 protected:
-	QString       m_szName;
-	QString       m_szNetwork;
-	QString       m_szNick;
-	QString       m_szAltNick;
-	QString       m_szUserName;
-	QString       m_szRealName;
 	QLineEdit   * m_pNameEdit;
 	QLineEdit   * m_pNetworkEdit;
 	QLineEdit   * m_pNickEdit;
@@ -128,7 +122,7 @@ protected:
 public:
 	bool editProfile(KviIdentityProfile * pProfile);
 protected slots:
-	void toggleButton(const QString & szText);
+	void toggleButton();
 };
 
 
