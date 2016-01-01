@@ -140,6 +140,10 @@ AboutDialog::AboutDialog()
 	infoString += __tr2qs_ctx("Qt version","about");
 	infoString += ": ";
 	infoString += KviOsInfo::qtVersion();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Qt theme","about");
+	infoString += ": ";
+	infoString += KviOsInfo::qtTheme();
 	infoString += "<br><br>";
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Build Info","about");

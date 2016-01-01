@@ -27,6 +27,9 @@
 #include "KviLocale.h"
 #include "KviQString.h"
 
+#include <QApplication>
+#include <QStyle>
+
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/utsname.h>
 	#include <stdlib.h>
@@ -719,5 +722,10 @@ namespace KviOsInfo
 	QString qtVersion()
 	{
 		return QString(qVersion());
+	}
+
+	QString qtTheme()
+	{
+		return QString(qApp->style()->objectName());
 	}
 }
