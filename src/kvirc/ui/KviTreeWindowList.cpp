@@ -526,6 +526,10 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	KviTreeWindowListItem * item = (KviTreeWindowListItem*)treeWidget->itemFromIndex(index);
 	KviWindow* pWindow = item->kviWindow();
 
+	QStyleOptionViewItemV4 opt4(option);
+	opt4.rect.adjust(1,0,-1,0);
+	opt4.state = opt4.state | QStyle::State_Selected;
+	opt4.showDecorationSelected = true;
 	//paint cell background
 	if(treeWidget->currentItem() == item)
 	{
@@ -534,15 +538,9 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 		{
 			// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 			// We can't accept it.
-			QStyleOptionViewItemV4 opt4(option);
-			opt4.rect.adjust(1,0,-1,0);
 			p->fillRect(opt4.rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 		} else {
-			QStyleOptionViewItemV4 opt4(option);
-			opt4.state = opt4.state | QStyle::State_Selected;
-			opt4.showDecorationSelected = true;
 			opt4.palette.setColor(QPalette::Highlight,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
-			opt4.rect.adjust(1,0,-1,0);
 			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 		}
 #ifndef COMPILE_ON_MAC
@@ -557,15 +555,9 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			{
 				// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 				// We can't accept it.
-				QStyleOptionViewItemV4 opt4(option);
-				opt4.rect.adjust(1,0,-1,0);
 				p->fillRect(opt4.rect,col);
 			} else {
-				QStyleOptionViewItemV4 opt4(option);
-				opt4.state = opt4.state | QStyle::State_Selected;
-				opt4.showDecorationSelected = true;
 				opt4.palette.setColor(QPalette::Highlight, col);
-				opt4.rect.adjust(1,0,-1,0);
 				treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 			}
 		}
