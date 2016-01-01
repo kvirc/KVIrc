@@ -2160,9 +2160,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 
 		[p]
-		Booleans are either true or false values. To know whether something evaluates as true or false,
-		you must compare it to [fnc]$true[/fnc] or [fnc]$false[/fnc]. Don't use "true" or "false", because
-		the engine sees them as non-empty strings, which always evaluate as true.
+		Booleans are either true or false values. For boolean constants, use [fnc]$true[/fnc] or [fnc]$false[/fnc].
+		Don't use "true" or "false", because the engine sees them as non-empty strings, which always evaluate as true.
 		[/p]
 
 		[p]
