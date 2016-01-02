@@ -185,33 +185,34 @@ void KviTextIconManager::load()
 	QString szTmp;
 	int iUpd = 0;
 	QString szPath;
-	bool bCheckUserDefinedTheme=false;
+
+	bool bCheckUserDefinedTheme = false;
+
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
 		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 		szPath += KVI_PATH_SEPARATOR_CHAR;
 		szPath += KVI_CONFIGFILE_TEXTICONS;
-		if(QFile::exists(szPath))
-			bCheckUserDefinedTheme=true;
-		else
-			bCheckUserDefinedTheme=false;
+		bCheckUserDefinedTheme = QFile::exists(szPath);
 	}
 
 	if(bCheckUserDefinedTheme)
-		load(szPath,false);
-	else
 	{
-		if(g_pApp->getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_TEXTICONS))
-			iUpd = load(szTmp,false);
-
-		if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE)
-			return;
-
-		// do a merge of the texticons if we have a new config version
-		g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
-		if(QFile::exists(szTmp))
-			load(szTmp,true);
+		load(szPath,false);
+		return;
 	}
+
+	if(g_pApp->getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_TEXTICONS))
+		iUpd = load(szTmp,false);
+
+	if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE)
+		return;
+
+	// do a merge of the texticons if we have a new config version
+	g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
+
+	if(QFile::exists(szTmp))
+		load(szTmp,true);
 }
 
 void KviTextIconManager::applyOptions()
@@ -235,21 +236,16 @@ void KviTextIconManager::applyOptions()
 void KviTextIconManager::save()
 {
 	QString szPath;
-	bool bCheckUserDefinedTheme=false;
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
 		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 		szPath += KVI_PATH_SEPARATOR_CHAR;
 		szPath += KVI_CONFIGFILE_TEXTICONS;
-		bCheckUserDefinedTheme=true;
+	} else {
+		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
 	}
-	if(bCheckUserDefinedTheme)
-		save(szPath);
-	else {
-		QString szTmp;
-		g_pApp->getLocalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
-		save(szTmp);
-	}
+	qDebug("Saving text icons to %s",szPath.toUtf8().data());
+	save(szPath);
 }
 
 int KviTextIconManager::load(const QString & szFileName, bool bMerge)
