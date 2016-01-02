@@ -32,7 +32,6 @@
 * \brief Input editor
 *
 * \def KVI_INPUT_MAX_BUFFER_SIZE Default maximum buffer size
-* \def KVI_INPUT_PADDING Default padding
 * \def KVI_INPUT_MARGIN Default margin
 * \def KVI_INPUT_BLINK_TIME Cursor blink time...just don't set it to a value less than 100 if you don't want to be lagged by your cursors :)
 * \def KVI_INPUT_DRAG_TIMEOUT Drag scroll speed...(smaller values = faster)
@@ -57,8 +56,7 @@ class KviUserListView;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
 #define KVI_INPUT_XTRAPADDING 1
-#define KVI_INPUT_PADDING 2
-#define KVI_INPUT_MARGIN 2
+#define KVI_INPUT_MARGIN 4
 #define KVI_INPUT_BLINK_TIME 800
 #define KVI_INPUT_DRAG_TIMEOUT 80
 #define KVI_INPUT_DEF_BACK 100
