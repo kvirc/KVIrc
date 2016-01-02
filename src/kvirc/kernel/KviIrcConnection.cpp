@@ -539,16 +539,10 @@ void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
 
 	//PLAIN
 	KviCString szOut;
-	if(KviSASL::plainMethod(szAuth,
-				szOut,
-				szNick,
-				szPass
-				))
-	{
+	if(KviSASL::plainMethod(szAuth,szOut,szNick,szPass))
 		sendFmtData("AUTHENTICATE %s",szOut.ptr());
-	} else {
+	else
 		sendFmtData("AUTHENTICATE *");
-	}
 }
 
 void KviIrcConnection::handleInitialCapNak()
