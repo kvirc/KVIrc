@@ -886,7 +886,7 @@ void KviInputEditor::drawContents(QPainter * p)
 			bool bIsSelected = pBlock->uFlags & KviInputEditorTextBlock::IsSelected;
 
 			if(bIsSelected)
-				p->fillRect(QRectF(fCurX,iTop,pBlock->fWidth,iBottom - iTop),KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
+				p->fillRect(QRectF(fCurX,iTop-2,pBlock->fWidth,iBottom - iTop + 4),KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 
 			if(pBlock->uFlags & KviInputEditorTextBlock::IsControlBlock)
 			{
