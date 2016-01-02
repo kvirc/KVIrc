@@ -52,6 +52,7 @@
 
 class QKeyEvent;
 class QDragEnterEvent;
+class QFontMetricsF;
 class KviUserListView;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
@@ -81,6 +82,8 @@ public:
 	bool bCorrect;
 };
 
+class KviInputEditorPrivate;
+
 /**
 * \class KviInputEditor
 * \brief Input editor class
@@ -108,14 +111,11 @@ public:
 	~KviInputEditor();
 protected:
 	static int                g_iInputFontCharWidth[256];
-	static QFontMetrics     * g_pLastFontMetrics;
+	static QFontMetricsF    * g_pLastFontMetrics;
 	static int                g_iInputInstances;
 	static int                g_iCachedHeight;
 	QString                   m_szTextBuffer;        // original buffer
-	QString                   m_szTextDisplayBuffer; // buffer with spelling mistakes marked
-	bool                      m_bTextDisplayBufferDirty;
 	int                       m_iCursorPosition;
-	int                       m_iFirstVisibleChar;
 	int                       m_iSelectionBegin;
 	int                       m_iSelectionEnd;
 	int                       m_iMaxBufferSize;
@@ -130,23 +130,11 @@ protected:
 	int                       m_iIMSelectionLength;
 	bool                      m_bIMComposing;
 
-	unsigned char             m_iCurFore;
-	unsigned char             m_iCurBack;
-	bool                      m_bCurBold;
-	bool                      m_bCurUnderline;
-	bool                      m_bCurSpellingMistake;
-
-	int                       m_iBlockLen;
-	int                       m_iBlockWidth;
-	bool                      m_bControlBlock;
-	bool                      m_bVisibleControlBlock;
-
 	bool                      m_bCursorOn;
 
 	int                       m_iCursorTimer;
 	int                       m_iDragTimer;
 
-	int                       m_iLastCursorXPosition;
 	int                       m_iSelectionAnchorChar;
 
 	// History stuff
@@ -160,18 +148,15 @@ protected:
 	QString                   m_szLastCompletedNick;
 	QString                   m_szLastCompletionBuffer;
 	int                       m_iLastCompletionCursorPosition;
-	int                       m_iLastCompletionCursorXPosition;
-	int                       m_iLastCompletionFirstVisibleChar;
 	bool                      m_bLastCompletionFinished;
 
 	bool                      m_bUpdatesEnabled;
 	KviCString                    m_szAltKeyCode;
 	KviWindow               * m_pKviWindow;
 	QWidget                 * m_pInputParent;
-	QMenu         * m_pIconMenu;
+	QMenu                   * m_pIconMenu;
 	QMenu                     m_SpellCheckerPopup;
 	bool                      m_bReadOnly;
-	bool                      m_bIsSpellcheckKey;
 
 	/**
 	* \class EditCommand
@@ -277,6 +262,9 @@ protected:
 	*/
 	KviPointerList<EditCommand> * m_pRedoStack;
 
+
+	KviInputEditorPrivate * m_p;
+
 public:
 	/**
 	* \brief Returns the height of the editor
@@ -372,35 +360,6 @@ private:
 	void getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWordInLine);
 
 	/**
-	* \brief Moves the cursor to the first visible character
-	* \return position of m_iFirstVisibleChar in m_szTextDisplayBuffer
-	*/
-	int runUpToTheFirstVisibleChar();
-
-	/**
-	* \brief Extracts the next block of text
-	* \param iIdx The index of the character to check
-	* \param fm The font metrics to use
-	* \param iCurXPos The current position
-	* \param iMaxXPos The maximum position of the text
-	*/
-	void extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, int iMaxXPos);
-
-	/**
-	* \brief Draws a block of text
-	* \param pa The pointer to the painter
-	* \param iTop The top coordinate of the block
-	* \param iBottom The top coordinate of the block
-	* \param iCurXPos The current X posistion
-	* \param iTextBaseline The current Y position
-	* \param iIdx The index of the character to start crop
-	* \param iLen The length of the string to crop
-	* \param bSelected Whether the text is selected
-	* \return void
-	*/
-	void drawTextBlock(QPainter * pa, int iTop, int iBottom, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected = false);
-
-	/**
 	* \brief Gets the substitute character for control codes
 	* \param uControlCode The control code inserted
 	* \return QChar
@@ -408,10 +367,9 @@ private:
 	static QChar getSubstituteChar(unsigned short uControlCode);
 
 	/**
-	* \brief Moves the internal cursor to the first visibile char to the right
-	* \return void
+	* \brief Makes sure that the cursor is visible.
 	*/
-	void moveRightFirstVisibleCharToShowCursor();
+	void ensureCursorVisible();
 
 	/**
 	* \brief Repaints the input line with the visible cursor
@@ -419,26 +377,21 @@ private:
 	*/
 	void repaintWithCursorOn();
 
-	/**
-	* \brief Selects one character at the given position
-	* \param iPos The position of the character to select
-	* \return void
-	*/
-	void selectOneChar(int iPos);
+	void clearSelection();
 
 	/**
 	* \brief Returns the current character from a given position
 	* \param iXPos The position to grab
 	* \return int
 	*/
-	int charIndexFromXPosition(int iXPos);
+	int charIndexFromXPosition(qreal fXPos);
 
 	/**
 	* \brief Returns the current position from a given character
 	* \param iChIdx Th index of the character
 	* \return int
 	*/
-	int xPositionFromCharIndex(int iChIdx);
+	qreal xPositionFromCharIndex(int iChIdx);
 
 	/**
 	* \brief Kills the drag timer
@@ -553,9 +506,9 @@ private:
 	/**
 	* \brief Returns the current input editor font metrics (globally shared)
 	* \param font The current input editor font
-	* \return QFontMetrics *
+	* \return QFontMetricsF *
 	*/
-	QFontMetrics * getLastFontMetrics(const QFont & font);
+	QFontMetricsF * getLastFontMetrics(const QFont & font);
 
 public slots:
 	/**
@@ -971,11 +924,13 @@ protected:
 	virtual void dropEvent(QDropEvent * e);
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;
 	virtual void paintEvent(QPaintEvent * e);
-	QString checkSpelling(const QString &szText);
 	bool checkWordSpelling(const QString &szWord);
 	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);
 	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks);
 	void fillSpellCheckerCorrectionsPopup();
+	
+	void rebuildTextBlocks();
+	
 signals:
 	/**
 	* \brief Called when the user press escape
