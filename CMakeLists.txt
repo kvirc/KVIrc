@@ -883,8 +883,11 @@ option(WANT_PERL "Compile Perl Support" ON)
 
 #perl is needed for documentation, too
 find_package(Perl)
-
 if(WANT_PERL)
+	find_package(PerlLibs)
+endif()
+
+if(PERLLIBS_FOUND)
 	if(PERL_FOUND)
 		set(COMPILE_PERL_SUPPORT 1)
 		set(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting+doc")
