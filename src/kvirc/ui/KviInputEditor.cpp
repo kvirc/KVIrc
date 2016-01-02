@@ -1908,17 +1908,17 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		e->ignore();
 		return;
 	}
-	// completion thingies
 
+	// completion thingies
 	if(!m_bReadOnly)
 	{
 		if((e->key() == Qt::Key_Tab) || (e->key() == Qt::Key_Backtab))
 		{
 			completion(e->modifiers() & Qt::ShiftModifier);
 			return;
-		} else {
-			m_bLastCompletionFinished=1;
 		}
+
+		m_bLastCompletionFinished = 1;
 	}
 
 	if(e->modifiers() & Qt::ControlModifier)
@@ -2025,6 +2025,7 @@ void KviInputEditor::completion(bool bShift)
 	bool bInCommand = m_szTextBuffer.trimmed().indexOf('/') == 0;
 
 	getWordBeforeCursor(szWord,&bFirstWordInLine);
+
 	if(szWord.isEmpty())
 	{
 		if(m_szLastCompletedNick.isEmpty())
@@ -2035,6 +2036,7 @@ void KviInputEditor::completion(bool bShift)
 		repaintWithCursorOn();
 		return;
 	}
+
 	int iOffset;
 	if(KviQString::equalCI(m_szTextBuffer.left(5),"/help") || KviQString::equalCI(m_szTextBuffer.left(5),"/help.open")) iOffset=1;
 	else iOffset=0;
@@ -2249,7 +2251,7 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 			m_iLastCompletionCursorPosition   = m_iCursorPosition;
 			m_szLastCompletedNick             = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
-			m_bLastCompletionFinished=0;
+			m_bLastCompletionFinished = 0;
 			// REPAINT CALLED FROM OUTSIDE!
 		} // else no match at all
 
@@ -2262,11 +2264,14 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 		// swap the buffers
 		m_szTextBuffer                        = m_szLastCompletionBuffer;
 		m_iCursorPosition                     = m_iLastCompletionCursorPosition;
+		m_p->bTextBlocksDirty = true;
 		// re-extract
 		//word = m_szTextBuffer.left(m_iCursorPosition);
 
 		getWordBeforeCursor(szWord,&bFirstWordInLine);
-		if(szWord.isEmpty())return;
+		if(szWord.isEmpty())
+			return;
+
 		if(m_pUserListView->completeNickStandard(szWord,m_szLastCompletedNick,szBuffer,bAddMask))
 		{
 			// completed
