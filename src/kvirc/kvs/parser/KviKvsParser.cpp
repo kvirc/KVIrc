@@ -728,7 +728,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		A couple of examples will make the things clear.
 		join is a really commonly used command - it might be a good idea to rename it to
 		simply [b]j[/b] .. just to type it faster.
-		Nothing easier in KVirc: just try this commandline:
+		Nothing easier in KVIrc: just try this commandline:
 		[example]
 			[cmd]alias[/cmd](j){ [cmd]join[/cmd] $0-; };
 		[/example]
@@ -738,7 +738,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			j #kvirc
 		[/example]
 		You may have noticed the strange $0- function in the alias body - it stands for
-		"all parameters passed to the alias". This means that when you call
+		[i]all parameters passed to the alias[/i]. This means that when you call
 		[example]
 			j #kvirc testpassword
 		[/example]
@@ -774,7 +774,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			kb spammer You're not welcome here!
 		[/example]
-		This will first execute [i]ban spammer[/i] and then [i]kick spammer You're not welcome here[/i].
+		This will first execute [i]ban spammer[/i] and then [i]kick spammer with; You're not welcome here[/i].
 		Our kb is a really simple example... it doesn't check for the validity of the parameters -
 		the server will warn us if the parameters passed to kb were empty.
 		[/p]
@@ -807,7 +807,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 		[p]
 		Aliases can be used as a means for structured programming.
-		In large scripts you will SURELY have [i]common tasks[/i] to perform (like having
+		In large scripts you will [b]surely[/b] have [i]common tasks[/i] to perform (like having
 		specially-colored output or calculating a value from a set of other values)...
 		Aliases are the way of writing the common tasks - they are equivalent to the [i]procedures[/i]
 		or [i]functions[/i] in many high-level programming languages.
@@ -1039,7 +1039,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			An [b]IRC context[/b] can be in connected or not-connected state.
 			When in connected state, it contains a set of windows beside the console:
 			mainly channels and query windows.
-			The channels and query windows can exist ONLY if the associated
+			The channels and query windows can exist [b]only[/b] if the associated
 			[b]IRC context[/b] exists.[br]
 			Channels and queries have unique names inside a connection so
 			there is no way to confuse it. (Theoretically there can
@@ -1131,7 +1131,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		A couple of examples will make the things clear.
 		join is a really commonly used command. It might be a good idea to rename it to
 		simply [b]j[/b] .. just to type it faster.
-		Nothing easier in KVirc: just try this commandline:
+		Nothing easier in KVIrc: just try this commandline:
 		[example]
 			[cmd]alias[/cmd](j){ [cmd]join[/cmd] $0-; };
 		[/example]
@@ -1141,7 +1141,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		j #kvirc
 		[/example]
 		You may have notices the strange $0- function in the alias body: it stands for
-		"all parameters passed to the alias". This means that when you call
+		[i]all parameters passed to the alias[/i]. This means that when you call
 		[example]
 			j #kvirc testpassword
 		[/example]
@@ -1177,7 +1177,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			kb spammer You're not welcome here!
 		[/example]
-		This will first execute "ban spammer" and then [i]kick spammer You're not welcome here[/i].
+		This will first execute [i]ban spammer[/i] and then [i]kick spammer with; You're not welcome here[/i].
 		Our kb is a really simple example... it doesn't check for the validity of the parameters:
 		the server will warn us if the parameters passed to kb were empty.
 		[/p]
@@ -1210,7 +1210,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 		[p]
 		Aliases can be used as a mean for structured programming.
-		In large scripts you will SURELY have [i]common tasks[/i] to perform (like having specially
+		In large scripts you will [b]surely[/b] have [i]common tasks[/i] to perform (like having specially
 		colored output or calculating a value from a set of other values)...
 		Aliases are the way of writing the common tasks: they are equivalent to the [i]procedures[/i]
 		or [i]functions[/i] in many high-level programming languages.
@@ -1613,7 +1613,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		other developers that will be going to read your code.[br]
 		[br]
 		3. [b]Use TABS to indent your code[/b][br]
-		...and use ONLY TABS to indent.[br]
+		...and use [b]only tabs[/b] to indent.[br]
 		Tabs are better than space since most code editors allow you
 		to set the tab since and thus to have the indentation steps smaller or bigger.[br]
 		This is really important since the indentation size is really a matter of personal taste.[br]
@@ -1626,7 +1626,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		time that you're going to read the code that uses it.[br]
 		This is really annoying and time-consuming, especially if the project
 		is getting large.[br]
-		Obviously using "thisIsACounterVariable" as name for a simple counter
+		Obviously using [i]thisIsACounterVariable[/i] as name for a simple counter
 		is also a suicide.[br]
 		A good convention on variable names can speed up writing, debugging and maintaining code.[br]
 		Encoding the type of the variable in the variable name might be also a good idea,
@@ -1642,15 +1642,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			- sz prefix for strings (this is rather for string classes)[br]
 			- ...[br]
 		[br]
-		- Pointers have a "p" prefix prepended[br]
-		- Global variables start with a "g_" prefix[br]
-		- Member variables start with a "m_" prefix[br]
+		- Pointers have a [b]p[/b] prefix prepended[br]
+		- Global variables start with a [b]g_[/b] prefix[br]
+		- Member variables start with a [b]m_[/b] prefix[br]
 		- Exception comes for local variables with obvious semantics[br]
 		[br]
 			- i,j,k,l for local loop counters[br]
-			- "aux" and "tmp" for local obvious short-term temporary variables[br]
+			- [i]aux[/i] and [i]tmp[/i] for local obvious short-term temporary variables[br]
 		[br]
-		So actually by ONLY reading "g_pszQuitMessage" I know that this is a global pointer to a string variable
+		So actually by [b]only[/b] reading [i]g_pszQuitMessage[/i] I know that this is a global pointer to a string variable
 		containing a quit message. :)[br]
 		[/p]
 */
@@ -1672,10 +1672,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		In the following table you can find a good part of the
 		KVIrc scripting language syntactic rules.[br]
 		[br]
-		<entity> indicates a ENTITY THAT CAN APPEAR EXACTLY ONE TIME.[br]
-		[<entity>] indicates an OPTIONAL ENTITY.[br]
-		{<entity>} indicates an ENTITY THAT CAN APPEAR ONE OR MORE TIMES.[br]
-		'entity' indicates a LITERAL ENTITY: written exactly as it is.[br]
+		<entity> indicates an [b]entity that can appear exactly one time[/b].[br]
+		[<entity>] indicates an [b]optional entity[/b].[br]
+		{<entity>} indicates an [b]entity that can appear one or more times[/b].[br]
+		'entity' indicates a [b]literal entity[/b]: written exactly as it is.[br]
 		<entity1>|<entity2> indicates mutually exclusive choices.[br]
 		The mutually exclusive choices are often separated in two or more
 		rules (productions), to improve readability.[br]
@@ -1730,7 +1730,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/tr]
 		[tr]
 		[td]<end of string>[/td]
-		[td]No character (internally Ascii character 0)[/td]
+		[td]No character (internally ASCII character 0)[/td]
 		[/tr]
 		[tr]
 		[td]<command terminator>[/td]
@@ -1738,7 +1738,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/tr]
 		[tr]
 		[td]<non comment-terminator>[/td]
-		[td]Any Ascii character except <newline> and <end of string>[/td]
+		[td]Any ASCII character except <newline> and <end of string>[/td]
 		[/tr]
 		[tr]
 		[td]<simple command>[/td]
@@ -2237,7 +2237,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		and for writer's clarity.
 		[/p]
 
-		[title]More about variables lifecycle[/title]
+		[title]More about variables life-cycle[/title]
 
 		[p]
 		As stated above variables start their existence when you assign something to them.
@@ -2282,7 +2282,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		Beside local and global variables there is a third family of them.
 		Variables that have a ':' character just after the leading '%' are [b]extended scope[/b] variables.
-		"%:index", "%:Hello", "%:something.else" are all valid special scope variable names.
+		[i]%:index[/i], [i]%:Hello[/i], [i]%:something.else[/i] are all valid special scope variable names.
 		They're actually used in popups and in timers (but later I might find other usages as well :).
 		"Extended scope" means that these variables are somewhere in the middle between
 		global and local variables. They normally act as local, but in some cases their [b]lifetime[/b] and [b]visibility[/b]
@@ -2309,15 +2309,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%number = 1st; echo this is my %number variable test
 		[/example]
 		[p]
-		will first assign "1st" to the variable "%number" and then execute
+		will first assign [i]1st[/i] to the variable [i]%number[/i] and then execute
 		"echo this is my 1st variable test". The following example will [b]not[/b] work as expected.
 		[/p]
 		[example]
 			%number = 1; echo this is my %numberst variable test
 		[/example]
 		[p]
-		KVS will assign "1" to %number in this case but the next variable
-		name extracted will be "%numberst" that is actually empty; so finally
+		KVS will assign [b]1[/b] to %number in this case but the next variable
+		name extracted will be [i]%numberst[/i] that is actually empty; so finally
 		"echo this is my variable test" will be executed.
 		To avoid this problem you can use the backslash escape character:
 		[/p]
