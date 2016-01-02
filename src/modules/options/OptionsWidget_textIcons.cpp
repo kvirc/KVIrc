@@ -176,7 +176,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 	pBox->setSpacing(0);
 	pBox->setMargin(0);
 
-	m_pCurrentIconButton=new QToolButton(pBox);
+	m_pCurrentIconButton = new QToolButton(pBox);
 	m_pCurrentIconButton->setMinimumWidth(150);
 	m_pCurrentIconButton->setIcon(QIcon(*m_pCurrentItem->icon()->pixmap()));
 	connect(m_pCurrentIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
@@ -192,31 +192,35 @@ void OptionsWidget_textIcons::chooseFromFile()
 {
 	QString szFile;
 	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Choose Icon Filename","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
-	if(!szFile.isEmpty())
-	{
-		if(g_pIconManager->getPixmap(szFile))
-		{
-			QFileInfo info(szFile);
+	if(szFile.isEmpty())
+		return;
 
-			QString szFileName = info.fileName();
-			qDebug("pathfilename %s - filename %s",szFile.toUtf8().data(),szFileName.toUtf8().data());
+	if(!g_pIconManager->getPixmap(szFile))
+		return;
 
-			QString szCurrentThemePath;
-			g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-			szCurrentThemePath+= KVI_PATH_SEPARATOR_CHAR;
-			qDebug("copy source %s - dest %s",szFile.toUtf8().data(),szCurrentThemePath.toUtf8().data());
-			if (!KviFileUtils::directoryExists(szCurrentThemePath))
-				KviFileUtils::makeDir(szCurrentThemePath);
-			KviFileUtils::copyFile(szFile,szCurrentThemePath+szFileName);
-			m_pCurrentItem->icon()->setFilename(szFileName);
-			qDebug("Set icon");
-			QPixmap *p=m_pCurrentItem->icon()->pixmap();
-			m_pCurrentItem->setIcon(QIcon(*p));
-			if(m_pCurrentIconButton)
-				m_pCurrentIconButton->setIcon(QIcon(*p));
-		}
-	}
- }
+	QFileInfo info(szFile);
+
+	QString szFileName = info.fileName();
+
+	QString szCurrentThemePath;
+	g_pApp->getLocalKvircDirectory(szCurrentThemePath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+
+	szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+
+	if(!KviFileUtils::directoryExists(szCurrentThemePath))
+		KviFileUtils::makeDir(szCurrentThemePath);
+
+	KviFileUtils::copyFile(szFile,szCurrentThemePath+szFileName);
+
+	m_pCurrentItem->icon()->setFilename(szFileName);
+
+	QPixmap *p = m_pCurrentItem->icon()->pixmap();
+	m_pCurrentItem->setIcon(QIcon(*p));
+
+	if(m_pCurrentIconButton)
+		m_pCurrentIconButton->setIcon(QIcon(*p));
+}
+
 void OptionsWidget_textIcons::itemSelectionChanged()
 {
 	int i = m_pTable->currentRow();
@@ -232,6 +236,8 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWi
 			m_pTable->setCellWidget(prev->row(),1,NULL);
 	}
 
+	m_pCurrentItem = NULL;
+
 	if(!cur)
 		return;
 	if(cur->column() != 1)
@@ -239,16 +245,16 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem *cur, QTableWi
 	if(m_iLastEditedRow==cur->row() || cur == prev)
 		return;
 
-	m_pCurrentItem=(TextIconTableItem *)cur;
+	m_pCurrentItem = (TextIconTableItem *)cur;
 
 	KviTalHBox * pBox=new KviTalHBox(0);
 	pBox->setSpacing(0);
 	pBox->setMargin(0);
 
-	QToolButton * pIconButton=new QToolButton(pBox);
-	pIconButton->setMinimumWidth(150);
-	pIconButton->setIcon(QIcon(cur->icon()));
-	connect(pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+	m_pCurrentIconButton=new QToolButton(pBox);
+	m_pCurrentIconButton->setMinimumWidth(150);
+	m_pCurrentIconButton->setIcon(QIcon(cur->icon()));
+	connect(m_pCurrentIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
 
 	// FIXME: this does not work currently!
 	QToolButton * pBrowseButton=new QToolButton(pBox);
