@@ -219,7 +219,9 @@ void KviUserListEntry::recalcSize()
 {
 	m_iHeight = m_pListView->m_iFontHeight;
 
-	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))
+	if((KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) ||
+		KVI_OPTION_BOOL(KviOption_boolDrawGenderIcons) ||
+		KVI_OPTION_BOOL(KviOption_boolShowUserChannelState)) && (m_iHeight < 20))
 		m_iHeight = 20;
 
 	if(m_pAvatarPixmap)
@@ -418,14 +420,14 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 	int iCurTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
 	int iCurBottom = 0;
 
-	int iBaseX = KVI_USERLIST_BORDER_WIDTH + 1;
+	int iBaseX = KVI_USERLIST_BORDER_WIDTH + KVI_USERLIST_ICON_MARGIN + 1;
 	int iBaseY = 2;
 	if(KVI_OPTION_BOOL(KviOption_boolDrawGenderIcons))
-		iBaseX += 11;
+		iBaseX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons))
-		iBaseX += 18;
+		iBaseX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelState))
-		iBaseX += 11;
+		iBaseX += KVI_USERLIST_ICONSTATE_WIDTH + KVI_USERLIST_ICON_MARGIN;
 	if(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid))
 	{
 		switch(KVI_OPTION_UINT(KviOption_uintUserListViewGridType))
@@ -439,8 +441,6 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 			break;
 		}
 		iBaseX += 3;
-	} else {
-		iBaseX += 1;
 	}
 
 	while(pEntry && (iCurTop <= m_pViewArea->height()))
