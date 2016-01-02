@@ -403,8 +403,8 @@ void KviTopicWidget::updateToolTip()
 QSize KviTopicWidget::sizeHint() const
 {
 	QFontMetrics fm(font());
-	int h = qMax(fm.height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
-	int w = fm.width(QLatin1Char('x')) * 17 + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
+	int h = qMax(fm.height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
+	int w = fm.width(QLatin1Char('x')) * 17 + 2*(KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
 	QStyleOptionFrameV2 option;
 	option.initFrom(this);
 	option.rect = rect();

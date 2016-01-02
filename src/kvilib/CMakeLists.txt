@@ -31,7 +31,6 @@ set(kvilib_SRCS
 	ext/KviMediaManager.cpp
 	ext/KviMiscUtils.cpp
 	ext/KviMessageTypeSettings.cpp
-	ext/KviOsInfo.cpp
 	ext/KviPixmap.cpp
 	ext/KviPixmapUtils.cpp
 	ext/KviAnimatedPixmap.cpp
@@ -45,6 +44,7 @@ set(kvilib_SRCS
 	ext/KviRegisteredUserDataBase.cpp
 	ext/KviRegisteredUserGroup.cpp
 	ext/KviRegisteredUserMask.cpp
+	ext/KviRuntimeInfo.cpp
 	ext/KviSharedFile.cpp
 	ext/KviSharedFilesManager.cpp
 	ext/KviStringConversion.cpp

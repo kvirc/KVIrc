@@ -337,6 +337,13 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 	}
 #endif
 
+	p->setPen(palette().dark().color());
+	p->drawLine(0,0,width(),0);
+	p->drawLine(0,0,0,height());
+	p->setPen(palette().light().color());
+	p->drawLine(1,height()-1,width()-1,height()-1);
+	p->drawLine(width()-1,1,width()-1,height());
+
 	delete p;
 
 	//call paint on all childrens
@@ -519,6 +526,10 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	KviTreeWindowListItem * item = (KviTreeWindowListItem*)treeWidget->itemFromIndex(index);
 	KviWindow* pWindow = item->kviWindow();
 
+	QStyleOptionViewItemV4 opt4(option);
+	opt4.rect.adjust(1,0,-1,0);
+	opt4.state = opt4.state | QStyle::State_Selected;
+	opt4.showDecorationSelected = true;
 	//paint cell background
 	if(treeWidget->currentItem() == item)
 	{
@@ -527,11 +538,8 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 		{
 			// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 			// We can't accept it.
-			p->fillRect(option.rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+			p->fillRect(opt4.rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 		} else {
-			QStyleOptionViewItemV4 opt4(option);
-			opt4.state = opt4.state | QStyle::State_Selected;
-			opt4.showDecorationSelected = true;
 			opt4.palette.setColor(QPalette::Highlight,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 		}
@@ -547,11 +555,8 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			{
 				// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 				// We can't accept it.
-				p->fillRect(option.rect,col);
+				p->fillRect(opt4.rect,col);
 			} else {
-				QStyleOptionViewItemV4 opt4(option);
-				opt4.state = opt4.state | QStyle::State_Selected;
-				opt4.showDecorationSelected = true;
 				opt4.palette.setColor(QPalette::Highlight, col);
 				treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 			}

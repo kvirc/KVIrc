@@ -27,7 +27,7 @@
 // FIXME: #warning "CTCP AVATARREQ or QUERYAVATAR"
 
 #include "KviControlCodes.h"
-#include "KviOsInfo.h"
+#include "KviRuntimeInfo.h"
 #include "KviApplication.h"
 #include "KviIrcServerParser.h"
 #include "KviWindow.h"
@@ -1163,9 +1163,9 @@ void KviIrcServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 			szVersion += " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build ";
 			szVersion += KviBuildInfo::buildDate();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			szVersion.append(QString(" - %1").arg(KviOsInfo::version()));
+			szVersion.append(QString(" - %1").arg(KviRuntimeInfo::version()));
 #else
-			szVersion.append(QString(" - %1 (%2)").arg(KviOsInfo::name(), KviOsInfo::release()));
+			szVersion.append(QString(" - %1 (%2)").arg(KviRuntimeInfo::name(), KviRuntimeInfo::release()));
 #endif
 			//szVersion.append(QString(" - QT Version: %1 - %2").arg(qVersion(), __tr2qs("http://www.kvirc.net/")));
 			if(!KVI_OPTION_STRING(KviOption_stringCtcpVersionPostfix).isEmpty())

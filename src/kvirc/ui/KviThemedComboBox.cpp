@@ -62,7 +62,7 @@ void KviThemedComboBox::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 
-	if(style()->objectName() == "oxygen" || style()->objectName().startsWith("ia-ora-"))
+	if(style()->objectName() == "oxygen" || style()->objectName().startsWith("ia-ora-") || style()->objectName() == "breeze")
 	{
 		// workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
 		// ia-ora- are the mandriva default styles

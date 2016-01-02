@@ -32,7 +32,7 @@
 #include "KviLocale.h"
 #include "KviApplication.h"
 #include "KviEnvironment.h"
-#include "KviOsInfo.h"
+#include "KviRuntimeInfo.h"
 #include "KviModuleManager.h"
 #include "KviByteOrder.h"
 
@@ -75,7 +75,7 @@ PluginManager * g_pPluginManager;
 
 static bool system_kvs_fnc_ostype(KviKvsModuleFunctionCall * c)
 {
-	c->returnValue()->setString(KviOsInfo::type());
+	c->returnValue()->setString(KviRuntimeInfo::type());
 	return true;
 }
 /*
@@ -96,7 +96,7 @@ static bool system_kvs_fnc_ostype(KviKvsModuleFunctionCall * c)
 
 static bool system_kvs_fnc_osname(KviKvsModuleFunctionCall *c)
 {
-	c->returnValue()->setString(KviOsInfo::name());
+	c->returnValue()->setString(KviRuntimeInfo::name());
 	return true;
 }
 
@@ -118,7 +118,7 @@ static bool system_kvs_fnc_osname(KviKvsModuleFunctionCall *c)
 static bool system_kvs_fnc_osversion(KviKvsModuleFunctionCall *c)
 {
 	// no params to process
-	c->returnValue()->setString(KviOsInfo::version());
+	c->returnValue()->setString(KviRuntimeInfo::version());
 	return true;
 }
 
@@ -139,7 +139,7 @@ static bool system_kvs_fnc_osversion(KviKvsModuleFunctionCall *c)
 static bool system_kvs_fnc_osrelease(KviKvsModuleFunctionCall *c)
 {
 	// no params to process
-	c->returnValue()->setString(KviOsInfo::release());
+	c->returnValue()->setString(KviRuntimeInfo::release());
 	return true;
 }
 
@@ -160,7 +160,7 @@ static bool system_kvs_fnc_osrelease(KviKvsModuleFunctionCall *c)
 static bool system_kvs_fnc_osmachine(KviKvsModuleFunctionCall *c)
 {
 	// no params to process
-	c->returnValue()->setString(KviOsInfo::machine());
+	c->returnValue()->setString(KviRuntimeInfo::machine());
 	return true;
 }
 
@@ -181,7 +181,7 @@ static bool system_kvs_fnc_osmachine(KviKvsModuleFunctionCall *c)
 static bool system_kvs_fnc_osnodename(KviKvsModuleFunctionCall *c)
 {
 	// no params to process
-	c->returnValue()->setString(KviOsInfo::nodename());
+	c->returnValue()->setString(KviRuntimeInfo::nodename());
 	return true;
 }
 
@@ -401,7 +401,7 @@ static bool system_kvs_fnc_checkModule(KviKvsModuleFunctionCall *c)
 static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 {
 	// no params to process
-	c->returnValue()->setString(KviOsInfo::hostname());
+	c->returnValue()->setString(KviRuntimeInfo::hostname());
 	return true;
 }
 

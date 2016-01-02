@@ -152,18 +152,17 @@ namespace KviControlCodes
 	* \brief Contains mIRC control codes
 	*/
 	enum Control {
-		CTCP        = 0x01,   /**< CTCP, IRC control code */
-		Bold        = 0x02,   /**< Bold */
-		Color       = 0x03,   /**< Color */
-		Escape      = 0x04,   /**< Escape, totally artificial and internal to KviIrcView */
-		UnEscape    = 0x05,   /**< Unescape, totally artificial and internal to KviIrcView */
-		UnIcon      = 0x06,   /**< Unicon, totally artificial and internal to KviIrcView */
-		Reset       = 0x0f,   /**< Reset */
-		Reverse     = 0x16,   /**< Reverse */
-		Icon        = 0x1d,   /**< Icon, KVIrc control code */
-		CryptEscape = 0x1e,   /**< Crypt escape, KVIrc control code */
-		Underline   = 0x1f,   /**< Underline */
-		SpellingMistake = 0xE942, /**< Totally artificial and internal to KviInputEditor. This is a character from unicode private use area */
+		CTCP            = 0x01,  /**< CTCP, IRC control code */
+		Bold            = 0x02,  /**< Bold */
+		Color           = 0x03,  /**< Color */
+		Escape          = 0x04,  /**< Escape, totally artificial and internal to KviIrcView */
+		UnEscape        = 0x05,  /**< Unescape, totally artificial and internal to KviIrcView */
+		UnIcon          = 0x06,  /**< Unicon, totally artificial and internal to KviIrcView */
+		Reset           = 0x0f,  /**< Reset */
+		Reverse         = 0x16,  /**< Reverse */
+		Icon            = 0x1d,  /**< Icon, KVIrc control code */
+		CryptEscape     = 0x1e,  /**< Crypt escape, KVIrc control code */
+		Underline       = 0x1f   /**< Underline */
 	};
 
 	/**

@@ -31,7 +31,7 @@
 #include "KviFileUtils.h"
 #include "kvi_sourcesdate.h"
 #include "KviBuildInfo.h"
-#include "KviOsInfo.h"
+#include "KviRuntimeInfo.h"
 
 #include <QTextEdit>
 #include <QWidget>
@@ -123,23 +123,27 @@ AboutDialog::AboutDialog()
 	infoString += ":</b><br>";
 	infoString += __tr2qs_ctx("System name","about");
 	infoString += ": ";
-	infoString += KviOsInfo::name();
+	infoString += KviRuntimeInfo::name();
 #ifndef COMPILE_ON_MAC
 	infoString += " ";
-	infoString += KviOsInfo::release();
+	infoString += KviRuntimeInfo::release();
 #endif
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("System version","about");
 	infoString += ": ";
-	infoString += KviOsInfo::version();
+	infoString += KviRuntimeInfo::version();
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("Architecture","about");
 	infoString += ": ";
-	infoString += KviOsInfo::machine();
+	infoString += KviRuntimeInfo::machine();
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("Qt version","about");
 	infoString += ": ";
-	infoString += KviOsInfo::qtVersion();
+	infoString += KviRuntimeInfo::qtVersion();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Qt theme","about");
+	infoString += ": ";
+	infoString += KviRuntimeInfo::qtTheme();
 	infoString += "<br><br>";
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Build Info","about");

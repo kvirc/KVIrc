@@ -205,7 +205,6 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(pLabel,0,0);
 
 	m_pPackageAuthorEdit = new QLineEdit(this);
-	m_pPackageAuthorEdit->setText(__tr2qs_ctx("Your name here","addon"));
 	pLabel->setBuddy(m_pPackageAuthorEdit);
 	pLayout->addWidget(m_pPackageAuthorEdit,0,1);
 
@@ -214,7 +213,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pPackageNameEdit = new QLineEdit(this);
-	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed in filename","addon"));
+	m_pPackageNameEdit->setPlaceholderText(__tr2qs_ctx("No spaces allowed","addon"));
 	pLabel->setBuddy(m_pPackageNameEdit);
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
 
@@ -223,7 +222,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 	pLayout->addWidget(pLabel,2,0);
 
 	m_pPackageVersionEdit = new QLineEdit(this);
-	m_pPackageVersionEdit->setText(__tr2qs_ctx("Version in the form x.y[.z], like 1.0 or 2.0.3","addon"));
+	m_pPackageVersionEdit->setPlaceholderText("1.0");
 	pLabel->setBuddy(m_pPackageVersionEdit);
 	pLayout->addWidget(m_pPackageVersionEdit,2,1);
 

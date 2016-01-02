@@ -337,7 +337,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			serv += xxx;
 			serv += nick;
 			serv += QChar(']');
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,14,serv);
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,13,serv);
 		} else {
 			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,14,serv);
 			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,27,nick);

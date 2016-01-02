@@ -200,7 +200,7 @@ void NickServRuleEditor::okPressed()
 
 bool NickServRuleEditor::editRule(KviNickServRule * r)
 {
-	m_pRegisteredNickEdit->setText(r->registeredNick().isEmpty() ? QString("MyNick") : r->registeredNick());
+	m_pRegisteredNickEdit->setText(r->registeredNick());
 	m_pNickServMaskEdit->setText(r->nickServMask().isEmpty() ? QString("NickServ!*@*") : r->nickServMask());
 	m_pMessageRegexpEdit->setText(r->messageRegexp().isEmpty() ? QString("*IDENTIFY*") : r->messageRegexp());
 	m_pIdentifyCommandEdit->setText(r->identifyCommand().isEmpty() ? QString("msg -q NickServ IDENTIFY <password>") : r->identifyCommand());

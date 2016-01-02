@@ -363,9 +363,8 @@
 					if(ev->atom == (kvi_u32_t)kvi_atom_ipc_remote_command)
 						return x11GetRemoteMessage();
 				}
-			#else
-				return false;
 			#endif
+			return false;
 		#endif
 	}
 #endif

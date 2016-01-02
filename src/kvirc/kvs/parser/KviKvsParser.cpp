@@ -292,13 +292,13 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		objects with constructors, destructors and class inheritance.
 		There are also more exotic concepts like the signal-slots interobject-communication.
 		Obviously you will also find most of the RFC1459 IRC commands and
-		other tools to "play" with an IRC connection.
+		other tools to [i]play[/i] with an IRC connection.
 		[/p]
 		[p]
 		I'll try to explain the language by using examples
 		instead of strict syntactic rules. (Actually I have even
 		tried to write the rules...take a look [doc:syntactic_rules]here[/doc][br][br]
-		And please...forgive me for my "fantastic" English :)
+		And please...forgive me for my [i]fantastic[/i] English :)
 		[/p]
 		Szymon Stefanek
 */
@@ -330,7 +330,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		that a finite list of (some scripting language) instructions.
 		In fact a set of scripts, documentation files, graphics or other multimedia
 		files and sometimes executable binaries is still called a [i]script[/i]...just like
-		the "PrincoScript" or "dynamirc" (tough this last one should be categorized as "malware" instead).
+		the [i]PrincoScript[/i] or [i]dynamirc[/i] (tough this last one should be categorized as [i]malware[/i] instead).
 		In KVIrc such a collection of items is called [i]addon[/i], but be prepared
 		for both usages of the word in this documentation and around the web.
 		[/p]
@@ -359,7 +359,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		The command input window can also be put in multi-line mode by clicking
 		on the button on the right.
 		Another alternative for testing scripts is the code tester window.
-		You can access it by selecting "New code tester" from the Scripting menu
+		You can access it by selecting [i]New code tester[/i] from the Scripting menu
 		at the top of the KVIrc window. You will soon have the opportunity to
 		experiment with all the methods. Read on.
 		[/p]
@@ -416,7 +416,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The line above is an example of syntax specification. All the commands
 		are described by such syntax lines. [cmd]join[/cmd] is the command and it stands exactly
-		for the literal string "join" typed in a script. <channel> is in angular parenthesis
+		for the literal string [i]join[/i] typed in a script. <channel> is in angular parenthesis
 		and represents a mandatory parameter: you must substitute a real channel name in its place
 		otherwise the command will fail and KVIrc will probably complain too.
 		[password] is still a parameter but the square parentheses indicate that it is
@@ -438,7 +438,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		In the example above the optional parameter [password] is omitted.
 		[note]
 		In fact it is not really omitted: KVIrc interprets it as an empty string that later
-		means "do not send the password to the server".
+		means [i]do not send the password to the server[/i].
 		Empty strings are equivalent to omitted ones.
 		[/note]
 		[/p]
@@ -479,14 +479,14 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		For example the double-quote characters can be used to enclose strings
 		and are stripped by the parser.
 		Another example of a special character is the command terminator (';'):
-		it has the "special" meaning of terminating a command.
+		it has the [i]special[/i] meaning of terminating a command.
 		If you want to enclose a literal quote in your text, you need to [b]escape[/b] it.
 		Like in most other programming languages, the escaping character is the backslash ('\').
 		[example]
 			[cmd]echo[/cmd] You can smile this way too! \;)
 		[/example]
 		The above example will treat the ';' as a part of the parameters and print it.[br]
-		In some languages the action of "escaping" a character is called "quoting".
+		In some languages the action of [i]escaping[/i] a character is called [i]quoting[/i].
 		Altough there is some confusion in this term, the meaning is to either use quotes
 		or to use the escape character to remove special meaning from some characters.
 		By quoting the spaces you can include them in a parameter, by escaping the quotes
@@ -672,7 +672,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		but it will work correctly. :)[/i]
 		[/p]
 		[p]
-		Normal function names can be made of "anycase" letters, digits and underscores,
+		Normal function names can be made of [i]anycase[/i] letters, digits and underscores,
 		with the restriction that the first character is not a digit.[br]
 		Some kind of functions can contain a dot '.' character inside the name
 		and these are assumed to be module references (see [doc:modules]the modules documentation[/doc]).[br]
@@ -690,13 +690,13 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		length in characters of the parameter string. The returned value is always
 		a string: in this case it can be also interpreted as a number.[br]
 		When passing an empty list you can avoid the parenthesis.
-		(And you have found the "simple" functions shown above).
+		(And you have found the [i]simple[/i] functions shown above).
 		So the followind two calls are equal:[br]
 		[example]
 			[cmd]echo[/cmd] [fnc]$window.caption[/fnc]
 			[cmd]echo[/cmd] [fnc]$window.caption()[/fnc]
 		[/example]
-		If you want to pass an "empty" string as the first parameter you have to use
+		If you want to pass an [i]empty[/i] string as the first parameter you have to use
 		the following syntax:[br]
 		[example]
 			[cmd]echo[/cmd] [fnc]$str.len[/fnc]("")
@@ -727,18 +727,18 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		until it is explicitly deleted.
 		A couple of examples will make the things clear.
 		join is a really commonly used command - it might be a good idea to rename it to
-		simply "j" .. just to type it faster.
-		Nothing easier in KVirc: just try this commandline:
+		simply [b]j[/b] .. just to type it faster.
+		Nothing easier in KVIrc: just try this commandline:
 		[example]
 			[cmd]alias[/cmd](j){ [cmd]join[/cmd] $0-; };
 		[/example]
 
-		This will create the alias "j". From this moment you can use /j as if it was a normal command.
+		This will create the alias [b]j[/b]. From this moment you can use /j as if it was a normal command.
 		[example]
 			j #kvirc
 		[/example]
 		You may have noticed the strange $0- function in the alias body - it stands for
-		"all parameters passed to the alias". This means that when you call
+		[i]all parameters passed to the alias[/i]. This means that when you call
 		[example]
 			j #kvirc testpassword
 		[/example]
@@ -758,29 +758,29 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[cmd]alias[/cmd](j){}
 		[/example]
-		This will remove the alias "j" defined above.
+		This will remove the alias [b]j[/b] defined above.
 		[/p]
 		[p]
 		A common task in channel management is the kick & ban action.
 		You first ban a user from the channel and then eventually kick him
 		(obviously assuming that he is actually on the channel).
 		This involves using two commands - ban and then kick.
-		It could be a nice idea to have a single "kb" command to perform this action.
+		It could be a nice idea to have a single [b]kb[/b] command to perform this action.
 		Well...easy:
 		[example]
 			[cmd]alias[/cmd](kb){ [cmd]ban[/cmd] $0; [cmd]kick[/cmd] $0-; };
 		[/example]
-		This adds the "kb" alias - it can be called as a normal command:
+		This adds the [b[]kb[/b] alias - it can be called as a normal command:
 		[example]
 			kb spammer You're not welcome here!
 		[/example]
-		This will first execute "ban spammer" and then "kick spammer You're not welcome here".
+		This will first execute [i]ban spammer[/i] and then [i]kick spammer with; You're not welcome here[/i].
 		Our kb is a really simple example... it doesn't check for the validity of the parameters -
 		the server will warn us if the parameters passed to kb were empty.
 		[/p]
 		[p]
 		The alias can be modified at any time by reusing the alias command.
-		Let's make our "kb" a bit more intelligent and add a check for the parameters.
+		Let's make our [b]kb[/b] a bit more intelligent and add a check for the parameters.
 		TIP: It is a good idea to write the following examples in a text file and then use /parse <filename> to execute it.
 		[example]
 			[cmd]alias[/cmd](kb)
@@ -798,20 +798,20 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The example above will first check the validity of the <nickname> passed to kb -
 		if no nickname was passed, it will warn the user and stop.
-		The next step will be the "ban <nickname>" call. Another enhancement is the "default reason" -
-		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
+		The next step will be the [i]ban <nickname>[/i] call. Another enhancement is the [i]default reason[/i] -
+		we first assign the remaining parameters ($1- means [i]from $1 to the end[/i]) to a temporary variable,
 		and if the variable is empty, a default kick reason is assigned.
-		Finally the "kick <nickname> <reason>" will be executed.
+		Finally the [i]kick <nickname> <reason>[/i] will be executed.
 		Get used to looking at the single command documentation pages, they will give
 		you the hints necessary to fully understand the above piece of code.
 		[/p]
 		[p]
 		Aliases can be used as a means for structured programming.
-		In large scripts you will SURELY have "common tasks" to perform (like having
+		In large scripts you will [b]surely[/b] have [i]common tasks[/i] to perform (like having
 		specially-colored output or calculating a value from a set of other values)...
-		Aliases are the way of writing the common tasks - they are equivalent to the "procedures"
-		or "functions" in many high-level programming languages.
-		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above -
+		Aliases are the way of writing the common tasks - they are equivalent to the [i]procedures[/i]
+		or [i]functions[/i] in many high-level programming languages.
+		The alias as a procedure (subroutine or sub-task) has been shown in the [b]kb[/b] example above -
 		it might be commonly called from more complex scripts or other aliases in the case that a
 		kick & ban action is needed.
 		[/p]
@@ -821,8 +821,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[cmd]alias[/cmd](sum3){ [cmd]return[/cmd] $($0 + $1 + $2); };
 		[/example]
-		This will add the alias "sum3" and make it available both as a command and a function.
-		The "return" command sets the return value of a sequence of commands
+		This will add the alias [i]sum3[/i] and make it available both as a command and a function.
+		The [i]return[/i] command sets the return value of a sequence of commands
 		(an alias is a sequence of commands...remember?) and terminates the execution (by returning
 		the control to the caller).
 		So return $($0 + $1 + $2); will set the return value of the alias to the value
@@ -845,8 +845,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		In fact there is no difference at all between function-aliases and normal-aliases -
 		the caller makes the difference. By calling an alias as a command, the return value
 		just disappears into hyperspace, however if you call an alias as a function, the return value
-		is propagated (and in fact "used").
-		There are some "nice" exceptions to this rule...but you don't need to care about it, for now.
+		is propagated (and in fact [i]used[/i]).
+		There are some [i]nice[/i] exceptions to this rule...but you don't need to care about it, for now.
 		If return is not called inside an alias body, the return value will be set to [fnc]$null[/fnc].
 		[/p]
 		[p]
@@ -927,16 +927,16 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			[big]Introduction[/big][br]
 			Starting from the release 3.0.0, KVIrc window structure has
 			grown in complexity. Older releases allowed one connection
-			per "frame window" and thus had a dedicated command parser
+			per [i]frame window[/i] and thus had a dedicated command parser
 			for each connection. Finding a window in that scenario
-			was quite easy: it was enough to designate it by "name"
+			was quite easy: it was enough to designate it by [i]name[/i]
 			(that was exactly the text displayed in the window caption).
-			It was sufficient to have an "unique" name for ever window;
+			It was sufficient to have an [i]unique[/i] name for ever window;
 			condition that was granted by the underlying IRC protocol
 			and by the KVIrc core design.[br]
 			In this version, the unique window names are impossible to be granted.[br]
 			[big]Scenario[/big][br]
-			The command parser is now "global" to the application.
+			The command parser is now [i]global[/i] to the application.
 			There can be two or more consoles in each frame and the user
 			is able to join the same channel with two different nicknames
 			using two separate connections.
@@ -1023,14 +1023,14 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			queries it is the list of the targets. For some other windows
 			the logical name corresponds to the caption text. This will be discussed later.[br]
 			The [b]type identifier[/b] describes the properties of a certain window.
-			For channel windows the type identifier is "channel", for query windows is "query",
-			for console windows it is "console", etc.[br]
+			For channel windows the type identifier is [i]channel[/i], for query windows is [i]query[/i],
+			for console windows it is [i]console[/i], etc.[br]
 
 			[big]IRC Contexts[/big][br]
 			The KVIrc frame windows are numbered starting from 0 and named
 			"frame_<number>". Each frame can contain an unlimited number of consoles.[br]
-			Each console is bound to an [b]IRC context[/b]. (The part "is bound to" could
-			be substituted by "defines" or "is contained in").[br]
+			Each console is bound to an [b]IRC context[/b]. (The part [i]is bound to[/i] could
+			be substituted by [i]defines[/i] or [i]is contained in[/i]).[br]
 			[i]An [b]IRC context[/b] is a set of resources that can deal with a single
 			IRC connection.[/i][br]
 			The association between an [b]IRC context[/b]
@@ -1039,7 +1039,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			An [b]IRC context[/b] can be in connected or not-connected state.
 			When in connected state, it contains a set of windows beside the console:
 			mainly channels and query windows.
-			The channels and query windows can exist ONLY if the associated
+			The channels and query windows can exist [b]only[/b] if the associated
 			[b]IRC context[/b] exists.[br]
 			Channels and queries have unique names inside a connection so
 			there is no way to confuse it. (Theoretically there can
@@ -1047,9 +1047,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			all the windows refer to the same target so they are instances
 			of the same resource).
 			All this creates a sort of namespace: the channels and queries can be identified
-			as "bound" to a specific [b]IRC context[/b].[br]
-			An [b]IRC context[/b] can "contain" other windows, such as the "sockets"
-			window or the "list" window. KVIrc takes care of making them
+			as [i]bound[/i] to a specific [b]IRC context[/b].[br]
+			An [b]IRC context[/b] can [i]contain[/i] other windows, such as the [i]sockets[/i]
+			window or the [i]list[/i] window. KVIrc takes care of making them
 			unique inside the [b]IRC context[/b] namespace.[br]
 			Each [b]IRC context[/b] has its own unique [b]IRC context ID[/b] (see [fnc]$context[/fnc]).[br]
 			Since to a single [b]IRC context[/b] may correspond only a single IRC connection,
@@ -1071,7 +1071,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			The simplest (but also the less significant) method of looking for
 			a window is to finding it by caption.[br]
 			The [fnc]$window[/fnc] function finds the first KVIrc window matching
-			the "caption text" and returns its [b]window ID[/b].[br]
+			the [i]caption text[/i] and returns its [b]window ID[/b].[br]
 			This method will likely fail when there are more windows with the same
 			caption text; for this reason several specific functions
 			have been added to allow finding the correct window.[br]
@@ -1130,18 +1130,18 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		until it is explicitly deleted.
 		A couple of examples will make the things clear.
 		join is a really commonly used command. It might be a good idea to rename it to
-		simply "j" .. just to type it faster.
-		Nothing easier in KVirc: just try this commandline:
+		simply [b]j[/b] .. just to type it faster.
+		Nothing easier in KVIrc: just try this commandline:
 		[example]
 			[cmd]alias[/cmd](j){ [cmd]join[/cmd] $0-; };
 		[/example]
 
-		This will create the alias "j". From this moment you can use /j as it was a normal command.
+		This will create the alias [b]j[/b]. From this moment you can use /j as it was a normal command.
 		[example]
 		j #kvirc
 		[/example]
 		You may have notices the strange $0- function in the alias body: it stands for
-		"all parameters passed to the alias". This means that when you call
+		[i]all parameters passed to the alias[/i]. This means that when you call
 		[example]
 			j #kvirc testpassword
 		[/example]
@@ -1161,29 +1161,29 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[cmd]alias[/cmd](j){}
 		[/example]
-		This will remove the alias "j" defined above.
+		This will remove the alias [b]j[/b] defined above.
 		[/p]
 		[p]
 		A common task in channel management is the kick & ban action.
 		You first ban an user from the channel and then eventually kick him
 		(obviously assuming that he is actually on the channel).
 		This involves using two commands: ban and then kick.
-		It could be a nice idea to have a single "kb" command to perform this action.
+		It could be a nice idea to have a single [b]kb[/b] command to perform this action.
 		Well...easy:
 		[example]
 			[cmd]alias[/cmd](kb){ [cmd]ban[/cmd] $0; [cmd]kick[/cmd] $0-; };
 		[/example]
-		This adds the "kb" alias: it can be called as a normal command:
+		This adds the [b]kb[/b] alias: it can be called as a normal command:
 		[example]
 			kb spammer You're not welcome here!
 		[/example]
-		This will first execute "ban spammer" and then "kick spammer You're not welcome here".
+		This will first execute [i]ban spammer[/i] and then [i]kick spammer with; You're not welcome here[/i].
 		Our kb is a really simple example... it doesn't check for the validity of the parameters:
 		the server will warn us if the parameters passed to kb were empty.
 		[/p]
 		[p]
 		The alias can be modified at any time by re-using the alias command.
-		Let's make our "kb" a bit more intelligent and add a check for the parameters.
+		Let's make our [b]kb[/b] a bit more intelligent and add a check for the parameters.
 		TIP: It is a good idea to write the following examples in a text file and then use /parse <filename> to execute it.
 		[example]
 			[cmd]alias[/cmd](kb)
@@ -1201,20 +1201,20 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The example above will first check the validity of the <nickname> passed to kb:
 		if no nickname was passed, it will warn the user and stop.
-		The next step will be the "ban <nickname>" call. Another enhancement is the "default reason":
-		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
+		The next step will be the [i]ban <nickname>[/i] call. Another enhancement is the [i]default reason[/i]:
+		we first assign the remaining parameters ($1- means [i]from $1 to the end[/i]) to a temporary variable,
 		if the variable is empty, a default kick reason is assigned.
-		Finally the "kick <nickname> <reason>" will be executed.
+		Finally the [i]kick <nickname> <reason>[/i] will be executed.
 		Get used to looking at the single command documentation pages, they will give
 		you the hints necessary to fully understand the above piece of code.
 		[/p]
 		[p]
 		Aliases can be used as a mean for structured programming.
-		In large scripts you will SURELY have "common tasks" to perform (like having specially
+		In large scripts you will [b]surely[/b] have [i]common tasks[/i] to perform (like having specially
 		colored output or calculating a value from a set of other values)...
-		Aliases are the way of writing the common tasks: they are equivalent to the "procedures"
-		or "functions" in many high-level programming languages.
-		The alias as a procedure (subroutine or sub-task) has been shown in the "kb" example above:
+		Aliases are the way of writing the common tasks: they are equivalent to the [i]procedures[/i]
+		or [i]functions[/i] in many high-level programming languages.
+		The alias as a procedure (subroutine or sub-task) has been shown in the [b]kb[/b] example above:
 		it might be commonly called from more complex scripts or other aliases in case that a
 		kick & ban action is needed.
 		[/p]
@@ -1224,8 +1224,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[cmd]alias[/cmd](sum3){ [cmd]return[/cmd] $($0 + $1 + $2); };
 		[/example]
-		This will add the alias "sum3" and make it available both as a command and a function.
-		The "return" command sets the return value of a sequence of commands
+		This will add the alias [i]sum3[/i] and make it available both as a command and a function.
+		The [i]return[/i] command sets the return value of a sequence of commands
 		(an alias is a sequence of commands...remember?) and terminates the execution (by returning
 		the control to the caller).
 		So return $($0 + $1 + $2); will set the return value of the alias to the value
@@ -1248,8 +1248,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		In fact there is no difference al all between function-aliases and normal-aliases:
 		the caller makes the difference: by calling an alias as a command the return value
 		just disappears in hyperspace, by calling an alias as a function, the return value
-		is propagated (and in fact "used").
-		(There are some "nice" exceptions to this rule... but you don't need to care about it, for now).
+		is propagated (and in fact [i]used[/i]).
+		(There are some [i]nice[/i] exceptions to this rule... but you don't need to care about it, for now).
 		If return is not called inside an alias body, the return value will be just a null value.
 		[/p]
 		[p]
@@ -1276,7 +1276,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		and accessory files that implement a KVIrc feature.
 		It might be a simple automatic-away subsystem, a GUI newsticker or a complex
 		file sharing
-		service (commonly called "fserve"). Addons are sometimes called "scripts".
+		service (commonly called [i]fserve[/i]). Addons are sometimes called [i]scripts[/i].
 		In fact a KVIrc addon is usually made of more than one KVS script.
 		[/p]
 		[p]
@@ -1289,7 +1289,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[big]Addon installation[/big]
 		[p]
 		The addons are usually shipped in compressed archives (.kva). KVIrc will look
-		for the installer file called "install.kvs" and executes it when the user will
+		for the installer file called [i]install.kvs[/i] and executes it when the user will
 		ask for your addon to be installed. The install.kvs contains the code for the
 		[b]registration[/b] of your addon and will [cmd]include[/cmd] all the other
 		necessary source files.
@@ -1309,7 +1309,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			{
 			}
 		[/example]
-		The code above does nothing but registers the "MyAddon" addon.
+		The code above does nothing but registers the [i]MyAddon[/i] addon.
 		[/p]
 		[p]
 		The first parameter is the internal addon ID which can be used to identify
@@ -1436,7 +1436,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[/p]
 		[p]
-		The main [b]source directory[/b] for your addon have to be named "src" and must
+		The main [b]source directory[/b] for your addon have to be named [i]src[/i] and must
 		contain the implementation of the feature(s) you're going to provide.
 		File names should contain the namespace of the addon, the optional subnamespace
 		and the name of the feature like $addonNS_$subNS_[$subNS_[...]]$name.kvs
@@ -1452,27 +1452,27 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[/p]
 		[p]
-		The "[b]locale[/b]" directory should contain the *.mo files for your tranlations.
+		The [b]locale[/b] directory should contain the *.mo files for your tranlations.
 		The localization process of a script is explained in [doc:localization]this document[/doc].
 		Your *.mo filenames should be prefixed by your addon name.
 		[/p]
 		[p]
-		The [b]configuration directory[/b] "config" should contains only the files
+		The [b]configuration directory[/b] [i]config[/i] should contains only the files
 		which store the configuration of your addon and must end with the .kvc
 		extension.
 		[/p]
 		[p]
-		The "[b]pics[/b]" and "[b]sound[/b]" (if relevant) directories should contain
+		The [b]pics[/b] and [b]sound[/b] (if relevant) directories should contain
 		your multimedia files. I's a good idea to have your pics file in PNG format
 		and sound files in WAV format.
 		[/p]
 		[p]
-		The "[b]help[/b]" directory should contain subdirectories for each language
+		The [b]help[/b] directory should contain subdirectories for each language
 		your help files are written in. The languages dirs should be named
-		with the language code also used for the translation files (like "en", "it"
+		with the language code also used for the translation files (like [i]en[/i], [i]it[/i]
 		etc...).
 		Please note that English is the default language and KVIrc will
-		fallback to the "en" subdirectory when no other language is found around...
+		fallback to the [i]en[/i] subdirectory when no other language is found around...
 		[/p]
 
 		[big]Some examples[/big]
@@ -1508,7 +1508,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				event(OnKVIrcStartup,"MyAddon")
 				{
 					...
-					[comment]# Load the catalogue (translation) file "myaddon" from the path provided[/comment]
+					[comment]# Load the catalogue (translation) file [i]myaddon[/i] from the path provided[/comment]
 					[cmd]trload[/cmd] myaddon [fnc]$file.localdir[/fnc]("locale/MyAddon")
 					MyAddon::config::load
 					...
@@ -1532,7 +1532,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				%MyAddonConfig = [fnc]$new[/fnc](MyAddon::classes::ConfHandler)
 				%MyAddonConfigPath = [fnc]$file.localdir[/fnc](config/scripts/MyAddon)
 
-				[comment]# Open the configuration file and sets the section "general"[/comment]
+				[comment]# Open the configuration file and sets the section general[/comment]
 				%c = [fnc]$config.open[/fnc](%MyAddonConfigPath/MyAddon.kvc,"r")
 				[cmd]config.setsection[/cmd] %c general
 
@@ -1602,7 +1602,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 	@short:
 		Generic coding tips for scripters (and not only)
 	@body:
-		Here comes a small list of "coding tips".[br]
+		Here comes a small list of [i]coding tips[/i].[br]
 		These apply to programming in general, not only to KVIrc scripting.[br]
 		[br]
 		1. [b]Comment your code[/b][br]
@@ -1613,7 +1613,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		other developers that will be going to read your code.[br]
 		[br]
 		3. [b]Use TABS to indent your code[/b][br]
-		...and use ONLY TABS to indent.[br]
+		...and use [b]only tabs[/b] to indent.[br]
 		Tabs are better than space since most code editors allow you
 		to set the tab since and thus to have the indentation steps smaller or bigger.[br]
 		This is really important since the indentation size is really a matter of personal taste.[br]
@@ -1626,7 +1626,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		time that you're going to read the code that uses it.[br]
 		This is really annoying and time-consuming, especially if the project
 		is getting large.[br]
-		Obviously using "thisIsACounterVariable" as name for a simple counter
+		Obviously using [i]thisIsACounterVariable[/i] as name for a simple counter
 		is also a suicide.[br]
 		A good convention on variable names can speed up writing, debugging and maintaining code.[br]
 		Encoding the type of the variable in the variable name might be also a good idea,
@@ -1642,15 +1642,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			- sz prefix for strings (this is rather for string classes)[br]
 			- ...[br]
 		[br]
-		- Pointers have a "p" prefix prepended[br]
-		- Global variables start with a "g_" prefix[br]
-		- Member variables start with a "m_" prefix[br]
+		- Pointers have a [b]p[/b] prefix prepended[br]
+		- Global variables start with a [b]g_[/b] prefix[br]
+		- Member variables start with a [b]m_[/b] prefix[br]
 		- Exception comes for local variables with obvious semantics[br]
 		[br]
 			- i,j,k,l for local loop counters[br]
-			- "aux" and "tmp" for local obvious short-term temporary variables[br]
+			- [i]aux[/i] and [i]tmp[/i] for local obvious short-term temporary variables[br]
 		[br]
-		So actually by ONLY reading "g_pszQuitMessage" I know that this is a global pointer to a string variable
+		So actually by [b]only[/b] reading [i]g_pszQuitMessage[/i] I know that this is a global pointer to a string variable
 		containing a quit message. :)[br]
 		[/p]
 */
@@ -1672,10 +1672,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		In the following table you can find a good part of the
 		KVIrc scripting language syntactic rules.[br]
 		[br]
-		<entity> indicates a ENTITY THAT CAN APPEAR EXACTLY ONE TIME.[br]
-		[<entity>] indicates an OPTIONAL ENTITY.[br]
-		{<entity>} indicates an ENTITY THAT CAN APPEAR ONE OR MORE TIMES.[br]
-		'entity' indicates a LITERAL ENTITY: written exactly as it is.[br]
+		<entity> indicates an [b]entity that can appear exactly one time[/b].[br]
+		[<entity>] indicates an [b]optional entity[/b].[br]
+		{<entity>} indicates an [b]entity that can appear one or more times[/b].[br]
+		'entity' indicates a [b]literal entity[/b]: written exactly as it is.[br]
 		<entity1>|<entity2> indicates mutually exclusive choices.[br]
 		The mutually exclusive choices are often separated in two or more
 		rules (productions), to improve readability.[br]
@@ -1730,7 +1730,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/tr]
 		[tr]
 		[td]<end of string>[/td]
-		[td]No character (internally Ascii character 0)[/td]
+		[td]No character (internally ASCII character 0)[/td]
 		[/tr]
 		[tr]
 		[td]<command terminator>[/td]
@@ -1738,7 +1738,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/tr]
 		[tr]
 		[td]<non comment-terminator>[/td]
-		[td]Any Ascii character except <newline> and <end of string>[/td]
+		[td]Any ASCII character except <newline> and <end of string>[/td]
 		[/tr]
 		[tr]
 		[td]<simple command>[/td]
@@ -2042,9 +2042,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[subtitle]Hashes[/subtitle]
 
 		[p]
-		The hashes are collections of items indexed by strings: the word "hash"
-		is in fact a shortcut for "hashtable". In literature hashes are also called
-		"associative arrays", "dictionaries" or "key-value pair sets".
+		The hashes are collections of items indexed by strings: the word [i]hash[/i]
+		is in fact a shortcut for [i]hashtable[/i]. In literature hashes are also called
+		[i]associative arrays[/i], [i]dictionaries[/i] or [i]key-value pair sets[i].
 		The hash items are selected by placing the key in curly brackets
 		just after the hash name.
 		[/p]
@@ -2145,7 +2145,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[title]More about scalars[/title]
 
 		[p]
-		Internally KVS is implicitly typed: the "scalar" data type is in fact
+		Internally KVS is implicitly typed: the [i]scalar[/i] data type is in fact
 		a set of types that KVIrc manages silently. The types are: integer, string, real, boolean and hobject.
 		[/p]
 
@@ -2160,7 +2160,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 
 		[p]
-		Booleans are either true or false values.
+		Booleans are either true or false values. For boolean constants, use [fnc]$true[/fnc] or [fnc]$false[/fnc].
+		Don't use [i]true[/i] or [i]false[/i], because the engine sees them as non-empty strings, which always evaluate as true.
 		[/p]
 
 		[p]
@@ -2169,7 +2170,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 
 		[p]
-		Basically anything else fails in the "string" category.
+		Basically anything else fails in the [i]string[/i] category.
 		[/p]
 
 		[p]
@@ -2194,7 +2195,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 
 		[p]
-		There is also another subtle type of scalar called "nothing". It stands for an empty (unset) variable.
+		There is also another subtle type of scalar called [i]nothing[/i]. It stands for an empty (unset) variable.
 		[/p]
 
 		[example]
@@ -2205,7 +2206,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		Nothing is something in between a data type and a special value for all the other data types:
 		it represents absence of information.
-		This may look a bit confusing but realize that all the unreferenced KVS variable are in fact of type "nothing":
+		This may look a bit confusing but realize that all the unreferenced KVS variable are in fact of type [i]nothing[/i]:
 		they just don't exist. This means that you can use [fnc]$nothing[/fnc]() to effectively
 		unset a variable.
 		[p]
@@ -2236,7 +2237,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		and for writer's clarity.
 		[/p]
 
-		[title]More about variables lifecycle[/title]
+		[title]More about variables life-cycle[/title]
 
 		[p]
 		As stated above variables start their existence when you assign something to them.
@@ -2281,7 +2282,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		Beside local and global variables there is a third family of them.
 		Variables that have a ':' character just after the leading '%' are [b]extended scope[/b] variables.
-		"%:index", "%:Hello", "%:something.else" are all valid special scope variable names.
+		[i]%:index[/i], [i]%:Hello[/i], [i]%:something.else[/i] are all valid special scope variable names.
 		They're actually used in popups and in timers (but later I might find other usages as well :).
 		"Extended scope" means that these variables are somewhere in the middle between
 		global and local variables. They normally act as local, but in some cases their [b]lifetime[/b] and [b]visibility[/b]
@@ -2308,15 +2309,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%number = 1st; echo this is my %number variable test
 		[/example]
 		[p]
-		will first assign "1st" to the variable "%number" and then execute
+		will first assign [i]1st[/i] to the variable [i]%number[/i] and then execute
 		"echo this is my 1st variable test". The following example will [b]not[/b] work as expected.
 		[/p]
 		[example]
 			%number = 1; echo this is my %numberst variable test
 		[/example]
 		[p]
-		KVS will assign "1" to %number in this case but the next variable
-		name extracted will be "%numberst" that is actually empty; so finally
+		KVS will assign [b]1[/b] to %number in this case but the next variable
+		name extracted will be [i]%numberst[/i] that is actually empty; so finally
 		"echo this is my variable test" will be executed.
 		To avoid this problem you can use the backslash escape character:
 		[/p]
