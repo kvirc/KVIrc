@@ -69,6 +69,9 @@ extern QPixmap * g_pUserChanStatePixmap;
 // Yet another really complex widget :)
 
 #define KVI_USERLIST_BORDER_WIDTH 2
+#define KVI_USERLIST_ICON_WIDTH 16
+#define KVI_USERLIST_ICON_STATE_WIDTH 8
+#define KVI_USERLIST_ICON_MARGIN 3
 
 // FIXME: #warning "We want to be able to navigate the list with the keyboard!"
 
@@ -1815,16 +1818,16 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				}
 			}
 
-			int iTheX = KVI_USERLIST_BORDER_WIDTH + 1;
+			int iTheX = KVI_USERLIST_BORDER_WIDTH + KVI_USERLIST_ICON_MARGIN + 1;
 
 			int iAvatarAndTextX = iTheX;
 
 			if(bShowGender)
-				iAvatarAndTextX += 11;
+				iAvatarAndTextX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 			if(bShowIcons)
-				iAvatarAndTextX += 18;
+				iAvatarAndTextX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 			if(bShowState)
-				iAvatarAndTextX += 11;
+				iAvatarAndTextX += KVI_USERLIST_ICON_STATE_WIDTH + KVI_USERLIST_ICON_MARGIN;
 
 			if(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid))
 			{
@@ -1855,8 +1858,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					break;
 				}
 				iAvatarAndTextX += 3;
-			} else {
-				iAvatarAndTextX += 1;
 			}
 
 			if(pEntry->globalData()->isAway() && KVI_OPTION_BOOL(KviOption_boolUserListViewUseAwayColor))
@@ -1896,7 +1897,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::IrcBot);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-16)/2,*pIco);
 				}
-				iTheX +=16;
+				iTheX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 			}
 
 			if(bShowState)
@@ -1963,7 +1964,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 						}
 					}
 				}
-				iTheX += 11;
+				iTheX += KVI_USERLIST_ICON_STATE_WIDTH + KVI_USERLIST_ICON_MARGIN;
 			}
 
 			if(bShowIcons)
@@ -1993,7 +1994,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 										);
 					p.drawPixmap(iTheX,iTheY+(fm.lineSpacing()-16/*size of small icon*/)/2,*pIco);
 				}
-				iTheX +=18;
+				iTheX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 				p.drawText(iAvatarAndTextX,iTheY+fm.lineSpacing()-1,pEntry->m_szNick);
 			} else {
 
