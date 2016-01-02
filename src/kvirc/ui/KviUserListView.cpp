@@ -427,7 +427,7 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons))
 		iBaseX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelState))
-		iBaseX += KVI_USERLIST_ICONSTATE_WIDTH + KVI_USERLIST_ICON_MARGIN;
+		iBaseX += KVI_USERLIST_ICON_STATE_WIDTH + KVI_USERLIST_ICON_MARGIN;
 	if(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid))
 	{
 		switch(KVI_OPTION_UINT(KviOption_uintUserListViewGridType))
