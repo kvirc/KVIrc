@@ -889,13 +889,13 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 	KviTalHBox* pEditsHBox = new KviTalHBox(this);
 
 	m_pChanLineEdit = new QLineEdit(pEditsHBox);
-	m_pChanLineEdit->setPlaceholderText(__tr2qs("Channel Name"));
+	m_pChanLineEdit->setPlaceholderText(__tr2qs("Channel name")); // setPlaceHolderText() is not the correct and consistent way to fix this, this is the easy way out adding more inconsistency across dialogs.
 	connect(m_pChanLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pChanLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
 
 	m_pPassLineEdit = new QLineEdit(pEditsHBox);
 	m_pPassLineEdit->setEchoMode(QLineEdit::Password);
-	m_pPassLineEdit->setPlaceholderText(__tr2qs("Channel Password"));
+	m_pPassLineEdit->setPlaceholderText(__tr2qs("Channel password")); //setPlaceHolderText() is not the correct and consistent way to fix this, this is the easy way out adding more inconsistency across dialogs.
 	connect(m_pPassLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pPassLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
 
