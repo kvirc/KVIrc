@@ -22,10 +22,6 @@
 //
 //=============================================================================
 
-
-//#define _KVI_DEBUG_CHECK_RANGE_
-//#include "kvi_debug.h"
-
 #include "kvi_settings.h"
 #include "kvi_defaults.h"
 #include "KviWindow.h"
@@ -112,7 +108,9 @@ bool KviApplication::checkLocalKvircDirectory()
 bool KviApplication::checkFileAssociations()
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+
 #define QUERY_BUFFER 2048
+
 	char * pcBuffer;
 	DWORD len = QUERY_BUFFER;
 	DWORD err;

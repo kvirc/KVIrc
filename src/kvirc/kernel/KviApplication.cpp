@@ -528,10 +528,10 @@ KviApplication::~KviApplication()
 	destroyIpcSentinel();
 #endif
 
-    // if we still have a frame: kill it
-    if(g_pMainWindow)
-        delete g_pMainWindow;
-    g_pActiveWindow = 0; // .. but it should be already 0 anyway
+	// if we still have a frame: kill it
+	if(g_pMainWindow)
+		delete g_pMainWindow;
+	g_pActiveWindow = NULL; // .. but it should be already 0 anyway
 
 	if(g_pCtcpPageDialog)
 		delete g_pCtcpPageDialog;
@@ -664,42 +664,42 @@ bool KviApplication::supportsCompositing()
 
 void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMsg, unsigned int uMessageLifetime)
 {
-/*
-We have different behaviour depending on support enabled at compile time (env)
-and options enabled by the user (opt).
-Let's see the scheme to understand which is choosen:
-
-1: env: DBus, KDE
-   opt: a: enabled, enabled   -> KDE
-        b: enabled, disabled  -> DBus
-        c: disabled, disabled -> KVIrc
-
-2: env: DBus, no KDE
-   opt: a: enabled  -> DBus
-        b: disabled -> KVIrc
-
-3: env: no DBus, no KDE -> KVIrc
- ______           __________           ______________
-|      |         | Want KDE |         |  Scheme 1a   |
-| KDE  |---YES-->| Notifier |---YES-->| KDE Notifier |
-|______|         |__________|         |______________|
-   |                  |
-   NO                 NO
-   |                  |
- __V___          _____V_____           _______________
-|      |        | Want DBus |         | Schemes 1b-2a |
-| DBus |--YES-->| Notifier  |---YES-->| DBus Notifier |
-|______|        |___________|         |_______________|
-   |                  |
-   NO                 NO
-   |                  |
- __V__________________V_____
-|    Schemes 1c - 2b - 3    |
-|           KVIrc           |
-|___________________________|
-
-:)
-*/
+	/*
+	We have different behaviour depending on support enabled at compile time (env)
+	and options enabled by the user (opt).
+	Let's see the scheme to understand which is choosen:
+	
+	1: env: DBus, KDE
+	   opt: a: enabled, enabled   -> KDE
+	        b: enabled, disabled  -> DBus
+	        c: disabled, disabled -> KVIrc
+	
+	2: env: DBus, no KDE
+	   opt: a: enabled  -> DBus
+	        b: disabled -> KVIrc
+	
+	3: env: no DBus, no KDE -> KVIrc
+	 ______           __________           ______________
+	|      |         | Want KDE |         |  Scheme 1a   |
+	| KDE  |---YES-->| Notifier |---YES-->| KDE Notifier |
+	|______|         |__________|         |______________|
+	   |                  |
+	   NO                 NO
+	   |                  |
+	 __V___          _____V_____           _______________
+	|      |        | Want DBus |         | Schemes 1b-2a |
+	| DBus |--YES-->| Notifier  |---YES-->| DBus Notifier |
+	|______|        |___________|         |_______________|
+	   |                  |
+	   NO                 NO
+	   |                  |
+	 __V__________________V_____
+	|    Schemes 1c - 2b - 3    |
+	|           KVIrc           |
+	|___________________________|
+	
+	:)
+	*/
 
 	if(!pWnd)
 		return;
@@ -889,28 +889,6 @@ void KviApplication::showParentFrame()
 		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 
 	g_pMainWindow->showMaximized();
-
-	/*
-	if(g_pMainWindow->isMinimized())
-	{
-		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
-
-		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
-			g_pMainWindow->showMaximized();
-		else
-			g_pMainWindow->show();
-	} else if(!g_pMainWindow->isVisible())
-	{
-		//restore mainwindow
-		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
-			g_pMainWindow->showMaximized();
-		else
-			g_pMainWindow->show();
-	} else {
-		qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
-		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = g_pMainWindow->isMaximized();
-		g_pMainWindow->hide();
-	}*/
 }
 
 QTextCodec * KviApplication::defaultTextCodec()
@@ -970,6 +948,7 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	static bool bSuggestedOnce = false;
 	if(KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript))
 		return;
+
 	if(bSuggestedOnce)
 		return; // already suggested in this kvirc session
 
@@ -1120,15 +1099,19 @@ void KviApplication::setAvatarFromOptions()
 	while(it.current())
 	{
 		if(it.current()->type() == KviWindow::Console)
-		{
 			((KviConsoleWindow *)it.current())->setAvatarFromOptions();
-		}
+
 		++it;
 	}
-
 }
 
-void KviApplication::setAvatarOnFileReceived(KviConsoleWindow * pConsole, const QString & szRemoteUrl, const QString & szNick, const QString & szUser, const QString & szHost)
+void KviApplication::setAvatarOnFileReceived(
+		KviConsoleWindow * pConsole,
+		const QString & szRemoteUrl,
+		const QString & szNick,
+		const QString & szUser,
+		const QString & szHost
+	)
 {
 	if(!m_pPendingAvatarChanges)
 	{
@@ -1151,10 +1134,14 @@ void KviApplication::setAvatarOnFileReceived(KviConsoleWindow * pConsole, const 
 	m_pPendingAvatarChanges->append(pAvatar);
 }
 
-KviPendingAvatarChange * KviApplication::findPendingAvatarChange(KviConsoleWindow * pConsole, const QString & szNick, const QString & szRemoteUrl)
+KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
+		KviConsoleWindow * pConsole,
+		const QString & szNick,
+		const QString & szRemoteUrl
+	)
 {
 	if(!m_pPendingAvatarChanges)
-		return 0;
+		return NULL;
 
 	KviPendingAvatarChange * pAvatar;
 
@@ -1170,7 +1157,7 @@ KviPendingAvatarChange * KviApplication::findPendingAvatarChange(KviConsoleWindo
 		}
 	}
 
-	return 0;
+	return NULL;
 }
 
 void KviApplication::fileDownloadTerminated(
@@ -1187,7 +1174,7 @@ void KviApplication::fileDownloadTerminated(
 	if(m_pPendingAvatarChanges)
 		pAvatar = findPendingAvatarChange(0,szNick,szRemoteUrl);
 	else
-		pAvatar = 0;
+		pAvatar = NULL;
 
 	if(!pAvatar)
 	{
@@ -1255,7 +1242,7 @@ void KviApplication::fileDownloadTerminated(
 	if(m_pPendingAvatarChanges->count() == 0)
 	{
 		delete m_pPendingAvatarChanges;
-		m_pPendingAvatarChanges = 0;
+		m_pPendingAvatarChanges = NULL;
 	}
 }
 
@@ -1265,12 +1252,12 @@ void KviApplication::destroyPseudoTransparency()
 	if(g_pShadedParentGlobalDesktopBackground)
 	{
 		delete g_pShadedParentGlobalDesktopBackground;
-		g_pShadedParentGlobalDesktopBackground = 0;
+		g_pShadedParentGlobalDesktopBackground = NULL;
 	}
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		delete g_pShadedChildGlobalDesktopBackground;
-		g_pShadedChildGlobalDesktopBackground = 0;
+		g_pShadedChildGlobalDesktopBackground = NULL;
 	}
 }
 
@@ -1281,72 +1268,6 @@ void KviApplication::triggerUpdatePseudoTransparency()
 	m_bUpdatePseudoTransparencyPending = true;
 	QTimer::singleShot(0,this,SLOT(updatePseudoTransparency()));
 }
-
-//
-// This function is taken from the KDE3 kimageeffect.cpp
-// The authors listed at the top of the file are :)
-//    Copyright (C) 1998, 1999 Christian Tibirna <ctibirna@total.net>
-//              (C) 1998, 1999 Daniel M. Duley <mosfet@kde.org>
-//              (C) 1998, 1999 Dirk A. Mueller <mueller@kde.org>
-//              (C) 2000       Josef Weidendorfer <weidendo@in.tum.de>
-//
-
-/*QImage & kimageeffect_fade(QImage &img,float val,const QColor &color)
-{
-	if(img.width() == 0 || img.height() == 0)return img;
-
-	// We don't handle bitmaps
-	if (img.depth() == 1)return img;
-
-	unsigned char tbl[256];
-	for (int i=0; i<256; i++)tbl[i] = (int) (val * i + 0.5);
-
-	int red = color.red();
-	int green = color.green();
-	int blue = color.blue();
-
-	QRgb col;
-	int r, g, b, cr, cg, cb;
-
-	if (img.depth() <= 8)
-	{
-		// pseudo color
-		int c = img.numColors();
-		for(int i=0; i<c; i++)
-		{
-			col = img.color(i);
-			cr = qRed(col); cg = qGreen(col); cb = qBlue(col);
-			if (cr > red)r = cr - tbl[cr - red];
-			else r = cr + tbl[red - cr];
-			if (cg > green)g = cg - tbl[cg - green];
-			else g = cg + tbl[green - cg];
-			if (cb > blue)b = cb - tbl[cb - blue];
-			else b = cb + tbl[blue - cb];
-			img.setColor(i, qRgb(r, g, b));
-		}
-	} else {
-	// truecolor
-		int h = img.height();
-		int w = img.width();
-		for(int y=0; y<h; y++)
-		{
-			QRgb *data = (QRgb *) img.scanLine(y);
-			for (int x=0; x<w; x++)
-			{
-				col = *data;
-				cr = qRed(col); cg = qGreen(col); cb = qBlue(col);
-				if (cr > red)r = cr - tbl[cr - red];
-				else r = cr + tbl[red - cr];
-				if (cg > green)g = cg - tbl[cg - green];
-				else g = cg + tbl[green - cg];
-				if (cb > blue)b = cb - tbl[cb - blue];
-				else b = cb + tbl[blue - cb];
-				*data++ = qRgb(r, g, b);
-			}
-		}
-	}
-	return img;
-}*/
 
 void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 {
@@ -1376,23 +1297,6 @@ void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 	p.fillRect(0,0,pix->width(),pix->height(),QBrush(KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
 	p.end();
 
-	// play with the fade factors
-	/*
-	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) > 0)
-	{
-		*g_pShadedParentGlobalDesktopBackground = QPixmap::fromImage(
-			kimageeffect_fade(img,
-				(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100),
-				KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
-	}
-	KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) %= 100;
-	if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) > 0)
-	{
-		*g_pShadedChildGlobalDesktopBackground = QPixmap::fromImage(
-			kimageeffect_fade(img,
-				(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100),
-				KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
-	}*/
 	if(g_pMainWindow)
 		g_pMainWindow->updatePseudoTransparency();
 }
@@ -1486,13 +1390,13 @@ void KviApplication::updateApplicationFont()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont))
 	{
-			setFont(KVI_OPTION_FONT(KviOption_fontApplication));
-			if(g_pMainWindow)
-				g_pMainWindow->setFont(font());
+		setFont(KVI_OPTION_FONT(KviOption_fontApplication));
+		if(g_pMainWindow)
+			g_pMainWindow->setFont(font());
 	} else {
-			setFont(m_fntDefaultFont);
-			if(g_pMainWindow)
-				g_pMainWindow->setFont(m_fntDefaultFont);
+		setFont(m_fntDefaultFont);
+		if(g_pMainWindow)
+			g_pMainWindow->setFont(m_fntDefaultFont);
 	}
 }
 
@@ -1502,7 +1406,6 @@ void KviApplication::loadRecentEntries()
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
 	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);
 	*g_pRecentTopicList = cfg.readStringListEntry("RecentTopicList",QStringList());
-	//*g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
 }
 
 void KviApplication::saveRecentEntries()
@@ -1511,7 +1414,6 @@ void KviApplication::saveRecentEntries()
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
 	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Write);
 	cfg.writeEntry("RecentTopicList",*g_pRecentTopicList);
-	//cfg.writeEntry("Bookmarks",*g_pBookmarkList);
 }
 
 void KviApplication::saveAvatarCache()
@@ -1720,11 +1622,11 @@ void KviApplication::autoConnectToServers()
 
 void KviApplication::createFrame()
 {
-	Q_ASSERT(g_pMainWindow == 0);
+	Q_ASSERT(g_pMainWindow == NULL);
 
 	new KviMainWindow();
 
-	Q_ASSERT(g_pMainWindow != 0);
+	Q_ASSERT(g_pMainWindow != NULL);
 
 	g_pMainWindow->createNewConsole(true);
 
@@ -1736,9 +1638,7 @@ void KviApplication::createFrame()
 
 	// auto connect to servers if needed
 	if(g_pServerDataBase->autoConnectOnStartupServers() || g_pServerDataBase->autoConnectOnStartupNetworks())
-	{
 		autoConnectToServers();
-	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowDockExtension))
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
@@ -1780,41 +1680,43 @@ unsigned int KviApplication::windowCount()
 	return g_pGlobalWindowDict->count();
 }
 
-KviConsoleWindow * KviApplication::findConsole(QString & szServer, QString & szNick)
+KviConsoleWindow * KviApplication::findConsole(QString & szServer,QString & szNick)
 {
 	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
-		if(it.current()->type() == KviWindow::Console)
+		if(
+			(it.current()->type() != KviWindow::Console) ||
+			(!((KviConsoleWindow *)it.current())->isConnected())
+		)
 		{
-			if(((KviConsoleWindow *)it.current())->isConnected())
+			++it;
+			continue;
+		}
+
+		if(!szServer.isEmpty())
+		{
+			if(KviQString::equalCI(szServer,
+				((KviConsoleWindow *)it.current())->connection()->currentServerName()))
 			{
-				if(!szServer.isEmpty())
-				{
-					if(KviQString::equalCI(szServer,
-						((KviConsoleWindow *)it.current())->connection()->currentServerName()))
-					{
-						if(!szNick.isEmpty())
-						{
-							if(KviQString::equalCI(szNick,
-								((KviConsoleWindow *)it.current())->connection()->currentNickName()))
-									return ((KviConsoleWindow *)it.current());
-						} else return ((KviConsoleWindow *)it.current());
-					}
-				} else {
-					if(!szNick.isEmpty())
-					{
-						if(KviQString::equalCI(szNick,
-							((KviConsoleWindow *)it.current())->connection()->currentNickName()))
-								return ((KviConsoleWindow *)it.current());
-					}
-				}
+				if(szNick.isEmpty())
+					return ((KviConsoleWindow *)it.current());
+			
+				if(KviQString::equalCI(szNick,((KviConsoleWindow *)it.current())->connection()->currentNickName()))
+					return ((KviConsoleWindow *)it.current());
+			}
+		} else {
+			if(!szNick.isEmpty())
+			{
+				if(KviQString::equalCI(szNick,((KviConsoleWindow *)it.current())->connection()->currentNickName()))
+					return ((KviConsoleWindow *)it.current());
 			}
 		}
+
 		++it;
 	}
-	return 0;
+	return NULL;
 }
 
 void KviApplication::restartLagMeters()
@@ -1874,7 +1776,7 @@ KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 		}
 		++it;
 	}
-	return 0;
+	return NULL;
 }
 
 KviConsoleWindow * KviApplication::topmostConnectedConsole()
@@ -1883,7 +1785,7 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 
 	KviConsoleWindow * pConsole = activeConsole();
 	if(!pConsole)
-		return 0;
+		return NULL;
 	if(pConsole->isConnected())
 		return pConsole;
 
@@ -1901,7 +1803,7 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 		++it;
 	}
 
-	return 0;
+	return NULL;
 }
 
 KviWindow * KviApplication::findWindow(const QString & szWindowId)
@@ -1920,7 +1822,7 @@ KviWindow * KviApplication::findWindowByCaption(const QString & szWindowCaption,
 				return it.current();
 		++it;
 	}
-	return 0;
+	return NULL;
 }
 
 void KviApplication::registerWindow(KviWindow * pWnd)
@@ -1936,7 +1838,7 @@ void KviApplication::unregisterWindow(KviWindow * pWnd)
 KviConsoleWindow * KviApplication::activeConsole()
 {
 	if(!g_pMainWindow)
-		return 0;
+		return NULL;
 	if(g_pActiveWindow)
 	{
 		if(g_pActiveWindow->console())
@@ -2125,18 +2027,6 @@ void KviApplication::fillRecentChannelsPopup(QMenu * pMenu, KviConsoleWindow * p
 	}
 }
 
-
-/*
-void KviApplication::fillRecentServersListBox(KviTalListBox * l)
-{
-	l->clear();
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
-		l->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
-}
-*/
-
-//#include <QPixmapCache>
-
 void KviApplication::heartbeat(kvi_time_t tNow)
 {
 	const struct tm * pTm = localtime(&tNow);
@@ -2157,9 +2047,6 @@ void KviApplication::heartbeat(kvi_time_t tNow)
 			++it;
 		}
 	}
-
-	//qDebug("Clearing Qt pixmap cache...");
-	//QPixmapCache::clear();
 }
 
 void KviApplication::timerEvent(QTimerEvent * e)

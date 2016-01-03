@@ -40,8 +40,6 @@
 
 extern KviMediaManager * g_pMediaManager;
 
-//============ getGlobalKvircDirectory ================//
-
 void KviApplication::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile)
 {
 	szData=m_szGlobalKvircDir;
@@ -331,14 +329,6 @@ bool KviApplication::findImageInImageSearchPath(QString &szRetPath,const QString
 
 static KviApplication::KvircSubdir pics_localsubdirs[2]={ KviApplication::Pics, KviApplication::Avatars };
 static KviApplication::KvircSubdir pics_globalsubdirs[2]={ KviApplication::Pics, KviApplication::Avatars };
-
-/*bool KviApplication::mapImageFile(KviCString &szRetPath,const char * filename)
-{
-	QString buff;
-	bool ret=mapImageFile(buff,filename);
-	szRetPath=buff;
-	return ret;
-}*/
 
 bool KviApplication::mapImageFile(QString &szRetPath,const QString &filename)
 {
