@@ -52,6 +52,7 @@ class KviScriptEditor;
 */
 class KVIRC_API KviInput : public QWidget
 {
+	friend class KviTextIconWindow;
 	Q_OBJECT
 public:
 	/**

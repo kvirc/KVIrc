@@ -46,6 +46,7 @@ KviTextIconWindow::KviTextIconWindow()
 	m_bAltMode = false;
 
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
+
 	m_pTable = new QTableWidget(this);
 	m_pTable->setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
 	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -56,6 +57,9 @@ KviTextIconWindow::KviTextIconWindow()
 
 	fill();
 	m_pTable->setFocus(Qt::PopupFocusReason);
+
+	m_pTable->installEventFilter(this);
+
 	connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
 	connect(m_pTable,SIGNAL(cellClicked( int, int )),this,SLOT(cellSelected(int, int)));
 }
@@ -116,30 +120,102 @@ void KviTextIconWindow::popup(QWidget * pOwner, bool bAltMode)
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
 
 	show();
+	
+	autoSelectBestMatchBasedOnOwnerText();
 }
 
-void KviTextIconWindow::keyPressEvent(QKeyEvent * e)
+bool KviTextIconWindow::eventFilter(QObject * o,QEvent *e)
 {
-	switch(e->key())
+	if(o != m_pTable)
+		return false;
+	
+	if((e->type() == QEvent::KeyPress) || (e->type() == QEvent::KeyRelease))
 	{
-		case Qt::Key_Space:
-		case Qt::Key_Return:
+		QKeyEvent * ev = dynamic_cast<QKeyEvent *>(e);
+		Q_ASSERT(ev);
+		switch(ev->key())
 		{
-			cellSelected(m_pTable->currentRow(), m_pTable->currentColumn());
+			case Qt::Key_Left:
+			case Qt::Key_Right:
+			case Qt::Key_Up:
+			case Qt::Key_Down:
+				return false; // let it handle arrow navigation
+			break;
+			case Qt::Key_Space:
+			case Qt::Key_Return:
+				cellSelected(m_pTable->currentRow(), m_pTable->currentColumn());
+				return false;
+			break;
+			case Qt::Key_Tab:
+				//avoid the text edit field to move to the icon cells using tab
+				return false;
+			break;
+			case Qt::Key_Escape:
+				doHide();
+			break;
+			default:
+				// redirect to owner
+				if(m_pOwner->inherits("KviInputEditor"))
+				{
+					if(e->type() == QEvent::KeyPress)
+						((KviInputEditor *)m_pOwner)->keyPressEvent(ev);
+					else
+						((KviInputEditor *)m_pOwner)->keyReleaseEvent(ev);
+					autoSelectBestMatchBasedOnOwnerText();
+					return true;
+				}
+			break;
 		}
-		break;
-		case Qt::Key_Tab:
-			//avoid the text edit field to move to the icon cells using tab
-			break;
-		break;
-		case Qt::Key_Escape:
-			doHide();
-			break;
-		break;
-		default:
-			QWidget::keyPressEvent(e);
-			break;
 	}
+
+	return false;
+}
+
+void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
+{
+	if(!m_pOwner->inherits("KviInputEditor"))
+		return;
+
+	QString szText = ((KviInputEditor *)m_pOwner)->textBeforeCursor();
+	int idx = szText.lastIndexOf(QChar(KviControlCodes::Icon));
+	if(idx < 0)
+		return;
+
+	QString szIco = szText.mid(idx+1);
+
+	if(szIco.isEmpty())
+		return;
+
+	int iRows = m_pTable->rowCount();
+	int iCols = m_pTable->columnCount();
+	
+	int iBestR = -1;
+	int iBestC = -1;
+	int iBestLen = 999999;
+	
+	for(int r=0;r<iRows;r++)
+	{
+		for(int c=0;c<iCols;c++)
+		{
+			QWidget * it = m_pTable->cellWidget(r,c);
+			if(!it)
+				continue;
+			QString txt = it->toolTip();
+			if(!txt.startsWith(szIco))
+				continue;
+
+			// good.
+			if((iBestR == -1) || (txt.length() < iBestLen))
+			{
+				iBestR = r;
+				iBestC = c;
+				iBestLen = txt.length();
+			}
+		}
+	}
+	
+	if(iBestR > -1)
+		m_pTable->setCurrentCell(iBestR,iBestC);
 }
 
 void KviTextIconWindow::ownerDead()
@@ -162,7 +238,6 @@ void KviTextIconWindow::cellSelected(int row, int column)
 		return;
 
 	QString szItem(m_pTable->cellWidget(row, column)->toolTip());
-	szItem.append(' ');
 
 	if(m_bAltMode)
 		szItem.prepend(KviControlCodes::Icon);
@@ -170,9 +245,10 @@ void KviTextIconWindow::cellSelected(int row, int column)
 	if(m_pOwner->inherits("KviInputEditor"))
 		((KviInputEditor *)m_pOwner)->insertIconCode(szItem);
 	else if(m_pOwner->inherits("KviInput"))
-		((KviInput *)m_pOwner)->insertText(szItem);
+		((KviInput *)m_pOwner)->insertText(QString("%1 ").arg(szItem));
 	else if(m_pOwner->inherits("QLineEdit"))
 	{
+		szItem.append(' ');
 		QString szTmp = ((QLineEdit *)m_pOwner)->text();
 		szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
 		((QLineEdit *)m_pOwner)->setText(szTmp);

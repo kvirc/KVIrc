@@ -204,11 +204,6 @@
 #define KVI_SHORTCUTS_INPUT_END_SELECT QKeySequence::SelectEndOfLine		// Qt::ShiftModifier + Qt::Key_End
 #define KVI_SHORTCUTS_INPUT_HISTORY_PREV QKeySequence::MoveToPreviousLine	// Qt::Key_Up
 #define KVI_SHORTCUTS_INPUT_HISTORY_NEXT QKeySequence::MoveToNextLine		// Qt::Key_Down
-#define KVI_SHORTCUTS_INPUT_RETURN Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_RETURN_2 Qt::Key_Enter
-#define KVI_SHORTCUTS_INPUT_BACKSPACE Qt::Key_Backspace
-#define KVI_SHORTCUTS_INPUT_BACKSPACE_2 Qt::ShiftModifier + Qt::Key_Backspace
-#define KVI_SHORTCUTS_INPUT_DELETE QKeySequence::Delete				// Del
 #define KVI_SHORTCUTS_INPUT_ESCAPE Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_DUMMY Qt::ShiftModifier + Qt::Key_Escape
 #define KVI_SHORTCUTS_WIN_ZOOM_IN QKeySequence::ZoomIn				// Ctrl++

@@ -80,7 +80,9 @@ private:
 	*/
 	void doHide();
 private:
-	virtual void keyPressEvent(QKeyEvent * e);
+	virtual bool eventFilter(QObject * o,QEvent *e);
+	void autoSelectBestMatchBasedOnOwnerText();
+
 public slots:
 	/**
 	* \brief Fills in the text icon window

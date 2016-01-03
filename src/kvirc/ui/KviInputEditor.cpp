@@ -1863,11 +1863,11 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_END,this,SLOT(endInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME_SELECT,this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_END_SELECT,this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN_2,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE_2,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE,this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN_2,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE_2,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE,this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_ESCAPE,this,SLOT(escapeHit()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_COMMANDLINE,this,SLOT(toggleCommandMode()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY,this,SLOT(dummy()),0,Qt::WidgetShortcut);
@@ -1921,6 +1921,26 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		m_bLastCompletionFinished = 1;
 	}
 
+	switch(e->key())
+	{
+		case Qt::Key_Backspace:
+			if(!m_bReadOnly)
+				backspaceHit();
+			return;
+		break;
+		case Qt::Key_Delete:
+			if(!m_bReadOnly)
+				deleteHit();
+			return;
+		break;
+		case Qt::Key_Return:
+		case Qt::Key_Enter:
+			if(!m_bReadOnly)
+				returnHit();
+			return;
+		break;
+	}
+
 	if(e->modifiers() & Qt::ControlModifier)
 	{
 		switch(e->key())
@@ -1931,7 +1951,8 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 				break;
 			}
 			default:
-				if(!m_bReadOnly) insertText(e->text());
+				if(!m_bReadOnly)
+					insertText(e->text());
 			break;
 		}
 		return;
@@ -1981,6 +2002,14 @@ void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 	}
 #endif
 	e->ignore();
+}
+
+QString KviInputEditor::textBeforeCursor()
+{
+	if(m_szTextBuffer.isEmpty() || m_iCursorPosition <= 0)
+		return QString();
+	
+	return m_szTextBuffer.left(m_iCursorPosition);
 }
 
 
@@ -2808,15 +2837,38 @@ void KviInputEditor::popupTextIconWindow()
 
 void KviInputEditor::insertIconCode(const QString &szCode)
 {
-	if(m_iCursorPosition == 0) {
-		insertChar(KviControlCodes::Icon);
-	} else
+	if(m_iCursorPosition == 0)
 	{
-		QChar c = m_szTextBuffer[m_iCursorPosition - 1];
-		if(c.unicode() != KviControlCodes::Icon)
-			insertChar(KviControlCodes::Icon);
+		insertChar(KviControlCodes::Icon);
+		insertText(szCode);
+		insertChar(' ');
+		return;
 	}
-	insertText(szCode);
+
+	int idx = m_szTextBuffer.lastIndexOf(KviControlCodes::Icon,m_iCursorPosition-1);
+	int idx2 = m_szTextBuffer.lastIndexOf(QChar(' '),m_iCursorPosition-1);
+	if((idx == -1) || (idx2 > idx))
+	{
+		insertChar(KviControlCodes::Icon);
+		insertText(szCode);
+		insertChar(' ');
+		return;
+	}
+
+	QString szPart = m_szTextBuffer.mid(idx+1,m_iCursorPosition - idx+1);
+	
+	if(!szCode.startsWith(szPart))
+	{
+		insertChar(KviControlCodes::Icon);
+		insertText(szCode);
+		insertChar(' ');
+		return;
+	}
+
+	QString szMissing = szCode.mid(szPart.length());
+	if(!szMissing.isEmpty())
+		insertText(szMissing);
+	insertChar(' ');
 }
 
 void KviInputEditor::insertColor()

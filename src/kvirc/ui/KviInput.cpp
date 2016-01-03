@@ -159,7 +159,6 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
 	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
 
-
 	m_pMultiEditorButton->setAutoRaise(true);
 	m_pCommandlineModeButton->setAutoRaise(true);
 	m_pIconButton->setAutoRaise(true);

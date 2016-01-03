@@ -284,6 +284,11 @@ public:
 	QString text() { return m_szTextBuffer; };
 
 	/**
+	* \brief Returns the text before the cursor
+	*/
+	QString textBeforeCursor();
+
+	/**
 	* \brief Inserts a character at the current position
 	* \param c The character to insert
 	* \return void
