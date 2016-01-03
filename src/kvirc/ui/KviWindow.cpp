@@ -888,6 +888,9 @@ void KviWindow::youAreUndocked()
 	m_bIsDocked = false;
 	setWindowIcon(QIcon(*myIconPtr()));
 	updateCaption();
+
+	QPoint pPos = g_pMainWindow->pos();
+	move(pPos.x() + 50, pPos.y() + 50);
 }
 
 #ifdef FocusIn
