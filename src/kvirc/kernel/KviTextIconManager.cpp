@@ -239,12 +239,14 @@ void KviTextIconManager::save()
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
 		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+		// getLocalKvircDirectory will not create the last component if it doesn't exist
+		KviFileUtils::makeDir(szPath);
 		szPath += KVI_PATH_SEPARATOR_CHAR;
 		szPath += KVI_CONFIGFILE_TEXTICONS;
 	} else {
 		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
 	}
-	qDebug("Saving text icons to %s",szPath.toUtf8().data());
+	//qDebug("Saving text icons to %s",szPath.toUtf8().data());
 	save(szPath);
 }
 
