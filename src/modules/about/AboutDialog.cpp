@@ -81,7 +81,7 @@ AboutDialog::AboutDialog()
 
 	// About tab
 	QString buffer;
-	g_pApp->findImage(buffer,"kvi_splash.png");
+	g_pApp->findImage(buffer,"kvi_release_art.png");
 
 	QPixmap pix(buffer);
 

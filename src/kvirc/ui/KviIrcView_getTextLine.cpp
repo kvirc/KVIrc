@@ -1067,6 +1067,7 @@ check_emoticon_char:
 		if(*p == '-')p++; // FIXME: we could handle also 'o' as a nose ??? (extreme: also '+' ?)
 		// FIXME: use a "jump-like-check-table" here ? .... it would be surely faster
 		// FIXME: handle also '[',']','\\','p','@','#','<','>','|' ???
+		// alt + 39 is the common key for tear in emoticon not alt+ 176 also fix issue #1614
 		switch(*p)
 		{
 			case ')':
@@ -1081,14 +1082,15 @@ check_emoticon_char:
 			case 'o':
 			case '*':
 			case '|':
-			case 176: // 'Â°' -> alt 176 : teardrop
+			case 'B':
+			case 39:  //  -> alt 39 : teardrop
 			{
 				const kvi_wchar_t * item = p;
 				const kvi_wchar_t * item2 = 0;
 				p++;
 				while(*p == *item)p++;
 				int count = (p - item) - 1;
-				if(*item == 176)
+				if(*item == 39)
 				{
 					if(*p == ')')
 					{
