@@ -37,7 +37,6 @@
 #include "kvi_out.h"
 #include "KviStringConversion.h"
 #include "kvi_settings.h"
-#include "KviSplashScreen.h"
 #include "KviMainWindow.h"
 #include "KviInternalCommand.h"
 #include "KviTheme.h"
@@ -925,7 +924,6 @@ void KviApplication::loadOptions()
 	{
 		KviConfigurationFile cfg(buffer,KviConfigurationFile::Read);
 
-		int prg = 12;
 		int i;
 
 		#define READ_OPTIONS(_num,_table,_readFnc) \
@@ -933,9 +931,7 @@ void KviApplication::loadOptions()
 		{ \
 			config_set_section(_table[i].flags,&cfg); \
 			_table[i].option = cfg._readFnc(_table[i].name,_table[i].option); \
-		} \
-		prg += 3; \
-		KVI_SPLASH_SET_PROGRESS(prg)
+		}
 
 		READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
 		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
@@ -1186,11 +1182,6 @@ namespace KviTheme
 		// reset the current theme subdir
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
 
-		// reset the splash screen pointer
-		QString szPointerFile;
-		g_pApp->getLocalKvircDirectory(szPointerFile,KviApplication::Themes,"current-splash");
-		KviFileUtils::removeFile(szPointerFile);
-
 		KviConfigurationFile cfg(szThemeDirPath+KVI_THEMEDATA_FILE_NAME,KviConfigurationFile::Read);
 		QString t=szThemeDirPath+KVI_THEMEDATA_FILE_NAME;
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
@@ -1275,10 +1266,6 @@ namespace KviTheme
 				}
 			}
 		}
-
-		// create the splash screen pointer if this theme has some pixmaps in it
-		if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
-			KviFileUtils::writeFile(szPointerFile,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
 
 		// force reloading of images anyway
 		g_pApp->optionResetUpdate(iResetFlags | KviOption_resetReloadImages);

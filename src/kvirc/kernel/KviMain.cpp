@@ -65,7 +65,6 @@ typedef struct _ParseArgs
 	bool      createFile;
 	bool      bForceNewSession;
 	bool      bShowPopup;
-	bool      bShowSplashScreen;
 	bool      bExecuteCommandAndClose;
 	QString   szExecCommand;
 	QString   szExecRemoteCommand;
@@ -138,7 +137,6 @@ int parseArgs(ParseArgs * a)
 			KviQString::appendFormatted(szMessage,"                 You can eventually use this switch more than once\n");
 			KviQString::appendFormatted(szMessage,"  -m           : If a KVIrc session is already running, show an informational\n");
 			KviQString::appendFormatted(szMessage,"                 popup dialog instead of writing to the console\n");
-			KviQString::appendFormatted(szMessage,"  --nosplash   : Do not show the splash screen at startup\n");
 			KviQString::appendFormatted(szMessage,"  [server]     : Connect to this server after startup\n");
 			KviQString::appendFormatted(szMessage,"  [port]       : Use this port for connection\n");
 			KviQString::appendFormatted(szMessage,"  [ircurl]     : URL in the following form:\n");
@@ -230,12 +228,6 @@ int parseArgs(ParseArgs * a)
 			a->configFile = p;
 			a->createFile=true;
 			qDebug("Using file %s as config",p);
-			continue;
-		}
-
-		if(kvi_strEqualCI("-nosplash",p))
-		{
-			a->bShowSplashScreen = false;
 			continue;
 		}
 
@@ -351,7 +343,6 @@ int main(int argc, char ** argv)
 	a.createFile = false;
 	a.bForceNewSession = false;
 	a.bShowPopup = false,
-	a.bShowSplashScreen = true;
 	a.bExecuteCommandAndClose = false;
 
 	int iRetCode = parseArgs(&a);
@@ -477,7 +468,6 @@ int main(int argc, char ** argv)
 	pTheApp->m_bCreateConfig      = a.createFile;
 	pTheApp->m_szConfigFile       = a.configFile;
 	pTheApp->m_szExecAfterStartup = a.szExecCommand;
-	pTheApp->m_bShowSplashScreen  = a.bShowSplashScreen;
 	pTheApp->setup();
 
 	// YEAH!

@@ -34,7 +34,6 @@
 #include "KviLocale.h"
 #include "KviControlCodes.h"
 #include "kvi_out.h"
-#include "KviSplashScreen.h"
 #include "KviPointerHashTable.h"
 
 #include <QSplitter>
@@ -228,16 +227,6 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	wc->setup(g_pOptionsInstanceManager->getInstance(e,wc));
 
 	//wc->setModal(true);
-
-	// a trick for the dialog covering the splash screen before the time (this is prolly a WM or Qt bug)
-	if(g_pSplashScreen)
-	{
-		if(g_pSplashScreen->isVisible()) // another bug: this ALWAYS RETURNS true, even if the splash was hidden by a mouse click...
-		{
-			QObject::connect(g_pSplashScreen,SIGNAL(destroyed()),wc,SLOT(show()));
-			return true;
-		}
-	}
 
 	wc->show();
 	wc->raise();

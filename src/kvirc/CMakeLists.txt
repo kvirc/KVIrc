@@ -56,7 +56,6 @@ set(kvirc_SRCS
 	ui/KviScriptButton.cpp
 	ui/KviScriptEditor.cpp
 	ui/KviSelectors.cpp
-	ui/KviSplashScreen.cpp
 	ui/KviStatusBar.cpp
 	ui/KviStatusBarApplet.cpp
 	ui/KviTextIconWindow.cpp

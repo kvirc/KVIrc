@@ -39,10 +39,6 @@ class OptionsWidget_interfaceFeatures : public KviOptionsWidget
 public:
 	OptionsWidget_interfaceFeatures(QWidget * parent);
 	~OptionsWidget_interfaceFeatures();
-protected:
-	QCheckBox * m_pDisableSplash;
-public:
-	virtual void commit();
 };
 
 #endif //!_OPTW_INTERFACEFEATURES_H_

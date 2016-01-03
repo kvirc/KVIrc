@@ -50,7 +50,6 @@
 #include "kvi_defaults.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviSplashScreen.h"
 #include "KviNickServRuleSet.h"
 #include "KviIdentityProfileSet.h"
 #include "KviDefaultScript.h"
@@ -177,9 +176,6 @@ KVIRC_API KviHistoryWindowWidget                  * g_pHistoryWindow            
 // this is eventually set by libkviident
 KVIRC_API int                                       g_iIdentDaemonRunningUsers             = 0;
 
-KVIRC_API KviSplashScreen                         * g_pSplashScreen                        = 0;
-
-
 // Loaded and destroyed by KviIconManager
 QPixmap                                           * g_pUserChanStatePixmap                 = 0;
 QPixmap                                           * g_pActivityMeterPixmap                 = 0;
@@ -217,7 +213,6 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	g_pApp                  = this;
 	m_szConfigFile          = QString();
 	m_bCreateConfig         = false;
-	m_bShowSplashScreen     = true;
 	m_bUpdateGuiPending     = false;
 	m_pPendingAvatarChanges = NULL;
 	m_pRecentChannelDict    = NULL;
@@ -304,18 +299,6 @@ void KviApplication::setup()
 	//qDebug("%1",loader.isLoaded());
 #endif
 
-	QString szSplashDisableFile;
-	getLocalKvircDirectory(szSplashDisableFile,Pics,"disable-splash");
-
-	if(KviFileUtils::fileExists(szSplashDisableFile))
-		m_bShowSplashScreen = false;
-
-	// Now we can create the splash screen (we can locate the splash image)
-	if(m_bShowSplashScreen)
-		createSplashScreen();
-
-	KVI_SPLASH_SET_PROGRESS(0)
-
 	// Make sure that the C strings are translated to utf8
 	// This is a fallback solution anyway: we should use the appropriate
 	// encoding every time.
@@ -331,52 +314,32 @@ void KviApplication::setup()
 
 	QString szTmp;
 
-	KVI_SPLASH_SET_PROGRESS(1)
-
 	// Initialize the scripting engine
 	KviKvs::init();
-
-	KVI_SPLASH_SET_PROGRESS(2)
 
 	// Initialize the action manager
 	KviActionManager::init();
 
-	KVI_SPLASH_SET_PROGRESS(3)
-
 	// Create the module manager early: so the other managers can load modules
 	g_pModuleExtensionManager = new KviModuleExtensionManager();
 
-	KVI_SPLASH_SET_PROGRESS(4);
-
 	g_pModuleManager = new KviModuleManager();
-
-	KVI_SPLASH_SET_PROGRESS(5)
 
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_USERACTIONS))
 		KviActionManager::instance()->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(8);
-
 	// Initialize and load the identities
 	KviUserIdentityManager::init();
-
-	KVI_SPLASH_SET_PROGRESS(9);
 
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_IDENTITIES))
 		KviUserIdentityManager::instance()->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(12);
-
 	KviAnimatedPixmapCache::init();
-
-	KVI_SPLASH_SET_PROGRESS(13);
 
 	// Load the remaining configuration
 	// Note that loadOptions() assumes that the current progress is 12 and
 	// will bump it up to 45 in small steps
 	loadOptions();
-
-	KVI_SPLASH_SET_PROGRESS(47)
 
 	// set the global font if needed
 	updateApplicationFont();
@@ -388,75 +351,51 @@ void KviApplication::setup()
 	// enforce our "icon in popups" option - this is done also in each updateGui() call
 	setAttribute(Qt::AA_DontShowIconsInMenus, !KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus));
 
-	KVI_SPLASH_SET_PROGRESS(48)
-
 	// Load the win properties config
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_WINPROPERTIES);
 	g_pWinPropertiesConfig = new KviConfigurationFile(szTmp,KviConfigurationFile::ReadWrite);
-
-	KVI_SPLASH_SET_PROGRESS(50)
 
 	// Load the server database
 	g_pServerDataBase   = new KviIrcServerDataBase();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SERVERDB))
 		g_pServerDataBase->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(53)
-
 	// Load the proxy database
 	g_pProxyDataBase = new KviProxyDataBase();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_PROXYDB))
 		g_pProxyDataBase->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(54)
-
 	// Event manager
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_EVENTS))
 		KviKvs::loadAppEvents(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(59)
-
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_RAWEVENTS))
 		KviKvs::loadRawEvents(szTmp);
-
-	KVI_SPLASH_SET_PROGRESS(62)
 
 	// Popup manager
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_POPUPS))
 		KviKvs::loadPopups(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(67)
-
 	KviCustomToolBarManager::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_CUSTOMTOOLBARS))
 		KviCustomToolBarManager::instance()->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(70)
-
 	// Alias manager
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_ALIASES))
 		KviKvs::loadAliases(szTmp);
-
-	KVI_SPLASH_SET_PROGRESS(75)
 
 	// Script addons manager (this in fact has delayed loading, so we don't even care
 	// about showing up an entry in the splash screen)
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SCRIPTADDONS))
 		KviKvs::loadScriptAddons(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(77)
-
 	g_pTextIconManager = new KviTextIconManager();
 	g_pTextIconManager->load();
-
-	KVI_SPLASH_SET_PROGRESS(80)
 
 	// load the recent data lists
 	g_pRecentTopicList = new QStringList();
 	//g_pBookmarkList = new QStringList();
 	loadRecentEntries();
-
-	KVI_SPLASH_SET_PROGRESS(81)
 
 	// media manager
 	g_pMediaManager = new KviMediaManager();
@@ -465,62 +404,44 @@ void KviApplication::setup()
 		g_pMediaManager->load(szTmp);
 	g_pMediaManager->unlock();
 
-	KVI_SPLASH_SET_PROGRESS(82)
-
 	// registered user data base
 	g_pRegisteredUserDataBase = new KviRegisteredUserDataBase();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_REGUSERDB))
 		g_pRegisteredUserDataBase->load(szTmp);
-
-	KVI_SPLASH_SET_PROGRESS(83)
 
 	// registered channel data base
 	g_pRegisteredChannelDataBase = new KviRegisteredChannelDataBase();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_REGCHANDB))
 		g_pRegisteredChannelDataBase->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(84)
-
 	// file trader
 	g_pSharedFilesManager = new KviSharedFilesManager();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SHAREDFILES))
 		g_pSharedFilesManager->load(szTmp);
-
-	KVI_SPLASH_SET_PROGRESS(85)
 
 	// nick serv data base
 	g_pNickServRuleSet = new KviNickServRuleSet();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_NICKSERVDATABASE))
 		g_pNickServRuleSet->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(86)
-
 	// Identity profiles database
 	KviIdentityProfileSet::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_PROFILESDATABASE))
 		KviIdentityProfileSet::instance()->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(87)
-
 	KviAvatarCache::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_AVATARCACHE))
 		KviAvatarCache::instance()->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(88)
-
 	KviInputHistory::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_INPUTHISTORY))
 		KviInputHistory::instance()->load(szTmp);
-
-	KVI_SPLASH_SET_PROGRESS(89)
 
 	KviDefaultScriptManager::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_DEFAULTSCRIPT))
 		KviDefaultScriptManager::instance()->load(szTmp);
 	else
 		KviDefaultScriptManager::instance()->loadEmptyConfig();
-
-	KVI_SPLASH_SET_PROGRESS(90)
 
 	// Eventually initialize the crypt engine manager
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -535,15 +456,11 @@ void KviApplication::setup()
 	// create the server parser
 	g_pServerParser = new KviIrcServerParser();
 
-	KVI_SPLASH_SET_PROGRESS(91)
-
 	// Global window dictionary
 	g_pGlobalWindowDict = new KviPointerHashTable<QString,KviWindow>(41);
 	g_pGlobalWindowDict->setAutoDelete(false);
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
-
-	KVI_SPLASH_SET_PROGRESS(92)
 
 	QString szStylesheetFile;
 	getGlobalKvircDirectory(szStylesheetFile,Config,"style.css");
@@ -576,13 +493,8 @@ void KviApplication::setup()
 	// We're REALLY up and running!
 	// kill the splash screen
 
-	KVI_SPLASH_SET_PROGRESS(100)
-	//KVI_SPLASH_SET_TEXT(__tr2qs("Have fun! :)"))
-
 	if(KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart))
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_SERVERSJOIN_OPEN);
-
-	destroySplashScreen();
 
 	// check if we're in trouble...
 	checkSuggestRestoreDefaultScript();
@@ -621,8 +533,6 @@ KviApplication::~KviApplication()
         delete g_pMainWindow;
     g_pActiveWindow = 0; // .. but it should be already 0 anyway
 
-	if(g_pSplashScreen)
-		delete g_pSplashScreen;
 	if(g_pCtcpPageDialog)
 		delete g_pCtcpPageDialog;
 
@@ -1202,18 +1112,6 @@ void KviApplication::ipcMessage(char * pcMessage)
 	KviKvsScript::run(pcMessage,pConsole);
 }
 #endif // COMPILE_NO_IPC
-
-void KviApplication::createSplashScreen()
-{
-	g_pSplashScreen = new KviSplashScreen();
-	g_pSplashScreen->show();
-}
-
-void KviApplication::destroySplashScreen()
-{
-	if(g_pSplashScreen)
-		g_pSplashScreen->die();
-}
 
 void KviApplication::setAvatarFromOptions()
 {

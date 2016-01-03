@@ -128,7 +128,6 @@ public:
 	QString	                                   m_szConfigFile;        // setup
 	bool                                       m_bCreateConfig;       // setup
 	QString                                    m_szExecAfterStartup;
-	bool                                       m_bShowSplashScreen;
 protected:
 #ifdef COMPILE_KDE_SUPPORT
 	KAboutData                               * m_pAboutData;
@@ -323,8 +322,6 @@ protected:
 	void heartbeat(kvi_time_t tNow);
 	virtual void timerEvent(QTimerEvent *e);
 private:
-	void createSplashScreen();
-	void destroySplashScreen();
 
 	// KviApplication_setup.cpp : Setup stuff
 	void loadDirectories();
