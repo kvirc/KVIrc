@@ -430,7 +430,7 @@ public:
 		MeChanOwner          = 262,
 		MeChanUnOwner        = 263,
 		Afraid               = 264,
-		Tongue2              = 265,
+		Teeth                = 265,
 		SysMonitor           = 266,
 		SayColors            = 267,
 		Finger               = 268,

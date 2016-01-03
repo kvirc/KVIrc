@@ -46,7 +46,7 @@ static KviTextIconAssocEntry default_associations[] =
 	{ ":/"  , KviIconManager::Angry       },
 	{ ":O"  , KviIconManager::Surprised2  },
 	{ ":P"  , KviIconManager::Tongue      },
-	{ "BP"  , KviIconManager::Tongue2     },
+	{ ":B"  , KviIconManager::Teeth       },
 	{ ";)"  , KviIconManager::Eye         },
 	{ ":')" , KviIconManager::TearSmile   },
 	{ ":'"  , KviIconManager::Cry         },
