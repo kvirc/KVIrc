@@ -1005,7 +1005,7 @@ void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
 
 	//search word end
 	m_iSelectionEnd = iCursor;
-	while(m_iSelectionEnd < iLen)
+	while(m_iSelectionEnd < iLen + 1)
 	{
 		if(!m_szTextBuffer.at(m_iSelectionEnd).isLetterOrNumber())
 			break;
