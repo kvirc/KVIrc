@@ -717,10 +717,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 #ifdef COMPILE_IPV6_SUPPORT
 	m_pUseIPV6Check->setChecked(s->isIPv6());
+	connect(m_pUseIPV6Check,SIGNAL(toggled(bool)),this,SLOT(useIPV6CheckToggled(bool)));
 #else
 	m_pUseIPV6Check->setEnabled(false);
 #endif
-	connect(m_pUseIPV6Check,SIGNAL(toggled(bool)),this,SLOT(useIPV6CheckToggled(bool)));
 
 	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
 		"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
@@ -731,11 +731,12 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
 		"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
-#ifndef COMPILE_SSL_SUPPORT
+#ifdef COMPILE_SSL_SUPPORT
+	m_pUseSSLCheck->setChecked(s->useSSL());
+	connect(m_pUseSSLCheck,SIGNAL(toggled(bool)),this,SLOT(useSSLCheckToggled(bool)));
+#else
 	m_pUseSSLCheck->setEnabled(false);
 #endif
-	m_pUseSSLCheck->setChecked(s->useSSL());
-
 
 	iRow++;
 
@@ -1037,6 +1038,11 @@ void IrcServerDetailsWidget::useIPV6CheckToggled(bool)
 	setHeaderLabelText();
 }
 
+void IrcServerDetailsWidget::useSSLCheckToggled(bool)
+{
+	setHeaderLabelText();
+}
+
 void IrcServerDetailsWidget::portEditorTextChanged(const QString &)
 {
 	setHeaderLabelText();
@@ -1045,6 +1051,7 @@ void IrcServerDetailsWidget::portEditorTextChanged(const QString &)
 void IrcServerDetailsWidget::setHeaderLabelText()
 {
 	QString szTmp = "<font size=\"+1\"><b>irc";
+	if(m_pUseSSLCheck->isChecked())szTmp += "s";
 	if(m_pUseIPV6Check->isChecked())szTmp += "6";
 	szTmp += "://";
 	szTmp += m_szHostname;

@@ -157,6 +157,7 @@ protected slots:
 	void useDefaultInitUModeToggled(bool);
 	void portEditorTextChanged(const QString &);
 	void useIPV6CheckToggled(bool);
+	void useSSLCheckToggled(bool);
 public:
 	void setHeaderLabelText();
 	void fillData(KviIrcServer *s);
