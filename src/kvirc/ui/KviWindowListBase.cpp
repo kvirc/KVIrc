@@ -68,7 +68,7 @@ KviWindowListBase::KviWindowListBase()
 : QDockWidget(__tr2qs("Window List"),g_pMainWindow), m_pTitleWidget(0)
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
-	setObjectName(__tr2qs("windowlist"));
+	setObjectName("windowlist");
 	setFeatures(QDockWidget::DockWidgetMovable);
 
 	m_pActivityMeterTimer = new QTimer();
