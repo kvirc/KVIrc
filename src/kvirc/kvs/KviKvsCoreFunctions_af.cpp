@@ -1388,7 +1388,7 @@ namespace KviKvsCoreFunctions
 			<uint> $firstConnectedConsole()
 		@description:
 			Returns the window ID of the first connected console
-			or 0 if no console is actually connected.
+			or 0 if no console is currently connected.
 	*/
 
 	KVSCF(firstConnectedConsole)

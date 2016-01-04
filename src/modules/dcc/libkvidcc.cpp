@@ -1414,7 +1414,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		DCC chat is the simplest (and most widely implemented) DCC subprotocol:
 		it is used to exchange <cr><lf> separated text data between clients.[br]
 		Assume that you want to establish a DCC chat
-		connection to 'Sarah' that is actually connected to your IRC network (so
+		connection to 'Sarah' that is currently connected to your IRC network (so
 		she/he is an IRC user just like you).
 		All you have to do is type sth as "/dcc chat Sarah" in your IRC client.
 		The client will setup a listening socket on a random port chosen

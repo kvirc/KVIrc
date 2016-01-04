@@ -140,7 +140,7 @@ const char * const sockerrors_tbl[] = {
 
 		!fn: $connectedEvent()
 		This function is called when a connection attempt has been successfully completed.
-		The socket is actually connected to [classfnc:socket]$remoteIp[/classfnc]() on
+		The socket is currently connected to [classfnc:socket]$remoteIp[/classfnc]() on
 		[classfnc:socket]$remotePort[/classfnc](). You can start
 		writing data and you may expect [classfnc:socket]$dataAvailableEvent[/classfnc]() to be
 		triggered.
