@@ -5,12 +5,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-01-20 12:40+0200\n"
+"PO-Revision-Date: 2016-01-04 18:52+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
+"Project-Id-Version: \n"
+"Language-Team: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
 msgid ""
@@ -183,13 +187,12 @@ msgstr ""
 "condición vacía será considerada verdadera.</center>"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:261
-#, fuzzy
 msgid ""
 "<center><b>External menu name</b><br>This allows one to nest externally "
 "defined popup menus. The popup menu with the specified name will be looked "
 "up at menu setup time.</center>"
 msgstr ""
-"<center><b>Nombre externo del menú</b><br>Esto te permitirá mostrar menús "
+"<center><b>Nombre externo del menú</b><br>Esta opción permite anidar menús "
 "definidos externamente. El menú con el nombre especificado será buscado en "
 "el momento de configurar el menú.</center>"
 
@@ -1025,9 +1028,8 @@ msgstr ""
 "\"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\"..."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:794
-#, fuzzy
 msgid "Options"
-msgstr "Acción"
+msgstr "Opciones"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:325
 msgid "OverWrite Current Alias"

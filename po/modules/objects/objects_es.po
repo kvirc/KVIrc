@@ -5,12 +5,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-01-20 12:40+0200\n"
+"PO-Revision-Date: 2016-01-04 19:01+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: egns <grannost@gmail.com>\n"
+"Project-Id-Version: \n"
+"Language-Team: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: src/modules/objects/KvsObject_painter.cpp:746
 msgid " requires either an array as first parameter or 3 integers"
@@ -78,9 +82,8 @@ msgstr "Se requiere una cadena de 6 dígitos"
 #: src/modules/objects/KvsObject_pixmap.cpp:312
 #: src/modules/objects/KvsObject_pixmap.cpp:385
 #: src/modules/objects/KvsObject_pixmap.cpp:421
-#, fuzzy
 msgid "AnimatedPixmap not supported"
-msgstr "Tipo de datos no soportado"
+msgstr "AnimatedPixmap no está soportado"
 
 #: src/modules/objects/KvsObject_file.cpp:335
 msgid "Argument too long, using only first char"
@@ -92,7 +95,7 @@ msgstr "Argumento demasiado largo, usando solo el primer carácter"
 
 #: src/modules/objects/KvsObject_wrapper.cpp:272
 msgid "Bad number of levels for the '!Parent' specifier"
-msgstr ""
+msgstr "El número de niveles del especificador «!Parent» es incorrecto"
 
 #: src/modules/objects/KvsObject_file.cpp:543
 msgid "Block parameter must be a string or a memorybuffer object"
@@ -189,7 +192,6 @@ msgstr "Se requiere nombre del color o triplete RGB/HSV"
 
 #: src/modules/objects/KvsObject_sql.cpp:229
 #: src/modules/objects/KvsObject_sql.cpp:286
-#, fuzzy
 msgid "Connection %Q does not exist"
 msgstr "La conexión %Q no existe"
 
@@ -212,6 +214,7 @@ msgstr "Tipo de datos no soportado"
 #: src/modules/objects/KvsObject_webView.cpp:575
 msgid "Document element is null: you must call getDocumentElement first"
 msgstr ""
+"El elemento de documento es nulo: debes llamar a getDocumentElement primero"
 
 #: src/modules/objects/KvsObject_webView.cpp:544
 #: src/modules/objects/KvsObject_webView.cpp:599
@@ -233,9 +236,9 @@ msgstr ""
 #: src/modules/objects/KvsObject_webView.cpp:1005
 #: src/modules/objects/KvsObject_webView.cpp:1034
 #: src/modules/objects/KvsObject_webView.cpp:1064
-#, fuzzy, c-format
+#, c-format
 msgid "Document element with id %d does not exist"
-msgstr "La conexión %d no existe"
+msgstr "El elemento de documento con el id %d no existe"
 
 #: src/modules/objects/KvsObject_file.cpp:229
 msgid "Empty filename string"
@@ -300,7 +303,7 @@ msgstr "Falta el parámetro de imagen"
 
 #: src/modules/objects/KvsObject_memoryBuffer.cpp:131
 msgid "Index '%I' out of the buffer size"
-msgstr ""
+msgstr "El índice «%l» es mayor que el tamaño del búfer"
 
 #: src/modules/objects/libkviobjects.cpp:572
 msgid "Inexistant class object for objects.name"
@@ -335,9 +338,8 @@ msgid "Invalid dock area specified"
 msgstr "Área de dock no válida"
 
 #: src/modules/objects/KvsObject_webView.cpp:1353
-#, fuzzy
 msgid "Invalid file path '%Q'"
-msgstr "Modo '%Q' no válido"
+msgstr "La ruta de archivo «%Q» no es válida"
 
 #: src/modules/objects/KvsObject_comboBox.cpp:331
 msgid "Invalid insertion Policy '%Q'"
@@ -445,7 +447,6 @@ msgid "Object Pixmap required!"
 msgstr "¡Objeto pixmap requerido!"
 
 #: src/modules/objects/libkviobjects.cpp:428
-#, fuzzy
 msgid "Object does not exist"
 msgstr "El objeto no existe"
 
@@ -585,15 +586,14 @@ msgid "Read error occured!"
 msgstr "¡Error de lectura!"
 
 #: src/modules/objects/KvsObject_wrapper.cpp:261
-#, fuzzy
 msgid "The '!Parent' specifier can't be used as first in the search path"
 msgstr ""
-"El identificador de la ventana precedido por WinId debe ser el primer objeto "
-"en la ruta de búsqueda"
+"El especificador «!Parent» no puede ser usado como el primero en la ruta de "
+"búsqueda"
 
 #: src/modules/objects/KvsObject_wrapper.cpp:283
 msgid "The '!Parent' specifier was applied to a widget that has no parent"
-msgstr ""
+msgstr "El especificador «!Parent» fue aplicado a un widget que no tiene padre"
 
 #: src/modules/objects/KvsObject_dockWindow.cpp:121
 msgid "The added widget is not a child of this dock window"
@@ -699,13 +699,12 @@ msgstr "El pixmap no es válido"
 #: src/modules/objects/KvsObject_pixmap.cpp:469
 #: src/modules/objects/KvsObject_pixmap.cpp:563
 #: src/modules/objects/KvsObject_pixmap.cpp:571
-#, fuzzy
 msgid "The pixmap is null"
-msgstr "El pixmap no es válido"
+msgstr "El pixmap es nulo"
 
 #: src/modules/objects/KvsObject_wrapper.cpp:232
 msgid "The search specifier can't be empty"
-msgstr ""
+msgstr "El especificador de búsqueda no puede estar vacío"
 
 #: src/modules/objects/KvsObject_vBox.cpp:184
 #: src/modules/objects/KvsObject_hBox.cpp:147
@@ -726,12 +725,11 @@ msgid "The widget must be a subwindow of this workspace"
 msgstr "El widget debe ser subventana de este espacio de trabajo"
 
 #: src/modules/objects/KvsObject_wrapper.cpp:253
-#, fuzzy
 msgid ""
 "The window identifier preceded by '!Window' should be the first in the "
 "search path"
 msgstr ""
-"El identificador de la ventana precedido por WinId debe ser el primer objeto "
+"El identificador de ventana precedido por «!Window» debería ser el primero "
 "en la ruta de búsqueda"
 
 #: src/modules/objects/KvsObject_sql.cpp:388
@@ -755,9 +753,8 @@ msgid "Unknown Color Role '%Q'"
 msgstr "Regla de colores '%Q' desconocida"
 
 #: src/modules/objects/KvsObject_webView.cpp:1185
-#, fuzzy
 msgid "Unknown action '%Q':"
-msgstr "Posición '%Q' desconocida"
+msgstr "Acción «%Q» desconocida:"
 
 #: src/modules/objects/KvsObject_label.cpp:274
 #: src/modules/objects/KvsObject_groupBox.cpp:299
@@ -786,29 +783,26 @@ msgid "Unknown brush style '%Q'"
 msgstr "Tipo de brocha '%Q' desconocida"
 
 #: src/modules/objects/KvsObject_painter.cpp:2081
-#, fuzzy
 msgid "Unknown composition mode '%Q'"
-msgstr "Posición '%Q' desconocida"
+msgstr "Modo de composición «%Q» desconocido"
 
 #: src/modules/objects/KvsObject_webView.cpp:474
-#, fuzzy
 msgid "Unknown delegation policy '%Q'- Switch do default dontDelegateLinks"
-msgstr "Eje desconocido '%Q', cambiando a ZAxis por defecto"
+msgstr ""
+"Política de delegación «%Q» desconocida, usando dontDelegateLinks por defecto"
 
 #: src/modules/objects/KvsObject_lineEdit.cpp:407
 msgid "Unknown echo mode '%Q'"
 msgstr "Tipo de echo '%Q' desconocido"
 
 #: src/modules/objects/KvsObject_webView.cpp:841
-#, fuzzy
 msgid "Unknown findflag  '%Q'"
-msgstr "Flag widget '%Q' desconocido"
+msgstr "Findflag «%Q» desconocido"
 
 #: src/modules/objects/KvsObject_webView.cpp:1085
 #: src/modules/objects/KvsObject_webView.cpp:1108
-#, fuzzy
 msgid "Unknown frame '%Q'"
-msgstr "Modo '%Q' desconocido"
+msgstr "Marco «%Q» desconocido"
 
 #: src/modules/objects/KvsObject_listWidget.cpp:260
 #: src/modules/objects/KvsObject_tableWidget.cpp:794
@@ -845,16 +839,16 @@ msgid "Unknown style '%Q'"
 msgstr "Estilo '%Q' desconocido"
 
 #: src/modules/objects/KvsObject_webView.cpp:1045
-#, fuzzy
 msgid ""
 "Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle "
 "strategy"
-msgstr "Eje desconocido '%Q', cambiando a ZAxis por defecto"
+msgstr ""
+"styleResolveStrategy «%Q» desconocido, usando la estrategia CascadedStyle "
+"por defecto"
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:188
-#, fuzzy
 msgid "Unknown szOptions '%Q'"
-msgstr "Posición '%Q' desconocida"
+msgstr "szOptions desconocido «%Q»"
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:712
 msgid "Unknown text format '%Q'"
@@ -869,9 +863,8 @@ msgid "Unknown tickmark '%Q'"
 msgstr "Tickmark '%Q' desconocido"
 
 #: src/modules/objects/KvsObject_webView.cpp:813
-#, fuzzy
 msgid "Unknown web setting '%Q'"
-msgstr "Posición de texto '%Q' desconocido"
+msgstr "Configuración web «%Q» desconocida"
 
 #: src/modules/objects/KvsObject_widget.cpp:1921
 msgid "Unknown widget attribute '%Q'"
@@ -893,7 +886,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_webView.cpp:584
 msgid "Unsupported datatype"
-msgstr ""
+msgstr "Tipo de datos no soportado"
 
 #: src/modules/objects/KvsObject_file.cpp:468
 msgid "Unsupported datatype '%Q'"

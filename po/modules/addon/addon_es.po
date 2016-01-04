@@ -5,11 +5,15 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2010-05-18 12:21+0200\n"
+"PO-Revision-Date: 2016-01-04 18:51+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"Language-Team: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
 msgid "%cAddon id %Q, version %Q%c"
@@ -126,7 +130,7 @@ msgstr "No se pudo desempaquetar el archivo seleccionado: %1"
 
 #: src/modules/addon/PackAddonDialog.cpp:376
 msgid "File %1 already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "El archivo %1 ya existe. ¿Quieres sobreescribirlo?"
 
 #: src/modules/addon/PackAddonDialog.cpp:605
 msgid "File Summary"
@@ -213,7 +217,7 @@ msgstr "Error interno: llama a un encoge-cabezas"
 
 #: src/modules/addon/WebAddonInterfaceDialog.cpp:43
 msgid "KVIrc : Download Addons"
-msgstr ""
+msgstr "KVIrc : Descargar addons"
 
 #: src/modules/addon/AddonManagementDialog.cpp:103
 msgid "Manage Script-Based Addons"
@@ -281,7 +285,7 @@ msgstr "Versión del paquete"
 
 #: src/modules/addon/PackAddonDialog.cpp:390
 msgid "Package saved successfully in %1"
-msgstr ""
+msgstr "El paquete ha sido guardado en %1"
 
 #: src/modules/addon/PackAddonDialog.cpp:326
 #: src/modules/addon/PackAddonDialog.cpp:341
@@ -318,8 +322,7 @@ msgstr "Seleccionar el directorio fuente:"
 msgid "Show Help"
 msgstr "Mostrar ayuda"
 
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping inexistant entry '%1'"
 msgstr "Saltando la entrada no existente '%1'"
 
@@ -331,12 +334,9 @@ msgstr "Saltando la entrada no válida '%1'"
 msgid "Source Directory"
 msgstr "Directorio de fuente"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
 msgid "The addon \"%1\" does not exist"
 msgstr "El addon \"%1\" no existe"
 
@@ -381,7 +381,6 @@ msgid "The selected file does not seem to be a valid KVIrc addon package"
 msgstr "El archivo seleccionado no parece un paquete válido de addon de KVIrc"
 
 #: src/modules/addon/AddonFunctions.cpp:70
-#, fuzzy
 msgid "The selected file does not seem to be a valid KVIrc package: %1"
 msgstr "El archivo seleccionado no parece un paquete válido de KVIrc: %1"
 
@@ -426,8 +425,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Total: %d addons instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Desinstalando el addon existente con la versión %Q"
 
