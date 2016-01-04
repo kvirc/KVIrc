@@ -174,7 +174,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
 
-	setAttribute(Qt::WA_InputMethodEnabled, true);
+	setAttribute(Qt::WA_InputMethodEnabled,true);
 
 	setAutoFillBackground(false);
 
@@ -1678,22 +1678,25 @@ void KviInputEditor::clearUndoStack()
 	}
 }
 
-void KviInputEditor::focusInEvent(QFocusEvent *)
+void KviInputEditor::focusInEvent(QFocusEvent *e)
 {
-	if(m_iCursorTimer==0)
+	if(!m_iCursorTimer)
 	{
 		m_iCursorTimer = startTimer(KVI_INPUT_BLINK_TIME);
 		m_bCursorOn = true;
 		update();
 	}
+	e->accept();
 }
 
-void KviInputEditor::focusOutEvent(QFocusEvent *)
+void KviInputEditor::focusOutEvent(QFocusEvent *e)
 {
-	if(m_iCursorTimer) killTimer(m_iCursorTimer);
+	if(m_iCursorTimer)
+		killTimer(m_iCursorTimer);
 	m_iCursorTimer = 0;
 	m_bCursorOn = false;
 	update();
+	e->accept();
 }
 
 void KviInputEditor::internalCursorRight(bool bShift)
@@ -1768,9 +1771,29 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 	
 }
 
+QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
+{
+	switch(query)
+	{
+		case Qt::ImEnabled:
+			return QVariant(true);
+		break;
+		case Qt::ImHints:
+			return QVariant(0);
+		break;
+		default:
+			// fall down
+		break;
+	}
+
+	return QWidget::inputMethodQuery(query);
+}
+
+
 void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 {
-	if (m_bReadOnly) {
+	if (m_bReadOnly)
+	{
 		e->ignore();
 		return;
 	}
@@ -1901,7 +1924,6 @@ void KviInputEditor::zoomDefault()
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
 {
-
 	// disable the keyPress handling when IM is in composition.
 	if(m_bIMComposing)
 	{

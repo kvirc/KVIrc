@@ -72,6 +72,7 @@
 #include <QIcon>
 #include <QActionGroup>
 #include <QMenu>
+#include <QInputMethodEvent>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
@@ -120,6 +121,7 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 	//m_pEditorsContainer       = 0;
 	m_bIsDocked              = false;
 	m_pWindowListItem        = 0;
+	m_bProcessingInputEvent  = false;
 #ifdef COMPILE_CRYPT_SUPPORT
 	m_pCryptControllerButton = 0;
 	m_pCryptController       = 0;
@@ -892,6 +894,51 @@ void KviWindow::youAreUndocked()
 	QPoint pPos = g_pMainWindow->pos();
 	move(pPos.x() + 50, pPos.y() + 50);
 }
+
+void KviWindow::inputMethodEvent(QInputMethodEvent * e)
+{
+	// 2016.01.04: Qt 5 seems to be unable to properly follow our focus changes.
+	// It keeps this class as input method target after we have set focus to our
+	// focus handler in focusInEvent(). Relay it to our focus handler.
+
+	e->accept(); // we always accept the input method events
+
+	if(m_bProcessingInputEvent)
+	{
+		// recursion detected
+		return;
+	}
+
+	m_bProcessingInputEvent = true;
+
+	if(
+			m_pLastFocusedChild &&
+			m_pLastFocusedChild->hasFocus() &&
+			m_pLastFocusedChild->isVisible()
+		)
+	{
+		KviApplication::sendEvent(m_pLastFocusedChild,e);
+		m_bProcessingInputEvent = false;
+		return;
+	}
+	
+	if(
+			m_pFocusHandler &&
+			(m_pFocusHandler != m_pLastFocusedChild) &&
+			m_pFocusHandler->hasFocus() &&
+			m_pFocusHandler->isVisible()
+		)
+	{
+		KviApplication::sendEvent(m_pFocusHandler,e);
+		m_bProcessingInputEvent = false;
+		return;
+	}
+
+	m_bProcessingInputEvent = false;
+}
+
+
+
 
 #ifdef FocusIn
 // Hack for X.h

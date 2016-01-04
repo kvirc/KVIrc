@@ -243,6 +243,7 @@ KviApplication::KviApplication(int &argc,char ** argv)
 		setPalette(style()->standardPalette());
 	}
 #endif
+
 }
 
 void KviApplication::setup()

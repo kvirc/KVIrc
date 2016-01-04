@@ -196,6 +196,7 @@ protected: // almost private: don't touch :D
 	QTextCodec              * m_pTextCodec;
 	//KviToolWindowsContainer * m_pEditorsContainer;
 	bool                      m_bIsDocked;
+	bool                      m_bProcessingInputEvent;
 public:
 	inline bool isDocked(){ return m_bIsDocked; }
 
@@ -453,6 +454,7 @@ protected:
 	virtual void closeEvent(QCloseEvent * pEvent);
 	virtual void childEvent(QChildEvent * pEvent);
 	virtual void focusInEvent(QFocusEvent *);
+	virtual void inputMethodEvent(QInputMethodEvent * e);
 
 	void childInserted(QWidget * pObject);
 	void childRemoved(QWidget * pObject);
