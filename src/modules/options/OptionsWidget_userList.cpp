@@ -235,7 +235,7 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user rank channel icons","options"),KviOption_boolShowUserChannelIcons);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Show label with userlist stats","options"),KviOption_boolShowUserListStatisticLabel);
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
