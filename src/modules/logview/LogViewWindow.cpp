@@ -190,9 +190,9 @@ LogViewWindow::LogViewWindow()
 
 	// Using setData to track the option ordinal that used to be passed as id
 	m_pExportLogPopup = new QMenu("exportlog", this);
-	QAction* pAction = m_pExportLogPopup->addAction(__tr2qs_ctx("Plain text file","log"));
+	QAction* pAction = m_pExportLogPopup->addAction(__tr2qs_ctx("Plain Text File","log"));
 	pAction->setData(LogFile::PlainText);
-	pAction = m_pExportLogPopup->addAction(__tr2qs_ctx("HTML archive","log"));
+	pAction = m_pExportLogPopup->addAction(__tr2qs_ctx("HTML Archive","log"));
 	pAction->setData(LogFile::HTML);
 	//m_pExportLogPopup->addAction(__tr2qs_ctx("XML file","log"));
 	//m_pExportLogPopup->addAction(__tr2qs_ctx("database file","log"));
@@ -447,8 +447,8 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 		//pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove All Log Files Within This Folder","log"),this,SLOT(deleteCurrent()));
 	} else {
-        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),__tr2qs_ctx("Export log file to","log"))->setMenu(m_pExportLogPopup);
-		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove log file","log"),this,SLOT(deleteCurrent()));
+        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),__tr2qs_ctx("Export Log File to","log"))->setMenu(m_pExportLogPopup);
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove Log File","log"),this,SLOT(deleteCurrent()));
 	}
 
 	pPopup->exec(QCursor::pos());
