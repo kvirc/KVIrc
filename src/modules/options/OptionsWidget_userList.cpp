@@ -27,6 +27,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviUserListView.h"
+#include "KviTalToolTip.h"
 
 #include <QLayout>
 
@@ -65,8 +66,12 @@ OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * par
 	KviTalHBox * ahb = new KviTalHBox(g);
 	ahb->setSpacing(4);
 	KviBoolSelector * ab = addBoolSelector(ahb,__tr2qs_ctx("Away (blend color):","options"),KviOption_boolUserListViewUseAwayColor);
+	QString szTip = __tr2qs("The color selected, will be blended with the user rank foreground color.<br>" \
+				"You should also consider your theme's style, color and the userlist background selected color for optimum visibility.<br>" \
+				"If no color is selected respective user rank color specified will be used instead.");
 	KviColorSelector * as = addColorSelector(ahb,QString(),KviOption_colorUserListViewAwayForeground);
 	connect(ab,SIGNAL(toggled(bool)),as,SLOT(setEnabled(bool)));
+	mergeTip(ab, szTip);
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
