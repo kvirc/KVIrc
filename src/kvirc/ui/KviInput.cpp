@@ -58,6 +58,7 @@
 #include <QUrl>
 #include <QHBoxLayout>
 #include <QMenu>
+#include <QPushButton>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -239,29 +240,24 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 								int nLines = szText.count('\n') + 1;
 								if(nLines > 15)
 								{
-									int nRet = QMessageBox::question(
-										this,
-										__tr2qs("Confirm Sending a Large Multi-line Message"),
-										__tr2qs("You're about to send a message with %1 lines of text.<br><br>" \
-											"This warning is here to prevent you from accidentally " \
-											"pasting and sending a really large, potentially unedited message from your clipboard.<br><br>" \
-											"Some IRC servers may also consider %1 lines of text a flood, " \
-											"in which case you will be disconnected from said server.<br><br>" \
-											"Do you still want the message to be sent?").arg(nLines),
-										__tr2qs("Always"),
-										__tr2qs("Yes"),
-										__tr2qs("No"),
-										1,2);
-									switch(nRet)
-									{
-										case 0:
-											KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines) = false;
-										break;
-										case 2:
-											return;
-										break;
-										default: // also case 1
-										break;
+									QMessageBox pMsgBox;
+									pMsgBox.setText(__tr2qs("You're about to send a message with %1 lines of text.<br><br>" \
+										"This warning is here to prevent you from accidentally " \
+										"pasting and sending a really large, potentially unedited message from your clipboard.<br><br>" \
+										"Some IRC servers may also consider %1 lines of text a flood, " \
+										"in which case you will be disconnected from said server.<br><br>" \
+										"Do you still want the message to be sent?").arg(nLines));
+									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Multi-line Message"));
+									pMsgBox.setIcon(QMessageBox::Question);
+									QAbstractButton *pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
+									QAbstractButton *pYesButton = pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
+									QAbstractButton *pNoButton = pMsgBox.addButton(__tr2qs("No"), QMessageBox::NoRole);
+									pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
+									pMsgBox.exec();
+									if (pMsgBox.clickedButton() == pAlwaysButton) {
+										KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines) = false;
+									} else if (pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == 0) {
+										return;
 									}
 								}
 							}
