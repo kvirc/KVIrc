@@ -241,14 +241,14 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 								{
 									int nRet = QMessageBox::question(
 										this,
-										__tr2qs("Confirm Multi-line Message"),
+										__tr2qs("Confirm Sending a Large Multi-line Message"),
 										__tr2qs("You're about to send a message with %1 lines of text.<br><br>" \
-											"There is nothing wrong with it, this warning is<br>" \
-											"here to prevent you from accidentally sending<br>" \
-											"a really large message just because you didn't edit it<br>" \
-											"properly after pasting text from the clipboard.<br><br>" \
-											"Do you want the message to be sent?").arg(nLines),
-										__tr2qs("Yes, always"),
+											"This warning is here to prevent you from accidentally " \
+											"pasting and sending a really large, potentially unedited message from your clipboard.<br><br>" \
+											"Some IRC servers may also consider %1 lines of text a flood, " \
+											"in which case you will be disconnected from said server.<br><br>" \
+											"Do you still want the message to be sent?").arg(nLines),
+										__tr2qs("Always"),
 										__tr2qs("Yes"),
 										__tr2qs("No"),
 										1,2);
