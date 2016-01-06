@@ -27,6 +27,7 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviUserListView.h"
+#include "KviTalToolTip.h"
 
 #include <QLayout>
 
@@ -64,9 +65,13 @@ OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * par
 
 	KviTalHBox * ahb = new KviTalHBox(g);
 	ahb->setSpacing(4);
-	KviBoolSelector * ab = addBoolSelector(ahb,__tr2qs_ctx("Away:","options"),KviOption_boolUserListViewUseAwayColor);
+	KviBoolSelector * ab = addBoolSelector(ahb,__tr2qs_ctx("Away (blend color):","options"),KviOption_boolUserListViewUseAwayColor);
+	QString szTip = __tr2qs("The color selected, will be blended with the user rank foreground color.<br>" \
+				"You should also consider your theme's style, color and the userlist background selected color for optimum visibility.<br>" \
+				"If no color is selected respective user rank color specified will be used instead.");
 	KviColorSelector * as = addColorSelector(ahb,QString(),KviOption_colorUserListViewAwayForeground);
 	connect(ab,SIGNAL(toggled(bool)),as,SLOT(setEnabled(bool)));
+	mergeTip(ab, szTip);
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
@@ -235,7 +240,7 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user rank channel icons","options"),KviOption_boolShowUserChannelIcons);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Show label with userlist stats","options"),KviOption_boolShowUserListStatisticLabel);
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
