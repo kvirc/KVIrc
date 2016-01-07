@@ -102,7 +102,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLayout->addWidget(pLabel,0,0,1,2);
 
 	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Theme Name:","theme"));
+	pLabel->setText(__tr2qs_ctx("Theme name:","theme"));
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pThemeNameEdit = new QLineEdit(pPage);
@@ -130,7 +130,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 	pLayout->addWidget(m_pThemeDescriptionEdit,3,1);
 
 	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Theme Author:","theme"));
+	pLabel->setText(__tr2qs_ctx("Theme author:","theme"));
 	pLayout->addWidget(pLabel,4,0);
 
 	m_pAuthorNameEdit = new QLineEdit(pPage);
