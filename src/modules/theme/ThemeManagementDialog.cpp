@@ -332,7 +332,7 @@ void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 			return;
 
 		if(!pInfo->isBuiltin())
-			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
+			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
 
 		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)),__tr2qs_ctx("&Apply Theme","theme"),this,SLOT(applyCurrentTheme()));
 		m_pContextPopup->popup(m_pListWidget->viewport()->mapToGlobal(pos));
