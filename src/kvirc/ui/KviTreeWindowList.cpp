@@ -534,7 +534,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	if(treeWidget->currentItem() == item)
 	{
 		//selection colored background
-		if(treeWidget->style()->inherits("QWindowsXPStyle"))
+		if(treeWidget->style()->inherits("QWindowsXPStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
 		{
 			// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 			// We can't accept it.
@@ -551,7 +551,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			col.setAlpha(127);
 
-			if(treeWidget->style()->inherits("QWindowsXPStyle"))
+			if(treeWidget->style()->inherits("QWindowsXPStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
 			{
 				// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 				// We can't accept it.

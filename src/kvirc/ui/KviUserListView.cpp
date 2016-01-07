@@ -1764,7 +1764,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			{
 				QColor col(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground));
 
-				if(style()->inherits("QWindowsXPStyle"))
+				if(style()->inherits("QWindowsXPStyle") || style()->inherits("QWindowsVistaStyle"))
 				{
 					// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 					// We can't accept it.
