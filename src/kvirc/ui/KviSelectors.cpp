@@ -133,11 +133,10 @@ KviStringSelector::KviStringSelector(QWidget * par,const QString & txt,QString *
 {
 	m_pLabel = new QLabel(txt,this);
 	m_pLineEdit = new QLineEdit(this);
-	m_pLineEdit->setMaximumWidth(300);
 	QString tmp = *pOption;
 	m_pLineEdit->setText(tmp);
 
-	setSpacing(8);
+	setSpacing(4);
 	setMargin(0);
 	setStretchFactor(m_pLineEdit,1);
 
