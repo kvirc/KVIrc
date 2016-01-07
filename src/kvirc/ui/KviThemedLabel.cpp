@@ -90,7 +90,7 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
 	qDrawShadePanel(p,0,0,width(),height(),palette(),true,1,NULL);
 
-	QRect r(1,1,width()-1,height()-1);
+	QRect r(1,1,width()-2,height()-2);
 #else
 	QStyleOptionFrameV2 option;
 	option.initFrom(this);

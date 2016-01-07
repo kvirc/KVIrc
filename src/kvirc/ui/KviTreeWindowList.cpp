@@ -338,7 +338,7 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 #endif
 
 	p->setPen(palette().dark().color());
-	p->drawLine(0,0,width(),0);
+	p->drawLine(0,1,width(),1);
 	p->drawLine(0,0,0,height());
 	p->setPen(palette().light().color());
 	p->drawLine(1,height()-1,width()-1,height()-1);

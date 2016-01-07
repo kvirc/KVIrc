@@ -179,8 +179,10 @@ void KviWindowListBase::applyOptions()
 	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))
 	{
 		m_pTitleWidget = new KviWindowListTitleWidget(this);
+		setFeatures(features() | QDockWidget::DockWidgetMovable);
 	} else {
 		m_pTitleWidget = new QWidget();
+		setFeatures(features() & ~QDockWidget::DockWidgetMovable);
 	}
 
 	setTitleBarWidget(m_pTitleWidget);
