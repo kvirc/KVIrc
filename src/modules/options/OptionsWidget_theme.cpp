@@ -103,7 +103,7 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 		m_pUseCompositingForTransparencyBoolSelector = addBoolSelector(0,5,1,5,__tr2qs_ctx("Use compositing for real transparency","options"),KviOption_boolUseCompositingForTransparency, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 
 		m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,6,1,6,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
-		layout()->setRowStretch(7,1);
+		layout()->setRowStretch(6,1);
 
 		if(g_pApp->supportsCompositing())
 		{
@@ -119,14 +119,14 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 		m_pUseWindowsFakeDesktopTransparencyBoolSelector = addBoolSelector(0,5,1,5,__tr2qs_ctx("Use desktop background for transparency","options"),KviOption_boolUseWindowsDesktopForTransparency, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 
 		m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,6,1,6,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
-		layout()->setRowStretch(7,1);
+		layout()->setRowStretch(6,1);
 
 		connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),m_pUseWindowsFakeDesktopTransparencyBoolSelector,SLOT(setEnabled(bool)));
 		connect(m_pUseWindowsFakeDesktopTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 
 	#else
 		m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,5,1,5,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
-		layout()->setRowStretch(6,1);
+		layout()->setRowStretch(5,1);
 	#endif //!COMPILE_X11_SUPPORT
 
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
