@@ -765,11 +765,10 @@ void KviApplication::setupBegin()
 
 	if(!bRet)
 	{
-		KviMessageBox::warning(__tr2qs("Setup aborted"));
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
-                ExitProcess(1);
+        ExitProcess(1);
 #else
 		::exit(-1);
 #endif
