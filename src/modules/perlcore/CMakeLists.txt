@@ -15,7 +15,7 @@ if(COMPILE_PERL_SUPPORT)
 if(CMAKE_COMPILER_IS_GNUCXX)
 	# GCC whines because perl isn't extremely C++11 compliant
 	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-literal-suffix")
-elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 	# If the perl version is too old, clang will throw errors due to C++11
 	# incompatiblities
 	set(PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS} -Wno-reserved-user-defined-literal")
