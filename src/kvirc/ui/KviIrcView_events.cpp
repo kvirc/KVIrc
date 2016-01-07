@@ -875,7 +875,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Irc) + "\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"> <u><font color=\"blue\"><nowrap>";
 
 			if(linkText.length() > 50)
 			{
