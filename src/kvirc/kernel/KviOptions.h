@@ -326,7 +326,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolAutoAcceptDccVideo 231                          /* dcc::video */
 #define KviOption_boolCreateMinimizedDccVideo 232                     /* dcc::video */
 #define KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted 233     /* dcc::video */
-#define KviOption_boolShowTreeWindowListHeader 234
+// #define KviOption_boolShowTreeWindowListHeader 234
 #define KviOption_boolFlashDccChatWindowOnNewMessages 235              /* dcc:chat */
 #define KviOption_boolPopupNotifierOnNewDccChatMessages 236            /* dcc:chat */
 #define KviOption_boolUseAwayMessage 237                               /* away */
@@ -357,8 +357,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowFavoriteServersOnly 262                        /* connection::ircservers */
 #define KviOption_boolRequireControlToCopy 263                           /* interface::ircview */
 #define KviOption_boolSend64BitAckInDccRecv 264                          /* dcc::send */
+#define KviOption_boolShowTreeWindowListHandle 265
 
-#define KVI_NUM_BOOL_OPTIONS 265
+#define KVI_NUM_BOOL_OPTIONS 266
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

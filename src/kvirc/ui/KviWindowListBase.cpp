@@ -176,16 +176,11 @@ void KviWindowListBase::applyOptions()
 	if(m_pTitleWidget)
 		delete m_pTitleWidget;
 
-	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
+	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))
 	{
-		m_pTitleWidget = new QLabel();
-		setTitleBarWidget( m_pTitleWidget );
-
-		((QLabel*)m_pTitleWidget)->setText(__tr2qs("Window List"));
-		((QLabel*)m_pTitleWidget)->setMargin(2);
-		((QLabel*)m_pTitleWidget)->setIndent(4);
-	} else {
 		m_pTitleWidget = new KviWindowListTitleWidget(this);
+	} else {
+		m_pTitleWidget = new QWidget();
 	}
 
 	setTitleBarWidget(m_pTitleWidget);
