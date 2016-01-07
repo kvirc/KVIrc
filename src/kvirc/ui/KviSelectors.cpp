@@ -90,7 +90,7 @@ KviUIntSelector::KviUIntSelector(QWidget * par,const QString & txt,unsigned int 
 	//m_pLineEdit->setText(tmp.ptr());
 	m_pSpinBox->setValue(bShortInt ? (unsigned int) *((unsigned short int *)pOption) : *pOption);
 
-	setSpacing(4);
+	setMargin(0);
 	setStretchFactor(m_pLabel,1);
 }
 
@@ -133,11 +133,12 @@ KviStringSelector::KviStringSelector(QWidget * par,const QString & txt,QString *
 {
 	m_pLabel = new QLabel(txt,this);
 	m_pLineEdit = new QLineEdit(this);
-	//m_pLineEdit->setMinimumWidth(200);
+	m_pLineEdit->setMaximumWidth(300);
 	QString tmp = *pOption;
 	m_pLineEdit->setText(tmp);
 
-	setSpacing(4);
+	setSpacing(8);
+	setMargin(0);
 	setStretchFactor(m_pLineEdit,1);
 
 	m_pOption = pOption;
@@ -323,6 +324,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap
 	g->setRowStretch(1,1);
 	g->setColumnStretch(0,1);
 
+	g->setMargin(0);
 	setEnabled(bEnabled);
 }
 
@@ -435,6 +437,7 @@ KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOp
 
 	m_pOption = pOption;
 
+	m_Layout->setMargin(0);
 	setEnabled(bEnabled);
 }
 
@@ -631,6 +634,7 @@ KviColorSelector::KviColorSelector(QWidget * par,const QString & txt,QColor * pO
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(changeClicked()));
 
 	setSpacing(4);
+	setMargin(0);
 	setStretchFactor(m_pLabel,1);
 
 	setButtonPalette(pOption);
@@ -685,6 +689,7 @@ KviFontSelector::KviFontSelector(QWidget * par,const QString & txt,QFont * pOpti
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(changeClicked()));
 
 	setSpacing(4);
+	setMargin(0);
 	setStretchFactor(m_pLabel,1);
 
 	setButtonFont(pOption);
@@ -731,6 +736,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(buttonClicked()));
 
 	setSpacing(4);
+	setMargin(0);
 	setStretchFactor(m_pLabel,1);
 
 	m_pUFore = uFore;

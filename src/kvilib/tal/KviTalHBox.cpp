@@ -59,8 +59,8 @@ KviTalHBox::KviTalHBox(QWidget * pParent, char * pcName)
 	setObjectName(pcName);
 
 	m_pLayout = new QHBoxLayout(this);
-	m_pLayout->setMargin(3);
-	m_pLayout->setSpacing(2);
+	m_pLayout->setMargin(0);
+	m_pLayout->setSpacing(6);
 
 	setLayout(m_pLayout);
 }

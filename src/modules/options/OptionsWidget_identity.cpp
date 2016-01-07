@@ -302,8 +302,6 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Basic Properties","options"));
 	KviTalHBox * hb = new KviTalHBox(gbox);
-	hb->setSpacing(0);
-	hb->setMargin(0);
 
 	KviStringSelector * sel = addStringSelector(hb,__tr2qs_ctx("Nickname:","options"),KviOption_stringNickname1);
 	sel->setMinimumLabelWidth(120);
@@ -340,7 +338,6 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Profile","options"));
 
 	hb = new KviTalHBox(gbox);
-	hb->setSpacing(4);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Age:","options"),hb);
 	l->setMinimumWidth(120);
@@ -368,7 +365,6 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 
 	hb = new KviTalHBox(gbox);
-	hb->setSpacing(4);
 
 	l = new QLabel(__tr2qs_ctx("Gender:","options"),hb);
 	l->setMinimumWidth(120);
