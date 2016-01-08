@@ -634,7 +634,7 @@ void KviInputEditor::rebuildTextBlocks()
 					{
 						unsigned char uFore;
 						unsigned char uBack;
-						int iNextChar = KviControlCodes::getUnicodeColorBytes(spb->szText,p - spb->szText.unicode(),&uFore,&uBack);
+						/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb->szText,p - spb->szText.unicode(),&uFore,&uBack);
 						if(uFore != KviControlCodes::NoChange)
 						{
 							uCurFore = uFore;

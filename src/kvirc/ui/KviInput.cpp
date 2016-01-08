@@ -250,7 +250,7 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Multi-line Message"));
 									pMsgBox.setIcon(QMessageBox::Question);
 									QAbstractButton *pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
-									QAbstractButton *pYesButton = pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
+									/* QAbstractButton *pYesButton = */ pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
 									QAbstractButton *pNoButton = pMsgBox.addButton(__tr2qs("No"), QMessageBox::NoRole);
 									pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
 									pMsgBox.exec();
