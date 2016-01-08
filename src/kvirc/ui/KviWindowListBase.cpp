@@ -76,6 +76,9 @@ KviWindowListBase::KviWindowListBase()
 	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
 	m_pActivityMeterTimer->start(5000);
 
+	m_pTitleWidget = new KviWindowListTitleWidget(this);
+	setTitleBarWidget(m_pTitleWidget);
+
 	applyOptions();
 }
 
@@ -172,27 +175,17 @@ void KviWindowListBase::updateDockLocation(Qt::DockWidgetArea newArea)
 
 void KviWindowListBase::applyOptions()
 {
-	// to hide the title bar completely must replace the default widget with a generic one
-	if(m_pTitleWidget)
-		delete m_pTitleWidget;
-
 	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))
-	{
-		m_pTitleWidget = new KviWindowListTitleWidget(this);
 		setFeatures(features() | QDockWidget::DockWidgetMovable);
-	} else {
-		m_pTitleWidget = new QWidget();
+	else
 		setFeatures(features() & ~QDockWidget::DockWidgetMovable);
-	}
-
-	setTitleBarWidget(m_pTitleWidget);
-
-// 	if(features() & QDockWidget::DockWidgetVerticalTitleBar)
-
 }
 
 void KviWindowListTitleWidget::paintEvent(QPaintEvent *)
 {
+	// if there is no handle there is nothing to paint.
+	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))return;
+
 	QPainter p(this);
 	QStyleOption opt(0);
 	opt.rect = contentsRect();
@@ -210,6 +203,9 @@ void KviWindowListTitleWidget::paintEvent(QPaintEvent *)
 
 QSize KviWindowListTitleWidget::sizeHint() const
 {
+	// if there is no handle there is nothing to paint.
+	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))return QSize(0,0);
+
 	int h, w;
 	if(m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
 	{

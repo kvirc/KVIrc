@@ -191,9 +191,10 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	setFocusPolicy(Qt::NoFocus);
-	setFrameShape(NoFrame);
 	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
+	setFrameShape(QFrame::Box);
+	setFrameStyle(QFrame::Panel | QFrame::Sunken);
 }
 
 KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
@@ -336,13 +337,6 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-
-	p->setPen(palette().dark().color());
-	p->drawLine(0,1,width(),1);
-	p->drawLine(0,0,0,height());
-	p->setPen(palette().light().color());
-	p->drawLine(1,height()-1,width()-1,height()-1);
-	p->drawLine(width()-1,1,width()-1,height());
 
 	delete p;
 
@@ -527,7 +521,6 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	KviWindow* pWindow = item->kviWindow();
 
 	QStyleOptionViewItemV4 opt4(option);
-	opt4.rect.adjust(1,0,-1,0);
 	opt4.state = opt4.state | QStyle::State_Selected;
 	opt4.showDecorationSelected = true;
 	//paint cell background
