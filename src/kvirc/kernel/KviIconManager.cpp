@@ -290,7 +290,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"userlist",            // 204
 	"stats",               // 205
 	"popupmenu",           // 206
-	"xy",                  // 207
+	"serverconfiguration", // 207
 	"irc0",                // 208
 	"irc1",                // 209
 	"irc2",                // 210
@@ -822,7 +822,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 204: return KviIconManager::UserList;             break;
 		case 205: return KviIconManager::Stats;                break;
 		case 206: return KviIconManager::PopupMenu;            break;
-		case 207: return KviIconManager::Xy;                   break;
+		case 207: return KviIconManager::ServerConfiguration;  break;
 		case 208: return KviIconManager::Irc0;                 break;
 		case 209: return KviIconManager::Irc1;                 break;
 		case 210: return KviIconManager::Irc2;                 break;

@@ -96,8 +96,8 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Configure Servers..."),
 		__tr2qs("Allows you to configure the servers and eventually to connect to them"),
 		KviActionManager::categorySettings(),
-		"kvi_bigicon_servers.png",
-		KviIconManager::Server,
+		"kvi_bigicon_serverconfiguration.png",
+		KviIconManager::ServerConfiguration,
 		0,
 		KVI_SHORTCUTS_SERVERS);
 

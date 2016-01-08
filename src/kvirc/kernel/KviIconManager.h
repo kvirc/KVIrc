@@ -372,7 +372,7 @@ public:
 		UserList             = 204,
 		Stats                = 205,
 		PopupMenu            = 206,
-		Xy                   = 207,
+		ServerConfiguration  = 207,
 		Irc0                 = 208,
 		Irc1                 = 209,
 		Irc2                 = 210,
