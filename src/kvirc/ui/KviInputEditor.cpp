@@ -3228,7 +3228,9 @@ void KviInputEditor::backspaceHit()
 		m_szTextBuffer.remove(m_iCursorPosition,1);
 		m_p->bTextBlocksDirty = true;
 	}
+
 	clearSelection();
+	ensureCursorVisible();
 	repaintWithCursorOn();
 }
 
@@ -3248,6 +3250,7 @@ void KviInputEditor::deleteHit()
 		m_szTextBuffer.remove(m_iCursorPosition,1);
 		m_p->bTextBlocksDirty = true;
 		clearSelection();
+		ensureCursorVisible();
 		repaintWithCursorOn();
 	}
 }
