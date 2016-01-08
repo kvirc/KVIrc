@@ -1185,7 +1185,7 @@ void KviMainWindow::createWindowList()
 	} else {
 		m_pWindowList = new KviClassicWindowList();
 		m_pWindowList->setAllowedAreas(Qt::AllDockWidgetAreas);
-		if(ePreviousArea == Qt::NoDockWidgetArea)
+		if(ePreviousArea == Qt::NoDockWidgetArea || ePreviousArea == Qt::LeftDockWidgetArea || ePreviousArea == Qt::RightDockWidgetArea)
 			ePreviousArea = Qt::BottomDockWidgetArea;
 	}
 	addDockWidget(ePreviousArea,m_pWindowList);
