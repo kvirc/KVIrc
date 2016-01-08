@@ -164,7 +164,7 @@ void RawEditorWidget::customContextMenuRequested(const QPoint &pos)
 					__tr2qs_ctx("Re&move Handler","editor"),
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->addAction(
-					*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 					__tr2qs_ctx("&Export Handler to...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {

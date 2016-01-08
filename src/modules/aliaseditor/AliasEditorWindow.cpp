@@ -578,19 +578,19 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
     m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 			__tr2qs_ctx("Export Selected...","editor"),
             this,SLOT(exportSelected()))
             ->setEnabled(bHasSelected);
 
 	m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 			__tr2qs_ctx("Export Selected in Single Files...","editor"),
             this,SLOT(exportSelectedSepFiles()))
             ->setEnabled(bHasSelected);
 
 	m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 			__tr2qs_ctx("Export All...","editor"),
             this,SLOT(exportAll()))
             ->setEnabled(bHasItems);

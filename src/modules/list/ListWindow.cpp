@@ -206,7 +206,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pSaveButton = new QToolButton(pBox);
 	m_pSaveButton->setObjectName("export_list");
 	m_pSaveButton->setIconSize(QSize(16,16));
-	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy))));
+	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Save))));
 	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export list"));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 

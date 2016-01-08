@@ -93,7 +93,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"undock",              // 7
 	"quitapp",             // 8
 	"console",             // 9
-	"floppy",              // 10
+	"save",                // 10
 	"parsererror",         // 11
 	"parserwarning",       // 12
 	"server",              // 13
@@ -625,7 +625,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case   7: return KviIconManager::UnDock;               break;
 		case   8: return KviIconManager::QuitApp;              break;
 		case   9: return KviIconManager::Console;              break;
-		case  10: return KviIconManager::Floppy;               break;
+		case  10: return KviIconManager::Save;                 break;
 		case  11: return KviIconManager::ParserError;          break;
 		case  12: return KviIconManager::ParserWarning;        break;
 		case  13: return KviIconManager::Server;               break;

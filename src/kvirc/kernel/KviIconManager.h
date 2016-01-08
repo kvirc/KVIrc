@@ -175,7 +175,7 @@ public:
 		UnDock               =   7,
 		QuitApp              =   8,
 		Console              =   9,
-		Floppy               =  10,
+		Save                 =  10,
 		ParserError          =  11,
 		ParserWarning        =  12,
 		Server               =  13,

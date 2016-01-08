@@ -280,7 +280,7 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
 	m_pExportButton->setToolTip(__tr2qs_ctx("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button.","register"));
-	//m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)));
+	//m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Save)));
 
 
 	m_pImportButton = new QPushButton(__tr2qs_ctx("Import from...","register"),vbox);

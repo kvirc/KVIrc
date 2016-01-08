@@ -447,7 +447,7 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 		//pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove All Log Files Within This Folder","log"),this,SLOT(deleteCurrent()));
 	} else {
-        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),__tr2qs_ctx("Export Log File to","log"))->setMenu(m_pExportLogPopup);
+        pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)),__tr2qs_ctx("Export Log File to","log"))->setMenu(m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs_ctx("Remove Log File","log"),this,SLOT(deleteCurrent()));
 	}
 

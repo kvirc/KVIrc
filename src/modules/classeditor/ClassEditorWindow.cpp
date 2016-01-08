@@ -919,20 +919,20 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
     m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(
-		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 		__tr2qs_ctx("Export Selected...","editor"),
 		this,SLOT(exportSelected()));
     pAction->setEnabled(bHasSelected);
 
 	m_pContextPopup->addAction(
-		*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 		__tr2qs_ctx("Export Selected in Single Files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
     pAction->setEnabled(bHasSelected);
 
 	m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
 			__tr2qs_ctx("Export All...","editor"),
 			this,SLOT(exportAll()));
     pAction->setEnabled(bHasItems);
