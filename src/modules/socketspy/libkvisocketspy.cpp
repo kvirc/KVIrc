@@ -40,11 +40,11 @@ KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
 	@title:
 		socketspy.open
 	@short:
-		Opens a SocketSpy window
+		Opens a Socket Spy window
 	@syntax:
 		socketspy.open
 	@description:
-		Creates a new socketspy window. A SocketSpy window
+		Creates a new socket spy window. A Socket spy window
 		monitors the incoming and outgoing RAW data on the
 		IRC socket of the current IRC context.
 */
