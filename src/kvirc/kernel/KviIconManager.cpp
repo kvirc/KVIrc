@@ -336,7 +336,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"applet",              // 250
 	"caption",             // 251
 	"transparent",         // 252
-	"alert",               // 253
+	"notifier",            // 253
 	"userwindow",          // 254
 	"statusbar",           // 255
 	"notaway",             // 256
@@ -868,7 +868,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 250: return KviIconManager::Applet;               break;
 		case 251: return KviIconManager::Caption;              break;
 		case 252: return KviIconManager::Transparent;          break;
-		case 253: return KviIconManager::Alert;                break;
+		case 253: return KviIconManager::Notifier;             break;
 		case 254: return KviIconManager::UserWindow;           break;
 		case 255: return KviIconManager::StatusBar;            break;
 		case 256: return KviIconManager::NotAway;              break;

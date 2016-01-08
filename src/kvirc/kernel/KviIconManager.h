@@ -418,7 +418,7 @@ public:
 		Applet               = 250,
 		Caption              = 251,
 		Transparent          = 252,
-		Alert                = 253,
+		Notifier             = 253,
 		UserWindow           = 254,
 		StatusBar            = 255,
 		NotAway              = 256,
