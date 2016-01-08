@@ -799,10 +799,9 @@ void KviIrcView::doMarkerToolTip()
 {
 	QString tip;
 	tip = "<table width=\"100%\">" \
-		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\"> <u><font color=\"blue\"><nowrap>";
+		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\"> <nowrap>";
 	tip += __tr2qs("Scroll up to read from the last read line");
-	tip += "</nowrap></font></u></td></tr><tr><td>";
-	tip += "</td></tr></table>";
+	tip += "</nowrap></td></tr></table>";
 
 	if(tip.isEmpty())return;
 
