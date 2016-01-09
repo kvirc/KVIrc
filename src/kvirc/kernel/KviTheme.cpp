@@ -124,7 +124,7 @@ bool KviThemeInfo::load(const QString &szDirectory,Location eLocation)
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
-	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion","1.0.0");
+	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion","1.1.0");
 	if(KviMiscUtils::compareVersions(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
 	{
 		m_szLastError = QString(__tr2qs("This KVIrc executable is too old for this theme (minimum theme engine version required is %1 while this theme engine has version %2)")).arg(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION);
