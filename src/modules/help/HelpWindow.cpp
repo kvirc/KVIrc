@@ -322,7 +322,7 @@ void HelpWindow::searchSelected ( QListWidgetItem *item )
 
 QPixmap * HelpWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::MdiHelp);
+	return g_pIconManager->getSmallIcon(KviIconManager::QuestionMark);
 }
 
 void HelpWindow::resizeEvent(QResizeEvent *)

@@ -215,7 +215,7 @@ public:
 		Query                =  47,
 		QueryPrivMsg         =  48,
 		Help                 =  49,
-		MdiHelp              =  50,
+		QuestionMark         =  50,
 		CtcpReply            =  51,
 		CtcpRequestReplied   =  52,
 		CtcpRequestIgnored   =  53,

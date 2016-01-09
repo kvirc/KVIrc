@@ -133,7 +133,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"query",               // 48
 	"queryprivmsg",        // 49
 	"help",                // 49
-	"mdihelp",             // 50
+	"questionmark",        // 50
 	"ctcpreply",           // 51
 	"ctcprequestreplied",  // 52
 	"ctcprequestignored",  // 53
@@ -665,7 +665,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case  47: return KviIconManager::Query;                break;
 		case  48: return KviIconManager::QueryPrivMsg;         break;
 		case  49: return KviIconManager::Help;                 break;
-		case  50: return KviIconManager::MdiHelp;              break;
+		case  50: return KviIconManager::QuestionMark;         break;
 		case  51: return KviIconManager::CtcpReply;            break;
 		case  52: return KviIconManager::CtcpRequestReplied;   break;
 		case  53: return KviIconManager::CtcpRequestIgnored;   break;
