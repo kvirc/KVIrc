@@ -310,7 +310,7 @@ public:
 		Gnutella             = 142,
 		Search               = 143,
 		Files                = 144,
-		Transfer             = 145,
+		Transfer             = 145, //cant see this used anywhere
 		Package              = 146,
 		Retry                = 147,
 		Idea                 = 148,
@@ -416,7 +416,7 @@ public:
 		MeUserOp             = 248,
 		MeDeUserOp           = 249,
 		Applet               = 250,
-		Caption              = 251,
+		Caption              = 251, //cant see this used anywhere
 		Transparent          = 252,
 		Notifier             = 253,
 		UserWindow           = 254,

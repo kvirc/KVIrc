@@ -228,7 +228,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"gnutella",            // 142
 	"search",              // 143
 	"files",               // 144
-	"transfer",            // 145
+	"transfer",            // 145 //cant see this used anywhere
 	"package",             // 146
 	"retry",               // 147
 	"idea",                // 148
@@ -334,7 +334,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"meuserop",            // 248
 	"medeuserop",          // 249
 	"applet",              // 250
-	"caption",             // 251
+	"caption",             // 251 //cant see this used anywhere
 	"transparent",         // 252
 	"notifier",            // 253
 	"userwindow",          // 254
@@ -760,7 +760,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 142: return KviIconManager::Gnutella;             break;
 		case 143: return KviIconManager::Search;               break;
 		case 144: return KviIconManager::Files;                break;
-		case 145: return KviIconManager::Transfer;             break;
+		case 145: return KviIconManager::Transfer;             break; //cant see this used anywhere
 		case 146: return KviIconManager::Package;              break;
 		case 147: return KviIconManager::Retry;                break;
 		case 148: return KviIconManager::Idea;                 break;
@@ -866,7 +866,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 248: return KviIconManager::MeUserOp;             break;
 		case 249: return KviIconManager::MeDeUserOp;           break;
 		case 250: return KviIconManager::Applet;               break;
-		case 251: return KviIconManager::Caption;              break;
+		case 251: return KviIconManager::Caption;              break; //cant see this used anywhere
 		case 252: return KviIconManager::Transparent;          break;
 		case 253: return KviIconManager::Notifier;             break;
 		case 254: return KviIconManager::UserWindow;           break;
