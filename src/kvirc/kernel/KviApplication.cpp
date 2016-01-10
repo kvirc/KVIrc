@@ -238,7 +238,7 @@ KviApplication::KviApplication(int &argc,char ** argv)
 #if (QT_VERSION < 0x050000)
 		setStyle(new QCleanlooksStyle());
 #else
-		setStyle(new QCommonStyle());
+		setStyle(QStyleFactory::create("Fusion"));
 #endif
 		setPalette(style()->standardPalette());
 	}
