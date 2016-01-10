@@ -1175,14 +1175,11 @@ if(WANT_BEER)
 endif()
 
 ############################################################################
-# By default we disable QGtkStyle on Qt4 since it messes up with our theming
+# By default we disable QGtkStyle since it messes up with our theming
 # Some users want it anyway, and we sometimes need to check it
 ############################################################################
 
-include(CMakeDependentOption)
-# this is a weird syntax, so an explanation follows: OFF by default but can
-# be changed if Qt4 is enabled, ON and can't be changed if Qt5 is enabled
-CMAKE_DEPENDENT_OPTION(WANT_GTKSTYLE "Enable QGtkStyle" OFF "WANT_QT4" ON)
+option(WANT_GTKSTYLE "Enable QGtkStyle" OFF)
 if(WANT_GTKSTYLE)
 	set(COMPILE_ENABLE_GTKSTYLE 1)
 endif()
