@@ -72,7 +72,7 @@ protected slots:
 
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets KviIconManager::Applet
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("ToolBar Applets")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("Toolbar Applets")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("theme,toolbar")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeToolBarApplets "theme"
 

@@ -238,7 +238,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 		szNum.setNum(c->context()->id());
 
 		QString szIrcContext = QChar('(');
-		szIrcContext += __tr2qs("IRC Context");
+		szIrcContext += __tr2qs("IRC context");
 		szIrcContext += QChar(' ');
 		szIrcContext += szNum;
 		szIrcContext += QChar(')');
