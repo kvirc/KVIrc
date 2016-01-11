@@ -334,7 +334,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"meuserop",            // 248
 	"medeuserop",          // 249
 	"applet",              // 250
-	"caption",             // 251 //cant see this used anywhere
+	"spam",                // 251
 	"transparent",         // 252
 	"notifier",            // 253
 	"userwindow",          // 254
@@ -866,7 +866,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 248: return KviIconManager::MeUserOp;             break;
 		case 249: return KviIconManager::MeDeUserOp;           break;
 		case 250: return KviIconManager::Applet;               break;
-		case 251: return KviIconManager::Caption;              break; //cant see this used anywhere
+		case 251: return KviIconManager::Spam;                 break;
 		case 252: return KviIconManager::Transparent;          break;
 		case 253: return KviIconManager::Notifier;             break;
 		case 254: return KviIconManager::UserWindow;           break;

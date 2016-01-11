@@ -416,7 +416,7 @@ public:
 		MeUserOp             = 248,
 		MeDeUserOp           = 249,
 		Applet               = 250,
-		Caption              = 251, //cant see this used anywhere
+		Spam                 = 251,
 		Transparent          = 252,
 		Notifier             = 253,
 		UserWindow           = 254,
