@@ -926,7 +926,9 @@ protected:
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;
+#if (QT_VERSION >= 0x050000)
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
+#endif
 	virtual void paintEvent(QPaintEvent * e);
 	bool checkWordSpelling(const QString &szWord);
 	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);
