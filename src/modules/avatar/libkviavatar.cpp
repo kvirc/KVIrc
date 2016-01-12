@@ -240,7 +240,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 	} else {
 		bool bIsUrl = (
 				(KviQString::equalCIN(szAvatar,"http://",7) && (szAvatar.length() > 7)) ||
-				(KviQString::equalCIN(szAvatar,"https://",7) && (szAvatar.length() > 8))
+				(KviQString::equalCIN(szAvatar,"https://",8) && (szAvatar.length() > 8))
 			);
 
 		if(bIsUrl)

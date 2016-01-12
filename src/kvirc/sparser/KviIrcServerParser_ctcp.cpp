@@ -1629,7 +1629,10 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 		if(_OUTPUT_VERBOSE)
 			KviQString::appendFormatted(textLine," (%Q %Q)",&szWhere,&szWhat);
 
-		bool bIsUrl = KviQString::equalCIN("http://",szRemoteFile,7) && (szRemoteFile.length() > 7);
+		bool bIsUrl = (
+				(KviQString::equalCIN("http://",szRemoteFile,7) && (szRemoteFile.length() > 7)) ||
+				(KviQString::equalCIN("https://",szRemoteFile,8) && (szRemoteFile.length() > 8))
+			);
 		if(!bIsUrl)
 		{
 			// no hacks
