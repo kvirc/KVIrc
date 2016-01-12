@@ -553,7 +553,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 					szCurrent = "";
 					QMessageBox::warning(this,__tr2qs_ctx("Failed to Load Avatar - KVIrc","options"),
 						__tr2qs_ctx("Failed to load the avatar image.<br>" \
-							"It may be an unaccessible file or an " \
+							"It may be an inaccessible file or an " \
 							"unsupported image format.","options"),QMessageBox::Ok,QMessageBox::NoButton);
 				} // else loaded!
 			} else {
@@ -591,7 +591,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 			// unloadable
 			QMessageBox::warning(this,__tr2qs_ctx("Failed to Load Avatar - KVIrc","options"),
 					__tr2qs_ctx("Failed to load the avatar image.<br>" \
-						"It may be an unaccessible file or an " \
+						"It may be an inaccessible file or an " \
 						"unsupported image format.","options"),QMessageBox::Ok,QMessageBox::NoButton);
 			szCurrent = "";
 		}
