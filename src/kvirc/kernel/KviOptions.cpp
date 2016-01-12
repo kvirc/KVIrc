@@ -748,7 +748,7 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 {
 	MSGTYPE_OPTION("Echo",__tr_no_lookup("Normal text"),KviIconManager::None,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("Selection",__tr_no_lookup("Selection"),KviIconManager::None,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION_SPEC("Highlight",__tr_no_lookup("Highlighted text"),KviIconManager::Notifier,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION_SPEC("Highlight",__tr_no_lookup("Highlighted text"),KviIconManager::HighlightText,KviControlCodes::White,KviControlCodes::Black,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION_SPEC("Url",__tr_no_lookup("URL foreground"),KviIconManager::Url,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("Link",__tr_no_lookup("Link overlay foreground"),KviIconManager::Url,KviControlCodes::Blue,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("ParserError",__tr_no_lookup("Parser error"),KviIconManager::ParserError,KviControlCodes::Red,KviControlCodes::Transparent,KVI_MSGTYPE_LEVEL_2),

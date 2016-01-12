@@ -170,7 +170,7 @@ public:
 		History              =   2,
 		HistoryOff           =   3,
 		UserMode             =   4,
-		DefaultIcon          =   5,
+		Default              =   5,
 		Dock                 =   6,
 		UnDock               =   7,
 		QuitApp              =   8,
@@ -312,7 +312,7 @@ public:
 		Files                = 144,
 		Transfer             = 145, //cant see this used anywhere
 		Package              = 146,
-		Retry                = 147,
+		Retry                = 147, //cant see this used anywhere
 		Idea                 = 148,
 		Colors               = 149,
 		Gui                  = 150,
@@ -434,7 +434,7 @@ public:
 		SysMonitor           = 266,
 		SayColors            = 267,
 		Finger               = 268,
-		ScriptAction         = 269,
+		HighlightText        = 269,
 		TearSmile            = 270,
 		Shy                  = 271,
 		ServerError          = 272,

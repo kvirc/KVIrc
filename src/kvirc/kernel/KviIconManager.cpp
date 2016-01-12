@@ -88,7 +88,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"history",             // 2
 	"historyoff",          // 3
 	"usermode",            // 4
-	"default",             // 5
+	"defaulticon",         // 5
 	"dock",                // 6
 	"undock",              // 7
 	"quitapp",             // 8
@@ -230,7 +230,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"files",               // 144
 	"transfer",            // 145 //cant see this used anywhere
 	"package",             // 146
-	"retry",               // 147
+	"retry",               // 147 //cant see this used anywhere
 	"idea",                // 148
 	"colors",              // 149
 	"gui",                 // 150
@@ -352,7 +352,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"sysmonitor",          // 266
 	"saycolors",           // 267
 	"finger",              // 268
-	"scriptaction",        // 269
+	"highlighttext",       // 269
 	"tearsmile",           // 270
 	"shy",                 // 271
 	"servererror",         // 272
@@ -762,7 +762,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 144: return KviIconManager::Files;                break;
 		case 145: return KviIconManager::Transfer;             break; //cant see this used anywhere
 		case 146: return KviIconManager::Package;              break;
-		case 147: return KviIconManager::Retry;                break;
+		case 147: return KviIconManager::Retry;                break; //cant see this used anywhere
 		case 148: return KviIconManager::Idea;                 break;
 		case 149: return KviIconManager::Colors;               break;
 		case 150: return KviIconManager::Gui;                  break;
@@ -884,7 +884,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 266: return KviIconManager::SysMonitor;           break;
 		case 267: return KviIconManager::SayColors;            break;
 		case 268: return KviIconManager::Finger;               break;
-		case 269: return KviIconManager::ScriptAction;         break;
+		case 269: return KviIconManager::HighlightText;        break;
 		case 270: return KviIconManager::TearSmile;            break;
 		case 271: return KviIconManager::Shy;                  break;
 		case 272: return KviIconManager::ServerError;          break;
