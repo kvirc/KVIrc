@@ -170,7 +170,7 @@ public:
 		History              =   2,
 		HistoryOff           =   3,
 		UserMode             =   4,
-		Default              =   5,
+		DefaultIcon          =   5,
 		Dock                 =   6,
 		UnDock               =   7,
 		QuitApp              =   8,
