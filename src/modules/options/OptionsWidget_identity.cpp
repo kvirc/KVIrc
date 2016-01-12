@@ -534,7 +534,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 
 	szCurrent = dlg.avatarName().trimmed();
 
-	if(KviQString::equalCIN(szCurrent,"http://",7))
+	if(KviQString::equalCIN(szCurrent,"http://",7) || KviQString::equalCIN(szCurrent,"https://",8))
 	{
 		// this is an url
 		// first check if we have it in the cache
