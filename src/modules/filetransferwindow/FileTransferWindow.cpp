@@ -427,11 +427,11 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				{
 					tmp += "<nobr>";
 					tmp += __tr2qs_ctx("Size: %1","filetransferwindow").arg(KviQString::makeSizeReadable(fi.size()));
-					tmp += "</nobr><br>";
+					tmp += "</nobr>";
 				}
 
 #ifdef COMPILE_KDE4_SUPPORT
-				tmp += "<nobr>Mime: ";
+				tmp += "<br><nobr>Mime: ";
 				tmp += KMimeType::findByPath(szFile)->name();
 				tmp += "</nobr>";
 #endif //COMPILE_KDE4_SUPPORT
@@ -440,6 +440,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				QLabel * l = new QLabel(tmp, m_pLocalFilePopup);
 				QPalette p;
 				l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
+				l->setContentsMargins(10,10,10,10);
 				pWaction->setDefaultWidget(l);
                 m_pLocalFilePopup->addAction(pWaction);
 
