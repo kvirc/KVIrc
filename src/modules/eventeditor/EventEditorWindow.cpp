@@ -562,7 +562,7 @@ void EventEditorWindow::cancelClicked()
 
 QPixmap * EventEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::Event);
+	return g_pIconManager->getSmallIcon(KviIconManager::EventEditor);
 }
 
 void EventEditorWindow::fillCaptionBuffers()

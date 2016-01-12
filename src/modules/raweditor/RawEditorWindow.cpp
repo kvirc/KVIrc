@@ -516,7 +516,7 @@ void RawEditorWindow::cancelClicked()
 
 QPixmap * RawEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::RawEvent);
+	return g_pIconManager->getSmallIcon(KviIconManager::RawEventEditor);
 }
 
 void RawEditorWindow::fillCaptionBuffers()

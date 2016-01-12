@@ -1419,7 +1419,7 @@ void PopupEditorWindow::cancelClicked()
 
 QPixmap * PopupEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::Popup);
+	return g_pIconManager->getSmallIcon(KviIconManager::PopupEditor);
 }
 
 void PopupEditorWindow::fillCaptionBuffers()

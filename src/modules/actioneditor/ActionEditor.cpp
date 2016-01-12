@@ -911,7 +911,7 @@ void ActionEditorWindow::cancelClicked()
 
 QPixmap * ActionEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::ScriptAction);
+	return g_pIconManager->getSmallIcon(KviIconManager::ActionEditor);
 }
 
 void ActionEditorWindow::getConfigGroupName(QString &szName)

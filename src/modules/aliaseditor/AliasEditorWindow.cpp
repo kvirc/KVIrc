@@ -1244,7 +1244,7 @@ void AliasEditorWindow::cancelClicked()
 
 QPixmap * AliasEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KviIconManager::Alias);
+	return g_pIconManager->getSmallIcon(KviIconManager::AliasEditor);
 }
 
 void AliasEditorWindow::getConfigGroupName(QString &szName)
