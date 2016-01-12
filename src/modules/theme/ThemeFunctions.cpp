@@ -188,6 +188,8 @@ namespace ThemeFunctions
 				bValid = false;
 			if(KviMiscUtils::compareVersions(szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
 				bValid = false;
+			if(KviMiscUtils::compareVersions(szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) > 0)
+				bValid = false;
 
 			QString szDetailsBuffer;
 
