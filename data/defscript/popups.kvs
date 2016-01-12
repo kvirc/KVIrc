@@ -23,12 +23,12 @@ defpopup(highlight)
 		tmphighlight.removeNick $0
 	}
 
-	item($tr("Start Highlighting (Local)","defscript"),181) (!%:beingHlTmp && !%:beingHl)
+	item($tr("Start Highlighting (Local)","defscript"),269) (!%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.addNick $0
 	}
 
-	popup($tr("Always Highlight","defscript"),181) (!%:beingHl && !%:regName)
+	popup($tr("Always Highlight","defscript"),269) (!%:beingHl && !%:regName)
 	{
 		item($tr("Highlight as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
@@ -61,7 +61,7 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Always Highlight","defscript"),181) (!%:beingHl && %:regName)
+	item($tr("Always Highlight","defscript"),269) (!%:beingHl && %:regName)
 	{
 		reguser.setproperty $0 highlight 1
 	}
@@ -484,7 +484,7 @@ defpopup(windowpopup)
 		}
 	}
 
-	item($str.printf($tr("Stop Auto-Joining Channel on Server '?s'","defscript"),%:szServer),44) (%:bIsChannel && %:bIsAutoJoinedOnServer)
+	item($str.printf($tr("Stop Auto-joining Channel on Server '?s'","defscript"),%:szServer),44) (%:bIsChannel && %:bIsAutoJoinedOnServer)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
@@ -497,7 +497,7 @@ defpopup(windowpopup)
 		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
 	}
 
-	item($str.printf($tr("Stop Auto-Joining Channel on Network '?s'","defscript"),%:szNetwork),44) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
+	item($str.printf($tr("Stop Auto-joining Channel on Network '?s'","defscript"),%:szNetwork),44) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
@@ -634,7 +634,7 @@ defpopup(defaulttextview)
 
 	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple)
 
-	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
+	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple)
 
 	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
 
@@ -864,7 +864,7 @@ defpopup(channeltextview)
 
 	separator
 
-	extpopup($tr("&Highlight","defscript"),channelhighlight,181)
+	extpopup($tr("&Highlight","defscript"),channelhighlight,269)
 
 	item($tr("Copy Channel URL to Clipboard","defscript"),18)
 	{
@@ -1508,7 +1508,7 @@ defpopup(channel)
 
 	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple)
 
-	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
+	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple)
 
 	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
 
