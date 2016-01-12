@@ -213,7 +213,7 @@ namespace ThemeFunctions
 			if(!bValid)
 			{
 				szDetails += "<p><center><font color=\"#ff0000\"><b>";
-				szDetails += __tr2qs_ctx("Warning: The theme might be incompatible with this version of KVIrc","theme");
+				szDetails += __tr2qs_ctx("Warning: this theme might be incompatible with this version of KVIrc","theme");
 				szDetails += "</b></font></center></p>";
 				iValidThemeCount--;
 			}
@@ -229,7 +229,7 @@ namespace ThemeFunctions
 		if(iValidThemeCount < iThemeCount)
 		{
 			szWarnings += "<p><center><font color=\"#ff0000\"><b>";
-			szWarnings += __tr2qs_ctx("Warning: Some of the theme contained in this package might be either corrupted or incompatible with this version of KVIrc","theme");
+			szWarnings += __tr2qs_ctx("Warning: the theme contained in this package might be either corrupted or incompatible with this version of KVIrc","theme");
 			szWarnings += "</b></font></center></p>";
 		}
 
