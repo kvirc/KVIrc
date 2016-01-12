@@ -318,7 +318,7 @@ namespace ThemeFunctions
 		QString szAuthor = __tr2qs_ctx("Author","theme");
 		QString szCreatedAt = __tr2qs_ctx("Created at","theme");
 		QString szCreatedOn = __tr2qs_ctx("Created with","theme");
-		QString szThemeEngineVersion = __tr2qs_ctx("Theme Engine Version","theme");
+		QString szThemeEngineVersion = __tr2qs_ctx("Theme engine version","theme");
 		QString szSubdirectory = __tr2qs_ctx("Subdirectory","theme");
 
 		QString szScreenshot;
