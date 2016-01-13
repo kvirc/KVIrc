@@ -130,7 +130,7 @@ void HttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				case Failure: offset = 144; break;
 			}
 			if(g_pHttpIcon)
-				p->drawPixmap(rect.left() + 3, rect.top() + 3,*g_pHttpIcon,offset,0,48,64);
+				p->drawPixmap(width / 2 - 48 / 2,rect.top() + height / 2 - 64 / 2,*g_pHttpIcon,offset,0,48,64);
 		}
 		break;
 		case COLUMN_FILEINFO:

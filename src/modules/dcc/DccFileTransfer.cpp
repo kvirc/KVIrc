@@ -1538,7 +1538,7 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				case Failure: xoffset = 144; break;
 			}
 			// 48 is width, 64 is height
-			p->drawPixmap(width / 2 - 48 / 2,height / 2 - 64 / 2,*g_pDccFileTransferIcon,xoffset,yoffset,48,64);
+			p->drawPixmap(width / 2 - 48 / 2,rect.top() + height / 2 - 64 / 2,*g_pDccFileTransferIcon,xoffset,yoffset,48,64);
 		}
 		break;
 		case COLUMN_FILEINFO:
