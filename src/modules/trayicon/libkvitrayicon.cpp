@@ -118,8 +118,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 
     m_pContextPopup->addSeparator();
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UnDock)),__tr2qs("&Hide Tray Icon"),this,SLOT(executeInternalCommand(bool)));
-	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UnDock)),__tr2qs("&Hide Tray Icon"),this,SLOT(disableTrayIcon()));
 
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()));
 
@@ -162,6 +161,12 @@ void KviTrayIconWidget::flashingTimerShot()
 {
 	m_bFlashed=!m_bFlashed;
 	refresh();
+}
+
+void KviTrayIconWidget::disableTrayIcon()
+{
+	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = false;
+	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 }
 
 #define NIDLEMSGS 18

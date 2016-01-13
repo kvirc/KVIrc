@@ -79,6 +79,7 @@ protected slots:
 	void flashingTimerShot();
 	void activatedSlot( QSystemTrayIcon::ActivationReason reason );
 	void executeInternalCommand(bool);
+	void disableTrayIcon();
 };
 
 #endif //_KVI_TRAYICON_H_
