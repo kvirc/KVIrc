@@ -118,7 +118,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 
     m_pContextPopup->addSeparator();
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UnDock)),__tr2qs("&Hide Tray Icon"),this,SLOT(disableTrayIcon()));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TrayIcon)),__tr2qs("&Hide Tray Icon"),this,SLOT(disableTrayIcon()));
 
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()));
 
