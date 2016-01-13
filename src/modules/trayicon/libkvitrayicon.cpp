@@ -309,10 +309,10 @@ void KviTrayIconWidget::fillContextPopup()
 		m_pAwayMenuId->setVisible(true);
 		m_pAwayPopup->clear();
 
-		QAction * pAllAway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Away on All"),this,SLOT(doAway(bool)));
+		QAction * pAllAway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)),__tr2qs("Away on All"),this,SLOT(doAway(bool)));
 		pAllAway->setData(-1);
 
-		QAction * pAllUnaway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Back on All"),this,SLOT(doAway(bool)));
+		QAction * pAllUnaway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),__tr2qs("Back on All"),this,SLOT(doAway(bool)));
 		pAllUnaway->setData(-2);
 
 		QAction* pSeparator=m_pAwayPopup->addSeparator();
@@ -331,11 +331,11 @@ void KviTrayIconWidget::fillContextPopup()
 					QAction* id;
 					if(pConsole->connection()->userInfo()->isAway())
 					{
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
 						id->setData(pConsole->context()->id());
 						bAllUnaway=0;
 					} else {
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
 						id->setData(pConsole->context()->id());
 						bAllAway=0;
 					}
