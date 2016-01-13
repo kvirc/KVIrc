@@ -110,15 +110,15 @@ KviTrayIconWidget::KviTrayIconWidget()
 	QAction* id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Options)),__tr2qs("&Configure KVIrc..."),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_OPTIONS_DIALOG);
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),__tr2qs("&About KVIrc"),this,SLOT(executeInternalCommand(bool)));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Info)),__tr2qs("&About KVIrc"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 
     m_pContextPopup->addSeparator();
-	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Raw)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
+	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::DefaultIcon)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
 
     m_pContextPopup->addSeparator();
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TrayIcon)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Undock)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()));
