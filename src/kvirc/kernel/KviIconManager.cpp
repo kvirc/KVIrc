@@ -197,7 +197,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"linux",               // 111
 	"links",               // 112
 	"regusers",            // 113
-	"dockwidget",          // 114
+	"trayicon",            // 114
 	"unsetmode",           // 115
 	"favorite",            // 116
 	"toolbar",             // 117
