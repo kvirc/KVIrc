@@ -114,11 +114,11 @@ KviTrayIconWidget::KviTrayIconWidget()
 	id->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 
     m_pContextPopup->addSeparator();
-	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::DefaultIcon)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
+	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::DefaultIcon)),__tr2qs("Hide / Show"),this,SLOT(toggleParentFrame()));
 
     m_pContextPopup->addSeparator();
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Undock)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Undock)),__tr2qs("&Hide Tray Icon"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()));
