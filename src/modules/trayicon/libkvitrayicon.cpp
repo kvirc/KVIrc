@@ -141,7 +141,7 @@ KviTrayIconWidget::~KviTrayIconWidget()
 #endif
 	delete m_pTip;
 	delete m_pFlashingTimer;
-	delete m_pContextPopup;
+	m_pContextPopup->deleteLater();
 }
 
 
