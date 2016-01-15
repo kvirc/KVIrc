@@ -484,33 +484,29 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_colorLabelForeground 26                                         /* look & feel::interface look::topic label */
 #define KviOption_colorGlobalTransparencyFade 27                                  /* look & feel::interface look */
 #define KviOption_colorIrcToolBarAppletBackground 28                              /* theme::tool bar applets */
-#define KviOption_colorIrcToolBarAppletForegroundLowContrast 29                   /* theme::tool bar applets */
-#define KviOption_colorIrcToolBarAppletForegroundMidContrast 30                   /* theme::tool bar applets */
-#define KviOption_colorIrcToolBarAppletForegroundHighContrastInactive1 31         /* theme::tool bar applets */
-#define KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2 32         /* theme::tool bar applets */
-#define KviOption_colorIrcToolBarAppletForegroundHighContrastActive1 33           /* theme::tool bar applets */
-#define KviOption_colorIrcToolBarAppletForegroundHighContrastActive2 34           /* theme::tool bar applets */
-#define KviOption_colorTreeWindowListBackground 35                                /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListActiveBackground 36                          /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListForeground 37                                /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListActiveForeground 38                          /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListHighlight1Foreground 39                      /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListHighlight2Foreground 40                      /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListProgress 41                                  /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorUserListViewHalfOpForeground 42                            /* look & feel::interface look::userlist */
-#define KviOption_colorWindowListHighlight3Text 43                                /* look & feel::interface look::WindowList::classic WindowList */
-#define KviOption_colorWindowListHighlight4Text 44                                /* look & feel::interface look::WindowList::classic WindowList */
-#define KviOption_colorWindowListHighlight5Text 45                                /* look & feel::interface look::WindowList::classic WindowList */
-#define KviOption_colorTreeWindowListHighlight3Foreground 46                      /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListHighlight4Foreground 47                      /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorTreeWindowListHighlight5Foreground 48                      /* look & feel::interface look::WindowList::tree WindowList */
-#define KviOption_colorUserListViewChanAdminForeground 49                         /* look & feel::interface look::userlist */
-#define KviOption_colorUserListViewUserOpForeground 50                            /* look & feel::interface look::userlist */
-#define KviOption_colorUserListViewGrid 51                                        /* look & feel::interface look::userlist */
-#define KviOption_colorUserListViewChanOwnerForeground 52                         /* look & feel::interface look::userlist */
-#define KviOption_colorIrcViewMarkLine 53                                         /* look & feel::interface look::ircvew */
+#define KviOption_colorIrcToolBarAppletBorder 29                                  /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletFont 30                                    /* theme::tool bar applets */
+#define KviOption_colorTreeWindowListBackground 31                                /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListActiveBackground 32                          /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListForeground 33                                /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListActiveForeground 34                          /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight1Foreground 35                      /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight2Foreground 36                      /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListProgress 37                                  /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorUserListViewHalfOpForeground 38                            /* look & feel::interface look::userlist */
+#define KviOption_colorWindowListHighlight3Text 39                                /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListHighlight4Text 40                                /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListHighlight5Text 41                                /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorTreeWindowListHighlight3Foreground 42                      /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight4Foreground 43                      /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight5Foreground 44                      /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorUserListViewChanAdminForeground 45                         /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewUserOpForeground 46                            /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewGrid 47                                        /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewChanOwnerForeground 48                         /* look & feel::interface look::userlist */
+#define KviOption_colorIrcViewMarkLine 49                                         /* look & feel::interface look::ircvew */
 
-#define KVI_NUM_COLOR_OPTIONS 54
+#define KVI_NUM_COLOR_OPTIONS 50
 
 
 
@@ -644,7 +640,7 @@ namespace KviIdentdOutputMode {
 #define KviOption_fontUserListView 2                                 /* look & feel::interface look::userlist */
 #define KviOption_fontLabel 3                                        /* look & feel::interface look::topic label */
 #define KviOption_fontApplication 4                                  /* interface::look::global */
-#define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet */
+//#define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet UNUSED FOR REUSE*/
 #define KviOption_fontWindowList 6                                   /* interface::look::WindowList::classic WindowList */
 #define KviOption_fontTreeWindowList 7                               /* interface::look::WindowList::tree WindowList */
 #define KviOption_fontNotifier 8                                     /* interface::look::components::notifier */
