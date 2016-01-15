@@ -640,13 +640,12 @@ namespace KviIdentdOutputMode {
 #define KviOption_fontUserListView 2                                 /* look & feel::interface look::userlist */
 #define KviOption_fontLabel 3                                        /* look & feel::interface look::topic label */
 #define KviOption_fontApplication 4                                  /* interface::look::global */
-//#define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet UNUSED FOR REUSE*/
-#define KviOption_fontWindowList 6                                   /* interface::look::WindowList::classic WindowList */
-#define KviOption_fontTreeWindowList 7                               /* interface::look::WindowList::tree WindowList */
-#define KviOption_fontNotifier 8                                     /* interface::look::components::notifier */
-#define KviOption_fontNotifierTitle 9                                /* interface::look::components::notifier */
+#define KviOption_fontWindowList 5                                   /* interface::look::WindowList::classic WindowList */
+#define KviOption_fontTreeWindowList 6                               /* interface::look::WindowList::tree WindowList */
+#define KviOption_fontNotifier 7                                     /* interface::look::components::notifier */
+#define KviOption_fontNotifierTitle 8                                /* interface::look::components::notifier */
 
-#define KVI_NUM_FONT_OPTIONS 10
+#define KVI_NUM_FONT_OPTIONS 9
 
 
 
