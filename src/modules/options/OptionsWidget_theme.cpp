@@ -162,19 +162,13 @@ OptionsWidget_themeToolBarApplets::OptionsWidget_themeToolBarApplets(QWidget * p
 {
 	createLayout();
 
-	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontIrcToolBarApplet);
+	addColorSelector(0,0,0,0,__tr2qs_ctx("Background color:","options"),KviOption_colorIrcToolBarAppletBackground);
+	addColorSelector(0,1,0,1,__tr2qs_ctx("Border color:","options"),KviOption_colorIrcToolBarAppletBorder);
+	addColorSelector(0,2,0,2,__tr2qs_ctx("Font color:","options"),KviOption_colorIrcToolBarAppletFont);
 
-	addColorSelector(0,1,0,1,__tr2qs_ctx("Background:","options"),KviOption_colorIrcToolBarAppletBackground);
-	addColorSelector(0,2,0,2,__tr2qs_ctx("Low-contrast foreground:","options"),KviOption_colorIrcToolBarAppletForegroundLowContrast);
-	addColorSelector(0,3,0,3,__tr2qs_ctx("Mid-contrast foreground:","options"),KviOption_colorIrcToolBarAppletForegroundMidContrast);
-	addColorSelector(0,4,0,4,__tr2qs_ctx("Active high-contrast foreground (primary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastActive1);
-	addColorSelector(0,5,0,5,__tr2qs_ctx("Active high-contrast foreground (secondary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastActive2);
-	addColorSelector(0,6,0,6,__tr2qs_ctx("Inactive high-contrast foreground (primary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastInactive1);
-	addColorSelector(0,7,0,7,__tr2qs_ctx("Inactive high-contrast foreground (secondary):","options"),KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2);
+	addPixmapSelector(0,3,0,3,__tr2qs_ctx("Background image:","options"),KviOption_pixmapIrcToolBarAppletBackground);
 
-	addPixmapSelector(0,8,0,8,__tr2qs_ctx("Background image:","options"),KviOption_pixmapIrcToolBarAppletBackground);
-
-	layout()->setRowStretch(8,1);
+	layout()->setRowStretch(3,1);
 }
 
 OptionsWidget_themeToolBarApplets::~OptionsWidget_themeToolBarApplets()
