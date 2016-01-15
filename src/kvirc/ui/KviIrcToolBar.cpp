@@ -327,7 +327,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			}
 		}
 
-		p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundHighContrastActive1));
+		p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletFont));
 
 		p->setClipRect(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 2,2,width() - (KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4),height() - 4);
 
@@ -353,7 +353,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 		p->fillRect(2,2, KVI_APPLETIRCCONTEXTINDICATORWIDTH - 2,height() - 4,base);
 	}
 
-	p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundMidContrast));
+	p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletBorder));
 	p->drawLine(1,1,width() - 1,1);
 	p->drawLine(1,1,1,height() - 1);
 	p->drawLine(2,height() - 2,width() - 1,height() - 2);
