@@ -69,9 +69,9 @@
 		it is interpreted as a filename.
 		The filename can be an absolute file path or a relative one.
 		In this last case KVIrc will look for the file in a predefined set
-		of directories: First in the local "pics" directory (usually
-		in ~/kvirc-version/pics/), then in the local "incoming" directory,
-		then in the global "pics" directory, then in the user home (~)
+		of directories: First in the local [i]pics[/i] directory (usually
+		in ~/kvirc-version/pics/), then in the local [i]incoming[/i] directory,
+		then in the global [i]pics[/i] directory, then in the user home (~)
 		and in the current directory.[br]
 */
 

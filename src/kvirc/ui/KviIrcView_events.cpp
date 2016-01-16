@@ -860,7 +860,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			if(linkText.indexOf('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
-				else tip += __tr2qs("Unable to look up hostname: Unknown host");
+				else tip += __tr2qs("Unable to look up hostname: unknown host");
 			} else {
 				tip += __tr2qs("Double-click to look up this hostname<br>Right-click to view other options");
 			}
