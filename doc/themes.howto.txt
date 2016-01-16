@@ -8,10 +8,10 @@ A KVIrc theme is basically:
 The skeleton for a new theme can be produced by simply saving your current
 theme. Open the options dialog and go to the Look & Feel / Theme page.
 Click on "Save current theme", enter the description in the dialog that
-appears and select "Ok". The theme skeleton is now saved in your home
+appears and select "OK". The theme skeleton is now saved in your home
 directory.The confirmation dialog
 should have told you exactly where: it should be a directory like
-$HOME/.kvirc/<kvircversion>/theme/<yourthemename>-<yourthemeversion>.
+$HOME/.config/KVIrc/theme/<yourthemename>-<yourthemeversion>.
 Cd to that directory and look around. You should see two configuration *.kvc
 files and a lot of *.png images.
 
@@ -28,7 +28,7 @@ themedata.kvc contains the visual settings. It looks more or less like this:
 	pixmapLabelBackground=
 	msgtypeMotd=30,1,100,1,1
 	fontIrcView=helvetica,10,5,50
-	colorIrcToolBarAppletForegroundLowContrast=180,180,180
+	colorIrcToolBarAppletBorder=180,180,180
 	boolUseGuiEffectFadeMenu=false
 	pixmapGlobalTransparencyBackground=pixmapGlobalTransparencyBackground.png
 	pixmapTreeTaskBarBackground=
@@ -39,18 +39,25 @@ themedata.kvc contains the visual settings. It looks more or less like this:
 You can *carefully* edit it by hand, if you wish.
 Each option starts with a prefix that defines the "type" of that option.
 
-pixmap defines an image and thus should contain an image path (see below)
-color defines an user interface color and is an R,G,B triplet
-font defines an user interface font: you usually need to change only the
-	first two values: font family and size
-msgtype defines the icon, text color, background color, log level and
-	alert level of the messages
-uint is an unsigned integer value
-bool is a boolean value: true or false
-mirccolor defines the colors used by the CTRL+K escape and is an
-	R,G,B triplet like color.
-iccolor defines the default color of an irc context and is again an
-	R,G,B triplet.
+pixmap:		defines an image and thus should contain an image path (see below)
+
+color:		defines an user interface color and is an R,G,B triplet
+
+font:		defines an user interface font: you usually need to change only the
+		first two values: font family and size.
+
+msgtype:	defines the icon, text color, background color, log level and
+		alert level of the messages
+
+uint:		is an unsigned integer value
+
+bool:		is a boolean value: true or false
+
+mirccolor:	defines the colors used by the CTRL+K escape and is an
+		R,G,B triplet like color.
+
+iccolor:	defines the default color of an IRC context and is again an
+		R,G,B triplet.
 
 Hints:
 	- When changing the pixmap entries remember to use filenames
@@ -92,13 +99,16 @@ Hints:
 			%i++
 		} while(%name != "")
 
+------------------------------------------------------------------------------
+Review this block, is this applicable in 4.x/5.x?
+
 	- The id's of the icons are just their ZERO_BASED indexes.
 	  The kvi_smallicon_<number>.png files are numbered in increasing
 	  order and contain 16 images each one. kvi_smallicon_00.png
 	  contains images from 0 to 15, kvi_smallicon_01.png contains images
 	  16 to 31 etc... Thus the third icon in kvi_smallicon_02.png
 	  has id (2*16)+(3)-1 = 34.
-
+------------------------------------------------------------------------------
 
 
 
