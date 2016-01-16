@@ -1206,7 +1206,7 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 		//both path and name empty => fail
 		if(szName.isEmpty())
 			return 0;
-		if(KviQString::equalCIN("http://",szName,7))
+		if(KviQString::equalCIN("http://",szName,7) || KviQString::equalCIN("https://",szName,8))
 		{
 			// it's a URL, cache it locally
 			szN = szName;

@@ -99,7 +99,7 @@ KviAvatar::KviAvatar(
 		const QSize& scaleOnLoad
 	)
 {
-	m_bRemote = KviQString::equalCIN("http://",szName,7);
+	m_bRemote = KviQString::equalCIN("http://",szName,7) || KviQString::equalCIN("https://",szName,8);
 
 	m_szLocalPath = szLocalPath;
 	m_szName = szName;
