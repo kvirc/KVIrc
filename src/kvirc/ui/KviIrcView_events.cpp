@@ -68,8 +68,8 @@
 			[cmd]echo[/cmd] This is a [fnc]$cr[/fnc]![!dbl][cmd]echo[/cmd] You have clicked it![fnc]$cr[/fnc]\clickable link$cr !
 		[/example]
 		The example above will show the following text line: "This is a clickable link".
-		If you move the mouse over the words "clickable link", you will see the text highlighted.[br]
-		Once you double-click one of that words, the command "[cmd]echo[/cmd] You have clicked it!" will be executed.[br]
+		If you move the mouse over the words [i]clickable link[/i], you will see the text highlighted.[br]
+		Once you double-click one of that words, the command [i][cmd]echo[/cmd] You have clicked it![/i] will be executed.[br]
 		The format looks complex ?... it is not...just read on.[br]
 
 		<cr>!<link_type><cr><visible text><cr>
@@ -93,7 +93,7 @@
 		<command_rule> ::= <action_tag><command>[br]
 		<action_tag> ::= "[!" <action> "]"[br]
 		<action> ::= "rbt" | "mbt" | "dbl" | "txt"[br]
-		<command> ::= any kvirc command (see notes below)[br]
+		<command> ::= any KVIrc command (see notes below)[br]
 
 		[big]A shortcut[/big]
 		You may have a look at the [fnc]$fmtlink[/fnc] function: it does automatically some of the job explained
@@ -859,7 +859,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 
 			if(linkText.indexOf('*') != -1)
 			{
-				if(linkText.length() > 1)tip += __tr2qs("Unable to look up hostname: Hostname appears to be masked");
+				if(linkText.length() > 1)tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
 				else tip += __tr2qs("Unable to look up hostname: Unknown host");
 			} else {
 				tip += __tr2qs("Double-click to look up this hostname<br>Right-click to view other options");
@@ -957,7 +957,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
 					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
-						"%2</nowrap></font></u>)<hr>Double-click to join %3<br>Right click to view other options")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(szChan));
+						"%2</nowrap></font></u>)<hr>Double-click to join %3<br>Right-click to view other options")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(szChan));
 				}
 
 				tip += buf;
