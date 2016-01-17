@@ -658,7 +658,13 @@ QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem &, con
 {
 	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
 	int iHeight=treeWidget->fontMetrics().lineSpacing();
+
 	iHeight += iHeight / 3;
-	if(iHeight < 20)iHeight = 20;
+	if((KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) ||
+		KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons) ||
+		KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)) &&
+		iHeight < 20
+	) iHeight = 20;
+
 	return QSize(treeWidget->viewport()->size().width(), iHeight);
 }
