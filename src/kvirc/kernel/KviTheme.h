@@ -43,7 +43,7 @@
 /// The current theme engine version: bump up if you make INCOMPATIBLE
 /// changes in the method of saving the theme.
 ///
-#define KVI_CURRENT_THEME_ENGINE_VERSION "1.0.0"
+#define KVI_CURRENT_THEME_ENGINE_VERSION "1.1.0"
 
 ///
 /// \class KviThemeInfo
