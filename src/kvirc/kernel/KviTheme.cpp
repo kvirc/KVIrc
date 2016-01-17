@@ -124,7 +124,7 @@ bool KviThemeInfo::load(const QString &szDirectory,Location eLocation)
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
-	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion","1.0.0");
+	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion","0.0.0");
 
 	qDebug("ThemeEngineVersion=%s, InternalThemeEngineVersion=%s",m_szThemeEngineVersion.toUtf8().data(),KVI_CURRENT_THEME_ENGINE_VERSION);
 	if(KviMiscUtils::compareVersions(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
