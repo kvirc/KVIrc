@@ -1771,6 +1771,7 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 	
 }
 
+#if (QT_VERSION >= 0x050000)
 QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
 {
 	switch(query)
@@ -1788,6 +1789,7 @@ QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
 
 	return QWidget::inputMethodQuery(query);
 }
+#endif
 
 
 void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
