@@ -2189,6 +2189,8 @@ void KviIrcView::toggleToolWidget()
 
 		// Ensure the 'string to find' widget is always in focus when the search functionality is requested
 		m_pToolWidget->focusStringToFind();
+
+		m_pToolWidget->m_pStringToFind->selectAll();
 	}
 
 	repaint();
