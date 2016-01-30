@@ -360,10 +360,10 @@ void KviTopicWidget::updateToolTip()
 		txt += __tr2qs("Channel topic:");
 		txt +=              END_TABLE_BOLD_ROW;
 
-		txt +=          "<tr><td><center>";
+		txt +=          "<tr><td>";
 
 		txt += KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic));
-		txt +=          "</center></td></tr>";
+		txt +=          "</td></tr>";
 
 		//FIXME hardcoding styles sucks
 		if(!m_szSetBy.isEmpty())
