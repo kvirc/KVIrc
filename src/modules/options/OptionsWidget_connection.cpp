@@ -41,28 +41,28 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 	KviTalGroupBox *gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Disconnect","options"));
 
 	KviBoolSelector *b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnDisconnect,true);
-	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep channels open after disconnect.</center>","options"));
+	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to keep channels open after disconnect.","options"));
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep queries open","options"),KviOption_boolKeepQueriesOpenOnDisconnect,true);
-	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep queries open after disconnect.</center>","options"));
+	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to keep queries open after disconnect.","options"));
 
 	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnUnexpectedDisconnect,true);
-	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep channels open after an unexpected disconnect.</center>","options"));
+	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to keep channels open after an unexpected disconnect.","options"));
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep queries open","options"),KviOption_boolKeepQueriesOpenOnUnexpectedDisconnect,true);
-	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep queries open after an unexpected disconnect.</center>","options"));
+	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to keep queries open after an unexpected disconnect.","options"));
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Rejoin channels after reconnect","options"),KviOption_boolRejoinChannelsAfterReconnect,true);
-	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to rejoin channels after a successful reconnect attempt.</center>","options"));
+	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to rejoin channels after a successful reconnect attempt.","options"));
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Reopen queries after reconnect","options"),KviOption_boolReopenQueriesAfterReconnect,true);
-	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to reopen query windows after a successful reconnect attempt.</center>","options"));
+	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to reopen query windows after a successful reconnect attempt.","options"));
 
 //	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Automatically reconnect","options"),KviOption_boolAutoReconnectOnUnexpectedDisconnect);
-	mergeTip(b,__tr2qs_ctx("<center>This option will enable auto-reconnecting after an unexpected disconnect. " \
+	mergeTip(b,__tr2qs_ctx("This option will enable auto-reconnecting after an unexpected disconnect. " \
 		"An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> " \
 		"that was <b>not requested by the user</b> by the means of the QUIT message." \
 		"<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, " \
@@ -72,7 +72,7 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 		"This option may also behave incorrectly with bouncers that support " \
 		"detaching, in this case a solution could be to prepare an alias that sends the " \
 		"bouncer \"detach\" command immediately before the \"quit\" command.<br>" \
-		"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>","options"));
+		"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>","options"));
 
 	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Maximum attempts (0: unlimited):","options"),
 			KviOption_uintMaxAutoReconnectAttempts,0,100,5,
@@ -84,11 +84,11 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 			KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>","options"));
 
 	// This is now handled per-server.
 	//b = addBoolSelector(this,__tr2qs_ctx("Use the SASL authentication protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable)),true);
-	//mergeTip(b,__tr2qs_ctx("<center>When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol</center>","options"));
+	//mergeTip(b,__tr2qs_ctx("When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol","options"));
 	//addWidgetToLayout(b,0,2,0,2);
 
 	addRowSpacer(0,3,4,3);
@@ -129,7 +129,7 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 
 	// This is now handled per-server.
 	//b = addBoolSelector(this,__tr2qs_ctx("Use the STARTTLS security protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable)),true);
-	//mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to try to reconnect to the server using an encrypted connection</center>","options"));
+	//mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to try to reconnect to the server using an encrypted connection","options"));
 	//addWidgetToLayout(b,0,2,0,2);
 
 	addRowSpacer(0,3,0,3);
@@ -159,7 +159,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	u = addUIntSelector(0,2,0,2,__tr2qs_ctx("Limit to 1 message every:","options"),
 			KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000001,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
 	u->setSuffix(__tr2qs_ctx(" usec","options"));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
@@ -174,12 +174,12 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 #endif //!COMPILE_IPV6_SUPPORT
 
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick random IP address for Round-robin servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
-	mergeTip(b,__tr2qs_ctx("<center>This option will cause the KVIrc networking stack to pick up " \
+	mergeTip(b,__tr2qs_ctx("This option will cause the KVIrc networking stack to pick up " \
 		"a random entry when multiple IP address are retrieved for a server " \
 		"DNS lookup. This is harmless and can fix some problems with caching " \
 		"DNS servers that do not properly rotate the records as the authoritative " \
 		"ones would do. On the other hand, you might want to disable it if " \
-		"you want to rely on the DNS server to provide the best choice.</center>","options"));
+		"you want to rely on the DNS server to provide the best choice.","options"));
 
 	addRowSpacer(0,5,0,5);
 }
