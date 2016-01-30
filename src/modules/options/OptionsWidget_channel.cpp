@@ -54,34 +54,34 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 
  	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Rejoin channel","options"),KviOption_boolRejoinChannelOnKick);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will cause KVIrc to attempt " \
-		"to rejoin a channel after being kicked.</center>","options"));
+		__tr2qs_ctx("This option will cause KVIrc to attempt " \
+		"to rejoin a channel after being kicked.","options"));
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnKick);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will cause KVIrc to keep " \
+		__tr2qs_ctx("This option will cause KVIrc to keep " \
 			"the channel window open after being kicked.<br>" \
 			"It might be a good idea to also enable the " \
-			"\"Rejoin channel\" option.</center>","options"));
+			"\"Rejoin channel\" option.","options"));
 
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnPart);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will cause KVIrc to keep " \
-			"the channel window open after leaving it.</center>","options"));
+		__tr2qs_ctx("This option will cause KVIrc to keep " \
+			"the channel window open after leaving it.","options"));
 
 	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Automatically join channel on invite","options"),KviOption_boolAutoJoinOnInvite);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will cause KVIrc to automatically " \
+		__tr2qs_ctx("This option will cause KVIrc to automatically " \
 			"join a channel when an INVITE message for that channel is received.<br>" \
-			"<b>Warning:</b> This may help spammers harass you. :)</center>","options"));
+			"<b>Warning:</b> this may help spammers harass you. :)","options"));
 
 	b = addBoolSelector(0,3,0,3, __tr2qs_ctx("Always open channels as minimized","options"),KviOption_boolCreateMinimizedChannels);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option causes newly created " \
+		__tr2qs_ctx("This option causes newly created " \
 			"channel windows to be immediately minimized.<br>" \
 			"Enable this if you don't like channels " \
-			"popping up while you're typing something in a channel. :D</center>","options"));
+			"popping up while you're typing something in a channel. :D","options"));
 
 	addRowSpacer(0,4,0,4);
 }
@@ -119,7 +119,7 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 	KviTalGroupBox * g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two channel requests:","options"),KviOption_uintOnJoinRequestsDelay,0,10,1);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
-	mergeTip(u,__tr2qs_ctx("<center>This is an artificial delay for the channel requests made on join.<br>You may increase it if your server complains about flooding when joining many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: <b>10 secs</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("This is an artificial delay for the channel requests made on join.<br>You may increase it if your server complains about flooding when joining many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: <b>10 secs</b>","options"));
 
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
 	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
@@ -134,18 +134,18 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 	KviTalHBox * box = new KviTalHBox(g);
 	u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnChannelJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" lines","options"));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u = addUIntSelector(box,__tr2qs_ctx("Interval:","options"),KviOption_uintDaysIntervalToPasteOnChannelJoin,1,10,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" days","options"));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
  	b = addBoolSelector(0,3,4,3,__tr2qs_ctx("Keep away list updated","options"),KviOption_boolEnableAwayListUpdates);
 	mergeTip(b,
-		__tr2qs_ctx("<center>KVIrc sends out a channel /WHO message every now and then to keep " \
+		__tr2qs_ctx("KVIrc sends out a channel /WHO message every now and then to keep " \
 			"the channel away list in sync. Use this option to disable this feature (and to save " \
-			"your IRC bandwidth). If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.</center>","options"));
+			"your IRC bandwidth). If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.","options"));
 
 	addRowSpacer(0,5,4,5);
 }
