@@ -149,18 +149,18 @@ void KviKvsCallbackMessageBox::done(int code)
 		<message_text> is a text string that will appear in the dialog box and can contain HTML formatting.[br]
 		<icon> is an [doc:image_id]image identifier[/doc] that defines an icon to be placed in the dialog box.
 		<icon> can be a relative or absolute path to an image file, a signed number (in that case it defines
-		an internal KVIrc image) or one of the special strings "critical", "information" and "warning".[br]
+		an internal KVIrc image) or one of the special strings [i]critical[/i], [i]information[/i] and [i]warning[/i].[br]
 		<button0> is the text of the first button (on the left).[br]
 		<button1> is the text of the second button (if empty or specified, only one button will appear in the dialog).[br]
 		<button2> is the text of the third button (if empty or specified, only two buttons will appear in the dialog).[br]
 		The first button is the default button - it is activated when the user presses the
 		enter key. The third (or the second if only two buttons are present) is treated as the escape button
 		and is activated when the user presses the Esc key or closes the dialog with the window manager close button.[br]
-		If one of the button text strings starts with a "default=" prefix then that button is assumed
+		If one of the button text strings starts with a [i]default=[/i] prefix then that button is assumed
 		to be the default button of the dialog.[br]
-		If one of the button text strings starts with a "escape=" prefix then that button is assumed
+		If one of the button text strings starts with a [i]escape=[/i] prefix then that button is assumed
 		to be the escape button of the dialog.[br]
-		<magic1>,<magic2>... are the magic parameters - evaluated at dialog.message call time and passed
+		<magic1>, <magic2>... are the magic parameters - evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have blocking modal behaviour -
 		it will appear above its parent widget and block its input until the dialog is closed.[br]
@@ -169,10 +169,10 @@ void KviKvsCallbackMessageBox::done(int code)
 		as $0 and the magic parameters as positional parameters $1, $2, $3....[br]
 	@examples:
 		[example]
-		[comment]# Just a warning dialog[/comment]
+		[comment]//Just a warning dialog[/comment]
 		dialog.message("Warning","You're being <b>warned</b>",warning,"OK"){ echo The user clicked OK; }
 		[comment]# A question[/comment]
-		dialog.message("And now ?","What do you want to do ?",information,"Go home","Watch TV","Scream")
+		dialog.message("And now?","What do you want to do?",information,"Go home","Watch TV","Scream")
 		{
 			if($0 == 0)echo "The user wants to go home"
 			else if($0 == 1)echo "The user wants to watch TV"
@@ -432,7 +432,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		!sw: -i=<icon> | --icon=<icon>
 		Display the specified icon, to the left of the informational text
 		!sw: -m | --multiline
-		Input multiline text instead of single line
+		Input multi-line text instead of single line
 		!sw: -p | --password
 		Display asterisks instead of the characters actually entered
 	@description:
@@ -446,9 +446,9 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		The first button is the default button - it is activated when the user presses the
 		enter key. The third (or the second if only two buttons are present) is treated as the escape button
 		and is activated when the user presses the Esc key or closes the dialog with the window manager close button.[br]
-		If one of the button text strings starts with a "default=" prefix then that button is assumed
+		If one of the button text strings starts with a [i]default=[/i] prefix then that button is assumed
 		to be the default button of the dialog.[br]
-		If one of the button text strings starts with a "escape=" prefix then that button is assumed
+		If one of the button text strings starts with a [i]escape=[/i] prefix then that button is assumed
 		to be the escape button of the dialog.[br]
 		If the -m switch is used, the dialog will be a multi-line text input, otherwise the user will be able to
 		input only a single line of text.[br]
@@ -467,8 +467,8 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		as $0, and the magic parameters as positional parameters $2, $3, $4....[br]
 	@examples:
 		[example]
-		[comment]# We need a single line "reason"[/comment]
-		dialog.textinput -d="Working!" (Away,<center>Please enter the <h1>away message</h1></center>,"OK","Cancel")
+		[comment]//We need a single line reason[/comment]
+		dialog.textinput -d="Working!" (Away,Please enter the away message,"OK","Cancel")
 		{
 			switch($0)
 			{
@@ -589,26 +589,26 @@ void KviKvsCallbackFileDialog::done(int code)
 		}
 	@description:
 		Shows an open file dialog box with the specified <caption>, <initial_selection>, and <file_filter>.[br]
-		<mode> can be "open", "openm", "save" or "dir":[br]
-		"open" causes the dialog to return an existing file[br]
-		"openm" is similar to open but allows returning multiple files as a comma separated list[br]
-		"save" causes the dialog to return any file name (no overwrite confirmation is built in the dialog!)[br]
-		"dir" causes the dialog to return an existing directory name[br]
-		<mode> defaults to "open".[br]
+		<mode> can be [i]open[/i], [i]openm[/i], [i]save[/i] or [i]dir[/i]:[br]
+		[b]open[/b] causes the dialog to return an existing file[br]
+		[b]openm[/b] is similar to open but allows returning multiple files as a comma separated list[br]
+		[b]save[/b] causes the dialog to return any file name (no overwrite confirmation is built in the dialog!)[br]
+		[b]dir[/b] causes the dialog to return an existing directory name[br]
+		<mode> defaults to [i]open[/i].[br]
 		<caption> is a text string that will appear in the caption of the dialog box.[br]
 		<initial_selection> can be a directory or filename that will be initially selected in the dialog.[br]
 		Only files matching <file_filter> are selectable. If filter is an empty string, all files are selectable.[br]
 		In the filter string multiple filters can be specified separated by either two semicolons next to each
 		other or separated by newlines. To add two filters, one to show all C++ files and one to show all
-		header files, the filter string could look like "C++ Files (*.cpp *.cc *.C *.cxx *.c++);;Header Files (*.h *.hxx *.h++)"
-		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.message call time and passed
+		header files, the filter string could look like [i]C++ Files (*.cpp *.cc *.C *.cxx *.c++);;Header Files (*.h *.hxx *.h++)[/i]
+		<magic1>, <magic2>... are the magic parameters: evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
 		Once the dialog has been shown, the user will select an EXISTING file and click either
 		Ok or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
 		and the magic parameters as positional parameters $1, $2, $3....[br]
-		If the user clicks "Cancel" or does not select any file the positional parameter $0 will be empty.[br]
+		If the user clicks [i]Cancel[/i] or does not select any file the positional parameter $0 will be empty.[br]
 	@examples:
 		[example]
 			dialog.file(open,Choose an audio file,/home/pragma/TheAudio.au,"Audio files (*.au *.wav *.snd)")
@@ -711,24 +711,24 @@ void KviKvsCallbackImageDialog::done(int code)
 	@description:
 		Shows a dialog that allows selecting an [doc:image_id]image_id[doc].
 		The <type> parameter must be a combination of the following flags:<br>
-		's' : allow selecting from the KVIrc builtin small icons<br>
-		'f' : allow browsing the local directories<br>
-		'a' : all of the above<br>
+		[b]s[/b] : allow selecting from the KVIrc builtin small icons<br>
+		[b]f[/b] : allow browsing the local directories<br>
+		[b]a[/b] : all of the above<br>
 		The default for <type> is 'a'.<br>
 		<caption> is the caption string for the dialog.<br>
 		<initial_directory> makes sense only if 'f' is specified (if <initial_directory> is empty
 		then the last path used by the image dialog will be used).<br>
 		<maxsize> is the maximum size of the images for that the preview will be generated:
-		this is 256000 bytes by default (if unspecified). Don't make it a lot bigger : it can take a lot to make
+		this is 256000 bytes by default (if unspecified). Don't make it a lot bigger: it can take a lot to make
 		the thumbnails for bigger images (and it can eat a considerable amount of memory).<br>
-		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.image call time and passed
+		<magic1>, <magic2>... are the magic parameters: evaluated at dialog.image call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
-		Once the dialog has been shown, the user will select an EXISTING file and click either
-		Ok or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
+		Once the dialog has been shown, the user will select an [b]existing[/b] file and click either
+		OK or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
 		and the magic parameters as positional parameters $1, $2, $3....[br]
-		If the user clicks "Cancel" or does not select any image the positional parameter $0 will be empty.[br]
+		If the user clicks [i]Cancel[/i] or does not select any image the positional parameter $0 will be empty.[br]
 	@examples:
 		[example]
 			dialog.image(f,Choose an image file,/home/pragma/,"256000")
@@ -785,7 +785,7 @@ static bool dialog_kvs_cmd_image(KviKvsModuleCallbackCommandCall * c)
 	@syntax:
 		$dialog.yesno(<caption:string>,<szText:string>)
 	@description:
-		Shows a simple yes/no dialog. Returns 1 if user clicks "Yes" and 0 if (s)he clicks "No".
+		Shows a simple yes/no dialog. Returns 1 if user clicks [i]Yes[/i] and 0 if (s)he clicks [i]No[/i].
 		Please note that this dialog is [b]blocking[/b]: it blocks execution of the script
 		until the user has selected either YES or NO.
 	@examples:
@@ -869,7 +869,7 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		that are [b]not[/b] blocked. This means that the blocking dialogs must block only the
 		script control-flow but let the rest of the application running.
 		Such blocking dialogs actually seem to simplify scripting because
-		the programmer "feels" that the control is always left in the script snippet that he is writing.
+		the programmer [i]feels[/i] that the control is always left in the script snippet that he is writing.
 		This is actually confusing: the control IS in the script snippet but while the dialog
 		is open the whole world can change: you can return from the dialog call and discover
 		that the server connection no longer exists and the application is about to quit.[br]
