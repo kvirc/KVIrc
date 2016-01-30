@@ -209,7 +209,7 @@ void KviStatusBarAwayIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 {
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	QString szRet = "<center><b>";
+	QString szRet = "<b>";
 
 	if(!c) goto not_connected;
 	if(c->state() != KviIrcConnection::Connected)goto not_connected;
@@ -221,18 +221,18 @@ QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 		szRet += ' ';
 		szRet += szTmp;
 		szRet += "</b><br>";
-		szRet += __tr2qs("Double click to leave away mode");
+		szRet += __tr2qs("Double-click to leave away mode");
 	} else {
 		szRet += __tr2qs("Not away");
 		szRet += "</b><br>";
-		szRet += __tr2qs("Double click to enter away mode");
+		szRet += __tr2qs("Double-click to enter away mode");
 	}
-	szRet += "</center>";
+	szRet += "";
 	return szRet;
 
 not_connected:
 	szRet +=  __tr2qs("Not connected");
-	szRet += "</b></center>";
+	szRet += "</b>";
 	return szRet;
 }
 
@@ -270,7 +270,7 @@ void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 QString KviStatusBarLagIndicator::tipText(const QPoint &)
 {
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	QString szRet = "<center><b>";
+	QString szRet = "<b>";
 
 	if(!c) goto not_connected;
 	if(c->state() != KviIrcConnection::Connected) goto not_connected;
@@ -295,14 +295,14 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 	} else {
 		szRet += __tr2qs("Lag meter engine disabled");
 		szRet += "</b><br>";
-		szRet += __tr2qs("Double click to enable it");
+		szRet += __tr2qs("Double-click to enable it");
 	}
-	szRet += "</center>";
+	szRet += "";
 	return szRet;
 
 not_connected:
 	szRet +=  __tr2qs("Not connected");
-	szRet += "</b></center>";
+	szRet += "</b>";
 	return szRet;
 }
 
@@ -812,14 +812,14 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 
 QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 {
-	QString szRet = "<center><b>";
+	QString szRet = "<b>";
 	if(!m_bCheckDone)
 	{
 		szRet += __tr2qs("Update missing");
 		szRet += "</b><br>";
-		szRet += __tr2qs("You didn't check yet.\nShould I check it?");
+		szRet += __tr2qs("You didn't check yet.<br>Should I check it?");
 		szRet += "<br>";
-		szRet += __tr2qs("Double-click to check");
+		szRet += __tr2qs("Double-click to check now");
 	} else if(m_bCheckFailed)
 	{
 		szRet += __tr2qs("Update failed");
@@ -837,6 +837,6 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to get the latest version");
 	}
-	szRet += "</center>";
+	szRet += "";
 	return szRet;
 }
