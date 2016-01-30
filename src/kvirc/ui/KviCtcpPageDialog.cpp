@@ -100,19 +100,19 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 			break;
 	}
 
-	QString tmp = "<center>";
+	QString tmp = "";
 	tmp += __tr2qs("You have been paged by");
-	tmp += "<br><b>";
+	tmp += ":<br><b>";
 	tmp += szNick;
 	tmp += " [";
 	tmp += szUser;
 	tmp += "@";
 	tmp += szHost;
-	tmp += "]</b>:<br><br><b>";
+	tmp += "]</b><br><br><b>";
 	tmp += szMsg;
 	tmp += "</b><br><br>[";
 	tmp += szDate;
-	tmp += "]</center>";
+	tmp += "]";
 
 	l->setText(tmp);
 
