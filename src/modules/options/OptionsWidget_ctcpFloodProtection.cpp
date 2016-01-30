@@ -81,16 +81,16 @@ OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * p
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use flood protection for CTCP requests (recommended)","options"),KviOption_boolUseCtcpFloodProtection);
-	mergeTip(b,__tr2qs_ctx("<center>This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.</center>","options"));
+	mergeTip(b,__tr2qs_ctx("This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.","options"));
 
 	KviUIntSelector * u = addUIntSelector(0,1,0,1,__tr2qs_ctx("Allow up to:","options"),KviOption_uintMaxCtcpRequests,0,10000,3,KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
 	u->setSuffix(__tr2qs_ctx(" requests","options"));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	u = addUIntSelector(1,1,1,1,__tr2qs_ctx("within:","options"),KviOption_uintCtcpFloodCheckInterval,1,3600,6,KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	KviTalGroupBox * g = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Ignored CTCP Requests","options"));
