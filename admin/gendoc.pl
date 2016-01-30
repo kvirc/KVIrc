@@ -1644,9 +1644,9 @@ if(open(NOHELP,">$g_directory/nohelpavailable$g_fileextension"))
 	print_title("No help available","");
 	print_tableend();
 
-	print $g_filehandle "<center><h3>Sorry :(<br>Unfortunately there is no documentation related to the item you have selected</h3><br>\n";
+	print $g_filehandle "<h3>Sorry :(<br>Unfortunately there is no documentation related to the item you have selected</h3><br>\n";
 	print $g_filehandle "Please try a different search term or take a look at the <a href=\"index$g_fileextension\">documentation index</a> ";
-	print $g_filehandle "and try to locate the topic manually.</center><br><br>";
+	print $g_filehandle "and try to locate the topic manually.<br><br>";
 	print_footer();
 	close(NOHELP);
 } else {
