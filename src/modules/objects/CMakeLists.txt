@@ -54,20 +54,18 @@ set(
 	KvsObject_xmlreader.cpp
 )
 
-if(CMAKE_RESULT_USING_QT5)
-	# Qt >= 5.0.0 has no QHttp/QFtp implementation. We use the external code provided by digia.
-	set(
-		kviobjects_SRCS
-		${kviobjects_SRCS}
-		qthttp/qhttp.cpp
-		qthttp/qhttpauthenticator.cpp
-		qtftp/qftp.cpp
-		qtftp/qurlinfo.cpp
-	)
+# Qt >= 5.0.0 has no QHttp/QFtp implementation. We use the external code provided by digia.
+set(
+	kviobjects_SRCS
+	${kviobjects_SRCS}
+	qthttp/qhttp.cpp
+	qthttp/qhttpauthenticator.cpp
+	qtftp/qftp.cpp
+	qtftp/qurlinfo.cpp
+)
 
-	include_directories(qthttp/)
-	include_directories(qtftp/)
-endif()
+include_directories(qthttp/)
+include_directories(qtftp/)
 
 set(kvi_module_name kviobjects)
 
