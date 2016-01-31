@@ -594,7 +594,7 @@ public:
 	* \param szClassName The name of the class
 	* \param szFunctionName The name of the function
 	* \param szReminder The parameters of the function
-	* \param bIsInternal Whether the funtion is set as internal
+	* \param bIsInternal Whether the function is set as internal
 	* \param bRenameMode Whether the dialog is in rename mode
 	* \return KviClassEditorFunctionDialog
 	*/

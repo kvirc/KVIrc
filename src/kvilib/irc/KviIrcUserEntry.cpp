@@ -57,7 +57,7 @@ void KviIrcUserEntry::setRealName(const QString & szReal)
 		if((m_szRealName[0].unicode() == KviControlCodes::Color) && (m_szRealName[2].unicode() == KviControlCodes::Reset))
 		{
 			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
-			// for backwards compatibily, 3=bot
+			// for backwards compatibility, 3=bot
 			if(m_szRealName[1].unicode() & 1 && m_szRealName[1].unicode() & 2)
 			{
 				setBot(true); //3

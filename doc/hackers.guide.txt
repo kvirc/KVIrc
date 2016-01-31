@@ -155,7 +155,7 @@ The source tree
 |       |-- context       The context module
 |       |
 |       |-- dcc           This module implements the whole DCC protocol.
-|       |                 Windows, transfer threads etc: everyting is here.
+|       |                 Windows, transfer threads etc: everything is here.
 |       |
 |       |-- dialog        dialog.* scripting stuff
 |       |
@@ -498,7 +498,7 @@ KviStr
 	around various bugs of the original QString class (the NOT unicode one
 	that now has been renamed to QCString). It has the property of being
 	always non null and it has no reference counting.
-	Actually many occurences of this string are replaced by QString
+	Actually many occurrences of this string are replaced by QString
 	(especially in GUI modules) to handle correctly the UNICODE character set.
 
 QString
@@ -533,7 +533,7 @@ The Goal:
 	- Use QString everywhere in the user interface and in any other
 		place where KviStr is not strictly needed. Save and restore
 		strings in the UTF8 format.
-	- Get rid of ALL occurences of KviWStr and kvi_wchar_t * : DONE on 2004.11.02
+	- Get rid of ALL occurrences of KviWStr and kvi_wchar_t * : DONE on 2004.11.02
 
 -------------------------------------------------------------------------------
 Strings and localisation
@@ -615,7 +615,7 @@ when the IRC context is created and when the user closes the console then
 the IRC context is destroyed too.
 In earlier KVIrc versions there was only KviConsole that did the role of both
 KviConsole and KviIrcContext, but since the class has grown in complexity
-to a point where it started to be unmantainable the splitting has been unavoidable.
+to a point where it started to be unmaintainable the splitting has been unavoidable.
 
 KviIrcConnection represents an IRC connection: it is the highest protocol
 implementation on the KVIrc's networking stack. A KviIrcConnection

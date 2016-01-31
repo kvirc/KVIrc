@@ -3672,7 +3672,7 @@ void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInst
 				} else {
 					qDebug("Ops...i have deleted the options dialog ?");
 				}
-			} //else qDebug("Clas %s has no widget",e->szName);
+			} //else qDebug("Class %s has no widget",e->szName);
 			if(pEntry->pChildList)
 				deleteInstanceTree(pEntry->pChildList);
 		}

@@ -194,7 +194,7 @@ void KviIrcUrl::makeJoinCmd(const QStringList& chans, QString& szJoinCommand)
 
 int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pConsole)
 {
-	// first, sanity chek the url
+	// first, sanity check the url
 	QString cmdBuffer;
 	QString szJoinCommand;
 	KviIrcUrlParts parts;

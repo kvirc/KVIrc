@@ -139,7 +139,7 @@ KviMainWindow::KviMainWindow()
 		m_pStatusBar = new KviStatusBar(this);
 		setStatusBar(m_pStatusBar);
 		// torque: moved out of status bar constructor
-		// because module init functions exectued in load()
+		// because module init functions executed in load()
 		// couldn't access the status bar via g_pMainWindow->mainStatusBar()
 		// (assignment of m_pStatusBar happened after load() and
 		// the init function)

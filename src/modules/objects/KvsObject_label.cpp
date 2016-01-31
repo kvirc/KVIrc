@@ -177,7 +177,7 @@ const int frame_cod[] = {
 		Sets the image to be displayed on this label.
 		Giving empty argument clears the pixmap.[br]
 		See the [doc:image_id]image identifier[/doc] documentation for
-		the explaination of the <image_id> parameter.
+		the explanation of the <image_id> parameter.
 
 */
 

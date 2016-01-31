@@ -82,7 +82,7 @@ protected:
 public:
 	/**
 	* \brief Returns the number of milliseconds.
-	* The amount is caluclated since mark() was last called (and thus marks
+	* The amount is calculated since mark() was last called (and thus marks
 	* the beginning of a new interval).
 	* \return unsigned long
 	*/

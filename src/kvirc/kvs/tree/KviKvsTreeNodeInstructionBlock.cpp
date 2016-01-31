@@ -74,7 +74,7 @@ void KviKvsTreeNodeInstructionBlock::addInstruction(KviKvsTreeNodeInstruction * 
 
 bool KviKvsTreeNodeInstructionBlock::execute(KviKvsRunTimeContext * c)
 {
-	// to accomodate recursion we need to use an iterator here
+	// to accommodate recursion we need to use an iterator here
 	KviPointerListIterator<KviKvsTreeNodeInstruction> it(*m_pInstructionList);
 	while(KviKvsTreeNodeInstruction * i = it.current())
 	{

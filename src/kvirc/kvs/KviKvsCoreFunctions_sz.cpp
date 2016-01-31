@@ -995,7 +995,7 @@ namespace KviKvsCoreFunctions
 			The username is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 			The username is generally known if the user is on a channel with you
 			or has an open query with you.[br]
-			Detailed explaination:[br]
+			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
 			and queries.[br] The other IRC users are [b]not[/b] in the database:

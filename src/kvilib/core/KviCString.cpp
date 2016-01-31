@@ -2159,7 +2159,7 @@ KviCString & KviCString::transliterate(const char * szToFind,const char * szRepl
 }
 
 
-int KviCString::occurences(char c,bool caseS) const
+int KviCString::occurrences(char c,bool caseS) const
 {
 	char *p = m_ptr;
 	int cnt=0;
@@ -2178,7 +2178,7 @@ int KviCString::occurences(char c,bool caseS) const
 	return cnt;
 }
 
-int KviCString::occurences(const char *str,bool caseS) const
+int KviCString::occurrences(const char *str,bool caseS) const
 {
 	KVI_ASSERT(str);
 	char *p = m_ptr;
@@ -2888,7 +2888,7 @@ int KviCString::findLastIdx(const char *str,bool caseS) const
 			//go back until we find a character that mathes or we run to the first char.
 			while((*p != *str) && (p > m_ptr))p--;
 			if(*p == *str){
-				//maybe occurence....
+				//maybe occurrence....
 				if(kvi_strEqualCSN(str,p,len))return (p-m_ptr);
 				else {
 					//Nope...continue if there is more data to check...
@@ -2904,7 +2904,7 @@ int KviCString::findLastIdx(const char *str,bool caseS) const
 			char tmp = toupper(*str);
 			while((toupper(*p) != tmp) && (p > m_ptr))p--;
 			if(toupper(*p) == tmp){
-				//maybe occurence....
+				//maybe occurrence....
 				if(kvi_strEqualCIN(str,p,len))return (p-m_ptr);
 				else {
 					//Nope...continue if there is more data to check...

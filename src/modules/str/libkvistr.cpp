@@ -1173,7 +1173,7 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 	QString szString;
 	kvs_int_t iOccurence;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("occurence",KVS_PT_INT,0,iOccurence)
+		KVSM_PARAMETER("occurrence",KVS_PT_INT,0,iOccurence)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
 	int idx = 0;

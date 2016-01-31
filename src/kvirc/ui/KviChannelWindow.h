@@ -386,7 +386,7 @@ public:
 	bool hasAllNames(){ return (m_iStateFlags & HaveAllNames); };
 
 	/**
-	* \brief Sets the existance of all names
+	* \brief Sets the existence of all names
 	* \return void
 	*/
 	void setHasAllNames(){ m_iStateFlags |= HaveAllNames; checkChannelSync(); };
@@ -404,7 +404,7 @@ public:
 	bool hasWhoList(){ return (m_iStateFlags & HaveWhoList); };
 
 	/**
-	* \brief Sets the existance of the WHO list
+	* \brief Sets the existence of the WHO list
 	* \return void
 	*/
 	void setHasWhoList(){ m_iStateFlags |= HaveWhoList; checkChannelSync(); };

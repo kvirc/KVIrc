@@ -220,7 +220,7 @@ const char * const sockerrors_tbl[] = {
 			{
 			    // incoming connection socket passed by the framework
 			    %socket = $0
-			    debug "Webserver incoming Conection from: %socket->$remoteIp : %socket->$remotePort"
+			    debug "Webserver incoming Connection from: %socket->$remoteIp : %socket->$remotePort"
 			    %socket->$write("HTTP/1.0 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")
 			    // tells KVIrc no need this socket anymore
 			    return $true()

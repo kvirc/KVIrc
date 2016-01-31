@@ -127,7 +127,7 @@
 		[br]
 		In the example above, KVIrc creates an interpreter when [cmd]python.begin[/cmd]
 		is invoked and destroys it at [cmd]python.end[/cmd] parsing time.
-		In fact, KVIrc can mantain multiple persistent interpreters that will
+		In fact, KVIrc can maintain multiple persistent interpreters that will
 		allow you to preserve your context across [cmd]python.begin[/cmd] invocations.[br]
 		[br]
 		You can invoke a specific Python context by passing it as parameter to the [cmd]python.begin[/cmd]
@@ -199,7 +199,7 @@
 		Sets KVIrc's local variable %x to &lt;value&gt;[br]
 		&nbsp; &nbsp; [b]kvirc.setGlobal(&lt;Y&gt;,&lt;value&gt;)[/b][br]
 		Sets KVIrc's global variable %Y to &lt;value&gt;[br]
-		The local variables referenced belong to the current KVS exection context
+		The local variables referenced belong to the current KVS execution context
 		while the global variables are visible everywhere.[br]
 		[example]
 		%pippo = test

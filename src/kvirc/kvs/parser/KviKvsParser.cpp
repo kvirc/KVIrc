@@ -487,7 +487,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The above example will treat the ';' as a part of the parameters and print it.[br]
 		In some languages the action of [i]escaping[/i] a character is called [i]quoting[/i].
-		Altough there is some confusion in this term, the meaning is to either use quotes
+		Although there is some confusion in this term, the meaning is to either use quotes
 		or to use the escape character to remove special meaning from some characters.
 		By quoting the spaces you can include them in a parameter, by escaping the quotes
 		you can include them in a command.
@@ -1089,11 +1089,11 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		@type:
 			language
 		@title:
-			Connection dependant commands
+			Connection dependent commands
 		@keyterms:
-			IRC context, connection dependant commands
+			IRC context, connection dependent commands
 		@body:
-			Many KVIrc commands are connection dependant:
+			Many KVIrc commands are connection dependent:
 			you need an IRC connection to successfully execute them;
 			usually because some data needs to be sent to the server.
 			This includes commands like [cmd]whois[/cmd],[cmd]raw[/cmd],[cmd]query[/cmd],
@@ -1742,7 +1742,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/tr]
 		[tr]
 		[td]<simple command>[/td]
-		[td][<module name>'.']<command name>[<switch list>]{<space>}<command dependant part>[/td]
+		[td][<module name>'.']<command name>[<switch list>]{<space>}<command dependent part>[/td]
 		[/tr]
 		[tr]
 		[td]<lvalue command>[/td]
@@ -1809,7 +1809,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[td]Any ascii character except <space> and <command terminator>[/td]
 		[/tr]
 		[tr]
-		[td]<command dependant part>[/td]
+		[td]<command dependent part>[/td]
 		[td][b]Production in each command help page[/b][/td]
 		[/tr]
 		[/table]
@@ -2011,7 +2011,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		KVIrc allocates a pointer for each item in the array. The pointer is
 		empty when the item is unset and points to an additional block
 		of memory when the item is set. The size of a pointer is platform
-		dependant: on the platforms supported by KVIrc it's either 32 or 64 bit.
+		dependent: on the platforms supported by KVIrc it's either 32 or 64 bit.
 		The size of the additional block depends both on the platform
 		and on the contents of the item... it's average value may
 		be around 16 bytes. The array size is determined by the last SET element index.

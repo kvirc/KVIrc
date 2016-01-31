@@ -627,7 +627,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 			if(pSw->asInteger(iSize)) // is an integer
 			{
 				pSw->asString(szTmp);
-				// avoid sprintf as long as possibile
+				// avoid sprintf as long as possible
 				d->szFileSize = szTmp;
 			} else {
 				d->szFileSize = __tr_ctx("<unknown size>","dcc");

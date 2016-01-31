@@ -266,7 +266,7 @@ bool KviConfigurationFile::load()
 						while(*z)z++;
 						// run back to the trailing ']'
 						while((z > begin) && (*z != ']'))z--;
-						// if it is not ther just run back to the end of the string
+						// if it is not there just run back to the end of the string
 						if(*z != ']')while(*z)z++;
 #else
 						// new configs have it always encoded properly

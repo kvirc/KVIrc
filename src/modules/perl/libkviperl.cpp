@@ -199,7 +199,7 @@
 		Sets KVIrc's local variable %x to &lt;value&gt;[br]
 		&nbsp; &nbsp; [b]KVIrc::setGlobal(&lt;Y&gt;,&lt;value&gt;)[/b][br]
 		Sets KVIrc's global variable %Y to &lt;value&gt;[br]
-		The local variables referenced belong to the current KVS exection context
+		The local variables referenced belong to the current KVS execution context
 		while the global variables are visible everywhere.[br]
 		[example]
 		%pippo = test
@@ -388,7 +388,7 @@
 		If <perl_context> is specified then a Perl interpreter
 		keyed to that context is used: if it was already existing
 		then it is reused otherwise it is created.
-		Any <perl_context> is persistent: it mantains the function
+		Any <perl_context> is persistent: it maintains the function
 		declarations and Perl variable states until explicitly
 		destroyed with [cmd]perl.destroy[/cmd] (or the perlcore
 		module is forcibly unloaded).[br]

@@ -69,7 +69,7 @@ static TorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
 /*	if(iBest < 90)
 	{
 		if(pOut)
-			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more agressive detection pass","torrent"));
+			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more aggressive detection pass","torrent"));
 		// no sure player found... try again with a destructive test
 		for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 		{

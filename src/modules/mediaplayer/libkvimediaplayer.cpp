@@ -622,7 +622,7 @@ MP_KVS_COMMAND(amipExec)
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
 		[fnc]$mediaplayer.position[/fnc],
-		[fnc]$mediaplayer.lenght[/fnc],
+		[fnc]$mediaplayer.length[/fnc],
 */
 
 MP_KVS_COMMAND(jumpTo)

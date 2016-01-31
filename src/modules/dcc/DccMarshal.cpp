@@ -484,7 +484,7 @@ void DccMarshal::snActivated(int)
 			emit error(eError);
 			return;
 		}
-		//Succesfully connected...
+		//Successfully connected...
 		delete m_pSn;
 		m_pSn = 0;
 		// get the local address

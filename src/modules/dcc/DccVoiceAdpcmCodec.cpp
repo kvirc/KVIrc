@@ -44,7 +44,7 @@
 //
 // Intel/DVI ADPCM coder/decoder.
 //
-// The algorithm for this coder was taken from the IMA Compatability Project
+// The algorithm for this coder was taken from the IMA Compatibility Project
 // proceedings, Vol 2, Number 2; May 1992.
 //
 // Version 1.2, 18-Dec-92.

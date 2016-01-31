@@ -62,7 +62,7 @@ static void kvi_threadIgnoreSigalarm()
 			// Could not guess more about this stuff...
 			// Here goes a "blind" hack for that.
 
-			// Update: now we have an explaination too
+			// Update: now we have an explanation too
 			//
 			//    From: "Andre Stechert" (astechert at email dot com)
 			//    To: pragma at kvirc dot net
@@ -80,7 +80,7 @@ static void kvi_threadIgnoreSigalarm()
 			// There is no real feedback on this at the moment: if somebody
 			// experiences the problems please drop me a mail at pragma at kvirc dot net
 			// and we'll try to look for a better solution.
-			// If the explaination is correct then KVIrc could even lock up on those machines
+			// If the explanation is correct then KVIrc could even lock up on those machines
 			// (never returning from an usleep() call ?)...
 
 			struct sigaction ignr_act;

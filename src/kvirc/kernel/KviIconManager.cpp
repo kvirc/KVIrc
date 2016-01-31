@@ -228,9 +228,9 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"gnutella",            // 142
 	"search",              // 143
 	"files",               // 144
-	"transfer",            // 145 //cant see this used anywhere
+	"transfer",            // 145 //can't see this used anywhere
 	"package",             // 146
-	"retry",               // 147 //cant see this used anywhere
+	"retry",               // 147 //can't see this used anywhere
 	"idea",                // 148
 	"colors",              // 149
 	"gui",                 // 150
@@ -240,7 +240,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"channelnoticecrypted",// 154
 	"querynotice",         // 155
 	"querynoticecrypted",  // 156
-	"servnotice",          // 157 //cant see this used anywhere
+	"servnotice",          // 157 //can't see this used anywhere
 	"popup",               // 158
 	"prologue",            // 159
 	"epilogue",            // 160
@@ -760,9 +760,9 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 142: return KviIconManager::Gnutella;             break;
 		case 143: return KviIconManager::Search;               break;
 		case 144: return KviIconManager::Files;                break;
-		case 145: return KviIconManager::Transfer;             break; //cant see this used anywhere
+		case 145: return KviIconManager::Transfer;             break; //can't see this used anywhere
 		case 146: return KviIconManager::Package;              break;
-		case 147: return KviIconManager::Retry;                break; //cant see this used anywhere
+		case 147: return KviIconManager::Retry;                break; //can't see this used anywhere
 		case 148: return KviIconManager::Idea;                 break;
 		case 149: return KviIconManager::Colors;               break;
 		case 150: return KviIconManager::Gui;                  break;
@@ -772,7 +772,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 154: return KviIconManager::ChannelNoticeCrypted; break;
 		case 155: return KviIconManager::QueryNotice;          break;
 		case 156: return KviIconManager::QueryNoticeCrypted;   break;
-		case 157: return KviIconManager::ServNotice;           break; //cant see this used anywhere
+		case 157: return KviIconManager::ServNotice;           break; //can't see this used anywhere
 		case 158: return KviIconManager::Popup;                break;
 		case 159: return KviIconManager::Prologue;             break;
 		case 160: return KviIconManager::Epilogue;             break;

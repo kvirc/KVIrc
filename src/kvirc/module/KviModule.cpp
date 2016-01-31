@@ -106,7 +106,7 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		After the command execution KVIrc waits some user defined interval of time
 		(typically 2-3 minutes) and then check the module state: if the module
 		has not been referenced again, it is unloaded, otherwise it is kept in memory
-		for another period of time. To prevent accidentaly unloading a module
+		for another period of time. To prevent accidentally unloading a module
 		that has some windows or dialogs open, a module can lock itself in memory.
 		For example, the 'help' module lock itself when a help browser window is open
 		and unlocks itself when the last help browser window is closed.[br]

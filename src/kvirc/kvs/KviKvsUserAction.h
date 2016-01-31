@@ -53,7 +53,7 @@ public:
 	// Static allocator function.
 	// This MUST be used by the modules to allocate action structures
 	// instead of the new operator.
-	// See KviHeapObject.cpp for an explaination.
+	// See KviHeapObject.cpp for an explanation.
 	static KviKvsUserAction * createInstance(
 		QObject * pParent,
 		const QString & szName,

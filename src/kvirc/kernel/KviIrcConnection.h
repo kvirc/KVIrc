@@ -117,7 +117,7 @@ protected:
 	* takes the ownership.
 	* \param pContext The KviIrcContext we're attacched to
 	* \param pTarget The server data
-	* \param pIdentity User information to use in ths connection
+	* \param pIdentity User information to use in this connection
 	* \return KviIrcConnection
 	*/
 	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity);
@@ -605,7 +605,7 @@ public:
 	* correctly connected link causes the link to actually disconnect (or
 	* rather "discover" the fact that it's disconnected at OS level).
 	* \param pcFmt The format string to be first sprintf'ed with the variadic params and then sent
-	* \param ... The variadic arguments (see man sprintf for an explaination)
+	* \param ... The variadic arguments (see man sprintf for an explanation)
 	* \return bool
 	*
 	* FIXME: change name to sendFormattedData() ?
@@ -672,8 +672,8 @@ public:
 	* \brief Sets the global encoding for this connection.
 	*
 	* This is a default value and can be overridden by specific windows.
-	* This is tipically called upon a successfull CODEPAGE change (numerical 222)
-	* reponse from a server; from now on, the server will translate (encode)
+	* This is tipically called upon a successful CODEPAGE change (numerical 222)
+	* response from a server; from now on, the server will translate (encode)
 	* everything (including IDN hostnames, channel names, messages) using this
 	* encoding. So we expect this encoding to be the new default for the server
 	* (connection), the console, each other channel and query.

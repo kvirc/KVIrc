@@ -52,7 +52,7 @@
 		!fn: $setChecked(<bChecked:boolean>)
 		Sets whether the radio button is checked to check.
 		!fn: $setPixmap(<image_id>)
-		Sets the pixmap shown on the radiobutton..See the [doc:image_id]image identifier[/doc] documentation for the explaination
+		Sets the pixmap shown on the radiobutton..See the [doc:image_id]image identifier[/doc] documentation for the explanation
 		of the <image_id> parameter.
 		!fn: <bool>$toggleEvent()
 		Called by KVIrc when the radibutton state is toggled.

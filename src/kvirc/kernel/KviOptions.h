@@ -781,7 +781,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 
 	#define KviOption_resetMask (~(KviOption_sectMask | KviOption_groupMask))
 
-	//for file pathes
+	//for file paths
 	#define KviOption_encodePath (1 << 25)
 
 #endif

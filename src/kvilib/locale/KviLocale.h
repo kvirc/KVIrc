@@ -162,7 +162,7 @@ public:
 	* corresponding translation file from the KVIrc locale directory.
 	* Returns true if the locale was correctly set; i.e. the locale is C or POSIX
 	* (no translation needed) or the locale is correctly defined and the translation
-	* map was sucesfully loaded
+	* map was successfully loaded
 	* \param szBuffer The buffer where to store the translation full path
 	* \param szName The name of the translation file
 	* \param szLocaleDir The directory where the localizations are stored

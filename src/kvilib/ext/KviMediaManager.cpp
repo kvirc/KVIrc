@@ -125,7 +125,7 @@ void KviMediaManager::copyMediaType(KviMediaType * dst,KviMediaType * src)
 void KviMediaManager::insertMediaType(KviMediaType * m)
 {
 	KVI_ASSERT(locked());
-	int iWildCount    = m->szFileMask.occurences('*');
+	int iWildCount    = m->szFileMask.occurrences('*');
 	int iNonWildCount = m->szFileMask.len() - iWildCount;
 
 	// The masks with no wildcards go first in the list
@@ -137,7 +137,7 @@ void KviMediaManager::insertMediaType(KviMediaType * m)
 		if(iWildCount)
 		{
 			// the new mask has wildcards... if the current one has none, skip it
-			int iWildCountExisting = mt->szFileMask.occurences('*');
+			int iWildCountExisting = mt->szFileMask.occurrences('*');
 			if(iWildCountExisting)
 			{
 				// the one in the list has wildcards too...

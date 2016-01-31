@@ -31,7 +31,7 @@
 #include <QStringList>
 
 //
-// This class is used as container for miscelaneous connection state variables
+// This class is used as container for miscellaneous connection state variables
 // that do not have a class for their own.
 // If you need to add some "minor" variable to the connection state then
 // this is the right place for it.

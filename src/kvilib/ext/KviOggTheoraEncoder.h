@@ -86,8 +86,8 @@ private:
 
 	size_t                 y4m_dst_buf_sz;        /**< The size of each converted frame buffer */
 	size_t                 y4m_dst_buf_read_sz;   /**< The amount to read directly into the converted frame buffer */
-	size_t                 y4m_aux_buf_sz;        /**< The size of the auxilliary buffer */
-	size_t                 y4m_aux_buf_read_sz;   /**< The amount to read into the auxilliary buffer */
+	size_t                 y4m_aux_buf_sz;        /**< The size of the auxiliary buffer */
+	size_t                 y4m_aux_buf_read_sz;   /**< The amount to read into the auxiliary buffer */
 
 	ogg_stream_state       zo;   /**< Take physical pages, weld into a logical stream of irct packets */
 	ogg_stream_state       to;   /**< Take physical pages, weld into a logical stream of theora packets */

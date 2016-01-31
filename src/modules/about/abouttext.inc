@@ -446,7 +446,7 @@ static const char * g_szAboutText = "" \
 "spion" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"Webmaster, bughunter, snapshot mantainer" \
+"Webmaster, bughunter, snapshot maintainer" \
 "<br>" \
 "support gay^Wguy :o) and the man that gives" \
 "<br>" \
@@ -1006,21 +1006,21 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Chris Petrik</b></font>" \
+"<font color=\"#000000\" size=\"+2\"><b>Max Brazhnikov</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"cpet" \
+"makc" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
 "[" \
-"chris at officialunix dot com" \
+"makc at FreeBSD dot org" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"FreeBSD Port mantainer" \
+"FreeBSD Port maintainer" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"FreeBSD Gimp.\"" \
+"\"Ports committer\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<br>" \

@@ -78,7 +78,7 @@ bool KviKvsTreeNodeDataList::evaluate(KviKvsRunTimeContext * c,KviKvsVariantList
 {
 	pBuffer->clear();
 
-	// we use an iterator to accomodate recursion
+	// we use an iterator to accommodate recursion
 	KviPointerListIterator<KviKvsTreeNodeData> it(*m_pDataList);
 	while(KviKvsTreeNodeData * t = it.current())
 	{

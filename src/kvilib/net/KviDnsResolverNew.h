@@ -26,7 +26,7 @@
 
 
 // This is a nicely working DNS resolver that uses the QHostInfo interface
-// and thus gets rid of all the ugly OS dependancies we have.
+// and thus gets rid of all the ugly OS dependencies we have.
 // It should be sufficient to rename this file and use this class
 // instead of the old KviDnsResolver.
 

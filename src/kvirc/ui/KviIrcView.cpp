@@ -1012,7 +1012,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 	/*
 	 * Profane description: this is ircview's most important function. It takes a lot of cpu cycles to complete, so we want to be sure
-	 * it's well optimized. First, we want to skip this method everytime it's useless: it we're too short or we're covered by other windows.
+	 * it's well optimized. First, we want to skip this method every time it's useless: it we're too short or we're covered by other windows.
 	 */
 
 	if(!isVisible())

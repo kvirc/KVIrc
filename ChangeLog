@@ -75,7 +75,7 @@ July 2011
    - SSL certificate fingerprint verification
    - Added "force KVS mode" shortcut modifier
    - Improved KviCString
-   - Splitted Initalization Vector engine to its own file and added real CBC mode to
+   - Splitted Initialization Vector engine to its own file and added real CBC mode to
      Rijndael engine (wip)
 
 June 2011
@@ -166,7 +166,7 @@ November 2010
 October 2010
    [HelLViS69]
    - Added the default script manager: from now on you can restore the default script
-     choosing which parts of it to restore, without loosing user personal data
+     choosing which parts of it to restore, without losing user personal data
    - Cleaned code and added Doxygen documentation
    - Moved defscript translation to core
    [Pragma]
@@ -312,7 +312,7 @@ October 2009
 
 16 August 2009
    [desowin]
-   - Added compability with recent audacious versions
+   - Added compatibility with recent audacious versions
 
 09 August 2009
    [CtrlAltCa]
@@ -434,7 +434,7 @@ October 2009
 
 16 February 2009
    [CtrlAltCa]
-   - Added ROT13 crypto algorythm
+   - Added ROT13 crypto algorithm
 
 06 February 2009
    [Noldor]
@@ -895,10 +895,10 @@ Oct 2006
    - IMPORTANT: fixed proper soket closing on win32
    - Fixed crash after first run wizard on *nix
    - Make possible installation on USB removable drives (WIN32). KVIrc can store settings in program folder
-   - Make pathes in configs system-independent
+   - Make paths in configs system-independent
 
 23 Sep 2006
-   [Zerg] (commited by Alexey)
+   [Zerg] (committed by Alexey)
    - Change dock icon size to 22x22 on KDE. Fixed style of icon
    - Better in-tray minimizing
    [Alexey]
@@ -1104,7 +1104,7 @@ Oct 2006
 
 14 Mar 2006
    [Alexey]
-   - Added HTTP Auth compatability
+   - Added HTTP Auth compatibility
    - Redesigned log viewer
    - Added ability to remove logs in log viewer
    - Added nicer styling of Tool buttons
@@ -1294,7 +1294,7 @@ Oct 2006
 
 07 Dec 2005
    [Alexey]
-   - [Kernel]  KVirc *hopefelly* supports now localized file names and file pathes! (but it really partially support it now:)))
+   - [Kernel]  KVirc *hopefelly* supports now localized file names and file paths! (but it really partially support it now:)))
    - [UI]      Added missed option to the irc option widget. Now user can specify number of maximum send channel modes per line
 
 06 Dec 2005
@@ -1911,7 +1911,7 @@ Oct 2006
    - Fixed a bug with $str.replacenocase
    - Fixed a bug that prevented the color option selector buttons from
      displaying the proper color
-   - Miscelaneous fixes for the release
+   - Miscellaneous fixes for the release
 
 15 Apr 2004:
    [Trisk]
@@ -1966,7 +1966,7 @@ Oct 2006
    - Fixed a script editor highlighting bug
    - Fixed another problem with overlapping dns queries...
      ... it should have been written this way from the beginning :D
-   - Miscelaneous changes & fixes all around...
+   - Miscellaneous changes & fixes all around...
 
 06 Apr 2004:
    [Trisk]
@@ -2188,7 +2188,7 @@ Oct 2006
 
 19 Jan 2004:
     [Trisk]
-    - Adding multiple servers wtih the same hostname (different port) works.
+    - Adding multiple servers with the same hostname (different port) works.
 
 17 Jan 2004:
     [Trisk]
@@ -2256,7 +2256,7 @@ Oct 2006
     - Solaris Forte 7 port (still needs hacking to compile and run flawlessly)
     - Fix for Solaris dns resolver
     - More work on the new KVS engine
-    - stdarg.h wrapper to accomodate ugly compilers
+    - stdarg.h wrapper to accommodate ugly compilers
 
 01 Jan 2004:
     [Trisk]
@@ -2296,7 +2296,7 @@ New Years Eve, 2003:
     [Trisk]
     - Possible fix for crash if m_pConnectionInfo->szNickName is not set when
       server disconnects the client (before login).
-    - Sets AsyncServerCommand on disconnect only if nonexistant; /SERVER works
+    - Sets AsyncServerCommand on disconnect only if nonexistent; /SERVER works
       now (sorry about that, Pragma).
     - New Connect/Connecting/Disconnected icons.
     - Removed border from channel state and mode icons in user list view and
@@ -2484,7 +2484,7 @@ Christmas Eve (Western Hemisphere) 2003:
       - $mp3player.getmp3tag_emphasis => get the emphasis
       - $mp3player.getmp3tag_genre => get the genre
       - $mp3player.getmp3tag_layer => get the MPEG layer
-      - $mp3player.getmp3tag_original => get the orginal flag
+      - $mp3player.getmp3tag_original => get the orignal flag
       - $mp3player.getmp3tag_title => get the title
       - $mp3player.getmp3tag_tracknumber => get the track number
       - $mp3player.getmp3tag_version => get MPEG version
@@ -2527,7 +2527,7 @@ Christmas Eve (Western Hemisphere) 2003:
     - Added a 'Ignore' menu to the userlist users menu.
     - New feature: User highlights (argh, I hate that word). Just update your
          default.kvs and right-click on a user to see how it works. Very
-         usefull on very crowded channels with lots of parallel conversations
+         useful on very crowded channels with lots of parallel conversations
          running and you trying to keep track of one (hello #debian). Also
          added the pertinent commands on the module tmphighlight.
     - The 'clear' command now also clears the message view on channels.
@@ -2660,7 +2660,7 @@ Christmas Eve (Western Hemisphere) 2003:
 
 7 Mar 2002:
     [Juanjo]
-    - kvisounds script, the sound on OnMeNamed event is usefull, really ;)
+    - kvisounds script, the sound on OnMeNamed event is useful, really ;)
 
 28 Feb 2002:
     [Juanjo]

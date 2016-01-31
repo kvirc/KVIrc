@@ -149,7 +149,7 @@ public:
 
 	/**
 	* \brief Returns true if the applet exists, false otherwise
-	* \param pApplet The pointer to the applet to check existance
+	* \param pApplet The pointer to the applet to check existence
 	* \return bool
 	*/
 	bool appletExists(KviStatusBarApplet * pApplet);

@@ -505,7 +505,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Sends a message to a service in a form similar to [cmd]privmsg[/cmd].[br]
 			<target> must be a service(see RFC2812).
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			squery Alis LIST * -min 100
@@ -614,7 +614,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Requests the stats information from the specified server or the current server if no [target server] is specified.[br]
 			The query parameter is usually a letter indicating the type of the query requested: some query letters
-			are defined by [doc]rfc2812[/doc] and some others are server implementation dependant.[br]
+			are defined by [doc]rfc2812[/doc] and some others are server implementation dependent.[br]
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
@@ -654,7 +654,7 @@ namespace KviKvsCoreSimpleCommands
 			If no topic is specified, the current channel topic will be returned.[br]
 			This command is "server based"; you will see its results only
 			after the server acknowledges it.[br]
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			topic #kvirc KVIrc 3.4.0 has been released!
@@ -842,7 +842,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -b flags.
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			# Unban people on the current channel (say #kvirc)
@@ -883,7 +883,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +u flags.
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			userop Pragma,Crocodile
@@ -933,7 +933,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +v flags.
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			voice Pragma,Crocodile
@@ -1002,7 +1002,7 @@ namespace KviKvsCoreSimpleCommands
 			Look for the extended WHOX syntax on your favorite search engine.[br]
 			If no parameter is specified at all, it requests a WHO information about the current
 			channel.[br]
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			[comment]# Lists users on #kvirc[/comment]
@@ -1065,7 +1065,7 @@ namespace KviKvsCoreSimpleCommands
 			whois <nickname> <nickname>[br]
 			This will requests information about the user <nickname> to the server that he is currently
 			connected to; returning the idle time among the other common information.[br]
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			[comment]# Query info about Pragma[/comment]
@@ -1109,7 +1109,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Requests information about an IRC user specified by <nickname>.[br]
 			Whowas requests "history" records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
-			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+			This command is [doc:connection_dependant_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			[comment]# Query past info about Pragma[/comment]

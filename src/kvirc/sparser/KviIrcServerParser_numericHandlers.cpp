@@ -144,9 +144,9 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage *msg)
 		version.append(msg->safeParam(3));
 	}
 
-	if((umodes.occurences('o') != 1) || (chanmodes.occurences('o') != 1) ||
-		(chanmodes.occurences('b') != 1) || (chanmodes.occurences('v') != 1) ||
-		(chanmodes.occurences('t') != 1) || (chanmodes.occurences('n') != 1) ||
+	if((umodes.occurrences('o') != 1) || (chanmodes.occurrences('o') != 1) ||
+		(chanmodes.occurrences('b') != 1) || (chanmodes.occurrences('v') != 1) ||
+		(chanmodes.occurrences('t') != 1) || (chanmodes.occurrences('n') != 1) ||
 		(chanmodes.contains('.')) || (chanmodes.contains('-')) || (chanmodes.contains('(')))
 	{
 		if(!_OUTPUT_QUIET)
@@ -1294,7 +1294,7 @@ void KviIrcServerParser::parseNumericYouHaveCallerID(KviIrcMessage * msg)
 			pOut = (KviWindow *)(msg->console());
 
 		// Because some IRCds return the host jammed together with the nick in an awkward way, making one
-		// less paramter returned in RPL_UMODEGMSG.
+		// less parameter returned in RPL_UMODEGMSG.
 		if(szRemoteHost == szText)
 			pOut->output(KVI_OUT_HELP,"%Q %Q",&szRemoteUser,&szText);
 		else

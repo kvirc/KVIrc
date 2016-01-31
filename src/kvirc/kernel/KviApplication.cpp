@@ -275,7 +275,7 @@ void KviApplication::setup()
 	KviSSL::globalInit();
 #endif
 
-	// Setup our filesystem and initalize locale
+	// Setup our filesystem and initialize locale
 	loadDirectories();
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
 
@@ -668,7 +668,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 	/*
 	We have different behaviour depending on support enabled at compile time (env)
 	and options enabled by the user (opt).
-	Let's see the scheme to understand which is choosen:
+	Let's see the scheme to understand which is chosen:
 	
 	1: env: DBus, KDE
 	   opt: a: enabled, enabled   -> KDE
@@ -741,7 +741,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 						"Name=KVIrc\n" \
 						"Comment=Someone sent us a message\n" \
 						"Action=Popup|Taskbar\n" \
-						"Persistant=true\n" \
+						"Persistent=true\n" \
 					);
 
 				KviFileUtils::writeFile(szFileName,szKNotifyConfig);

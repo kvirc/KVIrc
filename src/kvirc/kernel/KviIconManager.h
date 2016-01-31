@@ -310,9 +310,9 @@ public:
 		Gnutella             = 142,
 		Search               = 143,
 		Files                = 144,
-		Transfer             = 145, //cant see this used anywhere
+		Transfer             = 145, //can't see this used anywhere
 		Package              = 146,
-		Retry                = 147, //cant see this used anywhere
+		Retry                = 147, //can't see this used anywhere
 		Idea                 = 148,
 		Colors               = 149,
 		Gui                  = 150,
@@ -322,7 +322,7 @@ public:
 		ChannelNoticeCrypted = 154,
 		QueryNotice          = 155,
 		QueryNoticeCrypted   = 156,
-		ServNotice           = 157, //cant see this used anywhere
+		ServNotice           = 157, //can't see this used anywhere
 		Popup                = 158,
 		Prologue             = 159,
 		Epilogue             = 160,

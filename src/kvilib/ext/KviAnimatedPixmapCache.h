@@ -41,7 +41,7 @@ public:
 	 * This subclass represents simple structure
 	 * to store animated frame data: cached pixmap, and next frame delay.
 	 *
-	 * It provides copyconstructor, wich makes possible to simple
+	 * It provides copyconstructor, which makes possible to simple
 	 * assign two containers with this classes.
 	 *
 	 * All data will be duplicated in such case.

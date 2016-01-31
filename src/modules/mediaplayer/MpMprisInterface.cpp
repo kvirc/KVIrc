@@ -30,7 +30,7 @@
 	according to MPRIS 1.0, GetStatus returns struct of 4 integers.
 
 	First integer: 0 = Playing, 1 = Paused, 2 = Stopped.
-	Second interger: 0 = Playing linearly, 1 = Playing randomly.
+	Second integer: 0 = Playing linearly, 1 = Playing randomly.
 	Third integer: 0 = Go to the next element once the current has finished playing, 1 = Repeat the current element
 	Fourth integer: 0 = Stop playing once the last element has been played, 1 = Never give up playing
 */
@@ -195,7 +195,7 @@ QString MpMprisInterface::nowPlaying()
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
         		QVariantMap::ConstIterator it = map.constBegin();
-        		for ( ; it != map.constEnd(); ++it) { /* maybe do some configureable formatting */
+        		for ( ; it != map.constEnd(); ++it) { /* maybe do some configurable formatting */
 				if (it.key() == "artist")
 					artist = it.value().toString();
 				else if (it.key() == "title")
@@ -344,7 +344,7 @@ bool MpAudaciousInterface::quit()
 	if (MpMprisInterface::quit())
 		return true;
 
-	/* compability with older versions */
+	/* compatibility with older versions */
 	MPRIS_SIMPLE_CALL("/Player", "Quit")
 }
 
@@ -378,7 +378,7 @@ MpInterface::PlayerStatus MpAudaciousInterface::status()
 	if (status != MpInterface::Unknown)
 		return status;
 
-	/* compability with older versions */
+	/* compatibility with older versions */
 	QDBusInterface dbus_iface(m_szServiceName, "/Player",
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
 	if (!dbus_iface.isValid())
@@ -400,7 +400,7 @@ int MpAudaciousInterface::length()
 	if (length != -1)
 		return length;
 
-	/* compability with older versions */
+	/* compatibility with older versions */
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
 	foreach (QVariant w, reply.arguments()) {

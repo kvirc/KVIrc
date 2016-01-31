@@ -1055,7 +1055,7 @@ namespace KviQString
 
 		if(!bIsRegExp)
 		{
-			// In wildcard maching mode, QRegExp not only interprets * and ?, but also [ ]
+			// In wildcard matching mode, QRegExp not only interprets * and ?, but also [ ]
 			// This workaround embeds square brackes in square brackets (ticket #1264)
 
 			QChar * pPtr = (QChar*)szExp.constData();

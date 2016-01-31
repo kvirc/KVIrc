@@ -33,7 +33,7 @@
 namespace KviByteOrder
 {
 	/**
-	* \brief Swaps the endianess of a kvi_u64_t
+	* \brief Swaps the endianness of a kvi_u64_t
 	*
 	* \param i the original value
 	* \return kvi_u64_t
@@ -52,7 +52,7 @@ namespace KviByteOrder
 	}
 
 	/**
-	* \brief Swaps the endianess of a kvi_u32_t
+	* \brief Swaps the endianness of a kvi_u32_t
 	*
 	* \param i the original value
 	* \return kvi_u32_t
@@ -64,7 +64,7 @@ namespace KviByteOrder
 	}
 
 	/**
-	* \brief Swaps the endianess of a kvi_u16_t
+	* \brief Swaps the endianness of a kvi_u16_t
 	*
 	* \param i the original value
 	* \return kvi_u16_t

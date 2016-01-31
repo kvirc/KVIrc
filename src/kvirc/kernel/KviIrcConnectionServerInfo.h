@@ -266,7 +266,7 @@ public:
 
 class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
 {
-	// legacy freenode : no longer mantained
+	// legacy freenode : no longer maintained
 public:
 	KviHyperionIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(pParent, version) {;};

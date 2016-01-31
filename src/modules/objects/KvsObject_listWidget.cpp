@@ -92,7 +92,7 @@ const char * const itemflags_tbl[] = {
 		!fn: $setFlag(<idx:integer>,<flag1:string>, <flag2:string>, ...)
 		Sets the flags for the item at index idx to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.[br]
 		Supported flags are:
-		[exmaple]
+		[example]
 		[br]- noitemflag : no flag sets;
 		[br]- selectable : item is selectable;
 		[br]- editable : item is editable;

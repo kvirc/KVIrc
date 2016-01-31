@@ -369,7 +369,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		non-standard private message syntax. This convention should be dropped.[br]
 
 		[big]DCC[/big][br]
-		[b]Syntax: <0x01>DCC <type> <type dependant parameters><0x01>[/b][br]
+		[b]Syntax: <0x01>DCC <type> <type dependent parameters><0x01>[/b][br]
 		The DCC tag is used to initiate a Direct Client Connection.
 		The known DCC types are:[br]
 		CHAT[br]

@@ -417,14 +417,14 @@ public:
 * For other Key types the case sensitive flag has no meaning and will
 * (hopefully) be optimized out by the compiler.
 *
-* For pointer based keys the hash table may or may not mantain deep copies of
+* For pointer based keys the hash table may or may not maintain deep copies of
 * Key data. For example, with char * keys, if deep copying is enabled then a
-* private copy of the string data will be mantained. With deep copying
+* private copy of the string data will be maintained. With deep copying
 * disabled only char * pointers will be kept. For types that do not have
 * meaning of deep copy the deep copying code will (hopefully) be optimized
 * out by the compiler.
 *
-* The hashtable mantains an array of KviPointerList based buckets.
+* The hashtable maintains an array of KviPointerList based buckets.
 * The number of buckets may be specified by the application user and does NOT
 * need to be a prime number. Yet better to have it a power of two so the
 * memory allocation routines will feel better and are less likely to waste
@@ -581,12 +581,12 @@ public:
 	}
 
 	/**
-	* \brief Removes the first occurence of the item pointer pRef.
+	* \brief Removes the first occurrence of the item pointer pRef.
 	*
 	* The item is deleted if autodeletion is enabled. Returns true if the
 	* pointer was found and false otherwise.
 	* Invalidates the hash table iterator.
-	* \param pRef The pointer to remove the first occurence
+	* \param pRef The pointer to remove the first occurrence
 	* \return bool
 	*/
 	bool removeRef(const T * pRef)
@@ -678,7 +678,7 @@ public:
 	/**
 	* \brief Returns the entry pointed by the hash table iterator.
 	*
-	* This function must be preceeded by a call to firstEntry(), first()
+	* This function must be preceded by a call to firstEntry(), first()
 	* or findRef().
 	* \return KviPointerHashTableEntry<Key,T> *
 	*/
@@ -707,7 +707,7 @@ public:
 	/**
 	* \brief Places the hash table iterator at the next entry and returns it.
 	*
-	* This function must be preceeded by a call to firstEntry(), first()
+	* This function must be preceded by a call to firstEntry(), first()
 	* or findRef().
 	* \return KviPointerHashTableEntry<Key,T> *
 	*/
@@ -737,7 +737,7 @@ public:
 	/**
 	* \brief Returns the data value pointer pointed by the hash table iterator.
 	*
-	* This function must be preceeded by a call to firstEntry(), first()
+	* This function must be preceded by a call to firstEntry(), first()
 	* or findRef().
 	* \return T *
 	*/
@@ -756,7 +756,7 @@ public:
 	/**
 	* \brief Returns the key pointed by the hash table iterator.
 	*
-	* This function must be preceeded by a call to firstEntry(), first()
+	* This function must be preceded by a call to firstEntry(), first()
 	* or findRef().
 	* \return const Key &
 	*/
@@ -793,7 +793,7 @@ public:
 	/**
 	* \brief Places the hash table iterator at the next entry and returns the associated data value pointer.
 	*
-	* This function must be preceeded by a call to firstEntry(), first()
+	* This function must be preceded by a call to firstEntry(), first()
 	* or findRef().
 	* \return T *
 	*/
@@ -872,7 +872,7 @@ public:
 	* Automatic deletion is enabled.
 	* \param uSize The number of hash buckets: does NOT necesairly need to be prime
 	* \param bCaseSensitive Are the key comparisons case sensitive ?
-	* \param bDeepCopyKeys Do we need to mantain deep copies of keys ?
+	* \param bDeepCopyKeys Do we need to maintain deep copies of keys ?
 	* \return KviPointerHashTable
 	*/
 	KviPointerHashTable(unsigned int uSize = 32, bool bCaseSensitive = true, bool bDeepCopyKeys = true)

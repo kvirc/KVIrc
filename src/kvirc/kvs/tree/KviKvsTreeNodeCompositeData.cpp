@@ -53,7 +53,7 @@ bool KviKvsTreeNodeCompositeData::evaluateReadOnly(KviKvsRunTimeContext * c,KviK
 
 	KviKvsVariant res;
 
-	// we need to use an iterator to accomodate recursion
+	// we need to use an iterator to accommodate recursion
 	KviPointerListIterator<KviKvsTreeNodeData> it(*m_pSubData);
 
 	while(KviKvsTreeNodeData * d = it.current())

@@ -109,7 +109,7 @@ void KviIpEditor::clear()
 
 bool KviIpEditor::setAddress(const QString &ipAddr)
 {
-	// FIXME We could check if the addres
+	// FIXME We could check if the address
 	//       is valid before effectively setting the fields
 	clear();
 

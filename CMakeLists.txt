@@ -1148,7 +1148,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
 	# SunPro breaks with non-C, and we can't set it here, so nag the user.
 	# looks nasty, maybe there is a better way?
 	if(NOT ($ENV{LANG} STREQUAL "C"))
-  	message( FATAL_ERROR "Please set enviroment variable \"LANG\" to \"C\" and rerun CMake" )
+  	message( FATAL_ERROR "Please set environment variable \"LANG\" to \"C\" and rerun CMake" )
 	endif()
 endif()
 

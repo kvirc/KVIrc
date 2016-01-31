@@ -47,7 +47,7 @@
 * \def KVI_DEFAULT_CTCP_PAGE_REPLY Reply to CTCP PAGE
 * \def KVI_DEFAULT_AWAY_MESSAGE Away message
 * \def KVI_DEFAULT_AWAY_NICK Nickname when in away mode
-* \def KVI_MAX_PENDING_AVATARS Maximum number of avatars to download simultanously
+* \def KVI_MAX_PENDING_AVATARS Maximum number of avatars to download simultaneously
 * \def KVI_MAX_RECENT_SERVERS Maximum number of servers to hold in "recent" menu
 * \def KVI_MAX_RECENT_CHANNELS Maximum number of channels to hold in "recent" menu
 * \def KVI_MAX_RECENT_NICKNAMES Maximum number of nicknames to hold in "recent" menu

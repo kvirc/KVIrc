@@ -307,7 +307,7 @@ public:
 	// & paste
 	KviCString & insert(int idx,const char *data);
 	KviCString & insert(int idx,char c);
-	//Replaces all occurences of char c with the string str
+	//Replaces all occurrences of char c with the string str
 	KviCString & replaceAll(const char c,const char *str);
 	//same as above but with a string
 	KviCString & replaceAll(const char *toFind,const char *str,bool bCaseS = true);
@@ -317,13 +317,13 @@ public:
 	// Strips whitespace characters from beginning of this string.
 	KviCString & stripLeftWhiteSpace();
 	KviCString & stripRightWhiteSpace();
-	// Stips inital and final WHITESPACE characters (see man isspace),<br>
+	// Stips initial and final WHITESPACE characters (see man isspace),<br>
 	// and returns a reference to this string.
 	KviCString & trim();
 
 	// Strips spaces and tabs only
 	KviCString & stripSpace();
-	// Strips all occurences of the character c from the beginning of the string.<br>
+	// Strips all occurrences of the character c from the beginning of the string.<br>
 	// Note that c can not be '\0' :)
 	KviCString & stripLeft(char c);
 	KviCString & stripRight(char c);
@@ -369,35 +369,35 @@ public:
 	KviCString & hexDecode(){ return hexDecode(m_ptr); };
 
 	//=============================================================================
-	// Contains / occurence count
+	// Contains / occurrence count
 	//=============================================================================
 
-	// Returns true if at least one occurence of str is found
+	// Returns true if at least one occurrence of str is found
 	bool contains(const char *str,bool caseS=true) const;
-	// Returns true if at least one occurence of character c is found in this string
+	// Returns true if at least one occurrence of character c is found in this string
 	bool contains(char c,bool caseS=true) const;
-	// Returns the number of occurences of string str in this string.<br>
+	// Returns the number of occurrences of string str in this string.<br>
 	// Overlapped matches are counted.
-	int occurences(const char *str,bool caseS=true) const;
-	// Returns the number of occurences of character c in this string
-	int occurences(char c,bool caseS=true) const;
+	int occurrences(const char *str,bool caseS=true) const;
+	// Returns the number of occurrences of character c in this string
+	int occurrences(char c,bool caseS=true) const;
 
 	//=============================================================================
 	// Find
 	//=============================================================================
 
-	// Finds the first occurence of the character c in this string,<br>
+	// Finds the first occurrence of the character c in this string,<br>
 	// and returns its zero-based index or -1 if c can not be found.<br>
 	// c can NOT be '\0' here.
 	int findFirstIdx(char c) const;
-	// Finds the first occurence of the sub-string str in this string,<br>
+	// Finds the first occurrence of the sub-string str in this string,<br>
 	// and returns its zero-based index or -1 if the sub-string can not be found.<br>
 	// str can NOT be 0 here.
 	int findFirstIdx(const char *str,bool caseS = true) const;
-	// Finds the last occurence of the character c in this string,<br>
+	// Finds the last occurrence of the character c in this string,<br>
 	// and returns its zero-based index or -1 if the character can not be found.
 	int findLastIdx(char c) const;
-	// Finds the last occurence of the sub-string str in this string,<br>
+	// Finds the last occurrence of the sub-string str in this string,<br>
 	// and returns its zero-based index or -1 if the sub-string can not be found.<br>
 	// str can NOT be 0 here.
 	int findLastIdx(const char *str,bool caseS = true) const;
@@ -432,7 +432,7 @@ public:
 	KviCString & setNum(char num)                   { return setNum((long)num);             };
 	KviCString & setNum(unsigned char num)          { return setNum((unsigned long)num);    };
 
-	// Retuns true if the string contains only digits and an optional '-' character
+	// Returns true if the string contains only digits and an optional '-' character
 	// at the beginning.<be>
 	// Space characters are allowed at the begginning and the end.<br>
 	// There is no overflow check!

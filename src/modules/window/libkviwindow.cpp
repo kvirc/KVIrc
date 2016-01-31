@@ -265,7 +265,7 @@ static bool window_kvs_cmd_activate(KviKvsModuleCommandCall * c)
 		does not exist a warning is printed unless the -q switch is used.
 		If the window is currently docked in a frame then the frame's
 		system taskbar entry will be flashed.
-		Please note that this command is highly system dependant:
+		Please note that this command is highly system dependent:
 		on systems that do not have a system taskbar or there
 		is no way to flash an entry this command will do nothing.
 		At the time of writing this command works flawlessly on
@@ -299,7 +299,7 @@ static bool window_kvs_cmd_demandAttention(KviKvsModuleCommandCall * c)
 		Returns the current activity level of the window specified by <window_id>.
 		The form without parameters works on the current window.[br]
 		The activity level is a number describing the level of traffic in the window
-		and depends on the window type. On channels and queries it is dependant on the number
+		and depends on the window type. On channels and queries it is dependent on the number
 		and frequency of actions performed by the users.
 	@seealso:
 		[fnc]$window.activityTemperature[/fnc]

@@ -592,7 +592,7 @@ void FileTransferWindow::openLocalFileTerminal()
 	if(idx == -1)return;
 	tmp = tmp.left(idx);
 	tmp.append("\"");
-	// FIXME: this is not a solution ...because if the drive isn't system's drive the command 'cd' naturaly doesn't work
+	// FIXME: this is not a solution ...because if the drive isn't system's drive the command 'cd' naturally doesn't work
 	tmp.prepend("cmd.exe /k cd \"");
 	system(tmp.toLocal8Bit().data());
 #else

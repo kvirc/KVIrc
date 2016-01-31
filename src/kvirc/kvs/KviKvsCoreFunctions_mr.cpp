@@ -557,7 +557,7 @@ namespace KviKvsCoreFunctions
 			with the same seed value. If [cmd]srand[/cmd] has not been called
 			$rand is automatically seeded with value of 1.
 			If no <max> is specified, this function returns an integer between
-			0 and RAND_MAX that is system dependant.
+			0 and RAND_MAX that is system dependent.
 		@examples:
 			[example]
 			[/example]
@@ -646,7 +646,7 @@ namespace KviKvsCoreFunctions
 			The realname is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 			The realname is generally known if the user is on a channel with you
 			or has an open query with you.[br]
-			Detailed explaination:[br]
+			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
 			and queries.[br] The other IRC users are [b]not[/b] in the database:

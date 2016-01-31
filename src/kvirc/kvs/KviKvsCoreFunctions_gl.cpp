@@ -63,7 +63,7 @@ namespace KviKvsCoreFunctions
 		The gender is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 		The gender is generally known if the user is on a channel with you
 		or has an open query with you.[br]
-		Detailed explaination:[br]
+		Detailed explanation:[br]
 		KVIrc has an internal database of users that are currently
 		visible by *this client*: this includes users on open channels
 		and queries.[br] The other IRC users are [b]not[/b] in the database:
@@ -556,7 +556,7 @@ KVSCF(gender)
 			This info  is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 			This info is generally known if the user is on a channel with you
 			or has an open query with you.[br]
-			Detailed explaination:[br]
+			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
 			and queries.[br] The other IRC users are [b]not[/b] in the database:

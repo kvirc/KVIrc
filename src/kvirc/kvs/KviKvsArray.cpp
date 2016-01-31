@@ -145,7 +145,7 @@ void KviKvsArray::findNewSize()
 	if((m_uAllocSize - m_uSize) > KVI_KVS_ARRAY_ALLOC_CHUNK)
 	{
 		m_uAllocSize = m_uSize;
-		// m_pData is non-zero here since was m_uSize > 0 initally
+		// m_pData is non-zero here since was m_uSize > 0 initially
 		if(m_uSize > 0)
 		{
 			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
