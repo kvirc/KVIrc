@@ -1085,7 +1085,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 
 
 	/*
-		@doc: connection_dependant_commands
+		@doc: connection_dependent_commands
 		@type:
 			language
 		@title:

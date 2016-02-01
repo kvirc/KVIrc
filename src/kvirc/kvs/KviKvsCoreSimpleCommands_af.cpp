@@ -102,7 +102,7 @@ namespace KviKvsCoreSimpleCommands
 			When you use this command, other people will know that you are
 			away from the keyboard, and they will know why you're not here.[br]
 			To return from being away you must use [cmd]back[/cmd].[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 			If no away reason is specified, the behaviour of this command depends from the value
 			of the option boolUseAwayMessage: if enabled, user will be set away using the default
 			away message (or "Away from keyboard" if no default away message is set);
@@ -199,7 +199,7 @@ namespace KviKvsCoreSimpleCommands
 			current [b]IRC context[/b].[br] This command is "server based";
 			this means that the effects will be visible only after the
 			server has acknowledged the change.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			back
@@ -251,7 +251,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +b flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			ban Maxim,Gizmo!*@*,*!root@*
@@ -509,7 +509,7 @@ namespace KviKvsCoreSimpleCommands
 			The <command> may be one of LS,REQ,LIST and ACK as per CAP specification (Google for draft-mitchell-irc-capabilities-02).
 			The <parameters> string usually contains a list of capabilities to be activated or deactivated (deactivation is triggered
 			by prepending a - prefix to the capability name.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc] and actually works only on servers
+			This command is [doc:connection_dependent_commands]connection dependent[/doc] and actually works only on servers
 			that implement the CAP capability.
 		@examples:
 			[example]
@@ -565,7 +565,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +a flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			chanadmin Pragma,Crocodile
@@ -597,7 +597,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +q flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			chanowner Pragma,Crocodile
@@ -653,7 +653,7 @@ namespace KviKvsCoreSimpleCommands
 			If <ctcp_data> is the single string "ping" then a trailing time string argument
 			is added in order to determine the round trip time when the ping reply comes back.
 			To override this behaviour simply specify your own time string parameter.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			ctcp Pragma VERSION
@@ -748,7 +748,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -a flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			dechanadmin Pragma,Crocodile
@@ -780,7 +780,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -q flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			dechanowner Pragma,Crocodile
@@ -812,7 +812,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -h flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			dehalfop Pragma,Crocodile
@@ -972,7 +972,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -o flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			deop Pragma,Crocodile
@@ -1004,7 +1004,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -u flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			deuserop Pragma,Crocodile
@@ -1036,7 +1036,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -v flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			devoice Pragma,Crocodile

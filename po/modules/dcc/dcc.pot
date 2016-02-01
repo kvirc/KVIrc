@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-28 11:36+0100\n"
+"POT-Creation-Date: 2016-02-01 00:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,14 +259,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:209
-#: src/modules/dcc/DccFileTransfer.cpp:1913
+#: src/modules/dcc/DccFileTransfer.cpp:1914
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:212
-#: src/modules/dcc/DccFileTransfer.cpp:1916
+#: src/modules/dcc/DccFileTransfer.cpp:1917
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
@@ -280,12 +280,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:245
-#: src/modules/dcc/DccFileTransfer.cpp:1979
+#: src/modules/dcc/DccFileTransfer.cpp:1980
 msgid "Low-level transport connection established"
 msgstr ""
 
 #: src/modules/dcc/DccChatWindow.cpp:246
-#: src/modules/dcc/DccFileTransfer.cpp:1980
+#: src/modules/dcc/DccFileTransfer.cpp:1981
 msgid "Starting Secure Socket Layer handshake"
 msgstr ""
 
@@ -367,7 +367,7 @@ msgid "Re&sume"
 msgstr ""
 
 #: src/modules/dcc/DccDialog.cpp:158
-#: src/modules/dcc/DccFileTransfer.cpp:2335
+#: src/modules/dcc/DccFileTransfer.cpp:2336
 msgid "Cancel"
 msgstr ""
 
@@ -425,8 +425,8 @@ msgid "Aborted"
 msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:1332
-#: src/modules/dcc/DccFileTransfer.cpp:2005
-#: src/modules/dcc/DccFileTransfer.cpp:2083
+#: src/modules/dcc/DccFileTransfer.cpp:2006
+#: src/modules/dcc/DccFileTransfer.cpp:2084
 msgid "Transfer failed: "
 msgstr ""
 
@@ -450,124 +450,124 @@ msgstr ""
 msgid "Abort"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1548
+#: src/modules/dcc/DccFileTransfer.cpp:1549
 msgid "From: "
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1549
+#: src/modules/dcc/DccFileTransfer.cpp:1550
 msgid "To: "
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1650
-#: src/modules/dcc/DccFileTransfer.cpp:1657
+#: src/modules/dcc/DccFileTransfer.cpp:1651
+#: src/modules/dcc/DccFileTransfer.cpp:1658
 msgid "%1 of %2 (%3%)"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1661
+#: src/modules/dcc/DccFileTransfer.cpp:1662
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1674
+#: src/modules/dcc/DccFileTransfer.cpp:1675
 msgid "Spd:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1685
+#: src/modules/dcc/DccFileTransfer.cpp:1686
 msgid "Avg:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1750
+#: src/modules/dcc/DccFileTransfer.cpp:1751
 msgid "Transfer Log"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1881
+#: src/modules/dcc/DccFileTransfer.cpp:1882
 msgid "Contacting host %1 on port %2"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1888
+#: src/modules/dcc/DccFileTransfer.cpp:1889
 msgid "Listening on interface %1 port %2"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1911
+#: src/modules/dcc/DccFileTransfer.cpp:1912
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1966
+#: src/modules/dcc/DccFileTransfer.cpp:1967
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1968
+#: src/modules/dcc/DccFileTransfer.cpp:1969
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:1987
+#: src/modules/dcc/DccFileTransfer.cpp:1988
 msgid "[SSL ERROR]: %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2030
+#: src/modules/dcc/DccFileTransfer.cpp:2031
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2044
+#: src/modules/dcc/DccFileTransfer.cpp:2045
 msgid "Transfer completed"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2092
+#: src/modules/dcc/DccFileTransfer.cpp:2093
 msgid "Connected to %1:%2"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2093
+#: src/modules/dcc/DccFileTransfer.cpp:2094
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2153
+#: src/modules/dcc/DccFileTransfer.cpp:2154
 msgid "Transferring data"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2179
+#: src/modules/dcc/DccFileTransfer.cpp:2180
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2223
+#: src/modules/dcc/DccFileTransfer.cpp:2224
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2241
+#: src/modules/dcc/DccFileTransfer.cpp:2242
 msgid "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2249
+#: src/modules/dcc/DccFileTransfer.cpp:2250
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2258
+#: src/modules/dcc/DccFileTransfer.cpp:2259
 msgid "Internal error in RESUME request"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2264
+#: src/modules/dcc/DccFileTransfer.cpp:2265
 msgid "Invalid RESUME request: position %1 is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2268
+#: src/modules/dcc/DccFileTransfer.cpp:2269
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2306
+#: src/modules/dcc/DccFileTransfer.cpp:2307
 msgid "Configure Bandwidth for DCC Transfer %1"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2309
+#: src/modules/dcc/DccFileTransfer.cpp:2310
 msgid "Limit upload bandwidth to:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2309
+#: src/modules/dcc/DccFileTransfer.cpp:2310
 msgid "Limit download bandwidth to:"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2326
+#: src/modules/dcc/DccFileTransfer.cpp:2327
 msgid "bytes/sec"
 msgstr ""
 
-#: src/modules/dcc/DccFileTransfer.cpp:2330
+#: src/modules/dcc/DccFileTransfer.cpp:2331
 msgid "OK"
 msgstr ""
 

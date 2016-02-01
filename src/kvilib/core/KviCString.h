@@ -317,7 +317,7 @@ public:
 	// Strips whitespace characters from beginning of this string.
 	KviCString & stripLeftWhiteSpace();
 	KviCString & stripRightWhiteSpace();
-	// Stips initial and final WHITESPACE characters (see man isspace),<br>
+	// Strips initial and final WHITESPACE characters (see man isspace),<br>
 	// and returns a reference to this string.
 	KviCString & trim();
 

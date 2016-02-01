@@ -140,7 +140,7 @@ namespace KviKvsCoreSimpleCommands
 			Sends a MODE IRC message to the server of the current IRC context.[br]
 			The parameters are not modified in any way by KVIrc: so
 			you should use the RFC1459 syntax.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			mode #kvirc +oo-b Pragma Buti *!*root@*
@@ -208,7 +208,7 @@ namespace KviKvsCoreSimpleCommands
 			IRC protocol (see RFC1459).
 			This is really similar to [cmd]privmsg[/cmd] but also outputs the
 			message locally (unless the [-q] switch is used).[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 	*/
 	// Internally aliased to privmsg
 
@@ -229,7 +229,7 @@ namespace KviKvsCoreSimpleCommands
 			current [b]IRC context[/b].[br] This command is "server based";
 			this means that the effects will be visible only after the
 			server has acknowledged the change.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			nick Pragma
@@ -276,7 +276,7 @@ namespace KviKvsCoreSimpleCommands
 			<target> may be any NOTICE target allowed by the underlying
 			IRC protocol (see RFC1459).
 			If the [-q] switch is specified, no output is printed.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			notice Pragma Hello!
@@ -330,7 +330,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +o flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			op Pragma,Crocodile
@@ -764,7 +764,7 @@ namespace KviKvsCoreSimpleCommands
 			after the part (the channels become dead channels).[br]
 			If the -s switch is specified then the part message is not shown
 			in the channel window.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 			This command is equivalent to [cmd]leave[/cmd]
 		@examples:
 			[example]
@@ -958,7 +958,7 @@ namespace KviKvsCoreSimpleCommands
 			IRC protocol (see RFC1459).
 			This command is really similar to [cmd]msg[/cmd] but it does not
 			output the message locally.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 			This command is equivalent to [cmd]msg[/cmd]
 		@examples:
 			[example]
@@ -1024,7 +1024,7 @@ namespace KviKvsCoreSimpleCommands
 			query window just as it would have been written in the query itself.
 			If a query with one of the specified targets already exists,
 			it is simply focused and the [text] is sent to the target.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 			Normally the new query windows opened with this command are created and immediately shown.
 			If the -i switch is specified then the windows are created either as minimized or as visible
 			depending on the global visibility setting specified by the boolCreateIncomingQueriesAsMinimized option.
@@ -1218,7 +1218,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Sends a RAW data string to the server of the current [b]IRC context[/b].[br]
 			If the -q switch (quiet) is specified, no output is printed.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 			This command is equivalent to [cmd]quote[/cmd].
 		@examples:
 			[example]

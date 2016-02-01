@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-28 11:36+0100\n"
+"POT-Creation-Date: 2016-02-01 00:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/options/libkvioptions.cpp:106
+#: src/modules/options/libkvioptions.cpp:105
 msgid "No such options_group %Q"
 msgstr ""
 
-#: src/modules/options/libkvioptions.cpp:211
+#: src/modules/options/libkvioptions.cpp:210
 msgid "No such options page class name %Q"
 msgstr ""
 
@@ -68,9 +68,9 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:229
+#: src/modules/options/OptionsWidgetContainer.cpp:108
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_servers.cpp:381
-#: src/modules/options/OptionsWidgetContainer.cpp:108
 msgid "&OK"
 msgstr ""
 
@@ -88,13 +88,13 @@ msgid "Commit all changes immediately."
 msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:244
+#: src/modules/options/OptionsWidgetContainer.cpp:116
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:245
-#: src/modules/options/OptionsWidget_identity.cpp:955
+#: src/modules/options/OptionsWidget_identity.cpp:939
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_servers.cpp:387
-#: src/modules/options/OptionsWidget_servers.cpp:1010
-#: src/modules/options/OptionsWidgetContainer.cpp:116
+#: src/modules/options/OptionsWidget_servers.cpp:1011
 msgid "Cancel"
 msgstr ""
 
@@ -409,7 +409,7 @@ msgid "Use automatic nickname ([5 letters]AWAY)"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_away.cpp:53
-#, c-format
+#, no-c-format
 msgid "Custom nickname (%nick% means a current nick):"
 msgstr ""
 
@@ -1413,11 +1413,11 @@ msgid "Alt. nickname 3:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:99
-#: src/modules/options/OptionsWidget_identity.cpp:844
-#: src/modules/options/OptionsWidget_identity.cpp:959
+#: src/modules/options/OptionsWidget_identity.cpp:840
+#: src/modules/options/OptionsWidget_identity.cpp:943
 #: src/modules/options/OptionsWidget_nickserv.cpp:133
 #: src/modules/options/OptionsWidget_nickserv.cpp:154
-#: src/modules/options/OptionsWidget_servers.cpp:1004
+#: src/modules/options/OptionsWidget_servers.cpp:1005
 #: src/modules/options/OptionsWidget_textEncoding.cpp:222
 msgid "OK"
 msgstr ""
@@ -1471,14 +1471,14 @@ msgstr ""
 msgid "Basic Properties"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:308
-#: src/modules/options/OptionsWidget_identity.cpp:919
+#: src/modules/options/OptionsWidget_identity.cpp:306
+#: src/modules/options/OptionsWidget_identity.cpp:907
 #: src/modules/options/OptionsWidget_servers.cpp:161
 #: src/modules/options/OptionsWidget_servers.cpp:578
 msgid "Nickname:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:310
+#: src/modules/options/OptionsWidget_identity.cpp:308
 msgid ""
 "<center>Your <b>nickname</b> is your primary form of identification on IRC."
 "<br>Since servers cannot accept multiple users sharing the same nickname "
@@ -1486,19 +1486,19 @@ msgid ""
 "casethe server refuses to accept the default one.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:318
+#: src/modules/options/OptionsWidget_identity.cpp:316
 msgid "Alternatives..."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:321
-#: src/modules/options/OptionsWidget_identity.cpp:935
+#: src/modules/options/OptionsWidget_identity.cpp:319
+#: src/modules/options/OptionsWidget_identity.cpp:921
 #: src/modules/options/OptionsWidget_proxy.cpp:118
 #: src/modules/options/OptionsWidget_servers.cpp:141
 #: src/modules/options/OptionsWidget_servers.cpp:557
 msgid "Username:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:323
+#: src/modules/options/OptionsWidget_identity.cpp:321
 msgid ""
 "<center>This is the <b>username</b> that you will use to connect to the "
 "server.<br>In the past, it was used as a form of authentication, but it "
@@ -1507,63 +1507,63 @@ msgid ""
 "enter any word you like here. :D</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:328
-#: src/modules/options/OptionsWidget_identity.cpp:943
+#: src/modules/options/OptionsWidget_identity.cpp:326
+#: src/modules/options/OptionsWidget_identity.cpp:928
 #: src/modules/options/OptionsWidget_servers.cpp:187
 #: src/modules/options/OptionsWidget_servers.cpp:604
 msgid "Real name:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:331
+#: src/modules/options/OptionsWidget_identity.cpp:329
 msgid ""
 "<center>This text will appear when someone does a /WHOIS on you.<br>It is "
 "intended to be your real name, but people tend to put random quotes and "
 "phrases here too.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:335
+#: src/modules/options/OptionsWidget_identity.cpp:333
 msgid ""
 "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:340
+#: src/modules/options/OptionsWidget_identity.cpp:338
 msgid "Profile"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:345
+#: src/modules/options/OptionsWidget_identity.cpp:342
 msgid "Age:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:349
+#: src/modules/options/OptionsWidget_identity.cpp:346
 msgid "Here you can specify your age."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:352
-#: src/modules/options/OptionsWidget_identity.cpp:380
+#: src/modules/options/OptionsWidget_identity.cpp:349
+#: src/modules/options/OptionsWidget_identity.cpp:376
 msgid "Unspecified"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:373
+#: src/modules/options/OptionsWidget_identity.cpp:369
 msgid "Gender:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:377
+#: src/modules/options/OptionsWidget_identity.cpp:373
 msgid "Here you can specify your gender."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:381
+#: src/modules/options/OptionsWidget_identity.cpp:377
 msgid "Female"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:382
+#: src/modules/options/OptionsWidget_identity.cpp:378
 msgid "Male"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:393
+#: src/modules/options/OptionsWidget_identity.cpp:389
 msgid "Location:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:395
+#: src/modules/options/OptionsWidget_identity.cpp:391
 msgid ""
 "You can describe here your approximate physical location. Something like "
 "\"Region, Country\" will be OK. Please note that this information will be "
@@ -1571,21 +1571,21 @@ msgid ""
 "<b>is not a good idea</b>."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:399
+#: src/modules/options/OptionsWidget_identity.cpp:395
 msgid "Languages:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:401
+#: src/modules/options/OptionsWidget_identity.cpp:397
 msgid ""
 "You can put here the short names of the languages you can speak. An example "
 "might be \"EN, IT\" that would mean that you speak both Italian and English."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:404
+#: src/modules/options/OptionsWidget_identity.cpp:400
 msgid "Other:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:406
+#: src/modules/options/OptionsWidget_identity.cpp:402
 msgid ""
 "You can put here some additional personal data. It might be a funny quote or "
 "your homepage URL... Please note that this information will be viewable by "
@@ -1593,7 +1593,7 @@ msgid ""
 "card numbers)."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:471
+#: src/modules/options/OptionsWidget_identity.cpp:467
 msgid ""
 "Here you can choose your avatar image. It will be visible<br>by other people "
 "that request it. Choose a nice image of yourself,<br>possibly avoiding "
@@ -1603,40 +1603,40 @@ msgid ""
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:479
+#: src/modules/options/OptionsWidget_identity.cpp:475
 msgid "Use avatar:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:501
+#: src/modules/options/OptionsWidget_identity.cpp:497
 msgid "Choose..."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:558
-#: src/modules/options/OptionsWidget_identity.cpp:596
+#: src/modules/options/OptionsWidget_identity.cpp:554
+#: src/modules/options/OptionsWidget_identity.cpp:592
 msgid "Failed to Load Avatar - KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:559
-#: src/modules/options/OptionsWidget_identity.cpp:597
+#: src/modules/options/OptionsWidget_identity.cpp:555
+#: src/modules/options/OptionsWidget_identity.cpp:593
 msgid ""
-"Failed to load the avatar image.<br>It may be an unaccessible file or an "
+"Failed to load the avatar image.<br>It may be an inaccessible file or an "
 "unsupported image format."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:565
+#: src/modules/options/OptionsWidget_identity.cpp:561
 msgid "Failed to download the avatar image.<br><b>%1</b>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:567
+#: src/modules/options/OptionsWidget_identity.cpp:563
 msgid "Avatar Download Failed - KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:610
-#: src/modules/options/OptionsWidget_identity.cpp:626
+#: src/modules/options/OptionsWidget_identity.cpp:606
+#: src/modules/options/OptionsWidget_identity.cpp:622
 msgid "Avatar Might Be Too Big - KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:612
+#: src/modules/options/OptionsWidget_identity.cpp:608
 msgid ""
 "The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
@@ -1645,93 +1645,93 @@ msgid ""
 "or choose a different image."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:628
+#: src/modules/options/OptionsWidget_identity.cpp:624
 msgid ""
 "The avatar you have chosen is bigger than 500 KiB<br>and most clients will "
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:659
+#: src/modules/options/OptionsWidget_identity.cpp:655
 #: src/modules/options/OptionsWidget_servers.cpp:616
 msgid "User Mode"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:660
+#: src/modules/options/OptionsWidget_identity.cpp:656
 #: src/modules/options/OptionsWidget_servers.cpp:627
 msgid "Invisible (+i)"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:661
+#: src/modules/options/OptionsWidget_identity.cpp:657
 #: src/modules/options/OptionsWidget_servers.cpp:631
 msgid "Server notices (+s)"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:662
+#: src/modules/options/OptionsWidget_identity.cpp:658
 #: src/modules/options/OptionsWidget_servers.cpp:635
 msgid "WALLOPS (+w)"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:664
+#: src/modules/options/OptionsWidget_identity.cpp:660
 msgid "Default Messages"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:666
+#: src/modules/options/OptionsWidget_identity.cpp:662
 msgid "Part message:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:669
+#: src/modules/options/OptionsWidget_identity.cpp:665
 msgid ""
 "<center>This is the default part message that will be used when you<br>leave "
 "a channel by closing a channel window.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:672
+#: src/modules/options/OptionsWidget_identity.cpp:668
 msgid "Quit message:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:674
+#: src/modules/options/OptionsWidget_identity.cpp:670
 msgid ""
 "<center>This is the default quit message that will be used when you<br>quit "
 "your IRC session by closing the console window or disconnecting by pressing "
 "the disconnect button.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:708
+#: src/modules/options/OptionsWidget_identity.cpp:704
 msgid "Enable network profiles"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:709
+#: src/modules/options/OptionsWidget_identity.cpp:705
 msgid "This check enables the use of network profiles"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:720
+#: src/modules/options/OptionsWidget_identity.cpp:716
 msgid "Name"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:721
+#: src/modules/options/OptionsWidget_identity.cpp:717
 msgid "Network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:722
+#: src/modules/options/OptionsWidget_identity.cpp:718
 #: src/modules/options/OptionsWidget_nickserv.cpp:243
 #: src/modules/options/OptionsWidget_servers.cpp:332
 msgid "Nickname"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:723
+#: src/modules/options/OptionsWidget_identity.cpp:719
 msgid "Alternate nickname"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:724
+#: src/modules/options/OptionsWidget_identity.cpp:720
 msgid "Username"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:725
+#: src/modules/options/OptionsWidget_identity.cpp:721
 msgid "Real name"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:729
+#: src/modules/options/OptionsWidget_identity.cpp:725
 msgid ""
 "<center>This is a set of rules to use profiles.KVIrc will use them to handle "
 "the user connection data before the data is sent to the IRC server.<br>This "
@@ -1739,87 +1739,63 @@ msgid ""
 "without changing them at every connection attempt."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:742
+#: src/modules/options/OptionsWidget_identity.cpp:738
 msgid "Add Profile"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:745
+#: src/modules/options/OptionsWidget_identity.cpp:741
 msgid "Edit Profile"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:748
+#: src/modules/options/OptionsWidget_identity.cpp:744
 msgid "Delete Profile"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:844
+#: src/modules/options/OptionsWidget_identity.cpp:840
 msgid "Invalid Profile Rule"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:844
+#: src/modules/options/OptionsWidget_identity.cpp:840
 msgid "There is already a profile with that name"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:892
+#: src/modules/options/OptionsWidget_identity.cpp:888
 msgid "Profile Editor - KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:894
-msgid "Profile name"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:895
-msgid "My network"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:896
-msgid "My nickname"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:897
-msgid "My nickname 2"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:898
-msgid "My username"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:899
-msgid "My real name"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_identity.cpp:903
+#: src/modules/options/OptionsWidget_identity.cpp:892
 msgid "Profile name:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:907
+#: src/modules/options/OptionsWidget_identity.cpp:896
 msgid "Put here the name of the profile"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:911
+#: src/modules/options/OptionsWidget_identity.cpp:900
 msgid "Network name:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:915
+#: src/modules/options/OptionsWidget_identity.cpp:904
 msgid "Put here the name of the network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:923
+#: src/modules/options/OptionsWidget_identity.cpp:911
 msgid "Put here the nickname you want to use"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:927
+#: src/modules/options/OptionsWidget_identity.cpp:914
 msgid "Alternative nickname:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:931
+#: src/modules/options/OptionsWidget_identity.cpp:918
 msgid "Put here the alternative nickname you want to use"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:939
+#: src/modules/options/OptionsWidget_identity.cpp:925
 msgid "Put here the username you want to use"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.cpp:947
+#: src/modules/options/OptionsWidget_identity.cpp:932
 msgid "Put here the real name you want to use"
 msgstr ""
 
@@ -1842,9 +1818,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:38
 #: src/modules/options/OptionsWidget_ircView.cpp:51
 #: src/modules/options/OptionsWidget_notifier.cpp:38
-#: src/modules/options/OptionsWidget_theme.cpp:165
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
-#: src/modules/options/OptionsWidget_userList.cpp:52
+#: src/modules/options/OptionsWidget_userList.cpp:53
 #: src/modules/options/OptionsWidget_windowList.cpp:86
 #: src/modules/options/OptionsWidget_windowList.cpp:245
 msgid "Font:"
@@ -1853,6 +1828,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:39
 #: src/modules/options/OptionsWidget_ircView.cpp:52
 #: src/modules/options/OptionsWidget_notifier.cpp:39
+#: src/modules/options/OptionsWidget_theme.cpp:165
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
 msgid "Background color:"
 msgstr ""
@@ -1882,9 +1858,9 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:46
 #: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:44
-#: src/modules/options/OptionsWidget_theme.cpp:175
+#: src/modules/options/OptionsWidget_theme.cpp:169
 #: src/modules/options/OptionsWidget_topicLabel.cpp:39
-#: src/modules/options/OptionsWidget_userList.cpp:136
+#: src/modules/options/OptionsWidget_userList.cpp:141
 #: src/modules/options/OptionsWidget_windowList.cpp:124
 msgid "Background image:"
 msgstr ""
@@ -1909,8 +1885,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:69
 #: src/modules/options/OptionsWidget_notifier.cpp:54
 #: src/modules/options/OptionsWidget_notifier.cpp:59
-#: src/modules/options/OptionsWidget_userList.cpp:146
 #: src/modules/options/OptionsWidget_userList.cpp:151
+#: src/modules/options/OptionsWidget_userList.cpp:156
 #: src/modules/options/OptionsWidget_windowList.cpp:134
 #: src/modules/options/OptionsWidget_windowList.cpp:139
 msgid "Tile"
@@ -1919,7 +1895,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:57
 #: src/modules/options/OptionsWidget_ircView.cpp:65
 #: src/modules/options/OptionsWidget_notifier.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:147
+#: src/modules/options/OptionsWidget_userList.cpp:152
 #: src/modules/options/OptionsWidget_windowList.cpp:135
 msgid "Left"
 msgstr ""
@@ -1927,7 +1903,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:58
 #: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_notifier.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:148
+#: src/modules/options/OptionsWidget_userList.cpp:153
 #: src/modules/options/OptionsWidget_windowList.cpp:136
 msgid "Right"
 msgstr ""
@@ -1938,8 +1914,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:72
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_notifier.cpp:62
-#: src/modules/options/OptionsWidget_userList.cpp:149
 #: src/modules/options/OptionsWidget_userList.cpp:154
+#: src/modules/options/OptionsWidget_userList.cpp:159
 #: src/modules/options/OptionsWidget_windowList.cpp:137
 #: src/modules/options/OptionsWidget_windowList.cpp:142
 msgid "Center"
@@ -1948,7 +1924,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:62
 #: src/modules/options/OptionsWidget_ircView.cpp:70
 #: src/modules/options/OptionsWidget_notifier.cpp:60
-#: src/modules/options/OptionsWidget_userList.cpp:152
+#: src/modules/options/OptionsWidget_userList.cpp:157
 #: src/modules/options/OptionsWidget_windowList.cpp:140
 msgid "Top"
 msgstr ""
@@ -1956,7 +1932,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_input.cpp:63
 #: src/modules/options/OptionsWidget_ircView.cpp:71
 #: src/modules/options/OptionsWidget_notifier.cpp:61
-#: src/modules/options/OptionsWidget_userList.cpp:153
+#: src/modules/options/OptionsWidget_userList.cpp:158
 #: src/modules/options/OptionsWidget_windowList.cpp:141
 msgid "Bottom"
 msgstr ""
@@ -1974,42 +1950,46 @@ msgid "Hide input tool buttons by default"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:146
-msgid "Commandline in user-friendly mode by default"
+msgid "Show warning about pasting multiple lines"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:147
+msgid "Commandline in user-friendly mode by default"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_input.cpp:148
 msgid "Expand tabulations in input using this amount of spaces:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:149
+#: src/modules/options/OptionsWidget_input.cpp:150
 msgid "Nick Completion"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:151
+#: src/modules/options/OptionsWidget_input.cpp:152
 msgid "Use bash-like nick completion"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:152
+#: src/modules/options/OptionsWidget_input.cpp:153
 msgid "Use zsh-like nick completion"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:156
+#: src/modules/options/OptionsWidget_input.cpp:157
 msgid "Nick completion postfix string:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:157
+#: src/modules/options/OptionsWidget_input.cpp:158
 msgid "Use the completion postfix string for the first word only"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:159
+#: src/modules/options/OptionsWidget_input.cpp:160
 msgid "Use a custom cursor width"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:160
+#: src/modules/options/OptionsWidget_input.cpp:161
 msgid "Custom cursor width:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:161
+#: src/modules/options/OptionsWidget_input.cpp:162
 msgid " px"
 msgstr ""
 
@@ -2025,49 +2005,45 @@ msgstr ""
 msgid "Remember window properties"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:51
-msgid "Disable splash screen"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:55
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:48
 msgid "Enable visual effects"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:56
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:49
 msgid "Hide channel window tool buttons by default"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:58
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:51
 msgid "Require ⌘ to be held down to copy text"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:60
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:53
 msgid "Require Ctrl to be held down to copy text"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:63
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:56
 msgid "Open Dialog Window for"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:64
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:57
 msgid "Preferences"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:65
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:58
 msgid "Registered users"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:66
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:59
 #: src/modules/options/OptionsWidget_servers.cpp:644
-#: src/modules/options/OptionsWidget_identity.h:137
+#: src/modules/options/OptionsWidget_identity.h:131
 msgid "Identity"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:67
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:60
 msgid "Servers"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:68
+#: src/modules/options/OptionsWidget_interfaceFeatures.cpp:61
 msgid "Join channels"
 msgstr ""
 
@@ -2426,7 +2402,7 @@ msgid "MIME Type"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:79
-#: src/modules/options/OptionsWidget_servers.cpp:1278
+#: src/modules/options/OptionsWidget_servers.cpp:1293
 msgid "Description"
 msgstr ""
 
@@ -2498,7 +2474,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_channel.h:52
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
-#: src/modules/options/OptionsWidget_identity.h:153
+#: src/modules/options/OptionsWidget_identity.h:147
 #: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_theme.h:33
 msgid "General"
@@ -2593,7 +2569,6 @@ msgid "Transparent"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:382
-#: src/modules/options/OptionsWidget_theme.cpp:167
 msgid "Background:"
 msgstr ""
 
@@ -3117,7 +3092,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:211
-#: src/modules/options/OptionsWidget_servers.cpp:758
+#: src/modules/options/OptionsWidget_servers.cpp:759
 msgid "Text encoding:"
 msgstr ""
 
@@ -3146,7 +3121,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:269
-#: src/modules/options/OptionsWidget_servers.cpp:831
+#: src/modules/options/OptionsWidget_servers.cpp:832
 msgid "Channels to Join Automatically upon Connect"
 msgstr ""
 
@@ -3159,7 +3134,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:277
-#: src/modules/options/OptionsWidget_servers.cpp:837
+#: src/modules/options/OptionsWidget_servers.cpp:838
 msgid "Join Channels"
 msgstr ""
 
@@ -3174,7 +3149,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:292
-#: src/modules/options/OptionsWidget_servers.cpp:853
+#: src/modules/options/OptionsWidget_servers.cpp:854
 msgid "On Connect"
 msgstr ""
 
@@ -3188,7 +3163,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:310
-#: src/modules/options/OptionsWidget_servers.cpp:871
+#: src/modules/options/OptionsWidget_servers.cpp:872
 msgid "On Login"
 msgstr ""
 
@@ -3204,7 +3179,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:379
-#: src/modules/options/OptionsWidget_servers.cpp:1001
+#: src/modules/options/OptionsWidget_servers.cpp:1002
 #: src/modules/options/OptionsWidget_nickserv.h:41
 msgid "NickServ"
 msgstr ""
@@ -3330,11 +3305,11 @@ msgid ""
 "this, too. :)</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:744
+#: src/modules/options/OptionsWidget_servers.cpp:745
 msgid "Protocol encoding:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:749
+#: src/modules/options/OptionsWidget_servers.cpp:750
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used for server specific needs, like "
@@ -3343,7 +3318,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:763
+#: src/modules/options/OptionsWidget_servers.cpp:764
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used as the default for text messages.If you "
@@ -3351,16 +3326,16 @@ msgid ""
 "network that this server belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:774
 #: src/modules/options/OptionsWidget_servers.cpp:775
+#: src/modules/options/OptionsWidget_servers.cpp:776
 msgid "Use Network Encoding"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:794
+#: src/modules/options/OptionsWidget_servers.cpp:795
 msgid "Proxy server:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:798
+#: src/modules/options/OptionsWidget_servers.cpp:799
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -3370,27 +3345,27 @@ msgid ""
 "menu.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:802
+#: src/modules/options/OptionsWidget_servers.cpp:803
 msgid "Default"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:803
+#: src/modules/options/OptionsWidget_servers.cpp:804
 msgid "Direct Connection"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:821
+#: src/modules/options/OptionsWidget_servers.cpp:822
 #: src/modules/options/OptionsWidget_connection.h:33
 msgid "Connection"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:832
+#: src/modules/options/OptionsWidget_servers.cpp:833
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:848
+#: src/modules/options/OptionsWidget_servers.cpp:849
 msgid ""
 "<center>The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -3400,7 +3375,7 @@ msgid ""
 "for IRC bouncers that require login commands.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:867
+#: src/modules/options/OptionsWidget_servers.cpp:868
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -3409,11 +3384,11 @@ msgid ""
 "</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:880
+#: src/modules/options/OptionsWidget_servers.cpp:881
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:882
+#: src/modules/options/OptionsWidget_servers.cpp:883
 msgid ""
 "<center>This check enables the use of the <b>Transport Layer Security</b> "
 "protocol. If you enable the Extended Capabilities below then the TLS "
@@ -3422,30 +3397,30 @@ msgid ""
 "beginning of the connection.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:894
+#: src/modules/options/OptionsWidget_servers.cpp:895
 msgid "Extended Capabilities"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:900
+#: src/modules/options/OptionsWidget_servers.cpp:901
 msgid "Query extended capabilities on connect"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:903
+#: src/modules/options/OptionsWidget_servers.cpp:904
 msgid ""
 "<center>This check will cause the connection to use the <b>Extended "
 "Capability</b> support. Obviously, this server must have support for this "
 "too. Disable this for IRC bouncers.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:908
+#: src/modules/options/OptionsWidget_servers.cpp:909
 msgid "SASL Authentication"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:913
+#: src/modules/options/OptionsWidget_servers.cpp:914
 msgid "Authenticate via SASL extension"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:915
+#: src/modules/options/OptionsWidget_servers.cpp:916
 msgid ""
 "<center>This check enables the use of the <b>SASL</b> authentication "
 "protocol If you enable the proper global option in the Connection/SSL tab "
@@ -3453,42 +3428,42 @@ msgid ""
 "protocol will be used for this server if available.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:919
+#: src/modules/options/OptionsWidget_servers.cpp:920
 msgid "SASL nickname:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:923
+#: src/modules/options/OptionsWidget_servers.cpp:924
 msgid ""
 "<center>If you want to enable SASL authentication, insert your nickname here."
 "</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:926
+#: src/modules/options/OptionsWidget_servers.cpp:927
 msgid "SASL password:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:930
+#: src/modules/options/OptionsWidget_servers.cpp:931
 msgid ""
 "<center>If you want to enable SASL authentication, insert your password here."
 "</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:938
+#: src/modules/options/OptionsWidget_servers.cpp:939
 msgid "Link filter:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:971
+#: src/modules/options/OptionsWidget_servers.cpp:972
 msgid ""
 "<center>This field specifies the name of a module that exports a link filter "
 "for this type of server.<br>For plain IRC connections, you don't need any "
 "link filters; this is used for incompatible protocols.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:976
+#: src/modules/options/OptionsWidget_servers.cpp:977
 msgid "ID:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:983
+#: src/modules/options/OptionsWidget_servers.cpp:984
 msgid ""
 "<center>This field allows you to specify a really unique ID for this server. "
 "You will then be able to use /server -x &lt;this_id&gt; to make the "
@@ -3496,17 +3471,17 @@ msgid ""
 "with the same hostname and port in different networks (bouncers?)</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:989
+#: src/modules/options/OptionsWidget_servers.cpp:990
 #: src/modules/options/OptionsWidget_channel.h:64
 #: src/modules/options/OptionsWidget_connection.h:46
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
-#: src/modules/options/OptionsWidget_identity.h:202
+#: src/modules/options/OptionsWidget_identity.h:196
 #: src/modules/options/OptionsWidget_irc.h:57
 msgid "Advanced"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:996
+#: src/modules/options/OptionsWidget_servers.cpp:997
 msgid ""
 "NickServ settings are available only for the whole IRC network, not for "
 "specific servers.\n"
@@ -3514,110 +3489,106 @@ msgid ""
 "and servers and click Advanced."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1265
+#: src/modules/options/OptionsWidget_servers.cpp:1272
 msgid "Filter:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1270
+#: src/modules/options/OptionsWidget_servers.cpp:1277
 msgid ""
 "<center>If you are searching for a specific server or network, you can "
 "insert its name to filter the servers in the list</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1277
+#: src/modules/options/OptionsWidget_servers.cpp:1284
+msgid ""
+"<center>If this option is enabled, only servers you have favorited will be "
+"displayed</center>"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_servers.cpp:1292
 msgid "Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1297
+#: src/modules/options/OptionsWidget_servers.cpp:1312
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
 "a item for advanced options.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1311
+#: src/modules/options/OptionsWidget_servers.cpp:1326
 msgid "New network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1320
+#: src/modules/options/OptionsWidget_servers.cpp:1335
 msgid "New server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1326
+#: src/modules/options/OptionsWidget_servers.cpp:1341
 msgid "Favorite/Unfavorite server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1333
+#: src/modules/options/OptionsWidget_servers.cpp:1348
 msgid "Remove network/server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1340
+#: src/modules/options/OptionsWidget_servers.cpp:1355
 msgid "Copy server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1347
+#: src/modules/options/OptionsWidget_servers.cpp:1362
 msgid "Paste server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1358
+#: src/modules/options/OptionsWidget_servers.cpp:1373
 msgid "Import server list"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1363
+#: src/modules/options/OptionsWidget_servers.cpp:1378
 msgid "Active Configuration"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1364
+#: src/modules/options/OptionsWidget_servers.cpp:1379
 #: src/modules/options/OptionsWidget_servers.cpp:1676
 msgid "Server:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1368
+#: src/modules/options/OptionsWidget_servers.cpp:1383
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1370
+#: src/modules/options/OptionsWidget_servers.cpp:1385
 msgid "Advanced..."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1372
+#: src/modules/options/OptionsWidget_servers.cpp:1387
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1384
+#: src/modules/options/OptionsWidget_servers.cpp:1399
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1392
+#: src/modules/options/OptionsWidget_servers.cpp:1406
 msgid "Connect &Now"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1433
+#: src/modules/options/OptionsWidget_servers.cpp:1447
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1438
+#: src/modules/options/OptionsWidget_servers.cpp:1452
 msgid "Show this dialog at startup"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1440
-msgid "Only display favorite servers"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_servers.cpp:1445
+#: src/modules/options/OptionsWidget_servers.cpp:1457
 msgid ""
 "<center>If this option is enabled, the servers dialog will appear every time "
 "you start KVIrc</center>"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_servers.cpp:1449
-msgid ""
-"<center>If this option is enabled, only servers you have favorited will be "
-"displayed</center>"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1679
@@ -3632,74 +3603,74 @@ msgstr ""
 msgid "UnknownNet"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1834
-#: src/modules/options/OptionsWidget_servers.cpp:1964
+#: src/modules/options/OptionsWidget_servers.cpp:1837
+#: src/modules/options/OptionsWidget_servers.cpp:1967
 msgid "New Network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1835
+#: src/modules/options/OptionsWidget_servers.cpp:1838
 msgid "Remove Network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1838
+#: src/modules/options/OptionsWidget_servers.cpp:1841
 msgid "&New Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1840
+#: src/modules/options/OptionsWidget_servers.cpp:1843
 msgid "Unfavorite Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1842
+#: src/modules/options/OptionsWidget_servers.cpp:1845
 msgid "Re&move Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1844
+#: src/modules/options/OptionsWidget_servers.cpp:1847
 msgid "&Copy Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1846
+#: src/modules/options/OptionsWidget_servers.cpp:1849
 msgid "&Paste Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1849
+#: src/modules/options/OptionsWidget_servers.cpp:1852
 msgid "Import Server List"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1851
+#: src/modules/options/OptionsWidget_servers.cpp:1854
 msgid "Clear Server List"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1888
+#: src/modules/options/OptionsWidget_servers.cpp:1891
 msgid ""
 "Oops! Something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1908
+#: src/modules/options/OptionsWidget_servers.cpp:1911
 msgid ""
 "Oops! Something weird happened:<br>Can't find the module that was capable of "
 "this import action. :("
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1985
+#: src/modules/options/OptionsWidget_servers.cpp:1988
 msgid "irc.unknown.net"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2126
+#: src/modules/options/OptionsWidget_servers.cpp:2134
 msgid ""
 "If you click <b>Yes</b>, all of your saved networks, servers, settings, and "
 "passwords will be lost.<br>Would you like to continue?"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2131
+#: src/modules/options/OptionsWidget_servers.cpp:2139
 msgid "Confirm Clear Server List - KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2132
+#: src/modules/options/OptionsWidget_servers.cpp:2140
 msgid "Yes"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2132
+#: src/modules/options/OptionsWidget_servers.cpp:2140
 msgid "No"
 msgstr ""
 
@@ -3768,7 +3739,7 @@ msgid "Highlighted message in inactive window:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_sound.cpp:345
-msgid "On me was kicked:"
+msgid "When I am kicked:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:47
@@ -3842,7 +3813,7 @@ msgstr ""
 msgid "Choose Icon Filename"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_textIcons.cpp:265
+#: src/modules/options/OptionsWidget_textIcons.cpp:271
 msgid "unnamed"
 msgstr ""
 
@@ -3918,28 +3889,12 @@ msgstr ""
 msgid "Use desktop background for transparency"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:168
-msgid "Low-contrast foreground:"
+#: src/modules/options/OptionsWidget_theme.cpp:166
+msgid "Border color:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_theme.cpp:169
-msgid "Mid-contrast foreground:"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_theme.cpp:170
-msgid "Active high-contrast foreground (primary):"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_theme.cpp:171
-msgid "Active high-contrast foreground (secondary):"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_theme.cpp:172
-msgid "Inactive high-contrast foreground (primary):"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_theme.cpp:173
-msgid "Inactive high-contrast foreground (secondary):"
+#: src/modules/options/OptionsWidget_theme.cpp:167
+msgid "Font color:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_tools.cpp:39
@@ -4075,131 +4030,131 @@ msgstr ""
 msgid "Unknown protocol handler command:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:54
+#: src/modules/options/OptionsWidget_userList.cpp:55
 msgid "Nickname Colors"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:132
+#: src/modules/options/OptionsWidget_userList.cpp:56
+#: src/modules/options/OptionsWidget_userList.cpp:137
 #: src/modules/options/OptionsWidget_windowList.cpp:90
 #: src/modules/options/OptionsWidget_windowList.cpp:121
 #: src/modules/options/OptionsWidget_windowList.cpp:247
 msgid "Normal:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:133
+#: src/modules/options/OptionsWidget_userList.cpp:57
+#: src/modules/options/OptionsWidget_userList.cpp:138
 #: src/modules/options/OptionsWidget_windowList.cpp:91
 #: src/modules/options/OptionsWidget_windowList.cpp:122
 msgid "Selected:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:57
+#: src/modules/options/OptionsWidget_userList.cpp:58
 msgid "IRC Op:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:58
+#: src/modules/options/OptionsWidget_userList.cpp:59
 msgid "Channel owner:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:59
+#: src/modules/options/OptionsWidget_userList.cpp:60
 msgid "Channel admin:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:60
+#: src/modules/options/OptionsWidget_userList.cpp:61
 msgid "Op:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:61
+#: src/modules/options/OptionsWidget_userList.cpp:62
 msgid "Half-op:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:62
+#: src/modules/options/OptionsWidget_userList.cpp:63
 msgid "Voice:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:63
+#: src/modules/options/OptionsWidget_userList.cpp:64
 msgid "User-op:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:67
-msgid "Away:"
+#: src/modules/options/OptionsWidget_userList.cpp:68
+msgid "Away (blend color):"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:73
+#: src/modules/options/OptionsWidget_userList.cpp:78
 msgid "Use different color for own nick:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:88
+#: src/modules/options/OptionsWidget_userList.cpp:93
 msgid "Draw nickname grid"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:90
+#: src/modules/options/OptionsWidget_userList.cpp:95
 msgid "Grid color:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:97
+#: src/modules/options/OptionsWidget_userList.cpp:102
 msgid "Grid type:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:101
+#: src/modules/options/OptionsWidget_userList.cpp:106
 msgid "3D Grid"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:102
+#: src/modules/options/OptionsWidget_userList.cpp:107
 msgid "3D Buttons"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:103
+#: src/modules/options/OptionsWidget_userList.cpp:108
 msgid "Plain Grid"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:104
+#: src/modules/options/OptionsWidget_userList.cpp:109
 msgid "Dotted Grid"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:131
+#: src/modules/options/OptionsWidget_userList.cpp:136
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 msgid "Background Colors"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:138
+#: src/modules/options/OptionsWidget_userList.cpp:143
 msgid "Horizontal alignment:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:142
+#: src/modules/options/OptionsWidget_userList.cpp:147
 msgid "Vertical alignment:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:237
+#: src/modules/options/OptionsWidget_userList.cpp:242
 msgid "Show gender icons"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:238
-msgid "Show user channel icons"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_userList.cpp:239
-msgid "Show user channel activity indicator"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_userList.cpp:240
-msgid "Show label with userlist stats"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_userList.cpp:241
-msgid "Enable user tooltips"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_userList.cpp:242
-msgid "Show avatars in userlist"
-msgstr ""
-
 #: src/modules/options/OptionsWidget_userList.cpp:243
-msgid "Enable animated avatars"
+msgid "Show user rank channel icons"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:244
+msgid "Show user channel activity indicator"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_userList.cpp:245
+msgid "Show label with userlist stats"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_userList.cpp:246
+msgid "Enable user tooltips"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_userList.cpp:247
+msgid "Show avatars in userlist"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_userList.cpp:248
+msgid "Enable animated avatars"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_userList.cpp:249
 msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
@@ -4242,7 +4197,7 @@ msgid "Enable window tooltips"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:52
-msgid "Show header"
+msgid "Allow the window list to be moved"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:53
@@ -4381,11 +4336,11 @@ msgstr ""
 msgid "General Options"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.h:177
+#: src/modules/options/OptionsWidget_identity.h:171
 msgid "Avatar"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_identity.h:227
+#: src/modules/options/OptionsWidget_identity.h:221
 msgid "Profiles"
 msgstr ""
 
@@ -4549,11 +4504,11 @@ msgstr ""
 msgid "chat"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.h:167
+#: src/modules/options/OptionsWidget_servers.h:168
 msgid "Servers and Configuration"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.h:168
+#: src/modules/options/OptionsWidget_servers.h:169
 msgid "connection"
 msgstr ""
 
@@ -4604,7 +4559,7 @@ msgid "theme,background"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.h:75
-msgid "ToolBar Applets"
+msgid "Toolbar Applets"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.h:76

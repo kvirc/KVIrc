@@ -50,7 +50,7 @@ namespace KviKvsCoreSimpleCommands
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +h flags.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			halfop Pragma,Crocodile
@@ -388,7 +388,7 @@ namespace KviKvsCoreSimpleCommands
 			optional keys in the [key list].[br]
 			This command is "server based"; you will see its results only
 			after the server acknowledges it.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			join #kvirc
@@ -459,7 +459,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Kicks the specified <user> from the current channel.[br]
 			This command is a simple wrapper over the IRC KICK command.
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			kick Pragma Go coding in Pascal!

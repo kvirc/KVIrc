@@ -354,7 +354,7 @@ namespace KviKvsCoreCallbackCommands
 			empty with the exception of $0.[br]
 			If the connection gets interrupted before all the information have been received,
 			the <callback command> will never be triggered.[br]
-			This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
 			awhois(pragma){ echo $0-; }

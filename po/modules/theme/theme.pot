@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-28 11:36+0100\n"
+"POT-Creation-Date: 2016-02-01 00:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,11 +187,11 @@ msgid ""
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:105
-msgid "Theme Name:"
+msgid "Theme name:"
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:133
-msgid "Theme Author:"
+msgid "Theme author:"
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:144
@@ -289,7 +289,7 @@ msgid "Created with"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:216
-msgid "Warning: The theme might be incompatible with this version of KVIrc"
+msgid "Warning: this theme might be incompatible with this version of KVIrc"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:225
@@ -298,8 +298,8 @@ msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:232
 msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
+"Warning: the theme contained in this package might be either corrupted or "
+"incompatible with this version of KVIrc"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:236
@@ -331,7 +331,7 @@ msgid "Failed to unpack the selected file: %1"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:321
-msgid "Theme Engine Version"
+msgid "Theme engine version"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:322
@@ -392,7 +392,6 @@ msgid "Get more themes..."
 msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:210
-#: src/modules/theme/ThemeManagementDialog.cpp:373
 msgid "<b><u>Current Installed Theme:</u> "
 msgstr ""
 
@@ -415,6 +414,10 @@ msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:367
 msgid "Failed to apply the specified theme: %1"
+msgstr ""
+
+#: src/modules/theme/ThemeManagementDialog.cpp:373
+msgid "<b><u>Current Installed Theme:</u> %1</b>"
 msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:390

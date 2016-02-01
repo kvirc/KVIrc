@@ -345,7 +345,7 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 		on the target side.[br]
 		[b]Warning:[/b] The implementation of the avatar protocol is actually
 		restricted to KVIrc clients only. In the future other clients may implement it.[br]
-		This command is [doc:connection_dependant_commands]connection dependent[/doc].[br]
+		This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 	@examples:
 			[example]
 			[comment]# Notify your current avatar to Pragma[/comment]
