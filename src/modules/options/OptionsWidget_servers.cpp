@@ -122,7 +122,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	g->addWidget(m_pDescEditor,1,1,1,3);
 
 	m_pDescEditor->setText(n->description());
-	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>Put here a brief description of the network.</center>","options"));
+	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("Put here a brief description of the network.","options"));
 
 	// Identity tab
 
@@ -145,9 +145,9 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pUserEditor->setText(n->userName());
 	pPropertiesBoxLayout->addWidget(m_pUserEditor,0,1);
 
-	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to servers on this network.\n" \
+	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("This is the <b>username</b> that KVIrc will use to login to servers on this network.\n" \
 		"If this field is left empty (most common case), KVIrc will use the default username " \
-		"specified in the \"Identity\" options tab.</center>","options"));
+		"specified in the \"Identity\" options tab.","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,1,0);
@@ -156,7 +156,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pPassEditor->setText(n->password());
 	pPropertiesBoxLayout->addWidget(m_pPassEditor,1,1);
 
-	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this network requires a password, put it in this field, otherwise leave it empty.</center>","options"));
+	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("If this network requires a password, put it in this field, otherwise leave it empty.","options"));
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,2,0);
@@ -168,10 +168,10 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	pPropertiesBoxLayout->addWidget(m_pNickEditor,2,1);
 
 
-	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
-		"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
+	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
+		"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.","options"));
 
-	l = new QLabel(__tr2qs_ctx("Alt.nickname:","options"),gbox);
+	l = new QLabel(__tr2qs_ctx("Alt. nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,3,0);
 
 	m_pAlternativeNickEditor = new QLineEdit(gbox);
@@ -180,8 +180,8 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pAlternativeNickEditor->setText(n->alternativeNickName());
 	pPropertiesBoxLayout->addWidget(m_pAlternativeNickEditor,3,1);
 
-	KviTalToolTip::add(m_pAlternativeNickEditor,__tr2qs_ctx("<center>This nickname will be tried if the primary nickname for this network is already in use.<br>" \
-			"If you leave it empty then the default nicknames specified in the identity options will be tried instead.</center>","options"));
+	KviTalToolTip::add(m_pAlternativeNickEditor,__tr2qs_ctx("This nickname will be tried if the primary nickname for this network is already in use.<br>" \
+			"If you leave it empty then the default nicknames specified in the identity options will be tried instead.","options"));
 
 
 	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
@@ -191,8 +191,8 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pRealEditor->setText(n->realName());
 	pPropertiesBoxLayout->addWidget(m_pRealEditor,4,1);
 
-	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
-		"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
+	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
+		"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.","options"));
 
 	//server encoding
 
@@ -201,10 +201,10 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,1,1);
-	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
+	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
 		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
-		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
+		"value that you choose in the \"Encoding\" page of the options dialog.","options"));
 
 	//text encoding
 
@@ -213,10 +213,10 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pTextEncodingEditor,2,1);
-	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
+	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for the servers in this network. " \
 		"This encoding will be used as the default for text messages." \
 		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
-		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
+		"value that you choose in the \"Encoding\" page of the options dialog.","options"));
 
 	//common between server encoding and text encoding
 
@@ -247,7 +247,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
 	gl->addWidget(m_pAutoConnectCheck,3,0,1,2);
 
-	KviTalToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("<center>This option will cause KVIrc to automatically connect to this network at startup</center>","options"));
+	KviTalToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("This option will cause KVIrc to automatically connect to this network at startup","options"));
 
 
 	l = new QLabel("",tab);
@@ -268,9 +268,9 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pChannelListSelector = new KviChannelListSelector(tab,
 		__tr2qs_ctx("Channels to Join Automatically upon Connect","options"),&m_lstChannels,true);
 
-	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
+	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("Here you can set a list of channels to be joined automatically " \
 		"after a connection to a server in this network has been established. To add a channel, type its name in the " \
-		"text input below and click \"<b>Add</b>\".</center>","options"));
+		"text input below and click \"<b>Add</b>\".","options"));
 
 	gl->addWidget(m_pChannelListSelector,0,0);
 
@@ -284,10 +284,10 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pOnConnectEditor,0,0);
 	m_pOnConnectEditor->setText(n->onConnectCommand());
 	m_pOnConnectEditor->setMinimumHeight(150);
-	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection to a server in this network has been established.<br>" \
+	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("The following commands will be executed after a connection to a server in this network has been established.<br>" \
 		"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
 		"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
-		"command sequence.</center>","options"));
+		"command sequence.","options"));
 
 	tw->addTab(tab,__tr2qs_ctx("On Connect","options"));
 
@@ -303,9 +303,9 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pOnLoginEditor->setMinimumHeight(150);
 
 	KviTalToolTip::add(m_pOnLoginEditor,
-			__tr2qs_ctx("<center>The following commands will be executed after a successful login to a server in this network.<br>" \
+			__tr2qs_ctx("The following commands will be executed after a successful login to a server in this network.<br>" \
 				"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>"
-				"This is useful for automatically opening queries, setting variables, etc.</center>","options"));
+				"This is useful for automatically opening queries, setting variables, etc.","options"));
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
@@ -338,12 +338,12 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(m_pNickServTreeWidget,1,0,1,3);
 
 	KviTalToolTip::add(m_pNickServTreeWidget,
-		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
+		__tr2qs_ctx("This is a list of NickServ identification rules. " \
 				"KVIrc will use them to model its automatic interaction with NickServ on this network.<br>" \
 				"Please be aware that this feature can cause your NickServ passwords to be stolen " \
 				"if used improperly. Make sure that you fully understand the NickServ authentication protocol.<br>" \
 				"In other words, be sure to know what you're doing.<br>" \
-				"Also note that the password that you provide is stored as <b>PLAIN TEXT</b>.</center>","options"));
+				"Also note that the password that you provide is stored as <b>PLAIN TEXT</b>.","options"));
 
 	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add Rule","options"),tab);
 	connect(m_pAddRuleButton,SIGNAL(clicked()),this,SLOT(addNickServRule()));
@@ -537,8 +537,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	g->addWidget(m_pDescEditor,1,1,1,3);
 
 	m_pDescEditor->setText(s->description());
-	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>This is a brief description of this server. " \
-		"This field has no restrictions but many server lists use it to describe the server's physical location</center>","options"));
+	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("This is a brief description of this server. " \
+		"This field has no restrictions but many server lists use it to describe the server's physical location","options"));
 
 	// Identity tab
 
@@ -561,10 +561,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUserEditor->setText(s->userName());
 	pPropertiesBoxLayout->addWidget(m_pUserEditor,0,1);
 
-	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to this server.\n" \
+	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("This is the <b>username</b> that KVIrc will use to login to this server.\n" \
 		"If this field is left empty (most common case), KVIrc will first look if an username is specified " \
 		"for the network that this server belongs to, and if that is empty then KVIrc will use the default username " \
-		"specified in the \"Identity\" options tab.</center>","options"));
+		"specified in the \"Identity\" options tab.","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,1,0);
@@ -573,7 +573,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pPassEditor->setText(s->password());
 	pPropertiesBoxLayout->addWidget(m_pPassEditor,1,1);
 
-	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this server requires a password, put it in this field, otherwise leave it empty.</center>","options"));
+	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("If this server requires a password, put it in this field, otherwise leave it empty.","options"));
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,2,0);
@@ -584,11 +584,11 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pNickEditor->setText(s->nickName());
 	pPropertiesBoxLayout->addWidget(m_pNickEditor,2,1);
 
-	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>" \
+	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>" \
 		"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
-		"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
+		"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.","options"));
 
-	l = new QLabel(__tr2qs_ctx("Alt.nickname:","options"),gbox);
+	l = new QLabel(__tr2qs_ctx("Alt. nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,3,0);
 
 	m_pAlternativeNickEditor = new QLineEdit(gbox);
@@ -597,8 +597,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pAlternativeNickEditor->setText(s->alternativeNickName());
 	pPropertiesBoxLayout->addWidget(m_pAlternativeNickEditor,3,1);
 
-	KviTalToolTip::add(m_pAlternativeNickEditor,__tr2qs_ctx("<center>This nickname will be tried if the primary nickname for this server is already in use.<br>" \
-			"If you leave it empty then the default nicknames specified in the identity options will be tried instead.</center>","options"));
+	KviTalToolTip::add(m_pAlternativeNickEditor,__tr2qs_ctx("This nickname will be tried if the primary nickname for this server is already in use.<br>" \
+			"If you leave it empty then the default nicknames specified in the identity options will be tried instead.","options"));
 
 
 	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
@@ -608,16 +608,16 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pRealEditor->setText(s->realName());
 	pPropertiesBoxLayout->addWidget(m_pRealEditor,4,1);
 
-	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
+	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
 		"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
-		"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
+		"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.","options"));
 
 
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 
 	m_pUseDefaultInitUMode = new QCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
-	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
+	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("If this is enabled, the global initial <b>user mode</b> (configured from"\
 		" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
 	bool bHasUmode = !(s->initUMode().isEmpty());
 	KviCString szDefUMode = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
@@ -659,7 +659,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	QString tmpz;
 	tmpz.setNum(s->port());
 	m_pPortEditor->setText(tmpz);
-	KviTalToolTip::add(m_pPortEditor,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
+	KviTalToolTip::add(m_pPortEditor,__tr2qs_ctx("This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.","options"));
 	connect(m_pPortEditor,SIGNAL(textChanged(const QString &)),this,SLOT(portEditorTextChanged(const QString &)));
 
 	iRow++;
@@ -668,10 +668,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(l,iRow,0);
 	m_pIpEditor = new KviIpEditor(tab,KviIpEditor::IPv4);
 	gl->addWidget(m_pIpEditor,iRow,1);
-	KviTalToolTip::add(m_pIpEditor,__tr2qs_ctx("<center>This is the <b>IP address</b> of this server, it is here for caching purposes.<br>" \
+	KviTalToolTip::add(m_pIpEditor,__tr2qs_ctx("This is the <b>IP address</b> of this server, it is here for caching purposes.<br>" \
 		"If you leave this field empty, KVIrc will fill it in the first time it connects to the server. " \
 		"If you enable the \"cache IP address\" option below, KVIrc will use it as a \"cached result\" " \
-		"and avoid looking it up again.</center>","options"));
+		"and avoid looking it up again.","options"));
 #ifdef COMPILE_IPV6_SUPPORT
 	m_pIpEditor->setAddressType(s->isIPv6() ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
 #else
@@ -695,12 +695,12 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pCacheIpCheck = new QCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
 	pCheckBoxLayout->addWidget(m_pCacheIpCheck,0,0);
 
-	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
+	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("This check will enable <b>IP address caching</b> for this server:<br>" \
 		"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 		"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
 		"Advanced: you can also use this option to force a certain server name to resolve " \
 		"to a fixed IP address when either the DNS for that server is temporarily " \
-		"unreachable or you want to avoid the round-robin lookups.</center>","options"));
+		"unreachable or you want to avoid the round-robin lookups.","options"));
 	m_pCacheIpCheck->setChecked(s->cacheIp());
 
 
@@ -709,7 +709,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	pCheckBoxLayout->addWidget(m_pUseAutoConnect,0,1);
 
-	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
+	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("This option will cause KVIrc to connect to the IRC server when it is started.","options"));
 
 
 	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
@@ -722,15 +722,15 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseIPV6Check->setEnabled(false);
 #endif
 
-	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
-		"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
+	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
+		"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).","options"));
 
 
 	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	pCheckBoxLayout->addWidget(m_pUseSSLCheck,1,1);
 
-	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
-		"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
+	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("This check will cause the connection to use the <b>Secure Socket Layer</b> " \
+		"encryption support. Obviously, this server must have support for this, too. :)","options"));
 #ifdef COMPILE_SSL_SUPPORT
 	m_pUseSSLCheck->setChecked(s->useSSL());
 	connect(m_pUseSSLCheck,SIGNAL(toggled(bool)),this,SLOT(useSSLCheckToggled(bool)));
@@ -747,10 +747,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,iRow,1);
-	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
+	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for this server. " \
 		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
 		"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
-		"network that this server belongs to.</center>","options"));
+		"network that this server belongs to.","options"));
 
 	iRow++;
 
@@ -761,10 +761,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pTextEncodingEditor,iRow,1);
-	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
+	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for this server. " \
 			"This encoding will be used as the default for text messages." \
 			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
-			"network that this server belongs to.</center>","options"));
+			"network that this server belongs to.","options"));
 
 	//common between server encoding and text encoding
 
@@ -796,9 +796,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(l,iRow,0);
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,iRow,1);
-	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
+	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
 		"If this field is set in \"Default\" KVIrc will use global proxy settings, if it is set in \"Direct connection\" " \
-		"KVIrc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
+		"KVIrc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.","options"));
 
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
 	m_pProxyEditor->addItem(__tr2qs_ctx("Direct Connection","options"));
@@ -830,9 +830,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		m_lstChannels = *(s->autoJoinChannelList());
 	m_pChannelListSelector = new KviChannelListSelector(tab,
 		__tr2qs_ctx("Channels to Join Automatically upon Connect","options"),&m_lstChannels,true);
-	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
+	KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("Here you can set a list of channels to be joined automatically " \
 		"after a connection to this server has been established. To add a channel, type its name in the " \
-		"text input below and click \"<b>Add</b>\".</center>","options"));
+		"text input below and click \"<b>Add</b>\".","options"));
 	gl->addWidget(m_pChannelListSelector,0,0);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs_ctx("Join Channels","options"));
@@ -846,10 +846,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(m_pOnConnectEditor,0,0);
 	m_pOnConnectEditor->setText(s->onConnectCommand());
 	m_pOnConnectEditor->setMinimumHeight(150);
-	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection has been established.<br>" \
+	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("The following commands will be executed after a connection has been established.<br>" \
 		"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
 		"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
-		"command sequence.<br>This is particularly useful for IRC bouncers that require login commands.</center>","options"));
+		"command sequence.<br>This is particularly useful for IRC bouncers that require login commands.","options"));
 
 	tw->addTab(tab,__tr2qs_ctx("On Connect","options"));
 	// after login execute
@@ -865,9 +865,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pOnLoginEditor->setMinimumHeight(150);
 
 	KviTalToolTip::add(m_pOnLoginEditor,
-		__tr2qs_ctx("<center>The following commands will be executed after a successful login to this server.<br>" \
+		__tr2qs_ctx("The following commands will be executed after a successful login to this server.<br>" \
 			"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>"
-			"This is useful for automatically opening queries, setting variables, etc.</center>","options"));
+			"This is useful for automatically opening queries, setting variables, etc.","options"));
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
@@ -880,10 +880,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Switch to SSL/TLS by using the STARTTLS extension","options"),tab);
 	gl->addWidget(m_pEnableSTARTTLSCheck,iRow,0,1,2);
-	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
+	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("This check enables the use of the <b>Transport Layer Security</b> " \
 		"protocol. If you enable the Extended Capabilities below then the TLS protocol support will be detected by using " \
 		"a CAP LS command. Without \"Extended Capabilities\" the STARTTLS command will be forcibly sent at the beginning of the " \
-		"connection.</center>","options"));
+		"connection.","options"));
 #ifndef COMPILE_SSL_SUPPORT
 	m_pEnableSTARTTLSCheck->setEnabled(false);
 #endif
@@ -901,8 +901,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pEnableCAPCheck = new QCheckBox(__tr2qs_ctx("Query extended capabilities on connect","options"),tab);
 	pCapLayout->addWidget(m_pEnableCAPCheck,0,0);
 
-	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
-		"support. Obviously, this server must have support for this too. Disable this for IRC bouncers.</center>","options"));
+	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("This check will cause the connection to use the <b>Extended Capability</b> " \
+		"support. Obviously, this server must have support for this too. Disable this for IRC bouncers.","options"));
 	m_pEnableCAPCheck->setChecked(s->enabledCAP());
 
 
@@ -913,22 +913,22 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Authenticate via SASL extension","options"),pSASLGroup);
 	pSASLLayout->addWidget(m_pEnableSASLCheck,0,0,1,2);
-	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication protocol " \
-		"If you enable the proper global option in the Connection/SSL tab and fill the SASL nickname and SASL password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
+	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("This check enables the use of the <b>SASL</b> authentication protocol " \
+		"If you enable the proper global option in the Connection/SSL tab and fill the SASL nickname and SASL password fields in this page, the SASL protocol will be used for this server if available.","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
 	l = new QLabel(__tr2qs_ctx("SASL nickname:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,1,0);
 	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
 	m_pSaslNickEditor->setText(s->saslNick());
-	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
+	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("If you want to enable SASL authentication, insert your nickname here.","options"));
 	pSASLLayout->addWidget(m_pSaslNickEditor,1,1);
 
 	l = new QLabel(__tr2qs_ctx("SASL password:","options"),pSASLGroup);
 	pSASLLayout->addWidget(l,2,0);
 	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
 	m_pSaslPassEditor->setText(s->saslPass());
-	KviTalToolTip::add(m_pSaslPassEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your password here.</center>","options"));
+	KviTalToolTip::add(m_pSaslPassEditor,__tr2qs_ctx("If you want to enable SASL authentication, insert your password here.","options"));
 	pSASLLayout->addWidget(m_pSaslPassEditor,2,1);
 
 	pSASLGroup->setEnabled(s->enabledCAP());
@@ -969,8 +969,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		m_pLinkFilterEditor->setCurrentIndex(0);
 
 
-	KviTalToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("<center>This field specifies the name of a module that exports a link filter for this type of server.<br>" \
-		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
+	KviTalToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("This field specifies the name of a module that exports a link filter for this type of server.<br>" \
+		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.","options"));
 
 	iRow++;
 
@@ -981,9 +981,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pIdEditor->setText(s->id());
 	gl->addWidget(m_pIdEditor,iRow,1);
 
-	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique ID for this server. " \
+	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("This field allows you to specify a really unique ID for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
-		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
+		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)","options"));
 
 	iRow++;
 
@@ -1274,14 +1274,14 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	m_pFilterEdit = new QLineEdit(this);
 	connect(m_pFilterEdit,SIGNAL(textEdited(const QString &)),this,SLOT(filterTextEdited(const QString &)));
-	KviTalToolTip::add(m_pFilterEdit,__tr2qs_ctx("<center>If you are searching for a specific server or network, you can insert its name to filter the servers in the list</center>","options"));
+	KviTalToolTip::add(m_pFilterEdit,__tr2qs_ctx("If you are searching for a specific server or network, you can insert its name to filter the servers in the list","options"));
 	addWidgetToLayout(m_pFilterEdit,1,0,1,0);
 
 	m_pShowFavoritesOnlyButton = new QToolButton(this);
 	m_pShowFavoritesOnlyButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::FavoriteOff)));
 	m_pShowFavoritesOnlyButton->setCheckable(true);
 	m_pShowFavoritesOnlyButton->setChecked(KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly));
-	KviTalToolTip::add(m_pShowFavoritesOnlyButton,__tr2qs_ctx("<center>If this option is enabled, only servers you have favorited will be displayed</center>","options"));
+	KviTalToolTip::add(m_pShowFavoritesOnlyButton,__tr2qs_ctx("If this option is enabled, only servers you have favorited will be displayed","options"));
 	addWidgetToLayout(m_pShowFavoritesOnlyButton,3,0,3,0);
 	connect(m_pShowFavoritesOnlyButton,SIGNAL(toggled(bool)),this,SLOT(updateFavoritesFilter(bool))); // Sets the server to a favorite
 
@@ -1309,9 +1309,9 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int )),
 		this,SLOT(itemDoubleClicked(QTreeWidgetItem*, int )));
 
-	QString tiptxt = __tr2qs_ctx("<center>This is the list of available IRC servers.<br>" \
+	QString tiptxt = __tr2qs_ctx("This is the list of available IRC servers.<br>" \
 			"Right-click on the list to add or remove servers and perform other actions.<br>"\
-			"Double-click on a item for advanced options.</center>","options");
+			"Double-click on a item for advanced options.","options");
 	KviTalToolTip::add(m_pTreeWidget,tiptxt);
 	KviTalToolTip::add(m_pTreeWidget->viewport(),tiptxt);
 
@@ -1380,11 +1380,11 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	m_pSrvNetEdit = new QLineEdit(gbox);
 	connect(m_pSrvNetEdit,SIGNAL(textEdited(const QString &)),this,SLOT(serverNetworkEditTextEdited(const QString &)));
-	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
+	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("This is the name of the currently selected server or network","options"));
 
 	m_pDetailsButton = new QPushButton(__tr2qs_ctx("Advanced...","options"),gbox);
 	connect(m_pDetailsButton,SIGNAL(clicked()),this,SLOT(detailsClicked()));
-	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
+	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("Click here to edit advanced options for this entry","options"));
 
 	m_pRecentPopup = new QMenu(gbox);
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
@@ -1396,7 +1396,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	tb->setAutoRaise(true);
 	tb->setPopupMode(QToolButton::InstantPopup);
 
-	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
+	KviTalToolTip::add(tb,__tr2qs_ctx("This button shows a list of recently used servers.<br>It allows you to quickly find them in the list.","options"));
 
 	m_pShowThisDialogAtStartupSelector = NULL;
 
@@ -1444,7 +1444,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 		fnt.setBold(true);
 		m_pConnectCurrent->setFont(fnt);
 
-		KviTalToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
+		KviTalToolTip::add(m_pConnectCurrent,__tr2qs_ctx("Hit this button to connect to the currently selected server.","options"));
 
 		OptionsWidgetContainer * pContainer = dynamic_cast<OptionsWidgetContainer *>(parent);
 		if(pContainer)
@@ -1454,7 +1454,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 			// This selector can be destroyed upon reparenting: make sure it's removed from the selector list
 			// (or we'll get a crash at commit() time...).
 			connect(m_pShowThisDialogAtStartupSelector,SIGNAL(destroyed()),this,SLOT(slotShowThisDialogAtStartupSelectorDestroyed()));
-			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("<center>If this option is enabled, the servers dialog will appear every time you start KVIrc</center>","options"));
+			KviTalToolTip::add(m_pShowThisDialogAtStartupSelector,__tr2qs_ctx("If this option is enabled, the servers dialog will appear every time you start KVIrc","options"));
 		}
 
 		new QShortcut(Qt::Key_Escape, parent, SLOT(close()));
