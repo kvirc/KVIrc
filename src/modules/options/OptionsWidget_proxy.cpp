@@ -79,8 +79,8 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
 			this,SLOT(customContextMenuRequested(const QPoint &)));
 
-	QString tiptxt = __tr2qs_ctx("<center>This is the list of available proxy servers.<br>" \
-				"Right-click on the list to add or remove proxies.</center>","options");
+	QString tiptxt = __tr2qs_ctx("This is the list of available proxy servers.<br>" \
+				"Right-click on the list to add or remove proxies.","options");
 	mergeTip(m_pTreeWidget,tiptxt);
 	mergeTip(m_pTreeWidget->viewport(),tiptxt);
 
