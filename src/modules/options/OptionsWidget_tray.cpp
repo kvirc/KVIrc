@@ -44,11 +44,9 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 #ifndef COMPILE_ON_MAC
 	m_pMinimizeInTray = addBoolSelector(0,1,0,1,__tr2qs_ctx("Minimize in tray","options"),KviOption_boolMinimizeInTray);
 #ifdef COMPILE_KDE_SUPPORT
-	QString szTip = "<center>";
-	szTip += __tr2qs_ctx("Take into account that if you're using KDE, this won't work if " \
+	QString szTip = __tr2qs_ctx("Take into account that if you're using KDE, this won't work if " \
 		"you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" " \
 		"advanced settings.","options");
-	szTip += "</center>";
 	mergeTip(m_pMinimizeInTray,szTip);
 #endif
 #endif
