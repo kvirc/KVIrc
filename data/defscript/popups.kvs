@@ -460,7 +460,7 @@ defpopup(windowpopup)
 
 	extpopup($tr("Logging","defscript"),logging,119)
 
-	item($tr("Set Window Props as Default","defscript"),10)
+	item($tr("Set Window Props As Default","defscript"),10)
 	{
 		window.savePropertiesAsDefault
 	}
