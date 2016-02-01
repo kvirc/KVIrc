@@ -231,7 +231,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pTextEditor = new QLineEdit(this);
 	m_pTextEditor->setToolTip(
-		__tr2qs_ctx("<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>","editor"));
+		__tr2qs_ctx("<b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.","editor"));
 	g->addWidget(m_pTextEditor,2,1,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Condition:","editor"),this);
@@ -240,7 +240,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pConditionEditor = new QLineEdit(this);
 	m_pConditionEditor->setToolTip(
-		__tr2qs_ctx("<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>","editor"));
+		__tr2qs_ctx("<b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.","editor"));
 	g->addWidget(m_pConditionEditor,3,1,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Icon:","editor"),this);
@@ -249,7 +249,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pIconEditor = new QLineEdit(this);
 	m_pIconEditor->setToolTip(
-		__tr2qs_ctx("<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>","editor"));
+		__tr2qs_ctx("<b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.","editor"));
 	g->addWidget(m_pIconEditor,4,1,1,2);
 
 	l = new QLabel(__tr2qs_ctx("External menu:","editor"),this);
@@ -258,7 +258,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pExtNameEditor = new QLineEdit(this);
 	m_pExtNameEditor->setToolTip(
-		__tr2qs_ctx("<center><b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>","editor"));
+		__tr2qs_ctx("<b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.","editor"));
 	g->addWidget(m_pExtNameEditor,5,1,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Item ID:","editor"),this);
@@ -268,7 +268,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pIdEditor = new QLineEdit(this);
 	m_pIdEditor->setToolTip(
-		__tr2qs_ctx("<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>","editor"));
+		__tr2qs_ctx("<b>Item ID</b><br>This will allow you to use delpopupitem later.","editor"));
 	g->addWidget(m_pIdEditor,6,1,1,2);
 	g->setColumnStretch(1,1);
 	g->setRowStretch(1,1);
