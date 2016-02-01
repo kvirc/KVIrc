@@ -222,25 +222,25 @@ RegisteredUserMaskDialog::RegisteredUserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pNickEdit = new QLineEdit(b);
 	//m_pNickEdit->setMinimumWidth(120);
 	m_pNickEdit->setAlignment(Qt::AlignRight);
-	m_pNickEdit->setToolTip(__tr2qs_ctx("<center>This is the <b>nickname</b> that will match this user, default value is the registered name.</center>","register"));
+	m_pNickEdit->setToolTip(__tr2qs_ctx("This is the <b>nickname</b> that will match this user, default value is the registered name.","register"));
 
-	l = new QLabel("<center><b>!</b></center>",b);
+	l = new QLabel("<b>!</b>",b);
 	l->setAlignment(Qt::AlignCenter);
 	//l->setMinimumWidth(40);
 
 	m_pUserEdit = new QLineEdit(b);
 	//m_pUserEdit->setMinimumWidth(120);
 	m_pUserEdit->setAlignment(Qt::AlignCenter);
-	m_pUserEdit->setToolTip(__tr2qs_ctx("<center>This is the <b>username</b> that will match this user. <b>*</b> will match any username.</center>","register"));
+	m_pUserEdit->setToolTip(__tr2qs_ctx("This is the <b>username</b> that will match this user. <b>*</b> will match any username.","register"));
 
-	l = new QLabel("<center><b>@</b></center>",b);
+	l = new QLabel("<b>@</b>",b);
 	l->setAlignment(Qt::AlignCenter);
 	//l->setMinimumWidth(40);
 
 	m_pHostEdit = new QLineEdit(b);
 	//m_pHostEdit->setMinimumWidth(120);
 	m_pHostEdit->setAlignment(Qt::AlignLeft);
-	m_pHostEdit->setToolTip(__tr2qs_ctx("<center>This is the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>","register"));
+	m_pHostEdit->setToolTip(__tr2qs_ctx("This is the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.","register"));
 
 	// just a spacer
 //	l = new QLabel("<nobr>&nbsp;<nobr>",this);
@@ -380,7 +380,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 	m_pNotifyLabel = new QLabel(__tr2qs_ctx("Notify nicknames:","register"),p2);
 	m_pNotifyLabel->setEnabled(m_pNotifyCheck->isChecked());
 	g->addWidget(m_pNotifyLabel,1,0);
-	m_pNotifyCheck->setToolTip(__tr2qs_ctx("<center>You can enter a space separated list of nicknames.</center>","register"));
+	m_pNotifyCheck->setToolTip(__tr2qs_ctx("You can enter a space separated list of nicknames.","register"));
 
 
 	m_pNotifyNick = new QLineEdit(p2);
