@@ -67,9 +67,7 @@ TipFrame::~TipFrame()
 
 void TipFrame::setText(const QString &text)
 {
-	QString szText= "<center>";
-	szText += text;
-	szText += "</center>";
+	QString szText = text;
 	m_pLabel2->setText(szText);
 	update();
 }
@@ -230,11 +228,11 @@ void TipWindow::prevTip()
 	@title:
 		tip.open
 	@short:
-		Opens the "did you know..." tip window
+		Opens the "Did You Know..." tip window
 	@syntax:
 		tip.open [tip_file_name:string]
 	@description:
-		Opens the "did you know..." tip window.<br>
+		Opens the "Did You Know..." tip window.<br>
 		If <tip_file_name> is specified, that tip is used instead of
 		the default tips provided with KVIrc.<br>
 		<tip_file_name> must be a file name with no path and must refer to a
