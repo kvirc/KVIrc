@@ -226,10 +226,10 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 
 	m_pParamsEdit = new KviThemedLineEdit(pBox, this, "lineedit");
 	pBox->setStretchFactor(m_pParamsEdit,1);
-	KviTalToolTip::add(m_pParamsEdit,__tr2qs("<center><b>/LIST command parameters:</b><br>Many servers accept special parameters that " \
+	KviTalToolTip::add(m_pParamsEdit,__tr2qs("<b>/LIST command parameters:</b><br>Many servers accept special parameters that " \
 		"allow you to filter the returned entries.<br>" \
 		"Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings " \
-		"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel.</center>"));
+		"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel."));
 
 	connect(m_pParamsEdit,SIGNAL(textEdited(const QString &)),this,SLOT(liveSearch(const QString &)));
 
@@ -348,7 +348,7 @@ QSize ListWindow::sizeHint() const
 
 void ListWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = QString(__tr2qs("Channel List [IRC Context %1]")).arg(m_pConsole->context()->id());
+	m_szPlainTextCaption = QString(__tr2qs("Channel list [IRC context %1]")).arg(m_pConsole->context()->id()); //this is a tooltip
 }
 
 void ListWindow::die()
