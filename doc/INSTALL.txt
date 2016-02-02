@@ -105,9 +105,12 @@
 
   For further information on these libraries read 4. Configuring the environment
 
-  For cmake 3.1.0 run:
+  For cmake >= 3.1.0 run:
 
       $ sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
+      $ sudo apt-get update
+
+  Note: Make sure cmake 3.1.x or better installed before proceeding
 
   For Ubuntu or variant distributions the complete list of dependencies
   and installation command is:
