@@ -5,7 +5,7 @@
 ## Conventions for variables:
 ##
 ##    WANT_*           : Switches that enable/disable features
-##                       Example: WANT_QT4 (force Qt4 usage)
+##                       Example: WANT_KDE (KDE usage)
 ##
 ##    CMAKE_STATUS_*   : Text variables used to display the final configuration
 ##                       at the end of the cmake script run. Their format is
@@ -17,7 +17,7 @@
 ##    CMAKE_RESULT_*   : Contain a result of a cmake script computation
 ##                       in a fixed format (of any type). Used only inside
 ##                       the cmake script.
-##                       Example: CMAKE_RESULT_USING_QT5 either true or false
+##                       Example: CMAKE_RESULT_USING_KDE either true or false
 ##
 ##    COMPILE_*        : Variables that end up in kvi_sysconfig.h and are
 ##                       visible in code (usually #defined to 1 or undefined)
@@ -230,12 +230,9 @@ else()
 				endif()
 			endif()
 		else()
-			if(MSVC AND WANT_QT4)
+			if(MSVC)
 				# this is the equivalent of -O0 -g according to MSDN
 				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
-				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t-")
-				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t-")
-			elseif(MSVC)
 				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t")
 				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t")
 			else()
@@ -268,12 +265,9 @@ else()
 				set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
 			endif()
 		else()
-			if(MSVC AND WANT_QT4)
+			if(MSVC)
 				# /Ox is -O3
 				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
-				set(CMAKE_CXX_FLAGS "/Ox /Zc:wchar_t-")
-				set(CMAKE_C_FLAGS "/Ox /Zc:wchar_t-")
-			elseif(MSVC)
 				set(CMAKE_CXX_FLAGS "/Ox /Zc:wchar_t")
 				set(CMAKE_C_FLAGS "/Ox /Zc:wchar_t")
 			else()
@@ -399,38 +393,15 @@ if(ZLIB_FOUND)
 endif()
 
 ############################################################################
-# Check for Qt{4,5}
+# Check for Qt5
 ############################################################################
 
-option(WANT_QT4 "Whether to prefer Qt4 over Qt5" OFF)
-
-# Assume we're using Qt5 (may be reset below)
-set(CMAKE_RESULT_USING_QT5 true)
-
-if(WANT_QT4)
-	find_package(Qt4 4.7.0)
-	if(NOT QT4_FOUND)
-		message(FATAL_ERROR "The use of Qt4 has been forced, but no Qt4 found on the system (WANT_QT4=ON)")
-		set(CMAKE_STATUS_QT_VERSION "None")
-	else()
-		set(CMAKE_STATUS_QT_VERSION "${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}")
-		set(CMAKE_RESULT_USING_QT5 false)
-	endif()
+find_package(Qt5Widgets)
+if(Qt5Widgets_FOUND)
+	set(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
+	set(qt5_kvirc_modules)
 else()
-	find_package(Qt5Widgets)
-	if(Qt5Widgets_FOUND)
-		set(CMAKE_STATUS_QT_VERSION "${Qt5Widgets_VERSION_STRING}")
-		set(qt5_kvirc_modules)
-	else()
-		find_package(Qt4 4.7.0)
-		if(QT4_FOUND)
-			set(CMAKE_STATUS_QT_VERSION "${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}")
-			set(WANT_QT4 ON CACHE BOOL "Whether to prefer Qt4 over Qt5" FORCE)
-			set(CMAKE_RESULT_USING_QT5 false)
-		else()
-			message(FATAL_ERROR "No Qt4 or Qt5 found!")
-		endif()
-	endif()
+	message(FATAL_ERROR "No Qt5 found!")
 endif()
 
 # automoc is used by both qt4 and qt5
@@ -450,160 +421,101 @@ option(WANT_QTSVG "Whether to compile Qt-Svg support" ON)
 # May be re-set below, if the proper libs are found.
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 
-if(CMAKE_RESULT_USING_QT5)
-	# Qt 5
+include_directories(${Qt5Widgets_INCLUDE_DIRS})
+list(APPEND qt5_kvirc_modules Widgets)
 
-	include_directories(${Qt5Widgets_INCLUDE_DIRS})
-	list(APPEND qt5_kvirc_modules Widgets)
+# QtSql
+find_package(Qt5Sql)
+if(Qt5Sql_FOUND)
+	include_directories(${Qt5Sql_INCLUDE_DIRS})
+	list(APPEND qt5_kvirc_modules Sql)
+endif()
 
-	# QtSql
-	find_package(Qt5Sql)
-	if(Qt5Sql_FOUND)
-		include_directories(${Qt5Sql_INCLUDE_DIRS})
-		list(APPEND qt5_kvirc_modules Sql)
+# QtXml
+find_package(Qt5Xml)
+if(Qt5Xml_FOUND)
+	include_directories(${Qt5Xml_INCLUDE_DIRS})
+	list(APPEND qt5_kvirc_modules Xml)
+endif()
+
+# QtNetwork
+find_package(Qt5Network)
+if(Qt5Network_FOUND)
+	include_directories(${Qt5Network_INCLUDE_DIRS})
+	list(APPEND qt5_kvirc_modules Network)
+endif()
+
+# QtPrintSupport
+find_package(Qt5PrintSupport)
+if(Qt5PrintSupport_FOUND)
+	include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
+	list(APPEND qt5_kvirc_modules PrintSupport)
+endif()
+
+# QtMultimedia
+find_package(Qt5Multimedia)
+if(Qt5Multimedia_FOUND)
+	include_directories(${Qt5Multimedia_INCLUDE_DIRS})
+	list(APPEND qt5_kvirc_modules Multimedia)
+endif()
+
+# Qt-DBus support
+if(WANT_QTDBUS)
+	find_package(Qt5DBus)
+	if(Qt5DBus_FOUND)
+		list(APPEND qt5_kvirc_modules DBus)
+		include_directories(${Qt5DBus_INCLUDE_DIRS})
+		set(COMPILE_DBUS_SUPPORT 1)
 	endif()
+endif()
 
-	# QtXml
-	find_package(Qt5Xml)
-	if(Qt5Xml_FOUND)
-		include_directories(${Qt5Xml_INCLUDE_DIRS})
-		list(APPEND qt5_kvirc_modules Xml)
+# Qt-WebKit support
+if(WANT_QTWEBKIT)
+	find_package(Qt5WebKitWidgets)
+	if(Qt5WebKitWidgets_FOUND)
+		list(APPEND qt5_kvirc_modules WebKitWidgets)
+		include_directories(${Qt5WebKitWidgets_INCLUDE_DIRS})
+		set(COMPILE_WEBKIT_SUPPORT 1)
 	endif()
+endif()
 
-	# QtNetwork
-	find_package(Qt5Network)
-	if(Qt5Network_FOUND)
-		include_directories(${Qt5Network_INCLUDE_DIRS})
-		list(APPEND qt5_kvirc_modules Network)
+# Qt-Svg support
+if(WANT_QTSVG)
+	find_package(Qt5Svg)
+	if(Qt5Svg_FOUND)
+		list(APPEND qt5_kvirc_modules Svg)
+		include_directories(${Qt5Svg_INCLUDE_DIRS})
+		set(COMPILE_SVG_SUPPORT 1)
 	endif()
+endif()
 
-	# QtPrintSupport
-	find_package(Qt5PrintSupport)
-	if(Qt5PrintSupport_FOUND)
-		include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
-		list(APPEND qt5_kvirc_modules PrintSupport)
+if(WIN32)
+	find_package(Qt5WinExtras)
+	if(Qt5WinExtras_FOUND)
+		list(APPEND qt5_kvirc_modules WinExtras)
+		include_directories(${Qt5WinExtras_INCLUDE_DIRS})
 	endif()
+endif()
 
-	# QtMultimedia
-	find_package(Qt5Multimedia)
-	if(Qt5Multimedia_FOUND)
-		include_directories(${Qt5Multimedia_INCLUDE_DIRS})
-		list(APPEND qt5_kvirc_modules Multimedia)
-	endif()
-
-	# Qt-DBus support
-	if(WANT_QTDBUS)
-		find_package(Qt5DBus)
-		if(Qt5DBus_FOUND)
-			list(APPEND qt5_kvirc_modules DBus)
-			include_directories(${Qt5DBus_INCLUDE_DIRS})
-			set(COMPILE_DBUS_SUPPORT 1)
-		endif()
-	endif()
-
-	# Qt-WebKit support
-	if(WANT_QTWEBKIT)
-		find_package(Qt5WebKitWidgets)
-		if(Qt5WebKitWidgets_FOUND)
-			list(APPEND qt5_kvirc_modules WebKitWidgets)
-			include_directories(${Qt5WebKitWidgets_INCLUDE_DIRS})
-			set(COMPILE_WEBKIT_SUPPORT 1)
-		endif()
-	endif()
-
-	# Qt-Svg support
-	if(WANT_QTSVG)
-		find_package(Qt5Svg)
-		if(Qt5Svg_FOUND)
-			list(APPEND qt5_kvirc_modules Svg)
-			include_directories(${Qt5Svg_INCLUDE_DIRS})
-			set(COMPILE_SVG_SUPPORT 1)
-		endif()
-	endif()
-
-	if(WIN32)
-		find_package(Qt5WinExtras)
-		if(Qt5WinExtras_FOUND)
-			list(APPEND qt5_kvirc_modules WinExtras)
-			include_directories(${Qt5WinExtras_INCLUDE_DIRS})
-		endif()
-	endif()
-
-	# Qt5 requires the X11Extras module for the QX11Info class (which is needed for XSS support and other stuff)
-	if(UNIX AND NOT APPLE)
-		find_package(Qt5X11Extras)
-		if(Qt5X11Extras_FOUND)
-			# Qt4 has QX11Info
-			set(COMPILE_QX11INFO_SUPPORT 1)
-			set(CMAKE_STATUS_QX11INFO_SUPPORT "Yes")
-			list(APPEND qt5_kvirc_modules X11Extras)
-			include_directories(${Qt5X11Extras_INCLUDE_DIRS})
-		endif()
-	endif()
-
-	get_target_property(QT_LIBRARY_DIR Qt5::Core LOCATION)
-	get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
-	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
-else()
-	# Qt 4
-	set(QT_USE_QTSQL true)
-	set(QT_USE_QTXML true)
-	set(QT_USE_QTNETWORK true)
-
-	# Qt-DBus support
-	if(WANT_QTDBUS)
-		if(QT_QTDBUS_FOUND)
-			set(QT_USE_QTDBUS true)
-			set(CMAKE_STATUS_QTDBUS_SUPPORT "Yes")
-			set(COMPILE_DBUS_SUPPORT 1)
-		else()
-			set(CMAKE_STATUS_QTDBUS_SUPPORT "Not available")
-		endif()
-	else()
-		set(CMAKE_STATUS_QTDBUS_SUPPORT "No")
-	endif()
-
-	# Qt-WebKit support
-	if(WANT_QTWEBKIT)
-		if(QT_QTWEBKIT_FOUND)
-			set(QT_USE_QTWEBKIT true)
-			set(CMAKE_STATUS_QTWEBKIT_SUPPORT "Yes")
-			set(COMPILE_WEBKIT_SUPPORT 1)
-		else()
-			set(CMAKE_STATUS_QTWEBKIT_SUPPORT "Not available")
-		endif()
-	else()
-		set(CMAKE_STATUS_QTWEBKIT_SUPPORT "No")
-	endif()
-
-	# Qt-Svg support
-	if(WANT_QTSVG)
-		if(QT_QTSVG_FOUND)
-			set(QT_USE_QTSVG true)
-			set(CMAKE_STATUS_QTSVG_SUPPORT "Yes")
-			set(COMPILE_SVG_SUPPORT 1)
-		else()
-			set(CMAKE_STATUS_QTSVG_SUPPORT "Not available")
-		endif()
-	else()
-		set(CMAKE_STATUS_QTSVG_SUPPORT "No")
-	endif()
-
-	# Qt4 has QX11Info
-	if(NOT APPLE)
+# Qt5 requires the X11Extras module for the QX11Info class (which is needed for XSS support and other stuff)
+if(UNIX AND NOT APPLE)
+	find_package(Qt5X11Extras)
+	if(Qt5X11Extras_FOUND)
+		# Qt4 has QX11Info
 		set(COMPILE_QX11INFO_SUPPORT 1)
 		set(CMAKE_STATUS_QX11INFO_SUPPORT "Yes")
+		list(APPEND qt5_kvirc_modules X11Extras)
+		include_directories(${Qt5X11Extras_INCLUDE_DIRS})
 	endif()
-
-	include(${QT_USE_FILE})
-	include_directories(${QT_INCLUDES})
-	list(APPEND LIBS ${QT_LIBRARIES})
-
 endif()
+
+get_target_property(QT_LIBRARY_DIR Qt5::Core LOCATION)
+get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
+get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
 
 
 ############################################################################
-# Check for KDE4
+# Check for KDE
 ############################################################################
 
 option(WANT_KDE "Whether to use KDE support" ON)
@@ -611,66 +523,39 @@ option(WANT_KDE "Whether to use KDE support" ON)
 set(CMAKE_RESULT_USING_KDE false)
 
 if(WANT_KDE)
-	if(CMAKE_RESULT_USING_QT5)
-		# Using Qt5 -> KDE5
-		find_package(ECM 1.0.0 QUIET NO_MODULE)
-		if(DEFINED ECM_VERSION_MAJOR)
-			set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_MODULE_PATH})
+	# Using Qt5 -> KDE5
+	find_package(ECM 1.0.0 QUIET NO_MODULE)
+	if(DEFINED ECM_VERSION_MAJOR)
+		set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_MODULE_PATH})
 
-			find_package(KF5 "5.2.0" COMPONENTS
-					CoreAddons      # KAboutData
-					I18n            # KLocalizedString
-					XmlGui          # KMainWindow
-					WindowSystem    # KWindowSystem
-					Notifications   # KNotification
-					Service         # KToolInvocation
-				)
+		find_package(KF5 "5.2.0" COMPONENTS
+				CoreAddons      # KAboutData
+				I18n            # KLocalizedString
+				XmlGui          # KMainWindow
+				WindowSystem    # KWindowSystem
+				Notifications   # KNotification
+				Service         # KToolInvocation
+			)
 
-			if(KF5_FOUND)
-				set(CMAKE_RESULT_USING_KDE true)
-				#include_directories(${KDE4_INCLUDES})
-				#add_definitions(${KDE4_DEFINITIONS})
-				set(COMPILE_KDE_SUPPORT 1)
-				# There seems to be no portable way to figure out if KDE version is 4 or 5
-				set(COMPILE_KDE5_SUPPORT 1)
-				list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service)
-				set(CMAKE_STATUS_KDE_SUPPORT "Yes")
-				if(DEFINED KF5_VERSION)
-					set(CMAKE_STATUS_KDE_VERSION ${KF5_VERSION})
-				else()
-					set(CMAKE_STATUS_KDE_VERSION "5.X")
-				endif()
-			else()
-				set(CMAKE_STATUS_KDE_SUPPORT "Not available (KF5 not found)")
-			endif()
-		else()
-			set(CMAKE_STATUS_KDE_SUPPORT "Not available (ECM not found)")
-		endif()
-	else()
-		# Using Qt4 -> KDE4
-		find_package(KDE4)
-		if(KDE4_FOUND)
+		if(KF5_FOUND)
 			set(CMAKE_RESULT_USING_KDE true)
-			include_directories(${KDE4_INCLUDES})
-			add_definitions(${KDE4_DEFINITIONS})
+			#include_directories(${KDE4_INCLUDES})
+			#add_definitions(${KDE4_DEFINITIONS})
 			set(COMPILE_KDE_SUPPORT 1)
 			# There seems to be no portable way to figure out if KDE version is 4 or 5
-			set(COMPILE_KDE4_SUPPORT 1)
-			list(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
+			set(COMPILE_KDE5_SUPPORT 1)
+			list(APPEND LIBS KF5::CoreAddons KF5::I18n KF5::XmlGui KF5::WindowSystem KF5::Notifications KF5::Service)
 			set(CMAKE_STATUS_KDE_SUPPORT "Yes")
-			if(DEFINED KDE_VERSION)
-				set(CMAKE_STATUS_KDE_VERSION ${KDE_VERSION})
+			if(DEFINED KF5_VERSION)
+				set(CMAKE_STATUS_KDE_VERSION ${KF5_VERSION})
 			else()
-				set(CMAKE_STATUS_KDE_VERSION "4.X")
+				set(CMAKE_STATUS_KDE_VERSION "5.X")
 			endif()
-			# The FindKDE4Internal cmake module adds -Wl,--no-undefined
-			# to the CMAKE_MODULE_LINKER_FLAGS .. which is not good for us
-			string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
-			# and for kvilib...
-			string(REPLACE "-Wl,--no-undefined" "" CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS})
 		else()
-			set(CMAKE_STATUS_KDE_SUPPORT "Not available (KDE4 not found)")
+			set(CMAKE_STATUS_KDE_SUPPORT "Not available (KF5 not found)")
 		endif()
+	else()
+		set(CMAKE_STATUS_KDE_SUPPORT "Not available (ECM not found)")
 	endif()
 else()
 	set(CMAKE_STATUS_KDE_SUPPORT "Not requested")
@@ -718,25 +603,16 @@ endif()
 # Phonon support
 option(WANT_PHONON "Whether to compile Phonon support" ON)
 if(WANT_PHONON)
-	if(WANT_QT4)
-		find_package(Phonon)
-		if(PHONON_FOUND)
-			set(COMPILE_PHONON_SUPPORT 1)
-			list(APPEND LIBS ${PHONON_LIBRARY})
-			list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
-		endif()
-	else()
-		find_package(Phonon4Qt5 NO_MODULE)
-		if(Phonon4Qt5_FOUND)
-			set(COMPILE_PHONON_SUPPORT 1)
-			list(APPEND LIBS ${PHONON_LIBRARY})
-			list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
-		endif()
+	find_package(Phonon4Qt5 NO_MODULE)
+	if(Phonon4Qt5_FOUND)
+		set(COMPILE_PHONON_SUPPORT 1)
+		list(APPEND LIBS ${PHONON_LIBRARY})
+		list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Phonon")
 	endif()
 endif()
 
 # this is a no-op - not nice i know, but real no point in making it optional...
-if(Qt5Multimedia_FOUND AND NOT WANT_QT4)
+if(Qt5Multimedia_FOUND)
 	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
 endif()
 
@@ -1061,7 +937,7 @@ endif()
 
 option(WANT_DCC_VIDEO "Compile DCC Video Support" OFF)
 
-if(WANT_DCC_VIDEO AND CMAKE_RESULT_USING_QT5)
+if(WANT_DCC_VIDEO)
 	# QtMultimediaWidgets
 	find_package(Qt5MultimediaWidgets)
 	if(Qt5MultimediaWidgets_FOUND)
@@ -1481,13 +1357,7 @@ message(STATUS "   Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SU
 message(STATUS "Features:")
 message(STATUS "   X11 Support                 : ${CMAKE_STATUS_X11_SUPPORT}")
 message(STATUS "   Qt Version                  : ${CMAKE_STATUS_QT_VERSION}")
-if(CMAKE_RESULT_USING_QT5)
-    message(STATUS "   Qt Modules                  : ${qt5_kvirc_modules}")
-else()
-    message(STATUS "   Qt-DBus Support             : ${CMAKE_STATUS_QTDBUS_SUPPORT}")
-    message(STATUS "   Qt-WebKit Support           : ${CMAKE_STATUS_QTWEBKIT_SUPPORT}")
-    message(STATUS "   Qt-Svg Support              : ${CMAKE_STATUS_QTSVG_SUPPORT}")
-endif()
+message(STATUS "   Qt Modules                  : ${qt5_kvirc_modules}")
 message(STATUS "   Qt/X11 Interface            : ${CMAKE_STATUS_QX11INFO_SUPPORT}")
 message(STATUS "   KDE Support                 : ${CMAKE_STATUS_KDE_SUPPORT}")
 if(CMAKE_RESULT_USING_KDE)
@@ -1529,10 +1399,6 @@ elseif(MINGW)
 	message(STATUS "I'm ready to build KVIrc for you: please type 'mingw32-make' now...")
 else()
 	message(STATUS "I'm ready to build KVIrc for you: please type 'make' now...")
-endif()
-
-if(COMPILE_ENABLE_GTKSTYLE AND WANT_QT4)
-	message(STATUS "Warning: you forcibly enabled the GtkStyle engine, which is known to break KVIrc theming.")
 endif()
 
 message(STATUS " ")
