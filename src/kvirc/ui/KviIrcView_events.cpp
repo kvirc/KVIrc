@@ -799,9 +799,9 @@ void KviIrcView::doMarkerToolTip()
 {
 	QString tip;
 	tip = "<table width=\"100%\">" \
-		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\"> <nowrap>";
+		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\"><p style=\"white-space:pre\">";
 	tip += __tr2qs("Scroll up to read from the last read line");
-	tip += "</nowrap></td></tr></table>";
+	tip += "</p></td></tr></table>";
 
 	if(tip.isEmpty())return;
 
@@ -824,7 +824,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
 				return;
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\"><u><p style=\"white-space:pre;color:#0022FF\">";
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -832,7 +832,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			} else {
 				tip += linkText;
 			}
-			tip+="</nowrap></font></u></td></tr><tr><td>";
+			tip+="</p></u></td></tr><tr><td><hr>";
 
 			// Check clicks' number
 			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
@@ -847,7 +847,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
 				return;
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"><u><p style=\"white-space:pre;color:#0022FF\">";
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -855,7 +855,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			} else {
 				tip += linkText;
 			}
-			tip+="</nowrap></font></u></td></tr><tr><td>";
+			tip+="</p></u></td></tr><tr><td><hr>";
 
 			if(linkText.indexOf('*') != -1)
 			{
@@ -874,7 +874,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"><u><p style=\"white-space:pre;color:#0022FF\">";
 
 			if(linkText.length() > 50)
 			{
@@ -883,7 +883,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			} else {
 				tip += linkText;
 			}
-			tip+="</nowrap></font></u></td></tr><tr><td>";
+			tip+="</p></u></td></tr><tr><td><hr>";
 
 			if(linkText.indexOf('*') != -1)
 			{
@@ -951,13 +951,13 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					QString topic = KviControlCodes::stripControlBytes(c->topicWidget()->topic());
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
-					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
-						"%2</nowrap></font></u>): <br><nowrap>+%3 (%4 users)<hr>%5</nowrap>")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(chanMode)).arg(c->count()).arg(KviQString::toHtmlEscaped(topic));
+					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
+						"%2</p></u>+%3 (%4 users)<hr>%5")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(chanMode)).arg(c->count()).arg(KviQString::toHtmlEscaped(topic));
 				} else {
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
-					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
-						"%2</nowrap></font></u>)<hr>Double-click to join %3<br>Right-click to view other options")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(szChan));
+					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
+						"%2</p></u><hr>Double-click to join %3<br>Right-click to view other options")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(szChan));
 				}
 
 				tip += buf;
