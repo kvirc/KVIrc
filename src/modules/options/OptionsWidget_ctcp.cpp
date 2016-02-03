@@ -47,24 +47,24 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("<center>This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.</center>","options"));
+		__tr2qs_ctx("This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.","options"));
 
 	s = addStringSelector(gs, __tr2qs_ctx("Append to SOURCE reply:","options"),KviOption_stringCtcpSourcePostfix);
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("<center>This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.</center>","options"));
+		__tr2qs_ctx("This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.","options"));
 
 //	s = addStringSelector(gs, __tr2qs_ctx("USERINFO reply:","options"),KviOption_stringCtcpUserinfoReply);
 
 //	mergeTip(s,
-//		__tr2qs_ctx("<center>This is the CTCP USERINFO reply.<br>It can contain some information about yourself.</center>","options"));
+//		__tr2qs_ctx("This is the CTCP USERINFO reply.<br>It can contain some information about yourself.","options"));
 
 	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:","options"),KviOption_stringCtcpPageReply);
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("<center>This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgement for CTCP PAGE messages.</center>","options"));
+		__tr2qs_ctx("This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgement for CTCP PAGE messages.","options"));
 
 	addBoolSelector(gs,__tr2qs_ctx("Show the CTCP replies in the active window","options"),KviOption_boolCtcpRepliesToActiveWindow);
 

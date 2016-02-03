@@ -154,22 +154,22 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 	m_pPage2Layout->addWidget(m_pHostEdit2,4,4);
 
 	TextLabel10_2 = new QLabel(m_pPage2);
-	TextLabel10_2->setText("<center><b>!</b></center>");
+	TextLabel10_2->setText("<b>!</b>");
 	TextLabel10_2->setAlignment(Qt::AlignCenter);
 	m_pPage2Layout->addWidget(TextLabel10_2,4,1);
 
 	TextLabel10 = new QLabel(m_pPage2);
-	TextLabel10->setText("<center><b>!</b></center>");
+	TextLabel10->setText("<b>!</b>");
 	TextLabel10->setAlignment(Qt::AlignCenter);
 	m_pPage2Layout->addWidget(TextLabel10,3,1);
 
 	TextLabel10_3 = new QLabel(m_pPage2);
-	TextLabel10_3->setText("<center><b>@</b></center>");
+	TextLabel10_3->setText("<b>@</b>");
 	TextLabel10_3->setAlignment(Qt::AlignCenter);
 	m_pPage2Layout->addWidget(TextLabel10_3,3,3);
 
 	TextLabel10_3_2 = new QLabel(m_pPage2);
-	TextLabel10_3_2->setText("<center><b>@</b></center>");
+	TextLabel10_3_2->setText("<b>@</b>");
 	TextLabel10_3_2->setAlignment(Qt::AlignCenter);
 	m_pPage2Layout->addWidget(TextLabel10_3_2,4,3);
 	m_pPage2Layout->setRowStretch(1,1);

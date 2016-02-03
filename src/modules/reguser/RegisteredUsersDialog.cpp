@@ -92,11 +92,11 @@ KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
 	setRootIsDecorated(true);
 	setSortingEnabled(true);
 
-	setToolTip(__tr2qs_ctx("<center>This is the list of registered users. " \
+	setToolTip(__tr2qs_ctx("This is the list of registered users. " \
 		"KVIrc can automatically recognize and associate properties to them.<br>" \
 		"Use the buttons on the right to add, edit and remove entries. " \
 		"The \"notify\" column allows you to quickly add users to the notify list. " \
-		"Notify list fine-tuning can be performed by editing the entry properties.</center>","register"));
+		"Notify list fine-tuning can be performed by editing the entry properties.","register"));
 }
 
 void KviRegisteredUsersListView::mousePressEvent (QMouseEvent *e)

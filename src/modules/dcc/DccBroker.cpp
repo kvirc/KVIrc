@@ -613,7 +613,7 @@ void DccBroker::recvFileManage(DccDescriptor * dcc)
 		if(dcc->bIsIncomingAvatar)
 		{
 			tmp += __tr2qs_ctx( \
-					"<center><b>Note:</b></center>" \
+					"<b>Note:</b>" \
 					"The file appears to be an avatar that you have requested. " \
 					"You should not change its filename. " \
 					"Save it in a location where KVIrc can find it, such as " \

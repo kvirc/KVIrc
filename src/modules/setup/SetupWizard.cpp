@@ -334,9 +334,7 @@ SetupWizard::SetupWizard()
 	m_pNickSelector->setValidator(v);
 
 	QString szOptionalCtcpUserInfo = __tr2qs("This field is optional and will appear as part of the CTCP USERINFO reply.");
-	QString szCenterBegin("<center>");
-	QString szCenterEnd("</center>");
-	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo + szCenterEnd;
+	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo;
 
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
 

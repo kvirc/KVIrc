@@ -142,13 +142,11 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	int iRow = 0;
 
 	KviBoolSelector * b = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
-	QString szTip = "<center>";
-	szTip += __tr2qs_ctx("This is an option for the impatient: it allows one to forcibly and permanently disable " \
+	QString szTip = __tr2qs_ctx("This is an option for the impatient: it allows one to forcibly and permanently disable " \
 		"the notifier window. Please note that if this option is not activated then " \
 		"the notifier will NOT popup even if all the other options around specify " \
 		"to use it in response to particular events. Also note that this option " \
 		"will make all the /notifier.* commands fail silently.","options");
-	szTip += "</center>";
 	mergeTip(b,szTip);
 
 	iRow++;
@@ -161,7 +159,6 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 		"instead of KVIrc one.<br>" \
 		"This is cool if you want to better integrate KVIrc inside KDE. " \
 		"Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's","options");
-	szTip += "</center>";
 	mergeTip(m_pKdeNotifier,szTip);
 
 	m_pKdeNotifier->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
@@ -173,13 +170,11 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 #ifdef COMPILE_DBUS_SUPPORT
 	m_pDBusNotifier = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the D-Bus-based notifiers","options"),KviOption_boolUseDBusNotifier);
-	szTip = "<center>";
 	szTip += __tr2qs_ctx("This option uses the D-Bus-based notifier instead of " \
 		"KVIrc one.<br>" \
 		"This is cool if you want to better integrate KVIrc inside your " \
 		"desktop environment. " \
 		"Note that this notifier isn't flexible and \"tabbed\" like KVIrc's","options");
-	szTip += "</center>";
 	mergeTip(m_pDBusNotifier,szTip);
 
 	m_pDBusNotifier->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
@@ -199,11 +194,9 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
 
-	szTip = "<center>";
 	szTip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. " \
 		"This is useful for gaming sessions where you may be distracted by the notifier or it may even switch " \
 		"your game from fullscreen to window mode.","options");
-	szTip += "</center>";
 	mergeTip(b2,szTip);
 
 	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));

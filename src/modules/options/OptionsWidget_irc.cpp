@@ -48,10 +48,10 @@ OptionsWidget_ircGeneral::OptionsWidget_ircGeneral(QWidget * parent)
 	createLayout();
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize console after successful login","options"),KviOption_boolMinimizeConsoleAfterConnect);
 
-	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to minimize the console window after successfully logging into a server.</center>","options"));
+	mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to minimize the console window after successfully logging into a server.","options"));
 
 	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show network name in console window list entry","options"),KviOption_boolShowNetworkNameForConsoleWindowListEntry);
-	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to show the network name as the console window list entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.</center>","options"));
+	mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to show the network name as the console window list entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.","options"));
 
 	addRowSpacer(0,2,0,2);
 }
@@ -68,11 +68,11 @@ OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
 	createLayout();
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option causes KVIrc to close " \
+		__tr2qs_ctx("This option causes KVIrc to close " \
 		"the connection immediately after sending the QUIT message.<br>" \
 		"When this option is disabled, KVIrc will wait for the server " \
 		"to close the connection.<br>" \
-		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
+		"Note that if you use this, your QUIT message may be not displayed.","options"));
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to real name","options"),KviOption_boolPrependGenderInfoToRealname);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Prepend avatar info to real name","options"),KviOption_boolPrependAvatarInfoToRealname);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Prepend smart nick color info to real name","options"),KviOption_boolPrependNickColorInfoToRealname);

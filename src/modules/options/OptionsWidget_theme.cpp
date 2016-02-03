@@ -70,21 +70,21 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 	m_pUseTransparencyBoolSelector = addBoolSelector(0,1,1,1,__tr2qs_ctx("Enable transparency","options"),KviOption_boolUseGlobalPseudoTransparency);
 	#ifdef COMPILE_X11_SUPPORT
 		mergeTip(m_pUseTransparencyBoolSelector,
-			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
+			__tr2qs_ctx("This option makes all KVIrc windows look " \
 				"transparent.<br>You must choose a blending " \
 				"background image below or check the " \
-				"\"Use compositing for real transparency\" option.</center>","options"));
+				"\"Use compositing for real transparency\" option.","options"));
 	#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		mergeTip(m_pUseTransparencyBoolSelector,
-			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
+			__tr2qs_ctx("This option makes all KVIrc windows look " \
 				"transparent.<br>You must choose a blending " \
 				"background image below or check the " \
-				"\"Use desktop background for transparency\" option.</center>","options"));
+				"\"Use desktop background for transparency\" option.","options"));
 	#else
 		mergeTip(m_pUseTransparencyBoolSelector,
-			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
+			__tr2qs_ctx("This option makes all KVIrc windows look " \
 				"like transparent.<br>You must choose a blending " \
-				"background image below.</center>","options"));
+				"background image below.","options"));
 	#endif
 
 	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Child window opacity:","options"),KviOption_uintGlobalTransparencyChildFadeFactor,

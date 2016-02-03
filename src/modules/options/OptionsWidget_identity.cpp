@@ -124,7 +124,7 @@ AvatarDownloadDialog::AvatarDownloadDialog(QWidget * par,const QString &szUrl)
 
 	QGridLayout * g = new QGridLayout(this);
 
-	m_pOutput = new QLabel(__tr2qs_ctx("<center>Please wait while the avatar is being downloaded</center>","options"),this);
+	m_pOutput = new QLabel(__tr2qs_ctx("Please wait while the avatar is being downloaded","options"),this);
 	g->addWidget(m_pOutput,0,0,1,2);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("Abort","options"),this);
@@ -180,9 +180,7 @@ void AvatarDownloadDialog::downloadMessage(const QString &szMsg)
 {
 	if(!szMsg.isEmpty())
 	{
-		QString txt = "<center>";
-		txt += szMsg;
-		txt += "</center>";
+		QString txt = szMsg;
 		m_pOutput->setText(szMsg);
 	}
 }
@@ -305,10 +303,10 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	KviStringSelector * sel = addStringSelector(hb,__tr2qs_ctx("Nickname:","options"),KviOption_stringNickname1);
 	sel->setMinimumLabelWidth(120);
-	mergeTip(sel,__tr2qs_ctx("<center>Your <b>nickname</b> is your primary form of identification on IRC.<br>" \
+	mergeTip(sel,__tr2qs_ctx("Your <b>nickname</b> is your primary form of identification on IRC.<br>" \
 			"Since servers cannot accept multiple users sharing the same nickname " \
 			"(case insensitive), you can provide alternative nicknames to be used in case"\
-			"the server refuses to accept the default one.</center>","options"));
+			"the server refuses to accept the default one.","options"));
 
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),hb);
 	sel->setValidator(v);
@@ -318,22 +316,20 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Username:","options"),KviOption_stringUsername);
 	sel->setMinimumLabelWidth(120);
-	mergeTip(sel,__tr2qs_ctx("<center>This is the <b>username</b> that you will use to connect to the server.<br>" \
+	mergeTip(sel,__tr2qs_ctx("This is the <b>username</b> that you will use to connect to the server.<br>" \
 				"In the past, it was used as a form of authentication, but it normally has no special use now.<br>" \
-				"In addition to your nickname, you are identified on IRC by your <b>username@hostname</b>.</br>" \
-				"Basically, you can enter any word you like here. :D</center>","options"));
+				"In addition to your nickname, you are identified on IRC by your <b>username@hostname</b>.<br>" \
+				"Basically, you can enter any word you like here.","options"));
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Real name:","options"),KviOption_stringRealname);
 	sel->setMinimumLabelWidth(120);
 
-	mergeTip(sel,__tr2qs_ctx("<center>This text will appear when someone does a /WHOIS on you.<br>" \
-				"It is intended to be your real name, but people tend to put random quotes and phrases here too.</center>","options"));
+	mergeTip(sel,__tr2qs_ctx("This text will appear when someone does a /WHOIS on you.<br>" \
+				"It is intended to be your real name, but people tend to put random quotes and phrases here too.","options"));
 
 
 	QString szOptionalCtcpUserInfo = __tr2qs_ctx("This field is optional and will appear as part of the CTCP USERINFO reply.","options");
-	QString szCenterBegin("<center>");
-	QString szCenterEnd("</center>");
-	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo + szCenterEnd;
+	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo;
 
 	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Profile","options"));
 
@@ -343,7 +339,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	l->setMinimumWidth(120);
 
 	m_pAgeCombo = new QComboBox(hb);
-	QString szTip1 = szCenterBegin + __tr2qs_ctx("Here you can specify your age.","options") + szTrailing;
+	QString szTip1 = __tr2qs_ctx("Here you can specify your age.","options") + szTrailing;
 	KviTalToolTip::add(l,szTip1);
 	KviTalToolTip::add(m_pAgeCombo,szTip1);
 	m_pAgeCombo->addItem(__tr2qs_ctx("Unspecified","options"));
@@ -370,7 +366,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	l->setMinimumWidth(120);
 
 	m_pGenderCombo = new QComboBox(hb);
-	QString szTip2 =  szCenterBegin + __tr2qs_ctx("Here you can specify your gender.","options") + szTrailing;
+	QString szTip2 = __tr2qs_ctx("Here you can specify your gender.","options") + szTrailing;
 	KviTalToolTip::add(l,szTip2);
 	KviTalToolTip::add(m_pGenderCombo,szTip2);
 	m_pGenderCombo->addItem(__tr2qs_ctx("Unspecified","options"));
@@ -388,18 +384,18 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Location:","options"),KviOption_stringCtcpUserInfoLocation);
 	sel->setMinimumLabelWidth(120);
-	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can describe here your approximate physical location. " \
+	mergeTip(sel, __tr2qs_ctx("You can describe here your approximate physical location. " \
 				"Something like \"Region, Country\" will be OK. Please note that this information will be viewable " \
 				"by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Languages:","options"),KviOption_stringCtcpUserInfoLanguages);
 	sel->setMinimumLabelWidth(120);
-	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here the short names of the languages you can speak. " \
+	mergeTip(sel, __tr2qs_ctx("You can put here the short names of the languages you can speak. " \
 				"An example might be \"EN, IT\" that would mean that you speak both Italian and English.","options") + szTrailing);
 
 	sel = addStringSelector(gbox,__tr2qs_ctx("Other:","options"),KviOption_stringCtcpUserInfoOther);
 	sel->setMinimumLabelWidth(120);
-	mergeTip(sel,szCenterBegin + __tr2qs_ctx("You can put here some additional personal data. " \
+	mergeTip(sel, __tr2qs_ctx("You can put here some additional personal data. " \
 				"It might be a funny quote or your homepage URL... " \
 				"Please note that this information will be viewable " \
 				"by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers).","options") + szTrailing);
@@ -464,13 +460,12 @@ OptionsWidget_identityAvatar::OptionsWidget_identityAvatar(QWidget * parent)
 
 	bool bHaveAvatar = (!KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty()) && m_pLocalAvatar->pixmap();
 
-	QString szTip = __tr2qs_ctx("Here you can choose your avatar image. It will be visible<br>" \
-		"by other people that request it. Choose a nice image of yourself,<br>" \
-		"possibly avoiding obscenity and offending images. It is a good idea<br>" \
-		"to choose a relatively small file (say 150 Kb max) because<br>" \
+	QString szTip = __tr2qs_ctx("Here you can choose your avatar image.<br>" \
+		"It will be visible by other people that request it.<br>" \
+		"Choose a nice image of yourself, possibly avoiding obscenity and offending images.<br>" \
+		"A good idea is to choose a relatively small file of around 150 Kb max, because " \
 		"most clients have a limit on the size of avatars being downloaded.<br>" \
-		"The image also should be smaller than 800x600 pixels since<br>" \
-		"it will have to be viewable in everyone's monitor.","options");
+		"The image also should be smaller than 800x600 pixels since it will have to be viewable in everyone's monitor.","options");
 
 	m_pUseAvatarCheck = new QCheckBox(__tr2qs_ctx("Use avatar:","options"),this);
 	addWidgetToLayout(m_pUseAvatarCheck,0,0,0,0);
@@ -662,13 +657,13 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 	KviStringSelector * sel = addStringSelector(gbox, __tr2qs_ctx("Part message:","options"),KviOption_stringPartMessage);
 	sel->setMinimumLabelWidth(120);
 
-	mergeTip(sel,__tr2qs_ctx("<center>This is the default part message that will be used when you<br>" \
-			"leave a channel by closing a channel window.</center>","options"));
+	mergeTip(sel,__tr2qs_ctx("This is the default part message that will be used when you " \
+			"leave a channel by closing a channel window.","options"));
 
 	sel = addStringSelector(gbox, __tr2qs_ctx("Quit message:","options"),KviOption_stringQuitMessage);
 	sel->setMinimumLabelWidth(120);
-	mergeTip(sel,__tr2qs_ctx("<center>This is the default quit message that will be used when you<br>" \
-			"quit your IRC session by closing the console window or disconnecting by pressing the disconnect button.</center>","options"));
+	mergeTip(sel,__tr2qs_ctx("This is the default quit message that will be used when you " \
+			"quit your IRC session by closing the console window or disconnecting by pressing the disconnect button.","options"));
 
 	addRowSpacer(0,2,0,2);
 }
@@ -716,13 +711,13 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	labels.append(__tr2qs_ctx("Name","options"));
 	labels.append(__tr2qs_ctx("Network","options"));
 	labels.append(__tr2qs_ctx("Nickname","options"));
-	labels.append(__tr2qs_ctx("Alternate nickname","options"));
+	labels.append(__tr2qs_ctx("Alt. nickname","options"));
 	labels.append(__tr2qs_ctx("Username","options"));
 	labels.append(__tr2qs_ctx("Real name","options"));
 	m_pTreeWidget->setHeaderLabels(labels);
 
 	KviTalToolTip::add(m_pTreeWidget, \
-		__tr2qs_ctx("<center>This is a set of rules to use profiles." \
+		__tr2qs_ctx("This is a set of rules to use profiles.<br>" \
 			"KVIrc will use them to handle the user connection " \
 			"data before the data is sent to the IRC server.<br>" \
 			"This is useful if a user wants to use different data " \
@@ -911,7 +906,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 	KviTalToolTip::add(m_pNickEdit,__tr2qs_ctx("Put here the nickname you want to use","options"));
 	pLayout->addWidget(m_pNickEdit,2,1,1,2);
 
-	pLabel = new QLabel(__tr2qs_ctx("Alternative nickname:","options"),this);
+	pLabel = new QLabel(__tr2qs_ctx("Alt. nickname:","options"),this);
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pAltNickEdit = new QLineEdit(this);

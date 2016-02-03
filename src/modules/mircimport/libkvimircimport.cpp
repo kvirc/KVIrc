@@ -123,7 +123,7 @@ void KviMircServersIniImport::start()
 {
 	//KviCString buffer;
 	QString buffer;
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a servers.ini file"),0,KVI_FILTER_INI,false,true,g_pMainWindow))return;
+	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a servers.ini File"),0,KVI_FILTER_INI,false,true,g_pMainWindow))return;
 
 	doImport(buffer);
 	delete this;
@@ -151,15 +151,15 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 
 	QLabel * l = new QLabel(this);
 	l->setWordWrap(true);
-	l->setText(__tr2qs("<center><b>Welcome!</b><br><br>This wizard will guide you in the process of " \
-			"downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation.</center>"));
+	l->setText(__tr2qs("<center><b>Welcome!</b></center><br><br>This wizard will guide you in the process of " \
+			"downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation."));
 	addPage(l,capt);
 
 
 	KviTalVBox * vb = new KviTalVBox(this);
 	l = new QLabel(vb);
 	l->setWordWrap(true);
-	l->setText(__tr2qs("<center>Here you can modify the URL that the list will be downloaded from. In most cases the default URL is acceptable.</center>"));
+	l->setText(__tr2qs("Here you can modify the URL that the list will be downloaded from. In most cases the default URL is acceptable."));
 
 	vb->setStretchFactor(l,1);
 
@@ -240,7 +240,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 	if(!m_pRequest)return;
 	if(bSuccess)
 	{
-		m_pOutput->setText(__tr2qs("File downloaded: processing ..."));
+		m_pOutput->setText(__tr2qs("File downloaded: processing..."));
 		m_pOutput->repaint();
 
 		int iCount = m_pFilter->doImport(m_szTmpFileName);

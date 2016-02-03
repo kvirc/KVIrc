@@ -52,11 +52,11 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 
 	b = addBoolSelector(0,8,0,8,__tr2qs_ctx("Relay errors and warnings to debug window","options"),KviOption_boolScriptErrorsToDebugWindow);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will show the script errors and warnings " \
+		__tr2qs_ctx("This option will show the script errors and warnings " \
 			"also in the special debug window. This makes tracking of scripts that might " \
 			"be running in several windows far easier. The messages in the debug window " \
 			"also contain a deeper call stack which will help you identifying the " \
-			"scripting problems.</center>","options")
+			"scripting problems.","options")
 		);
 	addBoolSelector(0,9,0,9,__tr2qs_ctx("Create minimized debug window","options"),KviOption_boolShowMinimizedDebugWindow);
 

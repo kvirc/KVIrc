@@ -378,7 +378,7 @@
 		QFont f = QFont();
 		f.setStyleHint(QFont::SansSerif);
 		f.setPointSize(12);
-		m_properties.insert("szText",QVariant(QString("<center>Insert here your <font color=\"#FF0000\"><b>RICH TEXT</b></font></center>")));
+		m_properties.insert("szText",QVariant(QString("Insert here your <font color=\"#FF0000\"><b>RICH TEXT</b></font>")));
 		m_properties.insert("fntDefault",QVariant(f));
 	}
 

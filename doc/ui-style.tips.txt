@@ -1,40 +1,67 @@
-************************
-*** KVIrc Style Tips ***
-************************
+## KVIrc Style Tips and Guidelines
 
-[Dialog Windows]
-- Title should be like "Choose a Script File", not "Choose a script file".
-- For any non-modal dialogs (config ones, etc.), the name should have " - KVIrc"
-  at the end. This also applies to wizards and file selection dialogs.
+### Guidelines
+** When in doubt or in cases not covered below please consult the guidelines outlined in this section.
 
-[Menubars]
-- Menus have specific locations in menubars, see KDE style guide.
+- For capitalization guidelines see: https://techbase.kde.org/Projects/Usability/HIG/Capitalization
+- For tooltip guidelines see: https://techbase.kde.org/Projects/Usability/HIG/Tooltip
+- For usability and style guidelines see: https://techbase.kde.org/Projects/Usability/HIG
 
-[Menus]
-- Menu item text be like "An Item", not "An item"
+Note: We refer to the KDE guidelines, this is mostly out of convenience (because writing our own takes time).
+
+
+### Dialog Windows
+- Titles should follow the capitalization guidelines above e.g. *Choose a Script File*, not *Choose a script file*.
+- For any non-modal dialogs (config dialogs, etc.), the name should have * - KVIrc* at the end.
+  e.g. User Registration Wizard - KVIrc
+  This also applies to wizards and file selection dialogs.
+- Define a title text that reflects the dialog type / message being conveyed, avoid vague titles.
+
+### Menu Bars
+- Menus have specific locations in menu bars, see the style guide above **.
+
+
+### Menus
+- Menu item(s) test should follow the capitalization guidelines above e.g. *An Item*, not *An item*.
 - Common items are:
-  "Cu&t" "&Copy" "&Paste" "Clear" "&Open..." "&Save As..."
+	Cu&t
+	&Copy
+	&Paste
+	Clear
+	&Open...
+	&Save As...
+
 - Items that open a dialog or otherwise require confirmation or additional
-  information should have "..." immediately following their text (no spaces).
+  information should have ellipses (...) immediately following their text with no spaces.
 
-[Selector Widgets]
-- bool selector labels should be like "Enable debug output"
-- string/file path/integer selectors should have labels with a colon ":" at the   end, e.g. "Comment:"
-- QGroupBox text should be like "Use Filtering For".
-- Config selector tooltips should have "<center></center>", and end each
-  sentence with a fullstop (period). There should be few <br> except for
-  separating sections.
 
-[Buttons]
-- Button text should be like "A Button", not "A button".
+### Selector Widgets
+- Bool selector labels should follow the capitalization guidelines above ** e.g. *Enable debug output*.
+- String/file path/integer selectors should have labels with a colon ":" appended at the end, e.g. *Comment:*.
+- QGroupBox text header should follow the capitalization guidelines above ** e.g. *Use Filtering For*.
+- Config selector tooltips sentences should terminate with a fullstop (period).
+  Use formatting like <br> except for separating sections.
+
+
+### Buttons
+- Button text should also follow the capitalization guidelines above ** e.g. *A Button*, not *A button*.
 - Common labels are:
-  "&OK" "&Apply" "Cancel" "&New" "&Add..." "Re&move" "&Close" "&Browse..."
-- Button QToolTips should be a description of its function, and
-ending with a fullstop (period):
-  "Accept all changes, and close this dialog."
-  "Kill the current user." ("Kill", not "Kills")
-- OR if the button has no text, the tooltip should be the *label text*.
-- Buttons are best in a QHBox.
-- Try to keep names short.
+	&OK
+	&Apply
+	Cancel
+	&New
+	&Add...
+	Re&move
+	&Close
+	&Browse...
 
-* For further reference, see the KDE Style Guide (google for it).
+- Button QToolTips should be a description of its function, and end with a fullstop (period) like:
+	Accept all changes, and close this dialog.
+	Kill the current user. (use singular tense verb i.e. *Kill*, not *Kills*)
+
+- If the button has no text (i.e. KVIrc's existing server dialog), the tooltip should be the *Label text*
+  however tooltip should follow the capitalization guidelines above **.
+- Tooltips that contain a header label, can contain <center><center> formatting, try to be consistent with the current style of similar dialogs.
+- Tooltips main text should be always left aligned, make use of newlines (/n) or line breaks (<br>) type formatting to improve sentence flow.
+- Buttons are best placed in a QHBox.
+- Try to keep button names short and concise.

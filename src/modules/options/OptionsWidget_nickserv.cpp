@@ -47,8 +47,8 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 {
 	setWindowTitle(__tr2qs_ctx("NickServ Authentication Rule","options"));
 
-	QString html_center_begin = "<center>";
-	QString html_center_end = "</center>";
+	QString html_center_begin = "";
+	QString html_center_end = "";
 
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 
@@ -118,7 +118,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	}
 
 
-	l = new QLabel(html_center_begin + __tr2qs_ctx("Hint: Move the mouse cursor over the fields to get help","options") + html_center_end,this);
+	l = new QLabel(__tr2qs_ctx("Hint: Move the mouse cursor over the fields to get help","options"),this);
 	l->setMargin(10);
 	gl->addWidget(l,iNextLine,0,1,4);
 //	gl->addMultiCellWidget(l,iNextLine,iNextLine,0,3);
@@ -251,7 +251,7 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 	gl->addWidget(m_pNickServTreeWidget,1,0,1,3);
 //	gl->addMultiCellWidget(m_pNickServTreeWidget,1,1,0,2);
 	KviTalToolTip::add(m_pNickServTreeWidget,\
-		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
+		__tr2qs_ctx("This is a list of NickServ identification rules. " \
 			"KVIrc will use them to model its automatic interaction with NickServ on all the networks.<br>" \
 			"Please be aware that this feature can cause your NickServ passwords to be stolen " \
 			"if used improperly. Make sure that you fully understand the NickServ authentication protocol.<br>" \
@@ -259,7 +259,7 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 			"Also note that the password that you provide is stored as <b>PLAIN TEXT</b>.<br>" \
 			"KVIrc supports also per-network NickServ authentication rules that can be " \
 			"created in the \"Advanced...\" network options (accessible from the servers dialog)."
-			"</center>","options"));
+			"","options"));
 
 	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add Rule","options"),this);
 	connect(m_pAddRuleButton,SIGNAL(clicked()),this,SLOT(addNickServRule()));

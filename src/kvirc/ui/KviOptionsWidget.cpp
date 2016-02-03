@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviOptionsWidget.h
+//   File : KviOptionsWidget.cpp
 //   Creation date : Mon Jun 10 2000 17:47:33 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -47,10 +47,10 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 
 	if(m_szBasicTipStart.isEmpty())
 	{
-		m_szBasicTipStart = "<center><p style=\"white-space:pre;color:#a0a0a0\">";
+		m_szBasicTipStart = "<p style=\"white-space:pre;color:#636363\">";
 		m_szBasicTipStart += __tr2qs("This option is also available as");
 		m_szBasicTipStart += ":<br>/option <b>";
-		m_szBasicTipEnd = "</b></p></center>";
+		m_szBasicTipEnd = "</b></p>";
 
 	}
 	// FIXME: The bSunken value is ignored!
@@ -71,7 +71,7 @@ KviOptionsWidget::~KviOptionsWidget()
 
 void KviOptionsWidget::mergeTip(QWidget * w,const QString &tip)
 {
-	static QString begin = "<table width=\"100%\" align=\"center\"><tr><td bgcolor=\"#fefef0\"><font color=\"#000000\">";
+	static QString begin = "<table width=\"100%\"><tr><td bgcolor=\"#fefef0\"><font color=\"#000000\">";
 	static QString mid = "</font></td></tr><tr><td>";
 	static QString end = "</td></tr></table>";
 
