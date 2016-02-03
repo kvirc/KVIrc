@@ -135,7 +135,6 @@
 
   Note: When using Phonon, a working phonon-backend should be installed,
         else you may not get any audio coming out your speakers at runtime.
-        T
 
 -------------------------------------------------------------------------------
   4. Configuring the environment:
@@ -179,7 +178,7 @@
   The kdelibs package should suffice.
 
 
-  ## Pthread implementation (required)
+  ## Pthread implementation (Required)
 
   This is usually included in your distribution and is probably already
   installed. In Ubuntu or variants the library is libpthread-stubs0-dev.
