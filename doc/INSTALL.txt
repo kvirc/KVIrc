@@ -85,7 +85,7 @@
 
     - C++ compiler ............ (Required)
     - CMake ................... (Required)  >= 3.1.0
-    - cmake-curses-gui ........ (Optional)
+    - CMake GUI ............... (Optional)
     - Doxygen ................. (Optional)
     - pkg-config .............. (Required)
     - git-core ................ (Preferred)
@@ -96,7 +96,8 @@
     - Qt GUI Toolkit .......... (Required)  >= 4.8
     - KDE ..................... (Optional)
     - Enchant ................. (Optional)
-    - Phonon framework......... (Preferred)
+    - Phonon framework ........ (Preferred)
+    - Qt Multimedia ........... (Optional)
     - OpenSSL ................. (Preferred)
     - GSM speech compressor ... (Optional)
     - GNU gettext ............. (Optional)
@@ -105,12 +106,12 @@
 
   For further information on these libraries read 4. Configuring the environment
 
-  For cmake >= 3.1.0 run:
+  For CMake >= 3.1.0 run:
 
       $ sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
       $ sudo apt-get update
 
-  Note: Make sure cmake 3.1.x or better installed before proceeding
+  Note: Make sure that CMake 3.1.x or better is installed before proceeding
 
   For Ubuntu or variant distributions the complete list of dependencies
   and installation command is:
@@ -119,23 +120,22 @@
         libenchant-dev libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev \
         libssl-dev libx11-dev libxrender-dev pkg-config python-dev zlib1g-dev
 
-  Additionally if you are compiling KVIRC with Qt4.x install:
+  Compiling KVIRC with Qt5.x install:
 
-      $ sudo apt-get install libphonon-dev libqt4-dev libqtwebkit-dev
+      $ sudo apt-get install libqt5svg5-dev libqt5webkit5-dev libqt5svg5-dev \
+        libqt5webkit5-dev libqt5x11extras5-dev qtbase5-dev
 
-  Additionally if you are compiling KVIRC with Qt5.x install:
+  Compiling KVIRC with qtmultimedia5 audio support:
 
-      $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev \
-        libphonon4qt5experimental-dev libqt5svg5-dev libqt5webkit5-dev \
-        phonon4qt5-backend-gstreamer libqt5svg5-dev libqt5webkit5-dev \
-        libqt5x11extras5-dev qtbase5-dev qtmultimedia5-dev
+      $ sudo apt-get install qtmultimedia5-dev
 
-  Note: You can install Qt5.x and Qt4.x libraries side by side.
-  You may want to only install a preferred Qt version instead of both at same time.
-  Then to try a different Qt version, uninstall one before installing the other, e.g.
+  Compiling KVIRC with phonon audio support:
 
-      $ sudo apt-get remove --purge <package> <package> <package> etc.
-      $ sudo apt-get install <package> <package> <package> etc.
+      $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev
+
+  Note: When using Phonon, a working phonon-backend should be installed,
+        else you may not get any audio coming out your speakers at runtime.
+        T
 
 -------------------------------------------------------------------------------
   4. Configuring the environment:
@@ -150,7 +150,8 @@
   However when this is not the case you may need to export the path variables manually.
   e.g. $QTDIR.
 
-  Note: Where x is either 4 or 5)
+  Note: Where x is the KVIrc's currently supported Qt version.
+        Current only Qt supported version is 5
 
   For x86 e.g.
 
@@ -176,13 +177,6 @@
 
   If you want to compile the KDE integration support, you obviously need KDE.
   The kdelibs package should suffice.
-
-  Note: Compiling with KDE4 support enabled will force KVIrc to
-  link against the Qt4 version that KDE4 is using. This may lead to problems
-  in linking. Disabling KDE4 support is the only known solution at the moment.
-  In this case override the Qt libraries used when running KVIrc:
-
-      $ LD_LIBRARY_PATH=/opt/qt4.8/lib/ kvirc4
 
 
   ## Pthread implementation (required)
@@ -241,9 +235,9 @@
   and only if the DCC VOICE with the gsm codec is requested.
   You can check for libgsm using the 'find' or 'locate' command.
 
-    0.  $ find / -name libgsm*
+  0.  $ find / -name libgsm*
 
-    1.  $ locate -i "libgsm*"
+  1.  $ locate -i "libgsm*"
 
   This library is included in most distributions.
   Some distros ship only the static version of the library "libgsm.a".
@@ -340,12 +334,6 @@
 
   When using the configuration flags below.
 
-  -DWANT_QT4=  (default: OFF)
-    Prefer Qt4 over Qt5.
-    If both Qt4 and Qt5 supported versions are found on the system, Qt5
-    is preferred and used for compilation. Enabling this option changes
-    this behaviour, forcing Qt4 to be used.
-
   -DWANT_DEBUG=  (default: OFF)
     When enabled, compiles the executable with debug symbols.
     Useful for reporting bugs.
@@ -398,39 +386,39 @@
 
   -DWANT_OSS=  (default: ON)
     Enables or disables OpenSoundSystem audio backend support.
-    If disabled, Audiofile support will be disabled as well.
+    If disabled, audiofile support will be disabled as well.
 
   -DWANT_AUDIOFILE=  (default: ON)
-    Enables or disables Audiofile audio backend support.
+    Enables or disables audiofile audio backend support.
 
   -DWANT_ESD=  (default: ON)
     Enables or disables ESounD audio backend support.
 
   -DWANT_QTDBUS=  (default: ON)
-    Enables or disables Qt-DBus support.
+    Enables or disables Qt D-Bus support.
 
   -DWANT_QTWEBKIT=  (default: ON)
-    Enables or disables Qt-WebKit support.
+    Enables or disables Qt WebKit support.
 
-  -DWANT_KDE= (default: ON)
+  -DWANT_KDE=  (default: ON)
     Enables or disables KDE support. The KDE version used
     depends on the Qt version used. Qt4 implies KDE4, Qt5 implies KDE5.
 
   -DWANT_OPENSSL=  (default: ON)
     Enables or disables the cryptographic functions support using OpenSSL.
 
-  -DWANT_CRYPT= (default: ON)
+  -DWANT_CRYPT=  (default: ON)
     Enables or disables the cryptographic engines and the whole cryptography/text
     transformation support. Produces a slightly smaller executable.
     You will lack features, though.
 
-  -DWANT_IPV6= (default: ON)
+  -DWANT_IPV6=  (default: ON)
     Enables or disables the IPv6 support.
     Even if you have a plain IPv4-only connection, you might want to
     keep the IPv6 support. This way you will be able to resolve
     IPv6 hostnames.
 
-  -DWANT_TRANSPARENCY= (default: ON)
+  -DWANT_TRANSPARENCY=  (default: ON)
     This option enables or disables pseudo and real transparency support.
     The pseudo-transparency support makes the KVIrc windows
     look like semi-transparent (this is NOT real transparency, it is
@@ -447,9 +435,9 @@
     objects around, CPU consumption may get high as well.
     You can thus disable transparency here.
 
-  -DWANT_GTKSTYLE= (default: OFF)
+  -DWANT_GTKSTYLE=  (default: OFF)
     QGtkStyle is a Qt backend that uses native Gtk widgets. As of Qt5, any
-    new builds using Qt5 will automatically and unchangibly have this option
+    new builds using Qt5 will automatically and unchangingly have this option
     set to ON. The reason is due to a graphical issue in which menus do not
     appear as well as scroll bars being invisible. We have found this to be
     the only fix until upstream can be patched. Anything prior to Qt5 has this
@@ -464,7 +452,7 @@
     if you enabled this option: we already know it's broken. It should be fixed
     upstream in Qt.
 
-  -DWANT_PERL= (default: ON)
+  -DWANT_PERL=  (default: ON)
     Enables or disables Perl support.
     You will not be able to use Perl scripts inside of KVIrc.
     You still can execute Perl scripts outside of KVIrc, i.e. with
@@ -472,11 +460,11 @@
     Note: Perl support will be checked anyway, and used to generate
     the documentation if present.
 
-  -DWANT_PYTHON= (default: ON)
+  -DWANT_PYTHON=  (default: ON)
     Enables or disables python support.
     You will not be able to use Python scripts inside of KVIrc.
 
-  -DWANT_IPC= (default: ON)
+  -DWANT_IPC=  (default: ON)
     Enables or disables support for inter-process communication.
     You will not be able to send remote commands to running
     KVIrc sessions. This basically means that every time you run
@@ -490,48 +478,48 @@
     so if you're really, really short in memory, you might use it,
     otherwise, IPC is a nice feature.
 
-  -DWANT_GETTEXT= (default: ON)
+  -DWANT_GETTEXT=  (default: ON)
     Enables or disables the use of GetText to generate translation files.
 
-  -DWANT_DOXYGEN (default: ON)
+  -DWANT_DOXYGEN=  (default: ON)
      Enables or disables developers docs generation through Doxygen.
 
-  -DWANT_GSM= (default: ON)
+  -DWANT_GSM=  (default: ON)
     Enables or disables the usage of the GSM library. This will
     disable the DCC VOICE gsm codec but might help when the
     compilation stops complaining of something related to GSM. :)
 
-  -DWANT_IGNORE_SIGALARM= (default: OFF)
+  -DWANT_IGNORE_SIGALARM=  (default: OFF)
     Under Solaris, both usleep() and threads implementation are based on
     SIGALARM. KVIrc uses both, and this could lead to some spontaneous
     application quits. This option enables a workaround for this problem.
 
-  -DWANT_DCC_VOICE= (default: ON)
+  -DWANT_DCC_VOICE=  (default: ON)
     Enables or disables the DCC VOICE sound support. This might help
     if you have problems in compilation of src/modules/dcc/voice.cpp.
     It will disable the sound support (and thus render DCC VOICE unusable).
 
-  -DWANT_DCC_VIDEO= (default: OFF)
+  -DWANT_DCC_VIDEO=  (default: OFF)
     Enables or disables EXPERIMENTAL DCC VIDEO support.
 
-  -DWANT_OGG_THEORA= (default: OFF)
+  -DWANT_OGG_THEORA=  (default: OFF)
     Enables or disables EXPERIMENTAL Ogg/Theora Support for dcc video.
 
-  -DWANT_DCC_CANVAS= (default: OFF)
+  -DWANT_DCC_CANVAS=  (default: OFF)
     Enables or disables OBSOLETE DCC CANVAS support.
 
-  -DWANT_SPELLCHECKER= (default: ON)
+  -DWANT_SPELLCHECKER=  (default: ON)
     Compile Spell-Checker Support.
     Note: If libenchant development package is installed,
     this option is automatically enabled during configuration.
 
-  -DWANT_MEMORY_PROFILE= (default: OFF)
+  -DWANT_MEMORY_PROFILE=  (default: OFF)
     Enables or disables memory allocation profiling.
     Don't set it, unless you are a developer and know what you are doing.
     It will have high impact on executable size and most notably speed.
     Please do not use this.
 
-  -DWANT_MEMORY_CHECKS= (default: OFF)
+  -DWANT_MEMORY_CHECKS=  (default: OFF)
     Enables or disables malloc() memory checks. This will print a nice
     message if your system goes out of memory.
     It can't save you from buying new RAM, but at least you will know that
@@ -540,17 +528,17 @@
     (i.e. Linux and the OOM killer.)
     Most probably you will not need to enable this flag.
 
-  -DMANUAL_REVISION= (default: empty)
+  -DMANUAL_REVISION=  (default: empty)
     Manually set a revision number if subversion is not found on your
     system.
     This is useful mostly on windows.
     Please do not specify useless information here, as it will make
     debugging harder and you won't profit from it.
 
-  -DWANT_PIZZA= (default: OFF)
+  -DWANT_PIZZA=  (default: OFF)
     Add some pizza for dinner. :)
 
-  -DWANT_BEER= (default: OFF)
+  -DWANT_BEER=  (default: OFF)
     Add some beers to chat. :)
 
 -------------------------------------------------------------------------------
