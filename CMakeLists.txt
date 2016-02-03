@@ -8,15 +8,15 @@
 ##                       Example: WANT_KDE (KDE usage)
 ##
 ##    CMAKE_STATUS_*   : Text variables used to display the final configuration
-##                       at the end of the cmake script run. Their format is
+##                       at the end of the CMake script run. Their format is
 ##                       not fixed therefore they should be not relied upon
 ##                       inside this script (i.e. don't check their value).
 ##                       Example: CMAKE_STATUS_X11_SUPPORT (can be "Yes", "No",
 ##                       "Yes, with scrnsaveproto" or whatever "Blah").
 ##
-##    CMAKE_RESULT_*   : Contain a result of a cmake script computation
+##    CMAKE_RESULT_*   : Contain a result of a CMake script computation
 ##                       in a fixed format (of any type). Used only inside
-##                       the cmake script.
+##                       the CMake script.
 ##                       Example: CMAKE_RESULT_USING_KDE either true or false
 ##
 ##    COMPILE_*        : Variables that end up in kvi_sysconfig.h and are
@@ -33,7 +33,7 @@
 # GLOBAL DEFS
 ###############################################################################
 
-# Minimum cmake version
+# Minimum CMake version
 cmake_minimum_required(VERSION 3.1.0)
 
 # Name of the project
@@ -108,7 +108,7 @@ if(MANUAL_REVISION_UNSET)
 				set(CMAKE_KVIRC_BUILD_REVISION ${GIT_COMMIT_ID})
 				message(STATUS "Current revision is ${CMAKE_KVIRC_BUILD_REVISION}")
 			else()
-				message( STATUS "Git failed (not a repo, or no tags). Build will not contain git revision info." )
+				message( STATUS "Git failed (not a repo, or no tags). Build will not contain Git revision info." )
 			endif()
 			if(${res_date} EQUAL 0)
 				string(REPLACE "\n" "" GIT_COMMIT_DATE "${GIT_COMMIT_DATE}")
@@ -117,13 +117,13 @@ if(MANUAL_REVISION_UNSET)
 				set(CMAKE_KVIRC_SOURCES_DATE_HEX 0x${GIT_COMMIT_DATE})
 				message(STATUS "Using sources date from ${CMAKE_KVIRC_SOURCES_DATE}")
 			else()
-				message(STATUS "Git failed (not a repo, or no tags). Build will not contain git date info.")
+				message(STATUS "Git failed (not a repo, or no tags). Build will not contain Git date info.")
 			endif()
 		else()
-			message( STATUS "Git not found. Build will not contain git revision info." )
+			message( STATUS "Git not found. Build will not contain Git revision info." )
 		endif()
 	else()
-		message( STATUS "Missing .git directory. Build will not contain git revision info." )
+		message( STATUS "Missing .git directory. Build will not contain Git revision info." )
 	endif()
 else()
 	# Manually forced revision number
@@ -209,8 +209,8 @@ else()
 		set(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
 		if(CMAKE_COMPILER_IS_GNUCXX)
 			# force gdb format of debug symbols - the release-specific
-			# variable is used, as cmake concatenates CMAKE_CXX_FLAGS with
-			# CMAKE_CXX_FLAGS_DEBUG before finalising. This results in the
+			# variable is used, as CMake concatenates CMAKE_CXX_FLAGS with
+			# CMAKE_CXX_FLAGS_DEBUG before finalizing. This results in the
 			# default DEBUG flag of '-g' being appended, and therefore
 			# overriding what you specify here
 			set(CMAKE_CXX_FLAGS_DEBUG "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
@@ -245,10 +245,10 @@ else()
 			find_program(STRIP_EXECUTABLE NAMES strip)
 			if(STRIP_EXECUTABLE)
 				set(CMAKE_STATUS_DEBUG_SUPPORT "No (Stripped)")
-				set(CMAKE_BUILD_TYPE Release-stripped CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+				set(CMAKE_BUILD_TYPE Release-stripped CACHE STRING "Choose the type of build, options are: None, Debug, Release, RelWithDebInfo and MinSizeRel." FORCE)
 			else()
 				set(CMAKE_STATUS_DEBUG_SUPPORT "No (Release)")
-				set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+				set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None, Debug, Release, RelWithDebInfo and MinSizeRel." FORCE)
 			endif()
 		else()
 			set(CMAKE_STATUS_DEBUG_SUPPORT "No (Release)")
@@ -409,14 +409,14 @@ set(CMAKE_AUTOMOC TRUE)
 
 # Shared options
 if(APPLE OR WIN32)
-	# No Qt-DBus on Mac and Windows
-	option(WANT_QTDBUS "Whether to compile Qt-DBus support" OFF)
+	# No Qt D-Bus on Mac and Windows
+	option(WANT_QTDBUS "Whether to compile Qt D-Bus support" OFF)
 else()
-	option(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
+	option(WANT_QTDBUS "Whether to compile Qt D-Bus support" ON)
 endif()
 
-option(WANT_QTWEBKIT "Whether to compile Qt-WebKit support" ON)
-option(WANT_QTSVG "Whether to compile Qt-Svg support" ON)
+option(WANT_QTWEBKIT "Whether to compile Qt WebKit support" ON)
+option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 
 # May be re-set below, if the proper libs are found.
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
@@ -424,42 +424,42 @@ set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 list(APPEND qt5_kvirc_modules Widgets)
 
-# QtSql
+# Qt SQL
 find_package(Qt5Sql)
 if(Qt5Sql_FOUND)
 	include_directories(${Qt5Sql_INCLUDE_DIRS})
 	list(APPEND qt5_kvirc_modules Sql)
 endif()
 
-# QtXml
+# Qt XML
 find_package(Qt5Xml)
 if(Qt5Xml_FOUND)
 	include_directories(${Qt5Xml_INCLUDE_DIRS})
 	list(APPEND qt5_kvirc_modules Xml)
 endif()
 
-# QtNetwork
+# Qt Network
 find_package(Qt5Network)
 if(Qt5Network_FOUND)
 	include_directories(${Qt5Network_INCLUDE_DIRS})
 	list(APPEND qt5_kvirc_modules Network)
 endif()
 
-# QtPrintSupport
+# Qt PrintSupport
 find_package(Qt5PrintSupport)
 if(Qt5PrintSupport_FOUND)
 	include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
 	list(APPEND qt5_kvirc_modules PrintSupport)
 endif()
 
-# QtMultimedia
+# Qt Multimedia
 find_package(Qt5Multimedia)
 if(Qt5Multimedia_FOUND)
 	include_directories(${Qt5Multimedia_INCLUDE_DIRS})
 	list(APPEND qt5_kvirc_modules Multimedia)
 endif()
 
-# Qt-DBus support
+# Qt D-Bus support
 if(WANT_QTDBUS)
 	find_package(Qt5DBus)
 	if(Qt5DBus_FOUND)
@@ -469,7 +469,7 @@ if(WANT_QTDBUS)
 	endif()
 endif()
 
-# Qt-WebKit support
+# Qt WebKit support
 if(WANT_QTWEBKIT)
 	find_package(Qt5WebKitWidgets)
 	if(Qt5WebKitWidgets_FOUND)
@@ -479,7 +479,7 @@ if(WANT_QTWEBKIT)
 	endif()
 endif()
 
-# Qt-Svg support
+# Qt SVG support
 if(WANT_QTSVG)
 	find_package(Qt5Svg)
 	if(Qt5Svg_FOUND)
@@ -501,7 +501,6 @@ endif()
 if(UNIX AND NOT APPLE)
 	find_package(Qt5X11Extras)
 	if(Qt5X11Extras_FOUND)
-		# Qt4 has QX11Info
 		set(COMPILE_QX11INFO_SUPPORT 1)
 		set(CMAKE_STATUS_QX11INFO_SUPPORT "Yes")
 		list(APPEND qt5_kvirc_modules X11Extras)
@@ -566,16 +565,16 @@ if(UNIX)
 	if(APPLE)
 		set(CMAKE_STATUS_X11_SUPPORT "Not used")
 	else()
-		# Assume linux
+		# Assume Linux
 		find_package(X11)
 		if(X11_FOUND)
 			set(COMPILE_X11_SUPPORT 1)
-			# The X screensaver stuff is in the libxss-dev package (ubuntu/debian)
+			# The X screensaver stuff is in the libxss-dev package (Ubuntu/Debian)
 			if(X11_Xscreensaver_FOUND)
 				# QX11Info is needed to interact with Xscreensaver
 				if(COMPILE_QX11INFO_SUPPORT)
 					set(COMPILE_XSS_SUPPORT 1)
-					set(CMAKE_STATUS_X11_SUPPORT "Yes, with screensaverproto")
+					set(CMAKE_STATUS_X11_SUPPORT "Yes, with scrnsaveproto")
 					include_directories(${X11_Xscreensaver_INCLUDE_PATH})
 					list(APPEND LIBS ${X11_Xscreensaver_LIB})
 				else()
@@ -616,7 +615,7 @@ if(Qt5Multimedia_FOUND)
 	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "Qt5Multimedia")
 endif()
 
-# esd
+# ESD
 option(WANT_ESD "Whether to compile ESD support" ON)
 if(WANT_ESD)
 	find_package(ESD)
@@ -629,7 +628,7 @@ endif()
 
 # oss + audiofile
 option(WANT_OSS "Whether to compile OSS support" ON)
-option(WANT_AUDIOFILE "Whether to compile Audiofile support" ON)
+option(WANT_AUDIOFILE "Whether to compile audiofile support" ON)
 
 if(WANT_OSS)
 	find_package(OSS)
@@ -659,7 +658,7 @@ endif()
 ############################################################################
 
 if(APPLE)
-	option(WANT_UNIVERSAL_BINARY "Whether to compile an Universal Binary on MacOSX" ON)
+	option(WANT_UNIVERSAL_BINARY "Whether to compile a universal binary on OS X" ON)
 	if(WANT_UNIVERSAL_BINARY)
 		set(CMAKE_OSX_ARCHITECTURES x86_64)
 		set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "User enabled")
@@ -674,7 +673,7 @@ else()
 endif()
 
 ############################################################################
-# OpenSSL support (Secure Sockets, Certificates, Digests etc...)
+# OpenSSL support (Secure Sockets, Certificates, Digests etc.)
 ############################################################################
 
 option(WANT_OPENSSL "Whether to compile OpenSSL support" ON)
@@ -721,7 +720,7 @@ endif()
 # Crypt engines support
 ############################################################################
 
-option(WANT_CRYPT "Compile Cryptographic Support and Engines" ON)
+option(WANT_CRYPT "Compile cryptographic support and engines" ON)
 if(WANT_CRYPT)
 	set(COMPILE_CRYPT_SUPPORT 1)
 	set(CMAKE_STATUS_CRYPT_SUPPORT "Yes")
@@ -733,7 +732,7 @@ endif()
 # IPv6 support
 ############################################################################
 
-option(WANT_IPV6 "Compile IPv6 Support" ON)
+option(WANT_IPV6 "Compile IPv6 support" ON)
 if(WANT_IPV6)
 	set(COMPILE_IPV6_SUPPORT 1)
 	set(CMAKE_STATUS_IPV6_SUPPORT "Yes")
@@ -745,7 +744,7 @@ endif()
 # Do we want pseudo-transparency?
 ############################################################################
 
-option(WANT_TRANSPARENCY "Compile Transparency Support" ON)
+option(WANT_TRANSPARENCY "Compile transparency support" ON)
 if(WANT_TRANSPARENCY)
 	set(COMPILE_PSEUDO_TRANSPARENCY 1)
 	set(CMAKE_STATUS_TRANSPARENCY_SUPPORT "Yes")
@@ -755,9 +754,9 @@ endif()
 
 # Check for Perl support
 # (note: needed for user documentation generation)
-option(WANT_PERL "Compile Perl Support" ON)
+option(WANT_PERL "Compile Perl support" ON)
 
-#perl is needed for documentation, too
+# Perl is needed for documentation, too
 find_package(Perl)
 
 if(WANT_PERL)
@@ -778,17 +777,17 @@ else()
 endif()
 
 # Check for Python support
-option(WANT_PYTHON "Compile Python Support" ON)
+option(WANT_PYTHON "Compile Python support" ON)
 if(WANT_PYTHON)
-	# this should ensure that cmake prefers python 2.7 over python 3
-	# it's not needed from cmake 2.8.8 onwards
+	# this should ensure that CMake prefers python 2.7 over python 3
+	# it's not needed from CMake 2.8.8 onwards
 	set(Python_ADDITIONAL_VERSIONS 2.7)
 	find_package(PythonLibs)
 	if(PYTHONLIBS_FOUND)
 		set(COMPILE_PYTHON_SUPPORT 1)
 		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
 
-		# PYTHON_DEBUG_LIBRARIES is only populated for Windows (cmake v2.8.12.1 tested)
+		# PYTHON_DEBUG_LIBRARIES is only populated for Windows (CMake v2.8.12.1 tested)
 		if(WANT_DEBUG AND WIN32)
 			list(APPEND LIBS ${PYTHON_DEBUG_LIBRARIES})
 		else()
@@ -811,7 +810,7 @@ endif()
 # Enchant (spell checker) support
 ############################################################################
 
-option(WANT_SPELLCHECKER "Compile Spell-Checker Support" ON)
+option(WANT_SPELLCHECKER "Compile spell-checker support" ON)
 if(WANT_SPELLCHECKER)
 	find_package(PkgConfig)
 	pkg_check_modules(Enchant enchant)
@@ -831,7 +830,7 @@ endif()
 # IPC (inter-process communication) support
 ############################################################################
 
-option(WANT_IPC "Compile Inter-Process Communication Support" ON)
+option(WANT_IPC "Compile inter-process communication support" ON)
 if(WANT_IPC)
 	set(CMAKE_STATUS_IPC_SUPPORT "Yes")
 else()
@@ -883,7 +882,7 @@ endif()
 # GSM support
 ############################################################################
 
-option(WANT_GSM "Compile GSM Support" ON)
+option(WANT_GSM "Compile GSM support" ON)
 if(WANT_GSM)
 	set(COMPILE_USE_GSM 1)
 	set(CMAKE_STATUS_GSM_SUPPORT "Yes")
@@ -911,7 +910,7 @@ CHECK_INCLUDE_FILE(linux/soundcard.h CMAKE_HAVE_LINUX_SOUNDCARD_H)
 CHECK_INCLUDE_FILE(sys/soundcard.h CMAKE_HAVE_SYS_SOUNDCARD_H)
 CHECK_INCLUDE_FILE(soundcard.h CMAKE_HAVE_SOUNDCARD_H)
 
-option(WANT_DCC_VOICE "Compile DCC Voice Support" ON)
+option(WANT_DCC_VOICE "Compile DCC voice support" ON)
 if(WANT_DCC_VOICE)
 	if(CMAKE_HAVE_LINUX_SOUNDCARD_H)
 		set(CMAKE_STATUS_DCC_VOICE_SUPPORT "Yes, found linux/soundcard.h")
@@ -935,10 +934,10 @@ endif()
 # DCC video support + extended webcam support (LibV4L2)
 ############################################################################
 
-option(WANT_DCC_VIDEO "Compile DCC Video Support" OFF)
+option(WANT_DCC_VIDEO "Compile DCC video support" OFF)
 
 if(WANT_DCC_VIDEO)
-	# QtMultimediaWidgets
+	# Qt MultimediaWidgets
 	find_package(Qt5MultimediaWidgets)
 	if(Qt5MultimediaWidgets_FOUND)
 	    include_directories(${Qt5MultimediaWidgets_INCLUDE_DIRS})
@@ -958,7 +957,7 @@ endif()
 # Ogg/Vorbis and Ogg/Theora support
 ############################################################################
 
-option(WANT_OGG_THEORA "Compile Ogg/Vorbis+Theora Support" OFF)
+option(WANT_OGG_THEORA "Compile Ogg/Vorbis+Theora support" OFF)
 
 if(WANT_OGG_THEORA)
 	find_package(Theora)
@@ -979,7 +978,7 @@ endif()
 # Memory profiling support
 ############################################################################
 
-option(WANT_MEMORY_PROFILE "Compile Memory Profiling Support" OFF)
+option(WANT_MEMORY_PROFILE "Compile memory profiling support" OFF)
 if(WANT_MEMORY_PROFILE)
 	set(COMPILE_MEMORY_PROFILE 1)
 	set(CMAKE_STATUS_MEMORY_PROFILE_SUPPORT "User enabled")
@@ -991,7 +990,7 @@ endif()
 # Memory checks support
 ############################################################################
 
-option(WANT_MEMORY_CHECKS "Compile Memory Checking Support" OFF)
+option(WANT_MEMORY_CHECKS "Compile memory checking support" OFF)
 if(WANT_MEMORY_CHECKS)
 	set(COMPILE_MEMORY_CHECKS 1)
 	set(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "User enabled")
@@ -1061,10 +1060,10 @@ if(WANT_GTKSTYLE)
 endif()
 
 ###############################################################################
-# Translation (GetText) checks
+# Translation (gettext) checks
 ###############################################################################
 
-option(WANT_GETTEXT "Whether to use GetText to generate translations" ON)
+option(WANT_GETTEXT "Whether to use gettext to generate translations" ON)
 if(WANT_GETTEXT)
 	find_program(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
 	find_program(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
@@ -1152,7 +1151,7 @@ if(WANT_DOXYGEN)
 		)
 
 		add_custom_command(
-			COMMENT "generate the api documentation"
+			COMMENT "generate the API documentation"
 			COMMAND mkdir -p ${CMAKE_BINARY_DIR}/doc/api
 			COMMAND cd ${CMAKE_BINARY_DIR}/admin && ${DOXYGEN_EXECUTABLE} Doxyfile
 			TARGET devdocs
@@ -1215,9 +1214,9 @@ endif()
 
 # System configuration is now split into 2 files
 # kvi_sysconfig.h contains the "savable" configuration: stuff that
-# may be preserved between multiple cmake runs (and thus may save compilation time)
+# may be preserved between multiple CMake runs (and thus may save compilation time)
 # kvi_sysbuildinfo.h contains the configuration that changes at every
-# cmake run and must be recompiled every time. Extra care is taken
+# CMake run and must be recompiled every time. Extra care is taken
 # inside the sources to include kvi_sysbuildinfo.h in only ONE file (so only
 # linking of kvilib is done if only kvi_sysbuildinfo.h changes.
 
@@ -1336,61 +1335,61 @@ else()
 endif()
 
 message(STATUS " ")
-message(STATUS "Ok, this is the configuration I've worked out:")
+message(STATUS "OK, this is the configuration I've worked out:")
 if(${CONFIG_IS_UPTODATE})
 	message(STATUS "(I found an old config that was exactly the same and kept it to save compilation time)")
 endif()
 message(STATUS " ")
 message(STATUS "Paths:")
-message(STATUS "   Binary Path                 : ${KVIRC_BIN_PATH}")
-message(STATUS "   Library Path                : ${KVIRC_LIB_PATH}")
-message(STATUS "   Modules Path                : ${KVIRC_MOD_PATH}")
-message(STATUS "   Man Path                    : ${KVIRC_MAN_PATH}")
+message(STATUS "   Binary path                 : ${KVIRC_BIN_PATH}")
+message(STATUS "   Library path                : ${KVIRC_LIB_PATH}")
+message(STATUS "   Modules path                : ${KVIRC_MOD_PATH}")
+message(STATUS "   Man path                    : ${KVIRC_MAN_PATH}")
 message(STATUS "Compilation:")
 message(STATUS "   Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
-message(STATUS "   Verbose Output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
-message(STATUS "   Coexistence Support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
-message(STATUS "   Threading Support           : ${CMAKE_STATUS_THREADS_SUPPORT}")
-message(STATUS "   Apple Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
-message(STATUS "   Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
-message(STATUS "   Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
+message(STATUS "   Verbose output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
+message(STATUS "   Coexistence support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
+message(STATUS "   Threading support           : ${CMAKE_STATUS_THREADS_SUPPORT}")
+message(STATUS "   Apple universal binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
+message(STATUS "   Memory profile support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
+message(STATUS "   Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 message(STATUS "Features:")
-message(STATUS "   X11 Support                 : ${CMAKE_STATUS_X11_SUPPORT}")
-message(STATUS "   Qt Version                  : ${CMAKE_STATUS_QT_VERSION}")
-message(STATUS "   Qt Modules                  : ${qt5_kvirc_modules}")
-message(STATUS "   Qt/X11 Interface            : ${CMAKE_STATUS_QX11INFO_SUPPORT}")
-message(STATUS "   KDE Support                 : ${CMAKE_STATUS_KDE_SUPPORT}")
+message(STATUS "   X11 support                 : ${CMAKE_STATUS_X11_SUPPORT}")
+message(STATUS "   Qt version                  : ${CMAKE_STATUS_QT_VERSION}")
+message(STATUS "   Qt modules                  : ${qt5_kvirc_modules}")
+message(STATUS "   Qt/X11 interface            : ${CMAKE_STATUS_QX11INFO_SUPPORT}")
+message(STATUS "   KDE support                 : ${CMAKE_STATUS_KDE_SUPPORT}")
 if(CMAKE_RESULT_USING_KDE)
-	message(STATUS "   KDE Version                 : ${CMAKE_STATUS_KDE_VERSION}")
+	message(STATUS "   KDE version                 : ${CMAKE_STATUS_KDE_VERSION}")
 endif()
-message(STATUS "   IPv6 Support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
-message(STATUS "   Pseudo-Transparency Support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
-message(STATUS "   Spell Checker Support       : ${CMAKE_STATUS_SPELLCHECKER_SUPPORT}")
-message(STATUS "   IPC Support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
-message(STATUS "   Audio Backends              : ${CMAKE_STATUS_AUDIO_BACKENDS}")
+message(STATUS "   IPv6 support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
+message(STATUS "   Pseudo-transparency support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
+message(STATUS "   Spell-checker support       : ${CMAKE_STATUS_SPELLCHECKER_SUPPORT}")
+message(STATUS "   IPC support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
+message(STATUS "   Audio backends              : ${CMAKE_STATUS_AUDIO_BACKENDS}")
 message(STATUS "Cryptography:")
-message(STATUS "   Crypt Support And Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
-message(STATUS "   OpenSSL Support             : ${CMAKE_STATUS_SSL_SUPPORT}")
+message(STATUS "   Crypt support and engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
+message(STATUS "   OpenSSL support             : ${CMAKE_STATUS_SSL_SUPPORT}")
 message(STATUS "Scripting:")
-message(STATUS "   Perl Support                : ${CMAKE_STATUS_PERL_SUPPORT}")
-message(STATUS "   Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
-message(STATUS "DCC features:")
+message(STATUS "   Perl support                : ${CMAKE_STATUS_PERL_SUPPORT}")
+message(STATUS "   Python support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
+message(STATUS "DCC Features:")
 #message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
-message(STATUS "   DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
-message(STATUS "   GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
-message(STATUS "   DCC Video Support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
-message(STATUS "   Ogg/Theora Support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")
+message(STATUS "   DCC voice support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
+message(STATUS "   GSM support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
+message(STATUS "   DCC video support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
+message(STATUS "   Ogg/Theora support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")
 message(STATUS "Documentation:")
-message(STATUS "   GetText Support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}${GETTEXT_EXTRA_STATUS}")
-message(STATUS "   GetText Messages Tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
+message(STATUS "   gettext support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}${GETTEXT_EXTRA_STATUS}")
+message(STATUS "   gettext messages tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
 #message(STATUS "   Generate int. help files    : ${CMAKE_STATUS_GEN_USERDOC}")
-message(STATUS "   Doxygen Support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
+message(STATUS "   Doxygen support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 message(STATUS " ")
-message(STATUS "Build Date                     : ${CMAKE_KVIRC_BUILD_DATE}")
-message(STATUS "Build Version                  : ${CMAKE_KVIRC_VERSION_RELEASE}")
-message(STATUS "Build Codename                 : ${CMAKE_KVIRC_VERSION_CODENAME}")
-message(STATUS "Build Revision                 : ${CMAKE_KVIRC_BUILD_REVISION}")
-message(STATUS "Sources Date                   : ${CMAKE_KVIRC_SOURCES_DATE}")
+message(STATUS "Build date                     : ${CMAKE_KVIRC_BUILD_DATE}")
+message(STATUS "Build version                  : ${CMAKE_KVIRC_VERSION_RELEASE}")
+message(STATUS "Build codename                 : ${CMAKE_KVIRC_VERSION_CODENAME}")
+message(STATUS "Build revision                 : ${CMAKE_KVIRC_BUILD_REVISION}")
+message(STATUS "Sources date                   : ${CMAKE_KVIRC_SOURCES_DATE}")
 
 message(STATUS " ")
 if(MSVC)
