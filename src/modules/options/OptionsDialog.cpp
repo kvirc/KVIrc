@@ -146,11 +146,11 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 						"<p>" \
 							"%2" \
 						"</p>" \
-						"<br>" \
+						"<br style=\"line-height:5px;\"/>" \
 						"<p>" \
 							"%3" \
 						"</p>" \
-						"<br>" \
+						"<br style=\"line-height:5px;\"/>" \
 						"<p>" \
 							"%4" \
 						"</p>" \
