@@ -258,7 +258,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 
 	buffer = "<table width=\"100%\">" \
 			"<tr><td bgcolor=\"#303030\">" \
-			"<center><font color=\"#FFFFFF\"><b>";
+			"<font color=\"#FFFFFF\"><b>";
 
 	buffer += KviQString::toHtmlEscaped(nick);
 	buffer += "!";
@@ -266,15 +266,15 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	buffer += "@";
 	buffer += KviQString::toHtmlEscaped(e->host().isEmpty() ? QString("*") : e->host());
 
-	buffer += "</b></font></center></td></tr>";
+	buffer += "</b></font></td></tr>";
 	if(u)
 	{
 		QString szComment=u->user()->getProperty("comment");
 		if(!szComment.isEmpty())
 		{
-			buffer += "<tr bgcolor=\"#F0F0F0\"><td><center><font size=\"-1\">(";
+			buffer += "<tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\">(";
 			buffer += KviQString::toHtmlEscaped(szComment);
-			buffer += ")</font></center></td></tr>";
+			buffer += ")</font></td></tr>";
 		}
 	}
 
