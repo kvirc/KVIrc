@@ -36,10 +36,10 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 
 	createLayout();
 
-	addLabel(0,0,0,0,__tr2qs_ctx("<p>The <b>Client-To-Client Protocol</b> (CTCP) " \
+	addLabel(0,0,0,0,__tr2qs_ctx("<p>The <b>Client-to-client protocol</b> (CTCP) " \
 		"is used to transmit special control messages over an IRC connection. " \
 		"These messages can request information from clients or negotiate file transfers." \
-		"<br><br></p>","options"));
+		"</p>","options"));
 
 
 	KviTalGroupBox *gs = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("CTCP Replies","options"));
@@ -64,7 +64,7 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgement for CTCP PAGE messages.","options"));
+		__tr2qs_ctx("This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgment for CTCP PAGE messages.","options"));
 
 	addBoolSelector(gs,__tr2qs_ctx("Show the CTCP replies in the active window","options"),KviOption_boolCtcpRepliesToActiveWindow);
 
