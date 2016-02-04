@@ -952,7 +952,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	szBuffer += p9;
 */
 	szBuffer += p10;
-	szBuffer += "</font>";
+	//szBuffer += "</font>";
 
 
 
