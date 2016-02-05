@@ -191,7 +191,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pRealEditor->setText(n->realName());
 	pPropertiesBoxLayout->addWidget(m_pRealEditor,4,1);
 
-	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
+	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network." \
 		"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.","options"));
 
 	//server encoding
@@ -202,7 +202,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for the servers in this network. " \
-		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
+		"This encoding will be used for server specific needs, like referencing nicknames and channel names.<br>" \
 		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.","options"));
 
@@ -214,7 +214,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pTextEncodingEditor,2,1);
 	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for the servers in this network. " \
-		"This encoding will be used as the default for text messages." \
+		"This encoding will be used as the default for text messages.<br>" \
 		"If you choose \"Use System Encoding\" then the encoding will be set to the system-wide " \
 		"value that you choose in the \"Encoding\" page of the options dialog.","options"));
 
@@ -748,7 +748,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,iRow,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for this server. " \
-		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
+		"This encoding will be used for server specific needs, like referencing nicknames and channel names.<br>" \
 		"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
 		"network that this server belongs to.","options"));
 
@@ -762,7 +762,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pTextEncodingEditor,iRow,1);
 	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("This box allows you to choose the preferred encoding for this server. " \
-			"This encoding will be used as the default for text messages." \
+			"This will be used as the default encoding for all text messages.<br>" \
 			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
 			"network that this server belongs to.","options"));
 
