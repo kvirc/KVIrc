@@ -156,11 +156,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("AutoAcceptDccVoice", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVoice", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVoiceWhenAutoAccepted",true,KviOption_sectFlagDcc),
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	BOOL_OPTION("UseIdentService",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
-#else
 	BOOL_OPTION("UseIdentService",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
-#endif
 	BOOL_OPTION("ShowTipAtStartup",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("IdentdEnableIPv6",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
