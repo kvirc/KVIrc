@@ -513,7 +513,7 @@ void KviTopicWidget::contextPopupAboutToShow()
 	if(!m_pContextPopup)
 		return; // hm ?
 	m_pContextPopup->clear();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs("Copy to clipboard"),this,SLOT(copy()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs("Copy Topic to Clipboard"),this,SLOT(copy()));
 }
 
 void KviTopicWidget::copy()
