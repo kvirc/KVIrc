@@ -58,7 +58,7 @@ ReserveFile "${NSISDIR}\Plugins\UserInfo.dll"
 
 !insertmacro MUI_LANGUAGE "English"
 LangString UnLocalDataDescr ${LANG_ENGLISH} "This will delete your settings, themes and logs. Keep it unchecked if you plan to reinstall KVIrc later."
-LangString UnLocalData ${LANG_ENGLISH} "Settings"
+LangString UnLocalData ${LANG_ENGLISH} "Settings and logs"
 LangString UnGeneralFiles ${LANG_ENGLISH} "Program files"
 LangString ProgramDescription ${LANG_ENGLISH} "Visual IRC client"
 LangString TraySection ${LANG_ENGLISH} "Quick launch icon"
