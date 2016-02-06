@@ -2,10 +2,8 @@ version: 0.0.0.0.1-branch-{branch}-build-{build}
 cache:
     - c:\OpenSSL-Win32 -> .appveyor.yml
     - c:\OpenSSL-Win64 -> .appveyor.yml
-    - 'c:\Program Files (x86)\NSIS -> .appveyor.yml'
     - c:\deps -> .appveyor.yml
     - c:\Strawberry -> .appveyor.yml
-    - c:\enchant.7z -> .appveyor.yml
     - c:\spellcheck-dicts -> .appveyor.yml
     - c:\ProgramData\chocolatey -> .appveyor.yml
 environment:
@@ -57,7 +55,7 @@ install:
     - c:\cygwin\bin\find /cygdrive/c/OpenSSL-%ssl_arch% "-type" f
     - ps: |
         if (Test-Path "c:/Program Files (x86)/NSIS/makensis.exe") {
-            echo "using nsis from cache"
+            echo "using preinstalled nsis"
         } else {
             choco install nsis -y
         }
