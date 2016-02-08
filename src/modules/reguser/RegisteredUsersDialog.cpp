@@ -833,7 +833,7 @@ void RegisteredUsersDialog::importClicked()
 	KviFile f(buffer);
 	if(!f.open(QIODevice::ReadOnly))
 	{
-		KviMessageBox::warning(__tr2qs_ctx("Can't open file %s for reading.","register"),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("Can't open file %Q for reading.","register"),&buffer);
 		return;
 	}
 
@@ -844,14 +844,14 @@ void RegisteredUsersDialog::importClicked()
 
 	if(hf.magic != KVI_REGUSER_DB_FILE_MAGIC)
 	{
-		KviMessageBox::warning(__tr2qs_ctx("The file %s doesn't appear to be a valid registered users database.","register"),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("The file %Q doesn't appear to be a valid registered users database.","register"),&buffer);
 		f.close();
 		return;
 	}
 
 	if(hf.version != KVI_REGUSER_DB_FILE_VERSION)
 	{
-		KviMessageBox::warning(__tr2qs_ctx("The file %s contains an invalid registered users database version.","register"),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("The file %Q contains an invalid registered users database version.","register"),&buffer);
 		f.close();
 		return;
 	}
