@@ -560,7 +560,7 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 			this,SLOT(newAlias()));
 
 	m_pContextPopup->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::Alias)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 			__tr2qs_ctx("Add Namespace","editor"),
 			this,SLOT(newNamespace()));
 
