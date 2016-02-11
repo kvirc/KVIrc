@@ -962,8 +962,8 @@ void KviApplication::saveOptions()
 
 	if(!cfg.ensureWritable())
 	{
-		QMessageBox::warning(0, __tr2qs("KVIrc warning"),
-			__tr2qs("I can't write on the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continue, or any custom configuration will be lost.").arg(buffer)
+		QMessageBox::warning(0, __tr2qs("Warning While Writing Configuration - KVIrc"),
+			__tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, or else any custom configuration will be lost.").arg(buffer)
 		);
 	}
 	int i;
