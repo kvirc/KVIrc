@@ -84,7 +84,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] =
 	"openurl https://github.com/kvirc/KVIrc/issues",
 	"raweditor.open",
 	"popupeditor.open",
-	"dialog.file(open,\"Select a Script File\"){ if(!$str.isEmpty($0))parse $0; }",
+	"dialog.file(open,\"Select a Script File - KVIrc\"){ if(!$str.isEmpty($0))parse $0; }",
 	"actioneditor.open",
 	"quit",
 	"openurl http://www.kvirc.ru",

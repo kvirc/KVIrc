@@ -150,7 +150,7 @@ bool NickServRuleEditor::validate()
 {
 	QString s = m_pRegisteredNickEdit->text();
 
-	QString m = __tr2qs_ctx("Invalid NickServ Rule","options");
+	QString m = __tr2qs_ctx("Invalid NickServ Rule - KVIrc","options");
 	QString o = __tr2qs_ctx("OK","options");
 
 	if(s.isEmpty())

@@ -1111,7 +1111,7 @@ void PopupEditorWidget::popupRefresh(const QString &szName)
 			if(ch==m_pLastEditedItem)
 			{
 				if(
-					QMessageBox::warning(0,__tr2qs_ctx("OverWrite Current Popup","editor"),
+					QMessageBox::warning(0,__tr2qs_ctx("Overwrite Current Popup - KVIrc","editor"),
 						__tr2qs_ctx("An external script has changed the popup you are currently editing. Do you want to accept the external changes?","editor"),
 						QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
 				) return;
@@ -1190,7 +1190,7 @@ void PopupEditorWidget::exportCurrentPopup()
 
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the popup file.","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write to File Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the popups file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 
@@ -1238,7 +1238,7 @@ void PopupEditorWidget::exportPopups(bool bSelectedOnly)
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write to File Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the popups file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 

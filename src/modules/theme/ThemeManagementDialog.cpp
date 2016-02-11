@@ -365,7 +365,7 @@ void ThemeManagementDialog::applyCurrentTheme()
 	{
 		QString szErr = out.lastError();
 		QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
-		QMessageBox::critical(this,__tr2qs_ctx("Apply Theme - KVIrc","theme"),szMsg,
+		QMessageBox::critical(this,__tr2qs_ctx("Apply Theme Error - KVIrc","theme"),szMsg,
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}

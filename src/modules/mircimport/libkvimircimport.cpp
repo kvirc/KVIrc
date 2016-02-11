@@ -114,7 +114,7 @@ int KviMircServersIniImport::doImport(const QString& filename)
 		} while(!entry.isEmpty());
 	} else {
 		QString szTmp = QString(__tr2qs("%1 doesn't look like a servers.ini file.\nImport failed.")).arg(filename);
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),szTmp);
+		QMessageBox::warning(0,__tr2qs("File Import Warning - KVIrc"),szTmp);
 	}
 	return iCount;
 }

@@ -957,7 +957,7 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	if(!KviDefaultScriptManager::instance()->isDefscriptUpToDate())
 	{
 		switch(
-			QMessageBox::question(0,__tr2qs("Update default scripts"),
+			QMessageBox::question(0,__tr2qs("Update Default Scripts - KVIrc"),
 				__tr2qs("<b>Hi!</b><br><br>" \
 					"<b>It seems that you have just upgraded KVIrc from a previous version.</b><br><br>" \
 					"The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>" \
@@ -1023,10 +1023,10 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	bSuggestedOnce = true;
 
 	switch(
-		QMessageBox::question(0,__tr2qs("Installation problems?"),
-			__tr2qs("<b>Oops...</b><br><br>" \
-				"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
-				"I might be wrong, but you seem to miss some of the features that the default KVIrc script provides." \
+		QMessageBox::question(0,__tr2qs("Detected Installation Problems - KVIrc"),
+			__tr2qs("<b>Oops!</b><br><br>" \
+				"<b>There are some reasons that make me think your KVIrc installation is incomplete.</b><br><br>" \
+				"I might be wrong, but you seem to be missing some of the features that the default KVIrc script provides." \
 				"This may happen because you have upgraded to an unstable Git version, " \
 				"because you have accidentally deleted or damaged your configuration files, " \
 				"because you have installed an incomplete script " \

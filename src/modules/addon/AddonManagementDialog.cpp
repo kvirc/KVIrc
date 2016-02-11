@@ -275,7 +275,7 @@ void AddonManagementDialog::uninstallScript()
 
 	if(QMessageBox::question(
 		this,
-		__tr2qs_ctx("Confirm addon uninstallation","addon"),
+		__tr2qs_ctx("Confirm Addon Uninstallation - KVIrc","addon"),
 		txt, __tr2qs_ctx("Yes","addon"), __tr2qs_ctx("No","addon"),0,1
 		) != 0) return;
 

@@ -536,7 +536,7 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 
 void KviStatusBar::mouseDoubleClickEvent(QMouseEvent *)
 {
-	const QString szTitle = __tr2qs("Network information");
+	const QString szTitle = __tr2qs("Network Information - KVIrc");
 	QString szText, szUserModes, szAway;
 
 	KviIrcContext * c = m_pFrame->activeContext();
@@ -584,7 +584,7 @@ void KviStatusBar::mouseDoubleClickEvent(QMouseEvent *)
 	szText += ": ";
 	szText += c->connection()->userInfo()->localHostIp();
 	szText += "\n";
-	szText += __tr2qs("User Modes");
+	szText += __tr2qs("User modes");
 	szText += ": ";
 	szText += szUserModes;
 	szText += "\n";

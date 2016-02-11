@@ -2136,7 +2136,7 @@ void OptionsWidget_servers::clearList()
 	txt += "</p>";
 
 	if(QMessageBox::question(this,
-		__tr2qs_ctx("Confirm Clear Server List - KVIrc","options"),txt,
+		__tr2qs_ctx("Confirm Clearing Server List - KVIrc","options"),txt,
 		__tr2qs_ctx("Yes","options"), __tr2qs_ctx("No","options"),0,1
 		) != 0) return;
 
