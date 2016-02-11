@@ -215,7 +215,7 @@ void HelpWindow::startSearch()
 				s = s.toLower();
 				s = s.simplified();
 				if ( s.contains( '*' ) ) {
-				QMessageBox::warning( this, tr( "Full Text Search" ),
+				QMessageBox::warning( this, tr( "Full Text Search - KVIrc" ),
 					tr( "Using a wildcard within phrases is not allowed." ) );
 				return;
 				}
@@ -224,7 +224,7 @@ void HelpWindow::startSearch()
 				beg = str.indexOf( '\"', end + 1);
 			}
 		} else {
-			QMessageBox::warning( this, tr( "Full Text Search" ),
+			QMessageBox::warning( this, tr( "Full Text Search - KVIrc" ),
 				tr( "The closing quotation mark is missing." ) );
 			return;
 		}

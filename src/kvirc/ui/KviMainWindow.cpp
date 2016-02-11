@@ -858,7 +858,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 			txt += __tr2qs("quit KVIrc?");
 			txt += "</p>";
 
-			switch(QMessageBox::warning(this,__tr2qs("Confirmation - KVIrc"),txt,__tr2qs("&Yes"),__tr2qs("&Always"),__tr2qs("&No"),2,2))
+			switch(QMessageBox::warning(this,__tr2qs("Confirm Close - KVIrc"),txt,__tr2qs("&Yes"),__tr2qs("&Always"),__tr2qs("&No"),2,2))
 			{
 				case 0:
 					// ok to close

@@ -134,7 +134,7 @@ SetupPage::~SetupPage()
 SetupWizard::SetupWizard()
 : KviTalWizard(0)
 {
-	setWindowTitle(__tr2qs("KVIrc Setup"));
+	setWindowTitle(__tr2qs("Setup Wizard - KVIrc"));
 
 	setWindowModality(Qt::NonModal); // non modal, otherwise the dialogs we show will not be usable
 
@@ -711,7 +711,7 @@ void SetupWizard::chooseOldDataPath()
 	// FIXME: We'd like to show hidden directories here ($HOME/.kvirc is hidden)...
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
 			m_pDataPathEdit->text(),
-			__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),
+			__tr2qs("Choose an Existing Configuration Folder - KVIrc Setup"),
 			this
 		);
 
@@ -726,7 +726,7 @@ void SetupWizard::chooseOldDataPath()
 		if(
 			QMessageBox::question(
 				this,
-				__tr2qs("Do Not Overwrite Folder? - KVIrc"),
+				__tr2qs("Confirm Setting Configuration Folder - KVIrc Setup"),
 				__tr2qs("The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
 					.arg(szBuffer),
 				__tr2qs("&Yes"),
@@ -932,7 +932,7 @@ void SetupWizard::setUrlHandlers()
 
 void SetupWizard::reject()
 {
-	if(QMessageBox::warning(this,__tr2qs("Abort Setup - KVIrc Setup"),
+	if(QMessageBox::warning(this,__tr2qs("Confirm Setup Abort - KVIrc Setup"),
 		__tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return;
 
@@ -996,8 +996,8 @@ void SetupWizard::accept()
 			if(!KviFileUtils::makeDir(szDir))
 			{
 				KviMessageBox::warning(__tr("Can't create directory %s.\n" \
-					"You may not have write permission " \
-					"for that path. Please go back and choose another directory."));
+					"You may not have write permission for that path.\n" \
+					"Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);
 				return;
 			}

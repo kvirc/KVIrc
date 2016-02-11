@@ -387,7 +387,7 @@ void ThemeManagementDialog::deleteTheme()
 			continue;
 
 		if(!KviMessageBox::yesNo(
-			__tr2qs_ctx("Delete Theme - KVIrc","theme"),
+			__tr2qs_ctx("Delete Selected Theme - KVIrc","theme"),
 			__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
 			&(pInfo->name()), &(pInfo->version()))
 		)
@@ -407,7 +407,7 @@ void ThemeManagementDialog::installFromFile()
 
 	if(!KviFileDialog::askForOpenFileName(
 			szFileName,
-			__tr2qs_ctx("Open Theme - KVIrc","theme"),
+			__tr2qs_ctx("Select a Installation File - KVIrc","theme"),
 			QString(),
 			KVI_FILTER_THEME,
 			false,

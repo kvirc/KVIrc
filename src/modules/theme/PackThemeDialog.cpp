@@ -158,7 +158,7 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 		szPackageName = "MyThemes";
 		szPackageAuthor = __tr2qs_ctx("Your name here","theme");
 		szPackageVersion = "1.0.0";
-		szPackageDescription = __tr2qs_ctx("Put a package description here...","theme");
+		szPackageDescription = __tr2qs_ctx("Enter a package description here...","theme");
 	} else {
 		if(pThemeInfoList->count() > 0)
 		{
@@ -364,7 +364,7 @@ void PackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 		return;
 	}
 
-	QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image","theme"),
+	QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image!","theme"),
 		QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	m_pImageSelector->setSelection("");
@@ -458,8 +458,8 @@ bool PackThemeDialog::packTheme()
 	}
 
 	QMessageBox::information(this,
-			__tr2qs_ctx("Export Theme - KVIrc","theme"),
-			__tr2qs("Package saved successfully"),
+			__tr2qs_ctx("Exporting Theme - KVIrc","theme"),
+			__tr2qs("Theme package saved successfully."),
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 		);
 

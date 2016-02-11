@@ -438,7 +438,7 @@ KviIconWidget::KviIconWidget(QWidget * pPar)
 
 void KviIconWidget::init()
 {
-	setWindowTitle(__tr2qs("Icon Table"));
+	setWindowTitle(__tr2qs("Icon Table - KVIrc"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager))));
 
 	int iRows = KviIconManager::IconCount / 20;

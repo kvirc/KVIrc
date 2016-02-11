@@ -54,7 +54,7 @@
 
 static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] =
 {
-	"echo INTERNAL COMMAND ERROR: INDEX OUT OF RANGE",
+	"echo Internal command error: index out of range",
 	"help.open -n -m",
 	"help.open -n",
 	"about.kvirc",
@@ -84,7 +84,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] =
 	"openurl https://github.com/kvirc/KVIrc/issues",
 	"raweditor.open",
 	"popupeditor.open",
-	"dialog.file(open,\"Select a Script File\"){ if(!$str.isEmpty($0))parse $0; }",
+	"dialog.file(open,\"Select a File - KVIrc\"){ if(!$str.isEmpty($0))parse $0; }",
 	"actioneditor.open",
 	"quit",
 	"openurl http://www.kvirc.ru",

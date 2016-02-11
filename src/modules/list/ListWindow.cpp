@@ -348,7 +348,9 @@ QSize ListWindow::sizeHint() const
 
 void ListWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = QString(__tr2qs("Channel list [IRC context %1]")).arg(m_pConsole->context()->id()); //this is a tooltip
+	//this both a tooltip and a window title, capitalization rules be dammed
+	//should be separated titles and tooltips
+	m_szPlainTextCaption = QString(__tr2qs("Channel List [IRC Context %1]")).arg(m_pConsole->context()->id());
 }
 
 void ListWindow::die()
@@ -389,7 +391,7 @@ void ListWindow::exportList()
 		szFile = __tr2qs("Channel list");
 	}
 
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose Filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Enter a Filename - KVIrc"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
 	{
 		if(QFileInfo(szFile).completeSuffix() != "kvc")
 			szFile.append(".kvc");
@@ -413,7 +415,7 @@ void ListWindow::importList()
 {
 	QString szFile;
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose Filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a File - KVIrc"),QString(),KVI_FILTER_CONFIG,false,false,this))
 	{
 
 		m_pItemList->setAutoDelete(true);

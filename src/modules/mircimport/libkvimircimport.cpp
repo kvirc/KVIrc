@@ -114,7 +114,7 @@ int KviMircServersIniImport::doImport(const QString& filename)
 		} while(!entry.isEmpty());
 	} else {
 		QString szTmp = QString(__tr2qs("%1 doesn't look like a servers.ini file.\nImport failed.")).arg(filename);
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),szTmp);
+		QMessageBox::warning(0,__tr2qs("File Import - KVIrc"),szTmp);
 	}
 	return iCount;
 }
@@ -123,7 +123,7 @@ void KviMircServersIniImport::start()
 {
 	//KviCString buffer;
 	QString buffer;
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a servers.ini File"),0,KVI_FILTER_INI,false,true,g_pMainWindow))return;
+	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Select a File - KVIrc"),0,KVI_FILTER_INI,false,true,g_pMainWindow))return;
 
 	doImport(buffer);
 	delete this;
