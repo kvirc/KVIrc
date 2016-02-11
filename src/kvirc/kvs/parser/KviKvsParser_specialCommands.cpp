@@ -393,7 +393,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 					destructor
 					{
-						[cmd]echo[/cmd] Oops... being destroyed
+						[cmd]echo[/cmd] Oops! being destroyed
 					}
 
 					sayHello(this function expects no parameters)
