@@ -134,7 +134,7 @@ SetupPage::~SetupPage()
 SetupWizard::SetupWizard()
 : KviTalWizard(0)
 {
-	setWindowTitle(__tr2qs("KVIrc Setup"));
+	setWindowTitle(__tr2qs("Setup Wizard - KVIrc"));
 
 	setWindowModality(Qt::NonModal); // non modal, otherwise the dialogs we show will not be usable
 

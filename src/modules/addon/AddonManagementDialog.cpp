@@ -98,7 +98,7 @@ AddonListViewItem::~AddonListViewItem()
 AddonManagementDialog::AddonManagementDialog(QWidget * p)
 : QWidget(p)
 {
-	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
+	setWindowTitle(__tr2qs_ctx("Manage Script-based Addons - KVIrc","addon"));
 	setObjectName("Addon manager");
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Addons)));
 

@@ -223,7 +223,7 @@ void CustomToolBarPropertiesDialog::iconSelected(const QString &szIconId)
 
 void CustomToolBarPropertiesDialog::iconButtonClicked()
 {
-	KviImageDialog * dlg = new KviImageDialog(this,__tr2qs_ctx("Please Choose the Icon for the Toolbar","editor"));
+	KviImageDialog * dlg = new KviImageDialog(this,__tr2qs_ctx("Choose a Toolbar Icon - KVIrc","editor"));
 	if(dlg->exec() != QDialog::Accepted)
 	{
 		delete dlg;
@@ -292,7 +292,7 @@ CustomizeToolBarsDialog::CustomizeToolBarsDialog(QWidget * p)
 : QWidget(p)
 {
 	setObjectName("Toolbar_editor");
-	setWindowTitle(__tr2qs_ctx("Customize Toolbars","editor"));
+	setWindowTitle(__tr2qs_ctx("Customize Toolbars - KVIrc","editor"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ToolBarEditor)));
 
 	m_pInstance = this;

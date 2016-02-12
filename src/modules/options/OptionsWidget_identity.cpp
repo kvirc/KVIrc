@@ -58,7 +58,7 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 {
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Nickname Alternatives","options"));
+	setWindowTitle(__tr2qs_ctx("Nickname Alternatives - KVIrc","options"));
 
 	QLabel * l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Here you can choose up to three nickname " \

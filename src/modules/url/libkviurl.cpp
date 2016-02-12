@@ -396,7 +396,7 @@ UrlDialog::~UrlDialog()
 ConfigDialog::ConfigDialog()
 :QDialog()
 {
-	setWindowTitle(__tr2qs("URL Module Configuration"));
+	setWindowTitle(__tr2qs("URL Module Configuration - KVIrc"));
 
 	QGridLayout *g = new QGridLayout(this);
 

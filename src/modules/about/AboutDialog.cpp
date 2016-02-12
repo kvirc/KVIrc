@@ -76,7 +76,7 @@ extern AboutDialog * g_pAboutDialog;
 AboutDialog::AboutDialog()
 : KviTalTabDialog(0)
 {
-	setWindowTitle(__tr2qs_ctx("About KVIrc...","about"));
+	setWindowTitle(__tr2qs_ctx("About KVIrc","about"));
 	setOkButton(__tr2qs_ctx("Close","about"));
 
 	// About tab

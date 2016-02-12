@@ -104,7 +104,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	setModal(modal);
 	m_iMaxPreviewFileSize = maxPreviewFileSize;
 
-	setWindowTitle(szCaption.isEmpty() ? __tr2qs("Choose image ...") : szCaption);
+	setWindowTitle(szCaption.isEmpty() ? __tr2qs("Choose an Image File - KVIrc") : szCaption);
 
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));

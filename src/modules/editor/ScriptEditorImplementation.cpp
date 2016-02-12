@@ -538,7 +538,7 @@ ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent
 {
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
 	m_pSelectorInterfaceList->setAutoDelete(false);
-	setWindowTitle(__tr2qs_ctx("Preferences","editor"));
+	setWindowTitle(__tr2qs_ctx("Editor Configuration - KVIrc","editor"));
 	QGridLayout * g = new QGridLayout(this);
 	KviTalVBox * box = new KviTalVBox(this);
 	g->addWidget(box,0,0);
