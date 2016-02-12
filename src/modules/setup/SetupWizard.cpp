@@ -134,7 +134,7 @@ SetupPage::~SetupPage()
 SetupWizard::SetupWizard()
 : KviTalWizard(0)
 {
-	setWindowTitle(__tr2qs("KVIrc Setup"));
+	setWindowTitle(__tr2qs("Setup Wizard - KVIrc"));
 
 	setWindowModality(Qt::NonModal); // non modal, otherwise the dialogs we show will not be usable
 
@@ -932,7 +932,7 @@ void SetupWizard::setUrlHandlers()
 
 void SetupWizard::reject()
 {
-	if(QMessageBox::warning(this,__tr2qs("Abort Setup - KVIrc Setup"),
+	if(QMessageBox::warning(this,__tr2qs("Confirm Aborting Setup - KVIrc"),
 		__tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return;
 

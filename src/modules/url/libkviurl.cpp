@@ -238,7 +238,7 @@ void UrlDialog::close_slot()
 void UrlDialog::remove()
 {
 	if (!m_pUrlList->currentItem()) {
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Select an URL."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::warning(0,__tr2qs("Entry Selection Warning - KVIrc"),__tr2qs("Must select a URL entry from the list to remove it."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
 
@@ -331,7 +331,7 @@ void UrlDialog::sayToWin(QAction * act)
 		KviKvsScript::run(say,wnd);
 		g_pMainWindow->setActiveWindow(wnd);
 	} else {
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Window not found."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::warning(0,__tr2qs("Window Not Found Warning - KVIrc"),__tr2qs("Window not found."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 	}
 }
 
@@ -396,7 +396,7 @@ UrlDialog::~UrlDialog()
 ConfigDialog::ConfigDialog()
 :QDialog()
 {
-	setWindowTitle(__tr2qs("URL Module Configuration"));
+	setWindowTitle(__tr2qs("URL Module Configuration - KVIrc"));
 
 	QGridLayout *g = new QGridLayout(this);
 
@@ -514,7 +514,7 @@ void BanFrame::enableClicked()
 void BanFrame::addBan()
 {
 	bool ok = false;
-	QString *pText = new QString(QInputDialog::getText(this, __tr2qs("URL Ban List"),__tr2qs("Add a URL to ban"),QLineEdit::Normal,QString(),&ok));
+	QString *pText = new QString(QInputDialog::getText(this, __tr2qs("URL Ban List - KVIrc"),__tr2qs("Enter a URL to ban."),QLineEdit::Normal,QString(),&ok));
 	if (ok && !pText->isEmpty()) {
 		g_pBanList->append(pText);
 		m_pBanList->addItem(*pText);
@@ -527,7 +527,7 @@ void BanFrame::removeBan()
 		return;
 
 	if (!m_pBanList->currentItem()->isSelected()) {
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Select a ban."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::warning(0,__tr2qs("Entry Selection Warning - KVIrc"),__tr2qs("Must select a ban entry from the list to remove it."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
 	QString item(m_pBanList->currentItem()->text());

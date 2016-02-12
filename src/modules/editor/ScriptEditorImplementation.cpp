@@ -538,7 +538,7 @@ ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent
 {
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
 	m_pSelectorInterfaceList->setAutoDelete(false);
-	setWindowTitle(__tr2qs_ctx("Preferences","editor"));
+	setWindowTitle(__tr2qs_ctx("Editor Configuration - KVIrc","editor"));
 	QGridLayout * g = new QGridLayout(this);
 	KviTalVBox * box = new KviTalVBox(this);
 	g->addWidget(box,0,0);
@@ -955,7 +955,7 @@ void ScriptEditorImplementation::saveToFile()
 		{
 			QString szTmp;
 			QMessageBox::warning(this,
-				__tr2qs_ctx("Save Failed - KVIrc","editor"),
+				__tr2qs_ctx("Saving File Failed - KVIrc","editor"),
 				szTmp = QString(__tr2qs_ctx("Can't open the file %1 for writing.","editor")).arg(szFileName));
 		}
 	}
@@ -1030,7 +1030,7 @@ void ScriptEditorImplementation::loadFromFile()
 {
 	QString szFileName;
 	if(KviFileDialog::askForOpenFileName(szFileName,
-		__tr2qs_ctx("Load Script File - KVIrc","editor"),
+		__tr2qs_ctx("Load a Script File - KVIrc","editor"),
 		QString::null,KVI_FILTER_SCRIPT,false,true,this))
 	{
 		QString szBuffer;
@@ -1043,7 +1043,7 @@ void ScriptEditorImplementation::loadFromFile()
 		} else {
 			QString szTmp;
 			QMessageBox::warning(this,
-				__tr2qs_ctx("Open Failed - KVIrc","editor"),
+				__tr2qs_ctx("Opening File Failed - KVIrc","editor"),
 				szTmp = QString(__tr2qs_ctx("Can't open the file %1 for reading.","editor")).arg(szFileName));
 		}
 	}

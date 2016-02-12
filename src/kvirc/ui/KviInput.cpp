@@ -247,7 +247,7 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 										"Some IRC servers may also consider %1 lines of text a flood, " \
 										"in which case you will be disconnected from said server.<br><br>" \
 										"Do you still want the message to be sent?").arg(nLines));
-									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Multi-line Message"));
+									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Multi-line Message - KVIrc"));
 									pMsgBox.setIcon(QMessageBox::Question);
 									QAbstractButton *pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
 									/* QAbstractButton *pYesButton = */ pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);

@@ -231,7 +231,7 @@ void SaveThemeDialog::imageSelectionChanged(const QString &szImagePath)
 		return;
 	}
 
-	QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image","theme"),
+	QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme Error - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image.","theme"),
 		QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	m_pImageSelector->setSelection("");
@@ -252,7 +252,7 @@ void SaveThemeDialog::makeScreenshot()
 	g_pApp->getTmpFileName(szFileName,"screenshot.png");
 	if(!ThemeFunctions::makeKVIrcScreenshot(szFileName))
 	{
-		QMessageBox::critical(this,__tr2qs_ctx("Acquire Screenshot - KVIrc","theme"),__tr2qs_ctx("Failed to make screenshot","theme"),
+		QMessageBox::critical(this,__tr2qs_ctx("Acquire Screenshot Error - KVIrc","theme"),__tr2qs_ctx("Failed to make a screenshot.","theme"),
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
@@ -268,7 +268,7 @@ bool SaveThemeDialog::saveTheme()
 	sto.setName(m_pThemeNameEdit->text());
 	if(sto.name().isEmpty())
 	{
-		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("You must choose a theme name!","theme"),QMessageBox::Ok,
+		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme Error - KVIrc","theme"),__tr2qs_ctx("You must choose a theme name.","theme"),QMessageBox::Ok,
 			QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
@@ -290,7 +290,7 @@ bool SaveThemeDialog::saveTheme()
 	QString szAbsDir = sto.directory();
 	if(!KviFileUtils::makeDir(szAbsDir))
 	{
-		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("Unable to create theme directory.","theme"),
+		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme Error - KVIrc","theme"),__tr2qs_ctx("Unable to create theme directory.","theme"),
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
@@ -299,7 +299,7 @@ bool SaveThemeDialog::saveTheme()
 	{
 		QString szErr = sto.lastError();
 		QString szMsg2 = QString(__tr2qs_ctx("Unable to save theme: %1","theme")).arg(szErr);
-		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),szMsg2,
+		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme Error - KVIrc","theme"),szMsg2,
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
@@ -309,7 +309,7 @@ bool SaveThemeDialog::saveTheme()
 	{
 		if(!KviTheme::saveScreenshots(sto,m_szScreenshotPath))
 		{
-			QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected screenshot image: please fix it","theme"),
+			QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme Error - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected screenshot image: please fix it","theme"),
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 			setCurrentPage(m_pImageSelectionPage);
 			return false;
@@ -318,7 +318,7 @@ bool SaveThemeDialog::saveTheme()
 
 	QString szMsg = __tr2qs_ctx("Theme saved successfully to %1","theme").arg(szAbsDir);
 
-	QMessageBox::information(this,__tr2qs_ctx("Save Theme - KVIrc","theme"),szMsg,QMessageBox::Ok,
+	QMessageBox::information(this,__tr2qs_ctx("Save Theme Notice - KVIrc","theme"),szMsg,QMessageBox::Ok,
 		QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;

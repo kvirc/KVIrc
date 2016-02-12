@@ -58,7 +58,7 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par,const QString &n1,c
 {
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Nickname Alternatives","options"));
+	setWindowTitle(__tr2qs_ctx("Nickname Alternatives - KVIrc","options"));
 
 	QLabel * l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Here you can choose up to three nickname " \
@@ -598,7 +598,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 		{
 			QMessageBox::warning(
 					this,
-					__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
+					__tr2qs_ctx("Avatar File Dimensions Warning - KVIrc","options"),
 					__tr2qs_ctx(
 							"The avatar you have chosen is bigger than 1024x768 pixels.<br>" \
 							"Such a big image will not be seen on all the user monitors<br>" \
@@ -614,7 +614,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 			{
 				QMessageBox::warning(
 						this,
-						__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
+						__tr2qs_ctx("Avatar File Size Warning - KVIrc","options"),
 						__tr2qs_ctx(
 								"The avatar you have chosen is bigger than 500 KiB<br>" \
 								"and most clients will refuse to download it.<br>" \
@@ -832,7 +832,7 @@ void OptionsWidget_identityProfile::editProfileOkPressed()
 	{
 		if(m_pEditor->m_pNameEdit->text() == m_pTreeWidget->topLevelItem(i)->text(0) && i!=m_iCurrentEditedProfile)
 		{
-			QMessageBox::warning(this,__tr2qs_ctx("Invalid Profile Rule","options"),__tr2qs_ctx("There is already a profile with that name","options"),__tr2qs_ctx("OK","options"));
+			QMessageBox::warning(this,__tr2qs_ctx("Invalid Profile Rule - KVIrc","options"),__tr2qs_ctx("There is already a profile with that name","options"),__tr2qs_ctx("OK","options"));
 			return;
 		}
 	}

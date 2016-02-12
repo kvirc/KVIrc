@@ -241,7 +241,7 @@ namespace AddonFunctions
 		}
 
 		if(!KviFileUtils::deleteDir(szUnpackPath))
-			QMessageBox::warning(NULL,__tr2qs_ctx("Warning While Unpacking Addon","addon"),__tr2qs_ctx("Failed to delete the directory '%1'","addon").arg(szUnpackPath));
+			QMessageBox::warning(NULL,__tr2qs_ctx("Warning While Unpacking Addon - KVIrc","addon"),__tr2qs_ctx("Failed to delete the directory '%1'","addon").arg(szUnpackPath));
 
 		return true;
 	}

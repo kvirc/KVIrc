@@ -102,7 +102,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Network Details","options"));
+	setWindowTitle(__tr2qs_ctx("Network Details and Configuration - KVIrc","options"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
 
 	QString szTmp = "<font size=\"+1\"><b>";
@@ -522,7 +522,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_szHostname = s->hostName();
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Server Details","options"));
+	setWindowTitle(__tr2qs_ctx("Server Details and Configuration - KVIrc","options"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 
 	m_pHeaderLabel = new QLabel("",this); // the text will be set later
@@ -2136,7 +2136,7 @@ void OptionsWidget_servers::clearList()
 	txt += "</p>";
 
 	if(QMessageBox::question(this,
-		__tr2qs_ctx("Confirm Clear Server List - KVIrc","options"),txt,
+		__tr2qs_ctx("Confirm Clearing Server List - KVIrc","options"),txt,
 		__tr2qs_ctx("Yes","options"), __tr2qs_ctx("No","options"),0,1
 		) != 0) return;
 

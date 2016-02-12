@@ -222,7 +222,7 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	g_pLocalRegisteredUserDataBase->copyFrom(g_pRegisteredUserDataBase);
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::RegUsers)));
-	setWindowTitle(__tr2qs_ctx("Registered Users - KVIrc","register"));
+	setWindowTitle(__tr2qs_ctx("Registered Users and Configuration - KVIrc","register"));
 
 	QGridLayout * g = new QGridLayout(this);
 

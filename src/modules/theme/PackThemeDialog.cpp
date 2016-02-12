@@ -364,7 +364,7 @@ void PackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 		return;
 	}
 
-	QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image","theme"),
+	QMessageBox::critical(this,__tr2qs_ctx("Export Theme Error - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image.","theme"),
 		QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	m_pImageSelector->setSelection("");

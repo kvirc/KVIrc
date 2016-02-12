@@ -301,7 +301,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EXECUTEKVS,
-		"dialog.file(open,$tr(\"Select a Script File\")){ if(!$str.isEmpty($0))parse $0; }",
+		"dialog.file(open,$tr(\"Select a Script File - KVIrc\")){ if(!$str.isEmpty($0))parse $0; }",
 		__tr2qs("Execute Script..."),
 		__tr2qs("Allows executing a KVS script from file"),
 		KviActionManager::categoryScripting(),

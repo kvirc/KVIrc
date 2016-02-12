@@ -492,7 +492,7 @@ const char * const brushstyles_tbl[] = {
 		}[br]
 		[br]
 		%Hello=$new(hello)[br]
-		%Hello->$setWindowTitle("Painter effects" );[br]
+		%Hello->$setWindowTitle("Painter Effects" );[br]
 		%Hello->$setFont(28,"times",bold);[br]
 		%Btn=$new(button,%Hello)[br]
 		%Btn->$setmaximumwidth(80)[br]

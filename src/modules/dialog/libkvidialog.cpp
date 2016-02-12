@@ -162,7 +162,7 @@ void KviKvsCallbackMessageBox::done(int code)
 		to be the escape button of the dialog.[br]
 		<magic1>, <magic2>... are the magic parameters - evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
-		If the -b or -modal switch is specified the dialog will have blocking modal behaviour -
+		If the -b or -modal switch is specified the dialog will have blocking modal behavior -
 		it will appear above its parent widget and block its input until the dialog is closed.[br]
 		Once the dialog is displayed, the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed, passing the number of the button clicked
