@@ -258,7 +258,7 @@ PackThemeInfoWidget::PackThemeInfoWidget(PackThemeDialog * pParent)
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package Name:","theme"));
+	pLabel->setText(__tr2qs_ctx("Package name:","theme"));
 	pLayout->addWidget(pLabel,1,0);
 
 	m_pPackageNameEdit = new QLineEdit(this);
@@ -285,7 +285,7 @@ PackThemeInfoWidget::PackThemeInfoWidget(PackThemeDialog * pParent)
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 
 	pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Package Author:","theme"));
+	pLabel->setText(__tr2qs_ctx("Package author:","theme"));
 	pLayout->addWidget(pLabel,4,0);
 
 	m_pPackageAuthorEdit = new QLineEdit(this);

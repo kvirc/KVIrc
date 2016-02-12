@@ -1964,7 +1964,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
 	pLabel = new QLabel(pHBox);
 	pLabel->setObjectName("Inheritsclasslabel");
-	pLabel->setText(__tr2qs_ctx("Inherits Class:","editor"));
+	pLabel->setText(__tr2qs_ctx("Inherits class:","editor"));
 
 	m_pInheritsClassComboBox = new QComboBox(pHBox);
 	pLabel->setBuddy(m_pInheritsClassComboBox);
