@@ -305,13 +305,15 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		u->mask()->mask(mask);
 		buffer += "<tr bgcolor=\"#F0F0F0\"><td><font color=\"#000000\">";
 		buffer += __tr2qs("Registered as");
-		buffer += " <b>";
+		buffer += ": <b>";
 		buffer += KviQString::toHtmlEscaped(u->user()->name());
-		buffer += "</b>; Group ";
+		buffer += "</b>;";
+		buffer += "Group";
+		buffer += ": ";
 		buffer += KviQString::toHtmlEscaped(u->user()->group());
 		buffer += "</font></td></tr><tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\" color=\"#000000\">";
 		buffer += __tr2qs("(Matched by");
-		buffer += " ";
+		buffer += ": ";
 		buffer += KviQString::toHtmlEscaped(mask);
 		buffer += ")</font></td></tr>";
 	}
@@ -322,7 +324,8 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		if(connection()->getCommonChannels(nick,chans,false))
 		{
 			buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
-			buffer += __tr2qs("On <b>");
+			buffer += __tr2qs("On");
+			buffer += ": <b>";
 			buffer += KviQString::toHtmlEscaped(chans);
 			buffer += "</b></font></td></tr>";
 		}
@@ -331,7 +334,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	if(e->hasServer())
 	{
 		buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
-		buffer += __tr2qs("Using server <b>%1</b>").arg(KviQString::toHtmlEscaped(e->server()));
+		buffer += __tr2qs("Using server: <b>%1</b>").arg(KviQString::toHtmlEscaped(e->server()));
 
 		if(e->hasHops())
 		{
