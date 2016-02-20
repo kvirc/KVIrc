@@ -1939,7 +1939,18 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 
 void KviChannelWindow::updateModeLabel()
 {
-	QString szTip = __tr2qs("<b>Channel mode:</b>");
+	QString szTip = \
+	"<html>" \
+		"<body>" \
+			"<table width=\"100%\">";
+	szTip +=	START_TABLE_BOLD_ROW;
+	szTip +=	"<b><center>";
+	szTip += __tr2qs("Channel Mode");
+	szTip +=	"</b></center>";
+	szTip +=	END_TABLE_BOLD_ROW;
+	szTip +=	"</table>" \
+		"</body>" \
+	"</html>";
 	KviCString szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();

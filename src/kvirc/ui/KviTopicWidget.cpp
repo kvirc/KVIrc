@@ -357,11 +357,11 @@ void KviTopicWidget::updateToolTip()
 	if(!m_szTopic.isEmpty())
 	{
 		txt +=          START_TABLE_BOLD_ROW;
-		txt += __tr2qs("Channel topic:");
-		txt +=              END_TABLE_BOLD_ROW;
-
+		txt +=          "<center>";
+		txt +=  __tr2qs("Channel Topic");
+		txt +=          "</center>";
+		txt +=          END_TABLE_BOLD_ROW;
 		txt +=          "<tr><td>";
-
 		txt += KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic));
 		txt +=          "</td></tr>";
 
@@ -369,13 +369,13 @@ void KviTopicWidget::updateToolTip()
 		if(!m_szSetBy.isEmpty())
 		{
 			txt +=      "<tr><td bgcolor=\"#D0D0D0\"><font color=\"#000000\">";
-			txt +=       __tr2qs("Set by") + " <b>" + m_szSetBy + "</b>";
+			txt +=       __tr2qs("Set by") + ":" + " <b>" + m_szSetBy + "</b>";
 			txt +=      "</font></td></tr>";
 
 			if(!m_szSetAt.isEmpty())
 			{
 				txt +=      "<tr><td bgcolor=\"#D0D0D0\"><font color=\"#000000\">";
-				txt +=       __tr2qs("Set on") + " <b>" + m_szSetAt + "</b>";
+				txt +=       __tr2qs("Set on") + ":" + " <b>" + m_szSetAt + "</b>";
 				txt +=      "</font></td></tr>";
 			}
 		}
@@ -393,9 +393,9 @@ void KviTopicWidget::updateToolTip()
 		txt +=          "</td></tr>";
 	}
 
-	txt += "</table>" \
-		"</body>" \
-	"<html>";
+			txt += "</table>" \
+			"</body>" \
+		"</html>";
 
 	KviTalToolTip::add(this,txt);
 }
