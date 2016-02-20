@@ -926,8 +926,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 						QString buffer;
 						console()->getUserTipText(linkText,e,buffer);
 						tip = buffer;
-					} else tip = QString(__tr2qs("Nothing known about %1")).arg(linkText);
-				} else tip = QString(__tr2qs("Nothing known about %1 (no connection)")).arg(linkText);
+					} else tip = QString(__tr2qs("Nothing is known about %1")).arg(linkText);
+				} else tip = QString(__tr2qs("Nothing is known about %1 (no connection)")).arg(linkText);
 			}
 		}
 		break;
