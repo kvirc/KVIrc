@@ -153,7 +153,7 @@ void KviQueryWindow::getWindowListTipText(QString & szBuffer)
 	{
 		QString buffer;
 		console()->getUserTipText(m_szName,pEntry,szBuffer);
-	} else szBuffer = QString(__tr2qs("Nothing known about %1")).arg(m_szName);
+	} else szBuffer = QString(__tr2qs("Nothing is known about %1")).arg(m_szName);
 }
 
 QString KviQueryWindow::getInfoLabelText()
