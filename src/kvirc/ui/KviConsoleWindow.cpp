@@ -1266,9 +1266,8 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 		buffer += START_TABLE_NORMAL_ROW;
 
 		buffer += __tr2qs("Connected since");
+		buffer += ":";
 		buffer += html_space;
-		buffer += html_br;
-		buffer += html_tab;
 		buffer += html_bold;
 		buffer += szTmp;
 		buffer += html_eofbold;
@@ -1280,6 +1279,7 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Online for");
+		buffer += ":";
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += tspan;
@@ -1292,6 +1292,7 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Server idle for");
+		buffer += ":";
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += tspan;
