@@ -218,7 +218,7 @@ QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 		QString szTmp = KviTimeUtils::formatTimeInterval(kvi_unixTime() - c->userInfo()->awayTime(),KviTimeUtils::NoLeadingEmptyIntervals);
 
 		szRet += __tr2qs("Away since");
-		szRet += ': ';
+		szRet += ": ";
 		szRet += szTmp;
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to leave away mode");
