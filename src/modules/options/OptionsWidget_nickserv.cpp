@@ -47,9 +47,6 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 {
 	setWindowTitle(__tr2qs_ctx("NickServ Authentication Rule","options"));
 
-	QString html_center_begin = "";
-	QString html_center_end = "";
-
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Registered nickname:","options"),this);
