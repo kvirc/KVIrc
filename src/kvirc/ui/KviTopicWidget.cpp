@@ -362,7 +362,7 @@ void KviTopicWidget::updateToolTip()
 		txt +=          "</center>";
 		txt +=          END_TABLE_BOLD_ROW;
 		txt +=          "<tr><td>";
-		txt += KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic));
+		txt += KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(KviQString::toHtmlEscaped(m_szTopic)));
 		txt +=          "</td></tr>";
 
 		//FIXME hardcoding styles sucks
