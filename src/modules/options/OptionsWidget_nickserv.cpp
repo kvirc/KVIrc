@@ -53,7 +53,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 	gl->addWidget(l,0,0);
 
 	m_pRegisteredNickEdit = new QLineEdit(this);
-	KviTalToolTip::add(m_pRegisteredNickEdit,html_center_begin + __tr2qs_ctx("Put here the nickname that you have registered with NickServ","options") + html_center_end);
+	KviTalToolTip::add(m_pRegisteredNickEdit, __tr2qs_ctx("Put here the nickname that you have registered with NickServ","options"));
 	gl->addWidget(m_pRegisteredNickEdit,0,1,1,3);
 //	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
 
@@ -62,11 +62,11 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 
 	m_pNickServMaskEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pNickServMaskEdit,
-		html_center_begin + __tr2qs_ctx("This is the mask that NickServ must match to be correctly identified as the NickServ service. "  \
+		__tr2qs_ctx("This is the mask that NickServ must match to be correctly identified as the NickServ service. "  \
 			"This usually will be something like <b>NickServ!service@services.dalnet</b>.<br>" \
 			"You can use wildcards for this field, but generally it is a security flaw. " \
 			"If you're 100%% sure that NO user on the network can use the nickname \"NickServ\", " \
-			"the mask <b>NickServ!*@*</b> may be safe to use in this field.","options") + html_center_end);
+			"the mask <b>NickServ!*@*</b> may be safe to use in this field.","options"));
 	gl->addWidget(m_pNickServMaskEdit,1,1,1,3);
 //	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
 
@@ -78,21 +78,21 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 //	gl->addMultiCellWidget(m_pMessageRegexpEdit,2,2,1,3);
 
 	KviTalToolTip::add(m_pMessageRegexpEdit,
-		html_center_begin + __tr2qs_ctx("This is the simple regular expression that the identification request message "  \
+		__tr2qs_ctx("This is the simple regular expression that the identification request message "  \
 			"from NickServ must match in order to be correctly recognized.<br>" \
 			"The message is usually something like \"To identify yourself please use /ns IDENTIFY password\" " \
 			"and it is sent when the NickServ wants you to authenticate yourself. " \
-			"You can use the * and ? wildcards.","options") + html_center_end);
+			"You can use the * and ? wildcards.","options"));
 	l = new QLabel(__tr2qs_ctx("Identify command:","options"),this);
 	gl->addWidget(l,3,0);
 
 	m_pIdentifyCommandEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pIdentifyCommandEdit,
-		html_center_begin + __tr2qs_ctx("This is the command that will be executed when NickServ requests authentication " \
+		__tr2qs_ctx("This is the command that will be executed when NickServ requests authentication " \
 			"for the nickname described in this rule (if the both server and NickServ mask are matched). " \
 			"This usually will be something like <b>msg NickServ identify &lt;yourpassword&gt;</b>.<br>" \
 			"You can use <b>msg -q</b> if you don't want the password echoed on the screen. " \
-			"Please note that there is no leading slash in this command.","options") + html_center_end);
+			"Please note that there is no leading slash in this command.","options"));
 	gl->addWidget(m_pIdentifyCommandEdit,3,1,1,3);
 //	gl->addMultiCellWidget(m_pIdentifyCommandEdit,3,3,1,3);
 
@@ -105,8 +105,8 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 
 		m_pServerMaskEdit = new QLineEdit(this);
 		KviTalToolTip::add(m_pServerMaskEdit,
-			html_center_begin + __tr2qs_ctx("This is the mask that the current server must match in order " \
-			"for this rule to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" here...","options") + html_center_end);
+			__tr2qs_ctx("This is the mask that the current server must match in order " \
+			"for this rule to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" here...","options"));
 		gl->addWidget(m_pServerMaskEdit,4,1,1,3);
 //		gl->addMultiCellWidget(m_pServerMaskEdit,4,4,1,3);
 		iNextLine++;
