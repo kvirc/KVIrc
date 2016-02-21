@@ -362,34 +362,34 @@ void KviTopicWidget::updateToolTip()
 		txt +=          "</center>";
 		txt +=          END_TABLE_BOLD_ROW;
 		txt +=          "<tr><td>";
-		txt += KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(KviQString::toHtmlEscaped(m_szTopic)));
+		txt +=  KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(KviQString::toHtmlEscaped(m_szTopic)));
 		txt +=          "</td></tr>";
 
 		//FIXME hardcoding styles sucks
 		if(!m_szSetBy.isEmpty())
 		{
-			txt +=      "<tr><td bgcolor=\"#D0D0D0\"><font color=\"#000000\">";
-			txt +=       __tr2qs("Set by") + ":" + " <b>" + m_szSetBy + "</b>";
-			txt +=      "</font></td></tr>";
+			txt +=		"<tr><td bgcolor=\"#D0D0D0\"><font color=\"#000000\">";
+			txt +=  __tr2qs("Set by") + ":" + " <b>" + m_szSetBy + "</b>";
+			txt +=		"</font></td></tr>";
 
 			if(!m_szSetAt.isEmpty())
 			{
-				txt +=      "<tr><td bgcolor=\"#D0D0D0\"><font color=\"#000000\">";
-				txt +=       __tr2qs("Set on") + ":" + " <b>" + m_szSetAt + "</b>";
-				txt +=      "</font></td></tr>";
+				txt +=		"<tr><td bgcolor=\"#D0D0D0\"><font color=\"#000000\">";
+				txt +=  __tr2qs("Set on") + ":" + " <b>" + m_szSetAt + "</b>";
+				txt +=		"</font></td></tr>";
 			}
 		}
 
-		txt +=          "<tr><td>";
-		txt += __tr2qs("Double-click to edit...");
-		txt +=          "</td></tr>";
+		txt +=		"<tr><td>";
+		txt +=  __tr2qs("Double-click to edit...");
+		txt +=		"</td></tr>";
 
 	} else {
 		txt +=          "<tr><td>";
-		txt += __tr2qs("No topic is set");
-		txt +=          "</td></tr>";
+		txt +=  __tr2qs("No topic is set");
+		txt +=		"</td></tr>";
 		txt +=          "<tr><td>";
-		txt += __tr2qs("Double-click to set...");
+		txt +=  __tr2qs("Double-click to set...");
 		txt +=          "</td></tr>";
 	}
 
