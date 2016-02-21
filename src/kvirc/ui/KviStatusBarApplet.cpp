@@ -218,7 +218,7 @@ QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 		QString szTmp = KviTimeUtils::formatTimeInterval(kvi_unixTime() - c->userInfo()->awayTime(),KviTimeUtils::NoLeadingEmptyIntervals);
 
 		szRet += __tr2qs("Away since");
-		szRet += ' ';
+		szRet += ': ';
 		szRet += szTmp;
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to leave away mode");
@@ -227,11 +227,10 @@ QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to enter away mode");
 	}
-	szRet += "";
 	return szRet;
 
 not_connected:
-	szRet +=  __tr2qs("Not connected");
+	szRet += __tr2qs("Not connected");
 	szRet += "</b>";
 	return szRet;
 }
@@ -287,7 +286,7 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 			int vss = c->lagMeter()->secondsSinceLastCompleted();
 			int vmm = vss / 60;
 			vss = vss % 60;
-			KviQString::appendFormatted(szRet,__tr2qs("Last checked %d mins %d secs ago"),vmm,vss);
+			KviQString::appendFormatted(szRet,__tr2qs("Last checked: %d mins %d secs ago"),vmm,vss);
 		} else {
 			szRet += __tr2qs("Lag measure not available yet");
 			szRet += "</b>";
@@ -297,7 +296,6 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to enable it");
 	}
-	szRet += "";
 	return szRet;
 
 not_connected:
@@ -817,7 +815,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 	{
 		szRet += __tr2qs("Update missing");
 		szRet += "</b><br>";
-		szRet += __tr2qs("You didn't check yet.<br>Should I check it?");
+		szRet += __tr2qs("You haven't check yet.<br>Should I check for updates?");
 		szRet += "<br>";
 		szRet += __tr2qs("Double-click to check now");
 	} else if(m_bCheckFailed)
@@ -837,6 +835,5 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to get the latest version");
 	}
-	szRet += "";
 	return szRet;
 }
