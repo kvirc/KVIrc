@@ -162,7 +162,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	if(pServerInfo)
 		szDescription = pServerInfo->getChannelModeDescription(cMode);
 	if(szDescription.isEmpty())
-		szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+		szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 
 	pButton = new KviWindowToolPageButton(KviIconManager::UnBan,KviIconManager::Ban,szDescription,buttonContainer(),false);
 	pButton->setObjectName("ban_editor_button");
@@ -201,7 +201,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 					break;
 				case 'q':
 					// this could also be quiet bans..
-					// on/off are inverted here on purpose must fix eventually.
+					// on/off are inverted here on purpose because its broken somewhere, must fix eventually.
 					eIconOn = KviIconManager::KickOff;
 					eIconOff = KviIconManager::Kick;
 					break;
@@ -862,7 +862,7 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 		} else {
 			// (list.count() - 1) is > 1
 			szBuffer += "</b> ";
-			szBuffer += __tr2qs("and other %1 users").arg(list.count() - 1);
+			szBuffer += __tr2qs("and another %1 users").arg(list.count() - 1);
 		}
 		szBuffer += " ";
 		szBuffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
