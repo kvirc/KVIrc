@@ -680,13 +680,13 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 					szTitle = __tr2qs_ctx("Console on %1","log").arg(pLog->network());
 				break;
 				case LogFile::Query:
-					szTitle = __tr2qs_ctx("Query with %1 on %2","log").arg(pLog->name(),pLog->network());
+					szTitle = __tr2qs_ctx("Query with: %1 on %2","log").arg(pLog->name(),pLog->network());
 				break;
 				case LogFile::DccChat:
-					szTitle = __tr2qs_ctx("DCC Chat with %1","log").arg(pLog->name());
+					szTitle = __tr2qs_ctx("DCC Chat with: %1","log").arg(pLog->name());
 				break;
 				case LogFile::Other:
-					szTitle = __tr2qs_ctx("Something on %1","log").arg(pLog->network());
+					szTitle = __tr2qs_ctx("Something on: %1","log").arg(pLog->network());
 				break;
 			}
 
