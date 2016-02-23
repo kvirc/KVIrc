@@ -39,7 +39,6 @@
 #include "KviTopicWidget.h"
 #include "KviConfigurationFile.h"
 #include "KviFileDialog.h"
-#include "KviMessageBox.h"
 #include "kvi_fileextensions.h"
 #include "KviTalHBox.h"
 #include "KviHtmlGenerator.h"
@@ -52,6 +51,7 @@
 #include <QToolTip>
 #include <QDateTime>
 #include <QByteArray>
+#include <QMessageBox>
 
 extern KviPointerList<ListWindow> * g_pListWindowList;
 
@@ -362,7 +362,7 @@ void ListWindow::exportList()
 {
 	if(!m_pTreeWidget->topLevelItemCount())
 	{
-		KviMessageBox::warning(__tr2qs("You can't export an empty list"));
+		QMessageBox::warning(0, __tr2qs("Warning While Exporting - KVIrc"), __tr2qs("You can't export an empty list!"));
 		return;
 	}
 
