@@ -180,15 +180,15 @@ QString KviQueryWindow::getInfoLabelText()
 					szMask += "*";
 
 				if(pEntry->hasRealName())
-					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName, szMask, KviControlCodes::stripControlBytes(pEntry->realName()));
+					szTmp = __tr2qs("Query with: %1!%2 (%3)").arg(m_szName, szMask, KviControlCodes::stripControlBytes(pEntry->realName()));
 				else
-					szTmp = __tr2qs("Query with %1!%2").arg(m_szName, szMask);
+					szTmp = __tr2qs("Query with: %1!%2").arg(m_szName, szMask);
 
 				if(pEntry->hasServer())
-					szTmp += __tr2qs(", using server %1").arg(pEntry->server());
+					szTmp += __tr2qs(", using server: %1").arg(pEntry->server());
 
 				if(pEntry->hasHops())
-					szTmp += __tr2qs(" (%1 hops)").arg(pEntry->hops());
+					szTmp += __tr2qs(", hops: %1").arg(pEntry->hops());
 
 				if(pEntry->isAway())
 					szTmp += __tr2qs(", probably away");
