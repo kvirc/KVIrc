@@ -313,7 +313,7 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 	QString szTip;
 	if(pApplet)
 	{
-		szTip = "<table width=\"110%\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
+		szTip = "<table width=\"115%\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
 
 		QString szTipx = pApplet->tipText(pApplet->mapFromGlobal(mapToGlobal(e->pos())));
 		if(!szTipx.isEmpty())
@@ -324,20 +324,23 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 		}
 
 		szTip += "<tr><td><font color=\"#636363\" size=\"-1\">";
-		szTip += __tr2qs("<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right-click</b> to see the other options");
+		szTip += __tr2qs("<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around");
+		szTip += "<br>";
+		szTip += __tr2qs("<b>Right-click</b> to see the other options");
 		szTip += "</font></td></tr></table>";
 	} else {
-		szTip = "<p>";
+		szTip = "<table width=\"115%\"><tr><td>";
 
 		KviIrcContext * c = m_pFrame->activeContext();
 		if(c && (c->state() == KviIrcContext::Connected))
 		{
 			szTip += __tr2qs("<b>Double-click</b> to get network information");
-			szTip += "</p><p>";
+			szTip += "</td></tr><p></p>";
 		}
 
+		szTip += "<tr><td>";
 		szTip += __tr2qs("<b>Right-click</b> to add / remove applets");
-		szTip += "</p>";
+		szTip += "</td></tr></table>";
 	}
 	QToolTip::showText(e->globalPos(),szTip);
 }
