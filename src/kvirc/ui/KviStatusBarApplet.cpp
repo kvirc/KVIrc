@@ -269,7 +269,8 @@ void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 QString KviStatusBarLagIndicator::tipText(const QPoint &)
 {
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	QString szRet = "<b>";
+	QString szRet = __tr2qs("Lag");
+		szRet += ": <b>";
 
 	if(!c) goto not_connected;
 	if(c->state() != KviIrcConnection::Connected) goto not_connected;
@@ -281,12 +282,15 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 			int llls = lll / 1000;
 			int llld = (lll % 1000) / 100;
 			int lllc = (lll % 100) / 10;
-			KviQString::appendFormatted(szRet,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
+			KviQString::appendFormatted(szRet,"%d.%d%d",llls,llld,lllc);
 			szRet += "</b><br>";
 			int vss = c->lagMeter()->secondsSinceLastCompleted();
 			int vmm = vss / 60;
 			vss = vss % 60;
-			KviQString::appendFormatted(szRet,__tr2qs("Last checked: %d mins %d secs ago"),vmm,vss);
+			KviQString::appendFormatted(szRet,__tr2qs("Last checked"));
+			szRet += ": <b>";
+			KviQString::appendFormatted(szRet,__tr2qs("%d mins %d secs ago"),vmm,vss);
+			szRet += "</b><b>";
 		} else {
 			szRet += __tr2qs("Lag measure not available yet");
 			szRet += "</b>";
