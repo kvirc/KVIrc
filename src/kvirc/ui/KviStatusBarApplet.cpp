@@ -220,11 +220,11 @@ QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 		szRet += __tr2qs("Away since");
 		szRet += ": ";
 		szRet += szTmp;
-		szRet += "</b><br>";
+		szRet += "</b><br><br>";
 		szRet += __tr2qs("Double-click to leave away mode");
 	} else {
 		szRet += __tr2qs("Not away");
-		szRet += "</b><br>";
+		szRet += "</b><br><br>";
 		szRet += __tr2qs("Double-click to enter away mode");
 	}
 	return szRet;
@@ -819,8 +819,8 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 	{
 		szRet += __tr2qs("Update missing");
 		szRet += "</b><br>";
-		szRet += __tr2qs("You haven't check yet.<br>Should I check for updates?");
-		szRet += "<br>";
+		szRet += __tr2qs("You haven't check yet. Should I check for updates?");
+		szRet += "<br><br>";
 		szRet += __tr2qs("Double-click to check now");
 	} else if(m_bCheckFailed)
 	{
@@ -828,7 +828,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += "</b><br>";
 		szRet += __tr2qs("The remote server replied with ");
 		szRet += m_szHttpResponse;
-		szRet += "<br>";
+		szRet += "<br><br>";
 		szRet += __tr2qs("Double-click to retry");
 	} else if(!m_bUpdateStatus){
 		szRet += __tr2qs("No updates found");
@@ -836,7 +836,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += __tr2qs("Double-click to retry");
 	} else if(m_bUpdateStatus){
 		szRet += __tr2qs("New updates found");
-		szRet += "</b><br>";
+		szRet += "</b><br><br>";
 		szRet += __tr2qs("Double-click to get the latest version");
 	}
 	return szRet;
