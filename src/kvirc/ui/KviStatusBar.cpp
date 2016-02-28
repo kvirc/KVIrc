@@ -326,20 +326,21 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 		szTip += "<tr><td><font color=\"#636363\" size=\"-1\">";
 		szTip += __tr2qs("<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around");
 		szTip += "<br>";
-		szTip += __tr2qs("<b>Right-click</b> to see the other options");
+		szTip += __tr2qs("Right-click to see the other options");
 		szTip += "</font></td></tr></table>";
 	} else {
-		szTip = "<table width=\"115%\"><tr><td>";
+		szTip = "<table width=\"115%\" cellpadding=\"8\" cellspacing=\"5\">";
 
 		KviIrcContext * c = m_pFrame->activeContext();
 		if(c && (c->state() == KviIrcContext::Connected))
 		{
-			szTip += __tr2qs("<b>Double-click</b> to get network information");
-			szTip += "</td></tr><p></p>";
+			szTip += "<tr><td>";
+			szTip += __tr2qs("Double-click to get network information");
+			szTip += "</td></tr>";
 		}
 
 		szTip += "<tr><td>";
-		szTip += __tr2qs("<b>Right-click</b> to add / remove applets");
+		szTip += __tr2qs("Right-click to add / remove applets");
 		szTip += "</td></tr></table>";
 	}
 	QToolTip::showText(e->globalPos(),szTip);
