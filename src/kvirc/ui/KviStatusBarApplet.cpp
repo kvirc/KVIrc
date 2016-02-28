@@ -832,7 +832,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 		szRet += __tr2qs("Double-click to retry");
 	} else if(!m_bUpdateStatus){
 		szRet += __tr2qs("No updates found");
-		szRet += "</b><br>";
+		szRet += "</b><br><br>";
 		szRet += __tr2qs("Double-click to retry");
 	} else if(m_bUpdateStatus){
 		szRet += __tr2qs("New updates found");
