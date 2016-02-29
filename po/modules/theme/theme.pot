@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-01 00:57+0100\n"
+"POT-Creation-Date: 2016-02-29 12:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,6 @@ msgstr ""
 #: src/modules/theme/PackThemeDialog.cpp:62
 #: src/modules/theme/PackThemeDialog.cpp:367
 #: src/modules/theme/PackThemeDialog.cpp:453
-#: src/modules/theme/PackThemeDialog.cpp:461
 msgid "Export Theme - KVIrc"
 msgstr ""
 
@@ -94,7 +93,7 @@ msgid "Your name here"
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:161
-msgid "Put a package description here..."
+msgid "Enter a package description here..."
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:254
@@ -108,7 +107,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:261
-msgid "Package Name:"
+msgid "Package name:"
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:270
@@ -122,7 +121,7 @@ msgid "Description:"
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:288
-msgid "Package Author:"
+msgid "Package author:"
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:326
@@ -139,7 +138,7 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:367
 #: src/modules/theme/SaveThemeDialog.cpp:234
-msgid "Failed to load the selected image"
+msgid "Failed to load the selected image!"
 msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:378
@@ -156,12 +155,17 @@ msgstr ""
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 
+#: src/modules/theme/PackThemeDialog.cpp:461
+msgid "Exporting Theme - KVIrc"
+msgstr ""
+
 #: src/modules/theme/SaveThemeDialog.cpp:63
 #: src/modules/theme/SaveThemeDialog.cpp:234
 #: src/modules/theme/SaveThemeDialog.cpp:271
 #: src/modules/theme/SaveThemeDialog.cpp:293
 #: src/modules/theme/SaveThemeDialog.cpp:302
 #: src/modules/theme/SaveThemeDialog.cpp:312
+#: src/modules/theme/SaveThemeDialog.cpp:321
 msgid "Save Current Theme - KVIrc"
 msgstr ""
 
@@ -238,11 +242,11 @@ msgid "Acquire Screenshot - KVIrc"
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:255
-msgid "Failed to make screenshot"
+msgid "Failed to make a theme screenshot."
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:271
-msgid "You must choose a theme name!"
+msgid "You must choose a theme name."
 msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:293
@@ -259,10 +263,6 @@ msgstr ""
 
 #: src/modules/theme/SaveThemeDialog.cpp:319
 msgid "Theme saved successfully to %1"
-msgstr ""
-
-#: src/modules/theme/SaveThemeDialog.cpp:321
-msgid "Save Theme - KVIrc"
 msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:54
@@ -421,7 +421,7 @@ msgid "<b><u>Current Installed Theme:</u> %1</b>"
 msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:390
-msgid "Delete Theme - KVIrc"
+msgid "Delete Selected Theme - KVIrc"
 msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:391
@@ -429,7 +429,7 @@ msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr ""
 
 #: src/modules/theme/ThemeManagementDialog.cpp:410
-msgid "Open Theme - KVIrc"
+msgid "Select a Installation File - KVIrc"
 msgstr ""
 
 #: src/modules/theme/WebThemeInterfaceDialog.cpp:42
