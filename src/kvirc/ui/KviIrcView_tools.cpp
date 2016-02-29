@@ -116,7 +116,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 
 	// Filter tab
 
-	QLabel * pLabel = new QLabel(__tr2qs("Message types"), m_pOptionsWidget);
+	QLabel * pLabel = new QLabel(__tr2qs("Message Types"), m_pOptionsWidget); //groupbox title
 	pOptionsLayout->addWidget(pLabel,0,0,1,2);
 
 	m_pFilterView = new QTreeWidget(m_pOptionsWidget);
@@ -216,7 +216,7 @@ void KviIrcViewToolWidget::filterLoad()
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::Filters);
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a Filter File"),szInit,QString(),false,true,this))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a File - KVIrc"),szInit,QString(),false,true,this)) // This is the window title
 	{
 		QFile f(szFile);
 		if(f.open(QIODevice::ReadOnly))
@@ -241,7 +241,7 @@ void KviIrcViewToolWidget::filterSave()
 	QString szFile;
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::Filters,"filter.kvf");
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Select a Name for the Filter File"),szInit,QString(),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Enter a Filename - KVIrc"),szInit,QString(),false,false,true,this)) // this is the window title
 	{
 		QFile f(szFile);
 		if(f.open(QIODevice::WriteOnly))

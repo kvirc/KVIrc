@@ -495,7 +495,7 @@ void KviConsoleWindow::closeEvent(QCloseEvent *e)
 			if(!KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole))
 			{
 				switch(QMessageBox::warning(this,
-					__tr2qs("Confirmation - KVIrc"),
+					__tr2qs("Confirm Close - KVIrc"),
 					__tr2qs("You have just attempted to close a console window with an active connection inside.\n" \
 						"Are you sure you wish to terminate the connection?"),
 					__tr2qs("&Yes"),
@@ -530,7 +530,7 @@ void KviConsoleWindow::closeEvent(QCloseEvent *e)
 	if(!KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole))
 	{
 		switch(QMessageBox::warning(this,
-				__tr2qs("Confirmation - KVIrc"),
+				__tr2qs("Confirm Close - KVIrc"),
 				__tr2qs("You have just attempted to close the last console window.\nAre you sure you wish to quit KVIrc?"),
 				__tr2qs("&Always"),
 				__tr2qs("&Yes"),

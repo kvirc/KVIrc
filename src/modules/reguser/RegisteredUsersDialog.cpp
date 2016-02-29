@@ -222,7 +222,7 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	g_pLocalRegisteredUserDataBase->copyFrom(g_pRegisteredUserDataBase);
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::RegUsers)));
-	setWindowTitle(__tr2qs_ctx("Registered Users - KVIrc","register"));
+	setWindowTitle(__tr2qs_ctx("Registered Users and Configuration - KVIrc","register"));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -722,7 +722,7 @@ void RegisteredUsersDialog::exportClicked()
 
 	QString buffer;
 
-	if(!KviFileDialog::askForSaveFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register"),0,0,true,true,true,this))return;
+	if(!KviFileDialog::askForSaveFileName(buffer,__tr2qs_ctx("Enter a Filename - KVIrc","register"),0,0,true,true,true,this))return;
 
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 
@@ -826,7 +826,7 @@ void RegisteredUsersDialog::importClicked()
 	//KviCString buffer;
 	QString buffer;
 
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register"),QString(),QString(),false,true,this))return;
+	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs_ctx("Select a File - KVIrc","register"),QString(),QString(),false,true,this))return;
 
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 

@@ -423,7 +423,7 @@ void RawEditorWidget::exportCurrentHandler()
 
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the RAW event file.","editor"),__tr2qs_ctx("&OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Writing to File Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the RAW events file.","editor"),__tr2qs_ctx("&OK","editor"));
 	}
 }
 
@@ -458,7 +458,7 @@ void RawEditorWidget::exportAllEvents()
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the RAW events file.","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Writing to File Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the RAW events file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 

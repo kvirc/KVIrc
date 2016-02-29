@@ -1531,7 +1531,7 @@ void KviInputEditor::stopPasteSlow()
 
 void KviInputEditor::pasteFile()
 {
-	QString szTmp = QFileDialog::getOpenFileName(this,"Choose a file","","");
+	QString szTmp = QFileDialog::getOpenFileName(this,"Select a File - KVIrc","",""); //this is window title
 	if(!szTmp.isEmpty())
 	{
 		KviQString::escapeKvs(&szTmp, KviQString::EscapeSpace);

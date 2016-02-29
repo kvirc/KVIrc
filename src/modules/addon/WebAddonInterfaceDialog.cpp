@@ -40,7 +40,7 @@
 WebAddonInterfaceDialog::WebAddonInterfaceDialog(QWidget * par)
 : KviWebPackageManagementDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("KVIrc : Download Addons","theme"));
+	setWindowTitle(__tr2qs_ctx("Download Addons - KVIrc","theme"));
 
 	setPackagePageUrl(
 			QString::fromLatin1("http://www.kvirc.de/app/addons.php?version=" KVI_VERSION "&lang=%1")

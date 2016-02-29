@@ -60,7 +60,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 : QDialog(g_pMainWindow)
 {
 	setObjectName(name);
-	setWindowTitle(__tr2qs("Join Channels"));
+	setWindowTitle(__tr2qs("Join Channels - KVIrc"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 
 	m_pConsole = 0;

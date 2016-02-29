@@ -74,7 +74,7 @@ RegisteredUserPropertiesDialog::RegisteredUserPropertiesDialog(QWidget * p,KviPo
 	setWindowModality(Qt::WindowModal);
 	m_pPropertyDict = dict;
 
-	setWindowTitle(__tr2qs_ctx("Property Editor","register"));
+	setWindowTitle(__tr2qs_ctx("Property Editor - KVirc","register"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
 
 	QGridLayout * g = new QGridLayout(this);
@@ -208,7 +208,7 @@ RegisteredUserMaskDialog::RegisteredUserMaskDialog(QWidget * p,KviIrcMask * m)
 	setWindowModality(Qt::WindowModal);
 	m_pMask = m;
 
-	setWindowTitle(__tr2qs_ctx("Mask Editor","register"));
+	setWindowTitle(__tr2qs_ctx("Mask Editor - KVIrc","register"));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -316,7 +316,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 	//setMinimumSize(400,450);
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
-	setWindowTitle(__tr2qs_ctx("Registered User Entry","register"));
+	setWindowTitle(__tr2qs_ctx("Registered User Entry - KVIrc","register"));
 
 	QWidget * p1 = new QWidget(this);
 

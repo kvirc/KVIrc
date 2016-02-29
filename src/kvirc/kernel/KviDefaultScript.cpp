@@ -123,13 +123,13 @@ void KviDefaultScriptManager::restore()
 	// Check data
 	if(!compareVersions(szGlobal,&szError))
 	{
-		QMessageBox::warning(0,__tr2qs("Restore Default Script - Error"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::warning(0,__tr2qs("Restore Default - KVIrc"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
 
 	if(m_bNoNeedToRestore)
 	{
-		if(QMessageBox::warning(0,__tr2qs("Restore Default Script - Warning"),szError,QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes)
+		if(QMessageBox::warning(0,__tr2qs("Restore Default - KVIrc"),szError,QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes)
 			return;
 	}
 
@@ -403,7 +403,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 : QDialog()
 {
 	setObjectName("restore_default_script");
-	setWindowTitle(__tr2qs("Restore Default Script - KVIrc"));
+	setWindowTitle(__tr2qs("Restore Default - KVIrc"));
 	setWindowModality(Qt::WindowModal);
 	setModal(true);
 

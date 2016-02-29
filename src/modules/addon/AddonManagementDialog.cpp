@@ -98,7 +98,7 @@ AddonListViewItem::~AddonListViewItem()
 AddonManagementDialog::AddonManagementDialog(QWidget * p)
 : QWidget(p)
 {
-	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
+	setWindowTitle(__tr2qs_ctx("Manage Addons - KVIrc","addon"));
 	setObjectName("Addon manager");
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Addons)));
 
@@ -275,7 +275,7 @@ void AddonManagementDialog::uninstallScript()
 
 	if(QMessageBox::question(
 		this,
-		__tr2qs_ctx("Confirm addon uninstallation","addon"),
+		__tr2qs_ctx("Confirm Addon Uninstallation - KVIrc","addon"),
 		txt, __tr2qs_ctx("Yes","addon"), __tr2qs_ctx("No","addon"),0,1
 		) != 0) return;
 
@@ -303,7 +303,7 @@ void AddonManagementDialog::installScript()
 
 	if(!KviFileDialog::askForOpenFileName(
 		szFileName,
-		__tr2qs_ctx("Please Select the Addon Installation File","addon"),
+		__tr2qs_ctx("Select a Installation File - KVIrc","addon"),
 		QString(),KVI_FILTER_ADDON,false,true,this
 		)) return;
 

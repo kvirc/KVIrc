@@ -321,7 +321,7 @@ void AliasEditorWidget::aliasRefresh(const QString &szName)
 		return;
 	}
 	if(
-		QMessageBox::warning(0,__tr2qs_ctx("OverWrite Current Alias","editor"),
+		QMessageBox::warning(0,__tr2qs_ctx("Confirm Overwriting Current - KVIrc","editor"),
 				__tr2qs_ctx("An external script has changed the alias you are currently editing. Do you want to accept the external changes?","editor"),
 				QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
 		)
@@ -426,9 +426,9 @@ void AliasEditorWidget::renameItem()
 	bool bAlias = m_pLastEditedItem->isAlias();
 
 	if(bAlias)
-		szNewName = askForAliasName(__tr2qs_ctx("Rename Alias","editor"),__tr2qs_ctx("Please enter the new name for the alias","editor"),szName);
+		szNewName = askForAliasName(__tr2qs_ctx("Enter a New Name - KVIrc","editor"),__tr2qs_ctx("Please enter the new name for the alias.","editor"),szName);
 	else
-		szNewName = askForNamespaceName(__tr2qs_ctx("Rename Namespace","editor"),__tr2qs_ctx("Please enter the new name for the namespace","editor"),szName);
+		szNewName = askForNamespaceName(__tr2qs_ctx("Enter a New Name - KVIrc","editor"),__tr2qs_ctx("Please enter the new name for the namespace.","editor"),szName);
 	if(szNewName.isEmpty())return;
 
 	if(szName == szNewName)return;
@@ -440,7 +440,7 @@ void AliasEditorWidget::renameItem()
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Alias already exists","editor"),
+				__tr2qs_ctx("Name Already Exists - KVIrc","editor"),
 				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
@@ -452,7 +452,7 @@ void AliasEditorWidget::renameItem()
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Namespace already exists","editor"),
+				__tr2qs_ctx("Name Already Exists - KVIrc","editor"),
 				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
@@ -585,7 +585,7 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 
 	m_pContextPopup->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
-			__tr2qs_ctx("Export Selected in Single Files...","editor"),
+			__tr2qs_ctx("Export Selected into Single Files...","editor"),
             this,SLOT(exportSelectedSepFiles()))
             ->setEnabled(bHasSelected);
 
@@ -716,7 +716,7 @@ void AliasEditorWidget::exportSelectionInSinglesFiles(KviPointerList<AliasEditor
 	if (!l->first())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("There is no selection!","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Warning While Exporting - KVIrc","editor"),__tr2qs_ctx("Must select an entry from the list to export!","editor"),__tr2qs_ctx("OK","editor"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -752,7 +752,7 @@ void AliasEditorWidget::exportSelectionInSinglesFiles(KviPointerList<AliasEditor
 		{
 			QString szMsg;
 			szMsg = QString(__tr2qs_ctx("The file \"%1\" exists. Do you want to replace it?","editor")).arg(szFileName);
-			int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
+			int ret = QMessageBox::question(this,__tr2qs_ctx("Confirm Replacing File - KVIrc","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 			if (ret!=2)
 			{
 				KviFileUtils::writeFile(szCompletePath,tmp);
@@ -793,7 +793,7 @@ void AliasEditorWidget::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(szOut.isEmpty())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("The exported file would be empty: cowardly refusing to write it","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Warning While Exporting - KVIrc","editor"),__tr2qs_ctx("The exported file could be empty: cowardly refusing to write it.","editor"),__tr2qs_ctx("OK","editor"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -833,7 +833,7 @@ void AliasEditorWidget::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("OK","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Writing to File Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the aliases file.","editor"),__tr2qs_ctx("OK","editor"));
 		g_pAliasEditorModule->unlock();
 	}
 }
@@ -944,7 +944,7 @@ bool AliasEditorWidget::removeItem(AliasEditorTreeWidgetItem *it,bool * pbYesToA
 		}
 
 		g_pAliasEditorModule->lock();
-		int ret = QMessageBox::question(this,__tr2qs_ctx("Remove item","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
+		int ret = QMessageBox::question(this,__tr2qs_ctx("Confirm Removing Item - KVIrc","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 		g_pAliasEditorModule->unlock();
 		switch(ret)
 		{
@@ -1002,8 +1002,8 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::warning(this,
-				__tr2qs_ctx("Missing Alias Name","editor"),
-				__tr2qs_ctx("You must specify a valid name for the alias","editor"),
+				__tr2qs_ctx("Invalid or Missing Name - KVIrc","editor"),
+				__tr2qs_ctx("You must specify a valid name for the alias.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			continue;
@@ -1015,8 +1015,8 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Bad Alias Name","editor"),
-				__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators","editor"),
+				__tr2qs_ctx("Invalid Name - KVIrc","editor"),
+				__tr2qs_ctx("Aliases names can contain only letters, digits, underscores and '::' namespace separators.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
@@ -1029,7 +1029,7 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Bad Alias Name","editor"),
+				__tr2qs_ctx("Invalid Name - KVIrc","editor"),
 				__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name>?","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
@@ -1040,8 +1040,8 @@ QString AliasEditorWidget::askForAliasName(const QString &szAction,const QString
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Bad Alias Name","editor"),
-				__tr2qs_ctx("Found an empty namespace in alias name","editor"),
+				__tr2qs_ctx("Invalid Name - KVIrc","editor"),
+				__tr2qs_ctx("Found an empty namespace in alias name.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
@@ -1070,8 +1070,8 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::warning(this,
-				__tr2qs_ctx("Missing Namespace Name","editor"),
-				__tr2qs_ctx("You must specify a valid name for the namespace","editor"),
+				__tr2qs_ctx("Invalid or Missing Name - KVIrc","editor"),
+				__tr2qs_ctx("You must specify a valid name for the namespace.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			continue;
@@ -1083,8 +1083,8 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Bad Namespace Name","editor"),
-				__tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators","editor"),
+				__tr2qs_ctx("Invalid Name - KVIrc","editor"),
+				__tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
@@ -1097,8 +1097,8 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Bad Namespace Name","editor"),
-				__tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name>?","editor"),
+				__tr2qs_ctx("Invalid Name - KVIrc","editor"),
+				__tr2qs_ctx("Stray ':' character in namespace name: did you mean... <namespace>::<name>?","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
@@ -1108,8 +1108,8 @@ QString AliasEditorWidget::askForNamespaceName(const QString &szAction,const QSt
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs_ctx("Bad Namespace Name","editor"),
-				__tr2qs_ctx("Found an empty namespace in namespace name","editor"),
+				__tr2qs_ctx("Invalid Name - KVIrc","editor"),
+				__tr2qs_ctx("Found an empty namespace in namespace name.","editor"),
 				__tr2qs_ctx("OK, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
@@ -1136,14 +1136,14 @@ void AliasEditorWidget::activateItem(QTreeWidgetItem * it)
 }
 void AliasEditorWidget::newAlias()
 {
-	QString szNewName = askForAliasName(__tr2qs_ctx("Add Alias","editor"),__tr2qs_ctx("Please enter the name for the new alias","editor"),"myfunction");
+	QString szNewName = askForAliasName(__tr2qs_ctx("Enter a Filename - KVIrc","editor"),__tr2qs_ctx("Please enter the new name for the alias.","editor"),"myfunction");
 	if(szNewName.isEmpty())return;
 	newItem(szNewName,AliasEditorTreeWidgetItem::Alias);
 }
 
 void AliasEditorWidget::newNamespace()
 {
-	QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
+	QString szName = askForNamespaceName(__tr2qs_ctx("Enter a Filename - KVIrc","editor"),__tr2qs_ctx("Please enter the new name for the namespace.","editor"),"mynamespace");
 	if(szName.isEmpty())return;
 	newItem(szName,AliasEditorTreeWidgetItem::Namespace);
 }

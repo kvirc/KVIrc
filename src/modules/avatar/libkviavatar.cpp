@@ -148,7 +148,7 @@ void KviAsyncAvatarSelectionDialog::chooseFileClicked()
 	if(
 		KviFileDialog::askForOpenFileName(
 				tmp,
-				__tr2qs("Choose an Image File - KVIrc"),
+				__tr2qs("Select a File - KVIrc"),
 				QString(),
 				QString(),
 				false,

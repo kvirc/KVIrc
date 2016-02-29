@@ -577,7 +577,7 @@ void OptionsWidget_messageColors::save()
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApplication::MsgColors);
 
-	if(KviFileDialog::askForSaveFileName(szName,__tr2qs_ctx("Choose a Filename - KVIrc","options"),szInit,QString(),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szName,__tr2qs_ctx("Enter a Filename - KVIrc","options"),szInit,QString(),false,false,true,this))
 	{
 		if(m_pLastItem)saveLastItem();
 
@@ -632,7 +632,7 @@ void OptionsWidget_messageColors::load()
 	// FIXME: Do it also on windows...
 #endif
 
-	if(KviFileDialog::askForOpenFileName(szName,__tr2qs_ctx("Choose a Filename - KVIrc ","options"),szInit,QString(),false,true,this))
+	if(KviFileDialog::askForOpenFileName(szName,__tr2qs_ctx("Select a File - KVIrc","options"),szInit,QString(),false,true,this))
 	{
 		itemChanged();
 

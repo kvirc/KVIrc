@@ -157,7 +157,7 @@ bool PackAddonDialog::packAddon()
 	{
 		if(QMessageBox::question(
 				this,
-				__tr2qs_ctx("Export Addon - KVIrc","addon"),
+				__tr2qs_ctx("Exporting Addon Confirmation - KVIrc","addon"),
 				__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?","addon").arg(info.szSavePath),
 				QMessageBox::Yes,
 				QMessageBox::No
@@ -179,13 +179,13 @@ bool PackAddonDialog::packAddon()
 	if(!AddonFunctions::pack(info,szError))
 	{
 		QMessageBox::critical(this,
-			__tr2qs_ctx("Addon Packaging Error","addon"),
+			__tr2qs_ctx("Addon Packaging - KVIrc","addon"),
 			szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
 		);
 		return false;
 	}
 
-	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs_ctx("Package saved successfully in %1","addon").arg(m_szSavePath),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	QMessageBox::information(this,__tr2qs_ctx("Exporting Addon Completed - KVIrc","addon"),__tr2qs_ctx("The Package was saved successfully in %1","addon").arg(m_szSavePath),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;
 }
@@ -399,7 +399,7 @@ PackAddonSummaryFilesWidget::PackAddonSummaryFilesWidget(PackAddonDialog * pPare
 : QDialog(pParent)
 {
 	setObjectName("addon_package_summary_file_dialog");
-	setWindowTitle(__tr2qs_ctx("File Summary","addon"));
+	setWindowTitle(__tr2qs_ctx("File Summary Review - KVIrc","addon"));
 	setWindowModality(Qt::WindowModal);
 	setModal(true);
 

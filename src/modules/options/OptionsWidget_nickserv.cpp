@@ -45,7 +45,7 @@ extern KVIRC_API KviNickServRuleSet * g_pNickServRuleSet;
 NickServRuleEditor::NickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 : QDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("NickServ Authentication Rule","options"));
+	setWindowTitle(__tr2qs_ctx("NickServ Authentication Rule - KVIrc","options"));
 
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 
@@ -147,7 +147,7 @@ bool NickServRuleEditor::validate()
 {
 	QString s = m_pRegisteredNickEdit->text();
 
-	QString m = __tr2qs_ctx("Invalid NickServ Rule","options");
+	QString m = __tr2qs_ctx("Invalid NickServ Rule - KVIrc","options");
 	QString o = __tr2qs_ctx("OK","options");
 
 	if(s.isEmpty())

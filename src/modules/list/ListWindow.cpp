@@ -39,7 +39,6 @@
 #include "KviTopicWidget.h"
 #include "KviConfigurationFile.h"
 #include "KviFileDialog.h"
-#include "KviMessageBox.h"
 #include "kvi_fileextensions.h"
 #include "KviTalHBox.h"
 #include "KviHtmlGenerator.h"
@@ -52,6 +51,7 @@
 #include <QToolTip>
 #include <QDateTime>
 #include <QByteArray>
+#include <QMessageBox>
 
 extern KviPointerList<ListWindow> * g_pListWindowList;
 
@@ -348,7 +348,9 @@ QSize ListWindow::sizeHint() const
 
 void ListWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = QString(__tr2qs("Channel list [IRC context %1]")).arg(m_pConsole->context()->id()); //this is a tooltip
+	//this both a tooltip and a window title, capitalization rules be dammed
+	//should be separated titles and tooltips
+	m_szPlainTextCaption = QString(__tr2qs("Channel List [IRC Context %1]")).arg(m_pConsole->context()->id());
 }
 
 void ListWindow::die()
@@ -360,7 +362,7 @@ void ListWindow::exportList()
 {
 	if(!m_pTreeWidget->topLevelItemCount())
 	{
-		KviMessageBox::warning(__tr2qs("You can't export an empty list"));
+		QMessageBox::warning(0, __tr2qs("Warning While Exporting - KVIrc"), __tr2qs("You can't export an empty list!"));
 		return;
 	}
 
@@ -389,7 +391,7 @@ void ListWindow::exportList()
 		szFile = __tr2qs("Channel list");
 	}
 
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose Filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Enter a Filename - KVIrc"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
 	{
 		if(QFileInfo(szFile).completeSuffix() != "kvc")
 			szFile.append(".kvc");
@@ -413,7 +415,7 @@ void ListWindow::importList()
 {
 	QString szFile;
 
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose Filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a File - KVIrc"),QString(),KVI_FILTER_CONFIG,false,false,this))
 	{
 
 		m_pItemList->setAutoDelete(true);

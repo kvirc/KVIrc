@@ -56,7 +56,7 @@ SharedFileEditDialog::SharedFileEditDialog(QWidget * par,KviSharedFile * f)
 
 	QGridLayout * g = new QGridLayout(this);
 
-	setWindowTitle(__tr2qs_ctx("Edit Shared File - KVIrc","sharedfileswindow"));
+	setWindowTitle(__tr2qs_ctx("Shared File Configuration - KVIrc","sharedfileswindow"));
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Share name:","sharedfileswindow"),this);
 	g->addWidget(l, 0, 0 );
@@ -133,7 +133,7 @@ void SharedFileEditDialog::browse()
 {
 	QString szBuf;
 	QString szTxt = m_pFilePathEdit->text();
-	if(!KviFileDialog::askForOpenFileName(szBuf,__tr2qs("Choose the File to Share"),szTxt,QString(),false,true,this))return;
+	if(!KviFileDialog::askForOpenFileName(szBuf,__tr2qs("Select a File - KVIrc"),szTxt,QString(),false,true,this))return;
 	m_pFilePathEdit->setText(szBuf);
 }
 
@@ -156,7 +156,7 @@ void SharedFileEditDialog::okClicked()
 	bool bExpires = m_pExpireCheckBox->isChecked();
 	if(bExpires && (dt <= QDateTime::currentDateTime()))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Invalid Expiry Time","sharedfileswindow"),
+		QMessageBox::warning(this,__tr2qs_ctx("Invalid Expiry Time - KVIrc","sharedfileswindow"),
 			__tr2qs_ctx("The expiry date/time is in the past: please either remove the \"Expires at\"" \
 					"check mark or specify a expiry date/time in the future","sharedfileswindow"),
 					__tr2qs_ctx("OK","sharedfileswindow"));
@@ -165,7 +165,7 @@ void SharedFileEditDialog::okClicked()
 
 	if(szName.isEmpty())
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Invalid Share Name","sharedfileswindow"),
+		QMessageBox::warning(this,__tr2qs_ctx("Invalid Share Name - KVIrc","sharedfileswindow"),
 			__tr2qs_ctx("The share name can't be empty, please correct it","sharedfileswindow"),
 			__tr2qs_ctx("OK","sharedfileswindow"));
 		return;
@@ -174,7 +174,7 @@ void SharedFileEditDialog::okClicked()
 	QFileInfo f(szPath);
 	if(!(f.exists() && f.isFile() && f.isReadable()))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Can't open the file","sharedfileswindow"),
+		QMessageBox::warning(this,__tr2qs_ctx("Error Opening File - KVIrc","sharedfileswindow"),
 			__tr2qs_ctx("The file doesn't exist or it is not readable, please check the path","sharedfileswindow"),
 			__tr2qs_ctx("OK","sharedfileswindow"));
 		return;

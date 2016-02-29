@@ -191,7 +191,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 void OptionsWidget_textIcons::chooseFromFile()
 {
 	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Choose Icon Filename","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
+	KviFileDialog::askForOpenFileName(szFile,__tr2qs_ctx("Select a File - KVIrc","options"),QString(),KVI_FILTER_IMAGE,false,true,this);
 	if(szFile.isEmpty())
 		return;
 

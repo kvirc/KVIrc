@@ -957,7 +957,7 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	if(!KviDefaultScriptManager::instance()->isDefscriptUpToDate())
 	{
 		switch(
-			QMessageBox::question(0,__tr2qs("Update default scripts"),
+			QMessageBox::question(0,__tr2qs("Update Default Scripts - KVIrc"),
 				__tr2qs("<b>Hi!</b><br><br>" \
 					"<b>It seems that you have just upgraded KVIrc from a previous version.</b><br><br>" \
 					"The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>" \
@@ -1023,17 +1023,15 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	bSuggestedOnce = true;
 
 	switch(
-		QMessageBox::question(0,__tr2qs("Installation problems?"),
-			__tr2qs("<b>Oops...</b><br><br>" \
-				"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
-				"I might be wrong, but you seem to miss some of the features that the default KVIrc script provides." \
-				"This may happen because you have upgraded to an unstable Git version, " \
-				"because you have accidentally deleted or damaged your configuration files, " \
-				"because you have installed an incomplete script " \
-				"or because you have hit a bug in KVIrc.<br><br>" \
-				"I can repeat the installation of the default script in order " \
-				"to restore the missing features.<br>" \
-				"<b>Do you want the default script to be restored?</b><br><br>" \
+		QMessageBox::question(0,__tr2qs("Detected Installation Issues - KVIrc"),
+			__tr2qs("<b>Oops!</b><br><br>" \
+				"<b>There are some reasons that make me think your KVIrc installation is incomplete.</b><br><br>" \
+				"You seem to be missing some of the features that the default KVIrc scripts provide." \
+				"This may happen because a recent upgrade may have accidentally corrupted, " \
+				"deleted or damaged your configuration files, or because you have hit a bug in KVIrc.<br><br>" \
+				"Repeating the installation of the default scripts in order " \
+				"to restore the missing features is a way to try to correct the issue.<br>" \
+				"<b>Do you want the default scripts to be restored?</b><br><br>" \
 				"<font size=\"-1\">Hint: If you're a scripter and have intentionally removed some of the scripting features " \
 				"then you may safely click on \"No and Don't Ask Me Again\", otherwise it might be " \
 				"a good idea to click \"Yes\". If you still want to choose \"No\" you can always restore the " \
