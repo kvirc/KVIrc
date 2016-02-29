@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 12:14+0100\n"
+"POT-Creation-Date: 2016-02-29 13:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,8 +406,8 @@ msgid "Use automatic nickname ([5 letters]AWAY)"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_away.cpp:53
-#, no-c-format
-msgid "Custom nickname (%nick% means a current nick):"
+#, c-format
+msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_channel.cpp:53

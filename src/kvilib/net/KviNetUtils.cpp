@@ -294,7 +294,7 @@ static unsigned int scan_ip6(const char *s,char ip[16])
 	return len;
 }
 
-int inet_pton(int AF, const char *CP, void *BUF) {
+extern int inet_pton(int AF, const char *CP, void *BUF) {
 	int len;
 	if (AF==AF_INET) {
 		if (!kvi_stringIpToBinaryIp(CP,(struct in_addr*)BUF))
