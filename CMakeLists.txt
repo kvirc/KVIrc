@@ -1101,7 +1101,7 @@ if(WANT_GETTEXT)
 			foreach(curFile ${FILES_TO_TIDY})
 				add_custom_command(TARGET messages-tidy
 				COMMENT "Tidying ${curFile}..."
-				COMMAND ${SED_EXECUTABLE} -i "" -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				COMMAND ${SED_EXECUTABLE} -i "" -e "s|${CMAKE_SOURCE_DIR}/||g" "${curFile}"
 				VERBATIM
 				DEPENDS ${curFile}
 				)
@@ -1110,7 +1110,7 @@ if(WANT_GETTEXT)
 			foreach(curFile ${FILES_TO_TIDY})
 				add_custom_command(TARGET messages-tidy
 				COMMENT "Tidying ${curFile}..."
-				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				COMMAND ${SED_EXECUTABLE} -i -e "s|${CMAKE_SOURCE_DIR}/||g" "${curFile}"
 				VERBATIM
 				DEPENDS ${curFile}
 				)

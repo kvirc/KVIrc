@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-01 00:57+0100\n"
+"POT-Creation-Date: 2016-02-29 12:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgid "Failed to unpack the selected file: %1"
 msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:244
-msgid "Warning While Unpacking Addon"
+msgid "Warning While Unpacking Addon - KVIrc"
 msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:244
@@ -94,7 +94,7 @@ msgid "Save path is empty"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:101
-msgid "Manage Script-Based Addons"
+msgid "Manage Addons - KVIrc"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:123
@@ -130,7 +130,7 @@ msgid "Do you really want to uninstall the addon \"%1\"?"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:278
-msgid "Confirm addon uninstallation"
+msgid "Confirm Addon Uninstallation - KVIrc"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:279
@@ -142,7 +142,7 @@ msgid "No"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:306
-msgid "Please Select the Addon Installation File"
+msgid "Select a Installation File - KVIrc"
 msgstr ""
 
 #: src/modules/addon/AddonManagementDialog.cpp:319
@@ -289,8 +289,7 @@ msgid "Hit the \"Next\" button to begin."
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:160
-#: src/modules/addon/PackAddonDialog.cpp:188
-msgid "Export Addon - KVIrc"
+msgid "Exporting Addon Confirmation - KVIrc"
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:161
@@ -298,11 +297,15 @@ msgid "File %1 already exists. Do you want to overwrite it?"
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:182
-msgid "Addon Packaging Error"
+msgid "Addon Packaging - KVIrc"
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:188
-msgid "Package saved successfully in %1"
+msgid "Exporting Addon Completed - KVIrc"
+msgstr ""
+
+#: src/modules/addon/PackAddonDialog.cpp:188
+msgid "The Package was saved successfully in %1"
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:198
@@ -417,7 +420,7 @@ msgid "Save path"
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:402
-msgid "File Summary"
+msgid "File Summary Review - KVIrc"
 msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:409
@@ -436,5 +439,5 @@ msgid "Finish"
 msgstr ""
 
 #: src/modules/addon/WebAddonInterfaceDialog.cpp:43
-msgid "KVIrc : Download Addons"
+msgid "Download Addons - KVIrc"
 msgstr ""

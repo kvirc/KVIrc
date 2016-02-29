@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-01 00:57+0100\n"
+"POT-Creation-Date: 2016-02-29 12:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgid "Total: %d matching users (of %d in the database)"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:77
-msgid "Property Editor"
+msgid "Property Editor - KVirc"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:90
@@ -148,7 +148,7 @@ msgid "Cancel"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:211
-msgid "Mask Editor"
+msgid "Mask Editor - KVIrc"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:215
@@ -159,24 +159,24 @@ msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:225
 msgid ""
-"<center>This is the <b>nickname</b> that will match this user, default value "
-"is the registered name.</center>"
+"This is the <b>nickname</b> that will match this user, default value is the "
+"registered name."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:234
 msgid ""
-"<center>This is the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
+"This is the <b>username</b> that will match this user. <b>*</b> will match "
+"any username."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:243
 msgid ""
-"<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
+"This is the <b>hostname</b> that will match this user. <b>*</b> will match "
+"any hostname."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:319
-msgid "Registered User Entry"
+msgid "Registered User Entry - KVIrc"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:325
@@ -219,7 +219,7 @@ msgid "Notify nicknames:"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:383
-msgid "<center>You can enter a space separated list of nicknames.</center>"
+msgid "You can enter a space separated list of nicknames."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:408
@@ -288,11 +288,11 @@ msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:95
 msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
+"This is the list of registered users. KVIrc can automatically recognize and "
+"associate properties to them.<br>Use the buttons on the right to add, edit "
+"and remove entries. The \"notify\" column allows you to quickly add users to "
+"the notify list. Notify list fine-tuning can be performed by editing the "
+"entry properties."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:122
@@ -308,7 +308,7 @@ msgid "No comment set"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:225
-msgid "Registered Users - KVIrc"
+msgid "Registered Users and Configuration - KVIrc"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:242
@@ -394,8 +394,7 @@ msgid "No entries selected."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:725
-#: src/modules/reguser/RegisteredUsersDialog.cpp:829
-msgid "Choose a Filename - KVIrc"
+msgid "Enter a Filename - KVIrc"
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:732
@@ -406,19 +405,20 @@ msgstr ""
 msgid "Can't export the registered users database: write error."
 msgstr ""
 
+#: src/modules/reguser/RegisteredUsersDialog.cpp:829
+msgid "Select a File - KVIrc"
+msgstr ""
+
 #: src/modules/reguser/RegisteredUsersDialog.cpp:836
-#, c-format
-msgid "Can't open file %s for reading."
+msgid "Can't open file %Q for reading."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:847
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
+msgid "The file %Q doesn't appear to be a valid registered users database."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:854
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
+msgid "The file %Q contains an invalid registered users database version."
 msgstr ""
 
 #: src/modules/reguser/RegisteredUsersDialog.cpp:923
