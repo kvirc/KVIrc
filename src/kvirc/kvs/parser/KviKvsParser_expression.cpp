@@ -32,72 +32,72 @@
 
 //#warning "FIXME: expression eval doc!"
 
-	/*
-		@doc: expressioneval
-		@type:
-			language
-		@title:
-			Expression evaluation identifier
-		@syntax:
-			$(<expression>)
-		@keyterms:
-			expressions
-		@short:
-			Expression evaluation identifier
-		@description:
-			Evaluates <expression> and returns its result.[br]
-			If <expression> is a single string, array or hash, it is returned unmodified.[br]
-			In any other case the expression evaluation returns a numeric value, either real or integer.[br]
-			The expressions are really close to the C ones and have some minor extensions.[br]
-			The supported operators are +,-,*,/,|,&,^,||,&&,^^,>>,<<,<,>,<=,>=,==,!= and <> (synonim for !=).[br]
-			The following table describes their meaning.[br]
-			[table]
-				[tr][td][b]Operator[/b][/td][td][b]Description[/b][/td][/tr]
-				[tr][td]a + b[/td][td]Arithmetic sum: valid only for numeric operands[/td][/tr]
-				[tr][td]a - b[/td][td]Arithmetic subtraction: valid only for numeric operands[/td][/tr]
-				[tr][td]a / b[/td][td]Arithmetic division: valid only for numeric operands[/td][/tr]
-				[tr][td]a * b[/td][td]Arithmetic multiplication: valid only for numeric operands[/td][/tr]
-				[tr][td]a % b[/td][td]Arithmetic modulus: valid only for numeric operands[/td][/tr]
-				[tr][td]a || b[/td][td]Logical or: valid only for boolean operands[/td][/tr]
-				[tr][td]a && b[/td][td]Logical and: valid only for boolean operands[/td][/tr]
-				[tr][td]a ^^ b[/td][td]Logical xor: valid only for boolean operands[/td][/tr]
-				[tr][td]a >> b[/td][td]Bitwise shift right: valid only for integer operands[/td][/tr]
-				[tr][td]a << b[/td][td]Bitwise shift left: valid only for integer operands[/td][/tr]
-				[tr][td]a | b[/td][td]Bitwise or: valid only for integer operands[/td][/tr]
-				[tr][td]a & b[/td][td]Bitwise and: valid only for integer operands[/td][/tr]
-				[tr][td]a ^ b[/td][td]Bitwise xor: valid only for integer operands[/td][/tr]
-				[tr][td]a > b[/td][td]Greater than: valid for numeric or string operands. Case sensitive[/td][/tr]
-				[tr][td]a < b[/td][td]Lower than: valid for numeric or string operands. Case sensitive[/td][/tr]
-				[tr][td]a >= b[/td][td]Greater or equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
-				[tr][td]a <= b[/td][td]Lower or equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
-				[tr][td]a != b[/td][td]Not equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
-				[tr][td]a == b[/td][td]Equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
-			[/table]
-			The expressions can contain integer, real or string constants and variable operands.[br]
-			The integer constants can be also specified as hexadecimal numbers by prefixing them by '0x'.[br]
-			The string constants should be enclosed in quotes.[br]
-		@examples:
-			[example]
-				echo $(10 + 5 * 100)
-				echo $(10 / 3)
-				echo $(10 / 3.0)
-				echo $(10.0 + 5 * 100)
-				echo $(145 & 2)
-				echo $("hello" > "ciao")
-				echo $(10 == "10")
-				%a = 100
-				%b = 50.3
-				%c = "test"
-				echo $(%a + %b)
-				echo $("%a%b" + 1)
-				echo $(%a + %b > %c)
-				echo $(-(10 + 20) * 3)
-				echo $(1 ^ 2)
-				echo $(1 ^ 1)
-				echo $(0xffff == 65535)
-				...
-			[/example]
-	*/
+/*
+	@doc: expressioneval
+	@type:
+		language
+	@title:
+		Expression evaluation identifier
+	@syntax:
+		$(<expression>)
+	@keyterms:
+		expressions
+	@short:
+		Expression evaluation identifier
+	@description:
+		Evaluates <expression> and returns its result.[br]
+		If <expression> is a single string, array or hash, it is returned unmodified.[br]
+		In any other case the expression evaluation returns a numeric value, either real or integer.[br]
+		The expressions are really close to the C ones and have some minor extensions.[br]
+		The supported operators are [b]+[/b], [b]-[/b], [b]*[/b], [b]/[/b], [b]|[/b], [b]&[/b], [b]^[/b], [b]||[/b], [b]&&[/b], [b]^^[/b], [b]>>[/b], [b]<<[/b], [b]<[/b], [b]>,[/b] [b]<=,[/b] [b]>=,[/b] [b]==,[/b] [b]!=[/b] and [b]<>[/b] (synonym for !=).[br]
+		The following table describes their meaning.[br]
+		[table]
+			[tr][td][b]Operator[/b][/td][td][b]Description[/b][/td][/tr]
+			[tr][td]a + b[/td][td]Arithmetic sum: valid only for numeric operands[/td][/tr]
+			[tr][td]a - b[/td][td]Arithmetic subtraction: valid only for numeric operands[/td][/tr]
+			[tr][td]a / b[/td][td]Arithmetic division: valid only for numeric operands[/td][/tr]
+			[tr][td]a * b[/td][td]Arithmetic multiplication: valid only for numeric operands[/td][/tr]
+			[tr][td]a % b[/td][td]Arithmetic modulus: valid only for numeric operands[/td][/tr]
+			[tr][td]a || b[/td][td]Logical or: valid only for boolean operands[/td][/tr]
+			[tr][td]a && b[/td][td]Logical and: valid only for boolean operands[/td][/tr]
+			[tr][td]a ^^ b[/td][td]Logical xor: valid only for boolean operands[/td][/tr]
+			[tr][td]a >> b[/td][td]Bitwise shift right: valid only for integer operands[/td][/tr]
+			[tr][td]a << b[/td][td]Bitwise shift left: valid only for integer operands[/td][/tr]
+			[tr][td]a | b[/td][td]Bitwise or: valid only for integer operands[/td][/tr]
+			[tr][td]a & b[/td][td]Bitwise and: valid only for integer operands[/td][/tr]
+			[tr][td]a ^ b[/td][td]Bitwise xor: valid only for integer operands[/td][/tr]
+			[tr][td]a > b[/td][td]Greater than: valid for numeric or string operands. Case sensitive[/td][/tr]
+			[tr][td]a < b[/td][td]Lower than: valid for numeric or string operands. Case sensitive[/td][/tr]
+			[tr][td]a >= b[/td][td]Greater or equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
+			[tr][td]a <= b[/td][td]Lower or equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
+			[tr][td]a != b[/td][td]Not equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
+			[tr][td]a == b[/td][td]Equal to: valid for numeric or string operands. Case sensitive[/td][/tr]
+		[/table]
+		The expressions can contain integer, real or string constants and variable operands.[br]
+		The integer constants can be also specified as hexadecimal numbers by prefixing them by '0x'.[br]
+		The string constants should be enclosed in quotes.[br]
+	@examples:
+		[example]
+			echo $(10 + 5 * 100)
+			echo $(10 / 3)
+			echo $(10 / 3.0)
+			echo $(10.0 + 5 * 100)
+			echo $(145 & 2)
+			echo $("hello" > "ciao")
+			echo $(10 == "10")
+			%a = 100
+			%b = 50.3
+			%c = "test"
+			echo $(%a + %b)
+			echo $("%a%b" + 1)
+			echo $(%a + %b > %c)
+			echo $(-(10 + 20) * 3)
+			echo $(1 ^ 2)
+			echo $(1 ^ 1)
+			echo $(0xffff == 65535)
+			...
+		[/example]
+*/
 
 
 

@@ -346,7 +346,7 @@ static bool regchan_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 		<boolean> $regchan.match(<channel_name:string>,<network:string>)
 	@description:
 		Returns 1 if <channel_name> and <network> match a registered channel entry
-		and 0 otherwise.
+		and [b]0[/b] otherwise.
 	@examples:
 		[example]
 			echo $regchan.match(#kvirc,IRCNet)
@@ -380,8 +380,8 @@ static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $regchan.find(<channel_name:string>,<netmask:string>)
 	@description:
-		Returns 1 if the channel identified by <channel_name> and <netmask>
-		is registered and 0 otherwise. This function is similar to $regchan.match
+		Returns [b]1[/b] if the channel identified by <channel_name> and <netmask>
+		is registered and [b]0[/b] otherwise. This function is similar to $regchan.match
 		but for $regchan.find the second parameter is the exact netmask
 		of the registered channel entry.
 	@examples:

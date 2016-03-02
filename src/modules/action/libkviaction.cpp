@@ -90,7 +90,7 @@ static bool action_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		does not print warnings if the action is not defined or disabled.
 	@examples:
 		[example]
-		action.trigger connect
+			action.trigger connect
 		[/example]
 */
 
@@ -280,78 +280,72 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		Specifies that the action needs an IRC context to be executed.
 		When the current window does not belong to an IRC context
 		the action is automatically disabled
-
+		[br]
 		!sw: -c | --bind-to-connection
 		Specifies that the action needs an IRC connection to be executed.
 		When the current window has no associated IRC connection
 		the action is automatically disabled.
 		This switch implies -i.
-
+		[br]
 		!sw: -l | --enable-at-login
 		Specifies that the action needs to be enabled at login time, that is
 		when a link to the server has been established but the login
 		operations haven't been carried out yet (and thus there is no real IRC connection).
 		This switch requires -c to work.
-
+		[br]
 		!sw: -w=<window_types> | --window-types=<window_type>
 		Causes the action to be enabled only when the active window
 		is one of the specified types. <window_types> may be any combination
-		of the letters 'q' (query), 'c' (channel), 'x' (console), 'd' (dccchat).
+		of the letters [b]q[/b] (query), [b]c[/b] (channel), [b]x[/b] (console), [b]d[/b] (dccchat).
 		If this switch is omitted then the action is enabled in all the windows.[br]
-
+		[br]
 		!sw: -s | --selected-only
 		Specifies that the action will be activated only if the active window
 		has selected users in the userlist. This switch requires -w with a combination
-		of flags 'q','c' and 'x' (it doesn't work for DCC chat).
-
+		of flags [b]q[/b], [b]c/b] and [b]x[/b] (it doesn't work for DCC chat).
+		[br]
 		!sw: -t=<category> | --category=<category>
 		Causes the action to belong to the specified category.
-		<category> can be one of "IRC","scripting","settings","GUI","channel","tools" and "generic".
-		If this switch is omitted the "generic" category is automatically assumed.
-		The actions failing in the "tools" category will appear in the "Tools" KVIrc menu too.
-
+		<category> can be one of [i]IRC[/i], [i]scripting[/i], [i]settings[/i], [i]GUI[/i], [i]channel[/i], [i]tools[/i] and [i]generic[/i].
+		If this switch is omitted the [i]generic[/i] category is automatically assumed.
+		The actions failing in the [i]tools[/i] category will appear in the [i]Tools[/i] KVIrc menu too.
+		[br]
 		!sw: -k=<key sequence> | --key-sequence=<key sequence>
 		Specifies that the action will be activated also by the <key sequence>
 		which is a string formed from up to four keyboard codes separated by
-		commas optionally combined with the modifiers "Alt","Ctrl","Shift" and "Meta".[br]
-		Examples of such sequences are: "Ctrl+X", "Ctrl+Alt+F" or "Ctrl+X,Alt+Space".
+		commas optionally combined with the modifiers [i]Alt[/i], [i]Ctrl[/i], [i]Shift[/i] and [i]Meta[/i].[br]
+		Examples of such sequences are: [i]Ctrl+X", [i]Ctrl+Alt+F[/i] or [i]Ctrl+X,Alt+Space[/i].
 	@description:
-		[p]
+		[br]
 		Defines a new script action.
-		[/p]
-		[p]
+		[br]
 		Each action has an unique <name> that must not collide with any core action
-		(i.e. don't use the "KVIrc." prefix).
+		(i.e. don't use the [i]KVIrc.[/i] prefix).
 		At any time you can check [cmd]action.list[/cmd] to verify that no core action
 		is already using your <name>. If the <name> was already used for a script action
 		then this action is simply replaced by the new one.
-		[/p]
-		[p]
+		[br]
 		Each action has an associated <visible label> that is the name meant to be presented to the user,
 		possibly even translated. This label will appear on the toolbar buttons, in the tooltips and
 		in the popup menu items. The string will be evaluated just before the actions is displayed
 		so the eventual runtime translation will fetch from the correct language catalogue.
-		[/p]
-		[p]
+		[br]
 		<description> is the descriptive text that will be displayed in the action choice dialog
 		(and maybe in other places).
 		The string will be evaluated just before the actions is displayed
 		so the eventual runtime translation will fetch from the correct language catalogue.
-		[/p]
-		[p]
+		[br]]
 		<big_icon_id> is the [doc:image_id]image identifier[/doc] of the icon that will
 		appear on the toolbar buttons and in the action choice dialog.
-		[/p]
-		[p]
+		[br]
 		<small_icon_id> is optional and is the [doc:image_id]image identifier[/doc] of the icon
 		that will appear in the menu items. Since menu items can be also iconless then
 		this parameter is optional.
-		[/p]
-		[p]
+		[br]
 		<action body> is the callback code snippet that will be triggered when this action is activated
 		either by the means of [cmd]action.trigger[/cmd], a toolbar button or a menu item selection.
 		An empty <action body> causes this command to behave like [cmd]action.destroy[/cmd] <name>.
-		[/p]
+		[br]
 	@seealso:
 		[cmd]action.destroy[/cmd], [cmd]action.trigger[/cmd]
 	@examples:
@@ -455,8 +449,8 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 	@syntax:
 		<boolean> $action.exists(<name:string>)
 	@description:
-		Returns 1 if the action with the specified <name> is currently defined
-		and 0 otherwise.
+		Returns [b]1[/b] if the action with the specified <name> is currently defined
+		and [b]0[/b] otherwise.
 */
 
 static bool action_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
@@ -480,8 +474,8 @@ static bool action_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $action.isEnabled(<name:string>)
 	@description:
-		Returns 1 if the action with the specified <name> is currently enabled
-		and 0 otherwise. If the action does not exist the function returns 0.
+		Returns [b]1[/b] if the action with the specified <name> is currently enabled
+		and [b]0[/b] otherwise. If the action does not exist the function returns [b]0[/b].
 */
 
 static bool action_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)

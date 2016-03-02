@@ -144,7 +144,7 @@ static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 		<boolean> $chan.isDead
 		<boolean> $chan.isDead(<window_id:string>)
 	@description:
-		Returns 1 if the channel specified by <window_id> is a dead channel and 0 otherwise.[br]
+		Returns [b]1[/b] if the channel specified by <window_id> is a dead channel and [b]0[/b] otherwise.[br]
 		The form without parameters works on the current window.[br]
 */
 
@@ -499,7 +499,7 @@ static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
 	@description:
 		The first form returns the number of entries in the ban list of the current channel (assuming that the current window
 		is a channel at all). If the current window is not a channel, a warning is printed
-		and 0 is returned.[br]
+		and [b]0[/b] is returned.[br]
 		The second form returns the number entries in the ban list of the channel specified by <window_id>.[br]
 		The number of ban list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
@@ -531,7 +531,7 @@ static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 	@description:
 		The first form returns the number of entries in the ban exception list of the current channel (assuming that the current window
 		is a channel at all). If the current window is not a channel, a warning is printed
-		and 0 is returned.[br]
+		and [b]0[/b] is returned.[br]
 		The second form returns the number entries in the ban exception list of the channel specified by <window_id>.[br]
 		The number of ban exception list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
@@ -563,7 +563,7 @@ static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 	@description:
 		The first form returns the number of entries in the invite list of the current channel (assuming that the current window
 		is a channel at all). If the current window is not a channel, a warning is printed
-		and 0 is returned.[br]
+		and [b]0[/b] is returned.[br]
 		The second form returns the number entries in the invite list of the channel specified by <window_id>.[br]
 		The number of invite list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
@@ -594,7 +594,7 @@ static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 	@description:
 		The first form returns the number of entries in the ban list of the current channel (assuming that the current window
 		is a channel at all). If the current window is not a channel, a warning is printed
-		and 0 is returned.[br]
+		and [b]0[/b] is returned.[br]
 		The second form returns the number entries in the ban list of the channel specified by <window_id>.[br]
 		The number of list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
@@ -626,7 +626,7 @@ static bool chan_kvs_fnc_maskcount(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $chan.ison(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 */
@@ -714,7 +714,7 @@ static bool __clbkname(KviKvsModuleFunctionCall * c) \
 	@syntax:
 		<boolean> $chan.isowner(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is at least an owner on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least an owner on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -733,7 +733,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isowner,isChanOwner)
 	@syntax:
 		<boolean> $chan.isadmin(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is at least an administrator on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least an administrator on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -752,7 +752,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isadmin,isChanAdmin)
 	@syntax:
 		<boolean> $chan.isop(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is at least an operator on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least an operator on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -771,7 +771,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isop,isOp)
 	@syntax:
 		<boolean> $chan.isvoice(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is at least voiced on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least voiced on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -790,7 +790,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isvoice,isVoice)
 	@syntax:
 		<boolean> $chan.ishalfop(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is at least a half-operator on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least a half-operator on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -809,7 +809,7 @@ IS_KVS_FUNC(chan_kvs_fnc_ishalfop,isHalfOp)
 	@syntax:
 		<boolean> $chan.isuserop(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns 1 if <nickname> is at least an user-operator on the channel identified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least an user-operator on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -841,10 +841,10 @@ static bool __clbkname(KviKvsModuleFunctionCall * c) \
 		<boolean> $chan.isMeOwner
 		<boolean> $chan.isMeOwner(<window_id:string>)
 	@description:
-		Returns 1 if the current user is at least an owner on the channel specified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if the current user is at least an owner on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		This function is a "shortcut" for [fnc]$chan.isowner[/fnc]([fnc]$me[/fnc]).[br]
+		This function is a [i]shortcut[/i] for [fnc]$chan.isowner[/fnc]([fnc]$me[/fnc]).[br]
 */
 
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner,isMeChanOwner)
@@ -861,10 +861,10 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner,isMeChanOwner)
 		<boolean> $chan.isMeAdmin
 		<boolean> $chan.isMeAdmin(<window_id:string>)
 	@description:
-		Returns 1 if the current user is at least an administrator on the channel specified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if the current user is at least an administrator on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		This function is a "shortcut" for [fnc]$chan.isadmin[/fnc]([fnc]$me[/fnc]).[br]
+		This function is a [i]shortcut[/i] for [fnc]$chan.isadmin[/fnc]([fnc]$me[/fnc]).[br]
 */
 
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin,isMeChanAdmin)
@@ -881,10 +881,10 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin,isMeChanAdmin)
 		<boolean> $chan.isMeOp
 		<boolean> $chan.isMeOp(<window_id:string>)
 	@description:
-		Returns 1 if the current user is at least op on the channel specified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if the current user is at least op on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		This function is a "shortcut" for [fnc]$chan.isop[/fnc]([fnc]$me[/fnc]).[br]
+		This function is a [i]shortcut[/i] for [fnc]$chan.isop[/fnc]([fnc]$me[/fnc]).[br]
 */
 
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop,isMeOp)
@@ -901,10 +901,10 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop,isMeOp)
 		<boolean> $chan.isMeHalfOp
 		<boolean> $chan.isMeHalfOp(<window_id:string>)
 	@description:
-		Returns 1 if the current user is at least an half operator on the channel specified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if the current user is at least an half operator on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		This function is a "shortcut" for [fnc]$chan.ishalfop[/fnc]([fnc]$me[/fnc]).[br]
+		This function is a [i]shortcut[/i] for [fnc]$chan.ishalfop[/fnc]([fnc]$me[/fnc]).[br]
 */
 
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop,isMeHalfOp)
@@ -921,10 +921,10 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop,isMeHalfOp)
 		<boolean> $chan.isMeVoice
 		<boolean> $chan.isMeVoice(<window_id:string>)
 	@description:
-		Returns 1 if the current user is at least voice on the channel specified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if the current user is at least voice on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		This function is a "shortcut" for [fnc]$chan.isvoice[/fnc]([fnc]$me[/fnc]).[br]
+		This function is a [i]shortcut[/i] for [fnc]$chan.isvoice[/fnc]([fnc]$me[/fnc]).[br]
 */
 
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
@@ -941,10 +941,10 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
 		<boolean> $chan.isMeUserOp
 		<boolean> $chan.isMeUserOp(<window_id:String>)
 	@description:
-		Returns 1 if the current user is at least an user operator on the channel specified by <window_id>, 0 otherwise.[br]
+		Returns [b]1[/b] if the current user is at least an user operator on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		This function is a "shortcut" for [fnc]$chan.isuserop[/fnc]([fnc]$me[/fnc]).[br]
+		This function is a [i]shortcut[/i] for [fnc]$chan.isuserop[/fnc]([fnc]$me[/fnc]).[br]
 */
 
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop,isMeUserOp)
@@ -1033,7 +1033,7 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 		If no <window_id> is passed, the current channel limit is returned (assuming that
 		the current window is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
-		If the channel has no limit set, "0" is returned.[br]
+		If the channel has no limit set, [b]0[/b] is returned.[br]
 		Alternatively, you could use $chan.modeParam(l) to get the current limit.
 	@seealso:
 		[fnc]$chan.mode[/fnc]
@@ -1112,11 +1112,11 @@ static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
 		if it matches the [mask].[br]
 		[flags] may contain a subset of the letters [b]aovhnmi[/b]:[br]
 		[b]ovhn[/b] are mode flags: the users are added to the array only if they are channel administrators [b]a[/b], operators [b]o[/b],
-		voiced users [b]v[/b], half-operators [b]h[/b], user-operators [b]u[/b] or unflagged [b]n[/b] users. (Unflagged means not operators, not
+		voiced users [b]v[/b], half-operators [b]h[/b], user-operators [b]u[/b] or unflagged [b]n[b] users. (Unflagged means not operators, not
 		voiced and not half-operators). If none of the [b]ovhun[/b] flags are used, KVIrc behaves like all five were passed.[br]
 		The flag [b]m[/b] causes the entire user masks to be added to the
 		array entries, as known by KVIrc at the moment of this function call.[br]
-		The flag [b]i[/b] causes KVIrc to invert the match and add only the users that do NOT match [mask].[br]
+		The flag [b]i[/b] causes KVIrc to invert the match and add only the users that do [b]not[/b] match [mask].[br]
 		Please note that on really large channels this function may be time consuming (especially if [mask] is used):
 		use with care.[br]
 	@example:
@@ -1142,7 +1142,7 @@ static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
 			[comment]# Find all the channel operators[/comment]
 			%test[] = $chan.users(,,o)
 			echo %test[]
-			[comment]# Find all the voiced users that do NOT come from *.edu[/comment]
+			[comment]# Find all the voiced users that do not come from *.edu[/comment]
 			[comment]# See also their whole mask[/comment]
 			%test[] = $chan.users(,*!*@*.edu,vim)
 			echo %test[]
@@ -1627,14 +1627,14 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		Warning: this function is network-specific, makes some (bad) assumptions about a non-standard channel mode and
 		will probably be dropped in a future version.[br]
 		Use [fnc]$chan.matchmask[/fnc] instead.[br]
-		Some networks use +q channel mode to set "mute bans".[br]
+		Some networks use +q channel mode to set [i]mute bans[/i].[br]
 		When an user mask matches such a ban, he won't be able to send messages to the channel.[br]
-		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended.[br]
-		This function returns the "mute ban" mask that matches <complete_mask> on channel identified by [window_id].[br]
+		The [i]mute bans[/i] masks will be inserted in the normal channel bans list, with a percent sign % prepended.[br]
+		This function returns the [i]mute ban[/i] mask that matches <complete_mask> on channel identified by [window_id].[br]
 		If no ban mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		This function is useful to determine if a "mute ban" set on the channel matches an user.[br]
+		This function is useful to determine if a [i]mute ban[/i] set on the channel matches an user.[br]
 */
 
 static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
@@ -1745,11 +1745,11 @@ static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns an integer identifying the specified user's channel mode on the channel specified by <window_id>.[br]
 		If <window_id> is not passed, the current window is used.[br]
-		If the specified window is not a channel, a warning is printed and '0' is returned.[br]
+		If the specified window is not a channel, a warning is printed and [b]0[/b] is returned.[br]
 		This number can be useful to implement comparison functions between
 		users in order to determine the actions they can issue between each other.[br]
 		For example it is granted that an op will have userModeLevel greater than
-		a voiced user or that a simple "modeless" user will have
+		a voiced user or that a simple [i]modeless[/i] user will have
 		an userModeLevel lower than a halfop.[br]
 		IRC allows multiple modes to be applied to a single user on a channel,
 		in that case this function will return the level of the highest mode

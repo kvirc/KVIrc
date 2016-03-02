@@ -195,25 +195,22 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 		if the [fnc]$option[/fnc](boolCreateMinimizedDccChat) returns false.[br]
 		In the same way, by passing -m=0 you will create a non minimized DCC SEND.
 		If no <boolean> value is specified, it defaults to 1.[br]
-
 		!sw: -n | --no-ctcp
 		Do [b]not[/b] send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.chat -c).[br]
-
 		!sw: -c | --connect
 		Attempt to CONNECT to the remote host specified as <interface> and <port>,
 		instead of listening (active connection instead of a passive one).
 		In this case the -i and -p switches are mandatory.[br]
-		The 'c' switch takes precedence over 'n' (In fact both should
+		The [b]c[/b] switch takes precedence over [b]n[/b] (In fact both should
 		be mutually exclusive).[br]
-		If the 'c' and 'n' switches are missing, this commands
+		If the [b]c[/b] and [b]n[/b] switches are missing, this commands
 		needs to be executed in a window that is bound to a connected
 		IRC context (you need a third entity to accomplish the negotiation).[br]
-
 		!sw: -i=<interface> | --ip=<interface>
 		Bind the local listening socket to the specified <interface> (which is an IP address, IPv4 or IPv6).
 		If this switch is [b]not[/b] specified, the socket is bound to the interface of
-		the current IRC connection (if any) or to "127.0.0.1".[br]
+		the current IRC connection (if any) or to [i]127.0.0.1[/i].[br]
 		You can also specify a local interface name to get the address from (this works only for IPv4 interfaces
 		since IPv6 ones seems to be unsupported by the system ioctl() calls at the moment (for Linux at least)).[br]
 		Here go some examples:[br]
@@ -221,16 +218,13 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is [b]not[/b] specified, the port will be a "random" one chosen by the kernel.[br]
-
+		If this switch is [b]not[/b] specified, the port will be a [i]random[/i] one chosen by the kernel.[br]
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -238,16 +232,14 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 		All these switches are meant to allow maximum flexibility of the
 		DCC negotiation, earlier KVIrc releases had serious problems
 		with firewalled and/or masqueraded machines. With the -a and -f switches
-		you can work around it.[br]
-		[br]
-
+		you can work around it.
+		[br][br]
 		!sw: -u | --unlimited
 		If the 'u' switch is given, the connection attempt will
 		never time out; this might be useful if you want to leave
 		a listening socket for a friend of yours while you are sleeping
 		and have the CTCP processing disabled. The 'u' switch works either
 		in active and passive mode.[br]
-
 		!sw: -s | --ssl
 		Use a Secure Socket Layer for the transfer; the whole communication will be encrypted
 		with a private key algorithm after a public key handshake.[br]
@@ -259,17 +251,16 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 		When requesting a SSL based DCC SEND to someone you probably will need a
 		certificate. If you don't have one, create it (for example with CA.pl -newcert)
 		and set it in the options dialog.
-
 		!sw: -z | --zero-port
 		Use the 0 port method. This is a dirty hack that allows you to use the CHAT
 		protocol with mIrc receiving clients.
 	@description:
 		Attempts a DCC connection to <nickname>.[br]
-		The simplest case "dcc.chat <nickname>" will work just as in all
+		The simplest case [i]dcc.chat <nickname>[/i] will work just as in all
 		the other IRC clients, but this command is really more powerful...[br]
 		Before attempting to understand the possibilities of this command,
 		be sure to know how [doc:dcc_connection]DCC negotiation and connections[/doc] work.
-		If the 'i' switch is specified, the local listening socket
+		If the [b]i[/b] switch is specified, the local listening socket
 		will be bound to the specified <interface> (which is an IP address, IPv4 or IPv6),
 		otherwise it will be bound to the interface of the current IRC connection.[br]
 		You can also specify a local interface name to get the address from (this works only for IPv4 interfaces
@@ -279,14 +270,14 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 		-i=3ffe:1001::1: This will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: This will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-		If the 'p' switch is specified, the local listening socket
+		If the [b]p[/b] switch is specified, the local listening socket
 		will be bound to the <port>, otherwise it will be bound to
 		a random port chosen by the kernel.[br]
-		If the 'a' switch is specified, the requesting CTCP message
+		If the [b]a[/b] switch is specified, the requesting CTCP message
 		will contain <fake address> as target for the remote user,
 		otherwise the CTCP message will contain the real IP address
 		of the listening interface.
-		If the 'f' switch is specified, the requesting CTCP message
+		If the [b]f[/b] switch is specified, the requesting CTCP message
 		will contain <fake port> as target for the remote user,
 		otherwise the CTCP message will contain the real port of the
 		listening socket.
@@ -294,22 +285,22 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleComma
 		DCC negotiation, earlier KVIrc releases had serious problems
 		with firewalled and/or masqueraded machines. With the -a and -f switches
 		you can workaround it.
-		If the 'n' switch is specified, KVIrc will [b]not[/b] send the CTCP request
+		If the [b]n[/b] switch is specified, KVIrc will [b]not[/b] send the CTCP request
 		to the target user; you will have to do it manually, or the remote user
 		will have to connect manually (for example by using dcc.chat -c).
-		If the 'c' switch is specified, KVIrc will attempt to connect
+		If the [b]c[/b] switch is specified, KVIrc will attempt to connect
 		to the remote host specified as <interface> and <port>, instead
 		of listening (active connection instead of a passive one).
 		In this case the -i and -p switches are mandatory.[br]
-		The 'c' switch takes precedence over 'n' (In fact both should
+		The [b]c[/b] switch takes precedence over [b]n[/b] (In fact both should
 		be mutually exclusive).[br]
-		If the 'c' and 'n' switches are missing, this commands
+		If the [b]c[/b] and [b]n[/b] switches are missing, this commands
 		needs to be executed in a window that is bound to a connected
 		IRC context (you need a third entity to accomplish the negotiation).[br]
-		If the 'u' switch is given, the connection attempt will
+		If the [b]u[/b] switch is given, the connection attempt will
 		never time out; this might be useful if you want to leave
 		a listening socket for a friend of yours while you are sleeping
-		and have the CTCP processing disabled. The 'u' switch works either
+		and have the CTCP processing disabled. The [b]u[/b] switch works either
 		in active and passive mode.[br]
 		If the -m switch is passed, the default boolCreateMinimizedDccChat option
 		is overridden with the <boolean> parameter passed. So actually
@@ -471,7 +462,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		It causes the transfer direction to be inverted; your client will receive
 		the file from the remote host instead of sending it.[br]
 		<file size> is the expected file size in bytes. This parameter can be omitted,
-		and in this case the DCC will "blindly" trust the remote end and assume
+		and in this case the DCC will [i]blindly[/i] trust the remote end and assume
 		that the file has been transferred correctly when the remote end closes the connection.[br]
 		If you don't pass the -n option, the remote end will receive an informational DCC RECV request,
 		specifying the IP address and the port to connect to.[br]
@@ -493,18 +484,15 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		If spion had specified the file size, Pragma could use -g=<file size> while setting up the connection,
 		to be able to see the progress indications.[br]
 		If Pragma used the the -n option, the DCC RECV indication wouldn't have been sent, in this case
-		Pragma would need to communicate the IP address and the port "manually" to spion.[br]
-
+		Pragma would need to communicate the IP address and the port [i]manually[/i] to spion.[br]
 		!sw: -b | --blind
 		Assume that no acknowledges are sent.
 		Assume that the transfer was successful when the whole file has been sent,
 		then close the socket.[br]
-		This is called a "blind" DCC SEND.[br]
-
+		This is called a [i]blind[/i] DCC SEND.[br]
 		!sw: -t | -tdcc
 		Emulate the TDCC protocol: Use the TDCC CTCP message (DCC TSEND) for requesting the connection
 		and assume that no acknowledges are sent. Wait for the remote end to close the connection.[br]
-
 		!sw: -m[=<boolean>] | --minimize[=<boolean>]
 		If the -m switch is passed, the default boolCreateMinimizedDccSend option
 		is overridden with the <boolean> parameter passed. So actually
@@ -512,11 +500,9 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		if the [fnc]$option[/fnc](boolCreateMinimizedDccSend) returns false.[br]
 		In the same way, by passing -m=0 you will create a non minimized DCC SEND.
 		If no <boolean> value is specified, it defaults to 1.[br]
-
 		!sw: -n | --no-ctcp
 		Do [b]not[/b] send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.recv -c).[br]
-
 		!sw: -c | --connect
 		Attempt to CONNECT to the remote host specified as <interface> and <port>,
 		instead of listening (active connection instead of a passive one).
@@ -526,11 +512,10 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		If the 'c' and 'n' switches are missing, this commands
 		needs to be executed in a window that is bound to a connected
 		IRC context (you need a third entity to accomplish the negotiation).[br]
-
 		!sw: -i=<interface> | --ip=<interface>
 		Bind the local listening socket to the specified <interface> (which is an IP address, IPv4 or IPv6).
 		If this switch is [b]not[/b] specified, the socket is bound to the interface of
-		the current IRC connection (if any) or to "127.0.0.1".[br]
+		the current IRC connection (if any) or to [i]127.0.0.1[/i].[br]
 		You can also specify a local interface name to get the address from (this works only for IPv4 interfaces
 		since IPv6 ones seems to be unsupported by the system ioctl() calls at the moment (for Linux at least)).[br]
 		Here go some examples:[br]
@@ -538,16 +523,13 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is [b]not[/b] specified, the port will be a "random" one chosen by the kernel.[br]
-
+		If this switch is [b]not[/b] specified, the port will be a [i]random[/i] one chosen by the kernel.[br]
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -555,16 +537,13 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		All these switches are meant to allow maximum flexibility of the
 		DCC negotiation, earlier KVIrc releases had serious problems
 		with firewalled and/or masqueraded machines. With the -a and -f switches
-		you can work around it.[br]
-		[br]
-
+		you can work around it.[br][/br]
 		!sw: -u | --unlimited
 		If the 'u' switch is given, the connection attempt will
 		never time out; this might be useful if you want to leave
 		a listening socket for a friend of yours while you are sleeping
 		and have the CTCP processing disabled. The 'u' switch works either
 		in active and passive mode.[br]
-
 		!sw: -s | --ssl
 		Use a Secure Socket Layer for the transfer; the whole communication will be encrypted
 		with a private key algorithm after a public key handshake.[br]
@@ -576,19 +555,18 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		When requesting a SSL based DCC SEND to someone you probably will need a
 		certificate. If you don't have one, create it (for example with CA.pl -newcert)
 		and set it in the options dialog.
-
 	@description:
 		Attempts to send the file <filename> to <nickname>.[br]
 		If [filename] is specified it must be an absolute file path,
 		otherwise a file selection dialog is opened.[br]
-		The simplest case "dcc.send <nickname> <filename>" will work just as in all
+		The simplest case [i]dcc.send <nickname> <filename>[/i] will work just as in all
 		the other IRC clients, but this command is really more powerful...[br]
 		Before attempting to understand the possibilities of this command,
 		be sure to know how a [doc:dcc_connection]DCC negotiation and connection[/doc] works.[br]
 		The file will be sent as a sequence of packets which must
 		be acknowledged one by one by the active client.[br]
-		There is a special option (see $option()) called "fast send" (also known
-		as "send ahead") that makes KVIrc avoid to wait for the acknowledge
+		There is a special option (see $option()) called [i]fast send[/i] (also known
+		as [i]send ahead[/i]) that makes KVIrc avoid to wait for the acknowledge
 		of the last packet before sending the next one.[br]
 		Anyway, the connection is declared as successful only
 		when the whole file (all the packets) has been acknowledged.[br]
@@ -702,12 +680,10 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		Assume that no acknowledges are sent.
 		Assume that the transfer was successful when the whole file has been sent,
 		then close the socket.[br]
-		This is called a "blind" DCC SEND.[br]
-
+		This is called a [i]blind[/i] DCC SEND.[br]
 		!sw: -t | -tdcc
 		Emulate the TDCC protocol: Use the TDCC CTCP message (DCC TSEND) for requesting the connection
 		and assume that no acknowledges are sent. Wait for the remote end to close the connection.[br]
-
 		!sw: -m[=<boolean>] | --minimize[=<boolean>]
 		If the -m switch is passed, the default boolCreateMinimizedDccSend option
 		is overridden with the <boolean> parameter passed. So actually
@@ -715,15 +691,13 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		if the [fnc]$option[/fnc](boolCreateMinimizedDccSend) returns false.[br]
 		In the same way, by passing -m=0 you will create a non minimized DCC SEND.
 		If no <boolean> value is specified, it defaults to 1.[br]
-
 		!sw: -n | --no-ctcp
 		Do [b]not[/b] send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.recv -c).[br]
-
 		!sw: -i=<interface> | --ip=<interface>
 		Bind the local listening socket to the specified <interface> (which is an IP address, IPv4 or IPv6).
 		If this switch is [b]not[/b] specified, the socket is bound to the interface of
-		the current IRC connection (if any) or to "127.0.0.1".[br]
+		the current IRC connection (if any) or to [i]127.0.0.1[/i].[br]
 		You can also specify a local interface name to get the address from (this works only for IPv4 interfaces
 		since IPv6 ones seems to be unsupported by the system ioctl() calls at the moment (for Linux at least)).[br]
 		Here go some examples:[br]
@@ -731,16 +705,13 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is [b]not[/b] specified, the port will be a "random" one chosen by the kernel.[br]
-
+		If this switch is [b]not[/b] specified, the port will be a [i]random[/i] one chosen by the kernel.[br]
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -748,16 +719,14 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		All these switches are meant to allow maximum flexibility of the
 		DCC negotiation, earlier KVIrc releases had serious problems
 		with firewalled and/or masqueraded machines. With the -a and -f switches
-		you can work around it.[br]
-		[br]
-
+		you can work around it.
+		[br][br]
 		!sw: -u | --unlimited
-		If the 'u' switch is given, the connection attempt will
+		If the [b][/b] switch is given, the connection attempt will
 		never time out; this might be useful if you want to leave
 		a listening socket for a friend of yours while you are sleeping
 		and have the CTCP processing disabled. The 'u' switch works either
 		in active and passive mode.[br]
-
 		!sw: -s | --ssl
 		Use a Secure Socket Layer for the transfer; the whole communication will be encrypted
 		with a private key algorithm after a public key handshake.[br]
@@ -769,7 +738,6 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		When requesting a SSL based DCC SEND to someone you probably will need a
 		certificate. If you don't have one, create it (for example with CA.pl -newcert)
 		and set it in the options dialog.
-
 		!sw: -c | --connect
 		Accepted for compatibility: don't use it!
 	@description:
@@ -779,7 +747,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		is a CTCP RECV.[br]
 		This command is the counterpart of [cmd]dcc.send[/cmd] and its parameters are exactly the same, so please refer to that
 		help page for the full discussion. This help page contains only a brief resume of these parameters.[br]
-		The [doc:dcc_connection]dcc documentation[/doc] explains the DCC RECV subprotocol in detail.[br]
+		The [doc:dcc_connection]dcc documentation[/doc] explains the DCC RECV sub-protocol in detail.[br]
 	@examples:
 
 */
@@ -840,7 +808,6 @@ static bool dcc_kvs_cmd_recv(KviKvsModuleCommandCall * c)
 	@switches:
 		!sw: -t | -tdcc
 		Emulate the TDCC protocol.
-
 		!sw: -s | --ssl
 		Use a Secure Socket Layer for the transfer; the whole communication will be encrypted
 		with a private key algorithm after a public key handshake.[br]
@@ -861,7 +828,7 @@ static bool dcc_kvs_cmd_recv(KviKvsModuleCommandCall * c)
 		The remote end may acknowledge the request by sending a DCC RECV request.
 		This command effects are similar to [cmd]dcc.send[/cmd], but will work also on machines
 		that can't accept incoming connections (firewalling or masquerading problems).[br]
-		A 120 seconds file offer is added for the specified file and mask "<nickname>!*@*".
+		A 120 seconds file offer is added for the specified file and mask [i]<nickname>!*@*[/i].
 	@examples:
 
 */
@@ -922,7 +889,7 @@ static bool dcc_kvs_cmd_rsend(KviKvsModuleCommandCall * c)
 		a TSEND reply.[br]
 		If the -s switch is given, the message will be a DCC SGET, expecting
 		a SSEND reply.[br]
-		-t and -s can be combined together to obtain a "turbo"+"SSL" extension transfer.[br]
+		-t and -s can be combined together to obtain a [i]Turbo[/i]+[i]SSL[/i] extension transfer.[br]
 		-s will work only if the KVIrc executable has been compiled with SSL support and
 		the remote client supports it.[br]
 	@examples:
@@ -1000,11 +967,9 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		!sw: -g=<codec> | --codec=<codec>
 		Use the codec specified as parameter.
 		Actually the supported codecs are [i]null[/i], [i]adpcm[/i] and [i]gsm[/i].
-
 		!sw: -h=<rate> | --sample-rate=<rate>
 		Use the sample rate specified by <rage>.
 		Valid sample rates are 8000, 11025, 22050 and 44100 Hz.
-
 		!sw: -m[=<boolean>] | --minimize[=<boolean>]
 		If the -m switch is passed, the default boolCreateMinimizedDccSend option
 		is overridden with the <boolean> parameter passed. So actually
@@ -1012,25 +977,22 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		if the [fnc]$option[/fnc](boolCreateMinimizedDccSend) returns false.[br]
 		In the same way, by passing -m=0 you will create a non minimized DCC SEND.
 		If no <boolean> value is specified, it defaults to 1.[br]
-
 		!sw: -n | --no-ctcp
 		Do [b]not[/b] send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.recv -c).[br]
-
 		!sw: -c | --connect
 		Attempt to CONNECT to the remote host specified as <interface> and <port>,
 		instead of listening (active connection instead of a passive one).
 		In this case the -i and -p switches are mandatory.[br]
-		The 'c' switch takes precedence over 'n' (In fact both should
+		The [b]c[/b] switch takes precedence over [b]n[/b] (In fact both should
 		be mutually exclusive).[br]
-		If the 'c' and 'n' switches are missing, this commands
+		If the [b]c[/b] and [b]n[/b] switches are missing, this commands
 		needs to be executed in a window that is bound to a connected
 		IRC context (you need a third entity to accomplish the negotiation).[br]
-
 		!sw: -i=<interface> | --ip=<interface>
 		Bind the local listening socket to the specified <interface> (which is an IP address, IPv4 or IPv6).
 		If this switch is [b]not[/b] specified, the socket is bound to the interface of
-		the current IRC connection (if any) or to "127.0.0.1".[br]
+		the current IRC connection (if any) or to [i]127.0.0.1[/i].[br]
 		You can also specify a local interface name to get the address from (this works only for IPv4 interfaces
 		since IPv6 ones seems to be unsupported by the system ioctl() calls at the moment (for Linux at least)).[br]
 		Here go some examples:[br]
@@ -1038,16 +1000,13 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is [b]not[/b] specified, the port will be a "random" one chosen by the kernel.[br]
-
+		If this switch is [b]not[/b] specified, the port will be a [i]random[/i] one chosen by the kernel.[br]
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -1057,14 +1016,12 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		with firewalled and/or masqueraded machines. With the -a and -f switches
 		you can work around it.[br]
 		[br]
-
 		!sw: -u | --unlimited
 		If the 'u' switch is given, the connection attempt will
 		never time out; this might be useful if you want to leave
 		a listening socket for a friend of yours while you are sleeping
 		and have the CTCP processing disabled. The 'u' switch works either
 		in active and passive mode.[br]
-
 	@description:
 		Attempts a DCC Voice connection to <nickname>.[br]
 		The -g option is used to select the GSM codec, available codecs are [i]gsm[/i], [i]adpcm[/i] and [i]null[/i].[br]
@@ -1081,7 +1038,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		the lowest limit is 5 KHz and the upper limit is 44.1 KHz (but some soundcards support 96 KHz).
 		It is also possible that the soundcard can't support a continuous range of frequencies and
 		will select a discrete closest match instead.[br]
-		The "commonly used" sample rates are 8000, 11025, 22050 and 44100 Hz.[br]
+		The [i]commonly used[/i] sample rates are 8000, 11025, 22050 and 44100 Hz.[br]
 		The remaining parameters are equivalent to the ones used in [cmd]dcc.send[/cmd], so please refer to that
 		help page for the full discussion. This help page contains only a brief resume of these parameters.[br]
 	@examples:
@@ -1386,18 +1343,18 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		'DCC' stands for Direct Client Connection, it is used to exchange data
 		directly between two IRC clients (with no IRC server in the middle).[br]
 		DCC itself is not a well-defined protocol, but rather a set of
-		subprotocols with (more or less) standardized rules.[br]
+		sub-protocols with (more or less) standardized rules.[br]
 		Sub-protocols are also (historically) called [b]DCC types[/b]; this term often
 		leads to confusion and it will become clear later.[br]
-		Each subprotocol has two main parts: The [b]DCC negotiation[/b] and the [b]DCC transfer[/b].[br]
+		Each sub-protocol has two main parts: The [b]DCC negotiation[/b] and the [b]DCC transfer[/b].[br]
 		The [b]DCC negotiation[/b] part is used to request the [b]DCC transfer[/b] and define its necessary parameters,[br]
 		while the [b]DCC transfer[/b] part is the real data transfer between clients.[br]
 		The [b]DCC negotiation[/b] requires a third entity that routes the negotiation data between clients,
 		this is usually an IRC server.[br]
 		[br]
 		[big]DCC Negotiation[/big][br]
-		This part of the protocol is the most tricky and difficult one, and is different for almost every DCC subprotocol.[br]
-		The "constant" scenario of the negotiation is more or less the following:[br]
+		This part of the protocol is the most tricky and difficult one, and is different for almost every DCC sub-protocol.[br]
+		The [i]constant[/i] scenario of the negotiation is more or less the following:[br]
 		There are two IRC clients connected to the same IRC network and they want to exchange some data in
 		a direct client connection.[br]
 		Each client knows the other by nickname only (and eventually by the host displayed by the IRC server,
@@ -1411,12 +1368,12 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		The negotiation exchanges these information between clients by using IRC as channel and CTCP messages
 		as encoding method.[br]
 		An example will make things clearer:[br]
-		DCC chat is the simplest (and most widely implemented) DCC subprotocol:
+		DCC chat is the simplest (and most widely implemented) DCC sub-protocol:
 		it is used to exchange <cr><lf> separated text data between clients.[br]
 		Assume that you want to establish a DCC chat
 		connection to 'Sarah' that is currently connected to your IRC network (so
 		she/he is an IRC user just like you).
-		All you have to do is type sth as "/dcc chat Sarah" in your IRC client.
+		All you have to do is type sth as [i]/dcc chat Sarah[/i] in your IRC client.
 		The client will setup a listening socket on a random port chosen
 		usually by the kernel of your OS. In this case YOU are the [b]passive client[/b], and Sarah is the active one.[br]
 		Once the socket is ready to accept connections,
@@ -1432,13 +1389,13 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		Some IRC clients allow modifications of this procedure:[br]
 		First of all, the port to listen on can be specified by the user
 		and not by the kernel; this is useful when the passive client
-		is behind a firewall that "shades" some sets of ports.
+		is behind a firewall that [i]shades[/i] some sets of ports.
 		The IP address for the listening socket
 		can be specified by the user as well (especially when the machine has more than one network interface).[br]
 		A more challenging trick is to listen on a specified IP address and port
 		and notify different ones to the remote user (e.g. <ip_address> and <port>
 		parameters of the CTCP message are not the ones that the client is listening on).
-		This is especially useful with "transparent proxy" firewalls that
+		This is especially useful with [i]transparent proxy[/i] firewalls that
 		often are not transparent enough to allow the DCC connections.
 		(If you have one of these firewalls you know what I'm talking about,
 		otherwise just read on). KVIrc allows to avoid the usage of a third entity
@@ -1450,23 +1407,23 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		Is everything clear?...I don't think so... my English is really bad...
 		[br]
 		[big]DCC Transfer[/big][br]
-		The DCC transfer part is different for every DCC subprotocol, but
+		The DCC transfer part is different for every DCC sub-protocol, but
 		it always happens over a direct client to client TCP connection.[br]
 		[br]
-		[big]DCC Subprotocols[/big][br]
-		There are two main standardized DCC subprotocols that are widely implemented in IRC clients:
+		[big]DCC Sub-protocols[/big][br]
+		There are two main standardized DCC sub-protocols that are widely implemented in IRC clients:
 		[b]DCC chat[/b] and [b]DCC SEND[/b].[br]
 		DCC chat is quite simple and the protocol is more or less completely defined.[br]
 		DCC SEND is a *real mess*, the original definition was not very flexible
 		so many IRC clients tried to enhance both the negotiation and the transfer, leading
 		often to incompatible implementations. (I can remember the Turbo File Transfer implemented
 		by VIrc, the Send-Ahead enhancement implemented in many clients, the RESUME facility...)[br]
-		Many clients introduced new DCC subprotocols with non-standard implementations,
+		Many clients introduced new DCC sub-protocols with non-standard implementations,
 		leading again to client incompatibility.[br]
-		Some of the notable subprotocols are DCC Voice, DCC Draw, DCC Whiteboard...[br]
+		Some of the notable sub-protocols are DCC Voice, DCC Draw, DCC Whiteboard...[br]
 		[br]
 		[big]DCC Chat[/big][br]
-		This is the simplest and most standardized DCC subprotocol. Almost every IRC client implements it.[br]
+		This is the simplest and most standardized DCC sub-protocol. Almost every IRC client implements it.[br]
 		It is used to exchange lines of text between the two clients.[br]
 		The negotiation is quite simple, we assume that [b]client A[/b] wants to establish a DCC chat connection to [b]client B[/b].
 		[b]client A[/b] sets up a listening socket and retrieves its address (IP address and port).[br]
@@ -1475,8 +1432,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		Where <ipaddress> is a string representing an positive integer that is the A socket's IP address
 		in network byte order, and where <port> is a string representing an positive integer that is the
 		A socket's port.[br]
-		The original purpose of the second "chat" string in the CTCP request is quite obscure, it was probably
-		introduced to have the <ipaddress> as second parameter, as in the DCC SEND subprotocol.[br]
+		The original purpose of the second [i]chat[/i] string in the CTCP request is quite obscure, it was probably
+		introduced to have the <ipaddress> as second parameter, as in the DCC SEND sub-protocol.[br]
 		[b]client B[/b] receives the CTCP, parses it, eventually asks the user for permission and connects
 		to the specified IP address and port.
 		The transfer protocol is quite simple, both clients can send text lines separated by <cr><lf> pairs.[br]
@@ -1489,12 +1446,12 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		standard string representation of the IP address... missing inet_aton() function on the target system?).[br]
 		KVIrc adds the Secure Sockets Layer to the DCC chat protocol. In this case the negotiation string becomes:[br]
 		[b]DCC SCHAT chat <ipaddress> <port>[/b][br]
-		where "SCHAT" stands for Secure CHAT.[br] The external protocol is exactly the same but is built on top of a Secure Sockets Layer
+		where [i]SCHAT[/i] stands for Secure CHAT.[br] The external protocol is exactly the same but is built on top of a Secure Sockets Layer
 		implementation (specifically OpenSSL). The connection will be encrypted with a private key algorithm after
 		a public key handshake.[br]
 		[br]
 		[big]DCC SEND[/big][br]
-		DCC SEND is another standard subprotocol. Most clients implement this as well, many have tried
+		DCC SEND is another standard sub-protocol. Most clients implement this as well, many have tried
 		to enhance it.[br]
 		The basic DCC SEND protocol allows transferring a file from the requesting client to the receiving client.[br]
 		The requesting client (the one that sends the file) is always passive and the receiving client is always active.[br]
@@ -1503,7 +1460,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]client A[/b] sets up a listening socket and retrieves its IP address and port.[br]
 		[b]client A[/b] sends a CTCP request to [b]client B[/b] in the following form:[br]
 		[b]DCC SEND <filename> <ipaddress> <port> <filesize>[/b][br]
-		<ipaddress> and <port> have the same semantics as in the DCC chat subprotocol.[br]
+		<ipaddress> and <port> have the same semantics as in the DCC chat sub-protocol.[br]
 		<filename> is the name (without path!) of the file to be sent, and <filesize> is (yeah), the file size.[br]
 		[b]client B[/b] receives the CTCP, parses it, eventually asks the user for confirmation and connects to the
 		specified IP address and port; the transfer then begins.[br]
@@ -1512,17 +1469,17 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		of the file received up to that moment.[br]
 		The transmission closes when the last acknowledge is received by [b]client A[/b].[br]
 		The acknowledges were meant to include some sort of coherency check in the transmission, but in fact
-		no client can "recover" from an acknowledge error/desync, all of them just close the connection declaring the
+		no client can [i]recover[/i] from an acknowledge error/desync, all of them just close the connection declaring the
 		transfer as failed (the situation is even worse in fact, often acknowledge errors aren't even detected!).[br]
 		Since the packet-acknowledge round trip eats a lot of time, many clients included
-		the "send-ahead" feature; the [b]client A[/b] does [b]not[/b] wait for the acknowledge of the first packet before sending the second one.[br]
+		the [i]send-ahead[/i] feature; the [b]client A[/b] does [b]not[/b] wait for the acknowledge of the first packet before sending the second one.[br]
 		The acknowledges are still sent, but just a reverse independent stream.[br] This makes the DCC SEND considerably faster.[br]
 		Since the acknowledge stream has non-zero bandwidth usage, no client can recover from an acknowledge error and
-		having them as an independent stream is more or less like having no acknowledges, the "Turbo" ( :) ) extension has been added:
+		having them as an independent stream is more or less like having no acknowledges, the [i]Turbo[/i] ( :) ) extension has been added:
 		[b]client B[/b] will send no acknowledges and will just close the connection when he has received all the expected data.[br]
 		This makes the DCC SEND as fast as FTP transfers.[br]
-		The "Turbo" extension is specified during the negotiation phase, bu using TSEND as DCC message type (instead of SEND).[br]
-		The "Turbo" extension is not widely implemented.[br]
+		The [i]Turbo[/i] extension is specified during the negotiation phase, bu using TSEND as DCC message type (instead of SEND).[br]
+		The [i]Turbo[/i] extension is not widely implemented.[br]
 		Later implementations have added the support for resuming interrupted DCC SEND transfers:[br]
 		[b]client A[/b] sets up the socket and sends the CTCP request as before.[br]
 		If [b]client B[/b] discovers that the file has been partially received in a previous DCC SEND session it sends
@@ -1533,19 +1490,19 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]client A[/b] receives the request, parses it and eventually replies with:[br]
 		[b]DCC ACCEPT <filename> <port> <resume position>[/b][br]
 		[b]client B[/b] receives the ACCEPT message, connects to [b]client A[/b] and the transfer initiates as before.[br]
-		The "Send-ahead" and "Turbo" extensions can obviously be used also in this case (But 'T' is [b]not[/b] prepended to the RESUME and ACCEPT messages).[br]
-		The IPv6 extension can be used also in this subprotocol, so <ipaddress> can be also an IPv6 address in hexadecimal notation.[br]
+		The [i]Send-ahead[/i] and [i]Turbo[/i] extensions can obviously be used also in this case (But [b]T[/b] is [b]not[/b] prepended to the RESUME and ACCEPT messages).[br]
+		The IPv6 extension can be used also in this sub-protocol, so <ipaddress> can be also an IPv6 address in hexadecimal notation.[br]
 		KVIrc introduces the SSL extension also to DCC SEND. The protocol remains the same again but it is built on top of
 		a Secure Sockets Layer implementation just like DCC chat.[br]
 		With SSL the negotiation string becomes:[br]
 		[b]DCC SSEND <filename> <ipaddress> <port> <filesize>[/b][br]
-		where "SSEND" stands for Secure SEND.[br]
-		The "turbo" extension can be combined with the SSL extension too. In this case the second parameter
-		of the negotiation string must be "TSSEND" or "STSEND".[br]
+		where [i]SSEND[/i] stands for Secure SEND.[br]
+		The [i]Turbo[/i] extension can be combined with the SSL extension too. In this case the second parameter
+		of the negotiation string must be [i]TSSEND[/i] or [i]STSEND[/i].[br]
 		[br]
 		[big]DCC RECV[/big][br]
 		DCC RECV is the counterpart of DCC SEND. This is a KVIrc extension and is not standard yet.[br]
-		The purpose of this subprotocol will not be immediately clear, but read on for an explanation.[br]
+		The purpose of this sub-protocol will not be immediately clear, but read on for an explanation.[br]
 		It is used to request a file from another client; we assume that [b]client A[/b] knows that [b]client B[/b] has
 		a specific file and is able/wants to send it.[br]
 		[b]client A[/b] sets up a listening socket, retrieves its address and port and then
@@ -1557,38 +1514,38 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]client B[/b] receives the CTCP message, parses it, looks for the file to send (in some unspecified way)
 		and connects to the specified IP address and port. The transfer then begins just as in the DCC SEND, but in the inverse way:
 		[b]client B[/b] sends blocks of data to [b]client A[/b] and [b]client B[/b] sends back acknowledges.[br]
-		This subprotocol is useful in transferring data from clients that are behind a firewall and are not able to accept
+		This sub-protocol is useful in transferring data from clients that are behind a firewall and are not able to accept
 		incoming connections (this is not possible with a normal DCC SEND). In this case the client that receives
 		the file is passive and the client that sends it is active (as opposite to DCC SEND).[br]
-		The "Send ahead" extension can be used also in this case and the "Turbo" extension is activated by prepending a 'T' to the
-		DCC message, "TRECV" instead of "RECV". The SSL extension is activated by prepending an 'S' to the
-		DCC message, "SRECV", "STRECV" or "TSRECV".[br]
-		This subprotocol has an implicit resume capability and thus has no need for RESUME and ACCEPT messages.[br]
+		The [i]Send ahead[/i] extension can be used also in this case and the [i]Turbo[/i] extension is activated by prepending a [b]T[/b] to the
+		DCC message, [i]TRECV[/i] instead of [i]RECV[/i]. The SSL extension is activated by prepending an [b]S[/b] to the
+		DCC message, [i]SRECV", [i]STRECV[/i] or [i]TSRECV[/i].[br]
+		This sub-protocol has an implicit resume capability and thus has no need for RESUME and ACCEPT messages.[br]
 		DCC RECV requires the initiating (passive) client to know that the file to be transferred is available on the B's side
-		and probably also know the file size. This subprotocol does not specify how this information is obtained, but it
+		and probably also know the file size. This sub-protocol does not specify how this information is obtained, but it
 		will become clear soon that it can be obtained either manually (User B can simply tell the info to User A),
-		or automatically (as in the DCC RSEND subprotocol (keep reading)).[br]
+		or automatically (as in the DCC RSEND sub-protocol (keep reading)).[br]
 		[br]
 		[big]DCC RSend[/big][br]
 		DCC RSend stands for Reverse Send. This is a KVIrc extension to the SEND protocol to allow firewalled clients
-		to send files.[br] In fact, this is a "half" subprotocol, since it defines only a part of the DCC negotiation;
-		the transfer is defined by another subprotocol (and specifically bu DCC RECV).[br]
+		to send files.[br] In fact, this is a [i]half[/i] sub-protocol, since it defines only a part of the DCC negotiation;
+		the transfer is defined by another sub-protocol (and specifically bu DCC RECV).[br]
 		The requesting client (the one that sends the file) is active and the receiving client is passive.[br]
 		Assume that [b]client A[/b] wants to send a file to [b]client B[/b] and that [b]client A[/b] cannot accept incoming connections.[br]
 		[b]client A[/b] sends a CTCP request to [b]client B[/b] in the following form:[br]
 		[b]DCC RSEND <filename> <filesize>[/b][br]
 		[b]client B[/b] receives the request, parses it, eventually asks the user for confirmation, sets up a listening socket, retrieves
-		its IP address and port and switches to the DCC RECV subprotocol by effectively sending the following CTCP message:[br]
+		its IP address and port and switches to the DCC RECV sub-protocol by effectively sending the following CTCP message:[br]
 		[b]DCC RECV <filename> <ipaddress> <port> <resume position>[/b][br]
-		The rest of the transfer is defined by the DCC RECV subprotocol.[br]
-		The "Turbo" extension is again activated by prepending a 'T' to the RSEND string, so the initial CTCP will become:[br]
+		The rest of the transfer is defined by the DCC RECV sub-protocol.[br]
+		The [i]Turbo[/i] extension is again activated by prepending a [b]T[/b] to the RSEND string, so the initial CTCP will become:[br]
 		[b]DCC TRSEND <filename> <filesize>[/b][br]
-		The "SSL" extension is also activated by prepending an 'S' to the RSEND string. It can be again combined
-		with the "turbo" extension. The negotiation parameter becomes then "SRSEND","TSRSEND" or "STRSEND".[br]
+		The [i]SSL[/i] extension is also activated by prepending an [b]S[/b] to the RSEND string. It can be again combined
+		with the [i]Turbo[/i] extension. The negotiation parameter becomes then [i]SRSEND[/i], [i]TSRSEND[/i] or [i]STRSEND[/i].[br]
 		Easy, no? :)[br]
 		[br]
 		[big]DCC Get[/big][br]
-		This is again a "half" subprotocol in fact since it defines only a part of the negotiation for file transfers.[br]
+		This is again a [i]half[/i] sub-protocol in fact since it defines only a part of the negotiation for file transfers.[br]
 		It is also NON standard, since actually no client except KVIrc implements it (AFAIK).[br]
 		DCC Get is used to request a file from a remote client. Assume that [b]client A[/b] wants to request a file from [b]client B[/b]
 		(and assume that [b]client A[/b] knows that B has that file and wants to send it).[br]
@@ -1596,23 +1553,23 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]DCC GET <filename>[/b][br]
 		Where <filename> is a name of a file without path.[br]
 		[b]client B[/b] receives the message, parses it, looks for an association of the <filename> to a real filesystem file
-		and starts one of the two DCC file transfer subprotocols, DCC SEND or DCC RSEND.[br]
+		and starts one of the two DCC file transfer sub-protocols, DCC SEND or DCC RSEND.[br]
 		[b]client B[/b] should prefer the DCC SEND method and choose DCC RSEND only if it is not able to accept incoming connections.[br]
-		This subprotocol can be used by firewalled clients that can't accept connections but still want to request a file
+		This sub-protocol can be used by firewalled clients that can't accept connections but still want to request a file
 		from another client, this one can fail only if both clients are firewalled (in this case no DCC transfer is possible at all).[br]
-		This subprotocol also does not need to "magically" know the file size, the size definition
-		is found in the subprotocol that the remote client will choose.[br]
-		The association of <filename> with a real file on the B's machine is not explicitly defined by the subprotocol;
-		KVIrc uses an internal "file-offer" table with a list of files that are available for download.[br]
-		The "turbo" and "SSL" extensions are activated as usual, "TGET", "SGET", "TSGET" and "STGET" are supported.[br]
+		This sub-protocol also does not need to [i]magically[/i] know the file size, the size definition
+		is found in the sub-protocol that the remote client will choose.[br]
+		The association of <filename> with a real file on the B's machine is not explicitly defined by the sub-protocol;
+		KVIrc uses an internal [i]file-offer[/i] table with a list of files that are available for download.[br]
+		The [i]Turbo[/i] and [i]SSL[/i] extensions are activated as usual, [i]TGET[/i], [i]SGET[/i], [i]TSGET[/i] and [i]STGET[/i] are supported.[br]
 		[br]
 		[big]DCC File Transfer[/big][br]
 		DCC SEND: Send a file, sender is passive, receiver is active (not good for firewalled senders)[br]
 		DCC RECV: Receive a file, sender is active, receiver is passive (not good for firewalled receivers)[br]
 		DCC RSEND: Send a file, sender is active, receiver is passive (not good for firewalled receivers)[br]
 		DCC GGET: Receive a file, sender is passive if not firewalled, receiver active if sender not firewalled (will fail only if both are firewalled)[br]
-		The "turbo" extension disables the stream of acknowledges and is activated by prepending the 'T' character to the DCC subprotocol name[br]
-		The "SSL" extension causes a Secure Socket Layer to be used and is activated by prepending the 'S' character to the DCC subprotocol name[br]
+		The [i]Turbo[/i] extension disables the stream of acknowledges and is activated by prepending the 'T' character to the DCC sub-protocol name[br]
+		The [i]SSL[/i] extension causes a Secure Socket Layer to be used and is activated by prepending the 'S' character to the DCC sub-protocol name[br]
 		[br]
 		[big]DCC Voice[/big][br]
 		DCC Voice is a KVIrc extension (there is a Windows client called VIrc that implements such
@@ -1622,11 +1579,11 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		KVIrc currently supports the ADPCM (core support) and the GSM codec (if the libgsm is available on the target system).[br]
 		[b]TODO: Finish the DCC Voice doc :)[/b]
 		[big]More tricks[/big][br]
-		KVIrc supports another "hack" to the DCC negotiation, it recognizes "XDCC" as
+		KVIrc supports another [i]hack[/i] to the DCC negotiation, it recognizes [i]XDCC[/i] as
 		a DCC negotiation CTCP parameter.[br]
 		This can be used to circumvent limitations of some IRC clients (read mIRC) that will not allow
 		you to send a /DCC GET since it is an unrecognized DCC type.[br]
-		"XDCC" has exactly the same meaning as "DCC" (at least in KVIrc).[br]
+		[i]XDCC[/i] has exactly the same meaning as [i]DCC[/i] (at least in KVIrc).[br]
 */
 
 static DccDescriptor * dcc_kvs_find_dcc_descriptor(const kvs_uint_t &uId,KviKvsModuleRunTimeCall * c,bool bWarn = true)
@@ -1780,8 +1737,8 @@ static bool dcc_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		<string> $dcc.connectionType(<dcc_id:uint>)
 	@description:
 		Returns the connection type of the specified DCC session.[br]
-		Returns the string "ACTIVE" for active DCC connections
-		and the string "PASSIVE" for passive DCC connections.
+		Returns the string [i]ACTIVE[/i] for active DCC connections
+		and the string [i]PASSIVE[/i] for passive DCC connections.
 		If <dcc_id> is omitted then the DCC Session associated
 		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
@@ -1816,8 +1773,8 @@ static bool dcc_kvs_fnc_connectionType(KviKvsModuleFunctionCall * c)
 		<boolean> $dcc.isFileTransfer
 		<boolean> $dcc.isFileTransfer(<dcc_id:uint>)
 	@description:
-		Returns 1 if the specified DCC
-		is a file transfer and 0 otherwise.[br]
+		Returns [b]1[/b] if the specified DCC
+		is a file transfer and [b]0[/b] otherwise.[br]
 		If <dcc_id> is omitted then the DCC Session associated
 		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
@@ -1852,8 +1809,8 @@ static bool dcc_kvs_fnc_isFileTransfer(KviKvsModuleFunctionCall * c)
 		<boolean> $dcc.isFileUpload
 		<boolean> $dcc.isFileUpload(<dcc_id:uint>)
 	@description:
-		Returns 1 if the specified DCC
-		is an upload file transfer and 0 otherwise.[br]
+		Returns [b]1[/b] if the specified DCC
+		is an upload file transfer and [b]0[/b] otherwise.[br]
 		If <dcc_id> is omitted then the DCC Session associated
 		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
@@ -1888,8 +1845,8 @@ static bool dcc_kvs_fnc_isFileUpload(KviKvsModuleFunctionCall * c)
 		<boolean> $dcc.isFileDownload
 		<boolean> $dcc.isFileDownload(<dcc_id:uint>)
 	@description:
-		Returns 1 if the specified DCC
-		is a download file transfer and 0 otherwise.[br]
+		Returns [b]1[/b] if the specified DCC
+		is a download file transfer and [b]0[/b] otherwise.[br]
 		If <dcc_id> is omitted then the DCC Session associated
 		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
@@ -2458,8 +2415,8 @@ static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
 		<string> $dcc.transferStatus(<dcc_id:uint>)
 	@description:
 		Returns the status in the specified DCC session.[br]
-		The status is one of the strings "connecting", "transferring", "success" and "failure".
-		"success" and "failure" are reported when the transfer is terminated.
+		The status is one of the strings [i]connecting", [i]transferring[/i], [i]success[/i] and [i]failure[/i].
+		[i]success[/i] and [i]failure[/i] are reported when the transfer is terminated.
 		If <dcc_id> is omitted then the DCC session associated
 		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
@@ -2511,7 +2468,7 @@ static bool dcc_kvs_fnc_transferStatus(KviKvsModuleFunctionCall * c)
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty string.[br]
 		If the DCC session does not refer to a file transfer then
-		this function returns 0.[br]
+		this function returns [b]0[/b].[br]
 		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
@@ -2557,7 +2514,7 @@ static bool dcc_kvs_fnc_transferredBytes(KviKvsModuleFunctionCall * c)
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty string.[br]
 		If the DCC session does not refer to a file transfer then
-		this function returns 0.[br]
+		this function returns [b]0[/b].[br]
 		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
@@ -2599,7 +2556,7 @@ static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
 		Returns the DCC session identifier associated with the DCC window specified
 		by <window_id>. If <window_id> is omitted then the DCC session identifier
 		associated with the current window is returned. If the specified window
-		has no associated DCC session then a warning is printed and 0 is returned.[br]
+		has no associated DCC session then a warning is printed and [b]0[/b] is returned.[br]
 */
 
 static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
@@ -2723,8 +2680,8 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		$dcc.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<dcc_id:integer>[,<param1:string>]]])
 	@description:
 		Returns the requested information about certificates used in an SSL enabled DCC session.[br]
-		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
-		to query the information from; if omitted, it defaults to "remote".[br]
+		The second <type> parameter can be [i]local[/i] or [i]remote[/i], and refers to the certificate you want
+		to query the information from; if omitted, it defaults to [i]remote[/i].[br]
 		If <dcc_id> is omitted then the DCC Session associated with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window
 		has no associated DCC session) then this function prints a warning and returns an empty string.[br]
@@ -2754,7 +2711,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[li]fingerprintIsValid[/li]
 		[li]fingerprintDigestId[/li]
 		[li]fingerprintDigestStr[/li]
-		[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
+		[li]fingerprintContents * accepts parameter interpreted as [i]digest name[/i][/li]
 		[/ul]
 	@examples:
 		[example]

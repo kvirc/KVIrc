@@ -47,7 +47,7 @@ QRect                   g_rectChannelsJoinGeometry;
 		channelsjoin.open
 	@description:
 		Shows a dialog that allows the user to enter channels in a visual manner.[br]
-		This command is exported by the "channelsjoin" module.
+		This command is exported by the [b][i]channelsjoin[/i][/b] module.
 
 */
 

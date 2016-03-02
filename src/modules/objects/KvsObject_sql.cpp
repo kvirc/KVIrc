@@ -40,77 +40,74 @@
 			c->error("No connection has been initialized!");\
 			return false;}
 
-
 /*
-		@doc: sql
-		@keyterms:
-			Sql database.
-		@title:
-			sql class
-		@type:
-			class
-		@short:
-			A SQL database interface.
-		@inherits:
-			[class]object[/class]
-		@description:
-			This class permits KVIrc to have an interface with a SQL database supported by Qt library drivers.
-		@functions:
-			!fn: <boolean> $setConnection(<database_name:string>,<connection_name:string>,[<user:string>,<host_name_string>,<password:string>,<database_driver:string>])
-			Connects to the DBMS using the connection <connection_name> and selecting the database <database_name>.[br]
-			If the optional parameter <database_driver> is passed, it will be used the corresponding driver (if present), otherwise Sqlite will be used.
-			Returns true if the operation is successful, false otherwise.
-			!fn:: <array or string> $connectionNames([<stringreturnflag>:'s'])
-			Returns as array or, if the flag 's' is passed, as a comma separate string all the database active connection's names.
-			!fn: <array> $tablesList(<connection_name:string>)
-			Returns as array the database tables list.
-			!fn: $transaction()
-			Begin a transaction.
-			!fn: $commit()
-			Commit the transaction.
-			!fn: $setCurrentQuery(<connection_name:string>)
-			Sets the query for the database connection <connection_name>, which has to be already connected, as current query.
-			!fn: <connection_name:string> $currentQuery()
-			Returns the name of the database connection for the current query, or an empty string if there aren't any initialized queries.
-			!fn: $closeConnection(<connection_name:string>)
-			Closes the connection <connection_name>.
-			!fn: <size:integer> $queryResultsSize()
-			Returns the query size in rows or -1 if the query is empty or the database driver doesn't support the function.
-			!fn: <error:string> $lastError(<more_details:boolean>)
-			Returns last error occurred. Use the more_details flag for more info about the error.
-			!fn: <ok:boolean> $queryExec([<query:string>])
-			Execs the current query <query>. The string must follow the right syntax against the database in use.
-			If there are no parameters, it will exec the query previously done.
-			After the execution, the query will positioned on the first resulting record.
-			Returns true if the operation is successful, false otherwise.
-			See also [classfnc]$queryPrepare[/classfnc]()
-			!fn: <ok:boolean> $queryPrepare(<query_string>)
-			Prepare the query <query> to execute. The string must follow the right syntax against the database in use.
-			It's possible to use the placeholders. It's supported either the identifier ':' and '?' but it's not possible to use them together.
-			Returns true if the operation is successful, false otherwise.
-			See also [classfnc]$queryExec[/classfnc]and[classfnc]$queryBindValue[/classfnc].
-			!fn: $queryBindValue()
-			Sets the placeholder <placeholder> to be bound to the value <val> in the prepared statement.
-			Note that the placeholder mark (e.g :) must be included when specifying the placeholder name.
-			!fn: <boolean> $queryPrevious()
-			Sets the current query position to the previous resulting record.
-			Returns true if the operation is successful, false otherwise.
-			!fn: <boolean> $queryNext()
-			Sets the current query position to the next resulting record.
-			Returns true if the operation is successful, false otherwise.
-			!fn: <boolean> $queryLast()
-			Sets the current query position to the last resulting record.
-			Returns true if the operation is successful, false otherwise.
-			!fn: <boolean> $queryFirst()
-			Sets the current query position to the first resulting record.
-			Returns true if the operation is successful, false otherwise.
-			!fn: <record:hash> $queryRecord()
-			Returns a hash containing the current query's record fields.
-			!fn: $queryFinish()
-			Sets the current query to inactive.
+	@doc: sql
+	@keyterms:
+		Sql database.
+	@title:
+		sql class
+	@type:
+		class
+	@short:
+		A SQL database interface.
+	@inherits:
+		[class]object[/class]
+	@description:
+		This class permits KVIrc to have an interface with a SQL database supported by Qt library drivers.
+	@functions:
+		!fn: <boolean> $setConnection(<database_name:string>,<connection_name:string>,[<user:string>,<host_name_string>,<password:string>,<database_driver:string>])
+		Connects to the DBMS using the connection <connection_name> and selecting the database <database_name>.[br]
+		If the optional parameter <database_driver> is passed, it will be used the corresponding driver (if present), otherwise SQLite will be used.
+		Returns true if the operation is successful, false otherwise.
+		!fn:: <array or string> $connectionNames([<stringreturnflag>:'s'])
+		Returns as array or, if the flag '[b]s[/b] is passed, as a comma separate string all the database active connection's names.
+		!fn: <array> $tablesList(<connection_name:string>)
+		Returns as array the database tables list.
+		!fn: $transaction()
+		Begin a transaction.
+		!fn: $commit()
+		Commit the transaction.
+		!fn: $setCurrentQuery(<connection_name:string>)
+		Sets the query for the database connection <connection_name>, which has to be already connected, as current query.
+		!fn: <connection_name:string> $currentQuery()
+		Returns the name of the database connection for the current query, or an empty string if there aren't any initialized queries.
+		!fn: $closeConnection(<connection_name:string>)
+		Closes the connection <connection_name>.
+		!fn: <size:integer> $queryResultsSize()
+		Returns the query size in rows or -1 if the query is empty or the database driver doesn't support the function.
+		!fn: <error:string> $lastError(<more_details:boolean>)
+		Returns last error occurred. Use the more_details flag for more info about the error.
+		!fn: <ok:boolean> $queryExec([<query:string>])
+		Execs the current query <query>. The string must follow the right syntax against the database in use.
+		If there are no parameters, it will exec the query previously done.
+		After the execution, the query will positioned on the first resulting record.
+		Returns true if the operation is successful, false otherwise.
+		See also [classfnc]$queryPrepare[/classfnc]()
+		!fn: <ok:boolean> $queryPrepare(<query_string>)
+		Prepare the query <query> to execute. The string must follow the right syntax against the database in use.
+		It's possible to use the placeholders. It's supported either the identifier [b]:[/b] and [b]?[/b] but it's not possible to use them together.
+		Returns true if the operation is successful, false otherwise.
+		See also [classfnc]$queryExec[/classfnc]and[classfnc]$queryBindValue[/classfnc].
+		!fn: $queryBindValue()
+		Sets the placeholder <placeholder> to be bound to the value <val> in the prepared statement.
+		Note that the placeholder mark (e.g [b]:[/b]) must be included when specifying the placeholder name.
+		!fn: <boolean> $queryPrevious()
+		Sets the current query position to the previous resulting record.
+		Returns true if the operation is successful, false otherwise.
+		!fn: <boolean> $queryNext()
+		Sets the current query position to the next resulting record.
+		Returns true if the operation is successful, false otherwise.
+		!fn: <boolean> $queryLast()
+		Sets the current query position to the last resulting record.
+		Returns true if the operation is successful, false otherwise.
+		!fn: <boolean> $queryFirst()
+		Sets the current query position to the first resulting record.
+		Returns true if the operation is successful, false otherwise.
+		!fn: <record:hash> $queryRecord()
+		Returns a hash containing the current query's record fields.
+		!fn: $queryFinish()
+		Sets the current query to inactive.
 */
-
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_sql,"sql","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryLastInsertId)

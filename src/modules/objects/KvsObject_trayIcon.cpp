@@ -62,12 +62,14 @@
 		Returns '1' if the tray icon is currently visible.
 		!fn: showMessage(<title:string>,<message:string>,<message_icon:string>,<timeout:integer>)
 		Shows a balloon message for the entry with the given title, message and message_icon for the time specified in millisecondsTimeoutHint. title and message must be plain text strings.
-		Message can be clicked by the user; the messageClickedEvent() will be triggered when this occurs.
+		Message can be clicked by the user; the messageClickedEvent() will be triggered when this occurs.[br]
 		Valid values for message_icon are:
-		[br]- NoIcon : No icon is shown.
-		[br]- Information : An information icon is shown.
-		[br]- Warning : A standard warning icon is shown.
-		[br]- Critical : A critical warning icon is shown.
+		[pre]
+			- NoIcon : No icon is shown.[br]
+			- Information : An information icon is shown.[br]
+			- Warning : A standard warning icon is shown.[br]
+			- Critical : A critical warning icon is shown.[br]
+		[/pre]
 		!fn: setContextMenu(<popupmenu:hobject>).
 		Associates the given <popupmenu> with the tray icon.
 		!fn: activatedEvent(<reason:string>)
@@ -75,11 +77,11 @@
 		If you reimplement this function the reason parameter will be passed as $0.
 		Values for reason are:[br]
 		[pre]
-		[br]- Unknown : Unknown reason.
-		[br]- Context : The context menu for the tray icon was requested.
-		[br]- DoubleClick : The tray icon was double clicked.
-		[br]- Trigger : The tray icon was clicked.
-		[br]- MiddleClick : The tray icon was clicked with the middle mouse button.
+			- Unknown : Unknown reason.[br]
+			- Context : The context menu for the tray icon was requested.[br]
+			- DoubleClick : The tray icon was double clicked.[br]
+			- Trigger : The tray icon was clicked.[br]
+			- MiddleClick : The tray icon was clicked with the middle mouse button.[br]
 		[/pre]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
 		!fn: messageClickedEvent()

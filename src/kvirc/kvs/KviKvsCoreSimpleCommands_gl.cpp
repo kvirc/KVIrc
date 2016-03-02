@@ -117,10 +117,10 @@ namespace KviKvsCoreSimpleCommands
 			If no document has been found using absolute and relative paths,
 			the first document matching [document] in the help search database
 			is shown. Otherwise, an error page is displayed.[br/]
-			The help browser has limited html browsing capabilities: you can
-			use it to view simple html files on your filesystem.[br]
+			The help browser has limited HTML browsing capabilities: you can
+			use it to view simple HTML files on your filesystem.[br]
 			This command is an alias for the [cmd]help.open[/cmd] command exported
-			by the "help" module.
+			by the [i]help[/i] module.
 		@switches:
 			!sw: -m | --mdi
 			The created browser is a MDI window,
@@ -132,11 +132,11 @@ namespace KviKvsCoreSimpleCommands
 			[cmd]help.open[/cmd]
 		@examples:
 			[example]
-			help /home/pragma/myfile.html	//absolute path
-			help cmd_snd.play.html		//relative path
-			help "Binding operator"		//keyword search, remember quoting
-			help OnNickServAuth		//keyword search for an event
-			help \$my.user			//keyword search, $ needs to be escaped
+				help /home/pragma/myfile.html	//absolute path
+				help cmd_snd.play.html		//relative path
+				help "Binding operator"		//keyword search, remember quoting
+				help OnNickServAuth		//keyword search for an event
+				help \$my.user			//keyword search, $ needs to be escaped
 			[/example]
 	*/
 
@@ -184,18 +184,18 @@ namespace KviKvsCoreSimpleCommands
 			the results in the current window.[br]
 			The -i switch causes the command to execute
 			in IPv6 mode (and lookup ONLY IPv6 hosts!).[br]
-			The -a switch causes the command to run in "unspecified" mode
+			The -a switch causes the command to run in [i]unspecified[/i] mode
 			and return any available address: IPv4 or IPv6.[br]
 			This command also performs reverse lookups (if you pass an IP address as <hostname>).[br]
 		@examples:
 			[example]
-			host localhost
-			host irc.flashnet.it
-			host -i irc.flashnet.it
-			host -i A0E0:FFFF:::1010:1111:E0E0:A0A0
-			host -a 127.0.0.1
-			host 255.41.31.23
-			host -a irc.stealth.net
+				host localhost
+				host irc.flashnet.it
+				host -i irc.flashnet.it
+				host -i A0E0:FFFF:::1010:1111:E0E0:A0A0
+				host -a 127.0.0.1
+				host 255.41.31.23
+				host -a irc.stealth.net
 			[/example]
 		@seealso:
 			[cmd]ahost[/cmd]
@@ -233,7 +233,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			A builtin alias for parse
 		@description:
-			This is a builtin alias for [cmd]parse[/cmd] that gives scripts a "more C-ish" look :)
+			This is a builtin alias for [cmd]parse[/cmd] that gives scripts a [i]more C-ish[/i] look :)
 		@seealso:
 			[cmd]parse[/cmd]
 	*/
@@ -607,7 +607,7 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			list
 		@syntax:
-			list [ <channel> *( "," <channel> ) [ <target> ] ]
+			list [ <channel> *( ',' <channel> ) [ <target> ] ]
 		@short:
 			Lists channels
 		@description:

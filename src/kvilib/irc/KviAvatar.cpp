@@ -49,8 +49,8 @@
 		the protocol is intended to be client based.
 		[big]The terms[/big]
 		The user that wants to offer a digital representation of himself
-		will be called "source user". The ones that will receive the notification
-		will be called "target users".
+		will be called [i]source user[/i]. The ones that will receive the notification
+		will be called [i]target users[/i].
 		Every IRC user can be either a source user or target user.
 		[big]The idea[/big]
 		Every IRC user has a client-side property called AVATAR. Let's say that there
@@ -86,7 +86,7 @@
 		[br]
 		There should be a convention on the image sizes: not a protocol limit.
 		For example, the convention could be that all the images should be smaller than
-		129x129 pixels. The preferred image format is "png" (Portable Network Graphics)
+		129x129 pixels. The preferred image format is [i]png[/i] (Portable Network Graphics)
 		since it allows good compression rates without compromising the image quality.
 		Other formats may be accepted as well (Theoretically this protocol could be
 		extended to allow movies or 3D images).

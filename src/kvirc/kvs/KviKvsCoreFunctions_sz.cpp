@@ -70,19 +70,19 @@ namespace KviKvsCoreFunctions
 {
 
 	/*
-	@doc: scriptContextName
-	@type:
-		function
-	@title:
-		$scriptContextName
-	@short:
-		Returns the actual script context's name..
-	@syntax:
-		<string> $scriptContextName()
-	@description:
-		Returns the actual script context's name. Useful only for custom debug.
-	@seealso:
-		[cmd]debug[/cmd]
+		@doc: scriptContextName
+		@type:
+			function
+		@title:
+			$scriptContextName
+		@short:
+			Returns the actual script context's name..
+		@syntax:
+			<string> $scriptContextName()
+		@description:
+			Returns the actual script context's name. Useful only for custom debug.
+		@seealso:
+			[cmd]debug[/cmd]
 */
 
 	KVSCF(scriptContextName)
@@ -281,7 +281,7 @@ namespace KviKvsCoreFunctions
 				[li]If <data> is a string then <data> itself is returned.[/li]
 				[li]If <data> is an integer then its decimal representation is returned.[/li]
 				[li]If <data> is a real then its decimal floating-point representation is returned.[/li]
-				[li]If <data> is a boolean then the string "1" is returned for a true value and the string "0" for a false value.[/li]
+				[li]If <data> is a boolean then the string [b]1[/b] is returned for a true value and the string [b]0[/b] for a false value.[/li]
 				[li]If <data> is nothing (unset) then an empty string is returned[/li]
 				[li]If <data> is an array then a string with all the items converted to strings and separated by commas is returned[/li]
 				[li]If <data> is a hash then a string with all the values converted to strings and separated by commas is returned[/li]
@@ -327,7 +327,7 @@ namespace KviKvsCoreFunctions
 			If the switch was not present at all then this function
 			returns an empty string (that evaluates to false in an expression).
 			A warning is printed if this function is used non-alias code.
-			@seealso:
+		@seealso:
 			[fnc]$insideAlias[/fnc]
 		@examples:
 			[example]
@@ -457,8 +457,8 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$this
 		@description:
-			Returns the ID of the current object or ('0') if there is
-			none. This function has a "quick" version with syntax:
+			Returns the ID of the current object or (0) if there is
+			none. This function has a [i]quick[/i] version with syntax:
 			[b]$$[/b][br]
 	*/
 
@@ -473,7 +473,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$$
 		@description:
-			Returns the ID of the current object or ('0') if there is
+			Returns the ID of the current object or (0) if there is
 			none. This function is equivalent to [fnc]$this[/fnc]
 	*/
 
@@ -496,126 +496,109 @@ namespace KviKvsCoreFunctions
 		@short:
 			Explains how to add translation capabilities to your scripts
 		@body:
-			[p]
 			[big]Introduction[/big]
-			[/p]
-			[p]
 			Adding the translated versions of the strings adds a great
 			value to your scripts. The process of translating a part of
 			software is called localization. KVIrc offers some commands
 			and functions for this purpose and this document explains
 			briefly how to use them.
-			[/p]
-
-			[p]
+			[br]
 			[big]The big picture[/big]
-			[/p]
-			[p]
-			All of the strings in your script are written in a "primary language".
-			The most common "primary language" is English, but theoretically
+			[br]
+			All of the strings in your script are written in a [i]primary language[/i].
+			The most common [i]primary language[/i] is English, but theoretically
 			it can be any language of your choice.
-			[/p]
-			[p]
+			[br]
 			By the means of the gettext package programs you extract
 			the strings from your script and produce a translation file.
-			[/p]
-			[p]
+			[br]
 			The translation file is then effectively translated in another
 			language and later compiled in a binary form.
-			[/p]
-			[p]
+			[br]
 			The binary form translations are then loaded in the KVIrc
 			executable at runtime and a function is used to look up the
 			translations.
-			[/p]
-
-			[p]
+			[br][br]
 			[big]How to translate scripts[/big]
-			[/p]
-			[p]
+			[br]
 			Your strings should be surrounded by the [fnc]$tr[/fnc]() function in the following way:
 			[example]
 				[fnc]$tr[/fnc]("your default language text")
 			[/example]
-			[/p]
-			[p]
+			[br]
 			Then you should run the xgettext command on your script files.
 			This is done by a shell commandline similar to the following:[br]
-			[pre]xgettext -o myscript.pot -ktr mykvsfile1.kvs mykvsfile2.kvs ...[/pre]
-			[/p]
-			[p]
+			[example]
+				xgettext -o myscript.pot -ktr mykvsfile1.kvs mykvsfile2.kvs ...
+			[/example]
+			[br]
 			Copy the translation file obtained in the following way:[br]
-			[pre]cp myscript.pot myscript_XX.pot[/pre]
+			[example]
+				cp myscript.pot myscript_XX.pot
+			[/example][br]
 			Where the XX is your country/language code. For example, for Italian
 			it would be:[br]
-			[pre]cp myscript.pot myscript_it.po[/pre]
-			[/p]
-			[p]
+			[example]
+				cp myscript.pot myscript_it.po
+			[/example]
+			[br]
 			Translate mytranslation_it.po. The format of the po file is straightforward.
 			There are msgid lines with the original English text and immediately
 			following msgstr lines that must be filled with the corresponding translation.
 			For example in Italian you would translate:[br]
 			msgid "your default language text"
 			msgstr "il tuo testo in linguaggio predefinito"
-			[/p]
-			[p]
+			[br]
 			Compile your translation to binary form with the following command:[br]
-			[pre]msgfmt -o myscript_it.mo myscript_it.po[/pre]
-			[/p]
-			[p]
-			Copy the generated *.mo file to the "locale" subdirectory
+			[example]
+				msgfmt -o myscript_it.mo myscript_it.po
+			[/example][br]
+			Copy the generated *.mo file to the [i]locale[/i] subdirectory
 			in the KVIrc's local directory (usually $HOME/.kvirc/locale/).
-			[/p]
-			[p]
+			[br]
 			Set the system language to the XX above with the following command:[br]
-			[pre]export LANG="XX"[/pre][br]
+			[example]
+				export LANG="XX"
+			[/example][br]
 			For Italian it would be:[br]
-			[pre]export LANG="it"[/pre][br]
-			[/p]
-			[p]
+			[example]export LANG="it"[/example][br]
+			[br]
 			Start KVIrc and type in the commandline:
 			[example]
-			[cmd]echo[/cmd] [fnc]$tr[/fnc]("your default language text","myscript")
+				[cmd]echo[/cmd] [fnc]$tr[/fnc]("your default language text","myscript")
 			[/example]
 			If you did everything well, you should see the translated
 			text echoed in the window :)[br]
-			[/p]
-			[p]
+			[br]
 			Obviously if you don't set LANG="XX", the same command will
 			output the original string unchanged.
-			[/p]
-			[p]
+			[br]
 			You can manage translations in several languages by producing
 			several *.mo files all with the proper language/country code appended.
 			The right *.mo file will be magically loaded by KVIrc that
 			will look up the user's LANG variable. (If you don't want
 			to use LANG, you can use KVIRC_LANG instead, it will still work).
-			[/p]
-
+			[br][br]
 			[big]Caveats[/big]
-			[/p]
-			[p]
-			You should NEVER use variables or identifiers inside the $tr() function.
+			[br]
+			You should [b]never[/b] use variables or identifiers inside the $tr() function.
 			This because the translation files are generated offline,
 			when the string is not evaluated yet (i.e variables ad identifiers
 			are not substituted by their actual return values).
 			The translation process, instead, happens at runtime, when
 			the variables and identifiers have been substituted by their
 			actual values. This would lead to a mismatch between the
-			string you look up in the translation catalogue and the
+			string you look up in the translation catalog and the
 			effectively translated one. If you need to include variables
 			in your strings you should compose the string with smaller pieces
 			[example]
 				[cmd]echo[/cmd] [fnc]$tr[/fnc]("On this channel") %number [fnc]$tr[/fnc]("users are operators")
 			[/example]
-			[/p]
-			[p]
 			The translation process can be realized only if your
 			scripts are written in external files. This makes sense since
 			if you're translating the script then you will probably want to
 			distribute it and the only way to distribute it is on files.
 			But well.. this is a caveat.
-			[/p]
 	*/
 
 	/*
@@ -971,7 +954,7 @@ namespace KviKvsCoreFunctions
 			or has an open query with you.[br]
 			Detailed explanation:[br]
 			KVIrc has an internal database of users that are currently
-			visible by *this client*: this includes users on open channels
+			visible by [i][b]this client[/b][/i]: this includes users on open channels
 			and queries.[br] The other IRC users are [b]not[/b] in the database:
 			this means that KVIrc knows NOTHING about them and can't return
 			any information immediately. In this case this function will return

@@ -75,11 +75,11 @@ const QIODevice::OpenMode mod_cod[] = {
 		[class]object[/class]
 	@description:
 		This object class provides access to files - basic I/O
-		operations, copying, removing etc...
+		operations, copying, removing etc.
 	@functions:
 		!fn: $setName(<file_name:string>)
 		Sets the file name to <file_name>. It does [b]not move[/b] the file,
-		it just changes the file the object is "pointing to". You can
+		it just changes the file the object is [i]pointing to[/i]. You can
 		not change names of already open files.[br]
 		See also: [classfnc]$open[/classfnc](),
 		[classfnc]$name[/classfnc]().
@@ -87,15 +87,15 @@ const QIODevice::OpenMode mod_cod[] = {
 		Returns name set by [classfnc]$setName[/classfnc]().[br]
 		See also: [classfnc]$setName[/classfnc]().
 		!fn: $open(<mode1:string>, <mode2:string>)
-		Attempts to open the file in specified mode or modes "sum".
+		Attempts to open the file in specified mode or modes [i]sum[/i].
 		Valid modes are:[br]
 		[pre]
-		RAW     - RAW, non-buffered access[br]
-		ReadOnly     - opens the file read-only[br]
-		WriteOnly    - opens the file write-only[br]
-		ReadWrite    - opens the file in read-write mode[br]
-		Append       - opens the file in append mode. The file index is set to the end of the file.[br]
-		Truncate     - truncates the file[br]
+			RAW     - RAW, non-buffered access[br]
+			ReadOnly     - opens the file read-only[br]
+			WriteOnly    - opens the file write-only[br]
+			ReadWrite    - opens the file in read-write mode[br]
+			Append       - opens the file in append mode. The file index is set to the end of the file.[br]
+			Truncate     - truncates the file[br]
 		[/pre]
 		If you call this function without any parameters, the file is
 		opened in read-only mode.[br]
@@ -116,7 +116,7 @@ const QIODevice::OpenMode mod_cod[] = {
 		!fn: <integer> $size()
 		Returns current file size.
 		!fn: <boolean> $atEnd()
-		Returns '1' if you have reached end of the file, '0' otherwise.
+		Returns '1' if you have reached end of the file, [b]0[/b] otherwise.
 		[br]See also: [classfnc]$seek[/classfnc](),
 		[classfnc]$where[/classfnc]().
 		!fn: <integer> $where()
@@ -148,7 +148,6 @@ const QIODevice::OpenMode mod_cod[] = {
 		$readBlock()
 		$writeBlock()
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KvsObject_file,"setName",setName)

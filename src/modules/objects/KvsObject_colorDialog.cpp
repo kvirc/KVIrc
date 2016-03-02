@@ -63,7 +63,7 @@ const int option_cod[] = {
 		(unchecked).
 	@functions:
 		!fn: <bool> $isChecked()
-		Returns '1' if the check box is checked, '0' otherwise.[br]
+		Returns [b]1[/b] if the check box is checked, and [b]0[/b] otherwise.[br]
 		See also [classfnc]$setChecked[/classfnc]().
 		!fn: $setChecked([<bChecked:bool>])
 		Sets the check box 'checked state' to <bool>.

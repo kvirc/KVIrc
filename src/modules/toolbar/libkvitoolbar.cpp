@@ -291,7 +291,7 @@ static bool toolbar_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 	@syntax:
 		<boolean> $toolbar.exists(<id:string>)
 	@description:
-		Returns 1 if the toolbar with the specified <id> has been defined.[br]
+		Returns [b]1[/b] if the toolbar with the specified <id> has been defined.[br]
 		Note that this doesn't mean that the toolbar is visible!
 	@seealso:
 		[cmd]toolbar.create[/cmd]
@@ -320,7 +320,7 @@ static bool toolbar_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $toolbar.isVisible(<id:string>)
 	@description:
-		Returns 1 if the toolbar with the specified <id> is visible,
+		Returns [b]1[/b] if the toolbar with the specified <id> is visible,
 		or 0 when invisible or the given toolbar does not exist.
 	@seealso:
 		[cmd]toolbar.show[/cmd]

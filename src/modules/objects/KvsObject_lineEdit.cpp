@@ -44,7 +44,6 @@ static const int mode_cod[] =  {
 
 #define mode_num	(sizeof(mode_tbl) / sizeof(mode_tbl[0]))
 
-
 /*
 	@doc:	lineedit
 	@keyterms:
@@ -72,9 +71,11 @@ static const int mode_cod[] =  {
 		See also [classfnc]$text[/classfnc]().
 		!fn: $setEchoMode(<echo_mode:string>)
 		Sets the line edit's echo mode. Possible value are:[br]
-		-Normal: display chars as they entered[br]
-		-Noecho: do not display anything[br]
-		-Password: display asterisks instead of the characters actually entered[br]
+		[pre]
+			-Normal: display chars as they entered[br]
+			-Noecho: do not display anything[br]
+			-Password: display asterisks instead of the characters actually entered[br]
+		[/pre]
 		See also [classfnc]$echoMode[/classfnc]().
 		!fn: <string> $echoMode()
 		Return the line edit's echo mode.
@@ -134,29 +135,29 @@ static const int mode_cod[] =  {
 		Sets the validation input mask to inputMask.[br]
 		[b]Example:[/b][br]
 		[example]
-		%ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
-		%ledit_example->$setInputMask( "000.000.000.000;_" );[br]
-		%ledit_example->IP Number Mask.[br]
-		%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );
+			%ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
+			%ledit_example->$setInputMask( "000.000.000.000;_" );[br]
+			%ledit_example->IP Number Mask.[br]
+			%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );
 		[/example]
 		The mask format understands these mask characters:[br]
 		[example]
-		[b][comment]Character	Meaning[/comment][/b][br]
-		A	-	ASCII alphabetic character required. A-Z, a-z.[br]
-		a	-	ASCII alphabetic character permitted but not required.[br]
-		N	-	ASCII alphanumeric character required. A-Z, a-z, 0-9.[br]
-		n	-	ASCII alphanumeric character permitted but not required.[br]
-		X	-	Any character required.[br]
-		x	-	Any character permitted but not required.[br]
-		9	-	ASCII digit required. 0-9.[br]
-		0	-	ASCII digit permitted but not required.[br]
-		D	-	ASCII digit required. 1-9.[br]
-		d	-	ASCII digit permitted but not required.[br]
-		#	-	ASCII digit or plus/minus sign permitted but not required.[br]
-		>	-	All following alphabetic characters are uppercased.[br]
-		<	-	All following alphabetic characters are lowercased.[br]
-		!	-	Switch off case conversion.[br]
-		\	-	Use \ to escape the special characters listed above to use them as separators.
+			[b][comment]Character	Meaning[/comment][/b][br]
+			A	-	ASCII alphabetic character required. A-Z, a-z.[br]
+			a	-	ASCII alphabetic character permitted but not required.[br]
+			N	-	ASCII alphanumeric character required. A-Z, a-z, 0-9.[br]
+			n	-	ASCII alphanumeric character permitted but not required.[br]
+			X	-	Any character required.[br]
+			x	-	Any character permitted but not required.[br]
+			9	-	ASCII digit required. 0-9.[br]
+			0	-	ASCII digit permitted but not required.[br]
+			D	-	ASCII digit required. 1-9.[br]
+			d	-	ASCII digit permitted but not required.[br]
+			#	-	ASCII digit or plus/minus sign permitted but not required.[br]
+			>	-	All following alphabetic characters are uppercased.[br]
+			<	-	All following alphabetic characters are lowercased.[br]
+			!	-	Switch off case conversion.[br]
+			\	-	Use \ to escape the special characters listed above to use them as separators.
 		[/example]
 		The mask consists of a string of mask characters and separators, optionally[br]
 		followed by a semi-colon and the character used for blanks: the blank characters[br]
@@ -187,8 +188,6 @@ static const int mode_cod[] =  {
 		!sg: $textChanged()
 		This signal is emitted by the default implementation of [classfnc]$textChangedEvent[/classfnc]().
 */
-
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_lineEdit,"lineedit","widget")
 

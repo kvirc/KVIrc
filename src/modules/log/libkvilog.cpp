@@ -185,7 +185,7 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		If logging is not enabled in the specified window, this command does nothing.[br]
 		If this command is never used, the log file is flushed at regular file-size intervals,
 		depending on the underlying I/O subsystem. This is usually 4KiB.[br]
-		The "block flushing" is used to achieve a fast I/O on files, but may cause
+		The [i]block flushing[/i] is used to achieve a fast I/O on files, but may cause
 		the last data block to be lost in case of a program crash.[br]
 	@seealso:
 		[fnc]$window[/fnc],

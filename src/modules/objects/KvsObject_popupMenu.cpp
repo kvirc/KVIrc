@@ -85,83 +85,83 @@
 		[br]
 	@examples:
 		[example]
-		[comment]//First we define a class inherited from popupmenu[/comment]
-		class(menu,popupmenu)
-		{
-			constructor()
+			[comment]# First we define a class inherited from popupmenu[/comment]
+			class(menu,popupmenu)
 			{
-				[comment]//We store the item's ID for checking in activatedEvent[/comment]
-				@%tile_id=@$insertItem("Tile",118)
-				@%cascade_id=@$insertItem("Cascade",115)
-				@$insertSeparator(3)
-				@%closeactw_id=@$insertItem("Close Active Window",08)
-				@%closeallw_id=@$insertItem("Close All Window",58)
-			}
-			activatedEvent()
-			{
-				[comment]//Now we emit a signals to the relative to the user choice[/comment]
-				%id=$0
-				if (%id==@%tile_id) @$emit("tile")
-				else if(%id==@%cascade_id) @$emit("cascade")
-				else if (%id==@%closeactw_id) @$emit("closeactive")
-				else @$emit("closeallwindows")
-				[comment]//Deleting the popup[/comment]
-				delete $$
-			}
-		}
-		class (ws,widget)[br]
-		{
-			[comment]In the constructor we create everything that belong to the single widget.[/comment]
-			constructor()
-			{
-				[comment]//Here we generate a loop to create our labels inside the widget.[/comment]
-				%lay=$new(layout,$$)
-				[comment]we use a vbox to managing labels in vertical orientation[/comment]
-				%vb=$new(vbox,$$)
-				[comment]Then add the vbox to the main layout[/comment]
-				%lay->$addWidget(%vb,0,0)
-				[comment]Let's create our colorful labels[/comment]
-				for(%i=0;%i<15;%i++)
+				constructor()
 				{
-					@%label=$new(label,%vb)
-					@%label->$settext("Another class by N\&G")
-					#We set our foreground's colors using the hex array in a random way.
-					@%label->$setforegroundcolor($array($rand(255),$rand(255),$rand(255)))
+					[comment]# We store the item's ID for checking in activatedEvent[/comment]
+					@%tile_id=@$insertItem("Tile",118)
+					@%cascade_id=@$insertItem("Cascade",115)
+					@$insertSeparator(3)
+					@%closeactw_id=@$insertItem("Close Active Window",08)
+					@%closeallw_id=@$insertItem("Close All Window",58)
+				}
+				activatedEvent()
+				{
+					[comment]# Now we emit a signals to the relative to the user choice[/comment]
+					%id=$0
+					if (%id==@%tile_id) @$emit("tile")
+					else if(%id==@%cascade_id) @$emit("cascade")
+					else if (%id==@%closeactw_id) @$emit("closeactive")
+					else @$emit("closeallwindows")
+					[comment]# Deleting the popup[/comment]
+					delete $$
 				}
 			}
-			customContextMenuRequestedEvent()
+			class (ws,widget)[br]
 			{
-				[comment]//We create the popupmenu relative to this widget at runtime.[/comment]
-				%p=$new(menu,$$)
-				objects.connect %p tile @$parent tile
-				objects.connect %p cascade @$parent cascade
-				objects.connect %p closeactive @$parent closeactivewindow
-				objects.connect %p closeallwindows @$parent closeallwindows
-				%p->$exec($$,$($0+10),$($1+10))
+				[comment]In the constructor we create everything that belong to the single widget.[/comment]
+				constructor()
+				{
+					[comment]# Here we generate a loop to create our labels inside the widget.[/comment]
+					%lay=$new(layout,$$)
+					[comment]we use a vbox to managing labels in vertical orientation[/comment]
+					%vb=$new(vbox,$$)
+					[comment]# Then add the vbox to the main layout[/comment]
+					%lay->$addWidget(%vb,0,0)
+					[comment]# Let's create our colorful labels[/comment]
+					for(%i=0;%i<15;%i++)
+					{
+						@%label=$new(label,%vb)
+						@%label->$settext("Another class by N\&G")
+						[comment]# We set our foreground's colors using the hex array in a random way.[/comment]
+						@%label->$setforegroundcolor($array($rand(255),$rand(255),$rand(255)))
+					}
+				}
+				customContextMenuRequestedEvent()
+				{
+					[comment]# We create the popupmenu relative to this widget at runtime.[/comment]
+					%p=$new(menu,$$)
+					objects.connect %p tile @$parent tile
+					objects.connect %p cascade @$parent cascade
+					objects.connect %p closeactive @$parent closeactivewindow
+					objects.connect %p closeallwindows @$parent closeallwindows
+					%p->$exec($$,$($0+10),$($1+10))
+				}
 			}
-		}
-		[comment]//We create the workspace widget[/comment]
-		%Workspace=$new(workspace)
-		[comment]//We use as space as we have[/comment]
-		%size[]=%Workspace->$screenResolution()
-		[comment]//Resize it[/comment]
-		%Workspace->$resize(%size[0],%size[1])
-		[comment]//Then create 20 subwidget[/comment]
-		for(%i=0;%i<20;%i++)
-		{
-			%w=$new(ws,%Workspace)
-			[comment]//Let's add every widget to the workspace[/comment]
-			%Workspace->$addSubWindow(%w)
-			[comment]//Then "shake it" a little bit around :-)[/comment]
-			%w->$move($rand($(%size[0]-50)),$rand($(%size[1]-50)))
-		}
-		[comment]//Reimplement closeEvent to delete all this :-)[/comment]
-		privateimpl(%Workspace,closeEvent)
-		{
-			delete $$
-		}
-		[comment]//Let's show![/comment]
-		%Workspace->$show()
+			[comment]# We create the workspace widget[/comment]
+			%Workspace=$new(workspace)
+			[comment]# We use as space as we have[/comment]
+			%size[]=%Workspace->$screenResolution()
+			[comment]# Resize it[/comment]
+			%Workspace->$resize(%size[0],%size[1])
+			[comment]# Then create 20 subwidget[/comment]
+			for(%i=0;%i<20;%i++)
+			{
+				%w=$new(ws,%Workspace)
+				[comment]# Let's add every widget to the workspace[/comment]
+				%Workspace->$addSubWindow(%w)
+				[comment]# Then "shake it" a little bit around :-)[/comment]
+				%w->$move($rand($(%size[0]-50)),$rand($(%size[1]-50)))
+			}
+			[comment]# Reimplement closeEvent to delete all this :-)[/comment]
+			privateimpl(%Workspace,closeEvent)
+			{
+				delete $$
+			}
+			[comment]# Let's show![/comment]
+			%Workspace->$show()
 		[/example]
 */
 

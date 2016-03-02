@@ -51,7 +51,7 @@
 		Some operators have no [right_operand] and these are called [b]unary operators[/b]:
 		they operate directly on <left_operand>.[br]
 		Some operators, like arithmetic ones, are typically used inside the special function
-		[b]$(<expression>)[/b], called the "[doc:expressioneval]Expression evaluation identifier[/doc]";
+		[b]$(<expression>)[/b], called the [i][doc:expressioneval]Expression evaluation identifier[/doc][/i];
 		This special function returns the result of the evaluation of the <expression>.
 		In previous versions of KVIrc this function was called $calc().[br]
 		[br]
@@ -158,7 +158,7 @@ end_of_the_param:
 	@short:
 		Assignment operation
 	@body:
-		The assignment is the "plainest" of the operators: it works just like in any other programming language.[br]
+		The assignment is the [i]plainest[/i] of the operators: it works just like in any other programming language.[br]
 		The syntax is:[br]
 		[br]
 		[b]<target> = <source>[/b]
@@ -169,45 +169,45 @@ end_of_the_param:
 		If <source> evaluates to an empty value then the <target> variable is unset.
 	@examples:
 		[example]
-		[comment]# Assigning a constant to the variable %Tmp[/comment]
-		%Tmp = 1
-		[cmd]echo[/cmd] %Tmp
-		[comment]# Assigning a string constant to the variable %Tmp[/comment]
-		%Tmp = some string
-		[cmd]echo[/cmd] %Tmp
-		[comment]# Assigning a string constant to the variable %Tmp[/comment]
-		%Tmp = "some string with whitespace &nbsp; &nbsp; &nbsp; &nbsp; preserved"
-		[cmd]echo[/cmd] %Tmp
-		[comment]# Assigning a variable to another variable copies its contents[/comment]
-		%Someothervariable = "Contents"
-		%Tmp = %Someothervariable
-		[cmd]echo[/cmd] %Tmp
-		[comment]# Assigning a variable string to the variable %z[/comment]
-		%color = blue
-		%z = my eyes are %color
-		[cmd]echo[/cmd] %z
-		[comment]# Assigning a variable string (with a function call inside) to the variable %x[/comment]
-		%x = the system os is [fnc]$system.osname[/fnc]
-		[cmd]echo[/cmd] %x
-		[comment]# Assigning an empty string to the local variable %y unsets %y[/comment]
-		%x =
-		[cmd]echo[/cmd] %y
-		[comment]# This is equivalent to the above[/comment]
-		%y = ""
-		[comment]# This is equivalent too, if $function evaluates to an empty string[/comment]
-		%y = $function()
-		[comment]# Assigning a variable string to a hash entry[/comment]
-		%Dict{key} = [fnc]$system.osname[/fnc]\ian
-		[comment]# Unsetting an array entry[/comment]
-		%mydict[23] = ""
-		[comment]# Assigning a hash to another: %mydict[] becomes a copy of %anotherdict[][/comment]
-		%anotherdict{"The key"} = "Some dummy value"
-		%mydict = %anotherdict
-		[cmd]echo[/cmd]%mydict{"The key"}
-		[comment]# This will convert %mydict to be a scalar variable (deleting all the %mydict contents!)[/comment]
-		%mydict = "some default value"
-		[comment]# Unsetting a whole hash[/comment]
-		%anotherdict =
+			[comment]# Assigning a constant to the variable %Tmp[/comment]
+			%Tmp = 1
+			[cmd]echo[/cmd] %Tmp
+			[comment]# Assigning a string constant to the variable %Tmp[/comment]
+			%Tmp = some string
+			[cmd]echo[/cmd] %Tmp
+			[comment]# Assigning a string constant to the variable %Tmp[/comment]
+			%Tmp = "some string with whitespace &nbsp; &nbsp; &nbsp; &nbsp; preserved"
+			[cmd]echo[/cmd] %Tmp
+			[comment]# Assigning a variable to another variable copies its contents[/comment]
+			%Someothervariable = "Contents"
+			%Tmp = %Someothervariable
+			[cmd]echo[/cmd] %Tmp
+			[comment]# Assigning a variable string to the variable %z[/comment]
+			%color = blue
+			%z = my eyes are %color
+			[cmd]echo[/cmd] %z
+			[comment]# Assigning a variable string (with a function call inside) to the variable %x[/comment]
+			%x = the system os is [fnc]$system.osname[/fnc]
+			[cmd]echo[/cmd] %x
+			[comment]# Assigning an empty string to the local variable %y unsets %y[/comment]
+			%x =
+			[cmd]echo[/cmd] %y
+			[comment]# This is equivalent to the above[/comment]
+			%y = ""
+			[comment]# This is equivalent too, if $function evaluates to an empty string[/comment]
+			%y = $function()
+			[comment]# Assigning a variable string to a hash entry[/comment]
+			%Dict{key} = [fnc]$system.osname[/fnc]\ian
+			[comment]# Unsetting an array entry[/comment]
+			%mydict[23] = ""
+			[comment]# Assigning a hash to another: %mydict[] becomes a copy of %anotherdict[][/comment]
+			%anotherdict{"The key"} = "Some dummy value"
+			%mydict = %anotherdict
+			[cmd]echo[/cmd]%mydict{"The key"}
+			[comment]# This will convert %mydict to be a scalar variable (deleting all the %mydict contents!)[/comment]
+			%mydict = "some default value"
+			[comment]# Unsetting a whole hash[/comment]
+			%anotherdict =
 		[/example]
 */
 
@@ -229,31 +229,31 @@ end_of_the_param:
 		[b]<target>++[/b][br]
 		[b]<target>--[/b][br]
 		[br]
-		++ increments <target> by one, -- decrements <target> by one.[br]
-		These are equivalent to += 1 and -= 1.[br]
+		[b]++[/b] increments <target> by one, [b]--[/b] decrements <target> by one.[br]
+		These are equivalent to [b]+= 1[/b] and [b]-= 1[/b].[br]
 		<target> must be an existing variable and contain an integer value.[br]
 		If <target> contains a real value then the real is truncated to the nearest
 		integer and then incremented or decremented.[br]
 	@examples:
 		[example]
-		%a=10
-		[cmd]echo[/cmd] "Incrementing"
-		[cmd]while[/cmd](%a < 20)
-		{
-			[cmd]echo[/cmd] %a
-			[b]%a++[/b]
-		}
-		[cmd]echo[/cmd] "Decrementing"
-		[cmd]while[/cmd](%a > 10)
-		{
-			[cmd]echo[/cmd] %a
-			[b]%a--[/b]
-		}
-		[cmd]echo[/cmd] "Testing for loop"
-		[cmd]for[/cmd](%a=0;%a < 10;[b]%a++[/b])
-		{
-			[cmd]echo[/cmd] %a
-		}
+			%a=10
+			[cmd]echo[/cmd] "Incrementing"
+			[cmd]while[/cmd](%a < 20)
+			{
+				[cmd]echo[/cmd] %a
+				[b]%a++[/b]
+			}
+			[cmd]echo[/cmd] "Decrementing"
+			[cmd]while[/cmd](%a > 10)
+			{
+				[cmd]echo[/cmd] %a
+				[b]%a--[/b]
+			}
+			[cmd]echo[/cmd] "Testing for loop"
+			[cmd]for[/cmd](%a=0;%a < 10;[b]%a++[/b])
+			{
+				[cmd]echo[/cmd] %a
+			}
 		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
@@ -388,10 +388,10 @@ end_of_the_param:
 		[b]<target> << <right_operand>[/b][br]
 		[b]<target> <, <right_operand>[/b][br]
 		[br]
-		Operator .= appends <right_operand> to <target>.
-		Operator << appends a space followed by <right_operand> to <target> if <target> is non empty,
+		Operator [b].=[/b] appends <right_operand> to <target>.
+		Operator [b]<<[/b] appends a space followed by <right_operand> to <target> if <target> is non empty,
 		otherwise sets <target> to <right_operand>.
-		Operator <, is similar to << but uses a comma to separate the two variable contents.
+		Operator [b]<,[/b] is similar to [b]<<[/b] but uses a comma to separate the two variable contents.
 		The last two operators are useful in creating space-separated or comma-separated lists.
 	@examples:
 		[example]
@@ -443,29 +443,29 @@ end_of_the_param:
 		Binding operator
 	@body:
 		This operator is a really ugly, poor and clueless attempt to reach at least 1% of the
-		power of the perl =~ operator :D[br]
+		power of the Perl [b]=~[/b] operator :D[br]
 		It allows some complex string operations to be performed efficiently by operating directly
 		on the left operand (in fact this is a lot faster in KVIrc since at least one step of parsing is skipped).[br]
 		Its basic syntax is:[br]
 		[br][b]<left_operand> =~ <operation>[parameters][/b][br][br]
-		Where <operation> may be one of 't','s' and parameters depend on it.[br]
+		Where <operation> may be one of [b]t[/b], [b]s[/b] and parameters depend on it.[br]
 		<left_operand> is the target of the <operation>.[br]
 		If <left_operand> is an array or dictionary, the <operation> is executed on each item they contain.[br]
-		Operation 't' is the transliteration.[br]
+		Operation [b]t[/b] is the transliteration.[br]
 		The complete syntax with parameters is:[br]
-		[br][b]<left_operand> =~ t/<search characters>/<replacement characters>/[/b][br][br]
+		[br][b]<left_operand> [b]=~[/b] t/<search characters>/<replacement characters>/[/b][br][br]
 		where <search characters> is a string of characters that are replaced with the corresponding
 		characters in <replacement characters>.[br]
-		This operation can be also named 'y' or 'tr' (to preserve some compatibility with other languages).
+		This operation can be also named [b]y[/b] or [b]tr[/b] (to preserve some compatibility with other languages).
 		[example]
-		%A=This is a test string
-		echo %A
-		%A=~ tr/abcdefghi/ABCDEFGHI/
-		echo %A
+			%A=This is a test string
+			echo %A
+			%A=~ tr/abcdefghi/ABCDEFGHI/
+			echo %A
 		[/example]
-		Operation 's' is the substitution.[br]
+		Operation [b]s[/b] is the substitution.[br]
 		The complete syntax with parameters is:[br]
-		[br][b]<left_operand> =~ s/<search pattern>/<replacement pattern>/[flags][/b][br][br]
+		[br][b]<left_operand> [b]=~[/b] s/<search pattern>/<replacement pattern>/[flags][/b][br][br]
 		where <search pattern> is an extended regular expression to be matched in the <left_operand>
 		and <replacement string> is a special pattern that will replace any occurrence found.[br]
 		<search pattern> may contain parentheses to capture parts of the matched text.
@@ -475,11 +475,11 @@ end_of_the_param:
 		since the KVS parser will first unquote the string and then pass it to the regexp engine.
 		That's also why we use \\N and not \N.[br]
 		\\0 is a special escape that will be replaced by the entire match (is always valid!).[br]
-		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
-		'g' causes the search to be global and not stop after the first occurrence of <search pattern>.[br]
-		'i' causes the search to be case insensitive.[br]
-		'm' causes the search to be case minimal (non-greedy).[br]
-		'w' causes the search pattern to be interpreted as a simple wildcard regular expression.
+		[flags] may be a combination of the letters [b]g[/b], [b]i[/b] and [b]w[/b].[br]
+		[b]g[/b] causes the search to be global and not stop after the first occurrence of <search pattern>.[br]
+		[b]i[/b] causes the search to be case insensitive.[br]
+		[b]m[/b] causes the search to be case minimal (non-greedy).[br]
+		[b]w[/b] causes the search pattern to be interpreted as a simple wildcard regular expression.
 	@examples:
 		[example]
 			%A=This is a test string

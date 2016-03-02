@@ -37,7 +37,7 @@
 	@title:
 		$language.detect
 	@short:
-		(Tries to) detect the language and encoding of a string
+		Tries to detect the language and encoding of a string
 	@syntax:
 		<hash> language.detect(<text: string>)
 	@description:
@@ -45,18 +45,18 @@
 		as [text]. The accuracy of the detection mainly depends on the length
 		of the supplied text. Good results can be achieved with some thousands
 		characters.[br]
-		This command is exported by the "language" module.
+		This command is exported by the [i]language[/i] module.
 	@examples:
 		[example]
-		%dati = $language.detect("I'm a lord and I speak perfect English.");
-		if(%dati{"error"} != "")echo "Language detection failed: " %dati{"error"};
-		%count = %dati{"matchcount"};
-		for(%i=0;%i<%count;%i++)
-		{
-		echo "LANGUAGE " %i " : " %dati{"matches"}[%i]{"language"};
-		echo "ENCODING " %i " : " %dati{"matches"}[%i]{"encoding"};
-		echo "SCORE " %i " : "%dati{"matches"}[%i]{"score"};
-		}
+			%dati = $language.detect("I'm a lord and I speak perfect English.");
+			if(%dati{"error"} != "")echo "Language detection failed: " %dati{"error"};
+				%count = %dati{"matchcount"};
+				for(%i=0;%i<%count;%i++)
+			{
+				echo "LANGUAGE " %i " : " %dati{"matches"}[%i]{"language"};
+				echo "ENCODING " %i " : " %dati{"matches"}[%i]{"encoding"};
+				echo "SCORE " %i " : "%dati{"matches"}[%i]{"score"};
+			}
 		echo "ACCURACY: " %dati{"accuracy"};
 		[/example]
 */

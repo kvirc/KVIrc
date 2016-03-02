@@ -38,11 +38,11 @@
 	@syntax:
 		<boolean> $mask.match(<wildcard_mask:string>,<fixed_mask:string>)
 	@description:
-		Returns 1 if the <wildcard_mask> matches <fixed_mask> and 0 otherwise.
-		<wildcard_mask> can obviously contain wildcards ('*' and '?').
+		Returns [b]1[/b] if the <wildcard_mask> matches <fixed_mask> and [b]0[/b] otherwise.
+		<wildcard_mask> can obviously contain wildcards ([b]*[/b] and [b]?[/b]).
 	@example:
 		[example]
-		[cmd]if[/cmd]($mask.match(*!*@*.linux.it,$0))
+			[cmd]if[/cmd]($mask.match(*!*@*.linux.it,$0))
 			[cmd]op[/cmd] [fnc]$mask.nick[/fnc]($0)
 		[/example]
 */
@@ -148,7 +148,7 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $mask.hasNumericHost(<mask: string>)
 	@description:
-		Returns 1 if the hostname part of the mask is numeric (e.g. unresolved IPv4 or IPv6 address).
+		Returns [b]1[/b] if the hostname part of the mask is numeric (e.g. unresolved IPv4 or IPv6 address).
 */
 
 

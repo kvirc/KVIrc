@@ -291,11 +291,11 @@ static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.isnumber
 	@short:
-		Returns 1 if the given string represents a number
+		Returns [b]1[/b] if the given string represents a number
 	@syntax:
 		<bool> $str.isnumber(<givenstring:string>)
 	@description:
-		Returns 1 if the given string represents a number, 0 if not.
+		Returns [b]1[/b] if the given string represents a number, and [b]0[/b] otherwise.
 */
 static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 {
@@ -316,11 +316,11 @@ static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.isunsignednumber
 	@short:
-		Returns 1 if the given string represents an unsigned number
+		Returns [b]1[/b] if the given string represents an unsigned number
 	@syntax:
 		<bool> $str.isunsignednumber(<givenstring:string>)
 	@description:
-		Returns 1 if the given string represents an unsigned number, 0 if not.
+		Returns [b]1[/b] if the given string represents an unsigned number, and [b]0[/b] otherwise.
 */
 static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 {
@@ -347,11 +347,11 @@ static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.isempty
 	@short:
-		Returns 1 if the given string don't have any character.
+		Returns [b]1[/b] if the given string don't have any character.
 	@syntax:
 		<string> $str.isEmpty(<givenstring:string>)
 	@description:
-		Returns 1 if the given string don't have any character (that is, is empty).
+		Returns [b]1[/b] if the given string don't have any character (that is, is empty).
 		This function is almost useless since it is equivalent to the
 		comparison with an empty string...
 */
@@ -375,11 +375,11 @@ static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.contains
 	@short:
-		Returns 1 if the first parameter contains the second
+		Returns [b]1[/b] if the first parameter contains the second
 	@syntax:
 		<bool> $str.contains(<container:string>,<tofind:string>[,<case:bool>])
 	@description:
-		Returns 1 if the first string parameter contains the second string parameter.
+		Returns [b]1[/b] if the first string parameter contains the second string parameter.
 		If the third parameter is set to true, then the search is case sensitive.
 	@seealso:
 		[fnc]$str.match[/fnc]()
@@ -405,11 +405,11 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.equal
 	@short:
-		Returns 1 if the two string parameters are equal
+		Returns [b]1[/b] if the two string parameters are equal
 	@syntax:
 		<bool> $str.equal(<fromcompare:string>,<tocompare:string>[,<case:bool>])
 	@description:
-		Returns 1 if the two string parameters are equal.
+		Returns [b]1[/b] if the two string parameters are equal.
 		If the third parameter is set to true, then the search is case sensitive.
 	@seealso:
 		[fnc]$str.match[/fnc]()
@@ -439,7 +439,7 @@ static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<bool> $str.cmp(<fromcompare:string>,<tocompare:string>[,<case:bool>])
 	@description:
-		This function compares two strings alphabetically. If the first string is 'greater' than the second, it will return a positive number, a negative number is the second is greater and 0 if the two strings are equal.
+		This function compares two strings alphabetically. If the first string is [b]greater[/b] than the second, it will return a positive number, a negative number is the second is greater and 0 if the two strings are equal.
 		If the third parameter is set to true, then the search is case sensitive.
 	@seealso:
 		[fnc]$str.match[/fnc]()
@@ -1105,11 +1105,11 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<bool> $str.match(<expression:string>,<string:string>[,<flags:string>[,<case:bool>]])
 	@description:
-		Returns 1 if the fixed <string> matches the <expression>, 0 otherwise.[br]
-		If <flags> contains the flag 'r' then <expression> is treated as a full
+		Returns [b]1[/b] if the fixed <string> matches the <expression>, and [b]0[/b] otherwise.[br]
+		If <flags> contains the flag [b]r[/b] then <expression> is treated as a full
 		regular expression otherwise it is treated as a simple wildcard expression containing
-		the classic wildcards '*' and '?'.[br]
-		If <flags> contains the flag 'e' then only an exact match is considered (e.g. the full
+		the classic wildcards [b]*[/b] and [b]?[/b].[br]
+		If <flags> contains the flag [b]e[/b] then only an exact match is considered (e.g. the full
 		<string> is exactly matched by <expression>), otherwise partial matches are allowed too (e.g.
 		<expression> is found inside <string>).[br]
 		If the third parameter is set to true, then the match is case sensitive.[br]
@@ -1153,7 +1153,7 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		<string> $str.word(<n:int>,<string:string>)
 	@description:
 		Returns the nth word inside the <string> (with n starting from 0!)[br]
-		A word is a substring not containing spaces (ASCII chars 32, carriage returns, tabs etc...).[br]
+		A word is a substring not containing spaces (ASCII chars 32, carriage returns, tabs etc.).[br]
 		If the string contains less than n+1 words then an empty string is returned.[br]
 		This function is faster than a call to [fnc]$str.split[/fnc]() and array indexing
 		if you need a single word to be extracted from a complex string.[br]
@@ -1441,7 +1441,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	@description:
 		Joins all the string in the <data> array by using
 		the specified <separator> and returns the result.
-		If <flags> contains the character "n" then empty strings in the <data>
+		If <flags> contains the character [b][i]n[/i][/b] then empty strings in the <data>
 		array are skipped.
 
 */
@@ -1511,13 +1511,13 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>,<offset:integer>])
 	@description:
 		Returns an array with the elements of <strings> which match the string <match>.
-		<flags> can be any combination of the characters 's','w' and 'r'.[br]
-		If the  flag 'w' is specified then <match> is assumed to be a wildcard regular
-		expression (with * and ? wildcards). If the flag 'r' is specified
+		<flags> can be any combination of the characters [b]s[/b], [b]w[/b] and [b]r[/b].[br]
+		If the  flag [b]w[/b] is specified then <match> is assumed to be a wildcard regular
+		expression (with [b]*[/b] and [b]?[/b] wildcards). If the flag [b]r[/b] is specified
 		then <match> is assumed to be a standard regular expression. If none of
-		'w' and 'r' is specified then <match> is treated as a simple string to be
-		searched in each element of the <strings> array. 'r' takes precedence over 'w'.
-		If the flag 's' is specified the matches are case sensitive.[br]
+		[b]w[/b] and [b]r[/b] is specified then <match> is treated as a simple string to be
+		searched in each element of the <strings> array. [b]r[/b] takes precedence over [b]w[/b].
+		If the flag [b]s[/b] is specified the matches are case sensitive.[br]
 		If the offset is specified attempts to find a match in from position offset in every array's item. [br]
 		If offset is -1, the search starts at the last character; if -2, at the next to last character; etc. [br]
 		Note that since almost any other variable type can be automatically cast
@@ -1641,15 +1641,15 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 		<array> $str.split(<separator:string>,<data:string>[,<flags:string>[,<maxfields:integer>]])
 	@description:
 		Splits the <data> string by <separator> and returns an array of substrings.[br]
-		<flags> may be a combination of the characters 's', 'w', 'r' and 'n'.[br]
-		If s is specified, <separator> matching is case sensitive, otherwise it is case insensitive.[br]
-		If w is specified, <separator> is treated as a wildcard-type regular expression
-		(with * and ? wildcards).[br]
+		<flags> may be a combination of the characters [b]s[/b], [b]w[/b], [b]r[/b] and [b]n[/b].[br]
+		If [b]s[/b] is specified, <separator> matching is case sensitive, otherwise it is case insensitive.[br]
+		If [b]w[/b] is specified, <separator> is treated as a wildcard-type regular expression
+		(with [b]*[/b] and [b]?[/b] wildcards).[br]
 		If r is specified, <separator> is treated as a extended-type regular expression
-		(with character classes, special escapes etc..).[br]
-		If both w and r are specified, w takes precedence.[br]
-		If neither w and r are specified <separator> is treated as a simple string to be matched.[br]
-		If 'n' is specified then any resulting empty fields are discarded.[br]
+		(with character classes, special escapes etc.).[br]
+		If both [b]w[/b] and [b]r[/b] are specified, [b]w[/b] takes precedence.[br]
+		If neither [b]w[/b] and [b]r[/b] are specified <separator> is treated as a simple string to be matched.[br]
+		If [b]n[/b] is specified then any resulting empty fields are discarded.[br]
 		If <maxfield> is specified, then at most <maxfields> items are returned in the array (i.e. the last
 		item may be not completely split).
 	@examples:
@@ -1798,7 +1798,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		a string formatted by following the specification in <format>
 		and by using the following corresponding variadic parameters.
 		Since the percent sign is used as variable prefix in KVIrc,
-		this function uses the question mark '?' instead.[br]
+		this function uses the question mark [b]?[/b] instead.[br]
 		The <format> string can contain the following escape sequences:[br]
 		[br]
 		[table]

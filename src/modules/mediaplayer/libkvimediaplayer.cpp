@@ -545,10 +545,10 @@ MP_KVS_FUNCTION(playerList)
 		selected media player interface. MRL is a standard Media Resource Locator.
 		Examples of such locators are:
 		[example]
-		file:///home/myfile.mp3
-		http://streaming.server.top:123
-		dvd:///dev/dvd
-		dvb://channelname
+			file:///home/myfile.mp3
+			http://streaming.server.top:123
+			dvd:///dev/dvd
+			dvb://channelname
 		[/example]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
@@ -604,7 +604,6 @@ MP_KVS_COMMAND(amipExec)
 
 	return true;
 }
-
 
 /*
 	@doc: mediaplayer.jumpTo
@@ -732,7 +731,6 @@ MP_KVS_SIMPLE_INT_FUNCTION(getVol,getVol)
 
 MP_KVS_SIMPLE_COMMAND(mute,mute)
 
-
 /*
 	@doc: mediaplayer.mrl
 	@type:
@@ -748,13 +746,13 @@ MP_KVS_SIMPLE_COMMAND(mute,mute)
 		The MRL is a standard Media Resource Locator.
 		Examples of such locators are: 
 		[example]
-		file:///home/myfile.mp3
-		http://streaming.server.top:123
-		dvd:///dev/dvd
-		dvb://channelname
+			file:///home/myfile.mp3
+			http://streaming.server.top:123
+			dvd:///dev/dvd
+			dvb://channelname
 		[/example]
 		This means that the returned string may [b]not[/b] refer to a local file:
-		it refers to the local file only if the 'file://' prefix is found ([fnc]$mediaplayer.localFile()[/fnc]
+		it refers to the local file only if the [b]file://[/b] prefix is found ([fnc]$mediaplayer.localFile()[/fnc]
 		checks that for you).
 		The returned string is empty if the player isn't currently playing.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
@@ -774,7 +772,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mrl,mrl)
 	@title:
 		$mediaplayer.nowPlaying
 	@short:
-		Returns a descripting of the currently played media
+		Returns a description of the currently played media
 	@syntax:
 		$mediaplayer.nowPlaying()
 	@description:
@@ -1044,7 +1042,6 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mediaType,mediaType)
 
 MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
 
-
 /*
 	@doc: mediaplayer.sampleRate
 	@type:
@@ -1059,7 +1056,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
 		Returns the sample rate (in Hz) of the multimedia file being played by the
 		remote instance of the media player.This function is not granted
 		to work with all the player interfaces and all the media types so
-		you may get -1 or 0 in return sometimes.[br]
+		you may get [b]-1[/b] or [b]0[/b] in return sometimes.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1073,7 +1070,6 @@ MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(sampleRate,sampleRate)
-
 
 /*
 	@doc: mediaplayer.length
@@ -1155,7 +1151,6 @@ MP_KVS_SIMPLE_INT_FUNCTION(position,position)
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(channels,channels)
-
 
 /*
 	@doc: mediaplayer.setPlayListPos
@@ -1239,7 +1234,6 @@ MP_KVS_SIMPLE_INT_FUNCTION(getPlayListPos,getPlayListPos)
 
 MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 
-
 /*
 	@doc: mediaplayer.getRepeat
 	@type:
@@ -1247,11 +1241,11 @@ MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 	@title:
 		$mediaplayer.getRepeat
 	@short:
-		Return if "Repeat" is on.
+		Return if [i]Repeat[/i] is on.
 	@syntax:
 		$mediaplayer.getRepeat()
 	@description:
-		Return the value of the Repeat flag for the current track (1 for ON, 0 for OFF).[br]
+		Return the value of the Repeat flag for the current track ([b]1[/b] for [b]ON[/b], [b]0[/b] for [b]OFF[/b]).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1262,7 +1256,6 @@ MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 
 MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 
-
 /*
 	@doc: mediaplayer.getShuffle
 	@type:
@@ -1270,11 +1263,11 @@ MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 	@title:
 		$mediaplayer.getShuffle
 	@short:
-		Return if "shuffle" is on.
+		Return if [i]shuffle[/i] is on.
 	@syntax:
 		$mediaplayer.getShuffle()
 	@description:
-		Return the value of the Shuffle flag (1 for ON, 0 for OFF).[br]
+		Return the value of the Shuffle flag ([b]1[/b] for [b]ON[/b], [b]0[/b] for [b]OFF[/b]).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1297,7 +1290,7 @@ MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle,getShuffle)
 		$mediaplayer.getEqData(<item:integer>,<options:string>)
 	@description:
 		Return the value of the EQ <item>.[br]
-		if 'q' is given as an option, it runs in quiet mode.[br]
+		if [b]q[/b] is given as an option, it runs in quiet mode.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1450,8 +1443,8 @@ MP_KVS_FUNCTION(amipEval)
 	@syntax:
 		$mediaplayer.status()
 	@description:
-		Returns the status if the currently selected media player: "playing",
-		"stopped", "paused" or "unknown".
+		Returns the status if the currently selected media player: [b][i]playing[/b][/i],
+		[b][i]stopped[/b][/i], [b][i]paused[/b][/i] or [b][i]unknown[/b][/i].
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1485,7 +1478,6 @@ MP_KVS_FUNCTION(status)
 	return true;
 }
 
-
 /*
 	@doc: mediaplayer
 	@type:
@@ -1505,22 +1497,22 @@ MP_KVS_FUNCTION(status)
 		(Amarok2, JuK under KDE). You choose the player interface by either setting
 		the option in the settings dialog, by manually setting [cmd]option[/cmd] stringPreferredMediaPlayer
 		or by running [cmd]mediaplayer.detect[/cmd] that will guess the media player interface for you.[br]
-		If you're going to use the Winamp media player then you must install the "gen_kvirc.dll" plugin
-		(included in the KVIrc distribution) as a "general" Winamp plugin.
+		If you're going to use the Winamp media player then you must install the [i]gen_kvirc.dll[/i] plugin
+		(included in the KVIrc distribution) as a [i]general[/i] Winamp plugin.
 		This is achieved by simply copying the file gen_kvirc.dll
-		to the Winamp plugins directory and restarting Winamp.[br]
-		[br]
+		to the Winamp plugins directory and restarting Winamp.
+		[br][br]
 		The commands and functions exported by this module serve mainly for two
 		purposes: control the playback and get information about the currently played media.
 		Playback control is achieved by the means of [cmd]mediaplayer.play[/cmd],
 		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.next[/cmd],
 		[cmd]mediaplayer.prev[/cmd] and [fnc]$mediaplayer.status()[/fnc]. The
 		information about the currently played media can be retrieved with
-		[fnc]$mediaplayer.nowplaying()[/fnc] and [fnc]$mediaplayer.mrl()[/fnc].
+		[fnc]$mediaplayer.nowplaying()[/fnc] and [fnc]$mediaplayer.mrl()[/fnc].[br][br]
 		Several other informative function are available as well but they are not
 		granted to work with all the supported media players or media types (e.g.
 		with Winamp you can play video files that probably have no album, genre
-		or sampleRate information...).[br]
+		or sampleRate information).[br][br]
 		If you intend to write portable code, you should check the return value
 		of the functions like [fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.title()[/fnc]
 		or [fnc]$mediaplayer.channels()[/fnc] and be ready to discard it when it
@@ -1540,7 +1532,7 @@ MP_KVS_FUNCTION(status)
 	@syntax:
 		mediaplayer.setRepeat [-q] <repeat:bool>
 	@description:
-		Set the repeat flag to "repeat" (1 for ON, 0 for OFF).[br]
+		Set the repeat flag to [i]repeat[/i] ([b]1[/b] for [b]ON[/b], [b]0[/b] for [b]OFF[/b]).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1571,7 +1563,6 @@ MP_KVS_COMMAND(setRepeat)
 	return true;
 }
 
-
 /*
 	@doc: mediaplayer.setShuffle
 	@type:
@@ -1583,7 +1574,7 @@ MP_KVS_COMMAND(setRepeat)
 	@syntax:
 		mediaplayer.setShuffle [-q] <shuffle:bool>
 	@description:
-		Set the Shuffle flag to "shuffle" (1 for ON, 0 for OFF).[br]
+		Set the Shuffle flag to [i]shuffle[/i] ([b]1[/b] for [b]ON[/b], [b]0[/b] for [b]OFF[/b]).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:

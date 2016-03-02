@@ -347,12 +347,12 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 		restricted to KVIrc clients only. In the future other clients may implement it.[br]
 		This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 	@examples:
-			[example]
+		[example]
 			[comment]# Notify your current avatar to Pragma[/comment]
 			avatar.notify Pragma
 			[comment]# Notify your avatar to the channel #kvirc and to Pragma[/comment]
 			avatar #kvirc,Pragma
-			[/example]
+		[/example]
 	@seealso:
 		[cmd]avatar.set[/cmd], [cmd]avatar.unset[/cmd]
 */

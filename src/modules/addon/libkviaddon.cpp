@@ -56,8 +56,8 @@ QRect g_rectManagementDialogGeometry(0,0,0,0);
 	@syntax:
 		<boolean> $addon.exists(<id:string>[,<version:string>])
 	@description:
-		Returns 1 if the addon with the specified <id> is currently installed
-		and 0 otherwise. If <version> is specified then any addon with
+		Returns [b]1[/b] if the addon with the specified <id> is currently installed
+		and [b]0[/b] otherwise. If <version> is specified then any addon with
 		a version lower than <version> is ignored (so you can effectively
 		check if a greater or equal version is present).
 */
@@ -311,7 +311,7 @@ static bool addon_kvs_cmd_help(KviKvsModuleCommandCall * c)
 		}
 	@switches:
 		!sw: -q
-			Makes the command run quietly
+		Makes the command run quietly
 	@description:
 		Sets the configure callback for the specified addon.
 		The configure callback will be called by the user either by the
@@ -357,7 +357,7 @@ static bool addon_kvs_cmd_setconfigurecallback(KviKvsModuleCallbackCommandCall *
 		}
 	@switches:
 		!sw: -q
-			Makes the command run quietly
+		Makes the command run quietly
 	@description:
 		Sets the help callback for the specified addon.
 		The help callback will be called by the user either by the
@@ -404,42 +404,33 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		}
 	@switches:
 		!sw: -f | --force
-			Registers the addon even if an addon with the same <id> and
-			a higher version already exists. The usage of this flag
-			is highly discouraged (i.e. use it only for debugging purposes
-			on your own machine).
+		Registers the addon even if an addon with the same <id> and
+		a higher version already exists. The usage of this flag
+		is highly discouraged (i.e. use it only for debugging purposes
+		on your own machine).
 		!sw: -n | --no-uninstall
-			Performs no uninstallation of existing versions of the addon:
-			it simply replaces the registration entry with the new data.
-			Again, do [b]not[/b] use this switch if not for debugging purposes
-			and on your own machine.
+		Performs no uninstallation of existing versions of the addon:
+		it simply replaces the registration entry with the new data.
+		Again, do [b]not[/b] use this switch if not for debugging purposes
+		and on your own machine.
 		!sw: -q | --quiet
-			Makes the command run quietly
+		Makes the command run quietly
 	@description:
-		[p]
-		Registers a script-based addon.
-		[/p]
-		[p]
-		The registration process allows to "show" the addon in the script-addon manager
+		Registers a script-based addon.[br]
+		The registration process allows to [i]show[/i] the addon in the script-addon manager
 		dialog and provides a standard way for the user to manage and uninstall the addons.
-		You simply register your addon BEFORE attempting to install it.
-		[/p]
-		[p]
+		You simply register your addon BEFORE attempting to install it.[br]
 		A script-based addon is a set of scripts, icons, translations and possibly
 		other data files that add functionality to the KVIrc program.
-		The script-based addons are often simply called "scripts" and
-		we will adhere to that naming in certain parts of the documentation too.
-		[/p]
-		[p]
+		The script-based addons are often simply called [i]scripts[/i] and
+		we will adhere to that naming in certain parts of the documentation too.[br]
 		Each script-based addon (a set of scripts) is identified by an UNIQUE
 		<id>. Two addons with the same <id> can't co-exist in the same
 		KVIrc installation (so be sure to choose a token characteristic enough
 		to avoid collisions with others). The <id> itself is used only for
 		identification purposes and the user will almost always see the <visible_name>
 		instead, which can contain the [fnc]$tr[/fnc] function that will handle
-		the translation for it.
-		[/p]
-		[p]
+		the translation for it.[br]
 		Each addon has also a <version> which is a string in the form x.y.z
 		where x, y and z are numbers (yes.. that's the standard major-minor-patch level
 		version numbering scheme). A <version> of 2.4.23 is greater than 2.4.3
@@ -447,26 +438,18 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		When an addon with a greater or equal version is installed over
 		an addon with a lower version, the lower one gets uninstalled first.
 		Installing a lower version over a greater one is not possible, unless
-		the lower version one is uninstalled first.
-		[/p]
-		[p]
+		the lower version one is uninstalled first.[br][br]
 		<description> is another, possibly translated, string that will
-		be presented to the user in the addon management dialog.
-		[/p]
-		[p]
+		be presented to the user in the addon management dialog.[br][br]
 		<minkvircversion> is the minimum KVIrc version required for the
 		addon to run. If the version of the running KVIrc executable
 		is lower than the requested one then the command will abort with an error.
 		If you want to completely ignore the KVIrc versioning (don't do it),
-		use "0.0.0" here. If you need fine tuning on cvs features you may add also
-		the sources date tag at the end of the required version string (e.g 3.2.1.20060303).
-		[/p]
-		[p]
+		use [b][i]0.0.0[/i][/b] here. If you need fine tuning on cvs features you may add also
+		the sources date tag at the end of the required version string (e.g 3.2.1.20060303).[br][br]
 		<iconid> is the [doc:image_id]image identifier[/doc] of the icon
 		that will be displayed in the addon management dialog.
-		If not specified, a default icon will be used.
-		[/p]
-		[p]
+		If not specified, a default icon will be used.[br][br]
 		The <uninstall_callback> is a snippet of code that should
 		wipe out the addon from the system. It is ALWAYS a good practice
 		to write a complete uninstallation procedure (think that YOU like
@@ -474,9 +457,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		The <uninstall_callback> will be called by KVIrc when the addon
 		uninstallation is requested, either explicitly by using the GUI or the
 		command [cmd]addon.uninstall[/cmd], or implicitly by installing
-		a newer version of the addon (upgrading).
-		[/p]
-		[p]
+		a newer version of the addon (upgrading).[br]
 		If the user security rules don't allow your addon to be installed
 		or a higher version of a addon with the same name already exists
 		the command will fail with an error (aborting your whole installation addon).
@@ -484,28 +465,22 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		then you should use [fnc]$addon.exists()[/fnc] to check if a
 		addon with the same name and a greater version already exists.
 		You can't gracefully handle security error conditions: your installation
-		will be always aborted with an error in this case.
-		[/p]
-		[p]
+		will be always aborted with an error in this case.[br]
 		The addon can also have a configuration callback settable with [cmd]addon.setconfigurecallback[/cmd]
 		and a help callback settable with [cmd]addon.sethelpcallback[/cmd]. The first
 		will usually display a configuration dialog, the second will display
-		some sort of addon's documentation, usually in the help browser.
-		[/p]
-		[p]
+		some sort of addon's documentation, usually in the help browser.[br]
 		The registration process uninstalls any previous addon version
 		by executing its uninstall callback routine. This is another reason for that
 		you should call addon.register BEFORE you attempt to install your addon.
 		Failing to do that may cause your old uninstalled to wipe out your newly
 		installed files or code.
-		[/p]
 	@seealso:
 		[cmd]addon.uninstall[/cmd], [fnc]$addon.exists[/fnc],
 		[cmd]addon.setconfigurecallback[/cmd], [cmd]addon.configure[/cmd],
 		[cmd]addon.sethelpcallback[/cmd], [cmd]addon.help[/cmd], [cmd]addon.installfiles[/cmd]
 	@examples:
 		[example]
-
 		[/example]
 */
 
@@ -602,9 +577,9 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		addon.installfiles <id:string> <target:string> [files]
 	@switches:
 		!sw: -q | --quiet
-			Makes the command run quietly
+		Makes the command run quietly
 		!sw: -s | --skip-nonexistent
-			Skip nonexistent entries in the [files] list
+		Skip nonexistent entries in the [files] list
 	@description:
 		Installs the [files] for the addon identified by the specified <id>.
 		The files will be automatically removed when the addon is uninstalled.
@@ -617,7 +592,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		[li]"config" for configuration files.[/li]
 		[li]"help/<language>" for help files.[/li]
 		[/ul]
-		Other target paths are allowed and subdirectories are supported (e.g. "pics/myaddon").
+		Other target paths are allowed and subdirectories are supported (e.g. [i]pics/myaddon[/i]).
 		[files] is a list of filenames or directory names.
 		Each file will be copied to the specified target path in the local KVIrc directory.
 		Filenames can contain wildcard characters in the last component.
@@ -826,7 +801,7 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	@description:
 		Creates a *.kva package containing a KVIrc addon.[br]
 		<package_path> is the absolute path and file name of the package that should be saved.[br]
-		<addon_name> is the visible name of the addon (something like "My Addon").[br]
+		<addon_name> is the visible name of the addon (something like [i][b]My Addon[/i][/b]).[br]
 		<addon_version> is the version of the addon in the form X.Y.Z.[br]
 		<description> is a textual description of the addon.
 		<author> is the name of the person that is creating the addon.

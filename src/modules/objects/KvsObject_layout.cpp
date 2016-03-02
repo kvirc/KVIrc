@@ -54,6 +54,7 @@ const int align_cod[] = {
 			Qt::AlignBottom,
 	};
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+
 /*
 	@doc: layout
 	@keyterms:
@@ -100,12 +101,13 @@ const int align_cod[] = {
 		!fn: $setResizeMode(<resize_mode:string>)
 		Sets the resize mode of the parent widget in relation to this layout.
 		<mode> can be one of:[br]
-		-Auto: this is the default[br]
-		-Fixed: the parent widget of this layout is resized to the "sizeHint" value and it cannot be resized by the user.[br]
-		-Minimum: the minimum size of the parent widget of this layout is set to minimumSize() and it cannot be smaller[br]
-		-FreeResize: the parent widget of this layout is not constrained at all[br]
+		[pre]
+			-Auto: this is the default[br]
+			-Fixed: the parent widget of this layout is resized to the "sizeHint" value and it cannot be resized by the user.[br]
+			-Minimum: the minimum size of the parent widget of this layout is set to minimumSize() and it cannot be smaller[br]
+			-FreeResize: the parent widget of this layout is not constrained at all[br]
+		[/pre]
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_layout,"layout","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,addWidget)

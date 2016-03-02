@@ -45,54 +45,54 @@
 		[big]Introduction[/big][br]
 		Well, there is a concrete background noise about security around the net.
 		And I've thought that adding a little cryptography support to KVIrc wasn't
-		a bad idea. So I first came up with the "crypt engines", that
+		a bad idea. So I first came up with the [i]crypt engines[/i], that
 		allowed secure conversations in channels, queries and DCC chats;
-		then found out that the realized structure was perfect to be "generalized"
-		into "text transformation" support.[br]
+		then found out that the realized structure was perfect to be [i]generalized[/i]
+		into [i]text transformation[/i] support.[br]
 		[big]The concept[/big][br]
-		In few words, the "text transformation" engine is a layer between the user and the
+		In few words, the [i]text transformation[/i] engine is a layer between the user and the
 		IRC connection. You type some text in the input line of a query window (for example),
 		the engine transforms the text in some way and then sends it to the remote target.
 		The trick works also in the reverse way: some data comes from the remote target,
 		the engine re-transforms the text in some other way and displays it to the local user.[br]
-		The "incoming" transformation is usually the inverse of the "outgoing" one, but it
-		is not mandatory. It will become clear in few sentences that some engines will do no "incoming"
+		The [i]incoming[/i] transformation is usually the inverse of the [i]outgoing[/i] one, but it
+		is not mandatory. It will become clear in few sentences that some engines will do no [i]incoming[/i]
 		transformation at all. The original use of the transformation engines was to encrypt the
 		outgoing data and to decrypt the incoming data; anyway, the engines can perform
 		other funky tasks. One of them is remapping the local charset to a standardized one
 		when sending text to a channel (or some other target) and doing the inverse map on
-		the way back. A totally "fantastic" usage of this concept could be an "on-the-fly translator";
+		the way back. A totally [i]fantastic[/i] usage of this concept could be an [i]on-the-fly translator[/i];
 		it could translate for example Italian to English while sending to a channel
 		and English to Italian on the way back... the implementation of a such engine is left
 		to the reader as exercise :) Another (maybe less interesting) usage is to
 		colorize the outgoing text, or transform it
 		in a way that it is still readable but has a different look. This engine
-		would not require a back transformation (so no "decrypt stage"). A "symmetric"
+		would not require a back transformation (so no [i]decrypt stage[/i]). A [i]symmetric[/i]
 		idea could be an engine that strips the color codes from the incoming text: this
 		engine would not require an encrypting stage.[br]
 		[big]The name of this stuff[/big][br]
-		Initially all this was named "cryptography support".
-		Then "cryptography" was no longer enough to describe
-		the framework, so "text transformation" is a more generic term.
+		Initially all this was named [i]cryptography support[/i].
+		Then [i]cryptography[/i] was no longer enough to describe
+		the framework, so [i]text transformation[/i] is a more generic term.
 		Anyway, both terms were used in the documentation and the source.
-		Just as example, the "text transformation engine" is called
-		KviCryptEngine in the sources. So actually the terms "crypt"
+		Just as example, the [i]text transformation engine[/i] is called
+		KviCryptEngine in the sources. So actually the terms [i]crypt[/i]
 		and text transformation refer to the same thing.
 		You will often find the term [i]encrypt[/i] standing for [i]outgoing text
 		transformation[/i] and [i]decrypt[/i] standing for [i]incoming text transformation[/i].[br]
 		[big]Yes, but why cryptography (on IRC)?[/big][br]
 		Because it MAY be useful. More than once people have asked me to add some
 		encryption support to the DCC chats. Yes, I know that there are other
-		"secure communication" tools, but actually I can't find one that is able to
-		implement a "secure real time conversation". And what about a MULTIPLE real
+		[i]secure communication[/i] tools, but actually I can't find one that is able to
+		implement a [i]secure real time conversation[/i]. And what about a MULTIPLE real
 		time secure conversation? This can be done on an IRC channel now.[br]
 		[big]The working things[/big][br]
 		KVIrc can use a text transformation engine on IRC channels, in the queries
 		and the DCC chats. At the time I am writing, only the [module:rijndael]Rijndael[/module] crypt engine
 		is available: this is a private key encryption algorithm that assures
-		a "pretty good" security level. More engines will be surely available
+		a [i]pretty good[/i] security level. More engines will be surely available
 		at the time of the 3.0.0 release of KVIrc. The engines
-		can be activated by the dedicated dialog that can be accessed from the "button bar"
+		can be activated by the dedicated dialog that can be accessed from the [i]button bar[/i]
 		of the window. Once an engine has been enabled all the text that you type
 		in the input line (that is not a command obviously) is encrypted
 		and sent to the remote endpoint. If you want to send a non-encrypted message
@@ -110,14 +110,14 @@
 		this is the best way to exchange the keys, otherwise you can use mail & PGP.
 		Yes, this is a shortcoming of the crypt protocol: it is missing a public key handshake.[br]
 		[big]The first test[/big][br]
-		A cool way to test an encryption engine is to use a "self query": connect to
+		A cool way to test an encryption engine is to use a [i]self query[/i]: connect to
 		any IRC server, and execute [cmd]query[/cmd] <yournickname>; a query window
 		with you both as source and target will popup; activate a crypt engine
 		and enable both encryption and decryption; specify the same key for
 		bot directions and then type some text in the input line: you will see
-		the message twice: one is "your local text" and the other is the server routed one.
+		the message twice: one is [i]your local text[/i] and the other is the server routed one.
 		Then you can try to activate encryption only and leaving decryption disabled:
-		you will see how the text would appear to a possible "man in the middle".
+		you will see how the text would appear to a possible [i]man in the middle[/i].
 		You can also try to use different keys for encrypting and decrypting,
 		and play with the CTRL+P escape.[br]
 		[big]The protocol[/big][br]
@@ -125,10 +125,10 @@
 		can be accessed by anyone that want to reproduce them. There are only some
 		points relating to the encryption engines that need to be cleared:[br]
 		The encrypted text must be suitable to be sent through an IRC connection;
-		this means that some characters can not appear in the encrypted text (e.g. CR,LF,NULL....).
+		this means that some characters can not appear in the encrypted text (e.g. CR, LF, NULL).
 		KVIrc solves it in a simple way: the encrypted binary data is encoded,
 		either as a hexadecimal numeric string or in base64.[br]
-		An escape character has been defined to identify messages that are "encrypted" from the
+		An escape character has been defined to identify messages that are [i]encrypted[/i] from the
 		ones that are not: this character has ASCII code 30 (decimal).[br]
 		The encoding is used in private messages only and has the following format:[br]
 		PRIVMSG <target> :<escape_char_ascii_30><encrypted message>[br]
@@ -144,7 +144,7 @@
 		act in a similar way too. So the escape character is used for the encryption
 		engines only.
 		[big]An idea for the future implementations[/big][br]
-		A "public key" handshake protocol could be implemented.
+		A [i]public key[/i] handshake protocol could be implemented.
 */
 
 	KviCryptEngine::KviCryptEngine()

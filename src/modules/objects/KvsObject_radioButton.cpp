@@ -30,6 +30,7 @@
 #include "KviIconManager.h"
 
 #include <QRadioButton>
+
 /*
 	@doc: radiobutton
 	@keyterms:
@@ -52,17 +53,14 @@
 		!fn: $setChecked(<bChecked:boolean>)
 		Sets whether the radio button is checked to check.
 		!fn: $setPixmap(<image_id>)
-		Sets the pixmap shown on the radiobutton..See the [doc:image_id]image identifier[/doc] documentation for the explanation
-		of the <image_id> parameter.
+		Sets the pixmap shown on the radiobutton. See the [doc:image_id]image identifier[/doc]
+		documentation for the explanation of the <image_id> parameter.
 		!fn: <bool>$toggleEvent()
-		Called by KVIrc when the radibutton state is toggled.
+		Called by KVIrc when the radiobutton state is toggled.
 		The default implementation emits the toggled(<bool>) signal.
 		!sg: $toggled()
 		This signal is emitted by the default implementation of [classfnc]$toggleEvent[/classfnc]().[br]
-
-
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_radioButton,"radiobutton","widget")
 

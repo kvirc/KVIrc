@@ -624,32 +624,32 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 
 static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 {
-/*
-	@doc: objects.dump
-	@type:
-		function
-	@title:
-		$objects.dump
-	@keyterms:
-		dump objects
-	@short:
-		Dump the KVIrc widgets.
-	@syntax:
-		<array> $objects.dump(<print:boolean>)
-	@description:
-		This function return an array containing a representation of the widgets tree in KVIrc;[br]
-		If the <print> flag is enabled, the array will be printed in the current window, too.
-	@examples:
-		[example]
-		%A[]=$objects.dump(0)
-		%i=0
-		while (%i != %A[]#)
-		{
-			echo %A[%i]
-			%i++
-		}
-		[/example]
-*/
+	/*
+		@doc: objects.dump
+		@type:
+			function
+		@title:
+			$objects.dump
+		@keyterms:
+			dump objects
+		@short:
+			Dump the KVIrc widgets.
+		@syntax:
+			<array> $objects.dump(<print:boolean>)
+		@description:
+			This function return an array containing a representation of the widgets tree in KVIrc;[br]
+			If the <print> flag is enabled, the array will be printed in the current window, too.
+		@examples:
+			[example]
+				%A[]=$objects.dump(0)
+				%i=0
+				while (%i != %A[]#)
+				{
+					echo %A[%i]
+					%i++
+				}
+			[/example]
+	*/
 
 
 	bool bFlag;

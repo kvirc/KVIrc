@@ -48,23 +48,23 @@
 		It is used to recognize users on IRC and associate properties to them.[br]
 		This works more or less like the IRC ban list, K-Line list, or invite list.[br]
 		[big]User entry[/big][br]
-		A registered user database entry is identified by an [b]unique[/b] name.[br]
+		A registered user database entry is identified by a [b]unique[/b] name.[br]
 		It may be the nickname of the user that you want to match, or the real name (if you know it)
-		or any other string (even with spaces). The name is an "internal identifier" for the user entry:
+		or any other string (even with spaces). The name is an [i]internal identifier[/i] for the user entry:
 		each name maps to a single entry and each entry has a single name.[br]
 		Each entry has a set of registration [doc:irc_masks]irc-masks[/doc]: these masks
 		are used to recognize the user on IRC.[br]
 		[br]
 		[big]Registration masks[/big][br]
 		The masks have the common IRC mask format: [b]<nick>!<user>@<host>[/b][br]
-		The masks may contain '*' and '?' wildcards that match any portion of text.[br]
+		The masks may contain [b]*[/b] and [b]?[/b] wildcards that match any portion of text.[br]
 		[b]*!*@*[/b][br]
 		[b]Pragma!*@*[/b][br]
 		[b]*!~daemon@*[/b][br]
 		[b]Pragma!*daemon@*.it[/b][br]
 		[b]Pragma!?daemon@some*.it[/b][br]
 		[b]Pragma!~daemon@some.host.it[/b][br]
-		Are examples of valid registration masks.[br]
+		Are examples of valid registration masks.[br][br]
 		The masks with wildcards can actually match more than a single user.[br]
 		For example the mask *!root@*.host.com will match all the users
 		having root as username and coming from the host.com domain.[br]
@@ -73,47 +73,47 @@
 		If you don't use wildcards in nicknames you are sure that
 		in a single IRC connection, a mask will always refer to a single user.[br]
 		You will commonly use the following format:[br]
-		<nick>!*<username>@*.<host>.<top>[br]
+		[b]<nick>!*<username>@*.<host>.<top>[/b][br]
 		or[br]
-		<nick>!*<username>@<number>.<number>.<number>.*[br]
+		[b]<nick>!*<username>@<number>.<number>.<number>.*[/b][br]
 		In this way you can be 95% sure that the mask will really match the correct user.[br]
-		[br]
 		[big]Example of registration and lookups[/big]
 		Assume that you want to register a friend of yours: Derek Riggs.[br]
-		Derek often uses "Eddie" as his nickname
-		"stranger" as username and has a dial-up connection that makes his IP address appear as
+		Derek often uses [i]Eddie[/i] as his nickname
+		[i]stranger[/i] as username and has a dial-up connection that makes his IP address appear as
 		<variable-number>.somewhere.in.time.org.[br]
-		You will add an entry with name "Derek Riggs" and a registration mask like the following:
-		Eddie!stranger@*.somewhere.in.time.org.[br]
-		If the IRC servers keep adding strange characters ([doc:irc_masks]prefixes[/doc]) at the beginning of his username you may use
-		Eddie!*stranger@*.somewhere.in.time.org.[br]
-		If Eddie also often connects from the wasted.years.org domain and gets 'eddie' as username there, you might add a second registration mask as follows:
-		Eddie!*eddie@*.wasted.years.org.[br]
+		You will add an entry with name [i]Derek Riggs[/i] and a registration mask like the following:[br]
+		[b]Eddie!stranger@*.somewhere.in.time.org.[/b][br]
+		If the IRC servers keep adding strange characters ([doc:irc_masks]prefixes[/doc]) at the beginning of his username you may use;[br]
+		[b]Eddie!*stranger@*.somewhere.in.time.org.[/b][br]
+		If Eddie also often connects from the wasted.years.org domain and gets [i]eddie[/i] as username there,
+		you might add a second registration mask as follows:[br]
+		[b]Eddie!*eddie@*.wasted.years.org.[/b][br]
 		An alternative could be use only one mask with *.org as domain and allow any username (Eddie!*@*.org) but this
 		could become dangerous since it could match the users that you don't want to.[br]
 		On the other hand, if you dislike the users with the nickname Eddie that come from .org
-		and you're implementing an auto-kick system, the correct mask to register is "Eddie!*@*.org".[br]
-		[br]
+		and you're implementing an auto-kick system, the correct mask to register is [i]Eddie!*@*.org[/i].
+		[br][br]
 		KVIrc tries to be smart, and always find the most correct match for an user:
-		If you have two masks registered: Pragma!*xor@*.myisp.it and *!*@*.myisp.it,
-		KVIrc will match Pragma!~xor@233-dyn.myisp.it with the first one even if the second
-		one matches too; the first one is a best match.[br]
-		[br]
+		If you have two masks registered: [b]Pragma!*xor@*.myisp.it[/b] and [b]*!*@*.myisp.it[/b], 
+		KVIrc will match [b]Pragma!~xor@233-dyn.myisp.it[/b] with the first one even if the second 
+		one also matches; the first one however, is a best match.
+		[br][br]
 		[big]Properties[/big][br]
 		A registered user has an (eventually empty) set of properties
 		defined by name/value pairs. (In versions prior to 3.0.0 flags were used instead,
 		but revealed to be insufficient).[br]
 		KVIrc recognizes some of these properties and associates semantic actions to it; other properties
 		are left for scripting extension. Property names are case insensitive.[br]
-		One of the recognized properties is the "[doc:notify_list]notify[/doc]" property.
+		One of the recognized properties is the [i][doc:notify_list]notify[/doc][/i] property.[br][br]
 		When an user is found to have this property set to a special value
 		KVIrc will attempt to track the user presence on IRC.
 		Another one is the [doc:avatar]avatar[/doc] property. Its value should be the
-		name of the "default" [doc:avatar]avatar image file[/doc] for the specified user.[br]
-		The "ignore" property should be set to "1" (or "true") for users that have to be ignored (:D).[br]
+		name of the [i]default[/i] [doc:avatar]avatar image file[/doc] for the specified user.[br]
+		The [i]ignore[/i] property should be set to [i]1[/i] (or [i]true[/i]) for users that have to be ignored (:D).[br]
 		[br]
 		[big]The interface to the database[/big][br]
-		The [module:reguser]reguser module[/module] is the interface to the "registered users database".[br]
+		The [module:reguser]reguser module[/module] is the interface to the [i]registered users database[/i].[br]
 		It provides a set of commands for adding and removing masks and manipulating properties.[br]
 */
 
@@ -238,7 +238,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 			l->setAutoDelete(true);
 			if(!u->addMask(mask))
 			{
-				qDebug(" Oops! Received an incoherent regusers action, recovered?");
+				qDebug("Oops! Received an incoherent regusers action, recovered?");
 				delete l;
 				l = 0;
 			} else {

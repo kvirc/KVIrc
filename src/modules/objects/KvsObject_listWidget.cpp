@@ -69,14 +69,14 @@ const char * const itemflags_tbl[] = {
 	@description:
 		The listbox class is a widget displaying a list of string items.[br]
 		The listbox can operate in four selection modes: single, multi, extended
-		and none. In the "single" mode only one item can be selected at a time
-		and that item is also the current one. In the "multi" mode multiple
+		and none. In the [i]single[/i] mode only one item can be selected at a time
+		and that item is also the current one. In the [i]multi[/i] mode multiple
 		items can be selected and unselected and the current item may or may not
-		be one of the selected items. In the "extended" mode multiple items
+		be one of the selected items. In the [i]extended[/i] mode multiple items
 		can be selected but they must be selected in a single mouse action
 		or by keeping the shift button pressed while clicking on the item.
 		In this mode the current item is always one of the selected items.[br]
-		In the "none" mode no items can be selected and the current item
+		In the [i]none[/i] mode no items can be selected and the current item
 		may be any item in the list.[br]
 		In most situations you will operate the listwidget in [i]single[/i] mode
 		(and this is the default mode set at widget creation).
@@ -84,23 +84,23 @@ const char * const itemflags_tbl[] = {
 		!fn: $setSelectionMode(<selection_mode:string>)
 		Sets the current selection mode specified by the parameter <mode>
 		that can be one of the following string:[br]
-		"single" : only one item can be selected at a time[br]
-		"multi" : multiple items can be selected at a time[br]
-		"extended" : multiple items can be selected but only in a single mouse interaction[br]
-		"none" : no items can be selected[br]
-		The default mode is "single"
+		[b]single[/b]: only one item can be selected at a time[br]
+		[b]multi[/b]: multiple items can be selected at a time[br]
+		[b]extended[/b]: multiple items can be selected but only in a single mouse interaction[br]
+		[b]none[/b]: no items can be selected[br]
+		The default mode is [i]"single"
 		!fn: $setFlag(<idx:integer>,<flag1:string>, <flag2:string>, ...)
 		Sets the flags for the item at index idx to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.[br]
 		Supported flags are:
 		[example]
-		[br]- noitemflag : no flag sets;
-		[br]- selectable : item is selectable;
-		[br]- editable : item is editable;
-		[br]- dragEnabled : item can dragged;
-		[br]- dropEnabled : item can used as drop target;
-		[br]- userCheckable : item is checkable;
-		[br]- enabled :item is enabled;
-		[br]- tristate : item is checkable with three separate states.
+			- noitemflag : no flag sets;[br]
+			- selectable : item is selectable;[br]
+			- editable : item is editable;[br]
+			- dragEnabled : item can dragged;[br]
+			- dropEnabled : item can used as drop target;[br]
+			- userCheckable : item is checkable;[br]
+			- enabled :item is enabled;[br]
+			- tristate : item is checkable with three separate states.
 		[/example]
 		!fn: $setChecked(<checkstate:bool>)
 		Sets the eventual item check box 'checked state' to <bool>.
@@ -153,8 +153,7 @@ const char * const itemflags_tbl[] = {
 		This signal is emitted by the default implementation of [classfnc]$itemEnteredEvent[/classfnc]().[br]
 		!sg: <string> $selectionChanged()
 		This signal is emitted by the default implementation of [classfnc]$selectionChangedEvent[/classfnc]().[br]
-		*/
-
+*/
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_listWidget,"listbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertItem)

@@ -218,7 +218,7 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 	@title:
 		$tmphighlight.isNickHighlighted
 	@short:
-		Returns 1 if the user is highlighted on this channel, 0 otherwise
+		Returns [b]1[/b] if the user is highlighted on this channel, and [b]0[/b] otherwise
 	@syntax:
 		<boolean> $tmphighlight.isNickHighlighted <nick:string>
 	@description:
@@ -254,11 +254,11 @@ static bool tmphighlight_kvs_fnc_isnickhighlighted(KviKvsModuleFunctionCall * c)
 	@title:
 		$tmphighlight.isChannelHighlighted
 	@short:
-		Returns 1 if the channel is highlighted on this IRC network, 0 otherwise
+		Returns [b]1[/b] if the channel is highlighted on this IRC network, and [b]0[/b] otherwise
 	@syntax:
 		<boolean> $tmphighlight.isChannelHighlighted[window_id:integer]
 	@description:
-		This command returns 1 if the channel is highlighted on this IRC network, 0 otherwise.
+		This command returns 1 if the channel is highlighted on this IRC network, and [b]0[/b] otherwise.
 	@seealso:
 		[fnc]$tmphighlight.addChannel[/fnc]
 		[fnc]$tmphighlight.removeChannel[/fnc]

@@ -39,8 +39,8 @@
 	@title:
 		The lamerizer module
 	@body:
-		This is an example of what you should NOT do with a text transformation
-		engine. Do NOT use it! :D
+		This is an example of what you should [b]not[/b] do with a text transformation
+		engine. Do [b]not[/b] use it! :D
 */
 
 

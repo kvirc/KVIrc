@@ -56,8 +56,6 @@ const char * const itemflags_tbl[] = {
 
 #define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
 
-
-
 /*
 	@doc: listviewitem
 	@keyterms:
@@ -116,19 +114,16 @@ const char * const itemflags_tbl[] = {
 		This is often used to disable an item.
 		Supported flags are:
 		[pre]
-		[br]- noitemflag : no flag sets;
-		[br]- selectable : item is selectable;
-		[br]- editable : item is editable;
-		[br]- dragEnabled : item can dragged;
-		[br]- dropEnabled : item can used as drop target;
-		[br]- userCheckable : item is checkable;
-		[br]- enabled :item is enabled;
-		[br]- tristate : item is checkable with three separate states.
+			- noitemflag : no flag sets;[br]
+			- selectable : item is selectable;[br]
+			- editable : item is editable;[br]
+			- dragEnabled : item can dragged;[br]
+			- dropEnabled : item can used as drop target;[br]
+			- userCheckable : item is checkable;[br]
+			- enabled :item is enabled;[br]
+			- tristate : item is checkable with three separate states.
 		[/pre]
 */
-
-
-//===========================================================================================
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidgetItem,"listviewitem","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setText)

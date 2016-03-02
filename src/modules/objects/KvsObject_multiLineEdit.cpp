@@ -64,22 +64,22 @@
 		Sets the editor to be read-only if bReadOnly is 1 or
 		removes the read-only status if bReadOnly is 0
 		!fn: <boolean> $atBeginning()
-		Returns 1 (true) if the cursor is placed at the beginning of the text; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the cursor is placed at the beginning of the text; otherwise returns [b]0[/b] (false).
 		!fn: <boolean> $atEnd()
-		Returns 1 (true) if the cursor is placed at the end of the text; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the cursor is placed at the end of the text; otherwise returns [b]0[/b] (false).
 		!fn: $setWordWrap(<wrap_mode:string>)
 		Sets the word wrap mode to mode.[br]
 		Valid Values are:[br]
 		[example]
-		- NoWrap - Do not wrap the text.[br]
-		- WidgetWidth - Wrap the text at the current width of the widget.[br]
-		- FixedPixelWidth - Wrap the text at a fixed number of pixels from the widget's left side.[br]
-		- FixedColumnWidth - Wrap the text at a fixed number of character columns from the widget's left side.
+			- NoWrap - Do not wrap the text.[br]
+			- WidgetWidth - Wrap the text at the current width of the widget.[br]
+			- FixedPixelWidth - Wrap the text at a fixed number of pixels from the widget's left side.[br]
+			- FixedColumnWidth - Wrap the text at a fixed number of character columns from the widget's left side.
 		[/example]
 		!fn: <string> $wordWrap()
 		Returns the word wrap mode. NoWrap, WidgetWidth, FixedPixelWidth, FixedColumnWidth.
 		!fn: <string> $text()
-		Returns the multiline edit's text.
+		Returns the multiline edits text.
 		!fn: <integer> $length()
 		Returns the number of characters in the text This function ignores newlines.
 		!fn: $setMaxLines(<mac_lines:integer>)
@@ -99,17 +99,17 @@
 		!fn: $setFamily(<font_family:string>)
 		Sets the font family of the current format to fontFamily.
 		!fn: $setItalic(<bItalic:boolean>)
-		If the bool value is 1 sets the current format to italic; otherwise, if it's 0 sets the current format to no-italic.
+		If the bool value is [b]1[/b] sets the current format to italic; otherwise, if it's [b]0[/b] sets the current format to no-italic.
 		!fn: $setBold(<bBold:boolean>)
-		If the bool value is 1 sets the current format to bold; otherwise, if it's 0 sets the current format to no-bold.
+		If the bool value is [b]1[/b] sets the current format to bold; otherwise, if it's [b]0[/b] sets the current format to no-bold.
 		!fn: $setUnderline(<bUnderline:boolean>)
-		If the bool value is 1 sets the current format to underline; otherwise, if it's 0 sets the current format to no-underline.
+		If the bool value is [b]1[/b] sets the current format to underline; otherwise, if it's [b]0[/b] sets the current format to no-underline.
 		!fn: <boolean> $italic()
-		Returns 1 (true) if the current format is italic; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the current format is italic; otherwise returns [b]0[/b] (false).
 		!fn: <boolean> $bold()
-		Returns 1 (true) if the current format is bold; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the current format is bold; otherwise returns [b]0[/b] (false).
 		!fn: <boolean> $underline()
-		Returns 1 (true) if the current format is underline; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the current format is underline; otherwise returns [b]0[/b] (false).
 		!fn: $zoomIn(<zoom_range:integer>)
 		Zooms in on the text by making the base font size range points larger.
 		!fn: $zoomOut(<zoom_range:integer>)
@@ -123,7 +123,7 @@
 		!fn: $setUndoRedoEnabled(<bUndoRedo:boolean>)
 		Sets whether undo/redo is enabled to the bool value.
 		!fn: <boolean> $isUndoRedoEnabled()
-		Returns 1 (true) if undo/redo is enabled; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if undo/redo is enabled; otherwise returns [b]0[/b] (false).
 		!fn: <integer> $undoDepth()
 		Returns the depth of the undo history.
 		!fn: $setText(<txt:string>)
@@ -142,7 +142,7 @@
 		!fn: $setPointSize(<point_size:integer))
 		Sets the point size of the font.
 		!fn: $setLinkUnderline(<bLinkUnderline:boolean>)
-		Sets to 1 if you want that hypertext links will be underlined; otherwise sets to 0.
+		Sets to [b]1[/b] if you want that hypertext links will be underlined; otherwise sets to [b]0[/b].
 		!fn: $setTextFormat(<textformat:string>)
 		Sets the text format. Correct values are RichText, PlainText.
 		!fn: <string> $textFormat()
@@ -150,27 +150,27 @@
 		!fn: $loadFile(<path:string>)
 		Load the file specified in the <path>, also HTML files.
 		!fn: <boolean> $isUndoAvailable ()
-		Returns 1 (true) if undo is available; otherwise returns 0 (false).
+		Returns [b]1 (true)[/b] if undo is available; otherwise returns [b]0 (false)[/b].
 		!fn: <boolean> $isRedoAvailable ()
-		Returns 1 (true) if redo is available; otherwise returns 0 (false).
+		Returns [b]1 (true)[/b] if redo is available; otherwise returns [b]0 (false)[/b].
 		!fn: <integer> $lines()
 		Returns the number of lines in the multilineedit.
 		!fn: <integer> $lineOfChar(<paragraph:integer>,<index:integer>)
 		Returns the line number of the line in paragraph par in which the character at position index appears.[br]
-		If there is no such paragraph or no such character at the index position  -1 is returned.
+		If there is no such paragraph or no such character at the index position [b]-1[/b] is returned.
 		!fn: $setModified(<bModified:boolean>)
-		Sets whether the document has been modified by the user. Valid Values are 1 (true) or 0 (false)
+		Sets whether the document has been modified by the user. Valid Values are [b]1 (true)[/b] or [b]0 (false)[/b].
 		!fn: $setAlignment(<alignment:string>)
-		Sets the alignment of the current paragraph to <alignment>.
-    Valid values are:
+		Sets the alignment of the current paragraph to <alignment>.[br]
+		Valid values are:
 		[example]
-		- Auto - Aligns according to the language.[br]
-		- Left - Aligns with the left edge.[br]
-		- Right - Aligns with the right edge.[br]
-		- Center - Centers in both dimensions.
-		- Justify - Justify the text.
+			- Auto - Aligns according to the language.[br]
+			- Left - Aligns with the left edge.[br]
+			- Right - Aligns with the right edge.[br]
+			- Center - Centers in both dimensions.
+			- Justify - Justify the text.
 		[/example]
-		*/
+*/
 
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_textedit,"multilineedit","widget")

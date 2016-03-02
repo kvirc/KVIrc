@@ -50,11 +50,11 @@ static int g_iNextConfigId = 0;
 		<filename> may be an absolute path or a relative path: if a relative path is used,
 		KVIrc will complete it with a local KVIrc directory suitable for writing script config files.[br]
 		If the config file doesn't exist, it is opened as empty config file.[br]
-		Flags can contain a combination of letters 'r' and 'w'.[br]
-		If only 'r' is specified, the config file is opened in "read-only" mode: no changes will be written to disk.[br]
-		If only 'w' is specified, the config file is opened in "write-only" mode: the contents of the file on disk
+		Flags can contain a combination of letters [b]r[/b] and [b]w[/b].[br]
+		If only [b]r[/b] is specified, the config file is opened in [i]read-only[/i] mode: no changes will be written to disk.[br]
+		If only [b]w[/b] is specified, the config file is opened in [i]write-only[/i] mode: the contents of the file on disk
 		are not read.[br]
-		If <flags> are not specified then 'rw' is assumed.[br]
+		If <flags> are not specified then [b][i]rw[/i][/b] is assumed.[br]
 		The function returns an identifier for the open config file. This identifier
 		is a mandatory parameter in all the other config.* functions and commands.[br]
 		The config section is set to the default section name: you can change it by using
@@ -66,13 +66,13 @@ static int g_iNextConfigId = 0;
 		[fnc]$config.id[/fnc]() function.[br]
 	@examples:
 		[example]
-		# It is a good idea to store the returned ID to a variable :)
-		%cfg = $config.open(myscript.kvc)
-		%num = [fnc]$config.read[/fnc](%cfg,Number,0)
-		[cmd]echo[/cmd] Number of entries is %num
-		%num++;
-		[cmd]config.write[/cmd] %cfg Number %num
-		[cmd]config.close[/cmd] %cfg
+			[comment]# It is a good idea to store the returned ID to a variable :)[/comment]
+			%cfg = $config.open(myscript.kvc)
+			%num = [fnc]$config.read[/fnc](%cfg,Number,0)
+			[cmd]echo[/cmd] Number of entries is %num
+			%num++;
+			[cmd]config.write[/cmd] %cfg Number %num
+			[cmd]config.close[/cmd] %cfg
 		[/example]
 	@seealso:
 		[module:config]Config module documentation[/module]
@@ -142,7 +142,7 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the ID of an open config file specified by <filename>.[br]
 		(This is the same ID that is returned by [fnc]$config.open[/fnc].[br]
-		If no such file is open, 0 is returned (that is an invalid config identifier).[br]
+		If no such file is open, [b]0[/b] is returned (that is an invalid config identifier).[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
 */
@@ -268,10 +268,10 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	@syntax:
 		$config.readonly(<id>)
 	@description:
-		Returns 1 if the config file identified by <id> is opened in read-only mode,
-		0 otherwise.[br]
+		Returns [b]1[/b] if the config file identified by <id> is opened in read-only mode,
+		and [b]0[/b] otherwise.[br]
 		<id> must be a valid config identifier returned by [fnc]$config.open[/fnc]()
-		If <id> does not identify an open config file, a warning is printed and 0 is returned.[br]
+		If <id> does not identify an open config file, a warning is printed and [b]0[/b] is returned.[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
 */
@@ -342,8 +342,8 @@ static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
 	@syntax:
 		$config.hassection(<id>,<section_name>)
 	@description:
-		Returns 1 if the section <section_name> exists in the config file identifier by <id>,
-		0 otherwise.[br]
+		Returns [b]1[/b] if the section <section_name> exists in the config file identifier by <id>,
+		and [b]0[/b] otherwise.[br]
 		<id> must be a valid config identifier returned by [fnc]$config.open[/fnc]()
 	@seealso:
 		[module:config]Config module documentation[/module]
@@ -515,7 +515,7 @@ static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 		If the config file was opened as read-write (default), the changes will be stored
 		to disk. If the config was opened as read-only, changes will not be written.[br]
 		If the <id> does not match any open config file, a warning is printed unless
-		the -q switch is used.[br]
+		the -q (quiet) switch is used.[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
 */
@@ -703,7 +703,7 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 		If <key> already exists in the current section of the config, the corresponding value is replaced with <value>.[br]
 		If <value> is an empty string, the <key> is simply removed from the current section.[br]
 		If a section remains empty (with no keys) at file write time, that section will be removed.[br]
-		The changes are NOT written to disk: you must call [cmd]config.flush[/cmd] or (better) [cmd]config.close[/cmd]
+		The changes are [b]not[/b] written to disk: you must call [cmd]config.flush[/cmd] or (better) [cmd]config.close[/cmd]
 		for the changes to be effectively written.[br]
 	@seealso:
 		[module:config]Config module documentation[/module]

@@ -232,7 +232,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
-			nick Pragma
+				nick Pragma
 			[/example]
 	*/
 
@@ -279,9 +279,9 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
-			notice Pragma Hello!
-			notice Pragma,Crocodile Hello to you both!
-			notice #kvirc Hello from outside!
+				notice Pragma Hello!
+				notice Pragma,Crocodile Hello to you both!
+				notice #kvirc Hello from outside!
 			[/example]
 	*/
 
@@ -333,7 +333,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			op Pragma,Crocodile
+				op Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
@@ -361,7 +361,7 @@ namespace KviKvsCoreSimpleCommands
 			The handlers for the supported URL types are specified in the options dialog.[br]
 			Each handler is a KVIrc commandline that the URL will be passed to as the first parameter ($0).[br]
 			The supported URL types are:[br]
-			[b]HTTP[/b]: http://&lt;url&gt; or sth that begins with "www." [br]
+			[b]HTTP[/b]: http://&lt;url&gt; or sth that begins with [b][i]www.[/b][/i][br]
 			[b]HTTPS[/b]: https://&lt;url&gt;[br]
 			[b]FILE[/b]: file://&lt;url&gt;[br]
 			[b]IRC[/b]: irc[s][6]://<server>[:<port>][/<channel>[?<pass>]] (Handled internally)[br]
@@ -519,13 +519,13 @@ namespace KviKvsCoreSimpleCommands
 			must be appropriate for the type of option that you're going to set.[br]
 			With no parameters this command lists all the available option names
 			sorted by option type.[br] The possible option types are:[br]
-			[b]Boolean[/b]: <optValue> must be "1" or "0"[br]
+			[b]Boolean[/b]: <optValue> must be [b]1[/b] or [b]0[/b][br]
 			[b]String[/b]: <optValue> can be any string[br]
 			[b]StringList[/b]: <optValue> must be a comma separated list of strings (eventually empty)[br]
 			[b]Color[/b]: <optValue> must have the format #RRGGBB where R G and B are hex digits[br]
 			[b]Font[/b]: <optValue> is a comma separated list of font properties:
 				<family>,<pointsize>,<style>,<charset>,<weight>,<flags>. <family> is the font face name
-				("arial", "helvetica" etc..), <pointsize> is more or less the indicator of the size of the font
+				([i]arial[/i], [i]helvetica[/i] etc.), <pointsize> is more or less the indicator of the size of the font
 				(try sth like 12,14), <style> is an integer that indicates the font style (fixed for example),
 				<charset> is an integer that indicates the charset of the font (maybe one day I'll document it better),
 				<weight> indicates the (em) weight of the font (50,100,150...matches Bold,DemiBold etc..),
@@ -629,8 +629,8 @@ namespace KviKvsCoreSimpleCommands
 			If <filename> is an existing directory name a file dialog
 			will pop up, allowing you to choose a file to parse.
 			The file dialog will start in the directory specified by <filename>.
-			If you don't know the name of an existing directory, just pass "."
-			or "/". The command just prints a warning if the file cannot be loaded for
+			If you don't know the name of an existing directory, just pass '.'
+			or '/'. The command just prints a warning if the file cannot be loaded for
 			some reason. If you want the command to stop with an error in
 			this case then use the -e switch.[br]
 			This command has a builtin alias called [cmd]include[/cmd].
@@ -641,7 +641,7 @@ namespace KviKvsCoreSimpleCommands
 			The reason for such a constraint is simple: KVIrc has no means
 			of knowing the encoding that one or other scripter uses to
 			edit his files. Unlike other languages (like HTML, for example)
-			there is no "external" metadata that will allow for
+			there is no [i]external[/i] metadata that will allow for
 			encoding detection before the data is actually decoded.
 			UTF-8 is the right way (tm). Use it.
 		@examples:
@@ -768,8 +768,8 @@ namespace KviKvsCoreSimpleCommands
 			This command is equivalent to [cmd]leave[/cmd]
 		@examples:
 			[example]
-			part #kvirc Byez!
-			part #linux-it,#xmms,#kde Time to sleep
+				part #kvirc Byez!
+				part #linux-it,#xmms,#kde Time to sleep
 			[/example]
 	*/
 
@@ -962,9 +962,9 @@ namespace KviKvsCoreSimpleCommands
 			This command is equivalent to [cmd]msg[/cmd]
 		@examples:
 			[example]
-			privmsg Pragma Hello!
-			privmsg Pragma,Crocodile Hello to you both!
-			privmsg #kvirc Hello from outside!
+				privmsg Pragma Hello!
+				privmsg Pragma,Crocodile Hello to you both!
+				privmsg #kvirc Hello from outside!
 			[/example]
 	*/
 
@@ -1033,10 +1033,10 @@ namespace KviKvsCoreSimpleCommands
 			If -i is not present but -m is used then the windows are always created as minimized.
 		@examples:
 			[example]
-			[comment]# Open a single query to Pragma[/comment]
-			query Pragma
-			[comment]# Open a query to Pragma and to Crocodile, say "Hello!" in both windows[/comment]
-			query Pragma,Crocodile Hello !
+				[comment]# Open a single query to Pragma[/comment]
+				query Pragma
+				[comment]# Open a query to Pragma and to Crocodile, say "Hello!" in both windows[/comment]
+				query Pragma,Crocodile Hello !
 			[/example]
 	*/
 
@@ -1121,11 +1121,11 @@ namespace KviKvsCoreSimpleCommands
 			Forcing the connection may cause your quit message to not be
 			displayed to the other IRC users: most likely it will be replaced
 			by a 'Connection reset by peer' or a 'EOF from client'.[br]
-			If the -u switch is specified then an "unexpected disconnection" will be simulated
+			If the -u switch is specified then an [i]unexpected disconnection[/i] will be simulated
 			and all the related options will be applied (e.g. automatic reconnection,
-			channels and queries kept open etc..). The QUIT message will be still sent unless
-			the -f switch is used. You can control all the "unexpected
-			disconnection" options in the options dialog.
+			channels and queries kept open etc.). The QUIT message will be still sent unless
+			the -f switch is used. You can control all the [i]unexpected disconnection[/i] 
+			options in the options dialog.
 			If the -q switch is specified, this command terminates KVIrc immediately.[br]
 		@examples:
 			[example]
@@ -1222,10 +1222,10 @@ namespace KviKvsCoreSimpleCommands
 			This command is equivalent to [cmd]quote[/cmd].
 		@examples:
 			[example]
-			[comment]# Send a private message "by hand"[/comment]
-			raw PRIVMSG Pragma :hello!
-			[comment]# Send a private message through another connection[/comment]
-			raw -r=[fnc]$console[/fnc]([fnc]$ic[/fnc](irc.otherserver.com,othernick)) PRIVMSG Pragma :heya on this side!
+				[comment]# Send a private message "by hand"[/comment]
+				raw PRIVMSG Pragma :hello!
+				[comment]# Send a private message through another connection[/comment]
+				raw -r=[fnc]$console[/fnc]([fnc]$ic[/fnc](irc.otherserver.com,othernick)) PRIVMSG Pragma :heya on this side!
 			[/example]
 	*/
 
@@ -1272,16 +1272,18 @@ namespace KviKvsCoreSimpleCommands
 			-q causes the command to run quietly.[br]
 			[b]Handle with care.[/b]
 		@examples:
-			[comment]# Try this example in a channel or query window[/comment][br]
-			[comment]# Remember the current window ID[/comment][br]
-			%winid = $window[br]
-			[comment]# Rebind to the console of the current IRC context[/comment][br]
-			rebind $console[br]
-			echo "Hello from the console :)"[br]
-			echo "Hello again.. still in the console"[br]
-			[comment]# Rebind back[/comment][br]
-			rebind %winid[br]
-			echo "Again in this window :)"
+			[example]
+				[comment]# Try this example in a channel or query window[/comment][br]
+				[comment]# Remember the current window ID[/comment][br]
+				%winid = $window[br]
+				[comment]# Rebind to the console of the current IRC context[/comment][br]
+				rebind $console[br]
+				echo "Hello from the console :)"[br]
+				echo "Hello again.. still in the console"[br]
+				[comment]# Rebind back[/comment][br]
+				rebind %winid[br]
+				echo "Again in this window :)"
+			[/example]
 	*/
 
 	KVSCSC(rebind)
@@ -1320,7 +1322,9 @@ namespace KviKvsCoreSimpleCommands
 			Starting from version 3.0.0 of KVIrc you can also return
 			arrays and hashes just like any other variable types.
 		@examples:
-			return $array(item1,item2,3213,itemX);
+			[example]
+				return $array(item1,item2,3213,itemX);
+			[/example]
 		@seealso:
 			[cmd]setreturn[/cmd], [cmd]break[/cmd], [cmd]halt[/cmd]
 	*/
@@ -1367,10 +1371,10 @@ namespace KviKvsCoreSimpleCommands
 			the shell by yourself (probably by passing the real command as the -c argument).
 		@examples:
 			[example]
-			run xterm
-			run xmessage -center *
-			[comment]# note the difference in * processing[/comment]
-			run /bin/bash -c "xmessage -center *"
+				run xterm
+				run xmessage -center *
+				[comment]# note the difference in * processing[/comment]
+				run /bin/bash -c "xmessage -center *"
 			[/example]
 	*/
 

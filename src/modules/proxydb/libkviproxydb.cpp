@@ -41,13 +41,14 @@ extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 		$proxydb.protocol
 	@short:
 		Returns the protocol
-	@synthax:
+	@syntax:
 		<string> $proxydb.protocol(<string:proxy>)
 	@description:
 		Returns the protocol of the proxy <proxy>
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 {
 	QString szProxy, szProtocol;
@@ -128,13 +129,14 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		$proxydb.hostname
 	@short:
 		Returns the hostname
-	@synthax:
+	@syntax:
 		<string> $proxydb.hostname(<string:proxy>)
 	@description:
 		Returns the hostname of the proxy <proxy>
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname,hostName,setString)
 
 /*
@@ -145,13 +147,14 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname,hostName,setString)
 		$proxydb.ip
 	@short:
 		Returns the IP
-	@synthax:
+	@syntax:
 		<string> $proxydb.ip(<string:proxy>)
 	@description:
 		Returns the IP of the proxy <proxy>
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_ip,ip,setString)
 
 /*
@@ -162,13 +165,14 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_ip,ip,setString)
 		$proxydb.password
 	@short:
 		Returns the password
-	@synthax:
+	@syntax:
 		<string> $proxydb.password(<string:proxy>)
 	@description:
 		Returns the password of the proxy <proxy>, if set
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_password,pass,setString)
 
 /*
@@ -179,7 +183,7 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_password,pass,setString)
 		$proxydb.username
 	@short:
 		Returns the username
-	@synthax:
+	@syntax:
 		<string> $proxydb.username(<string:proxy>)
 	@description:
 		Returns the username of the proxy <proxy>, if set
@@ -196,13 +200,14 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_username,user,setString)
 		$proxydb.isIPv6
 	@short:
 		Returns the isIPv6
-	@synthax:
+	@syntax:
 		<bool> $proxydb.isIPv6(<string:proxy>)
 	@description:
 		Returns true if the proxy <proxy> uses IPv6 sockets
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_isIPv6,isIPv6,setBoolean)
 
 /*
@@ -213,13 +218,14 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_isIPv6,isIPv6,setBoolean)
 		$proxydb.port
 	@short:
 		Returns the port
-	@synthax:
+	@syntax:
 		<bool> $proxydb.port(<string:proxy>)
 	@description:
 		Returns the port number of the proxy <proxy>
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_port,port,setInteger)
 
 /*
@@ -238,29 +244,25 @@ PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_port,port,setInteger)
 	@switches:
 		!sw: -i | --ipv6
 		Use IPv6 socket to connect to the proxy.[br]
-
 		!sw: -p=<port> | --port=<port>
 		Use the port <port> to connect to the proxy.[br]
-
 		!sw: -q | --quiet
 		Do not print errors if the proxy already exist.[br]
-
 		!sw: -r=<protocol> | --protocol=<protocol>
 		Use the protocol <protocol> to connect to the proxy.[br]
-
 		!sw: -u=<user> | --user=<user>
 		Use the username <user> to connect to the proxy.[br]
-
 		!sw: -w=<password> | --password=<password>
 		Use password <password> to connect to the proxy.
 	@examples:
 		[example]
-		[comment]Adds the proxy test.com on port 8080 using IPv6 sockets[/comment][br]
-		proxydb.addProxy -i -p=8080 test.com
+			[comment]Adds the proxy test.com on port 8080 using IPv6 sockets[/comment][br]
+			proxydb.addProxy -i -p=8080 test.com
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 {
 	QString szProxy;
@@ -335,8 +337,8 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the port 8080 for the proxy test.com[/comment][br]
-		proxydb.setPort test.com 8080
+			[comment]Sets the port 8080 for the proxy test.com[/comment][br]
+			proxydb.setPort test.com 8080
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
@@ -400,20 +402,21 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the IPv4 (format a.b.c.d) for the proxy test.com[/comment][br]
-		proxydb.setIp test.com 1.2.3.4[br]
-		[comment]Sets the extended IPv6 (format a:b:c:d:e:f:g:h) for the proxy text.com[/comment][br]
-		proxydb.setIp test.com 1:2:3:4:5:6:7:8[br]
-		[comment]Sets the compressed IPv6 (format a:b:...::h) for the proxy text.com[/comment][br]
-		proxydb.setIp test.com 1:2:3:4::8[br]
-		[comment]Sets the IPv4 mapped IPv6 (format a:b:c:d:e:f:w.x.y.z) for the proxy text.com[/comment][br]
-		proxydb.setIp test.com 1:2:3:4:5:6:9.8.7.6[br]
-		[comment]Sets the compressed IPv4 mapped IPv6 (a::b:w.x.y.z) for the proxy text.com[/comment][br]
-		proxydb.setIp test.com 1::6:9.8.7.6
+			[comment]Sets the IPv4 (format a.b.c.d) for the proxy test.com[/comment][br]
+			proxydb.setIp test.com 1.2.3.4[br]
+			[comment]Sets the extended IPv6 (format a:b:c:d:e:f:g:h) for the proxy text.com[/comment][br]
+			proxydb.setIp test.com 1:2:3:4:5:6:7:8[br]
+			[comment]Sets the compressed IPv6 (format a:b:...::h) for the proxy text.com[/comment][br]
+			proxydb.setIp test.com 1:2:3:4::8[br]
+			[comment]Sets the IPv4 mapped IPv6 (format a:b:c:d:e:f:w.x.y.z) for the proxy text.com[/comment][br]
+			proxydb.setIp test.com 1:2:3:4:5:6:9.8.7.6[br]
+			[comment]Sets the compressed IPv4 mapped IPv6 (a::b:w.x.y.z) for the proxy text.com[/comment][br]
+			proxydb.setIp test.com 1::6:9.8.7.6
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 {
 	QString szProxy, szIp;
@@ -476,12 +479,13 @@ static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the IPv6 sockets for the proxy test.com[/comment][br]
-		proxydb.setIPv6 test.com $true
+			[comment]Sets the IPv6 sockets for the proxy test.com[/comment][br]
+			proxydb.setIPv6 test.com $true
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 {
 	QString szProxy;
@@ -532,12 +536,13 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the protocol Socks5 for the proxy test.com[/comment][br]
-		proxydb.setProtocol test.com Socks5
+			[comment]Sets the protocol Socks5 for the proxy test.com[/comment][br]
+			proxydb.setProtocol test.com Socks5
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 {
 	QString szProxy, szProtocol;
@@ -637,12 +642,13 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the hostname test1.com for the proxy test.com[/comment][br]
-		proxydb.setHostname test.com test1.com
+			[comment]Sets the hostname test1.com for the proxy test.com[/comment][br]
+			proxydb.setHostname test.com test1.com
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_SET_PROPERTY(proxydb_kvs_cmd_setHostname,setHostname)
 
 /*
@@ -662,12 +668,13 @@ PROXYDB_SET_PROPERTY(proxydb_kvs_cmd_setHostname,setHostname)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the password test for the proxy test.com[/comment][br]
-		proxydb.setPass test.com test
+			[comment]Sets the password test for the proxy test.com[/comment][br]
+			proxydb.setPass test.com test
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_SET_PROPERTY(proxydb_kvs_cmd_setPass,setPass)
 
 /*
@@ -687,12 +694,13 @@ PROXYDB_SET_PROPERTY(proxydb_kvs_cmd_setPass,setPass)
 		Do not print errors if the proxy already exist.[br]
 	@examples:
 		[example]
-		[comment]Sets the username kvirc for the proxy test.com[/comment][br]
-		proxydb.setUser test.com kvirc
+			[comment]Sets the username KVIrc for the proxy test.com[/comment][br]
+			proxydb.setUser test.com kvirc
 		[/example]
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 PROXYDB_SET_PROPERTY(proxydb_kvs_cmd_setUser,setUser)
 
 static bool proxydb_module_init(KviModule * m)

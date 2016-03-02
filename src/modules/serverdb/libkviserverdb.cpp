@@ -109,7 +109,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 		<bool> $serverdb.networkExists(<network_name:string>)
 	@description:
 		Checks if the network already exists in the DB.[br]
-		It returns 1 if the network exists, 0 otherwise.
+		It returns [b]1[/b] if the network exists, and [b]0[/b] otherwise.
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -151,7 +151,7 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 	@description:
 		Checks if the server already exists for a network in the DB.[br]
 		If no network name is provided, the check is made globally.[br]
-		It returns 1 if the server exists, 0 otherwise
+		It returns 1 if the server exists, and [b]0[/b] otherwise
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -434,7 +434,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginComman
 	@doc: serverdb.networkName
 	@type:
 		function
-        @title:
+	@title:
 		$serverdb.networkName
 	@short:
 		Returns the name

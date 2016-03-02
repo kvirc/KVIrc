@@ -77,7 +77,7 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		[i]load[/i] and [i]unload[/i] commands: the modules are automatically
 		loaded when the [i]core[/i] requests them and unloaded after some (configurable) time
 		of inactivity.[br]
-
+		[br]
 		[big]Module naming convention[/big][br]
 		Every KVIrc module must have an [i]unique[/i] name: the name is a single token,
 		made only of [b]lowercase[/b] letters, digits and underscores.
@@ -94,11 +94,10 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		of the KVIrc executable and saving some memory.
 		To activate the dialog you only need to execute the command:[br]
 		[example]
-		about.kvirc
+			about.kvirc
 		[/example]
 		That's all. KVIrc will load the necessary module, run the [i]/about.kvirc[/i] command,
-		wait until the module is not used anymore and then unload it.[br]
-
+		wait until the module is not used anymore and then unload it.[br][br]
 		[big]Transparent loading and unloading[/big][br]
 		Any command that has the form <name>.<command> is assumed to be
 		a module reference. KVIrc tries to locate the module named <name>, load it (if
@@ -113,21 +112,21 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		A module can export functions as well: the function names follow
 		exactly the same rule as the commands: $<name>.<function> is assumed
 		to be a reference to the <function> exported by module named <name>.
-
+		[br]
 		[big]Forced loading and unloading[/big]
 		All the modules export a [i]load[/i] and a [i]unload[/i] command.
 		[example]
-		about.load
+			about.load
 		[/example]
 		The example above will do nothing more than loading the [i]about[/i]
 		module into the core memory.
 		[example]
-		about.unload
+			about.unload
 		[/example]
 		The example above will forcibly unload the module from the core memory;
 		even if it is still locked.[br]
 		Please note that this can be dangerous in some situations... so
-		better check the KVIrc behavior twice before making public any script
+		better check the KVIrc behaviour twice before making public any script
 		that uses this command.
 */
 

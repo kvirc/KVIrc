@@ -26,6 +26,7 @@
 #include "KviIrcMask.h"
 
 #include <QRegExp>
+
 /*
 	@doc: irc_masks
 	@title:
@@ -52,13 +53,15 @@
 		The <username> often has a special prefix character added by the IRC server:[br]
 		this is rather server specific protocol, but the prefixes are somewhat standardized and
 		the common meanings of them are:[br]
-		noprefix: I line with Ident[br]
-		^: I line with OTHER type Ident[br]
-		~: I line, no Ident[br]
-		+: i line with Ident[br]
-		=: i line with OTHER type Ident[br]
-		-: i line, no Ident[br]
-		So finally you can find <username> strings like "~pragma" or "^pragma", where "pragma"
+		[pre]
+			noprefix: I line with Ident[br]
+			^: I line with OTHER type Ident[br]
+			~: I line, no Ident[br]
+			+: i line with Ident[br]
+			=: i line with OTHER type Ident[br]
+			-: i line, no Ident[br]
+		[/pre]
+		So finally you can find <username> strings like [i]~pragma[/i] or [i]^pragma[/i], where [i]pragma[/i]
 		is the system username of the irc-user and ~ and ^ are prefixes.[br]
 		The <host> part is the hostname of the remote user.[br]
 		In most cases it is the human-readable format of the host name, but sometimes
@@ -75,19 +78,19 @@
 		The irc-masks are [b]case insensitive[/b].[br]
 		[br]
 		[big]Wildcard masks[/big][br]
-		In some contexts the irc-masks can contain '*' and '?' wildcards.[br]
-		The wild masks are used to "match" an user within a set of them.[br]
-		'*' matches any sequence (eventually empty) of characters and '?' matches a single character.[br]
+		In some contexts the irc-masks can contain [b]*[/b] and [b]?[/b] wildcards.[br]
+		The wild masks are used to [i]match[/i] an user within a set of them.[br]
+		[b]*[/b] matches any sequence (eventually empty) of characters and [b]?[/b] matches a single character.[br]
 		Wildcards are allowed only in the <nick>, <user> and <host> part: so the
-		"wildest" mask possible is:[br]
+		[i]wildest[/i] mask possible is:[br]
 		[b]*!*@*[/b][br]
-		that designates "any nickname, any username on any host".[br]
+		that designates [i]any nickname, any username on any host[/i].[br]
 		Here are some examples of wild masks:[br]
-		Pragma!*pragma@212.101.102.*: matches any user with nickname "Pragma", username that ends with "pragma" and
+		Pragma!*pragma@212.101.102.*: matches any user with nickname [i]Pragma[/i], username that ends with [i]pragma[/i] and
 		coming from any machine on the 212.101.102 network.[br]
 		*!solo@*.starwars.org: matches any nick with username solo (no prefix!) coming from any machine in
 		the starwars.org domain.[br]
-		Pragma!*@*: matches any user with nickname "Pragma".[br]
+		Pragma!*@*: matches any user with nickname [i]Pragma[/i].[br]
 */
 
 static unsigned char ucMaskTable[27][3] = {

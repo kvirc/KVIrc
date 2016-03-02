@@ -105,11 +105,11 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 			If no away reason is specified, the behaviour of this command depends from the value
 			of the option boolUseAwayMessage: if enabled, user will be set away using the default
-			away message (or "Away from keyboard" if no default away message is set);
+			away message (or [i]Away from keyboard[/i] if no default away message is set);
 			otherwise, the user will return from a previous away state.
 		@examples:
 			[example]
-			away I'm asleep. Don't wake me up.
+				away I'm asleep. Don't wake me up.
 			[/example]
 	*/
 
@@ -414,14 +414,14 @@ namespace KviKvsCoreSimpleCommands
 			Changes an existing user defined button.[br]
 			<type_unused> is ignored and present only for backward compatibility.[br]
 			<name> is the name of the button.[br]
-			<operation> may be one of the constant strings "enable", "disable", "image",
-			"text".[br]
-			Operations "enable" and "disable" do not require the fourth [parameter] and have
-			the obvious meaning.[br] Operation "image" requires the [parameter] to be
+			<operation> may be one of the constant strings [i]enable[/i], [i]disable[/i], [i]image[/i],
+			[i]text"[/i].[br]
+			Operations [i]enable[/i] and [i]disable[/i] do not require the fourth [parameter] and have
+			the obvious meaning.[br] Operation [i]image[/i] requires the [parameter] to be
 			a valid [doc:image_id]image_id[/doc] and sets the button image.[br]
-			Operation "text" requires the [parameter] (and in fact all the following ones)
+			Operation [i]text[/i] requires the [parameter] (and in fact all the following ones)
 			to be a string containing the button text label.[br]
-			The <operation> constants may be abbreviated, even to the single letters 'e','d','i' and 't'.[br]
+			The <operation> constants may be abbreviated, even to the single letters [b]e[/b], [b]d[/b], [b]i[/b] and [b]t[/b].[br]
 			The -q switch causes the command to be quiet about errors and warnings.[br]
 		@seealso:
 			[cmd]button[/cmd]
@@ -650,7 +650,7 @@ namespace KviKvsCoreSimpleCommands
 			For more info take a look at the [doc:ctcp_handling]CTCP protocol implementation notes[/doc].[br]
 			The CTCP message will be a request (sent through a PRIVMSG) unless the -n switch
 			specified: in that case it will be a reply (sent through a NOTICE).[br]
-			If <ctcp_data> is the single string "ping" then a trailing time string argument
+			If <ctcp_data> is the single string [i]ping[/i] then a trailing time string argument
 			is added in order to determine the round trip time when the ping reply comes back.
 			To override this behaviour simply specify your own time string parameter.[br]
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
@@ -1099,7 +1099,7 @@ namespace KviKvsCoreSimpleCommands
 			icon scheme (icon and colors), otherwise it uses
 			the default one (0).[br]
 			If the -d switch is used then the output is sent to a special
-			window called "Debug" (the window is created if not existing yet).
+			window called [i]Debug[/i] (the window is created if not existing yet).
 			This is useful for script debugging purposes (you get the output
 			in Debug regardless of the window that the executed command is attached to).
 			The KVIrc view widgets support clickable links that can be realized by using special [doc:escape_sequences]escape sequences[/doc].[br]
@@ -1380,8 +1380,8 @@ namespace KviKvsCoreSimpleCommands
 			sanitize it by using [fnc]$escape[/fnc]() in order to avoid command injection.[/b]
 			Note that nicknames, usernames, hostnames, channel names and any kind of text that
 			isn't generated under your control may contain malicious code. For instance, if you
-			try to eval the string built by concatenating "echo" and the result of [fnc]$channel.name[/fnc]
-			inside a channel named "#test;quit" (yes, that's a valid channel name) you'll obtain
+			try to eval the string built by concatenating [i]echo[/i] and the result of [fnc]$channel.name[/fnc]
+			inside a channel named [i]#test;quit[/i] (yes, that's a valid channel name) you'll obtain
 			a disconnection as a side effect. To avoid this you need to use [fnc]$escape[/fnc]() around
 			[fnc]$chan.name[/fnc].
 		@examples:

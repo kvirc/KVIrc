@@ -65,7 +65,7 @@
 		periodically if your friends are online.[br]
 		This is basically achieved by setting a property in the [doc:registered_users]registered users database[/doc]
 		entry.[br]
-		The property is called "notify", and you have to set it to the nickname
+		The property is called [i]notify[/i], and you have to set it to the nickname
 		that you want to look for.[br]
 		So for example, assume to register a friend of yours like Szymon:[br]
 		[example]
@@ -73,44 +73,44 @@
 			[cmd:reguser.addmask]reguser.addmask[/cmd] Szymon Pragma!*@*.it
 		[/example]
 		And then want it in the notify list; nothing easier, just set
-		hist "notify" property to the nickname that you want him to be "looked for":[br]
+		hist [i]notify[/i] property to the nickname that you want him to be [i]looked for[/i]:[br]
 		[example]
 			[cmd:reguser.setproperty]reguser.setproperty[/cmd] Szymon notify Pragma
 		[/example]
 		In this way, once in a while, KVIrc will send to the server an ISON message
 		with the nickname Pragma. If Szymon is online, you will be notified with a message:[br]
-		"Pragma [someuser@somehost.it] is on IRC".[br]
-		If Szymon uses often "[Pragma]" as his secondary nickname, you can do the following:[br]
+		[i]Pragma [someuser@somehost.it] is on IRC[/i].[br]
+		If Szymon uses often [i][Pragma][/i] as his secondary nickname, you can do the following:[br]
 		[example]
 			[cmd:reguser.addmask]reguser.addmask[/cmd] Szymon [Pragma]*@*.it
-			[cmd:reguser.setproperty]reguser.setproperty[/cmd] Szymon notify "Pragma [Pragma]"
+			[cmd:reguser.setproperty]reguser.setproperty[/cmd] Szymon notify [i]Pragma [Pragma][/i]
 		[/example]
 		KVIrc will then look for both nicknames getting online.[br]
 		KVIrc supports three notify lists management methods:[br]
-		The "stupid ISON method", the "intelligent ISON method" and the "WATCH method".[br]
-		The "stupid ISON method" will assume that Szymon is online if any user with nickname
+		The [i]stupid ISON method[/i], the [i]intelligent ISON method[/i] and the [i]WATCH method[/i].[br]
+		The [i]stupid ISON method[/i] will assume that Szymon is online if any user with nickname
 		Pragma (or [Pragma] in the second example) gets online; this means that also Pragma!someuser@somehost.com will be
-		assumed to be "Szymon" and will be shown in the notify list.[br]
+		assumed to be [i]Szymon[/i] and will be shown in the notify list.[br]
 		This might be a false assumption (since somehost.com does not even match *.it),
-		but it is the best result that the "stupid ISON method" can achieve.[br]
-		The "intelligent ISON method" will also check the Pragma's username and hostname
+		but it is the best result that the [i]stupid ISON method[/i] can achieve.[br]
+		The [i]intelligent ISON method[/i] will also check the Pragma's username and hostname
 		and match it in the registered masks; so in the example above, you will be notified if
-		any user that matches Pragma!*@*.it gets online; (but you will NOT be notified if
+		any user that matches Pragma!*@*.it gets online; (but you will [b]not[/b] be notified if
 		(for example) Pragma!someuser@somehost.com gets online).[br]
-		So what's the point in including a stupid method? :) Well...the intelligent
-		method "eats" some of your IRC bandwidth; it has to send USERHOST messages
+		So what's the point in including a stupid method? :) Well... the intelligent
+		method [i]eats[/i] some of your IRC bandwidth; it has to send USERHOST messages
 		for every group of 5 users in the notify list. If you have a lot of users
 		in the notify list, it might become slow and eventually cause a
 		client to server flood.[br]
-		So finally, the intelligent method is the default. If you have "flood" problems,
-		or if you think that the notify list is quite slow, try the "stupid" method:
+		So finally, the intelligent method is the default. If you have [i]flood[/i] problems,
+		or if you think that the notify list is quite slow, try the [i]stupid[/i] method:
 		it is not that bad after all.[br]
-		The third notify list management method is the "WATCH method".[br]
+		The third notify list management method is the [i]WATCH method[/i].[br]
 		It uses a totally different (and better) approach to the notify lists management,
 		and can be used only on the networks that support the WATCH notify method (DALnet, WebNet, etc.).[br]
 		KVIrc will attempt to guess if the server you're currently using supports the WATCH command
 		and eventually use this last method.[br]
-		The WATCH method uses the "notify" property to get the nicknames that have to be
+		The WATCH method uses the [i]notify[/i] property to get the nicknames that have to be
 		sent to the server in the /WATCH commands.
 */
 

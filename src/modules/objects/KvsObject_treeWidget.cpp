@@ -57,7 +57,7 @@
 		Allocating a [class]listviewtitem[/class] item2 as a child of item1 will insert it to the same listview creating
 		a subtree of items spanning from item1. The subtree can be opened or closed by a simple click either
 		on the parent item or on the little plus sign on the side of it (when [classfnc:listview]$setRootIsDecorated[/classfnc]
-		is set to $true. The listview can be in Single, Multi, Extended or NoSelection selection mode.
+		is set to $true. The listview can be in Single, Multi, Extended or NoSelection selection mode.[br][br]
 		In single selection mode there can be only one selected item at a time and the selected item is also
 		the current item (this mode is the default). In Multi and Extended selection mode there can be multiple selected items
 		and the current item is one of them. The difference between multi and extended is in the way
@@ -67,7 +67,7 @@
 		!fn: $addColumn(<text_label:string>,[<width:integer>])
 		Adds a width pixels wide column with the column header label to the list view.
 		!fn: $setSorting(<column:integer>,<sort_order:string>)
-		Sets the list view to be sorted by column in ascending order if sort_order is "ascending" or descending order if it is "descending".
+		Sets the list view to be sorted by column in ascending order if sort_order is [i]ascending[/i] or descending order if it is [i]descending[/i].
 		!fn: $setSortingEnabled(<bEnabled:boolean>)
 		If <bEnabled> is true, user sorting is enabled for the tree. The default value is false.
 		In order to avoid performance issues, it is recommended that sorting is enabled after inserting the items into the tree.
@@ -76,13 +76,13 @@
 		!fn: $showListViewHeader()
 		Show the listview column header.
 		!fn: <boolean> $isListViewHeaderVisible()
-		Returns '1' if the listview header is currently visible. Otherwise this function returns '0'.
+		Returns [b]1[/b] if the listview header is currently visible. Otherwise this function returns [b]0[/b].
 		!fn: $setAllColumnsShowFocus(<bAllColumnsShowFocus:boolean>)
 		When the argument is $true, causes the listview to display the focus and selection
 		by highlighting all the columns of the item. When the argument is $false then
 		only the first column is selected/highlighted.
 		!fn: $setSelectionMode(<mode:string>)
-		Sets the selection mode for this listview. <mode> can be one of "Single","NoSelection","Multi" or "Extended".
+		Sets the selection mode for this listview. <mode> can be one of [i]Single[/i], [i]NoSelection[/i], [i]Multi[/i] or [i]Extended[/i].
 		!fn: <listviewitem> $selectedItems()
 		Returns the currently selected [class]listviewitem[/class] or $null if no items are selected.
 		This function works only if the list view is in single selection mode.
@@ -112,7 +112,7 @@
 		In its argument is the newly selected item or 0 if the change made no item current.[br]
 		The default implementation emits the [classfnc]$currentChanged[/classfnc]() signal.
 		!fn: $itemActivatedEvent(<item:object>)
-		This s signal is emitted when the user activates an item by single- or double-clicking or pressing 'Enter'.[br]
+		This signal is emitted when the user activates an item by single- or double-clicking or pressing Enter.[br]
 		In its argument the current item.[br]
 		The default implementation emits the [classfnc]$itemActivated[/classfnc]() signal.
 		!fn: $spacePressedEvent(<item:object>)
@@ -153,10 +153,6 @@
 		!sg: $rightButtonClicked()
 		This signal is emitted by the default implementation of [classfnc]$rightButtonClickedEvent[/classfnc]().
 */
-
-
-
-//---------------------------------------------------------------------------------
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidget,"listview","widget")
 

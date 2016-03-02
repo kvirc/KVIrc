@@ -45,9 +45,9 @@
 	@keyterms:
 		file sharing
 	@body:
-		[big]What is this ?[/big]
-		The "file offers" are a simple way to share your files with other IRC users.[br]
-		Basically, you setup an offer by selecting a local file, choosing a "visible name" for it.
+		[big]What is this?[/big]
+		The [i]file offers[/i] are a simple way to share your files with other IRC users.[br]
+		Basically, you setup an offer by selecting a local file, choosing a [i]visible name[/i] for it.
 		Remote users will be able to request you the file and download it automatically by
 		issuing a simple DCC GET request.[br]
 		[big]Details[/big]
@@ -55,15 +55,15 @@
 		The offer is given a visible name that the remote users will effectively request.
 		To share the file /usr/arch/mp3/SonataArctica_SingInSilence_Live.mp3 you will add a file offer
 		with /usr/arch/mp3/SonataArctica_SingInSilence_Live.mp3 as real file path, something like
-		"SonataArctica_SingInSilence.mp3". A remote user will then request you a DCC GET SonataArctica_SingInSilence.mp3
+		[i]SonataArctica_SingInSilence.mp3[/i]. A remote user will then request you a DCC GET SonataArctica_SingInSilence.mp3
 		and KVIrc will automatically send the file.[br]
-		Each file offer has an "user mask" that the requesting remote users must match to
+		Each file offer has an [i]user mask[/i] that the requesting remote users must match to
 		obtain the file: *!*@* matches any user, Pragma!*@* matches any user with nickname pragma,
 		*!*@*.omnikron.net matches any user coming from the omnikron.net domain.[br]
 		Each offer can have an expire time: the offer will be automatically removed after
 		a defined number of seconds. An expire time of '0' seconds means that the offer should never expire.[br]
 		If you have two file offers with the same name and different file, the remote user can
-		use an additional "size" parameter in the DCC GET request.[br]
+		use an additional [i]size[/i] parameter in the DCC GET request.[br]
 		[big]Security issues[/big]
 		This is a nice but unsecure method of sharing files.[br]
 		The user mask is a good protection but you have to use it properly![br]

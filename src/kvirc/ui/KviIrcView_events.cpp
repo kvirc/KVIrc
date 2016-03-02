@@ -62,7 +62,7 @@
 		The KVIrc view widgets support clickable links.[br]
 		The links can be created using special escape sequences in the text
 		passed to the [cmd]echo[/cmd] command.[br]
-		KVIrc uses some escape sequences in the text "echoed" internally.[br]
+		KVIrc uses some escape sequences in the text [i]echoed[/i] internally.[br]
 		The simplest way to explain it is to use an example:[br]
 		[example]
 			[cmd]echo[/cmd] This is a [fnc]$cr[/fnc]![!dbl][cmd]echo[/cmd] You have clicked it![fnc]$cr[/fnc]\clickable link$cr !
@@ -79,7 +79,7 @@
 		The whole escape sequence format is the following:[br]
 		[b]<cr>!<escape_command><cr><visible text><cr>[/b][br]
 		<cr> is the carriage return character. You can obtain it by using the [fnc]]$cr[/fnc] function.[br]
-		<visible text> is the text that will appear as "link" when you move the mouse over it.[br]
+		<visible text> is the text that will appear as [i]link[/i] when you move the mouse over it.[br]
 		<escape_command> is the description of the actions to be taken when the user interacts with the link.[br]
 		<escape_command> has the two following syntactic forms:[br]
 		[b]<escape_command> ::= <user_defined_commands>[/b][br]

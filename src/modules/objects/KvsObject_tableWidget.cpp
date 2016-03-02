@@ -127,7 +127,7 @@ const char * const itemflags_tbl[] = {
 		!fn: $setForegroundColor(<row:uinteger>,<col:uinteger>,<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red_or_colorname>,[geen:integer],[blue:integer])
 		Sets the foreground of the cell at <row,<col> according to <colorname> <rgb_value>:valid values are:
 		- hex string: must be a string with 6 hexadecimal digits (like the ones used to
-		specify colors in html pages). The first two digits specify
+		specify colors in HTML pages). The first two digits specify
 		the RED component, the third and fourth digit specify the GREEN component
 		and the last two specify the BLUE component.
 		For example "FFFF00" means full red, full green and no blue that gives
@@ -136,14 +136,14 @@ const char * const itemflags_tbl[] = {
 		These determine whether the cell can be selected or modified.
 		Supported flags are:
 		[pre]
-		[br]- noitemflag : no flag sets;
-		[br]- selectable : cell is selecatble;
-		[br]- editable : cell is editable;
-		[br]- dragEnabled : cell can dragged;
-		[br]- dropEnabled : cell can used as drop target;
-		[br]- userCheckable : cell is checkable;
-		[br]- enabled :cell is enabled;
-		[br]- tristate : cell is checkable with three separate states.
+			- noitemflag : no flag sets;
+			- selectable : cell is selectable;[br]
+			- editable : cell is editable;[br]
+			- dragEnabled : cell can dragged;[br]
+			- dropEnabled : cell can used as drop target;[br]
+			- userCheckable : cell is checkable;[br]
+			- enabled :cell is enabled;[br]
+			- tristate : cell is checkable with three separate states.
 		[/pre]
 		!fn: $setCellWidget(<row:uint>,<column:uint>,<widget:hobject>)
 		Sets the given widget to be displayed in the cell in the given row and column, passing the ownership of the widget to the table.
@@ -168,7 +168,7 @@ const char * const itemflags_tbl[] = {
 		This event is triggered whenever a cell in the table is double clicked.
 		!fn: $paintCellEvent(<painter:hobject>,<row,uint>,<col:uint>,<cell_width:uint>,<cell_height:uint>)
 		This event handler can be reimplemented to repaint cells.
-		The framework will pass the row/col coordinates, cell's width and height, and, as parameter, a [class]painter[/class]object.
+		The framework will pass the row/col coordinates, cell's width and height as parameter, a [class]painter[/class]object.
 		You don't need to begin/end/delete the painter.
 		!fn: $sizeHintCellRequestEvent()
 		This event handler can be reimplemented to pass a custom size hint for this cell to the table layout
@@ -179,9 +179,7 @@ const char * const itemflags_tbl[] = {
 	@signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
-
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_tableWidget,"tablewidget","widget")
 

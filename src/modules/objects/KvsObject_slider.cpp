@@ -31,7 +31,6 @@
 
 #include <QSlider>
 
-
 /*
 	@doc: slider
 	@keyterms:
@@ -67,12 +66,14 @@
 		!fn: $setTickmarks(<tick_marks:string>)
 		Sets the tickmark settings for this slider.[br]
 		Values are:[br]
-		NoMarks - do not draw any tickmarks.[br]
-		Both - draw tickmarks on both sides of the groove.[br]
-		Above - draw tickmarks above the (horizontal) slider[br]
-		Below - draw tickmarks below the (horizontal) slider[br]
-		Left - draw tickmarks to the left of the (vertical) slider[br]
-		Right - draw tickmarks to the right of the (vertical) slider
+		[pre]
+			NoMarks - do not draw any tickmarks.[br]
+			Both - draw tickmarks on both sides of the groove.[br]
+			Above - draw tickmarks above the (horizontal) slider[br]
+			Below - draw tickmarks below the (horizontal) slider[br]
+			Left - draw tickmarks to the left of the (vertical) slider[br]
+			Right - draw tickmarks to the right of the (vertical) slider
+		[/pre]
 		!fn: $setTickInterval(<value>)
 		Sets the interval between tickmarks.
 		!fn: <integer> $value()
@@ -95,10 +96,7 @@
 		!sg: $valueChanged()
 		This signal is emitted by the default implementation of [classfnc]valueChangedEvent[/classfnc]().[br]
 		If you reimplement that function you will have to emit the signal manually (if you still need it).
-
 */
-
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_slider,"slider","widget")
 

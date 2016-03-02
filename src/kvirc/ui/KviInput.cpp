@@ -441,40 +441,39 @@ void KviInput::toggleMultiLine()
 		Commandline input features
 	@body:
 		[big]Principles of operation[/big]
-		[p]
-		The idea is simple: anything that starts with a slash (/) character
+		[br]
+		The idea is simple: anything that starts with a slash [b]/[/b] character
 		is interpreted as a command. Anything else is plain text that is
-		sent to the target of the window (channel, query, DCC chat etc..).
-		[/p]
+		sent to the target of the window (channel, query, DCC chat etc.).
+		[br]
 		[big]The two operating modes[/big]
-		[p]
-		The commandline input has two operating modes: the "user friendly mode" and
-		the "kvs mode". In the user friendly mode all the parameters of the commands
+		[br]
+		The commandline input has two operating modes: the [i]user friendly mode[/i] and
+		the [i]kvs mode[/i]. In the user friendly mode all the parameters of the commands
 		are interpreted exactly like you type them. There is no special interpretation
-		of $,%,-,( and ; characters. This allows you to type "/me is happy ;)", for example.
+		of [b]$[/b], [b]%[/b], [b]-[/b], [b]([/b] and [b];[/b] characters. This allows you to type [i]/me is happy ;)[/i], for example.
 		In the kvs mode the full parameter interpretation is enabled and the commands
 		work just like in any other script editor. This means that anything that
-		starts with a $ is a function call, anything that starts with a % is a variable,
-		the dash characters after command names are interpreted as switches and ; is the
-		command separator. This in turn does [b]not[/b] allow you to type "/me is happy ;)"
-		because ; is the command separator and ) will be interpreted as the beginning
+		starts with a [b]$[/b] is a function call, anything that starts with a % is a variable,
+		the dash characters after command names are interpreted as switches and [b];[/b] is the
+		command separator. This in turn does [b]not[/b] allow you to type [i]/me is happy ;)[/i]
+		because [b];[/b] is the command separator and ) will be interpreted as the beginning
 		of the next command. In KVS mode you obviously have to escape the ; character
-		by typing "/me is happy \;)". The user friendly mode is good for everyday chatting
+		by typing [i]/me is happy \;)[/i]. The user friendly mode is good for everyday chatting
 		and for novice users while the KVS mode is for experts that know that minimum about
 		scripting languages. Please note that in the user-friendly mode you're not allowed
 		to type multiple commands at once :).
-		[/p]
-		[p]
+		[br]
 		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
 		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
 		You can enable word substitution in the preferences dialog.[br]
-		For example, if you choose to substitute "afaik" with "As far as I know",[br]
-		when you will type "afaik" somewhere in the command line, and then
-		press Space or Return, that word will be replaced with "As far as I know".[br]
+		For example, if you choose to substitute [b]afaik[/b] with [b]A[/b]s [b]f[/b]ar [b]a[/b]s [b]I[/b] [b]k[/b]now",[br]
+		when you will type [b]afaik[/b] somewhere in the command line, and then
+		press Space or Return, that word will be replaced with [i]As far as I know[/i].[br]
 		Experiment with it :)[br]
 		The Tab key activates the completion of the current word.[br]
-		If a word is prefixed with a '/', it is treated as a command to be completed,
-		if it begins with '$', it is treated as a function or identifier to be completed,
+		If a word is prefixed with a [b]/[/b], it is treated as a command to be completed,
+		if it begins with [b]$[/b], it is treated as a function or identifier to be completed,
 		otherwise it is treated as a nickname or filename to be completed.
 		[example]
 			/ec&lt;Tab&gt; will produce /echo&lt;space&gt;
@@ -486,5 +485,5 @@ void KviInput::toggleMultiLine()
 			$sel&lt;Tab;&gt; will find multiple matches and produce $selected
 		[/example]
 		Experiment with that too :)
-		[/p]
+		[br]
 */

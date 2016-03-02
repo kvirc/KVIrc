@@ -44,7 +44,7 @@
 		[class]object[/class]
 	@description:
 		The Process class  is used to start external programs and to communicate with them.[br]
-		!WARNING AT LAST YOU HAVE TO CLOSE THE PROCESS!
+		[b]WARNING! at last you have to close the process![/b]
 	@functions:
 		!fn: $addArgument(<process-name:string>)
 		With this command you give the process name (or more arguments) for communication.
@@ -53,9 +53,9 @@
 		Tries to run the process.[br]
 		[b]e.g.[/b]
 		[example]
-		%process=$new(process);[br]
-		%process->$addArg("cmd.exe");[br]
-		%process->$start();[br]
+			%process=$new(process);[br]
+			%process->$addArg("cmd.exe");[br]
+			%process->$start();[br]
 		[/example]
 		!fn: <string> $readStdout()
 		Reads the data that the process has written to standard output.
@@ -63,70 +63,70 @@
 		Reads the data that the process has written to standard error.
 		[b]e.g.[/b]
 		[example]
-		class (test,object)[br]
-		{[br]
-			slotReadStdout()[br]
-			{[br]
-				%stdo = %Process->$readStdout()[br]
-				#%Aoutput->$append(%stdo);// coming soon in the new texteditor class[br]
-				%Aoutput->$settext(%stdo);[br]
-			}[br]
-			slotReadStderr()[br]
-			{[br]
-				%stderr= %Process->$readStderr()[br]
-				#%Aoutput->$append(%stderr);// coming soon in the new texteditor class[br]
-				%Aoutput->$settext(%stderr);[br]
-			}[br]
-		}[br]
+			class (test,object)
+			{
+				slotReadStdout()
+				{
+					%stdo = %Process->$readStdout()
+					#%Aoutput->$append(%stdo);[comment]# coming soon in the new texteditor class[/comment]
+					%Aoutput->$settext(%stdo);
+				}
+				slotReadStderr()
+				{
+					%stderr= %Process->$readStderr()
+					#%Aoutput->$append(%stderr);[comment]# coming soon in the new texteditor class[/comment]
+					%Aoutput->$settext(%stderr);
+				}
+			}
 
-		%tt=$new(test)[br]
-		%A=$new(widget)[br]
-		%A->$setGeometry(100,100,400,300)[br]
-		%layoutA=$new(layout,%A)[br]
-		%Ainput=$new(lineedit,%A)[br]
-		#%Aoutput=$new(textedit,%A) [comment]//coming soon in the new texteditor class[/commnet][br]
-		%Aoutput=$new(label,%A)[br]
-		%bclosekill=$new(button,%A)[br]
-		%bclosekill->$settext("&CloseKill ")[br]
-		%bkill=$new(button,%A)[br]
-		%bkill->$settext("&Kill ")[br]
-		%bterminate=$new(button,%A)[br]
-		%bterminate->$settext("&Ask to Terminate ")[br]
-		%layoutA->$addwidget(%Ainput,0,0)[br]
-		%layoutA->$addwidget(%Aoutput,1,0)[br]
-		%layoutA->$addwidget(%bclosekill,3,0)[br]
-		%layoutA->$addwidget(%bkill,4,0,)[br]
-		%layoutA->$addwidget(%bterminate,5,0)[br]
+			%tt=$new(test)
+			%A=$new(widget)
+			%A->$setGeometry(100,100,400,300)
+			%layoutA=$new(layout,%A)
+			%Ainput=$new(lineedit,%A)
+			#%Aoutput=$new(textedit,%A)[comment]# coming soon in the new texteditor class[/commnet]
+			%Aoutput=$new(label,%A)
+			%bclosekill=$new(button,%A)
+			%bclosekill->$settext("&CloseKill ")
+			%bkill=$new(button,%A)
+			%bkill->$settext("&Kill ")
+			%bterminate=$new(button,%A)
+			%bterminate->$settext("&Ask to Terminate ")
+			%layoutA->$addwidget(%Ainput,0,0)
+			%layoutA->$addwidget(%Aoutput,1,0)
+			%layoutA->$addwidget(%bclosekill,3,0)
+			%layoutA->$addwidget(%bkill,4,0,)
+			%layoutA->$addwidget(%bterminate,5,0)
 
-		%Process=$new(process)[br]
-		%Process->$addArgument("cmd.exe")[br]
-		%Process->$startProcess();[br]
+			%Process=$new(process)
+			%Process->$addArgument("cmd.exe")
+			%Process->$startProcess();
 
-		connect %Process readyReadStdout %tt slotReadStdout[br]
-		connect %Process readyReadStderr %tt slotReadStderr[br]
-		privateimpl(%Ainput,returnPressedEvent)[br]
-		{
-			%command=%Ainput->$text() "\r\n"[br]
-			%Process->$writeToStdin(%command);[br]
-			%Ainput->$setText("");[br]
-		}[br]
+			connect %Process readyReadStdout %tt slotReadStdout
+			connect %Process readyReadStderr %tt slotReadStderr
+			privateimpl(%Ainput,returnPressedEvent)
+			{
+				%command=%Ainput->$text() "\r\n"
+				%Process->$writeToStdin(%command);
+				%Ainput->$setText("");
+			}
 
-		privateimpl(%bclosekill,mousepressevent)[br]
-		{[br]
-			%Process->$closekill();[br]
-			delete %A;[br]
-		}[br]
-		privateimpl(%bkill,mousepressevent)[br]
-		{[br]
-			%Process->$kill();[br]
-			delete %A;[br]
-		}[br]
-		privateimpl(%bterminate,mousepressevent)[br]
-		{[br]
-			%Process->$tryTerminate();[br]
-			delete %A;[br]
-		}[br]
-		%A->$show();[br]
+			privateimpl(%bclosekill,mousepressevent)
+			{
+				%Process->$closekill();
+				delete %A;
+			}
+			privateimpl(%bkill,mousepressevent)
+			{
+				%Process->$kill();
+				delete %A;
+			}
+			privateimpl(%bterminate,mousepressevent)
+			{
+				%Process->$tryTerminate();
+				delete %A;
+			}
+			%A->$show();
 		[/example]
 		!fn: $writeToStdin(<command:string>)
 		With this command you send a command to the process:
@@ -136,7 +136,7 @@
 		(I think that this is the better way.)[br]
 		[b]e.g.[/b]
 		[pre]
-		%Process->close_kill();
+			%Process->close_kill();
 		[/pre]
 		!fn: $kill()
 		Kill the process the hard way (Bad Idea).

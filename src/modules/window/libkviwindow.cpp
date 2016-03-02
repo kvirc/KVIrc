@@ -370,7 +370,7 @@ static bool window_kvs_fnc_activityTemperature(KviKvsModuleFunctionCall * c)
 		$window.isDocked
 		$window.isDocked(<window_id>)
 	@description:
-		Returns 1 if the window specified by <window_id> is currently docked and 0 otherwise.
+		Returns [b]1[/b] if the window specified by <window_id> is currently docked and [b]0[/b] otherwise.
 		The form with no parameters works on the current window. If the specified window
 		doesn't exist then 0 is returned.
 	@seealso:
@@ -400,7 +400,7 @@ static bool window_kvs_fnc_isDocked(KviKvsModuleFunctionCall * c)
 		$window.hasInput
 		$window.hasInput(<window_id>)
 	@description:
-		Returns 1 if the window specified by <window_id> has an input field and 0 otherwise.
+		Returns [b]1[/b] if the window specified by <window_id> has an input field and [b]0[/b] otherwise.
 		The form with no parameters works on the current window. If the specified window
 		doesn't exist then 0 is returned.
 	@seealso:
@@ -430,8 +430,8 @@ static bool window_kvs_fnc_hasInput(KviKvsModuleFunctionCall * c)
 		$window.hasUserFocus
 		$window.hasUserFocus(<window_id>)
 	@description:
-		Returns 1 if the window specified by <window_id> has
-		currently the user focus and 0 otherwise.
+		Returns [b]1[/b] if the window specified by <window_id> has
+		currently the user focus and [b]0[/b] otherwise.
 		The form with no parameters works on the current window.
 		If the specified window doesn't exist then 0 is returned.
 		A window has the user focus if it is the KVIrc's active
@@ -493,7 +493,7 @@ static bool window_kvs_fnc_console(KviKvsModuleFunctionCall * c)
 		$window.hasOutput
 		$window.hasOutput(<window_id>)
 	@description:
-		Returns 1 if the window specified by <window_id> has a text output widget and 0 otherwise.
+		Returns [b]1[/b] if the window specified by <window_id> has a text output widget and [b]0[/b] otherwise.
 		The form with no parameters works on the current window. If the specified window
 		doesn't exist then 0 is returned.
 	@seealso:

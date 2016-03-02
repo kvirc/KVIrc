@@ -53,14 +53,16 @@
 		!fn: $fill(<colorname, RGB or HSV array value or [<red>, <green>, <blue>][<hue>, <saturation>, <value>], [opacity], [system color:RGB or HSV])
 		Fills the pixmap with color and opacity.[br]
 		!fn: $resize(<width:integer>,<height:integer>)
-		Resizes the pixmap to w width and h height. Set wh or hg to 0, to have a null pixmap.
+		Resizes the pixmap to w width and h height. Set [b]wh[/b] or [b]hg to [b]0[/b], to have a null pixmap.
 		!fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>])
-		Scales the pixmap or the animation by sx horizontally and sy vertically.
+		Scales the pixmap or the animation by [b]sx[/b] horizontally and [b]sy[/b] vertically.[br]
 		Aspect_ratio values:
-		- IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.
-		- KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.
-		- KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.
-			Default value is KeepAspectRatio.
+		[pre]
+			- IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.
+			- KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.
+			- KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.
+		[/pre]
+		[b]Default value is KeepAspectRatio.[/b][br][br]
 		!fn: $load(<file_name:string>)
 		Load a pixmap from the file <file_name>.
 		!fn: $save(<file_name:string>)
@@ -80,9 +82,7 @@
 	@signals:
 		!sg: $frameChanged()
 		This signal is emitted by the default implementation of [classfnc]$frameChangedEvent[/classfnc]().[br]
-
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_pixmap,"pixmap","object")
 

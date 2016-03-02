@@ -90,15 +90,14 @@ QPixmap * KviKvsScriptWindowWindow::myIconPtr()
 	@description:
 		This class represents a window in a KVIrc frame.
 		Regardless of the parent object passed, the window will be always
-		a "physical" child of the frame window: you can't embed a window object
-		inside a widget or another window. The parent object will just "own" this
+		a [i]physical[/i] child of the frame window: you can't embed a window object
+		inside a widget or another window. The parent object will just [i]own[/i] this
 		window object and eventually destroy it when it dies.
 		This class can manage only a single central child widget that must
 		be set with $setCentralWidget().
-		The central widget MUST be set before you initially call show()
+		The central widget [b]must[/b] be set before you initially call show()
 	@functions:
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_window,"window","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_window,setWindowTitle)

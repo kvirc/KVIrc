@@ -72,13 +72,13 @@ namespace KviKvsCoreFunctions
 			window ID is returned (0).[br]
 			If no <irc context id> is specified, then
 			the application active window is returned (the window
-			that currently has the input focus). Note that in this
+			that currently has the input focus).[br][br]Note that in this
 			case the returned window may also belong to another IRC
 			context or be not bound to any IRC context at all.
 			In some extreme cases you may even get a window that
 			has no output widget and thus has its output redirected.
-			Using the "global" active window should be used only
-			for communicating something REALLY urgent (and maybe
+			Using the [i]global[/i] active window should be used only
+			for communicating something [b]really[/b] urgent (and maybe
 			unrelated to a specific IRC connection) to the user.
 		@seealso:
 			[fnc]$window[/fnc]
@@ -345,8 +345,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: b
 		@type:
@@ -371,8 +369,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Bold)));
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: base64toAscii
@@ -406,8 +402,6 @@ namespace KviKvsCoreFunctions
 		KviCString::freeBuffer(buf);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: boolean
@@ -463,8 +457,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: certificate
 		@type:
@@ -480,29 +472,29 @@ namespace KviKvsCoreFunctions
 			Some queries can accept an optional parameter <param1>.[br]
 			Available query strings are:[br]
 			[ul]
-			[li]signatureType[/li]
-			[li]signatureContents[/li]
-			[li]subjectCountry[/li]
-			[li]subjectStateOrProvince[/li]
-			[li]subjectLocality[/li]
-			[li]subjectOrganization[/li]
-			[li]subjectOrganizationalUnit[/li]
-			[li]subjectCommonName[/li]
-			[li]issuerCountry[/li]
-			[li]issuerStateOrProvince[/li]
-			[li]issuerLocality[/li]
-			[li]issuerOrganization[/li]
-			[li]issuerOrganizationalUnit[/li]
-			[li]issuerCommonName[/li]
-			[li]publicKeyBits[/li]
-			[li]publicKeyType[/li]
-			[li]serialNumber[/li]
-			[li]pemBase64[/li]
-			[li]version[/li]
-			[li]fingerprintIsValid[/li]
-			[li]fingerprintDigestId[/li]
-			[li]fingerprintDigestStr[/li]
-			[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
+				[li]signatureType[/li]
+				[li]signatureContents[/li]
+				[li]subjectCountry[/li]
+				[li]subjectStateOrProvince[/li]
+				[li]subjectLocality[/li]
+				[li]subjectOrganization[/li]
+				[li]subjectOrganizationalUnit[/li]
+				[li]subjectCommonName[/li]
+				[li]issuerCountry[/li]
+				[li]issuerStateOrProvince[/li]
+				[li]issuerLocality[/li]
+				[li]issuerOrganization[/li]
+				[li]issuerOrganizationalUnit[/li]
+				[li]issuerCommonName[/li]
+				[li]publicKeyBits[/li]
+				[li]publicKeyType[/li]
+				[li]serialNumber[/li]
+				[li]pemBase64[/li]
+				[li]version[/li]
+				[li]fingerprintIsValid[/li]
+				[li]fingerprintDigestId[/li]
+				[li]fingerprintDigestStr[/li]
+				[li]fingerprintContents * accepts parameter interpreted as [i]digest name[/i][/li]
 			[/ul]
 		@seealso:
 			[fnc]$str.evpSign[/fnc]
@@ -588,11 +580,11 @@ namespace KviKvsCoreFunctions
 			<channel name> and bound to the connection specified by
 			<irc context id>[br]
 			If no window matches the specified name or connection, an invalid
-			window ID is returned (0).[br]
+			window ID is returned [b]0[/b].[br]
 			If no <irc context id> is specified, this function looks for
 			the channel in the current connection context (if any).[br]
 			If no <channel name> is specified, this function returns the current
-			channel window ID, if executed in a channel, else 0.[br]
+			channel window ID, if executed in a channel, and [b]0[/b] otherwise.[br]
 		@seealso:
 			[fnc]$window[/fnc],
 			[fnc]$query[/fnc],
@@ -638,8 +630,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: char
 		@type:
@@ -674,8 +664,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: classdefined
 		@type:
@@ -687,7 +675,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$classdefined(<class_name>)
 		@description:
-			Returns 1 if the class <class_name> is defined, else 0.
+			Returns [b]1[/b] if the class <class_name> is defined, and [b]0[/b] otherwise.
 	*/
 
 	KVSCF(classDefined)
@@ -701,8 +689,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setBoolean(KviKvsKernel::instance()->objectController()->lookupClass(szClassName) != 0);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: console
@@ -748,8 +734,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: context
 		@type:
@@ -765,17 +749,17 @@ namespace KviKvsCoreFunctions
 			the specified <server> and local user's <nickname>.[br] This function can
 			find only connected IRC contexts.
 			If no context matches the server and nickname, and invalid
-			[b]IRC context ID[/b] is returned (0).[br]
+			[b]IRC context ID[/b] is returned [b]0[/b].[br]
 			If <server> is an empty string, the first context that matches
 			the specified nickname is returned. If <nickname> is an empty string,
 			the first context that uses the specified server is returned.
 			If both parameters are missing this function returns the
-			id of the current IRC context, or '0' if the
+			id of the current IRC context, or [b]0[/b] if the
 			window that this call is executed in is not bound to any IRC context.
 			Please note that in this last case you may find an [b]IRC context[/b]
-			that is 'not connected'.
+			that is [i]not connected[/i].
 			This can only happen if the current window is a console that is
-			in the "idle" state, with no connection established yet.[br]
+			in the [i]idle[/i] state, with no connection established yet.[br]
 			It is a good idea to take a look at the
 			[doc:window_naming_conventions]window naming conventions[/doc].
 		@seealso:
@@ -801,8 +785,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setInteger(cons ? cons->context()->id() : 0);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: countStatusBarItems
@@ -834,8 +816,6 @@ namespace KviKvsCoreFunctions
                 return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: cr
 		@type:
@@ -861,8 +841,8 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
+	// The formatting of the table contents has to remain this way (i.e. long lines), 
+	// else it adds long spaces between words in same sentence which looks awful on screen + harder to read.
 	/*
 		@doc: date
 		@type:
@@ -875,58 +855,43 @@ namespace KviKvsCoreFunctions
 			<string> $date(<format:string>[,<unixtime:integer>])
 		@description:
 			Returns the string representation of <unixtime> or
-			of the current time if <unixtime> is not given,
-			based on <format>.[br]
+			of the current time if <unixtime> is not given, based on <format>.[br]
 			The <format string> should contain a set of characters
 			that will be transformed according to the following rules:[br]
-			[br]
 			[table]
-			[tr][td][b]a[/b][/td][td]The abbreviated weekday name according to the current locale.[/td][/tr]
-			[tr][td][b]A[/b][/td][td]The full weekday name according to the current locale.[/td][/tr]
-			[tr][td][b]b[/b][/td][td]The abbreviated month name according to the current locale.[/td][/tr]
-			[tr][td][b]B[/b][/td][td]The full month name according to the current locale.[/td][/tr]
-			[tr][td][b]c[/b][/td][td]The preferred date and time representation for the current locale.[/td][/tr]
-			[tr][td][b]C[/b][/td][td]The century number (year/100) as a 2-digit integer. (SU)[/td][/tr]
-			[tr][td][b]d[/b][/td][td]The day of the month as a decimal number (range 01 to 31).[/td][/tr]
-			[tr][td][b]D[/b][/td][td]Equivalent to m/d/y.[/td][/tr]
-			[tr][td][b]e[/b][/td][td]Like d, the day of the month as a decimal number, but a leading
-			zero is replaced by a space. (SU)[/td][/tr]
-			[tr][td][b]F[/b][/td][td]Equivalent to Y-m-d (the ISO 8601 date format). (C99)[/td][/tr]
-			[tr][td][b]h[/b][/td][td]Equivalent to b.[/td][/tr]
-			[tr][td][b]H[/b][/td][td]The hour as a decimal number using a 24-hour clock (range 00 to 23).[/td][/tr]
-			[tr][td][b]I[/b][/td][td]The hour as a decimal number using a 12-hour clock (range 01 to 12).[/td][/tr]
-			[tr][td][b]j[/b][/td][td]The day of the year as a decimal number (range 001 to 366).[/td][/tr]
-			[tr][td][b]k[/b][/td][td]The hour (24-hour clock) as a decimal number (range 0 to 23); sin-
-			gle digits are preceded by a blank. (See also H.)[/td][/tr]
-			[tr][td][b]l[/b][/td][td]The hour (12-hour clock) as a decimal number (range 1 to 12); sin-
-			gle digits are preceded by a blank. (See also I.)[/td][/tr]
-			[tr][td][b]m[/b][/td][td]The month as a decimal number (range 01 to 12).[/td][/tr]
-			[tr][td][b]M[/b][/td][td]The minute as a decimal number (range 00 to 59).[/td][/tr]
-			[tr][td][b]n[/b][/td][td]A newline character. (SU)[/td][/tr]
-			[tr][td][b]p[/b][/td][td]Either  `AM' or `PM' according to the given time value, or the cor-
-			responding strings for the current locale.  Noon is treated as `pm' and midnight as `am'.[/td][/tr]
-			[tr][td][b]r[/b][/td][td]The time in a.m. or p.m. notation.  In the  POSIX  locale  this  is
-			equivalent to `I:M:S p'.[/td][/tr]
-			[tr][td][b]s[/b][/td][td]The number of seconds  since  the  Epoch,  i.e.,  since  1970-01-01
-			00:00:00 UTC.[/td][/tr]
-			[tr][td][b]S[/b][/td][td]The second as a decimal number (range 00 to 60).  (The range is up
-			to 60 to allow for occasional leap seconds.)[/td][/tr]
-			[tr][td][b]t[/b][/td][td]A tab character.[/td][/tr]
-			[tr][td][b]T[/b][/td][td]The time in 24-hour notation (H:M:S). (SU)[/td][/tr]
-			[tr][td][b]u[/b][/td][td]The day of the week as a decimal, range 1 to  7,  Monday  being  1.
-			See also w.[/td][/tr]
-			[tr][td][b]V[/b][/td][td]The ISO 8601:1988 week number of the current year as a decimal num-
-			ber, range 01 to 53, where week 1 is the first  week  that  has  at
-			least  4 days in the current year, and with Monday as the first day
-			of the week. See also U and W.[/td][/tr]
-			[tr][td][b]w[/b][/td][td]The day of the week as a decimal, range 0 to  6,  Sunday  being  0.[/td][/tr]
-			[tr][td][b]W[/b][/td][td]The week number of the current year as a decimal number, range 00
-			to 53, starting with the first Monday as the first day of week  01.[/td][/tr]
-			[tr][td][b]y[/b][/td][td]The year as a decimal number without a century (range 00 to 99).[/td][/tr]
-			[tr][td][b]Y[/b][/td][td]The year as a decimal number including the century.[/td][/tr]
-			[tr][td][b]z[/b][/td][td]The   time-zone   as  hour  offset  from  GMT.   Required  to  emit
-              RFC822-conformant dates (using "a, d b Y H:M:S z").[/td][/tr]
-			[tr][td][b]Z[/b][/td][td]The time zone or name or abbreviation (not implemented yet).[/td][/tr]
+				[tr][td][b]a[/b][/td][td]The abbreviated weekday name according to the current locale.[/td][/tr]
+				[tr][td][b]A[/b][/td][td]The full weekday name according to the current locale.[/td][/tr]
+				[tr][td][b]b[/b][/td][td]The abbreviated month name according to the current locale.[/td][/tr]
+				[tr][td][b]B[/b][/td][td]The full month name according to the current locale.[/td][/tr]
+				[tr][td][b]c[/b][/td][td]The preferred date and time representation for the current locale.[/td][/tr]
+				[tr][td][b]C[/b][/td][td]The century number (year/100) as a 2-digit integer. (SU)[/td][/tr]
+				[tr][td][b]d[/b][/td][td]The day of the month as a decimal number (range 01 to 31).[/td][/tr]
+				[tr][td][b]D[/b][/td][td]Equivalent to m/d/y.[/td][/tr]
+				[tr][td][b]e[/b][/td][td]Like d, the day of the month as a decimal number, but a leading zero is replaced by a space. (SU)[/td][/tr]
+				[tr][td][b]F[/b][/td][td]Equivalent to Y-m-d (the ISO 8601 date format). (C99)[/td][/tr]
+				[tr][td][b]h[/b][/td][td]Equivalent to b.[/td][/tr]
+				[tr][td][b]H[/b][/td][td]The hour as a decimal number using a 24-hour clock (range 00 to 23).[/td][/tr]
+				[tr][td][b]I[/b][/td][td]The hour as a decimal number using a 12-hour clock (range 01 to 12).[/td][/tr]
+				[tr][td][b]j[/b][/td][td]The day of the year as a decimal number (range 001 to 366).[/td][/tr]
+				[tr][td][b]k[/b][/td][td]The hour (24-hour clock) as a decimal number (range 0 to 23); single digits are preceded by a blank. See also [b]H[/b].[/td][/tr]
+				[tr][td][b]l[/b][/td][td]The hour (12-hour clock) as a decimal number (range 1 to 12); single digits are preceded by a blank. See also [b]I[/b].[/td][/tr]
+				[tr][td][b]m[/b][/td][td]The month as a decimal number (range 01 to 12).[/td][/tr]
+				[tr][td][b]M[/b][/td][td]The minute as a decimal number (range 00 to 59).[/td][/tr]
+				[tr][td][b]n[/b][/td][td]A newline character. (SU)[/td][/tr]
+				[tr][td][b]p[/b][/td][td]Either [b]AM[/b] or [b]PM[/b] according to the given time value, or the corresponding strings for the current locale. Noon is treated as [b]pm[/b] and midnight as [b]am[/b].[/td][/tr]
+				[tr][td][b]r[/b][/td][td]The time in a.m. or p.m. notation. In the POSIX locale this is	equivalent to [b]I:M:S p[/b].[/td][/tr]
+				[tr][td][b]s[/b][/td][td]The number of seconds since the Epoch, i.e., since 1970-01-01 00:00:00 UTC.[/td][/tr]
+				[tr][td][b]S[/b][/td][td]The second as a decimal number (range 00 to 60). (The range is up to 60 to allow for occasional leap seconds.)[/td][/tr]
+				[tr][td][b]t[/b][/td][td]A tab character.[/td][/tr]
+				[tr][td][b]T[/b][/td][td]The time in 24-hour notation (H:M:S). (SU)[/td][/tr]
+				[tr][td][b]u[/b][/td][td]The day of the week as a decimal, range 1 to 7, Monday being 1. See also [b]w[/b].[/td][/tr]
+				[tr][td][b]V[/b][/td][td]The ISO 8601:1988 week number of the current year as a decimal number, range 01 to 53,	where week 1 is the first week that has at least 4 days in the current year, and with Monday as the first day of the week. See also [b]U[/b] and [/b]W.[/td][/tr]
+				[tr][td][b]w[/b][/td][td]The day of the week as a decimal, range 0 to 6, Sunday being 0.[/td][/tr]
+				[tr][td][b]W[/b][/td][td]The week number of the current year as a decimal number, range 00 to 53, starting with the first Monday as the first day of week 01.[/td][/tr]
+				[tr][td][b]y[/b][/td][td]The year as a decimal number without a century (range 00 to 99).[/td][/tr]
+				[tr][td][b]Y[/b][/td][td]The year as a decimal number including the century.[/td][/tr]
+				[tr][td][b]z[/b][/td][td]The time-zone as hour offset from GMT. Required to emit RFC822-compliant dates (using [i]a, d b Y H:M:S z[/i]).[/td][/tr]
+				[tr][td][b]Z[/b][/td][td]The time zone or name or abbreviation (not implemented yet).[/td][/tr]
 			[/table]
 		@examples:
 			[example]
@@ -934,8 +899,8 @@ namespace KviKvsCoreFunctions
 			[/example]
 		@seealso:
 			[fnc]$unixtime[/fnc], [fnc]$hptimestamp[/fnc]
-        @author:
-            Kai Wasserbäch <debian@carbon-project.org>
+		@author:
+			Kai Wasserbäch <debian@carbon-project.org>
 	*/
 
 	KVSCF(date)
@@ -951,7 +916,7 @@ namespace KviKvsCoreFunctions
 		// derived from KDateTime (not a copy, but the structure is similar,
 		// which isn't surprising), but limited/extended to the required set of
 		// functionality.
-		// The reason for this is platform independency.
+		// The reason for this is platform independent.
 		QDateTime qDt;
 		QString szFmtTime;
 		int iLength, iVal, iTemp, iLocalTzH, iLocalTzM, iUtcH, iUtcM, iTzOffset;
@@ -1154,8 +1119,6 @@ namespace KviKvsCoreFunctions
 			return true;
 		}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: escape
 		@type:
@@ -1167,8 +1130,8 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<string> $escape(<text:string>)
 		@description:
-			In KVS some characters in a string have special meanings: % marks the start of a variable name, $ the start of a function name, etc..[br]
-			Sometimes you could need to escape them using a \ character to avoid KVIrc from interpreting the special meaning of these characters:
+			In KVS some characters in a string have special meanings: [b]%[/b] marks the start of a variable name, [b]$[/b] the start of a function name, etc..[br]
+			Sometimes you could need to escape them using a [b]\[/b] character to avoid KVIrc from interpreting the special meaning of these characters:
 			this function will to the dirty job for you, returning a correctly kvs-escaped version of the string passed as a parameter.[br]
 		@seealso:
 			[cmd]eval[/cmd]
@@ -1188,8 +1151,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: false
 		@type:
@@ -1202,11 +1163,11 @@ namespace KviKvsCoreFunctions
 			<boolean> $false
 		@description:
 			Evaluates to the false boolean constant. False
-			is equivalent to the integer 0 too. This function/constant
+			is equivalent to the integer [b]0[/b] too. This function/constant
 			is useful to keep your code readable: when you
 			have a variable that can assume boolean values it's
 			nicer to use [fnc]$true[/fnc] and $false instead of
-			the integer constants 1 and 0. The reader will
+			the integer constants [b]1[/b] and [b]0[/b]. The reader will
 			understand immediately that the variable simply can't
 			assume any other value.
 		@examples:
@@ -1228,8 +1189,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: features
 		@type:
@@ -1249,14 +1208,14 @@ namespace KviKvsCoreFunctions
 			The form with the [test_feature] parameter returns true if and only if [test_feature] is available.[br]
 		@examples:
 			[example]
-			%myfeats[] = $features
-			[cmd]echo[/cmd] %myfeats[]
-			%i = %myfeats[]#
-			[cmd]while[/cmd](%i > 0)
-			{
-				[cmd]echo[/cmd] "Supporting feature %myfeats[%i]"
-				%i--;
-			}
+				%myfeats[] = $features
+				[cmd]echo[/cmd] %myfeats[]
+				%i = %myfeats[]#
+				[cmd]while[/cmd](%i > 0)
+				{
+					[cmd]echo[/cmd] "Supporting feature %myfeats[%i]"
+					%i--;
+				}
 			[/example]
 			Nearly the same loop, just really shorter:
 			[example]
@@ -1265,11 +1224,11 @@ namespace KviKvsCoreFunctions
 			[/example]
 			You can test for a specific feature in the following way:
 			[example]
-			[cmd]if[/cmd]($features("SSL"))[cmd]echo[/cmd] "Yes! SSL is available";
+				[cmd]if[/cmd]($features("SSL"))[cmd]echo[/cmd] "Yes! SSL is available";
 			[/example]
-			If used in "non-array" context it returns just a comma separated list of entries:[br]
+			If used in [i]non-array[/i] context it returns just a comma separated list of entries:[br]
 			[example]
-			[cmd]echo[/cmd] $features
+				[cmd]echo[/cmd] $features
 			[/example]
 		@seealso:
 			[fnc]$version[/fnc]
@@ -1374,8 +1333,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: firstconnectedconsole
 		@type:
@@ -1402,8 +1359,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: flatten
 		@type:
@@ -1416,7 +1371,7 @@ namespace KviKvsCoreFunctions
 			<array> $flatten(<data1:variant>[,<data2:variant>[,...]])
 		@description:
 			Returns an array of items built from the passed arguments
-			with the following rules:[br]
+			with the following rules:
 			[ul]
 				[li]If an argument is a scalar value then the argument itself is appended to the result.[/li]
 				[li]If an argument is an array then each contained item is appended to the result.[/li]
@@ -1475,8 +1430,6 @@ namespace KviKvsCoreFunctions
 		}
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: fmtlink

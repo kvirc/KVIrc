@@ -68,7 +68,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 		any color and/or font specification since the notifier is
 		skinnable and you don't know which color will result in a visible text.
 		[b]Please note that the user can forcibly disable the notifier
-		for a limited period of time (a sort of "don't bug me" option).[/b]
+		for a limited period of time (a sort of [i]don't bug me[/i] option).[/b]
 	@switches:
 		!sw: -n | --noanim
 		Do not animate
@@ -111,6 +111,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 			notifier.message -t=10 This message will be shown only for 10 seconds
 		[/example]
 */
+
 static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 {
 	QString szMessage;
@@ -177,10 +178,11 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 	@description:
 		Hide the notifier window
 		[b]Please note that the user can forcibly disable the notifier
-		for a limited period of time (a sort of "don't bug me" option).[/b]
+		for a limited period of time (a sort of [i]don't bug me[/i] option).[/b]
 	@seealso:
 		[cmd]notifier.show[/cmd] [cmd]notifier.message[/cmd] [fnc]$notifier.isEnabled[/fnc]
 */
+
 static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 {
 	if(g_pNotifierWindow)
@@ -207,10 +209,11 @@ static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 		not animated.[br]
 		The notifier is shown [b]only[/b] if it contains some messages.
 		[b]Please note that the user can forcibly disable the notifier
-		for a limited period of time (a sort of "don't bug me" option).[/b]
+		for a limited period of time (a sort of [i]don't bug me[/i] option).[/b]
 	@seealso:
 		[cmd]notifier.hide[/cmd] [cmd]notifier.message[/cmd] [fnc]$notifier.isEnabled[/fnc]
 */
+
 static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
 	if(!g_pNotifierWindow)
@@ -231,22 +234,23 @@ static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	@title:
 		$notifier.isEnabled
 	@short:
-		Returns 1 if the notifier window is enabled
+		Returns [b]1[/b] if the notifier window is enabled
 	@syntax:
 		<boolean> $notifier.isEnabled
 	@description:
-		Returns 1 if the notifier window is enabled and 0 otherwise.
-		The user can forcibly disable the notifier as a sort of "don't bug me"
+		Returns [b]1[/b] if the notifier window is enabled and [b]0[/b] otherwise.
+		The user can forcibly disable the notifier as a sort of [i]don't bug me[/i]
 		feature for a limited period of time. When the notifier
 		is disabled the messages sent to it will not be shown.[br]
 		The only method that you (the scripter) can use to forcibly
 		re-enable the notifier is to unload the module and
-		reload it...but [b]don't do it[/b] :)[br]
+		reload it, but [b]don't do it[/b] :)[br]
 		There is also a global option that allows forcibly disabling
 		the notifier forever, this option could be overridden with [cmd]option[/cmd]
-		instead.. but again [b]don't do it[/b] :)[br]
+		instead, but again [b]don't do it[/b] :)[br]
 
 */
+
 static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 {
 	bool bCheck;

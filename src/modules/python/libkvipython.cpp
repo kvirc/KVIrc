@@ -517,7 +517,7 @@ static bool python_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	@syntax:
 		$python.isAvailable
 	@description:
-		Returns 1 if the Python scripting support is available and 0 otherwise.
+		Returns [b]1[/b] if the Python scripting support is available and [b]0[/b] otherwise.
 */
 static bool python_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)
 {

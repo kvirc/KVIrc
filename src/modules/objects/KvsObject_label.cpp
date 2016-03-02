@@ -88,7 +88,6 @@ const int frame_cod[] = {
 
 #define frame_num	(sizeof(frame_tbl) / sizeof(frame_tbl[0]))
 
-
 /*
 	@doc:	label
 	@keyterms:
@@ -130,14 +129,14 @@ const int frame_cod[] = {
 		This function sets alignment flags, given as parameters, for
 		this label. Valid flags are:
 		[pre]
-		Right     - Text is aligned to right border[br]
-		Left      - Text is aligned to left border[br]
-		Top       - Text is aligned to the top border[br]
-		Bottom    - Text is aligned to the bottom border[br]
-		HCenter   - Text is horizontally centered[br]
-		VCenter   - Text is vertically centered[br]
-		Center    - Equals HCenter + VCenter[br]
-		Justify   - Text is spaced apart to cover available room[br]
+			Right     - Text is aligned to right border[br]
+			Left      - Text is aligned to left border[br]
+			Top       - Text is aligned to the top border[br]
+			Bottom    - Text is aligned to the bottom border[br]
+			HCenter   - Text is horizontally centered[br]
+			VCenter   - Text is vertically centered[br]
+			Center    - Equals HCenter + VCenter[br]
+			Justify   - Text is spaced apart to cover available room[br]
 		[/pre]
 		It is obvious that you can not set [i]Right[/i]
 		and [i]Left[/i] simultaneously - this will [b]not[/b]
@@ -156,22 +155,17 @@ const int frame_cod[] = {
 		The flags determine the shape or shadow of the
 		label's frame. Valid shape flags are:[br]
 		[pre]
-		NoFrame   - Draw no frame. You shouldn't specify a shadow when
-		using this.[br]
-		Box       - Draws a rectangular box. Its borders can be
-		[i]Raised[/i] or [i]Sunken[/i][br]
-		Panel     - Draws a rectangular panel which can be
-		[i]Raised[/i] or [i]Sunken[/i][br]
-		WinPanel  - Similar to [i]Panel[/i], but is more in Win95 style[br]
-		Hline     - Draws a horizontal line that frames nothing (useful as separator)
+			NoFrame   - Draw no frame. You shouldn't specify a shadow when using this.[br]
+			Box       - Draws a rectangular box. Its borders can be [i]Raised[/i] or [i]Sunken[/i][br]
+			Panel     - Draws a rectangular panel which can be [i]Raised[/i] or [i]Sunken[/i][br]
+			WinPanel  - Similar to [i]Panel[/i], but is more in Win95 style[br]
+			Hline     - Draws a horizontal line that frames nothing (useful as separator)
 		[/pre]
 		Valid shadow flags are:[br]
 		[pre]
-		Plain     - No 3D effect (draws using foreground color)[br]
-		Raised    - Makes the label look like it was raised above the
-		parent widget[br]
-		Sunken    - Makes the label look like it was [i]pushed[/i] inside
-		the parent widget[br]
+			Plain     - No 3D effect (draws using foreground color)[br]
+			Raised    - Makes the label look like it was raised above the parent widget[br]
+			Sunken    - Makes the label look like it was [i]pushed[/i] inside the parent widget[br]
 		[/pre]
 		!fn: $setImage(<image_id>)
 		Sets the image to be displayed on this label.
@@ -180,7 +174,6 @@ const int frame_cod[] = {
 		the explanation of the <image_id> parameter.
 
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_label,"label","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,setText)

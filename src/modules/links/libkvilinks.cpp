@@ -47,14 +47,14 @@ KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
 	@description:
 		Opens a links window attached to the current IRC context.[br]
 		The links window handles the RPL_LINKS server replies and shows
-		them in a Tree-View form: this is useful in visualizing the
+		them in a [b]tree-view[/b] form: this is useful in visualizing the
 		current network connections.[br]
 		Please note that the total number of links received (and the
 		total count of servers displayed when all the links have been received)
 		may actually be less than the real number of IRC servers in the network.
 		Servers that contain a wildcard in their name often act as gateways (hubs)
-		for a "local IRC network"; if you're requesting links from a server that is
-		external to the gateway, the servers internal to the network "behind the gateway"
+		for a [i]local IRC network[/i]; if you're requesting links from a server that is
+		external to the gateway, the servers internal to the network [i]behind the gateway[/i]
 		will not be shown; in the extreme case you will see the gateway as leaf node (and it isn't).
 		To see the internal network server tree you might request links from the gateway server.[br]
 */

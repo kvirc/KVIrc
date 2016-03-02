@@ -197,10 +197,10 @@ const char * const actions_tbl[] = {
 		Finds the specified string, in the page, using the given options.
 		Valid flags are:
 		[pre]
-		FindBackward		- Searches backwards instead of forwards;
-		FindCaseSensitively	- Changes the behaviour to a case sensitive find operation.
-		FindWrapsAroundDocument	- Restart from the beginning of the document if the end was reached and the text was not found.
-		HighlightAllOccurrences	- Highlights all existing occurrences.
+			FindBackward		- Searches backwards instead of forwards;
+			FindCaseSensitively	- Changes the behaviour to a case sensitive find operation.
+			FindWrapsAroundDocument	- Restart from the beginning of the document if the end was reached and the text was not found.
+			HighlightAllOccurrences	- Highlights all existing occurrences.
 		[/pre]
 		!fn: <array> $frames()
 		Returns an array containing the names of the document frames.
@@ -233,9 +233,9 @@ const char * const actions_tbl[] = {
 		Returns the value of the style with the given name using the specified strategy. If a style with name does not exist, an empty string is returned.
 		Possible value for <style_resolve_strategy> are:
 		[pre]
-		CascadedStyle  - the property's value is determined using the rules defined in the document's stylesheet. This is the default strategy.
-		InlineStyle    - the property's value is determined by element definition, without respecting CSS rules.
-		ComputedStyle  - the property's value is determined by the style property resolved from the environment.
+			CascadedStyle  - the property's value is determined using the rules defined in the document's stylesheet. [b]This is the default strategy[/b].
+			InlineStyle    - the property's value is determined by element definition, without respecting CSS rules.
+			ComputedStyle  - the property's value is determined by the style property resolved from the environment.
 		[/pre]
 		!fn: pixmap $makePreview()
 		Returns a 212x142 thumbnail of the current webView constants.
@@ -304,7 +304,6 @@ const char * const actions_tbl[] = {
 		!sg: downloadCompleted()
 		This signal is emitted by the default implementation of [classfnc:webview]downloadCompletedEvent[/classfnc]().
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
 

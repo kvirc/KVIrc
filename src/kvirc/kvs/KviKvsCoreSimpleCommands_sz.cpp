@@ -181,7 +181,7 @@ namespace KviKvsCoreSimpleCommands
 			The <server> is added to the server list (if not already
 			there) and set as current.[br]
 			[br]
-			If <server> is in the form "id:<some_string>" then <some_string>
+			If <server> is in the form [i]id:<some_string>[/i] then <some_string>
 			is interpreted as the server's internal ID (specified in the options dialog).
 			This is useful when you need to force KVIrc to choose between multiple
 			server entries with the same hostname and port stored in the database.[br]
@@ -191,15 +191,15 @@ namespace KviKvsCoreSimpleCommands
 			and the connection attempt will stop.
 			[br]
 			If <server> doesn't seem to be a valid IP address or hostname (i.e. it contains no dots)
-			and it doesn't look to be in the form "id:<some_string>" then
+			and it doesn't look to be in the form [i]id:<some_string>[/i] then
 			it is assumed to be a network name and if such a network is found
 			in the server list then the best server for that network is contacted.
 			(KVIrc tries to guess the round-robin (random) servers first).[br]
-			This behaviour can be forced by adding the "net:" prefix to the <server>
+			This behavior can be forced by adding the [i]net:[/i] prefix to the <server>
 			(so it will work even if the network name contains a dot).[br]
 			[br]
 			The connection is attempted in the current IRC context. If there is already
-			a connection in progress then it is "brutally" terminated.[br]
+			a connection in progress then it is [i]brutally[/i] terminated.[br]
 		@examples:
 			[example]
 				server irc.tin.it
@@ -362,7 +362,7 @@ namespace KviKvsCoreSimpleCommands
 			menu bar text for the new popup.[br]
 			If a popup menu with the same <visible_text> or the same <menu_name> already exists in
 			the current frame, it is removed first.[br]
-			<visible_text> can optionally contain the "&" character to identify
+			<visible_text> can optionally contain the '&' character to identify
 			the popup menu accelerator.[br]
 			[menu_name], if given, must be a valid name of a popup menu created earlier
 			with [cmd]defpopup[/cmd] (or the popup editor).[br]
@@ -576,7 +576,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Initializes the random number generator
 		@description:
-			Initializes the random number generator "seeding" it with
+			Initializes the random number generator [i]seeding[/i] it with
 			<seed> which must be an integer. If no <seed> is passed it defaults to 1.
 			Sequences of random numbers can be repeated by using the
 			same <seed> value.
@@ -1108,12 +1108,12 @@ namespace KviKvsCoreSimpleCommands
 			Requests user information
 		@description:
 			Requests information about an IRC user specified by <nickname>.[br]
-			Whowas requests "history" records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
+			Whowas requests [i]history[/i] records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			[comment]# Query past info about Pragma[/comment]
-			whowas Pragma
+				[comment]# Query past info about Pragma[/comment]
+				whowas Pragma
 			[/example]
 		@seealso:
 			[cmd]whois[/cmd]

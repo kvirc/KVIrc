@@ -47,496 +47,476 @@
 
 #include <time.h>
 
-/*
-	@doc: objects
-	@title:
-		Object scripting
-	@short:
-		Object scripting overview
-	@keyterms:
-		objects, object scripting, complex data structures
-	@body:
-		[big]Introduction[/big]
-
-		The KVIrc scripting language is not object oriented in nature.
-		Anyway, objects are a highlevel abstraction that allow
-		to write complex code in a "clean" way.
-		So I've added at least some pseudo-object support.[br][br]
-
-		[big]Basic concepts[/big]
-
-		Objects are arranged in tree structures.
-		Each object that you create is either toplevel object or a child
-		of another object. A toplevel object is a parentless one.
-		Obviously all objects can have child objects.[br][br]
-
-		When an object is destroyed, all its child objects are also destroyed.
-		The toplevel objects are automatically destroyed when KVIrc quits.
-		The objects are global to the entire application (this is different
-		from previous KVIrc releases where the objects were local
-		to the current frame window and arranged in a single tree
-		with a builtin root object).[br][br]
-
-		Each object is an instance of a class that defines its features.
-		Each object has also a name, that is not necessary unique and is assigned to
-		by the programmer; the name is just a mnemonic expedient, and
-		you may also not need it.[br][br]
-
-		Each object is identified by an [b]OPAQUE UNIQUE ID[/b].
-		The ID is assigned by KVIrc and can be held in any variable.
-		You can think the object ID as a "handle for the object" or the object's pointer.
-		Any action performed on the object will require its ID.[br][br]
-
-		[big]Creation and destruction[/big]
-
-		To create an object you must use the [fnc]$new[/fnc]()
-		function. [fnc]$new[/fnc]() requires three parameters:[br]
-		- The object class (more about object classes later in this document)[br]
-		- The ID of the parent object (this can be 0 for toplevel objects).[br]
-		- The object name (eventually empty)[br]
-		[example]
-			%myobject = [fnc]$new[/fnc]([class]object[/class],0,theName)
-		[/example]
-		[fnc]$new[/fnc]() returns the ID of the newly created object, or
-		the STRING "0" if the object creation fails
-		(it is a string because the object ID's are generally strings, and 0 is an "invalid object ID").
-		In well written scripts it is not common that the object creation fails, anyway
-		you can check if the creation has failed in the following way:[br]
-		[example]
-			[cmd]if[/cmd](%myobject)[cmd]echo[/cmd] "Object created!"
-			else [cmd]echo[/cmd] "Object creation failed!"
-		[/example]
-		You can also test the object ID's for equality:[br]
-		[example]
-			[cmd]if[/cmd](%myobject == %anotherobject)[cmd]echo[/cmd] "This is the same object!";
-		[/example]
-		The parent object ID is optional, if not specified it is assumed to be 0.
-		The object name is optional, but it may help you later in finding the object.[br][br]
-
-		To destroy an object use the [cmd]delete[/cmd] command. (In previous versions
-		this command was named "destroy" and delete is currently aliased to that name too).[br]
-		[example]
-			[cmd]delete[/cmd] %myobject
-		[/example]
-		If the destroyed object has child objects, these are destroyed too.[br][br]
-
-		[big]Fields: objects as pseudo-structures[/big]
-
-		All the objects can contain variable fields.
-		You can set an object's field by using the object scope operator "-&gt;":[br]
-		[example]
-			%myobject-&gt;%fieldVariable = dataString
-		[/example]
-		To unset a field set it with empty data string (just like with a normal variable).
-		To retrieve the field data use the object scope operator in the same way:[br]
-		[example]
-			[cmd]echo[/cmd] %myobject-&gt;%fieldVariable
-		[/example]
-		The '-&gt;' operator has been stolen from the C language.
-		In the KVIrc scripting language it switches from the global namespace
-		to the object's one.[br]
-		So in the above example %fieldVariable is owned by the object.[br]
-		The first character of the variable name has no special meaning in the
-		object namespace (in the global namespace the variables starting
-		with an uppercase letter are global to the application, the other ones are local
-		to the command sequence). The variable names are completely case insensitive.[br][br]
-
-		Any [doc:operators]operator[/doc] can be used with the object field variables:[br]
-		[example]
-			%myobject-&gt;%fieldVariable = 0
-			%myobject-&gt;%fieldVarialbe ++
-			[cmd]if[/cmd]0(%myobject-&gt;%fieldVariable != 1)[cmd]echo[/cmd] KVIrc is drunk, maybe a reboot will help?
-		[/example]
-		You can simulate C structures "on the fly" by using objects and fields:[br]
-		[example]
-			# Create an user description on the fly
-			%myobj = [fnc]$new[/fnc]([class]object[/class],0,userDescription)
-			# Set the fields
-			%myobj-&gt;%nickname = Pragma
-			%myobj-&gt;%username = daemon
-			%myobj-&gt;%hostname = pippo.pragma.org
-			%myobj-&gt;%info = Pragma goes always sleep too late
-			%myobj-&gt;%info [doc:operators]&lt;&lt;[/doc] and wakes up too late too!
-			# Call an (user defined) alias that stores the data to a file
-			storetofile %myobj
-			# Destroy the object
-			[cmd]delete[/cmd] %myobj
-		[/example]
-		The field variables can be also dictionaries:[br]
-		[example]
-			%theobj-&gt;%field[key] = something
-		[/example]
-		Unlike in C, there is no need to declare object fields.[br]
-		If you have ever used other high level object-oriented languages, you may be used to declaring different types of
-		variables: instance variables, which per definition define an object's state (at least partly) and local variables,
-		which can be used in any function and will be only valid in the very current scope. This does and does not apply
-		to KVI++.[br]
-		Local variables can be used as normal and the scope of those variables will (naturally) be limited to the scope of
-		the function they are defined in.[br]
-		[example]
-			[cmd]class[/cmd](test,[class]object[/class])
-			{
-				test()
+	/*
+		@doc: objects
+		@title:
+			Object scripting
+		@short:
+			Object scripting overview
+		@keyterms:
+			objects, object scripting, complex data structures
+		@body:
+			[big]Introduction[/big]
+			The KVIrc scripting language is not object oriented in nature.
+			Anyway, objects are a highlevel abstraction that allow
+			to write complex code in a [i]clean[/i] way.
+			So I've added at least some pseudo-object support.[br][br]
+			[big]Basic concepts[/big][br]
+			Objects are arranged in tree structures.
+			Each object that you create is either toplevel object or a child
+			of another object. A toplevel object is a parentless one.
+			Obviously all objects can have child objects.
+			[br][br]
+			When an object is destroyed, all its child objects are also destroyed.
+			The toplevel objects are automatically destroyed when KVIrc quits.
+			The objects are global to the entire application (this is different
+			from previous KVIrc releases where the objects were local
+			to the current frame window and arranged in a single tree
+			with a builtin root object).
+			[br][br]
+			Each object is an instance of a class that defines its features.
+			Each object has also a name, that is not necessary unique and is assigned to
+			by the programmer; the name is just a mnemonic expedient, and
+			you may also not need it.
+			[br][br]
+			Each object is identified by an [b]OPAQUE UNIQUE ID[/b].
+			The ID is assigned by KVIrc and can be held in any variable.
+			You can think the object ID as a [i]handle for the object[/i] or the object's pointer.
+			Any action performed on the object will require its ID.
+			[br][br]
+			[big]Creation and destruction[/big]
+			To create an object you must use the [fnc]$new[/fnc]()
+			function. [fnc]$new[/fnc]() requires three parameters:[br]
+			- The object class (more about object classes later in this document)[br]
+			- The ID of the parent object (this can be 0 for toplevel objects).[br]
+			- The object name (eventually empty)[br]
+			[example]
+				%myobject = [fnc]$new[/fnc]([class]object[/class],0,theName)
+			[/example]
+			[fnc]$new[/fnc]() returns the ID of the newly created object, or
+			the STRING [b]0[/b] if the object creation fails
+			(it is a string because the object ID's are generally strings, and 0 is an "invalid object ID").
+			In well written scripts it is not common that the object creation fails, anyway
+			you can check if the creation has failed in the following way:[br]
+			[example]
+				[cmd]if[/cmd](%myobject)[cmd]echo[/cmd] "Object created!"
+				else [cmd]echo[/cmd] "Object creation failed!"
+			[/example]
+			You can also test the object ID's for equality:[br]
+			[example]
+				[cmd]if[/cmd](%myobject == %anotherobject)[cmd]echo[/cmd] "This is the same object!";
+			[/example]
+			The parent object ID is optional, if not specified it is assumed to be 0.
+			The object name is optional, but it may help you later in finding the object.
+			[br][br]
+			To destroy an object use the [cmd]delete[/cmd] command. (In previous versions
+			this command was named [i]destroy[/i] and delete is currently aliased to that name too).[br]
+			[example]
+				[cmd]delete[/cmd] %myobject
+			[/example]
+			If the destroyed object has child objects, these are destroyed too.
+			[br][br]
+			[big]Fields: objects as pseudo-structures[/big]
+			All the objects can contain variable fields.
+			You can set an object's field by using the object scope operator "-&gt;":[br]
+			[example]
+				%myobject-&gt;%fieldVariable = dataString
+			[/example]
+			To unset a field set it with empty data string (just like with a normal variable).
+			To retrieve the field data use the object scope operator in the same way:[br]
+			[example]
+				[cmd]echo[/cmd] %myobject-&gt;%fieldVariable
+			[/example]
+			The '-&gt;' operator has been stolen from the C language.
+			In the KVIrc scripting language it switches from the global namespace
+			to the object's one.[br]
+			So in the above example %fieldVariable is owned by the object.[br]
+			The first character of the variable name has no special meaning in the
+			object namespace (in the global namespace the variables starting
+			with an uppercase letter are global to the application, the other ones are local
+			to the command sequence). The variable names are completely case insensitive.
+			[br][br]
+			Any [doc:operators]operator[/doc] can be used with the object field variables:[br]
+			[example]
+				%myobject-&gt;%fieldVariable = 0
+				%myobject-&gt;%fieldVarialbe ++
+				[cmd]if[/cmd]0(%myobject-&gt;%fieldVariable != 1)[cmd]echo[/cmd] KVIrc is drunk, maybe a reboot will help?
+			[/example]
+			You can simulate C structures [i]on the fly[/i] by using objects and fields:[br]
+			[example]
+				# Create an user description on the fly
+				%myobj = [fnc]$new[/fnc]([class]object[/class],0,userDescription)
+				# Set the fields
+				%myobj-&gt;%nickname = Pragma
+				%myobj-&gt;%username = daemon
+				%myobj-&gt;%hostname = pippo.pragma.org
+				%myobj-&gt;%info = Pragma goes always sleep too late
+				%myobj-&gt;%info [doc:operators]&lt;&lt;[/doc] and wakes up too late too!
+				# Call an (user defined) alias that stores the data to a file
+				storetofile %myobj
+				# Destroy the object
+				[cmd]delete[/cmd] %myobj
+			[/example]
+			The field variables can be also dictionaries:[br]
+			[example]
+				%theobj-&gt;%field[key] = something
+			[/example]
+			Unlike in C, there is no need to declare object fields.[br]
+			If you have ever used other high level object-oriented languages, you may be used to declaring different types of
+			variables: instance variables, which per definition define an object's state (at least partly) and local variables,
+			which can be used in any function and will be only valid in the very current scope. This does and does not apply
+			to KVI++.[br]
+			Local variables can be used as normal and the scope of those variables will (naturally) be limited to the scope of
+			the function they are defined in.[br]
+			[example]
+				[cmd]class[/cmd](test,[class]object[/class])
 				{
-					%test = "will this persist?"
+					test()
+					{
+						%test = "will this persist?"
+					}
+
+					anotherfunc() {
+						[cmd]echo[/cmd] "var: %test"
+					}
 				}
 
-				anotherfunc() {
-					[cmd]echo[/cmd] "var: %test"
-				}
-			}
-
-			%myObject = [fnc]$new[/fnc](test,0)
-			%myObject-&gt;$test()
-			[comment]# Behold! This will only print "var: "![/comment]
-			%myObject-&gt;$anotherfunc()
-		[/example][br]
-		Intance variables, however, which are managed in the object's "field" can be accessed at any time by anyone.
-		[b]Warning:[/b] every script or object is potentially able to change the values of your field variables!
-		They may also add or unset (empty) previously not used or used fields.[br]
-		As earlier said, there is no need to declare object fields, as KVIrc will keep track of them. Even more precisely
-		said, you [b]can not[/b] declare them in the class file itself (some later example will tell you otherwise,
-		just keep in mind to ignore the pseudo code, as it does not reflect how KVI++ is really working in respect of
-		fields.)[br]
-		However, there is one way to declare and define object fields: using the constructor (please see below, if you
-		are interesting in learning about this function), it is possible to "declare" (really only for the human being
-		reading the code) and more important initialize object fields. For more information, see the Constructor section
-		below.[br]
-		Any object can have any field variable; an "unset" field is equivalent to an "empty" field.[br]
-		Note:[br]
-		The KVIrc scripting language is not typed.
-		Any object class (be patient... I'll explain classes in a while) identifier can be stored in any KVIrc variable:
-		it is not possible to find out the object features by "examining" its identifier.
-		This may make the usage of objects a bit "unclear";
-		However, with some experience you will be able to use the objects in a very powerful way.
-		The type-safety can be also simulated by a careful usage of object names;
-		in the above example, the %myobj object was created with the "userDescription" name.
-		The storetofile alias could check the passed object's name and refuse to work
-		if that does not match "userDescription".[br][br]
-
-		A more complex use of fields will be described later in this document.[br][br]
-
-		[big]Member functions[/big]
-
-		Just like in C++, the objects have member functions.
-		For example, the "object" class (again... read on) objects export the [classfnc:object]$name[/classfnc]()
-		and [classfnc:object]$className[/classfnc]() functions.[br]
-		[example]
-			%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
-			[cmd]echo[/cmd] The object's name is %tmp-&gt;[classfnc:object]$name[/classfnc](), the class name is %tmp-&gt;[classfnc:object]$className[/classfnc]()
-			# Destroy the object
-			[cmd]delete[/cmd] %tmp
-		[/example]
-		Another cool function exported by the [class:object]object[/class] class is the
-		[classfnc:object]$children[/classfnc]() function.
-		It returns a comma separated list of child identifiers.[br]
-		[example]
-			%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
-			%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child1)
-			%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child2)
-			%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child3)
-			[cmd]echo[/cmd] The object's child list is: %tmp-&gt;[classfnc:object]$children[/classfnc]()
-			# Destroy the object and the child
-			[cmd]delete[/cmd] %tmp
-		[/example]
-		There are two special functions for each objects: the "constructor" and the "destructor".
-		You will find more information on constructors and destructors later in this document,
-		for now it's enough that you know that these functions are called automatically by KVirc:
-		the constructor is called when the object is created and the destructor is called when the
-		object is being destroyed with [cmd]delete[/cmd].[br][br]
-
-		The object functions can be reimplemented on-the-fly
-		by using the [cmd]privateimpl[/cmd] command: you can simply modify the behaviour of the function
-		by writing your own function body.
-		(This is an uncommon feature: unlike many other languages, you can reimplement object
-		functions at run-time, when the object has been already created.)[br][br]
-
-		A more complex example[br]
-		[example]
-			%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
-			[cmd]foreach[/cmd](%i,1,2,3)
-			{
-				%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child%i)
-				[cmd]privateimpl[/cmd](%tmpchild,destructor){ [cmd]echo[/cmd] Object [fnc]$this[/fnc] ([fnc]$this[/fnc]-&gt;[classfnc:object]$name[/classfnc]()) destroyed; }
-			}
-			[cmd]privateimpl[/cmd](%tmp,destructor)
-			{
-				%count = 0;
-				[cmd]foreach[/cmd](%t,[fnc]$this[/fnc]-&gt;[classfnc:object]$children[/classfnc]())
+				%myObject = [fnc]$new[/fnc](test,0)
+				%myObject-&gt;$test()
+				[comment]# Behold! This will only print "var: "![/comment]
+				%myObject-&gt;$anotherfunc()
+			[/example][br]
+			Instance variables, however, which are managed in the object's [i]field[/i] can be accessed at any time by anyone.
+			[b]Warning:[/b] every script or object is potentially able to change the values of your field variables!
+			They may also add or unset (empty) previously not used or used fields.[br]
+			As earlier said, there is no need to declare object fields, as KVIrc will keep track of them. Even more precisely
+			said, you [b]can not[/b] declare them in the class file itself (some later example will tell you otherwise,
+			just keep in mind to ignore the pseudo code, as it does not reflect how KVI++ is really working in respect of
+			fields.)[br]
+			However, there is one way to declare and define object fields: using the constructor (please see below, if you
+			are interesting in learning about this function), it is possible to [i]declare[/i] (really only for the human being
+			reading the code) and more important initialize object fields. For more information, see the Constructor section
+			below.[br]
+			Any object can have any field variable; an [i]unset[/i] field is equivalent to an [i]empty[/i] field.[br]
+			Note:[br]
+			The KVIrc scripting language is not typed.
+			Any object class (be patient... I'll explain classes in a while) identifier can be stored in any KVIrc variable:
+			it is not possible to find out the object features by [i]examining[/i] its identifier.
+			This may make the usage of objects a bit [i]unclear[/i];
+			However, with some experience you will be able to use the objects in a very powerful way.
+			The type-safety can be also simulated by a careful usage of object names;
+			in the above example, the %myobj object was created with the [i]userDescription[/i] name.
+			The storetofile alias could check the passed object's name and refuse to work
+			if that does not match "userDescription".
+			[br][br]
+			A more complex use of fields will be described later in this document.
+			[br][br]
+			[big]Member functions[/big]
+			Just like in C++, the objects have member functions.
+			For example, the [i]object[/i] class (again... read on) objects export the [classfnc:object]$name[/classfnc]()
+			and [classfnc:object]$className[/classfnc]() functions.[br]
+			[example]
+				%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
+				[cmd]echo[/cmd] The object's name is %tmp-&gt;[classfnc:object]$name[/classfnc](), the class name is %tmp-&gt;[classfnc:object]$className[/classfnc]()
+				# Destroy the object
+				[cmd]delete[/cmd] %tmp
+			[/example]
+			Another cool function exported by the [class:object]object[/class] class is the
+			[classfnc:object]$children[/classfnc]() function.
+			It returns a comma separated list of child identifiers.[br]
+			[example]
+				%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
+				%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child1)
+				%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child2)
+				%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child3)
+				[cmd]echo[/cmd] The object's child list is: %tmp-&gt;[classfnc:object]$children[/classfnc]()
+				# Destroy the object and the child
+				[cmd]delete[/cmd] %tmp
+			[/example]
+			There are two special functions for each objects: the [i]constructor[/i] and the [i]destructor[/i].
+			You will find more information on constructors and destructors later in this document,
+			for now it's enough that you know that these functions are called automatically by KVirc:
+			the constructor is called when the object is created and the destructor is called when the
+			object is being destroyed with [cmd]delete[/cmd].[br][br]
+			[br]
+			The object functions can be reimplemented on-the-fly
+			by using the [cmd]privateimpl[/cmd] command: you can simply modify the behaviour of the function
+			by writing your own function body.
+			(This is an uncommon feature: unlike many other languages, you can reimplement object
+			functions at run-time, when the object has been already created.)
+			[br][br]
+			A more complex example[br]
+			[example]
+				%tmp = [fnc]$new[/fnc]([class]object[/class],0,myobject)
+				[cmd]foreach[/cmd](%i,1,2,3)
 				{
-					[cmd]echo[/cmd] Children : %t-&gt;[classfnc:object]$name[/classfnc]() with class %t-&gt;[classfnc:object]$class[/classfnc]()
-					%count++
+					%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child%i)
+					[cmd]privateimpl[/cmd](%tmpchild,destructor){ [cmd]echo[/cmd] Object [fnc]$this[/fnc] ([fnc]$this[/fnc]-&gt;[classfnc:object]$name[/classfnc]()) destroyed; }
 				}
-				[cmd]echo[/cmd] Just before destroying my %count child items.
-			}
-			[comment]//Destroy the object and it's child items[/comment]
-			[cmd]delete[/cmd] %tmp
-		[/example]
-
-		In the example above four objects have been created.
-		A "parent" object named "myobject", and three child objects.
-		The destructor has been reimplemented for each child object,
-		to make it "say" its name (Please note the usage of [fnc]$this[/fnc]).
-		In the parent destructor the child objects have been counted and listed.[br]
-		Then the parent object is destroyed causing to:[br]
-		- trigger the parent destructor.[br]
-		- destroy all the child items (and consequently trigger all the [i]individual[/i] destructors).[br][br]
-
-		Not all the object functions must return a value:
-		If a function does not return a meaningful value, or you just want to ignore it, you can call it in the following way:[br]
-		[example]
-			%anyobject-&gt;$functionname()
-		[/example]
-		[br]
-
-		[big]Classes[/big]
-		As said before, all objects are instances of a specific class.
-		This concept is common to almost all object oriented languages.
-		A class is a collection of methods that define an object's behaviour.
-		Hehe... it is not easy to explain it, so I'll try with an example:[br]
-		[b]Please note, that this is pseudo code. KVI++ does by no means employs
-		a "field" directive as shown below![/b]
-		[example]
-		class HostAddress
-		{
-			field hostname
-			function ipnumber()
-			function isLocalhost()
-		}
-		[/example]
-		The above class is a representation of a host address.
-		You create an [b]instance of this class[/b] and set the hostname field, for example,
-		to www.kernel.org.
-		The object is now able to give you information about the hostname in a transparent way:
-		You can call the ipnumber() function, and the object will return you the
-		digits and dots representation of www.kernel.org.
-		The isLocalhost() function will return true if the hostname refers to the local machine
-		The object internal job is hidden from the user, but probably it will be a huge job.
-		To obtain the IP number from the hostname, the object will probably have to perform a DNS call (usually a complex task).
-		To check if the hostname references the local machine, the object will have to obtain the local hostname
-		from the system (in some "unspecified" way) and then compare it with the given "hostname" field.[br][br]
-
-		The internal job of the object is defined by the "implementation of the class".
-		Obviously, the programmer that creates the class has to write that implementation.[br]
-
-		[example]
-		class HostAddress
-		{
-			field hostname
-			function ipnumber()
+				[cmd]privateimpl[/cmd](%tmp,destructor)
+				{
+					%count = 0;
+					[cmd]foreach[/cmd](%t,[fnc]$this[/fnc]-&gt;[classfnc:object]$children[/classfnc]())
+					{
+						[cmd]echo[/cmd] Children : %t-&gt;[classfnc:object]$name[/classfnc]() with class %t-&gt;[classfnc:object]$class[/classfnc]()
+						%count++
+					}
+					[cmd]echo[/cmd] Just before destroying my %count child items.
+				}
+				[comment]# Destroy the object and it's child items[/comment]
+				[cmd]delete[/cmd] %tmp
+			[/example][br]
+			In the example above four objects have been created.
+			A [i]parent[/i] object named [i]myobject[/i], and three child objects.
+			The destructor has been reimplemented for each child object,
+			to make it [i]say[/i] its name (Please note the usage of [fnc]$this[/fnc]).
+			In the parent destructor the child objects have been counted and listed.[br]
+			Then the parent object is destroyed causing to:[br]
+			- trigger the parent destructor.[br]
+			- destroy all the child items (and consequently trigger all the [i]individual[/i] destructors).[br][br]
+			[br]
+			Not all the object functions must return a value:
+			If a function does not return a meaningful value, or you just want to ignore it, you can call it in the following way:[br]
+			[example]
+				%anyobject-&gt;$functionname()
+			[/example]
+			[br]
+			[big]Classes[/big]
+			As said before, all objects are instances of a specific class.
+			This concept is common to almost all object oriented languages.
+			A class is a collection of methods that define an object's behaviour.
+			It's not easy to explain it, so I'll try with an example:[br]
+			[b]Please note, that this is pseudo code. KVI++ does by no mean employs
+			a [i]field[/i] directive as shown below![/b]
+			[example]
+				class HostAddress
+				{
+					field hostname
+					function ipnumber()
+					function isLocalhost()
+				}
+			[/example]
+			The above class is a representation of a host address.
+			You create an [b]instance of this class[/b] and set the hostname field, for example,
+			to www.kernel.org.
+			The object is now able to give you information about the hostname in a transparent way:
+			You can call the ipnumber() function, and the object will return you the
+			digits and dots representation of www.kernel.org.
+			The isLocalhost() function will return true if the hostname refers to the local machine
+			The object internal job is hidden from the user, but probably it will be a huge job.
+			To obtain the IP number from the hostname, the object will probably have to perform a DNS call (usually a complex task).
+			To check if the hostname references the local machine, the object will have to obtain the local hostname
+			from the system (in some [i]unspecified[/i] way) and then compare it with the given [i]hostname[/i] field.
+			[br][br]
+			The internal job of the object is defined by the "implementation of the class".
+			Obviously, the programmer that creates the class has to write that implementation.
+			[br][br]
+			[example]
+				class HostAddress
+				{
+					field hostname
+					function ipnumber()
+					{
+						find the nearest DNS server
+						make the DNS call
+						wait for the response
+						decode the response
+					}
+					function isLocalhost()
+					{
+						query the kernel for the local hostname
+						compare the obtained hostname with the hostname field
+					}
+				}
+			[/example]
+			In the above example I have [i]implemented[/i] the two functions in pseudo code.
+			[br][br]
+			Let's go back to the real world.
+			[br][br]
+			KVirc contains a [doc:classes]set of built-in ready-to-use classes[/doc].
+			The basic class is [class]object[/class]: all the other classes are derived from this (more about
+			object inheritance later in this doc).
+			[br][br]
+			Another available class is [class]socket[/class] that is an interface to the real system sockets.
+			An instance of the [class]socket[/class] class can connect and communicate with other hosts on the net.
+			[br][br]
+			The [b]class definitions are GLOBAL to the entire application[/b]: all server windows share them.
+			[br][br]
+			So now we can say that in KVIrc [b]a CLASS is a collection of features that define the behaviour of an object.
+			The user interface to the class are the member functions and the events.[/b]
+			[br][br]
+			[big]Inheritance[/big][br]
+			Someone asked for derived classes?[br]
+			Here we go:[br]
+			The [cmd]class[/cmd] command allows you to define new object classes.
+			In KVI++, A new class must be always derived from some other class: the lowest possible
+			level of inheritance is 1: deriving from class [class]object[/class].[br]
+			[example]
+				[cmd]class[/cmd](helloworld,[class]object[/class])
+				{
+					sayhello()
+					{
+						[cmd]echo[/cmd] Hello world!
+					}
+				}
+			[/example][br]
+			The above class is named [i]helloworld[/i]. It inherits the [class]object[/class] class.
+			This means that it acquires all the [class]object[/class] functions: [classfnc:object]$name[/classfnc](),
+			[classfnc:object]$class[/classfnc](), [classfnc:object]$children[/classfnc]()...
+			Additionally, it has the $sayhello() function, that [i]echoes Hello world[/i] to the console.
+			Now you can create an instance of this class:
+			[example]
+				%instance = [fnc]$new[/fnc](helloworld)
+				%instance-&gt;$sayhello()
+			[/example]
+			You should see [i]Hello world[/i] printed in the console.
+			Easy job... let's make the things a bit more complex now:
+			derive another class from helloworld and make it say [i]hello[/i] in two different languages:[br]
+			[example]
+			[cmd]class[/cmd](localizedhelloworld,helloworld)
 			{
-				find the nearest DNS server
-				make the DNS call
-				wait for the response
-				decode the response
-			}
-			function isLocalhost()
-			{
-				query the kernel for the local hostname
-				compare the obtained hostname with the hostname field
-			}
-		}
-		[/example]
-		In the above example I have "implemented" the two functions in pseudo code.[br][br]
+				[comment]# define the setlanguage function[/comment]
+				[comment]# note that <$0 = language> is just a programmer reminder[/comment]
+				setlanguage(<$0 = language>)
+				{
+					[cmd]if[/cmd](($0 == english) || ($0 == italian))
+					{
+						[fnc:$this]$$[/fnc]-&gt;%lang = $0
+						[cmd]return[/cmd] 1
+					} else {
+						[cmd]echo[/cmd] I don't know that language ($0)
+						[cmd]echo[/cmd] defaulting to English
+						[fnc:$this]$$[/fnc]-&gt;%lang = english
+						[cmd]return[/cmd] 0
+					}
+				}
 
-		Let's go back to the real world.[br][br]
-
-		KVirc contains a [doc:classes]set of built-in ready-to-use classes[/doc].
-		The basic class is [class]object[/class]: all the other classes are derived from this (more about
-		object inheritance later in this doc).[br][br]
-
-		Another available class is [class]socket[/class] that is an interface to the real system sockets.
-		An instance of the [class]socket[/class] class can connect and communicate with other hosts on the net.[br][br]
-
-		The [b]class definitions are GLOBAL to the entire application[/b]: all server windows share them.[br][br]
-
-		So now we can say that in KVIrc
-		[b]a CLASS is a collection of features that define the behaviour of an object.
-		The user interface to the class are the member functions and the events.[/b][br][br]
-
-		[big]Inheritance[/big]
-
-		Someone asked for derived classes?[br]
-		Here we go:[br]
-		The [cmd]class[/cmd] command allows you to define new object classes.
-		In KVI++, A new class must be always derived from some other class: the lowest possible
-		level of inheritance is 1: deriving from class [class]object[/class].[br]
-		[example]
-			[cmd]class[/cmd](helloworld,[class]object[/class])
-			{
 				sayhello()
 				{
-					[cmd]echo[/cmd] Hello world!
+					[cmd]if[/cmd]([fnc:$this]$$[/fnc]-&gt;%lang == italian)[cmd]echo[/cmd] Ciao mondo!
+					else [fnc:$this]$$[/fnc]-&gt;$helloworld:sayhello()
 				}
 			}
-		[/example]
-
-		The above class is named "helloworld". It inherits the [class]object[/class] class.
-		This means that it acquires all the [class]object[/class] functions: [classfnc:object]$name[/classfnc](),
-		[classfnc:object]$class[/classfnc](), [classfnc:object]$children[/classfnc]()...
-		Additionally, it has the $sayhello() function, that "echoes Hello world" to the console.
-		Now you can create an instance of this class:
-		[example]
-			%instance = [fnc]$new[/fnc](helloworld)
-			%instance-&gt;$sayhello()
-		[/example]
-		You should see "Hello world" printed in the console.
-		Easy job... let's make the things a bit more complex now:
-		derive another class from helloworld and make it say "hello" in two different languages:[br]
-		[example]
-		[cmd]class[/cmd](localizedhelloworld,helloworld)
-		{
-			[comment]# define the setlanguage function[/comment]
-			[comment]# note that <$0 = language> is just a programmer reminder[/comment]
-			setlanguage(<$0 = language>)
-			{
-				[cmd]if[/cmd](($0 == english) || ($0 == italian))
+			[/example]
+			Now you can call:[br]
+			[example]
+				%m = [fnc]$new[/fnc](localizedhelloworld)
+				%m-&gt;$setLanguage(italian)
+				%m-&gt;$sayhello()
+				%m-&gt;$setLanguage(english)
+				%m-&gt;$sayhello()
+				%m-&gt;$setLanguage(turkish)
+				%m-&gt;$sayhello()
+				[cmd]delete[/cmd] %myobj
+			[/example]
+			The class defined above is inherited from the previously defined helloworld class:
+			so it inherits the [i]object[/i] class functions and events and the sayhello function from [i]helloworld[/i].
+			In addition a setlanguage function is defined that stores in a variable the language name passed
+			as a parameter (after checking its validity). ($0 evaluates to the first parameter passed)
+			If the language is unknown the setlanguage function will return 0 (false).
+			Now we want to be able to say [i]hello world[/i] in Italian and English.
+			So we [b]override[/b] the inherited sayhello function.
+			[i]To override[/i] means [i]to reimplement[/i]: if you call %object-&gt;$sayhello() and %object
+			contains the ID of an instance of class [i]localizedhelloworld[/i], the new implementation of that function will be called (executed).
+			The inherited sayhello was able to say [i]hello world[/i] only in English, so we can still use it in the new implementation
+			without rewriting its contents. So if the language set is not Italian we assume that it is English and
+			call the [b]base class implementation[/b].[br]
+			[example]
+				[fnc]$this[/fnc]-&gt;$helloworld:sayhello()
+				[comment]# equivalent to $$-&gt;$helloworld:sayhello(),[/comment]
+				[comment]# to $this-&gt;$helloworld::sayhello(),[/comment]
+				[comment]# and to $$-&gt;$helloworld::sayhello()[/comment]
+			[/example]
+			otherwise the language is Italian and we say [i]hello[/i] in Italian :).
+			So, to call a base class implementation of a function we prepend the base class name before the function name in the call.
+			The base class name could be also [class]object[/class] in this case, but the [class]object[/class] class has no [i]sayhello[/i] function defined
+			so it would result in an error.[br][br]
+			In the above example, all the values of [fnc]$this[/fnc]-&gt;%language
+			that are not equal to Italian are assumed to be English.
+			This is not always true, for example, just after the object creation the %language variable field
+			is effectively empty. The above class works correctly in this case, but we might want to have always
+			a coherent state of the field variables, so we need another concept: the class [b]constructor[/b]
+			that will be discussed in the next paragraph.[br][br]
+			Note: multiple inheritance (inheritance from more than one base class) is not implemented, KVIrc is not a compiler. :)[br][br]
+			Objects are much more powerful...[br][br]
+			Do a [cmd]clearobjects[/cmd] to cleanup the old class definitions and read on.[br][br]
+			[big]Constructors and destructors[/big]
+			The class constructor is a [b]function[/b] that is called automatically just after the object
+			has been created internally by KVIrc and just before the [fnc]$new[/fnc]
+			function returns. It should be used to setup the internal object state.[br]
+			The constructor can and should list and initialize all the necessary object fields.[br]
+			[example]
+				[cmd]class[/cmd](myObject,[class]object[/class])
 				{
-					[fnc:$this]$$[/fnc]-&gt;%lang = $0
-					[cmd]return[/cmd] 1
-				} else {
-					[cmd]echo[/cmd] I don't know that language ($0)
-					[cmd]echo[/cmd] defaulting to English
-					[fnc:$this]$$[/fnc]-&gt;%lang = english
-					[cmd]return[/cmd] 0
+					constructor()
+					{
+						[fnc]$this[/fnc]-&gt;%test = "This is a sample object field."
+					}
 				}
-			}
 
-			sayhello()
-			{
-				[cmd]if[/cmd]([fnc:$this]$$[/fnc]-&gt;%lang == italian)[cmd]echo[/cmd] Ciao mondo!
-				else [fnc:$this]$$[/fnc]-&gt;$helloworld:sayhello()
-			}
-		}
-		[/example]
-		Now you can call:[br]
-		[example]
-		%m = [fnc]$new[/fnc](localizedhelloworld)
-		%m-&gt;$setLanguage(italian)
-		%m-&gt;$sayhello()
-		%m-&gt;$setLanguage(english)
-		%m-&gt;$sayhello()
-		%m-&gt;$setLanguage(turkish)
-		%m-&gt;$sayhello()
-		[cmd]delete[/cmd] %myobj
-		[/example]
-		The class defined above is inherited from the previously defined helloworld class:
-		so it inherits the "object" class functions and events and the sayhello function from "helloworld".
-		In addition a setlanguage function is defined that stores in a variable the language name passed
-		as a parameter (after checking its validity). ($0 evaluates to the first parameter passed)
-		If the language is unknown the setlanguage function will return 0 (false).
-		Now we want to be able to say "hello world" in Italian and English.
-		So we [b]override[/b] the inherited sayhello function.
-		"To override" means "to reimplement": if you call %object-&gt;$sayhello() and %object
-		contains the ID of an instance of class "localizedhelloworld", the new implementation of that function will be called (executed).
-		The inherited sayhello was able to say "hello world" only in English, so we can still use it in the new implementation
-		without rewriting its contents. So if the language set is not Italian we assume that it is English and
-		call the [b]base class implementation[/b].[br]
-		[example]
-			[fnc]$this[/fnc]-&gt;$helloworld:sayhello()
-			[comment]# equivalent to $$-&gt;$helloworld:sayhello(),[/comment]
-			[comment]# to $this-&gt;$helloworld::sayhello(),[/comment]
-			[comment]# and to $$-&gt;$helloworld::sayhello()[/comment]
-		[/example]
-		otherwise the language is Italian and we say "hello" in Italian :).
-		So, to call a base class implementation of a function we prepend the base class name before the function name in the call.
-		The base class name could be also [class]object[/class] in this case, but the [class]object[/class] class has no "sayhello" function defined
-		so it would result in an error.[br][br]
-		In the above example, all the values of [fnc]$this[/fnc]-&gt;%language
-		that are not equal to Italian are assumed to be English.
-		This is not always true, for example, just after the object creation the %language variable field
-		is effectively empty. The above class works correctly in this case, but we might want to have always
-		a coherent state of the field variables, so we need another concept: the class [b]constructor[/b]
-		that will be discussed in the next paragraph.[br][br]
-
-		Note: multiple inheritance (inheritance from more than one base class) is not implemented, KVIrc is not a compiler. :)[br][br]
-
-		Objects are much more powerful...[br][br]
-
-		Do a [cmd]clearobjects[/cmd] to cleanup the old class definitions and read on.[br][br]
-
-		[big]Constructors and destructors[/big]
-
-		The class constructor is a [b]function[/b] that is called automatically just after the object
-		has been created internally by KVIrc and just before the [fnc]$new[/fnc]
-		function returns. It should be used to setup the internal object state.[br]
-		The constructor can and should list and initialize all the necessary object fields.[br]
-		[example]
-			[cmd]class[/cmd](myObject,[class]object[/class])
-			{
-				constructor()
+				%myObject = [fnc]$new[/fnc](myObject,[class]object[/class])
+				[cmd]echo[/cmd] %myObject-&gt;%test
+			[/example][br]
+			Will thus print "This is a sample object field."[br]
+			Unlike in C++, in KVIrc, the constructor CAN return a value:[br]
+			If it returns 0 it signals the object creation failure: the object
+			is immediately destroyed and [fnc]$new[/fnc]() returns 0 to the caller.
+			Any other return value is treated as success, so the object is effectively
+			created and [fnc]$new[/fnc]() returns its ID to the caller.[br]
+			This said, KVI++ will automatically return a value of 1 and you should [b]never[/b]
+			return a value other than 0 if something bad happened (like a mandatory parameter was not given in the $new()
+			call or the like.) KVIrc will also issue a warning message and remind you of this when a non-zero value is 
+			returned.[br]
+			All the builtin classes have a constructor defined that will almost never fail (only if we run out of memory),
+			so you can avoid to check the [fnc]$new[/fnc]() return value
+			when creating the instances of the built-in classes.[br][br]
+			In derived classes you can override the constructor to setup your object's state.[br]
+			You should [b]always call the base class constructor[/b] in your overridden one, to setup
+			the base class state, and propagate its return value (eventually modified if the base class
+			constructor is successful but your derived class initialization fails).[br]
+			This very basic example will illustrate how to do this (please read the paragraph about inheriting classes
+			above first):[br]
+			[example]
+				[cmd]class[/cmd](baseObject,[class]object[/class])
 				{
-					[fnc]$this[/fnc]-&gt;%test = "This is a sample object field."
+					constructor()
+					{
+						[cmd]echo[/cmd] "baseObject or derived object created."
+					}
 				}
-			}
 
-			%myObject = [fnc]$new[/fnc](myObject,[class]object[/class])
-			[cmd]echo[/cmd] %myObject-&gt;%test
-		[/example][br]
-		Will thus print "This is a sample object field."[br]
-		Unlike in C++, in KVIrc, the constructor CAN return a value:[br]
-		If it returns 0 it signals the object creation failure: the object
-		is immediately destroyed and [fnc]$new[/fnc]() returns 0 to the caller.
-		Any other return value is treated as success, so the object is effectively
-		created and [fnc]$new[/fnc]() returns its ID to the caller.[br]
-		This said, KVI++ will automatically return a value of 1 and you should [b]never[/b]
-		return a value other than 0 if something bad happened (like a mandatory parameter was not given in the $new()
-		call or the like.) KVIrc will also issue a warning message and remind you of this when a non-zero value is
-		returned.[br]
-		All the builtin classes have a constructor defined that will almost never fail (only if we run out of memory),
-		so you can avoid to check the [fnc]$new[/fnc]() return value
-		when creating the instances of the built-in classes.[br][br]
-
-		In derived classes you can override the constructor to setup your object's state.[br]
-		You should [b]always call the base class constructor[/b] in your overridden one, to setup
-		the base class state, and propagate its return value (eventually modified if the base class
-		constructor is successful but your derived class initialization fails).[br]
-		This very basic example will illustrate how to do this (please read the paragraph about inheriting classes
-		above first):[br]
-		[example]
-			[cmd]class[/cmd](baseObject,[class]object[/class])
-			{
-				constructor()
+				[cmd]class[/cmd](derivedObject,baseObject)
 				{
-					[cmd]echo[/cmd] "baseObject or derived object created."
+					constructor()
+					{
+						[cmd]echo[/cmd] "derivedObject object created."
+						[fnc]$this[/fnc]->$baseObject::constructor()
+					}
 				}
-			}
-
-			[cmd]class[/cmd](derivedObject,baseObject)
-			{
-				constructor()
-				{
-					[cmd]echo[/cmd] "derivedObject object created."
-					[fnc]$this[/fnc]->$baseObject::constructor()
-				}
-			}
-		[/example][br][br]
-		In practice, the builtin class constructors do nothing other than setting the return
-		value to 1 so you can even avoid to call them, but in any other case you must do it.[br][br]
-
-		This is different from C (for example), where the constructors are called (more or less)
-		automatically.[br][br]
-
-		[big]Signals and slots[/big]
-
-		The signals and slots are a powerful mean of inter-object communication.
-		A signal is emitted by an object to notify a change in its state.
-		For example, the [class:button]button class[/class] emits the
-		[classsignal:button]clicked[/classsignal] signal when the user clicks the button.[br][br]
-		A signal is emitted by an object and can be received and handled by any other existing object
-		(including the object that emits the signal).[br]
-		The handler function for a signal is called "slot".[br]
-		It is just a convention: in fact, a slot is a normal object function (and any object function can be a slot).
-		More than one slot can be connected to a single signal, and more signals can be connected to a single slot.[br]
-		In this way, many objects can be notified of a change in a single object, as well as a single object
-		can easily handle state-changes for many objects.[br]
-		The signal/slot behaviour could be easily implemented by a careful usage of object functions.
-		[b]So why signals and slots?[/b][br]
-		Because signals are much more powerful in many situations.
-		The signals have no equivalent in C/C++... but they have been implemented in many highlevel
-		C/C++ libraries and development kits (including the system-wide signal/handler mechanism implemented
-		by all the modern kernels and used in inter-process communication).[br]
-*/
+			[/example][br][br]
+			In practice, the builtin class constructors do nothing other than setting the return
+			value to 1 so you can even avoid to call them, but in any other case you must do it.[br][br]
+			This is different from C (for example), where the constructors are called (more or less)
+			automatically.[br]
+			[big]Signals and slots[/big][br]
+			The signals and slots are a powerful mean of inter-object communication.
+			A signal is emitted by an object to notify a change in its state.
+			For example, the [class:button]button class[/class] emits the
+			[classsignal:button]clicked[/classsignal] signal when the user clicks the button.[br][br]
+			A signal is emitted by an object and can be received and handled by any other existing object
+			(including the object that emits the signal).[br]
+			The handler function for a signal is called "slot".[br]
+			It is just a convention: in fact, a slot is a normal object function (and any object function can be a slot).
+			More than one slot can be connected to a single signal, and more signals can be connected to a single slot.[br]
+			In this way, many objects can be notified of a change in a single object, as well as a single object
+			can easily handle state-changes for many objects.[br]
+			The signal/slot behaviour could be easily implemented by a careful usage of object functions.
+			[big]So why signals and slots?[/big][br]
+			Because signals are much more powerful in many situations.
+			The signals have no equivalent in C/C++... but they have been implemented in many high-level
+			C/C++ libraries and development kits (including the system-wide signal/handler mechanism implemented
+			by all the modern kernels and used in inter-process communication).[br]
+	*/
 
 
 
@@ -544,109 +524,109 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 /*
-	@doc: object
-	@keyterms:
-		object class, object, class
-	@title:
-		object class
-	@type:
-		class
-	@short:
-		Base class for all the KVIrc objects
-	@inherits:
-		none
-	@description:
-		This is the base class for all builtin KVirc object classes.
-		It exports functions to retrieve an object's name, to iterate
-		through child objects and to lookup a child object by name or class.
-		Additionally, this class provides builtin timer functionality.
-		The [classfnc]$constructor[/classfnc] and [classfnc]$destructor[/classfnc]
-		functions are empty implementations that all the other classes inherit.
-	@functions:
-		!fn: $constructor()
-		Constructor for this object class.
-		The default implementation does nothing.
-		!fn: $destructor()
-		Destructor for this object class.
-		The default implementation emits the signal "[classsignal]destroyed[/classsignal]".
-		!fn: $name()
-		Returns the name of this object.
-		!fn: $parent()
-		Returns the parent object of this object or 0 if this object has no parent.
-		!fn: $timerEvent(<timerId>)
-		Handler for the timer events.
-		The default implementation does nothing.
-		See also [classfnc]$startTimer[/classfnc]()
-		and [classfnc]$killTimer[/classfnc]().
-		!fn: $startTimer(<timeout>)
-		Starts a builtin timer for this object and returns its timer ID
-		as a string or '-1' if <timeout> was invalid.
-		The [classfnc]$timerEvent[/classfnc]() handler function
-		will be called every <timeout> milliseconds until the timer is stopped by $killTimer().
-		!fn: $killTimer(<timer id>)
-		Stops the timer specified by <timer id>.
-		!fn: $className()
-		Returns the class name of this object instance
-		!fn: $findChild(<class>,<name>)
-		Returns the first child that matches <class> and <name>.
-		If <class> is an empty string, any class matches,
-		if <name> is an empty string, any name matches.
-		This function traverses the entire child tree but is [b]not[/b] recursive.
-		!fn: $childCount()
-		Returns the number of child objects
-		!fn: $emit(<signal_name>[,parameters])
-		Emits the signal <signal_name> passing the optional [parameters].
-		See the [doc:objects]objects documentation[/doc] for an overview of signals and slots.
-		!fn: $children()
-		Returns an array of child object identifiers.
-		!fn: $signalSender()
-		Returns the current signal sender when in a slot connected to a signal.
-		In other contexts this function returns an empty string.
-		You can safely use it to test if the current function has been
-		triggered directly or from a signal emission.
-		!fn: $signalName()
-		Returns the name of the last signal that has triggered one of this object's slots.
-		When called in a slot handler, the triggering signal name is returned.
-		!fn: $property(<Qt property name>[,bNowarning:boolean])
-		This is for really advanced scripting.[br]
-		All KVIrc widgets are based on the Qt library ones.[br]
-		The Qt library allows to set and read special properties.[br]
-		You will have to take a look at the Qt documentation for each widget type
-		to see the available property names.[br]
-		The supported property types are: Rect, Size, Point, Color, String, CString,
-		Int, UInt, Bool and enumeration types.[br]
-		For example, the widget's x coordinate can be retrieved by using the [classfnc]$x[/classfnc]()
-		function or by calling $property(x).[br]
-		There are many properties that are available only through the [classfnc]$property[/classfnc]() call:[br]
-		For example, you can find out if the widget accepts drops by calling [classfnc]$property[/classfnc](acceptDrops).[br]
-		This function will be mainly useful in the [class]wrapper[/class] class.
-		!fn: $setProperty(<Qt property>,<property value>)
-		Sets a qt property for this widget.[br]
-		This is for advanced scripting, and can control really many features of the Qt widgets.[br]
-		For example, the [class]multilineedit[/class] widgets can be set to
-		the "password" echo mode only by using this function call:[br]
-		[example]
-			%X=$new(lineedit, 0, a_name)[br]
-			%X-&gt;$show()[br]
-			%X-&gt;$setProperty(echoMode,Password)[br]
-		[/example]
-		The available properties to be set are listed by [classfnc]$listProperties[/classfnc]()[br]
-		and must appear in the list as writeable.[br]
-		This function will be mainly useful in the [class]wrapper[/class] class.
-		!fn: $listProperties([bArray])
-		Lists the properties of this object.[br]
-		If <bArray> is $true then the function returns the properties
-		as an array of descriptive strings, otherwise the properties are dumped to the
-		active window. If <bArray> is not passed then it is assumed to be $false.
-		This function will be mainly useful in the [class]wrapper[/class] class.
-	@signals:
-		!sg: destroyed()
-		Emitted by the default implementation of [classfnc]$destructor[/classfnc].
-		If you reimplement [classfnc]$destructor[/classfnc] in one of the derived
-		classes (or as a private implementation), and still want this signal
-		to be emitted you must emit it by yourself, or (better) call the base class
-		destructor.
-*/
+		@doc: object
+		@keyterms:
+			object class, object, class
+		@title:
+			object class
+		@type:
+			class
+		@short:
+			Base class for all the KVIrc objects
+		@inherits:
+			none
+		@description:
+			This is the base class for all builtin KVirc object classes.
+			It exports functions to retrieve an object's name, to iterate
+			through child objects and to lookup a child object by name or class.
+			Additionally, this class provides builtin timer functionality.
+			The [classfnc]$constructor[/classfnc] and [classfnc]$destructor[/classfnc]
+			functions are empty implementations that all the other classes inherit.
+		@functions:
+			!fn: $constructor()
+			Constructor for this object class.
+			The default implementation does nothing.
+			!fn: $destructor()
+			Destructor for this object class.
+			The default implementation emits the signal [i][classsignal]destroyed[/classsignal][/i].
+			!fn: $name()
+			Returns the name of this object.
+			!fn: $parent()
+			Returns the parent object of this object or 0 if this object has no parent.
+			!fn: $timerEvent(<timerId>)
+			Handler for the timer events.
+			The default implementation does nothing.
+			See also [classfnc]$startTimer[/classfnc]()
+			and [classfnc]$killTimer[/classfnc]().
+			!fn: $startTimer(<timeout>)
+			Starts a builtin timer for this object and returns its timer ID
+			as a string or '-1' if <timeout> was invalid.
+			The [classfnc]$timerEvent[/classfnc]() handler function
+			will be called every <timeout> milliseconds until the timer is stopped by $killTimer().
+			!fn: $killTimer(<timer id>)
+			Stops the timer specified by <timer id>.
+			!fn: $className()
+			Returns the class name of this object instance
+			!fn: $findChild(<class>,<name>)
+			Returns the first child that matches <class> and <name>.
+			If <class> is an empty string, any class matches,
+			if <name> is an empty string, any name matches.
+			This function traverses the entire child tree but is [b]not[/b] recursive.
+			!fn: $childCount()
+			Returns the number of child objects
+			!fn: $emit(<signal_name>[,parameters])
+			Emits the signal <signal_name> passing the optional [parameters].
+			See the [doc:objects]objects documentation[/doc] for an overview of signals and slots.
+			!fn: $children()
+			Returns an array of child object identifiers.
+			!fn: $signalSender()
+			Returns the current signal sender when in a slot connected to a signal.
+			In other contexts this function returns an empty string.
+			You can safely use it to test if the current function has been
+			triggered directly or from a signal emission.
+			!fn: $signalName()
+			Returns the name of the last signal that has triggered one of this object's slots.
+			When called in a slot handler, the triggering signal name is returned.
+			!fn: $property(<Qt property name>[,bNowarning:boolean])
+			This is for really advanced scripting.[br]
+			All KVIrc widgets are based on the Qt library ones.[br]
+			The Qt library allows to set and read special properties.[br]
+			You will have to take a look at the Qt documentation for each widget type
+			to see the available property names.[br]
+			The supported property types are: Rect, Size, Point, Color, String, CString,
+			Int, UInt, Bool and enumeration types.[br]
+			For example, the widget's x coordinate can be retrieved by using the [classfnc]$x[/classfnc]()
+			function or by calling $property(x).[br]
+			There are many properties that are available only through the [classfnc]$property[/classfnc]() call:[br]
+			For example, you can find out if the widget accepts drops by calling [classfnc]$property[/classfnc](acceptDrops).[br]
+			This function will be mainly useful in the [class]wrapper[/class] class.
+			!fn: $setProperty(<Qt property>,<property value>)
+			Sets a qt property for this widget.[br]
+			This is for advanced scripting, and can control really many features of the Qt widgets.[br]
+			For example, the [class]multilineedit[/class] widgets can be set to
+			the [i]password[/i] echo mode only by using this function call:[br]
+			[example]
+				%X=$new(lineedit, 0, a_name)[br]
+				%X-&gt;$show()[br]
+				%X-&gt;$setProperty(echoMode,Password)[br]
+			[/example]
+			The available properties to be set are listed by [classfnc]$listProperties[/classfnc]()[br]
+			and must appear in the list as writeable.[br]
+			This function will be mainly useful in the [class]wrapper[/class] class.
+			!fn: $listProperties([bArray])
+			Lists the properties of this object.[br]
+			If <bArray> is $true then the function returns the properties
+			as an array of descriptive strings, otherwise the properties are dumped to the
+			active window. If <bArray> is not passed then it is assumed to be $false.
+			This function will be mainly useful in the [class]wrapper[/class] class.
+		@signals:
+			!sg: destroyed()
+			Emitted by the default implementation of [classfnc]$destructor[/classfnc].
+			If you reimplement [classfnc]$destructor[/classfnc] in one of the derived
+			classes (or as a private implementation), and still want this signal
+			to be emitted you must emit it by yourself, or (better) call the base class
+			destructor.
+	*/
 
 // we use a char * pointer just to store a number
 // we don't use void * just because incrementing a void pointer doesn't look that good

@@ -49,33 +49,32 @@
 	@functions:
 		!fn: $setDate(<text:string>,<format:string>)
 		Sets the date of the widget using the format <format>. Possible values for format are:
-		[br]d the day as number without a leading zero (1 to 31)
-		[br]dd the day as number with a leading zero (01 to 31)
-		[br]ddd the abbreviated localized day name (e.g. 'Mon' to 'Sun'). Uses QDate::shortDayName().
-		[br]dddd the long localized day name (e.g. 'Monday' to 'Qt::Sunday'). Uses QDate::longDayName().
-		[br]M the month as number without a leading zero (1-12)
-		[br]MM the month as number with a leading zero (01-12)
-		[br]MMM the abbreviated localized month name (e.g. 'Jan' to 'Dec'). Uses QDate::shortMonthName().
-		[br]MMMM the long localized month name (e.g. 'January' to 'December'). Uses QDate::longMonthName().
-		[br]yy the year as two digit number (00-99)
-		[br]yyyy the year as four digit number
+		[br][b]d[/b]: the day as number without a leading zero (1 to 31)
+		[br][b]dd[/b]: the day as number with a leading zero (01 to 31)
+		[br][b]ddd[/b]: the abbreviated localized day name (e.g. [b]Mon[/b] to [b]Sun/b]). Uses QDate::shortDayName().
+		[br][b]dddd[/b]: the long localized day name (e.g. [b]Monday[/b] to [b]Sunday[/b]). Uses QDate::longDayName().
+		[br][b]M[/b]: the month as number without a leading zero (1-12)
+		[br][b]MM[/b]: the month as number with a leading zero (01-12)
+		[br][b]MMM[/b]: the abbreviated localized month name (e.g. [b]Jan[/b] to [b]Dec[/b]). Uses QDate::shortMonthName().
+		[br][b]MMMM[/b]: the long localized month name (e.g. [b]January[/b] to [b]December[/b]). Uses QDate::longMonthName().
+		[br][b]yy[/b]: the year as two digit number (00-99)
+		[br][b]yyyy[/b]: the year as four digit number
 		!fn: <string> $date(<format:string>)
 		Returns the widget date according to format.
 		!fn: $setTime(<text:string>,<format:string>)
 		Sets the date of the widget using the format <format>. Possible values for format are:
-		[br]h the hour without a leading zero
-		[br]hh the hour with a leading zero
-		[br]m the minute without a leading zero
-		[br]mm the minute with a leading zero
-		[br]s the second without a leading zero
-		[br]ss the second with a leading zero
-		[br]z the milliseconds without leading zeroes
-		[br]zzz the milliseconds with leading zeroes
-		[br]AP(or ap) use AM/PM display. AP will be replaced by either "AM" or "PM".
+		[br][b]h[/b]: the hour without a leading zero
+		[br][b]hh[/b]: the hour with a leading zero
+		[br][b]m[/b]: the minute without a leading zero
+		[br][b]mm[/b]: the minute with a leading zero
+		[br][b]s[/b]: the second without a leading zero
+		[br][b]ss[/b]: the second with a leading zero
+		[br][b]z[/b]: the milliseconds without leading zeroes
+		[br][b]zzz[/b]: the milliseconds with leading zeroes
+		[br][b]AP / ap[/b]: use AM/PM display. AP will be replaced by either [i]AM[/i] or [i]PM[/i].
 		!fn: $time(<format:string>)
 		Returns the widget time according to format.
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_dateTimeEdit,"datetimeedit","widget")
 

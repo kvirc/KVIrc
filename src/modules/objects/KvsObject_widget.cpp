@@ -176,6 +176,7 @@ const char * const widgettypes_tbl[] = {
 #define QT_WIDGET_CLICKFOCUS Qt::ClickFocus
 #define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
 #define QT_WIDGET_NOFOCUS Qt::NoFocus
+
 /*
 	@doc: widget
 	@keyterms:
@@ -202,7 +203,8 @@ const char * const widgettypes_tbl[] = {
 		Repaints the widget directly by calling [classfnc]$paintEvent[/classfnc]() immediately.
 		!fn: $update([<x:ingeter>,<y:integer>,<width:integer>,<height:integer>])
 		Updates entirely the widget or a rectangle.
-		This function does not cause an immediate [classfnc]$paintEvent[/classfnc](); instead it schedules a paint event for processing when KVIrc returns to the main event loop.
+		This function does not cause an immediate [classfnc]$paintEvent[/classfnc]();
+		instead it schedules a paint event for processing when KVIrc returns to the main event loop.
 		!fn: $x()
 		Returns the x coordinate of the upper-left corner
 		of this widget relative to the parent widget,
@@ -247,7 +249,7 @@ const char * const widgettypes_tbl[] = {
 		Changes the widget's width to <width> and height to <height>.
 		See also [classfnc]$setGeometry[/classfnc]().
 		!fn: $isEnabled()
-		Returns '1' if the widget is enabled, '0' otherwise.
+		Returns [b]1[/b] if the widget is enabled, and [b]0[/b] otherwise.
 		See also [classfnc:widget]$setEnabled[/classfnc]().
 		!fn: $setEnabled(<bool>)
 		Sets the widget state to enabled or disabled if <bool> is 1 or 0 respectively.
@@ -260,13 +262,12 @@ const char * const widgettypes_tbl[] = {
 		!fn: $windowTitle()
 		Returns the title text of this widget.
 		!fn: $isTopLevel()
-		Returns '1' if this widget is a toplevel (parentless) one,
-		'0' otherwise.
+		Returns [b]1[/b] if this widget is a toplevel (parentless) one, and [b]0[/b] otherwise.
 		!fn: $isVisible()
-		Returns '1' if this widget is currently visible (read: is managed
+		Returns [b]1[/b] if this widget is currently visible (read: is managed
 		by the window manager and displayed by the X server; the widget
 		may be hidden behind other widgets). If the widget is not visible
-		this function returns '0'.
+		this function returns [b]0[/b].
 		See also [classfnc]$show[/classfnc]() and [classfnc]$hide[/classfnc]().
 		!fn: $raise()
 		Moves this widget to the top of the stack of the widgets relative
@@ -275,13 +276,13 @@ const char * const widgettypes_tbl[] = {
 		Moves this widget to the bottom of the stack of the widgets relative
 		to its parent. See also [classfnc]$raise[/classfnc]
 		!fn: $hasFocus()
-		Returns '1' if this widget has the keyboard focus.
+		Returns [b]1[/b] if this widget has the keyboard focus.
 		See also [classfnc]$setFocus[/classfnc].
 		!fn: $setFocus()
 		Sets this widget to be the one that receives keyboard events.
 		See also [classfnc]$hasFocus[/classfnc]
 		!fn: $parentWidget()
-		Returns the object ID of the parent widget, or '0' if this
+		Returns the object ID of the parent widget, or [b]0[/b] if this
 		widget is a toplevel one.
 		!fn: $backgroundColor()
 		Returns the background color of this widget in hexadecimal
@@ -317,33 +318,33 @@ const char * const widgettypes_tbl[] = {
 		HTML-like format.
 		See also [classfnc]$setForegroundColor[/classfnc].
 		!fn: $setMouseTracking(<bool>)
-		Enables or disables the mouse tracking if <bool> is '1' or '0' respectively.
+		Enables or disables the mouse tracking if <bool> is [b]1[/b] or [b]0[/b] respectively.
 		When mouse tracking is enabled you will receive mouse move events
 		even if no button is pressed, otherwise you will receive it only
 		when a mouse button is being pressed (so after a mousePressEvent).
 		!fn: $mousePressEvent(<button>,<x>,<y>)
 		This function is called when a mouse button is pressed while
-		the cursor is in this widget. <button> is 0 if the pressed button
-		is the left one, 1 if the button is the right one and 2 if it is the middle one.
+		the cursor is in this widget. <button> is [b]0[/b] if the pressed button
+		is the left one, [b]1[/b] if the button is the right one and [b]2[/b] if it is the middle one.
 		The <x> and <y> coordinates are relative to this widget upper-left corner
 		and are expressed in pixels.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call i][cmd]setreturn[/cmd] [b]1[/b][/i] you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $mouseReleaseEvent(<button>,<x>,<y>)
 		This function is called when a mouse button is released while
-		the cursor is in this widget. <button> is 0 if the released button
-		is the left one, 1 if the button is the right one and 2 if it is the middle one.
+		the cursor is in this widget. <button> is [b]0[/b]if the released button
+		is the left one, [b]1[/b] if the button is the right one and [b]2[/b] if it is the middle one.
 		The <x> and <y> coordinates are relative to this widget upper-left corner
 		and are expressed in pixels.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call [i][cmd]setreturn[/cmd] [b]1[/b][/i] you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $mouseDoubleClickEvent(<button>,<x>,<y>)
 		This function is called when a mouse button is double clicked while
-		the cursor is in this widget. <button> is 0 if the double clicked button
-		is the left one, 1 if the button is the right one and 2 if it is the middle one.
+		the cursor is in this widget. <button> is [b]0[/b]if the double clicked button
+		is the left one, [b]1[/b] if the button is the right one and [b]2[/b] if it is the middle one.
 		The <x> and <y> coordinates are relative to this widget upper-left corner
 		and are expressed in pixels.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call [i][cmd]setreturn[/cmd] [b]1[/b][/i] you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $mouseMoveEvent(<x>,<y>)
 		This function is called when the mouse cursor moves inside this widget.
@@ -415,15 +416,15 @@ const char * const widgettypes_tbl[] = {
 		This function sets widget flags, given as parameters.
 		Valid flags are:
 		[pre]
-		TopLevel        - indicates that this widget is a top-level widget[br]
-		Dialog          - indicates that this widget is a top-level window that should be decorated as a dialog[br]
-		Desktop         - indicates that this widget is the desktop[br]
-		Popup           - indicates that this widget is a popup top-level window[br]
-		Title           - gives the window a title bar[br]
-		StaysOnTop      - window stays on top [br]
-		SysMenu         - add a windows system menu[br]
-		Minimize        - add a minimize button for the sysmenu style[br]
-		Maximize        - add a maximixe button for the sysmenu style[br]
+			TopLevel        - indicates that this widget is a top-level widget[br]
+			Dialog          - indicates that this widget is a top-level window that should be decorated as a dialog[br]
+			Desktop         - indicates that this widget is the desktop[br]
+			Popup           - indicates that this widget is a popup top-level window[br]
+			Title           - gives the window a title bar[br]
+			StaysOnTop      - window stays on top [br]
+			SysMenu         - add a windows system menu[br]
+			Minimize        - add a minimize button for the sysmenu style[br]
+			Maximize        - add a maximize button for the sysmenu style[br]
 		[/pre]
 		!fn: $centerToScreen()
 		Centers the window on the screen (useful only for toplevel widgets).[br]
@@ -432,48 +433,48 @@ const char * const widgettypes_tbl[] = {
 		Sets the way the widget accepts keyboard focus.[br]
 		Valid parameters are:
 		[pre]
-		- TabFocus;	(widget accepts keyboard focus by tabbing)[br]
-		- ClickFocus; (widget accepts keyboard focus by clicking)[br]
-		- StrongFocus; (widget accepts both tabbing/clicking)[br]
-		- No Focus;  (widget does not accept focus at all; this is the default value)[br]
+			- TabFocus;	(widget accepts keyboard focus by tabbing)[br]
+			- ClickFocus; (widget accepts keyboard focus by clicking)[br]
+			- StrongFocus; (widget accepts both tabbing/clicking)[br]
+			- No Focus;  (widget does not accept focus at all; this is the default value)[br]
 		[/pre]
 		!fn: $keyPressEvent(<key>)
 		If widget accepts keyboard focus (see [classfnc]$setFocusPolicy[/classfnc] ) this function handles for keys;
 		In its argument the key pressed.[br]
 		Special keys are:
 		[pre]
-		- Return [br]
-		- Enter	[br]
-		- Down (cursor arrow down) [br]
-		- Up   (cursor arrow up) [br]
-		- Left (cursor arrow left) [br]
-		- Right (cursor arrow right) [br]
-		- Shift [br]
-		- Ctrl [br]
-		- Alt [br]
-		- CapsLock [br]
-		- Backspace [br]
-		- Del [br]
-		- Esc [br]
-		- 0 [br]
-		- 1 [br]
-		- 2 [br]
-		- 3 [br]
-		- 4 [br]
-		- 5 [br]
-		- 6 [br]
-		- 7 [br]
-		- 8 [br]
-		- 9 [br]
-		- + [br]
-		- - [br]
-		- * [br]
-		- / [br]
-		- ( [br]
-		- ) [br]
-		- = [br]
-		- . [br]
-		- ^ [br]
+			- Return [br]
+			- Enter	[br]
+			- Down (cursor arrow down) [br]
+			- Up   (cursor arrow up) [br]
+			- Left (cursor arrow left) [br]
+			- Right (cursor arrow right) [br]
+			- Shift [br]
+			- Ctrl [br]
+			- Alt [br]
+			- CapsLock [br]
+			- Backspace [br]
+			- Del [br]
+			- Esc [br]
+			- 0 [br]
+			- 1 [br]
+			- 2 [br]
+			- 3 [br]
+			- 4 [br]
+			- 5 [br]
+			- 6 [br]
+			- 7 [br]
+			- 8 [br]
+			- 9 [br]
+			- + [br]
+			- - [br]
+			- * [br]
+			- / [br]
+			- ( [br]
+			- ) [br]
+			- = [br]
+			- . [br]
+			- ^ [br]
 		[/pre]
 		!fn: $mapFromGlobal(<x>,<y>)
 		Translates the global screen coordinate pos to widget coordinates.
@@ -485,40 +486,42 @@ const char * const widgettypes_tbl[] = {
 		Return the y coordinate of the mo>use pointer global position.
 		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)
 		This event handler is called when an eventual tip is going to be show.
-		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
-		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
+		You can be reimplement this event and set a dynamic tool tip by using [i][cmd]return[/cmd] <tooltip_string>[/i].
+		If a tooltip was set with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
 		The default implementation does nothing.
 		!fn: integer $setAttribute(<string>,<bool_flag>)
-		Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.
-		Valid attributes are:
-		OpaquePaintEvent - Indicates that the widget paints all its pixels when it receives a paint event.
-		NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
-		PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
-		NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
+		Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.[br]
+		Valid attributes are:[br]
+		[pre]
+			OpaquePaintEvent - Indicates that the widget paints all its pixels when it receives a paint event.
+			NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
+			PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
+			NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
+		[/pre]
 		!fn: $setStyleSheet(<string>)
 		Set a style sheet for this widget.
 		!fn: $customContextMenuRequestedEvent(<x_mouse_pos:integer>,<y_mouse_pos:integer>)
 		This event is triggered when the user has requested a context menu on the widget (i.e. right clicking on the widget).
 		The x,y coordinates are widget relative.
 		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)
-		Returns the color in color_group(disabled, active or inactive), used for color_role.
+		Returns the color in color_group(disabled, active or inactive), used for color_role.[br]
 		Valid color role are:
-		Window - A general background color.
-		WindowText - A general foreground color.
-		Base - Used as the background color for text.
-		Text - Used as foreground color for the text.
-		Button - The general button background color.
-		ButtonText - A foreground color used with the Button color.
-		Highlight - A color to indicate a selected item or the current item.
-		HighlightedText - A text color that contrasts with Highlight.
-
+		[pre]
+			Window - A general background color.
+			WindowText - A general foreground color.
+			Base - Used as the background color for text.
+			Text - Used as foreground color for the text.
+			Button - The general button background color.
+			ButtonText - A foreground color used with the Button color.
+			Highlight - A color to indicate a selected item or the current item.
+			HighlightedText - A text color that contrasts with Highlight.
+		[/pre]
 		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)
 		Adds a shortcut with key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
 		!fn: $shortCutEvent(<shortcut_id:integer>)
 		This function will be called when a shortcut key has been triggered.
 		You must reimplement this event to manage a shortcut system in a custom widget.
 		The default implementation does nothing.
-
 		!fn: $insertIntoStatusBar(<index:unsigned integer>)
 		Insert the widget into the statusbar at the given index.
 		If index is out of range, the widget is appended.
@@ -528,7 +531,7 @@ const char * const widgettypes_tbl[] = {
 	@examples:
 		[example]
 			%widget = $new(widget)
-			# This is the main container for other elements.
+			[comment]# This is the main container for other elements.[/comment]
 
 			%widget->$setWindowTitle("This is the widget title")
 
@@ -572,9 +575,6 @@ const char * const widgettypes_tbl[] = {
 		[/example]
 */
 
-
-
-
 //
 // If you never call c->error(), c->warning() (your function never fails)
 // and never call a function that can call c->error() or c->warning()
@@ -604,10 +604,6 @@ const char * const widgettypes_tbl[] = {
 //   if widget() is 0, the functions perform no actions
 //   return no errors and results that have to be assumed
 //   as invalid (this allows the minimum overhead: if widget()
-
-//=============================================================================================================
-
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setParent)

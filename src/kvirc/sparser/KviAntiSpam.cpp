@@ -86,7 +86,7 @@
 		KVIrc contains a small spam detector, and can help you in avoiding that annoying flood
 		of queries popping up when you join large channels full of lamers.[br]
 		The spam detector works in a rather simple way: when someone sends you a private message
-		containing one or more "special words", and that user has no open query window,
+		containing one or more [i]special words[/i], and that user has no open query window,
 		so the message is treated as spam and is redirected to the console window or is ignored completely
 		(if you enable that option).[br]
 		The spam words to check for, can be set by the means of [cmd]option[/cmd] stringlistSpamWords.[br]
@@ -94,9 +94,9 @@
 		[cmd]option[/cmd] boolUseAntiSpamOnNotice to 1.[br]
 	@examples:
 		[example]
-			[comment]# This will cause "new-query private messages" containing[/comment]
-			[comment]# words "http:","#" (channel name),"ftp:".... to be redirected to the console[/comment]
-			[cmd]option[/cmd] stringlistSpamWords http:,#,ftp:,sex,free,chat,join
+			[comment]# This will cause new-query private messages containing[/comment]
+			[comment]# words http:, #(channel name), or ftp: to be redirected to the console[/comment]
+			[cmd]option[/cmd] stringlistSpamWords http:, #, ftp:, sex, free, chat, join
 			[cmd]option[/cmd] boolUseAntiSpamOnPrivmsg 1
 			[comment]# This will cause these messages to be completely ignored[/comment]
 			[cmd]option[/cmd] boolSilentAntiSpam 1

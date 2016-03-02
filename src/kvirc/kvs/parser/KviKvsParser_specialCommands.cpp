@@ -279,7 +279,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 			declaring global variables by starting them with an uppercase letter
 			and declaring local variables by starting them with a lowercase one.
 		@examples:
-			global %a,%b,%c;
+			global %a, %b, %c;
 	*/
 	while(KVSP_curCharUnicode == '%')
 	{
@@ -637,7 +637,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 			It can contain the [cmd]break[/cmd] command: in that case the
 			execution of the <command> will be immediately interrupted and the control
 			transferred to the command following this while block.[br]
-			It is valid for <command> to be an empty command terminated with a ';'.
+			It is valid for <command> to be an empty command terminated with a [b];[/b].
 			<condition> is an expression as the ones evaluated by [doc:expressioneval]$(*)[/doc]
 			with the following extensions:[br]
 			If <condition> is a string, its length is evaluated: in this way a non-empty string
@@ -732,17 +732,19 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 			causes the <condition> to be true, an empty array causes it to be false.[br]
 			If <condition> is a hash, the number of its entries is evaluated: in this way a non-empty hash
 			causes the <condition> to be true, an empty hash causes it to be false.[br]
-					@examples:
+		@examples:
 			[example]
-			%i = 0;
-			do %i++; while(%i < 100);
-			echo "After first execution:  %i";
-			%i = 10
-			do {
-				echo "Executed!";
-				%i++;
-			} while(%i < 1)
-			echo "After second execution:  %i";
+				%i = 0;
+				do %i++; while(%i < 100);
+				echo "After first execution:  %i";
+				%i = 10
+				do
+				{
+					echo "Executed!";
+					%i++;
+				} 
+				while(%i < 1)
+				echo "After second execution:  %i";
 			[/example]
 		@seealso:
 			[cmd]while[/cmd]
@@ -836,7 +838,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 		@description:
 			Executes <command1> if the <condition> evaluates
 			to true (non zero result).
-			If the "else part" is given, <command2> is executed
+			If the [i]else part[/i] is given, <command2> is executed
 			if the <condition> evaluates to false (result == '0').[br]
 			<condition> is an expression evaluated in the same way as [doc:expressioneval]$(*)[/doc]
 			with the following extensions:[br]
@@ -847,8 +849,10 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 			If <condition> is a hash, the number of its entries is evaluated - a non-empty hash
 			is true, an empty hash is false.[br]
 		@examples:
-			if(%a != 10)[cmd]echo[/cmd] \%a was != 10
-			else [cmd]echo[/cmd] \%a was 10!
+			[example]
+				if(%a != 10)[cmd]echo[/cmd] \%a was != 10
+				else [cmd]echo[/cmd] \%a was 10!
+			[/example]
 	*/
 
 	if(KVSP_curCharUnicode != '(')
@@ -1038,7 +1042,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 			If <condition> is a hash, the number of its entries is evaluated: in this way a non-empty hash
 			causes the <condition> to be true, an empty hash causes it to be false.[br]
 		@examples:
-			for(%a = 0;%a < 100;%a++)echo %a
+			[example]
+				for(%a = 0;%a < 100;%a++)echo %a
+			[/example]
 	*/
 
 	if(KVSP_curCharUnicode != '(')
@@ -1194,13 +1200,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 			[example]
 				foreach(%i,1,2,3,4,5,6,7,8,9)[cmd]echo[/cmd] %i
 				foreach(%chan,[fnc]$window.list[/fnc](channel))[cmd]me[/cmd] -r=%chan This is a test!
-				[comment]// This will work too, and will do the same job[/comment]
+				[comment]#  This will work too, and will do the same job[/comment]
 				%windows[] = [fnc]$window.list[/fnc](channel)
 				foreach(%chan,%windows[])[cmd]me[/cmd] -r=%chan This is a test!
-				[comment]// And this too[/comment]
+				[comment]#  And this too[/comment]
 				%windows[] = [fnc]$window.list[/fnc](channel)
 				foreach(%key,[fnc]$keys[/fnc](%windows[]))[cmd]me[/cmd] -r=%windows[%key] This is a test!
-				[comment]// Another interesting example[/comment]
+				[comment]#  Another interesting example[/comment]
 				[cmd]alias[/cmd](test){ [cmd]return[/cmd] [fnc]$hash[/fnc](1,a,2,b,3,c,4,d); };
 				foreach(%x,[fnc]$keys[/fnc]($test)){ [cmd]echo[/cmd] %x, $test{%x}; }
 			[/example]
@@ -1315,7 +1321,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			The switch command is based on the standard C 'switch' keyword.
 			It conditionally executes groups of commands chosen from a larger set of command groups.[br]
 			First <expression> is evaluated (<expression> is any arithmetic or string expression).[br]
-			Then the 'match', 'regexp', 'case' and 'default' labels are evaluated sequentially
+			Then the [b]match[/b], [b]regexp[/b], [b]case[/b] and [b]default[/b] labels are evaluated sequentially
 			in the order of appearance.[br]
 			[b]case(<value>)[:]<command>[/b][br]
 			The <value> is evaluated and is compared against the result of <expression>.
@@ -1327,7 +1333,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			If the -p (--passthrough) option is enabled, than the switch command will execute all the instructions blocks
 			until a [cmd]break[/cmd] statement is found.[br]
 			[b]match(<value>)[:]<command>[/b][br]
-			The <value> is expected to be a wildcard expression (wildcard characters being '*' and '?')
+			The <value> is expected to be a wildcard expression (wildcard characters being [b]*[/b] and [b]?[/b])
 			that is matched in a case insensitive fashion against <expression>.[br]
 			If a match occurs, the related <command> is executed.
 			The [cmd]break[/cmd] statement is treated as in the case label.[br]
@@ -1341,76 +1347,76 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		@examples:
 			[comment]# Try to change the 1 below to 2 or 3 to see the results[/comment]
 			[example]
-			%tmp = 1
-			switch(%tmp)
-			{
-				case(1):
-					echo \%tmp was 1!
-				break;
-				case(2)
-					echo \%tmp was 2!
-				break;
-				default:
-					echo \%tmp was not 1 nor 2: it was %tmp!
-				break;
-			}
-			[/example]
-			[comment]# A more complex example: change the 1 in 2 or 3[/comment]
-			[example]
-			%tmp = 1
-			switch(%tmp)
-			{
-				case(1):
-					echo \%tmp was 1!
-				case(2)
-					echo \%tmp was 2!
-				break;
-				default:
-					echo \%tmp was either 1 or something different from 2 (%tmp)
-				break;
-			}
-			[/example]
-			[comment]# An example of the -p switch[/comment]
-			[example]
-			%tmp = 1
-			switch -p (%tmp)
-			{
-				case(1):
-					echo \%tmp was 1!
-				case(2)
-					echo \%tmp was 1 or 2!
-					break;
-				default:
-					echo \%tmp was not 1 or 2 (%tmp)
-				break;
-			}
-			[/example]
-			[comment]# An example with strings[/comment]
-			[example]
-			%tmp = "This is a test"
-			%tmp2 = "This is not a test"
-			switch(%tmp)
-			{
-				case(%tmp2)
-					echo \%tmp == \%tmp2
-					break;
-				case(%tmp)
+				%tmp = 1
+				switch(%tmp)
 				{
-					[comment]//do not break here[/comment]
-					echo "Yeah... It's stupid... \%tmp == \%tmp :D"
+					case(1):
+						echo \%tmp was 1!
+					break;
+					case(2)
+						echo \%tmp was 2!
+					break;
+					default:
+						echo \%tmp was not 1 nor 2: it was %tmp!
+					break;
 				}
-				match("*TEST"):
-					echo "Matched *TEST"
-				regexp("[a-zA-Z ]*test"):
-					echo "Matched [a-zA-Z ]*text"
-				regexp("[a-zA-Z ]*not[a-zA-Z ]*"):
-					echo "Matched [a-zA-Z ]*not[a-zA-Z ]*"
-				default:
-					echo This is executed anyway (unless some break was called)
-				break;
-			}
 			[/example]
-	*/
+			[example]
+				[comment]# A more complex example: change the 1 in 2 or 3[/comment]
+				%tmp = 1
+				switch(%tmp)
+				{
+					case(1):
+						echo \%tmp was 1!
+				case(2)
+						echo \%tmp was 2!
+					break;
+					default:
+						echo \%tmp was either 1 or something different from 2 (%tmp)
+					break;
+				}
+			[/example]
+			[example]
+				[comment]# An example of the -p switch[/comment]
+				%tmp = 1
+				switch -p (%tmp)
+				{
+					case(1):
+						echo \%tmp was 1!
+					case(2)
+						echo \%tmp was 1 or 2!
+						break;
+					default:
+						echo \%tmp was not 1 or 2 (%tmp)
+					break;
+				}
+			[/example]
+			[example]
+				[comment]# An example with strings[/comment]
+				%tmp = "This is a test"
+				%tmp2 = "This is not a test"
+				switch(%tmp)
+				{
+					case(%tmp2)
+						echo \%tmp == \%tmp2
+						break;
+					case(%tmp)
+					{
+						[comment]# do not break here[/comment]
+						echo "Yeah... It's stupid... \%tmp == \%tmp :D"
+					}
+					match("*TEST"):
+						echo "Matched *TEST"
+					regexp("[a-zA-Z ]*test"):
+						echo "Matched [a-zA-Z ]*text"
+					regexp("[a-zA-Z ]*not[a-zA-Z ]*"):
+						echo "Matched [a-zA-Z ]*not[a-zA-Z ]*"
+					default:
+						echo This is executed anyway (unless some break was called)
+					break;
+				}
+			[/example]
+*/
 
 	if(KVSP_curCharUnicode != '(')
 	{
@@ -1936,26 +1942,26 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			the previous contents of the popups are cleared before updating.[br]
 			The popup is generated 'on the fly' when the [cmd]popup[/cmd] command
 			is called.[br]
-			The 'item' keyword adds a menu item with visible <text>,
+			The [i]item[/i] keyword adds a menu item with visible <text>,
 			the optional <icon> and <command> as code to be executed when the item
 			is clicked. <text> is a string that is evaluated at [cmd]popup[/cmd]
 			call time and may contain identifiers and variables. If <expression>
 			is given, it is evaluated at [cmd]popup[/cmd] call time and if the result
 			is 0, the item is not shown in the physical popup.[br]
-			The 'popup' keyword adds a submenu with visible <text>, the optional
+			The [i]popup[/i] keyword adds a submenu with visible <text>, the optional
 			<icon> and a popup body that has identical syntax to the defpopup body.
-			The <expression> has the same meaning as with the 'item' keyword.[br]
+			The <expression> has the same meaning as with the [i]item[/i] keyword.[br]
 			The 'extpopup' keyword adds a submenu with visible <text>, the optional
 			icon and a popup body that is defined by the popup menu <name>. This
 			basically allows to nest popup menus and define their parts separately.
-			<icon> and <expression> have the same meaning as with the 'item' keyword.[br]
-			The 'separator' keyword adds a straight line between items (separator).[br]
+			<icon> and <expression> have the same meaning as with the [i]item[/i] keyword.[br]
+			The [i]separator[/i] keyword adds a straight line between items (separator).[br]
 			The 'separatorid' keyword adds a straight line between items, but permits to
 			specify a separator id.[br]
-			The 'label' keywork adds a descriptive label that acts like a separator.[br]
-			The 'prologue' keyword adds a <prologue_command> to be executed
+			The [i]label[/i] keywork adds a descriptive label that acts like a separator.[br]
+			The [i]prologue[/i] keyword adds a <prologue_command> to be executed
 			just before the popup is filled at [cmd]popup[/cmd] command call.[br]
-			The 'epilogue' keyword adds an <epilogue_command> to be executed
+			The [i]epilogue[/i] keyword adds an <epilogue_command> to be executed
 			just after the popup has been filled at [cmd]popup[/cmd] command call.[br]
 			There can be multiple prologue and epilogue commands: their execution order
 			is undefined.[br]
@@ -1970,12 +1976,12 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			[example]
 				defpopup(test){}
 			[/example]
-			This will remove the popup 'test' and free its memory.
+			This will remove the popup [i]test[/i] and free its memory.
 			Popups have a special kind of local variables that have an extended lifetime,
-			called "extended scope" - this is described in the [doc:data_structures]Data structures documentation[/doc].[br]
+			called [i]extended scope[/i] - this is described in the [doc:data_structures]Data structures documentation[/doc].[br]
 			The syntax for an "extended scope" variable is:[br]
 			[b]%:<variable name>[/b][br]
-			This type of variable is maintained during the entire "visible lifetime" of the popup -
+			This type of variable is maintained during the entire [i]visible lifetime[/i] of the popup -
 			from the [cmd]popup[/cmd] command call to the moment in that the user selects an item and the
 			corresponding code is executed (essentially from a [cmd]popup[/cmd] call to the next one).[br]
 			This allows you to pre-calculate data and conditions in the prologue of the popup

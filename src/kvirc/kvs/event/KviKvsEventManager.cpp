@@ -50,8 +50,8 @@
 		Event handlers can be created or destroyed by using the scriptcenter (graphic interface)
 		or even from the commandline (or script) by using the [cmd]event[/cmd] command.[br]
 		For example, the [event:onirc]OnIRC[/event] is triggered when the login operations have
-		been terminated and you can consider yourself "completely" on IRC. For example, you might
-		want to "auto-join" some channels. Nothing easier! The following snippet of code
+		been terminated and you can consider yourself [i]completely[/i] on IRC. For example, you might
+		want to [i]auto-join[/i] some channels. Nothing easier! The following snippet of code
 		adds a handler to the OnIRC event that joins three channels:[br]
 		[example]
 		[cmd]event[/cmd](OnIRC,autojoin)
@@ -80,7 +80,7 @@
 		[br]
 		Certain events will pass you some data in the positional parameters.[br]
 		For example, when you are being banned from a channel, KVIrc triggers the [event:onmeban]OnMeBan[/event]
-		event: you might be interested in WHO has banned you. KVIrc will pass the "ban source" information
+		event: you might be interested in WHO has banned you. KVIrc will pass the [i]ban source[/i] information
 		in the positional parameters $0,$1 and $2.[br]
 		(Please note that the parameters started from $1 in KVIrc versions older than 3.0.0!).[br]
 		You may take a look at the list of available [doc:event_index_all]events[/doc].[br]

@@ -83,6 +83,7 @@ const char * const sockerrors_tbl[] = {
 	"ProxyProtocol",
 	"UnknownSocket"
 };
+
 /*
 	@doc: socket
 	@keyterms:
@@ -103,20 +104,20 @@ const char * const sockerrors_tbl[] = {
 		!fn: <integer or string> $status(<asString:boolean>)
 		Returns the status of the socket :[br]
 		[pre]
-		0 = Unconnected
-		1 = HostLookUp
-		2 = Connecting[br]
-		3 = Connected[br]
-		4 = Bound[br]
-		5 = Closing[br]
-		6 = Listening
+			0 = Unconnected
+			1 = HostLookUp
+			2 = Connecting[br]
+			3 = Connected[br]
+			4 = Bound[br]
+			5 = Closing[br]
+			6 = Listening
 		[/pre]
 		!fn: $connect(<host>,<port>)
 		Attempts a connection to <host> on port <port>.[br]
 		<host> can be a numeric internet address (either IPv4 or IPv6 (if supported)) or a hostname.[br]
-		If a hostname is used, a DNS lookup is performed (the socket enters the "DNS call" state).[br]
-		This function returns 1 if the connect attempt can be successfully initiated,
-		0 otherwise.[br] In fact, this function returns 0 only if the supplied <port> parameter
+		If a hostname is used, a DNS lookup is performed (the socket enters the [i]DNS call[i/] state).[br]
+		This function returns [b]1[/b] if the connect attempt can be successfully initiated, and
+		[b]0[/b] otherwise.[br] In fact, this function returns [b]0[/b] only if the supplied <port> parameter
 		is invalid or the socket is in an incoherent state (already connected or listening):
 		for a newly created socket and with a valid <port> number you can safely ignore
 		the return value.[br]
@@ -124,56 +125,48 @@ const char * const sockerrors_tbl[] = {
 		the socket is [b]not[/b] connected: it has just initiated the connect attempt
 		and you will be notified of the attempt result by an asynchronous event call:
 		in case of failure, $connectFailedEvent() will be called, in case of
-		succes, $connectEvent() will be called.
-
+		success, $connectEvent() will be called.
 		!fn: $listen([<port>[,<interface>[,<force_ipv6>]]])
 		Attempts to listen on the specified <port> and <interface>.[br]
-		If <port> is not passed it is assumed to be 0, if <interface> is not passed, it is assumed to be
-		"any interface" (INADDR_ANY).[br] Port 0 means that the kernel should choose a "random" port to listen on.[br]
+		If <port> is not passed it is assumed to be [b]0[/b], if <interface> is not passed, it is assumed to be
+		[i]any interface[/i] (INADDR_ANY).[br] Port 0 means that the kernel should choose a [i]random[/i] port to listen on.[br]
 		If the <interface> is recognized as IPv6 address, and IPv6 is supported, the socket listens
 		in IPv6 mode. If <interface> is an empty string and <force_ipv6> is 1 the socket listens
-		on "any ipv6 interface".[br]
-		This function returns '1' in case of success and '0' in case of failure.[br]
+		on [i]any IPv6 interface[/i].[br]
+		This function returns [b]1[/b] in case of success and [b]0[/b] in case of failure.[br]
 		On some systems listening in the IPv6 namespace allows to accept also IPv4 connections (this includes
 		Linux but not windows afaik).[br]
 		When an incoming connection will arrive, $incomingConnectionEvent() will be called.
-
 		!fn: $connectedEvent()
 		This function is called when a connection attempt has been successfully completed.
 		The socket is currently connected to [classfnc:socket]$remoteIp[/classfnc]() on
 		[classfnc:socket]$remotePort[/classfnc](). You can start
 		writing data and you may expect [classfnc:socket]$dataAvailableEvent[/classfnc]() to be
 		triggered.
-
 		!fn: $incomingConnectionEvent(<socket:h_object>)
 		This function is called when an incoming connection arrives over a socket in listening state.[br]
-		You must return 1 if you to terminated this incoming connection call [classfnc:socket]$accept[/classfnc]() passing a newly created socket object
+		You must return [b]1[/b] if you to terminated this incoming connection call [classfnc:socket]$accept[/classfnc]() passing a newly created socket object
 		to accept and handle the connection.[br] If you don't call [classfnc:socket]$accept[/classfnc]()
 		the incoming connection will be automatically terminated.
-
 		!fn: $connectFailedEvent(<reason>)
 		This function is called when a connection attempt fails for some reason. <reason> contains
 		the error string.[br]
 		This function may be called only between a call to [classfnc:socket]$connect[/classfnc]() and
 		the [classfnc:socket]$connectEvent[/classfnc]().
-
 		!fn: $disconnectEvent([error])
 		This function is called when a connection is terminated either cleanly or because of an error.[br]
-		[error] is an empty string in case of a "clean" termination (connection closed by the remote host)
+		[error] is an empty string in case of a [i]clean[/i] termination (connection closed by the remote host)
 		or is a message describing the socket error that caused the connection to be interrupted.
-
 		!fn: $dataAvailableEvent(<data_length>)
 		This function is called when some data is available to be read: the <data_length> parameter specifies
 		the length of the available data in bytes.[br]
 		You can use one of the $read* functions to obtain the data
-
 		!fn: $read(<length>[,<hobject>])
-		Reads at most <length> bytes of data from the socket. If <length> is anything "outside" the
+		Reads at most <length> bytes of data from the socket. If <length> is anything [i]outside[/i] the
 		available data range (<length> < 0 or <length> > available_data_length), this function
 		returns all the available data.[br]
 		By default this function can deal ASCII data only: NULL characters are transformed to
 		ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
-
 		!fn: $write(<data, array,files or hobject>[,length])
 		Writes <data> to the socket.[br]
 		This function can deal with binary data passing  a [class]memorybuffer[/class] object[br]
@@ -183,7 +176,6 @@ const char * const sockerrors_tbl[] = {
 		Using an array you can pass bytes or data string like this: @$write($array($(0xff),$(0xff),$(0xff),$(0xff),"This is an example"));
 		If you're going to [cmd]delete[/cmd] this object just after the $write call, you should
 		call [classfnc:socket]$close[/classfnc]() just before [cmd]delete[/cmd] to ensure the data delivery.
-
 		!fn: $close()
 		Resets this socket state: kills any pending or active connection. After a close() call
 		the socket may be used for a new connection.[br]
@@ -191,97 +183,91 @@ const char * const sockerrors_tbl[] = {
 		You don't need to call $close() if you [cmd]delete[/cmd] the socket: KVIrc will
 		reset the socket state automatically and free the memory. But if you want to ensure data delivery
 		after a $write call sequence and just before a [cmd]delete[/cmd], $close() is the only chance to do it.
-
 		!fn: $remoteIp()
 		Returns the IP address of the remote end of this socket.[br]
 		The return value is meaningful only if the socket is in connected or connecting state.
-
 		!fn: $setProtocol(<protocol>)
 		Let KVIrc use TCP or UDP protocol
-
 		!fn: $remotePort()
 		Returns the port of the remote end of this socket.[br]
 		The return value is meaningful only if the socket is in connected or connecting state.
-
 		!fn: $localIp()
 		Returns the IP address of the local end of this socket.[br]
 		The return value is meaningful only if the socket is in connected, listening or connecting state.
-
 		!fn: $localPort()
 		Returns the port of the local end of this socket.[br]
 		The return value is meaningful only if the socket is in connected, listening or connecting state.
-
 	@examples:
 		[example]
-		// Server socket: listen 8080 port and answer to requests (multi-threaded)
-		class("webserver","socket")
-		{
-			function incomingConnectionEvent()
+			[comment]# Server socket: listen 8080 port and answer to requests (multi-threaded)[/comment]
+			class("webserver","socket")
 			{
-			    // incoming connection socket passed by the framework
-			    %socket = $0
-			    debug "Webserver incoming Connection from: %socket->$remoteIp : %socket->$remotePort"
-			    %socket->$write("HTTP/1.0 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")
-			    // tells KVIrc no need this socket anymore
-			    return $true()
+				function incomingConnectionEvent()
+				{
+				[comment]# incoming connection socket passed by the framework[/comment]
+				%socket = $0
+				debug "Webserver incoming Connection from: %socket->$remoteIp : %socket->$remotePort"
+				%socket->$write("HTTP/1.0 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")
+				[comment]# tells KVIrc no need this socket anymore[/comment]
+				return $true()
+				}
+				function constructor()
+				{
+				debug listen @$listen(8080, "127.0.0.1")
+				}
 			}
-			function constructor()
-			{
-			    debug listen @$listen(8080, "127.0.0.1")
-			}
-		}
-		// finally start webserver
-		%WebS = $new(webserver)
+			[comment]# finally start webserver[/comment]
+			%WebS = $new(webserver)
 		[/example]
 		[example]
-		// Client socket - go to google and grab request header[br]
-		class("httprequest","socket")
-		{
-			function errorEvent()
+		[comment]# Client socket - go to google and grab request header[/comment][br]
+			class("httprequest","socket")
 			{
-				// the connection to the server failed
-				debug  "Connection failed: "$0
-				delete $$
+				function errorEvent()
+				{
+					[comment]# the connection to the server failed[/comment]
+					debug  "Connection failed: "$0
+					delete $$
+				}
+				function disconnectedEvent()
+				{
+					[comment]# connection has been closed[/comment]
+					debug  "Connection is closed"
+					delete $$
+				}
+				function destructor()
+				{
+					[comment]# if the socket is still open close it[/comment]
+					if(@$status() == "Connected") @$close()
+				}
+				function stateChangedEvent()
+				{
+					debug socket state $0
+				}
+				function dataAvailableEvent()
+				{
+					[comment]# reading the received data[/comment]
+					debug reading $0 bytes
+					%newdata  = @$read($0)
+					debug data:  %newdata
+					[comment]# close and delete the socket[/comment]
+					@$close()
+					delete $$
+				}
+				function constructor()
+				{
+					[comment]# connect to the server[/comment]
+					@$connect("www.google.com",80)
+				}
+				function connectedEvent()
+				{
+					[comment]# connection is complete[/comment]
+					[comment]# send a request to receive the headers only from http://www.google.com/[/comment]
+					debug connected
+					debug written bytes @$write("HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnection: Close\r\nUser-Agent: KVIrc socket\r\n\r\n") on socket;
+				}
 			}
-			function disconnectedEvent()
-			{
-				// connection has been closed
-				debug  "Connection is closed"
-				delete $$
-			}
-			function destructor()
-			{
-				// if the socket is still open close it
-				if(@$status() == "Connected") @$close()
-			}
-			function stateChangedEvent()
-			{
-				debug socket state $0
-			}
-			function dataAvailableEvent()
-			{
-				// reading the received data
-				debug reading $0 bytes
-				%newdata  = @$read($0)
-				debug data:  %newdata
-				// close and delete the socket
-				@$close()
-				delete $$
-			}
-			function constructor()
-			{
-				// connect to the server
-				@$connect("www.google.com",80)
-			}
-			function connectedEvent()
-			{
-				// connection is complete
-				// send a request to receive the headers only from http://www.google.com/
-				debug connected
-				debug written bytes @$write("HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnection: Close\r\nUser-Agent: KVIrc socket\r\n\r\n") on socket;
-			}
-		}
-		%Temp = $new(httprequest)
+			%Temp = $new(httprequest)
 		[/example]
 */
 

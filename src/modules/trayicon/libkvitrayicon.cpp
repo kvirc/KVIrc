@@ -682,7 +682,7 @@ static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall *)
 	@syntax:
 		$reguser.isVisible()
 	@description:
-		Returns 1 if the dock widget is actually visible, 0 otherwise.
+		Returns [b]1[/b] if the dock widget is actually visible, and [b]0[/b] otherwise.
 	@seealso:
 		[cmd]trayicon.show[/cmd]
 */

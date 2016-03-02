@@ -94,16 +94,16 @@
 		See also [classfnc]$setTabsClosable[/classfnc]().
 	@examples:
 		[example]
-			[comment]// First we'll create the main tabWidget.[/comment]
+			[comment]# First we'll create the main tabWidget.[/comment]
 			%Tabwidget=$new(tabWidget)
 			%Tabwidget->$setToolTip("Example of TabWidget class")
 			%Tabwidget->$setTabPosition(Top)
 			%Tabwidget->$resize(300,200)
-			[comment]// Now we'll create the new widgets and put they in to the main tabWidget.[/comment]
+			[comment]# Now we'll create the new widgets and put they in to the main tabWidget.[/comment]
 			%firsttab=$new(vbox)
 			%secondtab=$new(vbox)
-			[comment]// Now we'll create the item to put in to tab's pages.[/comment]
-			[comment]// First tab[/comment]
+			[comment]# Now we'll create the item to put in to tab's pages.[/comment]
+			[comment]# First tab[/comment]
 			%hbox=$new(hbox,%firsttab)
 			%labelbt=$new(label,%hbox)
 			%labelbt->$settext(Botton Tab)
@@ -114,11 +114,13 @@
 			%buttontb->$settext("To &Botton")
 			%buttontt=$new(button,%hbox)
 			%buttontt->$settext("To &Top")
-			[comment]// Now we'll give a layout to all items.[/comment]
-			[comment]// This also allows to use privateimpl without making buttons global variables[/comment]
-			[comment]// Add the page to the main tab.[/comment]
+			[comment]
+			# Now we'll give a layout to all items.
+			# This also allows to use privateimpl without making buttons global variables
+			# Add the page to the main tab.
+			[/comment]
 			%Tabwidget->$addTab(%firsttab,Top&Button,33)
-			[comment]// Implementing the action to do when the user click the buttons.[/comment]
+			[comment]# Implementing the action to do when the user click the buttons.[/comment]
 			privateimpl(%buttontb,mousepressevent)
 			{
 				%Tabwidget->$setTabPosition(Bottom)
@@ -127,7 +129,7 @@
 			{
 				%Tabwidget->$setTabPosition(Top)
 			}
-			[comment]// We do the same work  with the second tab's page.[/comment]
+			[comment]# We do the same work  with the second tab's page.[/comment]
 			%labelwp=$new(label,%secondtab)
 			%labelwp->$settext("Enjoy the new Class provided by")
 			%labelwp->$setalignment("Center")
@@ -135,7 +137,7 @@
 			%labelgen->$settext(Grifisx \& Noldor)
 			%labelgen->$setalignment("Center")
 			%Tabwidget->$addTab(%secondtab,&About,50)
-			[comment]// Let's show our example.[/comment]
+			[comment]# Let's show our example.[/comment]
 			%Tabwidget->$show()
 		[/example]
 	@signals:

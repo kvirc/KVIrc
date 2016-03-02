@@ -253,11 +253,11 @@
 		Note also that you must either escape the $ at the beginning of KVIrc identifiers
 		or use single quotes to prevent Perl from interpreting the $ as the beginning of a variable.
 		[example]
-		[comment]// This will not work as expected[/comment]
+		[comment]# This will not work as expected[/comment]
 		[cmd]perl.begin[/cmd]
 		KVIrc::echo(KVIrc::eval("return $window.caption"));
 		[cmd]perl.end[/cmd]
-		[comment]// But these will do[/comment]
+		[comment]# But these will do[/comment]
 		[cmd]perl.begin[/cmd]
 		KVIrc::echo(KVIrc::eval("return \$window.caption"));
 		KVIrc::echo(KVIrc::eval('return $window.caption'));
@@ -304,7 +304,7 @@
 			eval %tmp;
 		}
 		perlexec "/home/pragma/myperlscript.pl" "param1" "param2" "param3"
-		[comment]// or even[/comment]
+		[comment]# or even[/comment]
 		[cmd]echo[/cmd] $perlexec("/home/pragma/computeprimelargerthan.pl","10000")
 		[/example]
 		[br]
@@ -543,7 +543,6 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 /*
 	@doc: perl.isAvailable
 	@type:
@@ -555,7 +554,7 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	@syntax:
 		$perl.isAvailable
 	@description:
-		Returns 1 if the Perl scripting support is available and 0 otherwise.
+		Returns [b]1[/b] if the Perl scripting support is available and [b]0[/b] otherwise.
 */
 
 static bool perl_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)

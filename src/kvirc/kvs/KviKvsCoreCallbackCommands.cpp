@@ -70,7 +70,7 @@ namespace KviKvsCoreCallbackCommands
 			results by calling the callback routine.
 			The -i switch causes the command to execute
 			in IPv6 mode (and lookup ONLY IPv6 hosts!).[br]
-			The -a switch causes the command to run in "unspecified" mode
+			The -a switch causes the command to run in [i]unspecified[/i] mode
 			and return any available address: IPv4 or Ipv6.[br]
 			This command also performs reverse lookups (if you pass an IP address as <hostname>).[br]
 			The callback command gets passed five parameters:[br]
@@ -90,8 +90,8 @@ namespace KviKvsCoreCallbackCommands
 			!sw: -i
 			Causes the command to execute in IPv6 mode (and lookup ONLY IPv6 hosts!).
 			!sw: -a
-			The -a switch causes the command to run in "unspecified" mode
-			and return any available address: IPv4 or Ipv6.
+			The -a switch causes the command to run in [i]unspecified[/i] mode
+			and return any available address: IPv4 or IPv6.
 		@examples:
 			[example]
 			ahost("localhost")
@@ -180,20 +180,20 @@ namespace KviKvsCoreCallbackCommands
 			The implementation code can be either a single KVS instruction
 			or an instruction block (instruction list enclosed in braces).[br]
 			If the alias already exists, it is replaced with the new implementation.[br]
-			If the <implementation> is empty (e.g. "{}" or just a ";")
+			If the <implementation> is empty (e.g. [i]{}[/i] or just a [i];[/i])
 			the alias <alias_name> is removed.
-			If the "remove" form is used but the specified <alias_name> does not exist
+			If the [i]remove[/i] form is used but the specified <alias_name> does not exist
 			in the alias store then a warning is printed unless
 			the -q (--quiet) switch is used.
-			If <alias_name> contains a "<name>::" prefix, then the alias
+			If <alias_name> contains a [i]<name>::[/i] prefix, then the alias
 			is created in the namespace specified by <name>.
 			If the namespace does not exist, it is created.
-			Any alias without the "<name>::" prefix is created in the root
+			Any alias without the [i]<name>::[/i] prefix is created in the root
 			namespace. Namespaces are useful to avoid collisions in alias names
 			between scripts. Only really common aliases should be created
 			in the root namespace - all of the internal functionality of your
 			scripts should be hidden in your own namespace.
-			The special syntax "<namespace>::" can be used to remove all
+			The special syntax [i]<namespace>::[/i] can be used to remove all
 			the aliases belonging to the specified namespace. When creating
 			aliases this syntax is not allowed.
 		@examples:
@@ -327,7 +327,7 @@ namespace KviKvsCoreCallbackCommands
 		@description:
 			AWHOIS stands for Asynchronous WHOIS. It is used to obtain data for a specified
 			irc user (designated by <nickname>). This command sends a WHOIS query to the
-			server and silently awaits the sequence of replies. When the "End of WHOIS" message
+			server and silently awaits the sequence of replies. When the [i]End of WHOIS[/i] message
 			is received from server the <callback command> is executed passing the WHOIS
 			information as positional parameters.[br]
 			The <magic> string is an optional string to be evaluated at AWHOIS execution time.
@@ -349,7 +349,7 @@ namespace KviKvsCoreCallbackCommands
 			If the -i switch is specified, the WHOIS message is sent to the server
 			that the <nickname> user is connected to; in this way you will probably
 			get the idle time of the user too.[br]
-			If the server replies with a "No such nick/channel error message" the
+			If the server replies with a [i]No such nick/channel error message[/i] the
 			<callback command> will be still triggered, but will have all the parameters
 			empty with the exception of $0.[br]
 			If the connection gets interrupted before all the information have been received,
@@ -418,7 +418,7 @@ namespace KviKvsCoreCallbackCommands
 			The optional button text is specified by <label_text>.[br]
 			The <callback_code> will be executed as reaction to a button press.[br]
 			[br]
-			The "window" type button can be added only to the windows that have a button container: this
+			The [i]window[/i] type button can be added only to the windows that have a button container: this
 			actually includes at least console, channels and queries.[br]
 			The button is added to the current window; if you want to add it to a different
 			window, use the [doc:command_rebinding]standard -r command rebinding[/doc] switch.[br]
@@ -529,7 +529,7 @@ namespace KviKvsCoreCallbackCommands
 			If the <implementation> is empty
 			the handler <handler_name> is removed from the handler
 			list instead of being added.[br]
-			The <event_name> may be one of the kvirc-builtin event names
+			The <event_name> may be one of the KVIrc builtin event names
 			or a numeric code (from 0 to 999) of a RAW server message.[br]
 			If the -q switch is specified then the command runs in quiet mode.
 		@seealso:
@@ -637,17 +637,17 @@ namespace KviKvsCoreCallbackCommands
 				If the -t switch is used then the termination event will be
 				triggered just after the process has been killed.
 			!sw: -p=<timeout> | --trigger-ping=<timeout>
-				Trigger <callback command> with "ping" events every <timeout> milliseconds.
+				Trigger <callback command> with [i]ping[/i] events every <timeout> milliseconds.
 			!sw: -w | --bind-to-window
 				Kill the process if the current window is closed. In this case the
 				termination event is [b]not[/b] triggered (since the parent window has been lost).
 				If this switch is not used then the process is rebound to
 				the active console window and continues running.
 			!sw: -s=<interpreter command> | --shell=<interpreter command>
-				Use <interpreter command> instead of the default interpreter "sh -c".
+				Use <interpreter command> instead of the default interpreter [i]sh -c[/i].
 				The <interpreter command> should be able to launch the interpeter
 				and should contain the necessary arguments in order to allow
-				KVirc to pass the "commandline" by appending it as the last parameter.
+				KVirc to pass the [i]commandline[/i] by appending it as the last parameter.
 			!sw: -d | --direct
 				Use no command interpreter at all: run the command directly.
 				Takes precedence over -s.
@@ -667,8 +667,8 @@ namespace KviKvsCoreCallbackCommands
 			$1 = <event parameter>[br]
 			$2 = <magic data>[br]
 			The first parameter specifies the event cause and contains one of the
-			following strings: "stdout","stderr","terminated","started" and "ping".
-			[b]By default (if no switches are used) only "stdout" type events are triggered[/b].
+			following strings: [i]stdout[/i], [i]stderr[/i], [i]terminated[/i], [i]started[/i] and [i]ping[/i].
+			[b]By default (if no switches are used) only [i]stdout[/i] type events are triggered[/b].
 			The second parameter depends on the event cause and contains data sensible
 			to each event type. The third parameter is the eventual <magic data>
 			passed to the exec command call.[br]
@@ -685,13 +685,13 @@ namespace KviKvsCoreCallbackCommands
 			[b]Startup event[/b][br]
 			If the -x switch is used then the startup event is triggered
 			just after the process has been successfully launched.
-			The $0 parameter passed to the callback contains the string "started".
+			The $0 parameter passed to the callback contains the string [i]started[/i].
 			Parameter $1 contains the pid of the slave process.[br]
 			[br]
 			[b]Stdout data event[/b][br]
 			The stdout data event is triggered when the process prints some output
 			on its stdout stream. This event is triggered by default and to disable
-			it you must use the -n switch. $0 contains the string "stdout".
+			it you must use the -n switch. $0 contains the string [i]stdout[/i].
 			If the -b switch is not used then $1 contains a single line of process
 			output with the trailing carriage return and/or line feed stripped.
 			If -b is used then $1 contains the whole process output
@@ -701,13 +701,13 @@ namespace KviKvsCoreCallbackCommands
 			The stderr data event is similar to the stdout one but there are three differences.
 			The first one is that the stderr event is [b]not[/b] triggered by default: you must
 			use the -e switch to enable it. The second difference is that $0
-			contains "stderr" instead of "stdout". The last difference is that $1 contains data
+			contains [i]stderr[/i] instead of [i]stdout[/i]. The last difference is that $1 contains data
 			coming from the slave process stderr stream.[br]
 			[br]
 			[b]Termination event[/b][br]
 			The termination event is triggered after the slave process has terminated its
 			execution. You must use the -t switch to enable it since it is
-			disabled by default. $0 contains the string "terminated". $1 contains the process exit
+			disabled by default. $0 contains the string [i]terminated[/i]. $1 contains the process exit
 			status value. (Note that if the process has crashed or has been terminated
 			by an external signal then this value will be 0).[br]
 			[br]
@@ -729,7 +729,7 @@ namespace KviKvsCoreCallbackCommands
 			With the -b switch the events stdout and stderr are triggered once even if the process
 			emits no output.
 			The -s=<interpreter> switch may be used to specify the path of the command interpreter
-			that is "sh -c" by default on UNIX machines and "cmd.exe /c" on Windows.
+			that is [i]sh -c[/i] by default on UNIX machines and [i]cmd.exe /c[/i] on Windows.
 			The interpreter executable is searched on the system PATH.
 			If the process can't be started then a warning message is printed in the current window
 			unless the -q (quiet) flag is used.[br]
@@ -1009,7 +1009,7 @@ namespace KviKvsCoreCallbackCommands
 			<implementation> must be a valid command sequence.[br]
 			Side note:[br]
 			This command can not successfully implement
-			the "constructor" function since it must be called
+			the [i]constructor[/i] function since it must be called
 			after this one has already been executed.[br]
 			To implement a constructor you MUST write your own class definition.[br]
 		@seealso:
@@ -1066,10 +1066,10 @@ namespace KviKvsCoreCallbackCommands
 			The timer periodically calls the specified <callback_command> code passing the
 			eventual <callback_param> strings as positional parameters.[br]
 			If a timer with the same name already exists, it is replaced by this one.[br]
-			[b]The <callback_command> is evaluated at timer "shot" time and [b]not[/b] while
+			[b]The <callback_command> is evaluated at timer [i]shot[/i] time and [b]not[/b] while
 			this command is being parsed. This means that the identifiers that you put
 			inside <callback_command> will [b]not[/b] have the current values.[/b]
-			The values will be assigned at timer "shot" time.[br]
+			The values will be assigned at timer [i]shot[/i] time.[br]
 			This is a common scripters error and problem: if it is not clear, look at the examples below.[br]
 			The timer is bound to the window in that this command is executed in.[br]
 			If the window gets destroyed, the timer is stopped; unless the -p switch is used.[br]
@@ -1078,15 +1078,15 @@ namespace KviKvsCoreCallbackCommands
 			original window is destroyed.[br]
 			The -s switch causes this timer to trigger only once: it will be automatically destroyed after that.[br]
 			The time has an associated set of [doc:data_structures]extended scope variables[/doc]:
-			the variables that begin with "%:" have their life extended to the whole "life" of the timer.[br]
+			the variables that begin with [i]%:[/i] have their life extended to the whole [i]life[/i] of the timer.[br]
 			Using a very low delay is a common method to perform some background processing: you
 			basically split a huge job in small slices and execute them when the timer is triggered
 			until you run out of slices. A delay of 0 will cause the timer to be called whenever
-			KVIrc has some "idle time" to spend.
+			KVIrc has some [i]idle time[/i] to spend.
 			On the other hand, remember that timers are precious resources: many timers running
 			with a very low delay will cause KVIrc to slow down.[br]
 			Since all the KVIrc timers share the same namespace it is a good idea to use
-			descriptive timer names: a timer named "a" is likely to be used by two or more scripts
+			descriptive timer names: a timer named [i]a[/i] is likely to be used by two or more scripts
 			at once causing one (or both) of them to fail.[br]
 			A timer can be stopped at any time by using the [cmd]killtimer[/cmd] command.
 		@seealso:

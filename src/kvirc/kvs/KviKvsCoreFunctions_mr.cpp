@@ -62,33 +62,33 @@ namespace KviKvsCoreFunctions
 			If the <nickname> is not given it is assumed to be the current nickname.[br]
 			If <mask_type> is not given or is invalid, it is assumed to be 0.[br]
 			Available mask types:[br]
-			0 : nick!user@machine.host.top  (nick!user@XXX.XXX.XXX.XXX) (default)[br]
-			1 : nick!user@*.abc.host.top        (nick!user@XXX.XXX.XXX.*)[br]
+			0 : nick!user@machine.host.top	[b](nick!user@XXX.XXX.XXX.XXX) (default)[/b][br]
+			1 : nick!user@*.abc.host.top	[b](nick!user@XXX.XXX.XXX.*)[/b][br]
 			2 : nick!user@*[br]
-			3 : nick!*@machine.host.top     (nick!user@XXX.XXX.XXX.XXX)[br]
-			4 : nick!*@*.abc.host.top           (nick!user@XXX.XXX.XXX.*)[br]
+			3 : nick!*@machine.host.top	[b](nick!user@XXX.XXX.XXX.XXX)[/b][br]
+			4 : nick!*@*.abc.host.top	[b](nick!user@XXX.XXX.XXX.*)[/b][br]
 			5 : nick!*@*[br]
-			6 : *!user@machine.host.top     (*!user@XXX.XXX.XXX.XX)[br]
-			7 : *!user@*.abc.host.top           (*!user@XXX.XXX.XXX.*)[br]
+			6 : *!user@machine.host.top	[b](*!user@XXX.XXX.XXX.XX)[/b][br]
+			7 : *!user@*.abc.host.top	[b](*!user@XXX.XXX.XXX.*)[/b][br]
 			8 : *!user@*[br]
-			9 : *!*@machine.host.top        (*!*@XXX.XXX.XXX.XXX)[br]
-			10: *!*@*.abc.host.top              (*!*@XXX.XXX.XXX.*)[br]
-			11: nick!*user@machine.host.top (nick!*user@XXX.XXX.XXX.XXX)[br]
-			12: nick!*user@*.abc.host.top       (nick!*user@XXX.XXX.XXX.*)[br]
+			9 : *!*@machine.host.top	[b](*!*@XXX.XXX.XXX.XXX)[/b][br]
+			10: *!*@*.abc.host.top		[b](*!*@XXX.XXX.XXX.*)[/b][br]
+			11: nick!*user@machine.host.top [b](nick!*user@XXX.XXX.XXX.XXX)[/b][br]
+			12: nick!*user@*.abc.host.top	[b](nick!*user@XXX.XXX.XXX.*)[/b][br]
 			13: nick!*user@*[br]
-			14: *!*user@machine.host.top    (*!*user@XXX.XXX.XXX.XXX)[br]
-			15: *!*user@*.abc.host.top          (*!*user@XXX.XXX.XXX.*)[br]
+			14: *!*user@machine.host.top    [b](*!*user@XXX.XXX.XXX.XXX)[/b][br]
+			15: *!*user@*.abc.host.top	[b](*!*user@XXX.XXX.XXX.*)[/b][br]
 			16: *!*user@*[br]
-			17: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)[br]
-			18: nick!*@*.host.top          (nick!*@XXX.XXX.*)[br]
-			19: *!~user@*.host.top          (*!~user@XXX.XXX.*)[br]
-			20: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)[br]
-			21: *!*user@*.host.top          (*!user@*XXX.XXX.*)[br]
-			22: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)[br]
-			23: nick!*@*.host.top          (nick!*@XXX.XXX.*)[br]
-			24: *!~user@*.host.top          (*!~user@XXX.XXX.*)[br]
-			25: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)[br]
-			26: *!*user@*.host.top          (*!user@*XXX.XXX.*)[br]
+			17: nick!~user@*.host.top	[b](nick!~user@XXX.XXX.*)[/b][br]
+			18: nick!*@*.host.top		[b](nick!*@XXX.XXX.*)[/b][br]
+			19: *!~user@*.host.top		[b](*!~user@XXX.XXX.*)[/b][br]
+			20: nick!*user@*.host.top	[b](nick!*user@XXX.XXX.*)[/b][br]
+			21: *!*user@*.host.top		[b](*!user@*XXX.XXX.*)[/b][br]
+			22: nick!~user@*.host.top	[b](nick!~user@XXX.XXX.*)[/b][br]
+			23: nick!*@*.host.top		[b](nick!*@XXX.XXX.*)[/b][br]
+			24: *!~user@*.host.top		[b](*!~user@XXX.XXX.*)[/b][br]
+			25: nick!*user@*.host.top	[b](nick!*user@XXX.XXX.*)[/b][br]
+			26: *!*user@*.host.top		[b](*!user@*XXX.XXX.*)[/b][br]
 			If some data is missing, these types may change:[br]
 			For example, if the hostname is missing, the mask type 3 or 4 may be reduced to type 5.[br]
 			If the user with <nickname> is not found in the current IRC context user database,
@@ -463,7 +463,7 @@ namespace KviKvsCoreFunctions
 			If no <irc context id> is specified, this function looks for
 			the query in the current connection context (if any).[br]
 			If no <target> is specified, this function returns the current
-			query window ID, if executed in a query, else 0.[br]
+			query window ID, if executed in a query, and [b]0[/b] otherwise.[br]
 		@examples:
 			[example]
 			[/example]
@@ -595,7 +595,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<real> $real(<data:variant>)
 		@description:
-			Forces <data> to be a "real" data type with the following
+			Forces <data> to be a [i]real[/i] data type with the following
 			semantics:[br]
 			[ul]
 				[li]If <data> is a real, <data> itself is returned.[/li]
@@ -659,7 +659,7 @@ namespace KviKvsCoreFunctions
 			KVIrc requests user information for all the users in open queries
 			and channels. This information takes some time to be retrieved,
 			in this interval of time KVIrc knows only the user's nickname.
-			This function will return the string "*" in this case.[br]
+			This function will return the string [b]*[/b] in this case.[br]
 		@seealso:
 			[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$username[/fnc], [cmd]awhois[/cmd]
 	*/

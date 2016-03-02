@@ -100,7 +100,7 @@
 		The function returns a unique identifier which is passed by [b]requestStartedEvent()[/b] and [b]requestFinishedEvent()[/b].
 		When the request is started the requestStarted() signal is emitted. When it is finished the requestFinished() signal is emitted.
 		!fn: <id:integer>$currentId()
-		Returns the identifier of the HTTP request being executed or 0 if there is no request being executed.
+		Returns the identifier of the HTTP request being executed or [b]0[/b] if there is no request being executed.
 		!fn: <id:integer> $setProxy(<host:string>,<port:integer>,[<user:string>,<password:string>])
 		Enables HTTP proxy support, using the proxy server host on port port.
 		Optionals parameters user and password can be provided if the proxy server requires authentication.

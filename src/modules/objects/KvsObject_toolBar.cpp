@@ -52,14 +52,12 @@
 		!fn: $addSeparator()
 		Adds a separator to the right/bottom of the toolbar.
 		!fn: $setLabel(<text:string>)
-		Sets the toolbar's label.
+		Sets the toolbars label.
 		!fn: <string> $label()
-		Returns the toolbar's label.
+		Returns the toolbars label.
 		!fn: $clear()
-		Deletes all the toolbar's child widgets.
-
+		Deletes all the toolbars child widgets.
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_toolBar,"toolbar","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar,addSeparator)

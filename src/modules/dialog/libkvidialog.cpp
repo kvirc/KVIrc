@@ -162,14 +162,14 @@ void KviKvsCallbackMessageBox::done(int code)
 		to be the escape button of the dialog.[br]
 		<magic1>, <magic2>... are the magic parameters - evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
-		If the -b or -modal switch is specified the dialog will have blocking modal behavior -
+		If the -b or -modal switch is specified the dialog will have blocking modal behaviour -
 		it will appear above its parent widget and block its input until the dialog is closed.[br]
 		Once the dialog is displayed, the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed, passing the number of the button clicked
-		as $0 and the magic parameters as positional parameters $1, $2, $3....[br]
+		as $0 and the magic parameters as positional parameters $1, $2, $3.[br]
 	@examples:
 		[example]
-		[comment]//Just a warning dialog[/comment]
+		[comment]# Just a warning dialog[/comment]
 		dialog.message("Warning","You're being <b>warned</b>",warning,"OK"){ echo The user clicked OK; }
 		[comment]# A question[/comment]
 		dialog.message("And now?","What do you want to do?",information,"Go home","Watch TV","Scream")
@@ -467,7 +467,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		as $0, and the magic parameters as positional parameters $2, $3, $4....[br]
 	@examples:
 		[example]
-		[comment]//We need a single line reason[/comment]
+		[comment]# We need a single line reason[/comment]
 		dialog.textinput -d="Working!" (Away,Please enter the away message,"OK","Cancel")
 		{
 			switch($0)

@@ -48,38 +48,38 @@ namespace KviKvsCoreFunctions
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
-/*
-	@doc:	gender
-	@type:
+	/*
+		@doc:	gender
+		@type:
 		function
-	@title:
-		$gender
-	@short:
-		Returns the gender of the specified user
-	@syntax:
-		<string> $gender(<nickname:string>)
-	@description:
-		Returns the gender, or 'unknown' if not setted from remote user, of the specified IRC user IF it is known.[br]
-		The gender is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
-		The gender is generally known if the user is on a channel with you
-		or has an open query with you.[br]
-		Detailed explanation:[br]
-		KVIrc has an internal database of users that are currently
-		visible by *this client*: this includes users on open channels
-		and queries.[br] The other IRC users are [b]not[/b] in the database:
-		this means that KVIrc knows [b]nothing[/b] about them and can't return
-		any information immediately. In this case this function will return
-		an EMPTY string.[br]
-		If a user is in the database, at least his nickname is known.[br]
-		The username and hostname are known only if the server provides that information
-		spontaneously or after a KVIrc request.[br]
-		KVIrc requests user information for all the users in open queries
-		and channels. This information takes some time to be retrieved,
-		in this interval of time KVIrc knows only the user's nickname.
-		This function will return the string "*" in this case.[br]
-	@seealso:
-		[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$realname[/fnc], [cmd]$username[/cmd]
-*/
+		@title:
+			$gender
+		@short:
+			Returns the gender of the specified user
+		@syntax:
+			<string> $gender(<nickname:string>)
+		@description:
+			Returns the gender, or 'unknown' if not setted from remote user, of the specified IRC user IF it is known.[br]
+			The gender is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
+			The gender is generally known if the user is on a channel with you
+			or has an open query with you.[br]
+			Detailed explanation:[br]
+			KVIrc has an internal database of users that are currently
+			visible by *this client*: this includes users on open channels
+			and queries.[br] The other IRC users are [b]not[/b] in the database:
+			this means that KVIrc knows [b]nothing[/b] about them and can't return
+			any information immediately. In this case this function will return
+			an EMPTY string.[br]
+			If a user is in the database, at least his nickname is known.[br]
+			The username and hostname are known only if the server provides that information
+			spontaneously or after a KVIrc request.[br]
+			KVIrc requests user information for all the users in open queries
+			and channels. This information takes some time to be retrieved,
+			in this interval of time KVIrc knows only the user's nickname.
+			This function will return the string [b]*[/b] in this case.[br]
+		@seealso:
+			[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$realname[/fnc], [cmd]$username[/cmd]
+	*/
 
 KVSCF(gender)
 {
@@ -110,7 +110,7 @@ KVSCF(gender)
 	return true;
 }
 
-	/*
+/*
 		@doc: globals
 		@type:
 			function
@@ -123,7 +123,9 @@ KVSCF(gender)
 		@description:
 			Returns an hashtable of all global variables set.
 		@examples:
-			echo $globals()
+			[example]
+				echo $globals()
+			[example]
 		@seealso:
 			[cmd]global[/cmd]
 			[fnc]$hash[/fnc]
@@ -251,7 +253,7 @@ KVSCF(gender)
 			KVIrc requests user information for all the users in open queries
 			and channels. This information takes some time to be retrieved,
 			in this interval of time KVIrc knows only the user's nickname.
-			This function will return the string "*" in this case.[br]
+			This function will return the string [b]*[/b] in this case.[br]
 		@seealso:
 			[fnc]$isWellKnown[/fnc], [fnc]$username[/fnc], [cmd]awhois[/cmd]
 	*/
@@ -281,17 +283,17 @@ KVSCF(gender)
 	}
 
 	/*
-	@doc: lag
-	@type:
+		@doc: lag
+		@type:
 			function
-	@title:
+		@title:
 			$lag
-	@short:
-		Returns the lag on the current server
-	@syntax:
-		<integer> $lag
-	@description:
-		This function returns the lag in the current server, in milliseconds.[br]
+		@short:
+			Returns the lag on the current server
+		@syntax:
+			<integer> $lag
+		@description:
+			This function returns the lag in the current server, in milliseconds.[br]
 	*/
 
 	KVSCF(lag)
@@ -324,7 +326,7 @@ KVSCF(gender)
 			Returns a high precision timestamp as a floating point value.
 			The timestamp represents the number of seconds elapsed since
 			a certain moment in the past. The number of seconds
-			contains a "high precision" fractional part. The "certain moment" definition
+			contains a [i]high precision[/i] fractional part. The [i]certain moment[/i] definition
 			depends on the platform KVIrc is executed. This means that
 			this timestamp is totally useless to represent a time value
 			but is useful to compute time intervals with sub-second precision.
@@ -528,11 +530,11 @@ KVSCF(gender)
 		@title:
 			$isbot
 		@short:
-			Returns 1 if the user is a bot. Otherwise return 0.
+			Returns [b]1[/b] if the user is a bot. Otherwise return 0.
 		@syntax:
 			<string> $isbot(<nickname:string>)
 		@description:
-			Returns 1 if the user is a bot. Otherwise return 0.[br]
+			Returns [b]1[/b] if the user is a bot. Otherwise return 0.[br]
 			This info  is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 			This info is generally known if the user is on a channel with you
 			or has an open query with you.[br]
@@ -549,7 +551,7 @@ KVSCF(gender)
 			KVIrc requests user information for all the users in open queries
 			and channels. This information takes some time to be retrieved,
 			in this interval of time KVIrc knows only the user's nickname.
-			This function will return the string "*" in this case.[br]
+			This function will return the string [b]*[/b] in this case.[br]
 		@seealso:
 			[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$realname[/fnc], [cmd]$username[/cmd]
 	*/
@@ -666,7 +668,7 @@ KVSCF(gender)
 		@syntax:
 			<boolean> $isEventEnabled(<event_name:string>,<handler_name:string>)
 		@description:
-			Returns 1 if the event handler is enabled.
+			Returns [b]1[/b] if the event handler is enabled.
 	*/
 
 	KVSCF(isEventEnabled)
@@ -719,7 +721,7 @@ KVSCF(gender)
 		@short:
 			Finds whether a variable contains a representation of a number
 		@description:
-			Returns 1 if the <data> is an integer or a real number, 0 otherwise.
+			Returns [b]1[/b] if the <data> is an integer or a real number, and [b]0[/b] otherwise.
 	*/
 
 	KVSCF(isNumeric)
@@ -746,11 +748,11 @@ KVSCF(gender)
 			<boolean> $isSet(<data:variant>)
 		@description:
 			Returns 1 if <data> is actually set to some non-empty value
-			and 0 otherwise. If <data> is a variable, then this function
+			and [b]0[/b] otherwise. If <data> is a variable, then this function
 			simply checks if the variable is set. If <data> is a constant
 			then this function checks if the constant is non empty.
-			Since KVIrc treats empty strings as "unset" values then
-			this function could be also called "isNonEmpty" and it is
+			Since KVIrc treats empty strings as [i]unset[/i] values then
+			this function could be also called [i]isNonEmpty[/i] and it is
 			the perfect opposite of [fnc]$isEmpty[/fnc]
 		@seealso:
 			[fnc]$isEmpty[/fnc], [cmd]unset[/cmd]
@@ -778,7 +780,7 @@ KVSCF(gender)
 		@syntax:
 			<boolean> $istimer(<name:string>)
 		@description:
-			Returns 1 if the timer named <name> is actually running, 0 otherwise.
+			Returns [b]1[/b] if the timer named <name> is actually running, and [b]0[/b] otherwise.
 		@seealso:
 			[cmd]timer[/cmd], [cmd]killtimer[/cmd]
 	*/
@@ -933,9 +935,9 @@ KVSCF(gender)
 		@description:
 			Returns the short name of currently used language.[br]
 			Type <type> should be one of: [br]
-			"full"  - returns full locale name, such as ru_RU.UTF-8 (default).[br]
-			"lang"  - return language name, such as "ru_RU".[br]
-			"short" - returns only language group such as "ru".[br]
+			[i]full[/i]  - returns full locale name, such as ru_RU.UTF-8 (default).[br]
+			[i]lang[/i]  - return language name, such as ru_RU.[br]
+			[i]short[/i] - returns only language group such as ru.[br]
 	*/
 
 	KVSCF(lang)

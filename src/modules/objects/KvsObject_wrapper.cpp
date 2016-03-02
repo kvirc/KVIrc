@@ -35,7 +35,6 @@
 #include "KviApplication.h"
 #include "KviMainWindow.h"
 
-
 /*
 	@doc: wrapper
 	@keyterms:
@@ -50,143 +49,111 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		[p]
 		This class "wraps" existing KVIrc widgets and allows using the [class]widget[/class]
 		class API to manipulate them. You can use it, for example, to set the geometry of the
-		KVIrc main window or to apply some crazy graphical changes to the UI.
-		[/p]
-		[p]
+		KVIrc main window or to apply some crazy graphical changes to the UI.[br]
 		The KVIrc Qt widgets are arranged in trees (just as the objects). The difference is that there can be more than one
-		toplevel widget and so more than one tree. You can use [fnc]$objects.dump()[/fnc] to take a look at the KVIrc Qt objects tree.
-		[/p]
-		[p]
+		toplevel widget and so more than one tree. You can use [fnc]$objects.dump()[/fnc] to take a look at the KVIrc Qt objects tree.[br]
 		Here is a part of the tree:
-		[/p]
 		[example]
-		Ptr 23786128: top level object: kvirc_frame, class KviMainWindow, visible, rect = 1678, -3, 1680, 1030
-		>Ptr 23496976: object: qt_rubberband, class QRubberBand
-		>Ptr 23536608: object: main_frame_splitter, class QSplitter
-		>>Ptr 23795232: object: mdi_manager, class KviWindowStack
-		>>>Ptr 23863200: object: qt_scrollarea_hcontainer, class QWidget
-		>>>>Ptr 23418224: object: , class QScrollBar
-		>>>Ptr 23864832: object: qt_scrollarea_vcontainer, class QWidget
-		>>>>Ptr 22383424: object: , class QScrollBar
-		>>Ptr 25750832: object: mdi_manager, class KviWindowStack
-		>>>Ptr 26112928: object: , class QWidget
-		>>>>Ptr 45381568: object: , class Oxygen::MdiWindowShadow
-		>>>>Ptr 45952496: object: mdi_child_Azzurra_#kvirc, class KviMdiChild
-		>>>>>Ptr 43714656: object: #kvirc, class KviChannelWindow
-		>Ptr 18004432: object: , class KviStatusBar
-		>>Ptr 18007408: object: msgstatuslabel, class QLabel
-		>>>Ptr 24067088: object: , class Oxygen::TransitionWidget
-		>Ptr 24503248: object: windowlist, class KviTreeWindowList
-		>>Ptr 24459744: object: qt_dockwidget_floatbutton, class QDockWidgetTitleButton
-		>>Ptr 24498560: object: qt_dockwidget_closebutton, class QDockWidgetTitleButton
-		>>Ptr 23996288: object: tree_windowlist, class KviTreeWindowListTreeWidget
+			Ptr 23786128: top level object: kvirc_frame, class KviMainWindow, visible, rect = 1678, -3, 1680, 1030
+			>Ptr 23496976: object: qt_rubberband, class QRubberBand
+			>Ptr 23536608: object: main_frame_splitter, class QSplitter
+			>>Ptr 23795232: object: mdi_manager, class KviWindowStack
+			>>>Ptr 23863200: object: qt_scrollarea_hcontainer, class QWidget
+			>>>>Ptr 23418224: object: , class QScrollBar
+			>>>Ptr 23864832: object: qt_scrollarea_vcontainer, class QWidget
+			>>>>Ptr 22383424: object: , class QScrollBar
+			>>Ptr 25750832: object: mdi_manager, class KviWindowStack
+			>>>Ptr 26112928: object: , class QWidget
+			>>>>Ptr 45381568: object: , class Oxygen::MdiWindowShadow
+			>>>>Ptr 45952496: object: mdi_child_Azzurra_#kvirc, class KviMdiChild
+			>>>>>Ptr 43714656: object: #kvirc, class KviChannelWindow
+			>Ptr 18004432: object: , class KviStatusBar
+			>>Ptr 18007408: object: msgstatuslabel, class QLabel
+			>>>Ptr 24067088: object: , class Oxygen::TransitionWidget
+			>Ptr 24503248: object: windowlist, class KviTreeWindowList
+			>>Ptr 24459744: object: qt_dockwidget_floatbutton, class QDockWidgetTitleButton
+			>>Ptr 24498560: object: qt_dockwidget_closebutton, class QDockWidgetTitleButton
+			>>Ptr 23996288: object: tree_windowlist, class KviTreeWindowListTreeWidget
 		[/example]
-		[p]
 		As you can see the objects are identified by their names (for example "mdi_manager") and
-		by their class names (for example KviChannelWindow).
-		To wrap a specific widget you must provide a path in the tree composed of search specifiers.
-		Each search specifier can have one of the following forms:
-		[/p]
+		by their class names (for example KviChannelWindow).[br]
+		To wrap a specific widget you must provide a path in the tree composed of search specifiers.[br]
+		Each search specifier can have one of the following forms:[br]
 		[example]
-		(1) <class>
-		(2) <class>::<name>
-		(3) ::<name>
-		(4) !Window::<window_identifier>
-		(5) !Parent::N
+			(1) <class>
+			(2) <class>::<name>
+			(3) ::<name>
+			(4) !Window::<window_identifier>
+			(5) !Parent::N
 		[/example]
-		[p]
-		The first three forms may be preceded by the prefix '*' which will tell KVS to perform
-		a recursive search from this point. Let's see some examples.
-		[/p]
-		[p]
-		The form (1) matches the first widget with the specified class name. For instance:
-		[/p]
+		The first three forms may be preceded by the prefix [b]*[/b] which will tell KVS to perform
+		a recursive search from this point. Let's see some examples.[br]
+		The form (1) matches the first widget with the specified class name.[br]
+		For instance:[br]
 		[example]
-		%Frame = $new(wrapper,0,test,KviMainWindow)
+			%Frame = $new(wrapper,0,test,KviMainWindow)
 		[/example]
-		[p]
 		This will wrap the first top level object with class KviMainWindow. Now you can use
-		any [class]widget[/class] or [class]object[/class] methods on it.
-		[/p]
+		any [class]widget[/class] or [class]object[/class] methods on it.[br]
 		[example]
-		%Frame = $new(wrapper,0,test,KviMainWindow)
-		%Frame->$setGeometry(20,20,400,400);
+			%Frame = $new(wrapper,0,test,KviMainWindow)
+			%Frame->$setGeometry(20,20,400,400);
 		[/example]
-		[p]
-		If you want to wrap the KVIrc status bar you can use a composite path:
-		[/p]
+		If you want to wrap the KVIrc status bar you can use a composite path:[br]
 		[example]
-		%StatusBar = $new(wrapper,0,test,KviMainWindow,KviStatusBar)
-		%StatusBar->$setProperty(autoFillBackground,1)
-		%StatusBar->$setBackgroundColor(80,80,0)
+			%StatusBar = $new(wrapper,0,test,KviMainWindow,KviStatusBar)
+			%StatusBar->$setProperty(autoFillBackground,1)
+			%StatusBar->$setBackgroundColor(80,80,0)
 		[/example]
-		[p]
 		The form (2) matches both the class and the widget name. In this way you can differentiate
-		between children that have the same class. For instance:
-		[/p]
+		between children that have the same class.[br]
+		For instance:[br]
 		[example]
-		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,QWidget::qt_scrollarea_vcontainer,QScrollBar)
-		%VerticalScrollBar->$setProperty(invertedAppearance,1);
+			%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,QWidget::qt_scrollarea_vcontainer,QScrollBar)
+			%VerticalScrollBar->$setProperty(invertedAppearance,1);
 		[/example]
-		[p]
 		In this way KVS was able to pick the vertical scrollbar instead of the horizontal one (which comes first in the list).
-		(Now try to move a window out of the MDI area: the vertical scroll bar will be inverted!).
-		[/p]
-		[p]
-		The form (3) matches only the name and ignores the class. In our sample tree the following example is equivalent to the previous one.
-		[/p]
+		(Now try to move a window out of the MDI area: the vertical scroll bar will be inverted!).[br]
+		The form (3) matches only the name and ignores the class.[br]
+		In our sample tree the following example is equivalent to the previous one.
 		[example]
-		%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,::qt_scrollarea_vcontainer,QScrollBar)
-		%VerticalScrollBar->$setProperty(invertedAppearance,1);
+			%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,::qt_scrollarea_vcontainer,QScrollBar)
+			%VerticalScrollBar->$setProperty(invertedAppearance,1);
 		[/example]
-		[p]
 		If you don't want to specify the full path to the widget you can try to use a recursive search which may skip some levels.
-		Keep in mind that the recursive search is breadth-first and will return the first widget that matches.
-		In our sample tree the following would match the first widget with class KviChannelWindow.
-		[/p]
+		Keep in mind that the recursive search is breadth-first and will return the first widget that matches.[br]
+		In our sample tree the following would match the first widget with class KviChannelWindow.[br]
 		[example]
-		%Chan = $new(wrapper,0,test,*KviChannelWindow)
-		%Chan->$setBackgroundColor(80,0,0);
+			%Chan = $new(wrapper,0,test,*KviChannelWindow)
+			%Chan->$setBackgroundColor(80,0,0);
 		[/example]
-		[p]
-		The following would match the first widget with name #kvirc
-		[/p]
+		The following would match the first widget with name #kvirc[br]
 		[example]
-		%Chan = $new(wrapper,0,test,*::#kvirc)
-		%Chan->$setBackgroundColor(80,0,0);
+			%Chan = $new(wrapper,0,test,*::#kvirc)
+			%Chan->$setBackgroundColor(80,0,0);
 		[/example]
-		[p]
 		The recursive search can start at any level, so if starting from the root does not work properly you might try
-		specifying a part of the path and then searching recursively.
-		[/p]
+		specifying a part of the path and then searching recursively.[br]
 		[example]
-		%Chan = $new(wrapper,0,test,KviMainWindow,*::#kvirc)
-		%Chan->$setBackgroundColor(80,0,0);
+			%Chan = $new(wrapper,0,test,KviMainWindow,*::#kvirc)
+			%Chan->$setBackgroundColor(80,0,0);
 		[/example]
-		[p]
 		The form (4) allows you to jump directly to a specific KVIrc channel/query/console window,
-		without the need of looking it up in the tree.
-		[/p]
+		without the need of looking it up in the tree.[br]
 		[example]
-		%Win = $new(wrapper,0,test,!Window::$window)
-		%Win->$setBackgroundColor(80,0,0);
+			%Win = $new(wrapper,0,test,!Window::$window)
+			%Win->$setBackgroundColor(80,0,0);
 		[/example]
-		[p]
-		Finally the last form allows you to jump N levels up in the tree. If N is omitted it is assumed to be 1.
-		[/p]
+		Finally the last form allows you to jump N levels up in the tree.[br]
+		If N is omitted it is assumed to be 1.
 		[example]
-		%Win = $new(wrapper,0,test,!Window::$window,!Parent::3)
-		%Win->$setGeometry(10,10,40,40)
+			%Win = $new(wrapper,0,test,!Window::$window,!Parent::3)
+			%Win->$setGeometry(10,10,40,40)
 		[/example]
-		[p]
 		Experiment with it :)
-		[/p]
 */
-
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_wrapper,"wrapper","widget")
 

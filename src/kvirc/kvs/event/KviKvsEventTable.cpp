@@ -189,7 +189,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered every time that an URL is going to appear
 			in a KVIrc window output widget. You cannot stop it or modify it.
 			This event is good for implementing an URL catcher.[br]
-			WARNING: If you attempt to "echo $0" inside this event, you will cause an infinite loop.
+			WARNING: If you attempt to [i]echo $0[/i] inside this event, you will cause an infinite loop.
 	*/
 	EVENT("OnURL", \
 		"$0 = URL"),
@@ -234,7 +234,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			human readable string.[br]
 			The keys that actually work with KVIrc are:[br]
 			F2 to F12, F1 to F12 with SHIFT key pressed, 0 to 9 with CTRL key pressed.[br]
-			This means that you can set up 33 "quick" aliases...that's really more than
+			This means that you can set up 33 [i]quick[/i] aliases... that's really more than
 			an user can remember.[br]
 			Note: this event won't be called for keys already bound to actions.
 			If you need more keys, mail me, I'll see what I can do :)[br]
@@ -263,7 +263,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A channel or query message is going to be highlighted.[br]
 			The message may be either a PRIVMSG, a NOTICE or a CTCP ACTION.[br]
-			The highlight may be either caused by a "highlight word" or by your own nickname
+			The highlight may be either caused by a [i]highlight word[/i] or by your own nickname
 			(if that option was specified).[br]
 			$5 contains the original color/icon set of the message that depends on
 			the type of the message itself.[br]
@@ -322,7 +322,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			is detected to be ON-Line.[br]
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
-			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick is on IRC" output,
+			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the [i]Nick is on IRC[/i] output,
 			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
@@ -348,7 +348,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			has just left IRC.[br]
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
-			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick has left IRC" output,
+			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the [i]Nick has left IRC[/i] output,
 			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
@@ -605,12 +605,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			and you have not logged in: it is not a good idea
 			attempting to send data to the server (READ: [b]This is NOT
 			a good place for joining channels[/b]).
-			Your nickname is still "undefined" too.
+			Your nickname is still [i]undefined[/i] too.
 			If you're looking for the appropriate moment for sending
 			data to the server look at the [event:onirc]OnIRC[/event] event.
 			This event is a good place for initializing connection related
 			variables. By calling [cmd]halt[/cmd] in this event you will stop the
-			"Connection established" output.
+			[i]Connection established[/i] output.
 		@seealso:
 			[event:onircconnectionterminated]OnIRCConnectionTerminated[/event]
 	*/
@@ -634,7 +634,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			can't send data to the server. You can still read
 			the connection parameters like the server name or
 			network name. By calling [cmd]halt[/cmd] in this
-			event you will stop the "Connection terminated..." output.
+			event you will stop the [i]Connection terminated...[/i] output.
 		@seealso:
 			[event:onircconnectionestablished]OnIRCConnectionEstablished[/event]
 	*/
@@ -655,11 +655,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			This event is triggered immediately after the login
 			operations have been terminated. From now on you are
-			"completely on IRC": your nickname has been defined
+			[i]completely on IRC[/i]: your nickname has been defined
 			and the server is ready to accept commands from you.
-			This is a good place to join the "preferred channels".
+			This is a good place to join the [i]preferred channels[/i].
 			By calling [cmd]halt[/cmd] in this event you will
-			stop the "Login operations complete..." output.
+			stop the [i]Login operations complete...[/i] output.
 		@seealso:
 			[event:onircconnectionestablished]OnIRCConnectionEstablished[/event]
 			[event:onircconnectionterminated]OnIRCConnectionTerminated[/event]
@@ -684,8 +684,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			The two parameters passed are the two servers that lost the link and were
 			signaled in that particular quit message.[br]
 			The actual netsplit detector in the KVIrc core uses the following rule
-			(extracted from the eggdrop bot code): "determine if signoff string matches "%.% %.%",
-			and only one space".[br]
+			(extracted from the eggdrop bot code): [i]determine if signoff string matches "%.% %.%",
+			and only one space[/i].[br]
 			[b]Note that this may be not accurate and KVIrc CAN be fooled by specially
 			formatted quit messages that aren't really netsplits.[/b][br]
 			KVIrc tries to avoid duplicate netsplit warnings thus this event will NOT
@@ -713,7 +713,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			console
 		@description:
 			Triggered when the user requests a disconnection from
-			a server by pressing the "disconnect" button, by closing
+			a server by pressing the [i]disconnect[/i] button, by closing
 			the console or closing KVIrc. It is your last chance
 			to send some meaningful data to the server before the QUIT message
 			is sent. You can't prevent the user from disconnecting - [cmd]halt[/cmd] does nothing here.[br]
@@ -771,7 +771,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			An unhandled/unrecognized literal server message has been received.[br]
 			The KVIrc core code hasn't been able to recognize it nor handle it in any way.[br]
 			If you call [cmd]halt[/cmd] you will stop the standard or warning message output.[br]
-			For server numerics there is no "unhandled" event, you should use the RAW numeric events to handle them.[br]
+			For server numerics there is no [i]unhandled[/i] event, you should use the RAW numeric events to handle them.[br]
 		@seealso:
 	*/
 	EVENT("OnUnhandledLiteral", \
@@ -908,7 +908,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when an user has right clicked on a hostname link in the text view.
 			The double click link action is builtin and it causes KVIrc to perform a DNS query on the hostname.
 			This is a good place to show a popup menu with some operations that can be done on the hostname like
-			"telnet", "traceroute", some special kind of DNS lookup (maybe an xterm with nslookup or sth).
+			[i]telnet[/i], [i]traceroute[/i], some special kind of DNS lookup (maybe an xterm with nslookup or sth).
 	*/
 	EVENT("OnHostLinkPopupRequest", \
 		"$0 = actual name\n" \
@@ -1025,7 +1025,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has right clicked on an "unknown" nickname link in
+			This event is triggered when an user has right clicked on an [i]unknown[/i] nickname link in
 			the text view.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the nickname like querying, sending a file by DCC or opening a dcc.chat.
@@ -1181,7 +1181,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This includes the channel users list, the ban list,
 			the channel mode, the topic and eventually
 			the invite and ban exception lists.[br]
-			Calling halt in this even stops the "channel synchronized" output.
+			Calling halt in this even stops the [i]channel synchronized[/i] output.
 			(the output will be halted anyway if [fnc]$option[/fnc](boolShowChannelSyncTime) evaluates to false)
 		@seealso:
 			[event:ondccchatpopuprequest]OnDCCChatPopupRequest[/event],
@@ -1213,7 +1213,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$0!$1@$2 is the source of the message, $3 is the message text
 			and $4 are the eventual mode prefixes added to the target channel (i.e:
 			if the message is only for channel operators then you will get the string @ in $4).
-			$5 will be 1 if the message was encrypted and 0 otherwise.
+			$5 will be [b]1[/b] if the message was encrypted and [b]0[/b] otherwise.
 		@seealso:
 			[event:onquerymessage]OnQueryMessage[/event]
 			[event:ondccchatmessage]OnDCCChatMessage[/event]
@@ -1247,7 +1247,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			For channel op or channel voice notices it will contain also the leading '@' or '+' flag.
 			Please note that this convention is different from the one used in [event:onchannelprivmsg]OnChannelMessage[/event]:
 			the incompatibility is here for historical reasons: it is not a big deal so we're not fighting it :)
-			$3 will be 1 if the message was encrypted and 0 otherwise.
+			$3 will be [b]1[/b] if the message was encrypted and [b]0[/b] otherwise.
 		@seealso:
 			[event:onservernotice]OnServerNotice[/event]
 	*/
@@ -1284,7 +1284,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Note also that you may not receive this event if the anti-spam option is in use and
 			KVIrc has detected that this might be a spam message. This is usually not an issue
 			but if you care about it then write to pragma at kvirc dot net asking to add a OnSpam event.
-			$4 will be 1 if the message is encrypted and 0 otherwise.
+			$4 will be [b]1[/b] if the message is encrypted and [b]0[/b] otherwise.
 		@seealso:
 			[event:onquerywindowrequest]OnQueryWindowRequest[/event]
 			[event:onquerywindowcreated]OnQueryWindowCreated[/event]
@@ -1318,7 +1318,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Triggered when a private notice is received.[br]
 			If you call [cmd]halt[/cmd] in this event, the message output will be stopped and if the message was going to cause a query window creation, the window will [b]not[/b] be created.
-			$4 will be 1 if the message is encrypted and 0 otherwise.
+			$4 will be [b]1[/b] if the message is encrypted and [b]0[/b] otherwise.
 		@seealso:
 			[event:onchannelmessage]OnChannelMessage[/event]
 			[event:onchannelnotice]OnChannelNotice[/event]
@@ -1454,7 +1454,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Console
 		@description:
 			Triggered when the local user enters the AWAY state.
-			Calling 'halt' in this event disables the server "You have been marked as being away" message.[br]
+			Calling 'halt' in this event disables the server [i]You have been marked as being away[/i] message.[br]
 		@seealso:
 			[event:onmeback]OnMeBack[/event]
 	*/
@@ -1478,7 +1478,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Triggered when the local user leaves the AWAY state.[br]
 			The $0 parameter contains the [b]UNIX time[/b] of the away status start.[br]
 			You can obtain the current [b]UNIX time[/b] from the function [fnc]$unixtime[/fnc].[br]
-			Calling 'halt' in this event disables the server "You are no longer marked as being away" message.[br]
+			Calling 'halt' in this event disables the server [i]You are no longer marked as being away[/i] message.[br]
 		@seealso:
 			[event:onmeaway]OnMeAway[/event]
 	*/
@@ -1790,8 +1790,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Triggered when the local user has changed his user mode.[br]
 			The first parameter is the changed mode flag with a leading '+' or '-' sign:
-			if the mode was removed it will be something like "-x", otherwise something like "+x".[br]
-			Calling 'halt' in this event will stop the "mode" message output.[br]
+			if the mode was removed it will be something like [i]-x[/i], otherwise something like [i]+x[/i].[br]
+			Calling 'halt' in this event will stop the [i]mode[/i] message output.[br]
 	*/
 	EVENT("OnUserModeChange", \
 		"$0 = mode flags"),

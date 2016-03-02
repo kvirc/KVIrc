@@ -59,6 +59,7 @@ const int align_cod[] = {
 	};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+
 /*
 	@doc: vbox
 	@keyterms:
@@ -83,10 +84,19 @@ const int align_cod[] = {
 		!fn: $addStretch(<stretch:integer>)
 		Adds a stretchable space with zero minimum size and stretch factor stretch to the end of this box layout.
 		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
-		Sets the alignment for widget w to  flags, given as parameters.
-		Valid flags are: Right, Left, Top, Bottom, HCenter, VCenter, Center, Justify
+		Sets the alignment for widget w to  flags, given as parameters.[br]
+		Valid flags are:[br]
+		[pre]
+			Right[br]
+			Left[br]
+			Top[br]
+			Bottom[br]
+			HCenter[br]
+			VCenter[br]
+			Center[br]
+			Justify
+		[/pre]
 */
-
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_vBox,"vbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_vBox,setMargin)

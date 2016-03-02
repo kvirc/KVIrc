@@ -48,7 +48,6 @@ const int align_cod[] = {
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 
-
 /*
 	@doc:	groupbox
 	@keyterms:
@@ -73,13 +72,13 @@ const int align_cod[] = {
 		!fn: <string> $title()
 		Returns the groupbox title text.
 		!fn: $setFlat(<bflag:boolean>)
-		Sets whether the group box is painted flat. Valid Values are 1 or 0.
+		Sets whether the group box is painted flat. Valid Values are [b]1[/b] or [b]0[/b].
 		!fn: <boolean> $isFlat()
-		Returns 1 (true) if the groupbox is painted flat; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the groupbox is painted flat; otherwise returns [b]0[/b] (false).
 		!fn: <boolean> $isCheckable()
-		Returns 1 (true) if the group box has a checkbox in its title; otherwise returns 0 (false).
+		Returns [b]1[/b] (true) if the group box has a checkbox in its title; otherwise returns [b]0[/b] (false).
 		!fn: $setCheckable(<bflag:boolean>)
-		Sets whether the groupbox has a checkbox in its title: Valid values are 1 or 0.
+		Sets whether the groupbox has a checkbox in its title: Valid values are [b]1[/b] or [b]0[/b].
 		!fn: $setInsideMargin(<margin:uint>)
 		Sets the the width of the inside margin to m pixels.
 		!fn: <integer> $insideMargin()
@@ -98,35 +97,35 @@ const int align_cod[] = {
 		Sets the groupbox's orientation. Valid values are: Horizontal, Vertical.
 	@examples:
 		[example]
-			[comment]//First we'll create the main widget. as a dialog[/comment]
+			[comment]# First we'll create the main widget. as a dialog[/comment]
 			%widget=$new(dialog)
 			%layout=$new(layout,%widget)
-			[comment]//Then the groupbox[/comment]
+			[comment]# Then the groupbox[/comment]
 			%gb=$new(groupbox,%widget)
 			%gb->$setTitle(Login)
 			%gb->$setAlignment("Left")
-			[comment]//Add the groupbox to the main layout[/comment]
+			[comment]# Add the groupbox to the main layout[/comment]
 			%layout->$addWidget(%gb,0,0)
-			[comment]//Now we create the user field 
+			[comment]# Now we create the user field 
 			(labels + lineedit) in a horizontal box[/comment]
 			%hbox=$new(hbox,%gb)
 			%labeluser=$new(label,%hbox)
 			%labeluser->$settext(User: )
 			%inputuser=$new(lineedit,%hbox)
-			[comment]//Now we create the password field 
+			[comment]# Now we create the password field 
 			(labels + lineedit) in a horizontal box[/comment]
 			%hbox=$new(hbox,%gb)
 			%labelpass=$new(label,%hbox)
 			%labelpass->$settext(Pass: )
 			%inputpass=$new(lineedit,%hbox)
 			%inputpass->$setechomode("password")
-			[comment]//Now we create the OK/Cancel box buttons[/comment]
+			[comment]# Now we create the OK/Cancel box buttons[/comment]
 			%hbox=$new(hbox,%gb)
 			%btnok=$new(button,%hbox)
 			%btnok->$settext("OK")
 			%btncancel=$new(button,%hbox)
 			%btncancel->$settext("Cancel")
-			[comment]//Let's show our nice form[/comment]
+			[comment]# Let's show our nice form[/comment]
 			%widget->$show()
 		[/example]
 */

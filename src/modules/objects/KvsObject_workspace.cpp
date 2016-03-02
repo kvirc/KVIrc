@@ -72,101 +72,99 @@
 		!fn: $activateNextWindow()
 		Activates the next window in the child window chain.
 		!fn: $activatePrevWindow()
-		Activates the previous window in the child window chain.[br]
+		Activates the previous window in the child window chain.
 	@examples:
 		[example]
-		[comment]
-		//Let's start.
-		//We start the main class creation, in the constructor we do the
-		//widget's showing, to give a particular pop-up
-		//creation appearance.
-		[/comment]
-		class (ws,widget)[br]
-		{[br]
-			constructor[br]
-			{[br]
-				$$->$setGeometry(%X,%Y,100,100)[br](KviKvsObjectFunctionCall *c
-				$$->%label=$new(label,$$)[br]
-				$$->%label->$settext("Another class by N\&G")[br]
-				$$->%label->$setautoresize(1)[br]
-				$$->$show()[br]
-			}[br]
-		}[br]
-		[comment]//We create the new workspace, and we set a 640x480 size with widget $resize command[/comment][br]
-		%Workspace=$new(workspace)[br]
-		%Workspace->$resize(640,480)[br]
-		[comment]
-		//Now we make a cycling construction of the widgets(look at the class),
-		//and give to the widgets a random X and Y coordinates.
-		//It takes few seconds to show the effects, be patient.
-		[/comment]
-		%I=0[br]
-		while (%I<100)[br]
-		{[br]
-			%X=$rand(500)[br]
-			%Y=$rand(480)[br]
-			%Widget=$new(ws,%Workspace)[br]
-			%I++[br]
-		}[br]
-		[comment]//Let's show the fireworks! EnJoY![/comment]
-		%Workspace->$show()[br]
+			[comment]# Let's start.
+			# We start the main class creation, in the constructor we do the
+			# widget's showing, to give a particular popup
+			# creation appearance.
+			[/comment]
+			class (ws,widget)
+			{
+				constructor
+				{
+					$$->$setGeometry(%X,%Y,100,100)[br](KviKvsObjectFunctionCall *c
+					$$->%label=$new(label,$$)
+					$$->%label->$settext("Another class by N\&G")
+					$$->%label->$setautoresize(1)
+					$$->$show()
+				}
+			}
+			[comment]# We create the new workspace, and we set a 640x480 size with widget $resize command[/comment]
+			%Workspace=$new(workspace)
+			%Workspace->$resize(640,480)
+			[comment]# Now we make a cycling construction of the widgets (look at the class),
+			# and give to the widgets a random X and Y coordinates.
+			# It takes few seconds to show the effects, be patient.
+			[/comment]
+			%I=0
+			while (%I<100)
+				
+				%X=$rand(500)
+				%Y=$rand(480)
+				%Widget=$new(ws,%Workspace)
+				%I++
+			}
+			[comment]# Let's show the fireworks! EnJoY![/comment]
+			%Workspace->$show()
 		[/example]
+			[b]Example 2:[/b]
 		[example]
-		[b]Example 2:[/b]
-		[comment]//This is like the first example but it has a particular animation effect.[/comment]
-		%Hex[]=$array(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F)[br]
-		class (ws,widget)[br]
-		{[br]
-			constructor[br]
-			{[br]
-			  $$->$setGeometry(%X,%Y,100,100)[br]
-			  $$->%lay=$new(layout,$$)[br]
-			  %i=0[br]
-			  while (%i<10)[br]
-				{[br]
-					$$->%label=$new(label,$$)[br]
-					$$->%label->$settext("Another class by N\&G")[br]
-					%color=%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)][br]
-					$$->%label->$setforegroundcolor(%color)[br]
-					$$->%label->$setautoresize(1)[br]
-					$$->%lay->$addwidget($$->%label,%i,0)[br]
-					%i++;[br]
-				}[br]
-				$$->$show()[br]
-			}[br]
-			mousepressevent[br]
-			{[br]
-				if ($istimer(cycle) == 1) killtimer cycle[br]
-			}[br]
-		}[br]
-		%Workspace=$new(workspace)[br]
-		%Workspace->$resize(640,480)[br]
-		%Workspace->$setWindowTitle("Hit the mouse to stop cycling windows...")[br]
-		%I=0[br]
-		%Cycle=1[br]
-		while (%I<20)[br]
-		{[br]
-			%X=$rand(500)[br]
-			%Y=$rand(480)[br]
-			%Widget=$new(ws,%Workspace)[br]
-			%I++[br]
-		}[br]
-		%Workspace->$show[br]
-		timer (cycle,3000)[br]
-		{[br]
-			if (%Cycle==1) %Workspace->$tile()[br]
-			if (%Cycle==2)[br]
-			{[br]
-				%Workspace->$cascade()[br]
-				%Cycle=1[br]
-				return[br]
-			}[br]
-			%Cycle++[br]
-		}[br]
-		privateimpl(%Workspace,mousepressevent)[br]
-		{[br]
-			if ($istimer(cycle) == 1) killtimer cycle[br]
-		}[br]
+			[comment]# This is like the first example but it has a particular animation effect.[/comment]
+			%Hex[]=$array(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F)
+			class (ws,widget)
+			{
+				constructor
+				{
+				$$->$setGeometry(%X,%Y,100,100)
+				$$->%lay=$new(layout,$$)
+				%i=0
+				while (%i<10)
+					{
+						$$->%label=$new(label,$$)
+						$$->%label->$settext("Another class by N\&G")
+						%color=%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]%Hex[$rand(15)]
+						$$->%label->$setforegroundcolor(%color)
+						$$->%label->$setautoresize(1)
+						$$->%lay->$addwidget($$->%label,%i,0)
+						%i++;
+					}
+					$$->$show()
+				}
+				mousepressevent
+				{
+					if ($istimer(cycle) == 1) killtimer cycle
+				}
+			}
+			%Workspace=$new(workspace)
+			%Workspace->$resize(640,480)
+			%Workspace->$setWindowTitle("Hit the mouse to stop cycling windows...")
+			%I=0
+			%Cycle=1
+			while (%I<20)
+			{
+				%X=$rand(500)
+				%Y=$rand(480)
+				%Widget=$new(ws,%Workspace)
+				%I++
+			}
+			%Workspace->$show
+			timer (cycle,3000)
+			{
+				if (%Cycle==1) %Workspace->$tile()
+				if (%Cycle==2)
+				{
+					%Workspace->$cascade()
+					%Cycle=1
+					return
+				}
+				%Cycle++
+			}
+			privateimpl(%Workspace,mousepressevent)
+			{
+				if ($istimer(cycle) == 1) killtimer cycle
+			}
 		[/example]
 */
 
