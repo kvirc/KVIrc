@@ -60,43 +60,43 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 	@short:
 		KVIrc modules model
 	@body:
-		Starting from version 2.0.0, KVIrc included support for external plugins:
-		parts of code that can be loaded at runtime. The support was optional
-		and the main KVIrc functionality was indipendant of that support.
-		In version 3.0.0 the "modularity" has becomed one of the primary KVIrc features.
-		The pieces of external code are now named "modules". The module
+		Starting from version 2.0.0, KVIrc includes support for external plugins:
+		parts of code that can be loaded at runtime. This support was optional
+		and the main KVIrc functionality was independent of that support.
+		In version 3.0.0 the [i]modularity[/i] became one of the primary KVIrc features.
+		These pieces of external code are now named [i]modules[/i]. The module
 		support has been rewritten completely to extend the available features
-		and remove some "basic" problems that were present in 2.0.0.
-		This caused the old "plugins" to be binary incompatible with the new KVIrc
-		executable; anyway, most old "plugins" have been rewritten as "modules"
+		and remove some [i]basic[/i] problems that were present in 2.0.0.
+		This caused the old [i]plugins[/i] to be binary incompatible with the new KVIrc
+		executable; anyway, most old [i]plugins[/i] have been rewritten as [i]modules[/i]
 		and included in the 3.0.0 distribution. Some of the basic KVIrc features
 		are based on modules now; for example, the help browser is now in an
-		external library called libkvihelp.so. This allows to keep the basic
+		external library called [i]libkvihelp.so[/i]. This allows to keep the basic
 		KVIrc executable smaller and faster (in some phases).
-		Module loading is now "transparent" to the user. There are no
-		"load" and "unload" commands: the modules are automatically
-		loaded when the "core" requests them and unloaded after some (configurable) time
+		Module loading is now [i]transparent[/i] to the user. There are no
+		[i]load[/i] and [i]unload[/i] commands: the modules are automatically
+		loaded when the [i]core[/i] requests them and unloaded after some (configurable) time
 		of inactivity.[br]
 
 		[big]Module naming convention[/big][br]
-		Every KVIrc module must have an "unique" name: the name is a single token,
+		Every KVIrc module must have an [i]unique[/i] name: the name is a single token,
 		made only of [b]lowercase[/b] letters, digits and underscores.
-		The real object file (library) is named "libkvi<name>.so".
+		The real object file (library) is named [i]libkvi<name>.so[/i].
 		This convention allows KVIrc to load modules when they are referenced
 		by name in the scripting code (the reference in the code is case insensitive
 		and remapped always to the lowercase version).[br]
 		[big]What a module can do[/big][br]
 		Basically, a module exports parts of the scripting language features.
-		For example, the module "about" exports the "aboutkvirc" command, that
+		For example, the module [i]about[/i] exports the [i]about.kvirc[/i] command, that
 		shows the dialog that lists the KVIrc staff people. The dialog
 		will be effectively activated only few times (maybe only once) by a single
 		user: including it in a separate module allows keeping rarely used code out
 		of the KVIrc executable and saving some memory.
 		To activate the dialog you only need to execute the command:[br]
 		[example]
-		about.aboutkvirc
+		about.kvirc
 		[/example]
-		That's all. KVIrc will load the necessary module, run the "aboutkvirc" command,
+		That's all. KVIrc will load the necessary module, run the [i]/about.kvirc[/i] command,
 		wait until the module is not used anymore and then unload it.[br]
 
 		[big]Transparent loading and unloading[/big][br]
@@ -115,19 +115,19 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		to be a reference to the <function> exported by module named <name>.
 
 		[big]Forced loading and unloading[/big]
-		All the modules export a "load" and a "unload" command.
+		All the modules export a [i]load[/i] and a [i]unload[/i] command.
 		[example]
 		about.load
 		[/example]
-		The example above will do nothing more than loading the "about"
+		The example above will do nothing more than loading the [i]about[/i]
 		module into the core memory.
 		[example]
 		about.unload
 		[/example]
 		The example above will forcibly unload the module from the core memory;
 		even if it is still locked.[br]
-		Please note that this can be dangerous in some situations...so
-		better check the KVIrc behaviour twice before making public any script
+		Please note that this can be dangerous in some situations... so
+		better check the KVIrc behavior twice before making public any script
 		that uses this command.
 */
 
