@@ -375,7 +375,7 @@ KVSCF(gender)
 			Returns the ID of the icon <iconname>.
 			You should always use this function where an <image_id> is required
 			and you want to use an internal icon.
-			See [fnc]$iconname[/fnc] for a list of the icon names supported by kvirc.[br]
+			See [fnc]$iconname[/fnc] for a list of the icon names supported by KVIrc.[br]
 		@examples:
 			[example]
 				[cmd]echo[/cmd] $icon(linux)

@@ -279,7 +279,7 @@ static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 		<package_image> is the path of an image to be used as package representative image. If the package is going
 		to contain a single theme you may specify the theme's screenshot here. Pass an empty string if you
 		don't want an image to be stored in the package.
-		<theme> is a either a single path to a directory containing a theme as it's exported by kvirc,
+		<theme> is a either a single path to a directory containing a theme as it's exported by KVIrc,
 		or an array of such paths.
 */
 static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
