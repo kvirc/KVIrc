@@ -362,10 +362,10 @@ int main(int argc, char ** argv)
 				KVI_VERSION, // program version
 				ki18n("Visual IRC Client"), // description
 				KAboutData::License_GPL, // license
-				ki18n("(c) 1998-2015 The KVIrc Development Team"),
+				ki18n("(c) 1998-2016 The KVIrc Development Team"),
 				ki18n("???"), // *some other text* ????
 				"http://www.kvirc.net", // homepage
-				"https://github.com/kvirc/KVIrc/issues" // bug address (FIXME: this would be an E-MAIL address...)
+				"https://github.com/kvirc/KVIrc/issues" // bug address
 			);
 
 		//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
@@ -379,10 +379,10 @@ int main(int argc, char ** argv)
 				KVI_VERSION, // program version
 				ki18n("Visual IRC Client").toString(), // description
 				KAboutLicense::GPL, // license
-				"(c) 1998-2015 The KVIrc Development Team",
+				"(c) 1998-2016 The KVIrc Development Team",
 				"???", // *some other text* ????
 				"http://www.kvirc.net", // homepage
-				"https://github.com/kvirc/KVIrc/issues" // bug address (FIXME: this would be an E-MAIL address...)
+				"https://github.com/kvirc/KVIrc/issues" // bug address
 			);
 	#endif //!COMPILE_KDE4_SUPPORT
 #endif
