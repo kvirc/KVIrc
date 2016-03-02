@@ -34,15 +34,14 @@
 	#include "KviApplication.h"
 	#include "KviQString.h"
 
+	#define KVI_WINDOWS_IPC_WINDOWTITLE "kvirc4_ipc_sentinel"
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+
 
 	static HWND kvi_win_findIpcSentinel()
 	{
-		HWND hWnd = ::FindWindow("QWidget","[Non-Commercial] - kvirc4_ipc_sentinel");
-		if(hWnd)return hWnd;
-		hWnd = ::FindWindow("QWidget","[Freeware] - kvirc4_ipc_sentinel");
-		if(hWnd)return hWnd;
-		hWnd = ::FindWindow("QWidget","kvirc4_ipc_sentinel");
+		HWND hWnd = ::FindWindow("QWidget", KVI_WINDOWS_IPC_WINDOWTITLE);
 		return hWnd;
 	}
 
@@ -215,8 +214,9 @@
 	KviIpcSentinel::KviIpcSentinel()
 	: QWidget(0)
 	{
-		setObjectName("kvirc4_ipc_sentinel");
+		setObjectName(KVI_WINDOWS_IPC_WINDOWTITLE);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		setWindowTitle(KVI_WINDOWS_IPC_WINDOWTITLE);
 		setWindowFlags(Qt::FramelessWindowHint);
 #else
 	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
