@@ -37,7 +37,7 @@
 * \brief Keyboard shortcuts
 *
 * \def KVI_SHORTCUTS_AWAY Go away/back
-* \def KVI_SHORTCUTS_CONNECT Connect/disconnect current irc context
+* \def KVI_SHORTCUTS_CONNECT Connect/disconnect current IRC context
 * \def KVI_SHORTCUTS_CONTEXT Open new context
 * \def KVI_SHORTCUTS_EXEC Open "Execute Script" dialog
 * \def KVI_SHORTCUTS_HELP Help Index (Window)
@@ -62,13 +62,13 @@
 * \def KVI_SHORTCUTS_INPUT_CUT Cut the selected text and copy the text to clipboard
 * \def KVI_SHORTCUTS_INPUT_DELETE Delete key
 * \def KVI_SHORTCUTS_INPUT_DELETE_WORD Delete last word
-* \def KVI_SHORTCUTS_INPUT_END Move the cursos at the end
+* \def KVI_SHORTCUTS_INPUT_END Move the cursor at the end
 * \def KVI_SHORTCUTS_INPUT_END_SELECT Select until the end
 * \def KVI_SHORTCUTS_INPUT_ESCAPE Escape key
 * \def KVI_SHORTCUTS_INPUT_HISTORY Open the history popup
 * \def KVI_SHORTCUTS_INPUT_HISTORY_NEXT Move forward in the command history
 * \def KVI_SHORTCUTS_INPUT_HISTORY_PREV Move backward in the command history
-* \def KVI_SHORTCUTS_INPUT_HOME Move the cursos at the beginning
+* \def KVI_SHORTCUTS_INPUT_HOME Move the cursor at the beginning
 * \def KVI_SHORTCUTS_INPUT_HOME_SELECT Select until the beginning
 * \def KVI_SHORTCUTS_INPUT_ICON Insert the 'icon' control code and pops up the icon list box
 * \def KVI_SHORTCUTS_INPUT_MULTILINE Show/hide the multiline editor
@@ -142,7 +142,7 @@
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_INPUT_UNDERLINE QKeySequence::Underline			// Ctrl+U
 #define KVI_SHORTCUTS_INPUT_PASTE QKeySequence::Paste				// Ctrl+V
-#define KVI_SHORTCUTS_WIN_CLOSE "Ctrl+W" // QKeySequence::Close seems to be problematic
+#define KVI_SHORTCUTS_WIN_CLOSE "Ctrl+W"					// QKeySequence::Close seems to be problematic
 #define KVI_SHORTCUTS_INPUT_CUT QKeySequence::Cut				// Ctrl+X
 #define KVI_SHORTCUTS_INPUT_COMMANDLINE "Ctrl+Y"
 #define KVI_SHORTCUTS_INPUT_UNDO QKeySequence::Undo				// Ctrl+Z
@@ -166,11 +166,11 @@
 #define KVI_SHORTCUTS_INPUT_REDO QKeySequence::Redo				// Ctrl+Shift+Z
 #define KVI_SHORTCUTS_WIN_PREV Qt::AltModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT Qt::AltModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_WIN_NEXT_TAB Qt::ControlModifier + Qt::Key_Tab      // Ctrl+Tab
+#define KVI_SHORTCUTS_WIN_NEXT_TAB Qt::ControlModifier + Qt::Key_Tab		// Ctrl+Tab
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 # define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::ShiftModifier + Qt::Key_Tab  // Ctrl+Shift+Tab
 #else
-# define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::Key_Backtab  // Ctrl+Shift+Tab
+# define KVI_SHORTCUTS_WIN_PREV_TAB Qt::ControlModifier + Qt::Key_Backtab	// Ctrl+Shift+Tab
 #endif
 #define KVI_SHORTCUTS_WIN_PREV_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
@@ -225,7 +225,7 @@
 		This list contains the key sequences associated to some common actions (e.g. selecting text). Since KVIrc 4.2 the shortcuts are dynamic:
 		[ul]
 		[li]more shortcuts can trigger the same actions: Cut is both Ctrl+X and Shift+Del[/li]
-		[li]shortcuts can be adapted to the OS: Help is F1 under Windows and Linux, Ctrl+? on Mac OSX[/li]
+		[li]shortcuts can be adapted to the OS: Help is F1 under Windows and Linux, ⌘? on OS X[/li]
 		[/ul]
 		A full list of available combinations is available at the [anchorlink:http://doc.qt.nokia.com/latest/qkeysequence.html#standard-shortcuts] Qt documentation[/anchorlink]
 		[br]
@@ -234,19 +234,19 @@
 		[b]Ctrl+A:[/b] Select all[br]
 		[b]Ctrl+B:[/b] Insert Bold control character[br]
 		[b]Ctrl+C:[/b] Copy to clipboard[br]
-		[b]Ctrl+F:[/b] Open "Find Text" dialog[br]
-		[b]Ctrl+G:[/b] Activate spellchecker[br]
-		[b]Ctrl+L:[/b] Scroll to the "last read" line marker[br]
-		[b]Ctrl+I:[/b] Open "Insert icon" dialog[br]
-		[b]Ctrl+J:[/b] Open "Join Channels" dialog[br]
-		[b]Ctrl+K:[/b] Open "Insert Color" dialog[br]
+		[b]Ctrl+F:[/b] Open [i]Find Text[/i] dialog[br]
+		[b]Ctrl+G:[/b] Activate spell-checker[br]
+		[b]Ctrl+L:[/b] Scroll to the [i]last read[/i] line marker[br]
+		[b]Ctrl+I:[/b] Open [i]Insert icon[/i] dialog[br]
+		[b]Ctrl+J:[/b] Open [i]Join Channels[/i] dialog[br]
+		[b]Ctrl+K:[/b] Open [i]Insert Color[/i] dialog[br]
 		[b]Ctrl+L:[/b] Scroll to the last read line[br]
 		[b]Ctrl+N:[/b] Open new context[br]
 		[b]Ctrl+O:[/b] Insert Reset control character[br]
-		[b]Ctrl+P:[/b] Insert "Plain text" control character[br]
+		[b]Ctrl+P:[/b] Insert [i]Plain text[/i] control character[br]
 		[b]Ctrl+Q:[/b] Quit [br]
 		[b]Ctrl+R:[/b] Insert Reverse control character[br]
-		[b]Ctrl+S:[/b] Open "Servers" dialog [br]
+		[b]Ctrl+S:[/b] Open [i]Servers[/i] dialog [br]
 		[b]Ctrl+U:[/b] Insert Underline control character[br]
 		[b]Ctrl+V:[/b] Paste clipboard contents[br]
 		[b]Ctrl+W:[/b] Close current window[br]
@@ -257,22 +257,22 @@
 		[b]Ctrl+"-":[/b] Decrease font size[br]
 		[b]Ctrl+0:[/b] Restore default font (and font size)[br]
 		[b]Ctrl+Shift+A:[/b] Go away/back[br]
-		[b]Ctrl+Shift+B:[/b] Open "Manage Toolbars" dialog[br]
+		[b]Ctrl+Shift+B:[/b] Open [i]Manage Toolbars[/i] dialog[br]
 		[b]Ctrl+Shift+C:[/b] Connect/disconnect current irc context[br]
 		[b]Ctrl+Shift+D:[/b] Open Class editor[br]
 		[b]Ctrl+Shift+E:[/b] Open Event editor[br]
 		[b]Ctrl+Shift+I:[/b] Open Identity options[br]
 		[b]Ctrl+Shift+L:[/b] Open Alias editor[br]
-		[b]Ctrl+Shift+M:[/b] Open "Manage Themes" dialog[br]
-		[b]Ctrl+Shift+N:[/b] Open "Manage Addons" dialog[br]
-		[b]Ctrl+Shift+O:[/b] Open "Options" dialog[br]
+		[b]Ctrl+Shift+M:[/b] Open [i]Manage Themes[/i] dialog[br]
+		[b]Ctrl+Shift+N:[/b] Open [i]Manage Addons[/i] dialog[br]
+		[b]Ctrl+Shift+O:[/b] Open [i]Options[/i] dialog[br]
 		[b]Ctrl+Shift+P:[/b] Open Popup editor[br]
 		[b]Ctrl+Shift+Q:[/b] Open Action editor[br]
 		[b]Ctrl+Shift+R:[/b] Open Raw events editor[br]
 		[b]Ctrl+Shift+S:[/b] Open Script tester[br]
-		[b]Ctrl+Shift+T:[/b] Open "Theme Options" dialog[br]
-		[b]Ctrl+Shift+U:[/b] Open "Registered users" dialog[br]
-		[b]Ctrl+Shift+X:[/b] Open "Execute Script" dialog[br]
+		[b]Ctrl+Shift+T:[/b] Open [i]Theme Options[/i] dialog[br]
+		[b]Ctrl+Shift+U:[/b] Open [i]Registered users[/i] dialog[br]
+		[b]Ctrl+Shift+X:[/b] Open [i]Execute Script[/i] dialog[br]
 		[b]Ctrl+Shift+Z:[/b] Redo last action[br]
 
 		[big]Window handling related keys:[/big][br]
