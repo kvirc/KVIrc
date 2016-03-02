@@ -217,7 +217,6 @@
 	{
 		setObjectName("kvirc4_ipc_sentinel");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		setWindowTitle(__tr2qs("IPC Sentinel - KVIrc"));
 		setWindowFlags(Qt::FramelessWindowHint);
 #else
 	#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
