@@ -203,7 +203,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 
 	bool bResult = KviFileDialog::askForSaveFileName(
 			szTmp,
-			__tr2qs_ctx("Choose a Filename to Save the Screenshot to","theme"),
+			__tr2qs_ctx("Enter a Filename - KVIrc","theme"), //dialog header title
 			szFileName,
 			"*.png",
 			false,
@@ -230,7 +230,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	QString szError;
 	if(!ThemeFunctions::makeKVIrcScreenshot(szFileName))
 	{
-		c->error(__tr2qs_ctx("Error making screenshot","theme")); // FIXME: a nicer error ?
+		c->error(__tr2qs_ctx("Error capturing and saving screenshot!","theme"));
 		return false;
 	}
 
