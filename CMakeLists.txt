@@ -1017,6 +1017,8 @@ endif()
 if(MSVC)
 	add_definitions(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES -DNOMINMAX)
 	add_definitions(-DMSVC)
+	# Support from Windows XP
+	SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS,5.01")
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
