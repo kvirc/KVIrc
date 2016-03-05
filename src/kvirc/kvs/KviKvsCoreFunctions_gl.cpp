@@ -109,7 +109,6 @@ KVSCF(gender)
 	KVSCF_pRetBuffer->setNothing();
 	return true;
 }
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: globals
@@ -138,8 +137,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setHash(new KviKvsHash( *(KviKvsKernel::instance()->globalVariables()) ));
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: hash
@@ -191,8 +188,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: hextoAscii
 		@type:
@@ -227,8 +222,6 @@ KVSCF(gender)
 		KviCString::freeBuffer(buf);
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: hostname
@@ -287,7 +280,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	//-------------------------------------------------
 	/*
 	@doc: lag
 	@type:
@@ -317,7 +309,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
 		return true;
 	}
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: hptimestamp
@@ -359,8 +350,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: icon
 		@type:
@@ -394,8 +383,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setInteger(g_pIconManager->getSmallIconIdFromName(szName));
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: iconname
@@ -445,9 +432,6 @@ KVSCF(gender)
 		return true;
 	}
 
-
-	/////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: insideAlias
 		@type:
@@ -475,8 +459,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setBoolean(KVSCF_pContext->aliasSwitchList());
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: integer
@@ -539,8 +521,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc:	isbot
 		@type:
@@ -560,7 +540,7 @@ KVSCF(gender)
 			KVIrc has an internal database of users that are currently
 			visible by *this client*: this includes users on open channels
 			and queries.[br] The other IRC users are [b]not[/b] in the database:
-			this means that KVIrc knows NOTHING about them and can't return
+			this means that KVIrc knows [b]nothing[/b] about them and can't return
 			any information immediately. In this case this function will return
 			an EMPTY string.[br]
 			If a user is in the database, at least his nickname is known.[br]
@@ -597,7 +577,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: isMainWindowActive
@@ -623,8 +602,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: isMainWindowMinimized
 		@type:
@@ -647,8 +624,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setBoolean(g_pMainWindow->isMinimized());
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: isempty
@@ -680,8 +655,6 @@ KVSCF(gender)
 	}
 	//FIXME: documentation
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: iseventenabled
 		@type:
@@ -695,8 +668,6 @@ KVSCF(gender)
 		@description:
 			Returns 1 if the event handler is enabled.
 	*/
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	KVSCF(isEventEnabled)
 	{
@@ -737,8 +708,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: isnumeric
 		@type:
@@ -764,8 +733,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setBoolean(v->asNumber(n));
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: isset
@@ -800,8 +767,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: istimer
 		@type:
@@ -828,8 +793,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setBoolean(KviKvsTimerManager::instance()->timerExists(szName));
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: iswellknown
@@ -876,8 +839,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: k
 		@type:
@@ -915,8 +876,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setString(szRet);
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: keys
@@ -960,7 +919,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setArray(a);
 		return true;
 	}
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: lang
@@ -994,11 +952,6 @@ KVSCF(gender)
 		else KVSCF_pRetBuffer->setString(szLocale);
 		return true;
 	}
-
-
-
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: length
@@ -1048,8 +1001,6 @@ KVSCF(gender)
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: lf
 		@type:
@@ -1074,8 +1025,6 @@ KVSCF(gender)
 		KVSCF_pRetBuffer->setString(QString(QChar('\n')));
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: link
@@ -1148,10 +1097,10 @@ KVSCF(gender)
 		@description:
 			Returns a list of all the active timers.[br]
 			If you specify a <name>, only timers matching that name are returned;
-			You can use the * and ? wildcards in <name>.[br]
-			<flags> can be any combination of the characters 's' and 'r'[br]
-			If the flag 'r' is specified then <name> is assumed to be a standard regular expression.
-			If the flag 's' is specified the matches are case sensitive.[br]
+			You can use the [b]*[/b] and [b]?[/b] wildcards in <name>.[br]
+			<flags> can be any combination of the characters [b]s[/b] and [b]r[/b][br]
+			If the flag [b]r[/b] is specified then <name> is assumed to be a standard regular expression.
+			If the flag [b]s[/b] is specified the matches are case sensitive.[br]
 
 		@seealso:
 			[cmd]timer[/cmd], [fnc]$isTimer[/fnc], [cmd]killtimer[/cmd], [cmd]listtimers[/cmd]

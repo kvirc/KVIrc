@@ -49,6 +49,8 @@ KviPointerList<ListWindow> * g_pListWindowList = 0;
 		The channel list window is opened automatically when a channel list
 		is requested from the server.
 */
+
+
 static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 

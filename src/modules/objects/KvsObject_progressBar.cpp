@@ -31,9 +31,6 @@
 #include "KviIconManager.h"
 #include <QProgressBar>
 
-
-
-
 /*
 	@doc:	progressbar
 	@keyterms:

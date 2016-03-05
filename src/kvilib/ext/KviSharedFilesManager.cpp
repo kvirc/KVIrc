@@ -76,7 +76,6 @@
 		Please don't send complaints if someone steals your /etc/passwd : it is because you have permitted that.[br]
 */
 
-
 KviSharedFilesManager::KviSharedFilesManager()
 : QObject()
 {

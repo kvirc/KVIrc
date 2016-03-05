@@ -68,7 +68,7 @@
 
 namespace KviKvsCoreFunctions
 {
-	/////////////////////////////////////////////////////////////////////////////////////////
+
 	/*
 	@doc: scriptContextName
 	@type:
@@ -92,7 +92,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(szName);
 		return true;
 	}
-
 
 	/*
 		@doc: selected
@@ -118,8 +117,7 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-
-		/*
+	/*
 		@doc: sentBytes
 		@type:
 			function
@@ -144,7 +142,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-
 	/*
 		@doc: serialize
 		@type:
@@ -161,6 +158,7 @@ namespace KviKvsCoreFunctions
 		@seealso:
 			[fnc]$unserialize[/fnc]
 	*/
+
 	KVSCF(serialize)
 	{
 		KviKvsVariant *pVar = 0;
@@ -175,8 +173,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(szBuffer);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: server
@@ -234,8 +230,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: sort
 		@type:
@@ -270,8 +264,6 @@ namespace KviKvsCoreFunctions
 		}
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: string
@@ -314,8 +306,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(szVal);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: sw
@@ -393,7 +383,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: target
@@ -456,7 +445,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: this
@@ -498,8 +486,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setHObject(o ? o->handle() : ((kvs_hobject_t)0));
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: script_localization
@@ -714,8 +700,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: true
 		@type:
@@ -753,8 +737,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setBoolean(true);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: typeof
@@ -794,8 +776,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(szType);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: u
@@ -877,8 +857,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: unicode
 		@type:
@@ -916,8 +894,6 @@ namespace KviKvsCoreFunctions
 		}
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: unixtime
@@ -978,8 +954,6 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: username
 		@type:
@@ -1037,8 +1011,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: version
@@ -1119,8 +1091,6 @@ namespace KviKvsCoreFunctions
 		}
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: window

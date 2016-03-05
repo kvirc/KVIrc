@@ -70,7 +70,6 @@
 		would not require a back transformation (so no "decrypt stage"). A "symmetric"
 		idea could be an engine that strips the color codes from the incoming text: this
 		engine would not require an encrypting stage.[br]
-
 		[big]The name of this stuff[/big][br]
 		Initially all this was named "cryptography support".
 		Then "cryptography" was no longer enough to describe
@@ -79,16 +78,14 @@
 		Just as example, the "text transformation engine" is called
 		KviCryptEngine in the sources. So actually the terms "crypt"
 		and text transformation refer to the same thing.
-		You will often find the term "encrypt" standing for "outgoing text
-		transformation" and "decrypt" standing for "incoming text transformation".[br]
-
+		You will often find the term [i]encrypt[/i] standing for [i]outgoing text
+		transformation[/i] and [i]decrypt[/i] standing for [i]incoming text transformation[/i].[br]
 		[big]Yes, but why cryptography (on IRC)?[/big][br]
 		Because it MAY be useful. More than once people have asked me to add some
 		encryption support to the DCC chats. Yes, I know that there are other
 		"secure communication" tools, but actually I can't find one that is able to
 		implement a "secure real time conversation". And what about a MULTIPLE real
 		time secure conversation? This can be done on an IRC channel now.[br]
-
 		[big]The working things[/big][br]
 		KVIrc can use a text transformation engine on IRC channels, in the queries
 		and the DCC chats. At the time I am writing, only the [module:rijndael]Rijndael[/module] crypt engine
@@ -112,7 +109,6 @@
 		it with your communication endpoints. If you can meet these people in real life,
 		this is the best way to exchange the keys, otherwise you can use mail & PGP.
 		Yes, this is a shortcoming of the crypt protocol: it is missing a public key handshake.[br]
-
 		[big]The first test[/big][br]
 		A cool way to test an encryption engine is to use a "self query": connect to
 		any IRC server, and execute [cmd]query[/cmd] <yournickname>; a query window
@@ -124,7 +120,6 @@
 		you will see how the text would appear to a possible "man in the middle".
 		You can also try to use different keys for encrypting and decrypting,
 		and play with the CTRL+P escape.[br]
-
 		[big]The protocol[/big][br]
 		Well, there is no protocol actually, only the existing implementations, that
 		can be accessed by anyone that want to reproduce them. There are only some
@@ -148,11 +143,9 @@
 		is meant to be read by anyone on the channel, a text colorizer will
 		act in a similar way too. So the escape character is used for the encryption
 		engines only.
-
 		[big]An idea for the future implementations[/big][br]
 		A "public key" handshake protocol could be implemented.
 */
-
 
 	KviCryptEngine::KviCryptEngine()
 	{

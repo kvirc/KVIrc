@@ -51,6 +51,7 @@ Idle* g_pIdle;
 		wnd = g_pApp->findConsole(uiWnd); \
 		if(!wnd)c->warning(__tr2qs("No such IRC context (%d)"),uiWnd); \
 	}
+
 /*
 	@doc: my.nick
 	@type:
@@ -68,7 +69,6 @@ Idle* g_pIdle;
 		in that irc_context.[br]
 		Note that this function is different from [fnc]$me[/fnc] that will work also in a DCC CHAT.[br]
 */
-
 
 static bool my_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 {
@@ -224,7 +224,6 @@ static bool my_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 		in that irc_context.[br]
 */
 
-
 static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
@@ -255,7 +254,6 @@ static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
 */
-
 
 static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 {
@@ -296,7 +294,6 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 }
-
 
 /*
 	@doc: my.serverIsSSL

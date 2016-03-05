@@ -83,7 +83,6 @@ const int align_cod[] = {
 		Valid flags are: Right, Left, Top, Bottom, HCenter, VCenter, Center, Justify
 */
 
-
 KVSO_BEGIN_REGISTERCLASS(KvsObject_hBox,"hbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_hBox,setMargin)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_hBox,setSpacing)

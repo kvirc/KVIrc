@@ -30,7 +30,6 @@
 #include "KviLocale.h"
 #include "KviIconManager.h"
 
-
 /*
 	@doc:	mainwindow
 	@keyterms:

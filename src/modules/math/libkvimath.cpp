@@ -71,6 +71,7 @@ static bool __fncname(KviKvsModuleFunctionCall * c) \
 	@description:
 		Returns the sinus of the specified angle in radiants.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin,"angle",sin)
 
 /*
@@ -86,6 +87,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin,"angle",sin)
 	@description:
 		Returns the cosinus of the specified angle in radiants.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos,"angle",cos)
 
 /*
@@ -101,6 +103,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos,"angle",cos)
 	@description:
 		Returns the tangent of the specified angle in radiants.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_tan,"angle",tan)
 
 /*
@@ -116,6 +119,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_tan,"angle",tan)
 	@description:
 		Returns the angle in radiants that has the specified sinus value.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_asin,"sinus",asin)
 
 /*
@@ -131,8 +135,8 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_asin,"sinus",asin)
 	@description:
 		Returns the angle in radiants that has the specified cosinus value.
 */
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_acos,"cosinus",acos)
 
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_acos,"cosinus",acos)
 
 /*
 	@doc: math.atan
@@ -147,6 +151,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_acos,"cosinus",acos)
 	@description:
 		Returns the angle in radiants that has the specified tangent value.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_atan,"tangent",atan)
 
 /*
@@ -162,6 +167,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_atan,"tangent",atan)
 	@description:
 		Returns the square root of the specified number.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt,"number",sqrt)
 
 /*
@@ -177,6 +183,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt,"number",sqrt)
 	@description:
 		Returns the cube root of the specified number.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt,"number",cbrt)
 
 /*
@@ -192,6 +199,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt,"number",cbrt)
 	@description:
 		Returns the absolute value of the specified number.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs,"number",fabs)
 
 /*
@@ -207,6 +215,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs,"number",fabs)
 	@description:
 		Rounds down the number to the nearest integer.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor,"number",floor)
 
 /*
@@ -222,6 +231,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor,"number",floor)
 	@description:
 		Rounds up the number to the nearest integer.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil,"number",ceil)
 
 /*
@@ -237,6 +247,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil,"number",ceil)
 	@description:
 		Returns the exponential of the specified number.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp,"number",exp)
 
 /*
@@ -255,7 +266,6 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp,"number",exp)
 
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log,"number",log)
 
-
 /*
 	@doc: math.log10
 	@type:
@@ -269,6 +279,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log,"number",log)
 	@description:
 		Returns the base 10 logarithm of the specified number.
 */
+
 MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log10,"number",log10)
 
 /*
@@ -283,9 +294,10 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log10,"number",log10)
 		<boolean> $math.isnan(<value:real>)
 	@description:
 		Checks if the specified value is a valid number
-		or NaN (Not a Number). NaN is returned by several
+		or NaN ([b]N[/b]ot [b]a[/b] [b]N[/b]umber). NaN is returned by several
 		math functions when the result would be undefined.
 */
+
 static bool math_kvs_fnc_isnan(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dReal;
@@ -309,6 +321,7 @@ static bool math_kvs_fnc_isnan(KviKvsModuleFunctionCall * c)
 	@description:
 		Checks if the specified value is the infinity.
 */
+
 static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dReal;
@@ -318,7 +331,6 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setBoolean(std::isinf(dReal));
 	return true;
 }
-
 
 /*
 	@doc: math.pow
@@ -333,6 +345,7 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns a to the power of b
 */
+
 static bool math_kvs_fnc_pow(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dA,dB;
@@ -357,6 +370,7 @@ static bool math_kvs_fnc_pow(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the value of pi.
 */
+
 #ifdef COMPILE_ON_WINDOWS
 static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
 {
@@ -370,6 +384,7 @@ static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
 	return true;
 }
 #endif
+
 /*
 	@doc: math.e
 	@type:
@@ -383,7 +398,6 @@ static bool math_kvs_fnc_pi(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the value of the Euler constant e.
 */
-
 
 #ifdef COMPILE_ON_WINDOWS
 static bool math_kvs_fnc_e(KviKvsModuleFunctionCall * c)

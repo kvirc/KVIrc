@@ -28,7 +28,6 @@
 #include "KviKvsVariantList.h"
 #include "KviKvsHash.h"
 
-
 /*
 	@doc: xmlreader
 	@keyterms:
@@ -61,7 +60,7 @@
 		relevant on* events (see below) will be triggered.
 		$parse will return $true when the parsing terminates successfully
 		or $false if it aborts for some reason (unrecoverable error
-		in the document, user abort etc...).
+		in the document, user abort etc.).
 		If this function return $false then you can call $lastError() to
 		obtain a descriptive error message.
 		!fn: <string> $lastError()
@@ -115,7 +114,6 @@
 		The document parsing can't continue.
 		The default implementation does nothing besides returning $true.
 */
-
 
 #ifndef QT_NO_XML
 

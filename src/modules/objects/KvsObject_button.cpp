@@ -69,7 +69,6 @@
 		This property holds whether the label will scale its contents to fill all available space.
 */
 
-
 KVSO_BEGIN_REGISTERCLASS(KvsObject_button,"button","widget")
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button,setText)

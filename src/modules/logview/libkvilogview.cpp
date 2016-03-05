@@ -57,6 +57,8 @@ LogViewWindow * g_pLogViewWindow = 0;
 		Opens a window that allows visual browsing of the logs
 		stored on disk.
 */
+
+
 static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString dummy;

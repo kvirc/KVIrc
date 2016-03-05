@@ -98,6 +98,7 @@
 		This signal is emitted by the default implementation of [classfnc]$activatedEvent[/classfnc]().
 
 */
+
 KVSO_BEGIN_REGISTERCLASS(KvsObject_comboBox,"combobox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,insertItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_comboBox,changeItem)
