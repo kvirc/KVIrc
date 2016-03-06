@@ -305,7 +305,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel,__tr2qs_ctx("Your <b>nickname</b> is your primary form of identification on IRC.<br>" \
 			"Since servers cannot accept multiple users sharing the same nickname " \
-			"(case insensitive), you can provide alternative nicknames to be used in case"\
+			"(case insensitive), you can provide alternative nicknames to be used in case "\
 			"the server refuses to accept the default one.","options"));
 
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),hb);
