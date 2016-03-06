@@ -1836,21 +1836,20 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	m_pContextPopup->clear();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NewNetwork)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
-	    ->setEnabled(!bServer);
+		->setEnabled(!bServer);
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NewServer)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
 		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
 	m_pContextPopup->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()))
-	    ->setEnabled(bServer);
+		->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
 	m_pContextPopup->setEnabled(bServer);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()))
-	    ->setEnabled(m_pClipboard);
+		->setEnabled(m_pClipboard);
 	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),__tr2qs_ctx("Import Server List","options"))->setMenu(m_pImportPopup);
-	m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Clear Server List","options"),this,SLOT(clearList()));
 	m_pContextPopup->popup(QCursor::pos());
 }
