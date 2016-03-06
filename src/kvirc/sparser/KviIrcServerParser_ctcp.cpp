@@ -1663,6 +1663,9 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 					if(uMaxSize > 0)KviQString::appendFormatted(szCommand,"-m=%u ",uMaxSize);
 					szRemoteFile = szRemoteFile.replace(";","%3B");
 					szRemoteFile = szRemoteFile.replace("\"","%22");
+					szRemoteFile = szRemoteFile.replace("\\","\\\\");
+					szRemoteFile = szRemoteFile.replace("$","\\$");
+					szRemoteFile = szRemoteFile.replace("%","\\%");
 					szCommand += "\""+szRemoteFile+"\"";
 					szCommand += " ";
 					szCommand += szLocalFilePath;
