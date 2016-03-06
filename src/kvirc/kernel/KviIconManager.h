@@ -310,9 +310,9 @@ public:
 		Gnutella             = 142,
 		Search               = 143,
 		Files                = 144,
-		Transfer             = 145, //can't see this used anywhere
+		NewNetwork           = 145,
 		Package              = 146,
-		Retry                = 147, //can't see this used anywhere
+		NewServer            = 147,
 		Idea                 = 148,
 		Colors               = 149,
 		Gui                  = 150,

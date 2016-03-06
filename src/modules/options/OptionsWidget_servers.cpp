@@ -1320,7 +1320,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	addWidgetToLayout(vbox,3,1,3,1);
 
 	m_pNewNetworkButton = new QToolButton(vbox);
-	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
+	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewNetwork))));
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
 	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New network","options"));
@@ -1329,7 +1329,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
 	m_pNewServerButton = new QToolButton(vbox);
-	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
+	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewServer))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
 	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New server","options"));
@@ -1834,11 +1834,11 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	bool bServer = (it && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData);
 	bool bFavorite = (bServer && static_cast<IrcServerOptionsTreeWidgetItem *>(it)->m_pServerData->favorite());
 	m_pContextPopup->clear();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NewNetwork)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()))
 	    ->setEnabled(!bServer);
 	m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NewServer)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite)),
 		__tr2qs_ctx(bFavorite?"Unfavorite Server":"Favorite Server","options"),this,SLOT(favoriteServer()));
 	m_pContextPopup->setEnabled(bServer);
@@ -1965,7 +1965,7 @@ void OptionsWidget_servers::importServer(const KviIrcServer &s,const QString &ne
 void OptionsWidget_servers::newNetwork()
 {
 	KviIrcNetwork d(__tr2qs_ctx("New Network","options"));
-	IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),&d);
+	IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::NewNetwork)),&d);
 	it->setExpanded(true);
 	it->setSelected(true);
 	m_pTreeWidget->setCurrentItem(it);
