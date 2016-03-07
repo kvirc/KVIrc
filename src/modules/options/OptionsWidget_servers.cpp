@@ -1964,7 +1964,7 @@ void OptionsWidget_servers::importServer(const KviIrcServer &s,const QString &ne
 void OptionsWidget_servers::newNetwork()
 {
 	KviIrcNetwork d(__tr2qs_ctx("New Network","options"));
-	IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::NewNetwork)),&d);
+	IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),&d);
 	it->setExpanded(true);
 	it->setSelected(true);
 	m_pTreeWidget->setCurrentItem(it);
