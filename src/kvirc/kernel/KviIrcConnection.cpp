@@ -1591,11 +1591,20 @@ void KviIrcConnection::loginToIrcServer()
 		KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 	{
 		QString szTags;
-		szTags.sprintf("%c%d,%d%c",
-				KviControlCodes::Color,
-				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
-				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground),
-				KviControlCodes::Reset);
+		int iBack = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
+		if(iBack == KviControlCodes::Transparent)
+		{
+				szTags.sprintf("%c%d%c",
+					KviControlCodes::Color,
+					KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
+					KviControlCodes::Reset);
+		} else {
+				szTags.sprintf("%c%d,%d%c",
+					KviControlCodes::Color,
+					KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
+					iBack,
+					KviControlCodes::Reset);
+		}
 		szReal.prepend(szTags.toUtf8());
 	}
 
