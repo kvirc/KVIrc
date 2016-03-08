@@ -520,6 +520,7 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 					szBuffer += pEntry->m_pGlobalData->user();
 					szBuffer += "@";
 					szBuffer += pEntry->m_pGlobalData->host();
+					szBuffer += " ";
 				}
 				return true;
 			}
@@ -1563,7 +1564,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 			QString szBuffer;
 			m_pKviWindow->console()->getUserTipText(pEntry->m_szNick,pEntry->m_pGlobalData,szBuffer);
 
-			szBuffer += "<table width=\"120%\">";
+			szBuffer += "<table style=\"white-space: pre\">";
 
 			if(pEntry->m_joinTime != 0)
 			{

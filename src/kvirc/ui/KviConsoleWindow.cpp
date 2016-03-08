@@ -256,17 +256,17 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 {
 	KviRegisteredUserMask *u = g_pRegisteredUserDataBase->findMatchingMask(nick,e->user(),e->host());
 
-	buffer = "<table width=\"100%\">" \
+	buffer = "<table style=\"white-space: pre\">" \
 			"<tr><td bgcolor=\"#303030\">" \
-			"<font color=\"#FFFFFF\"><b>";
+			"<font color=\"#FFFFFF\"><b> ";
 
 	buffer += KviQString::toHtmlEscaped(nick);
 	buffer += "!";
 	buffer += KviQString::toHtmlEscaped(e->user().isEmpty() ? QString("*") : e->user());
 	buffer += "@";
 	buffer += KviQString::toHtmlEscaped(e->host().isEmpty() ? QString("*") : e->host());
-
-	buffer += "</b></font></td></tr>";
+	buffer += " </b></font></td></tr>";
+	
 	if(u)
 	{
 		QString szComment=u->user()->getProperty("comment");
@@ -1133,15 +1133,19 @@ void KviConsoleWindow::fillStatusString()
 	{
 		case KviIrcContext::Idle:
 			m_szStatusString = __tr2qs("No connection");
+			m_szStatusString += " ";
 		break;
 		case KviIrcContext::PendingReconnection:
 			m_szStatusString = __tr2qs("Waiting to reconnect...");
+			m_szStatusString += " ";
 		break;
 		case KviIrcContext::Connecting:
 			m_szStatusString = __tr2qs("Connection in progress...");
+			m_szStatusString += " ";
 		break;
 		case KviIrcContext::LoggingIn:
 			m_szStatusString = __tr2qs("Login in progress...");
+			m_szStatusString += " ";
 		break;
 		case KviIrcContext::Connected:
 			m_szStatusString = connection()->userInfo()->nickName();
@@ -1167,6 +1171,7 @@ void KviConsoleWindow::fillStatusString()
 
 			m_szStatusString += __tr2qs(" on ");
 			m_szStatusString += connection()->serverInfo()->name();
+			m_szStatusString += " ";
 		break;
 	}
 }
@@ -1204,8 +1209,8 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 	static QString html_spaceparopen(" (");
 	static QString html_spaceparclosed(")");
 
-	//120% to stop KviConsoleWindow::fillStatusString() wrapping the entries—at least in English—
-	buffer = "<table width=\"120%\">" \
+	// no wrapping contents
+	buffer = "<table style=\"white-space: pre\">" \
 		START_TABLE_BOLD_ROW;
 	buffer += m_szStatusString;
 	buffer += END_TABLE_BOLD_ROW;

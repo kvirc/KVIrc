@@ -888,7 +888,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 
 	szBuffer = "<html>" \
 		"<body>" \
-		"<table width=\"100%\">"\
+		"<table style=\"white-space: pre\">"\
 		START_TABLE_BOLD_ROW;
 
 	if(m_iStateFlags & DeadChan)
@@ -1176,6 +1176,7 @@ void KviChannelWindow::fillCaptionBuffers()
 
 	m_szPlainTextCaption += QChar(' ');
 	m_szPlainTextCaption += szNickOnServer;
+	m_szPlainTextCaption += " ";
 }
 
 void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
