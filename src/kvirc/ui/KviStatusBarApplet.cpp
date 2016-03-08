@@ -282,7 +282,7 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 			int llls = lll / 1000;
 			int llld = (lll % 1000) / 100;
 			int lllc = (lll % 100) / 10;
-			KviQString::appendFormatted(szRet,"%d.%d%d",llls,llld,lllc);
+			KviQString::appendFormatted(szRet,__tr2qs("%d.%d%d secs"),llls,llld,lllc);
 			szRet += "</b><br>";
 			int vss = c->lagMeter()->secondsSinceLastCompleted();
 			int vmm = vss / 60;
