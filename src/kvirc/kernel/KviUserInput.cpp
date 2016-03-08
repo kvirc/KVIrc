@@ -41,8 +41,6 @@ namespace KviUserInput
 		const QChar * c = b;
 		if(!c)return true; // empty
 
-		while(c->isSpace()) c++;
-
 		if(!c->unicode())
 			return true; // empty
 
