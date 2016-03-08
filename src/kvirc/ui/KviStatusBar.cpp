@@ -313,7 +313,7 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 	QString szTip;
 	if(pApplet)
 	{
-		szTip = "<table><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
+		szTip = "<table style=\"white-space: pre\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
 
 		QString szTipx = pApplet->tipText(pApplet->mapFromGlobal(mapToGlobal(e->pos())));
 		if(!szTipx.isEmpty())
@@ -329,7 +329,7 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 		szTip += __tr2qs("Right-click to see the other options");
 		szTip += "</font></td></tr></table>";
 	} else {
-		szTip = "<table cellpadding=\"8\" cellspacing=\"5\">";
+		szTip = "<table style=\"white-space: pre\">";
 
 		KviIrcContext * c = m_pFrame->activeContext();
 		if(c && (c->state() == KviIrcContext::Connected))
