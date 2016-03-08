@@ -272,9 +272,11 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		QString szComment=u->user()->getProperty("comment");
 		if(!szComment.isEmpty())
 		{
-			buffer += "<tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\">(";
+			buffer += "<tr bgcolor=\"#F0F0F0\"><td>";
+			buffer += __tr2qs("Comment");
+			buffer += ": (<b>";
 			buffer += KviQString::toHtmlEscaped(szComment);
-			buffer += ")</font></td></tr>";
+			buffer += "</b>)</td></tr>";
 		}
 	}
 
@@ -285,37 +287,39 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 
 	if(e->hasRealName())
 	{
-		buffer += "<tr><td><center><b>";
+		buffer += "<tr><td>";
+		buffer += __tr2qs("Real name");
+		buffer += ": <b>";	
 		buffer += KviQString::toHtmlEscaped(KviControlCodes::stripControlBytes(e->realName()));
-		buffer += "</b></center></td></tr>";
+		buffer += "</b></td></tr>";
 	}
 
 	if(e->gender()!=KviIrcUserEntry::Unknown)
 	{
 		buffer += "<tr><td>";
-		buffer += __tr2qs("Gender:");
-		buffer += " ";
+		buffer += __tr2qs("Gender");
+		buffer += ": <b>";
 		buffer += (e->gender()==KviIrcUserEntry::Male) ? __tr2qs("Male") : __tr2qs("Female");
-		buffer += "</td></tr>";
+		buffer += "</b></td></tr>";
 	}
 
 	if(u)
 	{
 		QString mask;
 		u->mask()->mask(mask);
-		buffer += "<tr bgcolor=\"#F0F0F0\"><td><font color=\"#000000\">";
+		buffer += "<tr><td>";
 		buffer += __tr2qs("Registered as");
 		buffer += ": <b>";
 		buffer += KviQString::toHtmlEscaped(u->user()->name());
-		buffer += "</b>;";
+		buffer += "</b>; ";
 		buffer += "Group";
-		buffer += ": ";
+		buffer += ": <b>";
 		buffer += KviQString::toHtmlEscaped(u->user()->group());
-		buffer += "</font></td></tr><tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\" color=\"#000000\">";
-		buffer += __tr2qs("(Matched by");
-		buffer += ": ";
+		buffer += "</b></td></tr><tr><td>";
+		buffer += __tr2qs("Matched by");
+		buffer += ": <b><font size=\"-1\">";
 		buffer += KviQString::toHtmlEscaped(mask);
-		buffer += ")</font></td></tr>";
+		buffer += "</font></b></td></tr>";
 	}
 
 	if(connection())
@@ -323,7 +327,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		QString chans;
 		if(connection()->getCommonChannels(nick,chans,false))
 		{
-			buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+			buffer += "<tr><td><font color=\"#000000\">";
 			buffer += __tr2qs("On");
 			buffer += ": <b>";
 			buffer += KviQString::toHtmlEscaped(chans);
@@ -339,7 +343,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		if(e->hasHops())
 		{
 			buffer += "<br>";
-			buffer += __tr2qs("Hops: %1").arg(e->hops());
+			buffer += __tr2qs("Hops: <b>%1</b>").arg(e->hops());
 			buffer += "</font></td></tr>";
 		} else {
 			buffer += "</font></nobr></td></tr></table>";
