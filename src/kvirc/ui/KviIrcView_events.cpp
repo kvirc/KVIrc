@@ -798,10 +798,10 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 void KviIrcView::doMarkerToolTip()
 {
 	QString tip;
-	tip = "<table width=\"100%\">" \
-		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\"><p style=\"white-space:pre\">";
+	tip = "<table style=\"white-space: pre\">" \
+		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\">";
 	tip += __tr2qs("Scroll up to read from the last read line");
-	tip += "</p></td></tr></table>";
+	tip += "</td></tr></table>";
 
 	if(tip.isEmpty())return;
 
@@ -823,16 +823,18 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
 				return;
-			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\"><u><p style=\"white-space:pre;color:#0022FF\">";
+			tip = "<table style=\"white-space: pre\">" \
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\">";
 			if(linkText.length() > 50)
 			{
+				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText.left(47);
 				tip += "...";
 			} else {
+				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText;
 			}
-			tip+="</p></u></td></tr><tr><td><hr>";
+			tip+="</u></font></td></tr><tr><td><hr>";
 
 			// Check clicks' number
 			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
@@ -846,23 +848,28 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
 				return;
-			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"><u><p style=\"white-space:pre;color:#0022FF\">";
+			tip = "<table style=\"white-space: pre\">" \
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Proxy) + "\">";
 			if(linkText.length() > 50)
 			{
+				tip += "<font color=\"#0022FF\"><u>";
 				tip += linkText.left(47);
 				tip += "...";
 			} else {
+				tip += "<font color=\"#0022FF\"><u>";
 				tip += linkText;
 			}
-			tip+="</p></u></td></tr><tr><td><hr>";
+			tip+="</u></font></td></tr><tr><td><hr>";
 
 			if(linkText.indexOf('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
 				else tip += __tr2qs("Unable to look up hostname: unknown host");
 			} else {
-				tip += __tr2qs("Double-click to look up this hostname<br>Right-click to view other options");
+				tip += "<tr><td>";
+				tip += __tr2qs("Double-click to look up this hostname");
+				tip += "<br>";
+				tip += __tr2qs("Right-click to view other options");
 			}
 			tip += "</td></tr></table>";
 		}
@@ -873,25 +880,29 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				return;
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
-			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\"><u><p style=\"white-space:pre;color:#0022FF\">";
+			tip = "<table style=\"white-space: pre\">" \
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\">";
 
 			if(linkText.length() > 50)
 			{
+				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText.left(47);
 				tip += "...";
 			} else {
+				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText;
 			}
-			tip+="</p></u></td></tr><tr><td><hr>";
+			tip+="</u></font></td></tr><tr><td><hr>";
 
 			if(linkText.indexOf('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Server appears to be a network hub<br>");
 				else tip += __tr2qs("Unknown server<br>"); // might happen...
 			}
-
-			tip.append(__tr2qs("Double-click to read the MOTD<br>Right-click to view other options"));
+			tip.append("<tr><td>");
+			tip.append(__tr2qs("Double-click to read the MOTD"));
+			tip += "<br>";
+			tip += __tr2qs("Right-click to view other options");
 			tip += "</td></tr></table>";
 		}
 		break;
@@ -952,7 +963,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
 					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
-						"%2</p></u>+%3 (%4 users)<hr>%5")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(chanMode)).arg(c->count()).arg(KviQString::toHtmlEscaped(topic));
+						"%2</p></u>Channel modes: <b>+%3</b><br>Users: <b>%4</b><hr>Topic is: %5")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(chanMode)).arg(c->count()).arg(KviQString::toHtmlEscaped(topic));
 				} else {
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
