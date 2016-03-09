@@ -894,6 +894,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	if(m_iStateFlags & DeadChan)
 	{
 		szBuffer += __tr2qs("Dead channel");
+		szBuffer += " ";
 		szBuffer += szEndOfFontBoldRow;
 		szBuffer += szEndOfDoc;
 		return;
