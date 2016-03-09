@@ -114,7 +114,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 		this,SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
 	m_pModeWidget = new KviModeWidget(m_pTopSplitter,this,"mode_");
-	KviTalToolTip::add(m_pModeWidget,__tr2qs("Channel mode"));
+	KviTalToolTip::add(m_pModeWidget,__tr2qs("Channel modes"));
 	connect(m_pModeWidget,SIGNAL(setMode(QString &)),this,SLOT(setMode(QString &)));
 
 	createTextEncodingButton(m_pButtonContainer);
@@ -1947,7 +1947,7 @@ void KviChannelWindow::updateModeLabel()
 			"<table width=\"100%\">";
 	szTip +=	START_TABLE_BOLD_ROW;
 	szTip +=	"<b><center>";
-	szTip += __tr2qs("Channel Mode");
+	szTip += __tr2qs("Channel Modes");
 	szTip +=	"</b></center>";
 	szTip +=	END_TABLE_BOLD_ROW;
 	szTip +=	"</table>" \
