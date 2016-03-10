@@ -214,6 +214,11 @@ defpopup(channelpopup)
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
 	}
 
+	item($tr("&Join","defscript") $0,39) (!$channel($0))
+	{
+		join $0;
+	}
+
 	separator
 
 	item(/NAMES $0,75)
@@ -296,10 +301,6 @@ defpopup(urlpopup)
 
 defpopup(consoletextview)
 {
-	label($tr("You're not connected to a server","defscript")) (!$server)
-
-	separator(!$server)
-
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
@@ -399,6 +400,8 @@ defpopup(consoletextview)
 
 	separator
 
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
 	item($tr("Clear Buffer","defscript"),120)
 	{
 		clear;
@@ -472,11 +475,21 @@ defpopup(windowpopup)
 		window.close
 	}
 
+	item($tr("&Hop","defscript") $0,289) ($channel)
+	{
+		hop $0;
+	}
+
+	item($tr("&Part","defscript") $0,40) ($channel)
+	{
+		if($channel()) eval "part $escape($0) $option(stringPartMessage)";
+	}
+
 	separator
 
 	extpopup($tr("Logging","defscript"),logging,119)
 
-	item($tr("Set Window Props As Default","defscript"),10)
+	item($tr("Set Window Properties As Default","defscript"),10)
 	{
 		window.savePropertiesAsDefault
 	}
