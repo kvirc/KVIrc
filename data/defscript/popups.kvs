@@ -209,7 +209,7 @@ defpopup(channelpopup)
 		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40)
+	item($tr("&Part","defscript") $0,40) ($channel($0))
 	{
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
 	}
