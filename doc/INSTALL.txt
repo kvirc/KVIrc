@@ -59,7 +59,7 @@
 
   If you feel brave try:
 
-      $ cd <kvirc_source_directory>
+      $ cd <kvirc_source_directory>  // (usually KVIrc)
       $ mkdir build
       $ cd build
       $ ccmake ..
@@ -310,7 +310,7 @@
   To do it, we encourage the "out-of-source" building: build all files
   without dirtying the sources directory.
 
-      $ cd /home/setup
+      $ cd /home/setup && cd KVIrc
       $ mkdir build
 
   In this way you have just created an out-of-source environment which is
