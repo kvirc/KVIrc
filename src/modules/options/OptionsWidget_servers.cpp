@@ -902,7 +902,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pCapLayout->addWidget(m_pEnableCAPCheck,0,0);
 
 	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("This check will cause the connection to use the <b>Extended Capability</b> " \
-		"support. Obviously, this server must have support for this too. Disable this for IRC bouncers.","options"));
+		"support.","options"));
 	m_pEnableCAPCheck->setChecked(s->enabledCAP());
 
 
