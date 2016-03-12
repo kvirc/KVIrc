@@ -16,8 +16,8 @@ BUILDDIR="${DIR}/build"
 cd .. && GITDIR=$(pwd)
 PKG_NAME=kvirc
 SVNGITBZR="~"
-VERSION='4:4.9.1'
-VERSION1='4.9.1'
+VERSION='4:4.9.2'
+VERSION1='4.9.2'
 
 test -d $BUILDDIR && rm -rf ${BUILDDIR} 
 mkdir -p $BUILDDIR
@@ -29,7 +29,7 @@ branch=$(git branch | grep "\*" | sed 's/\* //g')
 commit=$(git log -1 | grep -i "^commit" | awk '{print $2}')
 datct=$(git log -n 1 --format=%ct)
 
-test -z ${dat} && dat="git-6087-$(git describe --always)" \
+test -z ${dat} && dat="git-6298-$(git describe --always)" \
 branch="travis_debian" 
 
 tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" . 
