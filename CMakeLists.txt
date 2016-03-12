@@ -416,7 +416,6 @@ else()
 endif()
 
 option(WANT_QTWEBKIT "Whether to compile Qt WebKit support" ON)
-option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 
 # May be re-set below, if the proper libs are found.
 set(CMAKE_STATUS_QX11INFO_SUPPORT "Not available")
@@ -476,16 +475,6 @@ if(WANT_QTWEBKIT)
 		list(APPEND qt5_kvirc_modules WebKitWidgets)
 		include_directories(${Qt5WebKitWidgets_INCLUDE_DIRS})
 		set(COMPILE_WEBKIT_SUPPORT 1)
-	endif()
-endif()
-
-# Qt SVG support
-if(WANT_QTSVG)
-	find_package(Qt5Svg)
-	if(Qt5Svg_FOUND)
-		list(APPEND qt5_kvirc_modules Svg)
-		include_directories(${Qt5Svg_INCLUDE_DIRS})
-		set(COMPILE_SVG_SUPPORT 1)
 	endif()
 endif()
 
