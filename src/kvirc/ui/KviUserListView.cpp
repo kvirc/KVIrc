@@ -520,7 +520,6 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 					szBuffer += pEntry->m_pGlobalData->user();
 					szBuffer += "@";
 					szBuffer += pEntry->m_pGlobalData->host();
-					szBuffer += " ";
 				}
 				return true;
 			}

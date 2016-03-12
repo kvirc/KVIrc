@@ -1133,19 +1133,15 @@ void KviConsoleWindow::fillStatusString()
 	{
 		case KviIrcContext::Idle:
 			m_szStatusString = __tr2qs("No connection");
-			m_szStatusString += " ";
 		break;
 		case KviIrcContext::PendingReconnection:
 			m_szStatusString = __tr2qs("Waiting to reconnect...");
-			m_szStatusString += " ";
 		break;
 		case KviIrcContext::Connecting:
 			m_szStatusString = __tr2qs("Connection in progress...");
-			m_szStatusString += " ";
 		break;
 		case KviIrcContext::LoggingIn:
 			m_szStatusString = __tr2qs("Login in progress...");
-			m_szStatusString += " ";
 		break;
 		case KviIrcContext::Connected:
 			m_szStatusString = connection()->userInfo()->nickName();
@@ -1171,7 +1167,6 @@ void KviConsoleWindow::fillStatusString()
 
 			m_szStatusString += __tr2qs(" on ");
 			m_szStatusString += connection()->serverInfo()->name();
-			m_szStatusString += " ";
 		break;
 	}
 }
