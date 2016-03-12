@@ -47,7 +47,7 @@
 KviIrcServer::KviIrcServer()
 {
 	m_pReconnectInfo       = NULL;
-	m_uFlags               = 0;
+	m_uFlags               = Flags::CAP | Flags::STARTTLS;
 	m_uPort                = 6667;
 	m_pAutoJoinChannelList = NULL;
 	m_bAutoConnect         = false;
