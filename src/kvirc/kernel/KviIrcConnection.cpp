@@ -1592,13 +1592,8 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szTags;
 		int iBack = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
-		if(iBack == KviControlCodes::Transparent)
+		if(iBack != KviControlCodes::Transparent)
 		{
-				szTags.sprintf("%c%d%c",
-					KviControlCodes::Color,
-					KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
-					KviControlCodes::Reset);
-		} else {
 				szTags.sprintf("%c%d,%d%c",
 					KviControlCodes::Color,
 					KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),

@@ -75,7 +75,10 @@ OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
 		"Note that if you use this, your QUIT message may be not displayed.","options"));
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to real name","options"),KviOption_boolPrependGenderInfoToRealname);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Prepend avatar info to real name","options"),KviOption_boolPrependAvatarInfoToRealname);
-	addBoolSelector(0,3,0,3,__tr2qs_ctx("Prepend smart nick color info to real name","options"),KviOption_boolPrependNickColorInfoToRealname);
+	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Prepend smart nick color info to real name","options"),KviOption_boolPrependNickColorInfoToRealname);
+	mergeTip(b,
+		__tr2qs_ctx("This feature will not work if you have chosen your " \
+		"nick background color to be transparent.","options"));
 	addRowSpacer(0,4,0,4);
 }
 
