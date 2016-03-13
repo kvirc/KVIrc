@@ -8,7 +8,6 @@ set(kvimediaplayer_SRCS
 	MpXmmsInterface.cpp
 	MpAmipInterface.cpp
 	MpMprisInterface.cpp
-	MpSpotifyInterface.cpp
 )
 
 set(kvi_module_name kvimediaplayer)
