@@ -98,7 +98,7 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 
 	// we have no callback : output the results
 	QString szQuery = m_pDns->query();
-	pWnd->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("DNS Lookup result for query \"%Q\"", "kvs"), &szQuery);
+	pWnd->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("DNS lookup result for query \"%Q\"", "kvs"), &szQuery);
 
 	if(m_pDns->state() == KviDnsResolver::Failure)
 	{

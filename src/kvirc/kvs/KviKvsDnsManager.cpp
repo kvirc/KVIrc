@@ -162,7 +162,7 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDnsResolver * pDns)
 	else
 	{
 		QString szQuery = o->dns()->query();
-		o->window()->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("DNS Lookup result for query \"%Q\"", "kvs"), &szQuery);
+		o->window()->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("DNS lookup result for query \"%Q\"", "kvs"), &szQuery);
 
 		if(o->dns()->state() == KviDnsResolver::Failure)
 		{
