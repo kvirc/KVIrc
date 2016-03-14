@@ -195,7 +195,7 @@ namespace KviKvsCoreSimpleCommands
 			it is assumed to be a network name and if such a network is found
 			in the server list then the best server for that network is contacted.
 			(KVIrc tries to guess the round-robin (random) servers first).[br]
-			This behavior can be forced by adding the [i]net:[/i] prefix to the <server>
+			This behaviour can be forced by adding the [i]net:[/i] prefix to the <server>
 			(so it will work even if the network name contains a dot).[br]
 			[br]
 			The connection is attempted in the current IRC context. If there is already

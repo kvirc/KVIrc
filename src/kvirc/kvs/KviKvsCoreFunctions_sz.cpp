@@ -457,7 +457,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$this
 		@description:
-			Returns the ID of the current object or (0) if there is
+			Returns the ID of the current object or [b]0[/b] if there is
 			none. This function has a [i]quick[/i] version with syntax:
 			[b]$$[/b][br]
 	*/
@@ -473,7 +473,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$$
 		@description:
-			Returns the ID of the current object or (0) if there is
+			Returns the ID of the current object or [b]0[/b] if there is
 			none. This function is equivalent to [fnc]$this[/fnc]
 	*/
 

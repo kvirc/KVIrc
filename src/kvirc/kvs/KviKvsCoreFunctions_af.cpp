@@ -748,8 +748,8 @@ namespace KviKvsCoreFunctions
 			Returns the [b]IRC context ID[/b] of the IRC context that uses
 			the specified <server> and local user's <nickname>.[br] This function can
 			find only connected IRC contexts.
-			If no context matches the server and nickname, and invalid
-			[b]IRC context ID[/b] is returned [b]0[/b].[br]
+			If no context matches the server and nickname, an invalid
+			[b]IRC context ID 0[/b] is returned.[br]
 			If <server> is an empty string, the first context that matches
 			the specified nickname is returned. If <nickname> is an empty string,
 			the first context that uses the specified server is returned.

@@ -467,7 +467,7 @@ void KviInput::toggleMultiLine()
 		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
 		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
 		You can enable word substitution in the preferences dialog.[br]
-		For example, if you choose to substitute [b]afaik[/b] with [b]A[/b]s [b]f[/b]ar [b]a[/b]s [b]I[/b] [b]k[/b]now",[br]
+		For example, if you choose to substitute [b]afaik[/b] with [b]A[/b]s [b]f[/b]ar [b]a[/b]s [b]I[/b] [b]k[/b]now,[br]
 		when you will type [b]afaik[/b] somewhere in the command line, and then
 		press Space or Return, that word will be replaced with [i]As far as I know[/i].[br]
 		Experiment with it :)[br]
