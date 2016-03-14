@@ -2,7 +2,7 @@ Source: kvirc
 Section: net
 Priority: optional
 Maintainer: Alexander Pozdnyakov <almipo@mail.ru>
-Build-Depends: debhelper (>= 8.9.4),
+Build-Depends: debhelper (>= 9),
  cmake (>= 3.1),
  libperl-dev,
  zlib1g-dev,
@@ -15,12 +15,12 @@ Build-Depends: debhelper (>= 8.9.4),
  libxss-dev,
  python-dev,
  libqtwebkit-dev, libenchant-dev
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: http://www.kvirc.de/
 
 Package: kvirc
 Architecture: any
-Pre-Depends: multiarch-support, ${misc:Pre-Depends}
+Pre-Depends: ${misc:Pre-Depends}
 Depends: libkvilib4 (= ${binary:Version}),
  kvirc-modules (= ${binary:Version}),
  kvirc-data (= ${source:Version}),
@@ -42,7 +42,7 @@ Description: KDE-based next generation IRC client with module support
 Package: libkvilib4
 Architecture: any
 Section: libs
-Pre-Depends: multiarch-support, ${misc:Pre-Depends}
+Pre-Depends:  ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: kvirc (= ${binary:Version})
 Suggests: kvirc-dbg (= ${binary:Version})
@@ -59,7 +59,7 @@ Description: KVIrc (IRC client) base library
 Package: kvirc-modules
 Architecture: any
 Section: libs
-Pre-Depends: multiarch-support, ${misc:Pre-Depends}
+Pre-Depends: ${misc:Pre-Depends}
 Depends: libkvilib4 (= ${binary:Version}),
  ${shlibs:Depends},
  ${misc:Depends}
