@@ -256,7 +256,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 {
 	KviRegisteredUserMask *u = g_pRegisteredUserDataBase->findMatchingMask(nick,e->user(),e->host());
 
-	buffer = "<table style=\"white-space: pre\">" \
+	buffer = "<table>" \
 			"<tr><td bgcolor=\"#303030\">" \
 			"<font color=\"#FFFFFF\"><b> ";
 
