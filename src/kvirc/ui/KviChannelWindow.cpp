@@ -888,7 +888,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 
 	szBuffer = "<html>" \
 		"<body>" \
-		"<table style=\"white-space: pre\">"\
+		"<table>"\
 		START_TABLE_BOLD_ROW;
 
 	if(m_iStateFlags & DeadChan)
@@ -1099,7 +1099,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 		}
 	}
 
-	szBuffer += "<tr><td bgcolor=\"#A0A0A0\"><b><font color=\"#000000\">";
+	szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><b><font color=\"#000000\">";
 
 	if(cas.dActionsPerMinute < 0.1)
 		szBuffer += __tr2qs("No activity");
