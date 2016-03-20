@@ -1294,9 +1294,14 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 	{
 		QString szUser    = pEntry->m_pGlobalData->user();
 		QString szHost    = pEntry->m_pGlobalData->host();
+		QString szReal    = pEntry->m_pGlobalData->realName();
+		QString szAccount = pEntry->m_pGlobalData->accountName();
+		QString szServer  = pEntry->m_pGlobalData->server();
 		int iFlags        = pEntry->m_iFlags;
 		kvi_time_t joint  = pEntry->m_joinTime;
 		bool bSelect      = pEntry->m_bSelected;
+		bool bIrcOp       = pEntry->m_pGlobalData->isIrcOp();
+		int iHops         = pEntry->m_pGlobalData->hops();
 
 		KviAvatar * pAv   = pEntry->m_pGlobalData->forgetAvatar();
 
@@ -1308,6 +1313,11 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		pEntry = join(szNewNick,szUser,szHost,iFlags);
 		pEntry->m_pGlobalData->setGender(gender);
 		pEntry->m_pGlobalData->setBot(bBot);
+		pEntry->m_pGlobalData->setRealName(szReal);
+		pEntry->m_pGlobalData->setAccountName(szAccount);
+		pEntry->m_pGlobalData->setIrcOp(bIrcOp);
+		pEntry->m_pGlobalData->setServer(szServer);
+		pEntry->m_pGlobalData->setHops(iHops);
 		pEntry->m_joinTime = joint;
 		pEntry->m_lastActionTime = kvi_unixTime();
 		pEntry->m_bSelected = bSelect;
