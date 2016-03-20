@@ -745,10 +745,16 @@ private slots:
 	void selectAllInternal();
 
 	/**
-	* \brief Deletes last word
+	* \brief Deletes previous word
 	* \return void
 	*/
-	void deleteWord();
+	void deletePreviousWord();
+
+	/**
+	* \brief Deletes next word
+	* \return void
+	*/
+	void deleteNextWord();
 
 	/**
 	* \brief Scrolls the output window up one line

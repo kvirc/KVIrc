@@ -61,7 +61,8 @@
 * \def KVI_SHORTCUTS_INPUT_COPY Copy the selected text to clipboard
 * \def KVI_SHORTCUTS_INPUT_CUT Cut the selected text and copy the text to clipboard
 * \def KVI_SHORTCUTS_INPUT_DELETE Delete key
-* \def KVI_SHORTCUTS_INPUT_DELETE_WORD Delete last word
+* \def KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD Delete previous word
+* \def KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD Delete next word
 * \def KVI_SHORTCUTS_INPUT_END Move the cursor at the end
 * \def KVI_SHORTCUTS_INPUT_END_SELECT Select until the end
 * \def KVI_SHORTCUTS_INPUT_ESCAPE Escape key
@@ -191,7 +192,8 @@
 #define KVI_SHORTCUTS_INPUT_NEXT_CHAR QKeySequence::MoveToNextChar		// Qt::Key_Right
 #define KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT QKeySequence::SelectPreviousChar	// Qt::ShiftModifier + Qt::Key_Left
 #define KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT QKeySequence::SelectNextChar	// Qt::ShiftModifier + Qt::Key_Right
-#define KVI_SHORTCUTS_INPUT_DELETE_WORD QKeySequence::DeleteStartOfWord		// Qt::ControlModifier + Qt::Key_Backspace
+#define KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD QKeySequence::DeleteStartOfWord		// Qt::ControlModifier + Qt::Key_Backspace
+#define KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD QKeySequence::DeleteEndOfWord		// Qt::ControlModifier + Qt::Key_Delete
 #define KVI_SHORTCUTS_INPUT_MULTILINE Qt::AltModifier + Qt::Key_Return
 #define KVI_SHORTCUTS_INPUT_MULTILINE_2 Qt::AltModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_INPUT_SEND_PLAIN Qt::ControlModifier + Qt::Key_Return

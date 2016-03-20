@@ -1873,7 +1873,8 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDO,this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_REDO,this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SELECT_ALL,this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_WORD,this,SLOT(deleteWord()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD,this,SLOT(deletePreviousWord()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD,this,SLOT(deleteNextWord()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_LINE,this,SLOT(previousLine()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_LINE,this,SLOT(nextLine()),0,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_PAGE,this,SLOT(previousPage()),0,Qt::WidgetShortcut);
@@ -2944,34 +2945,68 @@ void KviInputEditor::selectAllInternal()
 	repaintWithCursorOn();
 }
 
-void KviInputEditor::deleteWord()
+void KviInputEditor::deletePreviousWord()
 {
 	if(m_bReadOnly)
 		return;
 
 	if(hasSelection())
-		return;
-
-	if(m_iCursorPosition <= 0)
-		return;
-
-	// skip whitespace
-	while(m_iCursorPosition > 0)
 	{
-		if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
-			break;
-		m_szTextBuffer.remove(m_iCursorPosition-1,1);
-		m_p->bTextBlocksDirty = true;
-		m_iCursorPosition--;
+		removeSelected();
+	} else {
+		if(m_iCursorPosition <= 0)
+			return;
+
+		// skip whitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			m_szTextBuffer.remove(m_iCursorPosition-1,1);
+			m_p->bTextBlocksDirty = true;
+			m_iCursorPosition--;
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			m_szTextBuffer.remove(m_iCursorPosition-1,1);
+			m_p->bTextBlocksDirty = true;
+			m_iCursorPosition--;
+		}
 	}
-	// skip nonwhitespace
-	while(m_iCursorPosition > 0)
+	repaintWithCursorOn();
+}
+
+void KviInputEditor::deleteNextWord()
+{
+	if(m_bReadOnly)
+		return;
+
+	if(hasSelection())
 	{
-		if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
-			break;
-		m_szTextBuffer.remove(m_iCursorPosition-1,1);
-		m_p->bTextBlocksDirty = true;
-		m_iCursorPosition--;
+		removeSelected();
+	} else {
+		if(m_iCursorPosition >= m_szTextBuffer.length())
+			return;
+
+		// skip whitespace
+		while(m_iCursorPosition < m_szTextBuffer.length())
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())
+				break;
+			m_szTextBuffer.remove(m_iCursorPosition,1);
+			m_p->bTextBlocksDirty = true;
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition < m_szTextBuffer.length())
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition).isSpace())
+				break;
+			m_szTextBuffer.remove(m_iCursorPosition,1);
+			m_p->bTextBlocksDirty = true;
+		}
 	}
 	repaintWithCursorOn();
 }
