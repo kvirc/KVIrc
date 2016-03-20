@@ -226,6 +226,7 @@ public:
 	bool isFileUpload(){ return m_pDescriptor->isFileUpload(); };
 
 	unsigned int averageSpeed();
+	unsigned int instantSpeed();
 	unsigned int transferredBytes();
 
 	int bandwidthLimit();

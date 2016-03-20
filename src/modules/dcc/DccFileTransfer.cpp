@@ -1494,6 +1494,28 @@ unsigned int DccFileTransfer::averageSpeed()
 	return uAvgBandwidth;
 }
 
+unsigned int DccFileTransfer::instantSpeed()
+{
+	unsigned int uInstBandwidth = 0;
+	if(m_pDescriptor->bRecvFile)
+	{
+		if(m_pSlaveRecvThread)
+		{
+			m_pSlaveRecvThread->initGetInfo();
+			uInstBandwidth = m_pSlaveRecvThread->instantSpeed();
+			m_pSlaveRecvThread->doneGetInfo();
+		}
+	} else {
+		if(m_pSlaveSendThread)
+		{
+			m_pSlaveSendThread->initGetInfo();
+			uInstBandwidth = m_pSlaveSendThread->instantSpeed();
+			m_pSlaveSendThread->doneGetInfo();
+		}
+	}
+	return uInstBandwidth;
+}
+
 unsigned int DccFileTransfer::transferredBytes()
 {
 	unsigned int uTransferred = 0;
