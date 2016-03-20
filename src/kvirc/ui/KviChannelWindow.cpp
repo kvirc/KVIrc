@@ -888,7 +888,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 
 	szBuffer = "<html>" \
 		"<body>" \
-		"<table>"\
+		"<table style=\"white-space: pre\">"\
 		START_TABLE_BOLD_ROW;
 
 	if(m_iStateFlags & DeadChan)
