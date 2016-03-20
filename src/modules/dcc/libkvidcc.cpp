@@ -2540,14 +2540,14 @@ static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
 }
 
 /*
-	@doc: dcc.instantSpeed
+	@doc: dcc.currentSpeed
 	@type:
 		function
 	@title:
-		Returns the instant speed of a DCC file transfer
+		Returns the current speed of a DCC file transfer
 	@syntax:
-		$dcc.instantSpeed
-		$dcc.instantSpeed(<dcc_id>)
+		$dcc.currentSpeed
+		$dcc.currentSpeed(<dcc_id>)
 	@description:
                 Returns the instant speed (in bytes/sec) of the specified DCC session.[br]
                 If <dcc_id> is omitted then the DCC Session associated
@@ -2560,7 +2560,7 @@ static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
                 See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
-static bool dcc_kvs_fnc_instantSpeed(KviKvsModuleFunctionCall * c)
+static bool dcc_kvs_fnc_currentSpeed(KviKvsModuleFunctionCall * c)
 {
 	kvs_uint_t uDccId;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -2948,7 +2948,7 @@ static bool dcc_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"remoteFileName",dcc_kvs_fnc_remoteFileName);
 	KVSM_REGISTER_FUNCTION(m,"remoteFileSize",dcc_kvs_fnc_remoteFileSize);
 	KVSM_REGISTER_FUNCTION(m,"averageSpeed",dcc_kvs_fnc_averageSpeed);
-	KVSM_REGISTER_FUNCTION(m,"instantSpeed",dcc_kvs_fnc_instantSpeed);
+	KVSM_REGISTER_FUNCTION(m,"currentSpeed",dcc_kvs_fnc_currentSpeed);
 	KVSM_REGISTER_FUNCTION(m,"transferredBytes",dcc_kvs_fnc_transferredBytes);
 	KVSM_REGISTER_FUNCTION(m,"ircContext",dcc_kvs_fnc_ircContext);
 	KVSM_REGISTER_FUNCTION(m,"session",dcc_kvs_fnc_session);
