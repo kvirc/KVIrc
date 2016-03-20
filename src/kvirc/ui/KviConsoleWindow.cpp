@@ -266,7 +266,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	buffer += "@";
 	buffer += KviQString::toHtmlEscaped(e->host().isEmpty() ? QString("*") : e->host());
 	buffer += " </b></font></td></tr>";
-	
+
 	if(u)
 	{
 		QString szComment=u->user()->getProperty("comment");
@@ -289,7 +289,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 	{
 		buffer += "<tr><td>";
 		buffer += __tr2qs("Real name");
-		buffer += ": <b>";	
+		buffer += ": <b>";
 		buffer += KviQString::toHtmlEscaped(KviControlCodes::stripControlBytes(e->realName()));
 		buffer += "</b></td></tr>";
 	}

@@ -1603,6 +1603,13 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				szBuffer += "</font></nobr></td></tr>";
 			}
 
+			if(!pEntry->m_pGlobalData->accountName().isEmpty())
+			{
+				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
+				szBuffer += __tr2qs("%1 is identified to account <b>%2</b>").arg(pEntry->m_szNick).arg(pEntry->m_pGlobalData->accountName());
+				szBuffer += "</font></nobr></td></tr>";
+			}
+
 			if(pEntry->m_pGlobalData->isIrcOp())
 			{
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";

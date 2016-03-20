@@ -107,6 +107,7 @@ protected:
 	bool        m_bUseCustomColor;
 
 	int         m_iSmartNickColor;
+	QString     m_szAccountName;
 public:
 	/**
 	* \brief Returns the ircview smart nick color of the user
@@ -317,6 +318,17 @@ public:
 	* \brief Mark that kvirc is trying (already tried) to get user's avatar
 	*/
 	void setAvatarRequested() { m_bAvatarRequested = true; };
+
+	/**
+	* \brief Returns the account name (if any)
+	* \return const QString &
+	*/
+	const QString & accountName(){ return m_szAccountName; };
+
+	/**
+	* \brief Sets the account name for the user
+	*/
+	void setAccountName(const QString &szAccountName){ m_szAccountName = szAccountName; };
 };
 
 #endif // _KVI_IRCUSER_ENTRY_H_

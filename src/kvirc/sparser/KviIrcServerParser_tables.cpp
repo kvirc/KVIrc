@@ -29,6 +29,7 @@
 
 KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 {
+	{ "ACCOUNT"      , PTM(parseLiteralAccount)      },
 	{ "AUTHENTICATE" , PTM(parseLiteralAuthenticate) },
 	{ "AWAY"         , PTM(parseLiteralAway)         },
 	{ "CAP"          , PTM(parseLiteralCap)          },

@@ -463,38 +463,26 @@ void KviIrcConnection::handleInitialCapLs()
 
 	QString szRequests;
 
-	//SASL
-	if(
-		//KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
-		target()->server()->enabledSASL() &&
-		serverInfo()->supportedCaps().contains("sasl",Qt::CaseInsensitive)
-	)
+	auto cap_add = [&](const char *c)
 	{
-		szRequests.append("sasl ");
-	}
+		if(serverInfo()->supportedCaps().contains(c,Qt::CaseInsensitive))
+		{
+			szRequests.append(c);
+			szRequests.append(" ");
+		}
+	};
 
-	if(serverInfo()->supportedCaps().contains("multi-prefix",Qt::CaseInsensitive))
-	{
-		szRequests.append("multi-prefix "); // NAMES supports this, WHO probably not yet
-	}
+	if(target()->server()->enabledSASL())
+		cap_add("sasl");
 
-	if(serverInfo()->supportedCaps().contains("server-time",Qt::CaseInsensitive))
-	{
-		szRequests.append("server-time ");
-	}
+	cap_add("znc.in/server-time-iso");
+	cap_add("server-time");
+	cap_add("multi-prefix");
+	cap_add("away-notify");
+	cap_add("account-notify");
+	cap_add("extended-join");
 
-	if(serverInfo()->supportedCaps().contains("znc.in/server-time-iso",Qt::CaseInsensitive))
-	{
-		szRequests.append("znc.in/server-time-iso ");
-	}
-
-	if(serverInfo()->supportedCaps().contains("away-notify",Qt::CaseInsensitive))
-	{
-		szRequests.append("away-notify ");
-	}
-
-	if(szRequests.isEmpty())
-	{
+	if(szRequests.isEmpty()) {
 		endInitialCapNegotiation();
 	} else {
 		sendFmtData("CAP REQ :%s",szRequests.trimmed().toUtf8().data());

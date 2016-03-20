@@ -158,6 +158,33 @@ void KviIrcServerParser::parseLiteralError(KviIrcMessage *msg)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
+// ACCOUNT
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void KviIrcServerParser::parseLiteralAccount(KviIrcMessage *msg)
+{
+	// ACCOUNT
+	// :<mask> ACCOUNT <account|*>
+	// If the "account" is an asterisk, they have logged out.
+	QString szNick,szUser,szHost;
+	QString szAccount = msg->connection()->decodeText(msg->safeParam(0));
+	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
+
+	KviIrcUserDataBase * db = msg->connection()->userDataBase();
+	KviIrcUserEntry * e = db->find(szNick);
+
+	if(e)
+	{
+		if(szAccount == "*")
+			e->setAccountName("");
+		else
+			e->setAccountName(szAccount);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
 // JOIN
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,12 +192,22 @@ void KviIrcServerParser::parseLiteralError(KviIrcMessage *msg)
 void KviIrcServerParser::parseLiteralJoin(KviIrcMessage *msg)
 {
 	// JOIN
-	// :<joiner_mask> JOIN :<channel>
+	// [PLAIN] :<joiner_mask> JOIN :<channel>
+	// [EXTJO] :<joiner_mask> JOIN <channel> <account|*> :gecos
 	QString szNick,szUser,szHost;
 	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
+	QString channel, szAccount, szReal;
 
-	const char * encodedChan = msg->safeTrailing();
-	QString channel = msg->connection()->decodeText(encodedChan);
+	if(msg->connection()->stateData()->enabledCaps().contains("extended-join"))
+	{
+		szAccount = msg->connection()->decodeText(msg->safeParam(1));
+		KviCString trailing = msg->safeTrailing();
+		szReal = msg->connection()->decodeText(trailing.ptr());
+		channel = msg->connection()->decodeText(msg->safeParam(0));
+	} else {
+		const char * encodedChan = msg->safeTrailing();
+		channel = msg->connection()->decodeText(encodedChan);
+	}
 
 	if(channel.isEmpty())
 	{
@@ -209,7 +246,7 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage *msg)
 			msg->connection()->userInfoReceived(szUser,szHost);
 			chan = msg->connection()->createChannel(channel); // New channel (will resurrect an eventual dead one too!)
 		} else {
-			// Someone is joining an inexsisting channel!!!
+			// Someone is joining a non-existent channel!!!
 			UNRECOGNIZED_MESSAGE(msg,__tr("Received a join message for an unknown channel, possible desync"));
 			return;
 		}
@@ -261,6 +298,23 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage *msg)
 		if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnJoin,chan,szNick,szUser,szHost))
 			msg->setHaltOutput();
 		// FIXME: #warning "WE COULD OPTIONALLY REQUEST A /WHO FOR THE USERS JOINING THAT WE DON'T KNOW THE HOST OF"
+	}
+
+	// We SHOULD have a database entry for the user now. If we do, we
+	// can tack on some additional info if we're using extended-join.
+	if(!szAccount.isEmpty())
+	{
+		KviIrcUserDataBase * db = msg->connection()->userDataBase();
+		KviIrcUserEntry * e = db->find(szNick);
+		if(e)
+		{
+			if(szAccount == "*")
+				e->setAccountName("");
+			else
+				e->setAccountName(szAccount);
+
+			e->setRealName(szReal);
+		}
 	}
 
 	// Now say it to the world

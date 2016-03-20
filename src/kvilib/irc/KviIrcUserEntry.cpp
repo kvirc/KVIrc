@@ -41,6 +41,7 @@ KviIrcUserEntry::KviIrcUserEntry(const QString & szUser, const QString & szHost)
 	m_bUseCustomColor         = false;
 	m_bAvatarRequested        = false;
 	m_iSmartNickColor         = -1;
+	m_szAccountName           = QString();
 }
 
 KviIrcUserEntry::~KviIrcUserEntry()
