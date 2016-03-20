@@ -482,6 +482,7 @@ void KviIrcConnection::handleInitialCapLs()
 	cap_add("account-notify");
 	cap_add("extended-join");
 	cap_add("userhost-in-names");
+	cap_add("chghost");
 
 	if(szRequests.isEmpty()) {
 		endInitialCapNegotiation();

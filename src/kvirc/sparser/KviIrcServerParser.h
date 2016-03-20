@@ -299,6 +299,7 @@ private:
 	void parseNumericSaslFail(KviIrcMessage * msg);
 	// IRCv3 stuffs
 	void parseLiteralAccount(KviIrcMessage *msg);
+	void parseLiteralChghost(KviIrcMessage *msg);
 
 public:
 	static void encodeCtcpParameter(const char * param,KviCString &buffer,bool bSpaceBreaks = true);
