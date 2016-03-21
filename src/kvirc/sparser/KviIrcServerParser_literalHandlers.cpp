@@ -207,6 +207,40 @@ void KviIrcServerParser::parseLiteralChghost(KviIrcMessage *msg)
 		e->setHost(szNewHost);
 	}
 
+	KviConsoleWindow * console = msg->console();
+	for(KviChannelWindow * c = console->connection()->channelList()->first();c;c = console->connection()->channelList()->next())
+	{
+		if(!msg->haltOutput())
+		{
+			if(szHost == szNewHost) {
+				c->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user %Q"),
+					&szNick,&szUser,&szHost,&szNewUser);
+			} else if(szUser == szNewUser) {
+				c->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has host \r!h\r%Q\r"),
+					&szNick,&szUser,&szHost,&szNewHost);
+			} else {
+				c->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user@host %Q@\r!h\r%Q\r"),
+					&szNick,&szUser,&szHost,&szNewUser,&szNewHost);
+			}
+		}
+	}
+
+	KviQueryWindow * q = console->connection()->findQuery(szNick);
+	if(q)
+	{
+		if(szHost == szNewHost) {
+			q->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user %Q"),
+				&szNick,&szUser,&szHost,&szNewUser);
+		} else if(szUser == szNewUser) {
+			q->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has host \r!h\r%Q\r"),
+				&szNick,&szUser,&szHost,&szNewHost);
+		} else {
+			q->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user@host %Q@\r!h\r%Q\r"),
+				&szNick,&szUser,&szHost,&szNewUser,&szNewHost);
+		}
+		q->updateLabelText();
+	}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
