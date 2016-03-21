@@ -100,7 +100,6 @@ class KVIRC_API KviIrcdSevenIrcServerInfo : public KviCharybdisServerInfo
 public:
 	KviIrcdSevenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
 		:KviCharybdisServerInfo(pParent, version) {;};
-	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };

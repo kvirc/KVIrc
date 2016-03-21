@@ -953,32 +953,24 @@ const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode)
 	switch(mode)
 	{
 		case 'A': return __tr2qs("Server administrator only channel"); break;
-		case 'F': return __tr2qs("Free target"); break;
+		case 'F': return __tr2qs("Allow anyone to forward users to this channel"); break;
 		case 'L': return __tr2qs("Large ban/exempt/invex lists (staff only)"); break;
+		case 'M': return __tr2qs("Disallow kicking opers (staff only)"); break;
 		case 'P': return __tr2qs("Persistent (staff only)"); break;
 		case 'Q': return __tr2qs("Block forwarded users"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("SSL Only"); break;
 		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'c': return __tr2qs("Strip color codes"); break;
 		case 'f': return __tr2qs("Forward to another channel on uninvited"); break;
 		case 'g': return __tr2qs("Allow anybody to invite"); break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
+		case 'p': return __tr2qs("Paranoid (disable KNOCK)"); break;
+		case 'q': return __tr2qs("Quiet ban editor"); break;
 		case 'r': return __tr2qs("Need auth to join channel"); break;
 		case 'z': return __tr2qs("Reduced moderation for ops"); break;
 	}
 	return KviIrcdRatboxIrcServerInfo::getChannelModeDescription(mode);
-}
-
-const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
-{
-	switch(mode)
-	{
-		case 'F': return __tr2qs("Enable forwarding"); break;
-		case 'M': return __tr2qs("Disallow kicking opers (staff only)"); break;
-		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'S': return __tr2qs("Strip colors"); break;
-		case 'p': return __tr2qs("Paranoid (disable KNOCK)"); break;
-		case 'q': return __tr2qs("Quiet ban editor"); break;
-	}
-	return KviCharybdisServerInfo::getChannelModeDescription(mode);
 }
 
 const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
