@@ -1345,7 +1345,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 	@short:
 		Sets the crypt engine for a window that supports it
 	@syntax:
-		window.setCryptEngine [-q] [-n] [-m] <window_id:integer> <enginename:string> <hex_encrypt_key;string> [hex_decrypt_key:string]
+		window.setCryptEngine [-q] [-n] [-m] <window_id:integer> <enginename:string> <hex_encrypt_key:string> [hex_decrypt_key:string]
 	@switches:
 		!sw: -q | --quiet
 		Be quiet: do echo the raw data.
