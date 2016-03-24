@@ -9,9 +9,10 @@ toolbar.additem irccontext kvirc.channelmenu
 toolbar.additem irccontext kvirc.separator
 toolbar.additem irccontext kvirc.nicknamemenu
 toolbar.additem irccontext kvirc.irctools
-#toolbar.additem irccontext kvirc.ircactions
 toolbar.additem irccontext kvirc.usermodemenu
 toolbar.additem irccontext kvirc.awayback
+toolbar.additem irccontext kvirc.separator
+toolbar.additem irccontext kvirc.filetransfer
 toolbar.show irccontext
 
 toolbar.create options $tr("Options","defscript") $icon("options")
