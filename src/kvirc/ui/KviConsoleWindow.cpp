@@ -337,8 +337,8 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 
 	if(e->hasServer())
 	{
-		buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
-		buffer += __tr2qs("Using server: <b>%1</b></nobr>").arg(KviQString::toHtmlEscaped(e->server()));
+		buffer += "<tr><td style=\"white-space: pre\" bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+		buffer += __tr2qs("Using server: <b>%1</b>").arg(KviQString::toHtmlEscaped(e->server()));
 
 		if(e->hasHops())
 		{
@@ -346,7 +346,7 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 			buffer += __tr2qs("Hops: <b>%1</b>").arg(e->hops());
 			buffer += "</font></td></tr>";
 		} else {
-			buffer += "</font></nobr></td></tr></table>";
+			buffer += "</font></td></tr></table>";
 		}
 	}
 
