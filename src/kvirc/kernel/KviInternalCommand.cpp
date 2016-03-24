@@ -88,11 +88,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] =
 	"actioneditor.open",
 	"quit",
 	"openurl http://www.kvirc.ru",
-	JOIN_CHANNEL_ON_NETWORK("#KVIrc","freenode"),
-	JOIN_CHANNEL_ON_NETWORK("#KVIrc.net","azzurra"),
-	"openurl http://kvirc-fr.info",
-	JOIN_CHANNEL_ON_NETWORK("#KVIrc-fr","freenode"),
-	JOIN_CHANNEL_ON_NETWORK("#KVIrc-fr","europnet")
+	JOIN_CHANNEL_ON_NETWORK("#KVIrc","freenode")
 };
 
 

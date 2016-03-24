@@ -134,34 +134,14 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Russian Home&page"));
 		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
-	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
-	{
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc French Home&page"));
-		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
-	}
 	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Message)),__tr2qs("Subscribe to the Mailing List"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Bug)),__tr2qs("Report a Bug / Propose Improvements"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->addSeparator();
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on freenode"));
+	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc's Channel on freenode"));
 	pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_ON_FREENODE);
-	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"it",2))
-	{
-		// join #kvirc.net on azzurra
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
-		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_IT_ON_AZZURRA);
-	}
-	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
-	{
-		// join #kvirc-fr on freenode
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on freenode"));
-		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_FREENODE);
-		// join #kvirc on europnet
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on EuropNet"));
-		pAction->setData(KVI_INTERNALCOMMAND_JOIN_KVIRC_FR_ON_EUROPNET);
-	}
 }
 
 void KviMenuBar::actionTriggered(QAction *pAction)
