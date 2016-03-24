@@ -134,11 +134,6 @@ void KviMenuBar::setupHelpPopup(QMenu *pop)
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Russian Home&page"));
 		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
-	if(kvi_strEqualCIN(KviLocale::instance()->localeName(),"fr",2))
-	{
-		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc French Home&page"));
-		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
-	}
 	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Message)),__tr2qs("Subscribe to the Mailing List"));
 	pAction->setData(KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
