@@ -36,6 +36,8 @@
 
 #include <QString>
 
+extern KVILIB_API const char * feature_array[];
+
 /**
 * \namespace KviBuildInfo
 * \brief This namespace contains information gathered at KVIrc build time.
@@ -132,6 +134,12 @@ namespace KviBuildInfo
 	* \return QString
 	*/
 	extern KVILIB_API QString qtVersion();
+
+	/**
+	* \brief Returns the list of features compiled in the KVIrc executable.
+	* \return QString
+	*/
+	extern KVILIB_API QString features();
 }
 
 #endif //!_KVI_BUILDINFO_H_

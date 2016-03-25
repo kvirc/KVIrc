@@ -44,6 +44,7 @@
 #include "KviOptions.h"
 #include "KviKvsAliasManager.h"
 #include "KviKvsScript.h"
+#include "KviBuildInfo.h"
 
 // date includes
 #include <QDateTime>
@@ -1240,78 +1241,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("test_feature",KVS_PT_STRING,KVS_PF_OPTIONAL,szFeature)
 		KVSCF_PARAMETERS_END
-
-		static const char * feature_array[]=
-		{
-			"IRC",
-	#ifdef COMPILE_IPV6_SUPPORT
-			"IPv6",
-	#endif
-	#ifdef COMPILE_CRYPT_SUPPORT
-			"Crypt",
-	#endif
-	#ifdef COMPILE_SSL_SUPPORT
-			"SSL",
-	#endif
-	#ifdef COMPILE_GET_INTERFACE_ADDRESS
-			"IfAddr",
-	#endif
-	#ifndef COMPILE_NO_IPC
-			"IPC",
-	#endif
-	#ifdef COMPILE_KDE_SUPPORT
-			"KDE",
-	#endif
-	#ifdef COMPILE_OSS_SUPPORT
-			"OSS",
-	#endif
-	#ifdef COMPILE_ARTS_SUPPORT
-			"ARTS",
-	#endif
-	#ifdef COMPILE_ESD_SUPPORT
-			"ESD",
-	#endif
-	#ifdef COMPILE_AUDIOFILE_SUPPORT
-			"Audiofile",
-	#endif
-	#ifdef COMPILE_PSEUDO_TRANSPARENCY
-			"Transparency",
-	#endif
-	#ifdef COMPILE_ix86_ASM
-			"ix86-ASM",
-	#endif
-	#ifdef COMPILE_SCRIPTTOOLBAR
-			"ScriptToolBar",
-	#endif // COMPILE_SCRIPTTOOLBAR
-	#ifdef COMPILE_PHONON_SUPPORT
-			"Phonon",
-	#endif
-	#ifdef COMPILE_WEBKIT_SUPPORT
-			"Webkit",
-	#endif
-	#ifndef COMPILE_DISABLE_DCC_VIDEO
-			"DCCVideo",
-	#endif
-	#ifndef COMPILE_DISABLE_DCC_VOICE
-			"DCCVoice",
-	#endif
-	#ifdef COMPILE_DCC_CANVAS
-			"DCCCanvas",
-	#endif
-	#ifdef COMPILE_PERL_SUPPORT
-			"Perl",
-	#endif
-	#ifdef COMPILE_PYTHON_SUPPORT
-			"Python",
-	#endif
-	#if (QT_VERSION >= 0x050000)
-			"Qt5",
-	#else
-			"Qt4",
-	#endif
-			"KVS",
-			0
-		};
 
 		if(!szFeature.isEmpty())
 		{

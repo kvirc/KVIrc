@@ -188,6 +188,10 @@ AboutDialog::AboutDialog()
 	infoString += __tr2qs_ctx("Qt version","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::qtVersion();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Features","about");
+	infoString += ": ";
+	infoString += KviBuildInfo::features();
 
 	v->setText(infoString);
 
