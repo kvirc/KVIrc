@@ -324,6 +324,7 @@ private:
 	QString m_szPlainModes;
 	bool m_bSupportsCap;
 	QStringList m_lSupportedCaps;
+	bool m_bSupportsWhox;                  // supports WHOX
 public:
 	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
 	const char * software() { return m_pServInfo ? m_pServInfo->getSoftware() : 0; };
@@ -344,6 +345,7 @@ public:
 	const QStringList & supportedCaps() { return m_lSupportedCaps; };
 	bool supportsWatchList() { return m_bSupportsWatchList; };
 	bool supportsCodePages() { return m_bSupportsCodePages; };
+	bool supportsWhox() { return m_bSupportsWhox; };
 
 	int maxTopicLen() { return m_iMaxTopicLen; };
 	int maxModeChanges() { return m_iMaxModeChanges; };
@@ -376,6 +378,7 @@ protected:
 	void addSupportedCaps(const QString &szCapList);
 	void setMaxTopicLen(int iTopLen) { m_iMaxTopicLen=iTopLen; };
 	void setMaxModeChanges(int iModes) { m_iMaxModeChanges=iModes; };
+	void setSupportsWhox(bool bSupportsWhox) { m_bSupportsWhox = bSupportsWhox; };
 private:
 	void buildModePrefixTable();
 };

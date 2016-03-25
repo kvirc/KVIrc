@@ -2021,12 +2021,22 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 							console()->output(KVI_OUT_VERBOSE,__tr2qs("Updating away state for channel %Q"),&szChanName);
 						if(lagMeter())
 						{
-							KviCString tmp(KviCString::Format,"WHO %s",encodeText(pOldest->windowName()).data());
+							KviCString tmp;
+							if(serverInfo()->supportsWhox())
+								tmp = KviCString::Format,"WHO %s %acdfhlnrsu",encodeText(pOldest->windowName()).data();
+							else
+								tmp = KviCString::Format,"WHO %s",encodeText(pOldest->windowName()).data();
 							lagMeter()->lagCheckRegister(tmp.ptr(),70);
 						}
 						pOldest->setSentSyncWhoRequest();
-						if(!sendFmtData("WHO %s",encodeText(pOldest->windowName()).data()))
-							return;
+						if(serverInfo()->supportsWhox())
+						{
+							if(!sendFmtData("WHO %s %acdfhlnrsu",encodeText(pOldest->windowName()).data()))
+								return;
+						} else {
+							if(!sendFmtData("WHO %s",encodeText(pOldest->windowName()).data()))
+								return;
+						}
 					}
 				}
 			}

@@ -127,16 +127,27 @@ void KviIrcConnectionRequestQueue::timerSlot()
 			case Who:
 				if(!KVI_OPTION_BOOL(KviOption_boolDisableWhoRequestOnJoin))
 				{
+					// TODO: cleanup
 					pChan->connection()->stateData()->setLastSentChannelWhoRequest(kvi_unixTime());
 					if(pChan->connection()->lagMeter())
 					{
 						KviCString tmp;
-						tmp.sprintf("WHO %s",encodedChan.data());
+						if(pChan->serverInfo()->supportsWhox())
+							tmp.sprintf("WHO %s %acdfhlnrsu",encodedChan.data());
+						else
+							tmp.sprintf("WHO %s",encodedChan.data());
 						pChan->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
 					}
-					if(!pChan->connection()->sendFmtData("WHO %s",encodedChan.data()))
-						clearAll(); // disconnected
-					else pChan->setSentWhoRequest();
+					if(pChan->serverInfo()->supportsWhox())
+					{
+						if(!pChan->connection()->sendFmtData("WHO %s %acdfhlnrsu",encodedChan.data()))
+							clearAll(); // disconnected
+						else pChan->setSentWhoRequest();
+					} else {
+						if(!pChan->connection()->sendFmtData("WHO %s",encodedChan.data()))
+							clearAll(); // disconnected
+						else pChan->setSentWhoRequest();
+					}
 					m_curType = Ban;
 					break;
 				}

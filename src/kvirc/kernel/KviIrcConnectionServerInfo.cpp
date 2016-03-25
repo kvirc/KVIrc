@@ -47,6 +47,7 @@ KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 	m_szParameterWhenSetModes = "l";
 	m_szPlainModes = "pstnmi";
 	m_szSupportedChannelModes = "pstnmiklb";
+	m_bSupportsWhox = false;
 	m_pServInfo = new KviBasicIrcServerInfo(this);
 }
 

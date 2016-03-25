@@ -432,7 +432,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 351 RPL_VERSION
 	PTM(parseNumericWhoReply)                      , // 352 RPL_WHOREPLY
 	PTM(parseNumericNames)                         , // 353 RPL_NAMREPLY
-	0,                                               // 354 RPL_WHOSPCRPL
+	PTM(parseNumericWhospcrpl)                     , // 354 RPL_WHOSPCRPL
 	0,                                               // 355 RPL_NAMREPLY_
 	0,                                               // 356
 	0,                                               // 357 RPL_MAP

@@ -246,6 +246,7 @@ private:
 	void parseNumericOftcEndOfQuietList(KviIrcMessage *msg);
 	void parseNumericQuietList(KviIrcMessage *msg);
 	void parseNumericEndOfQuietList(KviIrcMessage *msg);
+	void parseNumericWhospcrpl(KviIrcMessage *msg);
 
 	void parseLiteralPing(KviIrcMessage *msg);
 	void parseLiteralJoin(KviIrcMessage *msg);
