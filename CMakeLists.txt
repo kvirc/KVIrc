@@ -683,7 +683,7 @@ if(WANT_OPENSSL)
 	if(OPENSSL_FOUND)
 		if(WIN32)
 			# On windows/mingw we need libeay32 too...
-			find_library(LIB_EAY NAMES libeay32MD eay libeay libeay32
+			find_library(LIB_EAY NAMES libeay32MD eay libeay libeay32 libcrypto
 									${_OPENSSL_ROOT_HINTS_AND_PATHS}
 									PATH_SUFFIXES
 									"lib"
