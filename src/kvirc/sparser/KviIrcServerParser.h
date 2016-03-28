@@ -144,6 +144,7 @@ private:
 	void parseNumeric480(KviIrcMessage *msg);
 	void parseNumeric728(KviIrcMessage *msg);
 	void parseNumeric729(KviIrcMessage *msg);
+	void parseNumeric742(KviIrcMessage *msg);
 	void parseNumeric486(KviIrcMessage * msg);
 
 	void parseNumericSnomask(KviIrcMessage *msg);

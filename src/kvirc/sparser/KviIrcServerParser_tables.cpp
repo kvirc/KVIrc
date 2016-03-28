@@ -820,7 +820,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 739
 	0,                                               // 740
 	0,                                               // 741
-	0,                                               // 742
+	PTM(parseNumeric742)                           , // 742
 	0,                                               // 743
 	0,                                               // 744
 	0,                                               // 745

@@ -2526,6 +2526,25 @@ void KviIrcServerParser::parseNumeric729(KviIrcMessage * msg)
 		parseNumericEndOfQuietList(msg);
 }
 
+void KviIrcServerParser::parseNumeric742(KviIrcMessage * msg)
+{
+	// ERR_MLOCKRESTRICTED 742
+	// :<prefix> 742 <target> <channel> <mode> <mlocked modes> :MODE cannot be set due to channel having an active MLOCK restriction policy
+	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
+	QString mode   = msg->connection()->decodeText(msg->safeParam(2));
+	QString lock   = msg->connection()->decodeText(msg->safeParam(3));
+	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+	if(chan)
+	{
+		chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
+			&mode, &szChan, &lock);
+	} else {
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
+			&mode, &szChan, &lock);
+	}
+}
+
 void KviIrcServerParser::parseNumericInfo(KviIrcMessage * msg)
 {
 	//RPL_INFO             371
