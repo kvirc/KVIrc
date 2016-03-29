@@ -244,10 +244,7 @@ void KviMaskEditor::updateOpStatus()
 	bool isEnabled=true;
 	if(m_pChannel)
 	{
-		if(!( m_pChannel->isMeHalfOp() ||
-			m_pChannel->isMeOp() ||
-			m_pChannel->isMeChanOwner() ||
-			m_pChannel->isMeChanAdmin() ||
+		if(!( m_pChannel->isMeHalfOp(true) ||
 			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
 			m_pChannel->connection()->userInfo()->hasUserMode('O'))
 		) isEnabled=false;
@@ -303,10 +300,7 @@ void KviMaskEditor::addClicked()
 {
 	if(m_pChannel && m_pChannel->connection())
 	{
-		if(m_pChannel->isMeHalfOp() ||
-			m_pChannel->isMeOp() ||
-			m_pChannel->isMeChanAdmin() ||
-			m_pChannel->isMeChanOwner() ||
+		if(m_pChannel->isMeHalfOp(true) ||
 			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
 			m_pChannel->connection()->userInfo()->hasUserMode('O'))
 		{
@@ -351,10 +345,7 @@ void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 {
 	if(pItem && m_pChannel)
 	{
-		if(m_pChannel->isMeHalfOp() ||
-			m_pChannel->isMeOp() ||
-			m_pChannel->isMeChanAdmin() ||
-			m_pChannel->isMeChanOwner() ||
+		if(m_pChannel->isMeHalfOp(true) ||
 			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
 			m_pChannel->connection()->userInfo()->hasUserMode('O'))
 		{

@@ -432,10 +432,7 @@ void KviTopicWidget::switchMode()
 			iMaxLen = chan->connection()->serverInfo()->maxTopicLen();
 			chan->getChannelModeString(szModes);
 			if(chan->plainChannelMode().contains('t') &&
-				!( chan->isMeHalfOp() ||
-					chan->isMeOp() ||
-					chan->isMeChanOwner() ||
-					chan->isMeChanAdmin() ||
+				!( chan->isMeHalfOp(true) ||
 					chan->connection()->userInfo()->hasUserMode('o') ||
 					chan->connection()->userInfo()->hasUserMode('O')
 				)

@@ -168,7 +168,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 				return; // malformed
 			if(m_pKviWindow->type() != KviWindow::Channel)
 				return; // must be on a channel to apply it
-			if(!(((KviChannelWindow *)m_pKviWindow)->isMeOp()))
+			if(!(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true)))
 				return; // i'm not op, can't do mode changes
 
 			QString szPart = szLinkCommandPart.mid(1);
@@ -912,12 +912,12 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				return;
 			if((linkCmd.length() > 2) && (m_pKviWindow->type() == KviWindow::Channel))
 			{
-				if(((KviChannelWindow *)m_pKviWindow)->isMeOp())
+				if(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true))
 				{
 					QString part = linkCmd.mid(1);
 					KviQString::appendFormatted(tip,QString("<b>mode %Q %Q</b>"),&(m_pKviWindow->windowName()),&part);
 				} else {
-					// I'm not op...no way
+					// I'm not op... no way
 					tip = __tr2qs("You're not an operator: you may not change channel modes");
 				}
 			}

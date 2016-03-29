@@ -60,10 +60,7 @@ void KviModeWidget::refreshModes()
 
 void KviModeWidget::mouseDoubleClickEvent(QMouseEvent *)
 {
-	if(m_pChannel->isMeHalfOp() ||
-		m_pChannel->isMeOp() ||
-		m_pChannel->isMeChanOwner() ||
-		m_pChannel->isMeChanAdmin() ||
+	if(m_pChannel->isMeHalfOp(true) ||
 		m_pChannel->connection()->userInfo()->hasUserMode('o') ||
 		m_pChannel->connection()->userInfo()->hasUserMode('O'))
 	{
