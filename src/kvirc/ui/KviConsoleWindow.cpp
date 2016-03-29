@@ -350,6 +350,13 @@ void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QSt
 		}
 	}
 
+	if(e->hasAccountName())
+	{
+		buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
+		buffer += __tr2qs("Identified to account: <b>%1</b>").arg(e->accountName());
+		buffer += "</font></nobr></td></tr>";
+	}
+
 	if(e->isAway())
 	{
 		buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";

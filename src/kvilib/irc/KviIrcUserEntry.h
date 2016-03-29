@@ -329,6 +329,12 @@ public:
 	* \brief Sets the account name for the user
 	*/
 	void setAccountName(const QString &szAccountName){ m_szAccountName = szAccountName; };
+
+	/**
+	* \brief Returns true if the user has an account name
+	* \return bool
+	*/
+	bool hasAccountName(){ return (!m_szAccountName.isEmpty()); };
 };
 
 #endif // _KVI_IRCUSER_ENTRY_H_
