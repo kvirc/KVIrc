@@ -2403,8 +2403,24 @@ void KviIrcServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage *
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
-			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact address is %s"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold,szInfo.toUtf8().data());
+		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact address is %s"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold,szInfo.toUtf8().data());
+	}
+}
+
+void KviIrcServerParser::parseNumericTryAgain(KviIrcMessage * msg)
+{
+	// RPL_TRYAGAIN        263
+	// :prefix 263 <target> <command> :This command could not be completed because it has been used recently, and is rate-limited.
+	if(!msg->haltOutput())
+	{
+		QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
+		QString szComment = msg->connection()->decodeText(msg->safeTrailing());
+		KviWindow * pOut  = msg->console()->activeWindow();
+
+		// Bank on the IRCd providing a useful explanation.
+		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Unable to use command %Q. %Q"),
+			&szCmd, &szComment);
 	}
 }
 

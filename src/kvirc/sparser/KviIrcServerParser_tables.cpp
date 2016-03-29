@@ -341,7 +341,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 260
 	0,                                               // 261 RPL_TRACELOG
 	0,                                               // 262 RPL_TRACEPING, RPL_TRACEEND
-	0,                                               // 263 RPL_TRYAGAIN
+	PTM(parseNumericTryAgain)                      , // 263 RPL_TRYAGAIN
 	0,                                               // 264
 	PTM(parseNumericStats)                         , // 265 RPL_LOCALUSERS
 	PTM(parseNumericStats)                         , // 266 RPL_GLOBALUSERS
