@@ -387,6 +387,10 @@ int main(int argc, char ** argv)
 	#endif //!COMPILE_KDE4_SUPPORT
 #endif
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(-1));
+#endif
+
 	KviApplication * pTheApp = new KviApplication(argc,argv);
 
 #ifdef COMPILE_KDE_SUPPORT
