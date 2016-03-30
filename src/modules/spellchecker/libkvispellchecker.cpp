@@ -132,7 +132,7 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
 			char ** suggestions = enchant_dict_suggest(*it,utf8.data(),utf8.size(),&iCount);
 			if(suggestions)
 			{
-				for(int i=0;i<iCount;i++)
+				for(size_t i=0;i<iCount;i++)
 					hAllSuggestions.insert(QString::fromUtf8(suggestions[i]),1);
 				enchant_dict_free_string_list(*it,suggestions);
 			}
