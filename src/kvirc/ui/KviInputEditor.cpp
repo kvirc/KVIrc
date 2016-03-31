@@ -117,7 +117,7 @@ public:
 		: szText(p,len)
 	{
 	}
-	
+
 	KviInputEditorTextBlock(const QString &text)
 		: szText(text)
 	{
@@ -572,7 +572,7 @@ void KviInputEditor::rebuildTextBlocks()
 		while(p < e)
 		{
 			ushort c = p->unicode();
-	
+
 			if(NOT_CONTROL_CHAR())
 			{
 				const QChar * b = p;
@@ -584,7 +584,7 @@ void KviInputEditor::rebuildTextBlocks()
 						break;
 					p++;
 				}
-				
+
 				pBlock = new KviInputEditorTextBlock(b,p-b);
 				pBlock->uForeground = uCurFore;
 				pBlock->uBackground = uCurBack;
@@ -594,9 +594,9 @@ void KviInputEditor::rebuildTextBlocks()
 				m_p->lTextBlocks.append(pBlock);
 				continue;
 			}
-			
+
 			// control char
-			
+
 			switch(c)
 			{
 				case KviControlCodes::Bold:
@@ -653,7 +653,7 @@ void KviInputEditor::rebuildTextBlocks()
 					Q_ASSERT(false);
 				break;
 			}
-	
+
 			QChar cSubstitute = getSubstituteChar(c);
 			pBlock = new KviInputEditorTextBlock(QString(cSubstitute));
 			pBlock->fWidth = fm->width(pBlock->szText) + 4;
@@ -662,7 +662,7 @@ void KviInputEditor::rebuildTextBlocks()
 			pBlock->uBackground = uCurBack;
 			pBlock->iLength = pBlock->szText.length();
 			m_p->lTextBlocks.append(pBlock);
-	
+
 			p++;
 		}
 	}
@@ -681,7 +681,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 		int iCurStart = 0;
 		int cnt = m_p->lTextBlocks.count();
-		
+
 		for(int idx = 0;idx < cnt;idx++)
 		{
 			pBlock  = m_p->lTextBlocks.at(idx);
@@ -690,7 +690,7 @@ void KviInputEditor::rebuildTextBlocks()
 				break; // finished
 
 			int iCurEnd = iCurStart + pBlock->iLength;
-			
+
 			if(pBlock->iLength < 1)
 			{
 				iCurStart = iCurEnd;
@@ -726,7 +726,7 @@ void KviInputEditor::rebuildTextBlocks()
 					idx++;
 					cnt++;
 				}
-				
+
 				if(m_iSelectionEnd >= iCurEnd)
 				{
 					// selection ends after or at the end of this block
@@ -768,11 +768,11 @@ void KviInputEditor::ensureCursorVisible()
 	qreal fCursorXInText = fm->width(m_szTextBuffer.left(m_iCursorPosition));
 
 	qreal fCursorXAbsolute = fCursorXInText - m_p->fXOffset;
-	
+
 	bool bNeedRepaint = false;
-	
+
 	qreal fAvailableWidth = width() - KVI_INPUT_MARGIN - KVI_INPUT_MARGIN;
-	
+
 	if(fCursorXAbsolute < 0.0)
 	{
 		m_p->fXOffset = fCursorXInText;
@@ -841,7 +841,6 @@ void KviInputEditor::drawContents(QPainter * p)
 		rebuildTextBlocks();
 
 	qreal fCurX = -m_p->fXOffset + KVI_INPUT_MARGIN;
-	int iCurChar = 0;
 
 	KviInputEditorTextBlock * pBlock;
 
@@ -920,7 +919,7 @@ void KviInputEditor::drawContents(QPainter * p)
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsSpellingMistake)
 				{
 					p->setPen(QPen(Qt::red, 1));
-			
+
 					// red overlay
 					int iY = iTextBaseline + fm->descent() - 1;
 					p->fillRect(QRectF(fCurX,iTop,pBlock->fWidth,iY - iTop),QColor(255,0,0,30)); // alpha = 30
@@ -1618,7 +1617,7 @@ void KviInputEditor::handleDragSelection()
 		m_iSelectionAnchorChar = m_szTextBuffer.length();
 
 	QPoint pnt = mapFromGlobal(QCursor::pos());
-	
+
 	m_iCursorPosition = charIndexFromXPosition(pnt.x());
 
 	if(m_iCursorPosition == m_iSelectionAnchorChar)
@@ -1768,7 +1767,7 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 
 	m_p->bTextBlocksDirty = true;
 	ensureCursorVisible();
-	
+
 }
 
 #if (QT_VERSION >= 0x050000)
@@ -2033,7 +2032,7 @@ QString KviInputEditor::textBeforeCursor()
 {
 	if(m_szTextBuffer.isEmpty() || m_iCursorPosition <= 0)
 		return QString();
-	
+
 	return m_szTextBuffer.left(m_iCursorPosition);
 }
 
@@ -2423,7 +2422,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 	qreal fCurX = -m_p->fXOffset;
 	int iCurChar = 0;
-	
+
 	if(m_p->lTextBlocks.isEmpty())
 		return 0;
 
@@ -2440,7 +2439,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 		fCurX = fNextX;
 		iCurChar += pBlock->iLength;
 	}
-	
+
 	if(!pBlock)
 		return iCurChar;
 
@@ -2451,9 +2450,9 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 	// So we use Qt::ElideRight here but we must take into account the width of the elision
 
 	qreal fWidth = fXPos - fCurX;
-	
+
 	QFontMetricsF * fm = getLastFontMetrics(font());
-	
+
 	QString szPart = fm->elidedText(pBlock->szText,Qt::ElideRight,fWidth + m_p->fFontElisionWidth);
 
 	if(szPart.endsWith(m_p->szFontElision))
@@ -2463,7 +2462,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 	qreal fPrevWidth = fm->width(szPart);
 	int iBlockLength = pBlock->szText.length();
-	
+
 	if(fPrevWidth <= fWidth)
 	{
 		// move up adding characters
@@ -2482,13 +2481,13 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 			{
 				// gotcha.
 				qreal fMiddle = (fPrevWidth + fNextWidth) / 2.0;
-				
+
 				if(fWidth < fMiddle)
 					return iCurChar + iPartLength;
 
 				return iCurChar + iPartLength + 1;
 			}
-			
+
 			fPrevWidth = fNextWidth;
 		}
 	} else {
@@ -2502,18 +2501,18 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 			szPart = pBlock->szText.left(iPartLength - 1);
 
 			qreal fNextWidth = fm->width(szPart);
-			
+
 			if(fNextWidth <= fWidth)
 			{
 				// gotcha.
 				qreal fMiddle = (fPrevWidth + fNextWidth) / 2.0;
-				
+
 				if(fWidth < fMiddle)
 					return iCurChar + iPartLength - 1;
 
 				return iCurChar + iPartLength;
 			}
-			
+
 			fPrevWidth = fNextWidth;
 		}
 	}
@@ -2528,7 +2527,7 @@ qreal KviInputEditor::xPositionFromCharIndex(int iChIdx)
 
 	qreal fCurX = -m_p->fXOffset + KVI_INPUT_MARGIN;
 	int iCurChar = 0;
-	
+
 	if(m_p->lTextBlocks.isEmpty())
 		return fCurX;
 
@@ -2881,7 +2880,7 @@ void KviInputEditor::insertIconCode(const QString &szCode)
 	}
 
 	QString szPart = m_szTextBuffer.mid(idx+1,m_iCursorPosition - idx+1);
-	
+
 	if(!szCode.startsWith(szPart))
 	{
 		insertChar(KviControlCodes::Icon);
