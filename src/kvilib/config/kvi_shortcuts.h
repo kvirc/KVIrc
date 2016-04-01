@@ -99,6 +99,7 @@
 * \def KVI_SHORTCUTS_INPUT_DUMMY Dummy combo
 * \def KVI_SHORTCUTS_INPUT_DUMMY_2 Dummy combo
 * \def KVI_SHORTCUTS_INPUT_CORRECT_SPELLING Correct spelling of the word near the cursor
+* \def KVI_SHORTCUTS_INPUT_MENU Open the context menu
 *
 * \def KVI_SHORTCUTS_EDITORS_ACTION Open Action editor
 * \def KVI_SHORTCUTS_EDITORS_ALIAS Open Alias editor
@@ -212,6 +213,7 @@
 #define KVI_SHORTCUTS_WIN_ZOOM_OUT QKeySequence::ZoomOut			// Ctrl+-
 #define KVI_SHORTCUTS_WIN_ZOOM_DEFAULT Qt::ControlModifier + Qt::Key_0
 #define KVI_SHORTCUTS_INPUT_CORRECT_SPELLING Qt::ControlModifier + Qt::Key_G
+#define KVI_SHORTCUTS_INPUT_MENU Qt::Key_Menu
 
 /*
 	@doc: keyboard

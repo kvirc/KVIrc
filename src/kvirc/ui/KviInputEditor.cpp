@@ -1156,6 +1156,13 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 
 }
 
+void KviInputEditor::showContextPopupHere()
+{
+	qreal fXPos = xPositionFromCharIndex(m_iCursorPosition);
+	int iBottom = heightHint() - KVI_INPUT_MARGIN - KVI_INPUT_XTRAPADDING; // not exact but easy
+	showContextPopup(mapToGlobal(QPoint(fXPos,iBottom)));
+}
+
 KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks)
 {
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
@@ -1312,7 +1319,7 @@ void KviInputEditor::iconPopupActivated(QAction *pAction)
 	if(m_bReadOnly)
 		return;
 
-        QString szText = pAction->text();
+	QString szText = pAction->text();
 	if(!szText.isEmpty())
 	{
 		szText.prepend(KviControlCodes::Icon);
@@ -1901,6 +1908,7 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING,this,SLOT(showSpellCheckerCorrectionsPopup()),0,Qt::WidgetShortcut);
 	// this is currently ambigous, since we're using it for scripting, too
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_DEFAULT,this,SLOT(zoomDefault()),SLOT(zoomDefault()),Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MENU,this,SLOT(showContextPopupHere()),0,Qt::WidgetShortcut);
 }
 
 void KviInputEditor::zoomIn()

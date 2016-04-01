@@ -906,6 +906,11 @@ private slots:
 	void showContextPopup(const QPoint &pos);
 
 	/**
+	* Shows the context popup menu at the current cursor position
+	*/
+	void showContextPopupHere();
+
+	/**
 	* Show the spell checker corrections popup.
 	*/
 	void showSpellCheckerCorrectionsPopup();
