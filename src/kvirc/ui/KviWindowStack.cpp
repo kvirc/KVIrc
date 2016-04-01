@@ -104,7 +104,6 @@ void KviWindowStack::fillWindowPopup()
 {
 	m_pWindowPopup->clear();
 
-	int i = 100;
 	QString szItem;
 	QString szCaption;
 
