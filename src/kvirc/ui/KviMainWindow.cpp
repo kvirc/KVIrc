@@ -133,6 +133,7 @@ KviMainWindow::KviMainWindow()
     m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
+	m_pMenuBar->hide();
 
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
@@ -917,6 +918,17 @@ void KviMainWindow::contextMenuEvent(QContextMenuEvent *)
 	// do nothing! avoids builtin popup from qmainwindow
 }
 
+void KviMainWindow::keyPressEvent(QKeyEvent *event)
+{
+	switch(event->key())
+	{
+		case Qt::Key_Alt:
+			g_pMainWindow->showMenubar();
+	}
+
+	QMainWindow::keyPressEvent(event);
+}
+
 void KviMainWindow::updatePseudoTransparency()
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -944,6 +956,17 @@ void KviMainWindow::updatePseudoTransparency()
 		m_pWindowList->updatePseudoTransparency();
 	}
 #endif
+}
+
+void KviMainWindow::showMenubar()
+{
+	m_pMenuBar->show();
+	m_pMenuBar->setFocus();
+}
+
+void KviMainWindow::hideMenubar()
+{
+	m_pMenuBar->hide();
 }
 
 void KviMainWindow::moveEvent(QMoveEvent *e)

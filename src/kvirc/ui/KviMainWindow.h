@@ -155,6 +155,9 @@ public:
 	void freeAccelleratorKeySequence(QString & key);
 	// called by children windows when they have updated their titles.
 	void updateWindowTitle(KviWindow *wnd);
+
+	void showMenubar();
+	void hideMenubar();
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
@@ -191,6 +194,7 @@ protected:
 	virtual bool focusNextPrevChild(bool next);
 	virtual void changeEvent(QEvent * event);
 	virtual void contextMenuEvent(QContextMenuEvent * event);
+	virtual void keyPressEvent(QKeyEvent *event);
 
 	void updatePseudoTransparency();
 	void installAccelerators();

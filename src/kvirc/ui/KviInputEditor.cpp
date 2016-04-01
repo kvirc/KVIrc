@@ -1970,6 +1970,9 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			if(!m_bReadOnly)
 				returnHit();
 			return;
+		case Qt::Key_Alt:
+			g_pMainWindow->showMenubar();
+			return;
 		break;
 	}
 

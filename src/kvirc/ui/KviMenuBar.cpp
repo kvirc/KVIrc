@@ -41,6 +41,7 @@
 #include "KviKvsScript.h"
 #include "KviShortcut.h"
 
+#include <QFocusEvent>
 #include <QMenu>
 
 KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
@@ -95,6 +96,8 @@ KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
 	setupHelpPopup(pop);
 	connect(pop,SIGNAL(triggered(QAction*)),this,SLOT(actionTriggered(QAction*)));
 	addDefaultItem(__tr2qs("&Help"),pop);
+
+	setFocusPolicy(Qt::ClickFocus);
 }
 
 KviMenuBar::~KviMenuBar()
@@ -383,6 +386,17 @@ void KviMenuBar::modulesToolsTriggered(QAction *pAction)
 void KviMenuBar::updateToolbarsPopup()
 {
 	m_pFrm->fillToolBarsPopup(m_pToolbarsPopup);
+}
+
+
+void KviMenuBar::focusOutEvent(QFocusEvent *event)
+{
+	if(event->reason() != Qt::PopupFocusReason)
+	{
+		m_pFrm->hideMenubar();
+	}
+
+	QMenuBar::focusOutEvent(event);
 }
 
 //
