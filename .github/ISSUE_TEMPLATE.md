@@ -16,5 +16,6 @@
 [//]: # (Also Enter any OS information the "Executable Information" tab doesn't contain, e.g. KDE, Gentoo, Linux Mint, etc.)
 
 ```
-```
 
+```
+[//]: # {If you experienced crashes, segfaults please also include a stacktrace below, For how-to read: https://github.com/kvirc/KVIrc/wiki/Grabbing-a-useful-backtrace.)
