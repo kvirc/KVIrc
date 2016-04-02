@@ -13,7 +13,7 @@
 
 ### System information
 [//]: # (Type "/about.kvirc" (or click "Help → About KVIrc") and copy&paste the details from the "Executable Information" tab below between ``` marks)
-[//]: # Also Enter any OS information the "Executable Information" tab doesn't contain, e.g. KDE, Gentoo, Linux Mint, etc.
+[//]: # (Also Enter any OS information the "Executable Information" tab doesn't contain, e.g. KDE, Gentoo, Linux Mint, etc.)
 
 ```
 ```
