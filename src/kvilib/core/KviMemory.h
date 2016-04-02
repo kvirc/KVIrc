@@ -91,7 +91,7 @@ namespace KviMemory
 		/**
 		* \brief Prints a warning about failed memory allocation
 		*/
-		void outOfMemory();
+		KVILIB_API void outOfMemory();
 
 		inline void * allocate(int size)
 		{
