@@ -76,6 +76,7 @@
 #include <QFile>
 #include <QMenu>
 #include <QWindowStateChangeEvent>
+#include <QCheckBox>
 
 #include <time.h>
 
@@ -992,6 +993,29 @@ void KviMainWindow::toggleMenuBar()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) == true)
 	{
+		if(KVI_OPTION_BOOL(KviOption_boolWarnAboutHidingMenuBar))
+		{
+			// ah, we need an abstraction for this setCheckBox() qt5 shiny stuff
+			QMessageBox pMsgBox;
+			QCheckBox cb(__tr2qs("Do not show this message again"));
+			pMsgBox.setText(__tr2qs("This will hide the menu bar completely. "
+									"You can show it again by typing %1.").arg(QString(KVI_SHORTCUTS_TOGGLE_MENU_BAR)));
+			pMsgBox.setWindowTitle(__tr2qs("Hide Menu Bar - KVIrc"));
+			pMsgBox.setIcon(QMessageBox::Icon::Information);
+			pMsgBox.addButton(QMessageBox::Ok);
+			pMsgBox.addButton(QMessageBox::Cancel);
+			pMsgBox.setDefaultButton(QMessageBox::Ok);
+			pMsgBox.setCheckBox(&cb);
+			if(pMsgBox.exec() == QMessageBox::Ok)
+			{
+				if(cb.isChecked())
+				{
+					KVI_OPTION_BOOL(KviOption_boolWarnAboutHidingMenuBar) = false;
+				}
+			} else {
+				return;
+			}
+		}
 		m_pMenuBar->hide();
 		KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) = false;
 	} else {

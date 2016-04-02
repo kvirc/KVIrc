@@ -359,8 +359,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolSend64BitAckInDccRecv 264                          /* dcc::send */
 #define KviOption_boolShowTreeWindowListHandle 265
 #define KviOption_boolMenuBarVisible 266
+#define KviOption_boolWarnAboutHidingMenuBar 267
 
-#define KVI_NUM_BOOL_OPTIONS 267
+#define KVI_NUM_BOOL_OPTIONS 268
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
