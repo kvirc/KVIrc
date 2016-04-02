@@ -56,6 +56,7 @@ protected:
 	QMenu                       * m_pActionsToolsPopup;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
     // Dynamic actions
+    QAction                     * m_pMenuBarAction;
     QAction                     * m_pStatusBarAction;
     QAction                     * m_pDisconnectAction;
 	QAction                     * m_pModulesToolsAction;

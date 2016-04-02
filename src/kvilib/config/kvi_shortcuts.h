@@ -46,6 +46,7 @@
 * \def KVI_SHORTCUTS_OPTIONS Open "Options" dialog
 * \def KVI_SHORTCUTS_SERVERS Open "Servers" dialog
 * \def KVI_SHORTCUTS_THEME Open "Theme Options" dialog
+* \def KVI_SHORTCUTS_TOGGLE_MENU_BAR Toggle visibility of the menu bar
 * \def KVI_SHORTCUTS_USERS Open "Registered Users" dialog
 * \def KVI_SHORTCUTS_MANAGE_THEMES Open "Manage Theme" dialog
 * \def KVI_SHORTCUTS_MANAGE_ADDONS Open "Manage Theme" dialog
@@ -136,10 +137,15 @@
 #define KVI_SHORTCUTS_JOIN "Ctrl+J"
 #define KVI_SHORTCUTS_INPUT_COLOR "Ctrl+K"
 #define KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE "Ctrl+L"
+#define KVI_SHORTCUTS_TOGGLE_MENU_BAR "Ctrl+M"
 #define KVI_SHORTCUTS_CONTEXT QKeySequence::New					// Ctrl+N
 #define KVI_SHORTCUTS_INPUT_RESET "Ctrl+O"
 #define KVI_SHORTCUTS_INPUT_PLAINTEXT "Ctrl+P"
-#define KVI_SHORTCUTS_QUIT "Ctrl+Q"
+#ifdef COMPILE_ON_MAC
+# define KVI_SHORTCUTS_QUIT QString()
+#else
+# define KVI_SHORTCUTS_QUIT "Ctrl+Q"
+#endif
 #define KVI_SHORTCUTS_INPUT_REVERSE "Ctrl+R"
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_INPUT_UNDERLINE QKeySequence::Underline			// Ctrl+U

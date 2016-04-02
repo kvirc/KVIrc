@@ -338,6 +338,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("RequireControlToCopy",false,KviOption_sectFlagIrcView),
 	BOOL_OPTION("Send64BitAckInDccRecv",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("ShowTreeWindowListHandle",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("MenuBarVisible",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

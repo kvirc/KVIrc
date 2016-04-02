@@ -133,6 +133,9 @@ KviMainWindow::KviMainWindow()
     m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
+#ifndef COMPILE_ON_MAC
+	m_pMenuBar->setVisible(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible));
+#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
@@ -965,6 +968,10 @@ void KviMainWindow::applyOptions()
 
 	m_pWindowList->applyOptions();
 	g_pTextIconManager->applyOptions();
+
+#ifndef COMPILE_ON_MAC
+	m_pMenuBar->setVisible(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible));
+#endif
 }
 
 void KviMainWindow::toggleStatusBar()
@@ -978,6 +985,18 @@ void KviMainWindow::toggleStatusBar()
 		m_pStatusBar->load();
 		setStatusBar(m_pStatusBar);
 		m_pStatusBar->show();
+	}
+}
+
+void KviMainWindow::toggleMenuBar()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) == true)
+	{
+		m_pMenuBar->hide();
+		KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) = false;
+	} else {
+		m_pMenuBar->show();
+		KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) = true;
 	}
 }
 
