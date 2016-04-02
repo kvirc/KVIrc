@@ -918,12 +918,11 @@ void KviMainWindow::contextMenuEvent(QContextMenuEvent *)
 	// do nothing! avoids builtin popup from qmainwindow
 }
 
-void KviMainWindow::keyPressEvent(QKeyEvent *event)
+void KviMainWindow::keyReleaseEvent(QKeyEvent *event)
 {
-	switch(event->key())
+	if(event->key() == Qt::Key_Alt)
 	{
-		case Qt::Key_Alt:
-			g_pMainWindow->showMenubar();
+			g_pMainWindow->toggleMenubar();
 	}
 
 	QMainWindow::keyPressEvent(event);
@@ -958,10 +957,15 @@ void KviMainWindow::updatePseudoTransparency()
 #endif
 }
 
-void KviMainWindow::showMenubar()
+void KviMainWindow::toggleMenubar()
 {
-	m_pMenuBar->show();
-	m_pMenuBar->setFocus();
+	if(m_pMenuBar->hasFocus())
+	{
+		m_pMenuBar->hide();
+	} else {
+		m_pMenuBar->show();
+		m_pMenuBar->setFocus();
+	}
 }
 
 void KviMainWindow::hideMenubar()

@@ -156,7 +156,7 @@ public:
 	// called by children windows when they have updated their titles.
 	void updateWindowTitle(KviWindow *wnd);
 
-	void showMenubar();
+	void toggleMenubar();
 	void hideMenubar();
 public slots:
 	void newConsole();
@@ -194,7 +194,7 @@ protected:
 	virtual bool focusNextPrevChild(bool next);
 	virtual void changeEvent(QEvent * event);
 	virtual void contextMenuEvent(QContextMenuEvent * event);
-	virtual void keyPressEvent(QKeyEvent *event);
+	virtual void keyReleaseEvent(QKeyEvent *event);
 
 	void updatePseudoTransparency();
 	void installAccelerators();

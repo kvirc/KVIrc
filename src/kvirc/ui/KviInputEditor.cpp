@@ -1970,9 +1970,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			if(!m_bReadOnly)
 				returnHit();
 			return;
-		case Qt::Key_Alt:
-			g_pMainWindow->showMenubar();
-			return;
 		break;
 	}
 
@@ -2036,6 +2033,11 @@ void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 		m_szAltKeyCode = "";
 	}
 #endif
+	if(e->key() == Qt::Key_Alt)
+	{
+			g_pMainWindow->toggleMenubar();
+			return;
+	}
 	e->ignore();
 }
 
