@@ -60,7 +60,9 @@ protected:
 	QAction                     * m_pDisconnectAction;
 	QAction                     * m_pModulesToolsAction;
 	QAction                     * m_pActionsToolsAction;
+#ifndef COMPILE_ON_MAC
 	QAction                     * m_pAutoHideMenubarAction;
+#endif
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);

@@ -133,10 +133,15 @@ KviMainWindow::KviMainWindow()
     m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
+
+#ifndef COMPILE_ON_MAC
 	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar))
 	{
 		m_pMenuBar->hide();
 	}
+#else
+	KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) = false;
+#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{

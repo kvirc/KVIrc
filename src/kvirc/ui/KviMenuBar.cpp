@@ -168,7 +168,10 @@ void KviMenuBar::actionTriggered(bool)
 void KviMenuBar::updateSettingsPopup()
 {
 	m_pStatusBarAction->setChecked(m_pFrm->mainStatusBar());
+
+#ifndef COMPILE_ON_MAC
 	m_pAutoHideMenubarAction->setChecked(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar));
+#endif
 }
 
 void KviMenuBar::setupSettingsPopup(QMenu *pop)
@@ -179,8 +182,10 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 	QAction *pAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Toolbar)),__tr2qs("Toolbars"));
 	pAction->setMenu(m_pToolbarsPopup);
 
+#ifndef COMPILE_ON_MAC
 	m_pAutoHideMenubarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Automatically Hide Menu Bar"),m_pFrm,SLOT(toggleAutoHideMenubar()));
 	m_pAutoHideMenubarAction->setCheckable(true);
+#endif
 
 	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show Status Bar"),m_pFrm,SLOT(toggleStatusBar()));
 	m_pStatusBarAction->setCheckable(true);
