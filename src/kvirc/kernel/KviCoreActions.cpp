@@ -442,12 +442,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_quitapp.png",
 		KviIconManager::QuitApp,
 		0,
-#ifdef COMPILE_ON_MAC
-		// OS X already does this by itself (Cmd+Q)
-		QString());
-#else
 		KVI_SHORTCUTS_QUIT);
-#endif
 }
 
 

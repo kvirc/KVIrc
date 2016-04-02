@@ -139,7 +139,12 @@
 #define KVI_SHORTCUTS_CONTEXT QKeySequence::New					// Ctrl+N
 #define KVI_SHORTCUTS_INPUT_RESET "Ctrl+O"
 #define KVI_SHORTCUTS_INPUT_PLAINTEXT "Ctrl+P"
-#define KVI_SHORTCUTS_QUIT "Ctrl+Q"
+#ifdef COMPILE_ON_MAC
+// OS X already does this by itself (Cmd+Q)
+# define KVI_SHORTCUTS_QUIT QString()
+#else
+# define KVI_SHORTCUTS_QUIT "Ctrl+Q"
+#endif
 #define KVI_SHORTCUTS_INPUT_REVERSE "Ctrl+R"
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_INPUT_UNDERLINE QKeySequence::Underline			// Ctrl+U
