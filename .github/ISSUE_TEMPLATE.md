@@ -18,4 +18,4 @@
 ```
 
 ```
-[//]: # {If you experienced crashes, segfaults please also include a stacktrace below, For how-to read: https://github.com/kvirc/KVIrc/wiki/Grabbing-a-useful-backtrace.)
+[//]: # (If you experienced crashes, segfaults please also include a stacktrace below, For how-to read: https://github.com/kvirc/KVIrc/wiki/Grabbing-a-useful-backtrace.)
