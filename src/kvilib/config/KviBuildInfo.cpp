@@ -53,9 +53,6 @@ const char * feature_array[]=
 #ifdef COMPILE_OSS_SUPPORT
 	"OSS",
 #endif
-#ifdef COMPILE_ARTS_SUPPORT
-	"ARTS",
-#endif
 #ifdef COMPILE_ESD_SUPPORT
 	"ESD",
 #endif
@@ -64,12 +61,6 @@ const char * feature_array[]=
 #endif
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	"Transparency",
-#endif
-#ifdef COMPILE_ix86_ASM
-	"ix86-ASM",
-#endif
-#ifdef COMPILE_SCRIPTTOOLBAR
-	"ScriptToolBar",
 #endif
 #ifdef COMPILE_PHONON_SUPPORT
 	"Phonon",
@@ -92,11 +83,10 @@ const char * feature_array[]=
 #ifdef COMPILE_PYTHON_SUPPORT
 	"Python",
 #endif
-#if (QT_VERSION >= 0x050000)
-	"Qt5",
-#else
-	"Qt4",
+#ifdef COMPILE_ENCHANT_SUPPORT
+	"Enchant",
 #endif
+	"Qt5",
 	"KVS",
 	0
 };
