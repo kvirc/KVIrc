@@ -32,6 +32,9 @@
 const char * feature_array[]=
 {
 	"IRC",
+#ifdef COMPILE_DEBUG_MODE
+	"Debug",
+#endif
 #ifdef COMPILE_IPV6_SUPPORT
 	"IPv6",
 #endif
