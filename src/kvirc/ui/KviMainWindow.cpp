@@ -134,6 +134,15 @@ KviMainWindow::KviMainWindow()
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
 
+#ifndef COMPILE_ON_MAC
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar))
+	{
+		m_pMenuBar->hide();
+	}
+#else
+	KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) = false;
+#endif
+
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
 		m_pStatusBar = new KviStatusBar(this);
@@ -917,6 +926,16 @@ void KviMainWindow::contextMenuEvent(QContextMenuEvent *)
 	// do nothing! avoids builtin popup from qmainwindow
 }
 
+void KviMainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+	if(event->key() == Qt::Key_Alt)
+	{
+			g_pMainWindow->toggleMenubar();
+	}
+
+	QMainWindow::keyPressEvent(event);
+}
+
 void KviMainWindow::updatePseudoTransparency()
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -944,6 +963,42 @@ void KviMainWindow::updatePseudoTransparency()
 		m_pWindowList->updatePseudoTransparency();
 	}
 #endif
+}
+
+void KviMainWindow::toggleAutoHideMenubar()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) == true)
+	{
+		// disable auto hide
+		m_pMenuBar->show();
+		KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) = false;
+	} else {
+		// enable auto hide
+		m_pMenuBar->hide();
+		KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) = true;
+	}
+}
+
+void KviMainWindow::toggleMenubar()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) == true)
+	{
+		if(m_pMenuBar->hasFocus())
+		{
+			m_pMenuBar->hide();
+		} else {
+			m_pMenuBar->show();
+			m_pMenuBar->setFocus();
+		}
+	}
+}
+
+void KviMainWindow::hideMenubar()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) == true)
+	{
+		m_pMenuBar->hide();
+	}
 }
 
 void KviMainWindow::moveEvent(QMoveEvent *e)

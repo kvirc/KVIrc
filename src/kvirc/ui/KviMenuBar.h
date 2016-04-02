@@ -49,21 +49,25 @@ public:
 	KviMenuBar(KviMainWindow * par,const char * name);
 	~KviMenuBar();
 protected:
-    QMenu                       * m_pToolbarsPopup;
-    QMenu                       * m_pRecentServersPopup;
+	QMenu                       * m_pToolbarsPopup;
+	QMenu                       * m_pRecentServersPopup;
 	KviMainWindow                         * m_pFrm;
 	QMenu                       * m_pModulesToolsPopup;
 	QMenu                       * m_pActionsToolsPopup;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
-    // Dynamic actions
-    QAction                     * m_pStatusBarAction;
-    QAction                     * m_pDisconnectAction;
+	// Dynamic actions
+	QAction                     * m_pStatusBarAction;
+	QAction                     * m_pDisconnectAction;
 	QAction                     * m_pModulesToolsAction;
 	QAction                     * m_pActionsToolsAction;
+#ifndef COMPILE_ON_MAC
+	QAction                     * m_pAutoHideMenubarAction;
+#endif
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
-    void addDefaultItem(const QString &text,QMenu * pop);
+	void addDefaultItem(const QString &text,QMenu * pop);
+	void focusOutEvent(QFocusEvent *event);
 public:
 	int getDefaultItemRealIndex(int iDefaultIndex);
 	void addMenu(const QString &text,KviKvsPopupMenu * p,int index);
@@ -71,24 +75,24 @@ public:
 protected slots:
 	void menuDestroyed();
 
-    void setupMainPopup(QMenu *pop=0);
-    void setupSettingsPopup(QMenu *pop=0);
-    void setupHelpPopup(QMenu *pop=0);
-    void setupScriptingPopup(QMenu *pop=0);
-    void setupToolsPopup(QMenu *pop=0);
+	void setupMainPopup(QMenu *pop=0);
+	void setupSettingsPopup(QMenu *pop=0);
+	void setupHelpPopup(QMenu *pop=0);
+	void setupScriptingPopup(QMenu *pop=0);
+	void setupToolsPopup(QMenu *pop=0);
 
-    void updateMainPopup();
-    void updateSettingsPopup();
-    void updateRecentServersPopup();
-    void updateToolbarsPopup();
+	void updateMainPopup();
+	void updateSettingsPopup();
+	void updateRecentServersPopup();
+	void updateToolbarsPopup();
 	void updateModulesToolsPopup();
 	void updateActionsToolsPopup();
 	void updateToolsPopup();
 
-    void newConnectionToServer(QAction *pAction);
+	void newConnectionToServer(QAction *pAction);
 	void modulesToolsTriggered(QAction *pAction);
-    void actionTriggered(QAction *pAction);
-    void actionTriggered(bool);
+	void actionTriggered(QAction *pAction);
+	void actionTriggered(bool);
 };
 
 #endif //_KVI_MENUBAR_H_

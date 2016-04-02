@@ -358,8 +358,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolRequireControlToCopy 263                           /* interface::ircview */
 #define KviOption_boolSend64BitAckInDccRecv 264                          /* dcc::send */
 #define KviOption_boolShowTreeWindowListHandle 265
+#define KviOption_boolAutoHideMenubar 266
 
-#define KVI_NUM_BOOL_OPTIONS 266
+#define KVI_NUM_BOOL_OPTIONS 267
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

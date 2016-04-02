@@ -2033,6 +2033,11 @@ void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 		m_szAltKeyCode = "";
 	}
 #endif
+	if(e->key() == Qt::Key_Alt)
+	{
+			g_pMainWindow->toggleMenubar();
+			return;
+	}
 	e->ignore();
 }
 
