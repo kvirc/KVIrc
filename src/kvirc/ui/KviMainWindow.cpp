@@ -133,7 +133,10 @@ KviMainWindow::KviMainWindow()
     m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
-	m_pMenuBar->hide();
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar))
+	{
+		m_pMenuBar->hide();
+	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
@@ -957,20 +960,40 @@ void KviMainWindow::updatePseudoTransparency()
 #endif
 }
 
+void KviMainWindow::toggleAutoHideMenubar()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) == true)
+	{
+		// disable auto hide
+		m_pMenuBar->show();
+		KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) = false;
+	} else {
+		// enable auto hide
+		m_pMenuBar->hide();
+		KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) = true;
+	}
+}
+
 void KviMainWindow::toggleMenubar()
 {
-	if(m_pMenuBar->hasFocus())
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) == true)
 	{
-		m_pMenuBar->hide();
-	} else {
-		m_pMenuBar->show();
-		m_pMenuBar->setFocus();
+		if(m_pMenuBar->hasFocus())
+		{
+			m_pMenuBar->hide();
+		} else {
+			m_pMenuBar->show();
+			m_pMenuBar->setFocus();
+		}
 	}
 }
 
 void KviMainWindow::hideMenubar()
 {
-	m_pMenuBar->hide();
+	if(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar) == true)
+	{
+		m_pMenuBar->hide();
+	}
 }
 
 void KviMainWindow::moveEvent(QMoveEvent *e)

@@ -163,6 +163,7 @@ public slots:
 	void executeInternalCommand(int index);
 	void toggleStatusBar();
 	void customizeToolBars();
+	void toggleAutoHideMenubar();
 protected:
 	void restoreModuleExtensionToolBars();
 	void saveModuleExtensionToolBars();

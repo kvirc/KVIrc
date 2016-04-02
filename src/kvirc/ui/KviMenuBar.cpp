@@ -40,6 +40,7 @@
 #include "KviCoreActionNames.h"
 #include "KviKvsScript.h"
 #include "KviShortcut.h"
+#include "KviOptions.h"
 
 #include <QFocusEvent>
 #include <QMenu>
@@ -167,6 +168,7 @@ void KviMenuBar::actionTriggered(bool)
 void KviMenuBar::updateSettingsPopup()
 {
 	m_pStatusBarAction->setChecked(m_pFrm->mainStatusBar());
+	m_pAutoHideMenubarAction->setChecked(KVI_OPTION_BOOL(KviOption_boolAutoHideMenubar));
 }
 
 void KviMenuBar::setupSettingsPopup(QMenu *pop)
@@ -176,6 +178,9 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 
 	QAction *pAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Toolbar)),__tr2qs("Toolbars"));
 	pAction->setMenu(m_pToolbarsPopup);
+
+	m_pAutoHideMenubarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Automatically Hide Menu Bar"),m_pFrm,SLOT(toggleAutoHideMenubar()));
+	m_pAutoHideMenubarAction->setCheckable(true);
 
 	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show Status Bar"),m_pFrm,SLOT(toggleStatusBar()));
 	m_pStatusBarAction->setCheckable(true);
@@ -251,13 +256,7 @@ void KviMenuBar::setupMainPopup(QMenu *pop)
 #ifndef COMPILE_ON_MAC
 	main->addSeparator();
 
-	main->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),
-			__tr2qs("&Quit"),
-			g_pMainWindow,
-			SLOT(close()),
-			QKeySequence(KVI_SHORTCUTS_QUIT)
-		);
+	ACTION_POPUP_ITEM(KVI_COREACTION_QUITKVIRC,main)
 #endif //COMPILE_ON_MAC
 }
 
