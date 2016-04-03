@@ -177,7 +177,7 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 	pAction->setMenu(m_pToolbarsPopup);
 
 #ifndef COMPILE_ON_MAC
-	m_pMenuBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show Menu Bar"),m_pFrm,SLOT(toggleMenuBar()));
+	m_pMenuBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::MenuBar)),__tr2qs("Show Menu Bar"),m_pFrm,SLOT(toggleMenuBar()));
 	// must be added to the main window or it stops working when the menu is hidden :/
 	g_pMainWindow->addAction(m_pMenuBarAction);
 	m_pMenuBarAction->setCheckable(true);
