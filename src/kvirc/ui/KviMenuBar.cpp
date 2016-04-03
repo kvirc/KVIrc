@@ -337,8 +337,6 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
 	QMenu * m = pop ? pop : (QMenu *)sender();
 	if(!m)return;
 
-	QAction *pAction=0;
-
 	m->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_FILETRANSFER,m)
@@ -363,6 +361,7 @@ void KviMenuBar::setupToolsPopup(QMenu *pop)
 	// moved the old tools here
 	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
 #ifdef COMPILE_KDE4_SUPPORT
+	QAction *pAction=0;
 	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &Terminal"),this,SLOT(actionTriggered(bool)));
 	pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
