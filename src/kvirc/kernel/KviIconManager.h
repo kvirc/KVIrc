@@ -322,7 +322,7 @@ public:
 		ChannelNoticeCrypted = 154,
 		QueryNotice          = 155,
 		QueryNoticeCrypted   = 156,
-		ServNotice           = 157, //can't see this used anywhere
+		MenuBar              = 157,
 		Popup                = 158,
 		Prologue             = 159,
 		Epilogue             = 160,
