@@ -442,7 +442,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_quitapp.png",
 		KviIconManager::QuitApp,
 		0,
-		QString());
+		KVI_SHORTCUTS_QUIT);
 }
 
 

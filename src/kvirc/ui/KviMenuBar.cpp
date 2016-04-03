@@ -41,6 +41,7 @@
 #include "KviKvsScript.h"
 #include "KviShortcut.h"
 
+#include <QKeySequence>
 #include <QMenu>
 
 KviMenuBar::KviMenuBar(KviMainWindow * par,const char * name)
@@ -164,6 +165,7 @@ void KviMenuBar::actionTriggered(bool)
 void KviMenuBar::updateSettingsPopup()
 {
 	m_pStatusBarAction->setChecked(m_pFrm->mainStatusBar());
+	m_pMenuBarAction->setChecked(true);
 }
 
 void KviMenuBar::setupSettingsPopup(QMenu *pop)
@@ -173,6 +175,14 @@ void KviMenuBar::setupSettingsPopup(QMenu *pop)
 
 	QAction *pAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Toolbar)),__tr2qs("Toolbars"));
 	pAction->setMenu(m_pToolbarsPopup);
+
+#ifndef COMPILE_ON_MAC
+	m_pMenuBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::MenuBar)),__tr2qs("Show Menu Bar"),m_pFrm,SLOT(toggleMenuBar()));
+	// must be added to the main window or it stops working when the menu is hidden :/
+	g_pMainWindow->addAction(m_pMenuBarAction);
+	m_pMenuBarAction->setCheckable(true);
+	m_pMenuBarAction->setShortcut(QKeySequence::fromString(KVI_SHORTCUTS_TOGGLE_MENU_BAR));
+#endif
 
 	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show Status Bar"),m_pFrm,SLOT(toggleStatusBar()));
 	m_pStatusBarAction->setCheckable(true);
@@ -240,21 +250,13 @@ void KviMenuBar::setupMainPopup(QMenu *pop)
 	m_pDisconnectAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),this,SLOT(actionTriggered(bool)));
 	m_pDisconnectAction->setData(KVI_INTERNALCOMMAND_QUIT);
 
-	main->addSeparator();
-
 	// FIXME: Add a "Dock to tray" icon if the tray is not visible (or show tray icon or whatever)
 
 // Qt/Mac creates a Quit item on its own <= this is bad
 #ifndef COMPILE_ON_MAC
 	main->addSeparator();
 
-	main->addAction(
-			*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),
-			__tr2qs("&Quit"),
-			g_pMainWindow,
-			SLOT(close()),
-			QKeySequence(KVI_SHORTCUTS_QUIT)
-		);
+	ACTION_POPUP_ITEM(KVI_COREACTION_QUITKVIRC,main)
 #endif //COMPILE_ON_MAC
 }
 

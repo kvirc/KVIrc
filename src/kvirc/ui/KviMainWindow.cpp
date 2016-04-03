@@ -76,6 +76,7 @@
 #include <QFile>
 #include <QMenu>
 #include <QWindowStateChangeEvent>
+#include <QCheckBox>
 
 #include <time.h>
 
@@ -133,6 +134,9 @@ KviMainWindow::KviMainWindow()
     m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
+#ifndef COMPILE_ON_MAC
+	m_pMenuBar->setVisible(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible));
+#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
@@ -965,6 +969,10 @@ void KviMainWindow::applyOptions()
 
 	m_pWindowList->applyOptions();
 	g_pTextIconManager->applyOptions();
+
+#ifndef COMPILE_ON_MAC
+	m_pMenuBar->setVisible(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible));
+#endif
 }
 
 void KviMainWindow::toggleStatusBar()
@@ -978,6 +986,41 @@ void KviMainWindow::toggleStatusBar()
 		m_pStatusBar->load();
 		setStatusBar(m_pStatusBar);
 		m_pStatusBar->show();
+	}
+}
+
+void KviMainWindow::toggleMenuBar()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) == true)
+	{
+		if(KVI_OPTION_BOOL(KviOption_boolWarnAboutHidingMenuBar))
+		{
+			// ah, we need an abstraction for this setCheckBox() qt5 shiny stuff
+			QMessageBox pMsgBox;
+			QCheckBox cb(__tr2qs("Do not show this message again"));
+			pMsgBox.setText(__tr2qs("This will hide the menu bar completely. "
+									"You can show it again by typing %1.").arg(QString(KVI_SHORTCUTS_TOGGLE_MENU_BAR)));
+			pMsgBox.setWindowTitle(__tr2qs("Hide Menu Bar - KVIrc"));
+			pMsgBox.setIcon(QMessageBox::Icon::Information);
+			pMsgBox.addButton(QMessageBox::Ok);
+			pMsgBox.addButton(QMessageBox::Cancel);
+			pMsgBox.setDefaultButton(QMessageBox::Ok);
+			pMsgBox.setCheckBox(&cb);
+			if(pMsgBox.exec() == QMessageBox::Ok)
+			{
+				if(cb.isChecked())
+				{
+					KVI_OPTION_BOOL(KviOption_boolWarnAboutHidingMenuBar) = false;
+				}
+			} else {
+				return;
+			}
+		}
+		m_pMenuBar->hide();
+		KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) = false;
+	} else {
+		m_pMenuBar->show();
+		KVI_OPTION_BOOL(KviOption_boolMenuBarVisible) = true;
 	}
 }
 

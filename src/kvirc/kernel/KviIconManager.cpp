@@ -240,7 +240,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] =
 	"channelnoticecrypted",// 154
 	"querynotice",         // 155
 	"querynoticecrypted",  // 156
-	"servnotice",          // 157 //can't see this used anywhere
+	"menubar",             // 157
 	"popup",               // 158
 	"prologue",            // 159
 	"epilogue",            // 160
@@ -772,7 +772,7 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 		case 154: return KviIconManager::ChannelNoticeCrypted; break;
 		case 155: return KviIconManager::QueryNotice;          break;
 		case 156: return KviIconManager::QueryNoticeCrypted;   break;
-		case 157: return KviIconManager::ServNotice;           break; //can't see this used anywhere
+		case 157: return KviIconManager::MenuBar;              break;
 		case 158: return KviIconManager::Popup;                break;
 		case 159: return KviIconManager::Prologue;             break;
 		case 160: return KviIconManager::Epilogue;             break;

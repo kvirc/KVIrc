@@ -159,6 +159,7 @@ public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
 	void toggleStatusBar();
+	void toggleMenuBar();
 	void customizeToolBars();
 protected:
 	void restoreModuleExtensionToolBars();
