@@ -323,6 +323,18 @@ void KviMainWindow::installAccelerators()
 		Qt::Key_F10,
 		Qt::Key_F11,
 		Qt::Key_F12,
+		Qt::Key_F1 + Qt::ShiftModifier,
+		Qt::Key_F2 + Qt::ShiftModifier,
+		Qt::Key_F3 + Qt::ShiftModifier,
+		Qt::Key_F4 + Qt::ShiftModifier,
+		Qt::Key_F5 + Qt::ShiftModifier,
+		Qt::Key_F6 + Qt::ShiftModifier,
+		Qt::Key_F7 + Qt::ShiftModifier,
+		Qt::Key_F8 + Qt::ShiftModifier,
+		Qt::Key_F9 + Qt::ShiftModifier,
+		Qt::Key_F10 + Qt::ShiftModifier,
+		Qt::Key_F11 + Qt::ShiftModifier,
+		Qt::Key_F12 + Qt::ShiftModifier,
 		0
 	};
 
