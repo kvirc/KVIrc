@@ -482,7 +482,7 @@ defpopup(windowpopup)
 
 	item($tr("&Part","defscript") $0,40) ($channel)
 	{
-		if($channel()) eval "part $escape($0) $option(stringPartMessage)";
+		if($channel) eval "part $escape($chan.name) $option(stringPartMessage)";
 	}
 
 	separator
