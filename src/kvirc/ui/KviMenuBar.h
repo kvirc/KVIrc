@@ -36,9 +36,9 @@ class KviKvsPopupMenu;
 
 typedef struct _KviScriptMenuBarItem
 {
-	KviCString            szPopupName;
-	KviKvsPopupMenu * pPopup;
-	KviCString            szText;
+	KviCString				szPopupName;
+	KviKvsPopupMenu				* pPopup;
+	KviCString				szText;
 } KviScriptMenuBarItem;
 
 
@@ -49,18 +49,18 @@ public:
 	KviMenuBar(KviMainWindow * par,const char * name);
 	~KviMenuBar();
 protected:
-	QMenu                       * m_pToolbarsPopup;
-	QMenu                       * m_pRecentServersPopup;
-	KviMainWindow                         * m_pFrm;
-	QMenu                       * m_pModulesToolsPopup;
-	QMenu                       * m_pActionsToolsPopup;
-	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
+	QMenu					* m_pToolbarsPopup;
+	QMenu					* m_pRecentServersPopup;
+	KviMainWindow				* m_pFrm;
+	QMenu					* m_pModulesToolsPopup;
+	QMenu					* m_pActionsToolsPopup;
+	KviPointerList<KviScriptMenuBarItem>	* m_pScriptItemList;
 	// Dynamic actions
-	QAction                     * m_pMenuBarAction;
-	QAction                     * m_pStatusBarAction;
-	QAction                     * m_pDisconnectAction;
-	QAction                     * m_pModulesToolsAction;
-	QAction                     * m_pActionsToolsAction;
+	QAction					* m_pMenuBarAction;
+	QAction					* m_pStatusBarAction;
+	QAction					* m_pDisconnectAction;
+	QAction					* m_pModulesToolsAction;
+	QAction					* m_pActionsToolsAction;
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
