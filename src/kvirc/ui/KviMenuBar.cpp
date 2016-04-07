@@ -165,7 +165,9 @@ void KviMenuBar::actionTriggered(bool)
 void KviMenuBar::updateSettingsPopup()
 {
 	m_pStatusBarAction->setChecked(m_pFrm->mainStatusBar());
+#ifndef COMPILE_ON_MAC
 	m_pMenuBarAction->setChecked(true);
+#endif
 }
 
 void KviMenuBar::setupSettingsPopup(QMenu *pop)
