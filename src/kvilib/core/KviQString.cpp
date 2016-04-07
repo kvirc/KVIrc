@@ -38,10 +38,6 @@
 #include <stdio.h> // for sprintf()
 #include <QRegExp>
 
-#if (QT_VERSION < 0x050000)
-#include <QTextDocument> // for Qt::escape()
-#endif
-
 // kvi_string.cpp
 extern unsigned char iso88591_toLower_map[256];
 extern unsigned char iso88591_toUpper_map[256];
@@ -1306,10 +1302,6 @@ namespace KviQString
 
 	QString toHtmlEscaped(QString szData)
 	{
-#if (QT_VERSION >= 0x050000)
 		return szData.toHtmlEscaped();
-#else
-		return Qt::escape(szData);
-#endif
 	}
 }

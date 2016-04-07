@@ -63,11 +63,7 @@ class KviUserListView;
 #define KVI_INPUT_DEF_FORE 101
 
 #ifndef ACCEL_KEY
-	#if (QT_VERSION >= 0x050000)
-		#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ).toString()
-	#else
-		#define ACCEL_KEY(k) "\t" + QString(QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ))
-	#endif
+	#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ).toString()
 #endif
 
 class KviInputEditorSpellCheckerBlock
@@ -937,9 +933,7 @@ protected:
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;
-#if (QT_VERSION >= 0x050000)
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
-#endif
 	virtual void paintEvent(QPaintEvent * e);
 	bool checkWordSpelling(const QString &szWord);
 	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);

@@ -28,14 +28,9 @@
 #include "KviError.h"
 #include "KviLocale.h"
 
-#if (QT_VERSION > 0x050000)
-	// Qt >= 5.0.0 has no QHttp.
-	// We use the external source code module provided by digia (in qthttp)
-	#include <qhttp.h>
-#else
-	// Use standard QHttp
-	#include <QHttp>
-#endif
+// Qt >= 5.0.0 has no QHttp.
+// We use the external source code module provided by digia (in qthttp)
+#include <qhttp.h>
 
 #include <QUrl>
 

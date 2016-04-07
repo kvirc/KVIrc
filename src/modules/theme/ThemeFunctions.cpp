@@ -367,11 +367,7 @@ namespace ThemeFunctions
 		if(bMaximizeFrame)
 			g_pMainWindow->showMaximized();
 
-#if (QT_VERSION >= 0x050000)
 		QPixmap pix = g_pMainWindow->grab();
-#else
-		QPixmap pix = QPixmap::grabWidget(g_pMainWindow);
-#endif
 		bool bResult = true;
 
 		if(pix.isNull())

@@ -80,11 +80,7 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 
 	m_pTable->setColumnCount(2);
 	m_pTable->setColumnWidth(0,300);
-#if (QT_VERSION >= 0x050000)
 	m_pTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-#else
-	m_pTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-#endif
 	m_pTable->horizontalHeader()->stretchLastSection();
 	m_pTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);

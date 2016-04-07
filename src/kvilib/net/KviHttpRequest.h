@@ -40,11 +40,7 @@
 
 #include <QObject>
 
-#if (QT_VERSION >= 0x050000)
-	#include <QtNetwork/QAbstractSocket>
-#else
-	#include <QAbstractSocket>
-#endif
+#include <QtNetwork/QAbstractSocket>
 
 class KviDnsResolver;
 class KviDataBuffer;

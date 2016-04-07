@@ -75,9 +75,7 @@ public:
 	*/
 	virtual void saveConfiguration() = 0;
 
-#if (QT_VERSION >= 0x050000)
 public Q_SLOTS:
-#endif
 	/**
 	* \brief Commits the data and save the session
 	* \param manager The session manager

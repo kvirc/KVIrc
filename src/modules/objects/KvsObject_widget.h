@@ -33,11 +33,7 @@
 #include <QGraphicsEffect>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	#if (QT_VERSION < 0x050000)
-		#include <QtWebKit/QWebView>
-	#else
-		#include <QtWebKitWidgets/QWebView>
-	#endif
+	#include <QtWebKitWidgets/QWebView>
 #endif
 
 class KvsObject_widget : public KviKvsObject

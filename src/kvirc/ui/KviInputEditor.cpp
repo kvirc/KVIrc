@@ -63,16 +63,11 @@
 #include <QFontMetrics>
 #include <QKeyEvent>
 #include <QDragEnterEvent>
-#if (QT_VERSION < 0x050000)
-	#include <QInputContext>
-#endif
 #include <QMenu>
 #include <QWidgetAction>
 #include <QTextBoundaryFinder>
 
-#if (QT_VERSION >= 0x050000)
-	#include <qdrawutil.h> // qDrawShadePanel
-#endif
+#include <qdrawutil.h> // qDrawShadePanel
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <windows.h>

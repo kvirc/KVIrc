@@ -94,12 +94,7 @@ static bool loadAmipDll()
 static QTextCodec * mediaplayer_get_codec()
 {
 	QTextCodec * pCodec = 0;
-
-#if (QT_VERSION < 0x050000)
-	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toLatin1());
-#else
 	pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8());
-#endif
 
 	if(!pCodec)
 		pCodec = QTextCodec::codecForLocale();
@@ -244,11 +239,7 @@ QString MpAmipInterface::mrl()
 	QTextCodec * pCodec = mediaplayer_get_codec();
 	if(pCodec)
 	{
-#if (QT_VERSION < 0x050000)
-		szRet = pCodec->toUnicode(szFn.toLatin1());
-#else
 		szRet = pCodec->toUnicode(szFn.toUtf8());
-#endif
 	} else {
 		szRet = szFn;
 	}
@@ -265,11 +256,7 @@ QString getAmipString(const char * var)
 	QString szString = eval_str(var);
 	QTextCodec * pCodec = mediaplayer_get_codec();
 	if(pCodec) {
-#if (QT_VERSION < 0x050000)
-		szRet = pCodec->toUnicode(szString.toLatin1());
-#else
 		szRet = pCodec->toUnicode(szString.toUtf8());
-#endif
 	} else {
 		szRet = szString;
 	}
