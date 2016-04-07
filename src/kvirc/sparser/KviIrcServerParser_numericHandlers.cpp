@@ -1021,7 +1021,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage *msg)
 		bool bIrcOp = szFlag.indexOf('*') != -1;
 
 		bool bHops = false;
-		bool bIdle = false;
+		// bool bIdle = false;
 		// unsigned long idle = 0;
 		int hops = 0;
 		if(iHops.hasData())hops = iHops.toInt(&bHops);
