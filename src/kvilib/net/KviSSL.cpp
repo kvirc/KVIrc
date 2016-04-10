@@ -386,18 +386,22 @@ static int cb(char *buf, int size, int, void *u)
 	return len;
 }
 
-KviSSL::Result KviSSL::useCertificateFile(const char * cert,const char * pass)
+KviSSL::Result KviSSL::useCertificateFile(QString cert,QString pass)
 {
 	if(!m_pSSLCtx)return NotInitialized;
-	m_szPass = pass;
+	m_szPass = pass.toUtf8().data();
 	if(m_szPass.len() < 4)m_szPass.append("xxxx");
 	X509 * x509 = 0;
 
-	FILE * f = fopen(cert,"r");
+#ifdef COMPILE_ON_WINDOWS
+	FILE * f = _wfopen(cert.toStdWString().data(), L"r");
+#else
+	FILE * f = fopen(cert.toUtf8().data(),"r");
+#endif
 	if(!f)
 		return FileIoError;
 
-//	qDebug("READING CERTIFICATE %s",cert);
+//	qDebug("READING CERTIFICATE %s",cert.Utf8().data());
 	if(PEM_read_X509(f,&x509,cb,&m_szPass))
 	{
 		if(!SSL_CTX_use_certificate(m_pSSLCtx,x509))
@@ -414,19 +418,23 @@ KviSSL::Result KviSSL::useCertificateFile(const char * cert,const char * pass)
 }
 
 
-KviSSL::Result KviSSL::usePrivateKeyFile(const char * key,const char * pass)
+KviSSL::Result KviSSL::usePrivateKeyFile(QString key,QString pass)
 {
 	if(!m_pSSLCtx)return NotInitialized;
-	m_szPass = pass;
+	m_szPass = pass.toUtf8().data();
 	if(m_szPass.len() < 4)m_szPass.append("xxxx");
 
 	EVP_PKEY * k = 0;
 
-	FILE * f = fopen(key,"r");
+#ifdef COMPILE_ON_WINDOWS
+	FILE * f = _wfopen(key.toStdWString().data(), L"r");
+#else
+	FILE * f = fopen(key.toUtf8().data(),"r");
+#endif
 	if(!f)
 		return FileIoError;
 
-//	qDebug("READING KEY %s",key);
+//	qDebug("READING KEY %s",key.toUtf8().data());
 	if(PEM_read_PrivateKey(f,&k,cb,&m_szPass))
 	{
 		if(!SSL_CTX_use_PrivateKey(m_pSSLCtx,k))
