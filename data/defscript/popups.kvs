@@ -710,7 +710,7 @@ defpopup(hostpopup)
 	item($tr("Traceroute6 to ","defscript")$0,36)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
-		else system.runcmd tracert6 $0
+		else system.runcmd tracert -6 $0
 	}
 
 	item("Ping "$0,36)
@@ -720,7 +720,8 @@ defpopup(hostpopup)
 
 	item("Ping6 "$0,36)
 	{
-		system.runcmd ping6 $0
+		if("$system.ostype" == "unix") system.runcmd ping6 $0
+		else system.runcmd ping -6 $0
 	}
 }
 
