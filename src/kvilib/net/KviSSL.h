@@ -182,8 +182,8 @@ public:
 	KviSSLCertificate * getPeerCertificate();
 	KviSSLCertificate * getLocalCertificate();
 	KviSSLCipherInfo * getCurrentCipherInfo();
-	KviSSL::Result useCertificateFile(const char * cert,const char * pass);
-	KviSSL::Result usePrivateKeyFile(const char * key,const char * pass);
+	KviSSL::Result useCertificateFile(QString cert,QString pass);
+	KviSSL::Result usePrivateKeyFile(QString key,QString pass);
 #ifdef COMPILE_ON_WINDOWS
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance
