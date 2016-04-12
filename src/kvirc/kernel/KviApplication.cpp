@@ -104,18 +104,11 @@
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QMetaObject>
-
-#if (QT_VERSION < 0x050000)
-	#include <QCleanlooksStyle>
-#else
-	#include <QCommonStyle>
-#endif
+#include <QCommonStyle>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <QPluginLoader>
-	#if (QT_VERSION >= 0x050000)
-		#include <QtWin>
-	#endif
+	#include <QtWin>
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT
@@ -235,11 +228,7 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
 	{
-#if (QT_VERSION < 0x050000)
-		setStyle(new QCleanlooksStyle());
-#else
 		setStyle(QStyleFactory::create("Fusion"));
-#endif
 		setPalette(style()->standardPalette());
 	}
 #endif
@@ -305,11 +294,7 @@ void KviApplication::setup()
 	// encoding every time.
 	QTextCodec * pUTF8Codec = KviLocale::instance()->codecForName("UTF-8");
 	if(pUTF8Codec)
-#if (QT_VERSION >= 0x050000)
 		QTextCodec::setCodecForLocale(pUTF8Codec);
-#else
-		QTextCodec::setCodecForCStrings(pUTF8Codec);
-#endif
 	else
 		qDebug("Aaargh... have no UTF-8 codec?");
 
@@ -649,13 +634,9 @@ bool KviApplication::supportsCompositing()
 #endif
 
 #ifdef COMPILE_QX11INFO_SUPPORT
-	#if (QT_VERSION >= 0x050000)
-		// Qt5 does not support QX11Info::isCompositingManagerRunning()
-		// Well...assume we're compositing capable, should be true on all recent linux distros
-		return true;
-	#else
-		return QX11Info::isCompositingManagerRunning();
-	#endif
+	// Qt5 does not support QX11Info::isCompositingManagerRunning()
+	// Well...assume we're compositing capable, should be true on all recent linux distros
+	return true;
 #endif // COMPILE_QX11INFO_SUPPORT
 #ifdef COMPILE_ON_MAC
 	return true;
@@ -1323,11 +1304,7 @@ void KviApplication::updatePseudoTransparency()
 
 			SelectObject(bitmap_dc, null_bitmap);
 			DeleteDC(bitmap_dc);
-			#if (QT_VERSION >= 0x050000)
-						QPixmap pix = QtWin::fromHBITMAP(bitmap);
-			#else
-						QPixmap pix = QPixmap::fromWinHBITMAP(bitmap);
-			#endif
+			QPixmap pix = QtWin::fromHBITMAP(bitmap);
 
 			DeleteObject(bitmap);
 

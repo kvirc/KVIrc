@@ -29,11 +29,9 @@
 #include "KvsObject_memoryBuffer.h"
 #include <stdlib.h>
 #include <QHash>
-#if (QT_VERSION >= 0x050000)
 #include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlRecord>
-#endif
 
 #define CHECK_QUERY_IS_INIT if (!m_pCurrentSQlQuery)\
 			{\

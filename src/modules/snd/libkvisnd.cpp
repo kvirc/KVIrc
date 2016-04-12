@@ -239,18 +239,8 @@ void KviSoundPlayer::detectSoundSystem()
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss";
 	#endif
 
-#if (QT_VERSION < 0x050000)
-	if(QSound::isAvailable())
-#else
-	// on qt5 QSound::isAvailable() is not available anymore
-	// Note: consider the use of QMediaPlayer
-	if(true)
-#endif
-	{
-		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
-		return;
-	}
-	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "null";
+	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
+	return;
 #endif
 }
 

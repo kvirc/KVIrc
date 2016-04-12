@@ -30,14 +30,9 @@
 
 #include "KviLocale.h"
 
-#if (QT_VERSION > 0x050000)
-	// Qt >= 5.0.0 has no QFtp.
-	// We use the external source code module provided by digia (in qtftp)
-	#include <qftp.h>
-#else
-	// Use standard QFtp
-	#include <QFtp>
-#endif
+// Qt >= 5.0.0 has no QFtp.
+// We use the external source code module provided by digia (in qtftp)
+#include <qftp.h>
 
 #include <QHashIterator>
 

@@ -156,11 +156,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		header << __tr2qs_ctx("Language code", "options");
 		header << __tr2qs_ctx("Provided by", "options");
 		m_pSpellCheckerDictionaries->setHorizontalHeaderLabels(header);
-#if (QT_VERSION >= 0x050000)
 		m_pSpellCheckerDictionaries->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-#else
-		m_pSpellCheckerDictionaries->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-#endif
 		m_pSpellCheckerDictionaries->setSelectionBehavior(QAbstractItemView::SelectRows);
 		m_pSpellCheckerDictionaries->setSelectionMode(QAbstractItemView::SingleSelection);
 		m_pSpellCheckerDictionaries->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

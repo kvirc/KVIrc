@@ -35,10 +35,7 @@
 #include <QStyleOptionFrameV2>
 #include <QPaintEvent>
 
-#if (QT_VERSION >= 0x050000)
-	#include <qdrawutil.h> // qDrawShadePanel
-#endif
-
+#include <qdrawutil.h> // qDrawShadePanel
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -50,7 +47,6 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const ch
 	setObjectName(name);
 	m_pKviWindow = pWindow;
 
-#if (QT_VERSION >= 0x050000)
 	setFrame(false);
 
 	int l,t,r,b;
@@ -60,8 +56,6 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const ch
 	if(r < 4)
 		r = 4;
 	setTextMargins(l,t,r,b);
-#endif
-
 
 	setAutoFillBackground(false);
 	applyOptions();
@@ -97,29 +91,10 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	QPainter *p = new QPainter(this);
 	QPalette pal = palette();
 
-#if (QT_VERSION >= 0x050000)
 	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
 	qDrawShadePanel(p,0,0,width(),height(),palette(),true,1,NULL);
 
 	QRect r(1,1,width()-2,height()-2);
-#else
-
-	QStyleOptionFrameV2 option;
-
-	option.initFrom(this);
-	option.rect = contentsRect();
-	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
-	option.midLineWidth = 0;
-	option.state |= QStyle::State_Sunken;
-	if(isReadOnly())
-		option.state |= QStyle::State_ReadOnly;
-	option.features = QStyleOptionFrameV2::None;
-
-	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
-
-	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
-
-#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{

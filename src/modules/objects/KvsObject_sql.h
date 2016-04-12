@@ -29,11 +29,7 @@
 #include "KviPointerList.h"
 #include "KviKvsVariant.h"
 #include "object_macros.h"
-#if (QT_VERSION >= 0x050000)
-	#include <QSqlQuery>
-#else
-	#include <QtSql>
-#endif
+#include <QSqlQuery>
 #include <QHash>
 
 class KvsObject_sql : public KviKvsObject

@@ -57,11 +57,7 @@
 	#define ICON_SIZE 16
 	#include <Windows.h>
 #else
-	#if QT_VERSION >= 0x050000
-		#define ICON_SIZE 48
-	#else
-		#define ICON_SIZE 22
-	#endif
+	#define ICON_SIZE 48
 #endif
 
 extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;

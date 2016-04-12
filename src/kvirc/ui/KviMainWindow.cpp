@@ -361,11 +361,7 @@ void KviMainWindow::freeAccelleratorKeySequence(QString & key)
 
 void KviMainWindow::accelActivated()
 {
-#if (QT_VERSION >= 0x050000)
 	KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(((QShortcut *)sender())->key()).toString());
-#else
-	KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));
-#endif
 }
 
 void KviMainWindow::executeInternalCommand(int index)
