@@ -418,7 +418,7 @@ void KviKvsEventManager::removeAllModuleHandlers(KviKvsModuleInterface * pIface)
 
 void KviKvsEventManager::removeAllScriptAppHandlers()
 {
-	for(int i=0;i< KVI_KVS_NUM_APP_EVENTS;i++)
+	for(size_t i=0;i< KVI_KVS_NUM_APP_EVENTS;i++)
 	{
 		m_appEventTable[i].clearScriptHandlers();
 	}
@@ -426,7 +426,7 @@ void KviKvsEventManager::removeAllScriptAppHandlers()
 
 void KviKvsEventManager::removeAllScriptRawHandlers()
 {
-	for(int i=0;i< KVI_KVS_NUM_RAW_EVENTS;i++)
+	for(size_t i=0;i< KVI_KVS_NUM_RAW_EVENTS;i++)
 	{
 		if(m_rawEventTable[i])
 		{
@@ -454,7 +454,7 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 
 void KviKvsEventManager::clearRawEvents()
 {
-	for(int i=0;i<KVI_KVS_NUM_RAW_EVENTS;i++)
+	for(size_t i=0;i<KVI_KVS_NUM_RAW_EVENTS;i++)
 	{
 		if(m_rawEventTable[i])delete m_rawEventTable[i];
 		m_rawEventTable[i] = 0;
@@ -463,7 +463,7 @@ void KviKvsEventManager::clearRawEvents()
 
 void KviKvsEventManager::clearAppEvents()
 {
-	for(int i=0;i<KVI_KVS_NUM_APP_EVENTS;i++)
+	for(size_t i=0;i<KVI_KVS_NUM_APP_EVENTS;i++)
 	{
 		m_appEventTable[i].clear();
 	}
@@ -526,9 +526,8 @@ void KviKvsEventManager::loadRawEvents(const QString & szFileName)
 {
 	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 	removeAllScriptRawHandlers();
-	int i;
 
-	for(i=0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(size_t i=0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
 		QString szTmp = QString("RAW%1").arg(i);
 		if(cfg.hasGroup(szTmp))
@@ -560,9 +559,8 @@ void KviKvsEventManager::saveRawEvents(const QString & szFileName)
 {
 	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	cfg.clear();
-	int i;
 
-	for(i=0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(size_t i=0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
 		if(m_rawEventTable[i])
 		{
@@ -594,8 +592,7 @@ void KviKvsEventManager::loadAppEvents(const QString & szFileName)
 	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 	removeAllScriptAppHandlers();
 
-	int i;
-	for(i=0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(size_t i=0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
 		QString szEventName(m_appEventTable[i].name());
 		// Backwards compatibility >_<
@@ -628,10 +625,9 @@ void KviKvsEventManager::saveAppEvents(const QString & szFileName)
 {
 	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	cfg.clear();
-	int i;
 	bool bCompat = false;
 
-	for(i=0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(size_t i=0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
 		if(m_appEventTable[i].hasHandlers())
 		{
