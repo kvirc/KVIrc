@@ -227,3 +227,11 @@ QString* KviIrcMessage::messageTagPtr(const QString& szTag) {
 	if (i == m_ParsedMessageTags.end()) return NULL;
 	return &*i;
 }
+
+KviKvsHash * KviIrcMessage::messageTagsKvsHash() {
+	KviKvsHash * hList = new KviKvsHash;
+	const auto &m = this->messageTagsMap();
+	for(auto it = m.begin(); it != m.end(); ++it)
+		hList->set(it.key(), new KviKvsVariant(it.value()));
+	return hList;
+}
