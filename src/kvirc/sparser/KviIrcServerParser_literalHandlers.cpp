@@ -174,6 +174,11 @@ void KviIrcServerParser::parseLiteralAccount(KviIrcMessage *msg)
 	KviIrcUserDataBase * db = msg->connection()->userDataBase();
 	KviIrcUserEntry * e = db->find(szNick);
 
+	KviConsoleWindow * console = msg->console();
+
+	if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnAccount,console,szNick,szUser,szHost,szAccount))
+		msg->setHaltOutput();
+
 	if(e)
 	{
 		if(szAccount == "*")

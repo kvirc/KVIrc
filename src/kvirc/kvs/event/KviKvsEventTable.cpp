@@ -4059,5 +4059,31 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source old username\n" \
 		"$2 = source old hostname\n" \
 		"$3 = source new username\n" \
-		"$4 = source new hostname")
+		"$4 = source new hostname"),
+
+	/*
+		@doc: onaccount
+		@type:
+			event
+		@title:
+			OnAccount
+		@short:
+			Someone's account name has changed
+		@parameters:
+			$0 = source nickname
+			$1 = source username
+			$2 = source hostname
+			$3 = source account name
+		@window:
+			Console window
+		@description:
+			Triggered when someone has had their account name changed.
+			Note: This requires Extended Capabilities to be enabled, as well as
+			CAP ACCOUNT-NOTIFY support from the server.
+	*/
+	EVENT("OnAccount", \
+		"$0 = source nickname\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = source account name")
 };
