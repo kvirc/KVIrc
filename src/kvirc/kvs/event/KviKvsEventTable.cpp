@@ -4029,5 +4029,35 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	*/
 	EVENT("OnMeHostChange", \
 		"$0 = source server\n" \
-		"$1 = new host\n")
+		"$1 = new host"),
+
+	/*
+		@doc: onhostchange
+		@type:
+			event
+		@title:
+			OnHostChange
+		@short:
+			Someone's visible hostname has changed
+		@parameters:
+			$0 = source nickname
+			$1 = source old username
+			$2 = source old hostname
+			$3 = source new username
+			$4 = source new hostname
+		@window:
+			Console window
+		@description:
+			Triggered when someone has had their username and/or hostname changed.
+			Note: This requires Extended Capabilities to be enabled, as well as
+			CAP CHGHOST support from the server.
+		@seealso:
+			[event:onmehostchange]OnMeHostChange[/event]
+	*/
+	EVENT("OnHostChange", \
+		"$0 = source nickname\n" \
+		"$1 = source old username\n" \
+		"$2 = source old hostname\n" \
+		"$3 = source new username\n" \
+		"$4 = source new hostname")
 };

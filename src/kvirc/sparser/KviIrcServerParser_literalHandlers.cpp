@@ -208,6 +208,10 @@ void KviIrcServerParser::parseLiteralChghost(KviIrcMessage *msg)
 	}
 
 	KviConsoleWindow * console = msg->console();
+
+	if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnHostChange,console,szNick,szUser,szHost,szNewUser,szNewHost))
+		msg->setHaltOutput();
+
 	for(KviChannelWindow * c = console->connection()->channelList()->first();c;c = console->connection()->channelList()->next())
 	{
 		if(!msg->haltOutput())

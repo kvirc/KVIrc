@@ -187,6 +187,7 @@
 #define KviEvent_OnMeKick    61
 #define KviEvent_OnTopic     62
 #define KviEvent_OnQuit      63
+#define KviEvent_OnHostChange 154
 
 // IRC modes
 /**
@@ -378,6 +379,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 154
+#define KVI_KVS_NUM_APP_EVENTS 155
 
 #endif //_KVI_KVS_EVENTTABLE_H_
