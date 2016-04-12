@@ -29,6 +29,7 @@
 #include "KviCString.h"
 #include "KviQString.h"
 #include "KviConsoleWindow.h"
+#include "KviKvsHash.h"
 
 #include <QMap>
 #include <QDateTime>
@@ -106,6 +107,7 @@ public:
 	QString * messageTagPtr(const QString& szTag);
 	bool hasMessageTag(const QString& szTag){ return m_ParsedMessageTags.contains(szTag); };
 	QHash<QString, QString>& messageTagsMap() { return m_ParsedMessageTags; };
+	KviKvsHash * messageTagsKvsHash();
 
 	QDateTime serverTime() { return m_time; }
 

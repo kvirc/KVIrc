@@ -550,6 +550,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$2 = source host
 			$3 = message target
 			$4 = message
+			$5 = message tags
 		@window:
 			any
 		@description:
@@ -560,7 +561,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source host\n" \
 		"$3 = message target\n" \
-		"$4 = message"),
+		"$4 = message\n" \
+		"$5 = message tags"),
 
 	/*
 		@doc: onservernotice
@@ -1206,6 +1208,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$3 = message
 			$4 = [target mode prefixes]
 			$5 = was encrypted
+			$6 = message tags
 		@window:
 			Channels window
 		@description:
@@ -1214,6 +1217,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			and $4 are the eventual mode prefixes added to the target channel (i.e:
 			if the message is only for channel operators then you will get the string @ in $4).
 			$5 will be [b]1[/b] if the message was encrypted and [b]0[/b] otherwise.
+			$6 is a hash of the current message tags, if available.
 		@seealso:
 			[event:onquerymessage]OnQueryMessage[/event]
 			[event:ondccchatmessage]OnDCCChatMessage[/event]
@@ -1224,7 +1228,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$2 = source hostname\n" \
 		"$3 = message\n" \
 		"$4 = target mode prefixes\n" \
-		"$5 = was encrypted"),
+		"$5 = was encrypted\n" \
+		"$6 = message tags"),
 
 	/*
 		@doc: onchannelnotice
@@ -1239,6 +1244,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = message
 			$2 = target
 			$3 = was encrypted
+			$4 = message tags
 		@window:
 			Channel window
 		@description:
@@ -1248,6 +1254,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Please note that this convention is different from the one used in [event:onchannelprivmsg]OnChannelMessage[/event]:
 			the incompatibility is here for historical reasons: it is not a big deal so we're not fighting it :)
 			$3 will be [b]1[/b] if the message was encrypted and [b]0[/b] otherwise.
+			$4 is a hash of the current message tags, if available.
 		@seealso:
 			[event:onservernotice]OnServerNotice[/event]
 	*/
@@ -1255,7 +1262,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nick\n" \
 		"$1 = message\n" \
 		"$2 = target\n" \
-		"$3 = was encrypted"),
+		"$3 = was encrypted\n" \
+		"$4 = message tags"),
 
 	// Queries
 	/*
@@ -1272,6 +1280,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$2 = source host
 			$3 = message
 			$4 = was encrypted
+			$5 = message tags
 		@window:
 			Query or console window.
 		@description:
@@ -1297,7 +1306,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
 		"$3 = message\n" \
-		"$4 = was encrypted"),
+		"$4 = was encrypted\n" \
+		"$5 = message tags"),
 
 	/*
 		@doc: onquerynotice
@@ -1313,6 +1323,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$2 = source host
 			$3 = message
 			$4 = was encrypted
+			$5 = message tags
 		@window:
 			Query window or console
 		@description:
@@ -1328,7 +1339,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source host\n" \
 		"$3 = message\n" \
-		"$4 = was encrypted"),
+		"$4 = was encrypted\n" \
+		"$5 = message tags"),
 
 	/*
 		@doc: onquerywindowrequest
@@ -1343,6 +1355,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = source username
 			$2 = source host
 			$3 = message
+			$4 = message tags
 		@window:
 			console window
 		@description:
@@ -1364,7 +1377,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nick\n" \
 		"$1 = source user\n" \
 		"$2 = source host\n" \
-		"$3 = message"),
+		"$3 = message\n" \
+		"$4 = message tags"),
 
 	/*
 		@doc: onquerywindowcreated
@@ -2998,6 +3012,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = ChanServ username
 			$2 = ChanServ host
 			$3 = message
+			$4 = message tags
 		@window:
 		console
 		@description:
@@ -3013,7 +3028,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = ChanServ nick\n" \
 		"$1 = ChanServ username\n" \
 		"$2 = ChanServ host\n" \
-		"$3 = message"),
+		"$3 = message\n" \
+		"$4 = message tags"),
 
 	/*
 		@doc: onnickservnotice
@@ -3028,6 +3044,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = NickServ username
 			$2 = NickServ host
 			$3 = message
+			$4 = message tags
 		@window:
 			console
 		@description:
@@ -3044,7 +3061,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = NickServ nick\n" \
 		"$1 = NickServ username\n" \
 		"$2 = NickServ host\n" \
-		"$3 = message"),
+		"$3 = message\n" \
+		"$4 = message tags"),
 
 	/*
 		@doc: OnNickServAuth
@@ -3836,6 +3854,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$1 = MemoServ username
 			$2 = MemoServ host
 			$3 = message
+			$4 = message tags
 		@window:
 		console
 		@description:
@@ -3851,7 +3870,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = MemoServ nick\n" \
 		"$1 = MemoServ username\n" \
 		"$2 = MemoServ host\n" \
-		"$3 = message"),
+		"$3 = message\n" \
+		"$4 = message tags"),
 
 
 	/*
