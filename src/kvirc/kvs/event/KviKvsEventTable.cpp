@@ -3095,6 +3095,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			$2 = source host
 			$3 = message target
 			$4 = action message text
+			$5 = message tags
 		@window:
 			Channels and query windows
 		@description:
@@ -3107,6 +3108,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			- Any other string : this is either a broadcast CTCP ACTION (sent by a privileged user
 				to a subset of clients) or a sign of the server brain damage :D In this
 				case the event is triggered in the console window.[br]
+			$5 is a hash of the current message tags, if available.[br]
 			Calling [cmd]halt[/cmd] in this event stops the message output.[br]
 	*/
 	EVENT("OnAction", \
@@ -3114,7 +3116,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
 		"$3 = message target\n" \
-		"$4 = action message text"),
+		"$4 = action message text\n" \
+		"$5 = message tags"),
 
 	/*
 		@doc: onmeaction
