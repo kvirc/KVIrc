@@ -4048,7 +4048,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Console window
 		@description:
-			Triggered when someone has had their username and/or hostname changed.
+			Triggered when someone has had their username and/or hostname changed.[br]
 			Note: This requires Extended Capabilities to be enabled, as well as
 			CAP CHGHOST support from the server.
 		@seealso:
@@ -4077,7 +4077,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Console window
 		@description:
-			Triggered when someone has had their account name changed.
+			Triggered when someone has had their account name changed.[br]
 			Note: This requires Extended Capabilities to be enabled, as well as
 			CAP ACCOUNT-NOTIFY support from the server.
 	*/
