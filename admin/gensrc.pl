@@ -59,7 +59,7 @@ if(open(THEFILE,">$name"))
 	print THEFILE "//   File : $name\n";
 	print THEFILE "//   Creation date : $thetime GMT by Szymon Stefanek\n";
 	print THEFILE "//\n";
-	print THEFILE "//   This file is part of the KVirc IRC client distribution\n";
+	print THEFILE "//   This file is part of the KVIrc IRC client distribution\n";
 	print THEFILE "//   Copyright (C) 2009 Szymon Stefanek (pragma at kvirc dot net)\n";
 	print THEFILE "//\n";
 	print THEFILE "//   This program is FREE software. You can redistribute it and/or\n";
