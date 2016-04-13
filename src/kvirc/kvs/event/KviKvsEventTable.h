@@ -87,7 +87,7 @@
 
 // Connection
 /**
-* \def KviEvent_OnIrcConnectionEstabilished Triggered when the IRC connection is established
+* \def KviEvent_OnIrcConnectionEstablished Triggered when the IRC connection is established
 * \def KviEvent_OnIrcConnectionTerminated Triggered when the IRC connection is terminated
 * \def KviEvent_OnIrc Triggered when the login is completed
 * \def KviEvent_OnNetsplit A netsplit has been detected
@@ -96,7 +96,7 @@
 * \def KviEvent_OnUnhandledLiteral An unhandled literal server message has been received
 * \def KviEvent_OnOutboundTraffic Triggered when text is sent to the server
 */
-#define KviEvent_OnIRCConnectionEstabilished 23
+#define KviEvent_OnIRCConnectionEstablished  23
 #define KviEvent_OnIRCConnectionTerminated   24
 #define KviEvent_OnIRC                       25
 #define KviEvent_OnNetsplit                  26

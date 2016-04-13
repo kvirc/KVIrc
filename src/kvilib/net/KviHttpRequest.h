@@ -170,7 +170,7 @@ public:
 signals:
 	void resolvingHost(const QString &hostname);
 	void contactingHost(const QString &ipandport);
-	void connectionEstabilished();
+	void connectionEstablished();
 	void receivedResponse(const QString &response);
 
 	void terminated(bool bSuccess);

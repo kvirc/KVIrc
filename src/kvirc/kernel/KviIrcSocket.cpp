@@ -477,10 +477,10 @@ void KviIrcSocket::writeNotifierFired(int)
 	m_pWsn = 0;
 
 	//Successfully connected...
-	connectionEstabilished();
+	connectionEstablished();
 }
 
-void KviIrcSocket::connectionEstabilished()
+void KviIrcSocket::connectionEstablished()
 {
 	if(m_sock == KVI_INVALID_SOCKET)
 		return; // ops...disconnected in setState() ????

@@ -65,7 +65,7 @@ HttpFileTransfer::HttpFileTransfer()
 	connect(m_pHttpRequest,SIGNAL(requestSent(const QStringList &)),this,SLOT(requestSent(const QStringList &)));
 	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(receivedResponse(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
+	connect(m_pHttpRequest,SIGNAL(connectionEstablished()),this,SLOT(connectionEstablished()));
 
 	m_eGeneralStatus = Initializing;
 	m_szStatusString = __tr2qs_ctx("Initializing","http");
@@ -384,7 +384,7 @@ void HttpFileTransfer::requestSent(const QStringList &requestHeaders)
 	m_lRequest = requestHeaders;
 }
 
-void HttpFileTransfer::connectionEstabilished()
+void HttpFileTransfer::connectionEstablished()
 {
 	m_szStatusString = __tr2qs_ctx("Connection established: sending request","http");
 	displayUpdate();

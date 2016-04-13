@@ -371,7 +371,7 @@ void KviIrcLink::socketStateChange()
 	{
 		case KviIrcSocket::Connected:
 			m_eState = Connected;
-			m_pConnection->linkEstabilished();
+			m_pConnection->linkEstablished();
 		break;
 		case KviIrcSocket::Idle:
 		{
