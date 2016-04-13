@@ -711,7 +711,7 @@ static const char * g_szAboutText = "" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"The KDE man! Making sure that KVirc has a reason to have a K in the beginning" \
+"The KDE man! Making sure that KVIrc has a reason to have a K in the beginning" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"Could I please make KVIrc a pure KDE application today?? Pleeease...\"" \

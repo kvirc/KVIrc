@@ -235,7 +235,7 @@
 			[/example]
 			There are two special functions for each objects: the [i]constructor[/i] and the [i]destructor[/i].
 			You will find more information on constructors and destructors later in this document,
-			for now it's enough that you know that these functions are called automatically by KVirc:
+			for now it's enough that you know that these functions are called automatically by KVIrc:
 			the constructor is called when the object is created and the destructor is called when the
 			object is being destroyed with [cmd]delete[/cmd].[br][br]
 			[br]
@@ -536,7 +536,7 @@
 		@inherits:
 			none
 		@description:
-			This is the base class for all builtin KVirc object classes.
+			This is the base class for all builtin KVIrc object classes.
 			It exports functions to retrieve an object's name, to iterate
 			through child objects and to lookup a child object by name or class.
 			Additionally, this class provides builtin timer functionality.

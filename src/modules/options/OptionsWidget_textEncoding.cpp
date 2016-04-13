@@ -219,7 +219,7 @@ void OptionsWidget_textEncoding::commit()
 		}
 	}
 /*	if(!KviQString::equalCI(m_pForcedLocaleCombo->text(idx),m_szLanguage))
-		QMessageBox::information(0,"KVIrc",__tr2qs_ctx("You need to restart KVirc to apply a language changing","options"),QMessageBox::Ok);*/
+		QMessageBox::information(0,"KVIrc",__tr2qs_ctx("You need to restart KVIrc to apply a language changing","options"),QMessageBox::Ok);*/
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	QStringList wantedDictionaries;

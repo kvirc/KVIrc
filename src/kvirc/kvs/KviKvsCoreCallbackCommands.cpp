@@ -647,7 +647,7 @@ namespace KviKvsCoreCallbackCommands
 				Use <interpreter command> instead of the default interpreter [i]sh -c[/i].
 				The <interpreter command> should be able to launch the interpeter
 				and should contain the necessary arguments in order to allow
-				KVirc to pass the [i]commandline[/i] by appending it as the last parameter.
+				KVIrc to pass the [i]commandline[/i] by appending it as the last parameter.
 			!sw: -d | --direct
 				Use no command interpreter at all: run the command directly.
 				Takes precedence over -s.

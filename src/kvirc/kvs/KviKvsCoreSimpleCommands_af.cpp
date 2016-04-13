@@ -1079,7 +1079,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			echo [-d] [-w=<window_id>] [-i=<color_set>] [-n] <text>
 		@short:
-			Outputs text to a KVirc window
+			Outputs text to a KVIrc window
 		@switches:
 			!sw: -w=<window_id> | --window=<window_id>
 			Causes the output to be redirected to the window specified by &lt;window_id&gt;
@@ -1570,7 +1570,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Closes KVIrc
 		@description:
-			It closes KVirc application
+			It closes KVIrc application
 	*/
 
 	KVSCSC(exit)

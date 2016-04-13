@@ -74,7 +74,7 @@ RegisteredUserPropertiesDialog::RegisteredUserPropertiesDialog(QWidget * p,KviPo
 	setWindowModality(Qt::WindowModal);
 	m_pPropertyDict = dict;
 
-	setWindowTitle(__tr2qs_ctx("Property Editor - KVirc","register"));
+	setWindowTitle(__tr2qs_ctx("Property Editor - KVIrc","register"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
 
 	QGridLayout * g = new QGridLayout(this);
