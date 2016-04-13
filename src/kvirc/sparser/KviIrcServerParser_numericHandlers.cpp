@@ -955,7 +955,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoRepliesToActiveWindow) && chan ?
 			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 		QString szAway = bAway ? __tr2qs("Yes") : __tr2qs("No");
@@ -995,7 +995,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage *msg)
 		if(chan->hasWhoList() && !chan->sentSyncWhoRequest())
 		{
 			QString szWText = msg->connection()->decodeText(msg->allParams());
-			KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoRepliesToActiveWindow) && chan ?
 				msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 			pOut->output(KVI_OUT_UNHANDLED,
@@ -1112,7 +1112,7 @@ void KviIrcServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoRepliesToActiveWindow) && chan ?
 			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString whoTarget = msg->connection()->decodeText(msg->safeParam(1));
 		if(IS_CHANNEL_TYPE_FLAG(whoTarget[0]))

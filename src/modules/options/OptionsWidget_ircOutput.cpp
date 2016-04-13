@@ -70,6 +70,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	addBoolSelector(pGroup,__tr2qs_ctx("External messages","options"),KviOption_boolExternalMessagesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("External CTCP replies","options"),KviOption_boolCtcpRepliesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("WHOIS replies","options"),KviOption_boolWhoisRepliesToActiveWindow);
+	addBoolSelector(pGroup,__tr2qs_ctx("WHO replies","options"),KviOption_boolWhoRepliesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("ChanServ and NickServ notices","options"),KviOption_boolServicesNoticesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("Invite messages","options"),KviOption_boolInvitesToActiveWindow);
 	addBoolSelector(pGroup,__tr2qs_ctx("Server replies","options"),KviOption_boolServerRepliesToActiveWindow);
