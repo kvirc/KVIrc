@@ -89,7 +89,7 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pLinkList->setAutoDelete(true);
 
 	m_pHostPopup = new QMenu();
-    connect(m_pHostPopup,SIGNAL(triggered(QAction*)),this,SLOT(hostPopupClicked(QAction *)));
+	connect(m_pHostPopup,SIGNAL(triggered(QAction*)),this,SLOT(hostPopupClicked(QAction *)));
 
 	connectionStateChange();
 
