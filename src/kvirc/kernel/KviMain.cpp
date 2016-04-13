@@ -23,7 +23,7 @@
 //=============================================================================
 
 
-
+#include "KviRuntimeInfo.h"
 #include "KviApplication.h"
 #include "KviCString.h"
 #include "kvi_settings.h"
@@ -391,7 +391,9 @@ int main(int argc, char ** argv)
 	qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(-1));
 #endif
 
-	if(qgetenv("QT_QPA_PLATFORMTHEME") == QByteArray("appmenu-qt5"))
+	// appmenu-qt5 in Qt 5.2 is buggy and when installed breaks KVIrc's menu bar #1917
+	// Check if lib is installed and that Qt version is the known buggy and disable it only if those conditions are met.
+	if(qgetenv("QT_QPA_PLATFORMTHEME") == QByteArray("appmenu-qt5") && KviRuntimeInfo::qtVersion() == "5.2.1")
 		qunsetenv("QT_QPA_PLATFORMTHEME");
 
 	KviApplication * pTheApp = new KviApplication(argc,argv);
