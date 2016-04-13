@@ -2557,8 +2557,13 @@ void KviIrcServerParser::parseLiteralAway(KviIrcMessage *msg)
 	// Update the user entry
 	KviIrcUserDataBase * db = msg->connection()->userDataBase();
 	KviIrcUserEntry * e = db->find(szNick);
+	KviConsoleWindow * console = msg->console();
+
 	if(e)
 	{
 		e->setAway(!awayMsg.isEmpty());
 	}
+
+	if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnAway,console,szNick,szUser,szHost,awayMsg))
+		msg->setHaltOutput();
 }

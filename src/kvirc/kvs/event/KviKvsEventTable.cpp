@@ -4085,5 +4085,33 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nickname\n" \
 		"$1 = source username\n" \
 		"$2 = source hostname\n" \
-		"$3 = source account name")
+		"$3 = source account name"),
+
+	/*
+		@doc: onaway
+		@type:
+			event
+		@title:
+			OnAway
+		@short:
+			Someone's away status has changed
+		@parameters:
+			$0 = source nickname
+			$1 = source username
+			$2 = source hostname
+			$3 = away message
+		@window:
+			Console window
+		@description:
+			Triggered when someone has changed their away status. If the away message is blank,
+			then they are returning from away, otherwise they are either setting themselves to
+			away or changing their away message.[br]
+			Note: This requires Extended Capabilities to be enabled, as well as
+			CAP AWAY-NOTIFY support from the server.
+	*/
+	EVENT("OnAway", \
+		"$0 = source nickname\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = away message"),
 };
