@@ -78,7 +78,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered on KVIrc shutdown.
 			It is bound to the console of the last existing IRC context.
 			This is a little tricky, since this event is triggered
-		    immediately after the on [event:onirccontextdestroyed]OnIRCContextDestroyed[/event] event,
+			immediately after the on [event:onirccontextdestroyed]OnIRCContextDestroyed[/event] event,
 			so in theory the console should be already destroyed.
 			This is to make OnApplicationShutdown be the absolutely last event
 			triggered at all.
