@@ -396,7 +396,7 @@ void KviIrcServerParser::parseNumericSnomask(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_MODE,__tr2qs("You have set snomask %s"),msg->safeParam(1));
 	}
 }
@@ -453,7 +453,7 @@ void KviIrcServerParser::parseNumericEndOfNames(KviIrcMessage *msg)
 	{
 // FIXME: #warning "KVI_OUT_NAMES missing"
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_UNHANDLED,__tr2qs("End of NAMES for \r!c\r%Q\r"),&szChan);
 	}
 }
@@ -510,7 +510,7 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage *msg)
 			// ^  +a is a weird mode: it also breaks nicknames on some networks!
 			// not a valid first char(s) of nickname, must be a mode prefix
 
-			while(pServerInfo->isSupportedModePrefix((unsigned char)(*aux)))
+			while(pServerInfo->isSupportedModePrefix(static_cast<unsigned char>(*aux)))
 			{
 				// leading umode flag(s)
 				iFlags |= pServerInfo->modeFlagFromPrefixChar(*aux);
@@ -547,7 +547,7 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage *msg)
 	{
 		// FIXME: #warning "KVI_OUT_NAMES missing"
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString szTrailing = trailing ? msg->connection()->decodeText(trailing) : QString("");
 		pOut->output(KVI_OUT_UNHANDLED,__tr2qs("NAMES for \r!c\r%Q\r: %Q"),&szChan,&szTrailing);
 	}
@@ -610,7 +610,7 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage *msg)
 		}
 	} else {
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 		QString szTopic = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_TOPIC,__tr2qs("Topic for \r!c\r%Q\r is: %Q"),
@@ -635,7 +635,7 @@ void KviIrcServerParser::parseNumericNoTopic(KviIrcMessage *msg)
 		}
 	} else {
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_TOPIC,__tr2qs("No topic is set for channel \r!c\r%Q\r"),
 			&szChan);
 	}
@@ -696,7 +696,7 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 		}
 	} else {
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		if(bOk)
 		{
 			pOut->output(KVI_OUT_TOPIC,__tr2qs("Topic for \r!c\r%Q\r was set by %Q on %Q"),
@@ -719,7 +719,7 @@ void KviIrcServerParser::parseNumericChannelModeIs(KviIrcMessage *msg)
 	if(chan)parseChannelMode(szSource,"*","*",chan,modefl,msg,3);
 	else {
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		if((!szChan.isEmpty()) && IS_CHANNEL_TYPE_FLAG(szChan[0]))
 		{
 			pOut->output(KVI_OUT_CHANMODE,__tr2qs("Channel mode for \r!c\r%Q\r is %s"),
@@ -777,7 +777,7 @@ void KviIrcServerParser::parseNumeric367(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
 			&(__tr2qs("Ban listing")),&szChan,'b',&banmask,&bansetby,&bansetat);
 	}
@@ -795,7 +795,7 @@ void KviIrcServerParser::parseNumeric368(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN,__tr2qs("End of channel %Q for \r!c\r%Q\r"),&(__tr2qs("ban list")),&szChan);
 	}
 }
@@ -816,7 +816,7 @@ void KviIrcServerParser::parseNumeric368(KviIrcMessage *msg)
 		if(!msg->haltOutput()) \
 		{ \
 			KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? \
-				msg->console()->activeWindow() : (KviWindow *)(msg->console()); \
+				msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console()); \
 			pOut->output(__daicon,__tr2qs("End of channel %Q for \r!c\r%Q\r"),&(__szWhatQString),&szChan); \
 		} \
 	}
@@ -849,7 +849,7 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExemptChanOpList,'X',KVI_OUT_INVITEEXCE
 		if(!msg->haltOutput()) \
 		{ \
 			KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? \
-				msg->console()->activeWindow() : (KviWindow *)(msg->console()); \
+				msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console()); \
 			pOut->output(__ico,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"), \
 				&(__szWhatQString),&szChan,__modechar,&banmask,&bansetby,&bansetat); \
 		} \
@@ -956,7 +956,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 		QString szAway = bAway ? __tr2qs("Yes") : __tr2qs("No");
 
@@ -996,7 +996,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage *msg)
 		{
 			QString szWText = msg->connection()->decodeText(msg->allParams());
 			KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-				msg->console()->activeWindow() : (KviWindow *)(msg->console());
+				msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 			pOut->output(KVI_OUT_UNHANDLED,
 				"[%s][%s] %Q",msg->prefix(),msg->command(),&szWText);
@@ -1113,7 +1113,7 @@ void KviIrcServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString whoTarget = msg->connection()->decodeText(msg->safeParam(1));
 		if(IS_CHANNEL_TYPE_FLAG(whoTarget[0]))
 			whoTarget.prepend("\r!c\r");
@@ -1231,8 +1231,8 @@ void KviIrcServerParser::parseNumericUserInChan(KviIrcMessage *msg)
 	// :prefix 443 <target> <nick> <channel> :is already on channel
 	if(!msg->haltOutput())
 	{
-		KviWindow *pOut = static_cast<KviWindow*>(msg->connection()->findChannel(msg->safeParam(2)));
-		if(!pOut)pOut = static_cast<KviWindow*>(msg->console()); // This would be interesting...
+		KviWindow *pOut = static_cast<KviWindow *>(msg->connection()->findChannel(msg->safeParam(2)));
+		if(!pOut)pOut = static_cast<KviWindow *>(msg->console()); // This would be interesting...
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 		QString szChan = msg->connection()->decodeText(msg->safeParam(2));
 		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("%Q is already in %Q"),&szNick,&szChan);
@@ -1249,7 +1249,7 @@ void KviIrcServerParser::parseNumericForward(KviIrcMessage *msg)
 		QString szOldChan = msg->connection()->decodeText(msg->safeParam(1));
 		QString szNewChan = msg->connection()->decodeText(msg->safeParam(2));
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
-			msg->console()->activeWindow() : static_cast<KviWindow*>(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		// This technically isn't a notice, yet it is fairly useful information.
 		// The server gives us good data with a pretty unusable description. So
 		// what we are doing is concatenating the generic server notice prefix
@@ -1268,8 +1268,8 @@ void KviIrcServerParser::parseNumericCantJoinChannel(KviIrcMessage *msg)
 	// :prefix 47* <target> <channel> :Can't join channel (+l/i/b/k)
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->connection()->findChannel(msg->safeParam(1)));
-		if(!pOut)pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findChannel(msg->safeParam(1)));
+		if(!pOut)pOut = static_cast<KviWindow *>(msg->console());
 		QString szChannel = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_JOINERROR,
@@ -1285,7 +1285,7 @@ void KviIrcServerParser::parseNumericNoPrivs(KviIrcMessage *msg)
 	// :prefix 481 <target> :Permission Denied - You're not an IRC operator
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_GENERICERROR,szText);
 	}
@@ -1299,8 +1299,8 @@ void KviIrcServerParser::otherChannelError(KviIrcMessage *msg)
 	// :prefix 4?? <target> <channel> :error text
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->connection()->findChannel(msg->safeParam(1)));
-		if(!pOut)pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findChannel(msg->safeParam(1)));
+		if(!pOut)pOut = static_cast<KviWindow *>(msg->console());
 		QString szChannel = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_GENERICERROR,"\r!c\r%Q\r: %Q",&szChannel,&szWText);
@@ -1324,12 +1324,12 @@ void KviIrcServerParser::parseNumeric486(KviIrcMessage * msg)
 		// HTM disables the command, so send the message to their active window
 		if(version == "Unreal32")
 		{
-			KviWindow * pOut = (KviWindow *)(msg->console()->activeWindow());
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console()->activeWindow());
 			pOut->output(KVI_OUT_GENERICERROR,szText);
 		} else {
 			// We're trying to message them, so send it to the query window
-			KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNick));
-			if(!pOut)pOut = (KviWindow *)(msg->console());
+			KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findQuery(szNick));
+			if(!pOut)pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_HELP,szText);
 		}
 	}
@@ -1341,7 +1341,7 @@ void KviIrcServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
 	// :prefix 704 <target> <command> :text
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_HELP,
@@ -1355,7 +1355,7 @@ void KviIrcServerParser::parseCommandHelp(KviIrcMessage *msg)
 	// :prefix 705 <target> <command> :text
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->outputNoFmt(KVI_OUT_HELP,szWText);
@@ -1376,10 +1376,10 @@ void KviIrcServerParser::parseNumericNotifyGeneric(KviIrcMessage * msg)
 		// Send this to the active query, since if they are trying to message this
 		// user then it should appear directly within the window. Otherwise, just
 		// send it to console.
-		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNick));
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findQuery(szNick));
 
 		if(!pOut)
-			pOut = (KviWindow *)(msg->console());
+			pOut = static_cast<KviWindow *>(msg->console());
 
 		pOut->output(KVI_OUT_HELP,"%Q %Q",&szNick,&szText);
 	}
@@ -1397,10 +1397,10 @@ void KviIrcServerParser::parseNumericYouHaveCallerID(KviIrcMessage * msg)
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
 
 		// This would be ironic if it hit, but you never know...
-		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szRemoteUser));
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findQuery(szRemoteUser));
 
 		if(!pOut)
-			pOut = (KviWindow *)(msg->console());
+			pOut = static_cast<KviWindow *>(msg->console());
 
 		// Because some IRCds return the host jammed together with the nick in an awkward way, making one
 		// less parameter returned in RPL_UMODEGMSG.
@@ -1424,7 +1424,7 @@ void KviIrcServerParser::parseChannelHelp(KviIrcMessage *msg)
 		{
 			pOut->output(KVI_OUT_HELP,__tr2qs("Tip: %Q"),&szText);
 		} else {
-			pOut = (KviWindow *)(msg->console());
+			pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_HELP,__tr2qs("Tip for %Q: %Q"),&szChan,&szText);
 		}
 
@@ -1443,7 +1443,7 @@ void KviIrcServerParser::parseNumericNeedSSL(KviIrcMessage *msg)
 		{
 			pOut->output(KVI_OUT_HELP,__tr2qs("%Q requires SSL to join"),&szChan);
 		} else {
-			pOut = (KviWindow *)(msg->console());
+			pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_HELP,__tr2qs("%Q requires SSL to join"),&szChan);
 		}
 	}
@@ -1456,7 +1456,7 @@ void KviIrcServerParser::parseCommandEndOfHelp(KviIrcMessage *msg)
 	// :prefix 706 <target> <command> :End of /HELP.
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		pOut->output(KVI_OUT_HELP,
 			__tr2qs("End of help about %Q"),&szCommand);
@@ -1509,10 +1509,10 @@ void KviIrcServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNk));
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findQuery(szNk));
 
 		if(!pOut)pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c is away: %Q"),
 			KviControlCodes::Bold,&szNk,KviControlCodes::Bold,&szWText);
 	}
@@ -1539,7 +1539,7 @@ void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 		{
 			// hum... this is ugly
 			if(KviQString::equalCS(g_pActiveWindow->metaObject()->className(),QString("KviChannelWindow")))
-				((KviChannelWindow*)g_pActiveWindow)->userListView()->updateArea();
+				(static_cast<KviChannelWindow *>(g_pActiveWindow))->userListView()->updateArea();
 		}
 
 		KviQueryWindow * q = msg->connection()->findQuery(szNick);
@@ -1572,7 +1572,7 @@ void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
 			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"),KviControlCodes::Bold,
 				&szNick,KviControlCodes::Bold,KviControlCodes::Underline,&szNick,
@@ -1597,7 +1597,7 @@ void KviIrcServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 		QString szReal = msg->connection()->decodeText(msg->safeTrailing());
 
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
 			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"),KviControlCodes::Bold,
 			&szNick,KviControlCodes::Bold,KviControlCodes::Underline,&szNick,
@@ -1629,7 +1629,7 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 		QStringList sl = szChans.split(" ",QString::SkipEmptyParts);
 		QString szChanList;
@@ -1696,7 +1696,7 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		KviCString idle = msg->safeParam(2); // shouldn't be encoded
 		KviCString sign = msg->safeParam(3); // shouldn't be encoded
 
@@ -1774,8 +1774,8 @@ void KviIrcServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 	// FIXME: #warning "AWHOIS HERE.... and NICK LINKS"
 	if(!msg->haltOutput())
 	{
-	    	KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-		msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
+		msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString szWText = pOut->decodeText(msg->safeTrailing());
 		pOut->output(
 			KVI_OUT_WHOISSERVER,__tr2qs("%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"),KviControlCodes::Bold,
@@ -1803,7 +1803,7 @@ void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
 			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c is authenticated as %Q"),KviControlCodes::Bold,
 			&szNick,KviControlCodes::Bold,&szAuth);
@@ -1822,7 +1822,7 @@ void KviIrcServerParser::parseNumericWhoisRegistered(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
 			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c is a registered nickname"),KviControlCodes::Bold,
 			&szNick,KviControlCodes::Bold);
@@ -1858,7 +1858,7 @@ void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		if(szOth.contains(QChar(',')))
 		{
 			pOut->output(
@@ -1898,7 +1898,7 @@ void KviIrcServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
 			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's info: %Q"),KviControlCodes::Bold,
 			&szNick,KviControlCodes::Bold,&szOth);
@@ -1946,7 +1946,7 @@ void KviIrcServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString pref = msg->connection()->decodeText(msg->safePrefix());
 		pOut->output(
 			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"),KviControlCodes::Bold,
@@ -1963,7 +1963,7 @@ void KviIrcServerParser::parseNumericEndOfWhowas(KviIrcMessage *msg)
 	{
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	   	KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString pref = msg->connection()->decodeText(msg->safePrefix());
 		pOut->output(
 			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"),KviControlCodes::Bold,
@@ -2001,13 +2001,13 @@ void KviIrcServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
 	// FIXME: #warning "QUERIES SHOULD REPORT NO TARGET HERE! (?)"
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNick));
+		KviWindow * pOut = static_cast<KviWindow *>(msg->connection()->findQuery(szNick));
 		if(!pOut)
 		{
-			pOut = (KviWindow *)(msg->console()->activeWindow());
+			pOut = static_cast<KviWindow *>(msg->console()->activeWindow());
 		}
 		//} else {
-		//	((KviQueryWindow *)pOut)->removeTarget(msg->safeParam(1));
+		//	(static_cast<KviQueryWindow *>(pOut))->removeTarget(msg->safeParam(1));
 		//}
 		QString szWText = pOut->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_NICKNAMEPROBLEM,"\r!n\r%Q\r: %Q",
@@ -2035,7 +2035,7 @@ void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage *msg)
 	} else {
 		szUrl = msg->console()->decodeText(msg->safeTrailing());
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_CHANURL,__tr2qs("Channel web site is %Q"),&szUrl);
 	}
 }
@@ -2080,7 +2080,7 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 		}
 	} else {
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_CREATIONTIME,__tr2qs("Channel \r!c\r%Q\r was created at %Q"),
 			&szChan,&szDate);
 	}
@@ -2118,7 +2118,7 @@ void KviIrcServerParser::parseNumericUserhost(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString szUser = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_WHOISUSER,__tr2qs("USERHOST info: %Q"),&szUser);
 	}
@@ -2238,13 +2238,13 @@ void KviIrcServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 	msg->connection()->changeAwayState(false);
 
 	// trigger the event
-	QString tmp = QString("%1").arg(bWasAway ? (unsigned int)(msg->connection()->userInfo()->awayTime()) : 0);
+	QString tmp = QString("%1").arg(bWasAway ? static_cast<unsigned int>(msg->connection()->userInfo()->awayTime()) : 0);
 	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeBack,msg->console(),tmp,szWText))
 		msg->setHaltOutput();
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 		if(bWasAway)
 		{
@@ -2279,7 +2279,7 @@ void KviIrcServerParser::parseNumericAway(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_AWAY,__tr2qs("[Entering away status]: %Q"),&szWText);
 	}
 
@@ -2339,7 +2339,7 @@ void KviIrcServerParser::parseNumericWatch(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_UNHANDLED,
 			"[%s][%s] %s",msg->prefix(),msg->command(),msg->allParams());
 	}
@@ -2349,7 +2349,7 @@ void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 {
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		if(msg->paramCount() > 2)
 		{
 			KviCString szParms;
@@ -2371,7 +2371,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoTitle(KviIrcMessage * msg)
 	//RPL_ADMINME          256
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 			pOut->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()).toUtf8().data());
 	}
 }
@@ -2380,7 +2380,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * m
 	//RPL_ADMINLOC1        257
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
 			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's server info: %s"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold,szInfo.toUtf8().data());
 	}
@@ -2391,7 +2391,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoAdminName(KviIrcMessage * ms
 	//RPL_ADMINLOC2        258
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's administrator is %s"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold,szInfo.toUtf8().data());
 	}
@@ -2402,7 +2402,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage *
 	//RPL_ADMINEMAIL       259
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact address is %s"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold,szInfo.toUtf8().data());
 	}
@@ -2429,7 +2429,7 @@ void KviIrcServerParser::parseNumericCommandSyntax(KviIrcMessage * msg)
 	//RPL_COMMANDSYNTAX    334
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		pOut->outputNoFmt(KVI_OUT_STATS,msg->connection()->decodeText(msg->safeTrailing()));
 	}
 }
@@ -2447,7 +2447,7 @@ void KviIrcServerParser::parseNumericInviting(KviIrcMessage * msg)
 		{
 			chan->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
 		} else {
-			KviWindow * pOut = (KviWindow *)(msg->console());
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
 		}
 	}
@@ -2466,7 +2466,7 @@ void KviIrcServerParser::parseNumericInvited(KviIrcMessage * msg)
 		{
 			chan->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
 		} else {
-			KviWindow * pOut = (KviWindow *)(msg->console());
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_INVITE,__tr2qs("\r!n\r%Q\r invited %Q into channel %Q"),&szWho,&szTarget,&szChan);
 		}
 	}
@@ -2555,7 +2555,7 @@ void KviIrcServerParser::parseNumeric742(KviIrcMessage * msg)
 		chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
 			&mode, &szChan, &lock);
 	} else {
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
 			&mode, &szChan, &lock);
 	}
@@ -2566,7 +2566,7 @@ void KviIrcServerParser::parseNumericInfo(KviIrcMessage * msg)
 	//RPL_INFO             371
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->outputNoFmt(KVI_OUT_SERVERINFO,szInfo);
 	}
@@ -2577,7 +2577,7 @@ void KviIrcServerParser::parseNumericInfoStart(KviIrcMessage * msg)
 	//RPL_INFOSTART        373
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's information:"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold);
 	}
 }
@@ -2587,7 +2587,7 @@ void KviIrcServerParser::parseNumericInfoEnd(KviIrcMessage * msg)
 	//RPL_ENDOFINFO        374
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("End of %c\r!s\r%s\r%c's information"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold);
 	}
 }
@@ -2597,7 +2597,7 @@ void KviIrcServerParser::parseNumericTime(KviIrcMessage * msg)
 	//RPL_TIME             391
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's time is %Q"),KviControlCodes::Bold,msg->prefix(),KviControlCodes::Bold,&szInfo);
 	}
@@ -2617,7 +2617,7 @@ void KviIrcServerParser::parseNumericHiddenHost(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_SERVERNOTICE,msg->serverTime(),"[\r!s\r%Q\r]: %Q %Q",&pref,&szHost,&szMsgText);
 	}
 }
@@ -2647,7 +2647,7 @@ void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szWhat = msg->connection()->decodeText(msg->safeParam(1));
 		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("%Q: no such server"),&szWhat);
 	}
@@ -2658,7 +2658,7 @@ void KviIrcServerParser::parseNumericNoSuchChannel(KviIrcMessage * msg)
 	// ERR_NOSUCHCHANNEL    403
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szWhat = msg->connection()->decodeText(msg->safeParam(1));
 		pOut->output(KVI_OUT_GENERICERROR,__tr2qs("%Q: no such channel"),&szWhat);
 	}
@@ -2676,7 +2676,7 @@ void KviIrcServerParser::parseNumericCannotSendColor(KviIrcMessage * msg)
 		{
 			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send to channel: %Q"),&szInfo);
 		} else {
-			KviWindow * pOut = (KviWindow *)(msg->console());
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send text to channel %Q: %Q"),&szChan,&szInfo);
 		}
 	}
@@ -2694,7 +2694,7 @@ void KviIrcServerParser::parseNumericCannotSend(KviIrcMessage * msg)
 		{
 			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send to channel"));
 		} else {
-			KviWindow * pOut = (KviWindow *)(msg->console());
+			KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Can't send text to channel %Q"),&szChan);
 		}
 	}
@@ -2746,7 +2746,7 @@ void KviIrcServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
 		if(!msg->haltOutput())
 		{
 			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 			QString szWText = pOut->decodeText(msg->safeTrailing());
 			pOut->output(
 				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's codepage is %Q: %Q"),KviControlCodes::Bold,
@@ -2772,7 +2772,7 @@ void KviIrcServerParser::parseNumericUserMode(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_MODE,__tr2qs("Your user mode is %s"),msg->safeParam(1));
 	}
 }
@@ -2782,7 +2782,7 @@ void KviIrcServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
 	// 219: RPL_ENDOFSTATS [I,E,U,D]
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->outputNoFmt(KVI_OUT_STATS, szText);
 	}
@@ -2794,7 +2794,7 @@ void KviIrcServerParser::parseNumericYoureOper(KviIrcMessage * msg)
 	// :prefix 381 <target> :You are now an IRC Operator
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_HELP,"%Q on server %Q",&szText, &szPrefix);
@@ -2819,7 +2819,7 @@ void KviIrcServerParser::parseNumericAlreadyRegistered(KviIrcMessage * msg)
 	// :prefix 462 <target> :You may not reregister
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = static_cast<KviWindow*>(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_GENERICERROR,szText);
 	}
@@ -2921,7 +2921,7 @@ void KviIrcServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = static_cast<KviWindow*>(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szParam = msg->connection()->decodeText(msg->safeParam(2));
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("Authenticated as %Q"),&szParam);
 	}
@@ -2944,7 +2944,7 @@ void KviIrcServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		pOut->outputNoFmt(KVI_OUT_SERVERINFO,__tr2qs("SASL authentication successful"));
 	}
 
@@ -2968,7 +2968,7 @@ void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		KviWindow * pOut = (KviWindow *)(msg->console());
+		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szParam=msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL authentication error: %Q"),&szParam);
 	}
@@ -3000,7 +3000,7 @@ void KviIrcServerParser::parseNumericOftcQuietList(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
 			&(__tr2qs("mode listing")),&szChan,chMode,&banmask,&bansetby,&bansetat);
 	}
@@ -3027,7 +3027,7 @@ void KviIrcServerParser::parseNumericQuietList(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
 			&(__tr2qs("mode listing")),&szChan,chMode,&banmask,&bansetby,&bansetat);
 	}
@@ -3050,7 +3050,7 @@ void KviIrcServerParser::parseNumericOftcEndOfQuietList(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN,__tr2qs("End of channel \"%c\" %Q for \r!c\r%Q\r"),chMode,&(__tr2qs("mode list")),&szChan);
 	}
 }
@@ -3071,7 +3071,7 @@ void KviIrcServerParser::parseNumericEndOfQuietList(KviIrcMessage *msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
-			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+			msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN,__tr2qs("End of channel \"%c\" %Q for \r!c\r%Q\r"),chMode,&(__tr2qs("mode list")),&szChan);
 	}
 }
