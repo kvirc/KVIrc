@@ -91,7 +91,7 @@ after_success:
           fi
 
     - |
-          if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ]; then
+          if [ "$TRAVIS_OS_NAME" == "osx" ]; then
               npm update -g npm
               npm install -g appdmg
               appdmg -v dist/osx_dmg.json KVIrc.dmg
