@@ -91,11 +91,17 @@ after_success:
           fi
 
     - |
+          npm update -g npm
+          npm install -g appdmg
+          appdmg -v dist/osx_dmg.json KVIrc.dmg
+
+    # Only upload to kvirc.staticfox.net if this is a commit to master
+    - |
           if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-              npm install -g appdmg
-              appdmg dist/osx_dmg.json KVIrc.dmg
-              shorthash=`printf "%s" "$TRAVIS_COMMIT" | dd bs=1 count=10 2>/dev/null`
-              curl --ftp-create-dirs -T KVIrc.dmg -u $FTP_USER:$FTP_PASS ${FTP_HOST}KVIrc-dev-git-${shorthash}.dmg
+              kvi_shorthash=`printf "%s" "$TRAVIS_COMMIT" | dd bs=1 count=7 2>/dev/null`
+              kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
+              kvi_commit_number="$(git rev-list --count HEAD)"
+              curl --ftp-create-dirs -T KVIrc.dmg -u $FTP_USER:$FTP_PASS ${FTP_HOST}KVIrc-${kvi_version}-dev-git-${kvi_commit_number}-g${kvi_shorthash}.dmg
           fi
 env:
   global:
