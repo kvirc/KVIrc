@@ -1,4 +1,4 @@
-# CMakeLists for win32build
+# CMakeLists for dist/windows
 
 subdirs(translations)
 

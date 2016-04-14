@@ -1,4 +1,4 @@
-# CMakeLists for win32build/translations
+# CMakeLists for dist/windows/translations
 
 file(GLOB translations "${CMAKE_CURRENT_SOURCE_DIR}/*.nsi")
 
