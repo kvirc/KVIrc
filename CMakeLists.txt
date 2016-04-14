@@ -1121,7 +1121,7 @@ subdirs(data doc po scripts src)
 
 #install additional resources for win32
 if(WIN32)
-	add_subdirectory(win32build)
+	add_subdirectory(dist/windows)
 endif()
 
 ###############################################################################

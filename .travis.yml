@@ -91,7 +91,7 @@ after_success:
           if [ "$TRAVIS_OS_NAME" == "osx" ]; then
               npm update -g npm
               npm install -g appdmg
-              appdmg -v dist/osx_dmg.json KVIrc.dmg
+              appdmg -v dist/osx/osx_dmg.json KVIrc.dmg
           fi
 
     # Only upload to kvirc.staticfox.net if this is a commit to master
