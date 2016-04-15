@@ -203,11 +203,11 @@ static const char * g_szAboutText = "" \
 "<font color=\"#000000\" size=\"+2\"><b>Matt Ullman</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"BlindSight" \
+"staticfox" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
 "[" \
-"matt at airraidsirens dot com" \
+"staticfox at staticfox dot net" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
