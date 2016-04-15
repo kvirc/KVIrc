@@ -46,7 +46,7 @@ install:
             echo "using openssl from cache"
         } else {
             echo "downloading openssl"
-            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2g.exe" -OutFile c:\openssl-setup.exe
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2e.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         }
