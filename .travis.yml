@@ -5,9 +5,6 @@ matrix:
           env: WANT_KDE=NO
           compiler: gcc
         - os: linux
-          env: WANT_KDE=YES
-          compiler: gcc
-        - os: linux
           env: DEBUILD=YES
           compiler: gcc
         - os: osx
