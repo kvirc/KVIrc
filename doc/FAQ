@@ -545,7 +545,7 @@
   However, if you router's IP has a DNS entry, you can ask KVIrc to fill
   this field with a simple script to be performed at every connection.
 
-  event(OnIRCConnectionEstabilished,updatedccsource)
+  event(OnIRCConnectionEstablished,updatedccsource)
   {
       ahost(yourrouterhostname.dyndns.org)
       {

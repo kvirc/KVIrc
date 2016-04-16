@@ -710,7 +710,7 @@ void KviStatusBarUpdateIndicator::checkVersion()
 
 	m_pHttpRequest = new KviHttpRequest();
 	//connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
-	//connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
+	//connect(m_pHttpRequest,SIGNAL(connectionEstablished()),this,SLOT(connectionEstablished()));
 	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(requestCompleted(bool)));

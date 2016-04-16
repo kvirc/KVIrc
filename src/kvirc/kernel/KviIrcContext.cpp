@@ -681,9 +681,9 @@ enter_idle_state:
 	setState(Idle);
 }
 
-void KviIrcContext::connectionEstabilished()
+void KviIrcContext::connectionEstablished()
 {
-	//qDebug("context::connectionEstabilished");
+	//qDebug("context::connectionEstablished");
 	//
 	// The connection has been established, the
 	// KviIrcConnection will attempt to login now
@@ -694,7 +694,7 @@ void KviIrcContext::connectionEstabilished()
 
 	setState(LoggingIn); // this must be set in order for $server and other functions to return the correct values
 
-	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstabilished,m_pConsole);
+	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstablished,m_pConsole);
 
 	if(!bStopOutput)
 	{

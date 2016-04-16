@@ -269,7 +269,7 @@ void KviHttpRequest::slotSocketConnected()
 		m_p->pConnectTimeoutTimer = NULL;
 	}
 
-	emit connectionEstabilished();
+	emit connectionEstablished();
 	emit status(
 			__tr2qs("Connected to %1:%2: sending request")
 					.arg(m_p->pSocket->peerAddress().toString())

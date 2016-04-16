@@ -91,7 +91,7 @@ protected slots:
 	void resolvingHost(const QString &hostname);
 	void contactingHost(const QString &ipandport);
 	void receivedResponse(const QString &response);
-	void connectionEstabilished();
+	void connectionEstablished();
 	void abort();
 	void autoClean();
 };
