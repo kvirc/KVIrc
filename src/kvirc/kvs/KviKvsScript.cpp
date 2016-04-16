@@ -148,7 +148,7 @@ int KviKvsScript::run(const QString & szCode, KviWindow * pWindow, KviKvsVariant
 int KviKvsScript::evaluate(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, KviKvsVariant * pRetVal)
 {
 	// static helper
-	KviKvsScript s("kvirc::corecall(evalutate)",szCode,Parameter);
+	KviKvsScript s("kvirc::corecall(evaluate)",szCode,Parameter);
 	return s.run(pWindow,pParams,pRetVal,PreserveParams);
 }
 
@@ -156,7 +156,7 @@ int KviKvsScript::evaluateAsString(const QString & szCode, KviWindow * pWindow, 
 {
 	// static helper
 	KviKvsVariant ret;
-	KviKvsScript s("kvirc::corecall(evalutate)",szCode,Parameter);
+	KviKvsScript s("kvirc::corecall(evaluate)",szCode,Parameter);
 	int iRet = s.run(pWindow,pParams,&ret,PreserveParams);
 	ret.asString(szRetVal);
 	return iRet;
