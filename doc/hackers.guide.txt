@@ -290,7 +290,7 @@ The source tree
 |                         process to execute last-minute cleanup
 |
 |
-`-- win32build            The directory for Windows builds
+`-- dist/windows          The directory for Windows builds
 
 As of 2004.05.26:
 [pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
