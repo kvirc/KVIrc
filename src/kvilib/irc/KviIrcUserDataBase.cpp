@@ -58,7 +58,7 @@ bool KviIrcUserDataBase::haveCustomColor(const QString & szNick)
 		return false;
 	if(pEntry->m_szLastRegisteredMatchNick != szNick)
 		registeredUser(szNick);
-	if(!pEntry->m_bNotFoundRegUserLoockup)
+	if(!pEntry->m_bNotFoundRegUserLookup)
 		return pEntry->m_bUseCustomColor;
 
 	return false;
@@ -72,7 +72,7 @@ QColor * KviIrcUserDataBase::customColor(const QString & szNick)
 	if(pEntry->m_szLastRegisteredMatchNick != szNick)
 		registeredUser(szNick);
 
-	if(!pEntry->m_bNotFoundRegUserLoockup)
+	if(!pEntry->m_bNotFoundRegUserLookup)
 		return &(pEntry->m_cachedColor);
 
 	return 0;
@@ -89,7 +89,7 @@ KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, c
 
 	KviRegisteredUser * pUser = 0;
 
-	if(pEntry->m_bNotFoundRegUserLoockup && pEntry->m_szLastRegisteredMatchNick == szNick)
+	if(pEntry->m_bNotFoundRegUserLookup && pEntry->m_szLastRegisteredMatchNick == szNick)
 		return 0;
 
 	if(!pEntry->m_szRegisteredUserName.isEmpty() && pEntry->m_szLastRegisteredMatchNick == szNick)
@@ -110,10 +110,10 @@ KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, c
 				QString szTmp = pUser->getProperty("customColor");
 				KviStringConversion::fromString(szTmp,pEntry->m_cachedColor);
 
-				pEntry->m_bNotFoundRegUserLoockup = false; //to be sure
+				pEntry->m_bNotFoundRegUserLookup = false; //to be sure
 			} else {
 				pEntry->m_szLastRegisteredMatchNick = szNick;
-				pEntry->m_bNotFoundRegUserLoockup = true;
+				pEntry->m_bNotFoundRegUserLookup = true;
 			}
 		}
 	}
@@ -183,7 +183,7 @@ void KviIrcUserDataBase::registeredUserChanged(const QString & szUser)
 		if(it.current()->m_szRegisteredUserName == szUser)
 		{
 			it.current()->m_szRegisteredUserName = "";
-			it.current()->m_bNotFoundRegUserLoockup = false;
+			it.current()->m_bNotFoundRegUserLookup = false;
 		}
 	}
 }
@@ -195,7 +195,7 @@ void KviIrcUserDataBase::registeredUserAdded(const QString &)
 	{
 		if(it.current()->m_szRegisteredUserName.isEmpty())
 		{
-			it.current()->m_bNotFoundRegUserLoockup = false;
+			it.current()->m_bNotFoundRegUserLookup = false;
 		}
 	}
 }
@@ -206,6 +206,6 @@ void KviIrcUserDataBase::registeredDatabaseCleared()
 	for( ; it.current(); ++it )
 	{
 		it.current()->m_szRegisteredUserName = "";
-		it.current()->m_bNotFoundRegUserLoockup = false;
+		it.current()->m_bNotFoundRegUserLookup = false;
 	}
 }

@@ -49,5 +49,3 @@ void KviTalApplication::commitData(QSessionManager & manager)
 	KApplication::commitData(manager);
 #endif //defined(COMPILE_KDE4_SUPPORT)
 }
-
-

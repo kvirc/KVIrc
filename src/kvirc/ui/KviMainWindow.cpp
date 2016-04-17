@@ -131,7 +131,7 @@ KviMainWindow::KviMainWindow()
 	m_pWindowStack      = new KviWindowStack(m_pSplitter,"mdi_manager");
 
 	// This theoretically had to exists before KviWindowStack (that uses enterSdiMode)
-    m_pAccellerators = new KviPointerList<QShortcut>;
+	m_pAccellerators = new KviPointerList<QShortcut>;
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
 	setMenuWidget(m_pMenuBar);
 #ifndef COMPILE_ON_MAC
@@ -212,13 +212,13 @@ KviMainWindow::~KviMainWindow()
 	if(m_pTrayIcon)
 	{
 		m_pTrayIcon->die();
-		m_pTrayIcon = NULL;
+		m_pTrayIcon = nullptr;
 	}
 
 	if(m_pStatusBar)
 	{
 		delete m_pStatusBar;
-		m_pStatusBar = NULL;
+		m_pStatusBar = nullptr;
 	}
 
 	//close all not console windows
@@ -236,7 +236,7 @@ KviMainWindow::~KviMainWindow()
 	delete m_pWinList;
 	delete m_pAccellerators;
 
-	g_pMainWindow = 0;
+	g_pMainWindow = nullptr;
 }
 
 void KviMainWindow::registerModuleExtensionToolBar(KviMexToolBar * t)
@@ -366,12 +366,12 @@ void KviMainWindow::accelActivated()
 
 void KviMainWindow::executeInternalCommand(int index)
 {
-    KviConsoleWindow *pConsole=0;
-    if(activeContext() && activeContext()->console())
-        pConsole=activeContext()->console();
-    else
-        pConsole=firstConsole();
-    KviKvsScript::run(kvi_getInternalCommandBuffer(index),pConsole);
+	KviConsoleWindow *pConsole=0;
+	if(activeContext() && activeContext()->console())
+		pConsole=activeContext()->console();
+	else
+		pConsole=firstConsole();
+	KviKvsScript::run(kvi_getInternalCommandBuffer(index),pConsole);
 }
 
 
@@ -835,7 +835,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 	{
 		if(!trayIcon())
 		{
-		    executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 		}
 		if(trayIcon())
 		{
@@ -988,7 +988,7 @@ void KviMainWindow::toggleStatusBar()
 	if(m_pStatusBar)
 	{
 		delete m_pStatusBar;
-		m_pStatusBar = 0;
+		m_pStatusBar = nullptr;
 	} else {
 		m_pStatusBar = new KviStatusBar(this);
 		m_pStatusBar->load();
@@ -1036,10 +1036,10 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 {
 	p->clear();
 
-    disconnect(p,SIGNAL(triggered(QAction *)),this,SLOT(toolbarsPopupSelected(QAction *))); // just to be sure
-    connect(p,SIGNAL(triggered(QAction *)),this,SLOT(toolbarsPopupSelected(QAction *)));
+	disconnect(p,SIGNAL(triggered(QAction *)),this,SLOT(toolbarsPopupSelected(QAction *))); // just to be sure
+	connect(p,SIGNAL(triggered(QAction *)),this,SLOT(toolbarsPopupSelected(QAction *)));
 
-    QAction *pAction=0;
+	QAction *pAction=0;
 	int cnt = 0;
 
 	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("toolbar");
@@ -1048,13 +1048,13 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 		for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
 		{
 			QString label = __tr2qs("Show %1").arg(d->visibleName());
-            if(d->icon())
-                pAction = p->addAction(*(d->icon()),label);
-            else
-                pAction = p->addAction(label);
-            pAction->setCheckable(true);
-            pAction->setChecked(moduleExtensionToolBar(d->id()));
-            pAction->setData(d->id());
+			if(d->icon())
+				pAction = p->addAction(*(d->icon()),label);
+			else
+				pAction = p->addAction(label);
+			pAction->setCheckable(true);
+			pAction->setChecked(moduleExtensionToolBar(d->id()));
+			pAction->setData(d->id());
 			cnt++;
 		}
 	}
@@ -1064,7 +1064,7 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 	if(it2.current())
 	{
 		if(cnt > 0)
-            p->addSeparator();
+			p->addSeparator();
 
 		while(KviCustomToolBarDescriptor * d = it2.current())
 		{
@@ -1075,23 +1075,23 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 				QPixmap * pix = g_pIconManager->getImage(d->iconId());
 				if(pix)
 				{
-                    pAction = p->addAction(*pix,label);
+					pAction = p->addAction(*pix,label);
 				} else {
-                    pAction = p->addAction(label);
+					pAction = p->addAction(label);
 				}
 			} else {
-                pAction = p->addAction(label);
+				pAction = p->addAction(label);
 			}
-            pAction->setData(d->internalId());
-            pAction->setCheckable(true);
-            pAction->setChecked(d->toolBar());
+			pAction->setData(d->internalId());
+			pAction->setCheckable(true);
+			pAction->setChecked(d->toolBar());
 			++it2;
 			cnt++;
 		}
 	}
 
 	if(cnt > 0)
-        p->addSeparator();
+		p->addSeparator();
 
 	p->addAction(
 			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBarEditor)),
@@ -1108,10 +1108,10 @@ void KviMainWindow::customizeToolBars()
 
 void KviMainWindow::toolbarsPopupSelected(QAction *pAction)
 {
-    bool bOk=false;
-    int idext=pAction->data().toInt(&bOk);
-    if(!bOk)
-        return;
+	bool bOk=false;
+	int idext=pAction->data().toInt(&bOk);
+	if(!bOk)
+		return;
 
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);
 	if(dd)

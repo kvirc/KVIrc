@@ -27,6 +27,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "KviDynamicToolTip.h"
 #include "KviMainWindow.h"
 #include "KviTrayIcon.h"
 
@@ -36,8 +37,6 @@
 class QPixmap;
 class QTimer;
 class QMenu;
-class KviDynamicToolTip;
-//class KviMainWindow;
 
 class KviTrayIconWidget : public QSystemTrayIcon, public KviTrayIcon
 {
@@ -46,7 +45,7 @@ public:
 	KviTrayIconWidget();
 	~KviTrayIconWidget();
 protected:
-	KviDynamicToolTip * m_pTip;
+	KviDynamicToolTip m_pTip;
 	QMenu * m_pContextPopup;
 	QMenu * m_pAwayPopup;
 #ifndef COMPILE_ON_MAC

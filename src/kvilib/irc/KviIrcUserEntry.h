@@ -33,6 +33,8 @@
 * This file was originally part of KviIrcUserDataBase.h
 */
 
+#include <memory>
+
 #include "kvi_settings.h"
 #include "KviAvatar.h"
 
@@ -75,11 +77,6 @@ public:
 	* \return KviIrcUserEntry
 	*/
 	KviIrcUserEntry(const QString & user, const QString & host);
-
-	/**
-	* \brief Destroys the object
-	*/
-	~KviIrcUserEntry();
 protected:
 	QString     m_szUser;
 	QString     m_szHost;
@@ -93,13 +90,13 @@ protected:
 	bool        m_bAway;
 	bool        m_bIrcOp;
 
-	KviAvatar * m_pAvatar;
+	std::unique_ptr<KviAvatar> m_pAvatar;
 
 	int         m_nRefs;
 	bool        m_bBot;
 	bool        m_bAvatarRequested;
 
-	bool        m_bNotFoundRegUserLoockup; //wtf?
+	bool        m_bNotFoundRegUserLookup; //wtf?
 	QString     m_szRegisteredUserName;
 	QString     m_szLastRegisteredMatchNick;
 
@@ -197,7 +194,7 @@ public:
 	* \return void
 	* \warning The ownership passes to this class!
 	*/
-	void setAvatar(KviAvatar * pAvatar = 0);
+	void setAvatar(KviAvatar * pAvatar = nullptr);
 
 	/**
 	* \brief Sets the user global flags (eg: "G*")
@@ -294,7 +291,7 @@ public:
 	* \brief Returns the avatar of the user
 	* \return KviAvatar
 	*/
-	KviAvatar * avatar(){ return m_pAvatar; };
+	KviAvatar * avatar(){ return m_pAvatar.get(); };
 
 	/**
 	* \brief Returns the number of references of the user in the database

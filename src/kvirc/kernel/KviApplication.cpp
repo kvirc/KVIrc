@@ -650,16 +650,16 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 	We have different behaviour depending on support enabled at compile time (env)
 	and options enabled by the user (opt).
 	Let's see the scheme to understand which is chosen:
-	
+
 	1: env: DBus, KDE
 	   opt: a: enabled, enabled   -> KDE
 	        b: enabled, disabled  -> DBus
 	        c: disabled, disabled -> KVIrc
-	
+
 	2: env: DBus, no KDE
 	   opt: a: enabled  -> DBus
 	        b: disabled -> KVIrc
-	
+
 	3: env: no DBus, no KDE -> KVIrc
 	 ______           __________           ______________
 	|      |         | Want KDE |         |  Scheme 1a   |
@@ -679,7 +679,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 	|    Schemes 1c - 2b - 3    |
 	|           KVIrc           |
 	|___________________________|
-	
+
 	:)
 	*/
 

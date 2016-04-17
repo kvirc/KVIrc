@@ -25,7 +25,7 @@
 
 #include "KviIrcServerParser.h"
 
-#define PTM(__m) KVI_PTR2MEMBER(KviIrcServerParser::__m)
+#define PTM(m) KVI_PTR2MEMBER(KviIrcServerParser::m)
 
 KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 {
@@ -51,8 +51,8 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 	{ 0              , 0                             }
 };
 
-#define REQ(__f) parseCtcpRequest##__f
-#define RPL(__f) parseCtcpReply##__f
+#define REQ(f) parseCtcpRequest##f
+#define RPL(f) parseCtcpReply##f
 
 KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[]=
 {
