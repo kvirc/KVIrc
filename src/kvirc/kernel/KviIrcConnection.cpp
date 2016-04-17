@@ -1534,7 +1534,7 @@ void KviIrcConnection::loginToIrcServer()
 	QByteArray szPass = encodeText(m_pUserInfo->password()); // may be empty
 
 	if(!szReal.data())szReal = "";
-	if(!szPass.data())szReal = "";
+	if(!szPass.data())szPass = "";
 
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Logging in as %Q!%Q :%Q"),
