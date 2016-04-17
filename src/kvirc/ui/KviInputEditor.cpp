@@ -2432,7 +2432,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 	if(fXPos <= fCurX)
 		return 0;
 
-	KviInputEditorTextBlock * pBlock;
+	KviInputEditorTextBlock * pBlock = nullptr;
 
 	foreach(pBlock,m_p->lTextBlocks)
 	{
