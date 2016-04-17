@@ -456,7 +456,7 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 
 void LogViewWindow::deleteCurrent()
 {
-	LogListViewItem * pItem = (LogListViewItem *)(m_pListView->currentItem());
+	LogListViewItem * pItem = dynamic_cast<LogListViewItem *>(m_pListView->currentItem());
 	if(!pItem)
 		return;
 
@@ -472,10 +472,11 @@ void LogViewWindow::deleteCurrent()
 				return;
 
 			KviFileUtils::removeFile(pItem->fileName());
-			delete pItem;
-			m_pIrcView->clearBuffer();
 			if(!pItem->parent()->childCount())
 				delete pItem->parent();
+
+			delete pItem;
+			m_pIrcView->clearBuffer();
 		}
 		return;
 	}
