@@ -275,10 +275,10 @@ KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QStrin
 	}
 	if(szQuery.compare("pemBase64")==0)
 	{
-		const char * szTmp=pCert->getX509Base64();
+		char * szTmp = pCert->getX509Base64();
 		QString szBase64(szTmp);
 		pRetBuffer->setString(szBase64);
-		delete szTmp;
+		KviMemory::free(szTmp);
 		return true;
 	}
 	if(szQuery.compare("version")==0)

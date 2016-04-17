@@ -578,7 +578,7 @@ KviSSLCertificate::~KviSSLCertificate()
 	delete m_pIssuer;
 }
 
-const char * KviSSLCertificate::getX509Base64()
+char * KviSSLCertificate::getX509Base64()
 {
 	BUF_MEM *bptr;
 	BIO* mem = BIO_new(BIO_s_mem());
