@@ -224,7 +224,11 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 	while(KVSP_curCharUnicode == '%')
 	{
 		KviKvsTreeNodeVariable * d = parsePercent();
-		if(!d)return 0;
+		if(!d)
+		{
+			delete pVarList;
+			return 0;
+		}
 
 		pVarList->append(d);
 
@@ -239,6 +243,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 
 	if(!KVSP_curCharIsEndOfCommand)
 	{
+		delete pVarList;
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'unset' command needs a variable list","kvs"));
 		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 		return 0;
