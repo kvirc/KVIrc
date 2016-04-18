@@ -273,25 +273,16 @@ void KviTrayIconWidget::doAway(bool)
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 		while(KviWindow * wnd = it.current())
 		{
-			if(wnd->type()==KviWindow::Console)
+			KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
+			if(pConsole && pConsole->isConnected())
 			{
-				KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
-				if(pConsole == nullptr)
+				if(id==-2)
 				{
-					qDebug("Conversion from %s to KviConsoleWindow* failed. libkvitrayicon.cpp %d",
-						typeid(wnd).name(), __LINE__);
-					continue;
-				}
-				if(pConsole->isConnected())
-				{
-					if(id==-2)
-					{
-						pConsole->connection()->sendFmtData("AWAY");
-					} else {
-						pConsole->connection()->sendFmtData("AWAY :%s",
-							pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data()
-							);
-					}
+					pConsole->connection()->sendFmtData("AWAY");
+				} else {
+					pConsole->connection()->sendFmtData("AWAY :%s",
+						pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data()
+						);
 				}
 			}
  			++it;
@@ -337,31 +328,22 @@ void KviTrayIconWidget::fillContextPopup()
 		int iNetCount=0;
 		while(KviWindow * wnd = it.current())
 		{
-			if(wnd->type()==KviWindow::Console)
+			KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
+			if(pConsole && pConsole->isConnected())
 			{
-				KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
-				if(pConsole == nullptr)
+				QAction* id;
+				if(pConsole->connection()->userInfo()->isAway())
 				{
-					qDebug("Conversion from KviConsoleWindow* to %s failed. libkvitrayicon.cpp %d",
-						typeid(wnd).name(), __LINE__);
-					continue;
-				}
-				if(pConsole->isConnected())
-				{
-					QAction* id;
-					if(pConsole->connection()->userInfo()->isAway())
-					{
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
-						id->setData(pConsole->context()->id());
-						bAllUnaway=false;
-					} else {
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
-						id->setData(pConsole->context()->id());
-						bAllAway=false;
-					}
+					id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
 					id->setData(pConsole->context()->id());
-					iNetCount++;
+					bAllUnaway=false;
+				} else {
+					id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+					id->setData(pConsole->context()->id());
+					bAllAway=false;
 				}
+				id->setData(pConsole->context()->id());
+				iNetCount++;
 			}
  			++it;
 		}

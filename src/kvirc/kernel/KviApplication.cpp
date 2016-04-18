@@ -1084,8 +1084,9 @@ void KviApplication::setAvatarFromOptions()
 
 	while(it.current())
 	{
-		if(it.current()->type() == KviWindow::Console)
-			((KviConsoleWindow *)it.current())->setAvatarFromOptions();
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		if(pWindow)
+			pWindow->setAvatarFromOptions();
 
 		++it;
 	}
@@ -1682,13 +1683,13 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer,QString & szNi
 				if(szNick.isEmpty())
 					return pWindow;
 
-				if(KviQString::equalCI(szNick,((KviConsoleWindow *)it.current())->connection()->currentNickName()))
+				if(KviQString::equalCI(szNick,pWindow->connection()->currentNickName()))
 					return pWindow;
 			}
 		} else {
 			if(!szNick.isEmpty())
 			{
-				if(KviQString::equalCI(szNick,((KviConsoleWindow *)it.current())->connection()->currentNickName()))
+				if(KviQString::equalCI(szNick,pWindow->connection()->currentNickName()))
 					return pWindow;
 			}
 		}
@@ -1704,11 +1705,9 @@ void KviApplication::restartLagMeters()
 
 	while(it.current())
 	{
-		if(it.current()->type() == KviWindow::Console)
-		{
-			if(((KviConsoleWindow *)it.current())->connection())
-				((KviConsoleWindow *)it.current())->connection()->restartLagMeter();
-		}
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		if(pWindow && pWindow->connection())
+			pWindow->connection()->restartLagMeter();
 		++it;
 	}
 }
@@ -1720,16 +1719,9 @@ void KviApplication::restartNotifyLists()
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow == nullptr)
+		if(pWindow && pWindow->connection())
 		{
-			qDebug("Conversion from %s to KviConsoleWindow* failed. KviApplication.cpp %d",
-				typeid(it.current()).name(), __LINE__);
-			continue;
-		}
-		if(it.current()->type() == KviWindow::Console)
-		{
-			if(pWindow->connection())
-				pWindow->connection()->restartNotifyList();
+			pWindow->connection()->restartNotifyList();
 		}
 		++it;
 	}
@@ -1741,17 +1733,9 @@ void KviApplication::resetAvatarForMatchingUsers(KviRegisteredUser * pUser)
 
 	while(it.current())
 	{
-		if(it.current()->type() == KviWindow::Console)
-		{
-			KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-			if(pWindow == nullptr)
-			{
-				qDebug("Conversion from %s to KviConsoleWindow* failed. KviApplication.cpp %d",
-					typeid(it.current()).name(), __LINE__);
-				continue;
-			}
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		if(pWindow)
 			pWindow->resetAvatarForMatchingUsers(pUser);
-		}
 		++it;
 	}
 }
@@ -1763,18 +1747,8 @@ KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow == nullptr)
-		{
-			qDebug("Conversion from %s to KviConsoleWindow* failed. KviApplication.cpp %d",
-				typeid(it.current()).name(), __LINE__);
-			continue;
-		}
-
-		if(it.current()->type() == KviWindow::Console)
-		{
-			if(pWindow->context()->id() == uIrcContextId)
-				return pWindow;
-		}
+		if(pWindow && pWindow->context()->id() == uIrcContextId)
+			return pWindow;
 		++it;
 	}
 	return NULL;
@@ -1797,18 +1771,8 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow == nullptr)
-		{
-			qDebug("Conversion from %s to KviConsoleWindow* failed. KviApplication.cpp %d",
-				typeid(it.current()).name(), __LINE__);
-			continue;
-		}
-
-		if(it.current()->type() == KviWindow::Console)
-		{
-			if(pWindow->isConnected())
-				return pWindow;
-		}
+		if(pWindow && pWindow->isConnected())
+			return pWindow;
 		++it;
 	}
 
