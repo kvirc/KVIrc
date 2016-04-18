@@ -77,8 +77,6 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 	{
 		c->warning(this,__tr2qs_ctx("Empty window identifier specified in the standard rebinding switch: no rebinding performed","kvs"));
 		pNewWindow = 0;
-	} else {
-		pNewWindow = g_pApp->findWindow(szWinId.toUtf8().data());
 	}
 
 	pNewWindow = g_pApp->findWindow(szWinId.toUtf8().data());
