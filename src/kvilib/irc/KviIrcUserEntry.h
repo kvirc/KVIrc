@@ -90,7 +90,7 @@ protected:
 	bool        m_bAway;
 	bool        m_bIrcOp;
 
-	std::unique_ptr<KviAvatar> m_pAvatar;
+	std::unique_ptr<KviAvatar> m_upAvatar;
 
 	int         m_nRefs;
 	bool        m_bBot;
@@ -190,11 +190,20 @@ public:
 
 	/**
 	* \brief Sets the avatar of the user
-	* \param pAvatar The avatar
+	* \param upAvatar The avatar
 	* \return void
 	* \warning The ownership passes to this class!
 	*/
-	void setAvatar(KviAvatar * pAvatar = nullptr);
+	void setAvatar(std::unique_ptr<KviAvatar> upAvatar = nullptr);
+
+	/**
+	* \brief Sets the avatar of the user
+	* \param pAvatar The avatar
+	* \return void
+	* \warning The ownership passes to this class!
+	* \warning This is an overload function for backwards compatibility
+	*/
+	void setAvatar(KviAvatar * upAvatar = nullptr);
 
 	/**
 	* \brief Sets the user global flags (eg: "G*")
@@ -291,7 +300,7 @@ public:
 	* \brief Returns the avatar of the user
 	* \return KviAvatar
 	*/
-	KviAvatar * avatar(){ return m_pAvatar.get(); };
+	KviAvatar * avatar(){ return m_upAvatar.get(); };
 
 	/**
 	* \brief Returns the number of references of the user in the database
@@ -303,7 +312,7 @@ public:
 	* \brief Removes the avatar associated to the user
 	* \return KviAvatar *
 	*/
-	KviAvatar * forgetAvatar();
+	std::unique_ptr<KviAvatar> forgetAvatar();
 
 	/**
 	* \brief Returns true if kvirc already made an attempt to download user's avatar

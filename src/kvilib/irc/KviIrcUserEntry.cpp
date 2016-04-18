@@ -93,12 +93,18 @@ void KviIrcUserEntry::setRealName(const QString & szReal)
 	}
 }
 
-void KviIrcUserEntry::setAvatar(KviAvatar * pAvatar)
+void KviIrcUserEntry::setAvatar(std::unique_ptr<KviAvatar> upAvatar)
 {
-	m_pAvatar.reset(pAvatar);
+	m_upAvatar = std::move(upAvatar);
 }
 
-KviAvatar * KviIrcUserEntry::forgetAvatar()
+// Overload function for backwards compatibility
+void KviIrcUserEntry::setAvatar(KviAvatar * pAvatar)
 {
-	return m_pAvatar.release();
+	m_upAvatar.reset(pAvatar);
+}
+
+std::unique_ptr<KviAvatar> KviIrcUserEntry::forgetAvatar()
+{
+	return std::move(m_upAvatar);
 }

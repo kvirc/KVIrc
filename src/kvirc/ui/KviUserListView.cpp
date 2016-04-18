@@ -1303,7 +1303,7 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		bool bIrcOp       = pEntry->m_pGlobalData->isIrcOp();
 		int iHops         = pEntry->m_pGlobalData->hops();
 
-		KviAvatar * pAv   = pEntry->m_pGlobalData->forgetAvatar();
+		std::unique_ptr<KviAvatar> upAv = pEntry->m_pGlobalData->forgetAvatar();
 
 		KviIrcUserEntry::Gender gender = pEntry->m_pGlobalData->gender();
 		bool bBot = pEntry->m_pGlobalData->isBot();
@@ -1323,9 +1323,9 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		pEntry->m_bSelected = bSelect;
 		pEntry->m_iTemperature += KVI_USERACTION_NICK;
 
-		if(pAv)
+		if(upAv)
 		{
-			pEntry->m_pGlobalData->setAvatar(pAv);
+			pEntry->m_pGlobalData->setAvatar(std::move(upAv));
 			avatarChanged(szNewNick);
 		}
 		return true;
