@@ -90,7 +90,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 	m_pAwayPopup = new QMenu(0);
 
 #ifndef COMPILE_ON_MAC
-	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc Tray Options</b>"),m_pContextPopup);
+	m_pTitleLabel = new QLabel(__tr2qs("<b><center>KVIrc Tray Options</center></b>"),m_pContextPopup);
 	QPalette p;
 	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 	QWidgetAction * pAction = new QWidgetAction(this);
