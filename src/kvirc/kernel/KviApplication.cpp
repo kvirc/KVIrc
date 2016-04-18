@@ -83,6 +83,7 @@
 #include "kvi_sourcesdate.h"
 #include "KviPointerHashTable.h"
 #include "KviQueryWindow.h"
+#include "KviCaster.h"
 
 #include <QMenu>
 
@@ -743,7 +744,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			case KviWindow::Channel: eIcon = KviIconManager::Channel; break;
 			case KviWindow::Query:
 			{
-				KviQueryWindow * pQuery = dynamic_cast<KviQueryWindow *>(pWnd);
+				KviQueryWindow * pQuery = KVI_DYNAMIC(KviQueryWindow *, pWnd);
 				if(!pQuery)
 					break;
 
