@@ -141,7 +141,16 @@ void KviTrayIconWidget::executeInternalCommand(bool)
 {
 	int iCmd;
 	bool bOk;
-	iCmd=dynamic_cast<QAction *>(QObject::sender())->data().toInt(&bOk);
+
+	QAction * pQaction = dynamic_cast<QAction *>(QObject::sender());
+	if(pQaction == nullptr)
+	{
+		qDebug("Conversion from QObject::sender() to QAction* failed. libkvitrayicon.cpp %d",
+			__LINE__);
+		return;
+	}
+
+	iCmd = pQaction->data().toInt(&bOk);
 	if(bOk)
 		g_pMainWindow->executeInternalCommand(iCmd);
 }
@@ -250,7 +259,7 @@ void KviTrayIconWidget::doAway(bool)
 	bool ok;
 	QAction * act = dynamic_cast<QAction *>(QObject::sender());
 
-	if(act)
+	if(act != nullptr)
 	{
 		id = act->data().toInt(&ok);
 		if(!ok)
@@ -266,7 +275,13 @@ void KviTrayIconWidget::doAway(bool)
 		{
 			if(wnd->type()==KviWindow::Console)
 			{
-				KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
+				KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
+				if(wnd == nullptr)
+				{
+					qDebug("Conversion from %s to KviConsoleWindow* failed. libkvitrayicon.cpp %d",
+						typeid(wnd).name(), __LINE__);
+					continue;
+				}
 				if(pConsole->isConnected())
 				{
 					if(id==-2)
@@ -324,7 +339,13 @@ void KviTrayIconWidget::fillContextPopup()
 		{
 			if(wnd->type()==KviWindow::Console)
 			{
-				KviConsoleWindow* pConsole=dynamic_cast<KviConsoleWindow *>(wnd);
+				KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
+				if(pConsole == nullptr)
+				{
+					qDebug("Conversion from KviConsoleWindow* to %s failed. libkvitrayicon.cpp %d",
+						typeid(wnd).name(), __LINE__);
+					continue;
+				}
 				if(pConsole->isConnected())
 				{
 					QAction* id;
