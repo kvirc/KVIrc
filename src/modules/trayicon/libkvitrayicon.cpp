@@ -276,7 +276,7 @@ void KviTrayIconWidget::doAway(bool)
 			if(wnd->type()==KviWindow::Console)
 			{
 				KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
-				if(wnd == nullptr)
+				if(pConsole == nullptr)
 				{
 					qDebug("Conversion from %s to KviConsoleWindow* failed. libkvitrayicon.cpp %d",
 						typeid(wnd).name(), __LINE__);
