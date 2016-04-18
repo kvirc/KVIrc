@@ -137,7 +137,6 @@ KviTrayIconWidget::~KviTrayIconWidget()
 	m_pContextPopup->deleteLater();
 }
 
-
 void KviTrayIconWidget::executeInternalCommand(bool)
 {
 	int iCmd;
@@ -325,7 +324,7 @@ void KviTrayIconWidget::fillContextPopup()
 		{
 			if(wnd->type()==KviWindow::Console)
 			{
-				KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
+				KviConsoleWindow* pConsole=dynamic_cast<KviConsoleWindow *>(wnd);
 				if(pConsole->isConnected())
 				{
 					QAction* id;
