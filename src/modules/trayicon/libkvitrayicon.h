@@ -56,6 +56,7 @@ protected:
 	QAction* m_pAwayMenuId;
 
 	bool m_bFlashed;
+	bool m_bHidden;
 
 	QPixmap m_CurrentPixmap;
 

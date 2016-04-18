@@ -78,6 +78,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 	m_iChannels = 0;
 	m_iQueries  = 0;
 	m_iOther    = 0;
+	m_bHidden   = false;
 
 	m_pFlashingTimer = new QTimer(this);
 	m_pFlashingTimer->setObjectName("flashing_timer");
@@ -134,7 +135,10 @@ KviTrayIconWidget::~KviTrayIconWidget()
 	delete m_pTitleLabel;
 #endif
 	delete m_pFlashingTimer;
-	m_pContextPopup->deleteLater();
+	if(m_bHidden)
+		m_pContextPopup->deleteLater();
+	else
+		delete m_pContextPopup;
 }
 
 void KviTrayIconWidget::executeInternalCommand(bool)
@@ -168,6 +172,7 @@ void KviTrayIconWidget::flashingTimerShot()
 
 void KviTrayIconWidget::disableTrayIcon()
 {
+	m_bHidden = true;
 	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = false;
 	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 }
