@@ -103,6 +103,7 @@ protected:
 protected slots:
 	void contextCut();
 	void contextCopy();
+	void contextRemove();
 	void contextPasteBelow();
 	void contextPasteAbove();
 	void contextPasteInside();

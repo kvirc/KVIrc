@@ -431,6 +431,11 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
         this,SLOT(contextCopy()))
             ->setEnabled(it);
 	m_pContextPopup->addAction(
+		*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
+		__tr2qs_ctx("Re&move","editor"),
+	this,SLOT(contextRemove()))
+		->setEnabled(it);
+	m_pContextPopup->addAction(
 		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
         __tr2qs_ctx("&Paste Below","editor"),this,SLOT(contextPasteBelow()))
             ->setEnabled(m_pClipboard);
@@ -631,6 +636,16 @@ void SinglePopupEditor::contextCut()
 	m_pLastSelectedItem = 0;
 	delete it;
 	if(!m_pLastSelectedItem)selectionChanged();
+}
+
+void SinglePopupEditor::contextRemove()
+{
+	if(!m_pLastSelectedItem)return;
+
+	PopupTreeWidgetItem * it = m_pLastSelectedItem;
+	m_pLastSelectedItem = nullptr;
+	delete it;
+	selectionChanged();
 }
 
 void SinglePopupEditor::contextPasteBelow()
